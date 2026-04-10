@@ -8,7 +8,21 @@ WIP matching disassembly of Pokémon HeartGold and SoulSilver (US). Goal: byte-f
 
 ## Build
 
-`make` builds HeartGold (`build/heartgold.us/pokeheartgold.us.nds`). `make soulsilver` builds SoulSilver. Both are gated by a sha1 check unless you pass `COMPARE=0`. `GAME_VERSION=HEARTGOLD|SOULSILVER` is the version switch — all version-aware sub-targets honor it.
+The project is configured as a [chiri](https://github.com/antonsynd/chiri) package (`chiri_config.json5` → `build_tools/bin/build_pokeheartgold`). Prefer the chiri entry points when driving builds — they're thin wrappers around `make` with the right `GAME_VERSION` / `COMPARE` flags wired up:
+
+- `chiri pkg -- build` — build HeartGold (default)
+- `chiri pkg -- build --game soulsilver` — build SoulSilver
+- `chiri pkg -- build --game both` — build both ROMs
+- `chiri pkg -- build --target main|sub|filesystem` — partial rebuild (ARM9 / ARM7 / NitroFS)
+- `chiri pkg -- build --no-compare` — skip retail SHA1 verification (`COMPARE=0`)
+- `chiri pkg -- build -j4` — parallel jobs
+- `chiri pkg -- compare` / `chiri pkg -- test` — build and verify against retail SHA1 (the matching check *is* the test for a decomp)
+- `chiri pkg -- tidy` / `chiri pkg -- clean` — shallow / full clean
+- `chiri pkg -- format` — runs `./format.sh`
+
+Note the `--` separator: chiri consumes its own args first, then forwards everything after `--` to `build_tools/bin/build_pokeheartgold`. Extra args after a second `--` are passed through to `make` (e.g. `chiri pkg -- build -- FOO=bar`).
+
+Underlying raw `make` still works: `make` builds HeartGold (`build/heartgold.us/pokeheartgold.us.nds`); `make soulsilver` builds SoulSilver. Both are gated by a sha1 check unless you pass `COMPARE=0`. `GAME_VERSION=HEARTGOLD|SOULSILVER` is the version switch — all version-aware sub-targets honor it.
 
 Partial targets (avoid rebuilding the whole ROM while iterating):
 - `make main` — ARM9 modules only (matches the `.elf` / static + overlays)

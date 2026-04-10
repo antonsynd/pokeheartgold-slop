@@ -1,0 +1,274 @@
+#!/usr/bin/env python3
+"""Chiri build-system entry point for pokeheartgold.
+
+Wraps the project Makefile behind a chiri-style subcommand CLI so that
+`chiri pkg build`, `chiri pkg test`, etc. map onto the right `make`
+invocations with the right `GAME_VERSION` / `COMPARE` flags.
+"""
+import argparse
+import logging
+import os
+import subprocess
+import sys
+from pathlib import Path
+from typing import Mapping, MutableMapping, MutableSequence, Sequence
+
+_logger: logging.Logger = logging.getLogger(name="build_pokeheartgold")
+
+ROOT_DIR: Path = Path(__file__).resolve().parent.parent.parent
+
+HEARTGOLD: str = "heartgold"
+SOULSILVER: str = "soulsilver"
+BOTH: str = "both"
+GAME_CHOICES: Sequence[str] = (HEARTGOLD, SOULSILVER, BOTH)
+
+GAME_VERSION: Mapping[str, str] = {
+    HEARTGOLD: "HEARTGOLD",
+    SOULSILVER: "SOULSILVER",
+}
+
+MAKE_TARGETS: Sequence[str] = ("all", "main", "sub", "filesystem")
+
+
+def main() -> None:
+    setup_logger()
+
+    parser: argparse.ArgumentParser = create_parser()
+    pre_args: MutableSequence[str] = []
+    rest: MutableSequence[str] = []
+
+    for i, arg in enumerate(sys.argv[1:], start=1):
+        if arg == "--":
+            rest.extend(sys.argv[i + 1 :])
+            break
+
+        pre_args.append(arg)
+
+    args: argparse.Namespace = parser.parse_args(pre_args)
+    command: str = args.command
+
+    if command == "build":
+        build(args=args, rest=rest, compare=not args.no_compare)
+    elif command == "compare" or command == "test":
+        build(args=args, rest=rest, compare=True)
+    elif command == "clean":
+        clean(args=args, rest=rest)
+    elif command == "tidy":
+        tidy(args=args, rest=rest)
+    elif command == "format":
+        format_tree(args=args, rest=rest)
+    elif command == "help" or command is None:
+        parser.print_help()
+    else:
+        get_logger().error(f'Unknown command "{command}"')
+        sys.exit(1)
+
+
+def create_parser() -> argparse.ArgumentParser:
+    parser = argparse.ArgumentParser(
+        prog="build_pokeheartgold",
+        description="Meta-build wrapper around the pokeheartgold Makefile.",
+    )
+    subparsers = parser.add_subparsers(dest="command")
+
+    build_parser = subparsers.add_parser(
+        "build",
+        help="Build the ROM (or a partial target).",
+    )
+    _add_game_arg(build_parser)
+    build_parser.add_argument(
+        "--target",
+        choices=MAKE_TARGETS,
+        default="all",
+        help="Which sub-target to build (default: all = full ROM).",
+    )
+    build_parser.add_argument(
+        "--no-compare",
+        action="store_true",
+        help="Skip the retail SHA1 verification (pass COMPARE=0).",
+    )
+    _add_jobs_arg(build_parser)
+
+    compare_parser = subparsers.add_parser(
+        "compare",
+        help="Build and verify against retail SHA1 (COMPARE=1).",
+    )
+    _add_game_arg(compare_parser)
+    _add_jobs_arg(compare_parser)
+
+    test_parser = subparsers.add_parser(
+        "test",
+        help="Alias for `compare` — the decomp's matching check is its test.",
+    )
+    _add_game_arg(test_parser)
+    _add_jobs_arg(test_parser)
+    # `test` uses the same downstream code path as compare; give it the same
+    # shape as `build` so arg lookups are uniform.
+    test_parser.set_defaults(target="all", no_compare=False)
+    compare_parser.set_defaults(target="all", no_compare=False)
+
+    clean_parser = subparsers.add_parser(
+        "clean",
+        help="Full clean (make clean, incl. lib/dsprot, lib/syscall, tools).",
+    )
+    _add_game_arg(clean_parser)
+
+    tidy_parser = subparsers.add_parser(
+        "tidy",
+        help="Shallow clean (make tidy) — keeps generated tools.",
+    )
+    _add_game_arg(tidy_parser)
+
+    _ = subparsers.add_parser(
+        "format",
+        help="Run ./format.sh over src/ and include/.",
+    )
+
+    _ = subparsers.add_parser("help", help="Print this help message.")
+
+    return parser
+
+
+def _add_game_arg(parser: argparse.ArgumentParser) -> None:
+    parser.add_argument(
+        "--game",
+        choices=GAME_CHOICES,
+        default=HEARTGOLD,
+        help="Which ROM to operate on (default: heartgold).",
+    )
+
+
+def _add_jobs_arg(parser: argparse.ArgumentParser) -> None:
+    parser.add_argument(
+        "-j",
+        "--jobs",
+        type=int,
+        default=None,
+        help="Parallel jobs to pass to make (e.g. -j4).",
+    )
+
+
+def _games_for(args: argparse.Namespace) -> Sequence[str]:
+    if args.game == BOTH:
+        return (HEARTGOLD, SOULSILVER)
+    return (args.game,)
+
+
+def _make_env(game: str) -> MutableMapping[str, str]:
+    env: MutableMapping[str, str] = os.environ.copy()
+    env["GAME_VERSION"] = GAME_VERSION[game]
+    return env
+
+
+def _run_make(
+    targets: Sequence[str],
+    game: str,
+    jobs: int | None,
+    compare: bool,
+    rest: Sequence[str],
+) -> None:
+    cmd: MutableSequence[str] = ["make"]
+
+    if jobs is not None:
+        cmd.append(f"-j{jobs}")
+
+    cmd.extend(targets)
+
+    if not compare:
+        cmd.append("COMPARE=0")
+
+    # Let the caller pass extra make variables / flags after `--`.
+    cmd.extend(rest)
+
+    env: MutableMapping[str, str] = _make_env(game)
+
+    get_logger().info(
+        f"[{game}] $ GAME_VERSION={env['GAME_VERSION']} {' '.join(cmd)}"
+    )
+    try:
+        subprocess.run(cmd, check=True, cwd=ROOT_DIR, env=env)
+    except subprocess.CalledProcessError as e:
+        get_logger().error(f"make failed: {e}")
+        sys.exit(e.returncode or 1)
+
+
+def build(
+    args: argparse.Namespace, rest: Sequence[str], compare: bool
+) -> None:
+    target: str = args.target
+    # `make` with no target builds the full ROM via the `all` rule; the other
+    # named targets (`main`, `sub`, `filesystem`) rebuild just that slice.
+    targets: Sequence[str] = () if target == "all" else (target,)
+
+    for game in _games_for(args):
+        _run_make(
+            targets=targets,
+            game=game,
+            jobs=args.jobs,
+            compare=compare,
+            rest=rest,
+        )
+
+
+def clean(args: argparse.Namespace, rest: Sequence[str]) -> None:
+    for game in _games_for(args):
+        _run_make(
+            targets=("clean",),
+            game=game,
+            jobs=None,
+            compare=True,
+            rest=rest,
+        )
+
+
+def tidy(args: argparse.Namespace, rest: Sequence[str]) -> None:
+    for game in _games_for(args):
+        _run_make(
+            targets=("tidy",),
+            game=game,
+            jobs=None,
+            compare=True,
+            rest=rest,
+        )
+
+
+def format_tree(args: argparse.Namespace, rest: Sequence[str]) -> None:
+    script: Path = ROOT_DIR / "format.sh"
+
+    if not script.is_file():
+        get_logger().error(f"format.sh not found at {script}")
+        sys.exit(1)
+
+    get_logger().info("Running ./format.sh...")
+    try:
+        subprocess.run([str(script), *rest], check=True, cwd=ROOT_DIR)
+    except subprocess.CalledProcessError as e:
+        get_logger().error(f"format.sh failed: {e}")
+        sys.exit(e.returncode or 1)
+
+
+def get_logger() -> logging.Logger:
+    return _logger
+
+
+def setup_logger() -> None:
+    _logger.setLevel(logging.DEBUG)
+
+    stdout_handler = logging.StreamHandler(sys.stdout)
+    stdout_handler.setLevel(logging.DEBUG)
+    stdout_handler.addFilter(lambda r: r.levelno <= logging.INFO)
+
+    stderr_handler = logging.StreamHandler(sys.stderr)
+    stderr_handler.setLevel(logging.WARNING)
+    stderr_handler.addFilter(lambda r: r.levelno >= logging.WARNING)
+
+    formatter = logging.Formatter("%(name)s: %(levelname)s: %(message)s")
+    stdout_handler.setFormatter(formatter)
+    stderr_handler.setFormatter(formatter)
+
+    _logger.addHandler(stdout_handler)
+    _logger.addHandler(stderr_handler)
+
+
+if __name__ == "__main__":
+    main()
