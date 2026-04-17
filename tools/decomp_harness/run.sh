@@ -14,7 +14,6 @@
 #   --dry-run          List files to decompile without doing anything
 #   --model MODEL      Claude model to use (default: claude-opus-4-6)
 #   --skip-data        Skip data-only asm files
-#   --parallel N       Not used yet; reserved for future parallel decompilation
 #   --help             Show this help
 
 set -euo pipefail
@@ -78,7 +77,13 @@ is_failed() {
 import json, sys
 with open('$PROGRESS_FILE') as f:
     data = json.load(f)
-sys.exit(0 if '$1' in [f['file'] for f in data['failed']] else 1)
+failed_files = []
+for entry in data.get('failed', []):
+    if isinstance(entry, dict):
+        failed_files.append(entry.get('file', ''))
+    else:
+        failed_files.append(str(entry))
+sys.exit(0 if '$1' in failed_files else 1)
 "
 }
 
@@ -97,12 +102,13 @@ with open('$PROGRESS_FILE', 'w') as f:
 }
 
 mark_failed() {
+    local file="$1"
     local attempts="$2"
     python3 -c "
 import json
 with open('$PROGRESS_FILE', 'r') as f:
     data = json.load(f)
-data['failed'].append({'file': '$1', 'attempts': $attempts})
+data['failed'].append({'file': '$file', 'attempts': $attempts})
 data['stats']['total_failed'] += 1
 data['in_progress'] = None
 with open('$PROGRESS_FILE', 'w') as f:
@@ -135,7 +141,6 @@ with open('$PROGRESS_FILE', 'w') as f:
 # --- File discovery ---
 
 get_asm_targets() {
-    # Extract all asm object references from main.lsf, in link order
     grep 'Object asm/' "$PROJECT_ROOT/main.lsf" | sed 's/.*Object asm\///' | sed 's/\.o$//' | while read -r basename; do
         echo "asm/${basename}.s"
     done
@@ -143,8 +148,7 @@ get_asm_targets() {
 
 is_data_only() {
     local asmfile="$PROJECT_ROOT/$1"
-    # Data-only if it has .rodata/.data sections but no thumb_func_start/arm_func_start
-    if grep -q 'thumb_func_start\|arm_func_start' "$asmfile" 2>/dev/null; then
+    if grep -q -e 'thumb_func_start' -e 'arm_func_start' "$asmfile" 2>/dev/null; then
         return 1
     else
         return 0
@@ -157,18 +161,28 @@ get_file_line_count() {
 
 # --- Build and compare ---
 
+# Returns 0 if SHA1 matches, 1 otherwise.
+# Captures build output into $BUILD_OUTPUT (global).
 build_and_compare() {
     cd "$PROJECT_ROOT"
+    BUILD_OUTPUT=""
+
     # First try compilation only
-    if ! make main COMPARE=0 -j4 2>&1; then
+    local compile_out
+    if ! compile_out=$(make main COMPARE=0 -j4 2>&1); then
+        BUILD_OUTPUT="$compile_out"
         echo "COMPILE_ERROR"
         return 1
     fi
-    # Then try full comparison
-    if make compare -j4 2>&1; then
+
+    # Then try full comparison (sha1sum -c outputs "filename: OK" on success)
+    local compare_out
+    if compare_out=$(make compare -j4 2>&1); then
+        BUILD_OUTPUT="$compare_out"
         echo "MATCH"
         return 0
     else
+        BUILD_OUTPUT="$compare_out"
         echo "MISMATCH"
         return 1
     fi
@@ -176,26 +190,30 @@ build_and_compare() {
 
 run_asmdiff() {
     local asmfile="$1"
-    local basename
-    basename="$(basename "$asmfile" .s)"
+    local bn
+    bn="$(basename "$asmfile" .s)"
     cd "$PROJECT_ROOT"
 
-    # Determine the address from the filename and whether it's an overlay
-    if [[ "$basename" =~ ^overlay_([0-9]+)_0?x?([0-9A-Fa-f]+)$ ]]; then
+    # Overlay files: overlay_NN_XXXXXXXX
+    if [[ "$bn" =~ ^overlay_([0-9]+)_0?x?([0-9A-Fa-f]+)$ ]]; then
         local ovnum="${BASH_REMATCH[1]}"
         local addr="0x${BASH_REMATCH[2]}"
+        # Try to get the overlay name from main.lsf
         local ovname
-        ovname=$(grep -B 100 "Object asm/${basename}.o" main.lsf | grep '^Overlay ' | tail -1 | awk '{print $2}')
+        ovname=$(grep -B 100 "Object asm/${bn}.o" main.lsf | grep '^Overlay ' | tail -1 | awk '{print $2}') || true
         if [[ -n "$ovname" ]]; then
             ./tools/asmdiff/asmdiff.sh -m "$ovname" "$addr" 2>&1 | head -100
         else
             ./tools/asmdiff/asmdiff.sh -m "$ovnum" "$addr" 2>&1 | head -100
         fi
-    elif [[ "$basename" =~ ^unk_(0?x?[0-9A-Fa-f]+)$ ]]; then
+    # Static module files: unk_XXXXXXXX
+    elif [[ "$bn" =~ ^unk_(0?x?[0-9A-Fa-f]+)$ ]]; then
         local addr="0x${BASH_REMATCH[1]#0x}"
         ./tools/asmdiff/asmdiff.sh "$addr" 2>&1 | head -100
     else
-        ./tools/asmdiff/asmdiff.sh 2>&1 | head -200
+        # Named files (e.g., render_window.s) — diff entire static module
+        # asmdiff without address args will diff the whole static module
+        ./tools/asmdiff/asmdiff.sh -y 2>&1 | head -200
     fi
 }
 
@@ -203,9 +221,9 @@ run_asmdiff() {
 
 generate_initial_prompt() {
     local asmfile="$1"
-    local basename
-    basename="$(basename "$asmfile" .s)"
-    local incfile="asm/include/${basename}.inc"
+    local bn
+    bn="$(basename "$asmfile" .s)"
+    local incfile="asm/include/${bn}.inc"
     local is_data_only_flag=""
     if is_data_only "$asmfile"; then
         is_data_only_flag="THIS IS A DATA-ONLY FILE (no executable code, only .rodata/.data sections)."
@@ -228,20 +246,20 @@ Read the accumulated insights in \`tools/decomp_harness/insights.md\`.
 2. Analyze the assembly: identify functions, data, types, external references
 3. Search \`include/\` for relevant headers (functions called by this code)
 4. Look at similar decompiled files in \`src/\` for patterns
-5. Write \`src/${basename}.c\` (and \`include/${basename}.h\` if needed)
-6. Update \`main.lsf\`: change \`Object asm/${basename}.o\` to \`Object src/${basename}.o\`
+5. Write \`src/${bn}.c\` (and \`include/${bn}.h\` if needed)
+6. Update \`main.lsf\`: change \`Object asm/${bn}.o\` to \`Object src/${bn}.o\`
 7. Build: \`make main COMPARE=0 -j4\` — fix any compilation errors
 8. Compare: \`make compare -j4\` — check if SHA1 matches
 9. If comparison fails, use \`./tools/asmdiff/asmdiff.sh\` to see the byte differences and adjust your C code
-10. Repeat steps 7-9 until it matches
+10. Repeat steps 7-9 until it matches or you've done 20 build-compare cycles
 
-If after 20 attempts within this session a function still doesn't match, wrap it in NONMATCHING as described in the agent instructions.
+If after 20 build-compare cycles a function still doesn't match, wrap it in NONMATCHING as described in the agent instructions.
 
 When done (matched or NONMATCHING fallback used), briefly describe what you learned about matching patterns in this file — I'll add it to the insights file.
 
 IMPORTANT: Do not modify any files other than:
-- \`src/${basename}.c\` (create)
-- \`include/${basename}.h\` (create if needed)
+- \`src/${bn}.c\` (create)
+- \`include/${bn}.h\` (create if needed)
 - \`main.lsf\` (one line change: asm/ → src/)
 
 Do not touch other source files, other headers, or the assembly file itself.
@@ -253,11 +271,27 @@ generate_retry_prompt() {
     local attempt="$2"
     local build_output="$3"
     local diff_output="$4"
-    local basename
-    basename="$(basename "$asmfile" .s)"
+    local bn
+    bn="$(basename "$asmfile" .s)"
+
+    # Include the current C file content so the stateless session has context
+    local c_file_content=""
+    if [[ -f "$PROJECT_ROOT/src/${bn}.c" ]]; then
+        c_file_content=$(cat "$PROJECT_ROOT/src/${bn}.c")
+    fi
 
     cat <<PROMPT_EOF
-Decompilation attempt $attempt for \`$asmfile\` did not match. Here is the feedback:
+You are a decompilation agent. Attempt $attempt for \`$asmfile\` did not match.
+
+## Instructions
+
+Read and follow the instructions in \`tools/decomp_harness/DECOMP_AGENT.md\`.
+Read the accumulated insights in \`tools/decomp_harness/insights.md\`.
+
+## Current C File (src/${bn}.c)
+\`\`\`c
+${c_file_content}
+\`\`\`
 
 ## Build Output (last 50 lines)
 \`\`\`
@@ -271,9 +305,9 @@ $(echo "$diff_output" | head -100)
 
 ## What To Do
 
-1. Read your current \`src/${basename}.c\`
-2. Read the assembly diff above — left side is correct (original), right side is your output
-3. Adjust the C code to make the compiler emit the correct instructions
+1. Read the original assembly at \`$asmfile\`
+2. Read the diff above — left side is correct (original), right side is your output
+3. Adjust the C code in \`src/${bn}.c\` to make the compiler emit the correct instructions
 4. Rebuild: \`make main COMPARE=0 -j4\` then \`make compare -j4\`
 5. If it still doesn't match, use \`./tools/asmdiff/asmdiff.sh\` to check again
 
@@ -284,10 +318,12 @@ Common fixes:
 - Add/remove casts
 - Try different loop structures (for vs while vs do-while)
 
-Read \`tools/decomp_harness/insights.md\` for accumulated knowledge.
-
-If this is attempt 20+, consider using the NONMATCHING fallback for stubborn functions.
 If this is attempt 50+, you MUST use NONMATCHING for any remaining unmatched functions.
+
+IMPORTANT: Do not modify any files other than:
+- \`src/${bn}.c\`
+- \`include/${bn}.h\`
+- \`main.lsf\` (only the one line: asm/${bn}.o → src/${bn}.o)
 PROMPT_EOF
 }
 
@@ -295,69 +331,50 @@ PROMPT_EOF
 
 revert_file() {
     local asmfile="$1"
-    local basename
-    basename="$(basename "$asmfile" .s)"
-    cd "$PROJECT_ROOT"
-
-    # Revert main.lsf change
-    if grep -q "Object src/${basename}.o" main.lsf; then
-        if [[ "$(uname)" == "Darwin" ]]; then
-            sed -i '' "s|Object src/${basename}.o|Object asm/${basename}.o|" main.lsf
-        else
-            sed -i "s|Object src/${basename}.o|Object asm/${basename}.o|" main.lsf
-        fi
-    fi
-
-    # Remove created files
-    rm -f "src/${basename}.c"
-    rm -f "include/${basename}.h"
-
-    # Clean build artifacts
-    rm -f "build/heartgold.us/src/${basename}.o"
-    rm -f "build/heartgold.us/src/${basename}.d"
+    "$SCRIPT_DIR/revert.sh" "$asmfile"
 }
 
 # --- Main decompilation loop ---
 
 decompile_file() {
     local asmfile="$1"
-    local basename
-    basename="$(basename "$asmfile" .s)"
-    local log_file="$LOG_DIR/${basename}.log"
+    local bn
+    bn="$(basename "$asmfile" .s)"
+    local log_file="$LOG_DIR/${bn}.log"
 
     echo "=== Decompiling: $asmfile ==="
     echo "    Log: $log_file"
     mark_in_progress "$asmfile"
 
-    local attempt=0
+    local attempt=1
     local matched=false
 
-    # Initial attempt
-    attempt=1
     echo "    Attempt $attempt/$MAX_RETRIES"
     increment_attempts
 
     local prompt
     prompt="$(generate_initial_prompt "$asmfile")"
 
-    # Run Claude Code in pipe mode
+    # Run Claude Code in print (pipe) mode
     local claude_output
     claude_output=$(cd "$PROJECT_ROOT" && claude -p \
         --model "$MODEL" \
-        --max-turns 40 \
+        --permission-mode bypassPermissions \
         --allowedTools "Read,Write,Edit,Glob,Grep,Bash" \
         "$prompt" 2>&1) || true
 
     echo "$claude_output" >> "$log_file"
 
-    # Check if build matches
+    # Check if build matches using exit code
     cd "$PROJECT_ROOT"
-    local build_result
-    build_result=$(make compare -j4 2>&1) || true
+    local status
+    status=$(build_and_compare) || true
 
-    if echo "$build_result" | grep -q "OK\|MATCH\|sha.*OK\|: OK"; then
+    if [[ "$status" == "MATCH" ]]; then
         echo "    MATCHED on attempt $attempt!"
         matched=true
+    else
+        echo "    Status: $status"
     fi
 
     # Retry loop
@@ -371,23 +388,25 @@ decompile_file() {
         diff_output=$(run_asmdiff "$asmfile" 2>&1) || true
 
         local retry_prompt
-        retry_prompt="$(generate_retry_prompt "$asmfile" "$attempt" "$build_result" "$diff_output")"
+        retry_prompt="$(generate_retry_prompt "$asmfile" "$attempt" "$BUILD_OUTPUT" "$diff_output")"
 
         # Run Claude Code again with feedback
         claude_output=$(cd "$PROJECT_ROOT" && claude -p \
             --model "$MODEL" \
-            --max-turns 30 \
+            --permission-mode bypassPermissions \
             --allowedTools "Read,Write,Edit,Glob,Grep,Bash" \
             "$retry_prompt" 2>&1) || true
 
         echo "$claude_output" >> "$log_file"
 
         # Check again
-        build_result=$(cd "$PROJECT_ROOT" && make compare -j4 2>&1) || true
+        status=$(cd "$PROJECT_ROOT" && build_and_compare) || true
 
-        if echo "$build_result" | grep -q "OK\|MATCH\|sha.*OK\|: OK"; then
+        if [[ "$status" == "MATCH" ]]; then
             echo "    MATCHED on attempt $attempt!"
             matched=true
+        else
+            echo "    Status: $status (attempt $attempt)"
         fi
     done
 
@@ -399,7 +418,7 @@ decompile_file() {
         local insight_prompt="Read the decompilation log at $log_file. Extract 2-3 specific, actionable insights about matching MWCC compiler output that would help with future decompilations. Append them to tools/decomp_harness/insights.md under a new section headed with the filename. Keep it concise (under 10 lines)."
         cd "$PROJECT_ROOT" && claude -p \
             --model "$MODEL" \
-            --max-turns 5 \
+            --permission-mode bypassPermissions \
             --allowedTools "Read,Edit" \
             "$insight_prompt" 2>&1 >> "$log_file" || true
 

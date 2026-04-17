@@ -24,23 +24,36 @@ For the target `asm/<basename>.s`:
 3. **Write C**: Create `src/<basename>.c` (and `include/<basename>.h` if public symbols exist)
 4. **Update LSF**: In `main.lsf`, change `Object asm/<basename>.o` to `Object src/<basename>.o`
 5. **Build**: Run `make main COMPARE=0 -j4` — fix compilation errors
-6. **Compare**: Run `make compare -j4` — check SHA1
+6. **Compare**: Run `make compare -j4` — if exit code is 0, SHA1 matches and you're done
 
-If comparison fails:
+If comparison fails (non-zero exit):
 7. **Diff**: Run `./tools/asmdiff/asmdiff.sh <address>` to see byte differences
 8. **Adjust**: Modify the C code based on the diff (see DECOMP_AGENT.md for common fixes)
-9. **Repeat**: Go to step 5, max 20 times per session
+9. **Repeat**: Go to step 5, max 50 build-compare cycles
 
 ### On Success
 
-1. Update progress: Run `python3 -c "import json; f=open('tools/decomp_harness/progress.json','r'); d=json.load(f); f.close(); d['completed'].append('asm/<basename>.s'); d['stats']['total_matched']+=1; f=open('tools/decomp_harness/progress.json','w'); json.dump(d,f,indent=2); f.close()"`
+1. Update progress.json:
+   ```bash
+   python3 -c "
+   import json
+   with open('tools/decomp_harness/progress.json', 'r') as f:
+       d = json.load(f)
+   if 'asm/<basename>.s' not in d['completed']:
+       d['completed'].append('asm/<basename>.s')
+       d['stats']['total_matched'] += 1
+   d['in_progress'] = None
+   with open('tools/decomp_harness/progress.json', 'w') as f:
+       json.dump(d, f, indent=2)
+   "
+   ```
 2. Append insights learned to `tools/decomp_harness/insights.md`
 3. Report the result
 
 ### On Failure (after max retries)
 
 1. Use NONMATCHING fallback for unmatched functions (see DECOMP_AGENT.md)
-2. If even NONMATCHING doesn't work, revert: `./tools/decomp_harness/revert.sh asm/<basename>.s`
+2. If even NONMATCHING doesn't build cleanly, revert: `./tools/decomp_harness/revert.sh asm/<basename>.s`
 3. Mark as failed in progress.json
 4. Report what went wrong
 
@@ -50,3 +63,4 @@ If comparison fails:
 - Do NOT delete or modify the original `.s` file
 - Function order in the C file must match the asm file exactly
 - Keep the build green — if something breaks, revert before moving on
+- **Build verification**: `make compare` exit code 0 = match, non-zero = mismatch. Check the exit code, not the output text.

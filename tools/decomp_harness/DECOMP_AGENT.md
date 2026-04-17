@@ -192,7 +192,7 @@ void FuncName(Type *arg0, Type *arg1) {
 
 ## NONMATCHING Fallback
 
-If after many attempts (50+) a function still doesn't match, use the NONMATCHING pattern:
+If after many build-compare cycles (50+) a function still doesn't match, use the NONMATCHING pattern:
 
 ```c
 #ifdef NONMATCHING
