@@ -1,0 +1,10 @@
+{
+  "completed": [],
+  "failed": [],
+  "in_progress": null,
+  "stats": {
+    "total_attempts": 0,
+    "total_matched": 0,
+    "total_failed": 0
+  }
+}
