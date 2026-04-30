@@ -155,10 +155,18 @@ patch_mwasmarm:
 ifeq ($(NODEP),)
 ifneq ($(WINPATH),)
 PROJECT_ROOT_NT := $(shell $(WINPATH) -w $(PROJECT_ROOT) | $(SED) 's/\\/\//g')
+PROJECT_ROOT_CWD_NT := $(shell $(WINPATH) -w . | $(SED) 's/\\/\//g')
+ifneq ($(PROJECT_ROOT_NT),$(PROJECT_ROOT_CWD_NT))
+define fixdep
+$(SED) -i 's/\r//g; s/\\/\//g; s/\/$$/\\/g; s#$(PROJECT_ROOT_NT)#$(PROJECT_ROOT)#g; s#$(PROJECT_ROOT_CWD_NT)/##g' $(1)
+touch -r $(1:%.d=%.o) $(1)
+endef
+else
 define fixdep
 $(SED) -i 's/\r//g; s/\\/\//g; s/\/$$/\\/g; s#$(PROJECT_ROOT_NT)#$(PROJECT_ROOT)#g' $(1)
 touch -r $(1:%.d=%.o) $(1)
 endef
+endif
 else
 define fixdep
 $(SED) -i 's/\r//g; s/\\/\//g; s/\/$$/\\/g' $(1)
