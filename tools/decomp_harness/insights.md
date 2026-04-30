@@ -119,10 +119,85 @@ Save data chunks follow this pattern:
   the macro with an `#include` of the new header and remove the `DECL_CHUNK_EX` line.
 - Check the save index constant in `include/constants/save_arrays.h`.
 
+## MWCC Codegen Details (from unk_02004A44 decomp)
+
+### Register allocation and variable declaration order
+- MWCC assigns callee-saved registers (r4-r7 in Thumb) based on variable declaration
+  order in the function. Reordering declarations can swap registers and break matching.
+- When the asm uses r6 for variable A and r7 for variable B, try declaring B before A
+  (MWCC sometimes allocates in reverse declaration order).
+- Moving a declaration from block scope to function scope (required for C89) changes
+  register lifetime and can affect allocation — match the original variable scoping as
+  closely as C89 allows.
+
+### Parameter types and narrowing
+- If a function takes `u16` but the asm shows no `lsls r0, r0, #16; lsrs r0, r0, #16`
+  at function entry, the original parameter was likely `int`. MWCC inserts narrowing
+  for `u16` params; `int` params skip it.
+- When calling a function declared with `u16` param and passing an `int`, MWCC inserts
+  narrowing at the call site. If the asm has no narrowing, either the callee's prototype
+  used `int`, or MWCC optimized it away.
+- Tail call functions must forward argument types exactly — a wrapper that changes
+  `int` → `u16` will insert unwanted narrowing before the tail call.
+
+### Switch case ordering
+- MWCC emits switch case code blocks in **source order**, not numeric order. The jump
+  table entries are always in numeric order, but the code they point to follows source
+  layout. If the asm's code blocks appear in a specific order, reorder the C cases to
+  match.
+
+### Branch patterns: || vs &&
+- `if (a || b) { body }` generates: `cmp a; bne body; cmp b; beq skip`
+- `if (a && b) { body }` generates: `cmp a; beq skip; cmp b; beq skip`
+- The asm branch direction (beq vs bne after comparisons) tells you which logical
+  operator was used. Getting this wrong produces same-size code with different branch
+  instructions.
+
+### if/else direction and GF_ASSERT
+- `GF_ASSERT(cond)` expands to `if (!cond) GF_AssertFail()` — the assert-fail path is
+  the `else` branch. When asm shows a pattern like `cmp; beq over_assert; bl AssertFail`,
+  the C is `if (flag == 0) { GF_AssertFail(); }` not `GF_ASSERT(flag != 0)` — both work
+  logically but can produce different branch directions.
+- Swapping if/else direction (putting the common path first vs the assert path first)
+  changes the branch polarity and instruction encoding.
+
+### Bitfield access patterns
+- `lsls rN, rN, #K; lsrs rN, rN, #K` is a bitfield mask extracting the low (32-K) bits.
+  In C, use a bitfield struct member (e.g. `u32 fileId : 24`) rather than `& 0x00FFFFFF`
+  — the latter may generate `ldr + and` with a literal pool constant instead.
+- `(x << 8) >> 8` can also produce the lsls/lsrs pattern but may not match depending
+  on optimization level.
+
+### BSS sizing
+- When asm BSS symbols have sizes that don't match `sizeof(StructType)`, use a raw
+  `u8 array[0xNN]` and cast at usage sites: `*(StructType *)array`. This preserves the
+  exact BSS byte count.
+- Multiple BSS variables in the C file become separate `.bss` sections in the object,
+  but the linker merges them. The total size must match.
+
+### Loop patterns
+- `for (i = 0; i < N; i++)` may compile differently than `do { ... i++; } while (i < N)`
+  — MWCC sometimes uses test-at-bottom (do/while) even for for loops with `-O4`, but
+  if the loop count can be zero, there's an early-exit check.
+- `size / 2` and `size >> 1` can produce different instructions at `-O4` — try both if
+  one doesn't match.
+
+## Object File Comparison
+
+Use `tools/decomp_harness/objdiff.py` for function-by-function comparison:
+```bash
+# Save ASM reference, switch main.lsf to C, build, compare
+cp build/heartgold.us/asm/foo.o /tmp/foo_asm.o
+# (edit main.lsf, build C version)
+python3 tools/decomp_harness/objdiff.py /tmp/foo_asm.o build/heartgold.us/src/foo.o
+python3 tools/decomp_harness/objdiff.py /tmp/foo_asm.o build/heartgold.us/src/foo.o --summary
+python3 tools/decomp_harness/objdiff.py /tmp/foo_asm.o build/heartgold.us/src/foo.o --bytes sub_XXXX
+```
+
 ## Known Difficult Patterns
 
-- Switch statements with fall-through: MWCC generates specific branch table patterns
+- Switch statements with fall-through: MWCC generates specific branch table patterns; case order matters (see above)
 - Nested struct initialization: may need exact field ordering to match
-- Bitfield operations: bit packing order is compiler-specific
+- Bitfield operations: bit packing order is compiler-specific; use bitfield structs not masks
 - Inline functions from headers: must match exactly as the compiler would expand them
-- Functions with many local variables: register pressure causes spills to stack in specific order
+- Functions with many local variables: register pressure causes spills to stack in specific order; declaration order is load-bearing

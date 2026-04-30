@@ -40,6 +40,13 @@ On macOS, install prerequisites via Homebrew: `brew tap osx-cross/homebrew-arm &
 
 **Important:** Always use `chiri pkg -- build` rather than raw `make -C <path>`. If the project directory is accessed through a symlink, Wine resolves CWD differently than `winepath -w $(PROJECT_ROOT)`, and only `chiri` sets up the working directory correctly. If `make` spins at 100% CPU, kill it, run `find build -name "*.d" -delete`, then `chiri pkg -- tidy` and rebuild.
 
+**Build timeouts and runaway processes:** All build/make commands MUST use `timeout: 1200000` (20 minutes). Builds that hang (e.g. Wine path issues, `.d` file corruption) will otherwise spin at 100% CPU indefinitely. **Never** launch multiple background build commands — run one at a time, and kill the previous one before starting a new build. Before starting any build, check for and kill stale processes:
+```bash
+# Kill any leftover make/wine processes from prior builds
+pkill -f 'make.*heartgold\|make.*soulsilver\|mwccarm\|mwldarm\|mwasmarm' 2>/dev/null; sleep 1
+```
+If a build times out, do `find build -name "*.d" -delete && chiri pkg -- tidy` before retrying.
+
 ## Formatting
 
 `./format.sh` runs `clang-format` over the tree. Requires **clang-format 18+** (the style file uses options newer versions only). A pre-commit hook lives in `.githooks/`; enable with `git config --local core.hooksPath .githooks/`.
@@ -91,10 +98,12 @@ Manual workflow for a file `asm/<name>.s`:
 1. Read `asm/<name>.s` and `asm/include/<name>.inc` to understand functions
 2. Search `include/` and `src/` for callers, headers, and similar patterns
 3. Create `src/<name>.c` (and `include/<name>.h` if needed)
-4. In `main.lsf`, change `Object asm/<name>.o` → `Object src/<name>.o`
-5. If `save_arrays.c` has a `DECL_CHUNK_EX` for your functions, replace it with an `#include` of the new header
-6. Build: `chiri pkg -- build --target main --no-compare` (fast, ARM9 only)
-7. Verify: `chiri pkg -- compare` (full ROM SHA1 — `main.sha1` checks the ELF, `rom.sha1` checks the final ROM)
-8. If mismatch: `./tools/asmdiff/asmdiff.sh <address>` to see byte diffs, adjust C, repeat
+4. Before switching `main.lsf`, build with asm to save a reference: `cp build/heartgold.us/asm/<name>.o /tmp/<name>_asm.o`
+5. In `main.lsf`, change `Object asm/<name>.o` → `Object src/<name>.o`
+6. If `save_arrays.c` has a `DECL_CHUNK_EX` for your functions, replace it with an `#include` of the new header
+7. Build: `chiri pkg -- build --target main --no-compare` (fast, ARM9 only). **Always use `timeout: 1200000`.**
+8. Compare function-by-function: `python3 tools/decomp_harness/objdiff.py /tmp/<name>_asm.o build/heartgold.us/src/<name>.o`
+9. Verify: `chiri pkg -- compare` (full ROM SHA1 — `main.sha1` checks the ELF, `rom.sha1` checks the final ROM)
+10. If mismatch: use `objdiff.py --bytes <func>` or `./tools/asmdiff/asmdiff.sh <address>` to see byte diffs, adjust C, repeat
 
 Do **not** delete the original `.s` file. Function order in the C file must match the asm. Accumulated matching knowledge is in `tools/decomp_harness/insights.md`.

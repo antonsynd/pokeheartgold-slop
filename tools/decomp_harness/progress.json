@@ -1,10 +1,18 @@
 {
-  "completed": [],
+  "completed": [
+    {
+      "file": "asm/unk_02004A44.s",
+      "lines": 2672,
+      "functions": 95,
+      "attempts": 8,
+      "result": "matched"
+    }
+  ],
   "failed": [],
   "in_progress": null,
   "stats": {
-    "total_attempts": 0,
-    "total_matched": 0,
+    "total_attempts": 8,
+    "total_matched": 1,
     "total_failed": 0
   }
 }
