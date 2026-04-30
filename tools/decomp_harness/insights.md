@@ -168,6 +168,22 @@ Save data chunks follow this pattern:
 - `(x << 8) >> 8` can also produce the lsls/lsrs pattern but may not match depending
   on optimization level.
 
+### MWCC IPA and header changes
+- MWCC with `-ipa file` performs inter-procedural analysis at file scope. Changing a
+  function's return type or parameter types in a shared header can cause cascading codegen
+  changes in ALL functions within the same compilation unit that call it — even if the
+  callers discard the return value or pass fitting literals.
+- This means: if file A.c is already matched and includes header H.h, you CANNOT change
+  any declaration in H.h that A.c uses without risking breaking A.c's matching. Even
+  changing `void PlayBGM(u16)` to `BOOL PlayBGM(u16)` will break callers due to IPA.
+- When decompiling file B.c that defines functions with different actual signatures than
+  what the shared header says (e.g., header says `void` but function returns `BOOL`),
+  you're stuck: the C definition must match the header, but that produces wrong codegen.
+- Workaround: either fix both files simultaneously (decompile them together), or use
+  NONMATCHING for the conflicting functions.
+- Files that share many function declarations through common headers (like sound.h,
+  sound_chatot.h) are best decompiled as a group rather than individually.
+
 ### BSS sizing
 - When asm BSS symbols have sizes that don't match `sizeof(StructType)`, use a raw
   `u8 array[0xNN]` and cast at usage sites: `*(StructType *)array`. This preserves the
@@ -193,6 +209,34 @@ python3 tools/decomp_harness/objdiff.py /tmp/foo_asm.o build/heartgold.us/src/fo
 python3 tools/decomp_harness/objdiff.py /tmp/foo_asm.o build/heartgold.us/src/foo.o --summary
 python3 tools/decomp_harness/objdiff.py /tmp/foo_asm.o build/heartgold.us/src/foo.o --bytes sub_XXXX
 ```
+
+### Parameter copy-propagation: cmp r4 vs cmp r0
+- When a function parameter (r0) is copied to a callee-saved register (`adds r4, r0, #0`),
+  MWCC performs copy propagation: comparisons on the copy (r4) are substituted back to the
+  original (r0). So `int diff = param; if (diff < N)` generates `adds r4, r0, #0; cmp r0, #N`.
+- `adds r4, r0, #0; cmp r4, #N` (using r4) ONLY occurs when r0 is a **function return value**
+  that was saved before a subsequent function call would clobber it. MWCC does not do this
+  substitution for return values — only for parameters.
+- If the target asm shows `adds r4, r0, #0; cmp r4, #N` at function entry (no preceding bl),
+  this is likely unexplainable via pure C — may require NONMATCHING. The pattern in
+  unk_0200B150.s OamManager_Create is such a case.
+- **objdiff.py --summary is buggy**: it reports OK for functions that differ by 1 byte when
+  the byte difference is in a `cmp rN` instruction. Always use `--disasm FN` or compare
+  the final binaries directly with `cmp -l` to confirm byte-exact matching.
+
+## Enum Casts Required by -W noimplicitconv
+
+MWCC with `-W noimplicitconv` rejects implicit int→enum conversions. Common patterns:
+- `NarcId`: `GfGfxLoader_LoadCharData(0x26, ...)` → `GfGfxLoader_LoadCharData((NarcId)0x26, ...)`
+- `GFPalSlotOffset`: `palette_num << 5` passed to `GfGfxLoader_GXLoadPal(... palSlotOffset ...)` → cast to `(enum GFPalSlotOffset)(palette_num << 5)`
+- Any computed integer expression passed to an `enum` parameter needs an explicit cast.
+
+## Public vs Static Function Visibility
+
+Always check `asm/include/<file>.inc` for `.public` declarations before marking functions `static`.
+- Functions in the `.public` list must NOT be `static` in C.
+- Functions referenced by other translation units (overlays call static-module functions by name) will cause linker `Undefined` errors if incorrectly marked `static`.
+- Add all public functions to `include/<file>.h` as well.
 
 ## Known Difficult Patterns
 

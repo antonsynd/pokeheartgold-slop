@@ -6,13 +6,37 @@
       "functions": 95,
       "attempts": 8,
       "result": "matched"
+    },
+    {
+      "file": "asm/render_window.s",
+      "lines": 2842,
+      "functions": 40,
+      "attempts": 6,
+      "result": "matched"
     }
   ],
-  "failed": [],
+  "failed": [
+    {
+      "file": "asm/unk_02005D10.s",
+      "lines": 1933,
+      "functions": 50,
+      "attempts": 15,
+      "result": "blocked",
+      "reason": "IPA header dependency: changing return types (void→BOOL) in shared headers breaks already-matched unk_02004A44.c. 40/50 functions matched but 10 require header changes that cascade via MWCC -ipa file. Must be decompiled together with unk_02004A44.c or after fixing header architecture."
+    },
+    {
+      "file": "asm/unk_0200B150.s",
+      "lines": 147,
+      "functions": 11,
+      "attempts": 25,
+      "result": "blocked",
+      "reason": "10/11 functions matched. OamManager_Create has 1-byte mismatch: target asm uses 'cmp r4, #4' but MWCC generates 'cmp r0, #4' for all tried C structures. Pattern 'adds r4,r0,#0; cmp r4,#N' only appears in matched code after function calls; with parameters MWCC always uses r0 via copy propagation. C reference kept in src/unk_0200B150.c."
+    }
+  ],
   "in_progress": null,
   "stats": {
-    "total_attempts": 8,
-    "total_matched": 1,
-    "total_failed": 0
+    "total_attempts": 54,
+    "total_matched": 2,
+    "total_failed": 2
   }
 }
