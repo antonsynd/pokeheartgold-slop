@@ -36,6 +36,10 @@ After pulling upstream, if things break try in order: `make tidy && make compare
 
 Prerequisites are **not** in the repo and must be staged manually (see `INSTALL.md`): MWCC `2.0/sp2p2` at `tools/mwccarm/2.0/sp2p2/mwccarm.exe`, NitroSDK binaries at `tools/bin/`, and the NitroSDK LCF templates copied to `ARM9-TS.lcf.template` (root) / `sub/ARM7-TS.lcf.template` / `mwldarm.response.template` (root). Without these `make` will fail early. On macOS/Linux, MWCC runs via `wine`; `nitrocrypto.o` is special-cased to build with MWCC `1.2/sp2p3`.
 
+On macOS, install prerequisites via Homebrew: `brew tap osx-cross/homebrew-arm && brew install gnu-sed arm-gcc-bin wine-crossover`. The build requires `gsed` (GNU sed) — without it, `.d` dependency files retain Wine `Z:` paths and break `make`.
+
+**Important:** Always use `chiri pkg -- build` rather than raw `make -C <path>`. If the project directory is accessed through a symlink, Wine resolves CWD differently than `winepath -w $(PROJECT_ROOT)`, and only `chiri` sets up the working directory correctly. If `make` spins at 100% CPU, kill it, run `find build -name "*.d" -delete`, then `chiri pkg -- tidy` and rebuild.
+
 ## Formatting
 
 `./format.sh` runs `clang-format` over the tree. Requires **clang-format 18+** (the style file uses options newer versions only). A pre-commit hook lives in `.githooks/`; enable with `git config --local core.hooksPath .githooks/`.
@@ -75,3 +79,22 @@ This project has a code-review-graph knowledge graph. **Prefer graph tools over 
 | `refactor_tool` | Planning renames, finding dead code |
 
 The graph auto-updates on file changes via hooks. Fall back to Grep/Glob/Read only when the graph doesn't cover what you need (e.g. raw asm, Makefile text, binary files under `files/`).
+
+## Decompilation Workflow
+
+The primary activity is converting `asm/*.s` files to matching C in `src/`. Use the built-in skills:
+
+- `/decomp` or `/decomp asm/filename.s` — decompile one file with build-compare feedback loop
+- `/loop /decomp-loop` — continuously decompile files in series
+
+Manual workflow for a file `asm/<name>.s`:
+1. Read `asm/<name>.s` and `asm/include/<name>.inc` to understand functions
+2. Search `include/` and `src/` for callers, headers, and similar patterns
+3. Create `src/<name>.c` (and `include/<name>.h` if needed)
+4. In `main.lsf`, change `Object asm/<name>.o` → `Object src/<name>.o`
+5. If `save_arrays.c` has a `DECL_CHUNK_EX` for your functions, replace it with an `#include` of the new header
+6. Build: `chiri pkg -- build --target main --no-compare` (fast, ARM9 only)
+7. Verify: `chiri pkg -- compare` (full ROM SHA1 — `main.sha1` checks the ELF, `rom.sha1` checks the final ROM)
+8. If mismatch: `./tools/asmdiff/asmdiff.sh <address>` to see byte diffs, adjust C, repeat
+
+Do **not** delete the original `.s` file. Function order in the C file must match the asm. Accumulated matching knowledge is in `tools/decomp_harness/insights.md`.
