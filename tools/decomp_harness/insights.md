@@ -83,6 +83,42 @@ const u8 sDataTable[] = {
 - Overlay dependencies are declared in main.lsf (`After` clauses)
 - Each overlay has its own .sbin checked against a SHA1
 
+## Build Workflow on macOS
+
+- Always use `chiri pkg -- build` (or `chiri pkg -- compare`) instead of raw `make -C`.
+  The symlink fixdep patch in common.mk depends on Wine resolving CWD correctly, and
+  `chiri` sets this up properly. Raw `make -C <abs-path>` can cause make to spin at 100%
+  CPU during dependency resolution if `.d` files have stale Wine `Z:` paths.
+- For fast iteration: `chiri pkg -- build --target main --no-compare` compiles ARM9 only,
+  skipping filesystem/ROM packing. Then `chiri pkg -- compare` for full ROM SHA1 check.
+- If `.d` files get corrupted (e.g. missing `gsed` during first build), delete them:
+  `find build -name "*.d" -delete` then `chiri pkg -- tidy` and rebuild.
+- Prerequisites: `brew install gnu-sed arm-gcc-bin` (via `osx-cross/homebrew-arm` tap).
+
+## Task Callback Pattern
+
+Many field system functions follow this pattern:
+1. A public `sub_XXXX` allocates a work struct via `Heap_AllocAtEnd`, fills it, and
+   calls `TaskManager_Call(man, callback, env)`.
+2. A static callback uses `TaskManager_GetFieldSystem` + `TaskManager_GetEnvironment`,
+   implements a state machine (switch on `env->state`), and returns TRUE when done
+   (after freeing the env with `Heap_Free`).
+- The callback is referenced by literal pool (`_XXXX: .word sub_YYYY`) in the caller.
+- The work struct fields can be inferred from how the caller stores arguments and how
+  the callback reads them at specific offsets.
+
+## Save Chunk Pattern
+
+Save data chunks follow this pattern:
+1. `sub_XXXX_sizeof(void)` returns `sizeof(StructType)` — always a trivial function.
+2. `sub_XXXX_init(StructType *a0)` clears the struct with `MI_CpuClear32` or `MI_CpuClear8`
+   then sets default field values.
+3. A getter calls `SaveArray_Get(saveData, SAVE_INDEX)` and returns the pointer.
+4. Field getters/setters are trivial `return a0->fieldN` / `a0->fieldN = a1`.
+- `save_arrays.c` registers these via `DECL_CHUNK_EX` macros. When decompiling, replace
+  the macro with an `#include` of the new header and remove the `DECL_CHUNK_EX` line.
+- Check the save index constant in `include/constants/save_arrays.h`.
+
 ## Known Difficult Patterns
 
 - Switch statements with fall-through: MWCC generates specific branch table patterns
