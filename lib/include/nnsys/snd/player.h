@@ -13,6 +13,6 @@ void NNS_SndPlayerSetPlayableSeqCount(int playerNo, int seqCount);
 BOOL NNS_SndPlayerCreateHeap(int playerNo, NNSSndHeapHandle heap, u32 size);
 void NNS_SndPlayerPauseByPlayerNo(int playerNo, BOOL flag);
 int NNS_SndPlayerCountPlayingSeqByPlayerNo(int playerNo);
-void NNS_SndPlayerSetPlayerVolume(int playerNo, u8 volume);
+void NNS_SndPlayerSetPlayerVolume(int playerNo, int volume);
 
 #endif // GUARD_PLAYER_H
