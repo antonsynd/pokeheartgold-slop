@@ -40,6 +40,8 @@ On macOS, install prerequisites via Homebrew: `brew tap osx-cross/homebrew-arm &
 
 **Important:** Always use `chiri pkg -- build` rather than raw `make -C <path>`. If the project directory is accessed through a symlink, Wine resolves CWD differently than `winepath -w $(PROJECT_ROOT)`, and only `chiri` sets up the working directory correctly. If `make` spins at 100% CPU, kill it, run `find build -name "*.d" -delete`, then `chiri pkg -- tidy` and rebuild.
 
+**Build recovery:** `./tools/decomp_harness/recomp.sh` kills stale processes, cleans corrupted `.d` files, and rebuilds. Use it when builds hang or fail after switching asm→C. Use `--full` for a complete clean rebuild.
+
 **Build timeouts and runaway processes:** All build/make commands MUST use `timeout: 1200000` (20 minutes). Builds that hang (e.g. Wine path issues, `.d` file corruption) will otherwise spin at 100% CPU indefinitely. **Never** launch multiple background build commands — run one at a time, and kill the previous one before starting a new build. Before starting any build, check for and kill stale processes:
 ```bash
 # Kill any leftover make/wine processes from prior builds

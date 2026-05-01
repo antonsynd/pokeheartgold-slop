@@ -220,9 +220,10 @@ python3 tools/decomp_harness/objdiff.py /tmp/foo_asm.o build/heartgold.us/src/fo
 - If the target asm shows `adds r4, r0, #0; cmp r4, #N` at function entry (no preceding bl),
   this is likely unexplainable via pure C — may require NONMATCHING. The pattern in
   unk_0200B150.s OamManager_Create is such a case.
-- **objdiff.py --summary is buggy**: it reports OK for functions that differ by 1 byte when
-  the byte difference is in a `cmp rN` instruction. Always use `--disasm FN` or compare
-  the final binaries directly with `cmp -l` to confirm byte-exact matching.
+- **objdiff.py --summary now checks data sections**: as of the latest update, `--summary`
+  verifies `.rodata`, `.data`, and `.bss` section bytes match in addition to function code.
+  Previously it only compared function bytes, so data table mismatches went undetected.
+  Still use `--bytes FN` for single-function deep inspection.
 
 ## Enum Casts Required by -W noimplicitconv
 
@@ -286,3 +287,35 @@ Always check `asm/include/<file>.inc` for `.public` declarations before marking 
   place the decrement+branch at the bottom. `do { } while (--n)` and `while (n != 0) { n--; }`
   may both produce different patterns (`cmp+bgt` or decrement-at-top) depending on MWCC's
   optimizer decisions. Trial and error is sometimes required.
+
+## NONMATCHING Inline ASM Syntax (MWCC)
+
+When using `asm void FuncName(...)` for NONMATCHING functions:
+- Use `ldr rN, =0xVALUE` for literal pool constants (NOT `ldr rN, labelName` + `labelName: .word VALUE`)
+- Use `ldr rN, =FuncName` for function pointer loads
+- Function calls use `bl FuncName` directly (same as regular asm)
+- `.balign` directives are NOT supported — remove them (MWCC handles alignment automatically)
+- Local labels (e.g., `_0201013A:`) work as expected for branches
+- The `// clang-format off` / `// clang-format on` markers are required to prevent formatting damage
+
+## Contiguous Data Arrays Accessed via Base+Offset
+
+When the asm has multiple data labels that are accessed from a common base pointer
+(e.g., `ldr r0, =_0210F64C; str r1, [r0, #0x10]` targeting `_0210F65C`), the labels
+are contiguous in memory. In C, declare them as separate static arrays in order — MWCC
+lays them out contiguously. The store uses the base symbol + offset, while function call
+arguments use the target symbol directly. Both patterns generate correct literal pool
+entries as long as the arrays are separate declarations (not one big array with #defines).
+
+## Build Cleanup Tool
+
+`./tools/decomp_harness/recomp.sh` handles common build recovery:
+- `--kill`: kill stale make/wine/mwcc processes
+- `--fix-d`: clean corrupted .d files (Wine Z: paths, missing source refs)
+- `--full`: full clean + rebuild
+- (no args): kill + fix .d + tidy + rebuild main
+
+Use when:
+- Build hangs at 100% CPU (stale .d files with Wine `Z:\` paths)
+- `make` errors after switching asm→C in main.lsf (old .d refs)
+- Build interrupted and won't restart cleanly

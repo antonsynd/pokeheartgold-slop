@@ -183,24 +183,62 @@ def cmd_compare(args):
     return 0 if not mismatched else 1
 
 
+def get_section_bytes(objfile, section):
+    """Extract raw bytes from a named section."""
+    raw = subprocess.run(
+        ["arm-none-eabi-objcopy", "-O", "binary", "-j", section, objfile, "/dev/stdout"],
+        capture_output=True,
+    )
+    return raw.stdout
+
+
 def cmd_summary(args):
     asm_funcs, _ = get_functions(args.asm_obj)
     c_funcs, _ = get_functions(args.c_obj)
 
+    ok_count = 0
+    fail_count = 0
+
     for name in asm_funcs:
         if name not in c_funcs:
             print(f"MISS  {name}")
+            fail_count += 1
             continue
         asm_b = asm_funcs[name]
         c_b = c_funcs[name]
         if len(asm_b) != len(c_b):
             print(f"SIZE  {name} ({len(asm_b)} vs {len(c_b)})")
+            fail_count += 1
             continue
         match, real_diffs, _ = compare_bytes(asm_b, c_b, name)
         if match:
             print(f"  OK  {name}")
+            ok_count += 1
         else:
             print(f"DIFF  {name} ({len(real_diffs)} diffs)")
+            fail_count += 1
+
+    # Also verify data sections match
+    sec_ok = True
+    for sec in [".rodata", ".data", ".bss"]:
+        asm_b = get_section_bytes(args.asm_obj, sec)
+        c_b = get_section_bytes(args.c_obj, sec)
+        if asm_b != c_b:
+            if len(asm_b) != len(c_b):
+                print(f"SECT  {sec}: size mismatch (asm={len(asm_b)}, c={len(c_b)})")
+            else:
+                diffs = sum(1 for a, c in zip(asm_b, c_b) if a != c)
+                print(f"SECT  {sec}: {diffs} byte diffs (size={len(asm_b)})")
+            sec_ok = False
+
+    total = ok_count + fail_count
+    if sec_ok and fail_count == 0:
+        print(f"\n{ok_count}/{total} functions + data sections MATCH")
+    else:
+        if not sec_ok:
+            print(f"\n{ok_count}/{total} functions OK, DATA SECTIONS MISMATCH")
+        else:
+            print(f"\n{ok_count}/{total} functions OK, {fail_count} mismatched")
 
 
 def cmd_disasm(args):
@@ -242,8 +280,16 @@ def cmd_bytes(args):
         print(f"Function {fn} not found in both objects")
         return 1
 
-    compare_bytes(asm_funcs[fn], c_funcs[fn], fn, verbose=True)
-    return 0
+    asm_b = asm_funcs[fn]
+    c_b = c_funcs[fn]
+    if len(asm_b) != len(c_b):
+        print(f"{fn}: SIZE mismatch (asm={len(asm_b)}, c={len(c_b)})")
+        return 1
+
+    match, real_diffs, bl_diffs = compare_bytes(asm_b, c_b, fn, verbose=True)
+    if match and not real_diffs:
+        pass  # silent = match (used in scripted loops)
+    return 0 if match else 1
 
 
 def cmd_sections(args):
