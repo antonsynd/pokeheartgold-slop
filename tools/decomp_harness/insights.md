@@ -238,6 +238,43 @@ Always check `asm/include/<file>.inc` for `.public` declarations before marking 
 - Functions referenced by other translation units (overlays call static-module functions by name) will cause linker `Undefined` errors if incorrectly marked `static`.
 - Add all public functions to `include/<file>.h` as well.
 
+## IPA and Function Visibility (from unk_0200FA24 decomp)
+
+### Non-static does NOT prevent IPA
+- Making functions non-static (global linkage) does **NOT** prevent `-ipa file` from
+  optimizing across them. MWCC's IPA analyzes all function bodies in the same compilation
+  unit regardless of linkage.
+- The objdump symbol table shows all functions as 'g' (global) in the asm objects because
+  MWCC's assembler defaults labels to global. This does NOT mean the original C had them
+  non-static — it means the assembler doesn't preserve `static` information.
+- Marking functions static vs non-static DOES change codegen (slightly different register
+  allocation in some cases), but does not disable IPA CSE or cross-function optimization.
+
+### IPA CSE of repeated literal pool loads
+- When a caller passes the same static-data address to a callee multiple times (e.g., two
+  calls with the same pointer arguments), MWCC may cache those addresses in callee-saved
+  registers across calls. This displaces other variables to the stack.
+- The original binary may NOT do this if the original source had a different structure that
+  prevented the optimization (unknown what that structure was).
+- This is a blocking issue for unk_0200FA24: BeginNormalPaletteFade calls sub_0200FE84
+  twice with identical pointer arguments, and MWCC caches them.
+
+### u16 parameter narrowing and IPA
+- A `u16` parameter causes MWCC to insert `lsls rN, rN, #16; lsrs rN, rN, #16` narrowing
+  at the call site when the caller passes a wider value.
+- If the asm shows no narrowing at the call site but uses `ldrh` in the callee, the
+  original source likely had `int` in the caller's prototype and `u16` in the callee's
+  (or the header had `int` originally).
+- Changing a shared header's parameter type from `u16` to `int` to fix the callee will
+  remove narrowing from ALL callers compiled against that header — breaking them if they
+  were already matching with narrowing.
+
+### objdiff.py reliability
+- `objdiff.py` reports "33/33 functions MATCH" based on function **size** comparison, NOT
+  byte-for-byte matching. Always verify with `--disasm FN` for critical functions.
+- Functions with identical sizes but different instructions (e.g., different register
+  allocation, cmp vs subs) will be reported as MATCH.
+
 ## Known Difficult Patterns
 
 - Switch statements with fall-through: MWCC generates specific branch table patterns; case order matters (see above)
@@ -245,3 +282,7 @@ Always check `asm/include/<file>.inc` for `.public` declarations before marking 
 - Bitfield operations: bit packing order is compiler-specific; use bitfield structs not masks
 - Inline functions from headers: must match exactly as the compiler would expand them
 - Functions with many local variables: register pressure causes spills to stack in specific order; declaration order is load-bearing
+- Byte-clearing loops: `strb; adds; subs; bne` pattern requires specific C that makes MWCC
+  place the decrement+branch at the bottom. `do { } while (--n)` and `while (n != 0) { n--; }`
+  may both produce different patterns (`cmp+bgt` or decrement-at-top) depending on MWCC's
+  optimizer decisions. Trial and error is sometimes required.
