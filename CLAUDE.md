@@ -109,3 +109,9 @@ Manual workflow for a file `asm/<name>.s`:
 10. If mismatch: use `objdiff.py --bytes <func>` or `./tools/asmdiff/asmdiff.sh <address>` to see byte diffs, adjust C, repeat
 
 Do **not** delete the original `.s` file. Function order in the C file must match the asm. Accumulated matching knowledge is in `tools/decomp_harness/insights.md`.
+
+**`.inc` files mix imports and exports.** `.public` declarations include both symbols defined in the `.s` file (true exports) and symbols referenced from other files (imports like `Heap_Alloc`, `memcpy`). Cross-reference with `thumb_func_start`/`arm_func_start` to distinguish which are defined locally (→ non-static in C, add to header) vs imported (→ extern declarations in C).
+
+**NONMATCHING inline asm syntax differs from standalone asm.** Use `ldr rN, =0xVALUE` (not `ldr rN, label` + `label: .word VALUE`). Use `ldr rN, =FuncName` for function pointer loads. `.balign` directives are unsupported — remove them. Wrap in `// clang-format off` / `// clang-format on`.
+
+**Pre-existing build errors may block `make compare`.** When other files have prototype conflicts with headers modified by prior decomps, fixing them changes their codegen (breaking their SHA1). In that case, verify your file with `objdiff.py --summary` (which now checks data sections too) instead of relying on the full ROM SHA1. Do NOT modify unrelated files to fix their build errors — those are separate tasks.
