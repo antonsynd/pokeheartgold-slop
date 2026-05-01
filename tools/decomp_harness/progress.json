@@ -13,6 +13,13 @@
       "functions": 40,
       "attempts": 6,
       "result": "matched"
+    },
+    {
+      "file": "asm/unk_0201010C.s",
+      "lines": 6144,
+      "functions": 127,
+      "attempts": 1,
+      "result": "matched"
     }
   ],
   "failed": [
@@ -22,7 +29,7 @@
       "functions": 50,
       "attempts": 15,
       "result": "blocked",
-      "reason": "IPA header dependency: changing return types (void→BOOL) in shared headers breaks already-matched unk_02004A44.c. 40/50 functions matched but 10 require header changes that cascade via MWCC -ipa file. Must be decompiled together with unk_02004A44.c or after fixing header architecture."
+      "reason": "IPA header dependency: changing return types (void\u2192BOOL) in shared headers breaks already-matched unk_02004A44.c. 40/50 functions matched but 10 require header changes that cascade via MWCC -ipa file. Must be decompiled together with unk_02004A44.c or after fixing header architecture."
     },
     {
       "file": "asm/unk_0200B150.s",
@@ -31,12 +38,20 @@
       "attempts": 25,
       "result": "blocked",
       "reason": "10/11 functions matched. OamManager_Create has 1-byte mismatch: target asm uses 'cmp r4, #4' but MWCC generates 'cmp r0, #4' for all tried C structures. Pattern 'adds r4,r0,#0; cmp r4,#N' only appears in matched code after function calls; with parameters MWCC always uses r0 via copy propagation. C reference kept in src/unk_0200B150.c."
+    },
+    {
+      "file": "asm/unk_0200FA24.s",
+      "lines": 1042,
+      "functions": 33,
+      "attempts": 50,
+      "result": "blocked",
+      "reason": "IPA-blocked: header signature conflicts, IPA CSE caching, loop codegen. C file exists at src/unk_0200FA24.c but cannot byte-match due to MWCC -ipa file cross-function optimization."
     }
   ],
   "in_progress": null,
   "stats": {
     "total_attempts": 54,
-    "total_matched": 2,
-    "total_failed": 2
+    "total_matched": 3,
+    "total_failed": 3
   }
 }
