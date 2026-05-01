@@ -110,7 +110,7 @@ const OverlayManagerTemplate gApplication_DeleteSave = {
     .ovy_id = FS_OVERLAY_ID_NONE,
 };
 
-extern void sub_02005AF8(u32 a0);
+extern void sub_02005AF8(int a0);
 
 static void DeleteSavedataApp_OnVBlank(DeleteSavedataApp_Data *data);
 static void DeleteSavedataApp_SetupBgConfig(DeleteSavedataApp_Data *data);

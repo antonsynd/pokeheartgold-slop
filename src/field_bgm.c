@@ -9,7 +9,6 @@
 #include "save_vars_flags.h"
 #include "sys_flags.h"
 #include "sound.h"
-#include "sound_02004A44.h"
 #include "trainer_data.h"
 
 #include "overlay_01_021E6880.h"
@@ -24,6 +23,7 @@ void GF_NowStartMusicId(int, int, int, int, void*);
 void Sound_SetFieldBGM(u16);
 void sub_02005CF4(BOOL);
 BOOL sub_02004EB4(u16);
+u16 GF_GetCurrentPlayingBGM();
 
 // clang-format off
 // Class, Eyes meet theme

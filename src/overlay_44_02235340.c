@@ -739,8 +739,8 @@ s32 ov44_02233F20(UnkStruct_ov44_02235340 *arg0) {
 
 void ov44_02233F3C(UnkStruct_ov44_02235340 *arg0) {
     if (ov44_02233EF8(arg0) != 0) {
-        GF_GetCurrentPlayingBGM();
-        sub_02005448();
+        int bgm = GF_GetCurrentPlayingBGM();
+        sub_02005448(bgm);
     }
 }
 
