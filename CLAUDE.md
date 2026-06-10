@@ -49,6 +49,8 @@ pkill -f 'make.*heartgold\|make.*soulsilver\|mwccarm\|mwldarm\|mwasmarm' 2>/dev/
 ```
 If a build times out, do `find build -name "*.d" -delete && chiri pkg -- tidy` before retrying.
 
+A PreToolUse hook (`tools/decomp_harness/prebuild_guard.sh`, wired in `.claude/settings.json`) runs automatically before `chiri`/`make` commands: it blocks the build if MWCC processes are already running and deletes `.d` files corrupted with Wine `Z:\` paths. The manual cleanup above is the fallback if the hook is bypassed.
+
 ## Formatting
 
 `./format.sh` runs `clang-format` over the tree. Requires **clang-format 18+** (the style file uses options newer versions only). A pre-commit hook lives in `.githooks/`; enable with `git config --local core.hooksPath .githooks/`.
@@ -109,6 +111,8 @@ Manual workflow for a file `asm/<name>.s`:
 10. If mismatch: use `objdiff.py --bytes <func>` or `./tools/asmdiff/asmdiff.sh <address>` to see byte diffs, adjust C, repeat
 
 Do **not** delete the original `.s` file. Function order in the C file must match the asm. Accumulated matching knowledge is in `tools/decomp_harness/insights.md`.
+
+**Decomp harness scripts (`tools/decomp_harness/`):** `next_target.sh [--info]` prints the next asm file to decompile (reads `progress.json`, skips completed/failed); `revert.sh asm/<name>.s` undoes a decomp attempt (restores `main.lsf`, removes the generated C/H files); `run.sh` is the automated outer loop that drives Claude Code per-file. Known harness and build-reliability issues (Wine `.d` flakiness, pending rodata/prototype fixes) are tracked in `tools/decomp_harness/TODO.md`.
 
 **`.inc` files mix imports and exports.** `.public` declarations include both symbols defined in the `.s` file (true exports) and symbols referenced from other files (imports like `Heap_Alloc`, `memcpy`). Cross-reference with `thumb_func_start`/`arm_func_start` to distinguish which are defined locally (→ non-static in C, add to header) vs imported (→ extern declarations in C).
 
