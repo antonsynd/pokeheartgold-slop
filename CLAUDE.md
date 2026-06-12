@@ -99,7 +99,8 @@ The primary activity is converting `asm/*.s` files to matching C in `src/`. Use 
 
 - `/decomp` or `/decomp asm/filename.s` — decompile one file with build-compare feedback loop
 - `/decomp-delegate` or `/decomp-delegate asm/filename.s` — same as above but Qwen (local Ollama) drafts the first-pass C; Claude reviews, integrates, and owns the build-compare judgment loop. Best for mechanical files (getters/setters, save-chunk accessors, data-only). Requires `ollama serve` with `qwen3-coder:30b` pulled.
-- `/loop /decomp-loop` — continuously decompile files in series
+- `/loop /decomp-loop` — continuously decompile files in series (Claude only)
+- `/loop /decomp-delegate-loop` — continuously decompile files in series using Qwen for first-pass drafts; stops automatically on ALL_DONE or if Ollama is unreachable
 - `/decomp-sweep [N]` — parallel read-only pre-analysis of upcoming targets into `knowledge.json` (safe to run during builds)
 - `/decomp-status` — function-level coverage, blocker gating, next triage targets
 
