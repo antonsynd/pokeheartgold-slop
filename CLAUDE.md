@@ -38,6 +38,8 @@ Prerequisites are **not** in the repo and must be staged manually (see `INSTALL.
 
 On macOS, install prerequisites via Homebrew: `brew tap osx-cross/homebrew-arm && brew install gnu-sed arm-gcc-bin wine-crossover`. The build requires `gsed` (GNU sed) — without it, `.d` dependency files retain Wine `Z:` paths and break `make`.
 
+The shell is zsh: unquoted words starting with `=` (e.g. `echo ====` as a separator) fail with `... not found` — quote them.
+
 **Important:** Always use `chiri pkg -- build` rather than raw `make -C <path>`. If the project directory is accessed through a symlink, Wine resolves CWD differently than `winepath -w $(PROJECT_ROOT)`, and only `chiri` sets up the working directory correctly. If `make` spins at 100% CPU, kill it, run `find build -name "*.d" -delete`, then `chiri pkg -- tidy` and rebuild.
 
 **Build recovery:** `./tools/decomp_harness/recomp.sh` kills stale processes, cleans corrupted `.d` files, and rebuilds. Use it when builds hang or fail after switching asm→C. Use `--full` for a complete clean rebuild.
@@ -97,10 +99,12 @@ The primary activity is converting `asm/*.s` files to matching C in `src/`. Use 
 
 - `/decomp` or `/decomp asm/filename.s` — decompile one file with build-compare feedback loop
 - `/loop /decomp-loop` — continuously decompile files in series
+- `/decomp-sweep [N]` — parallel read-only pre-analysis of upcoming targets into `knowledge.json` (safe to run during builds)
+- `/decomp-status` — function-level coverage, blocker gating, next triage targets
 
 Manual workflow for a file `asm/<name>.s`:
 1. Read `asm/<name>.s` and `asm/include/<name>.inc` to understand functions
-2. Search `include/` and `src/` for callers, headers, and similar patterns
+2. Search `include/` and `src/` for callers, headers, and similar patterns — and check prior knowledge: the file's entry in `tools/decomp_harness/knowledge.json` (sweep hypotheses/risks) and `attempts_log.py query --file asm/<name>.s` (logged dead ends)
 3. Create `src/<name>.c` (and `include/<name>.h` if needed)
 4. Before switching `main.lsf`, build with asm to save a reference: `cp build/heartgold.us/asm/<name>.o /tmp/<name>_asm.o`
 5. In `main.lsf`, change `Object asm/<name>.o` → `Object src/<name>.o`
@@ -113,6 +117,8 @@ Manual workflow for a file `asm/<name>.s`:
 Do **not** delete the original `.s` file. Function order in the C file must match the asm. Accumulated matching knowledge lives in `tools/decomp_harness/patterns.json` (source of truth, query with `patterns.py query --grep <word>`, add with `patterns.py add`); `insights.md` is **generated** from it — never edit insights.md directly.
 
 **Decomp harness scripts (`tools/decomp_harness/`):** `next_target.sh [--info]` prints the next asm file from the triage queue (easiest first; falls back to `main.lsf` order); `triage.py [--rebuild]` ranks pending files by expected cost into `triage_report.json`; `coverage_ledger.py` regenerates the function-level ledger (`coverage_ledger.json` + `COVERAGE.md`, includes blocker gating counts from `blockers.json`); `attempts_log.py add|query|summary` records per-function attempts and dead ends in `attempts_log.jsonl` — query it before attempting a file, log every distinct dead end; `sweep/` + `/decomp-sweep` run parallel read-only pre-analysis agents whose merged output is `knowledge.json` (signature/struct hypotheses per file); `revert.sh asm/<name>.s` undoes a decomp attempt (restores `main.lsf`, removes the generated C/H files); `run.sh` is the automated outer loop that drives Claude Code per-file. Known harness and build-reliability issues (Wine `.d` flakiness, pending rodata/prototype fixes) are tracked in `tools/decomp_harness/TODO.md`; systemic matching blockers in `blockers.json`.
+
+**Model delegation.** Keep judgment (C-shape choice, byte-diff diagnosis, IPA reasoning) on the session model; delegate bulk work down: spawn subagents with `model: sonnet` for mechanical checks (`decomp-verifier` defaults to it), and use `tools/decomp_harness/delegate.sh` to draft C from asm on local Ollama (`qwen3-coder:30b`). Local-model output is an untrusted draft — always review against the patterns DB and verify with build + objdiff. Full contract in `tools/decomp_harness/DELEGATION.md`.
 
 **`.inc` files mix imports and exports.** `.public` declarations include both symbols defined in the `.s` file (true exports) and symbols referenced from other files (imports like `Heap_Alloc`, `memcpy`). Cross-reference with `thumb_func_start`/`arm_func_start` to distinguish which are defined locally (→ non-static in C, add to header) vs imported (→ extern declarations in C).
 

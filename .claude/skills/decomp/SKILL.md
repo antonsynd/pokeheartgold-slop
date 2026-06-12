@@ -32,7 +32,10 @@ For the target `asm/<basename>.s`:
 
 1. **Analyze**: Read `asm/<basename>.s` and `asm/include/<basename>.inc`
 2. **Research**: Search `include/` for headers of functions called by this code. Look at similar `src/` files for patterns.
-3. **Write C**: Create `src/<basename>.c` (and `include/<basename>.h` if public symbols exist)
+3. **Write C**: Create `src/<basename>.c` (and `include/<basename>.h` if public symbols exist).
+   For long tails of mechanical functions (getters/setters, save-chunk accessors) you may
+   draft bodies via `tools/decomp_harness/delegate.sh` (local model) — drafts are untrusted;
+   review against the patterns DB before building (see `tools/decomp_harness/DELEGATION.md`)
 4. **Update LSF**: In `main.lsf`, change `Object asm/<basename>.o` to `Object src/<basename>.o`
 5. **Build**: Run `make main COMPARE=0 -j4` — fix compilation errors
 6. **Compare**: Run `make compare -j4` — if exit code is 0, SHA1 matches and you're done
@@ -52,6 +55,12 @@ If comparison fails (non-zero exit):
 
 ### On Success
 
+0. Run the post-match verifier BEFORE committing: spawn an agent with
+   subagent_type `decomp-verifier` and the prompt
+   "Verify the just-matched decomp of <basename> in /Users/.../pokeheartgold-slop."
+   Fix any FAIL findings (they are process errors: visibility, headers, lsf,
+   scope) and re-run until it passes. The verifier is read-only and cheap
+   (runs on sonnet).
 1. Update progress.json (dict entry, matching the existing format):
    ```bash
    python3 -c "
