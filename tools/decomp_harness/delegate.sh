@@ -37,11 +37,16 @@ fi
 export DELEGATE_PROMPT="$PROMPT" DELEGATE_SYSTEM="$SYSTEM" DELEGATE_MODEL_NAME="$MODEL"
 payload=$(python3 -c "
 import json, os
+model = os.environ['DELEGATE_MODEL_NAME']
+system = os.environ['DELEGATE_SYSTEM']
+# qwen3 models use thinking mode by default; /no_think disables it so content is non-empty.
+if model.startswith('qwen3') and not system.startswith('/no_think'):
+    system = '/no_think ' + system if system else '/no_think'
 msgs = []
-if os.environ['DELEGATE_SYSTEM']:
-    msgs.append({'role': 'system', 'content': os.environ['DELEGATE_SYSTEM']})
+if system:
+    msgs.append({'role': 'system', 'content': system})
 msgs.append({'role': 'user', 'content': os.environ['DELEGATE_PROMPT']})
-print(json.dumps({'model': os.environ['DELEGATE_MODEL_NAME'], 'messages': msgs, 'stream': False}))
+print(json.dumps({'model': model, 'messages': msgs, 'stream': False}))
 ")
 
 response=$(curl -s --max-time 600 "$OLLAMA_URL/api/chat" -d "$payload") || {

@@ -1,9 +1,9 @@
 {
  "summary": {
-  "generated": "2026-06-11T23:41:39Z",
+  "generated": "2026-06-12T21:07:54Z",
   "by_status": {
    "matched": {
-    "files": 5,
+    "files": 6,
     "functions": 271,
     "insn_lines": 9901,
     "text_bytes_est": 21888
@@ -15,7 +15,7 @@
     "text_bytes_est": 6214
    },
    "pending": {
-    "files": 295,
+    "files": 294,
     "functions": 19802,
     "insn_lines": 941653,
     "text_bytes_est": 2102416
@@ -139776,8 +139776,8 @@
   },
   {
    "file": "asm/battle_arcade_game_board_data.s",
-   "lsf_kind": "asm",
-   "status": "pending",
+   "lsf_kind": "src",
+   "status": "matched",
    "lines": 98,
    "function_count": 0,
    "text_bytes_est": 0,
@@ -139807,7 +139807,8 @@
     "ov84_0223F9F8"
    ],
    "exports": [],
-   "functions": []
+   "functions": [],
+   "source": "harness"
   },
   {
    "file": "asm/overlay_85.s",

@@ -20,6 +20,14 @@
       "functions": 127,
       "attempts": 1,
       "result": "matched"
+    },
+    {
+      "file": "asm/battle_arcade_game_board_data.s",
+      "lines": 99,
+      "functions": 0,
+      "attempts": 1,
+      "result": "matched",
+      "note": "delegate-drafted; data-only; bytes verified via objdump; full SHA1 blocked by pre-existing alph_puzzle.c error"
     }
   ],
   "failed": [
@@ -51,7 +59,7 @@
   "in_progress": null,
   "stats": {
     "total_attempts": 54,
-    "total_matched": 3,
+    "total_matched": 4,
     "total_failed": 3
   }
 }

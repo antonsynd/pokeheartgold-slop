@@ -1,14 +1,14 @@
 # Decomp Coverage Ledger
 
-*Generated 2026-06-11T23:41:39Z by `coverage_ledger.py` — do not hand-edit; regenerate after each decomp.*
+*Generated 2026-06-12T21:07:54Z by `coverage_ledger.py` — do not hand-edit; regenerate after each decomp.*
 
 Tracked functions (files with retained asm): **20167** — matched 271, pending 19802, plus 50 matched-but-blocked inside failed files.
 
 | status | files | functions | insn lines | ~text bytes |
 |---|---|---|---|---|
-| matched | 5 | 271 | 9901 | 21888 |
+| matched | 6 | 271 | 9901 | 21888 |
 | blocked | 3 | 94 | 2672 | 6214 |
-| pending | 295 | 19802 | 941653 | 2102416 |
+| pending | 294 | 19802 | 941653 | 2102416 |
 | upstream | 368 | 0 | 0 | 0 |
 
 ## Blockers (value-ordered: fix what gates the most)
@@ -27,7 +27,7 @@ Tracked functions (files with retained asm): **20167** — matched 271, pending 
 | asm/unk_0200FA24.s | 33 | 787 |  | ipa-shared-headers IPA-blocked: header signature conflicts, IPA CSE caching, loop codegen. C file exists at src/unk_0200FA24.c but cannot b |
 | asm/unk_0200B150.s | 11 | 249 |  | param-copyprop-cmp 10/11 matched; 10/11 functions matched. OamManager_Create has 1-byte mismatch: target asm uses 'cmp r4, #4' but MWCC generates 'cmp r0, |
 
-## Matched files (asm retained) (5)
+## Matched files (asm retained) (6)
 
 | file | functions | insn lines | data-only | notes |
 |---|---|---|---|---|
@@ -36,8 +36,9 @@ Tracked functions (files with retained asm): **20167** — matched 271, pending 
 | asm/render_window.s | 40 | 2650 |  | harness |
 | asm/unk_020318C8.s | 7 | 33 |  | retained_asm |
 | asm/unk_020551B8.s | 2 | 61 |  | retained_asm |
+| asm/battle_arcade_game_board_data.s | 0 | 0 | yes | harness |
 
-## Pending files (295)
+## Pending files (294)
 
 | file | functions | insn lines | data-only | notes |
 |---|---|---|---|---|
@@ -335,5 +336,4 @@ Tracked functions (files with retained asm): **20167** — matched 271, pending 
 | asm/overlay_01_data_02208BFC.s | 0 | 0 | yes |  |
 | asm/overlay_12_battle_command.s | 0 | 0 | yes |  |
 | asm/overlay_44.s | 0 | 0 | yes |  |
-| asm/battle_arcade_game_board_data.s | 0 | 0 | yes |  |
 
