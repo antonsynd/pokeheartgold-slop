@@ -1,0 +1,90 @@
+{
+  "file": "asm/overlay_01_021FAC44.s",
+  "functions": [
+    {
+      "name": "ov01_021FAC44",
+      "mode": "thumb",
+      "signature_guess": "UnkStruct_ov01_021FAC44 *ov01_021FAC44(BOOL allocSecondary)",
+      "confidence": "high",
+      "callees": ["Heap_Alloc", "ov01_021FACF8"],
+      "struct_accesses": [
+        {"param": -1, "offset": "0x0-0xC", "width": 4, "meaning": "ret[i] (i=0..3) = &ov01_02209B70[i * 0xF000], pointers into static bss buffer"},
+        {"param": -1, "offset": "0x10-0x1C", "width": 4, "meaning": "ret[i].secondary = Heap_Alloc(HEAP_ID_4, 0x9000) if allocSecondary else NULL"}
+      ],
+      "notes": "Allocates Heap_Alloc(HEAP_ID_4 /*=4*/, 0x20) container holding 4 entries of {void *buf; void *secondary at +0x10}. Loop i=0..3 with u8 counter (lsl/lsr #0x18 narrowing on increment -> u8 i). After storing &ov01_02209B70[i*0xF000] it RELOADS the stored slot and NULL-checks it (always-true check on a bss address) -> write C as 'ret->buf[i] = ...; if (ret->buf[i] == NULL) return NULL;'. Then calls ov01_021FACF8(i, 0xF000, allocSecondary ? 0x9000 : 0, ret). Returns container ptr or NULL on alloc failure. Constants 0xF000 built as 0xF<<12 and 0x9000 as 9<<12 (immediate shifts, not pool). Sizes passed via locals r2 set in both branches -> u32 local 'size2'. Caller does 'str r0,[r4]' so result lives at offset 0 of the ov01_021F4704 manager struct."
+    },
+    {
+      "name": "ov01_021FACB4",
+      "mode": "thumb",
+      "signature_guess": "void ov01_021FACB4(UnkStruct_ov01_021FAC44 *a0)",
+      "confidence": "high",
+      "callees": ["Heap_Free"],
+      "struct_accesses": [
+        {"param": 0, "offset": "0x0-0xC", "width": 4, "meaning": "a0[i] buf pointer, set to NULL (no free; points into bss)"},
+        {"param": 0, "offset": "0x10-0x1C", "width": 4, "meaning": "secondary heap buffer, Heap_Free'd if non-NULL then NULLed"}
+      ],
+      "notes": "Destructor. Loop i=0..3 (u8 counter, same narrowing). NULLs buf[i] BEFORE checking/freeing secondary at +0x10. Finally Heap_Free(a0). Both loop counter and NULL come from same zero init; plain C 'u8 i = 0' + literal NULL should reproduce this."
+    },
+    {
+      "name": "ov01_021FACE4",
+      "mode": "thumb",
+      "signature_guess": "void ov01_021FACE4(u32 index, UnkStruct_ov01_021FAC44 *a1, void **dest)",
+      "confidence": "high",
+      "struct_accesses": [
+        {"param": 1, "offset": "index*4", "width": 4, "meaning": "buf[index] pointer"},
+        {"param": 2, "offset": "0x0", "width": 4, "meaning": "*dest = buf[index]"}
+      ],
+      "notes": "4-instruction getter: *dest = a1->buf[index]. No narrowing on index -> int/u32 param even though callers pass a u8 loop variable. Callers in ov01_021F4704.s pass dest = (struct+0x854) inside a 0xA74-byte per-slot struct."
+    },
+    {
+      "name": "ov01_021FACEC",
+      "mode": "thumb",
+      "signature_guess": "void ov01_021FACEC(u32 index, UnkStruct_ov01_021FAC44 *a1, void **dest)",
+      "confidence": "high",
+      "struct_accesses": [
+        {"param": 1, "offset": "index*4 + 0x10", "width": 4, "meaning": "secondary[index] pointer"},
+        {"param": 2, "offset": "0x0", "width": 4, "meaning": "*dest = secondary[index]"}
+      ],
+      "notes": "Getter for the +0x10 secondary pointer: *dest = a1->secondary[index]. Codegen 'lsl r0,#2; add r0,r1,r0; ldr [r0,#0x10]' matches struct-of-arrays layout: struct { void *buf[4]; void *secondary[4]; } indexed as a1->secondary[index]."
+    },
+    {
+      "name": "ov01_021FACF8",
+      "mode": "thumb",
+      "signature_guess": "static void ov01_021FACF8(u32 index, u32 bufSize, u32 secondarySize, UnkStruct_ov01_021FAC44 *a3)",
+      "confidence": "high",
+      "callees": ["MI_CpuFill8"],
+      "struct_accesses": [
+        {"param": 3, "offset": "index*4", "width": 4, "meaning": "buf[index], MI_CpuFill8(buf, 0, bufSize)"},
+        {"param": 3, "offset": "index*4 + 0x10", "width": 4, "meaning": "secondary[index], MI_CpuFill8(sec, 0, secondarySize); size 0 when secondary is NULL"}
+      ],
+      "notes": "NOT in .public -> static in C. Defined LAST in the asm but called by ov01_021FAC44 (first function) -> needs a forward static prototype; keep definition order matching asm. index scaled once into r4 and reused for both accesses; secondary access via 'add r0, r5, r4; ldr [r0,#0x10]' same struct-of-arrays pattern."
+    }
+  ],
+  "data": [
+    {"label": "ov01_02209B70", "section": "bss", "bytes": 245760, "shape_guess": "u8 ov01_02209B70[4 * 0xF000] (or u8[4][0xF000]); four 0xF000 tile/graphics staging buffers, entry i = base + i*0xF000"}
+  ],
+  "imports": {
+    "Heap_Alloc": {"known_prototype": "void *Heap_Alloc(enum HeapID heapID, u32 size)", "header": "include/heap.h"},
+    "Heap_Free": {"known_prototype": "void Heap_Free(void *ptr)", "header": "include/heap.h"},
+    "MI_CpuFill8": {"known_prototype": "void MI_CpuFill8(void *dest, u8 data, u32 size)", "header": "NitroSDK (nitro/mi/memory.h, via global.h/nitro includes)"}
+  },
+  "shared_struct_hypotheses": [
+    {
+      "name": "UnkStruct_ov01_021FAC44",
+      "size_guess": "0x20 (Heap_Alloc size in ov01_021FAC44)",
+      "fields": [
+        {"offset": "0x0", "width": 16, "meaning": "void *buf[4] - pointers into bss ov01_02209B70, stride 0xF000"},
+        {"offset": "0x10", "width": 16, "meaning": "void *secondary[4] - optional 0x9000-byte heap allocations (HEAP_ID_4), NULL if not requested"}
+      ]
+    }
+  ],
+  "risks": [
+    "static helper ov01_021FACF8 is last in file but called by first function - forward declaration required, do not reorder definitions",
+    "always-true NULL check on &ov01_02209B70[i*0xF000] in ov01_021FAC44: must write the store-then-reload-then-compare through the struct slot to reproduce the str/ldr pair; folding it to a local pointer will drop the reload",
+    "large .bss symbol (0x3C000 bytes) - it is NOT in .public, so static; verify it lands in overlay 1 bss with exact size 4*0xF000",
+    "ov01_021FAC44.s includes msgdata headers (msg_0096/msg_0066) and many constants headers in the .inc preamble - likely boilerplate, no rodata in file so safe to omit",
+    "u8 loop counters (lsl #0x18/lsr #0x18 narrowing) in ov01_021FAC44 and ov01_021FACB4 vs un-narrowed u32 index params in the getters/helper - mixing these up flips instruction count",
+    "all exports only called from asm/overlay_01_021F4704.s (still asm) - prototypes go in a new include/overlay_01_021FAC44.h plus asm .inc untouched; no existing C callers to conflict with"
+  ],
+  "notes": "Tiny self-contained overlay-1 buffer-manager: constructor (ov01_021FAC44), destructor (ov01_021FACB4), two getters (ov01_021FACE4/EC), and a static clear helper (ov01_021FACF8) over a 4-slot {bss buffer 0xF000, optional heap buffer 0x9000} pool backed by bss array ov01_02209B70. Heap ID 4 hardcoded in constructor; check enum HeapID value 4 name in include/heap.h before using the enum constant. No rodata, no jump tables, no save_arrays involvement. Good easy decomp target."
+}

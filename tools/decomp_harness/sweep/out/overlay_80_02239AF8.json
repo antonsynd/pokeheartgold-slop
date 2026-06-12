@@ -1,0 +1,68 @@
+{
+  "file": "asm/overlay_80_02239AF8.s",
+  "functions": [
+    {
+      "name": "ov80_02239AF8",
+      "mode": "thumb",
+      "signature_guess": "void ov80_02239AF8(SpriteSystem *spriteSystem, SpriteManager *spriteManager, NARC *narc, PaletteData *plttData, u16 index)",
+      "confidence": "high",
+      "callees": ["GF_AssertFail", "SpriteSystem_LoadCharResObjFromOpenNarc", "SpriteSystem_LoadPaletteBufferFromOpenNarc", "SpriteSystem_LoadCellResObjFromOpenNarc", "SpriteSystem_LoadAnimResObjFromOpenNarc"],
+      "struct_accesses": [
+        {"param": 4, "offset": "n/a", "width": 2, "meaning": "5th param read at [sp+0x30] with ldrh -> u16 index, GF_ASSERT(index < 4)"}
+      ],
+      "notes": "Loads 4 OBJ resources for ov80_0223DA54[index] (ManagedSpriteTemplate, size 0x34). template->resIdList[N] is used as BOTH the NARC fileId and the resId for each load. Calls: SpriteSystem_LoadCharResObjFromOpenNarc(sys, mgr, narc, tmpl->resIdList[0], TRUE, NNS_G2D_VRAM_TYPE_2DSUB(1), tmpl->resIdList[0]); SpriteSystem_LoadPaletteBufferFromOpenNarc(plttData, 2, sys, mgr, narc, tmpl->resIdList[1], FALSE, 1, 1, tmpl->resIdList[1]); SpriteSystem_LoadCellResObjFromOpenNarc(sys, mgr, narc, tmpl->resIdList[2], TRUE, tmpl->resIdList[2]); SpriteSystem_LoadAnimResObjFromOpenNarc(sys, mgr, narc, tmpl->resIdList[3], TRUE, tmpl->resIdList[3]). 5th param being u16 matters: body's ldrh at [sp+0x30] confirms u16. Return value of loads unused -> void return."
+    },
+    {
+      "name": "ov80_02239B7C",
+      "mode": "thumb",
+      "signature_guess": "void ov80_02239B7C(SpriteManager *spriteManager, u32 index)",
+      "confidence": "high",
+      "callees": ["GF_AssertFail", "SpriteManager_UnloadCharObjById", "SpriteManager_UnloadPlttObjById", "SpriteManager_UnloadCellObjById", "SpriteManager_UnloadAnimObjById"],
+      "notes": "GF_ASSERT(index < 4); unloads char/pltt/cell/anim by ov80_0223DA54[index].resIdList[0..3]. r1 used directly in cmp/mul with no u16 narrowing -> declare param u32 or int, NOT u16. Caller ov80_022393E8 in asm/frontier_map.s passes ([struct+0x38], ldrh value)."
+    },
+    {
+      "name": "ov80_02239BB8",
+      "mode": "thumb",
+      "signature_guess": "ManagedSprite *ov80_02239BB8(SpriteSystem *spriteSystem, SpriteManager *spriteManager, u32 index)",
+      "confidence": "high",
+      "callees": ["GF_AssertFail", "SpriteSystem_NewSprite", "Sprite_TickFrame"],
+      "struct_accesses": [
+        {"param": -1, "offset": "0x0", "width": 4, "meaning": "ManagedSprite->sprite (Sprite*) read from SpriteSystem_NewSprite result, passed to Sprite_TickFrame"}
+      ],
+      "notes": "GF_ASSERT(index < 4); sprite = SpriteSystem_NewSprite(sys, mgr, &ov80_0223DA54[index]); Sprite_TickFrame(sprite->sprite); return sprite. No u16 narrowing on r2 -> int/u32 param. Caller ov80_0223968C (asm/frontier_map.s) stores result into [struct+0x3c + i*4] array of 8."
+    },
+    {
+      "name": "ov80_02239BE8",
+      "mode": "thumb",
+      "signature_guess": "void ov80_02239BE8(ManagedSprite *managedSprite)",
+      "confidence": "high",
+      "callees": ["Sprite_DeleteAndFreeResources"],
+      "notes": "Pure tail-call thunk: ldr r3,=Sprite_DeleteAndFreeResources; bx r3. In C just `Sprite_DeleteAndFreeResources(s);` — MWCC emits the bx-r3 tail call when the wrapper forwards args exactly (see thunk_ManagedSprite_DeleteAndFreeResources in include/unk_02077678.h for precedent). Do NOT change param type vs callee."
+    }
+  ],
+  "data": [
+    {"label": "ov80_0223DA54", "section": "rodata", "bytes": 208, "shape_guess": "static const ManagedSpriteTemplate ov80_0223DA54[4] (0x34 each). Entry 0: {x=0,y=0,z=0,animation=0,drawPriority=100,pal=0,vram=1,resIdList={0x21,0x3C,0x23,0x22,-1,-1},bgPriority=1,vramTransfer=0}. Entry 1 identical to entry 0. Entry 2: resIdList={0x18,0x3A,0x1A,0x19,-1,-1}. Entry 3: resIdList={0x1B,0x3B,0x1D,0x1C,-1,-1}; all other fields same across entries. GF_GFX_RES_TYPE_MAX = 6 confirms layout (resIdList at 0x14..0x2B)."}
+  ],
+  "imports": {
+    "SpriteSystem_LoadCharResObjFromOpenNarc": {"known_prototype": "BOOL SpriteSystem_LoadCharResObjFromOpenNarc(SpriteSystem *spriteSystem, SpriteManager *spriteManager, NARC *narc, int fileId, BOOL compressed, int vram, int resId)", "header": "include/sprite_system.h"},
+    "SpriteSystem_LoadPaletteBufferFromOpenNarc": {"known_prototype": "u8 SpriteSystem_LoadPaletteBufferFromOpenNarc(PaletteData *plttData, PaletteBufferId bufferId, SpriteSystem *spriteSystem, SpriteManager *spriteManager, NARC *narc, int fileId, BOOL compressed, int pltt_num, int vram, int resId)", "header": "include/sprite_system.h"},
+    "SpriteSystem_LoadCellResObjFromOpenNarc": {"known_prototype": "BOOL SpriteSystem_LoadCellResObjFromOpenNarc(SpriteSystem *spriteSystem, SpriteManager *spriteManager, NARC *narc, int fileId, BOOL compressed, int resId)", "header": "include/sprite_system.h"},
+    "SpriteSystem_LoadAnimResObjFromOpenNarc": {"known_prototype": "BOOL SpriteSystem_LoadAnimResObjFromOpenNarc(SpriteSystem *spriteSystem, SpriteManager *spriteManager, NARC *narc, int fileId, BOOL compressed, int resId)", "header": "include/sprite_system.h"},
+    "SpriteSystem_NewSprite": {"known_prototype": "ManagedSprite *SpriteSystem_NewSprite(SpriteSystem *spriteSystem, SpriteManager *spriteManager, const ManagedSpriteTemplate *unkTemplate)", "header": "include/sprite_system.h"},
+    "SpriteManager_UnloadCharObjById": {"known_prototype": "BOOL SpriteManager_UnloadCharObjById(SpriteManager *spriteManager, u32 character)", "header": "include/sprite_system.h"},
+    "SpriteManager_UnloadPlttObjById": {"known_prototype": "BOOL SpriteManager_UnloadPlttObjById(SpriteManager *spriteManager, u32 pal)", "header": "include/sprite_system.h"},
+    "SpriteManager_UnloadCellObjById": {"known_prototype": "BOOL SpriteManager_UnloadCellObjById(SpriteManager *spriteManager, u32 cell)", "header": "include/sprite_system.h"},
+    "SpriteManager_UnloadAnimObjById": {"known_prototype": "BOOL SpriteManager_UnloadAnimObjById(SpriteManager *spriteManager, u32 animation)", "header": "include/sprite_system.h"},
+    "Sprite_DeleteAndFreeResources": {"known_prototype": "void Sprite_DeleteAndFreeResources(ManagedSprite *managedSprite)", "header": "include/sprite_system.h"},
+    "Sprite_TickFrame": {"known_prototype": "void Sprite_TickFrame(Sprite *sprite)", "header": "include/sprite_system.h"},
+    "GF_AssertFail": {"known_prototype": "GF_ASSERT macro / GF_AssertFail()", "header": "include/assert.h (via global.h)"}
+  },
+  "risks": [
+    "Single rodata symbol — ov80_0223DA54 must be file-scope static const ManagedSpriteTemplate[4] referenced by 3 functions",
+    "ov80_02239BE8 must compile to ldr r3,=Sprite_DeleteAndFreeResources; bx r3 tail call — param type must exactly match callee's (ManagedSprite *)",
+    "ov80_02239AF8 5th param is u16 (ldrh stack read); ov80_02239B7C/ov80_02239BB8 index params are int/u32 (no entry narrowing) — mixing these up is the classic narrowing mismatch",
+    "Callers are still in asm (asm/frontier_map.s ov80_022393E8/ov80_0223968C/ov80_022396D8/ov80_02239828; also asm/overlay_80_0222BDF4.s) — new header prototypes here will constrain those future decomps via -ipa, so get them right now",
+    "nop padding before first literal pool and .balign 4,0 after others are natural Thumb pool alignment — should fall out automatically"
+  ],
+  "notes": "Frontier map sprite resource helper module (overlay 80). All four functions wrap include/sprite_system.h APIs around a 4-entry ManagedSpriteTemplate table (NARC 0xB8, heap 0x65 per caller ov80_02239828 in asm/frontier_map.s). vram field 1 = sub screen. Suggested header: include/overlay_80_02239AF8.h with the four ov80_ prototypes; needs sprite_system.h, filesystem/NARC, and PaletteData types. No .data/.bss, no save_arrays.c involvement (overlay code)."
+}

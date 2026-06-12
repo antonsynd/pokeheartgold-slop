@@ -1,0 +1,52 @@
+{
+  "file": "asm/unk_02027010.s",
+  "functions": [
+    {
+      "name": "sub_02027010",
+      "mode": "thumb",
+      "signature_guess": "void sub_02027010(void)",
+      "confidence": "high",
+      "callees": ["FS_IsAvailable", "OS_Terminate", "CARD_Init", "MI_CpuCopy8", "FS_FindArchive"],
+      "struct_accesses": [
+        {"param": -1, "offset": "0x2c", "width": 4, "meaning": "FSArchive.fat (FS_FindArchive result) <- header[0x48] FAT rom offset"},
+        {"param": -1, "offset": "0x30", "width": 4, "meaning": "FSArchive.fat_size <- header[0x4c] FAT size"},
+        {"param": -1, "offset": "0x34", "width": 4, "meaning": "FSArchive.fnt <- header[0x40] FNT rom offset"},
+        {"param": -1, "offset": "0x38", "width": 4, "meaning": "FSArchive.fnt_size <- header[0x44] FNT size"}
+      ],
+      "notes": "Already declared void sub_02027010(void) in include/unk_02027010.h; only C caller is src/system.c:136. Logic: if (!FS_IsAvailable()) { OS_Terminate(); return; } then if *(u32*)0x027FF00C != 0x4A414441 ('ADAJ' = Diamond JP gamecode): CARD_Init(); MI_CpuCopy8((void*)0x027FFE00 /*HW_ROM_HEADER_BUF*/, (void*)0x027FF000, 0x160); MI_CpuCopy8((void*)0x027FFE00, (void*)0x027FFA80, 0x160); *(u32*)0x027FF00C = 0x4A414441. Then FSArchive *arc = FS_FindArchive(\"rom\", 3); patch arc->fat/fat_size/fnt/fnt_size from the cached header at 0x027FF000 (OSThreadQueue is 8 bytes so fat is at 0x2c in this SDK's FSArchive, see lib/include/nitro/fs/archive.h). Finally validate cached header: u32 at +0xc == 0x4A414441 AND u16 at +0x10 == 0x3130 ('01' maker code), else OS_Terminate(). Constant 0x160 in C normally emits mov #0x16; lsl #4 in thumb so plain 0x160 literal should match. Hardcoded addresses likely expressed via HW_* macros (0x027FFE00 = HW_ROM_HEADER_BUF) or raw casts."
+    },
+    {
+      "name": "sub_02027098",
+      "mode": "thumb",
+      "signature_guess": "void sub_02027098(const char *path)",
+      "confidence": "high",
+      "callees": ["FS_InitFile", "FS_OpenFile", "OS_ResetSystem"],
+      "struct_accesses": [
+        {"param": -1, "offset": "0x24", "width": 4, "meaning": "FSFile.prop.file.top of stack-local FSFile after FS_OpenFile; stored to *(u32*)0x027FFC2C"}
+      ],
+      "notes": "Signature confirmed by existing extern at src/application/main_menu/main_menu.c:130 ('extern void sub_02027098(const char *path);') called with \"data/eoo.dat\" at line 1503. Body: FSFile file (on stack, frame 0x48); FS_InitFile(&file); if (FS_OpenFile(&file, path)) { *(u32*)0x027FFC2C = file.prop.file.top; OS_ResetSystem(0); }. No early return value; void. Soft-reset-to-embedded-boot-image (DS Download Play demo eoo.dat) mechanism."
+    }
+  ],
+  "data": [
+    {"label": "_020F6458", "section": "rodata", "bytes": 4, "shape_guess": "asciz \"rom\" — in C this is just the string literal argument to FS_FindArchive(\"rom\", 3); should emit naturally as the file's only rodata"}
+  ],
+  "imports": {
+    "FS_IsAvailable": {"known_prototype": "BOOL FS_IsAvailable(void)", "header": "lib/include/nitro/fs/file.h"},
+    "OS_Terminate": {"known_prototype": "void OS_Terminate(void)", "header": "lib/include/nitro/os/terminate_proc.h"},
+    "CARD_Init": {"known_prototype": "void CARD_Init(void)", "header": "lib/include/nitro/card.h"},
+    "MI_CpuCopy8": {"known_prototype": "void MI_CpuCopy8(const void *src, void *dst, u32 size)", "header": "lib/include/nitro/mi/memory.h"},
+    "FS_FindArchive": {"known_prototype": "struct FSArchive * const FS_FindArchive(const char *path, int offset)", "header": "lib/include/nitro/fs/archive.h"},
+    "FS_InitFile": {"known_prototype": "void FS_InitFile(FSFile *p_file)", "header": "lib/include/nitro/fs/file.h"},
+    "FS_OpenFile": {"known_prototype": "BOOL FS_OpenFile(FSFile *p_file, const char *path)", "header": "lib/include/nitro/fs/file.h"},
+    "OS_ResetSystem": {"known_prototype": "void OS_ResetSystem(u32 parameter)", "header": "lib/include/nitro/os/reset.h", "evidence": "called as OS_ResetSystem(0); note reset.h has a void-arg variant under a different SDK_TS #if branch"}
+  },
+  "risks": [
+    "include/unk_02027010.h already exists but only declares sub_02027010; add 'void sub_02027098(const char *path);' there and the local extern at src/application/main_menu/main_menu.c:130 becomes redundant (identical signature, so leaving it is safe and avoids touching a matched file — do NOT change main_menu.c)",
+    "sub_02027098 stack frame is 0x48 but lib/include/nitro/fs/file.h comments FSFile as size 0x50; if 'FSFile file;' produces sub sp,#0x50, the local may need to be a smaller type or the comment is stale — verify sizeof(FSFile) in this SDK config before assuming mismatch",
+    "raw hardware addresses (0x027FF00C, 0x027FFE00, 0x027FF000, 0x027FFA80, 0x027FFC2C) appear in pools; matching may depend on writing them as casted integer literals vs HW_* macros — pool contents are identical either way, only readability differs",
+    "the two MI_CpuCopy8 calls share constants (0x027FFE00 src, 0x160 size); MWCC commonly re-materializes rather than CSEs across calls in thumb — write as two plain calls first",
+    "sub_02027098 is listed in asm/include/overlay_74_thumb.inc .public but no textual reference exists in asm/overlay_74_thumb.s — likely stale; no extra caller constraint",
+    "magic compare in sub_02027010 reuses the 0x4A414441 pool constant for both the store and the later compare; natural C (same literal twice) should reuse the pool entry automatically"
+  ],
+  "notes": "Tiny 2-function thumb file (~0xB0 bytes text), no .data/.bss, single 4-byte rodata string. Purpose: ROM-header caching / 'ADAJ' (Pokemon Diamond JP) header spoof for the DS Download Play demo path, plus soft-reset into files/data/eoo.dat. Both exported signatures are already pinned by existing C callers (src/system.c:136 and src/application/main_menu/main_menu.c:1503), so IPA risk is low as long as those exact prototypes are kept. The FSArchive field stores at 0x2c-0x38 map to fat/fat_size/fnt/fnt_size (lib/include/nitro/fs/archive.h lines 119-145); writing them as arc->fat = ... etc. is the intended C. Function order in C must be sub_02027010 then sub_02027098."
+}

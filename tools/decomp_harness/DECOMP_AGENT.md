@@ -7,7 +7,22 @@ You are a decompilation agent for a Pokémon HeartGold/SoulSilver matching decom
 1. **Byte-for-byte matching is the ONLY success criterion.** The compiled C must produce the exact same object code as the original assembly. Logic correctness alone is not enough.
 2. **Compiler: MWCC 2.0/sp2p2** (Metrowerks CodeWarrior for ARM). Its optimization behavior is different from GCC/Clang — do not assume GCC idioms.
 3. **Target: ARM946E-S (ARMv5TE)**, primarily Thumb instruction set.
-4. **Do not modify any file outside the scope of the current target.** Only create/edit the new C file, its header (if needed), and update `main.lsf`.
+4. **Do not modify any file outside the scope of the current target.** Only create/edit the new C file, its header (if needed), update `main.lsf`, and the harness state files listed below.
+
+## Harness Knowledge Base (consult BEFORE, feed AFTER)
+
+All in `tools/decomp_harness/`:
+
+| File | What | Use |
+|---|---|---|
+| `patterns.json` → `insights.md` | matching knowledge (insights.md is GENERATED — never edit it) | `patterns.py query --grep <word>`; add via `patterns.py add --json '...'` |
+| `attempts_log.jsonl` | per-function attempts, especially dead ends | `attempts_log.py query --file <target>` before starting; `attempts_log.py add` after each distinct failed approach |
+| `knowledge.json` | sweep pre-analysis: signature/struct hypotheses, risks per file | look up the target's symbols; verify against asm |
+| `triage_report.json` | ranked queue + per-file risk features (`triage.py --file <target>`) | unknown callees = signatures you must derive; `gated_by` = known blocker ahead |
+| `blockers.json` | systemic blockers with fix plans, gating counts in `COVERAGE.md` | if the target is gated, plan around it; add new systemic blockers here |
+| `coverage_ledger.json` / `COVERAGE.md` | function-level coverage (generated) | regenerate after finishing: `triage.py --rebuild --top 0` |
+
+The discipline that matters most: **log every distinct dead end** (`attempts_log.py add` with a one-line approach, the diff signature, and the lesson). A dead end that isn't logged will be re-tried by the next session.
 
 ## Workflow for Each File
 

@@ -1,0 +1,94 @@
+{
+  "file": "asm/unk_020915B0.s",
+  "functions": [
+    {
+      "name": "LoadDwcOverlay",
+      "mode": "thumb",
+      "signature_guess": "void LoadDwcOverlay(void)",
+      "confidence": "high",
+      "callees": ["HandleLoadOverlay"],
+      "notes": "Tail-call (ldr r3,=HandleLoadOverlay; bx r3) with FS_OVERLAY_ID(OVY_0) and loadType 2 (OVY_LOAD_ASYNC). Already declared void in include/unk_020915B0.h and called from decompiled src/overlay_44_0222CDAC.c — keep void return so MWCC emits the bx tail call."
+    },
+    {
+      "name": "UnloadDwcOverlay",
+      "mode": "thumb",
+      "signature_guess": "void UnloadDwcOverlay(void)",
+      "confidence": "high",
+      "callees": ["UnloadOverlayByID"],
+      "notes": "Tail-call UnloadOverlayByID(FS_OVERLAY_ID(OVY_0)). Declared in include/unk_020915B0.h."
+    },
+    {
+      "name": "LoadOVY13",
+      "mode": "thumb",
+      "signature_guess": "void LoadOVY13(void)",
+      "confidence": "high",
+      "callees": ["HandleLoadOverlay"],
+      "notes": "Tail-call HandleLoadOverlay(FS_OVERLAY_ID(OVY_13), OVY_LOAD_ASYNC). Not yet in any header; add to include/unk_020915B0.h. Asm callers: asm/unk_02078834.s."
+    },
+    {
+      "name": "UnloadOVY13",
+      "mode": "thumb",
+      "signature_guess": "void UnloadOVY13(void)",
+      "confidence": "high",
+      "callees": ["UnloadOverlayByID"],
+      "notes": "Tail-call UnloadOverlayByID(FS_OVERLAY_ID(OVY_13)). Note: UnloadOVY13 is NOT in the .inc .public list (only called locally by sub_020915F0) but must still be non-static to match symbol emission — verify against the .o; if non-public it may be safe as static, but global is the safer first attempt since thumb_func_start implies a global label."
+    },
+    {
+      "name": "sub_020915F0",
+      "mode": "thumb",
+      "signature_guess": "void sub_020915F0(int unused, enum HeapID heapId)",
+      "confidence": "high",
+      "callees": ["LoadDwcOverlay", "LoadOVY13", "ov13_0221BA00", "UnloadOVY13", "UnloadDwcOverlay", "OS_ResetSystem"],
+      "notes": "r0 (param 0) is never read — caller sub_02091634 passes args[2] (word at args+8) in r0, so keep a dummy first param. Saves r1 in r4 and passes it to ov13_0221BA00(enum HeapID). Ends with OS_ResetSystem(0) then pop {r4,pc} — write OS_ResetSystem(0) as a plain call (compiler doesn't know it's noreturn). Param 0 could be void* depending on args struct; type only matters for caller codegen inside this same file, int or void* both load with plain ldr."
+    },
+    {
+      "name": "LoadOVY38",
+      "mode": "thumb",
+      "signature_guess": "void LoadOVY38(void)",
+      "confidence": "high",
+      "callees": ["HandleLoadOverlay"],
+      "notes": "Tail-call HandleLoadOverlay(FS_OVERLAY_ID(OVY_38), OVY_LOAD_ASYNC). Exported; asm callers in overlay_45_thumb.s, overlay_72.s, overlay_75.s, unk_02037C94.s, unk_020192D0.s. Add to header."
+    },
+    {
+      "name": "UnloadOVY38",
+      "mode": "thumb",
+      "signature_guess": "void UnloadOVY38(void)",
+      "confidence": "high",
+      "callees": ["UnloadOverlayByID"],
+      "notes": "Tail-call UnloadOverlayByID(FS_OVERLAY_ID(OVY_38)). Exported (same asm callers as LoadOVY38). Add to header."
+    },
+    {
+      "name": "sub_02091634",
+      "mode": "thumb",
+      "signature_guess": "BOOL sub_02091634(OverlayManager *man, int *state)",
+      "confidence": "high",
+      "callees": ["Heap_Create", "OverlayManager_GetArgs", "sub_020915F0", "Heap_Destroy", "OS_ResetSystem"],
+      "struct_accesses": [
+        {"param": 0, "offset": "via OverlayManager_GetArgs return", "width": 4, "meaning": "args ptr; then ldr [args, #8] passed as first arg to sub_020915F0"}
+      ],
+      "notes": "OverlayFunction (init slot of OverlayManagerTemplate): Heap_Create(HEAP_ID_3, 0x30, 0x41000) [0x41 << 12]; reads word at args+0x8 from OverlayManager_GetArgs(man); sub_020915F0(args_word8, (HeapID)0x30); Heap_Destroy(0x30); OS_ResetSystem(0); return TRUE. param 1 (state) unused but required by OverlayFunction typedef in include/overlay_manager.h. Heap args: parent=3, child=0x30 — use enum HeapID constants from include/heap.h if named values exist for 3 and 0x30."
+    }
+  ],
+  "data": [
+    {"label": "gApp_MainMenu_SelectOption_NintendoWFCSetup", "section": "rodata", "bytes": 16, "shape_guess": "const OverlayManagerTemplate { sub_02091634, NULL, NULL, FS_OVERLAY_ID_NONE } — already referenced as extern const OverlayManagerTemplate in src/application/main_menu/main_menu.c:202 and passed to RegisterMainOverlay at main_menu.c:1507"}
+  ],
+  "imports": {
+    "HandleLoadOverlay": {"known_prototype": "BOOL HandleLoadOverlay(FSOverlayID ovyId, PMOverlayLoadType loadType)", "header": "include/poke_overlay.h"},
+    "UnloadOverlayByID": {"known_prototype": "void UnloadOverlayByID(FSOverlayID ovyId)", "header": "include/poke_overlay.h"},
+    "OverlayManager_GetArgs": {"known_prototype": "void *OverlayManager_GetArgs(OverlayManager *man)", "header": "include/overlay_manager.h"},
+    "Heap_Create": {"known_prototype": "BOOL Heap_Create(enum HeapID parent, enum HeapID child, u32 size)", "header": "include/heap.h"},
+    "Heap_Destroy": {"known_prototype": "void Heap_Destroy(enum HeapID heapID)", "header": "include/heap.h"},
+    "ov13_0221BA00": {"known_prototype": "void ov13_0221BA00(enum HeapID HeapID)", "header": "include/overlay_13_thumb_1.h"},
+    "OS_ResetSystem": {"known_prototype": "void OS_ResetSystem(u32 parameter)", "header": "NitroSDK (nitro/os) — available via global.h; used freely in src/main.c, src/error_message_reset.c etc."}
+  },
+  "risks": [
+    "Tail-call wrappers: all six Load/Unload functions must compile to ldr r3,=target; bx r3 — declare them void with literal args so MWCC tail-calls; forward argument types exactly (FSOverlayID and PMOverlayLoadType enum literal, no narrowing)",
+    "FS_OVERLAY_ID(OVY_0/OVY_13/OVY_38) pool constants come from the overlay table — use the FS_OVERLAY_ID macro (the asm .inc includes <nitro/fs/overlay.h>), matching existing C usage like src/scrcmd_c.c",
+    "include/unk_020915B0.h already exists with LoadDwcOverlay/UnloadDwcOverlay declared and is included by already-matched src/overlay_44_0222CDAC.c — append LoadOVY13/UnloadOVY13/LoadOVY38/UnloadOVY38/sub_020915F0/sub_02091634 without changing the existing two prototypes (IPA: header edits can perturb codegen of matched files; appending new decls is normally safe but verify overlay_44_0222CDAC.o is unchanged)",
+    "mov r1, #2 is OVY_LOAD_ASYNC (not OVY_LOAD_NORMAL) per the PMOverlayLoadType enum in include/poke_overlay.h",
+    "rodata template must be emitted after the functions (single const struct, order trivially correct); declare it const OverlayManagerTemplate to match main_menu.c's extern",
+    "sub_020915F0's first parameter is dead but ABI-load-bearing — sub_02091634 loads args+8 into r0 before the call; dropping the param changes the caller's codegen",
+    "OS_ResetSystem(0) followed by more code/return — do not mark noreturn; the asm keeps the pop {r4,pc} epilogue and 'mov r0, #1' after the call in sub_02091634"
+  ],
+  "notes": "Small, self-contained main-menu 'Nintendo WFC Setup' launcher: loads DWC overlay (OVY_0) + OVY_13, runs ov13_0221BA00 with heap 0x30 (0x41000 bytes under parent heap 3), then resets the system. LoadOVY38/UnloadOVY38 are exports used only by still-asm callers (overlay_45/72/75, unk_02037C94, unk_020192D0). No .data/.bss, no save_arrays.c DECL_CHUNK_EX involvement, no jump tables. Function order in C must be: LoadDwcOverlay, UnloadDwcOverlay, LoadOVY13, UnloadOVY13, sub_020915F0, LoadOVY38, UnloadOVY38, sub_02091634, then the rodata template. Key headers: include/unk_020915B0.h, include/overlay_manager.h, include/poke_overlay.h; consumer src/application/main_menu/main_menu.c."
+}

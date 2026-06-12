@@ -1,0 +1,61 @@
+{
+  "file": "asm/unk_02026DE0.s",
+  "functions": [
+    {
+      "name": "sub_02026DE0",
+      "mode": "thumb",
+      "signature_guess": "UnkStruct_02026DE0_ret sub_02026DE0(const UnkStruct_02026E18 *a0, u16 key)  /* UnkStruct_02026DE0_ret = struct { u8 lo; u8 hi; } returned by value in r0 */",
+      "confidence": "medium",
+      "callees": [],
+      "struct_accesses": [
+        {"param": 0, "offset": "0x0", "width": 4, "meaning": "u16 *thresholds (loop reads ldrh [ptr+2*i+2], unsigned compare bhi vs key)"},
+        {"param": 0, "offset": "0x4", "width": 4, "meaning": "u8 *values0, indexed by found i (ldrb [ptr, i])"},
+        {"param": 0, "offset": "0x8", "width": 4, "meaning": "u8 *values1, indexed by found i (ldrb [ptr, i])"},
+        {"param": 0, "offset": "0xc", "width": 4, "meaning": "u32 count; loop runs while i < count-1"}
+      ],
+      "notes": "Threshold-table lookup: i = first index where thresholds[i+1] > key (else last entry). Builds 2 bytes on stack (strb sp+0, sp+1) then reloads and ORs into r0 = lo | (hi<<8) — classic MWCC small-struct return-by-value codegen; callers (sub_02020780 in asm/unk_0202068C.s, sub_02023FEC in asm/unk_02023694.s) immediately split r0 into low/high bytes on their own stack, confirming a 2-byte struct return rather than a plain u16. If struct return doesn't match, fallback hypothesis is u16 return with an explicit 2-byte local buffer. key param: callers narrow via lsl#4/lsr#16, i.e. (u16)(fx32 >> 12) — a height in map units; no re-narrowing inside, so param type u16 is consistent."
+    },
+    {
+      "name": "sub_02026E18",
+      "mode": "thumb",
+      "signature_guess": "void sub_02026E18(const u32 *rawData, UnkStruct_02026E18 *dest)",
+      "confidence": "high",
+      "callees": [],
+      "struct_accesses": [
+        {"param": 0, "offset": "0x0", "width": 4, "meaning": "count read from raw blob header"},
+        {"param": 1, "offset": "0xc", "width": 4, "meaning": "dest->count = rawData[0] (written first)"},
+        {"param": 1, "offset": "0x0", "width": 4, "meaning": "dest->thresholds = (u16 *)(rawData + 1)"},
+        {"param": 1, "offset": "0x4", "width": 4, "meaning": "dest->values0 = (u8 *)thresholds + count*2"},
+        {"param": 1, "offset": "0x8", "width": 4, "meaning": "dest->values1 = values0 + count"}
+      ],
+      "notes": "Parses an in-ROM/NARC blob: { u32 count; u16 thresholds[count]; u8 values0[count]; u8 values1[count]; } into pointer struct. Note the asm re-loads dest->count (ldr [r1,#0xc]) twice instead of keeping count in a register — write the C reading dest->count back (or rely on no-alias-free codegen) to reproduce. Leaf function, no stack frame."
+    }
+  ],
+  "shared_struct_hypotheses": [
+    {
+      "name": "UnkStruct_02026E18",
+      "size_guess": "0x10",
+      "fields": [
+        {"offset": "0x0", "width": 4, "meaning": "u16 *thresholds (points into raw blob, ascending u16 keys, unsigned)"},
+        {"offset": "0x4", "width": 4, "meaning": "u8 *values0"},
+        {"offset": "0x8", "width": 4, "meaning": "u8 *values1"},
+        {"offset": "0xc", "width": 4, "meaning": "u32 count"}
+      ]
+    },
+    {
+      "name": "UnkStruct_02026DE0_ret",
+      "size_guess": "0x2",
+      "fields": [
+        {"offset": "0x0", "width": 1, "meaning": "u8 from values0[i]"},
+        {"offset": "0x1", "width": 1, "meaning": "u8 from values1[i]"}
+      ]
+    }
+  ],
+  "risks": [
+    "2-byte struct return-by-value in sub_02026DE0 (sp byte staging then orr into r0) — getting return type wrong (u16 vs struct) is the main matching hazard",
+    "sub_02026E18 reloads dest->count from memory between pointer computations; caching it in a local would change codegen",
+    "exports are consumed by 7 still-asm files (unk_0202068C, unk_02023694, overlay_01_021F1348, overlay_01_021F944C, overlay_01_02203A18, overlay_01_022053EC, overlay_45_thumb) — header prototypes chosen now become load-bearing for those future decomps, but no already-decompiled C callers exist, so no immediate IPA breakage risk",
+    "no rodata/data/bss in this file; no save_arrays.c involvement"
+  ],
+  "notes": "Tiny 2-function leaf file (~0x4C bytes total, no literal pools, no imports). Looks like a height->parameter lookup table system (callers in unk_0202068C/unk_02023694 feed it (u16)(fx32_height >> 12) and use the two returned bytes to drive sub_020207C8/sub_020207F4 / sub_0202403C-style setters; overlay_01 callers build the table from 3D resource data via ov01_021FC5A4/ov01_021F14B4 then sub_02026E18 into a struct embedded at +0xC/+0x40 of larger overlay structs). Embedded use at base+0xa0 in unk_02023694 confirms UnkStruct_02026E18 is exactly 0x10 bytes. C file order: sub_02026DE0 then sub_02026E18."
+}

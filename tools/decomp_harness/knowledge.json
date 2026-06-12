@@ -1,0 +1,580 @@
+{
+ "files": {
+  "asm/overlay_35.s": {
+   "notes": "Tiny 2-function thumb overlay, ~0x3C bytes total, no rodata/data/bss, no pool literals, no imports (overlay_35.inc .public list is exactly the two locally defined functions). Function order in C: ov35_02259D80 then ov35_02259DB8. New header content: add ov35_02259D80 prototype; keep existing ov35_02259DB8 declaration verbatim. Caller map: ov35_02259D80 <- asm/overlay_01_021F6830.s (ov01_021F6830, which itself is declared in include/overlay_01_021F6830.h); ov35_02259DB8 <- src/field_system.c (matched).",
+   "risks": [
+    "ov35_02259DB8 prototype hazard: existing header include/overlay_35.h uses 'int ov35_02259DB8();' with argument-less call sites in matched src/field_system.c (lines 251, 274) \u2014 changing it to a prototyped signature breaks already-matched codegen",
+    "switch lowering: 6-entry thumb .short jump table implies max case label 5, but only cases 1 and 4 have bodies; the C switch likely needs an explicit empty case 5 (and possibly enumerated cases 0/2/3) to force the 0..5 bounds check (cmp r1,#5) instead of cmp r1,#4",
+    "FieldSystemUnkSub4.unk14 is declared u32 in include/field_system.h \u2014 retyping it to a struct pointer would change field_system.c IPA/codegen; keep the header as-is",
+    ".balign 4,0 after ov35_02259D80 \u2014 only relevant if NONMATCHING inline asm fallback is needed (remove .balign in inline asm)"
+   ],
+   "sweep_output": "sweep/out/overlay_35.json"
+  },
+  "asm/unk_02026DE0.s": {
+   "notes": "Tiny 2-function leaf file (~0x4C bytes total, no literal pools, no imports). Looks like a height->parameter lookup table system (callers in unk_0202068C/unk_02023694 feed it (u16)(fx32_height >> 12) and use the two returned bytes to drive sub_020207C8/sub_020207F4 / sub_0202403C-style setters; overlay_01 callers build the table from 3D resource data via ov01_021FC5A4/ov01_021F14B4 then sub_02026E18 into a struct embedded at +0xC/+0x40 of larger overlay structs). Embedded use at base+0xa0 in unk_02023694 confirms UnkStruct_02026E18 is exactly 0x10 bytes. C file order: sub_02026DE0 then sub_02026E18.",
+   "risks": [
+    "2-byte struct return-by-value in sub_02026DE0 (sp byte staging then orr into r0) \u2014 getting return type wrong (u16 vs struct) is the main matching hazard",
+    "sub_02026E18 reloads dest->count from memory between pointer computations; caching it in a local would change codegen",
+    "exports are consumed by 7 still-asm files (unk_0202068C, unk_02023694, overlay_01_021F1348, overlay_01_021F944C, overlay_01_02203A18, overlay_01_022053EC, overlay_45_thumb) \u2014 header prototypes chosen now become load-bearing for those future decomps, but no already-decompiled C callers exist, so no immediate IPA breakage risk",
+    "no rodata/data/bss in this file; no save_arrays.c involvement"
+   ],
+   "sweep_output": "sweep/out/unk_02026DE0.json"
+  },
+  "asm/unk_0202DB34.s": {
+   "notes": "Classic save-chunk accessor file (save block SAVE_UNK_22 == 22). All 12 .public symbols with thumb_func_start are local exports; the only imports are SaveArray_Get, MIi_CpuClearFast, MIi_CpuCopyFast. The chunk stores one full Pokemon plus a deposit flag, a u16, and two packed-date u32s; sole consumers are src/launch_application.c (getter) and asm/overlay_70.s (the OVY_70 app launched by sub_0203F844 with party/PC/pokedex/wifiHistory context \u2014 likely a Wi-Fi trade/GTS-style feature). No .data/.rodata/.bss sections, no jump tables, no .balign issues beyond function padding. Expected to be an easy full match if the existing header's int-return declaration is preserved.",
+   "risks": [
+    "include/unk_0202DB34.h already exists with 'int sub_0202DB34(SaveData *saveData)' and is consumed by matched src/launch_application.c (UnkStruct_0203F844.unk0 is int) \u2014 do NOT change that declaration's binary signature; add new declarations to the same header instead",
+    "src/save_arrays.c:49 DECL_CHUNK_EX(sub_0202DB40, sub_0202DB44) must be replaced with #include of the header (entry at lines 190-195 uses SAVE_UNK_22 with SAVESIZEFN/SAVEINITFN casts); sub_0202DB44 param type just needs to be pointer-compatible",
+    "All 12 functions are tiny tail-call/accessor bodies; per insights.md, tail-call wrappers must forward argument types exactly \u2014 a u16 param where the asm lacks lsls/lsrs narrowing would mismatch (none of these have narrowing, but none take non-constant u16 args either)",
+    "sub_0202DB44/64/70 must be written via the inline MI_CpuClearFast/MI_CpuCopyFast wrappers from nitro/mi/memory.h so MWCC inlines them into the observed tail calls; calling MIi_* directly with wrong arg order will not match sub_0202DB70's register swap",
+    "Function order in C must be: DB34, DB40, DB44, DB54, DB5C, DB64, DB70, DB80, DB88, DB90, DB98, DBA0; no rodata/data/bss in this file"
+   ],
+   "sweep_output": "sweep/out/unk_0202DB34.json"
+  }
+ },
+ "generated": "2026-06-11T23:32:06Z",
+ "signature_conflicts": [],
+ "structs": {
+  "UnkStruct_02026DE0_ret": {
+   "fields": {
+    "0x0": [
+     {
+      "meaning": "u8 from values0[i]",
+      "source": "asm/unk_02026DE0.s",
+      "width": 1
+     }
+    ],
+    "0x1": [
+     {
+      "meaning": "u8 from values1[i]",
+      "source": "asm/unk_02026DE0.s",
+      "width": 1
+     }
+    ]
+   },
+   "size_guesses": {
+    "asm/unk_02026DE0.s": "0x2"
+   },
+   "sources": [
+    "asm/unk_02026DE0.s"
+   ]
+  },
+  "UnkStruct_02026E18": {
+   "fields": {
+    "0x0": [
+     {
+      "meaning": "u16 *thresholds (points into raw blob, ascending u16 keys, unsigned)",
+      "source": "asm/unk_02026DE0.s",
+      "width": 4
+     }
+    ],
+    "0x4": [
+     {
+      "meaning": "u8 *values0",
+      "source": "asm/unk_02026DE0.s",
+      "width": 4
+     }
+    ],
+    "0x8": [
+     {
+      "meaning": "u8 *values1",
+      "source": "asm/unk_02026DE0.s",
+      "width": 4
+     }
+    ],
+    "0xc": [
+     {
+      "meaning": "u32 count",
+      "source": "asm/unk_02026DE0.s",
+      "width": 4
+     }
+    ]
+   },
+   "size_guesses": {
+    "asm/unk_02026DE0.s": "0x10"
+   },
+   "sources": [
+    "asm/unk_02026DE0.s"
+   ]
+  },
+  "UnkStruct_0202DB34": {
+   "fields": {
+    "0x0": [
+     {
+      "meaning": "Pokemon mon (sizeof(Pokemon) == 0xEC; copied to/from AllocMonZeroed buffers)",
+      "source": "asm/unk_0202DB34.s",
+      "width": 236
+     }
+    ],
+    "0xec": [
+     {
+      "meaning": "u16 occupied/deposited flag (tested != 0 before reading the mon)",
+      "source": "asm/unk_0202DB34.s",
+      "width": 2
+     }
+    ],
+    "0xee": [
+     {
+      "meaning": "u16 unkEE (read by sub_0202DBA0)",
+      "source": "asm/unk_0202DB34.s",
+      "width": 2
+     }
+    ],
+    "0xf0": [
+     {
+      "meaning": "u32 packed date A (4 bytes ORed together from RTC date in ov70_02240CA0)",
+      "source": "asm/unk_0202DB34.s",
+      "width": 4
+     }
+    ],
+    "0xf4": [
+     {
+      "meaning": "u32 packed date B",
+      "source": "asm/unk_0202DB34.s",
+      "width": 4
+     }
+    ]
+   },
+   "size_guesses": {
+    "asm/unk_0202DB34.s": "0xF8 (sub_0202DB40 return / MIi_CpuClearFast size)"
+   },
+   "sources": [
+    "asm/unk_0202DB34.s"
+   ]
+  },
+  "UnkStruct_ov35_02259D80": {
+   "fields": {
+    "0x2": [
+     {
+      "meaning": "mode/state, value 2 enables callback path",
+      "source": "asm/overlay_35.s",
+      "width": 1
+     }
+    ],
+    "0x3": [
+     {
+      "meaning": "BOOL-ish movement-allowed flag returned by ov35_02259DB8",
+      "source": "asm/overlay_35.s",
+      "width": 1
+     }
+    ],
+    "0x4": [
+     {
+      "meaning": "flag set to 1 by ov35_02259D80 case 1",
+      "source": "asm/overlay_35.s",
+      "width": 1
+     }
+    ],
+    "0x44": [
+     {
+      "meaning": "void (*callback)(void *)",
+      "source": "asm/overlay_35.s",
+      "width": 4
+     }
+    ],
+    "0x48": [
+     {
+      "meaning": "callback context pointer",
+      "source": "asm/overlay_35.s",
+      "width": 4
+     }
+    ]
+   },
+   "size_guesses": {
+    "asm/overlay_35.s": ">= 0x4C (fields up to +0x48 used)"
+   },
+   "sources": [
+    "asm/overlay_35.s"
+   ]
+  }
+ },
+ "symbols": {
+  "MIi_CpuClearFast": {
+   "callers": [
+    "asm/unk_0202DB34.s"
+   ],
+   "header": "lib/include/nitro/mi/memory.h",
+   "known_prototype": "void MIi_CpuClearFast(register u32 value, register u32 *dst, register u32 size)",
+   "signature_sources": {}
+  },
+  "MIi_CpuCopyFast": {
+   "callers": [
+    "asm/unk_0202DB34.s"
+   ],
+   "header": "lib/include/nitro/mi/memory.h",
+   "known_prototype": "void MIi_CpuCopyFast(const register u32 *src, register u32 *dst, register u32 size)",
+   "signature_sources": {}
+  },
+  "SaveArray_Get": {
+   "callers": [
+    "asm/unk_0202DB34.s"
+   ],
+   "header": "include/save.h",
+   "known_prototype": "void *SaveArray_Get(SaveData *saveData, int id)",
+   "signature_sources": {}
+  },
+  "ov35_02259D80": {
+   "callers": [],
+   "confidence": "high",
+   "defined_in": "asm/overlay_35.s",
+   "mode": "thumb",
+   "notes": [
+    "[asm/overlay_35.s] thumb dense switch on a1 with bounds check cmp r1,#5/bhi and 6-entry .short offset table; only case 1 (set u8 at +4 to 1) and case 4 (conditional callback invoke) have bodies; cases 0/2/3/5 are default. Sole caller is asm ov01_021F6830 which does ov35_02259D80(fieldSystem->unk4->unk14, a1) and ignores its own third param for this call (r2 passed through but unread here)."
+   ],
+   "signature_guess": "void ov35_02259D80(UnkStruct_ov35_02259D80 *a0, u32 a1)",
+   "signature_sources": {
+    "asm/overlay_35.s": "void ov35_02259D80(UnkStruct_ov35_02259D80 *a0, u32 a1)"
+   },
+   "struct_accesses": [
+    {
+     "meaning": "state/mode byte, compared == 2 in case 4",
+     "offset": "0x2",
+     "param": 0,
+     "width": 1
+    },
+    {
+     "meaning": "read by ov35_02259DB8 as return flag (not touched here)",
+     "offset": "0x3",
+     "param": 0,
+     "width": 1
+    },
+    {
+     "meaning": "flag byte, set to 1 in case 1",
+     "offset": "0x4",
+     "param": 0,
+     "width": 1
+    },
+    {
+     "meaning": "function pointer, NULL-checked then called via blx in case 4",
+     "offset": "0x44",
+     "param": 0,
+     "width": 4
+    },
+    {
+     "meaning": "argument passed in r0 to the callback at +0x44",
+     "offset": "0x48",
+     "param": 0,
+     "width": 4
+    }
+   ]
+  },
+  "ov35_02259DB8": {
+   "callers": [],
+   "confidence": "high",
+   "defined_in": "asm/overlay_35.s",
+   "mode": "thumb",
+   "notes": [
+    "[asm/overlay_35.s] single ldrb [r0,#3]; bx lr. CRITICAL: include/overlay_35.h already declares it as 'int ov35_02259DB8();' (unspecified args) and matched src/field_system.c calls it with NO arguments, relying on r0 still holding sub_0203E324()'s return value (sFieldSysPtr->unk4->unk14, which is the struct pointer). Keep the empty-parens header declaration unchanged; define the function in C with the pointer parameter (C89-compatible with the non-prototype declaration), or matched field_system.c codegen/IPA breaks."
+   ],
+   "signature_guess": "int ov35_02259DB8(UnkStruct_ov35_02259D80 *a0)",
+   "signature_sources": {
+    "asm/overlay_35.s": "int ov35_02259DB8(UnkStruct_ov35_02259D80 *a0)"
+   },
+   "struct_accesses": [
+    {
+     "meaning": "u8 flag returned (movement-allowed flag fed to PlayerAvatar_MoveControl)",
+     "offset": "0x3",
+     "param": 0,
+     "width": 1
+    }
+   ]
+  },
+  "sub_02026DE0": {
+   "callers": [],
+   "confidence": "medium",
+   "defined_in": "asm/unk_02026DE0.s",
+   "mode": "thumb",
+   "notes": [
+    "[asm/unk_02026DE0.s] Threshold-table lookup: i = first index where thresholds[i+1] > key (else last entry). Builds 2 bytes on stack (strb sp+0, sp+1) then reloads and ORs into r0 = lo | (hi<<8) \u2014 classic MWCC small-struct return-by-value codegen; callers (sub_02020780 in asm/unk_0202068C.s, sub_02023FEC in asm/unk_02023694.s) immediately split r0 into low/high bytes on their own stack, confirming a 2-byte struct return rather than a plain u16. If struct return doesn't match, fallback hypothesis is u16 return with an explicit 2-byte local buffer. key param: callers narrow via lsl#4/lsr#16, i.e. (u16)(fx32 >> 12) \u2014 a height in map units; no re-narrowing inside, so param type u16 is consistent."
+   ],
+   "signature_guess": "UnkStruct_02026DE0_ret sub_02026DE0(const UnkStruct_02026E18 *a0, u16 key)  /* UnkStruct_02026DE0_ret = struct { u8 lo; u8 hi; } returned by value in r0 */",
+   "signature_sources": {
+    "asm/unk_02026DE0.s": "UnkStruct_02026DE0_ret sub_02026DE0(const UnkStruct_02026E18 *a0, u16 key)  /* UnkStruct_02026DE0_ret = struct { u8 lo; u8 hi; } returned by value in r0 */"
+   },
+   "struct_accesses": [
+    {
+     "meaning": "u16 *thresholds (loop reads ldrh [ptr+2*i+2], unsigned compare bhi vs key)",
+     "offset": "0x0",
+     "param": 0,
+     "width": 4
+    },
+    {
+     "meaning": "u8 *values0, indexed by found i (ldrb [ptr, i])",
+     "offset": "0x4",
+     "param": 0,
+     "width": 4
+    },
+    {
+     "meaning": "u8 *values1, indexed by found i (ldrb [ptr, i])",
+     "offset": "0x8",
+     "param": 0,
+     "width": 4
+    },
+    {
+     "meaning": "u32 count; loop runs while i < count-1",
+     "offset": "0xc",
+     "param": 0,
+     "width": 4
+    }
+   ]
+  },
+  "sub_02026E18": {
+   "callers": [],
+   "confidence": "high",
+   "defined_in": "asm/unk_02026DE0.s",
+   "mode": "thumb",
+   "notes": [
+    "[asm/unk_02026DE0.s] Parses an in-ROM/NARC blob: { u32 count; u16 thresholds[count]; u8 values0[count]; u8 values1[count]; } into pointer struct. Note the asm re-loads dest->count (ldr [r1,#0xc]) twice instead of keeping count in a register \u2014 write the C reading dest->count back (or rely on no-alias-free codegen) to reproduce. Leaf function, no stack frame."
+   ],
+   "signature_guess": "void sub_02026E18(const u32 *rawData, UnkStruct_02026E18 *dest)",
+   "signature_sources": {
+    "asm/unk_02026DE0.s": "void sub_02026E18(const u32 *rawData, UnkStruct_02026E18 *dest)"
+   },
+   "struct_accesses": [
+    {
+     "meaning": "count read from raw blob header",
+     "offset": "0x0",
+     "param": 0,
+     "width": 4
+    },
+    {
+     "meaning": "dest->count = rawData[0] (written first)",
+     "offset": "0xc",
+     "param": 1,
+     "width": 4
+    },
+    {
+     "meaning": "dest->thresholds = (u16 *)(rawData + 1)",
+     "offset": "0x0",
+     "param": 1,
+     "width": 4
+    },
+    {
+     "meaning": "dest->values0 = (u8 *)thresholds + count*2",
+     "offset": "0x4",
+     "param": 1,
+     "width": 4
+    },
+    {
+     "meaning": "dest->values1 = values0 + count",
+     "offset": "0x8",
+     "param": 1,
+     "width": 4
+    }
+   ]
+  },
+  "sub_0202DB34": {
+   "callers": [],
+   "confidence": "high",
+   "defined_in": "asm/unk_0202DB34.s",
+   "mode": "thumb",
+   "notes": [
+    "[asm/unk_0202DB34.s] Tail call: return SaveArray_Get(saveData, SAVE_UNK_22 /* 0x16, see include/constants/save_arrays.h:28 */). HAZARD: include/unk_0202DB34.h ALREADY EXISTS and declares it as 'int sub_0202DB34(SaveData *saveData);' and matched src/launch_application.c:1176 stores the result into 'int unk0' (include/launch_application_internal.h:128). Keep the existing 'int' return type (or cast) to avoid touching the shared header and breaking IPA codegen of launch_application.c. 'int f(...) { return (int)SaveArray_Get(...); }' or declare returning the chunk pointer only if the header stays binary-identical for callers. Pool literal: SaveArray_Get address."
+   ],
+   "signature_guess": "void *sub_0202DB34(SaveData *saveData)",
+   "signature_sources": {
+    "asm/unk_0202DB34.s": "void *sub_0202DB34(SaveData *saveData)"
+   }
+  },
+  "sub_0202DB40": {
+   "callers": [],
+   "confidence": "high",
+   "defined_in": "asm/unk_0202DB34.s",
+   "mode": "thumb",
+   "notes": [
+    "[asm/unk_0202DB34.s] Chunk sizeof function: returns 0xF8. Registered as SAVESIZEFN in src/save_arrays.c:193 (DECL_CHUNK_EX at line 49). Write as 'return sizeof(UnkStruct_0202DB34);' with the struct sized 0xF8."
+   ],
+   "signature_guess": "u32 sub_0202DB40(void)",
+   "signature_sources": {
+    "asm/unk_0202DB34.s": "u32 sub_0202DB40(void)"
+   }
+  },
+  "sub_0202DB44": {
+   "callers": [],
+   "confidence": "high",
+   "defined_in": "asm/unk_0202DB34.s",
+   "mode": "thumb",
+   "notes": [
+    "[asm/unk_0202DB34.s] Chunk init: tail call MIi_CpuClearFast(0, chunk, 0xF8). Matches inlined MI_CpuClearFast(chunk, sizeof(*chunk)) from lib/include/nitro/mi/memory.h:40. Registered as SAVEINITFN in src/save_arrays.c:194."
+   ],
+   "signature_guess": "void sub_0202DB44(UnkStruct_0202DB34 *chunk)",
+   "signature_sources": {
+    "asm/unk_0202DB34.s": "void sub_0202DB44(UnkStruct_0202DB34 *chunk)"
+   }
+  },
+  "sub_0202DB54": {
+   "callers": [],
+   "confidence": "high",
+   "defined_in": "asm/unk_0202DB34.s",
+   "mode": "thumb",
+   "notes": [
+    "[asm/unk_0202DB34.s] Getter, ldrh [r0+0xec]. Could also be BOOL-ish; callers (asm/overlay_70.s:17373, 17417, 18728) only compare to 0."
+   ],
+   "signature_guess": "u16 sub_0202DB54(UnkStruct_0202DB34 *chunk)",
+   "signature_sources": {
+    "asm/unk_0202DB34.s": "u16 sub_0202DB54(UnkStruct_0202DB34 *chunk)"
+   },
+   "struct_accesses": [
+    {
+     "meaning": "occupancy/deposited flag; callers in overlay_70 test result against 0",
+     "offset": "0xec",
+     "param": 0,
+     "width": 2
+    }
+   ]
+  },
+  "sub_0202DB5C": {
+   "callers": [],
+   "confidence": "medium",
+   "defined_in": "asm/unk_0202DB34.s",
+   "mode": "thumb",
+   "notes": [
+    "[asm/unk_0202DB34.s] strh r1 directly, no entry narrowing (stores never need it). All observed call sites pass constant 0 (overlay_70:17405, 17441, 17684, 18358, 18491), so u16 vs int is indistinguishable at call sites; u16 is the conventional save-chunk setter type here."
+   ],
+   "signature_guess": "void sub_0202DB5C(UnkStruct_0202DB34 *chunk, u16 value)",
+   "signature_sources": {
+    "asm/unk_0202DB34.s": "void sub_0202DB5C(UnkStruct_0202DB34 *chunk, u16 value)"
+   },
+   "struct_accesses": [
+    {
+     "meaning": "setter for the 0xEC flag",
+     "offset": "0xec",
+     "param": 0,
+     "width": 2
+    }
+   ]
+  },
+  "sub_0202DB64": {
+   "callers": [],
+   "confidence": "high",
+   "defined_in": "asm/unk_0202DB34.s",
+   "mode": "thumb",
+   "notes": [
+    "[asm/unk_0202DB34.s] Tail call MIi_CpuCopyFast(chunk, dest, 0xEC) == inlined MI_CpuCopyFast(chunk, dest, sizeof(Pokemon)). Callers pair it with AllocMonZeroed (overlay_70:17377-17382), confirming dest is Pokemon* and 0xEC == sizeof(Pokemon)."
+   ],
+   "signature_guess": "void sub_0202DB64(UnkStruct_0202DB34 *chunk, Pokemon *dest)",
+   "signature_sources": {
+    "asm/unk_0202DB34.s": "void sub_0202DB64(UnkStruct_0202DB34 *chunk, Pokemon *dest)"
+   },
+   "struct_accesses": [
+    {
+     "meaning": "stored Pokemon (0xEC bytes), copied out",
+     "offset": "0x0",
+     "param": 0,
+     "width": 236
+    }
+   ]
+  },
+  "sub_0202DB70": {
+   "callers": [],
+   "confidence": "high",
+   "defined_in": "asm/unk_0202DB34.s",
+   "mode": "thumb",
+   "notes": [
+    "[asm/unk_0202DB34.s] Args swapped before tail call: MIi_CpuCopyFast(src=a1, dst=a0, 0xEC) == MI_CpuCopyFast(src, chunk, sizeof(Pokemon)). The 3-instruction swap (add r2,r0; add r0,r1; add r1,r2) is what MWCC emits for the inlined wrapper with swapped operands."
+   ],
+   "signature_guess": "void sub_0202DB70(UnkStruct_0202DB34 *chunk, const Pokemon *src)",
+   "signature_sources": {
+    "asm/unk_0202DB34.s": "void sub_0202DB70(UnkStruct_0202DB34 *chunk, const Pokemon *src)"
+   },
+   "struct_accesses": [
+    {
+     "meaning": "stored Pokemon, copied in",
+     "offset": "0x0",
+     "param": 0,
+     "width": 236
+    }
+   ]
+  },
+  "sub_0202DB80": {
+   "callers": [],
+   "confidence": "high",
+   "defined_in": "asm/unk_0202DB34.s",
+   "mode": "thumb",
+   "signature_guess": "u32 sub_0202DB80(UnkStruct_0202DB34 *chunk)",
+   "signature_sources": {
+    "asm/unk_0202DB34.s": "u32 sub_0202DB80(UnkStruct_0202DB34 *chunk)"
+   },
+   "struct_accesses": [
+    {
+     "meaning": "packed date word A; ov70_0223BFA8 unpacks it into 4 bytes",
+     "offset": "0xf0",
+     "param": 0,
+     "width": 4
+    }
+   ]
+  },
+  "sub_0202DB88": {
+   "callers": [],
+   "confidence": "high",
+   "defined_in": "asm/unk_0202DB34.s",
+   "mode": "thumb",
+   "signature_guess": "void sub_0202DB88(UnkStruct_0202DB34 *chunk, u32 value)",
+   "signature_sources": {
+    "asm/unk_0202DB34.s": "void sub_0202DB88(UnkStruct_0202DB34 *chunk, u32 value)"
+   },
+   "struct_accesses": [
+    {
+     "meaning": "setter for 0xF0; ov70_02240CA0 stores a u32 packed from 4 RTC-date bytes",
+     "offset": "0xf0",
+     "param": 0,
+     "width": 4
+    }
+   ]
+  },
+  "sub_0202DB90": {
+   "callers": [],
+   "confidence": "high",
+   "defined_in": "asm/unk_0202DB34.s",
+   "mode": "thumb",
+   "signature_guess": "u32 sub_0202DB90(UnkStruct_0202DB34 *chunk)",
+   "signature_sources": {
+    "asm/unk_0202DB34.s": "u32 sub_0202DB90(UnkStruct_0202DB34 *chunk)"
+   },
+   "struct_accesses": [
+    {
+     "meaning": "packed date word B (selected when caller flag==1, else 0xF0)",
+     "offset": "0xf4",
+     "param": 0,
+     "width": 4
+    }
+   ]
+  },
+  "sub_0202DB98": {
+   "callers": [],
+   "confidence": "high",
+   "defined_in": "asm/unk_0202DB34.s",
+   "mode": "thumb",
+   "signature_guess": "void sub_0202DB98(UnkStruct_0202DB34 *chunk, u32 value)",
+   "signature_sources": {
+    "asm/unk_0202DB34.s": "void sub_0202DB98(UnkStruct_0202DB34 *chunk, u32 value)"
+   },
+   "struct_accesses": [
+    {
+     "meaning": "setter for 0xF4",
+     "offset": "0xf4",
+     "param": 0,
+     "width": 4
+    }
+   ]
+  },
+  "sub_0202DBA0": {
+   "callers": [],
+   "confidence": "high",
+   "defined_in": "asm/unk_0202DB34.s",
+   "mode": "thumb",
+   "signature_guess": "u16 sub_0202DBA0(UnkStruct_0202DB34 *chunk)",
+   "signature_sources": {
+    "asm/unk_0202DB34.s": "u16 sub_0202DBA0(UnkStruct_0202DB34 *chunk)"
+   },
+   "struct_accesses": [
+    {
+     "meaning": "u16 associated with the stored mon; passed as 3rd arg to ov70_02240A7C alongside the mon (possibly species or level)",
+     "offset": "0xee",
+     "param": 0,
+     "width": 2
+    }
+   ]
+  }
+ }
+}

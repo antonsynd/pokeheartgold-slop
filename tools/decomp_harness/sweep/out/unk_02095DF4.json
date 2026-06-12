@@ -1,0 +1,89 @@
+{
+  "file": "asm/unk_02095DF4.s",
+  "functions": [
+    {
+      "name": "sub_02095DF4",
+      "mode": "thumb",
+      "signature_guess": "void sub_02095DF4(FieldSystem *fieldSystem, u8 a1, u8 a2, u8 a3, u16 *a4, u16 *a5, u16 *a6, u16 *a7)",
+      "confidence": "high",
+      "callees": ["Heap_AllocAtEnd", "TaskManager_Call"],
+      "struct_accesses": [
+        {"param": 0, "offset": "0x10", "width": 4, "meaning": "fieldSystem->taskman (FieldSystem in include/field_system.h line 117)"}
+      ],
+      "callback_refs": ["sub_02095E30 passed as TaskFunc to TaskManager_Call (pool word _02095E2C)"],
+      "notes": "Prototype is ALREADY DECLARED in include/unk_02095DF4.h and used by matched src/scrcmd_c.c:4587 (ScrCmd_Pokeathlon) — use it verbatim, do not change. 8 args: r0-r3 + 4 stack args at [sp,#0x18..0x24]. Allocates env via Heap_AllocAtEnd(HEAP_ID_FIELD2 /*0xb*/, 0x20), fills: [0]=0 state, [8]=a1 (str, full word — u8 param stored into a 4-byte field with no re-extension), [0xc]=a3 (strh), [0xe]=a2 (strh, note a2/a3 store order swapped vs param order), [0x10..0x1c]=a4..a7, then TaskManager_Call(fieldSystem->taskman, sub_02095E30, env)."
+    },
+    {
+      "name": "sub_02095E30",
+      "mode": "thumb",
+      "signature_guess": "static BOOL sub_02095E30(TaskManager *taskManager)",
+      "confidence": "high",
+      "callees": ["TaskManager_GetFieldSystem", "TaskManager_GetEnvironment", "Heap_AllocAtEnd", "FieldSystem_GetSaveData", "PokeathlonCourse_LaunchApp", "sub_0203E30C", "FieldSystem_ApplicationIsRunning", "FieldSystem_LoadFieldOverlay", "sub_020505C8", "Heap_Free"],
+      "struct_accesses": [
+        {"param": -1, "offset": "env+0x0", "width": 4, "meaning": "state, switch 0..3, set to 1/2/3 on transitions"},
+        {"param": -1, "offset": "env+0x4", "width": 4, "meaning": "PokeathlonCourseArgs * from Heap_AllocAtEnd(0xb, 0x10)"},
+        {"param": -1, "offset": "env+0x8", "width": 4, "meaning": "a1; tested != 0 -> args->mode = TRUE/FALSE"},
+        {"param": -1, "offset": "env+0xc", "width": 2, "meaning": "a3, ldrh -> strb into args+0xc"},
+        {"param": -1, "offset": "env+0xe", "width": 2, "meaning": "a2, ldrh -> strb into args+0xf"},
+        {"param": -1, "offset": "env+0x10", "width": 4, "meaning": "u16* out: *a4 = (u8)args[0xe]"},
+        {"param": -1, "offset": "env+0x14", "width": 4, "meaning": "u16* out: *a5 = (u16)args[0xa]"},
+        {"param": -1, "offset": "env+0x18", "width": 4, "meaning": "u16* out: *a6 = (u16)args[0x8]"},
+        {"param": -1, "offset": "env+0x1c", "width": 4, "meaning": "u16* out: *a7 = (u8)args[0xd]"}
+      ],
+      "notes": "TaskFunc state machine. case 0: alloc args(0x10) on heap 0xb, args->mode = env->unk8 ? 1 : 0 (str u32 @4), args->saveData = FieldSystem_GetSaveData(fs) (@0), (u8)args@0xc = env->unkC, (u8)args@0xf = env->unkE, PokeathlonCourse_LaunchApp(fs, args), sub_0203E30C(), state=1. case 1: if (!FieldSystem_ApplicationIsRunning(fs)) { state=2; FieldSystem_LoadFieldOverlay(fs); }. case 2: if (sub_020505C8(fs)) state=3. case 3: write 4 outputs (ldrb@0xe, ldrh@0xa, ldrh@8, ldrb@0xd from args), Heap_Free(args), Heap_Free(env), return TRUE. All other paths return FALSE."
+    }
+  ],
+  "imports": {
+    "Heap_AllocAtEnd": {"known_prototype": "void *Heap_AllocAtEnd(enum HeapID heapID, u32 size)", "header": "include/heap.h"},
+    "Heap_Free": {"known_prototype": "void Heap_Free(void *ptr)", "header": "include/heap.h"},
+    "TaskManager_Call": {"known_prototype": "void TaskManager_Call(TaskManager *taskman, TaskFunc taskFunc, void *env)", "header": "include/task.h"},
+    "TaskManager_GetFieldSystem": {"known_prototype": "FieldSystem *TaskManager_GetFieldSystem(TaskManager *taskManager)", "header": "include/task.h"},
+    "TaskManager_GetEnvironment": {"known_prototype": "void *TaskManager_GetEnvironment(TaskManager *taskManager)", "header": "include/task.h"},
+    "FieldSystem_ApplicationIsRunning": {"known_prototype": "BOOL FieldSystem_ApplicationIsRunning(FieldSystem *fieldSystem)", "header": "include/task.h"},
+    "FieldSystem_LoadFieldOverlay": {"known_prototype": "void FieldSystem_LoadFieldOverlay(FieldSystem *fieldSystem)", "header": "include/task.h"},
+    "sub_020505C8": {"known_prototype": "BOOL sub_020505C8(FieldSystem *fieldSystem)", "header": "include/task.h"},
+    "FieldSystem_GetSaveData": {"known_prototype": "SaveData *FieldSystem_GetSaveData(FieldSystem *fieldSystem)", "header": "include/field_system.h"},
+    "sub_0203E30C": {"known_prototype": "void sub_0203E30C()", "header": "include/field_system.h (line 207)"},
+    "PokeathlonCourse_LaunchApp": {"known_prototype": "void PokeathlonCourse_LaunchApp(FieldSystem *fieldSystem, PokeathlonCourseArgs *args)", "header": "include/launch_application.h (struct in include/pokeathlon/pokeathlon.h)"}
+  },
+  "shared_struct_hypotheses": [
+    {
+      "name": "PokeathlonCourseTaskEnv (new, file-local)",
+      "size_guess": "0x20 (Heap_AllocAtEnd size in sub_02095DF4)",
+      "fields": [
+        {"offset": "0x0", "width": 4, "meaning": "u32 state (0..3)"},
+        {"offset": "0x4", "width": 4, "meaning": "PokeathlonCourseArgs *args"},
+        {"offset": "0x8", "width": 4, "meaning": "a1 flag stored as full word (declare u32/int or BOOL; str not strb)"},
+        {"offset": "0xc", "width": 2, "meaning": "u16, = a3 param"},
+        {"offset": "0xe", "width": 2, "meaning": "u16, = a2 param"},
+        {"offset": "0x10", "width": 4, "meaning": "u16 *out0 -> *p = args u8 @0xe"},
+        {"offset": "0x14", "width": 4, "meaning": "u16 *out1 -> *p = args u16 @0xa"},
+        {"offset": "0x18", "width": 4, "meaning": "u16 *out2 -> *p = args u16 @0x8"},
+        {"offset": "0x1c", "width": 4, "meaning": "u16 *out3 -> *p = args u8 @0xd"}
+      ]
+    },
+    {
+      "name": "PokeathlonCourseArgs (EXISTING in include/pokeathlon/pokeathlon.h:40, size 0x10)",
+      "size_guess": "0x10 (Heap_AllocAtEnd size in sub_02095E30 case 0)",
+      "fields": [
+        {"offset": "0x0", "width": 4, "meaning": "SaveData *saveData (matches header)"},
+        {"offset": "0x4", "width": 4, "meaning": "u32 mode, str of BOOL (matches header)"},
+        {"offset": "0x8", "width": 2, "meaning": "read ldrh — needs u16 here, but header declares u8 field_8/field_9; ldrh against u8 field_8 won't emit. Either union or change to u16"},
+        {"offset": "0xa", "width": 2, "meaning": "read ldrh — currently inside filler_A[4]; needs u16 field"},
+        {"offset": "0xc", "width": 1, "meaning": "written strb (from a3); currently filler_A territory"},
+        {"offset": "0xd", "width": 1, "meaning": "read ldrb; currently filler_A territory"},
+        {"offset": "0xe", "width": 1, "meaning": "read ldrb; header shouldFreeHeap u8 — width matches but this file reads it as an output result value"},
+        {"offset": "0xf", "width": 1, "meaning": "written strb (from a2); not declared in header (implicit tail pad)"}
+      ]
+    }
+  ],
+  "risks": [
+    "include/unk_02095DF4.h already exists and is #included by matched src/scrcmd_c.c (ScrCmd_Pokeathlon, line 4587) — the sub_02095DF4 signature is load-bearing under -ipa; reuse it exactly, do not redeclare",
+    "PokeathlonCourseArgs in include/pokeathlon/pokeathlon.h needs new/retyped fields at 0x8 (u16), 0xA (u16), 0xC, 0xD, 0xF; that header is used by src/pokeathlon/pokeathlon_course.c and src/launch_application.c (both already matched) — verify field_8/field_9/filler_A are not byte-accessed there before changing, or add a union to preserve their codegen (IPA header-change hazard)",
+    "thumb switch jump table at _02095E54 (4 cases, .short offsets) — standard MWCC switch(state) lowering, write as plain switch, default falls through to return FALSE",
+    "sub_02095E30 must be static (file-local TaskFunc) but referenced via pool constant in sub_02095DF4 — forward-declare above sub_02095DF4; keep definition order matching asm",
+    "env field at 0x8 is stored with str (word) from a u8 param — declare the field 4 bytes wide (int/u32/BOOL), not u8, or MWCC emits strb",
+    "no .rodata/.data/.bss in this file"
+  ],
+  "notes": "Small 2-function field-task file (0x100 bytes total, both thumb): sub_02095DF4 is the public launcher called from the Pokeathlon script command; sub_02095E30 is its static TaskFunc state machine that launches the Pokeathlon course app via overlay, waits for it to finish, reloads the field overlay, and copies 4 result values from PokeathlonCourseArgs back through the script-var pointers. Heap constant 0xb = HEAP_ID_FIELD2 (include/constants/heap.h). New C file src/unk_02095DF4.c; header already exists."
+}

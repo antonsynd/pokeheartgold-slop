@@ -1,0 +1,225 @@
+{
+  "_comment": "Source of truth for accumulated matching knowledge. insights.md is GENERATED from this file by patterns.py gen — edit here, not there. Add new entries with patterns.py add (or edit this JSON directly), then regenerate. Query with: patterns.py query --grep <word> [--category <cat>].",
+  "categories": [
+    {
+      "id": "compiler",
+      "title": "Compiler: MWCC 2.0/sp2p2"
+    },
+    {
+      "id": "codegen",
+      "title": "General Codegen"
+    },
+    {
+      "id": "matching-tricks",
+      "title": "Matching Tricks"
+    },
+    {
+      "id": "ipa",
+      "title": "IPA (-ipa file) Behavior"
+    },
+    {
+      "id": "data-sections",
+      "title": "Data Sections"
+    },
+    {
+      "id": "file-patterns",
+      "title": "Recurring File/Module Patterns"
+    },
+    {
+      "id": "nonmatching",
+      "title": "NONMATCHING Fallback"
+    },
+    {
+      "id": "tooling",
+      "title": "Tooling & Build Workflow"
+    }
+  ],
+  "patterns": [
+    {
+      "id": "mwcc-flags",
+      "category": "compiler",
+      "title": "Target and flags",
+      "body": "- Target: ARM946E-S (ARMv5TE), primarily Thumb mode\n- Flags: `-O4,p -enum int -lang c99 -char signed -inline on,noauto -interworking`\n- `-O4,p` means level 4 optimization with peephole; this aggressively reorders code\n- `-inline on,noauto` means inlining is allowed but only when explicitly requested (via `inline` keyword or `__attribute__((always_inline))`)"
+    },
+    {
+      "id": "regalloc-order",
+      "category": "codegen",
+      "title": "Register allocation follows declaration order",
+      "body": "- MWCC allocates registers in order: r0-r3 for arguments, r4-r7 for locals (Thumb), r4-r11 for locals (ARM); arguments beyond 4 on the stack; return values in r0 (r0-r1 for 64-bit).\n- MWCC assigns callee-saved registers based on variable declaration order in the function. Reordering declarations can swap registers and break matching.\n- When the asm uses r6 for variable A and r7 for variable B, try declaring B before A (MWCC sometimes allocates in reverse declaration order).\n- Moving a declaration from block scope to function scope changes register lifetime and can affect allocation — match the original variable scoping as closely as C89 allows.\n- Functions with many locals: register pressure causes spills to stack in specific order; declaration order is load-bearing."
+    },
+    {
+      "id": "stack-frame",
+      "category": "codegen",
+      "title": "Stack frame shape",
+      "body": "- `push {r4-r7, lr}` / `pop {r4-r7, pc}` is typical Thumb prologue/epilogue.\n- `sub sp, #N` for local variables; `add sp, #N` before return; stack variables accessed via `sp + offset`."
+    },
+    {
+      "id": "control-flow",
+      "category": "codegen",
+      "title": "Control flow lowering",
+      "body": "- `if/else` compiles to `cmp + bCC`; `switch` compiles to branch table or cascading compares depending on density.\n- Loops compile test-at-top or test-at-bottom; MWCC often hoists loop-invariant loads outside the loop body.\n- MWCC sometimes emits `bx` to switch between ARM/Thumb for interworking."
+    },
+    {
+      "id": "data-access",
+      "category": "codegen",
+      "title": "Data access shapes",
+      "body": "- Global data accessed via `ldr rN, =address` (literal pool).\n- Struct member access: `ldr rN, [rBase, #offset]`; array access: index * element_size + base.\n- Load width reveals the type: `ldrb`=u8, `ldrh`=u16, `ldrsh`=s16, `ldrsb`=s8, `ldr`=u32/pointer."
+    },
+    {
+      "id": "mwcc-idioms",
+      "category": "codegen",
+      "title": "Common MWCC idioms",
+      "body": "- `mov r0, #0` / `mov r0, #1` for FALSE/TRUE returns.\n- `add rN, rM, #0` is `mov rN, rM` in Thumb; `lsl r0, r0, #0` is a NOP MWCC sometimes emits."
+    },
+    {
+      "id": "decl-order-tricks",
+      "category": "matching-tricks",
+      "title": "Small source changes that move codegen",
+      "body": "- Variable declaration order affects register allocation.\n- `u32` vs `int` can change sign-extension instructions; `size / 2` vs `size >> 1` can differ at -O4 — try both.\n- Ternary `a ? b : c` can produce different code than `if/else`.\n- Assigning to a temp variable vs direct use changes register lifetimes.\n- `NELEMS(array)` (sizeof/sizeof) matches constant folding.\n- Casting to `(void)` suppresses warnings without changing codegen."
+    },
+    {
+      "id": "param-narrowing",
+      "category": "matching-tricks",
+      "title": "u16 parameter narrowing tells you the original type",
+      "body": "- A `u16` param makes MWCC insert `lsls rN,rN,#16; lsrs rN,rN,#16` narrowing at function entry; `int` params skip it. No narrowing at entry but `ldrh` use inside → the original param was likely `int` (or the caller's header said `int`).\n- Calling a `u16`-declared function with an `int` argument inserts narrowing at the call site. No narrowing in the asm → the callee's prototype used `int`.\n- Tail-call wrappers must forward argument types exactly — changing `int` → `u16` inserts unwanted narrowing before the tail call."
+    },
+    {
+      "id": "switch-case-source-order",
+      "category": "matching-tricks",
+      "title": "Switch case bodies are emitted in source order",
+      "body": "MWCC emits switch case code blocks in **source order**, not numeric order. Jump-table entries are always numeric, but the code they point to follows source layout — reorder the C cases to match the asm's block order. Fall-through patterns also depend on case order."
+    },
+    {
+      "id": "branch-or-vs-and",
+      "category": "matching-tricks",
+      "title": "Branch polarity reveals || vs &&",
+      "body": "- `if (a || b) { body }` → `cmp a; bne body; cmp b; beq skip`\n- `if (a && b) { body }` → `cmp a; beq skip; cmp b; beq skip`\nThe branch direction (beq vs bne after comparisons) tells you which logical operator was used; getting it wrong produces same-size code with different branch instructions."
+    },
+    {
+      "id": "gf-assert-direction",
+      "category": "matching-tricks",
+      "title": "GF_ASSERT and if/else direction",
+      "body": "`GF_ASSERT(cond)` expands to `if (!cond) GF_AssertFail()` — the assert-fail path is the else branch. `cmp; beq over_assert; bl AssertFail` corresponds to `if (flag == 0) { GF_AssertFail(); }`, not `GF_ASSERT(flag != 0)` — both are logically equivalent but produce different branch polarity. Swapping which path comes first changes encoding."
+    },
+    {
+      "id": "bitfield-lsls-lsrs",
+      "category": "matching-tricks",
+      "title": "lsls/lsrs pairs are bitfield extractions",
+      "body": "`lsls rN,rN,#K; lsrs rN,rN,#K` extracts the low (32-K) bits. Use a bitfield struct member (e.g. `u32 fileId : 24`) rather than `& 0x00FFFFFF` — the mask may generate `ldr + and` with a literal-pool constant instead. `(x << 8) >> 8` can also produce the pattern but may not match. Bit packing order is compiler-specific: use bitfield structs, not masks."
+    },
+    {
+      "id": "loop-shapes",
+      "category": "matching-tricks",
+      "title": "Loop shape selection",
+      "body": "- `for (i = 0; i < N; i++)` may compile as test-at-bottom (do/while shape) at -O4; if the count can be zero there's an early-exit check.\n- Byte-clearing loops (`strb; adds; subs; bne`) need C that puts decrement+branch at the bottom: `do { } while (--n)` vs `while (n != 0) { n--; }` produce different patterns — trial and error is sometimes required."
+    },
+    {
+      "id": "param-copyprop-cmp",
+      "category": "matching-tricks",
+      "title": "cmp r4 vs cmp r0 after a parameter copy (copy propagation)",
+      "body": "When a parameter (r0) is copied to a callee-saved register (`adds r4, r0, #0`), MWCC copy-propagates: comparisons on the copy are substituted back to r0. `adds r4,r0,#0; cmp r4,#N` ONLY occurs when r0 is a **function return value** saved before a later call would clobber it. If the target asm shows the cmp-on-copy pattern at function entry with no preceding bl, pure C cannot produce it — use NONMATCHING (seen in unk_0200B150.s OamManager_Create)."
+    },
+    {
+      "id": "ipa-shared-headers",
+      "category": "ipa",
+      "title": "Shared-header signatures are load-bearing across compilation units",
+      "body": "MWCC `-ipa file` analyzes at file scope: changing a function's return or parameter types in a shared header causes cascading codegen changes in ALL functions in any compilation unit that calls it — even callers that discard the return value. If matched file A.c includes header H.h, you cannot change any declaration in H.h that A.c uses (even `void PlayBGM(u16)` → `BOOL PlayBGM(u16)`) without risking A.c's match. Workarounds: decompile header-sharing files as a group (sound.h family), fix all signatures in one coordinated commit, or NONMATCHING the conflicting functions."
+    },
+    {
+      "id": "ipa-static-no-escape",
+      "category": "ipa",
+      "title": "Non-static does NOT prevent IPA",
+      "body": "Making functions non-static does **not** stop `-ipa file` from optimizing across them — IPA analyzes all bodies in the compilation unit regardless of linkage. The objdump symbol table showing 'g' (global) on asm objects just means the assembler defaults labels to global, not that the original C was non-static. static vs non-static does slightly change register allocation in some cases, but never disables IPA CSE."
+    },
+    {
+      "id": "ipa-cse-literal-pool",
+      "category": "ipa",
+      "title": "IPA CSE caches repeated literal-pool addresses",
+      "body": "When a caller passes the same static-data address to a callee multiple times, MWCC may cache those addresses in callee-saved registers across calls, displacing other variables to the stack. The original binary may not do this if the original source structure prevented it (structure unknown). This is the blocking issue in unk_0200FA24 (BeginNormalPaletteFade calls sub_0200FE84 twice with identical pointer args)."
+    },
+    {
+      "id": "section-mapping",
+      "category": "data-sections",
+      "title": "Section ↔ C mapping",
+      "body": "- `.rodata` = const arrays/tables (use `const`); `.data` = initialized mutable globals; `.bss` = zero-initialized globals.\n- Global variable order matters: declarations must match the asm order, and `.rodata` array order must match the section layout (an all-functions-match file can still fail ROM SHA1 on rodata order — see unk_0201010C).\n- `.balign 4, 0` pads to 4-byte boundary — use struct padding or explicit alignment.\n- ARM is little-endian: `.byte 0x25, 0x00, 0x00, 0x00` = u32 `0x00000025`."
+    },
+    {
+      "id": "data-only-files",
+      "category": "data-sections",
+      "title": "Data-only files",
+      "body": "Some asm files contain only `.rodata`/`.data` sections. They need C files with const (or non-const) arrays matching the exact byte layout:\n```c\n#include \"global.h\"\n\nconst u8 sDataTable[] = {\n    0x25, 0x00, 0x00, 0x00,\n};\n```"
+    },
+    {
+      "id": "bss-sizing",
+      "category": "data-sections",
+      "title": "BSS sizing with raw byte arrays",
+      "body": "When asm BSS symbol sizes don't match `sizeof(StructType)`, use a raw `u8 array[0xNN]` and cast at usage sites: `*(StructType *)array`. Multiple BSS variables become separate `.bss` sections in the object but the linker merges them — the total size must match."
+    },
+    {
+      "id": "contiguous-arrays-base-offset",
+      "category": "data-sections",
+      "title": "Contiguous data arrays accessed via base+offset",
+      "body": "When multiple data labels are accessed from a common base pointer (e.g. `ldr r0, =_0210F64C; str r1, [r0, #0x10]` targeting `_0210F65C`), the labels are contiguous. Declare them as separate static arrays in order — MWCC lays them out contiguously. Stores use base symbol + offset while call arguments use the target symbol directly; both produce correct literal pools as long as the arrays are separate declarations (not one big array with #defines)."
+    },
+    {
+      "id": "task-callback-pattern",
+      "category": "file-patterns",
+      "title": "Task callback pattern (field system)",
+      "body": "1. A public `sub_XXXX` allocates a work struct via `Heap_AllocAtEnd`, fills it, calls `TaskManager_Call(man, callback, env)`.\n2. A static callback uses `TaskManager_GetFieldSystem` + `TaskManager_GetEnvironment`, implements a state machine (switch on `env->state`), returns TRUE when done after `Heap_Free`.\n- The callback is referenced by literal pool (`_XXXX: .word sub_YYYY`) in the caller.\n- Work struct fields can be inferred from how the caller stores arguments and the callback reads offsets."
+    },
+    {
+      "id": "save-chunk-pattern",
+      "category": "file-patterns",
+      "title": "Save chunk pattern",
+      "body": "1. `sub_XXXX_sizeof(void)` returns `sizeof(StructType)` — trivial.\n2. `sub_XXXX_init(StructType *a0)` clears with `MI_CpuClear32`/`MI_CpuClear8` then sets defaults.\n3. A getter calls `SaveArray_Get(saveData, SAVE_INDEX)` and returns the pointer; field getters/setters are trivial.\n- `save_arrays.c` registers these via `DECL_CHUNK_EX` — replace the macro with an `#include` of the new header and remove the `DECL_CHUNK_EX` line. Check the index in `include/constants/save_arrays.h`."
+    },
+    {
+      "id": "overlay-notes",
+      "category": "file-patterns",
+      "title": "Overlay specifics",
+      "body": "- Overlay functions are named `ovNN_XXXXXXXX` (NN = overlay number, XXXXXXXX = address); overlay code loads at specific VMAs visible in labels.\n- Overlay dependencies are declared in main.lsf (`After` clauses); each overlay has its own .sbin SHA1."
+    },
+    {
+      "id": "public-vs-static",
+      "category": "file-patterns",
+      "title": "Public vs static visibility",
+      "body": "Always check `asm/include/<file>.inc` `.public` declarations before marking functions static. Public functions must NOT be static (overlays call static-module functions by name → linker Undefined errors otherwise) and belong in `include/<file>.h`. The `.public` list mixes exports and imports — cross-reference with `thumb_func_start`/`arm_func_start` to split them."
+    },
+    {
+      "id": "enum-casts",
+      "category": "file-patterns",
+      "title": "Enum casts required by -W noimplicitconv",
+      "body": "MWCC rejects implicit int→enum conversions:\n- `NarcId`: `GfGfxLoader_LoadCharData((NarcId)0x26, ...)`\n- `GFPalSlotOffset`: cast computed expressions like `(enum GFPalSlotOffset)(palette_num << 5)`\n- Any computed integer passed to an enum parameter needs an explicit cast."
+    },
+    {
+      "id": "nonmatching-inline-asm-syntax",
+      "category": "nonmatching",
+      "title": "NONMATCHING inline asm syntax (MWCC)",
+      "body": "When using `asm void FuncName(...)`:\n- `ldr rN, =0xVALUE` for literal-pool constants (NOT `ldr rN, label` + `label: .word`); `ldr rN, =FuncName` for function pointers.\n- `bl FuncName` works directly; local labels (`_0201013A:`) work for branches.\n- `.balign` directives are NOT supported — remove them.\n- Wrap in `// clang-format off` / `// clang-format on`, and gate the C version with `#ifdef NONMATCHING`."
+    },
+    {
+      "id": "objdiff-usage",
+      "category": "tooling",
+      "title": "objdiff.py usage and reliability",
+      "body": "```bash\ncp build/heartgold.us/asm/foo.o /tmp/foo_asm.o   # before flipping main.lsf\npython3 tools/decomp_harness/objdiff.py /tmp/foo_asm.o build/heartgold.us/src/foo.o\npython3 tools/decomp_harness/objdiff.py ... --summary      # also checks .rodata/.data/.bss\npython3 tools/decomp_harness/objdiff.py ... --bytes sub_X  # per-function byte diff\n```\n- Plain function MATCH is based on **size**, not bytes — same-size functions with different registers report as MATCH. Verify critical functions with `--disasm FN`/`--bytes FN`.\n- `--summary` checks data sections too; use it when pre-existing build errors block full-ROM `make compare`."
+    },
+    {
+      "id": "build-macos",
+      "category": "tooling",
+      "title": "Build workflow on macOS",
+      "body": "- Always `chiri pkg -- build` (or `-- compare`), never raw `make -C` — Wine CWD resolution breaks through symlinks and `.d` files get stale `Z:` paths (make spins at 100% CPU).\n- Fast iteration: `chiri pkg -- build --target main --no-compare` (ARM9 only), then `chiri pkg -- compare`.\n- Corrupted `.d` files: `find build -name \"*.d\" -delete` then `chiri pkg -- tidy` and rebuild.\n- Prerequisites: `brew install gnu-sed arm-gcc-bin` (osx-cross/homebrew-arm tap)."
+    },
+    {
+      "id": "recomp-tool",
+      "category": "tooling",
+      "title": "recomp.sh build recovery",
+      "body": "`./tools/decomp_harness/recomp.sh` handles build recovery: `--kill` (stale make/wine/mwcc), `--fix-d` (corrupted .d files), `--full` (clean rebuild), no args = kill + fix .d + tidy + rebuild main. Use when builds hang at 100% CPU, error after an asm→C switch in main.lsf, or won't restart after an interrupt."
+    },
+    {
+      "id": "misc-difficult-patterns",
+      "category": "matching-tricks",
+      "title": "Other known difficult patterns",
+      "body": "- Nested struct initialization may need exact field ordering to match.\n- Inline functions from headers must match exactly as the compiler would expand them (e.g. MI_CpuClearFast/MI_CpuCopyFast wrappers inline into MIi_* tail calls — call the wrapper, not MIi_* directly).\n- Functions with a `_` prefix are often compiler-generated or SDK functions (`_s32_div_f`)."
+    }
+  ]
+}

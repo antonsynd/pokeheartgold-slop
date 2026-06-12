@@ -1,0 +1,95 @@
+{
+  "file": "asm/overlay_01_021EA6C4.s",
+  "functions": [
+    {
+      "name": "ov01_021EA724",
+      "mode": "thumb",
+      "signature_guess": "UnkStruct_ov01_021EA724 *ov01_021EA724(void)",
+      "confidence": "high",
+      "callees": ["Heap_Alloc", "GF_AssertFail"],
+      "notes": "Heap_Alloc(HEAP_ID 4, 8); GF_ASSERT(ptr != NULL); returns ptr. Allocates the 8-byte two-pointer container used by every other function in this file. Caller stores result at [unkStruct + 0x8AC]."
+    },
+    {
+      "name": "ov01_021EA73C",
+      "mode": "thumb",
+      "signature_guess": "void ov01_021EA73C(const char *path, UnkStruct_ov01_021EA724 *a1)",
+      "confidence": "high",
+      "callees": ["FS_InitFile", "FS_OpenFile", "FS_ReadFile", "FS_CloseFile", "Heap_Alloc", "GF_AssertFail"],
+      "struct_accesses": [
+        {"param": 1, "offset": "0x0", "width": 4, "meaning": "ptr from Heap_Alloc(4, count1*4); filled by FS_ReadFile"},
+        {"param": 1, "offset": "0x4", "width": 4, "meaning": "ptr from Heap_Alloc(4, count0*4); filled by FS_ReadFile"}
+      ],
+      "notes": "Stack frame 0x4c: FSFile at sp+4 (sizeof(FSFile)=0x48), u16 header[2] at sp+0. File format: reads 2 bytes into sp+2 (count for array0), then 2 bytes into sp+0 (count for array1); allocates count*4 bytes for each, reads both arrays, closes file. Asserts every FS_ReadFile >= 0 and FS_OpenFile success (assert-only branch on open failure, still pops normally). HEAP_ID 4 hardcoded. Watch the dual-epilogue (early-exit at _021EA7D8 after assert) — likely GF_AssertFail then return shape."
+    },
+    {
+      "name": "ov01_021EA7E0",
+      "mode": "thumb",
+      "signature_guess": "void ov01_021EA7E0(UnkStruct_ov01_021EA724 *a0)",
+      "confidence": "high",
+      "callees": ["Heap_Free"],
+      "struct_accesses": [
+        {"param": 0, "offset": "0x4", "width": 4, "meaning": "second array ptr, freed first"},
+        {"param": 0, "offset": "0x0", "width": 4, "meaning": "first array ptr, freed second"}
+      ],
+      "notes": "Frees [a0+4], then [a0+0], then a0 itself. Caller (asm/overlay_01_021FB878.s) null-checks before calling."
+    },
+    {
+      "name": "ov01_021EA7F8",
+      "mode": "thumb",
+      "signature_guess": "void ov01_021EA7F8(int index, UnkStruct_ov01_021EA724 *a1, u16 *out)",
+      "confidence": "high",
+      "struct_accesses": [
+        {"param": 1, "offset": "0x0", "width": 4, "meaning": "array0 base; *out = first u16 of 4-byte entry at index"}
+      ],
+      "notes": "Leaf; `ldrh r0, [r1, r0<<2]` then `strh`. index not narrowed, so int/u32 param. out is u16* (callers pass stack addrs and ldrh the result)."
+    },
+    {
+      "name": "ov01_021EA804",
+      "mode": "thumb",
+      "signature_guess": "void ov01_021EA804(int index, UnkStruct_ov01_021EA724 *a1, u16 *out0, u16 *out1)",
+      "confidence": "high",
+      "struct_accesses": [
+        {"param": 1, "offset": "0x0", "width": 4, "meaning": "array0 base; *out0 = entry[index].first u16, *out1 = entry[index].second u16 (offset +2)"}
+      ],
+      "notes": "push {r3, r4} prologue — small leaf; reloads [r1] between the two ldrh's, consistent with straightforward C: `*out0 = a1->arr0[i].a; *out1 = a1->arr0[i].b;` where arr0 entry is a 2x u16 struct."
+    },
+    {
+      "name": "ov01_021EA81C",
+      "mode": "thumb",
+      "signature_guess": "u16 *ov01_021EA81C(int index, UnkStruct_ov01_021EA724 *a1)",
+      "confidence": "high",
+      "struct_accesses": [
+        {"param": 1, "offset": "0x4", "width": 4, "meaning": "array1 base; returns array1 + index*4"}
+      ],
+      "notes": "Returns pointer into array1: `return &a1->arr1[index]` where arr1 entries are 4 bytes (caller in overlay_01_021F3610.s indexes the returned pointer with ldrh at +0 and +2, so entries are u16 pairs). Pick the pair-struct pointer return type to keep `lsl #2` scaling natural."
+    }
+  ],
+  "imports": {
+    "Heap_Alloc": {"known_prototype": "void *Heap_Alloc(enum HeapID heapID, u32 size)", "header": "include/heap.h"},
+    "Heap_Free": {"known_prototype": "void Heap_Free(void *ptr)", "header": "include/heap.h"},
+    "GF_AssertFail": {"known_prototype": "void GF_AssertFail(void)", "header": "include/error_handling.h (use GF_ASSERT macro)"},
+    "FS_InitFile": {"known_prototype": "void FS_InitFile(FSFile *p_file)", "header": "lib/include/nitro/fs/file.h"},
+    "FS_OpenFile": {"known_prototype": "BOOL FS_OpenFile(FSFile *p_file, const char *path)", "header": "lib/include/nitro/fs/file.h"},
+    "FS_CloseFile": {"known_prototype": "BOOL FS_CloseFile(FSFile *p_file)", "header": "lib/include/nitro/fs/file.h"},
+    "FS_ReadFile": {"known_prototype": "int FS_ReadFile(FSFile *p_file, void *dst, s32 len)", "header": "lib/include/nitro/fs/file.h"}
+  },
+  "shared_struct_hypotheses": [
+    {
+      "name": "UnkStruct_ov01_021EA724",
+      "size_guess": "0x8 (Heap_Alloc size in ov01_021EA724)",
+      "fields": [
+        {"offset": "0x0", "width": 4, "meaning": "ptr to array of 4-byte entries (each = two u16s); element accessed by ov01_021EA7F8/ov01_021EA804"},
+        {"offset": "0x4", "width": 4, "meaning": "ptr to array of 4-byte entries (u16 pairs); ov01_021EA81C returns &arr[index]"}
+      ]
+    }
+  ],
+  "risks": [
+    "All exports are called only from still-asm overlays (asm/overlay_01_021F3610.s, asm/overlay_01_021FB878.s) — no existing C header constrains signatures, so the new header is the source of truth; get the u16*-out params right for future IPA",
+    "ov01_021EA73C has duplicated epilogue (assert path at _021EA7D8) — match via early return after GF_ASSERT-style call, not fallthrough",
+    "FSFile local (0x48 bytes at sp+4) plus a separate u16[2] at sp+0 — declaration order of locals matters for the 0x4c frame layout",
+    "GF_ASSERT(ptr != NULL) after each Heap_Alloc uses the bne-skip idiom; use GF_ASSERT macro, not explicit if",
+    "Hardcoded heap ID 4 — use the enum HeapID constant for value 4, codegen identical",
+    "No rodata/data/bss in this file; no save_arrays.c involvement"
+  ],
+  "notes": "Tiny self-contained file-backed lookup-table module (load a 2-array binary file by path, query u16 entries, free). All thumb, ~0x100 bytes total. Callers: ov01_021FB878.s creates it via ov01_021EA724, sprintf's a filename (ov01_02209A88/ov01_02209AB4 format strings) and loads with ov01_021EA73C, frees via ov01_021EA7E0; ov01_021F3610.s queries via ov01_021EA7F8/ov01_021EA804/ov01_021EA81C during 3D model rendering. C file function order must follow asm order: 724, 73C, 7E0, 7F8, 804, 81C."
+}

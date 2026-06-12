@@ -1,0 +1,123 @@
+{
+  "file": "asm/unk_0202DB34.s",
+  "functions": [
+    {
+      "name": "sub_0202DB34",
+      "mode": "thumb",
+      "signature_guess": "void *sub_0202DB34(SaveData *saveData)",
+      "confidence": "high",
+      "callees": ["SaveArray_Get"],
+      "notes": "Tail call: return SaveArray_Get(saveData, SAVE_UNK_22 /* 0x16, see include/constants/save_arrays.h:28 */). HAZARD: include/unk_0202DB34.h ALREADY EXISTS and declares it as 'int sub_0202DB34(SaveData *saveData);' and matched src/launch_application.c:1176 stores the result into 'int unk0' (include/launch_application_internal.h:128). Keep the existing 'int' return type (or cast) to avoid touching the shared header and breaking IPA codegen of launch_application.c. 'int f(...) { return (int)SaveArray_Get(...); }' or declare returning the chunk pointer only if the header stays binary-identical for callers. Pool literal: SaveArray_Get address."
+    },
+    {
+      "name": "sub_0202DB40",
+      "mode": "thumb",
+      "signature_guess": "u32 sub_0202DB40(void)",
+      "confidence": "high",
+      "notes": "Chunk sizeof function: returns 0xF8. Registered as SAVESIZEFN in src/save_arrays.c:193 (DECL_CHUNK_EX at line 49). Write as 'return sizeof(UnkStruct_0202DB34);' with the struct sized 0xF8."
+    },
+    {
+      "name": "sub_0202DB44",
+      "mode": "thumb",
+      "signature_guess": "void sub_0202DB44(UnkStruct_0202DB34 *chunk)",
+      "confidence": "high",
+      "callees": ["MIi_CpuClearFast"],
+      "notes": "Chunk init: tail call MIi_CpuClearFast(0, chunk, 0xF8). Matches inlined MI_CpuClearFast(chunk, sizeof(*chunk)) from lib/include/nitro/mi/memory.h:40. Registered as SAVEINITFN in src/save_arrays.c:194."
+    },
+    {
+      "name": "sub_0202DB54",
+      "mode": "thumb",
+      "signature_guess": "u16 sub_0202DB54(UnkStruct_0202DB34 *chunk)",
+      "confidence": "high",
+      "struct_accesses": [{"param": 0, "offset": "0xec", "width": 2, "meaning": "occupancy/deposited flag; callers in overlay_70 test result against 0"}],
+      "notes": "Getter, ldrh [r0+0xec]. Could also be BOOL-ish; callers (asm/overlay_70.s:17373, 17417, 18728) only compare to 0."
+    },
+    {
+      "name": "sub_0202DB5C",
+      "mode": "thumb",
+      "signature_guess": "void sub_0202DB5C(UnkStruct_0202DB34 *chunk, u16 value)",
+      "confidence": "medium",
+      "struct_accesses": [{"param": 0, "offset": "0xec", "width": 2, "meaning": "setter for the 0xEC flag"}],
+      "notes": "strh r1 directly, no entry narrowing (stores never need it). All observed call sites pass constant 0 (overlay_70:17405, 17441, 17684, 18358, 18491), so u16 vs int is indistinguishable at call sites; u16 is the conventional save-chunk setter type here."
+    },
+    {
+      "name": "sub_0202DB64",
+      "mode": "thumb",
+      "signature_guess": "void sub_0202DB64(UnkStruct_0202DB34 *chunk, Pokemon *dest)",
+      "confidence": "high",
+      "callees": ["MIi_CpuCopyFast"],
+      "struct_accesses": [{"param": 0, "offset": "0x0", "width": 236, "meaning": "stored Pokemon (0xEC bytes), copied out"}],
+      "notes": "Tail call MIi_CpuCopyFast(chunk, dest, 0xEC) == inlined MI_CpuCopyFast(chunk, dest, sizeof(Pokemon)). Callers pair it with AllocMonZeroed (overlay_70:17377-17382), confirming dest is Pokemon* and 0xEC == sizeof(Pokemon)."
+    },
+    {
+      "name": "sub_0202DB70",
+      "mode": "thumb",
+      "signature_guess": "void sub_0202DB70(UnkStruct_0202DB34 *chunk, const Pokemon *src)",
+      "confidence": "high",
+      "callees": ["MIi_CpuCopyFast"],
+      "struct_accesses": [{"param": 0, "offset": "0x0", "width": 236, "meaning": "stored Pokemon, copied in"}],
+      "notes": "Args swapped before tail call: MIi_CpuCopyFast(src=a1, dst=a0, 0xEC) == MI_CpuCopyFast(src, chunk, sizeof(Pokemon)). The 3-instruction swap (add r2,r0; add r0,r1; add r1,r2) is what MWCC emits for the inlined wrapper with swapped operands."
+    },
+    {
+      "name": "sub_0202DB80",
+      "mode": "thumb",
+      "signature_guess": "u32 sub_0202DB80(UnkStruct_0202DB34 *chunk)",
+      "confidence": "high",
+      "struct_accesses": [{"param": 0, "offset": "0xf0", "width": 4, "meaning": "packed date word A; ov70_0223BFA8 unpacks it into 4 bytes"}]
+    },
+    {
+      "name": "sub_0202DB88",
+      "mode": "thumb",
+      "signature_guess": "void sub_0202DB88(UnkStruct_0202DB34 *chunk, u32 value)",
+      "confidence": "high",
+      "struct_accesses": [{"param": 0, "offset": "0xf0", "width": 4, "meaning": "setter for 0xF0; ov70_02240CA0 stores a u32 packed from 4 RTC-date bytes"}]
+    },
+    {
+      "name": "sub_0202DB90",
+      "mode": "thumb",
+      "signature_guess": "u32 sub_0202DB90(UnkStruct_0202DB34 *chunk)",
+      "confidence": "high",
+      "struct_accesses": [{"param": 0, "offset": "0xf4", "width": 4, "meaning": "packed date word B (selected when caller flag==1, else 0xF0)"}]
+    },
+    {
+      "name": "sub_0202DB98",
+      "mode": "thumb",
+      "signature_guess": "void sub_0202DB98(UnkStruct_0202DB34 *chunk, u32 value)",
+      "confidence": "high",
+      "struct_accesses": [{"param": 0, "offset": "0xf4", "width": 4, "meaning": "setter for 0xF4"}]
+    },
+    {
+      "name": "sub_0202DBA0",
+      "mode": "thumb",
+      "signature_guess": "u16 sub_0202DBA0(UnkStruct_0202DB34 *chunk)",
+      "confidence": "high",
+      "struct_accesses": [{"param": 0, "offset": "0xee", "width": 2, "meaning": "u16 associated with the stored mon; passed as 3rd arg to ov70_02240A7C alongside the mon (possibly species or level)"}]
+    }
+  ],
+  "imports": {
+    "SaveArray_Get": {"known_prototype": "void *SaveArray_Get(SaveData *saveData, int id)", "header": "include/save.h"},
+    "MIi_CpuClearFast": {"known_prototype": "void MIi_CpuClearFast(register u32 value, register u32 *dst, register u32 size)", "header": "lib/include/nitro/mi/memory.h"},
+    "MIi_CpuCopyFast": {"known_prototype": "void MIi_CpuCopyFast(const register u32 *src, register u32 *dst, register u32 size)", "header": "lib/include/nitro/mi/memory.h"}
+  },
+  "shared_struct_hypotheses": [
+    {
+      "name": "UnkStruct_0202DB34",
+      "size_guess": "0xF8 (sub_0202DB40 return / MIi_CpuClearFast size)",
+      "fields": [
+        {"offset": "0x0", "width": 236, "meaning": "Pokemon mon (sizeof(Pokemon) == 0xEC; copied to/from AllocMonZeroed buffers)"},
+        {"offset": "0xec", "width": 2, "meaning": "u16 occupied/deposited flag (tested != 0 before reading the mon)"},
+        {"offset": "0xee", "width": 2, "meaning": "u16 unkEE (read by sub_0202DBA0)"},
+        {"offset": "0xf0", "width": 4, "meaning": "u32 packed date A (4 bytes ORed together from RTC date in ov70_02240CA0)"},
+        {"offset": "0xf4", "width": 4, "meaning": "u32 packed date B"}
+      ]
+    }
+  ],
+  "risks": [
+    "include/unk_0202DB34.h already exists with 'int sub_0202DB34(SaveData *saveData)' and is consumed by matched src/launch_application.c (UnkStruct_0203F844.unk0 is int) — do NOT change that declaration's binary signature; add new declarations to the same header instead",
+    "src/save_arrays.c:49 DECL_CHUNK_EX(sub_0202DB40, sub_0202DB44) must be replaced with #include of the header (entry at lines 190-195 uses SAVE_UNK_22 with SAVESIZEFN/SAVEINITFN casts); sub_0202DB44 param type just needs to be pointer-compatible",
+    "All 12 functions are tiny tail-call/accessor bodies; per insights.md, tail-call wrappers must forward argument types exactly — a u16 param where the asm lacks lsls/lsrs narrowing would mismatch (none of these have narrowing, but none take non-constant u16 args either)",
+    "sub_0202DB44/64/70 must be written via the inline MI_CpuClearFast/MI_CpuCopyFast wrappers from nitro/mi/memory.h so MWCC inlines them into the observed tail calls; calling MIi_* directly with wrong arg order will not match sub_0202DB70's register swap",
+    "Function order in C must be: DB34, DB40, DB44, DB54, DB5C, DB64, DB70, DB80, DB88, DB90, DB98, DBA0; no rodata/data/bss in this file"
+  ],
+  "notes": "Classic save-chunk accessor file (save block SAVE_UNK_22 == 22). All 12 .public symbols with thumb_func_start are local exports; the only imports are SaveArray_Get, MIi_CpuClearFast, MIi_CpuCopyFast. The chunk stores one full Pokemon plus a deposit flag, a u16, and two packed-date u32s; sole consumers are src/launch_application.c (getter) and asm/overlay_70.s (the OVY_70 app launched by sub_0203F844 with party/PC/pokedex/wifiHistory context — likely a Wi-Fi trade/GTS-style feature). No .data/.rodata/.bss sections, no jump tables, no .balign issues beyond function padding. Expected to be an easy full match if the existing header's int-return declaration is preserved."
+}

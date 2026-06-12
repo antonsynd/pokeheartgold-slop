@@ -1,0 +1,23 @@
+{
+  "_comment": "Hand-curated blocker registry. 'files_blocked' lists asm files whose decomp failed on this blocker; gating estimates (which pending files this blocker likely also affects) are computed by coverage_ledger.py from the symbol graph at generation time. Keep fix_plan current — fixing the blocker that gates the most files is worth more than individual decomps.",
+  "blockers": [
+    {
+      "id": "ipa-shared-headers",
+      "description": "MWCC -ipa file: changing a signature in a shared header cascades codegen changes into every already-matched caller in other compilation units. Files sharing many declarations (sound.h family) must be decompiled together or after a coordinated header fix.",
+      "files_blocked": ["asm/unk_02005D10.s", "asm/unk_0200FA24.s"],
+      "fix_plan": "Identify the header-sharing cluster (sound.h / sound_chatot.h consumers), fix all signatures in one change, and re-match affected files in a single commit. Alternatively decompile the cluster as a group."
+    },
+    {
+      "id": "staged-rodata-and-prototype-fixes",
+      "description": "src/unk_0201010C.c static const arrays are in the wrong .rodata order (all 127 functions byte-match but ROM SHA1 fails), and 5 files have staged prototype-conflict fixes in the working tree. Until committed together with a passing SHA1, full-ROM compare cannot be used to verify new decomps — use objdiff.py --summary instead.",
+      "files_blocked": [],
+      "fix_plan": "Reorder the static const arrays in src/unk_0201010C.c to match the asm .rodata layout, commit together with the 5 staged prototype fixes, and confirm chiri pkg -- compare passes."
+    },
+    {
+      "id": "param-copyprop-cmp",
+      "description": "MWCC copy-propagates parameter copies: 'adds r4, r0, #0; cmp r4, #N' at function entry cannot be produced from pure C (MWCC substitutes back to r0). Affected functions need the NONMATCHING inline-asm fallback.",
+      "files_blocked": ["asm/unk_0200B150.s"],
+      "fix_plan": "Use NONMATCHING inline asm for the single affected function (OamManager_Create) and re-land the file with the other 10/11 matched functions in C."
+    }
+  ]
+}

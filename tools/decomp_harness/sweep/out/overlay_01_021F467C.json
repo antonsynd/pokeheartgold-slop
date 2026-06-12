@@ -1,0 +1,79 @@
+{
+  "file": "asm/overlay_01_021F467C.s",
+  "functions": [
+    {
+      "name": "ov01_021F467C",
+      "mode": "thumb",
+      "signature_guess": "u32 ov01_021F467C(u32 a0, u32 a1)",
+      "confidence": "high",
+      "callees": ["GfGfx_EngineATogglePlanes", "GX_ResetBankForBG", "Heap_Alloc", "MIi_CpuClear32", "ov01_021F4464"],
+      "struct_accesses": [
+        {"param": -1, "offset": "sp+0x00..0x2b", "width": 44, "meaning": "0x2c-byte stack struct copied from rodata template ov01_02206B94 (5x ldmia/stmia pairs + 1 word = MWCC struct-copy idiom: local = sTemplate;)"},
+        {"param": 0, "offset": "sp+0x20", "width": 4, "meaning": "a0 stored into stack struct field 0x20 (DISPCAPCNT EVA; caller passes 3)"},
+        {"param": 1, "offset": "sp+0x24", "width": 4, "meaning": "a1 stored into stack struct field 0x24 (DISPCAPCNT EVB; caller passes 13)"}
+      ],
+      "notes": "Existing header include/overlay_01_021F467C.h declares EXACTLY 'u32 ov01_021F467C(u32 a0, u32 a1)' and already-matched caller src/field/event_cutscene_celebi.c:131 does 'data->unk4 = ov01_021F467C(3, 13)' — keep this signature even though semantically it returns a heap pointer. Body: GfGfx_EngineATogglePlanes(2,0); (4,0); (8,0); GX_ResetBankForBG(); work = Heap_Alloc(HEAP_ID_FIELD1=4, 4) — note 'mov r0,#4; add r1,r0,#0' both-args-4 codegen; MIi_CpuClear32(0, work, 4) is the MI_CpuClear32(work, 4) macro expansion; local cfg = ov01_02206B94 template; cfg.f20=a0; cfg.f24=a1; *work = ov01_021F4464(&cfg); return (u32)work."
+    },
+    {
+      "name": "ov01_021F46DC",
+      "mode": "thumb",
+      "signature_guess": "void ov01_021F46DC(u32 *a0)",
+      "confidence": "high",
+      "callees": ["ov01_021F44B4", "GX_SetBankForBG", "GfGfx_EngineATogglePlanes", "Heap_FreeExplicit"],
+      "struct_accesses": [
+        {"param": 0, "offset": "0x0", "width": 4, "meaning": "*a0 = the heap block returned by ov01_021F467C; read twice (passed to ov01_021F44B4, then Heap_FreeExplicit)"}
+      ],
+      "notes": "Header declares 'void ov01_021F46DC(u32 *a0)'; caller event_cutscene_celebi.c:115 passes &data->unk4. Body: ov01_021F44B4((void *)*a0, 1, 0, 1) i.e. (GX_DISPMODE_GRAPHICS, GX_BGMODE_0, GX_BG0_AS_3D); GX_SetBankForBG(4); GfGfx_EngineATogglePlanes(0xE, 1); Heap_FreeExplicit(HEAP_ID_FIELD1, (void *)*a0). Note ov01_021F44B4 zeroes the env slot inside the block before the block itself is freed."
+    }
+  ],
+  "data": [
+    {"label": "ov01_02206B94", "section": "rodata", "bytes": 44, "shape_guess": "const struct (0x2c bytes, 11 u32-ish fields) display-capture config template; words = {0x0A,0,1,3,2,0,0,2,0,0,4}: +0x00 GXDispMode (0xA=GX_DISPMODE_VRAM_C), +0x04 GXBGMode (0), +0x08 GXBG0As (1), +0x0c..0x1c DISPCAPCNT fields (size<<20, mode<<29, srcA<<24, srcB<<25, dest<<16 per ov01_021F45E4 in neighbor file), +0x20 EVA (overwritten by a0), +0x24 EVB (overwritten by a1), +0x28 SysTask priority (4). Must be emitted as a single const struct, not a u32 array, to get the ldmia/stmia copy loop"}
+  ],
+  "imports": {
+    "Heap_Alloc": {"known_prototype": "void *Heap_Alloc(enum HeapID heapID, u32 size)", "header": "include/heap.h"},
+    "Heap_FreeExplicit": {"known_prototype": "void Heap_FreeExplicit(enum HeapID heapID, void *ptr)", "header": "include/heap.h"},
+    "GfGfx_EngineATogglePlanes": {"known_prototype": "void GfGfx_EngineATogglePlanes(u8 planeMask, u8 enable)", "header": "include/gf_gfx_planes.h"},
+    "GX_SetBankForBG": {"known_prototype": "NitroSDK: void GX_SetBankForBG(int bg)", "header": "nitro (SDK)"},
+    "GX_ResetBankForBG": {"known_prototype": "NitroSDK: u16 GX_ResetBankForBG(void)", "header": "nitro (SDK)"},
+    "MIi_CpuClear32": {"known_prototype": "NitroSDK: void MIi_CpuClear32(u32 data, void *dest, u32 size); reached via MI_CpuClear32(dest,size) macro", "header": "nitro (SDK)"},
+    "ov01_021F4464": {"signature_guess": "UnkStruct_ov01_021F4464 *ov01_021F4464(const ConfigStruct_0x2c *cfg)", "evidence": "neighbor asm/overlay_01_021F4464.s: creates 0x38-byte SysTask env, copies 0x2c bytes from cfg into env+4, returns env pointer; cfg+0x28 also read for SysTask priority before copy. No C prototype exists yet"},
+    "ov01_021F44B4": {"signature_guess": "void ov01_021F44B4(UnkStruct_ov01_021F4464 **slot, GXDispMode dispMode, GXBGMode bgMode, GXBG0As bg0As)", "evidence": "neighbor asm: r0 is pointer-to-env-pointer ([[r0]] read, [r0] zeroed at end); r1-r3 forwarded to GX_SetGraphicsMode; destroys the SysTask env. No C prototype exists yet"}
+  },
+  "shared_struct_hypotheses": [
+    {
+      "name": "ConfigStruct_0x2c (capture config, shared with asm/overlay_01_021F4464.s)",
+      "size_guess": "0x2c",
+      "fields": [
+        {"offset": "0x0", "width": 4, "meaning": "GXDispMode (switched on 2/6/0xA/0xE = VRAM_A..D in neighbor)"},
+        {"offset": "0x4", "width": 4, "meaning": "GXBGMode (passed to GX_SetGraphicsMode)"},
+        {"offset": "0x8", "width": 4, "meaning": "GXBG0As (passed to GX_SetGraphicsMode)"},
+        {"offset": "0xc", "width": 4, "meaning": "DISPCAPCNT capture size (<<20)"},
+        {"offset": "0x10", "width": 4, "meaning": "DISPCAPCNT capture mode (<<29)"},
+        {"offset": "0x14", "width": 4, "meaning": "DISPCAPCNT source A (<<24)"},
+        {"offset": "0x18", "width": 4, "meaning": "DISPCAPCNT source B (<<25)"},
+        {"offset": "0x1c", "width": 4, "meaning": "DISPCAPCNT VRAM write block (<<16)"},
+        {"offset": "0x20", "width": 4, "meaning": "EVA blend coeff (param a0 of ov01_021F467C)"},
+        {"offset": "0x24", "width": 4, "meaning": "EVB blend coeff (param a1)"},
+        {"offset": "0x28", "width": 4, "meaning": "SysTask priority (4)"}
+      ]
+    },
+    {
+      "name": "UnkStruct_ov01_021F4464 (SysTask env, defined by neighbor file)",
+      "size_guess": "0x38",
+      "fields": [
+        {"offset": "0x0", "width": 4, "meaning": "saved GX_GetBankForLCDC() result"},
+        {"offset": "0x4", "width": 44, "meaning": "embedded copy of ConfigStruct_0x2c"},
+        {"offset": "0x30", "width": 4, "meaning": "done/active flag (0 init, set 1 by VWait task)"},
+        {"offset": "0x34", "width": 4, "meaning": "SysTask * (self, for DestroySysTaskAndEnvironment)"}
+      ]
+    }
+  ],
+  "risks": [
+    "Existing header include/overlay_01_021F467C.h is load-bearing: src/field/event_cutscene_celebi.c is already matched and includes it; do NOT change the u32/u32* signatures (ipa-shared-headers)",
+    "ov01_02206B94 must be a const struct (not u32 array) so MWCC emits the 5-iteration ldmia/stmia copy loop + trailing word; declare exactly one rodata symbol so section order trivially matches",
+    "Depends on undecompiled neighbor asm/overlay_01_021F4464.s for ov01_021F4464/ov01_021F44B4 — externs needed; their prototypes chosen here will constrain that file later; the shared ConfigStruct_0x2c layout must agree between both files",
+    "Heap_Alloc(4,4) codegen 'mov r0,#4; add r1,r0,#0' implies MWCC saw two equal constants — write as Heap_Alloc(HEAP_ID_FIELD1, 4) and verify the add-vs-mov pattern in objdiff",
+    "Return of ov01_021F467C is semantically a pointer but typed u32 — a cast '(u32)work' will be needed; should be codegen-free"
+  ],
+  "notes": "Tiny file: 2 thumb functions (~0x60 and ~0x26 bytes) + one 0x2c-byte rodata template. Setup/teardown wrapper around a display-capture (REG_DISPCAPCNT) SysTask system implemented in asm/overlay_01_021F4464.s. ov01_021F467C allocates a one-pointer handle on heap 4 (HEAP_ID_FIELD1), disables BG1/BG2/BG3 planes, resets BG VRAM banks, builds the config from the rodata template with EVA/EVB params, and starts the capture task; ov01_021F46DC restores graphics mode (1,0,1), re-banks VRAM C for BG, re-enables planes 0xE, and frees the handle. Only caller is event_cutscene_celebi.c (overlay_02) plus a reference in asm/overlay_116.s. Pool literals: one '.word ov01_02206B94' per function; '.balign 4,0' after each."
+}

@@ -10,22 +10,33 @@ This skill is designed to be used with `/loop /decomp-loop` for continuous auton
 ### Each Iteration
 
 1. Run `./tools/decomp_harness/next_target.sh --info` to find the next file
+   (triage-queue order, easiest first; the `--info` output includes the triage
+   detail — unknown callees, risks, `gated_by`)
 2. If output is `ALL_DONE`, report completion and stop the loop
 3. Otherwise, invoke the decomp skill workflow for that file:
 
    a. Read `tools/decomp_harness/DECOMP_AGENT.md` and `tools/decomp_harness/insights.md`
-   b. Read the target asm file and its .inc file
-   c. Search for relevant headers and similar decompiled files
-   d. Write the C file, update main.lsf
-   e. Build with `make main COMPARE=0 -j4`, fix compile errors
-   f. Compare with `make compare -j4`, check exit code (0 = match)
-   g. If mismatch, use `./tools/asmdiff/asmdiff.sh` to see diffs, adjust C, repeat (max 50 build-compare cycles per file)
-   h. On success: update progress.json, append insights, commit
-   i. On failure after 50 attempts: use NONMATCHING fallback, then revert if that also fails
+   b. Check prior knowledge: `attempts_log.py query --file <target>` (dead ends),
+      `knowledge.json` (sweep pre-analysis hypotheses), `blockers.json` if gated
+   c. Read the target asm file and its .inc file
+   d. Search for relevant headers and similar decompiled files
+   e. Write the C file, update main.lsf
+   f. Build with `make main COMPARE=0 -j4`, fix compile errors
+   g. Compare with `make compare -j4`, check exit code (0 = match)
+   h. If mismatch, use `./tools/asmdiff/asmdiff.sh` to see diffs, adjust C, repeat
+      (max 50 build-compare cycles per file); log each distinct failed approach
+      with `attempts_log.py add`
+   i. On success: update progress.json, add new insights via `patterns.py add`
+      (insights.md is generated — never edit it directly), run
+      `triage.py --rebuild --top 0` to refresh ledger + queue, commit
+   j. On failure after 50 attempts: use NONMATCHING fallback, then revert if that
+      also fails; record the reason (and blocker_id) in progress.json and make
+      sure the dead ends are in the attempts log
 
 4. After completing (or failing) one file, report status:
    - File name, result (matched/NONMATCHING/failed), attempts taken
-   - Current progress stats from progress.json
+   - Function-level totals from the `coverage_ledger.py` output (printed by the
+     triage rebuild)
 
 ### Loop Behavior
 
@@ -38,7 +49,12 @@ This skill is designed to be used with `/loop /decomp-loop` for continuous auton
 ### State Files
 
 - Progress: `tools/decomp_harness/progress.json`
-- Insights: `tools/decomp_harness/insights.md`
+- Coverage ledger (generated): `tools/decomp_harness/coverage_ledger.json` + `COVERAGE.md`
+- Triage queue (generated): `tools/decomp_harness/triage_report.json`
+- Matching knowledge: `tools/decomp_harness/patterns.json` (source of truth) → `insights.md` (generated)
+- Attempts log: `tools/decomp_harness/attempts_log.jsonl`
+- Sweep pre-analysis: `tools/decomp_harness/knowledge.json`
+- Blockers: `tools/decomp_harness/blockers.json`
 - Logs: `tools/decomp_harness/logs/<basename>.log`
 
 ### Build Verification

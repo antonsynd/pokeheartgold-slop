@@ -1,0 +1,35 @@
+{
+  "file": "asm/unk_02097B78.s",
+  "functions": [
+    {"name": "LegendaryCinematic_Init", "mode": "thumb", "signature_guess": "BOOL LegendaryCinematic_Init(OverlayManager *man, int *state)", "confidence": "high", "callees": ["Heap_Create", "OverlayManager_CreateAndGetData", "MI_CpuFill8", "OverlayManager_GetArgs"], "struct_accesses": [{"param": -1, "offset": "0x0", "width": 4, "meaning": "overlay data (0x41C bytes) field 0 = LegendaryCinematicArgs* stored from OverlayManager_GetArgs"}], "notes": "Heap_Create(HEAP_ID_3, HEAP_ID_153, 2 << 0x12 /* 0x80000 */); OverlayManager_CreateAndGetData(man, 0x41C, HEAP_ID_153); MI_CpuFill8(data, 0, 0x41C); data->args = OverlayManager_GetArgs(man); return TRUE. state param (r1) unused but required by OverlayManagerTemplate. Prototype already in include/unk_02097B78.h"},
+    {"name": "LegendaryCinematic_Main", "mode": "thumb", "signature_guess": "BOOL LegendaryCinematic_Main(OverlayManager *man, int *state)", "confidence": "high", "callees": ["OverlayManager_GetData"], "struct_accesses": [{"param": -1, "offset": "0x0", "width": 4, "meaning": "data->args (LegendaryCinematicArgs *)"}, {"param": -1, "offset": "0x4C", "width": 2, "meaning": "args->unk4C (u16) = cinematic id, indexes _02108F38 function table; matches LegendaryCinematicArgs.unk4C in include/unk_02097B78.h"}], "callback_refs": ["_02108F38[args->unk4C] called via blx with r0 = overlay data pointer; callback returns BOOL (nonzero = still running)"], "notes": "if (callback(data) == FALSE) return TRUE (overlay done); else return FALSE. r0 at blx time is still the OverlayManager_GetData result, so table entries take the 0x41C data struct as their only arg. C shape: 'if (!sCinematicFuncs[args->unk4C](data)) return TRUE; return FALSE;' — beware MWCC branch ordering (asm has bne to the FALSE path)."},
+    {"name": "LegendaryCinematic_Exit", "mode": "thumb", "signature_guess": "BOOL LegendaryCinematic_Exit(OverlayManager *man, int *state)", "confidence": "high", "callees": ["OverlayManager_FreeData", "Heap_Destroy"], "notes": "OverlayManager_FreeData(man); Heap_Destroy(HEAP_ID_153); return TRUE. Both params unused except man in r0."}
+  ],
+  "data": [
+    {"label": "_02108F38", "section": "rodata", "bytes": 12, "shape_guess": "static const BOOL (*sCinematicFuncs[3])(void *data) = { ScriptCinematic_HoOh, ScriptCinematic_Lugia, ScriptCinematic_Arceus }; indexed by args->unk4C"}
+  ],
+  "imports": {
+    "Heap_Create": {"known_prototype": "BOOL Heap_Create(enum HeapID parent, enum HeapID child, u32 size)", "header": "include/heap.h"},
+    "Heap_Destroy": {"known_prototype": "void Heap_Destroy(enum HeapID heapID)", "header": "include/heap.h"},
+    "OverlayManager_CreateAndGetData": {"known_prototype": "void *OverlayManager_CreateAndGetData(OverlayManager *man, u32 size, enum HeapID heapID)", "header": "include/overlay_manager.h"},
+    "OverlayManager_GetData": {"known_prototype": "void *OverlayManager_GetData(OverlayManager *man)", "header": "include/overlay_manager.h"},
+    "OverlayManager_FreeData": {"known_prototype": "void OverlayManager_FreeData(OverlayManager *man)", "header": "include/overlay_manager.h"},
+    "OverlayManager_GetArgs": {"known_prototype": "void *OverlayManager_GetArgs(OverlayManager *man)", "header": "include/overlay_manager.h"},
+    "MI_CpuFill8": {"known_prototype": "void MI_CpuFill8(void *dest, u8 data, u32 size)", "header": "NitroSDK <nitro/mi/memory.h> (via global.h)"},
+    "ScriptCinematic_HoOh": {"signature_guess": "BOOL ScriptCinematic_HoOh(void *data)", "evidence": "asm/overlay_106.s 0x021E6080: takes the 0x41C overlay data ptr in r0, runs sub-state machine at [data+0x40C], returns 0 when state==6 else 1; not yet decompiled, no C header — needs extern in new C file"},
+    "ScriptCinematic_Lugia": {"signature_guess": "BOOL ScriptCinematic_Lugia(void *data)", "evidence": "asm/overlay_106.s 0x021E6250, same pattern as HoOh"},
+    "ScriptCinematic_Arceus": {"signature_guess": "BOOL ScriptCinematic_Arceus(void *data)", "evidence": "asm/overlay_106.s 0x021E63A4, same pattern as HoOh"}
+  },
+  "shared_struct_hypotheses": [
+    {"name": "LegendaryCinematicData (overlay data, local to this app + overlay_106)", "size_guess": "0x41C (OverlayManager_CreateAndGetData size)", "fields": [{"offset": "0x0", "width": 4, "meaning": "LegendaryCinematicArgs *args (set in Init from OverlayManager_GetArgs)"}, {"offset": "0x40C", "width": 4, "meaning": "sub-state counter used by ScriptCinematic_* in overlay_106"}]},
+    {"name": "LegendaryCinematicArgs", "size_guess": "0x50 (already defined in include/unk_02097B78.h)", "fields": [{"offset": "0x0", "width": 4, "meaning": "SaveData *saveData"}, {"offset": "0x4C", "width": 2, "meaning": "unk4C: cinematic selector (0=HoOh, 1=Lugia, 2=Arceus), set by LegendaryCinematic_LaunchApp in src/launch_application.c"}]}
+  ],
+  "risks": [
+    "Header include/unk_02097B78.h already exists with the exact OverlayManager-template prototypes (BOOL fn(OverlayManager *, int *)) and is already consumed by src/launch_application.c (sOverlayTemplate_LegendaryCinematic) — do NOT change those signatures, launch_application.c is already-matched C",
+    "rodata table _02108F38 references three overlay_106 functions that have no C declarations anywhere in include/ — extern BOOL ScriptCinematic_X(void *) declarations needed in the C file",
+    "function pointer table type must produce indexed load 'ldr r1, [table, idx*4]; blx r1' — a static const array of function pointers indexed by u16 field; ldrh on args+0x4C is done via add r1,#0x4C then ldrh [r1] (offset exceeds 5-bit ldrh immediate range), which falls out naturally for a u16 field at 0x4C",
+    "heap size constant 2 << 0x12: MWCC emits 'mov r2,#2; lsl r2,#0x12' for 0x80000 — write the literal 0x80000 and verify; if it pools instead, the constant expression (2 << 18) may be needed",
+    "Main's return inversion (callback FALSE -> return TRUE) is an easy logic flip; asm: 'cmp r0,#0; bne -> return 0' so C should be 'if (!func(data)) { return TRUE; } return FALSE;'"
+  ],
+  "notes": "Tiny 3-function file (~0x60 bytes text + 12 bytes rodata) at asm/unk_02097B78.s; the launcher side (src/launch_application.c:1388 LegendaryCinematic_LaunchApp) and the header are already done, so this is mainly mechanical. Functions in file order: LegendaryCinematic_Init (0x02097B78), LegendaryCinematic_Main (0x02097BAC), LegendaryCinematic_Exit (0x02097BD0). Heap constants: parent HEAP_ID_3, child HEAP_ID_153 (0x99, include/constants/heap.h:158), size 0x80000. main.lsf line 339 currently 'Object asm/unk_02097B78.o'. No DECL_CHUNK_EX involvement; no .data/.bss."
+}

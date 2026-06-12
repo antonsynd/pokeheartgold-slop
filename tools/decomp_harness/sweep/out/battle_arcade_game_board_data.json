@@ -1,0 +1,32 @@
+{
+  "file": "asm/battle_arcade_game_board_data.s",
+  "data": [
+    {"label": "_0223F900", "section": "rodata", "bytes": 4, "shape_guess": "const u8 _0223F900[4] = {0x15,0x10,0x0A,0x05} — threshold table, matches extern at src/battle_arcade_game_board.c:1057"},
+    {"label": "ov84_0223F904", "section": "rodata", "bytes": 7, "shape_guess": "const STRUCT_0223F99C ov84_0223F904[7] — 1-byte bitfield structs (7x u8 flags:1 fields), extern at battle_arcade_game_board.c:949"},
+    {"label": "ov84_0223F90B", "section": "rodata", "bytes": 8, "shape_guess": "TouchscreenHitbox ov84_0223F90B[2] = {{.rect={0xFE,0x80,0x60,0x20}}, terminator 0xFF} + 3 pad bytes; type in include/touchscreen.h; extern at battle_arcade_game_board.c:1192"},
+    {"label": "ov84_0223F913", "section": "rodata", "bytes": 17, "shape_guess": "const u8 ov84_0223F913[8][2] (16 data bytes, {delay,?} pairs per cursor-speed level) + 1 alignment pad byte before 4-aligned GraphicsModes; extern at battle_arcade_game_board.c:742"},
+    {"label": "ov84_0223F924", "section": "rodata", "bytes": 16, "shape_guess": "const GraphicsModes {GX_DISPMODE_GRAPHICS=1, GX_BGMODE_0, GX_BGMODE_0, GX_BG0_AS_2D} (bg_window.h:191); copied by value at battle_arcade_game_board.c:672"},
+    {"label": "ov84_0223F934", "section": "rodata", "bytes": 20, "shape_guess": "const u8 [5][4] percentage table — each row sums to 100, indexed [a1][i] with rand%100 accumulation at battle_arcade_game_board.c:1144-1156"},
+    {"label": "ov84_0223F948", "section": "rodata", "bytes": 28, "shape_guess": "const BgTemplate (bg_window.h:9) for BG layer 4; extern at battle_arcade_game_board.c:669"},
+    {"label": "ov84_0223F964", "section": "rodata", "bytes": 28, "shape_guess": "const BgTemplate for BG layer 1; extern at battle_arcade_game_board.c:667"},
+    {"label": "ov84_0223F980", "section": "rodata", "bytes": 28, "shape_guess": "const BgTemplate for BG layer 3; extern at battle_arcade_game_board.c:668"},
+    {"label": "ov84_0223F99C", "section": "rodata", "bytes": 32, "shape_guess": "const STRUCT_0223F99C ov84_0223F99C[32] — per-board-square flag bitfields, iterated with NELEMS at battle_arcade_game_board.c:956"},
+    {"label": "ov84_0223F9BC", "section": "rodata", "bytes": 40, "shape_guess": "const GraphicsBanks (gf_gfx_planes.h:38, ten ints: 4,0,0x80,0,0,0x10,0,0x100,0,3,0x60 — actually 10x4=40 bytes); copied by value into GfGfx_SetBanks at battle_arcade_game_board.c:662"},
+    {"label": "ov84_0223F9E4", "section": "rodata", "bytes": 4, "shape_guess": "const u8 ov84_0223F9E4[4] = {0x0B,0x0B,0x0B,0x0B} — Create2DGfxResObjMan capacity per GfGfxResType; extern at battle_arcade_game_board.c:1211"},
+    {"label": "ov84_0223F9E8", "section": "rodata", "bytes": 16, "shape_guess": "const ObjCharTransferTemplate (obj_char_transfer.h:13) = {0x20, 0x400, 0x400, 0x6E(=HEAP_ID_GAME_BOARD?)}; copied by value at battle_arcade_game_board.c:1305"},
+    {"label": "ov84_0223F9F8", "section": "rodata", "bytes": 16, "shape_guess": "const WindowTemplate ov84_0223F9F8[2] (bg_window.h:58, 8 bytes each); extern at battle_arcade_game_board.c:1434"},
+    {"label": "_0223FA20", "section": "bss", "bytes": 32, "shape_guess": "unreferenced .space 0x20 bss reservation; NOT .public; overlaps address range where src/battle_arcade_game_board.c:40 already defines static u8 s_0223FA20[2] — likely covers the module's total retail bss footprint"}
+  ],
+  "shared_struct_hypotheses": [
+    {"name": "STRUCT_0223F99C", "size_guess": "1 byte", "fields": [{"offset": "0x0", "width": 1, "meaning": "7-8 single-bit bitfields flag0..flag7; typedef currently local to src/battle_arcade_game_board.c:937-946 — data-file decomp must duplicate it or hoist to a shared header (hoisting touches an already-matched C file; bitfield layout must stay identical)"}]}
+  ],
+  "risks": [
+    "Data-only file (zero functions) — overlay 84 (note _0223F900 lacks the ov84_ prefix but is still .public)",
+    "Rodata ordering: all 14 rodata symbols must be defined in exact file order; all are .public/extern'd so they must be non-static const in C (static would rename/strip them)",
+    "Size mismatch: extern at src/battle_arcade_game_board.c:1142 declares ov84_0223F934 as u8[4][4] (16 bytes) but the asm blob is 20 bytes (0x934..0x948) — true shape is [5][4]; definition must be 20 bytes or link addresses shift. Fixing the consumer's extern dimension is codegen-neutral (stride stays 4) but edits an already-matched file",
+    "BSS hazard: _0223FA20 (.space 0x20) is unreferenced and non-public; src/battle_arcade_game_board.c already defines a 2-byte static s_0223FA20 used at lines 152-153. Current matching build has both, so the 0x20 reservation is load-bearing for overlay bss size in the OVT — an unreferenced static u8[0x20] in C risks dead-stripping by MWCC; may need to stay in asm or be referenced",
+    "Several consumers copy these structs by value (GraphicsModes/BgTemplate/GraphicsBanks/ObjCharTransferTemplate locals) — the const-ness and exact types of the definitions must agree with the externs in battle_arcade_game_board.c or codegen of that already-matched file changes (MWCC -ipa hazard)",
+    "ov84_0223F913 needs 1 pad byte after 16 data bytes (next symbol is 4-aligned); compiler alignment of the following GraphicsModes should produce this automatically — verify with objdiff data-section check"
+  ],
+  "notes": "Companion rodata/bss file for already-decompiled src/battle_arcade_game_board.c (linked as 'Object asm/battle_arcade_game_board_data.o' right after it in main.lsf:1061-1062). Every rodata symbol already has a typed extern in that C file, so all types are settled: u8[4], STRUCT_0223F99C[7], TouchscreenHitbox[2], u8[8][2], GraphicsModes, u8[5][4] (extern wrongly says [4][4]), BgTemplate x3, STRUCT_0223F99C[32], GraphicsBanks, u8[4], ObjCharTransferTemplate, WindowTemplate[2]. Decompiling = transcribing initializers into a new C file (or merging into battle_arcade_game_board.c, which would require converting externs to statics and changing symbol visibility — risky for matching). asm/include/battle_arcade_game_board_data.inc lists only the 14 exports, no imports; the matches for _0223F900/_0223FA20 in asm/overlay_70.s and lib/NitroDWC are coincidental local pool labels, not references."
+}

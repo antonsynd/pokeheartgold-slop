@@ -1,0 +1,89 @@
+{
+  "file": "asm/unk_0202E41C.s",
+  "functions": [
+    {
+      "name": "sub_0202E41C",
+      "mode": "thumb",
+      "signature_guess": "u32 sub_0202E41C(void)",
+      "confidence": "high",
+      "notes": "sizeof function for save chunk SAVE_UNK_23; returns 0xBC8 (pool constant). Used as SAVESIZEFN in src/save_arrays.c line 199; DECL_CHUNK_EX at line 50 expects exactly 'u32 sub_0202E41C(void)'."
+    },
+    {
+      "name": "sub_0202E424",
+      "mode": "thumb",
+      "signature_guess": "void sub_0202E424(UnkStruct_0202E474 *unk)",
+      "confidence": "high",
+      "callees": ["MIi_CpuClearFast", "SaveSubstruct_UpdateCRC"],
+      "notes": "Init function for SAVE_UNK_23 (DECL_CHUNK_EX expects 'void sub_0202E424(void *)' — match that exactly or cast in save_arrays.c stays). Body: MI_CpuClearFast(unk, 0xBC8); SaveSubstruct_UpdateCRC(SAVE_UNK_23). Note asm shows MIi_CpuClearFast(0, ptr, 0xBC8) — that is the inlined MI_CpuClearFast wrapper; call MI_CpuClearFast in C, not MIi_*."
+    },
+    {
+      "name": "sub_0202E43C",
+      "mode": "thumb",
+      "signature_guess": "void sub_0202E43C(UnkStruct_0202E474 *unk)",
+      "confidence": "high",
+      "callees": ["MIi_CpuClearFast", "sub_0202E474", "SaveSubstruct_UpdateCRC"],
+      "struct_accesses": [
+        {"param": 0, "offset": "0xC", "width": 192, "meaning": "MI_CpuClearFast(unk->unk_00C, 0xC0)"},
+        {"param": 0, "offset": "0xCC", "width": 192, "meaning": "MI_CpuClearFast(unk->unk_0CC, 0xC0)"},
+        {"param": 0, "offset": "0x18C", "width": 192, "meaning": "MI_CpuClearFast(unk->unk_18C, 0xC0); offset materialized as mov r1,#0x63; lsl r1,#2"}
+      ],
+      "notes": "Clears the three 0xC0-byte arrays, calls sub_0202E474(unk), then SaveSubstruct_UpdateCRC(SAVE_UNK_23). Exported to overlay 73 (asm/overlay_73.s line 9746, ov73_021EA3D0 calls it with result of sub_020270C4(saveData)). The 0x18C offset via shifted-immediate idiom should fall out naturally from a struct member access &unk->unk_18C."
+    },
+    {
+      "name": "sub_0202E474",
+      "mode": "thumb",
+      "signature_guess": "void sub_0202E474(UnkStruct_0202E474 *unk)",
+      "confidence": "high",
+      "callees": ["sub_0202E48C", "sub_0202E498", "SaveSubstruct_UpdateCRC"],
+      "notes": "Calls sub_0202E48C(unk, 0), sub_0202E498(unk), SaveSubstruct_UpdateCRC(SAVE_UNK_23). Also exported to overlay 73 (asm/overlay_73.s line 9748). Struct name UnkStruct_0202E474 already exists in include/unk_0202E41C.h keyed on this function."
+    },
+    {
+      "name": "sub_0202E48C",
+      "mode": "thumb",
+      "signature_guess": "void sub_0202E48C(UnkStruct_0202E474 *unk, u8 val)",
+      "confidence": "medium",
+      "callees": ["SaveSubstruct_UpdateCRC"],
+      "struct_accesses": [
+        {"param": 0, "offset": "0x8", "width": 1, "meaning": "strb of param 1; u8 flag/state field"}
+      ],
+      "notes": "Not in .public — static in C. strb r1,[r0,#8] then tail-calls SaveSubstruct_UpdateCRC(SAVE_UNK_23) via ldr r3,=SaveSubstruct_UpdateCRC; bx r3 — this is normal MWCC thumb codegen for a void function ending in a call; write it as a plain call. No narrowing of r1 at entry, so param could be u8 or int; only in-file caller passes constant 0. u8 is consistent (strb without lsls/lsrs)."
+    },
+    {
+      "name": "sub_0202E498",
+      "mode": "thumb",
+      "signature_guess": "void sub_0202E498(UnkStruct_0202E474 *unk)",
+      "confidence": "medium",
+      "callees": ["SaveSubstruct_UpdateCRC"],
+      "struct_accesses": [
+        {"param": 0, "offset": "0x0", "width": 1, "meaning": "byte loop strb 0 to offsets 0..3 (for i=0; i<4; i++ unk->unk_000[i]=0; signed cmp/blt so int i)"}
+      ],
+      "notes": "Not in .public — static in C. Same SaveSubstruct_UpdateCRC tail call. Loop hoists 0 into two registers (r2 index, r1 value) — '<4' compare with blt means signed int loop counter."
+    }
+  ],
+  "imports": {
+    "SaveSubstruct_UpdateCRC": {"known_prototype": "void SaveSubstruct_UpdateCRC(int idx)", "header": "include/save.h (line 119)"},
+    "MIi_CpuClearFast": {"known_prototype": "NitroSDK; reached via MI_CpuClearFast(dest, size) macro/inline from nitro headers", "header": "nitro/mi/memory.h (via global.h)"}
+  },
+  "shared_struct_hypotheses": [
+    {
+      "name": "UnkStruct_0202E474",
+      "size_guess": "0xBC8 (sizeof fn return; 0xC + 3*0xC0 + 0x97C)",
+      "fields": [
+        {"offset": "0x0", "width": 4, "meaning": "u8[4], zeroed bytewise by sub_0202E498"},
+        {"offset": "0x8", "width": 1, "meaning": "u8 flag set by sub_0202E48C"},
+        {"offset": "0xC", "width": 192, "meaning": "u8 unk_00C[0xC0]"},
+        {"offset": "0xCC", "width": 192, "meaning": "u8 unk_0CC[0xC0]"},
+        {"offset": "0x18C", "width": 192, "meaning": "u8 unk_18C[0xC0]"},
+        {"offset": "0x24C", "width": 2428, "meaning": "filler to 0xBC8"}
+      ]
+    }
+  ],
+  "risks": [
+    "include/unk_0202E41C.h ALREADY EXISTS with UnkStruct_0202E474 defined (filler_000[12] hides the 0x0 u8[4] and 0x8 u8 fields accessed in this file) — refine fields in place rather than creating a new header; it is already #included by src/save_arrays.c and include/party_menu.h, so layout edits are IPA-safe only because consumers use pointers, but do not change existing field names used elsewhere (none currently)",
+    "DECL_CHUNK_EX(sub_0202E41C, sub_0202E424) in src/save_arrays.c line 50 must be replaced with the header include; prototypes there are 'u32 fn(void)' and 'void fn(void *)' — if the new header declares sub_0202E424 taking UnkStruct_0202E474 * instead of void *, keep the (SAVEINITFN) cast in gSaveChunkHeaders and remove the DECL_CHUNK_EX to avoid a conflicting-prototype build error",
+    "MI_CpuClearFast wrapper inlining: must call MI_CpuClearFast (which inlines to MIi_CpuClearFast(0, ...)), never MIi_CpuClearFast directly",
+    "bx r3 tail calls to SaveSubstruct_UpdateCRC are natural codegen for void functions ending in a call — no special handling needed",
+    "sub_0202E48C/sub_0202E498 are not in the .inc — declare static and define in asm order (asm order is 41C, 424, 43C, 474, 48C, 498, with forward calls, so static forward declarations are needed)"
+  ],
+  "notes": "Save chunk module for SAVE_UNK_23 (chunk index 0x17 = 23, include/constants/save_arrays.h). Accessor sub_020270C4(SaveData *) -> UnkStruct_0202E474 * is already decompiled in src/save_arrays.c line 313. No .rodata/.data/.bss in this file. Callers outside save_arrays.c: asm/overlay_73.s only (sub_0202E43C, sub_0202E474). Trivial file, high match likelihood; main pitfalls are the pre-existing header and the DECL_CHUNK_EX swap."
+}

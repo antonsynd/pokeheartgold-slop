@@ -1,0 +1,72 @@
+{
+  "file": "asm/unk_02092B04.s",
+  "functions": [
+    {
+      "name": "sub_02092B04",
+      "mode": "thumb",
+      "signature_guess": "BOOL sub_02092B04(TaskManager *taskManager)",
+      "confidence": "high",
+      "callees": ["TaskManager_GetFieldSystem", "TaskManager_GetEnvironment", "sub_02092B40", "sub_02092B7C"],
+      "struct_accesses": [
+        {"param": -1, "offset": "0x272", "width": 1, "meaning": "state byte of task env (void* from TaskManager_GetEnvironment); compared against 0x18/0x19, written back with return of sub_02092B40"}
+      ],
+      "notes": "TaskFunc (typedef BOOL (*TaskFunc)(TaskManager*) in include/task.h). Installed via TaskManager_Jump from ov03_02258764 (asm/overlay_03.s:9257), which sets env state to 0x18 right after. Two-case if/else-if on env->state: 0x18 -> env->state = sub_02092B40(fieldSystem, env); 0x19 -> sub_02092B7C(taskManager). Always returns FALSE (mov r0,#0). Only export of this file (.inc .public lists sub_02092B04 only) -> sub_02092B40/sub_02092B7C should be static. Compare-chain (beq/beq/b) suggests if/else-if, not switch."
+    },
+    {
+      "name": "sub_02092B40",
+      "mode": "thumb",
+      "signature_guess": "static u8 sub_02092B40(FieldSystem *fieldSystem, UnkStruct_Ov03_BagTaskEnv *env)",
+      "confidence": "high",
+      "callees": ["FieldSystem_ApplicationIsRunning", "sub_0207791C", "Heap_Free", "FieldSystem_LoadFieldOverlay"],
+      "struct_accesses": [
+        {"param": 1, "offset": "0x2A0", "width": 4, "meaning": "pointer, NULL-checked; if non-NULL its field +2 (u16) receives sub_0207791C(env->bagView) — saved bag cursor/position"},
+        {"param": 1, "offset": "0x4", "width": 4, "meaning": "BagView* (allocated by Bag_CreateView in ov03_02258764, stored at env+4); passed to sub_0207791C then Heap_Free"}
+      ],
+      "notes": "Returns 0x18 while FieldSystem_ApplicationIsRunning(fieldSystem) is TRUE (wait), else saves bag state, frees BagView, FieldSystem_LoadFieldOverlay, returns 0x19. Return is strb'd into state byte so u8 or int return both plausible — pick int/u32 if u8 causes extra narrowing. 0x2A0 built via mov #0x2a; lsl #4 (large-offset idiom)."
+    },
+    {
+      "name": "sub_02092B7C",
+      "mode": "thumb",
+      "signature_guess": "static void sub_02092B7C(TaskManager *taskManager)",
+      "confidence": "high",
+      "callees": ["TaskManager_GetFieldSystem", "TaskManager_GetEnvironment", "sub_020505C8", "ov01_021E636C", "TaskManager_Jump"],
+      "struct_accesses": [
+        {"param": -1, "offset": "0x272", "width": 1, "meaning": "env state byte set to 0x1A after jumping back to ov03_02256E2C"}
+      ],
+      "callback_refs": ["ov03_02256E2C passed as TaskFunc to TaskManager_Jump"],
+      "notes": "If sub_020505C8(fieldSystem): ov01_021E636C(1); TaskManager_Jump(taskManager, ov03_02256E2C, env); env->state = 0x1A. Pool constants: ov03_02256E2C, 0x272."
+    }
+  ],
+  "imports": {
+    "TaskManager_GetFieldSystem": {"known_prototype": "FieldSystem *TaskManager_GetFieldSystem(TaskManager *taskManager)", "header": "include/task.h"},
+    "TaskManager_GetEnvironment": {"known_prototype": "void *TaskManager_GetEnvironment(TaskManager *taskManager)", "header": "include/task.h"},
+    "TaskManager_Jump": {"known_prototype": "void TaskManager_Jump(TaskManager *taskman, TaskFunc taskFunc, void *env)", "header": "include/task.h"},
+    "FieldSystem_ApplicationIsRunning": {"known_prototype": "BOOL FieldSystem_ApplicationIsRunning(FieldSystem *fieldSystem)", "header": "include/task.h"},
+    "FieldSystem_LoadFieldOverlay": {"known_prototype": "void FieldSystem_LoadFieldOverlay(FieldSystem *fieldSystem)", "header": "include/task.h"},
+    "sub_020505C8": {"known_prototype": "BOOL sub_020505C8(FieldSystem *fieldSystem)", "header": "include/task.h"},
+    "Heap_Free": {"known_prototype": "void Heap_Free(void *ptr)", "header": "include/heap.h"},
+    "sub_0207791C": {"known_prototype": "u8 sub_0207791C(BagView *bagView)", "header": "include/bag_view.h"},
+    "ov01_021E636C": {"known_prototype": "void ov01_021E636C(int a0)", "header": "include/overlay_01.h"},
+    "ov03_02256E2C": {"signature_guess": "BOOL ov03_02256E2C(TaskManager *taskman)", "evidence": "passed as TaskFunc to TaskManager_Jump; defined in asm/overlay_03.s (overlay 3, not yet decompiled); referenced only via pool literal — needs extern TaskFunc-compatible decl from ARM9 static code"}
+  },
+  "shared_struct_hypotheses": [
+    {
+      "name": "UnkStruct_Ov03_BagTaskEnv (overlay_03 field-menu task environment)",
+      "size_guess": ">= 0x2A4",
+      "fields": [
+        {"offset": "0x4", "width": 4, "meaning": "BagView* (Bag_CreateView result, freed in sub_02092B40)"},
+        {"offset": "0x272", "width": 1, "meaning": "u8 state (values seen: 0x17,0x18,0x19,0x1A across this file and overlay_03 callers)"},
+        {"offset": "0x2A0", "width": 4, "meaning": "pointer to small struct; its +0x2 is u16 saved bag position written from sub_0207791C(bagView)"}
+      ]
+    }
+  ],
+  "risks": [
+    "Env struct is shared with not-yet-decompiled asm/overlay_03.s (ov03_02256E2C / ov03_02258764 create and drive the same env); decompiling with raw offsets via an opaque struct may be safest until overlay_03 defines the type",
+    "Reference to overlay-3 symbol ov03_02256E2C from ARM9 static code — needs a plain extern declaration matching TaskFunc",
+    "sub_02092B40 return type vs strb store in caller: if u8 return causes an extra narrowing at the strb site, try int return with strb via u8 field assignment",
+    "0x2A0 offset is materialized as mov #0x2a; lsl r0, #4 — large struct offsets usually reproduce this automatically, but verify with objdiff",
+    "Header signature for sub_0207791C is u8 — do not change include/bag_view.h (IPA hazard)",
+    "sub_02092B40 and sub_02092B7C must be static (not in .inc .public); sub_02092B04 calls both later-defined statics — forward declarations required since file order must match"
+  ],
+  "notes": "Tiny 3-function thumb file (~0xB4 bytes, 0x02092B04-0x02092BB8), no .rodata/.data/.bss, no save_arrays.c involvement. ARM9-resident half of the field bag-menu task: ov03_02258764 (overlay 3) creates a BagView, launches the bag app, then jumps the task to sub_02092B04 with env->state=0x18; sub_02092B04 waits for the bag application to exit (state 0x18), tears down the BagView and reloads the field overlay (-> 0x19), then jumps back to ov03_02256E2C with state 0x1A. Pool literals only: 0x272 (x3) and ov03_02256E2C."
+}

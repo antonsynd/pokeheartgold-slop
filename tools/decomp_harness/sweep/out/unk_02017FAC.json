@@ -1,0 +1,51 @@
+{
+  "file": "asm/unk_02017FAC.s",
+  "functions": [
+    {
+      "name": "sub_02017FAC",
+      "mode": "thumb",
+      "signature_guess": "int sub_02017FAC(int mapsec)",
+      "confidence": "high",
+      "callees": [],
+      "notes": "Known prototype already in include/map_section.h:15 (used by src/message_format.c:412 as 'locationBank'). Maps a raw location id to its bank index (0=MAPSECTYPE_NORMAL, 1=GIFT, 2=EXTERNAL). Loop: for (i = 0; i < 2; i++) if (mapsec < table[i+1]) return i; return i;  Asm walks the table with a moving pointer (ldrh r1,[r3,#2]; add r3,#2) while also incrementing index r2 — classic MWCC pointer+index strength reduction; write it as an indexed loop reading sLocationBankStarts[i + 1] and let the compiler do the rest, or pointer-walk if indexed form mismatches. Unsigned compare (bhs) despite int param because table values are u16 loaded with ldrh and mapsec compared via cmp/bhs — caller passes non-negative ids; if compare polarity mismatches, try u32 locals. Own literal pool word for _020F6280 plus a trailing nop for pool alignment."
+    },
+    {
+      "name": "sub_02017FCC",
+      "mode": "thumb",
+      "signature_guess": "int sub_02017FCC(int mapsec)",
+      "confidence": "high",
+      "callees": ["sub_02017FAC"],
+      "notes": "Known prototype in include/map_section.h:16 (src/message_format.c:413 'locationId'). return mapsec - sLocationBankStarts[sub_02017FAC(mapsec)]; saves mapsec in r4, multiplies bank by 2 via lsl for the u16 index. Own pool word for _020F6280 + trailing nop."
+    },
+    {
+      "name": "sub_02017FE4",
+      "mode": "thumb",
+      "signature_guess": "int sub_02017FE4(MapsecType type, int offset)",
+      "confidence": "high",
+      "callees": ["GF_AssertFail"],
+      "notes": "Known prototype in include/map_section.h:17; heavily called from already-matched C (trainer_memo.c, get_egg.c, script_pokemon_util.c, scrcmd_pokemon_misc.c, scrcmd_party.c, scrcmd_mystery_gift.c, pokemon.c) — do NOT change this signature. Body: GF_ASSERT(type < MAPSECTYPE_MAX) — asm is 'cmp r5,#3; blt skip; bl GF_AssertFail', i.e. assert-true direction per insights gf-assert-direction; then return offset + sLocationBankStarts[type]. Params copied r0->r5, r1->r4 in declaration order (push {r3,r4,r5,lr} frame). Pool padded with .balign 4,0."
+    },
+    {
+      "name": "LocationIsDiamondPearlCompatible",
+      "mode": "thumb",
+      "signature_guess": "BOOL LocationIsDiamondPearlCompatible(mapsec_t mapsec)",
+      "confidence": "high",
+      "callees": [],
+      "notes": "Known prototype in include/map_section.h:18; callers in src/pokemon.c:1277,1287 pass u16 and compare == TRUE. Leaf, no push. Three inclusive range checks ORed: (mapsec >= MAPSEC_TWINLEAF_TOWN && mapsec <= MAPSEC_BATTLE_PARK) || (mapsec >= METLOC_DAY_CARE_COUPLE && mapsec <= METLOC_RILEY) || (mapsec >= METLOC_LOVELY_PLACE && mapsec <= METLOC_CONCERT_EVENT) -> return TRUE else FALSE. All compares unsigned (blo/bls/bhi), consistent with u16 param (no entry narrowing — caller narrows). Constant materialization is the hazard: 2000 built as mov r1,#125; lsl r1,#4 then 'add r1,#10' to reach 2010 (incremental upper-bound reuse), and 3000 loaded from the literal pool then 'add r1,#76' to reach 3076. MWCC produces this on its own from plain range comparisons in this source order; keep the ranges in this exact order and as chained if/|| so the bound register r1 is reused. One pool word (=3000)."
+    }
+  ],
+  "data": [
+    {"label": "_020F6280", "section": "rodata", "bytes": 6, "shape_guess": "static const u16 sLocationBankStarts[3] = { MAPSEC_MYSTERY_ZONE (0), METLOC_DAY_CARE_COUPLE (2000), METLOC_LOVELY_PLACE (3000) }; start id of each MapsecType bank"}
+  ],
+  "imports": {
+    "GF_AssertFail": {"known_prototype": "void GF_AssertFail(void)", "header": "include/error_handling.h (use GF_ASSERT macro from include/assert.h)"}
+  },
+  "risks": [
+    "All four prototypes already exist in include/map_section.h and are used by many matched C files (trainer_memo.c, pokemon.c, get_egg.c, message_format.c, script_pokemon_util.c, scrcmd_*) — signatures are fixed; IPA makes them load-bearing (insights ipa-shared-headers).",
+    "Each function carries its own literal-pool copy of _020F6280; if the table is static const u16[3] in the C file this falls out naturally — just keep it as the only rodata object and declare it before the functions.",
+    "sub_02017FAC loop lowering (pointer+index dual induction with ldrh [p,#2]) is the most likely mismatch point; try 'if (mapsec < sLocationBankStarts[i + 1])' first, pointer-walk variant second (insights loop-shapes).",
+    "LocationIsDiamondPearlCompatible constant chaining (add r1,#10 / add r1,#76 off prior bounds) requires the range checks in asm order with shared upper-bound expression shape; if it mismatches, experiment with <= vs < and constant forms (METLOC_RILEY = METLOC_DAY_CARE_COUPLE + 10).",
+    "Existing header means no new include/<name>.h is needed; check src/save_arrays.c has no DECL_CHUNK_EX for these (none expected — pure lookup file, no .data/.bss)."
+  ],
+  "notes": "Tiny pure-lookup module (4 thumb functions, ~0x84 bytes text, 6 bytes rodata, no .data/.bss). Semantics: location ids are partitioned into three banks (normal mapsecs 0.., gift met-locations 2000.., external met-locations 3000..); sub_02017FAC = id->bank, sub_02017FCC = id->offset-in-bank, sub_02017FE4 = (bank,offset)->id, LocationIsDiamondPearlCompatible = DP-transfer range check. Use constants from include/constants/map_sections.h. Header: include/map_section.h."
+}
