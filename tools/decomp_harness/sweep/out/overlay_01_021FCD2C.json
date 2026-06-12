@@ -1,0 +1,58 @@
+{
+  "file": "asm/overlay_01_021FCD2C.s",
+  "functions": [
+    {"name": "ov01_021FCD2C", "mode": "thumb", "signature_guess": "SysTask *ov01_021FCD2C(FieldSystem *fieldSystem, HeapID heapId)", "confidence": "high", "callees": ["Heap_AllocAtEnd", "memset", "Camera_GetDistance", "SysTask_CreateOnMainQueue"], "struct_accesses": [{"param": 0, "offset": "0x24", "width": 4, "meaning": "Camera* — matches FieldSystem.camera at +0x24 (include/field_system.h)"}], "callback_refs": ["ov01_021FCDA8 passed as SysTaskFunc to SysTask_CreateOnMainQueue with priority 0xFFFF"], "notes": "Allocates 0x34-byte work struct with Heap_AllocAtEnd(heapId, 0x34), memsets to 0, fills: [0]=heapId, [0xc]=0 (state), [0x2c]=fieldSystem, [0x30]=fieldSystem->camera, [0x10]=[0x20]=Camera_GetDistance(camera). Returns the SysTask*. Pool: ov01_021FCDA8, 0xFFFF."},
+    {"name": "ov01_021FCD6C", "mode": "thumb", "signature_guess": "BOOL ov01_021FCD6C(SysTask *task)", "confidence": "high", "callees": ["SysTask_GetData"], "struct_accesses": [{"param": -1, "offset": "0x8", "width": 4, "meaning": "finished flag of task data (BOOL)"}], "notes": "return ((UnkStruct *)SysTask_GetData(task))->unk8; caller (asm/overlay_02_02248728.s:1694) compares result to 1."},
+    {"name": "ov01_021FCD78", "mode": "thumb", "signature_guess": "void ov01_021FCD78(SysTask *task)", "confidence": "high", "callees": ["SysTask_GetData", "Heap_Free", "SysTask_Destroy"], "notes": "Heap_Free(SysTask_GetData(task)); SysTask_Destroy(task);"},
+    {"name": "ov01_021FCD8C", "mode": "thumb", "signature_guess": "void ov01_021FCD8C(SysTask *task, int state, fx32 distanceDelta, u32 duration)", "confidence": "high", "callees": ["SysTask_GetData"], "struct_accesses": [{"param": -1, "offset": "0x4", "width": 4, "meaning": "substate := 0"}, {"param": -1, "offset": "0x8", "width": 4, "meaning": "finished flag := 0"}, {"param": -1, "offset": "0xc", "width": 4, "meaning": "state := param1 (index into ov01_02208E0C func table)"}, {"param": -1, "offset": "0x14", "width": 4, "meaning": "distance delta := param2 (caller passes 0xFFF88000, signed fx32)"}, {"param": -1, "offset": "0x1c", "width": 4, "meaning": "duration in frames := param3 (caller passes 0xc)"}, {"param": -1, "offset": "0x24", "width": 4, "meaning": "frame counter := 0"}], "notes": "All offsets are on the task data struct, not the SysTask itself. Caller (overlay_02_02248728.s:1093) passes (task, 1, -0x78000, 12)."},
+    {"name": "ov01_021FCDA8", "mode": "thumb", "signature_guess": "static void ov01_021FCDA8(SysTask *task, void *data)", "confidence": "high", "callees": [], "struct_accesses": [{"param": 1, "offset": "0xc", "width": 4, "meaning": "state index, scaled <<2 into ov01_02208E0C table, fetched func blx'd with data as r0"}], "callback_refs": ["SysTaskFunc dispatched via ov01_02208E0C[state] (blx)"], "notes": "Not in .public → static. Table funcs receive the data struct, not the task."},
+    {"name": "ov01_021FCDBC", "mode": "thumb", "signature_guess": "static void ov01_021FCDBC(UnkStruct_ov01_021FCD2C *data)", "confidence": "high", "callees": [], "struct_accesses": [{"param": 0, "offset": "0x8", "width": 4, "meaning": "finished flag := 1"}], "notes": "State 0 of jump table: immediately mark done."},
+    {"name": "ov01_021FCDC4", "mode": "thumb", "signature_guess": "static void ov01_021FCDC4(UnkStruct_ov01_021FCD2C *data)", "confidence": "high", "callees": ["ov01_021FCE44", "ov01_021FCE74", "ov01_021FCE34"], "struct_accesses": [{"param": 0, "offset": "0x4", "width": 4, "meaning": "substate 0/1; incremented after init and after completion"}, {"param": 0, "offset": "0x8", "width": 4, "meaning": "finished flag := 1 when ov01_021FCE74 returns 1"}], "notes": "State 1: zoom-by-delta. switch on [data+4]: case 0 → ov01_021FCE44(data) then fallthrough; case 1 → step; default early return. Always ends with ov01_021FCE34(data). Compare is `cmp r0, #1; bne` on ov01_021FCE74 result, so write `if (... == TRUE)`."},
+    {"name": "ov01_021FCDFC", "mode": "thumb", "signature_guess": "static void ov01_021FCDFC(UnkStruct_ov01_021FCD2C *data)", "confidence": "high", "callees": ["ov01_021FCE5C", "ov01_021FCE74", "ov01_021FCE34"], "struct_accesses": [{"param": 0, "offset": "0x4", "width": 4, "meaning": "substate, same pattern as ov01_021FCDC4"}, {"param": 0, "offset": "0x8", "width": 4, "meaning": "finished flag := 1 on completion"}], "notes": "State 2: return-to-initial-distance variant. Byte-identical structure to ov01_021FCDC4 except init call is ov01_021FCE5C."},
+    {"name": "ov01_021FCE34", "mode": "thumb", "signature_guess": "static void ov01_021FCE34(UnkStruct_ov01_021FCD2C *data)", "confidence": "high", "callees": ["Camera_SetDistance"], "struct_accesses": [{"param": 0, "offset": "0x20", "width": 4, "meaning": "current distance (fx32) → arg0 of Camera_SetDistance"}, {"param": 0, "offset": "0x30", "width": 4, "meaning": "Camera* → arg1 of Camera_SetDistance"}], "notes": "Tail call (ldr r3,=Camera_SetDistance; bx r3) — plain `Camera_SetDistance(data->unk20, data->camera);` as the only statement should match."},
+    {"name": "ov01_021FCE44", "mode": "thumb", "signature_guess": "static void ov01_021FCE44(UnkStruct_ov01_021FCD2C *data)", "confidence": "high", "callees": ["_s32_div_f"], "struct_accesses": [{"param": 0, "offset": "0x28", "width": 4, "meaning": "step := delta(0x14) / duration(0x1c), signed division"}, {"param": 0, "offset": "0x18", "width": 4, "meaning": "target := current(0x20) + delta(0x14)"}], "notes": "_s32_div_f is the MWCC signed / operator helper — write `data->unk28 = data->unk14 / data->unk1c;` with s32/fx32 operands (signed, not unsigned, else _u32_div_f is emitted)."},
+    {"name": "ov01_021FCE5C", "mode": "thumb", "signature_guess": "static void ov01_021FCE5C(UnkStruct_ov01_021FCD2C *data)", "confidence": "high", "callees": ["_s32_div_f"], "struct_accesses": [{"param": 0, "offset": "0x28", "width": 4, "meaning": "step := (initial(0x10) - current(0x20)) / duration(0x1c)"}, {"param": 0, "offset": "0x18", "width": 4, "meaning": "target := initial distance(0x10)"}]},
+    {"name": "ov01_021FCE74", "mode": "thumb", "signature_guess": "static BOOL ov01_021FCE74(UnkStruct_ov01_021FCD2C *data)", "confidence": "high", "callees": [], "struct_accesses": [{"param": 0, "offset": "0x20", "width": 4, "meaning": "current += step(0x28)"}, {"param": 0, "offset": "0x24", "width": 4, "meaning": "frame counter, pre-incremented then compared"}, {"param": 0, "offset": "0x1c", "width": 4, "meaning": "duration; `blo` ⇒ UNSIGNED compare, so 0x1c and 0x24 must be u32"}, {"param": 0, "offset": "0x18", "width": 4, "meaning": "target snapped into current(0x20) on completion"}], "notes": "Leaf. Pattern: `data->unk24++; if (data->unk24 >= data->unk1c) { data->unk24 = data->unk1c; current = target; return TRUE; } return FALSE;` — counter is re-stored before the compare (str precedes cmp)."}
+  ],
+  "data": [
+    {"label": "ov01_02208E0C", "section": "rodata", "bytes": 16, "shape_guess": "static const void (*const sCameraZoomFuncs[4])(UnkStruct_ov01_021FCD2C *) = { ov01_021FCDBC, ov01_021FCDC4, ov01_021FCDFC, NULL }"}
+  ],
+  "imports": {
+    "Heap_AllocAtEnd": {"known_prototype": "void *Heap_AllocAtEnd(enum HeapID heapID, u32 size)", "header": "include/heap.h"},
+    "Heap_Free": {"known_prototype": "void Heap_Free(void *ptr)", "header": "include/heap.h"},
+    "memset": {"known_prototype": "void *memset(void *, int, size_t)", "header": "string.h (MSL)"},
+    "SysTask_CreateOnMainQueue": {"known_prototype": "SysTask *SysTask_CreateOnMainQueue(SysTaskFunc func, void *data, u32 priority)", "header": "include/sys_task_api.h"},
+    "SysTask_Destroy": {"known_prototype": "void SysTask_Destroy(SysTask *task)", "header": "include/sys_task_api.h"},
+    "SysTask_GetData": {"known_prototype": "void *SysTask_GetData(SysTask *task)", "header": "include/sys_task.h"},
+    "Camera_GetDistance": {"known_prototype": "fx32 Camera_GetDistance(Camera *camera)", "header": "include/camera.h"},
+    "Camera_SetDistance": {"known_prototype": "void Camera_SetDistance(fx32 distance, Camera *camera)", "header": "include/camera.h"},
+    "_s32_div_f": {"known_prototype": "compiler helper, emitted by signed s32 division", "header": "n/a (MWCC runtime)"}
+  },
+  "shared_struct_hypotheses": [
+    {"name": "UnkStruct_ov01_021FCD2C (camera zoom task data)", "size_guess": "0x34 (Heap_AllocAtEnd size, memset 0x34)", "fields": [
+      {"offset": "0x0", "width": 4, "meaning": "HeapID heapId (stored but never re-read in this file)"},
+      {"offset": "0x4", "width": 4, "meaning": "int substate (0=init,1=run,2=done)"},
+      {"offset": "0x8", "width": 4, "meaning": "BOOL finished — read by ov01_021FCD6C"},
+      {"offset": "0xc", "width": 4, "meaning": "int state — index into ov01_02208E0C func table (0..2)"},
+      {"offset": "0x10", "width": 4, "meaning": "fx32 initialDistance (Camera_GetDistance at create)"},
+      {"offset": "0x14", "width": 4, "meaning": "fx32 distanceDelta (signed; caller passes 0xFFF88000)"},
+      {"offset": "0x18", "width": 4, "meaning": "fx32 targetDistance"},
+      {"offset": "0x1c", "width": 4, "meaning": "u32 duration (frames; unsigned cmp `blo`)"},
+      {"offset": "0x20", "width": 4, "meaning": "fx32 currentDistance"},
+      {"offset": "0x24", "width": 4, "meaning": "u32 frameCounter"},
+      {"offset": "0x28", "width": 4, "meaning": "fx32 stepPerFrame (signed div result)"},
+      {"offset": "0x2c", "width": 4, "meaning": "FieldSystem *fieldSystem (stored, unused in this file)"},
+      {"offset": "0x30", "width": 4, "meaning": "Camera *camera (= fieldSystem->camera)"}
+    ]}
+  ],
+  "risks": [
+    "rodata ordering: single func-ptr table ov01_02208E0C with trailing NULL entry must emit exactly 4 words; declare it static const after defining (or forward-declaring) the three static state functions",
+    "all 8 non-exported functions must be static; forward declarations needed since ov01_021FCD2C references ov01_021FCDA8 before its definition and the table references three later funcs",
+    "function-pointer table element type: dispatch is `blx r1` with data* in r0 — use the data-pointer form for clean C",
+    "_s32_div_f must come from signed s32/fx32 division; u32 operands would emit _u32_div_f and break the match",
+    "ov01_021FCE74 uses unsigned `blo` compare — fields 0x1c/0x24 must be u32, not int",
+    "all callers are still in asm (asm/overlay_02_02248728.s), so the new header's prototypes constrain that future decomp but cannot break existing IPA codegen — low hazard",
+    "ov01_021FCE34 is a tail-call (bx r3) — keep it a minimal void wrapper, no extra statements"
+  ],
+  "notes": "Small self-contained camera-distance (zoom) animation SysTask module for overlay 1, structurally similar to already-decompiled src/camera_translation.c (good style template). Exports: ov01_021FCD2C (create), ov01_021FCD6C (is-finished), ov01_021FCD78 (destroy), ov01_021FCD8C (start zoom: state/delta/duration). Only caller is asm/overlay_02_02248728.s (Pokeathlon-area overlay), ~12 call sites; sample at lines 1086-1093 confirms (fieldSystem ptr, HeapID 4) then (task, 1, -0x78000, 12). param0 identified as FieldSystem* via camera at struct offset 0x24 matching include/field_system.h. Function order in C must be: D2C, D6C, D78, D8C, DA8, DBC, DC4, DFC, E34, E44, E5C, E74, then rodata table."
+}
