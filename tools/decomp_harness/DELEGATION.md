@@ -14,12 +14,28 @@ Agent tool's `model` parameter, which takes precedence.
 
 | Workload | Agent | Model guidance |
 |---|---|---|
+| First-pass C draft (`/decomp-sonnet`) | `decomp-drafter` | `sonnet` (frontmatter default) |
 | Post-match verification (checklist) | `decomp-verifier` | `sonnet` (frontmatter default) |
 | Sweep pre-analysis (`/decomp-sweep`) | `asm-analyzer` | inherit (analysis quality drives later match rates); drop to `sonnet` for bulk waves over easy files |
 | Anything mechanical with a structured output | any | `sonnet`, or `haiku` for pure lookups |
 
 The orchestrator stays on the session model; only the spawned worker runs on
 the cheaper tier.
+
+### Sonnet drafter vs Qwen drafter
+
+The `decomp-drafter` agent (Sonnet, Tier 1) and `delegate.sh` (Qwen, Tier 2)
+serve the same role — first-pass C — but differ in capability and cost:
+
+- **Sonnet** has tool access (Read/Grep/Glob): it reads the asm, inc, and
+  headers itself, producing higher-quality drafts that need less orchestrator
+  surgery. Use `/decomp-sonnet` or `/decomp-sonnet-loop`.
+- **Qwen** is text-in/text-out: the orchestrator must assemble all context
+  into a prompt file. Free (local), but drafts need more review. Use
+  `/decomp-delegate` or `/decomp-delegate-loop`.
+
+Both produce untrusted drafts; the orchestrator owns review, integration,
+and the build-compare judgment loop in all cases.
 
 ## Tier 2: Local Ollama via `delegate.sh`
 
