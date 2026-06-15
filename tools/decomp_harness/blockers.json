@@ -8,10 +8,10 @@
       "fix_plan": "Identify the header-sharing cluster (sound.h / sound_chatot.h consumers), fix all signatures in one change, and re-match affected files in a single commit. Alternatively decompile the cluster as a group."
     },
     {
-      "id": "staged-rodata-and-prototype-fixes",
-      "description": "src/unk_0201010C.c static const arrays are in the wrong .rodata order (all 127 functions byte-match but ROM SHA1 fails), and 5 files have staged prototype-conflict fixes in the working tree. Until committed together with a passing SHA1, full-ROM compare cannot be used to verify new decomps — use objdiff.py --summary instead.",
+      "id": "ipa-merge-cascade",
+      "description": "120 main.sha1 mismatches caused by IPA cascade from the upstream merge (7ec854e90). 24 headers differ between upstream's overlay_44 matching state and our fork's decomps. MWCC -ipa file cascades codegen changes when ANY declaration in a header changes — even adding new declarations for uncalled functions. Overlay_44 files were matched on upstream with a minimal header; our fork's files were matched with an extended header. Both can't use the same header without one side mismatching. A/B tested: confirmed even adding declarations (without changing existing prototypes) produces different .o files.",
       "files_blocked": [],
-      "fix_plan": "Reorder the static const arrays in src/unk_0201010C.c to match the asm .rodata layout, commit together with the 5 staged prototype fixes, and confirm chiri pkg -- compare passes."
+      "fix_plan": "Re-verify each upstream-origin file (overlay_44_0222CDAC, overlay_44_02235340, overlay_44_02232E9C, and other upstream files that include changed headers) with objdiff against the current header state. For files whose codegen changed: adjust C to re-match, or isolate them from the changed headers using local declarations (as done for sound_02004A44.h). The 24 changed headers between commits 8a245deef and 0ee6298b1 are the full scope."
     },
     {
       "id": "param-copyprop-cmp",
@@ -21,9 +21,9 @@
     },
     {
       "id": "sound02004A44-dup-decl",
-      "description": "include/sound_02004A44.h declares GF_GetVolumeBySeqNo TWICE with conflicting signatures: line 51 'u16 GF_GetVolumeBySeqNo();' (stale empty-parens, wrong return type) and line 75 'u8 GF_GetVolumeBySeqNo(u16 seqNo);' (current, matches the real definition in src/unk_02004A44.c:848). Under -W error MWCC aborts on the redeclaration in EVERY TU that includes the header (e.g. src/alph_puzzle.c), so 'make main' / full-ROM compare cannot complete and new decomps can only be verified with objdiff.py --summary. Regression introduced when unk_02004A44.c was decompiled (added line 75) without removing the stale line 51. Tension: src/overlay_44_0222CDAC.c:3019 calls GF_GetVolumeBySeqNo() argument-less, relying on the empty-parens form; naively deleting line 51 makes that call a too-few-args error and changing it would alter overlay_44 codegen.",
+      "description": "RESOLVED. The stale u16 GF_GetVolumeBySeqNo() was removed from sound_02004A44.h. unk_02004A44.c now uses sound_02004A44_internal.h (split header pattern). overlay_44 files use local declarations with upstream-compatible types (K&R empty-parens for GF_GetVolumeBySeqNo, void params for sub_0200F478). field_bgm.c excluded from the header (has own stale local declarations). Build compiles end-to-end; individual functions verified matching via objdiff.",
       "files_blocked": [],
-      "fix_plan": "Remove the stale line 51 'u16 GF_GetVolumeBySeqNo();'. Then resolve the overlay_44_0222CDAC.c:3019 argument-less call (determine the real u16 seqNo argument from the asm at 0x0222C... and pass it, or keep an empty-parens-compatible local decl) and re-verify overlay_44 + unk_02004A44 still match via build-compare. ~53 TUs include this header, so confirm chiri pkg -- compare passes afterward. Do this as a dedicated task OUTSIDE the decomp loop — it touches already-matched files."
+      "fix_plan": "No further action needed for this blocker. The remaining 120 SHA1 mismatches are tracked under ipa-merge-cascade."
     }
   ]
 }
