@@ -310,6 +310,12 @@
       "id": "nns-leaf-headers-via-global",
       "title": "Include NNS via global.h, never the leaf <nnsys/...> headers directly",
       "body": "NNS SDK leaf headers (e.g. <nnsys/g3d/binres/res_struct_accessor.h>, res_struct_accessor_inline.h, kernel.h, gfd VramMan types) do NOT include their own prerequisite type headers -> including them directly gives MWCC declaration syntax error (NNSG3dResMdlSet etc. undefined). The umbrella nnsys/g3d.h includes them in the correct dependency order, and global.h -> nitro/nnsys pulls the whole chain. Fix: rely on #include global.h for ALL NNS types AND inline accessors (NNS_G3dGetMdlByIdx, NNS_G3dGetResDataByIdx live in res_struct_accessor_inline.h which g3d.h includes). Do not add explicit <nnsys/...> includes; clang-format also sorts angle-bracket system includes to the TOP (above global.h), compounding the undefined-type failure. Example: unk_02069660."
+    },
+    {
+      "category": "matching-tricks",
+      "id": "unsigned-literal-branch-no-regshuffle",
+      "title": "Force an unsigned loop branch (bcc/blo) with a 2u literal, keeping the counter int",
+      "body": "When a loop counter is int but the asm uses an UNSIGNED branch (bcc/blo) for its bound check (cmp #N; bcc), changing the counter type to u32 fixes the branch BUT can shuffle the whole functions register allocation (u32 changes how MWCC allocates the counter and dependent temps). Instead keep the counter as int and make ONLY the comparison unsigned with an unsigned literal: for (i = 0; i < 2u; i++). The int->unsigned promotion at the compare site flips blt->bcc with zero extra instructions and leaves register allocation identical to the int version. Use this when the int version matched everything EXCEPT signed-vs-unsigned loop branches. Example: overlay_80_022384D8 ov80_0223857C (2x2 fill loops)."
     }
   ]
 }

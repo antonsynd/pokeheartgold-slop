@@ -127,6 +127,14 @@
       "attempts": 1,
       "result": "matched",
       "note": "compare-verified (full ROM SHA1 OK). opus-authored, matched first build. Field-system task-callback state machine (3 fns) for a bag-app-in-field task. sub_02092B04 (public TaskFunc) switches on env state byte at 0x272: 0x18 -> sub_02092B40 (waits for FieldSystem_ApplicationIsRunning; on exit writes sub_0207791C(bagView) to env->unk2A0->unk2, frees the BagView at env->unk4, loads field overlay, advances state), 0x19 -> sub_02092B7C (when sub_020505C8 ready: ov01_021E636C(1), TaskManager_Jump to ov03_02256E2C, state=0x1a). env->unk4 is a BagView*. No C caller (caller asm overlay_03.s) -> fresh header. Large opaque env modeled as a private padded struct (fields at 0x4/0x272/0x2A0); offsets 0x272 via literal pool, 0x2A0 via mov+lsl#4 (MWCC auto). Sparse switch (0x18/0x19) -> cmp/beq cascade."
+    },
+    {
+      "file": "asm/overlay_80_022384D8.s",
+      "lines": 228,
+      "functions": 8,
+      "attempts": 4,
+      "result": "matched",
+      "note": "compare-verified (full ROM SHA1 OK). opus-authored. BG-tilemap 2x2-block animation manager (8 fns). Nested ctor (Outer 8B holds Inner 12B {SysTask*; BgConfig*; u16 toggle; u16 counter}), dtor, a SysTask main-queue callback (ov80_02238530) that every 3 ticks toggles unk8 and rewrites a 2x2 tile rect via ov80_0223857C + LoadRectToBgTilemapRect/ScheduleBgTilemapBufferTransfer, a rect-filler, and two 7-case index->tile-id jump-table lookups. MI_CpuClear8 inlines to MI_CpuFill8. No C callers -> fresh header (opaque Outer). Match fixes: (1) jump tables needed dense case 0..6; case 1 shares default bx lr so source case order must be 0,2,3,4,5,6,1 to match block layout (objdiff SIZE 42-vs-54 is the jump-table data-region false-positive). (2) rect filler: declare j before rowBase (decl-order r2/r3), value expr base+j+rowBase (recompute not increment), flat buf[i*2+j], and crucially loop bound i<2u/j<2u to force unsigned bcc while keeping i/j as int (u32 i/j fixed the branch but shuffled register allocation)."
     }
   ],
   "failed": [
@@ -172,8 +180,8 @@
   ],
   "in_progress": null,
   "stats": {
-    "total_attempts": 74,
-    "total_matched": 16,
+    "total_attempts": 75,
+    "total_matched": 17,
     "total_failed": 5
   }
 }

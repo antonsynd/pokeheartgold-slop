@@ -126,6 +126,10 @@ When the asm uses a Thumb jump table (cmp rN,#max; bhi default; add rN,rN; add r
 
 When the asm computes a value once (e.g. count*4 via a single lsls) and keeps it in a callee-saved register (r4-r7) across multiple calls that reuse it (Heap_Alloc size AND FS_ReadFile len), the source declared an explicit local for it. Recomputing inline (header.a*4 written at each Heap_Alloc/FS_ReadFile site) makes MWCC reload+recompute each time -> function grows (asm 164B, naive C 170B) and the value never occupies a persistent callee-saved reg. Fix: u32 sizeA = header.a*4; pass sizeA to both the alloc and the read. Diagnose via objdiff size diff + extra ldrh/lsls before each use. Reg pick (r6 vs r4) follows usual decl-order/param-reuse: a dead param register (path in r4) is reused for the later-born size local. Example: overlay_01_021EA6C4 ov01_021EA73C.
 
+### Force an unsigned loop branch (bcc/blo) with a 2u literal, keeping the counter int  <!-- id: unsigned-literal-branch-no-regshuffle -->
+
+When a loop counter is int but the asm uses an UNSIGNED branch (bcc/blo) for its bound check (cmp #N; bcc), changing the counter type to u32 fixes the branch BUT can shuffle the whole functions register allocation (u32 changes how MWCC allocates the counter and dependent temps). Instead keep the counter as int and make ONLY the comparison unsigned with an unsigned literal: for (i = 0; i < 2u; i++). The int->unsigned promotion at the compare site flips blt->bcc with zero extra instructions and leaves register allocation identical to the int version. Use this when the int version matched everything EXCEPT signed-vs-unsigned loop branches. Example: overlay_80_022384D8 ov80_0223857C (2x2 fill loops).
+
 ## IPA (-ipa file) Behavior
 
 ### Shared-header signatures are load-bearing across compilation units  <!-- id: ipa-shared-headers -->
