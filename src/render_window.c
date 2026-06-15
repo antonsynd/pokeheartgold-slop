@@ -1,4 +1,8 @@
+#include "render_window.h"
+
 #include "global.h"
+
+#include "field/ov01_021E7FDC.h"
 
 #include "bg_window.h"
 #include "filesystem.h"
@@ -8,26 +12,21 @@
 #include "pokemon.h"
 #include "pokepic.h"
 #include "render_text.h"
-#include "render_window.h"
 #include "sprite.h"
 #include "sys_task.h"
 #include "sys_task_api.h"
 #include "systask_environment.h"
+#include "unk_02009D48.h"
 #include "unk_0200A090.h"
 #include "unk_0200ACF0.h"
-#include "unk_02009D48.h"
 #include "unk_02013FDC.h"
-#include "field/ov01_021E7FDC.h"
 
 // rodata
-static const u32 _020F5C40[4] = {0x0000000A, 0x00000000, 0x0000000A, 0x0000000A};
-static const u32 _020F5C50[4] = {0x00000000, 0x00000000, 0x0000000A, 0x0000000A};
-static const u32 _020F5C60[6] = {0x00000001, 0x00000001, 0x00000001, 0x00000001, 0x00000000, 0x00000000};
+static const u32 _020F5C40[4] = { 0x0000000A, 0x00000000, 0x0000000A, 0x0000000A };
+static const u32 _020F5C50[4] = { 0x00000000, 0x00000000, 0x0000000A, 0x0000000A };
+static const u32 _020F5C60[6] = { 0x00000001, 0x00000001, 0x00000001, 0x00000001, 0x00000000, 0x00000000 };
 static const u32 _020F5C78[13] = {
-    0x00000000, 0x00000000,
-    0x00000000, 0x00000000, 0x00000001, 0x015CD5D5,
-    0x015CD5D5, 0x015CD5D5, 0x015CD5D5, 0x00000000,
-    0x00000000, 0x00000000, 0x00000000
+    0x00000000, 0x00000000, 0x00000000, 0x00000000, 0x00000001, 0x015CD5D5, 0x015CD5D5, 0x015CD5D5, 0x015CD5D5, 0x00000000, 0x00000000, 0x00000000, 0x00000000
 };
 
 // External overlay_01 functions
@@ -40,18 +39,18 @@ Sprite *ov01_021E851C(UnkStruct_ov01_021E7FDC *a0, void *a1);
 void ov01_021E86F4(UnkStruct_ov01_021E7FDC *a0);
 
 struct WaitingIcon {
-    Window *window;         // 0x000
-    u8 frames[8][0x80];     // 0x004
+    Window *window;     // 0x000
+    u8 frames[8][0x80]; // 0x004
     // 0x404 used transiently in New
     // 0x484
-    u16 tileNum;            // 0x484
-    u8 frameCounter;        // 0x486
-    u8 flags;               // 0x487
-    u8 state;               // 0x488
-    u8 animIndex;           // 0x489
-    u8 flags2;              // 0x48A
-    u8 pad;                 // 0x48B
-};                          // 0x48C
+    u16 tileNum;     // 0x484
+    u8 frameCounter; // 0x486
+    u8 flags;        // 0x487
+    u8 state;        // 0x488
+    u8 animIndex;    // 0x489
+    u8 flags2;       // 0x48A
+    u8 pad;          // 0x48B
+}; // 0x48C
 
 // Static forward declarations
 static void sub_0200E448(BgConfig *bgConfig, u8 bgId, u16 baseTile, u8 x, u8 y, u8 width, u8 height, u8 palette);
@@ -116,8 +115,14 @@ static void sub_0200E448(BgConfig *bgConfig, u8 bgId, u16 baseTile, u8 x, u8 y, 
     u8 widthM1 = width - 1;
     u8 heightM1 = height - 1;
     // ... see asm for full logic
-    (void)bgConfig; (void)bgId; (void)baseTile; (void)x; (void)y; (void)palette;
-    (void)widthM1; (void)heightM1;
+    (void)bgConfig;
+    (void)bgId;
+    (void)baseTile;
+    (void)x;
+    (void)y;
+    (void)palette;
+    (void)widthM1;
+    (void)heightM1;
 }
 #else
 asm static void sub_0200E448(BgConfig *bgConfig, u8 bgId, u16 baseTile, u8 x, u8 y, u8 width, u8 height, u8 palette) {
@@ -335,7 +340,14 @@ void LoadUserFrameGfx2(BgConfig *bgConfig, GFBgLayer layer, u16 baseTile, u8 pal
 
 #ifdef NONMATCHING
 static void sub_0200E6B4(BgConfig *bgConfig, u8 bgId, u16 baseTile, u8 x, u8 y, u8 width, u8 height, u8 palette) {
-    (void)bgConfig; (void)bgId; (void)baseTile; (void)x; (void)y; (void)width; (void)height; (void)palette;
+    (void)bgConfig;
+    (void)bgId;
+    (void)baseTile;
+    (void)x;
+    (void)y;
+    (void)width;
+    (void)height;
+    (void)palette;
 }
 #else
 asm static void sub_0200E6B4(BgConfig *bgConfig, u8 bgId, u16 baseTile, u8 x, u8 y, u8 width, u8 height, u8 palette) {
@@ -658,7 +670,9 @@ asm static void sub_0200E6B4(BgConfig *bgConfig, u8 bgId, u16 baseTile, u8 x, u8
 
 #ifdef NONMATCHING
 void sub_0200E948(Window *window, u16 baseTile, u8 palette) {
-    (void)window; (void)baseTile; (void)palette;
+    (void)window;
+    (void)baseTile;
+    (void)palette;
 }
 #else
 asm void sub_0200E948(Window *window, u16 baseTile, u8 palette) {
@@ -772,7 +786,11 @@ asm static void sub_0200EA24(const Bitmap *a0, Bitmap *a1, u16 a2, u16 a3, u16 a
 
 #ifdef NONMATCHING
 static void sub_0200EA68(Window *window, u8 bgId, u8 tileOffset, u8 numTiles, u8 unused) {
-    (void)window; (void)bgId; (void)tileOffset; (void)numTiles; (void)unused;
+    (void)window;
+    (void)bgId;
+    (void)tileOffset;
+    (void)numTiles;
+    (void)unused;
 }
 #else
 asm static void sub_0200EA68(Window *window, u8 bgId, u8 tileOffset, u8 numTiles, u8 unused) {
@@ -904,7 +922,11 @@ void sub_0200EB68(Window *window, int a1) {
 
 #ifdef NONMATCHING
 void sub_0200EB80(BgConfig *bgConfig, u8 bgId, u8 tileOffset, u8 numTiles, enum HeapID heapID) {
-    (void)bgConfig; (void)bgId; (void)tileOffset; (void)numTiles; (void)heapID;
+    (void)bgConfig;
+    (void)bgId;
+    (void)tileOffset;
+    (void)numTiles;
+    (void)heapID;
 }
 #else
 asm void sub_0200EB80(BgConfig *bgConfig, u8 bgId, u8 tileOffset, u8 numTiles, enum HeapID heapID) {
@@ -980,7 +1002,11 @@ _0200EBDE:
 
 #ifdef NONMATCHING
 void sub_0200EC0C(BgConfig *bgConfig, u8 bgId, u8 tileOffset, u8 numTiles, enum HeapID heapID) {
-    (void)bgConfig; (void)bgId; (void)tileOffset; (void)numTiles; (void)heapID;
+    (void)bgConfig;
+    (void)bgId;
+    (void)tileOffset;
+    (void)numTiles;
+    (void)heapID;
 }
 #else
 asm void sub_0200EC0C(BgConfig *bgConfig, u8 bgId, u8 tileOffset, u8 numTiles, enum HeapID heapID) {
@@ -1046,7 +1072,11 @@ _0200EC80:
 
 #ifdef NONMATCHING
 static void sub_0200EC84(BgConfig *bgConfig, u8 bgId, u16 charStart, u8 x, enum HeapID heapID) {
-    (void)bgConfig; (void)bgId; (void)charStart; (void)x; (void)heapID;
+    (void)bgConfig;
+    (void)bgId;
+    (void)charStart;
+    (void)x;
+    (void)heapID;
 }
 #else
 asm static void sub_0200EC84(BgConfig *bgConfig, u8 bgId, u16 charStart, u8 x, enum HeapID heapID) {
@@ -1086,7 +1116,14 @@ _0200EC9C:
 
 #ifdef NONMATCHING
 static void sub_0200ECBC(BgConfig *bgConfig, u8 bgId, u16 baseTile, u8 x, u8 y, u8 width, u8 height, u8 palette) {
-    (void)bgConfig; (void)bgId; (void)baseTile; (void)x; (void)y; (void)width; (void)height; (void)palette;
+    (void)bgConfig;
+    (void)bgId;
+    (void)baseTile;
+    (void)x;
+    (void)y;
+    (void)width;
+    (void)height;
+    (void)palette;
 }
 #else
 asm static void sub_0200ECBC(BgConfig *bgConfig, u8 bgId, u16 baseTile, u8 x, u8 y, u8 width, u8 height, u8 palette) {
@@ -1434,7 +1471,9 @@ asm static void sub_0200ECBC(BgConfig *bgConfig, u8 bgId, u16 baseTile, u8 x, u8
 
 #ifdef NONMATCHING
 static void sub_0200EF84(Window *window, u16 baseTile, enum HeapID heapID) {
-    (void)window; (void)baseTile; (void)heapID;
+    (void)window;
+    (void)baseTile;
+    (void)heapID;
 }
 #else
 asm static void sub_0200EF84(Window *window, u16 baseTile, enum HeapID heapID) {
@@ -1507,7 +1546,10 @@ _0200EFC6:
 
 #ifdef NONMATCHING
 void DrawFrameAndWindow3(Window *window, BOOL dont_copy_to_vram, u16 baseTile, u8 palette_num) {
-    (void)window; (void)dont_copy_to_vram; (void)baseTile; (void)palette_num;
+    (void)window;
+    (void)dont_copy_to_vram;
+    (void)baseTile;
+    (void)palette_num;
 }
 #else
 asm void DrawFrameAndWindow3(Window *window, BOOL dont_copy_to_vram, u16 baseTile, u8 palette_num) {
@@ -1590,7 +1632,8 @@ _0200F0A0:
 
 #ifdef NONMATCHING
 WaitingIcon *WaitingIcon_New(Window *window, u16 tileNum) {
-    (void)window; (void)tileNum;
+    (void)window;
+    (void)tileNum;
     return NULL;
 }
 #else
@@ -1726,7 +1769,8 @@ _0200F12E:
 
 #ifdef NONMATCHING
 static void sub_0200F1D4(WaitingIcon *icon, int mode) {
-    (void)icon; (void)mode;
+    (void)icon;
+    (void)mode;
 }
 #else
 asm static void sub_0200F1D4(WaitingIcon *icon, int mode) {
@@ -1975,7 +2019,8 @@ _0200F3C6:
 
 #ifdef NONMATCHING
 static void sub_0200F3D0(SysTask *task, void *data) {
-    (void)task; (void)data;
+    (void)task;
+    (void)data;
 }
 #else
 asm static void sub_0200F3D0(SysTask *task, void *data) {
@@ -2081,6 +2126,8 @@ asm void sub_0200F450(WaitingIcon *waitingIcon) {
 }
 #endif
 
+void sub_0200F478(WaitingIcon *waitingIcon);
+
 #ifdef NONMATCHING
 void sub_0200F478(WaitingIcon *waitingIcon) {
     (void)waitingIcon;
@@ -2109,7 +2156,15 @@ asm void sub_0200F478(WaitingIcon *waitingIcon) {
 
 #ifdef NONMATCHING
 struct PokepicManager *DrawPokemonPicFromSpecies(BgConfig *bgConfig, GFBgLayer layer, int x, int y, u8 paletteNum, u16 baseTile, u16 species, u8 gender, enum HeapID heapID) {
-    (void)bgConfig; (void)layer; (void)x; (void)y; (void)paletteNum; (void)baseTile; (void)species; (void)gender; (void)heapID;
+    (void)bgConfig;
+    (void)layer;
+    (void)x;
+    (void)y;
+    (void)paletteNum;
+    (void)baseTile;
+    (void)species;
+    (void)gender;
+    (void)heapID;
     return NULL;
 }
 #else
@@ -2156,7 +2211,14 @@ asm struct PokepicManager *DrawPokemonPicFromSpecies(BgConfig *bgConfig, GFBgLay
 
 #ifdef NONMATCHING
 struct PokepicManager *DrawPokemonPicFromMon(BgConfig *bgConfig, GFBgLayer layer, int x, int y, u8 paletteNum, u16 baseTile, Pokemon *mon, enum HeapID heapID) {
-    (void)bgConfig; (void)layer; (void)x; (void)y; (void)paletteNum; (void)baseTile; (void)mon; (void)heapID;
+    (void)bgConfig;
+    (void)layer;
+    (void)x;
+    (void)y;
+    (void)paletteNum;
+    (void)baseTile;
+    (void)mon;
+    (void)heapID;
     return NULL;
 }
 #else
@@ -2201,7 +2263,8 @@ asm struct PokepicManager *DrawPokemonPicFromMon(BgConfig *bgConfig, GFBgLayer l
 
 #ifdef NONMATCHING
 static void sub_0200F54C(SysTask *task, void *data) {
-    (void)task; (void)data;
+    (void)task;
+    (void)data;
 }
 #else
 asm static void sub_0200F54C(SysTask *task, void *data) {
@@ -2266,7 +2329,11 @@ _0200F5A8:
 
 #ifdef NONMATCHING
 static WaitingIcon *sub_0200F5C4(BgConfig *bgConfig, u8 bgId, u8 paletteNum, u8 tileOffset, enum HeapID heapID) {
-    (void)bgConfig; (void)bgId; (void)paletteNum; (void)tileOffset; (void)heapID;
+    (void)bgConfig;
+    (void)bgId;
+    (void)paletteNum;
+    (void)tileOffset;
+    (void)heapID;
     return NULL;
 }
 #else
@@ -2302,7 +2369,8 @@ asm static WaitingIcon *sub_0200F5C4(BgConfig *bgConfig, u8 bgId, u8 paletteNum,
 
 #ifdef NONMATCHING
 static void sub_0200F600(UnkStruct_ov01_021E7FDC *spriteEnv, void *spriteResHdrList) {
-    (void)spriteEnv; (void)spriteResHdrList;
+    (void)spriteEnv;
+    (void)spriteResHdrList;
 }
 #else
 asm static void sub_0200F600(UnkStruct_ov01_021E7FDC *spriteEnv, void *spriteResHdrList) {
@@ -2381,7 +2449,9 @@ asm static void sub_0200F62C(UnkStruct_ov01_021E7FDC *spriteEnv) {
 
 #ifdef NONMATCHING
 static void sub_0200F684(UnkStruct_ov01_021E7FDC *spriteEnv, int x, int y) {
-    (void)spriteEnv; (void)x; (void)y;
+    (void)spriteEnv;
+    (void)x;
+    (void)y;
 }
 #else
 asm static void sub_0200F684(UnkStruct_ov01_021E7FDC *spriteEnv, int x, int y) {
@@ -2428,7 +2498,9 @@ _0200F694:
 
 #ifdef NONMATCHING
 static void sub_0200F6D4(UnkStruct_ov01_021E7FDC *spriteEnv, u16 species, u8 gender) {
-    (void)spriteEnv; (void)species; (void)gender;
+    (void)spriteEnv;
+    (void)species;
+    (void)gender;
 }
 #else
 asm static void sub_0200F6D4(UnkStruct_ov01_021E7FDC *spriteEnv, u16 species, u8 gender) {
@@ -2465,7 +2537,8 @@ asm static void sub_0200F6D4(UnkStruct_ov01_021E7FDC *spriteEnv, u16 species, u8
 
 #ifdef NONMATCHING
 static void sub_0200F714(UnkStruct_ov01_021E7FDC *spriteEnv, Pokemon *mon) {
-    (void)spriteEnv; (void)mon;
+    (void)spriteEnv;
+    (void)mon;
 }
 #else
 asm static void sub_0200F714(UnkStruct_ov01_021E7FDC *spriteEnv, Pokemon *mon) {
@@ -2496,7 +2569,8 @@ asm static void sub_0200F714(UnkStruct_ov01_021E7FDC *spriteEnv, Pokemon *mon) {
 
 #ifdef NONMATCHING
 static void sub_0200F748(UnkStruct_ov01_021E7FDC *spriteEnv, PokepicTemplate *pokepicTemplate) {
-    (void)spriteEnv; (void)pokepicTemplate;
+    (void)spriteEnv;
+    (void)pokepicTemplate;
 }
 #else
 asm static void sub_0200F748(UnkStruct_ov01_021E7FDC *spriteEnv, PokepicTemplate *pokepicTemplate) {
@@ -2597,7 +2671,9 @@ asm static void sub_0200F748(UnkStruct_ov01_021E7FDC *spriteEnv, PokepicTemplate
 
 #ifdef NONMATCHING
 static void sub_0200F82C(UnkStruct_ov01_021E7FDC *spriteEnv, u8 bgId, u16 baseTile) {
-    (void)spriteEnv; (void)bgId; (void)baseTile;
+    (void)spriteEnv;
+    (void)bgId;
+    (void)baseTile;
 }
 #else
 asm static void sub_0200F82C(UnkStruct_ov01_021E7FDC *spriteEnv, u8 bgId, u16 baseTile) {

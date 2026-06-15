@@ -9,7 +9,6 @@
 #include "save_local_field_data.h"
 #include "save_vars_flags.h"
 #include "sound.h"
-#include "sound_02004A44.h"
 #include "sys_flags.h"
 #include "trainer_data.h"
 

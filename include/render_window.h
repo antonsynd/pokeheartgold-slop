@@ -26,6 +26,5 @@ void sub_0200EB68(Window *window, int a1);
 void sub_0200EB80(BgConfig *bgConfig, u8 bgId, u8 tileOffset, u8 numTiles, enum HeapID heapID);
 void sub_0200EC0C(BgConfig *bgConfig, u8 bgId, u8 tileOffset, u8 numTiles, enum HeapID heapID);
 void DrawFrameAndWindow3(Window *window, BOOL dont_copy_to_vram, u16 baseTile, u8 palette_num);
-void sub_0200F478(WaitingIcon *waitingIcon);
 
 #endif // POKEHEARTGOLD_RENDER_WINDOW_H

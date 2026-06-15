@@ -1,5 +1,5 @@
-#ifndef POKEHEARTGOLD_SOUND_02004A44_H
-#define POKEHEARTGOLD_SOUND_02004A44_H
+#ifndef POKEHEARTGOLD_SOUND_02004A44_INTERNAL_H
+#define POKEHEARTGOLD_SOUND_02004A44_INTERNAL_H
 
 #include <nitro.h>
 #include <nnsys.h>
@@ -19,7 +19,6 @@ typedef struct UnkStruct_02004A44_0 {
 
 void sub_02004B10(void);
 void GF_SndHandleMoveVolume(int, int, int);
-
 void Sound_SetMasterVolume(int a0);
 void sub_02005D00(void);
 void GF_MicPauseOnLidClose(void);
@@ -38,18 +37,20 @@ BOOL GF_MIC_StartAutoSampling(MICAutoParam *param);
 void GF_MIC_StopAutoSampling(void);
 void PlayCryEx(int, int, int, int, int, int);
 BOOL sub_02004B24(int);
-void BGM_SaveStateAndPlayNew(u16 a0);
+void BGM_SaveStateAndPlayNew(u16 seqNo);
 u16 GF_GetCurrentPlayingBGM();
 void GF_SetCurrentPlayingBGM(u16 seqNo);
 void sub_020053A8(u8 a0, u8 a1);
 void GF_SND_BGM_DisableSet(u8 a0);
+u8 GF_SND_BGM_DisableCheck(void);
 BOOL sub_02005518(void);
 BOOL Sound_SetSceneAndPlayBGM(u8 scene, u16 seqNo, int unused);
-void GF_SetVolumeBySeqNo(u16 a0, u16 a1);
-void GF_SndHandleSetPlayerVolume(int a0, int a1);
-void GF_SndHandleSetInitialVolume(s32 a0, s32 a1);
-
+void GF_SetVolumeBySeqNo(u16 seqNo, u16 volume);
+void GF_SndHandleSetPlayerVolume(int playerNo, int volume);
+void GF_SndHandleSetInitialVolume(s32 playerNo, s32 volume);
+u8 GF_GetVolumeBySeqNo(u16 seqNo);
 void sub_02005448(int seqNo);
+void sub_02005464(int seqNo, int handleNo);
 void Sound_SetScene(int a0);
 void sub_02005BEC(BOOL);
 void Sound_ClearBGMPauseFlags(void);
@@ -59,7 +60,6 @@ int sub_02005328(int index);
 void sub_02005990(int a0);
 void sub_02005BA8(u16 seqNo);
 BOOL sub_02005BFC(void);
-u8 GF_SND_BGM_DisableCheck(void);
 void sub_02004A60(u16 seqNo);
 void sub_02004AB8(u16 seqNo);
 void Sound_SetFieldBGM(u16 seqNo);
@@ -70,14 +70,14 @@ u16 GF_GetBankBySeqNo(u16 seqNo);
 int GF_NNS_SndPlayerGetSeqNo(NNSSndHandle *handle);
 const void *GF_GetBankInfoBySeqNo(u16 seqNo);
 u16 GBSounds_GetGBSeqNoByDSSeqNo(u16 dsSeqNo);
-void sub_02005464(int seqNo, int handleNo);
-u8 GF_GetVolumeBySeqNo(u16 seqNo);
 u32 GF_SndPlayerCountPlayingSeqByPlayerNo(u32 playerNo);
 void GF_SndHandleSetTrackPitch(int playerNo, int trackMask, int pitch);
 void sub_0200592C(u16 seqNo, int trackMask, int pitch);
 void sub_02005944(int playerNo, int trackMask, int pitch);
 void GF_SndHandleSetTrackPan(int playerNo, int trackMask, int pan);
 void GF_SndHandleSetTempoRatio(int playerNo, int ratio);
+void GF_SndSetMonoFlag(int flag);
+BOOL GF_SndGetAfterFadeDelayTimer(void);
 BOOL sub_020057AC(int waveArcNo, int loopFlag, int pan, int channel, int heapId);
 void sub_02005728(int channel);
 void sub_02005748(int channel, int pan);
@@ -90,4 +90,4 @@ void sub_02005B68(int a0);
 void sub_02005B78(u16 seqNo, u16 varNo, s16 *outPtr);
 void sub_02005CF4(u32 a0);
 
-#endif // POKEHEARTGOLD_SOUND_02004A44_H
+#endif // POKEHEARTGOLD_SOUND_02004A44_INTERNAL_H
