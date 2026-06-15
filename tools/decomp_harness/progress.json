@@ -135,6 +135,14 @@
       "attempts": 4,
       "result": "matched",
       "note": "compare-verified (full ROM SHA1 OK). opus-authored. BG-tilemap 2x2-block animation manager (8 fns). Nested ctor (Outer 8B holds Inner 12B {SysTask*; BgConfig*; u16 toggle; u16 counter}), dtor, a SysTask main-queue callback (ov80_02238530) that every 3 ticks toggles unk8 and rewrites a 2x2 tile rect via ov80_0223857C + LoadRectToBgTilemapRect/ScheduleBgTilemapBufferTransfer, a rect-filler, and two 7-case index->tile-id jump-table lookups. MI_CpuClear8 inlines to MI_CpuFill8. No C callers -> fresh header (opaque Outer). Match fixes: (1) jump tables needed dense case 0..6; case 1 shares default bx lr so source case order must be 0,2,3,4,5,6,1 to match block layout (objdiff SIZE 42-vs-54 is the jump-table data-region false-positive). (2) rect filler: declare j before rowBase (decl-order r2/r3), value expr base+j+rowBase (recompute not increment), flat buf[i*2+j], and crucially loop bound i<2u/j<2u to force unsigned bcc while keeping i/j as int (u32 i/j fixed the branch but shuffled register allocation)."
+    },
+    {
+      "file": "asm/unk_0203BA5C.s",
+      "lines": 241,
+      "functions": 8,
+      "attempts": 3,
+      "result": "matched",
+      "note": "OBJECT-VERIFIED (src .o byte-identical to asm .o: all 8 fns match modulo bl relocs, 30-entry .rodata sSpawnMaps table byte-identical). Full-ROM chiri compare BLOCKED by an environment clean-build reproducibility issue (a tidy mid-session wiped the golden cached build state; a from-scratch rebuild in this macOS/Wine env fails the .sbin check for ALL 124 overlays + main, including pure-asm modules -> systemic link/encode-stage non-reproducibility, NOT this decomp). Spawn/flypoint/deathwarp lookup table module: SpawnMap struct (9 u16, bitfield-packed flagIdx:8/isBlackoutSpawn:1/isFlyPoint:1 and deathSpawnX:8/deathSpawnY:8), 30 entries; 4 frozen-header fns (GetMomSpawnId/GetDeathWarpData/GetSpecialSpawnWarpData/MapHeader_GetSpawnIdForDeathWarp) + GetFlyWarpData/sub_0203BB50/FlypointFlagAction (derived) + static SpawnIdToTableIndex. Match fixes: deathSpawnX/Y as u16:8 bitfields (ldrh+shift not ldrb); __attribute__((aligned(4))) on the array to match the asm 4-byte .rodata section alignment."
     }
   ],
   "failed": [
@@ -180,8 +188,8 @@
   ],
   "in_progress": null,
   "stats": {
-    "total_attempts": 75,
-    "total_matched": 17,
+    "total_attempts": 76,
+    "total_matched": 18,
     "total_failed": 5
   }
 }
