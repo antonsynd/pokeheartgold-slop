@@ -286,6 +286,12 @@
       "id": "private-struct-for-incomplete-shared-type",
       "title": "Use a private struct + cast when a shared param struct is incomplete (IPA-safe)",
       "body": "When a function must allocate/fill a struct that an EXTERNAL matched function takes by pointer (e.g. PokeathlonCourse_LaunchApp(.., PokeathlonCourseArgs*)), but the shared struct in its header is incomplete/placeholder (filler bytes, more-fields-to-discover) and is included by other already-matched files: do NOT edit the shared header to name the fields (recompiles those TUs -> IPA cascade risk). Instead define a fully-typed PRIVATE struct in your .c with the exact byte layout you need and cast to the real type only at the external call: PokeathlonCourse_LaunchApp(fs, (PokeathlonCourseArgs *)work->app). sizeof(private)==sizeof(real) so the alloc size literal matches; field offsets you control reproduce the exact ldrb/ldrh/strb. Zero shared-header change = zero IPA risk. Example: unk_02095DF4 sub_02095E30."
+    },
+    {
+      "category": "codegen",
+      "id": "u16-from-ldrh-unsigned-branch",
+      "title": "A u16 value loaded via ldrh compares unsigned (bcc/blo) against a constant without a cast",
+      "body": "When a function param/value is u16 and is read via ldrh (zero-extended), a bounds check like GF_ASSERT(index < 4) compiles to cmp + bcc (unsigned blo) WITHOUT needing an explicit (u32) cast — MWCC knows the ldrh-zero-extended value is non-negative and emits the unsigned branch. This is distinct from the signed-int-vs-u16 case (cast-unsigned-for-branch) where a value already widened to int needs an explicit (u32) cast to flip bge/blt to bhs/blo. Rule of thumb: keep the param u16 (matches the ldrh) and write the plain comparison; only add the (u32) cast when the value is int-typed. Example: overlay_80_02239AF8 ov80_02239AF8 (u16 index)."
     }
   ]
 }

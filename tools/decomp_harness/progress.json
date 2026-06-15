@@ -87,6 +87,14 @@
       "attempts": 1,
       "result": "matched",
       "note": "compare-verified (full ROM SHA1 OK). opus-authored (full analysis, no draft round-trip needed). Field-system task-callback state machine (task-callback-pattern): sub_02095DF4 allocs 0x20 env via Heap_AllocAtEnd(HEAP_ID_FIELD2), fills from 8 args, TaskManager_Call(fieldSystem->taskman, callback, env). Callback sub_02095E30 (static, not in .public) = 4-case dense jump-table state machine launching PokeathlonCourse app. Frozen prototype in existing include/unk_02095DF4.h (u8 a1/a2/a3, u16* a4-a7) kept verbatim (scrcmd_c.c line 99 compiled against it). IPA-safe: env struct + app-args struct both PRIVATE to .c (cast to PokeathlonCourseArgs* at LaunchApp) since shared PokeathlonCourseArgs in pokeathlon.h is incomplete (more-fields-to-discover) and used by matched launch_application.c. u8 params NOT narrowed at entry (MWCC trusts caller). objdiff SIZE 192-vs-200 on callback = known jump-table data-region false-positive; bytes identical. Matched first build."
+    },
+    {
+      "file": "asm/overlay_80_02239AF8.s",
+      "lines": 153,
+      "functions": 4,
+      "attempts": 1,
+      "result": "matched",
+      "note": "compare-verified (full ROM SHA1 OK). opus-authored, matched first build. Sprite resource set loader/unloader/factory for frontier graphics (4 fns + 208B rodata = 4x ManagedSpriteTemplate (0x34 each)). ov80_02239AF8 loads char/pltt/cell/anim res from open NARC; ov80_02239B7C unloads by id; ov80_02239BB8 = SpriteSystem_NewSprite + Sprite_TickFrame; ov80_02239BE8 = tail-call thunk to Sprite_DeleteAndFreeResources (simple forwarding -> ldr r3,=fn; bx r3). Hand-decoded the rodata into a typed static const ManagedSpriteTemplate[] initializer (resIdList[6] with -1 sentinels for unused MCEL/MANM, vram=NNS_G2D_VRAM_TYPE_2DMAIN). index: u16 in loader (read via ldrh from stack arg) vs u32 in B7C/BB8; both GF_ASSERT(index<4) gave unsigned bcc with no cast needed. New header, all callers still asm (no IPA risk). All diffs were bl placeholders."
     }
   ],
   "failed": [
@@ -132,8 +140,8 @@
   ],
   "in_progress": null,
   "stats": {
-    "total_attempts": 69,
-    "total_matched": 11,
+    "total_attempts": 70,
+    "total_matched": 12,
     "total_failed": 5
   }
 }

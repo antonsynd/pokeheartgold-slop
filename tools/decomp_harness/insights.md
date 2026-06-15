@@ -64,6 +64,10 @@ For files touching fixed DS addresses (0x027FFxxx ROM-header/system-work region)
 
 When two locals share a live range and compete for low Thumb registers (r2/r3), MWCC -O4,p assigns the FIRST-DECLARED variable to the LOWER register. If objdiff shows two functions identical except a consistent r2<->r3 (or rN<->rM) swap, reorder the local declarations to flip the allocation. Example: unk_02017FAC sub_02017FAC needed int i=0 declared before const u16 *p=table so i->r2 (counter/return reg) and p->r3 (walked pointer), matching asm.
 
+### A u16 value loaded via ldrh compares unsigned (bcc/blo) against a constant without a cast  <!-- id: u16-from-ldrh-unsigned-branch -->
+
+When a function param/value is u16 and is read via ldrh (zero-extended), a bounds check like GF_ASSERT(index < 4) compiles to cmp + bcc (unsigned blo) WITHOUT needing an explicit (u32) cast — MWCC knows the ldrh-zero-extended value is non-negative and emits the unsigned branch. This is distinct from the signed-int-vs-u16 case (cast-unsigned-for-branch) where a value already widened to int needs an explicit (u32) cast to flip bge/blt to bhs/blo. Rule of thumb: keep the param u16 (matches the ldrh) and write the plain comparison; only add the (u32) cast when the value is int-typed. Example: overlay_80_02239AF8 ov80_02239AF8 (u16 index).
+
 ## Matching Tricks
 
 ### Small source changes that move codegen  <!-- id: decl-order-tricks -->
