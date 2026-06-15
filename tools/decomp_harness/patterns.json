@@ -238,6 +238,12 @@
       "title": "MWCC errors on int->enum implicit conversion (use named enum constants)",
       "id": "int-to-enum-strict",
       "body": "MWCC -W error treats passing an int literal to an enum-typed parameter as an illegal implicit conversion (e.g. Heap_Create(3, 0x30, ...) where params are enum HeapID -> illegal implicit conversion from int to HeapID). Fix: use the named enum constant (HEAP_ID_3, HEAP_ID_48) or an explicit (enum X) cast. Codegen is identical (mov #imm), so this is purely about getting it to compile. The enum HEAP_ID_<N> names are sequential = value N."
+    },
+    {
+      "category": "codegen",
+      "title": "Raw pointer casts to magic hardware addresses match byte-for-byte",
+      "id": "raw-addr-cast-match",
+      "body": "For files touching fixed DS addresses (0x027FFxxx ROM-header/system-work region), *(u32 *)0xADDR (direct) gives ldr =0xADDR; ldr [r0]; *(u32 *)((u8 *)BASE + off) gives ldr =BASE (loaded once, reused); ldr [rN,#off]. The SAME address can appear both ways in one function (flag check *(u32*)0x027FF00C and header->gamecode at base 0x027FF000 +0xC) -> use both forms. Named HW_ consts (HW_ROM_HEADER_BUF, HW_CARD_ROM_HEADER, HW_CARD_ROM_HEADER_SIZE) match identically to raw literals. A stack struct of size 0xN (FSFile=0x48) gives sub sp,#0xN; read field via *(u32*)((u8*)&s+off)."
     }
   ]
 }

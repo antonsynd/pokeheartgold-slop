@@ -56,6 +56,10 @@ MWCC -W error treats passing an int literal to an enum-typed parameter as an ill
 
 When a function param is declared signed (e.g. int) per its fixed header, but the asm compares it with an UNSIGNED branch (bhs/blo/bhi/bls) against a u16 table value, force the comparison unsigned by casting at the comparison site: if ((u32)mapsec < p[1]). The cast is free (no instruction) and flips bge/blt -> bhs/blo. A signed int vs u16 promotes both to int and yields signed branches, so the cast is required. Distinguish per-comparison: the loop counter (int i) can stay signed (blt) in the same function while the value comparison is unsigned.
 
+### Raw pointer casts to magic hardware addresses match byte-for-byte  <!-- id: raw-addr-cast-match -->
+
+For files touching fixed DS addresses (0x027FFxxx ROM-header/system-work region), *(u32 *)0xADDR (direct) gives ldr =0xADDR; ldr [r0]; *(u32 *)((u8 *)BASE + off) gives ldr =BASE (loaded once, reused); ldr [rN,#off]. The SAME address can appear both ways in one function (flag check *(u32*)0x027FF00C and header->gamecode at base 0x027FF000 +0xC) -> use both forms. Named HW_ consts (HW_ROM_HEADER_BUF, HW_CARD_ROM_HEADER, HW_CARD_ROM_HEADER_SIZE) match identically to raw literals. A stack struct of size 0xN (FSFile=0x48) gives sub sp,#0xN; read field via *(u32*)((u8*)&s+off).
+
 ## Matching Tricks
 
 ### Small source changes that move codegen  <!-- id: decl-order-tricks -->

@@ -76,6 +76,14 @@
       "attempts": 1,
       "result": "matched",
       "note": "opus-drafted (drafter yielded to concurrent build); 8/8 functions + rodata match via objdiff. DWC/WFC overlay-loader: 4 public load/unload tail-calls (OVY_0/13/38), static UnloadOVY13/sub_020915F0/sub_02091634, and public OverlayManagerTemplate rodata gApp_MainMenu_SelectOption_NintendoWFCSetup. Needed FS_EXTERN_OVERLAY decls + named HEAP_ID_48/HEAP_ID_3 (MWCC rejects int->enum HeapID). args->saveData at offset 8 of UnkStruct_02111868_sub. Header gained LoadOVY13/38, UnloadOVY38. Full SHA1 blocked by sound02004A44-dup-decl (being fixed by parallel agent)."
+    },
+    {
+      "file": "asm/unk_02027010.s",
+      "lines": 96,
+      "functions": 2,
+      "attempts": 1,
+      "result": "matched",
+      "note": "opus-drafted; 2/2 functions + rodata match via objdiff. Low-level CARD/FS init; raw pointer casts to magic DS addrs (*(u32*)0x027FF00C, base 0x027FF000+off) + FSArchive struct + HW_ROM_HEADER_BUF/HW_CARD_ROM_HEADER. Header gained sub_02027098. Full SHA1 blocked by sound02004A44-dup-decl (parallel agent's fix was reverted)."
     }
   ],
   "failed": [
@@ -106,8 +114,8 @@
   ],
   "in_progress": null,
   "stats": {
-    "total_attempts": 60,
-    "total_matched": 10,
+    "total_attempts": 61,
+    "total_matched": 11,
     "total_failed": 3
   }
 }
