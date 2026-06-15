@@ -262,6 +262,12 @@
       "title": "Save-chunk decomp IPA-safe: dedicated header, LEAVE save_arrays.c DECL_CHUNK_EX",
       "id": "save-chunk-ipa-safe",
       "body": "To decompile a save-chunk module (SaveArray_Get + MIi_CpuClear32, sizeof/init + field accessors) without IPA cascade: (1) put the struct + all prototypes in a NEW dedicated include/<name>.h that ONLY the new .c includes. (2) DO NOT modify save_arrays.c — leave its DECL_CHUNK_EX(sizefn, initfn) macro in place. Replacing the macro with #include <name>.h (the old pre-IPA-discipline move) recompiles save_arrays.c against a changed header set and IPA-cascades its codegen -> ROM mismatch. The DECL_CHUNK_EX extern decls and the new header decls coexist fine (separate TUs). sizeof fn: return sizeof(Struct); init: MI_CpuClear32(ptr, <sizeoffn>()) then set defaults; getter: return SaveArray_Get(saveData, SAVE_UNK_NN). Verify with chiri pkg -- compare (objdiff bl-placeholder diffs on the init are benign). Supersedes the earlier save-chunk-pattern that said to replace the macro."
+    },
+    {
+      "id": "decl-order-regalloc",
+      "category": "codegen",
+      "title": "Declaration order controls r2/r3 allocation for same-lifetime locals",
+      "body": "When two locals share a live range and compete for low Thumb registers (r2/r3), MWCC -O4,p assigns the FIRST-DECLARED variable to the LOWER register. If objdiff shows two functions identical except a consistent r2<->r3 (or rN<->rM) swap, reorder the local declarations to flip the allocation. Example: unk_02017FAC sub_02017FAC needed int i=0 declared before const u16 *p=table so i->r2 (counter/return reg) and p->r3 (walked pointer), matching asm."
     }
   ]
 }

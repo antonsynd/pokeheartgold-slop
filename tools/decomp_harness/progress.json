@@ -31,6 +31,14 @@
       "attempts": 1,
       "result": "matched",
       "note": "compare-verified. SAVE_UNK_32 save-chunk; dedicated header, save_arrays.c DECL_CHUNK_EX left in place (IPA-safe). bl-placeholder objdiff diffs benign."
+    },
+    {
+      "file": "asm/unk_02017FAC.s",
+      "lines": 97,
+      "functions": 4,
+      "attempts": 2,
+      "result": "matched",
+      "note": "compare-verified (chiri pkg -- compare OK, full ROM SHA1). Re-matched after objdiff-bug revert. IPA-safe: map_section.h already declared all 4 fns (unchanged). Match fix: in sub_02017FAC declared `int i=0;` BEFORE `const u16 *p=...;` to flip MWCC r2/r3 allocation (i->r2, p->r3) matching asm. Other diffs were benign bl-placeholders. static const _020F6280 table = internal linkage (no ext-data-section-split)."
     }
   ],
   "failed": [
@@ -63,12 +71,21 @@
       "result": "blocked",
       "blocker_id": "ext-data-section-split",
       "reason": "MWCC splits external const into per-symbol .rodata sections; reordered at link -> OVY_84 SHA1 fail. Stays asm."
+    },
+    {
+      "file": "asm/unk_02026DE0.s",
+      "lines": 55,
+      "functions": 2,
+      "attempts": 4,
+      "result": "regalloc_diff",
+      "reason": "sub_02026E18 matches; sub_02026DE0 not reproducible under MWCC -O4,p. asm keeps a late-materialized stack buffer (dead buf[1] store => address escapes) and reloads a->unk0C every iteration (no hoist). All source variants either scalarize the buffer (46B), hoist count-1 into a callee-saved reg + add a u16 truncation mask (early u8*q=buf, 24 diffs), or grow to 58B (u16 backing). Could not match asm's exact register allocation. Reverted to asm.",
+      "note": "sonnet-drafted; reverted"
     }
   ],
   "in_progress": null,
   "stats": {
-    "total_attempts": 61,
-    "total_matched": 4,
-    "total_failed": 4
+    "total_attempts": 65,
+    "total_matched": 5,
+    "total_failed": 5
   }
 }

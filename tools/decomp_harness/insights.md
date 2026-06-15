@@ -60,6 +60,10 @@ When a function param is declared signed (e.g. int) per its fixed header, but th
 
 For files touching fixed DS addresses (0x027FFxxx ROM-header/system-work region), *(u32 *)0xADDR (direct) gives ldr =0xADDR; ldr [r0]; *(u32 *)((u8 *)BASE + off) gives ldr =BASE (loaded once, reused); ldr [rN,#off]. The SAME address can appear both ways in one function (flag check *(u32*)0x027FF00C and header->gamecode at base 0x027FF000 +0xC) -> use both forms. Named HW_ consts (HW_ROM_HEADER_BUF, HW_CARD_ROM_HEADER, HW_CARD_ROM_HEADER_SIZE) match identically to raw literals. A stack struct of size 0xN (FSFile=0x48) gives sub sp,#0xN; read field via *(u32*)((u8*)&s+off).
 
+### Declaration order controls r2/r3 allocation for same-lifetime locals  <!-- id: decl-order-regalloc -->
+
+When two locals share a live range and compete for low Thumb registers (r2/r3), MWCC -O4,p assigns the FIRST-DECLARED variable to the LOWER register. If objdiff shows two functions identical except a consistent r2<->r3 (or rN<->rM) swap, reorder the local declarations to flip the allocation. Example: unk_02017FAC sub_02017FAC needed int i=0 declared before const u16 *p=table so i->r2 (counter/return reg) and p->r3 (walked pointer), matching asm.
+
 ## Matching Tricks
 
 ### Small source changes that move codegen  <!-- id: decl-order-tricks -->
