@@ -18,6 +18,12 @@
       "description": "MWCC copy-propagates parameter copies: 'adds r4, r0, #0; cmp r4, #N' at function entry cannot be produced from pure C (MWCC substitutes back to r0). Affected functions need the NONMATCHING inline-asm fallback.",
       "files_blocked": ["asm/unk_0200B150.s"],
       "fix_plan": "Use NONMATCHING inline asm for the single affected function (OamManager_Create) and re-land the file with the other 10/11 matched functions in C."
+    },
+    {
+      "id": "sound02004A44-dup-decl",
+      "description": "include/sound_02004A44.h declares GF_GetVolumeBySeqNo TWICE with conflicting signatures: line 51 'u16 GF_GetVolumeBySeqNo();' (stale empty-parens, wrong return type) and line 75 'u8 GF_GetVolumeBySeqNo(u16 seqNo);' (current, matches the real definition in src/unk_02004A44.c:848). Under -W error MWCC aborts on the redeclaration in EVERY TU that includes the header (e.g. src/alph_puzzle.c), so 'make main' / full-ROM compare cannot complete and new decomps can only be verified with objdiff.py --summary. Regression introduced when unk_02004A44.c was decompiled (added line 75) without removing the stale line 51. Tension: src/overlay_44_0222CDAC.c:3019 calls GF_GetVolumeBySeqNo() argument-less, relying on the empty-parens form; naively deleting line 51 makes that call a too-few-args error and changing it would alter overlay_44 codegen.",
+      "files_blocked": [],
+      "fix_plan": "Remove the stale line 51 'u16 GF_GetVolumeBySeqNo();'. Then resolve the overlay_44_0222CDAC.c:3019 argument-less call (determine the real u16 seqNo argument from the asm at 0x0222C... and pass it, or keep an empty-parens-compatible local decl) and re-verify overlay_44 + unk_02004A44 still match via build-compare. ~53 TUs include this header, so confirm chiri pkg -- compare passes afterward. Do this as a dedicated task OUTSIDE the decomp loop — it touches already-matched files."
     }
   ]
 }

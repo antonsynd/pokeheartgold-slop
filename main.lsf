@@ -766,7 +766,7 @@ Overlay OVY_34
 Overlay OVY_35
 {
     After npc_trade
-    Object asm/overlay_35.o
+    Object src/overlay_35.o
 }
 Overlay OVY_36
 {
