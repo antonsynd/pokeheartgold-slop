@@ -31,6 +31,7 @@
 #include "save_trainer_house.h"
 #include "save_vars_flags.h"
 #include "save_wifi_history.h"
+#include "unk_0202DB34.h"
 #include "unk_0202E41C.h"
 #include "unk_02030A98.h"
 #include "unk_020318C8.h"
@@ -46,7 +47,6 @@
 
 DECL_CHUNK(Save_FashionData)
 DECL_CHUNK(Save_Frontier)
-DECL_CHUNK_EX(sub_0202DB40, sub_0202DB44)
 DECL_CHUNK_EX(sub_0202E41C, sub_0202E424)
 DECL_CHUNK_EX(sub_0202C034, sub_0202C03C)
 DECL_CHUNK_EX(PokeathlonSave_FriendshipRecords_sizeof, PokeathlonSave_FriendshipRecords_Init)

@@ -1,14 +1,14 @@
 # Decomp Coverage Ledger
 
-*Generated 2026-06-14T23:13:24Z by `coverage_ledger.py` — do not hand-edit; regenerate after each decomp.*
+*Generated 2026-06-15T00:51:53Z by `coverage_ledger.py` — do not hand-edit; regenerate after each decomp.*
 
-Tracked functions (files with retained asm): **20167** — matched 275, pending 19798, plus 50 matched-but-blocked inside failed files.
+Tracked functions (files with retained asm): **20167** — matched 287, pending 19786, plus 50 matched-but-blocked inside failed files.
 
 | status | files | functions | insn lines | ~text bytes |
 |---|---|---|---|---|
-| matched | 8 | 275 | 9968 | 22024 |
+| matched | 9 | 287 | 10027 | 22142 |
 | blocked | 3 | 94 | 2672 | 6214 |
-| pending | 292 | 19798 | 941586 | 2102280 |
+| pending | 291 | 19786 | 941527 | 2102162 |
 | upstream | 368 | 0 | 0 | 0 |
 
 ## Blockers (value-ordered: fix what gates the most)
@@ -28,20 +28,21 @@ Tracked functions (files with retained asm): **20167** — matched 275, pending 
 | asm/unk_0200FA24.s | 33 | 787 |  | ipa-shared-headers IPA-blocked: header signature conflicts, IPA CSE caching, loop codegen. C file exists at src/unk_0200FA24.c but cannot b |
 | asm/unk_0200B150.s | 11 | 249 |  | param-copyprop-cmp 10/11 matched; 10/11 functions matched. OamManager_Create has 1-byte mismatch: target asm uses 'cmp r4, #4' but MWCC generates 'cmp r0, |
 
-## Matched files (asm retained) (8)
+## Matched files (asm retained) (9)
 
 | file | functions | insn lines | data-only | notes |
 |---|---|---|---|---|
 | asm/unk_0201010C.s | 127 | 5295 |  | harness |
 | asm/unk_02004A44.s | 95 | 1862 |  | harness |
 | asm/render_window.s | 40 | 2650 |  | harness |
+| asm/unk_0202DB34.s | 12 | 59 |  | harness |
 | asm/unk_020318C8.s | 7 | 33 |  | retained_asm |
 | asm/unk_02026DE0.s | 2 | 41 |  | harness |
 | asm/unk_020551B8.s | 2 | 61 |  | retained_asm |
 | asm/overlay_35.s | 2 | 26 |  | harness |
 | asm/battle_arcade_game_board_data.s | 0 | 0 | yes | harness |
 
-## Pending files (292)
+## Pending files (291)
 
 | file | functions | insn lines | data-only | notes |
 |---|---|---|---|---|
@@ -247,7 +248,6 @@ Tracked functions (files with retained asm): **20167** — matched 275, pending 
 | asm/overlay_01_021FC4C4.s | 13 | 191 |  |  |
 | asm/overlay_01_021FE590.s | 13 | 224 |  |  |
 | asm/overlay_01_02203A18.s | 13 | 464 |  |  |
-| asm/unk_0202DB34.s | 12 | 59 |  |  |
 | asm/unk_0203DB6C.s | 12 | 361 |  |  |
 | asm/unk_02067A60.s | 12 | 376 |  |  |
 | asm/unk_02068FC8.s | 12 | 611 |  |  |

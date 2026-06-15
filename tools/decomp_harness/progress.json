@@ -44,6 +44,14 @@
       "attempts": 1,
       "result": "matched",
       "note": "sonnet-drafted; 2/2 functions + data sections match via objdiff; full SHA1 blocked by pre-existing sound02004A44-dup-decl. Blob-parser (sub_02026E18) + threshold-lookup (sub_02026DE0); new struct UnkStruct_02026DE0 + header. Header includes global.h (formatter reorders main-header-first; matches unk_02026E30.h neighbor)."
+    },
+    {
+      "file": "asm/unk_0202DB34.s",
+      "lines": 108,
+      "functions": 12,
+      "attempts": 1,
+      "result": "matched",
+      "note": "sonnet-drafted; 12/12 functions + data sections match via objdiff. Save-chunk accessor module (SAVE_UNK_22, struct UnkStruct_0202DB34 0xF8B). Also converted save_arrays.c DECL_CHUNK_EX(sub_0202DB40,sub_0202DB44) -> #include unk_0202DB34.h; verified codegen-neutral (save_arrays 16/16 before-vs-after). Full SHA1 still blocked by sound02004A44-dup-decl."
     }
   ],
   "failed": [
@@ -74,8 +82,8 @@
   ],
   "in_progress": null,
   "stats": {
-    "total_attempts": 56,
-    "total_matched": 6,
+    "total_attempts": 57,
+    "total_matched": 7,
     "total_failed": 3
   }
 }
