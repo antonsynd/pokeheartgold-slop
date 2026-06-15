@@ -28,6 +28,22 @@
       "attempts": 1,
       "result": "matched",
       "note": "delegate-drafted; data-only; bytes verified via objdump; full SHA1 blocked by pre-existing alph_puzzle.c error"
+    },
+    {
+      "file": "asm/overlay_35.s",
+      "lines": 47,
+      "functions": 2,
+      "attempts": 1,
+      "result": "matched",
+      "note": "sonnet-drafted; 2/2 functions + data sections match via objdiff; full SHA1 blocked by pre-existing sound_02004A44.h GF_GetVolumeBySeqNo dup-decl error (alph_puzzle.c). Unprototyped-call idiom: header keeps int ov35_02259DB8() empty-parens for field_system.c; struct Ov35Struct is a local invention."
+    },
+    {
+      "file": "asm/unk_02026DE0.s",
+      "lines": 55,
+      "functions": 2,
+      "attempts": 1,
+      "result": "matched",
+      "note": "sonnet-drafted; 2/2 functions + data sections match via objdiff; full SHA1 blocked by pre-existing sound02004A44-dup-decl. Blob-parser (sub_02026E18) + threshold-lookup (sub_02026DE0); new struct UnkStruct_02026DE0 + header. Header includes global.h (formatter reorders main-header-first; matches unk_02026E30.h neighbor)."
     }
   ],
   "failed": [
@@ -58,8 +74,8 @@
   ],
   "in_progress": null,
   "stats": {
-    "total_attempts": 54,
-    "total_matched": 4,
+    "total_attempts": 56,
+    "total_matched": 6,
     "total_failed": 3
   }
 }

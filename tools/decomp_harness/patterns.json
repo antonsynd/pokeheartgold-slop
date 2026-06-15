@@ -220,6 +220,12 @@
       "category": "matching-tricks",
       "title": "Other known difficult patterns",
       "body": "- Nested struct initialization may need exact field ordering to match.\n- Inline functions from headers must match exactly as the compiler would expand them (e.g. MI_CpuClearFast/MI_CpuCopyFast wrappers inline into MIi_* tail calls — call the wrapper, not MIi_* directly).\n- Functions with a `_` prefix are often compiler-generated or SDK functions (`_s32_div_f`)."
+    },
+    {
+      "category": "tooling",
+      "title": "Verify a single object when the full build is blocked",
+      "id": "single-object-build-escape",
+      "body": "When an unrelated pre-existing error aborts make main (e.g. a dup-decl in a shared header), you can still compile+verify ONE file: cp the asm reference first (build/heartgold.us/asm/<name>.o to /tmp), switch main.lsf, then build just that object via the chiri make-target passthrough: chiri pkg -- build --no-compare -- build/heartgold.us/src/<name>.o (default --target all => empty make target, so the bare object path is the only thing built). Then objdiff.py --summary /tmp/<name>_asm.o build/heartgold.us/src/<name>.o. Isolates your file from the broken TU; gives function+data .o-level verification without the full ROM SHA1."
     }
   ]
 }

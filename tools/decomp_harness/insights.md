@@ -205,3 +205,7 @@ python3 tools/decomp_harness/objdiff.py ... --bytes sub_X  # per-function byte d
 ### recomp.sh build recovery  <!-- id: recomp-tool -->
 
 `./tools/decomp_harness/recomp.sh` handles build recovery: `--kill` (stale make/wine/mwcc), `--fix-d` (corrupted .d files), `--full` (clean rebuild), no args = kill + fix .d + tidy + rebuild main. Use when builds hang at 100% CPU, error after an asm→C switch in main.lsf, or won't restart after an interrupt.
+
+### Verify a single object when the full build is blocked  <!-- id: single-object-build-escape -->
+
+When an unrelated pre-existing error aborts make main (e.g. a dup-decl in a shared header), you can still compile+verify ONE file: cp the asm reference first (build/heartgold.us/asm/<name>.o to /tmp), switch main.lsf, then build just that object via the chiri make-target passthrough: chiri pkg -- build --no-compare -- build/heartgold.us/src/<name>.o (default --target all => empty make target, so the bare object path is the only thing built). Then objdiff.py --summary /tmp/<name>_asm.o build/heartgold.us/src/<name>.o. Isolates your file from the broken TU; gives function+data .o-level verification without the full ROM SHA1.

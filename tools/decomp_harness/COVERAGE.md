@@ -1,14 +1,14 @@
 # Decomp Coverage Ledger
 
-*Generated 2026-06-12T21:07:54Z by `coverage_ledger.py` — do not hand-edit; regenerate after each decomp.*
+*Generated 2026-06-14T23:13:24Z by `coverage_ledger.py` — do not hand-edit; regenerate after each decomp.*
 
-Tracked functions (files with retained asm): **20167** — matched 271, pending 19802, plus 50 matched-but-blocked inside failed files.
+Tracked functions (files with retained asm): **20167** — matched 275, pending 19798, plus 50 matched-but-blocked inside failed files.
 
 | status | files | functions | insn lines | ~text bytes |
 |---|---|---|---|---|
-| matched | 6 | 271 | 9901 | 21888 |
+| matched | 8 | 275 | 9968 | 22024 |
 | blocked | 3 | 94 | 2672 | 6214 |
-| pending | 294 | 19802 | 941653 | 2102416 |
+| pending | 292 | 19798 | 941586 | 2102280 |
 | upstream | 368 | 0 | 0 | 0 |
 
 ## Blockers (value-ordered: fix what gates the most)
@@ -18,6 +18,7 @@ Tracked functions (files with retained asm): **20167** — matched 271, pending 
 | ipa-shared-headers | 2 | 122 | MWCC -ipa file: changing a signature in a shared header cascades codegen changes into every already-matched caller in other compilation units. Files sharing many declarations (sound.h family) must be decompiled together or after a coordinated header fix. |
 | param-copyprop-cmp | 1 | 37 | MWCC copy-propagates parameter copies: 'adds r4, r0, #0; cmp r4, #N' at function entry cannot be produced from pure C (MWCC substitutes back to r0). Affected functions need the NONMATCHING inline-asm fallback. |
 | staged-rodata-and-prototype-fixes | 0 | 0 | src/unk_0201010C.c static const arrays are in the wrong .rodata order (all 127 functions byte-match but ROM SHA1 fails), and 5 files have staged prototype-conflict fixes in the working tree. Until committed together with a passing SHA1, full-ROM compare cannot be used to verify new decomps — use objdiff.py --summary instead. |
+| sound02004A44-dup-decl | 0 | 0 | include/sound_02004A44.h declares GF_GetVolumeBySeqNo TWICE with conflicting signatures: line 51 'u16 GF_GetVolumeBySeqNo();' (stale empty-parens, wrong return type) and line 75 'u8 GF_GetVolumeBySeqNo(u16 seqNo);' (current, matches the real definition in src/unk_02004A44.c:848). Under -W error MWCC aborts on the redeclaration in EVERY TU that includes the header (e.g. src/alph_puzzle.c), so 'make main' / full-ROM compare cannot complete and new decomps can only be verified with objdiff.py --summary. Regression introduced when unk_02004A44.c was decompiled (added line 75) without removing the stale line 51. Tension: src/overlay_44_0222CDAC.c:3019 calls GF_GetVolumeBySeqNo() argument-less, relying on the empty-parens form; naively deleting line 51 makes that call a too-few-args error and changing it would alter overlay_44 codegen. |
 
 ## Blocked files (3)
 
@@ -27,7 +28,7 @@ Tracked functions (files with retained asm): **20167** — matched 271, pending 
 | asm/unk_0200FA24.s | 33 | 787 |  | ipa-shared-headers IPA-blocked: header signature conflicts, IPA CSE caching, loop codegen. C file exists at src/unk_0200FA24.c but cannot b |
 | asm/unk_0200B150.s | 11 | 249 |  | param-copyprop-cmp 10/11 matched; 10/11 functions matched. OamManager_Create has 1-byte mismatch: target asm uses 'cmp r4, #4' but MWCC generates 'cmp r0, |
 
-## Matched files (asm retained) (6)
+## Matched files (asm retained) (8)
 
 | file | functions | insn lines | data-only | notes |
 |---|---|---|---|---|
@@ -35,10 +36,12 @@ Tracked functions (files with retained asm): **20167** — matched 271, pending 
 | asm/unk_02004A44.s | 95 | 1862 |  | harness |
 | asm/render_window.s | 40 | 2650 |  | harness |
 | asm/unk_020318C8.s | 7 | 33 |  | retained_asm |
+| asm/unk_02026DE0.s | 2 | 41 |  | harness |
 | asm/unk_020551B8.s | 2 | 61 |  | retained_asm |
+| asm/overlay_35.s | 2 | 26 |  | harness |
 | asm/battle_arcade_game_board_data.s | 0 | 0 | yes | harness |
 
-## Pending files (294)
+## Pending files (292)
 
 | file | functions | insn lines | data-only | notes |
 |---|---|---|---|---|
@@ -319,12 +322,10 @@ Tracked functions (files with retained asm): **20167** — matched 271, pending 
 | asm/unk_02092B04.s | 3 | 76 |  |  |
 | asm/unk_020961D8.s | 3 | 133 |  |  |
 | asm/unk_02097B78.s | 3 | 46 |  |  |
-| asm/unk_02026DE0.s | 2 | 41 |  |  |
 | asm/unk_02027010.s | 2 | 74 |  |  |
 | asm/unk_02078DD8.s | 2 | 36 |  |  |
 | asm/unk_02095DF4.s | 2 | 115 |  |  |
 | asm/overlay_01_021F467C.s | 2 | 58 |  |  |
-| asm/overlay_35.s | 2 | 26 |  |  |
 | asm/overlay_114.s | 2 | 542 |  |  |
 | asm/overlay_118.s | 1 | 253 |  |  |
 | asm/unk_02055BF0_data.s | 0 | 0 | yes |  |

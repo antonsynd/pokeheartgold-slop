@@ -1,12 +1,12 @@
 {
  "summary": {
-  "generated": "2026-06-12T21:07:54Z",
+  "generated": "2026-06-14T23:13:24Z",
   "by_status": {
    "matched": {
-    "files": 6,
-    "functions": 271,
-    "insn_lines": 9901,
-    "text_bytes_est": 21888
+    "files": 8,
+    "functions": 275,
+    "insn_lines": 9968,
+    "text_bytes_est": 22024
    },
    "blocked": {
     "files": 3,
@@ -15,10 +15,10 @@
     "text_bytes_est": 6214
    },
    "pending": {
-    "files": 294,
-    "functions": 19802,
-    "insn_lines": 941653,
-    "text_bytes_est": 2102416
+    "files": 292,
+    "functions": 19798,
+    "insn_lines": 941586,
+    "text_bytes_est": 2102280
    },
    "upstream": {
     "files": 368,
@@ -29,9 +29,9 @@
   },
   "function_totals": {
    "tracked": 20167,
-   "matched": 271,
+   "matched": 275,
    "partial_in_blocked": 50,
-   "pending": 19802
+   "pending": 19798
   },
   "blockers": [
    {
@@ -48,6 +48,11 @@
     "id": "param-copyprop-cmp",
     "blocks_files": 1,
     "gates_pending_files": 37
+   },
+   {
+    "id": "sound02004A44-dup-decl",
+    "blocks_files": 0,
+    "gates_pending_files": 0
    }
   ]
  },
@@ -7604,8 +7609,8 @@
   },
   {
    "file": "asm/unk_02026DE0.s",
-   "lsf_kind": "asm",
-   "status": "pending",
+   "lsf_kind": "src",
+   "status": "matched",
    "lines": 55,
    "function_count": 2,
    "text_bytes_est": 82,
@@ -7629,16 +7634,17 @@
      "mode": "thumb",
      "insns": 28,
      "size_est": 56,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "sub_02026E18",
      "mode": "thumb",
      "insns": 13,
      "size_est": 26,
-     "status": "pending"
+     "status": "matched"
     }
-   ]
+   ],
+   "source": "harness"
   },
   {
    "file": "asm/unk_02026E30.s",
@@ -82558,8 +82564,8 @@
   },
   {
    "file": "asm/overlay_35.s",
-   "lsf_kind": "asm",
-   "status": "pending",
+   "lsf_kind": "src",
+   "status": "matched",
    "lines": 47,
    "function_count": 2,
    "text_bytes_est": 54,
@@ -82583,16 +82589,17 @@
      "mode": "thumb",
      "insns": 23,
      "size_est": 48,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ov35_02259DB8",
      "mode": "thumb",
      "insns": 3,
      "size_est": 6,
-     "status": "pending"
+     "status": "matched"
     }
-   ]
+   ],
+   "source": "harness"
   },
   {
    "file": "asm/overlay_36.s",
