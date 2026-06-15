@@ -1,12 +1,12 @@
 {
  "summary": {
-  "generated": "2026-06-15T02:22:13Z",
+  "generated": "2026-06-15T17:09:26Z",
   "by_status": {
    "matched": {
-    "files": 13,
-    "functions": 307,
-    "insn_lines": 10304,
-    "text_bytes_est": 22762
+    "files": 2,
+    "functions": 14,
+    "insn_lines": 95,
+    "text_bytes_est": 206
    },
    "blocked": {
     "files": 3,
@@ -15,10 +15,10 @@
     "text_bytes_est": 6214
    },
    "pending": {
-    "files": 287,
-    "functions": 19766,
-    "insn_lines": 941250,
-    "text_bytes_est": 2101542
+    "files": 298,
+    "functions": 20059,
+    "insn_lines": 951459,
+    "text_bytes_est": 2124098
    },
    "upstream": {
     "files": 368,
@@ -29,20 +29,15 @@
   },
   "function_totals": {
    "tracked": 20167,
-   "matched": 307,
+   "matched": 14,
    "partial_in_blocked": 50,
-   "pending": 19766
+   "pending": 20059
   },
   "blockers": [
    {
     "id": "ipa-shared-headers",
     "blocks_files": 2,
-    "gates_pending_files": 122
-   },
-   {
-    "id": "staged-rodata-and-prototype-fixes",
-    "blocks_files": 0,
-    "gates_pending_files": 0
+    "gates_pending_files": 124
    },
    {
     "id": "param-copyprop-cmp",
@@ -50,7 +45,7 @@
     "gates_pending_files": 37
    },
    {
-    "id": "sound02004A44-dup-decl",
+    "id": "objdiff-false-positives",
     "blocks_files": 0,
     "gates_pending_files": 0
    }
@@ -119,8 +114,8 @@
   },
   {
    "file": "asm/unk_02004A44.s",
-   "lsf_kind": "src",
-   "status": "matched",
+   "lsf_kind": "asm",
+   "status": "pending",
    "lines": 2672,
    "function_count": 95,
    "text_bytes_est": 4500,
@@ -273,668 +268,667 @@
      "mode": "thumb",
      "insns": 7,
      "size_est": 16,
-     "status": "matched"
+     "status": "pending"
     },
     {
      "name": "GF_SND_BGM_DisableCheck",
      "mode": "thumb",
      "insns": 6,
      "size_est": 14,
-     "status": "matched"
+     "status": "pending"
     },
     {
      "name": "sub_02004A60",
      "mode": "thumb",
      "insns": 20,
      "size_est": 48,
-     "status": "matched"
+     "status": "pending"
     },
     {
      "name": "GF_GetCurrentPlayingBGM",
      "mode": "thumb",
      "insns": 6,
      "size_est": 14,
-     "status": "matched"
+     "status": "pending"
     },
     {
      "name": "GF_SetCurrentPlayingBGM",
      "mode": "thumb",
      "insns": 7,
      "size_est": 16,
-     "status": "matched"
+     "status": "pending"
     },
     {
      "name": "sub_02004AAC",
      "mode": "thumb",
      "insns": 6,
      "size_est": 14,
-     "status": "matched"
+     "status": "pending"
     },
     {
      "name": "sub_02004AB8",
      "mode": "thumb",
      "insns": 7,
      "size_est": 16,
-     "status": "matched"
+     "status": "pending"
     },
     {
      "name": "Sound_SetFieldBGM",
      "mode": "thumb",
      "insns": 7,
      "size_est": 16,
-     "status": "matched"
+     "status": "pending"
     },
     {
      "name": "Sound_SetScene",
      "mode": "thumb",
      "insns": 16,
      "size_est": 36,
-     "status": "matched"
+     "status": "pending"
     },
     {
      "name": "sub_02004AFC",
      "mode": "thumb",
      "insns": 9,
      "size_est": 22,
-     "status": "matched"
+     "status": "pending"
     },
     {
      "name": "sub_02004B10",
      "mode": "thumb",
      "insns": 9,
      "size_est": 22,
-     "status": "matched"
+     "status": "pending"
     },
     {
      "name": "sub_02004B24",
      "mode": "thumb",
      "insns": 285,
      "size_est": 712,
-     "status": "matched"
+     "status": "pending"
     },
     {
      "name": "sub_02004EB4",
      "mode": "thumb",
      "insns": 8,
      "size_est": 16,
-     "status": "matched"
+     "status": "pending"
     },
     {
      "name": "Sound_SetSceneAndPlayBGM",
      "mode": "thumb",
      "insns": 112,
      "size_est": 266,
-     "status": "matched"
+     "status": "pending"
     },
     {
      "name": "sub_02005060",
      "mode": "thumb",
      "insns": 16,
      "size_est": 46,
-     "status": "matched"
+     "status": "pending"
     },
     {
      "name": "sub_0200508C",
      "mode": "thumb",
      "insns": 77,
      "size_est": 192,
-     "status": "matched"
+     "status": "pending"
     },
     {
      "name": "sub_02005150",
      "mode": "thumb",
      "insns": 33,
      "size_est": 86,
-     "status": "matched"
+     "status": "pending"
     },
     {
      "name": "sub_020051A4",
      "mode": "thumb",
      "insns": 49,
      "size_est": 132,
-     "status": "matched"
+     "status": "pending"
     },
     {
      "name": "sub_02005228",
      "mode": "thumb",
      "insns": 19,
      "size_est": 56,
-     "status": "matched"
+     "status": "pending"
     },
     {
      "name": "sub_02005260",
      "mode": "thumb",
      "insns": 12,
      "size_est": 34,
-     "status": "matched"
+     "status": "pending"
     },
     {
      "name": "sub_02005280",
      "mode": "thumb",
      "insns": 13,
      "size_est": 36,
-     "status": "matched"
+     "status": "pending"
     },
     {
      "name": "sub_020052A4",
      "mode": "thumb",
      "insns": 13,
      "size_est": 36,
-     "status": "matched"
+     "status": "pending"
     },
     {
      "name": "sub_020052C8",
      "mode": "thumb",
      "insns": 10,
      "size_est": 28,
-     "status": "matched"
+     "status": "pending"
     },
     {
      "name": "sub_020052E4",
      "mode": "thumb",
      "insns": 12,
      "size_est": 32,
-     "status": "matched"
+     "status": "pending"
     },
     {
      "name": "BGM_SaveStateAndPlayNew",
      "mode": "thumb",
      "insns": 8,
      "size_est": 22,
-     "status": "matched"
+     "status": "pending"
     },
     {
      "name": "sub_02005318",
      "mode": "thumb",
      "insns": 6,
      "size_est": 16,
-     "status": "matched"
+     "status": "pending"
     },
     {
      "name": "sub_02005328",
      "mode": "thumb",
      "insns": 49,
      "size_est": 118,
-     "status": "matched"
+     "status": "pending"
     },
     {
      "name": "sub_020053A8",
      "mode": "thumb",
      "insns": 30,
      "size_est": 74,
-     "status": "matched"
+     "status": "pending"
     },
     {
      "name": "Sound_ClearBGMPauseFlags",
      "mode": "thumb",
      "insns": 11,
      "size_est": 26,
-     "status": "matched"
+     "status": "pending"
     },
     {
      "name": "GF_SndHandleMoveVolume",
      "mode": "thumb",
      "insns": 15,
      "size_est": 36,
-     "status": "matched"
+     "status": "pending"
     },
     {
      "name": "GF_SndHandleSetInitialVolume",
      "mode": "thumb",
      "insns": 12,
      "size_est": 28,
-     "status": "matched"
+     "status": "pending"
     },
     {
      "name": "sub_02005448",
      "mode": "thumb",
      "insns": 11,
      "size_est": 28,
-     "status": "matched"
+     "status": "pending"
     },
     {
      "name": "sub_02005464",
      "mode": "thumb",
      "insns": 23,
      "size_est": 54,
-     "status": "matched"
+     "status": "pending"
     },
     {
      "name": "GF_GetVolumeBySeqNo",
      "mode": "thumb",
      "insns": 9,
      "size_est": 20,
-     "status": "matched"
+     "status": "pending"
     },
     {
      "name": "GF_SetVolumeBySeqNo",
      "mode": "thumb",
      "insns": 8,
      "size_est": 22,
-     "status": "matched"
+     "status": "pending"
     },
     {
      "name": "GF_SndPlayerCountPlayingSeqByPlayerNo",
      "mode": "thumb",
      "insns": 8,
      "size_est": 20,
-     "status": "matched"
+     "status": "pending"
     },
     {
      "name": "GF_GetPlayerNoBySeq",
      "mode": "thumb",
      "insns": 13,
      "size_est": 28,
-     "status": "matched"
+     "status": "pending"
     },
     {
      "name": "GF_NNS_SndPlayerGetSeqNo",
      "mode": "thumb",
      "insns": 4,
      "size_est": 8,
-     "status": "matched"
+     "status": "pending"
     },
     {
      "name": "GF_GetBankInfoBySeqNo",
      "mode": "thumb",
      "insns": 5,
      "size_est": 14,
-     "status": "matched"
+     "status": "pending"
     },
     {
      "name": "GF_GetBankBySeqNo",
      "mode": "thumb",
      "insns": 9,
      "size_est": 20,
-     "status": "matched"
+     "status": "pending"
     },
     {
      "name": "sub_02005518",
      "mode": "thumb",
      "insns": 4,
      "size_est": 8,
-     "status": "matched"
+     "status": "pending"
     },
     {
      "name": "GF_MIC_StartAutoSampling",
      "mode": "thumb",
      "insns": 22,
      "size_est": 46,
-     "status": "matched"
+     "status": "pending"
     },
     {
      "name": "GF_MIC_StopAutoSampling",
      "mode": "thumb",
      "insns": 10,
      "size_est": 24,
-     "status": "matched"
+     "status": "pending"
     },
     {
      "name": "GF_MicPauseOnLidClose",
      "mode": "thumb",
      "insns": 12,
      "size_est": 28,
-     "status": "matched"
+     "status": "pending"
     },
     {
      "name": "GF_MicResumeOnLidOpen",
      "mode": "thumb",
      "insns": 16,
      "size_est": 38,
-     "status": "matched"
+     "status": "pending"
     },
     {
      "name": "sub_020055AC",
      "mode": "thumb",
      "insns": 35,
      "size_est": 86,
-     "status": "matched"
+     "status": "pending"
     },
     {
      "name": "sub_02005600",
      "mode": "thumb",
      "insns": 54,
      "size_est": 128,
-     "status": "matched"
+     "status": "pending"
     },
     {
      "name": "sub_02005680",
      "mode": "thumb",
      "insns": 42,
      "size_est": 104,
-     "status": "matched"
+     "status": "pending"
     },
     {
      "name": "sub_020056E8",
      "mode": "thumb",
      "insns": 30,
      "size_est": 64,
-     "status": "matched"
+     "status": "pending"
     },
     {
      "name": "sub_02005728",
      "mode": "thumb",
      "insns": 6,
      "size_est": 16,
-     "status": "matched"
+     "status": "pending"
     },
     {
      "name": "sub_02005738",
      "mode": "thumb",
      "insns": 6,
      "size_est": 16,
-     "status": "matched"
+     "status": "pending"
     },
     {
      "name": "sub_02005748",
      "mode": "thumb",
      "insns": 11,
      "size_est": 26,
-     "status": "matched"
+     "status": "pending"
     },
     {
      "name": "sub_02005760",
      "mode": "thumb",
      "insns": 8,
      "size_est": 20,
-     "status": "matched"
+     "status": "pending"
     },
     {
      "name": "sub_02005774",
      "mode": "thumb",
      "insns": 23,
      "size_est": 58,
-     "status": "matched"
+     "status": "pending"
     },
     {
      "name": "sub_020057AC",
      "mode": "thumb",
      "insns": 101,
      "size_est": 236,
-     "status": "matched"
+     "status": "pending"
     },
     {
      "name": "sub_02005898",
      "mode": "thumb",
      "insns": 16,
      "size_est": 32,
-     "status": "matched"
+     "status": "pending"
     },
     {
      "name": "sub_020058B8",
      "mode": "thumb",
      "insns": 25,
      "size_est": 62,
-     "status": "matched"
+     "status": "pending"
     },
     {
      "name": "sub_020058F4",
      "mode": "thumb",
      "insns": 9,
      "size_est": 22,
-     "status": "matched"
+     "status": "pending"
     },
     {
      "name": "sub_02005908",
      "mode": "thumb",
      "insns": 4,
      "size_est": 8,
-     "status": "matched"
+     "status": "pending"
     },
     {
      "name": "sub_02005910",
      "mode": "thumb",
      "insns": 4,
      "size_est": 8,
-     "status": "matched"
+     "status": "pending"
     },
     {
      "name": "GF_SndHandleSetTrackPitch",
      "mode": "thumb",
      "insns": 9,
      "size_est": 22,
-     "status": "matched"
+     "status": "pending"
     },
     {
      "name": "sub_0200592C",
      "mode": "thumb",
      "insns": 10,
      "size_est": 26,
-     "status": "matched"
+     "status": "pending"
     },
     {
      "name": "sub_02005944",
      "mode": "thumb",
      "insns": 9,
      "size_est": 22,
-     "status": "matched"
+     "status": "pending"
     },
     {
      "name": "GF_SndHandleSetTrackPan",
      "mode": "thumb",
      "insns": 9,
      "size_est": 22,
-     "status": "matched"
+     "status": "pending"
     },
     {
      "name": "GF_SndHandleSetTempoRatio",
      "mode": "thumb",
      "insns": 7,
      "size_est": 18,
-     "status": "matched"
+     "status": "pending"
     },
     {
      "name": "GF_SndSetMonoFlag",
      "mode": "thumb",
      "insns": 9,
      "size_est": 20,
-     "status": "matched"
+     "status": "pending"
     },
     {
      "name": "sub_02005990",
      "mode": "thumb",
      "insns": 7,
      "size_est": 16,
-     "status": "matched"
+     "status": "pending"
     },
     {
      "name": "sub_020059A0",
      "mode": "thumb",
      "insns": 7,
      "size_est": 16,
-     "status": "matched"
+     "status": "pending"
     },
     {
      "name": "GF_SndGetAfterFadeDelayTimer",
      "mode": "thumb",
      "insns": 15,
      "size_est": 32,
-     "status": "matched"
+     "status": "pending"
     },
     {
      "name": "Sound_SetMasterVolume",
      "mode": "thumb",
      "insns": 4,
      "size_est": 8,
-     "status": "matched"
+     "status": "pending"
     },
     {
      "name": "sub_020059D8",
      "mode": "thumb",
      "insns": 4,
      "size_est": 8,
-     "status": "matched"
+     "status": "pending"
     },
     {
      "name": "sub_020059E0",
      "mode": "thumb",
      "insns": 7,
      "size_est": 16,
-     "status": "matched"
+     "status": "pending"
     },
     {
      "name": "GF_NowStartMusicId",
      "mode": "thumb",
      "insns": 16,
      "size_est": 34,
-     "status": "matched"
+     "status": "pending"
     },
     {
      "name": "sub_02005A10",
      "mode": "thumb",
      "insns": 27,
      "size_est": 60,
-     "status": "matched"
+     "status": "pending"
     },
     {
      "name": "GF_FadeStartMusicId",
      "mode": "thumb",
      "insns": 19,
      "size_est": 40,
-     "status": "matched"
+     "status": "pending"
     },
     {
      "name": "sub_02005A74",
      "mode": "thumb",
      "insns": 27,
      "size_est": 60,
-     "status": "matched"
+     "status": "pending"
     },
     {
      "name": "sub_02005AB0",
      "mode": "thumb",
      "insns": 24,
      "size_est": 62,
-     "status": "matched"
+     "status": "pending"
     },
     {
      "name": "GF_SndSetAllocatableChannelForBGMPlayer",
      "mode": "thumb",
      "insns": 6,
      "size_est": 12,
-     "status": "matched"
+     "status": "pending"
     },
     {
      "name": "sub_02005AF8",
      "mode": "thumb",
      "insns": 15,
      "size_est": 38,
-     "status": "matched"
+     "status": "pending"
     },
     {
      "name": "sub_02005B20",
      "mode": "thumb",
      "insns": 19,
      "size_est": 50,
-     "status": "matched"
+     "status": "pending"
     },
     {
      "name": "GF_SndHandleSetPlayerVolume",
      "mode": "thumb",
      "insns": 4,
      "size_est": 8,
-     "status": "matched"
+     "status": "pending"
     },
     {
      "name": "sub_02005B58",
      "mode": "thumb",
      "insns": 7,
      "size_est": 16,
-     "status": "matched"
+     "status": "pending"
     },
     {
      "name": "sub_02005B68",
      "mode": "thumb",
      "insns": 7,
      "size_est": 16,
-     "status": "matched"
+     "status": "pending"
     },
     {
      "name": "sub_02005B78",
      "mode": "thumb",
      "insns": 18,
      "size_est": 48,
-     "status": "matched"
+     "status": "pending"
     },
     {
      "name": "sub_02005BA8",
      "mode": "thumb",
      "insns": 29,
      "size_est": 64,
-     "status": "matched"
+     "status": "pending"
     },
     {
      "name": "sub_02005BEC",
      "mode": "thumb",
      "insns": 7,
      "size_est": 16,
-     "status": "matched"
+     "status": "pending"
     },
     {
      "name": "sub_02005BFC",
      "mode": "thumb",
      "insns": 6,
      "size_est": 14,
-     "status": "matched"
+     "status": "pending"
     },
     {
      "name": "sub_02005C08",
      "mode": "thumb",
      "insns": 7,
      "size_est": 16,
-     "status": "matched"
+     "status": "pending"
     },
     {
      "name": "SoundSys_GetGBSoundsState",
      "mode": "thumb",
      "insns": 6,
      "size_est": 14,
-     "status": "matched"
+     "status": "pending"
     },
     {
      "name": "SoundSys_ToggleGBSounds",
      "mode": "thumb",
      "insns": 28,
      "size_est": 74,
-     "status": "matched"
+     "status": "pending"
     },
     {
      "name": "GBSounds_GetGBSeqNoByDSSeqNo",
      "mode": "thumb",
      "insns": 21,
      "size_est": 42,
-     "status": "matched"
+     "status": "pending"
     },
     {
      "name": "GBSounds_GetDSSeqNoByGBSeqNo",
      "mode": "thumb",
      "insns": 20,
      "size_est": 40,
-     "status": "matched"
+     "status": "pending"
     },
     {
      "name": "GBSounds_SetAllocatableChannels",
      "mode": "thumb",
      "insns": 20,
      "size_est": 52,
-     "status": "matched"
+     "status": "pending"
     },
     {
      "name": "sub_02005CF4",
      "mode": "thumb",
      "insns": 6,
      "size_est": 12,
-     "status": "matched"
+     "status": "pending"
     },
     {
      "name": "sub_02005D00",
      "mode": "thumb",
      "insns": 8,
      "size_est": 16,
-     "status": "matched"
+     "status": "pending"
     }
-   ],
-   "source": "harness"
+   ]
   },
   {
    "file": "asm/unk_02005D10.s",
@@ -1635,8 +1629,8 @@
   },
   {
    "file": "asm/render_window.s",
-   "lsf_kind": "src",
-   "status": "matched",
+   "lsf_kind": "asm",
+   "status": "pending",
    "lines": 2842,
    "function_count": 40,
    "text_bytes_est": 5778,
@@ -1737,283 +1731,282 @@
      "mode": "thumb",
      "insns": 31,
      "size_est": 66,
-     "status": "matched"
+     "status": "pending"
     },
     {
      "name": "sub_0200E3D8",
      "mode": "thumb",
      "insns": 3,
      "size_est": 6,
-     "status": "matched"
+     "status": "pending"
     },
     {
      "name": "LoadUserFrameGfx1",
      "mode": "thumb",
      "insns": 52,
      "size_est": 110,
-     "status": "matched"
+     "status": "pending"
     },
     {
      "name": "sub_0200E448",
      "mode": "thumb",
      "insns": 148,
      "size_est": 312,
-     "status": "matched"
+     "status": "pending"
     },
     {
      "name": "DrawFrameAndWindow1",
      "mode": "thumb",
      "insns": 36,
      "size_est": 86,
-     "status": "matched"
+     "status": "pending"
     },
     {
      "name": "sub_0200E5D4",
      "mode": "thumb",
      "insns": 45,
      "size_est": 104,
-     "status": "matched"
+     "status": "pending"
     },
     {
      "name": "sub_0200E63C",
      "mode": "thumb",
      "insns": 3,
      "size_est": 6,
-     "status": "matched"
+     "status": "pending"
     },
     {
      "name": "sub_0200E640",
      "mode": "thumb",
      "insns": 3,
      "size_est": 6,
-     "status": "matched"
+     "status": "pending"
     },
     {
      "name": "LoadUserFrameGfx2",
      "mode": "thumb",
      "insns": 50,
      "size_est": 112,
-     "status": "matched"
+     "status": "pending"
     },
     {
      "name": "sub_0200E6B4",
      "mode": "thumb",
      "insns": 313,
      "size_est": 660,
-     "status": "matched"
+     "status": "pending"
     },
     {
      "name": "sub_0200E948",
      "mode": "thumb",
      "insns": 34,
      "size_est": 80,
-     "status": "matched"
+     "status": "pending"
     },
     {
      "name": "DrawFrameAndWindow2",
      "mode": "thumb",
      "insns": 15,
      "size_est": 36,
-     "status": "matched"
+     "status": "pending"
     },
     {
      "name": "ClearFrameAndWindow2",
      "mode": "thumb",
      "insns": 45,
      "size_est": 104,
-     "status": "matched"
+     "status": "pending"
     },
     {
      "name": "sub_0200EA24",
      "mode": "thumb",
      "insns": 34,
      "size_est": 70,
-     "status": "matched"
+     "status": "pending"
     },
     {
      "name": "sub_0200EA68",
      "mode": "thumb",
      "insns": 116,
      "size_est": 258,
-     "status": "matched"
+     "status": "pending"
     },
     {
      "name": "sub_0200EB68",
      "mode": "thumb",
      "insns": 12,
      "size_est": 26,
-     "status": "matched"
+     "status": "pending"
     },
     {
      "name": "sub_0200EB80",
      "mode": "thumb",
      "insns": 63,
      "size_est": 140,
-     "status": "matched"
+     "status": "pending"
     },
     {
      "name": "sub_0200EC0C",
      "mode": "thumb",
      "insns": 55,
      "size_est": 122,
-     "status": "matched"
+     "status": "pending"
     },
     {
      "name": "sub_0200EC84",
      "mode": "thumb",
      "insns": 28,
      "size_est": 58,
-     "status": "matched"
+     "status": "pending"
     },
     {
      "name": "sub_0200ECBC",
      "mode": "thumb",
      "insns": 338,
      "size_est": 712,
-     "status": "matched"
+     "status": "pending"
     },
     {
      "name": "sub_0200EF84",
      "mode": "thumb",
      "insns": 61,
      "size_est": 130,
-     "status": "matched"
+     "status": "pending"
     },
     {
      "name": "DrawFrameAndWindow3",
      "mode": "thumb",
      "insns": 70,
      "size_est": 168,
-     "status": "matched"
+     "status": "pending"
     },
     {
      "name": "WaitingIcon_New",
      "mode": "thumb",
      "insns": 128,
      "size_est": 290,
-     "status": "matched"
+     "status": "pending"
     },
     {
      "name": "sub_0200F1D4",
      "mode": "thumb",
      "insns": 238,
      "size_est": 508,
-     "status": "matched"
+     "status": "pending"
     },
     {
      "name": "sub_0200F3D0",
      "mode": "thumb",
      "insns": 51,
      "size_est": 108,
-     "status": "matched"
+     "status": "pending"
     },
     {
      "name": "sub_0200F43C",
      "mode": "thumb",
      "insns": 8,
      "size_est": 20,
-     "status": "matched"
+     "status": "pending"
     },
     {
      "name": "sub_0200F450",
      "mode": "thumb",
      "insns": 18,
      "size_est": 38,
-     "status": "matched"
+     "status": "pending"
     },
     {
      "name": "sub_0200F478",
      "mode": "thumb",
      "insns": 18,
      "size_est": 38,
-     "status": "matched"
+     "status": "pending"
     },
     {
      "name": "DrawPokemonPicFromSpecies",
      "mode": "thumb",
      "insns": 37,
      "size_est": 88,
-     "status": "matched"
+     "status": "pending"
     },
     {
      "name": "DrawPokemonPicFromMon",
      "mode": "thumb",
      "insns": 35,
      "size_est": 84,
-     "status": "matched"
+     "status": "pending"
     },
     {
      "name": "sub_0200F54C",
      "mode": "thumb",
      "insns": 52,
      "size_est": 120,
-     "status": "matched"
+     "status": "pending"
     },
     {
      "name": "sub_0200F5C4",
      "mode": "thumb",
      "insns": 27,
      "size_est": 58,
-     "status": "matched"
+     "status": "pending"
     },
     {
      "name": "sub_0200F600",
      "mode": "thumb",
      "insns": 21,
      "size_est": 44,
-     "status": "matched"
+     "status": "pending"
     },
     {
      "name": "sub_0200F62C",
      "mode": "thumb",
      "insns": 40,
      "size_est": 88,
-     "status": "matched"
+     "status": "pending"
     },
     {
      "name": "sub_0200F684",
      "mode": "thumb",
      "insns": 37,
      "size_est": 80,
-     "status": "matched"
+     "status": "pending"
     },
     {
      "name": "sub_0200F6D4",
      "mode": "thumb",
      "insns": 28,
      "size_est": 64,
-     "status": "matched"
+     "status": "pending"
     },
     {
      "name": "sub_0200F714",
      "mode": "thumb",
      "insns": 22,
      "size_est": 52,
-     "status": "matched"
+     "status": "pending"
     },
     {
      "name": "sub_0200F748",
      "mode": "thumb",
      "insns": 95,
      "size_est": 222,
-     "status": "matched"
+     "status": "pending"
     },
     {
      "name": "sub_0200F82C",
      "mode": "thumb",
      "insns": 206,
      "size_est": 432,
-     "status": "matched"
+     "status": "pending"
     },
     {
      "name": "sub_0200F9DC",
      "mode": "thumb",
      "insns": 34,
      "size_est": 72,
-     "status": "matched"
+     "status": "pending"
     }
-   ],
-   "source": "harness"
+   ]
   },
   {
    "file": "asm/unk_0200FA24.s",
@@ -2343,12 +2336,12 @@
    "blocked_reason": "IPA-blocked: header signature conflicts, IPA CSE caching, loop codegen. C file exists at src/unk_0200FA24.c but cannot byte-match due to MWCC -ipa file cross-function optimization.",
    "attempts": 50,
    "blocker_id": "ipa-shared-headers",
-   "kept_c": true
+   "kept_c": false
   },
   {
    "file": "asm/unk_0201010C.s",
-   "lsf_kind": "src",
-   "status": "matched",
+   "lsf_kind": "asm",
+   "status": "pending",
    "lines": 6144,
    "function_count": 127,
    "text_bytes_est": 11400,
@@ -2451,892 +2444,891 @@
      "mode": "thumb",
      "insns": 13,
      "size_est": 30,
-     "status": "matched"
+     "status": "pending"
     },
     {
      "name": "FadeFunc_01",
      "mode": "thumb",
      "insns": 14,
      "size_est": 32,
-     "status": "matched"
+     "status": "pending"
     },
     {
      "name": "FadeFunc_02",
      "mode": "thumb",
      "insns": 25,
      "size_est": 56,
-     "status": "matched"
+     "status": "pending"
     },
     {
      "name": "FadeFunc_03",
      "mode": "thumb",
      "insns": 23,
      "size_est": 52,
-     "status": "matched"
+     "status": "pending"
     },
     {
      "name": "FadeFunc_04",
      "mode": "thumb",
      "insns": 25,
      "size_est": 56,
-     "status": "matched"
+     "status": "pending"
     },
     {
      "name": "FadeFunc_05",
      "mode": "thumb",
      "insns": 23,
      "size_est": 52,
-     "status": "matched"
+     "status": "pending"
     },
     {
      "name": "FadeFunc_06",
      "mode": "thumb",
      "insns": 19,
      "size_est": 44,
-     "status": "matched"
+     "status": "pending"
     },
     {
      "name": "FadeFunc_07",
      "mode": "thumb",
      "insns": 19,
      "size_est": 44,
-     "status": "matched"
+     "status": "pending"
     },
     {
      "name": "FadeFunc_08",
      "mode": "thumb",
      "insns": 25,
      "size_est": 56,
-     "status": "matched"
+     "status": "pending"
     },
     {
      "name": "FadeFunc_09",
      "mode": "thumb",
      "insns": 23,
      "size_est": 52,
-     "status": "matched"
+     "status": "pending"
     },
     {
      "name": "FadeFunc_10",
      "mode": "thumb",
      "insns": 25,
      "size_est": 56,
-     "status": "matched"
+     "status": "pending"
     },
     {
      "name": "FadeFunc_11",
      "mode": "thumb",
      "insns": 23,
      "size_est": 52,
-     "status": "matched"
+     "status": "pending"
     },
     {
      "name": "FadeFunc_12",
      "mode": "thumb",
      "insns": 19,
      "size_est": 44,
-     "status": "matched"
+     "status": "pending"
     },
     {
      "name": "FadeFunc_13",
      "mode": "thumb",
      "insns": 19,
      "size_est": 44,
-     "status": "matched"
+     "status": "pending"
     },
     {
      "name": "FadeFunc_14",
      "mode": "thumb",
      "insns": 22,
      "size_est": 50,
-     "status": "matched"
+     "status": "pending"
     },
     {
      "name": "FadeFunc_15",
      "mode": "thumb",
      "insns": 20,
      "size_est": 46,
-     "status": "matched"
+     "status": "pending"
     },
     {
      "name": "FadeFunc_16",
      "mode": "thumb",
      "insns": 19,
      "size_est": 44,
-     "status": "matched"
+     "status": "pending"
     },
     {
      "name": "FadeFunc_17",
      "mode": "thumb",
      "insns": 19,
      "size_est": 44,
-     "status": "matched"
+     "status": "pending"
     },
     {
      "name": "FadeFunc_18",
      "mode": "thumb",
      "insns": 19,
      "size_est": 44,
-     "status": "matched"
+     "status": "pending"
     },
     {
      "name": "FadeFunc_19",
      "mode": "thumb",
      "insns": 19,
      "size_est": 44,
-     "status": "matched"
+     "status": "pending"
     },
     {
      "name": "FadeFunc_20",
      "mode": "thumb",
      "insns": 19,
      "size_est": 44,
-     "status": "matched"
+     "status": "pending"
     },
     {
      "name": "FadeFunc_21",
      "mode": "thumb",
      "insns": 19,
      "size_est": 44,
-     "status": "matched"
+     "status": "pending"
     },
     {
      "name": "FadeFunc_22",
      "mode": "thumb",
      "insns": 19,
      "size_est": 44,
-     "status": "matched"
+     "status": "pending"
     },
     {
      "name": "FadeFunc_23",
      "mode": "thumb",
      "insns": 19,
      "size_est": 44,
-     "status": "matched"
+     "status": "pending"
     },
     {
      "name": "FadeFunc_24",
      "mode": "thumb",
      "insns": 19,
      "size_est": 44,
-     "status": "matched"
+     "status": "pending"
     },
     {
      "name": "FadeFunc_25",
      "mode": "thumb",
      "insns": 19,
      "size_est": 44,
-     "status": "matched"
+     "status": "pending"
     },
     {
      "name": "FadeFunc_26",
      "mode": "thumb",
      "insns": 19,
      "size_est": 44,
-     "status": "matched"
+     "status": "pending"
     },
     {
      "name": "FadeFunc_27",
      "mode": "thumb",
      "insns": 19,
      "size_est": 44,
-     "status": "matched"
+     "status": "pending"
     },
     {
      "name": "FadeFunc_28",
      "mode": "thumb",
      "insns": 38,
      "size_est": 82,
-     "status": "matched"
+     "status": "pending"
     },
     {
      "name": "FadeFunc_29",
      "mode": "thumb",
      "insns": 36,
      "size_est": 78,
-     "status": "matched"
+     "status": "pending"
     },
     {
      "name": "FadeFunc_30",
      "mode": "thumb",
      "insns": 25,
      "size_est": 56,
-     "status": "matched"
+     "status": "pending"
     },
     {
      "name": "FadeFunc_31",
      "mode": "thumb",
      "insns": 23,
      "size_est": 52,
-     "status": "matched"
+     "status": "pending"
     },
     {
      "name": "FadeFunc_32",
      "mode": "thumb",
      "insns": 33,
      "size_est": 72,
-     "status": "matched"
+     "status": "pending"
     },
     {
      "name": "FadeFunc_33",
      "mode": "thumb",
      "insns": 31,
      "size_est": 68,
-     "status": "matched"
+     "status": "pending"
     },
     {
      "name": "FadeFunc_34",
      "mode": "thumb",
      "insns": 33,
      "size_est": 72,
-     "status": "matched"
+     "status": "pending"
     },
     {
      "name": "FadeFunc_35",
      "mode": "thumb",
      "insns": 31,
      "size_est": 68,
-     "status": "matched"
+     "status": "pending"
     },
     {
      "name": "FadeFunc_36",
      "mode": "thumb",
      "insns": 19,
      "size_est": 44,
-     "status": "matched"
+     "status": "pending"
     },
     {
      "name": "FadeFunc_37",
      "mode": "thumb",
      "insns": 19,
      "size_est": 44,
-     "status": "matched"
+     "status": "pending"
     },
     {
      "name": "FadeFunc_38",
      "mode": "thumb",
      "insns": 19,
      "size_est": 44,
-     "status": "matched"
+     "status": "pending"
     },
     {
      "name": "FadeFunc_39",
      "mode": "thumb",
      "insns": 19,
      "size_est": 44,
-     "status": "matched"
+     "status": "pending"
     },
     {
      "name": "FadeFunc_40",
      "mode": "thumb",
      "insns": 25,
      "size_est": 56,
-     "status": "matched"
+     "status": "pending"
     },
     {
      "name": "FadeFunc_41",
      "mode": "thumb",
      "insns": 23,
      "size_est": 52,
-     "status": "matched"
+     "status": "pending"
     },
     {
      "name": "FadeFunc_42",
      "mode": "thumb",
      "insns": 19,
      "size_est": 44,
-     "status": "matched"
+     "status": "pending"
     },
     {
      "name": "sub_020109BC",
      "mode": "thumb",
      "insns": 13,
      "size_est": 26,
-     "status": "matched"
+     "status": "pending"
     },
     {
      "name": "sub_020109D8",
      "mode": "thumb",
      "insns": 18,
      "size_est": 40,
-     "status": "matched"
+     "status": "pending"
     },
     {
      "name": "sub_02010A00",
      "mode": "thumb",
      "insns": 40,
      "size_est": 84,
-     "status": "matched"
+     "status": "pending"
     },
     {
      "name": "sub_02010A54",
      "mode": "thumb",
      "insns": 11,
      "size_est": 26,
-     "status": "matched"
+     "status": "pending"
     },
     {
      "name": "sub_02010A6C",
      "mode": "thumb",
      "insns": 8,
      "size_est": 16,
-     "status": "matched"
+     "status": "pending"
     },
     {
      "name": "sub_02010A7C",
      "mode": "thumb",
      "insns": 8,
      "size_est": 16,
-     "status": "matched"
+     "status": "pending"
     },
     {
      "name": "sub_02010A8C",
      "mode": "thumb",
      "insns": 18,
      "size_est": 36,
-     "status": "matched"
+     "status": "pending"
     },
     {
      "name": "sub_02010AB0",
      "mode": "thumb",
      "insns": 47,
      "size_est": 102,
-     "status": "matched"
+     "status": "pending"
     },
     {
      "name": "sub_02010B14",
      "mode": "thumb",
      "insns": 75,
      "size_est": 160,
-     "status": "matched"
+     "status": "pending"
     },
     {
      "name": "sub_02010BB4",
      "mode": "thumb",
      "insns": 31,
      "size_est": 66,
-     "status": "matched"
+     "status": "pending"
     },
     {
      "name": "sub_02010BF4",
      "mode": "thumb",
      "insns": 33,
      "size_est": 68,
-     "status": "matched"
+     "status": "pending"
     },
     {
      "name": "sub_02010C38",
      "mode": "thumb",
      "insns": 271,
      "size_est": 550,
-     "status": "matched"
+     "status": "pending"
     },
     {
      "name": "sub_02010E64",
      "mode": "thumb",
      "insns": 47,
      "size_est": 98,
-     "status": "matched"
+     "status": "pending"
     },
     {
      "name": "sub_02010EC8",
      "mode": "thumb",
      "insns": 4,
      "size_est": 8,
-     "status": "matched"
+     "status": "pending"
     },
     {
      "name": "sub_02010ED0",
      "mode": "thumb",
      "insns": 8,
      "size_est": 18,
-     "status": "matched"
+     "status": "pending"
     },
     {
      "name": "sub_02010EE0",
      "mode": "thumb",
      "insns": 15,
      "size_est": 32,
-     "status": "matched"
+     "status": "pending"
     },
     {
      "name": "sub_02010F00",
      "mode": "thumb",
      "insns": 24,
      "size_est": 54,
-     "status": "matched"
+     "status": "pending"
     },
     {
      "name": "sub_02010F34",
      "mode": "thumb",
      "insns": 36,
      "size_est": 82,
-     "status": "matched"
+     "status": "pending"
     },
     {
      "name": "sub_02010F84",
      "mode": "thumb",
      "insns": 47,
      "size_est": 106,
-     "status": "matched"
+     "status": "pending"
     },
     {
      "name": "sub_02010FEC",
      "mode": "thumb",
      "insns": 56,
      "size_est": 124,
-     "status": "matched"
+     "status": "pending"
     },
     {
      "name": "sub_02011068",
      "mode": "thumb",
      "insns": 10,
      "size_est": 24,
-     "status": "matched"
+     "status": "pending"
     },
     {
      "name": "sub_02011080",
      "mode": "thumb",
      "insns": 33,
      "size_est": 68,
-     "status": "matched"
+     "status": "pending"
     },
     {
      "name": "sub_020110C4",
      "mode": "thumb",
      "insns": 10,
      "size_est": 20,
-     "status": "matched"
+     "status": "pending"
     },
     {
      "name": "sub_020110DC",
      "mode": "thumb",
      "insns": 10,
      "size_est": 22,
-     "status": "matched"
+     "status": "pending"
     },
     {
      "name": "sub_020110F4",
      "mode": "thumb",
      "insns": 7,
      "size_est": 14,
-     "status": "matched"
+     "status": "pending"
     },
     {
      "name": "sub_02011104",
      "mode": "thumb",
      "insns": 20,
      "size_est": 44,
-     "status": "matched"
+     "status": "pending"
     },
     {
      "name": "sub_02011130",
      "mode": "thumb",
      "insns": 643,
      "size_est": 1288,
-     "status": "matched"
+     "status": "pending"
     },
     {
      "name": "sub_0201164C",
      "mode": "thumb",
      "insns": 37,
      "size_est": 82,
-     "status": "matched"
+     "status": "pending"
     },
     {
      "name": "sub_0201169C",
      "mode": "thumb",
      "insns": 37,
      "size_est": 80,
-     "status": "matched"
+     "status": "pending"
     },
     {
      "name": "sub_020116EC",
      "mode": "thumb",
      "insns": 40,
      "size_est": 88,
-     "status": "matched"
+     "status": "pending"
     },
     {
      "name": "sub_02011744",
      "mode": "thumb",
      "insns": 42,
      "size_est": 92,
-     "status": "matched"
+     "status": "pending"
     },
     {
      "name": "sub_020117A0",
      "mode": "thumb",
      "insns": 45,
      "size_est": 94,
-     "status": "matched"
+     "status": "pending"
     },
     {
      "name": "sub_020117FC",
      "mode": "thumb",
      "insns": 65,
      "size_est": 136,
-     "status": "matched"
+     "status": "pending"
     },
     {
      "name": "sub_02011884",
      "mode": "thumb",
      "insns": 27,
      "size_est": 58,
-     "status": "matched"
+     "status": "pending"
     },
     {
      "name": "sub_020118BC",
      "mode": "thumb",
      "insns": 41,
      "size_est": 92,
-     "status": "matched"
+     "status": "pending"
     },
     {
      "name": "sub_02011918",
      "mode": "thumb",
      "insns": 99,
      "size_est": 216,
-     "status": "matched"
+     "status": "pending"
     },
     {
      "name": "sub_020119F4",
      "mode": "thumb",
      "insns": 36,
      "size_est": 78,
-     "status": "matched"
+     "status": "pending"
     },
     {
      "name": "sub_02011A44",
      "mode": "thumb",
      "insns": 72,
      "size_est": 150,
-     "status": "matched"
+     "status": "pending"
     },
     {
      "name": "sub_02011AD8",
      "mode": "thumb",
      "insns": 63,
      "size_est": 132,
-     "status": "matched"
+     "status": "pending"
     },
     {
      "name": "sub_02011B5C",
      "mode": "thumb",
      "insns": 27,
      "size_est": 58,
-     "status": "matched"
+     "status": "pending"
     },
     {
      "name": "sub_02011B94",
      "mode": "thumb",
      "insns": 41,
      "size_est": 92,
-     "status": "matched"
+     "status": "pending"
     },
     {
      "name": "sub_02011BF0",
      "mode": "thumb",
      "insns": 89,
      "size_est": 196,
-     "status": "matched"
+     "status": "pending"
     },
     {
      "name": "sub_02011CB8",
      "mode": "thumb",
      "insns": 36,
      "size_est": 78,
-     "status": "matched"
+     "status": "pending"
     },
     {
      "name": "sub_02011D08",
      "mode": "thumb",
      "insns": 40,
      "size_est": 88,
-     "status": "matched"
+     "status": "pending"
     },
     {
      "name": "sub_02011D60",
      "mode": "thumb",
      "insns": 27,
      "size_est": 58,
-     "status": "matched"
+     "status": "pending"
     },
     {
      "name": "sub_02011D98",
      "mode": "thumb",
      "insns": 39,
      "size_est": 86,
-     "status": "matched"
+     "status": "pending"
     },
     {
      "name": "sub_02011DEC",
      "mode": "thumb",
      "insns": 95,
      "size_est": 208,
-     "status": "matched"
+     "status": "pending"
     },
     {
      "name": "sub_02011EC0",
      "mode": "thumb",
      "insns": 36,
      "size_est": 78,
-     "status": "matched"
+     "status": "pending"
     },
     {
      "name": "sub_02011F10",
      "mode": "thumb",
      "insns": 106,
      "size_est": 230,
-     "status": "matched"
+     "status": "pending"
     },
     {
      "name": "sub_02011FF8",
      "mode": "thumb",
      "insns": 27,
      "size_est": 58,
-     "status": "matched"
+     "status": "pending"
     },
     {
      "name": "sub_02012030",
      "mode": "thumb",
      "insns": 43,
      "size_est": 98,
-     "status": "matched"
+     "status": "pending"
     },
     {
      "name": "sub_02012090",
      "mode": "thumb",
      "insns": 125,
      "size_est": 272,
-     "status": "matched"
+     "status": "pending"
     },
     {
      "name": "sub_020121A4",
      "mode": "thumb",
      "insns": 35,
      "size_est": 78,
-     "status": "matched"
+     "status": "pending"
     },
     {
      "name": "sub_020121F4",
      "mode": "thumb",
      "insns": 8,
      "size_est": 18,
-     "status": "matched"
+     "status": "pending"
     },
     {
      "name": "sub_02012204",
      "mode": "thumb",
      "insns": 24,
      "size_est": 54,
-     "status": "matched"
+     "status": "pending"
     },
     {
      "name": "sub_02012238",
      "mode": "thumb",
      "insns": 44,
      "size_est": 90,
-     "status": "matched"
+     "status": "pending"
     },
     {
      "name": "sub_02012290",
      "mode": "thumb",
      "insns": 19,
      "size_est": 40,
-     "status": "matched"
+     "status": "pending"
     },
     {
      "name": "sub_020122B8",
      "mode": "thumb",
      "insns": 30,
      "size_est": 66,
-     "status": "matched"
+     "status": "pending"
     },
     {
      "name": "sub_020122F8",
      "mode": "thumb",
      "insns": 43,
      "size_est": 98,
-     "status": "matched"
+     "status": "pending"
     },
     {
      "name": "sub_02012358",
      "mode": "thumb",
      "insns": 114,
      "size_est": 248,
-     "status": "matched"
+     "status": "pending"
     },
     {
      "name": "sub_02012454",
      "mode": "thumb",
      "insns": 39,
      "size_est": 86,
-     "status": "matched"
+     "status": "pending"
     },
     {
      "name": "sub_020124AC",
      "mode": "thumb",
      "insns": 2,
      "size_est": 4,
-     "status": "matched"
+     "status": "pending"
     },
     {
      "name": "sub_020124B0",
      "mode": "thumb",
      "insns": 141,
      "size_est": 292,
-     "status": "matched"
+     "status": "pending"
     },
     {
      "name": "sub_020125D4",
      "mode": "thumb",
      "insns": 12,
      "size_est": 26,
-     "status": "matched"
+     "status": "pending"
     },
     {
      "name": "sub_020125EC",
      "mode": "thumb",
      "insns": 30,
      "size_est": 66,
-     "status": "matched"
+     "status": "pending"
     },
     {
      "name": "sub_0201262C",
      "mode": "thumb",
      "insns": 43,
      "size_est": 98,
-     "status": "matched"
+     "status": "pending"
     },
     {
      "name": "sub_0201268C",
      "mode": "thumb",
      "insns": 93,
      "size_est": 204,
-     "status": "matched"
+     "status": "pending"
     },
     {
      "name": "sub_0201275C",
      "mode": "thumb",
      "insns": 39,
      "size_est": 86,
-     "status": "matched"
+     "status": "pending"
     },
     {
      "name": "sub_020127B4",
      "mode": "thumb",
      "insns": 2,
      "size_est": 4,
-     "status": "matched"
+     "status": "pending"
     },
     {
      "name": "sub_020127B8",
      "mode": "thumb",
      "insns": 98,
      "size_est": 204,
-     "status": "matched"
+     "status": "pending"
     },
     {
      "name": "sub_02012884",
      "mode": "thumb",
      "insns": 12,
      "size_est": 26,
-     "status": "matched"
+     "status": "pending"
     },
     {
      "name": "sub_0201289C",
      "mode": "thumb",
      "insns": 32,
      "size_est": 70,
-     "status": "matched"
+     "status": "pending"
     },
     {
      "name": "sub_020128E0",
      "mode": "thumb",
      "insns": 44,
      "size_est": 98,
-     "status": "matched"
+     "status": "pending"
     },
     {
      "name": "sub_02012940",
      "mode": "thumb",
      "insns": 110,
      "size_est": 238,
-     "status": "matched"
+     "status": "pending"
     },
     {
      "name": "sub_02012A2C",
      "mode": "thumb",
      "insns": 45,
      "size_est": 96,
-     "status": "matched"
+     "status": "pending"
     },
     {
      "name": "sub_02012A8C",
      "mode": "thumb",
      "insns": 2,
      "size_est": 4,
-     "status": "matched"
+     "status": "pending"
     },
     {
      "name": "sub_02012A90",
      "mode": "thumb",
      "insns": 30,
      "size_est": 62,
-     "status": "matched"
+     "status": "pending"
     },
     {
      "name": "sub_02012ACC",
      "mode": "thumb",
      "insns": 40,
      "size_est": 82,
-     "status": "matched"
+     "status": "pending"
     },
     {
      "name": "sub_02012B1C",
      "mode": "thumb",
      "insns": 47,
      "size_est": 102,
-     "status": "matched"
+     "status": "pending"
     },
     {
      "name": "sub_02012B80",
      "mode": "thumb",
      "insns": 47,
      "size_est": 104,
-     "status": "matched"
+     "status": "pending"
     },
     {
      "name": "sub_02012BE8",
      "mode": "thumb",
      "insns": 60,
      "size_est": 128,
-     "status": "matched"
+     "status": "pending"
     },
     {
      "name": "sub_02012C68",
      "mode": "thumb",
      "insns": 55,
      "size_est": 116,
-     "status": "matched"
+     "status": "pending"
     },
     {
      "name": "sub_02012CDC",
      "mode": "thumb",
      "insns": 54,
      "size_est": 112,
-     "status": "matched"
+     "status": "pending"
     },
     {
      "name": "sub_02012D4C",
      "mode": "thumb",
      "insns": 65,
      "size_est": 140,
-     "status": "matched"
+     "status": "pending"
     }
-   ],
-   "source": "harness"
+   ]
   },
   {
    "file": "asm/unk_02012DD8.s",
@@ -5567,8 +5559,8 @@
   },
   {
    "file": "asm/unk_02017FAC.s",
-   "lsf_kind": "src",
-   "status": "matched",
+   "lsf_kind": "asm",
+   "status": "pending",
    "lines": 97,
    "function_count": 4,
    "text_bytes_est": 132,
@@ -5596,31 +5588,30 @@
      "mode": "thumb",
      "insns": 16,
      "size_est": 32,
-     "status": "matched"
+     "status": "pending"
     },
     {
      "name": "sub_02017FCC",
      "mode": "thumb",
      "insns": 11,
      "size_est": 24,
-     "status": "matched"
+     "status": "pending"
     },
     {
      "name": "sub_02017FE4",
      "mode": "thumb",
      "insns": 13,
      "size_est": 28,
-     "status": "matched"
+     "status": "pending"
     },
     {
      "name": "LocationIsDiamondPearlCompatible",
      "mode": "thumb",
      "insns": 24,
      "size_est": 48,
-     "status": "matched"
+     "status": "pending"
     }
-   ],
-   "source": "harness"
+   ]
   },
   {
    "file": "asm/unk_02018000.s",
@@ -7610,8 +7601,8 @@
   },
   {
    "file": "asm/unk_02026DE0.s",
-   "lsf_kind": "src",
-   "status": "matched",
+   "lsf_kind": "asm",
+   "status": "pending",
    "lines": 55,
    "function_count": 2,
    "text_bytes_est": 82,
@@ -7635,17 +7626,16 @@
      "mode": "thumb",
      "insns": 28,
      "size_est": 56,
-     "status": "matched"
+     "status": "pending"
     },
     {
      "name": "sub_02026E18",
      "mode": "thumb",
      "insns": 13,
      "size_est": 26,
-     "status": "matched"
+     "status": "pending"
     }
-   ],
-   "source": "harness"
+   ]
   },
   {
    "file": "asm/unk_02026E30.s",
@@ -7667,8 +7657,8 @@
   },
   {
    "file": "asm/unk_02027010.s",
-   "lsf_kind": "src",
-   "status": "matched",
+   "lsf_kind": "asm",
+   "status": "pending",
    "lines": 96,
    "function_count": 2,
    "text_bytes_est": 168,
@@ -7701,17 +7691,16 @@
      "mode": "thumb",
      "insns": 55,
      "size_est": 124,
-     "status": "matched"
+     "status": "pending"
     },
     {
      "name": "sub_02027098",
      "mode": "thumb",
      "insns": 19,
      "size_est": 44,
-     "status": "matched"
+     "status": "pending"
     }
-   ],
-   "source": "harness"
+   ]
   },
   {
    "file": "asm/save_arrays.s",
@@ -9262,8 +9251,8 @@
   },
   {
    "file": "asm/unk_0202E41C.s",
-   "lsf_kind": "src",
-   "status": "matched",
+   "lsf_kind": "asm",
+   "status": "pending",
    "lines": 93,
    "function_count": 6,
    "text_bytes_est": 152,
@@ -9292,45 +9281,44 @@
      "mode": "thumb",
      "insns": 4,
      "size_est": 8,
-     "status": "matched"
+     "status": "pending"
     },
     {
      "name": "sub_0202E424",
      "mode": "thumb",
      "insns": 10,
      "size_est": 24,
-     "status": "matched"
+     "status": "pending"
     },
     {
      "name": "sub_0202E43C",
      "mode": "thumb",
      "insns": 24,
      "size_est": 58,
-     "status": "matched"
+     "status": "pending"
     },
     {
      "name": "sub_0202E474",
      "mode": "thumb",
      "insns": 10,
      "size_est": 26,
-     "status": "matched"
+     "status": "pending"
     },
     {
      "name": "sub_0202E48C",
      "mode": "thumb",
      "insns": 6,
      "size_est": 12,
-     "status": "matched"
+     "status": "pending"
     },
     {
      "name": "sub_0202E498",
      "mode": "thumb",
      "insns": 12,
      "size_est": 24,
-     "status": "matched"
+     "status": "pending"
     }
-   ],
-   "source": "harness"
+   ]
   },
   {
    "file": "asm/save_rankings.s",
@@ -10375,8 +10363,8 @@
   },
   {
    "file": "asm/unk_020318C8.s",
-   "lsf_kind": "src",
-   "status": "matched",
+   "lsf_kind": "asm",
+   "status": "pending",
    "lines": 60,
    "function_count": 7,
    "text_bytes_est": 70,
@@ -10408,52 +10396,51 @@
      "mode": "thumb",
      "insns": 3,
      "size_est": 6,
-     "status": "matched"
+     "status": "pending"
     },
     {
      "name": "sub_020318CC",
      "mode": "thumb",
      "insns": 12,
      "size_est": 28,
-     "status": "matched"
+     "status": "pending"
     },
     {
      "name": "sub_020318E8",
      "mode": "thumb",
      "insns": 6,
      "size_est": 12,
-     "status": "matched"
+     "status": "pending"
     },
     {
      "name": "sub_020318F4",
      "mode": "thumb",
      "insns": 3,
      "size_est": 6,
-     "status": "matched"
+     "status": "pending"
     },
     {
      "name": "sub_020318F8",
      "mode": "thumb",
      "insns": 3,
      "size_est": 6,
-     "status": "matched"
+     "status": "pending"
     },
     {
      "name": "sub_020318FC",
      "mode": "thumb",
      "insns": 3,
      "size_est": 6,
-     "status": "matched"
+     "status": "pending"
     },
     {
      "name": "sub_02031900",
      "mode": "thumb",
      "insns": 3,
      "size_est": 6,
-     "status": "matched"
+     "status": "pending"
     }
-   ],
-   "source": "retained_asm"
+   ]
   },
   {
    "file": "asm/pokeathlon/pokeathlon_save.s",
@@ -16106,8 +16093,8 @@
   },
   {
    "file": "asm/unk_020551B8.s",
-   "lsf_kind": "src",
-   "status": "matched",
+   "lsf_kind": "asm",
+   "status": "pending",
    "lines": 76,
    "function_count": 2,
    "text_bytes_est": 140,
@@ -16140,17 +16127,16 @@
      "mode": "thumb",
      "insns": 41,
      "size_est": 96,
-     "status": "matched"
+     "status": "pending"
     },
     {
      "name": "sub_02055218",
      "mode": "thumb",
      "insns": 20,
      "size_est": 44,
-     "status": "matched"
+     "status": "pending"
     }
-   ],
-   "source": "retained_asm"
+   ]
   },
   {
    "file": "asm/unk_02055244.s",
@@ -26710,8 +26696,8 @@
   },
   {
    "file": "asm/unk_02078DD8.s",
-   "lsf_kind": "asm",
-   "status": "pending",
+   "lsf_kind": "src",
+   "status": "matched",
    "lines": 59,
    "function_count": 2,
    "text_bytes_est": 88,
@@ -26747,16 +26733,17 @@
      "mode": "thumb",
      "insns": 32,
      "size_est": 80,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "sub_02078E28",
      "mode": "thumb",
      "insns": 4,
      "size_est": 8,
-     "status": "pending"
+     "status": "matched"
     }
-   ]
+   ],
+   "source": "harness"
   },
   {
    "file": "asm/party_menu.s",
@@ -30255,8 +30242,8 @@
   },
   {
    "file": "asm/unk_020915B0.s",
-   "lsf_kind": "src",
-   "status": "matched",
+   "lsf_kind": "asm",
+   "status": "pending",
    "lines": 118,
    "function_count": 8,
    "text_bytes_est": 168,
@@ -30292,59 +30279,58 @@
      "mode": "thumb",
      "insns": 7,
      "size_est": 14,
-     "status": "matched"
+     "status": "pending"
     },
     {
      "name": "UnloadDwcOverlay",
      "mode": "thumb",
      "insns": 7,
      "size_est": 14,
-     "status": "matched"
+     "status": "pending"
     },
     {
      "name": "LoadOVY13",
      "mode": "thumb",
      "insns": 7,
      "size_est": 14,
-     "status": "matched"
+     "status": "pending"
     },
     {
      "name": "UnloadOVY13",
      "mode": "thumb",
      "insns": 7,
      "size_est": 14,
-     "status": "matched"
+     "status": "pending"
     },
     {
      "name": "sub_020915F0",
      "mode": "thumb",
      "insns": 12,
      "size_est": 36,
-     "status": "matched"
+     "status": "pending"
     },
     {
      "name": "LoadOVY38",
      "mode": "thumb",
      "insns": 7,
      "size_est": 14,
-     "status": "matched"
+     "status": "pending"
     },
     {
      "name": "UnloadOVY38",
      "mode": "thumb",
      "insns": 7,
      "size_est": 14,
-     "status": "matched"
+     "status": "pending"
     },
     {
      "name": "sub_02091634",
      "mode": "thumb",
      "insns": 19,
      "size_est": 48,
-     "status": "matched"
+     "status": "pending"
     }
-   ],
-   "source": "harness"
+   ]
   },
   {
    "file": "asm/location_gmm_dat.s",
@@ -82569,8 +82555,8 @@
   },
   {
    "file": "asm/overlay_35.s",
-   "lsf_kind": "src",
-   "status": "matched",
+   "lsf_kind": "asm",
+   "status": "pending",
    "lines": 47,
    "function_count": 2,
    "text_bytes_est": 54,
@@ -82594,17 +82580,16 @@
      "mode": "thumb",
      "insns": 23,
      "size_est": 48,
-     "status": "matched"
+     "status": "pending"
     },
     {
      "name": "ov35_02259DB8",
      "mode": "thumb",
      "insns": 3,
      "size_est": 6,
-     "status": "matched"
+     "status": "pending"
     }
-   ],
-   "source": "harness"
+   ]
   },
   {
    "file": "asm/overlay_36.s",
@@ -139788,8 +139773,8 @@
   },
   {
    "file": "asm/battle_arcade_game_board_data.s",
-   "lsf_kind": "src",
-   "status": "matched",
+   "lsf_kind": "asm",
+   "status": "pending",
    "lines": 98,
    "function_count": 0,
    "text_bytes_est": 0,
@@ -139819,8 +139804,7 @@
     "ov84_0223F9F8"
    ],
    "exports": [],
-   "functions": [],
-   "source": "harness"
+   "functions": []
   },
   {
    "file": "asm/overlay_85.s",

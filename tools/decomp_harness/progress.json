@@ -1,51 +1,6 @@
 {
   "completed": [
     {
-      "file": "asm/unk_02004A44.s",
-      "lines": 2672,
-      "functions": 95,
-      "attempts": 8,
-      "result": "matched"
-    },
-    {
-      "file": "asm/render_window.s",
-      "lines": 2842,
-      "functions": 40,
-      "attempts": 6,
-      "result": "matched"
-    },
-    {
-      "file": "asm/unk_0201010C.s",
-      "lines": 6144,
-      "functions": 127,
-      "attempts": 1,
-      "result": "matched"
-    },
-    {
-      "file": "asm/battle_arcade_game_board_data.s",
-      "lines": 99,
-      "functions": 0,
-      "attempts": 1,
-      "result": "matched",
-      "note": "delegate-drafted; data-only; bytes verified via objdump; full SHA1 blocked by pre-existing alph_puzzle.c error"
-    },
-    {
-      "file": "asm/overlay_35.s",
-      "lines": 47,
-      "functions": 2,
-      "attempts": 1,
-      "result": "matched",
-      "note": "sonnet-drafted; 2/2 functions + data sections match via objdiff; full SHA1 blocked by pre-existing sound_02004A44.h GF_GetVolumeBySeqNo dup-decl error (alph_puzzle.c). Unprototyped-call idiom: header keeps int ov35_02259DB8() empty-parens for field_system.c; struct Ov35Struct is a local invention."
-    },
-    {
-      "file": "asm/unk_02026DE0.s",
-      "lines": 55,
-      "functions": 2,
-      "attempts": 1,
-      "result": "matched",
-      "note": "sonnet-drafted; 2/2 functions + data sections match via objdiff; full SHA1 blocked by pre-existing sound02004A44-dup-decl. Blob-parser (sub_02026E18) + threshold-lookup (sub_02026DE0); new struct UnkStruct_02026DE0 + header. Header includes global.h (formatter reorders main-header-first; matches unk_02026E30.h neighbor)."
-    },
-    {
       "file": "asm/unk_0202DB34.s",
       "lines": 108,
       "functions": 12,
@@ -54,36 +9,12 @@
       "note": "sonnet-drafted; 12/12 functions + data sections match via objdiff. Save-chunk accessor module (SAVE_UNK_22, struct UnkStruct_0202DB34 0xF8B). Also converted save_arrays.c DECL_CHUNK_EX(sub_0202DB40,sub_0202DB44) -> #include unk_0202DB34.h; verified codegen-neutral (save_arrays 16/16 before-vs-after). Full SHA1 still blocked by sound02004A44-dup-decl."
     },
     {
-      "file": "asm/unk_02017FAC.s",
-      "lines": 97,
-      "functions": 4,
-      "attempts": 1,
-      "result": "matched",
-      "note": "sonnet-drafted; 4/4 functions + rodata match via objdiff. Met-location/mapsec DP-compat module; static const u16 _020F6280[3] table. Key: sub_02017FAC needs (u32)mapsec cast for unsigned bhs while loop counter stays signed; GF_ASSERT(type<MAPSECTYPE_MAX); constant materialization from named METLOC_ consts. Functions already declared in map_section.h (no new header). Full SHA1 blocked by sound02004A44-dup-decl."
-    },
-    {
-      "file": "asm/unk_0202E41C.s",
-      "lines": 93,
-      "functions": 6,
-      "attempts": 1,
-      "result": "matched",
-      "note": "sonnet-drafted; 6/6 functions + data sections match via objdiff. Save-substruct module (SAVE_UNK_23, struct UnkStruct_0202E474 0xBC8). 4 public (E41C/E424/E43C/E474) + 2 static (E48C/E498, fwd-declared). Removed DECL_CHUNK_EX(sub_0202E41C,sub_0202E424) from save_arrays.c (header already #included there); save_arrays 16/16 codegen-neutral. Full SHA1 blocked by sound02004A44-dup-decl."
-    },
-    {
-      "file": "asm/unk_020915B0.s",
-      "lines": 118,
-      "functions": 8,
-      "attempts": 1,
-      "result": "matched",
-      "note": "opus-drafted (drafter yielded to concurrent build); 8/8 functions + rodata match via objdiff. DWC/WFC overlay-loader: 4 public load/unload tail-calls (OVY_0/13/38), static UnloadOVY13/sub_020915F0/sub_02091634, and public OverlayManagerTemplate rodata gApp_MainMenu_SelectOption_NintendoWFCSetup. Needed FS_EXTERN_OVERLAY decls + named HEAP_ID_48/HEAP_ID_3 (MWCC rejects int->enum HeapID). args->saveData at offset 8 of UnkStruct_02111868_sub. Header gained LoadOVY13/38, UnloadOVY38. Full SHA1 blocked by sound02004A44-dup-decl (being fixed by parallel agent)."
-    },
-    {
-      "file": "asm/unk_02027010.s",
-      "lines": 96,
+      "file": "asm/unk_02078DD8.s",
+      "lines": 59,
       "functions": 2,
       "attempts": 1,
       "result": "matched",
-      "note": "opus-drafted; 2/2 functions + rodata match via objdiff. Low-level CARD/FS init; raw pointer casts to magic DS addrs (*(u32*)0x027FF00C, base 0x027FF000+off) + FSArchive struct + HW_ROM_HEADER_BUF/HW_CARD_ROM_HEADER. Header gained sub_02027098. Full SHA1 blocked by sound02004A44-dup-decl (parallel agent's fix was reverted)."
+      "note": "compare-verified (chiri pkg -- compare OK, full ROM SHA1). IPA-safe: dedicated header + local BOOL ov00_021E6D60 decl, overlay_00_thumb.h frozen. objdiff showed benign bl-placeholder diffs only."
     }
   ],
   "failed": [
@@ -115,7 +46,7 @@
   "in_progress": null,
   "stats": {
     "total_attempts": 61,
-    "total_matched": 11,
+    "total_matched": 2,
     "total_failed": 3
   }
 }
