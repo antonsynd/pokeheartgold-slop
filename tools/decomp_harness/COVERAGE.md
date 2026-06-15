@@ -1,6 +1,6 @@
 # Decomp Coverage Ledger
 
-*Generated 2026-06-15T17:09:26Z by `coverage_ledger.py` — do not hand-edit; regenerate after each decomp.*
+*Generated 2026-06-15T17:25:45Z by `coverage_ledger.py` — do not hand-edit; regenerate after each decomp.*
 
 Tracked functions (files with retained asm): **20167** — matched 14, pending 20059, plus 50 matched-but-blocked inside failed files.
 
@@ -18,6 +18,7 @@ Tracked functions (files with retained asm): **20167** — matched 14, pending 2
 | ipa-shared-headers | 2 | 124 | MWCC -ipa file: changing a signature in a shared header cascades codegen changes into every already-matched caller in other compilation units. Files sharing many declarations (sound.h family) must be decompiled together or after a coordinated header fix. |
 | param-copyprop-cmp | 1 | 37 | MWCC copy-propagates parameter copies: 'adds r4, r0, #0; cmp r4, #N' at function entry cannot be produced from pure C (MWCC substitutes back to r0). Affected functions need the NONMATCHING inline-asm fallback. |
 | objdiff-false-positives | 0 | 0 | RESOLVED. objdiff.py had a critical bug: the byte extraction regex did not match MWCC's ARM Thumb objdump format (packed hex like 'b418' vs expected space-separated 'b4 18'). It extracted 0 bytes for every function, so 0==0 always reported MATCH. 11 decomps accepted via objdiff were not actually byte-matching. Fixed in this session; all 11 non-matching decomps reverted to asm. 2 decomps that truly match (unk_0202DB34, battle_arcade_game_board_data) kept. |
+| ext-data-section-split | 1 | 0 | Data-only files exporting multiple EXTERNAL (.public) const arrays: MWCC -ipa file emits each top-level const as its own .rodata section, and mwldarm orders/aligns them differently than the asm's single packed .rodata, so the linked overlay/module SHA1 fails even though objdiff --summary (per-section) reports a match. Symbols referenced by other TUs must stay non-static, so they cannot be pooled into one section via `static`. |
 
 ## Blocked files (3)
 
