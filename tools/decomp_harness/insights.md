@@ -188,6 +188,10 @@ MWCC rejects implicit int→enum conversions:
 - `GFPalSlotOffset`: cast computed expressions like `(enum GFPalSlotOffset)(palette_num << 5)`
 - Any computed integer passed to an enum parameter needs an explicit cast.
 
+### Save-chunk decomp IPA-safe: dedicated header, LEAVE save_arrays.c DECL_CHUNK_EX  <!-- id: save-chunk-ipa-safe -->
+
+To decompile a save-chunk module (SaveArray_Get + MIi_CpuClear32, sizeof/init + field accessors) without IPA cascade: (1) put the struct + all prototypes in a NEW dedicated include/<name>.h that ONLY the new .c includes. (2) DO NOT modify save_arrays.c — leave its DECL_CHUNK_EX(sizefn, initfn) macro in place. Replacing the macro with #include <name>.h (the old pre-IPA-discipline move) recompiles save_arrays.c against a changed header set and IPA-cascades its codegen -> ROM mismatch. The DECL_CHUNK_EX extern decls and the new header decls coexist fine (separate TUs). sizeof fn: return sizeof(Struct); init: MI_CpuClear32(ptr, <sizeoffn>()) then set defaults; getter: return SaveArray_Get(saveData, SAVE_UNK_NN). Verify with chiri pkg -- compare (objdiff bl-placeholder diffs on the init are benign). Supersedes the earlier save-chunk-pattern that said to replace the macro.
+
 ## NONMATCHING Fallback
 
 ### NONMATCHING inline asm syntax (MWCC)  <!-- id: nonmatching-inline-asm-syntax -->

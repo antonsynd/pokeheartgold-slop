@@ -256,6 +256,12 @@
       "title": "Force a jump table: list ALL dense cases explicitly (sparse -> if-else)",
       "id": "switch-jumptable-density",
       "body": "When the asm uses a Thumb jump table (cmp rN,#max; bhi default; add rN,rN; add rN,pc; ldrh [rN,#6]; add pc,rN; then a halfword offset table), the C switch must cover the range 0..max DENSELY. Listing only the cases with bodies (e.g. case 1, case 4) plus default makes MWCC emit an if-else comparison chain instead (shorter, wrong). Fix: list EVERY case 0..max explicitly, giving the empty ones a bare break (case 0: break; case 2: break; ...). MWCC then sees a dense 0..max switch and emits the jump table. Body blocks are emitted in source order, so order the non-empty cases to match the asm block layout. Diagnose via objdiff --disasm (if-else cmp chain vs add pc,rN). Note: objdiff may report a spurious SIZE diff on a matching jump-table function because it disassembles the data-region table as code ($d/$t mapping symbols differ) — confirm with chiri pkg -- compare."
+    },
+    {
+      "category": "file-patterns",
+      "title": "Save-chunk decomp IPA-safe: dedicated header, LEAVE save_arrays.c DECL_CHUNK_EX",
+      "id": "save-chunk-ipa-safe",
+      "body": "To decompile a save-chunk module (SaveArray_Get + MIi_CpuClear32, sizeof/init + field accessors) without IPA cascade: (1) put the struct + all prototypes in a NEW dedicated include/<name>.h that ONLY the new .c includes. (2) DO NOT modify save_arrays.c — leave its DECL_CHUNK_EX(sizefn, initfn) macro in place. Replacing the macro with #include <name>.h (the old pre-IPA-discipline move) recompiles save_arrays.c against a changed header set and IPA-cascades its codegen -> ROM mismatch. The DECL_CHUNK_EX extern decls and the new header decls coexist fine (separate TUs). sizeof fn: return sizeof(Struct); init: MI_CpuClear32(ptr, <sizeoffn>()) then set defaults; getter: return SaveArray_Get(saveData, SAVE_UNK_NN). Verify with chiri pkg -- compare (objdiff bl-placeholder diffs on the init are benign). Supersedes the earlier save-chunk-pattern that said to replace the macro."
     }
   ]
 }
