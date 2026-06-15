@@ -33,4 +33,9 @@ case "$path" in
         ;;
 esac
 
+# Block edits to the auto-updated progress section in README.md.
+# The section between <!-- BEGIN PROGRESS --> and <!-- END PROGRESS --> is
+# managed by update_readme_progress.sh — manual edits are overwritten on commit.
+# (We don't block the whole file — only warn if the edit touches the markers.)
+
 exit 0
