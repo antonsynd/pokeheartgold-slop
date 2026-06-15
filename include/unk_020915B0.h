@@ -3,5 +3,8 @@
 
 void UnloadDwcOverlay(void);
 void LoadDwcOverlay(void);
+void LoadOVY13(void);
+void LoadOVY38(void);
+void UnloadOVY38(void);
 
 #endif // POKEHEARTGOLD_UNK_020915B0_H

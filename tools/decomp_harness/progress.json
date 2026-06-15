@@ -68,6 +68,14 @@
       "attempts": 1,
       "result": "matched",
       "note": "sonnet-drafted; 6/6 functions + data sections match via objdiff. Save-substruct module (SAVE_UNK_23, struct UnkStruct_0202E474 0xBC8). 4 public (E41C/E424/E43C/E474) + 2 static (E48C/E498, fwd-declared). Removed DECL_CHUNK_EX(sub_0202E41C,sub_0202E424) from save_arrays.c (header already #included there); save_arrays 16/16 codegen-neutral. Full SHA1 blocked by sound02004A44-dup-decl."
+    },
+    {
+      "file": "asm/unk_020915B0.s",
+      "lines": 118,
+      "functions": 8,
+      "attempts": 1,
+      "result": "matched",
+      "note": "opus-drafted (drafter yielded to concurrent build); 8/8 functions + rodata match via objdiff. DWC/WFC overlay-loader: 4 public load/unload tail-calls (OVY_0/13/38), static UnloadOVY13/sub_020915F0/sub_02091634, and public OverlayManagerTemplate rodata gApp_MainMenu_SelectOption_NintendoWFCSetup. Needed FS_EXTERN_OVERLAY decls + named HEAP_ID_48/HEAP_ID_3 (MWCC rejects int->enum HeapID). args->saveData at offset 8 of UnkStruct_02111868_sub. Header gained LoadOVY13/38, UnloadOVY38. Full SHA1 blocked by sound02004A44-dup-decl (being fixed by parallel agent)."
     }
   ],
   "failed": [
@@ -98,8 +106,8 @@
   ],
   "in_progress": null,
   "stats": {
-    "total_attempts": 59,
-    "total_matched": 9,
+    "total_attempts": 60,
+    "total_matched": 10,
     "total_failed": 3
   }
 }

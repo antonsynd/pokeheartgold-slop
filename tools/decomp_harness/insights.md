@@ -16,6 +16,10 @@ whole file: `patterns.py query --grep <word>`.
 - `-O4,p` means level 4 optimization with peephole; this aggressively reorders code
 - `-inline on,noauto` means inlining is allowed but only when explicitly requested (via `inline` keyword or `__attribute__((always_inline))`)
 
+### MWCC errors on int->enum implicit conversion (use named enum constants)  <!-- id: int-to-enum-strict -->
+
+MWCC -W error treats passing an int literal to an enum-typed parameter as an illegal implicit conversion (e.g. Heap_Create(3, 0x30, ...) where params are enum HeapID -> illegal implicit conversion from int to HeapID). Fix: use the named enum constant (HEAP_ID_3, HEAP_ID_48) or an explicit (enum X) cast. Codegen is identical (mov #imm), so this is purely about getting it to compile. The enum HEAP_ID_<N> names are sequential = value N.
+
 ## General Codegen
 
 ### Register allocation follows declaration order  <!-- id: regalloc-order -->

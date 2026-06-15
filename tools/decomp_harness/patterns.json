@@ -232,6 +232,12 @@
       "title": "Cast a signed param to unsigned to force bhs/blo branches",
       "id": "cast-unsigned-for-branch",
       "body": "When a function param is declared signed (e.g. int) per its fixed header, but the asm compares it with an UNSIGNED branch (bhs/blo/bhi/bls) against a u16 table value, force the comparison unsigned by casting at the comparison site: if ((u32)mapsec < p[1]). The cast is free (no instruction) and flips bge/blt -> bhs/blo. A signed int vs u16 promotes both to int and yields signed branches, so the cast is required. Distinguish per-comparison: the loop counter (int i) can stay signed (blt) in the same function while the value comparison is unsigned."
+    },
+    {
+      "category": "compiler",
+      "title": "MWCC errors on int->enum implicit conversion (use named enum constants)",
+      "id": "int-to-enum-strict",
+      "body": "MWCC -W error treats passing an int literal to an enum-typed parameter as an illegal implicit conversion (e.g. Heap_Create(3, 0x30, ...) where params are enum HeapID -> illegal implicit conversion from int to HeapID). Fix: use the named enum constant (HEAP_ID_3, HEAP_ID_48) or an explicit (enum X) cast. Codegen is identical (mov #imm), so this is purely about getting it to compile. The enum HEAP_ID_<N> names are sequential = value N."
     }
   ]
 }
