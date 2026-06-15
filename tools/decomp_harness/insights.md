@@ -48,6 +48,10 @@ whole file: `patterns.py query --grep <word>`.
 - `mov r0, #0` / `mov r0, #1` for FALSE/TRUE returns.
 - `add rN, rM, #0` is `mov rN, rM` in Thumb; `lsl r0, r0, #0` is a NOP MWCC sometimes emits.
 
+### Cast a signed param to unsigned to force bhs/blo branches  <!-- id: cast-unsigned-for-branch -->
+
+When a function param is declared signed (e.g. int) per its fixed header, but the asm compares it with an UNSIGNED branch (bhs/blo/bhi/bls) against a u16 table value, force the comparison unsigned by casting at the comparison site: if ((u32)mapsec < p[1]). The cast is free (no instruction) and flips bge/blt -> bhs/blo. A signed int vs u16 promotes both to int and yields signed branches, so the cast is required. Distinguish per-comparison: the loop counter (int i) can stay signed (blt) in the same function while the value comparison is unsigned.
+
 ## Matching Tricks
 
 ### Small source changes that move codegen  <!-- id: decl-order-tricks -->

@@ -226,6 +226,12 @@
       "title": "Verify a single object when the full build is blocked",
       "id": "single-object-build-escape",
       "body": "When an unrelated pre-existing error aborts make main (e.g. a dup-decl in a shared header), you can still compile+verify ONE file: cp the asm reference first (build/heartgold.us/asm/<name>.o to /tmp), switch main.lsf, then build just that object via the chiri make-target passthrough: chiri pkg -- build --no-compare -- build/heartgold.us/src/<name>.o (default --target all => empty make target, so the bare object path is the only thing built). Then objdiff.py --summary /tmp/<name>_asm.o build/heartgold.us/src/<name>.o. Isolates your file from the broken TU; gives function+data .o-level verification without the full ROM SHA1."
+    },
+    {
+      "category": "codegen",
+      "title": "Cast a signed param to unsigned to force bhs/blo branches",
+      "id": "cast-unsigned-for-branch",
+      "body": "When a function param is declared signed (e.g. int) per its fixed header, but the asm compares it with an UNSIGNED branch (bhs/blo/bhi/bls) against a u16 table value, force the comparison unsigned by casting at the comparison site: if ((u32)mapsec < p[1]). The cast is free (no instruction) and flips bge/blt -> bhs/blo. A signed int vs u16 promotes both to int and yields signed branches, so the cast is required. Distinguish per-comparison: the loop counter (int i) can stay signed (blt) in the same function while the value comparison is unsigned."
     }
   ]
 }

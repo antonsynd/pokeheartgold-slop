@@ -1,12 +1,12 @@
 {
  "summary": {
-  "generated": "2026-06-15T00:51:53Z",
+  "generated": "2026-06-15T01:03:26Z",
   "by_status": {
    "matched": {
-    "files": 9,
-    "functions": 287,
-    "insn_lines": 10027,
-    "text_bytes_est": 22142
+    "files": 10,
+    "functions": 291,
+    "insn_lines": 10091,
+    "text_bytes_est": 22274
    },
    "blocked": {
     "files": 3,
@@ -15,10 +15,10 @@
     "text_bytes_est": 6214
    },
    "pending": {
-    "files": 291,
-    "functions": 19786,
-    "insn_lines": 941527,
-    "text_bytes_est": 2102162
+    "files": 290,
+    "functions": 19782,
+    "insn_lines": 941463,
+    "text_bytes_est": 2102030
    },
    "upstream": {
     "files": 368,
@@ -29,9 +29,9 @@
   },
   "function_totals": {
    "tracked": 20167,
-   "matched": 287,
+   "matched": 291,
    "partial_in_blocked": 50,
-   "pending": 19786
+   "pending": 19782
   },
   "blockers": [
    {
@@ -5567,8 +5567,8 @@
   },
   {
    "file": "asm/unk_02017FAC.s",
-   "lsf_kind": "asm",
-   "status": "pending",
+   "lsf_kind": "src",
+   "status": "matched",
    "lines": 97,
    "function_count": 4,
    "text_bytes_est": 132,
@@ -5596,30 +5596,31 @@
      "mode": "thumb",
      "insns": 16,
      "size_est": 32,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "sub_02017FCC",
      "mode": "thumb",
      "insns": 11,
      "size_est": 24,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "sub_02017FE4",
      "mode": "thumb",
      "insns": 13,
      "size_est": 28,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "LocationIsDiamondPearlCompatible",
      "mode": "thumb",
      "insns": 24,
      "size_est": 48,
-     "status": "pending"
+     "status": "matched"
     }
-   ]
+   ],
+   "source": "harness"
   },
   {
    "file": "asm/unk_02018000.s",
