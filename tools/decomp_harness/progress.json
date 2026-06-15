@@ -47,6 +47,14 @@
       "attempts": 1,
       "result": "matched",
       "note": "compare-verified (full ROM SHA1 OK; save_arrays.o byte-identical => no IPA cascade). Save-chunk SAVE_UNK_23 init/clear module, struct UnkStruct_0202E474 (0xBC8). IPA-safe split header: shared include/unk_0202E41C.h frozen (struct-only, untouched), defining TU uses new self-sufficient include/unk_0202E41C_internal.h; save_arrays.c untouched (DECL_CHUNK_EX kept). 4 public fns get local fwd decls; sub_0202E48C/498 static. Mismatches were benign bl-placeholders."
+    },
+    {
+      "file": "asm/unk_020915B0.s",
+      "lines": 118,
+      "functions": 8,
+      "attempts": 1,
+      "result": "matched",
+      "note": "compare-verified (full ROM SHA1 OK; overlay_44_0222CDAC.o byte-identical => no IPA cascade). DWC/overlay load-unload thunks + sub_020915F0/sub_02091634 + public const OverlayManagerTemplate gApp_MainMenu_SelectOption_NintendoWFCSetup (16B rodata). IPA-safe: frozen 2-proto unk_020915B0.h untouched; LoadOVY13/38 + UnloadOVY38 get local fwd decls. UnloadOVY13/sub_020915F0/sub_02091634 static. Single external const placed fine (cf ext-data-section-split which is multi-const data-only). bl-placeholder diffs benign."
     }
   ],
   "failed": [
@@ -93,7 +101,7 @@
   "in_progress": null,
   "stats": {
     "total_attempts": 65,
-    "total_matched": 6,
+    "total_matched": 7,
     "total_failed": 5
   }
 }

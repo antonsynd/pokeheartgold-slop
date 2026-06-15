@@ -1,24 +1,24 @@
 {
  "summary": {
-  "generated": "2026-06-15T17:25:45Z",
+  "generated": "2026-06-15T18:30:32Z",
   "by_status": {
    "matched": {
-    "files": 2,
-    "functions": 14,
-    "insn_lines": 95,
-    "text_bytes_est": 206
+    "files": 7,
+    "functions": 41,
+    "insn_lines": 357,
+    "text_bytes_est": 782
    },
    "blocked": {
-    "files": 3,
-    "functions": 94,
-    "insn_lines": 2672,
-    "text_bytes_est": 6214
+    "files": 5,
+    "functions": 96,
+    "insn_lines": 2713,
+    "text_bytes_est": 6296
    },
    "pending": {
-    "files": 298,
-    "functions": 20059,
-    "insn_lines": 951459,
-    "text_bytes_est": 2124098
+    "files": 291,
+    "functions": 20030,
+    "insn_lines": 951156,
+    "text_bytes_est": 2123440
    },
    "upstream": {
     "files": 368,
@@ -29,9 +29,9 @@
   },
   "function_totals": {
    "tracked": 20167,
-   "matched": 14,
+   "matched": 41,
    "partial_in_blocked": 50,
-   "pending": 20059
+   "pending": 20030
   },
   "blockers": [
    {
@@ -5564,8 +5564,8 @@
   },
   {
    "file": "asm/unk_02017FAC.s",
-   "lsf_kind": "asm",
-   "status": "pending",
+   "lsf_kind": "src",
+   "status": "matched",
    "lines": 97,
    "function_count": 4,
    "text_bytes_est": 132,
@@ -5593,30 +5593,31 @@
      "mode": "thumb",
      "insns": 16,
      "size_est": 32,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "sub_02017FCC",
      "mode": "thumb",
      "insns": 11,
      "size_est": 24,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "sub_02017FE4",
      "mode": "thumb",
      "insns": 13,
      "size_est": 28,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "LocationIsDiamondPearlCompatible",
      "mode": "thumb",
      "insns": 24,
      "size_est": 48,
-     "status": "pending"
+     "status": "matched"
     }
-   ]
+   ],
+   "source": "harness"
   },
   {
    "file": "asm/unk_02018000.s",
@@ -7607,7 +7608,7 @@
   {
    "file": "asm/unk_02026DE0.s",
    "lsf_kind": "asm",
-   "status": "pending",
+   "status": "blocked",
    "lines": 55,
    "function_count": 2,
    "text_bytes_est": 82,
@@ -7631,16 +7632,20 @@
      "mode": "thumb",
      "insns": 28,
      "size_est": 56,
-     "status": "pending"
+     "status": "blocked"
     },
     {
      "name": "sub_02026E18",
      "mode": "thumb",
      "insns": 13,
      "size_est": 26,
-     "status": "pending"
+     "status": "blocked"
     }
-   ]
+   ],
+   "blocked_reason": "sub_02026E18 matches; sub_02026DE0 not reproducible under MWCC -O4,p. asm keeps a late-materialized stack buffer (dead buf[1] store => address escapes) and reloads a->unk0C every iteration (no hoist). All source variants either scalarize the buffer (46B), hoist count-1 into a callee-saved reg + add a u16 truncation mask (early u8*q=buf, 24 diffs), or grow to 58B (u16 backing). Could not match asm's exact register allocation. Reverted to asm.",
+   "attempts": 4,
+   "blocker_id": null,
+   "kept_c": false
   },
   {
    "file": "asm/unk_02026E30.s",
@@ -9256,8 +9261,8 @@
   },
   {
    "file": "asm/unk_0202E41C.s",
-   "lsf_kind": "asm",
-   "status": "pending",
+   "lsf_kind": "src",
+   "status": "matched",
    "lines": 93,
    "function_count": 6,
    "text_bytes_est": 152,
@@ -9286,44 +9291,45 @@
      "mode": "thumb",
      "insns": 4,
      "size_est": 8,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "sub_0202E424",
      "mode": "thumb",
      "insns": 10,
      "size_est": 24,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "sub_0202E43C",
      "mode": "thumb",
      "insns": 24,
      "size_est": 58,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "sub_0202E474",
      "mode": "thumb",
      "insns": 10,
      "size_est": 26,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "sub_0202E48C",
      "mode": "thumb",
      "insns": 6,
      "size_est": 12,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "sub_0202E498",
      "mode": "thumb",
      "insns": 12,
      "size_est": 24,
-     "status": "pending"
+     "status": "matched"
     }
-   ]
+   ],
+   "source": "harness"
   },
   {
    "file": "asm/save_rankings.s",
@@ -10368,8 +10374,8 @@
   },
   {
    "file": "asm/unk_020318C8.s",
-   "lsf_kind": "asm",
-   "status": "pending",
+   "lsf_kind": "src",
+   "status": "matched",
    "lines": 60,
    "function_count": 7,
    "text_bytes_est": 70,
@@ -10401,51 +10407,52 @@
      "mode": "thumb",
      "insns": 3,
      "size_est": 6,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "sub_020318CC",
      "mode": "thumb",
      "insns": 12,
      "size_est": 28,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "sub_020318E8",
      "mode": "thumb",
      "insns": 6,
      "size_est": 12,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "sub_020318F4",
      "mode": "thumb",
      "insns": 3,
      "size_est": 6,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "sub_020318F8",
      "mode": "thumb",
      "insns": 3,
      "size_est": 6,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "sub_020318FC",
      "mode": "thumb",
      "insns": 3,
      "size_est": 6,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "sub_02031900",
      "mode": "thumb",
      "insns": 3,
      "size_est": 6,
-     "status": "pending"
+     "status": "matched"
     }
-   ]
+   ],
+   "source": "harness"
   },
   {
    "file": "asm/pokeathlon/pokeathlon_save.s",
@@ -30247,8 +30254,8 @@
   },
   {
    "file": "asm/unk_020915B0.s",
-   "lsf_kind": "asm",
-   "status": "pending",
+   "lsf_kind": "src",
+   "status": "matched",
    "lines": 118,
    "function_count": 8,
    "text_bytes_est": 168,
@@ -30284,58 +30291,59 @@
      "mode": "thumb",
      "insns": 7,
      "size_est": 14,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "UnloadDwcOverlay",
      "mode": "thumb",
      "insns": 7,
      "size_est": 14,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "LoadOVY13",
      "mode": "thumb",
      "insns": 7,
      "size_est": 14,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "UnloadOVY13",
      "mode": "thumb",
      "insns": 7,
      "size_est": 14,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "sub_020915F0",
      "mode": "thumb",
      "insns": 12,
      "size_est": 36,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "LoadOVY38",
      "mode": "thumb",
      "insns": 7,
      "size_est": 14,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "UnloadOVY38",
      "mode": "thumb",
      "insns": 7,
      "size_est": 14,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "sub_02091634",
      "mode": "thumb",
      "insns": 19,
      "size_est": 48,
-     "status": "pending"
+     "status": "matched"
     }
-   ]
+   ],
+   "source": "harness"
   },
   {
    "file": "asm/location_gmm_dat.s",
@@ -82560,8 +82568,8 @@
   },
   {
    "file": "asm/overlay_35.s",
-   "lsf_kind": "asm",
-   "status": "pending",
+   "lsf_kind": "src",
+   "status": "matched",
    "lines": 47,
    "function_count": 2,
    "text_bytes_est": 54,
@@ -82585,16 +82593,17 @@
      "mode": "thumb",
      "insns": 23,
      "size_est": 48,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ov35_02259DB8",
      "mode": "thumb",
      "insns": 3,
      "size_est": 6,
-     "status": "pending"
+     "status": "matched"
     }
-   ]
+   ],
+   "source": "harness"
   },
   {
    "file": "asm/overlay_36.s",
@@ -139779,7 +139788,7 @@
   {
    "file": "asm/battle_arcade_game_board_data.s",
    "lsf_kind": "asm",
-   "status": "pending",
+   "status": "blocked",
    "lines": 98,
    "function_count": 0,
    "text_bytes_est": 0,
@@ -139809,7 +139818,11 @@
     "ov84_0223F9F8"
    ],
    "exports": [],
-   "functions": []
+   "functions": [],
+   "blocked_reason": "MWCC splits external const into per-symbol .rodata sections; reordered at link -> OVY_84 SHA1 fail. Stays asm.",
+   "attempts": null,
+   "blocker_id": "ext-data-section-split",
+   "kept_c": false
   },
   {
    "file": "asm/overlay_85.s",
