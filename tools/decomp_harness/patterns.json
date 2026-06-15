@@ -250,6 +250,12 @@
       "title": "objdiff bl-placeholder diffs are benign; chiri pkg -- compare is authoritative",
       "id": "objdiff-bl-placeholder-falsepos",
       "body": "objdiff.py can report DIFF on a function whose disassembly is byte-identical except the UNRELOCATED bl placeholder bytes: the assembler (mwasmarm) emits f7ff fffe for an external call, MWCC emits f000 f800. objdiff sees these as real halfword diffs (and may not pair them as bl-reloc diffs), but the linker overwrites both with the same relocated offset, so the final ROM is identical. Always confirm with chiri pkg -- compare (full ROM SHA1) before rejecting OR accepting: compare is the only authoritative test. objdiff also MISSES section-level diffs (alignment/padding/rodata). Use objdiff --disasm to confirm a flagged diff is only bl placeholders, then trust compare."
+    },
+    {
+      "category": "matching-tricks",
+      "title": "Force a jump table: list ALL dense cases explicitly (sparse -> if-else)",
+      "id": "switch-jumptable-density",
+      "body": "When the asm uses a Thumb jump table (cmp rN,#max; bhi default; add rN,rN; add rN,pc; ldrh [rN,#6]; add pc,rN; then a halfword offset table), the C switch must cover the range 0..max DENSELY. Listing only the cases with bodies (e.g. case 1, case 4) plus default makes MWCC emit an if-else comparison chain instead (shorter, wrong). Fix: list EVERY case 0..max explicitly, giving the empty ones a bare break (case 0: break; case 2: break; ...). MWCC then sees a dense 0..max switch and emits the jump table. Body blocks are emitted in source order, so order the non-empty cases to match the asm block layout. Diagnose via objdiff --disasm (if-else cmp chain vs add pc,rN). Note: objdiff may report a spurious SIZE diff on a matching jump-table function because it disassembles the data-region table as code ($d/$t mapping symbols differ) — confirm with chiri pkg -- compare."
     }
   ]
 }

@@ -110,6 +110,10 @@ When a parameter (r0) is copied to a callee-saved register (`adds r4, r0, #0`), 
 - Inline functions from headers must match exactly as the compiler would expand them (e.g. MI_CpuClearFast/MI_CpuCopyFast wrappers inline into MIi_* tail calls — call the wrapper, not MIi_* directly).
 - Functions with a `_` prefix are often compiler-generated or SDK functions (`_s32_div_f`).
 
+### Force a jump table: list ALL dense cases explicitly (sparse -> if-else)  <!-- id: switch-jumptable-density -->
+
+When the asm uses a Thumb jump table (cmp rN,#max; bhi default; add rN,rN; add rN,pc; ldrh [rN,#6]; add pc,rN; then a halfword offset table), the C switch must cover the range 0..max DENSELY. Listing only the cases with bodies (e.g. case 1, case 4) plus default makes MWCC emit an if-else comparison chain instead (shorter, wrong). Fix: list EVERY case 0..max explicitly, giving the empty ones a bare break (case 0: break; case 2: break; ...). MWCC then sees a dense 0..max switch and emits the jump table. Body blocks are emitted in source order, so order the non-empty cases to match the asm block layout. Diagnose via objdiff --disasm (if-else cmp chain vs add pc,rN). Note: objdiff may report a spurious SIZE diff on a matching jump-table function because it disassembles the data-region table as code ($d/$t mapping symbols differ) — confirm with chiri pkg -- compare.
+
 ## IPA (-ipa file) Behavior
 
 ### Shared-header signatures are load-bearing across compilation units  <!-- id: ipa-shared-headers -->
