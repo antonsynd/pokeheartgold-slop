@@ -23,6 +23,14 @@
       "attempts": 1,
       "result": "matched",
       "note": "compare-verified. Jump-table fix (all cases 0-5) + IPA-safe local fwd-decl (overlay_35.h frozen for field_system.c). Re-done correctly after objdiff-bug revert."
+    },
+    {
+      "file": "asm/unk_020318C8.s",
+      "lines": 61,
+      "functions": 7,
+      "attempts": 1,
+      "result": "matched",
+      "note": "compare-verified. SAVE_UNK_32 save-chunk; dedicated header, save_arrays.c DECL_CHUNK_EX left in place (IPA-safe). bl-placeholder objdiff diffs benign."
     }
   ],
   "failed": [
@@ -60,7 +68,7 @@
   "in_progress": null,
   "stats": {
     "total_attempts": 61,
-    "total_matched": 3,
+    "total_matched": 4,
     "total_failed": 4
   }
 }
