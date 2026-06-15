@@ -63,6 +63,14 @@
       "attempts": 1,
       "result": "matched",
       "note": "compare-verified (full ROM SHA1 OK; system.o byte-identical => no IPA cascade). ROM-header/archive init (sub_02027010) + file-open/reset (sub_02027098). Faithful old C re-applied; FSArchive fat/fnt offsets 0x2C-0x38 confirmed, HW_* mmap constants + 0x160 size all match. IPA-safe: frozen 1-proto unk_02027010.h untouched; sub_02027098 local fwd decl. static const _020F6458=rom rodata. All objdiff diffs benign bl-placeholders."
+    },
+    {
+      "file": "asm/overlay_01_021FAC44.s",
+      "lines": 147,
+      "functions": 5,
+      "attempts": 2,
+      "result": "matched",
+      "note": "compare-verified (full ROM SHA1 OK). FIRST fresh from-scratch decomp this session (sonnet-drafted, opus-integrated). Scratch-buffer manager: static u8[4][0xF000] .bss (ov01_02209B70) split into 4 slices + optional 0x9000 heap buffers over UnkStruct_Ov01_021FAC44 {u8*slices[4]; u8*buffers[4]}. New dedicated header (no IPA risk; callers still asm). ov01_021FACF8 + bss array static. Match fix: declared loop var i BEFORE struct ptr s (assigned after) to flip r4/r5 (decl-order-regalloc). bl-placeholder diffs (incl local bl ov01_021FACF8) benign."
     }
   ],
   "failed": [
@@ -108,8 +116,8 @@
   ],
   "in_progress": null,
   "stats": {
-    "total_attempts": 65,
-    "total_matched": 8,
+    "total_attempts": 67,
+    "total_matched": 9,
     "total_failed": 5
   }
 }
