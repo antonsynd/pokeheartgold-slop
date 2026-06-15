@@ -103,6 +103,14 @@
       "attempts": 6,
       "result": "matched",
       "note": "compare-verified (full ROM SHA1 OK). opus-authored. HBlank scanline-callback manager (11 fns): ctor/dtor, enable/disable HBlank (Main_SetHBlankIntrCB), register-callback (find-free-slot), init, per-slot init, the HBlank handler that fires each slot callback, a no-op default cb, find-free, and a public thunk to the static per-slot init. Manager 0x1c = {u32 state; Slot slots[2]}, Slot 0xc = {u32 used; void* data; cb callback}. 6 public + 5 static. IPA-SAFE: existing include/overlay_01_021FB4C0.h is FROZEN (declares ov01_021FB514/4F4 as u32 a0) and included by 2 matched files (unk_02055BF0.c, field_take_photo.c) -> left untouched; put correct Manager*-typed API in NEW overlay_01_021FB4C0_internal.h that only the .c includes (ABI-compatible, callers do not recompile). 10/11 fns matched as clean C. ov01_021FB55C is NONMATCHING (asm): its byte-clear loop loads 0 twice (separate scratch fill reg + callee-saved i/state reg); MWCC constant-coalescing collapses the redundant zero in pure C (5 variations tried: block scope, named fill var, state=i tie, C99 for-decl) -> documented C kept under ifdef NONMATCHING."
+    },
+    {
+      "file": "asm/overlay_01_021F467C.s",
+      "lines": 88,
+      "functions": 2,
+      "attempts": 3,
+      "result": "matched",
+      "note": "compare-verified (full ROM SHA1 OK). opus-authored. Graphics scene setup/teardown pair (2 fns + 44B rodata template ov01_02206B94). ov01_021F467C: toggles BG1/2/3 planes off, GX_ResetBankForBG, allocs a 4-byte holder box, MI_CpuClear32 it, struct-copies the 44B template (UnkStruct 11xu32) to a stack local, fills unk20/unk24 from the 2 u32 args, *holder = ov01_021F4464(&template) (creates a SysTask+env), returns holder. ov01_021F46DC: ov01_021F44B4(*holder,1,0,1) (GX_SetGraphicsMode), GX_SetBankForBG, toggle BG1|2|3 on, Heap_FreeExplicit(*holder). Struct assignment from static const -> ldmia/stmia block copy. Match fixes: (1) reorder Heap_Alloc AFTER the toggles/GX_Reset (op order); (2) IPA/clang-format: existing frozen include/overlay_01_021F467C.h (u32 sigs, no global.h include, used by 4 matched files) gets force-sorted above global.h by clang-format main-header rule -> u32 parsed as implicit int -> redecl error. Fix: do NOT include the same-stem header; put prototypes in new overlay_01_021F467C_internal.h (includes global.h, different stem dodges main-header sort). Frozen header untouched -> callers do not recompile."
     }
   ],
   "failed": [
@@ -148,8 +156,8 @@
   ],
   "in_progress": null,
   "stats": {
-    "total_attempts": 71,
-    "total_matched": 13,
+    "total_attempts": 72,
+    "total_matched": 14,
     "total_failed": 5
   }
 }

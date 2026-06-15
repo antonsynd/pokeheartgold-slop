@@ -148,6 +148,10 @@ When a save-chunk struct lives in a SHARED header frozen to struct-only (no glob
 
 When a function must allocate/fill a struct that an EXTERNAL matched function takes by pointer (e.g. PokeathlonCourse_LaunchApp(.., PokeathlonCourseArgs*)), but the shared struct in its header is incomplete/placeholder (filler bytes, more-fields-to-discover) and is included by other already-matched files: do NOT edit the shared header to name the fields (recompiles those TUs -> IPA cascade risk). Instead define a fully-typed PRIVATE struct in your .c with the exact byte layout you need and cast to the real type only at the external call: PokeathlonCourse_LaunchApp(fs, (PokeathlonCourseArgs *)work->app). sizeof(private)==sizeof(real) so the alloc size literal matches; field offsets you control reproduce the exact ldrb/ldrh/strb. Zero shared-header change = zero IPA risk. Example: unk_02095DF4 sub_02095E30.
 
+### Frozen prototype header (u32 sigs, no global.h) also needs the _internal.h split  <!-- id: frozen-prototype-header-split -->
+
+Generalizes frozen-struct-header-split to plain PROTOTYPE headers. If include/<name>.h declares the module funcs (e.g. u32 ov01_xxx(u32,u32)) but does NOT include global.h (relies on callers including global.h first), and it is included by already-matched files: when YOU write src/<name>.c, clang-format IncludeBlocks=Regroup + main-header-first force the same-stem <name>.h to the very top, ABOVE global.h. u32 is then undefined while the header parses -> MWCC treats u32 as implicit int -> later types.h redeclares u32 as unsigned long -> error: identifier u32 redeclared / function has no prototype. Fix: do NOT include the same-stem header in the .c; create include/<name>_internal.h (different stem dodges the main-header sort, sorts AFTER global.h) that #includes global.h then declares the same prototypes; include THAT. Leave the frozen <name>.h untouched so the matched callers do not recompile. Example: overlay_01_021F467C.
+
 ## Data Sections
 
 ### Section ↔ C mapping  <!-- id: section-mapping -->

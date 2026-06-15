@@ -298,6 +298,12 @@
       "id": "redundant-double-zero-load-coalesce-wall",
       "title": "MWCC collapses a deliberately-redundant double zero-load; NONMATCHING after a couple tries",
       "body": "Some asm loads the SAME constant 0 into two registers (e.g. a byte-clear fill in caller-saved r1 + a separate i/state 0 in callee-saved r4), i.e. it is LESS optimal than necessary. Pure C re-converges: MWCC -O4 constant-coalesces the two zeros into one callee-saved register (the fill merges into i), producing one fewer movs -> a 2-byte SIZE diff. Source tricks that do NOT break the coalesce: block-scoping the clear, a named u8 fill var, tying state=i (manager->state = i; for(;i<2;i++)), C99 for-scoped i, do-while vs for. If you see a function that is identical except the asm has an extra movs #0 (redundant constant load) that your C optimizes away, do not burn many build cycles -- NONMATCHING that one function (asm static, keep C under ifdef NONMATCHING) and move on. Example: overlay_01_021FB4C0 ov01_021FB55C (struct byte-clear + slot-init)."
+    },
+    {
+      "category": "ipa",
+      "id": "frozen-prototype-header-split",
+      "title": "Frozen prototype header (u32 sigs, no global.h) also needs the _internal.h split",
+      "body": "Generalizes frozen-struct-header-split to plain PROTOTYPE headers. If include/<name>.h declares the module funcs (e.g. u32 ov01_xxx(u32,u32)) but does NOT include global.h (relies on callers including global.h first), and it is included by already-matched files: when YOU write src/<name>.c, clang-format IncludeBlocks=Regroup + main-header-first force the same-stem <name>.h to the very top, ABOVE global.h. u32 is then undefined while the header parses -> MWCC treats u32 as implicit int -> later types.h redeclares u32 as unsigned long -> error: identifier u32 redeclared / function has no prototype. Fix: do NOT include the same-stem header in the .c; create include/<name>_internal.h (different stem dodges the main-header sort, sorts AFTER global.h) that #includes global.h then declares the same prototypes; include THAT. Leave the frozen <name>.h untouched so the matched callers do not recompile. Example: overlay_01_021F467C."
     }
   ]
 }

@@ -1,5 +1,5 @@
 {
- "generated": "2026-06-15T20:15:01Z",
+ "generated": "2026-06-15T20:27:49Z",
  "weights": {
   "insn_line": 1.0,
   "unknown_callee": 40.0,
@@ -10,28 +10,6 @@
   "special_section": 500.0
  },
  "queue": [
-  {
-   "file": "asm/overlay_01_021F467C.s",
-   "score": 140.2,
-   "special_sections": [],
-   "functions": 2,
-   "insn_lines": 58,
-   "data_only": false,
-   "unknown_callees": [
-    "ov01_021F4464",
-    "ov01_021F44B4"
-   ],
-   "jumptable_words": 0,
-   "rodata_bytes": 44,
-   "arm_functions": 0,
-   "gated_by": [],
-   "cluster_partners": [
-    {
-     "file": "asm/overlay_01_021F4464.s",
-     "shared_symbols": 2
-    }
-   ]
-  },
   {
    "file": "asm/unk_02069660.s",
    "score": 141.0,
@@ -2529,6 +2507,41 @@
    ]
   },
   {
+   "file": "asm/overlay_116.s",
+   "score": 1046.6,
+   "special_sections": [],
+   "functions": 5,
+   "insn_lines": 375,
+   "data_only": false,
+   "unknown_callees": [
+    "BeginNormalPaletteFade",
+    "IsPaletteFadeFinished",
+    "ov01_021EFCDC",
+    "ov01_021EFCF8",
+    "ov01_021EFE34",
+    "ov01_021EFE44",
+    "ov01_021EFEC8",
+    "ov01_021EFF28",
+    "sub_0200FBF4"
+   ],
+   "jumptable_words": 0,
+   "rodata_bytes": 232,
+   "arm_functions": 0,
+   "gated_by": [
+    "ipa-shared-headers"
+   ],
+   "cluster_partners": [
+    {
+     "file": "asm/overlay_01_021EFB38.s",
+     "shared_symbols": 6
+    },
+    {
+     "file": "asm/unk_0200FA24.s",
+     "shared_symbols": 3
+    }
+   ]
+  },
+  {
    "file": "asm/overlay_01_021FF6B0.s",
    "score": 1064.2,
    "special_sections": [],
@@ -2854,47 +2867,6 @@
     },
     {
      "file": "asm/overlay_01_022053EC.s",
-     "shared_symbols": 2
-    }
-   ]
-  },
-  {
-   "file": "asm/overlay_116.s",
-   "score": 1126.6,
-   "special_sections": [],
-   "functions": 5,
-   "insn_lines": 375,
-   "data_only": false,
-   "unknown_callees": [
-    "BeginNormalPaletteFade",
-    "IsPaletteFadeFinished",
-    "ov01_021EFCDC",
-    "ov01_021EFCF8",
-    "ov01_021EFE34",
-    "ov01_021EFE44",
-    "ov01_021EFEC8",
-    "ov01_021EFF28",
-    "ov01_021F467C",
-    "ov01_021F46DC",
-    "sub_0200FBF4"
-   ],
-   "jumptable_words": 0,
-   "rodata_bytes": 232,
-   "arm_functions": 0,
-   "gated_by": [
-    "ipa-shared-headers"
-   ],
-   "cluster_partners": [
-    {
-     "file": "asm/overlay_01_021EFB38.s",
-     "shared_symbols": 6
-    },
-    {
-     "file": "asm/unk_0200FA24.s",
-     "shared_symbols": 3
-    },
-    {
-     "file": "asm/overlay_01_021F467C.s",
      "shared_symbols": 2
     }
    ]
