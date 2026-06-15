@@ -95,6 +95,14 @@
       "attempts": 1,
       "result": "matched",
       "note": "compare-verified (full ROM SHA1 OK). opus-authored, matched first build. Sprite resource set loader/unloader/factory for frontier graphics (4 fns + 208B rodata = 4x ManagedSpriteTemplate (0x34 each)). ov80_02239AF8 loads char/pltt/cell/anim res from open NARC; ov80_02239B7C unloads by id; ov80_02239BB8 = SpriteSystem_NewSprite + Sprite_TickFrame; ov80_02239BE8 = tail-call thunk to Sprite_DeleteAndFreeResources (simple forwarding -> ldr r3,=fn; bx r3). Hand-decoded the rodata into a typed static const ManagedSpriteTemplate[] initializer (resIdList[6] with -1 sentinels for unused MCEL/MANM, vram=NNS_G2D_VRAM_TYPE_2DMAIN). index: u16 in loader (read via ldrh from stack arg) vs u32 in B7C/BB8; both GF_ASSERT(index<4) gave unsigned bcc with no cast needed. New header, all callers still asm (no IPA risk). All diffs were bl placeholders."
+    },
+    {
+      "file": "asm/overlay_01_021FB4C0.s",
+      "lines": 195,
+      "functions": 11,
+      "attempts": 6,
+      "result": "matched",
+      "note": "compare-verified (full ROM SHA1 OK). opus-authored. HBlank scanline-callback manager (11 fns): ctor/dtor, enable/disable HBlank (Main_SetHBlankIntrCB), register-callback (find-free-slot), init, per-slot init, the HBlank handler that fires each slot callback, a no-op default cb, find-free, and a public thunk to the static per-slot init. Manager 0x1c = {u32 state; Slot slots[2]}, Slot 0xc = {u32 used; void* data; cb callback}. 6 public + 5 static. IPA-SAFE: existing include/overlay_01_021FB4C0.h is FROZEN (declares ov01_021FB514/4F4 as u32 a0) and included by 2 matched files (unk_02055BF0.c, field_take_photo.c) -> left untouched; put correct Manager*-typed API in NEW overlay_01_021FB4C0_internal.h that only the .c includes (ABI-compatible, callers do not recompile). 10/11 fns matched as clean C. ov01_021FB55C is NONMATCHING (asm): its byte-clear loop loads 0 twice (separate scratch fill reg + callee-saved i/state reg); MWCC constant-coalescing collapses the redundant zero in pure C (5 variations tried: block scope, named fill var, state=i tie, C99 for-decl) -> documented C kept under ifdef NONMATCHING."
     }
   ],
   "failed": [
@@ -140,8 +148,8 @@
   ],
   "in_progress": null,
   "stats": {
-    "total_attempts": 70,
-    "total_matched": 12,
+    "total_attempts": 71,
+    "total_matched": 13,
     "total_failed": 5
   }
 }

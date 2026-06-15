@@ -292,6 +292,12 @@
       "id": "u16-from-ldrh-unsigned-branch",
       "title": "A u16 value loaded via ldrh compares unsigned (bcc/blo) against a constant without a cast",
       "body": "When a function param/value is u16 and is read via ldrh (zero-extended), a bounds check like GF_ASSERT(index < 4) compiles to cmp + bcc (unsigned blo) WITHOUT needing an explicit (u32) cast — MWCC knows the ldrh-zero-extended value is non-negative and emits the unsigned branch. This is distinct from the signed-int-vs-u16 case (cast-unsigned-for-branch) where a value already widened to int needs an explicit (u32) cast to flip bge/blt to bhs/blo. Rule of thumb: keep the param u16 (matches the ldrh) and write the plain comparison; only add the (u32) cast when the value is int-typed. Example: overlay_80_02239AF8 ov80_02239AF8 (u16 index)."
+    },
+    {
+      "category": "nonmatching",
+      "id": "redundant-double-zero-load-coalesce-wall",
+      "title": "MWCC collapses a deliberately-redundant double zero-load; NONMATCHING after a couple tries",
+      "body": "Some asm loads the SAME constant 0 into two registers (e.g. a byte-clear fill in caller-saved r1 + a separate i/state 0 in callee-saved r4), i.e. it is LESS optimal than necessary. Pure C re-converges: MWCC -O4 constant-coalesces the two zeros into one callee-saved register (the fill merges into i), producing one fewer movs -> a 2-byte SIZE diff. Source tricks that do NOT break the coalesce: block-scoping the clear, a named u8 fill var, tying state=i (manager->state = i; for(;i<2;i++)), C99 for-scoped i, do-while vs for. If you see a function that is identical except the asm has an extra movs #0 (redundant constant load) that your C optimizes away, do not burn many build cycles -- NONMATCHING that one function (asm static, keep C under ifdef NONMATCHING) and move on. Example: overlay_01_021FB4C0 ov01_021FB55C (struct byte-clear + slot-init)."
     }
   ]
 }

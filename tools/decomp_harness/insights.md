@@ -222,6 +222,10 @@ When using `asm void FuncName(...)`:
 - `.balign` directives are NOT supported — remove them.
 - Wrap in `// clang-format off` / `// clang-format on`, and gate the C version with `#ifdef NONMATCHING`.
 
+### MWCC collapses a deliberately-redundant double zero-load; NONMATCHING after a couple tries  <!-- id: redundant-double-zero-load-coalesce-wall -->
+
+Some asm loads the SAME constant 0 into two registers (e.g. a byte-clear fill in caller-saved r1 + a separate i/state 0 in callee-saved r4), i.e. it is LESS optimal than necessary. Pure C re-converges: MWCC -O4 constant-coalesces the two zeros into one callee-saved register (the fill merges into i), producing one fewer movs -> a 2-byte SIZE diff. Source tricks that do NOT break the coalesce: block-scoping the clear, a named u8 fill var, tying state=i (manager->state = i; for(;i<2;i++)), C99 for-scoped i, do-while vs for. If you see a function that is identical except the asm has an extra movs #0 (redundant constant load) that your C optimizes away, do not burn many build cycles -- NONMATCHING that one function (asm static, keep C under ifdef NONMATCHING) and move on. Example: overlay_01_021FB4C0 ov01_021FB55C (struct byte-clear + slot-init).
+
 ## Tooling & Build Workflow
 
 ### objdiff.py usage and reliability  <!-- id: objdiff-usage -->
