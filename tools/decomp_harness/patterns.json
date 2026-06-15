@@ -244,6 +244,12 @@
       "title": "Raw pointer casts to magic hardware addresses match byte-for-byte",
       "id": "raw-addr-cast-match",
       "body": "For files touching fixed DS addresses (0x027FFxxx ROM-header/system-work region), *(u32 *)0xADDR (direct) gives ldr =0xADDR; ldr [r0]; *(u32 *)((u8 *)BASE + off) gives ldr =BASE (loaded once, reused); ldr [rN,#off]. The SAME address can appear both ways in one function (flag check *(u32*)0x027FF00C and header->gamecode at base 0x027FF000 +0xC) -> use both forms. Named HW_ consts (HW_ROM_HEADER_BUF, HW_CARD_ROM_HEADER, HW_CARD_ROM_HEADER_SIZE) match identically to raw literals. A stack struct of size 0xN (FSFile=0x48) gives sub sp,#0xN; read field via *(u32*)((u8*)&s+off)."
+    },
+    {
+      "category": "tooling",
+      "title": "objdiff bl-placeholder diffs are benign; chiri pkg -- compare is authoritative",
+      "id": "objdiff-bl-placeholder-falsepos",
+      "body": "objdiff.py can report DIFF on a function whose disassembly is byte-identical except the UNRELOCATED bl placeholder bytes: the assembler (mwasmarm) emits f7ff fffe for an external call, MWCC emits f000 f800. objdiff sees these as real halfword diffs (and may not pair them as bl-reloc diffs), but the linker overwrites both with the same relocated offset, so the final ROM is identical. Always confirm with chiri pkg -- compare (full ROM SHA1) before rejecting OR accepting: compare is the only authoritative test. objdiff also MISSES section-level diffs (alignment/padding/rodata). Use objdiff --disasm to confirm a flagged diff is only bl placeholders, then trust compare."
     }
   ]
 }
