@@ -7,3 +7,21 @@ if ! git clang-format --extensions c,cpp,h,hpp ; then
     echo "linting made changes to source files; aborting commit"
     exit 1
 fi
+
+# Check for duplicate function declarations in staged headers.
+# MWCC -W error rejects redeclarations (even K&R vs prototyped).
+if git diff --cached --name-only --diff-filter=ACM -- 'include/*.h' | grep -q .; then
+    if ! tools/decomp_harness/check_dup_decls.sh; then
+        exit 1
+    fi
+fi
+
+# Check for IPA cascade from header changes (requires a built tree).
+# Skipped if no build exists — run `chiri pkg -- build` first.
+if git diff --cached --name-only --diff-filter=M -- 'include/*.h' | grep -q .; then
+    if [ -d build/heartgold.us ]; then
+        if ! tools/decomp_harness/ipa_check.sh; then
+            exit 1
+        fi
+    fi
+fi
