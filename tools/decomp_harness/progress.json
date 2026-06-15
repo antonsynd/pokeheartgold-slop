@@ -41,12 +41,18 @@
       "attempts": 50,
       "result": "blocked",
       "reason": "IPA-blocked: header signature conflicts, IPA CSE caching, loop codegen. C file exists at src/unk_0200FA24.c but cannot byte-match due to MWCC -ipa file cross-function optimization."
+    },
+    {
+      "file": "asm/battle_arcade_game_board_data.s",
+      "result": "blocked",
+      "blocker_id": "ext-data-section-split",
+      "reason": "MWCC splits external const into per-symbol .rodata sections; reordered at link -> OVY_84 SHA1 fail. Stays asm."
     }
   ],
   "in_progress": null,
   "stats": {
     "total_attempts": 61,
     "total_matched": 2,
-    "total_failed": 3
+    "total_failed": 4
   }
 }
