@@ -1,12 +1,12 @@
 {
  "summary": {
-  "generated": "2026-06-15T01:03:26Z",
+  "generated": "2026-06-15T01:11:55Z",
   "by_status": {
    "matched": {
-    "files": 10,
-    "functions": 291,
-    "insn_lines": 10091,
-    "text_bytes_est": 22274
+    "files": 11,
+    "functions": 297,
+    "insn_lines": 10157,
+    "text_bytes_est": 22426
    },
    "blocked": {
     "files": 3,
@@ -15,10 +15,10 @@
     "text_bytes_est": 6214
    },
    "pending": {
-    "files": 290,
-    "functions": 19782,
-    "insn_lines": 941463,
-    "text_bytes_est": 2102030
+    "files": 289,
+    "functions": 19776,
+    "insn_lines": 941397,
+    "text_bytes_est": 2101878
    },
    "upstream": {
     "files": 368,
@@ -29,9 +29,9 @@
   },
   "function_totals": {
    "tracked": 20167,
-   "matched": 291,
+   "matched": 297,
    "partial_in_blocked": 50,
-   "pending": 19782
+   "pending": 19776
   },
   "blockers": [
    {
@@ -9261,8 +9261,8 @@
   },
   {
    "file": "asm/unk_0202E41C.s",
-   "lsf_kind": "asm",
-   "status": "pending",
+   "lsf_kind": "src",
+   "status": "matched",
    "lines": 93,
    "function_count": 6,
    "text_bytes_est": 152,
@@ -9291,44 +9291,45 @@
      "mode": "thumb",
      "insns": 4,
      "size_est": 8,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "sub_0202E424",
      "mode": "thumb",
      "insns": 10,
      "size_est": 24,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "sub_0202E43C",
      "mode": "thumb",
      "insns": 24,
      "size_est": 58,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "sub_0202E474",
      "mode": "thumb",
      "insns": 10,
      "size_est": 26,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "sub_0202E48C",
      "mode": "thumb",
      "insns": 6,
      "size_est": 12,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "sub_0202E498",
      "mode": "thumb",
      "insns": 12,
      "size_est": 24,
-     "status": "pending"
+     "status": "matched"
     }
-   ]
+   ],
+   "source": "harness"
   },
   {
    "file": "asm/save_rankings.s",

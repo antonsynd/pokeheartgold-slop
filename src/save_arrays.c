@@ -47,7 +47,6 @@
 
 DECL_CHUNK(Save_FashionData)
 DECL_CHUNK(Save_Frontier)
-DECL_CHUNK_EX(sub_0202E41C, sub_0202E424)
 DECL_CHUNK_EX(sub_0202C034, sub_0202C03C)
 DECL_CHUNK_EX(PokeathlonSave_FriendshipRecords_sizeof, PokeathlonSave_FriendshipRecords_Init)
 DECL_CHUNK_EX(sub_0203170C, sub_02031710)

@@ -60,6 +60,14 @@
       "attempts": 1,
       "result": "matched",
       "note": "sonnet-drafted; 4/4 functions + rodata match via objdiff. Met-location/mapsec DP-compat module; static const u16 _020F6280[3] table. Key: sub_02017FAC needs (u32)mapsec cast for unsigned bhs while loop counter stays signed; GF_ASSERT(type<MAPSECTYPE_MAX); constant materialization from named METLOC_ consts. Functions already declared in map_section.h (no new header). Full SHA1 blocked by sound02004A44-dup-decl."
+    },
+    {
+      "file": "asm/unk_0202E41C.s",
+      "lines": 93,
+      "functions": 6,
+      "attempts": 1,
+      "result": "matched",
+      "note": "sonnet-drafted; 6/6 functions + data sections match via objdiff. Save-substruct module (SAVE_UNK_23, struct UnkStruct_0202E474 0xBC8). 4 public (E41C/E424/E43C/E474) + 2 static (E48C/E498, fwd-declared). Removed DECL_CHUNK_EX(sub_0202E41C,sub_0202E424) from save_arrays.c (header already #included there); save_arrays 16/16 codegen-neutral. Full SHA1 blocked by sound02004A44-dup-decl."
     }
   ],
   "failed": [
@@ -90,8 +98,8 @@
   ],
   "in_progress": null,
   "stats": {
-    "total_attempts": 58,
-    "total_matched": 8,
+    "total_attempts": 59,
+    "total_matched": 9,
     "total_failed": 3
   }
 }

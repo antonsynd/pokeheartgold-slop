@@ -1,5 +1,5 @@
 {
- "generated": "2026-06-15T01:03:27Z",
+ "generated": "2026-06-15T01:11:55Z",
  "weights": {
   "insn_line": 1.0,
   "unknown_callee": 40.0,
@@ -10,20 +10,6 @@
   "special_section": 500.0
  },
  "queue": [
-  {
-   "file": "asm/unk_0202E41C.s",
-   "score": 66.0,
-   "special_sections": [],
-   "functions": 6,
-   "insn_lines": 66,
-   "data_only": false,
-   "unknown_callees": [],
-   "jumptable_words": 0,
-   "rodata_bytes": 0,
-   "arm_functions": 0,
-   "gated_by": [],
-   "cluster_partners": []
-  },
   {
    "file": "asm/unk_020915B0.s",
    "score": 73.8,
@@ -11821,7 +11807,7 @@
   },
   {
    "file": "asm/overlay_73.s",
-   "score": 11826.6,
+   "score": 11746.6,
    "special_sections": [],
    "functions": 210,
    "insn_lines": 8513,
@@ -11867,8 +11853,6 @@
     "sub_0202D7C0",
     "sub_0202D7F0",
     "sub_0202D8A4",
-    "sub_0202E43C",
-    "sub_0202E474",
     "sub_02033250",
     "sub_02034818",
     "sub_02034D8C",
