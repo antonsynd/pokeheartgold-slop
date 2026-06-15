@@ -39,6 +39,14 @@
       "attempts": 2,
       "result": "matched",
       "note": "compare-verified (chiri pkg -- compare OK, full ROM SHA1). Re-matched after objdiff-bug revert. IPA-safe: map_section.h already declared all 4 fns (unchanged). Match fix: in sub_02017FAC declared `int i=0;` BEFORE `const u16 *p=...;` to flip MWCC r2/r3 allocation (i->r2, p->r3) matching asm. Other diffs were benign bl-placeholders. static const _020F6280 table = internal linkage (no ext-data-section-split)."
+    },
+    {
+      "file": "asm/unk_0202E41C.s",
+      "lines": 93,
+      "functions": 6,
+      "attempts": 1,
+      "result": "matched",
+      "note": "compare-verified (full ROM SHA1 OK; save_arrays.o byte-identical => no IPA cascade). Save-chunk SAVE_UNK_23 init/clear module, struct UnkStruct_0202E474 (0xBC8). IPA-safe split header: shared include/unk_0202E41C.h frozen (struct-only, untouched), defining TU uses new self-sufficient include/unk_0202E41C_internal.h; save_arrays.c untouched (DECL_CHUNK_EX kept). 4 public fns get local fwd decls; sub_0202E48C/498 static. Mismatches were benign bl-placeholders."
     }
   ],
   "failed": [
@@ -85,7 +93,7 @@
   "in_progress": null,
   "stats": {
     "total_attempts": 65,
-    "total_matched": 5,
+    "total_matched": 6,
     "total_failed": 5
   }
 }

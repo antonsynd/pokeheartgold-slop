@@ -268,6 +268,12 @@
       "category": "codegen",
       "title": "Declaration order controls r2/r3 allocation for same-lifetime locals",
       "body": "When two locals share a live range and compete for low Thumb registers (r2/r3), MWCC -O4,p assigns the FIRST-DECLARED variable to the LOWER register. If objdiff shows two functions identical except a consistent r2<->r3 (or rN<->rM) swap, reorder the local declarations to flip the allocation. Example: unk_02017FAC sub_02017FAC needed int i=0 declared before const u16 *p=table so i->r2 (counter/return reg) and p->r3 (walked pointer), matching asm."
+    },
+    {
+      "id": "frozen-struct-header-split",
+      "category": "ipa",
+      "title": "Frozen struct-only shared header: use a self-sufficient _internal.h in the defining TU",
+      "body": "When a save-chunk struct lives in a SHARED header frozen to struct-only (no global.h, no prototypes) so save_arrays.c stays byte-matched, that header cannot serve as the defining .c file main header: clang-format (IncludeBlocks Regroup + main-header-first) forces the same-stem header to the very top, ahead of global.h (priority 2), so u8/u16 are undefined when the struct parses. Fix: create include/<name>_internal.h that #includes global.h then re-declares the identical struct, and include THAT in the .c (its different stem dodges the main-header rule, so global.h sorts first). Leave the frozen header and save_arrays.c (DECL_CHUNK_EX) untouched; give public fns local forward declarations. Verify save_arrays.o is byte-identical (cmp) to confirm no IPA cascade. Example: unk_0202E41C."
     }
   ]
 }

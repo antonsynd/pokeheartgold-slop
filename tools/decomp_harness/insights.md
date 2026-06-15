@@ -132,6 +132,10 @@ Making functions non-static does **not** stop `-ipa file` from optimizing across
 
 When a caller passes the same static-data address to a callee multiple times, MWCC may cache those addresses in callee-saved registers across calls, displacing other variables to the stack. The original binary may not do this if the original source structure prevented it (structure unknown). This is the blocking issue in unk_0200FA24 (BeginNormalPaletteFade calls sub_0200FE84 twice with identical pointer args).
 
+### Frozen struct-only shared header: use a self-sufficient _internal.h in the defining TU  <!-- id: frozen-struct-header-split -->
+
+When a save-chunk struct lives in a SHARED header frozen to struct-only (no global.h, no prototypes) so save_arrays.c stays byte-matched, that header cannot serve as the defining .c file main header: clang-format (IncludeBlocks Regroup + main-header-first) forces the same-stem header to the very top, ahead of global.h (priority 2), so u8/u16 are undefined when the struct parses. Fix: create include/<name>_internal.h that #includes global.h then re-declares the identical struct, and include THAT in the .c (its different stem dodges the main-header rule, so global.h sorts first). Leave the frozen header and save_arrays.c (DECL_CHUNK_EX) untouched; give public fns local forward declarations. Verify save_arrays.o is byte-identical (cmp) to confirm no IPA cascade. Example: unk_0202E41C.
+
 ## Data Sections
 
 ### Section ↔ C mapping  <!-- id: section-mapping -->
