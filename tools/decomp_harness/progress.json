@@ -119,6 +119,14 @@
       "attempts": 3,
       "result": "matched",
       "note": "compare-verified (full ROM SHA1 OK). sonnet-drafted, opus-integrated. 3D model/texture resource manager (9 fns, 0x14 struct). sub_02069660 standalone 0x14 byte-clear (MATCHED first try -- no competing zero, unlike the coalesce-wall case). sub_02069670 fills the struct: NNS_G3dGetMdlSet + NNS_G3dGetMdlByIdx (INLINE dict lookup, expands to the asm dict walk) + NNS_G3dGetTex. sub_020696C4 wraps GfGfxLoader_LoadFromOpenNarc (tricky 6-param register shuffle). sub_020696E8 binds the model. sub_02069700 SysTask callback. sub_02069714 creates the VBlank SysTask. sub_02069734 frees data. sub_02069744 releases NNS tex/pltt VRAM via the NNS_GfdDefaultFunc* GLOBAL FN-PTR VARIABLES (call through pointer). sub_02069784 teardown. Public: 6C4/714/784; rest static. IPA-safe: frozen unk_02069660.h (sub_02069784(UnkOv01_021FFECC_sub*)) + coarse blob struct UnkOv01_021FFECC_sub (overlay_01_021F1348.h) both untouched; used a fully-typed PRIVATE UnkStruct_02069660 (ABI-compatible 0x14), did NOT include the frozen header. Include fix: NNS leaf headers <nnsys/g3d/binres/...> dont pull their prereqs -> include via global.h only."
+    },
+    {
+      "file": "asm/unk_02092B04.s",
+      "lines": 104,
+      "functions": 3,
+      "attempts": 1,
+      "result": "matched",
+      "note": "compare-verified (full ROM SHA1 OK). opus-authored, matched first build. Field-system task-callback state machine (3 fns) for a bag-app-in-field task. sub_02092B04 (public TaskFunc) switches on env state byte at 0x272: 0x18 -> sub_02092B40 (waits for FieldSystem_ApplicationIsRunning; on exit writes sub_0207791C(bagView) to env->unk2A0->unk2, frees the BagView at env->unk4, loads field overlay, advances state), 0x19 -> sub_02092B7C (when sub_020505C8 ready: ov01_021E636C(1), TaskManager_Jump to ov03_02256E2C, state=0x1a). env->unk4 is a BagView*. No C caller (caller asm overlay_03.s) -> fresh header. Large opaque env modeled as a private padded struct (fields at 0x4/0x272/0x2A0); offsets 0x272 via literal pool, 0x2A0 via mov+lsl#4 (MWCC auto). Sparse switch (0x18/0x19) -> cmp/beq cascade."
     }
   ],
   "failed": [
@@ -164,8 +172,8 @@
   ],
   "in_progress": null,
   "stats": {
-    "total_attempts": 73,
-    "total_matched": 15,
+    "total_attempts": 74,
+    "total_matched": 16,
     "total_failed": 5
   }
 }
