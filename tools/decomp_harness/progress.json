@@ -55,6 +55,14 @@
       "attempts": 1,
       "result": "matched",
       "note": "compare-verified (full ROM SHA1 OK; overlay_44_0222CDAC.o byte-identical => no IPA cascade). DWC/overlay load-unload thunks + sub_020915F0/sub_02091634 + public const OverlayManagerTemplate gApp_MainMenu_SelectOption_NintendoWFCSetup (16B rodata). IPA-safe: frozen 2-proto unk_020915B0.h untouched; LoadOVY13/38 + UnloadOVY38 get local fwd decls. UnloadOVY13/sub_020915F0/sub_02091634 static. Single external const placed fine (cf ext-data-section-split which is multi-const data-only). bl-placeholder diffs benign."
+    },
+    {
+      "file": "asm/unk_02027010.s",
+      "lines": 96,
+      "functions": 2,
+      "attempts": 1,
+      "result": "matched",
+      "note": "compare-verified (full ROM SHA1 OK; system.o byte-identical => no IPA cascade). ROM-header/archive init (sub_02027010) + file-open/reset (sub_02027098). Faithful old C re-applied; FSArchive fat/fnt offsets 0x2C-0x38 confirmed, HW_* mmap constants + 0x160 size all match. IPA-safe: frozen 1-proto unk_02027010.h untouched; sub_02027098 local fwd decl. static const _020F6458=rom rodata. All objdiff diffs benign bl-placeholders."
     }
   ],
   "failed": [
@@ -101,7 +109,7 @@
   "in_progress": null,
   "stats": {
     "total_attempts": 65,
-    "total_matched": 7,
+    "total_matched": 8,
     "total_failed": 5
   }
 }
