@@ -111,6 +111,14 @@
       "attempts": 3,
       "result": "matched",
       "note": "compare-verified (full ROM SHA1 OK). opus-authored. Graphics scene setup/teardown pair (2 fns + 44B rodata template ov01_02206B94). ov01_021F467C: toggles BG1/2/3 planes off, GX_ResetBankForBG, allocs a 4-byte holder box, MI_CpuClear32 it, struct-copies the 44B template (UnkStruct 11xu32) to a stack local, fills unk20/unk24 from the 2 u32 args, *holder = ov01_021F4464(&template) (creates a SysTask+env), returns holder. ov01_021F46DC: ov01_021F44B4(*holder,1,0,1) (GX_SetGraphicsMode), GX_SetBankForBG, toggle BG1|2|3 on, Heap_FreeExplicit(*holder). Struct assignment from static const -> ldmia/stmia block copy. Match fixes: (1) reorder Heap_Alloc AFTER the toggles/GX_Reset (op order); (2) IPA/clang-format: existing frozen include/overlay_01_021F467C.h (u32 sigs, no global.h include, used by 4 matched files) gets force-sorted above global.h by clang-format main-header rule -> u32 parsed as implicit int -> redecl error. Fix: do NOT include the same-stem header; put prototypes in new overlay_01_021F467C_internal.h (includes global.h, different stem dodges main-header sort). Frozen header untouched -> callers do not recompile."
+    },
+    {
+      "file": "asm/unk_02069660.s",
+      "lines": 187,
+      "functions": 9,
+      "attempts": 3,
+      "result": "matched",
+      "note": "compare-verified (full ROM SHA1 OK). sonnet-drafted, opus-integrated. 3D model/texture resource manager (9 fns, 0x14 struct). sub_02069660 standalone 0x14 byte-clear (MATCHED first try -- no competing zero, unlike the coalesce-wall case). sub_02069670 fills the struct: NNS_G3dGetMdlSet + NNS_G3dGetMdlByIdx (INLINE dict lookup, expands to the asm dict walk) + NNS_G3dGetTex. sub_020696C4 wraps GfGfxLoader_LoadFromOpenNarc (tricky 6-param register shuffle). sub_020696E8 binds the model. sub_02069700 SysTask callback. sub_02069714 creates the VBlank SysTask. sub_02069734 frees data. sub_02069744 releases NNS tex/pltt VRAM via the NNS_GfdDefaultFunc* GLOBAL FN-PTR VARIABLES (call through pointer). sub_02069784 teardown. Public: 6C4/714/784; rest static. IPA-safe: frozen unk_02069660.h (sub_02069784(UnkOv01_021FFECC_sub*)) + coarse blob struct UnkOv01_021FFECC_sub (overlay_01_021F1348.h) both untouched; used a fully-typed PRIVATE UnkStruct_02069660 (ABI-compatible 0x14), did NOT include the frozen header. Include fix: NNS leaf headers <nnsys/g3d/binres/...> dont pull their prereqs -> include via global.h only."
     }
   ],
   "failed": [
@@ -156,8 +164,8 @@
   ],
   "in_progress": null,
   "stats": {
-    "total_attempts": 72,
-    "total_matched": 14,
+    "total_attempts": 73,
+    "total_matched": 15,
     "total_failed": 5
   }
 }

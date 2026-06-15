@@ -304,6 +304,12 @@
       "id": "frozen-prototype-header-split",
       "title": "Frozen prototype header (u32 sigs, no global.h) also needs the _internal.h split",
       "body": "Generalizes frozen-struct-header-split to plain PROTOTYPE headers. If include/<name>.h declares the module funcs (e.g. u32 ov01_xxx(u32,u32)) but does NOT include global.h (relies on callers including global.h first), and it is included by already-matched files: when YOU write src/<name>.c, clang-format IncludeBlocks=Regroup + main-header-first force the same-stem <name>.h to the very top, ABOVE global.h. u32 is then undefined while the header parses -> MWCC treats u32 as implicit int -> later types.h redeclares u32 as unsigned long -> error: identifier u32 redeclared / function has no prototype. Fix: do NOT include the same-stem header in the .c; create include/<name>_internal.h (different stem dodges the main-header sort, sorts AFTER global.h) that #includes global.h then declares the same prototypes; include THAT. Leave the frozen <name>.h untouched so the matched callers do not recompile. Example: overlay_01_021F467C."
+    },
+    {
+      "category": "tooling",
+      "id": "nns-leaf-headers-via-global",
+      "title": "Include NNS via global.h, never the leaf <nnsys/...> headers directly",
+      "body": "NNS SDK leaf headers (e.g. <nnsys/g3d/binres/res_struct_accessor.h>, res_struct_accessor_inline.h, kernel.h, gfd VramMan types) do NOT include their own prerequisite type headers -> including them directly gives MWCC declaration syntax error (NNSG3dResMdlSet etc. undefined). The umbrella nnsys/g3d.h includes them in the correct dependency order, and global.h -> nitro/nnsys pulls the whole chain. Fix: rely on #include global.h for ALL NNS types AND inline accessors (NNS_G3dGetMdlByIdx, NNS_G3dGetResDataByIdx live in res_struct_accessor_inline.h which g3d.h includes). Do not add explicit <nnsys/...> includes; clang-format also sorts angle-bracket system includes to the TOP (above global.h), compounding the undefined-type failure. Example: unk_02069660."
     }
   ]
 }
