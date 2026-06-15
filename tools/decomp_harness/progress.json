@@ -15,6 +15,14 @@
       "attempts": 1,
       "result": "matched",
       "note": "compare-verified (chiri pkg -- compare OK, full ROM SHA1). IPA-safe: dedicated header + local BOOL ov00_021E6D60 decl, overlay_00_thumb.h frozen. objdiff showed benign bl-placeholder diffs only."
+    },
+    {
+      "file": "asm/overlay_35.s",
+      "lines": 47,
+      "functions": 2,
+      "attempts": 1,
+      "result": "matched",
+      "note": "compare-verified. Jump-table fix (all cases 0-5) + IPA-safe local fwd-decl (overlay_35.h frozen for field_system.c). Re-done correctly after objdiff-bug revert."
     }
   ],
   "failed": [
@@ -52,7 +60,7 @@
   "in_progress": null,
   "stats": {
     "total_attempts": 61,
-    "total_matched": 2,
+    "total_matched": 3,
     "total_failed": 4
   }
 }
