@@ -19,6 +19,7 @@
 #include "save_frontier.h"
 #include "save_wifi_history.h"
 #include "sound.h"
+#include "sound_02004A44.h"
 #include "sys_flags.h"
 #include "system.h"
 #include "text.h"
@@ -42,14 +43,6 @@
 #include "unk_020915B0.h"
 #include "unk_020971F8.h"
 #include "vram_transfer_manager.h"
-
-u16 GF_GetCurrentPlayingBGM();
-u16 GF_GetVolumeBySeqNo();
-void GF_SetVolumeBySeqNo(u16 a0, u16 a1);
-void Sound_SetScene(int a0);
-void Sound_SetSceneAndPlayBGM(u8 scene, u16 seqNo, int unused);
-void GF_SndHandleSetInitialVolume(s32 a0, s32 a1);
-void sub_0200F478(void);
 
 static const u8 ov44_02235360[4] = { 0, 2, 4, 0 };
 static const u8 ov44_02235364[4] = { 8, 7, 5, 7 };
@@ -1066,7 +1059,7 @@ void ov44_0222ABB8(UnkStruct_ov44_0222AB24 *arg0) {
 }
 
 void ov44_0222ABDC(BgConfig *arg0, UnkStruct_ov44_0222AB24 *arg1, s32 arg2, u8 arg3, u8 arg4, s32 arg5, s32 arg6) {
-    CopyToBgTilemapRect(arg0, arg2, arg3, arg4, 2, 2, arg1->unk4->rawData, arg5 * 2, 0, arg1->unk4->screenWidth / 8, arg1->unk4->screenHeight / 8);
+    CopyToBgTilemapRect(arg0, arg2, arg3, arg4, 2, 2, arg1->unk4->rawData, (arg5 * 2), 0, arg1->unk4->screenWidth / 8, arg1->unk4->screenHeight / 8);
     s32 r0 = ov44_0222ADC4(arg2);
     BgTilemapRectChangePalette(arg0, arg2, arg3, arg4, 2, 2, r0 + arg6);
     ScheduleBgTilemapBufferTransfer(arg0, arg2);
@@ -2792,7 +2785,7 @@ s32 ov44_0222D8B0(UnkStruct_ov44_022319EC *arg0, s32 arg1) {
         RemoveWindow(&arg0->unk320);
     }
     u32 temp_r0 = listLen * 2;
-    AddWindowParameterized(arg0->unk15C, &arg0->unk320, 2, 16, 9, 15, temp_r0, 13, 59 - temp_r0);
+    AddWindowParameterized(arg0->unk15C, &arg0->unk320, 2, 16, 9, 15, temp_r0, 13, (59 - temp_r0));
     DrawFrameAndWindow1(&arg0->unk320, 1, 473, 11);
     listMenuTemplate.items = arg0->unk154;
     listMenuTemplate.window = &arg0->unk320;
@@ -2984,7 +2977,7 @@ s32 ov44_0222DD64(UnkStruct_ov44_022319EC *arg0, s32 arg1) {
             ListMenuItems_AppendFromMsgData(arg0->unk154, arg0->unk168, listMenuItems[i].strno, listMenuItems[i].value);
         }
     }
-    AddWindowParameterized(arg0->unk15C, &arg0->unk320, 2, 16, ((3 - sp1C) * 2) + 11, 15, sp1C * 2, 13, 59);
+    AddWindowParameterized(arg0->unk15C, &arg0->unk320, 2, 16, (((3 - sp1C) * 2) + 11), 15, (sp1C * 2), 13, 59);
     DrawFrameAndWindow1(&arg0->unk320, 1, 473, 11);
     listMenuTemplate.items = arg0->unk154; // itemPrintFunc
     listMenuTemplate.window = &arg0->unk320;
@@ -4282,7 +4275,7 @@ void ov44_022300C8(UnkStruct_ov44_022319EC *arg0) {
             var_r1 = 0;
         }
         if (sp18 == 1 || var_r1 == 1) {
-            ov44_02231148(arg0, r2 << 4, 6 * temp_ip, sp1C, var_r5);
+            ov44_02231148(arg0, r2 << 4, (6 * temp_ip), sp1C, var_r5);
             if (sp1C != 2) {
                 ov44_022312B8(arg0, &arg0->unkB1C.unk7C[i], temp_r4, var_r5, i);
                 ov44_02231344(arg0, &arg0->unkB1C.unkFC[i][0], temp_r4, var_r5, i);

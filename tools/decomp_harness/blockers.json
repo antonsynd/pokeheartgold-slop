@@ -8,22 +8,16 @@
       "fix_plan": "Identify the header-sharing cluster (sound.h / sound_chatot.h consumers), fix all signatures in one change, and re-match affected files in a single commit. Alternatively decompile the cluster as a group."
     },
     {
-      "id": "ipa-merge-cascade",
-      "description": "120 main.sha1 mismatches caused by IPA cascade from the upstream merge (7ec854e90). 24 headers differ between upstream's overlay_44 matching state and our fork's decomps. MWCC -ipa file cascades codegen changes when ANY declaration in a header changes — even adding new declarations for uncalled functions. Overlay_44 files were matched on upstream with a minimal header; our fork's files were matched with an extended header. Both can't use the same header without one side mismatching. A/B tested: confirmed even adding declarations (without changing existing prototypes) produces different .o files.",
-      "files_blocked": [],
-      "fix_plan": "Re-verify each upstream-origin file (overlay_44_0222CDAC, overlay_44_02235340, overlay_44_02232E9C, and other upstream files that include changed headers) with objdiff against the current header state. For files whose codegen changed: adjust C to re-match, or isolate them from the changed headers using local declarations (as done for sound_02004A44.h). The 24 changed headers between commits 8a245deef and 0ee6298b1 are the full scope."
-    },
-    {
       "id": "param-copyprop-cmp",
       "description": "MWCC copy-propagates parameter copies: 'adds r4, r0, #0; cmp r4, #N' at function entry cannot be produced from pure C (MWCC substitutes back to r0). Affected functions need the NONMATCHING inline-asm fallback.",
       "files_blocked": ["asm/unk_0200B150.s"],
       "fix_plan": "Use NONMATCHING inline asm for the single affected function (OamManager_Create) and re-land the file with the other 10/11 matched functions in C."
     },
     {
-      "id": "sound02004A44-dup-decl",
-      "description": "RESOLVED. The stale u16 GF_GetVolumeBySeqNo() was removed from sound_02004A44.h. unk_02004A44.c now uses sound_02004A44_internal.h (split header pattern). overlay_44 files use local declarations with upstream-compatible types (K&R empty-parens for GF_GetVolumeBySeqNo, void params for sub_0200F478). field_bgm.c excluded from the header (has own stale local declarations). Build compiles end-to-end; individual functions verified matching via objdiff.",
+      "id": "objdiff-false-positives",
+      "description": "RESOLVED. objdiff.py had a critical bug: the byte extraction regex did not match MWCC's ARM Thumb objdump format (packed hex like 'b418' vs expected space-separated 'b4 18'). It extracted 0 bytes for every function, so 0==0 always reported MATCH. 11 decomps accepted via objdiff were not actually byte-matching. Fixed in this session; all 11 non-matching decomps reverted to asm. 2 decomps that truly match (unk_0202DB34, battle_arcade_game_board_data) kept.",
       "files_blocked": [],
-      "fix_plan": "No further action needed for this blocker. The remaining 120 SHA1 mismatches are tracked under ipa-merge-cascade."
+      "fix_plan": "No further action. The objdiff tool is now fixed. Future decomps will be properly byte-verified."
     }
   ]
 }

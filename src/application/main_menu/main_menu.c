@@ -126,7 +126,7 @@ typedef struct MainMenuButton {
     MainMenuPrintFunction printFunction;
 } MainMenuButton;
 
-extern void sub_02005AF8(int a0);
+extern void sub_02005AF8(u32 a0);
 extern void sub_02027098(const char *path);
 extern void sub_02038D28(SaveData *saveData);
 extern void sub_02038D64(void);

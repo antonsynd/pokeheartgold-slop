@@ -126,10 +126,6 @@ struct UnkStruct_020FACDC {
 void ov01_021F3C0C(void *fieldSystem_unk9C, int a1, const VecFx32 *unk_FACDC, int a3, void *fieldSystem_unk54);
 BOOL ov01_022060B8(FieldSystem *fieldSystem, u8 a1, u8 a2);
 
-void ov01_021EFB64(int effect);
-void ov01_021EFC04(int effect);
-void ov01_021EFC94(int effect, FieldSystem *fieldSystem, int *result);
-
 struct BankTransactionWorkSub {
     u32 max;
     int selected;

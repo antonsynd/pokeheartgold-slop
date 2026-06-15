@@ -9,6 +9,7 @@
 #include "save_local_field_data.h"
 #include "save_vars_flags.h"
 #include "sound.h"
+#include "sound_02004A44.h"
 #include "sys_flags.h"
 #include "trainer_data.h"
 
@@ -22,7 +23,6 @@ void GF_NowStartMusicId(int, int, int, int, void *);
 void Sound_SetFieldBGM(u16);
 void sub_02005CF4(BOOL);
 BOOL sub_02004EB4(u16);
-u16 GF_GetCurrentPlayingBGM();
 
 // clang-format off
 // Class, Eyes meet theme

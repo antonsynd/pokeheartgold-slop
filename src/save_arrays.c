@@ -31,10 +31,8 @@
 #include "save_trainer_house.h"
 #include "save_vars_flags.h"
 #include "save_wifi_history.h"
-#include "unk_0202DB34.h"
 #include "unk_0202E41C.h"
 #include "unk_02030A98.h"
-#include "unk_020318C8.h"
 
 // These macros are temporary. As the respective sources
 // are decompiled, the calls should be phased out.
@@ -47,9 +45,12 @@
 
 DECL_CHUNK(Save_FashionData)
 DECL_CHUNK(Save_Frontier)
+DECL_CHUNK_EX(sub_0202DB40, sub_0202DB44)
+DECL_CHUNK_EX(sub_0202E41C, sub_0202E424)
 DECL_CHUNK_EX(sub_0202C034, sub_0202C03C)
 DECL_CHUNK_EX(PokeathlonSave_FriendshipRecords_sizeof, PokeathlonSave_FriendshipRecords_Init)
 DECL_CHUNK_EX(sub_0203170C, sub_02031710)
+DECL_CHUNK_EX(sub_020318C8, sub_020318CC)
 DECL_CHUNK(PokeathlonSave)
 DECL_CHUNK(Save_ApricornBox)
 

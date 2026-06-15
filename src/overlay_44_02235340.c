@@ -16,6 +16,7 @@
 #include "overlay_42.h"
 #include "overlay_44.h"
 #include "overlay_manager.h"
+#include "sound_02004A44.h"
 #include "sprite.h"
 #include "text.h"
 #include "unk_02005D10.h"
@@ -29,10 +30,6 @@
 #include "unk_0203A3B0.h"
 #include "unk_020971F8.h"
 #include "vram_transfer_manager.h"
-
-u16 GF_GetCurrentPlayingBGM();
-void sub_02005448(int seqNo);
-void GF_SndHandleSetInitialVolume(s32 a0, s32 a1);
 
 // const u8 ov44_02236458[4] = {0x08, 0x00, 0x04, 0x0C};
 // const WindowTemplate ov44_0223645C = {2, 25, 13, 5, 4, 1, 57};
@@ -738,8 +735,8 @@ s32 ov44_02233F20(UnkStruct_ov44_02235340 *arg0) {
 
 void ov44_02233F3C(UnkStruct_ov44_02235340 *arg0) {
     if (ov44_02233EF8(arg0) != 0) {
-        int bgm = GF_GetCurrentPlayingBGM();
-        sub_02005448(bgm);
+        GF_GetCurrentPlayingBGM();
+        sub_02005448();
     }
 }
 

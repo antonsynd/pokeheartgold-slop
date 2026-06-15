@@ -19,7 +19,7 @@ Static main
     Object src/palette.o
     Object src/sound.o
     Object src/sound_radio_sys.o
-    Object src/unk_02004A44.o
+    Object asm/unk_02004A44.o
     Object asm/unk_02005D10.o
     Object src/sound_chatot.o
     Object src/poke_overlay.o
@@ -39,9 +39,9 @@ Static main
     Object src/unk_0200CE7C.o
     Object src/sprite_system.o
     Object src/sys_task_api.o
-    Object src/render_window.o
+    Object asm/render_window.o
     Object asm/unk_0200FA24.o
-    Object src/unk_0201010C.o
+    Object asm/unk_0201010C.o
     Object asm/unk_02012DD8.o
     Object asm/unk_02013534.o
     Object src/unk_02013FDC.o
@@ -55,7 +55,7 @@ Static main
     Object asm/unk_020163E0.o
     Object src/yes_no_prompt.o
     Object asm/unk_02016EDC.o
-    Object src/unk_02017FAC.o
+    Object asm/unk_02017FAC.o
     Object asm/unk_02018000.o
     Object src/unk_02018380.o
     Object src/menu_input_state.o
@@ -93,11 +93,11 @@ Static main
     Object src/font_data.o
     Object src/pm_string.o
     Object src/touch_hitbox_controller.o
-    Object src/unk_02026DE0.o
+    Object asm/unk_02026DE0.o
     Object src/unk_02026E30.o
     Object src/unk_02026E84.o
     Object src/gf_3d_vramman.o
-    Object src/unk_02027010.o
+    Object asm/unk_02027010.o
     Object src/save_arrays.o
     Object src/save.o
     Object src/sav_system_info.o
@@ -128,7 +128,7 @@ Static main
     Object src/unk_0202DB34.o
     Object src/mystery_gift.o
     Object src/hall_of_fame.o
-    Object src/unk_0202E41C.o
+    Object asm/unk_0202E41C.o
     Object src/save_rankings.o
     Object src/palPark_migration.o
     Object src/update_dex_received.o
@@ -140,7 +140,7 @@ Static main
     Object asm/unk_0202FBCC.o
     Object asm/unk_02030A98.o
     Object src/unk_0203170C.o
-    Object src/unk_020318C8.o
+    Object asm/unk_020318C8.o
     Object src/pokeathlon/pokeathlon_save.o
     Object asm/unk_02031B0C.o
     Object src/pokewalker.o
@@ -205,7 +205,7 @@ Static main
     Object asm/unk_02054648.o
     Object src/unk_02054E00.o
     Object src/field_bgm.o
-    Object src/unk_020551B8.o
+    Object asm/unk_020551B8.o
     Object asm/unk_02055244.o
     Object src/unk_02055418.o
     Object src/catching_show.o
@@ -305,7 +305,7 @@ Static main
     Object src/unk_020912AC.o
     Object src/dex_mon_measures.o
     Object src/unk_02091564.o
-    Object src/unk_020915B0.o
+    Object asm/unk_020915B0.o
     Object src/location_gmm_dat.o
     Object src/move_relearner.o
     Object asm/unk_02091880.o
@@ -766,7 +766,7 @@ Overlay OVY_34
 Overlay OVY_35
 {
     After npc_trade
-    Object src/overlay_35.o
+    Object asm/overlay_35.o
 }
 Overlay OVY_36
 {
@@ -1059,7 +1059,7 @@ Overlay OVY_84
 {
     After OVY_80
     Object src/battle_arcade_game_board.o
-    Object src/battle_arcade_game_board_data.o
+    Object asm/battle_arcade_game_board_data.o
 }
 Overlay OVY_85
 {

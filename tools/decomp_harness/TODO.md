@@ -16,11 +16,3 @@ The filesystem build invokes Wine (mwasmarm.exe) hundreds of times. Transient Wi
 
 ### Current workaround
 `./tools/decomp_harness/recomp.sh` kills stale processes and cleans corrupted .d files.
-
-## unk_0201010C rodata ordering
-
-The `static const` arrays in `src/unk_0201010C.c` need reordering to match the asm's `.rodata` section layout. All 127 functions byte-match but the ROM SHA-1 fails due to rodata order.
-
-## Pre-existing prototype conflicts
-
-5 files have local declarations conflicting with headers from prior decomps (unk_02004A44, render_window). Fixes are staged in working tree — need to commit alongside the rodata fix once ROM SHA-1 passes.

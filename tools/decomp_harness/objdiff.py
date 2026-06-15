@@ -54,6 +54,13 @@ def get_functions(objfile):
             continue
 
         instr_match = re.match(r"^\s+[0-9a-f]+:\s+((?:[0-9a-f]{2} )+)", line)
+        if not instr_match:
+            instr_match = re.match(r"^\s+[0-9a-f]+:\s+([0-9a-f]{4}(?:\s+[0-9a-f]{4})*)\s+\t", line)
+            if instr_match and current_fn:
+                hex_str = instr_match.group(1).strip()
+                for word in hex_str.split():
+                    current_bytes.extend(int(word[i:i+2], 16) for i in range(0, len(word), 2))
+                continue
         if instr_match and current_fn:
             hex_str = instr_match.group(1).strip()
             current_bytes.extend(int(b, 16) for b in hex_str.split())
