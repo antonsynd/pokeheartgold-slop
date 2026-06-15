@@ -71,6 +71,22 @@
       "attempts": 2,
       "result": "matched",
       "note": "compare-verified (full ROM SHA1 OK). FIRST fresh from-scratch decomp this session (sonnet-drafted, opus-integrated). Scratch-buffer manager: static u8[4][0xF000] .bss (ov01_02209B70) split into 4 slices + optional 0x9000 heap buffers over UnkStruct_Ov01_021FAC44 {u8*slices[4]; u8*buffers[4]}. New dedicated header (no IPA risk; callers still asm). ov01_021FACF8 + bss array static. Match fix: declared loop var i BEFORE struct ptr s (assigned after) to flip r4/r5 (decl-order-regalloc). bl-placeholder diffs (incl local bl ov01_021FACF8) benign."
+    },
+    {
+      "file": "asm/overlay_01_021EA6C4.s",
+      "lines": 154,
+      "functions": 6,
+      "attempts": 2,
+      "result": "matched",
+      "note": "compare-verified (full ROM SHA1 OK). sonnet-drafted, opus-integrated. FSFile-backed two-array loader: handle UnkStruct_Ov01_021EA6C4 {sub*arrayA; sub*arrayB} (8 bytes), sub={u16 unk0; u16 unk2}. ov01_021EA73C reads two u16 counts then alloc+reads both arrays. Match fix: introduced u32 sizeA/sizeB locals (count*4) so MWCC holds them in callee-saved r6/r4 across the Heap_Alloc/FS_ReadFile calls instead of reloading from stack (asm was 164B, naive C 170B). counts header struct {u16 b; u16 a} so first read targets .a (+2), second .b (+0). New dedicated header (callers still asm, no IPA risk). bl-placeholder diffs on 724/73C/7E0 benign."
+    },
+    {
+      "file": "asm/unk_02095DF4.s",
+      "lines": 143,
+      "functions": 2,
+      "attempts": 1,
+      "result": "matched",
+      "note": "compare-verified (full ROM SHA1 OK). opus-authored (full analysis, no draft round-trip needed). Field-system task-callback state machine (task-callback-pattern): sub_02095DF4 allocs 0x20 env via Heap_AllocAtEnd(HEAP_ID_FIELD2), fills from 8 args, TaskManager_Call(fieldSystem->taskman, callback, env). Callback sub_02095E30 (static, not in .public) = 4-case dense jump-table state machine launching PokeathlonCourse app. Frozen prototype in existing include/unk_02095DF4.h (u8 a1/a2/a3, u16* a4-a7) kept verbatim (scrcmd_c.c line 99 compiled against it). IPA-safe: env struct + app-args struct both PRIVATE to .c (cast to PokeathlonCourseArgs* at LaunchApp) since shared PokeathlonCourseArgs in pokeathlon.h is incomplete (more-fields-to-discover) and used by matched launch_application.c. u8 params NOT narrowed at entry (MWCC trusts caller). objdiff SIZE 192-vs-200 on callback = known jump-table data-region false-positive; bytes identical. Matched first build."
     }
   ],
   "failed": [
@@ -116,8 +132,8 @@
   ],
   "in_progress": null,
   "stats": {
-    "total_attempts": 67,
-    "total_matched": 9,
+    "total_attempts": 69,
+    "total_matched": 11,
     "total_failed": 5
   }
 }

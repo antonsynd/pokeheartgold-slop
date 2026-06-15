@@ -118,6 +118,10 @@ When a parameter (r0) is copied to a callee-saved register (`adds r4, r0, #0`), 
 
 When the asm uses a Thumb jump table (cmp rN,#max; bhi default; add rN,rN; add rN,pc; ldrh [rN,#6]; add pc,rN; then a halfword offset table), the C switch must cover the range 0..max DENSELY. Listing only the cases with bodies (e.g. case 1, case 4) plus default makes MWCC emit an if-else comparison chain instead (shorter, wrong). Fix: list EVERY case 0..max explicitly, giving the empty ones a bare break (case 0: break; case 2: break; ...). MWCC then sees a dense 0..max switch and emits the jump table. Body blocks are emitted in source order, so order the non-empty cases to match the asm block layout. Diagnose via objdiff --disasm (if-else cmp chain vs add pc,rN). Note: objdiff may report a spurious SIZE diff on a matching jump-table function because it disassembles the data-region table as code ($d/$t mapping symbols differ) — confirm with chiri pkg -- compare.
 
+### Hoist a reused computed size into a local so it lives in a callee-saved register  <!-- id: hoist-size-local-callee-saved -->
+
+When the asm computes a value once (e.g. count*4 via a single lsls) and keeps it in a callee-saved register (r4-r7) across multiple calls that reuse it (Heap_Alloc size AND FS_ReadFile len), the source declared an explicit local for it. Recomputing inline (header.a*4 written at each Heap_Alloc/FS_ReadFile site) makes MWCC reload+recompute each time -> function grows (asm 164B, naive C 170B) and the value never occupies a persistent callee-saved reg. Fix: u32 sizeA = header.a*4; pass sizeA to both the alloc and the read. Diagnose via objdiff size diff + extra ldrh/lsls before each use. Reg pick (r6 vs r4) follows usual decl-order/param-reuse: a dead param register (path in r4) is reused for the later-born size local. Example: overlay_01_021EA6C4 ov01_021EA73C.
+
 ## IPA (-ipa file) Behavior
 
 ### Shared-header signatures are load-bearing across compilation units  <!-- id: ipa-shared-headers -->
@@ -135,6 +139,10 @@ When a caller passes the same static-data address to a callee multiple times, MW
 ### Frozen struct-only shared header: use a self-sufficient _internal.h in the defining TU  <!-- id: frozen-struct-header-split -->
 
 When a save-chunk struct lives in a SHARED header frozen to struct-only (no global.h, no prototypes) so save_arrays.c stays byte-matched, that header cannot serve as the defining .c file main header: clang-format (IncludeBlocks Regroup + main-header-first) forces the same-stem header to the very top, ahead of global.h (priority 2), so u8/u16 are undefined when the struct parses. Fix: create include/<name>_internal.h that #includes global.h then re-declares the identical struct, and include THAT in the .c (its different stem dodges the main-header rule, so global.h sorts first). Leave the frozen header and save_arrays.c (DECL_CHUNK_EX) untouched; give public fns local forward declarations. Verify save_arrays.o is byte-identical (cmp) to confirm no IPA cascade. Example: unk_0202E41C.
+
+### Use a private struct + cast when a shared param struct is incomplete (IPA-safe)  <!-- id: private-struct-for-incomplete-shared-type -->
+
+When a function must allocate/fill a struct that an EXTERNAL matched function takes by pointer (e.g. PokeathlonCourse_LaunchApp(.., PokeathlonCourseArgs*)), but the shared struct in its header is incomplete/placeholder (filler bytes, more-fields-to-discover) and is included by other already-matched files: do NOT edit the shared header to name the fields (recompiles those TUs -> IPA cascade risk). Instead define a fully-typed PRIVATE struct in your .c with the exact byte layout you need and cast to the real type only at the external call: PokeathlonCourse_LaunchApp(fs, (PokeathlonCourseArgs *)work->app). sizeof(private)==sizeof(real) so the alloc size literal matches; field offsets you control reproduce the exact ldrb/ldrh/strb. Zero shared-header change = zero IPA risk. Example: unk_02095DF4 sub_02095E30.
 
 ## Data Sections
 
