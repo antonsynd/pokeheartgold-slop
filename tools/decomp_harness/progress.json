@@ -287,6 +287,14 @@
       "attempts": 1,
       "result": "matched",
       "note": "sonnet-drafted; 14/14 fns match, chiri pkg -- compare full ROM SHA1 OK. FrontierSystem module (companion to frontier.s). Real struct is 0xbc but frontier_system.h defines an INCOMPLETE frozen FrontierSystem (callers frontier.c/frontier_script_context.c) -> defined full struct LOCALLY as FrontierSystemWork; GetFrontierMap keeps the frozen FrontierSystem* + tail-calls sub_0209680C. 2nd struct FrontierScriptContext (0x90) from its header. ov80_0222ACA0/02239C54/0223B9CC/gFrontierCommandTable asm-only -> extern. KEY FIX: the two u16[8] copy loops (ov80_0222AAD8/AAF8) need an UNSIGNED counter (u32 i=8; do{}while(--i)) to emit subs;bne \u2014 a signed int triggers MWCC range-opt -> hoisted decrement + cmp;bgt. AAF8 also needed src/dst decl order swapped."
+    },
+    {
+      "file": "asm/overlay_01_021FB04C.s",
+      "lines": 451,
+      "functions": 16,
+      "attempts": 3,
+      "result": "matched",
+      "note": "hand-written (Opus); 16/16 fns match, chiri pkg -- compare full ROM SHA1 OK. Async NARC graphics-archive loader in the overlay_01 021FB module (callers still in asm/overlay_01_021F4704.s, so new header is IPA-safe). 3 structs in a new overlay_01_021FB04C_internal.h: UnkStruct_Ov01_021FB04C (0x20 output, 6 buf ptrs + ready flag@0x18 + count@0x1c), _Header (0x18, six u32 counts read 2 bytes each into u32 slots), UnkStruct_Ov01_021FB174 (0x88 SysTask work, embedded header@0x4c). 9 static fns (04C/0B0/110-164/174) + 7 public (254/270/2E8/2F4/308/354/360). ov01_021FB174 is a 3-state SysTask callback (switch on u8 state -> compare-chain dispatch + shared tail). ov01_021FB0B0 offset accumulator is signed int (final bound check emits `ble` not `bls`); *12 -> muls. KEY FIX: ov01_021FB04C discarded 4-byte header read needs `u32 magic[2]` (>4 bytes) to force `sub sp,#8` \u2014 a u32/u8[4] coalesces into the alignment push slot (see force-frame-slot-oversized-discarded-local). objdiff -10 section delta is a red herring (MWCC emits one .text section per function; linker re-adds the .balign4 padding)."
     }
   ],
   "failed": [
@@ -402,8 +410,8 @@
   ],
   "in_progress": null,
   "stats": {
-    "total_attempts": 99,
-    "total_matched": 36,
+    "total_attempts": 102,
+    "total_matched": 37,
     "total_failed": 11
   }
 }
