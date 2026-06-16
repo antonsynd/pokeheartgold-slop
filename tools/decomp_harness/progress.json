@@ -231,6 +231,14 @@
       "attempts": 2,
       "result": "matched",
       "note": "sonnet-drafted. Palette-flicker/fade SysTask module (3 public: sub_020163E0 ctor, sub_0201649C state-setter, sub_020164C4 destroy; 6 static incl the SysTask callback sub_020164D0 (4-case jump table) + flicker copy sub_02016548 + 4 load callbacks). Opaque struct UnkStruct_020163E0 (0x50, defined in .c): SysTask*@0, callback fnptr@4, PaletteData*@8, u16 unkC[16]@0xc (bufA), u16 unk2C[16]@0x2c (bufB), u8 screen@0x4c, num@0x4d, state@0x4e, counter@0x4f. Full-ROM chiri compare OK. ctor passes heapID THROUGH to CreateSysTaskAndEnvironment (asm doesn't set r3). src byte-offset: offset=num<<5, copy via (u16*)((u8*)src+offset). Fixes: PaletteBufferId casts (0/1); sub_02016548 loop counter u32 i for unsigned bcc compares. sub_020164D0 jump-table-data confuses objdiff SIZE (byte-identical, compare passes). Load callbacks: BG_LoadPlttData(0|4, buf, 0x20, num<<5); PaletteData_LoadPalette(unk8, buf, 0|1, num<<4, 0x20). flicker mask = 0x1e<<0xa."
+    },
+    {
+      "file": "asm/overlay_80_02239BF0.s",
+      "lines": 231,
+      "functions": 4,
+      "attempts": 1,
+      "result": "matched",
+      "note": "sonnet-drafted (Opus-orchestrated). Frontier-map animation state-machine. 2 public (ov80_02239BF0 init/copy-array, ov80_02239C54 per-entry tick loop) + 2 static (ov80_02239C28 dispatch via rodata fn-ptr table ov80_0223DB24={NULL,ov80_02239C80}, ov80_02239C80 nested-jump-table state advance). Local struct AnimEntry(0x3c) with nested AnimSub at +0x26 {u8 unk0; u8 mainState; s16 data[7]}; the s16 array overlaps the 'named' state fields (subState=data[0], timer=data[2], etc) and is indexed data[mainState+2]. KEY: did NOT include frontier/frontier_map.h (declares ov80_02239938 returning 8-byte UnkStruct_02239938) \u2014 used a LOCAL extern returning AnimEntry* (0x3c) to resolve the declared-vs-real type mismatch without IPA cascade. C80 tail required hoisting the new-state value to a function-scope temp and doing the shared store (st->mainState=newState) AFTER the switch (cases break; trailing return 0) so MWCC emits ONE shared store+return-0 fall-off block reached by branches, with the cold default:return 1 placed just before it \u2014 matching MWCC's block layout. C54 needed pointer-walk (for(;;i++,arr++)) not arr[i] to get arr=r4/i=r5 register assignment."
     }
   ],
   "failed": [
@@ -294,8 +302,8 @@
   ],
   "in_progress": null,
   "stats": {
-    "total_attempts": 87,
-    "total_matched": 29,
+    "total_attempts": 88,
+    "total_matched": 30,
     "total_failed": 5
   }
 }

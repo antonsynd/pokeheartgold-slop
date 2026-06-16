@@ -5220,16 +5220,5 @@
       "env/cfg struct ~0x38 bytes: [0]=saved GXVRamLCDC bank (from GX_GetBankForLCDC), [4]=mode(int, switch val), [8]=GXBGMode?, [0xc]=GXBG0As?, [0x10..0x28]=DISPCAPCNT field values (ints), [0x30]=active flag, [0x34]=SysTask*. The 0x2c-byte copy fills [4..0x2f] from arg0."
     ],
     "sweep_output": null
-  },
-  "asm/overlay_80_02239BF0.s": {
-    "notes": "Frontier-map animation state-machine, 4 fns, NO header (asm callers only -> define structs + prototypes locally). rodata ov80_0223DB24 = fn-ptr dispatch table `void *ov80_0223DB24[2] = {NULL, ov80_02239C80}` (asm: .byte 0,0,0,0; .word ov80_02239C80). ov80_02239BF0(?,?,arg2,arg3,[sp+0x18]=count): obj=ov80_02239938(...); MI_CpuFill8(obj+0x26,0,0x10); obj[0x26]=arg2(u8); copy count s16 from arg3 to obj+0x28 (strh loop). ov80_02239C28(a0, obj): fn=ov80_0223DB24[obj->unk26]; if(fn){ if(fn(a0,obj)==1) MI_CpuFill8(obj+0x26,0,0x10); }. ov80_02239C54(a0): arr=sub_02096868(a0) (=a0+0x84); for(i=0;i<0x20;i++,obj+=0x3c){ if(obj->[0]!=0 && obj->[0x38]==0) ov80_02239C28(a0,obj); }. ov80_02239C80(a0, obj)->int: the dispatch fn; if(obj->[6]>0){obj[6]--; return 0;} then TWO NESTED jump tables (outer on obj->unk1 (u8) cases0-3; case0 has inner jump table on obj->[2] (s16) cases0-3); calls ov80_0222EFD0(&sp_local, obj->[0], obj->[0xc], obj->[(unk1+2)*2 indexed s16]) and ov42_022299C0(sub_0209680C(...)->[0x30], &sp_local). Returns 0/1.",
-    "risks": [
-      "ov80_02239938(void*,u32) returns UnkStruct_02239938* per frontier/frontier_map.h, BUT that struct is only {u32 unk0;u32 unk4;} (8 bytes) while the code accesses obj+0x26/+0x28 \u2014 TYPE MISMATCH. The real object is the 0x3c-byte anim entry. Either ov80_02239938's return is cast, or define a local 0x3c struct and cast the return. Investigate how ov80_02239938 is really used / whether a bigger struct exists.",
-      "The 0x3c anim-entry object (array via sub_02096868 = base+0x84, 0x20 entries): +0x00 u32 active; +0x01 u8 mainState (outer jumptable 0-3); +0x02 s16 subState (inner jumptable 0-3); +0x04 s16; +0x06 s16 timer (dec if >0, return 0); +0x08 s16; +0x0a s16; +0x0c s16; +0x26 u8 dispatch idx (MI_CpuFill8 0x26..0x35 =0x10 bytes); +0x28 s16[] copied array (indexed (mainState+2)*2); +0x38 u32 (C54 checks ==0). Confirm exact offsets from asm.",
-      "Two nested jump tables in ov80_02239C80 (outer cmp unk1,#3 bhi; inner cmp [2],#3 bhi) -> write switch(obj->unk1){case0:switch(obj->unk2){...}...}. Inner case0/1 share target, case2/3 share. Outer case1/2/3 share (-> the _02239D22 common tail). Default -> GF_AssertFail + return 1.",
-      "NO C protos for sub_0209680C/sub_02096868/ov80_0222EFD0/ov42_022299C0 -> local externs. sub_0209680C(obj)->? = *(?*)(obj+0x18) (1 arg). sub_02096868(a0)->void* = a0+0x84. ov80_0222EFD0(void* out, u32 a, u16 b, s16 c) (4 args; writes out+7=c-ish, uses table ov80_0223DC22). ov42_022299C0(void* s, void* out) (2 args; s->[0xa],[4],[0x30]). Derive exact arg types from their asm.",
-      "ov80_02239938 IS in frontier_map.h (include it). The dispatch fn ov80_02239C80 is referenced by the rodata table AND is static-ish (in .public? check .inc). Public defined here: ov80_02239BF0, ov80_02239C54 (+ maybe C28/C80). ov80_02239C28/C80 may be static. Check .inc .public list."
-    ],
-    "sweep_output": null
   }
 }
