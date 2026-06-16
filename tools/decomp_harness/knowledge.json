@@ -5209,5 +5209,16 @@
       "Input structs: sub_0201F990 arg0 (if !=NULL use arg0+0x14 as SRT sub-struct; reads s16 @ +0x18/+0x1a/+0x1c/+0x1e/+0x20/+0x22 and u32 @ +0x24; if NULL base=0 -> reads addr 0x20.. as-is, a deliberate null-base read). arg1 = VecFx32* trans (ldmia 3 words). arg2 = MtxFx33* rot. arg3 = VecFx32* scale. Returns box-test result (int). sub_0201FA34 arg1 has s16 @ +0/+2/+4 and u32 @ +8/+0xc/+0x10 (lsl #0xc = .fx32 from int)."
     ],
     "sweep_output": null
+  },
+  "asm/overlay_01_021F4464.s": {
+    "notes": "VRAM display-capture (DISPCAPCNT) setup, 5 fns. ov01_021F4464 (public): CreateSysTaskAndEnvironment(ov01_021F4544, 0x38, 5, arg0->[0x28]); SysTask_GetData -> env; copy 11 words (0x2c bytes) from arg0 to env+4 (ldmia/stmia loop, mov r3,#5 then +1 word -> struct assign of an 0x2c-byte cfg); env[0x34]=sysTask; env[0x30]=0; env[0]=GX_GetBankForLCDC(); ov01_021F45E4(&env[4]); SysTask_CreateOnVWaitQueue(ov01_021F4584, env, 0); return env. ov01_021F44B4 (public): GX_SetGraphicsMode(a1,a2,a3); GX_SetBankForLCDC(env[0][0]); switch(env[0][4]) mode -> MIi_CpuClearFast VRAM clears; DestroySysTaskAndEnvironment(env[0][0x34]); env[0]=0. ov01_021F4544 (static SysTaskFunc): if(env[0x30]) write reg_GX_DISPCAPCNT. ov01_021F4584 (static SysTaskFunc): switch->GX_SetBankForLCDC(1/2/4/8/0); GX_SetGraphicsMode(env[4],env[8],env[0xc]); env[0x30]=1; SysTask_Destroy. ov01_021F45E4 (static): switch->MIi_CpuClearFast; write reg_GX_DISPCAPCNT.",
+    "risks": [
+      "GX_GetBankForLCDC has NO C prototype -> add local `extern GXVRamLCDC GX_GetBankForLCDC(void);`. reg_GX_DISPCAPCNT (lib/include/nitro/hw/ARM9/io_reg.h) is the 0x04000064 write: `reg_GX_DISPCAPCNT = val;`.",
+      "DISPCAPCNT packing ov01_021F4544 (env relative to the struct base passed as r1, fields at 0x10..0x28): value = (f14<<29) | 0x80000000 | (f1c<<25) | (f18<<24) | (f10<<20) | (f20<<16) | (f28<<8) | f24. asm OR-order: r3=(f14<<29)|0x80000000; r3|=(f1c<<25); r1=(f18<<24)|r3; r1|=(f10<<20); r1|=(f20<<16); r1|=(f28<<8); r1|=f24. FINICKY OR/shift order -- may need expression-grouping iteration.",
+      "ov01_021F45E4 packing (env+0 base, fields 0xc..0x1c): value = (f10<<29) | 0x80000000 | (f18<<25) | (f14<<24) | (fc<<20) | (f1c<<16) | 0x10. Note the trailing |0x10 (mov r0,#0x10; orr) and NO f24/f28 terms here. base passed is &env[4] so fields shift by -4 vs 4544.",
+      "Mode switch in 44B4/4584/45E4 is switch(mode) cases 2,6,0xa(10),0xe(14) -> MWCC comparison tree (cmp 0xa;bgt;bge; cmp 6;bgt; cmp 2;blt;beq; cmp 6;beq). Sparse cases -> if/else-if or switch both lower to this tree. MIi_CpuClearFast clears: mode2 -> (0, 0x1a<<0x16=0x06800000, 2<<0x10=0x20000); mode6 -> (0,0x06820000,0x20000); mode10 -> (0,0x06840000,0x20000); mode14 -> (0,0x06860000,0x20000); else GX_SetBankForLCDC(0). 4584 SetBank: mode2->1, mode6->2, mode10->4, mode14->8, else 0.",
+      "env/cfg struct ~0x38 bytes: [0]=saved GXVRamLCDC bank (from GX_GetBankForLCDC), [4]=mode(int, switch val), [8]=GXBGMode?, [0xc]=GXBG0As?, [0x10..0x28]=DISPCAPCNT field values (ints), [0x30]=active flag, [0x34]=SysTask*. The 0x2c-byte copy fills [4..0x2f] from arg0."
+    ],
+    "sweep_output": null
   }
 }
