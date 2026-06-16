@@ -1787,7 +1787,7 @@ static void Task_BattleMenuScrollHorizontal(SysTask *task, void *data) {
     BattleInput_InitMenuWindow(battleInput);
 
     if (isFinished == TRUE) {
-        BgFillTilemapBufferAndCommit(bgConfig, 7, (0x6000 / 0x20 - 1));
+        BgFillTilemapBufferAndCommit(bgConfig, 7, 0x6000 / 0x20 - 1);
         ToggleBgLayer(GF_BG_LYR_SUB_3, GF_PLANE_TOGGLE_OFF);
         SetBgPriority(GF_BG_LYR_SUB_3, 0);
         GXS_SetVisibleWnd(GX_WNDMASK_NONE);
@@ -1802,8 +1802,8 @@ static void BattleInput_InitMenuSlideIn(BattleInput *battleInput, int battlerId)
     G2S_SetWndOutsidePlane(GX_WND_PLANEMASK_BG0 | GX_WND_PLANEMASK_BG1 | GX_WND_PLANEMASK_BG2 | GX_WND_PLANEMASK_BG3, 1);
     G2S_SetWnd0InsidePlane(GX_WND_PLANEMASK_BG2 | GX_WND_PLANEMASK_BG3, 1);
     G2S_SetWnd1InsidePlane(GX_WND_PLANEMASK_BG2 | GX_WND_PLANEMASK_BG3, 1);
-    G2S_SetWnd0Position(0, 0, 255, (18 * 8));
-    G2S_SetWnd1Position(0, (18 * 8), 255, 192);
+    G2S_SetWnd0Position(0, 0, 255, 18 * 8);
+    G2S_SetWnd1Position(0, 18 * 8, 255, 192);
     GXS_SetVisibleWnd(GX_WNDMASK_W0 | GX_WNDMASK_W1);
 
     BattleMenuSlideIn *menuSlideIn = Heap_Alloc(HEAP_ID_BATTLE, sizeof(BattleMenuSlideIn));
@@ -1968,7 +1968,7 @@ static void BattleInput_CreateMainMenuFightObject(BattleInput *battleInput, int 
 
     BgConfig *bgConfig = BattleSystem_GetBgConfig(battleInput->battleSystem);
 
-    FillBgTilemapRect(bgConfig, 4, (0x6000 / 0x20 - 1), 0, 0x10, 32, 8, 17);
+    FillBgTilemapRect(bgConfig, 4, 0x6000 / 0x20 - 1, 0, 0x10, 32, 8, 17);
     ScheduleBgTilemapBufferTransfer(bgConfig, 5);
 
     TextOBJ_SetSpritesDrawFlag(battleInput->textObj[MENUTXT_BAG].textObj, 0);
@@ -1990,8 +1990,8 @@ void BattleInput_CreatePalParkMenuObjects(BattleInput *battleInput, int param1, 
 
     BgConfig *bgConfig = BattleSystem_GetBgConfig(battleInput->battleSystem);
 
-    FillBgTilemapRect(bgConfig, 4, (0x6000 / 0x20 - 1), 0, 0x10, 10, 8, 17);
-    FillBgTilemapRect(bgConfig, 4, (0x6000 / 0x20 - 1), 0x16, 0x10, 10, 8, 17);
+    FillBgTilemapRect(bgConfig, 4, 0x6000 / 0x20 - 1, 0, 0x10, 10, 8, 17);
+    FillBgTilemapRect(bgConfig, 4, 0x6000 / 0x20 - 1, 0x16, 0x10, 10, 8, 17);
     ScheduleBgTilemapBufferTransfer(bgConfig, 5);
 
     TextOBJ_SetSpritesDrawFlag(battleInput->textObj[MENUTXT_BAG].textObj, 0);
@@ -2453,7 +2453,7 @@ static int BattleInput_TouchCallback_TargetMenu(BattleInput *battleInput, int to
     BgConfig *bgConfig;
 
     bgConfig = BattleSystem_GetBgConfig(battleInput->battleSystem);
-    BgFillTilemapBufferAndCommit(bgConfig, 5, (0x6000 / 0x20 - 1));
+    BgFillTilemapBufferAndCommit(bgConfig, 5, 0x6000 / 0x20 - 1);
     ScheduleBgTilemapBufferTransfer(bgConfig, 5);
 
     BattleInput_Deadstriped_02268EDC(battleInput, touchInput);
@@ -2860,7 +2860,7 @@ void BattleInput_LoadFightMenuText(BattleInput *battleInput, int battlerId, cons
     size = sub_0208805C(6);
     strPP = NewString_ReadMsgData(msgLoader, msg_0197_00938); // PP
     messageFormat = BattleSystem_GetMessageFormat(battleInput->battleSystem);
-    strSlashFormatted = String_New(((2 + 2 + 1 + 2) * 2 + 2), HEAP_ID_BATTLE);
+    strSlashFormatted = String_New((2 + 2 + 1 + 2) * 2 + 2, HEAP_ID_BATTLE);
     strSlash = NewString_ReadMsgData(msgLoader, msg_0197_00937); // '/'
 
     for (i = 0; i < MAX_MON_MOVES; i++) {
@@ -3010,7 +3010,7 @@ static void ov12_02268CA0(BattleInput *battleInput, int textObjId) {
 
     PaletteData_LoadPalette(palette, &battleInput->paletteBuffer[14 * 16], PLTTBUF_SUB_BG, paletteNo[textObjId] * 16, 0x20);
     ScheduleBgTilemapBufferTransfer(bgConfig, 4);
-    FillBgTilemapRect(bgConfig, 5, (0x6000 / 0x20 - 1), ov12_0226E2F8[textObjId].rect.left, ov12_0226E2F8[textObjId].rect.top, ov12_0226E2F8[textObjId].rect.right - ov12_0226E2F8[textObjId].rect.left + 1, ov12_0226E2F8[textObjId].rect.bottom - ov12_0226E2F8[textObjId].rect.top + 1, 17);
+    FillBgTilemapRect(bgConfig, 5, 0x6000 / 0x20 - 1, ov12_0226E2F8[textObjId].rect.left, ov12_0226E2F8[textObjId].rect.top, ov12_0226E2F8[textObjId].rect.right - ov12_0226E2F8[textObjId].rect.left + 1, ov12_0226E2F8[textObjId].rect.bottom - ov12_0226E2F8[textObjId].rect.top + 1, 17);
     ScheduleBgTilemapBufferTransfer(bgConfig, 5);
 }
 
@@ -3508,16 +3508,16 @@ static void VBlankTask_BattleMenuSlideIn(SysTask *task, void *data) {
     }
 
     if (menuSlideIn->battlerId == 4) {
-        G2S_SetWnd0Position(0, 0, xSet, (18 * 8));
+        G2S_SetWnd0Position(0, 0, xSet, 18 * 8);
     } else {
         if (xSet == 0) {
             xSet = 1;
         }
 
-        G2S_SetWnd0Position(xSet, 0, 0, (18 * 8));
+        G2S_SetWnd0Position(xSet, 0, 0, 18 * 8);
     }
 
-    G2S_SetWnd1Position(0, (18 * 8), 255, ySet);
+    G2S_SetWnd1Position(0, 18 * 8, 255, ySet);
     menuSlideIn->unk_10 = menuSlideIn->ySet;
 }
 
