@@ -249,6 +249,15 @@
       "result": "regalloc_diff",
       "reason": "Battle-sprite resource loader. rodata (ManagedSpriteTemplate[2]+u16[24]x2+u16[24][3]) MATCHES exactly; 5/7 fns bl-only (match). ov12_02265E28: narc/base callee-saved register SWAP (asm narc=r4/base=r6 vs C narc=r6/base=r4) + base=charResId-8 computed post-merge vs in-branch (SIZE 244 vs 236). ov12_02265F7C: charId in r5(callee-saved) vs asm r1(caller-saved), base subs scheduled late. Tried base=literal and base=charResId-8 (no change). Reverted to asm; full draft + rodata reusable on retry (see attempts_log).",
       "note": "opus-drafted; reverted"
+    },
+    {
+      "file": "asm/overlay_01_021F4464.s",
+      "lines": 296,
+      "functions": 5,
+      "attempts": 1,
+      "result": "regalloc_diff",
+      "reason": "VRAM display-capture (DISPCAPCNT) setup. 3/5 fns match (ov01_021F4464/44B4/4584 bl-only; mode field unk00 MUST be int for signed switch compares). DISPCAPCNT bit-packing fns ov01_021F4544 (SIZE 60 vs 64) and ov01_021F45E4 (23 diffs) resist: asm batches all field loads up front + specific OR-tree register allocation (4544 spine on r1 from unk14<<24; 45E4 flips 0x80000000|(unk10<<29) order). Explicit operand temps did not change codegen. Needs exact MWCC OR-tree linearization. Reverted; full analysis + 3 matching fns in knowledge.json/attempts_log, reusable.",
+      "note": "opus-drafted; reverted"
     }
   ],
   "in_progress": null,

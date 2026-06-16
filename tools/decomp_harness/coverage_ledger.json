@@ -1,6 +1,6 @@
 {
  "summary": {
-  "generated": "2026-06-16T06:36:54Z",
+  "generated": "2026-06-16T07:03:04Z",
   "by_status": {
    "matched": {
     "files": 25,
@@ -9,16 +9,16 @@
     "text_bytes_est": 5670
    },
    "blocked": {
-    "files": 5,
-    "functions": 96,
-    "insn_lines": 2713,
-    "text_bytes_est": 6296
+    "files": 7,
+    "functions": 108,
+    "insn_lines": 3171,
+    "text_bytes_est": 7320
    },
    "pending": {
-    "files": 273,
-    "functions": 19925,
-    "insn_lines": 948961,
-    "text_bytes_est": 2118552
+    "files": 271,
+    "functions": 19913,
+    "insn_lines": 948503,
+    "text_bytes_est": 2117528
    },
    "upstream": {
     "files": 368,
@@ -31,7 +31,7 @@
    "tracked": 20167,
    "matched": 146,
    "partial_in_blocked": 50,
-   "pending": 19925
+   "pending": 19913
   },
   "blockers": [
    {
@@ -39850,7 +39850,7 @@
   {
    "file": "asm/overlay_01_021F4464.s",
    "lsf_kind": "asm",
-   "status": "pending",
+   "status": "blocked",
    "lines": 295,
    "function_count": 5,
    "text_bytes_est": 526,
@@ -39884,37 +39884,41 @@
      "mode": "thumb",
      "insns": 34,
      "size_est": 78,
-     "status": "pending"
+     "status": "blocked"
     },
     {
      "name": "ov01_021F44B4",
      "mode": "thumb",
      "insns": 62,
      "size_est": 140,
-     "status": "pending"
+     "status": "blocked"
     },
     {
      "name": "ov01_021F4544",
      "mode": "thumb",
      "insns": 32,
      "size_est": 64,
-     "status": "pending"
+     "status": "blocked"
     },
     {
      "name": "ov01_021F4584",
      "mode": "thumb",
      "insns": 42,
      "size_est": 98,
-     "status": "pending"
+     "status": "blocked"
     },
     {
      "name": "ov01_021F45E4",
      "mode": "thumb",
      "insns": 69,
      "size_est": 146,
-     "status": "pending"
+     "status": "blocked"
     }
-   ]
+   ],
+   "blocked_reason": "VRAM display-capture (DISPCAPCNT) setup. 3/5 fns match (ov01_021F4464/44B4/4584 bl-only; mode field unk00 MUST be int for signed switch compares). DISPCAPCNT bit-packing fns ov01_021F4544 (SIZE 60 vs 64) and ov01_021F45E4 (23 diffs) resist: asm batches all field loads up front + specific OR-tree register allocation (4544 spine on r1 from unk14<<24; 45E4 flips 0x80000000|(unk10<<29) order). Explicit operand temps did not change codegen. Needs exact MWCC OR-tree linearization. Reverted; full analysis + 3 matching fns in knowledge.json/attempts_log, reusable.",
+   "attempts": 1,
+   "blocker_id": null,
+   "kept_c": false
   },
   {
    "file": "asm/overlay_01_021F467C.s",
@@ -67979,7 +67983,7 @@
   {
    "file": "asm/overlay_12_02265E28.s",
    "lsf_kind": "asm",
-   "status": "pending",
+   "status": "blocked",
    "lines": 289,
    "function_count": 7,
    "text_bytes_est": 498,
@@ -68026,51 +68030,55 @@
      "mode": "thumb",
      "insns": 117,
      "size_est": 258,
-     "status": "pending"
+     "status": "blocked"
     },
     {
      "name": "ov12_02265F34",
      "mode": "thumb",
      "insns": 22,
      "size_est": 52,
-     "status": "pending"
+     "status": "blocked"
     },
     {
      "name": "ov12_02265F68",
      "mode": "thumb",
      "insns": 10,
      "size_est": 22,
-     "status": "pending"
+     "status": "blocked"
     },
     {
      "name": "ov12_02265F7C",
      "mode": "thumb",
      "insns": 29,
      "size_est": 68,
-     "status": "pending"
+     "status": "blocked"
     },
     {
      "name": "ov12_02265FC4",
      "mode": "thumb",
      "insns": 7,
      "size_est": 16,
-     "status": "pending"
+     "status": "blocked"
     },
     {
      "name": "ov12_02265FD4",
      "mode": "thumb",
      "insns": 23,
      "size_est": 54,
-     "status": "pending"
+     "status": "blocked"
     },
     {
      "name": "ov12_02266008",
      "mode": "thumb",
      "insns": 11,
      "size_est": 28,
-     "status": "pending"
+     "status": "blocked"
     }
-   ]
+   ],
+   "blocked_reason": "Battle-sprite resource loader. rodata (ManagedSpriteTemplate[2]+u16[24]x2+u16[24][3]) MATCHES exactly; 5/7 fns bl-only (match). ov12_02265E28: narc/base callee-saved register SWAP (asm narc=r4/base=r6 vs C narc=r6/base=r4) + base=charResId-8 computed post-merge vs in-branch (SIZE 244 vs 236). ov12_02265F7C: charId in r5(callee-saved) vs asm r1(caller-saved), base subs scheduled late. Tried base=literal and base=charResId-8 (no change). Reverted to asm; full draft + rodata reusable on retry (see attempts_log).",
+   "attempts": 2,
+   "blocker_id": null,
+   "kept_c": false
   },
   {
    "file": "asm/battle/battle_input.s",
