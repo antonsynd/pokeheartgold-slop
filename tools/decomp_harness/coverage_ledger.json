@@ -1,12 +1,12 @@
 {
  "summary": {
-  "generated": "2026-06-16T04:03:33Z",
+  "generated": "2026-06-16T04:13:48Z",
   "by_status": {
    "matched": {
-    "files": 19,
-    "functions": 108,
-    "insn_lines": 1761,
-    "text_bytes_est": 3888
+    "files": 20,
+    "functions": 111,
+    "insn_lines": 1807,
+    "text_bytes_est": 3996
    },
    "blocked": {
     "files": 5,
@@ -15,10 +15,10 @@
     "text_bytes_est": 6296
    },
    "pending": {
-    "files": 279,
-    "functions": 19963,
-    "insn_lines": 949752,
-    "text_bytes_est": 2120334
+    "files": 278,
+    "functions": 19960,
+    "insn_lines": 949706,
+    "text_bytes_est": 2120226
    },
    "upstream": {
     "files": 368,
@@ -29,9 +29,9 @@
   },
   "function_totals": {
    "tracked": 20167,
-   "matched": 108,
+   "matched": 111,
    "partial_in_blocked": 50,
-   "pending": 19963
+   "pending": 19960
   },
   "blockers": [
    {
@@ -32426,8 +32426,8 @@
   },
   {
    "file": "asm/unk_02097B78.s",
-   "lsf_kind": "asm",
-   "status": "pending",
+   "lsf_kind": "src",
+   "status": "matched",
    "lines": 76,
    "function_count": 3,
    "text_bytes_est": 108,
@@ -32463,23 +32463,24 @@
      "mode": "thumb",
      "insns": 22,
      "size_est": 52,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "LegendaryCinematic_Main",
      "mode": "thumb",
      "insns": 17,
      "size_est": 38,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "LegendaryCinematic_Exit",
      "mode": "thumb",
      "insns": 7,
      "size_est": 18,
-     "status": "pending"
+     "status": "matched"
     }
-   ]
+   ],
+   "source": "harness"
   },
   {
    "file": "asm/unk_02097BE0.s",

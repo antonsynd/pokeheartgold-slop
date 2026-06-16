@@ -151,6 +151,14 @@
       "attempts": 2,
       "result": "matched",
       "note": "sonnet-drafted. Rect-zone manager: UnkStruct_Ov01_021FB368 {int count; UnkStruct_Ov01_021FB368_sub *zones}(0x8) + sub {int x,y,width,height,value,active}(0x18). Full-ROM chiri compare OK (rom.arm64.sha1). Trickiest fn = static point-in-rect ov01_021FB368: required explicit `int x,width,y,height` locals in that EXACT order to make MWCC -O4,p batch all four field loads before computing right=x+width-1/bottom=y+height-1 (with `right`/`bottom` locals alone or inline exprs, right was computed before y/height were loaded -> same size but byte mismatch + r3<->r4 swap). Loops: ov01_021FB3A4 for-loop with u32 count param (unsigned bls/bcc) + u8 i; ov01_021FB42C for-loop with int count field (signed ble/blt) + u8 i. IPA-safe: new public header + _internal.h split (no matched callers yet)."
+    },
+    {
+      "file": "asm/unk_02097B78.s",
+      "lines": 76,
+      "functions": 3,
+      "attempts": 1,
+      "result": "matched",
+      "note": "sonnet-drafted. OverlayManager proc module LegendaryCinematic_Init/Main/Exit. Full-ROM chiri compare OK. Init: Heap_Create(HEAP_ID_3,HEAP_ID_153,0x80000) [0x80000 -> movs#2;lsls#18], OverlayManager_CreateAndGetData(man,sizeof(work)=0x41C,HEAP_ID_153), MI_CpuFill8, data->args=GetArgs. Main: dispatch via rodata fn-ptr table sLegendaryCinematicFuncs[data->args->unk4C](data) (ScriptCinematic_HoOh/Lugia/Arceus, defined in overlay_106 asm). Internal 0x41C work struct {LegendaryCinematicArgs *args; u8 filler[0x418]}. IPA: existing include/unk_02097B78.h is frozen (shared w/ matched launch_application.c) -> used frozen-prototype-header-split (new unk_02097B78_internal.h includes global.h then the public header). Matched first try, no surgery."
     }
   ],
   "failed": [
@@ -196,8 +204,8 @@
   ],
   "in_progress": null,
   "stats": {
-    "total_attempts": 77,
-    "total_matched": 19,
+    "total_attempts": 78,
+    "total_matched": 20,
     "total_failed": 5
   }
 }
