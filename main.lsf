@@ -52,7 +52,7 @@ Static main
     Object src/mail_message.o
     Object src/easy_chat.o
     Object asm/unk_02015DD8.o
-    Object asm/unk_020163E0.o
+    Object src/unk_020163E0.o
     Object src/yes_no_prompt.o
     Object asm/unk_02016EDC.o
     Object src/unk_02017FAC.o
