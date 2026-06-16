@@ -240,6 +240,15 @@
       "result": "regalloc_diff",
       "reason": "sub_02026E18 matches; sub_02026DE0 not reproducible under MWCC -O4,p. asm keeps a late-materialized stack buffer (dead buf[1] store => address escapes) and reloads a->unk0C every iteration (no hoist). All source variants either scalarize the buffer (46B), hoist count-1 into a callee-saved reg + add a u16 truncation mask (early u8*q=buf, 24 diffs), or grow to 58B (u16 backing). Could not match asm's exact register allocation. Reverted to asm.",
       "note": "sonnet-drafted; reverted"
+    },
+    {
+      "file": "asm/overlay_12_02265E28.s",
+      "lines": 289,
+      "functions": 7,
+      "attempts": 2,
+      "result": "regalloc_diff",
+      "reason": "Battle-sprite resource loader. rodata (ManagedSpriteTemplate[2]+u16[24]x2+u16[24][3]) MATCHES exactly; 5/7 fns bl-only (match). ov12_02265E28: narc/base callee-saved register SWAP (asm narc=r4/base=r6 vs C narc=r6/base=r4) + base=charResId-8 computed post-merge vs in-branch (SIZE 244 vs 236). ov12_02265F7C: charId in r5(callee-saved) vs asm r1(caller-saved), base subs scheduled late. Tried base=literal and base=charResId-8 (no change). Reverted to asm; full draft + rodata reusable on retry (see attempts_log).",
+      "note": "opus-drafted; reverted"
     }
   ],
   "in_progress": null,
