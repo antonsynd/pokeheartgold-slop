@@ -7,5 +7,4 @@
 - [ ] All C code is correctly formatted (`git clang-format`).
 - [ ] This pull request is labeled according to the kind of work it represents.
 - [ ] New or updated code labels follow the [style guide]()
-- [ ] This work adheres to the [AI policy](CONTRIBUTING.md#ai-policy).
-- [ ] The author has joined the [pret discord server](https://discord.gg/d5dubZ3) and sent a message in #pokeheartgold to verify that they are human
+- [ ] The author has joined the [pret discord server](https://discord.gg/d5dubZ3) and sent a message in #pokeheartgold
