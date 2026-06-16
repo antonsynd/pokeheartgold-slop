@@ -1,14 +1,14 @@
 # Decomp Coverage Ledger
 
-*Generated 2026-06-16T11:37:06Z by `coverage_ledger.py` — do not hand-edit; regenerate after each decomp.*
+*Generated 2026-06-16T12:05:38Z by `coverage_ledger.py` — do not hand-edit; regenerate after each decomp.*
 
-Tracked functions (files with retained asm): **20167** — matched 229, pending 19815, plus 50 matched-but-blocked inside failed files.
+Tracked functions (files with retained asm): **20167** — matched 229, pending 19810, plus 50 matched-but-blocked inside failed files.
 
 | status | files | functions | insn lines | ~text bytes |
 |---|---|---|---|---|
 | matched | 32 | 229 | 4223 | 9200 |
-| blocked | 10 | 123 | 3801 | 8684 |
-| pending | 261 | 19815 | 946202 | 2112634 |
+| blocked | 11 | 128 | 3957 | 9006 |
+| pending | 260 | 19810 | 946046 | 2112312 |
 | upstream | 368 | 0 | 0 | 0 |
 
 ## Blockers (value-ordered: fix what gates the most)
@@ -20,7 +20,7 @@ Tracked functions (files with retained asm): **20167** — matched 229, pending 
 | objdiff-false-positives | 0 | 0 | RESOLVED. objdiff.py had a critical bug: the byte extraction regex did not match MWCC's ARM Thumb objdump format (packed hex like 'b418' vs expected space-separated 'b4 18'). It extracted 0 bytes for every function, so 0==0 always reported MATCH. 11 decomps accepted via objdiff were not actually byte-matching. Fixed in this session; all 11 non-matching decomps reverted to asm. 2 decomps that truly match (unk_0202DB34, battle_arcade_game_board_data) kept. |
 | ext-data-section-split | 1 | 0 | Data-only files exporting multiple EXTERNAL (.public) const arrays: MWCC -ipa file emits each top-level const as its own .rodata section, and mwldarm orders/aligns them differently than the asm's single packed .rodata, so the linked overlay/module SHA1 fails even though objdiff --summary (per-section) reports a match. Symbols referenced by other TUs must stay non-static, so they cannot be pooled into one section via `static`. |
 
-## Blocked files (10)
+## Blocked files (11)
 
 | file | functions | insn lines | data-only | notes |
 |---|---|---|---|---|
@@ -30,6 +30,7 @@ Tracked functions (files with retained asm): **20167** — matched 229, pending 
 | asm/overlay_80_02239D74.s | 8 | 288 |  | regalloc-loop-ptr-swap Frontier graphics-loader (8 fns). 7/8 match byte-for-byte; ov80_02239DD0 screen-copy loop has an irreducible r4/r5 swap  |
 | asm/overlay_12_02265E28.s | 7 | 219 |  |  Battle-sprite resource loader. rodata (ManagedSpriteTemplate[2]+u16[24]x2+u16[24][3]) MATCHES exactly; 5/7 fns bl-only ( |
 | asm/overlay_01_021F4464.s | 5 | 239 |  |  VRAM display-capture (DISPCAPCNT) setup. 3/5 fns match (ov01_021F4464/44B4/4584 bl-only; mode field unk00 MUST be int fo |
+| asm/overlay_80_022357B4.s | 5 | 156 |  | regalloc-loop-ptr-swap Frontier overlay_80; 2/5 match clean (ov80_02235898, ov80_022358B0) + C4(bl-reloc). Blockers: ov80_022357B4 copy loop ne |
 | asm/unk_02025C44.s | 4 | 280 |  | regalloc-pointer-spill G2D module; 3/4 match (GF_InitG2dRenderer, GF_SetG2dRendererSurface, sub_02025C54). sub_02025C98 (NNSG2dRndCellCullingFu |
 | asm/unk_02087FD4.s | 3 | 62 |  | large-reloc-data-file ~4032-byte relocation-heavy rodata (field-move-response trees, ~27 nested tables chained via .word pointers) + 3 trivial |
 | asm/unk_02026DE0.s | 2 | 41 |  |  sub_02026E18 matches; sub_02026DE0 not reproducible under MWCC -O4,p. asm keeps a late-materialized stack buffer (dead b |
@@ -72,7 +73,7 @@ Tracked functions (files with retained asm): **20167** — matched 229, pending 
 | asm/overlay_01_021F467C.s | 2 | 58 |  | harness |
 | asm/overlay_35.s | 2 | 26 |  | harness |
 
-## Pending files (261)
+## Pending files (260)
 
 | file | functions | insn lines | data-only | notes |
 |---|---|---|---|---|
@@ -319,7 +320,6 @@ Tracked functions (files with retained asm): **20167** — matched 229, pending 
 | asm/overlay_01_021F3114.s | 6 | 259 |  |  |
 | asm/overlay_119.s | 6 | 2600 |  |  |
 | asm/unk_02087E70.s | 5 | 148 |  |  |
-| asm/overlay_80_022357B4.s | 5 | 156 |  |  |
 | asm/overlay_116.s | 5 | 375 |  |  |
 | asm/unk_020977CC.s | 4 | 201 |  |  |
 | asm/unk_020979A8.s | 4 | 197 |  |  |
