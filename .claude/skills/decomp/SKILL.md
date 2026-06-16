@@ -37,8 +37,8 @@ For the target `asm/<basename>.s`:
    draft bodies via `tools/decomp_harness/delegate.sh` (local model) — drafts are untrusted;
    review against the patterns DB before building (see `tools/decomp_harness/DELEGATION.md`)
 4. **Update LSF**: In `main.lsf`, change `Object asm/<basename>.o` to `Object src/<basename>.o`
-5. **Build**: Run `make main COMPARE=0 -j4` — fix compilation errors
-6. **Compare**: Run `make compare -j4` — if exit code is 0, SHA1 matches and you're done
+5. **Build**: Run `chiri pkg -- build --target main --no-compare` (timeout 1200000) — fix compilation errors
+6. **Compare**: Run `chiri pkg -- compare` — if exit code is 0, SHA1 matches and you're done
 
 If comparison fails (non-zero exit):
 7. **Diff**: Run `./tools/asmdiff/asmdiff.sh <address>` to see byte differences
@@ -105,4 +105,4 @@ If comparison fails (non-zero exit):
 - Do NOT delete or modify the original `.s` file
 - Function order in the C file must match the asm file exactly
 - Keep the build green — if something breaks, revert before moving on
-- **Build verification**: `make compare` exit code 0 = match, non-zero = mismatch. Check the exit code, not the output text.
+- **Build verification**: `chiri pkg -- compare` exit code 0 = match, non-zero = mismatch. Check the exit code, not the output text. Always use `timeout: 1200000`.

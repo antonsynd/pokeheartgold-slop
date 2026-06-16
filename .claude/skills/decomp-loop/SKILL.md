@@ -21,8 +21,9 @@ This skill is designed to be used with `/loop /decomp-loop` for continuous auton
    c. Read the target asm file and its .inc file
    d. Search for relevant headers and similar decompiled files
    e. Write the C file, update main.lsf
-   f. Build with `make main COMPARE=0 -j4`, fix compile errors
-   g. Compare with `make compare -j4`, check exit code (0 = match)
+   f. Build with `chiri pkg -- build --target main --no-compare` (timeout 1200000),
+      fix compile errors
+   g. Compare with `chiri pkg -- compare`, check exit code (0 = match)
    h. If mismatch, use `./tools/asmdiff/asmdiff.sh` to see diffs, adjust C, repeat
       (max 50 build-compare cycles per file); log each distinct failed approach
       with `attempts_log.py add`
@@ -59,4 +60,4 @@ This skill is designed to be used with `/loop /decomp-loop` for continuous auton
 
 ### Build Verification
 
-`make compare` exits 0 on SHA1 match and non-zero on mismatch. Always check the exit code, not the output text.
+`chiri pkg -- compare` exits 0 on SHA1 match and non-zero on mismatch. Always check the exit code, not the output text. Always use `timeout: 1200000`.
