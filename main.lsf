@@ -1035,7 +1035,7 @@ Overlay OVY_80
     Object asm/frontier_map.o
     Object asm/overlay_80_02239960.o
     Object src/overlay_80_02239AF8.o
-    Object asm/overlay_80_02239BF0.o
+    Object src/overlay_80_02239BF0.o
     Object asm/overlay_80_02239D74.o
     Object asm/overlay_80_0223A00C.o
     Object asm/overlay_80_0223AC24.o
