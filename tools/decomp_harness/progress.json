@@ -335,6 +335,14 @@
       "attempts": 1,
       "result": "matched",
       "note": "compare-verified (chiri pkg -- compare OK, full ROM SHA1). NPC trade task module. CallTask_NPCTrade allocs NPCTradeTaskEnv (0x2c: NPCTradeAppData* unk00, int unk04 state, int unk08 slot, TRADE_ANIM_WORK unk0C @0xc (0x18), Pokemon* unk24/unk28), memsets, fills, TaskManager_Call(Task_NPCTrade). Task_NPCTrade: 7-case state machine (dense jump table on env->unk04) -> CreateTradeAnim+ReceiveMonToSlot / PaletteFadeUntilFinished / CallTask_Leave/Restore/FadeFromBlack / launch trade-seq app / Heap_Free*3+return TRUE. sub_0206793C (static) CallApplicationAsTask(taskman, &sTradeSequenceApp, env+0xc); note: discarded TaskManager_GetFieldSystem(taskman) call kept (bare statement, side-effect call). rodata sTradeSequenceApp = OverlayManagerTemplate{TradeSequence_Init/Main/Exit, FS_OVERLAY_ID(OVY_71)}. Self-contained (local prototype for CallTask_NPCTrade matching frozen unk_0206793C.h; that header also declares unrelated sub_02067xxx from other files). FS_EXTERN_OVERLAY(OVY_71) local. CallTask_RestoreOverworld is in unk_020552A4.h (not unk_02055244.h). objdiff SIZE 180v192 on Task_NPCTrade = jump-table-as-code false positive."
+    },
+    {
+      "file": "asm/unk_02018000.s",
+      "lines": 516,
+      "functions": 26,
+      "attempts": 1,
+      "result": "matched",
+      "note": "compare-verified (chiri pkg -- compare OK, full ROM SHA1). 3D model display helper: model-resource (0x10), animation (0x14), render-obj (0x78) structs. 26/26 functions match. One iteration on sub_0201815C clamp branch polarity (invert if/else so pass-through arm falls through). objdiff -14 .text section delta is benign trailing-.balign padding (7 fns x -2); compare passes. New header include/unk_02018000.h (IPA-safe; only this TU includes it; overlay callers resolve by linker symbol)."
     }
   ],
   "failed": [

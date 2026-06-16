@@ -56,7 +56,7 @@ Static main
     Object src/yes_no_prompt.o
     Object asm/unk_02016EDC.o
     Object src/unk_02017FAC.o
-    Object asm/unk_02018000.o
+    Object src/unk_02018000.o
     Object src/unk_02018380.o
     Object src/menu_input_state.o
     Object src/touchscreen_list_menu.o
