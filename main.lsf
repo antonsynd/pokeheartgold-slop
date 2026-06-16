@@ -239,7 +239,7 @@ Static main
     Object src/sys_vars.o
     Object asm/unk_02066EDC.o
     Object src/field_roamer.o
-    Object asm/unk_0206793C.o
+    Object src/unk_0206793C.o
     Object asm/unk_02067A60.o
     Object src/field_move.o
     Object src/field_move_environment.o

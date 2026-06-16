@@ -327,6 +327,14 @@
       "attempts": 1,
       "result": "matched",
       "note": "compare-verified (chiri pkg -- compare OK, full ROM SHA1). OVY_01 field view-photo state dispatcher: ov01_021EAF00 returns fieldSystem->unk18-1 (GF_ASSERT in [1,6]) as index into static const ov01_022066DC[6] table of {fn,NULL,fn,fn} (16B structs, BOOL(*)(FieldSystem*)). 4 dispatchers ov01_021EAF18/34/54/70 call table[idx].unk00/04/08/0C(fieldSystem); unk04 always NULL so ov01_021EAF34 returns TRUE. ov01_021EAF98 HandleLoadOverlay(FS_OVERLAY_ID(OVY_19),OVY_LOAD_ASYNC)+CreateViewPhotoTask->unk_D8; ov01_021EAFB4 destroy+Unload. Table refs sub_0203DB6C/70/74 (from unk_0203DB6C, real sig BOOL(FieldSystem*) not the void(void) I guessed there - byte-identical so left as-is) + cluster partner ov01_021F68xx (still asm, local externs). Self-contained, no header (no callers). FS_EXTERN_OVERLAY(OVY_19) declared locally. Empty BOOL fns rely on -W nomissingreturn."
+    },
+    {
+      "file": "asm/unk_0206793C.s",
+      "lines": 168,
+      "functions": 3,
+      "attempts": 1,
+      "result": "matched",
+      "note": "compare-verified (chiri pkg -- compare OK, full ROM SHA1). NPC trade task module. CallTask_NPCTrade allocs NPCTradeTaskEnv (0x2c: NPCTradeAppData* unk00, int unk04 state, int unk08 slot, TRADE_ANIM_WORK unk0C @0xc (0x18), Pokemon* unk24/unk28), memsets, fills, TaskManager_Call(Task_NPCTrade). Task_NPCTrade: 7-case state machine (dense jump table on env->unk04) -> CreateTradeAnim+ReceiveMonToSlot / PaletteFadeUntilFinished / CallTask_Leave/Restore/FadeFromBlack / launch trade-seq app / Heap_Free*3+return TRUE. sub_0206793C (static) CallApplicationAsTask(taskman, &sTradeSequenceApp, env+0xc); note: discarded TaskManager_GetFieldSystem(taskman) call kept (bare statement, side-effect call). rodata sTradeSequenceApp = OverlayManagerTemplate{TradeSequence_Init/Main/Exit, FS_OVERLAY_ID(OVY_71)}. Self-contained (local prototype for CallTask_NPCTrade matching frozen unk_0206793C.h; that header also declares unrelated sub_02067xxx from other files). FS_EXTERN_OVERLAY(OVY_71) local. CallTask_RestoreOverworld is in unk_020552A4.h (not unk_02055244.h). objdiff SIZE 180v192 on Task_NPCTrade = jump-table-as-code false positive."
     }
   ],
   "failed": [

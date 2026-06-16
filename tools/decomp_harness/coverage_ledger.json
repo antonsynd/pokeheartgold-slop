@@ -1,12 +1,12 @@
 {
  "summary": {
-  "generated": "2026-06-16T21:21:29Z",
+  "generated": "2026-06-16T21:33:16Z",
   "by_status": {
    "matched": {
-    "files": 41,
-    "functions": 357,
-    "insn_lines": 6794,
-    "text_bytes_est": 14872
+    "files": 42,
+    "functions": 360,
+    "insn_lines": 6915,
+    "text_bytes_est": 15154
    },
    "blocked": {
     "files": 13,
@@ -15,10 +15,10 @@
     "text_bytes_est": 9622
    },
    "pending": {
-    "files": 249,
-    "functions": 19657,
-    "insn_lines": 943193,
-    "text_bytes_est": 2106024
+    "files": 248,
+    "functions": 19654,
+    "insn_lines": 943072,
+    "text_bytes_est": 2105742
    },
    "upstream": {
     "files": 368,
@@ -29,9 +29,9 @@
   },
   "function_totals": {
    "tracked": 20167,
-   "matched": 357,
+   "matched": 360,
    "partial_in_blocked": 50,
-   "pending": 19657
+   "pending": 19654
   },
   "blockers": [
    {
@@ -24209,8 +24209,8 @@
   },
   {
    "file": "asm/unk_0206793C.s",
-   "lsf_kind": "asm",
-   "status": "pending",
+   "lsf_kind": "src",
+   "status": "matched",
    "lines": 168,
    "function_count": 3,
    "text_bytes_est": 282,
@@ -24251,23 +24251,24 @@
      "mode": "thumb",
      "insns": 13,
      "size_est": 32,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "Task_NPCTrade",
      "mode": "thumb",
      "insns": 79,
      "size_est": 182,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "CallTask_NPCTrade",
      "mode": "thumb",
      "insns": 29,
      "size_est": 68,
-     "status": "pending"
+     "status": "matched"
     }
-   ]
+   ],
+   "source": "harness"
   },
   {
    "file": "asm/unk_02067A60.s",
