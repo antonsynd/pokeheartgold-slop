@@ -20,6 +20,10 @@ whole file: `patterns.py query --grep <word>`.
 
 MWCC -W error treats passing an int literal to an enum-typed parameter as an illegal implicit conversion (e.g. Heap_Create(3, 0x30, ...) where params are enum HeapID -> illegal implicit conversion from int to HeapID). Fix: use the named enum constant (HEAP_ID_3, HEAP_ID_48) or an explicit (enum X) cast. Codegen is identical (mov #imm), so this is purely about getting it to compile. The enum HEAP_ID_<N> names are sequential = value N.
 
+### x >> n on a u8/u16 emits asr (signed); retail lsr means the operand is u32/unsigned  <!-- id: u8-u16-rshift-promotes-signed-asr -->
+
+A right shift `x >> n` where x is u8 or u16 promotes x to signed int per C integer promotion, so MWCC emits an arithmetic shift (asr). If the asm shows a logical/unsigned shift (lsr) at that spot, the original operand was an unsigned type that does NOT promote to signed — i.e. u32 (or unsigned int). Fix: declare/cast the operand as u32 (e.g. change a derived param type from u8 to u32, or write ((u32)x >> n)). Left shifts (<<) are unaffected (lsl either way). Seen in unk_0205BFF0.c sub_0205C0A0: `b >> 1` with b as u8 emitted `asr r0,r1,#1` (0x1048); retail had `lsr r0,r1,#1` (0x0848); changing b to u32 fixed it. Note u16 also promotes to signed int, so u16 does NOT give lsr — only u32/unsigned does.
+
 ## General Codegen
 
 ### Register allocation follows declaration order  <!-- id: regalloc-order -->
@@ -309,3 +313,7 @@ NNS SDK leaf headers (e.g. <nnsys/g3d/binres/res_struct_accessor.h>, res_struct_
 ### objdiff.py misreports SIZE/section for functions with inline Thumb jump-table data  <!-- id: objdiff-size-miscount-inline-jumptable -->
 
 MWCC emits Thumb switch dispatch as `add r0,r0; add r0,pc; ldrh r0,[r0,#6]; lsl;asr; add pc,r0` followed by inline .short/.word offset-table data embedded in .text. objdiff.py's function-boundary/size heuristic can't tell this inline data from code, so it reports a spurious `SIZE N vs M` (often +8) for such functions and a small nonzero section-size delta — even when the bytes are IDENTICAL. The asm side disassembles the table as `.short`/`.word` (it has the source directives) while the C .o side shows the same bytes as bogus instructions (e.g. `movs r0,r1` = 0x0008). Verify with --disasm: if the instruction stream AND the table halfwords match (only bl relocs differ: asm fff7/feff vs c 00f0/00f8), the function matches. ALWAYS confirm with `chiri pkg -- compare` (authoritative) rather than trusting objdiff SIZE for jump-table functions. Seen in unk_02097BE0 (sub_02097BE0 5-case, sub_02097C50 4-case).
+
+### When chiri compare fails but objdiff shows only jump-table SIZE mismatches, diff main.sbin built both ways  <!-- id: pinpoint-1byte-via-main-sbin-diff -->
+
+For files full of inline-jump-table functions, objdiff reports SIZE mismatches for every function (it miscounts the inline .short tables) and refuses byte-level diffs, hiding any real 1-byte error. To pinpoint: build main with the C version (chiri pkg -- build --target main --no-compare) and `cp build/heartgold.us/main.sbin /tmp/main_c.sbin`; flip main.lsf back to the asm object, rebuild, `cp ... /tmp/main_asm.sbin`; then `cmp -l /tmp/main_asm.sbin /tmp/main_c.sbin` (asm baseline matches retail). cmp -l prints offsets+values in OCTAL and is 1-based. Convert: address = 0x02000000 + (byteno-1). `xxd -s <off> -l 48` both sbins to see context, then map to the function via the asm listing. This isolates a single differing byte (e.g. an asr-vs-lsr opcode) that objdiff masked. Used to find the lsr/asr bug in unk_0205BFF0 sub_0205C0A0.

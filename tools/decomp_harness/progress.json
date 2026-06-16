@@ -247,6 +247,14 @@
       "attempts": 1,
       "result": "matched",
       "note": "sonnet-drafted (Opus-orchestrated, written directly). Save_FriendGroup save-chunk (id 0xe): 6x FRIEND_GROUP(0x2c) accessors \u2014 name copies, getters/setters, group compare/search, PRandom seeding, struct-copy (sub_0202C738). Struct from include/friend_group.h. SPLIT-HEADER: included friend_group.h not unk_0202C730.h, because unk_0202C730.h declares Save_FriendGroup_GetGroupId as u8 (forces a lsl/lsr mask) but the asm returns the full u32 unmasked; declared it u32 + the other 9 unk_0202C730.h fns locally to keep that header frozen for its 5 matched callers. 2 internal helpers (sub_0202C8C4/sub_0202C8E4) forward-declared locally (global, not in any header). static bss ptr _021D2AF0 (write-only). sub_0202C78C uses u32 loop counters (unsigned blo/bls); Init/C88C use int (signed blt)."
+    },
+    {
+      "file": "asm/unk_0205BFF0.s",
+      "lines": 470,
+      "functions": 15,
+      "attempts": 1,
+      "result": "matched",
+      "note": "sonnet-drafted (Opus-orchestrated, written directly). 15 small NARC-index lookup fns, each a switch(idx 0..3) via dense inline jump table. Existing header unk_0205BFF0.h declares 8; it is NOT self-contained (uses u8 w/o types) and clang-format forces own-header-first, so included global.h and forward-declared all 15 locally (header untouched/frozen). KEY FIX: sub_0205C0A0 'b>>1' \u2014 u8 b promotes to signed int -> asr; retail uses unsigned lsr, so b must be u32. Found via 1-byte main.sbin diff (0x0848 lsr vs 0x1048 asr at 0x0205C0BA). Other 14 fns matched first try. switch-with-no-default leaves base uninitialized on idx>3 (matches asm; MWCC -W error did not flag it)."
     }
   ],
   "failed": [
@@ -319,8 +327,8 @@
   ],
   "in_progress": null,
   "stats": {
-    "total_attempts": 90,
-    "total_matched": 31,
+    "total_attempts": 91,
+    "total_matched": 32,
     "total_failed": 6
   }
 }

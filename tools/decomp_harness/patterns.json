@@ -376,6 +376,18 @@
       "category": "ipa",
       "title": "Header declares a narrower return type than the field (u8 vs u32) -> MWCC masks; if asm does not mask, the real return type is the wider one — use split-header",
       "body": "Symptom: a getter that just does `ldr r0,[p,#off]; bx lr` (no lsl/lsr/and mask) but the existing/public header declares it returning u8 (or u16). With that header, MWCC appends a truncation (`lsls r0,#24; lsrs r0,#24`) and the function is 4 bytes too big (objdiff SIZE 10 vs 14). The asm proves the real return type is u32/int (the value is returned full-width; any narrowing is the CALLERs job). Fix WITHOUT editing the shared header (it is frozen at the matching-time state its callers were built against — changing the return type would alter caller codegen and break their match / cascade via IPA): do NOT include that public header in the defining .c. Instead include the underlying data/struct header (here friend_group.h) and forward-declare the affected functions LOCALLY with the correct (wider) return type. Different TUs may legitimately see different return-type declarations for the same symbol in a matching decomp — the linker only matches by name. Seen in unk_0202C730.c: Save_FriendGroup_GetGroupId declared u8 in unk_0202C730.h (5 matched callers) but defined u32 locally to drop the mask. Verified: full ROM SHA1 still passes, callers unaffected."
+    },
+    {
+      "id": "u8-u16-rshift-promotes-signed-asr",
+      "category": "compiler",
+      "title": "x >> n on a u8/u16 emits asr (signed); retail lsr means the operand is u32/unsigned",
+      "body": "A right shift `x >> n` where x is u8 or u16 promotes x to signed int per C integer promotion, so MWCC emits an arithmetic shift (asr). If the asm shows a logical/unsigned shift (lsr) at that spot, the original operand was an unsigned type that does NOT promote to signed — i.e. u32 (or unsigned int). Fix: declare/cast the operand as u32 (e.g. change a derived param type from u8 to u32, or write ((u32)x >> n)). Left shifts (<<) are unaffected (lsl either way). Seen in unk_0205BFF0.c sub_0205C0A0: `b >> 1` with b as u8 emitted `asr r0,r1,#1` (0x1048); retail had `lsr r0,r1,#1` (0x0848); changing b to u32 fixed it. Note u16 also promotes to signed int, so u16 does NOT give lsr — only u32/unsigned does."
+    },
+    {
+      "id": "pinpoint-1byte-via-main-sbin-diff",
+      "category": "tooling",
+      "title": "When chiri compare fails but objdiff shows only jump-table SIZE mismatches, diff main.sbin built both ways",
+      "body": "For files full of inline-jump-table functions, objdiff reports SIZE mismatches for every function (it miscounts the inline .short tables) and refuses byte-level diffs, hiding any real 1-byte error. To pinpoint: build main with the C version (chiri pkg -- build --target main --no-compare) and `cp build/heartgold.us/main.sbin /tmp/main_c.sbin`; flip main.lsf back to the asm object, rebuild, `cp ... /tmp/main_asm.sbin`; then `cmp -l /tmp/main_asm.sbin /tmp/main_c.sbin` (asm baseline matches retail). cmp -l prints offsets+values in OCTAL and is 1-based. Convert: address = 0x02000000 + (byteno-1). `xxd -s <off> -l 48` both sbins to see context, then map to the function via the asm listing. This isolates a single differing byte (e.g. an asr-vs-lsr opcode) that objdiff masked. Used to find the lsr/asr bug in unk_0205BFF0 sub_0205C0A0."
     }
   ]
 }
