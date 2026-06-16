@@ -1,12 +1,12 @@
 {
  "summary": {
-  "generated": "2026-06-15T21:06:00Z",
+  "generated": "2026-06-16T04:03:33Z",
   "by_status": {
    "matched": {
-    "files": 17,
-    "functions": 93,
-    "insn_lines": 1432,
-    "text_bytes_est": 3200
+    "files": 19,
+    "functions": 108,
+    "insn_lines": 1761,
+    "text_bytes_est": 3888
    },
    "blocked": {
     "files": 5,
@@ -15,10 +15,10 @@
     "text_bytes_est": 6296
    },
    "pending": {
-    "files": 281,
-    "functions": 19978,
-    "insn_lines": 950081,
-    "text_bytes_est": 2121022
+    "files": 279,
+    "functions": 19963,
+    "insn_lines": 949752,
+    "text_bytes_est": 2120334
    },
    "upstream": {
     "files": 368,
@@ -29,9 +29,9 @@
   },
   "function_totals": {
    "tracked": 20167,
-   "matched": 93,
+   "matched": 108,
    "partial_in_blocked": 50,
-   "pending": 19978
+   "pending": 19963
   },
   "blockers": [
    {
@@ -15313,8 +15313,8 @@
   },
   {
    "file": "asm/unk_0203BA5C.s",
-   "lsf_kind": "asm",
-   "status": "pending",
+   "lsf_kind": "src",
+   "status": "matched",
    "lines": 241,
    "function_count": 8,
    "text_bytes_est": 338,
@@ -15347,58 +15347,59 @@
      "mode": "thumb",
      "insns": 10,
      "size_est": 22,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "GetMomSpawnId",
      "mode": "thumb",
      "insns": 3,
      "size_est": 6,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "GetFlyWarpData",
      "mode": "thumb",
      "insns": 25,
      "size_est": 52,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "GetDeathWarpData",
      "mode": "thumb",
      "insns": 28,
      "size_est": 58,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "GetSpecialSpawnWarpData",
      "mode": "thumb",
      "insns": 25,
      "size_est": 52,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "MapHeader_GetSpawnIdForDeathWarp",
      "mode": "thumb",
      "insns": 24,
      "size_est": 48,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "sub_0203BB50",
      "mode": "thumb",
      "insns": 16,
      "size_est": 32,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "FlypointFlagAction",
      "mode": "thumb",
      "insns": 32,
      "size_est": 68,
-     "status": "pending"
+     "status": "matched"
     }
-   ]
+   ],
+   "source": "harness"
   },
   {
    "file": "asm/field_system_rtc_weather.s",
@@ -43518,8 +43519,8 @@
   },
   {
    "file": "asm/overlay_01_021FB368.s",
-   "lsf_kind": "asm",
-   "status": "pending",
+   "lsf_kind": "src",
+   "status": "matched",
    "lines": 217,
    "function_count": 7,
    "text_bytes_est": 350,
@@ -43551,51 +43552,52 @@
      "mode": "thumb",
      "insns": 30,
      "size_est": 60,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ov01_021FB3A4",
      "mode": "thumb",
      "insns": 31,
      "size_est": 66,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ov01_021FB3E4",
      "mode": "thumb",
      "insns": 27,
      "size_est": 54,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ov01_021FB418",
      "mode": "thumb",
      "insns": 8,
      "size_est": 20,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ov01_021FB42C",
      "mode": "thumb",
      "insns": 34,
      "size_est": 72,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ov01_021FB474",
      "mode": "thumb",
      "insns": 21,
      "size_est": 46,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ov01_021FB4A0",
      "mode": "thumb",
      "insns": 15,
      "size_est": 32,
-     "status": "pending"
+     "status": "matched"
     }
-   ]
+   ],
+   "source": "harness"
   },
   {
    "file": "asm/overlay_01_021FB4C0.s",

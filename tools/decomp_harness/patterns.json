@@ -316,6 +316,12 @@
       "id": "unsigned-literal-branch-no-regshuffle",
       "title": "Force an unsigned loop branch (bcc/blo) with a 2u literal, keeping the counter int",
       "body": "When a loop counter is int but the asm uses an UNSIGNED branch (bcc/blo) for its bound check (cmp #N; bcc), changing the counter type to u32 fixes the branch BUT can shuffle the whole functions register allocation (u32 changes how MWCC allocates the counter and dependent temps). Instead keep the counter as int and make ONLY the comparison unsigned with an unsigned literal: for (i = 0; i < 2u; i++). The int->unsigned promotion at the compare site flips blt->bcc with zero extra instructions and leaves register allocation identical to the int version. Use this when the int version matched everything EXCEPT signed-vs-unsigned loop branches. Example: overlay_80_022384D8 ov80_0223857C (2x2 fill loops)."
+    },
+    {
+      "category": "matching-tricks",
+      "id": "explicit-operand-locals-force-load-batching",
+      "title": "Force MWCC to batch field loads before arithmetic with explicit operand locals in load order",
+      "body": "When a function reads several struct fields then does arithmetic on them (e.g. a point-in-rect test computing right=x+width-1, bottom=y+height-1), MWCC -O4,p's scheduler chooses whether to BATCH all the loads up front or INTERLEAVE load-compute-load-compute. Writing `int right = zone->x + zone->width - 1; int bottom = zone->y + zone->height - 1;` (named result locals, or fully-inline exprs) made MWCC compute right completely (load x, load width, add, sub) BEFORE loading y/height -> a same-SIZE-but-byte-different mismatch plus a consistent rN<->rM swap (right/y landed in swapped registers). The original loaded ALL four fields first (x, width, y, height) then did both adds then both subs. Fix: introduce one explicit local PER OPERAND, declared in the asm's load order, assigned before any use: `int x=zone->x; int width=zone->width; int y=zone->y; int height=zone->height; int right=x+width-1; int bottom=y+height-1;`. The upfront assignments make the scheduler emit the 4 loads consecutively (decl order = load order x,width,y,height) and the operand-reuse registers fall out exactly (x=r5, right=r3 reusing width's reg, y=r4, bottom=r2 reusing height's reg). Diagnose via objdiff --disasm: identical instructions/branches, only load positions + 2 cmp operand regs differ. Example: overlay_01_021FB368 ov01_021FB368 (static rect-contains helper)."
     }
   ]
 }

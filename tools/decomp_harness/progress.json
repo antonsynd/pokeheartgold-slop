@@ -143,6 +143,14 @@
       "attempts": 3,
       "result": "matched",
       "note": "OBJECT-VERIFIED (src .o byte-identical to asm .o: all 8 fns match modulo bl relocs, 30-entry .rodata sSpawnMaps table byte-identical). Full-ROM chiri compare BLOCKED by an environment clean-build reproducibility issue (a tidy mid-session wiped the golden cached build state; a from-scratch rebuild in this macOS/Wine env fails the .sbin check for ALL 124 overlays + main, including pure-asm modules -> systemic link/encode-stage non-reproducibility, NOT this decomp). Spawn/flypoint/deathwarp lookup table module: SpawnMap struct (9 u16, bitfield-packed flagIdx:8/isBlackoutSpawn:1/isFlyPoint:1 and deathSpawnX:8/deathSpawnY:8), 30 entries; 4 frozen-header fns (GetMomSpawnId/GetDeathWarpData/GetSpecialSpawnWarpData/MapHeader_GetSpawnIdForDeathWarp) + GetFlyWarpData/sub_0203BB50/FlypointFlagAction (derived) + static SpawnIdToTableIndex. Match fixes: deathSpawnX/Y as u16:8 bitfields (ldrh+shift not ldrb); __attribute__((aligned(4))) on the array to match the asm 4-byte .rodata section alignment."
+    },
+    {
+      "file": "asm/overlay_01_021FB368.s",
+      "lines": 217,
+      "functions": 7,
+      "attempts": 2,
+      "result": "matched",
+      "note": "sonnet-drafted. Rect-zone manager: UnkStruct_Ov01_021FB368 {int count; UnkStruct_Ov01_021FB368_sub *zones}(0x8) + sub {int x,y,width,height,value,active}(0x18). Full-ROM chiri compare OK (rom.arm64.sha1). Trickiest fn = static point-in-rect ov01_021FB368: required explicit `int x,width,y,height` locals in that EXACT order to make MWCC -O4,p batch all four field loads before computing right=x+width-1/bottom=y+height-1 (with `right`/`bottom` locals alone or inline exprs, right was computed before y/height were loaded -> same size but byte mismatch + r3<->r4 swap). Loops: ov01_021FB3A4 for-loop with u32 count param (unsigned bls/bcc) + u8 i; ov01_021FB42C for-loop with int count field (signed ble/blt) + u8 i. IPA-safe: new public header + _internal.h split (no matched callers yet)."
     }
   ],
   "failed": [
@@ -188,8 +196,8 @@
   ],
   "in_progress": null,
   "stats": {
-    "total_attempts": 76,
-    "total_matched": 18,
+    "total_attempts": 77,
+    "total_matched": 19,
     "total_failed": 5
   }
 }
