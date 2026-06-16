@@ -195,7 +195,7 @@ Static main
     Object src/save_vars_flags.o
     Object src/task.o
     Object src/encounter.o
-    Object asm/unk_020517A4.o
+    Object src/unk_020517A4.o
     Object src/battle/battle_setup.o
     Object src/blackout.o
     Object src/game_clear.o
