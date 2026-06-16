@@ -175,6 +175,14 @@
       "attempts": 3,
       "result": "matched",
       "note": "sonnet-drafted. NNS G3d box-test/geometry module: 2 public entry fns (sub_0201F990 SRT+box-test, sub_0201FA34 trans+scale+box-test) + 2 static helpers (sub_0201FAA4 builds 6-s16 box param, sub_0201FAC8 emits POLYGON_ATTR/BEGIN/END/BOX_TEST then polls G3X_GetBoxTestResult). Base-set seq = NNS_G3dGlbSetBaseTrans/SetBaseRot(inline=MI_Copy36B+flag&=~0xa4)/SetBaseScale/Flush. G3X_GetBoxTestResult has NO C proto -> local extern int(int*). Full-ROM chiri compare OK. Three surgeries: (1) MWCC assigns stack slots in REVERSE declaration order -> reorder locals (box,trans,scale) to match asm layout; (2) fill VecFx32 with one repeated mem value needs a temp `v=src; s.x=v;s.y=v;s.z=v;` (separate member stores from a load do NOT CSE -> 3 reloads; chained s.x=s.y=s.z=v stores reverse); (3) load-all-then-store-forward for 3 distinct values needs temps declared in REVERSE field order so last-computed lands in r0 and stores forward; (4) defer const store (begin=0) to a statement between calls, not an initializer, so MWCC schedules it after the prior bl."
+    },
+    {
+      "file": "asm/overlay_01_021FC4C4.s",
+      "lines": 273,
+      "functions": 13,
+      "attempts": 2,
+      "result": "matched",
+      "note": "opus-drafted. NARC/heap-backed resource pool manager (6 public + 7 static). Manager struct 0x18 header + inline entry table[count] (8B entries {void* data; u32 id}) at this+0x18; child heap holds struct + resource allocs. Ctor/dtor, alloc/free/get/contains-by-id, NARC member loader. GF_ASSERT(expr) macro reproduces the cmp/beq/bl GF_AssertFail pattern. Full-ROM chiri compare OK. Two surgeries: (1) ctor spill steering -- reassign the dead `extraSize` param in-place (extraSize = heapSize - extraSize) so MWCC reuses its callee-saved reg for structSize (subs r5,r6,r5) and spills tableSize instead; a fresh structSize local made MWCC spill structSize and keep tableSize in a reg (2-byte larger). (2) dtor loop tail order -- asm does n-- THEN entry++ THEN cmp/bne, so write explicit `n--; entry++;` before `while (n != 0)` rather than `entry++; } while(--n)` (the latter, which matched the no-call lookup loops 624/644, emits entry++ then n-- with no cmp)."
     }
   ],
   "failed": [
@@ -220,8 +228,8 @@
   ],
   "in_progress": null,
   "stats": {
-    "total_attempts": 80,
-    "total_matched": 22,
+    "total_attempts": 81,
+    "total_matched": 23,
     "total_failed": 5
   }
 }

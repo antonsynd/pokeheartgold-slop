@@ -334,6 +334,12 @@
       "category": "matching-tricks",
       "title": "Stack-slot OFFSET assignment is reverse declaration order (first-declared = highest sp+offset)",
       "body": "Distinct from register-allocation decl-order tricks: when a function has MULTIPLE stack-resident locals (arrays or structs that must live at sp+offset, i.e. their address is taken or they're too big for a reg), MWCC -O4,p assigns the stack SLOTS in REVERSE declaration order — the FIRST-declared local gets the HIGHEST sp offset, the LAST-declared gets the lowest. Diagnose via objdiff --disasm: same instructions but `add rN, sp, #X` / `str rN, [sp,#X]` offsets are permuted between two equal-size stack locals. Fix: reorder the C declarations so the wanted layout falls out. Examples from unk_0201F990: (a) sub_0201F990 needed `s16 box[6]; VecFx32 trans; VecFx32 scale;` in that order to get scale@sp+0x10, trans@sp+0x1c, box@sp+0x28 (box first-declared -> highest). (b) sub_0201FAC8 needed `int result; u32 polyAttr; u32 begin;` to get result@sp+8 (highest), polyAttr@sp+4, begin@sp+0. Scalars that stay in registers (pointers, ints used immediately) do NOT participate — only the spilled/addressed locals do. Related but separate from [[decl-order-regalloc]] and [[regalloc-order]] which govern which REGISTER, not which stack offset."
+    },
+    {
+      "id": "reassign-dead-param-to-steer-spill",
+      "category": "matching-tricks",
+      "title": "Reassign a dead parameter in-place to reuse its register and steer which local spills",
+      "body": "When several values must survive a sequence of calls and there are more survivors than callee-saved registers, MWCC -O4,p must spill some. If objdiff shows the SAME instructions but a DIFFERENT value spilled (e.g. asm computes `subs r5,r6,r5` keeping structSize in extraSize's register and spills tableSize, while your C spills structSize and keeps tableSize in a reg -> a ~2-byte size delta), steer the allocator by REUSING a now-dead parameter's storage: write `extraSize = heapSize - extraSize;` instead of introducing a fresh `u32 structSize = heapSize - extraSize;`. The in-place reassignment makes MWCC reuse extraSize's callee-saved register for the new value (matching the asm's in-place `subs`), freeing the allocator to spill the other competing long-lived local instead. Seen in overlay_01_021FC4C4 ov01_021FC4C4 ctor. Related to [[decl-order-regalloc]] but the lever here is operand identity (reuse vs new variable), not declaration order."
     }
   ]
 }
