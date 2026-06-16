@@ -388,6 +388,13 @@
       "category": "tooling",
       "title": "When chiri compare fails but objdiff shows only jump-table SIZE mismatches, diff main.sbin built both ways",
       "body": "For files full of inline-jump-table functions, objdiff reports SIZE mismatches for every function (it miscounts the inline .short tables) and refuses byte-level diffs, hiding any real 1-byte error. To pinpoint: build main with the C version (chiri pkg -- build --target main --no-compare) and `cp build/heartgold.us/main.sbin /tmp/main_c.sbin`; flip main.lsf back to the asm object, rebuild, `cp ... /tmp/main_asm.sbin`; then `cmp -l /tmp/main_asm.sbin /tmp/main_c.sbin` (asm baseline matches retail). cmp -l prints offsets+values in OCTAL and is 1-based. Convert: address = 0x02000000 + (byteno-1). `xxd -s <off> -l 48` both sbins to see context, then map to the function via the asm listing. This isolates a single differing byte (e.g. an asr-vs-lsr opcode) that objdiff masked. Used to find the lsr/asr bug in unk_0205BFF0 sub_0205C0A0."
+    },
+    {
+      "id": "no-cache-reloaded-pointer-across-calls",
+      "category": "matching-tricks",
+      "title": "Don't cache base->ptr in a local when the asm RELOADS it across calls (inverse of hoist-size-local)",
+      "body": "Counterpart to [[hoist-size-local-callee-saved]]. When a function holds a base pointer (e.g. fieldSystem in r4) and repeatedly dereferences base->ptr->field across several bl calls, MWCC RELOADS base->ptr after each call because a call may invalidate that memory (it can't prove base->ptr is unchanged). The original source therefore accessed base->ptr->field INLINE each time. Introducing a readability local `T *p = base->ptr;` breaks the match: a local is NOT invalidated by calls, so MWCC keeps it live in a CALLEE-SAVED register across the whole function, which (a) consumes an extra callee-saved reg and (b) WIDENS the push/pop (e.g. asm `push {r4,lr}` becomes C `push {r3,r4,r5,lr}`) — and the base pointer it displaces gets its own reg too. Diagnose via objdiff: many 'real byte diffs' that are actually just the wider push/pop + shifted reg numbers, and a SIZE delta of a few bytes. Fix: delete the local, write base->ptr->field inline at every use; CSE still collapses multiple derefs WITHIN a call-free span into one load (matching the asm's per-region single reload). Seen in overlay_01_021F3D38.c (ov01_021F3E10, ov01_021F3E4C: fieldSystem->unk68 reloaded 2-3x across BgSetPos/sub_0205B63C/sub_0205B6A0 calls). Contrast: cache the pointer in a local ONLY when the asm keeps it in a callee-saved reg across calls (D98 in the same file DOES cache fieldSystem->unk68 because fieldSystem itself is dead after the first load).",
+      "source": "overlay_01_021F3D38.c"
     }
   ]
 }

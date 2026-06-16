@@ -1,12 +1,12 @@
 {
  "summary": {
-  "generated": "2026-06-16T12:48:32Z",
+  "generated": "2026-06-16T14:21:15Z",
   "by_status": {
    "matched": {
-    "files": 32,
-    "functions": 229,
-    "insn_lines": 4223,
-    "text_bytes_est": 9200
+    "files": 33,
+    "functions": 242,
+    "insn_lines": 4470,
+    "text_bytes_est": 9744
    },
    "blocked": {
     "files": 12,
@@ -15,10 +15,10 @@
     "text_bytes_est": 9622
    },
    "pending": {
-    "files": 259,
-    "functions": 19785,
-    "insn_lines": 945764,
-    "text_bytes_est": 2111696
+    "files": 258,
+    "functions": 19772,
+    "insn_lines": 945517,
+    "text_bytes_est": 2111152
    },
    "upstream": {
     "files": 368,
@@ -29,9 +29,9 @@
   },
   "function_totals": {
    "tracked": 20167,
-   "matched": 229,
+   "matched": 242,
    "partial_in_blocked": 50,
-   "pending": 19785
+   "pending": 19772
   },
   "blockers": [
    {
@@ -39539,8 +39539,8 @@
   },
   {
    "file": "asm/overlay_01_021F3D38.s",
-   "lsf_kind": "asm",
-   "status": "pending",
+   "lsf_kind": "src",
+   "status": "matched",
    "lines": 327,
    "function_count": 13,
    "text_bytes_est": 544,
@@ -39581,93 +39581,94 @@
      "mode": "thumb",
      "insns": 12,
      "size_est": 26,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ov01_021F3D50",
      "mode": "thumb",
      "insns": 11,
      "size_est": 26,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ov01_021F3D68",
      "mode": "thumb",
      "insns": 4,
      "size_est": 8,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ov01_021F3D70",
      "mode": "thumb",
      "insns": 9,
      "size_est": 18,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ov01_021F3D80",
      "mode": "thumb",
      "insns": 2,
      "size_est": 4,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ov01_021F3D84",
      "mode": "thumb",
      "insns": 3,
      "size_est": 6,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ov01_021F3D88",
      "mode": "thumb",
      "insns": 9,
      "size_est": 18,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ov01_021F3D98",
      "mode": "thumb",
      "insns": 43,
      "size_est": 94,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ov01_021F3DFC",
      "mode": "thumb",
      "insns": 8,
      "size_est": 20,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ov01_021F3E10",
      "mode": "thumb",
      "insns": 28,
      "size_est": 62,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ov01_021F3E4C",
      "mode": "thumb",
      "insns": 38,
      "size_est": 84,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ov01_021F3EA0",
      "mode": "thumb",
      "insns": 29,
      "size_est": 64,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ov01_021F3EE0",
      "mode": "thumb",
      "insns": 51,
      "size_est": 114,
-     "status": "pending"
+     "status": "matched"
     }
-   ]
+   ],
+   "source": "harness"
   },
   {
    "file": "asm/overlay_01_021F3F50.s",
@@ -95094,6 +95095,8 @@
     "sub_02078E28"
    ],
    "exports": [
+    "IncrementGameStat119",
+    "IncrementGameStat47",
     "ov45_02229EE0",
     "ov45_02229F70",
     "ov45_02229F94",
@@ -95206,8 +95209,6 @@
     "ov45_0222B0BC",
     "ov45_0222B0D8",
     "ov45_0222B0E8",
-    "ov45_0222B0F8",
-    "ov45_0222B108",
     "ov45_0222B118",
     "ov45_0222B134",
     "ov45_0222B1B4",
@@ -96170,14 +96171,14 @@
      "status": "pending"
     },
     {
-     "name": "ov45_0222B0F8",
+     "name": "IncrementGameStat47",
      "mode": "thumb",
      "insns": 7,
      "size_est": 18,
      "status": "pending"
     },
     {
-     "name": "ov45_0222B108",
+     "name": "IncrementGameStat119",
      "mode": "thumb",
      "insns": 7,
      "size_est": 18,
@@ -101164,6 +101165,8 @@
     "Heap_Create",
     "Heap_Destroy",
     "Heap_Free",
+    "IncrementGameStat119",
+    "IncrementGameStat47",
     "InitBgFromTemplate",
     "IsPaletteFadeFinished",
     "IsSEPlaying",
@@ -101415,8 +101418,6 @@
     "ov45_0222B0BC",
     "ov45_0222B0D8",
     "ov45_0222B0E8",
-    "ov45_0222B0F8",
-    "ov45_0222B108",
     "ov45_0222B118",
     "ov45_0222B134",
     "ov45_0222B1B4",

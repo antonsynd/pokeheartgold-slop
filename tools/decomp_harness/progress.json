@@ -255,6 +255,14 @@
       "attempts": 1,
       "result": "matched",
       "note": "sonnet-drafted (Opus-orchestrated, written directly). 15 small NARC-index lookup fns, each a switch(idx 0..3) via dense inline jump table. Existing header unk_0205BFF0.h declares 8; it is NOT self-contained (uses u8 w/o types) and clang-format forces own-header-first, so included global.h and forward-declared all 15 locally (header untouched/frozen). KEY FIX: sub_0205C0A0 'b>>1' \u2014 u8 b promotes to signed int -> asr; retail uses unsigned lsr, so b must be u32. Found via 1-byte main.sbin diff (0x0848 lsr vs 0x1048 asr at 0x0205C0BA). Other 14 fns matched first try. switch-with-no-default leaves base uninitialized on idx>3 (matches asm; MWCC -W error did not flag it)."
+    },
+    {
+      "file": "asm/overlay_01_021F3D38.s",
+      "lines": 327,
+      "functions": 13,
+      "attempts": 1,
+      "result": "matched",
+      "note": "sonnet-drafted; 13/13 fns match, chiri pkg -- compare full ROM SHA1 OK. Field-system message-scroll/arrow window controller (struct FieldSystemUnkSub68). 5-case Thumb jump table (ov01_021F3D98) matched via dense case 0..4. Two post-draft fixes: (1) ov01_021F3DFC param must be u8 not int \u2014 frozen overlay_01_021F3D38.h says `int a1`; used local u8 decl (split-header) to avoid int->u8 truncation before u8-param ov01_021F3D70, field_system.c untouched; (2) ov01_021F3E10/E4C must NOT cache fieldSystem->unk68 in a local \u2014 asm reloads it across calls (keeps fieldSystem in callee-saved reg); a cached local forces an extra reg + wider push. Callees sub_0205B63C/sub_0205B6A0 extern (text_0205B4EC.s still asm)."
     }
   ],
   "failed": [
@@ -363,8 +371,8 @@
   ],
   "in_progress": null,
   "stats": {
-    "total_attempts": 94,
-    "total_matched": 32,
+    "total_attempts": 95,
+    "total_matched": 33,
     "total_failed": 10
   }
 }

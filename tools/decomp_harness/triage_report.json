@@ -1,5 +1,5 @@
 {
- "generated": "2026-06-16T12:48:32Z",
+ "generated": "2026-06-16T14:21:15Z",
  "weights": {
   "insn_line": 1.0,
   "unknown_callee": 40.0,
@@ -10,28 +10,6 @@
   "special_section": 500.0
  },
  "queue": [
-  {
-   "file": "asm/overlay_01_021F3D38.s",
-   "score": 327.0,
-   "special_sections": [],
-   "functions": 13,
-   "insn_lines": 247,
-   "data_only": false,
-   "unknown_callees": [
-    "sub_0205B63C",
-    "sub_0205B6A0"
-   ],
-   "jumptable_words": 0,
-   "rodata_bytes": 0,
-   "arm_functions": 0,
-   "gated_by": [],
-   "cluster_partners": [
-    {
-     "file": "asm/text_0205B4EC.s",
-     "shared_symbols": 2
-    }
-   ]
-  },
   {
    "file": "asm/overlay_01_021EA8E0.s",
    "score": 330.0,
@@ -8585,7 +8563,7 @@
   },
   {
    "file": "asm/overlay_01_021E5900.s",
-   "score": 5551.8,
+   "score": 5431.8,
    "special_sections": [],
    "functions": 38,
    "insn_lines": 1464,
@@ -8631,9 +8609,6 @@
     "ov01_021F3638",
     "ov01_021F3660",
     "ov01_021F3C9C",
-    "ov01_021F3D38",
-    "ov01_021F3D50",
-    "ov01_021F3D98",
     "ov01_021F50F0",
     "ov01_021F6020",
     "ov01_021F6118",
@@ -12976,6 +12951,8 @@
     "DrawFrameAndWindow1",
     "DrawFrameAndWindow2",
     "DrawFrameAndWindow3",
+    "IncrementGameStat119",
+    "IncrementGameStat47",
     "IsPaletteFadeFinished",
     "IsSEPlaying",
     "LoadUserFrameGfx1",
@@ -13115,8 +13092,6 @@
     "ov45_0222B0BC",
     "ov45_0222B0D8",
     "ov45_0222B0E8",
-    "ov45_0222B0F8",
-    "ov45_0222B108",
     "ov45_0222B118",
     "ov45_0222B134",
     "ov45_0222B1B4",
