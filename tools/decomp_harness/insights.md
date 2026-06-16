@@ -208,6 +208,10 @@ When asm BSS symbol sizes don't match `sizeof(StructType)`, use a raw `u8 array[
 
 When multiple data labels are accessed from a common base pointer (e.g. `ldr r0, =_0210F64C; str r1, [r0, #0x10]` targeting `_0210F65C`), the labels are contiguous. Declare them as separate static arrays in order — MWCC lays them out contiguously. Stores use base symbol + offset while call arguments use the target symbol directly; both produce correct literal pools as long as the arrays are separate declarations (not one big array with #defines).
 
+### Packed lookup tables (VALUE | (code<<N)) are bitfield structs; access via members emits the asm's shift extraction  <!-- id: packed-lookup-table-is-bitfield-struct -->
+
+A rodata table whose entries are `KEY | (CODE << N)` (e.g. `SPECIES_X | (22<<10)`) and whose readers extract fields with SHIFT PAIRS (`lsl #(32-N); lsr #(32-N)` for the low field; `lsl #16; lsr #(16+N)` style for the high field) is, in the original source, an array of a BITFIELD struct: `typedef struct { u16 key : N; u16 code : (16-N); } E;` with initializers `{ KEY, CODE }`. Accessing `tbl[i].key` / `tbl[i].code` makes MWCC emit the exact shift-pair extraction. Writing it as `static const u16 tbl[]` + `(tbl[i] & MASK)` / `(tbl[i] >> N)` instead emits AND-with-a-loaded-mask-register and asr — which (a) differ instruction-for-instruction and (b) consume an extra register for the mask, forcing a callee-saved reg + push/pop (function SIZE grows). Seen in unk_020517A4 (_020FC3B4 species table, _020FC3CA trainerclass table; both `{u16 id:10; u16 param:6}`). Diagnose: objdiff shows asr/and+mask vs lsl/lsr pairs, often with a spurious push {..} the asm lacks.
+
 ## Recurring File/Module Patterns
 
 ### Task callback pattern (field system)  <!-- id: task-callback-pattern -->

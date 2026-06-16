@@ -1,12 +1,12 @@
 {
  "summary": {
-  "generated": "2026-06-16T07:22:03Z",
+  "generated": "2026-06-16T07:46:41Z",
   "by_status": {
    "matched": {
-    "files": 26,
-    "functions": 167,
-    "insn_lines": 2790,
-    "text_bytes_est": 6198
+    "files": 27,
+    "functions": 175,
+    "insn_lines": 2983,
+    "text_bytes_est": 6614
    },
    "blocked": {
     "files": 7,
@@ -15,10 +15,10 @@
     "text_bytes_est": 7320
    },
    "pending": {
-    "files": 270,
-    "functions": 19892,
-    "insn_lines": 948265,
-    "text_bytes_est": 2117000
+    "files": 269,
+    "functions": 19884,
+    "insn_lines": 948072,
+    "text_bytes_est": 2116584
    },
    "upstream": {
     "files": 368,
@@ -29,9 +29,9 @@
   },
   "function_totals": {
    "tracked": 20167,
-   "matched": 167,
+   "matched": 175,
    "partial_in_blocked": 50,
-   "pending": 19892
+   "pending": 19884
   },
   "blockers": [
    {
@@ -15729,8 +15729,8 @@
   },
   {
    "file": "asm/unk_020517A4.s",
-   "lsf_kind": "asm",
-   "status": "pending",
+   "lsf_kind": "src",
+   "status": "matched",
    "lines": 339,
    "function_count": 8,
    "text_bytes_est": 416,
@@ -15762,58 +15762,59 @@
      "mode": "thumb",
      "insns": 52,
      "size_est": 108,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "BattleStartGetTransition",
      "mode": "thumb",
      "insns": 19,
      "size_est": 42,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "BattleStartGetMusic",
      "mode": "thumb",
      "insns": 11,
      "size_est": 24,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "BattleSetup_GetWildTransitionEffect",
      "mode": "thumb",
      "insns": 7,
      "size_est": 18,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "sub_020517F8",
      "mode": "thumb",
      "insns": 3,
      "size_est": 6,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "BattleSetup_GetWildBattleMusic",
      "mode": "thumb",
      "insns": 47,
      "size_est": 106,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "NPCTrainerGetBattleIntroAndMusicParam",
      "mode": "thumb",
      "insns": 22,
      "size_est": 44,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "WildPokemonGetBattleIntroAndMusicParam",
      "mode": "thumb",
      "insns": 32,
      "size_est": 68,
-     "status": "pending"
+     "status": "matched"
     }
-   ]
+   ],
+   "source": "harness"
   },
   {
    "file": "asm/battle/battle_setup.s",
