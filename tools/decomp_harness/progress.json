@@ -159,6 +159,14 @@
       "attempts": 1,
       "result": "matched",
       "note": "sonnet-drafted. OverlayManager proc module LegendaryCinematic_Init/Main/Exit. Full-ROM chiri compare OK. Init: Heap_Create(HEAP_ID_3,HEAP_ID_153,0x80000) [0x80000 -> movs#2;lsls#18], OverlayManager_CreateAndGetData(man,sizeof(work)=0x41C,HEAP_ID_153), MI_CpuFill8, data->args=GetArgs. Main: dispatch via rodata fn-ptr table sLegendaryCinematicFuncs[data->args->unk4C](data) (ScriptCinematic_HoOh/Lugia/Arceus, defined in overlay_106 asm). Internal 0x41C work struct {LegendaryCinematicArgs *args; u8 filler[0x418]}. IPA: existing include/unk_02097B78.h is frozen (shared w/ matched launch_application.c) -> used frozen-prototype-header-split (new unk_02097B78_internal.h includes global.h then the public header). Matched first try, no surgery."
+    },
+    {
+      "file": "asm/overlay_01_021FCD2C.s",
+      "lines": 241,
+      "functions": 12,
+      "attempts": 2,
+      "result": "matched",
+      "note": "sonnet-drafted. SysTask camera-distance interpolation module (4 public + 8 static + rodata dispatch table {CDBC,CDC4,CDFC,NULL}). 0x34 work struct. Full-ROM chiri compare OK. Two surgeries: (1) ov01_021FCD2C chained store `work->unk20 = work->unk10 = Camera_GetDistance(camera)` \u2014 order is RIGHT operand stored first so to store unk10 before unk20 the chain must read unk20=unk10=expr; also needed explicit `Camera *camera` local because the work->unk30 store aliases fieldSystem->camera and MWCC reloaded it. (2) ov01_021FCE74 branch polarity: asm keeps the success(>=) path INLINE and branches away to return FALSE, so write `if (unk24 >= unk1C){...; return TRUE;} return FALSE;` not `if (<) return FALSE`. unk24 u32 vs unk1C int -> unsigned bcc. CE34 frameless interworking tail-call to Camera_SetDistance matched from a plain single-call body."
     }
   ],
   "failed": [
@@ -204,8 +212,8 @@
   ],
   "in_progress": null,
   "stats": {
-    "total_attempts": 78,
-    "total_matched": 20,
+    "total_attempts": 79,
+    "total_matched": 21,
     "total_failed": 5
   }
 }
