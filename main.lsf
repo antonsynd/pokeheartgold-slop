@@ -163,7 +163,7 @@ Static main
     Object src/unk_0203BA5C.o
     Object src/field_system_rtc_weather.o
     Object src/start_menu.o
-    Object asm/unk_0203DB6C.o
+    Object src/unk_0203DB6C.o
     Object src/field_system.o
     Object src/location_backup.o
     Object src/launch_application.o

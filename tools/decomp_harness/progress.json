@@ -311,6 +311,14 @@
       "attempts": 1,
       "result": "matched",
       "note": "compare-verified (chiri pkg -- compare OK, full ROM SHA1). Field text/window helper module (9 fns, no rodata). Wrappers around AddWindowParameterized/AddTextPrinterParameterized/LoadUserFrameGfx2/DrawFrameAndWindow2/3/LoadFontPal0,1/TextFlags_*. SELF-CONTAINED: did NOT include the frozen shared header include/text_0205B4EC.h (it uses FontID but clang-format forces own-header first, before font.h -> FontID undefined -> sub_0205B5EC mis-parses). Used local prototypes for all 9 fns matching the header's frozen signatures + the 3 not in header (sub_0205B4EC/B63C/B6A0); shared header untouched -> zero IPA risk. Local externs for sub_0200EC0C + DrawFrameAndWindow3 (cluster partner render_window still asm). Key gotchas: (1) u8 bgId -> GFBgLayer needs explicit (GFBgLayer) cast (MWCC int->enum is a hard error even with -W noimplicitconv). (2) IsPrintFinished returns BOOL but asm zero-extends to u8 -> use a u8 local assigned TRUE/FALSE then 'return ret' (u8->int widening emits lsl#0x18;lsr#0x18). (3) 0x65<<2 and enum pal slot consts (GF_PAL_SLOT_13/12_OFFSET) materialize as mov+lsl; 0x237/0x2A3/0x3E2/0x3E2 as ldr literal. HEAP_ID_FIELD1=4."
+    },
+    {
+      "file": "asm/unk_0203DB6C.s",
+      "lines": 454,
+      "functions": 12,
+      "attempts": 1,
+      "result": "matched_nonmatching",
+      "note": "compare-verified (chiri pkg -- compare OK, full ROM SHA1). Field interaction module (facing tile/object, BG hidden-item + direction events, coord/trigger events). 11/12 functions match as C; GetInteractedBackgroundEventScript committed as inline-asm NONMATCHING (5-byte scheduling diff on its two-identical-walking-pointer loop - retail sinks the field ptr past the loop guard & increments it before the passed copy; MWCC-from-C wouldn't reproduce; see attempts_log). SELF-CONTAINED: did NOT include own header unk_0203DB6C.h (it uses LocalMapObject via script.h but clang-format forces own-header first, before map_object.h -> LocalMapObject undefined; same trap as text_0205B4EC). Local prototypes for all 12 fns; local externs none (all imports have headers). Key gotchas: (1) needed field_system.h for the complete FieldSystem struct (script.h only forward-declares); sub_0205B700 is in metatile_behavior.h not unk_02054648.h. (2) COORD_EVENT.x/.z are s16 in the frozen struct but retail reads them with ldrh in sub_0203DE04 -> used (u16) casts. (3) BOOL fns whose asm zero-extends to u8 (sub_0203DBD4, BgEventIsUncollectedHiddenItem) use a u8 local then return it; BOOL fns without the mask (sub_0203DC64, BgEventDirectionIsCompatibleWithPlayerFacing) return TRUE/FALSE directly. FieldSystem mapObjectManager@0x3c, playerAvatar@0x40."
     }
   ],
   "failed": [
