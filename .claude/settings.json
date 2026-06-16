@@ -20,6 +20,23 @@
             "timeout": 30
           }
         ]
+      },
+      {
+        "matcher": "Bash",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "\"$CLAUDE_PROJECT_DIR\"/tools/decomp_harness/hooks/clean_bad_deps.sh",
+            "if": "Bash(chiri:*)",
+            "timeout": 10
+          },
+          {
+            "type": "command",
+            "command": "\"$CLAUDE_PROJECT_DIR\"/tools/decomp_harness/hooks/clean_bad_deps.sh",
+            "if": "Bash(make:*)",
+            "timeout": 10
+          }
+        ]
       }
     ],
     "SessionStart": [
