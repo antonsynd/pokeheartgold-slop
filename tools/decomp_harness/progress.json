@@ -332,12 +332,21 @@
       "result": "regalloc_diff",
       "blocker_id": "regalloc-loop-ptr-swap",
       "reason": "Frontier graphics-loader (8 fns). 7/8 match byte-for-byte; ov80_02239DD0 screen-copy loop has an irreducible r4/r5 swap (MWCC dst=r4/table=r5 vs retail dst=r5/table=r4). Full analysis (structs, API calls, HEAP_ID_101/NARC_a_1_8_3 constants, G2_SetBlendAlpha) saved to knowledge.json for a future attempt."
+    },
+    {
+      "file": "asm/unk_02087FD4.s",
+      "lines": 421,
+      "functions": 3,
+      "attempts": 0,
+      "result": "deferred_large_data",
+      "blocker_id": "large-reloc-data-file",
+      "reason": "~4032-byte relocation-heavy rodata (field-move-response trees, ~27 nested tables chained via .word pointers) + 3 trivial accessor fns. Pure-data matching with relocations is unforgiving and would take a dedicated session, not a loop tick. Analysis saved to knowledge.json. Deferred so the loop continues on function-decomp targets."
     }
   ],
   "in_progress": null,
   "stats": {
     "total_attempts": 92,
     "total_matched": 32,
-    "total_failed": 7
+    "total_failed": 8
   }
 }

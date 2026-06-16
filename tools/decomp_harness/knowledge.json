@@ -5246,5 +5246,14 @@
       "BLOCKER (ov80_02239DD0 screen loop): MWCC assigns dst=r4/table=r5; retail dst=r5/table=r4 (one r4/r5 swap; 100=100 insns; frame matches after hoisting scrnData/charData/raw out-param ptrs to fn scope -> sub sp #20, no r3 align-push). Tried: pointer-walk dst+tbl both explicit; ov80_0223DB2C[i] index for table; &base[i*0x1000] index for dst (regressed-spill). All gave dst=r4. Future: find the C idiom that makes MWCC put work-derived dst in r5, table induction in r4."
     ],
     "sweep_output": null
+  },
+  "asm/unk_02087FD4.s": {
+    "notes": "DEFERRED \u2014 large relocation-heavy DATA file (62 insn lines across 3 small accessor fns + ~4032 bytes rodata = ~27 nested data tables). Functions: sub_02087FD4(idx) GF_ASSERT(idx<7) then return _021037B8[idx*0x24] (else _02103754[0x64]); sub_02087FF8(a,b) wrapper calling sub_02087E1C (import) + sub_02087FD4; sub_02088030(obj) iterates 5x 0x24-byte entries at obj[0x818], counts non-zero, stores at obj[0x6e0]. These 3 fns are trivial; the DATA is the hard part.",
+    "risks": [
+      "The rodata is field-move-response 'trees': 0x24-byte nodes chained via `.word _internal_label` relocations (e.g. _021037B8 is a table of {.word _02103630; 0x24-node; .word _021031F8; ...}). ~27 internal labels _021028D4.._021037B8 + cross-pointer relocations. Must define as C structs with symbolic pointer refs (raw bytes won't carry the relocations). Node fields: several u32 + 0xFB-marker run (8 bytes) + zeros. Includes constants/items.h, moves.h, pokemon.h, ribbon.h, field_move_response.h, msg_0300.h \u2014 values map to those named constants.",
+      "gNatureStatMods is ALREADY DEFINED in src/pokemon.c:1963 (const s8 gNatureStatMods[NATURE_NUM][NUM_EV_STATS]); the .inc .public here is an IMPORT ref, not a definition. gOverlayTemplate_Battle (const OverlayManagerTemplate, launch_application.h) is the other .public \u2014 OverlayManagerTemplate{OverlayFunction init,exec,exit; FSOverlayID ovy_id} (has function-pointer relocations). Neither appears as a label in this file's rodata text (disassembler used _0210xxxx labels) \u2014 verify which symbols this file actually DEFINES vs imports before starting.",
+      "Matching data with relocations is unforgiving: whole rodata blob must match byte-for-byte AND relocations resolve to correct addresses; no per-function objdiff help. Needs a dedicated focused session, not a loop tick. Approach: identify the field-move node struct + the tree/table layout, define all ~27 tables in exact symbol order with named constants and pointer cross-refs."
+    ],
+    "sweep_output": null
   }
 }
