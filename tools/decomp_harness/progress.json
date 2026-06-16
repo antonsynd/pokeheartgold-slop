@@ -191,6 +191,14 @@
       "attempts": 1,
       "result": "matched",
       "note": "opus-drafted. Field BGM/scene TaskManager state-machine: sub_02055218 (public) allocs a 0x10 work struct on HEAP_ID_FIELD2, inits {state,unk4,unk8=id,unkC=seqNo}, registers static TaskFunc sub_020551B8 via TaskManager_Call. sub_020551B8 (static, used as TaskFunc ptr) switch(state): case0 loads overlay (ov01_021EFB64), starts scene (ov01_021EFC94(id,fieldSystem,&unk4)), Sound_SetSceneAndPlayBGM(5,(u16)unkC,1), state++; case1 if(unk4==1){ov01_021EFC04(id);Heap_Free;return TRUE}. Clean first-build match (only bl relocs). Notes: unk_8 is an INT id (overlay fn does cmp r0,#0xc \u2014 not a ptr); unk_c is a u32 field (ldr/str) truncated to u16 by MWCC automatically at the u16-prototyped Sound seqNo arg (lsl/lsr 0x10); ov01_* are local externs (overlay still asm); sizeof(struct)=0x10 matches mov r1,#0x10."
+    },
+    {
+      "file": "asm/unk_02097BE0.s",
+      "lines": 198,
+      "functions": 4,
+      "attempts": 3,
+      "result": "matched",
+      "note": "opus-drafted. Legendary-cinematic launcher: nested TaskManager state machines + 2 jump-table switches. sub_02097BE0 (public, in unk_02097BE0.h, C caller scrcmd_c.c) allocs 0x54 work (UnkStruct_0203FCC4 copy block[int*0x12=0x48] + scene@0x48 + category@0x4c + state@0x50), copies *fieldSystem->filler48(0x48) via struct assignment, time-of-day switch sets category, registers sub_02097C50. C50 (static TaskFunc) 4-case jump table: LeaveOverworld/sub_02097CB4/RestoreOverworld/free. CB4 spawns env2(0xc){bigEnv,launchResult,state}+sub_02097CD8. CD8 (static, 3-case compare chain): LegendaryCinematic_LaunchApp then poll FieldSystem_ApplicationIsRunning then free. Full-ROM chiri compare OK. Key fix: LaunchApp a2/a3 are u16 in current launch_application.h but this file matched a WIDER int signature -> the u16 proto emitted a lsl/lsr#16 truncation the asm lacks; fixed with a local frozen `extern ...LaunchApp(...,int a2,int a3,...)` and NOT including launch_application.h (only safe because it isn't force-included). Also: copy source is a cast into FieldSystem.filler48 (`**(UnkStruct_0203FCC4**)fieldSystem->filler48`); objdiff misreports SIZE for functions with inline jump-table data (BE0/C50 are byte-identical despite 'SIZE' diff)."
     }
   ],
   "failed": [
@@ -236,8 +244,8 @@
   ],
   "in_progress": null,
   "stats": {
-    "total_attempts": 82,
-    "total_matched": 24,
+    "total_attempts": 83,
+    "total_matched": 25,
     "total_failed": 5
   }
 }

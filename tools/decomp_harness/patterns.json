@@ -340,6 +340,18 @@
       "category": "matching-tricks",
       "title": "Reassign a dead parameter in-place to reuse its register and steer which local spills",
       "body": "When several values must survive a sequence of calls and there are more survivors than callee-saved registers, MWCC -O4,p must spill some. If objdiff shows the SAME instructions but a DIFFERENT value spilled (e.g. asm computes `subs r5,r6,r5` keeping structSize in extraSize's register and spills tableSize, while your C spills structSize and keeps tableSize in a reg -> a ~2-byte size delta), steer the allocator by REUSING a now-dead parameter's storage: write `extraSize = heapSize - extraSize;` instead of introducing a fresh `u32 structSize = heapSize - extraSize;`. The in-place reassignment makes MWCC reuse extraSize's callee-saved register for the new value (matching the asm's in-place `subs`), freeing the allocator to spill the other competing long-lived local instead. Seen in overlay_01_021FC4C4 ov01_021FC4C4 ctor. Related to [[decl-order-regalloc]] but the lever here is operand identity (reuse vs new variable), not declaration order."
+    },
+    {
+      "id": "frozen-callee-proto-for-narrowed-args",
+      "category": "ipa",
+      "title": "Local frozen extern when a callee's header narrowed its params (int->u16) after this caller was matched",
+      "body": "Split-header discipline applies to CALLEE prototypes too, not just shared struct headers. If a function was originally compiled with a wider arg type for a callee (e.g. int) and the callee's header was LATER refined to a narrow type (u16/u8/s16), including that refined header makes MWCC emit an integer-narrowing the original asm lacks: a u32/int value passed to a u16 param gets a `lsls rN,#16; lsrs rN,#16` (zero-extend) or `lsls;asrs` (sign) truncation at the call site. Diagnose via objdiff --disasm: extra lsl/lsr #16 pairs around a bl that the asm doesn't have. Fix: do NOT include the refined header; declare a local `extern <ret> Fn(... int a2, int a3 ...);` with the wider (matched) arg types so no narrowing is emitted. Only works if the refined header is not force-included (grep its includers first; global.h chain must not pull it). Seen in unk_02097BE0 calling LegendaryCinematic_LaunchApp (launch_application.h has u16 a2/a3; matched int). Contrast [[frozen-prototype-header-split]] (struct/decl header) — same principle, applied to an imported function signature. NB: MWCC DOES narrow u32->u16 for outgoing args (confirmed: unk_020551B8 Sound_SetSceneAndPlayBGM seqNo), so a missing truncation in asm means the param was wider at match time."
+    },
+    {
+      "id": "objdiff-size-miscount-inline-jumptable",
+      "category": "tooling",
+      "title": "objdiff.py misreports SIZE/section for functions with inline Thumb jump-table data",
+      "body": "MWCC emits Thumb switch dispatch as `add r0,r0; add r0,pc; ldrh r0,[r0,#6]; lsl;asr; add pc,r0` followed by inline .short/.word offset-table data embedded in .text. objdiff.py's function-boundary/size heuristic can't tell this inline data from code, so it reports a spurious `SIZE N vs M` (often +8) for such functions and a small nonzero section-size delta — even when the bytes are IDENTICAL. The asm side disassembles the table as `.short`/`.word` (it has the source directives) while the C .o side shows the same bytes as bogus instructions (e.g. `movs r0,r1` = 0x0008). Verify with --disasm: if the instruction stream AND the table halfwords match (only bl relocs differ: asm fff7/feff vs c 00f0/00f8), the function matches. ALWAYS confirm with `chiri pkg -- compare` (authoritative) rather than trusting objdiff SIZE for jump-table functions. Seen in unk_02097BE0 (sub_02097BE0 5-case, sub_02097C50 4-case)."
     }
   ]
 }

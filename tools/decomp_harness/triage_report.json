@@ -1,5 +1,5 @@
 {
- "generated": "2026-06-16T05:47:35Z",
+ "generated": "2026-06-16T06:04:37Z",
  "weights": {
   "insn_line": 1.0,
   "unknown_callee": 40.0,
@@ -10,28 +10,6 @@
   "special_section": 500.0
  },
  "queue": [
-  {
-   "file": "asm/unk_02097BE0.s",
-   "score": 230.0,
-   "special_sections": [],
-   "functions": 4,
-   "insn_lines": 150,
-   "data_only": false,
-   "unknown_callees": [
-    "CallTask_LeaveOverworld",
-    "CallTask_RestoreOverworld"
-   ],
-   "jumptable_words": 0,
-   "rodata_bytes": 0,
-   "arm_functions": 0,
-   "gated_by": [],
-   "cluster_partners": [
-    {
-     "file": "asm/unk_02055244.s",
-     "shared_symbols": 2
-    }
-   ]
-  },
   {
    "file": "asm/overlay_12_02265E28.s",
    "score": 236.2,
