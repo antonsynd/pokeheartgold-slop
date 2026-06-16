@@ -114,7 +114,7 @@ Static main
     Object src/mail.o
     Object asm/unk_0202B614.o
     Object asm/unk_0202C034.o
-    Object asm/unk_0202C730.o
+    Object src/unk_0202C730.o
     Object src/coins.o
     Object src/save_trainer_card.o
     Object src/save_wifi_history.o
