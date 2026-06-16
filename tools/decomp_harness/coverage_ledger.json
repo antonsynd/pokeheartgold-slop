@@ -1,6 +1,6 @@
 {
  "summary": {
-  "generated": "2026-06-16T15:47:19Z",
+  "generated": "2026-06-16T15:57:45Z",
   "by_status": {
    "matched": {
     "files": 36,
@@ -9,13 +9,13 @@
     "text_bytes_est": 12006
    },
    "blocked": {
-    "files": 12,
+    "files": 13,
     "functions": 153,
     "insn_lines": 4239,
     "text_bytes_est": 9622
    },
    "pending": {
-    "files": 255,
+    "files": 254,
     "functions": 19724,
     "insn_lines": 944505,
     "text_bytes_est": 2108890
@@ -16293,7 +16293,7 @@
   {
    "file": "asm/unk_02055BF0_data.s",
    "lsf_kind": "asm",
-   "status": "pending",
+   "status": "blocked",
    "lines": 56,
    "function_count": 0,
    "text_bytes_est": 0,
@@ -16331,7 +16331,11 @@
     "sub_02056C64"
    ],
    "exports": [],
-   "functions": []
+   "functions": [],
+   "blocked_reason": "Data-only: 3 external const fn-ptr arrays (sMapEnterRoutines, sMapExitRoutines, _020FC76C) referenced only by already-matched unk_02055BF0.c (built against them as EXTERNAL syms). As a separate _data.c, MWCC -ipa file emits each as its own .rodata section -> mwldarm reorders them in the MAIN module too -> main.sbin SHA1 FAILED (objdiff n/a, data-only). Can't be static (would alter matched unk_02055BF0.c's external-symbol access codegen). Same shape as battle_arcade_game_board_data.s. Stays asm.",
+   "attempts": 1,
+   "blocker_id": "ext-data-section-split",
+   "kept_c": false
   },
   {
    "file": "asm/unk_02055BF0.s",

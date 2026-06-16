@@ -391,12 +391,19 @@
       "result": "regalloc_diff",
       "blocker_id": "regalloc-reg-number-swap",
       "reason": "24/25 NEAR-MISS. NNS_G3d anim/render wrapper; all fns match except sub_020698E8, which has a maxFrame/0-const r3<->r4 register-numbering swap (coin-flip). Full working draft details + struct/field facts saved to knowledge.json for a quick retry."
+    },
+    {
+      "file": "asm/unk_02055BF0_data.s",
+      "result": "blocked",
+      "blocker_id": "ext-data-section-split",
+      "attempts": 1,
+      "reason": "Data-only: 3 external const fn-ptr arrays (sMapEnterRoutines, sMapExitRoutines, _020FC76C) referenced only by already-matched unk_02055BF0.c (built against them as EXTERNAL syms). As a separate _data.c, MWCC -ipa file emits each as its own .rodata section -> mwldarm reorders them in the MAIN module too -> main.sbin SHA1 FAILED (objdiff n/a, data-only). Can't be static (would alter matched unk_02055BF0.c's external-symbol access codegen). Same shape as battle_arcade_game_board_data.s. Stays asm."
     }
   ],
   "in_progress": null,
   "stats": {
-    "total_attempts": 98,
+    "total_attempts": 99,
     "total_matched": 36,
-    "total_failed": 10
+    "total_failed": 11
   }
 }
