@@ -350,12 +350,21 @@
       "result": "regalloc_diff",
       "blocker_id": "regalloc-loop-ptr-swap",
       "reason": "Frontier overlay_80; 2/5 match clean (ov80_02235898, ov80_022358B0) + C4(bl-reloc). Blockers: ov80_022357B4 copy loop needs 11-bit bitfield read + dual-pointer strength-reduction (hard, like overlay_80_02239D74); ov80_022358E8 commutative-add operand-order scheduler quirk (1 byte). Full per-fn analysis + working +0x3e strided forms saved to knowledge.json."
+    },
+    {
+      "file": "asm/unk_0206979C.s",
+      "lines": 407,
+      "functions": 25,
+      "attempts": 1,
+      "result": "regalloc_diff",
+      "blocker_id": "regalloc-reg-number-swap",
+      "reason": "24/25 NEAR-MISS. NNS_G3d anim/render wrapper; all fns match except sub_020698E8, which has a maxFrame/0-const r3<->r4 register-numbering swap (coin-flip). Full working draft details + struct/field facts saved to knowledge.json for a quick retry."
     }
   ],
   "in_progress": null,
   "stats": {
-    "total_attempts": 93,
+    "total_attempts": 94,
     "total_matched": 32,
-    "total_failed": 9
+    "total_failed": 10
   }
 }

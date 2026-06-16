@@ -1,6 +1,6 @@
 {
  "summary": {
-  "generated": "2026-06-16T12:05:38Z",
+  "generated": "2026-06-16T12:48:32Z",
   "by_status": {
    "matched": {
     "files": 32,
@@ -9,16 +9,16 @@
     "text_bytes_est": 9200
    },
    "blocked": {
-    "files": 11,
-    "functions": 128,
-    "insn_lines": 3957,
-    "text_bytes_est": 9006
+    "files": 12,
+    "functions": 153,
+    "insn_lines": 4239,
+    "text_bytes_est": 9622
    },
    "pending": {
-    "files": 260,
-    "functions": 19810,
-    "insn_lines": 946046,
-    "text_bytes_est": 2112312
+    "files": 259,
+    "functions": 19785,
+    "insn_lines": 945764,
+    "text_bytes_est": 2111696
    },
    "upstream": {
     "files": 368,
@@ -31,7 +31,7 @@
    "tracked": 20167,
    "matched": 229,
    "partial_in_blocked": 50,
-   "pending": 19810
+   "pending": 19785
   },
   "blockers": [
    {
@@ -25105,7 +25105,7 @@
   {
    "file": "asm/unk_0206979C.s",
    "lsf_kind": "asm",
-   "status": "pending",
+   "status": "blocked",
    "lines": 407,
    "function_count": 25,
    "text_bytes_est": 616,
@@ -25155,177 +25155,181 @@
      "mode": "thumb",
      "insns": 6,
      "size_est": 12,
-     "status": "pending"
+     "status": "blocked"
     },
     {
      "name": "sub_020697A8",
      "mode": "thumb",
      "insns": 9,
      "size_est": 20,
-     "status": "pending"
+     "status": "blocked"
     },
     {
      "name": "sub_020697BC",
      "mode": "thumb",
      "insns": 9,
      "size_est": 20,
-     "status": "pending"
+     "status": "blocked"
     },
     {
      "name": "sub_020697D0",
      "mode": "thumb",
      "insns": 6,
      "size_est": 12,
-     "status": "pending"
+     "status": "blocked"
     },
     {
      "name": "sub_020697DC",
      "mode": "thumb",
      "insns": 16,
      "size_est": 36,
-     "status": "pending"
+     "status": "blocked"
     },
     {
      "name": "sub_02069800",
      "mode": "thumb",
      "insns": 11,
      "size_est": 26,
-     "status": "pending"
+     "status": "blocked"
     },
     {
      "name": "sub_02069818",
      "mode": "thumb",
      "insns": 17,
      "size_est": 36,
-     "status": "pending"
+     "status": "blocked"
     },
     {
      "name": "sub_0206983C",
      "mode": "thumb",
      "insns": 18,
      "size_est": 42,
-     "status": "pending"
+     "status": "blocked"
     },
     {
      "name": "sub_02069864",
      "mode": "thumb",
      "insns": 6,
      "size_est": 12,
-     "status": "pending"
+     "status": "blocked"
     },
     {
      "name": "sub_02069870",
      "mode": "thumb",
      "insns": 10,
      "size_est": 22,
-     "status": "pending"
+     "status": "blocked"
     },
     {
      "name": "sub_02069884",
      "mode": "thumb",
      "insns": 8,
      "size_est": 16,
-     "status": "pending"
+     "status": "blocked"
     },
     {
      "name": "sub_02069894",
      "mode": "thumb",
      "insns": 15,
      "size_est": 36,
-     "status": "pending"
+     "status": "blocked"
     },
     {
      "name": "sub_020698B8",
      "mode": "thumb",
      "insns": 11,
      "size_est": 24,
-     "status": "pending"
+     "status": "blocked"
     },
     {
      "name": "sub_020698D0",
      "mode": "thumb",
      "insns": 9,
      "size_est": 24,
-     "status": "pending"
+     "status": "blocked"
     },
     {
      "name": "sub_020698E8",
      "mode": "thumb",
      "insns": 49,
      "size_est": 98,
-     "status": "pending"
+     "status": "blocked"
     },
     {
      "name": "sub_02069948",
      "mode": "thumb",
      "insns": 9,
      "size_est": 18,
-     "status": "pending"
+     "status": "blocked"
     },
     {
      "name": "sub_02069958",
      "mode": "thumb",
      "insns": 6,
      "size_est": 12,
-     "status": "pending"
+     "status": "blocked"
     },
     {
      "name": "sub_02069964",
      "mode": "thumb",
      "insns": 9,
      "size_est": 22,
-     "status": "pending"
+     "status": "blocked"
     },
     {
      "name": "sub_02069978",
      "mode": "thumb",
      "insns": 6,
      "size_est": 12,
-     "status": "pending"
+     "status": "blocked"
     },
     {
      "name": "sub_02069984",
      "mode": "thumb",
      "insns": 4,
      "size_est": 8,
-     "status": "pending"
+     "status": "blocked"
     },
     {
      "name": "sub_0206998C",
      "mode": "thumb",
      "insns": 6,
      "size_est": 12,
-     "status": "pending"
+     "status": "blocked"
     },
     {
      "name": "sub_02069998",
      "mode": "thumb",
      "insns": 9,
      "size_est": 22,
-     "status": "pending"
+     "status": "blocked"
     },
     {
      "name": "sub_020699AC",
      "mode": "thumb",
      "insns": 7,
      "size_est": 16,
-     "status": "pending"
+     "status": "blocked"
     },
     {
      "name": "sub_020699BC",
      "mode": "thumb",
      "insns": 8,
      "size_est": 18,
-     "status": "pending"
+     "status": "blocked"
     },
     {
      "name": "sub_020699D0",
      "mode": "thumb",
      "insns": 18,
      "size_est": 40,
-     "status": "pending"
+     "status": "blocked"
     }
-   ]
+   ],
+   "blocked_reason": "24/25 NEAR-MISS. NNS_G3d anim/render wrapper; all fns match except sub_020698E8, which has a maxFrame/0-const r3<->r4 register-numbering swap (coin-flip). Full working draft details + struct/field facts saved to knowledge.json for a quick retry.",
+   "attempts": 1,
+   "blocker_id": "regalloc-reg-number-swap",
+   "kept_c": false
   },
   {
    "file": "asm/follow_mon.s",
