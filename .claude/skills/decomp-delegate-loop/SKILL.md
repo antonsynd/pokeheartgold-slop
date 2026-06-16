@@ -40,6 +40,13 @@ completely using the `/decomp-delegate` workflow — Qwen drafts, Claude judges.
    - Update `progress.json` (include `"note": "delegate-drafted"` in the entry)
    - Add new insights via `patterns.py add` if any
    - `python3 tools/decomp_harness/triage.py --rebuild --top 0`
+   - **Commit this file's work incrementally** — one commit per matched file (the
+     new C/H, the `main.lsf` flip, and the refreshed harness state together),
+     only after `chiri pkg -- compare` confirmed the match, before moving to the
+     next target. Commit as you go; only bundle multiple files into one commit
+     when they are genuinely coupled (cluster partners that must land together,
+     or a shared IPA/header change several files depend on). Never commit
+     unverified or in-progress work.
 
    **Phase 6 — On failure (after max retries)**
    - NONMATCHING fallback; revert if that also fails

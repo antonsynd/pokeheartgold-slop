@@ -29,7 +29,14 @@ This skill is designed to be used with `/loop /decomp-loop` for continuous auton
       with `attempts_log.py add`
    i. On success: update progress.json, add new insights via `patterns.py add`
       (insights.md is generated — never edit it directly), run
-      `triage.py --rebuild --top 0` to refresh ledger + queue, commit
+      `triage.py --rebuild --top 0` to refresh ledger + queue, then **commit
+      this file's work incrementally** — one commit per matched file (the new
+      C/H, the `main.lsf` flip, and the refreshed harness state together) once
+      `chiri pkg -- compare` confirms the match, before moving to the next
+      target. Commit as you go; only bundle multiple files into one commit when
+      they are genuinely coupled (cluster partners that must land together, or a
+      shared IPA/header change several files depend on). Do not commit unverified
+      or in-progress work — wait for the SHA1 match first.
    j. On failure after 50 attempts: use NONMATCHING fallback, then revert if that
       also fails; record the reason (and blocker_id) in progress.json and make
       sure the dead ends are in the attempts log
