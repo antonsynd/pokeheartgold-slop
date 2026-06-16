@@ -279,6 +279,14 @@
       "attempts": 1,
       "result": "matched",
       "note": "hand-written (Opus, no drafter); 20/20 fns match, chiri pkg -- compare full ROM SHA1 OK. Battle Frontier overlay manager (OVY_80/81/42). 0xA54 internal struct FrontierWork (named to avoid collision with save-data FrontierData in frontier_data.h) with nested arrays: unk24[0x18][2] (stride4), unk84[0x20] (0x3c entries, u16@0xc), unkA04[8]. 7-case jump table in Frontier_Main. frontier.h frozen (callers scrcmd_c/unk_020968B0/frontier_cmd_arcade); struct is internal (opaque void* API). FrontierSystem_*/FrontierMap_*/ov80_* are asm-only -> extern. sub_0209680C/sub_02096868 kept void*(void*) to match overlay_80_02239BF0.c externs. Compile fixes only: fwd-declare exported sub_*, FS_EXTERN_OVERLAY(OVY_80/81/42), rename struct off FrontierData."
+    },
+    {
+      "file": "asm/frontier_system.s",
+      "lines": 415,
+      "functions": 14,
+      "attempts": 1,
+      "result": "matched",
+      "note": "sonnet-drafted; 14/14 fns match, chiri pkg -- compare full ROM SHA1 OK. FrontierSystem module (companion to frontier.s). Real struct is 0xbc but frontier_system.h defines an INCOMPLETE frozen FrontierSystem (callers frontier.c/frontier_script_context.c) -> defined full struct LOCALLY as FrontierSystemWork; GetFrontierMap keeps the frozen FrontierSystem* + tail-calls sub_0209680C. 2nd struct FrontierScriptContext (0x90) from its header. ov80_0222ACA0/02239C54/0223B9CC/gFrontierCommandTable asm-only -> extern. KEY FIX: the two u16[8] copy loops (ov80_0222AAD8/AAF8) need an UNSIGNED counter (u32 i=8; do{}while(--i)) to emit subs;bne \u2014 a signed int triggers MWCC range-opt -> hoisted decrement + cmp;bgt. AAF8 also needed src/dst decl order swapped."
     }
   ],
   "failed": [
@@ -387,8 +395,8 @@
   ],
   "in_progress": null,
   "stats": {
-    "total_attempts": 97,
-    "total_matched": 35,
+    "total_attempts": 98,
+    "total_matched": 36,
     "total_failed": 10
   }
 }

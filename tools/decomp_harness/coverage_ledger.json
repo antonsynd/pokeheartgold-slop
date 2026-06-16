@@ -1,12 +1,12 @@
 {
  "summary": {
-  "generated": "2026-06-16T15:23:28Z",
+  "generated": "2026-06-16T15:47:19Z",
   "by_status": {
    "matched": {
-    "files": 35,
-    "functions": 276,
-    "insn_lines": 5140,
-    "text_bytes_est": 11244
+    "files": 36,
+    "functions": 290,
+    "insn_lines": 5482,
+    "text_bytes_est": 12006
    },
    "blocked": {
     "files": 12,
@@ -15,10 +15,10 @@
     "text_bytes_est": 9622
    },
    "pending": {
-    "files": 256,
-    "functions": 19738,
-    "insn_lines": 944847,
-    "text_bytes_est": 2109652
+    "files": 255,
+    "functions": 19724,
+    "insn_lines": 944505,
+    "text_bytes_est": 2108890
    },
    "upstream": {
     "files": 368,
@@ -29,9 +29,9 @@
   },
   "function_totals": {
    "tracked": 20167,
-   "matched": 276,
+   "matched": 290,
    "partial_in_blocked": 50,
-   "pending": 19738
+   "pending": 19724
   },
   "blockers": [
    {
@@ -127774,8 +127774,8 @@
   },
   {
    "file": "asm/frontier_system.s",
-   "lsf_kind": "asm",
-   "status": "pending",
+   "lsf_kind": "src",
+   "status": "matched",
    "lines": 416,
    "function_count": 14,
    "text_bytes_est": 762,
@@ -127796,100 +127796,101 @@
      "mode": "thumb",
      "insns": 47,
      "size_est": 108,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "FrontierSystem_Main",
      "mode": "thumb",
      "insns": 49,
      "size_est": 104,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ov80_0222A920",
      "mode": "thumb",
      "insns": 21,
      "size_est": 56,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "FrontierSystem_AddTask",
      "mode": "thumb",
      "insns": 57,
      "size_est": 128,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ov80_0222A9DC",
      "mode": "thumb",
      "insns": 24,
      "size_est": 50,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ov80_0222AA0C",
      "mode": "thumb",
      "insns": 21,
      "size_est": 48,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "FrontierSystem_deadstripped_0222AA3C",
      "mode": "thumb",
      "insns": 2,
      "size_est": 4,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ov80_0222AA40",
      "mode": "thumb",
      "insns": 26,
      "size_est": 60,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ov80_0222AA7C",
      "mode": "thumb",
      "insns": 42,
      "size_est": 92,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ov80_0222AAD8",
      "mode": "thumb",
      "insns": 16,
      "size_est": 34,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ov80_0222AAF8",
      "mode": "thumb",
      "insns": 14,
      "size_est": 30,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ov80_0222AB14",
      "mode": "thumb",
      "insns": 12,
      "size_est": 26,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ov80_0222AB2C",
      "mode": "thumb",
      "insns": 5,
      "size_est": 10,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "FrontierSystem_GetFrontierMap",
      "mode": "thumb",
      "insns": 6,
      "size_est": 12,
-     "status": "pending"
+     "status": "matched"
     }
-   ]
+   ],
+   "source": "harness"
   },
   {
    "file": "asm/frontier/frontier_script_context.s",

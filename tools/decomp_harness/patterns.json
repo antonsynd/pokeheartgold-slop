@@ -402,6 +402,13 @@
       "title": "A flags/bitmask param compared by magnitude with signed blt/bge is int, not u32",
       "body": "A parameter you'd instinctively type `u32` because it is used as a bitmask (`flags & (1<<n)`, `tst`) may actually be a signed `int` if the asm ALSO does a magnitude comparison on it with a SIGNED branch. Symptom: `if (flags >= (1<<N))` emitted as `cmp rX, #imm; blo/bcc` (unsigned) in your C, but the target asm uses `cmp rX, #imm; blt` (signed) at that gate. The bitwise tests (`tst`) are sign-agnostic, so they give no clue — only the magnitude compare reveals the signedness. Fix: declare the param `int` (or s32). The `&`/`tst` codegen is unchanged; only the `>=`/`<` flips from unsigned `blo/bhs` to signed `blt/bge`. This is the INVERSE of [[cast-unsigned-for-branch]] (which adds a (u32) cast to a signed param to FORCE unsigned branches) and [[u16-from-ldrh-unsigned-branch]]. Seen in overlay_01_021EA8E0.c ov01_021EA910 (the `flags >= 0x1000` gate before NNS_G3dGlbPolygonAttr): u32 flags emitted bcc, int flags emitted the matching blt.",
       "source": "overlay_01_021EA8E0.c"
+    },
+    {
+      "id": "downcount-copy-loop-needs-unsigned-counter-for-subs-bne",
+      "category": "codegen",
+      "title": "A down-counting loop with subs;bne needs an UNSIGNED counter (signed int -> hoisted decrement + cmp;bgt)",
+      "body": "A fixed-count copy/fill loop whose asm is `movs rN,#K; .L: <body>; subs rN,#1; bne .L` (decrement LAST, branch-if-nonzero) must use an UNSIGNED counter in C. Writing `int i = K; do { body } while (--i);` does NOT match: MWCC -O4,p proves a signed `i` stays >= 0 (range analysis), converts the `!=0` test to a signed `> 0`, and HOISTS the `subs` up into the body — which then forces a separate `cmp rN,#0; bgt` at the bottom (the intervening pointer `adds` clobber the Z flag). Result: function is 2 bytes too big (objdiff SIZE +2). FIX: make the counter `u32` (or any unsigned): `u32 i = K; do { body } while (--i);`. Unsigned forbids the signed `bgt` form, so MWCC keeps the decrement at the bottom and emits `subs;bne` reusing the Z flag. Also: declare the source/walker pointers in the SAME order the asm sets them up (e.g. `p=src` before `dst=base+off` if asm does `adds rSrc` then `adds rDst`) — decl order drives the two setup `adds` order. Seen in frontier_system.c ov80_0222AAD8/AAF8 (8x u16 copy of FrontierSystemWork+0x24).",
+      "source": "frontier_system.c"
     }
   ]
 }
