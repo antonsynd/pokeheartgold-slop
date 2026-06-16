@@ -5220,17 +5220,5 @@
       "env/cfg struct ~0x38 bytes: [0]=saved GXVRamLCDC bank (from GX_GetBankForLCDC), [4]=mode(int, switch val), [8]=GXBGMode?, [0xc]=GXBG0As?, [0x10..0x28]=DISPCAPCNT field values (ints), [0x30]=active flag, [0x34]=SysTask*. The 0x2c-byte copy fills [4..0x2f] from arg0."
     ],
     "sweep_output": null
-  },
-  "asm/overlay_01_021EAFD4.s": {
-    "notes": "Field-animation texture/VRAM resource manager, 7 fns, NO header (asm callers only -> define structs + prototypes locally). .data string ov01_02209898 = \"data/fld_anime%d.bin\" (sprintf fmt). Work struct = 0x18C (Heap_Alloc(HEAP?=4, 0x63<<2)): ptr@0 + ptr@4 (BOTH set to the NARC_AllocAndReadWholeMember result in EB00C) + Entry[16] @0x8 (each 0x18) + u32 @0x188 (0x62<<2, init 0). ov01_021EAFD4=ctor (alloc+zero-init 16 entries: per-entry sets +0,+8,+0xc,+0x10 str=0 and +0x14,+0x16 strh=0; +4 NOT inited), ov01_021EB00C=load-all (NARC_New(0x8b,4)->member0; loop members calling ov01_021EB058; NARC_Delete), ov01_021EB058=load-one-entry (finds free slot where entry->unk14(+0x14 abs, =entry+0xc)... uses sub_020208DC & sub_020209E0 results, sprintf name, NARC_AllocAndReadWholeMember + NNS_G3dGetTex), ov01_021EB114=per-frame VRAM update (GF_CreateNewVramTransferTask + sub_02020838), ov01_021EB18C=free-one-entry, ov01_021EB1BC=free-all (+Heap_Free work[0]), ov01_021EB1DC=Heap_Free wrapper.",
-    "risks": [
-      "Entry is 0x18 bytes, array base = work+8. EB114 uses r5=work+8 with entry fields at +0,+4,+8,+0xc,+0x10,+0x14(u16),+0x16(u16). BUT EB18C/EB058/ctor use base = work (r5=work) + i*0x18 + offset, where offset = entry_rel + 8 (e.g. EB18C frees [work+i*0x18+0x14] = entry+0xc; zeroes [work+0x18+i*0x18]=entry+0x10 and [work+i*0x18+0x1c/0x1e]=entry+0x14/0x16). MIXED-BASE: model Work as {void*unk0; void*unk4; Entry entries[16]; u32 unk188;} and access entries[i].field; MWCC should reproduce the +8 base adjustment. VERIFY ctor init field order via objdiff.",
-      "Entry fields: +0x00 u32 (VRAM src, EB114 [+0]); +0x04 u32 (VRAM dst, EB114 [+4]); +0x08 u32 (sub_02020838 arg, EB114 [+8]); +0x0c void* (sub_020209E0 result in EB058; Heap_Free'd in EB18C; checked in EB114); +0x10 NNSG3dResTex* (NNS_G3dGetTex result; EB114 indexes it: ldrb [+0x10]/[+0x11] at frame*2); +0x14 u16 (frame index); +0x16 u16 (frame counter/delay).",
-      "NO C protos for sub_02020838/sub_020208DC/sub_020209E0 -> local externs. From usage: sub_02020838(u32 a0, int a1) (EB114, ret VRAM src); sub_020208DC(void* a0, void* a1) (EB058, ret ptr stored at entry+0xc-area); sub_020209E0(void* a0, void* a1) (EB058, ret ptr). 2 args each. Confirm arg types from asm.",
-      "Callee protos present: NARC_AllocAndReadWholeMember(NARC*,u32,enum HeapID); GF_CreateNewVramTransferTask(NNS_GFD_DST_TYPE,u32,void*,u32); NNS_G3dGetTex(const NNSG3dResFileHeader*)->NNSG3dResTex* (via global.h). sprintf via global.h.",
-      "ov01_021EB058 returns -1 (mvn r0,#0 = ~0) on the early-exit paths (cmp r0,#0 at entry was a passed BOOL via the bne after str r1[sp]; the `bne _021EB06E` tests a flag). Returns the slot index on success. EB00C counts successes (r0>=0 increments). Check the entry signedness/return carefully.",
-      "The NARC member-count loop in EB00C: ldr r0,[member]; first u32 of the loaded member = count; iterate file_id 0..count-1 (blo). work[0]/work[4] = the index NARC member (member 0 of NARC 0x8b)."
-    ],
-    "sweep_output": null
   }
 }
