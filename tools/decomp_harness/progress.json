@@ -199,6 +199,14 @@
       "attempts": 3,
       "result": "matched",
       "note": "opus-drafted. Legendary-cinematic launcher: nested TaskManager state machines + 2 jump-table switches. sub_02097BE0 (public, in unk_02097BE0.h, C caller scrcmd_c.c) allocs 0x54 work (UnkStruct_0203FCC4 copy block[int*0x12=0x48] + scene@0x48 + category@0x4c + state@0x50), copies *fieldSystem->filler48(0x48) via struct assignment, time-of-day switch sets category, registers sub_02097C50. C50 (static TaskFunc) 4-case jump table: LeaveOverworld/sub_02097CB4/RestoreOverworld/free. CB4 spawns env2(0xc){bigEnv,launchResult,state}+sub_02097CD8. CD8 (static, 3-case compare chain): LegendaryCinematic_LaunchApp then poll FieldSystem_ApplicationIsRunning then free. Full-ROM chiri compare OK. Key fix: LaunchApp a2/a3 are u16 in current launch_application.h but this file matched a WIDER int signature -> the u16 proto emitted a lsl/lsr#16 truncation the asm lacks; fixed with a local frozen `extern ...LaunchApp(...,int a2,int a3,...)` and NOT including launch_application.h (only safe because it isn't force-included). Also: copy source is a cast into FieldSystem.filler48 (`**(UnkStruct_0203FCC4**)fieldSystem->filler48`); objdiff misreports SIZE for functions with inline jump-table data (BE0/C50 are byte-identical despite 'SIZE' diff)."
+    },
+    {
+      "file": "asm/unk_02077678.s",
+      "lines": 359,
+      "functions": 21,
+      "attempts": 1,
+      "result": "matched",
+      "note": "sonnet-drafted. Move-type sprite-resource accessor module (21 fns: getters returning NarcId consts, table-lookup-with-assert, SpriteSystem_Load* wrappers, frameless tail-call thunks). 4 rodata tables (u8[3],u32[3],u32[23],u8[23]). Full-ROM chiri compare OK. Key fix: GF_ASSERT range checks (idx < N) on an int param emit a SIGNED blt, but the asm uses unsigned bcc/blo (range-check idiom) -> cast (u32)idx in the assert. rodata: MWCC splits static const arrays into per-alignment .rodata sections (u8[3] | u32[3]+u32[23] | u8[23]); they concatenate at LINK time into the asm's single-section source order with balign padding -> objdiff per-.o .rodata -2 is a false alarm, chiri compare is authoritative. NarcId getters use named NARC_ constants (8=NARC_a_0_0_8, 0x4a=NARC_application_zukanlist_zkn_data_zukan_data, 0xf2=NARC_a_2_4_0, 0xf3=NARC_a_2_4_1). Tail-call thunks = plain single forwarding call (bx). PaletteBufferId/NNS_G2D_VRAM_TYPE/NarcId args need enum casts."
     }
   ],
   "failed": [
@@ -262,8 +270,8 @@
   ],
   "in_progress": null,
   "stats": {
-    "total_attempts": 83,
-    "total_matched": 25,
+    "total_attempts": 84,
+    "total_matched": 26,
     "total_failed": 5
   }
 }

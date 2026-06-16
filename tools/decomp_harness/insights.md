@@ -146,6 +146,10 @@ Distinct from register-allocation decl-order tricks: when a function has MULTIPL
 
 When several values must survive a sequence of calls and there are more survivors than callee-saved registers, MWCC -O4,p must spill some. If objdiff shows the SAME instructions but a DIFFERENT value spilled (e.g. asm computes `subs r5,r6,r5` keeping structSize in extraSize's register and spills tableSize, while your C spills structSize and keeps tableSize in a reg -> a ~2-byte size delta), steer the allocator by REUSING a now-dead parameter's storage: write `extraSize = heapSize - extraSize;` instead of introducing a fresh `u32 structSize = heapSize - extraSize;`. The in-place reassignment makes MWCC reuse extraSize's callee-saved register for the new value (matching the asm's in-place `subs`), freeing the allocator to spill the other competing long-lived local instead. Seen in overlay_01_021FC4C4 ov01_021FC4C4 ctor. Related to [[decl-order-regalloc]] but the lever here is operand identity (reuse vs new variable), not declaration order.
 
+### Cast index to (u32) in a GF_ASSERT range check to get the asm's unsigned (bcc/blo) compare  <!-- id: unsigned-cast-range-assert -->
+
+Range-check asserts like `GF_ASSERT(idx < N)` (e.g. before a table lookup) compile to a SIGNED compare (cmp; blt/bge) when idx is `int`, but MWCC's array-bounds idiom in the retail code uses an UNSIGNED compare (cmp rN,#N; bcc/blo). objdiff shows a single conditional-branch opcode diff: asm `bcc/blo` (0xd3.. / unsigned-lower) vs C `blt` (0xdb.. / signed-less). Fix: cast the index to unsigned in the assert -> `GF_ASSERT((u32)idx < N);` -> emits cmp; bcc. The table index access itself (table[idx]) is unaffected by the cast. Seen across the lookup fns of unk_02077678 (sub_02077678/0207769C/02077800/02077818). Header may force the param to stay `int`, so cast at the comparison rather than changing the param type.
+
 ## IPA (-ipa file) Behavior
 
 ### Shared-header signatures are load-bearing across compilation units  <!-- id: ipa-shared-headers -->
