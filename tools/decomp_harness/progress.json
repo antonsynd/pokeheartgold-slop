@@ -223,6 +223,14 @@
       "attempts": 3,
       "result": "matched",
       "note": "sonnet-drafted (executed on prior-turn knowledge.json pre-analysis). Field-animation texture/VRAM resource mgr: 5 public + 2 static (ov01_021EB058/18C). Work 0x18C = {void*unk0; void*unk4; Entry entries[16]@0x8; u32 unk188;}; Entry 0x18 = {u32 unk0(vram dst); u32 unk4(size); void*unk8(tex); void*unkc(NARC member/marker); void*unk10(idx data); u16 unk14; u16 unk16}. Full-ROM chiri compare OK. Mixed-base entry access (asm uses work and work+8 bases) folds naturally via work->entries[i].field. Fixes: (1) chained store order `work->unk4 = work->unk0 = X` to store unk0 before unk4 (a=b=X stores b first); (2) for-loop `for(i=0;i<*(u32*)work->unk4;i++)` gives the asm's unsigned `bls` entry guard (vs do-while+if which gave beq); (3) EB114 branch polarity: invert to `if(byte<=unk16){big block}else{unk16++}` so the big block stays inline; (4) declare `int count=0` before NARC_New for the movs placement. Local externs: sub_020208DC/020209E0(u32 ret), sub_02020838(void* ret), sprintf (no project proto). .data string ov01_02209898=\"data/fld_anime%d.bin\" as static char[] (.data); section -2/-3 are link-time padding (compare passes). enum casts: HEAP_ID_FIELD1=4, NARC_a_1_3_9=0x8b, NNS_GFD_DST_3D_TEX_VRAM=0."
+    },
+    {
+      "file": "asm/unk_020163E0.s",
+      "lines": 319,
+      "functions": 9,
+      "attempts": 2,
+      "result": "matched",
+      "note": "sonnet-drafted. Palette-flicker/fade SysTask module (3 public: sub_020163E0 ctor, sub_0201649C state-setter, sub_020164C4 destroy; 6 static incl the SysTask callback sub_020164D0 (4-case jump table) + flicker copy sub_02016548 + 4 load callbacks). Opaque struct UnkStruct_020163E0 (0x50, defined in .c): SysTask*@0, callback fnptr@4, PaletteData*@8, u16 unkC[16]@0xc (bufA), u16 unk2C[16]@0x2c (bufB), u8 screen@0x4c, num@0x4d, state@0x4e, counter@0x4f. Full-ROM chiri compare OK. ctor passes heapID THROUGH to CreateSysTaskAndEnvironment (asm doesn't set r3). src byte-offset: offset=num<<5, copy via (u16*)((u8*)src+offset). Fixes: PaletteBufferId casts (0/1); sub_02016548 loop counter u32 i for unsigned bcc compares. sub_020164D0 jump-table-data confuses objdiff SIZE (byte-identical, compare passes). Load callbacks: BG_LoadPlttData(0|4, buf, 0x20, num<<5); PaletteData_LoadPalette(unk8, buf, 0|1, num<<4, 0x20). flicker mask = 0x1e<<0xa."
     }
   ],
   "failed": [
@@ -286,8 +294,8 @@
   ],
   "in_progress": null,
   "stats": {
-    "total_attempts": 86,
-    "total_matched": 28,
+    "total_attempts": 87,
+    "total_matched": 29,
     "total_failed": 5
   }
 }
