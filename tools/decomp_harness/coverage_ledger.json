@@ -1,6 +1,6 @@
 {
  "summary": {
-  "generated": "2026-06-16T09:46:03Z",
+  "generated": "2026-06-16T10:16:07Z",
   "by_status": {
    "matched": {
     "files": 31,
@@ -9,16 +9,16 @@
     "text_bytes_est": 8630
    },
    "blocked": {
-    "files": 7,
-    "functions": 108,
-    "insn_lines": 3171,
-    "text_bytes_est": 7320
+    "files": 8,
+    "functions": 112,
+    "insn_lines": 3451,
+    "text_bytes_est": 7902
    },
    "pending": {
-    "files": 265,
-    "functions": 19845,
-    "insn_lines": 947116,
-    "text_bytes_est": 2114568
+    "files": 264,
+    "functions": 19841,
+    "insn_lines": 946836,
+    "text_bytes_est": 2113986
    },
    "upstream": {
     "files": 368,
@@ -31,7 +31,7 @@
    "tracked": 20167,
    "matched": 214,
    "partial_in_blocked": 50,
-   "pending": 19845
+   "pending": 19841
   },
   "blockers": [
    {
@@ -7533,7 +7533,7 @@
   {
    "file": "asm/unk_02025C44.s",
    "lsf_kind": "asm",
-   "status": "pending",
+   "status": "blocked",
    "lines": 306,
    "function_count": 4,
    "text_bytes_est": 582,
@@ -7564,30 +7564,34 @@
      "mode": "thumb",
      "insns": 8,
      "size_est": 18,
-     "status": "pending"
+     "status": "blocked"
     },
     {
      "name": "sub_02025C54",
      "mode": "thumb",
      "insns": 24,
      "size_est": 52,
-     "status": "pending"
+     "status": "blocked"
     },
     {
      "name": "GF_SetG2dRendererSurface",
      "mode": "thumb",
      "insns": 8,
      "size_est": 16,
-     "status": "pending"
+     "status": "blocked"
     },
     {
      "name": "sub_02025C98",
      "mode": "thumb",
      "insns": 240,
      "size_est": 496,
-     "status": "pending"
+     "status": "blocked"
     }
-   ]
+   ],
+   "blocked_reason": "G2D module; 3/4 match (GF_InitG2dRenderer, GF_SetG2dRendererSurface, sub_02025C54). sub_02025C98 (NNSG2dRndCellCullingFunction, ~240-insn fixed-point AABB cull) reverted: MWCC spills pViewRec to stack while retail keeps pMtx=r5/pViewRec=r6 callee-saved across the fn \u2014 regalloc cascade. Algorithm fully understood + FX_Mul mapping confirmed; pre-analysis retained in knowledge.json for a future C-structure-variation attempt.",
+   "attempts": 1,
+   "blocker_id": "regalloc-pointer-spill",
+   "kept_c": false
   },
   {
    "file": "asm/font_data.s",

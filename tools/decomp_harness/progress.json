@@ -306,12 +306,21 @@
       "result": "regalloc_diff",
       "reason": "VRAM display-capture (DISPCAPCNT) setup. 3/5 fns match (ov01_021F4464/44B4/4584 bl-only; mode field unk00 MUST be int for signed switch compares). DISPCAPCNT bit-packing fns ov01_021F4544 (SIZE 60 vs 64) and ov01_021F45E4 (23 diffs) resist: asm batches all field loads up front + specific OR-tree register allocation (4544 spine on r1 from unk14<<24; 45E4 flips 0x80000000|(unk10<<29) order). Explicit operand temps did not change codegen. Needs exact MWCC OR-tree linearization. Reverted; full analysis + 3 matching fns in knowledge.json/attempts_log, reusable.",
       "note": "opus-drafted; reverted"
+    },
+    {
+      "file": "asm/unk_02025C44.s",
+      "lines": 306,
+      "functions": 4,
+      "attempts": 1,
+      "result": "regalloc_diff",
+      "blocker_id": "regalloc-pointer-spill",
+      "reason": "G2D module; 3/4 match (GF_InitG2dRenderer, GF_SetG2dRendererSurface, sub_02025C54). sub_02025C98 (NNSG2dRndCellCullingFunction, ~240-insn fixed-point AABB cull) reverted: MWCC spills pViewRec to stack while retail keeps pMtx=r5/pViewRec=r6 callee-saved across the fn \u2014 regalloc cascade. Algorithm fully understood + FX_Mul mapping confirmed; pre-analysis retained in knowledge.json for a future C-structure-variation attempt."
     }
   ],
   "in_progress": null,
   "stats": {
-    "total_attempts": 89,
+    "total_attempts": 90,
     "total_matched": 31,
-    "total_failed": 5
+    "total_failed": 6
   }
 }
