@@ -72,15 +72,26 @@ def get_functions(objfile):
 
 
 def is_bl_halfword(hw_idx, data):
-    """Check if a halfword is part of a BL instruction (Thumb BL is two halfwords)."""
+    """Check if a halfword is part of a BL instruction (Thumb BL is two halfwords).
+
+    get_functions() stores each instruction's bytes in objdump *display* order
+    (high byte first, e.g. "f7ff" -> [0xf7, 0xff]), so the true instruction
+    halfword value is recovered big-endian: (data[2i] << 8) | data[2i+1].
+    Reading it little-endian here would byte-swap the value (0xf7ff -> 0xfff7)
+    and the BL masks below would never match, misclassifying every unrelocated
+    BL placeholder (asm "f7ff fffe" vs MWCC "f000 f800") as a real diff.
+    """
+    def hw_at(idx):
+        return (data[idx * 2] << 8) | data[idx * 2 + 1]
+
     if hw_idx + 1 < len(data) // 2:
-        hw = (data[hw_idx * 2 + 1] << 8) | data[hw_idx * 2]
-        next_hw = (data[(hw_idx + 1) * 2 + 1] << 8) | data[(hw_idx + 1) * 2]
+        hw = hw_at(hw_idx)
+        next_hw = hw_at(hw_idx + 1)
         if (hw & 0xF800) == 0xF000 and (next_hw & 0xF800) in (0xF800, 0xE800):
             return True
     if hw_idx > 0:
-        prev_hw = (data[(hw_idx - 1) * 2 + 1] << 8) | data[(hw_idx - 1) * 2]
-        hw = (data[hw_idx * 2 + 1] << 8) | data[hw_idx * 2]
+        prev_hw = hw_at(hw_idx - 1)
+        hw = hw_at(hw_idx)
         if (prev_hw & 0xF800) == 0xF000 and (hw & 0xF800) in (0xF800, 0xE800):
             return True
     return False
