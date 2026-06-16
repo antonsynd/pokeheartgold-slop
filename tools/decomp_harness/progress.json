@@ -323,12 +323,21 @@
       "result": "regalloc_diff",
       "blocker_id": "regalloc-pointer-spill",
       "reason": "G2D module; 3/4 match (GF_InitG2dRenderer, GF_SetG2dRendererSurface, sub_02025C54). sub_02025C98 (NNSG2dRndCellCullingFunction, ~240-insn fixed-point AABB cull) reverted: MWCC spills pViewRec to stack while retail keeps pMtx=r5/pViewRec=r6 callee-saved across the fn \u2014 regalloc cascade. Algorithm fully understood + FX_Mul mapping confirmed; pre-analysis retained in knowledge.json for a future C-structure-variation attempt."
+    },
+    {
+      "file": "asm/overlay_80_02239D74.s",
+      "lines": 331,
+      "functions": 8,
+      "attempts": 1,
+      "result": "regalloc_diff",
+      "blocker_id": "regalloc-loop-ptr-swap",
+      "reason": "Frontier graphics-loader (8 fns). 7/8 match byte-for-byte; ov80_02239DD0 screen-copy loop has an irreducible r4/r5 swap (MWCC dst=r4/table=r5 vs retail dst=r5/table=r4). Full analysis (structs, API calls, HEAP_ID_101/NARC_a_1_8_3 constants, G2_SetBlendAlpha) saved to knowledge.json for a future attempt."
     }
   ],
   "in_progress": null,
   "stats": {
-    "total_attempts": 91,
+    "total_attempts": 92,
     "total_matched": 32,
-    "total_failed": 6
+    "total_failed": 7
   }
 }
