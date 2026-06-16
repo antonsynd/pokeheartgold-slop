@@ -1,12 +1,12 @@
 {
  "summary": {
-  "generated": "2026-06-16T05:38:26Z",
+  "generated": "2026-06-16T05:47:35Z",
   "by_status": {
    "matched": {
-    "files": 23,
-    "functions": 140,
-    "insn_lines": 2341,
-    "text_bytes_est": 5194
+    "files": 24,
+    "functions": 142,
+    "insn_lines": 2402,
+    "text_bytes_est": 5334
    },
    "blocked": {
     "files": 5,
@@ -15,10 +15,10 @@
     "text_bytes_est": 6296
    },
    "pending": {
-    "files": 275,
-    "functions": 19931,
-    "insn_lines": 949172,
-    "text_bytes_est": 2119028
+    "files": 274,
+    "functions": 19929,
+    "insn_lines": 949111,
+    "text_bytes_est": 2118888
    },
    "upstream": {
     "files": 368,
@@ -29,9 +29,9 @@
   },
   "function_totals": {
    "tracked": 20167,
-   "matched": 140,
+   "matched": 142,
    "partial_in_blocked": 50,
-   "pending": 19931
+   "pending": 19929
   },
   "blockers": [
    {
@@ -16108,8 +16108,8 @@
   },
   {
    "file": "asm/unk_020551B8.s",
-   "lsf_kind": "asm",
-   "status": "pending",
+   "lsf_kind": "src",
+   "status": "matched",
    "lines": 76,
    "function_count": 2,
    "text_bytes_est": 140,
@@ -16142,16 +16142,17 @@
      "mode": "thumb",
      "insns": 41,
      "size_est": 96,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "sub_02055218",
      "mode": "thumb",
      "insns": 20,
      "size_est": 44,
-     "status": "pending"
+     "status": "matched"
     }
-   ]
+   ],
+   "source": "harness"
   },
   {
    "file": "asm/unk_02055244.s",

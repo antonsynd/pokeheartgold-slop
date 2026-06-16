@@ -183,6 +183,14 @@
       "attempts": 2,
       "result": "matched",
       "note": "opus-drafted. NARC/heap-backed resource pool manager (6 public + 7 static). Manager struct 0x18 header + inline entry table[count] (8B entries {void* data; u32 id}) at this+0x18; child heap holds struct + resource allocs. Ctor/dtor, alloc/free/get/contains-by-id, NARC member loader. GF_ASSERT(expr) macro reproduces the cmp/beq/bl GF_AssertFail pattern. Full-ROM chiri compare OK. Two surgeries: (1) ctor spill steering -- reassign the dead `extraSize` param in-place (extraSize = heapSize - extraSize) so MWCC reuses its callee-saved reg for structSize (subs r5,r6,r5) and spills tableSize instead; a fresh structSize local made MWCC spill structSize and keep tableSize in a reg (2-byte larger). (2) dtor loop tail order -- asm does n-- THEN entry++ THEN cmp/bne, so write explicit `n--; entry++;` before `while (n != 0)` rather than `entry++; } while(--n)` (the latter, which matched the no-call lookup loops 624/644, emits entry++ then n-- with no cmp)."
+    },
+    {
+      "file": "asm/unk_020551B8.s",
+      "lines": 76,
+      "functions": 2,
+      "attempts": 1,
+      "result": "matched",
+      "note": "opus-drafted. Field BGM/scene TaskManager state-machine: sub_02055218 (public) allocs a 0x10 work struct on HEAP_ID_FIELD2, inits {state,unk4,unk8=id,unkC=seqNo}, registers static TaskFunc sub_020551B8 via TaskManager_Call. sub_020551B8 (static, used as TaskFunc ptr) switch(state): case0 loads overlay (ov01_021EFB64), starts scene (ov01_021EFC94(id,fieldSystem,&unk4)), Sound_SetSceneAndPlayBGM(5,(u16)unkC,1), state++; case1 if(unk4==1){ov01_021EFC04(id);Heap_Free;return TRUE}. Clean first-build match (only bl relocs). Notes: unk_8 is an INT id (overlay fn does cmp r0,#0xc \u2014 not a ptr); unk_c is a u32 field (ldr/str) truncated to u16 by MWCC automatically at the u16-prototyped Sound seqNo arg (lsl/lsr 0x10); ov01_* are local externs (overlay still asm); sizeof(struct)=0x10 matches mov r1,#0x10."
     }
   ],
   "failed": [
@@ -228,8 +236,8 @@
   ],
   "in_progress": null,
   "stats": {
-    "total_attempts": 81,
-    "total_matched": 23,
+    "total_attempts": 82,
+    "total_matched": 24,
     "total_failed": 5
   }
 }
