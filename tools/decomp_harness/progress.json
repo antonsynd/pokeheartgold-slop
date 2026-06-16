@@ -271,6 +271,14 @@
       "attempts": 1,
       "result": "matched",
       "note": "sonnet-drafted; 14/14 fns match, chiri pkg -- compare full ROM SHA1 OK. NNS G3D render-state config module (struct OV01_G3dConfig 0x48: light vectors fx16[4][3] + colors GXRgb[4] + material/polygon u32 fields). Fresh module, new header. ov01_021EA910 (global-apply) flags param is SIGNED int (asm uses blt for the flags>=0x1000 gate, not unsigned blo). ov01_021EA9B0 (model-apply) 14 bit-gated NNS_G3dMdlSetMdl*All calls; those have NO C prototype (asm-only SDK) -> declared extern in the .c. GXLightId/GXPolygonMode/GXCull args need (enum) casts (no-op codegen). ov01_021EA8FC frees a separate holder struct (offset0=ptr), not the config."
+    },
+    {
+      "file": "asm/frontier.s",
+      "lines": 450,
+      "functions": 20,
+      "attempts": 1,
+      "result": "matched",
+      "note": "hand-written (Opus, no drafter); 20/20 fns match, chiri pkg -- compare full ROM SHA1 OK. Battle Frontier overlay manager (OVY_80/81/42). 0xA54 internal struct FrontierWork (named to avoid collision with save-data FrontierData in frontier_data.h) with nested arrays: unk24[0x18][2] (stride4), unk84[0x20] (0x3c entries, u16@0xc), unkA04[8]. 7-case jump table in Frontier_Main. frontier.h frozen (callers scrcmd_c/unk_020968B0/frontier_cmd_arcade); struct is internal (opaque void* API). FrontierSystem_*/FrontierMap_*/ov80_* are asm-only -> extern. sub_0209680C/sub_02096868 kept void*(void*) to match overlay_80_02239BF0.c externs. Compile fixes only: fwd-declare exported sub_*, FS_EXTERN_OVERLAY(OVY_80/81/42), rename struct off FrontierData."
     }
   ],
   "failed": [
@@ -379,8 +387,8 @@
   ],
   "in_progress": null,
   "stats": {
-    "total_attempts": 96,
-    "total_matched": 34,
+    "total_attempts": 97,
+    "total_matched": 35,
     "total_failed": 10
   }
 }
