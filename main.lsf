@@ -69,7 +69,7 @@ Static main
     Object src/bg_window.o
     Object src/gf_3d_render.o
     Object src/sys_task.o
-    Object asm/unk_0201F990.o
+    Object src/unk_0201F990.o
     Object src/string_control_code.o
     Object src/math_util.o
     Object src/text.o
