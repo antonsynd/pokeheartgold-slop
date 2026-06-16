@@ -343,6 +343,14 @@
       "attempts": 1,
       "result": "matched",
       "note": "compare-verified (chiri pkg -- compare OK, full ROM SHA1). 3D model display helper: model-resource (0x10), animation (0x14), render-obj (0x78) structs. 26/26 functions match. One iteration on sub_0201815C clamp branch polarity (invert if/else so pass-through arm falls through). objdiff -14 .text section delta is benign trailing-.balign padding (7 fns x -2); compare passes. New header include/unk_02018000.h (IPA-safe; only this TU includes it; overlay callers resolve by linker symbol)."
+    },
+    {
+      "file": "asm/unk_02014A08.s",
+      "lines": 504,
+      "functions": 19,
+      "attempts": 6,
+      "result": "matched",
+      "note": "compare-verified (full ROM SHA1 OK). HBlank DMA scanline sine-wave effect: double-buffer (0xc) + work struct (0x79C). 18/19 clean C; sub_02014CBC NONMATCHING (handwritten asm) due to load-delay-slot scheduling fill that resists C. New header include/unk_02014A08.h; local externs for MI_HBlankDmaCopy32/16 + _s32_div_f (IPA-safe)."
     }
   ],
   "failed": [

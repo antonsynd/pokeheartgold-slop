@@ -47,7 +47,7 @@ Static main
     Object src/unk_02013FDC.o
     Object src/gf_rtc.o
     Object src/list_menu_items.o
-    Object asm/unk_02014A08.o
+    Object src/unk_02014A08.o
     Object asm/unk_02014DA0.o
     Object src/mail_message.o
     Object src/easy_chat.o
