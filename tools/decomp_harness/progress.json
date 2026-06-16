@@ -319,6 +319,14 @@
       "attempts": 1,
       "result": "matched_nonmatching",
       "note": "compare-verified (chiri pkg -- compare OK, full ROM SHA1). Field interaction module (facing tile/object, BG hidden-item + direction events, coord/trigger events). 11/12 functions match as C; GetInteractedBackgroundEventScript committed as inline-asm NONMATCHING (5-byte scheduling diff on its two-identical-walking-pointer loop - retail sinks the field ptr past the loop guard & increments it before the passed copy; MWCC-from-C wouldn't reproduce; see attempts_log). SELF-CONTAINED: did NOT include own header unk_0203DB6C.h (it uses LocalMapObject via script.h but clang-format forces own-header first, before map_object.h -> LocalMapObject undefined; same trap as text_0205B4EC). Local prototypes for all 12 fns; local externs none (all imports have headers). Key gotchas: (1) needed field_system.h for the complete FieldSystem struct (script.h only forward-declares); sub_0205B700 is in metatile_behavior.h not unk_02054648.h. (2) COORD_EVENT.x/.z are s16 in the frozen struct but retail reads them with ldrh in sub_0203DE04 -> used (u16) casts. (3) BOOL fns whose asm zero-extends to u8 (sub_0203DBD4, BgEventIsUncollectedHiddenItem) use a u8 local then return it; BOOL fns without the mask (sub_0203DC64, BgEventDirectionIsCompatibleWithPlayerFacing) return TRUE/FALSE directly. FieldSystem mapObjectManager@0x3c, playerAvatar@0x40."
+    },
+    {
+      "file": "asm/overlay_01_021EAF00.s",
+      "lines": 164,
+      "functions": 11,
+      "attempts": 1,
+      "result": "matched",
+      "note": "compare-verified (chiri pkg -- compare OK, full ROM SHA1). OVY_01 field view-photo state dispatcher: ov01_021EAF00 returns fieldSystem->unk18-1 (GF_ASSERT in [1,6]) as index into static const ov01_022066DC[6] table of {fn,NULL,fn,fn} (16B structs, BOOL(*)(FieldSystem*)). 4 dispatchers ov01_021EAF18/34/54/70 call table[idx].unk00/04/08/0C(fieldSystem); unk04 always NULL so ov01_021EAF34 returns TRUE. ov01_021EAF98 HandleLoadOverlay(FS_OVERLAY_ID(OVY_19),OVY_LOAD_ASYNC)+CreateViewPhotoTask->unk_D8; ov01_021EAFB4 destroy+Unload. Table refs sub_0203DB6C/70/74 (from unk_0203DB6C, real sig BOOL(FieldSystem*) not the void(void) I guessed there - byte-identical so left as-is) + cluster partner ov01_021F68xx (still asm, local externs). Self-contained, no header (no callers). FS_EXTERN_OVERLAY(OVY_19) declared locally. Empty BOOL fns rely on -W nomissingreturn."
     }
   ],
   "failed": [

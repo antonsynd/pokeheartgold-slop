@@ -1,12 +1,12 @@
 {
  "summary": {
-  "generated": "2026-06-16T21:08:58Z",
+  "generated": "2026-06-16T21:21:29Z",
   "by_status": {
    "matched": {
-    "files": 40,
-    "functions": 346,
-    "insn_lines": 6695,
-    "text_bytes_est": 14646
+    "files": 41,
+    "functions": 357,
+    "insn_lines": 6794,
+    "text_bytes_est": 14872
    },
    "blocked": {
     "files": 13,
@@ -15,10 +15,10 @@
     "text_bytes_est": 9622
    },
    "pending": {
-    "files": 250,
-    "functions": 19668,
-    "insn_lines": 943292,
-    "text_bytes_est": 2106250
+    "files": 249,
+    "functions": 19657,
+    "insn_lines": 943193,
+    "text_bytes_est": 2106024
    },
    "upstream": {
     "files": 368,
@@ -29,9 +29,9 @@
   },
   "function_totals": {
    "tracked": 20167,
-   "matched": 346,
+   "matched": 357,
    "partial_in_blocked": 50,
-   "pending": 19668
+   "pending": 19657
   },
   "blockers": [
    {
@@ -35639,8 +35639,8 @@
   },
   {
    "file": "asm/overlay_01_021EAF00.s",
-   "lsf_kind": "asm",
-   "status": "pending",
+   "lsf_kind": "src",
+   "status": "matched",
    "lines": 164,
    "function_count": 11,
    "text_bytes_est": 226,
@@ -35681,79 +35681,80 @@
      "mode": "thumb",
      "insns": 11,
      "size_est": 26,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ov01_021EAF18",
      "mode": "thumb",
      "insns": 13,
      "size_est": 30,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ov01_021EAF34",
      "mode": "thumb",
      "insns": 15,
      "size_est": 34,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ov01_021EAF54",
      "mode": "thumb",
      "insns": 13,
      "size_est": 30,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ov01_021EAF70",
      "mode": "thumb",
      "insns": 13,
      "size_est": 30,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ov01_021EAF8C",
      "mode": "thumb",
      "insns": 2,
      "size_est": 4,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ov01_021EAF90",
      "mode": "thumb",
      "insns": 2,
      "size_est": 4,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ov01_021EAF94",
      "mode": "thumb",
      "insns": 3,
      "size_est": 6,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ov01_021EAF98",
      "mode": "thumb",
      "insns": 12,
      "size_est": 28,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ov01_021EAFB4",
      "mode": "thumb",
      "insns": 12,
      "size_est": 28,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ov01_021EAFD0",
      "mode": "thumb",
      "insns": 3,
      "size_est": 6,
-     "status": "pending"
+     "status": "matched"
     }
-   ]
+   ],
+   "source": "harness"
   },
   {
    "file": "asm/overlay_01_021EAFD4.s",
