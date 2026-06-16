@@ -167,6 +167,14 @@
       "attempts": 2,
       "result": "matched",
       "note": "sonnet-drafted. SysTask camera-distance interpolation module (4 public + 8 static + rodata dispatch table {CDBC,CDC4,CDFC,NULL}). 0x34 work struct. Full-ROM chiri compare OK. Two surgeries: (1) ov01_021FCD2C chained store `work->unk20 = work->unk10 = Camera_GetDistance(camera)` \u2014 order is RIGHT operand stored first so to store unk10 before unk20 the chain must read unk20=unk10=expr; also needed explicit `Camera *camera` local because the work->unk30 store aliases fieldSystem->camera and MWCC reloaded it. (2) ov01_021FCE74 branch polarity: asm keeps the success(>=) path INLINE and branches away to return FALSE, so write `if (unk24 >= unk1C){...; return TRUE;} return FALSE;` not `if (<) return FALSE`. unk24 u32 vs unk1C int -> unsigned bcc. CE34 frameless interworking tail-call to Camera_SetDistance matched from a plain single-call body."
+    },
+    {
+      "file": "asm/unk_0201F990.s",
+      "lines": 204,
+      "functions": 4,
+      "attempts": 3,
+      "result": "matched",
+      "note": "sonnet-drafted. NNS G3d box-test/geometry module: 2 public entry fns (sub_0201F990 SRT+box-test, sub_0201FA34 trans+scale+box-test) + 2 static helpers (sub_0201FAA4 builds 6-s16 box param, sub_0201FAC8 emits POLYGON_ATTR/BEGIN/END/BOX_TEST then polls G3X_GetBoxTestResult). Base-set seq = NNS_G3dGlbSetBaseTrans/SetBaseRot(inline=MI_Copy36B+flag&=~0xa4)/SetBaseScale/Flush. G3X_GetBoxTestResult has NO C proto -> local extern int(int*). Full-ROM chiri compare OK. Three surgeries: (1) MWCC assigns stack slots in REVERSE declaration order -> reorder locals (box,trans,scale) to match asm layout; (2) fill VecFx32 with one repeated mem value needs a temp `v=src; s.x=v;s.y=v;s.z=v;` (separate member stores from a load do NOT CSE -> 3 reloads; chained s.x=s.y=s.z=v stores reverse); (3) load-all-then-store-forward for 3 distinct values needs temps declared in REVERSE field order so last-computed lands in r0 and stores forward; (4) defer const store (begin=0) to a statement between calls, not an initializer, so MWCC schedules it after the prior bl."
     }
   ],
   "failed": [
@@ -212,8 +220,8 @@
   ],
   "in_progress": null,
   "stats": {
-    "total_attempts": 79,
-    "total_matched": 21,
+    "total_attempts": 80,
+    "total_matched": 22,
     "total_failed": 5
   }
 }
