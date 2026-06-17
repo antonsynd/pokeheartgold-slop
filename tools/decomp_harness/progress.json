@@ -375,6 +375,14 @@
    "attempts": 3,
    "result": "matched",
    "note": "compare-verified (chiri pkg -- compare OK, full ROM SHA1; existing frozen-header callers event_cutscene_shaymin.c + overlay_01_rock_smash_item.c unaffected). Managed SysTask/effect system: UnkTaskManager(0x10){count,unk4,heapId,work[]} + array of 0xC8 UnkTaskWork slots (flags, fields, VecFx32@0x24, 0x80 userdata@0x30, 6 callback slots@0xb0-0xc4). sub_020689C8 create, sub_02068B0C spawn (builds UnkTemplate, 2 default cbs), sub_02068A08 find-free-slot+init+SysTask_CreateOnMainQueue, sub_02068B48 destroy. 46/48 matched first try. Split-header discipline: did NOT include/modify frozen include/unk_020689C8.h (only declares 3 fns B48/D98/DB8); .c is self-contained with local structs + local prototypes. Fixes: (1) sub_02068C38 decl work before size for r4/r5; (2) sub_02068A08 zero VecFx32 via aggregate-init {0,0,0} (base-reg stores). New insight: zero-struct-passed-by-addr-use-aggregate-init."
+  },
+  {
+   "file": "asm/overlay_01_02203E40.s",
+   "lines": 264,
+   "functions": 10,
+   "attempts": 4,
+   "result": "matched",
+   "note": "compare-verified (chiri pkg -- compare OK, full ROM SHA1). A 3D-model effect attached to a map object (client of the unk_020689C8 managed-task system + the overlay_01_021F1348 field-effect spawner): ov01_02203E40 allocs+inits the object (NNSG3dRenderObj@0x4, f32 scale@0x64=1.0f), ov01_02203EA0 computes a camera-facing offset (Camera_GetLookAtCamPos, VEC_Subtract/Distance/Normalize, dist/3) and spawns via ov01_021F1620 with a callback template (ov01_022095B4); callbacks position (VEC_MultAdd along the cam direction) and draw (GF3dRender_DrawModel with identity MtxFx33 + f32->fx32 scale via _fmul/_ffix). Self-contained: did NOT include overlay_01_021F1348.h (its FieldSystem*/TaskManager* return types are placeholders; the renderer's camera is at +0x24, OOB for TaskManager) \u2014 declared the ov01_021F* + sub_02068D* fns locally with accurate custom struct types. 7/10 matched first try; fixes: stack-slot reverse-decl-order in F6C/F98/EA0, drop the obj register-cache (use temp.obj at the tail), and split temp.dist=f()/3 into two stores. New insight: placeholder-header-types-need-local-redecl-for-extra-fields."
   }
  ],
  "failed": [
