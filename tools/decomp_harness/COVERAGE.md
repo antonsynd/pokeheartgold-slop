@@ -1,14 +1,14 @@
 # Decomp Coverage Ledger
 
-*Generated 2026-06-17T00:41:45Z by `coverage_ledger.py` — do not hand-edit; regenerate after each decomp.*
+*Generated 2026-06-17T01:18:17Z by `coverage_ledger.py` — do not hand-edit; regenerate after each decomp.*
 
-Tracked functions (files with retained asm): **20167** — matched 425, pending 19589, plus 50 matched-but-blocked inside failed files.
+Tracked functions (files with retained asm): **20167** — matched 425, pending 19579, plus 50 matched-but-blocked inside failed files.
 
 | status | files | functions | insn lines | ~text bytes |
 |---|---|---|---|---|
 | matched | 45 | 425 | 8159 | 17842 |
-| blocked | 13 | 153 | 4239 | 9622 |
-| pending | 245 | 19589 | 941828 | 2103054 |
+| blocked | 14 | 163 | 4635 | 10474 |
+| pending | 244 | 19579 | 941432 | 2102202 |
 | upstream | 368 | 0 | 0 | 0 |
 
 ## Blockers (value-ordered: fix what gates the most)
@@ -20,7 +20,7 @@ Tracked functions (files with retained asm): **20167** — matched 425, pending 
 | objdiff-false-positives | 0 | 0 | RESOLVED. objdiff.py had a critical bug: the byte extraction regex did not match MWCC's ARM Thumb objdump format (packed hex like 'b418' vs expected space-separated 'b4 18'). It extracted 0 bytes for every function, so 0==0 always reported MATCH. 11 decomps accepted via objdiff were not actually byte-matching. Fixed in this session; all 11 non-matching decomps reverted to asm. 2 decomps that truly match (unk_0202DB34, battle_arcade_game_board_data) kept. |
 | ext-data-section-split | 1 | 0 | Data-only files exporting multiple EXTERNAL (.public) const arrays: MWCC -ipa file emits each top-level const as its own .rodata section, and mwldarm orders/aligns them differently than the asm's single packed .rodata, so the linked overlay/module SHA1 fails even though objdiff --summary (per-section) reports a match. Symbols referenced by other TUs must stay non-static, so they cannot be pooled into one section via `static`. |
 
-## Blocked files (13)
+## Blocked files (14)
 
 | file | functions | insn lines | data-only | notes |
 |---|---|---|---|---|
@@ -28,6 +28,7 @@ Tracked functions (files with retained asm): **20167** — matched 425, pending 
 | asm/unk_0200FA24.s | 33 | 787 |  | ipa-shared-headers IPA-blocked: header signature conflicts, IPA CSE caching, loop codegen. C file exists at src/unk_0200FA24.c but cannot b |
 | asm/unk_0206979C.s | 25 | 282 |  | regalloc-reg-number-swap 24/25 NEAR-MISS. NNS_G3d anim/render wrapper; all fns match except sub_020698E8, which has a maxFrame/0-const r3<->r4 re |
 | asm/unk_0200B150.s | 11 | 249 |  | param-copyprop-cmp 10/11 matched; 10/11 functions matched. OamManager_Create has 1-byte mismatch: target asm uses 'cmp r4, #4' but MWCC generates 'cmp r0, |
+| asm/overlay_01_021EABA8.s | 10 | 396 |  |  WIP 7/10 functions + rodata + bss matched (see attempts_log). Camera preset/transition overlay. Holdouts: ov01_021EAEE0  |
 | asm/overlay_80_02239D74.s | 8 | 288 |  | regalloc-loop-ptr-swap Frontier graphics-loader (8 fns). 7/8 match byte-for-byte; ov80_02239DD0 screen-copy loop has an irreducible r4/r5 swap  |
 | asm/overlay_12_02265E28.s | 7 | 219 |  |  Battle-sprite resource loader. rodata (ManagedSpriteTemplate[2]+u16[24]x2+u16[24][3]) MATCHES exactly; 5/7 fns bl-only ( |
 | asm/overlay_01_021F4464.s | 5 | 239 |  |  VRAM display-capture (DISPCAPCNT) setup. 3/5 fns match (ov01_021F4464/44B4/4584 bl-only; mode field unk00 MUST be int fo |
@@ -88,7 +89,7 @@ Tracked functions (files with retained asm): **20167** — matched 425, pending 
 | asm/overlay_01_021F467C.s | 2 | 58 |  | harness |
 | asm/overlay_35.s | 2 | 26 |  | harness |
 
-## Pending files (245)
+## Pending files (244)
 
 | file | functions | insn lines | data-only | notes |
 |---|---|---|---|---|
@@ -297,7 +298,6 @@ Tracked functions (files with retained asm): **20167** — matched 425, pending 
 | asm/unk_0205BB1C.s | 11 | 562 |  |  |
 | asm/unk_02097024.s | 11 | 209 |  |  |
 | asm/overlay_80_02235438.s | 11 | 361 |  |  |
-| asm/overlay_01_021EABA8.s | 10 | 396 |  |  |
 | asm/overlay_01_021FE780.s | 10 | 295 |  |  |
 | asm/overlay_01_021FF854.s | 10 | 412 |  |  |
 | asm/overlay_01_02200858.s | 10 | 297 |  |  |

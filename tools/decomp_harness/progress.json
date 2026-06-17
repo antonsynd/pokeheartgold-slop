@@ -470,6 +470,14 @@
       "blocker_id": "ext-data-section-split",
       "attempts": 1,
       "reason": "Data-only: 3 external const fn-ptr arrays (sMapEnterRoutines, sMapExitRoutines, _020FC76C) referenced only by already-matched unk_02055BF0.c (built against them as EXTERNAL syms). As a separate _data.c, MWCC -ipa file emits each as its own .rodata section -> mwldarm reorders them in the MAIN module too -> main.sbin SHA1 FAILED (objdiff n/a, data-only). Can't be static (would alter matched unk_02055BF0.c's external-symbol access codegen). Same shape as battle_arcade_game_board_data.s. Stays asm."
+    },
+    {
+      "file": "asm/overlay_01_021EABA8.s",
+      "lines": 487,
+      "functions": 10,
+      "attempts": 6,
+      "result": "deferred",
+      "reason": "WIP 7/10 functions + rodata + bss matched (see attempts_log). Camera preset/transition overlay. Holdouts: ov01_021EAEE0 (2-byte scheduler coin-flip), ov01_021EACBC + ov01_021EAD8C (offset negation emits negs vs asm mul -1; register numbering). Reverted to keep build clean; resume from attempts_log analysis (rodata decode script, struct layouts, CameraSysWork/xfer approach all worked)."
     }
   ],
   "in_progress": null,

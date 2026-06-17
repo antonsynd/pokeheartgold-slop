@@ -1,6 +1,6 @@
 {
  "summary": {
-  "generated": "2026-06-17T00:41:45Z",
+  "generated": "2026-06-17T01:18:17Z",
   "by_status": {
    "matched": {
     "files": 45,
@@ -9,16 +9,16 @@
     "text_bytes_est": 17842
    },
    "blocked": {
-    "files": 13,
-    "functions": 153,
-    "insn_lines": 4239,
-    "text_bytes_est": 9622
+    "files": 14,
+    "functions": 163,
+    "insn_lines": 4635,
+    "text_bytes_est": 10474
    },
    "pending": {
-    "files": 245,
-    "functions": 19589,
-    "insn_lines": 941828,
-    "text_bytes_est": 2103054
+    "files": 244,
+    "functions": 19579,
+    "insn_lines": 941432,
+    "text_bytes_est": 2102202
    },
    "upstream": {
     "files": 368,
@@ -31,7 +31,7 @@
    "tracked": 20167,
    "matched": 425,
    "partial_in_blocked": 50,
-   "pending": 19589
+   "pending": 19579
   },
   "blockers": [
    {
@@ -35532,7 +35532,7 @@
   {
    "file": "asm/overlay_01_021EABA8.s",
    "lsf_kind": "asm",
-   "status": "pending",
+   "status": "blocked",
    "lines": 487,
    "function_count": 10,
    "text_bytes_est": 852,
@@ -35574,72 +35574,76 @@
      "mode": "thumb",
      "insns": 59,
      "size_est": 136,
-     "status": "pending"
+     "status": "blocked"
     },
     {
      "name": "ov01_021EAC30",
      "mode": "thumb",
      "insns": 11,
      "size_est": 30,
-     "status": "pending"
+     "status": "blocked"
     },
     {
      "name": "ov01_021EAC4C",
      "mode": "thumb",
      "insns": 10,
      "size_est": 24,
-     "status": "pending"
+     "status": "blocked"
     },
     {
      "name": "ov01_021EAC64",
      "mode": "thumb",
      "insns": 4,
      "size_est": 8,
-     "status": "pending"
+     "status": "blocked"
     },
     {
      "name": "ov01_021EAC6C",
      "mode": "thumb",
      "insns": 37,
      "size_est": 78,
-     "status": "pending"
+     "status": "blocked"
     },
     {
      "name": "ov01_021EACBC",
      "mode": "thumb",
      "insns": 99,
      "size_est": 200,
-     "status": "pending"
+     "status": "blocked"
     },
     {
      "name": "ov01_021EAD8C",
      "mode": "thumb",
      "insns": 94,
      "size_est": 196,
-     "status": "pending"
+     "status": "blocked"
     },
     {
      "name": "ov01_021EAE50",
      "mode": "thumb",
      "insns": 40,
      "size_est": 86,
-     "status": "pending"
+     "status": "blocked"
     },
     {
      "name": "ov01_021EAEA4",
      "mode": "thumb",
      "insns": 27,
      "size_est": 60,
-     "status": "pending"
+     "status": "blocked"
     },
     {
      "name": "ov01_021EAEE0",
      "mode": "thumb",
      "insns": 15,
      "size_est": 34,
-     "status": "pending"
+     "status": "blocked"
     }
-   ]
+   ],
+   "blocked_reason": "WIP 7/10 functions + rodata + bss matched (see attempts_log). Camera preset/transition overlay. Holdouts: ov01_021EAEE0 (2-byte scheduler coin-flip), ov01_021EACBC + ov01_021EAD8C (offset negation emits negs vs asm mul -1; register numbering). Reverted to keep build clean; resume from attempts_log analysis (rodata decode script, struct layouts, CameraSysWork/xfer approach all worked).",
+   "attempts": 6,
+   "blocker_id": null,
+   "kept_c": false
   },
   {
    "file": "asm/overlay_01_021EAF00.s",
