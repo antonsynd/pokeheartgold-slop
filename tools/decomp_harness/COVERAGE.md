@@ -1,14 +1,14 @@
 # Decomp Coverage Ledger
 
-*Generated 2026-06-17T01:18:17Z by `coverage_ledger.py` — do not hand-edit; regenerate after each decomp.*
+*Generated 2026-06-17T02:06:15Z by `coverage_ledger.py` — do not hand-edit; regenerate after each decomp.*
 
-Tracked functions (files with retained asm): **20167** — matched 425, pending 19579, plus 50 matched-but-blocked inside failed files.
+Tracked functions (files with retained asm): **20167** — matched 432, pending 19572, plus 50 matched-but-blocked inside failed files.
 
 | status | files | functions | insn lines | ~text bytes |
 |---|---|---|---|---|
-| matched | 45 | 425 | 8159 | 17842 |
+| matched | 46 | 432 | 8554 | 18658 |
 | blocked | 14 | 163 | 4635 | 10474 |
-| pending | 244 | 19579 | 941432 | 2102202 |
+| pending | 243 | 19572 | 941037 | 2101386 |
 | upstream | 368 | 0 | 0 | 0 |
 
 ## Blockers (value-ordered: fix what gates the most)
@@ -39,7 +39,7 @@ Tracked functions (files with retained asm): **20167** — matched 425, pending 
 | asm/unk_02055BF0_data.s | 0 | 0 | yes | ext-data-section-split Data-only: 3 external const fn-ptr arrays (sMapEnterRoutines, sMapExitRoutines, _020FC76C) referenced only by already-ma |
 | asm/battle_arcade_game_board_data.s | 0 | 0 | yes | ext-data-section-split MWCC splits external const into per-symbol .rodata sections; reordered at link -> OVY_84 SHA1 fail. Stays asm. |
 
-## Matched files (asm retained) (45)
+## Matched files (asm retained) (46)
 
 | file | functions | insn lines | data-only | notes |
 |---|---|---|---|---|
@@ -70,6 +70,7 @@ Tracked functions (files with retained asm): **20167** — matched 425, pending 
 | asm/overlay_80_022384D8.s | 8 | 160 |  | harness |
 | asm/unk_020318C8.s | 7 | 33 |  | harness |
 | asm/overlay_01_021EAFD4.s | 7 | 254 |  | harness |
+| asm/overlay_01_021FAD1C.s | 7 | 395 |  | harness |
 | asm/overlay_01_021FB368.s | 7 | 166 |  | harness |
 | asm/unk_0202E41C.s | 6 | 66 |  | harness |
 | asm/overlay_01_021EA6C4.s | 6 | 110 |  | harness |
@@ -89,7 +90,7 @@ Tracked functions (files with retained asm): **20167** — matched 425, pending 
 | asm/overlay_01_021F467C.s | 2 | 58 |  | harness |
 | asm/overlay_35.s | 2 | 26 |  | harness |
 
-## Pending files (244)
+## Pending files (243)
 
 | file | functions | insn lines | data-only | notes |
 |---|---|---|---|---|
@@ -316,7 +317,6 @@ Tracked functions (files with retained asm): **20167** — matched 425, pending 
 | asm/overlay_80_02235390.s | 8 | 72 |  |  |
 | asm/overlay_80_02235FC8.s | 8 | 534 |  |  |
 | asm/unk_020192D0.s | 7 | 273 |  |  |
-| asm/overlay_01_021FAD1C.s | 7 | 395 |  |  |
 | asm/overlay_01_021FCE98.s | 7 | 342 |  |  |
 | asm/overlay_105.s | 7 | 537 |  |  |
 | asm/overlay_01_021F3114.s | 6 | 259 |  |  |
