@@ -351,6 +351,14 @@
       "attempts": 6,
       "result": "matched",
       "note": "compare-verified (full ROM SHA1 OK). HBlank DMA scanline sine-wave effect: double-buffer (0xc) + work struct (0x79C). 18/19 clean C; sub_02014CBC NONMATCHING (handwritten asm) due to load-delay-slot scheduling fill that resists C. New header include/unk_02014A08.h; local externs for MI_HBlankDmaCopy32/16 + _s32_div_f (IPA-safe)."
+    },
+    {
+      "file": "asm/unk_0202068C.s",
+      "lines": 545,
+      "functions": 20,
+      "attempts": 5,
+      "result": "matched",
+      "note": "compare-verified (full ROM SHA1 OK). VRAM cell-transfer binding manager (rest of the unk_02020654 module; sibling sub_02020654 etc. already in vram_transfer_manager.c). Manager(8)+Entry(0x14). Inlined NNS_G3dGetResDataByIdx/ByName dict nav, texture-size jump table (sub_0202094C), VRAM-addr bit packing. 19/20 clean C; sub_02020780 NONMATCHING (r1/r2 register-alloc-order coin-flip). New header include/unk_0202068C.h; local externs for sub_02026DE0/NNS_G3dGetResDataByName (IPA-safe; caller overlay_01_021EAFD4.c uses local externs)."
     }
   ],
   "failed": [
