@@ -225,11 +225,16 @@ info "  Installed: ARM9-TS.lcf.template, mwldarm.response.template, sub/ARM7-TS.
 # Make sure .exe files are executable (Wine needs +x on the host)
 find "$REPO_DIR/tools/mwccarm" "$REPO_DIR/tools/bin" -name "*.exe" -exec chmod +x {} \;
 
-# ── Wine first-run: present license prompt ─────────────────────────────────────
+# ── Initialise Wine prefix ─────────────────────────────────────────────────────
+# Always run wineboot --init so the prefix is created (or regenerated) with
+# 32-bit DLL support.  wine32 may have been installed after the prefix was
+# first created, in which case wineboot is required to add syswow64 entries.
+# WINEDEBUG=-all suppresses the noisy "no display driver" diagnostics that
+# appear on headless systems.
 echo ""
-info "==> Running MWCC once to trigger licence acceptance (Wine first-run)..."
-info "  If a dialog appears, point it to: $REPO_DIR/tools/mwccarm/license.dat"
-wine "$REPO_DIR/tools/mwccarm/2.0/sp2p2/mwccarm.exe" 2>/dev/null || true
+info "==> Initialising Wine prefix (wineboot --init) ..."
+WINEDEBUG=-all wineboot --init 2>/dev/null || true
+info "  Wine prefix ready."
 
 # ── chiri install hint ─────────────────────────────────────────────────────────
 if ! check chiri; then
