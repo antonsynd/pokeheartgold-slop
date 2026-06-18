@@ -511,6 +511,24 @@
       "category": "data-sections",
       "title": "Data-only files in a custom abs32 section with multiple ordered symbols (e.g. .version SDK version strings) have no known matching C form under MWCC sp2p2 — keep as asm",
       "body": "asm/middleware.s is 7 NUL-terminated SDK version strings in ONE .version section (define_section VERSION \".version\" abs32 RWX in <nitro/section.h>), each .balign 4, total 224 bytes, in source order. No C incantation reproduces a single ordered 4-aligned .version section: (1) bare `VERSION x[]` declspec prefix -> \"declaration syntax error\"; (2) `const` data IGNORES `#pragma section VERSION begin/end` and lands in the merged .rodata (correct order, packed, WRONG section); (3) NON-const data WITH the begin/end pragma reaches .version but MWCC -O4 emits each symbol as its OWN .version sub-section SORTED BY SIZE (not source order) — `__attribute__((aligned(4)))` fixes the per-object 4-byte alignment (algn 2**2) but cannot fix the order; full compare FAILs main.sbin + OVY_45.sbin. Also: objdiff.py does NOT track custom sections (it reports asm .rodata=0), so only `chiri pkg -- compare` can verify these. Verdict: defer / keep asm. Triage ranks it #1 (data-only, 36 lines) but that is a false-easy."
+    },
+    {
+      "id": "objdiff-jumptable-size-artifact",
+      "category": "tooling",
+      "title": "objdiff.py can falsely report a function SIZE mismatch when the function has an inline Thumb jump-table (data) region — verify byte-identity manually + via full compare",
+      "body": "A Thumb switch emits an inline jump table (e.g. `.short case0..caseN` after `add pc, r1`) inside .text. objdiff delimits functions by symbol size; the asm .o marks the table with a $d data mapping symbol and may report a different symbol size than the C .o (e.g. sub_02096260 reported 176 vs 184), flagging a SIZE mismatch even though every instruction byte (and the table words 0008/0026/003c/0052/0090) is identical. The only real differences in the raw dump were the bl placeholders (fff7feff in the asm .o vs 00f000f8 in the C .o) which are unresolved relocations that link identically. Resolution: dump `arm-none-eabi-objdump -s -j .text` for both, compare non-bl bytes; then trust `chiri pkg -- compare` (full ROM SHA1) as authoritative. (unk_020961D8.s)"
+    },
+    {
+      "id": "false-ipa-gate-shared-imports",
+      "category": "tooling",
+      "title": "A triage gated_by:[ipa-shared-headers] can be a FALSE POSITIVE when the shared symbols are common library IMPORTS, not exports of a mutable shared header",
+      "body": "triage flags a file as gated when it shares symbols with a blocked file. But check WHICH symbols: unk_020961D8.s was gated against unk_0200FA24.s, but the only shared .public symbols were Heap_Free and IsPaletteFadeFinished — ubiquitous imports, not a shared mutable header (the real ipa-shared-headers risk is the sound.h family). Confirm with: comm -12 of the two .inc .public lists; if the overlap is just common imports (Heap_*, memcpy, MI_*, palette/fade helpers), the gate is spurious and the file is safe to do alone. Bonus tell here: include/unk_020961D8.h already existed and a matched file (scrcmd_c.c) already called it, so the header was frozen — implement the .c only."
+    },
+    {
+      "id": "struct-member-reload-vs-local-var",
+      "category": "codegen",
+      "title": "When two calls use the same logical value via different access paths, match the exact source expression: `obj->ptr->field` reloads from memory; a local `T *p=...; p->field` uses the cached register",
+      "body": "In sub_020961D8, EasyChat_CreateArgs(...) takes saveData as `work->fieldSystem->saveData` -> MWCC emits `ldr r2,[r4](=work->fieldSystem); ldr r2,[r2,#0xc]` (reload the pointer from the struct), while the very next Save_Misc_Get(...) takes `fieldSystem->saveData` -> `ldr r0,[r5,#0xc]` (uses the local FieldSystem* kept in r5). Both are the same pointer value, but the source expression differs and so does the codegen (extra reload vs cached reg). If a call site is 4 bytes short and the asm has an extra `ldr rN,[base]` before the field load, the source went through the struct member (obj->ptr->field), not the local variable. Pick per-call to match."
     }
   ]
 }

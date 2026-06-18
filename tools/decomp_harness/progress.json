@@ -392,6 +392,15 @@
       "result": "matched",
       "note": "compare-verified (chiri pkg -- compare OK, full ROM SHA1). Sibling of src/unk_02091564.c: a sub_0203410C command-table registrar. sub_0208F658 tail-calls sub_0203410C(&table, NELEMS=11, arg). The .rodata table _02105430 is 11 {handler, u32 sizeGetter(void), void* recordGetter(int,ctx*)} triples (custom local struct typedef to avoid func-ptr return-type warnings vs the generic UnkStruct_02091564). Handlers have signature (int a0, int a1, void *a2, ctx *a3): a0 is a link/player id compared to sub_0203769C(); a3->0xc is a SaveData* (Save_SpecialRibbons_Get), a3->0x88 is a big mixing buffer accessed via raw (u8*)+offset casts (records at 0x2300 stride 0x590, 0x2E20 stride 0x3EC). 18/19 matched first try; only sub_0208F74C needed a fix.",
       "blocker_id": null
+    },
+    {
+      "file": "asm/unk_020961D8.s",
+      "lines": 164,
+      "functions": 3,
+      "attempts": 2,
+      "result": "matched",
+      "note": "compare-verified (chiri pkg -- compare OK, full ROM SHA1). Field-task: edit Battle Greeting easy-chat. sub_020961D8 allocs a 0x24 work struct (HEAP_ID_FIELD3), inits MailMessage@0x8 / EasyChatArgs / SAVE_MISC_DATA, then TaskManager_Call(sub_02096260). sub_02096260 is the TaskFunc state machine (5-case jump-table switch on state@0x18). sub_02096248 frees. Header include/unk_020961D8.h ALREADY existed (frozen; scrcmd_c.c calls it) so just implemented the .c. NOTE the triage 'ipa-shared-headers' gate was a FALSE POSITIVE: the symbols shared with unk_0200FA24.s are common imports (Heap_Free, IsPaletteFadeFinished), not a mutable shared header. 1 fix: EasyChat_CreateArgs's saveData arg reloads work->fieldSystem->saveData (not the local fieldSystem->saveData that Save_Misc_Get uses). objdiff falsely reported sub_02096260 SIZE 176vs184 (inline jump-table mapping-symbol artifact) but bytes are identical and ROM matches.",
+      "blocker_id": null
     }
   ],
   "failed": [
@@ -523,8 +532,8 @@
   ],
   "in_progress": null,
   "stats": {
-    "total_attempts": 108,
-    "total_matched": 38,
+    "total_attempts": 110,
+    "total_matched": 39,
     "total_failed": 12
   }
 }

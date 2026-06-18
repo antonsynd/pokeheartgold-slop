@@ -323,7 +323,7 @@ Static main
     Object src/unk_02095DF4.o
     Object src/phonebook_dat.o
     Object src/choose_starter.o
-    Object asm/unk_020961D8.o
+    Object src/unk_020961D8.o
     Object src/error_message_reset.o
     Object src/sin_vcount.o
     Object src/frontier.o
