@@ -79,7 +79,9 @@ chmod +x "$STAGING/setup-ubuntu.sh"
 
 # ── Pack ───────────────────────────────────────────────────────────────────────
 echo "==> Creating $OUTPUT ..."
-tar -czf "$OUTPUT" -C "$STAGING" .
+# COPYFILE_DISABLE suppresses macOS '._' resource fork files and xattr headers
+# that cause harmless but noisy warnings when extracting on Linux.
+COPYFILE_DISABLE=1 tar -czf "$OUTPUT" -C "$STAGING" .
 
 SIZE=$(du -sh "$OUTPUT" | cut -f1)
 echo ""

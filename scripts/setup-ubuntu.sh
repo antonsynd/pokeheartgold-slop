@@ -16,7 +16,7 @@
 set -euo pipefail
 
 # ── Argument defaults ──────────────────────────────────────────────────────────
-REPO_URL="https://github.com/pret/pokeheartgold"
+REPO_URL="https://github.com/antonsynd/pokeheartgold-slop"
 REPO_DIR="$HOME/pokeheartgold"
 
 while [[ $# -gt 0 ]]; do
@@ -84,9 +84,10 @@ check_tool python3       python3
 check_tool pkg-config    pkg-config
 check_tool git           git
 
-# ARM cross-toolchain (arm-none-eabi-gcc/objcopy/ar)
-check_tool arm-none-eabi-gcc   binutils-arm-none-eabi  "devkitARM also works; see INSTALL.md"
-check_tool arm-none-eabi-objcopy binutils-arm-none-eabi
+# ARM cross-toolchain — only objcopy/ar are needed (MWCC is the compiler).
+# Both are in binutils-arm-none-eabi; gcc-arm-none-eabi is NOT required.
+check_tool arm-none-eabi-objcopy binutils-arm-none-eabi  "devkitARM also works; see INSTALL.md"
+check_tool arm-none-eabi-ar      binutils-arm-none-eabi
 
 # Wine (to run MWCC .exe on Linux)
 check_tool wine          wine  "32-bit support also needed; script adds i386 arch"
@@ -234,16 +235,14 @@ fi
 
 # ── Final summary ──────────────────────────────────────────────────────────────
 echo ""
-echo "┌─────────────────────────────────────────────────────────────────┐"
-echo "│  Setup complete!                                                │"
-echo "│                                                                 │"
-echo "│  Repo:    $REPO_DIR"
-echo "│                                                                 │"
-echo "│  To build:                                                      │"
-echo "│    cd $REPO_DIR                          │"
-echo "│    chiri pkg -- build          # HeartGold (needs chiri)       │"
-echo "│    make                        # HeartGold (raw make)          │"
-echo "│    make soulsilver             # SoulSilver                    │"
-echo "│                                                                 │"
-echo "│  See INSTALL.md for troubleshooting steps.                     │"
-echo "└─────────────────────────────────────────────────────────────────┘"
+echo "Setup complete!"
+echo ""
+echo "  Repo:  $REPO_DIR"
+echo ""
+echo "  To build:"
+echo "    cd $REPO_DIR"
+echo "    chiri pkg -- build          # HeartGold (needs chiri)"
+echo "    make                        # HeartGold (raw make)"
+echo "    make soulsilver             # SoulSilver"
+echo ""
+echo "  See INSTALL.md for troubleshooting steps."
