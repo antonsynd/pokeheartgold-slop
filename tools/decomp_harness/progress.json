@@ -626,6 +626,13 @@
       "attempts": 0,
       "result": "deferred",
       "reason": "Outlier: ~700 insns GTS/DWC Wi-Fi crypto+parser (LCG cipher, SHA1, hex codec, 2 state machines). Fully decoded in attempts_log for a focused future attempt; not built. main.lsf stays on asm."
+    },
+    {
+      "file": "asm/unk_02015DD8.s",
+      "functions": 40,
+      "attempts": 0,
+      "result": "deferred",
+      "reason": "Tractable but large (40 fns NNS G2D sprite manager + GE-register renderer). Fully decoded in attempts_log (struct layouts, reg_G3 mapping, NNS sigs) for a fast fresh-context write. main.lsf on asm."
     }
   ],
   "in_progress": [],

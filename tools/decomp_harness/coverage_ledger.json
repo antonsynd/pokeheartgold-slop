@@ -1,6 +1,6 @@
 {
  "summary": {
-  "generated": "2026-06-18T13:24:23Z",
+  "generated": "2026-06-18T13:32:55Z",
   "by_status": {
    "matched": {
     "files": 57,
@@ -9,16 +9,16 @@
     "text_bytes_est": 25374
    },
    "blocked": {
-    "files": 20,
-    "functions": 230,
-    "insn_lines": 7347,
-    "text_bytes_est": 16332
+    "files": 21,
+    "functions": 270,
+    "insn_lines": 8066,
+    "text_bytes_est": 17900
    },
    "pending": {
-    "files": 225,
-    "functions": 19331,
-    "insn_lines": 935061,
-    "text_bytes_est": 2088196
+    "files": 224,
+    "functions": 19291,
+    "insn_lines": 934342,
+    "text_bytes_est": 2086628
    },
    "upstream": {
     "files": 369,
@@ -31,7 +31,7 @@
    "tracked": 20152,
    "matched": 591,
    "partial_in_blocked": 50,
-   "pending": 19331
+   "pending": 19291
   },
   "blockers": [
    {
@@ -4652,7 +4652,7 @@
   {
    "file": "asm/unk_02015DD8.s",
    "lsf_kind": "asm",
-   "status": "pending",
+   "status": "blocked",
    "lines": 913,
    "function_count": 40,
    "text_bytes_est": 1568,
@@ -4706,282 +4706,286 @@
      "mode": "thumb",
      "insns": 29,
      "size_est": 68,
-     "status": "pending"
+     "status": "blocked"
     },
     {
      "name": "sub_02015E20",
      "mode": "thumb",
      "insns": 26,
      "size_est": 68,
-     "status": "pending"
+     "status": "blocked"
     },
     {
      "name": "sub_02015E64",
      "mode": "thumb",
      "insns": 28,
      "size_est": 58,
-     "status": "pending"
+     "status": "blocked"
     },
     {
      "name": "sub_02015EA0",
      "mode": "thumb",
      "insns": 25,
      "size_est": 62,
-     "status": "pending"
+     "status": "blocked"
     },
     {
      "name": "sub_02015EDC",
      "mode": "thumb",
      "insns": 11,
      "size_est": 26,
-     "status": "pending"
+     "status": "blocked"
     },
     {
      "name": "sub_02015EF4",
      "mode": "thumb",
      "insns": 20,
      "size_est": 42,
-     "status": "pending"
+     "status": "blocked"
     },
     {
      "name": "sub_02015F1C",
      "mode": "thumb",
      "insns": 20,
      "size_est": 50,
-     "status": "pending"
+     "status": "blocked"
     },
     {
      "name": "sub_02015F4C",
      "mode": "thumb",
      "insns": 11,
      "size_est": 26,
-     "status": "pending"
+     "status": "blocked"
     },
     {
      "name": "sub_02015F64",
      "mode": "thumb",
      "insns": 20,
      "size_est": 42,
-     "status": "pending"
+     "status": "blocked"
     },
     {
      "name": "sub_02015F8C",
      "mode": "thumb",
      "insns": 16,
      "size_est": 38,
-     "status": "pending"
+     "status": "blocked"
     },
     {
      "name": "sub_02015FB0",
      "mode": "thumb",
      "insns": 9,
      "size_est": 20,
-     "status": "pending"
+     "status": "blocked"
     },
     {
      "name": "sub_02015FC4",
      "mode": "thumb",
      "insns": 4,
      "size_est": 8,
-     "status": "pending"
+     "status": "blocked"
     },
     {
      "name": "sub_02015FCC",
      "mode": "thumb",
      "insns": 6,
      "size_est": 12,
-     "status": "pending"
+     "status": "blocked"
     },
     {
      "name": "sub_02015FD8",
      "mode": "thumb",
      "insns": 4,
      "size_est": 8,
-     "status": "pending"
+     "status": "blocked"
     },
     {
      "name": "sub_02015FE0",
      "mode": "thumb",
      "insns": 4,
      "size_est": 8,
-     "status": "pending"
+     "status": "blocked"
     },
     {
      "name": "sub_02015FE8",
      "mode": "thumb",
      "insns": 6,
      "size_est": 12,
-     "status": "pending"
+     "status": "blocked"
     },
     {
      "name": "sub_02015FF4",
      "mode": "thumb",
      "insns": 3,
      "size_est": 6,
-     "status": "pending"
+     "status": "blocked"
     },
     {
      "name": "sub_02015FF8",
      "mode": "thumb",
      "insns": 3,
      "size_est": 6,
-     "status": "pending"
+     "status": "blocked"
     },
     {
      "name": "sub_02015FFC",
      "mode": "thumb",
      "insns": 4,
      "size_est": 8,
-     "status": "pending"
+     "status": "blocked"
     },
     {
      "name": "sub_02016004",
      "mode": "thumb",
      "insns": 3,
      "size_est": 6,
-     "status": "pending"
+     "status": "blocked"
     },
     {
      "name": "sub_02016008",
      "mode": "thumb",
      "insns": 3,
      "size_est": 6,
-     "status": "pending"
+     "status": "blocked"
     },
     {
      "name": "sub_0201600C",
      "mode": "thumb",
      "insns": 3,
      "size_est": 6,
-     "status": "pending"
+     "status": "blocked"
     },
     {
      "name": "sub_02016010",
      "mode": "thumb",
      "insns": 3,
      "size_est": 6,
-     "status": "pending"
+     "status": "blocked"
     },
     {
      "name": "sub_02016014",
      "mode": "thumb",
      "insns": 7,
      "size_est": 14,
-     "status": "pending"
+     "status": "blocked"
     },
     {
      "name": "sub_02016020",
      "mode": "thumb",
      "insns": 3,
      "size_est": 6,
-     "status": "pending"
+     "status": "blocked"
     },
     {
      "name": "sub_02016024",
      "mode": "thumb",
      "insns": 15,
      "size_est": 32,
-     "status": "pending"
+     "status": "blocked"
     },
     {
      "name": "sub_02016044",
      "mode": "thumb",
      "insns": 6,
      "size_est": 12,
-     "status": "pending"
+     "status": "blocked"
     },
     {
      "name": "sub_02016050",
      "mode": "thumb",
      "insns": 6,
      "size_est": 12,
-     "status": "pending"
+     "status": "blocked"
     },
     {
      "name": "sub_0201605C",
      "mode": "thumb",
      "insns": 21,
      "size_est": 48,
-     "status": "pending"
+     "status": "blocked"
     },
     {
      "name": "sub_0201608C",
      "mode": "thumb",
      "insns": 22,
      "size_est": 50,
-     "status": "pending"
+     "status": "blocked"
     },
     {
      "name": "sub_020160BC",
      "mode": "thumb",
      "insns": 22,
      "size_est": 50,
-     "status": "pending"
+     "status": "blocked"
     },
     {
      "name": "sub_020160EC",
      "mode": "thumb",
      "insns": 22,
      "size_est": 44,
-     "status": "pending"
+     "status": "blocked"
     },
     {
      "name": "sub_02016118",
      "mode": "thumb",
      "insns": 23,
      "size_est": 46,
-     "status": "pending"
+     "status": "blocked"
     },
     {
      "name": "sub_02016144",
      "mode": "thumb",
      "insns": 23,
      "size_est": 46,
-     "status": "pending"
+     "status": "blocked"
     },
     {
      "name": "sub_02016170",
      "mode": "thumb",
      "insns": 10,
      "size_est": 22,
-     "status": "pending"
+     "status": "blocked"
     },
     {
      "name": "sub_02016184",
      "mode": "thumb",
      "insns": 10,
      "size_est": 22,
-     "status": "pending"
+     "status": "blocked"
     },
     {
      "name": "sub_02016198",
      "mode": "thumb",
      "insns": 8,
      "size_est": 18,
-     "status": "pending"
+     "status": "blocked"
     },
     {
      "name": "sub_020161A8",
      "mode": "thumb",
      "insns": 17,
      "size_est": 36,
-     "status": "pending"
+     "status": "blocked"
     },
     {
      "name": "sub_020161CC",
      "mode": "thumb",
      "insns": 151,
      "size_est": 306,
-     "status": "pending"
+     "status": "blocked"
     },
     {
      "name": "sub_0201630C",
      "mode": "thumb",
      "insns": 92,
      "size_est": 212,
-     "status": "pending"
+     "status": "blocked"
     }
-   ]
+   ],
+   "blocked_reason": "Tractable but large (40 fns NNS G2D sprite manager + GE-register renderer). Fully decoded in attempts_log (struct layouts, reg_G3 mapping, NNS sigs) for a fast fresh-context write. main.lsf on asm.",
+   "attempts": 0,
+   "blocker_id": null,
+   "kept_c": false
   },
   {
    "file": "asm/unk_020163E0.s",
