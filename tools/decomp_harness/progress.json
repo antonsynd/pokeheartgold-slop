@@ -600,6 +600,13 @@
       "result": "deferred",
       "reason": "2D/3D overworld geometry FX math. 9/11 byte-match (WIP src/unk_02020B8C.c kept, main.lsf reverted to asm so build stays green). Matched this pass: sub_02020F4C (segment-intersection point + 8-term AABB overlap, && form + 2 FX_Modf intPart slots), CalcAngleBetweenVecs (XZ-plane atan2, dot=na.z*nb.z+na.x*nb.x cross=na.z*nb.x-na.x*nb.z), GetDistanceFromPointToLine (matched by reordering local VecFx32 decls lineDir,toPoint,diff,proj,zero). Remaining 2 holdouts are MWCC spill/promotion coin-flips: sub_02020EF4 (line-eqn local fx32[2] kept in memory by asm vs SROA into callee regs by MWCC; dx/dy scheduling matched via dy-first) and sub_02020E10 (tan-scale; asm caches 5th stack arg a4 in callee r4, MWCC reloads late). Insights recorded: overworld-geometry-xz-plane, bounds-check-and-vs-or-return-layout, local-stack-slot-order-equals-decl-order.",
       "blocker_id": null
+    },
+    {
+      "file": "asm/overlay_01_021FEA0C.s",
+      "functions": 14,
+      "attempts": 1,
+      "result": "deferred",
+      "reason": "11/14 match; 3 MWCC reg-alloc/addressing holdouts (VecFx32 base-ptr zeroing in EAB0/EB8C, callee-reg-count in EBC0). WIP kept, main.lsf on asm."
     }
   ],
   "in_progress": [],

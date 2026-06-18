@@ -1,14 +1,14 @@
 # Decomp Coverage Ledger
 
-*Generated 2026-06-18T12:08:37Z by `coverage_ledger.py` — do not hand-edit; regenerate after each decomp.*
+*Generated 2026-06-18T12:32:22Z by `coverage_ledger.py` — do not hand-edit; regenerate after each decomp.*
 
-Tracked functions (files with retained asm): **20152** — matched 576, pending 19372, plus 50 matched-but-blocked inside failed files.
+Tracked functions (files with retained asm): **20152** — matched 576, pending 19358, plus 50 matched-but-blocked inside failed files.
 
 | status | files | functions | insn lines | ~text bytes |
 |---|---|---|---|---|
 | matched | 55 | 576 | 11203 | 24558 |
-| blocked | 18 | 204 | 6401 | 14294 |
-| pending | 229 | 19372 | 936352 | 2091050 |
+| blocked | 19 | 218 | 6651 | 14852 |
+| pending | 228 | 19358 | 936102 | 2090492 |
 | upstream | 369 | 0 | 0 | 0 |
 
 ## Blockers (value-ordered: fix what gates the most)
@@ -20,7 +20,7 @@ Tracked functions (files with retained asm): **20152** — matched 576, pending 
 | objdiff-false-positives | 0 | 0 | RESOLVED. objdiff.py had a critical bug: the byte extraction regex did not match MWCC's ARM Thumb objdump format (packed hex like 'b418' vs expected space-separated 'b4 18'). It extracted 0 bytes for every function, so 0==0 always reported MATCH. 11 decomps accepted via objdiff were not actually byte-matching. Fixed in this session; all 11 non-matching decomps reverted to asm. 2 decomps that truly match (unk_0202DB34, battle_arcade_game_board_data) kept. |
 | ext-data-section-split | 1 | 0 | Data-only files exporting multiple EXTERNAL (.public) const arrays: MWCC -ipa file emits each top-level const as its own .rodata section, and mwldarm orders/aligns them differently than the asm's single packed .rodata, so the linked overlay/module SHA1 fails even though objdiff --summary (per-section) reports a match. Symbols referenced by other TUs must stay non-static, so they cannot be pooled into one section via `static`. |
 
-## Blocked files (18)
+## Blocked files (19)
 
 | file | functions | insn lines | data-only | notes |
 |---|---|---|---|---|
@@ -28,6 +28,7 @@ Tracked functions (files with retained asm): **20152** — matched 576, pending 
 | asm/unk_0200FA24.s | 33 | 787 |  | ipa-shared-headers IPA-blocked: header signature conflicts, IPA CSE caching, loop codegen. C file exists at src/unk_0200FA24.c but cannot b |
 | asm/unk_0206979C.s | 25 | 282 |  | regalloc-reg-number-swap 24/25 NEAR-MISS. NNS_G3d anim/render wrapper; all fns match except sub_020698E8, which has a maxFrame/0-const r3<->r4 re |
 | asm/unk_020210A0.s | 18 | 597 |  |  Intricate touchpad auto-sampling driver (overlay_33-class). Fully decoded (struct TouchpadState 0x5C, all 18 fns) but de |
+| asm/overlay_01_021FEA0C.s | 14 | 250 |  |  11/14 match; 3 MWCC reg-alloc/addressing holdouts (VecFx32 base-ptr zeroing in EAB0/EB8C, callee-reg-count in EBC0). WIP |
 | asm/overlay_33.s | 12 | 563 |  |  11/12 functions byte-match (WIP src/overlay_33.c kept, main.lsf left on asm). Touchscreen selection-menu overlay: work s |
 | asm/unk_0200B150.s | 11 | 249 |  | param-copyprop-cmp 10/11 matched; 10/11 functions matched. OamManager_Create has 1-byte mismatch: target asm uses 'cmp r4, #4' but MWCC generates 'cmp r0, |
 | asm/unk_02020B8C.s | 11 | 606 |  |  2D/3D overworld geometry FX math. 9/11 byte-match (WIP src/unk_02020B8C.c kept, main.lsf reverted to asm so build stays  |
@@ -103,7 +104,7 @@ Tracked functions (files with retained asm): **20152** — matched 576, pending 
 | asm/overlay_01_021F467C.s | 2 | 58 |  | harness |
 | asm/overlay_35.s | 2 | 26 |  | harness |
 
-## Pending files (229)
+## Pending files (228)
 
 | file | functions | insn lines | data-only | notes |
 |---|---|---|---|---|
@@ -286,7 +287,6 @@ Tracked functions (files with retained asm): **20152** — matched 576, pending 
 | asm/unk_02096910.s | 15 | 415 |  |  |
 | asm/overlay_80_02230B8C.s | 15 | 546 |  |  |
 | asm/overlay_80_02238034.s | 15 | 521 |  |  |
-| asm/overlay_01_021FEA0C.s | 14 | 250 |  |  |
 | asm/overlay_01_021FEEEC.s | 14 | 609 |  |  |
 | asm/overlay_58.s | 14 | 486 |  |  |
 | asm/overlay_80_02236450.s | 14 | 829 |  |  |
