@@ -625,6 +625,24 @@
       "category": "ipa",
       "title": "ipa-shared-headers (sound.h): pass u16 funcs as int locally when a wider value is passed",
       "body": "The sound functions PlaySE/StopSE (unk_02005D10.h, sound.h family) are declared with u16 params in the current headers, but at matching time several callers were compiled against int-param declarations. A file that passes a WIDER value (e.g. FrontierScript_ReadVar returns u32) to PlaySE(u16) gets an MWCC truncation mask (lsls r0,#16; lsrs r0,#16) that the retail asm does NOT have - because the asm saw an int param (no conversion). Fix with the split-header pattern: do NOT include unk_02005D10.h/sound.h; declare the SE/fanfare functions locally with int params [void PlaySE(int); void StopSE(int,int); etc.]. Callers passing u16 values are unaffected (u16->int and u16->u16 both emit no mask), which is why only u32-passing files trip the gate. Note the BGM funcs (PlayBGM, Sound_SetFieldBGM) genuinely take u16 - a value passed to them DOES get masked if stored in a wider local (use u32 seqNo). Saw in overlay_80_02235390.c."
+    },
+    {
+      "id": "switch-form-avoids-equality-or-range-opt",
+      "category": "matching-tricks",
+      "title": "Use a switch (shared cases) to stop MWCC fusing `x==c1 || x==c2` into a (unsigned)(x-c1)<=N range check",
+      "body": "MWCC -O4,p compiles `if (x == 2 || x == 3)` (consecutive constants) into a RANGE check: `subs rN,#2; cmp rN,#1; bhi` (or `adds #0xfe; lsls#24; lsrs#24; cmp #1; bhi` for a u8). If the target asm instead does EXPLICIT compares `cmp #2; beq IN; cmp #3; bne OUT` (the literal `||` short-circuit, no subtract/mask), rewrite the C as a switch with shared cases: `switch (x) { case 2: case 3: <body>; break; }` (for a value, `case 2: case 3: return TRUE;` then `return FALSE;`). MWCC emits the shared-case body via the same beq/bne fall-through as the `||`, but does NOT apply the range peephole — giving the exact `cmp #2; beq; cmp #3; bne` the asm has. Verified in overlay_80_02238034: BattleArcade_MultiplayerCheck (was 14 bytes range-opt -> 16 bytes explicit, matched) and the inline `ctx->type == 2 || ctx->type == 3` block guard in BattleArcade_NewBattleSetup. Diagnose: objdiff/disasm shows `subs;cmp;bhi` (C) vs `cmp;beq;cmp;bne` (asm), function 2 bytes too small. Related: [[branch-or-vs-and]], [[switch-jumptable-density]]."
+    },
+    {
+      "id": "compute-range-inside-each-branch-for-eager-subtract",
+      "category": "codegen",
+      "title": "Compute `range = hi - lo` INSIDE each if/else branch (not after the merge) to get the subtract before a following call",
+      "body": "For `return lo + LCRandom() % (hi - lo)` where lo/hi are assigned in an if/else, MWCC evaluates the modulus operands left-to-right: it calls LCRandom() FIRST, then computes `(hi-lo)` AFTER the call (keeps both hi and lo live across the call, subtracts after -> `bl; subs r1,r5,r4`). If the target asm computes the range BEFORE the call (`subs r5,r0,r4; bl LCRandom; ...`), it kept only {lo, range} live across the call. To match, compute the range inside EACH branch using the just-loaded values: `if (cond) { lo = t[i].c; range = t[i].d - lo; } else { lo = t[i].a; range = t[i].b - lo; } return lo + LCRandom() % range;`. The subtraction then sits in each branch (before the merge/call), exactly like the asm, and only lo+range survive the call. A single post-merge `range = hi - lo;` statement does NOT force this — MWCC still sinks the subtract past the call. Verified in overlay_80_02238034 ov80_02238034 (random level in [lo,hi))."
+    },
+    {
+      "id": "addend-grouping-controls-mul-add-schedule",
+      "category": "codegen",
+      "title": "Parenthesize `(a2+1) + 7*a1` to control which addend is the final-add's first operand (MWCC preloads the mul constant)",
+      "body": "MWCC evaluates `(a2 + 1) + 7 * a1` as: `mov r0,#7` (preload mul constant early), `adds r3,r2,#1` (the (a2+1) addend), `muls r0,r1` (7*a1), `adds r0,r3,r0` (range r3 first). Writing `7 * a1 + a2 + 1` instead parses as `((7*a1)+a2)+1` -> `muls; adds r0,r2,r0; adds r0,r0,#1` (different schedule, +1 is a separate trailing add). The grouping of the constant-fold determines the final `add` operand order (`add r0,r3,r0` vs `add r0,r0,#1`). Match by grouping the source exactly as the value is built in asm. Verified in overlay_80_02238034 ov80_02238034. Combine with making the multiplied index `u32` so `if (a1 >= 8)` and the array index use unsigned `blo` not signed `blt` (see [[cast-unsigned-for-branch]])."
     }
   ]
 }

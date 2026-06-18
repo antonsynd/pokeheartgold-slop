@@ -1,5 +1,5 @@
 {
- "generated": "2026-06-18T13:32:55Z",
+ "generated": "2026-06-18T14:39:05Z",
  "weights": {
   "insn_line": 1.0,
   "unknown_callee": 40.0,
@@ -10,39 +10,6 @@
   "special_section": 500.0
  },
  "queue": [
-  {
-   "file": "asm/overlay_80_02238034.s",
-   "score": 724.2,
-   "special_sections": [],
-   "functions": 15,
-   "insn_lines": 521,
-   "data_only": false,
-   "unknown_callees": [
-    "ov80_02229F04",
-    "ov80_0222A140",
-    "ov80_0222A480",
-    "sub_02034818",
-    "sub_0203769C"
-   ],
-   "jumptable_words": 0,
-   "rodata_bytes": 64,
-   "arm_functions": 0,
-   "gated_by": [],
-   "cluster_partners": [
-    {
-     "file": "asm/overlay_80_02229EE0.s",
-     "shared_symbols": 3
-    },
-    {
-     "file": "asm/unk_02034354.s",
-     "shared_symbols": 1
-    },
-    {
-     "file": "asm/unk_02035900.s",
-     "shared_symbols": 1
-    }
-   ]
-  },
   {
    "file": "asm/overlay_01_021F3F50.s",
    "score": 735.4,

@@ -152,6 +152,14 @@ For a `do { ... } while (--i)` countdown loop, the counter's signedness changes 
 
 When code is f(g(s->ptr->a), s->ptr->b, ...), MWCC may evaluate the non-call argument s->ptr->b BEFORE the call g(), caching s->ptr in a callee register so it survives g - using an extra callee reg and shifting the whole function register allocation. The asm instead RELOADS s->ptr after g() returns. To match, hoist the call into its own statement: T x = g(s->ptr->a); f(x, s->ptr->b, ...). Now s->ptr->b is evaluated after g() returns so MWCC reloads s->ptr (cannot prove g did not modify it) - no extra callee reg, allocation matches. Saw in unk_020192D0.c case 4.
 
+### Compute `range = hi - lo` INSIDE each if/else branch (not after the merge) to get the subtract before a following call  <!-- id: compute-range-inside-each-branch-for-eager-subtract -->
+
+For `return lo + LCRandom() % (hi - lo)` where lo/hi are assigned in an if/else, MWCC evaluates the modulus operands left-to-right: it calls LCRandom() FIRST, then computes `(hi-lo)` AFTER the call (keeps both hi and lo live across the call, subtracts after -> `bl; subs r1,r5,r4`). If the target asm computes the range BEFORE the call (`subs r5,r0,r4; bl LCRandom; ...`), it kept only {lo, range} live across the call. To match, compute the range inside EACH branch using the just-loaded values: `if (cond) { lo = t[i].c; range = t[i].d - lo; } else { lo = t[i].a; range = t[i].b - lo; } return lo + LCRandom() % range;`. The subtraction then sits in each branch (before the merge/call), exactly like the asm, and only lo+range survive the call. A single post-merge `range = hi - lo;` statement does NOT force this — MWCC still sinks the subtract past the call. Verified in overlay_80_02238034 ov80_02238034 (random level in [lo,hi)).
+
+### Parenthesize `(a2+1) + 7*a1` to control which addend is the final-add's first operand (MWCC preloads the mul constant)  <!-- id: addend-grouping-controls-mul-add-schedule -->
+
+MWCC evaluates `(a2 + 1) + 7 * a1` as: `mov r0,#7` (preload mul constant early), `adds r3,r2,#1` (the (a2+1) addend), `muls r0,r1` (7*a1), `adds r0,r3,r0` (range r3 first). Writing `7 * a1 + a2 + 1` instead parses as `((7*a1)+a2)+1` -> `muls; adds r0,r2,r0; adds r0,r0,#1` (different schedule, +1 is a separate trailing add). The grouping of the constant-fold determines the final `add` operand order (`add r0,r3,r0` vs `add r0,r0,#1`). Match by grouping the source exactly as the value is built in asm. Verified in overlay_80_02238034 ov80_02238034. Combine with making the multiplied index `u32` so `if (a1 >= 8)` and the array index use unsigned `blo` not signed `blt` (see [[cast-unsigned-for-branch]]).
+
 ## Matching Tricks
 
 ### Small source changes that move codegen  <!-- id: decl-order-tricks -->
@@ -257,6 +265,10 @@ When a function zeroes a small stack struct (e.g. VecFx32) and immediately passe
 ### Overworld 2D geometry uses the XZ plane (Y is up), not XY  <!-- id: overworld-geometry-xz-plane -->
 
 For overworld vector math (angle-between, point-to-line, segment intersection on the ground), the '2D' computation uses the .x and .z components of VecFx32, not .x and .y. Y is the up axis. In CalcAngleBetweenVecs (unk_02020B8C.s) the matching dot/cross are dot = FX_Mul(na.z,nb.z)+FX_Mul(na.x,nb.x) and cross = FX_Mul(na.z,nb.x)-FX_Mul(na.x,nb.z) (note the .z lead term and the XZ-handed cross sign, which is the negation of a naive y->z substitution). If a vec-math function diffs only in the ldr stack offsets (e.g. reading sp+44/sp+32 where you read sp+40/sp+28), suspect a .y<->.z field swap. Symptom: identical _ll_mul structure, only 4 load-offset bytes differ.
+
+### Use a switch (shared cases) to stop MWCC fusing `x==c1 || x==c2` into a (unsigned)(x-c1)<=N range check  <!-- id: switch-form-avoids-equality-or-range-opt -->
+
+MWCC -O4,p compiles `if (x == 2 || x == 3)` (consecutive constants) into a RANGE check: `subs rN,#2; cmp rN,#1; bhi` (or `adds #0xfe; lsls#24; lsrs#24; cmp #1; bhi` for a u8). If the target asm instead does EXPLICIT compares `cmp #2; beq IN; cmp #3; bne OUT` (the literal `||` short-circuit, no subtract/mask), rewrite the C as a switch with shared cases: `switch (x) { case 2: case 3: <body>; break; }` (for a value, `case 2: case 3: return TRUE;` then `return FALSE;`). MWCC emits the shared-case body via the same beq/bne fall-through as the `||`, but does NOT apply the range peephole — giving the exact `cmp #2; beq; cmp #3; bne` the asm has. Verified in overlay_80_02238034: BattleArcade_MultiplayerCheck (was 14 bytes range-opt -> 16 bytes explicit, matched) and the inline `ctx->type == 2 || ctx->type == 3` block guard in BattleArcade_NewBattleSetup. Diagnose: objdiff/disasm shows `subs;cmp;bhi` (C) vs `cmp;beq;cmp;bne` (asm), function 2 bytes too small. Related: [[branch-or-vs-and]], [[switch-jumptable-density]].
 
 ## IPA (-ipa file) Behavior
 

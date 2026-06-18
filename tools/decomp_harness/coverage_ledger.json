@@ -1,6 +1,6 @@
 {
  "summary": {
-  "generated": "2026-06-18T13:32:55Z",
+  "generated": "2026-06-18T14:39:05Z",
   "by_status": {
    "matched": {
     "files": 57,
@@ -9,16 +9,16 @@
     "text_bytes_est": 25374
    },
    "blocked": {
-    "files": 21,
-    "functions": 270,
-    "insn_lines": 8066,
-    "text_bytes_est": 17900
+    "files": 22,
+    "functions": 285,
+    "insn_lines": 8587,
+    "text_bytes_est": 19064
    },
    "pending": {
-    "files": 224,
-    "functions": 19291,
-    "insn_lines": 934342,
-    "text_bytes_est": 2086628
+    "files": 223,
+    "functions": 19276,
+    "insn_lines": 933821,
+    "text_bytes_est": 2085464
    },
    "upstream": {
     "files": 369,
@@ -31,7 +31,7 @@
    "tracked": 20152,
    "matched": 591,
    "partial_in_blocked": 50,
-   "pending": 19291
+   "pending": 19276
   },
   "blockers": [
    {
@@ -133763,7 +133763,7 @@
   {
    "file": "asm/overlay_80_02238034.s",
    "lsf_kind": "asm",
-   "status": "pending",
+   "status": "blocked",
    "lines": 663,
    "function_count": 15,
    "text_bytes_est": 1164,
@@ -133821,107 +133821,111 @@
      "mode": "thumb",
      "insns": 48,
      "size_est": 100,
-     "status": "pending"
+     "status": "blocked"
     },
     {
      "name": "ov80_022380A0",
      "mode": "thumb",
      "insns": 35,
      "size_est": 72,
-     "status": "pending"
+     "status": "blocked"
     },
     {
      "name": "BattleArcade_GetMonCount",
      "mode": "thumb",
      "insns": 22,
      "size_est": 46,
-     "status": "pending"
+     "status": "blocked"
     },
     {
      "name": "BattleArcade_GetOpponentMonCount",
      "mode": "thumb",
      "insns": 22,
      "size_est": 46,
-     "status": "pending"
+     "status": "blocked"
     },
     {
      "name": "BattleArcade_NewBattleSetup",
      "mode": "thumb",
      "insns": 210,
      "size_est": 500,
-     "status": "pending"
+     "status": "blocked"
     },
     {
      "name": "ov80_02238344",
      "mode": "thumb",
      "insns": 20,
      "size_est": 40,
-     "status": "pending"
+     "status": "blocked"
     },
     {
      "name": "ov80_02238370",
      "mode": "thumb",
      "insns": 3,
      "size_est": 6,
-     "status": "pending"
+     "status": "blocked"
     },
     {
      "name": "BattleArcade_MultiplayerCheck",
      "mode": "thumb",
      "insns": 9,
      "size_est": 18,
-     "status": "pending"
+     "status": "blocked"
     },
     {
      "name": "ov80_02238384",
      "mode": "thumb",
      "insns": 16,
      "size_est": 36,
-     "status": "pending"
+     "status": "blocked"
     },
     {
      "name": "ov80_022383A8",
      "mode": "thumb",
      "insns": 10,
      "size_est": 24,
-     "status": "pending"
+     "status": "blocked"
     },
     {
      "name": "ov80_022383C0",
      "mode": "thumb",
      "insns": 47,
      "size_est": 112,
-     "status": "pending"
+     "status": "blocked"
     },
     {
      "name": "ov80_02238430",
      "mode": "thumb",
      "insns": 10,
      "size_est": 22,
-     "status": "pending"
+     "status": "blocked"
     },
     {
      "name": "ov80_02238444",
      "mode": "thumb",
      "insns": 37,
      "size_est": 76,
-     "status": "pending"
+     "status": "blocked"
     },
     {
      "name": "ov80_02238498",
      "mode": "thumb",
      "insns": 17,
      "size_est": 36,
-     "status": "pending"
+     "status": "blocked"
     },
     {
      "name": "ov80_022384BC",
      "mode": "thumb",
      "insns": 15,
      "size_est": 30,
-     "status": "pending"
+     "status": "blocked"
     }
-   ]
+   ],
+   "blocked_reason": "14/15 functions byte-match (MultiplayerCheck via switch-form). Holdouts: ov80_022383C0 needs LICM to sink entry=ctx+0x330 into loop preheader (3-instr placement); BattleArcade_NewBattleSetup logic matches but stack-slot layout differs (asm spills 5 values + buffer at sp+0x20, frame 0x50 w/ dummy r3 push). GATED ON cluster partner overlay_80_02229EE0.s (defines ov80_02229F04/0222A140/0222A480 + trainerData buffer true type). WIP committed.",
+   "attempts": 9,
+   "blocker_id": null,
+   "kept_c": false
   },
   {
    "file": "asm/overlay_80_022384D8.s",
