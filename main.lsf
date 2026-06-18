@@ -206,7 +206,7 @@ Static main
     Object src/unk_02054E00.o
     Object src/field_bgm.o
     Object src/unk_020551B8.o
-    Object asm/unk_02055244.o
+    Object src/unk_02055244.o
     Object src/unk_02055418.o
     Object src/catching_show.o
     Object asm/unk_02055BF0_data.o

@@ -1,12 +1,12 @@
 {
  "summary": {
-  "generated": "2026-06-18T06:32:01Z",
+  "generated": "2026-06-18T06:46:24Z",
   "by_status": {
    "matched": {
-    "files": 52,
-    "functions": 542,
-    "insn_lines": 10490,
-    "text_bytes_est": 22948
+    "files": 53,
+    "functions": 553,
+    "insn_lines": 10690,
+    "text_bytes_est": 23414
    },
    "blocked": {
     "files": 16,
@@ -15,10 +15,10 @@
     "text_bytes_est": 11726
    },
    "pending": {
-    "files": 235,
-    "functions": 19450,
-    "insn_lines": 938538,
-    "text_bytes_est": 2095844
+    "files": 234,
+    "functions": 19439,
+    "insn_lines": 938338,
+    "text_bytes_est": 2095378
    },
    "upstream": {
     "files": 368,
@@ -29,15 +29,15 @@
   },
   "function_totals": {
    "tracked": 20167,
-   "matched": 542,
+   "matched": 553,
    "partial_in_blocked": 50,
-   "pending": 19450
+   "pending": 19439
   },
   "blockers": [
    {
     "id": "ipa-shared-headers",
     "blocks_files": 2,
-    "gates_pending_files": 123
+    "gates_pending_files": 122
    },
    {
     "id": "param-copyprop-cmp",
@@ -16168,8 +16168,8 @@
   },
   {
    "file": "asm/unk_02055244.s",
-   "lsf_kind": "asm",
-   "status": "pending",
+   "lsf_kind": "src",
+   "status": "matched",
    "lines": 260,
    "function_count": 11,
    "text_bytes_est": 466,
@@ -16209,79 +16209,80 @@
      "mode": "thumb",
      "insns": 10,
      "size_est": 24,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "CallTask_LeaveOverworld",
      "mode": "thumb",
      "insns": 19,
      "size_est": 48,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "sub_0205528C",
      "mode": "thumb",
      "insns": 10,
      "size_est": 24,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "CallTask_RestoreOverworld",
      "mode": "thumb",
      "insns": 19,
      "size_est": 48,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "sub_020552D4",
      "mode": "thumb",
      "insns": 9,
      "size_est": 20,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "PaletteFadeUntilFinished",
      "mode": "thumb",
      "insns": 29,
      "size_est": 68,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "CallTask_FadeFromBlack",
      "mode": "thumb",
      "insns": 29,
      "size_est": 68,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "sub_02055370",
      "mode": "thumb",
      "insns": 29,
      "size_est": 64,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "sub_020553B0",
      "mode": "thumb",
      "insns": 7,
      "size_est": 14,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "sub_020553C0",
      "mode": "thumb",
      "insns": 32,
      "size_est": 74,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "sub_02055408",
      "mode": "thumb",
      "insns": 7,
      "size_est": 14,
-     "status": "pending"
+     "status": "matched"
     }
-   ]
+   ],
+   "source": "harness"
   },
   {
    "file": "asm/unk_02055418.s",

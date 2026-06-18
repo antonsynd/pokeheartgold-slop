@@ -565,6 +565,12 @@
       "category": "codegen",
       "title": "A function that InitBgFromTemplate()s N backgrounds from N different static const BgTemplates uses N SEPARATE stack BgTemplate locals (struct-copy each), not one reused local",
       "body": "ov33_0225D720 copies sBgTemplate_4/5/6 (each via ldmia/stmia) into THREE distinct stack slots (sp+0x38, +0x1c, +0) and passes &each to InitBgFromTemplate — stack frame 0x54 (3*0x1c), not 0x1c. Reusing a single `BgTemplate template; template=sBgTemplate_4; Init(..&template); template=sBgTemplate_5; ...` collapses to one slot (frame 0x1c) and mismatches. Declare `BgTemplate template1, template2, template3;` (first-declared -> highest offset sp+0x38). Related landed fixes for touchscreen-menu overlays: GX_SetBankForSubBG uses GX_VRAM_SUB_BG_32_H (0x80=GX_VRAM_H) / GX_VRAM_SUB_OBJ_16_I (0x100=GX_VRAM_I) — the H/I banks, NOT 128_C/128_D (C/D=0x80? no: C=4,D=8); count-bounded window loops use `u32 i` (unmasked, bcc) when the body strength-reduces &windows[i] to a walking pointer; a u8 struct field passed straight to a u8 fn param should be declared u8 (not int) to avoid a (u8) truncation."
+    },
+    {
+      "id": "assert-return-not-gf-assert",
+      "category": "codegen",
+      "title": "When a precondition assert path RETURNS (does not fall through to the function body), use explicit `if (assertFails) { GF_AssertFail(); return; }` — NOT GF_ASSERT(cond)",
+      "body": "GF_ASSERT(expr) = ((expr) ? (void)0 : GF_AssertFail()) and GF_AssertFail is `void GF_AssertFail(void)` (NOT noreturn). So `GF_ASSERT(cond); body;` compiles to `cmp;bne L; bl GF_AssertFail; L: body` — the assert-fail path FALLS THROUGH to body. If the asm instead shows `cmp; b<skip> body; bl GF_AssertFail; pop(return); body:` (the assert path returns and body is a separate block reached only when the assert passes), the source was an explicit `if (cond==0){ GF_AssertFail(); return; } body;` (or `if(cond!=0){...}` for an inverted assert). unk_02055244.s: CallTask_LeaveOverworld/PaletteFadeUntilFinished/FadeFromBlack assert sub_0203DF7C(fs)!=0 (if(==0){fail;return;}); CallTask_RestoreOverworld asserts it ==0 (if(!=0){fail;return;}). All 11 fns matched first build with this form. (If GF_AssertFail WERE noreturn, GF_ASSERT would be correct — check the prototype.)"
     }
   ]
 }

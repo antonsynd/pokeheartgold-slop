@@ -419,6 +419,15 @@
       "result": "matched",
       "note": "compare-verified (chiri pkg -- compare OK, full ROM SHA1). Misc field/Oak module: CountDigits (_u32_div_f ladder), ItemIsTMOrHM, GetOakJohto/NationalDexRating (long <= ladders writing SEQ_ME_HYOUKA to var_p), Save_GetPartyLead/Alive, Save_PlayerHasAllRegisInParty, plus two MapObject tasks: a spin (FX_Mul(GF_SinDegNoWrap(angle), env->unkN) into a VecFx32, FX64 _ll_mul pattern) and a visibility blink. Header frozen (8 of the funcs); ItemIsTMOrHM exported but not in this header -> local prototype. 8/11 first try (incl. both Oak ladders + the FX_Mul task). Fixes: (a) sub_0205BED8 float->fx32 needs a `f32 tmp` so the (fx32) cast/_ffix is SHARED after the if/else merge, not duplicated per branch; (b) sub_0205BF6C early-return placement (body inside if(frame>=unk6), single trailing return FALSE); (c) Save_GetPartyLead register coin-flip fixed by declaring the loop index BEFORE the count local. .text/.rodata -2 (trailing pad / sRegiSpecies 6 vs 8) are linker-padded, ROM matches.",
       "blocker_id": null
+    },
+    {
+      "file": "asm/unk_02055244.s",
+      "lines": 260,
+      "functions": 11,
+      "attempts": 1,
+      "result": "matched",
+      "note": "compare-verified (chiri pkg -- compare OK, full ROM SHA1). Field/overworld transition task module: CallTask_LeaveOverworld/RestoreOverworld, PaletteFadeUntilFinished, CallTask_FadeFromBlack, two 3-state task drivers (sub_02055370/020553C0) + their public sub_020553B0/02055408 TaskManager_Call tail-callers, and 5 static TaskFunc callbacks. Header frozen (5 of 6 publics); CallTask_RestoreOverworld is exported but not in the header -> local prototype. ipa-shared-headers gate was a FALSE POSITIVE (shared symbols are common imports BeginNormalPaletteFade/GF_AssertFail/IsPaletteFadeFinished). 11/11 matched FIRST build. Key call: the precondition asserts compile as explicit `if(assert-fails){GF_AssertFail();return;}` (NOT GF_ASSERT) because GF_AssertFail isn't noreturn, so the asm's assert path returns instead of falling through to the body.",
+      "blocker_id": null
     }
   ],
   "failed": [
@@ -559,8 +568,8 @@
   ],
   "in_progress": null,
   "stats": {
-    "total_attempts": 122,
-    "total_matched": 41,
+    "total_attempts": 123,
+    "total_matched": 42,
     "total_failed": 13
   }
 }
