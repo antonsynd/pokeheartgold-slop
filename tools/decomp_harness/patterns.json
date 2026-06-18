@@ -691,6 +691,12 @@
       "category": "codegen",
       "title": "A u16->u32 widening store of a register param inserts a cast node that changes the MWCC list-scheduler tie-break; declare the param u32 to match",
       "body": "Even a REGISTER-passed param (not just stack) can break matching purely by type width. unk_020979A8's `a3` (u16) stored to a u32 field `work->unk4=a3` compiled with every instruction correct but TWO swapped: the asm hoists the LoadArea-arg base copy `adds r1,r4,#0` and the `a3` reload ahead of the `unk2` store, mine emitted them after. The cause was the u16->u32 widening cast node in the IR perturbing the list scheduler's tie-break between equally-ready instructions. Declaring `a3` as `u32` (no widening cast; the spilled r3 is already a full word) removed the cast and reproduced the asm's exact instruction order -> full match. Rule: when a param is only ever stored to a wider field and the asm shows no zero/sign-extend, declare the param at the field's width. Pairs with [[u16-stack-param-as-int-avoids-ldrh-basepointer]]."
+    },
+    {
+      "id": "public-header-overwidens-narrow-stack-params",
+      "category": "codegen",
+      "title": "Public headers often over-widen params to int; stack params stored to byte fields are read ldrb/ldrsb (sp-illegal -> negative-base trick). Declare them u8/s8 via split-header.",
+      "body": "Mirror image of [[u16-stack-param-as-int-avoids-ldrh-basepointer]]. A shared public header (e.g. include/unk_0201956C.h, used by a matched caller) frequently declares params as `int` for convenience, but the FUNCTION reads narrow stack params at byte width. Tells: the asm reads a 5th/6th stack param with `ldrb`/`ldrsb` AND uses the negative-base trick `ldr r3,=0xFFFFFFF8; add r3,sp; ldrb r2,[r3,#0x10]` (because Thumb ldrb/ldrsb/ldrh cannot use sp as base, just like ldrh). If you declare such a param `int`, MWCC emits a plain `ldr [sp,#k]` (word) and the bytes diverge. Fix: declare the defining function's param at the field's width (u8 if stored to a u8 field / read ldrb; s8 if stored to an s8 field / read ldrsb) using a LOCAL prototype, and DON'T include the public header (keep it frozen at int for the caller). On unk_0201956C this fixed sub_020198FC (a4->u8), sub_02019B70 (a4,a5->s8). Related: struct velocity fields read via ldrsb in `x += field` are s8 not u8 (sub_02019978); for-loop counters with `blo` compare and no 16-bit wrap are u32 not u16 (sub_02019934, sub_020195C0)."
     }
   ]
 }

@@ -689,6 +689,13 @@
       "attempts": 5,
       "result": "deferred",
       "reason": "8/9 byte-match (near-clone of 021FED9C). Only ov01_021FED14 cb1 differs -- same MWCC scheduling holdout as 021FED9C ov01_021FEE64 (data read/store ordering). WIP committed."
+    },
+    {
+      "file": "asm/unk_0201956C.s",
+      "functions_total": 21,
+      "functions_matched": 16,
+      "result": "deferred",
+      "note": "BG-tilemap window/sprite manager. 16/21 matched (constructor, destructor, copy fns, getters/setters, update). 5 deferred: sub_020195F4 (init spill-timing), sub_020196E8 + sub_0201980C (clip copy/fill regalloc wall), sub_020197F4 (1-reg swap), sub_02019A60 (loop regalloc). WIP C committed; header over-widening types fixed. main.lsf reverted to asm."
     }
   ],
   "in_progress": [],
