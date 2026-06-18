@@ -460,7 +460,13 @@
       "note": "Battle Frontier sound script commands; split-header int sound decls"
     },
     "asm/overlay_80_02239960.s",
-    "asm/overlay_01_021F3378.s"
+    "asm/overlay_01_021F3378.s",
+    {
+      "file": "asm/unk_020979A8.s",
+      "functions": 4,
+      "result": "matched",
+      "note": "TaskManager overworld-transition state machine; split-header u32 stack/reg params (avoid ldrh base-ptr + widening-cast scheduler perturbation); y/direction arg swap in sub_020537F0"
+    }
   ],
   "failed": [
     {
