@@ -428,6 +428,12 @@
       "result": "matched",
       "note": "compare-verified (chiri pkg -- compare OK, full ROM SHA1). Field/overworld transition task module: CallTask_LeaveOverworld/RestoreOverworld, PaletteFadeUntilFinished, CallTask_FadeFromBlack, two 3-state task drivers (sub_02055370/020553C0) + their public sub_020553B0/02055408 TaskManager_Call tail-callers, and 5 static TaskFunc callbacks. Header frozen (5 of 6 publics); CallTask_RestoreOverworld is exported but not in the header -> local prototype. ipa-shared-headers gate was a FALSE POSITIVE (shared symbols are common imports BeginNormalPaletteFade/GF_AssertFail/IsPaletteFadeFinished). 11/11 matched FIRST build. Key call: the precondition asserts compile as explicit `if(assert-fails){GF_AssertFail();return;}` (NOT GF_ASSERT) because GF_AssertFail isn't noreturn, so the asm's assert path returns instead of falling through to the body.",
       "blocker_id": null
+    },
+    {
+      "file": "asm/unk_02097024.s",
+      "functions": 11,
+      "result": "matched",
+      "note": "state-machine field app (party menu -> summary learn/forget); fixed MWCC reverse-order const-struct rodata layout"
     }
   ],
   "failed": [
@@ -584,7 +590,7 @@
       "blocker_id": null
     }
   ],
-  "in_progress": null,
+  "in_progress": [],
   "stats": {
     "total_attempts": 125,
     "total_matched": 42,

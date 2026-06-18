@@ -595,6 +595,12 @@
       "category": "codegen",
       "title": "MWCC assigns local stack slots in declaration order, first-declared at highest address",
       "body": "When a function is byte-identical to the asm EXCEPT the sp+N offsets in every load/store (and the VEC_* out-pointer args), the cause is local declaration ORDER. MWCC lays out stack-homed locals so the first-declared gets the highest sp offset, each subsequent one lower. To match, reorder the C declarations so (high->low) = asm's (highest-offset-local ... lowest). Example: GetDistanceFromPointToLine matched once declarations were reordered to lineDir, toPoint, diff, proj, zero (asm slots 68,56,44,32,20). Corollary: two FX_Modf integer-part outputs need two distinct named locals (intPartX, intPartY) to get two stack slots rather than one reused slot (sub_02020F4C)."
+    },
+    {
+      "id": "mwcc-rodata-const-struct-reverse-order",
+      "category": "data-sections",
+      "title": "MWCC -ipa file emits consecutive file-scope const STRUCTs in reverse definition order",
+      "body": "When a file has multiple file-scope `static const` struct objects (e.g. several OverlayManagerTemplate launch templates) plus a const array (a jump/function-pointer table), MWCC -ipa file lays out .rodata with the const structs in REVERSE source-definition order, with the array kept last. Symptom: all functions match in objdiff but `main.sbin`/full ROM SHA1 FAILS, and `objdump -t -j .rodata` shows the struct objects at swapped offsets vs the asm (e.g. you defined _02108EA0 then _02108EB0 but MWCC emitted EB0@0x00, EA0@0x10). Fix: define the const structs in the OPPOSITE order to how you want them emitted (define EB0 then EA0 to get EA0@0x00, EB0@0x10). Verified in unk_02097024.c: two OverlayManagerTemplate + one state-func jump table. The jump-table array stayed last in both orderings. Always run `chiri pkg -- compare`, not just objdiff — this is a section-layout diff objdiff cannot see."
     }
   ]
 }

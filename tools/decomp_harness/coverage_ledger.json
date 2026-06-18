@@ -1,12 +1,12 @@
 {
  "summary": {
-  "generated": "2026-06-18T08:07:52Z",
+  "generated": "2026-06-18T08:42:10Z",
   "by_status": {
    "matched": {
-    "files": 53,
-    "functions": 553,
-    "insn_lines": 10690,
-    "text_bytes_est": 23414
+    "files": 54,
+    "functions": 564,
+    "insn_lines": 10899,
+    "text_bytes_est": 23890
    },
    "blocked": {
     "files": 18,
@@ -15,10 +15,10 @@
     "text_bytes_est": 14294
    },
    "pending": {
-    "files": 232,
-    "functions": 19410,
-    "insn_lines": 937135,
-    "text_bytes_est": 2092810
+    "files": 231,
+    "functions": 19399,
+    "insn_lines": 936926,
+    "text_bytes_est": 2092334
    },
    "upstream": {
     "files": 368,
@@ -29,9 +29,9 @@
   },
   "function_totals": {
    "tracked": 20167,
-   "matched": 553,
+   "matched": 564,
    "partial_in_blocked": 50,
-   "pending": 19410
+   "pending": 19399
   },
   "blockers": [
    {
@@ -32181,8 +32181,8 @@
   },
   {
    "file": "asm/unk_02097024.s",
-   "lsf_kind": "asm",
-   "status": "pending",
+   "lsf_kind": "src",
+   "status": "matched",
    "lines": 281,
    "function_count": 11,
    "text_bytes_est": 476,
@@ -32228,79 +32228,80 @@
      "mode": "thumb",
      "insns": 27,
      "size_est": 60,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "sub_02097060",
      "mode": "thumb",
      "insns": 10,
      "size_est": 26,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "sub_02097078",
      "mode": "thumb",
      "insns": 3,
      "size_est": 6,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "sub_0209707C",
      "mode": "thumb",
      "insns": 29,
      "size_est": 68,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "sub_020970C0",
      "mode": "thumb",
      "insns": 17,
      "size_est": 38,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "sub_020970E4",
      "mode": "thumb",
      "insns": 16,
      "size_est": 36,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "sub_02097108",
      "mode": "thumb",
      "insns": 28,
      "size_est": 64,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "sub_02097148",
      "mode": "thumb",
      "insns": 45,
      "size_est": 100,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "sub_020971AC",
      "mode": "thumb",
      "insns": 17,
      "size_est": 40,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "sub_020971D4",
      "mode": "thumb",
      "insns": 11,
      "size_est": 24,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "sub_020971EC",
      "mode": "thumb",
      "insns": 6,
      "size_est": 14,
-     "status": "pending"
+     "status": "matched"
     }
-   ]
+   ],
+   "source": "retained_asm"
   },
   {
    "file": "asm/unk_020971F8.s",
