@@ -446,6 +446,12 @@
       "functions": 12,
       "result": "matched",
       "note": "screen-distortion HOffset effect (overlay 01); ipa gate was false positive"
+    },
+    {
+      "file": "asm/unk_020192D0.s",
+      "functions": 7,
+      "result": "matched",
+      "note": "OverlayManager application (9-state machine running sub-overlays)"
     }
   ],
   "failed": [

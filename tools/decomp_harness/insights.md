@@ -148,6 +148,10 @@ When a function is byte-identical to the asm EXCEPT the sp+N offsets in every lo
 
 For a `do { ... } while (--i)` countdown loop, the counter's signedness changes the loop epilogue. A SIGNED `int i` lets MWCC use the i>0 shortcut and emits `subs i,#1; <other body op>; cmp i,#0; bgt` — the decrement floats away from the branch and needs a separate cmp (extra 2 bytes + possible nop). An UNSIGNED `u32 i` forces a plain nonzero test, emitting `<body op>; subs i,#1; bne` with the decrement adjacent to the branch (no cmp). If a countdown loop is ~4 bytes too big with a cmp+bgt where the asm has bne, switch the counter to u32. Saw in ov01_021FD3F8 (overlay_01_021FD1B8.s). Pair with caching loop-invariant struct fields (e.g. mgr->count) in locals so they survive calls in callee regs instead of being reloaded each iteration.
 
+### Split a nested call into a local to force a struct-field reload across the call  <!-- id: split-call-to-force-struct-field-reload -->
+
+When code is f(g(s->ptr->a), s->ptr->b, ...), MWCC may evaluate the non-call argument s->ptr->b BEFORE the call g(), caching s->ptr in a callee register so it survives g - using an extra callee reg and shifting the whole function register allocation. The asm instead RELOADS s->ptr after g() returns. To match, hoist the call into its own statement: T x = g(s->ptr->a); f(x, s->ptr->b, ...). Now s->ptr->b is evaluated after g() returns so MWCC reloads s->ptr (cannot prove g did not modify it) - no extra callee reg, allocation matches. Saw in unk_020192D0.c case 4.
+
 ## Matching Tricks
 
 ### Small source changes that move codegen  <!-- id: decl-order-tricks -->

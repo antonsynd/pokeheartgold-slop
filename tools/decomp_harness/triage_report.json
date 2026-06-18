@@ -1,5 +1,5 @@
 {
- "generated": "2026-06-18T12:32:22Z",
+ "generated": "2026-06-18T12:50:38Z",
  "weights": {
   "insn_line": 1.0,
   "unknown_callee": 40.0,
@@ -10,52 +10,6 @@
   "special_section": 500.0
  },
  "queue": [
-  {
-   "file": "asm/unk_020192D0.s",
-   "score": 673.8,
-   "special_sections": [],
-   "functions": 7,
-   "insn_lines": 273,
-   "data_only": false,
-   "unknown_callees": [
-    "Sound_SetSceneAndPlayBGM",
-    "ov39_02228140",
-    "ov39_02228308",
-    "ov39_02228370",
-    "sub_02034D8C",
-    "sub_02034DB8",
-    "sub_02034DE0",
-    "sub_02039FD8",
-    "sub_0203A930",
-    "sub_02087E10"
-   ],
-   "jumptable_words": 0,
-   "rodata_bytes": 16,
-   "arm_functions": 0,
-   "gated_by": [],
-   "cluster_partners": [
-    {
-     "file": "asm/overlay_39_thumb.s",
-     "shared_symbols": 3
-    },
-    {
-     "file": "asm/unk_02034B0C.s",
-     "shared_symbols": 3
-    },
-    {
-     "file": "asm/unk_02004A44.s",
-     "shared_symbols": 1
-    },
-    {
-     "file": "asm/unk_02037C94.s",
-     "shared_symbols": 1
-    },
-    {
-     "file": "asm/unk_0203A3B0.s",
-     "shared_symbols": 1
-    }
-   ]
-  },
   {
    "file": "asm/overlay_80_02235390.s",
    "score": 692.0,
