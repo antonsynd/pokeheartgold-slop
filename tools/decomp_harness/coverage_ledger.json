@@ -1,12 +1,12 @@
 {
  "summary": {
-  "generated": "2026-06-18T12:50:38Z",
+  "generated": "2026-06-18T13:11:22Z",
   "by_status": {
    "matched": {
-    "files": 56,
-    "functions": 583,
-    "insn_lines": 11476,
-    "text_bytes_est": 25202
+    "files": 57,
+    "functions": 591,
+    "insn_lines": 11548,
+    "text_bytes_est": 25374
    },
    "blocked": {
     "files": 19,
@@ -15,10 +15,10 @@
     "text_bytes_est": 14852
    },
    "pending": {
-    "files": 227,
-    "functions": 19351,
-    "insn_lines": 935829,
-    "text_bytes_est": 2089848
+    "files": 226,
+    "functions": 19343,
+    "insn_lines": 935757,
+    "text_bytes_est": 2089676
    },
    "upstream": {
     "files": 369,
@@ -29,15 +29,15 @@
   },
   "function_totals": {
    "tracked": 20152,
-   "matched": 583,
+   "matched": 591,
    "partial_in_blocked": 50,
-   "pending": 19351
+   "pending": 19343
   },
   "blockers": [
    {
     "id": "ipa-shared-headers",
     "blocks_files": 2,
-    "gates_pending_files": 121
+    "gates_pending_files": 120
    },
    {
     "id": "param-copyprop-cmp",
@@ -132384,8 +132384,8 @@
   },
   {
    "file": "asm/overlay_80_02235390.s",
-   "lsf_kind": "asm",
-   "status": "pending",
+   "lsf_kind": "src",
+   "status": "matched",
    "lines": 108,
    "function_count": 8,
    "text_bytes_est": 172,
@@ -132424,58 +132424,59 @@
      "mode": "thumb",
      "insns": 6,
      "size_est": 16,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "FrtCmd_086",
      "mode": "thumb",
      "insns": 7,
      "size_est": 18,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "FrtCmd_087",
      "mode": "thumb",
      "insns": 14,
      "size_est": 32,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ov80_022353D0",
      "mode": "thumb",
      "insns": 11,
      "size_est": 24,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "FrtCmd_088",
      "mode": "thumb",
      "insns": 6,
      "size_est": 16,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "FrtCmd_089",
      "mode": "thumb",
      "insns": 7,
      "size_est": 16,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ov80_02235408",
      "mode": "thumb",
      "insns": 9,
      "size_est": 20,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "FrtCmd_090",
      "mode": "thumb",
      "insns": 12,
      "size_est": 30,
-     "status": "pending"
+     "status": "matched"
     }
-   ]
+   ],
+   "source": "harness"
   },
   {
    "file": "asm/overlay_80_02235438.s",

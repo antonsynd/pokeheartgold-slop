@@ -304,6 +304,10 @@ A shared header (e.g. overlay_01_021F1348.h) sometimes declares a still-asm modu
 
 This build uses -W error, so every non-static (exported) function needs a visible prototype before its definition. When a file exports many functions but the shared header is frozen at a subset (only the symbols matched callers use), do NOT add the rest to the header (IPA cascade into those callers). Instead declare the extra exports as plain (non-static) prototypes at the top of the .c itself. unk_020379A0.s exports 19 fns; include/unk_020379A0.h has 6; the other 13 got local prototypes. Codegen is identical whether the prototype lives in a header or the .c, as long as the types match. Relatedly: never mark them static (they ARE exported and other asm files call them).
 
+### ipa-shared-headers (sound.h): pass u16 funcs as int locally when a wider value is passed  <!-- id: shared-sound-header-int-vs-u16-mask -->
+
+The sound functions PlaySE/StopSE (unk_02005D10.h, sound.h family) are declared with u16 params in the current headers, but at matching time several callers were compiled against int-param declarations. A file that passes a WIDER value (e.g. FrontierScript_ReadVar returns u32) to PlaySE(u16) gets an MWCC truncation mask (lsls r0,#16; lsrs r0,#16) that the retail asm does NOT have - because the asm saw an int param (no conversion). Fix with the split-header pattern: do NOT include unk_02005D10.h/sound.h; declare the SE/fanfare functions locally with int params [void PlaySE(int); void StopSE(int,int); etc.]. Callers passing u16 values are unaffected (u16->int and u16->u16 both emit no mask), which is why only u32-passing files trip the gate. Note the BGM funcs (PlayBGM, Sound_SetFieldBGM) genuinely take u16 - a value passed to them DOES get masked if stored in a wider local (use u32 seqNo). Saw in overlay_80_02235390.c.
+
 ## Data Sections
 
 ### Section ↔ C mapping  <!-- id: section-mapping -->

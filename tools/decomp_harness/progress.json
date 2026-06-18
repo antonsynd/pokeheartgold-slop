@@ -452,6 +452,12 @@
       "functions": 7,
       "result": "matched",
       "note": "OverlayManager application (9-state machine running sub-overlays)"
+    },
+    {
+      "file": "asm/overlay_80_02235390.s",
+      "functions": 8,
+      "result": "matched",
+      "note": "Battle Frontier sound script commands; split-header int sound decls"
     }
   ],
   "failed": [
