@@ -472,6 +472,12 @@
       "functions": 4,
       "result": "matched",
       "note": "Overworld\u2192application transition state machine; structural twin of unk_020979A8 (different callbacks + trainer-gender helper). Reused split-header u32 constructor params + y=unkC/direction=unk2 order."
+    },
+    {
+      "file": "asm/overlay_01_022006A8.s",
+      "functions": 9,
+      "result": "matched",
+      "note": "Camera/3D-effect map-object marker (ov01_021F1348 cluster). Matched fully \u2014 block-copy cb1 (struct assignment) avoids the family's field-by-field holdout. Mid-block VecFx32 aggregate init for base-pointer form at correct position; cached mapObject + swapped pos/facing slots."
     }
   ],
   "failed": [

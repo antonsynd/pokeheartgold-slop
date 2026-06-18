@@ -1,15 +1,15 @@
 # Decomp Coverage Ledger
 
-*Generated 2026-06-18T19:13:01Z by `coverage_ledger.py` — do not hand-edit; regenerate after each decomp.*
+*Generated 2026-06-18T19:30:43Z by `coverage_ledger.py` — do not hand-edit; regenerate after each decomp.*
 
-Tracked functions (files with retained asm): **20130** — matched 591, pending 19166, plus 50 matched-but-blocked inside failed files.
+Tracked functions (files with retained asm): **20121** — matched 591, pending 19157, plus 50 matched-but-blocked inside failed files.
 
 | status | files | functions | insn lines | ~text bytes |
 |---|---|---|---|---|
 | matched | 57 | 591 | 11548 | 25374 |
 | blocked | 28 | 373 | 11283 | 24904 |
-| pending | 213 | 19166 | 930268 | 2077650 |
-| upstream | 373 | 0 | 0 | 0 |
+| pending | 212 | 19157 | 930077 | 2077214 |
+| upstream | 374 | 0 | 0 | 0 |
 
 ## Blockers (value-ordered: fix what gates the most)
 
@@ -115,7 +115,7 @@ Tracked functions (files with retained asm): **20130** — matched 591, pending 
 | asm/overlay_01_021F467C.s | 2 | 58 |  | harness |
 | asm/overlay_35.s | 2 | 26 |  | harness |
 
-## Pending files (213)
+## Pending files (212)
 
 | file | functions | insn lines | data-only | notes |
 |---|---|---|---|---|
@@ -312,7 +312,6 @@ Tracked functions (files with retained asm): **20130** — matched 591, pending 
 | asm/overlay_01_021FF464.s | 9 | 256 |  |  |
 | asm/overlay_01_021FF6B0.s | 9 | 182 |  |  |
 | asm/overlay_01_02200040.s | 9 | 182 |  |  |
-| asm/overlay_01_022006A8.s | 9 | 191 |  |  |
 | asm/overlay_104.s | 9 | 677 |  |  |
 | asm/overlay_117.s | 9 | 1203 |  |  |
 | asm/overlay_01_021FFC0C.s | 8 | 308 |  |  |
