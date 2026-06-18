@@ -128,6 +128,10 @@ sub_0205BED8 converts u16 args to fx32 with rounding: `(fx32)((a!=0) ? 0.5f+(f32
 
 Save_GetPartyLead mismatched by 7 bytes that were purely register fields: asm had count=r5,i=r4 but `u16 count=..; u16 i;` gave count=r4,i=r5. Declaring the index first (`u16 i; u16 count=Party_GetCount(..);`) flipped MWCC register assignment to match. (The near-identical Save_GetPartyLeadAlive matched as-is because its extra `mon` local shifted the allocation.) General lever: when two same-lifetime locals land in swapped registers, reorder their declarations; the names are irrelevant, the order drives MWCC callee-saved assignment.
 
+### A function that InitBgFromTemplate()s N backgrounds from N different static const BgTemplates uses N SEPARATE stack BgTemplate locals (struct-copy each), not one reused local  <!-- id: bg-init-separate-template-locals -->
+
+ov33_0225D720 copies sBgTemplate_4/5/6 (each via ldmia/stmia) into THREE distinct stack slots (sp+0x38, +0x1c, +0) and passes &each to InitBgFromTemplate — stack frame 0x54 (3*0x1c), not 0x1c. Reusing a single `BgTemplate template; template=sBgTemplate_4; Init(..&template); template=sBgTemplate_5; ...` collapses to one slot (frame 0x1c) and mismatches. Declare `BgTemplate template1, template2, template3;` (first-declared -> highest offset sp+0x38). Related landed fixes for touchscreen-menu overlays: GX_SetBankForSubBG uses GX_VRAM_SUB_BG_32_H (0x80=GX_VRAM_H) / GX_VRAM_SUB_OBJ_16_I (0x100=GX_VRAM_I) — the H/I banks, NOT 128_C/128_D (C/D=0x80? no: C=4,D=8); count-bounded window loops use `u32 i` (unmasked, bcc) when the body strength-reduces &windows[i] to a walking pointer; a u8 struct field passed straight to a u8 fn param should be declared u8 (not int) to avoid a (u8) truncation.
+
 ## Matching Tricks
 
 ### Small source changes that move codegen  <!-- id: decl-order-tricks -->

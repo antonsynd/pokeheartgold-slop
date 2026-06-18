@@ -546,12 +546,21 @@
       "attempts": 4,
       "result": "deferred",
       "reason": "Data-only: 7 NUL-terminated SDK middleware version strings in a custom .version section (single ordered section, each .balign 4, 224 bytes). MWCC sp2p2 has no working incantation for this: bare 'VERSION' declspec prefix = syntax error; const data ignores '#pragma section VERSION begin/end' and stays in merged .rodata (right order, wrong section, packed); non-const + the pragma DOES reach .version but -O4 splits each symbol into its own sub-section sorted by SIZE, not source order (__attribute__((aligned(4))) gives the 4-byte align but not the order) -> main.sbin + OVY_45.sbin FAIL. objdiff can't verify custom sections. Keep as asm (very likely the reference decomp's choice). See attempts_log."
+    },
+    {
+      "file": "asm/overlay_33.s",
+      "lines": 665,
+      "functions": 12,
+      "attempts": 7,
+      "result": "deferred",
+      "reason": "11/12 functions byte-match (WIP src/overlay_33.c kept, main.lsf left on asm). Touchscreen selection-menu overlay: work struct 0x1C0, count-indexed config table, BG/window/text setup + a 6-state touchscreen task. Holdout: ov33_0225D520 init is a register-allocation coin-flip (asm keeps arg3 in r5; mine keeps arg1 in r7 \u2014 16 register-field diffs, no real byte/logic diff). ov33_0225D5D0's reported SIZE 268vs276 is the jump-table mapping-symbol false positive (byte-identical). Resume: only D520 reg-alloc needs solving. Full analysis (structs, rodata decode, the GX-H/I-bank, 3-separate-BgTemplate-locals, u32-loop-counter, u8-palette, decl-order fixes) in attempts_log.",
+      "blocker_id": null
     }
   ],
   "in_progress": null,
   "stats": {
-    "total_attempts": 115,
+    "total_attempts": 122,
     "total_matched": 41,
-    "total_failed": 12
+    "total_failed": 13
   }
 }
