@@ -401,6 +401,15 @@
       "result": "matched",
       "note": "compare-verified (chiri pkg -- compare OK, full ROM SHA1). Field-task: edit Battle Greeting easy-chat. sub_020961D8 allocs a 0x24 work struct (HEAP_ID_FIELD3), inits MailMessage@0x8 / EasyChatArgs / SAVE_MISC_DATA, then TaskManager_Call(sub_02096260). sub_02096260 is the TaskFunc state machine (5-case jump-table switch on state@0x18). sub_02096248 frees. Header include/unk_020961D8.h ALREADY existed (frozen; scrcmd_c.c calls it) so just implemented the .c. NOTE the triage 'ipa-shared-headers' gate was a FALSE POSITIVE: the symbols shared with unk_0200FA24.s are common imports (Heap_Free, IsPaletteFadeFinished), not a mutable shared header. 1 fix: EasyChat_CreateArgs's saveData arg reloads work->fieldSystem->saveData (not the local fieldSystem->saveData that Save_Misc_Get uses). objdiff falsely reported sub_02096260 SIZE 176vs184 (inline jump-table mapping-symbol artifact) but bytes are identical and ROM matches.",
       "blocker_id": null
+    },
+    {
+      "file": "asm/unk_020379A0.s",
+      "lines": 451,
+      "functions": 19,
+      "attempts": 3,
+      "result": "matched",
+      "note": "compare-verified (chiri pkg -- compare OK, full ROM SHA1). Comm/link state manager over a single static BSS pointer _021D414C -> a 0x264 struct (Heap_Alloc'd, MI_CpuFill8'd). 19 exported getters/setters/packet builders; only 6 are in the frozen include/unk_020379A0.h, the other 13 got LOCAL prototypes in the .c (IPA discipline) to satisfy MWCC's -W error 'function has no prototype'. sub_02037184/sub_020376E0 imports declared locally. 16/19 first try; fixes: (a) sub_02037C0C/sub_02037C44 needed if(cond){body;return X;} return Y; form (return block placed at end, beq-to-end) instead of early-return-inline; (b) the 0x00 pair array must be u8 unk00[8][2] accessed unk00[a0][0/1] so the +1 folds into the strb immediate (a flat [0x10] + a0*2+1 matched the READ in sub_02037BA0 but not the WRITE+reload in sub_02037B6C).",
+      "blocker_id": null
     }
   ],
   "failed": [
@@ -532,8 +541,8 @@
   ],
   "in_progress": null,
   "stats": {
-    "total_attempts": 110,
-    "total_matched": 39,
+    "total_attempts": 113,
+    "total_matched": 40,
     "total_failed": 12
   }
 }

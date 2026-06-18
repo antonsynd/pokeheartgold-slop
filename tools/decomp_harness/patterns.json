@@ -529,6 +529,24 @@
       "category": "codegen",
       "title": "When two calls use the same logical value via different access paths, match the exact source expression: `obj->ptr->field` reloads from memory; a local `T *p=...; p->field` uses the cached register",
       "body": "In sub_020961D8, EasyChat_CreateArgs(...) takes saveData as `work->fieldSystem->saveData` -> MWCC emits `ldr r2,[r4](=work->fieldSystem); ldr r2,[r2,#0xc]` (reload the pointer from the struct), while the very next Save_Misc_Get(...) takes `fieldSystem->saveData` -> `ldr r0,[r5,#0xc]` (uses the local FieldSystem* kept in r5). Both are the same pointer value, but the source expression differs and so does the codegen (extra reload vs cached reg). If a call site is 4 bytes short and the asm has an extra `ldr rN,[base]` before the field load, the source went through the struct member (obj->ptr->field), not the local variable. Pick per-call to match."
+    },
+    {
+      "id": "early-return-block-placement",
+      "category": "codegen",
+      "title": "Match the asm return-block placement: `if(x==NULL) return A; body; return B;` emits the A-return INLINE; the asm form with the early-return at the END (beq-to-end) comes from `if(x!=NULL){ body; return B; } return A;`",
+      "body": "For a guard like null-check, MWCC lays out the return blocks by source structure. `if(p==NULL){return 0;} body; return 1;` -> `cmp;bne body; movs r0,#0; pop; body...; return1` (the return-0 is inline right after the branch). The asm often instead has `cmp; beq END; body; return1; END: return0` (the failure return is a block at the very end, reached by branch). To reproduce that, invert: `if(p!=NULL){ body; return 1; } return 0;`. Same logic, but the body is the fall-through and the failure-return is last. Seen in unk_020379A0.s sub_02037C0C (u32, return 1/0) and sub_02037C44 (ptr, return entry/NULL)."
+    },
+    {
+      "id": "pair-array-2d-vs-flat-imm-offset",
+      "category": "codegen",
+      "title": "For a 2-byte-stride pair store, use u8 arr[N][2] + arr[i][0/1] so the +1 folds into the str immediate ((base+i*2)+#1); a flat u8 arr[2N] + arr[i*2+1] can instead emit base+(i*2+1) via a register index",
+      "body": "unk_020379A0.s unk00 is 8 two-byte slots. Flat `u8 unk00[0x10]` with `unk00[a0*2+1]=v` produced `adds rIdx,rRow,#1; strb [base,rIdx]` (the +1 went into the index) in sub_02037B6C, mismatching the asm `adds r0,base,rRow; strb [r0,#1]` (+1 in the store immediate). Switching to `u8 unk00[8][2]` and `unk00[a0][1]=v` makes MWCC compute the row base (base+a0*2) then use immediate #1 -> match. Subtlety: the READ in sub_02037BA0 matched with BOTH forms (same bytes), but the WRITE-with-reload context in sub_02037B6C only matched with the 2D array. When a pair/tuple store is off by the +1 placement, model the data as [N][k] not [N*k]."
+    },
+    {
+      "id": "mwcc-requires-prototype-local-decl",
+      "category": "ipa",
+      "title": "MWCC -W error rejects a non-static function definition with no prototype (\"function has no prototype\"); for exports kept out of a frozen header, add LOCAL prototypes in the .c",
+      "body": "This build uses -W error, so every non-static (exported) function needs a visible prototype before its definition. When a file exports many functions but the shared header is frozen at a subset (only the symbols matched callers use), do NOT add the rest to the header (IPA cascade into those callers). Instead declare the extra exports as plain (non-static) prototypes at the top of the .c itself. unk_020379A0.s exports 19 fns; include/unk_020379A0.h has 6; the other 13 got local prototypes. Codegen is identical whether the prototype lives in a header or the .c, as long as the types match. Relatedly: never mark them static (they ARE exported and other asm files call them)."
     }
   ]
 }
