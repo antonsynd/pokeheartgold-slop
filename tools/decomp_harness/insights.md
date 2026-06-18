@@ -282,6 +282,10 @@ For overworld vector math (angle-between, point-to-line, segment intersection on
 
 MWCC -O4,p compiles `if (x == 2 || x == 3)` (consecutive constants) into a RANGE check: `subs rN,#2; cmp rN,#1; bhi` (or `adds #0xfe; lsls#24; lsrs#24; cmp #1; bhi` for a u8). If the target asm instead does EXPLICIT compares `cmp #2; beq IN; cmp #3; bne OUT` (the literal `||` short-circuit, no subtract/mask), rewrite the C as a switch with shared cases: `switch (x) { case 2: case 3: <body>; break; }` (for a value, `case 2: case 3: return TRUE;` then `return FALSE;`). MWCC emits the shared-case body via the same beq/bne fall-through as the `||`, but does NOT apply the range peephole — giving the exact `cmp #2; beq; cmp #3; bne` the asm has. Verified in overlay_80_02238034: BattleArcade_MultiplayerCheck (was 14 bytes range-opt -> 16 bytes explicit, matched) and the inline `ctx->type == 2 || ctx->type == 3` block guard in BattleArcade_NewBattleSetup. Diagnose: objdiff/disasm shows `subs;cmp;bhi` (C) vs `cmp;beq;cmp;bne` (asm), function 2 bytes too small. Related: [[branch-or-vs-and]], [[switch-jumptable-density]].
 
+### VRAM key->address `(key<<16)>>13` IS NNS_GfdGetTexKeyAddr/PlttKeyAddr `((0xFFFF&key)<<3)`  <!-- id: nns-gfd-keyaddr-macro-gives-lsl16-lsr13 -->
+
+When a function returns `lsl rN,#16; lsr rN,#13` applied to an NNSGfdTexKey/NNSGfdPlttKey (from NNS_GfdDefaultFuncAllocTexVram/PlttVram), that is the library inline NNS_GfdGetTexKeyAddr(key)/NNS_GfdGetPlttKeyAddr(key) = `(u32)((0x0000FFFF & key) << NNS_GFD_*KEY_ADDR_SHIFT)` (SHIFT=3). MWCC fuses the mask+shift `(x&0xFFFF)<<3` into `lsl#16; lsr#13`. Use the macro (include nnsys/gfd.h), not a hand-written shift. Also: a 16-bit `enum HeapID` stored in a u16 struct field (strh/ldrh) must be cast `(enum HeapID)field` at each use (MWCC errors on implicit u16->enum); the cast is free (ldrh already zero-extends). And `(NarcId)0xNN` for a literal NarcId arg. Seen in overlay_80_02239960 ov80_02239AB0/AD4 (SPLEmitter particle manager).
+
 ## IPA (-ipa file) Behavior
 
 ### Shared-header signatures are load-bearing across compilation units  <!-- id: ipa-shared-headers -->

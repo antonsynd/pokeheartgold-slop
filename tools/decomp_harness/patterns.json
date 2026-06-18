@@ -661,6 +661,12 @@
       "category": "codegen",
       "title": "Hoist a function-call argument that must occupy r0 ABOVE a sibling computation, via a temp, to match the asm's register choice",
       "body": "`sub_0206121C(MapObject_GetFieldSystem(obj), &pos)` preceded by `pos.x = (a<<16)+k; pos.z=(b<<16)+k;` — MWCC evaluates the position stores FIRST (using r0/r1), then calls MapObject_GetFieldSystem as the 1st arg. If the target asm calls MapObject_GetFieldSystem FIRST (r0=fieldSystem, held across the position math, so the math uses r1/r2), hoist it into a temp BEFORE the computation: `FieldSystem *fs = MapObject_GetFieldSystem(obj); pos.x=...; pos.z=...; sub_0206121C(fs, &pos);`. The temp keeps fieldSystem in r0 across the position math, shifting the math up one register (r0/r1 -> r1/r2) to match. Diagnose: same instructions, every register shifted by one. Seen in overlay_01_021FE780 ov01_021FE7DC (fixed the last 7 diffs)."
+    },
+    {
+      "id": "nns-gfd-keyaddr-macro-gives-lsl16-lsr13",
+      "category": "matching-tricks",
+      "title": "VRAM key->address `(key<<16)>>13` IS NNS_GfdGetTexKeyAddr/PlttKeyAddr `((0xFFFF&key)<<3)`",
+      "body": "When a function returns `lsl rN,#16; lsr rN,#13` applied to an NNSGfdTexKey/NNSGfdPlttKey (from NNS_GfdDefaultFuncAllocTexVram/PlttVram), that is the library inline NNS_GfdGetTexKeyAddr(key)/NNS_GfdGetPlttKeyAddr(key) = `(u32)((0x0000FFFF & key) << NNS_GFD_*KEY_ADDR_SHIFT)` (SHIFT=3). MWCC fuses the mask+shift `(x&0xFFFF)<<3` into `lsl#16; lsr#13`. Use the macro (include nnsys/gfd.h), not a hand-written shift. Also: a 16-bit `enum HeapID` stored in a u16 struct field (strh/ldrh) must be cast `(enum HeapID)field` at each use (MWCC errors on implicit u16->enum); the cast is free (ldrh already zero-extends). And `(NarcId)0xNN` for a literal NarcId arg. Seen in overlay_80_02239960 ov80_02239AB0/AD4 (SPLEmitter particle manager)."
     }
   ]
 }

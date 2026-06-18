@@ -1,6 +1,6 @@
 {
  "summary": {
-  "generated": "2026-06-18T16:43:28Z",
+  "generated": "2026-06-18T16:55:14Z",
   "by_status": {
    "matched": {
     "files": 57,
@@ -15,23 +15,23 @@
     "text_bytes_est": 21014
    },
    "pending": {
-    "files": 221,
-    "functions": 19249,
-    "insn_lines": 932960,
-    "text_bytes_est": 2083514
+    "files": 220,
+    "functions": 19239,
+    "insn_lines": 932782,
+    "text_bytes_est": 2083096
    },
    "upstream": {
-    "files": 369,
+    "files": 370,
     "functions": 0,
     "insn_lines": 0,
     "text_bytes_est": 0
    }
   },
   "function_totals": {
-   "tracked": 20152,
+   "tracked": 20142,
    "matched": 591,
    "partial_in_blocked": 50,
-   "pending": 19249
+   "pending": 19239
   },
   "blockers": [
    {
@@ -134328,126 +134328,10 @@
    ]
   },
   {
-   "file": "asm/overlay_80_02239960.s",
-   "lsf_kind": "asm",
-   "status": "pending",
-   "lines": 228,
-   "function_count": 10,
-   "text_bytes_est": 418,
-   "data_only": false,
-   "sections": {
-    "rodata_bytes": 0,
-    "data_bytes": 0,
-    "bss_bytes": 0,
-    "other_bytes": 0
-   },
-   "other_sections": [],
-   "jumptable_words": 0,
-   "imports": [
-    "Camera_SetPerspectiveClippingPlane",
-    "GF_AssertFail",
-    "Heap_Alloc",
-    "Heap_Free",
-    "MI_CpuFill8",
-    "NNS_GfdDefaultFuncAllocPlttVram",
-    "NNS_GfdDefaultFuncAllocTexVram",
-    "Thunk_G3X_Reset",
-    "sub_02014DA0",
-    "sub_02014DB4",
-    "sub_02014EBC",
-    "sub_02015264",
-    "sub_0201526C",
-    "sub_02015354",
-    "sub_02015394",
-    "sub_02015420",
-    "sub_0201543C",
-    "sub_02015460",
-    "sub_020154B0",
-    "sub_020154D0",
-    "sub_02015524",
-    "sub_02015528"
-   ],
-   "exports": [
-    "ov80_02239960",
-    "ov80_02239980",
-    "ov80_022399A4",
-    "ov80_02239A1C",
-    "ov80_02239A38",
-    "ov80_02239A60",
-    "ov80_02239A74"
-   ],
-   "functions": [
-    {
-     "name": "ov80_02239960",
-     "mode": "thumb",
-     "insns": 13,
-     "size_est": 32,
-     "status": "pending"
-    },
-    {
-     "name": "ov80_02239980",
-     "mode": "thumb",
-     "insns": 16,
-     "size_est": 36,
-     "status": "pending"
-    },
-    {
-     "name": "ov80_022399A4",
-     "mode": "thumb",
-     "insns": 51,
-     "size_est": 118,
-     "status": "pending"
-    },
-    {
-     "name": "ov80_02239A1C",
-     "mode": "thumb",
-     "insns": 13,
-     "size_est": 30,
-     "status": "pending"
-    },
-    {
-     "name": "ov80_02239A38",
-     "mode": "thumb",
-     "insns": 15,
-     "size_est": 40,
-     "status": "pending"
-    },
-    {
-     "name": "ov80_02239A60",
-     "mode": "thumb",
-     "insns": 10,
-     "size_est": 22,
-     "status": "pending"
-    },
-    {
-     "name": "ov80_02239A74",
-     "mode": "thumb",
-     "insns": 18,
-     "size_est": 38,
-     "status": "pending"
-    },
-    {
-     "name": "ov80_02239A98",
-     "mode": "thumb",
-     "insns": 10,
-     "size_est": 26,
-     "status": "pending"
-    },
-    {
-     "name": "ov80_02239AB0",
-     "mode": "thumb",
-     "insns": 16,
-     "size_est": 38,
-     "status": "pending"
-    },
-    {
-     "name": "ov80_02239AD4",
-     "mode": "thumb",
-     "insns": 16,
-     "size_est": 38,
-     "status": "pending"
-    }
-   ]
+   "file": "asm/frontier/overlay_80_02239960.s",
+   "lsf_kind": "src",
+   "status": "upstream",
+   "functions": []
   },
   {
    "file": "asm/overlay_80_02239AF8.s",
