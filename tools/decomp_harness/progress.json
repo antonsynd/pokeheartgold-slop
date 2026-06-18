@@ -511,12 +511,20 @@
       "attempts": 6,
       "result": "deferred",
       "reason": "WIP 7/10 functions + rodata + bss matched (see attempts_log). Camera preset/transition overlay. Holdouts: ov01_021EAEE0 (2-byte scheduler coin-flip), ov01_021EACBC + ov01_021EAD8C (offset negation emits negs vs asm mul -1; register numbering). Reverted to keep build clean; resume from attempts_log analysis (rodata decode script, struct layouts, CameraSysWork/xfer approach all worked)."
+    },
+    {
+      "file": "asm/middleware.s",
+      "lines": 36,
+      "functions": 0,
+      "attempts": 4,
+      "result": "deferred",
+      "reason": "Data-only: 7 NUL-terminated SDK middleware version strings in a custom .version section (single ordered section, each .balign 4, 224 bytes). MWCC sp2p2 has no working incantation for this: bare 'VERSION' declspec prefix = syntax error; const data ignores '#pragma section VERSION begin/end' and stays in merged .rodata (right order, wrong section, packed); non-const + the pragma DOES reach .version but -O4 splits each symbol into its own sub-section sorted by SIZE, not source order (__attribute__((aligned(4))) gives the 4-byte align but not the order) -> main.sbin + OVY_45.sbin FAIL. objdiff can't verify custom sections. Keep as asm (very likely the reference decomp's choice). See attempts_log."
     }
   ],
   "in_progress": null,
   "stats": {
-    "total_attempts": 104,
+    "total_attempts": 108,
     "total_matched": 38,
-    "total_failed": 11
+    "total_failed": 12
   }
 }

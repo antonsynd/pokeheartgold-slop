@@ -1,14 +1,14 @@
 # Decomp Coverage Ledger
 
-*Generated 2026-06-18T04:42:53Z by `coverage_ledger.py` — do not hand-edit; regenerate after each decomp.*
+*Generated 2026-06-18T05:00:20Z by `coverage_ledger.py` — do not hand-edit; regenerate after each decomp.*
 
 Tracked functions (files with retained asm): **20167** — matched 509, pending 19495, plus 50 matched-but-blocked inside failed files.
 
 | status | files | functions | insn lines | ~text bytes |
 |---|---|---|---|---|
 | matched | 49 | 509 | 9435 | 20652 |
-| blocked | 14 | 163 | 4635 | 10474 |
-| pending | 240 | 19495 | 940156 | 2099392 |
+| blocked | 15 | 163 | 4635 | 10474 |
+| pending | 239 | 19495 | 940156 | 2099392 |
 | upstream | 368 | 0 | 0 | 0 |
 
 ## Blockers (value-ordered: fix what gates the most)
@@ -20,7 +20,7 @@ Tracked functions (files with retained asm): **20167** — matched 509, pending 
 | objdiff-false-positives | 0 | 0 | RESOLVED. objdiff.py had a critical bug: the byte extraction regex did not match MWCC's ARM Thumb objdump format (packed hex like 'b418' vs expected space-separated 'b4 18'). It extracted 0 bytes for every function, so 0==0 always reported MATCH. 11 decomps accepted via objdiff were not actually byte-matching. Fixed in this session; all 11 non-matching decomps reverted to asm. 2 decomps that truly match (unk_0202DB34, battle_arcade_game_board_data) kept. |
 | ext-data-section-split | 1 | 0 | Data-only files exporting multiple EXTERNAL (.public) const arrays: MWCC -ipa file emits each top-level const as its own .rodata section, and mwldarm orders/aligns them differently than the asm's single packed .rodata, so the linked overlay/module SHA1 fails even though objdiff --summary (per-section) reports a match. Symbols referenced by other TUs must stay non-static, so they cannot be pooled into one section via `static`. |
 
-## Blocked files (14)
+## Blocked files (15)
 
 | file | functions | insn lines | data-only | notes |
 |---|---|---|---|---|
@@ -37,6 +37,7 @@ Tracked functions (files with retained asm): **20167** — matched 509, pending 
 | asm/unk_02087FD4.s | 3 | 62 |  | large-reloc-data-file ~4032-byte relocation-heavy rodata (field-move-response trees, ~27 nested tables chained via .word pointers) + 3 trivial |
 | asm/unk_02026DE0.s | 2 | 41 |  |  sub_02026E18 matches; sub_02026DE0 not reproducible under MWCC -O4,p. asm keeps a late-materialized stack buffer (dead b |
 | asm/unk_02055BF0_data.s | 0 | 0 | yes | ext-data-section-split Data-only: 3 external const fn-ptr arrays (sMapEnterRoutines, sMapExitRoutines, _020FC76C) referenced only by already-ma |
+| asm/middleware.s | 0 | 0 | yes |  Data-only: 7 NUL-terminated SDK middleware version strings in a custom .version section (single ordered section, each .b |
 | asm/battle_arcade_game_board_data.s | 0 | 0 | yes | ext-data-section-split MWCC splits external const into per-symbol .rodata sections; reordered at link -> OVY_84 SHA1 fail. Stays asm. |
 
 ## Matched files (asm retained) (49)
@@ -93,7 +94,7 @@ Tracked functions (files with retained asm): **20167** — matched 509, pending 
 | asm/overlay_01_021F467C.s | 2 | 58 |  | harness |
 | asm/overlay_35.s | 2 | 26 |  | harness |
 
-## Pending files (240)
+## Pending files (239)
 
 | file | functions | insn lines | data-only | notes |
 |---|---|---|---|---|
@@ -332,7 +333,6 @@ Tracked functions (files with retained asm): **20167** — matched 509, pending 
 | asm/unk_data_020FCBD8.s | 0 | 0 | yes |  |
 | asm/unk_data_020FD978.s | 0 | 0 | yes |  |
 | asm/unk_data_020FDB44.s | 0 | 0 | yes |  |
-| asm/middleware.s | 0 | 0 | yes |  |
 | asm/overlay_01_sprite_data.s | 0 | 0 | yes |  |
 | asm/overlay_01_data_02208BFC.s | 0 | 0 | yes |  |
 | asm/overlay_12_battle_command.s | 0 | 0 | yes |  |

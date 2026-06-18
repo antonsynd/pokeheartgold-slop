@@ -1,6 +1,6 @@
 {
  "summary": {
-  "generated": "2026-06-18T04:42:53Z",
+  "generated": "2026-06-18T05:00:20Z",
   "by_status": {
    "matched": {
     "files": 49,
@@ -9,13 +9,13 @@
     "text_bytes_est": 20652
    },
    "blocked": {
-    "files": 14,
+    "files": 15,
     "functions": 163,
     "insn_lines": 4635,
     "text_bytes_est": 10474
    },
    "pending": {
-    "files": 240,
+    "files": 239,
     "functions": 19495,
     "insn_lines": 940156,
     "text_bytes_est": 2099392
@@ -32599,7 +32599,7 @@
   {
    "file": "asm/middleware.s",
    "lsf_kind": "asm",
-   "status": "pending",
+   "status": "blocked",
    "lines": 36,
    "function_count": 0,
    "text_bytes_est": 0,
@@ -32616,7 +32616,11 @@
    "jumptable_words": 0,
    "imports": [],
    "exports": [],
-   "functions": []
+   "functions": [],
+   "blocked_reason": "Data-only: 7 NUL-terminated SDK middleware version strings in a custom .version section (single ordered section, each .balign 4, 224 bytes). MWCC sp2p2 has no working incantation for this: bare 'VERSION' declspec prefix = syntax error; const data ignores '#pragma section VERSION begin/end' and stays in merged .rodata (right order, wrong section, packed); non-const + the pragma DOES reach .version but -O4 splits each symbol into its own sub-section sorted by SIZE, not source order (__attribute__((aligned(4))) gives the 4-byte align but not the order) -> main.sbin + OVY_45.sbin FAIL. objdiff can't verify custom sections. Keep as asm (very likely the reference decomp's choice). See attempts_log.",
+   "attempts": 4,
+   "blocker_id": null,
+   "kept_c": false
   },
   {
    "file": "asm/overlay_00_thumb.s",
