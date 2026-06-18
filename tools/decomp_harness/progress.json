@@ -466,6 +466,12 @@
       "functions": 4,
       "result": "matched",
       "note": "TaskManager overworld-transition state machine; split-header u32 stack/reg params (avoid ldrh base-ptr + widening-cast scheduler perturbation); y/direction arg swap in sub_020537F0"
+    },
+    {
+      "file": "asm/unk_020977CC.s",
+      "functions": 4,
+      "result": "matched",
+      "note": "Overworld\u2192application transition state machine; structural twin of unk_020979A8 (different callbacks + trainer-gender helper). Reused split-header u32 constructor params + y=unkC/direction=unk2 order."
     }
   ],
   "failed": [

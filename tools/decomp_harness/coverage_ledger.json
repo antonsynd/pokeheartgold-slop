@@ -1,6 +1,6 @@
 {
  "summary": {
-  "generated": "2026-06-18T18:32:43Z",
+  "generated": "2026-06-18T19:13:01Z",
   "by_status": {
    "matched": {
     "files": 57,
@@ -9,35 +9,35 @@
     "text_bytes_est": 25374
    },
    "blocked": {
-    "files": 27,
-    "functions": 352,
-    "insn_lines": 10505,
-    "text_bytes_est": 23304
+    "files": 28,
+    "functions": 373,
+    "insn_lines": 11283,
+    "text_bytes_est": 24904
    },
    "pending": {
-    "files": 215,
-    "functions": 19191,
-    "insn_lines": 931247,
-    "text_bytes_est": 2079710
+    "files": 213,
+    "functions": 19166,
+    "insn_lines": 930268,
+    "text_bytes_est": 2077650
    },
    "upstream": {
-    "files": 372,
+    "files": 373,
     "functions": 0,
     "insn_lines": 0,
     "text_bytes_est": 0
    }
   },
   "function_totals": {
-   "tracked": 20134,
+   "tracked": 20130,
    "matched": 591,
    "partial_in_blocked": 50,
-   "pending": 19191
+   "pending": 19166
   },
   "blockers": [
    {
     "id": "ipa-shared-headers",
     "blocks_files": 2,
-    "gates_pending_files": 118
+    "gates_pending_files": 117
    },
    {
     "id": "param-copyprop-cmp",
@@ -6070,7 +6070,7 @@
   {
    "file": "asm/unk_0201956C.s",
    "lsf_kind": "asm",
-   "status": "pending",
+   "status": "blocked",
    "lines": 892,
    "function_count": 21,
    "text_bytes_est": 1600,
@@ -6091,149 +6091,153 @@
      "mode": "thumb",
      "insns": 39,
      "size_est": 84,
-     "status": "pending"
+     "status": "blocked"
     },
     {
      "name": "sub_020195C0",
      "mode": "thumb",
      "insns": 23,
      "size_est": 52,
-     "status": "pending"
+     "status": "blocked"
     },
     {
      "name": "sub_020195F4",
      "mode": "thumb",
      "insns": 56,
      "size_est": 114,
-     "status": "pending"
+     "status": "blocked"
     },
     {
      "name": "sub_02019668",
      "mode": "thumb",
      "insns": 16,
      "size_est": 34,
-     "status": "pending"
+     "status": "blocked"
     },
     {
      "name": "sub_02019688",
      "mode": "thumb",
      "insns": 22,
      "size_est": 50,
-     "status": "pending"
+     "status": "blocked"
     },
     {
      "name": "sub_020196B8",
      "mode": "thumb",
      "insns": 22,
      "size_est": 50,
-     "status": "pending"
+     "status": "blocked"
     },
     {
      "name": "sub_020196E8",
      "mode": "thumb",
      "insns": 132,
      "size_est": 268,
-     "status": "pending"
+     "status": "blocked"
     },
     {
      "name": "sub_020197F4",
      "mode": "thumb",
      "insns": 11,
      "size_est": 24,
-     "status": "pending"
+     "status": "blocked"
     },
     {
      "name": "sub_0201980C",
      "mode": "thumb",
      "insns": 119,
      "size_est": 242,
-     "status": "pending"
+     "status": "blocked"
     },
     {
      "name": "sub_020198FC",
      "mode": "thumb",
      "insns": 27,
      "size_est": 54,
-     "status": "pending"
+     "status": "blocked"
     },
     {
      "name": "sub_02019934",
      "mode": "thumb",
      "insns": 33,
      "size_est": 68,
-     "status": "pending"
+     "status": "blocked"
     },
     {
      "name": "sub_02019978",
      "mode": "thumb",
      "insns": 52,
      "size_est": 108,
-     "status": "pending"
+     "status": "blocked"
     },
     {
      "name": "sub_020199E4",
      "mode": "thumb",
      "insns": 8,
      "size_est": 16,
-     "status": "pending"
+     "status": "blocked"
     },
     {
      "name": "sub_020199F4",
      "mode": "thumb",
      "insns": 54,
      "size_est": 108,
-     "status": "pending"
+     "status": "blocked"
     },
     {
      "name": "sub_02019A60",
      "mode": "thumb",
      "insns": 85,
      "size_est": 170,
-     "status": "pending"
+     "status": "blocked"
     },
     {
      "name": "sub_02019B08",
      "mode": "thumb",
      "insns": 5,
      "size_est": 10,
-     "status": "pending"
+     "status": "blocked"
     },
     {
      "name": "sub_02019B10",
      "mode": "thumb",
      "insns": 6,
      "size_est": 12,
-     "status": "pending"
+     "status": "blocked"
     },
     {
      "name": "sub_02019B1C",
      "mode": "thumb",
      "insns": 20,
      "size_est": 40,
-     "status": "pending"
+     "status": "blocked"
     },
     {
      "name": "sub_02019B44",
      "mode": "thumb",
      "insns": 22,
      "size_est": 44,
-     "status": "pending"
+     "status": "blocked"
     },
     {
      "name": "sub_02019B70",
      "mode": "thumb",
      "insns": 24,
      "size_est": 48,
-     "status": "pending"
+     "status": "blocked"
     },
     {
      "name": "sub_02019BA0",
      "mode": "thumb",
      "insns": 2,
      "size_est": 4,
-     "status": "pending"
+     "status": "blocked"
     }
-   ]
+   ],
+   "blocked_reason": "",
+   "attempts": null,
+   "blocker_id": null,
+   "kept_c": true
   },
   {
    "file": "asm/unk_02019BA4.s",
@@ -32331,79 +32335,10 @@
    "functions": []
   },
   {
-   "file": "asm/unk_020977CC.s",
-   "lsf_kind": "asm",
-   "status": "pending",
-   "lines": 252,
-   "function_count": 4,
-   "text_bytes_est": 460,
-   "data_only": false,
-   "sections": {
-    "rodata_bytes": 0,
-    "data_bytes": 0,
-    "bss_bytes": 0,
-    "other_bytes": 0
-   },
-   "other_sections": [],
-   "jumptable_words": 0,
-   "imports": [
-    "BeginNormalPaletteFade",
-    "CallTask_LeaveOverworld",
-    "FieldBGM_PlayForMapHeader",
-    "FieldSystem_ApplicationIsRunning",
-    "Field_GetTimeOfDay",
-    "GF_AssertFail",
-    "GF_GetCurrentPlayingBGM",
-    "GF_SndGetFadeTimer",
-    "GF_SndStartFadeOutBGM",
-    "Heap_AllocAtEnd",
-    "Heap_Free",
-    "IsPaletteFadeFinished",
-    "LoadAreaOrDungeonLightTxt",
-    "PlayerProfile_GetTrainerGender",
-    "Save_PlayerData_GetProfile",
-    "StopBGM",
-    "TaskManager_Call",
-    "TaskManager_GetEnvironment",
-    "TaskManager_GetFieldSystem",
-    "TaskManager_GetStatePtr",
-    "sub_0203FC68",
-    "sub_020537F0",
-    "sub_02055408"
-   ],
-   "exports": [
-    "sub_020977CC"
-   ],
-   "functions": [
-    {
-     "name": "sub_020977CC",
-     "mode": "thumb",
-     "insns": 31,
-     "size_est": 68,
-     "status": "pending"
-    },
-    {
-     "name": "sub_02097810",
-     "mode": "thumb",
-     "insns": 42,
-     "size_est": 96,
-     "status": "pending"
-    },
-    {
-     "name": "sub_02097878",
-     "mode": "thumb",
-     "insns": 38,
-     "size_est": 88,
-     "status": "pending"
-    },
-    {
-     "name": "sub_020978D0",
-     "mode": "thumb",
-     "insns": 90,
-     "size_est": 208,
-     "status": "pending"
-    }
-   ]
+   "file": "asm/field/unk_020977CC.s",
+   "lsf_kind": "src",
+   "status": "upstream",
+   "functions": []
   },
   {
    "file": "asm/field/unk_020979A8.s",
