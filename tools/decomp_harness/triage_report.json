@@ -1,5 +1,5 @@
 {
- "generated": "2026-06-18T19:44:38Z",
+ "generated": "2026-06-18T20:04:08Z",
  "weights": {
   "insn_line": 1.0,
   "unknown_callee": 40.0,
@@ -10,46 +10,6 @@
   "special_section": 500.0
  },
  "queue": [
-  {
-   "file": "asm/unk_data_020FD978.s",
-   "score": 808.2,
-   "special_sections": [],
-   "functions": 0,
-   "insn_lines": 0,
-   "data_only": true,
-   "unknown_callees": [
-    "MapObjectMovementCmd000_Step0",
-    "MapObjectMovementCmd001_Step0",
-    "MapObjectMovementCmd002_Step0",
-    "MapObjectMovementCmd003_Step0",
-    "MapObjectMovementCmd004_Step0",
-    "MapObjectMovementCmd006_Step0",
-    "MapObjectMovementCmd010_Step0",
-    "MapObjectMovementCmd011_Step0",
-    "MapObjectMovementCmd069_Step0",
-    "MapObjectMovementCmd070_Step0",
-    "MapObjectMovementCmd071_Step0",
-    "MapObjectMovementCmd072_Step0",
-    "MapObjectMovementCmd073_Step0",
-    "MapObjectMovementCmd074_Step0",
-    "MapObjectMovementCmd082_Step1",
-    "MapObjectMovementCmd083_Step0",
-    "MapObjectMovementCmd089_Step0",
-    "MapObjectMovementCmd090_Step1",
-    "MapObjectMovementCmd091_Step0",
-    "MapObjectMovementCmd098_Step2"
-   ],
-   "jumptable_words": 0,
-   "rodata_bytes": 164,
-   "arm_functions": 0,
-   "gated_by": [],
-   "cluster_partners": [
-    {
-     "file": "asm/unk_02062108.s",
-     "shared_symbols": 20
-    }
-   ]
-  },
   {
    "file": "asm/unk_02068FC8.s",
    "score": 811.0,

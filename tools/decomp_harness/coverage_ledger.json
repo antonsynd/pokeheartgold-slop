@@ -1,9 +1,9 @@
 {
  "summary": {
-  "generated": "2026-06-18T19:44:38Z",
+  "generated": "2026-06-18T20:04:08Z",
   "by_status": {
    "matched": {
-    "files": 58,
+    "files": 59,
     "functions": 592,
     "insn_lines": 11801,
     "text_bytes_est": 25946
@@ -15,7 +15,7 @@
     "text_bytes_est": 24904
    },
    "pending": {
-    "files": 211,
+    "files": 210,
     "functions": 19156,
     "insn_lines": 929824,
     "text_bytes_est": 2076642
@@ -21128,8 +21128,8 @@
   },
   {
    "file": "asm/unk_data_020FD978.s",
-   "lsf_kind": "asm",
-   "status": "pending",
+   "lsf_kind": "src",
+   "status": "matched",
    "lines": 90,
    "function_count": 0,
    "text_bytes_est": 0,
@@ -21182,7 +21182,8 @@
     "gMovementCmdSteps_091"
    ],
    "exports": [],
-   "functions": []
+   "functions": [],
+   "source": "harness"
   },
   {
    "file": "asm/unk_02062108.s",

@@ -484,6 +484,12 @@
       "functions": 1,
       "result": "matched",
       "note": "Single 9-state screen-transition effect (BG setup, plane toggles, two BgTemplates). Unsigned frame counter (u32 -> bls); reg_GX_DISPCNT manip; local work structs + cluster externs."
+    },
+    {
+      "file": "asm/unk_data_020FD978.s",
+      "functions": 0,
+      "result": "matched",
+      "note": "DATA-ONLY: 17 movement-command step function-pointer tables. Required inverting MWCC's per-symbol .rodata section permutation (size-bucketed, positional) by reordering source definitions."
     }
   ],
   "failed": [

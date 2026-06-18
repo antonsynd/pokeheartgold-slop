@@ -228,7 +228,7 @@ Static main
     Object asm/unk_data_020FCBD8.o
     Object asm/unk_0205FD20.o
     Object asm/unk_02061284.o
-    Object asm/unk_data_020FD978.o
+    Object src/unk_data_020FD978.o
     Object asm/unk_02062108.o
     Object asm/unk_data_020FDB44.o
     Object asm/unk_020632B0.o
