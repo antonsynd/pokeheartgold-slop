@@ -79,8 +79,9 @@ chmod +x "$STAGING/setup-ubuntu.sh"
 
 # ── Pack ───────────────────────────────────────────────────────────────────────
 echo "==> Creating $OUTPUT ..."
-# COPYFILE_DISABLE suppresses macOS '._' resource fork files and xattr headers
-# that cause harmless but noisy warnings when extracting on Linux.
+# Strip macOS extended attributes (quarantine, provenance, etc.) from staged
+# files so Linux tar doesn't emit a wall of LIBARCHIVE.xattr warnings on extract.
+xattr -cr "$STAGING" 2>/dev/null || true
 COPYFILE_DISABLE=1 tar -czf "$OUTPUT" -C "$STAGING" .
 
 SIZE=$(du -sh "$OUTPUT" | cut -f1)
