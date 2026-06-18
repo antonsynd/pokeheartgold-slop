@@ -89,8 +89,21 @@ check_tool git           git
 check_tool arm-none-eabi-objcopy binutils-arm-none-eabi  "devkitARM also works; see INSTALL.md"
 check_tool arm-none-eabi-ar      binutils-arm-none-eabi
 
-# Wine (to run MWCC .exe on Linux)
-check_tool wine          wine  "32-bit support also needed; script adds i386 arch"
+# Wine (to run MWCC .exe on Linux).
+# wine64 alone is not enough — MWCC is a 32-bit EXE and needs wine32.
+# Test by checking for the 32-bit wine loader directly.
+check_tool wine wine "64-bit binary; 32-bit support (wine32) also required"
+
+WINE32_LOADER=""
+for candidate in /usr/lib/i386-linux-gnu/wine/wine /usr/lib/i386-linux-gnu/wine-i386/bin/wine; do
+    if [[ -f "$candidate" ]]; then WINE32_LOADER="$candidate"; break; fi
+done
+if dpkg -l wine32 2>/dev/null | grep -q '^ii' || [[ -n "$WINE32_LOADER" ]]; then
+    info "  [OK]  wine32 (32-bit DLLs present)"
+else
+    warn "  [--]  wine32:i386  — MWCC is a 32-bit EXE; wine64-only will fail"
+    NEED_APT+=("wine32:i386")
+fi
 
 # Libraries (build-time; no binary to check — check headers instead)
 if pkg-config --exists libpng 2>/dev/null; then
