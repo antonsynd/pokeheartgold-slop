@@ -675,6 +675,14 @@
       "attempts": 0,
       "result": "deferred",
       "reason": "22 fns / 750 insns, NO header/caller/sibling (all types inferred). Byte-packed command structs + stack-arg (sp+0x20 signed byte) convention + jump tables + division. Structural decode in attempts_log; needs a focused fresh-context session (decompile sub_02095BF0/sub_02095CB8 helpers first)."
+    },
+    {
+      "file": "asm/overlay_01_021FEC38.s",
+      "lines": 215,
+      "functions": 9,
+      "attempts": 5,
+      "result": "deferred",
+      "reason": "8/9 byte-match (near-clone of 021FED9C). Only ov01_021FED14 cb1 differs -- same MWCC scheduling holdout as 021FED9C ov01_021FEE64 (data read/store ordering). WIP committed."
     }
   ],
   "in_progress": [],

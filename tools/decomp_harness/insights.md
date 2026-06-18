@@ -172,6 +172,10 @@ MWCC evaluates `(a2 + 1) + 7 * a1` as: `mov r0,#7` (preload mul constant early),
 
 `sub_0206121C(MapObject_GetFieldSystem(obj), &pos)` preceded by `pos.x = (a<<16)+k; pos.z=(b<<16)+k;` — MWCC evaluates the position stores FIRST (using r0/r1), then calls MapObject_GetFieldSystem as the 1st arg. If the target asm calls MapObject_GetFieldSystem FIRST (r0=fieldSystem, held across the position math, so the math uses r1/r2), hoist it into a temp BEFORE the computation: `FieldSystem *fs = MapObject_GetFieldSystem(obj); pos.x=...; pos.z=...; sub_0206121C(fs, &pos);`. The temp keeps fieldSystem in r0 across the position math, shifting the math up one register (r0/r1 -> r1/r2) to match. Diagnose: same instructions, every register shifted by one. Seen in overlay_01_021FE780 ov01_021FE7DC (fixed the last 7 diffs).
 
+### `&work->member->field` after `work->member = src` reuses the stored value; avoids re-reading src (but read ORDER may still differ)  <!-- id: reuse-just-stored-member-avoids-source-reread -->
+
+In a callback that does `work->unk7c = data->manager; ...(&data->manager->unk4)...`, MWCC RE-READS data->manager for the second access (+2 bytes, aliasing-conservative after the store). Writing `&work->unk7c->unk4` instead (the member just stored) makes MWCC reuse the stored register value -> no re-read, size-correct. CAVEAT: this can leave a read-ORDER difference -- the retail code reads BOTH data fields (manager@4, fieldSystem@0) into regs FIRST, then does all the stores; the natural C `work->unk78=data->fieldSystem; work->unk7c=data->manager;` reads offset 0 first. Neither caching `manager` in a local (reorders fieldSystem to r0 + materializes work early) nor swapping the assignment order (breaks the store order / reloads work->unk7c) reproduces the batched read-then-store schedule. Seen identically in overlay_01_021FED9C ov01_021FEE64 and overlay_01_021FEC38 ov01_021FED14 (8/9 each) -- the camera/3D-effect family's data-copy cb1.
+
 ## Matching Tricks
 
 ### Small source changes that move codegen  <!-- id: decl-order-tricks -->

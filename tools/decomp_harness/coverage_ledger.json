@@ -1,6 +1,6 @@
 {
  "summary": {
-  "generated": "2026-06-18T17:30:30Z",
+  "generated": "2026-06-18T18:06:14Z",
   "by_status": {
    "matched": {
     "files": 57,
@@ -9,16 +9,16 @@
     "text_bytes_est": 25374
    },
    "blocked": {
-    "files": 26,
-    "functions": 343,
-    "insn_lines": 10347,
-    "text_bytes_est": 22942
+    "files": 27,
+    "functions": 352,
+    "insn_lines": 10505,
+    "text_bytes_est": 23304
    },
    "pending": {
-    "files": 217,
-    "functions": 19204,
-    "insn_lines": 931602,
-    "text_bytes_est": 2080520
+    "files": 216,
+    "functions": 19195,
+    "insn_lines": 931444,
+    "text_bytes_est": 2080158
    },
    "upstream": {
     "files": 371,
@@ -31,7 +31,7 @@
    "tracked": 20138,
    "matched": 591,
    "partial_in_blocked": 50,
-   "pending": 19204
+   "pending": 19195
   },
   "blockers": [
    {
@@ -46215,7 +46215,7 @@
   {
    "file": "asm/overlay_01_021FEC38.s",
    "lsf_kind": "asm",
-   "status": "pending",
+   "status": "blocked",
    "lines": 215,
    "function_count": 9,
    "text_bytes_est": 362,
@@ -46262,65 +46262,69 @@
      "mode": "thumb",
      "insns": 12,
      "size_est": 28,
-     "status": "pending"
+     "status": "blocked"
     },
     {
      "name": "ov01_021FEC54",
      "mode": "thumb",
      "insns": 7,
      "size_est": 18,
-     "status": "pending"
+     "status": "blocked"
     },
     {
      "name": "ov01_021FEC64",
      "mode": "thumb",
      "insns": 19,
      "size_est": 42,
-     "status": "pending"
+     "status": "blocked"
     },
     {
      "name": "ov01_021FEC8C",
      "mode": "thumb",
      "insns": 9,
      "size_est": 22,
-     "status": "pending"
+     "status": "blocked"
     },
     {
      "name": "ov01_021FECA0",
      "mode": "thumb",
      "insns": 51,
      "size_est": 116,
-     "status": "pending"
+     "status": "blocked"
     },
     {
      "name": "ov01_021FED14",
      "mode": "thumb",
      "insns": 25,
      "size_est": 56,
-     "status": "pending"
+     "status": "blocked"
     },
     {
      "name": "ov01_021FED4C",
      "mode": "thumb",
      "insns": 6,
      "size_est": 12,
-     "status": "pending"
+     "status": "blocked"
     },
     {
      "name": "ov01_021FED58",
      "mode": "thumb",
      "insns": 17,
      "size_est": 40,
-     "status": "pending"
+     "status": "blocked"
     },
     {
      "name": "ov01_021FED80",
      "mode": "thumb",
      "insns": 12,
      "size_est": 28,
-     "status": "pending"
+     "status": "blocked"
     }
-   ]
+   ],
+   "blocked_reason": "8/9 byte-match (near-clone of 021FED9C). Only ov01_021FED14 cb1 differs -- same MWCC scheduling holdout as 021FED9C ov01_021FEE64 (data read/store ordering). WIP committed.",
+   "attempts": 5,
+   "blocker_id": null,
+   "kept_c": false
   },
   {
    "file": "asm/overlay_01_021FED9C.s",

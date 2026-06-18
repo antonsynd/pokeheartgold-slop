@@ -673,6 +673,12 @@
       "category": "matching-tricks",
       "title": "Match double-math (_dflt/_dadd/_dmul/_dfix) by writing the exact decimal literal and (double) casts in evaluation order",
       "body": "A function calling _dflt/_dadd/_dmul/_dfix is doing double-precision arithmetic on ints. Decode the double constant from its two pool words (high,low) with python struct.unpack('>d', bytes.fromhex(HItHEN LO)) -> e.g. 0x40C19999_9999999A = 9011.2. Write that exact decimal literal in C; MWCC re-encodes it to the same 64-bit pattern. `_dflt(x)` = `(double)x`, `_dfix(d)` = `(int)d`. Operand order follows source: `_dmul(a,b)` with a in (r0,r1) means `a*b`; `_dadd(CONST, y)` with the const loaded into (r0,r1) AFTER y is computed means `CONST + y` (MWCC evaluates the cheap const operand last but keeps it as the left operand). Verified: overlay_01_021F3378 ov01_021F33B8/348C matched on the FIRST build with `position.y = (int)((double)counter * (9011.2 + (double)(counter << 11)))`. Also `counter % 2` for the `lsr#31; lsl#31; sub; ror#31; add` idiom (signed mod-2). The jump-table function in the same file is an objdiff SIZE false positive ([[objdiff-false-positive-inline-jumptable-reloc]]) -- confirm with chiri pkg -- compare."
+    },
+    {
+      "id": "reuse-just-stored-member-avoids-source-reread",
+      "category": "codegen",
+      "title": "`&work->member->field` after `work->member = src` reuses the stored value; avoids re-reading src (but read ORDER may still differ)",
+      "body": "In a callback that does `work->unk7c = data->manager; ...(&data->manager->unk4)...`, MWCC RE-READS data->manager for the second access (+2 bytes, aliasing-conservative after the store). Writing `&work->unk7c->unk4` instead (the member just stored) makes MWCC reuse the stored register value -> no re-read, size-correct. CAVEAT: this can leave a read-ORDER difference -- the retail code reads BOTH data fields (manager@4, fieldSystem@0) into regs FIRST, then does all the stores; the natural C `work->unk78=data->fieldSystem; work->unk7c=data->manager;` reads offset 0 first. Neither caching `manager` in a local (reorders fieldSystem to r0 + materializes work early) nor swapping the assignment order (breaks the store order / reloads work->unk7c) reproduces the batched read-then-store schedule. Seen identically in overlay_01_021FED9C ov01_021FEE64 and overlay_01_021FEC38 ov01_021FED14 (8/9 each) -- the camera/3D-effect family's data-copy cb1."
     }
   ]
 }
