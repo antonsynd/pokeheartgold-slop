@@ -144,6 +144,10 @@ A multi-term bounds/validity check compiled by MWCC places the two return epilog
 
 When a function is byte-identical to the asm EXCEPT the sp+N offsets in every load/store (and the VEC_* out-pointer args), the cause is local declaration ORDER. MWCC lays out stack-homed locals so the first-declared gets the highest sp offset, each subsequent one lower. To match, reorder the C declarations so (high->low) = asm's (highest-offset-local ... lowest). Example: GetDistanceFromPointToLine matched once declarations were reordered to lineDir, toPoint, diff, proj, zero (asm slots 68,56,44,32,20). Corollary: two FX_Modf integer-part outputs need two distinct named locals (intPartX, intPartY) to get two stack slots rather than one reused slot (sub_02020F4C).
 
+### Unsigned countdown loop counter -> subs/bne; signed int -> cmp/bgt  <!-- id: countdown-loop-counter-signedness -->
+
+For a `do { ... } while (--i)` countdown loop, the counter's signedness changes the loop epilogue. A SIGNED `int i` lets MWCC use the i>0 shortcut and emits `subs i,#1; <other body op>; cmp i,#0; bgt` — the decrement floats away from the branch and needs a separate cmp (extra 2 bytes + possible nop). An UNSIGNED `u32 i` forces a plain nonzero test, emitting `<body op>; subs i,#1; bne` with the decrement adjacent to the branch (no cmp). If a countdown loop is ~4 bytes too big with a cmp+bgt where the asm has bne, switch the counter to u32. Saw in ov01_021FD3F8 (overlay_01_021FD1B8.s). Pair with caching loop-invariant struct fields (e.g. mgr->count) in locals so they survive calls in callee regs instead of being reloaded each iteration.
+
 ## Matching Tricks
 
 ### Small source changes that move codegen  <!-- id: decl-order-tricks -->

@@ -1,6 +1,6 @@
 {
  "summary": {
-  "generated": "2026-06-18T08:42:10Z",
+  "generated": "2026-06-18T11:41:27Z",
   "by_status": {
    "matched": {
     "files": 54,
@@ -15,23 +15,23 @@
     "text_bytes_est": 14294
    },
    "pending": {
-    "files": 231,
-    "functions": 19399,
-    "insn_lines": 936926,
-    "text_bytes_est": 2092334
+    "files": 230,
+    "functions": 19384,
+    "insn_lines": 936656,
+    "text_bytes_est": 2091718
    },
    "upstream": {
-    "files": 368,
+    "files": 369,
     "functions": 0,
     "insn_lines": 0,
     "text_bytes_est": 0
    }
   },
   "function_totals": {
-   "tracked": 20167,
+   "tracked": 20152,
    "matched": 564,
    "partial_in_blocked": 50,
-   "pending": 19399
+   "pending": 19384
   },
   "blockers": [
    {
@@ -32301,7 +32301,7 @@
      "status": "matched"
     }
    ],
-   "source": "retained_asm"
+   "source": "harness"
   },
   {
    "file": "asm/unk_020971F8.s",
@@ -45207,159 +45207,10 @@
    ]
   },
   {
-   "file": "asm/overlay_01_021FD1B8.s",
-   "lsf_kind": "asm",
-   "status": "pending",
-   "lines": 380,
-   "function_count": 15,
-   "text_bytes_est": 616,
-   "data_only": false,
-   "sections": {
-    "rodata_bytes": 116,
-    "data_bytes": 0,
-    "bss_bytes": 0,
-    "other_bytes": 0
-   },
-   "other_sections": [],
-   "jumptable_words": 0,
-   "imports": [
-    "GF_AssertFail",
-    "MapObject_CheckFlag25",
-    "MapObject_CopyFacingVector",
-    "MapObject_CopyPositionVector",
-    "MapObject_GetID",
-    "MapObject_GetMapID",
-    "MapObject_GetPriorityPlusValue",
-    "MapObject_GetSpriteID",
-    "ov01_021F1430",
-    "ov01_021F1448",
-    "ov01_021F1450",
-    "ov01_021F146C",
-    "ov01_021F1620",
-    "ov01_021F1640",
-    "ov01_021F19F4",
-    "sub_0205F0A8",
-    "sub_0205F544",
-    "sub_02068D98",
-    "sub_02068DA8",
-    "sub_02068DB8",
-    "sub_02069784",
-    "sub_02069978",
-    "sub_020699BC"
-   ],
-   "exports": [
-    "ov01_021FD1B8",
-    "ov01_021FD1CC",
-    "ov01_021FD2EC",
-    "ov01_021FD3F8"
-   ],
-   "functions": [
-    {
-     "name": "ov01_021FD1B8",
-     "mode": "thumb",
-     "insns": 9,
-     "size_est": 20,
-     "status": "pending"
-    },
-    {
-     "name": "ov01_021FD1CC",
-     "mode": "thumb",
-     "insns": 11,
-     "size_est": 28,
-     "status": "pending"
-    },
-    {
-     "name": "ov01_021FD1E8",
-     "mode": "thumb",
-     "insns": 16,
-     "size_est": 36,
-     "status": "pending"
-    },
-    {
-     "name": "ov01_021FD20C",
-     "mode": "thumb",
-     "insns": 7,
-     "size_est": 14,
-     "status": "pending"
-    },
-    {
-     "name": "ov01_021FD21C",
-     "mode": "thumb",
-     "insns": 19,
-     "size_est": 40,
-     "status": "pending"
-    },
-    {
-     "name": "ov01_021FD244",
-     "mode": "thumb",
-     "insns": 11,
-     "size_est": 22,
-     "status": "pending"
-    },
-    {
-     "name": "ov01_021FD258",
-     "mode": "thumb",
-     "insns": 25,
-     "size_est": 56,
-     "status": "pending"
-    },
-    {
-     "name": "ov01_021FD290",
-     "mode": "thumb",
-     "insns": 25,
-     "size_est": 60,
-     "status": "pending"
-    },
-    {
-     "name": "ov01_021FD2CC",
-     "mode": "thumb",
-     "insns": 13,
-     "size_est": 32,
-     "status": "pending"
-    },
-    {
-     "name": "ov01_021FD2EC",
-     "mode": "thumb",
-     "insns": 26,
-     "size_est": 60,
-     "status": "pending"
-    },
-    {
-     "name": "ov01_021FD328",
-     "mode": "thumb",
-     "insns": 34,
-     "size_est": 82,
-     "status": "pending"
-    },
-    {
-     "name": "ov01_021FD378",
-     "mode": "thumb",
-     "insns": 2,
-     "size_est": 4,
-     "status": "pending"
-    },
-    {
-     "name": "ov01_021FD37C",
-     "mode": "thumb",
-     "insns": 45,
-     "size_est": 100,
-     "status": "pending"
-    },
-    {
-     "name": "ov01_021FD3E0",
-     "mode": "thumb",
-     "insns": 11,
-     "size_est": 26,
-     "status": "pending"
-    },
-    {
-     "name": "ov01_021FD3F8",
-     "mode": "thumb",
-     "insns": 16,
-     "size_est": 36,
-     "status": "pending"
-    }
-   ]
+   "file": "asm/field/overlay_01_021FD1B8.s",
+   "lsf_kind": "src",
+   "status": "upstream",
+   "functions": []
   },
   {
    "file": "asm/overlay_01_021FD41C.s",

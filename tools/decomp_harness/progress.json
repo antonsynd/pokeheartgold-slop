@@ -434,6 +434,12 @@
       "functions": 11,
       "result": "matched",
       "note": "state-machine field app (party menu -> summary learn/forget); fixed MWCC reverse-order const-struct rodata layout"
+    },
+    {
+      "file": "asm/overlay_01_021FD1B8.s",
+      "functions": 15,
+      "result": "matched",
+      "note": "field map-object effect manager (overlay 01)"
     }
   ],
   "failed": [
