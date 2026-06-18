@@ -120,6 +120,14 @@ For a guard like null-check, MWCC lays out the return blocks by source structure
 
 unk_020379A0.s unk00 is 8 two-byte slots. Flat `u8 unk00[0x10]` with `unk00[a0*2+1]=v` produced `adds rIdx,rRow,#1; strb [base,rIdx]` (the +1 went into the index) in sub_02037B6C, mismatching the asm `adds r0,base,rRow; strb [r0,#1]` (+1 in the store immediate). Switching to `u8 unk00[8][2]` and `unk00[a0][1]=v` makes MWCC compute the row base (base+a0*2) then use immediate #1 -> match. Subtlety: the READ in sub_02037BA0 matched with BOTH forms (same bytes), but the WRITE-with-reload context in sub_02037B6C only matched with the 2D array. When a pair/tuple store is off by the +1 placement, model the data as [N][k] not [N*k].
 
+### For a branchy float->fx32 conversion ((cond)?(x+0.5f):(x-0.5f) then cast), compute a `f32 tmp` in the if/else and apply ONE (fx32)tmp after the merge so _ffix is shared, not duplicated per branch  <!-- id: float-to-fx32-shared-ffix -->
+
+sub_0205BED8 converts u16 args to fx32 with rounding: `(fx32)((a!=0) ? 0.5f+(f32)(a<<12) : (f32)(a<<12)-0.5f)`. Writing the (fx32) cast inside each branch (`env->x = (fx32)(...)` in both arms) duplicates the _ffix call (and the store) -> +8 bytes. The asm instead does `_fflt`/`_fadd` or `_fsub` per branch, then a SINGLE `_ffix` at the merge, then one store. Reproduce with a float temp: `f32 t; if(a){t=0.5f+(f32)(a<<12);}else{t=(f32)(a<<12)-0.5f;} env->x=(fx32)t;`. The (f32)(a<<12) IS duplicated per branch (matches asm) — only the trailing cast/store is shared. MWCC soft-float intrinsics: (f32)int=_fflt, +/-= _fadd/_fsub, (s32)f32=_ffix, f32*f32=_fmul; FX_Mul = FX_MulInline = ((s64)v1*v2+0x800)>>12 (= _ll_mul + shift).
+
+### When a count/index loop is off only by which callee-saved register holds the counter vs the bound, swap the local DECLARATION order (declare the loop index before the count)  <!-- id: loop-index-decl-order-regalloc -->
+
+Save_GetPartyLead mismatched by 7 bytes that were purely register fields: asm had count=r5,i=r4 but `u16 count=..; u16 i;` gave count=r4,i=r5. Declaring the index first (`u16 i; u16 count=Party_GetCount(..);`) flipped MWCC register assignment to match. (The near-identical Save_GetPartyLeadAlive matched as-is because its extra `mon` local shifted the allocation.) General lever: when two same-lifetime locals land in swapped registers, reorder their declarations; the names are irrelevant, the order drives MWCC callee-saved assignment.
+
 ## Matching Tricks
 
 ### Small source changes that move codegen  <!-- id: decl-order-tricks -->

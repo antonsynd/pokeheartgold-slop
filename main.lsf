@@ -220,7 +220,7 @@ Static main
     Object src/unk_0205B3DC.o
     Object src/text_0205B4EC.o
     Object src/metatile_behavior.o
-    Object asm/unk_0205BB1C.o
+    Object src/unk_0205BB1C.o
     Object src/unk_0205BFF0.o
     Object src/player_avatar.o
     Object asm/unk_0205CB48.o

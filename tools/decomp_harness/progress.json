@@ -410,6 +410,15 @@
       "result": "matched",
       "note": "compare-verified (chiri pkg -- compare OK, full ROM SHA1). Comm/link state manager over a single static BSS pointer _021D414C -> a 0x264 struct (Heap_Alloc'd, MI_CpuFill8'd). 19 exported getters/setters/packet builders; only 6 are in the frozen include/unk_020379A0.h, the other 13 got LOCAL prototypes in the .c (IPA discipline) to satisfy MWCC's -W error 'function has no prototype'. sub_02037184/sub_020376E0 imports declared locally. 16/19 first try; fixes: (a) sub_02037C0C/sub_02037C44 needed if(cond){body;return X;} return Y; form (return block placed at end, beq-to-end) instead of early-return-inline; (b) the 0x00 pair array must be u8 unk00[8][2] accessed unk00[a0][0/1] so the +1 folds into the strb immediate (a flat [0x10] + a0*2+1 matched the READ in sub_02037BA0 but not the WRITE+reload in sub_02037B6C).",
       "blocker_id": null
+    },
+    {
+      "file": "asm/unk_0205BB1C.s",
+      "lines": 677,
+      "functions": 11,
+      "attempts": 2,
+      "result": "matched",
+      "note": "compare-verified (chiri pkg -- compare OK, full ROM SHA1). Misc field/Oak module: CountDigits (_u32_div_f ladder), ItemIsTMOrHM, GetOakJohto/NationalDexRating (long <= ladders writing SEQ_ME_HYOUKA to var_p), Save_GetPartyLead/Alive, Save_PlayerHasAllRegisInParty, plus two MapObject tasks: a spin (FX_Mul(GF_SinDegNoWrap(angle), env->unkN) into a VecFx32, FX64 _ll_mul pattern) and a visibility blink. Header frozen (8 of the funcs); ItemIsTMOrHM exported but not in this header -> local prototype. 8/11 first try (incl. both Oak ladders + the FX_Mul task). Fixes: (a) sub_0205BED8 float->fx32 needs a `f32 tmp` so the (fx32) cast/_ffix is SHARED after the if/else merge, not duplicated per branch; (b) sub_0205BF6C early-return placement (body inside if(frame>=unk6), single trailing return FALSE); (c) Save_GetPartyLead register coin-flip fixed by declaring the loop index BEFORE the count local. .text/.rodata -2 (trailing pad / sRegiSpecies 6 vs 8) are linker-padded, ROM matches.",
+      "blocker_id": null
     }
   ],
   "failed": [
@@ -541,8 +550,8 @@
   ],
   "in_progress": null,
   "stats": {
-    "total_attempts": 113,
-    "total_matched": 40,
+    "total_attempts": 115,
+    "total_matched": 41,
     "total_failed": 12
   }
 }

@@ -1,12 +1,12 @@
 {
  "summary": {
-  "generated": "2026-06-18T05:31:12Z",
+  "generated": "2026-06-18T05:48:34Z",
   "by_status": {
    "matched": {
-    "files": 51,
-    "functions": 531,
-    "insn_lines": 9928,
-    "text_bytes_est": 21716
+    "files": 52,
+    "functions": 542,
+    "insn_lines": 10490,
+    "text_bytes_est": 22948
    },
    "blocked": {
     "files": 15,
@@ -15,10 +15,10 @@
     "text_bytes_est": 10474
    },
    "pending": {
-    "files": 237,
-    "functions": 19473,
-    "insn_lines": 939663,
-    "text_bytes_est": 2098328
+    "files": 236,
+    "functions": 19462,
+    "insn_lines": 939101,
+    "text_bytes_est": 2097096
    },
    "upstream": {
     "files": 368,
@@ -29,9 +29,9 @@
   },
   "function_totals": {
    "tracked": 20167,
-   "matched": 531,
+   "matched": 542,
    "partial_in_blocked": 50,
-   "pending": 19473
+   "pending": 19462
   },
   "blockers": [
    {
@@ -18698,8 +18698,8 @@
   },
   {
    "file": "asm/unk_0205BB1C.s",
-   "lsf_kind": "asm",
-   "status": "pending",
+   "lsf_kind": "src",
+   "status": "matched",
    "lines": 677,
    "function_count": 11,
    "text_bytes_est": 1232,
@@ -18750,79 +18750,80 @@
      "mode": "thumb",
      "insns": 66,
      "size_est": 148,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ItemIsTMOrHM",
      "mode": "thumb",
      "insns": 12,
      "size_est": 24,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "GetOakJohtoDexRating",
      "mode": "thumb",
      "insns": 84,
      "size_est": 168,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "GetOakNationalDexRating",
      "mode": "thumb",
      "insns": 84,
      "size_est": 168,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "Save_GetPartyLead",
      "mode": "thumb",
      "insns": 29,
      "size_est": 68,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "Save_GetPartyLeadAlive",
      "mode": "thumb",
      "insns": 36,
      "size_est": 84,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "Save_PlayerHasAllRegisInParty",
      "mode": "thumb",
      "insns": 52,
      "size_est": 112,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "sub_0205BE28",
      "mode": "thumb",
      "insns": 80,
      "size_est": 178,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "sub_0205BED8",
      "mode": "thumb",
      "insns": 60,
      "size_est": 148,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "sub_0205BF6C",
      "mode": "thumb",
      "insns": 33,
      "size_est": 74,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "sub_0205BFB4",
      "mode": "thumb",
      "insns": 26,
      "size_est": 60,
-     "status": "pending"
+     "status": "matched"
     }
-   ]
+   ],
+   "source": "harness"
   },
   {
    "file": "asm/unk_0205BFF0.s",
