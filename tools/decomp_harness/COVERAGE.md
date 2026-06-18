@@ -1,14 +1,14 @@
 # Decomp Coverage Ledger
 
-*Generated 2026-06-18T17:25:28Z by `coverage_ledger.py` — do not hand-edit; regenerate after each decomp.*
+*Generated 2026-06-18T17:30:30Z by `coverage_ledger.py` — do not hand-edit; regenerate after each decomp.*
 
-Tracked functions (files with retained asm): **20138** — matched 591, pending 19226, plus 50 matched-but-blocked inside failed files.
+Tracked functions (files with retained asm): **20138** — matched 591, pending 19204, plus 50 matched-but-blocked inside failed files.
 
 | status | files | functions | insn lines | ~text bytes |
 |---|---|---|---|---|
 | matched | 57 | 591 | 11548 | 25374 |
-| blocked | 25 | 321 | 9597 | 21356 |
-| pending | 218 | 19226 | 932352 | 2082106 |
+| blocked | 26 | 343 | 10347 | 22942 |
+| pending | 217 | 19204 | 931602 | 2080520 |
 | upstream | 371 | 0 | 0 | 0 |
 
 ## Blockers (value-ordered: fix what gates the most)
@@ -20,7 +20,7 @@ Tracked functions (files with retained asm): **20138** — matched 591, pending 
 | objdiff-false-positives | 0 | 0 | RESOLVED. objdiff.py had a critical bug: the byte extraction regex did not match MWCC's ARM Thumb objdump format (packed hex like 'b418' vs expected space-separated 'b4 18'). It extracted 0 bytes for every function, so 0==0 always reported MATCH. 11 decomps accepted via objdiff were not actually byte-matching. Fixed in this session; all 11 non-matching decomps reverted to asm. 2 decomps that truly match (unk_0202DB34, battle_arcade_game_board_data) kept. |
 | ext-data-section-split | 1 | 0 | Data-only files exporting multiple EXTERNAL (.public) const arrays: MWCC -ipa file emits each top-level const as its own .rodata section, and mwldarm orders/aligns them differently than the asm's single packed .rodata, so the linked overlay/module SHA1 fails even though objdiff --summary (per-section) reports a match. Symbols referenced by other TUs must stay non-static, so they cannot be pooled into one section via `static`. |
 
-## Blocked files (25)
+## Blocked files (26)
 
 | file | functions | insn lines | data-only | notes |
 |---|---|---|---|---|
@@ -28,6 +28,7 @@ Tracked functions (files with retained asm): **20138** — matched 591, pending 
 | asm/unk_02015DD8.s | 40 | 719 |  |  Tractable but large (40 fns NNS G2D sprite manager + GE-register renderer). Fully decoded in attempts_log (struct layout |
 | asm/unk_0200FA24.s | 33 | 787 |  | ipa-shared-headers IPA-blocked: header signature conflicts, IPA CSE caching, loop codegen. C file exists at src/unk_0200FA24.c but cannot b |
 | asm/unk_0206979C.s | 25 | 282 |  | regalloc-reg-number-swap 24/25 NEAR-MISS. NNS_G3d anim/render wrapper; all fns match except sub_020698E8, which has a maxFrame/0-const r3<->r4 re |
+| asm/unk_020957B0.s | 22 | 750 |  |  22 fns / 750 insns, NO header/caller/sibling (all types inferred). Byte-packed command structs + stack-arg (sp+0x20 sign |
 | asm/unk_020210A0.s | 18 | 597 |  |  Intricate touchpad auto-sampling driver (overlay_33-class). Fully decoded (struct TouchpadState 0x5C, all 18 fns) but de |
 | asm/overlay_01_021F3F50.s | 17 | 566 |  |  16/17 functions byte-match. Only ov01_021F4048 mismatches (+12 bytes) — pure MWCC global register allocation: asm keeps  |
 | asm/overlay_80_02238034.s | 15 | 521 |  |  14/15 functions byte-match (MultiplayerCheck via switch-form). Holdouts: ov80_022383C0 needs LICM to sink entry=ctx+0x33 |
@@ -112,7 +113,7 @@ Tracked functions (files with retained asm): **20138** — matched 591, pending 
 | asm/overlay_01_021F467C.s | 2 | 58 |  | harness |
 | asm/overlay_35.s | 2 | 26 |  | harness |
 
-## Pending files (218)
+## Pending files (217)
 
 | file | functions | insn lines | data-only | notes |
 |---|---|---|---|---|
@@ -263,7 +264,6 @@ Tracked functions (files with retained asm): **20138** — matched 591, pending 
 | asm/unk_0205AC88.s | 22 | 831 |  |  |
 | asm/unk_02066EDC.s | 22 | 807 |  |  |
 | asm/unk_020755E8.s | 22 | 3262 |  |  |
-| asm/unk_020957B0.s | 22 | 750 |  |  |
 | asm/unk_0201956C.s | 21 | 778 |  |  |
 | asm/overlay_01_021FC05C.s | 21 | 485 |  |  |
 | asm/overlay_12_0226ADE0.s | 21 | 1290 |  |  |

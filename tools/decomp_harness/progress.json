@@ -667,6 +667,14 @@
       "attempts": 4,
       "result": "deferred",
       "reason": "8/9 byte-match (all inferred cluster signatures correct). Only ov01_021FEE64 cb1 differs: MWCC scheduling/reg-alloc (data->manager re-read vs fieldSystem/work register shuffle). No external blocker; needs 9/9. WIP committed."
+    },
+    {
+      "file": "asm/unk_020957B0.s",
+      "lines": 946,
+      "functions": 22,
+      "attempts": 0,
+      "result": "deferred",
+      "reason": "22 fns / 750 insns, NO header/caller/sibling (all types inferred). Byte-packed command structs + stack-arg (sp+0x20 signed byte) convention + jump tables + division. Structural decode in attempts_log; needs a focused fresh-context session (decompile sub_02095BF0/sub_02095CB8 helpers first)."
     }
   ],
   "in_progress": [],
