@@ -1,6 +1,6 @@
 {
  "summary": {
-  "generated": "2026-06-18T06:46:24Z",
+  "generated": "2026-06-18T06:57:36Z",
   "by_status": {
    "matched": {
     "files": 53,
@@ -9,16 +9,16 @@
     "text_bytes_est": 23414
    },
    "blocked": {
-    "files": 16,
-    "functions": 175,
-    "insn_lines": 5198,
-    "text_bytes_est": 11726
+    "files": 17,
+    "functions": 193,
+    "insn_lines": 5795,
+    "text_bytes_est": 12984
    },
    "pending": {
-    "files": 234,
-    "functions": 19439,
-    "insn_lines": 938338,
-    "text_bytes_est": 2095378
+    "files": 233,
+    "functions": 19421,
+    "insn_lines": 937741,
+    "text_bytes_est": 2094120
    },
    "upstream": {
     "files": 368,
@@ -31,7 +31,7 @@
    "tracked": 20167,
    "matched": 553,
    "partial_in_blocked": 50,
-   "pending": 19439
+   "pending": 19421
   },
   "blockers": [
    {
@@ -6664,7 +6664,7 @@
   {
    "file": "asm/unk_020210A0.s",
    "lsf_kind": "asm",
-   "status": "pending",
+   "status": "blocked",
    "lines": 732,
    "function_count": 18,
    "text_bytes_est": 1258,
@@ -6704,128 +6704,132 @@
      "mode": "thumb",
      "insns": 14,
      "size_est": 28,
-     "status": "pending"
+     "status": "blocked"
     },
     {
      "name": "sub_020210BC",
      "mode": "thumb",
      "insns": 13,
      "size_est": 28,
-     "status": "pending"
+     "status": "blocked"
     },
     {
      "name": "sub_020210D8",
      "mode": "thumb",
      "insns": 53,
      "size_est": 112,
-     "status": "pending"
+     "status": "blocked"
     },
     {
      "name": "sub_02021148",
      "mode": "thumb",
      "insns": 47,
      "size_est": 100,
-     "status": "pending"
+     "status": "blocked"
     },
     {
      "name": "sub_020211AC",
      "mode": "thumb",
      "insns": 22,
      "size_est": 46,
-     "status": "pending"
+     "status": "blocked"
     },
     {
      "name": "sub_020211E0",
      "mode": "thumb",
      "insns": 11,
      "size_est": 22,
-     "status": "pending"
+     "status": "blocked"
     },
     {
      "name": "GF_TouchpadStopAutoSampling",
      "mode": "thumb",
      "insns": 31,
      "size_est": 68,
-     "status": "pending"
+     "status": "blocked"
     },
     {
      "name": "sub_02021238",
      "mode": "thumb",
      "insns": 33,
      "size_est": 72,
-     "status": "pending"
+     "status": "blocked"
     },
     {
      "name": "sub_02021280",
      "mode": "thumb",
      "insns": 48,
      "size_est": 106,
-     "status": "pending"
+     "status": "blocked"
     },
     {
      "name": "sub_020212EC",
      "mode": "thumb",
      "insns": 29,
      "size_est": 60,
-     "status": "pending"
+     "status": "blocked"
     },
     {
      "name": "GF_TouchpadResumeOnLidOpen",
      "mode": "thumb",
      "insns": 23,
      "size_est": 50,
-     "status": "pending"
+     "status": "blocked"
     },
     {
      "name": "GF_TouchpadPauseOnLidClose",
      "mode": "thumb",
      "insns": 18,
      "size_est": 40,
-     "status": "pending"
+     "status": "blocked"
     },
     {
      "name": "GF_TouchpadStartAutoSampling",
      "mode": "thumb",
      "insns": 31,
      "size_est": 68,
-     "status": "pending"
+     "status": "blocked"
     },
     {
      "name": "sub_020213C8",
      "mode": "thumb",
      "insns": 17,
      "size_est": 38,
-     "status": "pending"
+     "status": "blocked"
     },
     {
      "name": "sub_020213F8",
      "mode": "thumb",
      "insns": 90,
      "size_est": 182,
-     "status": "pending"
+     "status": "blocked"
     },
     {
      "name": "sub_020214B0",
      "mode": "thumb",
      "insns": 58,
      "size_est": 118,
-     "status": "pending"
+     "status": "blocked"
     },
     {
      "name": "sub_02021528",
      "mode": "thumb",
      "insns": 13,
      "size_est": 26,
-     "status": "pending"
+     "status": "blocked"
     },
     {
      "name": "sub_02021540",
      "mode": "thumb",
      "insns": 46,
      "size_est": 94,
-     "status": "pending"
+     "status": "blocked"
     }
-   ]
+   ],
+   "blocked_reason": "Intricate touchpad auto-sampling driver (overlay_33-class). Fully decoded (struct TouchpadState 0x5C, all 18 fns) but deferred before writing C: ~12 fns mechanical, but 6 are ring-buffer/debounce (sub_020213F8 distance-threshold filter, 214B0/2540 ring copies, packed event buffer 528/540, modulo-9 wraparound) plus an uncertain inline struct-clear in GF_TouchpadInit. Full struct + per-function analysis in attempts_log; resume by writing src/unk_020210A0.c from there. TP_* auto-sampling fns have no C header (SDK asm) -> local protos.",
+   "attempts": 1,
+   "blocker_id": null,
+   "kept_c": false
   },
   {
    "file": "asm/obj_char_transfer.s",

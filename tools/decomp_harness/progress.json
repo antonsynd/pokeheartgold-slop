@@ -564,12 +564,21 @@
       "result": "deferred",
       "reason": "11/12 functions byte-match (WIP src/overlay_33.c kept, main.lsf left on asm). Touchscreen selection-menu overlay: work struct 0x1C0, count-indexed config table, BG/window/text setup + a 6-state touchscreen task. Holdout: ov33_0225D520 init is a register-allocation coin-flip (asm keeps arg3 in r5; mine keeps arg1 in r7 \u2014 16 register-field diffs, no real byte/logic diff). ov33_0225D5D0's reported SIZE 268vs276 is the jump-table mapping-symbol false positive (byte-identical). Resume: only D520 reg-alloc needs solving. Full analysis (structs, rodata decode, the GX-H/I-bank, 3-separate-BgTemplate-locals, u32-loop-counter, u8-palette, decl-order fixes) in attempts_log.",
       "blocker_id": null
+    },
+    {
+      "file": "asm/unk_020210A0.s",
+      "lines": 732,
+      "functions": 18,
+      "attempts": 1,
+      "result": "deferred",
+      "reason": "Intricate touchpad auto-sampling driver (overlay_33-class). Fully decoded (struct TouchpadState 0x5C, all 18 fns) but deferred before writing C: ~12 fns mechanical, but 6 are ring-buffer/debounce (sub_020213F8 distance-threshold filter, 214B0/2540 ring copies, packed event buffer 528/540, modulo-9 wraparound) plus an uncertain inline struct-clear in GF_TouchpadInit. Full struct + per-function analysis in attempts_log; resume by writing src/unk_020210A0.c from there. TP_* auto-sampling fns have no C header (SDK asm) -> local protos.",
+      "blocker_id": null
     }
   ],
   "in_progress": null,
   "stats": {
-    "total_attempts": 123,
+    "total_attempts": 124,
     "total_matched": 42,
-    "total_failed": 13
+    "total_failed": 14
   }
 }
