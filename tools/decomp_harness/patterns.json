@@ -607,6 +607,12 @@
       "category": "codegen",
       "title": "Unsigned countdown loop counter -> subs/bne; signed int -> cmp/bgt",
       "body": "For a `do { ... } while (--i)` countdown loop, the counter's signedness changes the loop epilogue. A SIGNED `int i` lets MWCC use the i>0 shortcut and emits `subs i,#1; <other body op>; cmp i,#0; bgt` — the decrement floats away from the branch and needs a separate cmp (extra 2 bytes + possible nop). An UNSIGNED `u32 i` forces a plain nonzero test, emitting `<body op>; subs i,#1; bne` with the decrement adjacent to the branch (no cmp). If a countdown loop is ~4 bytes too big with a cmp+bgt where the asm has bne, switch the counter to u32. Saw in ov01_021FD3F8 (overlay_01_021FD1B8.s). Pair with caching loop-invariant struct fields (e.g. mgr->count) in locals so they survive calls in callee regs instead of being reloaded each iteration."
+    },
+    {
+      "id": "objdiff-false-positive-inline-jumptable-reloc",
+      "category": "tooling",
+      "title": "objdiff 'SIZE mismatch' false positive: inline Thumb jump table + cross-section relocations",
+      "body": "A function with an inline Thumb switch jump table (add pc,r0 then .short offset entries) can show as an objdiff SIZE/byte mismatch even when it is byte-identical after linking. Two causes: (1) the asm reference object has one merged .text so local `bl` targets are PC-encoded directly (f000 fXXX), while the MWCC -ipa file object emits per-function sections so every `bl` is a relocation placeholder (f000 f800) — these resolve to the same bytes at link; (2) objdump renders the jump-table bytes as a .word in the asm but as two .short/instructions in the C object, confusing objdiff's size measurement. Verify by normalizing reloc operands (sed 's/[0-9a-f]+ <[^>]+>/X/') before diffing, and ALWAYS trust `chiri pkg -- compare` (full ROM SHA1) over objdiff for these. Saw in ov01_021FB6C4 (overlay_01_021FB5D4.s): objdiff said 'SIZE 134 vs 138' but the full ROM matched."
     }
   ]
 }

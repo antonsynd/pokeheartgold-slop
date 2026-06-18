@@ -1,5 +1,5 @@
 {
- "generated": "2026-06-18T11:41:27Z",
+ "generated": "2026-06-18T12:08:37Z",
  "weights": {
   "insn_line": 1.0,
   "unknown_callee": 40.0,
@@ -10,29 +10,6 @@
   "special_section": 500.0
  },
  "queue": [
-  {
-   "file": "asm/overlay_01_021FB5D4.s",
-   "score": 644.0,
-   "special_sections": [],
-   "functions": 12,
-   "insn_lines": 304,
-   "data_only": false,
-   "unknown_callees": [
-    "PlaySE"
-   ],
-   "jumptable_words": 0,
-   "rodata_bytes": 0,
-   "arm_functions": 0,
-   "gated_by": [
-    "ipa-shared-headers"
-   ],
-   "cluster_partners": [
-    {
-     "file": "asm/unk_02005D10.s",
-     "shared_symbols": 1
-    }
-   ]
-  },
   {
    "file": "asm/overlay_01_021FEA0C.s",
    "score": 651.6,
@@ -6865,7 +6842,7 @@
   },
   {
    "file": "asm/overlay_01_021E6880.s",
-   "score": 4505.6,
+   "score": 4465.6,
    "special_sections": [],
    "functions": 41,
    "insn_lines": 2599,
@@ -6889,7 +6866,6 @@
     "ov01_021F6B00",
     "ov01_021F6B10",
     "ov01_021F6B64",
-    "ov01_021FB630",
     "ov04_02255090",
     "ov04_02256BE4",
     "sub_02006088",
@@ -7266,40 +7242,8 @@
    ]
   },
   {
-   "file": "asm/overlay_12_battle_controller.s",
-   "score": 4857.0,
-   "special_sections": [],
-   "functions": 84,
-   "insn_lines": 4697,
-   "data_only": false,
-   "unknown_callees": [
-    "sub_0202FC48",
-    "sub_02037454",
-    "sub_0203769C",
-    "sub_02074F9C"
-   ],
-   "jumptable_words": 0,
-   "rodata_bytes": 0,
-   "arm_functions": 0,
-   "gated_by": [],
-   "cluster_partners": [
-    {
-     "file": "asm/unk_02035900.s",
-     "shared_symbols": 2
-    },
-    {
-     "file": "asm/unk_0202FBCC.s",
-     "shared_symbols": 1
-    },
-    {
-     "file": "asm/unk_02074E5C.s",
-     "shared_symbols": 1
-    }
-   ]
-  },
-  {
    "file": "asm/overlay_01_021E5900.s",
-   "score": 4911.8,
+   "score": 4831.8,
    "special_sections": [],
    "functions": 38,
    "insn_lines": 1464,
@@ -7347,8 +7291,6 @@
     "ov01_021F91F8",
     "ov01_021F9250",
     "ov01_021FA1D0",
-    "ov01_021FB5D4",
-    "ov01_021FB610",
     "ov01_021FB888",
     "ov01_021FB904",
     "ov01_021FB934",
@@ -7404,6 +7346,38 @@
     {
      "file": "asm/overlay_01_021E8744.s",
      "shared_symbols": 5
+    }
+   ]
+  },
+  {
+   "file": "asm/overlay_12_battle_controller.s",
+   "score": 4857.0,
+   "special_sections": [],
+   "functions": 84,
+   "insn_lines": 4697,
+   "data_only": false,
+   "unknown_callees": [
+    "sub_0202FC48",
+    "sub_02037454",
+    "sub_0203769C",
+    "sub_02074F9C"
+   ],
+   "jumptable_words": 0,
+   "rodata_bytes": 0,
+   "arm_functions": 0,
+   "gated_by": [],
+   "cluster_partners": [
+    {
+     "file": "asm/unk_02035900.s",
+     "shared_symbols": 2
+    },
+    {
+     "file": "asm/unk_0202FBCC.s",
+     "shared_symbols": 1
+    },
+    {
+     "file": "asm/unk_02074E5C.s",
+     "shared_symbols": 1
     }
    ]
   },

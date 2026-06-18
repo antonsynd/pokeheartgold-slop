@@ -440,6 +440,12 @@
       "functions": 15,
       "result": "matched",
       "note": "field map-object effect manager (overlay 01)"
+    },
+    {
+      "file": "asm/overlay_01_021FB5D4.s",
+      "functions": 12,
+      "result": "matched",
+      "note": "screen-distortion HOffset effect (overlay 01); ipa gate was false positive"
     }
   ],
   "failed": [
