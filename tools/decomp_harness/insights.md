@@ -136,6 +136,14 @@ ov33_0225D720 copies sBgTemplate_4/5/6 (each via ldmia/stmia) into THREE distinc
 
 GF_ASSERT(expr) = ((expr) ? (void)0 : GF_AssertFail()) and GF_AssertFail is `void GF_AssertFail(void)` (NOT noreturn). So `GF_ASSERT(cond); body;` compiles to `cmp;bne L; bl GF_AssertFail; L: body` — the assert-fail path FALLS THROUGH to body. If the asm instead shows `cmp; b<skip> body; bl GF_AssertFail; pop(return); body:` (the assert path returns and body is a separate block reached only when the assert passes), the source was an explicit `if (cond==0){ GF_AssertFail(); return; } body;` (or `if(cond!=0){...}` for an inverted assert). unk_02055244.s: CallTask_LeaveOverworld/PaletteFadeUntilFinished/FadeFromBlack assert sub_0203DF7C(fs)!=0 (if(==0){fail;return;}); CallTask_RestoreOverworld asserts it ==0 (if(!=0){fail;return;}). All 11 fns matched first build with this form. (If GF_AssertFail WERE noreturn, GF_ASSERT would be correct — check the prototype.)
 
+### && (all-pass->return 1) vs || (any-fail->return 0) controls return-block placement  <!-- id: bounds-check-and-vs-or-return-layout -->
+
+A multi-term bounds/validity check compiled by MWCC places the two return epilogues in an order that depends on how you write it. `if (A||B||...||H) return 0; return 1;` puts the shared `return 0` block inline right after the checks and forces the LAST term to be inverted (ble vs bgt) to branch over it to `return 1` at the end. The asm form that keeps `return 1` as the inline fall-through with a single shared `return 0` block at the very end (all N checks forward-branch blt/bgt to it) is produced by the && form: `if (A2 && B2 && ... && H2) return 1; return 0;` where each term is the negation (maxX>=out->x, minX<=out->x, ...). Match the source to whichever return is the fall-through in the asm. Saw this in sub_02020F4C (8-term AABB check).
+
+### MWCC assigns local stack slots in declaration order, first-declared at highest address  <!-- id: local-stack-slot-order-equals-decl-order -->
+
+When a function is byte-identical to the asm EXCEPT the sp+N offsets in every load/store (and the VEC_* out-pointer args), the cause is local declaration ORDER. MWCC lays out stack-homed locals so the first-declared gets the highest sp offset, each subsequent one lower. To match, reorder the C declarations so (high->low) = asm's (highest-offset-local ... lowest). Example: GetDistanceFromPointToLine matched once declarations were reordered to lineDir, toPoint, diff, proj, zero (asm slots 68,56,44,32,20). Corollary: two FX_Modf integer-part outputs need two distinct named locals (intPartX, intPartY) to get two stack slots rather than one reused slot (sub_02020F4C).
+
 ## Matching Tricks
 
 ### Small source changes that move codegen  <!-- id: decl-order-tricks -->
@@ -237,6 +245,10 @@ A frame-advance / clamp helper with shape `if (cond) { x = limit; flag = 1; } el
 ### A local struct zeroed then passed by address: use aggregate-init `T x = {0,...}` (base-register stores reused for the call), not field-by-field assignment (sp-direct stores)  <!-- id: zero-struct-passed-by-addr-use-aggregate-init -->
 
 When a function zeroes a small stack struct (e.g. VecFx32) and immediately passes its address to a callee, the retail build computes the struct address ONCE into a register (`add r1,sp,#off`), stores the zeros THROUGH that register (`str r0,[r1]; str r0,[r1,#4]; str r0,[r1,#8]`), and reuses r1 as the call's pointer arg. Writing the zero-init field-by-field (`v.x=0; v.y=0; v.z=0;`) — or even via an explicit `T *p=&v; p->x=0;...` (MWCC folds p back to the constant address) — instead emits sp-DIRECT stores (`str r0,[sp,#off]`) plus a separate `add` for the call arg. Same byte SIZE (it's a scheduling tie) but different bytes. FIX: use an aggregate initializer `VecFx32 zero = {0, 0, 0};` then `f(work, &zero);`. MWCC lowers the whole-object initializer as base-register stores and keeps the address live for the call, matching. Seen in unk_020689C8 sub_02068A08 (the else branch that supplies a zero position to sub_02068DA8). Related: [[chained-assign-store-order-and-alias-reload]].
+
+### Overworld 2D geometry uses the XZ plane (Y is up), not XY  <!-- id: overworld-geometry-xz-plane -->
+
+For overworld vector math (angle-between, point-to-line, segment intersection on the ground), the '2D' computation uses the .x and .z components of VecFx32, not .x and .y. Y is the up axis. In CalcAngleBetweenVecs (unk_02020B8C.s) the matching dot/cross are dot = FX_Mul(na.z,nb.z)+FX_Mul(na.x,nb.x) and cross = FX_Mul(na.z,nb.x)-FX_Mul(na.x,nb.z) (note the .z lead term and the XZ-handed cross sign, which is the negation of a naive y->z substitution). If a vec-math function diffs only in the ldr stack offsets (e.g. reading sp+44/sp+32 where you read sp+40/sp+28), suspect a .y<->.z field swap. Symptom: identical _ll_mul structure, only 4 load-offset bytes differ.
 
 ## IPA (-ipa file) Behavior
 

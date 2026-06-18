@@ -577,6 +577,24 @@
       "category": "tooling",
       "title": "If a frozen header uses fx32/VecFx32/MtxFx33 but #includes nothing for them, global.h may NOT provide them and clang-format pins the .c-matching header first — wrap `#include <nitro/fx.h>` before it in // clang-format off",
       "body": "global.h (force-included) does NOT reliably define fx32/VecFx32 — files that use them include <nitro/fx.h> explicitly (e.g. camera.c, and self-sufficient headers like camera.h include it themselves). unk_02020B8C.h is frozen and uses fx32 but includes nothing, so the includer must define fx32 BEFORE it. clang-format forces the header matching the .c filename to be the first include, so a plain `#include <nitro/fx.h>` gets reordered AFTER unk_02020B8C.h -> `undefined identifier fx32` (cascading parse errors into mi/memory.h, mi/dma.h). Fix: pin the order with `// clang-format off` / `// clang-format on` around `#include <nitro/fx.h>` then `#include \"unk_02020B8C.h\"`. (The fx/fx.h guard isnt pre-set, so the explicit include really does define the types.) Symptom signature: first error is fx32 undefined at the frozen header line, then a flood of undefined-identifier errors in unrelated nitro headers."
+    },
+    {
+      "id": "overworld-geometry-xz-plane",
+      "category": "matching-tricks",
+      "title": "Overworld 2D geometry uses the XZ plane (Y is up), not XY",
+      "body": "For overworld vector math (angle-between, point-to-line, segment intersection on the ground), the '2D' computation uses the .x and .z components of VecFx32, not .x and .y. Y is the up axis. In CalcAngleBetweenVecs (unk_02020B8C.s) the matching dot/cross are dot = FX_Mul(na.z,nb.z)+FX_Mul(na.x,nb.x) and cross = FX_Mul(na.z,nb.x)-FX_Mul(na.x,nb.z) (note the .z lead term and the XZ-handed cross sign, which is the negation of a naive y->z substitution). If a vec-math function diffs only in the ldr stack offsets (e.g. reading sp+44/sp+32 where you read sp+40/sp+28), suspect a .y<->.z field swap. Symptom: identical _ll_mul structure, only 4 load-offset bytes differ."
+    },
+    {
+      "id": "bounds-check-and-vs-or-return-layout",
+      "category": "codegen",
+      "title": "&& (all-pass->return 1) vs || (any-fail->return 0) controls return-block placement",
+      "body": "A multi-term bounds/validity check compiled by MWCC places the two return epilogues in an order that depends on how you write it. `if (A||B||...||H) return 0; return 1;` puts the shared `return 0` block inline right after the checks and forces the LAST term to be inverted (ble vs bgt) to branch over it to `return 1` at the end. The asm form that keeps `return 1` as the inline fall-through with a single shared `return 0` block at the very end (all N checks forward-branch blt/bgt to it) is produced by the && form: `if (A2 && B2 && ... && H2) return 1; return 0;` where each term is the negation (maxX>=out->x, minX<=out->x, ...). Match the source to whichever return is the fall-through in the asm. Saw this in sub_02020F4C (8-term AABB check)."
+    },
+    {
+      "id": "local-stack-slot-order-equals-decl-order",
+      "category": "codegen",
+      "title": "MWCC assigns local stack slots in declaration order, first-declared at highest address",
+      "body": "When a function is byte-identical to the asm EXCEPT the sp+N offsets in every load/store (and the VEC_* out-pointer args), the cause is local declaration ORDER. MWCC lays out stack-homed locals so the first-declared gets the highest sp offset, each subsequent one lower. To match, reorder the C declarations so (high->low) = asm's (highest-offset-local ... lowest). Example: GetDistanceFromPointToLine matched once declarations were reordered to lineDir, toPoint, diff, proj, zero (asm slots 68,56,44,32,20). Corollary: two FX_Modf integer-part outputs need two distinct named locals (intPartX, intPartY) to get two stack slots rather than one reused slot (sub_02020F4C)."
     }
   ]
 }

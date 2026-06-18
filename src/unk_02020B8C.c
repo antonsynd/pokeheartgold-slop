@@ -29,11 +29,11 @@ int sub_02020B94(int a, int b) {
 }
 
 fx32 GetDistanceFromPointToLine(VecFx32 *a, VecFx32 *near, VecFx32 *far) {
-    VecFx32 zero = { 0, 0, 0 };
     VecFx32 lineDir;
     VecFx32 toPoint;
-    VecFx32 proj;
     VecFx32 diff;
+    VecFx32 proj;
+    VecFx32 zero = { 0, 0, 0 };
     fx32 t;
     VEC_Subtract(far, near, &lineDir);
     VEC_Subtract(a, near, &toPoint);
@@ -51,8 +51,8 @@ u16 CalcAngleBetweenVecs(VecFx32 *a, VecFx32 *b) {
     fx32 dot;
     VEC_Normalize(a, &na);
     VEC_Normalize(b, &nb);
-    dot = FX_Mul(na.x, nb.x) + FX_Mul(na.y, nb.y);
-    cross = FX_Mul(na.x, nb.y) - FX_Mul(na.y, nb.x);
+    dot = FX_Mul(na.z, nb.z) + FX_Mul(na.x, nb.x);
+    cross = FX_Mul(na.z, nb.x) - FX_Mul(na.x, nb.z);
     if (dot == 0) {
         if (cross > 0) {
             return 0x4000;
@@ -86,10 +86,9 @@ void sub_02020DA4(MtxFx33 *rotation, u16 xAngle, u16 yAngle, u16 zAngle) {
 
 void sub_02020E10(int angle, fx32 a1, fx32 a2, fx32 *a3, fx32 *a4) {
     fx32 tan = FX_Div(FX_SinIdx(angle), FX_CosIdx(angle));
-    fx32 v = FX_Mul(a1, tan);
-    v = FX_Mul(v << 13 >> 12, tan);
+    fx32 v = FX_Mul(FX_Mul(a1, tan), 0x2000);
     *a4 = v;
-    *a3 = FX_Mul(a2, tan);
+    *a3 = FX_Mul(v, a2);
 }
 
 int sub_02020E80(VecFx32 *a, VecFx32 *b, VecFx32 *c) {
@@ -112,24 +111,27 @@ int sub_02020EB0(VecFx32 *p1, VecFx32 *p2, VecFx32 *p3, VecFx32 *p4) {
 }
 
 static void sub_02020EF4(fx32 *out, int x1, int y1, int x2, int y2) {
-    fx32 slope;
-    int dx = (s16)(x2 - x1);
+    fx32 line[2];
     int dy = (s16)(y2 - y1);
+    int dx = (s16)(x2 - x1);
     if (dx != 0) {
-        slope = FX_Div(dy << 12, dx << 12);
+        line[0] = FX_Div(dy << 12, dx << 12);
     } else {
-        slope = 0xFF << 12;
+        line[0] = 0xFF << 12;
     }
-    out[0] = slope;
-    out[1] = (y1 << 12) - FX_Mul(slope, x1 << 12);
+    line[1] = (y1 << 12) - FX_Mul(line[0], x1 << 12);
+    out[1] = line[1];
+    out[0] = line[0];
 }
 
 int sub_02020F4C(VecFx32 *a, VecFx32 *b, VecFx32 *c, VecFx32 *d, VecFx32 *out) {
+    fx32 intPartX;
+    fx32 intPartY;
     fx32 line1[2];
     fx32 line2[2];
-    fx32 dx;
     fx32 ix;
     fx32 iy;
+    fx32 maxX1, minX1, maxY1, minY1, maxX2, minX2, maxY2, minY2;
     if (out != NULL) {
         out->x = 0xFFFF;
         out->y = 0xFFFF;
@@ -142,8 +144,46 @@ int sub_02020F4C(VecFx32 *a, VecFx32 *b, VecFx32 *c, VecFx32 *d, VecFx32 *out) {
     if (line1[0] == line2[0]) {
         return 0;
     }
-    dx = FX_Div(line2[1] - line1[1], line1[0] - line2[0]);
-    ix = FX_Mul(line1[0], dx) + line1[1];
-    iy = FX_Modf(dx, &ix);
-    return 1;
+    ix = FX_Div(line2[1] - line1[1], line1[0] - line2[0]);
+    iy = line2[1] + FX_Mul(line2[0], ix);
+    if (FX_Modf(ix, &intPartX) >= 0x800) {
+        intPartX += 0x1000;
+    }
+    out->x = intPartX >> 12;
+    if (FX_Modf(iy, &intPartY) >= 0x800) {
+        intPartY += 0x1000;
+    }
+    out->y = intPartY >> 12;
+    if (a->x >= b->x) {
+        maxX1 = a->x;
+        minX1 = b->x;
+    } else {
+        maxX1 = b->x;
+        minX1 = a->x;
+    }
+    if (a->y >= b->y) {
+        maxY1 = a->y;
+        minY1 = b->y;
+    } else {
+        maxY1 = b->y;
+        minY1 = a->y;
+    }
+    if (c->x >= d->x) {
+        maxX2 = c->x;
+        minX2 = d->x;
+    } else {
+        maxX2 = d->x;
+        minX2 = c->x;
+    }
+    if (c->y >= d->y) {
+        maxY2 = c->y;
+        minY2 = d->y;
+    } else {
+        maxY2 = d->y;
+        minY2 = c->y;
+    }
+    if (maxX1 >= out->x && minX1 <= out->x && maxY1 >= out->y && minY1 <= out->y && maxX2 >= out->x && minX2 <= out->x && maxY2 >= out->y && minY2 <= out->y) {
+        return 1;
+    }
+    return 0;
 }
