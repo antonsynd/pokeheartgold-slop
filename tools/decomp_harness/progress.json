@@ -659,6 +659,14 @@
       "attempts": 6,
       "result": "deferred",
       "reason": "9/10 byte-match. Only ov01_021FE970 differs: identical instructions+size, param0 in r5 vs r6 (reg-alloc cascade). No external blocker; whole-file .o needs 10/10. WIP committed."
+    },
+    {
+      "file": "asm/overlay_01_021FED9C.s",
+      "lines": 205,
+      "functions": 9,
+      "attempts": 4,
+      "result": "deferred",
+      "reason": "8/9 byte-match (all inferred cluster signatures correct). Only ov01_021FEE64 cb1 differs: MWCC scheduling/reg-alloc (data->manager re-read vs fieldSystem/work register shuffle). No external blocker; needs 9/9. WIP committed."
     }
   ],
   "in_progress": [],
