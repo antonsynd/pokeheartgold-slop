@@ -459,7 +459,8 @@
       "result": "matched",
       "note": "Battle Frontier sound script commands; split-header int sound decls"
     },
-    "asm/overlay_80_02239960.s"
+    "asm/overlay_80_02239960.s",
+    "asm/overlay_01_021F3378.s"
   ],
   "failed": [
     {

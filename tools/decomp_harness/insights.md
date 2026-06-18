@@ -286,6 +286,10 @@ MWCC -O4,p compiles `if (x == 2 || x == 3)` (consecutive constants) into a RANGE
 
 When a function returns `lsl rN,#16; lsr rN,#13` applied to an NNSGfdTexKey/NNSGfdPlttKey (from NNS_GfdDefaultFuncAllocTexVram/PlttVram), that is the library inline NNS_GfdGetTexKeyAddr(key)/NNS_GfdGetPlttKeyAddr(key) = `(u32)((0x0000FFFF & key) << NNS_GFD_*KEY_ADDR_SHIFT)` (SHIFT=3). MWCC fuses the mask+shift `(x&0xFFFF)<<3` into `lsl#16; lsr#13`. Use the macro (include nnsys/gfd.h), not a hand-written shift. Also: a 16-bit `enum HeapID` stored in a u16 struct field (strh/ldrh) must be cast `(enum HeapID)field` at each use (MWCC errors on implicit u16->enum); the cast is free (ldrh already zero-extends). And `(NarcId)0xNN` for a literal NarcId arg. Seen in overlay_80_02239960 ov80_02239AB0/AD4 (SPLEmitter particle manager).
 
+### Match double-math (_dflt/_dadd/_dmul/_dfix) by writing the exact decimal literal and (double) casts in evaluation order  <!-- id: double-literal-and-dflt-dmul-sequence -->
+
+A function calling _dflt/_dadd/_dmul/_dfix is doing double-precision arithmetic on ints. Decode the double constant from its two pool words (high,low) with python struct.unpack('>d', bytes.fromhex(HItHEN LO)) -> e.g. 0x40C19999_9999999A = 9011.2. Write that exact decimal literal in C; MWCC re-encodes it to the same 64-bit pattern. `_dflt(x)` = `(double)x`, `_dfix(d)` = `(int)d`. Operand order follows source: `_dmul(a,b)` with a in (r0,r1) means `a*b`; `_dadd(CONST, y)` with the const loaded into (r0,r1) AFTER y is computed means `CONST + y` (MWCC evaluates the cheap const operand last but keeps it as the left operand). Verified: overlay_01_021F3378 ov01_021F33B8/348C matched on the FIRST build with `position.y = (int)((double)counter * (9011.2 + (double)(counter << 11)))`. Also `counter % 2` for the `lsr#31; lsl#31; sub; ror#31; add` idiom (signed mod-2). The jump-table function in the same file is an objdiff SIZE false positive ([[objdiff-false-positive-inline-jumptable-reloc]]) -- confirm with chiri pkg -- compare.
+
 ## IPA (-ipa file) Behavior
 
 ### Shared-header signatures are load-bearing across compilation units  <!-- id: ipa-shared-headers -->

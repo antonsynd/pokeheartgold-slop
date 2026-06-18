@@ -1,6 +1,6 @@
 {
  "summary": {
-  "generated": "2026-06-18T16:55:14Z",
+  "generated": "2026-06-18T17:05:25Z",
   "by_status": {
    "matched": {
     "files": 57,
@@ -15,29 +15,29 @@
     "text_bytes_est": 21014
    },
    "pending": {
-    "files": 220,
-    "functions": 19239,
-    "insn_lines": 932782,
-    "text_bytes_est": 2083096
+    "files": 219,
+    "functions": 19235,
+    "insn_lines": 932501,
+    "text_bytes_est": 2082448
    },
    "upstream": {
-    "files": 370,
+    "files": 371,
     "functions": 0,
     "insn_lines": 0,
     "text_bytes_est": 0
    }
   },
   "function_totals": {
-   "tracked": 20142,
+   "tracked": 20138,
    "matched": 591,
    "partial_in_blocked": 50,
-   "pending": 19239
+   "pending": 19235
   },
   "blockers": [
    {
     "id": "ipa-shared-headers",
     "blocks_files": 2,
-    "gates_pending_files": 120
+    "gates_pending_files": 119
    },
    {
     "id": "param-copyprop-cmp",
@@ -39267,75 +39267,10 @@
    ]
   },
   {
-   "file": "asm/overlay_01_021F3378.s",
-   "lsf_kind": "asm",
-   "status": "pending",
-   "lines": 331,
-   "function_count": 4,
-   "text_bytes_est": 648,
-   "data_only": false,
-   "sections": {
-    "rodata_bytes": 0,
-    "data_bytes": 0,
-    "bss_bytes": 0,
-    "other_bytes": 0
-   },
-   "other_sections": [],
-   "jumptable_words": 0,
-   "imports": [
-    "BeginNormalPaletteFade",
-    "Heap_AllocAtEnd",
-    "Heap_Free",
-    "IsPaletteFadeFinished",
-    "MI_CpuFill8",
-    "MapObject_UnpauseMovement",
-    "PlaySE",
-    "PlayerAvatar_GetFacingDirection",
-    "PlayerAvatar_GetMapObject",
-    "PlayerAvatar_SetFacingDirection",
-    "SysTask_CreateOnMainQueue",
-    "SysTask_Destroy",
-    "_dadd",
-    "_dfix",
-    "_dflt",
-    "_dmul",
-    "ov01_021F92A0",
-    "sub_0205F990",
-    "sub_0205F9A0"
-   ],
-   "exports": [
-    "ov01_021F35C4"
-   ],
-   "functions": [
-    {
-     "name": "ov01_021F3378",
-     "mode": "thumb",
-     "insns": 29,
-     "size_est": 58,
-     "status": "pending"
-    },
-    {
-     "name": "ov01_021F33B8",
-     "mode": "thumb",
-     "insns": 90,
-     "size_est": 208,
-     "status": "pending"
-    },
-    {
-     "name": "ov01_021F348C",
-     "mode": "thumb",
-     "insns": 130,
-     "size_est": 308,
-     "status": "pending"
-    },
-    {
-     "name": "ov01_021F35C4",
-     "mode": "thumb",
-     "insns": 32,
-     "size_est": 74,
-     "status": "pending"
-    }
-   ]
+   "file": "asm/field/overlay_01_021F3378.s",
+   "lsf_kind": "src",
+   "status": "upstream",
+   "functions": []
   },
   {
    "file": "asm/overlay_01_021F3610.s",
