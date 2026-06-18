@@ -649,6 +649,14 @@
       "attempts": 7,
       "result": "deferred",
       "reason": "16/17 functions byte-match. Only ov01_021F4048 mismatches (+12 bytes) \u2014 pure MWCC global register allocation: asm keeps labelPtr in r7 + printer in r5 (frame 0x18 + dummy r3 push); mine spills both pointers + printer->r4 (frame 0x1c). Logic identical, no external blocker. WIP committed."
+    },
+    {
+      "file": "asm/overlay_01_021FE780.s",
+      "lines": 376,
+      "functions": 10,
+      "attempts": 6,
+      "result": "deferred",
+      "reason": "9/10 byte-match. Only ov01_021FE970 differs: identical instructions+size, param0 in r5 vs r6 (reg-alloc cascade). No external blocker; whole-file .o needs 10/10. WIP committed."
     }
   ],
   "in_progress": [],

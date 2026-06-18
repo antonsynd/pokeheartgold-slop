@@ -649,6 +649,18 @@
       "category": "codegen",
       "title": "Assign a u32 function return to an int local before signed arithmetic, or `(a - b)/2` becomes an unsigned shift (lsr)",
       "body": "`(width<<3) - FontID_String_GetWidth(...)` then `/2`: FontID_String_GetWidth returns u32, so the subtraction promotes to unsigned and `/2` compiles to a single `lsrs #1` (logical). If the target asm does SIGNED division (`subs; lsrs rX,#31; adds; asrs rY,#1` — the sign-bit round-toward-zero idiom), the original kept the value SIGNED: store the u32 return into an `int` local first (`int width = FontID_String_GetWidth(...); x = ((win->width<<3) - width)/2;`). `int - int` is signed, so `/2` emits the signed-div idiom and matches. A plain subtract (no division) is unaffected (same bytes signed/unsigned), so this only bites on `/`, `%`, `>>` of the difference. Also for the align dispatch in the same function (ov01_021F4234): a `switch (align) { case 1:..; case 2:..; }` emits the asm's `cmp #1;beq;cmp #2;beq;b` jump-to-body dispatch, whereas `if/else if` emits interleaved `cmp;bne` skips. Seen in overlay_01_021F3F50 ov01_021F4234. Related: [[switch-form-avoids-equality-or-range-opt]]."
+    },
+    {
+      "id": "aggregate-init-zeroes-vec-via-base-pointer",
+      "category": "codegen",
+      "title": "Zero a small stack struct with an aggregate initializer `{0,0,0}`, not field-by-field, to get base-pointer stores",
+      "body": "`VecFx32 v; v.x=0; v.y=0; v.z=0;` makes MWCC emit sp-DIRECT stores (`movs rZ,#0; str rZ,[sp,#off]; str rZ,[sp,#off+4]; str rZ,[sp,#off+8]`). The retail code for the same zero-init uses a BASE POINTER (`add rP,sp,#off; movs rZ,#0; str rZ,[rP]; str rZ,[rP,#4]; str rZ,[rP,#8]`) — produced by an AGGREGATE INITIALIZER: `VecFx32 v = {0,0,0};`. Switching field-assignments to the initializer flipped overlay_01_021FE780 ov01_021FE7DC from 38 diffs to 7 and ov01_021FE8B0 from 6 to ~2 (the rest fixed by also loading the first call arg into a local before the init so &v lands directly in the arg register r1). Use the initializer whenever the asm zeroes a VecFx32/MtxFx/struct local through a held base pointer. Combine with [[decl-order-regalloc]] for which stack slot the struct gets."
+    },
+    {
+      "id": "evaluate-call-arg-before-sibling-computation-for-arg-reg",
+      "category": "codegen",
+      "title": "Hoist a function-call argument that must occupy r0 ABOVE a sibling computation, via a temp, to match the asm's register choice",
+      "body": "`sub_0206121C(MapObject_GetFieldSystem(obj), &pos)` preceded by `pos.x = (a<<16)+k; pos.z=(b<<16)+k;` — MWCC evaluates the position stores FIRST (using r0/r1), then calls MapObject_GetFieldSystem as the 1st arg. If the target asm calls MapObject_GetFieldSystem FIRST (r0=fieldSystem, held across the position math, so the math uses r1/r2), hoist it into a temp BEFORE the computation: `FieldSystem *fs = MapObject_GetFieldSystem(obj); pos.x=...; pos.z=...; sub_0206121C(fs, &pos);`. The temp keeps fieldSystem in r0 across the position math, shifting the math up one register (r0/r1 -> r1/r2) to match. Diagnose: same instructions, every register shifted by one. Seen in overlay_01_021FE780 ov01_021FE7DC (fixed the last 7 diffs)."
     }
   ]
 }
