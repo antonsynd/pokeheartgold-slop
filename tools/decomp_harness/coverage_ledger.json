@@ -1,6 +1,6 @@
 {
  "summary": {
-  "generated": "2026-06-18T13:11:22Z",
+  "generated": "2026-06-18T13:24:23Z",
   "by_status": {
    "matched": {
     "files": 57,
@@ -9,16 +9,16 @@
     "text_bytes_est": 25374
    },
    "blocked": {
-    "files": 19,
-    "functions": 218,
-    "insn_lines": 6651,
-    "text_bytes_est": 14852
+    "files": 20,
+    "functions": 230,
+    "insn_lines": 7347,
+    "text_bytes_est": 16332
    },
    "pending": {
-    "files": 226,
-    "functions": 19343,
-    "insn_lines": 935757,
-    "text_bytes_est": 2089676
+    "files": 225,
+    "functions": 19331,
+    "insn_lines": 935061,
+    "text_bytes_est": 2088196
    },
    "upstream": {
     "files": 369,
@@ -31,7 +31,7 @@
    "tracked": 20152,
    "matched": 591,
    "partial_in_blocked": 50,
-   "pending": 19343
+   "pending": 19331
   },
   "blockers": [
    {
@@ -83186,7 +83186,7 @@
   {
    "file": "asm/overlay_38_thumb.s",
    "lsf_kind": "asm",
-   "status": "pending",
+   "status": "blocked",
    "lines": 901,
    "function_count": 12,
    "text_bytes_est": 1480,
@@ -83230,86 +83230,90 @@
      "mode": "thumb",
      "insns": 8,
      "size_est": 16,
-     "status": "pending"
+     "status": "blocked"
     },
     {
      "name": "ov38_0221BA10",
      "mode": "thumb",
      "insns": 18,
      "size_est": 36,
-     "status": "pending"
+     "status": "blocked"
     },
     {
      "name": "ov38_0221BA38",
      "mode": "thumb",
      "insns": 123,
      "size_est": 268,
-     "status": "pending"
+     "status": "blocked"
     },
     {
      "name": "ov38_0221BB44",
      "mode": "thumb",
      "insns": 16,
      "size_est": 36,
-     "status": "pending"
+     "status": "blocked"
     },
     {
      "name": "ov38_0221BB68",
      "mode": "thumb",
      "insns": 45,
      "size_est": 90,
-     "status": "pending"
+     "status": "blocked"
     },
     {
      "name": "ov38_0221BBD0",
      "mode": "thumb",
      "insns": 303,
      "size_est": 634,
-     "status": "pending"
+     "status": "blocked"
     },
     {
      "name": "ov38_0221BE84",
      "mode": "thumb",
      "insns": 17,
      "size_est": 36,
-     "status": "pending"
+     "status": "blocked"
     },
     {
      "name": "ov38_0221BEA8",
      "mode": "thumb",
      "insns": 69,
      "size_est": 154,
-     "status": "pending"
+     "status": "blocked"
     },
     {
      "name": "ov38_0221BF48",
      "mode": "thumb",
      "insns": 67,
      "size_est": 146,
-     "status": "pending"
+     "status": "blocked"
     },
     {
      "name": "ov38_0221BFEC",
      "mode": "thumb",
      "insns": 18,
      "size_est": 40,
-     "status": "pending"
+     "status": "blocked"
     },
     {
      "name": "ov38_0221C014",
      "mode": "thumb",
      "insns": 6,
      "size_est": 12,
-     "status": "pending"
+     "status": "blocked"
     },
     {
      "name": "ov38_0221C020",
      "mode": "thumb",
      "insns": 6,
      "size_est": 12,
-     "status": "pending"
+     "status": "blocked"
     }
-   ]
+   ],
+   "blocked_reason": "Outlier: ~700 insns GTS/DWC Wi-Fi crypto+parser (LCG cipher, SHA1, hex codec, 2 state machines). Fully decoded in attempts_log for a focused future attempt; not built. main.lsf stays on asm.",
+   "attempts": 0,
+   "blocker_id": null,
+   "kept_c": false
   },
   {
    "file": "asm/overlay_39_thumb.s",

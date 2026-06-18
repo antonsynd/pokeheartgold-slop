@@ -619,6 +619,13 @@
       "attempts": 1,
       "result": "deferred",
       "reason": "11/14 match; 3 MWCC reg-alloc/addressing holdouts (VecFx32 base-ptr zeroing in EAB0/EB8C, callee-reg-count in EBC0). WIP kept, main.lsf on asm."
+    },
+    {
+      "file": "asm/overlay_38_thumb.s",
+      "functions": 12,
+      "attempts": 0,
+      "result": "deferred",
+      "reason": "Outlier: ~700 insns GTS/DWC Wi-Fi crypto+parser (LCG cipher, SHA1, hex codec, 2 state machines). Fully decoded in attempts_log for a focused future attempt; not built. main.lsf stays on asm."
     }
   ],
   "in_progress": [],
