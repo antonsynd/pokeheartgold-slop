@@ -573,12 +573,21 @@
       "result": "deferred",
       "reason": "Intricate touchpad auto-sampling driver (overlay_33-class). Fully decoded (struct TouchpadState 0x5C, all 18 fns) but deferred before writing C: ~12 fns mechanical, but 6 are ring-buffer/debounce (sub_020213F8 distance-threshold filter, 214B0/2540 ring copies, packed event buffer 528/540, modulo-9 wraparound) plus an uncertain inline struct-clear in GF_TouchpadInit. Full struct + per-function analysis in attempts_log; resume by writing src/unk_020210A0.c from there. TP_* auto-sampling fns have no C header (SDK asm) -> local protos.",
       "blocker_id": null
+    },
+    {
+      "file": "asm/unk_02020B8C.s",
+      "lines": 670,
+      "functions": 11,
+      "attempts": 1,
+      "result": "deferred",
+      "reason": "2D/3D geometry FX math. 6/11 byte-match (WIP src/unk_02020B8C.c kept, main.lsf on asm). Solved the include-order infra (frozen header uses fx32 with no include; needs //clang-format off + <nitro/fx.h> first). Holdouts are 5 FX/stack-finicky fns: GetDistanceFromPointToLine + CalcAngleBetweenVecs (sum-of-squares/dot/cross _ll_mul order + na/nb stack-temp layout), sub_02020E10/EF4/F4C (tan/line-slope FX_Div + intersection AABB bounds chain \u2014 partially mis-decoded). Resume from attempts_log; only the 5 FX fns remain.",
+      "blocker_id": null
     }
   ],
   "in_progress": null,
   "stats": {
-    "total_attempts": 124,
+    "total_attempts": 125,
     "total_matched": 42,
-    "total_failed": 14
+    "total_failed": 15
   }
 }
