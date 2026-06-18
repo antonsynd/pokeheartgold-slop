@@ -1,21 +1,21 @@
 # Decomp Coverage Ledger
 
-*Generated 2026-06-18T19:30:43Z by `coverage_ledger.py` — do not hand-edit; regenerate after each decomp.*
+*Generated 2026-06-18T19:44:38Z by `coverage_ledger.py` — do not hand-edit; regenerate after each decomp.*
 
-Tracked functions (files with retained asm): **20121** — matched 591, pending 19157, plus 50 matched-but-blocked inside failed files.
+Tracked functions (files with retained asm): **20121** — matched 592, pending 19156, plus 50 matched-but-blocked inside failed files.
 
 | status | files | functions | insn lines | ~text bytes |
 |---|---|---|---|---|
-| matched | 57 | 591 | 11548 | 25374 |
+| matched | 58 | 592 | 11801 | 25946 |
 | blocked | 28 | 373 | 11283 | 24904 |
-| pending | 212 | 19157 | 930077 | 2077214 |
+| pending | 211 | 19156 | 929824 | 2076642 |
 | upstream | 374 | 0 | 0 | 0 |
 
 ## Blockers (value-ordered: fix what gates the most)
 
 | id | blocks | gates pending files | description |
 |---|---|---|---|
-| ipa-shared-headers | 2 | 117 | MWCC -ipa file: changing a signature in a shared header cascades codegen changes into every already-matched caller in other compilation units. Files sharing many declarations (sound.h family) must be decompiled together or after a coordinated header fix. |
+| ipa-shared-headers | 2 | 116 | MWCC -ipa file: changing a signature in a shared header cascades codegen changes into every already-matched caller in other compilation units. Files sharing many declarations (sound.h family) must be decompiled together or after a coordinated header fix. |
 | param-copyprop-cmp | 1 | 37 | MWCC copy-propagates parameter copies: 'adds r4, r0, #0; cmp r4, #N' at function entry cannot be produced from pure C (MWCC substitutes back to r0). Affected functions need the NONMATCHING inline-asm fallback. |
 | objdiff-false-positives | 0 | 0 | RESOLVED. objdiff.py had a critical bug: the byte extraction regex did not match MWCC's ARM Thumb objdump format (packed hex like 'b418' vs expected space-separated 'b4 18'). It extracted 0 bytes for every function, so 0==0 always reported MATCH. 11 decomps accepted via objdiff were not actually byte-matching. Fixed in this session; all 11 non-matching decomps reverted to asm. 2 decomps that truly match (unk_0202DB34, battle_arcade_game_board_data) kept. |
 | ext-data-section-split | 1 | 0 | Data-only files exporting multiple EXTERNAL (.public) const arrays: MWCC -ipa file emits each top-level const as its own .rodata section, and mwldarm orders/aligns them differently than the asm's single packed .rodata, so the linked overlay/module SHA1 fails even though objdiff --summary (per-section) reports a match. Symbols referenced by other TUs must stay non-static, so they cannot be pooled into one section via `static`. |
@@ -53,7 +53,7 @@ Tracked functions (files with retained asm): **20121** — matched 591, pending 
 | asm/middleware.s | 0 | 0 | yes |  Data-only: 7 NUL-terminated SDK middleware version strings in a custom .version section (single ordered section, each .b |
 | asm/battle_arcade_game_board_data.s | 0 | 0 | yes | ext-data-section-split MWCC splits external const into per-symbol .rodata sections; reordered at link -> OVY_84 SHA1 fail. Stays asm. |
 
-## Matched files (asm retained) (57)
+## Matched files (asm retained) (58)
 
 | file | functions | insn lines | data-only | notes |
 |---|---|---|---|---|
@@ -114,8 +114,9 @@ Tracked functions (files with retained asm): **20121** — matched 591, pending 
 | asm/unk_02095DF4.s | 2 | 115 |  | harness |
 | asm/overlay_01_021F467C.s | 2 | 58 |  | harness |
 | asm/overlay_35.s | 2 | 26 |  | harness |
+| asm/overlay_118.s | 1 | 253 |  | harness |
 
-## Pending files (212)
+## Pending files (211)
 
 | file | functions | insn lines | data-only | notes |
 |---|---|---|---|---|
@@ -323,7 +324,6 @@ Tracked functions (files with retained asm): **20121** — matched 591, pending 
 | asm/unk_02087E70.s | 5 | 148 |  |  |
 | asm/overlay_116.s | 5 | 375 |  |  |
 | asm/overlay_114.s | 2 | 542 |  |  |
-| asm/overlay_118.s | 1 | 253 |  |  |
 | asm/unk_data_020FCBD8.s | 0 | 0 | yes |  |
 | asm/unk_data_020FD978.s | 0 | 0 | yes |  |
 | asm/unk_data_020FDB44.s | 0 | 0 | yes |  |

@@ -478,6 +478,12 @@
       "functions": 9,
       "result": "matched",
       "note": "Camera/3D-effect map-object marker (ov01_021F1348 cluster). Matched fully \u2014 block-copy cb1 (struct assignment) avoids the family's field-by-field holdout. Mid-block VecFx32 aggregate init for base-pointer form at correct position; cached mapObject + swapped pos/facing slots."
+    },
+    {
+      "file": "asm/overlay_118.s",
+      "functions": 1,
+      "result": "matched",
+      "note": "Single 9-state screen-transition effect (BG setup, plane toggles, two BgTemplates). Unsigned frame counter (u32 -> bls); reg_GX_DISPCNT manip; local work structs + cluster externs."
     }
   ],
   "failed": [
