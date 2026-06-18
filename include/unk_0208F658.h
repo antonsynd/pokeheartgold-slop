@@ -1,0 +1,7 @@
+#ifndef POKEHEARTGOLD_UNK_0208F658_H
+#define POKEHEARTGOLD_UNK_0208F658_H
+
+void sub_0208F658(void *arg0);
+void sub_0208F7E0(void *a0, void *a1);
+
+#endif // POKEHEARTGOLD_UNK_0208F658_H

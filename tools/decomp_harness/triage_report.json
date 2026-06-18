@@ -1,5 +1,5 @@
 {
- "generated": "2026-06-17T02:49:08Z",
+ "generated": "2026-06-18T04:42:53Z",
  "weights": {
   "insn_line": 1.0,
   "unknown_callee": 40.0,
@@ -10,41 +10,6 @@
   "special_section": 500.0
  },
  "queue": [
-  {
-   "file": "asm/unk_0208F658.s",
-   "score": 493.6,
-   "special_sections": [],
-   "functions": 19,
-   "insn_lines": 207,
-   "data_only": false,
-   "unknown_callees": [
-    "ov65_0221DE24",
-    "ov65_0221DE64",
-    "sub_0203410C",
-    "sub_020342C0",
-    "sub_020342C4",
-    "sub_0203769C",
-    "sub_020378E4"
-   ],
-   "jumptable_words": 0,
-   "rodata_bytes": 132,
-   "arm_functions": 0,
-   "gated_by": [],
-   "cluster_partners": [
-    {
-     "file": "asm/unk_02033AE0.s",
-     "shared_symbols": 3
-    },
-    {
-     "file": "asm/overlay_65.s",
-     "shared_symbols": 2
-    },
-    {
-     "file": "asm/unk_02035900.s",
-     "shared_symbols": 2
-    }
-   ]
-  },
   {
    "file": "asm/middleware.s",
    "score": 500.0,
@@ -10121,7 +10086,7 @@
   },
   {
    "file": "asm/overlay_65.s",
-   "score": 9469.0,
+   "score": 9389.0,
    "special_sections": [],
    "functions": 106,
    "insn_lines": 6973,
@@ -10170,9 +10135,7 @@
     "sub_0203A880",
     "sub_02088288",
     "sub_02089D40",
-    "sub_0208AD34",
-    "sub_0208F658",
-    "sub_0208F7E0"
+    "sub_0208AD34"
    ],
    "jumptable_words": 0,
    "rodata_bytes": 1120,
