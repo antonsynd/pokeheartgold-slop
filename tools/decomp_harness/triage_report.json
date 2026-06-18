@@ -1,5 +1,5 @@
 {
- "generated": "2026-06-18T14:39:05Z",
+ "generated": "2026-06-18T15:18:24Z",
  "weights": {
   "insn_line": 1.0,
   "unknown_callee": 40.0,
@@ -10,34 +10,6 @@
   "special_section": 500.0
  },
  "queue": [
-  {
-   "file": "asm/overlay_01_021F3F50.s",
-   "score": 735.4,
-   "special_sections": [],
-   "functions": 17,
-   "insn_lines": 566,
-   "data_only": false,
-   "unknown_callees": [
-    "DrawFrameAndWindow1",
-    "LoadUserFrameGfx1",
-    "ov01_021F6830",
-    "sub_0200E5D4"
-   ],
-   "jumptable_words": 0,
-   "rodata_bytes": 188,
-   "arm_functions": 0,
-   "gated_by": [],
-   "cluster_partners": [
-    {
-     "file": "asm/render_window.s",
-     "shared_symbols": 3
-    },
-    {
-     "file": "asm/overlay_01_021F6830.s",
-     "shared_symbols": 1
-    }
-   ]
-  },
   {
    "file": "asm/overlay_01_021FE780.s",
    "score": 737.2,

@@ -641,6 +641,14 @@
       "attempts": 9,
       "result": "deferred",
       "reason": "14/15 functions byte-match (MultiplayerCheck via switch-form). Holdouts: ov80_022383C0 needs LICM to sink entry=ctx+0x330 into loop preheader (3-instr placement); BattleArcade_NewBattleSetup logic matches but stack-slot layout differs (asm spills 5 values + buffer at sp+0x20, frame 0x50 w/ dummy r3 push). GATED ON cluster partner overlay_80_02229EE0.s (defines ov80_02229F04/0222A140/0222A480 + trainerData buffer true type). WIP committed."
+    },
+    {
+      "file": "asm/overlay_01_021F3F50.s",
+      "lines": 689,
+      "functions": 17,
+      "attempts": 7,
+      "result": "deferred",
+      "reason": "16/17 functions byte-match. Only ov01_021F4048 mismatches (+12 bytes) \u2014 pure MWCC global register allocation: asm keeps labelPtr in r7 + printer in r5 (frame 0x18 + dummy r3 push); mine spills both pointers + printer->r4 (frame 0x1c). Logic identical, no external blocker. WIP committed."
     }
   ],
   "in_progress": [],

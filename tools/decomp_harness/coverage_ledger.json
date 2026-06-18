@@ -1,6 +1,6 @@
 {
  "summary": {
-  "generated": "2026-06-18T14:39:05Z",
+  "generated": "2026-06-18T15:18:24Z",
   "by_status": {
    "matched": {
     "files": 57,
@@ -9,16 +9,16 @@
     "text_bytes_est": 25374
    },
    "blocked": {
-    "files": 22,
-    "functions": 285,
-    "insn_lines": 8587,
-    "text_bytes_est": 19064
+    "files": 23,
+    "functions": 302,
+    "insn_lines": 9153,
+    "text_bytes_est": 20366
    },
    "pending": {
-    "files": 223,
-    "functions": 19276,
-    "insn_lines": 933821,
-    "text_bytes_est": 2085464
+    "files": 222,
+    "functions": 19259,
+    "insn_lines": 933255,
+    "text_bytes_est": 2084162
    },
    "upstream": {
     "files": 369,
@@ -31,7 +31,7 @@
    "tracked": 20152,
    "matched": 591,
    "partial_in_blocked": 50,
-   "pending": 19276
+   "pending": 19259
   },
   "blockers": [
    {
@@ -39714,7 +39714,7 @@
   {
    "file": "asm/overlay_01_021F3F50.s",
    "lsf_kind": "asm",
-   "status": "pending",
+   "status": "blocked",
    "lines": 689,
    "function_count": 17,
    "text_bytes_est": 1302,
@@ -39791,121 +39791,125 @@
      "mode": "thumb",
      "insns": 30,
      "size_est": 76,
-     "status": "pending"
+     "status": "blocked"
     },
     {
      "name": "ov01_021F3F9C",
      "mode": "thumb",
      "insns": 75,
      "size_est": 168,
-     "status": "pending"
+     "status": "blocked"
     },
     {
      "name": "ov01_021F4044",
      "mode": "thumb",
      "insns": 3,
      "size_est": 6,
-     "status": "pending"
+     "status": "blocked"
     },
     {
      "name": "ov01_021F4048",
      "mode": "thumb",
      "insns": 100,
      "size_est": 226,
-     "status": "pending"
+     "status": "blocked"
     },
     {
      "name": "Field_SaveStatsPrinter_Print",
      "mode": "thumb",
      "insns": 52,
      "size_est": 118,
-     "status": "pending"
+     "status": "blocked"
     },
     {
      "name": "Field_SaveStatsPrinter_RemoveFromScreen",
      "mode": "thumb",
      "insns": 11,
      "size_est": 28,
-     "status": "pending"
+     "status": "blocked"
     },
     {
      "name": "Field_SaveStatsPrinter_New",
      "mode": "thumb",
      "insns": 40,
      "size_est": 92,
-     "status": "pending"
+     "status": "blocked"
     },
     {
      "name": "Field_SaveStatsPrinter_Delete",
      "mode": "thumb",
      "insns": 10,
      "size_est": 26,
-     "status": "pending"
+     "status": "blocked"
     },
     {
      "name": "ov01_021F4234",
      "mode": "thumb",
      "insns": 27,
      "size_est": 58,
-     "status": "pending"
+     "status": "blocked"
     },
     {
      "name": "ov01_021F426C",
      "mode": "thumb",
      "insns": 63,
      "size_est": 138,
-     "status": "pending"
+     "status": "blocked"
     },
     {
      "name": "ov01_021F42F8",
      "mode": "thumb",
      "insns": 37,
      "size_est": 84,
-     "status": "pending"
+     "status": "blocked"
     },
     {
      "name": "ov01_021F434C",
      "mode": "thumb",
      "insns": 8,
      "size_est": 20,
-     "status": "pending"
+     "status": "blocked"
     },
     {
      "name": "ov01_021F4360",
      "mode": "thumb",
      "insns": 47,
      "size_est": 112,
-     "status": "pending"
+     "status": "blocked"
     },
     {
      "name": "ov01_021F43D0",
      "mode": "thumb",
      "insns": 10,
      "size_est": 26,
-     "status": "pending"
+     "status": "blocked"
     },
     {
      "name": "Field_SaveGameNormal",
      "mode": "thumb",
      "insns": 12,
      "size_est": 28,
-     "status": "pending"
+     "status": "blocked"
     },
     {
      "name": "ov01_021F4404",
      "mode": "thumb",
      "insns": 25,
      "size_est": 60,
-     "status": "pending"
+     "status": "blocked"
     },
     {
      "name": "ov01_021F4440",
      "mode": "thumb",
      "insns": 16,
      "size_est": 36,
-     "status": "pending"
+     "status": "blocked"
     }
-   ]
+   ],
+   "blocked_reason": "16/17 functions byte-match. Only ov01_021F4048 mismatches (+12 bytes) \u2014 pure MWCC global register allocation: asm keeps labelPtr in r7 + printer in r5 (frame 0x18 + dummy r3 push); mine spills both pointers + printer->r4 (frame 0x1c). Logic identical, no external blocker. WIP committed.",
+   "attempts": 7,
+   "blocker_id": null,
+   "kept_c": false
   },
   {
    "file": "asm/overlay_01_021F4464.s",

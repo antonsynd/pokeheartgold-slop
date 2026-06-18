@@ -643,6 +643,12 @@
       "category": "codegen",
       "title": "Parenthesize `(a2+1) + 7*a1` to control which addend is the final-add's first operand (MWCC preloads the mul constant)",
       "body": "MWCC evaluates `(a2 + 1) + 7 * a1` as: `mov r0,#7` (preload mul constant early), `adds r3,r2,#1` (the (a2+1) addend), `muls r0,r1` (7*a1), `adds r0,r3,r0` (range r3 first). Writing `7 * a1 + a2 + 1` instead parses as `((7*a1)+a2)+1` -> `muls; adds r0,r2,r0; adds r0,r0,#1` (different schedule, +1 is a separate trailing add). The grouping of the constant-fold determines the final `add` operand order (`add r0,r3,r0` vs `add r0,r0,#1`). Match by grouping the source exactly as the value is built in asm. Verified in overlay_80_02238034 ov80_02238034. Combine with making the multiplied index `u32` so `if (a1 >= 8)` and the array index use unsigned `blo` not signed `blt` (see [[cast-unsigned-for-branch]])."
+    },
+    {
+      "id": "u32-call-return-makes-divide-an-unsigned-shift",
+      "category": "codegen",
+      "title": "Assign a u32 function return to an int local before signed arithmetic, or `(a - b)/2` becomes an unsigned shift (lsr)",
+      "body": "`(width<<3) - FontID_String_GetWidth(...)` then `/2`: FontID_String_GetWidth returns u32, so the subtraction promotes to unsigned and `/2` compiles to a single `lsrs #1` (logical). If the target asm does SIGNED division (`subs; lsrs rX,#31; adds; asrs rY,#1` — the sign-bit round-toward-zero idiom), the original kept the value SIGNED: store the u32 return into an `int` local first (`int width = FontID_String_GetWidth(...); x = ((win->width<<3) - width)/2;`). `int - int` is signed, so `/2` emits the signed-div idiom and matches. A plain subtract (no division) is unaffected (same bytes signed/unsigned), so this only bites on `/`, `%`, `>>` of the difference. Also for the align dispatch in the same function (ov01_021F4234): a `switch (align) { case 1:..; case 2:..; }` emits the asm's `cmp #1;beq;cmp #2;beq;b` jump-to-body dispatch, whereas `if/else if` emits interleaved `cmp;bne` skips. Seen in overlay_01_021F3F50 ov01_021F4234. Related: [[switch-form-avoids-equality-or-range-opt]]."
     }
   ]
 }
