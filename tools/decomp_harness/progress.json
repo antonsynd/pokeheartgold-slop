@@ -506,6 +506,14 @@
       "attempts": 3,
       "result": "matched",
       "note": "compare-verified (chiri pkg -- compare OK, full ROM SHA1). Camera/3D-effect family manager (ov01_021F1348 cluster). 16/16 functions matched as C using src/field/overlay_01_021FE780.c as template: per-file structs (manager 0x824 = void* + 10x sub(0x14) + 10x sub + 10x NNSG3dRenderObj(0x54) + 10x NNSG3dRenderObj), local externs, NO cluster header. New header include/overlay_01_021FE200.h. Field-by-field cb1 (ov01_021FE4FC) matched (flat data copy). 2 real fixes: ov01_021FE230 i<10u; ov01_021FE3F8 position-before-data decl order. Jump-table addr calcs (ov01_021FE2DC/35C) + spawn (ov01_021FE3F8) showed spurious objdiff SIZE diffs (data-region miscount) but matched per compare."
+    },
+    {
+      "file": "asm/overlay_01_02200858.s",
+      "lines": 385,
+      "functions": 10,
+      "attempts": 8,
+      "result": "matched",
+      "note": "compare-verified (chiri pkg -- compare OK, full ROM SHA1). Camera/3D-effect family (ov01_021F1348 cluster), PlayerAvatar walk-effect spawner. 9/10 functions matched as C (manager 0x6c = void* + sub(0x14) + NNSG3dRenderObj(0x54); spawn work 0x30; block-copy cb1). ov01_02200A08 (render cb) kept NONMATCHING (asm): MWCC list-scheduler tie-break on scale-copy temp regs + mov-r7/table354 order. Reused existing include/overlay_01_02200858.h (ov01_022008B4 only; declared 02200858/874 locally). Fixes: i<10u, position/copyPosition + data/position decl order, dir/row split."
     }
   ],
   "failed": [

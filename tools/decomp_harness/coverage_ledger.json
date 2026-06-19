@@ -1,12 +1,12 @@
 {
  "summary": {
-  "generated": "2026-06-19T06:08:32Z",
+  "generated": "2026-06-19T06:49:56Z",
   "by_status": {
    "matched": {
-    "files": 61,
-    "functions": 620,
-    "insn_lines": 12822,
-    "text_bytes_est": 28204
+    "files": 62,
+    "functions": 630,
+    "insn_lines": 13119,
+    "text_bytes_est": 28868
    },
    "blocked": {
     "files": 28,
@@ -15,10 +15,10 @@
     "text_bytes_est": 24904
    },
    "pending": {
-    "files": 208,
-    "functions": 19128,
-    "insn_lines": 928803,
-    "text_bytes_est": 2074384
+    "files": 207,
+    "functions": 19118,
+    "insn_lines": 928506,
+    "text_bytes_est": 2073720
    },
    "upstream": {
     "files": 374,
@@ -29,9 +29,9 @@
   },
   "function_totals": {
    "tracked": 20121,
-   "matched": 620,
+   "matched": 630,
    "partial_in_blocked": 50,
-   "pending": 19128
+   "pending": 19118
   },
   "blockers": [
    {
@@ -47363,8 +47363,8 @@
   },
   {
    "file": "asm/overlay_01_02200858.s",
-   "lsf_kind": "asm",
-   "status": "pending",
+   "lsf_kind": "src",
+   "status": "matched",
    "lines": 385,
    "function_count": 10,
    "text_bytes_est": 664,
@@ -47421,72 +47421,73 @@
      "mode": "thumb",
      "insns": 12,
      "size_est": 28,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ov01_02200874",
      "mode": "thumb",
      "insns": 7,
      "size_est": 18,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ov01_02200884",
      "mode": "thumb",
      "insns": 16,
      "size_est": 36,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ov01_022008A8",
      "mode": "thumb",
      "insns": 6,
      "size_est": 12,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ov01_022008B4",
      "mode": "thumb",
      "insns": 33,
      "size_est": 76,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ov01_02200900",
      "mode": "thumb",
      "insns": 25,
      "size_est": 58,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ov01_02200938",
      "mode": "thumb",
      "insns": 2,
      "size_est": 4,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ov01_0220093C",
      "mode": "thumb",
      "insns": 90,
      "size_est": 206,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ov01_02200A08",
      "mode": "thumb",
      "insns": 77,
      "size_est": 160,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ov01_02200AB0",
      "mode": "thumb",
      "insns": 29,
      "size_est": 66,
-     "status": "pending"
+     "status": "matched"
     }
-   ]
+   ],
+   "source": "harness"
   },
   {
    "file": "asm/field/scrcmd_pokemon_misc.s",
