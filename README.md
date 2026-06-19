@@ -1,6 +1,6 @@
 # Pokémon HeartGold and SoulSilver
 
-[![Matching decomp](https://img.shields.io/badge/decomp-matching-blue)]()
+[![Build status: matching](https://img.shields.io/badge/retail_SHA1-verified-brightgreen)](build_attestation.json)
 
 A work-in-progress matching decompilation of Pokémon HeartGold and SoulSilver (US). The goal is byte-for-byte identical ROM output — every C file must compile to the exact same machine code as the original retail binary.
 

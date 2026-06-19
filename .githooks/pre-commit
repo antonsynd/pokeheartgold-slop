@@ -26,6 +26,18 @@ if git diff --cached --name-only --diff-filter=M -- 'include/*.h' | grep -q .; t
     fi
 fi
 
+# Verify build attestation is current when source files change.
+if git diff --cached --name-only | grep -qE '^(main\.lsf|src/|asm/|include/)'; then
+    if ! tools/build_attestation.sh --check 2>/dev/null; then
+        echo ""
+        echo "Build attestation is stale or missing."
+        echo "Run: ./tools/build_attestation.sh"
+        echo "Then stage build_attestation.json and retry."
+        exit 1
+    fi
+    git add build_attestation.json 2>/dev/null || true
+fi
+
 # Auto-update progress stats in README.md when decomp-related files change.
 # Regenerates coverage_ledger.json, patches the progress table, and stages README.md.
 if git diff --cached --name-only | grep -qE '^(main\.lsf|src/|asm/|tools/decomp_harness/progress\.json|tools/decomp_harness/blockers\.json)'; then

@@ -45,12 +45,3 @@ else
   WINPATH := winepath
 endif
 
-# SHA1 file suffix: x86 emulation (Rosetta/QEMU) on ARM64 produces different
-# MWCC codegen than native x86_64, so ARM64 hosts use separate SHA1 files.
-SHA1_SUFFIX :=
-ifneq ($(OS),Windows_NT)
-  UNAME_M := $(shell uname -m)
-  ifneq ($(filter arm64 aarch64,$(UNAME_M)),)
-    SHA1_SUFFIX := .arm64
-  endif
-endif

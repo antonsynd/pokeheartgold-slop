@@ -84,7 +84,7 @@ $(ROM): $(ROMSPEC) filesystem main_lz sub $(BANNER)
 	$(WINE) $(MAKEROM) $(MAKEROM_FLAGS) -DBUILD_DIR=$(BUILD_DIR) -DNITROFS_FILES="$(NITROFS_FILES:files/%=%)" -DTITLE_NAME="$(TITLE_NAME)" -DBNR="$(BANNER)" -DHEADER_TEMPLATE="$(HEADER_TEMPLATE)" $< $@
 	$(FIXROM) $@ --secure-crc $(SECURE_CRC) --game-code $(GAME_CODE)
 ifeq ($(COMPARE),1)
-	$(SHA1SUM) -c $(if $(wildcard $(buildname)/rom$(SHA1_SUFFIX).sha1),$(buildname)/rom$(SHA1_SUFFIX).sha1,$(buildname)/rom.sha1)
+	$(SHA1SUM) -c $(buildname)/rom.sha1
 endif
 
 $(BANNER): $(BANNER_SPEC) $(ICON_PNG:%.png=%.nbfp) $(ICON_PNG:%.png=%.nbfc)

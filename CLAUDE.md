@@ -38,13 +38,11 @@ Prerequisites are **not** in the repo and must be staged manually (see `INSTALL.
 
 On macOS, install prerequisites via Homebrew: `brew tap osx-cross/homebrew-arm && brew install gnu-sed arm-gcc-bin wine-crossover`. The build requires `gsed` (GNU sed) — without it, `.d` dependency files retain Wine `Z:` paths and break `make`.
 
-**ARM64 / Apple Silicon builds:** MWCC's codegen is sensitive to exact x86 CPU behavior. x86 emulation (Rosetta 2, QEMU) produces different — but internally consistent — output vs native x86_64 hardware. The build uses platform-specific SHA1 files: `main.sha1` / `rom.sha1` for native x86_64 (CI), `main.arm64.sha1` / `rom.arm64.sha1` for ARM64 hosts. The Makefile auto-detects the host architecture via `uname -m` and selects the correct SHA1 files. Both x86 and ARM64 builds are fully reproducible from clean state on their respective platforms. Per-file verification via `objdiff.py` is valid on all platforms since asm and C go through the same Wine/emulation path.
+**ARM64 / Apple Silicon builds:** MWCC via Wine on ARM64 (Rosetta 2) produces identical output to native x86_64. Only the retail SHA1 files (`main.sha1` / `rom.sha1`) are used — no platform-specific variants.
 
 **Docker volume caution.** Docker builds (`docker run -v .:/work`) share the project directory. Running `make clean-tools` or `make tools` inside a container replaces native tool binaries (nitrogfx, compstatic, etc.) with Linux ELF binaries. Run `make clean-tools && make tools` on macOS after any container build to restore native tools.
 
 **Cross-environment `.d` files.** When switching between macOS and Docker builds, `.d` dependency files may contain absolute paths from the other environment (`/Users/...` vs `/work/...`). Run `find build lib/dsprot sub -name "*.d" -delete` before building in a different environment.
-
-**SoulSilver ARM64 SHA1s** have not yet been generated. To create them: `chiri pkg -- build --game soulsilver --no-compare`, then generate `soulsilver.us/main.arm64.sha1` and `soulsilver.us/rom.arm64.sha1` from the build output, matching the format of the HeartGold `.arm64.sha1` files.
 
 The shell is zsh: unquoted words starting with `=` (e.g. `echo ====` as a separator) fail with `... not found` — quote them.
 

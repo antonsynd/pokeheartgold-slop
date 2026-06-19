@@ -240,7 +240,7 @@ CRT0_OBJ := lib/asm/crt0.o
 
 $(SBIN): build/%.sbin: build/%.elf
 ifeq ($(COMPARE),1)
-	$(SHA1SUM) --quiet -c $(if $(wildcard $*$(SHA1_SUFFIX).sha1),$*$(SHA1_SUFFIX).sha1,$*.sha1)
+	$(SHA1SUM) --quiet -c $*.sha1
 endif
 
 $(ELF): $(ALL_OBJS)
