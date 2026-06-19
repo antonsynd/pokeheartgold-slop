@@ -530,6 +530,14 @@
       "attempts": 1,
       "result": "matched",
       "note": "compare-verified (chiri pkg -- compare OK, full ROM SHA1). EasyChat menu builder: 0x195C manager struct + 6.2KB rodata (~40 word-list u16 arrays, 27-entry pointer table, 12-entry dispatch struct table) scripted from .s, byte-exact layout via forward-declared static const arrays. 14/16 functions matched as C; 2 NONMATCHING inline asm (sub_020918D4, ECMenuBuild_TrendySayings) -- register-allocation tie-breaks (total/walk r4/r7; added/i r6/r7) not source-controllable. Key fixes: read-before-advance explicit pointer (fixed 68-byte cascade), int subcount, cached-offset add-operand-order, indexed-vs-walking regalloc, early-out-as-fallthrough, (u32) lsr bitmap shift."
+    },
+    {
+      "file": "asm/unk_0202C034.s",
+      "functions": 25,
+      "lines": 1003,
+      "attempts": 1,
+      "result": "matched",
+      "note": "compare-verified (chiri pkg -- compare OK, full ROM SHA1). Friend battle-record save accessor (chunk SAVE_UNK_25): 0x8C0 struct = 0x40 header + 32x0xc DWCFriendData + 32x0x38 BattleRecord (2 OT-name u16[8], date, 8 u16 battle-count stats clamped to 0x270F, type marker). Existing opaque header completed in .c. 20/25 functions matched as C incl. 2 jump-table get/set dispatchers (sub_0202C090/C190 - objdiff SIZE artifact, byte-confirmed match via nm+compare); 5 NONMATCHING inline asm (sub_0202C2F8/C318/C338/C46C/C4F0) - MWCC-internal tie-breaks: accumulator/counter regalloc, u16 return-trunc elision, arg-address constant folding, idx*stride CSE under register pressure. .text -10 object diff benign (linker per-function aligns)."
     }
   ],
   "failed": [

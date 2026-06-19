@@ -224,6 +224,14 @@ In a loop, a[i]/b[i] (indexed) vs *pa++/*pb++ (explicit walking) can yield diffe
 
 `if(gate!=0){ body; return X; } return 0;` emits return 0 at the END (retail layout); `if(gate==0) return 0; body; return X;` inlines the return early. Choose the structure matching the asm block order. (unk_02091880 ECMenuBuild_Move: 27 to 0 diffs.)
 
+### MWCC's idx*stride CSE across struct-element field accesses is fragile under register pressure  <!-- id: idx-stride-cse-varies-with-register-pressure -->
+
+For arr[i].fieldA, arr[i].fieldB, ... MWCC normally hoists i*stride into one register and reuses it (field-base + hoisted-index addressing). But with extra register pressure (e.g. a 5th param read from the stack mid-function) it may RE-compute i*stride per access, diverging from retail. A sibling function with fewer params can match while this one doesn't. Caching a record pointer changes the addressing form ([rec,#off]) and won't match field-base+index. -> NONMATCHING. (unk_0202C034 sub_0202C4F0 vs matching sub_0202C5E4.)
+
+### u16-returning function may elide the return truncation when the value is provably small  <!-- id: u16-return-truncation-elision -->
+
+`u16 f(){ int x; ...; return x; }` normally truncates with lsl#16/lsr#16 on return. Retail sometimes ELIDES it when x is provably <=0xFFFF (e.g. x = i+1, i<32). If your structure doesn't trigger MWCC's range analysis you get the extra truncation; u16 local instead makes it worse (truncates on assign too). Not reliably source-controllable -> NONMATCHING. (unk_0202C034 sub_0202C318.)
+
 ## Matching Tricks
 
 ### Small source changes that move codegen  <!-- id: decl-order-tricks -->
@@ -496,6 +504,10 @@ To decompile a save-chunk module (SaveArray_Get + MIi_CpuClear32, sizeof/init + 
 
 A recurring module shape: an exported registrar `void reg(void *arg){ sub_0203410C(&sTable, NELEMS(sTable), arg); }` that TAIL-CALLs sub_0203410C (loads addr, `bx r3`, since the callee is far). The .rodata `sTable[]` is N triples; columns are func1 = `void handler(int a0, int a1, void *a2, ctx *a3)` (dispatched by sub_02034170 with a3 = (*globalCtx)->field8 or NULL), func2 = `u32 sizeGetter(void)` (commonly sub_020342C4/020342C0 returning 0xFFFF/0), func3 = `void *recordGetter(int idx, ctx *a3)` or NULL. In the handlers, `a0` is a link/player id compared against `sub_0203769C()` for an early return; `a3->0xc` is a `SaveData*`, `a3->0x88` is a per-category mixing buffer (set by a sibling setter that does `*(void**)((u8*)a3+0x88)=buf`). Define a file-local struct typedef for the table (exact func-ptr types) instead of reusing UnkStruct_02091564 to avoid func3 return-type (void* vs void(*)()) warnings — rodata bytes are identical either way. Access the big buffer via raw `*(T*)((u8*)buf+off)` casts. (template: src/unk_02091564.c)
 
+### Save-accessor structs interleave parallel arrays indexed by one record index with different strides  <!-- id: save-accessor-multi-array-struct -->
+
+Friend/record save chunks often hold several arrays addressed by the same index but different stride/base: e.g. header[0x40] + DWCFriendData[32]@0xc (off 0x40) + BattleRecord[32]@0x38 (off 0x1c0), total 0x8c0. Model as nested struct arrays at byte offsets; accessors compute base + idx*stride + field and MWCC folds array-offset+field into one (often large, mov+lsl or ldr-pool) register offset. Jump-table get/set dispatchers map an enum to fields. (unk_0202C034, save chunk SAVE_UNK_25.)
+
 ## NONMATCHING Fallback
 
 ### NONMATCHING inline asm syntax (MWCC)  <!-- id: nonmatching-inline-asm-syntax -->
@@ -597,3 +609,7 @@ global.h (force-included) does NOT reliably define fx32/VecFx32 — files that u
 ### objdiff 'SIZE mismatch' false positive: inline Thumb jump table + cross-section relocations  <!-- id: objdiff-false-positive-inline-jumptable-reloc -->
 
 A function with an inline Thumb switch jump table (add pc,r0 then .short offset entries) can show as an objdiff SIZE/byte mismatch even when it is byte-identical after linking. Two causes: (1) the asm reference object has one merged .text so local `bl` targets are PC-encoded directly (f000 fXXX), while the MWCC -ipa file object emits per-function sections so every `bl` is a relocation placeholder (f000 f800) — these resolve to the same bytes at link; (2) objdump renders the jump-table bytes as a .word in the asm but as two .short/instructions in the C object, confusing objdiff's size measurement. Verify by normalizing reloc operands (sed 's/[0-9a-f]+ <[^>]+>/X/') before diffing, and ALWAYS trust `chiri pkg -- compare` (full ROM SHA1) over objdiff for these. Saw in ov01_021FB6C4 (overlay_01_021FB5D4.s): objdiff said 'SIZE 134 vs 138' but the full ROM matched.
+
+### A .text section-size diff between asm and C objects is often benign (linker re-aligns per-function)  <!-- id: text-section-size-diff-benign-linker-aligns -->
+
+MWCC emits each function into its own section; the linker aligns/places them at link time. So an objdiff `.text section size` diff, AND a per-function nm-size diff equal to a trailing `.balign 4,0` pad, do NOT necessarily mean a mismatch. unk_0202C034 had .text -10 (sub_0202C46C nm size 0x42 vs asm 0x44) yet `chiri pkg -- compare` PASSED. Always confirm with compare, never reject on section size alone.

@@ -811,6 +811,30 @@
       "category": "data-sections",
       "title": "MWCC accepts forward-declared incomplete static const arrays for rodata-order forward refs",
       "body": "static const u16 X[]; (incomplete, no init) is accepted as a forward declaration; define static const u16 X[]={...}; later. Lets a pointer/struct table placed early in rodata order reference word-list arrays defined later, preserving the exact rodata layout. Used throughout unk_02091880 (a 27-entry pointer table + 12-entry dispatch struct table interleaved with ~40 word-list arrays)."
+    },
+    {
+      "id": "text-section-size-diff-benign-linker-aligns",
+      "category": "tooling",
+      "title": "A .text section-size diff between asm and C objects is often benign (linker re-aligns per-function)",
+      "body": "MWCC emits each function into its own section; the linker aligns/places them at link time. So an objdiff `.text section size` diff, AND a per-function nm-size diff equal to a trailing `.balign 4,0` pad, do NOT necessarily mean a mismatch. unk_0202C034 had .text -10 (sub_0202C46C nm size 0x42 vs asm 0x44) yet `chiri pkg -- compare` PASSED. Always confirm with compare, never reject on section size alone."
+    },
+    {
+      "id": "idx-stride-cse-varies-with-register-pressure",
+      "category": "codegen",
+      "title": "MWCC's idx*stride CSE across struct-element field accesses is fragile under register pressure",
+      "body": "For arr[i].fieldA, arr[i].fieldB, ... MWCC normally hoists i*stride into one register and reuses it (field-base + hoisted-index addressing). But with extra register pressure (e.g. a 5th param read from the stack mid-function) it may RE-compute i*stride per access, diverging from retail. A sibling function with fewer params can match while this one doesn't. Caching a record pointer changes the addressing form ([rec,#off]) and won't match field-base+index. -> NONMATCHING. (unk_0202C034 sub_0202C4F0 vs matching sub_0202C5E4.)"
+    },
+    {
+      "id": "u16-return-truncation-elision",
+      "category": "codegen",
+      "title": "u16-returning function may elide the return truncation when the value is provably small",
+      "body": "`u16 f(){ int x; ...; return x; }` normally truncates with lsl#16/lsr#16 on return. Retail sometimes ELIDES it when x is provably <=0xFFFF (e.g. x = i+1, i<32). If your structure doesn't trigger MWCC's range analysis you get the extra truncation; u16 local instead makes it worse (truncates on assign too). Not reliably source-controllable -> NONMATCHING. (unk_0202C034 sub_0202C318.)"
+    },
+    {
+      "id": "save-accessor-multi-array-struct",
+      "category": "file-patterns",
+      "title": "Save-accessor structs interleave parallel arrays indexed by one record index with different strides",
+      "body": "Friend/record save chunks often hold several arrays addressed by the same index but different stride/base: e.g. header[0x40] + DWCFriendData[32]@0xc (off 0x40) + BattleRecord[32]@0x38 (off 0x1c0), total 0x8c0. Model as nested struct arrays at byte offsets; accessors compute base + idx*stride + field and MWCC folds array-offset+field into one (often large, mov+lsl or ldr-pool) register offset. Jump-table get/set dispatchers map an enum to fields. (unk_0202C034, save chunk SAVE_UNK_25.)"
     }
   ]
 }
