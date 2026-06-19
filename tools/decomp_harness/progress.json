@@ -546,6 +546,14 @@
       "attempts": 1,
       "result": "matched",
       "note": "compare-verified (chiri pkg -- compare OK, full ROM SHA1). Field sprite-resource renderer (UnkStruct_ov01_021E7FDC: SpriteList + G2dRenderer + SpriteResourceHeaderList + GF_2DGfxResMan[6] + GF_2DGfxResObjList[6]; header predefined the struct + SpriteTemplate_ov01_021E81F0). 9/12 matched as C INCLUDING the complex float-rounding allocated-wrapper builder ov01_021E851C (FX32_CONST round-half-away-from-zero). 3 NONMATCHING inline asm (Init, ov01_021E81F0, ov01_021E8298) - MWCC register-allocation/constant-reuse tie-breaks (none use soft-float). Key lessons: soft-float (_ffix etc.) NOT callable in inline asm -> float NONMATCHING must be C; FX32_CONST rounds vs plain <<FX32_SHIFT integer; enum params need free casts."
+    },
+    {
+      "file": "asm/unk_020773AC.s",
+      "functions": 16,
+      "lines": 384,
+      "attempts": 1,
+      "result": "matched",
+      "note": "compare-verified (chiri pkg -- compare OK, full ROM SHA1). 3D particle-emitter / SPL scene setup (UnkStruct_02077604 {int unk0 heapID; int unk4 fileId; SPLEmitter *unkC} 0x10; GF_3DVramMan + fog/clear-color + tex/pltt alloc callbacks). 12 pure C + sub_02077664 C-matched-with-asm-pad-wrapper + 3 NONMATCHING. KEY: discovered the FIX for the 2-mod-4 trailing-pad blocker that reverted unk_0203A3B0 -- sub_02077664 (last fn, body 0x12 matches byte-for-byte) lost the retail .balign 4,0 pad under MWCC per-function .text (linker slots next object 2 bytes early since .text needs only 2-byte align), compare .text -2; fixed by inline-asm wrapper + trailing `lsl r0,r0,#0` (=0x0000) carrying the pad -> compare FAIL->OK. See pattern trailing-pad-fix-inline-asm-lsl-r0; unk_0203A3B0 now likely re-attemptable. NONMATCHING: sub_0207741C, sub_020775C4 (opaque SPLEmitter offsets), sub_02077604 (MWCC won't CSE a0->unk4 across the s->unk4 store into the fresh Heap_Alloc'd struct -> field load-order tie, pattern alias-blocks-cse-across-fresh-alloc-struct-store)."
     }
   ],
   "failed": [

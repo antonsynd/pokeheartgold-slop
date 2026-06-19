@@ -859,6 +859,18 @@
       "category": "tooling",
       "title": "objdiff whole-file MATCH can still fail compare: per-function .text sections drop 2-mod-4 funcs' .balign trailing pad",
       "body": "objdiff masks trailing function padding, so a file can show 20/20 MATCH yet `chiri pkg -- compare` fails main.sbin. Cause: retail .s pads each function with `.balign 4,0`; a C function whose body is 2-mod-4 bytes compiles into a per-function .text section (2**2-aligned) WITHOUT that trailing 0x00 pad, so .text is short (e.g. -6 for 3 such funcs) and the linked image differs. CONTRAST [[text-section-size-diff-benign-linker-aligns]]: a section-size diff is benign only when it's section-END padding; a per-2-mod-4-function shortfall is NOT. Diagnose by comparing nm --print-size per function (asm vs C) for any function 2 bytes short. Only compare is authoritative. (unk_0203A3B0 hit this; reverted.)"
+    },
+    {
+      "id": "trailing-pad-fix-inline-asm-lsl-r0",
+      "category": "nonmatching",
+      "title": "FIX for 2-mod-4 function losing .balign trailing pad: inline-asm wrapper with trailing `lsl r0, r0, #0` (=0x0000)",
+      "body": "Resolves [[objdiff-match-but-compare-fails-trailing-pad]]. When a function's matched C body is 2-mod-4 bytes and retail .s pads it with `.balign 4, 0`, MWCC's per-function .text section omits the pad. The linker does NOT always restore it: notably for the LAST function in the TU, the next object's .text needs only 2-byte (Thumb) alignment, so it slots in 2 bytes early -> `chiri pkg -- compare` fails main.sbin with .text -2 even at full 16/16 objdiff MATCH. FIX: keep the matched C under `#ifdef NONMATCHING`, and under `#else` emit the function as inline `asm` (non-static if `.public`) transcribing the matched instructions, then a trailing `lsl r0, r0, #0` which assembles to 0x0000 = the `.balign 4,0` fill, carrying the pad inside the function's own section. Proven on unk_020773AC sub_02077664 (last fn): compare went FAIL->OK. Likely un-blocks unk_0203A3B0 (apply per 2-mod-4 function). Diagnose the culprit via `nm --print-size` per function (the one 2 bytes short)."
+    },
+    {
+      "id": "alias-blocks-cse-across-fresh-alloc-struct-store",
+      "category": "codegen",
+      "title": "MWCC won't CSE a source struct field across a store into a freshly Heap_Alloc'd struct (can't prove non-alias) -> field reload or load-order tie -> NONMATCHING",
+      "body": "Pattern `s = Heap_Alloc(...); s->b = a->b; ... f(a->b)`: retail loads a->b once (e.g. r2) and keeps it live across the s->b store, reusing it for the later arg. MWCC cannot prove the Heap_Alloc'd s doesn't alias a, so the store to s->b invalidates the cached a->b -> it either reloads a->b (extra ldr, +2) or, if you hand-cache it in a local, the two field loads get scheduled in the wrong order (load r2 before r0). No source form recovers retail's 'one load kept live, only s->unk0 reloaded' schedule. Resolve via NONMATCHING inline asm. Seen on unk_020773AC sub_02077604 (a0->unk0 + a0->unk4 into a fresh struct)."
     }
   ]
 }

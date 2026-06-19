@@ -1,5 +1,5 @@
 {
- "generated": "2026-06-19T14:10:25Z",
+ "generated": "2026-06-19T15:34:07Z",
  "weights": {
   "insn_line": 1.0,
   "unknown_callee": 40.0,
@@ -10,72 +10,6 @@
   "special_section": 500.0
  },
  "queue": [
-  {
-   "file": "asm/unk_0203A3B0.s",
-   "score": 875.6,
-   "special_sections": [],
-   "functions": 20,
-   "insn_lines": 713,
-   "data_only": false,
-   "unknown_callees": [
-    "sub_02034DCC",
-    "sub_02037454",
-    "sub_02037474",
-    "sub_02039998"
-   ],
-   "jumptable_words": 0,
-   "rodata_bytes": 52,
-   "arm_functions": 0,
-   "gated_by": [],
-   "cluster_partners": [
-    {
-     "file": "asm/unk_02035900.s",
-     "shared_symbols": 2
-    },
-    {
-     "file": "asm/unk_02034B0C.s",
-     "shared_symbols": 1
-    },
-    {
-     "file": "asm/unk_02037C94.s",
-     "shared_symbols": 1
-    }
-   ]
-  },
-  {
-   "file": "asm/unk_020773AC.s",
-   "score": 877.0,
-   "special_sections": [],
-   "functions": 16,
-   "insn_lines": 317,
-   "data_only": false,
-   "unknown_callees": [
-    "sub_02014DA0",
-    "sub_02014DB4",
-    "sub_02014EBC",
-    "sub_02015264",
-    "sub_0201526C",
-    "sub_02015354",
-    "sub_02015394",
-    "sub_0201543C",
-    "sub_02015460",
-    "sub_02015494",
-    "sub_020154B0",
-    "sub_020154D0",
-    "sub_02015524",
-    "sub_02015528"
-   ],
-   "jumptable_words": 0,
-   "rodata_bytes": 0,
-   "arm_functions": 0,
-   "gated_by": [],
-   "cluster_partners": [
-    {
-     "file": "asm/unk_02014DA0.s",
-     "shared_symbols": 14
-    }
-   ]
-  },
   {
    "file": "asm/unk_0202D230.s",
    "score": 891.6,
@@ -5876,6 +5810,64 @@
    ]
   },
   {
+   "file": "asm/unk_020755E8.s",
+   "score": 4380.8,
+   "special_sections": [],
+   "functions": 22,
+   "insn_lines": 3262,
+   "data_only": false,
+   "unknown_callees": [
+    "DrawFrameAndWindow2",
+    "GF_IsAnySEPlaying",
+    "IsCryFinished",
+    "IsFanfarePlaying",
+    "PlayCry",
+    "PlayFanfare",
+    "PlaySE",
+    "SetMasterBrightnessNeutral",
+    "StopBGM",
+    "sub_02005D10",
+    "sub_0200E398",
+    "sub_0200E3D8",
+    "sub_0200E640",
+    "sub_0200EB80",
+    "sub_0200FBF4",
+    "sub_02016EDC",
+    "sub_02016F2C",
+    "sub_02017068",
+    "sub_0203A880",
+    "sub_02089D40"
+   ],
+   "jumptable_words": 0,
+   "rodata_bytes": 376,
+   "arm_functions": 0,
+   "gated_by": [
+    "ipa-shared-headers"
+   ],
+   "cluster_partners": [
+    {
+     "file": "asm/unk_02005D10.s",
+     "shared_symbols": 8
+    },
+    {
+     "file": "asm/render_window.s",
+     "shared_symbols": 5
+    },
+    {
+     "file": "asm/unk_02016EDC.s",
+     "shared_symbols": 3
+    },
+    {
+     "file": "asm/unk_0200FA24.s",
+     "shared_symbols": 2
+    },
+    {
+     "file": "asm/unk_0203A3B0.s",
+     "shared_symbols": 1
+    }
+   ]
+  },
+  {
    "file": "asm/overlay_01_021E6880.s",
    "score": 4425.6,
    "special_sections": [],
@@ -6277,73 +6269,6 @@
     {
      "file": "asm/unk_02005D10.s",
      "shared_symbols": 1
-    }
-   ]
-  },
-  {
-   "file": "asm/unk_020755E8.s",
-   "score": 4740.8,
-   "special_sections": [],
-   "functions": 22,
-   "insn_lines": 3262,
-   "data_only": false,
-   "unknown_callees": [
-    "DrawFrameAndWindow2",
-    "GF_IsAnySEPlaying",
-    "IsCryFinished",
-    "IsFanfarePlaying",
-    "PlayCry",
-    "PlayFanfare",
-    "PlaySE",
-    "SetMasterBrightnessNeutral",
-    "StopBGM",
-    "sub_02005D10",
-    "sub_0200E398",
-    "sub_0200E3D8",
-    "sub_0200E640",
-    "sub_0200EB80",
-    "sub_0200FBF4",
-    "sub_02016EDC",
-    "sub_02016F2C",
-    "sub_02017068",
-    "sub_0203A880",
-    "sub_020773AC",
-    "sub_020773D4",
-    "sub_02077400",
-    "sub_020774A0",
-    "sub_020774E0",
-    "sub_02077604",
-    "sub_02077634",
-    "sub_02077650",
-    "sub_02077664",
-    "sub_02089D40"
-   ],
-   "jumptable_words": 0,
-   "rodata_bytes": 376,
-   "arm_functions": 0,
-   "gated_by": [
-    "ipa-shared-headers"
-   ],
-   "cluster_partners": [
-    {
-     "file": "asm/unk_020773AC.s",
-     "shared_symbols": 9
-    },
-    {
-     "file": "asm/unk_02005D10.s",
-     "shared_symbols": 8
-    },
-    {
-     "file": "asm/render_window.s",
-     "shared_symbols": 5
-    },
-    {
-     "file": "asm/unk_02016EDC.s",
-     "shared_symbols": 3
-    },
-    {
-     "file": "asm/unk_0200FA24.s",
-     "shared_symbols": 2
     }
    ]
   },

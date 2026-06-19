@@ -236,6 +236,10 @@ For arr[i].fieldA, arr[i].fieldB, ... MWCC normally hoists i*stride into one reg
 
 FX32_CONST(x)=FX_F32_TO_FX32(x)=(fx32)((x>0)?x*4096+0.5f:x*4096-0.5f) -> emits _fflt/_fadd(or _fsub 0.5)/_ffix. A position computed with that rounding must use FX32_CONST; one the asm does with a plain `lsl #0xc` must use `x << FX32_SHIFT` (no float). Two sibling sprite-template builders in overlay_01_021E7FDC differed exactly this way (ov01_021E81F0 = shift, ov01_021E851C = FX32_CONST). FX32_CONST(const) folds at compile time (e.g. GX_LCD_SIZE_Y -> 0xc0000).
 
+### MWCC won't CSE a source struct field across a store into a freshly Heap_Alloc'd struct (can't prove non-alias) -> field reload or load-order tie -> NONMATCHING  <!-- id: alias-blocks-cse-across-fresh-alloc-struct-store -->
+
+Pattern `s = Heap_Alloc(...); s->b = a->b; ... f(a->b)`: retail loads a->b once (e.g. r2) and keeps it live across the s->b store, reusing it for the later arg. MWCC cannot prove the Heap_Alloc'd s doesn't alias a, so the store to s->b invalidates the cached a->b -> it either reloads a->b (extra ldr, +2) or, if you hand-cache it in a local, the two field loads get scheduled in the wrong order (load r2 before r0). No source form recovers retail's 'one load kept live, only s->unk0 reloaded' schedule. Resolve via NONMATCHING inline asm. Seen on unk_020773AC sub_02077604 (a0->unk0 + a0->unk4 into a fresh struct).
+
 ## Matching Tricks
 
 ### Small source changes that move codegen  <!-- id: decl-order-tricks -->
@@ -557,6 +561,10 @@ static asm RET f(args){...} with ldr rX,=0xVAL / ldr rX,=symbol builds a dedup-e
 ### MWCC inline asm cannot call soft-float runtime (_ffix/_fadd/_fflt/_fsub) -> write such functions as C  <!-- id: soft-float-not-callable-in-inline-asm -->
 
 `bl _ffix` etc. in an `asm` function fails with 'undefined label _ffix' (MWCC treats the leading-underscore runtime symbol as a local label). So a NONMATCHING float function can't be inline asm. Write it as C instead and let MWCC emit the soft-float itself (e.g. via FX32_CONST). In overlay_01_021E7FDC the complex float-rounding builder ov01_021E851C was kept as C (and matched); only the integer register-alloc tie-breaks needed inline asm.
+
+### FIX for 2-mod-4 function losing .balign trailing pad: inline-asm wrapper with trailing `lsl r0, r0, #0` (=0x0000)  <!-- id: trailing-pad-fix-inline-asm-lsl-r0 -->
+
+Resolves [[objdiff-match-but-compare-fails-trailing-pad]]. When a function's matched C body is 2-mod-4 bytes and retail .s pads it with `.balign 4, 0`, MWCC's per-function .text section omits the pad. The linker does NOT always restore it: notably for the LAST function in the TU, the next object's .text needs only 2-byte (Thumb) alignment, so it slots in 2 bytes early -> `chiri pkg -- compare` fails main.sbin with .text -2 even at full 16/16 objdiff MATCH. FIX: keep the matched C under `#ifdef NONMATCHING`, and under `#else` emit the function as inline `asm` (non-static if `.public`) transcribing the matched instructions, then a trailing `lsl r0, r0, #0` which assembles to 0x0000 = the `.balign 4,0` fill, carrying the pad inside the function's own section. Proven on unk_020773AC sub_02077664 (last fn): compare went FAIL->OK. Likely un-blocks unk_0203A3B0 (apply per 2-mod-4 function). Diagnose the culprit via `nm --print-size` per function (the one 2 bytes short).
 
 ## Tooling & Build Workflow
 
