@@ -498,6 +498,14 @@
       "attempts": 9,
       "result": "matched",
       "note": "compare-verified (chiri pkg -- compare OK, full ROM SHA1). TrainerCard data-record builder (start_menu exit task). 11/12 functions matched as C; sub_02068FC8 kept NONMATCHING (asm): sum reduction spill lands sp+0x20 not 0x5c (register-allocator) and a1 is a single-TU split-param. Reused include/unk_02068FC8.h. Record struct uses a union flags byte (bit0 manual-mask, bits1-4 bitfields) and unk48[8] bitfield struct {a:1;b:31}."
+    },
+    {
+      "file": "asm/overlay_01_021FE200.s",
+      "lines": 547,
+      "functions": 16,
+      "attempts": 3,
+      "result": "matched",
+      "note": "compare-verified (chiri pkg -- compare OK, full ROM SHA1). Camera/3D-effect family manager (ov01_021F1348 cluster). 16/16 functions matched as C using src/field/overlay_01_021FE780.c as template: per-file structs (manager 0x824 = void* + 10x sub(0x14) + 10x sub + 10x NNSG3dRenderObj(0x54) + 10x NNSG3dRenderObj), local externs, NO cluster header. New header include/overlay_01_021FE200.h. Field-by-field cb1 (ov01_021FE4FC) matched (flat data copy). 2 real fixes: ov01_021FE230 i<10u; ov01_021FE3F8 position-before-data decl order. Jump-table addr calcs (ov01_021FE2DC/35C) + spawn (ov01_021FE3F8) showed spurious objdiff SIZE diffs (data-region miscount) but matched per compare."
     }
   ],
   "failed": [
