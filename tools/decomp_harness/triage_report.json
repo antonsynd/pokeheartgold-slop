@@ -1,5 +1,5 @@
 {
- "generated": "2026-06-19T07:03:08Z",
+ "generated": "2026-06-19T08:10:28Z",
  "weights": {
   "insn_line": 1.0,
   "unknown_callee": 40.0,
@@ -10,20 +10,6 @@
   "special_section": 500.0
  },
  "queue": [
-  {
-   "file": "asm/unk_02091880.s",
-   "score": 844.1,
-   "special_sections": [],
-   "functions": 16,
-   "insn_lines": 532,
-   "data_only": false,
-   "unknown_callees": [],
-   "jumptable_words": 0,
-   "rodata_bytes": 6242,
-   "arm_functions": 0,
-   "gated_by": [],
-   "cluster_partners": []
-  },
   {
    "file": "asm/unk_0202C034.s",
    "score": 859.0,
@@ -9205,6 +9191,68 @@
    ]
   },
   {
+   "file": "asm/overlay_102.s",
+   "score": 10553.7,
+   "special_sections": [],
+   "functions": 256,
+   "insn_lines": 8991,
+   "data_only": false,
+   "unknown_callees": [
+    "BeginNormalPaletteFade",
+    "DestroyListMenuCursorObj",
+    "FontSystem_NewInit",
+    "IsPaletteFadeFinished",
+    "ListMenuCursorNew",
+    "ListMenuUpdateCursorObj",
+    "LoadUserFrameGfx2",
+    "OamManager_ApplyAndResetBuffers",
+    "OamManager_Create",
+    "OamManager_Free",
+    "PlaySE",
+    "Sound_SetSceneAndPlayBGM",
+    "TextOBJ_Create",
+    "TextOBJ_Destroy",
+    "TextOBJ_SetPaletteNum",
+    "TextOBJ_SetSpritesDrawFlag",
+    "sub_0200E948",
+    "sub_020135AC",
+    "sub_020136B4",
+    "sub_02013910",
+    "sub_02013938",
+    "sub_02013948",
+    "sub_0203A964"
+   ],
+   "jumptable_words": 0,
+   "rodata_bytes": 854,
+   "arm_functions": 0,
+   "gated_by": [
+    "ipa-shared-headers",
+    "param-copyprop-cmp"
+   ],
+   "cluster_partners": [
+    {
+     "file": "asm/unk_02013534.s",
+     "shared_symbols": 10
+    },
+    {
+     "file": "asm/unk_02014DA0.s",
+     "shared_symbols": 3
+    },
+    {
+     "file": "asm/unk_0200B150.s",
+     "shared_symbols": 3
+    },
+    {
+     "file": "asm/unk_0200FA24.s",
+     "shared_symbols": 2
+    },
+    {
+     "file": "asm/render_window.s",
+     "shared_symbols": 2
+    }
+   ]
+  },
+  {
    "file": "asm/overlay_71.s",
    "score": 10633.6,
    "special_sections": [],
@@ -9354,76 +9402,6 @@
    "arm_functions": 0,
    "gated_by": [],
    "cluster_partners": []
-  },
-  {
-   "file": "asm/overlay_102.s",
-   "score": 10873.7,
-   "special_sections": [],
-   "functions": 256,
-   "insn_lines": 8991,
-   "data_only": false,
-   "unknown_callees": [
-    "BeginNormalPaletteFade",
-    "DestroyListMenuCursorObj",
-    "FontSystem_NewInit",
-    "IsPaletteFadeFinished",
-    "ListMenuCursorNew",
-    "ListMenuUpdateCursorObj",
-    "LoadUserFrameGfx2",
-    "OamManager_ApplyAndResetBuffers",
-    "OamManager_Create",
-    "OamManager_Free",
-    "PlaySE",
-    "Sound_SetSceneAndPlayBGM",
-    "TextOBJ_Create",
-    "TextOBJ_Destroy",
-    "TextOBJ_SetPaletteNum",
-    "TextOBJ_SetSpritesDrawFlag",
-    "sub_0200E948",
-    "sub_020135AC",
-    "sub_020136B4",
-    "sub_02013910",
-    "sub_02013938",
-    "sub_02013948",
-    "sub_0203A964",
-    "sub_02091880",
-    "sub_020918C0",
-    "sub_02091C38",
-    "sub_02091C40",
-    "sub_02091C60",
-    "sub_02091C74",
-    "sub_02091C84",
-    "sub_02091CAC"
-   ],
-   "jumptable_words": 0,
-   "rodata_bytes": 854,
-   "arm_functions": 0,
-   "gated_by": [
-    "ipa-shared-headers",
-    "param-copyprop-cmp"
-   ],
-   "cluster_partners": [
-    {
-     "file": "asm/unk_02013534.s",
-     "shared_symbols": 10
-    },
-    {
-     "file": "asm/unk_02091880.s",
-     "shared_symbols": 8
-    },
-    {
-     "file": "asm/unk_02014DA0.s",
-     "shared_symbols": 3
-    },
-    {
-     "file": "asm/unk_0200B150.s",
-     "shared_symbols": 3
-    },
-    {
-     "file": "asm/unk_0200FA24.s",
-     "shared_symbols": 2
-    }
-   ]
   },
   {
    "file": "asm/overlay_43.s",

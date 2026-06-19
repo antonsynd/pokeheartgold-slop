@@ -212,6 +212,18 @@ Clamping consecutive fields: the asm RELOADS a field for its check (ldr field; c
 
 Not every field-by-field cb1 is the holdout from [[camera-family-blockcopy-cb1-matches]]. The holdout reads through a NESTED pointer (work->unk7c=data->manager; ...&data->manager->unk4) which creates an aliasing/read-order schedule MWCC won't reproduce. A cb1 that just copies FLAT fields of the sub_02068D98 data into the work (work->unk18=data->unk8; work->unk14=data->unk4; work->unk10=data->unk0, in descending order) matches first try as plain field assignments. ov01_021FE4FC matched this way (it even keeps a dead `work->unk10 = sub_02068D90(param0)` store that is overwritten by data->unk0 — reproduce it verbatim; MWCC keeps the dead store). Manager-with-arrays files in this family (10x sub-objects + 10x NNSG3dRenderObj) decompile cleanly using src/field/overlay_01_021FE780.c as the template: per-file structs, local externs, NO cluster header. Jump-table address-calculators (ov01_021FE2DC/35C) show spurious objdiff SIZE diffs (data-region mapping-symbol miscount) — confirm with chiri pkg -- compare. The a4-data and VecFx32 position locals in the spawn fn need position declared FIRST (first-declared = highest sp offset).
 
+### A counter read from a u16 array but decremented must be int, not u16  <!-- id: u16-loopcount-decrement-needs-int -->
+
+`u16 c=arr[i]; while(c){...;c--;}` emits lsl#16/lsr#16 truncation on each `c--`; retail used plain `sub rN,#1`. Declare `int c=arr[i];` to drop the truncation. (unk_02091880 ECMenuBuild_Generic subcount.)
+
+### Indexed array access vs walking pointer changes register allocation  <!-- id: index-vs-walking-pointer-regalloc -->
+
+In a loop, a[i]/b[i] (indexed) vs *pa++/*pb++ (explicit walking) can yield different callee-saved register assignments. Switching a dispatch loop from a walking spec++ to indexed table[i] moved MWCC toward retail's allocation (unk_02091880 sub_020918D4: 15 to 8 byte diffs).
+
+### Place an early-out return as the function-end fall-through  <!-- id: early-out-as-fallthrough -->
+
+`if(gate!=0){ body; return X; } return 0;` emits return 0 at the END (retail layout); `if(gate==0) return 0; body; return X;` inlines the return early. Choose the structure matching the asm block order. (unk_02091880 ECMenuBuild_Move: 27 to 0 diffs.)
+
 ## Matching Tricks
 
 ### Small source changes that move codegen  <!-- id: decl-order-tricks -->
@@ -334,6 +346,14 @@ A function calling _dflt/_dadd/_dmul/_dfix is doing double-precision arithmetic 
 
 A switch(state) task fn where every non-terminal case ends return FALSE and one case ends return TRUE: writing `return FALSE;` per case makes MWCC emit a separate movs r0,#0; pop for each. Retail has ONE shared return-0 block at the tail reached by branches, only return TRUE inline. Reproduce with `break;` for every FALSE path (set next state then break) and a single `return FALSE;` after the switch; keep `return TRUE;` inline. case-0 still falls through to case-1 (no break). Seen in unk_02068FC8 sub_02069498.
 
+### Reading arr[k] just before arr+=n: use an explicit pre-advance pointer for the address-form load  <!-- id: read-before-advance-explicit-pointer -->
+
+Source `val=arr[k]; arr+=n;` emits the short offset-form `ldr [base,#k*size]`, but retail often used the address-form `add rX,base,#k*size; ldr [rX]`. To match, write `const T *p = arr+k; arr+=n; val=*p;` -- mutating arr between p and *p stops MWCC folding *p back to an offset load. In unk_02091880 (sub_02091B8C, ECMenuBuild_Generic) this 2-byte read fixed a 68-byte branch-offset CASCADE (one early instruction-size diff shifts every later branch target). `arr[-1]` after advance also yields address-form but emits `subs` not `adds`.
+
+### Cache an array-element offset in a local to flip a commutative-add operand order  <!-- id: cached-offset-flips-add-operand-order -->
+
+`arr[base_field[idx]+k]` may emit `add rd,k,offset` (param first) where retail wanted `add rd,offset,k` (loaded value first). Caching `int off=base_field[idx]; arr[off+k]` makes MWCC emit offset-first. Swapping the SOURCE operands alone did NOT work -- the temp did. Fixed sub_02091C40/C60 in unk_02091880.
+
 ## IPA (-ipa file) Behavior
 
 ### Shared-header signatures are load-bearing across compilation units  <!-- id: ipa-shared-headers -->
@@ -432,6 +452,10 @@ When a file has multiple file-scope `static const` struct objects (e.g. several 
 
 scrcmd_mart-style const arrays of plain immediates (ITEM_*, no relocations) stay in source order and match. But exported const arrays that hold cross-TU symbol refs (function-pointer step tables like gMovementCmdSteps_NNN -> MapObjectMovementCmd*_Step*) are emitted by MWCC as one separate .rodata section EACH, then ordered: first bucketed by section size (all 8-byte arrays, then all 0xc-byte arrays, ...), and within each bucket permuted by a fixed positional permutation Q that depends only on the count, NOT on the names/content. The linker preserves the .o section order, so a per-symbol objdiff PASSES while `chiri pkg -- compare` FAILS on rodata order (cf the unk_0201010C warning). RECIPE to match: (1) write arrays in asm-label order and build; (2) read the placed order `O = objdump -t obj.o | grep 'O .rodata' | awk '{print $NF}'`; (3) for each source index i, Q[i] = index of asmOrder[i] within O; (4) rewrite the source definitions as S[i] = asmOrder[Q[i]]; rebuild and confirm objdump order == asm order, then `chiri pkg -- compare`. Verified on unk_data_020FD978 (17 arrays: 8-byte Q=[2,3,0,4,5,1,9,8,7,6], 0xc-byte Q=[0,1,3,4,2,5,6]). The source ends up in a non-obvious order; that's expected and load-bearing. See [[section-mapping]].
 
+### MWCC accepts forward-declared incomplete static const arrays for rodata-order forward refs  <!-- id: forward-decl-static-const-array -->
+
+static const u16 X[]; (incomplete, no init) is accepted as a forward declaration; define static const u16 X[]={...}; later. Lets a pointer/struct table placed early in rodata order reference word-list arrays defined later, preserving the exact rodata layout. Used throughout unk_02091880 (a 27-entry pointer table + 12-entry dispatch struct table interleaved with ~40 word-list arrays).
+
 ## Recurring File/Module Patterns
 
 ### Task callback pattern (field system)  <!-- id: task-callback-pattern -->
@@ -501,6 +525,14 @@ Two MWCC register-allocator behaviors that resist source control within ONE tran
 ### MWCC inline `asm` quirks: bare [rN] memory operands misassemble — use [rN, #0]; encode jump-table halfwords as `lsl rd,rm,#0`  <!-- id: mwcc-inline-asm-needs-explicit-zero-offset-and-lsl-jumptable -->
 
 Writing a NONMATCHING `asm static void f(...) {...}` block in MWCC sp2p2: (1) A bare memory operand `ldr r0, [r3]` (no offset) misassembles (observed as `ldr r0,[r3,#8]`); ALWAYS write the explicit offset `ldr r0, [r3, #0]` / `str r0, [r4, #0]`. (2) `movs rd, rm` is rejected (parsed as a label → 'unknown assembler instruction mnemonic' / 'label movs redefined'); use `lsl rd, rm, #0` instead. (3) For a Thumb `add pc, rN` jump table, MWCC inline asm does NOT support `.short label-label-2` data directives — encode each jump-table halfword as a `lsl rd, rm, #0` instruction whose machine encoding equals the offset (lsl rd,rm,#0 = 0x0000|(rm<<3)|rd, e.g. 0x0006=`lsl r6,r0,#0`, 0x0012=`lsl r2,r2,#0`, 0x000a=`lsl r2,r1,#0`, 0x0010=`lsl r0,r2,#0`), per src/battle/battle_hp_bar.c. (4) `ldr rN, =symbol` and `ldr rN, =0xVALUE` work; `bl FuncName` to externs/statics works; `.balign` is unsupported. Diagnose a wrong NONMATCHING result by disassembling the built .o (objdump) and byte-comparing; objdiff's per-function SIZE for a jump-table fn is unreliable (data-region $d/$t mapping) — confirm with chiri pkg -- compare. Used to NONMATCHING ov01_02200A08 (camera-family render cb, MWCC list-scheduler tie-break on the scale-copy temp registers).
+
+### Accumulator-vs-induction-var register tie-breaks are sometimes not source-controllable, use NONMATCHING  <!-- id: regalloc-tiebreak-nonmatching -->
+
+Functions can be correct C that matches every instruction except which callee-saved register the accumulator vs an induction var gets (e.g. total/walk in r4/r7, or added/i in r6/r7). Many reorderings (decl order, u32 vs int, result temps, index vs walk) may not flip it. When stuck, NONMATCHING with an asm function. unk_02091880 needed it for sub_020918D4 + ECMenuBuild_TrendySayings.
+
+### MWCC asm functions: ldr =VAL literal pools, blx rN, bl Name all match retail  <!-- id: mwcc-asm-function-pool-and-blx -->
+
+static asm RET f(args){...} with ldr rX,=0xVAL / ldr rX,=symbol builds a dedup-ed literal pool placed after the function (matches retail). blx rN (indirect) and bl Name (relocated extern call) work in inline asm. Combine with known quirks: bare [rN] becomes [rN,#0]; reg-move mov rd,rm rejected (use add/lsl); no .balign. Verified on unk_02091880 sub_020918D4 (blx) + ECMenuBuild_TrendySayings (multiple bl + 2 pool words).
 
 ## Tooling & Build Workflow
 

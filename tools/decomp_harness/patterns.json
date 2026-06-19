@@ -763,6 +763,54 @@
       "category": "ipa",
       "title": "A file gated_by ipa-shared-headers can still be decompiled if it only CALLS the shared-header functions (no signature change)",
       "body": "The ipa-shared-headers blocker (sound.h / unk_02005D10.h family) is about CHANGING a signature in a shared header, which cascades into already-matched callers. A new file that merely CALLS those functions (e.g. PlaySE/StopSE, declared in include/unk_02005D10.h) with their existing signatures needs NO header change, so there is no cascade — just #include the existing header and call them. The triage's `gated_by: ipa-shared-headers` is conservative (flags any file sharing symbols with the blocked cluster); check whether the file actually needs to ADD/CHANGE a declaration before treating it as blocked. overlay_01_021F3114 (a PlayerAvatar turn-task calling PlaySE(SEQ_SE_DP_F209)/StopSE) matched 6/6 this way."
+    },
+    {
+      "id": "read-before-advance-explicit-pointer",
+      "category": "matching-tricks",
+      "title": "Reading arr[k] just before arr+=n: use an explicit pre-advance pointer for the address-form load",
+      "body": "Source `val=arr[k]; arr+=n;` emits the short offset-form `ldr [base,#k*size]`, but retail often used the address-form `add rX,base,#k*size; ldr [rX]`. To match, write `const T *p = arr+k; arr+=n; val=*p;` -- mutating arr between p and *p stops MWCC folding *p back to an offset load. In unk_02091880 (sub_02091B8C, ECMenuBuild_Generic) this 2-byte read fixed a 68-byte branch-offset CASCADE (one early instruction-size diff shifts every later branch target). `arr[-1]` after advance also yields address-form but emits `subs` not `adds`."
+    },
+    {
+      "id": "u16-loopcount-decrement-needs-int",
+      "category": "codegen",
+      "title": "A counter read from a u16 array but decremented must be int, not u16",
+      "body": "`u16 c=arr[i]; while(c){...;c--;}` emits lsl#16/lsr#16 truncation on each `c--`; retail used plain `sub rN,#1`. Declare `int c=arr[i];` to drop the truncation. (unk_02091880 ECMenuBuild_Generic subcount.)"
+    },
+    {
+      "id": "cached-offset-flips-add-operand-order",
+      "category": "matching-tricks",
+      "title": "Cache an array-element offset in a local to flip a commutative-add operand order",
+      "body": "`arr[base_field[idx]+k]` may emit `add rd,k,offset` (param first) where retail wanted `add rd,offset,k` (loaded value first). Caching `int off=base_field[idx]; arr[off+k]` makes MWCC emit offset-first. Swapping the SOURCE operands alone did NOT work -- the temp did. Fixed sub_02091C40/C60 in unk_02091880."
+    },
+    {
+      "id": "index-vs-walking-pointer-regalloc",
+      "category": "codegen",
+      "title": "Indexed array access vs walking pointer changes register allocation",
+      "body": "In a loop, a[i]/b[i] (indexed) vs *pa++/*pb++ (explicit walking) can yield different callee-saved register assignments. Switching a dispatch loop from a walking spec++ to indexed table[i] moved MWCC toward retail's allocation (unk_02091880 sub_020918D4: 15 to 8 byte diffs)."
+    },
+    {
+      "id": "early-out-as-fallthrough",
+      "category": "codegen",
+      "title": "Place an early-out return as the function-end fall-through",
+      "body": "`if(gate!=0){ body; return X; } return 0;` emits return 0 at the END (retail layout); `if(gate==0) return 0; body; return X;` inlines the return early. Choose the structure matching the asm block order. (unk_02091880 ECMenuBuild_Move: 27 to 0 diffs.)"
+    },
+    {
+      "id": "regalloc-tiebreak-nonmatching",
+      "category": "nonmatching",
+      "title": "Accumulator-vs-induction-var register tie-breaks are sometimes not source-controllable, use NONMATCHING",
+      "body": "Functions can be correct C that matches every instruction except which callee-saved register the accumulator vs an induction var gets (e.g. total/walk in r4/r7, or added/i in r6/r7). Many reorderings (decl order, u32 vs int, result temps, index vs walk) may not flip it. When stuck, NONMATCHING with an asm function. unk_02091880 needed it for sub_020918D4 + ECMenuBuild_TrendySayings."
+    },
+    {
+      "id": "mwcc-asm-function-pool-and-blx",
+      "category": "nonmatching",
+      "title": "MWCC asm functions: ldr =VAL literal pools, blx rN, bl Name all match retail",
+      "body": "static asm RET f(args){...} with ldr rX,=0xVAL / ldr rX,=symbol builds a dedup-ed literal pool placed after the function (matches retail). blx rN (indirect) and bl Name (relocated extern call) work in inline asm. Combine with known quirks: bare [rN] becomes [rN,#0]; reg-move mov rd,rm rejected (use add/lsl); no .balign. Verified on unk_02091880 sub_020918D4 (blx) + ECMenuBuild_TrendySayings (multiple bl + 2 pool words)."
+    },
+    {
+      "id": "forward-decl-static-const-array",
+      "category": "data-sections",
+      "title": "MWCC accepts forward-declared incomplete static const arrays for rodata-order forward refs",
+      "body": "static const u16 X[]; (incomplete, no init) is accepted as a forward declaration; define static const u16 X[]={...}; later. Lets a pointer/struct table placed early in rodata order reference word-list arrays defined later, preserving the exact rodata layout. Used throughout unk_02091880 (a 27-entry pointer table + 12-entry dispatch struct table interleaved with ~40 word-list arrays)."
     }
   ]
 }

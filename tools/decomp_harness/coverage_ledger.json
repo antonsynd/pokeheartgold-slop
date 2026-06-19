@@ -1,12 +1,12 @@
 {
  "summary": {
-  "generated": "2026-06-19T07:03:08Z",
+  "generated": "2026-06-19T08:10:28Z",
   "by_status": {
    "matched": {
-    "files": 63,
-    "functions": 636,
-    "insn_lines": 13378,
-    "text_bytes_est": 29476
+    "files": 64,
+    "functions": 652,
+    "insn_lines": 13910,
+    "text_bytes_est": 30580
    },
    "blocked": {
     "files": 28,
@@ -15,10 +15,10 @@
     "text_bytes_est": 24904
    },
    "pending": {
-    "files": 206,
-    "functions": 19112,
-    "insn_lines": 928247,
-    "text_bytes_est": 2073112
+    "files": 205,
+    "functions": 19096,
+    "insn_lines": 927715,
+    "text_bytes_est": 2072008
    },
    "upstream": {
     "files": 374,
@@ -29,9 +29,9 @@
   },
   "function_totals": {
    "tracked": 20121,
-   "matched": 636,
+   "matched": 652,
    "partial_in_blocked": 50,
-   "pending": 19112
+   "pending": 19096
   },
   "blockers": [
    {
@@ -30415,8 +30415,8 @@
   },
   {
    "file": "asm/unk_02091880.s",
-   "lsf_kind": "asm",
-   "status": "pending",
+   "lsf_kind": "src",
+   "status": "matched",
    "lines": 3749,
    "function_count": 16,
    "text_bytes_est": 1104,
@@ -30459,114 +30459,115 @@
      "mode": "thumb",
      "insns": 27,
      "size_est": 62,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "sub_020918C0",
      "mode": "thumb",
      "insns": 9,
      "size_est": 22,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "sub_020918D4",
      "mode": "thumb",
      "insns": 32,
      "size_est": 66,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ECMenuBuild_Pokemon",
      "mode": "thumb",
      "insns": 46,
      "size_est": 96,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ECMenuBuild_Move",
      "mode": "thumb",
      "insns": 39,
      "size_est": 80,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ECMenuBuild_TrendySayings",
      "mode": "thumb",
      "insns": 54,
      "size_est": 114,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ECMenuBuild_Greetings",
      "mode": "thumb",
      "insns": 64,
      "size_est": 134,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ECMenuBuild_Generic",
      "mode": "thumb",
      "insns": 65,
      "size_est": 130,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "sub_02091B44",
      "mode": "thumb",
      "insns": 33,
      "size_est": 68,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "sub_02091B8C",
      "mode": "thumb",
      "insns": 84,
      "size_est": 168,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "sub_02091C38",
      "mode": "thumb",
      "insns": 5,
      "size_est": 10,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "sub_02091C40",
      "mode": "thumb",
      "insns": 15,
      "size_est": 32,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "sub_02091C60",
      "mode": "thumb",
      "insns": 10,
      "size_est": 20,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "sub_02091C74",
      "mode": "thumb",
      "insns": 8,
      "size_est": 16,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "sub_02091C84",
      "mode": "thumb",
      "insns": 18,
      "size_est": 40,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "sub_02091CAC",
      "mode": "thumb",
      "insns": 23,
      "size_est": 46,
-     "status": "pending"
+     "status": "matched"
     }
-   ]
+   ],
+   "source": "retained_asm"
   },
   {
    "file": "asm/application/delete_savedata.s",
