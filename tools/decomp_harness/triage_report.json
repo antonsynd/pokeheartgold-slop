@@ -1,5 +1,5 @@
 {
- "generated": "2026-06-19T13:19:36Z",
+ "generated": "2026-06-19T14:10:25Z",
  "weights": {
   "insn_line": 1.0,
   "unknown_callee": 40.0,
@@ -10,20 +10,6 @@
   "special_section": 500.0
  },
  "queue": [
-  {
-   "file": "asm/overlay_01_021E7FDC.s",
-   "score": 860.6,
-   "special_sections": [],
-   "functions": 12,
-   "insn_lines": 860,
-   "data_only": false,
-   "unknown_callees": [],
-   "jumptable_words": 0,
-   "rodata_bytes": 12,
-   "arm_functions": 0,
-   "gated_by": [],
-   "cluster_partners": []
-  },
   {
    "file": "asm/unk_0203A3B0.s",
    "score": 875.6,
@@ -3876,6 +3862,20 @@
    ]
   },
   {
+   "file": "asm/render_window.s",
+   "score": 2655.4,
+   "special_sections": [],
+   "functions": 40,
+   "insn_lines": 2650,
+   "data_only": false,
+   "unknown_callees": [],
+   "jumptable_words": 0,
+   "rodata_bytes": 108,
+   "arm_functions": 0,
+   "gated_by": [],
+   "cluster_partners": []
+  },
+  {
    "file": "asm/overlay_111.s",
    "score": 2694.2,
    "special_sections": [],
@@ -4106,33 +4106,6 @@
     {
      "file": "asm/unk_020658D4.s",
      "shared_symbols": 16
-    }
-   ]
-  },
-  {
-   "file": "asm/render_window.s",
-   "score": 2935.4,
-   "special_sections": [],
-   "functions": 40,
-   "insn_lines": 2650,
-   "data_only": false,
-   "unknown_callees": [
-    "ov01_021E8298",
-    "ov01_021E8378",
-    "ov01_021E83F0",
-    "ov01_021E8404",
-    "ov01_021E8418",
-    "ov01_021E851C",
-    "ov01_021E86F4"
-   ],
-   "jumptable_words": 0,
-   "rodata_bytes": 108,
-   "arm_functions": 0,
-   "gated_by": [],
-   "cluster_partners": [
-    {
-     "file": "asm/overlay_01_021E7FDC.s",
-     "shared_symbols": 7
     }
    ]
   },
@@ -9643,7 +9616,7 @@
   },
   {
    "file": "asm/overlay_03.s",
-   "score": 11980.6,
+   "score": 11860.6,
    "special_sections": [],
    "functions": 179,
    "insn_lines": 9192,
@@ -9661,10 +9634,7 @@
     "LoadUserFrameGfx2",
     "PlaySE",
     "Save_ApricornBox_Get",
-    "UnkFieldSpriteRenderer_ov01_021E7FDC_Init",
-    "UnkFieldSpriteRenderer_ov01_021E7FDC_Release",
     "ov01_021E636C",
-    "ov01_021E81F0",
     "ov01_021E8970",
     "ov01_021F3B0C",
     "ov01_021F3B2C",

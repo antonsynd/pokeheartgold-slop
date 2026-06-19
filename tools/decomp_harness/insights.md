@@ -232,6 +232,10 @@ For arr[i].fieldA, arr[i].fieldB, ... MWCC normally hoists i*stride into one reg
 
 `u16 f(){ int x; ...; return x; }` normally truncates with lsl#16/lsr#16 on return. Retail sometimes ELIDES it when x is provably <=0xFFFF (e.g. x = i+1, i<32). If your structure doesn't trigger MWCC's range analysis you get the extra truncation; u16 local instead makes it worse (truncates on assign too). Not reliably source-controllable -> NONMATCHING. (unk_0202C034 sub_0202C318.)
 
+### FX32_CONST(x) is round-half-away-from-zero (soft-float); plain x<<FX32_SHIFT is integer  <!-- id: fx32-const-rounds-vs-plain-shift -->
+
+FX32_CONST(x)=FX_F32_TO_FX32(x)=(fx32)((x>0)?x*4096+0.5f:x*4096-0.5f) -> emits _fflt/_fadd(or _fsub 0.5)/_ffix. A position computed with that rounding must use FX32_CONST; one the asm does with a plain `lsl #0xc` must use `x << FX32_SHIFT` (no float). Two sibling sprite-template builders in overlay_01_021E7FDC differed exactly this way (ov01_021E81F0 = shift, ov01_021E851C = FX32_CONST). FX32_CONST(const) folds at compile time (e.g. GX_LCD_SIZE_Y -> 0xc0000).
+
 ## Matching Tricks
 
 ### Small source changes that move codegen  <!-- id: decl-order-tricks -->
@@ -508,6 +512,10 @@ A recurring module shape: an exported registrar `void reg(void *arg){ sub_020341
 
 Friend/record save chunks often hold several arrays addressed by the same index but different stride/base: e.g. header[0x40] + DWCFriendData[32]@0xc (off 0x40) + BattleRecord[32]@0x38 (off 0x1c0), total 0x8c0. Model as nested struct arrays at byte offsets; accessors compute base + idx*stride + field and MWCC folds array-offset+field into one (often large, mov+lsl or ldr-pool) register offset. Jump-table get/set dispatchers map an enum to fields. (unk_0202C034, save chunk SAVE_UNK_25.)
 
+### include/field/ov01_*.h often predefines the work struct + template types + signatures  <!-- id: field-overlay-header-predefines-struct -->
+
+Before modeling a field/overlay struct from scratch, check include/field/<name>.h (and the types' header, e.g. unk_02009D48.h / unk_0200A090.h for sprite-resource managers). For overlay_01_021E7FDC the header already had UnkStruct_ov01_021E7FDC (SpriteList + G2dRenderer + SpriteResourceHeaderList + GF_2DGfxResMan[6] + GF_2DGfxResObjList[6] + u16 count/heapID) and SpriteTemplate_ov01_021E81F0, plus 3 signatures to match. Enum params (GfGfxResType, NNS_G2D_VRAM_TYPE, HeapID from a u16 field) need explicit (free) casts or MWCC errors.
+
 ## NONMATCHING Fallback
 
 ### NONMATCHING inline asm syntax (MWCC)  <!-- id: nonmatching-inline-asm-syntax -->
@@ -545,6 +553,10 @@ Functions can be correct C that matches every instruction except which callee-sa
 ### MWCC asm functions: ldr =VAL literal pools, blx rN, bl Name all match retail  <!-- id: mwcc-asm-function-pool-and-blx -->
 
 static asm RET f(args){...} with ldr rX,=0xVAL / ldr rX,=symbol builds a dedup-ed literal pool placed after the function (matches retail). blx rN (indirect) and bl Name (relocated extern call) work in inline asm. Combine with known quirks: bare [rN] becomes [rN,#0]; reg-move mov rd,rm rejected (use add/lsl); no .balign. Verified on unk_02091880 sub_020918D4 (blx) + ECMenuBuild_TrendySayings (multiple bl + 2 pool words).
+
+### MWCC inline asm cannot call soft-float runtime (_ffix/_fadd/_fflt/_fsub) -> write such functions as C  <!-- id: soft-float-not-callable-in-inline-asm -->
+
+`bl _ffix` etc. in an `asm` function fails with 'undefined label _ffix' (MWCC treats the leading-underscore runtime symbol as a local label). So a NONMATCHING float function can't be inline asm. Write it as C instead and let MWCC emit the soft-float itself (e.g. via FX32_CONST). In overlay_01_021E7FDC the complex float-rounding builder ov01_021E851C was kept as C (and matched); only the integer register-alloc tie-breaks needed inline asm.
 
 ## Tooling & Build Workflow
 

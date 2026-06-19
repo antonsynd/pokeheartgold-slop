@@ -538,6 +538,14 @@
       "attempts": 1,
       "result": "matched",
       "note": "compare-verified (chiri pkg -- compare OK, full ROM SHA1). Friend battle-record save accessor (chunk SAVE_UNK_25): 0x8C0 struct = 0x40 header + 32x0xc DWCFriendData + 32x0x38 BattleRecord (2 OT-name u16[8], date, 8 u16 battle-count stats clamped to 0x270F, type marker). Existing opaque header completed in .c. 20/25 functions matched as C incl. 2 jump-table get/set dispatchers (sub_0202C090/C190 - objdiff SIZE artifact, byte-confirmed match via nm+compare); 5 NONMATCHING inline asm (sub_0202C2F8/C318/C338/C46C/C4F0) - MWCC-internal tie-breaks: accumulator/counter regalloc, u16 return-trunc elision, arg-address constant folding, idx*stride CSE under register pressure. .text -10 object diff benign (linker per-function aligns)."
+    },
+    {
+      "file": "asm/overlay_01_021E7FDC.s",
+      "functions": 12,
+      "lines": 976,
+      "attempts": 1,
+      "result": "matched",
+      "note": "compare-verified (chiri pkg -- compare OK, full ROM SHA1). Field sprite-resource renderer (UnkStruct_ov01_021E7FDC: SpriteList + G2dRenderer + SpriteResourceHeaderList + GF_2DGfxResMan[6] + GF_2DGfxResObjList[6]; header predefined the struct + SpriteTemplate_ov01_021E81F0). 9/12 matched as C INCLUDING the complex float-rounding allocated-wrapper builder ov01_021E851C (FX32_CONST round-half-away-from-zero). 3 NONMATCHING inline asm (Init, ov01_021E81F0, ov01_021E8298) - MWCC register-allocation/constant-reuse tie-breaks (none use soft-float). Key lessons: soft-float (_ffix etc.) NOT callable in inline asm -> float NONMATCHING must be C; FX32_CONST rounds vs plain <<FX32_SHIFT integer; enum params need free casts."
     }
   ],
   "failed": [
