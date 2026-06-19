@@ -240,6 +240,14 @@ FX32_CONST(x)=FX_F32_TO_FX32(x)=(fx32)((x>0)?x*4096+0.5f:x*4096-0.5f) -> emits _
 
 Pattern `s = Heap_Alloc(...); s->b = a->b; ... f(a->b)`: retail loads a->b once (e.g. r2) and keeps it live across the s->b store, reusing it for the later arg. MWCC cannot prove the Heap_Alloc'd s doesn't alias a, so the store to s->b invalidates the cached a->b -> it either reloads a->b (extra ldr, +2) or, if you hand-cache it in a local, the two field loads get scheduled in the wrong order (load r2 before r0). No source form recovers retail's 'one load kept live, only s->unk0 reloaded' schedule. Resolve via NONMATCHING inline asm. Seen on unk_020773AC sub_02077604 (a0->unk0 + a0->unk4 into a fresh struct).
 
+### Single-bit extract `((u32)x<<31)>>31` folds to `& 1` (movs/ands); use a bitfield-union member to keep the lsls#31;lsrs#31 form  <!-- id: single-bit-extract-folds-to-and-use-bitfield -->
+
+MWCC folds the 1-bit shift-extract `((u32)x << 31) >> 31` into `movs #1; ands` (i.e. `x & 1`), which mismatches retail's `lsls r0,#31; lsrs r0,#31`. MULTI-bit field extracts like `((u32)x << 27) >> 29` (3 bits) are NOT folded and match the shift form directly. Fix for the single-bit case: read it through a `union { u8 raw; struct { u8 b0:1; u8 b1:1; u8 b2_4:3; u8 b5_7:3; } bits; }` member (`f->bits.b0`) — MWCC emits the lsls/lsrs extract for bitfield reads. (unk_0202D230 sub_0202D284 case 7.) Setters in the same file used manual bic/orr masks, so don't assume a bitfield for the write side.
+
+### Redundant (u16) truncation before strh: drop it in a void fn, but a function that RETURNS the value keeps it via a materialized temp  <!-- id: force-pre-strh-truncation-via-returned-temp -->
+
+Retail often has `lsls r0,#16; lsrs r0,#16; strh r0,[..]` — an explicit (u16) cast before a halfword store that looks redundant (strh truncates anyway). In a `void` function MWCC ALWAYS drops it, and no C form (`(u16)expr`, `u16 t=expr;field=t;`) brings it back. The tell: the asm leaves the truncated value in r0 at `pop` — the function actually RETURNS it (a `void` prototype is often a decomp error when the sole caller ignores the result). Fix: make it return the value and write `u16 t = expr; field = t; return t;` (materialize once, reuse for store AND return). Do NOT write `return field = expr;` — that stores then RELOADS the field (ldrh after strh) and shuffles regalloc. Updating the return type in a frozen header was IPA-safe here because the only caller discards the result. (unk_0202D230 sub_0202D4FC.)
+
 ## Matching Tricks
 
 ### Small source changes that move codegen  <!-- id: decl-order-tricks -->
@@ -566,6 +574,10 @@ static asm RET f(args){...} with ldr rX,=0xVAL / ldr rX,=symbol builds a dedup-e
 
 Resolves [[objdiff-match-but-compare-fails-trailing-pad]]. When a function's matched C body is 2-mod-4 bytes and retail .s pads it with `.balign 4, 0`, MWCC's per-function .text section omits the pad. The linker does NOT always restore it: notably for the LAST function in the TU, the next object's .text needs only 2-byte (Thumb) alignment, so it slots in 2 bytes early -> `chiri pkg -- compare` fails main.sbin with .text -2 even at full 16/16 objdiff MATCH. FIX: keep the matched C under `#ifdef NONMATCHING`, and under `#else` emit the function as inline `asm` (non-static if `.public`) transcribing the matched instructions, then a trailing `lsl r0, r0, #0` which assembles to 0x0000 = the `.balign 4,0` fill, carrying the pad inside the function's own section. Proven on unk_020773AC sub_02077664 (last fn): compare went FAIL->OK. Likely un-blocks unk_0203A3B0 (apply per 2-mod-4 function). Diagnose the culprit via `nm --print-size` per function (the one 2 bytes short).
 
+### _s32_div_f (integer-division runtime) is NOT callable from MWCC inline asm — like the soft-float helpers  <!-- id: s32-div-runtime-not-callable-in-inline-asm -->
+
+`bl _s32_div_f` inside an `asm` function fails to link with "undefined label '_s32_div_f'", exactly like the soft-float runtime (_ffix/_fadd/_fflt, see [[soft-float-not-callable-in-inline-asm]]). So any function that needs signed `/` or `%` (which MWCC lowers to _s32_div_f) CANNOT be done as NONMATCHING inline asm — it must be matched as C. Note `/` and `%` work fine when MWCC emits them from C (e.g. `x / 1000` matched directly). Implication: division/modulo functions are forced to be C matches; budget extra iterations rather than reaching for inline asm. (unk_0202D230 sub_0202D4FC.)
+
 ## Tooling & Build Workflow
 
 ### objdiff.py usage and reliability  <!-- id: objdiff-usage -->
@@ -637,3 +649,7 @@ MWCC emits each function into its own section; the linker aligns/places them at 
 ### objdiff whole-file MATCH can still fail compare: per-function .text sections drop 2-mod-4 funcs' .balign trailing pad  <!-- id: objdiff-match-but-compare-fails-trailing-pad -->
 
 objdiff masks trailing function padding, so a file can show 20/20 MATCH yet `chiri pkg -- compare` fails main.sbin. Cause: retail .s pads each function with `.balign 4,0`; a C function whose body is 2-mod-4 bytes compiles into a per-function .text section (2**2-aligned) WITHOUT that trailing 0x00 pad, so .text is short (e.g. -6 for 3 such funcs) and the linked image differs. CONTRAST [[text-section-size-diff-benign-linker-aligns]]: a section-size diff is benign only when it's section-END padding; a per-2-mod-4-function shortfall is NOT. Diagnose by comparing nm --print-size per function (asm vs C) for any function 2 bytes short. Only compare is authoritative. (unk_0203A3B0 hit this; reverted.)
+
+### objdiff reports spurious SIZE diffs on inline-jump-table (switch) functions — the table bytes disassemble as instructions  <!-- id: objdiff-false-positive-inline-jumptable-disasm -->
+
+A `switch` that MWCC lowers to `add pc, rN` + an inline .short/.word offset table will show objdiff `SIZE X vs Y` mismatches even when the function is byte-identical. Two artifacts: (1) objdiff disassembles the jump-table DATA bytes as Thumb instructions (movs/lsls), so the asm .o (table rendered as .word) and the C .o (table rendered as code) appear to differ in instruction count; (2) branch targets render as ABSOLUTE addresses that differ between the two .o files (e.g. `bhi d2` vs `bhi 7e`) although both resolve to the same `+0xNN` offset. To check for REAL diffs, filter out movs/lsls/.word/.short/`+0x4>` reloc lines and compare the `+0xNN` offset suffixes; then trust `chiri pkg -- compare`. Confirmed on unk_0202D230 sub_0202D284/D308/FrontierData_BattlePointAction (all byte-matches despite objdiff SIZE diffs).

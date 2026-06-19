@@ -16,7 +16,7 @@ u32 sub_0202D450(FrontierData *frontierData, u32 a1);
 u32 sub_0202D488(FrontierData *frontierData, u32 a1);
 void sub_0202D4B8(FrontierData *frontierData, u32 a1, void *a2);
 void sub_0202D4DC(FrontierData *frontierData, s32 a1, UnkStruct_02069528 *a2);
-void sub_0202D4FC(FrontierData *frontierData, u32 a1);
+u16 sub_0202D4FC(FrontierData *frontierData, u32 a1);
 s16 sub_0202D564(FrontierData *frontierData);
 u32 sub_0202D57C(void *a0, u32 a1, u32 a2);
 u32 sub_0202D5C4(FrontierData *frontierData, u32 a1, u16 a2);

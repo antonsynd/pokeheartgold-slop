@@ -554,6 +554,14 @@
       "attempts": 1,
       "result": "matched",
       "note": "compare-verified (chiri pkg -- compare OK, full ROM SHA1). 3D particle-emitter / SPL scene setup (UnkStruct_02077604 {int unk0 heapID; int unk4 fileId; SPLEmitter *unkC} 0x10; GF_3DVramMan + fog/clear-color + tex/pltt alloc callbacks). 12 pure C + sub_02077664 C-matched-with-asm-pad-wrapper + 3 NONMATCHING. KEY: discovered the FIX for the 2-mod-4 trailing-pad blocker that reverted unk_0203A3B0 -- sub_02077664 (last fn, body 0x12 matches byte-for-byte) lost the retail .balign 4,0 pad under MWCC per-function .text (linker slots next object 2 bytes early since .text needs only 2-byte align), compare .text -2; fixed by inline-asm wrapper + trailing `lsl r0,r0,#0` (=0x0000) carrying the pad -> compare FAIL->OK. See pattern trailing-pad-fix-inline-asm-lsl-r0; unk_0203A3B0 now likely re-attemptable. NONMATCHING: sub_0207741C, sub_020775C4 (opaque SPLEmitter offsets), sub_02077604 (MWCC won't CSE a0->unk4 across the s->unk4 store into the fresh Heap_Alloc'd struct -> field load-order tie, pattern alias-blocks-cse-across-fresh-alloc-struct-store)."
+    },
+    {
+      "file": "asm/unk_0202D230.s",
+      "functions": 40,
+      "lines": 1105,
+      "attempts": 1,
+      "result": "matched",
+      "note": "compare-verified (chiri pkg -- compare OK, full ROM SHA1). Frontier-data save accessor + mail handling (FrontierData 0x168 struct via Save_Frontier_GetStatic+0x954; +0x8E0 field-dispatch block; +0xADC record-store block; MailMessage[] at +0xABC stride 8; MailMessageTemplate[4] rodata). 35 pure C + 5 NONMATCHING. NONMATCHING: sub_0202D3DC (reads implicit r0 under a (void) prototype passed through from caller sub_0204A6A0), sub_0202D564 (s16 return forces ldrsh+reg-offset vs retail ldrh), sub_0202D678/D720 (signed-modulo-by-8 ror idiom + manual byte packing), sub_0202D804 (recomputes record base each access + uses pushed r3 slot as scratch). KEY new insights: _s32_div_f NOT callable in inline asm (so sub_0202D4FC forced to C, returns u16 via materialized temp -- header void->u16, IPA-safe since sole caller discards); objdiff SIZE false-positives on inline jump tables (sub_0202D284/D308/BattlePointAction byte-match despite reported diffs); single-bit extract folds to &1 -> bitfield union; u16 accumulator forces unwanted trunc+unsigned-cmp -> use int sum."
     }
   ],
   "failed": [
