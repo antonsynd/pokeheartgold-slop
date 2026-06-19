@@ -625,3 +625,7 @@ A function with an inline Thumb switch jump table (add pc,r0 then .short offset 
 ### A .text section-size diff between asm and C objects is often benign (linker re-aligns per-function)  <!-- id: text-section-size-diff-benign-linker-aligns -->
 
 MWCC emits each function into its own section; the linker aligns/places them at link time. So an objdiff `.text section size` diff, AND a per-function nm-size diff equal to a trailing `.balign 4,0` pad, do NOT necessarily mean a mismatch. unk_0202C034 had .text -10 (sub_0202C46C nm size 0x42 vs asm 0x44) yet `chiri pkg -- compare` PASSED. Always confirm with compare, never reject on section size alone.
+
+### objdiff whole-file MATCH can still fail compare: per-function .text sections drop 2-mod-4 funcs' .balign trailing pad  <!-- id: objdiff-match-but-compare-fails-trailing-pad -->
+
+objdiff masks trailing function padding, so a file can show 20/20 MATCH yet `chiri pkg -- compare` fails main.sbin. Cause: retail .s pads each function with `.balign 4,0`; a C function whose body is 2-mod-4 bytes compiles into a per-function .text section (2**2-aligned) WITHOUT that trailing 0x00 pad, so .text is short (e.g. -6 for 3 such funcs) and the linked image differs. CONTRAST [[text-section-size-diff-benign-linker-aligns]]: a section-size diff is benign only when it's section-END padding; a per-2-mod-4-function shortfall is NOT. Diagnose by comparing nm --print-size per function (asm vs C) for any function 2 bytes short. Only compare is authoritative. (unk_0203A3B0 hit this; reverted.)

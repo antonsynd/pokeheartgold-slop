@@ -776,6 +776,12 @@
       "functions_matched": 16,
       "result": "deferred",
       "note": "BG-tilemap window/sprite manager. 16/21 matched (constructor, destructor, copy fns, getters/setters, update). 5 deferred: sub_020195F4 (init spill-timing), sub_020196E8 + sub_0201980C (clip copy/fill regalloc wall), sub_020197F4 (1-reg swap), sub_02019A60 (loop regalloc). WIP C committed; header over-widening types fixed. main.lsf reverted to asm."
+    },
+    {
+      "file": "asm/unk_0203A3B0.s",
+      "functions": 20,
+      "result": "failed",
+      "note": "REVERTED. Reached 20/20 objdiff (17 C + 3 NONMATCHING inline asm for VRAM/OAM/palette-load A4D4/A59C/A700; data sections modeled, .data/.rodata match) BUT `chiri pkg -- compare` fails main.sbin SHA1. Root: 3 functions (sub_0203A478/A880/A964) compile 2-mod-4; retail .s pads each with `.balign 4,0` (0x00). MWCC emits per-function .text sections (2**2-aligned) WITHOUT the trailing pad -> .text 0x626 vs 0x62c (-6); the linked main differs (alignment-fill/layout). objdiff masks the trailing pad so it shows MATCH. Needs: single-.text emission, or all-functions-4-aligned, or explicit 0x00 trailing pad. HUD wifi/world-map OBJ sprite manager; complex (direct OAM/DMA/GX-bank MMIO + 8-param ctor + .data string table)."
     }
   ],
   "in_progress": [],
