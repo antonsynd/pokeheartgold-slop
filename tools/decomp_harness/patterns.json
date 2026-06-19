@@ -715,6 +715,36 @@
       "category": "data-sections",
       "title": "Data file with many exported const arrays that contain RELOCATIONS (e.g. function pointers): MWCC -ipa file emits one .rodata section per symbol, grouped by size and PERMUTED within each size-group by a fixed positional permutation. Reorder the source to invert it.",
       "body": "scrcmd_mart-style const arrays of plain immediates (ITEM_*, no relocations) stay in source order and match. But exported const arrays that hold cross-TU symbol refs (function-pointer step tables like gMovementCmdSteps_NNN -> MapObjectMovementCmd*_Step*) are emitted by MWCC as one separate .rodata section EACH, then ordered: first bucketed by section size (all 8-byte arrays, then all 0xc-byte arrays, ...), and within each bucket permuted by a fixed positional permutation Q that depends only on the count, NOT on the names/content. The linker preserves the .o section order, so a per-symbol objdiff PASSES while `chiri pkg -- compare` FAILS on rodata order (cf the unk_0201010C warning). RECIPE to match: (1) write arrays in asm-label order and build; (2) read the placed order `O = objdump -t obj.o | grep 'O .rodata' | awk '{print $NF}'`; (3) for each source index i, Q[i] = index of asmOrder[i] within O; (4) rewrite the source definitions as S[i] = asmOrder[Q[i]]; rebuild and confirm objdump order == asm order, then `chiri pkg -- compare`. Verified on unk_data_020FD978 (17 arrays: 8-byte Q=[2,3,0,4,5,1,9,8,7,6], 0xc-byte Q=[0,1,3,4,2,5,6]). The source ends up in a non-obvious order; that's expected and load-bearing. See [[section-mapping]]."
+    },
+    {
+      "id": "flags-byte-union-manual-mask-bit0",
+      "category": "codegen",
+      "title": "A flags byte written via manual mask at bit0 + bitfields at other bits needs a union {u8 raw; struct bits}",
+      "body": "When a byte holds several 1-bit flags set by different functions and the asm shows NO (u8) narrow for the bit-0 flag (just ldrb; bic #1; and #1(val); orr; strb) but DOES narrow for bits 1-4 ((u8)val via lsls#24/lsrs#24 then the <<31>>(31-pos) insert), the bit-0 write is a MANUAL mask `b->raw = (b->raw & ~1) | (val & 1)` while the others are bitfield assignments. A bitfield assignment of an int value ALWAYS narrows to the u8 storage first; at bit position 0 that yields a spurious (u8) the retail build lacks. Model as union { u8 raw; struct { u8 flag0:1; u8 flag1:1; ... } bits; } and use raw for the bit-0 manual mask, .bits.flagN for the rest (those match plain `= val`). Seen in unk_02068FC8: sub_020692A0 a0->bit0 (manual) vs sub_020692C4/308/3AC gender/dexEnabled/a1/sigExists->bits."
+    },
+    {
+      "id": "two-rmw-clear-is-bitfield-struct",
+      "category": "codegen",
+      "title": "`x &= ~1; x &= 1;` as TWO separate load-modify-stores = a bitfield struct {u32 a:1; u32 b:31}, not a plain u32",
+      "body": "An array element zeroed with the asm emitting TWO full RMW (ldr;bic #1;str; ldr;and #1;str) — not one merged ldr;bic;and;str — is a bitfield struct: `struct { u32 bit0:1; u32 rest:31; } arr[N];` written `arr[i].bit0 = 0; arr[i].rest = 0;` (bit0=0 -> bic #1; rest=0 -> and #1 keeping bit0). A plain `u32 arr[N]` with `arr[i] &= ~1; arr[i] &= 1;` makes MWCC merge the two ops AND strength-reduce the index to a walking pointer; the bitfield-array form keeps &arr loop-invariant with [base, i*4] indexing and two distinct stores. Seen in unk_02068FC8 sub_0206940C (rec->unk48[8])."
+    },
+    {
+      "id": "adjacent-field-store-forces-reload",
+      "category": "codegen",
+      "title": "An intervening store to a sibling field through the same base pointer invalidates MWCC's cached value -> forces a reload",
+      "body": "Clamping consecutive fields: the asm RELOADS a field for its check (ldr field; cmp) for some fields but compares the source register directly for others. The reload appears when another store through the same base sits BETWEEN the field's store and its check (MWCC drops the cached value after any same-base store, conservative aliasing). To get the reload form: emit both stores first then both checks (`s->a=x; s->b=y; if(s->a>M)..; if(s->b>M)..;`). To get the no-reload form: keep store and check adjacent with no intervening same-base store (`s->a=x; if(x>M)..;`). Seen in unk_02068FC8 sub_020693AC (unk3c/unk40 reload via the in-between store; unk38/unk44 compare the param)."
+    },
+    {
+      "id": "state-machine-break-shared-return",
+      "category": "matching-tricks",
+      "title": "Task/state-machine fns: break to ONE trailing `return FALSE` for a shared return-0 epilogue; keep `return TRUE` inline",
+      "body": "A switch(state) task fn where every non-terminal case ends return FALSE and one case ends return TRUE: writing `return FALSE;` per case makes MWCC emit a separate movs r0,#0; pop for each. Retail has ONE shared return-0 block at the tail reached by branches, only return TRUE inline. Reproduce with `break;` for every FALSE path (set next state then break) and a single `return FALSE;` after the switch; keep `return TRUE;` inline. case-0 still falls through to case-1 (no break). Seen in unk_02068FC8 sub_02069498."
+    },
+    {
+      "id": "single-tu-split-param-and-reduction-spill-nonmatching",
+      "category": "nonmatching",
+      "title": "Single-TU split-param (u8 stack arg) and a computed-reduction spill in the lowest slot can be unmatchable -> NONMATCHING",
+      "body": "Two MWCC register-allocator behaviors that resist source control within ONE translation unit: (1) Split-param: a callee reads a u8 STACK param via ldrb (no narrow) while the retail caller passes the int with no narrow; with caller+callee in the SAME TU there is one prototype — u8 makes the caller narrow (lsls#24/lsrs#24 before the stack store), int makes the callee narrow for its bitfield/compare. The split-header trick (different prototype per file) does not apply. (2) A computed reduction temp (sum of several already-spilled values) can be assigned the LOWEST spill slot (sp+0x20) instead of its computation-order slot, shifting every earlier spill by +4 — not fixable by declaration order, by moving the decl, or by extracting the embedded call. When both hit one large function, wrap it as `asm` NONMATCHING and keep the file's other functions as matching C (the ROM still matches). Seen in unk_02068FC8 sub_02068FC8 (a1 stack param to sub_02069308; the `sum` GameStats reduction)."
     }
   ]
 }

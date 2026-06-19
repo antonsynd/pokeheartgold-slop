@@ -490,6 +490,14 @@
       "functions": 0,
       "result": "matched",
       "note": "DATA-ONLY: 17 movement-command step function-pointer tables. Required inverting MWCC's per-symbol .rodata section permutation (size-bucketed, positional) by reordering source definitions."
+    },
+    {
+      "file": "asm/unk_02068FC8.s",
+      "lines": 679,
+      "functions": 12,
+      "attempts": 9,
+      "result": "matched",
+      "note": "compare-verified (chiri pkg -- compare OK, full ROM SHA1). TrainerCard data-record builder (start_menu exit task). 11/12 functions matched as C; sub_02068FC8 kept NONMATCHING (asm): sum reduction spill lands sp+0x20 not 0x5c (register-allocator) and a1 is a single-TU split-param. Reused include/unk_02068FC8.h. Record struct uses a union flags byte (bit0 manual-mask, bits1-4 bitfields) and unk48[8] bitfield struct {a:1;b:31}."
     }
   ],
   "failed": [
