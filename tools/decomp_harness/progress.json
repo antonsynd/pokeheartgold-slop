@@ -514,6 +514,14 @@
       "attempts": 8,
       "result": "matched",
       "note": "compare-verified (chiri pkg -- compare OK, full ROM SHA1). Camera/3D-effect family (ov01_021F1348 cluster), PlayerAvatar walk-effect spawner. 9/10 functions matched as C (manager 0x6c = void* + sub(0x14) + NNSG3dRenderObj(0x54); spawn work 0x30; block-copy cb1). ov01_02200A08 (render cb) kept NONMATCHING (asm): MWCC list-scheduler tie-break on scale-copy temp regs + mov-r7/table354 order. Reused existing include/overlay_01_02200858.h (ov01_022008B4 only; declared 02200858/874 locally). Fixes: i<10u, position/copyPosition + data/position decl order, dir/row split."
+    },
+    {
+      "file": "asm/overlay_01_021F3114.s",
+      "lines": 325,
+      "functions": 6,
+      "attempts": 1,
+      "result": "matched",
+      "note": "compare-verified (chiri pkg -- compare OK, full ROM SHA1). 6/6 functions matched as C, first build. PlayerAvatar ledge/turn movement task (PlaySE(SEQ_SE_DP_F209) on a 0x18 work, FieldSystem_CreateTask state machine, StopSE on finish). New header include/overlay_01_021F3114.h. Was gated_by ipa-shared-headers but only CALLS PlaySE/StopSE (include unk_02005D10.h, no signature change) -> not actually blocked. Two jump tables (dir mapper ov01_021F31A0, state dispatch) matched; objdiff SIZE artifact confirmed clean by compare."
     }
   ],
   "failed": [

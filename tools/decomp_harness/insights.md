@@ -384,6 +384,10 @@ This build uses -W error, so every non-static (exported) function needs a visibl
 
 The sound functions PlaySE/StopSE (unk_02005D10.h, sound.h family) are declared with u16 params in the current headers, but at matching time several callers were compiled against int-param declarations. A file that passes a WIDER value (e.g. FrontierScript_ReadVar returns u32) to PlaySE(u16) gets an MWCC truncation mask (lsls r0,#16; lsrs r0,#16) that the retail asm does NOT have - because the asm saw an int param (no conversion). Fix with the split-header pattern: do NOT include unk_02005D10.h/sound.h; declare the SE/fanfare functions locally with int params [void PlaySE(int); void StopSE(int,int); etc.]. Callers passing u16 values are unaffected (u16->int and u16->u16 both emit no mask), which is why only u32-passing files trip the gate. Note the BGM funcs (PlayBGM, Sound_SetFieldBGM) genuinely take u16 - a value passed to them DOES get masked if stored in a wider local (use u32 seqNo). Saw in overlay_80_02235390.c.
 
+### A file gated_by ipa-shared-headers can still be decompiled if it only CALLS the shared-header functions (no signature change)  <!-- id: ipa-blocked-files-can-call-sound-fns-without-cascade -->
+
+The ipa-shared-headers blocker (sound.h / unk_02005D10.h family) is about CHANGING a signature in a shared header, which cascades into already-matched callers. A new file that merely CALLS those functions (e.g. PlaySE/StopSE, declared in include/unk_02005D10.h) with their existing signatures needs NO header change, so there is no cascade — just #include the existing header and call them. The triage's `gated_by: ipa-shared-headers` is conservative (flags any file sharing symbols with the blocked cluster); check whether the file actually needs to ADD/CHANGE a declaration before treating it as blocked. overlay_01_021F3114 (a PlayerAvatar turn-task calling PlaySE(SEQ_SE_DP_F209)/StopSE) matched 6/6 this way.
+
 ## Data Sections
 
 ### Section ↔ C mapping  <!-- id: section-mapping -->

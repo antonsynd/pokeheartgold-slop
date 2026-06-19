@@ -505,7 +505,7 @@ Overlay field
     Object asm/overlay_01_021EFB38.o
     Object asm/overlay_01_021F1348.o
     Object asm/overlay_01_021F1AFC.o
-    Object asm/overlay_01_021F3114.o
+    Object src/overlay_01_021F3114.o
     Object src/field/overlay_01_021F3378.o
     Object asm/overlay_01_021F3610.o
     Object src/overlay_01_021F3D38.o

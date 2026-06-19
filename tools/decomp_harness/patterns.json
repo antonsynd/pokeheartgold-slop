@@ -757,6 +757,12 @@
       "category": "nonmatching",
       "title": "MWCC inline `asm` quirks: bare [rN] memory operands misassemble — use [rN, #0]; encode jump-table halfwords as `lsl rd,rm,#0`",
       "body": "Writing a NONMATCHING `asm static void f(...) {...}` block in MWCC sp2p2: (1) A bare memory operand `ldr r0, [r3]` (no offset) misassembles (observed as `ldr r0,[r3,#8]`); ALWAYS write the explicit offset `ldr r0, [r3, #0]` / `str r0, [r4, #0]`. (2) `movs rd, rm` is rejected (parsed as a label → 'unknown assembler instruction mnemonic' / 'label movs redefined'); use `lsl rd, rm, #0` instead. (3) For a Thumb `add pc, rN` jump table, MWCC inline asm does NOT support `.short label-label-2` data directives — encode each jump-table halfword as a `lsl rd, rm, #0` instruction whose machine encoding equals the offset (lsl rd,rm,#0 = 0x0000|(rm<<3)|rd, e.g. 0x0006=`lsl r6,r0,#0`, 0x0012=`lsl r2,r2,#0`, 0x000a=`lsl r2,r1,#0`, 0x0010=`lsl r0,r2,#0`), per src/battle/battle_hp_bar.c. (4) `ldr rN, =symbol` and `ldr rN, =0xVALUE` work; `bl FuncName` to externs/statics works; `.balign` is unsupported. Diagnose a wrong NONMATCHING result by disassembling the built .o (objdump) and byte-comparing; objdiff's per-function SIZE for a jump-table fn is unreliable (data-region $d/$t mapping) — confirm with chiri pkg -- compare. Used to NONMATCHING ov01_02200A08 (camera-family render cb, MWCC list-scheduler tie-break on the scale-copy temp registers)."
+    },
+    {
+      "id": "ipa-blocked-files-can-call-sound-fns-without-cascade",
+      "category": "ipa",
+      "title": "A file gated_by ipa-shared-headers can still be decompiled if it only CALLS the shared-header functions (no signature change)",
+      "body": "The ipa-shared-headers blocker (sound.h / unk_02005D10.h family) is about CHANGING a signature in a shared header, which cascades into already-matched callers. A new file that merely CALLS those functions (e.g. PlaySE/StopSE, declared in include/unk_02005D10.h) with their existing signatures needs NO header change, so there is no cascade — just #include the existing header and call them. The triage's `gated_by: ipa-shared-headers` is conservative (flags any file sharing symbols with the blocked cluster); check whether the file actually needs to ADD/CHANGE a declaration before treating it as blocked. overlay_01_021F3114 (a PlayerAvatar turn-task calling PlaySE(SEQ_SE_DP_F209)/StopSE) matched 6/6 this way."
     }
   ]
 }
