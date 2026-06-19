@@ -38,12 +38,11 @@ if git diff --cached --name-only | grep -qE '^(main\.lsf|src/|asm/|include/)'; t
     git add build_attestation.json 2>/dev/null || true
 fi
 
-# Auto-update progress stats in README.md when decomp-related files change.
-# Regenerates coverage_ledger.json, patches the progress table, and stages README.md.
+# Regenerate the coverage ledger when decomp-related files change, so COVERAGE.md
+# (the single source of truth for progress) stays current. README carries no
+# numbers — it just links to COVERAGE.md — so there is nothing to patch here.
 if git diff --cached --name-only | grep -qE '^(main\.lsf|src/|asm/|tools/decomp_harness/progress\.json|tools/decomp_harness/blockers\.json)'; then
     if python3 tools/decomp_harness/coverage_ledger.py --quiet 2>/dev/null; then
-        if tools/decomp_harness/update_readme_progress.sh 2>/dev/null; then
-            git add README.md tools/decomp_harness/coverage_ledger.json tools/decomp_harness/COVERAGE.md 2>/dev/null || true
-        fi
+        git add tools/decomp_harness/coverage_ledger.json tools/decomp_harness/COVERAGE.md 2>/dev/null || true
     fi
 fi

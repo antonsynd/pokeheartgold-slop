@@ -197,6 +197,19 @@ def cmd_compare(args):
         print(f"\nSection size differences:")
         for s in sec_issues:
             print(s)
+        if not mismatched:
+            # The trap: every function reports MATCH, but a section size differs.
+            # objdiff masks trailing function padding and mis-sizes inline jump
+            # tables, so this is INCONCLUSIVE either way — it may be a benign
+            # jump-table disasm artifact, OR a real 2-mod-4 trailing-.balign
+            # shortfall that still fails the linked ROM SHA1 (see unk_0203A3B0).
+            print(
+                "\n  !!  All functions MATCH but a section size differs — NOT conclusive.\n"
+                "      objdiff cannot tell a benign jump-table artifact from a real\n"
+                "      trailing-pad shortfall. Only `chiri pkg -- compare` is authoritative.\n"
+                "      If .text is short on a 2-mod-4 function, see patterns\n"
+                "      objdiff-match-but-compare-fails-trailing-pad / trailing-pad-fix-inline-asm-lsl-r0."
+            )
 
     return 0 if not mismatched else 1
 
