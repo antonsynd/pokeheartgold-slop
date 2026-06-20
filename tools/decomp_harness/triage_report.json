@@ -1,5 +1,5 @@
 {
- "generated": "2026-06-20T09:34:12Z",
+ "generated": "2026-06-20T11:22:12Z",
  "weights": {
   "insn_line": 1.0,
   "unknown_callee": 40.0,
@@ -10,20 +10,6 @@
   "special_section": 500.0
  },
  "queue": [
-  {
-   "file": "asm/unk_02087284.s",
-   "score": 920.4,
-   "special_sections": [],
-   "functions": 18,
-   "insn_lines": 919,
-   "data_only": false,
-   "unknown_callees": [],
-   "jumptable_words": 0,
-   "rodata_bytes": 28,
-   "arm_functions": 0,
-   "gated_by": [],
-   "cluster_partners": []
-  },
   {
    "file": "asm/unk_02087A78.s",
    "score": 928.6,
@@ -64,6 +50,52 @@
     },
     {
      "file": "asm/unk_02087FD4.s",
+     "shared_symbols": 1
+    }
+   ]
+  },
+  {
+   "file": "asm/unk_02087E70.s",
+   "score": 929.6,
+   "special_sections": [],
+   "functions": 5,
+   "insn_lines": 148,
+   "data_only": false,
+   "unknown_callees": [
+    "GF_SndHandleSetPlayerVolume",
+    "ov40_0222B6E0",
+    "ov40_0222B934",
+    "ov40_0222BD30",
+    "ov40_0222C480",
+    "ov40_0222CA8C",
+    "ov40_0222CABC",
+    "ov40_0222CF94",
+    "ov40_0222D55C",
+    "ov40_0222DAC0",
+    "sub_0200616C",
+    "sub_02087A78"
+   ],
+   "jumptable_words": 0,
+   "rodata_bytes": 32,
+   "arm_functions": 0,
+   "gated_by": [
+    "ipa-shared-headers"
+   ],
+   "cluster_partners": [
+    {
+     "file": "asm/overlay_40.s",
+     "shared_symbols": 9
+    },
+    {
+     "file": "asm/unk_02004A44.s",
+     "shared_symbols": 1
+    },
+    {
+     "file": "asm/unk_02005D10.s",
+     "shared_symbols": 1
+    },
+    {
+     "file": "asm/unk_02087A78.s",
      "shared_symbols": 1
     }
    ]
@@ -178,57 +210,6 @@
     },
     {
      "file": "asm/unk_02005D10.s",
-     "shared_symbols": 1
-    }
-   ]
-  },
-  {
-   "file": "asm/unk_02087E70.s",
-   "score": 969.6,
-   "special_sections": [],
-   "functions": 5,
-   "insn_lines": 148,
-   "data_only": false,
-   "unknown_callees": [
-    "GF_SndHandleSetPlayerVolume",
-    "ov40_0222B6E0",
-    "ov40_0222B934",
-    "ov40_0222BD30",
-    "ov40_0222C480",
-    "ov40_0222CA8C",
-    "ov40_0222CABC",
-    "ov40_0222CF94",
-    "ov40_0222D55C",
-    "ov40_0222DAC0",
-    "sub_0200616C",
-    "sub_02087988",
-    "sub_02087A78"
-   ],
-   "jumptable_words": 0,
-   "rodata_bytes": 32,
-   "arm_functions": 0,
-   "gated_by": [
-    "ipa-shared-headers"
-   ],
-   "cluster_partners": [
-    {
-     "file": "asm/overlay_40.s",
-     "shared_symbols": 9
-    },
-    {
-     "file": "asm/unk_02004A44.s",
-     "shared_symbols": 1
-    },
-    {
-     "file": "asm/unk_02005D10.s",
-     "shared_symbols": 1
-    },
-    {
-     "file": "asm/unk_02087284.s",
-     "shared_symbols": 1
-    },
-    {
-     "file": "asm/unk_02087A78.s",
      "shared_symbols": 1
     }
    ]
@@ -10917,7 +10898,7 @@
   },
   {
    "file": "asm/overlay_40.s",
-   "score": 49876.6,
+   "score": 49436.6,
    "special_sections": [],
    "functions": 558,
    "insn_lines": 45126,
@@ -11015,17 +10996,6 @@
     "sub_0203A880",
     "sub_0203A914",
     "sub_0203A948",
-    "sub_02087284",
-    "sub_0208763C",
-    "sub_02087878",
-    "sub_020878B0",
-    "sub_020878B8",
-    "sub_020878EC",
-    "sub_02087948",
-    "sub_020879E0",
-    "sub_02087A08",
-    "sub_02087A30",
-    "sub_02087A54",
     "sub_02087A84",
     "sub_02087E1C",
     "sub_02088030"
@@ -11054,8 +11024,8 @@
      "shared_symbols": 12
     },
     {
-     "file": "asm/unk_02087284.s",
-     "shared_symbols": 11
+     "file": "asm/unk_0202B614.s",
+     "shared_symbols": 6
     }
    ]
   },

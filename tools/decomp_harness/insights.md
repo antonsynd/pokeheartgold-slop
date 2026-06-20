@@ -398,6 +398,18 @@ In `data->current = data->delta * data->step / data->total + data->start;` MWCC 
 
 Retail often shows `bl _ffix; lsls r0,#16; asrs r0,#16; strh` (an explicit (s16) before the halfword store). In a VOID function MWCC drops that truncation for EVERY such store, no matter how you write the cast (`(s16)(s32)expr`, `(s16)expr`, an explicit temp) -> function is N*4 bytes too small (4 bytes = lsls+asrs per store). Per [[force-pre-strh-truncation-via-returned-temp]] the truncation only survives when the value is RETURNED. To keep it at MULTIPLE store sites, extract the rounding into `static inline s16 round(int diff) { ... return (s16)(...); }` and call `c->x = round(b->x-a->x);` per component. When MWCC inlines the helper (-inline on), the return-value (s16) is materialized (lsls;asrs) at EACH call site before the strh -> matches. Verified unk_0208DE40 sub_0208DFF8 (3x VecS16 component stores of FX_F32_TO_FX32((f32)diff/4096.0f/4.0f)).
 
+### Reproduce push{r0-r3} arg-homing by reading args through ((u32*)&firstParam)[n] (inline, not a cached pointer)  <!-- id: arg-homing-via-firstparam-array-cast -->
+
+When the retail prologue homes all register args with `push {r0,r1,r2,r3}` (and the `pop;pop;add sp;bx r3` epilogue) but the function takes no obvious struct-by-value address, the original took the address of its FIRST scalar param and read the rest as a contiguous array. Reproduce: access args via `((u32 *)&firstParam)[n]` written INLINE at each use (NOT via a cached `u32 *args = (u32*)&firstParam;` variable). Inline keeps each access sp-relative (`ldr [sp,#(8+n*4)]`) matching the homed frame; a cached pointer instead materialises a base register (`add r4,sp,#8`; `ldr [r4,#off]`) which diverges. The `&firstParam` address-of forces the homing. Cache a value that must survive a call (e.g. heapID for Heap_Alloc + its later field store) into a local read ONCE (`enum HeapID hid = (enum HeapID)((u32*)&p0)[1];`) so it stays in a callee reg, not reloaded. Seen on unk_02087284 sub_02087284 (got to a 1-constant scheduler diff this way; NONMATCHING only for the final movs-constant hoist position).
+
+### Split a pointer local: declare it early (controls callee register) but assign it late (controls load order)  <!-- id: decouple-decl-from-assign-for-reg-vs-loadorder -->
+
+A cached struct-field pointer whose DECLARATION position controls BOTH its callee-register number (earlier decl -> lower reg) AND its load position can conflict with the target, which wants e.g. a LOW register (r4) but the value LOADED LATE. Decouple: declare `T *p;` early (so MWCC assigns it the low register) but write `p = M_FIELD(mgr);` late (so the load lands at the target position). Verified unk_02087284 sub_020876B0 / sub_0208763C: narc (M_NARC, offset 0) needed r4 but loaded last; `NARC *narc; ...other loads...; narc = M_NARC(mgr);` produced r4 + late load and matched. Related: [[decl-order-regalloc]].
+
+### Cache a manager field that is read in MULTIPLE branches into one upfront local, so the base pointer dies early (avoids it being held in a spare reg and spilling another value)  <!-- id: cache-multibranch-field-to-kill-base-pointer-cascade -->
+
+If a function reads `M_FIELD(mgr)` inside BOTH arms of an if (so mgr stays live until the branch), MWCC keeps `mgr` in a scratch register across the body and may SPILL another value to the stack (bigger frame, pervasive regalloc shift). The retail build reads that field ONCE before the branch (its last use of mgr) so mgr dies early. Fix: hoist `int v = M_FIELD(mgr);` to the top with the other field caches and use `v` in both arms. Verified unk_02087284 sub_020876B0: M_1C read in both if-arms forced mgr->r2 and spilled the index arg (94 diffs); caching it upfront dropped to ~18. (Conversely, if the field is needed only AFTER a discriminant compare, inline it in the arms so it is the LAST mgr use and schedules after the cmp.)
+
 ## IPA (-ipa file) Behavior
 
 ### Shared-header signatures are load-bearing across compilation units  <!-- id: ipa-shared-headers -->
@@ -601,6 +613,10 @@ Resolves [[objdiff-match-but-compare-fails-trailing-pad]]. When a function's mat
 ### _s32_div_f (integer-division runtime) is NOT callable from MWCC inline asm — like the soft-float helpers  <!-- id: s32-div-runtime-not-callable-in-inline-asm -->
 
 `bl _s32_div_f` inside an `asm` function fails to link with "undefined label '_s32_div_f'", exactly like the soft-float runtime (_ffix/_fadd/_fflt, see [[soft-float-not-callable-in-inline-asm]]). So any function that needs signed `/` or `%` (which MWCC lowers to _s32_div_f) CANNOT be done as NONMATCHING inline asm — it must be matched as C. Note `/` and `%` work fine when MWCC emits them from C (e.g. `x / 1000` matched directly). Implication: division/modulo functions are forced to be C matches; budget extra iterations rather than reaching for inline asm. (unk_0202D230 sub_0202D4FC.)
+
+### In MWCC inline asm, ldr/str with a bare [rN] base (no offset) can be mis-encoded; write [rN, #0] explicitly  <!-- id: inline-asm-ldr-base-needs-explicit-zero-offset -->
+
+When transcribing standalone asm into an MWCC `asm { }` block for a NONMATCHING function, a `ldr rN, [rM]` written WITHOUT an explicit offset was assembled by MWCC as `ldr rN, [rM, #8]` (wrong immediate), producing byte diffs at exactly those instructions. The standalone mwasmarm assembler accepts `[rM]` = offset 0, but the inline-asm path does not reliably default to 0. FIX: always write the explicit `ldr rN, [rM, #0]` / `str rN, [rM, #0]` in inline asm. Seen on unk_02087284 sub_020873D4 (5 diffs, all `ldr rN,[rN]` -> needed `[rN,#0]`).
 
 ## Tooling & Build Workflow
 

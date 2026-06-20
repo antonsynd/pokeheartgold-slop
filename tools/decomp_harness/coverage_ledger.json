@@ -1,12 +1,12 @@
 {
  "summary": {
-  "generated": "2026-06-20T09:38:33Z",
+  "generated": "2026-06-20T11:24:20Z",
   "by_status": {
    "matched": {
-    "files": 72,
-    "functions": 793,
-    "insn_lines": 18891,
-    "text_bytes_est": 41472
+    "files": 73,
+    "functions": 811,
+    "insn_lines": 19810,
+    "text_bytes_est": 43512
    },
    "blocked": {
     "files": 29,
@@ -15,10 +15,10 @@
     "text_bytes_est": 26458
    },
    "pending": {
-    "files": 196,
-    "functions": 18935,
-    "insn_lines": 922021,
-    "text_bytes_est": 2059562
+    "files": 195,
+    "functions": 18917,
+    "insn_lines": 921102,
+    "text_bytes_est": 2057522
    },
    "upstream": {
     "files": 374,
@@ -29,9 +29,9 @@
   },
   "function_totals": {
    "tracked": 20121,
-   "matched": 793,
+   "matched": 811,
    "partial_in_blocked": 50,
-   "pending": 18935
+   "pending": 18917
   },
   "blockers": [
    {
@@ -27454,8 +27454,8 @@
   },
   {
    "file": "asm/unk_02087284.s",
-   "lsf_kind": "asm",
-   "status": "pending",
+   "lsf_kind": "src",
+   "status": "matched",
    "lines": 1061,
    "function_count": 18,
    "text_bytes_est": 2040,
@@ -27531,128 +27531,129 @@
      "mode": "thumb",
      "insns": 44,
      "size_est": 90,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "sub_020872DC",
      "mode": "thumb",
      "insns": 98,
      "size_est": 248,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "sub_020873D4",
      "mode": "thumb",
      "insns": 267,
      "size_est": 616,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "sub_0208763C",
      "mode": "thumb",
      "insns": 52,
      "size_est": 112,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "sub_020876B0",
      "mode": "thumb",
      "insns": 121,
      "size_est": 258,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "sub_020877B4",
      "mode": "thumb",
      "insns": 59,
      "size_est": 124,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "sub_02087830",
      "mode": "thumb",
      "insns": 32,
      "size_est": 72,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "sub_02087878",
      "mode": "thumb",
      "insns": 24,
      "size_est": 56,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "sub_020878B0",
      "mode": "thumb",
      "insns": 5,
      "size_est": 10,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "sub_020878B8",
      "mode": "thumb",
      "insns": 26,
      "size_est": 52,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "sub_020878EC",
      "mode": "thumb",
      "insns": 33,
      "size_est": 68,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "sub_02087930",
      "mode": "thumb",
      "insns": 13,
      "size_est": 26,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "sub_02087948",
      "mode": "thumb",
      "insns": 31,
      "size_est": 64,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "sub_02087988",
      "mode": "thumb",
      "insns": 39,
      "size_est": 88,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "sub_020879E0",
      "mode": "thumb",
      "insns": 19,
      "size_est": 40,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "sub_02087A08",
      "mode": "thumb",
      "insns": 20,
      "size_est": 40,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "sub_02087A30",
      "mode": "thumb",
      "insns": 18,
      "size_est": 38,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "sub_02087A54",
      "mode": "thumb",
      "insns": 18,
      "size_est": 38,
-     "status": "pending"
+     "status": "matched"
     }
-   ]
+   ],
+   "source": "harness"
   },
   {
    "file": "asm/unk_02087A78.s",

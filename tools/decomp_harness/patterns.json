@@ -931,6 +931,30 @@
       "category": "codegen",
       "title": "ldrh (unsigned, imm offset) vs ldrsh (signed, reg offset) is chosen by the FIELD TYPE, not a cast at the use site",
       "body": "Thumb ldrh supports an immediate offset; ldrsh only register-offset (needs an extra movs to load the offset). For a sign-agnostic 16-bit COPY (`dst16 = src->field`) the retail build uses `ldrh [rN,#imm]`; for signed ARITHMETIC on the same field it uses `movs rK,#off; ldrsh [rN,rK]`. MWCC picks the load width from the FIELD declared type: declare the field `u16` and a plain copy emits ldrh (immediate, compact); a `(u16)` cast on an `s16` field does NOT switch ldrsh->ldrh (still ldrsh+reg-offset, +2 bytes per access). For the same field used both ways, declare it `u16` and add an explicit `(s16)` cast at the arithmetic site to force ldrsh there. Verified unk_0208DE40 sub_0208DF9C: StatPosTemplate full/base/delta as u16 -> copy branches use ldrh[#imm]; multiply branch `(s16)tmpl->base[i] + (s16)tmpl->delta[i]*stat` -> ldrsh."
+    },
+    {
+      "id": "inline-asm-ldr-base-needs-explicit-zero-offset",
+      "category": "nonmatching",
+      "title": "In MWCC inline asm, ldr/str with a bare [rN] base (no offset) can be mis-encoded; write [rN, #0] explicitly",
+      "body": "When transcribing standalone asm into an MWCC `asm { }` block for a NONMATCHING function, a `ldr rN, [rM]` written WITHOUT an explicit offset was assembled by MWCC as `ldr rN, [rM, #8]` (wrong immediate), producing byte diffs at exactly those instructions. The standalone mwasmarm assembler accepts `[rM]` = offset 0, but the inline-asm path does not reliably default to 0. FIX: always write the explicit `ldr rN, [rM, #0]` / `str rN, [rM, #0]` in inline asm. Seen on unk_02087284 sub_020873D4 (5 diffs, all `ldr rN,[rN]` -> needed `[rN,#0]`)."
+    },
+    {
+      "id": "arg-homing-via-firstparam-array-cast",
+      "category": "matching-tricks",
+      "title": "Reproduce push{r0-r3} arg-homing by reading args through ((u32*)&firstParam)[n] (inline, not a cached pointer)",
+      "body": "When the retail prologue homes all register args with `push {r0,r1,r2,r3}` (and the `pop;pop;add sp;bx r3` epilogue) but the function takes no obvious struct-by-value address, the original took the address of its FIRST scalar param and read the rest as a contiguous array. Reproduce: access args via `((u32 *)&firstParam)[n]` written INLINE at each use (NOT via a cached `u32 *args = (u32*)&firstParam;` variable). Inline keeps each access sp-relative (`ldr [sp,#(8+n*4)]`) matching the homed frame; a cached pointer instead materialises a base register (`add r4,sp,#8`; `ldr [r4,#off]`) which diverges. The `&firstParam` address-of forces the homing. Cache a value that must survive a call (e.g. heapID for Heap_Alloc + its later field store) into a local read ONCE (`enum HeapID hid = (enum HeapID)((u32*)&p0)[1];`) so it stays in a callee reg, not reloaded. Seen on unk_02087284 sub_02087284 (got to a 1-constant scheduler diff this way; NONMATCHING only for the final movs-constant hoist position)."
+    },
+    {
+      "id": "decouple-decl-from-assign-for-reg-vs-loadorder",
+      "category": "matching-tricks",
+      "title": "Split a pointer local: declare it early (controls callee register) but assign it late (controls load order)",
+      "body": "A cached struct-field pointer whose DECLARATION position controls BOTH its callee-register number (earlier decl -> lower reg) AND its load position can conflict with the target, which wants e.g. a LOW register (r4) but the value LOADED LATE. Decouple: declare `T *p;` early (so MWCC assigns it the low register) but write `p = M_FIELD(mgr);` late (so the load lands at the target position). Verified unk_02087284 sub_020876B0 / sub_0208763C: narc (M_NARC, offset 0) needed r4 but loaded last; `NARC *narc; ...other loads...; narc = M_NARC(mgr);` produced r4 + late load and matched. Related: [[decl-order-regalloc]]."
+    },
+    {
+      "id": "cache-multibranch-field-to-kill-base-pointer-cascade",
+      "category": "matching-tricks",
+      "title": "Cache a manager field that is read in MULTIPLE branches into one upfront local, so the base pointer dies early (avoids it being held in a spare reg and spilling another value)",
+      "body": "If a function reads `M_FIELD(mgr)` inside BOTH arms of an if (so mgr stays live until the branch), MWCC keeps `mgr` in a scratch register across the body and may SPILL another value to the stack (bigger frame, pervasive regalloc shift). The retail build reads that field ONCE before the branch (its last use of mgr) so mgr dies early. Fix: hoist `int v = M_FIELD(mgr);` to the top with the other field caches and use `v` in both arms. Verified unk_02087284 sub_020876B0: M_1C read in both if-arms forced mgr->r2 and spilled the index arg (94 diffs); caching it upfront dropped to ~18. (Conversely, if the field is needed only AFTER a discriminant compare, inline it in the arms so it is the LAST mgr use and schedules after the cmp.)"
     }
   ]
 }

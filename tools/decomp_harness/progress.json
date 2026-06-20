@@ -1,6 +1,14 @@
 {
  "completed": [
   {
+   "file": "asm/unk_02087284.s",
+   "lines": 1061,
+   "functions": 18,
+   "attempts": 1,
+   "result": "matched",
+   "note": "compare-verified (full ROM SHA1 OK). Sprite trailing-effect manager (0x108B Heap_Alloc; per-sprite entries stride 0x10 from base, entry[0] overlaps header). 15 matched C + 3 NONMATCHING (2 float helpers sub_020872DC/sub_020873D4 transcribed inline-asm; constructor sub_02087284 NONMATCHING for the final movs-constant hoist position after homing was solved). Key matches: ENTRY(mgr,i)=&((SpriteSlot{0x10}*)mgr)[i] array-subscript for folded walking-ptr loops; switch break+shared return; in-loop M_SPRMAN reloaded (not cached); M_1C cached upfront to kill mgr base cascade (94->18 diffs); narc declared-early/assigned-late decoupling for r4+late-load; inline-asm ldr [rN,#0] (not bare [rN]). New patterns added."
+  },
+  {
    "file": "asm/unk_0208DE40.s",
    "lines": 906,
    "functions": 12,
