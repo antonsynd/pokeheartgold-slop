@@ -1,13 +1,13 @@
 # Decomp Coverage Ledger
 
-*Generated 2026-06-20T19:15:30Z by `coverage_ledger.py` — do not hand-edit; regenerate after each decomp.*
+*Generated 2026-06-20T21:47:17Z by `coverage_ledger.py` — do not hand-edit; regenerate after each decomp.*
 
-Tracked functions (files with retained asm): **20121** — matched 915, pending 18580, plus 50 matched-but-blocked inside failed files.
+Tracked functions (files with retained asm): **20121** — matched 928, pending 18580, plus 50 matched-but-blocked inside failed files.
 
 | status | files | functions | insn lines | ~text bytes |
 |---|---|---|---|---|
-| matched | 84 | 915 | 22571 | 49920 |
-| blocked | 41 | 626 | 20430 | 44964 |
+| matched | 85 | 928 | 23035 | 50980 |
+| blocked | 40 | 613 | 19966 | 43904 |
 | pending | 172 | 18580 | 909907 | 2032608 |
 | upstream | 374 | 0 | 0 | 0 |
 
@@ -20,7 +20,7 @@ Tracked functions (files with retained asm): **20121** — matched 915, pending 
 | objdiff-false-positives | 0 | 0 | RESOLVED. objdiff.py had a critical bug: the byte extraction regex did not match MWCC's ARM Thumb objdump format (packed hex like 'b418' vs expected space-separated 'b4 18'). It extracted 0 bytes for every function, so 0==0 always reported MATCH. 11 decomps accepted via objdiff were not actually byte-matching. Fixed in this session; all 11 non-matching decomps reverted to asm. 2 decomps that truly match (unk_0202DB34, battle_arcade_game_board_data) kept. |
 | ext-data-section-split | 1 | 0 | Data-only files exporting multiple EXTERNAL (.public) const arrays: MWCC -ipa file emits each top-level const as its own .rodata section, and mwldarm orders/aligns them differently than the asm's single packed .rodata, so the linked overlay/module SHA1 fails even though objdiff --summary (per-section) reports a match. Symbols referenced by other TUs must stay non-static, so they cannot be pooled into one section via `static`. |
 
-## Blocked files (41)
+## Blocked files (40)
 
 | file | functions | insn lines | data-only | notes |
 |---|---|---|---|---|
@@ -42,7 +42,6 @@ Tracked functions (files with retained asm): **20121** — matched 915, pending 
 | asm/overlay_80_02238034.s | 15 | 521 |  |  14/15 functions byte-match (MultiplayerCheck via switch-form). Holdouts: ov80_022383C0 needs LICM to sink entry=ctx+0x33 |
 | asm/overlay_01_021FEA0C.s | 14 | 250 |  |  11/14 match; 3 MWCC reg-alloc/addressing holdouts (VecFx32 base-ptr zeroing in EAB0/EB8C, callee-reg-count in EBC0). WIP |
 | asm/overlay_80_02236450.s | 14 | 829 |  |   |
-| asm/overlay_01_02203A18.s | 13 | 464 |  |   |
 | asm/overlay_33.s | 12 | 563 |  |  11/12 functions byte-match (WIP src/overlay_33.c kept, main.lsf left on asm). Touchscreen selection-menu overlay: work s |
 | asm/overlay_38_thumb.s | 12 | 696 |  |  Outlier: ~700 insns GTS/DWC Wi-Fi crypto+parser (LCG cipher, SHA1, hex codec, 2 state machines). Fully decoded in attemp |
 | asm/unk_0200B150.s | 11 | 249 |  | param-copyprop-cmp 10/11 matched; 10/11 functions matched. OamManager_Create has 1-byte mismatch: target asm uses 'cmp r4, #4' but MWCC generates 'cmp r0, |
@@ -66,7 +65,7 @@ Tracked functions (files with retained asm): **20121** — matched 915, pending 
 | asm/middleware.s | 0 | 0 | yes |  Data-only: 7 NUL-terminated SDK middleware version strings in a custom .version section (single ordered section, each .b |
 | asm/battle_arcade_game_board_data.s | 0 | 0 | yes | ext-data-section-split MWCC splits external const into per-symbol .rodata sections; reordered at link -> OVY_84 SHA1 fail. Stays asm. |
 
-## Matched files (asm retained) (84)
+## Matched files (asm retained) (85)
 
 | file | functions | insn lines | data-only | notes |
 |---|---|---|---|---|
@@ -95,6 +94,7 @@ Tracked functions (files with retained asm): **20121** — matched 915, pending 
 | asm/overlay_01_021F3D38.s | 13 | 247 |  | harness |
 | asm/overlay_01_021FC4C4.s | 13 | 191 |  | harness |
 | asm/overlay_01_021FE590.s | 13 | 224 |  | harness |
+| asm/overlay_01_02203A18.s | 13 | 464 |  | retained_asm |
 | asm/unk_0202DB34.s | 12 | 59 |  | harness |
 | asm/unk_0203DB6C.s | 12 | 361 |  | harness |
 | asm/unk_02067A60.s | 12 | 376 |  | harness |
