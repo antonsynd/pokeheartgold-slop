@@ -911,12 +911,18 @@
       "functions": 51,
       "result": "deferred",
       "note": "DEFERRED (assessment, not reverted \u2014 main.lsf untouched). LARGE but FULLY TRACTABLE: 51 functions, 1007 insn lines, ZERO unknown callees (all NNS_G3d*/Heap_*/MIi_Cpu*/GF_RTC/AllocAndReadWholeNarcMemberByIdPair/NNS_FndAllocFromAllocator/GF_AssertFail are known), only 5 rodata bytes (ov01_022095EC={0,1,2,3,3}). A 3D-object + animation + time-of-day management subsystem. ~5 work structs to model via offset macros: (1) Field3dObjectList (ctor ov01_02204004 allocs 0x1c: ids@0, arg3@4, renderObjs@8 [0x5c each], ptrs@0xc, count@0x10, capacity@0x14, cap2@0x18; Field3dObjectList_GetRenderObjectByID is the one named export). (2) anim-pool container (ov01_022041C4 allocs 0x10: first@0,?@4,?@8,count@0xc) + pool node (ov01_022041D8 allocs 0x24: entries@0x10 stride 0x20, ptrs@0x14, next@0x18, capacity@0x20(u16), used@0x22(u16)). (3) anim entry (0x20: state@0x14, flags@0xc, @0x1c, @8, @0x10, @0x18, @4, @0). (4) anim-obj wrapper (ov01_0220460C). (5) time-of-day mgr (ov01_02204744 allocs 0x78: tod@0, 4 channels@8 stride 0x1c). Deferred ONLY due to volume (3x larger than any file matched this session); no exotic blockers \u2014 ideal focused-session target: model the 5 structs once, then crank the 51 mostly-mechanical functions (~19 are 1-line getters/setters/tail-calls). Many are NNS_G3d anim wrappers (NNS_G3dAllocAnmObj/AnmObjInit/RenderObjAddAnmObj/RemoveAnmObj/FreeAnmObj/GetAnmByIdx)."
+    },
+    {
+      "file": "asm/overlay_80_02236450.s",
+      "functions": 14,
+      "result": "deferred",
+      "note": "DEFERRED (assessment, not reverted \u2014 main.lsf untouched). Frontier battle-build/party-setup file (overlay_80), same class as the deferred overlay_80_02237A70. 14 funcs incl. THREE huge ones: ov80_022364A4 (0x1f4), ov80_02236734 (0x1d8), ov80_0223690C (0x128) \u2014 intricate party/trainer build over an UNTYPED Frontier context (r7 ctx: fields @0xf etc.) with heavy stack-arg passing (incoming struct at sp+0x88, many sp slots). 0 rodata, only 5 unknown callees (ov80_02229EF4/F04/A140/A480 + sub_02034818 = the Frontier battle-build API, signatures available from src/frontier/overlay_80_02238034.c). Exports: ov80_02236450, _02236698, _0223690C, _02236ABC, _02236AD8, _02236B18. Deferred due to size+untyped-context+complex-control-flow risk at session tail; fully tractable in a focused pass (model the ctx via offset macros + the arcade API template, then work the 3 big functions). Smaller helpers (ov80_02236AF0/B04 etc.) are trivial."
     }
   ],
   "in_progress": [],
   "stats": {
-    "total_attempts": 138,
+    "total_attempts": 139,
     "total_matched": 51,
-    "total_failed": 19
+    "total_failed": 20
   }
 }
