@@ -891,12 +891,18 @@
       "functions": 7,
       "result": "deferred",
       "note": "DEFERRED (assessment, not reverted \u2014 never flipped main.lsf). 3D model-viewer overlay: OverlayManager init/main/exit + 4 statics (graphics setup, GX bank config, camera setup, model/anim load). 7 functions share a 0xA8 work struct (Camera* @0, 4-entry model array @4 with per-entry NARC/model/anmObj at +0x54/+0x58/+0x5c/+0x6c, HeapExp allocator @0x80, u8 state @0x9c-0xa1, data ptr @0xa4) and 16 file-local rodata/.data symbols (camera params/light vecs/GX bank cfg/edge-color/NARC-member-index tables). Risk: MWCC rodata ORDERING across 16 symbols (same class as unk_0208F814/unk_02067A60) + heavy NNS_G3d/Camera/GF3dRender types (fx16/fx32, VecFx32, NNSG3dRenderObj/AnmObj/ResMdl, GXLightId). No partial commit possible (all 7 interdependent). Good signature coverage (only 3 unknown callees). Best tackled in a focused session: model the work struct + NNS types, then nail rodata order first. Header include/overlay_105.h is frozen (3 OverlayFunction sigs, used by launch_application.c)."
+    },
+    {
+      "file": "asm/overlay_80_02237A70.s",
+      "functions": 18,
+      "result": "deferred",
+      "note": "DEFERRED (assessment, not reverted \u2014 main.lsf untouched). Frontier facility (Battle Castle/Hall) battle-build + UI, parallel to the DECOMPED Battle Arcade sibling src/frontier/overlay_80_02238034.c \u2014 use it as the template. Function map: ov80_02237A70=ov80_02238034 (level gen; my special cases 0x15->0x139,0x31->0x13A; col c/d if a2==6||0xd else a/b), ov80_02237ADC=ov80_022380A0 (unique-value gen, count param), ov80_02237B24/B58=BattleArcade_GetMonCount/GetOpponentMonCount (mode 0/1->3, 2/3->(a1==0?2:4)), ov80_02237B8C=BattleArcade_NewBattleSetup (BIG 3-mode battle build), ov80_02237D5C=ov80_02238344 (type->0x81/0x83/0x8f), ov80_02237D88=ov80_02238370 (ret 0x32), ov80_02237D8C=BattleArcade_MultiplayerCheck (2/3->1), ov80_02237DF4=ov80_02238384 (sub_0207217C trainer mon), ov80_02237E18=ov80_022383A8 (Party_AddMon), ov80_02237E30=ov80_022383C0 (party init loop, trainer-data array @ctx+0x288 stride 0x38), ov80_02237ED8~ov80_02238498 (winstreak getter), ov80_02237F9C clamp-to-7. DERIVE from asm (no arcade analog): ov80_02237D9C (party SetMonData a3/a0), ov80_02237E88 (level calc jump table + 0xA12 field), ov80_02237EFC (LoadRectToBgTilemapRect UI), ov80_02237F3C (intricate 3x10 tilemap builder, tile=base+digit, |0x400 if col>=5), ov80_02237FA4 (FrontierSave_GetStat + sub_02031108/228/248 + sub_0205C1F0/218/268 stat update). Context (untyped, model via offset macros): type@0x10(u8), idx@0x11(u8), u16@0x16, playerParty@0x28, srcParty@0x2c, trainerId u16[]@0x30 (idx and idx+7), trainerData[]@0x288 stride 0x38, u16@0xA12. Args struct (r6 in B8C, untyped \u2014 likely FrontierLaunchArgs): fields @0x8(savedata),0xc(bagCursor),0x18(mapno),0x1c. rodata: ONE {u16 a,b,c,d}[8] table (asm splits into 4 column labels ov80_0223D4D4/D6/D8/DA; values {0,0x63,0x64,0x77},{0x50,0x77,0x78,0x8B},...{0xC8,0x12B,0xC8,0x12B}). All callee sigs resolved (battle_setup.h, party.h, pokemon.h, player_data.h; ov80_02229F04/0222A140/0222A480 from the arcade file's externs). Deferred only due to size+untyped-context risk at session tail; fully scoped for a focused pass."
     }
   ],
   "in_progress": [],
   "stats": {
-    "total_attempts": 135,
+    "total_attempts": 136,
     "total_matched": 50,
-    "total_failed": 17
+    "total_failed": 18
   }
 }
