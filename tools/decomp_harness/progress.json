@@ -945,9 +945,9 @@
   ],
   "in_progress": [],
   "stats": {
-    "total_attempts": 146,
-    "total_matched": 54,
-    "total_failed": 24
+    "total_attempts": 148,
+    "total_matched": 55,
+    "total_failed": 25
   },
   "matched": [
     {
@@ -967,6 +967,12 @@
       "functions": 9,
       "result": "matched",
       "note": "Field-effect family complete pattern (like overlay_01_02200040.c): ctor ov01_021FF464, dtor ov01_021FF480, static setup ov01_021FF490/teardown ov01_021FF4D4, spawner ov01_021FF4FC (ov01_021F1620 + template ov01_022091C0 + const u32 ov01_022091D4={0,0xC,1,0,0,2}), 4 callbacks (Cb1 init ov01_021FF54C, Cb1 tail ov01_021FF5B8, Cb2 ov01_021FF5C4 update FSM, Cb2 ov01_021FF658). Keys: (1) VecFx32 vec={0,0,0} brace-init -> base-register zeroing (add rN,sp; str via rN) matching asm; field-by-field vec.x=0 gives sp-direct stores (wrong). Spawner wraps brace-init in nested block after data.unk8 + data.unkC inside. (2) ov01_021FF5C4 needed obj in r6, v(sub_02068D90) in r7: declare `int v;` BEFORE `LocalMapObject *obj=...` so the LATER-declared obj gets the LOWER callee-saved reg (r6). (3) MapObject_TestFlagsBits flag arg cast (MapObjectFlagBits)(2<<8); sub_02023F70()/0x1000>=0xc. chiri compare OK."
+    },
+    {
+      "file": "asm/overlay_01_021FF854.s",
+      "functions": 10,
+      "result": "matched",
+      "note": "Field-effect family (Work/Data identical to overlay_01_021FFC0C). 10 funcs: ctor/dtor/setup/teardown + 2 spawners (ov01_021FF8F0 single-coord, ov01_021FF964 with delta coords+facing flag) + Cb1 init ov01_021FF9F4 + Cb1 tail ov01_021FFAB0 + Cb2 ov01_021FFABC (FSM w/ coord-delta unk1C/unk1E subtraction) + Cb2 ov01_021FFBD4. KEY FIX: rodata is 3 const objects (Template ov01_02209218, u32[6] ov01_0220922C, Template ov01_02209244-for-the-021FFC0C-effect which is DEAD DATA here). The asm rodata is one symbol-less 0x40 blob in declaration order. Emitting 3 separate consts FAILS: MWCC eliminates the unused 244 (static) or reorders (global pools relocated templates and separates the non-reloc array). FIX: emit all 3 as fields of ONE static const struct {Template tmpl0; u32 arr[6]; Template tmpl2;} -> referenced via tmpl0/arr keeps the whole blob contiguous in order incl dead tmpl2. .text -10 (5 funcs 2-mod-4 trailing pad) benign. chiri compare OK."
     }
   ]
 }
