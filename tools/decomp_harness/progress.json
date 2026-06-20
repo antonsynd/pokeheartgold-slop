@@ -854,12 +854,19 @@
       "functions": 20,
       "result": "failed",
       "note": "REVERTED. Reached 20/20 objdiff (17 C + 3 NONMATCHING inline asm for VRAM/OAM/palette-load A4D4/A59C/A700; data sections modeled, .data/.rodata match) BUT `chiri pkg -- compare` fails main.sbin SHA1. Root: 3 functions (sub_0203A478/A880/A964) compile 2-mod-4; retail .s pads each with `.balign 4,0` (0x00). MWCC emits per-function .text sections (2**2-aligned) WITHOUT the trailing pad -> .text 0x626 vs 0x62c (-6); the linked main differs (alignment-fill/layout). objdiff masks the trailing pad so it shows MATCH. Needs: single-.text emission, or all-functions-4-aligned, or explicit 0x00 trailing pad. HUD wifi/world-map OBJ sprite manager; complex (direct OAM/DMA/GX-bank MMIO + 8-param ctor + .data string table)."
+    },
+    {
+      "file": "asm/unk_0208F814.s",
+      "functions": 17,
+      "result": "failed",
+      "note": "REVERTED. sub_0203410C command-table family (110-entry table + 16 handlers). 12/17 functions matched in clean C (table, registrar tail-call, getters, recordGetter, empty handlers, F918/FA54/FA90/FAA8/FAEC). 5 blocked: F828/F960 hoist (u8*)a3+0x43D0 into a callee-saved reg across MI_CpuCopyFast (retail recomputes per-branch); FAF8 caches the 0x7C10 literal in r6 (retail reloads, -4B); F8BC/F8E4 byte-copy loops have counter/multiplier in swapped regs + dst not coalescing with the a3 param reg (~8B each). Root cause: handlers index a large UNTYPED ~0x9400-byte mixing/record context (a3) via void*+offset casts; the struct-typed original yields different CSE/regalloc. Defer until the context struct (shared with the ov37 mixing cluster: unk_02035900/unk_02033AE0/overlay_37) is defined and the cluster is decomped together. Fixed during attempt: bne via u32+while(--n); table count 110.",
+      "blocker_id": "ipa-shared-headers"
     }
   ],
   "in_progress": [],
   "stats": {
-    "total_attempts": 130,
+    "total_attempts": 131,
     "total_matched": 47,
-    "total_failed": 15
+    "total_failed": 16
   }
 }

@@ -1,6 +1,6 @@
 {
  "summary": {
-  "generated": "2026-06-20T12:28:09Z",
+  "generated": "2026-06-20T12:59:15Z",
   "by_status": {
    "matched": {
     "files": 75,
@@ -9,16 +9,16 @@
     "text_bytes_est": 44872
    },
    "blocked": {
-    "files": 29,
-    "functions": 393,
-    "insn_lines": 11996,
-    "text_bytes_est": 26458
+    "files": 30,
+    "functions": 410,
+    "insn_lines": 12383,
+    "text_bytes_est": 27304
    },
    "pending": {
-    "files": 193,
-    "functions": 18895,
-    "insn_lines": 920512,
-    "text_bytes_est": 2056162
+    "files": 192,
+    "functions": 18878,
+    "insn_lines": 920125,
+    "text_bytes_est": 2055316
    },
    "upstream": {
     "files": 374,
@@ -31,7 +31,7 @@
    "tracked": 20121,
    "matched": 833,
    "partial_in_blocked": 50,
-   "pending": 18895
+   "pending": 18878
   },
   "blockers": [
    {
@@ -29953,7 +29953,7 @@
   {
    "file": "asm/unk_0208F814.s",
    "lsf_kind": "asm",
-   "status": "pending",
+   "status": "blocked",
    "lines": 600,
    "function_count": 17,
    "text_bytes_est": 846,
@@ -30000,121 +30000,125 @@
      "mode": "thumb",
      "insns": 9,
      "size_est": 18,
-     "status": "pending"
+     "status": "blocked"
     },
     {
      "name": "sub_0208F828",
      "mode": "thumb",
      "insns": 66,
      "size_est": 146,
-     "status": "pending"
+     "status": "blocked"
     },
     {
      "name": "sub_0208F8BC",
      "mode": "thumb",
      "insns": 20,
      "size_est": 40,
-     "status": "pending"
+     "status": "blocked"
     },
     {
      "name": "sub_0208F8E4",
      "mode": "thumb",
      "insns": 26,
      "size_est": 52,
-     "status": "pending"
+     "status": "blocked"
     },
     {
      "name": "sub_0208F918",
      "mode": "thumb",
      "insns": 30,
      "size_est": 70,
-     "status": "pending"
+     "status": "blocked"
     },
     {
      "name": "sub_0208F960",
      "mode": "thumb",
      "insns": 107,
      "size_est": 238,
-     "status": "pending"
+     "status": "blocked"
     },
     {
      "name": "sub_0208FA50",
      "mode": "thumb",
      "insns": 2,
      "size_est": 4,
-     "status": "pending"
+     "status": "blocked"
     },
     {
      "name": "sub_0208FA54",
      "mode": "thumb",
      "insns": 23,
      "size_est": 52,
-     "status": "pending"
+     "status": "blocked"
     },
     {
      "name": "sub_0208FA88",
      "mode": "thumb",
      "insns": 2,
      "size_est": 4,
-     "status": "pending"
+     "status": "blocked"
     },
     {
      "name": "sub_0208FA8C",
      "mode": "thumb",
      "insns": 2,
      "size_est": 4,
-     "status": "pending"
+     "status": "blocked"
     },
     {
      "name": "sub_0208FA90",
      "mode": "thumb",
      "insns": 11,
      "size_est": 26,
-     "status": "pending"
+     "status": "blocked"
     },
     {
      "name": "sub_0208FAA8",
      "mode": "thumb",
      "insns": 29,
      "size_est": 68,
-     "status": "pending"
+     "status": "blocked"
     },
     {
      "name": "sub_0208FAEC",
      "mode": "thumb",
      "insns": 6,
      "size_est": 12,
-     "status": "pending"
+     "status": "blocked"
     },
     {
      "name": "sub_0208FAF8",
      "mode": "thumb",
      "insns": 39,
      "size_est": 82,
-     "status": "pending"
+     "status": "blocked"
     },
     {
      "name": "sub_0208FB4C",
      "mode": "thumb",
      "insns": 9,
      "size_est": 18,
-     "status": "pending"
+     "status": "blocked"
     },
     {
      "name": "sub_0208FB5C",
      "mode": "thumb",
      "insns": 3,
      "size_est": 6,
-     "status": "pending"
+     "status": "blocked"
     },
     {
      "name": "sub_0208FB60",
      "mode": "thumb",
      "insns": 3,
      "size_est": 6,
-     "status": "pending"
+     "status": "blocked"
     }
-   ]
+   ],
+   "blocked_reason": "",
+   "attempts": null,
+   "blocker_id": "ipa-shared-headers",
+   "kept_c": false
   },
   {
    "file": "asm/unk_0208FB64.s",

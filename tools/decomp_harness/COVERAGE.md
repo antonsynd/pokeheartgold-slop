@@ -1,14 +1,14 @@
 # Decomp Coverage Ledger
 
-*Generated 2026-06-20T12:28:09Z by `coverage_ledger.py` — do not hand-edit; regenerate after each decomp.*
+*Generated 2026-06-20T12:59:15Z by `coverage_ledger.py` — do not hand-edit; regenerate after each decomp.*
 
-Tracked functions (files with retained asm): **20121** — matched 833, pending 18895, plus 50 matched-but-blocked inside failed files.
+Tracked functions (files with retained asm): **20121** — matched 833, pending 18878, plus 50 matched-but-blocked inside failed files.
 
 | status | files | functions | insn lines | ~text bytes |
 |---|---|---|---|---|
 | matched | 75 | 833 | 20400 | 44872 |
-| blocked | 29 | 393 | 11996 | 26458 |
-| pending | 193 | 18895 | 920512 | 2056162 |
+| blocked | 30 | 410 | 12383 | 27304 |
+| pending | 192 | 18878 | 920125 | 2055316 |
 | upstream | 374 | 0 | 0 | 0 |
 
 ## Blockers (value-ordered: fix what gates the most)
@@ -20,7 +20,7 @@ Tracked functions (files with retained asm): **20121** — matched 833, pending 
 | objdiff-false-positives | 0 | 0 | RESOLVED. objdiff.py had a critical bug: the byte extraction regex did not match MWCC's ARM Thumb objdump format (packed hex like 'b418' vs expected space-separated 'b4 18'). It extracted 0 bytes for every function, so 0==0 always reported MATCH. 11 decomps accepted via objdiff were not actually byte-matching. Fixed in this session; all 11 non-matching decomps reverted to asm. 2 decomps that truly match (unk_0202DB34, battle_arcade_game_board_data) kept. |
 | ext-data-section-split | 1 | 0 | Data-only files exporting multiple EXTERNAL (.public) const arrays: MWCC -ipa file emits each top-level const as its own .rodata section, and mwldarm orders/aligns them differently than the asm's single packed .rodata, so the linked overlay/module SHA1 fails even though objdiff --summary (per-section) reports a match. Symbols referenced by other TUs must stay non-static, so they cannot be pooled into one section via `static`. |
 
-## Blocked files (29)
+## Blocked files (30)
 
 | file | functions | insn lines | data-only | notes |
 |---|---|---|---|---|
@@ -32,6 +32,7 @@ Tracked functions (files with retained asm): **20121** — matched 833, pending 
 | asm/unk_0201956C.s | 21 | 778 |  |   |
 | asm/unk_0203A3B0.s | 20 | 713 |  |   |
 | asm/unk_020210A0.s | 18 | 597 |  |  Intricate touchpad auto-sampling driver (overlay_33-class). Fully decoded (struct TouchpadState 0x5C, all 18 fns) but de |
+| asm/unk_0208F814.s | 17 | 387 |  | ipa-shared-headers  |
 | asm/overlay_01_021F3F50.s | 17 | 566 |  |  16/17 functions byte-match. Only ov01_021F4048 mismatches (+12 bytes) — pure MWCC global register allocation: asm keeps  |
 | asm/overlay_80_02238034.s | 15 | 521 |  |  14/15 functions byte-match (MultiplayerCheck via switch-form). Holdouts: ov80_022383C0 needs LICM to sink entry=ctx+0x33 |
 | asm/overlay_01_021FEA0C.s | 14 | 250 |  |  11/14 match; 3 MWCC reg-alloc/addressing holdouts (VecFx32 base-ptr zeroing in EAB0/EB8C, callee-reg-count in EBC0). WIP |
@@ -134,7 +135,7 @@ Tracked functions (files with retained asm): **20121** — matched 833, pending 
 | asm/overlay_118.s | 1 | 253 |  | harness |
 | asm/unk_data_020FD978.s | 0 | 0 | yes | harness |
 
-## Pending files (193)
+## Pending files (192)
 
 | file | functions | insn lines | data-only | notes |
 |---|---|---|---|---|
@@ -295,7 +296,6 @@ Tracked functions (files with retained asm): **20121** — matched 833, pending 
 | asm/overlay_80_022372D8.s | 18 | 889 |  |  |
 | asm/overlay_80_02237A70.s | 18 | 642 |  |  |
 | asm/unk_02085604.s | 17 | 1676 |  |  |
-| asm/unk_0208F814.s | 17 | 387 |  |  |
 | asm/overlay_01_021F6CFC.s | 17 | 650 |  |  |
 | asm/overlay_80_02235900.s | 17 | 755 |  |  |
 | asm/overlay_80_02236B78.s | 17 | 852 |  |  |
