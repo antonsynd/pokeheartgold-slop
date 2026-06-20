@@ -610,6 +610,14 @@
       "attempts": 1,
       "result": "matched",
       "note": "compare-verified (chiri pkg -- compare OK, full ROM SHA1). Field->battle launcher / battle OverlayManager FSM: sub_02087A8C ctor (0x2c work + 0x4170 ctx alloc), 7 init wrappers feeding sub_02087A8C(idx), sub_02087B64 exec FSM, sub_02087BAC exit, sub_02087BE8/C38 inner state machines (BattleSetup_New/Delete, BagCursor, sound scene/BGM, OVY_39/40 load), sub_02087E10 template selector, sub_02087E1C flypoint-flag, sub_02087E34 local-array linear search. args = FieldSystem* via offset macros (saveData@0xc, mapEvents@0x14, location@0x20). _02102830 is exported single template (header frozen); used 7 separate const structs + reverse-after-first ordering to place rodata block ahead of the anon search template. Public fns prototyped locally (no shared-header change). u32 loop counter for unsigned bcc."
+    },
+    {
+      "file": "asm/unk_02087E70.s",
+      "functions": 5,
+      "lines": 202,
+      "attempts": 1,
+      "result": "matched",
+      "note": "compare-verified (chiri pkg -- compare OK, full ROM SHA1). Cluster partner of unk_02087A78: DEFINES _021028B4/_021028C4 (the two battle-sub-overlay templates) and calls sub_02087A78. sub_02087E70 shared init(man,state,flag) wrapped by sub_02087EF8(flag0)/sub_02087F04(flag1) via tail-call; sub_02087F10 exec; sub_02087F2C exit FSM (4-case jump table + default teardown: ov40_0222B934, Heap_Destroy, UnloadOverlayByID(OVY_40), gSystem.screensFlipped=0, GfGfx_SwapDisplay, sub_0203E354). ctx = sub_02087A78(man) (args->0x14 = the 0x4170 battle context); fields via offset macros. All ov40_* + saves declared locally as void* (no shared-header change; file is adjacent to ipa-shared-headers gate but doesn't touch it). 2 const structs emit in FORWARD definition order (define _021028B4 first)."
     }
   ],
   "failed": [
@@ -850,8 +858,8 @@
   ],
   "in_progress": [],
   "stats": {
-    "total_attempts": 129,
-    "total_matched": 46,
+    "total_attempts": 130,
+    "total_matched": 47,
     "total_failed": 15
   }
 }

@@ -1,12 +1,12 @@
 {
  "summary": {
-  "generated": "2026-06-20T12:10:35Z",
+  "generated": "2026-06-20T12:28:09Z",
   "by_status": {
    "matched": {
-    "files": 74,
-    "functions": 828,
-    "insn_lines": 20252,
-    "text_bytes_est": 44526
+    "files": 75,
+    "functions": 833,
+    "insn_lines": 20400,
+    "text_bytes_est": 44872
    },
    "blocked": {
     "files": 29,
@@ -15,10 +15,10 @@
     "text_bytes_est": 26458
    },
    "pending": {
-    "files": 194,
-    "functions": 18900,
-    "insn_lines": 920660,
-    "text_bytes_est": 2056508
+    "files": 193,
+    "functions": 18895,
+    "insn_lines": 920512,
+    "text_bytes_est": 2056162
    },
    "upstream": {
     "files": 374,
@@ -29,15 +29,15 @@
   },
   "function_totals": {
    "tracked": 20121,
-   "matched": 828,
+   "matched": 833,
    "partial_in_blocked": 50,
-   "pending": 18900
+   "pending": 18895
   },
   "blockers": [
    {
     "id": "ipa-shared-headers",
     "blocks_files": 2,
-    "gates_pending_files": 114
+    "gates_pending_files": 113
    },
    {
     "id": "param-copyprop-cmp",
@@ -27846,8 +27846,8 @@
   },
   {
    "file": "asm/unk_02087E70.s",
-   "lsf_kind": "asm",
-   "status": "pending",
+   "lsf_kind": "src",
+   "status": "matched",
    "lines": 202,
    "function_count": 5,
    "text_bytes_est": 346,
@@ -27895,37 +27895,38 @@
      "mode": "thumb",
      "insns": 56,
      "size_est": 134,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "sub_02087EF8",
      "mode": "thumb",
      "insns": 6,
      "size_est": 12,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "sub_02087F04",
      "mode": "thumb",
      "insns": 6,
      "size_est": 12,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "sub_02087F10",
      "mode": "thumb",
      "insns": 13,
      "size_est": 30,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "sub_02087F2C",
      "mode": "thumb",
      "insns": 67,
      "size_est": 158,
-     "status": "pending"
+     "status": "matched"
     }
-   ]
+   ],
+   "source": "harness"
   },
   {
    "file": "asm/unk_02087FD4.s",
