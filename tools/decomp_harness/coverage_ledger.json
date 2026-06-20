@@ -1,12 +1,12 @@
 {
  "summary": {
-  "generated": "2026-06-19T18:30:46Z",
+  "generated": "2026-06-20T06:21:53Z",
   "by_status": {
    "matched": {
-    "files": 68,
-    "functions": 745,
-    "insn_lines": 16756,
-    "text_bytes_est": 36692
+    "files": 69,
+    "functions": 753,
+    "insn_lines": 17290,
+    "text_bytes_est": 37834
    },
    "blocked": {
     "files": 29,
@@ -15,10 +15,10 @@
     "text_bytes_est": 26458
    },
    "pending": {
-    "files": 200,
-    "functions": 18983,
-    "insn_lines": 924156,
-    "text_bytes_est": 2064342
+    "files": 199,
+    "functions": 18975,
+    "insn_lines": 923622,
+    "text_bytes_est": 2063200
    },
    "upstream": {
     "files": 374,
@@ -29,9 +29,9 @@
   },
   "function_totals": {
    "tracked": 20121,
-   "matched": 745,
+   "matched": 753,
    "partial_in_blocked": 50,
-   "pending": 18983
+   "pending": 18975
   },
   "blockers": [
    {
@@ -132628,8 +132628,8 @@
   },
   {
    "file": "asm/overlay_80_02235FC8.s",
-   "lsf_kind": "asm",
-   "status": "pending",
+   "lsf_kind": "src",
+   "status": "matched",
    "lines": 616,
    "function_count": 8,
    "text_bytes_est": 1142,
@@ -132686,58 +132686,59 @@
      "mode": "thumb",
      "insns": 16,
      "size_est": 36,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ov80_02235FEC",
      "mode": "thumb",
      "insns": 6,
      "size_est": 14,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ov80_02235FF8",
      "mode": "thumb",
      "insns": 26,
      "size_est": 62,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ov80_02236040",
      "mode": "thumb",
      "insns": 30,
      "size_est": 68,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ov80_0223608C",
      "mode": "thumb",
      "insns": 269,
      "size_est": 556,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ov80_022362B8",
      "mode": "thumb",
      "insns": 58,
      "size_est": 120,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ov80_02236330",
      "mode": "thumb",
      "insns": 104,
      "size_est": 234,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ov80_0223641C",
      "mode": "thumb",
      "insns": 25,
      "size_est": 52,
-     "status": "pending"
+     "status": "matched"
     }
-   ]
+   ],
+   "source": "harness"
   },
   {
    "file": "asm/overlay_80_02236450.s",

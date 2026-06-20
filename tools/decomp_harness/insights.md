@@ -378,6 +378,10 @@ Source `val=arr[k]; arr+=n;` emits the short offset-form `ldr [base,#k*size]`, b
 
 `arr[base_field[idx]+k]` may emit `add rd,k,offset` (param first) where retail wanted `add rd,offset,k` (loaded value first). Caching `int off=base_field[idx]; arr[off+k]` makes MWCC emit offset-first. Swapping the SOURCE operands alone did NOT work -- the temp did. Fixed sub_02091C40/C60 in unk_02091880.
 
+### Sparse cmp-chain switch: the fall-through (inline) case is the LAST in SOURCE order; MWCC tests in ascending VALUE order  <!-- id: switch-cmpchain-fallthrough-case-order -->
+
+For a small/sparse switch that MWCC lowers to a cmp-chain (NOT a jump table) — e.g. cases 6, 7, default with two identical bodies — MWCC always tests the case VALUES in ascending order (cmp #6 ... cmp #7 ...), but lays out the case BODIES in SOURCE order. The body placed immediately after the dispatch becomes the fall-through, reached via the last `bne default`; the other case is a forward `beq` target. If you write cases in value order (case 6 then case 7), you get `cmp6 beq L6; cmp7 beq L7; b default` — an EXTRA unconditional `b default` and both bodies as beq targets. The retail asm instead had `cmp6 beq L6(body6, placed later); cmp7 bne default; <body7 inline>` i.e. case 7 falls through. To match, write the fall-through case FIRST in source: `case 7: ...; break; case 6: ...; break; default:`. Verified in ov80_022362B8 (overlay_80_02235FC8.s): swapping case 7 above case 6 removed the spurious `b default` and matched. Diagnose via objdiff --disasm: a trailing `b.n default` after the last `beq` that the retail side reaches with `bne` means you must reorder so the inline case is written first.
+
 ## IPA (-ipa file) Behavior
 
 ### Shared-header signatures are load-bearing across compilation units  <!-- id: ipa-shared-headers -->
