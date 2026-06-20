@@ -955,6 +955,12 @@
       "category": "matching-tricks",
       "title": "Cache a manager field that is read in MULTIPLE branches into one upfront local, so the base pointer dies early (avoids it being held in a spare reg and spilling another value)",
       "body": "If a function reads `M_FIELD(mgr)` inside BOTH arms of an if (so mgr stays live until the branch), MWCC keeps `mgr` in a scratch register across the body and may SPILL another value to the stack (bigger frame, pervasive regalloc shift). The retail build reads that field ONCE before the branch (its last use of mgr) so mgr dies early. Fix: hoist `int v = M_FIELD(mgr);` to the top with the other field caches and use `v` in both arms. Verified unk_02087284 sub_020876B0: M_1C read in both if-arms forced mgr->r2 and spilled the index arg (94 diffs); caching it upfront dropped to ~18. (Conversely, if the field is needed only AFTER a discriminant compare, inline it in the arms so it is the LAST mgr use and schedules after the cmp.)"
+    },
+    {
+      "category": "data-sections",
+      "id": "mwcc-rodata-const-struct-first-pinned-rest-reversed",
+      "title": "MWCC -ipa file: first file-scope const struct pins to rodata offset 0; the REST emit in reverse definition order (anonymous local-array templates stay last)",
+      "body": "Refines [[mwcc-rodata-const-struct-reverse-order]]. For N consecutive file-scope const structs, MWCC -ipa file does NOT fully reverse them: the FIRST-defined struct stays at offset 0, and defs 2..N emit in REVERSE after it. Observed in unk_02087A78 with 7 OverlayManagerTemplate: defining them in plain reverse (def1=_02102890..def7=_02102830) produced _02102890@0x00, then _02102830@0x10,_02102840@0x20.._02102880@0x60 (def1 pinned, rest reversed). To emit in forward address order _02102830.._02102890, define _02102830 FIRST then the rest in reverse: _02102830,_02102890,_02102880,_02102870,_02102860,_02102850,_02102840. A function-local array initializer (u32 arr[]={..}; copied to stack via ldmia/stmia) becomes an anonymous @NNNN rodata template that ALWAYS sorts AFTER the named const structs but, when the named block is a single const ARRAY instead of separate structs, the @NNNN template sorts BEFORE the array -> use separate const structs (not one array) when a file mixes a func-ptr template table with a local search array. Verify with chiri pkg -- compare; objdiff cannot see rodata order. nm -n the .o to read the emitted order."
     }
   ]
 }
