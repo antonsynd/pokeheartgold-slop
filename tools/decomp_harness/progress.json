@@ -869,12 +869,18 @@
       "result": "failed",
       "note": "REVERTED. sub_0203410C command-table family (110-entry table + 16 handlers). 12/17 functions matched in clean C (table, registrar tail-call, getters, recordGetter, empty handlers, F918/FA54/FA90/FAA8/FAEC). 5 blocked: F828/F960 hoist (u8*)a3+0x43D0 into a callee-saved reg across MI_CpuCopyFast (retail recomputes per-branch); FAF8 caches the 0x7C10 literal in r6 (retail reloads, -4B); F8BC/F8E4 byte-copy loops have counter/multiplier in swapped regs + dst not coalescing with the a3 param reg (~8B each). Root cause: handlers index a large UNTYPED ~0x9400-byte mixing/record context (a3) via void*+offset casts; the struct-typed original yields different CSE/regalloc. Defer until the context struct (shared with the ov37 mixing cluster: unk_02035900/unk_02033AE0/overlay_37) is defined and the cluster is decomped together. Fixed during attempt: bne via u32+while(--n); table count 110.",
       "blocker_id": "ipa-shared-headers"
+    },
+    {
+      "file": "asm/overlay_105.s",
+      "functions": 7,
+      "result": "deferred",
+      "note": "DEFERRED (assessment, not reverted \u2014 never flipped main.lsf). 3D model-viewer overlay: OverlayManager init/main/exit + 4 statics (graphics setup, GX bank config, camera setup, model/anim load). 7 functions share a 0xA8 work struct (Camera* @0, 4-entry model array @4 with per-entry NARC/model/anmObj at +0x54/+0x58/+0x5c/+0x6c, HeapExp allocator @0x80, u8 state @0x9c-0xa1, data ptr @0xa4) and 16 file-local rodata/.data symbols (camera params/light vecs/GX bank cfg/edge-color/NARC-member-index tables). Risk: MWCC rodata ORDERING across 16 symbols (same class as unk_0208F814/unk_02067A60) + heavy NNS_G3d/Camera/GF3dRender types (fx16/fx32, VecFx32, NNSG3dRenderObj/AnmObj/ResMdl, GXLightId). No partial commit possible (all 7 interdependent). Good signature coverage (only 3 unknown callees). Best tackled in a focused session: model the work struct + NNS types, then nail rodata order first. Header include/overlay_105.h is frozen (3 OverlayFunction sigs, used by launch_application.c)."
     }
   ],
   "in_progress": [],
   "stats": {
-    "total_attempts": 132,
+    "total_attempts": 133,
     "total_matched": 48,
-    "total_failed": 16
+    "total_failed": 17
   }
 }

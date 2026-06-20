@@ -1,6 +1,6 @@
 {
  "summary": {
-  "generated": "2026-06-20T15:00:25Z",
+  "generated": "2026-06-20T15:06:15Z",
   "by_status": {
    "matched": {
     "files": 76,
@@ -9,16 +9,16 @@
     "text_bytes_est": 45778
    },
    "blocked": {
-    "files": 30,
-    "functions": 410,
-    "insn_lines": 12383,
-    "text_bytes_est": 27304
+    "files": 31,
+    "functions": 417,
+    "insn_lines": 12920,
+    "text_bytes_est": 28498
    },
    "pending": {
-    "files": 191,
-    "functions": 18866,
-    "insn_lines": 919749,
-    "text_bytes_est": 2054410
+    "files": 190,
+    "functions": 18859,
+    "insn_lines": 919212,
+    "text_bytes_est": 2053216
    },
    "upstream": {
     "files": 374,
@@ -31,13 +31,13 @@
    "tracked": 20121,
    "matched": 845,
    "partial_in_blocked": 50,
-   "pending": 18866
+   "pending": 18859
   },
   "blockers": [
    {
     "id": "ipa-shared-headers",
     "blocks_files": 2,
-    "gates_pending_files": 112
+    "gates_pending_files": 111
    },
    {
     "id": "param-copyprop-cmp",
@@ -167656,7 +167656,7 @@
   {
    "file": "asm/overlay_105.s",
    "lsf_kind": "asm",
-   "status": "pending",
+   "status": "blocked",
    "lines": 647,
    "function_count": 7,
    "text_bytes_est": 1194,
@@ -167730,51 +167730,55 @@
      "mode": "thumb",
      "insns": 97,
      "size_est": 222,
-     "status": "pending"
+     "status": "blocked"
     },
     {
      "name": "ov105_021E59DC",
      "mode": "thumb",
      "insns": 145,
      "size_est": 310,
-     "status": "pending"
+     "status": "blocked"
     },
     {
      "name": "ov105_021E5B14",
      "mode": "thumb",
      "insns": 35,
      "size_est": 86,
-     "status": "pending"
+     "status": "blocked"
     },
     {
      "name": "ov105_021E5B68",
      "mode": "thumb",
      "insns": 38,
      "size_est": 92,
-     "status": "pending"
+     "status": "blocked"
     },
     {
      "name": "ov105_021E5BCC",
      "mode": "thumb",
      "insns": 83,
      "size_est": 174,
-     "status": "pending"
+     "status": "blocked"
     },
     {
      "name": "ov105_021E5C84",
      "mode": "thumb",
      "insns": 15,
      "size_est": 32,
-     "status": "pending"
+     "status": "blocked"
     },
     {
      "name": "ov105_021E5CA4",
      "mode": "thumb",
      "insns": 124,
      "size_est": 278,
-     "status": "pending"
+     "status": "blocked"
     }
-   ]
+   ],
+   "blocked_reason": "",
+   "attempts": null,
+   "blocker_id": null,
+   "kept_c": false
   },
   {
    "file": "asm/overlay_106.s",
