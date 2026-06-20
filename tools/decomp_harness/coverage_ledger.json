@@ -1,9 +1,9 @@
 {
  "summary": {
-  "generated": "2026-06-20T17:31:29Z",
+  "generated": "2026-06-20T17:39:16Z",
   "by_status": {
    "matched": {
-    "files": 80,
+    "files": 81,
     "functions": 884,
     "insn_lines": 21672,
     "text_bytes_est": 47850
@@ -15,7 +15,7 @@
     "text_bytes_est": 36012
    },
    "pending": {
-    "files": 181,
+    "files": 180,
     "functions": 18723,
     "insn_lines": 914924,
     "text_bytes_est": 2043630
@@ -44415,8 +44415,8 @@
   },
   {
    "file": "asm/overlay_01_data_02208BFC.s",
-   "lsf_kind": "asm",
-   "status": "pending",
+   "lsf_kind": "src",
+   "status": "matched",
    "lines": 69,
    "function_count": 0,
    "text_bytes_est": 0,
@@ -44480,7 +44480,8 @@
     "ov01_02208C5C"
    ],
    "exports": [],
-   "functions": []
+   "functions": [],
+   "source": "retained_asm"
   },
   {
    "file": "asm/overlay_01_021FC66C.s",

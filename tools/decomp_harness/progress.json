@@ -933,8 +933,8 @@
   ],
   "in_progress": [],
   "stats": {
-    "total_attempts": 142,
-    "total_matched": 52,
+    "total_attempts": 143,
+    "total_matched": 53,
     "total_failed": 22
   },
   "matched": [
@@ -943,6 +943,12 @@
       "functions": 8,
       "result": "matched",
       "note": "Overlay_01 field-effect family (same API as overlay_01_02200040.c/021FE590.c). Manager {void*unk0} via ov01_021F1430(a0,4,0,0). 8 funcs: ctor ov01_021FFC0C, dtor ov01_021FFC28, static setup ov01_021FFC38 (ov01_021F18D4/1908/1930/1758 with const u32 ov01_02209258={0,2,0,0,0,2}), static teardown ov01_021FFC80, + 4 EXPORTED callbacks referenced by an external template (in cluster partner overlay_01_021F1348.s): Cb1 ov01_021FFCA8 (init: copies 0x24-byte Data from sub_02068D98 to Work+0x18, MapObject_Get*, sub_0206121C, ov01_021F1740->Sprite* unk3C), Cb1 ov01_021FFD64 (tail->sub_02023DA4), Cb2 ov01_021FFD70 (3-state update FSM, sub_0205F0F8 coord/facing checks), Cb2 ov01_021FFE98. Work 0x40: {int unk0 state; u32 unk4/8/C ids; int unk14; Data unk18(0x24){int x,_,z; void* taskman; FieldSystem*; int; LocalMapObject*; int; s8 facing}; Sprite* unk3C}. Keys: MapObject_TestFlagsBits flag arg needs (MapObjectFlagBits) cast on (2<<8); sub_0206121C declared locally int(void*,VecFx32*) (header unk_0205FD20.h says void); sub_02023F70()/0x1000>=2 signed-div idiom; two VecFx32 locals in FD70 declared vecB-then-vecA for sp+0xc/sp+0 layout; benign -6 .text from interior .balign 4,0 pads (overlay). chiri compare OK."
+    },
+    {
+      "file": "asm/overlay_01_data_02208BFC.s",
+      "functions": 0,
+      "result": "matched",
+      "note": "Data-only: field-effect registry. ov01_02208BFC = const u32[24] index/priority table {0x14,0x13,0x11,...}. ov01_02208C5C = const UnkStruct[24] {u32 id; void*(*ctor)(void*); void(*dtor)(void*)} mapping id 0x00-0x17 -> ctor/dtor pairs (ov01_021FD41C/440 ... ov01_022051EC/5208; entry 0x17 = {NULL,NULL}). Declared all 46 fns as extern void*/void(void*) locally; uniform fn-ptr typedefs in entry struct. Decl order BFC then C5C. .rodata 384==384, chiri compare OK."
     }
   ]
 }
