@@ -1,14 +1,14 @@
 # Decomp Coverage Ledger
 
-*Generated 2026-06-20T21:47:17Z by `coverage_ledger.py` — do not hand-edit; regenerate after each decomp.*
+*Generated 2026-06-20T22:43:13Z by `coverage_ledger.py` — do not hand-edit; regenerate after each decomp.*
 
-Tracked functions (files with retained asm): **20121** — matched 928, pending 18580, plus 50 matched-but-blocked inside failed files.
+Tracked functions (files with retained asm): **20121** — matched 945, pending 18563, plus 50 matched-but-blocked inside failed files.
 
 | status | files | functions | insn lines | ~text bytes |
 |---|---|---|---|---|
-| matched | 85 | 928 | 23035 | 50980 |
+| matched | 86 | 945 | 23685 | 52468 |
 | blocked | 40 | 613 | 19966 | 43904 |
-| pending | 172 | 18580 | 909907 | 2032608 |
+| pending | 171 | 18563 | 909257 | 2031120 |
 | upstream | 374 | 0 | 0 | 0 |
 
 ## Blockers (value-ordered: fix what gates the most)
@@ -65,7 +65,7 @@ Tracked functions (files with retained asm): **20121** — matched 928, pending 
 | asm/middleware.s | 0 | 0 | yes |  Data-only: 7 NUL-terminated SDK middleware version strings in a custom .version section (single ordered section, each .b |
 | asm/battle_arcade_game_board_data.s | 0 | 0 | yes | ext-data-section-split MWCC splits external const into per-symbol .rodata sections; reordered at link -> OVY_84 SHA1 fail. Stays asm. |
 
-## Matched files (asm retained) (85)
+## Matched files (asm retained) (86)
 
 | file | functions | insn lines | data-only | notes |
 |---|---|---|---|---|
@@ -84,6 +84,7 @@ Tracked functions (files with retained asm): **20121** — matched 928, pending 
 | asm/overlay_80_0222ACA0.s | 19 | 255 |  | harness |
 | asm/unk_02087284.s | 18 | 919 |  | harness |
 | asm/unk_02087A78.s | 17 | 442 |  | harness |
+| asm/overlay_01_021F6CFC.s | 17 | 650 |  | retained_asm |
 | asm/unk_020773AC.s | 16 | 317 |  | harness |
 | asm/unk_02091880.s | 16 | 532 |  | harness |
 | asm/overlay_01_021FB04C.s | 16 | 368 |  | harness |
@@ -155,7 +156,7 @@ Tracked functions (files with retained asm): **20121** — matched 928, pending 
 | asm/unk_data_020FD978.s | 0 | 0 | yes | harness |
 | asm/overlay_01_data_02208BFC.s | 0 | 0 | yes | retained_asm |
 
-## Pending files (172)
+## Pending files (171)
 
 | file | functions | insn lines | data-only | notes |
 |---|---|---|---|---|
@@ -311,7 +312,6 @@ Tracked functions (files with retained asm): **20121** — matched 928, pending 
 | asm/overlay_01_022031C0.s | 18 | 932 |  |  |
 | asm/overlay_80_022372D8.s | 18 | 889 |  |  |
 | asm/unk_02085604.s | 17 | 1676 |  |  |
-| asm/overlay_01_021F6CFC.s | 17 | 650 |  |  |
 | asm/overlay_80_02235900.s | 17 | 755 |  |  |
 | asm/overlay_80_02236B78.s | 17 | 852 |  |  |
 | asm/overlay_93_arm.s | 17 | 871 |  |  |
