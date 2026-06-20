@@ -1,24 +1,24 @@
 {
  "summary": {
-  "generated": "2026-06-20T16:11:01Z",
+  "generated": "2026-06-20T17:31:29Z",
   "by_status": {
    "matched": {
-    "files": 79,
-    "functions": 876,
-    "insn_lines": 21364,
-    "text_bytes_est": 47140
+    "files": 80,
+    "functions": 884,
+    "insn_lines": 21672,
+    "text_bytes_est": 47850
    },
    "blocked": {
-    "files": 34,
-    "functions": 500,
-    "insn_lines": 15398,
-    "text_bytes_est": 33900
+    "files": 36,
+    "functions": 514,
+    "insn_lines": 16312,
+    "text_bytes_est": 36012
    },
    "pending": {
-    "files": 184,
-    "functions": 18745,
-    "insn_lines": 916146,
-    "text_bytes_est": 2046452
+    "files": 181,
+    "functions": 18723,
+    "insn_lines": 914924,
+    "text_bytes_est": 2043630
    },
    "upstream": {
     "files": 374,
@@ -29,15 +29,15 @@
   },
   "function_totals": {
    "tracked": 20121,
-   "matched": 876,
+   "matched": 884,
    "partial_in_blocked": 50,
-   "pending": 18745
+   "pending": 18723
   },
   "blockers": [
    {
     "id": "ipa-shared-headers",
     "blocks_files": 2,
-    "gates_pending_files": 111
+    "gates_pending_files": 110
    },
    {
     "id": "param-copyprop-cmp",
@@ -26855,7 +26855,7 @@
   {
    "file": "asm/unk_020850F4.s",
    "lsf_kind": "asm",
-   "status": "pending",
+   "status": "blocked",
    "lines": 620,
    "function_count": 9,
    "text_bytes_est": 1288,
@@ -26939,65 +26939,69 @@
      "mode": "thumb",
      "insns": 141,
      "size_est": 336,
-     "status": "pending"
+     "status": "blocked"
     },
     {
      "name": "sub_0208524C",
      "mode": "thumb",
      "insns": 21,
      "size_est": 50,
-     "status": "pending"
+     "status": "blocked"
     },
     {
      "name": "sub_0208527C",
      "mode": "thumb",
      "insns": 125,
      "size_est": 312,
-     "status": "pending"
+     "status": "blocked"
     },
     {
      "name": "sub_020853B4",
      "mode": "thumb",
      "insns": 37,
      "size_est": 78,
-     "status": "pending"
+     "status": "blocked"
     },
     {
      "name": "sub_02085400",
      "mode": "thumb",
      "insns": 13,
      "size_est": 28,
-     "status": "pending"
+     "status": "blocked"
     },
     {
      "name": "sub_0208541C",
      "mode": "thumb",
      "insns": 14,
      "size_est": 30,
-     "status": "pending"
+     "status": "blocked"
     },
     {
      "name": "sub_02085438",
      "mode": "thumb",
      "insns": 15,
      "size_est": 38,
-     "status": "pending"
+     "status": "blocked"
     },
     {
      "name": "sub_0208545C",
      "mode": "thumb",
      "insns": 150,
      "size_est": 362,
-     "status": "pending"
+     "status": "blocked"
     },
     {
      "name": "sub_020855CC",
      "mode": "thumb",
      "insns": 23,
      "size_est": 54,
-     "status": "pending"
+     "status": "blocked"
     }
-   ]
+   ],
+   "blocked_reason": "",
+   "attempts": null,
+   "blocker_id": null,
+   "kept_c": false
   },
   {
    "file": "asm/unk_02085604.s",
@@ -46880,8 +46884,8 @@
   },
   {
    "file": "asm/overlay_01_021FFC0C.s",
-   "lsf_kind": "asm",
-   "status": "pending",
+   "lsf_kind": "src",
+   "status": "matched",
    "lines": 371,
    "function_count": 8,
    "text_bytes_est": 710,
@@ -46943,58 +46947,59 @@
      "mode": "thumb",
      "insns": 12,
      "size_est": 28,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ov01_021FFC28",
      "mode": "thumb",
      "insns": 7,
      "size_est": 18,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ov01_021FFC38",
      "mode": "thumb",
      "insns": 32,
      "size_est": 72,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ov01_021FFC80",
      "mode": "thumb",
      "insns": 16,
      "size_est": 40,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ov01_021FFCA8",
      "mode": "thumb",
      "insns": 83,
      "size_est": 190,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ov01_021FFD64",
      "mode": "thumb",
      "insns": 6,
      "size_est": 12,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ov01_021FFD70",
      "mode": "thumb",
      "insns": 129,
      "size_est": 296,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ov01_021FFE98",
      "mode": "thumb",
      "insns": 23,
      "size_est": 54,
-     "status": "pending"
+     "status": "matched"
     }
-   ]
+   ],
+   "source": "retained_asm"
   },
   {
    "file": "asm/field/overlay_01_021FFECC.s",
@@ -175955,7 +175960,7 @@
   {
    "file": "asm/overlay_116.s",
    "lsf_kind": "asm",
-   "status": "pending",
+   "status": "blocked",
    "lines": 470,
    "function_count": 5,
    "text_bytes_est": 824,
@@ -176000,37 +176005,41 @@
      "mode": "thumb",
      "insns": 23,
      "size_est": 52,
-     "status": "pending"
+     "status": "blocked"
     },
     {
      "name": "ov116_0225F054",
      "mode": "thumb",
      "insns": 157,
      "size_est": 340,
-     "status": "pending"
+     "status": "blocked"
     },
     {
      "name": "ov116_0225F1BC",
      "mode": "thumb",
      "insns": 181,
      "size_est": 404,
-     "status": "pending"
+     "status": "blocked"
     },
     {
      "name": "ov116_0225F364",
      "mode": "thumb",
      "insns": 7,
      "size_est": 14,
-     "status": "pending"
+     "status": "blocked"
     },
     {
      "name": "ov116_0225F374",
      "mode": "thumb",
      "insns": 7,
      "size_est": 14,
-     "status": "pending"
+     "status": "blocked"
     }
-   ]
+   ],
+   "blocked_reason": "",
+   "attempts": null,
+   "blocker_id": null,
+   "kept_c": true
   },
   {
    "file": "asm/overlay_117.s",

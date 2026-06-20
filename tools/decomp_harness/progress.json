@@ -917,12 +917,32 @@
       "functions": 14,
       "result": "deferred",
       "note": "DEFERRED (assessment, not reverted \u2014 main.lsf untouched). Frontier battle-build/party-setup file (overlay_80), same class as the deferred overlay_80_02237A70. 14 funcs incl. THREE huge ones: ov80_022364A4 (0x1f4), ov80_02236734 (0x1d8), ov80_0223690C (0x128) \u2014 intricate party/trainer build over an UNTYPED Frontier context (r7 ctx: fields @0xf etc.) with heavy stack-arg passing (incoming struct at sp+0x88, many sp slots). 0 rodata, only 5 unknown callees (ov80_02229EF4/F04/A140/A480 + sub_02034818 = the Frontier battle-build API, signatures available from src/frontier/overlay_80_02238034.c). Exports: ov80_02236450, _02236698, _0223690C, _02236ABC, _02236AD8, _02236B18. Deferred due to size+untyped-context+complex-control-flow risk at session tail; fully tractable in a focused pass (model the ctx via offset macros + the arcade API template, then work the 3 big functions). Smaller helpers (ov80_02236AF0/B04 etc.) are trivial."
+    },
+    {
+      "file": "asm/unk_020850F4.s",
+      "functions": 9,
+      "result": "deferred",
+      "note": "DEFERRED (assessment, not reverted). Tractable but multi-cycle. OverlayManager UI screen: template _02102620={sub_020850F4 init, sub_0208524C main, sub_0208527C exit, -1}. 9 funcs incl. 3 large mechanical graphics functions: sub_020850F4 init (0x144: Heap_Create, OverlayManager_CreateAndGetData 0x3f4, memset, copy 7-word args to +0x3B8, NARC_New, BgConfig_Alloc, PaletteData_Init/SetAutoTransparent/AllocBuffers x4, sub_0208545C, sub_020863F4, sub_02085688, sub_020210BC, sub_02021148(4), sub_020860B8, optional sub_0203A880/sub_0203A948, G2x_SetBlendAlpha_ x2, Main_SetVBlankIntrCB(sub_020855CC)); sub_0208527C exit (0x138: 8x GfGfx_EngineA/BTogglePlanes, 7x FreeBgTilemapBuffer, PaletteData_FreeBuffers x4 + Free, NARC_Delete, sub_02021238, SpriteSystem_FreeResourcesAndManager/Free, TouchHitboxController_Destroy); sub_0208545C bgsetup (0x160: GfGfx_SetBanks, MIi_CpuClear32 x4, InitBgFromTemplate x7, BgClearTilemapBufferAndCommit x7, toggles, gSystem.screensFlipped=1, GfGfx_SwapDisplay). Plus sub_020855CC vblank, sub_020853B4 (0x34-byte string-entry ctor) + wrappers sub_02085400/0208541C + dtor sub_02085438, sub_0208524C main. Work struct 0x3f4 via offset macros: NARC@0x2EC(0xbb<<2), BgConfig@0x2F8(0xbe<<2), PaletteData@0x2FC(0xbf<<2), spriteMgr@0x2F0(0x2f<<4), spriteRes@0x2F4, TouchHitbox@0x300(3<<8), flag@0x3E8(0xfa<<2), args@0x3B8(0xee<<2,7 words). Exports: sub_02085400, sub_0208541C, sub_02085438, _02102620 (rest static). Imports incl cluster sub_02085688/BEC/060B8/063F4/066CC (asm) + sub_0203A880/914/930/948 + sub_02021xxx. RODATA RISK: _02102630 (GraphicsBanks 0x28), _02102658 (BgTemplate[3] 0x54), _021026AC (BgTemplate[4] 0x70) are local brace-list copies (ldmia/stmia) -> model as NAMED const structs + struct-copy (pattern local-array-init-as-named-const-struct-copy) to order them after the public _02102620. Templates: siblings choose_starter_app.c / berry_pots_app.c / overlay_mic_test.c (GfGfx_SetBanks+InitBgFromTemplate). Deferred at session tail due to multi-cycle rodata-ordering + big-struct effort; not blocked."
+    },
+    {
+      "file": "asm/overlay_116.s",
+      "functions": 5,
+      "result": "deferred-95pct",
+      "note": "DEFERRED at 95%. src/overlay_116.c WRITTEN and KEPT (lsf reverted to asm). Overlay (no cascade). 4 of 5 functions BYTE-MATCH: ov116_0225F1BC (10-state camera anim FSM, code+jumptable+pool identical), ov116_0225F020 (camera-config applier), ov116_0225F364/374 (tail-call wrappers -> ov116_0225F1BC with &_0225F384 / &ov116_0225F398). BLOCKER: ov116_0225F054 case 0 has ONE uncoercible diff: retail emits a redundant 'movs r1,#0' before the first GfGfx_EngineATogglePlanes(2,0); MWCC reuses r1=0 left by the byte-clear loop 'do{*p++=0;}while(--n)' (u32 n for subs;bne per pattern downcount-copy-loop-needs-unsigned-counter-for-subs-bne). Tried: chained/unchained alloc+clear, nested block scope, u8* walker \u2014 all reuse r1. Same compiler (sp2p2), so retail source differs subtly OR it's a genuine optimizer tie-break. NONMATCH path is viable but complex: (a) hand-encode the 8-entry switch jumptable as lsl instrs per src/overlay_01_02200858.c template: offsets [0x0e,0x46,0x5e,0x6c,0x90,0xcc,0xee,0x104] -> [lsl r6,r1,#0; lsl r6,r0,#1; lsl r6,r3,#1; lsl r4,r5,#1; lsl r0,r2,#2; lsl r4,r1,#3; lsl r6,r5,#3; lsl r4,r0,#4]; (b) case3/4 load ov116_0225F3B6 = ov116_0225F3AC+0xa which has NO C symbol -> use 'ldr rN,=ov116_0225F3AC+0xa' (verify mwasmarm accepts =sym+off); (c) pool first-use order F3AC+0xa,F3AC,0x7fff,0x4000050 matches retail. Structs/signatures all worked (CameraConfig116 {fx32;u16x;u16y;u16 angle;u16 dur} x16 @ov116_0225F3AC; Config116 0x14 x2; camCtx->camera at +0x24; ov01_021EFE34(void*,int,int,int); ov01_021EFE44/EFF28 ret BOOL; ov01_021EFEC8(void*,4int); BeginNormalPaletteFade(3,0,0,RGB_WHITE,dur,1,HEAP_ID_FIELD1); sub_0200FBF4(PM_LCD_BOTTOM,RGB_WHITE); reg_G2_BLDCNT=0). Headers: camera.h, gf_gfx_planes.h, heap.h, unk_0200FA24.h, constants/gx.h."
     }
   ],
   "in_progress": [],
   "stats": {
-    "total_attempts": 139,
-    "total_matched": 51,
-    "total_failed": 20
-  }
+    "total_attempts": 142,
+    "total_matched": 52,
+    "total_failed": 22
+  },
+  "matched": [
+    {
+      "file": "asm/overlay_01_021FFC0C.s",
+      "functions": 8,
+      "result": "matched",
+      "note": "Overlay_01 field-effect family (same API as overlay_01_02200040.c/021FE590.c). Manager {void*unk0} via ov01_021F1430(a0,4,0,0). 8 funcs: ctor ov01_021FFC0C, dtor ov01_021FFC28, static setup ov01_021FFC38 (ov01_021F18D4/1908/1930/1758 with const u32 ov01_02209258={0,2,0,0,0,2}), static teardown ov01_021FFC80, + 4 EXPORTED callbacks referenced by an external template (in cluster partner overlay_01_021F1348.s): Cb1 ov01_021FFCA8 (init: copies 0x24-byte Data from sub_02068D98 to Work+0x18, MapObject_Get*, sub_0206121C, ov01_021F1740->Sprite* unk3C), Cb1 ov01_021FFD64 (tail->sub_02023DA4), Cb2 ov01_021FFD70 (3-state update FSM, sub_0205F0F8 coord/facing checks), Cb2 ov01_021FFE98. Work 0x40: {int unk0 state; u32 unk4/8/C ids; int unk14; Data unk18(0x24){int x,_,z; void* taskman; FieldSystem*; int; LocalMapObject*; int; s8 facing}; Sprite* unk3C}. Keys: MapObject_TestFlagsBits flag arg needs (MapObjectFlagBits) cast on (2<<8); sub_0206121C declared locally int(void*,VecFx32*) (header unk_0205FD20.h says void); sub_02023F70()/0x1000>=2 signed-div idiom; two VecFx32 locals in FD70 declared vecB-then-vecA for sp+0xc/sp+0 layout; benign -6 .text from interior .balign 4,0 pads (overlay). chiri compare OK."
+    }
+  ]
 }
