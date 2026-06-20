@@ -578,6 +578,14 @@
    "attempts": 1,
    "result": "matched",
    "note": "compare-verified (chiri pkg -- compare OK, full ROM SHA1). Honey/Sweet Scent field effect overlay. 19 static fns + 2 exports (GetHoneySweetScentWorkSize, Task_HoneyOrSweetScent already in overlay_01.h -> no header change, IPA gating was conservative). Two Field3dObjectTaskTemplate (ov01_02208BCC/BE4, dataSize 0x18) + a {1,5,9} table; 6 task callbacks (init/destroy/update/render); a 10-case state machine on a 0xc-byte env (TaskManager_GetEnvironment). Fixes: ov01_021FC1B4 needed `<=` with swapped bodies for bgt-fallthrough AND a temp for the div-result+start add operand order (see div-result-plus-load-needs-temp-for-add-operand-order). Jump-table fns are objdiff size-artifacts, byte-identical."
+  },
+  {
+   "file": "asm/overlay_01_021FCE98.s",
+   "functions": 7,
+   "lines": 414,
+   "attempts": 1,
+   "result": "matched",
+   "note": "compare-verified (chiri pkg -- compare OK, full ROM SHA1). Task_UseSweetScentInField (8-case FSM, exported, used by field_move.c) + 6 statics for the Sweet Scent 3D model effect. env=FieldMoveEnvironment, env->moveData reinterpreted from FieldMoveData(4B) to a 0xc SweetScentWork; model effect uses a 0xd4 SweetScentModelWork {NNSFndAllocator; Field3dModel; Field3DModelAnimation[3]; Field3dObject}. Key fix: case 4 mood=2 must be set BEFORE FieldSystem_UnkSub108_AddMonMood (callee-saved reg) - the wrong order was 2 bytes short, shrinking the overlay and failing OVY_2/3/4+main sbins despite objdiff per-fn match (see assign-before-call-forces-callee-saved-reg-and-size). ov01_021FD154 loop needed i declared before numDone for r4/r5 order."
   }
  ],
  "failed": [
@@ -818,8 +826,8 @@
  ],
  "in_progress": [],
  "stats": {
-  "total_attempts": 127,
-  "total_matched": 44,
+  "total_attempts": 128,
+  "total_matched": 45,
   "total_failed": 15
  }
 }

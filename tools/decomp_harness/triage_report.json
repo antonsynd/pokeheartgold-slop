@@ -1,5 +1,5 @@
 {
- "generated": "2026-06-20T06:51:00Z",
+ "generated": "2026-06-20T07:16:17Z",
  "weights": {
   "insn_line": 1.0,
   "unknown_callee": 40.0,
@@ -10,43 +10,6 @@
   "special_section": 500.0
  },
  "queue": [
-  {
-   "file": "asm/overlay_01_021FCE98.s",
-   "score": 862.0,
-   "special_sections": [],
-   "functions": 7,
-   "insn_lines": 342,
-   "data_only": false,
-   "unknown_callees": [
-    "Field3dModelAnimation_FrameAdvanceAndCheck",
-    "Field3dModelAnimation_FrameSet",
-    "Field3dModelAnimation_LoadFromFilesystem",
-    "Field3dModelAnimation_Unload",
-    "Field3dModel_LoadFromFilesystem",
-    "Field3dModel_Unload",
-    "Field3dObject_AddAnimation",
-    "Field3dObject_Draw",
-    "Field3dObject_InitFromModel",
-    "Field3dObject_SetActiveFlag",
-    "Field3dObject_SetPosEx",
-    "ov01_02205A60",
-    "ov01_022062CC"
-   ],
-   "jumptable_words": 0,
-   "rodata_bytes": 0,
-   "arm_functions": 0,
-   "gated_by": [],
-   "cluster_partners": [
-    {
-     "file": "asm/overlay_01_021FB878.s",
-     "shared_symbols": 11
-    },
-    {
-     "file": "asm/overlay_01_022053EC.s",
-     "shared_symbols": 2
-    }
-   ]
-  },
   {
    "file": "asm/unk_0208DE40.s",
    "score": 913.4,
