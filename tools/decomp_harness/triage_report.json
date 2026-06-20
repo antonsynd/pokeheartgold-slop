@@ -1,5 +1,5 @@
 {
- "generated": "2026-06-20T06:18:42Z",
+ "generated": "2026-06-20T06:51:00Z",
  "weights": {
   "insn_line": 1.0,
   "unknown_callee": 40.0,
@@ -11,35 +11,39 @@
  },
  "queue": [
   {
-   "file": "asm/overlay_01_021FC05C.s",
-   "score": 908.0,
+   "file": "asm/overlay_01_021FCE98.s",
+   "score": 862.0,
    "special_sections": [],
-   "functions": 21,
-   "insn_lines": 485,
+   "functions": 7,
+   "insn_lines": 342,
    "data_only": false,
    "unknown_callees": [
-    "GetMetatileBehavior",
-    "PlaySE",
-    "ov01_021EB31C"
+    "Field3dModelAnimation_FrameAdvanceAndCheck",
+    "Field3dModelAnimation_FrameSet",
+    "Field3dModelAnimation_LoadFromFilesystem",
+    "Field3dModelAnimation_Unload",
+    "Field3dModel_LoadFromFilesystem",
+    "Field3dModel_Unload",
+    "Field3dObject_AddAnimation",
+    "Field3dObject_Draw",
+    "Field3dObject_InitFromModel",
+    "Field3dObject_SetActiveFlag",
+    "Field3dObject_SetPosEx",
+    "ov01_02205A60",
+    "ov01_022062CC"
    ],
    "jumptable_words": 0,
-   "rodata_bytes": 60,
+   "rodata_bytes": 0,
    "arm_functions": 0,
-   "gated_by": [
-    "ipa-shared-headers"
-   ],
+   "gated_by": [],
    "cluster_partners": [
     {
-     "file": "asm/unk_02054648.s",
-     "shared_symbols": 1
+     "file": "asm/overlay_01_021FB878.s",
+     "shared_symbols": 11
     },
     {
-     "file": "asm/unk_02005D10.s",
-     "shared_symbols": 1
-    },
-    {
-     "file": "asm/overlay_01_021EB1E8.s",
-     "shared_symbols": 1
+     "file": "asm/overlay_01_022053EC.s",
+     "shared_symbols": 2
     }
    ]
   },
@@ -173,49 +177,6 @@
     {
      "file": "asm/unk_02032844.s",
      "shared_symbols": 1
-    }
-   ]
-  },
-  {
-   "file": "asm/overlay_01_021FCE98.s",
-   "score": 942.0,
-   "special_sections": [],
-   "functions": 7,
-   "insn_lines": 342,
-   "data_only": false,
-   "unknown_callees": [
-    "Field3dModelAnimation_FrameAdvanceAndCheck",
-    "Field3dModelAnimation_FrameSet",
-    "Field3dModelAnimation_LoadFromFilesystem",
-    "Field3dModelAnimation_Unload",
-    "Field3dModel_LoadFromFilesystem",
-    "Field3dModel_Unload",
-    "Field3dObject_AddAnimation",
-    "Field3dObject_Draw",
-    "Field3dObject_InitFromModel",
-    "Field3dObject_SetActiveFlag",
-    "Field3dObject_SetPosEx",
-    "GetHoneySweetScentWorkSize",
-    "Task_HoneyOrSweetScent",
-    "ov01_02205A60",
-    "ov01_022062CC"
-   ],
-   "jumptable_words": 0,
-   "rodata_bytes": 0,
-   "arm_functions": 0,
-   "gated_by": [],
-   "cluster_partners": [
-    {
-     "file": "asm/overlay_01_021FB878.s",
-     "shared_symbols": 11
-    },
-    {
-     "file": "asm/overlay_01_021FC05C.s",
-     "shared_symbols": 2
-    },
-    {
-     "file": "asm/overlay_01_022053EC.s",
-     "shared_symbols": 2
     }
    ]
   },
