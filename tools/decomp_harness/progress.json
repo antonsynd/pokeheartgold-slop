@@ -626,6 +626,14 @@
       "attempts": 1,
       "result": "matched",
       "note": "compare-verified (chiri pkg -- compare OK, full ROM SHA1). Field-system save/roamer/follower helpers + sub_02067C30 7-state follow-mon-cry TaskManager FSM (jump table, warp teardown). FieldSystem accessed via offset macros (saveData@0xc, location@0x20, playerAvatar@0x40, 0x7c/0x7e); env struct (UnkStruct_02067BF8, 0x1c) defined in-file; 4 frozen sigs from include/unk_02067A60.h, 8 others prototyped locally; ~35 callees declared locally as void*. Two real bugs: (1) FieldSystem_UnkSub108_AddMonMood takes 2 args not 3 (the 2 was the mood local); (2) mood must be set BEFORE the AddMonMood call to land in callee-saved r6 (live-across-call) -> restores sub_02067C30 to 0x1c4 and the alignment nop. The wrong size shifted field_move.o by 4 and cascaded to 117 sbin fails (clean build). Diagnosed via clean-build next-file address, not objdiff (inline-jumptable miscount)."
+    },
+    {
+      "file": "asm/overlay_01_021FF6B0.s",
+      "functions": 9,
+      "lines": 242,
+      "attempts": 1,
+      "result": "matched",
+      "note": "compare-verified (chiri pkg -- compare OK, full ROM SHA1). Field-effect definition in the overlay_01 task cluster: OverlayManager-style ctor/dtor + register/unregister + spawn (ov01_021F1620) with a {size,init,exec,exit,?} callback Template (ov01_022091EC) and 4 callbacks. Modeled on sibling src/overlay_01_021FE200.c (same ov01_021F1xxx field-effect API): manager={void* unk0}, Data (0x10), Work (0x24); ov01_021F1xxx + sub_* declared locally; created include/overlay_01_021FF6B0.h (3 public sigs, mirrors sibling). One fix: stack-local decl order in ov01_021FF74C (declare Data before VecFx32 so position takes the lower sp offset). .text -6 (3 short funcs incl. last) benign in an overlay (rodata re-aligns). 2 rodata symbols (Template struct then u32 array) emit in declaration order."
     }
   ],
   "failed": [
@@ -879,8 +887,8 @@
   ],
   "in_progress": [],
   "stats": {
-    "total_attempts": 133,
-    "total_matched": 48,
+    "total_attempts": 134,
+    "total_matched": 49,
     "total_failed": 17
   }
 }

@@ -967,6 +967,18 @@
       "id": "set-cross-call-temp-before-call-for-callee-saved-reg",
       "title": "A temp used AFTER a call must be set BEFORE the call to land in a callee-saved reg (matters for size/alignment)",
       "body": "When a local (e.g. a mood/mode flag) is assigned a constant in one if-branch and consumed by a LATER call after an intervening call, the SOURCE ORDER of the assignment relative to the intervening call controls register allocation. Setting it BEFORE the intervening call makes MWCC treat it as live-across-call -> allocates a callee-saved reg (r6) and emits movs r6,#k before the bl, then adds r1,r6,#0 to move it into the arg reg for the later call. Setting it AFTER the call lets MWCC keep it in a caller-saved reg (often the very arg reg, r1) so NO move is needed -> the function is 2 bytes shorter, which can also drop a trailing 2-byte alignment nop (4 bytes total). In a STATIC-module file this size change shifts every following file and cascades to ~all overlays (their relocations to main symbols change) -> 100+ sbin FAILs from one wrong line. Seen in unk_02067A60 sub_02067C30 case 1: must write mood=2; BEFORE FieldSystem_UnkSub108_AddMonMood(...). Diagnose via clean-build next-file address (objdump -t main.elf) not objdiff (which miscounts inline jump tables)."
+    },
+    {
+      "category": "codegen",
+      "id": "stack-local-decl-order-last-is-lower-address",
+      "title": "Stack local order: MWCC places the LAST-declared local at the LOWER stack address; flip declaration order to swap two locals frame offsets",
+      "body": "When two same-frame locals (e.g. a VecFx32 and a Data struct) land at swapped sp offsets vs retail (objdiff shows identical instructions but different add r1,sp,#N / str [sp,#N] immediates), reorder their C declarations. MWCC -O4 assigns the LAST-declared local the LOWER sp offset. In ov01_021FF6B0 ov01_021FF74C the retail layout is position@sp+8, data@sp+0x14; got it by declaring `UnkOv01_..._Data data; VecFx32 position;` (data first so position, declared last, takes the lower offset). Diagnose by diffing the two functions disasm: same opcodes, only the sp-relative immediates differ in a consistent pairwise swap."
+    },
+    {
+      "category": "data-sections",
+      "id": "overlay-last-function-trailing-pad-benign",
+      "title": "In an OVERLAY, the last functions .balign trailing pad is benign (restored by the following .rodata 4-align); contrast a STATIC-module last function",
+      "body": "A 2-mod-4 LAST function leaves objdiff .text short by 2 (no trailing pad in the per-function MWCC section). In a STATIC module this can cascade because the NEXT FILEs .text needs only Thumb (2-byte) alignment and slots in early (see set-cross-call-temp-before-call / unk_02067A60). But in an OVERLAY the last function is followed by THIS objects own .rodata (4-aligned), so the linker re-adds the 2-byte 0x0000 pad and `chiri pkg -- compare` PASSES. Verified ov01_021FF6B0: ov01_021FF830 (last) + ov01_021FF6B0 + ov01_021FF724 each -2 (objdiff .text -6) yet full ROM OK. So dont reflexively NONMATCHING an overlays short last function; run compare first."
     }
   ]
 }
