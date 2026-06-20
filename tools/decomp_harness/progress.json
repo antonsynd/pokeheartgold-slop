@@ -1,6 +1,14 @@
 {
  "completed": [
   {
+   "file": "asm/unk_0208DE40.s",
+   "lines": 906,
+   "functions": 12,
+   "attempts": 1,
+   "result": "matched",
+   "note": "compare-verified (full ROM SHA1 OK). Pokemon stat/picture sub-screen (battle overlay): 3D init via G3X_* SDK inlines + G3_SwapBuffers/G3_ViewPort/G2_SetBG0Priority, camera setup, nature-stat hexagon position builder (16 StatPosTemplate, 4x4 step interpolation via inline FX_F32_TO_FX32 round helper), PokepicManager mgmt, touchscreen dispatch. IPA-safe minimal includes + local pokepic/pokemon protos (Pokepic_StartAnim 2-arg). Key fixes: single-struct rodata (defeat MWCC size-sort reorder); inline s16 round helper (keep (s16) truncation in void fn); u16 template fields + (s16) cast (ldrh vs ldrsh); 12 explicit induction pointers via direct work+const casts; i=0 hoisted before pointer setup."
+  },
+  {
    "file": "asm/unk_0202DB34.s",
    "lines": 108,
    "functions": 12,

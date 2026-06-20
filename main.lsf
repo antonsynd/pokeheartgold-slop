@@ -291,7 +291,7 @@ Static main
     Object asm/unk_02088288.o
     Object asm/unk_0208B1AC.o
     Object asm/unk_0208C3E4.o
-    Object asm/unk_0208DE40.o
+    Object src/unk_0208DE40.o
     Object src/ribbon.o
     Object src/trainer_memo.o
     Object src/unk_0208F658.o

@@ -1,12 +1,12 @@
 {
  "summary": {
-  "generated": "2026-06-20T07:18:27Z",
+  "generated": "2026-06-20T09:38:33Z",
   "by_status": {
    "matched": {
-    "files": 71,
-    "functions": 781,
-    "insn_lines": 18117,
-    "text_bytes_est": 39718
+    "files": 72,
+    "functions": 793,
+    "insn_lines": 18891,
+    "text_bytes_est": 41472
    },
    "blocked": {
     "files": 29,
@@ -15,10 +15,10 @@
     "text_bytes_est": 26458
    },
    "pending": {
-    "files": 197,
-    "functions": 18947,
-    "insn_lines": 922795,
-    "text_bytes_est": 2061316
+    "files": 196,
+    "functions": 18935,
+    "insn_lines": 922021,
+    "text_bytes_est": 2059562
    },
    "upstream": {
     "files": 374,
@@ -29,9 +29,9 @@
   },
   "function_totals": {
    "tracked": 20121,
-   "matched": 781,
+   "matched": 793,
    "partial_in_blocked": 50,
-   "pending": 18947
+   "pending": 18935
   },
   "blockers": [
    {
@@ -29612,8 +29612,8 @@
   },
   {
    "file": "asm/unk_0208DE40.s",
-   "lsf_kind": "asm",
-   "status": "pending",
+   "lsf_kind": "src",
+   "status": "matched",
    "lines": 906,
    "function_count": 12,
    "text_bytes_est": 1754,
@@ -29681,86 +29681,87 @@
      "mode": "thumb",
      "insns": 66,
      "size_est": 144,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "sub_0208DEDC",
      "mode": "thumb",
      "insns": 14,
      "size_est": 32,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "sub_0208DEFC",
      "mode": "thumb",
      "insns": 21,
      "size_est": 50,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "sub_0208DF2C",
      "mode": "thumb",
      "insns": 50,
      "size_est": 110,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "sub_0208DF9C",
      "mode": "thumb",
      "insns": 47,
      "size_est": 94,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "sub_0208DFF8",
      "mode": "thumb",
      "insns": 141,
      "size_est": 378,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "sub_0208E174",
      "mode": "thumb",
      "insns": 237,
      "size_est": 514,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "sub_0208E3AC",
      "mode": "thumb",
      "insns": 68,
      "size_est": 152,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "sub_0208E444",
      "mode": "thumb",
      "insns": 53,
      "size_est": 112,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "sub_0208E4B4",
      "mode": "thumb",
      "insns": 17,
      "size_est": 42,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "sub_0208E4DC",
      "mode": "thumb",
      "insns": 48,
      "size_est": 100,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "sub_0208E544",
      "mode": "thumb",
      "insns": 12,
      "size_est": 26,
-     "status": "pending"
+     "status": "matched"
     }
-   ]
+   ],
+   "source": "harness"
   },
   {
    "file": "asm/ribbon.s",
