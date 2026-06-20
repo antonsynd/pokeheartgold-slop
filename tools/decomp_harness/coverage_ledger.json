@@ -1,12 +1,12 @@
 {
  "summary": {
-  "generated": "2026-06-20T12:59:15Z",
+  "generated": "2026-06-20T15:00:25Z",
   "by_status": {
    "matched": {
-    "files": 75,
-    "functions": 833,
-    "insn_lines": 20400,
-    "text_bytes_est": 44872
+    "files": 76,
+    "functions": 845,
+    "insn_lines": 20776,
+    "text_bytes_est": 45778
    },
    "blocked": {
     "files": 30,
@@ -15,10 +15,10 @@
     "text_bytes_est": 27304
    },
    "pending": {
-    "files": 192,
-    "functions": 18878,
-    "insn_lines": 920125,
-    "text_bytes_est": 2055316
+    "files": 191,
+    "functions": 18866,
+    "insn_lines": 919749,
+    "text_bytes_est": 2054410
    },
    "upstream": {
     "files": 374,
@@ -29,15 +29,15 @@
   },
   "function_totals": {
    "tracked": 20121,
-   "matched": 833,
+   "matched": 845,
    "partial_in_blocked": 50,
-   "pending": 18878
+   "pending": 18866
   },
   "blockers": [
    {
     "id": "ipa-shared-headers",
     "blocks_files": 2,
-    "gates_pending_files": 113
+    "gates_pending_files": 112
    },
    {
     "id": "param-copyprop-cmp",
@@ -24302,8 +24302,8 @@
   },
   {
    "file": "asm/unk_02067A60.s",
-   "lsf_kind": "asm",
-   "status": "pending",
+   "lsf_kind": "src",
+   "status": "matched",
    "lines": 474,
    "function_count": 12,
    "text_bytes_est": 906,
@@ -24390,86 +24390,87 @@
      "mode": "thumb",
      "insns": 11,
      "size_est": 26,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "sub_02067A78",
      "mode": "thumb",
      "insns": 4,
      "size_est": 8,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "sub_02067A80",
      "mode": "thumb",
      "insns": 4,
      "size_est": 8,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "sub_02067A88",
      "mode": "thumb",
      "insns": 36,
      "size_est": 92,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "sub_02067AE4",
      "mode": "thumb",
      "insns": 66,
      "size_est": 164,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "sub_02067B88",
      "mode": "thumb",
      "insns": 10,
      "size_est": 28,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "sub_02067BA4",
      "mode": "thumb",
      "insns": 10,
      "size_est": 28,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "sub_02067BC0",
      "mode": "thumb",
      "insns": 6,
      "size_est": 16,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "FieldSystem_ClearFollowingTrainer",
      "mode": "thumb",
      "insns": 10,
      "size_est": 26,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "sub_02067BE8",
      "mode": "thumb",
      "insns": 6,
      "size_est": 16,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "sub_02067BF8",
      "mode": "thumb",
      "insns": 27,
      "size_est": 56,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "sub_02067C30",
      "mode": "thumb",
      "insns": 186,
      "size_est": 438,
-     "status": "pending"
+     "status": "matched"
     }
-   ]
+   ],
+   "source": "harness"
   },
   {
    "file": "asm/field_move.s",
