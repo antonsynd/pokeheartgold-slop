@@ -1,21 +1,21 @@
 # Decomp Coverage Ledger
 
-*Generated 2026-06-20T18:40:21Z by `coverage_ledger.py` — do not hand-edit; regenerate after each decomp.*
+*Generated 2026-06-20T18:54:09Z by `coverage_ledger.py` — do not hand-edit; regenerate after each decomp.*
 
-Tracked functions (files with retained asm): **20121** — matched 903, pending 18646, plus 50 matched-but-blocked inside failed files.
+Tracked functions (files with retained asm): **20121** — matched 915, pending 18634, plus 50 matched-but-blocked inside failed files.
 
 | status | files | functions | insn lines | ~text bytes |
 |---|---|---|---|---|
-| matched | 83 | 903 | 22340 | 49400 |
+| matched | 84 | 915 | 22571 | 49920 |
 | blocked | 38 | 572 | 18095 | 39880 |
-| pending | 176 | 18646 | 912473 | 2038212 |
+| pending | 175 | 18634 | 912242 | 2037692 |
 | upstream | 374 | 0 | 0 | 0 |
 
 ## Blockers (value-ordered: fix what gates the most)
 
 | id | blocks | gates pending files | description |
 |---|---|---|---|
-| ipa-shared-headers | 2 | 110 | MWCC -ipa file: changing a signature in a shared header cascades codegen changes into every already-matched caller in other compilation units. Files sharing many declarations (sound.h family) must be decompiled together or after a coordinated header fix. |
+| ipa-shared-headers | 2 | 109 | MWCC -ipa file: changing a signature in a shared header cascades codegen changes into every already-matched caller in other compilation units. Files sharing many declarations (sound.h family) must be decompiled together or after a coordinated header fix. |
 | param-copyprop-cmp | 1 | 37 | MWCC copy-propagates parameter copies: 'adds r4, r0, #0; cmp r4, #N' at function entry cannot be produced from pure C (MWCC substitutes back to r0). Affected functions need the NONMATCHING inline-asm fallback. |
 | objdiff-false-positives | 0 | 0 | RESOLVED. objdiff.py had a critical bug: the byte extraction regex did not match MWCC's ARM Thumb objdump format (packed hex like 'b418' vs expected space-separated 'b4 18'). It extracted 0 bytes for every function, so 0==0 always reported MATCH. 11 decomps accepted via objdiff were not actually byte-matching. Fixed in this session; all 11 non-matching decomps reverted to asm. 2 decomps that truly match (unk_0202DB34, battle_arcade_game_board_data) kept. |
 | ext-data-section-split | 1 | 0 | Data-only files exporting multiple EXTERNAL (.public) const arrays: MWCC -ipa file emits each top-level const as its own .rodata section, and mwldarm orders/aligns them differently than the asm's single packed .rodata, so the linked overlay/module SHA1 fails even though objdiff --summary (per-section) reports a match. Symbols referenced by other TUs must stay non-static, so they cannot be pooled into one section via `static`. |
@@ -63,7 +63,7 @@ Tracked functions (files with retained asm): **20121** — matched 903, pending 
 | asm/middleware.s | 0 | 0 | yes |  Data-only: 7 NUL-terminated SDK middleware version strings in a custom .version section (single ordered section, each .b |
 | asm/battle_arcade_game_board_data.s | 0 | 0 | yes | ext-data-section-split MWCC splits external const into per-symbol .rodata sections; reordered at link -> OVY_84 SHA1 fail. Stays asm. |
 
-## Matched files (asm retained) (83)
+## Matched files (asm retained) (84)
 
 | file | functions | insn lines | data-only | notes |
 |---|---|---|---|---|
@@ -100,6 +100,7 @@ Tracked functions (files with retained asm): **20121** — matched 903, pending 
 | asm/overlay_01_021E7FDC.s | 12 | 860 |  | harness |
 | asm/overlay_01_021FB5D4.s | 12 | 304 |  | harness |
 | asm/overlay_01_021FCD2C.s | 12 | 168 |  | harness |
+| asm/overlay_01_022051EC.s | 12 | 231 |  | retained_asm |
 | asm/unk_02055244.s | 11 | 200 |  | harness |
 | asm/unk_0205BB1C.s | 11 | 562 |  | harness |
 | asm/unk_02097024.s | 11 | 209 |  | harness |
@@ -151,7 +152,7 @@ Tracked functions (files with retained asm): **20121** — matched 903, pending 
 | asm/unk_data_020FD978.s | 0 | 0 | yes | harness |
 | asm/overlay_01_data_02208BFC.s | 0 | 0 | yes | retained_asm |
 
-## Pending files (176)
+## Pending files (175)
 
 | file | functions | insn lines | data-only | notes |
 |---|---|---|---|---|
@@ -319,7 +320,6 @@ Tracked functions (files with retained asm): **20121** — matched 903, pending 
 | asm/overlay_58.s | 14 | 486 |  |  |
 | asm/unk_02078834.s | 13 | 611 |  |  |
 | asm/overlay_01_02203A18.s | 13 | 464 |  |  |
-| asm/overlay_01_022051EC.s | 12 | 231 |  |  |
 | asm/unk_02056680.s | 11 | 738 |  |  |
 | asm/overlay_80_02235438.s | 11 | 361 |  |  |
 | asm/overlay_104.s | 9 | 677 |  |  |

@@ -945,8 +945,8 @@
   ],
   "in_progress": [],
   "stats": {
-    "total_attempts": 148,
-    "total_matched": 55,
+    "total_attempts": 149,
+    "total_matched": 56,
     "total_failed": 25
   },
   "matched": [
@@ -973,6 +973,12 @@
       "functions": 10,
       "result": "matched",
       "note": "Field-effect family (Work/Data identical to overlay_01_021FFC0C). 10 funcs: ctor/dtor/setup/teardown + 2 spawners (ov01_021FF8F0 single-coord, ov01_021FF964 with delta coords+facing flag) + Cb1 init ov01_021FF9F4 + Cb1 tail ov01_021FFAB0 + Cb2 ov01_021FFABC (FSM w/ coord-delta unk1C/unk1E subtraction) + Cb2 ov01_021FFBD4. KEY FIX: rodata is 3 const objects (Template ov01_02209218, u32[6] ov01_0220922C, Template ov01_02209244-for-the-021FFC0C-effect which is DEAD DATA here). The asm rodata is one symbol-less 0x40 blob in declaration order. Emitting 3 separate consts FAILS: MWCC eliminates the unused 244 (static) or reorders (global pools relocated templates and separates the non-reloc array). FIX: emit all 3 as fields of ONE static const struct {Template tmpl0; u32 arr[6]; Template tmpl2;} -> referenced via tmpl0/arr keeps the whole blob contiguous in order incl dead tmpl2. .text -10 (5 funcs 2-mod-4 trailing pad) benign. chiri compare OK."
+    },
+    {
+      "file": "asm/overlay_01_022051EC.s",
+      "functions": 12,
+      "result": "matched",
+      "note": "Field-effect that drives a 3D model. Manager 0xc4 {void*unk0; NNSFndAllocator unk4; Field3dModel model@0x14; Field3DModelAnimation anim[2]@0x24; Field3dObject obj@0x4c}. Uses field/overlay_01_021FB878.h (Field3d API) + field_system.h + heap.h(HeapExp_FndInitAllocator) + unk_02005D10.h(PlaySE). 12 funcs: ctor/dtor, static setup ov01_02205218 (load model+2 anims NARC_a_1_0_3 fileIds 0x84/0xa8/0xa6, InitFromModel, AddAnimation x2, FrameSet 0, SetActiveFlag FALSE), static teardown ov01_022052A4, spawner ov01_022052C4 (ov01_021F1620 + template ov01_022096CC, data={fieldSystem, ov01_021F1450(fs,0x16)}), helper ov01_022052F4 (sub_02068D74()->unk0), Cb1 init ov01_02205300 (PlaySE(SEQ_SE_GS_TUREARUKI), SetPosEx), Cb1 ov01_02205354 (tail SetActiveFlag FALSE), Cb2 noop ov01_02205350 (empty), Cb2 ov01_02205364 (Draw + advance check), ov01_02205388 (advance-all-and-check), ov01_022053C4 (FrameSet-all). Work {int unk0; manager* unk4}. Keys: ov01_02205388 loop counters u8 i/done with decl order 'u8 i; u8 done' to get i=r4,done=r5; count u32 (unsigned blo); NARC 0x67=NARC_a_1_0_3; HEAP_ID_FIELD1. chiri compare OK."
     }
   ]
 }

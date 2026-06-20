@@ -1,5 +1,5 @@
 {
- "generated": "2026-06-20T18:38:30Z",
+ "generated": "2026-06-20T18:52:17Z",
  "weights": {
   "insn_line": 1.0,
   "unknown_callee": 40.0,
@@ -350,52 +350,6 @@
     },
     {
      "file": "asm/unk_02035900.s",
-     "shared_symbols": 1
-    }
-   ]
-  },
-  {
-   "file": "asm/overlay_01_022051EC.s",
-   "score": 1172.0,
-   "special_sections": [],
-   "functions": 12,
-   "insn_lines": 231,
-   "data_only": false,
-   "unknown_callees": [
-    "Field3dModelAnimation_FrameAdvanceAndCheck",
-    "Field3dModelAnimation_FrameSet",
-    "Field3dModelAnimation_LoadFromFilesystem",
-    "Field3dModelAnimation_Unload",
-    "Field3dModel_LoadFromFilesystem",
-    "Field3dModel_Unload",
-    "Field3dObject_AddAnimation",
-    "Field3dObject_Draw",
-    "Field3dObject_InitFromModel",
-    "Field3dObject_SetActiveFlag",
-    "Field3dObject_SetPosEx",
-    "PlaySE",
-    "ov01_021F1430",
-    "ov01_021F1448",
-    "ov01_021F1450",
-    "ov01_021F1620"
-   ],
-   "jumptable_words": 0,
-   "rodata_bytes": 20,
-   "arm_functions": 0,
-   "gated_by": [
-    "ipa-shared-headers"
-   ],
-   "cluster_partners": [
-    {
-     "file": "asm/overlay_01_021FB878.s",
-     "shared_symbols": 11
-    },
-    {
-     "file": "asm/overlay_01_021F1348.s",
-     "shared_symbols": 4
-    },
-    {
-     "file": "asm/unk_02005D10.s",
      "shared_symbols": 1
     }
    ]

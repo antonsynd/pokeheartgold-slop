@@ -561,7 +561,7 @@ Overlay field
     Object src/field/overlay_01_apricorn_tree_anim.o
     Object src/field/overlay_01_rock_smash_item.o
     Object src/field/headbutt.o
-    Object asm/overlay_01_022051EC.o
+    Object src/overlay_01_022051EC.o
     Object asm/overlay_01_022053EC.o
 }
 Overlay OVY_2
