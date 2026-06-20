@@ -1,0 +1,12 @@
+#ifndef POKEHEARTGOLD_OVERLAY_01_021FE590_H
+#define POKEHEARTGOLD_OVERLAY_01_021FE590_H
+
+#include "map_object.h"
+
+typedef struct UnkOv01_021FE590 UnkOv01_021FE590;
+
+UnkOv01_021FE590 *ov01_021FE590(void *a0);
+void ov01_021FE5A4(UnkOv01_021FE590 *manager);
+void *ov01_021FE66C(LocalMapObject *mapObject);
+
+#endif // POKEHEARTGOLD_OVERLAY_01_021FE590_H

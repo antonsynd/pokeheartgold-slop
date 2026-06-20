@@ -532,6 +532,10 @@ Refines [[mwcc-rodata-const-struct-reverse-order]]. For N consecutive file-scope
 
 A 2-mod-4 LAST function leaves objdiff .text short by 2 (no trailing pad in the per-function MWCC section). In a STATIC module this can cascade because the NEXT FILEs .text needs only Thumb (2-byte) alignment and slots in early (see set-cross-call-temp-before-call / unk_02067A60). But in an OVERLAY the last function is followed by THIS objects own .rodata (4-aligned), so the linker re-adds the 2-byte 0x0000 pad and `chiri pkg -- compare` PASSES. Verified ov01_021FF6B0: ov01_021FF830 (last) + ov01_021FF6B0 + ov01_021FF724 each -2 (objdiff .text -6) yet full ROM OK. So dont reflexively NONMATCHING an overlays short last function; run compare first.
 
+### To control rodata order of a function-local array initializer, make it a NAMED const struct and struct-copy it (sorts with structs, not as a trailing anon @NNNN template)  <!-- id: local-array-init-as-named-const-struct-copy-for-rodata-order -->
+
+A function-local `u32 x[]={..}` initializer becomes an anonymous @NNNN rodata template whose position MWCC controls poorly (often emitted FIRST, before named file-scope consts) -> rodata layout mismatch even when all functions match. FIX: declare a named `typedef struct { u32 v[N]; } T; static const T name = {{..}};` at file scope and copy it with a struct assignment `T local = name;` inside the function (still compiles to the same ldmia/stmia inline copy). Now `name` is a const STRUCT and sorts WITH the other const structs (before const arrays), so you can place it via declaration order. Verified ov01_021FE590: frames table {0x1000,0x1000,0x2000,0x2000,0x1000} -> retail order Template(struct), frames(struct), data(array). For 2 const structs MWCC emitted them REVERSED vs declaration, so declare them in the OPPOSITE of desired order (declare frames before Template to get Template before frames). Always check nm -n <obj> for the emitted .rodata order; only chiri pkg -- compare is authoritative.
+
 ## Recurring File/Module Patterns
 
 ### Task callback pattern (field system)  <!-- id: task-callback-pattern -->

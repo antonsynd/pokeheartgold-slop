@@ -642,6 +642,14 @@
       "attempts": 1,
       "result": "matched",
       "note": "compare-verified (chiri pkg -- compare OK, full ROM SHA1). Twin of overlay_01_021FF6B0 (same ov01_021F1xxx field-effect API): ctor/dtor/register/unregister/spawn + 4 callbacks via Template ov01_02209294. Adapted the proven template; matched on FIRST build (stack-local order data-before-position applied upfront from the prior lesson). Constants differ: register IDs 9/9/0xa/0xb params 0x7c/0x94/0x17; ov01_021F1450(fs,0xf); ov01_021F1740(unk4,0xb); height threshold >=7; data table {0,7,1,0,0,2}. .text -6 benign (overlay rodata re-aligns)."
+    },
+    {
+      "file": "asm/overlay_01_021FE590.s",
+      "functions": 13,
+      "lines": 308,
+      "attempts": 1,
+      "result": "matched",
+      "note": "compare-verified (chiri pkg -- compare OK, full ROM SHA1). 13 funcs (12 C + 1 NONMATCHING). overlay_01 field-effect, same ov01_021F1xxx API as overlay_01_021FF6B0/02200040 but with a REFCOUNTED shared manager (0xc: refcount@0, active@4, parent@8) + multi-frame update. Data(0xc), Work(0x1c). Created include/overlay_01_021FE590.h. Two fixes: (1) rodata order \u2014 made the FE70C frames local-array a NAMED const struct (UnkOv01_02209098) struct-copied, so it sorts as a struct; declared frames-struct before Template to get retail order Template,frames,data (2 structs emit reversed). (2) ov01_021FE70C has an uncoercible regalloc tie-break (movs r1,#0 vs r0 for work->unk8=0) -> NONMATCHING inline asm (C kept under #ifdef). FE5BC uses GF_ASSERT(--m->unk0 >= 0)."
     }
   ],
   "failed": [
@@ -907,8 +915,8 @@
   ],
   "in_progress": [],
   "stats": {
-    "total_attempts": 137,
-    "total_matched": 50,
+    "total_attempts": 138,
+    "total_matched": 51,
     "total_failed": 19
   }
 }
