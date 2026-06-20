@@ -634,6 +634,14 @@
       "attempts": 1,
       "result": "matched",
       "note": "compare-verified (chiri pkg -- compare OK, full ROM SHA1). Field-effect definition in the overlay_01 task cluster: OverlayManager-style ctor/dtor + register/unregister + spawn (ov01_021F1620) with a {size,init,exec,exit,?} callback Template (ov01_022091EC) and 4 callbacks. Modeled on sibling src/overlay_01_021FE200.c (same ov01_021F1xxx field-effect API): manager={void* unk0}, Data (0x10), Work (0x24); ov01_021F1xxx + sub_* declared locally; created include/overlay_01_021FF6B0.h (3 public sigs, mirrors sibling). One fix: stack-local decl order in ov01_021FF74C (declare Data before VecFx32 so position takes the lower sp offset). .text -6 (3 short funcs incl. last) benign in an overlay (rodata re-aligns). 2 rodata symbols (Template struct then u32 array) emit in declaration order."
+    },
+    {
+      "file": "asm/overlay_01_02200040.s",
+      "functions": 9,
+      "lines": 242,
+      "attempts": 1,
+      "result": "matched",
+      "note": "compare-verified (chiri pkg -- compare OK, full ROM SHA1). Twin of overlay_01_021FF6B0 (same ov01_021F1xxx field-effect API): ctor/dtor/register/unregister/spawn + 4 callbacks via Template ov01_02209294. Adapted the proven template; matched on FIRST build (stack-local order data-before-position applied upfront from the prior lesson). Constants differ: register IDs 9/9/0xa/0xb params 0x7c/0x94/0x17; ov01_021F1450(fs,0xf); ov01_021F1740(unk4,0xb); height threshold >=7; data table {0,7,1,0,0,2}. .text -6 benign (overlay rodata re-aligns)."
     }
   ],
   "failed": [
@@ -887,8 +895,8 @@
   ],
   "in_progress": [],
   "stats": {
-    "total_attempts": 134,
-    "total_matched": 49,
+    "total_attempts": 135,
+    "total_matched": 50,
     "total_failed": 17
   }
 }
