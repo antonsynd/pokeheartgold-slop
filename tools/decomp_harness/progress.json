@@ -1006,7 +1006,7 @@
   "in_progress": [],
   "stats": {
     "total_attempts": 152,
-    "total_matched": 59,
+    "total_matched": 60,
     "total_failed": 28
   },
   "matched": [
@@ -1069,6 +1069,12 @@
       "functions": 17,
       "result": "matched",
       "note": "Battle Frontier team/trainer-set builder (overlay 80, sibling of overlay_80_022372D8). 17 funcs: 10 C-matched + 7 NONMATCHING (ov80_02236BE4/C2C/C9C/E90/F24/_022371B0/_02237264 - regalloc/scheduling/const-fold ties; verbatim inline asm, 264 jump table encoded as lsl). NEW insights: MWCC assigns local stack slots in REVERSE declaration order (fixed C9C frame exactly); a `static const T x;` with no initializer lands in .data zero-filled not .bss (fixed ov80_0223DD38). Also: do-while for if(count>0)-guarded loops, single shared return via if(cond){loop} wrapper, early counter init for reg reuse."
+    },
+    {
+      "file": "asm/unk_02074E5C.s",
+      "functions": 46,
+      "result": "matched",
+      "note": "Link-battle data-exchange / serialization module (PlayerProfile/Party/Chatot/PalPad copy into BattleSystem send/recv buffers via a 12-entry protocol table _020FFE30, run by sub_0203410C). 46 funcs: 40 matched in C + 6 NONMATCHING (verbatim asm: scheduling/regalloc/block-order ties). Key fixes: 0x34-byte struct assignment -> ldmia/stmia (14C/31C); int pktSize (not u16) avoids double (u16) truncation (-8 each on the two SysTask handlers); switch with `case 0xff: default:` merge reproduces the dead cmp #0xff dispatch; pointer-arith on a 0x34-stride type stops MWCC folding a0*2*0x34 -> a0*0x68 (F18); aliasing-reload of a3->f0 after a store (750B4); compute a copy-pointer AFTER the call sequence so it stays caller-saved (75554)."
     }
   ]
 }

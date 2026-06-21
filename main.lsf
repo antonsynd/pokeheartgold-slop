@@ -265,7 +265,7 @@ Static main
     Object src/party.o
     Object src/pokedex_util.o
     Object src/battle_regulation.o
-    Object asm/unk_02074E5C.o
+    Object src/unk_02074E5C.o
     Object asm/unk_020755E8.o
     Object src/unk_020773AC.o
     Object src/unk_02077678.o
