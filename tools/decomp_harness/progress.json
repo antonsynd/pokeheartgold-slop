@@ -1008,6 +1008,13 @@
       "reason": "SPL particle-emitter display (63 funcs); 50/63 matched WIP; remaining 13 incl EBC(41), sub_02015550(+24), sub_02015460 header-locked return like sub_020138E0. See HANDOFF_unk_02014DA0.md. main.lsf on asm.",
       "functions": 63,
       "matched_wip": 50
+    },
+    {
+      "file": "asm/unk_02034354.s",
+      "result": "deferred",
+      "reason": "link-battle comm PlayerProfile manager (30 funcs); 21/30 matched WIP; remaining 9 incl sub_02034638 NONMATCHING (int-return vs void header, 13 includers), 960/AEC arg-count, 780 status-scan, + block-order/cast nuances. See HANDOFF_unk_02034354.md. main.lsf on asm.",
+      "functions": 30,
+      "matched_wip": 21
     }
   ],
   "in_progress": [],
