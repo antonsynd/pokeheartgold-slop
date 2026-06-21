@@ -1,6 +1,6 @@
 {
  "summary": {
-  "generated": "2026-06-21T05:01:36Z",
+  "generated": "2026-06-21T06:18:17Z",
   "by_status": {
    "matched": {
     "files": 90,
@@ -15,23 +15,23 @@
     "text_bytes_est": 43904
    },
    "pending": {
-    "files": 166,
-    "functions": 18481,
-    "insn_lines": 906337,
-    "text_bytes_est": 2024528
+    "files": 165,
+    "functions": 18463,
+    "insn_lines": 905448,
+    "text_bytes_est": 2022600
    },
    "upstream": {
-    "files": 375,
+    "files": 376,
     "functions": 0,
     "insn_lines": 0,
     "text_bytes_est": 0
    }
   },
   "function_totals": {
-   "tracked": 20104,
+   "tracked": 20086,
    "matched": 1010,
    "partial_in_blocked": 50,
-   "pending": 18481
+   "pending": 18463
   },
   "blockers": [
    {
@@ -132958,203 +132958,10 @@
    ]
   },
   {
-   "file": "asm/overlay_80_022372D8.s",
-   "lsf_kind": "asm",
-   "status": "pending",
-   "lines": 1027,
-   "function_count": 18,
-   "text_bytes_est": 1928,
-   "data_only": false,
-   "sections": {
-    "rodata_bytes": 0,
-    "data_bytes": 0,
-    "bss_bytes": 0,
-    "other_bytes": 0
-   },
-   "other_sections": [],
-   "jumptable_words": 0,
-   "imports": [
-    "AllocMonZeroed",
-    "BattleSetup_AddMonToParty",
-    "BattleSetup_New",
-    "BattleSetup_SetAllySideBattlersToPlayer",
-    "CalcShininessByOtIdAndPersonality",
-    "CopyPokemonToPokemon",
-    "FX_Sqrt",
-    "GetMonData",
-    "HealParty",
-    "Heap_Free",
-    "LCRandom",
-    "Party_GetMonByIndex",
-    "Party_InitWithMaxSize",
-    "PlayerProfile_Copy",
-    "SaveArray_Party_Get",
-    "UpdateMonAbility",
-    "_fadd",
-    "_ffix",
-    "_ffltu",
-    "_fsub",
-    "_s32_div_f",
-    "_u32_div_f",
-    "ov80_02229F04",
-    "ov80_0222A140",
-    "ov80_0222A480",
-    "ov80_0222A4EC",
-    "ov80_0223C5A8",
-    "ov80_0223C5B4",
-    "ov80_0223C5B8",
-    "ov80_0223C5E0",
-    "ov80_0223C608",
-    "ov80_0223C698",
-    "ov80_0223C738",
-    "ov80_0223C990",
-    "ov80_0223CD4A",
-    "ov80_0223D4C0",
-    "sub_02030BD0",
-    "sub_02034818",
-    "sub_0203769C",
-    "sub_02051D18"
-   ],
-   "exports": [
-    "ov80_022372D8",
-    "ov80_02237334",
-    "ov80_02237448",
-    "ov80_022375D0",
-    "ov80_0223787C",
-    "ov80_02237920",
-    "ov80_0223792C",
-    "ov80_0223793C",
-    "ov80_022379C8",
-    "ov80_02237A40"
-   ],
-   "functions": [
-    {
-     "name": "ov80_022372D8",
-     "mode": "thumb",
-     "insns": 42,
-     "size_est": 90,
-     "status": "pending"
-    },
-    {
-     "name": "ov80_02237334",
-     "mode": "thumb",
-     "insns": 132,
-     "size_est": 272,
-     "status": "pending"
-    },
-    {
-     "name": "ov80_02237448",
-     "mode": "thumb",
-     "insns": 188,
-     "size_est": 382,
-     "status": "pending"
-    },
-    {
-     "name": "ov80_022375D0",
-     "mode": "thumb",
-     "insns": 252,
-     "size_est": 590,
-     "status": "pending"
-    },
-    {
-     "name": "ov80_02237820",
-     "mode": "thumb",
-     "insns": 23,
-     "size_est": 48,
-     "status": "pending"
-    },
-    {
-     "name": "ov80_02237850",
-     "mode": "thumb",
-     "insns": 20,
-     "size_est": 40,
-     "status": "pending"
-    },
-    {
-     "name": "ov80_0223787C",
-     "mode": "thumb",
-     "insns": 7,
-     "size_est": 14,
-     "status": "pending"
-    },
-    {
-     "name": "ov80_02237888",
-     "mode": "thumb",
-     "insns": 7,
-     "size_est": 14,
-     "status": "pending"
-    },
-    {
-     "name": "ov80_02237894",
-     "mode": "thumb",
-     "insns": 48,
-     "size_est": 100,
-     "status": "pending"
-    },
-    {
-     "name": "ov80_022378F8",
-     "mode": "thumb",
-     "insns": 19,
-     "size_est": 40,
-     "status": "pending"
-    },
-    {
-     "name": "ov80_02237920",
-     "mode": "thumb",
-     "insns": 6,
-     "size_est": 12,
-     "status": "pending"
-    },
-    {
-     "name": "ov80_0223792C",
-     "mode": "thumb",
-     "insns": 9,
-     "size_est": 18,
-     "status": "pending"
-    },
-    {
-     "name": "ov80_0223793C",
-     "mode": "thumb",
-     "insns": 20,
-     "size_est": 48,
-     "status": "pending"
-    },
-    {
-     "name": "ov80_0223796C",
-     "mode": "thumb",
-     "insns": 9,
-     "size_est": 20,
-     "status": "pending"
-    },
-    {
-     "name": "ov80_02237980",
-     "mode": "thumb",
-     "insns": 32,
-     "size_est": 64,
-     "status": "pending"
-    },
-    {
-     "name": "ov80_022379C0",
-     "mode": "thumb",
-     "insns": 5,
-     "size_est": 10,
-     "status": "pending"
-    },
-    {
-     "name": "ov80_022379C8",
-     "mode": "thumb",
-     "insns": 51,
-     "size_est": 116,
-     "status": "pending"
-    },
-    {
-     "name": "ov80_02237A40",
-     "mode": "thumb",
-     "insns": 19,
-     "size_est": 50,
-     "status": "pending"
-    }
-   ]
+   "file": "asm/frontier/overlay_80_022372D8.s",
+   "lsf_kind": "src",
+   "status": "upstream",
+   "functions": []
   },
   {
    "file": "asm/overlay_80_02237A70.s",
