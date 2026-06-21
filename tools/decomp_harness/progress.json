@@ -658,6 +658,14 @@
    "attempts": 3,
    "result": "matched",
    "note": "compare-verified (full ROM SHA1 OK). Field-application task dispatcher: party-menu->summary launch (PartyMenuTaskWork 0x18 env, states 0-4), wifi-connect launch (WifiConnectTaskWork 0x18), link-ally var task (LinkAllyVarTaskWork 4B), + frontier stat/RNG helpers and badge-shininess reset. 18/22 matched first build; fixes: sub_020672D8 tail OR-form `if(stat<0x64||c!=0)return 0` (bounds-check-and-vs-or-return-layout); sub_02066F90 switch case 7 before case 6 for fall-through (switch-cmpchain-fallthrough-case-order); sub_0206759C `shininess-a1*10` INLINE in loop forces retail a1 spill via LICM (inline-invariant-in-loop-forces-param-spill); sub_020670B0 jump-table objdiff SIZE false-positive (byte-identical). Split-header: NOT including frozen include/unk_02066EDC.h (sub_02067118 u8 stack params vs header u32; sub_020674BC returns u32 vs header void); local prototypes required (MWCC -W all errors `function has no prototype`)."
+  },
+  {
+   "file": "asm/unk_0208FB64.s",
+   "lines": 457,
+   "functions": 16,
+   "attempts": 4,
+   "result": "matched",
+   "note": "compare-verified (full ROM SHA1 OK). Battle-record command-dispatch table file: 110-entry RecCommand table {handler, sizeGetter, recordGetter} (like unk_0208F658 MixCommand), registered via sub_0203410C. 15/16 matched in C + 1 NONMATCHING (sub_0208FBF0: MWCC promotes the 0x4A1C field offset to callee reg r7; retail reloads from pool each use - constant-promotion heuristic, see large-field-offset-const-promotion-callee-reg-nonmatching). Fix for sub_0208FD3C: split *p++ into `acc^=*p; p++;` (accumulate-loop-postincr-vs-split-pointer-bump). Handlers take (int,int,void*,void*) with a3=context via raw offset casts. Phantom .public gOverlayTemplate_Battle/gNatureStatMods are defined elsewhere (launch_application.c/pokemon.c) - not referenced here, ignored. Externs declared locally for sub_02091570/590, sub_02036FD8, sub_02033250, sub_02038C1C, MATH_CountPopulation, ov73_021E6B98/705C/7120/7488."
   }
  ],
  "failed": [

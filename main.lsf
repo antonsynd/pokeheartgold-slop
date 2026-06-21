@@ -296,7 +296,7 @@ Static main
     Object src/trainer_memo.o
     Object src/unk_0208F658.o
     Object asm/unk_0208F814.o
-    Object asm/unk_0208FB64.o
+    Object src/unk_0208FB64.o
     Object src/use_item_on_mon.o
     Object src/mail_misc.o
     Object src/unk_02091054.o
