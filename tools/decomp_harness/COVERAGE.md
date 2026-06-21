@@ -1,14 +1,14 @@
 # Decomp Coverage Ledger
 
-*Generated 2026-06-21T08:21:21Z by `coverage_ledger.py` — do not hand-edit; regenerate after each decomp.*
+*Generated 2026-06-21T09:43:09Z by `coverage_ledger.py` — do not hand-edit; regenerate after each decomp.*
 
-Tracked functions (files with retained asm): **20069** — matched 1010, pending 18446, plus 50 matched-but-blocked inside failed files.
+Tracked functions (files with retained asm): **20069** — matched 1010, pending 18385, plus 50 matched-but-blocked inside failed files.
 
 | status | files | functions | insn lines | ~text bytes |
 |---|---|---|---|---|
 | matched | 90 | 1010 | 25850 | 57338 |
-| blocked | 40 | 613 | 19966 | 43904 |
-| pending | 164 | 18446 | 904596 | 2020750 |
+| blocked | 41 | 674 | 20858 | 45924 |
+| pending | 163 | 18385 | 903704 | 2018730 |
 | upstream | 377 | 0 | 0 | 0 |
 
 ## Blockers (value-ordered: fix what gates the most)
@@ -20,10 +20,11 @@ Tracked functions (files with retained asm): **20069** — matched 1010, pending
 | objdiff-false-positives | 0 | 0 | RESOLVED. objdiff.py had a critical bug: the byte extraction regex did not match MWCC's ARM Thumb objdump format (packed hex like 'b418' vs expected space-separated 'b4 18'). It extracted 0 bytes for every function, so 0==0 always reported MATCH. 11 decomps accepted via objdiff were not actually byte-matching. Fixed in this session; all 11 non-matching decomps reverted to asm. 2 decomps that truly match (unk_0202DB34, battle_arcade_game_board_data) kept. |
 | ext-data-section-split | 1 | 0 | Data-only files exporting multiple EXTERNAL (.public) const arrays: MWCC -ipa file emits each top-level const as its own .rodata section, and mwldarm orders/aligns them differently than the asm's single packed .rodata, so the linked overlay/module SHA1 fails even though objdiff --summary (per-section) reports a match. Symbols referenced by other TUs must stay non-static, so they cannot be pooled into one section via `static`. |
 
-## Blocked files (40)
+## Blocked files (41)
 
 | file | functions | insn lines | data-only | notes |
 |---|---|---|---|---|
+| asm/overlay_01_021F1348.s | 61 | 892 |  |  Camera/3D-effect cluster HEAD (GF3dGfxRawResMan resource manager). 61 funcs, 2 manager struct families. Drafted via 3 pa |
 | asm/overlay_01_02204004.s | 51 | 1007 |  |   |
 | asm/unk_02005D10.s | 50 | 1636 |  | ipa-shared-headers 40/50 matched; IPA header dependency: changing return types (void→BOOL) in shared headers breaks already-matched unk_02004A44.c. 40/50  |
 | asm/unk_02015DD8.s | 40 | 719 |  |  Tractable but large (40 fns NNS G2D sprite manager + GE-register renderer). Fully decoded in attempts_log (struct layout |
@@ -160,7 +161,7 @@ Tracked functions (files with retained asm): **20069** — matched 1010, pending
 | asm/unk_data_020FD978.s | 0 | 0 | yes | harness |
 | asm/overlay_01_data_02208BFC.s | 0 | 0 | yes | retained_asm |
 
-## Pending files (164)
+## Pending files (163)
 
 | file | functions | insn lines | data-only | notes |
 |---|---|---|---|---|
@@ -244,7 +245,6 @@ Tracked functions (files with retained asm): **20069** — matched 1010, pending
 | asm/unk_02016EDC.s | 62 | 1996 |  |  |
 | asm/overlay_95.s | 62 | 3105 |  |  |
 | asm/unk_0202B614.s | 61 | 1186 |  |  |
-| asm/overlay_01_021F1348.s | 61 | 892 |  |  |
 | asm/unk_02058AEC.s | 60 | 2787 |  |  |
 | asm/unk_020932E0.s | 60 | 4174 |  |  |
 | asm/unk_02034B0C.s | 56 | 1587 |  |  |

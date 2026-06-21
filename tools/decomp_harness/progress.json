@@ -985,6 +985,14 @@
       "functions": 32,
       "result": "deferred",
       "note": "DEFERRED (focused-session, multi-hour intricate). Frontier screen-transition module, 0 unknown callees (all known: SysTask_*, sub_02014A08 family, FillWindowPixelRect, GXx_SetMasterBrightness_, Heap_*, memset, _s32_div_f) but LOGIC is complex. 3 subsystems: (A) brightness-wipe ~10 funcs MECHANICAL: ov80_0223AC24 ctor (alloc 0x4c, SysTask ov80_0223AC68), 6-state FSM ov80_0223AC68, ov80_0223AD5C (SetMasterBrightness eng A 0x400006C/B 0x400106C), ov80_0223AD7C/AD88/ADA4/ADB8/ADC8 (linear brightness-ramp interp via _s32_div_f: ADB8 inits{start,start,end-start,steps,0}, ADC8 steps). (B) window-fill effect ~5 funcs MECHANICAL: ov80_0223ADF4 (alloc 0x30), ov80_0223AE0C (free), ov80_0223AE14 (init two ADB8 ramps @+0/+0x14 + fields 0x28/2c/2d/2f, flag 0x2e), ov80_0223AE6C (step two ADC8 + rect -> ov80_0223AED4), ov80_0223AED4 (clamp + FillWindowPixelRect). (C) HARD venetian-blind/rolling array effect, work 0x190 = header + ptr[0x60] window-fill sub-effects: ov80_0223AF30 (alloc 0x190, loop 0x60 x ov80_0223ADF4), ov80_0223AF60 (dtor), ov80_0223AF80 (init byte fields @0x184-0x18D), ov80_0223AFC4 (~0x210B intricate: 4x ov80_0223AE14 driven by data table ov80_0223DBEC[16-byte stride] + byte-field state @0x184-0x18D + 0x60-elem loop ov80_0223AE6C), ov80_0223B1D4 (~0x210B variant using ov80_0223DBE0 table, 6-byte stride). The 2 big byte-field functions (AFC4/B1D4) w/ external data tables (ov80_0223DBEC/DBE0) are error-prone, need many build-diff cycles. Plus more funcs B3EC-B60C (not yet read). EMPIRICAL CONCLUSION: even the 'easiest' (0-unknown) remaining file is a 2-3h intricate grind. Loop has exhausted autonomous quick wins."
+    },
+    {
+      "file": "asm/overlay_01_021F1348.s",
+      "lines": 1180,
+      "functions": 61,
+      "attempts": 0,
+      "result": "deferred",
+      "reason": "Camera/3D-effect cluster HEAD (GF3dGfxRawResMan resource manager). 61 funcs, 2 manager struct families. Drafted via 3 parallel decomp-drafter passes; needs a focused session to reconcile structs + integrate + match + NONMATCHING the 3D-heavy holdouts. Full first-pass C + reconciled struct spec + integration plan in tools/decomp_harness/HANDOFF_overlay_01_021F1348.md. Too large to complete inline in the autonomous loop."
     }
   ],
   "in_progress": [],
