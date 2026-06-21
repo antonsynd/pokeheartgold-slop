@@ -1015,6 +1015,13 @@
       "reason": "link-battle comm PlayerProfile manager (30 funcs); 21/30 matched WIP; remaining 9 incl sub_02034638 NONMATCHING (int-return vs void header, 13 includers), 960/AEC arg-count, 780 status-scan, + block-order/cast nuances. See HANDOFF_unk_02034354.md. main.lsf on asm.",
       "functions": 30,
       "matched_wip": 21
+    },
+    {
+      "file": "asm/overlay_80_02235438.s",
+      "result": "deferred",
+      "reason": "Battle Frontier script commands (11 funcs); 9/11 matched WIP; remaining FrtCmd_132 (switch body-order/layout) + FrtCmd_137 (regalloc swap + block-order). See HANDOFF_overlay_80_02235438.md. main.lsf on asm.",
+      "functions": 11,
+      "matched_wip": 9
     }
   ],
   "in_progress": [],

@@ -1,6 +1,6 @@
 {
  "summary": {
-  "generated": "2026-06-21T23:13:21Z",
+  "generated": "2026-06-21T23:46:25Z",
   "by_status": {
    "matched": {
     "files": 93,
@@ -9,16 +9,16 @@
     "text_bytes_est": 62976
    },
    "blocked": {
-    "files": 44,
-    "functions": 791,
-    "insn_lines": 23717,
-    "text_bytes_est": 52094
+    "files": 45,
+    "functions": 802,
+    "insn_lines": 24078,
+    "text_bytes_est": 52938
    },
    "pending": {
-    "files": 156,
-    "functions": 18130,
-    "insn_lines": 897167,
-    "text_bytes_est": 2004524
+    "files": 155,
+    "functions": 18119,
+    "insn_lines": 896806,
+    "text_bytes_est": 2003680
    },
    "upstream": {
     "files": 378,
@@ -31,13 +31,13 @@
    "tracked": 20048,
    "matched": 1127,
    "partial_in_blocked": 70,
-   "pending": 18130
+   "pending": 18119
   },
   "blockers": [
    {
     "id": "ipa-shared-headers",
     "blocks_files": 2,
-    "gates_pending_files": 105
+    "gates_pending_files": 104
    },
    {
     "id": "param-copyprop-cmp",
@@ -132057,7 +132057,7 @@
   {
    "file": "asm/overlay_80_02235438.s",
    "lsf_kind": "asm",
-   "status": "pending",
+   "status": "blocked",
    "lines": 468,
    "function_count": 11,
    "text_bytes_est": 844,
@@ -132129,79 +132129,83 @@
      "mode": "thumb",
      "insns": 8,
      "size_est": 22,
-     "status": "pending"
+     "status": "blocked"
     },
     {
      "name": "FrtCmd_132",
      "mode": "thumb",
      "insns": 110,
      "size_est": 266,
-     "status": "pending"
+     "status": "blocked"
     },
     {
      "name": "ov80_0223558C",
      "mode": "thumb",
      "insns": 34,
      "size_est": 68,
-     "status": "pending"
+     "status": "blocked"
     },
     {
      "name": "FrtCmd_133",
      "mode": "thumb",
      "insns": 29,
      "size_est": 66,
-     "status": "pending"
+     "status": "blocked"
     },
     {
      "name": "FrtCmd_134",
      "mode": "thumb",
      "insns": 8,
      "size_est": 20,
-     "status": "pending"
+     "status": "blocked"
     },
     {
      "name": "FrtCmd_135",
      "mode": "thumb",
      "insns": 34,
      "size_est": 78,
-     "status": "pending"
+     "status": "blocked"
     },
     {
      "name": "FrtCmd_136",
      "mode": "thumb",
      "insns": 24,
      "size_est": 56,
-     "status": "pending"
+     "status": "blocked"
     },
     {
      "name": "FrtCmd_137",
      "mode": "thumb",
      "insns": 41,
      "size_est": 100,
-     "status": "pending"
+     "status": "blocked"
     },
     {
      "name": "FrtCmd_138",
      "mode": "thumb",
      "insns": 19,
      "size_est": 44,
-     "status": "pending"
+     "status": "blocked"
     },
     {
      "name": "ov80_0223573C",
      "mode": "thumb",
      "insns": 26,
      "size_est": 58,
-     "status": "pending"
+     "status": "blocked"
     },
     {
      "name": "ov80_02235774",
      "mode": "thumb",
      "insns": 28,
      "size_est": 66,
-     "status": "pending"
+     "status": "blocked"
     }
-   ]
+   ],
+   "blocked_reason": "Battle Frontier script commands (11 funcs); 9/11 matched WIP; remaining FrtCmd_132 (switch body-order/layout) + FrtCmd_137 (regalloc swap + block-order). See HANDOFF_overlay_80_02235438.md. main.lsf on asm.",
+   "attempts": null,
+   "blocker_id": null,
+   "kept_c": false
   },
   {
    "file": "asm/overlay_80_022357B4.s",
