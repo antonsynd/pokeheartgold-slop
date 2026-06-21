@@ -1081,6 +1081,12 @@
       "category": "nonmatching",
       "title": "NONMATCHING inline asm CAN reference =sRodata+N for a consolidated rodata struct",
       "body": "When a function references two contiguous local rodata symbols (_020F5F2C / _020F5F2D = base+1) consolidated into one `static const struct sRodata`, a NONMATCHING inline-asm fallback can load them with `ldr rN, =sRodata` and `ldr rN, =sRodata+1`. MWCC emits two correct pool words and the function does NOT inflate (verified sub_02013CD0: 164 bytes, full ROM SHA1 match). The inline-asm escape hatch when the C body matches everything EXCEPT register allocation/scheduling."
+    },
+    {
+      "id": "assert-before-tailcall-needs-explicit-return",
+      "category": "matching-tricks",
+      "title": "An assert before a tail-call with passed-through args needs an explicit return, not GF_ASSERT",
+      "body": "When a function asserts then tail-calls passing its own args through unchanged (e.g. `GF_ASSERT(cmd<N); sHandlers[cmd](a0,a1,data+4,a3);`), the ternary GF_ASSERT (`(x)?(void)0:GF_AssertFail()`) falls through to the call, so a0/a1/a3 are live across the (possibly-returning) GF_AssertFail and MWCC saves them to callee-saved regs (extra push). The asm instead RETURNS on the assert path so the args aren't live: write `if (cmd >= N) { GF_AssertFail(); return; }` then the tail-call. Resolved sub_02096D60 (28 vs 40 bytes -> exact). Also: a static helper that ends in `bl X; pop` returns X's result -> must be declared returning int, not void (sub_02096D14)."
     }
   ]
 }

@@ -1013,7 +1013,7 @@
   "in_progress": [],
   "stats": {
     "total_attempts": 152,
-    "total_matched": 62,
+    "total_matched": 63,
     "total_failed": 28
   },
   "matched": [
@@ -1096,6 +1096,14 @@
       "c_functions": 35,
       "nonmatching": 5,
       "note": "sprite/OAM TextOBJ utility (font system + per-window OAM list + TextOBJ). 35 C matched; 5 NONMATCHING (sub_02013728, sub_020138E0, sub_02013A50, sub_02013AD0, sub_02013CD0) are MWCC register-allocation/scheduling holdouts (+ 038E0 header-locked to int a1). Full ROM SHA1 match."
+    },
+    {
+      "file": "asm/unk_02096C88.s",
+      "result": "matched",
+      "functions": 31,
+      "c_functions": 31,
+      "nonmatching": 0,
+      "note": "link-battle/wireless comm dispatch: 0x58 work + two 0x1BD0 buffers, 108+2+25=135-entry protocol table (sub_0203410C), 18 cmd handlers tail-calling ov85_*. Full ROM SHA1 match."
     }
   ]
 }

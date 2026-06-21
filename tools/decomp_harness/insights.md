@@ -458,6 +458,10 @@ MWCC reloads a pointer-dereferenced value (e.g. a1->unk_14, fontSys->unk_60) aft
 
 When the asm branches (b END) from several paths to ONE shared `return K` epilogue but the drafter wrote inline `return K;` at each path, restructure to `if(a){...} else if(b){...} else {return OTHER;} return K;` (single trailing return). MWCC then emits `b END` from each fall-through to the shared epilogue. Resolved sub_02013B24 (return 0). Same idea: use a `while(cond){...}` instead of `if(!cond) return; do{...}while(cond);` to get the single trailing return (resolved sub_02013BD4, sub_02013E24).
 
+### An assert before a tail-call with passed-through args needs an explicit return, not GF_ASSERT  <!-- id: assert-before-tailcall-needs-explicit-return -->
+
+When a function asserts then tail-calls passing its own args through unchanged (e.g. `GF_ASSERT(cmd<N); sHandlers[cmd](a0,a1,data+4,a3);`), the ternary GF_ASSERT (`(x)?(void)0:GF_AssertFail()`) falls through to the call, so a0/a1/a3 are live across the (possibly-returning) GF_AssertFail and MWCC saves them to callee-saved regs (extra push). The asm instead RETURNS on the assert path so the args aren't live: write `if (cmd >= N) { GF_AssertFail(); return; }` then the tail-call. Resolved sub_02096D60 (28 vs 40 bytes -> exact). Also: a static helper that ends in `bl X; pop` returns X's result -> must be declared returning int, not void (sub_02096D14).
+
 ## IPA (-ipa file) Behavior
 
 ### Shared-header signatures are load-bearing across compilation units  <!-- id: ipa-shared-headers -->
