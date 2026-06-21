@@ -1001,6 +1001,13 @@
       "attempts": 1,
       "result": "deferred",
       "reason": "Camera/3D-effect map-object effect (dependent on overlay_01_021F1348 cluster head via local externs). 20/24 functions matched in C; src/field/overlay_01_021FD41C.c committed (builds, 20/24) with main.lsf LEFT on asm. 4 holdouts: ov01_021FD498 (2-byte regalloc tie), ov01_021FD7D4/_838/_980 (camera-family cb2 scheduling/aliasing holdouts). NONMATCHING blocked by a rodata-consolidation vs inline-asm-symbol-ref conflict (ldr =sRodata+offset inflates +4 -> linker reorders sections). Full analysis + recipe in tools/decomp_harness/HANDOFF_overlay_01_021FD41C.md. Needs focused session."
+    },
+    {
+      "file": "asm/unk_02014DA0.s",
+      "result": "deferred",
+      "reason": "SPL particle-emitter display (63 funcs); 50/63 matched WIP; remaining 13 incl EBC(41), sub_02015550(+24), sub_02015460 header-locked return like sub_020138E0. See HANDOFF_unk_02014DA0.md. main.lsf on asm.",
+      "functions": 63,
+      "matched_wip": 50
     }
   ],
   "in_progress": [],
