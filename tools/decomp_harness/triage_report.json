@@ -1,5 +1,5 @@
 {
- "generated": "2026-06-20T23:33:44Z",
+ "generated": "2026-06-21T03:02:15Z",
  "weights": {
   "insn_line": 1.0,
   "unknown_callee": 40.0,
@@ -10,46 +10,6 @@
   "special_section": 500.0
  },
  "queue": [
-  {
-   "file": "asm/unk_02066EDC.s",
-   "score": 1127.2,
-   "special_sections": [],
-   "functions": 22,
-   "insn_lines": 807,
-   "data_only": false,
-   "unknown_callees": [
-    "FrontierSave_GetStat",
-    "Save_Frontier_GetStatic",
-    "sub_0203769C",
-    "sub_0203A05C",
-    "sub_02088288",
-    "sub_0208828C",
-    "sub_02089D40",
-    "sub_0208AD34"
-   ],
-   "jumptable_words": 0,
-   "rodata_bytes": 5,
-   "arm_functions": 0,
-   "gated_by": [],
-   "cluster_partners": [
-    {
-     "file": "asm/unk_02088288.s",
-     "shared_symbols": 4
-    },
-    {
-     "file": "asm/unk_02030A98.s",
-     "shared_symbols": 2
-    },
-    {
-     "file": "asm/unk_02035900.s",
-     "shared_symbols": 1
-    },
-    {
-     "file": "asm/unk_02037C94.s",
-     "shared_symbols": 1
-    }
-   ]
-  },
   {
    "file": "asm/unk_0208FB64.s",
    "score": 1147.0,
@@ -6161,13 +6121,12 @@
   },
   {
    "file": "asm/overlay_27.s",
-   "score": 6488.8,
+   "score": 6448.8,
    "special_sections": [],
    "functions": 96,
    "insn_lines": 5396,
    "data_only": false,
    "unknown_callees": [
-    "FieldSystem_MapIsBattleTowerMultiPartnerSelectRoom",
     "IsPaletteFadeFinished",
     "PlaySE",
     "ov01_021E7F54",
