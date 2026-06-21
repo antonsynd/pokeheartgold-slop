@@ -1027,7 +1027,7 @@ Overlay OVY_80
     Object src/frontier/overlay_80_02235900.o
     Object src/overlay_80_02235FC8.o
     Object asm/overlay_80_02236450.o
-    Object asm/overlay_80_02236B78.o
+    Object src/frontier/overlay_80_02236B78.o
     Object src/frontier/overlay_80_022372D8.o
     Object asm/overlay_80_02237A70.o
     Object asm/overlay_80_02238034.o

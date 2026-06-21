@@ -990,7 +990,7 @@
   "in_progress": [],
   "stats": {
     "total_attempts": 152,
-    "total_matched": 58,
+    "total_matched": 59,
     "total_failed": 28
   },
   "matched": [
@@ -1047,6 +1047,12 @@
       "functions": 18,
       "result": "matched",
       "note": "Battle Frontier party/team builder + level helpers (overlay 80). 18 funcs in asm order. 15 matched in C; 3 giants (ov80_02237334/_448/_5D0) kept NONMATCHING (verbatim inline asm under #else, C body under #ifdef NONMATCHING). Key fix: ov80_0223793C division must be signed int (-> _s32_div_f, not u32 -> _u32_div_f) — objdiff was blind to the bl target diff; only chiri pkg -- compare caught it (cmp -l of asm-baseline vs src OVY_80.sbin localized the 2-byte BLX H2 diff). Also: switch-not-||, no spurious (u8) casts, decl-order regalloc, LICM-hoisted (u8) loop arg, HEAP_ID_FIELD2 enum const."
+    },
+    {
+      "file": "asm/overlay_80_02236B78.s",
+      "functions": 17,
+      "result": "matched",
+      "note": "Battle Frontier team/trainer-set builder (overlay 80, sibling of overlay_80_022372D8). 17 funcs: 10 C-matched + 7 NONMATCHING (ov80_02236BE4/C2C/C9C/E90/F24/_022371B0/_02237264 - regalloc/scheduling/const-fold ties; verbatim inline asm, 264 jump table encoded as lsl). NEW insights: MWCC assigns local stack slots in REVERSE declaration order (fixed C9C frame exactly); a `static const T x;` with no initializer lands in .data zero-filled not .bss (fixed ov80_0223DD38). Also: do-while for if(count>0)-guarded loops, single shared return via if(cond){loop} wrapper, early counter init for reg reuse."
     }
   ]
 }

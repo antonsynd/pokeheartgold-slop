@@ -1,5 +1,5 @@
 {
- "generated": "2026-06-21T06:16:12Z",
+ "generated": "2026-06-21T08:19:15Z",
  "weights": {
   "insn_line": 1.0,
   "unknown_callee": 40.0,
@@ -10,42 +10,6 @@
   "special_section": 500.0
  },
  "queue": [
-  {
-   "file": "asm/overlay_80_02236B78.s",
-   "score": 1172.0,
-   "special_sections": [],
-   "functions": 17,
-   "insn_lines": 852,
-   "data_only": false,
-   "unknown_callees": [
-    "ov80_02229EF4",
-    "ov80_02229F04",
-    "ov80_0222A140",
-    "ov80_0222A3BC",
-    "ov80_0222A480",
-    "ov80_0222A52C",
-    "sub_02034818",
-    "sub_0203769C"
-   ],
-   "jumptable_words": 0,
-   "rodata_bytes": 0,
-   "arm_functions": 0,
-   "gated_by": [],
-   "cluster_partners": [
-    {
-     "file": "asm/overlay_80_02229EE0.s",
-     "shared_symbols": 6
-    },
-    {
-     "file": "asm/unk_02034354.s",
-     "shared_symbols": 1
-    },
-    {
-     "file": "asm/unk_02035900.s",
-     "shared_symbols": 1
-    }
-   ]
-  },
   {
    "file": "asm/overlay_01_021F1348.s",
    "score": 1212.6,
@@ -1123,6 +1087,68 @@
    ]
   },
   {
+   "file": "asm/overlay_80_0222F608.s",
+   "score": 1791.0,
+   "special_sections": [],
+   "functions": 19,
+   "insn_lines": 751,
+   "data_only": false,
+   "unknown_callees": [
+    "FrontierScript_ReadVar",
+    "FrontierScript_ReadVarPtr",
+    "ov80_0222A140",
+    "ov80_0222A474",
+    "ov80_0222A52C",
+    "ov80_0222BE9C",
+    "ov80_0222F44C",
+    "ov80_0222FD08",
+    "ov80_0222FEEC",
+    "ov80_02230424",
+    "ov80_02230460",
+    "ov80_0223049C",
+    "ov80_02230784",
+    "ov80_02230790",
+    "ov80_02230794",
+    "ov80_022307C8",
+    "ov80_022307D4",
+    "ov80_022307F0",
+    "ov80_022308C4",
+    "ov80_022309F8",
+    "ov80_02230A60",
+    "ov80_02230AE4",
+    "ov80_02230AF8",
+    "ov80_02230B4C",
+    "sub_0203095C",
+    "sub_02096910"
+   ],
+   "jumptable_words": 0,
+   "rodata_bytes": 0,
+   "arm_functions": 0,
+   "gated_by": [],
+   "cluster_partners": [
+    {
+     "file": "asm/overlay_80_0222FD08.s",
+     "shared_symbols": 17
+    },
+    {
+     "file": "asm/overlay_80_0222BDF4.s",
+     "shared_symbols": 4
+    },
+    {
+     "file": "asm/overlay_80_02229EE0.s",
+     "shared_symbols": 3
+    },
+    {
+     "file": "asm/unk_0202FBCC.s",
+     "shared_symbols": 1
+    },
+    {
+     "file": "asm/unk_02096910.s",
+     "shared_symbols": 1
+    }
+   ]
+  },
+  {
    "file": "asm/unk_02056680.s",
    "score": 1798.8,
    "special_sections": [],
@@ -1593,76 +1619,6 @@
    ]
   },
   {
-   "file": "asm/overlay_80_0222F608.s",
-   "score": 2111.0,
-   "special_sections": [],
-   "functions": 19,
-   "insn_lines": 751,
-   "data_only": false,
-   "unknown_callees": [
-    "FrontierScript_ReadVar",
-    "FrontierScript_ReadVarPtr",
-    "ov80_0222A140",
-    "ov80_0222A474",
-    "ov80_0222A52C",
-    "ov80_0222BE9C",
-    "ov80_0222F44C",
-    "ov80_0222FD08",
-    "ov80_0222FEEC",
-    "ov80_02230424",
-    "ov80_02230460",
-    "ov80_0223049C",
-    "ov80_02230784",
-    "ov80_02230790",
-    "ov80_02230794",
-    "ov80_022307C8",
-    "ov80_022307D4",
-    "ov80_022307F0",
-    "ov80_022308C4",
-    "ov80_022309F8",
-    "ov80_02230A60",
-    "ov80_02230AE4",
-    "ov80_02230AF8",
-    "ov80_02230B4C",
-    "ov80_02236DD4",
-    "ov80_02236DF8",
-    "ov80_02236F24",
-    "ov80_02237120",
-    "ov80_02237130",
-    "ov80_022371B0",
-    "ov80_02237254",
-    "ov80_022372B4",
-    "sub_0203095C",
-    "sub_02096910"
-   ],
-   "jumptable_words": 0,
-   "rodata_bytes": 0,
-   "arm_functions": 0,
-   "gated_by": [],
-   "cluster_partners": [
-    {
-     "file": "asm/overlay_80_0222FD08.s",
-     "shared_symbols": 17
-    },
-    {
-     "file": "asm/overlay_80_02236B78.s",
-     "shared_symbols": 8
-    },
-    {
-     "file": "asm/overlay_80_0222BDF4.s",
-     "shared_symbols": 4
-    },
-    {
-     "file": "asm/overlay_80_02229EE0.s",
-     "shared_symbols": 3
-    },
-    {
-     "file": "asm/unk_0202FBCC.s",
-     "shared_symbols": 1
-    }
-   ]
-  },
-  {
    "file": "asm/unk_020863F4.s",
    "score": 2128.8,
    "special_sections": [],
@@ -1693,6 +1649,47 @@
     {
      "file": "asm/render_window.s",
      "shared_symbols": 3
+    }
+   ]
+  },
+  {
+   "file": "asm/overlay_80_0222AEF8.s",
+   "score": 2147.0,
+   "special_sections": [],
+   "functions": 54,
+   "insn_lines": 1787,
+   "data_only": false,
+   "unknown_callees": [
+    "BattleArcade_GetMonCount",
+    "FrontierSave_GetStat",
+    "Save_Frontier_GetStatic",
+    "ov80_02237B24",
+    "sub_02030E08",
+    "sub_02030FA0",
+    "sub_02036FD8",
+    "sub_02037030",
+    "sub_0203769C"
+   ],
+   "jumptable_words": 0,
+   "rodata_bytes": 0,
+   "arm_functions": 0,
+   "gated_by": [],
+   "cluster_partners": [
+    {
+     "file": "asm/unk_02030A98.s",
+     "shared_symbols": 4
+    },
+    {
+     "file": "asm/unk_02035900.s",
+     "shared_symbols": 3
+    },
+    {
+     "file": "asm/overlay_80_02238034.s",
+     "shared_symbols": 1
+    },
+    {
+     "file": "asm/overlay_80_02237A70.s",
+     "shared_symbols": 1
     }
    ]
   },
@@ -1746,52 +1743,6 @@
    "arm_functions": 0,
    "gated_by": [],
    "cluster_partners": []
-  },
-  {
-   "file": "asm/overlay_80_0222AEF8.s",
-   "score": 2187.0,
-   "special_sections": [],
-   "functions": 54,
-   "insn_lines": 1787,
-   "data_only": false,
-   "unknown_callees": [
-    "BattleArcade_GetMonCount",
-    "FrontierSave_GetStat",
-    "Save_Frontier_GetStatic",
-    "ov80_02236DD4",
-    "ov80_02237B24",
-    "sub_02030E08",
-    "sub_02030FA0",
-    "sub_02036FD8",
-    "sub_02037030",
-    "sub_0203769C"
-   ],
-   "jumptable_words": 0,
-   "rodata_bytes": 0,
-   "arm_functions": 0,
-   "gated_by": [],
-   "cluster_partners": [
-    {
-     "file": "asm/unk_02030A98.s",
-     "shared_symbols": 4
-    },
-    {
-     "file": "asm/unk_02035900.s",
-     "shared_symbols": 3
-    },
-    {
-     "file": "asm/overlay_80_02238034.s",
-     "shared_symbols": 1
-    },
-    {
-     "file": "asm/overlay_80_02236B78.s",
-     "shared_symbols": 1
-    },
-    {
-     "file": "asm/overlay_80_02237A70.s",
-     "shared_symbols": 1
-    }
-   ]
   },
   {
    "file": "asm/overlay_80_022310C4.s",
@@ -2310,6 +2261,63 @@
     {
      "file": "asm/overlay_80_02229EE0.s",
      "shared_symbols": 2
+    }
+   ]
+  },
+  {
+   "file": "asm/overlay_80_0222FD08.s",
+   "score": 2636.0,
+   "special_sections": [],
+   "functions": 21,
+   "insn_lines": 1636,
+   "data_only": false,
+   "unknown_callees": [
+    "FrontierSave_GetStat",
+    "Save_Frontier_GetStatic",
+    "ov80_02229F04",
+    "ov80_0222A140",
+    "ov80_0222A30C",
+    "ov80_0222A3BC",
+    "ov80_0222A52C",
+    "ov80_0222A840",
+    "ov80_0222B108",
+    "ov80_0222B174",
+    "ov80_0222B1DC",
+    "ov80_0222B2C4",
+    "ov80_0222B3B0",
+    "ov80_0222B3FC",
+    "ov80_0222B448",
+    "sub_02030940",
+    "sub_0203094C",
+    "sub_02030964",
+    "sub_02030978",
+    "sub_02030A24",
+    "sub_02030AA4",
+    "sub_02030AD4",
+    "sub_02030AE8",
+    "sub_02031108",
+    "sub_0203126C"
+   ],
+   "jumptable_words": 0,
+   "rodata_bytes": 0,
+   "arm_functions": 0,
+   "gated_by": [],
+   "cluster_partners": [
+    {
+     "file": "asm/unk_02030A98.s",
+     "shared_symbols": 7
+    },
+    {
+     "file": "asm/overlay_80_0222AEF8.s",
+     "shared_symbols": 7
+    },
+    {
+     "file": "asm/overlay_80_02229EE0.s",
+     "shared_symbols": 6
+    },
+    {
+     "file": "asm/unk_0202FBCC.s",
+     "shared_symbols": 5
     }
    ]
   },
@@ -2851,77 +2859,6 @@
     {
      "file": "asm/overlay_03.s",
      "shared_symbols": 1
-    }
-   ]
-  },
-  {
-   "file": "asm/overlay_80_0222FD08.s",
-   "score": 3036.0,
-   "special_sections": [],
-   "functions": 21,
-   "insn_lines": 1636,
-   "data_only": false,
-   "unknown_callees": [
-    "FrontierSave_GetStat",
-    "Save_Frontier_GetStatic",
-    "ov80_02229F04",
-    "ov80_0222A140",
-    "ov80_0222A30C",
-    "ov80_0222A3BC",
-    "ov80_0222A52C",
-    "ov80_0222A840",
-    "ov80_0222B108",
-    "ov80_0222B174",
-    "ov80_0222B1DC",
-    "ov80_0222B2C4",
-    "ov80_0222B3B0",
-    "ov80_0222B3FC",
-    "ov80_0222B448",
-    "ov80_02236BE4",
-    "ov80_02236C2C",
-    "ov80_02236C9C",
-    "ov80_02236DD4",
-    "ov80_02236DF8",
-    "ov80_02236E24",
-    "ov80_02236E90",
-    "ov80_02237120",
-    "ov80_02237254",
-    "ov80_022372B4",
-    "sub_02030940",
-    "sub_0203094C",
-    "sub_02030964",
-    "sub_02030978",
-    "sub_02030A24",
-    "sub_02030AA4",
-    "sub_02030AD4",
-    "sub_02030AE8",
-    "sub_02031108",
-    "sub_0203126C"
-   ],
-   "jumptable_words": 0,
-   "rodata_bytes": 0,
-   "arm_functions": 0,
-   "gated_by": [],
-   "cluster_partners": [
-    {
-     "file": "asm/overlay_80_02236B78.s",
-     "shared_symbols": 10
-    },
-    {
-     "file": "asm/unk_02030A98.s",
-     "shared_symbols": 7
-    },
-    {
-     "file": "asm/overlay_80_0222AEF8.s",
-     "shared_symbols": 7
-    },
-    {
-     "file": "asm/overlay_80_02229EE0.s",
-     "shared_symbols": 6
-    },
-    {
-     "file": "asm/unk_0202FBCC.s",
-     "shared_symbols": 5
     }
    ]
   },
@@ -7750,6 +7687,66 @@
    "cluster_partners": []
   },
   {
+   "file": "asm/overlay_81.s",
+   "score": 11282.8,
+   "special_sections": [],
+   "functions": 197,
+   "insn_lines": 9792,
+   "data_only": false,
+   "unknown_callees": [
+    "BeginNormalPaletteFade",
+    "ClearFrameAndWindow2",
+    "DrawFrameAndWindow2",
+    "IsPaletteFadeFinished",
+    "LoadUserFrameGfx2",
+    "OamManager_ApplyAndResetBuffers",
+    "OamManager_Create",
+    "OamManager_Free",
+    "PlaySE",
+    "StopSE",
+    "ov80_0222A7CC",
+    "sub_0200E5D4",
+    "sub_02034818",
+    "sub_02037030",
+    "sub_02037474",
+    "sub_0203769C",
+    "sub_0203A880",
+    "sub_0203A914",
+    "sub_02089D40",
+    "sub_0208AD34",
+    "sub_02096910"
+   ],
+   "jumptable_words": 0,
+   "rodata_bytes": 1016,
+   "arm_functions": 0,
+   "gated_by": [
+    "ipa-shared-headers",
+    "param-copyprop-cmp"
+   ],
+   "cluster_partners": [
+    {
+     "file": "asm/render_window.s",
+     "shared_symbols": 4
+    },
+    {
+     "file": "asm/unk_0200B150.s",
+     "shared_symbols": 3
+    },
+    {
+     "file": "asm/unk_02035900.s",
+     "shared_symbols": 3
+    },
+    {
+     "file": "asm/unk_0200FA24.s",
+     "shared_symbols": 2
+    },
+    {
+     "file": "asm/unk_02005D10.s",
+     "shared_symbols": 2
+    }
+   ]
+  },
+  {
    "file": "asm/overlay_73.s",
    "score": 11346.6,
    "special_sections": [],
@@ -7928,68 +7925,6 @@
     {
      "file": "asm/unk_020210A0.s",
      "shared_symbols": 4
-    }
-   ]
-  },
-  {
-   "file": "asm/overlay_81.s",
-   "score": 11362.8,
-   "special_sections": [],
-   "functions": 197,
-   "insn_lines": 9792,
-   "data_only": false,
-   "unknown_callees": [
-    "BeginNormalPaletteFade",
-    "ClearFrameAndWindow2",
-    "DrawFrameAndWindow2",
-    "IsPaletteFadeFinished",
-    "LoadUserFrameGfx2",
-    "OamManager_ApplyAndResetBuffers",
-    "OamManager_Create",
-    "OamManager_Free",
-    "PlaySE",
-    "StopSE",
-    "ov80_0222A7CC",
-    "ov80_02236DD4",
-    "ov80_02237254",
-    "sub_0200E5D4",
-    "sub_02034818",
-    "sub_02037030",
-    "sub_02037474",
-    "sub_0203769C",
-    "sub_0203A880",
-    "sub_0203A914",
-    "sub_02089D40",
-    "sub_0208AD34",
-    "sub_02096910"
-   ],
-   "jumptable_words": 0,
-   "rodata_bytes": 1016,
-   "arm_functions": 0,
-   "gated_by": [
-    "ipa-shared-headers",
-    "param-copyprop-cmp"
-   ],
-   "cluster_partners": [
-    {
-     "file": "asm/render_window.s",
-     "shared_symbols": 4
-    },
-    {
-     "file": "asm/unk_0200B150.s",
-     "shared_symbols": 3
-    },
-    {
-     "file": "asm/unk_02035900.s",
-     "shared_symbols": 3
-    },
-    {
-     "file": "asm/unk_0200FA24.s",
-     "shared_symbols": 2
-    },
-    {
-     "file": "asm/unk_02005D10.s",
-     "shared_symbols": 2
     }
    ]
   },
