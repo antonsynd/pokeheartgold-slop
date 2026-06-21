@@ -442,6 +442,10 @@ When the retail asm SPILLS a parameter to its stack home (str rP,[sp] at entry; 
 
 A walking-pointer accumulate loop `for(i=0;i<N;i++) acc ^= *p++;` makes MWCC schedule the pointer increment (add p,#4) BEFORE the accumulate op (eor/add/orr). If the asm shows load, op, THEN bump (ldr r1,[r5]; eors r3,r1; adds r5,#4), split the post-increment into two statements: `acc ^= *p; p++;`. MWCC then emits the op immediately after the load and the bump last, matching. Diagnose via objdiff: 2 byte diffs that are just two adjacent instructions (the op and the add) swapped. Seen in unk_0208FB64 sub_0208FD3C (XOR checksum over a3+0x388). Related: [[downcount-copy-loop-needs-unsigned-counter-for-subs-bne]].
 
+### For `call() != field` emitting cmp with swapped operands, cache the call result in a local so it stays the FIRST cmp operand  <!-- id: cache-call-result-to-fix-cmp-operand-order -->
+
+A comparison `if (FrontierSave_GetStat(...) != *(u16*)(p+off))` with the call inline produced `cmp r1,r0` (field, result) where retail had `cmp r0,r1` (result, field) — same branch (bne), same registers, just swapped cmp operands (objdiff: 1 real byte diff, the cmp halfword). Swapping the C operands (`field != call()`) does NOT flip it — MWCC canonicalizes inline-call comparisons the same way regardless of source order. FIX: assign the call result to a local first, then compare the local: `u16 stat = call(...); if (stat != *(u16*)(p+off)) {...}`. The materialized local keeps the result in r0 as the first cmp operand, yielding `cmp r0,r1` to match. No extra instructions if the local stays in r0 (it does, being used immediately). Seen in overlay_80_02235900 FrtCmd_178 case 11 (the only diff in a 0x364-byte jump-table function). Diagnose by aligning the disassembly (relative branch targets, drop the inline jump-table by address range) until a single cmp operand-order diff remains.
+
 ## IPA (-ipa file) Behavior
 
 ### Shared-header signatures are load-bearing across compilation units  <!-- id: ipa-shared-headers -->

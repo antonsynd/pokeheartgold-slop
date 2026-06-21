@@ -1,6 +1,6 @@
 {
  "summary": {
-  "generated": "2026-06-21T04:10:23Z",
+  "generated": "2026-06-21T05:01:36Z",
   "by_status": {
    "matched": {
     "files": 90,
@@ -15,23 +15,23 @@
     "text_bytes_est": 43904
    },
    "pending": {
-    "files": 167,
-    "functions": 18498,
-    "insn_lines": 907092,
-    "text_bytes_est": 2026250
+    "files": 166,
+    "functions": 18481,
+    "insn_lines": 906337,
+    "text_bytes_est": 2024528
    },
    "upstream": {
-    "files": 374,
+    "files": 375,
     "functions": 0,
     "insn_lines": 0,
     "text_bytes_est": 0
    }
   },
   "function_totals": {
-   "tracked": 20121,
+   "tracked": 20104,
    "matched": 1010,
    "partial_in_blocked": 50,
-   "pending": 18498
+   "pending": 18481
   },
   "blockers": [
    {
@@ -132478,194 +132478,10 @@
    "kept_c": false
   },
   {
-   "file": "asm/overlay_80_02235900.s",
-   "lsf_kind": "asm",
-   "status": "pending",
-   "lines": 879,
-   "function_count": 17,
-   "text_bytes_est": 1722,
-   "data_only": false,
-   "sections": {
-    "rodata_bytes": 0,
-    "data_bytes": 0,
-    "bss_bytes": 0,
-    "other_bytes": 0
-   },
-   "other_sections": [],
-   "jumptable_words": 0,
-   "imports": [
-    "FrontierFieldSystem_Free",
-    "FrontierFieldSystem_New",
-    "FrontierFieldSystem_SetRandomFrontierTrainers",
-    "FrontierSave_GetStat",
-    "FrontierScriptContext_Pause",
-    "FrontierScriptContext_ReadHalfWord",
-    "FrontierScript_ReadVar",
-    "FrontierScript_ReadVarPtr",
-    "Frontier_GetData",
-    "Frontier_GetLaunchArgs",
-    "Frontier_SetData",
-    "HealParty",
-    "Heap_Free",
-    "SaveArray_Party_Get",
-    "Save_FrontierData_Get",
-    "Save_Frontier_GetStatic",
-    "ov80_0222A840",
-    "ov80_02235FC8",
-    "ov80_02235FEC",
-    "ov80_02235FF8",
-    "ov80_02236040",
-    "ov80_022385D8",
-    "ov80_02238610",
-    "sub_0202D57C",
-    "sub_02030C5C",
-    "sub_02031108",
-    "sub_0203769C",
-    "sub_02037B5C",
-    "sub_0204F878",
-    "sub_0205C048",
-    "sub_0205C11C",
-    "sub_0205C268",
-    "sub_02096910",
-    "sub_02096998"
-   ],
-   "exports": [
-    "FrtCmd_170",
-    "FrtCmd_171",
-    "FrtCmd_172",
-    "FrtCmd_173",
-    "FrtCmd_174",
-    "FrtCmd_175",
-    "FrtCmd_176",
-    "FrtCmd_177",
-    "FrtCmd_178",
-    "FrtCmd_179",
-    "FrtCmd_180",
-    "FrtCmd_181",
-    "FrtCmd_182",
-    "FrtCmd_202"
-   ],
-   "functions": [
-    {
-     "name": "FrtCmd_170",
-     "mode": "thumb",
-     "insns": 14,
-     "size_est": 34,
-     "status": "pending"
-    },
-    {
-     "name": "FrtCmd_171",
-     "mode": "thumb",
-     "insns": 8,
-     "size_est": 20,
-     "status": "pending"
-    },
-    {
-     "name": "FrtCmd_172",
-     "mode": "thumb",
-     "insns": 24,
-     "size_est": 60,
-     "status": "pending"
-    },
-    {
-     "name": "FrtCmd_173",
-     "mode": "thumb",
-     "insns": 14,
-     "size_est": 32,
-     "status": "pending"
-    },
-    {
-     "name": "ov80_02235990",
-     "mode": "thumb",
-     "insns": 17,
-     "size_est": 36,
-     "status": "pending"
-    },
-    {
-     "name": "FrtCmd_202",
-     "mode": "thumb",
-     "insns": 14,
-     "size_est": 32,
-     "status": "pending"
-    },
-    {
-     "name": "ov80_022359D4",
-     "mode": "thumb",
-     "insns": 29,
-     "size_est": 64,
-     "status": "pending"
-    },
-    {
-     "name": "FrtCmd_174",
-     "mode": "thumb",
-     "insns": 21,
-     "size_est": 48,
-     "status": "pending"
-    },
-    {
-     "name": "FrtCmd_175",
-     "mode": "thumb",
-     "insns": 31,
-     "size_est": 74,
-     "status": "pending"
-    },
-    {
-     "name": "FrtCmd_176",
-     "mode": "thumb",
-     "insns": 57,
-     "size_est": 122,
-     "status": "pending"
-    },
-    {
-     "name": "FrtCmd_177",
-     "mode": "thumb",
-     "insns": 13,
-     "size_est": 30,
-     "status": "pending"
-    },
-    {
-     "name": "FrtCmd_178",
-     "mode": "thumb",
-     "insns": 368,
-     "size_est": 844,
-     "status": "pending"
-    },
-    {
-     "name": "FrtCmd_179",
-     "mode": "thumb",
-     "insns": 101,
-     "size_est": 224,
-     "status": "pending"
-    },
-    {
-     "name": "FrtCmd_180",
-     "mode": "thumb",
-     "insns": 12,
-     "size_est": 30,
-     "status": "pending"
-    },
-    {
-     "name": "FrtCmd_181",
-     "mode": "thumb",
-     "insns": 7,
-     "size_est": 16,
-     "status": "pending"
-    },
-    {
-     "name": "ov80_02235F90",
-     "mode": "thumb",
-     "insns": 17,
-     "size_est": 36,
-     "status": "pending"
-    },
-    {
-     "name": "FrtCmd_182",
-     "mode": "thumb",
-     "insns": 8,
-     "size_est": 20,
-     "status": "pending"
-    }
-   ]
+   "file": "asm/frontier/overlay_80_02235900.s",
+   "lsf_kind": "src",
+   "status": "upstream",
+   "functions": []
   },
   {
    "file": "asm/overlay_80_02235FC8.s",

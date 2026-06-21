@@ -674,6 +674,14 @@
    "attempts": 6,
    "result": "matched",
    "note": "compare-verified (full ROM SHA1 OK). ApricornBox application overlay: OverlayManager state machine (ApricornBox_Init/Main/Exit + ov58 helpers), spawns overlay 59 children and the PartyMenu (gOverlayTemplate_PartyMenu, 0x44 PartyMenuArgs), graphics teardown. 13/14 matched in C + 1 NONMATCHING (ov58_022379C0: soft-float aprijuice modifier calc with overlapping stack buffers + packed-nibble data from sub_02031DA0; done as inline asm). ApricornBoxWork 0x20 work struct; ApricornBoxArgs from overlay_58.h. ov58_022378C0 needed && form (if(p&&Run(p)){...return 1;} return 0) for the shared trailing return-0. ApricornBox_Main/ov58_02237B40 jump-table objdiff SIZE false-positives (byte-identical). CORRECTION recorded: soft-float + _s32_div_f ARE callable from MWCC inline asm with extern decls (void _xxx(void);), contradicting two old insights."
+  },
+  {
+   "file": "asm/overlay_80_02235900.s",
+   "lines": 879,
+   "functions": 17,
+   "attempts": 12,
+   "result": "matched",
+   "note": "compare-verified (full ROM SHA1 OK). Battle Frontier script command handlers (FrtCmd_170-182, FrtCmd_202 + ov80 resume callbacks). 16/17 matched in C + 1 NONMATCHING (FrtCmd_179: ctx->r6-not-r5 regalloc spill of launchArgs; inline asm). Data from Frontier_GetData is UnkStruct_ov80_02235FC8 (0xb4) accessed via raw u8* casts; ov80_02235FC8 returns u32 not void (split-header, header wrongly says void). Key fixes: FrtCmd_178 case 11 cache GetStat result to fix cmp operand order (cache-call-result-to-fix-cmp-operand-order); case 12 inline sub_0205C048 (not precomputed) so Save_Frontier_GetStatic is arg0; FrtCmd_175 launchArgs->fieldSystem (0x24) not unk1C; FrtCmd_172 ov80_02235FF8 int params (no u16 trunc); ov80_022359D4 write ctx->frontierSystem+0x39 and return TRUE; FrtCmd_179 struct-copy via word-struct (ldmia/stmia)."
   }
  ],
  "failed": [
