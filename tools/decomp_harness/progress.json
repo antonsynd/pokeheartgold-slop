@@ -666,6 +666,14 @@
    "attempts": 4,
    "result": "matched",
    "note": "compare-verified (full ROM SHA1 OK). Battle-record command-dispatch table file: 110-entry RecCommand table {handler, sizeGetter, recordGetter} (like unk_0208F658 MixCommand), registered via sub_0203410C. 15/16 matched in C + 1 NONMATCHING (sub_0208FBF0: MWCC promotes the 0x4A1C field offset to callee reg r7; retail reloads from pool each use - constant-promotion heuristic, see large-field-offset-const-promotion-callee-reg-nonmatching). Fix for sub_0208FD3C: split *p++ into `acc^=*p; p++;` (accumulate-loop-postincr-vs-split-pointer-bump). Handlers take (int,int,void*,void*) with a3=context via raw offset casts. Phantom .public gOverlayTemplate_Battle/gNatureStatMods are defined elsewhere (launch_application.c/pokemon.c) - not referenced here, ignored. Externs declared locally for sub_02091570/590, sub_02036FD8, sub_02033250, sub_02038C1C, MATH_CountPopulation, ov73_021E6B98/705C/7120/7488."
+  },
+  {
+   "file": "asm/overlay_58.s",
+   "lines": 597,
+   "functions": 14,
+   "attempts": 6,
+   "result": "matched",
+   "note": "compare-verified (full ROM SHA1 OK). ApricornBox application overlay: OverlayManager state machine (ApricornBox_Init/Main/Exit + ov58 helpers), spawns overlay 59 children and the PartyMenu (gOverlayTemplate_PartyMenu, 0x44 PartyMenuArgs), graphics teardown. 13/14 matched in C + 1 NONMATCHING (ov58_022379C0: soft-float aprijuice modifier calc with overlapping stack buffers + packed-nibble data from sub_02031DA0; done as inline asm). ApricornBoxWork 0x20 work struct; ApricornBoxArgs from overlay_58.h. ov58_022378C0 needed && form (if(p&&Run(p)){...return 1;} return 0) for the shared trailing return-0. ApricornBox_Main/ov58_02237B40 jump-table objdiff SIZE false-positives (byte-identical). CORRECTION recorded: soft-float + _s32_div_f ARE callable from MWCC inline asm with extern decls (void _xxx(void);), contradicting two old insights."
   }
  ],
  "failed": [

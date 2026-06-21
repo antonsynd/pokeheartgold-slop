@@ -839,8 +839,8 @@
     {
       "id": "soft-float-not-callable-in-inline-asm",
       "category": "nonmatching",
-      "title": "MWCC inline asm cannot call soft-float runtime (_ffix/_fadd/_fflt/_fsub) -> write such functions as C",
-      "body": "`bl _ffix` etc. in an `asm` function fails with 'undefined label _ffix' (MWCC treats the leading-underscore runtime symbol as a local label). So a NONMATCHING float function can't be inline asm. Write it as C instead and let MWCC emit the soft-float itself (e.g. via FX32_CONST). In overlay_01_021E7FDC the complex float-rounding builder ov01_021E851C was kept as C (and matched); only the integer register-alloc tie-breaks needed inline asm."
+      "title": "MWCC inline asm CAN call soft-float runtime (_ffix/_fadd/_fflt/_fsub/_ffltu/_fmul/_ffixu) IF you add an extern prototype first (CORRECTION)",
+      "body": "CORRECTION of an earlier claim. `bl _ffix`/`_fmul`/`_ffltu`/`_ffixu`/`_fsub` etc. in an `asm` function fails with 'undefined label' ONLY when the runtime symbol is not declared. Add a C prototype before the function — `void _fsub(void);` (return/arg types are irrelevant; it only needs to be a known external symbol) — and the `bl` assembles and links fine. So a NONMATCHING float function CAN be written as inline asm. The pool/bl bytes match the retail .o (both assembled by mwasmarm). Note _ffltu/_fmul/_ffixu happened to be already-known in one TU (no decl needed) while _fsub/_s32_div_f/_ffixu needed the decl — when in doubt, declare all of them. Verified: overlay_58 ov58_022379C0 (soft-float aprijuice calc) matched as inline asm after adding `void _ffltu/_fmul/_ffixu/_fsub/_s32_div_f(void);`. Writing such a function as C is still an option, but it is NOT required. See [[nonmatching-inline-asm-mwasmarm-gotchas]] for the canonical fix."
     },
     {
       "id": "fx32-const-rounds-vs-plain-shift",
@@ -875,8 +875,8 @@
     {
       "id": "s32-div-runtime-not-callable-in-inline-asm",
       "category": "nonmatching",
-      "title": "_s32_div_f (integer-division runtime) is NOT callable from MWCC inline asm — like the soft-float helpers",
-      "body": "`bl _s32_div_f` inside an `asm` function fails to link with \"undefined label '_s32_div_f'\", exactly like the soft-float runtime (_ffix/_fadd/_fflt, see [[soft-float-not-callable-in-inline-asm]]). So any function that needs signed `/` or `%` (which MWCC lowers to _s32_div_f) CANNOT be done as NONMATCHING inline asm — it must be matched as C. Note `/` and `%` work fine when MWCC emits them from C (e.g. `x / 1000` matched directly). Implication: division/modulo functions are forced to be C matches; budget extra iterations rather than reaching for inline asm. (unk_0202D230 sub_0202D4FC.)"
+      "title": "_s32_div_f (and soft-float) ARE callable from MWCC inline asm with an extern prototype (CORRECTION)",
+      "body": "CORRECTION. `bl _s32_div_f` inside an `asm` function fails with 'undefined label' ONLY without a declaration. Add `void _s32_div_f(void);` (or `extern int _s32_div_f(int,int);`) before the function and it assembles/links. So functions needing signed `/` or `%` (which MWCC lowers to _s32_div_f) CAN be NONMATCHING inline asm. `/` and `%` also work fine when MWCC emits them from C. Verified: overlay_58 ov58_022379C0 called _s32_div_f from inline asm after declaring it. See [[nonmatching-inline-asm-mwasmarm-gotchas]]."
     },
     {
       "id": "objdiff-false-positive-inline-jumptable-disasm",
