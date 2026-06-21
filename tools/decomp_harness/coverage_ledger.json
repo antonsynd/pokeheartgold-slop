@@ -1,6 +1,6 @@
 {
  "summary": {
-  "generated": "2026-06-21T14:46:18Z",
+  "generated": "2026-06-21T16:24:31Z",
   "by_status": {
    "matched": {
     "files": 91,
@@ -15,23 +15,23 @@
     "text_bytes_est": 47452
    },
    "pending": {
-    "files": 161,
-    "functions": 18315,
-    "insn_lines": 902124,
-    "text_bytes_est": 2015236
+    "files": 160,
+    "functions": 18294,
+    "insn_lines": 901023,
+    "text_bytes_est": 2012838
    },
    "upstream": {
-    "files": 377,
+    "files": 378,
     "functions": 0,
     "insn_lines": 0,
     "text_bytes_est": 0
    }
   },
   "function_totals": {
-   "tracked": 20069,
+   "tracked": 20048,
    "matched": 1056,
    "partial_in_blocked": 70,
-   "pending": 18315
+   "pending": 18294
   },
   "blockers": [
    {
@@ -127231,233 +127231,10 @@
    "functions": []
   },
   {
-   "file": "asm/overlay_80_02229EE0.s",
-   "lsf_kind": "asm",
-   "status": "pending",
-   "lines": 1281,
-   "function_count": 21,
-   "text_bytes_est": 2398,
-   "data_only": false,
-   "sections": {
-    "rodata_bytes": 260,
-    "data_bytes": 0,
-    "bss_bytes": 0,
-    "other_bytes": 0
-   },
-   "other_sections": [],
-   "jumptable_words": 0,
-   "imports": [
-    "AllocAndReadWholeNarcMemberByIdPair",
-    "BufferPlayersName",
-    "CalcMonLevelAndStats",
-    "CalcShininessByOtIdAndPersonality",
-    "CalculateHpBarColor",
-    "CopyStringToU16Array",
-    "CopyU16StringArray",
-    "CreateMon",
-    "DestroyMsgData",
-    "GF_AssertFail",
-    "GetMonBaseStat",
-    "GetMonData",
-    "GetNatureFromPersonality",
-    "GetSpeciesNameIntoArray",
-    "Heap_Free",
-    "LCRandom",
-    "MI_CpuFill8",
-    "MapHeader_GetMapSec",
-    "MaskOfFlagNo",
-    "MonSetTrainerMemo",
-    "NewMsgDataFromNarc",
-    "NewString_ReadMsgData",
-    "Party_AddMon",
-    "PlayerProfile_GetTrainerGender",
-    "PlayerProfile_GetVersion",
-    "ReadWholeNarcMemberByIdPair",
-    "Save_PlayerData_GetProfile",
-    "Save_WiFiHistory_Get",
-    "SetMonData",
-    "Sprite_GetAnimationFrame",
-    "Sprite_GetAnimationNumber",
-    "Sprite_SetAnimCtrlSeq",
-    "Sprite_SetAnimationFrame",
-    "Sprite_SetMatrix",
-    "Sprite_UpdateAnim",
-    "String_Delete",
-    "ZeroMonData",
-    "_s32_div_f",
-    "gGameLanguage",
-    "sub_02034818",
-    "sub_0203769C",
-    "sub_02039F68",
-    "sub_0207217C"
-   ],
-   "exports": [
-    "ov80_02229EF4",
-    "ov80_02229F04",
-    "ov80_0222A140",
-    "ov80_0222A30C",
-    "ov80_0222A3BC",
-    "ov80_0222A3D4",
-    "ov80_0222A400",
-    "ov80_0222A43C",
-    "ov80_0222A474",
-    "ov80_0222A480",
-    "ov80_0222A4EC",
-    "ov80_0222A52C",
-    "ov80_0222A6B8",
-    "ov80_0222A7CC",
-    "ov80_0222A7EC",
-    "ov80_0222A840"
-   ],
-   "functions": [
-    {
-     "name": "ov80_02229EE0",
-     "mode": "thumb",
-     "insns": 9,
-     "size_est": 20,
-     "status": "pending"
-    },
-    {
-     "name": "ov80_02229EF4",
-     "mode": "thumb",
-     "insns": 8,
-     "size_est": 16,
-     "status": "pending"
-    },
-    {
-     "name": "ov80_02229F04",
-     "mode": "thumb",
-     "insns": 45,
-     "size_est": 104,
-     "status": "pending"
-    },
-    {
-     "name": "ov80_02229F6C",
-     "mode": "thumb",
-     "insns": 212,
-     "size_est": 450,
-     "status": "pending"
-    },
-    {
-     "name": "ov80_0222A140",
-     "mode": "thumb",
-     "insns": 203,
-     "size_est": 460,
-     "status": "pending"
-    },
-    {
-     "name": "ov80_0222A30C",
-     "mode": "thumb",
-     "insns": 19,
-     "size_est": 38,
-     "status": "pending"
-    },
-    {
-     "name": "ov80_0222A334",
-     "mode": "thumb",
-     "insns": 56,
-     "size_est": 136,
-     "status": "pending"
-    },
-    {
-     "name": "ov80_0222A3BC",
-     "mode": "thumb",
-     "insns": 10,
-     "size_est": 24,
-     "status": "pending"
-    },
-    {
-     "name": "ov80_0222A3D4",
-     "mode": "thumb",
-     "insns": 18,
-     "size_est": 44,
-     "status": "pending"
-    },
-    {
-     "name": "ov80_0222A400",
-     "mode": "thumb",
-     "insns": 28,
-     "size_est": 60,
-     "status": "pending"
-    },
-    {
-     "name": "ov80_0222A43C",
-     "mode": "thumb",
-     "insns": 23,
-     "size_est": 48,
-     "status": "pending"
-    },
-    {
-     "name": "ov80_0222A474",
-     "mode": "thumb",
-     "insns": 5,
-     "size_est": 14,
-     "status": "pending"
-    },
-    {
-     "name": "ov80_0222A480",
-     "mode": "thumb",
-     "insns": 54,
-     "size_est": 110,
-     "status": "pending"
-    },
-    {
-     "name": "ov80_0222A4EC",
-     "mode": "thumb",
-     "insns": 29,
-     "size_est": 64,
-     "status": "pending"
-    },
-    {
-     "name": "ov80_0222A52C",
-     "mode": "thumb",
-     "insns": 60,
-     "size_est": 122,
-     "status": "pending"
-    },
-    {
-     "name": "ov80_0222A5A4",
-     "mode": "thumb",
-     "insns": 31,
-     "size_est": 62,
-     "status": "pending"
-    },
-    {
-     "name": "ov80_0222A5E0",
-     "mode": "thumb",
-     "insns": 105,
-     "size_est": 218,
-     "status": "pending"
-    },
-    {
-     "name": "ov80_0222A6B8",
-     "mode": "thumb",
-     "insns": 128,
-     "size_est": 278,
-     "status": "pending"
-    },
-    {
-     "name": "ov80_0222A7CC",
-     "mode": "thumb",
-     "insns": 13,
-     "size_est": 32,
-     "status": "pending"
-    },
-    {
-     "name": "ov80_0222A7EC",
-     "mode": "thumb",
-     "insns": 40,
-     "size_est": 84,
-     "status": "pending"
-    },
-    {
-     "name": "ov80_0222A840",
-     "mode": "thumb",
-     "insns": 5,
-     "size_est": 14,
-     "status": "pending"
-    }
-   ]
+   "file": "asm/frontier/overlay_80_02229EE0.s",
+   "lsf_kind": "src",
+   "status": "upstream",
+   "functions": []
   },
   {
    "file": "asm/frontier_system.s",

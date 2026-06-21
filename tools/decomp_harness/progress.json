@@ -1006,7 +1006,7 @@
   "in_progress": [],
   "stats": {
     "total_attempts": 152,
-    "total_matched": 60,
+    "total_matched": 61,
     "total_failed": 28
   },
   "matched": [
@@ -1075,6 +1075,12 @@
       "functions": 46,
       "result": "matched",
       "note": "Link-battle data-exchange / serialization module (PlayerProfile/Party/Chatot/PalPad copy into BattleSystem send/recv buffers via a 12-entry protocol table _020FFE30, run by sub_0203410C). 46 funcs: 40 matched in C + 6 NONMATCHING (verbatim asm: scheduling/regalloc/block-order ties). Key fixes: 0x34-byte struct assignment -> ldmia/stmia (14C/31C); int pktSize (not u16) avoids double (u16) truncation (-8 each on the two SysTask handlers); switch with `case 0xff: default:` merge reproduces the dead cmp #0xff dispatch; pointer-arith on a 0x34-stride type stops MWCC folding a0*2*0x34 -> a0*0x68 (F18); aliasing-reload of a3->f0 after a store (750B4); compute a copy-pointer AFTER the call sequence so it stays caller-saved (75554)."
+    },
+    {
+      "file": "asm/overlay_80_02229EE0.s",
+      "functions": 21,
+      "result": "matched",
+      "note": "Battle Frontier OPPONENT Pokemon/trainer builder (overlay 80) - the implementation of helpers the sibling frontier files call via local externs (ov80_02229F04/_0222A140/_0222A480/_0222A52C/etc). 21 funcs: 12 matched C + 9 NONMATCHING (verbatim asm: the big Pokemon builders ov80_02229F6C/_0222A140/_0222A5E0/_0222A6B8 + scheduling/regalloc ties _02229F04/_0222A480/_0222A4EC/_0222A52C/_0222A7EC). rodata (3 contiguous local tables: nature/ability) consolidated into one static const struct. Lessons: drafter emitted the .c content in its message but only wrote the header - had to write the .c manually (VERIFY the file exists after a drafter run); the own header needs #include global.h since clang-format reorders it to be the FIRST include (before the .c's global.h); HEAP_ID_FIELD2=11/FIELD1=4 enum constants; u32 loop counters for bcc; `x ^ 1` not `!x`."
     }
   ]
 }
