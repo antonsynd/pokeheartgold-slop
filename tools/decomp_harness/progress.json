@@ -993,6 +993,14 @@
       "attempts": 0,
       "result": "deferred",
       "reason": "Camera/3D-effect cluster HEAD (GF3dGfxRawResMan resource manager). 61 funcs, 2 manager struct families. Drafted via 3 parallel decomp-drafter passes; needs a focused session to reconcile structs + integrate + match + NONMATCHING the 3D-heavy holdouts. Full first-pass C + reconciled struct spec + integration plan in tools/decomp_harness/HANDOFF_overlay_01_021F1348.md. Too large to complete inline in the autonomous loop."
+    },
+    {
+      "file": "asm/overlay_01_021FD41C.s",
+      "lines": 868,
+      "functions": 24,
+      "attempts": 1,
+      "result": "deferred",
+      "reason": "Camera/3D-effect map-object effect (dependent on overlay_01_021F1348 cluster head via local externs). 20/24 functions matched in C; src/field/overlay_01_021FD41C.c committed (builds, 20/24) with main.lsf LEFT on asm. 4 holdouts: ov01_021FD498 (2-byte regalloc tie), ov01_021FD7D4/_838/_980 (camera-family cb2 scheduling/aliasing holdouts). NONMATCHING blocked by a rodata-consolidation vs inline-asm-symbol-ref conflict (ldr =sRodata+offset inflates +4 -> linker reorders sections). Full analysis + recipe in tools/decomp_harness/HANDOFF_overlay_01_021FD41C.md. Needs focused session."
     }
   ],
   "in_progress": [],

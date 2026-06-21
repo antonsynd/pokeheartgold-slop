@@ -1,6 +1,6 @@
 {
  "summary": {
-  "generated": "2026-06-21T09:43:09Z",
+  "generated": "2026-06-21T13:46:00Z",
   "by_status": {
    "matched": {
     "files": 90,
@@ -9,16 +9,16 @@
     "text_bytes_est": 57338
    },
    "blocked": {
-    "files": 41,
-    "functions": 674,
-    "insn_lines": 20858,
-    "text_bytes_est": 45924
+    "files": 42,
+    "functions": 698,
+    "insn_lines": 21543,
+    "text_bytes_est": 47452
    },
    "pending": {
-    "files": 163,
-    "functions": 18385,
-    "insn_lines": 903704,
-    "text_bytes_est": 2018730
+    "files": 162,
+    "functions": 18361,
+    "insn_lines": 903019,
+    "text_bytes_est": 2017202
    },
    "upstream": {
     "files": 377,
@@ -30,8 +30,8 @@
   "function_totals": {
    "tracked": 20069,
    "matched": 1010,
-   "partial_in_blocked": 50,
-   "pending": 18385
+   "partial_in_blocked": 70,
+   "pending": 18361
   },
   "blockers": [
    {
@@ -45076,7 +45076,7 @@
   {
    "file": "asm/overlay_01_021FD41C.s",
    "lsf_kind": "asm",
-   "status": "pending",
+   "status": "blocked",
    "lines": 868,
    "function_count": 24,
    "text_bytes_est": 1528,
@@ -45140,170 +45140,175 @@
      "mode": "thumb",
      "insns": 15,
      "size_est": 36,
-     "status": "pending"
+     "status": "blocked"
     },
     {
      "name": "ov01_021FD440",
      "mode": "thumb",
      "insns": 9,
      "size_est": 24,
-     "status": "pending"
+     "status": "blocked"
     },
     {
      "name": "ov01_021FD458",
      "mode": "thumb",
      "insns": 15,
      "size_est": 36,
-     "status": "pending"
+     "status": "blocked"
     },
     {
      "name": "ov01_021FD47C",
      "mode": "thumb",
      "insns": 6,
      "size_est": 12,
-     "status": "pending"
+     "status": "blocked"
     },
     {
      "name": "ov01_021FD488",
      "mode": "thumb",
      "insns": 9,
      "size_est": 18,
-     "status": "pending"
+     "status": "blocked"
     },
     {
      "name": "ov01_021FD498",
      "mode": "thumb",
      "insns": 6,
      "size_est": 12,
-     "status": "pending"
+     "status": "blocked"
     },
     {
      "name": "ov01_021FD4A4",
      "mode": "thumb",
      "insns": 21,
      "size_est": 42,
-     "status": "pending"
+     "status": "blocked"
     },
     {
      "name": "ov01_021FD4D0",
      "mode": "thumb",
      "insns": 18,
      "size_est": 36,
-     "status": "pending"
+     "status": "blocked"
     },
     {
      "name": "ov01_021FD4F4",
      "mode": "thumb",
      "insns": 97,
      "size_est": 214,
-     "status": "pending"
+     "status": "blocked"
     },
     {
      "name": "ov01_021FD5CC",
      "mode": "thumb",
      "insns": 30,
      "size_est": 64,
-     "status": "pending"
+     "status": "blocked"
     },
     {
      "name": "ov01_021FD60C",
      "mode": "thumb",
      "insns": 12,
      "size_est": 26,
-     "status": "pending"
+     "status": "blocked"
     },
     {
      "name": "ov01_021FD624",
      "mode": "thumb",
      "insns": 13,
      "size_est": 30,
-     "status": "pending"
+     "status": "blocked"
     },
     {
      "name": "ov01_021FD640",
      "mode": "thumb",
      "insns": 29,
      "size_est": 68,
-     "status": "pending"
+     "status": "blocked"
     },
     {
      "name": "ov01_021FD684",
      "mode": "thumb",
      "insns": 29,
      "size_est": 68,
-     "status": "pending"
+     "status": "blocked"
     },
     {
      "name": "ov01_021FD6C8",
      "mode": "thumb",
      "insns": 32,
      "size_est": 78,
-     "status": "pending"
+     "status": "blocked"
     },
     {
      "name": "ov01_021FD714",
      "mode": "thumb",
      "insns": 2,
      "size_est": 4,
-     "status": "pending"
+     "status": "blocked"
     },
     {
      "name": "ov01_021FD718",
      "mode": "thumb",
      "insns": 47,
      "size_est": 108,
-     "status": "pending"
+     "status": "blocked"
     },
     {
      "name": "ov01_021FD784",
      "mode": "thumb",
      "insns": 33,
      "size_est": 80,
-     "status": "pending"
+     "status": "blocked"
     },
     {
      "name": "ov01_021FD7D4",
      "mode": "thumb",
      "insns": 47,
      "size_est": 100,
-     "status": "pending"
+     "status": "blocked"
     },
     {
      "name": "ov01_021FD838",
      "mode": "thumb",
      "insns": 80,
      "size_est": 176,
-     "status": "pending"
+     "status": "blocked"
     },
     {
      "name": "ov01_021FD8E8",
      "mode": "thumb",
      "insns": 29,
      "size_est": 68,
-     "status": "pending"
+     "status": "blocked"
     },
     {
      "name": "ov01_021FD92C",
      "mode": "thumb",
      "insns": 37,
      "size_est": 84,
-     "status": "pending"
+     "status": "blocked"
     },
     {
      "name": "ov01_021FD980",
      "mode": "thumb",
      "insns": 35,
      "size_est": 76,
-     "status": "pending"
+     "status": "blocked"
     },
     {
      "name": "ov01_021FD9CC",
      "mode": "thumb",
      "insns": 34,
      "size_est": 68,
-     "status": "pending"
+     "status": "blocked"
     }
-   ]
+   ],
+   "blocked_reason": "Camera/3D-effect map-object effect (dependent on overlay_01_021F1348 cluster head via local externs). 20/24 functions matched in C; src/field/overlay_01_021FD41C.c committed (builds, 20/24) with main.lsf LEFT on asm. 4 holdouts: ov01_021FD498 (2-byte regalloc tie), ov01_021FD7D4/_838/_980 (camera-family cb2 scheduling/aliasing holdouts). NONMATCHING blocked by a rodata-consolidation vs inline-asm-symbol-ref conflict (ldr =sRodata+offset inflates +4 -> linker reorders sections). Full analysis + recipe in tools/decomp_harness/HANDOFF_overlay_01_021FD41C.md. Needs focused session.",
+   "attempts": 1,
+   "blocker_id": null,
+   "partial_matched": 20,
+   "kept_c": false
   },
   {
    "file": "asm/overlay_01_021FDA14.s",
