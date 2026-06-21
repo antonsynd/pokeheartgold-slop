@@ -450,6 +450,14 @@ A walking-pointer accumulate loop `for(i=0;i<N;i++) acc ^= *p++;` makes MWCC sch
 
 A comparison `if (FrontierSave_GetStat(...) != *(u16*)(p+off))` with the call inline produced `cmp r1,r0` (field, result) where retail had `cmp r0,r1` (result, field) — same branch (bne), same registers, just swapped cmp operands (objdiff: 1 real byte diff, the cmp halfword). Swapping the C operands (`field != call()`) does NOT flip it — MWCC canonicalizes inline-call comparisons the same way regardless of source order. FIX: assign the call result to a local first, then compare the local: `u16 stat = call(...); if (stat != *(u16*)(p+off)) {...}`. The materialized local keeps the result in r0 as the first cmp operand, yielding `cmp r0,r1` to match. No extra instructions if the local stays in r0 (it does, being used immediately). Seen in overlay_80_02235900 FrtCmd_178 case 11 (the only diff in a 0x364-byte jump-table function). Diagnose by aligning the disassembly (relative branch targets, drop the inline jump-table by address range) until a single cmp operand-order diff remains.
 
+### Read a struct member directly (not into a local) when the asm reloads it across calls  <!-- id: mwcc-read-struct-member-directly-not-cached -->
+
+MWCC reloads a pointer-dereferenced value (e.g. a1->unk_14, fontSys->unk_60) after a function call because the call may alias it. If the C caches it in a local before the calls, MWCC keeps the local in a callee-saved register instead of reloading -> different register allocation/spills -> mismatch. Fix: read the member directly at each use (e.g. Heap_Alloc(h, 0x24 * a1->unk_14) three times, not count=a1->unk_14 once). Resolved TextOBJ_Create and TextOBJ_CopyFromBGWindow in unk_02013534. INVERSE: a value derived from a CALL RESULT (count = sub_02013BD4(...)) MUST be cached and the asm keeps it in a reg.
+
+### Fold multiple return-K into one trailing return via else-if to match a shared exit  <!-- id: mwcc-single-shared-return-else-if -->
+
+When the asm branches (b END) from several paths to ONE shared `return K` epilogue but the drafter wrote inline `return K;` at each path, restructure to `if(a){...} else if(b){...} else {return OTHER;} return K;` (single trailing return). MWCC then emits `b END` from each fall-through to the shared epilogue. Resolved sub_02013B24 (return 0). Same idea: use a `while(cond){...}` instead of `if(!cond) return; do{...}while(cond);` to get the single trailing return (resolved sub_02013BD4, sub_02013E24).
+
 ## IPA (-ipa file) Behavior
 
 ### Shared-header signatures are load-bearing across compilation units  <!-- id: ipa-shared-headers -->
@@ -685,6 +693,10 @@ When a function reads the SAME field `*(int*)((u8*)base + 0xBIG)` (offset too bi
 ### Consolidated rodata struct can't be referenced from NONMATCHING inline asm by member (ldr =sRodata+off inflates +4 -> linker reorders)  <!-- id: consolidated-rodata-blocks-inline-asm-symbol-ref -->
 
 When rodata is consolidated into ONE `static const struct sRodata` (the fix for MWCC size-sorting, [[rodata-multi-symbol-size-sorted-use-one-struct]]), a NONMATCHING inline-`asm` function that originally did `ldr rN, =ov01_02208XXX` (a standalone rodata symbol now a struct MEMBER) has NO clean way to load that member's address. Rewriting to `ldr rN, =sRodata + 0xOFF` does NOT fold the offset into the single literal-pool word — mwasmarm emits the pool word for sRodata PLUS extra (observed: function grows +4 bytes, an align nop appears before the pool). The size change then makes the MWCC linker REORDER the per-function .text sections (e.g. the asm fn placed before the C fn that precedes it in source), cascading address shifts into OTHER files in the overlay -> compare fails at the .sbin with scattered diffs even though objdiff says MATCH. Resolution: PREFER matching such functions in C (they reference sRodata.member cleanly). If NONMATCHING is unavoidable, pull the asm-referenced arrays OUT of sRodata as separate named const symbols so `ldr =name` is a single pool word — but then re-verify .rodata lays out byte-identically (size-sort risk) via `objcopy -O binary --only-section=.rodata` + cmp. Functions with NO rodata ref NONMATCHING fine. Diagnosed on overlay_01_021FD41C (camera cb2s 7D4/838 load matrix rodata arr_ef0/arr_f14).
+
+### NONMATCHING inline asm CAN reference =sRodata+N for a consolidated rodata struct  <!-- id: nonmatching-inline-asm-rodata-symbol-plus-offset -->
+
+When a function references two contiguous local rodata symbols (_020F5F2C / _020F5F2D = base+1) consolidated into one `static const struct sRodata`, a NONMATCHING inline-asm fallback can load them with `ldr rN, =sRodata` and `ldr rN, =sRodata+1`. MWCC emits two correct pool words and the function does NOT inflate (verified sub_02013CD0: 164 bytes, full ROM SHA1 match). The inline-asm escape hatch when the C body matches everything EXCEPT register allocation/scheduling.
 
 ## Tooling & Build Workflow
 

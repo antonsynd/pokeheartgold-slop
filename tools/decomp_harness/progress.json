@@ -1006,7 +1006,7 @@
   "in_progress": [],
   "stats": {
     "total_attempts": 152,
-    "total_matched": 61,
+    "total_matched": 62,
     "total_failed": 28
   },
   "matched": [
@@ -1081,6 +1081,14 @@
       "functions": 21,
       "result": "matched",
       "note": "Battle Frontier OPPONENT Pokemon/trainer builder (overlay 80) - the implementation of helpers the sibling frontier files call via local externs (ov80_02229F04/_0222A140/_0222A480/_0222A52C/etc). 21 funcs: 12 matched C + 9 NONMATCHING (verbatim asm: the big Pokemon builders ov80_02229F6C/_0222A140/_0222A5E0/_0222A6B8 + scheduling/regalloc ties _02229F04/_0222A480/_0222A4EC/_0222A52C/_0222A7EC). rodata (3 contiguous local tables: nature/ability) consolidated into one static const struct. Lessons: drafter emitted the .c content in its message but only wrote the header - had to write the .c manually (VERIFY the file exists after a drafter run); the own header needs #include global.h since clang-format reorders it to be the FIRST include (before the .c's global.h); HEAP_ID_FIELD2=11/FIELD1=4 enum constants; u32 loop counters for bcc; `x ^ 1` not `!x`."
+    },
+    {
+      "file": "asm/unk_02013534.s",
+      "result": "matched",
+      "functions": 40,
+      "c_functions": 35,
+      "nonmatching": 5,
+      "note": "sprite/OAM TextOBJ utility (font system + per-window OAM list + TextOBJ). 35 C matched; 5 NONMATCHING (sub_02013728, sub_020138E0, sub_02013A50, sub_02013AD0, sub_02013CD0) are MWCC register-allocation/scheduling holdouts (+ 038E0 header-locked to int a1). Full ROM SHA1 match."
     }
   ]
 }

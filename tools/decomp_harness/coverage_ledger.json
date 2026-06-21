@@ -1,12 +1,12 @@
 {
  "summary": {
-  "generated": "2026-06-21T16:24:31Z",
+  "generated": "2026-06-21T20:58:46Z",
   "by_status": {
    "matched": {
-    "files": 91,
-    "functions": 1056,
-    "insn_lines": 26745,
-    "text_bytes_est": 59304
+    "files": 92,
+    "functions": 1096,
+    "insn_lines": 27996,
+    "text_bytes_est": 62026
    },
    "blocked": {
     "files": 42,
@@ -15,10 +15,10 @@
     "text_bytes_est": 47452
    },
    "pending": {
-    "files": 160,
-    "functions": 18294,
-    "insn_lines": 901023,
-    "text_bytes_est": 2012838
+    "files": 159,
+    "functions": 18254,
+    "insn_lines": 899772,
+    "text_bytes_est": 2010116
    },
    "upstream": {
     "files": 378,
@@ -29,9 +29,9 @@
   },
   "function_totals": {
    "tracked": 20048,
-   "matched": 1056,
+   "matched": 1096,
    "partial_in_blocked": 70,
-   "pending": 18294
+   "pending": 18254
   },
   "blockers": [
    {
@@ -3530,8 +3530,8 @@
   },
   {
    "file": "asm/unk_02013534.s",
-   "lsf_kind": "asm",
-   "status": "pending",
+   "lsf_kind": "src",
+   "status": "matched",
    "lines": 1504,
    "function_count": 40,
    "text_bytes_est": 2722,
@@ -3603,282 +3603,283 @@
      "mode": "thumb",
      "insns": 53,
      "size_est": 120,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "sub_020135AC",
      "mode": "thumb",
      "insns": 18,
      "size_est": 44,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "sub_020135D8",
      "mode": "thumb",
      "insns": 58,
      "size_est": 136,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "FontOAM_Delete",
      "mode": "thumb",
      "insns": 16,
      "size_est": 42,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "sub_02013688",
      "mode": "thumb",
      "insns": 20,
      "size_est": 46,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "sub_020136B4",
      "mode": "thumb",
      "insns": 55,
      "size_est": 116,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "sub_02013728",
      "mode": "thumb",
      "insns": 51,
      "size_est": 108,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "sub_02013794",
      "mode": "thumb",
      "insns": 19,
      "size_est": 44,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "TextOBJ_SetSpritesDrawFlag",
      "mode": "thumb",
      "insns": 22,
      "size_est": 48,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "sub_020137F0",
      "mode": "thumb",
      "insns": 22,
      "size_est": 48,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "sub_02013820",
      "mode": "thumb",
      "insns": 22,
      "size_est": 48,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "TextOBJ_SetPaletteNum",
      "mode": "thumb",
      "insns": 22,
      "size_est": 48,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "sub_02013880",
      "mode": "thumb",
      "insns": 22,
      "size_est": 48,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "sub_020138B0",
      "mode": "thumb",
      "insns": 22,
      "size_est": 48,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "sub_020138E0",
      "mode": "thumb",
      "insns": 22,
      "size_est": 48,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "sub_02013910",
      "mode": "thumb",
      "insns": 18,
      "size_est": 40,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "sub_02013938",
      "mode": "thumb",
      "insns": 7,
      "size_est": 18,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "sub_02013948",
      "mode": "thumb",
      "insns": 4,
      "size_est": 8,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "TextOBJ_Create",
      "mode": "thumb",
      "insns": 52,
      "size_est": 120,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "TextOBJ_Destroy",
      "mode": "thumb",
      "insns": 4,
      "size_est": 8,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "TextOBJ_CopyFromBGWindow",
      "mode": "thumb",
      "insns": 53,
      "size_est": 130,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "sub_02013A50",
      "mode": "thumb",
      "insns": 53,
      "size_est": 112,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "sub_02013AC0",
      "mode": "thumb",
      "insns": 8,
      "size_est": 16,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "sub_02013AD0",
      "mode": "thumb",
      "insns": 21,
      "size_est": 42,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "sub_02013AF8",
      "mode": "thumb",
      "insns": 22,
      "size_est": 44,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "sub_02013B24",
      "mode": "thumb",
      "insns": 83,
      "size_est": 174,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "sub_02013BD4",
      "mode": "thumb",
      "insns": 64,
      "size_est": 136,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "sub_02013C5C",
      "mode": "thumb",
      "insns": 54,
      "size_est": 114,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "sub_02013CD0",
      "mode": "thumb",
      "insns": 82,
      "size_est": 176,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "sub_02013D88",
      "mode": "thumb",
      "insns": 41,
      "size_est": 86,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "sub_02013DE0",
      "mode": "thumb",
      "insns": 32,
      "size_est": 66,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "sub_02013E24",
      "mode": "thumb",
      "insns": 39,
      "size_est": 80,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "sub_02013E78",
      "mode": "thumb",
      "insns": 41,
      "size_est": 86,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "sub_02013ECC",
      "mode": "thumb",
      "insns": 17,
      "size_est": 36,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "sub_02013EF0",
      "mode": "thumb",
      "insns": 66,
      "size_est": 136,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "sub_02013F78",
      "mode": "thumb",
      "insns": 12,
      "size_est": 28,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "sub_02013F94",
      "mode": "thumb",
      "insns": 8,
      "size_est": 20,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "sub_02013FA8",
      "mode": "thumb",
      "insns": 12,
      "size_est": 26,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "sub_02013FC0",
      "mode": "thumb",
      "insns": 8,
      "size_est": 16,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "sub_02013FD0",
      "mode": "thumb",
      "insns": 6,
      "size_est": 12,
-     "status": "pending"
+     "status": "matched"
     }
-   ]
+   ],
+   "source": "retained_asm"
   },
   {
    "file": "asm/unk_02013FDC.s",
