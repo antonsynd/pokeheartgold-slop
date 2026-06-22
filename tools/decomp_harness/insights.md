@@ -462,6 +462,18 @@ When the asm branches (b END) from several paths to ONE shared `return K` epilog
 
 When a function asserts then tail-calls passing its own args through unchanged (e.g. `GF_ASSERT(cmd<N); sHandlers[cmd](a0,a1,data+4,a3);`), the ternary GF_ASSERT (`(x)?(void)0:GF_AssertFail()`) falls through to the call, so a0/a1/a3 are live across the (possibly-returning) GF_AssertFail and MWCC saves them to callee-saved regs (extra push). The asm instead RETURNS on the assert path so the args aren't live: write `if (cmd >= N) { GF_AssertFail(); return; }` then the tail-call. Resolved sub_02096D60 (28 vs 40 bytes -> exact). Also: a static helper that ends in `bl X; pop` returns X's result -> must be declared returning int, not void (sub_02096D14).
 
+### Two helper calls in one branch that both pass `(u8)id` get CSE'd (id narrowed in place); pass `id & 0xFF` to one to force a per-call recompute  <!-- id: break-cse-of-repeated-u8-cast-with-and-0xff -->
+
+A dispatcher branch that calls a GET helper then a SET helper, both with the same truncated index `(u8)id`, makes MWCC CSE the `(u8)id` expression and NARROW id in place (store (u8)id back into id's callee-saved reg), then reuse it for both calls. Retail instead recomputes `(u8)id` fresh per call (id stays full-width). Because the two `(u8)id` are textually identical, MWCC merges them. Fix: write the SECOND call's index as `id & 0xFF` instead of `(u8)id` — same bytes (`lsls#24;lsrs#24`) but a distinct AST node MWCC will NOT CSE, so it recomputes per call and keeps id live. Seen in unk_0202B614 FashionCase_GiveFashionItem/sub_0202BB7C/FashionCase_GiveContestBackground (4-bit GET+SET and the contest-bg check+set). Note: helpers must stay `int id` for their signed `%`/word-`(u8)((u32)id>>n)` codegen — a u8 param drops the word `(u8)` mask. Related: [[narrowing-loop-counter-int-for-fullwidth-incr-and-compare]].
+
+### `(u8)(id - 0x3d)` passed to an int helper truncates once; retail double-truncates — reassign `id = (u8)(id - 0x3d);` then pass `(u8)id`  <!-- id: reassign-then-recast-forces-double-u8-truncation -->
+
+When the asm subtracts then truncates TWICE — `subs rN,#0x3d; lsls#24;lsrs#24; lsls#24;lsrs#24` — for an index `id-0x3d` fed to an int-param helper, a plain `(u8)(id - 0x3d)` emits only ONE truncation, and `(u8)((u8)(id - 0x3d))` collapses to one (MWCC folds the redundant cast). To reproduce the double truncation, REASSIGN the int param to its own u8-cast and then cast again at the call: `id = (u8)(id - 0x3d); helper(.., (u8)id);`. The store of `(u8)(id-0x3d)` into the int `id` is trunc 1, and `(u8)id` (which MWCC no longer proves is <256) is trunc 2. Seen in unk_0202B614 sub_0202BA70/FashionCase_GiveFashionItem/sub_0202BB7C 1-bit accessory branches (id-0x3d into sub_0202B848/sub_0202B808).
+
+### A stack u16[] the asm keeps with redundant element-copies (strh/ldrh) but MWCC optimizes away: mark it `volatile` to force the layout  <!-- id: volatile-stack-array-preserves-redundant-copies -->
+
+sub_0202BCAC builds `u16 pos[4]` from a packed u32 (`pos[0]=p; pos[1]=p>>16; pos[2]=pos[0]; pos[3]=pos[1];`) and reads `(s16)pos[2]/(s16)pos[3]` plus re-reads pos[2] for a later call. Retail keeps all four slots (strh writes, ldrh copies, ldrsh reads via a base pointer `add rN,sp,#k`) and re-reads pos[2] each use. Plain `u16 pos[4]` lets MWCC dead-eliminate pos[0]/pos[1], promote pos[2]/pos[3] to int temps, and cache reads — 47 diffs / wrong stack frame. Declaring `volatile u16 pos[4]` defeats the dead-store elimination and forces every read from memory, collapsing it to a near-match (here 2 bytes, the remaining diff being a separate register-spill reload → NONMATCHING). Use volatile when the asm clearly keeps a stack array MWCC would optimize, and the array is small/leaf.
+
 ## IPA (-ipa file) Behavior
 
 ### Shared-header signatures are load-bearing across compilation units  <!-- id: ipa-shared-headers -->
@@ -701,6 +713,10 @@ When rodata is consolidated into ONE `static const struct sRodata` (the fix for 
 ### NONMATCHING inline asm CAN reference =sRodata+N for a consolidated rodata struct  <!-- id: nonmatching-inline-asm-rodata-symbol-plus-offset -->
 
 When a function references two contiguous local rodata symbols (_020F5F2C / _020F5F2D = base+1) consolidated into one `static const struct sRodata`, a NONMATCHING inline-asm fallback can load them with `ldr rN, =sRodata` and `ldr rN, =sRodata+1`. MWCC emits two correct pool words and the function does NOT inflate (verified sub_02013CD0: 164 bytes, full ROM SHA1 match). The inline-asm escape hatch when the C body matches everything EXCEPT register allocation/scheduling.
+
+### In MWCC inline `asm` functions, a bare `[rN]` load/store mis-assembles — write `[rN, #0]` explicitly  <!-- id: mwcc-asm-bare-bracket-needs-zero-offset -->
+
+When writing a whole-function NONMATCHING body as a `static asm`/`asm` function, MWCC sp2p2 mis-assembles a memory operand with NO offset: `ldr r0, [r5]` becomes `ldr r0, [r5, #8]` (a wrong non-zero offset), and likewise `ldr r1, [r4]`, `ldr r7, [r0]`. Curiously `[sp]` and `strh/ldrh [r1]` came out as `#0` correctly, but word `ldr/str` from r0/r4/r5 did not. Always spell the offset explicitly as `[rN, #0]` in inline asm — the existing NONMATCHING examples (e.g. src/unk_02091880.c) already do this for every operand. Diagnose: objdiff shows the function the right SIZE but with a couple of byte diffs where `[rN,#0]` reads became `[rN,#8]`. Seen porting sub_0202BCAC/sub_0202BF80 asm into unk_0202B614.c.
 
 ## Tooling & Build Workflow
 
