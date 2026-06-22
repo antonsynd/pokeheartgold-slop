@@ -1022,6 +1022,13 @@
       "reason": "Battle Frontier script commands (11 funcs); 9/11 matched WIP; remaining FrtCmd_132 (switch body-order/layout) + FrtCmd_137 (regalloc swap + block-order). See HANDOFF_overlay_80_02235438.md. main.lsf on asm.",
       "functions": 11,
       "matched_wip": 9
+    },
+    {
+      "file": "asm/unk_02031B0C.s",
+      "result": "deferred",
+      "reason": "ApricornBox save module (39 funcs); 16/39 matched WIP. KEY: solved the non-self-contained-header include-order issue (clang-format off block: global.h/heap.h/pm_string.h before unk_02031B0C.h). Remaining 23 mostly small + 3 complex (C30/DA0/2354). See HANDOFF_unk_02031B0C.md. main.lsf on asm.",
+      "functions": 39,
+      "matched_wip": 16
     }
   ],
   "in_progress": [],

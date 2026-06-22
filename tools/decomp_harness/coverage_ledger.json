@@ -1,6 +1,6 @@
 {
  "summary": {
-  "generated": "2026-06-21T23:46:25Z",
+  "generated": "2026-06-22T03:02:01Z",
   "by_status": {
    "matched": {
     "files": 93,
@@ -9,16 +9,16 @@
     "text_bytes_est": 62976
    },
    "blocked": {
-    "files": 45,
-    "functions": 802,
-    "insn_lines": 24078,
-    "text_bytes_est": 52938
+    "files": 46,
+    "functions": 841,
+    "insn_lines": 25418,
+    "text_bytes_est": 55750
    },
    "pending": {
-    "files": 155,
-    "functions": 18119,
-    "insn_lines": 896806,
-    "text_bytes_est": 2003680
+    "files": 154,
+    "functions": 18080,
+    "insn_lines": 895466,
+    "text_bytes_est": 2000868
    },
    "upstream": {
     "files": 378,
@@ -31,7 +31,7 @@
    "tracked": 20048,
    "matched": 1127,
    "partial_in_blocked": 70,
-   "pending": 18119
+   "pending": 18080
   },
   "blockers": [
    {
@@ -10498,7 +10498,7 @@
   {
    "file": "asm/unk_02031B0C.s",
    "lsf_kind": "asm",
-   "status": "pending",
+   "status": "blocked",
    "lines": 1627,
    "function_count": 39,
    "text_bytes_est": 2812,
@@ -10567,275 +10567,279 @@
      "mode": "thumb",
      "insns": 3,
      "size_est": 6,
-     "status": "pending"
+     "status": "blocked"
     },
     {
      "name": "sub_02031B10",
      "mode": "thumb",
      "insns": 3,
      "size_est": 6,
-     "status": "pending"
+     "status": "blocked"
     },
     {
      "name": "Save_ApricornBox_Get",
      "mode": "thumb",
      "insns": 6,
      "size_est": 12,
-     "status": "pending"
+     "status": "blocked"
     },
     {
      "name": "InitApricornBox",
      "mode": "thumb",
      "insns": 12,
      "size_est": 30,
-     "status": "pending"
+     "status": "blocked"
     },
     {
      "name": "sub_02031B3C",
      "mode": "thumb",
      "insns": 12,
      "size_est": 26,
-     "status": "pending"
+     "status": "blocked"
     },
     {
      "name": "Save_ApricornBox_Init",
      "mode": "thumb",
      "insns": 4,
      "size_est": 8,
-     "status": "pending"
+     "status": "blocked"
     },
     {
      "name": "sub_02031B5C",
      "mode": "thumb",
      "insns": 6,
      "size_est": 12,
-     "status": "pending"
+     "status": "blocked"
     },
     {
      "name": "ApricornBox_GiveApricorn",
      "mode": "thumb",
      "insns": 16,
      "size_est": 34,
-     "status": "pending"
+     "status": "blocked"
     },
     {
      "name": "ApricornBox_TakeApricorn",
      "mode": "thumb",
      "insns": 14,
      "size_est": 30,
-     "status": "pending"
+     "status": "blocked"
     },
     {
      "name": "ApricornBox_CountApricorn",
      "mode": "thumb",
      "insns": 9,
      "size_est": 20,
-     "status": "pending"
+     "status": "blocked"
     },
     {
      "name": "ApricornBox_SetKurtApricorn",
      "mode": "thumb",
      "insns": 11,
      "size_est": 26,
-     "status": "pending"
+     "status": "blocked"
     },
     {
      "name": "ApricornBox_GetKurtQuantity",
      "mode": "thumb",
      "insns": 3,
      "size_est": 6,
-     "status": "pending"
+     "status": "blocked"
     },
     {
      "name": "ApricornBox_GetKurtBall",
      "mode": "thumb",
      "insns": 12,
      "size_est": 24,
-     "status": "pending"
+     "status": "blocked"
     },
     {
      "name": "sub_02031BEC",
      "mode": "thumb",
      "insns": 10,
      "size_est": 20,
-     "status": "pending"
+     "status": "blocked"
     },
     {
      "name": "sub_02031C00",
      "mode": "thumb",
      "insns": 4,
      "size_est": 8,
-     "status": "pending"
+     "status": "blocked"
     },
     {
      "name": "sub_02031C08",
      "mode": "thumb",
      "insns": 20,
      "size_est": 40,
-     "status": "pending"
+     "status": "blocked"
     },
     {
      "name": "sub_02031C30",
      "mode": "thumb",
      "insns": 55,
      "size_est": 114,
-     "status": "pending"
+     "status": "blocked"
     },
     {
      "name": "sub_02031CA0",
      "mode": "thumb",
      "insns": 21,
      "size_est": 44,
-     "status": "pending"
+     "status": "blocked"
     },
     {
      "name": "sub_02031CCC",
      "mode": "thumb",
      "insns": 15,
      "size_est": 30,
-     "status": "pending"
+     "status": "blocked"
     },
     {
      "name": "sub_02031CE8",
      "mode": "thumb",
      "insns": 3,
      "size_est": 6,
-     "status": "pending"
+     "status": "blocked"
     },
     {
      "name": "sub_02031CEC",
      "mode": "thumb",
      "insns": 61,
      "size_est": 128,
-     "status": "pending"
+     "status": "blocked"
     },
     {
      "name": "sub_02031D6C",
      "mode": "thumb",
      "insns": 9,
      "size_est": 20,
-     "status": "pending"
+     "status": "blocked"
     },
     {
      "name": "sub_02031D80",
      "mode": "thumb",
      "insns": 17,
      "size_est": 34,
-     "status": "pending"
+     "status": "blocked"
     },
     {
      "name": "sub_02031DA0",
      "mode": "thumb",
      "insns": 276,
      "size_est": 574,
-     "status": "pending"
+     "status": "blocked"
     },
     {
      "name": "sub_02031FE8",
      "mode": "thumb",
      "insns": 14,
      "size_est": 30,
-     "status": "pending"
+     "status": "blocked"
     },
     {
      "name": "sub_02032004",
      "mode": "thumb",
      "insns": 16,
      "size_est": 34,
-     "status": "pending"
+     "status": "blocked"
     },
     {
      "name": "sub_02032024",
      "mode": "thumb",
      "insns": 26,
      "size_est": 54,
-     "status": "pending"
+     "status": "blocked"
     },
     {
      "name": "sub_02032058",
      "mode": "thumb",
      "insns": 62,
      "size_est": 136,
-     "status": "pending"
+     "status": "blocked"
     },
     {
      "name": "sub_020320E0",
      "mode": "thumb",
      "insns": 50,
      "size_est": 120,
-     "status": "pending"
+     "status": "blocked"
     },
     {
      "name": "sub_02032158",
      "mode": "thumb",
      "insns": 35,
      "size_est": 72,
-     "status": "pending"
+     "status": "blocked"
     },
     {
      "name": "sub_020321A0",
      "mode": "thumb",
      "insns": 131,
      "size_est": 268,
-     "status": "pending"
+     "status": "blocked"
     },
     {
      "name": "sub_020322AC",
      "mode": "thumb",
      "insns": 41,
      "size_est": 94,
-     "status": "pending"
+     "status": "blocked"
     },
     {
      "name": "sub_02032308",
      "mode": "thumb",
      "insns": 24,
      "size_est": 58,
-     "status": "pending"
+     "status": "blocked"
     },
     {
      "name": "sub_02032340",
      "mode": "thumb",
      "insns": 10,
      "size_est": 20,
-     "status": "pending"
+     "status": "blocked"
     },
     {
      "name": "sub_02032354",
      "mode": "thumb",
      "insns": 207,
      "size_est": 416,
-     "status": "pending"
+     "status": "blocked"
     },
     {
      "name": "sub_020324F4",
      "mode": "thumb",
      "insns": 9,
      "size_est": 18,
-     "status": "pending"
+     "status": "blocked"
     },
     {
      "name": "sub_02032504",
      "mode": "thumb",
      "insns": 66,
      "size_est": 132,
-     "status": "pending"
+     "status": "blocked"
     },
     {
      "name": "sub_02032588",
      "mode": "thumb",
      "insns": 33,
      "size_est": 68,
-     "status": "pending"
+     "status": "blocked"
     },
     {
      "name": "sub_020325CC",
      "mode": "thumb",
      "insns": 14,
      "size_est": 34,
-     "status": "pending"
+     "status": "blocked"
     }
-   ]
+   ],
+   "blocked_reason": "ApricornBox save module (39 funcs); 16/39 matched WIP. KEY: solved the non-self-contained-header include-order issue (clang-format off block: global.h/heap.h/pm_string.h before unk_02031B0C.h). Remaining 23 mostly small + 3 complex (C30/DA0/2354). See HANDOFF_unk_02031B0C.md. main.lsf on asm.",
+   "attempts": null,
+   "blocker_id": null,
+   "kept_c": true
   },
   {
    "file": "asm/pokewalker.s",
