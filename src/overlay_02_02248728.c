@@ -48,6 +48,7 @@
 #include "save_local_field_data.h"
 #include "script_pokemon_util.h"
 #include "sprite.h"
+#include "sys_task_api.h"
 #include "task.h"
 #include "unk_02005D10.h"
 #include "unk_02009D48.h"
@@ -614,6 +615,15 @@ WIP_LOCAL BOOL ov02_0224D178(void *obj) {
         result &= Field3dModelAnimation_FrameAdvanceAndCheck((Field3DModelAnimation *)((u8 *)obj + 0x88 + i * 0x14), FX32_ONE);
     }
     return result;
+}
+
+WIP_LOCAL void ov02_02249E58(SysTask *task, void *work) {
+    SpriteResource *res = SpriteResourceCollection_Find(*(GF_2DGfxResMan **)((u8 *)work + 0x19c), 0);
+    if (*(int *)((u8 *)work + 0x210) == 0) {
+        sub_0200ADA4(res);
+        SysTask_CreateOnVWaitQueue(ov02_02249E90, work, 0x80);
+        *(int *)((u8 *)work + 0x210) = *(int *)((u8 *)work + 0x210) + 1;
+    }
 }
 
 WIP_LOCAL void ov02_0224D144(void *obj, void *alloc) {
@@ -1536,7 +1546,7 @@ WIP_LOCAL void ov02_0224F8F4(void *ptr) {
 }
 
 // ===========================================================================
-// HANDOFF — overlay_02_02248728 WIP (176/364 byte-match, objdiff-verified)
+// HANDOFF — overlay_02_02248728 WIP (177/364 byte-match, objdiff-verified)
 // ===========================================================================
 // MODULE: follow-mon sprite animation + Pokecenter / field-move (Escape Rope,
 //   Dig, Teleport) task subsystem. A 2D graphics renderer built on G2dRenderer /

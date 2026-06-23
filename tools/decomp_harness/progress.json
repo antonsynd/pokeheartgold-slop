@@ -1035,9 +1035,9 @@
     "file": "asm/overlay_02_02248728.s",
     "lines": 17995,
     "functions": 364,
-    "matched_so_far": 176,
+    "matched_so_far": 177,
     "result": "wip-deferred",
-    "note": "176/364 (~48%). +1: ov02_0224D144 (Field3dModel_Unload + dynamic-bound Field3dModelAnimation_Unload loop; the cleanup used by destroy dispatchers). Deferred: resource-ADD cluster, jump-table funcs (E26C/Dig/Teleport/D044/CFD8), D288/D3B4 (ambiguous dead-cmp), 16 huge fns. Handoff at EOF."
+    "note": "177/364 (~49%). +1: ov02_02249E58 (SpriteResourceCollection_Find + sub_0200ADA4 + SysTask_CreateOnVWaitQueue, discards handle, work->0x210++). Deferred: resource-ADD cluster, jump-table funcs, D288/D3B4 (dead-cmp), B298/B784 (sub_02068B0C), 16 huge fns. Handoff at EOF."
   },
   "stats": {
     "total_attempts": 153,
