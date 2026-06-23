@@ -121,6 +121,8 @@ extern void ov01_021FCD8C(void *a0, int a1, fx32 a2, int a3);                // 
 extern const MovementScriptCommand ov02_02253820;                            // rodata, defined later
 extern void sub_02068DB8(void *a0, VecFx32 *out);                            // no header included here
 extern void Field3dObject_SetPos(Field3dObject *object, const VecFx32 *pos); // .public, no C proto yet
+extern void GetFlyWarpData(u16 spawnId, Location *dest);                     // unk_0203BA5C.h, not included
+extern void GetSpecialSpawnWarpData(u16 spawnId, Location *dest);            // unk_0203BA5C.h, not included
 
 // unk_020689C8.c task launcher: sub_02068B0C(mgr, src, pos, a3, a4, priority).
 // The UnkTemplateBase/UnkTaskWork types are local to that TU; mirror minimally.
@@ -187,6 +189,16 @@ WIP_LOCAL void ov02_0224AB58(void *work);
 WIP_LOCAL void ov02_0224B298(void *mgr, void *arg1);
 WIP_LOCAL void ov02_02248D58(void *arg0, void *arg1, void *arg2, void *arg3);
 WIP_LOCAL void ov02_0224AA44(void *arg0, VecFx32 *pos, VecFx32 *vec, void *arg3, u32 arg4, void *arg5);
+WIP_LOCAL void ov02_0224DE6C(void *obj);
+WIP_LOCAL void ov02_0224D950(void *a0, void *a1, void *data);
+WIP_LOCAL void ov02_0224DD8C(void *a0, void *a1, void *data);
+WIP_LOCAL int ov02_02249690(void *work);
+WIP_LOCAL void ov02_0224D310(void *a0, void *a1, void *data);
+WIP_LOCAL int ov02_0224C840(TaskManager *taskManager, void *a1, void *a2);
+WIP_LOCAL void ov02_0224D820(void *data);
+WIP_LOCAL void ov02_0224DF1C(void *data);
+WIP_LOCAL void ov02_0224D0C8(void *data, int a1, int a2, int a3, void *a4);
+WIP_LOCAL void ov02_0224D044(void *a0, void *data);
 WIP_LOCAL void ov02_0224D700(void *obj);
 WIP_LOCAL void ov02_0224D914(Field3dObjectTask *task, FieldSystem *fieldSystem, void *data);
 WIP_LOCAL BOOL ov02_0224ABCC(void *a0, void *a1);
@@ -886,6 +898,78 @@ WIP_LOCAL void ov02_0224AA44(void *arg0, VecFx32 *pos, VecFx32 *vec, void *arg3,
     a4.unk8 = arg0;
     a4.unkC = *vec;
     sub_02068B0C(*(void **)((u8 *)arg0 + 0x1e0), &ov02_02253468, pos, arg4, &a4, 0x85);
+}
+
+WIP_LOCAL void ov02_0224DE6C(void *obj) {
+    if (*(int *)((u8 *)obj + 0xc8) != 0) {
+        BOOL acc = TRUE;
+        int i = 0;
+        Field3DModelAnimation *anim = (Field3DModelAnimation *)((u8 *)obj + 0x78);
+        for (; i < 4; i++) {
+            acc &= Field3dModelAnimation_FrameAdvanceAndCheck(anim, FX32_ONE);
+            anim = (Field3DModelAnimation *)((u8 *)anim + 0x14);
+        }
+        if (acc == 1) {
+            *(int *)((u8 *)obj + 0xc8) = 0;
+            Field3dObject_SetActiveFlag((Field3dObject *)obj, 0);
+        }
+    }
+}
+
+WIP_LOCAL void ov02_0224D950(void *a0, void *a1, void *data) {
+    if (*(u32 *)((u8 *)data + 0xD0C) == 0) {
+        *(int *)((u8 *)data + 0xCE4) = *(int *)((u8 *)data + 0xCE4) - 1;
+        if (*(int *)((u8 *)data + 0xCE4) < 0) {
+            *(int *)((u8 *)data + 0xCE4) = 4;
+            ov02_0224D820(data);
+        }
+        ov02_0224D868(data);
+    }
+}
+
+WIP_LOCAL void ov02_0224DD8C(void *a0, void *a1, void *data) {
+    if (*(u16 *)((u8 *)data + 0xE98) == 0) {
+        *(int *)((u8 *)data + 0xE7C) = *(int *)((u8 *)data + 0xE7C) - 1;
+        if (*(int *)((u8 *)data + 0xE7C) < 0) {
+            *(int *)((u8 *)data + 0xE7C) = 4;
+            ov02_0224DF1C(data);
+        }
+        ov02_0224E008(data);
+    }
+}
+
+WIP_LOCAL int ov02_02249690(void *work) {
+    int v;
+    *(int *)((u8 *)work + 0x2c) = 0;
+    v = *(int *)((u8 *)work + 0x44) + *(int *)((u8 *)work + 0x54);
+    *(int *)((u8 *)work + 0x44) = v;
+    if (v <= 0) {
+        *(int *)((u8 *)work + 0x44) = 0;
+        *(int *)((u8 *)work + 0x54) = 0x2000;
+        (*(int *)((u8 *)work))++;
+    }
+    ov02_0224A69C(work, *(int *)((u8 *)work + 0x44), *(int *)((u8 *)work + 0x4c), *(int *)((u8 *)work + 0x48), *(int *)((u8 *)work + 0x50));
+    *(int *)((u8 *)work + 0x2c) = 1;
+    return 0;
+}
+
+WIP_LOCAL void ov02_0224D310(void *a0, void *a1, void *data) {
+    memset(data, 0, 0xf0);
+    HeapExp_FndInitAllocator((NNSFndAllocator *)((u8 *)data + 0xdc), HEAP_ID_FIELD1, 0x20);
+    ov02_0224D0C8(data, 8, 4, 4, (u8 *)data + 0xdc);
+    ov02_0224D044(*(void **)((u8 *)a1 + 0x40), data);
+    PlaySE(SEQ_SE_DP_FW088);
+    *(int *)((u8 *)data + 0xec) = 0;
+}
+
+WIP_LOCAL int ov02_0224C840(TaskManager *taskManager, void *a1, void *a2) {
+    Location loc;
+    LocalFieldData *save = Save_LocalFieldData_Get(*(SaveData **)((u8 *)a1 + 0xc));
+    u16 blackoutSpawn = LocalFieldData_GetBlackoutSpawn(save);
+    GetFlyWarpData(blackoutSpawn, &loc);
+    GetSpecialSpawnWarpData(blackoutSpawn, LocalFieldData_GetSpecialSpawnWarpPtr(save));
+    sub_02053B04(taskManager, &loc, *(int *)((u8 *)a2 + 0xc));
+    return 2;
 }
 
 WIP_LOCAL void ov02_0224D144(void *obj, void *alloc) {
@@ -1808,7 +1892,7 @@ WIP_LOCAL void ov02_0224F8F4(void *ptr) {
 }
 
 // ===========================================================================
-// HANDOFF — overlay_02_02248728 WIP (196/364 byte-match, objdiff-verified)
+// HANDOFF — overlay_02_02248728 WIP (202/364 byte-match, objdiff-verified)
 // ===========================================================================
 // MODULE: follow-mon sprite animation + Pokecenter / field-move (Escape Rope,
 //   Dig, Teleport) task subsystem. A 2D graphics renderer built on G2dRenderer /
