@@ -1035,9 +1035,9 @@
     "file": "asm/overlay_02_02248728.s",
     "lines": 17995,
     "functions": 364,
-    "matched_so_far": 108,
+    "matched_so_far": 120,
     "result": "wip-deferred",
-    "note": "108/364. +10: coord getter, pos-copy, map-object visible/unpause, alloc+free guards, more render loops. Deferred: dispatch-table runners (ov02_02248DF0/AC04 need ov02_02253320/3C0 table types), 16-byte struct copy (ov02_02248D98). Next: AnimManager struct + dispatch tables. Handoff at EOF."
+    "note": "120/364 (~33%). +12: counter step-funcs (work->8 wrap), SysTask creators (ov02_0224B418/C1D8), alloc+init (ov02_0224955C), sprite-anim step, GetPokemonSprite wrapper. Deferred: sub_02053B04 warp (C1B8/CA38), 8-arg ov02_0224A33C (A9B8), dispatch-table runners (DF0/AC04), 16-byte copy (D98 wait done? no 02248D98). Next: AnimManager struct + dispatch tables. Handoff at EOF."
   },
   "stats": {
     "total_attempts": 153,

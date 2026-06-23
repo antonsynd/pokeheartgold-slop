@@ -38,6 +38,7 @@
 #include "metatile_behavior.h"
 #include "overlay_02.h"
 #include "player_avatar.h"
+#include "pokemon.h"
 #include "sprite.h"
 #include "task.h"
 #include "unk_0200FA24.h"
@@ -147,6 +148,24 @@ WIP_LOCAL void ov02_0224D700(void *p);
 WIP_LOCAL void ov02_0224DE6C(void *p);
 WIP_LOCAL void ov02_02249EC0(void *work);
 WIP_LOCAL void ov02_02249CF0(void *work);
+
+WIP_LOCAL void ov02_0224A7A8(void *a0, PokepicTemplate *tmpl);
+WIP_LOCAL int ov02_022495D0(void *work);
+WIP_LOCAL int ov02_02249AD8(void *work);
+WIP_LOCAL int ov02_02249754(void *work);
+WIP_LOCAL int ov02_02249838(void *work);
+WIP_LOCAL BOOL ov02_02249B60(void *work);
+WIP_LOCAL void *ov02_0224955C(void *a0);
+WIP_LOCAL BOOL ov02_02249AF0(void *work);
+WIP_LOCAL void ov02_0224A648(void *work);
+WIP_LOCAL int ov02_022491A8(void *work);
+// callees still in asm
+WIP_LOCAL void ov02_02249F6C(void *work);
+WIP_LOCAL void ov02_0224A4D0(void *work);
+WIP_LOCAL void ov02_02249D18(void *work);
+WIP_LOCAL void ov02_0224ADF0(void *work);
+WIP_LOCAL void ov02_0224A6A8(void *work);
+WIP_LOCAL void ov02_0224B45C(SysTask *task, void *data);
 
 WIP_LOCAL int ov02_022493EC(void);
 WIP_LOCAL NARC *ov02_022493F0(void);
@@ -489,6 +508,105 @@ WIP_LOCAL int ov02_022495B8(void *work) {
     return 0;
 }
 
+WIP_LOCAL int ov02_022495D0(void *work) {
+    ov02_02249F6C(work);
+    ov02_02249CF0(work);
+    *(int *)work = *(int *)work + 1;
+    return 0;
+}
+
+WIP_LOCAL int ov02_02249AD8(void *work) {
+    ov02_0224A4D0(work);
+    ov02_02249D18(work);
+    *(int *)work = *(int *)work + 1;
+    return 0;
+}
+
+WIP_LOCAL int ov02_02249754(void *work) {
+    int c = *(int *)((u8 *)work + 8) + 1;
+    *(int *)((u8 *)work + 8) = c;
+    if (c >= 0xf) {
+        *(int *)((u8 *)work + 8) = 0;
+        *(s32 *)((u8 *)work + 0x58) = 0xFFFC0000;
+        *(int *)work = *(int *)work + 1;
+    }
+    return 0;
+}
+
+WIP_LOCAL int ov02_02249838(void *work) {
+    int c = *(int *)((u8 *)work + 8) + 1;
+    *(int *)((u8 *)work + 8) = c;
+    if (c >= 8) {
+        *(int *)((u8 *)work + 8) = 0;
+        *(s32 *)((u8 *)work + 0x58) = 0xFFFFF000;
+        *(int *)work = *(int *)work + 1;
+    }
+    return 0;
+}
+
+WIP_LOCAL BOOL ov02_02249B60(void *work) {
+    int c = *(int *)((u8 *)work + 8) + 1;
+    *(int *)((u8 *)work + 8) = c;
+    if (c >= 0x14) {
+        *(int *)((u8 *)work + 8) = 0;
+        *(int *)work = *(int *)work + 1;
+        ov02_0224ADF0(work);
+    }
+    return TRUE;
+}
+
+WIP_LOCAL void *ov02_0224955C(void *a0) {
+    void *ptr = Heap_AllocAtEnd(HEAP_ID_FIELD1, 0x2f8);
+    memset(ptr, 0, 0x2f8);
+    *(void **)((u8 *)ptr + 0x60) = a0;
+    return ptr;
+}
+
+WIP_LOCAL BOOL ov02_02249AF0(void *work) {
+    if (*(int *)((u8 *)work + 0x214) == 0) {
+        return FALSE;
+    }
+    ov02_02249D40(work);
+    *(int *)work = *(int *)work + 1;
+    return TRUE;
+}
+
+WIP_LOCAL void ov02_0224A648(void *work) {
+    ov02_0224A6A8(work);
+    *(int *)((u8 *)work + 0x2c) = 0;
+    ov02_0224A674(work);
+    ov02_0224A67C(work);
+    ov02_0224A66C(work);
+    *(int *)((u8 *)work + 0x2c) = 1;
+}
+
+WIP_LOCAL SysTask *ov02_0224B418(FieldSystem *fieldSystem, int gender) {
+    void *p = ov02_0224B690(HEAP_ID_FIELD1, 0x17c);
+    *(int *)((u8 *)p + 0xc) = gender;
+    *(FieldSystem **)((u8 *)p + 0x14) = fieldSystem;
+    return SysTask_CreateOnMainQueue(ov02_0224B45C, p, 0x86);
+}
+
+WIP_LOCAL void *ov02_0224C1D8(FieldSystem *fieldSystem, int a1, int a2) {
+    void *p = ov02_0224C660((enum HeapID)a1, 0x30);
+    *(int *)((u8 *)p + 0xc) = a2;
+    *(FieldSystem **)((u8 *)p + 0x24) = fieldSystem;
+    *(LocalMapObject **)((u8 *)p + 0x20) = PlayerAvatar_GetMapObject(fieldSystem->playerAvatar);
+    return p;
+}
+
+WIP_LOCAL int ov02_022491A8(void *work) {
+    Sprite_SetDrawFlag(*(Sprite **)((u8 *)work + 0x68), FALSE);
+    Sprite_SetAnimCtrlSeq(*(Sprite **)((u8 *)work + 0x60), 1);
+    *(int *)((u8 *)work + 4) = 0;
+    *(u8 *)((u8 *)work + 1) = *(u8 *)((u8 *)work + 1) + 1;
+    return 1;
+}
+
+WIP_LOCAL void ov02_0224A7A8(void *a0, PokepicTemplate *tmpl) {
+    GetPokemonSpriteCharAndPlttNarcIds(tmpl, *(Pokemon **)((u8 *)a0 + 0x5c), 2);
+}
+
 WIP_LOCAL void ov02_0224D98C(Field3dObjectTask *task, FieldSystem *fieldSystem, void *data) {
     int i;
     u8 *p;
@@ -758,7 +876,7 @@ WIP_LOCAL void ov02_0224F8F4(void *ptr) {
 }
 
 // ===========================================================================
-// HANDOFF — overlay_02_02248728 WIP (108/364 byte-match, objdiff-verified)
+// HANDOFF — overlay_02_02248728 WIP (120/364 byte-match, objdiff-verified)
 // ===========================================================================
 // MODULE: follow-mon sprite animation + Pokecenter / field-move (Escape Rope,
 //   Dig, Teleport) task subsystem. A 2D graphics renderer built on G2dRenderer /
