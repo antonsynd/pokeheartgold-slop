@@ -133,6 +133,9 @@ extern const MovementScriptCommand ov02_02253794;                               
 extern const MovementScriptCommand ov02_02253770;                                                  // rodata, defined later
 extern BOOL sub_02054C20(FieldSystem *fieldSystem, int targetType, int *outObj, void **outHandle); // unk_02054648.h, not included
 extern u8 GetMetatileBehavior(FieldSystem *fieldSystem, int x, int z);                             // unk_02054648.h, not included
+extern void ov01_02203AB4(FieldSystem *fieldSystem, LocalMapObject *partnerPokeObj, int a2);       // overlay_01.h, not included
+extern const fx32 ov02_02253520[];                                                                 // rodata, defined later
+extern const MovementScriptCommand ov02_02253884;                                                  // rodata, defined later
 extern u16 PlayerProfile_GetTrainerID_VisibleHalf(PlayerProfile *profile);                         // player_data.h, not included
 typedef struct WallpaperPasswordBank WallpaperPasswordBank;                                        // opaque; easy_chat.h not included
 extern WallpaperPasswordBank *WallpaperPasswordBank_Create(enum HeapID heapID);
@@ -160,6 +163,7 @@ extern const ov02_LaunchTemplate ov02_022534A4;
 extern const ov02_LaunchTemplate ov02_02253454;
 extern const ov02_LaunchTemplate ov02_0225347C;
 extern const ov02_LaunchTemplate ov02_02253468;
+extern const ov02_LaunchTemplate ov02_02253490;
 
 // STRUCT-CLEANUP TODO: the getters/setters/deleters below use byte-offset casts
 // because their owning struct isn't named yet. They byte-match; replace the casts
@@ -231,6 +235,12 @@ WIP_LOCAL void ov02_0224D1E4(void *a0, void *a1, void *data);
 WIP_LOCAL int ov02_0224E224(void *a, void *b);
 WIP_LOCAL void ov02_0224F5FC(FieldSystem *fieldSystem, void *work);
 WIP_LOCAL void ov02_02248E20(void *a0);
+WIP_LOCAL void ov02_0224B784(void *work);
+WIP_LOCAL BOOL ov02_0224FB54(FieldSystem *fieldSystem, void *a1, void *arg2);
+WIP_LOCAL void ov02_0224B364(void *a0, void *work);
+WIP_LOCAL int ov02_0224C2EC(TaskManager *taskManager, FieldSystem *fieldSystem, void *work);
+WIP_LOCAL void ov02_0224D22C(void *a0, void *a1, void *data);
+WIP_LOCAL void ov02_0224CFD8(void *a0, int a1, void *data);
 WIP_LOCAL void ov02_0224A88C(void *mgr, void *dst);
 WIP_LOCAL void ov02_0224B6E4(void *a0, void *work);
 WIP_LOCAL void ov02_0224D0C8(void *data, int a1, int a2, int a3, void *a4);
@@ -1200,6 +1210,68 @@ WIP_LOCAL void ov02_0224B314(void *work) {
     Sprite_SetAnimCtrlSeq(*(Sprite **)(s + 0x20), 4);
 }
 
+WIP_LOCAL void ov02_0224B784(void *work) {
+    VecFx32 pos = { 0, 0, 0 };
+    void *a4 = work;
+    ov02_0224B88C(work);
+    MapObject_CopyPositionVector(*(LocalMapObject **)((u8 *)work + 0x20c), &pos);
+    *(void **)((u8 *)work + 0x1f0) = sub_02068B0C(*(void **)((u8 *)work + 0x1e0), &ov02_02253490, &pos, 0, &a4, 0x83);
+}
+
+WIP_LOCAL BOOL ov02_0224FB54(FieldSystem *fieldSystem, void *a1, void *arg2) {
+    u8 v;
+    if (sub_0205BB04((u8) * (u16 *)((u8 *)*(void **)((u8 *)fieldSystem + 0x120) + 0x882)) != 0) {
+        return FALSE;
+    }
+    v = *(u8 *)((u8 *)arg2 + 6);
+    if (v != 0) {
+        if (v > 0xe) {
+            return FALSE;
+        }
+        ov01_02203AB4(fieldSystem, *(LocalMapObject **)((u8 *)fieldSystem + 0xe4), v - 1);
+        return TRUE;
+    }
+    return FALSE;
+}
+
+WIP_LOCAL void ov02_0224B364(void *a0, void *work) {
+    VecFx32 vec;
+    if (*(int *)((u8 *)work + 4) == 0) {
+        *(fx32 *)((u8 *)work + 0x14) = ov02_02253520[*(int *)((u8 *)work + 0xc)];
+        sub_02068DB8(a0, &vec);
+        vec.y = vec.y + *(fx32 *)((u8 *)work + 0x14);
+        Sprite_SetMatrix(*(Sprite **)((u8 *)work + 0x20), &vec);
+        if (++*(int *)((u8 *)work + 0xc) >= 0xc) {
+            *(int *)((u8 *)work + 0xc) = 0;
+            *(int *)((u8 *)work + 8) = 1;
+            (*(int *)((u8 *)work + 4))++;
+        }
+    }
+}
+
+WIP_LOCAL int ov02_0224C2EC(TaskManager *taskManager, FieldSystem *fieldSystem, void *work) {
+    if (!EventObjectMovementMan_IsFinish(*(EventObjectMovementMan **)((u8 *)work + 0x10))) {
+        return 0;
+    }
+    EventObjectMovementMan_Delete(*(EventObjectMovementMan **)((u8 *)work + 0x10));
+    if (++*(int *)((u8 *)work + 4) < 4) {
+        *(EventObjectMovementMan **)((u8 *)work + 0x10) = EventObjectMovementMan_Create(*(LocalMapObject **)((u8 *)work + 0x20), &ov02_02253794);
+        return 0;
+    }
+    *(EventObjectMovementMan **)((u8 *)work + 0x10) = EventObjectMovementMan_Create(*(LocalMapObject **)((u8 *)work + 0x20), &ov02_02253884);
+    (*(int *)((u8 *)work))++;
+    return 0;
+}
+
+WIP_LOCAL void ov02_0224D22C(void *a0, void *a1, void *data) {
+    memset(data, 0, 0xf0);
+    HeapExp_FndInitAllocator((NNSFndAllocator *)((u8 *)data + 0xdc), HEAP_ID_FIELD1, 0x20);
+    ov02_0224D0C8(data, 3, 0, 3, (u8 *)data + 0xdc);
+    ov02_0224CFD8(*(void **)((u8 *)a1 + 0x3c), 0xfd, data);
+    PlaySE(SEQ_SE_DP_FW015);
+    *(int *)((u8 *)data + 0xec) = 0;
+}
+
 WIP_LOCAL void ov02_0224D144(void *obj, void *alloc) {
     u32 i;
     Field3dModel_Unload((Field3dModel *)((u8 *)obj + 0x78));
@@ -2120,7 +2192,7 @@ WIP_LOCAL void ov02_0224F8F4(void *ptr) {
 }
 
 // ===========================================================================
-// HANDOFF — overlay_02_02248728 WIP (218/364 byte-match, objdiff-verified)
+// HANDOFF — overlay_02_02248728 WIP (223/364 byte-match, objdiff-verified)
 // ===========================================================================
 // MODULE: follow-mon sprite animation + Pokecenter / field-move (Escape Rope,
 //   Dig, Teleport) task subsystem. A 2D graphics renderer built on G2dRenderer /
