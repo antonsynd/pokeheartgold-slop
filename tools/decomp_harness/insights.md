@@ -300,6 +300,10 @@ Two separate early `return X;` statements can each emit their own `mov r0,#X; po
 
 For a local VecFx32 zeroed then passed by address, three separate field assignments (pos.x=0;pos.y=0;pos.z=0;) store via sp-relative offsets and can differ from the asm by a couple bytes. The original VecFx32 pos = {0, 0, 0}; makes MWCC materialize the address once (add r2,sp,#off) and store through that pointer (str r3,[r2]; str r3,[r2,#4]; str r3,[r2,#8]), matching. Seen in overlay_02_02248728 ov02_02248D18.
 
+### For a loop with a re-read dynamic bound, use the index form so MWCC hoists IV setup AFTER the zero-trip guard  <!-- id: mwcc-dynamic-bound-loop-index-form -->
+
+When the loop bound is re-read each iteration (e.g. for(i=0;i<*countptr;i++)), MWCC emits: load count; i=0; if(count==0) goto end; THEN set up the strength-reduced walking pointer and loop-invariant constants; then the body. A comma for-init (for(i=0,p=base;...)) forces p BEFORE the guard and mismatches. Use the plain index form base+i*stride and let MWCC strength-reduce — the IV/constant setup lands after the guard, matching. (Contrast: a fixed/compile-time trip count often wants the comma-init form instead — see mwcc-for-init-ordering-comma.) Seen in overlay_02_02248728 ov02_0224D1AC.
+
 ## Matching Tricks
 
 ### Small source changes that move codegen  <!-- id: decl-order-tricks -->

@@ -114,6 +114,8 @@ WIP_LOCAL void ov02_0224A9B8(void *mgr, VecFx32 *pos);
 WIP_LOCAL Sprite *ov02_0224A3F0(void *mgr, VecFx32 *pos, int drawPriority, int seq);
 WIP_LOCAL void ov02_0224A570(NARC *narc, u32 fileId, NNSG2dPaletteData **a2);
 WIP_LOCAL void ov02_0224B88C(void *work);
+WIP_LOCAL void ov02_0224FE40(void *a0, u8 *a1, LocalMapObject *obj);
+WIP_LOCAL void ov02_0224FE70(void *a0, LocalMapObject *obj, u8 dir); // still in asm
 WIP_LOCAL void ov02_02248C98(Sprite *sprite, VecFx32 *out);
 WIP_LOCAL int ov02_02248E10(void *work);
 WIP_LOCAL void ov02_0224A69C(void *work, int p1, int p2, int p3, int p4);
@@ -461,6 +463,22 @@ WIP_LOCAL void ov02_0224B88C(void *work) {
     Field3dModelAnimation_LoadFromFilesystem((Field3DModelAnimation *)(d + 0xb0), (Field3dModel *)(d + 0x14), (NarcId)0x67, 0xa5, HEAP_ID_FIELD1, (NNSFndAllocator *)d);
     Field3dObject_AddAnimation((Field3dObject *)(d + 0x24), (Field3DModelAnimation *)(d + 0x9c));
     Field3dObject_AddAnimation((Field3dObject *)(d + 0x24), (Field3DModelAnimation *)(d + 0xb0));
+}
+
+WIP_LOCAL void ov02_0224D1AC(void *data) {
+    u32 i;
+    for (i = 0; i < *(u32 *)((u8 *)data + 0xd8); i++) {
+        Field3dModelAnimation_FrameAdvanceAndLoop((Field3DModelAnimation *)((u8 *)data + 0x88 + i * 0x14), FX32_ONE);
+    }
+}
+
+WIP_LOCAL void ov02_0224FE40(void *a0, u8 *a1, LocalMapObject *obj) {
+    u8 dir;
+    if (a1[0] != 0) {
+        dir = MapObject_GetFacingDirection(obj);
+        MapObject_SetFacingDirectionDirect(obj, a1[0] - 1);
+        ov02_0224FE70(a0, obj, dir);
+    }
 }
 
 WIP_LOCAL Sprite *ov02_0224A3F0(void *mgr, VecFx32 *pos, int drawPriority, int seq) {
@@ -1308,7 +1326,7 @@ WIP_LOCAL void ov02_0224F8F4(void *ptr) {
 }
 
 // ===========================================================================
-// HANDOFF — overlay_02_02248728 WIP (157/364 byte-match, objdiff-verified)
+// HANDOFF — overlay_02_02248728 WIP (159/364 byte-match, objdiff-verified)
 // ===========================================================================
 // MODULE: follow-mon sprite animation + Pokecenter / field-move (Escape Rope,
 //   Dig, Teleport) task subsystem. A 2D graphics renderer built on G2dRenderer /
