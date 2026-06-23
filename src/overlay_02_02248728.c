@@ -143,6 +143,8 @@ WIP_LOCAL void ov02_0224B784(void *work); // still in asm
 WIP_LOCAL int ov02_0224B964(void *work);
 WIP_LOCAL int ov02_0224C71C(void *a0, FieldSystem *fieldSystem, void *work);
 WIP_LOCAL void ov02_RepelActiveRoamersFromMapNo(RoamerSaveData *roamerSave, u32 mapNo);
+WIP_LOCAL void ov02_0224DD4C(Field3dObjectTask *task, FieldSystem *fieldSystem, void *data);
+WIP_LOCAL void ov02_0224A598(BgConfig *bgConfig, NARC *narc, u32 fileId, NNSG2dCharacterData **a3);
 WIP_LOCAL BOOL ov02_0224ABCC(void *a0, void *a1);
 WIP_LOCAL void *ov02_0224A468(void *a, VecFx32 *b, int c, int d); // still in asm
 WIP_LOCAL BOOL ov02_02250780(FieldSystem *fieldSystem, u8 a1);
@@ -637,6 +639,26 @@ WIP_LOCAL void ov02_RepelActiveRoamersFromMapNo(RoamerSaveData *roamerSave, u32 
             }
         }
     }
+}
+
+WIP_LOCAL void ov02_0224DD4C(Field3dObjectTask *task, FieldSystem *fieldSystem, void *data) {
+    int i;
+    u8 *p;
+    for (i = 0, p = (u8 *)data + 0x10; i < 0x12; i++, p += 0xcc) {
+        ov02_0224DEF4(p, (NNSFndAllocator *)((u8 *)data + 0xE88));
+    }
+    Field3dModel_Unload((Field3dModel *)data);
+    for (i = 0; i < 4; i++) {
+        Heap_Free(*(void **)((u8 *)data + 0xE68));
+        data = (u8 *)data + 4;
+    }
+}
+
+WIP_LOCAL void ov02_0224A598(BgConfig *bgConfig, NARC *narc, u32 fileId, NNSG2dCharacterData **a3) {
+    void *data = NARC_AllocAndReadWholeMember(narc, fileId, HEAP_ID_FIELD1);
+    NNS_G2dGetUnpackedCharacterData(data, a3);
+    BG_LoadCharTilesData(bgConfig, 3, *(const void **)((u8 *)(*a3) + 0x14), *(u32 *)((u8 *)(*a3) + 0x10), 0);
+    Heap_Free(data);
 }
 
 WIP_LOCAL void ov02_0224D144(void *obj, void *alloc) {
@@ -1559,7 +1581,7 @@ WIP_LOCAL void ov02_0224F8F4(void *ptr) {
 }
 
 // ===========================================================================
-// HANDOFF — overlay_02_02248728 WIP (178/364 byte-match, objdiff-verified)
+// HANDOFF — overlay_02_02248728 WIP (180/364 byte-match, objdiff-verified)
 // ===========================================================================
 // MODULE: follow-mon sprite animation + Pokecenter / field-move (Escape Rope,
 //   Dig, Teleport) task subsystem. A 2D graphics renderer built on G2dRenderer /
