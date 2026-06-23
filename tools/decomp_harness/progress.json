@@ -1035,9 +1035,9 @@
     "file": "asm/overlay_02_02248728.s",
     "lines": 17995,
     "functions": 364,
-    "matched_so_far": 155,
+    "matched_so_far": 156,
     "result": "wip-deferred",
-    "note": "155/364 (~43%). +3: ov02_0224A33C (2nd sprite creator, mode==4 branch, mgr->0x19c group + mgr->0x70 spriteList) + consumers A9B8/A3F0. Both sprite creators now matched. Deferred: AnimManager struct naming, ov02_0224FFD8 (shared-const 0x86b), ov02_022508B4 void/return-1, B664, 16 huge fns. Handoff at EOF."
+    "note": "156/364 (~43%). +1: ov02_0224A570 (narc pltt load -> NNS_G2dGetUnpackedPaletteData + BG_LoadPlttData). Easy harvest exhausted; remaining ~208 are the hard tail: jump-table switches (E26C/E2A0), header-conflict (022508B4 void-vs-BOOL = needs overlay_02.h change -> IPA, do NOT cascade casually), unknown helpers (sub_02068B0C ov02_02248CAC), struct-builders (B88C A468), AnimManager naming, 16 huge fns. Handoff at EOF."
   },
   "stats": {
     "total_attempts": 153,

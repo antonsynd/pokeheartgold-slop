@@ -111,6 +111,7 @@ WIP_LOCAL int ov02_0224C338(void *a0, void *a1, void *work);
 WIP_LOCAL Sprite *ov02_0224A33C(void *mgr, VecFx32 *pos, int charId, int plttId, int cellId, int mode, int priority, int drawPriority);
 WIP_LOCAL void ov02_0224A9B8(void *mgr, VecFx32 *pos);
 WIP_LOCAL Sprite *ov02_0224A3F0(void *mgr, VecFx32 *pos, int drawPriority, int seq);
+WIP_LOCAL void ov02_0224A570(NARC *narc, u32 fileId, NNSG2dPaletteData **a2);
 WIP_LOCAL void ov02_02248C98(Sprite *sprite, VecFx32 *out);
 WIP_LOCAL int ov02_02248E10(void *work);
 WIP_LOCAL void ov02_0224A69C(void *work, int p1, int p2, int p3, int p4);
@@ -439,6 +440,13 @@ WIP_LOCAL Sprite *ov02_0224A33C(void *mgr, VecFx32 *pos, int charId, int plttId,
 
 WIP_LOCAL void ov02_0224A9B8(void *mgr, VecFx32 *pos) {
     ov02_0224A33C(mgr, pos, 3, 3, 3, -1, 0, 0x81);
+}
+
+WIP_LOCAL void ov02_0224A570(NARC *narc, u32 fileId, NNSG2dPaletteData **a2) {
+    void *data = NARC_AllocAndReadWholeMember(narc, fileId, HEAP_ID_FIELD1);
+    NNS_G2dGetUnpackedPaletteData(data, a2);
+    BG_LoadPlttData(3, *(const void **)((u8 *)(*a2) + 0xc), 0x20, 0x180);
+    Heap_Free(data);
 }
 
 WIP_LOCAL Sprite *ov02_0224A3F0(void *mgr, VecFx32 *pos, int drawPriority, int seq) {
@@ -1286,7 +1294,7 @@ WIP_LOCAL void ov02_0224F8F4(void *ptr) {
 }
 
 // ===========================================================================
-// HANDOFF — overlay_02_02248728 WIP (155/364 byte-match, objdiff-verified)
+// HANDOFF — overlay_02_02248728 WIP (156/364 byte-match, objdiff-verified)
 // ===========================================================================
 // MODULE: follow-mon sprite animation + Pokecenter / field-move (Escape Rope,
 //   Dig, Teleport) task subsystem. A 2D graphics renderer built on G2dRenderer /
