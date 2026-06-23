@@ -116,6 +116,7 @@ WIP_LOCAL void ov02_0224A570(NARC *narc, u32 fileId, NNSG2dPaletteData **a2);
 WIP_LOCAL void ov02_0224B88C(void *work);
 WIP_LOCAL void ov02_0224FE40(void *a0, u8 *a1, LocalMapObject *obj);
 WIP_LOCAL void ov02_0224FE70(void *a0, LocalMapObject *obj, u8 dir); // still in asm
+WIP_LOCAL BOOL ov02_0224D178(void *obj);
 WIP_LOCAL void ov02_02248C98(Sprite *sprite, VecFx32 *out);
 WIP_LOCAL int ov02_02248E10(void *work);
 WIP_LOCAL void ov02_0224A69C(void *work, int p1, int p2, int p3, int p4);
@@ -470,6 +471,15 @@ WIP_LOCAL void ov02_0224D1AC(void *data) {
     for (i = 0; i < *(u32 *)((u8 *)data + 0xd8); i++) {
         Field3dModelAnimation_FrameAdvanceAndLoop((Field3DModelAnimation *)((u8 *)data + 0x88 + i * 0x14), FX32_ONE);
     }
+}
+
+WIP_LOCAL BOOL ov02_0224D178(void *obj) {
+    BOOL result = TRUE;
+    u32 i;
+    for (i = 0; i < *(u32 *)((u8 *)obj + 0xd8); i++) {
+        result &= Field3dModelAnimation_FrameAdvanceAndCheck((Field3DModelAnimation *)((u8 *)obj + 0x88 + i * 0x14), FX32_ONE);
+    }
+    return result;
 }
 
 WIP_LOCAL void ov02_0224FE40(void *a0, u8 *a1, LocalMapObject *obj) {
@@ -1326,7 +1336,7 @@ WIP_LOCAL void ov02_0224F8F4(void *ptr) {
 }
 
 // ===========================================================================
-// HANDOFF — overlay_02_02248728 WIP (159/364 byte-match, objdiff-verified)
+// HANDOFF — overlay_02_02248728 WIP (160/364 byte-match, objdiff-verified)
 // ===========================================================================
 // MODULE: follow-mon sprite animation + Pokecenter / field-move (Escape Rope,
 //   Dig, Teleport) task subsystem. A 2D graphics renderer built on G2dRenderer /

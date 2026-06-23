@@ -1035,9 +1035,9 @@
     "file": "asm/overlay_02_02248728.s",
     "lines": 17995,
     "functions": 364,
-    "matched_so_far": 159,
+    "matched_so_far": 160,
     "result": "wip-deferred",
-    "note": "159/364 (~44%). +2: ov02_0224D1AC (anim frame-advance loop, dynamic-bound index form), ov02_0224FE40 (facing-dir setter). Deferred: ov02_0224D1E4/D288 (init/update callbacks, complex/ambiguous), jump-tables E26C/E2A0, 022508B4 void/BOOL, B664, huge fns. Handoff at EOF."
+    "note": "160/364 (~44%). +1: ov02_0224D178 (anim FrameAdvanceAndCheck accumulate, dynamic-bound index form). Jump-table switches E26C/E2A0/E2D4 DEFERRED (MWCC switch != handwritten jump-table symbol size). Other deferred: D1E4/D288/D310/D358 init/update callbacks (cut-off+unknown helpers ov02_0224D0C8/D044/CFD8), 022508B4 void/BOOL, huge fns. Handoff at EOF."
   },
   "stats": {
     "total_attempts": 153,
