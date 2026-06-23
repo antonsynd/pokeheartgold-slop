@@ -30,6 +30,7 @@
 
 #include "bg_window.h"
 #include "field_system.h"
+#include "field_warp_tasks.h"
 #include "filesystem.h"
 #include "filesystem_files_def.h"
 #include "follow_mon.h"
@@ -39,8 +40,10 @@
 #include "overlay_02.h"
 #include "player_avatar.h"
 #include "pokemon.h"
+#include "save_local_field_data.h"
 #include "sprite.h"
 #include "task.h"
+#include "unk_0200A090.h"
 #include "unk_0200FA24.h"
 #include "unk_02013FDC.h"
 
@@ -148,6 +151,17 @@ WIP_LOCAL void ov02_0224D700(void *p);
 WIP_LOCAL void ov02_0224DE6C(void *p);
 WIP_LOCAL void ov02_02249EC0(void *work);
 WIP_LOCAL void ov02_02249CF0(void *work);
+
+WIP_LOCAL int ov02_0224C1B8(TaskManager *taskManager, void *a1, void *a2);
+WIP_LOCAL void ov02_0224A6A8(void *work);
+WIP_LOCAL int ov02_02249B38(void *work);
+WIP_LOCAL BOOL ov02_02249B80(void *work);
+WIP_LOCAL SpriteResource *ov02_0224A810(void *mgr, NARC *narc);
+// callees still in asm
+WIP_LOCAL void ov02_0224A700(SysTask *task, void *data);
+WIP_LOCAL void ov02_02249D5C(SysTask *task, void *data);
+WIP_LOCAL void ov02_02249E58(SysTask *task, void *data);
+WIP_LOCAL void ov02_0224AB58(void *work);
 
 WIP_LOCAL void ov02_0224A7A8(void *a0, PokepicTemplate *tmpl);
 WIP_LOCAL int ov02_022495D0(void *work);
@@ -607,6 +621,67 @@ WIP_LOCAL void ov02_0224A7A8(void *a0, PokepicTemplate *tmpl) {
     GetPokemonSpriteCharAndPlttNarcIds(tmpl, *(Pokemon **)((u8 *)a0 + 0x5c), 2);
 }
 
+WIP_LOCAL int ov02_0224C1B8(TaskManager *taskManager, void *a1, void *a2) {
+    LocalFieldData *ldfd = Save_LocalFieldData_Get(*(SaveData **)((u8 *)a1 + 0xc));
+    Location *warp = LocalFieldData_GetSpecialSpawnWarpPtr(ldfd);
+    sub_02053B04(taskManager, warp, *(int *)((u8 *)a2 + 0xc));
+    return 2;
+}
+
+WIP_LOCAL void ov02_0224A6A8(void *work) {
+    if (*(SysTask **)((u8 *)work + 0x224) != NULL) {
+        GF_AssertFail();
+    }
+    *(SysTask **)((u8 *)work + 0x224) = SysTask_CreateOnVBlankQueue(ov02_0224A700, work, 0x81);
+}
+
+WIP_LOCAL void ov02_02249CF0(void *work) {
+    *(int *)((u8 *)work + 0x210) = 0;
+    *(int *)((u8 *)work + 0x214) = 0;
+    *(SysTask **)((u8 *)work + 0x220) = SysTask_CreateOnVBlankQueue(ov02_02249D5C, work, 0x80);
+}
+
+WIP_LOCAL void ov02_02249D18(void *work) {
+    *(int *)((u8 *)work + 0x210) = 0;
+    *(int *)((u8 *)work + 0x214) = 0;
+    *(SysTask **)((u8 *)work + 0x220) = SysTask_CreateOnVBlankQueue(ov02_02249E58, work, 0x80);
+}
+
+WIP_LOCAL int ov02_0224E31C(u32 x, u32 z) {
+    s32 xi = (s32)(x - 0x20) / 0x20;
+    s32 zi = (s32)(z - 0x20) / 0x20;
+    s32 idx = xi + zi * 3;
+    if (idx < 0 || idx >= 6) {
+        return 0;
+    }
+    return idx;
+}
+
+WIP_LOCAL int ov02_02249B38(void *work) {
+    if (ov02_0224AB8C(work) != 2) {
+        return 0;
+    }
+    Sprite_SetAnimCtrlSeq(*(Sprite **)((u8 *)work + 0x1e4), 1);
+    *(int *)work = *(int *)work + 1;
+    return 0;
+}
+
+WIP_LOCAL BOOL ov02_02249B80(void *work) {
+    int c = *(int *)((u8 *)work + 8) + 1;
+    *(int *)((u8 *)work + 8) = c;
+    if (c >= 0x14) {
+        *(int *)((u8 *)work + 8) = 0;
+        *(int *)work = *(int *)work + 1;
+        ov02_0224AB58(work);
+        ov02_0224ADF0(work);
+    }
+    return TRUE;
+}
+
+WIP_LOCAL SpriteResource *ov02_0224A810(void *mgr, NARC *narc) {
+    return AddCharResObjFromOpenNarc(*(GF_2DGfxResMan **)((u8 *)mgr + 0x19c), narc, 9, FALSE, 3, 1, HEAP_ID_FIELD1);
+}
+
 WIP_LOCAL void ov02_0224D98C(Field3dObjectTask *task, FieldSystem *fieldSystem, void *data) {
     int i;
     u8 *p;
@@ -876,7 +951,7 @@ WIP_LOCAL void ov02_0224F8F4(void *ptr) {
 }
 
 // ===========================================================================
-// HANDOFF — overlay_02_02248728 WIP (120/364 byte-match, objdiff-verified)
+// HANDOFF — overlay_02_02248728 WIP (128/364 byte-match, objdiff-verified)
 // ===========================================================================
 // MODULE: follow-mon sprite animation + Pokecenter / field-move (Escape Rope,
 //   Dig, Teleport) task subsystem. A 2D graphics renderer built on G2dRenderer /
