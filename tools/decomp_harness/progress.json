@@ -1035,9 +1035,9 @@
     "file": "asm/overlay_02_02248728.s",
     "lines": 17995,
     "functions": 364,
-    "matched_so_far": 142,
+    "matched_so_far": 148,
     "result": "wip-deferred",
-    "note": "142/364 (~39%). +6: single-level state-machine runner (49584 via ov02_02253550), follow-mon cleanup (48DBC), weather->slot (F5D0), narc-byte lookup (F76C), repel-counter step event, mapobj-setup step. Deferred clusters: sprite-creation (ov02_0224A33C/02248C10 SpriteTemplate machinery), AnimManager struct, ov02_022508B4 void/return-1, B664 regalloc, 16 huge fns. Handoff at EOF."
+    "note": "148/364 (~41%). +6: 2 more single-level SM runners (49984/499B8 via ov02_02253588/34F0), TaskData init (D43C HeapExp_FndInitAllocator), PlaySE step (49BA8), follow-mon cleanup (AB9C), animdata-check step (B638). Deferred: sprite-creation cluster (A33C/02248C10), AnimManager struct, hw-reg write (A6D0), 022508B4 void/return-1, B664, 16 huge fns. Handoff at EOF."
   },
   "stats": {
     "total_attempts": 153,

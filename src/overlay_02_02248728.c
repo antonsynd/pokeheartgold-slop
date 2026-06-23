@@ -24,6 +24,7 @@
 
 #include "constants/gx.h"
 #include "constants/heap.h"
+#include "constants/sndseq.h"
 #include "constants/std_script.h"
 
 #include "field/overlay_01_021E66E4.h"
@@ -46,6 +47,7 @@
 #include "save_local_field_data.h"
 #include "sprite.h"
 #include "task.h"
+#include "unk_02005D10.h"
 #include "unk_0200A090.h"
 #include "unk_0200FA24.h"
 #include "unk_02013FDC.h"
@@ -78,8 +80,10 @@ typedef BOOL (*ov02_StateMachineFunc)(void *sm);
 extern ov02_StateMachineFunc *const ov02_02253320[];
 extern ov02_StateMachineFunc *const ov02_022533C0[];
 extern ov02_StateMachineFunc const ov02_02253550[]; // single-level table
-extern void sub_02068BAC(void *a0);                 // unk_020689C8.h
-extern void ov01_021FCD78(SysTask *task);           // no header included here
+extern ov02_StateMachineFunc const ov02_02253588[];
+extern ov02_StateMachineFunc const ov02_022534F0[];
+extern void sub_02068BAC(void *a0);       // unk_020689C8.h
+extern void ov01_021FCD78(SysTask *task); // no header included here
 
 // STRUCT-CLEANUP TODO: the getters/setters/deleters below use byte-offset casts
 // because their owning struct isn't named yet. They byte-match; replace the casts
@@ -170,6 +174,12 @@ WIP_LOCAL void ov02_02249CF0(void *work);
 WIP_LOCAL void ov02_02248DF0(void *a0, u8 *sm);
 WIP_LOCAL void ov02_0224AC04(void *a0, u8 *sm);
 WIP_LOCAL void ov02_02249584(void *a0, void *sm);
+WIP_LOCAL void ov02_0224D43C(Field3dObjectTask *task, FieldSystem *fieldSystem, void *data);
+WIP_LOCAL void ov02_02249984(void *a0, void *sm);
+WIP_LOCAL void ov02_022499B8(void *a0, void *sm);
+WIP_LOCAL BOOL ov02_02249BA8(void *work);
+WIP_LOCAL void ov02_0224AB9C(void *work);
+WIP_LOCAL int ov02_0224B638(void *work);
 WIP_LOCAL void ov02_02248DBC(void *a0);
 WIP_LOCAL int ov02_02249B10(void *work);
 WIP_LOCAL void ov02_0224F5D0(FieldSystem *fieldSystem, void *out);
@@ -690,6 +700,66 @@ WIP_LOCAL void ov02_02249584(void *a0, void *sm) {
     }
 }
 
+WIP_LOCAL void ov02_02249984(void *a0, void *sm) {
+    while (ov02_02253588[*(int *)sm](sm) == 1) {
+    }
+    if (*(int *)((u8 *)sm + 0x10) == 1) {
+        if (*(void **)((u8 *)sm + 0x1e0) != NULL) {
+            sub_02068BAC(*(void **)((u8 *)sm + 0x1e0));
+        }
+        ov02_0224A32C(sm);
+    }
+}
+
+WIP_LOCAL void ov02_022499B8(void *a0, void *sm) {
+    while (ov02_022534F0[*(int *)sm](sm) == 1) {
+    }
+    if (*(int *)((u8 *)sm + 0x10) == 1) {
+        if (*(void **)((u8 *)sm + 0x1e0) != NULL) {
+            sub_02068BAC(*(void **)((u8 *)sm + 0x1e0));
+        }
+        ov02_0224A32C(sm);
+    }
+}
+
+WIP_LOCAL void ov02_0224D43C(Field3dObjectTask *task, FieldSystem *fieldSystem, void *data) {
+    memset(data, 0, 0x1cc);
+    HeapExp_FndInitAllocator((NNSFndAllocator *)((u8 *)data + 0x1b8), HEAP_ID_FIELD1, 0x20);
+    *(u16 *)((u8 *)data + 0x1ca) = 0;
+}
+
+WIP_LOCAL BOOL ov02_02249BA8(void *work) {
+    if (ov02_0224AB8C(work) != 3) {
+        return FALSE;
+    }
+    PlaySE(SEQ_SE_DP_FW019);
+    *(int *)((u8 *)work + 0x54) = 0x800;
+    *(int *)((u8 *)work + 0x14) = 2;
+    *(int *)work = *(int *)work + 1;
+    return TRUE;
+}
+
+WIP_LOCAL void ov02_0224AB9C(void *work) {
+    void *d = sub_02068D74(*(void **)((u8 *)work + 0x1ec));
+    int v60 = *(int *)((u8 *)d + 0x60);
+    if (v60 != 0) {
+        sub_02068B48(v60);
+    }
+    if (*(SysTask **)((u8 *)d + 0x64) != NULL) {
+        ov01_021FCD78(*(SysTask **)((u8 *)d + 0x64));
+    }
+    sub_02068B48(*(int *)((u8 *)work + 0x1ec));
+}
+
+WIP_LOCAL int ov02_0224B638(void *work) {
+    if (ov02_02248D8C(*(void **)((u8 *)work + 0x174)) != 2) {
+        return 0;
+    }
+    ov02_02248DBC(*(void **)((u8 *)work + 0x174));
+    *(int *)work = *(int *)work + 1;
+    return 0;
+}
+
 WIP_LOCAL void ov02_02248DBC(void *a0) {
     void *d = sub_02068D74(a0);
     int v6c = *(int *)((u8 *)d + 0x6c);
@@ -1111,7 +1181,7 @@ WIP_LOCAL void ov02_0224F8F4(void *ptr) {
 }
 
 // ===========================================================================
-// HANDOFF — overlay_02_02248728 WIP (142/364 byte-match, objdiff-verified)
+// HANDOFF — overlay_02_02248728 WIP (148/364 byte-match, objdiff-verified)
 // ===========================================================================
 // MODULE: follow-mon sprite animation + Pokecenter / field-move (Escape Rope,
 //   Dig, Teleport) task subsystem. A 2D graphics renderer built on G2dRenderer /
