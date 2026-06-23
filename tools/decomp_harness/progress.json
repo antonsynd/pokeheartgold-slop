@@ -1035,9 +1035,9 @@
     "file": "asm/overlay_02_02248728.s",
     "lines": 17995,
     "functions": 364,
-    "matched_so_far": 149,
+    "matched_so_far": 152,
     "result": "wip-deferred",
-    "note": "149/364 (~41%). +1: ov02_02248C10 sprite creator (CreateSpriteResourcesHeader 15-arg + Sprite_Create SimpleSpriteTemplate stack-build) MATCHED -> unlocks sprite cluster. See pattern ov02-anim-sprite-create-machinery. Deferred: ov02_0224A33C (mode-branch variant, mgr->0x19c), ov02_02248D18 (2-byte pos-init addressing diff), AnimManager struct, 16 huge fns. Handoff at EOF."
+    "note": "152/364 (~42%). +3: sprite creator consumer ov02_02248D18 (VecFx32 aggregate-init fix), ov02_0224B45C SysTask SM runner+cleanup, ov02_0224C338 movement-finish step. Deferred: ov02_0224A33C (mode variant), ov02_0224FFD8 (shared-constant 0x86b family risk), AnimManager struct, 16 huge fns. Handoff at EOF."
   },
   "stats": {
     "total_attempts": 153,

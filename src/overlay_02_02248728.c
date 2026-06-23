@@ -52,6 +52,7 @@
 #include "unk_0200A090.h"
 #include "unk_0200FA24.h"
 #include "unk_02013FDC.h"
+#include "unk_02062108.h"
 
 // WIP_LOCAL marks a function that is file-local in the original (-> `static` in
 // the final) but is left global during WIP so it survives dead-code elimination
@@ -83,8 +84,10 @@ extern ov02_StateMachineFunc *const ov02_022533C0[];
 extern ov02_StateMachineFunc const ov02_02253550[]; // single-level table
 extern ov02_StateMachineFunc const ov02_02253588[];
 extern ov02_StateMachineFunc const ov02_022534F0[];
+extern ov02_StateMachineFunc const ov02_022534B8[];
 extern void sub_02068BAC(void *a0);       // unk_020689C8.h
 extern void ov01_021FCD78(SysTask *task); // no header included here
+extern BOOL ov01_021FCD6C(SysTask *task); // no header included here
 
 // STRUCT-CLEANUP TODO: the getters/setters/deleters below use byte-offset casts
 // because their owning struct isn't named yet. They byte-match; replace the casts
@@ -103,6 +106,8 @@ WIP_LOCAL BOOL ov02_0224B43C(SysTask *task);
 WIP_LOCAL BOOL ov02_0224E308(int a0);
 WIP_LOCAL BOOL ov02_0224FB44(void *a0, u16 *a1);
 WIP_LOCAL Sprite *ov02_02248C10(void *mgr, VecFx32 *pos, int charId, int plttId, int cellId, int cellAnmId, int priority, int drawPriority);
+WIP_LOCAL Sprite *ov02_02248D18(void *mgr, int a1);
+WIP_LOCAL int ov02_0224C338(void *a0, void *a1, void *work);
 WIP_LOCAL void ov02_02248C98(Sprite *sprite, VecFx32 *out);
 WIP_LOCAL int ov02_02248E10(void *work);
 WIP_LOCAL void ov02_0224A69C(void *work, int p1, int p2, int p3, int p4);
@@ -364,6 +369,46 @@ WIP_LOCAL Sprite *ov02_02248C10(void *mgr, VecFx32 *pos, int charId, int plttId,
         GF_AssertFail();
     }
     return sprite;
+}
+
+WIP_LOCAL Sprite *ov02_02248D18(void *mgr, int a1) {
+    VecFx32 pos = { 0, 0, 0 };
+    Sprite *sprite;
+    int plttId;
+
+    plttId = 0;
+    if (a1 == 1) {
+        plttId = 1;
+    }
+    sprite = ov02_02248C10(mgr, &pos, 2, plttId, 2, 1, 0, 0x83);
+    Sprite_SetDrawFlag(sprite, FALSE);
+    Sprite_SetAnimCtrlSeq(sprite, 6);
+    return sprite;
+}
+
+WIP_LOCAL void ov02_0224B45C(SysTask *task, void *sm) {
+    while (ov02_022534B8[*(int *)sm](sm) == 1) {
+    }
+    if (*(int *)((u8 *)sm + 0x10) != 0) {
+        if (*(void **)((u8 *)sm + 0x170) != NULL) {
+            sub_02068BAC(*(void **)((u8 *)sm + 0x170));
+        }
+        if (*(SpriteList **)((u8 *)sm + 0x20) != NULL) {
+            SpriteList_RenderAndAnimateSprites(*(SpriteList **)((u8 *)sm + 0x20));
+        }
+    }
+}
+
+WIP_LOCAL int ov02_0224C338(void *a0, void *a1, void *work) {
+    if (!EventObjectMovementMan_IsFinish(*(EventObjectMovementMan **)((u8 *)work + 0x10))) {
+        return 0;
+    }
+    if (!ov01_021FCD6C(*(SysTask **)((u8 *)work + 0x1c))) {
+        return 0;
+    }
+    ov01_021FCD78(*(SysTask **)((u8 *)work + 0x1c));
+    EventObjectMovementMan_Delete(*(EventObjectMovementMan **)((u8 *)work + 0x10));
+    return 2;
 }
 
 WIP_LOCAL void ov02_02248C98(Sprite *sprite, VecFx32 *out) {
@@ -1205,7 +1250,7 @@ WIP_LOCAL void ov02_0224F8F4(void *ptr) {
 }
 
 // ===========================================================================
-// HANDOFF — overlay_02_02248728 WIP (149/364 byte-match, objdiff-verified)
+// HANDOFF — overlay_02_02248728 WIP (152/364 byte-match, objdiff-verified)
 // ===========================================================================
 // MODULE: follow-mon sprite animation + Pokecenter / field-move (Escape Rope,
 //   Dig, Teleport) task subsystem. A 2D graphics renderer built on G2dRenderer /

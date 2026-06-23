@@ -296,6 +296,10 @@ When a strength-reduced loop needs counter-init (i=0) emitted BEFORE the walking
 
 Two separate early `return X;` statements can each emit their own `mov r0,#X; pop` epilogue, making the function larger than the asm. If the asm branches both failure paths to ONE shared return, restructure the C so there is a single trailing `return X;` and nest the success path: if (cond) { ...; if (cond2) { ...; return TRUE; } } return FALSE; — MWCC then emits one shared epilogue both conditionals branch to. Seen in overlay_02_02248728 PlayerStepEvent_RepelCounterDecrement (52->48 bytes).
 
+### Zero-init a stack VecFx32 with aggregate init {0,0,0}, not three field stores  <!-- id: mwcc-vecfx32-aggregate-zero-init -->
+
+For a local VecFx32 zeroed then passed by address, three separate field assignments (pos.x=0;pos.y=0;pos.z=0;) store via sp-relative offsets and can differ from the asm by a couple bytes. The original VecFx32 pos = {0, 0, 0}; makes MWCC materialize the address once (add r2,sp,#off) and store through that pointer (str r3,[r2]; str r3,[r2,#4]; str r3,[r2,#8]), matching. Seen in overlay_02_02248728 ov02_02248D18.
+
 ## Matching Tricks
 
 ### Small source changes that move codegen  <!-- id: decl-order-tricks -->

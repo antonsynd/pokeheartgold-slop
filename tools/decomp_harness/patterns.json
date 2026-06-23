@@ -1147,6 +1147,12 @@
       "category": "file-patterns",
       "title": "overlay_02_02248728 sprite creators: CreateSpriteResourcesHeader(15 args)+Sprite_Create(SimpleSpriteTemplate) layout",
       "body": "ov02_02248C10 (matched) is the per-sprite creator: builds SpriteResourcesHeader header + SimpleSpriteTemplate template as stack locals (declare header THEN template -> MWCC lays template at lower sp offset, header higher, matching). CreateSpriteResourcesHeader(&header, charId, plttId, cellId, cellAnmId, -1, -1, 0, priority, charMan, plttMan, cellMan, cellAnmMan, NULL, NULL) where the 4 GF_2DGfxResMan* come from AnimManager mgr->0x134/0x138/0x13c/0x140 (cast). template: spriteList=mgr->8, header=&header, position=*pos (struct copy), priority=drawPriority, whichScreen=NNS_G2D_VRAM_TYPE_2DMAIN(1), heapID=HEAP_ID_FIELD1. cellAnmId is set to -1 if it equals (s8)mgr->7. CreateSpriteResourcesHeader is in unk_02009D48.h. ov02_0224A33C is the variant (mode==4 branch, uses mgr->0x19c group). This unlocks the sprite cluster (ov02_02248D18 etc.)."
+    },
+    {
+      "id": "mwcc-vecfx32-aggregate-zero-init",
+      "category": "codegen",
+      "title": "Zero-init a stack VecFx32 with aggregate init {0,0,0}, not three field stores",
+      "body": "For a local VecFx32 zeroed then passed by address, three separate field assignments (pos.x=0;pos.y=0;pos.z=0;) store via sp-relative offsets and can differ from the asm by a couple bytes. The original VecFx32 pos = {0, 0, 0}; makes MWCC materialize the address once (add r2,sp,#off) and store through that pointer (str r3,[r2]; str r3,[r2,#4]; str r3,[r2,#8]), matching. Seen in overlay_02_02248728 ov02_02248D18."
     }
   ]
 }
