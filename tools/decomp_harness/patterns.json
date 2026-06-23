@@ -1171,6 +1171,24 @@
       "category": "codegen",
       "title": "Explicit return in both the if-body and after it to force two separate (unmerged) epilogues",
       "body": "Inverse of the shared-epilogue trick. When the asm has the conditional BODY inline followed by its own return, and the else-branch jumps forward to a SECOND identical return (two return blocks, not merged), write an explicit return inside the if AND after it: if (cond) { body; return X; } return X;. Using if(cond){body} return X; instead makes MWCC merge into one epilogue (too small); the early-return !=cond form puts the body in the wrong position. Seen in overlay_02_02248728 ov02_0224B964."
+    },
+    {
+      "id": "mwcc-bool-arg-init-then-set",
+      "category": "codegen",
+      "title": "bool-from-compare: use init-0-then-if-set-1, not ternary or != 0",
+      "body": "To get MWCC s init-0 then conditional-set form (mov rN,#0; cmp; beq; mov rN,#1 with fallthrough), write: int x = 0; if (cond) { x = 1; }. Both x = (cond != 0) and x = cond ? 1 : 0 instead emit the branchy ternary (cmp; beq else; mov 1; b end; else: mov 0). Matters when the bool feeds a call arg. Seen in ov02_0224A418 plttId."
+    },
+    {
+      "id": "mwcc-16byte-struct-copy-ldm-stm-pairs",
+      "category": "codegen",
+      "title": "16-byte struct assignment = two interleaved ldmia/stmia word-pairs",
+      "body": "*(Blob16*)dst = *(Blob16*)src where Blob16 is 4x s32 (16 bytes) emits: ldmia r!,{r0,r1}; stmia r!,{r0,r1}; ldmia r!,{r0,r1}; stmia r!,{r0,r1} (copy 8 bytes per load/store pair, base regs auto-increment). Define a 4-word struct and assign it. Seen in ov02_02248D98 (sub_02068D98 result -> obj+0x58)."
+    },
+    {
+      "id": "mwcc-switch-empty-case-dead-cmp",
+      "category": "codegen",
+      "title": "Empty trailing switch case emits a dead cmp then fallthrough",
+      "body": "switch(x){case 0:<body>;break; case 1:break;} where case 1 is empty and equals default: MWCC emits cmp #0; beq case0; cmp #1; <falls through to end>. The cmp #1 is dead (no branch after) because both case 1 and default reach the same return point as the next instruction, so the beq is elided. Seen in ov02_0224D288/D3B4 (state==0 body, state==1 noop)."
     }
   ]
 }
