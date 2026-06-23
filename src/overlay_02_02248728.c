@@ -104,6 +104,7 @@ extern void ov01_021F1448(void *a0);                            // no header inc
 extern void *ov01_021FCD2C(FieldSystem *fieldSystem, int a1);   // no header included here
 extern void ov01_021FCD8C(void *a0, int a1, fx32 a2, int a3);   // no header included here
 extern const MovementScriptCommand ov02_02253820;               // rodata, defined later
+extern void sub_02068DB8(void *a0, VecFx32 *out);               // no header included here
 
 // STRUCT-CLEANUP TODO: the getters/setters/deleters below use byte-offset casts
 // because their owning struct isn't named yet. They byte-match; replace the casts
@@ -134,6 +135,8 @@ WIP_LOCAL int ov02_0224B938(void *work);
 WIP_LOCAL void ov02_0224B784(void *work); // still in asm
 WIP_LOCAL int ov02_0224B964(void *work);
 WIP_LOCAL int ov02_0224C71C(void *a0, FieldSystem *fieldSystem, void *work);
+WIP_LOCAL BOOL ov02_0224ABCC(void *a0, void *a1);
+WIP_LOCAL void *ov02_0224A468(void *a, VecFx32 *b, int c, int d); // still in asm
 WIP_LOCAL BOOL ov02_02250780(FieldSystem *fieldSystem, u8 a1);
 WIP_LOCAL void ov02_02249E90(SysTask *task, void *work);
 WIP_LOCAL void ov02_0224FE40(void *a0, u8 *a1, LocalMapObject *obj);
@@ -547,6 +550,14 @@ WIP_LOCAL int ov02_0224C71C(void *a0, FieldSystem *fieldSystem, void *work) {
     *(int *)work = *(int *)work + 1;
     PlaySE(SEQ_SE_DP_TELE);
     return 0;
+}
+
+WIP_LOCAL BOOL ov02_0224ABCC(void *a0, void *a1) {
+    VecFx32 buf;
+    *(void **)((u8 *)a1 + 0x5c) = *(void **)sub_02068D98(a0);
+    sub_02068DB8(a0, &buf);
+    *(void **)((u8 *)a1 + 0x58) = ov02_0224A468(*(void **)((u8 *)a1 + 0x5c), &buf, 0, 0);
+    return TRUE;
 }
 
 WIP_LOCAL void ov02_0224D1AC(void *data) {
@@ -1477,7 +1488,7 @@ WIP_LOCAL void ov02_0224F8F4(void *ptr) {
 }
 
 // ===========================================================================
-// HANDOFF — overlay_02_02248728 WIP (171/364 byte-match, objdiff-verified)
+// HANDOFF — overlay_02_02248728 WIP (172/364 byte-match, objdiff-verified)
 // ===========================================================================
 // MODULE: follow-mon sprite animation + Pokecenter / field-move (Escape Rope,
 //   Dig, Teleport) task subsystem. A 2D graphics renderer built on G2dRenderer /
