@@ -48,6 +48,7 @@
 #include "sprite.h"
 #include "task.h"
 #include "unk_02005D10.h"
+#include "unk_02009D48.h"
 #include "unk_0200A090.h"
 #include "unk_0200FA24.h"
 #include "unk_02013FDC.h"
@@ -101,6 +102,7 @@ WIP_LOCAL void ov02_0224B2C0(void *work);
 WIP_LOCAL BOOL ov02_0224B43C(SysTask *task);
 WIP_LOCAL BOOL ov02_0224E308(int a0);
 WIP_LOCAL BOOL ov02_0224FB44(void *a0, u16 *a1);
+WIP_LOCAL Sprite *ov02_02248C10(void *mgr, VecFx32 *pos, int charId, int plttId, int cellId, int cellAnmId, int priority, int drawPriority);
 WIP_LOCAL void ov02_02248C98(Sprite *sprite, VecFx32 *out);
 WIP_LOCAL int ov02_02248E10(void *work);
 WIP_LOCAL void ov02_0224A69C(void *work, int p1, int p2, int p3, int p4);
@@ -340,6 +342,28 @@ WIP_LOCAL BOOL ov02_0224E308(int a0) {
 
 WIP_LOCAL BOOL ov02_0224FB44(void *a0, u16 *a1) {
     return *a1 != 0;
+}
+
+WIP_LOCAL Sprite *ov02_02248C10(void *mgr, VecFx32 *pos, int charId, int plttId, int cellId, int cellAnmId, int priority, int drawPriority) {
+    SpriteResourcesHeader header;
+    SimpleSpriteTemplate template;
+    Sprite *sprite;
+
+    if (cellAnmId == *(s8 *)((u8 *)mgr + 7)) {
+        cellAnmId = -1;
+    }
+    CreateSpriteResourcesHeader(&header, charId, plttId, cellId, cellAnmId, -1, -1, 0, priority, *(GF_2DGfxResMan **)((u8 *)mgr + 0x134), *(GF_2DGfxResMan **)((u8 *)mgr + 0x138), *(GF_2DGfxResMan **)((u8 *)mgr + 0x13c), *(GF_2DGfxResMan **)((u8 *)mgr + 0x140), NULL, NULL);
+    template.spriteList = *(SpriteList **)((u8 *)mgr + 8);
+    template.header = &header;
+    template.position = *pos;
+    template.priority = drawPriority;
+    template.whichScreen = NNS_G2D_VRAM_TYPE_2DMAIN;
+    template.heapID = HEAP_ID_FIELD1;
+    sprite = Sprite_Create(&template);
+    if (sprite == NULL) {
+        GF_AssertFail();
+    }
+    return sprite;
 }
 
 WIP_LOCAL void ov02_02248C98(Sprite *sprite, VecFx32 *out) {
@@ -1181,7 +1205,7 @@ WIP_LOCAL void ov02_0224F8F4(void *ptr) {
 }
 
 // ===========================================================================
-// HANDOFF — overlay_02_02248728 WIP (148/364 byte-match, objdiff-verified)
+// HANDOFF — overlay_02_02248728 WIP (149/364 byte-match, objdiff-verified)
 // ===========================================================================
 // MODULE: follow-mon sprite animation + Pokecenter / field-move (Escape Rope,
 //   Dig, Teleport) task subsystem. A 2D graphics renderer built on G2dRenderer /

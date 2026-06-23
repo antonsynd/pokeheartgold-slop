@@ -664,6 +664,10 @@ Before modeling a field/overlay struct from scratch, check include/field/<name>.
 
 For a huge .s file decomped incrementally (partial src/*.c, main.lsf kept on asm), C_SRCS uses rwildcard so the partial .c IS compiled (objdiff-able) without being linked. BUT MWCC -ipa file dead-code-eliminates file-local (static) functions that nothing in the partial TU references, so they never reach the .o and objdiff reports them not-found. Fix: during WIP declare/define such functions WITHOUT static (a WIP_LOCAL macro = empty) so they survive as globals; objdiff compares body bytes, identical regardless of binding. static-vs-global only changes the .o symbol-table binding, stripped from the linked overlay, NOT affecting ROM bytes/SHA1. Restore static at flip-to-src. Validated on overlay_02_02248728 (364 funcs).
 
+### overlay_02_02248728 sprite creators: CreateSpriteResourcesHeader(15 args)+Sprite_Create(SimpleSpriteTemplate) layout  <!-- id: ov02-anim-sprite-create-machinery -->
+
+ov02_02248C10 (matched) is the per-sprite creator: builds SpriteResourcesHeader header + SimpleSpriteTemplate template as stack locals (declare header THEN template -> MWCC lays template at lower sp offset, header higher, matching). CreateSpriteResourcesHeader(&header, charId, plttId, cellId, cellAnmId, -1, -1, 0, priority, charMan, plttMan, cellMan, cellAnmMan, NULL, NULL) where the 4 GF_2DGfxResMan* come from AnimManager mgr->0x134/0x138/0x13c/0x140 (cast). template: spriteList=mgr->8, header=&header, position=*pos (struct copy), priority=drawPriority, whichScreen=NNS_G2D_VRAM_TYPE_2DMAIN(1), heapID=HEAP_ID_FIELD1. cellAnmId is set to -1 if it equals (s8)mgr->7. CreateSpriteResourcesHeader is in unk_02009D48.h. ov02_0224A33C is the variant (mode==4 branch, uses mgr->0x19c group). This unlocks the sprite cluster (ov02_02248D18 etc.).
+
 ## NONMATCHING Fallback
 
 ### NONMATCHING inline asm syntax (MWCC)  <!-- id: nonmatching-inline-asm-syntax -->
