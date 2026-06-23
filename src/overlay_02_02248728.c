@@ -34,10 +34,13 @@
 #include "filesystem_files_def.h"
 #include "heap.h"
 #include "map_object.h"
+#include "metatile_behavior.h"
 #include "overlay_02.h"
 #include "player_avatar.h"
 #include "sprite.h"
+#include "task.h"
 #include "unk_0200FA24.h"
+#include "unk_02013FDC.h"
 
 // WIP_LOCAL marks a function that is file-local in the original (-> `static` in
 // the final) but is left global during WIP so it survives dead-code elimination
@@ -47,6 +50,7 @@
 // follow-mon task-data accessor (defined in unk_020689C8.c); local extern matches
 // the convention used by other overlays that don't pull in the full header.
 extern void *sub_02068D74(void *work);
+extern void ov01_021E8E70(void *a, int b, int c); // no header yet
 
 // STRUCT-CLEANUP TODO: the getters/setters/deleters below use byte-offset casts
 // because their owning struct isn't named yet. They byte-match; replace the casts
@@ -64,6 +68,18 @@ WIP_LOCAL void ov02_0224B2C0(void *work);
 WIP_LOCAL BOOL ov02_0224B43C(SysTask *task);
 WIP_LOCAL BOOL ov02_0224E308(int a0);
 WIP_LOCAL BOOL ov02_0224FB44(void *a0, u16 *a1);
+WIP_LOCAL void ov02_02248C98(Sprite *sprite, VecFx32 *out);
+WIP_LOCAL int ov02_02248E10(void *work);
+WIP_LOCAL void ov02_0224A69C(void *work, int p1, int p2, int p3, int p4);
+WIP_LOCAL void *ov02_0224A800(u16 *a0, enum HeapID heapID);
+WIP_LOCAL u8 ov02_0224AB8C(void *work);
+WIP_LOCAL int ov02_0224AC28(void *work);
+WIP_LOCAL void ov02_0224B87C(void *a0, void *a1);
+WIP_LOCAL BOOL ov02_0224E4CC(u8 tile, int flag);
+WIP_LOCAL BOOL ov02_0224E4DC(u8 tile, int flag);
+WIP_LOCAL BOOL ov02_0224EF6C(u8 tile, int flag, int sel);
+WIP_LOCAL void ov02_0224F644(void *a, void *b);
+WIP_LOCAL BOOL Task_FollowMonInteract(TaskManager *taskman); // big fn, defined later
 
 WIP_LOCAL int ov02_022493EC(void);
 WIP_LOCAL NARC *ov02_022493F0(void);
@@ -182,6 +198,78 @@ WIP_LOCAL BOOL ov02_0224E308(int a0) {
 
 WIP_LOCAL BOOL ov02_0224FB44(void *a0, u16 *a1) {
     return *a1 != 0;
+}
+
+WIP_LOCAL void ov02_02248C98(Sprite *sprite, VecFx32 *out) {
+    *out = *Sprite_GetMatrixPtr(sprite);
+}
+
+WIP_LOCAL int ov02_02248E10(void *work) {
+    *(u8 *)((u8 *)work + 2) = 0;
+    Sprite_SetDrawFlag(*(Sprite **)((u8 *)work + 0x68), FALSE);
+    return 0;
+}
+
+WIP_LOCAL void ov02_0224A69C(void *work, int p1, int p2, int p3, int p4) {
+    *(int *)((u8 *)work + 0x44) = p1;
+    *(int *)((u8 *)work + 0x48) = p3;
+    *(int *)((u8 *)work + 0x4c) = p2;
+    *(int *)((u8 *)work + 0x50) = p4;
+}
+
+WIP_LOCAL void *ov02_0224A800(u16 *a0, enum HeapID heapID) {
+    return sub_02014450((NarcId)a0[0], a0[2], heapID);
+}
+
+WIP_LOCAL u8 ov02_0224AB8C(void *work) {
+    return ((u8 *)sub_02068D74(*(void **)((u8 *)work + 0x1ec)))[2];
+}
+
+WIP_LOCAL int ov02_0224AC28(void *work) {
+    *(u8 *)((u8 *)work + 2) = 0;
+    Sprite_SetDrawFlag(*(Sprite **)((u8 *)work + 0x58), FALSE);
+    return 0;
+}
+
+WIP_LOCAL void ov02_0224B87C(void *a0, void *a1) {
+    Field3dObject_Draw((Field3dObject *)((u8 *)*(void **)a1 + 0x24c));
+}
+
+WIP_LOCAL void ov02_0224BFC0(FieldSystem *fieldSystem, u8 a1) {
+    ov01_021E8E70(*(void **)((u8 *)fieldSystem + 0x58), a1, 0);
+}
+
+WIP_LOCAL void ov02_0224BFCC(FieldSystem *fieldSystem, u8 a1) {
+    ov01_021E8E70(*(void **)((u8 *)fieldSystem + 0x58), a1, 1);
+}
+
+WIP_LOCAL BOOL ov02_0224E4CC(u8 tile, int flag) {
+    if (flag != 0) {
+        return FALSE;
+    }
+    return sub_0205BAD0(tile);
+}
+
+WIP_LOCAL BOOL ov02_0224E4DC(u8 tile, int flag) {
+    if (flag != 0) {
+        return FALSE;
+    }
+    return sub_0205BAE4(tile);
+}
+
+WIP_LOCAL BOOL ov02_0224EF6C(u8 tile, int flag, int sel) {
+    if (sel == 0) {
+        return ov02_0224E4CC(tile, flag);
+    }
+    return ov02_0224E4DC(tile, flag);
+}
+
+WIP_LOCAL void ov02_0224F644(void *a, void *b) {
+    *(u16 *)((u8 *)b + 0x1a) = (u16) * *(u32 **)((u8 *)a + 0x20);
+}
+
+WIP_LOCAL void FieldSystem_FollowMonInteract(FieldSystem *fieldSystem) {
+    TaskManager_Call(fieldSystem->taskman, Task_FollowMonInteract, NULL);
 }
 
 WIP_LOCAL NARC *ov02_022493F0(void) {
@@ -348,7 +436,7 @@ WIP_LOCAL void ov02_0224F8F4(void *ptr) {
 }
 
 // ===========================================================================
-// HANDOFF — overlay_02_02248728 WIP (55/364 byte-match, objdiff-verified)
+// HANDOFF — overlay_02_02248728 WIP (69/364 byte-match, objdiff-verified)
 // ===========================================================================
 // MODULE: follow-mon sprite animation + Pokecenter / field-move (Escape Rope,
 //   Dig, Teleport) task subsystem. A 2D graphics renderer built on G2dRenderer /

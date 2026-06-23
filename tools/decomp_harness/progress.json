@@ -1035,9 +1035,9 @@
     "file": "asm/overlay_02_02248728.s",
     "lines": 17995,
     "functions": 364,
-    "matched_so_far": 55,
+    "matched_so_far": 69,
     "result": "wip-deferred",
-    "note": "55/364. Done: 15 no-struct + 27 Field3dObject wrappers + 13 cast-based getters/setters/deleters (struct names TBD, marked STRUCT-CLEANUP TODO). Next: AnimManager struct (unlocks ~30 sprite fns) + ov02_0224D144 TaskData. Handoff at EOF of src/overlay_02_02248728.c."
+    "note": "69/364. Done: no-struct + Field3dObject wrappers + cast getters/setters + misc tail-call/conditional wrappers (Sprite/metatile/TaskManager). Next: AnimManager struct (ctor ov02_02248728) unlocks sprite cluster; TaskData struct unlocks Field3dObject anim callbacks. Handoff at EOF."
   },
   "stats": {
     "total_attempts": 153,
