@@ -32,6 +32,7 @@
 #include "field_system.h"
 #include "filesystem.h"
 #include "filesystem_files_def.h"
+#include "follow_mon.h"
 #include "heap.h"
 #include "map_object.h"
 #include "metatile_behavior.h"
@@ -50,6 +51,7 @@
 // follow-mon task-data accessor (defined in unk_020689C8.c); local extern matches
 // the convention used by other overlays that don't pull in the full header.
 extern void *sub_02068D74(void *work);
+extern void *sub_02068D98(void *a0);              // no header included here
 extern void ov01_021E8E70(void *a, int b, int c); // no header yet
 
 // STRUCT-CLEANUP TODO: the getters/setters/deleters below use byte-offset casts
@@ -80,6 +82,23 @@ WIP_LOCAL BOOL ov02_0224E4DC(u8 tile, int flag);
 WIP_LOCAL BOOL ov02_0224EF6C(u8 tile, int flag, int sel);
 WIP_LOCAL void ov02_0224F644(void *a, void *b);
 WIP_LOCAL BOOL Task_FollowMonInteract(TaskManager *taskman); // big fn, defined later
+WIP_LOCAL void ov02_0224A32C(void *mgr);
+WIP_LOCAL void ov02_02249548(void *work);
+WIP_LOCAL void ov02_0224B448(SysTask *task);
+WIP_LOCAL void ov02_0224DD38(Field3dObjectTask *task, FieldSystem *fieldSystem, void *data);
+WIP_LOCAL BOOL ov02_0224D2F8(Field3dObjectTask *task);
+WIP_LOCAL BOOL ov02_0224D424(Field3dObjectTask *task);
+WIP_LOCAL BOOL ov02_0224DC94(Field3dObjectTask *task);
+WIP_LOCAL void ov02_0224D580(Field3dObjectTask *task, FieldSystem *fieldSystem, void *data);
+WIP_LOCAL void ov02_0224F698(FieldSystem *fieldSystem, void *out);
+WIP_LOCAL int ov02_02249CD8(int *work);
+WIP_LOCAL void ov02_0224A450(Sprite *sprite);
+WIP_LOCAL BOOL ov02_0224B350(void *a0, void *out);
+WIP_LOCAL void ov02_0224E0BC(LocalMapObject *obj1, LocalMapObject *obj2, TaskManager *taskManager);
+// referenced above; full bodies still in asm
+WIP_LOCAL void ov02_0224DCB0(Field3dObjectTask *task, FieldSystem *fieldSystem, void *data);
+WIP_LOCAL void *ov02_0224E0D4(LocalMapObject *obj1, LocalMapObject *obj2);
+WIP_LOCAL BOOL ov02_0224E0EC(TaskManager *taskManager);
 
 WIP_LOCAL int ov02_022493EC(void);
 WIP_LOCAL NARC *ov02_022493F0(void);
@@ -272,6 +291,77 @@ WIP_LOCAL void FieldSystem_FollowMonInteract(FieldSystem *fieldSystem) {
     TaskManager_Call(fieldSystem->taskman, Task_FollowMonInteract, NULL);
 }
 
+WIP_LOCAL void ov02_0224A32C(void *mgr) {
+    SpriteList *spriteList = *(SpriteList **)((u8 *)mgr + 0x70);
+    if (spriteList != NULL) {
+        SpriteList_RenderAndAnimateSprites(spriteList);
+    }
+}
+
+WIP_LOCAL void ov02_02249548(void *work) {
+    ov02_0224957C(SysTask_GetData(work));
+    SysTask_Destroy(work);
+}
+
+WIP_LOCAL void ov02_0224B448(SysTask *task) {
+    Heap_Free(SysTask_GetData(task));
+    SysTask_Destroy(task);
+}
+
+WIP_LOCAL void ov02_0224DD38(Field3dObjectTask *task, FieldSystem *fieldSystem, void *data) {
+    ov02_0224DCB0(task, fieldSystem, data);
+    *(u16 *)((u8 *)data + 0xE9A) = 1;
+}
+
+WIP_LOCAL BOOL ov02_0224D2F8(Field3dObjectTask *task) {
+    return *(int *)((u8 *)Field3dObjectTask_GetData(task) + 0xec) == 1;
+}
+
+WIP_LOCAL BOOL ov02_0224D424(Field3dObjectTask *task) {
+    return *(int *)((u8 *)Field3dObjectTask_GetData(task) + 0xec) == 1;
+}
+
+WIP_LOCAL BOOL ov02_0224DC94(Field3dObjectTask *task) {
+    return *((u8 *)Field3dObjectTask_GetData(task) + 0x113) == 1;
+}
+
+WIP_LOCAL void ov02_0224D580(Field3dObjectTask *task, FieldSystem *fieldSystem, void *data) {
+    int i;
+    u8 *p = data;
+    for (i = 0; i < 2; i++) {
+        ov02_0224D1DC((Field3dObject *)p);
+        p += 0xdc;
+    }
+}
+
+WIP_LOCAL void ov02_0224F698(FieldSystem *fieldSystem, void *out) {
+    *(s8 *)((u8 *)out + 0x15) = FieldSystem_UnkSub108_GetMonMood(*(FieldSystemUnk108 **)((u8 *)fieldSystem + 0x108));
+}
+
+WIP_LOCAL int ov02_02249CD8(int *work) {
+    if (IsPaletteFadeFinished()) {
+        *work = *work + 1;
+    }
+    return 0;
+}
+
+WIP_LOCAL void ov02_0224A450(Sprite *sprite) {
+    Sprite_SetAnimActiveFlag(sprite, TRUE);
+    Sprite_SetAnimSpeed(sprite, FX32_ONE);
+}
+
+WIP_LOCAL BOOL ov02_0224B350(void *a0, void *out) {
+    int *p = (int *)sub_02068D98(a0);
+    *(int *)((u8 *)out + 0x1c) = p[0];
+    *(int *)((u8 *)out + 0x20) = p[1];
+    return TRUE;
+}
+
+WIP_LOCAL void ov02_0224E0BC(LocalMapObject *obj1, LocalMapObject *obj2, TaskManager *taskManager) {
+    void *env = ov02_0224E0D4(obj1, obj2);
+    TaskManager_Call(taskManager, ov02_0224E0EC, env);
+}
+
 WIP_LOCAL NARC *ov02_022493F0(void) {
     return NARC_New(NARC_application_choose_starter_choose_starter_sub_res, HEAP_ID_FIELD1);
 }
@@ -436,7 +526,7 @@ WIP_LOCAL void ov02_0224F8F4(void *ptr) {
 }
 
 // ===========================================================================
-// HANDOFF — overlay_02_02248728 WIP (69/364 byte-match, objdiff-verified)
+// HANDOFF — overlay_02_02248728 WIP (82/364 byte-match, objdiff-verified)
 // ===========================================================================
 // MODULE: follow-mon sprite animation + Pokecenter / field-move (Escape Rope,
 //   Dig, Teleport) task subsystem. A 2D graphics renderer built on G2dRenderer /
