@@ -1035,9 +1035,9 @@
     "file": "asm/overlay_02_02248728.s",
     "lines": 17995,
     "functions": 364,
-    "matched_so_far": 128,
+    "matched_so_far": 136,
     "result": "wip-deferred",
-    "note": "128/364 (~35%). +8: warp-spawn (C1B8), VBlank SysTask creators (A6A8/49CF0/49D18), signed-div grid-index (E31C), anim step funcs, AddCharResObjFromOpenNarc wrapper. Deferred: ov02_022508B4 (overlay_02.h says void but asm returns 1), sub_02068B0C (B298, no header), 8-arg ov02_0224A33C, dispatch tables, 16-byte copy 02248D98. Handoff at EOF."
+    "note": "136/364 (~37%). +8: nested state-machine runners (DF0/AC04 via ov02_02253320/3C0 extern tables), 2nd warp (CA38), follow-mon spawn/poll steps (C4B4/C4D8), pltt res-obj wrapper (A868), Field3dModelAnimation_Unload+memset cleanups (D788/DEF4). Deferred: ov02_0224B664 (cosmetic r0/r1 regalloc), ov02_022508B4 (void/return-1), sub_02068B0C (B298), 8-arg A33C. Handoff at EOF."
   },
   "stats": {
     "total_attempts": 153,

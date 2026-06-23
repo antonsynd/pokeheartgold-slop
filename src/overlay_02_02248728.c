@@ -65,6 +65,15 @@ extern void *sub_02068D98(void *a0);              // no header included here
 extern void sub_02068B48(int a0);                 // unk_020689C8.h
 extern void ov01_021E8E70(void *a, int b, int c); // no header yet
 extern BOOL ov01_022060B8(FieldSystem *fieldSystem, u8 a1, u8 a2);
+extern BOOL ov01_02205D68(FieldSystem *fieldSystem); // no header included here
+extern void sub_020689F8(void *a0);                  // unk_020689C8.h
+
+// Nested state-machine dispatch: outer table indexed by sm[0] -> inner func table
+// indexed by sm[1]; each func(sm) returns 1 to keep running. Tables are file-local
+// rodata defined later (extern here so the runners' relocations resolve by name).
+typedef BOOL (*ov02_StateMachineFunc)(void *sm);
+extern ov02_StateMachineFunc *const ov02_02253320[];
+extern ov02_StateMachineFunc *const ov02_022533C0[];
 
 // STRUCT-CLEANUP TODO: the getters/setters/deleters below use byte-offset casts
 // because their owning struct isn't named yet. They byte-match; replace the casts
@@ -151,6 +160,16 @@ WIP_LOCAL void ov02_0224D700(void *p);
 WIP_LOCAL void ov02_0224DE6C(void *p);
 WIP_LOCAL void ov02_02249EC0(void *work);
 WIP_LOCAL void ov02_02249CF0(void *work);
+
+WIP_LOCAL void ov02_02248DF0(void *a0, u8 *sm);
+WIP_LOCAL void ov02_0224AC04(void *a0, u8 *sm);
+WIP_LOCAL SpriteResource *ov02_0224A868(void *mgr, NARC *narc);
+WIP_LOCAL void ov02_0224D788(void *obj, NNSFndAllocator *alloc);
+WIP_LOCAL void ov02_0224DEF4(void *obj, NNSFndAllocator *alloc);
+WIP_LOCAL void ov02_0224886C(void *mgr); // destructor, still in asm
+WIP_LOCAL int ov02_0224CA38(TaskManager *taskManager, void *a1, void *a2);
+WIP_LOCAL int ov02_0224C4B4(void *a0, FieldSystem *fieldSystem, void *work);
+WIP_LOCAL int ov02_0224C4D8(void *a0, void *a1, void *work);
 
 WIP_LOCAL int ov02_0224C1B8(TaskManager *taskManager, void *a1, void *a2);
 WIP_LOCAL void ov02_0224A6A8(void *work);
@@ -628,6 +647,64 @@ WIP_LOCAL int ov02_0224C1B8(TaskManager *taskManager, void *a1, void *a2) {
     return 2;
 }
 
+WIP_LOCAL int ov02_0224CA38(TaskManager *taskManager, void *a1, void *a2) {
+    LocalFieldData *ldfd = Save_LocalFieldData_Get(*(SaveData **)((u8 *)a1 + 0xc));
+    Location *warp = LocalFieldData_GetSpecialSpawnWarpPtr(ldfd);
+    sub_02053B04(taskManager, warp, *(int *)((u8 *)a2 + 0xc));
+    return 2;
+}
+
+WIP_LOCAL void ov02_02248DF0(void *a0, u8 *sm) {
+    ov02_StateMachineFunc *table = ov02_02253320[sm[0]];
+    while (table[sm[1]](sm) == 1) {
+    }
+}
+
+WIP_LOCAL void ov02_0224AC04(void *a0, u8 *sm) {
+    ov02_StateMachineFunc *table = ov02_022533C0[sm[0]];
+    while (table[sm[1]](sm) == 1) {
+    }
+}
+
+WIP_LOCAL int ov02_0224C4B4(void *a0, FieldSystem *fieldSystem, void *work) {
+    u32 gender = PlayerAvatar_GetGender(fieldSystem->playerAvatar);
+    *(void **)((u8 *)work + 0x18) = ov02_02249458(fieldSystem, 0, *(Pokemon **)((u8 *)work + 0x28), gender);
+    *(int *)work = *(int *)work + 1;
+    return 0;
+}
+
+WIP_LOCAL int ov02_0224C4D8(void *a0, void *a1, void *work) {
+    if (!ov02_0224953C(*(void **)((u8 *)work + 0x18))) {
+        return 0;
+    }
+    ov02_02249548(*(void **)((u8 *)work + 0x18));
+    ov01_02205D68(*(FieldSystem **)((u8 *)work + 0x24));
+    *(int *)work = *(int *)work + 1;
+    return 0;
+}
+
+WIP_LOCAL SpriteResource *ov02_0224A868(void *mgr, NARC *narc) {
+    return AddPlttResObjFromOpenNarc(*(GF_2DGfxResMan **)((u8 *)mgr + 0x1a0), narc, 6, FALSE, 3, 1, 1, HEAP_ID_FIELD1);
+}
+
+WIP_LOCAL void ov02_0224D788(void *obj, NNSFndAllocator *alloc) {
+    int i;
+    u8 *p;
+    for (i = 0, p = (u8 *)obj + 0x78; i < 4; i++, p += 0x14) {
+        Field3dModelAnimation_Unload((Field3DModelAnimation *)p, alloc);
+    }
+    memset(obj, 0, 0xcc);
+}
+
+WIP_LOCAL void ov02_0224DEF4(void *obj, NNSFndAllocator *alloc) {
+    int i;
+    u8 *p;
+    for (i = 0, p = (u8 *)obj + 0x78; i < 4; i++, p += 0x14) {
+        Field3dModelAnimation_Unload((Field3DModelAnimation *)p, alloc);
+    }
+    memset(obj, 0, 0xcc);
+}
+
 WIP_LOCAL void ov02_0224A6A8(void *work) {
     if (*(SysTask **)((u8 *)work + 0x224) != NULL) {
         GF_AssertFail();
@@ -951,7 +1028,7 @@ WIP_LOCAL void ov02_0224F8F4(void *ptr) {
 }
 
 // ===========================================================================
-// HANDOFF — overlay_02_02248728 WIP (128/364 byte-match, objdiff-verified)
+// HANDOFF — overlay_02_02248728 WIP (136/364 byte-match, objdiff-verified)
 // ===========================================================================
 // MODULE: follow-mon sprite animation + Pokecenter / field-move (Escape Rope,
 //   Dig, Teleport) task subsystem. A 2D graphics renderer built on G2dRenderer /
