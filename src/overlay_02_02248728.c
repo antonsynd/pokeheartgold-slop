@@ -95,6 +95,10 @@ extern ov02_StateMachineFunc const ov02_02253550[]; // single-level table
 extern ov02_StateMachineFunc const ov02_02253588[];
 extern ov02_StateMachineFunc const ov02_022534F0[];
 extern ov02_StateMachineFunc const ov02_022534B8[];
+
+// Field-move task state tables: func(taskManager, fieldSystem, env) -> 1=loop, 2=free.
+typedef int (*ov02_FieldTaskFunc)(TaskManager *taskManager, FieldSystem *fieldSystem, void *env);
+extern ov02_FieldTaskFunc const ov02_02253700[];
 extern void sub_02068BAC(void *a0);                             // unk_020689C8.h
 extern void ov01_021FCD78(SysTask *task);                       // no header included here
 extern BOOL ov01_021FCD6C(SysTask *task);                       // no header included here
@@ -558,6 +562,27 @@ WIP_LOCAL BOOL ov02_0224ABCC(void *a0, void *a1) {
     sub_02068DB8(a0, &buf);
     *(void **)((u8 *)a1 + 0x58) = ov02_0224A468(*(void **)((u8 *)a1 + 0x5c), &buf, 0, 0);
     return TRUE;
+}
+
+WIP_LOCAL void ov02_0224A6D0(void *work) {
+    if (*(SysTask **)((u8 *)work + 0x224) == NULL) {
+        GF_AssertFail();
+    }
+    SysTask_Destroy(*(SysTask **)((u8 *)work + 0x224));
+    *(vu32 *)0x4000000 = *(vu32 *)0x4000000 & 0xFFFF1FFF;
+}
+
+WIP_LOCAL BOOL Task_FieldEscapeRope(TaskManager *taskManager) {
+    FieldSystem *fieldSystem = TaskManager_GetFieldSystem(taskManager);
+    int r;
+    void *env = TaskManager_GetEnvironment(taskManager);
+    do {
+        r = ov02_02253700[*(int *)env](taskManager, fieldSystem, env);
+        if (r == 2) {
+            Heap_Free(env);
+        }
+    } while (r == 1);
+    return 0;
 }
 
 WIP_LOCAL void ov02_0224D1AC(void *data) {
@@ -1488,7 +1513,7 @@ WIP_LOCAL void ov02_0224F8F4(void *ptr) {
 }
 
 // ===========================================================================
-// HANDOFF — overlay_02_02248728 WIP (172/364 byte-match, objdiff-verified)
+// HANDOFF — overlay_02_02248728 WIP (174/364 byte-match, objdiff-verified)
 // ===========================================================================
 // MODULE: follow-mon sprite animation + Pokecenter / field-move (Escape Rope,
 //   Dig, Teleport) task subsystem. A 2D graphics renderer built on G2dRenderer /
