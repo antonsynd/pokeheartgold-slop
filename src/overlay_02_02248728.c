@@ -97,6 +97,8 @@ extern void sub_02068BAC(void *a0);                             // unk_020689C8.
 extern void ov01_021FCD78(SysTask *task);                       // no header included here
 extern BOOL ov01_021FCD6C(SysTask *task);                       // no header included here
 extern void ov01_021FBD38(Field3dModel *model, void *narcData); // no header included here
+extern void ov01_021FBDFC(Field3dModel *model);                 // no header included here
+extern void ov01_021F1448(void *a0);                            // no header included here
 
 // STRUCT-CLEANUP TODO: the getters/setters/deleters below use byte-offset casts
 // because their owning struct isn't named yet. They byte-match; replace the casts
@@ -122,6 +124,7 @@ WIP_LOCAL void ov02_0224A9B8(void *mgr, VecFx32 *pos);
 WIP_LOCAL Sprite *ov02_0224A3F0(void *mgr, VecFx32 *pos, int drawPriority, int seq);
 WIP_LOCAL void ov02_0224A570(NARC *narc, u32 fileId, NNSG2dPaletteData **a2);
 WIP_LOCAL void ov02_0224B88C(void *work);
+WIP_LOCAL void ov02_0224B90C(void *work);
 WIP_LOCAL void ov02_0224FE40(void *a0, u8 *a1, LocalMapObject *obj);
 WIP_LOCAL void ov02_0224FE70(void *a0, LocalMapObject *obj, u8 dir); // still in asm
 WIP_LOCAL BOOL ov02_0224D178(void *obj);
@@ -478,6 +481,14 @@ WIP_LOCAL void ov02_0224B88C(void *work) {
     Field3dModelAnimation_LoadFromFilesystem((Field3DModelAnimation *)(d + 0xb0), (Field3dModel *)(d + 0x14), (NarcId)0x67, 0xa5, HEAP_ID_FIELD1, (NNSFndAllocator *)d);
     Field3dObject_AddAnimation((Field3dObject *)(d + 0x24), (Field3DModelAnimation *)(d + 0x9c));
     Field3dObject_AddAnimation((Field3dObject *)(d + 0x24), (Field3DModelAnimation *)(d + 0xb0));
+}
+
+WIP_LOCAL void ov02_0224B90C(void *work) {
+    u8 *d = (u8 *)work + 0x228;
+    ov01_021FBDFC((Field3dModel *)(d + 0x14));
+    ov01_021F1448(*(void **)(d + 0x10));
+    Field3dModelAnimation_Unload((Field3DModelAnimation *)(d + 0x9c), (NNSFndAllocator *)d);
+    Field3dModelAnimation_Unload((Field3DModelAnimation *)(d + 0xb0), (NNSFndAllocator *)d);
 }
 
 WIP_LOCAL void ov02_0224D1AC(void *data) {
@@ -1408,7 +1419,7 @@ WIP_LOCAL void ov02_0224F8F4(void *ptr) {
 }
 
 // ===========================================================================
-// HANDOFF — overlay_02_02248728 WIP (165/364 byte-match, objdiff-verified)
+// HANDOFF — overlay_02_02248728 WIP (166/364 byte-match, objdiff-verified)
 // ===========================================================================
 // MODULE: follow-mon sprite animation + Pokecenter / field-move (Escape Rope,
 //   Dig, Teleport) task subsystem. A 2D graphics renderer built on G2dRenderer /
