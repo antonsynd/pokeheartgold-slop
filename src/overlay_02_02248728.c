@@ -85,9 +85,10 @@ extern ov02_StateMachineFunc const ov02_02253550[]; // single-level table
 extern ov02_StateMachineFunc const ov02_02253588[];
 extern ov02_StateMachineFunc const ov02_022534F0[];
 extern ov02_StateMachineFunc const ov02_022534B8[];
-extern void sub_02068BAC(void *a0);       // unk_020689C8.h
-extern void ov01_021FCD78(SysTask *task); // no header included here
-extern BOOL ov01_021FCD6C(SysTask *task); // no header included here
+extern void sub_02068BAC(void *a0);                             // unk_020689C8.h
+extern void ov01_021FCD78(SysTask *task);                       // no header included here
+extern BOOL ov01_021FCD6C(SysTask *task);                       // no header included here
+extern void ov01_021FBD38(Field3dModel *model, void *narcData); // no header included here
 
 // STRUCT-CLEANUP TODO: the getters/setters/deleters below use byte-offset casts
 // because their owning struct isn't named yet. They byte-match; replace the casts
@@ -112,6 +113,7 @@ WIP_LOCAL Sprite *ov02_0224A33C(void *mgr, VecFx32 *pos, int charId, int plttId,
 WIP_LOCAL void ov02_0224A9B8(void *mgr, VecFx32 *pos);
 WIP_LOCAL Sprite *ov02_0224A3F0(void *mgr, VecFx32 *pos, int drawPriority, int seq);
 WIP_LOCAL void ov02_0224A570(NARC *narc, u32 fileId, NNSG2dPaletteData **a2);
+WIP_LOCAL void ov02_0224B88C(void *work);
 WIP_LOCAL void ov02_02248C98(Sprite *sprite, VecFx32 *out);
 WIP_LOCAL int ov02_02248E10(void *work);
 WIP_LOCAL void ov02_0224A69C(void *work, int p1, int p2, int p3, int p4);
@@ -447,6 +449,18 @@ WIP_LOCAL void ov02_0224A570(NARC *narc, u32 fileId, NNSG2dPaletteData **a2) {
     NNS_G2dGetUnpackedPaletteData(data, a2);
     BG_LoadPlttData(3, *(const void **)((u8 *)(*a2) + 0xc), 0x20, 0x180);
     Heap_Free(data);
+}
+
+WIP_LOCAL void ov02_0224B88C(void *work) {
+    u8 *d = (u8 *)work + 0x228;
+    HeapExp_FndInitAllocator((NNSFndAllocator *)d, HEAP_ID_FIELD1, 0x20);
+    *(void **)(d + 0x10) = AllocAtEndAndReadWholeNarcMemberByIdPair((NarcId)0x67, 0x83, HEAP_ID_FIELD1);
+    ov01_021FBD38((Field3dModel *)(d + 0x14), *(void **)(d + 0x10));
+    Field3dObject_InitFromModel((Field3dObject *)(d + 0x24), (Field3dModel *)(d + 0x14));
+    Field3dModelAnimation_LoadFromFilesystem((Field3DModelAnimation *)(d + 0x9c), (Field3dModel *)(d + 0x14), (NarcId)0x67, 0xa7, HEAP_ID_FIELD1, (NNSFndAllocator *)d);
+    Field3dModelAnimation_LoadFromFilesystem((Field3DModelAnimation *)(d + 0xb0), (Field3dModel *)(d + 0x14), (NarcId)0x67, 0xa5, HEAP_ID_FIELD1, (NNSFndAllocator *)d);
+    Field3dObject_AddAnimation((Field3dObject *)(d + 0x24), (Field3DModelAnimation *)(d + 0x9c));
+    Field3dObject_AddAnimation((Field3dObject *)(d + 0x24), (Field3DModelAnimation *)(d + 0xb0));
 }
 
 WIP_LOCAL Sprite *ov02_0224A3F0(void *mgr, VecFx32 *pos, int drawPriority, int seq) {
@@ -1294,7 +1308,7 @@ WIP_LOCAL void ov02_0224F8F4(void *ptr) {
 }
 
 // ===========================================================================
-// HANDOFF — overlay_02_02248728 WIP (156/364 byte-match, objdiff-verified)
+// HANDOFF — overlay_02_02248728 WIP (157/364 byte-match, objdiff-verified)
 // ===========================================================================
 // MODULE: follow-mon sprite animation + Pokecenter / field-move (Escape Rope,
 //   Dig, Teleport) task subsystem. A 2D graphics renderer built on G2dRenderer /

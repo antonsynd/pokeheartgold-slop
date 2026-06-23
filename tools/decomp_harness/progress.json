@@ -1035,9 +1035,9 @@
     "file": "asm/overlay_02_02248728.s",
     "lines": 17995,
     "functions": 364,
-    "matched_so_far": 156,
+    "matched_so_far": 157,
     "result": "wip-deferred",
-    "note": "156/364 (~43%). +1: ov02_0224A570 (narc pltt load -> NNS_G2dGetUnpackedPaletteData + BG_LoadPlttData). Easy harvest exhausted; remaining ~208 are the hard tail: jump-table switches (E26C/E2A0), header-conflict (022508B4 void-vs-BOOL = needs overlay_02.h change -> IPA, do NOT cascade casually), unknown helpers (sub_02068B0C ov02_02248CAC), struct-builders (B88C A468), AnimManager naming, 16 huge fns. Handoff at EOF."
+    "note": "157/364 (~43%). +1: ov02_0224B88C Field3dObject task-data builder (HeapExp_FndInitAllocator + AllocAtEndAndReadWholeNarcMemberByIdPair + ov01_021FBD38 + Field3dObject_InitFromModel + 2x Field3dModelAnimation_LoadFromFilesystem + 2x Field3dObject_AddAnimation; base d=work+0x228, cast offsets). Pattern helps the other Field3dObject init callbacks (DCB0/D310/etc). Hard tail continues. Handoff at EOF."
   },
   "stats": {
     "total_attempts": 153,
