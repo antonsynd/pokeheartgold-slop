@@ -648,6 +648,10 @@ Friend/record save chunks often hold several arrays addressed by the same index 
 
 Before modeling a field/overlay struct from scratch, check include/field/<name>.h (and the types' header, e.g. unk_02009D48.h / unk_0200A090.h for sprite-resource managers). For overlay_01_021E7FDC the header already had UnkStruct_ov01_021E7FDC (SpriteList + G2dRenderer + SpriteResourceHeaderList + GF_2DGfxResMan[6] + GF_2DGfxResObjList[6] + u16 count/heapID) and SpriteTemplate_ov01_021E81F0, plus 3 signatures to match. Enum params (GfGfxResType, NNS_G2D_VRAM_TYPE, HeapID from a u16 field) need explicit (free) casts or MWCC errors.
 
+### Large partial-file decomp: keep functions non-static so DCE does not drop them before objdiff  <!-- id: wip-partial-file-nonstatic-survival -->
+
+For a huge .s file decomped incrementally (partial src/*.c, main.lsf kept on asm), C_SRCS uses rwildcard so the partial .c IS compiled (objdiff-able) without being linked. BUT MWCC -ipa file dead-code-eliminates file-local (static) functions that nothing in the partial TU references, so they never reach the .o and objdiff reports them not-found. Fix: during WIP declare/define such functions WITHOUT static (a WIP_LOCAL macro = empty) so they survive as globals; objdiff compares body bytes, identical regardless of binding. static-vs-global only changes the .o symbol-table binding, stripped from the linked overlay, NOT affecting ROM bytes/SHA1. Restore static at flip-to-src. Validated on overlay_02_02248728 (364 funcs).
+
 ## NONMATCHING Fallback
 
 ### NONMATCHING inline asm syntax (MWCC)  <!-- id: nonmatching-inline-asm-syntax -->

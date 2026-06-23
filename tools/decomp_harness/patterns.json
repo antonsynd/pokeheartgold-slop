@@ -1117,6 +1117,12 @@
       "category": "matching-tricks",
       "title": "A stack u16[] the asm keeps with redundant element-copies (strh/ldrh) but MWCC optimizes away: mark it `volatile` to force the layout",
       "body": "sub_0202BCAC builds `u16 pos[4]` from a packed u32 (`pos[0]=p; pos[1]=p>>16; pos[2]=pos[0]; pos[3]=pos[1];`) and reads `(s16)pos[2]/(s16)pos[3]` plus re-reads pos[2] for a later call. Retail keeps all four slots (strh writes, ldrh copies, ldrsh reads via a base pointer `add rN,sp,#k`) and re-reads pos[2] each use. Plain `u16 pos[4]` lets MWCC dead-eliminate pos[0]/pos[1], promote pos[2]/pos[3] to int temps, and cache reads — 47 diffs / wrong stack frame. Declaring `volatile u16 pos[4]` defeats the dead-store elimination and forces every read from memory, collapsing it to a near-match (here 2 bytes, the remaining diff being a separate register-spill reload → NONMATCHING). Use volatile when the asm clearly keeps a stack array MWCC would optimize, and the array is small/leaf."
+    },
+    {
+      "id": "wip-partial-file-nonstatic-survival",
+      "category": "file-patterns",
+      "title": "Large partial-file decomp: keep functions non-static so DCE does not drop them before objdiff",
+      "body": "For a huge .s file decomped incrementally (partial src/*.c, main.lsf kept on asm), C_SRCS uses rwildcard so the partial .c IS compiled (objdiff-able) without being linked. BUT MWCC -ipa file dead-code-eliminates file-local (static) functions that nothing in the partial TU references, so they never reach the .o and objdiff reports them not-found. Fix: during WIP declare/define such functions WITHOUT static (a WIP_LOCAL macro = empty) so they survive as globals; objdiff compares body bytes, identical regardless of binding. static-vs-global only changes the .o symbol-table binding, stripped from the linked overlay, NOT affecting ROM bytes/SHA1. Restore static at flip-to-src. Validated on overlay_02_02248728 (364 funcs)."
     }
   ]
 }
