@@ -328,6 +328,10 @@ switch(x){case 0:<body>;break; case 1:break;} where case 1 is empty and equals d
 
 When asm holds base in one reg and a large constant offset (e.g. 0x228 = 0x8a<<2) in another, recombining base+BIG+small per use: write the BIG offset into the variable initializer -- u8 *base = *(u8**)p + 0x228; then use (T*)(base + 0x24) at each call site. MWCC keeps the original pointer and the BIG constant in separate registers, reuses the constant reg, and adds the small offset per call. Writing (u8*)x + 0x228 + 0x24 instead folds to one 0x24c add (too small); &x[0x8a] recomputes 0x8a<<2 inline each time (too big). Seen in ov02_0224B7CC.
 
+### Zero-field struct init: write fields in the exact asm store order  <!-- id: mwcc-zero-field-init-exact-store-order -->
+
+When a function zero-initializes several struct fields with a shared 0 register and the asm store order is non-monotonic (e.g. 0,4,0xc,8,0x10,...), write the C assignments in that EXACT order. MWCC preserves the store sequence, so *(int*)(s+0xc)=0 before *(int*)(s+8)=0 reproduces the 0xc-before-8 ordering. Seen in ov02_0224B2CC and ov02_0224B314 (was deferred).
+
 ## Matching Tricks
 
 ### Small source changes that move codegen  <!-- id: decl-order-tricks -->

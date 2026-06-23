@@ -78,6 +78,16 @@ typedef struct UnkBlob16 {
     s32 unkC;
 } UnkBlob16;
 
+// 24-byte blob copied via three ldm/stm word-pairs (sub_02068D98 -> work+0xc).
+typedef struct UnkBlob24 {
+    s32 unk0;
+    s32 unk4;
+    s32 unk8;
+    s32 unkC;
+    s32 unk10;
+    s32 unk14;
+} UnkBlob24;
+
 // AnimManager per-resource entry (arrays at mgr->0x144 / 0x148, stride 8).
 typedef struct AnimResEntry {
     s16 id;
@@ -122,11 +132,14 @@ extern const MovementScriptCommand ov02_02253820;                               
 extern const MovementScriptCommand ov02_02253794;                                                  // rodata, defined later
 extern const MovementScriptCommand ov02_02253770;                                                  // rodata, defined later
 extern BOOL sub_02054C20(FieldSystem *fieldSystem, int targetType, int *outObj, void **outHandle); // unk_02054648.h, not included
+extern u8 GetMetatileBehavior(FieldSystem *fieldSystem, int x, int z);                             // unk_02054648.h, not included
 extern u16 PlayerProfile_GetTrainerID_VisibleHalf(PlayerProfile *profile);                         // player_data.h, not included
 typedef struct WallpaperPasswordBank WallpaperPasswordBank;                                        // opaque; easy_chat.h not included
 extern WallpaperPasswordBank *WallpaperPasswordBank_Create(enum HeapID heapID);
 extern void WallpaperPasswordBank_Delete(WallpaperPasswordBank *bank);
 extern void sub_02068DB8(void *a0, VecFx32 *out);                            // no header included here
+extern u32 sub_02068D90(void *a0);                                           // unk_020689C8.c, no C proto
+extern void sub_02068DA8(void *a0, VecFx32 *src);                            // unk_020689C8.c, no C proto
 extern void Field3dObject_SetPos(Field3dObject *object, const VecFx32 *pos); // .public, no C proto yet
 extern void GetFlyWarpData(u16 spawnId, Location *dest);                     // unk_0203BA5C.h, not included
 extern void GetSpecialSpawnWarpData(u16 spawnId, Location *dest);            // unk_0203BA5C.h, not included
@@ -194,7 +207,7 @@ WIP_LOCAL Roamer *ov02_0224BAA8(RoamerSaveData *roamerSave, int a1);
 WIP_LOCAL void ov02_0224B72C(void *work);
 WIP_LOCAL void ov02_0224AB58(void *work);
 WIP_LOCAL void ov02_0224B298(void *mgr, void *arg1);
-WIP_LOCAL void ov02_02248D58(void *arg0, void *arg1, void *arg2, void *arg3);
+WIP_LOCAL void *ov02_02248D58(void *arg0, void *arg1, void *arg2, void *arg3);
 WIP_LOCAL void ov02_0224AA44(void *arg0, VecFx32 *pos, VecFx32 *vec, void *arg3, u32 arg4, void *arg5);
 WIP_LOCAL void ov02_0224DE6C(void *obj);
 WIP_LOCAL void ov02_0224D950(void *a0, void *a1, void *data);
@@ -211,6 +224,13 @@ WIP_LOCAL int ov02_0224C6DC(TaskManager *taskManager, FieldSystem *fieldSystem, 
 WIP_LOCAL int ov02_0224C2A8(TaskManager *taskManager, FieldSystem *fieldSystem, void *work);
 WIP_LOCAL int ov02_0224C698(TaskManager *taskManager, FieldSystem *fieldSystem, void *work);
 WIP_LOCAL void *ov02_0224A7B8(Pokemon *mon, void *arg1, enum HeapID heapID);
+WIP_LOCAL BOOL ov02_0224AA80(void *a0, void *work);
+WIP_LOCAL void ov02_0224B2CC(void *work);
+WIP_LOCAL int ov02_0224B5F0(void *work);
+WIP_LOCAL void ov02_0224D1E4(void *a0, void *a1, void *data);
+WIP_LOCAL int ov02_0224E224(void *a, void *b);
+WIP_LOCAL void ov02_0224F5FC(FieldSystem *fieldSystem, void *work);
+WIP_LOCAL void ov02_02248E20(void *a0);
 WIP_LOCAL void ov02_0224A88C(void *mgr, void *dst);
 WIP_LOCAL void ov02_0224B6E4(void *a0, void *work);
 WIP_LOCAL void ov02_0224D0C8(void *data, int a1, int a2, int a3, void *a4);
@@ -887,7 +907,7 @@ WIP_LOCAL void ov02_0224B298(void *mgr, void *arg1) {
     sub_02068B0C(mgr, &ov02_022534A4, &pos, 0, &a4, 0x81);
 }
 
-WIP_LOCAL void ov02_02248D58(void *arg0, void *arg1, void *arg2, void *arg3) {
+WIP_LOCAL void *ov02_02248D58(void *arg0, void *arg1, void *arg2, void *arg3) {
     VecFx32 pos = { 0, 0, 0 };
     struct {
         void *unk0;
@@ -899,7 +919,7 @@ WIP_LOCAL void ov02_02248D58(void *arg0, void *arg1, void *arg2, void *arg3) {
     a4.unk4 = arg0;
     a4.unkC = arg2;
     a4.unk8 = arg3;
-    sub_02068B0C(arg1, &ov02_02253454, &pos, 0, &a4, 0x82);
+    return sub_02068B0C(arg1, &ov02_02253454, &pos, 0, &a4, 0x82);
 }
 
 WIP_LOCAL void ov02_0224AA44(void *arg0, VecFx32 *pos, VecFx32 *vec, void *arg3, u32 arg4, void *arg5) {
@@ -1078,6 +1098,106 @@ WIP_LOCAL void ov02_0224B6E4(void *a0, void *work) {
     } else {
         Sprite_SetDrawFlag(*(Sprite **)work, 1);
     }
+}
+
+WIP_LOCAL BOOL ov02_0224AA80(void *a0, void *work) {
+    VecFx32 vec;
+    Sprite *sprite;
+    *(UnkBlob24 *)((u8 *)work + 0xc) = *(UnkBlob24 *)sub_02068D98(a0);
+    *(u32 *)((u8 *)work + 4) = sub_02068D90(a0);
+    sub_02068DB8(a0, &vec);
+    sprite = ov02_0224A3F0(*(void **)((u8 *)work + 0x14), &vec, *(int *)((u8 *)work + 0xc), *(int *)((u8 *)work + 4));
+    *(Sprite **)((u8 *)work + 8) = sprite;
+    Sprite_SetDrawFlag(sprite, 0);
+    return TRUE;
+}
+
+WIP_LOCAL void ov02_0224B2CC(void *work) {
+    VecFx32 vec;
+    u8 *s = (u8 *)sub_02068D74(work);
+    *(int *)(s + 0) = 1;
+    *(int *)(s + 4) = 0;
+    *(int *)(s + 0xc) = 0;
+    *(int *)(s + 8) = 0;
+    *(int *)(s + 0x10) = 0;
+    *(int *)(s + 0x14) = 0;
+    *(int *)(s + 0x18) = 0;
+    vec = *Sprite_GetMatrixPtr(*(Sprite **)(s + 0x20));
+    sub_02068DA8(work, &vec);
+    Sprite_SetAnimCtrlSeq(*(Sprite **)(s + 0x20), 5);
+}
+
+WIP_LOCAL int ov02_0224B5F0(void *work) {
+    *(Sprite **)((u8 *)work + 0x16c) = ov02_02248D18((u8 *)work + 0x18, *(int *)((u8 *)work + 0xc));
+    Sprite_SetDrawFlag(*(Sprite **)((u8 *)work + 0x16c), 1);
+    *(void **)((u8 *)work + 0x174) = ov02_02248D58(*(void **)((u8 *)work + 0x14), *(void **)((u8 *)work + 0x170), (u8 *)work + 0x18, *(void **)((u8 *)work + 0x16c));
+    ov02_02248E20(*(void **)((u8 *)work + 0x174));
+    (*(int *)((u8 *)work))++;
+    *(int *)((u8 *)work + 0x10) = 1;
+    return 0;
+}
+
+WIP_LOCAL void ov02_0224D1E4(void *a0, void *a1, void *data) {
+    memset(data, 0, 0xf0);
+    HeapExp_FndInitAllocator((NNSFndAllocator *)((u8 *)data + 0xdc), HEAP_ID_FIELD1, 0x20);
+    ov02_0224D0C8(data, 3, 0, 3, (u8 *)data + 0xdc);
+    ov02_0224D044(*(void **)((u8 *)a1 + 0x40), data);
+    PlaySE(SEQ_SE_DP_FW015);
+    *(int *)((u8 *)data + 0xec) = 0;
+}
+
+WIP_LOCAL int ov02_0224E224(void *a, void *b) {
+    int bx = *(int *)b;
+    int ax = *(int *)a;
+    int result = 0xd;
+    if (ax == bx) {
+        if (*(int *)((u8 *)a + 4) > *(int *)((u8 *)b + 4)) {
+            result = 0xc;
+        } else if (*(int *)((u8 *)a + 4) < *(int *)((u8 *)b + 4)) {
+            ;
+        } else {
+            GF_AssertFail();
+        }
+    } else if (*(int *)((u8 *)a + 4) == *(int *)((u8 *)b + 4)) {
+        if (ax > bx) {
+            result = 0xe;
+        } else if (ax < bx) {
+            result = 0xf;
+        } else {
+            GF_AssertFail();
+        }
+    } else {
+        GF_AssertFail();
+    }
+    return result;
+}
+
+WIP_LOCAL void ov02_0224F5FC(FieldSystem *fieldSystem, void *work) {
+    int x = MapObject_GetXCoord(FollowMon_GetMapObject(fieldSystem));
+    int z = MapObject_GetZCoord(FollowMon_GetMapObject(fieldSystem));
+    u8 behavior = GetMetatileBehavior(fieldSystem, x, z);
+    *(u8 *)((u8 *)work + 0x12) = behavior;
+    *(u16 *)((u8 *)*(void **)((u8 *)fieldSystem + 0x120) + 0x882) = behavior;
+    if (MetatileBehavior_CanGenerateWalkingEncounters(behavior)) {
+        *(u8 *)((u8 *)work + 0x13) = 1;
+    } else {
+        *(u8 *)((u8 *)work + 0x13) = 2;
+    }
+}
+
+WIP_LOCAL void ov02_0224B314(void *work) {
+    VecFx32 vec;
+    u8 *s = (u8 *)sub_02068D74(work);
+    *(int *)(s + 0) = 2;
+    *(int *)(s + 4) = 0;
+    *(int *)(s + 0xc) = 0;
+    *(int *)(s + 8) = 0;
+    *(int *)(s + 0x10) = 0;
+    *(int *)(s + 0x14) = 0;
+    *(int *)(s + 0x18) = 0;
+    ov02_02248C98(*(Sprite **)(s + 0x20), &vec);
+    sub_02068DA8(work, &vec);
+    Sprite_SetAnimCtrlSeq(*(Sprite **)(s + 0x20), 4);
 }
 
 WIP_LOCAL void ov02_0224D144(void *obj, void *alloc) {
@@ -2000,7 +2120,7 @@ WIP_LOCAL void ov02_0224F8F4(void *ptr) {
 }
 
 // ===========================================================================
-// HANDOFF — overlay_02_02248728 WIP (211/364 byte-match, objdiff-verified)
+// HANDOFF — overlay_02_02248728 WIP (218/364 byte-match, objdiff-verified)
 // ===========================================================================
 // MODULE: follow-mon sprite animation + Pokecenter / field-move (Escape Rope,
 //   Dig, Teleport) task subsystem. A 2D graphics renderer built on G2dRenderer /
