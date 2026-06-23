@@ -700,6 +700,10 @@ For a huge .s file decomped incrementally (partial src/*.c, main.lsf kept on asm
 
 ov02_02248C10 (matched) is the per-sprite creator: builds SpriteResourcesHeader header + SimpleSpriteTemplate template as stack locals (declare header THEN template -> MWCC lays template at lower sp offset, header higher, matching). CreateSpriteResourcesHeader(&header, charId, plttId, cellId, cellAnmId, -1, -1, 0, priority, charMan, plttMan, cellMan, cellAnmMan, NULL, NULL) where the 4 GF_2DGfxResMan* come from AnimManager mgr->0x134/0x138/0x13c/0x140 (cast). template: spriteList=mgr->8, header=&header, position=*pos (struct copy), priority=drawPriority, whichScreen=NNS_G2D_VRAM_TYPE_2DMAIN(1), heapID=HEAP_ID_FIELD1. cellAnmId is set to -1 if it equals (s8)mgr->7. CreateSpriteResourcesHeader is in unk_02009D48.h. ov02_0224A33C is the variant (mode==4 branch, uses mgr->0x19c group). This unlocks the sprite cluster (ov02_02248D18 etc.).
 
+### unk_020689C8 task launcher sub_02068B0C: caller stack-build shape  <!-- id: mwcc-sub02068B0C-launcher-cluster -->
+
+sub_02068B0C(UnkTaskManager *mgr, UnkTemplateBase *src, VecFx32 *pos, u32 a3, void *a4, u32 priority) is defined in unk_020689C8.c (types local to that TU). Callers in overlay_02 build pos as VecFx32 {0,0,0} (or pass a VecFx32* arg straight through), and build a small per-call struct on the stack whose address is a4 (1-6 words, populated from the caller args; unwritten words are left uninitialized and still match). priority is a small code (0x81/0x82/0x85/0x87). To decomp a caller: local-extern sub_02068B0C with a mirrored 5-word ov02_LaunchTemplate src type, extern the ov02_022534xx rodata templates, declare an anonymous a4 struct, assign its members (order them so MWCC frees arg registers in asm order), then store the return at work->offset or discard. Seen in ov02_0224B72C/AB58/B298/D58/AA44.
+
 ## NONMATCHING Fallback
 
 ### NONMATCHING inline asm syntax (MWCC)  <!-- id: nonmatching-inline-asm-syntax -->

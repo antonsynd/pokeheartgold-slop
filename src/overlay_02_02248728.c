@@ -122,6 +122,23 @@ extern const MovementScriptCommand ov02_02253820;                            // 
 extern void sub_02068DB8(void *a0, VecFx32 *out);                            // no header included here
 extern void Field3dObject_SetPos(Field3dObject *object, const VecFx32 *pos); // .public, no C proto yet
 
+// unk_020689C8.c task launcher: sub_02068B0C(mgr, src, pos, a3, a4, priority).
+// The UnkTemplateBase/UnkTaskWork types are local to that TU; mirror minimally.
+// src points to a 0x14-byte template (file-local rodata, still in asm for now).
+typedef struct ov02_LaunchTemplate {
+    u32 unk0;
+    void *unk4;
+    void *unk8;
+    void *unkC;
+    void *unk10;
+} ov02_LaunchTemplate;
+extern void *sub_02068B0C(void *mgr, const ov02_LaunchTemplate *src, VecFx32 *pos, u32 a3, void *a4, u32 priority);
+extern const ov02_LaunchTemplate ov02_02253440;
+extern const ov02_LaunchTemplate ov02_022534A4;
+extern const ov02_LaunchTemplate ov02_02253454;
+extern const ov02_LaunchTemplate ov02_0225347C;
+extern const ov02_LaunchTemplate ov02_02253468;
+
 // STRUCT-CLEANUP TODO: the getters/setters/deleters below use byte-offset casts
 // because their owning struct isn't named yet. They byte-match; replace the casts
 // with real struct field accesses once those structs are reversed.
@@ -165,6 +182,11 @@ WIP_LOCAL void ov02_0224D288(Field3dObjectTask *task, FieldSystem *fieldSystem, 
 WIP_LOCAL void ov02_0224D3B4(Field3dObjectTask *task, FieldSystem *fieldSystem, Field3dObject *obj);
 WIP_LOCAL BOOL ov02_0224B7CC(void *a0, void **out);
 WIP_LOCAL Roamer *ov02_0224BAA8(RoamerSaveData *roamerSave, int a1);
+WIP_LOCAL void ov02_0224B72C(void *work);
+WIP_LOCAL void ov02_0224AB58(void *work);
+WIP_LOCAL void ov02_0224B298(void *mgr, void *arg1);
+WIP_LOCAL void ov02_02248D58(void *arg0, void *arg1, void *arg2, void *arg3);
+WIP_LOCAL void ov02_0224AA44(void *arg0, VecFx32 *pos, VecFx32 *vec, void *arg3, u32 arg4, void *arg5);
 WIP_LOCAL void ov02_0224D700(void *obj);
 WIP_LOCAL void ov02_0224D914(Field3dObjectTask *task, FieldSystem *fieldSystem, void *data);
 WIP_LOCAL BOOL ov02_0224ABCC(void *a0, void *a1);
@@ -808,6 +830,62 @@ WIP_LOCAL void ov02_0224D914(Field3dObjectTask *task, FieldSystem *fieldSystem, 
         Heap_Free(*(void **)((u8 *)data + 0xCD0));
         data = (u8 *)data + 4;
     }
+}
+
+WIP_LOCAL void ov02_0224B72C(void *work) {
+    VecFx32 pos = { 0, 0, 0 };
+    struct {
+        void *unk0;
+        void *unk4;
+    } a4;
+    a4.unk0 = *(void **)((u8 *)work + 0x1e4);
+    a4.unk4 = work;
+    *(void **)((u8 *)work + 0x1f4) = sub_02068B0C(*(void **)((u8 *)work + 0x1e0), &ov02_02253440, &pos, 0, &a4, 0x87);
+}
+
+WIP_LOCAL void ov02_0224AB58(void *work) {
+    VecFx32 pos = { 0, 0, 0 };
+    void *a4 = work;
+    *(void **)((u8 *)work + 0x1ec) = sub_02068B0C(*(void **)((u8 *)work + 0x1e0), &ov02_0225347C, &pos, 0, &a4, 0x82);
+}
+
+WIP_LOCAL void ov02_0224B298(void *mgr, void *arg1) {
+    VecFx32 pos = { 0, 0, 0 };
+    struct {
+        void *unk0;
+        void *unk4;
+    } a4;
+    a4.unk4 = arg1;
+    sub_02068B0C(mgr, &ov02_022534A4, &pos, 0, &a4, 0x81);
+}
+
+WIP_LOCAL void ov02_02248D58(void *arg0, void *arg1, void *arg2, void *arg3) {
+    VecFx32 pos = { 0, 0, 0 };
+    struct {
+        void *unk0;
+        void *unk4;
+        void *unk8;
+        void *unkC;
+    } a4;
+    a4.unk0 = arg1;
+    a4.unk4 = arg0;
+    a4.unkC = arg2;
+    a4.unk8 = arg3;
+    sub_02068B0C(arg1, &ov02_02253454, &pos, 0, &a4, 0x82);
+}
+
+WIP_LOCAL void ov02_0224AA44(void *arg0, VecFx32 *pos, VecFx32 *vec, void *arg3, u32 arg4, void *arg5) {
+    struct {
+        void *unk0;
+        void *unk4;
+        void *unk8;
+        VecFx32 unkC;
+    } a4;
+    a4.unk0 = arg3;
+    a4.unk4 = arg5;
+    a4.unk8 = arg0;
+    a4.unkC = *vec;
+    sub_02068B0C(*(void **)((u8 *)arg0 + 0x1e0), &ov02_02253468, pos, arg4, &a4, 0x85);
 }
 
 WIP_LOCAL void ov02_0224D144(void *obj, void *alloc) {
@@ -1730,7 +1808,7 @@ WIP_LOCAL void ov02_0224F8F4(void *ptr) {
 }
 
 // ===========================================================================
-// HANDOFF — overlay_02_02248728 WIP (191/364 byte-match, objdiff-verified)
+// HANDOFF — overlay_02_02248728 WIP (196/364 byte-match, objdiff-verified)
 // ===========================================================================
 // MODULE: follow-mon sprite animation + Pokecenter / field-move (Escape Rope,
 //   Dig, Teleport) task subsystem. A 2D graphics renderer built on G2dRenderer /

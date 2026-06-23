@@ -1195,6 +1195,12 @@
       "category": "codegen",
       "title": "Keep a big offset in its own register: add it in the pointer initializer",
       "body": "When asm holds base in one reg and a large constant offset (e.g. 0x228 = 0x8a<<2) in another, recombining base+BIG+small per use: write the BIG offset into the variable initializer -- u8 *base = *(u8**)p + 0x228; then use (T*)(base + 0x24) at each call site. MWCC keeps the original pointer and the BIG constant in separate registers, reuses the constant reg, and adds the small offset per call. Writing (u8*)x + 0x228 + 0x24 instead folds to one 0x24c add (too small); &x[0x8a] recomputes 0x8a<<2 inline each time (too big). Seen in ov02_0224B7CC."
+    },
+    {
+      "id": "mwcc-sub02068B0C-launcher-cluster",
+      "category": "file-patterns",
+      "title": "unk_020689C8 task launcher sub_02068B0C: caller stack-build shape",
+      "body": "sub_02068B0C(UnkTaskManager *mgr, UnkTemplateBase *src, VecFx32 *pos, u32 a3, void *a4, u32 priority) is defined in unk_020689C8.c (types local to that TU). Callers in overlay_02 build pos as VecFx32 {0,0,0} (or pass a VecFx32* arg straight through), and build a small per-call struct on the stack whose address is a4 (1-6 words, populated from the caller args; unwritten words are left uninitialized and still match). priority is a small code (0x81/0x82/0x85/0x87). To decomp a caller: local-extern sub_02068B0C with a mirrored 5-word ov02_LaunchTemplate src type, extern the ov02_022534xx rodata templates, declare an anonymous a4 struct, assign its members (order them so MWCC frees arg registers in asm order), then store the return at work->offset or discard. Seen in ov02_0224B72C/AB58/B298/D58/AA44."
     }
   ]
 }
