@@ -120,6 +120,7 @@ extern void *ov01_021FCD2C(FieldSystem *fieldSystem, int a1);                   
 extern void ov01_021FCD8C(void *a0, int a1, fx32 a2, int a3);                                      // no header included here
 extern const MovementScriptCommand ov02_02253820;                                                  // rodata, defined later
 extern const MovementScriptCommand ov02_02253794;                                                  // rodata, defined later
+extern const MovementScriptCommand ov02_02253770;                                                  // rodata, defined later
 extern BOOL sub_02054C20(FieldSystem *fieldSystem, int targetType, int *outObj, void **outHandle); // unk_02054648.h, not included
 extern u16 PlayerProfile_GetTrainerID_VisibleHalf(PlayerProfile *profile);                         // player_data.h, not included
 typedef struct WallpaperPasswordBank WallpaperPasswordBank;                                        // opaque; easy_chat.h not included
@@ -208,6 +209,10 @@ WIP_LOCAL int ov02_0224CAB8(WallpaperPasswordBank *bank, u16 trainerId, u16 a, u
 WIP_LOCAL int ov02_0224CBF8(WallpaperPasswordBank *bank, u16 trainerId, u16 a, u16 b, u16 c, u16 d);
 WIP_LOCAL int ov02_0224C6DC(TaskManager *taskManager, FieldSystem *fieldSystem, void *work);
 WIP_LOCAL int ov02_0224C2A8(TaskManager *taskManager, FieldSystem *fieldSystem, void *work);
+WIP_LOCAL int ov02_0224C698(TaskManager *taskManager, FieldSystem *fieldSystem, void *work);
+WIP_LOCAL void *ov02_0224A7B8(Pokemon *mon, void *arg1, enum HeapID heapID);
+WIP_LOCAL void ov02_0224A88C(void *mgr, void *dst);
+WIP_LOCAL void ov02_0224B6E4(void *a0, void *work);
 WIP_LOCAL void ov02_0224D0C8(void *data, int a1, int a2, int a3, void *a4);
 WIP_LOCAL void ov02_0224D044(void *a0, void *data);
 WIP_LOCAL void ov02_0224D700(void *obj);
@@ -1033,6 +1038,46 @@ WIP_LOCAL int ov02_0224C2A8(TaskManager *taskManager, FieldSystem *fieldSystem, 
     ov01_021FCD8C(*(void **)((u8 *)work + 0x1c), 2, 0, 0x3c);
     (*(int *)((u8 *)work))++;
     return 1;
+}
+
+WIP_LOCAL int ov02_0224C698(TaskManager *taskManager, FieldSystem *fieldSystem, void *work) {
+    void *p = ov01_021FCD2C(fieldSystem, 4);
+    *(void **)((u8 *)work + 0x1c) = p;
+    ov01_021FCD8C(p, 1, 0xFFF6A000, 0xf);
+    *(EventObjectMovementMan **)((u8 *)work + 0x14) = EventObjectMovementMan_Create(*(LocalMapObject **)((u8 *)fieldSystem + 0xe4), &ov02_02253770);
+    (*(int *)((u8 *)work))++;
+    PlaySE(SEQ_SE_DP_TELE);
+    return 0;
+}
+
+WIP_LOCAL void *ov02_0224A7B8(Pokemon *mon, void *arg1, enum HeapID heapID) {
+    void *buffer = Heap_Alloc(HEAP_ID_FIELD1, 0xc80);
+    GF_ASSERT(buffer);
+    sub_02014540((NarcId) * (u16 *)arg1, *(u16 *)((u8 *)arg1 + 2), heapID, buffer, GetMonData(mon, MON_DATA_PERSONALITY, NULL), FALSE, 2, *(u16 *)((u8 *)arg1 + 6));
+    return buffer;
+}
+
+WIP_LOCAL void ov02_0224A88C(void *mgr, void *dst) {
+    NNSG2dImageProxy *proxy = sub_0200AF00(SpriteResourceCollection_Find(*(GF_2DGfxResMan **)((u8 *)mgr + 0x19c), 3));
+    u32 location = NNS_G2dGetImagePaletteLocation(SpriteTransfer_GetPaletteProxy(SpriteResourceCollection_Find(*(GF_2DGfxResMan **)((u8 *)mgr + 0x1a0), 3), proxy), NNS_G2D_VRAM_TYPE_2DMAIN);
+    DC_FlushRange(dst, 0x20);
+    GX_LoadOBJPltt(dst, location, 0x20);
+}
+
+WIP_LOCAL void ov02_0224B6E4(void *a0, void *work) {
+    fx32 y = Sprite_GetMatrixPtr(*(Sprite **)work)->y;
+    void *s = *(void **)((u8 *)work + 4);
+    fx32 lo = *(fx32 *)((u8 *)s + 0x4c);
+    fx32 hi = *(fx32 *)((u8 *)s + 0x50);
+    if (*(int *)((u8 *)s + 0x1c) == 0) {
+        if (y - 0x8000 >= lo && y + 0x8000 <= hi) {
+            Sprite_SetDrawFlag(*(Sprite **)work, 1);
+        } else {
+            Sprite_SetDrawFlag(*(Sprite **)work, 0);
+        }
+    } else {
+        Sprite_SetDrawFlag(*(Sprite **)work, 1);
+    }
 }
 
 WIP_LOCAL void ov02_0224D144(void *obj, void *alloc) {
@@ -1955,7 +2000,7 @@ WIP_LOCAL void ov02_0224F8F4(void *ptr) {
 }
 
 // ===========================================================================
-// HANDOFF — overlay_02_02248728 WIP (207/364 byte-match, objdiff-verified)
+// HANDOFF — overlay_02_02248728 WIP (211/364 byte-match, objdiff-verified)
 // ===========================================================================
 // MODULE: follow-mon sprite animation + Pokecenter / field-move (Escape Rope,
 //   Dig, Teleport) task subsystem. A 2D graphics renderer built on G2dRenderer /

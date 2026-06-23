@@ -1035,10 +1035,10 @@
     "file": "asm/overlay_02_02248728.s",
     "lines": 17995,
     "functions": 364,
-    "matched_so_far": 207,
+    "matched_so_far": 211,
     "result": "wip-deferred",
     "note": "178/364 (~49%). +1: ov02_RepelActiveRoamersFromMapNo (roamer loop). Attempted+deferred resource-ADD 02248980 (8-byte cached/reload diff). Deferred clusters: resource-ADD (980/A58/B30/BA0), jump-table funcs, D288/D3B4 dead-cmp, B298/B784 (sub_02068B0C), 16 huge fns. Handoff at EOF.",
-    "notes": "WIP 207/364 byte-matched (objdiff). Latest batch (+5): ov02_0224BDE8 (task-launch w/ assert), ov02_0224CD38/CD74 (wallpaper-password), ov02_0224C6DC/C2A8 (movement-man state callbacks). Deferred ov02_0224D820 (mixed moving-ptr/mul codegen). ROM still matches retail (main.lsf on asm)."
+    "notes": "WIP 211/364 byte-matched (objdiff). Latest batch (+4): ov02_0224C698 (teleport task), ov02_0224A7B8 (poke-sprite builder), ov02_0224A88C (palette load), ov02_0224B6E4 (sprite cull). Deferred jump-table switches ov02_0224F728/F820. ROM still matches retail (main.lsf on asm)."
   },
   "stats": {
     "total_attempts": 153,
