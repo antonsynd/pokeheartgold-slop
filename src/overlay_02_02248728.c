@@ -58,7 +58,9 @@ typedef struct UnkPair8 {
 // the convention used by other overlays that don't pull in the full header.
 extern void *sub_02068D74(void *work);
 extern void *sub_02068D98(void *a0);              // no header included here
+extern void sub_02068B48(int a0);                 // unk_020689C8.h
 extern void ov01_021E8E70(void *a, int b, int c); // no header yet
+extern BOOL ov01_022060B8(FieldSystem *fieldSystem, u8 a1, u8 a2);
 
 // STRUCT-CLEANUP TODO: the getters/setters/deleters below use byte-offset casts
 // because their owning struct isn't named yet. They byte-match; replace the casts
@@ -130,6 +132,21 @@ WIP_LOCAL void ov02_0224B364(void *a0, void *a1);
 WIP_LOCAL void ov02_0224B3B0(void *a0, void *a1);
 WIP_LOCAL void ov02_0224D1AC(void *data);
 WIP_LOCAL void ov02_0224D0AC(void *playerAvatar, void *data);
+WIP_LOCAL int ov02_0224E340(FieldSystem *fieldSystem);
+WIP_LOCAL void ov02_0224B6B0(void *work, BOOL visible);
+WIP_LOCAL int ov02_0224C680(Field3dObjectTask *task, FieldSystem *fieldSystem, void *data);
+WIP_LOCAL void ov02_0224B768(void *work);
+WIP_LOCAL void ov02_02249D40(void *work);
+WIP_LOCAL void ov02_0224D468(Field3dObjectTask *task, FieldSystem *fieldSystem, void *data);
+WIP_LOCAL void ov02_0224D868(void *data);
+WIP_LOCAL void ov02_0224E008(void *data);
+WIP_LOCAL int ov02_022495B8(void *work);
+// callees still in asm
+WIP_LOCAL int ov02_0224E31C(u32 x, u32 z);
+WIP_LOCAL void ov02_0224D700(void *p);
+WIP_LOCAL void ov02_0224DE6C(void *p);
+WIP_LOCAL void ov02_02249EC0(void *work);
+WIP_LOCAL void ov02_02249CF0(void *work);
 
 WIP_LOCAL int ov02_022493EC(void);
 WIP_LOCAL NARC *ov02_022493F0(void);
@@ -401,6 +418,77 @@ WIP_LOCAL void ov02_0224E0BC(LocalMapObject *obj1, LocalMapObject *obj2, TaskMan
     TaskManager_Call(taskManager, ov02_0224E0EC, env);
 }
 
+WIP_LOCAL int ov02_0224E340(FieldSystem *fieldSystem) {
+    u32 x = PlayerAvatar_GetXCoord(fieldSystem->playerAvatar);
+    u32 z = PlayerAvatar_GetZCoord(fieldSystem->playerAvatar);
+    return ov02_0224E31C(x, z);
+}
+
+WIP_LOCAL void ov02_0224D0AC(void *playerAvatar, void *obj) {
+    VecFx32 pos;
+    PlayerAvatar_CopyPositionVector(playerAvatar, &pos);
+    Field3dObject_SetPosEx((Field3dObject *)obj, pos.x, pos.y, pos.z);
+}
+
+WIP_LOCAL void ov02_0224B6B0(void *work, BOOL visible) {
+    MapObject_UnpauseMovement(*(LocalMapObject **)((u8 *)work + 0x208));
+    MapObject_SetVisible(*(LocalMapObject **)((u8 *)work + 0x208), visible);
+}
+
+WIP_LOCAL int ov02_0224C680(Field3dObjectTask *task, FieldSystem *fieldSystem, void *data) {
+    ov01_022060B8(fieldSystem, 2, 1);
+    *(int *)data = *(int *)data + 1;
+    return 0;
+}
+
+WIP_LOCAL void ov02_0224B768(void *work) {
+    int v = *(int *)((u8 *)work + 0x1f4);
+    if (v != 0) {
+        sub_02068B48(v);
+        *(int *)((u8 *)work + 0x1f4) = 0;
+    }
+}
+
+WIP_LOCAL void ov02_02249D40(void *work) {
+    SysTask *task = *(SysTask **)((u8 *)work + 0x220);
+    if (task != NULL) {
+        SysTask_Destroy(task);
+        *(SysTask **)((u8 *)work + 0x220) = NULL;
+    }
+}
+
+WIP_LOCAL void ov02_0224D468(Field3dObjectTask *task, FieldSystem *fieldSystem, void *data) {
+    int i;
+    u8 *p = data;
+    u8 *q;
+    for (i = 0, q = (u8 *)data + 0x1b8; i < 2; i++, p += 0xdc) {
+        ov02_0224D144(p, q);
+    }
+}
+
+WIP_LOCAL void ov02_0224D868(void *data) {
+    int i;
+    u8 *p;
+    for (i = 0, p = (u8 *)data + 0x10; i < 0x10; i++, p += 0xcc) {
+        ov02_0224D700(p);
+    }
+}
+
+WIP_LOCAL void ov02_0224E008(void *data) {
+    int i;
+    u8 *p;
+    for (i = 0, p = (u8 *)data + 0x10; i < 0x12; i++, p += 0xcc) {
+        ov02_0224DE6C(p);
+    }
+}
+
+WIP_LOCAL int ov02_022495B8(void *work) {
+    ov02_02249EC0(work);
+    ov02_02249CF0(work);
+    *(int *)work = *(int *)work + 1;
+    return 0;
+}
+
 WIP_LOCAL void ov02_0224D98C(Field3dObjectTask *task, FieldSystem *fieldSystem, void *data) {
     int i;
     u8 *p;
@@ -670,7 +758,7 @@ WIP_LOCAL void ov02_0224F8F4(void *ptr) {
 }
 
 // ===========================================================================
-// HANDOFF — overlay_02_02248728 WIP (98/364 byte-match, objdiff-verified)
+// HANDOFF — overlay_02_02248728 WIP (108/364 byte-match, objdiff-verified)
 // ===========================================================================
 // MODULE: follow-mon sprite animation + Pokecenter / field-move (Escape Rope,
 //   Dig, Teleport) task subsystem. A 2D graphics renderer built on G2dRenderer /
