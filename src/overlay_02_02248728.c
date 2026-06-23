@@ -31,6 +31,7 @@
 #include "field/overlay_01_021FB878.h"
 
 #include "bg_window.h"
+#include "field_roamer.h"
 #include "field_system.h"
 #include "field_warp_tasks.h"
 #include "fieldmap.h"
@@ -141,6 +142,7 @@ WIP_LOCAL int ov02_0224B938(void *work);
 WIP_LOCAL void ov02_0224B784(void *work); // still in asm
 WIP_LOCAL int ov02_0224B964(void *work);
 WIP_LOCAL int ov02_0224C71C(void *a0, FieldSystem *fieldSystem, void *work);
+WIP_LOCAL void ov02_RepelActiveRoamersFromMapNo(RoamerSaveData *roamerSave, u32 mapNo);
 WIP_LOCAL BOOL ov02_0224ABCC(void *a0, void *a1);
 WIP_LOCAL void *ov02_0224A468(void *a, VecFx32 *b, int c, int d); // still in asm
 WIP_LOCAL BOOL ov02_02250780(FieldSystem *fieldSystem, u8 a1);
@@ -623,6 +625,17 @@ WIP_LOCAL void ov02_02249E58(SysTask *task, void *work) {
         sub_0200ADA4(res);
         SysTask_CreateOnVWaitQueue(ov02_02249E90, work, 0x80);
         *(int *)((u8 *)work + 0x210) = *(int *)((u8 *)work + 0x210) + 1;
+    }
+}
+
+WIP_LOCAL void ov02_RepelActiveRoamersFromMapNo(RoamerSaveData *roamerSave, u32 mapNo) {
+    u8 i;
+    for (i = 0; i < 4; i++) {
+        if (GetRoamerIsActiveByIndex(roamerSave, i)) {
+            if (mapNo == GetRoamMapByLocationIdx(Roamer_GetLocation(roamerSave, i))) {
+                RoamerLocationUpdateRand(roamerSave, i);
+            }
+        }
     }
 }
 
@@ -1546,7 +1559,7 @@ WIP_LOCAL void ov02_0224F8F4(void *ptr) {
 }
 
 // ===========================================================================
-// HANDOFF — overlay_02_02248728 WIP (177/364 byte-match, objdiff-verified)
+// HANDOFF — overlay_02_02248728 WIP (178/364 byte-match, objdiff-verified)
 // ===========================================================================
 // MODULE: follow-mon sprite animation + Pokecenter / field-move (Escape Rope,
 //   Dig, Teleport) task subsystem. A 2D graphics renderer built on G2dRenderer /

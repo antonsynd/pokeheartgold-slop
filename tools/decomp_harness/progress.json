@@ -1035,9 +1035,9 @@
     "file": "asm/overlay_02_02248728.s",
     "lines": 17995,
     "functions": 364,
-    "matched_so_far": 177,
+    "matched_so_far": 178,
     "result": "wip-deferred",
-    "note": "177/364 (~49%). +1: ov02_02249E58 (SpriteResourceCollection_Find + sub_0200ADA4 + SysTask_CreateOnVWaitQueue, discards handle, work->0x210++). Deferred: resource-ADD cluster, jump-table funcs, D288/D3B4 (dead-cmp), B298/B784 (sub_02068B0C), 16 huge fns. Handoff at EOF."
+    "note": "178/364 (~49%). +1: ov02_RepelActiveRoamersFromMapNo (roamer loop). Attempted+deferred resource-ADD 02248980 (8-byte cached/reload diff). Deferred clusters: resource-ADD (980/A58/B30/BA0), jump-table funcs, D288/D3B4 dead-cmp, B298/B784 (sub_02068B0C), 16 huge fns. Handoff at EOF."
   },
   "stats": {
     "total_attempts": 153,
