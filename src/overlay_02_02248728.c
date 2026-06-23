@@ -110,16 +110,17 @@ extern ov02_StateMachineFunc const ov02_022534B8[];
 typedef int (*ov02_FieldTaskFunc)(TaskManager *taskManager, FieldSystem *fieldSystem, void *env);
 extern ov02_FieldTaskFunc const ov02_02253700[];
 extern ov02_FieldTaskFunc const ov02_022536F0[];
-extern void sub_02068BAC(void *a0);                             // unk_020689C8.h
-extern void ov01_021FCD78(SysTask *task);                       // no header included here
-extern BOOL ov01_021FCD6C(SysTask *task);                       // no header included here
-extern void ov01_021FBD38(Field3dModel *model, void *narcData); // no header included here
-extern void ov01_021FBDFC(Field3dModel *model);                 // no header included here
-extern void ov01_021F1448(void *a0);                            // no header included here
-extern void *ov01_021FCD2C(FieldSystem *fieldSystem, int a1);   // no header included here
-extern void ov01_021FCD8C(void *a0, int a1, fx32 a2, int a3);   // no header included here
-extern const MovementScriptCommand ov02_02253820;               // rodata, defined later
-extern void sub_02068DB8(void *a0, VecFx32 *out);               // no header included here
+extern void sub_02068BAC(void *a0);                                          // unk_020689C8.h
+extern void ov01_021FCD78(SysTask *task);                                    // no header included here
+extern BOOL ov01_021FCD6C(SysTask *task);                                    // no header included here
+extern void ov01_021FBD38(Field3dModel *model, void *narcData);              // no header included here
+extern void ov01_021FBDFC(Field3dModel *model);                              // no header included here
+extern void ov01_021F1448(void *a0);                                         // no header included here
+extern void *ov01_021FCD2C(FieldSystem *fieldSystem, int a1);                // no header included here
+extern void ov01_021FCD8C(void *a0, int a1, fx32 a2, int a3);                // no header included here
+extern const MovementScriptCommand ov02_02253820;                            // rodata, defined later
+extern void sub_02068DB8(void *a0, VecFx32 *out);                            // no header included here
+extern void Field3dObject_SetPos(Field3dObject *object, const VecFx32 *pos); // .public, no C proto yet
 
 // STRUCT-CLEANUP TODO: the getters/setters/deleters below use byte-offset casts
 // because their owning struct isn't named yet. They byte-match; replace the casts
@@ -162,6 +163,10 @@ WIP_LOCAL void ov02_0224A834(void *mgr, void *src);
 WIP_LOCAL Sprite *ov02_0224A418(void *mgr, VecFx32 *pos);
 WIP_LOCAL void ov02_0224D288(Field3dObjectTask *task, FieldSystem *fieldSystem, Field3dObject *obj);
 WIP_LOCAL void ov02_0224D3B4(Field3dObjectTask *task, FieldSystem *fieldSystem, Field3dObject *obj);
+WIP_LOCAL BOOL ov02_0224B7CC(void *a0, void **out);
+WIP_LOCAL Roamer *ov02_0224BAA8(RoamerSaveData *roamerSave, int a1);
+WIP_LOCAL void ov02_0224D700(void *obj);
+WIP_LOCAL void ov02_0224D914(Field3dObjectTask *task, FieldSystem *fieldSystem, void *data);
 WIP_LOCAL BOOL ov02_0224ABCC(void *a0, void *a1);
 WIP_LOCAL void *ov02_0224A468(void *a, VecFx32 *b, int c, int d); // still in asm
 WIP_LOCAL BOOL ov02_02250780(FieldSystem *fieldSystem, u8 a1);
@@ -748,6 +753,60 @@ WIP_LOCAL void ov02_0224D3B4(Field3dObjectTask *task, FieldSystem *fieldSystem, 
         break;
     case 1:
         break;
+    }
+}
+
+WIP_LOCAL BOOL ov02_0224B7CC(void *a0, void **out) {
+    VecFx32 pos;
+    void *p = sub_02068D98(a0);
+    u8 *base;
+    *out = *(void **)p;
+    base = *(u8 **)p + 0x228;
+    sub_02068DB8(a0, &pos);
+    Field3dObject_SetPos((Field3dObject *)(base + 0x24), &pos);
+    Field3dObject_SetActiveFlag((Field3dObject *)(base + 0x24), 0);
+    return TRUE;
+}
+
+WIP_LOCAL Roamer *ov02_0224BAA8(RoamerSaveData *roamerSave, int a1) {
+    u8 i;
+    for (i = 0; i < 4; i++) {
+        if (GetRoamerIsActiveByIndex(roamerSave, i)) {
+            Roamer *stats = Roamers_GetRoamMonStats(roamerSave, i);
+            if (a1 == GetRoamerData(stats, 4)) {
+                return stats;
+            }
+        }
+    }
+    return NULL;
+}
+
+WIP_LOCAL void ov02_0224D700(void *obj) {
+    if (*(int *)((u8 *)obj + 0xc8) != 0) {
+        BOOL acc = TRUE;
+        int i = 0;
+        Field3DModelAnimation *anim = (Field3DModelAnimation *)((u8 *)obj + 0x78);
+        for (; i < 4; i++) {
+            acc &= Field3dModelAnimation_FrameAdvanceAndCheck(anim, FX32_ONE);
+            anim = (Field3DModelAnimation *)((u8 *)anim + 0x14);
+        }
+        if (acc == 1) {
+            *(int *)((u8 *)obj + 0xc8) = 0;
+            Field3dObject_SetActiveFlag((Field3dObject *)obj, 0);
+        }
+    }
+}
+
+WIP_LOCAL void ov02_0224D914(Field3dObjectTask *task, FieldSystem *fieldSystem, void *data) {
+    int i;
+    u8 *p;
+    for (i = 0, p = (u8 *)data + 0x10; i < 0x10; i++, p += 0xcc) {
+        ov02_0224D788(p, (NNSFndAllocator *)((u8 *)data + 0xCFC));
+    }
+    Field3dModel_Unload((Field3dModel *)data);
+    for (i = 0; i < 4; i++) {
+        Heap_Free(*(void **)((u8 *)data + 0xCD0));
+        data = (u8 *)data + 4;
     }
 }
 
@@ -1671,7 +1730,7 @@ WIP_LOCAL void ov02_0224F8F4(void *ptr) {
 }
 
 // ===========================================================================
-// HANDOFF — overlay_02_02248728 WIP (187/364 byte-match, objdiff-verified)
+// HANDOFF — overlay_02_02248728 WIP (191/364 byte-match, objdiff-verified)
 // ===========================================================================
 // MODULE: follow-mon sprite animation + Pokecenter / field-move (Escape Rope,
 //   Dig, Teleport) task subsystem. A 2D graphics renderer built on G2dRenderer /

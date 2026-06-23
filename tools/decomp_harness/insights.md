@@ -324,6 +324,10 @@ To get MWCC s init-0 then conditional-set form (mov rN,#0; cmp; beq; mov rN,#1 w
 
 switch(x){case 0:<body>;break; case 1:break;} where case 1 is empty and equals default: MWCC emits cmp #0; beq case0; cmp #1; <falls through to end>. The cmp #1 is dead (no branch after) because both case 1 and default reach the same return point as the next instruction, so the beq is elided. Seen in ov02_0224D288/D3B4 (state==0 body, state==1 noop).
 
+### Keep a big offset in its own register: add it in the pointer initializer  <!-- id: mwcc-split-bigoff-via-initializer -->
+
+When asm holds base in one reg and a large constant offset (e.g. 0x228 = 0x8a<<2) in another, recombining base+BIG+small per use: write the BIG offset into the variable initializer -- u8 *base = *(u8**)p + 0x228; then use (T*)(base + 0x24) at each call site. MWCC keeps the original pointer and the BIG constant in separate registers, reuses the constant reg, and adds the small offset per call. Writing (u8*)x + 0x228 + 0x24 instead folds to one 0x24c add (too small); &x[0x8a] recomputes 0x8a<<2 inline each time (too big). Seen in ov02_0224B7CC.
+
 ## Matching Tricks
 
 ### Small source changes that move codegen  <!-- id: decl-order-tricks -->
