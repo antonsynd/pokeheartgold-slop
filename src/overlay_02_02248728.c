@@ -110,15 +110,21 @@ extern ov02_StateMachineFunc const ov02_022534B8[];
 typedef int (*ov02_FieldTaskFunc)(TaskManager *taskManager, FieldSystem *fieldSystem, void *env);
 extern ov02_FieldTaskFunc const ov02_02253700[];
 extern ov02_FieldTaskFunc const ov02_022536F0[];
-extern void sub_02068BAC(void *a0);                                          // unk_020689C8.h
-extern void ov01_021FCD78(SysTask *task);                                    // no header included here
-extern BOOL ov01_021FCD6C(SysTask *task);                                    // no header included here
-extern void ov01_021FBD38(Field3dModel *model, void *narcData);              // no header included here
-extern void ov01_021FBDFC(Field3dModel *model);                              // no header included here
-extern void ov01_021F1448(void *a0);                                         // no header included here
-extern void *ov01_021FCD2C(FieldSystem *fieldSystem, int a1);                // no header included here
-extern void ov01_021FCD8C(void *a0, int a1, fx32 a2, int a3);                // no header included here
-extern const MovementScriptCommand ov02_02253820;                            // rodata, defined later
+extern void sub_02068BAC(void *a0);                                                                // unk_020689C8.h
+extern void ov01_021FCD78(SysTask *task);                                                          // no header included here
+extern BOOL ov01_021FCD6C(SysTask *task);                                                          // no header included here
+extern void ov01_021FBD38(Field3dModel *model, void *narcData);                                    // no header included here
+extern void ov01_021FBDFC(Field3dModel *model);                                                    // no header included here
+extern void ov01_021F1448(void *a0);                                                               // no header included here
+extern void *ov01_021FCD2C(FieldSystem *fieldSystem, int a1);                                      // no header included here
+extern void ov01_021FCD8C(void *a0, int a1, fx32 a2, int a3);                                      // no header included here
+extern const MovementScriptCommand ov02_02253820;                                                  // rodata, defined later
+extern const MovementScriptCommand ov02_02253794;                                                  // rodata, defined later
+extern BOOL sub_02054C20(FieldSystem *fieldSystem, int targetType, int *outObj, void **outHandle); // unk_02054648.h, not included
+extern u16 PlayerProfile_GetTrainerID_VisibleHalf(PlayerProfile *profile);                         // player_data.h, not included
+typedef struct WallpaperPasswordBank WallpaperPasswordBank;                                        // opaque; easy_chat.h not included
+extern WallpaperPasswordBank *WallpaperPasswordBank_Create(enum HeapID heapID);
+extern void WallpaperPasswordBank_Delete(WallpaperPasswordBank *bank);
 extern void sub_02068DB8(void *a0, VecFx32 *out);                            // no header included here
 extern void Field3dObject_SetPos(Field3dObject *object, const VecFx32 *pos); // .public, no C proto yet
 extern void GetFlyWarpData(u16 spawnId, Location *dest);                     // unk_0203BA5C.h, not included
@@ -197,6 +203,11 @@ WIP_LOCAL void ov02_0224D310(void *a0, void *a1, void *data);
 WIP_LOCAL int ov02_0224C840(TaskManager *taskManager, void *a1, void *a2);
 WIP_LOCAL void ov02_0224D820(void *data);
 WIP_LOCAL void ov02_0224DF1C(void *data);
+WIP_LOCAL BOOL ov02_0224BE24(TaskManager *taskManager);
+WIP_LOCAL int ov02_0224CAB8(WallpaperPasswordBank *bank, u16 trainerId, u16 a, u16 b, u16 c, u16 d);
+WIP_LOCAL int ov02_0224CBF8(WallpaperPasswordBank *bank, u16 trainerId, u16 a, u16 b, u16 c, u16 d);
+WIP_LOCAL int ov02_0224C6DC(TaskManager *taskManager, FieldSystem *fieldSystem, void *work);
+WIP_LOCAL int ov02_0224C2A8(TaskManager *taskManager, FieldSystem *fieldSystem, void *work);
 WIP_LOCAL void ov02_0224D0C8(void *data, int a1, int a2, int a3, void *a4);
 WIP_LOCAL void ov02_0224D044(void *a0, void *data);
 WIP_LOCAL void ov02_0224D700(void *obj);
@@ -970,6 +981,58 @@ WIP_LOCAL int ov02_0224C840(TaskManager *taskManager, void *a1, void *a2) {
     GetSpecialSpawnWarpData(blackoutSpawn, LocalFieldData_GetSpecialSpawnWarpPtr(save));
     sub_02053B04(taskManager, &loc, *(int *)((u8 *)a2 + 0xc));
     return 2;
+}
+
+WIP_LOCAL void ov02_0224BDE8(FieldSystem *fieldSystem, u8 direction, u8 length) {
+    if (sub_02054C20(fieldSystem, 0xd0, NULL, NULL) != 0) {
+        u8 *env = Heap_AllocAtEnd(HEAP_ID_FIELD1, 4);
+        env[0] = length;
+        env[1] = direction;
+        env[2] = 0;
+        TaskManager_Call(fieldSystem->taskman, ov02_0224BE24, env);
+    } else {
+        GF_AssertFail();
+    }
+}
+
+WIP_LOCAL int ov02_0224CD38(PlayerProfile *profile, u16 a, u16 b, u16 c, u16 d, enum HeapID heapID) {
+    int ret;
+    WallpaperPasswordBank *bank = WallpaperPasswordBank_Create(heapID);
+    ret = ov02_0224CAB8(bank, PlayerProfile_GetTrainerID_VisibleHalf(profile), a, b, c, d);
+    WallpaperPasswordBank_Delete(bank);
+    return ret;
+}
+
+WIP_LOCAL int ov02_0224CD74(PlayerProfile *profile, u16 a, u16 b, u16 c, u16 d, enum HeapID heapID) {
+    int ret;
+    WallpaperPasswordBank *bank = WallpaperPasswordBank_Create(heapID);
+    ret = ov02_0224CBF8(bank, PlayerProfile_GetTrainerID_VisibleHalf(profile), a, b, c, d);
+    WallpaperPasswordBank_Delete(bank);
+    return ret;
+}
+
+WIP_LOCAL int ov02_0224C6DC(TaskManager *taskManager, FieldSystem *fieldSystem, void *work) {
+    if (!EventObjectMovementMan_IsFinish(*(EventObjectMovementMan **)((u8 *)work + 0x14))) {
+        return 0;
+    }
+    EventObjectMovementMan_Delete(*(EventObjectMovementMan **)((u8 *)work + 0x14));
+    *(EventObjectMovementMan **)((u8 *)work + 0x10) = EventObjectMovementMan_Create(*(LocalMapObject **)((u8 *)work + 0x20), &ov02_02253820);
+    *(EventObjectMovementMan **)((u8 *)work + 0x14) = EventObjectMovementMan_Create(*(LocalMapObject **)((u8 *)fieldSystem + 0xe4), &ov02_02253820);
+    (*(int *)((u8 *)work))++;
+    return 0;
+}
+
+WIP_LOCAL int ov02_0224C2A8(TaskManager *taskManager, FieldSystem *fieldSystem, void *work) {
+    if (EventObjectMovementMan_IsFinish(*(EventObjectMovementMan **)((u8 *)work + 0x10)) == 1) {
+        EventObjectMovementMan_Delete(*(EventObjectMovementMan **)((u8 *)work + 0x10));
+        *(EventObjectMovementMan **)((u8 *)work + 0x10) = EventObjectMovementMan_Create(*(LocalMapObject **)((u8 *)work + 0x20), &ov02_02253794);
+    }
+    if (!IsPaletteFadeFinished()) {
+        return 0;
+    }
+    ov01_021FCD8C(*(void **)((u8 *)work + 0x1c), 2, 0, 0x3c);
+    (*(int *)((u8 *)work))++;
+    return 1;
 }
 
 WIP_LOCAL void ov02_0224D144(void *obj, void *alloc) {
@@ -1892,7 +1955,7 @@ WIP_LOCAL void ov02_0224F8F4(void *ptr) {
 }
 
 // ===========================================================================
-// HANDOFF — overlay_02_02248728 WIP (202/364 byte-match, objdiff-verified)
+// HANDOFF — overlay_02_02248728 WIP (207/364 byte-match, objdiff-verified)
 // ===========================================================================
 // MODULE: follow-mon sprite animation + Pokecenter / field-move (Escape Rope,
 //   Dig, Teleport) task subsystem. A 2D graphics renderer built on G2dRenderer /
