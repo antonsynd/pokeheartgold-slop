@@ -1035,9 +1035,9 @@
     "file": "asm/overlay_02_02248728.s",
     "lines": 17995,
     "functions": 364,
-    "matched_so_far": 82,
+    "matched_so_far": 98,
     "result": "wip-deferred",
-    "note": "82/364. Cleared most cheap wrappers (SysTask destroy, Field3dObjectTask_GetData state queries, SpriteList render, palette-fade poll, anim-speed, follow-mon getters). Next: AnimManager struct (ctor) + TaskData struct + the larger anim callbacks. Handoff at EOF."
+    "note": "98/364. +16: render loops (struct/walking-ptr), alloc helpers (ov02_0224B690/C660/F864/E0D4), step funcs, struct-copy getter. Added UnkPair8 typedef. Next: AnimManager struct + larger anim callbacks. Handoff at EOF."
   },
   "stats": {
     "total_attempts": 153,

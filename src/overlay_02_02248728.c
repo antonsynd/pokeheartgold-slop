@@ -48,6 +48,12 @@
 // for objdiff. See VISIBILITY NOTE above. Finalize to `static` at flip-to-src.
 #define WIP_LOCAL /* static */
 
+// 8-byte pair used for the sub_02068D98 struct-copy getters (name TBD).
+typedef struct UnkPair8 {
+    s32 unk0;
+    s32 unk4;
+} UnkPair8;
+
 // follow-mon task-data accessor (defined in unk_020689C8.c); local extern matches
 // the convention used by other overlays that don't pull in the full header.
 extern void *sub_02068D74(void *work);
@@ -99,6 +105,31 @@ WIP_LOCAL void ov02_0224E0BC(LocalMapObject *obj1, LocalMapObject *obj2, TaskMan
 WIP_LOCAL void ov02_0224DCB0(Field3dObjectTask *task, FieldSystem *fieldSystem, void *data);
 WIP_LOCAL void *ov02_0224E0D4(LocalMapObject *obj1, LocalMapObject *obj2);
 WIP_LOCAL BOOL ov02_0224E0EC(TaskManager *taskManager);
+
+// batch: render loops, alloc helpers, step funcs (some callees still in asm)
+WIP_LOCAL void ov02_0224D98C(Field3dObjectTask *task, FieldSystem *fieldSystem, void *data);
+WIP_LOCAL void ov02_0224DDC8(Field3dObjectTask *task, FieldSystem *fieldSystem, void *data);
+WIP_LOCAL void *ov02_0224B690(enum HeapID heapID, u32 size);
+WIP_LOCAL void *ov02_0224C660(enum HeapID heapID, u32 size);
+WIP_LOCAL void *ov02_0224F864(enum HeapID heapID);
+WIP_LOCAL void ov02_0224A67C(void *work);
+WIP_LOCAL int ov02_02249968(void *work);
+WIP_LOCAL int ov02_02249AC4(void *work);
+WIP_LOCAL int ov02_02249940(void *work);
+WIP_LOCAL int ov02_02249954(void *work);
+WIP_LOCAL void ov02_0224B3FC(void *a0, int *a1);
+WIP_LOCAL BOOL ov02_0224B6D0(void *a0, void *out);
+WIP_LOCAL int ov02_0224B494(void *work);
+WIP_LOCAL void ov02_0224D658(Field3dObjectTask *task, FieldSystem *fieldSystem, void *data);
+WIP_LOCAL BOOL ov02_0224FC74(void *a0, void *a1);
+WIP_LOCAL void ov02_0224A6D0(void *work);
+WIP_LOCAL void ov02_0224A8D4(void *work);
+WIP_LOCAL void ov02_02249FD4(void *work);
+WIP_LOCAL void ov02_0224A028(void *work);
+WIP_LOCAL void ov02_0224B364(void *a0, void *a1);
+WIP_LOCAL void ov02_0224B3B0(void *a0, void *a1);
+WIP_LOCAL void ov02_0224D1AC(void *data);
+WIP_LOCAL void ov02_0224D0AC(void *playerAvatar, void *data);
 
 WIP_LOCAL int ov02_022493EC(void);
 WIP_LOCAL NARC *ov02_022493F0(void);
@@ -357,9 +388,122 @@ WIP_LOCAL BOOL ov02_0224B350(void *a0, void *out) {
     return TRUE;
 }
 
+WIP_LOCAL void *ov02_0224E0D4(LocalMapObject *obj1, LocalMapObject *obj2) {
+    void *env = Heap_AllocAtEnd(HEAP_ID_FIELD1, 0x20);
+    *(int *)env = 0;
+    *(LocalMapObject **)((u8 *)env + 4) = obj1;
+    *(LocalMapObject **)((u8 *)env + 8) = obj2;
+    return env;
+}
+
 WIP_LOCAL void ov02_0224E0BC(LocalMapObject *obj1, LocalMapObject *obj2, TaskManager *taskManager) {
     void *env = ov02_0224E0D4(obj1, obj2);
     TaskManager_Call(taskManager, ov02_0224E0EC, env);
+}
+
+WIP_LOCAL void ov02_0224D98C(Field3dObjectTask *task, FieldSystem *fieldSystem, void *data) {
+    int i;
+    u8 *p;
+    for (i = 0, p = (u8 *)data + 0x10; i < 0x10; i++, p += 0xcc) {
+        Field3dObject_Draw((Field3dObject *)p);
+    }
+}
+
+WIP_LOCAL void ov02_0224DDC8(Field3dObjectTask *task, FieldSystem *fieldSystem, void *data) {
+    int i;
+    u8 *p;
+    for (i = 0, p = (u8 *)data + 0x10; i < 0x12; i++, p += 0xcc) {
+        Field3dObject_Draw((Field3dObject *)p);
+    }
+}
+
+WIP_LOCAL void *ov02_0224B690(enum HeapID heapID, u32 size) {
+    void *ptr = Heap_AllocAtEnd(heapID, size);
+    if (ptr == NULL) {
+        GF_AssertFail();
+    }
+    memset(ptr, 0, size);
+    return ptr;
+}
+
+WIP_LOCAL void *ov02_0224C660(enum HeapID heapID, u32 size) {
+    void *ptr = Heap_AllocAtEnd(heapID, size);
+    if (ptr == NULL) {
+        GF_AssertFail();
+    }
+    memset(ptr, 0, size);
+    return ptr;
+}
+
+WIP_LOCAL void *ov02_0224F864(enum HeapID heapID) {
+    void *ptr = Heap_Alloc(heapID, 0x884);
+    MI_CpuFill8(ptr, 0, 0x884);
+    return ptr;
+}
+
+WIP_LOCAL void ov02_0224A67C(void *work) {
+    *(int *)((u8 *)work + 0x34) = 0x18;
+    *(int *)((u8 *)work + 0x38) = 0;
+    *(int *)((u8 *)work + 0x3c) = 0x17;
+    *(int *)((u8 *)work + 0x40) = 1;
+}
+
+WIP_LOCAL int ov02_02249968(void *work) {
+    ov02_0224A6D0(work);
+    *(int *)work = *(int *)work + 1;
+    return 0;
+}
+
+WIP_LOCAL int ov02_02249AC4(void *work) {
+    ov02_0224A8D4(work);
+    *(int *)work = *(int *)work + 1;
+    return 0;
+}
+
+WIP_LOCAL int ov02_02249940(void *work) {
+    ov02_02249FD4(work);
+    *(int *)((u8 *)work + 0x10) = 0;
+    *(int *)work = *(int *)work + 1;
+    return 0;
+}
+
+WIP_LOCAL int ov02_02249954(void *work) {
+    ov02_0224A028(work);
+    *(int *)((u8 *)work + 0x10) = 0;
+    *(int *)work = *(int *)work + 1;
+    return 0;
+}
+
+WIP_LOCAL void ov02_0224B3FC(void *a0, int *a1) {
+    switch (*a1) {
+    case 1:
+        ov02_0224B364(a0, a1);
+        break;
+    case 2:
+        ov02_0224B3B0(a0, a1);
+        break;
+    }
+}
+
+WIP_LOCAL BOOL ov02_0224B6D0(void *a0, void *out) {
+    *(UnkPair8 *)out = *(UnkPair8 *)sub_02068D98(a0);
+    return TRUE;
+}
+
+WIP_LOCAL int ov02_0224B494(void *work) {
+    ov02_02249444(*(FieldSystem **)((u8 *)work + 0x14), TRUE);
+    *(int *)work = *(int *)work + 1;
+    return 0;
+}
+
+WIP_LOCAL void ov02_0224D658(Field3dObjectTask *task, FieldSystem *fieldSystem, void *data) {
+    ov02_0224D1AC(data);
+    ov02_0224D0AC(fieldSystem->playerAvatar, data);
+}
+
+WIP_LOCAL BOOL ov02_0224FC74(void *a0, void *a1) {
+    *(u8 *)((u8 *)a0 + 0x86D) = 0;
+    return *((u8 *)a1 + 7) != 0;
 }
 
 WIP_LOCAL NARC *ov02_022493F0(void) {
@@ -526,7 +670,7 @@ WIP_LOCAL void ov02_0224F8F4(void *ptr) {
 }
 
 // ===========================================================================
-// HANDOFF — overlay_02_02248728 WIP (82/364 byte-match, objdiff-verified)
+// HANDOFF — overlay_02_02248728 WIP (98/364 byte-match, objdiff-verified)
 // ===========================================================================
 // MODULE: follow-mon sprite animation + Pokecenter / field-move (Escape Rope,
 //   Dig, Teleport) task subsystem. A 2D graphics renderer built on G2dRenderer /

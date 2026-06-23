@@ -284,6 +284,14 @@ For a dense switch compiled to an inline jump table, MWCC emits the case BODIES 
 
 When a function's only remaining objdiff difference is the immediate offsets of [sp,#N] stack accesses (same mnemonics, same sizes, different slot numbers), the locals are assigned to the wrong slots. MWCC assigns stack-slot offsets to scalar locals in REVERSE of their C declaration order: the LAST-declared local gets the LOWEST offset (just above the spilled-parameter area), the FIRST-declared gets the highest. Diagnose by mapping each var to its asm slot (objdiff --disasm, find `str r,[sp,#N]` after each var's computation), then list the asm slots low->high; declare the C locals in the REVERSE of that order so MWCC's reverse assignment reproduces it. Spilled params (a0,a1,...) occupy the lowest slots; large arrays (buffers) are placed above the scalars regardless. This fixed overlay_80_02236C9C's frame exactly (push/sub matched after reversing 6 scalar decls). Related: register allocation is NOT controllable this way — instruction scheduling/regalloc ties (e.g. MWCC delaying a store past an independent load, cascading r0<->r1) can remain and may force NONMATCHING even when stack slots and structure match.
 
+### Two adjacent words: both-loads-then-both-stores means a struct copy, interleaved means individual fields  <!-- id: mwcc-adjacent-word-copy-is-struct-copy -->
+
+MWCC schedules ldr;str;ldr;str (interleaved) for individual field assignments like *(int*)(out+0x1c)=p[0]; *(int*)(out+0x20)=p[1];. But for a struct assignment of an 8-byte type *(Pair*)out = *(Pair*)p; it emits ldr;ldr;str;str (both loads first). If the asm shows both loads then both stores for adjacent words at offset 0/4, model it as a struct copy (typedef struct {s32 a,b;}), not two scalar stores. Seen in overlay_02_02248728 ov02_0224B6D0 vs ov02_0224B350.
+
+### Control init emission order of two loop-setup values with a comma for-init  <!-- id: mwcc-for-init-ordering-comma -->
+
+When a strength-reduced loop needs counter-init (i=0) emitted BEFORE the walking-pointer base adjustment (p += 0x10) but a separate p declaration emits the pointer first, put both in the for-init with a comma: for (i = 0, p = (u8*)data + 0x10; i < N; i++, p += stride). MWCC then emits movs i,#0 before the adds p,#0x10, matching. The index-expression form ((u8*)data + 0x10 + i*stride) can add an extra instruction (size mismatch) vs the walking pointer. Seen in overlay_02_02248728 ov02_0224D98C/DDC8.
+
 ## Matching Tricks
 
 ### Small source changes that move codegen  <!-- id: decl-order-tricks -->
