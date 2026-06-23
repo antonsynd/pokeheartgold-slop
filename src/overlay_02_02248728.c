@@ -125,6 +125,8 @@ WIP_LOCAL void ov02_0224B88C(void *work);
 WIP_LOCAL void ov02_0224FE40(void *a0, u8 *a1, LocalMapObject *obj);
 WIP_LOCAL void ov02_0224FE70(void *a0, LocalMapObject *obj, u8 dir); // still in asm
 WIP_LOCAL BOOL ov02_0224D178(void *obj);
+WIP_LOCAL void ov02_022507B4(FieldSystem *fieldSystem, u8 a1);
+WIP_LOCAL BOOL ov02_022507E8(TaskManager *taskManager); // still in asm
 WIP_LOCAL BOOL ov02_022489F0(void *mgr, int a1);
 WIP_LOCAL void ov02_02248A24(void *mgr, int a1);
 WIP_LOCAL BOOL ov02_02248AC8(void *mgr, int a1);
@@ -492,6 +494,18 @@ WIP_LOCAL BOOL ov02_0224D178(void *obj) {
         result &= Field3dModelAnimation_FrameAdvanceAndCheck((Field3DModelAnimation *)((u8 *)obj + 0x88 + i * 0x14), FX32_ONE);
     }
     return result;
+}
+
+WIP_LOCAL void ov02_022507B4(FieldSystem *fieldSystem, u8 a1) {
+    u16 *env;
+    int species = FollowMon_GetSpecies(*(LocalMapObject **)((u8 *)fieldSystem + 0xe4));
+    if ((u32)(species - 0x32) <= 1) {
+        return;
+    }
+    env = Heap_AllocAtEnd(HEAP_ID_FIELD2, 8);
+    env[0] = a1;
+    env[1] = 0;
+    TaskManager_Call(fieldSystem->taskman, ov02_022507E8, env);
 }
 
 WIP_LOCAL BOOL ov02_022489F0(void *mgr, int a1) {
@@ -1394,7 +1408,7 @@ WIP_LOCAL void ov02_0224F8F4(void *ptr) {
 }
 
 // ===========================================================================
-// HANDOFF — overlay_02_02248728 WIP (164/364 byte-match, objdiff-verified)
+// HANDOFF — overlay_02_02248728 WIP (165/364 byte-match, objdiff-verified)
 // ===========================================================================
 // MODULE: follow-mon sprite animation + Pokecenter / field-move (Escape Rope,
 //   Dig, Teleport) task subsystem. A 2D graphics renderer built on G2dRenderer /

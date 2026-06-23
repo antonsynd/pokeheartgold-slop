@@ -1035,9 +1035,9 @@
     "file": "asm/overlay_02_02248728.s",
     "lines": 17995,
     "functions": 364,
-    "matched_so_far": 164,
+    "matched_so_far": 165,
     "result": "wip-deferred",
-    "note": "164/364 (~45%). +4: AnimManager resource-array search accessors ov02_022489F0/A24/AC8/AFC (stride-8 {s16 id; SpriteResource* res@4} search + assert; AnimResEntry typedef). Key: inline loop-invariant array load (hoist after guard) + declare IV before bound (regalloc). Deferred: jump-tables (E26C family, D044/CFD8), init/update callbacks, huge fns. Handoff at EOF."
+    "note": "165/364 (~45%). +1: ov02_022507B4 (FollowMon species range-check + task create). Deferred clusters: resource-ADD (02248980/A58/B30/BA0 - cached/reloaded arr accesses, complex), jump-tables, init/update callbacks, 16 huge fns. Handoff at EOF."
   },
   "stats": {
     "total_attempts": 153,
