@@ -50,6 +50,7 @@
 #include "unk_02005D10.h"
 #include "unk_02009D48.h"
 #include "unk_0200A090.h"
+#include "unk_0200ACF0.h"
 #include "unk_0200FA24.h"
 #include "unk_02013FDC.h"
 #include "unk_02062108.h"
@@ -64,6 +65,13 @@ typedef struct UnkPair8 {
     s32 unk0;
     s32 unk4;
 } UnkPair8;
+
+// AnimManager per-resource entry (arrays at mgr->0x144 / 0x148, stride 8).
+typedef struct AnimResEntry {
+    s16 id;
+    s16 unk2;
+    SpriteResource *res;
+} AnimResEntry;
 
 // follow-mon task-data accessor (defined in unk_020689C8.c); local extern matches
 // the convention used by other overlays that don't pull in the full header.
@@ -117,6 +125,10 @@ WIP_LOCAL void ov02_0224B88C(void *work);
 WIP_LOCAL void ov02_0224FE40(void *a0, u8 *a1, LocalMapObject *obj);
 WIP_LOCAL void ov02_0224FE70(void *a0, LocalMapObject *obj, u8 dir); // still in asm
 WIP_LOCAL BOOL ov02_0224D178(void *obj);
+WIP_LOCAL BOOL ov02_022489F0(void *mgr, int a1);
+WIP_LOCAL void ov02_02248A24(void *mgr, int a1);
+WIP_LOCAL BOOL ov02_02248AC8(void *mgr, int a1);
+WIP_LOCAL void ov02_02248AFC(void *mgr, int a1);
 WIP_LOCAL void ov02_02248C98(Sprite *sprite, VecFx32 *out);
 WIP_LOCAL int ov02_02248E10(void *work);
 WIP_LOCAL void ov02_0224A69C(void *work, int p1, int p2, int p3, int p4);
@@ -480,6 +492,52 @@ WIP_LOCAL BOOL ov02_0224D178(void *obj) {
         result &= Field3dModelAnimation_FrameAdvanceAndCheck((Field3DModelAnimation *)((u8 *)obj + 0x88 + i * 0x14), FX32_ONE);
     }
     return result;
+}
+
+WIP_LOCAL BOOL ov02_022489F0(void *mgr, int a1) {
+    int i;
+    int count = *(u8 *)mgr;
+    for (i = 0; i < count; i++) {
+        if (a1 == (*(AnimResEntry **)((u8 *)mgr + 0x144))[i].id) {
+            return sub_0200ADA4((*(AnimResEntry **)((u8 *)mgr + 0x144))[i].res);
+        }
+    }
+    GF_AssertFail();
+}
+
+WIP_LOCAL void ov02_02248A24(void *mgr, int a1) {
+    int i;
+    int count = *(u8 *)mgr;
+    for (i = 0; i < count; i++) {
+        if (a1 == (*(AnimResEntry **)((u8 *)mgr + 0x144))[i].id) {
+            sub_0200A740((*(AnimResEntry **)((u8 *)mgr + 0x144))[i].res);
+            return;
+        }
+    }
+    GF_AssertFail();
+}
+
+WIP_LOCAL BOOL ov02_02248AC8(void *mgr, int a1) {
+    int i;
+    int count = *((u8 *)mgr + 1);
+    for (i = 0; i < count; i++) {
+        if (a1 == (*(AnimResEntry **)((u8 *)mgr + 0x148))[i].id) {
+            return sub_0200B00C((*(AnimResEntry **)((u8 *)mgr + 0x148))[i].res);
+        }
+    }
+    GF_AssertFail();
+}
+
+WIP_LOCAL void ov02_02248AFC(void *mgr, int a1) {
+    int i;
+    int count = *((u8 *)mgr + 1);
+    for (i = 0; i < count; i++) {
+        if (a1 == (*(AnimResEntry **)((u8 *)mgr + 0x148))[i].id) {
+            sub_0200A740((*(AnimResEntry **)((u8 *)mgr + 0x148))[i].res);
+            return;
+        }
+    }
+    GF_AssertFail();
 }
 
 WIP_LOCAL void ov02_0224FE40(void *a0, u8 *a1, LocalMapObject *obj) {
@@ -1336,7 +1394,7 @@ WIP_LOCAL void ov02_0224F8F4(void *ptr) {
 }
 
 // ===========================================================================
-// HANDOFF — overlay_02_02248728 WIP (160/364 byte-match, objdiff-verified)
+// HANDOFF — overlay_02_02248728 WIP (164/364 byte-match, objdiff-verified)
 // ===========================================================================
 // MODULE: follow-mon sprite animation + Pokecenter / field-move (Escape Rope,
 //   Dig, Teleport) task subsystem. A 2D graphics renderer built on G2dRenderer /

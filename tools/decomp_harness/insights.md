@@ -304,6 +304,10 @@ For a local VecFx32 zeroed then passed by address, three separate field assignme
 
 When the loop bound is re-read each iteration (e.g. for(i=0;i<*countptr;i++)), MWCC emits: load count; i=0; if(count==0) goto end; THEN set up the strength-reduced walking pointer and loop-invariant constants; then the body. A comma for-init (for(i=0,p=base;...)) forces p BEFORE the guard and mismatches. Use the plain index form base+i*stride and let MWCC strength-reduce — the IV/constant setup lands after the guard, matching. (Contrast: a fixed/compile-time trip count often wants the comma-init form instead — see mwcc-for-init-ordering-comma.) Seen in overlay_02_02248728 ov02_0224D1AC.
 
+### Inline a loop-invariant load so it hoists after the zero-trip guard; declare the IV before the bound to match register choice  <!-- id: mwcc-loop-invariant-after-guard-and-iv-regalloc -->
+
+Two combined tricks for count-guarded search loops. (1) A loop-invariant array base (arr = mgr->off) written as a separate statement BEFORE the loop is computed before the count<=0 guard; inline the expression ((*(T**)((u8*)mgr+off))[i]) instead and MWCC CSEs+hoists it into the preheader AFTER the guard, matching. (2) The induction variable vs the loop bound get swapped registers depending on declaration order; declare int i; before int count = ...; so the IV takes the lower register like the asm. Both needed together to match overlay_02_02248728 ov02_022489F0/A24/AC8/AFC (AnimManager resource-array search + assert).
+
 ## Matching Tricks
 
 ### Small source changes that move codegen  <!-- id: decl-order-tricks -->

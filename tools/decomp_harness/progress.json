@@ -1035,9 +1035,9 @@
     "file": "asm/overlay_02_02248728.s",
     "lines": 17995,
     "functions": 364,
-    "matched_so_far": 160,
+    "matched_so_far": 164,
     "result": "wip-deferred",
-    "note": "160/364 (~44%). +1: ov02_0224D178 (anim FrameAdvanceAndCheck accumulate, dynamic-bound index form). Jump-table switches E26C/E2A0/E2D4 DEFERRED (MWCC switch != handwritten jump-table symbol size). Other deferred: D1E4/D288/D310/D358 init/update callbacks (cut-off+unknown helpers ov02_0224D0C8/D044/CFD8), 022508B4 void/BOOL, huge fns. Handoff at EOF."
+    "note": "164/364 (~45%). +4: AnimManager resource-array search accessors ov02_022489F0/A24/AC8/AFC (stride-8 {s16 id; SpriteResource* res@4} search + assert; AnimResEntry typedef). Key: inline loop-invariant array load (hoist after guard) + declare IV before bound (regalloc). Deferred: jump-tables (E26C family, D044/CFD8), init/update callbacks, huge fns. Handoff at EOF."
   },
   "stats": {
     "total_attempts": 153,
