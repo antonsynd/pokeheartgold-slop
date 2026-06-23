@@ -1035,9 +1035,9 @@
     "file": "asm/overlay_02_02248728.s",
     "lines": 17995,
     "functions": 364,
-    "matched_so_far": 175,
+    "matched_so_far": 176,
     "result": "wip-deferred",
-    "note": "175/364 (~48%). +1: ov02_0224C1F8 (field-task runner, table ov02_022536F0; r==2 frees+returns 1). Task_FieldDig/Task_FieldTeleport DEFERRED (4-state jump-table switches + complex per-state logic = the jump-table wall). Deferred: resource-ADD cluster, jump-table funcs, D288, 16 huge fns. Handoff at EOF."
+    "note": "176/364 (~48%). +1: ov02_0224D144 (Field3dModel_Unload + dynamic-bound Field3dModelAnimation_Unload loop; the cleanup used by destroy dispatchers). Deferred: resource-ADD cluster, jump-table funcs (E26C/Dig/Teleport/D044/CFD8), D288/D3B4 (ambiguous dead-cmp), 16 huge fns. Handoff at EOF."
   },
   "stats": {
     "total_attempts": 153,

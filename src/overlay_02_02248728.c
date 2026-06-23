@@ -616,6 +616,14 @@ WIP_LOCAL BOOL ov02_0224D178(void *obj) {
     return result;
 }
 
+WIP_LOCAL void ov02_0224D144(void *obj, void *alloc) {
+    u32 i;
+    Field3dModel_Unload((Field3dModel *)((u8 *)obj + 0x78));
+    for (i = 0; i < *(u32 *)((u8 *)obj + 0xd8); i++) {
+        Field3dModelAnimation_Unload((Field3DModelAnimation *)((u8 *)obj + 0x88 + i * 0x14), (NNSFndAllocator *)alloc);
+    }
+}
+
 WIP_LOCAL void ov02_022507B4(FieldSystem *fieldSystem, u8 a1) {
     u16 *env;
     int species = FollowMon_GetSpecies(*(LocalMapObject **)((u8 *)fieldSystem + 0xe4));
@@ -1528,7 +1536,7 @@ WIP_LOCAL void ov02_0224F8F4(void *ptr) {
 }
 
 // ===========================================================================
-// HANDOFF — overlay_02_02248728 WIP (175/364 byte-match, objdiff-verified)
+// HANDOFF — overlay_02_02248728 WIP (176/364 byte-match, objdiff-verified)
 // ===========================================================================
 // MODULE: follow-mon sprite animation + Pokecenter / field-move (Escape Rope,
 //   Dig, Teleport) task subsystem. A 2D graphics renderer built on G2dRenderer /
