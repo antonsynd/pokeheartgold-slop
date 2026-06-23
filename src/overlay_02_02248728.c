@@ -44,6 +44,27 @@
 // for objdiff. See VISIBILITY NOTE above. Finalize to `static` at flip-to-src.
 #define WIP_LOCAL /* static */
 
+// follow-mon task-data accessor (defined in unk_020689C8.c); local extern matches
+// the convention used by other overlays that don't pull in the full header.
+extern void *sub_02068D74(void *work);
+
+// STRUCT-CLEANUP TODO: the getters/setters/deleters below use byte-offset casts
+// because their owning struct isn't named yet. They byte-match; replace the casts
+// with real struct field accesses once those structs are reversed.
+WIP_LOCAL u8 ov02_02248D8C(void *work);
+WIP_LOCAL void ov02_02248DE4(void *a0, void *work);
+WIP_LOCAL BOOL ov02_0224953C(void *work);
+WIP_LOCAL int ov02_0224997C(void *work);
+WIP_LOCAL void ov02_0224A66C(void *work);
+WIP_LOCAL void ov02_0224A674(void *work);
+WIP_LOCAL void ov02_0224A690(void *work);
+WIP_LOCAL void ov02_0224AAC8(void *a0, void *work);
+WIP_LOCAL void ov02_0224ABF8(void *a0, void *work);
+WIP_LOCAL void ov02_0224B2C0(void *work);
+WIP_LOCAL BOOL ov02_0224B43C(SysTask *task);
+WIP_LOCAL BOOL ov02_0224E308(int a0);
+WIP_LOCAL BOOL ov02_0224FB44(void *a0, u16 *a1);
+
 WIP_LOCAL int ov02_022493EC(void);
 WIP_LOCAL NARC *ov02_022493F0(void);
 WIP_LOCAL void ov02_022493FC(void);
@@ -106,6 +127,61 @@ extern const Field3dObjectTaskTemplate ov02_022539EC;
 
 WIP_LOCAL int ov02_022493EC(void) {
     return 0;
+}
+
+// --- cast-based getters/setters/deleters (struct names TBD) ---
+WIP_LOCAL u8 ov02_02248D8C(void *work) {
+    return ((u8 *)sub_02068D74(work))[2];
+}
+
+WIP_LOCAL void ov02_02248DE4(void *a0, void *work) {
+    Sprite_Delete(*(Sprite **)((u8 *)work + 0x68));
+}
+
+WIP_LOCAL BOOL ov02_0224953C(void *work) {
+    return ((int *)SysTask_GetData(work))[1];
+}
+
+WIP_LOCAL int ov02_0224997C(void *work) {
+    *(int *)((u8 *)work + 4) = 1;
+    return 0;
+}
+
+WIP_LOCAL void ov02_0224A66C(void *work) {
+    *(int *)((u8 *)work + 0x30) = 1;
+}
+
+WIP_LOCAL void ov02_0224A674(void *work) {
+    *(int *)((u8 *)work + 0x30) = 0;
+}
+
+WIP_LOCAL void ov02_0224A690(void *work) {
+    *(int *)((u8 *)work + 0x3c) = 0x17;
+    *(int *)((u8 *)work + 0x40) = 1;
+}
+
+WIP_LOCAL void ov02_0224AAC8(void *a0, void *work) {
+    Sprite_Delete(*(Sprite **)((u8 *)work + 8));
+}
+
+WIP_LOCAL void ov02_0224ABF8(void *a0, void *work) {
+    Sprite_Delete(*(Sprite **)((u8 *)work + 0x58));
+}
+
+WIP_LOCAL void ov02_0224B2C0(void *work) {
+    *(int *)sub_02068D74(work) = 0;
+}
+
+WIP_LOCAL BOOL ov02_0224B43C(SysTask *task) {
+    return ((int *)SysTask_GetData(task))[1];
+}
+
+WIP_LOCAL BOOL ov02_0224E308(int a0) {
+    return a0 == 0x165;
+}
+
+WIP_LOCAL BOOL ov02_0224FB44(void *a0, u16 *a1) {
+    return *a1 != 0;
 }
 
 WIP_LOCAL NARC *ov02_022493F0(void) {
@@ -272,7 +348,7 @@ WIP_LOCAL void ov02_0224F8F4(void *ptr) {
 }
 
 // ===========================================================================
-// HANDOFF — overlay_02_02248728 WIP (42/364 byte-match, objdiff-verified)
+// HANDOFF — overlay_02_02248728 WIP (55/364 byte-match, objdiff-verified)
 // ===========================================================================
 // MODULE: follow-mon sprite animation + Pokecenter / field-move (Escape Rope,
 //   Dig, Teleport) task subsystem. A 2D graphics renderer built on G2dRenderer /

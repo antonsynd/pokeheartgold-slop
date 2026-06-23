@@ -1035,9 +1035,9 @@
     "file": "asm/overlay_02_02248728.s",
     "lines": 17995,
     "functions": 364,
-    "matched_so_far": 42,
+    "matched_so_far": 55,
     "result": "wip-deferred",
-    "note": "42/364 byte-match. main.lsf on asm. Done: 15 no-struct + full Field3dObject task wrapper layer (create/delete/draw/dispatch). Next: ov02_0224D144 + TaskData struct -> init/update callbacks. Handoff at EOF of src/overlay_02_02248728.c. File needs address-sort before flip-to-src."
+    "note": "55/364. Done: 15 no-struct + 27 Field3dObject wrappers + 13 cast-based getters/setters/deleters (struct names TBD, marked STRUCT-CLEANUP TODO). Next: AnimManager struct (unlocks ~30 sprite fns) + ov02_0224D144 TaskData. Handoff at EOF of src/overlay_02_02248728.c."
   },
   "stats": {
     "total_attempts": 153,
