@@ -1035,9 +1035,9 @@
     "file": "asm/overlay_02_02248728.s",
     "lines": 17995,
     "functions": 364,
-    "matched_so_far": 152,
+    "matched_so_far": 155,
     "result": "wip-deferred",
-    "note": "152/364 (~42%). +3: sprite creator consumer ov02_02248D18 (VecFx32 aggregate-init fix), ov02_0224B45C SysTask SM runner+cleanup, ov02_0224C338 movement-finish step. Deferred: ov02_0224A33C (mode variant), ov02_0224FFD8 (shared-constant 0x86b family risk), AnimManager struct, 16 huge fns. Handoff at EOF."
+    "note": "155/364 (~43%). +3: ov02_0224A33C (2nd sprite creator, mode==4 branch, mgr->0x19c group + mgr->0x70 spriteList) + consumers A9B8/A3F0. Both sprite creators now matched. Deferred: AnimManager struct naming, ov02_0224FFD8 (shared-const 0x86b), ov02_022508B4 void/return-1, B664, 16 huge fns. Handoff at EOF."
   },
   "stats": {
     "total_attempts": 153,
