@@ -1035,9 +1035,9 @@
     "file": "asm/overlay_02_02248728.s",
     "lines": 17995,
     "functions": 364,
-    "matched_so_far": 174,
+    "matched_so_far": 175,
     "result": "wip-deferred",
-    "note": "174/364 (~48%). +2: ov02_0224A6D0 (SysTask_Destroy + *(vu32*)0x4000000 &= 0xFFFF1FFF), Task_FieldEscapeRope (field-move state-machine runner, table ov02_02253700; declare r before env for regalloc). SAME pattern unlocks Task_FieldDig/Task_FieldTeleport (different tables). Deferred: resource-ADD cluster, jump-tables, D288, 16 huge fns. Handoff at EOF."
+    "note": "175/364 (~48%). +1: ov02_0224C1F8 (field-task runner, table ov02_022536F0; r==2 frees+returns 1). Task_FieldDig/Task_FieldTeleport DEFERRED (4-state jump-table switches + complex per-state logic = the jump-table wall). Deferred: resource-ADD cluster, jump-table funcs, D288, 16 huge fns. Handoff at EOF."
   },
   "stats": {
     "total_attempts": 153,

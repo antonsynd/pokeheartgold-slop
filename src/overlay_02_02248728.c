@@ -99,6 +99,7 @@ extern ov02_StateMachineFunc const ov02_022534B8[];
 // Field-move task state tables: func(taskManager, fieldSystem, env) -> 1=loop, 2=free.
 typedef int (*ov02_FieldTaskFunc)(TaskManager *taskManager, FieldSystem *fieldSystem, void *env);
 extern ov02_FieldTaskFunc const ov02_02253700[];
+extern ov02_FieldTaskFunc const ov02_022536F0[];
 extern void sub_02068BAC(void *a0);                             // unk_020689C8.h
 extern void ov01_021FCD78(SysTask *task);                       // no header included here
 extern BOOL ov01_021FCD6C(SysTask *task);                       // no header included here
@@ -583,6 +584,20 @@ WIP_LOCAL BOOL Task_FieldEscapeRope(TaskManager *taskManager) {
         }
     } while (r == 1);
     return 0;
+}
+
+WIP_LOCAL BOOL ov02_0224C1F8(TaskManager *taskManager) {
+    FieldSystem *fieldSystem = TaskManager_GetFieldSystem(taskManager);
+    void *env = TaskManager_GetEnvironment(taskManager);
+    int r;
+    do {
+        r = ov02_022536F0[*(int *)env](taskManager, fieldSystem, env);
+        if (r == 2) {
+            Heap_Free(env);
+            return TRUE;
+        }
+    } while (r == 1);
+    return FALSE;
 }
 
 WIP_LOCAL void ov02_0224D1AC(void *data) {
@@ -1513,7 +1528,7 @@ WIP_LOCAL void ov02_0224F8F4(void *ptr) {
 }
 
 // ===========================================================================
-// HANDOFF — overlay_02_02248728 WIP (174/364 byte-match, objdiff-verified)
+// HANDOFF — overlay_02_02248728 WIP (175/364 byte-match, objdiff-verified)
 // ===========================================================================
 // MODULE: follow-mon sprite animation + Pokecenter / field-move (Escape Rope,
 //   Dig, Teleport) task subsystem. A 2D graphics renderer built on G2dRenderer /
