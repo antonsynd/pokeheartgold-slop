@@ -1035,9 +1035,9 @@
     "file": "asm/overlay_02_02248728.s",
     "lines": 17995,
     "functions": 364,
-    "matched_so_far": 166,
+    "matched_so_far": 169,
     "result": "wip-deferred",
-    "note": "166/364 (~46%). +1: ov02_0224B90C (Field3dObject task-data destroy, counterpart of B88C; d=work+0x228). Deferred: resource-ADD cluster (02248980 etc), jump-tables, init/update callbacks, 16 huge fns. Handoff at EOF."
+    "note": "169/364 (~46%). +3: ov02_0224B938 (mapobj visible+step), ov02_02250780 (party mon species match, both GetMonData before compare), ov02_02249E90 (SpriteResourceCollection_Find cleanup). Deferred: resource-ADD cluster, jump-tables, init/update callbacks, 16 huge fns. Handoff at EOF."
   },
   "stats": {
     "total_attempts": 153,

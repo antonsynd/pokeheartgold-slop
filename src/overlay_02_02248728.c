@@ -41,10 +41,12 @@
 #include "map_object.h"
 #include "metatile_behavior.h"
 #include "overlay_02.h"
+#include "party.h"
 #include "player_avatar.h"
 #include "pokemon.h"
 #include "roamer.h"
 #include "save_local_field_data.h"
+#include "script_pokemon_util.h"
 #include "sprite.h"
 #include "task.h"
 #include "unk_02005D10.h"
@@ -125,6 +127,10 @@ WIP_LOCAL Sprite *ov02_0224A3F0(void *mgr, VecFx32 *pos, int drawPriority, int s
 WIP_LOCAL void ov02_0224A570(NARC *narc, u32 fileId, NNSG2dPaletteData **a2);
 WIP_LOCAL void ov02_0224B88C(void *work);
 WIP_LOCAL void ov02_0224B90C(void *work);
+WIP_LOCAL int ov02_0224B938(void *work);
+WIP_LOCAL void ov02_0224B784(void *work); // still in asm
+WIP_LOCAL BOOL ov02_02250780(FieldSystem *fieldSystem, u8 a1);
+WIP_LOCAL void ov02_02249E90(SysTask *task, void *work);
 WIP_LOCAL void ov02_0224FE40(void *a0, u8 *a1, LocalMapObject *obj);
 WIP_LOCAL void ov02_0224FE70(void *a0, LocalMapObject *obj, u8 dir); // still in asm
 WIP_LOCAL BOOL ov02_0224D178(void *obj);
@@ -489,6 +495,33 @@ WIP_LOCAL void ov02_0224B90C(void *work) {
     ov01_021F1448(*(void **)(d + 0x10));
     Field3dModelAnimation_Unload((Field3DModelAnimation *)(d + 0x9c), (NNSFndAllocator *)d);
     Field3dModelAnimation_Unload((Field3DModelAnimation *)(d + 0xb0), (NNSFndAllocator *)d);
+}
+
+WIP_LOCAL int ov02_0224B938(void *work) {
+    MapObject_SetVisible(*(LocalMapObject **)((u8 *)work + 0x20c), TRUE);
+    sub_0205F484(*(LocalMapObject **)((u8 *)work + 0x20c));
+    ov02_0224B784(work);
+    *(int *)work = *(int *)work + 1;
+    return 1;
+}
+
+WIP_LOCAL BOOL ov02_02250780(FieldSystem *fieldSystem, u8 a1) {
+    Pokemon *mon = GetFirstAliveMonInParty_CrashIfNone(SaveArray_Party_Get(fieldSystem->saveData));
+    int v1 = GetMonData(mon, 0xb1, NULL);
+    int v2 = GetMonData(mon, 0xb2, NULL);
+    if (v1 == a1 || v2 == a1) {
+        return TRUE;
+    }
+    return FALSE;
+}
+
+WIP_LOCAL void ov02_02249E90(SysTask *task, void *work) {
+    SpriteResource *res = SpriteResourceCollection_Find(*(GF_2DGfxResMan **)((u8 *)work + 0x19c), 0);
+    if (*(int *)((u8 *)work + 0x210) == 1) {
+        sub_0200A740(res);
+        *(int *)((u8 *)work + 0x214) = 1;
+        SysTask_Destroy(task);
+    }
 }
 
 WIP_LOCAL void ov02_0224D1AC(void *data) {
@@ -1419,7 +1452,7 @@ WIP_LOCAL void ov02_0224F8F4(void *ptr) {
 }
 
 // ===========================================================================
-// HANDOFF — overlay_02_02248728 WIP (166/364 byte-match, objdiff-verified)
+// HANDOFF — overlay_02_02248728 WIP (169/364 byte-match, objdiff-verified)
 // ===========================================================================
 // MODULE: follow-mon sprite animation + Pokecenter / field-move (Escape Rope,
 //   Dig, Teleport) task subsystem. A 2D graphics renderer built on G2dRenderer /
