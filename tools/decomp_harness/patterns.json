@@ -1165,6 +1165,12 @@
       "category": "codegen",
       "title": "Inline a loop-invariant load so it hoists after the zero-trip guard; declare the IV before the bound to match register choice",
       "body": "Two combined tricks for count-guarded search loops. (1) A loop-invariant array base (arr = mgr->off) written as a separate statement BEFORE the loop is computed before the count<=0 guard; inline the expression ((*(T**)((u8*)mgr+off))[i]) instead and MWCC CSEs+hoists it into the preheader AFTER the guard, matching. (2) The induction variable vs the loop bound get swapped registers depending on declaration order; declare int i; before int count = ...; so the IV takes the lower register like the asm. Both needed together to match overlay_02_02248728 ov02_022489F0/A24/AC8/AFC (AnimManager resource-array search + assert)."
+    },
+    {
+      "id": "mwcc-force-unmerged-return-blocks",
+      "category": "codegen",
+      "title": "Explicit return in both the if-body and after it to force two separate (unmerged) epilogues",
+      "body": "Inverse of the shared-epilogue trick. When the asm has the conditional BODY inline followed by its own return, and the else-branch jumps forward to a SECOND identical return (two return blocks, not merged), write an explicit return inside the if AND after it: if (cond) { body; return X; } return X;. Using if(cond){body} return X; instead makes MWCC merge into one epilogue (too small); the early-return !=cond form puts the body in the wrong position. Seen in overlay_02_02248728 ov02_0224B964."
     }
   ]
 }

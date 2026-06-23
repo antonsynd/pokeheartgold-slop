@@ -1035,9 +1035,9 @@
     "file": "asm/overlay_02_02248728.s",
     "lines": 17995,
     "functions": 364,
-    "matched_so_far": 169,
+    "matched_so_far": 171,
     "result": "wip-deferred",
-    "note": "169/364 (~46%). +3: ov02_0224B938 (mapobj visible+step), ov02_02250780 (party mon species match, both GetMonData before compare), ov02_02249E90 (SpriteResourceCollection_Find cleanup). Deferred: resource-ADD cluster, jump-tables, init/update callbacks, 16 huge fns. Handoff at EOF."
+    "note": "171/364 (~47%). +2: ov02_0224C71C (teleport movement create, EventObjectMovementMan_Create + PlaySE), ov02_0224B964 (model-anim-done check + destroy; needed explicit return in both branches). Deferred: resource-ADD cluster, jump-tables, D288 (ambiguous), init/update callbacks, 16 huge fns. Handoff at EOF."
   },
   "stats": {
     "total_attempts": 153,
