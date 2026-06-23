@@ -1035,9 +1035,9 @@
     "file": "asm/overlay_02_02248728.s",
     "lines": 17995,
     "functions": 364,
-    "matched_so_far": 15,
+    "matched_so_far": 42,
     "result": "wip-deferred",
-    "note": "15/364 byte-match (objdiff). main.lsf kept on asm. WIP_LOCAL=non-static so DCE keeps unref statics for objdiff; finalize to static at flip-to-src. Handoff at EOF of src/overlay_02_02248728.c."
+    "note": "42/364 byte-match. main.lsf on asm. Done: 15 no-struct + full Field3dObject task wrapper layer (create/delete/draw/dispatch). Next: ov02_0224D144 + TaskData struct -> init/update callbacks. Handoff at EOF of src/overlay_02_02248728.c. File needs address-sort before flip-to-src."
   },
   "stats": {
     "total_attempts": 153,

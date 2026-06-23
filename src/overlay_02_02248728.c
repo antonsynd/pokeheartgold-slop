@@ -25,6 +25,9 @@
 #include "constants/gx.h"
 #include "constants/heap.h"
 
+#include "field/overlay_01_021E66E4.h"
+#include "field/overlay_01_021FB878.h"
+
 #include "bg_window.h"
 #include "field_system.h"
 #include "filesystem.h"
@@ -55,7 +58,51 @@ WIP_LOCAL int ov02_0224ADEC(void);
 WIP_LOCAL int ov02_0224B294(void);
 WIP_LOCAL int ov02_0224B68C(void);
 WIP_LOCAL void ov02_0224B804(void);
+WIP_LOCAL void ov02_0224D1DC(Field3dObject *object);
+WIP_LOCAL void ov02_0224D278(Field3dObjectTask *task, FieldSystem *fieldSystem, void *data);
+WIP_LOCAL void ov02_0224D2BC(Field3dObjectTask *task, FieldSystem *fieldSystem, void *data);
+WIP_LOCAL void ov02_0224D2F0(Field3dObjectTask *task);
+WIP_LOCAL void ov02_0224D3A4(Field3dObjectTask *task, FieldSystem *fieldSystem, void *data);
+WIP_LOCAL void ov02_0224D3E8(Field3dObjectTask *task, FieldSystem *fieldSystem, void *data);
+WIP_LOCAL void ov02_0224D41C(Field3dObjectTask *task);
+WIP_LOCAL void ov02_0224D5AC(Field3dObjectTask *task);
+WIP_LOCAL void ov02_0224D648(Field3dObjectTask *task, FieldSystem *fieldSystem, void *data);
+WIP_LOCAL void ov02_0224D670(Field3dObjectTask *task, FieldSystem *fieldSystem, void *data);
+WIP_LOCAL void ov02_0224D690(Field3dObjectTask *task);
+WIP_LOCAL void ov02_0224D9B8(Field3dObjectTask *task);
+WIP_LOCAL void ov02_0224DB8C(Field3dObjectTask *task, FieldSystem *fieldSystem, void *data);
+WIP_LOCAL void ov02_0224DC58(Field3dObjectTask *task, FieldSystem *fieldSystem, void *data);
+WIP_LOCAL void ov02_0224DC8C(Field3dObjectTask *task);
+WIP_LOCAL void ov02_0224DE08(Field3dObjectTask *task);
+WIP_LOCAL Field3dObjectTask *ov02_0224D2C8(FieldSystem *fieldSystem);
+WIP_LOCAL Field3dObjectTask *ov02_0224D2DC(FieldSystem *fieldSystem);
+WIP_LOCAL Field3dObjectTask *ov02_0224D3F4(FieldSystem *fieldSystem);
+WIP_LOCAL Field3dObjectTask *ov02_0224D408(FieldSystem *fieldSystem);
+WIP_LOCAL Field3dObjectTask *ov02_0224D598(FieldSystem *fieldSystem);
+WIP_LOCAL Field3dObjectTask *ov02_0224D67C(FieldSystem *fieldSystem);
+WIP_LOCAL Field3dObjectTask *ov02_0224D9A4(FieldSystem *fieldSystem);
+WIP_LOCAL Field3dObjectTask *ov02_0224DC64(FieldSystem *fieldSystem);
+WIP_LOCAL Field3dObjectTask *ov02_0224DC78(FieldSystem *fieldSystem);
+WIP_LOCAL Field3dObjectTask *ov02_0224DDE0(FieldSystem *fieldSystem);
+WIP_LOCAL Field3dObjectTask *ov02_0224DDF4(FieldSystem *fieldSystem);
 WIP_LOCAL void ov02_0224F8F4(void *ptr);
+
+// Forward decl — defined later in the file's asm; referenced by destroy dispatchers.
+WIP_LOCAL void ov02_0224D144(void *obj, void *fieldSystem);
+
+// Field3dObjectTaskTemplate data (rodata) defined later in the file's .rodata.
+// Declared extern here so the create wrappers' relocations resolve by name.
+extern const Field3dObjectTaskTemplate ov02_022538FC;
+extern const Field3dObjectTaskTemplate ov02_02253914;
+extern const Field3dObjectTaskTemplate ov02_0225392C;
+extern const Field3dObjectTaskTemplate ov02_02253944;
+extern const Field3dObjectTaskTemplate ov02_0225395C;
+extern const Field3dObjectTaskTemplate ov02_02253974;
+extern const Field3dObjectTaskTemplate ov02_0225398C;
+extern const Field3dObjectTaskTemplate ov02_022539A4;
+extern const Field3dObjectTaskTemplate ov02_022539BC;
+extern const Field3dObjectTaskTemplate ov02_022539D4;
+extern const Field3dObjectTaskTemplate ov02_022539EC;
 
 WIP_LOCAL int ov02_022493EC(void) {
     return 0;
@@ -110,12 +157,122 @@ WIP_LOCAL int ov02_0224B68C(void) {
 WIP_LOCAL void ov02_0224B804(void) {
 }
 
+WIP_LOCAL void ov02_0224D1DC(Field3dObject *object) {
+    Field3dObject_Draw(object);
+}
+
+WIP_LOCAL void ov02_0224D278(Field3dObjectTask *task, FieldSystem *fieldSystem, void *data) {
+    ov02_0224D144(data, (u8 *)data + 0xdc);
+}
+
+WIP_LOCAL void ov02_0224D2BC(Field3dObjectTask *task, FieldSystem *fieldSystem, void *data) {
+    ov02_0224D1DC(data);
+}
+
+WIP_LOCAL void ov02_0224D2F0(Field3dObjectTask *task) {
+    Field3dObjectTask_Delete(task);
+}
+
+WIP_LOCAL void ov02_0224D3A4(Field3dObjectTask *task, FieldSystem *fieldSystem, void *data) {
+    ov02_0224D144(data, (u8 *)data + 0xdc);
+}
+
+WIP_LOCAL void ov02_0224D3E8(Field3dObjectTask *task, FieldSystem *fieldSystem, void *data) {
+    ov02_0224D1DC(data);
+}
+
+WIP_LOCAL void ov02_0224D41C(Field3dObjectTask *task) {
+    Field3dObjectTask_Delete(task);
+}
+
+WIP_LOCAL void ov02_0224D5AC(Field3dObjectTask *task) {
+    Field3dObjectTask_Delete(task);
+}
+
+WIP_LOCAL void ov02_0224D648(Field3dObjectTask *task, FieldSystem *fieldSystem, void *data) {
+    ov02_0224D144(data, (u8 *)data + 0xdc);
+}
+
+WIP_LOCAL void ov02_0224D670(Field3dObjectTask *task, FieldSystem *fieldSystem, void *data) {
+    ov02_0224D1DC(data);
+}
+
+WIP_LOCAL void ov02_0224D690(Field3dObjectTask *task) {
+    Field3dObjectTask_Delete(task);
+}
+
+WIP_LOCAL void ov02_0224D9B8(Field3dObjectTask *task) {
+    Field3dObjectTask_Delete(task);
+}
+
+WIP_LOCAL void ov02_0224DB8C(Field3dObjectTask *task, FieldSystem *fieldSystem, void *data) {
+    ov02_0224D144(data, (u8 *)data + 0xdc);
+}
+
+WIP_LOCAL void ov02_0224DC58(Field3dObjectTask *task, FieldSystem *fieldSystem, void *data) {
+    ov02_0224D1DC(data);
+}
+
+WIP_LOCAL void ov02_0224DC8C(Field3dObjectTask *task) {
+    Field3dObjectTask_Delete(task);
+}
+
+WIP_LOCAL void ov02_0224DE08(Field3dObjectTask *task) {
+    Field3dObjectTask_Delete(task);
+}
+
+// Field3dObject task "create" wrappers (table ov02_02253A1C etc.), each invoked
+// with a0 = fieldSystem by ov02_0224E074. Templates are deferred rodata (extern).
+WIP_LOCAL Field3dObjectTask *ov02_0224D2C8(FieldSystem *fieldSystem) {
+    return Field3dObjectTaskManager_CreateTask(fieldSystem->unk4->field3dObjectTaskManager, &ov02_02253974);
+}
+
+WIP_LOCAL Field3dObjectTask *ov02_0224D2DC(FieldSystem *fieldSystem) {
+    return Field3dObjectTaskManager_CreateTask(fieldSystem->unk4->field3dObjectTaskManager, &ov02_022539BC);
+}
+
+WIP_LOCAL Field3dObjectTask *ov02_0224D3F4(FieldSystem *fieldSystem) {
+    return Field3dObjectTaskManager_CreateTask(fieldSystem->unk4->field3dObjectTaskManager, &ov02_022538FC);
+}
+
+WIP_LOCAL Field3dObjectTask *ov02_0224D408(FieldSystem *fieldSystem) {
+    return Field3dObjectTaskManager_CreateTask(fieldSystem->unk4->field3dObjectTaskManager, &ov02_0225398C);
+}
+
+WIP_LOCAL Field3dObjectTask *ov02_0224D598(FieldSystem *fieldSystem) {
+    return Field3dObjectTaskManager_CreateTask(fieldSystem->unk4->field3dObjectTaskManager, &ov02_02253944);
+}
+
+WIP_LOCAL Field3dObjectTask *ov02_0224D67C(FieldSystem *fieldSystem) {
+    return Field3dObjectTaskManager_CreateTask(fieldSystem->unk4->field3dObjectTaskManager, &ov02_02253914);
+}
+
+WIP_LOCAL Field3dObjectTask *ov02_0224D9A4(FieldSystem *fieldSystem) {
+    return Field3dObjectTaskManager_CreateTask(fieldSystem->unk4->field3dObjectTaskManager, &ov02_0225395C);
+}
+
+WIP_LOCAL Field3dObjectTask *ov02_0224DC64(FieldSystem *fieldSystem) {
+    return Field3dObjectTaskManager_CreateTask(fieldSystem->unk4->field3dObjectTaskManager, &ov02_022539A4);
+}
+
+WIP_LOCAL Field3dObjectTask *ov02_0224DC78(FieldSystem *fieldSystem) {
+    return Field3dObjectTaskManager_CreateTask(fieldSystem->unk4->field3dObjectTaskManager, &ov02_0225392C);
+}
+
+WIP_LOCAL Field3dObjectTask *ov02_0224DDE0(FieldSystem *fieldSystem) {
+    return Field3dObjectTaskManager_CreateTask(fieldSystem->unk4->field3dObjectTaskManager, &ov02_022539D4);
+}
+
+WIP_LOCAL Field3dObjectTask *ov02_0224DDF4(FieldSystem *fieldSystem) {
+    return Field3dObjectTaskManager_CreateTask(fieldSystem->unk4->field3dObjectTaskManager, &ov02_022539EC);
+}
+
 WIP_LOCAL void ov02_0224F8F4(void *ptr) {
     Heap_Free(ptr);
 }
 
 // ===========================================================================
-// HANDOFF — overlay_02_02248728 WIP (15/364 byte-match, objdiff-verified)
+// HANDOFF — overlay_02_02248728 WIP (42/364 byte-match, objdiff-verified)
 // ===========================================================================
 // MODULE: follow-mon sprite animation + Pokecenter / field-move (Escape Rope,
 //   Dig, Teleport) task subsystem. A 2D graphics renderer built on G2dRenderer /
@@ -128,27 +285,39 @@ WIP_LOCAL void ov02_0224F8F4(void *ptr) {
 //     build/heartgold.us/src/overlay_02_02248728.o --summary
 //   Only flip main.lsf -> src AND change WIP_LOCAL -> static once ALL 364 match.
 //
-// MATCHED (15, all OK): ov02_022493EC, ov02_022493F0, ov02_022493FC,
-//   ov02_02249420, ov02_02249444, ov02_0224957C, ov02_0224A074, ov02_0224A63C,
-//   ov02_0224AB54, ov02_0224AC24, ov02_0224ADEC, ov02_0224B294, ov02_0224B68C,
-//   ov02_0224B804, ov02_0224F8F4.  (ov02_0224F8F4 is .public; all others local.)
+// MATCHED (42, all OK):
+//   batch 1 (15 no-struct): ov02_022493EC/F0/FC, ov02_02249420/444, ov02_0224957C,
+//     ov02_0224A074/A63C, ov02_0224AB54/AC24/ADEC, ov02_0224B294/B68C/B804, ov02_0224F8F4.
+//   batch 2 (Field3dObject task wrappers, 27): all create wrappers ov02_0224D2C8/
+//     D2DC/D3F4/D408/D598/D67C/D9A4/DC64/DC78/DDE0/DDF4 (= CreateTask(fieldSystem->
+//     unk4->field3dObjectTaskManager, &template)); delete tails ov02_0224D2F0/D41C/
+//     D5AC/D690/D9B8/DC8C/DE08 (= Field3dObjectTask_Delete); draw ov02_0224D1DC;
+//     render dispatch ov02_0224D2BC/D3E8/D670/DC58 (= ov02_0224D1DC(data)); destroy
+//     dispatch ov02_0224D278/D3A4/D648/DB8C (= ov02_0224D144(data, (u8*)data+0xdc)).
+//   NOTE: the create wrappers are currently grouped in a block, not strict address
+//   order — file needs ONE address-sort of all funcs before the flip-to-src.
 //
-// EASY NEXT TARGETS (≈49 more tiny ≤6-insn funcs, mostly tail-call wrappers):
-//   * Field3dObjectTaskManager_CreateTask wrappers (r0 = (*(void**)((*(void**)
-//     (a0+4))+4)), r1 = &ov02_022539xx callback, tail-call): ov02_0224D2C8,
-//     D2DC, D3F4, D408, D598, D67C, D9A4, DC64, DC78, DDE0, DDF4.
-//   * Field3dObjectTask_Delete tails: ov02_0224D2F0, D41C, D5AC, D690, D9B8,
-//     DC8C, DE08.  Field3dObject_Draw tails: ov02_0224D1DC (+ ov02_0224B87C =
-//     Field3dObject_Draw(((void**)a1)[0] + 0x24c)).
-//   * ov02_0224D144 / ov02_0224D1DC dispatchers (r0=r2, r1=r2+0xdc): ov02_0224D278,
-//     D2BC, D3A4, D3E8, D648, D670, DB8C, DC58.
+// EASY NEXT TARGETS (tiny ≤6-insn, mostly tail-call wrappers):
 //   * SysTask_GetData getters returning [data+4]: ov02_0224953C, ov02_0224B43C
 //     (.public, BOOL per overlay_02.h).
 //   * sub_02068D74 getters: ov02_02248D8C -> (u8)[ret+2]; ov02_0224B2C0 -> *ret=0.
 //   * Sprite_Delete(field) wrappers: ov02_02248DE4 (work->0x68), ov02_0224AAC8
 //     (a1->0x8), ov02_0224ABF8 (a1->0x58).  Need the owning struct's field typed.
-//   * const-return / empty stubs already covered; remaining: ov02_0224E308
-//     (return a0 == 0x165), ov02_0224FB44 (return *(u16*)a1 != 0).
+//   * const-return / empty stubs remaining: ov02_0224E308 (return a0 == 0x165),
+//     ov02_0224FB44 (return *(u16*)a1 != 0).
+//   * ov02_0224B87C = Field3dObject_Draw((Field3dObject*)((void**)a1)[0] + 0x24c?).
+//
+// NEXT MEDIUM TARGET — ov02_0224D144 (Field3dObject task-data cleanup, ~14 insn):
+//   void ov02_0224D144(TaskData *d, NNSFndAllocator *alloc) {
+//     Field3dModel_Unload(&d->model@0x78);
+//     for (i=0; i < d->count@0xd8; i++) Field3dModelAnimation_Unload(&d->anims@0x88[i], alloc);
+//   }  // anims stride 0x14. Defining TaskData unlocks the init/update callbacks
+//   (ov02_0224D1E4, D288, D310, D358, ... — the real per-anim logic). Task data is
+//   allocated by Field3dObjectTaskManager_CreateTask with dataSize from the template
+//   (0xF0 / 0x114 / 0x1CC / 0xD10 / 0xE9C / 0xE9C for the various anim types).
+//   Templates are file-local rodata (declared extern at top, deferred to rodata pass).
+//   Create wrappers are dispatched by ov02_0224E074(fieldSystem, u16 *p_ret, int type,
+//   heapID) via tables ov02_02253A04 (delete) / A1C (create) / A34 indexed by type.
 //
 // STRUCT LEADS (verify against asm before trusting):
 //   * "AnimManager" (the ctor ov02_02248728's arg0, ~0x158 bytes): [0]=u8 nx,
