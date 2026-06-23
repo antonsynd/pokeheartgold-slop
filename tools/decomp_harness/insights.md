@@ -292,6 +292,10 @@ MWCC schedules ldr;str;ldr;str (interleaved) for individual field assignments li
 
 When a strength-reduced loop needs counter-init (i=0) emitted BEFORE the walking-pointer base adjustment (p += 0x10) but a separate p declaration emits the pointer first, put both in the for-init with a comma: for (i = 0, p = (u8*)data + 0x10; i < N; i++, p += stride). MWCC then emits movs i,#0 before the adds p,#0x10, matching. The index-expression form ((u8*)data + 0x10 + i*stride) can add an extra instruction (size mismatch) vs the walking pointer. Seen in overlay_02_02248728 ov02_0224D98C/DDC8.
 
+### Use a single trailing return so MWCC shares one epilogue instead of duplicating it  <!-- id: mwcc-shared-return-epilogue -->
+
+Two separate early `return X;` statements can each emit their own `mov r0,#X; pop` epilogue, making the function larger than the asm. If the asm branches both failure paths to ONE shared return, restructure the C so there is a single trailing `return X;` and nest the success path: if (cond) { ...; if (cond2) { ...; return TRUE; } } return FALSE; — MWCC then emits one shared epilogue both conditionals branch to. Seen in overlay_02_02248728 PlayerStepEvent_RepelCounterDecrement (52->48 bytes).
+
 ## Matching Tricks
 
 ### Small source changes that move codegen  <!-- id: decl-order-tricks -->
