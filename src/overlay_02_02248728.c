@@ -419,8 +419,8 @@ WIP_LOCAL BOOL ov02_0224B6D0(void *a0, void *out);
 WIP_LOCAL int ov02_0224B494(void *work);
 WIP_LOCAL void ov02_0224D658(Field3dObjectTask *task, FieldSystem *fieldSystem, void *data);
 WIP_LOCAL BOOL ov02_0224FC74(void *a0, void *a1);
-WIP_LOCAL void ov02_0224FC08(void *work, void *window, void *arg2);
-WIP_LOCAL void ov02_0224FCE0(void *work, String *str, enum HeapID heapID, void *arg3, int a4);
+WIP_LOCAL void ov02_0224FC08(void *work, void *window, int arg2);
+WIP_LOCAL void ov02_0224FCE0(void *work, String *dest, enum HeapID heapID, int flags, u8 a5);
 WIP_LOCAL void ov02_0224A6D0(void *work);
 WIP_LOCAL void ov02_0224A8D4(void *work);
 WIP_LOCAL void ov02_02249FD4(void *work);
@@ -2831,7 +2831,7 @@ WIP_LOCAL BOOL FollowMon_TryPrintInteractionMessage(void *work, void *window, vo
     return FALSE;
 }
 
-WIP_LOCAL void ov02_0224FC08(void *work, void *window, void *arg2) {
+WIP_LOCAL void ov02_0224FC08(void *work, void *window, int arg2) {
     void *options;
     *(String **)((u8 *)window + 0x10) = String_New(0x400, HEAP_ID_FIELD2);
     sub_0205B514(*(BgConfig **)((u8 *)work + 8), window, 3);
@@ -2840,6 +2840,37 @@ WIP_LOCAL void ov02_0224FC08(void *work, void *window, void *arg2) {
     sub_0205B564(window, options);
     *(u16 *)((u8 *)window + 0x86e) = sub_0205B5B4(window, *(String **)((u8 *)window + 0x10), options, 1);
     *(u8 *)((u8 *)work + 0xd2) |= 0x40;
+}
+
+WIP_LOCAL void ov02_0224FCE0(void *work, String *dest, enum HeapID heapID, int flags, u8 a5) {
+    MsgData *msgData = NewMsgDataFromNarc(MSGDATA_LOAD_DIRECT, NARC_msgdata_msg, 40 /* NARC_msg_msg_0040_bin */, heapID);
+    MessageFormat *messageFormat = MessageFormat_New(heapID);
+    String *str;
+    int strno;
+    if (flags & 2) {
+        BufferPlayersName(messageFormat, 0, Save_PlayerData_GetProfile(*(SaveData **)((u8 *)work + 0xc)));
+        if (flags & 1) {
+            BufferFashionName(messageFormat, 1, a5 - 1);
+            strno = 0x20;
+        } else {
+            BufferFashionNameWithArticle(messageFormat, 1, a5 - 1);
+            strno = 0x5f;
+        }
+    } else {
+        BoxPokemon *boxMon = Mon_GetBoxMon(GetFirstAliveMonInParty_CrashIfNone(SaveArray_Party_Get(*(SaveData **)((u8 *)work + 0xc))));
+        BufferPlayersName(messageFormat, 0, Save_PlayerData_GetProfile(*(SaveData **)((u8 *)work + 0xc)));
+        BufferBoxMonNickname(messageFormat, 1, boxMon);
+        if (flags & 1) {
+            strno = 0x61;
+        } else {
+            strno = 0x62;
+        }
+    }
+    str = NewString_ReadMsgData(msgData, strno);
+    StringExpandPlaceholders(messageFormat, dest, str);
+    String_Delete(str);
+    MessageFormat_Delete(messageFormat);
+    DestroyMsgData(msgData);
 }
 
 WIP_LOCAL void *ov02_02249458(FieldSystem *fieldSystem, int a1, Pokemon *a2, int a3) {
@@ -3477,7 +3508,7 @@ WIP_LOCAL void ov02_02249FD4(void *work) {
 }
 
 // ===========================================================================
-// HANDOFF — overlay_02_02248728 WIP (291/364 byte-match, objdiff-verified)
+// HANDOFF — overlay_02_02248728 WIP (292/364 byte-match, objdiff-verified)
 //
 // NOTE: several functions contain an inline 4-entry jump table (dense switch:
 // ov02_0224CFD8/D044 facing-dir coord; ov02_0224E26C/E2A0/E2D4 dir remaps;
