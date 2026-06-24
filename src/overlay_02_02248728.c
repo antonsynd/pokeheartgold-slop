@@ -2363,6 +2363,25 @@ WIP_LOCAL int ov02_0224B68C(void) {
 WIP_LOCAL void ov02_0224B804(void) {
 }
 
+WIP_LOCAL void ov02_0224D0C8(void *data, int a1, int a2, int a3, void *a4) {
+    int i;
+    u8 *anim;
+    memset(data, 0, 0xdc);
+    Field3dModel_LoadFromFilesystem((Field3dModel *)((u8 *)data + 0x78), NARC_a_1_3_4, a1, HEAP_ID_FIELD1);
+    Field3dObject_InitFromModel((Field3dObject *)data, (Field3dModel *)((u8 *)data + 0x78));
+    *(int *)((u8 *)data + 0xd8) = a3;
+    i = 0;
+    if ((u32)i < *(u32 *)((u8 *)data + 0xd8)) {
+        anim = (u8 *)data + 0x88;
+        do {
+            Field3dModelAnimation_LoadFromFilesystem((Field3DModelAnimation *)anim, (Field3dModel *)((u8 *)data + 0x78), NARC_a_1_3_4, a2 + i, HEAP_ID_FIELD1, a4);
+            Field3dObject_AddAnimation((Field3dObject *)data, (Field3DModelAnimation *)anim);
+            i++;
+            anim += 0x14;
+        } while (i < *(u32 *)((u8 *)data + 0xd8));
+    }
+}
+
 WIP_LOCAL void ov02_0224D1DC(Field3dObject *object) {
     Field3dObject_Draw(object);
 }
@@ -3508,7 +3527,7 @@ WIP_LOCAL void ov02_02249FD4(void *work) {
 }
 
 // ===========================================================================
-// HANDOFF — overlay_02_02248728 WIP (292/364 byte-match, objdiff-verified)
+// HANDOFF — overlay_02_02248728 WIP (293/364 byte-match, objdiff-verified)
 //
 // NOTE: several functions contain an inline 4-entry jump table (dense switch:
 // ov02_0224CFD8/D044 facing-dir coord; ov02_0224E26C/E2A0/E2D4 dir remaps;

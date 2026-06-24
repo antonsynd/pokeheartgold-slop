@@ -1261,6 +1261,12 @@
       "category": "matching-tricks",
       "title": "Stack-passed param read via add-sp+ldrb means the param is u8, not int",
       "body": "When a 5th+ (stack-passed) parameter is read in the body as add rN,sp,#off; ldrb (two instructions) rather than a single sp-relative ldr, the parameter type is u8 (or s8 for ldrsb), NOT int. Thumb ldrb/ldrh have no sp-relative addressing form, so a byte/halfword stack param forces MWCC to re-derive the address (add rN,sp,#off) then ldrb. Declaring the param as int yields a single ldr rN,[sp,#off] and a SIZE that is 2 bytes short per read. Fix: declare the param u8/s8. MWCC hoists the common add rN,sp,#off before a branch when both arms read the param. Seen in ov02_0224FCE0 (5th param u8 a5, read in both flags&1 arms)."
+    },
+    {
+      "id": "dynamic-count-loop-if-dowhile-preheader-walker",
+      "category": "matching-tricks",
+      "title": "Dynamic-count loop: use if+do-while to keep walker init in preheader, i<count guard for bls",
+      "body": "A for(i=0, walker=base; i<count; i++, walker+=stride) loop where count is a runtime value (e.g. *(u32*)(obj+off)) makes MWCC HOIST the walker init (base address computation) ABOVE the count==0 guard, into the prologue -- it runs even when the loop body never executes. The retail asm keeps the walker init in the loop preheader (after the guard). Two-part fix: (1) rewrite as i=0; if((u32)i<count){ walker=base; do{...; i++; walker+=stride;}while((u32)i<count);} -- the lexical if-block keeps the walker init from hoisting past the guard. (2) write the guard as i<count (unsigned), NOT count!=0: the < form folds (i=0) to cmp count,#0 + bls (unsigned lower-or-same, skip if 0), matching retail; count!=0 emits beq. The indexed form walker=base+i*stride is wrong (recomputes the address per use, SIZE too big). Seen in ov02_0224D0C8 (Field3dObject animation-load loop)."
     }
   ]
 }
