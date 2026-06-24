@@ -128,6 +128,9 @@ extern void ov01_021FBDFC(Field3dModel *model);                                 
 extern void ov01_021F1448(void *a0);                                                               // no header included here
 extern void *ov01_021FCD2C(FieldSystem *fieldSystem, int a1);                                      // no header included here
 extern void ov01_021FCD8C(void *a0, int a1, fx32 a2, int a3);                                      // no header included here
+extern BOOL ov01_02206268(FieldSystem *fieldSystem);                                               // overlay_01.h, not included
+extern int ov01_022062CC(FieldSystem *fieldSystem);                                                // overlay_01.h, not included
+extern void PlayCryEx(int, int, int, int, int, int);                                               // sound_02004A44.h, not included
 extern const MovementScriptCommand ov02_02253820;                                                  // rodata, defined later
 extern const MovementScriptCommand ov02_02253794;                                                  // rodata, defined later
 extern const MovementScriptCommand ov02_02253770;                                                  // rodata, defined later
@@ -173,6 +176,9 @@ WIP_LOCAL u8 ov02_02248D8C(void *work);
 WIP_LOCAL void ov02_02248DE4(void *a0, void *work);
 WIP_LOCAL BOOL ov02_0224953C(void *work);
 WIP_LOCAL int ov02_0224997C(void *work);
+WIP_LOCAL int ov02_0224939C(void *work);
+WIP_LOCAL int ov02_02249774(void *work);
+WIP_LOCAL void ov02_0224FDF8(void *arg0, u16 arg1, int arg2, int arg3);
 WIP_LOCAL void ov02_0224A66C(void *work);
 WIP_LOCAL void ov02_0224A674(void *work);
 WIP_LOCAL void ov02_0224A690(void *work);
@@ -2218,8 +2224,78 @@ WIP_LOCAL void ov02_0224F8F4(void *ptr) {
     Heap_Free(ptr);
 }
 
+WIP_LOCAL int ov02_0224939C(void *work) {
+    if (++*(int *)((u8 *)work + 4) == 8) {
+        Sprite_SetAnimCtrlSeq(*(Sprite **)((u8 *)work + 0x60), 1);
+        ov02_02249444(*(FieldSystem **)((u8 *)work + 0x5c), FALSE);
+    }
+    if (*(int *)((u8 *)work + 4) == 0xa) {
+        Sprite_SetDrawFlag(*(Sprite **)((u8 *)work + 0x60), FALSE);
+    }
+    if (*(int *)((u8 *)work + 4) > 0xf && ov01_021FCD6C(*(SysTask **)((u8 *)work + 0x70)) == 1) {
+        *(int *)((u8 *)work + 4) = 0;
+        *(u8 *)((u8 *)work + 1) = *(u8 *)((u8 *)work + 1) + 1;
+        *(u8 *)((u8 *)work + 2) = 2;
+    }
+    return 0;
+}
+
+WIP_LOCAL int ov02_02249774(void *work) {
+    VecFx32 vec;
+    vec = *Sprite_GetMatrixPtr(*(Sprite **)((u8 *)work + 0x1e8));
+    vec.x = vec.x + *(fx32 *)((u8 *)work + 0x58);
+    if (vec.x <= 0xa0000) {
+        vec.x = 0xc0000;
+        *(int *)work = *(int *)work + 1;
+    }
+    Sprite_SetMatrix(*(Sprite **)((u8 *)work + 0x1e8), &vec);
+    return 0;
+}
+
+struct FieldMoveTaskEnvironment *CreateFieldEscapeRopeTaskEnv(FieldSystem *fieldSystem, enum HeapID heapID) {
+    struct FieldMoveTaskEnvironment *env = ov02_0224C660(heapID, 0x30);
+    *(int *)((u8 *)env + 0xc) = 0;
+    *(FieldSystem **)((u8 *)env + 0x24) = fieldSystem;
+    *(LocalMapObject **)((u8 *)env + 0x20) = PlayerAvatar_GetMapObject(fieldSystem->playerAvatar);
+    if ((u32)(PlayerAvatar_GetState(fieldSystem->playerAvatar) - 1) <= 1) {
+        *(int *)((u8 *)env + 8) = 0;
+    } else if (FollowMon_IsActive(fieldSystem)) {
+        *(int *)((u8 *)env + 8) = 1;
+    } else {
+        *(int *)((u8 *)env + 8) = 0;
+    }
+    return env;
+}
+
+struct FieldMoveTaskEnvironment *FieldMoveTask_CreateDigEnvironment(FieldSystem *fieldSystem, Pokemon *mon, u8 slotno, enum HeapID heapID) {
+    struct FieldMoveTaskEnvironment *env = ov02_0224C660(heapID, 0x30);
+    *(int *)((u8 *)env + 0xc) = 1;
+    *(FieldSystem **)((u8 *)env + 0x24) = fieldSystem;
+    *(LocalMapObject **)((u8 *)env + 0x20) = PlayerAvatar_GetMapObject(fieldSystem->playerAvatar);
+    *(Pokemon **)((u8 *)env + 0x28) = mon;
+    if (ov01_02206268(fieldSystem) && slotno == ov01_022062CC(fieldSystem)) {
+        *(int *)((u8 *)env + 8) = 1;
+    } else {
+        *(int *)((u8 *)env + 8) = 0;
+    }
+    return env;
+}
+
+WIP_LOCAL void ov02_0224FDF8(void *arg0, u16 arg1, int arg2, int arg3) {
+    int species;
+    if (*(u8 *)((u8 *)arg0 + 5) == 0 || arg1 == 0) {
+        return;
+    }
+    if (arg1 > SEQ_SE_END) {
+        species = (arg1 == SEQ_SE_END + 1) ? 0 : 0xb;
+        PlayCryEx(species, arg2, 0x1ff, 0x1ff, 0x1ff, arg3);
+        return;
+    }
+    PlaySE(arg1);
+}
+
 // ===========================================================================
-// HANDOFF — overlay_02_02248728 WIP (225/364 byte-match, objdiff-verified)
+// HANDOFF — overlay_02_02248728 WIP (230/364 byte-match, objdiff-verified)
 // ===========================================================================
 // MODULE: follow-mon sprite animation + Pokecenter / field-move (Escape Rope,
 //   Dig, Teleport) task subsystem. A 2D graphics renderer built on G2dRenderer /
