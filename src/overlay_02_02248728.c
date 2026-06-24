@@ -134,6 +134,7 @@ extern void PlayCryEx(int, int, int, int, int, int);            // sound_02004A4
 extern u16 GF_DegreeToSinCosIdx(u16 deg);                       // math_util.h, not included
 extern const VecFx32 ov02_02253360;                             // rodata, defined later (affine scale)
 extern const VecFx32 ov02_02253390;                             // rodata, defined later (affine scale)
+extern const VecFx32 ov02_02253348;                             // rodata, defined later (sprite spawn offset)
 
 // NewMsgDataFromNarc / MessageFormat_* / Buffer* / MapHeader_GetMapSec are reachable
 // transitively (msgdata.h / message_format.h / map_header.h) — no local externs.
@@ -247,6 +248,8 @@ WIP_LOCAL void *ov02_02249458(FieldSystem *fieldSystem, int a1, Pokemon *a2, int
 WIP_LOCAL int ov02_02249858(void *work);
 WIP_LOCAL int ov02_0224C8D0(TaskManager *taskManager, FieldSystem *fieldSystem, void *work);
 WIP_LOCAL int ov02_0224C234(TaskManager *taskManager, FieldSystem *fieldSystem, void *work);
+WIP_LOCAL int ov02_02249C74(void *work);
+WIP_LOCAL int ov02_02249A5C(void *work);
 WIP_LOCAL BOOL ov02_0224FFD8(void *p);
 WIP_LOCAL BOOL ov02_02249088(void *mgr);
 WIP_LOCAL BOOL ov02_02248D98(void *a0, void *obj);
@@ -2631,8 +2634,48 @@ WIP_LOCAL int ov02_0224C234(TaskManager *taskManager, FieldSystem *fieldSystem, 
     return 0;
 }
 
+WIP_LOCAL int ov02_02249C74(void *work) {
+    if (*(int *)((u8 *)work + 0x20) == 3) {
+        if (ov02_0224AB8C(work) == 2) {
+            ov02_0224AB9C(work);
+            *(int *)work += 2;
+        }
+        return 0;
+    }
+    if (*(int *)((u8 *)work + 0x18) == 0 && ov02_0224AB8C(work) == 4) {
+        *(int *)((u8 *)work + 0x18) = 1;
+        ov02_02249420();
+    }
+    if (ov02_0224AB8C(work) != 2) {
+        return 0;
+    }
+    if (*(int *)((u8 *)work + 0x18) == 0) {
+        *(int *)((u8 *)work + 0x18) = 1;
+        ov02_02249420();
+    }
+    ov02_0224AB9C(work);
+    (*(int *)work)++;
+    return 0;
+}
+
+WIP_LOCAL int ov02_02249A5C(void *work) {
+    VecFx32 vec;
+    if (*(int *)((u8 *)work + 0x214) == 0) {
+        return 0;
+    }
+    vec = ov02_02253348;
+    vec.x = vec.x + *(fx32 *)((u8 *)work + 0x2ec);
+    vec.y = vec.y + *(fx32 *)((u8 *)work + 0x2f4);
+    *(Sprite **)((u8 *)work + 0x1e4) = ov02_0224A418(work, &vec);
+    Sprite_SetAnimCtrlSeq(*(Sprite **)((u8 *)work + 0x1e4), 1);
+    ov02_02249D40(work);
+    *(int *)((u8 *)work + 0x10) = 1;
+    (*(int *)work)++;
+    return 1;
+}
+
 // ===========================================================================
-// HANDOFF — overlay_02_02248728 WIP (249/364 byte-match, objdiff-verified)
+// HANDOFF — overlay_02_02248728 WIP (251/364 byte-match, objdiff-verified)
 // ===========================================================================
 // MODULE: follow-mon sprite animation + Pokecenter / field-move (Escape Rope,
 //   Dig, Teleport) task subsystem. A 2D graphics renderer built on G2dRenderer /
