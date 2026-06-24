@@ -131,6 +131,9 @@ extern void ov01_021FCD8C(void *a0, int a1, fx32 a2, int a3);         // no head
 extern BOOL ov01_02206268(FieldSystem *fieldSystem);                  // overlay_01.h, not included
 extern int ov01_022062CC(FieldSystem *fieldSystem);                   // overlay_01.h, not included
 extern void PlayCryEx(int, int, int, int, int, int);                  // sound_02004A44.h, not included
+extern u16 GF_DegreeToSinCosIdx(u16 deg);                             // math_util.h, not included
+extern const VecFx32 ov02_02253360;                                   // rodata, defined later (affine scale)
+extern const VecFx32 ov02_02253390;                                   // rodata, defined later (affine scale)
 extern PlayerProfile *Save_PlayerData_GetProfile(SaveData *saveData); // player_data.h, not included
 extern u32 PlayerProfile_GetTrainerID(PlayerProfile *profile);        // player_data.h, not included
 extern void *Save_SafariZone_Get(SaveData *saveData);                 // safari_zone.h, not included (opaque)
@@ -199,6 +202,7 @@ WIP_LOCAL void ov02_0224E020(SysTask *task, void *data);
 WIP_LOCAL BOOL ov02_0224E640(SaveData *saveData);
 WIP_LOCAL void ov02_0224DE10(Field3dObject *obj, VecFx32 *arg1, fx32 arg2, fx32 arg3);
 WIP_LOCAL void ov02_0224F580(FieldSystem *fieldSystem, void *out);
+WIP_LOCAL Sprite *ov02_02248CAC(void *mgr);
 WIP_LOCAL void ov02_0224A66C(void *work);
 WIP_LOCAL void ov02_0224A674(void *work);
 WIP_LOCAL void ov02_0224A690(void *work);
@@ -2417,8 +2421,37 @@ struct FieldMoveTaskEnvironment *FieldMoveTask_CreateTeleportEnvironment(FieldSy
     return env;
 }
 
+WIP_LOCAL Sprite *ov02_02248CAC(void *mgr) {
+    VecFx32 pos = { 0, 0, 0 };
+    VecFx32 affineMatrix = { 0, 0, 0 };
+    VecFx32 affineScale;
+    Sprite *sprite;
+
+    affineScale = ov02_02253360;
+    sprite = ov02_02248C10(mgr, &pos, 0, 0, 0, 2, 0, 0x84);
+    Sprite_SetAffineOverwriteMode(sprite, 2);
+    Sprite_SetAffineMatrix(sprite, &affineMatrix);
+    Sprite_SetAffineScale(sprite, &affineScale);
+    Sprite_SetAffineZRotation(sprite, GF_DegreeToSinCosIdx(0));
+    return sprite;
+}
+
+WIP_LOCAL void *ov02_0224A468(void *mgr, VecFx32 *pos, int drawPriority, int d) {
+    VecFx32 affineMatrix = { 0, 0, 0 };
+    VecFx32 affineScale;
+    Sprite *sprite;
+
+    affineScale = ov02_02253390;
+    sprite = ov02_0224A33C(mgr, pos, 0, 0, 0, -1, 0, drawPriority);
+    Sprite_SetAffineOverwriteMode(sprite, 2);
+    Sprite_SetAffineMatrix(sprite, &affineMatrix);
+    Sprite_SetAffineScale(sprite, &affineScale);
+    Sprite_SetAffineZRotation(sprite, GF_DegreeToSinCosIdx(0));
+    return sprite;
+}
+
 // ===========================================================================
-// HANDOFF — overlay_02_02248728 WIP (237/364 byte-match, objdiff-verified)
+// HANDOFF — overlay_02_02248728 WIP (239/364 byte-match, objdiff-verified)
 // ===========================================================================
 // MODULE: follow-mon sprite animation + Pokecenter / field-move (Escape Rope,
 //   Dig, Teleport) task subsystem. A 2D graphics renderer built on G2dRenderer /
