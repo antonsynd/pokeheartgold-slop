@@ -290,6 +290,7 @@ WIP_LOCAL int ov02_0224C0B0(TaskManager *taskManager, FieldSystem *fieldSystem, 
 WIP_LOCAL void ov02_0224E074(FieldSystem *fieldSystem, u16 *p_ret, int type, enum HeapID heapID);
 WIP_LOCAL BOOL ov02_022506D4(u32 a0, u32 a1);
 WIP_LOCAL BOOL ov02_02250738(u32 a0, u32 a1);
+WIP_LOCAL void ov02_02250504(void *work);
 WIP_LOCAL int ov02_022498BC(void *work);
 WIP_LOCAL void ov02_0224A080(void *work, NARC *narc);
 WIP_LOCAL void ov02_02249F6C(void *work);
@@ -3147,6 +3148,27 @@ WIP_LOCAL BOOL ov02_022506D4(u32 a0, u32 a1) {
     return FALSE;
 }
 
+WIP_LOCAL void ov02_02250504(void *work) {
+    Pokemon *mon = GetFirstAliveMonInParty_CrashIfNone(SaveArray_Party_Get(*(SaveData **)((u8 *)work + 0xc)));
+    int val;
+    val = FieldSystem_UnkSub108_GetMonMood(*(FieldSystemUnk108 **)((u8 *)work + 0x108));
+    val += *(s8 *)((u8 *)*(void **)((u8 *)work + 0x120) + 0x815);
+    if (val > 0x7f) {
+        val = 0x7f;
+    } else if (val < -127) {
+        val = -127;
+    }
+    FieldSystem_UnkSub108_SetMonMood(*(FieldSystemUnk108 **)((u8 *)work + 0x108), val);
+    val = GetMonData(mon, MON_DATA_FRIENDSHIP, NULL);
+    val += *(s8 *)((u8 *)*(void **)((u8 *)work + 0x120) + 0x814);
+    if (val > 0xff) {
+        val = 0xff;
+    } else if (val < 0) {
+        val = 0;
+    }
+    SetMonData(mon, MON_DATA_FRIENDSHIP, &val);
+}
+
 WIP_LOCAL BOOL ov02_02250738(u32 a0, u32 a1) {
     int i;
     u8 masks[] = { 0x01, 0x02, 0x04, 0x08, 0x10 };
@@ -3308,7 +3330,7 @@ WIP_LOCAL void ov02_02249FD4(void *work) {
 }
 
 // ===========================================================================
-// HANDOFF — overlay_02_02248728 WIP (283/364 byte-match, objdiff-verified)
+// HANDOFF — overlay_02_02248728 WIP (284/364 byte-match, objdiff-verified)
 //
 // NOTE: several functions contain an inline 4-entry jump table (dense switch:
 // ov02_0224CFD8/D044 facing-dir coord; ov02_0224E26C/E2A0/E2D4 dir remaps;
