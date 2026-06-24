@@ -285,6 +285,7 @@ WIP_LOCAL int ov02_0224C93C(TaskManager *taskManager, FieldSystem *fieldSystem, 
 WIP_LOCAL int ov02_0224C9B8(TaskManager *taskManager, FieldSystem *fieldSystem, void *work);
 WIP_LOCAL int ov02_0224C0B0(TaskManager *taskManager, FieldSystem *fieldSystem, void *work);
 WIP_LOCAL void ov02_0224E074(FieldSystem *fieldSystem, u16 *p_ret, int type, enum HeapID heapID);
+WIP_LOCAL BOOL ov02_022506D4(u32 a0, u32 a1);
 WIP_LOCAL void ov02_0224A080(void *work, NARC *narc);
 WIP_LOCAL void ov02_02249F6C(void *work);
 WIP_LOCAL void ov02_0224A028(void *work);
@@ -2992,6 +2993,46 @@ WIP_LOCAL void ov02_0224F64C(FieldSystem *fieldSystem, void *arg1) {
     }
 }
 
+WIP_LOCAL BOOL ov02_022506D4(u32 a0, u32 a1) {
+    if (a0 <= 0xf9) {
+        if (a0 == a1) {
+            return TRUE;
+        }
+    } else {
+        switch (a0 - 0xfa) {
+        case 0:
+            if (a1 <= 0x13) {
+                return TRUE;
+            }
+            break;
+        case 1:
+            if (a1 <= 0x82) {
+                return TRUE;
+            }
+            break;
+        case 2:
+            if (a1 >= 0x8c && a1 <= 0x95) {
+                return TRUE;
+            }
+            break;
+        case 3:
+            if (a1 >= 0xa0) {
+                return TRUE;
+            }
+            break;
+        case 4:
+            if (a1 >= 0xdc) {
+                return TRUE;
+            }
+            break;
+        default:
+            GF_AssertFail();
+            return FALSE;
+        }
+    }
+    return FALSE;
+}
+
 WIP_LOCAL void ov02_0224E074(FieldSystem *fieldSystem, u16 *p_ret, int type, enum HeapID heapID) {
     void *data = Heap_Alloc(heapID, 0x10);
     memset(data, 0, 0x10);
@@ -3142,7 +3183,7 @@ WIP_LOCAL void ov02_02249FD4(void *work) {
 }
 
 // ===========================================================================
-// HANDOFF — overlay_02_02248728 WIP (275/364 byte-match, objdiff-verified)
+// HANDOFF — overlay_02_02248728 WIP (276/364 byte-match, objdiff-verified)
 //
 // NOTE: several functions contain an inline 4-entry jump table (dense switch:
 // ov02_0224CFD8/D044 facing-dir coord; ov02_0224E26C/E2A0/E2D4 dir remaps;
