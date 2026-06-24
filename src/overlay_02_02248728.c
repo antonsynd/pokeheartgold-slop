@@ -137,13 +137,17 @@ extern const VecFx32 ov02_02253390;                             // rodata, defin
 
 // NewMsgDataFromNarc / MessageFormat_* / Buffer* / MapHeader_GetMapSec are reachable
 // transitively (msgdata.h / message_format.h / map_header.h) — no local externs.
-extern PlayerProfile *Save_PlayerData_GetProfile(SaveData *saveData); // player_data.h, not included
-extern u32 PlayerProfile_GetTrainerID(PlayerProfile *profile);        // player_data.h, not included
-extern void *Save_SafariZone_Get(SaveData *saveData);                 // safari_zone.h, not included (opaque)
-extern u8 SafariZone_GetObjectUnlockLevel(void *safariZone);          // safari_zone.h, not included
-extern void *Field_GetBgEvents(FieldSystem *fieldSystem);             // map_events.h, not included (BG_EVENT opaque)
-extern u32 Field_GetNumBgEvents(FieldSystem *fieldSystem);            // map_events.h, not included
-extern const MovementScriptCommand ov02_022537DC;                     // rodata, defined later
+extern PlayerProfile *Save_PlayerData_GetProfile(SaveData *saveData);                   // player_data.h, not included
+extern String *String_New(u32 maxsize, enum HeapID heapID);                             // pm_string.h, not included
+extern void sub_0205B514(BgConfig *bgConfig, Window *window, int a2);                   // text_0205B4EC.h, not included
+extern void sub_0205B564(Window *window, Options *options);                             // text_0205B4EC.h, not included
+extern u8 sub_0205B5B4(Window *window, String *string, Options *options, BOOL speedup); // text_0205B4EC.h, not included
+extern u32 PlayerProfile_GetTrainerID(PlayerProfile *profile);                          // player_data.h, not included
+extern void *Save_SafariZone_Get(SaveData *saveData);                                   // safari_zone.h, not included (opaque)
+extern u8 SafariZone_GetObjectUnlockLevel(void *safariZone);                            // safari_zone.h, not included
+extern void *Field_GetBgEvents(FieldSystem *fieldSystem);                               // map_events.h, not included (BG_EVENT opaque)
+extern u32 Field_GetNumBgEvents(FieldSystem *fieldSystem);                              // map_events.h, not included
+extern const MovementScriptCommand ov02_022537DC;                                       // rodata, defined later
 
 // ov02_0224E020 dispatch tables (rodata, still in asm; defined later). Indexed by
 // data[0xc]: A34 update funcs return int (1 => advance state); A04 delete funcs
@@ -236,6 +240,8 @@ WIP_LOCAL void FollowMon_PlaceholdersSet(void *work, void *messageFormat);
 WIP_LOCAL void FollowMon_ExpandInteractionMessage(void *work, void *dest, enum HeapID heapID, int strno);
 WIP_LOCAL int ov02_0224C14C(TaskManager *taskManager, FieldSystem *fieldSystem, void *work);
 WIP_LOCAL void ov02_0224D698(Field3dObject *obj, PlayerAvatar *playerAvatar, fx32 arg2, fx32 arg3);
+WIP_LOCAL int ov02_0224C7D4(TaskManager *taskManager, FieldSystem *fieldSystem, void *work);
+WIP_LOCAL BOOL FollowMon_TryPrintInteractionMessage(void *work, void *window, void *arg2);
 WIP_LOCAL BOOL ov02_0224FFD8(void *p);
 WIP_LOCAL BOOL ov02_02249088(void *mgr);
 WIP_LOCAL BOOL ov02_02248D98(void *a0, void *obj);
@@ -2514,8 +2520,44 @@ WIP_LOCAL void FollowMon_ExpandInteractionMessage(void *work, void *dest, enum H
     DestroyMsgData(msgData);
 }
 
+WIP_LOCAL int ov02_0224C7D4(TaskManager *taskManager, FieldSystem *fieldSystem, void *work) {
+    if (EventObjectMovementMan_IsFinish(*(EventObjectMovementMan **)((u8 *)work + 0x10)) == 1) {
+        EventObjectMovementMan_Delete(*(EventObjectMovementMan **)((u8 *)work + 0x10));
+        *(EventObjectMovementMan **)((u8 *)work + 0x10) = EventObjectMovementMan_Create(*(LocalMapObject **)((u8 *)work + 0x20), &ov02_02253794);
+        if (*(int *)((u8 *)work + 8)) {
+            EventObjectMovementMan_Delete(*(EventObjectMovementMan **)((u8 *)work + 0x14));
+            *(EventObjectMovementMan **)((u8 *)work + 0x14) = EventObjectMovementMan_Create(*(LocalMapObject **)((u8 *)fieldSystem + 0xe4), &ov02_02253794);
+        }
+    }
+    if (!IsPaletteFadeFinished()) {
+        return 0;
+    }
+    EventObjectMovementMan_Delete(*(EventObjectMovementMan **)((u8 *)work + 0x10));
+    if (*(int *)((u8 *)work + 8)) {
+        EventObjectMovementMan_Delete(*(EventObjectMovementMan **)((u8 *)work + 0x14));
+    }
+    ov01_021FCD78(*(SysTask **)((u8 *)work + 0x1c));
+    (*(int *)((u8 *)work))++;
+    return 1;
+}
+
+WIP_LOCAL BOOL FollowMon_TryPrintInteractionMessage(void *work, void *window, void *arg2) {
+    void *options;
+    if (*(u16 *)((u8 *)arg2 + 2) != 0) {
+        *(String **)((u8 *)window + 0x10) = String_New(0x400, HEAP_ID_FIELD2);
+        sub_0205B514(*(BgConfig **)((u8 *)work + 8), window, 3);
+        FollowMon_ExpandInteractionMessage(work, *(String **)((u8 *)window + 0x10), HEAP_ID_FIELD2, *(u16 *)((u8 *)arg2 + 2) - 1);
+        options = Save_PlayerData_GetOptionsAddr(*(SaveData **)((u8 *)work + 0xc));
+        sub_0205B564(window, options);
+        *(u16 *)((u8 *)window + 0x86e) = sub_0205B5B4(window, *(String **)((u8 *)window + 0x10), options, 1);
+        *(u8 *)((u8 *)work + 0xd2) |= 0x40;
+        return TRUE;
+    }
+    return FALSE;
+}
+
 // ===========================================================================
-// HANDOFF — overlay_02_02248728 WIP (243/364 byte-match, objdiff-verified)
+// HANDOFF — overlay_02_02248728 WIP (245/364 byte-match, objdiff-verified)
 // ===========================================================================
 // MODULE: follow-mon sprite animation + Pokecenter / field-move (Escape Rope,
 //   Dig, Teleport) task subsystem. A 2D graphics renderer built on G2dRenderer /
