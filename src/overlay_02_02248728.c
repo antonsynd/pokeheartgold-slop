@@ -418,6 +418,8 @@ WIP_LOCAL BOOL ov02_0224B6D0(void *a0, void *out);
 WIP_LOCAL int ov02_0224B494(void *work);
 WIP_LOCAL void ov02_0224D658(Field3dObjectTask *task, FieldSystem *fieldSystem, void *data);
 WIP_LOCAL BOOL ov02_0224FC74(void *a0, void *a1);
+WIP_LOCAL void ov02_0224FC08(void *work, void *window, void *arg2);
+WIP_LOCAL void ov02_0224FCE0(void *work, String *str, enum HeapID heapID, void *arg3, int a4);
 WIP_LOCAL void ov02_0224A6D0(void *work);
 WIP_LOCAL void ov02_0224A8D4(void *work);
 WIP_LOCAL void ov02_02249FD4(void *work);
@@ -2816,6 +2818,17 @@ WIP_LOCAL BOOL FollowMon_TryPrintInteractionMessage(void *work, void *window, vo
     return FALSE;
 }
 
+WIP_LOCAL void ov02_0224FC08(void *work, void *window, void *arg2) {
+    void *options;
+    *(String **)((u8 *)window + 0x10) = String_New(0x400, HEAP_ID_FIELD2);
+    sub_0205B514(*(BgConfig **)((u8 *)work + 8), window, 3);
+    ov02_0224FCE0(work, *(String **)((u8 *)window + 0x10), HEAP_ID_FIELD2, arg2, *(u8 *)((u8 *)window + 0x816));
+    options = Save_PlayerData_GetOptionsAddr(*(SaveData **)((u8 *)work + 0xc));
+    sub_0205B564(window, options);
+    *(u16 *)((u8 *)window + 0x86e) = sub_0205B5B4(window, *(String **)((u8 *)window + 0x10), options, 1);
+    *(u8 *)((u8 *)work + 0xd2) |= 0x40;
+}
+
 WIP_LOCAL void *ov02_02249458(FieldSystem *fieldSystem, int a1, Pokemon *a2, int a3) {
     void *work = ov02_0224955C(fieldSystem);
     *(void **)((u8 *)work + 0x5c) = a2;
@@ -3451,7 +3464,7 @@ WIP_LOCAL void ov02_02249FD4(void *work) {
 }
 
 // ===========================================================================
-// HANDOFF — overlay_02_02248728 WIP (289/364 byte-match, objdiff-verified)
+// HANDOFF — overlay_02_02248728 WIP (290/364 byte-match, objdiff-verified)
 //
 // NOTE: several functions contain an inline 4-entry jump table (dense switch:
 // ov02_0224CFD8/D044 facing-dir coord; ov02_0224E26C/E2A0/E2D4 dir remaps;
