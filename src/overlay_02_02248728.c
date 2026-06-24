@@ -289,6 +289,7 @@ WIP_LOCAL int ov02_0224C9B8(TaskManager *taskManager, FieldSystem *fieldSystem, 
 WIP_LOCAL int ov02_0224C0B0(TaskManager *taskManager, FieldSystem *fieldSystem, void *work);
 WIP_LOCAL void ov02_0224E074(FieldSystem *fieldSystem, u16 *p_ret, int type, enum HeapID heapID);
 WIP_LOCAL BOOL ov02_022506D4(u32 a0, u32 a1);
+WIP_LOCAL BOOL ov02_02250738(u32 a0, u32 a1);
 WIP_LOCAL int ov02_022498BC(void *work);
 WIP_LOCAL void ov02_0224A080(void *work, NARC *narc);
 WIP_LOCAL void ov02_02249F6C(void *work);
@@ -3146,6 +3147,17 @@ WIP_LOCAL BOOL ov02_022506D4(u32 a0, u32 a1) {
     return FALSE;
 }
 
+WIP_LOCAL BOOL ov02_02250738(u32 a0, u32 a1) {
+    int i;
+    u8 masks[] = { 0x01, 0x02, 0x04, 0x08, 0x10 };
+    for (i = 0; i < 5; i++) {
+        if ((masks[a0 - 1] & a1) == 0) {
+            return TRUE;
+        }
+    }
+    return FALSE;
+}
+
 WIP_LOCAL void ov02_0224E074(FieldSystem *fieldSystem, u16 *p_ret, int type, enum HeapID heapID) {
     void *data = Heap_Alloc(heapID, 0x10);
     memset(data, 0, 0x10);
@@ -3296,7 +3308,7 @@ WIP_LOCAL void ov02_02249FD4(void *work) {
 }
 
 // ===========================================================================
-// HANDOFF — overlay_02_02248728 WIP (282/364 byte-match, objdiff-verified)
+// HANDOFF — overlay_02_02248728 WIP (283/364 byte-match, objdiff-verified)
 //
 // NOTE: several functions contain an inline 4-entry jump table (dense switch:
 // ov02_0224CFD8/D044 facing-dir coord; ov02_0224E26C/E2A0/E2D4 dir remaps;

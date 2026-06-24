@@ -1035,7 +1035,7 @@
     "file": "asm/overlay_02_02248728.s",
     "lines": 17995,
     "functions": 364,
-    "matched_so_far": 282,
+    "matched_so_far": 283,
     "result": "wip-deferred",
     "note": "178/364 (~49%). +1: ov02_RepelActiveRoamersFromMapNo (roamer loop). Attempted+deferred resource-ADD 02248980 (8-byte cached/reload diff). Deferred clusters: resource-ADD (980/A58/B30/BA0), jump-table funcs, D288/D3B4 dead-cmp, B298/B784 (sub_02068B0C), 16 huge fns. Handoff at EOF.",
     "notes": "WIP 225/364 byte-matched (objdiff). Latest batch (+2): ov02_0224B3B0 (B364 clone), ov02_0224D358 (D-init clone). Deferred ov02_0224D73C/DEA8 (2-instr scheduling), ov02_0224F64C (jump table), ov02_02250738 (rodata-template local array). ROM still matches retail (main.lsf on asm)."

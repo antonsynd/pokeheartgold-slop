@@ -668,6 +668,10 @@ When retail .rodata has N structs of the same type laid out contiguously at a fi
 
 To match a retail symbol that lives in .data as zero bytes (objdiff shows .data=N asm vs .bss=N c), declare it `static const` WITHOUT an initializer. In this MWCC config, plain `T x;` or even `T x = {0};` / `T x = 0;` go to .bss (zero-init optimization), but a const-qualified uninitialized file-scope object goes to .data (zero-filled) — e.g. `static const u8 *unused_02201BA0;` in src/overlay_16_02201948.c. The pointer itself stays writable when the const is on the pointee (`const void *p[2]`): writes `p[0] = (void*)x;` add a qualifier (OK), reads cast it away explicitly `(u8*)p[0]` (MWCC allows explicit cast-away-const). Use static if no other TU references the symbol (binding doesn't affect overlay bytes — overlays carry no symbol table). Fixed ov80_0223DD38 (.data 8 zero bytes) in overlay_80_02236B78.
 
+### A small local array initializer compiles to a byte-copy from auto-generated rodata — write the initializer, do not extern the blob  <!-- id: local-array-initializer-is-rodata-byte-copy -->
+
+When a function builds a local array on the stack via a sequence of ldrb/strb (or ldmia/stmia) from a rodata symbol (e.g. 5x ldrb r,[tbl,#k]; strb r,[sp,#k]), that rodata is the COMPILER-GENERATED initializer template for a local array initializer like u8 masks[]={0x01,0x02,0x04,0x08,0x10};. Do NOT declare an extern for the rodata symbol — just write the C initializer and MWCC regenerates the same constant bytes and the same copy code. The .text references the auto-blob via a relocation that objdiff normalizes. Distinguish from a genuine struct copy (which copies from another live object, not a const template). Seen ov02_02250738 (u8 masks[]={1,2,4,8,0x10}, rodata ov02_02253A54). Corollary: a loop-invariant subscript like masks[a0-1]&a1 is hoisted above the loop, so a degenerate for(i=0;i<N;i++){if(inv==0)return TRUE;}return FALSE; matches the spin.
+
 ## Recurring File/Module Patterns
 
 ### Task callback pattern (field system)  <!-- id: task-callback-pattern -->
