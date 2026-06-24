@@ -1823,6 +1823,24 @@ WIP_LOCAL BOOL ov02_0224DC94(Field3dObjectTask *task) {
     return *((u8 *)Field3dObjectTask_GetData(task) + 0x113) == 1;
 }
 
+WIP_LOCAL void ov02_0224DCB0(Field3dObjectTask *task, FieldSystem *fieldSystem, void *data) {
+    int i;
+    int j;
+    u8 *p;
+    u8 *q;
+    memset(data, 0, 0xe9c);
+    HeapExp_FndInitAllocator((NNSFndAllocator *)((u8 *)data + 0xe88), HEAP_ID_FIELD1, 0x20);
+    Field3dModel_LoadFromFilesystem((Field3dModel *)data, NARC_a_1_3_4, 8, HEAP_ID_FIELD1);
+    for (i = 0, p = (u8 *)data; i < 4; i++, p += 4) {
+        *(void **)(p + 0xe68) = GfGfxLoader_LoadFromNarc(NARC_a_1_3_4, i + 4, FALSE, HEAP_ID_FIELD1, FALSE);
+    }
+    for (j = 0, q = (u8 *)data + 0x10; j < 0x12; j++, q += 0xcc) {
+        ov02_0224DEA8((Field3dObject *)q, (Field3dModel *)data, (NNSFndAllocator *)((u8 *)data + 0xe88), (void **)((u8 *)data + 0xe68));
+    }
+    *(FieldSystem **)((u8 *)data + 0xe78) = fieldSystem;
+    *(u16 *)((u8 *)data + 0xe98) = 0;
+}
+
 WIP_LOCAL void ov02_0224D580(Field3dObjectTask *task, FieldSystem *fieldSystem, void *data) {
     int i;
     u8 *p = data;
@@ -3786,7 +3804,7 @@ WIP_LOCAL void ov02_02249FD4(void *work) {
 }
 
 // ===========================================================================
-// HANDOFF — overlay_02_02248728 WIP (300/364 byte-match, objdiff-verified)
+// HANDOFF — overlay_02_02248728 WIP (301/364 byte-match, objdiff-verified)
 //
 // NOTE: several functions contain an inline 4-entry jump table (dense switch:
 // ov02_0224CFD8/D044 facing-dir coord; ov02_0224E26C/E2A0/E2D4 dir remaps;
