@@ -135,6 +135,7 @@ extern u16 GF_DegreeToSinCosIdx(u16 deg);                       // math_util.h, 
 extern const VecFx32 ov02_02253360;                             // rodata, defined later (affine scale)
 extern const VecFx32 ov02_02253390;                             // rodata, defined later (affine scale)
 extern const VecFx32 ov02_02253348;                             // rodata, defined later (sprite spawn offset)
+extern void ov01_021F8F74(LocalMapObject *mapObject, int a1);   // no header included here
 
 // NewMsgDataFromNarc / MessageFormat_* / Buffer* / MapHeader_GetMapSec are reachable
 // transitively (msgdata.h / message_format.h / map_header.h) — no local externs.
@@ -250,6 +251,8 @@ WIP_LOCAL int ov02_0224C8D0(TaskManager *taskManager, FieldSystem *fieldSystem, 
 WIP_LOCAL int ov02_0224C234(TaskManager *taskManager, FieldSystem *fieldSystem, void *work);
 WIP_LOCAL int ov02_02249C74(void *work);
 WIP_LOCAL int ov02_02249A5C(void *work);
+WIP_LOCAL void ov02_0224FD9C(void *arg0, LocalMapObject *mapObject);
+WIP_LOCAL void ov02_022494C4(FieldSystem *fieldSystem, void *a1, void *a2, void *a3);
 WIP_LOCAL BOOL ov02_0224FFD8(void *p);
 WIP_LOCAL BOOL ov02_02249088(void *mgr);
 WIP_LOCAL BOOL ov02_02248D98(void *a0, void *obj);
@@ -2674,8 +2677,43 @@ WIP_LOCAL int ov02_02249A5C(void *work) {
     return 1;
 }
 
+WIP_LOCAL void ov02_0224FD9C(void *arg0, LocalMapObject *mapObject) {
+    VecFx32 vec;
+    MapObject_CopyPositionVector(mapObject, &vec);
+    if (*(s8 *)((u8 *)arg0 + 2) != 0) {
+        vec.x = vec.x + (*(s8 *)((u8 *)arg0 + 2) << 0xc);
+    }
+    if (*(s8 *)((u8 *)arg0 + 3) != 0) {
+        int species = FollowMon_GetSpecies(mapObject);
+        if (species != 0x32 && species != 0x33) {
+            ov01_021F8F74(mapObject, *(s8 *)((u8 *)arg0 + 3));
+        }
+    }
+    if (*(s8 *)((u8 *)arg0 + 4) != 0) {
+        vec.z = vec.z + (*(s8 *)((u8 *)arg0 + 4) << 0xc);
+    }
+    MapObject_SetPositionVector(mapObject, &vec);
+}
+
+WIP_LOCAL void ov02_022494C4(FieldSystem *fieldSystem, void *a1, void *a2, void *a3) {
+    VecFx32 vec1;
+    VecFx32 vec2;
+    void *work = ov02_0224955C(fieldSystem);
+    *(void **)((u8 *)work + 0x5c) = a1;
+    *(u16 *)((u8 *)work + 0xc) = 0;
+    *(u16 *)((u8 *)work + 0xe) = 2;
+    *(int *)((u8 *)work + 0x20) = 3;
+    *(void **)((u8 *)work + 0x208) = a2;
+    *(void **)((u8 *)work + 0x20c) = a3;
+    MapObject_CopyPositionVector(PlayerAvatar_GetMapObject((*(FieldSystem **)((u8 *)work + 0x60))->playerAvatar), &vec1);
+    MapObject_CopyPositionVector(*(LocalMapObject **)((u8 *)work + 0x208), &vec2);
+    *(fx32 *)((u8 *)work + 0x2ec) = *(fx32 *)((u8 *)work + 0x2ec) + FX_Div(vec2.x - vec1.x, 0x2000);
+    *(fx32 *)((u8 *)work + 0x2f4) = vec2.z - vec1.z;
+    SysTask_CreateOnMainQueue(ov02_022499B8, work, 0x86);
+}
+
 // ===========================================================================
-// HANDOFF — overlay_02_02248728 WIP (251/364 byte-match, objdiff-verified)
+// HANDOFF — overlay_02_02248728 WIP (253/364 byte-match, objdiff-verified)
 // ===========================================================================
 // MODULE: follow-mon sprite animation + Pokecenter / field-move (Escape Rope,
 //   Dig, Teleport) task subsystem. A 2D graphics renderer built on G2dRenderer /
