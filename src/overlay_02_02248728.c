@@ -1316,6 +1316,43 @@ WIP_LOCAL int ov02_0224E224(void *a, void *b) {
     return result;
 }
 
+struct ov02_PokeathlonStarBits {
+    u16 s0 : 3;
+    u16 s1 : 3;
+    u16 s2 : 3;
+    u16 s3 : 3;
+    u16 s4 : 3;
+};
+
+WIP_LOCAL void ov02_0224F6AC(FieldSystem *fieldSystem, int a1, int a2, void *work) {
+    PartyExtraSub aprijuice;
+    struct PokeathlonPerformanceStars stars;
+    int code;
+    u32 best;
+    Party *party = SaveArray_Party_Get(*(SaveData **)((u8 *)fieldSystem + 0xc));
+    int idx = GetIdxOfFirstAliveMonInParty_CrashIfNone(party);
+    Party_GetMonAprijuiceModifiers(party, &aprijuice, idx);
+    CalcMonPokeathlonStars(&stars, Party_GetMonByIndex(party, idx), (s8 *)&aprijuice, HEAP_ID_FIELD2);
+    best = ((struct ov02_PokeathlonStarBits *)&stars.stars)->s0;
+    code = 1;
+    if (best < ((struct ov02_PokeathlonStarBits *)&stars.stars)->s4) {
+        best = ((struct ov02_PokeathlonStarBits *)&stars.stars)->s4;
+        code = 2;
+    }
+    if (best < ((struct ov02_PokeathlonStarBits *)&stars.stars)->s3) {
+        best = ((struct ov02_PokeathlonStarBits *)&stars.stars)->s3;
+        code = 4;
+    }
+    if (best < ((struct ov02_PokeathlonStarBits *)&stars.stars)->s1) {
+        best = ((struct ov02_PokeathlonStarBits *)&stars.stars)->s1;
+        code = 3;
+    }
+    if (best < ((struct ov02_PokeathlonStarBits *)&stars.stars)->s2) {
+        code = 5;
+    }
+    *(u8 *)((u8 *)work + 0x16) = code;
+}
+
 WIP_LOCAL void ov02_0224F058(FieldSystem *fieldSystem, void *work) {
     Pokemon *mon = GetFirstAliveMonInParty_CrashIfNone(SaveArray_Party_Get(*(SaveData **)((u8 *)fieldSystem + 0xc)));
     *(u16 *)((u8 *)*(void **)((u8 *)fieldSystem + 0x120) + 0x87e) = GetMonData(mon, MON_DATA_SPECIES, NULL);
@@ -3380,7 +3417,7 @@ WIP_LOCAL void ov02_02249FD4(void *work) {
 }
 
 // ===========================================================================
-// HANDOFF — overlay_02_02248728 WIP (286/364 byte-match, objdiff-verified)
+// HANDOFF — overlay_02_02248728 WIP (287/364 byte-match, objdiff-verified)
 //
 // NOTE: several functions contain an inline 4-entry jump table (dense switch:
 // ov02_0224CFD8/D044 facing-dir coord; ov02_0224E26C/E2A0/E2D4 dir remaps;
