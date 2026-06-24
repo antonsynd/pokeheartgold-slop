@@ -246,6 +246,7 @@ WIP_LOCAL void ov02_0224A570(NARC *narc, u32 fileId, NNSG2dPaletteData **a2);
 WIP_LOCAL void ov02_0224B88C(void *work);
 WIP_LOCAL void ov02_0224B90C(void *work);
 WIP_LOCAL int ov02_0224B938(void *work);
+WIP_LOCAL void ov02_0224B808(void *a0, void *work);
 WIP_LOCAL void ov02_0224B784(void *work); // still in asm
 WIP_LOCAL int ov02_0224B964(void *work);
 WIP_LOCAL int ov02_0224C71C(void *a0, FieldSystem *fieldSystem, void *work);
@@ -689,6 +690,30 @@ WIP_LOCAL void ov02_0224A570(NARC *narc, u32 fileId, NNSG2dPaletteData **a2) {
     NNS_G2dGetUnpackedPaletteData(data, a2);
     BG_LoadPlttData(3, *(const void **)((u8 *)(*a2) + 0xc), 0x20, 0x180);
     Heap_Free(data);
+}
+
+WIP_LOCAL void ov02_0224B808(void *a0, void *work) {
+    u8 *d = *(u8 **)work + 0x228;
+    switch (*(int *)((u8 *)work + 4)) {
+    case 0:
+        *(int *)((u8 *)work + 4) = 1;
+        break;
+    case 1:
+        Field3dObject_SetActiveFlag((Field3dObject *)(d + 0x24), 1);
+        Field3dModelAnimation_FrameSet((Field3DModelAnimation *)(d + 0x9c), 0);
+        Field3dModelAnimation_FrameSet((Field3DModelAnimation *)(d + 0xb0), 0);
+        *(int *)((u8 *)work + 4) = 2;
+        /* fallthrough */
+    case 2:
+        Field3dModelAnimation_FrameAdvanceAndCheck((Field3DModelAnimation *)(d + 0x9c), 0x1000);
+        if (Field3dModelAnimation_FrameAdvanceAndCheck((Field3DModelAnimation *)(d + 0xb0), 0x1000)) {
+            *(int *)((u8 *)work + 8) = 1;
+            *(int *)((u8 *)work + 4) = 3;
+        }
+        break;
+    case 3:
+        break;
+    }
 }
 
 WIP_LOCAL void ov02_0224B88C(void *work) {
@@ -3208,11 +3233,15 @@ WIP_LOCAL void ov02_02249FD4(void *work) {
 }
 
 // ===========================================================================
-// HANDOFF — overlay_02_02248728 WIP (277/364 byte-match, objdiff-verified)
+// HANDOFF — overlay_02_02248728 WIP (278/364 byte-match, objdiff-verified)
 //
 // NOTE: several functions contain an inline 4-entry jump table (dense switch:
 // ov02_0224CFD8/D044 facing-dir coord; ov02_0224E26C/E2A0/E2D4 dir remaps;
-// ov02_0224FF04 facing-dir out-params). objdiff.py reports false "SIZE
+// ov02_0224FF04 facing-dir out-params; ov02_0224B808 anim-settle state machine,
+// 2-mod-4 body). Reminder: MWCC emits the add-pc table ONLY when every dense case
+// 0..K is an EXPLICIT case label — incl. the case whose body equals the bhi
+// default (B808 needed `case 3: break;` or it fell back to a cmp/beq chain).
+// objdiff.py reports false "SIZE
 // mismatch" for these because it drops the 8-byte data-in-text table (marked by
 // a $d mapping symbol) from the asm side. They are byte-identical — verified via
 // `arm-none-eabi-nm --print-size` + a normalized objdump diff (dispatch, the

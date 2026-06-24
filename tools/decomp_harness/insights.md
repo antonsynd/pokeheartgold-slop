@@ -332,6 +332,10 @@ When asm holds base in one reg and a large constant offset (e.g. 0x228 = 0x8a<<2
 
 When a function zero-initializes several struct fields with a shared 0 register and the asm store order is non-monotonic (e.g. 0,4,0xc,8,0x10,...), write the C assignments in that EXACT order. MWCC preserves the store sequence, so *(int*)(s+0xc)=0 before *(int*)(s+8)=0 reproduces the 0xc-before-8 ordering. Seen in ov02_0224B2CC and ov02_0224B314 (was deferred).
 
+### Switch emits add-pc jump table only when every dense case is explicit (incl. the default-equal case)  <!-- id: jumptable-needs-all-dense-cases-explicit -->
+
+MWCC chooses an add-pc jump table over a cmp/beq chain based on how many contiguous case labels are PRESENT in source. If the asm bounds-check is cmp rN,#K; bhi <default> with a K+1-entry .short table, the C switch must list ALL cases 0..K explicitly. A case whose body is identical to the default (e.g. just returns) is still required as an explicit empty case (case K: break;) — omitting it drops the count below the table threshold and MWCC emits a comparison chain instead. Seen: ov02_0224B808 (cases 0..3, case 3 = the bhi-default return) — 3 explicit cases gave cmp/beq; adding case 3: break; produced the matching jump table.
+
 ## Matching Tricks
 
 ### Small source changes that move codegen  <!-- id: decl-order-tricks -->

@@ -1219,6 +1219,12 @@
       "category": "matching-tricks",
       "title": "Small fixed-size byte-clear loop in asm is an inlined memset, not a hand loop",
       "body": "When the asm shows a small fixed-size zero-fill as a manual loop (mov r0,#0; L: strb r0,[r2]; adds r2,#1; subs r1,#1; bne L) with NO bl memset, the source is memset(p, 0, N) — MWCC -O4 inlines small constant-size memsets to that exact store-first loop. Writing a hand do-while/for instead fails: MWCC loop-rotates the counter decrement to the TOP (subs before strb) and adds a cmp (bgt), so it never matches and cascades diffs through the rest of the function. Just use memset(). Seen on ov02_0224E074 (overlay_02_02248728), a 16-byte clear."
+    },
+    {
+      "id": "jumptable-needs-all-dense-cases-explicit",
+      "category": "codegen",
+      "title": "Switch emits add-pc jump table only when every dense case is explicit (incl. the default-equal case)",
+      "body": "MWCC chooses an add-pc jump table over a cmp/beq chain based on how many contiguous case labels are PRESENT in source. If the asm bounds-check is cmp rN,#K; bhi <default> with a K+1-entry .short table, the C switch must list ALL cases 0..K explicitly. A case whose body is identical to the default (e.g. just returns) is still required as an explicit empty case (case K: break;) — omitting it drops the count below the table threshold and MWCC emits a comparison chain instead. Seen: ov02_0224B808 (cases 0..3, case 3 = the bhi-default return) — 3 explicit cases gave cmp/beq; adding case 3: break; produced the matching jump table."
     }
   ]
 }
