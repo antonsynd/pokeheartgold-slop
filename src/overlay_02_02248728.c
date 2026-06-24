@@ -135,6 +135,7 @@ extern void PlayCryEx(int, int, int, int, int, int);                            
 extern void PlayCry(u16 species, u8 form);                                                                                  // sound_chatot.h, not included
 extern int Field_GetTimeOfDay(FieldSystem *fieldSystem);                                                                    // unk_02055418.h, not included (TIMEOFDAY as int)
 extern void GfGfx_EngineATogglePlanes(u8 planeMask, u8 enable);                                                             // gf_gfx_planes.h, not included
+extern void *GfGfxLoader_LoadFromNarc(NarcId narcId, s32 fileId, BOOL isCompressed, enum HeapID heapID, BOOL atEnd);        // gf_gfx_loader.h, not included
 extern void sub_0205B4EC(int a0, int a1);                                                                                   // text_0205B4EC.h, not included
 extern void *sub_020689C8(int a0, int a1);                                                                                  // unk_020689C8.h, not included
 extern u16 GF_DegreeToSinCosIdx(u16 deg);                                                                                   // math_util.h, not included
@@ -316,6 +317,7 @@ WIP_LOCAL int ov02_0224C840(TaskManager *taskManager, void *a1, void *a2);
 WIP_LOCAL void ov02_0224D820(void *data);
 WIP_LOCAL void ov02_0224D7B0(void *data);
 WIP_LOCAL void ov02_0224D73C(Field3dObject *obj, Field3dModel *model, NNSFndAllocator *allocator, void **anmResources);
+WIP_LOCAL void ov02_0224D880(void *a0, FieldSystem *fieldSystem, void *work);
 WIP_LOCAL void ov02_0224DF1C(void *data);
 WIP_LOCAL BOOL ov02_0224BE24(TaskManager *taskManager);
 WIP_LOCAL int ov02_0224CAB8(WallpaperPasswordBank *bank, u16 trainerId, u16 a, u16 b, u16 c, u16 d);
@@ -2616,6 +2618,23 @@ WIP_LOCAL void ov02_0224D820(void *data) {
     GF_AssertFail();
 }
 
+WIP_LOCAL void ov02_0224D880(void *a0, FieldSystem *fieldSystem, void *work) {
+    int i;
+    u8 *p;
+    memset(work, 0, 0xd10);
+    HeapExp_FndInitAllocator((NNSFndAllocator *)((u8 *)work + 0xcfc), HEAP_ID_FIELD1, 0x20);
+    Field3dModel_LoadFromFilesystem((Field3dModel *)work, (NarcId)0x86, 8, HEAP_ID_FIELD1);
+    for (i = 0, p = (u8 *)work; i < 4; i++, p += 4) {
+        *(void **)(p + 0xcd0) = GfGfxLoader_LoadFromNarc((NarcId)0x86, i + 4, FALSE, HEAP_ID_FIELD1, FALSE);
+    }
+    for (i = 0, p = (u8 *)work + 0x10; i < 0x10; i++, p += 0xcc) {
+        ov02_0224D73C((Field3dObject *)p, (Field3dModel *)work, (NNSFndAllocator *)((u8 *)work + 0xcfc), (void **)((u8 *)work + 0xcd0));
+    }
+    *(FieldSystem **)((u8 *)work + 0xce0) = fieldSystem;
+    PlayerAvatar_CopyPositionVector(*(PlayerAvatar **)((u8 *)*(void **)((u8 *)work + 0xce0) + 0x40), (VecFx32 *)((u8 *)work + 0xcf0));
+    *(int *)((u8 *)work + 0xd0c) = 0;
+}
+
 WIP_LOCAL void FollowMon_PlaceholdersSet(void *work, void *messageFormat) {
     Pokemon *mon = GetFirstAliveMonInParty_CrashIfNone(SaveArray_Party_Get(*(SaveData **)((u8 *)work + 0xc)));
     BoxPokemon *boxMon = Mon_GetBoxMon(mon);
@@ -3277,7 +3296,7 @@ WIP_LOCAL void ov02_02249FD4(void *work) {
 }
 
 // ===========================================================================
-// HANDOFF — overlay_02_02248728 WIP (281/364 byte-match, objdiff-verified)
+// HANDOFF — overlay_02_02248728 WIP (282/364 byte-match, objdiff-verified)
 //
 // NOTE: several functions contain an inline 4-entry jump table (dense switch:
 // ov02_0224CFD8/D044 facing-dir coord; ov02_0224E26C/E2A0/E2D4 dir remaps;
