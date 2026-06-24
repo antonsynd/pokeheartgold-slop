@@ -336,6 +336,7 @@ WIP_LOCAL void ov02_0224D880(void *a0, FieldSystem *fieldSystem, void *work);
 WIP_LOCAL void ov02_0224DF1C(void *data);
 WIP_LOCAL BOOL ov02_0224BE24(TaskManager *taskManager);
 WIP_LOCAL BOOL ov02_0224CE28(TaskManager *taskManager);
+WIP_LOCAL BOOL PokecenterAnimRun(TaskManager *taskManager);
 WIP_LOCAL int ov02_0224CAB8(WallpaperPasswordBank *bank, u16 trainerId, u16 a, u16 b, u16 c, u16 d);
 WIP_LOCAL int ov02_0224CBF8(WallpaperPasswordBank *bank, u16 trainerId, u16 a, u16 b, u16 c, u16 d);
 WIP_LOCAL int ov02_0224C6DC(TaskManager *taskManager, FieldSystem *fieldSystem, void *work);
@@ -843,6 +844,29 @@ WIP_LOCAL int ov02_0224B964(void *work) {
         return 0;
     }
     return 0;
+}
+
+void PokecenterAnimCreate(FieldSystem *fieldSystem, u8 kind) {
+    int outObj;
+    void *outHandle;
+    VecFx32 tileCenter;
+    VecFx32 local;
+    void *data;
+    if (sub_02054C20(fieldSystem, 0x24, &outObj, &outHandle)) {
+        data = Heap_AllocAtEnd(HEAP_ID_FIELD1, 0x18);
+        *(u8 *)((u8 *)data + 0xc) = kind;
+        *(u8 *)((u8 *)data + 0xd) = 0;
+        *(u8 *)((u8 *)data + 0xe) = 0;
+        *(u8 *)((u8 *)data + 0xf) = 0;
+        sub_02054DC8((int)outHandle, MapMatrix_GetWidth(fieldSystem->mapMatrix), &tileCenter);
+        ov01_021F3B0C(&local, (void *)outObj);
+        *(VecFx32 *)data = local;
+        ((VecFx32 *)data)->x += tileCenter.x;
+        ((VecFx32 *)data)->z += tileCenter.z;
+        TaskManager_Call(fieldSystem->taskman, PokecenterAnimRun, data);
+    } else {
+        GF_AssertFail();
+    }
 }
 
 WIP_LOCAL int ov02_0224C71C(void *a0, FieldSystem *fieldSystem, void *work) {
@@ -3762,7 +3786,7 @@ WIP_LOCAL void ov02_02249FD4(void *work) {
 }
 
 // ===========================================================================
-// HANDOFF — overlay_02_02248728 WIP (299/364 byte-match, objdiff-verified)
+// HANDOFF — overlay_02_02248728 WIP (300/364 byte-match, objdiff-verified)
 //
 // NOTE: several functions contain an inline 4-entry jump table (dense switch:
 // ov02_0224CFD8/D044 facing-dir coord; ov02_0224E26C/E2A0/E2D4 dir remaps;
