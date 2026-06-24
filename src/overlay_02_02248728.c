@@ -262,6 +262,10 @@ WIP_LOCAL void ov02_022494C4(FieldSystem *fieldSystem, void *a1, void *a2, void 
 WIP_LOCAL int ov02_022499EC(void *work);
 WIP_LOCAL int ov02_022495E8(void *work);
 WIP_LOCAL int ov02_022497C0(void *work);
+WIP_LOCAL int ov02_0224E26C(int a0);
+WIP_LOCAL int ov02_0224E2A0(int a0);
+WIP_LOCAL int ov02_0224E2D4(int a0);
+WIP_LOCAL void ov02_0224FF04(LocalMapObject *mapObject, int dir, u32 *outX, u32 *outZ);
 WIP_LOCAL BOOL ov02_0224FFD8(void *p);
 WIP_LOCAL BOOL ov02_02249088(void *mgr);
 WIP_LOCAL BOOL ov02_02248D98(void *a0, void *obj);
@@ -2829,17 +2833,92 @@ WIP_LOCAL void ov02_0224D044(void *a0, void *data) {
     Field3dObject_SetPosEx(data, (x << 0x10) + 0x8000, vec.y, (z << 0x10) + 0x8000);
 }
 
+WIP_LOCAL int ov02_0224E26C(int a0) {
+    switch (a0) {
+    case 0:
+        return 0;
+    case 1:
+        return 1;
+    case 2:
+        return 2;
+    case 3:
+        return 3;
+    default:
+        GF_AssertFail();
+        return 0;
+    }
+}
+
+WIP_LOCAL int ov02_0224E2A0(int a0) {
+    switch (a0) {
+    case 0:
+        return 1;
+    case 1:
+        return 0;
+    case 2:
+        return 3;
+    case 3:
+        return 2;
+    default:
+        GF_AssertFail();
+        return 0;
+    }
+}
+
+WIP_LOCAL int ov02_0224E2D4(int a0) {
+    switch (a0 - 0xc) {
+    case 0:
+        return 0xd;
+    case 1:
+        return 0xc;
+    case 2:
+        return 0xf;
+    case 3:
+        return 0xe;
+    default:
+        GF_AssertFail();
+        return 0;
+    }
+}
+
+WIP_LOCAL void ov02_0224FF04(LocalMapObject *mapObject, int dir, u32 *outX, u32 *outZ) {
+    *outX = MapObject_GetXCoord(mapObject);
+    *outZ = MapObject_GetZCoord(mapObject);
+    switch (dir) {
+    case 0:
+        (*outZ)++;
+        break;
+    case 1:
+        (*outZ)--;
+        break;
+    case 2:
+        (*outX)++;
+        break;
+    case 3:
+        (*outX)--;
+        break;
+    default:
+        GF_AssertFail();
+        break;
+    }
+}
+
 // ===========================================================================
-// HANDOFF — overlay_02_02248728 WIP (258/364 byte-match, objdiff-verified)
+// HANDOFF — overlay_02_02248728 WIP (262/364 byte-match, objdiff-verified)
 //
-// NOTE: ov02_0224CFD8 and ov02_0224D044 contain an inline 4-entry jump table
-// (facing-direction switch). objdiff.py reports a false "SIZE mismatch
-// (asm=100, c=108)" for these because it drops the 8-byte data-in-text table
-// (marked by a $d mapping symbol) from the asm side. They are byte-identical:
-// ELF symbol sizes match (0x6c / 0x68) and the normalized disassembly is
-// instruction-for-instruction identical incl. the table entries. Verify such
-// jump-table funcs with `arm-none-eabi-nm --print-size` + a normalized objdump
-// diff, NOT objdiff --summary alone.
+// NOTE: several functions contain an inline 4-entry jump table (dense switch:
+// ov02_0224CFD8/D044 facing-dir coord; ov02_0224E26C/E2A0/E2D4 dir remaps;
+// ov02_0224FF04 facing-dir out-params). objdiff.py reports false "SIZE
+// mismatch" for these because it drops the 8-byte data-in-text table (marked by
+// a $d mapping symbol) from the asm side. They are byte-identical — verified via
+// `arm-none-eabi-nm --print-size` + a normalized objdump diff (dispatch, the
+// four .short table entries, case bodies, and default all match). Do NOT rely on
+// objdiff --summary for jump-table funcs.
+//   * CFD8/D044/E2D4 have 4-aligned bodies => equal symbol sizes (clean).
+//   * E26C/E2A0/FF04 have 2-mod-4 bodies => the asm symbol additionally includes
+//     a 2-byte `.balign 4,0` trailing pad that the per-function src `.text`
+//     section does not; the linker restores it between these (middle) functions'
+//     4-aligned sections. Bodies are byte-identical; recheck at flip-to-src.
 // ===========================================================================
 // MODULE: follow-mon sprite animation + Pokecenter / field-move (Escape Rope,
 //   Dig, Teleport) task subsystem. A 2D graphics renderer built on G2dRenderer /
