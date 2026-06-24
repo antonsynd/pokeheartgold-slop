@@ -143,6 +143,10 @@ extern const VecFx32 ov02_02253360;                                             
 extern const VecFx32 ov02_02253390;                                                                                         // rodata, defined later (affine scale)
 extern const VecFx32 ov02_02253348;                                                                                         // rodata, defined later (sprite spawn offset)
 extern void ov01_021F8F74(LocalMapObject *mapObject, int a1);                                                               // no header included here
+extern BOOL ov01_022055DC(LocalMapObject *mapObject);                                                                       // no header included here
+extern void ov01_021FF0E4(LocalMapObject *mapObject, int a1, u32 x, u32 z, int a4);                                         // no header included here
+extern void ov01_021FF964(LocalMapObject *mapObject, int a1, u32 x, u32 z, int a4);                                         // no header included here
+extern BOOL sub_0205B6F4(u8 tile);                                                                                          // no header included here
 extern const VecFx32 ov02_02253408;                                                                                         // rodata, defined later (sprite offset pair)
 extern const VecFx32 ov02_02253384;                                                                                         // rodata, defined later (sprite offset pair)
 extern const VecFx32 ov02_022533FC;                                                                                         // rodata, defined later (sprite offset pair)
@@ -354,7 +358,7 @@ WIP_LOCAL void *ov02_0224A468(void *a, VecFx32 *b, int c, int d); // still in as
 WIP_LOCAL BOOL ov02_02250780(FieldSystem *fieldSystem, u8 a1);
 WIP_LOCAL void ov02_02249E90(SysTask *task, void *work);
 WIP_LOCAL void ov02_0224FE40(void *a0, u8 *a1, LocalMapObject *obj);
-WIP_LOCAL void ov02_0224FE70(void *a0, LocalMapObject *obj, u8 dir); // still in asm
+WIP_LOCAL void ov02_0224FE70(void *a0, LocalMapObject *obj, u8 dir);
 WIP_LOCAL BOOL ov02_0224D178(void *obj);
 WIP_LOCAL void ov02_022507B4(FieldSystem *fieldSystem, u8 a1);
 WIP_LOCAL BOOL ov02_022507E8(TaskManager *taskManager); // still in asm
@@ -1494,6 +1498,31 @@ WIP_LOCAL void ov02_0224FE40(void *a0, u8 *a1, LocalMapObject *obj) {
         dir = MapObject_GetFacingDirection(obj);
         MapObject_SetFacingDirectionDirect(obj, a1[0] - 1);
         ov02_0224FE70(a0, obj, dir);
+    }
+}
+
+WIP_LOCAL void ov02_0224FE70(void *a0, LocalMapObject *obj, u8 dir) {
+    u32 x, z;
+    if (ov01_022055DC(obj) == 0) {
+        return;
+    }
+    if (dir == (u8)MapObject_GetFacingDirection(obj)) {
+        return;
+    }
+    switch (*(u8 *)((u8 *)a0 + 0x87c)) {
+    case 2:
+    case 3: {
+        FieldSystem *fieldSystem = MapObject_GetFieldSystem(obj);
+        int behavior;
+        ov02_0224FF04(obj, *(u8 *)((u8 *)a0 + 0x87c), &x, &z);
+        behavior = GetMetatileBehavior(fieldSystem, x, z);
+        if (MetatileBehavior_IsEncounterGrass(behavior) == 1) {
+            ov01_021FF0E4(obj, 0, x, z, 1);
+        } else if (sub_0205B6F4(behavior) == 1) {
+            ov01_021FF964(obj, 0, x, z, 1);
+        }
+        break;
+    }
     }
 }
 
@@ -3330,7 +3359,7 @@ WIP_LOCAL void ov02_02249FD4(void *work) {
 }
 
 // ===========================================================================
-// HANDOFF — overlay_02_02248728 WIP (284/364 byte-match, objdiff-verified)
+// HANDOFF — overlay_02_02248728 WIP (285/364 byte-match, objdiff-verified)
 //
 // NOTE: several functions contain an inline 4-entry jump table (dense switch:
 // ov02_0224CFD8/D044 facing-dir coord; ov02_0224E26C/E2A0/E2D4 dir remaps;
