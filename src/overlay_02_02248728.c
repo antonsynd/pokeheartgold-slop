@@ -279,6 +279,7 @@ WIP_LOCAL int ov02_02249658(void *work);
 WIP_LOCAL int ov02_0224C75C(TaskManager *taskManager, FieldSystem *fieldSystem, void *work);
 WIP_LOCAL int ov02_0224C93C(TaskManager *taskManager, FieldSystem *fieldSystem, void *work);
 WIP_LOCAL int ov02_0224C9B8(TaskManager *taskManager, FieldSystem *fieldSystem, void *work);
+WIP_LOCAL int ov02_0224C0B0(TaskManager *taskManager, FieldSystem *fieldSystem, void *work);
 WIP_LOCAL void ov02_0224A080(void *work, NARC *narc);
 WIP_LOCAL void ov02_02249F6C(void *work);
 WIP_LOCAL void ov02_0224A028(void *work);
@@ -2986,6 +2987,28 @@ WIP_LOCAL void ov02_0224F64C(FieldSystem *fieldSystem, void *arg1) {
     }
 }
 
+WIP_LOCAL int ov02_0224C0B0(TaskManager *taskManager, FieldSystem *fieldSystem, void *work) {
+    if (!EventObjectMovementMan_IsFinish(*(EventObjectMovementMan **)((u8 *)work + 0x10))) {
+        return 0;
+    }
+    EventObjectMovementMan_Delete(*(EventObjectMovementMan **)((u8 *)work + 0x10));
+    *(EventObjectMovementMan **)((u8 *)work + 0x10) = EventObjectMovementMan_Create(*(LocalMapObject **)((u8 *)work + 0x20), &ov02_02253794);
+    if (*(int *)((u8 *)work + 8)) {
+        EventObjectMovementMan_Delete(*(EventObjectMovementMan **)((u8 *)work + 0x14));
+        *(EventObjectMovementMan **)((u8 *)work + 0x14) = EventObjectMovementMan_Create(*(LocalMapObject **)((u8 *)fieldSystem + 0xe4), &ov02_02253794);
+    }
+    if (++*(int *)((u8 *)work + 4) < 8) {
+        return 0;
+    }
+    if (*(int *)((u8 *)work + 0xc) == 2) {
+        BeginNormalPaletteFade(0, 0, 0, 0, 6, 1, HEAP_ID_FIELD1);
+    } else {
+        BeginNormalPaletteFade(0, 0, 0, 0x7fff, 6, 1, HEAP_ID_FIELD1);
+    }
+    (*(int *)((u8 *)work))++;
+    return 0;
+}
+
 WIP_LOCAL int ov02_0224C75C(TaskManager *taskManager, FieldSystem *fieldSystem, void *work) {
     if (!EventObjectMovementMan_IsFinish(*(EventObjectMovementMan **)((u8 *)work + 0x10))) {
         return 0;
@@ -3104,7 +3127,7 @@ WIP_LOCAL void ov02_02249FD4(void *work) {
 }
 
 // ===========================================================================
-// HANDOFF — overlay_02_02248728 WIP (273/364 byte-match, objdiff-verified)
+// HANDOFF — overlay_02_02248728 WIP (274/364 byte-match, objdiff-verified)
 //
 // NOTE: several functions contain an inline 4-entry jump table (dense switch:
 // ov02_0224CFD8/D044 facing-dir coord; ov02_0224E26C/E2A0/E2D4 dir remaps;
