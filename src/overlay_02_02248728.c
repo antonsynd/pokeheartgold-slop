@@ -95,6 +95,12 @@ typedef struct AnimResEntry {
     SpriteResource *res;
 } AnimResEntry;
 
+// follow-mon work byte at +0x86c: low nibble is an 8-byte-stride array index.
+typedef struct ov02_FollowMonStep {
+    u8 idx : 4;
+    u8 hi : 4;
+} ov02_FollowMonStep;
+
 // follow-mon task-data accessor (defined in unk_020689C8.c); local extern matches
 // the convention used by other overlays that don't pull in the full header.
 extern void *sub_02068D74(void *work);
@@ -288,6 +294,7 @@ WIP_LOCAL int ov02_0224E26C(int a0);
 WIP_LOCAL int ov02_0224E2A0(int a0);
 WIP_LOCAL int ov02_0224E2D4(int a0);
 WIP_LOCAL void ov02_0224FF04(LocalMapObject *mapObject, int dir, u32 *outX, u32 *outZ);
+WIP_LOCAL int ov02_0224FF5C(void *a0, LocalMapObject *a1);
 WIP_LOCAL void ov02_0224F728(FieldSystem *fieldSystem, void *arg1);
 WIP_LOCAL int ov02_0224F820(int a0);
 WIP_LOCAL void ov02_0224F64C(FieldSystem *fieldSystem, void *arg1);
@@ -3408,6 +3415,24 @@ WIP_LOCAL void ov02_0224FF04(LocalMapObject *mapObject, int dir, u32 *outX, u32 
     }
 }
 
+WIP_LOCAL int ov02_0224FF5C(void *a0, LocalMapObject *a1) {
+    u8 *entry = (u8 *)a0 + 0x818 + *(u8 *)((u8 *)a0 + 0x86b) * 8;
+    if (*(u8 *)((u8 *)a0 + 0x86a) == 0) {
+        ov02_0224FD9C(entry, a1);
+        ov02_0224FDF8(entry,
+            *(u16 *)((u8 *)a0 + ((ov02_FollowMonStep *)((u8 *)a0 + 0x86c))->idx * 8 + 0x7e8),
+            *(u16 *)((u8 *)a0 + 0x87e),
+            *(u8 *)((u8 *)a0 + 0x87d));
+        ov02_0224FE40(a0, entry, a1);
+    }
+    (*(u8 *)((u8 *)a0 + 0x86a))++;
+    if (*(u8 *)((u8 *)a0 + 0x86a) >= entry[1]) {
+        (*(u8 *)((u8 *)a0 + 0x86b))++;
+        return 1;
+    }
+    return 0;
+}
+
 WIP_LOCAL void ov02_0224F728(FieldSystem *fieldSystem, void *arg1) {
     switch (MapObject_GetFacingDirection(*(LocalMapObject **)((u8 *)fieldSystem + 0xe4))) {
     case 0:
@@ -3832,7 +3857,7 @@ WIP_LOCAL void ov02_02249FD4(void *work) {
 }
 
 // ===========================================================================
-// HANDOFF — overlay_02_02248728 WIP (302/364 byte-match, objdiff-verified)
+// HANDOFF — overlay_02_02248728 WIP (303/364 byte-match, objdiff-verified)
 //
 // NOTE: several functions contain an inline 4-entry jump table (dense switch:
 // ov02_0224CFD8/D044 facing-dir coord; ov02_0224E26C/E2A0/E2D4 dir remaps;
