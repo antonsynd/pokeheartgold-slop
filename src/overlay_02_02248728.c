@@ -1506,6 +1506,50 @@ WIP_LOCAL void ov02_0224F058(FieldSystem *fieldSystem, void *work) {
     ov02_0224F76C(*(u16 *)((u8 *)*(void **)((u8 *)fieldSystem + 0x120) + 0x87e), work);
 }
 
+WIP_LOCAL void ov02_0224F4BC(FieldSystem *fieldSystem, void *work) {
+    LocalMapObject *objArray;
+    int i;
+    int count;
+    int playerX;
+    int playerZ;
+    u8 *counter;
+    *(u8 *)((u8 *)work + 0xc) = 0;
+    *(u8 *)((u8 *)work + 0xe) = 0;
+    *(u8 *)((u8 *)work + 0xf) = 0;
+    *(u8 *)((u8 *)work + 0x10) = 0;
+    playerX = PlayerAvatar_GetXCoord(fieldSystem->playerAvatar);
+    playerZ = PlayerAvatar_GetZCoord(fieldSystem->playerAvatar);
+    count = MapObjectManager_GetObjectCount(fieldSystem->mapObjectManager);
+    objArray = MapObjectManager_GetObjects(fieldSystem->mapObjectManager);
+    i = 0;
+    if (count > 0) {
+        counter = (u8 *)work + 0xc;
+        do {
+            if (MapObject_CheckActive(objArray) == 1) {
+                int objX = MapObject_GetXCoord(objArray);
+                int objZ = MapObject_GetZCoord(objArray);
+                int dx = playerX - objX;
+                int dz = playerZ - objZ;
+                u32 spriteID = MapObject_GetSpriteID(objArray);
+                if (spriteID == 0x54) {
+                    *(u8 *)((u8 *)work + 0xf) = 1;
+                } else if (spriteID == 0x55) {
+                    *(u8 *)((u8 *)work + 0xe) = 1;
+                } else if (spriteID == 0x56) {
+                    *(u8 *)((u8 *)work + 0x10) = 1;
+                } else if (dx >= -1 && dx <= 1 && dz >= -1 && dz <= 1) {
+                    u32 id = MapObject_GetID(objArray);
+                    if (id != 0xfd && id != 0xff) {
+                        (*counter)++;
+                    }
+                }
+            }
+            MapObjectArray_NextObject2(&objArray);
+            i++;
+        } while (i < count);
+    }
+}
+
 WIP_LOCAL void ov02_0224F5FC(FieldSystem *fieldSystem, void *work) {
     int x = MapObject_GetXCoord(FollowMon_GetMapObject(fieldSystem));
     int z = MapObject_GetZCoord(FollowMon_GetMapObject(fieldSystem));
@@ -3857,7 +3901,7 @@ WIP_LOCAL void ov02_02249FD4(void *work) {
 }
 
 // ===========================================================================
-// HANDOFF — overlay_02_02248728 WIP (303/364 byte-match, objdiff-verified)
+// HANDOFF — overlay_02_02248728 WIP (304/364 byte-match, objdiff-verified)
 //
 // NOTE: several functions contain an inline 4-entry jump table (dense switch:
 // ov02_0224CFD8/D044 facing-dir coord; ov02_0224E26C/E2A0/E2D4 dir remaps;
