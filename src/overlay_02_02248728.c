@@ -326,6 +326,7 @@ WIP_LOCAL int ov02_02249690(void *work);
 WIP_LOCAL int ov02_022496D0(void *work);
 WIP_LOCAL int ov02_02249BD8(void *work);
 WIP_LOCAL int ov02_02250594(int a0, int a1);
+WIP_LOCAL int ov02_02250628(int a0, int a1);
 WIP_LOCAL void ov02_0224D310(void *a0, void *a1, void *data);
 WIP_LOCAL int ov02_0224C840(TaskManager *taskManager, void *a1, void *a2);
 WIP_LOCAL void ov02_0224D820(void *data);
@@ -3544,6 +3545,62 @@ WIP_LOCAL int ov02_02250594(int a0, int a1) {
     return 0;
 }
 
+WIP_LOCAL int ov02_02250628(int a0, int a1) {
+    switch (a0) {
+    case 1:
+        if (a1 == 0x7f) {
+            return 1;
+        }
+        break;
+    case 2:
+        if (a1 >= 0x64 && a1 < 0x7f) {
+            return 1;
+        }
+        break;
+    case 3:
+        if (a1 >= 0x32 && a1 < 0x64) {
+            return 1;
+        }
+        break;
+    case 4:
+        if (a1 >= 0x1e && a1 < 0x32) {
+            return 1;
+        }
+        break;
+    case 5:
+        if (a1 > -0x1e && a1 < 0x1e) {
+            return 1;
+        }
+        break;
+    case 6:
+        if (a1 > -0x32 && a1 <= -0x1e) {
+            return 1;
+        }
+        break;
+    case 7:
+        if (a1 > -0x7f && a1 <= -0x32) {
+            return 1;
+        }
+        break;
+    case 8:
+        if (a1 == -0x7f) {
+            return 1;
+        }
+        break;
+    case 9:
+        if (a1 >= 0) {
+            return 1;
+        }
+        break;
+    case 10:
+        if (a1 <= -1) {
+            return 1;
+        }
+        break;
+    }
+    return 0;
+}
+
 WIP_LOCAL BOOL ov02_02250738(u32 a0, u32 a1) {
     int i;
     u8 masks[] = { 0x01, 0x02, 0x04, 0x08, 0x10 };
@@ -3705,7 +3762,7 @@ WIP_LOCAL void ov02_02249FD4(void *work) {
 }
 
 // ===========================================================================
-// HANDOFF — overlay_02_02248728 WIP (298/364 byte-match, objdiff-verified)
+// HANDOFF — overlay_02_02248728 WIP (299/364 byte-match, objdiff-verified)
 //
 // NOTE: several functions contain an inline 4-entry jump table (dense switch:
 // ov02_0224CFD8/D044 facing-dir coord; ov02_0224E26C/E2A0/E2D4 dir remaps;
