@@ -131,6 +131,7 @@ extern void ov01_021FCD8C(void *a0, int a1, fx32 a2, int a3);   // no header inc
 extern BOOL ov01_02206268(FieldSystem *fieldSystem);            // overlay_01.h, not included
 extern int ov01_022062CC(FieldSystem *fieldSystem);             // overlay_01.h, not included
 extern void PlayCryEx(int, int, int, int, int, int);            // sound_02004A44.h, not included
+extern void PlayCry(u16 species, u8 form);                      // sound_chatot.h, not included
 extern u16 GF_DegreeToSinCosIdx(u16 deg);                       // math_util.h, not included
 extern const VecFx32 ov02_02253360;                             // rodata, defined later (affine scale)
 extern const VecFx32 ov02_02253390;                             // rodata, defined later (affine scale)
@@ -260,6 +261,7 @@ WIP_LOCAL void ov02_0224FD9C(void *arg0, LocalMapObject *mapObject);
 WIP_LOCAL void ov02_022494C4(FieldSystem *fieldSystem, void *a1, void *a2, void *a3);
 WIP_LOCAL int ov02_022499EC(void *work);
 WIP_LOCAL int ov02_022495E8(void *work);
+WIP_LOCAL int ov02_022497C0(void *work);
 WIP_LOCAL BOOL ov02_0224FFD8(void *p);
 WIP_LOCAL BOOL ov02_02249088(void *mgr);
 WIP_LOCAL BOOL ov02_02248D98(void *a0, void *obj);
@@ -2753,8 +2755,91 @@ WIP_LOCAL int ov02_022495E8(void *work) {
     return 1;
 }
 
+WIP_LOCAL int ov02_022497C0(void *work) {
+    VecFx32 vec;
+    fx32 v = *(fx32 *)((u8 *)work + 0x58) / 2;
+    *(fx32 *)((u8 *)work + 0x58) = v;
+    if (v > (fx32)0xFFFFE000) {
+        *(fx32 *)((u8 *)work + 0x58) = (fx32)0xFFFFE000;
+        (*(int *)work)++;
+        {
+            int species = GetMonData(*(Pokemon **)((u8 *)work + 0x5c), MON_DATA_SPECIES, NULL);
+            int form = GetMonData(*(Pokemon **)((u8 *)work + 0x5c), MON_DATA_FORM, NULL);
+            PlayCry((u16)species, (u8)form);
+        }
+    }
+    vec = *Sprite_GetMatrixPtr(*(Sprite **)((u8 *)work + 0x1e8));
+    vec.x = vec.x + *(fx32 *)((u8 *)work + 0x58);
+    Sprite_SetMatrix(*(Sprite **)((u8 *)work + 0x1e8), &vec);
+    return 0;
+}
+
+WIP_LOCAL void ov02_0224CFD8(void *a0, int a1, void *data) {
+    VecFx32 vec;
+    LocalMapObject *obj = MapObjectManager_GetFirstActiveObjectByID(a0, a1);
+    u32 x;
+    u32 z;
+    MapObject_CopyPositionVector(obj, &vec);
+    x = MapObject_GetXCoord(obj);
+    z = MapObject_GetZCoord(obj);
+    switch (MapObject_GetFacingDirection(obj)) {
+    case 0:
+        z--;
+        break;
+    case 1:
+        z++;
+        break;
+    case 2:
+        x--;
+        break;
+    case 3:
+        x++;
+        break;
+    default:
+        GF_AssertFail();
+        break;
+    }
+    Field3dObject_SetPosEx(data, (x << 0x10) + 0x8000, vec.y, (z << 0x10) + 0x8000);
+}
+
+WIP_LOCAL void ov02_0224D044(void *a0, void *data) {
+    VecFx32 vec;
+    u32 x;
+    u32 z;
+    PlayerAvatar_CopyPositionVector(a0, &vec);
+    x = PlayerAvatar_GetXCoord(a0);
+    z = PlayerAvatar_GetZCoord(a0);
+    switch (PlayerAvatar_GetFacingDirection(a0)) {
+    case 0:
+        z--;
+        break;
+    case 1:
+        z++;
+        break;
+    case 2:
+        x--;
+        break;
+    case 3:
+        x++;
+        break;
+    default:
+        GF_AssertFail();
+        break;
+    }
+    Field3dObject_SetPosEx(data, (x << 0x10) + 0x8000, vec.y, (z << 0x10) + 0x8000);
+}
+
 // ===========================================================================
-// HANDOFF — overlay_02_02248728 WIP (255/364 byte-match, objdiff-verified)
+// HANDOFF — overlay_02_02248728 WIP (258/364 byte-match, objdiff-verified)
+//
+// NOTE: ov02_0224CFD8 and ov02_0224D044 contain an inline 4-entry jump table
+// (facing-direction switch). objdiff.py reports a false "SIZE mismatch
+// (asm=100, c=108)" for these because it drops the 8-byte data-in-text table
+// (marked by a $d mapping symbol) from the asm side. They are byte-identical:
+// ELF symbol sizes match (0x6c / 0x68) and the normalized disassembly is
+// instruction-for-instruction identical incl. the table entries. Verify such
+// jump-table funcs with `arm-none-eabi-nm --print-size` + a normalized objdump
+// diff, NOT objdiff --summary alone.
 // ===========================================================================
 // MODULE: follow-mon sprite animation + Pokecenter / field-move (Escape Rope,
 //   Dig, Teleport) task subsystem. A 2D graphics renderer built on G2dRenderer /
