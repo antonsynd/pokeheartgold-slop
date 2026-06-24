@@ -239,6 +239,7 @@ WIP_LOCAL void ov02_0224A690(void *work);
 WIP_LOCAL void ov02_0224AAC8(void *a0, void *work);
 WIP_LOCAL void ov02_0224ABF8(void *a0, void *work);
 WIP_LOCAL void ov02_0224B2C0(void *work);
+WIP_LOCAL BOOL ov02_0224B0E0(void *work);
 WIP_LOCAL BOOL ov02_0224B43C(SysTask *task);
 WIP_LOCAL BOOL ov02_0224E308(int a0);
 WIP_LOCAL BOOL ov02_0224FB44(void *a0, u16 *a1);
@@ -597,6 +598,26 @@ WIP_LOCAL void ov02_0224ABF8(void *a0, void *work) {
 
 WIP_LOCAL void ov02_0224B2C0(void *work) {
     *(int *)sub_02068D74(work) = 0;
+}
+
+WIP_LOCAL BOOL ov02_0224B0E0(void *work) {
+    Sprite *sprite = *(Sprite **)((u8 *)*(void **)((u8 *)work + 0x5c) + 0x1e4);
+    fx32 y;
+    Sprite_SetAnimCtrlSeq(sprite, 3);
+    Sprite_SetDrawFlag(sprite, 1);
+    ov02_0224B6B0(*(void **)((u8 *)work + 0x5c), 1);
+    sub_0205F484(*(LocalMapObject **)((u8 *)*(void **)((u8 *)work + 0x5c) + 0x208));
+    y = Sprite_GetMatrixPtr(sprite)->y;
+    *(int *)((u8 *)work + 0x54) = y - Sprite_GetMatrixPtr(*(Sprite **)((u8 *)work + 0x58))->y;
+    ov02_0224B2C0(*(void **)((u8 *)work + 0x60));
+    ov01_021FCD8C(*(void **)((u8 *)work + 0x64), 2, 0, 0xc);
+    *(int *)((u8 *)work + 0x50) = 0x100;
+    *(int *)((u8 *)work + 0x40) = 0x80000;
+    *(int *)((u8 *)work + 0x48) = 0;
+    *(int *)((u8 *)work + 0x4c) = 0x800;
+    *(u8 *)((u8 *)work + 2) = 3;
+    *(u8 *)((u8 *)work + 1) = *(u8 *)((u8 *)work + 1) + 1;
+    return 1;
 }
 
 WIP_LOCAL BOOL ov02_0224B43C(SysTask *task) {
@@ -3417,7 +3438,7 @@ WIP_LOCAL void ov02_02249FD4(void *work) {
 }
 
 // ===========================================================================
-// HANDOFF — overlay_02_02248728 WIP (287/364 byte-match, objdiff-verified)
+// HANDOFF — overlay_02_02248728 WIP (288/364 byte-match, objdiff-verified)
 //
 // NOTE: several functions contain an inline 4-entry jump table (dense switch:
 // ov02_0224CFD8/D044 facing-dir coord; ov02_0224E26C/E2A0/E2D4 dir remaps;
