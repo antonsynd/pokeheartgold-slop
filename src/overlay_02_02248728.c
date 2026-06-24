@@ -323,6 +323,7 @@ WIP_LOCAL void ov02_0224DE6C(void *obj);
 WIP_LOCAL void ov02_0224D950(void *a0, void *a1, void *data);
 WIP_LOCAL void ov02_0224DD8C(void *a0, void *a1, void *data);
 WIP_LOCAL int ov02_02249690(void *work);
+WIP_LOCAL int ov02_022496D0(void *work);
 WIP_LOCAL void ov02_0224D310(void *a0, void *a1, void *data);
 WIP_LOCAL int ov02_0224C840(TaskManager *taskManager, void *a1, void *a2);
 WIP_LOCAL void ov02_0224D820(void *data);
@@ -461,6 +462,7 @@ WIP_LOCAL void ov02_02248DBC(void *a0);
 WIP_LOCAL int ov02_02249B10(void *work);
 WIP_LOCAL void ov02_0224F5D0(FieldSystem *fieldSystem, void *out);
 WIP_LOCAL void ov02_0224F76C(int a0, void *out);
+WIP_LOCAL int ov02_0224F79C(int a0);
 WIP_LOCAL BOOL PlayerStepEvent_RepelCounterDecrement(SaveData *saveData, FieldSystem *fieldSystem);
 WIP_LOCAL void ov02_0224AC38(void *work); // still in asm
 WIP_LOCAL SpriteResource *ov02_0224A868(void *mgr, NARC *narc);
@@ -1182,6 +1184,29 @@ WIP_LOCAL int ov02_02249690(void *work) {
     }
     ov02_0224A69C(work, *(int *)((u8 *)work + 0x44), *(int *)((u8 *)work + 0x4c), *(int *)((u8 *)work + 0x48), *(int *)((u8 *)work + 0x50));
     *(int *)((u8 *)work + 0x2c) = 1;
+    return 0;
+}
+
+WIP_LOCAL int ov02_022496D0(void *work) {
+    *(int *)((u8 *)work + 0x2c) = 0;
+    *(int *)((u8 *)work + 0x4c) = *(int *)((u8 *)work + 0x4c) - *(int *)((u8 *)work + 0x54);
+    *(int *)((u8 *)work + 0x50) = *(int *)((u8 *)work + 0x50) + *(int *)((u8 *)work + 0x54);
+    *(int *)((u8 *)work + 0x54) += 0x2000;
+    if (*(int *)((u8 *)work + 0x54) > 0x20000) {
+        *(int *)((u8 *)work + 0x54) = 0x20000;
+    }
+    if (*(int *)((u8 *)work + 0x4c) < 0x38000) {
+        *(int *)((u8 *)work + 0x4c) = 0x38000;
+    }
+    if (*(int *)((u8 *)work + 0x50) > 0x88000) {
+        *(int *)((u8 *)work + 0x50) = 0x88000;
+    }
+    ov02_0224A69C(work, *(int *)((u8 *)work + 0x44), *(int *)((u8 *)work + 0x4c), *(int *)((u8 *)work + 0x48), *(int *)((u8 *)work + 0x50));
+    *(int *)((u8 *)work + 0x2c) = 1;
+    if (*(int *)((u8 *)work + 0x4c) == 0x38000 && *(int *)((u8 *)work + 0x50) == 0x88000) {
+        ov02_0224A450(*(Sprite **)((u8 *)work + 0x1e4));
+        (*(int *)((u8 *)work))++;
+    }
     return 0;
 }
 
@@ -2128,6 +2153,47 @@ WIP_LOCAL void ov02_0224F76C(int a0, void *out) {
     narc = AllocAtEndAndReadWholeNarcMemberByIdPair((NarcId)0xe9, 0, HEAP_ID_FIELD2);
     *(u8 *)((u8 *)out + 0xa) = ((u8 *)narc)[a0 - 1];
     Heap_Free(narc);
+}
+
+WIP_LOCAL int ov02_0224F79C(int a0) {
+    switch (a0) {
+    case 0:
+        return 1;
+    case 1:
+        return 7;
+    case 2:
+        return 0xa;
+    case 3:
+        return 8;
+    case 4:
+        return 9;
+    case 5:
+        return 0xd;
+    case 6:
+        return 0xc;
+    case 7:
+        return 0xe;
+    case 8:
+        return 0x11;
+    case 10:
+        return 2;
+    case 11:
+        return 3;
+    case 12:
+        return 5;
+    case 13:
+        return 4;
+    case 14:
+        return 0xb;
+    case 15:
+        return 6;
+    case 16:
+        return 0xf;
+    case 17:
+        return 0x10;
+    }
+    GF_AssertFail();
+    return 0;
 }
 
 WIP_LOCAL BOOL PlayerStepEvent_RepelCounterDecrement(SaveData *saveData, FieldSystem *fieldSystem) {
@@ -3553,7 +3619,7 @@ WIP_LOCAL void ov02_02249FD4(void *work) {
 }
 
 // ===========================================================================
-// HANDOFF — overlay_02_02248728 WIP (294/364 byte-match, objdiff-verified)
+// HANDOFF — overlay_02_02248728 WIP (296/364 byte-match, objdiff-verified)
 //
 // NOTE: several functions contain an inline 4-entry jump table (dense switch:
 // ov02_0224CFD8/D044 facing-dir coord; ov02_0224E26C/E2A0/E2D4 dir remaps;
