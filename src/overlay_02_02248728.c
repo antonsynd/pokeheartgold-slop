@@ -338,6 +338,10 @@ WIP_LOCAL int ov02_0224B5F0(void *work);
 WIP_LOCAL void ov02_0224D1E4(void *a0, void *a1, void *data);
 WIP_LOCAL int ov02_0224E224(void *a, void *b);
 WIP_LOCAL void ov02_0224F5FC(FieldSystem *fieldSystem, void *work);
+WIP_LOCAL void ov02_0224F058(FieldSystem *fieldSystem, void *work);
+WIP_LOCAL void ov02_0224F324(Pokemon *mon, void *work);
+WIP_LOCAL void ov02_0224F4BC(FieldSystem *fieldSystem, void *work);
+WIP_LOCAL void ov02_0224F6AC(FieldSystem *fieldSystem, int species, int form, void *work);
 WIP_LOCAL void ov02_02248E20(void *a0);
 WIP_LOCAL void ov02_0224B784(void *work);
 WIP_LOCAL BOOL ov02_0224FB54(FieldSystem *fieldSystem, void *a1, void *arg2);
@@ -1310,6 +1314,23 @@ WIP_LOCAL int ov02_0224E224(void *a, void *b) {
         GF_AssertFail();
     }
     return result;
+}
+
+WIP_LOCAL void ov02_0224F058(FieldSystem *fieldSystem, void *work) {
+    Pokemon *mon = GetFirstAliveMonInParty_CrashIfNone(SaveArray_Party_Get(*(SaveData **)((u8 *)fieldSystem + 0xc)));
+    *(u16 *)((u8 *)*(void **)((u8 *)fieldSystem + 0x120) + 0x87e) = GetMonData(mon, MON_DATA_SPECIES, NULL);
+    *(u8 *)((u8 *)*(void **)((u8 *)fieldSystem + 0x120) + 0x87d) = GetMonData(mon, MON_DATA_FORM, NULL);
+    ov02_0224F324(mon, work);
+    ov02_0224F4BC(fieldSystem, work);
+    ov02_0224F580(fieldSystem, work);
+    ov02_0224F5D0(fieldSystem, work);
+    ov02_0224F5FC(fieldSystem, work);
+    ov02_0224F644(fieldSystem, work);
+    ov02_0224F64C(fieldSystem, work);
+    ov02_0224F698(fieldSystem, work);
+    ov02_0224F6AC(fieldSystem, *(u16 *)((u8 *)*(void **)((u8 *)fieldSystem + 0x120) + 0x87e), *(u8 *)((u8 *)*(void **)((u8 *)fieldSystem + 0x120) + 0x87d), work);
+    ov02_0224F728(fieldSystem, work);
+    ov02_0224F76C(*(u16 *)((u8 *)*(void **)((u8 *)fieldSystem + 0x120) + 0x87e), work);
 }
 
 WIP_LOCAL void ov02_0224F5FC(FieldSystem *fieldSystem, void *work) {
@@ -3359,7 +3380,7 @@ WIP_LOCAL void ov02_02249FD4(void *work) {
 }
 
 // ===========================================================================
-// HANDOFF — overlay_02_02248728 WIP (285/364 byte-match, objdiff-verified)
+// HANDOFF — overlay_02_02248728 WIP (286/364 byte-match, objdiff-verified)
 //
 // NOTE: several functions contain an inline 4-entry jump table (dense switch:
 // ov02_0224CFD8/D044 facing-dir coord; ov02_0224E26C/E2A0/E2D4 dir remaps;
