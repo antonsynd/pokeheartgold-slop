@@ -522,6 +522,10 @@ When the asm subtracts then truncates TWICE — `subs rN,#0x3d; lsls#24;lsrs#24;
 
 sub_0202BCAC builds `u16 pos[4]` from a packed u32 (`pos[0]=p; pos[1]=p>>16; pos[2]=pos[0]; pos[3]=pos[1];`) and reads `(s16)pos[2]/(s16)pos[3]` plus re-reads pos[2] for a later call. Retail keeps all four slots (strh writes, ldrh copies, ldrsh reads via a base pointer `add rN,sp,#k`) and re-reads pos[2] each use. Plain `u16 pos[4]` lets MWCC dead-eliminate pos[0]/pos[1], promote pos[2]/pos[3] to int temps, and cache reads — 47 diffs / wrong stack frame. Declaring `volatile u16 pos[4]` defeats the dead-store elimination and forces every read from memory, collapsing it to a near-match (here 2 bytes, the remaining diff being a separate register-spill reload → NONMATCHING). Use volatile when the asm clearly keeps a stack array MWCC would optimize, and the array is small/leaf.
 
+### Small fixed-size byte-clear loop in asm is an inlined memset, not a hand loop  <!-- id: inlined-memset-not-hand-loop -->
+
+When the asm shows a small fixed-size zero-fill as a manual loop (mov r0,#0; L: strb r0,[r2]; adds r2,#1; subs r1,#1; bne L) with NO bl memset, the source is memset(p, 0, N) — MWCC -O4 inlines small constant-size memsets to that exact store-first loop. Writing a hand do-while/for instead fails: MWCC loop-rotates the counter decrement to the TOP (subs before strb) and adds a cmp (bgt), so it never matches and cascades diffs through the rest of the function. Just use memset(). Seen on ov02_0224E074 (overlay_02_02248728), a 16-byte clear.
+
 ## IPA (-ipa file) Behavior
 
 ### Shared-header signatures are load-bearing across compilation units  <!-- id: ipa-shared-headers -->

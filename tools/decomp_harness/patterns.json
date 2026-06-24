@@ -1213,6 +1213,12 @@
       "category": "tooling",
       "title": "objdiff false SIZE on inline jump tables; verify via nm + normalized objdump",
       "body": "objdiff.py reports a false SIZE mismatch (asm=N, c=N+8) for functions with an inline data-in-text jump table (MWCC dense-switch cmp rN,#K; bhi default; add r0,r0; add pc; <.short table>). Cause: the asm .o marks the table with a $d ARM mapping symbol so objdiff drops those bytes from the asm-side size; the src .o (no $d) counts them. The functions can still be byte-identical. Verify: (1) arm-none-eabi-nm --print-size on both .o -- the FUNC symbol sizes must be equal; (2) objdump -d both, strip address column and normalize unresolved bl (asm f7fffffe vs src f000f800, both R_ARM_THM_CALL to the same symbol) -- instructions incl. the .short table entries must match. Seen on ov02_0224CFD8/D044 (overlay_02_02248728) facing-direction switches. Do NOT treat such functions as blocked solely on objdiff --summary."
+    },
+    {
+      "id": "inlined-memset-not-hand-loop",
+      "category": "matching-tricks",
+      "title": "Small fixed-size byte-clear loop in asm is an inlined memset, not a hand loop",
+      "body": "When the asm shows a small fixed-size zero-fill as a manual loop (mov r0,#0; L: strb r0,[r2]; adds r2,#1; subs r1,#1; bne L) with NO bl memset, the source is memset(p, 0, N) — MWCC -O4 inlines small constant-size memsets to that exact store-first loop. Writing a hand do-while/for instead fails: MWCC loop-rotates the counter decrement to the TOP (subs before strb) and adds a cmp (bgt), so it never matches and cascades diffs through the rest of the function. Just use memset(). Seen on ov02_0224E074 (overlay_02_02248728), a 16-byte clear."
     }
   ]
 }

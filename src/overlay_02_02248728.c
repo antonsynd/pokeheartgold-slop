@@ -168,6 +168,10 @@ extern const MovementScriptCommand ov02_022537B8;                               
 typedef int (*ov02_AnimDispatchFunc)(void *data);
 extern ov02_AnimDispatchFunc const ov02_02253A34[];
 extern ov02_AnimDispatchFunc const ov02_02253A04[];
+// ov02_0224E074 create-dispatch table (rodata, defined later): each entry builds a
+// Field3dObjectTask from the fieldSystem. Indexed by the anim type.
+typedef Field3dObjectTask *(*ov02_CreateDispatchFunc)(FieldSystem *fieldSystem);
+extern ov02_CreateDispatchFunc const ov02_02253A1C[];
 extern const MovementScriptCommand ov02_02253820;                                                  // rodata, defined later
 extern const MovementScriptCommand ov02_02253794;                                                  // rodata, defined later
 extern const MovementScriptCommand ov02_02253770;                                                  // rodata, defined later
@@ -280,6 +284,7 @@ WIP_LOCAL int ov02_0224C75C(TaskManager *taskManager, FieldSystem *fieldSystem, 
 WIP_LOCAL int ov02_0224C93C(TaskManager *taskManager, FieldSystem *fieldSystem, void *work);
 WIP_LOCAL int ov02_0224C9B8(TaskManager *taskManager, FieldSystem *fieldSystem, void *work);
 WIP_LOCAL int ov02_0224C0B0(TaskManager *taskManager, FieldSystem *fieldSystem, void *work);
+WIP_LOCAL void ov02_0224E074(FieldSystem *fieldSystem, u16 *p_ret, int type, enum HeapID heapID);
 WIP_LOCAL void ov02_0224A080(void *work, NARC *narc);
 WIP_LOCAL void ov02_02249F6C(void *work);
 WIP_LOCAL void ov02_0224A028(void *work);
@@ -2987,6 +2992,16 @@ WIP_LOCAL void ov02_0224F64C(FieldSystem *fieldSystem, void *arg1) {
     }
 }
 
+WIP_LOCAL void ov02_0224E074(FieldSystem *fieldSystem, u16 *p_ret, int type, enum HeapID heapID) {
+    void *data = Heap_Alloc(heapID, 0x10);
+    memset(data, 0, 0x10);
+    *(Field3dObjectTask **)data = ov02_02253A1C[type](fieldSystem);
+    *(u16 **)((u8 *)data + 4) = p_ret;
+    *(int *)((u8 *)data + 0xc) = type;
+    *p_ret = 0;
+    SysTask_CreateOnMainQueue(ov02_0224E020, data, 0);
+}
+
 WIP_LOCAL int ov02_0224C0B0(TaskManager *taskManager, FieldSystem *fieldSystem, void *work) {
     if (!EventObjectMovementMan_IsFinish(*(EventObjectMovementMan **)((u8 *)work + 0x10))) {
         return 0;
@@ -3127,7 +3142,7 @@ WIP_LOCAL void ov02_02249FD4(void *work) {
 }
 
 // ===========================================================================
-// HANDOFF — overlay_02_02248728 WIP (274/364 byte-match, objdiff-verified)
+// HANDOFF — overlay_02_02248728 WIP (275/364 byte-match, objdiff-verified)
 //
 // NOTE: several functions contain an inline 4-entry jump table (dense switch:
 // ov02_0224CFD8/D044 facing-dir coord; ov02_0224E26C/E2A0/E2D4 dir remaps;
