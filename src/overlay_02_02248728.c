@@ -145,6 +145,8 @@ extern void *GfGfxLoader_LoadFromNarc(NarcId narcId, s32 fileId, BOOL isCompress
 extern void sub_0205B4EC(int a0, int a1);                                                                                   // text_0205B4EC.h, not included
 extern void *sub_020689C8(int a0, int a1);                                                                                  // unk_020689C8.h, not included
 extern u16 GF_DegreeToSinCosIdx(u16 deg);                                                                                   // math_util.h, not included
+extern fx32 GF_SinDeg(u16 deg);                                                                                             // math_util.h, not included
+extern fx32 GF_CosDeg(u16 deg);                                                                                             // math_util.h, not included
 extern const VecFx32 ov02_02253360;                                                                                         // rodata, defined later (affine scale)
 extern const VecFx32 ov02_02253390;                                                                                         // rodata, defined later (affine scale)
 extern const VecFx32 ov02_02253348;                                                                                         // rodata, defined later (sprite spawn offset)
@@ -336,6 +338,8 @@ WIP_LOCAL void ov02_0224DD8C(void *a0, void *a1, void *data);
 WIP_LOCAL int ov02_02249690(void *work);
 WIP_LOCAL int ov02_022496D0(void *work);
 WIP_LOCAL int ov02_022491CC(void *work);
+WIP_LOCAL int ov02_02249290(void *work);
+WIP_LOCAL int ov02_0224ACE0(void *work);
 WIP_LOCAL int ov02_02249BD8(void *work);
 WIP_LOCAL int ov02_02250594(int a0, int a1);
 WIP_LOCAL int ov02_02250628(int a0, int a1);
@@ -2137,6 +2141,45 @@ WIP_LOCAL int ov02_022491CC(void *work) {
     return 1;
 }
 
+WIP_LOCAL int ov02_02249290(void *work) {
+    Sprite *sprite = *(Sprite **)((u8 *)work + 0x68);
+    VecFx32 mtx;
+    *(int *)((u8 *)work + 0x48) = *(int *)((u8 *)work + 0x48) - *(int *)((u8 *)work + 0x4c);
+    if (*(int *)((u8 *)work + 0x4c) < 0x10000) {
+        *(int *)((u8 *)work + 0x4c) += 0x2000;
+    }
+    if (*(int *)((u8 *)work + 0x48) < 0) {
+        *(int *)((u8 *)work + 0x48) = 0;
+    }
+    *(int *)((u8 *)work + 0x14) = GF_CosDeg(0x13B) * (*(int *)((u8 *)work + 0x48) / 0x1000);
+    *(int *)((u8 *)work + 0x18) = GF_SinDeg((u16)(*(int *)((u8 *)work + 0x40) / 0x1000)) * (*(int *)((u8 *)work + 0x48) / 0x1000);
+    if (*(int *)((u8 *)work + 0x40) / 0x1000 < 0xb4) {
+        *(int *)((u8 *)work + 0x40) -= 0x4000;
+    }
+    *(int *)((u8 *)work + 0x2c) = *(int *)((u8 *)work + 0x2c) - *(int *)((u8 *)work + 0x50);
+    if (*(int *)((u8 *)work + 0x2c) < 0x400) {
+        *(int *)((u8 *)work + 0x2c) = 0x400;
+    }
+    *(int *)((u8 *)work + 0x30) = *(int *)((u8 *)work + 0x30) - *(int *)((u8 *)work + 0x50);
+    if (*(int *)((u8 *)work + 0x30) < 0x400) {
+        *(int *)((u8 *)work + 0x30) = 0x400;
+    }
+    Sprite_SetAffineScale(sprite, (VecFx32 *)((u8 *)work + 0x2c));
+    *(int *)((u8 *)work + 0x38) += 0x6000;
+    if (*(int *)((u8 *)work + 0x38) / 0x1000 > 0x3c) {
+        *(int *)((u8 *)work + 0x38) = 0x3c000;
+    }
+    Sprite_SetAffineZRotation(sprite, GF_DegreeToSinCosIdx((u16)(*(int *)((u8 *)work + 0x38) / 0x1000)));
+    mtx.x = *(int *)((u8 *)work + 8) + *(int *)((u8 *)work + 0x14);
+    mtx.y = *(int *)((u8 *)work + 0xc) + *(int *)((u8 *)work + 0x18);
+    Sprite_SetMatrix(sprite, &mtx);
+    if (*(int *)((u8 *)work + 0x48) <= 0) {
+        Sprite_SetDrawFlag(sprite, FALSE);
+        (*(u8 *)((u8 *)work + 1))++;
+    }
+    return 0;
+}
+
 WIP_LOCAL void ov02_0224A7A8(void *a0, PokepicTemplate *tmpl) {
     GetPokemonSpriteCharAndPlttNarcIds(tmpl, *(Pokemon **)((u8 *)a0 + 0x5c), 2);
 }
@@ -2622,6 +2665,43 @@ WIP_LOCAL void ov02_0224AC38(void *work) {
     Sprite_SetAffineScale(*(Sprite **)((u8 *)handle + 0x58), &local2);
     Sprite_SetAffineZRotation(*(Sprite **)((u8 *)handle + 0x58), GF_DegreeToSinCosIdx((u16)(*(int *)((u8 *)handle + 0x38) / 0x1000)));
     Sprite_SetDrawFlag(*(Sprite **)((u8 *)handle + 0x58), 1);
+}
+
+WIP_LOCAL int ov02_0224ACE0(void *work) {
+    Sprite *sprite = *(Sprite **)((u8 *)work + 0x58);
+    VecFx32 mtx;
+    *(int *)((u8 *)work + 0x48) = *(int *)((u8 *)work + 0x48) + *(int *)((u8 *)work + 0x4c);
+    if (*(int *)((u8 *)work + 0x4c) < 0x10000) {
+        *(int *)((u8 *)work + 0x4c) += 0x4000;
+    }
+    *(int *)((u8 *)work + 0x14) = GF_CosDeg(0x13B) * (*(int *)((u8 *)work + 0x48) / 0x1000);
+    *(int *)((u8 *)work + 0x18) = GF_SinDeg((u16)(*(int *)((u8 *)work + 0x40) / 0x1000)) * (*(int *)((u8 *)work + 0x48) / 0x1000);
+    if (*(int *)((u8 *)work + 0x40) / 0x1000 < 0x10E) {
+        *(int *)((u8 *)work + 0x40) += 0x4000;
+    }
+    *(int *)((u8 *)work + 0x2c) = *(int *)((u8 *)work + 0x2c) + *(int *)((u8 *)work + 0x50);
+    if (*(int *)((u8 *)work + 0x2c) > 0x1000) {
+        *(int *)((u8 *)work + 0x2c) = 0x1000;
+    }
+    *(int *)((u8 *)work + 0x30) = *(int *)((u8 *)work + 0x30) + *(int *)((u8 *)work + 0x50);
+    if (*(int *)((u8 *)work + 0x30) > 0x1000) {
+        *(int *)((u8 *)work + 0x30) = 0x1000;
+    }
+    Sprite_SetAffineScale(sprite, (VecFx32 *)((u8 *)work + 0x2c));
+    *(int *)((u8 *)work + 0x38) -= 0x6000;
+    if (*(int *)((u8 *)work + 0x38) / 0x1000 < 0) {
+        *(int *)((u8 *)work + 0x38) = 0;
+    }
+    Sprite_SetAffineZRotation(sprite, GF_DegreeToSinCosIdx((u16)(*(int *)((u8 *)work + 0x38) / 0x1000)));
+    mtx.x = *(int *)((u8 *)work + 8) + *(int *)((u8 *)work + 0x14);
+    mtx.y = *(int *)((u8 *)work + 0xc) + *(int *)((u8 *)work + 0x18);
+    Sprite_SetMatrix(sprite, &mtx);
+    if (mtx.y < -0x40000) {
+        Sprite_SetDrawFlag(sprite, FALSE);
+        *(u8 *)((u8 *)work + 2) = 2;
+        (*(u8 *)((u8 *)work + 1))++;
+    }
+    return 0;
 }
 
 WIP_LOCAL int ov02_0224ADEC(void) {
@@ -3933,7 +4013,7 @@ WIP_LOCAL void ov02_02249FD4(void *work) {
 }
 
 // ===========================================================================
-// HANDOFF — overlay_02_02248728 WIP (305/364 byte-match, objdiff-verified)
+// HANDOFF — overlay_02_02248728 WIP (307/364 byte-match, objdiff-verified)
 //
 // NOTE: several functions contain an inline 4-entry jump table (dense switch:
 // ov02_0224CFD8/D044 facing-dir coord; ov02_0224E26C/E2A0/E2D4 dir remaps;
