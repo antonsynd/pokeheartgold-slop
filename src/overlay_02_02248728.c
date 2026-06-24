@@ -132,6 +132,7 @@ extern BOOL ov01_02206268(FieldSystem *fieldSystem);            // overlay_01.h,
 extern int ov01_022062CC(FieldSystem *fieldSystem);             // overlay_01.h, not included
 extern void PlayCryEx(int, int, int, int, int, int);            // sound_02004A44.h, not included
 extern void PlayCry(u16 species, u8 form);                      // sound_chatot.h, not included
+extern int Field_GetTimeOfDay(FieldSystem *fieldSystem);        // unk_02055418.h, not included (TIMEOFDAY as int)
 extern u16 GF_DegreeToSinCosIdx(u16 deg);                       // math_util.h, not included
 extern const VecFx32 ov02_02253360;                             // rodata, defined later (affine scale)
 extern const VecFx32 ov02_02253390;                             // rodata, defined later (affine scale)
@@ -266,6 +267,9 @@ WIP_LOCAL int ov02_0224E26C(int a0);
 WIP_LOCAL int ov02_0224E2A0(int a0);
 WIP_LOCAL int ov02_0224E2D4(int a0);
 WIP_LOCAL void ov02_0224FF04(LocalMapObject *mapObject, int dir, u32 *outX, u32 *outZ);
+WIP_LOCAL void ov02_0224F728(FieldSystem *fieldSystem, void *arg1);
+WIP_LOCAL int ov02_0224F820(int a0);
+WIP_LOCAL void ov02_0224F64C(FieldSystem *fieldSystem, void *arg1);
 WIP_LOCAL BOOL ov02_0224FFD8(void *p);
 WIP_LOCAL BOOL ov02_02249088(void *mgr);
 WIP_LOCAL BOOL ov02_02248D98(void *a0, void *obj);
@@ -2903,8 +2907,74 @@ WIP_LOCAL void ov02_0224FF04(LocalMapObject *mapObject, int dir, u32 *outX, u32 
     }
 }
 
+WIP_LOCAL void ov02_0224F728(FieldSystem *fieldSystem, void *arg1) {
+    switch (MapObject_GetFacingDirection(*(LocalMapObject **)((u8 *)fieldSystem + 0xe4))) {
+    case 0:
+        *(u8 *)((u8 *)arg1 + 0x17) = 3;
+        break;
+    case 1:
+        *(u8 *)((u8 *)arg1 + 0x17) = 4;
+        break;
+    case 2:
+        *(u8 *)((u8 *)arg1 + 0x17) = 2;
+        break;
+    case 3:
+        *(u8 *)((u8 *)arg1 + 0x17) = 1;
+        break;
+    default:
+        *(u8 *)((u8 *)arg1 + 0x17) = 0;
+        break;
+    }
+}
+
+WIP_LOCAL int ov02_0224F820(int a0) {
+    switch (a0) {
+    case 0:
+        return 4;
+    case 1:
+        return 2;
+    case 2:
+        return 1;
+    case 3:
+        return 7;
+    case 4:
+        return 6;
+    case 5:
+        return 5;
+    case 6:
+        return 3;
+    default:
+        GF_AssertFail();
+        return 8;
+    }
+}
+
+WIP_LOCAL void ov02_0224F64C(FieldSystem *fieldSystem, void *arg1) {
+    switch (Field_GetTimeOfDay(fieldSystem)) {
+    case 0:
+        *(u8 *)((u8 *)arg1 + 0x14) = 1;
+        break;
+    case 1:
+        *(u8 *)((u8 *)arg1 + 0x14) = 2;
+        break;
+    case 2:
+        *(u8 *)((u8 *)arg1 + 0x14) = 3;
+        break;
+    case 3:
+        *(u8 *)((u8 *)arg1 + 0x14) = 4;
+        break;
+    case 4:
+        *(u8 *)((u8 *)arg1 + 0x14) = 5;
+        break;
+    default:
+        GF_AssertFail();
+        *(u8 *)((u8 *)arg1 + 0x14) = 0;
+        break;
+    }
+}
+
 // ===========================================================================
-// HANDOFF — overlay_02_02248728 WIP (262/364 byte-match, objdiff-verified)
+// HANDOFF — overlay_02_02248728 WIP (265/364 byte-match, objdiff-verified)
 //
 // NOTE: several functions contain an inline 4-entry jump table (dense switch:
 // ov02_0224CFD8/D044 facing-dir coord; ov02_0224E26C/E2A0/E2D4 dir remaps;
