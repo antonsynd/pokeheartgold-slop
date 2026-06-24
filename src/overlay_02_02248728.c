@@ -286,6 +286,7 @@ WIP_LOCAL int ov02_0224C9B8(TaskManager *taskManager, FieldSystem *fieldSystem, 
 WIP_LOCAL int ov02_0224C0B0(TaskManager *taskManager, FieldSystem *fieldSystem, void *work);
 WIP_LOCAL void ov02_0224E074(FieldSystem *fieldSystem, u16 *p_ret, int type, enum HeapID heapID);
 WIP_LOCAL BOOL ov02_022506D4(u32 a0, u32 a1);
+WIP_LOCAL int ov02_022498BC(void *work);
 WIP_LOCAL void ov02_0224A080(void *work, NARC *narc);
 WIP_LOCAL void ov02_02249F6C(void *work);
 WIP_LOCAL void ov02_0224A028(void *work);
@@ -2993,6 +2994,30 @@ WIP_LOCAL void ov02_0224F64C(FieldSystem *fieldSystem, void *arg1) {
     }
 }
 
+WIP_LOCAL int ov02_022498BC(void *work) {
+    *(int *)((u8 *)work + 0x2c) = 0;
+    *(fx32 *)((u8 *)work + 0x4c) = *(fx32 *)((u8 *)work + 0x4c) + *(fx32 *)((u8 *)work + 0x54);
+    *(fx32 *)((u8 *)work + 0x50) = *(fx32 *)((u8 *)work + 0x50) - *(fx32 *)((u8 *)work + 0x54);
+    *(fx32 *)((u8 *)work + 0x54) = *(fx32 *)((u8 *)work + 0x54) + 0x4000;
+    if (*(fx32 *)((u8 *)work + 0x54) > 0x10000) {
+        *(fx32 *)((u8 *)work + 0x54) = 0x10000;
+    }
+    if (*(fx32 *)((u8 *)work + 0x4c) >= 0x5f000) {
+        *(fx32 *)((u8 *)work + 0x4c) = 0x5f000;
+    }
+    if (*(fx32 *)((u8 *)work + 0x50) <= 0x61000) {
+        *(fx32 *)((u8 *)work + 0x50) = 0x61000;
+    }
+    ov02_0224A69C(work, *(int *)((u8 *)work + 0x44), *(int *)((u8 *)work + 0x4c), *(int *)((u8 *)work + 0x48), *(int *)((u8 *)work + 0x50));
+    *(int *)((u8 *)work + 0x2c) = 1;
+    if (*(fx32 *)((u8 *)work + 0x4c) == 0x5f000 && *(fx32 *)((u8 *)work + 0x50) == 0x61000) {
+        ov02_0224B768(work);
+        *(int *)((u8 *)work + 0x34) = 0x11;
+        (*(int *)work)++;
+    }
+    return 0;
+}
+
 WIP_LOCAL BOOL ov02_022506D4(u32 a0, u32 a1) {
     if (a0 <= 0xf9) {
         if (a0 == a1) {
@@ -3183,7 +3208,7 @@ WIP_LOCAL void ov02_02249FD4(void *work) {
 }
 
 // ===========================================================================
-// HANDOFF — overlay_02_02248728 WIP (276/364 byte-match, objdiff-verified)
+// HANDOFF — overlay_02_02248728 WIP (277/364 byte-match, objdiff-verified)
 //
 // NOTE: several functions contain an inline 4-entry jump table (dense switch:
 // ov02_0224CFD8/D044 facing-dir coord; ov02_0224E26C/E2A0/E2D4 dir remaps;
