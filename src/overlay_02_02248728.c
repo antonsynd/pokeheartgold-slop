@@ -240,6 +240,7 @@ WIP_LOCAL void ov02_0224AAC8(void *a0, void *work);
 WIP_LOCAL void ov02_0224ABF8(void *a0, void *work);
 WIP_LOCAL void ov02_0224B2C0(void *work);
 WIP_LOCAL BOOL ov02_0224B0E0(void *work);
+WIP_LOCAL void ov02_0224DEA8(Field3dObject *obj, Field3dModel *model, NNSFndAllocator *allocator, void **anmResources);
 WIP_LOCAL BOOL ov02_0224B43C(SysTask *task);
 WIP_LOCAL BOOL ov02_0224E308(int a0);
 WIP_LOCAL BOOL ov02_0224FB44(void *a0, u16 *a1);
@@ -598,6 +599,18 @@ WIP_LOCAL void ov02_0224ABF8(void *a0, void *work) {
 
 WIP_LOCAL void ov02_0224B2C0(void *work) {
     *(int *)sub_02068D74(work) = 0;
+}
+
+WIP_LOCAL void ov02_0224DEA8(Field3dObject *obj, Field3dModel *model, NNSFndAllocator *allocator, void **anmResources) {
+    u8 *anim;
+    int i;
+    memset(obj, 0, 0xcc);
+    Field3dObject_InitFromModel(obj, model);
+    for (i = 0, anim = (u8 *)obj + 0x78; i < 4; i++, anim += 0x14) {
+        ov01_021FBE70((Field3DModelAnimation *)anim, model, anmResources[i], allocator);
+        Field3dObject_AddAnimation(obj, (Field3DModelAnimation *)anim);
+    }
+    Field3dObject_SetActiveFlag(obj, 0);
 }
 
 WIP_LOCAL BOOL ov02_0224B0E0(void *work) {
@@ -3438,7 +3451,7 @@ WIP_LOCAL void ov02_02249FD4(void *work) {
 }
 
 // ===========================================================================
-// HANDOFF — overlay_02_02248728 WIP (288/364 byte-match, objdiff-verified)
+// HANDOFF — overlay_02_02248728 WIP (289/364 byte-match, objdiff-verified)
 //
 // NOTE: several functions contain an inline 4-entry jump table (dense switch:
 // ov02_0224CFD8/D044 facing-dir coord; ov02_0224E26C/E2A0/E2D4 dir remaps;
