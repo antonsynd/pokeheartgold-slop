@@ -182,6 +182,8 @@ extern const MovementScriptCommand ov02_02253820;                               
 extern const MovementScriptCommand ov02_02253794;                                                  // rodata, defined later
 extern const MovementScriptCommand ov02_02253770;                                                  // rodata, defined later
 extern BOOL sub_02054C20(FieldSystem *fieldSystem, int targetType, int *outObj, void **outHandle); // unk_02054648.h, not included
+extern void sub_02054DC8(int idx, int width, VecFx32 *out);                                        // unk_02054648.h, not included
+extern void ov01_021F3B0C(VecFx32 *out, void *src);                                                // unk_02054648.h, not included
 extern u8 GetMetatileBehavior(FieldSystem *fieldSystem, int x, int z);                             // unk_02054648.h, not included
 extern void ov01_02203AB4(FieldSystem *fieldSystem, LocalMapObject *partnerPokeObj, int a2);       // overlay_01.h, not included
 extern const fx32 ov02_02253520[];                                                                 // rodata, defined later
@@ -329,6 +331,7 @@ WIP_LOCAL void ov02_0224D73C(Field3dObject *obj, Field3dModel *model, NNSFndAllo
 WIP_LOCAL void ov02_0224D880(void *a0, FieldSystem *fieldSystem, void *work);
 WIP_LOCAL void ov02_0224DF1C(void *data);
 WIP_LOCAL BOOL ov02_0224BE24(TaskManager *taskManager);
+WIP_LOCAL BOOL ov02_0224CE28(TaskManager *taskManager);
 WIP_LOCAL int ov02_0224CAB8(WallpaperPasswordBank *bank, u16 trainerId, u16 a, u16 b, u16 c, u16 d);
 WIP_LOCAL int ov02_0224CBF8(WallpaperPasswordBank *bank, u16 trainerId, u16 a, u16 b, u16 c, u16 d);
 WIP_LOCAL int ov02_0224C6DC(TaskManager *taskManager, FieldSystem *fieldSystem, void *work);
@@ -1227,6 +1230,29 @@ WIP_LOCAL int ov02_0224CD74(PlayerProfile *profile, u16 a, u16 b, u16 c, u16 d, 
     ret = ov02_0224CBF8(bank, PlayerProfile_GetTrainerID_VisibleHalf(profile), a, b, c, d);
     WallpaperPasswordBank_Delete(bank);
     return ret;
+}
+
+void ov02_0224CDB0(FieldSystem *fieldSystem, u8 a1) {
+    int outObj;
+    void *outHandle;
+    VecFx32 tileCenter;
+    VecFx32 local;
+    void *data;
+    if (sub_02054C20(fieldSystem, 0x26, &outObj, &outHandle)) {
+        data = Heap_AllocAtEnd(HEAP_ID_FIELD1, 0x18);
+        *(u8 *)((u8 *)data + 0xc) = a1;
+        *(u8 *)((u8 *)data + 0xd) = 0;
+        *(u8 *)((u8 *)data + 0xe) = 0;
+        *(u8 *)((u8 *)data + 0xf) = 0;
+        sub_02054DC8((int)outHandle, MapMatrix_GetWidth(fieldSystem->mapMatrix), &tileCenter);
+        ov01_021F3B0C(&local, (void *)outObj);
+        *(VecFx32 *)data = local;
+        ((VecFx32 *)data)->x += tileCenter.x;
+        ((VecFx32 *)data)->z += tileCenter.z;
+        TaskManager_Call(fieldSystem->taskman, ov02_0224CE28, data);
+    } else {
+        GF_AssertFail();
+    }
 }
 
 WIP_LOCAL int ov02_0224C6DC(TaskManager *taskManager, FieldSystem *fieldSystem, void *work) {
@@ -3527,7 +3553,7 @@ WIP_LOCAL void ov02_02249FD4(void *work) {
 }
 
 // ===========================================================================
-// HANDOFF — overlay_02_02248728 WIP (293/364 byte-match, objdiff-verified)
+// HANDOFF — overlay_02_02248728 WIP (294/364 byte-match, objdiff-verified)
 //
 // NOTE: several functions contain an inline 4-entry jump table (dense switch:
 // ov02_0224CFD8/D044 facing-dir coord; ov02_0224E26C/E2A0/E2D4 dir remaps;
