@@ -135,6 +135,7 @@ extern void PlayCry(u16 species, u8 form);                      // sound_chatot.
 extern int Field_GetTimeOfDay(FieldSystem *fieldSystem);        // unk_02055418.h, not included (TIMEOFDAY as int)
 extern void GfGfx_EngineATogglePlanes(u8 planeMask, u8 enable); // gf_gfx_planes.h, not included
 extern void sub_0205B4EC(int a0, int a1);                       // text_0205B4EC.h, not included
+extern void *sub_020689C8(int a0, int a1);                      // unk_020689C8.h, not included
 extern u16 GF_DegreeToSinCosIdx(u16 deg);                       // math_util.h, not included
 extern const VecFx32 ov02_02253360;                             // rodata, defined later (affine scale)
 extern const VecFx32 ov02_02253390;                             // rodata, defined later (affine scale)
@@ -273,6 +274,8 @@ WIP_LOCAL void ov02_0224F728(FieldSystem *fieldSystem, void *arg1);
 WIP_LOCAL int ov02_0224F820(int a0);
 WIP_LOCAL void ov02_0224F64C(FieldSystem *fieldSystem, void *arg1);
 WIP_LOCAL void ov02_0224A288(void *work);
+WIP_LOCAL void ov02_0224A080(void *work, NARC *narc);
+WIP_LOCAL void ov02_02249F6C(void *work);
 WIP_LOCAL void ov02_0224A028(void *work);
 WIP_LOCAL void ov02_02249FD4(void *work);
 WIP_LOCAL BOOL ov02_0224FFD8(void *p);
@@ -2978,6 +2981,19 @@ WIP_LOCAL void ov02_0224F64C(FieldSystem *fieldSystem, void *arg1) {
     }
 }
 
+WIP_LOCAL void ov02_02249F6C(void *work) {
+    NARC *narc = ov02_0224A074();
+    *(u16 *)((u8 *)work + 0x24) = GetBgPriority(*(BgConfig **)((u8 *)*(void **)((u8 *)work + 0x60) + 8), 0);
+    *(u16 *)((u8 *)work + 0x26) = GetBgPriority(*(BgConfig **)((u8 *)*(void **)((u8 *)work + 0x60) + 8), 3);
+    reg_G2_BG1CNT = (reg_G2_BG1CNT & ~3) | 1;
+    reg_G2_BG3CNT = reg_G2_BG3CNT & ~3;
+    GfGfx_EngineATogglePlanes(8, 0);
+    ov02_0224A080(work, narc);
+    NARC_Delete(narc);
+    *(void **)((u8 *)work + 0x1e0) = sub_020689C8(HEAP_ID_FIELD1, 0x20);
+    GfGfx_EngineATogglePlanes(8, 1);
+}
+
 WIP_LOCAL void ov02_0224A028(void *work) {
     GfGfx_EngineATogglePlanes(8, 0);
     sub_020689F8(*(void **)((u8 *)work + 0x1e0));
@@ -3000,7 +3016,7 @@ WIP_LOCAL void ov02_02249FD4(void *work) {
 }
 
 // ===========================================================================
-// HANDOFF — overlay_02_02248728 WIP (267/364 byte-match, objdiff-verified)
+// HANDOFF — overlay_02_02248728 WIP (268/364 byte-match, objdiff-verified)
 //
 // NOTE: several functions contain an inline 4-entry jump table (dense switch:
 // ov02_0224CFD8/D044 facing-dir coord; ov02_0224E26C/E2A0/E2D4 dir remaps;
