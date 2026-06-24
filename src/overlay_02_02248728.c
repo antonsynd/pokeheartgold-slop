@@ -274,6 +274,8 @@ WIP_LOCAL void ov02_0224F728(FieldSystem *fieldSystem, void *arg1);
 WIP_LOCAL int ov02_0224F820(int a0);
 WIP_LOCAL void ov02_0224F64C(FieldSystem *fieldSystem, void *arg1);
 WIP_LOCAL void ov02_0224A288(void *work);
+WIP_LOCAL int ov02_0224B664(void *work);
+WIP_LOCAL int ov02_02249658(void *work);
 WIP_LOCAL void ov02_0224A080(void *work, NARC *narc);
 WIP_LOCAL void ov02_02249F6C(void *work);
 WIP_LOCAL void ov02_0224A028(void *work);
@@ -2981,6 +2983,28 @@ WIP_LOCAL void ov02_0224F64C(FieldSystem *fieldSystem, void *arg1) {
     }
 }
 
+WIP_LOCAL int ov02_0224B664(void *work) {
+    sub_020689F8(*(void **)((u8 *)work + 0x170));
+    ov02_0224886C((u8 *)work + 0x18);
+    *(int *)((u8 *)work + 0x10) = 0;
+    *(int *)((u8 *)work + 4) = 1;
+    (*(int *)work)++;
+    return 0;
+}
+
+WIP_LOCAL int ov02_02249658(void *work) {
+    ov02_0224B72C(work);
+    *(int *)((u8 *)work + 0x2c) = 0;
+    *(fx32 *)((u8 *)work + 0x54) = (fx32)0xFFFC0000;
+    *(fx32 *)((u8 *)work + 0x44) = 0xfe000;
+    *(fx32 *)((u8 *)work + 0x48) = 0xff000;
+    *(fx32 *)((u8 *)work + 0x4c) = 0x5f000;
+    *(fx32 *)((u8 *)work + 0x50) = 0x61000;
+    *(int *)((u8 *)work + 0x2c) = 1;
+    (*(int *)work)++;
+    return 0;
+}
+
 WIP_LOCAL void ov02_02249F6C(void *work) {
     NARC *narc = ov02_0224A074();
     *(u16 *)((u8 *)work + 0x24) = GetBgPriority(*(BgConfig **)((u8 *)*(void **)((u8 *)work + 0x60) + 8), 0);
@@ -3016,7 +3040,7 @@ WIP_LOCAL void ov02_02249FD4(void *work) {
 }
 
 // ===========================================================================
-// HANDOFF — overlay_02_02248728 WIP (268/364 byte-match, objdiff-verified)
+// HANDOFF — overlay_02_02248728 WIP (270/364 byte-match, objdiff-verified)
 //
 // NOTE: several functions contain an inline 4-entry jump table (dense switch:
 // ov02_0224CFD8/D044 facing-dir coord; ov02_0224E26C/E2A0/E2D4 dir remaps;
