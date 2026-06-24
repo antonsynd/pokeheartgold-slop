@@ -120,20 +120,23 @@ extern ov02_StateMachineFunc const ov02_022534B8[];
 typedef int (*ov02_FieldTaskFunc)(TaskManager *taskManager, FieldSystem *fieldSystem, void *env);
 extern ov02_FieldTaskFunc const ov02_02253700[];
 extern ov02_FieldTaskFunc const ov02_022536F0[];
-extern void sub_02068BAC(void *a0);                                   // unk_020689C8.h
-extern void ov01_021FCD78(SysTask *task);                             // no header included here
-extern BOOL ov01_021FCD6C(SysTask *task);                             // no header included here
-extern void ov01_021FBD38(Field3dModel *model, void *narcData);       // no header included here
-extern void ov01_021FBDFC(Field3dModel *model);                       // no header included here
-extern void ov01_021F1448(void *a0);                                  // no header included here
-extern void *ov01_021FCD2C(FieldSystem *fieldSystem, int a1);         // no header included here
-extern void ov01_021FCD8C(void *a0, int a1, fx32 a2, int a3);         // no header included here
-extern BOOL ov01_02206268(FieldSystem *fieldSystem);                  // overlay_01.h, not included
-extern int ov01_022062CC(FieldSystem *fieldSystem);                   // overlay_01.h, not included
-extern void PlayCryEx(int, int, int, int, int, int);                  // sound_02004A44.h, not included
-extern u16 GF_DegreeToSinCosIdx(u16 deg);                             // math_util.h, not included
-extern const VecFx32 ov02_02253360;                                   // rodata, defined later (affine scale)
-extern const VecFx32 ov02_02253390;                                   // rodata, defined later (affine scale)
+extern void sub_02068BAC(void *a0);                             // unk_020689C8.h
+extern void ov01_021FCD78(SysTask *task);                       // no header included here
+extern BOOL ov01_021FCD6C(SysTask *task);                       // no header included here
+extern void ov01_021FBD38(Field3dModel *model, void *narcData); // no header included here
+extern void ov01_021FBDFC(Field3dModel *model);                 // no header included here
+extern void ov01_021F1448(void *a0);                            // no header included here
+extern void *ov01_021FCD2C(FieldSystem *fieldSystem, int a1);   // no header included here
+extern void ov01_021FCD8C(void *a0, int a1, fx32 a2, int a3);   // no header included here
+extern BOOL ov01_02206268(FieldSystem *fieldSystem);            // overlay_01.h, not included
+extern int ov01_022062CC(FieldSystem *fieldSystem);             // overlay_01.h, not included
+extern void PlayCryEx(int, int, int, int, int, int);            // sound_02004A44.h, not included
+extern u16 GF_DegreeToSinCosIdx(u16 deg);                       // math_util.h, not included
+extern const VecFx32 ov02_02253360;                             // rodata, defined later (affine scale)
+extern const VecFx32 ov02_02253390;                             // rodata, defined later (affine scale)
+
+// NewMsgDataFromNarc / MessageFormat_* / Buffer* / MapHeader_GetMapSec are reachable
+// transitively (msgdata.h / message_format.h / map_header.h) — no local externs.
 extern PlayerProfile *Save_PlayerData_GetProfile(SaveData *saveData); // player_data.h, not included
 extern u32 PlayerProfile_GetTrainerID(PlayerProfile *profile);        // player_data.h, not included
 extern void *Save_SafariZone_Get(SaveData *saveData);                 // safari_zone.h, not included (opaque)
@@ -229,7 +232,10 @@ WIP_LOCAL void ov02_RepelActiveRoamersFromMapNo(RoamerSaveData *roamerSave, u32 
 WIP_LOCAL void ov02_0224DD4C(Field3dObjectTask *task, FieldSystem *fieldSystem, void *data);
 WIP_LOCAL void ov02_0224A598(BgConfig *bgConfig, NARC *narc, u32 fileId, NNSG2dCharacterData **a3);
 WIP_LOCAL void ov02_0224B314(void *mgr);
-WIP_LOCAL Sprite *ov02_02248CAC(void *mgr);
+WIP_LOCAL void FollowMon_PlaceholdersSet(void *work, void *messageFormat);
+WIP_LOCAL void FollowMon_ExpandInteractionMessage(void *work, void *dest, enum HeapID heapID, int strno);
+WIP_LOCAL int ov02_0224C14C(TaskManager *taskManager, FieldSystem *fieldSystem, void *work);
+WIP_LOCAL void ov02_0224D698(Field3dObject *obj, PlayerAvatar *playerAvatar, fx32 arg2, fx32 arg3);
 WIP_LOCAL BOOL ov02_0224FFD8(void *p);
 WIP_LOCAL BOOL ov02_02249088(void *mgr);
 WIP_LOCAL BOOL ov02_02248D98(void *a0, void *obj);
@@ -2450,8 +2456,66 @@ WIP_LOCAL void *ov02_0224A468(void *mgr, VecFx32 *pos, int drawPriority, int d) 
     return sprite;
 }
 
+WIP_LOCAL int ov02_0224C14C(TaskManager *taskManager, FieldSystem *fieldSystem, void *work) {
+    if (EventObjectMovementMan_IsFinish(*(EventObjectMovementMan **)((u8 *)work + 0x10)) == 1) {
+        EventObjectMovementMan_Delete(*(EventObjectMovementMan **)((u8 *)work + 0x10));
+        *(EventObjectMovementMan **)((u8 *)work + 0x10) = EventObjectMovementMan_Create(*(LocalMapObject **)((u8 *)work + 0x20), &ov02_02253794);
+        if (*(int *)((u8 *)work + 8)) {
+            EventObjectMovementMan_Delete(*(EventObjectMovementMan **)((u8 *)work + 0x14));
+            *(EventObjectMovementMan **)((u8 *)work + 0x14) = EventObjectMovementMan_Create(*(LocalMapObject **)((u8 *)fieldSystem + 0xe4), &ov02_02253794);
+        }
+    }
+    if (!IsPaletteFadeFinished()) {
+        return 0;
+    }
+    EventObjectMovementMan_Delete(*(EventObjectMovementMan **)((u8 *)work + 0x10));
+    if (*(int *)((u8 *)work + 8)) {
+        EventObjectMovementMan_Delete(*(EventObjectMovementMan **)((u8 *)work + 0x14));
+    }
+    ov01_021FCD78(*(SysTask **)((u8 *)work + 0x1c));
+    (*(int *)((u8 *)work))++;
+    return 1;
+}
+
+WIP_LOCAL void ov02_0224D698(Field3dObject *obj, PlayerAvatar *playerAvatar, fx32 arg2, fx32 arg3) {
+    VecFx32 vec;
+    int i;
+    u8 *anim;
+    GF_ASSERT(*(int *)((u8 *)obj + 0xc8) == 0);
+    PlayerAvatar_CopyPositionVector(playerAvatar, &vec);
+    Field3dObject_SetPosEx(obj, vec.x, vec.y + arg2, vec.z + arg3);
+    *(int *)((u8 *)obj + 0xc8) = 1;
+    for (i = 0, anim = (u8 *)obj + 0x78; i < 4; i++, anim += 0x14) {
+        Field3dModelAnimation_FrameSet((Field3DModelAnimation *)anim, 0);
+    }
+    Field3dObject_SetActiveFlag(obj, 1);
+    PlaySE(SEQ_SE_DP_UG_023);
+}
+
+WIP_LOCAL void FollowMon_PlaceholdersSet(void *work, void *messageFormat) {
+    Pokemon *mon = GetFirstAliveMonInParty_CrashIfNone(SaveArray_Party_Get(*(SaveData **)((u8 *)work + 0xc)));
+    BoxPokemon *boxMon = Mon_GetBoxMon(mon);
+    BufferBoxMonNickname(messageFormat, 0, boxMon);
+    BufferBoxMonSpeciesName(messageFormat, 1, boxMon);
+    BufferPlayersName(messageFormat, 2, Save_PlayerData_GetProfile(*(SaveData **)((u8 *)work + 0xc)));
+    BufferLocationName(messageFormat, 3, MapHeader_GetMapSec(**(u32 **)((u8 *)work + 0x20)));
+    BufferItemName(messageFormat, 4, GetMonData(mon, MON_DATA_HELD_ITEM, NULL));
+}
+
+WIP_LOCAL void FollowMon_ExpandInteractionMessage(void *work, void *dest, enum HeapID heapID, int strno) {
+    MsgData *msgData = NewMsgDataFromNarc(MSGDATA_LOAD_DIRECT, NARC_msgdata_msg, 265 /* NARC_msg_msg_0265_bin */, heapID);
+    MessageFormat *messageFormat = MessageFormat_New(heapID);
+    String *str;
+    FollowMon_PlaceholdersSet(work, messageFormat);
+    str = NewString_ReadMsgData(msgData, strno);
+    StringExpandPlaceholders(messageFormat, dest, str);
+    String_Delete(str);
+    MessageFormat_Delete(messageFormat);
+    DestroyMsgData(msgData);
+}
+
 // ===========================================================================
-// HANDOFF — overlay_02_02248728 WIP (239/364 byte-match, objdiff-verified)
+// HANDOFF — overlay_02_02248728 WIP (243/364 byte-match, objdiff-verified)
 // ===========================================================================
 // MODULE: follow-mon sprite animation + Pokecenter / field-move (Escape Rope,
 //   Dig, Teleport) task subsystem. A 2D graphics renderer built on G2dRenderer /
