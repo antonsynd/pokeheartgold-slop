@@ -336,6 +336,10 @@ When a function zero-initializes several struct fields with a shared 0 register 
 
 MWCC chooses an add-pc jump table over a cmp/beq chain based on how many contiguous case labels are PRESENT in source. If the asm bounds-check is cmp rN,#K; bhi <default> with a K+1-entry .short table, the C switch must list ALL cases 0..K explicitly. A case whose body is identical to the default (e.g. just returns) is still required as an explicit empty case (case K: break;) — omitting it drops the count below the table threshold and MWCC emits a comparison chain instead. Seen: ov02_0224B808 (cases 0..3, case 3 = the bhi-default return) — 3 explicit cases gave cmp/beq; adding case 3: break; produced the matching jump table.
 
+### Force in-place subs (not cmp) for an equality test by writing a - b == 0  <!-- id: equality-as-subtract-to-zero-forces-subs -->
+
+An equality term a == b normally compiles to cmp rA,rB; bne. If the target asm instead has subs rD,rA,rB; bne — the difference written in place into one operand register (typically the loaded RHS register, which is dead after) — rewrite the term as the explicit subtract-to-zero a - b == 0. MWCC then computes the subtraction (subs rD,rA,rB) and branches on its Z flag, reproducing the in-place subs and exact register reuse. Operand order matters: a - b == 0 gives subs rD = a - b (a=minuend in the first source reg, b=subtrahend reusing its own reg as dest); swapping to b - a == 0 or b == a changes the encoding. Relational </<=/>/>= terms are unaffected (they always emit cmp). Seen ov02_0224D7B0 (vec.x==stored_x was the sole diff; vec.x - stored_x == 0 matched). Related: [[branch-or-vs-and]].
+
 ## Matching Tricks
 
 ### Small source changes that move codegen  <!-- id: decl-order-tricks -->
