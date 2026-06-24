@@ -1267,6 +1267,12 @@
       "category": "matching-tricks",
       "title": "Dynamic-count loop: use if+do-while to keep walker init in preheader, i<count guard for bls",
       "body": "A for(i=0, walker=base; i<count; i++, walker+=stride) loop where count is a runtime value (e.g. *(u32*)(obj+off)) makes MWCC HOIST the walker init (base address computation) ABOVE the count==0 guard, into the prologue -- it runs even when the loop body never executes. The retail asm keeps the walker init in the loop preheader (after the guard). Two-part fix: (1) rewrite as i=0; if((u32)i<count){ walker=base; do{...; i++; walker+=stride;}while((u32)i<count);} -- the lexical if-block keeps the walker init from hoisting past the guard. (2) write the guard as i<count (unsigned), NOT count!=0: the < form folds (i=0) to cmp count,#0 + bls (unsigned lower-or-same, skip if 0), matching retail; count!=0 emits beq. The indexed form walker=base+i*stride is wrong (recomputes the address per use, SIZE too big). Seen in ov02_0224D0C8 (Field3dObject animation-load loop)."
+    },
+    {
+      "id": "bitfield-times-stride-fuses-shift",
+      "category": "matching-tricks",
+      "title": "A bitfield value scaled by a power of 2 fuses the extract and the shift (lsl#X;lsr#Y)",
+      "body": "When an N-bit unsigned bitfield at offset 0 is used as an array index with power-of-2 stride (e.g. bf.idx * 8), MWCC fuses the bitfield read (lsl#(32-N); lsr#(32-N)) with the *2^k (lsl#k) into a single lsl#(32-N); lsr#(32-N-k). Example: a 4-bit field *8 -> lsl#28; lsr#25 (NOT the and#0xf; lsl#3 you get from (x & 0xf) * 8). So when the asm shows lsl#28;lsr#25 for an index, model the source byte as a bitfield struct {u8 idx:4;} and write bf->idx * stride (or bf->idx as an array subscript), NOT a masked plain value. Seen in ov02_0224FF5C (a0[0x86c] low-nibble index into an 8-byte-stride array at a0+0x7e8)."
     }
   ]
 }
