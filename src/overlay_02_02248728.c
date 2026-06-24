@@ -313,6 +313,7 @@ WIP_LOCAL int ov02_02249690(void *work);
 WIP_LOCAL void ov02_0224D310(void *a0, void *a1, void *data);
 WIP_LOCAL int ov02_0224C840(TaskManager *taskManager, void *a1, void *a2);
 WIP_LOCAL void ov02_0224D820(void *data);
+WIP_LOCAL void ov02_0224D7B0(void *data); // still in asm
 WIP_LOCAL void ov02_0224DF1C(void *data);
 WIP_LOCAL BOOL ov02_0224BE24(TaskManager *taskManager);
 WIP_LOCAL int ov02_0224CAB8(WallpaperPasswordBank *bank, u16 trainerId, u16 a, u16 b, u16 c, u16 d);
@@ -2572,6 +2573,22 @@ WIP_LOCAL void ov02_0224D698(Field3dObject *obj, PlayerAvatar *playerAvatar, fx3
     PlaySE(SEQ_SE_DP_UG_023);
 }
 
+WIP_LOCAL void ov02_0224D820(void *data) {
+    int i;
+    u8 *p;
+    ov02_0224D7B0(data);
+    for (i = 0, p = (u8 *)data; i < 0x10; i++, p += 0xcc) {
+        if (*(int *)(p + 0xd8) == 0) {
+            ov02_0224D698((Field3dObject *)((u8 *)data + 0x10 + i * 0xcc),
+                *(PlayerAvatar **)((u8 *)*(void **)((u8 *)data + 0xce0) + 0x40),
+                *(fx32 *)((u8 *)data + 0xce8),
+                *(fx32 *)((u8 *)data + 0xcec));
+            return;
+        }
+    }
+    GF_AssertFail();
+}
+
 WIP_LOCAL void FollowMon_PlaceholdersSet(void *work, void *messageFormat) {
     Pokemon *mon = GetFirstAliveMonInParty_CrashIfNone(SaveArray_Party_Get(*(SaveData **)((u8 *)work + 0xc)));
     BoxPokemon *boxMon = Mon_GetBoxMon(mon);
@@ -3233,7 +3250,7 @@ WIP_LOCAL void ov02_02249FD4(void *work) {
 }
 
 // ===========================================================================
-// HANDOFF — overlay_02_02248728 WIP (278/364 byte-match, objdiff-verified)
+// HANDOFF — overlay_02_02248728 WIP (279/364 byte-match, objdiff-verified)
 //
 // NOTE: several functions contain an inline 4-entry jump table (dense switch:
 // ov02_0224CFD8/D044 facing-dir coord; ov02_0224E26C/E2A0/E2D4 dir remaps;
