@@ -546,6 +546,10 @@ sub_0202BCAC builds `u16 pos[4]` from a packed u32 (`pos[0]=p; pos[1]=p>>16; pos
 
 When the asm shows a small fixed-size zero-fill as a manual loop (mov r0,#0; L: strb r0,[r2]; adds r2,#1; subs r1,#1; bne L) with NO bl memset, the source is memset(p, 0, N) — MWCC -O4 inlines small constant-size memsets to that exact store-first loop. Writing a hand do-while/for instead fails: MWCC loop-rotates the counter decrement to the TOP (subs before strb) and adds a cmp (bgt), so it never matches and cascades diffs through the rest of the function. Just use memset(). Seen on ov02_0224E074 (overlay_02_02248728), a 16-byte clear.
 
+### Stack-passed param read via add-sp+ldrb means the param is u8, not int  <!-- id: stack-param-read-as-ldrb-is-u8-param -->
+
+When a 5th+ (stack-passed) parameter is read in the body as add rN,sp,#off; ldrb (two instructions) rather than a single sp-relative ldr, the parameter type is u8 (or s8 for ldrsb), NOT int. Thumb ldrb/ldrh have no sp-relative addressing form, so a byte/halfword stack param forces MWCC to re-derive the address (add rN,sp,#off) then ldrb. Declaring the param as int yields a single ldr rN,[sp,#off] and a SIZE that is 2 bytes short per read. Fix: declare the param u8/s8. MWCC hoists the common add rN,sp,#off before a branch when both arms read the param. Seen in ov02_0224FCE0 (5th param u8 a5, read in both flags&1 arms).
+
 ## IPA (-ipa file) Behavior
 
 ### Shared-header signatures are load-bearing across compilation units  <!-- id: ipa-shared-headers -->

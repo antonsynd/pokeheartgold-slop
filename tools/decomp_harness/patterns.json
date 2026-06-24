@@ -1255,6 +1255,12 @@
       "category": "codegen",
       "title": "Stack-struct bitfield reads re-derive the address (ldrh has no sp-relative form) — use inline casts, not a cached pointer",
       "body": "To read packed N-bit fields from a u16/u32 on the STACK, MWCC emits a bitfield extraction lsl#(32-w-off); lsr#(32-w) (e.g. lsl#29;lsr#29 for a 3-bit field at offset 0) — NOT (x>>off)&mask (which is lsr;and). So model the packed value with a real bitfield struct (e.g. struct {u16 s0:3,s1:3,...}) and cast over the member. CRUCIALLY: because Thumb ldrh/ldrb have no sp-relative addressing, each stack-struct field read needs add rN,sp,#off; ldrh — the asm RE-DERIVES this address in every basic block. Access via an INLINE cast each time: ((struct Bits*)&s.field)->fN. Do NOT introduce a named pointer local (T *bits = ...): MWCC keeps that pointer live in a register and emits the add-sp ONCE, dropping the per-block re-derivations -> function comes out SIZE too small. Also watch the unsigned compare (bcs/bhs) — make the accumulator u32 so 3-bit field comparisons are unsigned; and steer the accumulator/code into the right registers via declaration order. Seen ov02_0224F6AC (pokeathlon best-stat picker over PokeathlonPerformanceStars.stars). Related: [[local-array-initializer-is-rodata-byte-copy]], [[local-stack-slot-order-equals-decl-order]]."
+    },
+    {
+      "id": "stack-param-read-as-ldrb-is-u8-param",
+      "category": "matching-tricks",
+      "title": "Stack-passed param read via add-sp+ldrb means the param is u8, not int",
+      "body": "When a 5th+ (stack-passed) parameter is read in the body as add rN,sp,#off; ldrb (two instructions) rather than a single sp-relative ldr, the parameter type is u8 (or s8 for ldrsb), NOT int. Thumb ldrb/ldrh have no sp-relative addressing form, so a byte/halfword stack param forces MWCC to re-derive the address (add rN,sp,#off) then ldrb. Declaring the param as int yields a single ldr rN,[sp,#off] and a SIZE that is 2 bytes short per read. Fix: declare the param u8/s8. MWCC hoists the common add rN,sp,#off before a branch when both arms read the param. Seen in ov02_0224FCE0 (5th param u8 a5, read in both flags&1 arms)."
     }
   ]
 }
