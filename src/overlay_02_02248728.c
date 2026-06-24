@@ -136,6 +136,11 @@ extern const VecFx32 ov02_02253360;                             // rodata, defin
 extern const VecFx32 ov02_02253390;                             // rodata, defined later (affine scale)
 extern const VecFx32 ov02_02253348;                             // rodata, defined later (sprite spawn offset)
 extern void ov01_021F8F74(LocalMapObject *mapObject, int a1);   // no header included here
+extern const VecFx32 ov02_02253408;                             // rodata, defined later (sprite offset pair)
+extern const VecFx32 ov02_02253384;                             // rodata, defined later (sprite offset pair)
+extern const VecFx32 ov02_022533FC;                             // rodata, defined later (sprite offset pair)
+extern const VecFx32 ov02_02253414;                             // rodata, defined later (sprite offset pair)
+WIP_LOCAL void ov02_0224A9D8(void *work, int a1);               // still in asm; forward decl for callers
 
 // NewMsgDataFromNarc / MessageFormat_* / Buffer* / MapHeader_GetMapSec are reachable
 // transitively (msgdata.h / message_format.h / map_header.h) — no local externs.
@@ -226,7 +231,7 @@ WIP_LOCAL Sprite *ov02_02248C10(void *mgr, VecFx32 *pos, int charId, int plttId,
 WIP_LOCAL Sprite *ov02_02248D18(void *mgr, int a1);
 WIP_LOCAL int ov02_0224C338(void *a0, void *a1, void *work);
 WIP_LOCAL Sprite *ov02_0224A33C(void *mgr, VecFx32 *pos, int charId, int plttId, int cellId, int mode, int priority, int drawPriority);
-WIP_LOCAL void ov02_0224A9B8(void *mgr, VecFx32 *pos);
+WIP_LOCAL Sprite *ov02_0224A9B8(void *mgr, VecFx32 *pos);
 WIP_LOCAL Sprite *ov02_0224A3F0(void *mgr, VecFx32 *pos, int drawPriority, int seq);
 WIP_LOCAL void ov02_0224A570(NARC *narc, u32 fileId, NNSG2dPaletteData **a2);
 WIP_LOCAL void ov02_0224B88C(void *work);
@@ -253,6 +258,8 @@ WIP_LOCAL int ov02_02249C74(void *work);
 WIP_LOCAL int ov02_02249A5C(void *work);
 WIP_LOCAL void ov02_0224FD9C(void *arg0, LocalMapObject *mapObject);
 WIP_LOCAL void ov02_022494C4(FieldSystem *fieldSystem, void *a1, void *a2, void *a3);
+WIP_LOCAL int ov02_022499EC(void *work);
+WIP_LOCAL int ov02_022495E8(void *work);
 WIP_LOCAL BOOL ov02_0224FFD8(void *p);
 WIP_LOCAL BOOL ov02_02249088(void *mgr);
 WIP_LOCAL BOOL ov02_02248D98(void *a0, void *obj);
@@ -642,8 +649,8 @@ WIP_LOCAL Sprite *ov02_0224A33C(void *mgr, VecFx32 *pos, int charId, int plttId,
     return sprite;
 }
 
-WIP_LOCAL void ov02_0224A9B8(void *mgr, VecFx32 *pos) {
-    ov02_0224A33C(mgr, pos, 3, 3, 3, -1, 0, 0x81);
+WIP_LOCAL Sprite *ov02_0224A9B8(void *mgr, VecFx32 *pos) {
+    return ov02_0224A33C(mgr, pos, 3, 3, 3, -1, 0, 0x81);
 }
 
 WIP_LOCAL void ov02_0224A570(NARC *narc, u32 fileId, NNSG2dPaletteData **a2) {
@@ -2712,8 +2719,42 @@ WIP_LOCAL void ov02_022494C4(FieldSystem *fieldSystem, void *a1, void *a2, void 
     SysTask_CreateOnMainQueue(ov02_022499B8, work, 0x86);
 }
 
+WIP_LOCAL int ov02_022499EC(void *work) {
+    VecFx32 vec1;
+    VecFx32 vec2;
+    if (*(int *)((u8 *)work + 0x214) == 0) {
+        return 0;
+    }
+    vec1 = ov02_022533FC;
+    vec2 = ov02_02253414;
+    *(Sprite **)((u8 *)work + 0x1e4) = ov02_0224A418(work, &vec1);
+    *(Sprite **)((u8 *)work + 0x1e8) = ov02_0224A9B8(work, &vec2);
+    ov02_0224A9D8(work, 1);
+    ov02_02249D40(work);
+    *(int *)((u8 *)work + 0x10) = 1;
+    (*(int *)work)++;
+    return 1;
+}
+
+WIP_LOCAL int ov02_022495E8(void *work) {
+    VecFx32 vec1;
+    VecFx32 vec2;
+    if (*(int *)((u8 *)work + 0x214) == 0) {
+        return 0;
+    }
+    vec1 = ov02_02253408;
+    vec2 = ov02_02253384;
+    *(Sprite **)((u8 *)work + 0x1e4) = ov02_0224A418(work, &vec1);
+    *(Sprite **)((u8 *)work + 0x1e8) = ov02_0224A9B8(work, &vec2);
+    ov02_0224A9D8(work, 1);
+    ov02_02249D40(work);
+    *(int *)((u8 *)work + 0x10) = 1;
+    (*(int *)work)++;
+    return 1;
+}
+
 // ===========================================================================
-// HANDOFF — overlay_02_02248728 WIP (253/364 byte-match, objdiff-verified)
+// HANDOFF — overlay_02_02248728 WIP (255/364 byte-match, objdiff-verified)
 // ===========================================================================
 // MODULE: follow-mon sprite animation + Pokecenter / field-move (Escape Rope,
 //   Dig, Teleport) task subsystem. A 2D graphics renderer built on G2dRenderer /
