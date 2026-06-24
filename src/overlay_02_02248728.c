@@ -159,6 +159,8 @@ extern const VecFx32 ov02_022533FC;                                             
 extern const VecFx32 ov02_02253414;                                                                                         // rodata, defined later (sprite offset pair)
 extern const VecFx32 ov02_022533E4;                                                                                         // rodata, defined later (sprite affine matrix)
 extern const VecFx32 ov02_022533F0;                                                                                         // rodata, defined later (sprite affine scale)
+extern const VecFx32 ov02_022533D8;                                                                                         // rodata, defined later (sprite affine matrix)
+extern const VecFx32 ov02_022533B4;                                                                                         // rodata, defined later (sprite affine scale)
 WIP_LOCAL void ov02_0224A9D8(void *work, int a1);                                                                           // still in asm; forward decl for callers
 
 // NewMsgDataFromNarc / MessageFormat_* / Buffer* / MapHeader_GetMapSec are reachable
@@ -333,6 +335,7 @@ WIP_LOCAL void ov02_0224D950(void *a0, void *a1, void *data);
 WIP_LOCAL void ov02_0224DD8C(void *a0, void *a1, void *data);
 WIP_LOCAL int ov02_02249690(void *work);
 WIP_LOCAL int ov02_022496D0(void *work);
+WIP_LOCAL int ov02_022491CC(void *work);
 WIP_LOCAL int ov02_02249BD8(void *work);
 WIP_LOCAL int ov02_02250594(int a0, int a1);
 WIP_LOCAL int ov02_02250628(int a0, int a1);
@@ -2102,6 +2105,35 @@ WIP_LOCAL int ov02_022491A8(void *work) {
     Sprite_SetAnimCtrlSeq(*(Sprite **)((u8 *)work + 0x60), 1);
     *(int *)((u8 *)work + 4) = 0;
     *(u8 *)((u8 *)work + 1) = *(u8 *)((u8 *)work + 1) + 1;
+    return 1;
+}
+
+WIP_LOCAL int ov02_022491CC(void *work) {
+    VecFx32 local1;
+    VecFx32 local2;
+    if (++*(int *)((u8 *)work + 4) < 0x14) {
+        return 0;
+    }
+    local1 = ov02_022533D8;
+    local2 = ov02_022533B4;
+    *(int *)((u8 *)work + 4) = 0;
+    *(VecFx32 *)((u8 *)work + 8) = local1;
+    *(int *)((u8 *)work + 0x14) = 0;
+    *(int *)((u8 *)work + 0x18) = 0;
+    *(int *)((u8 *)work + 0x1c) = 0;
+    *(int *)((u8 *)work + 0x38) = 0;
+    *(VecFx32 *)((u8 *)work + 0x2c) = local2;
+    *(int *)((u8 *)work + 0x50) = 0x200;
+    *(int *)((u8 *)work + 0x40) = 0x13B000;
+    *(int *)((u8 *)work + 0x48) = 0x80000;
+    *(int *)((u8 *)work + 0x4c) = 0x2000;
+    Sprite_SetMatrix(*(Sprite **)((u8 *)work + 0x68), &local1);
+    Sprite_SetAffineScale(*(Sprite **)((u8 *)work + 0x68), &local2);
+    Sprite_SetAffineZRotation(*(Sprite **)((u8 *)work + 0x68), GF_DegreeToSinCosIdx((u16)(*(int *)((u8 *)work + 0x38) / 0x1000)));
+    Sprite_SetDrawFlag(*(Sprite **)((u8 *)work + 0x68), 1);
+    Sprite_SetAnimCtrlSeq(*(Sprite **)((u8 *)work + 0x60), 6);
+    Sprite_SetAnimActiveFlag(*(Sprite **)((u8 *)work + 0x60), 1);
+    (*(u8 *)((u8 *)work + 1))++;
     return 1;
 }
 
@@ -3901,7 +3933,7 @@ WIP_LOCAL void ov02_02249FD4(void *work) {
 }
 
 // ===========================================================================
-// HANDOFF — overlay_02_02248728 WIP (304/364 byte-match, objdiff-verified)
+// HANDOFF — overlay_02_02248728 WIP (305/364 byte-match, objdiff-verified)
 //
 // NOTE: several functions contain an inline 4-entry jump table (dense switch:
 // ov02_0224CFD8/D044 facing-dir coord; ov02_0224E26C/E2A0/E2D4 dir remaps;
