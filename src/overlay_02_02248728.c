@@ -251,6 +251,7 @@ WIP_LOCAL Sprite *ov02_0224A33C(void *mgr, VecFx32 *pos, int charId, int plttId,
 WIP_LOCAL Sprite *ov02_0224A9B8(void *mgr, VecFx32 *pos);
 WIP_LOCAL Sprite *ov02_0224A3F0(void *mgr, VecFx32 *pos, int drawPriority, int seq);
 WIP_LOCAL void ov02_0224A570(NARC *narc, u32 fileId, NNSG2dPaletteData **a2);
+WIP_LOCAL void ov02_0224A5D0(BgConfig *bgConfig, NARC *narc, u32 fileId, NNSG2dScreenData **a3);
 WIP_LOCAL void ov02_0224B88C(void *work);
 WIP_LOCAL void ov02_0224B90C(void *work);
 WIP_LOCAL int ov02_0224B938(void *work);
@@ -740,6 +741,18 @@ WIP_LOCAL void ov02_0224A570(NARC *narc, u32 fileId, NNSG2dPaletteData **a2) {
     void *data = NARC_AllocAndReadWholeMember(narc, fileId, HEAP_ID_FIELD1);
     NNS_G2dGetUnpackedPaletteData(data, a2);
     BG_LoadPlttData(3, *(const void **)((u8 *)(*a2) + 0xc), 0x20, 0x180);
+    Heap_Free(data);
+}
+
+WIP_LOCAL void ov02_0224A5D0(BgConfig *bgConfig, NARC *narc, u32 fileId, NNSG2dScreenData **a3) {
+    void *data;
+    BgSetPosTextAndCommit(bgConfig, 3, BG_POS_OP_SET_X, 0);
+    BgSetPosTextAndCommit(bgConfig, 3, BG_POS_OP_SET_Y, 0);
+    data = NARC_AllocAndReadWholeMember(narc, fileId, HEAP_ID_FIELD1);
+    NNS_G2dGetUnpackedScreenData(data, a3);
+    BG_LoadScreenTilemapData(bgConfig, 3, (u8 *)(*a3) + 0xc, *(u32 *)((u8 *)(*a3) + 8));
+    BgTilemapRectChangePalette(bgConfig, 3, 0, 0, 0x20, 0x20, 0xc);
+    BgCommitTilemapBufferToVram(bgConfig, 3);
     Heap_Free(data);
 }
 
@@ -3464,7 +3477,7 @@ WIP_LOCAL void ov02_02249FD4(void *work) {
 }
 
 // ===========================================================================
-// HANDOFF — overlay_02_02248728 WIP (290/364 byte-match, objdiff-verified)
+// HANDOFF — overlay_02_02248728 WIP (291/364 byte-match, objdiff-verified)
 //
 // NOTE: several functions contain an inline 4-entry jump table (dense switch:
 // ov02_0224CFD8/D044 facing-dir coord; ov02_0224E26C/E2A0/E2D4 dir remaps;
