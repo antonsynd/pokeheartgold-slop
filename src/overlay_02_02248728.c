@@ -120,17 +120,31 @@ extern ov02_StateMachineFunc const ov02_022534B8[];
 typedef int (*ov02_FieldTaskFunc)(TaskManager *taskManager, FieldSystem *fieldSystem, void *env);
 extern ov02_FieldTaskFunc const ov02_02253700[];
 extern ov02_FieldTaskFunc const ov02_022536F0[];
-extern void sub_02068BAC(void *a0);                                                                // unk_020689C8.h
-extern void ov01_021FCD78(SysTask *task);                                                          // no header included here
-extern BOOL ov01_021FCD6C(SysTask *task);                                                          // no header included here
-extern void ov01_021FBD38(Field3dModel *model, void *narcData);                                    // no header included here
-extern void ov01_021FBDFC(Field3dModel *model);                                                    // no header included here
-extern void ov01_021F1448(void *a0);                                                               // no header included here
-extern void *ov01_021FCD2C(FieldSystem *fieldSystem, int a1);                                      // no header included here
-extern void ov01_021FCD8C(void *a0, int a1, fx32 a2, int a3);                                      // no header included here
-extern BOOL ov01_02206268(FieldSystem *fieldSystem);                                               // overlay_01.h, not included
-extern int ov01_022062CC(FieldSystem *fieldSystem);                                                // overlay_01.h, not included
-extern void PlayCryEx(int, int, int, int, int, int);                                               // sound_02004A44.h, not included
+extern void sub_02068BAC(void *a0);                                   // unk_020689C8.h
+extern void ov01_021FCD78(SysTask *task);                             // no header included here
+extern BOOL ov01_021FCD6C(SysTask *task);                             // no header included here
+extern void ov01_021FBD38(Field3dModel *model, void *narcData);       // no header included here
+extern void ov01_021FBDFC(Field3dModel *model);                       // no header included here
+extern void ov01_021F1448(void *a0);                                  // no header included here
+extern void *ov01_021FCD2C(FieldSystem *fieldSystem, int a1);         // no header included here
+extern void ov01_021FCD8C(void *a0, int a1, fx32 a2, int a3);         // no header included here
+extern BOOL ov01_02206268(FieldSystem *fieldSystem);                  // overlay_01.h, not included
+extern int ov01_022062CC(FieldSystem *fieldSystem);                   // overlay_01.h, not included
+extern void PlayCryEx(int, int, int, int, int, int);                  // sound_02004A44.h, not included
+extern PlayerProfile *Save_PlayerData_GetProfile(SaveData *saveData); // player_data.h, not included
+extern u32 PlayerProfile_GetTrainerID(PlayerProfile *profile);        // player_data.h, not included
+extern void *Save_SafariZone_Get(SaveData *saveData);                 // safari_zone.h, not included (opaque)
+extern u8 SafariZone_GetObjectUnlockLevel(void *safariZone);          // safari_zone.h, not included
+extern void *Field_GetBgEvents(FieldSystem *fieldSystem);             // map_events.h, not included (BG_EVENT opaque)
+extern u32 Field_GetNumBgEvents(FieldSystem *fieldSystem);            // map_events.h, not included
+extern const MovementScriptCommand ov02_022537DC;                     // rodata, defined later
+
+// ov02_0224E020 dispatch tables (rodata, still in asm; defined later). Indexed by
+// data[0xc]: A34 update funcs return int (1 => advance state); A04 delete funcs
+// (result ignored). Declared int(*)(void*) to match the blx call sites.
+typedef int (*ov02_AnimDispatchFunc)(void *data);
+extern ov02_AnimDispatchFunc const ov02_02253A34[];
+extern ov02_AnimDispatchFunc const ov02_02253A04[];
 extern const MovementScriptCommand ov02_02253820;                                                  // rodata, defined later
 extern const MovementScriptCommand ov02_02253794;                                                  // rodata, defined later
 extern const MovementScriptCommand ov02_02253770;                                                  // rodata, defined later
@@ -179,6 +193,12 @@ WIP_LOCAL int ov02_0224997C(void *work);
 WIP_LOCAL int ov02_0224939C(void *work);
 WIP_LOCAL int ov02_02249774(void *work);
 WIP_LOCAL void ov02_0224FDF8(void *arg0, u16 arg1, int arg2, int arg3);
+WIP_LOCAL int ov02_0224C05C(TaskManager *taskManager, FieldSystem *fieldSystem, void *work);
+WIP_LOCAL int ov02_0224C87C(TaskManager *taskManager, FieldSystem *fieldSystem, void *work);
+WIP_LOCAL void ov02_0224E020(SysTask *task, void *data);
+WIP_LOCAL BOOL ov02_0224E640(SaveData *saveData);
+WIP_LOCAL void ov02_0224DE10(Field3dObject *obj, VecFx32 *arg1, fx32 arg2, fx32 arg3);
+WIP_LOCAL void ov02_0224F580(FieldSystem *fieldSystem, void *out);
 WIP_LOCAL void ov02_0224A66C(void *work);
 WIP_LOCAL void ov02_0224A674(void *work);
 WIP_LOCAL void ov02_0224A690(void *work);
@@ -2294,8 +2314,111 @@ WIP_LOCAL void ov02_0224FDF8(void *arg0, u16 arg1, int arg2, int arg3) {
     PlaySE(arg1);
 }
 
+WIP_LOCAL int ov02_0224C05C(TaskManager *taskManager, FieldSystem *fieldSystem, void *work) {
+    void *p = ov01_021FCD2C(fieldSystem, 4);
+    *(void **)((u8 *)work + 0x1c) = p;
+    ov01_021FCD8C(p, 1, 0xFFF6A000, 0xf);
+    *(EventObjectMovementMan **)((u8 *)work + 0x10) = EventObjectMovementMan_Create(*(LocalMapObject **)((u8 *)work + 0x20), &ov02_02253820);
+    if (*(int *)((u8 *)work + 8)) {
+        *(EventObjectMovementMan **)((u8 *)work + 0x14) = EventObjectMovementMan_Create(*(LocalMapObject **)((u8 *)fieldSystem + 0xe4), &ov02_02253820);
+    }
+    (*(int *)((u8 *)work))++;
+    PlaySE(SEQ_SE_DP_KAIDAN2);
+    return 0;
+}
+
+WIP_LOCAL int ov02_0224C87C(TaskManager *taskManager, FieldSystem *fieldSystem, void *work) {
+    void *p = ov01_021FCD2C(fieldSystem, 4);
+    *(void **)((u8 *)work + 0x1c) = p;
+    ov01_021FCD8C(p, 1, 0xFFF6A000, 0xf);
+    *(EventObjectMovementMan **)((u8 *)work + 0x10) = EventObjectMovementMan_Create(*(LocalMapObject **)((u8 *)work + 0x20), &ov02_022537DC);
+    if (*(int *)((u8 *)work + 8)) {
+        *(EventObjectMovementMan **)((u8 *)work + 0x14) = EventObjectMovementMan_Create(*(LocalMapObject **)((u8 *)fieldSystem + 0xe4), &ov02_022537DC);
+    }
+    (*(int *)((u8 *)work))++;
+    PlaySE(SEQ_SE_DP_KAIDAN2);
+    return 0;
+}
+
+WIP_LOCAL void ov02_0224E020(SysTask *task, void *data) {
+    switch (*(int *)((u8 *)data + 8)) {
+    case 0:
+        if (ov02_02253A34[*(int *)((u8 *)data + 0xc)](*(void **)data) == 1) {
+            (*(int *)((u8 *)data + 8))++;
+        }
+        break;
+    case 1:
+        ov02_02253A04[*(int *)((u8 *)data + 0xc)](*(void **)data);
+        *(u16 *)*(void **)((u8 *)data + 4) = 1;
+        Heap_Free(data);
+        SysTask_Destroy(task);
+        break;
+    }
+}
+
+WIP_LOCAL BOOL ov02_0224E640(SaveData *saveData) {
+    u32 trainerId = PlayerProfile_GetTrainerID(Save_PlayerData_GetProfile(saveData));
+    int unlockLevel = SafariZone_GetObjectUnlockLevel(Save_SafariZone_Get(saveData));
+    u8 m = (u8)(trainerId % 10);
+    int v;
+    if (m < 6) {
+        v = m / 3;
+    } else {
+        v = (m - 6) / 2 + 2;
+    }
+    if (unlockLevel >= (u8)(3 - (u8)v) + 1) {
+        return TRUE;
+    }
+    return FALSE;
+}
+
+WIP_LOCAL void ov02_0224DE10(Field3dObject *obj, VecFx32 *arg1, fx32 arg2, fx32 arg3) {
+    int i;
+    u8 *anim;
+    GF_ASSERT(*(int *)((u8 *)obj + 0xc8) == 0);
+    Field3dObject_SetPosEx(obj, arg1->x, arg1->y + arg2, arg1->z + arg3);
+    *(int *)((u8 *)obj + 0xc8) = 1;
+    for (i = 0, anim = (u8 *)obj + 0x78; i < 4; i++, anim += 0x14) {
+        Field3dModelAnimation_FrameSet((Field3DModelAnimation *)anim, 0);
+    }
+    Field3dObject_SetActiveFlag(obj, 1);
+    PlaySE(SEQ_SE_DP_UG_023);
+}
+
+WIP_LOCAL void ov02_0224F580(FieldSystem *fieldSystem, void *out) {
+    int count = 0;
+    u8 *events = Field_GetBgEvents(fieldSystem);
+    int num = Field_GetNumBgEvents(fieldSystem);
+    if (num != 0 && events != NULL) {
+        int i;
+        for (i = 0; i < num; i++) {
+            if (*(u16 *)(events + 2) == 2 && !FieldSystem_FlagCheck(fieldSystem, HiddenItemScriptNoToFlagId(*(u16 *)events))) {
+                count++;
+            }
+            events += 0x14;
+        }
+    }
+    *(u8 *)((u8 *)out + 0xd) = count;
+}
+
+struct FieldMoveTaskEnvironment *FieldMoveTask_CreateTeleportEnvironment(FieldSystem *fieldSystem, Pokemon *mon, u8 slotno, enum HeapID heapID) {
+    struct FieldMoveTaskEnvironment *env = ov02_0224C660(heapID, 0x30);
+    *(int *)((u8 *)env + 0xc) = 2;
+    *(FieldSystem **)((u8 *)env + 0x24) = fieldSystem;
+    *(LocalMapObject **)((u8 *)env + 0x20) = PlayerAvatar_GetMapObject(fieldSystem->playerAvatar);
+    *(Pokemon **)((u8 *)env + 0x28) = mon;
+    if ((u32)(PlayerAvatar_GetState(fieldSystem->playerAvatar) - 1) <= 1) {
+        *(int *)((u8 *)env + 8) = 0;
+    } else if (ov01_02206268(fieldSystem) && slotno == ov01_022062CC(fieldSystem)) {
+        *(int *)((u8 *)env + 8) = 1;
+    } else {
+        *(int *)((u8 *)env + 8) = 0;
+    }
+    return env;
+}
+
 // ===========================================================================
-// HANDOFF — overlay_02_02248728 WIP (230/364 byte-match, objdiff-verified)
+// HANDOFF — overlay_02_02248728 WIP (237/364 byte-match, objdiff-verified)
 // ===========================================================================
 // MODULE: follow-mon sprite animation + Pokecenter / field-move (Escape Rope,
 //   Dig, Teleport) task subsystem. A 2D graphics renderer built on G2dRenderer /
