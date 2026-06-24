@@ -148,6 +148,7 @@ extern u8 SafariZone_GetObjectUnlockLevel(void *safariZone);                    
 extern void *Field_GetBgEvents(FieldSystem *fieldSystem);                               // map_events.h, not included (BG_EVENT opaque)
 extern u32 Field_GetNumBgEvents(FieldSystem *fieldSystem);                              // map_events.h, not included
 extern const MovementScriptCommand ov02_022537DC;                                       // rodata, defined later
+extern const MovementScriptCommand ov02_022537B8;                                       // rodata, defined later
 
 // ov02_0224E020 dispatch tables (rodata, still in asm; defined later). Indexed by
 // data[0xc]: A34 update funcs return int (1 => advance state); A04 delete funcs
@@ -242,6 +243,10 @@ WIP_LOCAL int ov02_0224C14C(TaskManager *taskManager, FieldSystem *fieldSystem, 
 WIP_LOCAL void ov02_0224D698(Field3dObject *obj, PlayerAvatar *playerAvatar, fx32 arg2, fx32 arg3);
 WIP_LOCAL int ov02_0224C7D4(TaskManager *taskManager, FieldSystem *fieldSystem, void *work);
 WIP_LOCAL BOOL FollowMon_TryPrintInteractionMessage(void *work, void *window, void *arg2);
+WIP_LOCAL void *ov02_02249458(FieldSystem *fieldSystem, int a1, Pokemon *a2, int a3);
+WIP_LOCAL int ov02_02249858(void *work);
+WIP_LOCAL int ov02_0224C8D0(TaskManager *taskManager, FieldSystem *fieldSystem, void *work);
+WIP_LOCAL int ov02_0224C234(TaskManager *taskManager, FieldSystem *fieldSystem, void *work);
 WIP_LOCAL BOOL ov02_0224FFD8(void *p);
 WIP_LOCAL BOOL ov02_02249088(void *mgr);
 WIP_LOCAL BOOL ov02_02248D98(void *a0, void *obj);
@@ -377,10 +382,10 @@ WIP_LOCAL void ov02_02249CF0(void *work);
 
 WIP_LOCAL void ov02_02248DF0(void *a0, u8 *sm);
 WIP_LOCAL void ov02_0224AC04(void *a0, u8 *sm);
-WIP_LOCAL void ov02_02249584(void *a0, void *sm);
+WIP_LOCAL void ov02_02249584(SysTask *task, void *sm);
 WIP_LOCAL void ov02_0224D43C(Field3dObjectTask *task, FieldSystem *fieldSystem, void *data);
-WIP_LOCAL void ov02_02249984(void *a0, void *sm);
-WIP_LOCAL void ov02_022499B8(void *a0, void *sm);
+WIP_LOCAL void ov02_02249984(SysTask *task, void *sm);
+WIP_LOCAL void ov02_022499B8(SysTask *task, void *sm);
 WIP_LOCAL BOOL ov02_02249BA8(void *work);
 WIP_LOCAL void ov02_0224AB9C(void *work);
 WIP_LOCAL int ov02_0224B638(void *work);
@@ -1769,7 +1774,7 @@ WIP_LOCAL void ov02_0224AC04(void *a0, u8 *sm) {
     }
 }
 
-WIP_LOCAL void ov02_02249584(void *a0, void *sm) {
+WIP_LOCAL void ov02_02249584(SysTask *task, void *sm) {
     while (ov02_02253550[*(int *)sm](sm) == 1) {
     }
     if (*(int *)((u8 *)sm + 0x10) == 1) {
@@ -1780,7 +1785,7 @@ WIP_LOCAL void ov02_02249584(void *a0, void *sm) {
     }
 }
 
-WIP_LOCAL void ov02_02249984(void *a0, void *sm) {
+WIP_LOCAL void ov02_02249984(SysTask *task, void *sm) {
     while (ov02_02253588[*(int *)sm](sm) == 1) {
     }
     if (*(int *)((u8 *)sm + 0x10) == 1) {
@@ -1791,7 +1796,7 @@ WIP_LOCAL void ov02_02249984(void *a0, void *sm) {
     }
 }
 
-WIP_LOCAL void ov02_022499B8(void *a0, void *sm) {
+WIP_LOCAL void ov02_022499B8(SysTask *task, void *sm) {
     while (ov02_022534F0[*(int *)sm](sm) == 1) {
     }
     if (*(int *)((u8 *)sm + 0x10) == 1) {
@@ -2556,8 +2561,78 @@ WIP_LOCAL BOOL FollowMon_TryPrintInteractionMessage(void *work, void *window, vo
     return FALSE;
 }
 
+WIP_LOCAL void *ov02_02249458(FieldSystem *fieldSystem, int a1, Pokemon *a2, int a3) {
+    void *work = ov02_0224955C(fieldSystem);
+    *(void **)((u8 *)work + 0x5c) = a2;
+    *(u16 *)((u8 *)work + 0xc) = a3;
+    *(u16 *)((u8 *)work + 0xe) = *(u16 *)((u8 *)work + 0xc);
+    *(int *)((u8 *)work + 0x20) = a1;
+    *(LocalMapObject **)((u8 *)work + 0x208) = PlayerAvatar_GetMapObject((*(FieldSystem **)((u8 *)work + 0x60))->playerAvatar);
+    if (a1 == 0) {
+        return SysTask_CreateOnMainQueue(ov02_02249584, work, 0x86);
+    } else if (a1 == 2) {
+        *(LocalMapObject **)((u8 *)work + 0x20c) = FollowMon_GetMapObject(fieldSystem);
+        return SysTask_CreateOnMainQueue(ov02_022499B8, work, 0x86);
+    } else {
+        return SysTask_CreateOnMainQueue(ov02_02249984, work, 0x86);
+    }
+}
+
+WIP_LOCAL int ov02_02249858(void *work) {
+    VecFx32 vec;
+    fx32 v = *(fx32 *)((u8 *)work + 0x58) << 1;
+    *(fx32 *)((u8 *)work + 0x58) = v;
+    if (v < (fx32)0xFFFC0000) {
+        *(fx32 *)((u8 *)work + 0x58) = (fx32)0xFFFC0000;
+    }
+    vec = *Sprite_GetMatrixPtr(*(Sprite **)((u8 *)work + 0x1e8));
+    vec.x = vec.x + *(fx32 *)((u8 *)work + 0x58);
+    Sprite_SetMatrix(*(Sprite **)((u8 *)work + 0x1e8), &vec);
+    if (vec.x <= (fx32)0xFFFD8000) {
+        *(fx32 *)((u8 *)work + 0x54) = 0x1000;
+        (*(int *)work)++;
+    }
+    return 0;
+}
+
+WIP_LOCAL int ov02_0224C8D0(TaskManager *taskManager, FieldSystem *fieldSystem, void *work) {
+    if (!EventObjectMovementMan_IsFinish(*(EventObjectMovementMan **)((u8 *)work + 0x10))) {
+        return 0;
+    }
+    EventObjectMovementMan_Delete(*(EventObjectMovementMan **)((u8 *)work + 0x10));
+    *(EventObjectMovementMan **)((u8 *)work + 0x10) = EventObjectMovementMan_Create(*(LocalMapObject **)((u8 *)work + 0x20), &ov02_022537B8);
+    if (*(int *)((u8 *)work + 8)) {
+        EventObjectMovementMan_Delete(*(EventObjectMovementMan **)((u8 *)work + 0x14));
+        *(EventObjectMovementMan **)((u8 *)work + 0x14) = EventObjectMovementMan_Create(*(LocalMapObject **)((u8 *)fieldSystem + 0xe4), &ov02_022537B8);
+    }
+    if (PlayerAvatar_GetState(fieldSystem->playerAvatar) != 2) {
+        if (*(int *)((u8 *)work + 8)) {
+            *(Field3dObjectTask **)((u8 *)work + 0x2c) = ov02_0224DDF4(*(FieldSystem **)((u8 *)work + 0x24));
+        } else {
+            *(Field3dObjectTask **)((u8 *)work + 0x2c) = ov02_0224DDE0(*(FieldSystem **)((u8 *)work + 0x24));
+        }
+    }
+    (*(int *)((u8 *)work))++;
+    return 0;
+}
+
+WIP_LOCAL int ov02_0224C234(TaskManager *taskManager, FieldSystem *fieldSystem, void *work) {
+    void *p;
+    if (*(int *)((u8 *)work + 0xc) == 2) {
+        BeginNormalPaletteFade(0, 1, 1, 0, 6, 1, HEAP_ID_FIELD1);
+    } else {
+        BeginNormalPaletteFade(0, 1, 1, 0x7fff, 6, 1, HEAP_ID_FIELD1);
+    }
+    p = ov01_021FCD2C(fieldSystem, 4);
+    *(void **)((u8 *)work + 0x1c) = p;
+    ov01_021FCD8C(p, 1, 0xFFF6A000, 1);
+    *(EventObjectMovementMan **)((u8 *)work + 0x10) = EventObjectMovementMan_Create(*(LocalMapObject **)((u8 *)work + 0x20), &ov02_02253794);
+    (*(int *)((u8 *)work))++;
+    return 0;
+}
+
 // ===========================================================================
-// HANDOFF — overlay_02_02248728 WIP (245/364 byte-match, objdiff-verified)
+// HANDOFF — overlay_02_02248728 WIP (249/364 byte-match, objdiff-verified)
 // ===========================================================================
 // MODULE: follow-mon sprite animation + Pokecenter / field-move (Escape Rope,
 //   Dig, Teleport) task subsystem. A 2D graphics renderer built on G2dRenderer /
