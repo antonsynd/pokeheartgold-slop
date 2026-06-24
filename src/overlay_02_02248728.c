@@ -324,6 +324,8 @@ WIP_LOCAL void ov02_0224D950(void *a0, void *a1, void *data);
 WIP_LOCAL void ov02_0224DD8C(void *a0, void *a1, void *data);
 WIP_LOCAL int ov02_02249690(void *work);
 WIP_LOCAL int ov02_022496D0(void *work);
+WIP_LOCAL int ov02_02249BD8(void *work);
+WIP_LOCAL int ov02_02250594(int a0, int a1);
 WIP_LOCAL void ov02_0224D310(void *a0, void *a1, void *data);
 WIP_LOCAL int ov02_0224C840(TaskManager *taskManager, void *a1, void *a2);
 WIP_LOCAL void ov02_0224D820(void *data);
@@ -2087,6 +2089,34 @@ WIP_LOCAL BOOL ov02_02249BA8(void *work) {
     return TRUE;
 }
 
+WIP_LOCAL int ov02_02249BD8(void *work) {
+    *(int *)((u8 *)work + 0x2c) = 0;
+    *(int *)((u8 *)work + 0x4c) = *(int *)((u8 *)work + 0x4c) + *(int *)((u8 *)work + 0x54);
+    *(int *)((u8 *)work + 0x50) = *(int *)((u8 *)work + 0x50) - *(int *)((u8 *)work + 0x54);
+    *(int *)((u8 *)work + 0x54) += 0x800;
+    if (*(int *)((u8 *)work + 0x54) > 0x10000) {
+        *(int *)((u8 *)work + 0x54) = 0x10000;
+    }
+    if (*(int *)((u8 *)work + 0x4c) >= 0x5f000) {
+        *(int *)((u8 *)work + 0x4c) = 0x5f000;
+    }
+    if (*(int *)((u8 *)work + 0x50) <= 0x61000) {
+        *(int *)((u8 *)work + 0x50) = 0x61000;
+    }
+    ov02_0224A69C(work, *(int *)((u8 *)work + 0x44), *(int *)((u8 *)work + 0x4c), *(int *)((u8 *)work + 0x48), *(int *)((u8 *)work + 0x50));
+    *(int *)((u8 *)work + 0x2c) = 1;
+    if (*(int *)((u8 *)work + 0x18) == 0 && ov02_0224AB8C(work) == 4) {
+        *(int *)((u8 *)work + 0x18) = 1;
+        ov02_02249420();
+    }
+    if (*(int *)((u8 *)work + 0x4c) == 0x5f000 && *(int *)((u8 *)work + 0x50) == 0x61000) {
+        *(int *)((u8 *)work + 0x34) = 0x11;
+        *(int *)((u8 *)work + 0x14) = 1;
+        (*(int *)((u8 *)work))++;
+    }
+    return 0;
+}
+
 WIP_LOCAL void ov02_0224AB9C(void *work) {
     void *d = sub_02068D74(*(void **)((u8 *)work + 0x1ec));
     int v60 = *(int *)((u8 *)d + 0x60);
@@ -3458,6 +3488,62 @@ WIP_LOCAL void ov02_02250504(void *work) {
     SetMonData(mon, MON_DATA_FRIENDSHIP, &val);
 }
 
+WIP_LOCAL int ov02_02250594(int a0, int a1) {
+    switch (a0) {
+    case 1:
+        if (a1 == 0xff) {
+            return 1;
+        }
+        break;
+    case 2:
+        if (a1 >= 0xc8 && a1 < 0xff) {
+            return 1;
+        }
+        break;
+    case 3:
+        if (a1 >= 0x96 && a1 < 0xc8) {
+            return 1;
+        }
+        break;
+    case 4:
+        if (a1 >= 0x5a && a1 < 0x96) {
+            return 1;
+        }
+        break;
+    case 5:
+        if (a1 >= 0x3c && a1 < 0x5a) {
+            return 1;
+        }
+        break;
+    case 6:
+        if (a1 >= 0x1e && a1 < 0x3c) {
+            return 1;
+        }
+        break;
+    case 7:
+        if (a1 >= 1 && a1 < 0x1e) {
+            return 1;
+        }
+        break;
+    case 8:
+        if (a1 == 0) {
+            return 1;
+        }
+        break;
+    case 9:
+        if (a1 >= 0x5a) {
+            return 1;
+        }
+        break;
+    case 10:
+        if (a1 < 0x3c) {
+            return 1;
+        }
+        break;
+    }
+    return 0;
+}
+
 WIP_LOCAL BOOL ov02_02250738(u32 a0, u32 a1) {
     int i;
     u8 masks[] = { 0x01, 0x02, 0x04, 0x08, 0x10 };
@@ -3619,7 +3705,7 @@ WIP_LOCAL void ov02_02249FD4(void *work) {
 }
 
 // ===========================================================================
-// HANDOFF — overlay_02_02248728 WIP (296/364 byte-match, objdiff-verified)
+// HANDOFF — overlay_02_02248728 WIP (298/364 byte-match, objdiff-verified)
 //
 // NOTE: several functions contain an inline 4-entry jump table (dense switch:
 // ov02_0224CFD8/D044 facing-dir coord; ov02_0224E26C/E2A0/E2D4 dir remaps;
