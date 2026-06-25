@@ -483,6 +483,7 @@ WIP_LOCAL int ov02_02249B10(void *work);
 WIP_LOCAL void ov02_0224F5D0(FieldSystem *fieldSystem, void *out);
 WIP_LOCAL void ov02_0224F76C(int a0, void *out);
 WIP_LOCAL int ov02_0224F79C(int a0);
+WIP_LOCAL void ov02_0224F880(void *a0, int a1);
 WIP_LOCAL BOOL PlayerStepEvent_RepelCounterDecrement(SaveData *saveData, FieldSystem *fieldSystem);
 WIP_LOCAL void ov02_0224AC38(void *work); // still in asm
 WIP_LOCAL SpriteResource *ov02_0224A868(void *mgr, NARC *narc);
@@ -2848,6 +2849,25 @@ WIP_LOCAL Field3dObjectTask *ov02_0224DDF4(FieldSystem *fieldSystem) {
     return Field3dObjectTaskManager_CreateTask(fieldSystem->unk4->field3dObjectTaskManager, &ov02_022539EC);
 }
 
+WIP_LOCAL void ov02_0224F880(void *a0, int a1) {
+    int i;
+    u8 *p;
+    ReadWholeNarcMemberByIdPair((u8 *)a0 + 0x7e4, (NarcId)0xdf, a1 - 1);
+    *(u8 *)((u8 *)a0 + 0x868) = 0;
+    *(u8 *)((u8 *)a0 + 0x869) = 0;
+    *(u8 *)((u8 *)a0 + 0x86b) = 0;
+    ((ov02_FollowMonStep *)((u8 *)a0 + 0x86c))->idx = 0;
+    *(u8 *)((u8 *)a0 + 0x86a) = 0;
+    *(u8 *)((u8 *)a0 + 0x86d) = 0;
+    *(u16 *)((u8 *)a0 + 0x86e) = 0;
+    for (i = 0, p = (u8 *)a0; i < 5; i++, p += 8) {
+        if (*(u16 *)(p + 0x7e4) == 0xFFFF) {
+            break;
+        }
+    }
+    ((ov02_FollowMonStep *)((u8 *)a0 + 0x86c))->hi = i;
+}
+
 WIP_LOCAL void ov02_0224F8F4(void *ptr) {
     Heap_Free(ptr);
 }
@@ -4013,7 +4033,7 @@ WIP_LOCAL void ov02_02249FD4(void *work) {
 }
 
 // ===========================================================================
-// HANDOFF — overlay_02_02248728 WIP (307/364 byte-match, objdiff-verified)
+// HANDOFF — overlay_02_02248728 WIP (308/364 byte-match, objdiff-verified)
 //
 // NOTE: several functions contain an inline 4-entry jump table (dense switch:
 // ov02_0224CFD8/D044 facing-dir coord; ov02_0224E26C/E2A0/E2D4 dir remaps;
