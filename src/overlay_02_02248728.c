@@ -203,6 +203,9 @@ extern fx32 GF_SinDeg(u16 deg);                                                 
 extern fx32 GF_CosDeg(u16 deg);                                                                                      // math_util.h, not included
 extern const VecFx32 ov02_02253360;                                                                                  // rodata, defined later (affine scale)
 extern const VecFx32 ov02_02253390;                                                                                  // rodata, defined later (affine scale)
+extern const VecFx32 ov02_0225339C;                                                                                  // rodata, defined later (E20 init offset)
+extern const VecFx32 ov02_022533CC;                                                                                  // rodata, defined later (E20 init scale)
+extern const VecFx32 ov02_022533A8;                                                                                  // rodata, defined later (E20 affine scale)
 extern const VecFx32 ov02_02253348;                                                                                  // rodata, defined later (sprite spawn offset)
 extern void ov01_021F8F74(LocalMapObject *mapObject, int a1);                                                        // no header included here
 extern BOOL ov01_022055DC(LocalMapObject *mapObject);                                                                // no header included here
@@ -384,7 +387,8 @@ WIP_LOCAL BOOL ov02_0224B7CC(void *a0, void **out);
 WIP_LOCAL Roamer *ov02_0224BAA8(RoamerSaveData *roamerSave, int a1);
 WIP_LOCAL void ov02_0224B72C(void *work);
 WIP_LOCAL void ov02_0224AB58(void *work);
-WIP_LOCAL void ov02_0224B298(void *mgr, void *arg1);
+WIP_LOCAL void *ov02_0224B298(void *mgr, void *arg1);
+WIP_LOCAL void ov02_02248E20(void *arg0);
 WIP_LOCAL void *ov02_02248D58(void *arg0, void *arg1, void *arg2, void *arg3);
 WIP_LOCAL void ov02_0224AA44(void *arg0, VecFx32 *pos, VecFx32 *vec, void *arg3, u32 arg4, void *arg5);
 WIP_LOCAL void ov02_0224DE6C(void *obj);
@@ -1231,14 +1235,66 @@ WIP_LOCAL void ov02_0224AB58(void *work) {
     *(void **)((u8 *)work + 0x1ec) = sub_02068B0C(*(void **)((u8 *)work + 0x1e0), &ov02_0225347C, &pos, 0, &a4, 0x82);
 }
 
-WIP_LOCAL void ov02_0224B298(void *mgr, void *arg1) {
+WIP_LOCAL void ov02_02248E20(void *arg0) {
+    VecFx32 v1;
+    VecFx32 v2;
+    VecFx32 affineMtx;
+    VecFx32 affineScale;
+    void *handle;
+    Sprite *spriteB;
+    v1 = ov02_0225339C;
+    v2 = ov02_022533CC;
+    handle = sub_02068D74(arg0);
+    *(u8 *)handle = 1;
+    *(u8 *)((u8 *)handle + 2) = 0;
+    *(u8 *)((u8 *)handle + 1) = 0;
+    *(int *)((u8 *)handle + 4) = 0;
+    *(VecFx32 *)((u8 *)handle + 8) = v1;
+    *(int *)((u8 *)handle + 0x14) = 0;
+    *(int *)((u8 *)handle + 0x18) = 0;
+    *(int *)((u8 *)handle + 0x1c) = 0;
+    *(int *)((u8 *)handle + 0x38) = 0x15E000;
+    *(VecFx32 *)((u8 *)handle + 0x2c) = v2;
+    *(int *)((u8 *)handle + 0x50) = 0x400;
+    *(int *)((u8 *)handle + 0x40) = 0x2d000;
+    *(int *)((u8 *)handle + 0x48) = 0xc0000;
+    *(int *)((u8 *)handle + 0x4c) = 0x20000;
+    *(int *)((u8 *)handle + 0x14) = GF_CosDeg(0x2d) * (*(int *)((u8 *)handle + 0x48) / 0x1000);
+    *(int *)((u8 *)handle + 0x18) = GF_SinDeg((u16)(*(int *)((u8 *)handle + 0x40) / 0x1000)) * (*(int *)((u8 *)handle + 0x48) / 0x1000);
+    v1.x = *(int *)((u8 *)handle + 8) + *(int *)((u8 *)handle + 0x14);
+    v1.y = *(int *)((u8 *)handle + 0xc) + *(int *)((u8 *)handle + 0x18);
+    Sprite_SetMatrix(*(Sprite **)((u8 *)handle + 0x68), &v1);
+    Sprite_SetAffineScale(*(Sprite **)((u8 *)handle + 0x68), &v2);
+    Sprite_SetAffineZRotation(*(Sprite **)((u8 *)handle + 0x68), GF_DegreeToSinCosIdx((u16)(*(int *)((u8 *)handle + 0x38) / 0x1000)));
+    Sprite_SetDrawPriority(*(Sprite **)((u8 *)handle + 0x68), 0x84);
+    Sprite_SetDrawFlag(*(Sprite **)((u8 *)handle + 0x68), 1);
+    *(void **)((u8 *)handle + 0x6c) = ov02_0224B298(*(void **)((u8 *)handle + 0x58), *(void **)((u8 *)handle + 0x60));
+    *(void **)((u8 *)handle + 0x70) = ov01_021FCD2C(*(FieldSystem **)((u8 *)handle + 0x5c), 4);
+    ov01_021FCD8C(*(void **)((u8 *)handle + 0x70), 1, (fx32)0xFFF88000, 0xc);
+    {
+        int *p = (int *)&affineMtx;
+        p[0] = 0;
+        p[1] = 0;
+        p[2] = 0;
+    }
+    affineScale = ov02_022533A8;
+    spriteB = *(Sprite **)((u8 *)handle + 0x60);
+    Sprite_SetAffineOverwriteMode(spriteB, 2);
+    Sprite_SetAffineMatrix(spriteB, &affineMtx);
+    Sprite_SetAffineScale(spriteB, &affineScale);
+    Sprite_SetAffineZRotation(spriteB, GF_DegreeToSinCosIdx(0));
+    Sprite_SetAnimCtrlSeq(spriteB, 2);
+    ov02_022493FC();
+}
+
+WIP_LOCAL void *ov02_0224B298(void *mgr, void *arg1) {
     VecFx32 pos = { 0, 0, 0 };
     struct {
         void *unk0;
         void *unk4;
     } a4;
     a4.unk4 = arg1;
-    sub_02068B0C(mgr, &ov02_022534A4, &pos, 0, &a4, 0x81);
+    return sub_02068B0C(mgr, &ov02_022534A4, &pos, 0, &a4, 0x81);
 }
 
 WIP_LOCAL void *ov02_02248D58(void *arg0, void *arg1, void *arg2, void *arg3) {
