@@ -3299,6 +3299,48 @@ WIP_LOCAL void ov02_0224DE10(Field3dObject *obj, VecFx32 *arg1, fx32 arg2, fx32 
     PlaySE(SEQ_SE_DP_UG_023);
 }
 
+WIP_LOCAL void ov02_0224DF1C(void *work) {
+    VecFx32 pos1;
+    VecFx32 pos2;
+    int i;
+    *(fx32 *)((u8 *)work + 0xe80) = 0x1000;
+    *(fx32 *)((u8 *)work + 0xe84) = 0x3000;
+    PlayerAvatar_CopyPositionVector(((FieldSystem *)*(void **)((u8 *)work + 0xe78))->playerAvatar, &pos1);
+    if (*(u16 *)((u8 *)work + 0xe9a) != 0) {
+        MapObject_CopyPositionVector(FollowMon_GetMapObject(*(FieldSystem **)((u8 *)work + 0xe78)), &pos2);
+        {
+            u8 *p;
+            for (i = 0, p = (u8 *)work; i < 0x12; i++, p += 0xcc) {
+                if (*(int *)(p + 0xd8) == 0) {
+                    ov02_0224DE10((Field3dObject *)((u8 *)work + 0x10 + i * 0xcc), &pos1, *(fx32 *)((u8 *)work + 0xe80), *(fx32 *)((u8 *)work + 0xe84));
+                    break;
+                }
+            }
+        }
+        if (i == 0x12) {
+            GF_AssertFail();
+        }
+        {
+            u8 *p;
+            for (i = 0, p = (u8 *)work; i < 0x12; i++, p += 0xcc) {
+                if (*(int *)(p + 0xd8) == 0) {
+                    ov02_0224DE10((Field3dObject *)((u8 *)work + 0x10 + i * 0xcc), &pos2, *(fx32 *)((u8 *)work + 0xe80), *(fx32 *)((u8 *)work + 0xe84));
+                    return;
+                }
+            }
+        }
+    } else {
+        u8 *p;
+        for (i = 0, p = (u8 *)work; i < 0x12; i++, p += 0xcc) {
+            if (*(int *)(p + 0xd8) == 0) {
+                ov02_0224DE10((Field3dObject *)((u8 *)work + 0x10 + i * 0xcc), &pos1, *(fx32 *)((u8 *)work + 0xe80), *(fx32 *)((u8 *)work + 0xe84));
+                return;
+            }
+        }
+    }
+    GF_AssertFail();
+}
+
 WIP_LOCAL void ov02_0224F580(FieldSystem *fieldSystem, void *out) {
     int count = 0;
     u8 *events = Field_GetBgEvents(fieldSystem);
@@ -4545,7 +4587,7 @@ WIP_LOCAL void ov02_02249FD4(void *work) {
 }
 
 // ===========================================================================
-// HANDOFF — overlay_02_02248728 WIP (322/364 byte-match, objdiff-verified)
+// HANDOFF — overlay_02_02248728 WIP (323/364 byte-match, objdiff-verified)
 //
 // NOTE: several functions contain an inline 4-entry jump table (dense switch:
 // ov02_0224CFD8/D044 facing-dir coord; ov02_0224E26C/E2A0/E2D4 dir remaps;

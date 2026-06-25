@@ -1297,6 +1297,12 @@
       "category": "matching-tricks",
       "title": "Block-scope a per-iteration temp (vs one shared decl) to control callee-saved register coloring",
       "body": "When several near-identical blocks each compute a temporary (e.g. a per-block call result reused within the block) and the objdiff is a systematic r4<->r5 swap between that temp and a long-lived parameter, declare the temp INSIDE each block scope ({ T *res = ...; ... }) rather than once at function top. A single top-level decl gives the temp a function-long live range, which MWCC may color to r4 and push the long-lived param to r5; a per-block decl makes it a short-lived temp colored to r4 each time, leaving the param in r5 — matching retail when the asm keeps the param in the higher callee-saved reg. Validated ov02_0224A8D4 (3 find-by-value-and-clear blocks: shared res decl = 22 r4/r5-swap diffs; block-scoped res = exact match)."
+    },
+    {
+      "id": "scope-loop-walker-per-loop-for-caller-saved",
+      "category": "matching-tricks",
+      "title": "Scope a strength-reduced loop walker to each individual loop so it colors caller-saved (not callee-saved)",
+      "body": "When the asm uses an explicit absolute walker (base+i*stride, advancing by stride) in a register for a per-iteration check, and there are multiple loops separated by function calls: declaring ONE walker pointer at function scope makes its live range span the inter-loop calls, so MWCC keeps it in a callee-saved register, adding register pressure that shifts other variables (large diff). FIX: wrap EACH loop in its own block with the walker declared inside ({ u8 *p; for (i=0, p=base; ...; i++, p+=stride) {...} }). Each walker is then live only within its loop body (which crosses no call, since the found-branch uses a separately-recomputed index), so MWCC colors it caller-saved (e.g. r1) like retail. Without the explicit walker, MWCC strength-reduces to an i*stride-relative IV and adds base each check (small per-loop diff). Converted ov02_0224DF1C (3 stride-0xcc find-first-inactive loops): function-scope walker=53 diffs, no walker=6 diffs, per-loop-scoped walker=exact. Complements [[block-scope-temp-to-color-r4-vs-shared-param-r5]]."
     }
   ]
 }
