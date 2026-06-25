@@ -1273,6 +1273,12 @@
       "category": "matching-tricks",
       "title": "A bitfield value scaled by a power of 2 fuses the extract and the shift (lsl#X;lsr#Y)",
       "body": "When an N-bit unsigned bitfield at offset 0 is used as an array index with power-of-2 stride (e.g. bf.idx * 8), MWCC fuses the bitfield read (lsl#(32-N); lsr#(32-N)) with the *2^k (lsl#k) into a single lsl#(32-N); lsr#(32-N-k). Example: a 4-bit field *8 -> lsl#28; lsr#25 (NOT the and#0xf; lsl#3 you get from (x & 0xf) * 8). So when the asm shows lsl#28;lsr#25 for an index, model the source byte as a bitfield struct {u8 idx:4;} and write bf->idx * stride (or bf->idx as an array subscript), NOT a masked plain value. Seen in ov02_0224FF5C (a0[0x86c] low-nibble index into an 8-byte-stride array at a0+0x7e8)."
+    },
+    {
+      "id": "small-int-local-to-u8-param-declare-u8",
+      "category": "matching-tricks",
+      "title": "A small-int local passed to a u8/s8 param must be declared with that exact byte type (and assigned before any intervening call)",
+      "body": "A local holding a small constant that is later passed to a u8 (or s8) parameter must be declared with that exact byte type, not int. Declaring it int/s8 when the param is u8 makes MWCC emit a lsls#24;lsrs#24 (or asr for s8) truncation at the call site (+4 bytes); declaring it u8 makes the argument pass a plain register move (add r1,rN,#0). Separately, if that local must survive an intervening function call (it is used after a call), assign its constant value BEFORE the call so MWCC stages the constant in a callee-saved register ahead of the bl (e.g. mov r4,#2; bl). Assigning after the call emits the mov after the bl and may pick a caller-saved reg, diverging from retail. Seen in Task_FieldDig/Task_FieldTeleport case1: u8 mood; if(...){ mood=2; FieldSystem_UnkSub108_AddMonMood(...);} else mood=1; ov02_022507B4(fieldSystem, mood); matched, while s8 mood or assigning mood=2 after AddMonMood did not."
     }
   ]
 }
