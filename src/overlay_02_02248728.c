@@ -206,6 +206,9 @@ extern const VecFx32 ov02_02253390;                                             
 extern const VecFx32 ov02_0225339C;                                                                                  // rodata, defined later (E20 init offset)
 extern const VecFx32 ov02_022533CC;                                                                                  // rodata, defined later (E20 init scale)
 extern const VecFx32 ov02_022533A8;                                                                                  // rodata, defined later (E20 affine scale)
+extern const VecFx32 ov02_02253354;                                                                                  // rodata, defined later (ADF0 init offset)
+extern const VecFx32 ov02_0225336C;                                                                                  // rodata, defined later (ADF0 init scale)
+extern const VecFx32 ov02_02253378;                                                                                  // rodata, defined later (ADF0 affine scale)
 extern const VecFx32 ov02_02253348;                                                                                  // rodata, defined later (sprite spawn offset)
 extern void ov01_021F8F74(LocalMapObject *mapObject, int a1);                                                        // no header included here
 extern BOOL ov01_022055DC(LocalMapObject *mapObject);                                                                // no header included here
@@ -1233,6 +1236,58 @@ WIP_LOCAL void ov02_0224AB58(void *work) {
     VecFx32 pos = { 0, 0, 0 };
     void *a4 = work;
     *(void **)((u8 *)work + 0x1ec) = sub_02068B0C(*(void **)((u8 *)work + 0x1e0), &ov02_0225347C, &pos, 0, &a4, 0x82);
+}
+
+WIP_LOCAL void ov02_0224ADF0(void *work) {
+    VecFx32 v1;
+    VecFx32 v2;
+    VecFx32 affineMtx;
+    VecFx32 affineScale;
+    void *handle;
+    Sprite *spriteB;
+    v1 = ov02_02253354;
+    v2 = ov02_0225336C;
+    handle = sub_02068D74(*(void **)((u8 *)work + 0x1ec));
+    *(u8 *)handle = 2;
+    *(u8 *)((u8 *)handle + 1) = 0;
+    *(u8 *)((u8 *)handle + 2) = 1;
+    *(int *)((u8 *)handle + 4) = 0;
+    v1.x += *(int *)((u8 *)work + 0x2ec);
+    v1.y += *(int *)((u8 *)work + 0x2f4);
+    *(VecFx32 *)((u8 *)handle + 8) = v1;
+    *(int *)((u8 *)handle + 0x14) = 0;
+    *(int *)((u8 *)handle + 0x18) = 0;
+    *(int *)((u8 *)handle + 0x1c) = 0;
+    *(int *)((u8 *)handle + 0x38) = 0x13B000;
+    *(VecFx32 *)((u8 *)handle + 0x2c) = v2;
+    *(int *)((u8 *)handle + 0x50) = 0x100;
+    *(int *)((u8 *)handle + 0x40) = 0xe1000;
+    *(int *)((u8 *)handle + 0x48) = 0xc0000;
+    *(int *)((u8 *)handle + 0x4c) = 0x20000;
+    *(int *)((u8 *)handle + 0x14) = GF_CosDeg(0x13B) * (*(int *)((u8 *)handle + 0x48) / 0x1000);
+    *(int *)((u8 *)handle + 0x18) = GF_SinDeg((u16)(*(int *)((u8 *)handle + 0x40) / 0x1000)) * (*(int *)((u8 *)handle + 0x48) / 0x1000);
+    v1.x = *(int *)((u8 *)handle + 8) + *(int *)((u8 *)handle + 0x14);
+    v1.y = *(int *)((u8 *)handle + 0xc) + *(int *)((u8 *)handle + 0x18);
+    Sprite_SetMatrix(*(Sprite **)((u8 *)handle + 0x58), &v1);
+    Sprite_SetAffineScale(*(Sprite **)((u8 *)handle + 0x58), &v2);
+    Sprite_SetAffineZRotation(*(Sprite **)((u8 *)handle + 0x58), GF_DegreeToSinCosIdx((u16)(*(int *)((u8 *)handle + 0x38) / 0x1000)));
+    Sprite_SetDrawFlag(*(Sprite **)((u8 *)handle + 0x58), 1);
+    *(void **)((u8 *)handle + 0x60) = ov02_0224B298(*(void **)((u8 *)work + 0x1e0), *(void **)((u8 *)work + 0x1e4));
+    *(int *)((u8 *)work + 0x1c) = 1;
+    *(void **)((u8 *)handle + 0x64) = ov01_021FCD2C(*(FieldSystem **)((u8 *)work + 0x60), 4);
+    ov01_021FCD8C(*(void **)((u8 *)handle + 0x64), 1, (fx32)0xFFF88000, 0xc);
+    {
+        int *p = (int *)&affineMtx;
+        p[0] = 0;
+        p[1] = 0;
+        p[2] = 0;
+    }
+    affineScale = ov02_02253378;
+    spriteB = *(Sprite **)((u8 *)*(void **)((u8 *)handle + 0x5c) + 0x1e4);
+    Sprite_SetAffineOverwriteMode(spriteB, 2);
+    Sprite_SetAffineMatrix(spriteB, &affineMtx);
+    Sprite_SetAffineScale(spriteB, &affineScale);
+    Sprite_SetAffineZRotation(spriteB, GF_DegreeToSinCosIdx(0));
 }
 
 WIP_LOCAL void ov02_02248E20(void *arg0) {
