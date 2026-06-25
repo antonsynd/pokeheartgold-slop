@@ -466,6 +466,12 @@ WIP_LOCAL BOOL ov02_022489F0(void *mgr, int a1);
 WIP_LOCAL void ov02_02248A24(void *mgr, int a1);
 WIP_LOCAL BOOL ov02_02248AC8(void *mgr, int a1);
 WIP_LOCAL void ov02_02248AFC(void *mgr, int a1);
+WIP_LOCAL int ov02_0224B4AC(void *work);
+WIP_LOCAL void ov02_02248728(void *mgr, int a1, int a2, int a3, int a4, int a5, int a6, int a7, int a8, int a9);
+WIP_LOCAL void ov02_02248980(void *mgr, void *narc, int resId, int flag);
+WIP_LOCAL void ov02_02248A58(void *mgr, void *narc, int resId, int flag);
+WIP_LOCAL void ov02_02248B30(void *mgr, void *narc, int resId, int flag);
+WIP_LOCAL void ov02_02248BA0(void *mgr, void *narc, int resId, int flag);
 WIP_LOCAL void ov02_02248C98(Sprite *sprite, VecFx32 *out);
 WIP_LOCAL int ov02_02248E10(void *work);
 WIP_LOCAL void ov02_0224A69C(void *work, int p1, int p2, int p3, int p4);
@@ -2133,6 +2139,39 @@ WIP_LOCAL BOOL ov02_022507E8(TaskManager *taskManager) {
         return TRUE;
     }
     return FALSE;
+}
+
+WIP_LOCAL int ov02_0224B4AC(void *work) {
+    NARC *narc;
+    *(void **)((u8 *)work + 0x170) = sub_020689C8(4, 0x20);
+    ov02_02248728((u8 *)work + 0x18, 0x20, 2, 2, 2, 1, 4, 4, 4, 2);
+    narc = ov02_022493F0();
+    ov02_02248980((u8 *)work + 0x18, narc, 0xb, 0);
+    ov02_02248A58((u8 *)work + 0x18, narc, 6, 0);
+    ov02_02248B30((u8 *)work + 0x18, narc, 0xc, 0);
+    ov02_022489F0((u8 *)work + 0x18, 0);
+    ov02_02248AC8((u8 *)work + 0x18, 0);
+    ov02_02248A24((u8 *)work + 0x18, 0);
+    ov02_02248AFC((u8 *)work + 0x18, 0);
+    if (*(int *)((u8 *)work + 0xc) == 0) {
+        ov02_02248980((u8 *)work + 0x18, narc, 0x11, 2);
+        ov02_02248B30((u8 *)work + 0x18, narc, 0x12, 2);
+        ov02_02248BA0((u8 *)work + 0x18, narc, 0x13, 1);
+        ov02_022489F0((u8 *)work + 0x18, 2);
+        ov02_02248A24((u8 *)work + 0x18, 2);
+    } else {
+        ov02_02248980((u8 *)work + 0x18, narc, 0x14, 2);
+        ov02_02248A58((u8 *)work + 0x18, narc, 7, 1);
+        ov02_02248B30((u8 *)work + 0x18, narc, 0x15, 2);
+        ov02_02248BA0((u8 *)work + 0x18, narc, 0x16, 1);
+        ov02_022489F0((u8 *)work + 0x18, 2);
+        ov02_02248AC8((u8 *)work + 0x18, 1);
+        ov02_02248A24((u8 *)work + 0x18, 2);
+        ov02_02248AFC((u8 *)work + 0x18, 1);
+    }
+    NARC_Delete(narc);
+    (*(int *)work)++;
+    return 0;
 }
 
 WIP_LOCAL BOOL ov02_022489F0(void *mgr, int a1) {
