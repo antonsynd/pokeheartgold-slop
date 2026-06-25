@@ -570,6 +570,10 @@ When a function loops over an INLINE array of pointers stored directly at a larg
 
 Extends [[inline-pointer-array-index-form-for-slot-loops]] to loops that STORE a result back into the found slot (e.g. find first NULL slot, allocate, store, break). Use DIFFERENT forms for read vs write: the READ in the if-condition uses the index form ((T**)work)[OFF/4+i] (strength-reduces to the loop walker [r2,OFF]); the STORE uses the raw-offset form *(T**)((u8*)work + i*4 + OFF), which C groups left-to-right as (work+i*4)+OFF so MWCC recomputes work+i*4 then adds OFF as a register offset — matching retail (the walker is clobbered by the intervening alloc call, so the store recomputes). Writing the store with the index form folds it to (OFF/4+i)*4 (1 instr shorter, mismatch); writing the read with the raw form makes it recompute each iteration instead of walking. Also: a post-loop bound assert must be if(i>=count)GF_AssertFail() not if(i==count) — >= emits the blt-skip (0xdb) retail uses, == emits bne-skip (0xd1). Validated ov02_0224A4D0.
 
+### Block-scope a per-iteration temp (vs one shared decl) to control callee-saved register coloring  <!-- id: block-scope-temp-to-color-r4-vs-shared-param-r5 -->
+
+When several near-identical blocks each compute a temporary (e.g. a per-block call result reused within the block) and the objdiff is a systematic r4<->r5 swap between that temp and a long-lived parameter, declare the temp INSIDE each block scope ({ T *res = ...; ... }) rather than once at function top. A single top-level decl gives the temp a function-long live range, which MWCC may color to r4 and push the long-lived param to r5; a per-block decl makes it a short-lived temp colored to r4 each time, leaving the param in r5 — matching retail when the asm keeps the param in the higher callee-saved reg. Validated ov02_0224A8D4 (3 find-by-value-and-clear blocks: shared res decl = 22 r4/r5-swap diffs; block-scoped res = exact match).
+
 ## IPA (-ipa file) Behavior
 
 ### Shared-header signatures are load-bearing across compilation units  <!-- id: ipa-shared-headers -->

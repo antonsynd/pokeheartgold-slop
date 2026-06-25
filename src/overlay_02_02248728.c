@@ -1532,6 +1532,53 @@ WIP_LOCAL void ov02_0224A4D0(void *work) {
     NARC_Delete(narc);
 }
 
+WIP_LOCAL void ov02_0224A8D4(void *work) {
+    int i;
+
+    {
+        SpriteResource *res = SpriteResourceCollection_Find(*(GF_2DGfxResMan **)((u8 *)work + 0x19c), 3);
+        sub_0200AEB0(res);
+        DestroySingle2DGfxResObj(*(GF_2DGfxResMan **)((u8 *)work + 0x19c), res);
+        for (i = 0; i < 4; i++) {
+            if (((SpriteResource **)work)[0x6b + i] == res) {
+                *(SpriteResource **)((u8 *)work + i * 4 + 0x1ac) = NULL;
+                break;
+            }
+        }
+        if (i >= 4) {
+            GF_AssertFail();
+        }
+    }
+    {
+        SpriteResource *res = SpriteResourceCollection_Find(*(GF_2DGfxResMan **)((u8 *)work + 0x1a0), 3);
+        sub_0200B0A8(res);
+        DestroySingle2DGfxResObj(*(GF_2DGfxResMan **)((u8 *)work + 0x1a0), res);
+        for (i = 0; i < 3; i++) {
+            if (((SpriteResource **)work)[0x6f + i] == res) {
+                *(SpriteResource **)((u8 *)work + i * 4 + 0x1bc) = NULL;
+                break;
+            }
+        }
+        if (i >= 3) {
+            GF_AssertFail();
+        }
+    }
+    {
+        SpriteResource *res = SpriteResourceCollection_Find(*(GF_2DGfxResMan **)((u8 *)work + 0x1a4), 3);
+        sub_0200A740(res);
+        DestroySingle2DGfxResObj(*(GF_2DGfxResMan **)((u8 *)work + 0x1a4), res);
+        for (i = 0; i < 4; i++) {
+            if (((SpriteResource **)work)[0x72 + i] == res) {
+                *(SpriteResource **)((u8 *)work + i * 4 + 0x1c8) = NULL;
+                break;
+            }
+        }
+        if (i >= 4) {
+            GF_AssertFail();
+        }
+    }
+}
+
 WIP_LOCAL void ov02_0224B2CC(void *work) {
     VecFx32 vec;
     u8 *s = (u8 *)sub_02068D74(work);
@@ -4430,7 +4477,7 @@ WIP_LOCAL void ov02_02249FD4(void *work) {
 }
 
 // ===========================================================================
-// HANDOFF — overlay_02_02248728 WIP (319/364 byte-match, objdiff-verified)
+// HANDOFF — overlay_02_02248728 WIP (320/364 byte-match, objdiff-verified)
 //
 // NOTE: several functions contain an inline 4-entry jump table (dense switch:
 // ov02_0224CFD8/D044 facing-dir coord; ov02_0224E26C/E2A0/E2D4 dir remaps;
