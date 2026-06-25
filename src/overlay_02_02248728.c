@@ -4297,6 +4297,30 @@ WIP_LOCAL int ov02_02249658(void *work) {
     return 0;
 }
 
+WIP_LOCAL void ov02_02249D5C(SysTask *task, void *work) {
+    int i;
+    if (*(int *)((u8 *)work + 0x210) == 0) {
+        for (i = 0; i < 4; i++) {
+            if (((SpriteResource **)work)[0x6b + i] != NULL) {
+                sub_0200ADA4(((SpriteResource **)work)[0x6b + i]);
+            }
+        }
+        for (i = 0; i < 3; i++) {
+            if (((SpriteResource **)work)[0x6f + i] != NULL) {
+                sub_0200B00C(((SpriteResource **)work)[0x6f + i]);
+            }
+        }
+        if (*(void **)((u8 *)work + 0x218) != NULL) {
+            ov02_0224A834(work, *(void **)((u8 *)work + 0x218));
+        }
+        if (*(void **)((u8 *)work + 0x21c) != NULL) {
+            ov02_0224A88C(work, *(void **)((u8 *)work + 0x21c));
+        }
+        (*(int *)((u8 *)work + 0x210))++;
+        SysTask_CreateOnVWaitQueue(ov02_02249DD8, work, 0x80);
+    }
+}
+
 WIP_LOCAL void ov02_02249DD8(SysTask *task, void *work) {
     int i;
     if (*(int *)((u8 *)work + 0x210) == 1) {
@@ -4382,7 +4406,7 @@ WIP_LOCAL void ov02_02249FD4(void *work) {
 }
 
 // ===========================================================================
-// HANDOFF — overlay_02_02248728 WIP (317/364 byte-match, objdiff-verified)
+// HANDOFF — overlay_02_02248728 WIP (318/364 byte-match, objdiff-verified)
 //
 // NOTE: several functions contain an inline 4-entry jump table (dense switch:
 // ov02_0224CFD8/D044 facing-dir coord; ov02_0224E26C/E2A0/E2D4 dir remaps;
