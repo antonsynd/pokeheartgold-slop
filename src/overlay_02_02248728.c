@@ -1508,6 +1508,30 @@ WIP_LOCAL void ov02_0224A288(void *work) {
     SpriteList_Delete(*(SpriteList **)((u8 *)work + 0x70));
 }
 
+WIP_LOCAL void ov02_0224A4D0(void *work) {
+    NARC *narc = ov02_0224A074();
+    int i;
+    for (i = 0; i < 4; i++) {
+        if (((SpriteResource **)work)[0x6b + i] == NULL) {
+            *(SpriteResource **)((u8 *)work + i * 4 + 0x1ac) = AddCharResObjFromOpenNarc(*(GF_2DGfxResMan **)((u8 *)work + 0x19c), narc, 0xb, FALSE, 0, 1, HEAP_ID_FIELD1);
+            break;
+        }
+    }
+    if (i >= 4) {
+        GF_AssertFail();
+    }
+    for (i = 0; i < 4; i++) {
+        if (((SpriteResource **)work)[0x72 + i] == NULL) {
+            *(SpriteResource **)((u8 *)work + i * 4 + 0x1c8) = AddCellOrAnimResObjFromOpenNarc(*(GF_2DGfxResMan **)((u8 *)work + 0x1a4), narc, 0xc, FALSE, 0, GF_GFX_RES_TYPE_CELL, HEAP_ID_FIELD1);
+            break;
+        }
+    }
+    if (i >= 4) {
+        GF_AssertFail();
+    }
+    NARC_Delete(narc);
+}
+
 WIP_LOCAL void ov02_0224B2CC(void *work) {
     VecFx32 vec;
     u8 *s = (u8 *)sub_02068D74(work);
@@ -4406,7 +4430,7 @@ WIP_LOCAL void ov02_02249FD4(void *work) {
 }
 
 // ===========================================================================
-// HANDOFF — overlay_02_02248728 WIP (318/364 byte-match, objdiff-verified)
+// HANDOFF — overlay_02_02248728 WIP (319/364 byte-match, objdiff-verified)
 //
 // NOTE: several functions contain an inline 4-entry jump table (dense switch:
 // ov02_0224CFD8/D044 facing-dir coord; ov02_0224E26C/E2A0/E2D4 dir remaps;

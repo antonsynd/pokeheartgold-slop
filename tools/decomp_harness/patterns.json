@@ -1285,6 +1285,12 @@
       "category": "matching-tricks",
       "title": "Inline pointer array at a large byte offset: index as ((T**)base)[OFF/4 + i], not raw byte-offset cast",
       "body": "When a function loops over an INLINE array of pointers stored directly at a large byte offset OFF inside a struct (the array is AT base+OFF, not behind a pointer), and the asm shows a walker register = base advancing by 4 with the field offset kept in a SEPARATE register (ldr r0,[r5,r7] where r5=base+i*4, r7=OFF), model the access as ((T**)base)[OFF/4 + i] — i.e. treat base as a T** and use the element index (OFF/4 + i). Do NOT write *(T**)((u8*)base + OFF + i*4): that biases MWCC toward a single base+OFF walker or a different coloring. The index form makes MWCC walk base+i*4 (one register) and keep (OFF/4)*4 = OFF as the offset register, with the loop counter i in its own register — matching retail. This cracked the slot-cleanup loop family. Example ov02_02249DD8: for(i=0;i<4;i++) if(((SpriteResource**)work)[0x6b+i]) sub_0200A740(((SpriteResource**)work)[0x6b+i]); matched first build (0x6b = 0x1ac/4)."
+    },
+    {
+      "id": "slot-loop-store-back-mixed-form",
+      "category": "matching-tricks",
+      "title": "Find-empty-and-fill slot loop: index form for the read, raw-offset form for the store-back, >= for the post-loop assert",
+      "body": "Extends [[inline-pointer-array-index-form-for-slot-loops]] to loops that STORE a result back into the found slot (e.g. find first NULL slot, allocate, store, break). Use DIFFERENT forms for read vs write: the READ in the if-condition uses the index form ((T**)work)[OFF/4+i] (strength-reduces to the loop walker [r2,OFF]); the STORE uses the raw-offset form *(T**)((u8*)work + i*4 + OFF), which C groups left-to-right as (work+i*4)+OFF so MWCC recomputes work+i*4 then adds OFF as a register offset — matching retail (the walker is clobbered by the intervening alloc call, so the store recomputes). Writing the store with the index form folds it to (OFF/4+i)*4 (1 instr shorter, mismatch); writing the read with the raw form makes it recompute each iteration instead of walking. Also: a post-loop bound assert must be if(i>=count)GF_AssertFail() not if(i==count) — >= emits the blt-skip (0xdb) retail uses, == emits bne-skip (0xd1). Validated ov02_0224A4D0."
     }
   ]
 }
