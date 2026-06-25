@@ -360,6 +360,7 @@ WIP_LOCAL int ov02_02249690(void *work);
 WIP_LOCAL int ov02_022496D0(void *work);
 WIP_LOCAL int ov02_022491CC(void *work);
 WIP_LOCAL int ov02_02249290(void *work);
+WIP_LOCAL int ov02_022490BC(void *work);
 WIP_LOCAL int ov02_0224ACE0(void *work);
 WIP_LOCAL int ov02_02249BD8(void *work);
 WIP_LOCAL int ov02_02250594(int a0, int a1);
@@ -2392,6 +2393,39 @@ WIP_LOCAL int ov02_022491CC(void *work) {
     Sprite_SetAnimActiveFlag(*(Sprite **)((u8 *)work + 0x60), 1);
     (*(u8 *)((u8 *)work + 1))++;
     return 1;
+}
+
+WIP_LOCAL int ov02_022490BC(void *work) {
+    Sprite *sprite = *(Sprite **)((u8 *)work + 0x68);
+    VecFx32 mtx;
+    *(int *)((u8 *)work + 0x48) = *(int *)((u8 *)work + 0x48) + *(int *)((u8 *)work + 0x4c);
+    *(int *)((u8 *)work + 0x4c) += 0x1000;
+    if (*(int *)((u8 *)work + 0x4c) > 0x10000) {
+        *(int *)((u8 *)work + 0x4c) = 0x10000;
+    }
+    *(int *)((u8 *)work + 0x14) = GF_CosDeg((u16)(*(int *)((u8 *)work + 0x40) / 0x1000)) * (*(int *)((u8 *)work + 0x48) / 0x1000);
+    *(int *)((u8 *)work + 0x18) = GF_SinDeg(0x80) * (*(int *)((u8 *)work + 0x48) / 0x1000);
+    if (*(int *)((u8 *)work + 0x40) < 0xa0000) {
+        *(int *)((u8 *)work + 0x40) += 0x1000;
+    }
+    *(int *)((u8 *)work + 0x38) += 0x2000;
+    Sprite_SetAffineZRotation(sprite, GF_DegreeToSinCosIdx((u16)(*(int *)((u8 *)work + 0x38) / 0x1000)));
+    *(int *)((u8 *)work + 0x2c) = *(int *)((u8 *)work + 0x2c) + *(int *)((u8 *)work + 0x50);
+    if (*(int *)((u8 *)work + 0x2c) > 0x1000) {
+        *(int *)((u8 *)work + 0x2c) = 0x1000;
+    }
+    *(int *)((u8 *)work + 0x30) = *(int *)((u8 *)work + 0x30) + *(int *)((u8 *)work + 0x50);
+    if (*(int *)((u8 *)work + 0x30) > 0x1000) {
+        *(int *)((u8 *)work + 0x30) = 0x1000;
+    }
+    Sprite_SetAffineScale(sprite, (VecFx32 *)((u8 *)work + 0x2c));
+    mtx.x = *(int *)((u8 *)work + 8) + *(int *)((u8 *)work + 0x14);
+    mtx.y = *(int *)((u8 *)work + 0xc) - *(int *)((u8 *)work + 0x18);
+    Sprite_SetMatrix(sprite, &mtx);
+    if (mtx.y / 0x1000 <= -0x10) {
+        (*(u8 *)((u8 *)work + 1))++;
+    }
+    return 0;
 }
 
 WIP_LOCAL int ov02_02249290(void *work) {
@@ -4511,7 +4545,7 @@ WIP_LOCAL void ov02_02249FD4(void *work) {
 }
 
 // ===========================================================================
-// HANDOFF — overlay_02_02248728 WIP (321/364 byte-match, objdiff-verified)
+// HANDOFF — overlay_02_02248728 WIP (322/364 byte-match, objdiff-verified)
 //
 // NOTE: several functions contain an inline 4-entry jump table (dense switch:
 // ov02_0224CFD8/D044 facing-dir coord; ov02_0224E26C/E2A0/E2D4 dir remaps;
