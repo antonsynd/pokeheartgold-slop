@@ -158,6 +158,20 @@ extern void *Save_SafariZone_Get(SaveData *saveData);                           
 extern void *SafariZone_GetAreaSet(void *safari_zone, int area_set_no);                                                     // safari_zone.h, not included
 extern int ov02_0224EE4C(void *a0, int a1, int a2, int a3, fx32 a4, u16 *a5, u16 *a6, int a7);                              // still in asm
 WIP_LOCAL int ov02_0224E698(void *work);
+typedef struct ov02_SafariObjCfg {
+    u8 buildModel;
+    u8 isAnimated : 1;
+    u8 width : 3;
+    u8 height : 3;
+    u8 hasGenderedLayout : 1;
+    u8 objectType;
+} ov02_SafariObjCfg;
+extern void GetSafariObjectConfig(ov02_SafariObjCfg *a0, int a1, int a2); // unk_02097268.h, not included
+extern int GetDeltaXByFacingDirection(int direction);                     // unk_0205FD20.h, not included
+extern int GetDeltaYByFacingDirection(int direction);                     // unk_0205FD20.h, not included
+extern PlayerProfile *Save_PlayerData_GetProfile(SaveData *saveData);     // player_data.h, not included
+extern u32 PlayerProfile_GetTrainerGender(PlayerProfile *profile);        // player_data.h, not included
+WIP_LOCAL int ov02_0224E754(void *work, u16 *out);
 extern BOOL ov01_02206268(FieldSystem *fieldSystem);                                                                 // overlay_01.h, not included
 extern int ov01_022062CC(FieldSystem *fieldSystem);                                                                  // overlay_01.h, not included
 extern void PlayCryEx(int, int, int, int, int, int);                                                                 // sound_02004A44.h, not included
@@ -3388,6 +3402,39 @@ WIP_LOCAL void ov02_0224E020(SysTask *task, void *data) {
     }
 }
 
+WIP_LOCAL int ov02_0224E754(void *work, u16 *out) {
+    ov02_SafariObjCfg cfg;
+    int facing = PlayerAvatar_GetFacingDirection(*(PlayerAvatar **)((u8 *)work + 0x40));
+    int x = PlayerAvatar_GetXCoord(*(PlayerAvatar **)((u8 *)work + 0x40)) + GetDeltaXByFacingDirection(facing);
+    int z = PlayerAvatar_GetZCoord(*(PlayerAvatar **)((u8 *)work + 0x40)) + GetDeltaYByFacingDirection(facing);
+    int cellIdx;
+    int i;
+    u8 *entry;
+    u8 *obj;
+    int gender = (u8)PlayerProfile_GetTrainerGender(Save_PlayerData_GetProfile(*(SaveData **)((u8 *)work + 0xc)));
+    cellIdx = ov02_0224E31C(x, z);
+    x = x % 0x20;
+    z = z % 0x20;
+    entry = (u8 *)SafariZone_GetAreaSet(Save_SafariZone_Get(*(SaveData **)((u8 *)work + 0xc)), 0) + cellIdx * 0x7a;
+    i = 0;
+    if (i < entry[1]) {
+        obj = entry + 2;
+        do {
+            GetSafariObjectConfig(&cfg, obj[0], gender);
+            if (x >= obj[1] && z <= obj[3] && x < obj[1] + cfg.width && z > obj[3] - cfg.height) {
+                if (out != NULL) {
+                    *out = i;
+                }
+                return obj[0];
+            }
+            i++;
+            obj += 4;
+        } while (i < entry[1]);
+    }
+    *out = 0;
+    return 0xff;
+}
+
 WIP_LOCAL int ov02_0224E698(void *work) {
     u8 facing = (u8)PlayerAvatar_GetFacingDirection(*(PlayerAvatar **)((u8 *)work + 0x40));
     s16 x = (s16)PlayerAvatar_GetXCoord(*(PlayerAvatar **)((u8 *)work + 0x40));
@@ -4791,7 +4838,7 @@ WIP_LOCAL void ov02_02249FD4(void *work) {
 }
 
 // ===========================================================================
-// HANDOFF — overlay_02_02248728 WIP (327/364 byte-match, objdiff-verified)
+// HANDOFF — overlay_02_02248728 WIP (328/364 byte-match, objdiff-verified)
 //
 // NOTE: several functions contain an inline 4-entry jump table (dense switch:
 // ov02_0224CFD8/D044 facing-dir coord; ov02_0224E26C/E2A0/E2D4 dir remaps;
