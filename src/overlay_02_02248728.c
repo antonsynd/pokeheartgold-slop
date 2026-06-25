@@ -362,6 +362,7 @@ WIP_LOCAL int ov02_022491CC(void *work);
 WIP_LOCAL int ov02_02249290(void *work);
 WIP_LOCAL int ov02_022490BC(void *work);
 WIP_LOCAL int ov02_0224B158(void *work);
+WIP_LOCAL int ov02_0224AF70(void *work);
 WIP_LOCAL int ov02_0224ACE0(void *work);
 WIP_LOCAL int ov02_02249BD8(void *work);
 WIP_LOCAL int ov02_02250594(int a0, int a1);
@@ -2394,6 +2395,66 @@ WIP_LOCAL int ov02_022491CC(void *work) {
     Sprite_SetAnimActiveFlag(*(Sprite **)((u8 *)work + 0x60), 1);
     (*(u8 *)((u8 *)work + 1))++;
     return 1;
+}
+
+WIP_LOCAL int ov02_0224AF70(void *work) {
+    Sprite *spriteA = *(Sprite **)((u8 *)work + 0x58);
+    Sprite *spriteB;
+    VecFx32 mtx;
+    VecFx32 scale;
+    *(int *)((u8 *)work + 0x48) = *(int *)((u8 *)work + 0x48) - *(int *)((u8 *)work + 0x4c);
+    if (*(int *)((u8 *)work + 0x48) < 0) {
+        *(int *)((u8 *)work + 0x48) = 0;
+    }
+    if (*(int *)((u8 *)work + 0x4c) > 0x800) {
+        *(int *)((u8 *)work + 0x4c) -= 0x1800;
+    }
+    if (*(int *)((u8 *)work + 0x4c) < 0x1000) {
+        *(int *)((u8 *)work + 0x4c) = 0x1000;
+    }
+    *(int *)((u8 *)work + 0x14) = GF_CosDeg(0x13B) * (*(int *)((u8 *)work + 0x48) / 0x1000);
+    *(int *)((u8 *)work + 0x18) = GF_SinDeg((u16)(*(int *)((u8 *)work + 0x40) / 0x1000)) * (*(int *)((u8 *)work + 0x48) / 0x1000);
+    if (*(int *)((u8 *)work + 0x40) / 0x1000 < 0x10E) {
+        *(int *)((u8 *)work + 0x40) += 0x4000;
+    }
+    *(int *)((u8 *)work + 0x2c) += *(int *)((u8 *)work + 0x50);
+    if (*(int *)((u8 *)work + 0x2c) > 0x1800) {
+        *(int *)((u8 *)work + 0x2c) = 0x1800;
+    }
+    *(int *)((u8 *)work + 0x30) += *(int *)((u8 *)work + 0x50);
+    if (*(int *)((u8 *)work + 0x30) > 0x1800) {
+        *(int *)((u8 *)work + 0x30) = 0x1800;
+    }
+    Sprite_SetAffineScale(spriteA, (VecFx32 *)((u8 *)work + 0x2c));
+    *(int *)((u8 *)work + 0x38) += 0x8000;
+    if (*(int *)((u8 *)work + 0x38) / 0x1000 > 0x168) {
+        *(int *)((u8 *)work + 0x38) = 0x168000;
+    }
+    Sprite_SetAffineZRotation(spriteA, GF_DegreeToSinCosIdx((u16)(*(int *)((u8 *)work + 0x38) / 0x1000)));
+    mtx.x = *(int *)((u8 *)work + 8) + *(int *)((u8 *)work + 0x14);
+    mtx.y = *(int *)((u8 *)work + 0xc) + *(int *)((u8 *)work + 0x18);
+    Sprite_SetMatrix(spriteA, &mtx);
+    if (*(int *)((u8 *)work + 0x48) == 0) {
+        *(int *)((u8 *)work + 4) = 0;
+        (*(u8 *)((u8 *)work + 1))++;
+    } else {
+        *(int *)((u8 *)work + 4) += 1;
+    }
+    if (*(int *)((u8 *)work + 4) == 0xc) {
+        ov02_0224B2CC(*(void **)((u8 *)work + 0x60));
+    }
+    spriteB = *(Sprite **)((u8 *)*(void **)((u8 *)work + 0x5c) + 0x1e4);
+    scale = *Sprite_GetScalePtr(spriteB);
+    scale.x += 0x80;
+    if (scale.x > 0x1400) {
+        scale.x = 0x1400;
+    }
+    scale.y += 0x80;
+    if (scale.y > 0x1400) {
+        scale.y = 0x1400;
+    }
+    Sprite_SetAffineScale(spriteB, &scale);
+    return 0;
 }
 
 WIP_LOCAL int ov02_0224B158(void *work) {
@@ -4702,7 +4763,7 @@ WIP_LOCAL void ov02_02249FD4(void *work) {
 }
 
 // ===========================================================================
-// HANDOFF — overlay_02_02248728 WIP (325/364 byte-match, objdiff-verified)
+// HANDOFF — overlay_02_02248728 WIP (326/364 byte-match, objdiff-verified)
 //
 // NOTE: several functions contain an inline 4-entry jump table (dense switch:
 // ov02_0224CFD8/D044 facing-dir coord; ov02_0224E26C/E2A0/E2D4 dir remaps;
