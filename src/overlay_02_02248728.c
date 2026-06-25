@@ -129,6 +129,8 @@ extern ov02_FieldTaskFunc const ov02_022536F0[];
 extern void sub_02068BAC(void *a0);                                                                                         // unk_020689C8.h
 extern void ov01_021FCD78(SysTask *task);                                                                                   // no header included here
 extern BOOL ov01_021FCD6C(SysTask *task);                                                                                   // no header included here
+extern void ov01_021F8F68(LocalMapObject *object, int a1);                                                                  // no header included here
+extern void ov01_021F8F08(LocalMapObject *object, int a1);                                                                  // no header included here
 extern void ov01_021FBD38(Field3dModel *model, void *narcData);                                                             // no header included here
 extern void ov01_021FBDFC(Field3dModel *model);                                                                             // no header included here
 extern void ov01_021FBE70(Field3DModelAnimation *anim, Field3dModel *model, void *anmResource, NNSFndAllocator *allocator); // no header included here
@@ -344,6 +346,7 @@ WIP_LOCAL int ov02_0224ACE0(void *work);
 WIP_LOCAL int ov02_02249BD8(void *work);
 WIP_LOCAL int ov02_02250594(int a0, int a1);
 WIP_LOCAL int ov02_02250628(int a0, int a1);
+WIP_LOCAL int ov02_02250004(FieldSystem *fieldSystem, void *a1, int a2);
 WIP_LOCAL void ov02_0224D310(void *a0, void *a1, void *data);
 WIP_LOCAL int ov02_0224C840(TaskManager *taskManager, void *a1, void *a2);
 WIP_LOCAL void ov02_0224D820(void *data);
@@ -3649,6 +3652,48 @@ WIP_LOCAL int ov02_0224FF5C(void *a0, LocalMapObject *a1) {
     return 0;
 }
 
+WIP_LOCAL int ov02_02250004(FieldSystem *fieldSystem, void *a1, int a2) {
+    if (a2 == 0) {
+        GF_AssertFail();
+        return 1;
+    }
+    switch (*(u8 *)((u8 *)a1 + 0x868)) {
+    case 0:
+        ReadWholeNarcMemberByIdPair((u8 *)a1 + 0x818, (NarcId)0xe0, a2 - 1);
+        /* fallthrough */
+    case 1:
+        MapObject_CopyPositionVector(*(LocalMapObject **)((u8 *)fieldSystem + 0xe4), (VecFx32 *)((u8 *)a1 + 0x870));
+        *(u8 *)((u8 *)a1 + 0x87c) = MapObject_GetFacingDirection(*(LocalMapObject **)((u8 *)fieldSystem + 0xe4));
+        ov01_021F8F68(*(LocalMapObject **)((u8 *)fieldSystem + 0xe4), 0);
+        ov01_021F8F08(*(LocalMapObject **)((u8 *)fieldSystem + 0xe4), 1);
+        *(u8 *)((u8 *)a1 + 0x868) = 2;
+        *(u8 *)((u8 *)a1 + 0x86b) = 0;
+        break;
+    case 2:
+        if (ov02_0224FFD8(a1) == 0) {
+            *(u8 *)((u8 *)a1 + 0x868) = 4;
+            break;
+        }
+        *(u8 *)((u8 *)a1 + 0x868) = 3;
+        /* fallthrough */
+    case 3:
+        if (ov02_0224FF5C(a1, *(LocalMapObject **)((u8 *)fieldSystem + 0xe4)) != 0) {
+            *(u8 *)((u8 *)a1 + 0x868) = 2;
+        }
+        break;
+    case 4: {
+        u8 dir = MapObject_GetFacingDirection(*(LocalMapObject **)((u8 *)fieldSystem + 0xe4));
+        ov01_021F8F68(*(LocalMapObject **)((u8 *)fieldSystem + 0xe4), 0);
+        ov01_021F8F08(*(LocalMapObject **)((u8 *)fieldSystem + 0xe4), 0);
+        MapObject_SetPositionVector(*(LocalMapObject **)((u8 *)fieldSystem + 0xe4), (VecFx32 *)((u8 *)a1 + 0x870));
+        MapObject_SetFacingDirectionDirect(*(LocalMapObject **)((u8 *)fieldSystem + 0xe4), *(u8 *)((u8 *)a1 + 0x87c));
+        ov02_0224FE70(a1, *(LocalMapObject **)((u8 *)fieldSystem + 0xe4), dir);
+        return 1;
+    }
+    }
+    return 0;
+}
+
 WIP_LOCAL void ov02_0224F728(FieldSystem *fieldSystem, void *arg1) {
     switch (MapObject_GetFacingDirection(*(LocalMapObject **)((u8 *)fieldSystem + 0xe4))) {
     case 0:
@@ -4073,7 +4118,7 @@ WIP_LOCAL void ov02_02249FD4(void *work) {
 }
 
 // ===========================================================================
-// HANDOFF — overlay_02_02248728 WIP (309/364 byte-match, objdiff-verified)
+// HANDOFF — overlay_02_02248728 WIP (310/364 byte-match, objdiff-verified)
 //
 // NOTE: several functions contain an inline 4-entry jump table (dense switch:
 // ov02_0224CFD8/D044 facing-dir coord; ov02_0224E26C/E2A0/E2D4 dir remaps;
