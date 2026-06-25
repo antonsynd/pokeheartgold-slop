@@ -154,36 +154,40 @@ extern void ov01_021FBE70(Field3DModelAnimation *anim, Field3dModel *model, void
 extern void ov01_021F1448(void *a0);                                                                                        // no header included here
 extern void *ov01_021FCD2C(FieldSystem *fieldSystem, int a1);                                                               // no header included here
 extern void ov01_021FCD8C(void *a0, int a1, fx32 a2, int a3);                                                               // no header included here
-extern BOOL ov01_02206268(FieldSystem *fieldSystem);                                                                        // overlay_01.h, not included
-extern int ov01_022062CC(FieldSystem *fieldSystem);                                                                         // overlay_01.h, not included
-extern void PlayCryEx(int, int, int, int, int, int);                                                                        // sound_02004A44.h, not included
-extern void PlayCry(u16 species, u8 form);                                                                                  // sound_chatot.h, not included
-extern int Field_GetTimeOfDay(FieldSystem *fieldSystem);                                                                    // unk_02055418.h, not included (TIMEOFDAY as int)
-extern void GfGfx_EngineATogglePlanes(u8 planeMask, u8 enable);                                                             // gf_gfx_planes.h, not included
-extern void *GfGfxLoader_LoadFromNarc(NarcId narcId, s32 fileId, BOOL isCompressed, enum HeapID heapID, BOOL atEnd);        // gf_gfx_loader.h, not included
-extern void sub_0205B4EC(int a0, int a1);                                                                                   // text_0205B4EC.h, not included
-extern void *sub_020689C8(int a0, int a1);                                                                                  // unk_020689C8.h, not included
-extern u16 GF_DegreeToSinCosIdx(u16 deg);                                                                                   // math_util.h, not included
-extern u16 LCRandom(void);                                                                                                  // math_util.h, not included
-extern fx32 GF_SinDeg(u16 deg);                                                                                             // math_util.h, not included
-extern fx32 GF_CosDeg(u16 deg);                                                                                             // math_util.h, not included
-extern const VecFx32 ov02_02253360;                                                                                         // rodata, defined later (affine scale)
-extern const VecFx32 ov02_02253390;                                                                                         // rodata, defined later (affine scale)
-extern const VecFx32 ov02_02253348;                                                                                         // rodata, defined later (sprite spawn offset)
-extern void ov01_021F8F74(LocalMapObject *mapObject, int a1);                                                               // no header included here
-extern BOOL ov01_022055DC(LocalMapObject *mapObject);                                                                       // no header included here
-extern void ov01_021FF0E4(LocalMapObject *mapObject, int a1, u32 x, u32 z, int a4);                                         // no header included here
-extern void ov01_021FF964(LocalMapObject *mapObject, int a1, u32 x, u32 z, int a4);                                         // no header included here
-extern BOOL sub_0205B6F4(u8 tile);                                                                                          // no header included here
-extern const VecFx32 ov02_02253408;                                                                                         // rodata, defined later (sprite offset pair)
-extern const VecFx32 ov02_02253384;                                                                                         // rodata, defined later (sprite offset pair)
-extern const VecFx32 ov02_022533FC;                                                                                         // rodata, defined later (sprite offset pair)
-extern const VecFx32 ov02_02253414;                                                                                         // rodata, defined later (sprite offset pair)
-extern const VecFx32 ov02_022533E4;                                                                                         // rodata, defined later (sprite affine matrix)
-extern const VecFx32 ov02_022533F0;                                                                                         // rodata, defined later (sprite affine scale)
-extern const VecFx32 ov02_022533D8;                                                                                         // rodata, defined later (sprite affine matrix)
-extern const VecFx32 ov02_022533B4;                                                                                         // rodata, defined later (sprite affine scale)
-WIP_LOCAL void ov02_0224A9D8(void *work, int a1);                                                                           // still in asm; forward decl for callers
+extern void *Save_SafariZone_Get(SaveData *saveData);                                                                       // safari_zone.h, not included
+extern void *SafariZone_GetAreaSet(void *safari_zone, int area_set_no);                                                     // safari_zone.h, not included
+extern int ov02_0224EE4C(void *a0, int a1, int a2, int a3, fx32 a4, u16 *a5, u16 *a6, int a7);                              // still in asm
+WIP_LOCAL int ov02_0224E698(void *work);
+extern BOOL ov01_02206268(FieldSystem *fieldSystem);                                                                 // overlay_01.h, not included
+extern int ov01_022062CC(FieldSystem *fieldSystem);                                                                  // overlay_01.h, not included
+extern void PlayCryEx(int, int, int, int, int, int);                                                                 // sound_02004A44.h, not included
+extern void PlayCry(u16 species, u8 form);                                                                           // sound_chatot.h, not included
+extern int Field_GetTimeOfDay(FieldSystem *fieldSystem);                                                             // unk_02055418.h, not included (TIMEOFDAY as int)
+extern void GfGfx_EngineATogglePlanes(u8 planeMask, u8 enable);                                                      // gf_gfx_planes.h, not included
+extern void *GfGfxLoader_LoadFromNarc(NarcId narcId, s32 fileId, BOOL isCompressed, enum HeapID heapID, BOOL atEnd); // gf_gfx_loader.h, not included
+extern void sub_0205B4EC(int a0, int a1);                                                                            // text_0205B4EC.h, not included
+extern void *sub_020689C8(int a0, int a1);                                                                           // unk_020689C8.h, not included
+extern u16 GF_DegreeToSinCosIdx(u16 deg);                                                                            // math_util.h, not included
+extern u16 LCRandom(void);                                                                                           // math_util.h, not included
+extern fx32 GF_SinDeg(u16 deg);                                                                                      // math_util.h, not included
+extern fx32 GF_CosDeg(u16 deg);                                                                                      // math_util.h, not included
+extern const VecFx32 ov02_02253360;                                                                                  // rodata, defined later (affine scale)
+extern const VecFx32 ov02_02253390;                                                                                  // rodata, defined later (affine scale)
+extern const VecFx32 ov02_02253348;                                                                                  // rodata, defined later (sprite spawn offset)
+extern void ov01_021F8F74(LocalMapObject *mapObject, int a1);                                                        // no header included here
+extern BOOL ov01_022055DC(LocalMapObject *mapObject);                                                                // no header included here
+extern void ov01_021FF0E4(LocalMapObject *mapObject, int a1, u32 x, u32 z, int a4);                                  // no header included here
+extern void ov01_021FF964(LocalMapObject *mapObject, int a1, u32 x, u32 z, int a4);                                  // no header included here
+extern BOOL sub_0205B6F4(u8 tile);                                                                                   // no header included here
+extern const VecFx32 ov02_02253408;                                                                                  // rodata, defined later (sprite offset pair)
+extern const VecFx32 ov02_02253384;                                                                                  // rodata, defined later (sprite offset pair)
+extern const VecFx32 ov02_022533FC;                                                                                  // rodata, defined later (sprite offset pair)
+extern const VecFx32 ov02_02253414;                                                                                  // rodata, defined later (sprite offset pair)
+extern const VecFx32 ov02_022533E4;                                                                                  // rodata, defined later (sprite affine matrix)
+extern const VecFx32 ov02_022533F0;                                                                                  // rodata, defined later (sprite affine scale)
+extern const VecFx32 ov02_022533D8;                                                                                  // rodata, defined later (sprite affine matrix)
+extern const VecFx32 ov02_022533B4;                                                                                  // rodata, defined later (sprite affine scale)
+WIP_LOCAL void ov02_0224A9D8(void *work, int a1);                                                                    // still in asm; forward decl for callers
 
 // NewMsgDataFromNarc / MessageFormat_* / Buffer* / MapHeader_GetMapSec are reachable
 // transitively (msgdata.h / message_format.h / map_header.h) — no local externs.
@@ -3384,6 +3388,30 @@ WIP_LOCAL void ov02_0224E020(SysTask *task, void *data) {
     }
 }
 
+WIP_LOCAL int ov02_0224E698(void *work) {
+    u8 facing = (u8)PlayerAvatar_GetFacingDirection(*(PlayerAvatar **)((u8 *)work + 0x40));
+    s16 x = (s16)PlayerAvatar_GetXCoord(*(PlayerAvatar **)((u8 *)work + 0x40));
+    s16 z = (s16)PlayerAvatar_GetZCoord(*(PlayerAvatar **)((u8 *)work + 0x40));
+    u16 buf[2];
+    VecFx32 pos;
+    void *areaSet;
+    PlayerAvatar_CopyPositionVector(*(PlayerAvatar **)((u8 *)work + 0x40), &pos);
+    areaSet = SafariZone_GetAreaSet(Save_SafariZone_Get(*(SaveData **)((u8 *)work + 0xc)), 0);
+    if (*(u8 *)((u8 *)areaSet + (u8)((x - 0x20) / 0x20 + (z - 0x20) / 0x20 * 3) * 0x7a + 1) >= 0x1e) {
+        return 1;
+    }
+    if (PlayerAvatar_GetState(*(PlayerAvatar **)((u8 *)work + 0x40)) != 2) {
+        return 0;
+    }
+    if (ov02_0224E640(*(SaveData **)((u8 *)work + 0xc)) == 0) {
+        return 2;
+    }
+    if (ov02_0224EE4C(work, x, z, facing, pos.y, &buf[1], &buf[0], 1) != 0) {
+        return 0;
+    }
+    return 3;
+}
+
 WIP_LOCAL BOOL ov02_0224E640(SaveData *saveData) {
     u32 trainerId = PlayerProfile_GetTrainerID(Save_PlayerData_GetProfile(saveData));
     int unlockLevel = SafariZone_GetObjectUnlockLevel(Save_SafariZone_Get(saveData));
@@ -4763,7 +4791,7 @@ WIP_LOCAL void ov02_02249FD4(void *work) {
 }
 
 // ===========================================================================
-// HANDOFF — overlay_02_02248728 WIP (326/364 byte-match, objdiff-verified)
+// HANDOFF — overlay_02_02248728 WIP (327/364 byte-match, objdiff-verified)
 //
 // NOTE: several functions contain an inline 4-entry jump table (dense switch:
 // ov02_0224CFD8/D044 facing-dir coord; ov02_0224E26C/E2A0/E2D4 dir remaps;
