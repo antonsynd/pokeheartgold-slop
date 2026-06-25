@@ -141,6 +141,8 @@ extern void ov01_021FCD78(SysTask *task);                                       
 extern BOOL ov01_021FCD6C(SysTask *task);                                                                                   // no header included here
 extern void ov01_021F8F68(LocalMapObject *object, int a1);                                                                  // no header included here
 extern void ov01_021F8F08(LocalMapObject *object, int a1);                                                                  // no header included here
+extern void *Save_VarsFlags_Get(SaveData *saveData);                                                                        // save_vars_flags.h, not included
+extern void sub_02066BE8(void *state, u32 a1, u16 value);                                                                   // sys_vars.h, not included
 extern void ov01_021FBD38(Field3dModel *model, void *narcData);                                                             // no header included here
 extern void ov01_021FBDFC(Field3dModel *model);                                                                             // no header included here
 extern void ov01_021FBE70(Field3DModelAnimation *anim, Field3dModel *model, void *anmResource, NNSFndAllocator *allocator); // no header included here
@@ -157,6 +159,7 @@ extern void *GfGfxLoader_LoadFromNarc(NarcId narcId, s32 fileId, BOOL isCompress
 extern void sub_0205B4EC(int a0, int a1);                                                                                   // text_0205B4EC.h, not included
 extern void *sub_020689C8(int a0, int a1);                                                                                  // unk_020689C8.h, not included
 extern u16 GF_DegreeToSinCosIdx(u16 deg);                                                                                   // math_util.h, not included
+extern u16 LCRandom(void);                                                                                                  // math_util.h, not included
 extern fx32 GF_SinDeg(u16 deg);                                                                                             // math_util.h, not included
 extern fx32 GF_CosDeg(u16 deg);                                                                                             // math_util.h, not included
 extern const VecFx32 ov02_02253360;                                                                                         // rodata, defined later (affine scale)
@@ -875,6 +878,37 @@ WIP_LOCAL int ov02_0224B964(void *work) {
         return 0;
     }
     return 0;
+}
+
+void ov02_BattleExit_HandleRoamerAction(FieldSystem *fieldSystem, BattleSetup *setup) {
+    Roamer *roamer;
+    int roamerIdx;
+    Pokemon *mon = Party_GetMonByIndex(*(Party **)((u8 *)setup + 8), 0);
+    RoamerSaveData *roamerSave = Save_Roamers_Get(fieldSystem->saveData);
+    int species = GetMonData(mon, MON_DATA_SPECIES, NULL);
+    roamer = ov02_0224BAA8(roamerSave, species);
+    if (roamer != NULL) {
+        u16 hp;
+        u8 status;
+        int action;
+        roamerIdx = SpeciesToRoamerIdx((u16)species);
+        hp = GetMonData(mon, 0xa3, NULL);
+        status = GetMonData(mon, 0xa0, NULL);
+        action = *(int *)((u8 *)setup + 0x14);
+        if (action == 1 && hp == 0) {
+            RoamerMon_Init(&roamer);
+            sub_02066BE8(Save_VarsFlags_Get(fieldSystem->saveData), roamerIdx, 2);
+        } else if (action == 4) {
+            RoamerMon_Init(&roamer);
+            sub_02066BE8(Save_VarsFlags_Get(fieldSystem->saveData), roamerIdx, 1);
+        } else {
+            SetRoamerData(roamer, 5, hp);
+            SetRoamerData(roamer, 7, status);
+        }
+        ov02_RepelActiveRoamersFromMapNo(roamerSave, fieldSystem->location->mapId);
+    } else if ((u16)(LCRandom() % 0x64) < 0x1e) {
+        ov02_RepelActiveRoamersFromMapNo(roamerSave, fieldSystem->location->mapId);
+    }
 }
 
 void PokecenterAnimCreate(FieldSystem *fieldSystem, u8 kind) {
@@ -4152,7 +4186,7 @@ WIP_LOCAL void ov02_02249FD4(void *work) {
 }
 
 // ===========================================================================
-// HANDOFF — overlay_02_02248728 WIP (311/364 byte-match, objdiff-verified)
+// HANDOFF — overlay_02_02248728 WIP (312/364 byte-match, objdiff-verified)
 //
 // NOTE: several functions contain an inline 4-entry jump table (dense switch:
 // ov02_0224CFD8/D044 facing-dir coord; ov02_0224E26C/E2A0/E2D4 dir remaps;
