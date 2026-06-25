@@ -162,7 +162,13 @@ typedef struct ov02_BF58Cfg {
     int unk0;
     int unk4;
 } ov02_BF58Cfg;
-extern const ov02_BF58Cfg ov02_022536E8;                                                                               // rodata, defined later
+extern const ov02_BF58Cfg ov02_022536E8; // rodata, defined later
+
+typedef struct ov02_FieldList5 {
+    u32 v[5];
+} ov02_FieldList5;
+extern const ov02_FieldList5 ov02_02253A5C;                                                                            // rodata, defined later (MON_DATA field ids)
+extern const u32 ov02_02253AC0[];                                                                                      // rodata, defined later (nature -> category)
 extern int sub_02054C90(void *a0, void *a1, int a2, void **a3, void **a4);                                             // no header included here
 extern void *ov01_021FB9E0(void *a0);                                                                                  // no header included here
 extern void *ov01_021F3B38(void *a0);                                                                                  // no header included here
@@ -2783,6 +2789,84 @@ WIP_LOCAL void ov02_0224F76C(int a0, void *out) {
     narc = AllocAtEndAndReadWholeNarcMemberByIdPair((NarcId)0xe9, 0, HEAP_ID_FIELD2);
     *(u8 *)((u8 *)out + 0xa) = ((u8 *)narc)[a0 - 1];
     Heap_Free(narc);
+}
+
+WIP_LOCAL void ov02_0224F324(Pokemon *mon, void *work) {
+    ov02_FieldList5 fields;
+    int item;
+    int hp_cur;
+    int hp_max;
+    int pct;
+    int status;
+    int level;
+    int v1;
+    int v2;
+    int i;
+
+    item = GetMonData(mon, 6, NULL);
+    if (item != 0) {
+        *(u8 *)work = 1;
+        *(u8 *)((u8 *)work + 1) = ov02_0224F820(GetItemAttr((u16)item, 5, HEAP_ID_FIELD2));
+    } else {
+        *(u8 *)work = 0;
+        *(u8 *)((u8 *)work + 1) = 8;
+    }
+
+    hp_cur = GetMonData(mon, 0xa3, NULL);
+    hp_max = GetMonData(mon, 0xa4, NULL);
+    pct = 100 * hp_cur / hp_max;
+    if (pct == 100) {
+        *(u8 *)((u8 *)work + 2) = 1;
+    } else if (pct >= 75) {
+        *(u8 *)((u8 *)work + 2) = 2;
+    } else if (pct >= 50) {
+        *(u8 *)((u8 *)work + 2) = 3;
+    } else if (pct >= 25) {
+        *(u8 *)((u8 *)work + 2) = 4;
+    } else {
+        *(u8 *)((u8 *)work + 2) = 5;
+    }
+
+    status = GetMonData(mon, 0xa0, NULL);
+    if (status & 0x88) {
+        *(u8 *)((u8 *)work + 3) = 5;
+    } else if (status & 7) {
+        *(u8 *)((u8 *)work + 3) = 8;
+    } else if (status & 0x10) {
+        *(u8 *)((u8 *)work + 3) = 2;
+    } else if (status & 0x20) {
+        *(u8 *)((u8 *)work + 3) = 3;
+    } else if (status & 0x40) {
+        *(u8 *)((u8 *)work + 3) = 4;
+    } else if (status == 0) {
+        *(u8 *)((u8 *)work + 3) = 1;
+    } else {
+        GF_AssertFail();
+        *(u8 *)((u8 *)work + 3) = 1;
+    }
+
+    level = GetMonData(mon, 0xa1, NULL);
+    if (level + 2 >= 50) {
+        *(u8 *)((u8 *)work + 4) = 4;
+    } else if (level - 2 <= 50) {
+        *(u8 *)((u8 *)work + 4) = 6;
+    } else {
+        *(u8 *)((u8 *)work + 4) = 5;
+    }
+
+    v1 = GetMonData(mon, 0xb1, NULL);
+    v2 = GetMonData(mon, 0xb2, NULL);
+    *(u8 *)((u8 *)work + 5) = ov02_0224F79C(v1);
+    *(u8 *)((u8 *)work + 6) = ov02_0224F79C(v2);
+    *(u8 *)((u8 *)work + 7) = GetMonData(mon, 9, NULL);
+    *(u8 *)((u8 *)work + 8) = ov02_02253AC0[GetMonNature(mon)];
+    *(u8 *)((u8 *)work + 9) = (GetMonData(mon, 0x6f, NULL) == 0) ? 1 : 2;
+
+    fields = ov02_02253A5C;
+    *(u8 *)((u8 *)work + 0xb) = 0;
+    for (i = 0; i < 5; i++) {
+        *(u8 *)((u8 *)work + 0xb) |= (u8)GetMonData(mon, fields.v[i], NULL) << i;
+    }
 }
 
 WIP_LOCAL int ov02_0224F79C(int a0) {
