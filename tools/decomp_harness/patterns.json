@@ -1303,6 +1303,13 @@
       "category": "matching-tricks",
       "title": "Scope a strength-reduced loop walker to each individual loop so it colors caller-saved (not callee-saved)",
       "body": "When the asm uses an explicit absolute walker (base+i*stride, advancing by stride) in a register for a per-iteration check, and there are multiple loops separated by function calls: declaring ONE walker pointer at function scope makes its live range span the inter-loop calls, so MWCC keeps it in a callee-saved register, adding register pressure that shifts other variables (large diff). FIX: wrap EACH loop in its own block with the walker declared inside ({ u8 *p; for (i=0, p=base; ...; i++, p+=stride) {...} }). Each walker is then live only within its loop body (which crosses no call, since the found-branch uses a separately-recomputed index), so MWCC colors it caller-saved (e.g. r1) like retail. Without the explicit walker, MWCC strength-reduces to an i*stride-relative IV and adds base each check (small per-loop diff). Converted ov02_0224DF1C (3 stride-0xcc find-first-inactive loops): function-scope walker=53 diffs, no walker=6 diffs, per-loop-scoped walker=exact. Complements [[block-scope-temp-to-color-r4-vs-shared-param-r5]]."
+    },
+    {
+      "id": "int-array-index-keeps-stack-base-pointer-for-struct-zeroing",
+      "title": "int* array-index manual unroll keeps a stack base pointer for struct zeroing",
+      "category": "matching-tricks",
+      "body": "To reproduce a retail stack-struct zeroing emitted via a BASE POINTER (add rN,sp,#OFF; mov r0,#0; str r0,[rN,#0/4/8]), zero through an int* with ARRAY INDEXING, manually unrolled: int *p=(int*)&v; p[0]=0; p[1]=0; p[2]=0;. MWCC keeps p as the base pointer. FAILS: struct-member form (VecFx32 *q=&v; q->x=0; q->y=0; q->z=0;) and plain v.x=0;v.y=0;v.z=0; both FOLD to direct sp-relative stores str r0,[sp,#imm] (no base ptr) -> N-byte-short mismatch + base-ptr cascade; a real for-loop for(i=0;i<3;i++)p[i]=0 does NOT unroll (keeps i counter+cmp, +4B). Only the manually-unrolled int* array-index form gives base-ptr-without-loop. Diagnose: objdiff function a few bytes short, asm has an add rN,sp,#OFF the C lacks. This was the long-standing DAA4/D9C0/ADF0/E20 offset-zeroing class blocker.",
+      "example": "ov02_02248E20 (sprite init) affineMtx zeroing matched via int *p=(int*)&affineMtx; p[0]=0;p[1]=0;p[2]=0;. Unblocks ADF0/DAA4/D9C0 deferred on this exact tie."
     }
   ]
 }
