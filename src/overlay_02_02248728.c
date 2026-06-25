@@ -484,6 +484,7 @@ WIP_LOCAL void ov02_0224D468(Field3dObjectTask *task, FieldSystem *fieldSystem, 
 WIP_LOCAL void ov02_0224D868(void *data);
 WIP_LOCAL void ov02_0224E008(void *data);
 WIP_LOCAL int ov02_022495B8(void *work);
+WIP_LOCAL void ov02_02249DD8(SysTask *task, void *work);
 // callees still in asm
 WIP_LOCAL int ov02_0224E31C(u32 x, u32 z);
 WIP_LOCAL void ov02_0224D700(void *p);
@@ -4264,6 +4265,32 @@ WIP_LOCAL int ov02_02249658(void *work) {
     *(int *)((u8 *)work + 0x2c) = 1;
     (*(int *)work)++;
     return 0;
+}
+
+WIP_LOCAL void ov02_02249DD8(SysTask *task, void *work) {
+    int i;
+    if (*(int *)((u8 *)work + 0x210) == 1) {
+        for (i = 0; i < 4; i++) {
+            if (((SpriteResource **)work)[0x6b + i] != NULL) {
+                sub_0200A740(((SpriteResource **)work)[0x6b + i]);
+            }
+        }
+        for (i = 0; i < 3; i++) {
+            if (((SpriteResource **)work)[0x6f + i] != NULL) {
+                sub_0200A740(((SpriteResource **)work)[0x6f + i]);
+            }
+        }
+        if (*(void **)((u8 *)work + 0x218) != NULL) {
+            Heap_Free(*(void **)((u8 *)work + 0x218));
+            *(void **)((u8 *)work + 0x218) = NULL;
+        }
+        if (*(void **)((u8 *)work + 0x21c) != NULL) {
+            Heap_Free(*(void **)((u8 *)work + 0x21c));
+            *(void **)((u8 *)work + 0x21c) = NULL;
+        }
+        *(int *)((u8 *)work + 0x214) = 1;
+        SysTask_Destroy(task);
+    }
 }
 
 WIP_LOCAL void ov02_02249EC0(void *work) {
