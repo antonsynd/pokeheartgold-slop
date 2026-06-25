@@ -141,13 +141,17 @@ extern ov02_FieldTaskFunc const ov02_02253710[];
 extern ov02_FieldTaskFunc const ov02_02253754[];
 extern ov02_FieldTaskFunc const ov02_0225373C[];
 extern ov02_FieldTaskFunc const ov02_02253724[];
-extern BOOL ov01_02205A60(TaskManager *taskMan);                                                                            // overlay_01_022053EC.h, not included
-extern void sub_02068BAC(void *a0);                                                                                         // unk_020689C8.h
-extern void ov01_021FCD78(SysTask *task);                                                                                   // no header included here
-extern BOOL ov01_021FCD6C(SysTask *task);                                                                                   // no header included here
-extern void ov01_021F8F68(LocalMapObject *object, int a1);                                                                  // no header included here
-extern void ov01_021F8F08(LocalMapObject *object, int a1);                                                                  // no header included here
-extern void *Save_VarsFlags_Get(SaveData *saveData);                                                                        // save_vars_flags.h, not included
+extern BOOL ov01_02205A60(TaskManager *taskMan);                                                             // overlay_01_022053EC.h, not included
+extern void sub_02068BAC(void *a0);                                                                          // unk_020689C8.h
+extern void ov01_021FCD78(SysTask *task);                                                                    // no header included here
+extern BOOL ov01_021FCD6C(SysTask *task);                                                                    // no header included here
+extern void ov01_021F8F68(LocalMapObject *object, int a1);                                                   // no header included here
+extern void ov01_021F8F08(LocalMapObject *object, int a1);                                                   // no header included here
+extern void *Save_VarsFlags_Get(SaveData *saveData);                                                         // save_vars_flags.h, not included
+extern BOOL Save_VarsFlags_CheckSafariSysFlag(void *varsFlags);                                              // save_vars_flags.h, not included
+extern BOOL sub_0202F620(void *safariZone);                                                                  // no header included here
+extern fx32 sub_02054774(FieldSystem *fieldSystem, fx32 refHeight, fx32 xFx32, fx32 zFx32, u8 *outSelector); // unk_02054648.h, not included
+WIP_LOCAL BOOL ov02_0224E35C(FieldSystem *fieldSystem);
 extern void sub_02066BE8(void *state, u32 a1, u16 value);                                                                   // sys_vars.h, not included
 extern void ov01_021FBD38(Field3dModel *model, void *narcData);                                                             // no header included here
 extern void ov01_021FBDFC(Field3dModel *model);                                                                             // no header included here
@@ -3432,6 +3436,72 @@ WIP_LOCAL int ov02_0224E31C(u32 x, u32 z) {
         return 0;
     }
     return idx;
+}
+
+WIP_LOCAL BOOL ov02_0224E35C(FieldSystem *fieldSystem) {
+    void *varsFlags = Save_VarsFlags_Get(*(SaveData **)((u8 *)fieldSystem + 0xc));
+    void *safariZone;
+    int facing;
+    int x;
+    int z;
+    int newX;
+    int newZ;
+    VecFx32 pos;
+    u8 sel;
+    fx32 h1;
+    fx32 h2;
+    f32 fx;
+    f32 fz;
+    int vx;
+    int vz;
+
+    LocalFieldData_GetCurrentPosition(Save_LocalFieldData_Get(*(SaveData **)((u8 *)fieldSystem + 0xc)));
+    safariZone = Save_SafariZone_Get(*(SaveData **)((u8 *)fieldSystem + 0xc));
+    if (ov02_0224E308(**(int **)((u8 *)fieldSystem + 0x20)) == 0) {
+        return FALSE;
+    }
+    if (Save_VarsFlags_CheckSafariSysFlag(varsFlags) == 0) {
+        return FALSE;
+    }
+    if (sub_0202F620(safariZone) != 0) {
+        return FALSE;
+    }
+    if (SafariZone_GetObjectUnlockLevel(safariZone) == 0) {
+        return FALSE;
+    }
+    facing = PlayerAvatar_GetFacingDirection(*(PlayerAvatar **)((u8 *)fieldSystem + 0x40));
+    x = PlayerAvatar_GetXCoord(*(PlayerAvatar **)((u8 *)fieldSystem + 0x40));
+    z = PlayerAvatar_GetZCoord(*(PlayerAvatar **)((u8 *)fieldSystem + 0x40));
+    newX = x + GetDeltaXByFacingDirection(facing);
+    newZ = z + GetDeltaYByFacingDirection(facing);
+    if (newX < 0x20 || newX >= 0x80 || newZ < 0x20 || newZ >= 0x60) {
+        return FALSE;
+    }
+    if (newX < 0x20 || newX >= 0x80 || newZ < 0x20 || newZ >= 0x60) {
+        return FALSE;
+    }
+    PlayerAvatar_CopyPositionVector(*(PlayerAvatar **)((u8 *)fieldSystem + 0x40), &pos);
+    h1 = sub_02054774(fieldSystem, pos.y, pos.x, pos.z, &sel);
+    if (sel != 1) {
+        return FALSE;
+    }
+    vz = (newZ << 4) + 8;
+    if (vz > 0) {
+        fz = (f32)(vz << 12) + 0.5f;
+    } else {
+        fz = (f32)(vz << 12) - 0.5f;
+    }
+    vx = (newX << 4) + 8;
+    if (vx > 0) {
+        fx = (f32)(vx << 12) + 0.5f;
+    } else {
+        fx = (f32)(vx << 12) - 0.5f;
+    }
+    h2 = sub_02054774(fieldSystem, pos.y, (s32)fx, (s32)fz, &sel);
+    if (sel != 1) {
+        return FALSE;
+    }
+    return h1 == h2;
 }
 
 WIP_LOCAL int ov02_02249B38(void *work) {
