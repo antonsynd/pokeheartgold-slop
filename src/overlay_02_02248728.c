@@ -394,6 +394,7 @@ WIP_LOCAL int ov02_02249690(void *work);
 WIP_LOCAL int ov02_022496D0(void *work);
 WIP_LOCAL int ov02_022491CC(void *work);
 WIP_LOCAL int ov02_02249290(void *work);
+WIP_LOCAL int ov02_02248F88(void *work);
 WIP_LOCAL int ov02_022490BC(void *work);
 WIP_LOCAL int ov02_0224B158(void *work);
 WIP_LOCAL int ov02_0224AF70(void *work);
@@ -2429,6 +2430,49 @@ WIP_LOCAL int ov02_022491CC(void *work) {
     Sprite_SetAnimActiveFlag(*(Sprite **)((u8 *)work + 0x60), 1);
     (*(u8 *)((u8 *)work + 1))++;
     return 1;
+}
+
+WIP_LOCAL int ov02_02248F88(void *work) {
+    Sprite *spriteA = *(Sprite **)((u8 *)work + 0x68);
+    Sprite *spriteB = *(Sprite **)((u8 *)work + 0x60);
+    VecFx32 mtx;
+    *(int *)((u8 *)work + 0x48) = *(int *)((u8 *)work + 0x48) - *(int *)((u8 *)work + 0x4c);
+    if (*(int *)((u8 *)work + 0x48) < 0) {
+        *(int *)((u8 *)work + 0x48) = 0;
+    }
+    if (*(int *)((u8 *)work + 0x4c) > 0x800) {
+        *(int *)((u8 *)work + 0x4c) -= 0x1c00;
+    }
+    if (*(int *)((u8 *)work + 0x4c) < 0x1000) {
+        *(int *)((u8 *)work + 0x4c) = 0x1000;
+    }
+    *(int *)((u8 *)work + 0x14) = GF_CosDeg(0x2d) * (*(int *)((u8 *)work + 0x48) / 0x1000);
+    *(int *)((u8 *)work + 0x18) = GF_SinDeg((u16)(*(int *)((u8 *)work + 0x40) / 0x1000)) * (*(int *)((u8 *)work + 0x48) / 0x1000);
+    if (*(int *)((u8 *)work + 0x40) / 0x1000 < 0x5a) {
+        *(int *)((u8 *)work + 0x40) += 0x4000;
+    }
+    *(int *)((u8 *)work + 0x2c) -= *(int *)((u8 *)work + 0x50);
+    if (*(int *)((u8 *)work + 0x2c) < 0x1000) {
+        *(int *)((u8 *)work + 0x2c) = 0x1000;
+    }
+    *(int *)((u8 *)work + 0x30) -= *(int *)((u8 *)work + 0x50);
+    if (*(int *)((u8 *)work + 0x30) < 0x1000) {
+        *(int *)((u8 *)work + 0x30) = 0x1000;
+    }
+    Sprite_SetAffineScale(spriteA, (VecFx32 *)((u8 *)work + 0x2c));
+    Sprite_SetAffineScale(spriteB, (VecFx32 *)((u8 *)work + 0x2c));
+    mtx.x = *(int *)((u8 *)work + 8) + *(int *)((u8 *)work + 0x14);
+    mtx.y = *(int *)((u8 *)work + 0xc) + *(int *)((u8 *)work + 0x18);
+    Sprite_SetMatrix(spriteA, &mtx);
+    mtx.y -= 0x12000;
+    Sprite_SetMatrix(spriteB, &mtx);
+    if (*(int *)((u8 *)work + 0x48) == 0) {
+        *(int *)((u8 *)work + 4) = 0;
+        *(u8 *)((u8 *)work + 1) += 1;
+    } else {
+        *(int *)((u8 *)work + 4) += 1;
+    }
+    return 0;
 }
 
 WIP_LOCAL int ov02_0224AF70(void *work) {
