@@ -136,6 +136,11 @@ extern ov02_StateMachineFunc const ov02_022534B8[];
 typedef int (*ov02_FieldTaskFunc)(TaskManager *taskManager, FieldSystem *fieldSystem, void *env);
 extern ov02_FieldTaskFunc const ov02_02253700[];
 extern ov02_FieldTaskFunc const ov02_022536F0[];
+extern ov02_FieldTaskFunc const ov02_02253710[];
+extern ov02_FieldTaskFunc const ov02_02253754[];
+extern ov02_FieldTaskFunc const ov02_0225373C[];
+extern ov02_FieldTaskFunc const ov02_02253724[];
+extern BOOL ov01_02205A60(TaskManager *taskMan);                                                                            // overlay_01_022053EC.h, not included
 extern void sub_02068BAC(void *a0);                                                                                         // unk_020689C8.h
 extern void ov01_021FCD78(SysTask *task);                                                                                   // no header included here
 extern BOOL ov01_021FCD6C(SysTask *task);                                                                                   // no header included here
@@ -3156,6 +3161,116 @@ struct FieldMoveTaskEnvironment *FieldMoveTask_CreateTeleportEnvironment(FieldSy
     return env;
 }
 
+BOOL Task_FieldDig(TaskManager *taskManager) {
+    FieldSystem *fieldSystem = TaskManager_GetFieldSystem(taskManager);
+    void *env = TaskManager_GetEnvironment(taskManager);
+    u32 *state = TaskManager_GetStatePtr(taskManager);
+    switch (*state) {
+    case 0:
+        if (*(int *)((u8 *)env + 8)) {
+            TaskManager_Call(taskManager, ov01_02205A60, NULL);
+        }
+        (*state)++;
+        break;
+    case 1:
+        (*state)++;
+        if (*(int *)((u8 *)env + 8)) {
+            u8 mood;
+            if (ov02_02250780(fieldSystem, 4)) {
+                mood = 2;
+                FieldSystem_UnkSub108_AddMonMood(fieldSystem->unk108, 1);
+            } else {
+                mood = 1;
+            }
+            ov02_022507B4(fieldSystem, mood);
+            break;
+        }
+        // fall through
+    case 2:
+        if (*(int *)((u8 *)env + 8)) {
+            int species = GetMonData(*(Pokemon **)((u8 *)env + 0x28), MON_DATA_SPECIES, NULL);
+            int form = GetMonData(*(Pokemon **)((u8 *)env + 0x28), MON_DATA_FORM, NULL);
+            PlayCry((u16)species, (u8)form);
+        }
+        (*state)++;
+        // fall through
+    case 3: {
+        int result;
+        do {
+            if (*(int *)((u8 *)env + 8)) {
+                if (IsCryFinished()) {
+                    result = 0;
+                } else {
+                    result = ov02_02253710[*(int *)env](taskManager, fieldSystem, env);
+                }
+            } else {
+                result = ov02_02253754[*(int *)env](taskManager, fieldSystem, env);
+            }
+            if (result == 2) {
+                Heap_Free(env);
+            }
+        } while (result == 1);
+        break;
+    }
+    }
+    return 0;
+}
+
+BOOL Task_FieldTeleport(TaskManager *taskManager) {
+    FieldSystem *fieldSystem = TaskManager_GetFieldSystem(taskManager);
+    void *env = TaskManager_GetEnvironment(taskManager);
+    u32 *state = TaskManager_GetStatePtr(taskManager);
+    switch (*state) {
+    case 0:
+        if (*(int *)((u8 *)env + 8)) {
+            TaskManager_Call(taskManager, ov01_02205A60, NULL);
+        }
+        (*state)++;
+        break;
+    case 1:
+        (*state)++;
+        if (*(int *)((u8 *)env + 8)) {
+            u8 mood;
+            if (ov02_02250780(fieldSystem, 0xe)) {
+                mood = 2;
+                FieldSystem_UnkSub108_AddMonMood(fieldSystem->unk108, 1);
+            } else {
+                mood = 1;
+            }
+            ov02_022507B4(fieldSystem, mood);
+            break;
+        }
+        // fall through
+    case 2:
+        if (*(int *)((u8 *)env + 8)) {
+            int species = GetMonData(*(Pokemon **)((u8 *)env + 0x28), MON_DATA_SPECIES, NULL);
+            int form = GetMonData(*(Pokemon **)((u8 *)env + 0x28), MON_DATA_FORM, NULL);
+            PlayCry((u16)species, (u8)form);
+        }
+        (*state)++;
+        // fall through
+    case 3: {
+        int result;
+        do {
+            if (*(int *)((u8 *)env + 8)) {
+                if (IsCryFinished()) {
+                    result = 0;
+                } else {
+                    result = ov02_0225373C[*(int *)env](taskManager, fieldSystem, env);
+                }
+            } else {
+                result = ov02_02253724[*(int *)env](taskManager, fieldSystem, env);
+            }
+            if (result == 2) {
+                Heap_Free(env);
+            }
+        } while (result == 1);
+        break;
+    }
+    }
+    return 0;
+}
+
 WIP_LOCAL Sprite *ov02_02248CAC(void *mgr) {
     VecFx32 pos = { 0, 0, 0 };
     VecFx32 affineMatrix = { 0, 0, 0 };
@@ -4210,7 +4325,7 @@ WIP_LOCAL void ov02_02249FD4(void *work) {
 }
 
 // ===========================================================================
-// HANDOFF — overlay_02_02248728 WIP (313/364 byte-match, objdiff-verified)
+// HANDOFF — overlay_02_02248728 WIP (315/364 byte-match, objdiff-verified)
 //
 // NOTE: several functions contain an inline 4-entry jump table (dense switch:
 // ov02_0224CFD8/D044 facing-dir coord; ov02_0224E26C/E2A0/E2D4 dir remaps;
