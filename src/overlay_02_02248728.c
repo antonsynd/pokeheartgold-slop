@@ -29,6 +29,7 @@
 
 #include "field/overlay_01_021E66E4.h"
 #include "field/overlay_01_021FB878.h"
+#include "nnsys/g3d/binres/res_struct_accessor_inline.h"
 
 #include "bg_window.h"
 #include "field_roamer.h"
@@ -178,6 +179,10 @@ extern void *ov01_021FB9E0(void *a0);                                           
 extern void *ov01_021F3B38(void *a0);                                                                                  // no header included here
 extern void *ov01_021F3B3C(void *a0);                                                                                  // no header included here
 extern void ov01_021E8DE8(void *a0, void *a1, int a2, void *a3, void *a4, void *a5, void *a6, int a7, int a8, int a9); // no header included here
+extern void *ov01_021FB90C(int a0, void *a1);                                                                          // no header included here
+extern BOOL ov01_021E8F10(void *a0, int a1);                                                                           // no header included here
+extern void ov01_021E8ED0(void *a0, void *a1, int a2);                                                                 // no header included here
+extern NNSG3dResMdlSet *NNS_G3dGetMdlSet(const NNSG3dResFileHeader *header);                                           // res_struct_accessor.h, not included (IPA)
 typedef struct ov02_SafariObjCfg {
     u8 buildModel;
     u8 isAnimated : 1;
@@ -3900,6 +3905,52 @@ WIP_LOCAL int ov02_0224E754(void *work, u16 *out) {
     }
     *out = 0;
     return 0xff;
+}
+
+WIP_LOCAL BOOL ov02_0224BE24(TaskManager *taskManager) {
+    FieldSystem *fieldSystem = TaskManager_GetFieldSystem(taskManager);
+    void *env = TaskManager_GetEnvironment(taskManager);
+
+    switch (*(u8 *)((u8 *)env + 2)) {
+    case 0: {
+        int outObj;
+        NNSG3dResMdlSet *mdlSet = NNS_G3dGetMdlSet(*(NNSG3dResFileHeader **)ov01_021FB90C(0xd0, *(void **)((u8 *)fieldSystem + 0x34)));
+        NNSG3dResMdl *mdl = NNS_G3dGetMdlByIdx(mdlSet, 0);
+        void *v5;
+        void *v6;
+        if (sub_02054C20(fieldSystem, 0xd0, &outObj, NULL) == 0) {
+            GF_AssertFail();
+        }
+        v5 = ov01_021F3B38((void *)outObj);
+        v6 = ov01_021FB9E0(*(void **)((u8 *)fieldSystem + 0x34));
+        ov01_021E8DE8(*(void **)((u8 *)fieldSystem + 0x54), *(void **)((u8 *)fieldSystem + 0x58), 1, (void *)0xd0, v5, mdl, v6, 2, *(u8 *)env, 0);
+        (*(u8 *)((u8 *)env + 2))++;
+        break;
+    }
+    case 1:
+        GF_ASSERT(*(u8 *)((u8 *)env + 1) == 0 || *(u8 *)((u8 *)env + 1) == 1);
+        ov01_021E8E70(*(void **)((u8 *)fieldSystem + 0x58), 1, *(u8 *)((u8 *)env + 1));
+        PlaySE(SEQ_SE_DP_ELEBETA2);
+        (*(u8 *)((u8 *)env + 2))++;
+        break;
+    case 2:
+        if (ov01_021E8F10(*(void **)((u8 *)fieldSystem + 0x58), 1)) {
+            StopSE(SEQ_SE_DP_ELEBETA2, 0);
+            PlaySE(SEQ_SE_DP_PINPON);
+            ov01_021E8ED0(*(void **)((u8 *)fieldSystem + 0x54), *(void **)((u8 *)fieldSystem + 0x58), 1);
+            (*(u8 *)((u8 *)env + 2))++;
+        }
+        break;
+    case 3:
+        if (!IsSEPlaying(SEQ_SE_DP_PINPON)) {
+            (*(u8 *)((u8 *)env + 2))++;
+        }
+        break;
+    case 4:
+        Heap_Free(env);
+        return TRUE;
+    }
+    return FALSE;
 }
 
 void ov02_0224BF58(FieldSystem *fieldSystem, u8 a1) {
