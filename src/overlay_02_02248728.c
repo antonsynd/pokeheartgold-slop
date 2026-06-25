@@ -197,6 +197,7 @@ extern void *ov01_021F3B60(void *a0, int a1);                                   
 extern void ov01_021E8E40(void *a0, int a1, int a2, void *a3);                                                         // no header included here
 extern void ov01_021F36DC(int a0, void *a1);                                                                           // no header included here
 extern const VecFx32 ov02_02253DD8[];                                                                                  // rodata, defined later (CE28 per-object offset table, stride 0xc)
+extern const VecFx32 ov02_02253D90[];                                                                                  // rodata, defined later (PokecenterAnimRun per-object offset table)
 typedef struct ov02_SafariObjCfg {
     u8 buildModel;
     u8 isAnimated : 1;
@@ -4118,6 +4119,83 @@ WIP_LOCAL int ov02_0224E754(void *work, u16 *out) {
     }
     *out = 0;
     return 0xff;
+}
+
+WIP_LOCAL BOOL PokecenterAnimRun(TaskManager *taskManager) {
+    FieldSystem *fieldSystem = TaskManager_GetFieldSystem(taskManager);
+    void *env = TaskManager_GetEnvironment(taskManager);
+
+    switch (*(u8 *)((u8 *)env + 0xf)) {
+    case 0: {
+        int outObj;
+        void *h1 = ov01_021FB90C(0x6b, *(void **)((u8 *)fieldSystem + 0x34));
+        void *h2 = ov01_021FB90C(0x25, *(void **)((u8 *)fieldSystem + 0x34));
+        NNSG3dResMdl *mdl1 = NNS_G3dGetMdlByIdx(NNS_G3dGetMdlSet(*(NNSG3dResFileHeader **)h1), 0);
+        NNSG3dResMdl *mdl2 = NNS_G3dGetMdlByIdx(NNS_G3dGetMdlSet(*(NNSG3dResFileHeader **)h2), 0);
+        void *v;
+        void *v5;
+        v = ov01_021FB9E0(*(void **)((u8 *)fieldSystem + 0x34));
+        ov01_021E8DE8(*(void **)((u8 *)fieldSystem + 0x54), *(void **)((u8 *)fieldSystem + 0x58), 0x10, (void *)0x6b, NULL, mdl1, v, 1, 1, 0);
+        if (sub_02054C20(fieldSystem, 0x25, &outObj, NULL) == 0) {
+            GF_AssertFail();
+        }
+        v5 = ov01_021F3B38((void *)outObj);
+        v = ov01_021FB9E0(*(void **)((u8 *)fieldSystem + 0x34));
+        ov01_021E8DE8(*(void **)((u8 *)fieldSystem + 0x54), *(void **)((u8 *)fieldSystem + 0x58), 0x20, (void *)0x25, v5, mdl2, v, 1, 1, 0);
+        (*(u8 *)((u8 *)env + 0xf))++;
+        break;
+    }
+    case 1: {
+        VecFx32 vec28;
+        VecFx32 vec18;
+        int *p = (int *)&vec18;
+        p[0] = 0;
+        p[1] = 0;
+        p[2] = 0;
+        vec28.x = ((VecFx32 *)env)->x + ov02_02253D90[*(u8 *)((u8 *)env + 0xd)].x;
+        vec28.y = ((VecFx32 *)env)->y + ov02_02253D90[*(u8 *)((u8 *)env + 0xd)].y;
+        vec28.z = ((VecFx32 *)env)->z + ov02_02253D90[*(u8 *)((u8 *)env + 0xd)].z;
+        PlaySE(SEQ_SE_DP_BOWA);
+        *(u8 *)((u8 *)env + *(u8 *)((u8 *)env + 0xd) + 0x10) = ov01_021F3C0C(*(void **)((u8 *)fieldSystem + 0x9c), 0x6b, &vec28, &vec18, *(void **)((u8 *)fieldSystem + 0x54));
+        (*(u8 *)((u8 *)env + 0xf))++;
+        break;
+    }
+    case 2:
+        if (*(u8 *)((u8 *)env + 0xe) < 0xc) {
+            (*(u8 *)((u8 *)env + 0xe))++;
+        } else {
+            *(u8 *)((u8 *)env + 0xe) = 0;
+            (*(u8 *)((u8 *)env + 0xd))++;
+            if (*(u8 *)((u8 *)env + 0xd) < *(u8 *)((u8 *)env + 0xc)) {
+                *(u8 *)((u8 *)env + 0xf) = 1;
+            } else {
+                ov01_021E8E40(*(void **)((u8 *)fieldSystem + 0x58), 0x10, 0, ov01_021F3B38(ov01_021F3B60(*(void **)((u8 *)fieldSystem + 0x9c), *(u8 *)((u8 *)env + 0x10))));
+                (*(u8 *)((u8 *)env + 0xf))++;
+            }
+        }
+        break;
+    case 3:
+        ov01_021E8E70(*(void **)((u8 *)fieldSystem + 0x58), 0x10, 0);
+        ov01_021E8E70(*(void **)((u8 *)fieldSystem + 0x58), 0x20, 0);
+        PlayFanfare(SEQ_ME_ASA);
+        (*(u8 *)((u8 *)env + 0xf))++;
+        break;
+    case 4:
+        if (ov01_021E8F10(*(void **)((u8 *)fieldSystem + 0x58), 0x10) && ov01_021E8F10(*(void **)((u8 *)fieldSystem + 0x58), 0x20) && !IsFanfarePlaying()) {
+            u8 i;
+            ov01_021E8ED0(*(void **)((u8 *)fieldSystem + 0x54), *(void **)((u8 *)fieldSystem + 0x58), 0x20);
+            ov01_021E8ED0(*(void **)((u8 *)fieldSystem + 0x54), *(void **)((u8 *)fieldSystem + 0x58), 0x10);
+            for (i = 0; i < *(u8 *)((u8 *)env + 0xc); i++) {
+                ov01_021F36DC(*(u8 *)((u8 *)env + i + 0x10), *(void **)((u8 *)fieldSystem + 0x9c));
+            }
+            (*(u8 *)((u8 *)env + 0xf))++;
+        }
+        break;
+    case 5:
+        Heap_Free(env);
+        return TRUE;
+    }
+    return FALSE;
 }
 
 WIP_LOCAL BOOL ov02_0224CE28(TaskManager *taskManager) {
