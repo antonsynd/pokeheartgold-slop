@@ -4151,6 +4151,30 @@ WIP_LOCAL int ov02_02249658(void *work) {
     return 0;
 }
 
+WIP_LOCAL void ov02_02249EC0(void *work) {
+    NARC *narc = ov02_0224A074();
+    ov02_0224A69C(work, 0, 0xC0000, 0x1000, 0xC0000);
+    ov02_0224A648(work);
+    *(u16 *)((u8 *)work + 0x24) = GetBgPriority(*(BgConfig **)((u8 *)*(void **)((u8 *)work + 0x60) + 8), 0);
+    *(u16 *)((u8 *)work + 0x26) = GetBgPriority(*(BgConfig **)((u8 *)*(void **)((u8 *)work + 0x60) + 8), 3);
+    reg_G2_BG1CNT = (reg_G2_BG1CNT & ~3) | 1;
+    reg_G2_BG3CNT = reg_G2_BG3CNT & ~3;
+    GfGfx_EngineATogglePlanes(8, 0);
+#ifdef HEARTGOLD
+    ov02_0224A570(narc, 2, (NNSG2dPaletteData **)((u8 *)work + 0x6c));
+    ov02_0224A598(*(BgConfig **)((u8 *)*(void **)((u8 *)work + 0x60) + 8), narc, 0, (NNSG2dCharacterData **)((u8 *)work + 0x68));
+    ov02_0224A5D0(*(BgConfig **)((u8 *)*(void **)((u8 *)work + 0x60) + 8), narc, 1, (NNSG2dScreenData **)((u8 *)work + 0x64));
+#else
+    ov02_0224A570(narc, 5, (NNSG2dPaletteData **)((u8 *)work + 0x6c));
+    ov02_0224A598(*(BgConfig **)((u8 *)*(void **)((u8 *)work + 0x60) + 8), narc, 3, (NNSG2dCharacterData **)((u8 *)work + 0x68));
+    ov02_0224A5D0(*(BgConfig **)((u8 *)*(void **)((u8 *)work + 0x60) + 8), narc, 4, (NNSG2dScreenData **)((u8 *)work + 0x64));
+#endif
+    ov02_0224A080(work, narc);
+    NARC_Delete(narc);
+    *(void **)((u8 *)work + 0x1e0) = sub_020689C8(HEAP_ID_FIELD1, 0x20);
+    GfGfx_EngineATogglePlanes(8, 1);
+}
+
 WIP_LOCAL void ov02_02249F6C(void *work) {
     NARC *narc = ov02_0224A074();
     *(u16 *)((u8 *)work + 0x24) = GetBgPriority(*(BgConfig **)((u8 *)*(void **)((u8 *)work + 0x60) + 8), 0);
@@ -4186,7 +4210,7 @@ WIP_LOCAL void ov02_02249FD4(void *work) {
 }
 
 // ===========================================================================
-// HANDOFF — overlay_02_02248728 WIP (312/364 byte-match, objdiff-verified)
+// HANDOFF — overlay_02_02248728 WIP (313/364 byte-match, objdiff-verified)
 //
 // NOTE: several functions contain an inline 4-entry jump table (dense switch:
 // ov02_0224CFD8/D044 facing-dir coord; ov02_0224E26C/E2A0/E2D4 dir remaps;
