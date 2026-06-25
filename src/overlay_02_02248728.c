@@ -193,6 +193,7 @@ extern ov02_CreateDispatchFunc const ov02_02253A1C[];
 extern const MovementScriptCommand ov02_02253820;                                                  // rodata, defined later
 extern const MovementScriptCommand ov02_02253794;                                                  // rodata, defined later
 extern const MovementScriptCommand ov02_02253770;                                                  // rodata, defined later
+extern const MovementScriptCommand ov02_02253A70[][5];                                             // rodata, defined later (per-direction movement scripts, stride 0x14)
 extern BOOL sub_02054C20(FieldSystem *fieldSystem, int targetType, int *outObj, void **outHandle); // unk_02054648.h, not included
 extern void sub_02054DC8(int idx, int width, VecFx32 *out);                                        // unk_02054648.h, not included
 extern void ov01_021F3B0C(VecFx32 *out, void *src);                                                // unk_02054648.h, not included
@@ -1690,6 +1691,45 @@ WIP_LOCAL void ov02_022507B4(FieldSystem *fieldSystem, u8 a1) {
     env[0] = a1;
     env[1] = 0;
     TaskManager_Call(fieldSystem->taskman, ov02_022507E8, env);
+}
+
+WIP_LOCAL BOOL ov02_022507E8(TaskManager *taskManager) {
+    FieldSystem *fieldSystem = TaskManager_GetFieldSystem(taskManager);
+    void *env = TaskManager_GetEnvironment(taskManager);
+    u32 *state = TaskManager_GetStatePtr(taskManager);
+    switch (*state) {
+    case 0:
+        MapObject_UnpauseMovement(*(LocalMapObject **)((u8 *)fieldSystem + 0xe4));
+        (*state)++;
+        /* fallthrough */
+    case 1:
+        if (MapObject_AreBitsSetForMovementScriptInit(FollowMon_GetMapObject(fieldSystem))) {
+            MapObject_PauseMovement(*(LocalMapObject **)((u8 *)fieldSystem + 0xe4));
+            (*state)++;
+        }
+        break;
+    case 2: {
+        u8 dir = MapObject_GetFacingDirection(*(LocalMapObject **)((u8 *)fieldSystem + 0xe4));
+        *(EventObjectMovementMan **)((u8 *)env + 4) = EventObjectMovementMan_Create(*(LocalMapObject **)((u8 *)fieldSystem + 0xe4), ov02_02253A70[dir]);
+        (*state)++;
+        break;
+    }
+    case 3:
+        if (EventObjectMovementMan_IsFinish(*(EventObjectMovementMan **)((u8 *)env + 4)) == 1) {
+            EventObjectMovementMan_Delete(*(EventObjectMovementMan **)((u8 *)env + 4));
+            *(u16 *)((u8 *)env + 2) = *(u16 *)((u8 *)env + 2) + 1;
+            if (*(u16 *)((u8 *)env + 2) >= *(u16 *)((u8 *)env)) {
+                (*state)++;
+            } else {
+                *state = 0;
+            }
+        }
+        break;
+    case 4:
+        Heap_Free(env);
+        return TRUE;
+    }
+    return FALSE;
 }
 
 WIP_LOCAL BOOL ov02_022489F0(void *mgr, int a1) {
@@ -4033,7 +4073,7 @@ WIP_LOCAL void ov02_02249FD4(void *work) {
 }
 
 // ===========================================================================
-// HANDOFF — overlay_02_02248728 WIP (308/364 byte-match, objdiff-verified)
+// HANDOFF — overlay_02_02248728 WIP (309/364 byte-match, objdiff-verified)
 //
 // NOTE: several functions contain an inline 4-entry jump table (dense switch:
 // ov02_0224CFD8/D044 facing-dir coord; ov02_0224E26C/E2A0/E2D4 dir remaps;
