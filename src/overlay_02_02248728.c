@@ -3341,6 +3341,68 @@ WIP_LOCAL void ov02_0224DF1C(void *work) {
     GF_AssertFail();
 }
 
+WIP_LOCAL BOOL ov02_0224E0EC(TaskManager *taskManager) {
+    FieldSystem *fieldSystem = TaskManager_GetFieldSystem(taskManager);
+    void *env = TaskManager_GetEnvironment(taskManager);
+    BOOL ret = FALSE;
+    switch (*(int *)env) {
+    case 0:
+        MapObject_UnpauseMovement(FollowMon_GetMapObject(fieldSystem));
+        (*(int *)env)++;
+        // fall through
+    case 1:
+        if (MapObject_AreBitsSetForMovementScriptInit(*(LocalMapObject **)((u8 *)env + 4)) == 0) {
+            break;
+        }
+        if (MapObject_AreBitsSetForMovementScriptInit(*(LocalMapObject **)((u8 *)env + 8)) == 0) {
+            break;
+        }
+        MapObject_PauseMovement(FollowMon_GetMapObject(fieldSystem));
+        (*(int *)env)++;
+        break;
+    case 2:
+        *(int *)((u8 *)env + 0xc) = MapObject_GetXCoord(*(LocalMapObject **)((u8 *)env + 4));
+        *(int *)((u8 *)env + 0x10) = MapObject_GetZCoord(*(LocalMapObject **)((u8 *)env + 4));
+        *(int *)((u8 *)env + 0x14) = MapObject_GetFacingDirection(*(LocalMapObject **)((u8 *)env + 4));
+        *(int *)((u8 *)env + 0x18) = MapObject_GetXCoord(*(LocalMapObject **)((u8 *)env + 8));
+        *(int *)((u8 *)env + 0x1c) = MapObject_GetZCoord(*(LocalMapObject **)((u8 *)env + 8));
+        {
+            int mv = ov02_0224E224((u8 *)env + 0xc, (u8 *)env + 0x18);
+            MapObject_SetHeldMovement(*(LocalMapObject **)((u8 *)env + 4), mv);
+            MapObject_SetHeldMovement(*(LocalMapObject **)((u8 *)env + 8), ov02_0224E2D4(mv));
+        }
+        (*(int *)env)++;
+        break;
+    case 3:
+        if (MapObject_AreBitsSetForMovementScriptInit(*(LocalMapObject **)((u8 *)env + 4)) == 0) {
+            break;
+        }
+        if (MapObject_AreBitsSetForMovementScriptInit(*(LocalMapObject **)((u8 *)env + 8)) == 0) {
+            break;
+        }
+        (*(int *)env)++;
+        break;
+    case 4:
+        MapObject_SetHeldMovement(*(LocalMapObject **)((u8 *)env + 4), ov02_0224E2A0((u8)MapObject_GetFacingDirection(*(LocalMapObject **)((u8 *)env + 4))));
+        MapObject_SetHeldMovement(*(LocalMapObject **)((u8 *)env + 8), ov02_0224E26C((u8) * (int *)((u8 *)env + 0x14)));
+        (*(int *)env)++;
+        break;
+    case 5:
+        if (MapObject_AreBitsSetForMovementScriptInit(*(LocalMapObject **)((u8 *)env + 4)) == 0) {
+            break;
+        }
+        if (MapObject_AreBitsSetForMovementScriptInit(*(LocalMapObject **)((u8 *)env + 8)) == 0) {
+            break;
+        }
+        MapObject_ClearHeldMovementIfActive(*(LocalMapObject **)((u8 *)env + 4));
+        MapObject_ClearHeldMovementIfActive(*(LocalMapObject **)((u8 *)env + 8));
+        ret = TRUE;
+        Heap_Free(env);
+        break;
+    }
+    return ret;
+}
+
 WIP_LOCAL void ov02_0224F580(FieldSystem *fieldSystem, void *out) {
     int count = 0;
     u8 *events = Field_GetBgEvents(fieldSystem);
@@ -4587,7 +4649,7 @@ WIP_LOCAL void ov02_02249FD4(void *work) {
 }
 
 // ===========================================================================
-// HANDOFF — overlay_02_02248728 WIP (323/364 byte-match, objdiff-verified)
+// HANDOFF — overlay_02_02248728 WIP (324/364 byte-match, objdiff-verified)
 //
 // NOTE: several functions contain an inline 4-entry jump table (dense switch:
 // ov02_0224CFD8/D044 facing-dir coord; ov02_0224E26C/E2A0/E2D4 dir remaps;
