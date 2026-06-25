@@ -158,6 +158,16 @@ extern void *Save_SafariZone_Get(SaveData *saveData);                           
 extern void *SafariZone_GetAreaSet(void *safari_zone, int area_set_no);                                                     // safari_zone.h, not included
 extern int ov02_0224EE4C(void *a0, int a1, int a2, int a3, fx32 a4, u16 *a5, u16 *a6, int a7);                              // still in asm
 WIP_LOCAL int ov02_0224E698(void *work);
+typedef struct ov02_BF58Cfg {
+    int unk0;
+    int unk4;
+} ov02_BF58Cfg;
+extern const ov02_BF58Cfg ov02_022536E8;                                                                               // rodata, defined later
+extern int sub_02054C90(void *a0, void *a1, int a2, void **a3, void **a4);                                             // no header included here
+extern void *ov01_021FB9E0(void *a0);                                                                                  // no header included here
+extern void *ov01_021F3B38(void *a0);                                                                                  // no header included here
+extern void *ov01_021F3B3C(void *a0);                                                                                  // no header included here
+extern void ov01_021E8DE8(void *a0, void *a1, int a2, void *a3, void *a4, void *a5, void *a6, int a7, int a8, int a9); // no header included here
 typedef struct ov02_SafariObjCfg {
     u8 buildModel;
     u8 isAnimated : 1;
@@ -3435,6 +3445,21 @@ WIP_LOCAL int ov02_0224E754(void *work, u16 *out) {
     return 0xff;
 }
 
+void ov02_0224BF58(FieldSystem *fieldSystem, u8 a1) {
+    void *sp24;
+    void *sp20;
+    ov02_BF58Cfg cfg;
+    cfg = ov02_022536E8;
+    if (sub_02054C90(fieldSystem, &cfg, 2, &sp24, &sp20) != 0) {
+        void *v6 = ov01_021FB9E0(*(void **)((u8 *)fieldSystem + 0x34));
+        void *v4 = ov01_021F3B38(sp24);
+        void *v0 = ov01_021F3B3C(sp24);
+        ov01_021E8DE8(*(void **)((u8 *)fieldSystem + 0x54), *(void **)((u8 *)fieldSystem + 0x58), a1, sp20, v4, v0, v6, 2, 1, 0);
+    } else {
+        GF_AssertFail();
+    }
+}
+
 WIP_LOCAL int ov02_0224E698(void *work) {
     u8 facing = (u8)PlayerAvatar_GetFacingDirection(*(PlayerAvatar **)((u8 *)work + 0x40));
     s16 x = (s16)PlayerAvatar_GetXCoord(*(PlayerAvatar **)((u8 *)work + 0x40));
@@ -4838,7 +4863,7 @@ WIP_LOCAL void ov02_02249FD4(void *work) {
 }
 
 // ===========================================================================
-// HANDOFF — overlay_02_02248728 WIP (328/364 byte-match, objdiff-verified)
+// HANDOFF — overlay_02_02248728 WIP (329/364 byte-match, objdiff-verified)
 //
 // NOTE: several functions contain an inline 4-entry jump table (dense switch:
 // ov02_0224CFD8/D044 facing-dir coord; ov02_0224E26C/E2A0/E2D4 dir remaps;
