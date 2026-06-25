@@ -1921,6 +1921,40 @@ WIP_LOCAL BOOL ov02_022489F0(void *mgr, int a1) {
     GF_AssertFail();
 }
 
+WIP_LOCAL void ov02_0224886C(void *mgr) {
+    int i;
+    for (i = 0; i < *(u8 *)mgr; i++) {
+        if (*(s8 *)((u8 *)mgr + 4) != (*(AnimResEntry **)((u8 *)mgr + 0x144))[i].id) {
+            sub_0200AEB0((*(AnimResEntry **)((u8 *)mgr + 0x144))[i].res);
+        }
+    }
+    for (i = 0; i < *((u8 *)mgr + 1); i++) {
+        if (*(s8 *)((u8 *)mgr + 5) != (*(AnimResEntry **)((u8 *)mgr + 0x148))[i].id) {
+            sub_0200B0A8((*(AnimResEntry **)((u8 *)mgr + 0x148))[i].res);
+        }
+    }
+    for (i = 0; i < *((u8 *)mgr + 2); i++) {
+        if (*(s8 *)((u8 *)mgr + 6) != (*(AnimResEntry **)((u8 *)mgr + 0x14c))[i].id) {
+            sub_0200A740((*(AnimResEntry **)((u8 *)mgr + 0x14c))[i].res);
+        }
+    }
+    for (i = 0; i < *((u8 *)mgr + 3); i++) {
+        if (*(s8 *)((u8 *)mgr + 7) != (*(AnimResEntry **)((u8 *)mgr + 0x150))[i].id) {
+            sub_0200A740((*(AnimResEntry **)((u8 *)mgr + 0x150))[i].res);
+        }
+    }
+    Destroy2DGfxResObjMan(*(GF_2DGfxResMan **)((u8 *)mgr + 0x134));
+    Destroy2DGfxResObjMan(*(GF_2DGfxResMan **)((u8 *)mgr + 0x138));
+    Destroy2DGfxResObjMan(*(GF_2DGfxResMan **)((u8 *)mgr + 0x13c));
+    Destroy2DGfxResObjMan(*(GF_2DGfxResMan **)((u8 *)mgr + 0x140));
+    Heap_Free(*(void **)((u8 *)mgr + 0x144));
+    Heap_Free(*(void **)((u8 *)mgr + 0x148));
+    Heap_Free(*(void **)((u8 *)mgr + 0x14c));
+    Heap_Free(*(void **)((u8 *)mgr + 0x150));
+    SpriteList_DeleteAllSprites(*(SpriteList **)((u8 *)mgr + 8));
+    SpriteList_Delete(*(SpriteList **)((u8 *)mgr + 8));
+}
+
 WIP_LOCAL void ov02_02248A24(void *mgr, int a1) {
     int i;
     int count = *(u8 *)mgr;
@@ -4477,7 +4511,7 @@ WIP_LOCAL void ov02_02249FD4(void *work) {
 }
 
 // ===========================================================================
-// HANDOFF — overlay_02_02248728 WIP (320/364 byte-match, objdiff-verified)
+// HANDOFF — overlay_02_02248728 WIP (321/364 byte-match, objdiff-verified)
 //
 // NOTE: several functions contain an inline 4-entry jump table (dense switch:
 // ov02_0224CFD8/D044 facing-dir coord; ov02_0224E26C/E2A0/E2D4 dir remaps;
