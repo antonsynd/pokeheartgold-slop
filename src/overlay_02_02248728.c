@@ -101,6 +101,16 @@ typedef struct ov02_FollowMonStep {
     u8 hi : 4;
 } ov02_FollowMonStep;
 
+// ov02_0224A9D8 per-entry rodata (ov02_022535E4, stride 0x14).
+typedef struct ov02_A9D8Entry {
+    fx32 unk0;
+    fx32 unk4;
+    fx32 unk8;
+    void *unkC;
+    u32 unk10;
+} ov02_A9D8Entry;
+extern const ov02_A9D8Entry ov02_022535E4[]; // rodata, defined later
+
 // follow-mon task-data accessor (defined in unk_020689C8.c); local extern matches
 // the convention used by other overlays that don't pull in the full header.
 extern void *sub_02068D74(void *work);
@@ -1166,6 +1176,30 @@ WIP_LOCAL void *ov02_02248D58(void *arg0, void *arg1, void *arg2, void *arg3) {
     a4.unkC = arg2;
     a4.unk8 = arg3;
     return sub_02068B0C(arg1, &ov02_02253454, &pos, 0, &a4, 0x82);
+}
+
+WIP_LOCAL void ov02_0224A9D8(void *work, int a1) {
+    VecFx32 pos;
+    VecFx32 vec;
+    int i;
+    const ov02_A9D8Entry *p = ov02_022535E4;
+    *(int *)((u8 *)work + 0x14) = 2;
+    for (i = 0; i < 13; i++) {
+        u32 arg4;
+        void *arg3;
+        pos.x = p->unk0;
+        pos.y = p->unk4;
+        pos.z = 0;
+        vec.x = p->unk8;
+        vec.y = 0;
+        vec.z = 0;
+        arg3 = p->unkC;
+        arg4 = p->unk10;
+        ov02_0224AA44(work, &pos, &vec, arg3, arg4, (void *)a1);
+        pos.x += 0x100000;
+        ov02_0224AA44(work, &pos, &vec, arg3, arg4, (void *)a1);
+        p++;
+    }
 }
 
 WIP_LOCAL void ov02_0224AA44(void *arg0, VecFx32 *pos, VecFx32 *vec, void *arg3, u32 arg4, void *arg5) {
@@ -4118,7 +4152,7 @@ WIP_LOCAL void ov02_02249FD4(void *work) {
 }
 
 // ===========================================================================
-// HANDOFF — overlay_02_02248728 WIP (310/364 byte-match, objdiff-verified)
+// HANDOFF — overlay_02_02248728 WIP (311/364 byte-match, objdiff-verified)
 //
 // NOTE: several functions contain an inline 4-entry jump table (dense switch:
 // ov02_0224CFD8/D044 facing-dir coord; ov02_0224E26C/E2A0/E2D4 dir remaps;
