@@ -1478,6 +1478,36 @@ WIP_LOCAL BOOL ov02_0224AA80(void *a0, void *work) {
     return TRUE;
 }
 
+WIP_LOCAL void ov02_0224A288(void *work) {
+    int i;
+    for (i = 0; i < 4; i++) {
+        if (((SpriteResource **)work)[0x6b + i] != NULL) {
+            sub_0200AEB0(((SpriteResource **)work)[0x6b + i]);
+        }
+    }
+    for (i = 0; i < 3; i++) {
+        if (((SpriteResource **)work)[0x6f + i] != NULL) {
+            sub_0200B0A8(((SpriteResource **)work)[0x6f + i]);
+        }
+    }
+    for (i = 0; i < 4; i++) {
+        if (((SpriteResource **)work)[0x72 + i] != NULL) {
+            sub_0200A740(((SpriteResource **)work)[0x72 + i]);
+        }
+    }
+    for (i = 0; i < 2; i++) {
+        if (((SpriteResource **)work)[0x76 + i] != NULL) {
+            sub_0200A740(((SpriteResource **)work)[0x76 + i]);
+        }
+    }
+    Destroy2DGfxResObjMan(*(GF_2DGfxResMan **)((u8 *)work + 0x19c));
+    Destroy2DGfxResObjMan(*(GF_2DGfxResMan **)((u8 *)work + 0x1a0));
+    Destroy2DGfxResObjMan(*(GF_2DGfxResMan **)((u8 *)work + 0x1a4));
+    Destroy2DGfxResObjMan(*(GF_2DGfxResMan **)((u8 *)work + 0x1a8));
+    SpriteList_DeleteAllSprites(*(SpriteList **)((u8 *)work + 0x70));
+    SpriteList_Delete(*(SpriteList **)((u8 *)work + 0x70));
+}
+
 WIP_LOCAL void ov02_0224B2CC(void *work) {
     VecFx32 vec;
     u8 *s = (u8 *)sub_02068D74(work);
@@ -4352,7 +4382,7 @@ WIP_LOCAL void ov02_02249FD4(void *work) {
 }
 
 // ===========================================================================
-// HANDOFF — overlay_02_02248728 WIP (315/364 byte-match, objdiff-verified)
+// HANDOFF — overlay_02_02248728 WIP (317/364 byte-match, objdiff-verified)
 //
 // NOTE: several functions contain an inline 4-entry jump table (dense switch:
 // ov02_0224CFD8/D044 facing-dir coord; ov02_0224E26C/E2A0/E2D4 dir remaps;
