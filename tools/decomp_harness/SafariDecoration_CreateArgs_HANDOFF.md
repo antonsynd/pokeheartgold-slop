@@ -80,3 +80,33 @@ asm stack: facing@0x10, x@0x14, outSelector@0x18, buf@0x1a, pos@0x20 (y@0x24
 reused by height after sub_02054774). z in r7, stateFlag in r6.
 
 Verify: no jump table, so objdiff/opcode diff is authoritative once nm sizes match.
+
+---
+## UPDATE (2026-06-25 firing 3): BREAKTHROUGH + now a scheduling tie (2 bytes)
+
+The coloring is SOLVED. Key lever: **reuse `pos.y` as the height storage** — do
+NOT declare a separate `fx32 height`. Write:
+```c
+pos.y = sub_02054774(fieldSystem, pos.y, pos.x, pos.z, &outSelector);
+...
+args->unk1A = pos.y >> 0xc;
+...E828(..., pos.y, ...);  EB48(..., pos.y, ...);  EE4C(..., pos.y, ...);
+```
+The asm stores sub_02054774's result into pos.y's stack slot (sp+0x24). Using a
+separate `fx32 height` local makes MWCC keep it in a callee-saved reg (r6) and
+SPILL z; reusing pos.y (a stack member) forces height onto the stack and frees a
+callee-saved reg for z. This got stateFlag→r6, z→r7 (matching asm), 95→36 lines.
+Then declaring `int x;` BEFORE `int facing;` (reverse-decl-order) fixed the
+facing@sp+0x10/x@sp+0x14 slot swap: 36→18 lines.
+
+**Remaining: pure list-scheduler / load-delay-slot tie (2 bytes = trailing
+.balign pad).** Everything before the 3 call blocks matches byte-for-byte. In
+each call-arg setup the asm fills the `ldr pos.y` (a4) load-delay slot with
+`adds r2,r7,#0` (z=a2) and emits a7(stateFlag) before a1(x); MWCC instead fills
+it with `ldr x` (a1) and emits a2(z)/a7 last. Same instructions, reordered.
+Tried: decl reorders (no effect on the scheduling). This is the load-delay-slot
+scheduler choosing the register-move (z) vs the memory-load (x) to fill the slot.
+If unsteerable, this is a NONMATCHING-inline-asm candidate (the function body has
+no soft-float CALLS of its own — all floats are passed to bl'd helpers — so
+inline asm is viable). The current working C is byte-identical except this
+3x-repeated 3-instruction reorder.
