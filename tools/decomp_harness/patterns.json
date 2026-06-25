@@ -1310,6 +1310,13 @@
       "category": "matching-tricks",
       "body": "To reproduce a retail stack-struct zeroing emitted via a BASE POINTER (add rN,sp,#OFF; mov r0,#0; str r0,[rN,#0/4/8]), zero through an int* with ARRAY INDEXING, manually unrolled: int *p=(int*)&v; p[0]=0; p[1]=0; p[2]=0;. MWCC keeps p as the base pointer. FAILS: struct-member form (VecFx32 *q=&v; q->x=0; q->y=0; q->z=0;) and plain v.x=0;v.y=0;v.z=0; both FOLD to direct sp-relative stores str r0,[sp,#imm] (no base ptr) -> N-byte-short mismatch + base-ptr cascade; a real for-loop for(i=0;i<3;i++)p[i]=0 does NOT unroll (keeps i counter+cmp, +4B). Only the manually-unrolled int* array-index form gives base-ptr-without-loop. Diagnose: objdiff function a few bytes short, asm has an add rN,sp,#OFF the C lacks. This was the long-standing DAA4/D9C0/ADF0/E20 offset-zeroing class blocker.",
       "example": "ov02_02248E20 (sprite init) affineMtx zeroing matched via int *p=(int*)&affineMtx; p[0]=0;p[1]=0;p[2]=0;. Unblocks ADF0/DAA4/D9C0 deferred on this exact tie."
+    },
+    {
+      "id": "stack-local-decl-order-reverse-assigns-offsets",
+      "title": "Stack-local declaration order is reverse: last-declared gets the lowest sp offset",
+      "category": "codegen",
+      "body": "When matching a function with multiple stack locals (arrays/structs), MWCC -O4 assigns stack slots in REVERSE declaration order: the LAST-declared local lands at the lowest sp offset (just above any spilled-param slots), the first-declared at the highest. If objdiff shows the right opcodes but wrong sp-relative offsets (e.g. strh [r1,#0] vs [r1,#4]; add r3,sp,#4 vs #8), reorder the C declarations rather than chasing the values. Verify against the asm: whichever local the asm accesses at the LOWER sp offset must be declared LAST.",
+      "example": "ov02_0224CAB8 (overlay_02_02248728): asm has u8 out[4]@sp+4, s16 idx[4]@sp+8. Original C declared u8 out[4]; s16 idx[4]; -> MWCC put idx@4, out@12 (wrong). Flipping to s16 idx[4]; u8 out[4]; (out last) -> out@4, idx@8 (match)."
     }
   ]
 }

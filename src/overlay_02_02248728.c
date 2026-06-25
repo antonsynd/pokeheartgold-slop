@@ -270,6 +270,8 @@ extern u16 PlayerProfile_GetTrainerID_VisibleHalf(PlayerProfile *profile);      
 typedef struct WallpaperPasswordBank WallpaperPasswordBank;                                        // opaque; easy_chat.h not included
 extern WallpaperPasswordBank *WallpaperPasswordBank_Create(enum HeapID heapID);
 extern void WallpaperPasswordBank_Delete(WallpaperPasswordBank *bank);
+extern u32 WallpaperPasswordBank_GetCount(WallpaperPasswordBank *bank);
+extern s16 WallpaperPasswordBank_GetIndexOfWord(WallpaperPasswordBank *bank, s32 word);
 extern void sub_02068DB8(void *a0, VecFx32 *out);                            // no header included here
 extern u32 sub_02068D90(void *a0);                                           // unk_020689C8.c, no C proto
 extern void sub_02068DA8(void *a0, VecFx32 *src);                            // unk_020689C8.c, no C proto
@@ -426,6 +428,7 @@ WIP_LOCAL BOOL ov02_0224CE28(TaskManager *taskManager);
 WIP_LOCAL BOOL PokecenterAnimRun(TaskManager *taskManager);
 WIP_LOCAL int ov02_0224CAB8(WallpaperPasswordBank *bank, u16 trainerId, u16 a, u16 b, u16 c, u16 d);
 WIP_LOCAL int ov02_0224CBF8(WallpaperPasswordBank *bank, u16 trainerId, u16 a, u16 b, u16 c, u16 d);
+WIP_LOCAL void ov02_0224CA58(u8 *arr, int n, u8 val);
 WIP_LOCAL int ov02_0224C6DC(TaskManager *taskManager, FieldSystem *fieldSystem, void *work);
 WIP_LOCAL int ov02_0224C2A8(TaskManager *taskManager, FieldSystem *fieldSystem, void *work);
 WIP_LOCAL int ov02_0224C698(TaskManager *taskManager, FieldSystem *fieldSystem, void *work);
@@ -1522,6 +1525,67 @@ WIP_LOCAL void ov02_0224BDE8(FieldSystem *fieldSystem, u8 direction, u8 length) 
     } else {
         GF_AssertFail();
     }
+}
+
+WIP_LOCAL int ov02_0224CAB8(WallpaperPasswordBank *bank, u16 trainerId, u16 a, u16 b, u16 c, u16 d) {
+    s16 idx[4];
+    u8 out[4];
+    int count;
+    int k;
+    int val;
+    int combined;
+
+    count = WallpaperPasswordBank_GetCount(bank);
+    idx[0] = WallpaperPasswordBank_GetIndexOfWord(bank, a);
+    idx[1] = WallpaperPasswordBank_GetIndexOfWord(bank, b);
+    idx[2] = WallpaperPasswordBank_GetIndexOfWord(bank, c);
+    idx[3] = WallpaperPasswordBank_GetIndexOfWord(bank, d);
+
+    for (k = 0; k < 4; k++) {
+        if (idx[k] < 0) {
+            return -1;
+        }
+        if (k > 0) {
+            if (idx[k] >= idx[k - 1]) {
+                int v = idx[k] - idx[k - 1];
+                if (v > 0xff) {
+                    return -1;
+                }
+                out[k] = v;
+            } else {
+                int v = count - (idx[k - 1] - idx[k]);
+                if (v > 0xff) {
+                    return -1;
+                }
+                out[k] = v;
+            }
+        } else {
+            if (idx[0] > 0xff) {
+                return -1;
+            }
+            out[0] = idx[0];
+        }
+    }
+
+    ov02_0224CA58(out, 4, 5);
+
+    for (k = 0; k < 3; k++) {
+        out[k] ^= (out[3] >> 4) | (out[3] & 0xf0);
+    }
+
+    ov02_0224CA58(out, 3, out[3] & 0xf);
+
+    val = out[0] & 0xf;
+    if (val >= 8) {
+        return -1;
+    }
+    out[1] ^= out[0];
+    out[2] ^= out[0];
+    combined = (out[1] << 8) | out[2];
+    if (trainerId == combined && ((out[0] & 0xf0) >> 4) == 6 && out[3] == (u8)((out[0] + out[1]) * out[2])) {
+        return val;
+    }
+    return -1;
 }
 
 WIP_LOCAL int ov02_0224CD38(PlayerProfile *profile, u16 a, u16 b, u16 c, u16 d, enum HeapID heapID) {

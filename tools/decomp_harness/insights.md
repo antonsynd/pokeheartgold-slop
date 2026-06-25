@@ -352,6 +352,10 @@ For a loop body accessing *(T*)((u8*)base + CONST + i*stride) where CONST is a L
 
 To read packed N-bit fields from a u16/u32 on the STACK, MWCC emits a bitfield extraction lsl#(32-w-off); lsr#(32-w) (e.g. lsl#29;lsr#29 for a 3-bit field at offset 0) — NOT (x>>off)&mask (which is lsr;and). So model the packed value with a real bitfield struct (e.g. struct {u16 s0:3,s1:3,...}) and cast over the member. CRUCIALLY: because Thumb ldrh/ldrb have no sp-relative addressing, each stack-struct field read needs add rN,sp,#off; ldrh — the asm RE-DERIVES this address in every basic block. Access via an INLINE cast each time: ((struct Bits*)&s.field)->fN. Do NOT introduce a named pointer local (T *bits = ...): MWCC keeps that pointer live in a register and emits the add-sp ONCE, dropping the per-block re-derivations -> function comes out SIZE too small. Also watch the unsigned compare (bcs/bhs) — make the accumulator u32 so 3-bit field comparisons are unsigned; and steer the accumulator/code into the right registers via declaration order. Seen ov02_0224F6AC (pokeathlon best-stat picker over PokeathlonPerformanceStars.stars). Related: [[local-array-initializer-is-rodata-byte-copy]], [[local-stack-slot-order-equals-decl-order]].
 
+### Stack-local declaration order is reverse: last-declared gets the lowest sp offset  <!-- id: stack-local-decl-order-reverse-assigns-offsets -->
+
+When matching a function with multiple stack locals (arrays/structs), MWCC -O4 assigns stack slots in REVERSE declaration order: the LAST-declared local lands at the lowest sp offset (just above any spilled-param slots), the first-declared at the highest. If objdiff shows the right opcodes but wrong sp-relative offsets (e.g. strh [r1,#0] vs [r1,#4]; add r3,sp,#4 vs #8), reorder the C declarations rather than chasing the values. Verify against the asm: whichever local the asm accesses at the LOWER sp offset must be declared LAST.
+
 ## Matching Tricks
 
 ### Small source changes that move codegen  <!-- id: decl-order-tricks -->
