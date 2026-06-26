@@ -180,8 +180,15 @@ extern void *SafariZone_GetAreaSet(void *safari_zone, int area_set_no);         
 extern int ov02_0224EE4C(void *a0, int a1, int a2, int a3, fx32 a4, u16 *a5, u16 *a6, int a7);                              // still in asm
 WIP_LOCAL int ov02_0224E698(void *work);
 // --- NONMATCHING-finalization deps (asm-only references) ---
-extern void _s32_div_f(void);                                             // int-division runtime
-extern void Field3dObject_SetXRotation(void);                             // not in any included header (asm-only ref)
+extern void _s32_div_f(void);                 // int-division runtime
+extern void _fadd(void);                      // soft-float runtime (asm bl)
+extern void _fsub(void);                      // soft-float runtime
+extern void _fflt(void);                      // soft-float runtime
+extern void _ffix(void);                      // soft-float runtime
+extern void Field3dObject_SetXRotation(void); // not in any included header (asm-only ref)
+extern void sub_020548C0(void);               // not in any included header (asm-only ref)
+extern const u8 ov02_02253A4C[];              // rodata (offset struct, E828/EB48/EE4C)
+WIP_LOCAL void ov02_0224D488(void *a0, void *a1, void *a2);
 extern u16 GF_DegreeToSinCosIdxNoWrap(u16 deg);                           // math_util.h, not included
 extern BOOL Save_VarsFlags_CheckFlagInArray(void *varsFlags, u16 flagId); // save_vars_flags.h, not included
 extern const u8 ov02_022538EC[];                                          // rodata (Field3dObjectTaskTemplate)
@@ -7303,5 +7310,1333 @@ _0224E638:
     add r0, r4, #0
     add sp, #0x2c
     pop {r4, r5, r6, r7, pc}
+}
+// clang-format on
+
+// ov02_0224D488
+// clang-format off
+asm void ov02_0224D488(void *a0, void *a1, void *a2) {
+    push {r3, r4, r5, r6, r7, lr}
+    sub sp, #8
+    ldr r7, =0x000001CA
+    add r4, r2, #0
+    ldrh r0, [r4, r7]
+    add r5, r1, #0
+    cmp r0, #3
+    bhi _0224D570
+    add r0, r0, r0
+    add r0, pc
+    ldrh r0, [r0, #6]
+    lsl r0, r0, #0x10
+    asr r0, r0, #0x10
+    add pc, r0
+    lsl r6, r0, #0
+    lsl r4, r4, #1
+    lsl r4, r7, #1
+    lsl r0, r7, #2
+_0224D4AC:
+    ldr r2, =ov02_022538EC
+    add r1, sp, #4
+    ldrb r3, [r2, #2]
+    add r0, sp, #4
+    add r1, #2
+    strb r3, [r0, #2]
+    ldrb r3, [r2, #3]
+    strb r3, [r0, #3]
+    ldrb r6, [r2, #4]
+    add r3, sp, #4
+    strb r6, [r0, #0]
+    ldrb r2, [r2, #5]
+    strb r2, [r0, #1]
+    sub r0, r7, #2
+    ldrh r0, [r4, r0]
+    lsl r0, r0, #0x18
+    lsr r2, r0, #0x18
+    mov r0, #0xdc
+    add r6, r2, #0
+    mul r6, r0
+    add r0, #0xdc
+    add r0, r4, r0
+    str r0, [sp, #0]
+    ldrb r1, [r1, r2]
+    ldrb r2, [r3, r2]
+    add r0, r4, r6
+    mov r3, #2
+    bl ov02_0224D0C8
+    ldr r0, [r5, #0x40]
+    add r1, r4, r6
+    bl ov02_0224D0AC
+    sub r1, r7, #2
+    ldrh r0, [r4, r1]
+    add r0, r0, #1
+    strh r0, [r4, r1]
+    ldrh r0, [r4, r1]
+    cmp r0, #2
+    blo _0224D570
+    add r0, r1, #2
+    ldrh r0, [r4, r0]
+    add sp, #8
+    add r2, r0, #1
+    add r0, r1, #2
+    strh r2, [r4, r0]
+    pop {r3, r4, r5, r6, r7, pc}
+_0224D50A:
+    add r0, r4, #0
+    add r0, #0xdc
+    mov r1, #0
+    bl Field3dObject_SetActiveFlag
+    ldr r0, =SEQ_SE_DP_FW463
+    bl PlaySE
+    add r0, r7, #0
+    ldrh r1, [r4, r0]
+    add r1, r1, #1
+    strh r1, [r4, r0]
+_0224D522:
+    add r0, r4, #0
+    bl ov02_0224D178
+    add r6, r0, #0
+    ldr r0, [r5, #0x40]
+    add r1, r4, #0
+    bl ov02_0224D0AC
+    cmp r6, #1
+    bne _0224D570
+    add r0, r4, #0
+    add r0, #0xdc
+    mov r1, #1
+    bl Field3dObject_SetActiveFlag
+    add r0, r4, #0
+    mov r1, #0
+    bl Field3dObject_SetActiveFlag
+    add r1, r4, #0
+    ldr r0, [r5, #0x40]
+    add r1, #0xdc
+    bl ov02_0224D0AC
+    ldr r0, =0x000001CA
+    add sp, #8
+    ldrh r1, [r4, r0]
+    add r1, r1, #1
+    strh r1, [r4, r0]
+    pop {r3, r4, r5, r6, r7, pc}
+_0224D55E:
+    add r0, r4, #0
+    add r0, #0xdc
+    bl ov02_0224D1AC
+    add r4, #0xdc
+    ldr r0, [r5, #0x40]
+    add r1, r4, #0
+    bl ov02_0224D0AC
+_0224D570:
+    add sp, #8
+    pop {r3, r4, r5, r6, r7, pc}
+}
+// clang-format on
+
+// ov02_0224EE4C
+// clang-format off
+asm int ov02_0224EE4C(void *a0, int a1, int a2, int a3, fx32 a4, u16 *a5, u16 *a6, int a7) {
+    push {r4, r5, r6, r7, lr}
+    sub sp, #0x24
+    str r1, [sp, #0x14]
+    str r2, [sp, #0x18]
+    ldr r4, [sp, #0x38]
+    str r3, [sp, #0x1c]
+    str r4, [sp, #0x38]
+    ldr r4, [sp, #0x44]
+    ldr r6, [sp, #0x3c]
+    str r4, [sp, #0x44]
+    ldr r4, =ov02_02253A4C
+    ldr r7, [sp, #0x40]
+    ldrb r5, [r4, #4]
+    add r4, sp, #0x20
+    str r0, [sp, #0x10]
+    strb r5, [r4, #0]
+    ldr r4, =ov02_02253A4C
+    ldrb r5, [r4, #5]
+    add r4, sp, #0x20
+    strb r5, [r4, #1]
+    ldr r4, [sp, #0x14]
+    strh r4, [r6, #0]
+    ldr r4, [sp, #0x18]
+    strh r4, [r7, #0]
+    ldr r4, [sp, #0x1c]
+    cmp r4, #3
+    bhi _0224EF60
+    add r4, r4, r4
+    add r4, pc
+    ldrh r4, [r4, #6]
+    lsl r4, r4, #0x10
+    asr r4, r4, #0x10
+    add pc, r4
+    lsl r6, r0, #0
+    lsl r6, r0, #0
+    lsl r4, r5, #1
+    lsl r4, r5, #1
+_0224EE96:
+    ldr r4, [sp, #0x38]
+    str r4, [sp, #0]
+    str r6, [sp, #4]
+    str r7, [sp, #8]
+    ldr r4, [sp, #0x44]
+    str r4, [sp, #0xc]
+    bl ov02_0224E828
+    cmp r0, #0
+    beq _0224EF60
+    mov r4, #0
+    add r5, sp, #0x20
+_0224EEAE:
+    ldr r0, [sp, #0x38]
+    mov r1, #0
+    str r0, [sp, #0]
+    str r6, [sp, #4]
+    str r7, [sp, #8]
+    ldr r0, [sp, #0x44]
+    str r0, [sp, #0xc]
+    ldrsb r2, [r5, r1]
+    ldr r1, [sp, #0x14]
+    ldr r0, [sp, #0x10]
+    add r1, r1, r2
+    lsl r1, r1, #0x10
+    ldr r2, [sp, #0x18]
+    ldr r3, [sp, #0x1c]
+    asr r1, r1, #0x10
+    bl ov02_0224E828
+    cmp r0, #0
+    beq _0224EEF2
+    ldr r0, [sp, #0x14]
+    sub r0, r0, r4
+    strh r0, [r6, #0]
+    ldr r0, [sp, #0x1c]
+    cmp r0, #0
+    bne _0224EEE6
+    ldr r0, [sp, #0x18]
+    sub r0, r0, #1
+    b _0224EEEA
+_0224EEE6:
+    ldr r0, [sp, #0x18]
+    add r0, r0, #2
+_0224EEEA:
+    add sp, #0x24
+    strh r0, [r7, #0]
+    mov r0, #1
+    pop {r4, r5, r6, r7, pc}
+_0224EEF2:
+    add r4, r4, #1
+    add r5, r5, #1
+    cmp r4, #2
+    blt _0224EEAE
+    b _0224EF60
+_0224EEFC:
+    ldr r4, [sp, #0x38]
+    str r4, [sp, #0]
+    str r6, [sp, #4]
+    str r7, [sp, #8]
+    ldr r4, [sp, #0x44]
+    str r4, [sp, #0xc]
+    bl ov02_0224EB48
+    cmp r0, #0
+    beq _0224EF60
+    mov r5, #0
+    add r4, sp, #0x20
+_0224EF14:
+    ldr r0, [sp, #0x38]
+    mov r2, #0
+    str r0, [sp, #0]
+    str r6, [sp, #4]
+    str r7, [sp, #8]
+    ldr r0, [sp, #0x44]
+    str r0, [sp, #0xc]
+    ldrsb r3, [r4, r2]
+    ldr r2, [sp, #0x18]
+    ldr r0, [sp, #0x10]
+    sub r2, r2, r3
+    lsl r2, r2, #0x10
+    ldr r1, [sp, #0x14]
+    ldr r3, [sp, #0x1c]
+    asr r2, r2, #0x10
+    bl ov02_0224EB48
+    cmp r0, #0
+    beq _0224EF58
+    ldr r0, [sp, #0x1c]
+    cmp r0, #2
+    bne _0224EF46
+    ldr r0, [sp, #0x14]
+    sub r0, r0, #2
+    b _0224EF4A
+_0224EF46:
+    ldr r0, [sp, #0x14]
+    add r0, r0, #1
+_0224EF4A:
+    strh r0, [r6, #0]
+    ldr r0, [sp, #0x18]
+    add sp, #0x24
+    add r0, r0, r5
+    strh r0, [r7, #0]
+    mov r0, #1
+    pop {r4, r5, r6, r7, pc}
+_0224EF58:
+    add r5, r5, #1
+    add r4, r4, #1
+    cmp r5, #2
+    blt _0224EF14
+_0224EF60:
+    mov r0, #0
+    add sp, #0x24
+    pop {r4, r5, r6, r7, pc}
+    nop
+}
+// clang-format on
+
+// ov02_0224F8FC
+// clang-format off
+asm int ov02_0224F8FC(FieldSystem *fieldSystem, void *a1) {
+    push {r3, r4, r5, r6, r7, lr}
+    ldr r2, =0x0000086C
+    add r4, r1, #0
+    ldrb r3, [r4, r2]
+    add r5, r0, #0
+    lsl r2, r3, #0x1c
+    lsr r2, r2, #0x1c
+    mov ip, r2
+    cmp r2, #5
+    blo _0224F93E
+    bl ov02_02250504
+    ldr r1, =0x0000080C
+    ldr r0, [r4, r1]
+    cmp r0, #0
+    beq _0224F920
+    mov r0, #2
+    pop {r3, r4, r5, r6, r7, pc}
+_0224F920:
+    add r0, r1, #0
+    add r0, #0xa
+    ldrb r0, [r4, r0]
+    cmp r0, #0
+    beq _0224F92E
+    mov r0, #3
+    pop {r3, r4, r5, r6, r7, pc}
+_0224F92E:
+    add r1, #0xb
+    ldrb r0, [r4, r1]
+    cmp r0, #0
+    beq _0224F93A
+    mov r0, #4
+    pop {r3, r4, r5, r6, r7, pc}
+_0224F93A:
+    mov r0, #1
+    pop {r3, r4, r5, r6, r7, pc}
+_0224F93E:
+    ldr r2, =0x0000086C
+    sub r2, #0x88
+    add r7, r4, r2
+    mov r2, ip
+    lsl r2, r2, #3
+    add r6, r7, r2
+    ldrh r7, [r7, r2]
+    ldr r2, =0x0000FFFF
+    cmp r7, r2
+    bne _0224F980
+    bl ov02_02250504
+    ldr r1, =0x0000080C
+    ldr r0, [r4, r1]
+    cmp r0, #0
+    beq _0224F962
+    mov r0, #2
+    pop {r3, r4, r5, r6, r7, pc}
+_0224F962:
+    add r0, r1, #0
+    add r0, #0xa
+    ldrb r0, [r4, r0]
+    cmp r0, #0
+    beq _0224F970
+    mov r0, #3
+    pop {r3, r4, r5, r6, r7, pc}
+_0224F970:
+    add r1, #0xb
+    ldrb r0, [r4, r1]
+    cmp r0, #0
+    beq _0224F97C
+    mov r0, #4
+    pop {r3, r4, r5, r6, r7, pc}
+_0224F97C:
+    mov r0, #1
+    pop {r3, r4, r5, r6, r7, pc}
+_0224F980:
+    ldr r2, =0x0000086C
+    sub r2, r2, #3
+    ldrb r2, [r4, r2]
+    cmp r2, #7
+    bls _0224F98C
+    b _0224FB28
+_0224F98C:
+    add r2, r2, r2
+    add r2, pc
+    ldrh r2, [r2, #6]
+    lsl r2, r2, #0x10
+    asr r2, r2, #0x10
+    add pc, r2
+    lsl r6, r1, #0
+    lsl r0, r6, #0
+    lsl r6, r1, #1
+    lsl r4, r5, #1
+    lsl r0, r0, #2
+    lsl r4, r4, #2
+    lsl r6, r6, #2
+    lsl r4, r2, #5
+_0224F9A8:
+    add r0, r4, #0
+    add r1, r6, #0
+    bl ov02_0224FB44
+    cmp r0, #0
+    beq _0224F9CA
+    add r5, #0xe4
+    ldr r0, [r5, #0]
+    bl MapObject_UnpauseMovement
+    ldr r0, =0x00000868
+    mov r1, #0
+    strb r1, [r4, r0]
+    mov r1, #5
+    add r0, r0, #1
+    strb r1, [r4, r0]
+    b _0224FB28
+_0224F9CA:
+    add r0, r5, #0
+    add r1, r4, #0
+    add r2, r6, #0
+    bl ov02_0224FB54
+    cmp r0, #0
+    beq _0224F9E8
+    add r5, #0xe4
+    ldr r0, [r5, #0]
+    bl MapObject_UnpauseMovement
+    ldr r0, =0x00000869
+    mov r1, #2
+    strb r1, [r4, r0]
+    b _0224FB28
+_0224F9E8:
+    add r0, r5, #0
+    add r1, r4, #0
+    add r2, r6, #0
+    bl FollowMon_TryPrintInteractionMessage
+    cmp r0, #0
+    beq _0224FA06
+    add r5, #0xe4
+    ldr r0, [r5, #0]
+    bl MapObject_PauseMovement
+    ldr r0, =0x00000869
+    mov r1, #6
+    strb r1, [r4, r0]
+    b _0224FB28
+_0224FA06:
+    add r0, r4, #0
+    add r1, r6, #0
+    bl ov02_0224FC74
+    cmp r0, #0
+    beq _0224FA1A
+    ldr r0, =0x00000869
+    mov r1, #7
+    strb r1, [r4, r0]
+    b _0224FB28
+_0224FA1A:
+    ldr r2, =0x0000086C
+    mov r1, #0xf
+    ldrb r3, [r4, r2]
+    add r0, r3, #0
+    bic r0, r1
+    lsl r1, r3, #0x1c
+    lsr r1, r1, #0x1c
+    add r1, r1, #1
+    lsl r1, r1, #0x18
+    lsr r3, r1, #0x18
+    mov r1, #0xf
+    and r1, r3
+    orr r0, r1
+    strb r0, [r4, r2]
+    mov r1, #0
+    sub r0, r2, #3
+    strb r1, [r4, r0]
+    b _0224FB28
+_0224FA3E:
+    add r2, r7, #0
+    bl ov02_02250004
+    cmp r0, #0
+    beq _0224FB28
+    ldr r0, =0x00000869
+    mov r1, #1
+    strb r1, [r4, r0]
+    b _0224FB28
+_0224FA50:
+    ldr r0, =0x0000086C
+    add r0, r0, #2
+    ldrh r0, [r4, r0]
+    lsl r0, r0, #0x18
+    lsr r0, r0, #0x18
+    bl IsPrintFinished
+    cmp r0, #1
+    bne _0224FB28
+    ldr r1, =0x0000086C
+    ldrb r2, [r4, r1]
+    lsl r0, r2, #0x18
+    lsl r2, r2, #0x1c
+    lsr r2, r2, #0x1c
+    lsr r0, r0, #0x1c
+    add r2, r2, #1
+    cmp r0, r2
+    ble _0224FAA8
+    ldr r0, =gSystem
+    ldr r1, [r0, #0x48]
+    mov r0, #3
+    tst r0, r1
+    beq _0224FB28
+    add r0, r4, #0
+    mov r1, #0
+    bl ClearFrameAndWindow2
+    add r0, r4, #0
+    bl RemoveWindow
+    ldr r0, [r4, #0x10]
+    bl String_Delete
+    add r0, r5, #0
+    add r0, #0xd2
+    ldrb r1, [r0, #0]
+    mov r0, #0x40
+    add r5, #0xd2
+    bic r1, r0
+    strb r1, [r5, #0]
+    ldr r0, =0x00000869
+    mov r1, #3
+    strb r1, [r4, r0]
+    b _0224FB28
+_0224FAA8:
+    add r0, r1, #0
+    sub r0, #0x60
+    ldr r0, [r4, r0]
+    cmp r0, #0
+    beq _0224FABA
+    mov r2, #3
+    sub r0, r1, #3
+    strb r2, [r4, r0]
+    b _0224FB28
+_0224FABA:
+    ldr r0, =gSystem
+    ldr r1, [r0, #0x48]
+    mov r0, #3
+    tst r0, r1
+    beq _0224FB28
+    add r0, r4, #0
+    mov r1, #0
+    bl ClearFrameAndWindow2
+    add r0, r4, #0
+    bl RemoveWindow
+    ldr r0, [r4, #0x10]
+    bl String_Delete
+    add r0, r5, #0
+    add r0, #0xd2
+    ldrb r1, [r0, #0]
+    mov r0, #0x40
+    add r5, #0xd2
+    bic r1, r0
+    strb r1, [r5, #0]
+    ldr r0, =0x00000869
+    mov r1, #3
+    strb r1, [r4, r0]
+    b _0224FB28
+_0224FAEE:
+    ldr r0, =0x0000086C
+    add r0, r0, #1
+    ldrb r1, [r4, r0]
+    ldrb r0, [r6, #7]
+    cmp r1, r0
+    blo _0224FB1A
+    mov r0, #0xf
+    bic r3, r0
+    mov r0, ip
+    add r0, r0, #1
+    lsl r0, r0, #0x18
+    lsr r1, r0, #0x18
+    mov r0, #0xf
+    and r0, r1
+    add r1, r3, #0
+    orr r1, r0
+    ldr r0, =0x0000086C
+    strb r1, [r4, r0]
+    mov r1, #0
+    sub r0, r0, #3
+    strb r1, [r4, r0]
+    b _0224FB28
+_0224FB1A:
+    ldr r0, =0x0000086C
+    add r0, r0, #1
+    ldrb r0, [r4, r0]
+    add r1, r0, #1
+    ldr r0, =0x0000086C
+    add r0, r0, #1
+    strb r1, [r4, r0]
+_0224FB28:
+    mov r0, #0
+    pop {r3, r4, r5, r6, r7, pc}
+}
+// clang-format on
+
+// ov02_0224E828
+// clang-format off
+asm int ov02_0224E828(void *a0, int a1, int a2, int a3, fx32 a4, u16 *a5, u16 *a6, int a7) {
+    push {r4, r5, r6, r7, lr}
+    sub sp, #0x6c
+    add r4, r0, #0
+    add r5, r1, #0
+    ldr r0, [sp, #0x84]
+    str r2, [sp, #4]
+    ldr r1, =ov02_02253A4C
+    str r0, [sp, #0x84]
+    ldr r0, [sp, #0x88]
+    ldrb r2, [r1, #2]
+    str r0, [sp, #0x88]
+    ldrb r1, [r1, #3]
+    str r3, [sp, #8]
+    add r0, sp, #0x68
+    strb r2, [r0, #1]
+    strb r1, [r0, #2]
+    ldr r1, [sp, #0x84]
+    ldr r6, [sp, #0x80]
+    strh r5, [r1, #0]
+    ldr r2, [sp, #4]
+    ldr r1, [sp, #0x88]
+    strh r2, [r1, #0]
+    ldr r1, [sp, #8]
+    cmp r1, #3
+    bls _0224E85C
+    b _0224EB3E
+_0224E85C:
+    add r1, r1, r1
+    add r1, pc
+    ldrh r1, [r1, #6]
+    lsl r1, r1, #0x10
+    asr r1, r1, #0x10
+    add pc, r1
+    lsl r6, r0, #0
+    lsl r6, r0, #0
+    lsl r0, r5, #4
+    lsl r0, r5, #4
+_0224E870:
+    mov r0, #0
+    str r0, [sp, #0x50]
+    ldr r0, [sp, #8]
+    cmp r0, #0
+    beq _0224E87E
+    mov r0, #1
+    b _0224E880
+_0224E87E:
+    ldr r0, [sp, #0x50]
+_0224E880:
+    lsl r0, r0, #0x18
+    lsr r1, r0, #0x18
+    mov r0, #0
+    str r0, [sp, #0x54]
+    add r0, sp, #0x68
+    add r0, #1
+    ldrsb r0, [r0, r1]
+    ldr r7, [sp, #0x54]
+    str r0, [sp, #0x38]
+    add r0, sp, #0x70
+    ldrb r0, [r0, #0x1c]
+    str r0, [sp, #0x48]
+    lsl r0, r5, #4
+    str r0, [sp, #0x44]
+    add r0, #8
+    str r0, [sp, #0x44]
+    lsl r0, r0, #0xc
+    str r0, [sp, #0x40]
+_0224E8A4:
+    ldr r0, [sp, #0x38]
+    add r1, r7, r0
+    ldr r0, [sp, #4]
+    add r0, r0, r1
+    lsl r0, r0, #0x10
+    asr r0, r0, #0x10
+    str r0, [sp, #0x3c]
+    ldr r2, [sp, #0x3c]
+    add r0, r4, #0
+    add r1, r5, #0
+    bl GetMetatileBehavior
+    str r0, [sp, #0x58]
+    ldr r2, [sp, #0x3c]
+    add r0, r4, #0
+    add r1, r5, #0
+    bl sub_020548C0
+    add r1, r0, #0
+    ldr r0, [sp, #0x58]
+    ldr r2, [sp, #0x48]
+    bl ov02_0224EF6C
+    cmp r0, #0
+    beq _0224E95C
+    ldr r0, [sp, #0x3c]
+    lsl r0, r0, #4
+    add r0, #8
+    cmp r0, #0
+    ble _0224E8F4
+    lsl r0, r0, #0xc
+    bl _fflt
+    add r1, r0, #0
+    mov r0, #0x3f
+    lsl r0, r0, #0x18
+    bl _fadd
+    str r0, [sp, #0x14]
+    b _0224E904
+_0224E8F4:
+    lsl r0, r0, #0xc
+    bl _fflt
+    mov r1, #0x3f
+    lsl r1, r1, #0x18
+    bl _fsub
+    str r0, [sp, #0x14]
+_0224E904:
+    ldr r0, [sp, #0x44]
+    cmp r0, #0
+    ble _0224E91C
+    ldr r0, [sp, #0x40]
+    bl _fflt
+    add r1, r0, #0
+    mov r0, #0x3f
+    lsl r0, r0, #0x18
+    bl _fadd
+    b _0224E92A
+_0224E91C:
+    ldr r0, [sp, #0x40]
+    bl _fflt
+    mov r1, #0x3f
+    lsl r1, r1, #0x18
+    bl _fsub
+_0224E92A:
+    bl _ffix
+    str r0, [sp, #0x5c]
+    ldr r0, [sp, #0x14]
+    bl _ffix
+    add r3, r0, #0
+    add r0, sp, #0x68
+    str r0, [sp, #0]
+    ldr r2, [sp, #0x5c]
+    add r0, r4, #0
+    add r1, r6, #0
+    bl sub_02054774
+    add r1, sp, #0x68
+    ldrb r1, [r1, #0]
+    cmp r1, #1
+    bne _0224E95C
+    cmp r0, r6
+    bne _0224E95C
+    ldr r0, [sp, #0x50]
+    add r0, r0, #1
+    lsl r0, r0, #0x18
+    lsr r0, r0, #0x18
+    str r0, [sp, #0x50]
+_0224E95C:
+    ldr r0, [sp, #0x38]
+    add r7, r7, r0
+    ldr r0, [sp, #0x54]
+    add r0, r0, #1
+    str r0, [sp, #0x54]
+    cmp r0, #2
+    blt _0224E8A4
+    ldr r0, [sp, #0x50]
+    cmp r0, #2
+    beq _0224E972
+    b _0224EB3E
+_0224E972:
+    ldr r0, [sp, #0x84]
+    strh r5, [r0, #0]
+    ldr r0, [sp, #8]
+    cmp r0, #0
+    bne _0224E984
+    ldr r0, [sp, #4]
+    sub r1, r0, #1
+    ldr r0, [sp, #0x88]
+    b _0224E98A
+_0224E984:
+    ldr r0, [sp, #4]
+    add r1, r0, #2
+    ldr r0, [sp, #0x88]
+_0224E98A:
+    strh r1, [r0, #0]
+    add sp, #0x6c
+    mov r0, #1
+    pop {r4, r5, r6, r7, pc}
+_0224E992:
+    ldr r1, [sp, #8]
+    cmp r1, #2
+    bne _0224E99C
+    mov r1, #1
+    b _0224E99E
+_0224E99C:
+    mov r1, #2
+_0224E99E:
+    ldrsb r0, [r0, r1]
+    ldr r2, [sp, #4]
+    add r0, r5, r0
+    lsl r0, r0, #0x10
+    asr r5, r0, #0x10
+    add r0, r4, #0
+    add r1, r5, #0
+    bl GetMetatileBehavior
+    str r0, [sp, #0x20]
+    ldr r2, [sp, #4]
+    add r0, r4, #0
+    add r1, r5, #0
+    bl sub_020548C0
+    str r0, [sp, #0x18]
+    ldr r0, [sp, #4]
+    lsl r0, r0, #4
+    add r0, #8
+    cmp r0, #0
+    ble _0224E9DC
+    lsl r0, r0, #0xc
+    bl _fflt
+    add r1, r0, #0
+    mov r0, #0x3f
+    lsl r0, r0, #0x18
+    bl _fadd
+    str r0, [sp, #0x10]
+    b _0224E9EC
+_0224E9DC:
+    lsl r0, r0, #0xc
+    bl _fflt
+    mov r1, #0x3f
+    lsl r1, r1, #0x18
+    bl _fsub
+    str r0, [sp, #0x10]
+_0224E9EC:
+    lsl r0, r5, #4
+    str r0, [sp, #0x2c]
+    add r0, #8
+    str r0, [sp, #0x2c]
+    cmp r0, #0
+    ble _0224EA0A
+    lsl r0, r0, #0xc
+    bl _fflt
+    add r1, r0, #0
+    mov r0, #0x3f
+    lsl r0, r0, #0x18
+    bl _fadd
+    b _0224EA18
+_0224EA0A:
+    lsl r0, r0, #0xc
+    bl _fflt
+    mov r1, #0x3f
+    lsl r1, r1, #0x18
+    bl _fsub
+_0224EA18:
+    bl _ffix
+    add r7, r0, #0
+    ldr r0, [sp, #0x10]
+    bl _ffix
+    add r3, r0, #0
+    add r0, sp, #0x68
+    str r0, [sp, #0]
+    add r0, r4, #0
+    add r1, r6, #0
+    add r2, r7, #0
+    bl sub_02054774
+    add r7, r0, #0
+    add r0, sp, #0x70
+    ldrb r0, [r0, #0x1c]
+    ldr r1, [sp, #0x18]
+    str r0, [sp, #0x34]
+    ldr r0, [sp, #0x20]
+    ldr r2, [sp, #0x34]
+    bl ov02_0224EF6C
+    cmp r0, #0
+    beq _0224EA56
+    add r0, sp, #0x68
+    ldrb r0, [r0, #0]
+    cmp r0, #1
+    bne _0224EA56
+    cmp r7, r6
+    beq _0224EA5C
+_0224EA56:
+    add sp, #0x6c
+    mov r0, #0
+    pop {r4, r5, r6, r7, pc}
+_0224EA5C:
+    mov r0, #0
+    str r0, [sp, #0x28]
+    ldr r0, [sp, #0x2c]
+    add r7, sp, #0x68
+    lsl r0, r0, #0xc
+    add r7, #1
+    str r0, [sp, #0x4c]
+_0224EA6A:
+    mov r0, #0
+    ldrsb r1, [r7, r0]
+    ldr r0, [sp, #4]
+    add r0, r0, r1
+    lsl r0, r0, #0x10
+    asr r0, r0, #0x10
+    str r0, [sp, #0x30]
+    ldr r2, [sp, #0x30]
+    add r0, r4, #0
+    add r1, r5, #0
+    bl GetMetatileBehavior
+    str r0, [sp, #0x24]
+    ldr r2, [sp, #0x30]
+    add r0, r4, #0
+    add r1, r5, #0
+    bl sub_020548C0
+    str r0, [sp, #0x1c]
+    ldr r0, [sp, #0x30]
+    lsl r0, r0, #4
+    add r0, #8
+    cmp r0, #0
+    ble _0224EAAE
+    lsl r0, r0, #0xc
+    bl _fflt
+    add r1, r0, #0
+    mov r0, #0x3f
+    lsl r0, r0, #0x18
+    bl _fadd
+    str r0, [sp, #0xc]
+    b _0224EABE
+_0224EAAE:
+    lsl r0, r0, #0xc
+    bl _fflt
+    mov r1, #0x3f
+    lsl r1, r1, #0x18
+    bl _fsub
+    str r0, [sp, #0xc]
+_0224EABE:
+    ldr r0, [sp, #0x2c]
+    cmp r0, #0
+    ble _0224EAD6
+    ldr r0, [sp, #0x4c]
+    bl _fflt
+    add r1, r0, #0
+    mov r0, #0x3f
+    lsl r0, r0, #0x18
+    bl _fadd
+    b _0224EAE4
+_0224EAD6:
+    ldr r0, [sp, #0x4c]
+    bl _fflt
+    mov r1, #0x3f
+    lsl r1, r1, #0x18
+    bl _fsub
+_0224EAE4:
+    bl _ffix
+    str r0, [sp, #0x60]
+    ldr r0, [sp, #0xc]
+    bl _ffix
+    add r3, r0, #0
+    add r0, sp, #0x68
+    str r0, [sp, #0]
+    ldr r2, [sp, #0x60]
+    add r0, r4, #0
+    add r1, r6, #0
+    bl sub_02054774
+    str r0, [sp, #0x64]
+    ldr r0, [sp, #0x24]
+    ldr r1, [sp, #0x1c]
+    ldr r2, [sp, #0x34]
+    bl ov02_0224EF6C
+    cmp r0, #0
+    beq _0224EB32
+    add r0, sp, #0x68
+    ldrb r0, [r0, #0]
+    cmp r0, #1
+    bne _0224EB32
+    ldr r0, [sp, #0x64]
+    cmp r0, r6
+    bne _0224EB32
+    ldr r0, [sp, #0x84]
+    strh r5, [r0, #0]
+    ldr r1, [sp, #4]
+    ldr r0, [sp, #0x28]
+    add r1, r1, r0
+    ldr r0, [sp, #0x88]
+    add sp, #0x6c
+    strh r1, [r0, #0]
+    mov r0, #1
+    pop {r4, r5, r6, r7, pc}
+_0224EB32:
+    ldr r0, [sp, #0x28]
+    add r7, r7, #1
+    add r0, r0, #1
+    str r0, [sp, #0x28]
+    cmp r0, #2
+    blt _0224EA6A
+_0224EB3E:
+    mov r0, #0
+    add sp, #0x6c
+    pop {r4, r5, r6, r7, pc}
+}
+// clang-format on
+
+// ov02_0224EB48
+// clang-format off
+asm int ov02_0224EB48(void *a0, int a1, int a2, int a3, fx32 a4, u16 *a5, u16 *a6, int a7) {
+    push {r3, r4, r5, r6, r7, lr}
+    sub sp, #0x68
+    add r4, r0, #0
+    ldr r0, [sp, #0x84]
+    str r1, [sp, #4]
+    str r0, [sp, #0x84]
+    ldr r0, [sp, #0x88]
+    ldr r1, =ov02_02253A4C
+    str r0, [sp, #0x88]
+    add r5, r2, #0
+    add r2, r3, #0
+    ldrb r0, [r1, #0]
+    add r3, sp, #0x64
+    ldr r6, [sp, #0x80]
+    strb r0, [r3, #1]
+    ldrb r0, [r1, #1]
+    cmp r2, #3
+    strb r0, [r3, #2]
+    ldr r1, [sp, #4]
+    ldr r0, [sp, #0x84]
+    strh r1, [r0, #0]
+    ldr r0, [sp, #0x88]
+    strh r5, [r0, #0]
+    bls _0224EB7A
+    b _0224EE42
+_0224EB7A:
+    add r0, r2, r2
+    add r0, pc
+    ldrh r0, [r0, #6]
+    lsl r0, r0, #0x10
+    asr r0, r0, #0x10
+    add pc, r0
+    lsl r6, r0, #0
+    lsl r6, r0, #0
+    lsl r2, r6, #6
+    lsl r2, r6, #6
+_0224EB8E:
+    cmp r2, #0
+    bne _0224EB96
+    mov r0, #1
+    b _0224EB98
+_0224EB96:
+    mov r0, #2
+_0224EB98:
+    ldrsb r0, [r3, r0]
+    ldr r1, [sp, #4]
+    add r0, r5, r0
+    lsl r0, r0, #0x10
+    asr r5, r0, #0x10
+    add r0, r4, #0
+    add r2, r5, #0
+    bl GetMetatileBehavior
+    str r0, [sp, #0x50]
+    ldr r1, [sp, #4]
+    add r0, r4, #0
+    add r2, r5, #0
+    bl sub_020548C0
+    str r0, [sp, #0x4c]
+    lsl r0, r5, #4
+    str r0, [sp, #0x24]
+    add r0, #8
+    str r0, [sp, #0x24]
+    cmp r0, #0
+    ble _0224EBD8
+    lsl r0, r0, #0xc
+    bl _fflt
+    add r1, r0, #0
+    mov r0, #0x3f
+    lsl r0, r0, #0x18
+    bl _fadd
+    str r0, [sp, #0x14]
+    b _0224EBE8
+_0224EBD8:
+    lsl r0, r0, #0xc
+    bl _fflt
+    mov r1, #0x3f
+    lsl r1, r1, #0x18
+    bl _fsub
+    str r0, [sp, #0x14]
+_0224EBE8:
+    ldr r0, [sp, #4]
+    lsl r0, r0, #4
+    add r0, #8
+    cmp r0, #0
+    ble _0224EC04
+    lsl r0, r0, #0xc
+    bl _fflt
+    add r1, r0, #0
+    mov r0, #0x3f
+    lsl r0, r0, #0x18
+    bl _fadd
+    b _0224EC12
+_0224EC04:
+    lsl r0, r0, #0xc
+    bl _fflt
+    mov r1, #0x3f
+    lsl r1, r1, #0x18
+    bl _fsub
+_0224EC12:
+    bl _ffix
+    add r7, r0, #0
+    ldr r0, [sp, #0x14]
+    bl _ffix
+    add r3, r0, #0
+    add r0, sp, #0x64
+    str r0, [sp, #0]
+    add r0, r4, #0
+    add r1, r6, #0
+    add r2, r7, #0
+    bl sub_02054774
+    add r7, r0, #0
+    add r0, sp, #0x70
+    ldrb r0, [r0, #0x1c]
+    ldr r1, [sp, #0x4c]
+    str r0, [sp, #0x30]
+    ldr r0, [sp, #0x50]
+    ldr r2, [sp, #0x30]
+    bl ov02_0224EF6C
+    cmp r0, #0
+    beq _0224EC50
+    add r0, sp, #0x64
+    ldrb r0, [r0, #0]
+    cmp r0, #1
+    bne _0224EC50
+    cmp r7, r6
+    beq _0224EC56
+_0224EC50:
+    add sp, #0x68
+    mov r0, #0
+    pop {r3, r4, r5, r6, r7, pc}
+_0224EC56:
+    mov r0, #0
+    str r0, [sp, #0x48]
+    ldr r0, [sp, #0x24]
+    add r7, sp, #0x64
+    lsl r0, r0, #0xc
+    add r7, #1
+    str r0, [sp, #0x34]
+_0224EC64:
+    mov r0, #0
+    ldrsb r1, [r7, r0]
+    ldr r0, [sp, #4]
+    add r2, r5, #0
+    sub r0, r0, r1
+    lsl r0, r0, #0x10
+    asr r0, r0, #0x10
+    str r0, [sp, #0x2c]
+    ldr r1, [sp, #0x2c]
+    add r0, r4, #0
+    bl GetMetatileBehavior
+    str r0, [sp, #0x20]
+    ldr r1, [sp, #0x2c]
+    add r0, r4, #0
+    add r2, r5, #0
+    bl sub_020548C0
+    str r0, [sp, #0x1c]
+    ldr r0, [sp, #0x24]
+    cmp r0, #0
+    ble _0224ECA4
+    ldr r0, [sp, #0x34]
+    bl _fflt
+    add r1, r0, #0
+    mov r0, #0x3f
+    lsl r0, r0, #0x18
+    bl _fadd
+    str r0, [sp, #0x10]
+    b _0224ECB4
+_0224ECA4:
+    ldr r0, [sp, #0x34]
+    bl _fflt
+    mov r1, #0x3f
+    lsl r1, r1, #0x18
+    bl _fsub
+    str r0, [sp, #0x10]
+_0224ECB4:
+    ldr r0, [sp, #0x2c]
+    lsl r0, r0, #4
+    add r0, #8
+    cmp r0, #0
+    ble _0224ECD0
+    lsl r0, r0, #0xc
+    bl _fflt
+    add r1, r0, #0
+    mov r0, #0x3f
+    lsl r0, r0, #0x18
+    bl _fadd
+    b _0224ECDE
+_0224ECD0:
+    lsl r0, r0, #0xc
+    bl _fflt
+    mov r1, #0x3f
+    lsl r1, r1, #0x18
+    bl _fsub
+_0224ECDE:
+    bl _ffix
+    str r0, [sp, #0x54]
+    ldr r0, [sp, #0x10]
+    bl _ffix
+    add r3, r0, #0
+    add r0, sp, #0x64
+    str r0, [sp, #0]
+    ldr r2, [sp, #0x54]
+    add r0, r4, #0
+    add r1, r6, #0
+    bl sub_02054774
+    str r0, [sp, #0x58]
+    ldr r0, [sp, #0x20]
+    ldr r1, [sp, #0x1c]
+    ldr r2, [sp, #0x30]
+    bl ov02_0224EF6C
+    cmp r0, #0
+    beq _0224ED2C
+    add r0, sp, #0x64
+    ldrb r0, [r0, #0]
+    cmp r0, #1
+    bne _0224ED2C
+    ldr r0, [sp, #0x58]
+    cmp r0, r6
+    bne _0224ED2C
+    ldr r1, [sp, #4]
+    ldr r0, [sp, #0x48]
+    sub r1, r1, r0
+    ldr r0, [sp, #0x84]
+    strh r1, [r0, #0]
+    ldr r0, [sp, #0x88]
+    add sp, #0x68
+    strh r5, [r0, #0]
+    mov r0, #1
+    pop {r3, r4, r5, r6, r7, pc}
+_0224ED2C:
+    ldr r0, [sp, #0x48]
+    add r7, r7, #1
+    add r0, r0, #1
+    str r0, [sp, #0x48]
+    cmp r0, #2
+    blt _0224EC64
+    b _0224EE42
+_0224ED3A:
+    mov r0, #0
+    str r0, [sp, #0x44]
+    cmp r2, #2
+    bne _0224ED4E
+    ldr r0, [sp, #4]
+    sub r0, r0, #2
+    lsl r0, r0, #0x10
+    asr r0, r0, #0x10
+    str r0, [sp, #0xc]
+    b _0224ED58
+_0224ED4E:
+    ldr r0, [sp, #4]
+    add r0, r0, #1
+    lsl r0, r0, #0x10
+    asr r0, r0, #0x10
+    str r0, [sp, #0xc]
+_0224ED58:
+    mov r0, #0
+    str r0, [sp, #0x18]
+    add r0, sp, #0x70
+    ldrb r0, [r0, #0x1c]
+    ldr r7, [sp, #0xc]
+    str r0, [sp, #0x40]
+    lsl r0, r5, #4
+    str r0, [sp, #0x3c]
+    add r0, #8
+    str r0, [sp, #0x3c]
+    lsl r0, r0, #0xc
+    str r0, [sp, #0x38]
+_0224ED70:
+    lsl r0, r7, #0x10
+    asr r0, r0, #0x10
+    str r0, [sp, #0x28]
+    ldr r1, [sp, #0x28]
+    add r0, r4, #0
+    add r2, r5, #0
+    bl GetMetatileBehavior
+    str r0, [sp, #0x5c]
+    ldr r1, [sp, #0x28]
+    add r0, r4, #0
+    add r2, r5, #0
+    bl sub_020548C0
+    add r1, r0, #0
+    ldr r0, [sp, #0x5c]
+    ldr r2, [sp, #0x40]
+    bl ov02_0224EF6C
+    cmp r0, #0
+    beq _0224EE20
+    ldr r0, [sp, #0x3c]
+    cmp r0, #0
+    ble _0224EDB4
+    ldr r0, [sp, #0x38]
+    bl _fflt
+    add r1, r0, #0
+    mov r0, #0x3f
+    lsl r0, r0, #0x18
+    bl _fadd
+    str r0, [sp, #8]
+    b _0224EDC4
+_0224EDB4:
+    ldr r0, [sp, #0x38]
+    bl _fflt
+    mov r1, #0x3f
+    lsl r1, r1, #0x18
+    bl _fsub
+    str r0, [sp, #8]
+_0224EDC4:
+    ldr r0, [sp, #0x28]
+    lsl r0, r0, #4
+    add r0, #8
+    cmp r0, #0
+    ble _0224EDE0
+    lsl r0, r0, #0xc
+    bl _fflt
+    add r1, r0, #0
+    mov r0, #0x3f
+    lsl r0, r0, #0x18
+    bl _fadd
+    b _0224EDEE
+_0224EDE0:
+    lsl r0, r0, #0xc
+    bl _fflt
+    mov r1, #0x3f
+    lsl r1, r1, #0x18
+    bl _fsub
+_0224EDEE:
+    bl _ffix
+    str r0, [sp, #0x60]
+    ldr r0, [sp, #8]
+    bl _ffix
+    add r3, r0, #0
+    add r0, sp, #0x64
+    str r0, [sp, #0]
+    ldr r2, [sp, #0x60]
+    add r0, r4, #0
+    add r1, r6, #0
+    bl sub_02054774
+    add r1, sp, #0x64
+    ldrb r1, [r1, #0]
+    cmp r1, #1
+    bne _0224EE20
+    cmp r0, r6
+    bne _0224EE20
+    ldr r0, [sp, #0x44]
+    add r0, r0, #1
+    lsl r0, r0, #0x18
+    lsr r0, r0, #0x18
+    str r0, [sp, #0x44]
+_0224EE20:
+    ldr r0, [sp, #0x18]
+    add r7, r7, #1
+    add r0, r0, #1
+    str r0, [sp, #0x18]
+    cmp r0, #2
+    blt _0224ED70
+    ldr r0, [sp, #0x44]
+    cmp r0, #2
+    bne _0224EE42
+    ldr r1, [sp, #0xc]
+    ldr r0, [sp, #0x84]
+    strh r1, [r0, #0]
+    ldr r0, [sp, #0x88]
+    add sp, #0x68
+    strh r5, [r0, #0]
+    mov r0, #1
+    pop {r3, r4, r5, r6, r7, pc}
+_0224EE42:
+    mov r0, #0
+    add sp, #0x68
+    pop {r3, r4, r5, r6, r7, pc}
 }
 // clang-format on

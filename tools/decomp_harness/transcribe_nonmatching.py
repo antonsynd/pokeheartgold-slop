@@ -55,18 +55,27 @@ def transcribe(s_path, o_path, func):
     # Build address->halfword map from objdump data lines of this func.
     odis = objdump_func(o_path, func)
     # map of (data value lines) by reading objdump ".short"/".word" entries -> raw halfwords
-    table_hws = []  # list of 16-bit ints, in order, for the data region
+    # literal-pool addresses are the targets of `ldr rN,[pc,#N] ; (ADDR <...>)`
+    pool_addrs = set()
     for l in odis:
-        m = re.match(r'\s*[0-9a-f]+:\s+([0-9a-f ]+?)\s+\.(short|word)\s', l)
+        cm = re.search(r'ldr\s+\w+,\s*\[pc.*?;\s*\(([0-9a-f]+)\s*<', l)
+        if cm:
+            pool_addrs.add(int(cm.group(1), 16))
+    table_hws = []  # 16-bit ints in memory order, jump-table data only (pools excluded)
+    for l in odis:
+        # objdump prints the directive value (big-endian hex) in the operand col:
+        #   "addr: BYTES \t.short\t0xNNNN"  or  "...\t.word\t0xNNNNNNNN"
+        m = re.match(r'\s*([0-9a-f]+):\s+[0-9a-f ]+\t\.(short|word)\t0x([0-9a-f]+)', l)
         if m:
-            hexs = m.group(1).split()
-            # bytes are little-endian per halfword; objdump groups as 2 or 4 byte
-            b = [int(x, 16) for x in hexs]
-            for i in range(0, len(b), 2):
-                if i+1 < len(b):
-                    table_hws.append(b[i] | (b[i+1] << 8))
-                else:
-                    table_hws.append(b[i])
+            addr = int(m.group(1), 16)
+            kind, val = m.group(2), int(m.group(3), 16)
+            if addr in pool_addrs:
+                continue  # literal pool, folded into `ldr =`
+            if kind == 'short':
+                table_hws.append(val & 0xffff)
+            else:  # .word -> little-endian halfword order: low then high
+                table_hws.append(val & 0xffff)
+                table_hws.append((val >> 16) & 0xffff)
     # disassemble those halfwords as Thumb instructions for the inline encoding
     tbl_instr = thumb_decode(table_hws) if table_hws else []
 
@@ -127,26 +136,24 @@ def thumb_decode(hws):
     return out
 
 def decode_one(h):
+    # MWCC inline asm uses PRE-UAL mnemonics (no 's' suffix); `movs rd,rm` is
+    # rejected -> use `lsl rd,rm,#0`. These encode the exact jump-table halfword.
     # Format 1: 000 op(2) imm5 rm(3) rd(3)  (LSL/LSR/ASR)
-    top = (h >> 11) & 0x1f
     if (h >> 13) == 0b000 and ((h >> 11) & 0b11) != 0b11:
         op = (h >> 11) & 0b11
         imm5 = (h >> 6) & 0x1f
         rm = (h >> 3) & 7
         rd = h & 7
-        mn = ['lsls', 'lsrs', 'asrs'][op]
-        if op == 0 and imm5 == 0:
-            return f'movs r{rd}, r{rm}'  # lsls rd,rm,#0 == movs
+        mn = ['lsl', 'lsr', 'asr'][op]
         return f'{mn} r{rd}, r{rm}, #{imm5}'
     # Format 2: 00011 I op rn/imm3 rm rd (ADD/SUB)
     if (h >> 11) == 0b00011:
         I = (h >> 10) & 1; op = (h >> 9) & 1
         v = (h >> 6) & 7; rm = (h >> 3) & 7; rd = h & 7
-        mn = 'subs' if op else 'adds'
+        mn = 'sub' if op else 'add'
         if I:
             return f'{mn} r{rd}, r{rm}, #{v}'
         return f'{mn} r{rd}, r{rm}, r{v}'
-    # Fallback: emit a .word-equivalent via two movs is unsafe; raise.
     raise SystemExit(f'decode_one: unhandled halfword 0x{h:04x} — extend decoder')
 
 if __name__ == '__main__':
