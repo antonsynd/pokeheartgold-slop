@@ -118,7 +118,6 @@ typedef struct ov02_A9D8Entry {
     void *unkC;
     u32 unk10;
 } ov02_A9D8Entry;
-extern const ov02_A9D8Entry ov02_022535E4[]; // rodata, defined later
 
 // follow-mon task-data accessor (defined in unk_020689C8.c); local extern matches
 // the convention used by other overlays that don't pull in the full header.
@@ -134,21 +133,9 @@ extern void sub_020689F8(void *a0);                  // unk_020689C8.h
 // indexed by sm[1]; each func(sm) returns 1 to keep running. Tables are file-local
 // rodata defined later (extern here so the runners' relocations resolve by name).
 typedef BOOL (*ov02_StateMachineFunc)(void *sm);
-extern ov02_StateMachineFunc *const ov02_02253320[];
-extern ov02_StateMachineFunc *const ov02_022533C0[];
-extern ov02_StateMachineFunc const ov02_02253550[]; // single-level table
-extern ov02_StateMachineFunc const ov02_02253588[];
-extern ov02_StateMachineFunc const ov02_022534F0[];
-extern ov02_StateMachineFunc const ov02_022534B8[];
 
 // Field-move task state tables: func(taskManager, fieldSystem, env) -> 1=loop, 2=free.
 typedef int (*ov02_FieldTaskFunc)(TaskManager *taskManager, FieldSystem *fieldSystem, void *env);
-extern ov02_FieldTaskFunc const ov02_02253700[];
-extern ov02_FieldTaskFunc const ov02_022536F0[];
-extern ov02_FieldTaskFunc const ov02_02253710[];
-extern ov02_FieldTaskFunc const ov02_02253754[];
-extern ov02_FieldTaskFunc const ov02_0225373C[];
-extern ov02_FieldTaskFunc const ov02_02253724[];
 extern BOOL ov01_02205A60(TaskManager *taskMan);                                                             // overlay_01_022053EC.h, not included
 extern void sub_02068BAC(void *a0);                                                                          // unk_020689C8.h
 extern void ov01_021FCD78(SysTask *task);                                                                    // no header included here
@@ -195,11 +182,9 @@ extern void _fflt(void);                      // soft-float runtime
 extern void _ffix(void);                      // soft-float runtime
 extern void Field3dObject_SetXRotation(void); // not in any included header (asm-only ref)
 extern void sub_020548C0(void);               // not in any included header (asm-only ref)
-extern const u8 ov02_02253A4C[];              // rodata (offset struct, E828/EB48/EE4C)
 WIP_LOCAL void ov02_0224D488(void *a0, void *a1, void *a2);
 extern u16 GF_DegreeToSinCosIdxNoWrap(u16 deg);                           // math_util.h, not included
 extern BOOL Save_VarsFlags_CheckFlagInArray(void *varsFlags, u16 flagId); // save_vars_flags.h, not included
-extern const u8 ov02_022538EC[];                                          // rodata (Field3dObjectTaskTemplate)
 WIP_LOCAL void ov02_0224AAD4(void *a0, void *a1);
 WIP_LOCAL void ov02_0224D5B4(void *a0, void *a1, void *a2);
 WIP_LOCAL int ov02_0224DB9C(void *a0, void *a1, void *a2);
@@ -210,9 +195,6 @@ typedef struct ov02_BF58Cfg {
     int unk0;
     int unk4;
 } ov02_BF58Cfg;
-extern const ov02_BF58Cfg ov02_022536E8;         // rodata, defined later
-extern const VecFx32 ov02_02253B24;              // rodata, defined later (508D8 base pos)
-extern const VecFx32 ov02_02253B30;              // rodata, defined later (508D8 base pos)
 extern void *ov01_021F771C(void *a0);            // no header included here
 extern void sub_02023E78(void *a0, VecFx32 *a1); // no header included here
 WIP_LOCAL BOOL ov02_022508D8(TaskManager *taskManager);
@@ -220,12 +202,6 @@ WIP_LOCAL BOOL ov02_022508D8(TaskManager *taskManager);
 typedef struct ov02_FieldList5 {
     u32 v[5];
 } ov02_FieldList5;
-extern const ov02_FieldList5 ov02_02253A5C;                                                                            // rodata, defined later (MON_DATA field ids)
-extern const u32 ov02_02253AC0[];                                                                                      // rodata, defined later (nature -> category)
-extern const u16 ov02_02253304[];                                                                                      // rodata, defined later (A080 char fileId table)
-extern const u16 ov02_022532FC[];                                                                                      // rodata, defined later (A080 pltt fileId table)
-extern const u16 ov02_02253310[];                                                                                      // rodata, defined later (A080 cell fileId table)
-extern const u16 ov02_0225330A[];                                                                                      // rodata, defined later (A080 anim fileId table)
 extern int sub_02054C90(void *a0, void *a1, int a2, void **a3, void **a4);                                             // no header included here
 extern void *ov01_021FB9E0(void *a0);                                                                                  // no header included here
 extern void *ov01_021F3B38(void *a0);                                                                                  // no header included here
@@ -239,8 +215,6 @@ extern int ov01_021F3C0C(void *a0, int a1, const VecFx32 *a2, const VecFx32 *a3,
 extern void *ov01_021F3B60(void *a0, int a1);                                                                          // no header included here
 extern void ov01_021E8E40(void *a0, int a1, int a2, void *a3);                                                         // no header included here
 extern void ov01_021F36DC(int a0, void *a1);                                                                           // no header included here
-extern VecFx32 ov02_02253DD8[];                                                                                        // rodata, defined later (CE28 per-object offset table, stride 0xc)
-extern VecFx32 ov02_02253D90[];                                                                                        // rodata, defined later (PokecenterAnimRun per-object offset table)
 typedef struct ov02_SafariObjCfg {
     u8 buildModel;
     u8 isAnimated : 1;
@@ -268,28 +242,11 @@ extern u16 GF_DegreeToSinCosIdx(u16 deg);                                       
 extern u16 LCRandom(void);                                                                                           // math_util.h, not included
 extern fx32 GF_SinDeg(u16 deg);                                                                                      // math_util.h, not included
 extern fx32 GF_CosDeg(u16 deg);                                                                                      // math_util.h, not included
-extern const VecFx32 ov02_02253360;                                                                                  // rodata, defined later (affine scale)
-extern const VecFx32 ov02_02253390;                                                                                  // rodata, defined later (affine scale)
-extern const VecFx32 ov02_0225339C;                                                                                  // rodata, defined later (E20 init offset)
-extern const VecFx32 ov02_022533CC;                                                                                  // rodata, defined later (E20 init scale)
-extern const VecFx32 ov02_022533A8;                                                                                  // rodata, defined later (E20 affine scale)
-extern const VecFx32 ov02_02253354;                                                                                  // rodata, defined later (ADF0 init offset)
-extern const VecFx32 ov02_0225336C;                                                                                  // rodata, defined later (ADF0 init scale)
-extern const VecFx32 ov02_02253378;                                                                                  // rodata, defined later (ADF0 affine scale)
-extern const VecFx32 ov02_02253348;                                                                                  // rodata, defined later (sprite spawn offset)
 extern void ov01_021F8F74(LocalMapObject *mapObject, int a1);                                                        // no header included here
 extern BOOL ov01_022055DC(LocalMapObject *mapObject);                                                                // no header included here
 extern void ov01_021FF0E4(LocalMapObject *mapObject, int a1, u32 x, u32 z, int a4);                                  // no header included here
 extern void ov01_021FF964(LocalMapObject *mapObject, int a1, u32 x, u32 z, int a4);                                  // no header included here
 extern BOOL sub_0205B6F4(u8 tile);                                                                                   // no header included here
-extern const VecFx32 ov02_02253408;                                                                                  // rodata, defined later (sprite offset pair)
-extern const VecFx32 ov02_02253384;                                                                                  // rodata, defined later (sprite offset pair)
-extern const VecFx32 ov02_022533FC;                                                                                  // rodata, defined later (sprite offset pair)
-extern const VecFx32 ov02_02253414;                                                                                  // rodata, defined later (sprite offset pair)
-extern const VecFx32 ov02_022533E4;                                                                                  // rodata, defined later (sprite affine matrix)
-extern const VecFx32 ov02_022533F0;                                                                                  // rodata, defined later (sprite affine scale)
-extern const VecFx32 ov02_022533D8;                                                                                  // rodata, defined later (sprite affine matrix)
-extern const VecFx32 ov02_022533B4;                                                                                  // rodata, defined later (sprite affine scale)
 WIP_LOCAL void ov02_0224A9D8(void *work, int a1);                                                                    // still in asm; forward decl for callers
 
 // NewMsgDataFromNarc / MessageFormat_* / Buffer* / MapHeader_GetMapSec are reachable
@@ -304,31 +261,19 @@ extern void *Save_SafariZone_Get(SaveData *saveData);                           
 extern u8 SafariZone_GetObjectUnlockLevel(void *safariZone);                            // safari_zone.h, not included
 extern void *Field_GetBgEvents(FieldSystem *fieldSystem);                               // map_events.h, not included (BG_EVENT opaque)
 extern u32 Field_GetNumBgEvents(FieldSystem *fieldSystem);                              // map_events.h, not included
-extern const MovementScriptCommand ov02_022537DC[];                                     // rodata, defined later
-extern const MovementScriptCommand ov02_022537B8[];                                     // rodata, defined later
 
 // ov02_0224E020 dispatch tables (rodata, still in asm; defined later). Indexed by
 // data[0xc]: A34 update funcs return int (1 => advance state); A04 delete funcs
 // (result ignored). Declared int(*)(void*) to match the blx call sites.
 typedef int (*ov02_AnimDispatchFunc)(void *data);
-extern ov02_AnimDispatchFunc const ov02_02253A34[];
-extern ov02_AnimDispatchFunc const ov02_02253A04[];
 // ov02_0224E074 create-dispatch table (rodata, defined later): each entry builds a
 // Field3dObjectTask from the fieldSystem. Indexed by the anim type.
 typedef Field3dObjectTask *(*ov02_CreateDispatchFunc)(FieldSystem *fieldSystem);
-extern ov02_CreateDispatchFunc const ov02_02253A1C[];
-extern const MovementScriptCommand ov02_02253820[];                                                // rodata, defined later
-extern const MovementScriptCommand ov02_02253794[];                                                // rodata, defined later
-extern const MovementScriptCommand ov02_02253770[];                                                // rodata, defined later
-extern const MovementScriptCommand ov02_02253A70[][5];                                             // rodata, defined later (per-direction movement scripts, stride 0x14)
 extern BOOL sub_02054C20(FieldSystem *fieldSystem, int targetType, int *outObj, void **outHandle); // unk_02054648.h, not included
 extern void sub_02054DC8(int idx, int width, VecFx32 *out);                                        // unk_02054648.h, not included
 extern void ov01_021F3B0C(VecFx32 *out, void *src);                                                // unk_02054648.h, not included
 extern u8 GetMetatileBehavior(FieldSystem *fieldSystem, int x, int z);                             // unk_02054648.h, not included
 extern void ov01_02203AB4(FieldSystem *fieldSystem, LocalMapObject *partnerPokeObj, int a2);       // overlay_01.h, not included
-extern const fx32 ov02_02253520[];                                                                 // rodata, defined later
-extern const fx32 ov02_02253430[];                                                                 // rodata, defined later
-extern const MovementScriptCommand ov02_02253884[];                                                // rodata, defined later
 extern u16 PlayerProfile_GetTrainerID_VisibleHalf(PlayerProfile *profile);                         // player_data.h, not included
 typedef struct WallpaperPasswordBank WallpaperPasswordBank;                                        // opaque; easy_chat.h not included
 extern WallpaperPasswordBank *WallpaperPasswordBank_Create(enum HeapID heapID);
@@ -353,12 +298,6 @@ typedef struct ov02_LaunchTemplate {
     void *unk10;
 } ov02_LaunchTemplate;
 extern void *sub_02068B0C(void *mgr, const ov02_LaunchTemplate *src, VecFx32 *pos, u32 a3, void *a4, u32 priority);
-extern const ov02_LaunchTemplate ov02_02253440;
-extern const ov02_LaunchTemplate ov02_022534A4;
-extern const ov02_LaunchTemplate ov02_02253454;
-extern const ov02_LaunchTemplate ov02_0225347C;
-extern const ov02_LaunchTemplate ov02_02253468;
-extern const ov02_LaunchTemplate ov02_02253490;
 
 // STRUCT-CLEANUP TODO: the getters/setters/deleters below use byte-offset casts
 // because their owning struct isn't named yet. They byte-match; replace the casts
@@ -537,6 +476,327 @@ WIP_LOCAL void ov02_02248A24(void *mgr, int a1);
 WIP_LOCAL BOOL ov02_02248AC8(void *mgr, int a1);
 WIP_LOCAL void ov02_02248AFC(void *mgr, int a1);
 WIP_LOCAL int ov02_0224B4AC(void *work);
+
+// forward decls for functions referenced only from the consolidated rodata tables
+extern void sub_02068DD0(void);
+extern void sub_02068DD4(void);
+WIP_LOCAL void ov02_02248DF0(void *a0, u8 *sm);
+WIP_LOCAL int ov02_02248E10(void *work);
+WIP_LOCAL int ov02_022491A8(void *work);
+WIP_LOCAL int ov02_022493EC(void);
+WIP_LOCAL int ov02_022495B8(void *work);
+WIP_LOCAL int ov02_022495D0(void *work);
+WIP_LOCAL int ov02_02249754(void *work);
+WIP_LOCAL int ov02_02249838(void *work);
+WIP_LOCAL int ov02_02249940(void *work);
+WIP_LOCAL int ov02_02249954(void *work);
+WIP_LOCAL int ov02_02249968(void *work);
+WIP_LOCAL int ov02_02249AC4(void *work);
+WIP_LOCAL int ov02_02249AD8(void *work);
+WIP_LOCAL BOOL ov02_02249AF0(void *work);
+WIP_LOCAL int ov02_02249B10(void *work);
+WIP_LOCAL int ov02_02249B38(void *work);
+WIP_LOCAL BOOL ov02_02249B60(void *work);
+WIP_LOCAL BOOL ov02_02249B80(void *work);
+WIP_LOCAL BOOL ov02_02249BA8(void *work);
+WIP_LOCAL int ov02_02249CD8(int *work);
+WIP_LOCAL void ov02_0224AB54(void);
+WIP_LOCAL void ov02_0224AC04(void *a0, u8 *sm);
+WIP_LOCAL void ov02_0224AC24(void);
+WIP_LOCAL int ov02_0224AC28(void *work);
+WIP_LOCAL int ov02_0224ADEC(void);
+WIP_LOCAL int ov02_0224B294(void);
+WIP_LOCAL BOOL ov02_0224B350(void *a0, void *out);
+WIP_LOCAL void ov02_0224B3FC(void *a0, int *a1);
+WIP_LOCAL int ov02_0224B494(void *work);
+WIP_LOCAL int ov02_0224B638(void *work);
+WIP_LOCAL int ov02_0224B68C(void);
+WIP_LOCAL BOOL ov02_0224B6D0(void *a0, void *out);
+WIP_LOCAL void ov02_0224B804(void);
+WIP_LOCAL void ov02_0224B87C(void *a0, void *a1);
+WIP_LOCAL int ov02_0224C1B8(TaskManager *taskManager, void *a1, void *a2);
+WIP_LOCAL int ov02_0224C4B4(void *a0, FieldSystem *fieldSystem, void *work);
+WIP_LOCAL int ov02_0224C4D8(void *a0, void *a1, void *work);
+WIP_LOCAL int ov02_0224C680(Field3dObjectTask *task, FieldSystem *fieldSystem, void *data);
+WIP_LOCAL int ov02_0224CA38(TaskManager *taskManager, void *a1, void *a2);
+WIP_LOCAL void ov02_0224D278(Field3dObjectTask *task, FieldSystem *fieldSystem, void *data);
+WIP_LOCAL void ov02_0224D2BC(Field3dObjectTask *task, FieldSystem *fieldSystem, void *data);
+WIP_LOCAL Field3dObjectTask *ov02_0224D2C8(FieldSystem *fieldSystem);
+WIP_LOCAL Field3dObjectTask *ov02_0224D2DC(FieldSystem *fieldSystem);
+WIP_LOCAL void ov02_0224D2F0(Field3dObjectTask *task);
+WIP_LOCAL BOOL ov02_0224D2F8(Field3dObjectTask *task);
+WIP_LOCAL void ov02_0224D3A4(Field3dObjectTask *task, FieldSystem *fieldSystem, void *data);
+WIP_LOCAL void ov02_0224D3E8(Field3dObjectTask *task, FieldSystem *fieldSystem, void *data);
+WIP_LOCAL Field3dObjectTask *ov02_0224D3F4(FieldSystem *fieldSystem);
+WIP_LOCAL Field3dObjectTask *ov02_0224D408(FieldSystem *fieldSystem);
+WIP_LOCAL void ov02_0224D41C(Field3dObjectTask *task);
+WIP_LOCAL BOOL ov02_0224D424(Field3dObjectTask *task);
+WIP_LOCAL void ov02_0224D43C(Field3dObjectTask *task, FieldSystem *fieldSystem, void *data);
+WIP_LOCAL void ov02_0224D468(Field3dObjectTask *task, FieldSystem *fieldSystem, void *data);
+WIP_LOCAL void ov02_0224D580(Field3dObjectTask *task, FieldSystem *fieldSystem, void *data);
+WIP_LOCAL void ov02_0224D648(Field3dObjectTask *task, FieldSystem *fieldSystem, void *data);
+WIP_LOCAL void ov02_0224D658(Field3dObjectTask *task, FieldSystem *fieldSystem, void *data);
+WIP_LOCAL void ov02_0224D670(Field3dObjectTask *task, FieldSystem *fieldSystem, void *data);
+WIP_LOCAL void ov02_0224D98C(Field3dObjectTask *task, FieldSystem *fieldSystem, void *data);
+WIP_LOCAL void ov02_0224DB8C(Field3dObjectTask *task, FieldSystem *fieldSystem, void *data);
+WIP_LOCAL void ov02_0224DC58(Field3dObjectTask *task, FieldSystem *fieldSystem, void *data);
+WIP_LOCAL Field3dObjectTask *ov02_0224DC64(FieldSystem *fieldSystem);
+WIP_LOCAL Field3dObjectTask *ov02_0224DC78(FieldSystem *fieldSystem);
+WIP_LOCAL void ov02_0224DC8C(Field3dObjectTask *task);
+WIP_LOCAL BOOL ov02_0224DC94(Field3dObjectTask *task);
+WIP_LOCAL void ov02_0224DCB0(Field3dObjectTask *task, FieldSystem *fieldSystem, void *data);
+WIP_LOCAL void ov02_0224DD38(Field3dObjectTask *task, FieldSystem *fieldSystem, void *data);
+WIP_LOCAL void ov02_0224DDC8(Field3dObjectTask *task, FieldSystem *fieldSystem, void *data);
+
+// ====================== consolidated rodata / .data ======================
+// Consolidated rodata: ONE const object so MWCC -O4 cannot size-sort it
+// (separate const objects get bucketed by size). Field order = address
+// order. Individual symbol names restored via #define below. The two
+// asm-referenced fields (f022538EC, f02253A4C) are reached from inline
+// asm via `=sRodata+offset` instead of a macro.
+static const struct {
+    ov02_StateMachineFunc f022532F8[1];
+    u16 f022532FC[2];
+    ov02_StateMachineFunc f02253300[1];
+    u16 f02253304[3];
+    u16 f0225330A[3];
+    u16 f02253310[8];
+    ov02_StateMachineFunc *f02253320[4];
+    ov02_StateMachineFunc f02253330[6];
+    VecFx32 f02253348;
+    VecFx32 f02253354;
+    VecFx32 f02253360;
+    VecFx32 f0225336C;
+    VecFx32 f02253378;
+    VecFx32 f02253384;
+    VecFx32 f02253390;
+    VecFx32 f0225339C;
+    VecFx32 f022533A8;
+    VecFx32 f022533B4;
+    ov02_StateMachineFunc *f022533C0[3];
+    VecFx32 f022533CC;
+    VecFx32 f022533D8;
+    VecFx32 f022533E4;
+    VecFx32 f022533F0;
+    VecFx32 f022533FC;
+    VecFx32 f02253408;
+    VecFx32 f02253414;
+    ov02_StateMachineFunc f02253420[4];
+    fx32 f02253430[4];
+    ov02_LaunchTemplate f02253440;
+    ov02_LaunchTemplate f02253454;
+    ov02_LaunchTemplate f02253468;
+    ov02_LaunchTemplate f0225347C;
+    ov02_LaunchTemplate f02253490;
+    ov02_LaunchTemplate f022534A4;
+    ov02_StateMachineFunc f022534B8[6];
+    ov02_StateMachineFunc f022534D0[8];
+    ov02_StateMachineFunc f022534F0[12];
+    fx32 f02253520[12];
+    ov02_StateMachineFunc f02253550[14];
+    ov02_StateMachineFunc f02253588[23];
+    ov02_A9D8Entry f022535E4[13];
+    ov02_BF58Cfg f022536E8;
+    ov02_FieldTaskFunc f022536F0[4];
+    ov02_FieldTaskFunc f02253700[4];
+    ov02_FieldTaskFunc f02253710[5];
+    ov02_FieldTaskFunc f02253724[6];
+    ov02_FieldTaskFunc f0225373C[6];
+    ov02_FieldTaskFunc f02253754[7];
+    MovementScriptCommand f02253770[9];
+    MovementScriptCommand f02253794[9];
+    MovementScriptCommand f022537B8[9];
+    MovementScriptCommand f022537DC[17];
+    MovementScriptCommand f02253820[25];
+    MovementScriptCommand f02253884[26];
+    u8 f022538EC[16];
+    Field3dObjectTaskTemplate f022538FC;
+    Field3dObjectTaskTemplate f02253914;
+    Field3dObjectTaskTemplate f0225392C;
+    Field3dObjectTaskTemplate f02253944;
+    Field3dObjectTaskTemplate f0225395C;
+    Field3dObjectTaskTemplate f02253974;
+    Field3dObjectTaskTemplate f0225398C;
+    Field3dObjectTaskTemplate f022539A4;
+    Field3dObjectTaskTemplate f022539BC;
+    Field3dObjectTaskTemplate f022539D4;
+    Field3dObjectTaskTemplate f022539EC;
+    ov02_AnimDispatchFunc f02253A04[6];
+    ov02_CreateDispatchFunc f02253A1C[6];
+    ov02_AnimDispatchFunc f02253A34[6];
+    u8 f02253A4C[8];
+    u8 f02253A54[8];
+    ov02_FieldList5 f02253A5C;
+    MovementScriptCommand f02253A70[4][5];
+    u32 f02253AC0[25];
+    VecFx32 f02253B24;
+    VecFx32 f02253B30;
+} sRodata = {
+    { (ov02_StateMachineFunc)ov02_02248E10 }, // ov02_022532F8
+    { 0x0007, 0x0008 }, // ov02_022532FC
+    { (ov02_StateMachineFunc)ov02_0224AC28 }, // ov02_02253300
+    { 0x0011, 0x0014, 0x0017 }, // ov02_02253304
+    { 0x0013, 0x0016, 0x0019 }, // ov02_0225330A
+    { 0x0012, 0x0015, 0x0018, 0x0000, 0x0000, 0x0000, 0x0010, 0x0000 }, // ov02_02253310
+    { (ov02_StateMachineFunc *)sRodata.f022532F8, (ov02_StateMachineFunc *)sRodata.f022534D0, (ov02_StateMachineFunc *)0x1, (ov02_StateMachineFunc *)0xF }, // ov02_02253320
+    { (ov02_StateMachineFunc)ov02_0224ACE0, (ov02_StateMachineFunc)ov02_0224ADEC, (ov02_StateMachineFunc)0x0, (ov02_StateMachineFunc)0x6, (ov02_StateMachineFunc)0x1, (ov02_StateMachineFunc)0xE }, // ov02_02253330
+    { 0x00080000, 0x00054000, 0 }, // ov02_02253348
+    { 0x00080000, 0x00068000, 0 }, // ov02_02253354
+    { 0x00001000, 0x00001000, 0 }, // ov02_02253360
+    { 0x00001400, 0x00001400, 0 }, // ov02_0225336C
+    { 0x00001000, 0x00001000, 0 }, // ov02_02253378
+    { 0x00128000, 0x00060000, 0 }, // ov02_02253384
+    { 0x00001000, 0x00001000, 0 }, // ov02_02253390
+    { 0x00080000, 0x0006F000, 0 }, // ov02_0225339C
+    { 0x00002000, 0x00002000, 0 }, // ov02_022533A8
+    { 0x00001000, 0x00001000, 0 }, // ov02_022533B4
+    { (ov02_StateMachineFunc *)sRodata.f02253300, (ov02_StateMachineFunc *)sRodata.f02253330, (ov02_StateMachineFunc *)sRodata.f02253420 }, // ov02_022533C0
+    { 0x00002000, 0x00002000, 0 }, // ov02_022533CC
+    { 0x00088000, 0x0004F000, 0 }, // ov02_022533D8
+    { 0x00088000, 0x00058000, 0 }, // ov02_022533E4
+    { 0x00000400, 0x00000400, 0 }, // ov02_022533F0
+    { 0x00080000, 0x00060000, 0 }, // ov02_022533FC
+    { 0x00080000, 0x00060000, 0 }, // ov02_02253408
+    { 0x00128000, 0x00060000, 0 }, // ov02_02253414
+    { (ov02_StateMachineFunc)ov02_0224AF70, (ov02_StateMachineFunc)ov02_0224B0E0, (ov02_StateMachineFunc)ov02_0224B158, (ov02_StateMachineFunc)ov02_0224B294 }, // ov02_02253420
+    { (fx32)0xFFFFC000, (fx32)0xFFFFA000, (fx32)0xFFFF9000, (fx32)0xFFFF8000 }, // ov02_02253430
+    { 0x8, (void *)ov02_0224B6D0, (void *)sub_02068DD4, (void *)ov02_0224B6E4, (void *)sub_02068DD0 }, // ov02_02253440
+    { 0x74, (void *)ov02_02248D98, (void *)ov02_02248DE4, (void *)ov02_02248DF0, (void *)sub_02068DD0 }, // ov02_02253454
+    { 0x24, (void *)ov02_0224AA80, (void *)ov02_0224AAC8, (void *)ov02_0224AAD4, (void *)ov02_0224AB54 }, // ov02_02253468
+    { 0x68, (void *)ov02_0224ABCC, (void *)ov02_0224ABF8, (void *)ov02_0224AC04, (void *)ov02_0224AC24 }, // ov02_0225347C
+    { 0xC, (void *)ov02_0224B7CC, (void *)ov02_0224B804, (void *)ov02_0224B808, (void *)ov02_0224B87C }, // ov02_02253490
+    { 0x24, (void *)ov02_0224B350, (void *)sub_02068DD4, (void *)ov02_0224B3FC, (void *)sub_02068DD0 }, // ov02_022534A4
+    { (ov02_StateMachineFunc)ov02_0224B494, (ov02_StateMachineFunc)ov02_0224B4AC, (ov02_StateMachineFunc)ov02_0224B5F0, (ov02_StateMachineFunc)ov02_0224B638, (ov02_StateMachineFunc)ov02_0224B664, (ov02_StateMachineFunc)ov02_0224B68C }, // ov02_022534B8
+    { (ov02_StateMachineFunc)ov02_02248F88, (ov02_StateMachineFunc)ov02_02249088, (ov02_StateMachineFunc)ov02_022490BC, (ov02_StateMachineFunc)ov02_022491A8, (ov02_StateMachineFunc)ov02_022491CC, (ov02_StateMachineFunc)ov02_02249290, (ov02_StateMachineFunc)ov02_0224939C, (ov02_StateMachineFunc)ov02_022493EC }, // ov02_022534D0
+    { (ov02_StateMachineFunc)ov02_022495D0, (ov02_StateMachineFunc)ov02_02249A5C, (ov02_StateMachineFunc)ov02_0224B938, (ov02_StateMachineFunc)ov02_0224B964, (ov02_StateMachineFunc)ov02_02249AD8, (ov02_StateMachineFunc)ov02_02249AF0, (ov02_StateMachineFunc)ov02_02249B80, (ov02_StateMachineFunc)ov02_02249BA8, (ov02_StateMachineFunc)ov02_02249C74, (ov02_StateMachineFunc)ov02_02249CD8, (ov02_StateMachineFunc)ov02_02249954, (ov02_StateMachineFunc)ov02_0224997C }, // ov02_022534F0
+    { (fx32)0xFFFF4000, (fx32)0xFFFF0000, (fx32)0xFFFEC000, (fx32)0xFFFE8000, (fx32)0xFFFE6000, (fx32)0xFFFE4000, (fx32)0xFFFE4000, (fx32)0xFFFE4000, (fx32)0xFFFE6000, (fx32)0xFFFE8000, (fx32)0xFFFEA000, (fx32)0xFFFEC000 }, // ov02_02253520
+    { (ov02_StateMachineFunc)ov02_022495B8, (ov02_StateMachineFunc)ov02_022495E8, (ov02_StateMachineFunc)ov02_02249658, (ov02_StateMachineFunc)ov02_02249690, (ov02_StateMachineFunc)ov02_022496D0, (ov02_StateMachineFunc)ov02_02249754, (ov02_StateMachineFunc)ov02_02249774, (ov02_StateMachineFunc)ov02_022497C0, (ov02_StateMachineFunc)ov02_02249838, (ov02_StateMachineFunc)ov02_02249858, (ov02_StateMachineFunc)ov02_022498BC, (ov02_StateMachineFunc)ov02_02249940, (ov02_StateMachineFunc)ov02_02249968, (ov02_StateMachineFunc)ov02_0224997C }, // ov02_02253550
+    { (ov02_StateMachineFunc)ov02_022495B8, (ov02_StateMachineFunc)ov02_022499EC, (ov02_StateMachineFunc)ov02_02249658, (ov02_StateMachineFunc)ov02_02249690, (ov02_StateMachineFunc)ov02_022496D0, (ov02_StateMachineFunc)ov02_02249754, (ov02_StateMachineFunc)ov02_02249774, (ov02_StateMachineFunc)ov02_022497C0, (ov02_StateMachineFunc)ov02_02249838, (ov02_StateMachineFunc)ov02_02249858, (ov02_StateMachineFunc)ov02_02249AC4, (ov02_StateMachineFunc)ov02_02249AD8, (ov02_StateMachineFunc)ov02_02249AF0, (ov02_StateMachineFunc)ov02_02249B10, (ov02_StateMachineFunc)ov02_02249B38, (ov02_StateMachineFunc)ov02_02249B60, (ov02_StateMachineFunc)ov02_02249BA8, (ov02_StateMachineFunc)ov02_02249BD8, (ov02_StateMachineFunc)ov02_02249C74, (ov02_StateMachineFunc)ov02_02249CD8, (ov02_StateMachineFunc)ov02_02249940, (ov02_StateMachineFunc)ov02_02249968, (ov02_StateMachineFunc)ov02_0224997C }, // ov02_02253588
+    { { 0x0000F000, 0x0003F000, 0x00010000, (void *)0x85, 0x0 }, { 0x0004C000, 0x00043000, 0x00010000, (void *)0x85, 0x0 }, { 0x00080000, 0x0003D000, 0x00018000, (void *)0x80, 0x1 }, { 0x000F0000, 0x00045000, 0x00010000, (void *)0x85, 0x0 }, { 0x00028000, 0x0004E000, 0x00018000, (void *)0x80, 0x1 }, { 0x00048000, 0x0005B000, 0x00010000, (void *)0x85, 0x0 }, { 0x000D0000, 0x00056000, 0x00018000, (void *)0x80, 0x1 }, { 0x00038000, 0x00074000, 0x00010000, (void *)0x85, 0x0 }, { 0x0005F000, 0x0006D000, 0x00018000, (void *)0x80, 0x1 }, { 0x0009F000, 0x00064000, 0x00010000, (void *)0x85, 0x0 }, { 0x00018000, 0x0007E000, 0x00018000, (void *)0x80, 0x1 }, { 0x0008C000, 0x0007D000, 0x00018000, (void *)0x80, 0x1 }, { 0x000DD000, 0x0007C000, 0x00018000, (void *)0x80, 0x1 } }, // ov02_022535E4
+    { 0x21, 0x8A }, // ov02_022536E8
+    { (ov02_FieldTaskFunc)ov02_0224C234, (ov02_FieldTaskFunc)ov02_0224C2A8, (ov02_FieldTaskFunc)ov02_0224C2EC, (ov02_FieldTaskFunc)ov02_0224C338 }, // ov02_022536F0
+    { (ov02_FieldTaskFunc)ov02_0224C05C, (ov02_FieldTaskFunc)ov02_0224C0B0, (ov02_FieldTaskFunc)ov02_0224C14C, (ov02_FieldTaskFunc)ov02_0224C1B8 }, // ov02_02253700
+    { (ov02_FieldTaskFunc)ov02_0224C87C, (ov02_FieldTaskFunc)ov02_0224C8D0, (ov02_FieldTaskFunc)ov02_0224C93C, (ov02_FieldTaskFunc)ov02_0224C9B8, (ov02_FieldTaskFunc)ov02_0224CA38 }, // ov02_02253710
+    { (ov02_FieldTaskFunc)ov02_0224C4B4, (ov02_FieldTaskFunc)ov02_0224C4D8, (ov02_FieldTaskFunc)ov02_0224C71C, (ov02_FieldTaskFunc)ov02_0224C75C, (ov02_FieldTaskFunc)ov02_0224C7D4, (ov02_FieldTaskFunc)ov02_0224C840 }, // ov02_02253724
+    { (ov02_FieldTaskFunc)ov02_0224C680, (ov02_FieldTaskFunc)ov02_0224C698, (ov02_FieldTaskFunc)ov02_0224C6DC, (ov02_FieldTaskFunc)ov02_0224C75C, (ov02_FieldTaskFunc)ov02_0224C7D4, (ov02_FieldTaskFunc)ov02_0224C840 }, // ov02_0225373C
+    { (ov02_FieldTaskFunc)ov02_0224C4B4, (ov02_FieldTaskFunc)ov02_0224C4D8, (ov02_FieldTaskFunc)ov02_0224C87C, (ov02_FieldTaskFunc)ov02_0224C8D0, (ov02_FieldTaskFunc)ov02_0224C93C, (ov02_FieldTaskFunc)ov02_0224C9B8, (ov02_FieldTaskFunc)ov02_0224CA38 }, // ov02_02253754
+    { { 0x1, 0x1 }, { 0x3C, 0x2 }, { 0x2, 0x1 }, { 0x3C, 0x2 }, { 0x0, 0x1 }, { 0x3C, 0x2 }, { 0x3, 0x1 }, { 0x3C, 0x2 }, { 0xFE, 0x0 } }, // ov02_02253770
+    { { 0x0, 0x1 }, { 0x3, 0x1 }, { 0x1, 0x1 }, { 0x2, 0x1 }, { 0x0, 0x1 }, { 0x3, 0x1 }, { 0x1, 0x1 }, { 0x2, 0x1 }, { 0xFE, 0x0 } }, // ov02_02253794
+    { { 0x1, 0x1 }, { 0x2, 0x1 }, { 0x0, 0x1 }, { 0x3, 0x1 }, { 0x1, 0x1 }, { 0x2, 0x1 }, { 0x0, 0x1 }, { 0x3, 0x1 }, { 0xFE, 0x0 } }, // ov02_022537B8
+    { { 0x1, 0x1 }, { 0x3C, 0x2 }, { 0x2, 0x1 }, { 0x3C, 0x2 }, { 0x0, 0x1 }, { 0x3C, 0x2 }, { 0x3, 0x1 }, { 0x3C, 0x2 }, { 0x1, 0x1 }, { 0x3C, 0x1 }, { 0x2, 0x1 }, { 0x3C, 0x1 }, { 0x0, 0x1 }, { 0x3C, 0x1 }, { 0x3, 0x1 }, { 0x3C, 0x1 }, { 0xFE, 0x0 } }, // ov02_022537DC
+    { { 0x1, 0x1 }, { 0x3C, 0x2 }, { 0x2, 0x1 }, { 0x3C, 0x2 }, { 0x0, 0x1 }, { 0x3C, 0x2 }, { 0x3, 0x1 }, { 0x3C, 0x2 }, { 0x1, 0x1 }, { 0x3C, 0x1 }, { 0x2, 0x1 }, { 0x3C, 0x1 }, { 0x0, 0x1 }, { 0x3C, 0x1 }, { 0x3, 0x1 }, { 0x3C, 0x1 }, { 0x1, 0x1 }, { 0x2, 0x1 }, { 0x0, 0x1 }, { 0x3, 0x1 }, { 0x1, 0x1 }, { 0x2, 0x1 }, { 0x0, 0x1 }, { 0x3, 0x1 }, { 0xFE, 0x0 } }, // ov02_02253820
+    { { 0x1, 0x1 }, { 0x2, 0x1 }, { 0x0, 0x1 }, { 0x3, 0x1 }, { 0x1, 0x1 }, { 0x2, 0x1 }, { 0x0, 0x1 }, { 0x3, 0x1 }, { 0x1, 0x1 }, { 0x3C, 0x1 }, { 0x2, 0x1 }, { 0x3C, 0x1 }, { 0x0, 0x1 }, { 0x3C, 0x1 }, { 0x3, 0x1 }, { 0x3C, 0x1 }, { 0x1, 0x1 }, { 0x3C, 0x2 }, { 0x2, 0x1 }, { 0x3C, 0x3 }, { 0x0, 0x1 }, { 0x3C, 0x4 }, { 0x3, 0x1 }, { 0x3C, 0x5 }, { 0x1, 0x1 }, { 0xFE, 0x0 } }, // ov02_02253884
+    { 0x10, 0x0F, 0x0E, 0x0B, 0x0C, 0x09, 0xB4, 0x00, 0x00, 0x00, 0x0E, 0x01, 0x5A, 0x00, 0x00, 0x00 }, // ov02_022538EC
+    { 0x400, 0xF0, (Field3dObjectTaskFunc)ov02_0224D310, (Field3dObjectTaskFunc)ov02_0224D3A4, (Field3dObjectTaskFunc)ov02_0224D3B4, (Field3dObjectTaskFunc)ov02_0224D3E8 }, // ov02_022538FC
+    { 0x400, 0xF0, (Field3dObjectTaskFunc)ov02_0224D5B4, (Field3dObjectTaskFunc)ov02_0224D648, (Field3dObjectTaskFunc)ov02_0224D658, (Field3dObjectTaskFunc)ov02_0224D670 }, // ov02_02253914
+    { 0x400, 0x114, (Field3dObjectTaskFunc)ov02_0224DAA4, (Field3dObjectTaskFunc)ov02_0224DB8C, (Field3dObjectTaskFunc)ov02_0224DB9C, (Field3dObjectTaskFunc)ov02_0224DC58 }, // ov02_0225392C
+    { 0x400, 0x1CC, (Field3dObjectTaskFunc)ov02_0224D43C, (Field3dObjectTaskFunc)ov02_0224D468, (Field3dObjectTaskFunc)ov02_0224D488, (Field3dObjectTaskFunc)ov02_0224D580 }, // ov02_02253944
+    { 0x400, 0xD10, (Field3dObjectTaskFunc)ov02_0224D880, (Field3dObjectTaskFunc)ov02_0224D914, (Field3dObjectTaskFunc)ov02_0224D950, (Field3dObjectTaskFunc)ov02_0224D98C }, // ov02_0225395C
+    { 0x400, 0xF0, (Field3dObjectTaskFunc)ov02_0224D1E4, (Field3dObjectTaskFunc)ov02_0224D278, (Field3dObjectTaskFunc)ov02_0224D288, (Field3dObjectTaskFunc)ov02_0224D2BC }, // ov02_02253974
+    { 0x400, 0xF0, (Field3dObjectTaskFunc)ov02_0224D358, (Field3dObjectTaskFunc)ov02_0224D3A4, (Field3dObjectTaskFunc)ov02_0224D3B4, (Field3dObjectTaskFunc)ov02_0224D3E8 }, // ov02_0225398C
+    { 0x400, 0x114, (Field3dObjectTaskFunc)ov02_0224D9C0, (Field3dObjectTaskFunc)ov02_0224DB8C, (Field3dObjectTaskFunc)ov02_0224DB9C, (Field3dObjectTaskFunc)ov02_0224DC58 }, // ov02_022539A4
+    { 0x400, 0xF0, (Field3dObjectTaskFunc)ov02_0224D22C, (Field3dObjectTaskFunc)ov02_0224D278, (Field3dObjectTaskFunc)ov02_0224D288, (Field3dObjectTaskFunc)ov02_0224D2BC }, // ov02_022539BC
+    { 0x400, 0xE9C, (Field3dObjectTaskFunc)ov02_0224DCB0, (Field3dObjectTaskFunc)ov02_0224DD4C, (Field3dObjectTaskFunc)ov02_0224DD8C, (Field3dObjectTaskFunc)ov02_0224DDC8 }, // ov02_022539D4
+    { 0x400, 0xE9C, (Field3dObjectTaskFunc)ov02_0224DD38, (Field3dObjectTaskFunc)ov02_0224DD4C, (Field3dObjectTaskFunc)ov02_0224DD8C, (Field3dObjectTaskFunc)ov02_0224DDC8 }, // ov02_022539EC
+    { (ov02_AnimDispatchFunc)ov02_0224D2F0, (ov02_AnimDispatchFunc)ov02_0224D41C, (ov02_AnimDispatchFunc)ov02_0224D41C, (ov02_AnimDispatchFunc)ov02_0224D2F0, (ov02_AnimDispatchFunc)ov02_0224DC8C, (ov02_AnimDispatchFunc)ov02_0224DC8C }, // ov02_02253A04
+    { (ov02_CreateDispatchFunc)ov02_0224D2C8, (ov02_CreateDispatchFunc)ov02_0224D3F4, (ov02_CreateDispatchFunc)ov02_0224D408, (ov02_CreateDispatchFunc)ov02_0224D2DC, (ov02_CreateDispatchFunc)ov02_0224DC64, (ov02_CreateDispatchFunc)ov02_0224DC78 }, // ov02_02253A1C
+    { (ov02_AnimDispatchFunc)ov02_0224D2F8, (ov02_AnimDispatchFunc)ov02_0224D424, (ov02_AnimDispatchFunc)ov02_0224D424, (ov02_AnimDispatchFunc)ov02_0224D2F8, (ov02_AnimDispatchFunc)ov02_0224DC94, (ov02_AnimDispatchFunc)ov02_0224DC94 }, // ov02_02253A34
+    { 0xFF, 0x01, 0xFF, 0x01, 0x01, 0xFF, 0x00, 0x00 }, // ov02_02253A4C
+    { 0x01, 0x02, 0x04, 0x08, 0x10, 0x00, 0x00, 0x00 }, // ov02_02253A54
+    { { 0xB5, 0xB6, 0xB7, 0xB8, 0xB9 } }, // ov02_02253A5C
+    { { { 0x49, 0x1 }, { 0x30, 0x1 }, { 0x3E, 0x1 }, { 0x4A, 0x1 }, { 0xFE, 0x0 } }, { { 0x49, 0x1 }, { 0x31, 0x1 }, { 0x3E, 0x1 }, { 0x4A, 0x1 }, { 0xFE, 0x0 } }, { { 0x49, 0x1 }, { 0x32, 0x1 }, { 0x3E, 0x1 }, { 0x4A, 0x1 }, { 0xFE, 0x0 } }, { { 0x49, 0x1 }, { 0x33, 0x1 }, { 0x3E, 0x1 }, { 0x4A, 0x1 }, { 0xFE, 0x0 } } }, // ov02_02253A70
+    { 0x00000004, 0x00000005, 0x00000004, 0x00000004, 0x00000001, 0x00000004, 0x00000003, 0x00000002, 0x00000001, 0x00000002, 0x00000005, 0x00000006, 0x00000003, 0x00000001, 0x00000001, 0x00000003, 0x00000006, 0x00000003, 0x00000005, 0x00000006, 0x00000002, 0x00000002, 0x00000001, 0x00000003, 0x00000006 }, // ov02_02253AC0
+    { 0x00001000, 0x00001000, 0x00001000 }, // ov02_02253B24
+    { 0x00001000, 0x00001000, 0x00001000 }, // ov02_02253B30
+};
+
+static struct {
+    VecFx32 f02253D90[6];
+    VecFx32 f02253DD8[6];
+} sData = {
+    { { (fx32)0xFFFFB800, 0x0000C000, (fx32)0xFFFFB800 }, { 0x00004800, 0x0000C000, (fx32)0xFFFFB800 }, { (fx32)0xFFFFB800, 0x0000C000, 0 }, { 0x00004800, 0x0000C000, 0 }, { (fx32)0xFFFFB800, 0x0000C000, 0x00004800 }, { 0x00004800, 0x0000C000, 0x00004800 } }, // ov02_02253D90
+    { { (fx32)0xFFFFB800, 0x0000C000, (fx32)0xFFFFB800 }, { 0x00004800, 0x0000C000, (fx32)0xFFFFB800 }, { (fx32)0xFFFFB800, 0x0000C000, 0 }, { 0x00004800, 0x0000C000, 0 }, { (fx32)0xFFFFB800, 0x0000C000, 0x00004800 }, { 0x00004800, 0x0000C000, 0x00004800 } }, // ov02_02253DD8
+};
+
+#define ov02_022532F8 (sRodata.f022532F8)
+#define ov02_022532FC (sRodata.f022532FC)
+#define ov02_02253300 (sRodata.f02253300)
+#define ov02_02253304 (sRodata.f02253304)
+#define ov02_0225330A (sRodata.f0225330A)
+#define ov02_02253310 (sRodata.f02253310)
+#define ov02_02253320 (sRodata.f02253320)
+#define ov02_02253330 (sRodata.f02253330)
+#define ov02_02253348 (sRodata.f02253348)
+#define ov02_02253354 (sRodata.f02253354)
+#define ov02_02253360 (sRodata.f02253360)
+#define ov02_0225336C (sRodata.f0225336C)
+#define ov02_02253378 (sRodata.f02253378)
+#define ov02_02253384 (sRodata.f02253384)
+#define ov02_02253390 (sRodata.f02253390)
+#define ov02_0225339C (sRodata.f0225339C)
+#define ov02_022533A8 (sRodata.f022533A8)
+#define ov02_022533B4 (sRodata.f022533B4)
+#define ov02_022533C0 (sRodata.f022533C0)
+#define ov02_022533CC (sRodata.f022533CC)
+#define ov02_022533D8 (sRodata.f022533D8)
+#define ov02_022533E4 (sRodata.f022533E4)
+#define ov02_022533F0 (sRodata.f022533F0)
+#define ov02_022533FC (sRodata.f022533FC)
+#define ov02_02253408 (sRodata.f02253408)
+#define ov02_02253414 (sRodata.f02253414)
+#define ov02_02253420 (sRodata.f02253420)
+#define ov02_02253430 (sRodata.f02253430)
+#define ov02_02253440 (sRodata.f02253440)
+#define ov02_02253454 (sRodata.f02253454)
+#define ov02_02253468 (sRodata.f02253468)
+#define ov02_0225347C (sRodata.f0225347C)
+#define ov02_02253490 (sRodata.f02253490)
+#define ov02_022534A4 (sRodata.f022534A4)
+#define ov02_022534B8 (sRodata.f022534B8)
+#define ov02_022534D0 (sRodata.f022534D0)
+#define ov02_022534F0 (sRodata.f022534F0)
+#define ov02_02253520 (sRodata.f02253520)
+#define ov02_02253550 (sRodata.f02253550)
+#define ov02_02253588 (sRodata.f02253588)
+#define ov02_022535E4 (sRodata.f022535E4)
+#define ov02_022536E8 (sRodata.f022536E8)
+#define ov02_022536F0 (sRodata.f022536F0)
+#define ov02_02253700 (sRodata.f02253700)
+#define ov02_02253710 (sRodata.f02253710)
+#define ov02_02253724 (sRodata.f02253724)
+#define ov02_0225373C (sRodata.f0225373C)
+#define ov02_02253754 (sRodata.f02253754)
+#define ov02_02253770 (sRodata.f02253770)
+#define ov02_02253794 (sRodata.f02253794)
+#define ov02_022537B8 (sRodata.f022537B8)
+#define ov02_022537DC (sRodata.f022537DC)
+#define ov02_02253820 (sRodata.f02253820)
+#define ov02_02253884 (sRodata.f02253884)
+// ov02_022538EC -> sRodata+0x5F4 (referenced from inline asm)
+#define ov02_022538FC (sRodata.f022538FC)
+#define ov02_02253914 (sRodata.f02253914)
+#define ov02_0225392C (sRodata.f0225392C)
+#define ov02_02253944 (sRodata.f02253944)
+#define ov02_0225395C (sRodata.f0225395C)
+#define ov02_02253974 (sRodata.f02253974)
+#define ov02_0225398C (sRodata.f0225398C)
+#define ov02_022539A4 (sRodata.f022539A4)
+#define ov02_022539BC (sRodata.f022539BC)
+#define ov02_022539D4 (sRodata.f022539D4)
+#define ov02_022539EC (sRodata.f022539EC)
+#define ov02_02253A04 (sRodata.f02253A04)
+#define ov02_02253A1C (sRodata.f02253A1C)
+#define ov02_02253A34 (sRodata.f02253A34)
+// ov02_02253A4C -> sRodata+0x754 (referenced from inline asm)
+#define ov02_02253A54 (sRodata.f02253A54)
+#define ov02_02253A5C (sRodata.f02253A5C)
+#define ov02_02253A70 (sRodata.f02253A70)
+#define ov02_02253AC0 (sRodata.f02253AC0)
+#define ov02_02253B24 (sRodata.f02253B24)
+#define ov02_02253B30 (sRodata.f02253B30)
+#define ov02_02253D90 (sData.f02253D90)
+#define ov02_02253DD8 (sData.f02253DD8)
+
 WIP_LOCAL void ov02_02248728(void *mgr, int a1, int a2, int a3, int a4, int a5, int a6, int a7, int a8, int a9);
 WIP_LOCAL void ov02_02248980(void *mgr, void *narc, int resId, int flag);
 WIP_LOCAL void ov02_02248A58(void *mgr, void *narc, int resId, int flag);
@@ -717,17 +977,6 @@ WIP_LOCAL void ov02_0224D144(void *obj, void *fieldSystem);
 
 // Field3dObjectTaskTemplate data (rodata) defined later in the file's .rodata.
 // Declared extern here so the create wrappers' relocations resolve by name.
-extern const Field3dObjectTaskTemplate ov02_022538FC;
-extern const Field3dObjectTaskTemplate ov02_02253914;
-extern const Field3dObjectTaskTemplate ov02_0225392C;
-extern const Field3dObjectTaskTemplate ov02_02253944;
-extern const Field3dObjectTaskTemplate ov02_0225395C;
-extern const Field3dObjectTaskTemplate ov02_02253974;
-extern const Field3dObjectTaskTemplate ov02_0225398C;
-extern const Field3dObjectTaskTemplate ov02_022539A4;
-extern const Field3dObjectTaskTemplate ov02_022539BC;
-extern const Field3dObjectTaskTemplate ov02_022539D4;
-extern const Field3dObjectTaskTemplate ov02_022539EC;
 
 // ov02_02248728
 // clang-format off
@@ -1638,7 +1887,8 @@ WIP_LOCAL void ov02_0224957C(void *ptr) {
 }
 
 WIP_LOCAL void ov02_02249584(SysTask *task, void *sm) {
-    while (ov02_02253550[*(int *)sm](sm) == 1) {
+    ov02_StateMachineFunc const *table = ov02_02253550;
+    while (table[*(int *)sm](sm) == 1) {
     }
     if (*(int *)((u8 *)sm + 0x10) == 1) {
         if (*(void **)((u8 *)sm + 0x1e0) != NULL) {
@@ -1850,7 +2100,8 @@ WIP_LOCAL int ov02_0224997C(void *work) {
 }
 
 WIP_LOCAL void ov02_02249984(SysTask *task, void *sm) {
-    while (ov02_02253588[*(int *)sm](sm) == 1) {
+    ov02_StateMachineFunc const *table = ov02_02253588;
+    while (table[*(int *)sm](sm) == 1) {
     }
     if (*(int *)((u8 *)sm + 0x10) == 1) {
         if (*(void **)((u8 *)sm + 0x1e0) != NULL) {
@@ -1861,7 +2112,8 @@ WIP_LOCAL void ov02_02249984(SysTask *task, void *sm) {
 }
 
 WIP_LOCAL void ov02_022499B8(SysTask *task, void *sm) {
-    while (ov02_022534F0[*(int *)sm](sm) == 1) {
+    ov02_StateMachineFunc const *table = ov02_022534F0;
+    while (table[*(int *)sm](sm) == 1) {
     }
     if (*(int *)((u8 *)sm + 0x10) == 1) {
         if (*(void **)((u8 *)sm + 0x1e0) != NULL) {
@@ -3074,7 +3326,8 @@ WIP_LOCAL void ov02_0224B448(SysTask *task) {
 }
 
 WIP_LOCAL void ov02_0224B45C(SysTask *task, void *sm) {
-    while (ov02_022534B8[*(int *)sm](sm) == 1) {
+    ov02_StateMachineFunc const *table = ov02_022534B8;
+    while (table[*(int *)sm](sm) == 1) {
     }
     if (*(int *)((u8 *)sm + 0x10) != 0) {
         if (*(void **)((u8 *)sm + 0x170) != NULL) {
@@ -3525,20 +3778,55 @@ WIP_LOCAL BOOL ov02_0224BE24(TaskManager *taskManager) {
     return FALSE;
 }
 
-void ov02_0224BF58(FieldSystem *fieldSystem, u8 a1) {
-    void *sp24;
-    void *sp20;
-    ov02_BF58Cfg cfg;
-    cfg = ov02_022536E8;
-    if (sub_02054C90(fieldSystem, &cfg, 2, &sp24, &sp20) != 0) {
-        void *v6 = ov01_021FB9E0(*(void **)((u8 *)fieldSystem + 0x34));
-        void *v4 = ov01_021F3B38(sp24);
-        void *v0 = ov01_021F3B3C(sp24);
-        ov01_021E8DE8(*(void **)((u8 *)fieldSystem + 0x54), *(void **)((u8 *)fieldSystem + 0x58), a1, sp20, v4, v0, v6, 2, 1, 0);
-    } else {
-        GF_AssertFail();
-    }
+// clang-format off
+asm void ov02_0224BF58(FieldSystem *fieldSystem, u8 a1) {
+    push {r3, r4, r5, r6, r7, lr}
+    sub sp, #0x28
+    ldr r2, =sRodata+0x3F0
+    add r7, r1, #0
+    ldr r3, [r2, #0]
+    ldr r2, [r2, #4]
+    str r3, [sp, #0x18]
+    str r2, [sp, #0x1c]
+    add r2, sp, #0x20
+    str r2, [sp, #0]
+    add r1, sp, #0x18
+    mov r2, #2
+    add r3, sp, #0x24
+    add r5, r0, #0
+    bl sub_02054C90
+    cmp r0, #0
+    beq _0224BFB4
+    ldr r0, [r5, #0x34]
+    bl ov01_021FB9E0
+    add r6, r0, #0
+    ldr r0, [sp, #0x24]
+    bl ov01_021F3B38
+    add r4, r0, #0
+    ldr r0, [sp, #0x24]
+    bl ov01_021F3B3C
+    str r4, [sp, #0]
+    str r0, [sp, #4]
+    str r6, [sp, #8]
+    mov r0, #2
+    str r0, [sp, #0xc]
+    mov r0, #1
+    str r0, [sp, #0x10]
+    mov r0, #0
+    str r0, [sp, #0x14]
+    ldr r0, [r5, #0x54]
+    ldr r1, [r5, #0x58]
+    ldr r3, [sp, #0x20]
+    add r2, r7, #0
+    bl ov01_021E8DE8
+    add sp, #0x28
+    pop {r3, r4, r5, r6, r7, pc}
+_0224BFB4:
+    bl GF_AssertFail
+    add sp, #0x28
+    pop {r3, r4, r5, r6, r7, pc}
 }
+// clang-format on
 
 WIP_LOCAL void ov02_0224BFC0(FieldSystem *fieldSystem, u8 a1) {
     ov01_021E8E70(*(void **)((u8 *)fieldSystem + 0x58), a1, 0);
@@ -3567,8 +3855,9 @@ WIP_LOCAL BOOL Task_FieldEscapeRope(TaskManager *taskManager) {
     FieldSystem *fieldSystem = TaskManager_GetFieldSystem(taskManager);
     int r;
     void *env = TaskManager_GetEnvironment(taskManager);
+    ov02_FieldTaskFunc const *table = ov02_02253700;
     do {
-        r = ov02_02253700[*(int *)env](taskManager, fieldSystem, env);
+        r = table[*(int *)env](taskManager, fieldSystem, env);
         if (r == 2) {
             Heap_Free(env);
         }
@@ -3651,8 +3940,9 @@ WIP_LOCAL BOOL ov02_0224C1F8(TaskManager *taskManager) {
     FieldSystem *fieldSystem = TaskManager_GetFieldSystem(taskManager);
     void *env = TaskManager_GetEnvironment(taskManager);
     int r;
+    ov02_FieldTaskFunc const *table = ov02_022536F0;
     do {
-        r = ov02_022536F0[*(int *)env](taskManager, fieldSystem, env);
+        r = table[*(int *)env](taskManager, fieldSystem, env);
         if (r == 2) {
             Heap_Free(env);
             return TRUE;
@@ -3729,60 +4019,137 @@ struct FieldMoveTaskEnvironment *FieldMoveTask_CreateDigEnvironment(FieldSystem 
     return env;
 }
 
-BOOL Task_FieldDig(TaskManager *taskManager) {
-    FieldSystem *fieldSystem = TaskManager_GetFieldSystem(taskManager);
-    void *env = TaskManager_GetEnvironment(taskManager);
-    u32 *state = TaskManager_GetStatePtr(taskManager);
-    switch (*state) {
-    case 0:
-        if (*(int *)((u8 *)env + 8)) {
-            TaskManager_Call(taskManager, ov01_02205A60, NULL);
-        }
-        (*state)++;
-        break;
-    case 1:
-        (*state)++;
-        if (*(int *)((u8 *)env + 8)) {
-            u8 mood;
-            if (ov02_02250780(fieldSystem, 4)) {
-                mood = 2;
-                FieldSystem_UnkSub108_AddMonMood(fieldSystem->unk108, 1);
-            } else {
-                mood = 1;
-            }
-            ov02_022507B4(fieldSystem, mood);
-            break;
-        }
-        // fall through
-    case 2:
-        if (*(int *)((u8 *)env + 8)) {
-            int species = GetMonData(*(Pokemon **)((u8 *)env + 0x28), MON_DATA_SPECIES, NULL);
-            int form = GetMonData(*(Pokemon **)((u8 *)env + 0x28), MON_DATA_FORM, NULL);
-            PlayCry((u16)species, (u8)form);
-        }
-        (*state)++;
-        // fall through
-    case 3: {
-        int result;
-        do {
-            if (*(int *)((u8 *)env + 8)) {
-                if (IsCryFinished()) {
-                    result = 0;
-                } else {
-                    result = ov02_02253710[*(int *)env](taskManager, fieldSystem, env);
-                }
-            } else {
-                result = ov02_02253754[*(int *)env](taskManager, fieldSystem, env);
-            }
-            if (result == 2) {
-                Heap_Free(env);
-            }
-        } while (result == 1);
-        break;
-    }
-    }
-    return 0;
+// clang-format off
+asm BOOL Task_FieldDig(TaskManager *taskManager) {
+    push {r3, r4, r5, r6, r7, lr}
+    add r7, r0, #0
+    bl TaskManager_GetFieldSystem
+    add r6, r0, #0
+    add r0, r7, #0
+    bl TaskManager_GetEnvironment
+    add r4, r0, #0
+    add r0, r7, #0
+    bl TaskManager_GetStatePtr
+    add r5, r0, #0
+    ldr r0, [r5, #0]
+    cmp r0, #3
+    bhi _0224C4A2
+    add r1, r0, r0
+    add r1, pc
+    ldrh r1, [r1, #6]
+    lsl r1, r1, #0x10
+    asr r1, r1, #0x10
+    add pc, r1
+    lsl r6, r0, #0
+    lsl r6, r3, #0
+    lsl r0, r2, #1
+    lsl r2, r0, #2
+_0224C3E0:
+    ldr r0, [r4, #8]
+    cmp r0, #0
+    beq _0224C3F0
+    ldr r1, =ov01_02205A60
+    add r0, r7, #0
+    mov r2, #0
+    bl TaskManager_Call
+_0224C3F0:
+    ldr r0, [r5, #0]
+    add r0, r0, #1
+    str r0, [r5, #0]
+    b _0224C4A2
+_0224C3F8:
+    add r0, r0, #1
+    str r0, [r5, #0]
+    ldr r0, [r4, #8]
+    cmp r0, #0
+    beq _0224C42A
+    add r0, r6, #0
+    mov r1, #4
+    bl ov02_02250780
+    cmp r0, #0
+    beq _0224C41E
+    mov r0, #0x42
+    lsl r0, r0, #2
+    ldr r0, [r6, r0]
+    mov r1, #1
+    mov r4, #2
+    bl FieldSystem_UnkSub108_AddMonMood
+    b _0224C420
+_0224C41E:
+    mov r4, #1
+_0224C420:
+    add r0, r6, #0
+    add r1, r4, #0
+    bl ov02_022507B4
+    b _0224C4A2
+_0224C42A:
+    ldr r0, [r4, #8]
+    cmp r0, #0
+    beq _0224C456
+    ldr r0, [r4, #0x28]
+    mov r1, #5
+    mov r2, #0
+    bl GetMonData
+    str r0, [sp, #0]
+    ldr r0, [r4, #0x28]
+    mov r1, #0x70
+    mov r2, #0
+    bl GetMonData
+    add r1, r0, #0
+    ldr r0, [sp, #0]
+    lsl r1, r1, #0x18
+    lsl r0, r0, #0x10
+    lsr r0, r0, #0x10
+    lsr r1, r1, #0x18
+    bl PlayCry
+_0224C456:
+    ldr r0, [r5, #0]
+    add r0, r0, #1
+    str r0, [r5, #0]
+_0224C45C:
+    ldr r0, [r4, #8]
+    cmp r0, #0
+    beq _0224C482
+    bl IsCryFinished
+    cmp r0, #0
+    beq _0224C46E
+    mov r5, #0
+    b _0224C494
+_0224C46E:
+    ldr r3, [r4, #0]
+    add r0, r7, #0
+    lsl r5, r3, #2
+    ldr r3, =sRodata+0x418
+    add r1, r6, #0
+    ldr r3, [r3, r5]
+    add r2, r4, #0
+    blx r3
+    add r5, r0, #0
+    b _0224C494
+_0224C482:
+    ldr r3, [r4, #0]
+    add r0, r7, #0
+    lsl r5, r3, #2
+    ldr r3, =sRodata+0x45C
+    add r1, r6, #0
+    ldr r3, [r3, r5]
+    add r2, r4, #0
+    blx r3
+    add r5, r0, #0
+_0224C494:
+    cmp r5, #2
+    bne _0224C49E
+    add r0, r4, #0
+    bl Heap_Free
+_0224C49E:
+    cmp r5, #1
+    beq _0224C45C
+_0224C4A2:
+    mov r0, #0
+    pop {r3, r4, r5, r6, r7, pc}
+    nop
 }
+// clang-format on
 
 WIP_LOCAL int ov02_0224C4B4(void *a0, FieldSystem *fieldSystem, void *work) {
     u32 gender = PlayerAvatar_GetGender(fieldSystem->playerAvatar);
@@ -3817,60 +4184,137 @@ struct FieldMoveTaskEnvironment *FieldMoveTask_CreateTeleportEnvironment(FieldSy
     return env;
 }
 
-BOOL Task_FieldTeleport(TaskManager *taskManager) {
-    FieldSystem *fieldSystem = TaskManager_GetFieldSystem(taskManager);
-    void *env = TaskManager_GetEnvironment(taskManager);
-    u32 *state = TaskManager_GetStatePtr(taskManager);
-    switch (*state) {
-    case 0:
-        if (*(int *)((u8 *)env + 8)) {
-            TaskManager_Call(taskManager, ov01_02205A60, NULL);
-        }
-        (*state)++;
-        break;
-    case 1:
-        (*state)++;
-        if (*(int *)((u8 *)env + 8)) {
-            u8 mood;
-            if (ov02_02250780(fieldSystem, 0xe)) {
-                mood = 2;
-                FieldSystem_UnkSub108_AddMonMood(fieldSystem->unk108, 1);
-            } else {
-                mood = 1;
-            }
-            ov02_022507B4(fieldSystem, mood);
-            break;
-        }
-        // fall through
-    case 2:
-        if (*(int *)((u8 *)env + 8)) {
-            int species = GetMonData(*(Pokemon **)((u8 *)env + 0x28), MON_DATA_SPECIES, NULL);
-            int form = GetMonData(*(Pokemon **)((u8 *)env + 0x28), MON_DATA_FORM, NULL);
-            PlayCry((u16)species, (u8)form);
-        }
-        (*state)++;
-        // fall through
-    case 3: {
-        int result;
-        do {
-            if (*(int *)((u8 *)env + 8)) {
-                if (IsCryFinished()) {
-                    result = 0;
-                } else {
-                    result = ov02_0225373C[*(int *)env](taskManager, fieldSystem, env);
-                }
-            } else {
-                result = ov02_02253724[*(int *)env](taskManager, fieldSystem, env);
-            }
-            if (result == 2) {
-                Heap_Free(env);
-            }
-        } while (result == 1);
-        break;
-    }
-    }
-    return 0;
+// clang-format off
+asm BOOL Task_FieldTeleport(TaskManager *taskManager) {
+    push {r3, r4, r5, r6, r7, lr}
+    add r7, r0, #0
+    bl TaskManager_GetFieldSystem
+    add r6, r0, #0
+    add r0, r7, #0
+    bl TaskManager_GetEnvironment
+    add r4, r0, #0
+    add r0, r7, #0
+    bl TaskManager_GetStatePtr
+    add r5, r0, #0
+    ldr r0, [r5, #0]
+    cmp r0, #3
+    bhi _0224C64E
+    add r1, r0, r0
+    add r1, pc
+    ldrh r1, [r1, #6]
+    lsl r1, r1, #0x10
+    asr r1, r1, #0x10
+    add pc, r1
+    lsl r6, r0, #0
+    lsl r6, r3, #0
+    lsl r0, r2, #1
+    lsl r2, r0, #2
+_0224C58C:
+    ldr r0, [r4, #8]
+    cmp r0, #0
+    beq _0224C59C
+    ldr r1, =ov01_02205A60
+    add r0, r7, #0
+    mov r2, #0
+    bl TaskManager_Call
+_0224C59C:
+    ldr r0, [r5, #0]
+    add r0, r0, #1
+    str r0, [r5, #0]
+    b _0224C64E
+_0224C5A4:
+    add r0, r0, #1
+    str r0, [r5, #0]
+    ldr r0, [r4, #8]
+    cmp r0, #0
+    beq _0224C5D6
+    add r0, r6, #0
+    mov r1, #0xe
+    bl ov02_02250780
+    cmp r0, #0
+    beq _0224C5CA
+    mov r0, #0x42
+    lsl r0, r0, #2
+    ldr r0, [r6, r0]
+    mov r1, #1
+    mov r4, #2
+    bl FieldSystem_UnkSub108_AddMonMood
+    b _0224C5CC
+_0224C5CA:
+    mov r4, #1
+_0224C5CC:
+    add r0, r6, #0
+    add r1, r4, #0
+    bl ov02_022507B4
+    b _0224C64E
+_0224C5D6:
+    ldr r0, [r4, #8]
+    cmp r0, #0
+    beq _0224C602
+    ldr r0, [r4, #0x28]
+    mov r1, #5
+    mov r2, #0
+    bl GetMonData
+    str r0, [sp, #0]
+    ldr r0, [r4, #0x28]
+    mov r1, #0x70
+    mov r2, #0
+    bl GetMonData
+    add r1, r0, #0
+    ldr r0, [sp, #0]
+    lsl r1, r1, #0x18
+    lsl r0, r0, #0x10
+    lsr r0, r0, #0x10
+    lsr r1, r1, #0x18
+    bl PlayCry
+_0224C602:
+    ldr r0, [r5, #0]
+    add r0, r0, #1
+    str r0, [r5, #0]
+_0224C608:
+    ldr r0, [r4, #8]
+    cmp r0, #0
+    beq _0224C62E
+    bl IsCryFinished
+    cmp r0, #0
+    beq _0224C61A
+    mov r5, #0
+    b _0224C640
+_0224C61A:
+    ldr r3, [r4, #0]
+    add r0, r7, #0
+    lsl r5, r3, #2
+    ldr r3, =sRodata+0x444
+    add r1, r6, #0
+    ldr r3, [r3, r5]
+    add r2, r4, #0
+    blx r3
+    add r5, r0, #0
+    b _0224C640
+_0224C62E:
+    ldr r3, [r4, #0]
+    add r0, r7, #0
+    lsl r5, r3, #2
+    ldr r3, =sRodata+0x42C
+    add r1, r6, #0
+    ldr r3, [r3, r5]
+    add r2, r4, #0
+    blx r3
+    add r5, r0, #0
+_0224C640:
+    cmp r5, #2
+    bne _0224C64A
+    add r0, r4, #0
+    bl Heap_Free
+_0224C64A:
+    cmp r5, #1
+    beq _0224C608
+_0224C64E:
+    mov r0, #0
+    pop {r3, r4, r5, r6, r7, pc}
+    nop
 }
+// clang-format on
 
 WIP_LOCAL void *ov02_0224C660(enum HeapID heapID, u32 size) {
     void *ptr = Heap_AllocAtEnd(heapID, size);
@@ -4590,7 +5034,7 @@ asm void ov02_0224D488(void *a0, void *a1, void *a2) {
     lsl r4, r7, #1
     lsl r0, r7, #2
 _0224D4AC:
-    ldr r2, =ov02_022538EC
+    ldr r2, =sRodata+0x5F4
     add r1, sp, #4
     ldrb r3, [r2, #2]
     add r0, sp, #4
@@ -4709,7 +5153,7 @@ asm void ov02_0224D5B4(void *a0, void *a1, void *a2) {
     push {r4, r5, r6, lr}
     sub sp, #0x10
     add r5, r1, #0
-    ldr r1, =ov02_022538EC
+    ldr r1, =sRodata+0x5F4
     add r4, r2, #0
     ldrb r2, [r1, #0]
     add r0, sp, #4
@@ -5820,7 +6264,7 @@ asm int ov02_0224E828(void *a0, int a1, int a2, int a3, fx32 a4, u16 *a5, u16 *a
     add r5, r1, #0
     ldr r0, [sp, #0x84]
     str r2, [sp, #4]
-    ldr r1, =ov02_02253A4C
+    ldr r1, =sRodata+0x754
     str r0, [sp, #0x84]
     ldr r0, [sp, #0x88]
     ldrb r2, [r1, #2]
@@ -6212,7 +6656,7 @@ asm int ov02_0224EB48(void *a0, int a1, int a2, int a3, fx32 a4, u16 *a5, u16 *a
     str r1, [sp, #4]
     str r0, [sp, #0x84]
     ldr r0, [sp, #0x88]
-    ldr r1, =ov02_02253A4C
+    ldr r1, =sRodata+0x754
     str r0, [sp, #0x88]
     add r5, r2, #0
     add r2, r3, #0
@@ -6589,13 +7033,13 @@ asm int ov02_0224EE4C(void *a0, int a1, int a2, int a3, fx32 a4, u16 *a5, u16 *a
     ldr r4, [sp, #0x44]
     ldr r6, [sp, #0x3c]
     str r4, [sp, #0x44]
-    ldr r4, =ov02_02253A4C
+    ldr r4, =sRodata+0x754
     ldr r7, [sp, #0x40]
     ldrb r5, [r4, #4]
     add r4, sp, #0x20
     str r0, [sp, #0x10]
     strb r5, [r4, #0]
-    ldr r4, =ov02_02253A4C
+    ldr r4, =sRodata+0x754
     ldrb r5, [r4, #5]
     add r4, sp, #0x20
     strb r5, [r4, #1]
@@ -8479,16 +8923,46 @@ WIP_LOCAL BOOL ov02_022506D4(u32 a0, u32 a1) {
     return FALSE;
 }
 
-WIP_LOCAL BOOL ov02_02250738(u32 a0, u32 a1) {
-    int i;
-    u8 masks[] = { 0x01, 0x02, 0x04, 0x08, 0x10 };
-    for (i = 0; i < 5; i++) {
-        if ((masks[a0 - 1] & a1) == 0) {
-            return TRUE;
-        }
-    }
-    return FALSE;
+// clang-format off
+asm BOOL ov02_02250738(u32 a0, u32 a1) {
+    push {r4, r5}
+    sub sp, #8
+    ldr r4, =sRodata+0x75C
+    add r2, sp, #0
+    ldrb r5, [r4, #0]
+    add r3, sp, #0
+    add r0, r2, r0
+    strb r5, [r3, #0]
+    ldrb r5, [r4, #1]
+    sub r0, r0, #1
+    strb r5, [r3, #1]
+    ldrb r5, [r4, #2]
+    strb r5, [r3, #2]
+    ldrb r5, [r4, #3]
+    ldrb r4, [r4, #4]
+    strb r5, [r3, #3]
+    strb r4, [r3, #4]
+    ldrb r0, [r0, #0]
+    mov r3, #0
+    and r0, r1
+_02250760:
+    cmp r0, #0
+    bne _0225076C
+    add sp, #8
+    mov r0, #1
+    pop {r4, r5}
+    bx lr
+_0225076C:
+    add r3, r3, #1
+    cmp r3, #5
+    blt _02250760
+    mov r0, #0
+    add sp, #8
+    pop {r4, r5}
+    bx lr
+    nop
 }
+// clang-format on
 
 WIP_LOCAL BOOL ov02_02250780(FieldSystem *fieldSystem, u8 a1) {
     Pokemon *mon = GetFirstAliveMonInParty_CrashIfNone(SaveArray_Party_Get(fieldSystem->saveData));
@@ -8639,337 +9113,3 @@ WIP_LOCAL BOOL ov02_022508D8(TaskManager *taskManager) {
     }
     return FALSE;
 }
-
-// ===================================================================
-// rodata / .data definitions (finalization flip-to-src; byte-exact, typed)
-// ===================================================================
-// ==== rodata-only forward externs (referenced only from other rodata) ====
-extern ov02_StateMachineFunc const ov02_022532F8[];
-extern ov02_StateMachineFunc const ov02_02253300[];
-extern ov02_StateMachineFunc const ov02_02253330[];
-extern ov02_StateMachineFunc const ov02_02253420[];
-extern ov02_StateMachineFunc const ov02_022534D0[];
-extern void sub_02068DD0(void);
-extern void sub_02068DD4(void);
-
-ov02_StateMachineFunc const ov02_022532F8[] = { (ov02_StateMachineFunc)ov02_02248E10 };
-const u16 ov02_022532FC[] = { 0x0007, 0x0008 };
-ov02_StateMachineFunc const ov02_02253300[] = { (ov02_StateMachineFunc)ov02_0224AC28 };
-const u16 ov02_02253304[] = { 0x0011, 0x0014, 0x0017 };
-const u16 ov02_0225330A[] = { 0x0013, 0x0016, 0x0019 };
-const u16 ov02_02253310[] = { 0x0012, 0x0015, 0x0018, 0x0000, 0x0000, 0x0000, 0x0010, 0x0000 };
-ov02_StateMachineFunc *const ov02_02253320[] = { (ov02_StateMachineFunc *)ov02_022532F8, (ov02_StateMachineFunc *)ov02_022534D0, (ov02_StateMachineFunc *)0x1, (ov02_StateMachineFunc *)0xF };
-ov02_StateMachineFunc const ov02_02253330[] = { (ov02_StateMachineFunc)ov02_0224ACE0, (ov02_StateMachineFunc)ov02_0224ADEC, (ov02_StateMachineFunc)0x0, (ov02_StateMachineFunc)0x6, (ov02_StateMachineFunc)0x1, (ov02_StateMachineFunc)0xE };
-const VecFx32 ov02_02253348 = { 0x00080000, 0x00054000, 0 };
-const VecFx32 ov02_02253354 = { 0x00080000, 0x00068000, 0 };
-const VecFx32 ov02_02253360 = { 0x00001000, 0x00001000, 0 };
-const VecFx32 ov02_0225336C = { 0x00001400, 0x00001400, 0 };
-const VecFx32 ov02_02253378 = { 0x00001000, 0x00001000, 0 };
-const VecFx32 ov02_02253384 = { 0x00128000, 0x00060000, 0 };
-const VecFx32 ov02_02253390 = { 0x00001000, 0x00001000, 0 };
-const VecFx32 ov02_0225339C = { 0x00080000, 0x0006F000, 0 };
-const VecFx32 ov02_022533A8 = { 0x00002000, 0x00002000, 0 };
-const VecFx32 ov02_022533B4 = { 0x00001000, 0x00001000, 0 };
-ov02_StateMachineFunc *const ov02_022533C0[] = { (ov02_StateMachineFunc *)ov02_02253300, (ov02_StateMachineFunc *)ov02_02253330, (ov02_StateMachineFunc *)ov02_02253420 };
-const VecFx32 ov02_022533CC = { 0x00002000, 0x00002000, 0 };
-const VecFx32 ov02_022533D8 = { 0x00088000, 0x0004F000, 0 };
-const VecFx32 ov02_022533E4 = { 0x00088000, 0x00058000, 0 };
-const VecFx32 ov02_022533F0 = { 0x00000400, 0x00000400, 0 };
-const VecFx32 ov02_022533FC = { 0x00080000, 0x00060000, 0 };
-const VecFx32 ov02_02253408 = { 0x00080000, 0x00060000, 0 };
-const VecFx32 ov02_02253414 = { 0x00128000, 0x00060000, 0 };
-ov02_StateMachineFunc const ov02_02253420[] = { (ov02_StateMachineFunc)ov02_0224AF70, (ov02_StateMachineFunc)ov02_0224B0E0, (ov02_StateMachineFunc)ov02_0224B158, (ov02_StateMachineFunc)ov02_0224B294 };
-const fx32 ov02_02253430[] = {
-    (fx32)0xFFFFC000,
-    (fx32)0xFFFFA000,
-    (fx32)0xFFFF9000,
-    (fx32)0xFFFF8000,
-};
-const ov02_LaunchTemplate ov02_02253440 = { 0x8, (void *)ov02_0224B6D0, (void *)sub_02068DD4, (void *)ov02_0224B6E4, (void *)sub_02068DD0 };
-const ov02_LaunchTemplate ov02_02253454 = { 0x74, (void *)ov02_02248D98, (void *)ov02_02248DE4, (void *)ov02_02248DF0, (void *)sub_02068DD0 };
-const ov02_LaunchTemplate ov02_02253468 = { 0x24, (void *)ov02_0224AA80, (void *)ov02_0224AAC8, (void *)ov02_0224AAD4, (void *)ov02_0224AB54 };
-const ov02_LaunchTemplate ov02_0225347C = { 0x68, (void *)ov02_0224ABCC, (void *)ov02_0224ABF8, (void *)ov02_0224AC04, (void *)ov02_0224AC24 };
-const ov02_LaunchTemplate ov02_02253490 = { 0xC, (void *)ov02_0224B7CC, (void *)ov02_0224B804, (void *)ov02_0224B808, (void *)ov02_0224B87C };
-const ov02_LaunchTemplate ov02_022534A4 = { 0x24, (void *)ov02_0224B350, (void *)sub_02068DD4, (void *)ov02_0224B3FC, (void *)sub_02068DD0 };
-ov02_StateMachineFunc const ov02_022534B8[] = { (ov02_StateMachineFunc)ov02_0224B494, (ov02_StateMachineFunc)ov02_0224B4AC, (ov02_StateMachineFunc)ov02_0224B5F0, (ov02_StateMachineFunc)ov02_0224B638, (ov02_StateMachineFunc)ov02_0224B664, (ov02_StateMachineFunc)ov02_0224B68C };
-ov02_StateMachineFunc const ov02_022534D0[] = { (ov02_StateMachineFunc)ov02_02248F88, (ov02_StateMachineFunc)ov02_02249088, (ov02_StateMachineFunc)ov02_022490BC, (ov02_StateMachineFunc)ov02_022491A8, (ov02_StateMachineFunc)ov02_022491CC, (ov02_StateMachineFunc)ov02_02249290, (ov02_StateMachineFunc)ov02_0224939C, (ov02_StateMachineFunc)ov02_022493EC };
-ov02_StateMachineFunc const ov02_022534F0[] = { (ov02_StateMachineFunc)ov02_022495D0, (ov02_StateMachineFunc)ov02_02249A5C, (ov02_StateMachineFunc)ov02_0224B938, (ov02_StateMachineFunc)ov02_0224B964, (ov02_StateMachineFunc)ov02_02249AD8, (ov02_StateMachineFunc)ov02_02249AF0, (ov02_StateMachineFunc)ov02_02249B80, (ov02_StateMachineFunc)ov02_02249BA8, (ov02_StateMachineFunc)ov02_02249C74, (ov02_StateMachineFunc)ov02_02249CD8, (ov02_StateMachineFunc)ov02_02249954, (ov02_StateMachineFunc)ov02_0224997C };
-const fx32 ov02_02253520[] = {
-    (fx32)0xFFFF4000,
-    (fx32)0xFFFF0000,
-    (fx32)0xFFFEC000,
-    (fx32)0xFFFE8000,
-    (fx32)0xFFFE6000,
-    (fx32)0xFFFE4000,
-    (fx32)0xFFFE4000,
-    (fx32)0xFFFE4000,
-    (fx32)0xFFFE6000,
-    (fx32)0xFFFE8000,
-    (fx32)0xFFFEA000,
-    (fx32)0xFFFEC000,
-};
-ov02_StateMachineFunc const ov02_02253550[] = { (ov02_StateMachineFunc)ov02_022495B8, (ov02_StateMachineFunc)ov02_022495E8, (ov02_StateMachineFunc)ov02_02249658, (ov02_StateMachineFunc)ov02_02249690, (ov02_StateMachineFunc)ov02_022496D0, (ov02_StateMachineFunc)ov02_02249754, (ov02_StateMachineFunc)ov02_02249774, (ov02_StateMachineFunc)ov02_022497C0, (ov02_StateMachineFunc)ov02_02249838, (ov02_StateMachineFunc)ov02_02249858, (ov02_StateMachineFunc)ov02_022498BC, (ov02_StateMachineFunc)ov02_02249940, (ov02_StateMachineFunc)ov02_02249968, (ov02_StateMachineFunc)ov02_0224997C };
-ov02_StateMachineFunc const ov02_02253588[] = { (ov02_StateMachineFunc)ov02_022495B8, (ov02_StateMachineFunc)ov02_022499EC, (ov02_StateMachineFunc)ov02_02249658, (ov02_StateMachineFunc)ov02_02249690, (ov02_StateMachineFunc)ov02_022496D0, (ov02_StateMachineFunc)ov02_02249754, (ov02_StateMachineFunc)ov02_02249774, (ov02_StateMachineFunc)ov02_022497C0, (ov02_StateMachineFunc)ov02_02249838, (ov02_StateMachineFunc)ov02_02249858, (ov02_StateMachineFunc)ov02_02249AC4, (ov02_StateMachineFunc)ov02_02249AD8, (ov02_StateMachineFunc)ov02_02249AF0, (ov02_StateMachineFunc)ov02_02249B10, (ov02_StateMachineFunc)ov02_02249B38, (ov02_StateMachineFunc)ov02_02249B60, (ov02_StateMachineFunc)ov02_02249BA8, (ov02_StateMachineFunc)ov02_02249BD8, (ov02_StateMachineFunc)ov02_02249C74, (ov02_StateMachineFunc)ov02_02249CD8, (ov02_StateMachineFunc)ov02_02249940, (ov02_StateMachineFunc)ov02_02249968, (ov02_StateMachineFunc)ov02_0224997C };
-const ov02_A9D8Entry ov02_022535E4[] = {
-    { 0x0000F000, 0x0003F000, 0x00010000, (void *)0x85, 0x0 },
-    { 0x0004C000, 0x00043000, 0x00010000, (void *)0x85, 0x0 },
-    { 0x00080000, 0x0003D000, 0x00018000, (void *)0x80, 0x1 },
-    { 0x000F0000, 0x00045000, 0x00010000, (void *)0x85, 0x0 },
-    { 0x00028000, 0x0004E000, 0x00018000, (void *)0x80, 0x1 },
-    { 0x00048000, 0x0005B000, 0x00010000, (void *)0x85, 0x0 },
-    { 0x000D0000, 0x00056000, 0x00018000, (void *)0x80, 0x1 },
-    { 0x00038000, 0x00074000, 0x00010000, (void *)0x85, 0x0 },
-    { 0x0005F000, 0x0006D000, 0x00018000, (void *)0x80, 0x1 },
-    { 0x0009F000, 0x00064000, 0x00010000, (void *)0x85, 0x0 },
-    { 0x00018000, 0x0007E000, 0x00018000, (void *)0x80, 0x1 },
-    { 0x0008C000, 0x0007D000, 0x00018000, (void *)0x80, 0x1 },
-    { 0x000DD000, 0x0007C000, 0x00018000, (void *)0x80, 0x1 },
-};
-const ov02_BF58Cfg ov02_022536E8 = { 0x21, 0x8A };
-ov02_FieldTaskFunc const ov02_022536F0[] = {
-    (ov02_FieldTaskFunc)ov02_0224C234,
-    (ov02_FieldTaskFunc)ov02_0224C2A8,
-    (ov02_FieldTaskFunc)ov02_0224C2EC,
-    (ov02_FieldTaskFunc)ov02_0224C338,
-};
-ov02_FieldTaskFunc const ov02_02253700[] = {
-    (ov02_FieldTaskFunc)ov02_0224C05C,
-    (ov02_FieldTaskFunc)ov02_0224C0B0,
-    (ov02_FieldTaskFunc)ov02_0224C14C,
-    (ov02_FieldTaskFunc)ov02_0224C1B8,
-};
-ov02_FieldTaskFunc const ov02_02253710[] = {
-    (ov02_FieldTaskFunc)ov02_0224C87C,
-    (ov02_FieldTaskFunc)ov02_0224C8D0,
-    (ov02_FieldTaskFunc)ov02_0224C93C,
-    (ov02_FieldTaskFunc)ov02_0224C9B8,
-    (ov02_FieldTaskFunc)ov02_0224CA38,
-};
-ov02_FieldTaskFunc const ov02_02253724[] = {
-    (ov02_FieldTaskFunc)ov02_0224C4B4,
-    (ov02_FieldTaskFunc)ov02_0224C4D8,
-    (ov02_FieldTaskFunc)ov02_0224C71C,
-    (ov02_FieldTaskFunc)ov02_0224C75C,
-    (ov02_FieldTaskFunc)ov02_0224C7D4,
-    (ov02_FieldTaskFunc)ov02_0224C840,
-};
-ov02_FieldTaskFunc const ov02_0225373C[] = {
-    (ov02_FieldTaskFunc)ov02_0224C680,
-    (ov02_FieldTaskFunc)ov02_0224C698,
-    (ov02_FieldTaskFunc)ov02_0224C6DC,
-    (ov02_FieldTaskFunc)ov02_0224C75C,
-    (ov02_FieldTaskFunc)ov02_0224C7D4,
-    (ov02_FieldTaskFunc)ov02_0224C840,
-};
-ov02_FieldTaskFunc const ov02_02253754[] = {
-    (ov02_FieldTaskFunc)ov02_0224C4B4,
-    (ov02_FieldTaskFunc)ov02_0224C4D8,
-    (ov02_FieldTaskFunc)ov02_0224C87C,
-    (ov02_FieldTaskFunc)ov02_0224C8D0,
-    (ov02_FieldTaskFunc)ov02_0224C93C,
-    (ov02_FieldTaskFunc)ov02_0224C9B8,
-    (ov02_FieldTaskFunc)ov02_0224CA38,
-};
-const MovementScriptCommand ov02_02253770[] = {
-    { 0x1,  0x1 },
-    { 0x3C, 0x2 },
-    { 0x2,  0x1 },
-    { 0x3C, 0x2 },
-    { 0x0,  0x1 },
-    { 0x3C, 0x2 },
-    { 0x3,  0x1 },
-    { 0x3C, 0x2 },
-    { 0xFE, 0x0 },
-};
-const MovementScriptCommand ov02_02253794[] = {
-    { 0x0,  0x1 },
-    { 0x3,  0x1 },
-    { 0x1,  0x1 },
-    { 0x2,  0x1 },
-    { 0x0,  0x1 },
-    { 0x3,  0x1 },
-    { 0x1,  0x1 },
-    { 0x2,  0x1 },
-    { 0xFE, 0x0 },
-};
-const MovementScriptCommand ov02_022537B8[] = {
-    { 0x1,  0x1 },
-    { 0x2,  0x1 },
-    { 0x0,  0x1 },
-    { 0x3,  0x1 },
-    { 0x1,  0x1 },
-    { 0x2,  0x1 },
-    { 0x0,  0x1 },
-    { 0x3,  0x1 },
-    { 0xFE, 0x0 },
-};
-const MovementScriptCommand ov02_022537DC[] = {
-    { 0x1,  0x1 },
-    { 0x3C, 0x2 },
-    { 0x2,  0x1 },
-    { 0x3C, 0x2 },
-    { 0x0,  0x1 },
-    { 0x3C, 0x2 },
-    { 0x3,  0x1 },
-    { 0x3C, 0x2 },
-    { 0x1,  0x1 },
-    { 0x3C, 0x1 },
-    { 0x2,  0x1 },
-    { 0x3C, 0x1 },
-    { 0x0,  0x1 },
-    { 0x3C, 0x1 },
-    { 0x3,  0x1 },
-    { 0x3C, 0x1 },
-    { 0xFE, 0x0 },
-};
-const MovementScriptCommand ov02_02253820[] = {
-    { 0x1,  0x1 },
-    { 0x3C, 0x2 },
-    { 0x2,  0x1 },
-    { 0x3C, 0x2 },
-    { 0x0,  0x1 },
-    { 0x3C, 0x2 },
-    { 0x3,  0x1 },
-    { 0x3C, 0x2 },
-    { 0x1,  0x1 },
-    { 0x3C, 0x1 },
-    { 0x2,  0x1 },
-    { 0x3C, 0x1 },
-    { 0x0,  0x1 },
-    { 0x3C, 0x1 },
-    { 0x3,  0x1 },
-    { 0x3C, 0x1 },
-    { 0x1,  0x1 },
-    { 0x2,  0x1 },
-    { 0x0,  0x1 },
-    { 0x3,  0x1 },
-    { 0x1,  0x1 },
-    { 0x2,  0x1 },
-    { 0x0,  0x1 },
-    { 0x3,  0x1 },
-    { 0xFE, 0x0 },
-};
-const MovementScriptCommand ov02_02253884[] = {
-    { 0x1,  0x1 },
-    { 0x2,  0x1 },
-    { 0x0,  0x1 },
-    { 0x3,  0x1 },
-    { 0x1,  0x1 },
-    { 0x2,  0x1 },
-    { 0x0,  0x1 },
-    { 0x3,  0x1 },
-    { 0x1,  0x1 },
-    { 0x3C, 0x1 },
-    { 0x2,  0x1 },
-    { 0x3C, 0x1 },
-    { 0x0,  0x1 },
-    { 0x3C, 0x1 },
-    { 0x3,  0x1 },
-    { 0x3C, 0x1 },
-    { 0x1,  0x1 },
-    { 0x3C, 0x2 },
-    { 0x2,  0x1 },
-    { 0x3C, 0x3 },
-    { 0x0,  0x1 },
-    { 0x3C, 0x4 },
-    { 0x3,  0x1 },
-    { 0x3C, 0x5 },
-    { 0x1,  0x1 },
-    { 0xFE, 0x0 },
-};
-const u8 ov02_022538EC[] = {
-    0x10,
-    0x0F,
-    0x0E,
-    0x0B,
-    0x0C,
-    0x09,
-    0xB4,
-    0x00,
-    0x00,
-    0x00,
-    0x0E,
-    0x01,
-    0x5A,
-    0x00,
-    0x00,
-    0x00,
-};
-const Field3dObjectTaskTemplate ov02_022538FC = { 0x400, 0xF0, (Field3dObjectTaskFunc)ov02_0224D310, (Field3dObjectTaskFunc)ov02_0224D3A4, (Field3dObjectTaskFunc)ov02_0224D3B4, (Field3dObjectTaskFunc)ov02_0224D3E8 };
-const Field3dObjectTaskTemplate ov02_02253914 = { 0x400, 0xF0, (Field3dObjectTaskFunc)ov02_0224D5B4, (Field3dObjectTaskFunc)ov02_0224D648, (Field3dObjectTaskFunc)ov02_0224D658, (Field3dObjectTaskFunc)ov02_0224D670 };
-const Field3dObjectTaskTemplate ov02_0225392C = { 0x400, 0x114, (Field3dObjectTaskFunc)ov02_0224DAA4, (Field3dObjectTaskFunc)ov02_0224DB8C, (Field3dObjectTaskFunc)ov02_0224DB9C, (Field3dObjectTaskFunc)ov02_0224DC58 };
-const Field3dObjectTaskTemplate ov02_02253944 = { 0x400, 0x1CC, (Field3dObjectTaskFunc)ov02_0224D43C, (Field3dObjectTaskFunc)ov02_0224D468, (Field3dObjectTaskFunc)ov02_0224D488, (Field3dObjectTaskFunc)ov02_0224D580 };
-const Field3dObjectTaskTemplate ov02_0225395C = { 0x400, 0xD10, (Field3dObjectTaskFunc)ov02_0224D880, (Field3dObjectTaskFunc)ov02_0224D914, (Field3dObjectTaskFunc)ov02_0224D950, (Field3dObjectTaskFunc)ov02_0224D98C };
-const Field3dObjectTaskTemplate ov02_02253974 = { 0x400, 0xF0, (Field3dObjectTaskFunc)ov02_0224D1E4, (Field3dObjectTaskFunc)ov02_0224D278, (Field3dObjectTaskFunc)ov02_0224D288, (Field3dObjectTaskFunc)ov02_0224D2BC };
-const Field3dObjectTaskTemplate ov02_0225398C = { 0x400, 0xF0, (Field3dObjectTaskFunc)ov02_0224D358, (Field3dObjectTaskFunc)ov02_0224D3A4, (Field3dObjectTaskFunc)ov02_0224D3B4, (Field3dObjectTaskFunc)ov02_0224D3E8 };
-const Field3dObjectTaskTemplate ov02_022539A4 = { 0x400, 0x114, (Field3dObjectTaskFunc)ov02_0224D9C0, (Field3dObjectTaskFunc)ov02_0224DB8C, (Field3dObjectTaskFunc)ov02_0224DB9C, (Field3dObjectTaskFunc)ov02_0224DC58 };
-const Field3dObjectTaskTemplate ov02_022539BC = { 0x400, 0xF0, (Field3dObjectTaskFunc)ov02_0224D22C, (Field3dObjectTaskFunc)ov02_0224D278, (Field3dObjectTaskFunc)ov02_0224D288, (Field3dObjectTaskFunc)ov02_0224D2BC };
-const Field3dObjectTaskTemplate ov02_022539D4 = { 0x400, 0xE9C, (Field3dObjectTaskFunc)ov02_0224DCB0, (Field3dObjectTaskFunc)ov02_0224DD4C, (Field3dObjectTaskFunc)ov02_0224DD8C, (Field3dObjectTaskFunc)ov02_0224DDC8 };
-const Field3dObjectTaskTemplate ov02_022539EC = { 0x400, 0xE9C, (Field3dObjectTaskFunc)ov02_0224DD38, (Field3dObjectTaskFunc)ov02_0224DD4C, (Field3dObjectTaskFunc)ov02_0224DD8C, (Field3dObjectTaskFunc)ov02_0224DDC8 };
-ov02_AnimDispatchFunc const ov02_02253A04[] = { (ov02_AnimDispatchFunc)ov02_0224D2F0, (ov02_AnimDispatchFunc)ov02_0224D41C, (ov02_AnimDispatchFunc)ov02_0224D41C, (ov02_AnimDispatchFunc)ov02_0224D2F0, (ov02_AnimDispatchFunc)ov02_0224DC8C, (ov02_AnimDispatchFunc)ov02_0224DC8C };
-ov02_CreateDispatchFunc const ov02_02253A1C[] = { (ov02_CreateDispatchFunc)ov02_0224D2C8, (ov02_CreateDispatchFunc)ov02_0224D3F4, (ov02_CreateDispatchFunc)ov02_0224D408, (ov02_CreateDispatchFunc)ov02_0224D2DC, (ov02_CreateDispatchFunc)ov02_0224DC64, (ov02_CreateDispatchFunc)ov02_0224DC78 };
-ov02_AnimDispatchFunc const ov02_02253A34[] = { (ov02_AnimDispatchFunc)ov02_0224D2F8, (ov02_AnimDispatchFunc)ov02_0224D424, (ov02_AnimDispatchFunc)ov02_0224D424, (ov02_AnimDispatchFunc)ov02_0224D2F8, (ov02_AnimDispatchFunc)ov02_0224DC94, (ov02_AnimDispatchFunc)ov02_0224DC94 };
-const u8 ov02_02253A4C[] = {
-    0xFF,
-    0x01,
-    0xFF,
-    0x01,
-    0x01,
-    0xFF,
-    0x00,
-    0x00,
-};
-const ov02_FieldList5 ov02_02253A5C = {
-    { 0xB5, 0xB6, 0xB7, 0xB8, 0xB9 }
-};
-const MovementScriptCommand ov02_02253A70[][5] = {
-    { { 0x49, 0x1 }, { 0x30, 0x1 }, { 0x3E, 0x1 }, { 0x4A, 0x1 }, { 0xFE, 0x0 } },
-    { { 0x49, 0x1 }, { 0x31, 0x1 }, { 0x3E, 0x1 }, { 0x4A, 0x1 }, { 0xFE, 0x0 } },
-    { { 0x49, 0x1 }, { 0x32, 0x1 }, { 0x3E, 0x1 }, { 0x4A, 0x1 }, { 0xFE, 0x0 } },
-    { { 0x49, 0x1 }, { 0x33, 0x1 }, { 0x3E, 0x1 }, { 0x4A, 0x1 }, { 0xFE, 0x0 } },
-};
-const u32 ov02_02253AC0[] = {
-    0x00000004,
-    0x00000005,
-    0x00000004,
-    0x00000004,
-    0x00000001,
-    0x00000004,
-    0x00000003,
-    0x00000002,
-    0x00000001,
-    0x00000002,
-    0x00000005,
-    0x00000006,
-    0x00000003,
-    0x00000001,
-    0x00000001,
-    0x00000003,
-    0x00000006,
-    0x00000003,
-    0x00000005,
-    0x00000006,
-    0x00000002,
-    0x00000002,
-    0x00000001,
-    0x00000003,
-    0x00000006,
-};
-const VecFx32 ov02_02253B24 = { 0x00001000, 0x00001000, 0x00001000 };
-const VecFx32 ov02_02253B30 = { 0x00001000, 0x00001000, 0x00001000 };
-VecFx32 ov02_02253D90[] = {
-    { (fx32)0xFFFFB800, 0x0000C000, (fx32)0xFFFFB800 },
-    { 0x00004800,       0x0000C000, (fx32)0xFFFFB800 },
-    { (fx32)0xFFFFB800, 0x0000C000, 0                },
-    { 0x00004800,       0x0000C000, 0                },
-    { (fx32)0xFFFFB800, 0x0000C000, 0x00004800       },
-    { 0x00004800,       0x0000C000, 0x00004800       },
-};
-VecFx32 ov02_02253DD8[] = {
-    { (fx32)0xFFFFB800, 0x0000C000, (fx32)0xFFFFB800 },
-    { 0x00004800,       0x0000C000, (fx32)0xFFFFB800 },
-    { (fx32)0xFFFFB800, 0x0000C000, 0                },
-    { 0x00004800,       0x0000C000, 0                },
-    { (fx32)0xFFFFB800, 0x0000C000, 0x00004800       },
-    { 0x00004800,       0x0000C000, 0x00004800       },
-};

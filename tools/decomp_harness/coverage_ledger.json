@@ -1,12 +1,12 @@
 {
  "summary": {
-  "generated": "2026-06-26T02:41:43Z",
+  "generated": "2026-06-26T03:27:30Z",
   "by_status": {
    "matched": {
-    "files": 94,
-    "functions": 1188,
-    "insn_lines": 29613,
-    "text_bytes_est": 65598
+    "files": 95,
+    "functions": 1552,
+    "insn_lines": 44762,
+    "text_bytes_est": 98932
    },
    "blocked": {
     "files": 46,
@@ -15,10 +15,10 @@
     "text_bytes_est": 55750
    },
    "pending": {
-    "files": 153,
-    "functions": 18019,
-    "insn_lines": 894280,
-    "text_bytes_est": 1998246
+    "files": 152,
+    "functions": 17655,
+    "insn_lines": 879131,
+    "text_bytes_est": 1964912
    },
    "upstream": {
     "files": 378,
@@ -29,9 +29,9 @@
   },
   "function_totals": {
    "tracked": 20048,
-   "matched": 1188,
+   "matched": 1552,
    "partial_in_blocked": 70,
-   "pending": 18019
+   "pending": 17655
   },
   "blockers": [
    {
@@ -49383,8 +49383,8 @@
   },
   {
    "file": "asm/overlay_02_02248728.s",
-   "lsf_kind": "asm",
-   "status": "pending",
+   "lsf_kind": "src",
+   "status": "matched",
    "lines": 17995,
    "function_count": 364,
    "text_bytes_est": 33334,
@@ -49405,2550 +49405,2551 @@
      "mode": "thumb",
      "insns": 152,
      "size_est": 324,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ov02_0224886C",
      "mode": "thumb",
      "insns": 124,
      "size_est": 276,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ov02_02248980",
      "mode": "thumb",
      "insns": 54,
      "size_est": 112,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ov02_022489F0",
      "mode": "thumb",
      "insns": 25,
      "size_est": 54,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ov02_02248A24",
      "mode": "thumb",
      "insns": 25,
      "size_est": 54,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ov02_02248A58",
      "mode": "thumb",
      "insns": 55,
      "size_est": 114,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ov02_02248AC8",
      "mode": "thumb",
      "insns": 25,
      "size_est": 54,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ov02_02248AFC",
      "mode": "thumb",
      "insns": 25,
      "size_est": 54,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ov02_02248B30",
      "mode": "thumb",
      "insns": 54,
      "size_est": 112,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ov02_02248BA0",
      "mode": "thumb",
      "insns": 54,
      "size_est": 112,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ov02_02248C10",
      "mode": "thumb",
      "insns": 66,
      "size_est": 138,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ov02_02248C98",
      "mode": "thumb",
      "insns": 10,
      "size_est": 22,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ov02_02248CAC",
      "mode": "thumb",
      "insns": 48,
      "size_est": 108,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ov02_02248D18",
      "mode": "thumb",
      "insns": 30,
      "size_est": 66,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ov02_02248D58",
      "mode": "thumb",
      "insns": 25,
      "size_est": 52,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ov02_02248D8C",
      "mode": "thumb",
      "insns": 5,
      "size_est": 12,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ov02_02248D98",
      "mode": "thumb",
      "insns": 16,
      "size_est": 36,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ov02_02248DBC",
      "mode": "thumb",
      "insns": 16,
      "size_est": 40,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ov02_02248DE4",
      "mode": "thumb",
      "insns": 6,
      "size_est": 12,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ov02_02248DF0",
      "mode": "thumb",
      "insns": 16,
      "size_est": 34,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ov02_02248E10",
      "mode": "thumb",
      "insns": 8,
      "size_est": 18,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ov02_02248E20",
      "mode": "thumb",
      "insns": 157,
      "size_est": 352,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ov02_02248F88",
      "mode": "thumb",
      "insns": 122,
      "size_est": 256,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ov02_02249088",
      "mode": "thumb",
      "insns": 25,
      "size_est": 54,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ov02_022490BC",
      "mode": "thumb",
      "insns": 113,
      "size_est": 238,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ov02_022491A8",
      "mode": "thumb",
      "insns": 16,
      "size_est": 36,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ov02_022491CC",
      "mode": "thumb",
      "insns": 89,
      "size_est": 192,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ov02_02249290",
      "mode": "thumb",
      "insns": 127,
      "size_est": 268,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ov02_0224939C",
      "mode": "thumb",
      "insns": 36,
      "size_est": 80,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ov02_022493EC",
      "mode": "thumb",
      "insns": 3,
      "size_est": 6,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ov02_022493F0",
      "mode": "thumb",
      "insns": 6,
      "size_est": 12,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ov02_022493FC",
      "mode": "thumb",
      "insns": 17,
      "size_est": 36,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ov02_02249420",
      "mode": "thumb",
      "insns": 17,
      "size_est": 36,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ov02_02249444",
      "mode": "thumb",
      "insns": 8,
      "size_est": 20,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ov02_02249458",
      "mode": "thumb",
      "insns": 46,
      "size_est": 104,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ov02_022494C4",
      "mode": "thumb",
      "insns": 54,
      "size_est": 120,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ov02_0224953C",
      "mode": "thumb",
      "insns": 5,
      "size_est": 12,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ov02_02249548",
      "mode": "thumb",
      "insns": 8,
      "size_est": 22,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ov02_0224955C",
      "mode": "thumb",
      "insns": 15,
      "size_est": 34,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ov02_0224957C",
      "mode": "thumb",
      "insns": 4,
      "size_est": 8,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ov02_02249584",
      "mode": "thumb",
      "insns": 24,
      "size_est": 54,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ov02_022495B8",
      "mode": "thumb",
      "insns": 11,
      "size_est": 26,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ov02_022495D0",
      "mode": "thumb",
      "insns": 11,
      "size_est": 26,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ov02_022495E8",
      "mode": "thumb",
      "insns": 51,
      "size_est": 110,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ov02_02249658",
      "mode": "thumb",
      "insns": 27,
      "size_est": 56,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ov02_02249690",
      "mode": "thumb",
      "insns": 31,
      "size_est": 64,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ov02_022496D0",
      "mode": "thumb",
      "insns": 65,
      "size_est": 134,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ov02_02249754",
      "mode": "thumb",
      "insns": 16,
      "size_est": 32,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ov02_02249774",
      "mode": "thumb",
      "insns": 36,
      "size_est": 76,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ov02_022497C0",
      "mode": "thumb",
      "insns": 55,
      "size_est": 120,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ov02_02249838",
      "mode": "thumb",
      "insns": 16,
      "size_est": 32,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ov02_02249858",
      "mode": "thumb",
      "insns": 47,
      "size_est": 98,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ov02_022498BC",
      "mode": "thumb",
      "insns": 65,
      "size_est": 134,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ov02_02249940",
      "mode": "thumb",
      "insns": 10,
      "size_est": 22,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ov02_02249954",
      "mode": "thumb",
      "insns": 10,
      "size_est": 22,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ov02_02249968",
      "mode": "thumb",
      "insns": 9,
      "size_est": 20,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ov02_0224997C",
      "mode": "thumb",
      "insns": 5,
      "size_est": 10,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ov02_02249984",
      "mode": "thumb",
      "insns": 24,
      "size_est": 54,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ov02_022499B8",
      "mode": "thumb",
      "insns": 24,
      "size_est": 54,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ov02_022499EC",
      "mode": "thumb",
      "insns": 51,
      "size_est": 110,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ov02_02249A5C",
      "mode": "thumb",
      "insns": 49,
      "size_est": 104,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ov02_02249AC4",
      "mode": "thumb",
      "insns": 9,
      "size_est": 20,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ov02_02249AD8",
      "mode": "thumb",
      "insns": 11,
      "size_est": 26,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ov02_02249AF0",
      "mode": "thumb",
      "insns": 16,
      "size_est": 34,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ov02_02249B10",
      "mode": "thumb",
      "insns": 16,
      "size_est": 40,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ov02_02249B38",
      "mode": "thumb",
      "insns": 18,
      "size_est": 40,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ov02_02249B60",
      "mode": "thumb",
      "insns": 15,
      "size_est": 32,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ov02_02249B80",
      "mode": "thumb",
      "insns": 18,
      "size_est": 40,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ov02_02249BA8",
      "mode": "thumb",
      "insns": 22,
      "size_est": 48,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ov02_02249BD8",
      "mode": "thumb",
      "insns": 75,
      "size_est": 156,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ov02_02249C74",
      "mode": "thumb",
      "insns": 44,
      "size_est": 102,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ov02_02249CD8",
      "mode": "thumb",
      "insns": 11,
      "size_est": 24,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ov02_02249CF0",
      "mode": "thumb",
      "insns": 19,
      "size_est": 40,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ov02_02249D18",
      "mode": "thumb",
      "insns": 19,
      "size_est": 40,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ov02_02249D40",
      "mode": "thumb",
      "insns": 14,
      "size_est": 30,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ov02_02249D5C",
      "mode": "thumb",
      "insns": 57,
      "size_est": 124,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ov02_02249DD8",
      "mode": "thumb",
      "insns": 60,
      "size_est": 130,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ov02_02249E58",
      "mode": "thumb",
      "insns": 25,
      "size_est": 56,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ov02_02249E90",
      "mode": "thumb",
      "insns": 22,
      "size_est": 50,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ov02_02249EC0",
      "mode": "thumb",
      "insns": 85,
      "size_est": 196,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ov02_02249F6C",
      "mode": "thumb",
      "insns": 44,
      "size_est": 104,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ov02_02249FD4",
      "mode": "thumb",
      "insns": 36,
      "size_est": 84,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ov02_0224A028",
      "mode": "thumb",
      "insns": 33,
      "size_est": 76,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ov02_0224A074",
      "mode": "thumb",
      "insns": 6,
      "size_est": 12,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ov02_0224A080",
      "mode": "thumb",
      "insns": 237,
      "size_est": 514,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ov02_0224A288",
      "mode": "thumb",
      "insns": 72,
      "size_est": 164,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ov02_0224A32C",
      "mode": "thumb",
      "insns": 7,
      "size_est": 16,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ov02_0224A33C",
      "mode": "thumb",
      "insns": 87,
      "size_est": 182,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ov02_0224A3F0",
      "mode": "thumb",
      "insns": 18,
      "size_est": 40,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ov02_0224A418",
      "mode": "thumb",
      "insns": 26,
      "size_est": 58,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ov02_0224A450",
      "mode": "thumb",
      "insns": 10,
      "size_est": 24,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ov02_0224A468",
      "mode": "thumb",
      "insns": 46,
      "size_est": 104,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ov02_0224A4D0",
      "mode": "thumb",
      "insns": 74,
      "size_est": 160,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ov02_0224A570",
      "mode": "thumb",
      "insns": 17,
      "size_est": 42,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ov02_0224A598",
      "mode": "thumb",
      "insns": 24,
      "size_est": 56,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ov02_0224A5D0",
      "mode": "thumb",
      "insns": 47,
      "size_est": 110,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ov02_0224A63C",
      "mode": "thumb",
      "insns": 6,
      "size_est": 12,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ov02_0224A648",
      "mode": "thumb",
      "insns": 15,
      "size_est": 38,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ov02_0224A66C",
      "mode": "thumb",
      "insns": 4,
      "size_est": 8,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ov02_0224A674",
      "mode": "thumb",
      "insns": 4,
      "size_est": 8,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ov02_0224A67C",
      "mode": "thumb",
      "insns": 10,
      "size_est": 20,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ov02_0224A690",
      "mode": "thumb",
      "insns": 6,
      "size_est": 12,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ov02_0224A69C",
      "mode": "thumb",
      "insns": 7,
      "size_est": 14,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ov02_0224A6A8",
      "mode": "thumb",
      "insns": 18,
      "size_est": 40,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ov02_0224A6D0",
      "mode": "thumb",
      "insns": 22,
      "size_est": 48,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ov02_0224A700",
      "mode": "thumb",
      "insns": 82,
      "size_est": 164,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ov02_0224A7A8",
      "mode": "thumb",
      "insns": 8,
      "size_est": 16,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ov02_0224A7B8",
      "mode": "thumb",
      "insns": 32,
      "size_est": 72,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ov02_0224A800",
      "mode": "thumb",
      "insns": 8,
      "size_est": 16,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ov02_0224A810",
      "mode": "thumb",
      "insns": 17,
      "size_est": 36,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ov02_0224A834",
      "mode": "thumb",
      "insns": 22,
      "size_est": 54,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ov02_0224A868",
      "mode": "thumb",
      "insns": 18,
      "size_est": 38,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ov02_0224A88C",
      "mode": "thumb",
      "insns": 29,
      "size_est": 72,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ov02_0224A8D4",
      "mode": "thumb",
      "insns": 103,
      "size_est": 230,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ov02_0224A9B8",
      "mode": "thumb",
      "insns": 15,
      "size_est": 32,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ov02_0224A9D8",
      "mode": "thumb",
      "insns": 52,
      "size_est": 108,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ov02_0224AA44",
      "mode": "thumb",
      "insns": 29,
      "size_est": 60,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ov02_0224AA80",
      "mode": "thumb",
      "insns": 32,
      "size_est": 74,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ov02_0224AAC8",
      "mode": "thumb",
      "insns": 6,
      "size_est": 12,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ov02_0224AAD4",
      "mode": "thumb",
      "insns": 59,
      "size_est": 128,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ov02_0224AB54",
      "mode": "thumb",
      "insns": 2,
      "size_est": 4,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ov02_0224AB58",
      "mode": "thumb",
      "insns": 25,
      "size_est": 52,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ov02_0224AB8C",
      "mode": "thumb",
      "insns": 8,
      "size_est": 18,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ov02_0224AB9C",
      "mode": "thumb",
      "insns": 21,
      "size_est": 50,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ov02_0224ABCC",
      "mode": "thumb",
      "insns": 20,
      "size_est": 46,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ov02_0224ABF8",
      "mode": "thumb",
      "insns": 6,
      "size_est": 12,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ov02_0224AC04",
      "mode": "thumb",
      "insns": 16,
      "size_est": 34,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ov02_0224AC24",
      "mode": "thumb",
      "insns": 2,
      "size_est": 4,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ov02_0224AC28",
      "mode": "thumb",
      "insns": 8,
      "size_est": 18,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ov02_0224AC38",
      "mode": "thumb",
      "insns": 77,
      "size_est": 166,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ov02_0224ACE0",
      "mode": "thumb",
      "insns": 125,
      "size_est": 264,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ov02_0224ADEC",
      "mode": "thumb",
      "insns": 3,
      "size_est": 6,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ov02_0224ADF0",
      "mode": "thumb",
      "insns": 172,
      "size_est": 376,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ov02_0224AF70",
      "mode": "thumb",
      "insns": 174,
      "size_est": 366,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ov02_0224B0E0",
      "mode": "thumb",
      "insns": 52,
      "size_est": 120,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ov02_0224B158",
      "mode": "thumb",
      "insns": 151,
      "size_est": 316,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ov02_0224B294",
      "mode": "thumb",
      "insns": 3,
      "size_est": 6,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ov02_0224B298",
      "mode": "thumb",
      "insns": 19,
      "size_est": 40,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ov02_0224B2C0",
      "mode": "thumb",
      "insns": 6,
      "size_est": 14,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ov02_0224B2CC",
      "mode": "thumb",
      "insns": 32,
      "size_est": 72,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ov02_0224B314",
      "mode": "thumb",
      "insns": 26,
      "size_est": 60,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ov02_0224B350",
      "mode": "thumb",
      "insns": 10,
      "size_est": 22,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ov02_0224B364",
      "mode": "thumb",
      "insns": 36,
      "size_est": 76,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ov02_0224B3B0",
      "mode": "thumb",
      "insns": 36,
      "size_est": 76,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ov02_0224B3FC",
      "mode": "thumb",
      "insns": 12,
      "size_est": 28,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ov02_0224B418",
      "mode": "thumb",
      "insns": 16,
      "size_est": 36,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ov02_0224B43C",
      "mode": "thumb",
      "insns": 5,
      "size_est": 12,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ov02_0224B448",
      "mode": "thumb",
      "insns": 8,
      "size_est": 22,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ov02_0224B45C",
      "mode": "thumb",
      "insns": 26,
      "size_est": 58,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ov02_0224B494",
      "mode": "thumb",
      "insns": 11,
      "size_est": 24,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ov02_0224B4AC",
      "mode": "thumb",
      "insns": 138,
      "size_est": 324,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ov02_0224B5F0",
      "mode": "thumb",
      "insns": 33,
      "size_est": 74,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ov02_0224B638",
      "mode": "thumb",
      "insns": 20,
      "size_est": 44,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ov02_0224B664",
      "mode": "thumb",
      "insns": 18,
      "size_est": 40,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ov02_0224B68C",
      "mode": "thumb",
      "insns": 3,
      "size_est": 6,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ov02_0224B690",
      "mode": "thumb",
      "insns": 13,
      "size_est": 32,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ov02_0224B6B0",
      "mode": "thumb",
      "insns": 14,
      "size_est": 32,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ov02_0224B6D0",
      "mode": "thumb",
      "insns": 10,
      "size_est": 22,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ov02_0224B6E4",
      "mode": "thumb",
      "insns": 32,
      "size_est": 72,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ov02_0224B72C",
      "mode": "thumb",
      "insns": 29,
      "size_est": 60,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ov02_0224B768",
      "mode": "thumb",
      "insns": 14,
      "size_est": 30,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ov02_0224B784",
      "mode": "thumb",
      "insns": 33,
      "size_est": 72,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ov02_0224B7CC",
      "mode": "thumb",
      "insns": 25,
      "size_est": 58,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ov02_0224B804",
      "mode": "thumb",
      "insns": 2,
      "size_est": 4,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ov02_0224B808",
      "mode": "thumb",
      "insns": 50,
      "size_est": 110,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ov02_0224B87C",
      "mode": "thumb",
      "insns": 8,
      "size_est": 16,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ov02_0224B88C",
      "mode": "thumb",
      "insns": 56,
      "size_est": 128,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ov02_0224B90C",
      "mode": "thumb",
      "insns": 19,
      "size_est": 46,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ov02_0224B938",
      "mode": "thumb",
      "insns": 19,
      "size_est": 44,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ov02_0224B964",
      "mode": "thumb",
      "insns": 23,
      "size_est": 52,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ov02_BattleExit_HandleRoamerAction",
      "mode": "thumb",
      "insns": 90,
      "size_est": 218,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ov02_RepelActiveRoamersFromMapNo",
      "mode": "thumb",
      "insns": 25,
      "size_est": 58,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ov02_0224BAA8",
      "mode": "thumb",
      "insns": 27,
      "size_est": 60,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "PlayerStepEvent_RepelCounterDecrement",
      "mode": "thumb",
      "insns": 23,
      "size_est": 52,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "PokecenterAnimCreate",
      "mode": "thumb",
      "insns": 53,
      "size_est": 120,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "PokecenterAnimRun",
      "mode": "thumb",
      "insns": 263,
      "size_est": 582,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ov02_0224BDE8",
      "mode": "thumb",
      "insns": 26,
      "size_est": 60,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ov02_0224BE24",
      "mode": "thumb",
      "insns": 131,
      "size_est": 298,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ov02_0224BF58",
      "mode": "thumb",
      "insns": 46,
      "size_est": 104,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ov02_0224BFC0",
      "mode": "thumb",
      "insns": 6,
      "size_est": 12,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ov02_0224BFCC",
      "mode": "thumb",
      "insns": 6,
      "size_est": 12,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "CreateFieldEscapeRopeTaskEnv",
      "mode": "thumb",
      "insns": 32,
      "size_est": 72,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "Task_FieldEscapeRope",
      "mode": "thumb",
      "insns": 27,
      "size_est": 62,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ov02_0224C05C",
      "mode": "thumb",
      "insns": 35,
      "size_est": 80,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ov02_0224C0B0",
      "mode": "thumb",
      "insns": 70,
      "size_est": 154,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ov02_0224C14C",
      "mode": "thumb",
      "insns": 45,
      "size_est": 108,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ov02_0224C1B8",
      "mode": "thumb",
      "insns": 13,
      "size_est": 32,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ov02_0224C1D8",
      "mode": "thumb",
      "insns": 15,
      "size_est": 34,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ov02_0224C1F8",
      "mode": "thumb",
      "insns": 27,
      "size_est": 62,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ov02_0224C234",
      "mode": "thumb",
      "insns": 51,
      "size_est": 112,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ov02_0224C2A8",
      "mode": "thumb",
      "insns": 29,
      "size_est": 68,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ov02_0224C2EC",
      "mode": "thumb",
      "insns": 33,
      "size_est": 74,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ov02_0224C338",
      "mode": "thumb",
      "insns": 21,
      "size_est": 50,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "FieldMoveTask_CreateDigEnvironment",
      "mode": "thumb",
      "insns": 31,
      "size_est": 70,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "Task_FieldDig",
      "mode": "thumb",
      "insns": 115,
      "size_est": 258,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ov02_0224C4B4",
      "mode": "thumb",
      "insns": 17,
      "size_est": 38,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ov02_0224C4D8",
      "mode": "thumb",
      "insns": 18,
      "size_est": 42,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "FieldMoveTask_CreateTeleportEnvironment",
      "mode": "thumb",
      "insns": 39,
      "size_est": 88,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "Task_FieldTeleport",
      "mode": "thumb",
      "insns": 115,
      "size_est": 258,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ov02_0224C660",
      "mode": "thumb",
      "insns": 13,
      "size_est": 32,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ov02_0224C680",
      "mode": "thumb",
      "insns": 12,
      "size_est": 26,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ov02_0224C698",
      "mode": "thumb",
      "insns": 28,
      "size_est": 64,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ov02_0224C6DC",
      "mode": "thumb",
      "insns": 28,
      "size_est": 64,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ov02_0224C71C",
      "mode": "thumb",
      "insns": 26,
      "size_est": 60,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ov02_0224C75C",
      "mode": "thumb",
      "insns": 54,
      "size_est": 120,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ov02_0224C7D4",
      "mode": "thumb",
      "insns": 45,
      "size_est": 108,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ov02_0224C840",
      "mode": "thumb",
      "insns": 24,
      "size_est": 60,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ov02_0224C87C",
      "mode": "thumb",
      "insns": 35,
      "size_est": 80,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ov02_0224C8D0",
      "mode": "thumb",
      "insns": 46,
      "size_est": 108,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ov02_0224C93C",
      "mode": "thumb",
      "insns": 55,
      "size_est": 122,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ov02_0224C9B8",
      "mode": "thumb",
      "insns": 53,
      "size_est": 128,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ov02_0224CA38",
      "mode": "thumb",
      "insns": 13,
      "size_est": 32,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ov02_0224CA58",
      "mode": "thumb",
      "insns": 49,
      "size_est": 98,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ov02_0224CAB8",
      "mode": "thumb",
      "insns": 153,
      "size_est": 320,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ov02_0224CBF8",
      "mode": "thumb",
      "insns": 154,
      "size_est": 322,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ov02_0224CD38",
      "mode": "thumb",
      "insns": 27,
      "size_est": 62,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ov02_0224CD74",
      "mode": "thumb",
      "insns": 27,
      "size_est": 62,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ov02_0224CDB0",
      "mode": "thumb",
      "insns": 53,
      "size_est": 120,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ov02_0224CE28",
      "mode": "thumb",
      "insns": 192,
      "size_est": 416,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ov02_0224CFD8",
      "mode": "thumb",
      "insns": 45,
      "size_est": 104,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ov02_0224D044",
      "mode": "thumb",
      "insns": 44,
      "size_est": 100,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ov02_0224D0AC",
      "mode": "thumb",
      "insns": 13,
      "size_est": 30,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ov02_0224D0C8",
      "mode": "thumb",
      "insns": 57,
      "size_est": 124,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ov02_0224D144",
      "mode": "thumb",
      "insns": 25,
      "size_est": 54,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ov02_0224D178",
      "mode": "thumb",
      "insns": 25,
      "size_est": 52,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ov02_0224D1AC",
      "mode": "thumb",
      "insns": 23,
      "size_est": 48,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ov02_0224D1DC",
      "mode": "thumb",
      "insns": 4,
      "size_est": 8,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ov02_0224D1E4",
      "mode": "thumb",
      "insns": 31,
      "size_est": 72,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ov02_0224D22C",
      "mode": "thumb",
      "insns": 33,
      "size_est": 76,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ov02_0224D278",
      "mode": "thumb",
      "insns": 8,
      "size_est": 16,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ov02_0224D288",
      "mode": "thumb",
      "insns": 24,
      "size_est": 52,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ov02_0224D2BC",
      "mode": "thumb",
      "insns": 6,
      "size_est": 12,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ov02_0224D2C8",
      "mode": "thumb",
      "insns": 9,
      "size_est": 18,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ov02_0224D2DC",
      "mode": "thumb",
      "insns": 9,
      "size_est": 18,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ov02_0224D2F0",
      "mode": "thumb",
      "insns": 4,
      "size_est": 8,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ov02_0224D2F8",
      "mode": "thumb",
      "insns": 11,
      "size_est": 24,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ov02_0224D310",
      "mode": "thumb",
      "insns": 31,
      "size_est": 72,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ov02_0224D358",
      "mode": "thumb",
      "insns": 33,
      "size_est": 76,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ov02_0224D3A4",
      "mode": "thumb",
      "insns": 8,
      "size_est": 16,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ov02_0224D3B4",
      "mode": "thumb",
      "insns": 24,
      "size_est": 52,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ov02_0224D3E8",
      "mode": "thumb",
      "insns": 6,
      "size_est": 12,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ov02_0224D3F4",
      "mode": "thumb",
      "insns": 9,
      "size_est": 18,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ov02_0224D408",
      "mode": "thumb",
      "insns": 9,
      "size_est": 18,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ov02_0224D41C",
      "mode": "thumb",
      "insns": 4,
      "size_est": 8,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ov02_0224D424",
      "mode": "thumb",
      "insns": 11,
      "size_est": 24,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ov02_0224D43C",
      "mode": "thumb",
      "insns": 20,
      "size_est": 44,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ov02_0224D468",
      "mode": "thumb",
      "insns": 15,
      "size_est": 32,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ov02_0224D488",
      "mode": "thumb",
      "insns": 108,
      "size_est": 238,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ov02_0224D580",
      "mode": "thumb",
      "insns": 11,
      "size_est": 24,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ov02_0224D598",
      "mode": "thumb",
      "insns": 9,
      "size_est": 18,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ov02_0224D5AC",
      "mode": "thumb",
      "insns": 4,
      "size_est": 8,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ov02_0224D5B4",
      "mode": "thumb",
      "insns": 64,
      "size_est": 146,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ov02_0224D648",
      "mode": "thumb",
      "insns": 8,
      "size_est": 16,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ov02_0224D658",
      "mode": "thumb",
      "insns": 10,
      "size_est": 24,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ov02_0224D670",
      "mode": "thumb",
      "insns": 6,
      "size_est": 12,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ov02_0224D67C",
      "mode": "thumb",
      "insns": 9,
      "size_est": 18,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ov02_0224D690",
      "mode": "thumb",
      "insns": 4,
      "size_est": 8,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ov02_0224D698",
      "mode": "thumb",
      "insns": 46,
      "size_est": 104,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ov02_0224D700",
      "mode": "thumb",
      "insns": 29,
      "size_est": 62,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ov02_0224D73C",
      "mode": "thumb",
      "insns": 34,
      "size_est": 78,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ov02_0224D788",
      "mode": "thumb",
      "insns": 19,
      "size_est": 42,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ov02_0224D7B0",
      "mode": "thumb",
      "insns": 55,
      "size_est": 112,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ov02_0224D820",
      "mode": "thumb",
      "insns": 33,
      "size_est": 72,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ov02_0224D868",
      "mode": "thumb",
      "insns": 12,
      "size_est": 26,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ov02_0224D880",
      "mode": "thumb",
      "insns": 67,
      "size_est": 146,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ov02_0224D914",
      "mode": "thumb",
      "insns": 27,
      "size_est": 60,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ov02_0224D950",
      "mode": "thumb",
      "insns": 28,
      "size_est": 60,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ov02_0224D98C",
      "mode": "thumb",
      "insns": 12,
      "size_est": 26,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ov02_0224D9A4",
      "mode": "thumb",
      "insns": 9,
      "size_est": 18,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ov02_0224D9B8",
      "mode": "thumb",
      "insns": 4,
      "size_est": 8,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ov02_0224D9C0",
      "mode": "thumb",
      "insns": 102,
      "size_est": 220,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ov02_0224DAA4",
      "mode": "thumb",
      "insns": 104,
      "size_est": 224,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ov02_0224DB8C",
      "mode": "thumb",
      "insns": 8,
      "size_est": 16,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ov02_0224DB9C",
      "mode": "thumb",
      "insns": 86,
      "size_est": 186,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ov02_0224DC58",
      "mode": "thumb",
      "insns": 6,
      "size_est": 12,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ov02_0224DC64",
      "mode": "thumb",
      "insns": 9,
      "size_est": 18,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ov02_0224DC78",
      "mode": "thumb",
      "insns": 9,
      "size_est": 18,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ov02_0224DC8C",
      "mode": "thumb",
      "insns": 4,
      "size_est": 8,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ov02_0224DC94",
      "mode": "thumb",
      "insns": 13,
      "size_est": 28,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ov02_0224DCB0",
      "mode": "thumb",
      "insns": 60,
      "size_est": 130,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ov02_0224DD38",
      "mode": "thumb",
      "insns": 9,
      "size_est": 20,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ov02_0224DD4C",
      "mode": "thumb",
      "insns": 28,
      "size_est": 62,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ov02_0224DD8C",
      "mode": "thumb",
      "insns": 28,
      "size_est": 60,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ov02_0224DDC8",
      "mode": "thumb",
      "insns": 12,
      "size_est": 26,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ov02_0224DDE0",
      "mode": "thumb",
      "insns": 9,
      "size_est": 18,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ov02_0224DDF4",
      "mode": "thumb",
      "insns": 9,
      "size_est": 18,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ov02_0224DE08",
      "mode": "thumb",
      "insns": 4,
      "size_est": 8,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ov02_0224DE10",
      "mode": "thumb",
      "insns": 41,
      "size_est": 92,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ov02_0224DE6C",
      "mode": "thumb",
      "insns": 29,
      "size_est": 62,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ov02_0224DEA8",
      "mode": "thumb",
      "insns": 34,
      "size_est": 78,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ov02_0224DEF4",
      "mode": "thumb",
      "insns": 19,
      "size_est": 42,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ov02_0224DF1C",
      "mode": "thumb",
      "insns": 110,
      "size_est": 236,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ov02_0224E008",
      "mode": "thumb",
      "insns": 12,
      "size_est": 26,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ov02_0224E020",
      "mode": "thumb",
      "insns": 39,
      "size_est": 86,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ov02_0224E074",
      "mode": "thumb",
      "insns": 33,
      "size_est": 72,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ov02_0224E0BC",
      "mode": "thumb",
      "insns": 10,
      "size_est": 24,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ov02_0224E0D4",
      "mode": "thumb",
      "insns": 12,
      "size_est": 26,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ov02_0224E0EC",
      "mode": "thumb",
      "insns": 122,
      "size_est": 302,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ov02_0224E224",
      "mode": "thumb",
      "insns": 34,
      "size_est": 74,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ov02_0224E26C",
      "mode": "thumb",
      "insns": 22,
      "size_est": 46,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ov02_0224E2A0",
      "mode": "thumb",
      "insns": 22,
      "size_est": 46,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ov02_0224E2D4",
      "mode": "thumb",
      "insns": 23,
      "size_est": 48,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ov02_0224E308",
      "mode": "thumb",
      "insns": 10,
      "size_est": 20,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ov02_0224E31C",
      "mode": "thumb",
      "insns": 19,
      "size_est": 38,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ov02_0224E340",
      "mode": "thumb",
      "insns": 12,
      "size_est": 30,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ov02_0224E35C",
      "mode": "thumb",
      "insns": 158,
      "size_est": 368,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ov02_0224E4CC",
      "mode": "thumb",
      "insns": 8,
      "size_est": 18,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ov02_0224E4DC",
      "mode": "thumb",
      "insns": 8,
      "size_est": 18,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "SafariDecoration_CreateArgs",
      "mode": "thumb",
      "insns": 155,
      "size_est": 340,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ov02_0224E640",
      "mode": "thumb",
      "insns": 38,
      "size_est": 88,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ov02_0224E698",
      "mode": "thumb",
      "insns": 86,
      "size_est": 190,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ov02_0224E754",
      "mode": "thumb",
      "insns": 96,
      "size_est": 214,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ov02_0224E828",
      "mode": "thumb",
      "insns": 355,
      "size_est": 794,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ov02_0224EB48",
      "mode": "thumb",
      "insns": 341,
      "size_est": 766,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ov02_0224EE4C",
      "mode": "thumb",
      "insns": 137,
      "size_est": 282,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ov02_0224EF6C",
      "mode": "thumb",
      "insns": 8,
      "size_est": 20,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "FieldSystem_FollowMonInteract",
      "mode": "thumb",
      "insns": 9,
      "size_est": 18,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ov02_0224EF94",
      "mode": "thumb",
      "insns": 92,
      "size_est": 196,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ov02_0224F058",
      "mode": "thumb",
      "insns": 72,
      "size_est": 174,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ov02_0224F108",
      "mode": "thumb",
      "insns": 262,
      "size_est": 540,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ov02_0224F324",
      "mode": "thumb",
      "insns": 186,
      "size_est": 406,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ov02_0224F4BC",
      "mode": "thumb",
      "insns": 88,
      "size_est": 196,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ov02_0224F580",
      "mode": "thumb",
      "insns": 36,
      "size_est": 80,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ov02_0224F5D0",
      "mode": "thumb",
      "insns": 20,
      "size_est": 44,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ov02_0224F5FC",
      "mode": "thumb",
      "insns": 30,
      "size_est": 72,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ov02_0224F644",
      "mode": "thumb",
      "insns": 5,
      "size_est": 10,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ov02_0224F64C",
      "mode": "thumb",
      "insns": 32,
      "size_est": 68,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ov02_0224F698",
      "mode": "thumb",
      "insns": 9,
      "size_est": 20,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ov02_0224F6AC",
      "mode": "thumb",
      "insns": 58,
      "size_est": 126,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ov02_0224F728",
      "mode": "thumb",
      "insns": 30,
      "size_est": 62,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ov02_0224F76C",
      "mode": "thumb",
      "insns": 21,
      "size_est": 48,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ov02_0224F79C",
      "mode": "thumb",
      "insns": 48,
      "size_est": 98,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ov02_0224F820",
      "mode": "thumb",
      "insns": 28,
      "size_est": 58,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ov02_0224F864",
      "mode": "thumb",
      "insns": 12,
      "size_est": 28,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ov02_0224F880",
      "mode": "thumb",
      "insns": 54,
      "size_est": 110,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ov02_0224F8F4",
      "mode": "thumb",
      "insns": 4,
      "size_est": 8,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ov02_0224F8FC",
      "mode": "thumb",
      "insns": 263,
      "size_est": 560,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ov02_0224FB44",
      "mode": "thumb",
      "insns": 8,
      "size_est": 16,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ov02_0224FB54",
      "mode": "thumb",
      "insns": 34,
      "size_est": 72,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "FollowMon_TryPrintInteractionMessage",
      "mode": "thumb",
      "insns": 48,
      "size_est": 108,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ov02_0224FC08",
      "mode": "thumb",
      "insns": 47,
      "size_est": 106,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ov02_0224FC74",
      "mode": "thumb",
      "insns": 12,
      "size_est": 24,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "FollowMon_ExpandInteractionMessage",
      "mode": "thumb",
      "insns": 34,
      "size_est": 84,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ov02_0224FCE0",
      "mode": "thumb",
      "insns": 77,
      "size_est": 188,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ov02_0224FD9C",
      "mode": "thumb",
      "insns": 43,
      "size_est": 94,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ov02_0224FDF8",
      "mode": "thumb",
      "insns": 33,
      "size_est": 70,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ov02_0224FE40",
      "mode": "thumb",
      "insns": 21,
      "size_est": 48,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ov02_0224FE70",
      "mode": "thumb",
      "insns": 65,
      "size_est": 148,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ov02_0224FF04",
      "mode": "thumb",
      "insns": 38,
      "size_est": 82,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ov02_0224FF5C",
      "mode": "thumb",
      "insns": 57,
      "size_est": 120,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ov02_0224FFD8",
      "mode": "thumb",
      "insns": 22,
      "size_est": 44,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ov02_02250004",
      "mode": "thumb",
      "insns": 115,
      "size_est": 258,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "Task_FollowMonInteract",
      "mode": "thumb",
      "insns": 388,
      "size_est": 874,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "FollowMon_PlaceholdersSet",
      "mode": "thumb",
      "insns": 40,
      "size_est": 102,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ov02_02250504",
      "mode": "thumb",
      "insns": 65,
      "size_est": 142,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ov02_02250594",
      "mode": "thumb",
      "insns": 64,
      "size_est": 128,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ov02_02250628",
      "mode": "thumb",
      "insns": 76,
      "size_est": 152,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ov02_022506D4",
      "mode": "thumb",
      "insns": 45,
      "size_est": 92,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ov02_02250738",
      "mode": "thumb",
      "insns": 36,
      "size_est": 72,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ov02_02250780",
      "mode": "thumb",
      "insns": 23,
      "size_est": 54,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ov02_022507B4",
      "mode": "thumb",
      "insns": 23,
      "size_est": 52,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ov02_022507E8",
      "mode": "thumb",
      "insns": 86,
      "size_est": 196,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ov02_022508B4",
      "mode": "thumb",
      "insns": 16,
      "size_est": 36,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ov02_022508D8",
      "mode": "thumb",
      "insns": 161,
      "size_est": 378,
-     "status": "pending"
+     "status": "matched"
     }
-   ]
+   ],
+   "source": "retained_asm"
   },
   {
    "file": "asm/field/legend_cutscene_camera.s",
