@@ -152,6 +152,22 @@ extern BOOL Save_VarsFlags_CheckSafariSysFlag(void *varsFlags);                 
 extern BOOL sub_0202F620(void *safariZone);                                                                  // no header included here
 extern fx32 sub_02054774(FieldSystem *fieldSystem, fx32 refHeight, fx32 xFx32, fx32 zFx32, u8 *outSelector); // unk_02054648.h, not included
 WIP_LOCAL BOOL ov02_0224E35C(FieldSystem *fieldSystem);
+// --- Task_FollowMonInteract (0x02250110) deps ---
+extern void ClearFrameAndWindow2(Window *window, BOOL dont_copy_to_vram);                                                   // render_window.h, not included
+extern void RemoveWindow(Window *window);                                                                                   // render_window.h, not included
+extern void *Save_FashionData_Get(SaveData *saveData);                                                                      // fashion_case.h, not included
+extern void *Save_FashionData_GetFashionCase(void *fashionData);                                                            // fashion_case.h, not included
+extern int sub_0202BA2C(void *fashionCase, int a1, int a2);                                                                 // fashion_case.h, not included
+extern void FashionCase_GiveFashionItem(void *fashionCase, int id, int quantity);                                           // fashion_case.h, not included
+extern void SetFlag99C(void *state);                                                                                        // sys_flags.h, not included
+extern BOOL IsPrintFinished(u8 printerId);                                                                                  // text_0205B4EC.h, not included
+extern void ov01_021F6A9C(FieldSystem *fieldSystem, int a1, void *a2);                                                      // overlay_01.h, not included
+extern int ov01_021F6B00(FieldSystem *fieldSystem);                                                                         // overlay_01.h, not included
+extern BOOL ov01_021F6B10(FieldSystem *fieldSystem);                                                                        // overlay_01.h, not included
+extern void ov01_021F6ABC(FieldSystem *fieldSystem, int a1, int a2, void *a3);                                              // overlay_01.h, not included
+extern int ov01_021F6AEC(FieldSystem *fieldSystem);                                                                         // overlay_01.h, not included
+WIP_LOCAL int ov02_0224EF94(FieldSystem *fieldSystem);                                                                      // still in asm
+WIP_LOCAL int ov02_0224F8FC(FieldSystem *fieldSystem, void *a1);                                                            // still in asm
 extern void sub_02066BE8(void *state, u32 a1, u16 value);                                                                   // sys_vars.h, not included
 extern void ov01_021FBD38(Field3dModel *model, void *narcData);                                                             // no header included here
 extern void ov01_021FBDFC(Field3dModel *model);                                                                             // no header included here
@@ -5810,3 +5826,162 @@ WIP_LOCAL void ov02_02249FD4(void *work) {
 //   (src/field/encounter_check.c, legend_cutscene_camera.c, *cutscene*, gear_phone)
 //   for shared types. unknown_callees in triage = [] (all callees have headers).
 // ===========================================================================
+
+WIP_LOCAL BOOL Task_FollowMonInteract(TaskManager *taskManager) {
+    FieldSystem *fieldSystem = TaskManager_GetFieldSystem(taskManager);
+    u32 *state = TaskManager_GetStatePtr(taskManager);
+
+    switch (*state) {
+    case 0:
+        ov02_0224F880(*(void **)((u8 *)fieldSystem + 0x120), ov02_0224EF94(fieldSystem));
+        (*state)++;
+        break;
+    case 1: {
+        int r = ov02_0224F8FC(fieldSystem, *(void **)((u8 *)fieldSystem + 0x120));
+        if (r == 1) {
+            MapObject_PauseMovement(*(LocalMapObject **)((u8 *)fieldSystem + 0xe4));
+            return TRUE;
+        }
+        if (r == 2) {
+            *(u8 *)((u8 *)*(void **)((u8 *)fieldSystem + 0x120) + 0x869) = 0xa;
+            *state = 2;
+        } else if (r == 3) {
+            *state = 3;
+        } else if (r == 4) {
+            *state = 4;
+        }
+        break;
+    }
+    case 2:
+        switch (*(u8 *)((u8 *)*(void **)((u8 *)fieldSystem + 0x120) + 0x869) - 0xa) {
+        case 0:
+            ov01_021F6A9C(fieldSystem, 3, NULL);
+            *(u8 *)((u8 *)*(void **)((u8 *)fieldSystem + 0x120) + 0x869) = 0xb;
+            break;
+        case 1: {
+            int v0 = ov01_021F6B00(fieldSystem);
+            int v1 = ov01_021F6B10(fieldSystem);
+            if (v0 == 3 && v1 == 1) {
+                ov01_021F6ABC(fieldSystem, 3, 3, (u8 *)*(void **)((u8 *)fieldSystem + 0x120) + 0x880);
+                *(u8 *)((u8 *)*(void **)((u8 *)fieldSystem + 0x120) + 0x869) = 0xc;
+            }
+            break;
+        }
+        case 2: {
+            int v0 = ov01_021F6B00(fieldSystem);
+            int v1 = ov01_021F6AEC(fieldSystem);
+            if (v0 == 3 && v1 == 6) {
+                ov01_021F6A9C(fieldSystem, 0, NULL);
+                *(u8 *)((u8 *)*(void **)((u8 *)fieldSystem + 0x120) + 0x869) = 0xd;
+            }
+            break;
+        }
+        case 3: {
+            int v0 = ov01_021F6B00(fieldSystem);
+            int v1 = ov01_021F6B10(fieldSystem);
+            if (v0 == 0 && v1 == 1) {
+                switch (*(u16 *)((u8 *)*(void **)((u8 *)fieldSystem + 0x120) + 0x880)) {
+                case 0: {
+                    int val;
+                    ClearFrameAndWindow2(*(void **)((u8 *)fieldSystem + 0x120), 0);
+                    RemoveWindow(*(void **)((u8 *)fieldSystem + 0x120));
+                    String_Delete(*(String **)((u8 *)*(void **)((u8 *)fieldSystem + 0x120) + 0x10));
+                    *(u8 *)((u8 *)fieldSystem + 0xd2) &= ~0x40;
+                    val = *(u16 *)((u8 *)*(void **)((u8 *)fieldSystem + 0x120) + 0x810);
+                    if (val == 0) {
+                        MapObject_PauseMovement(*(LocalMapObject **)((u8 *)fieldSystem + 0xe4));
+                        return TRUE;
+                    }
+                    ov02_0224F880(*(void **)((u8 *)fieldSystem + 0x120), val);
+                    *state = 1;
+                    break;
+                }
+                case 1: {
+                    int val;
+                    ClearFrameAndWindow2(*(void **)((u8 *)fieldSystem + 0x120), 0);
+                    RemoveWindow(*(void **)((u8 *)fieldSystem + 0x120));
+                    String_Delete(*(String **)((u8 *)*(void **)((u8 *)fieldSystem + 0x120) + 0x10));
+                    *(u8 *)((u8 *)fieldSystem + 0xd2) &= ~0x40;
+                    val = *(u16 *)((u8 *)*(void **)((u8 *)fieldSystem + 0x120) + 0x812);
+                    if (val == 0) {
+                        MapObject_PauseMovement(*(LocalMapObject **)((u8 *)fieldSystem + 0xe4));
+                        return TRUE;
+                    }
+                    ov02_0224F880(*(void **)((u8 *)fieldSystem + 0x120), val);
+                    *state = 1;
+                    break;
+                }
+                }
+            }
+            break;
+        }
+        }
+        break;
+    case 3: {
+        void *fashionCase = Save_FashionData_GetFashionCase(Save_FashionData_Get(fieldSystem->saveData));
+        int idx = *(u8 *)((u8 *)*(void **)((u8 *)fieldSystem + 0x120) + 0x816) - 1;
+        if (idx < 0 || idx >= 0x64) {
+            GF_AssertFail();
+        }
+        if (sub_0202BA2C(fashionCase, idx, 1) != 0) {
+            FashionCase_GiveFashionItem(fashionCase, idx, 1);
+            ov02_0224FC08(fieldSystem, *(void **)((u8 *)fieldSystem + 0x120), 3);
+            PlayFanfare(SEQ_ME_ACCE);
+        } else {
+            ov02_0224FC08(fieldSystem, *(void **)((u8 *)fieldSystem + 0x120), 2);
+        }
+        *state = 5;
+        break;
+    }
+    case 4: {
+        int leaf;
+        switch (*(u8 *)((u8 *)*(void **)((u8 *)fieldSystem + 0x120) + 0x817)) {
+        case 1:
+            leaf = MON_DATA_SHINY_LEAF_A;
+            break;
+        case 2:
+            leaf = MON_DATA_SHINY_LEAF_B;
+            break;
+        case 3:
+            leaf = MON_DATA_SHINY_LEAF_C;
+            break;
+        case 4:
+            leaf = MON_DATA_SHINY_LEAF_D;
+            break;
+        case 5:
+            leaf = MON_DATA_SHINY_LEAF_E;
+            break;
+        case 0:
+        default:
+            GF_AssertFail();
+            return TRUE;
+        }
+        {
+            Pokemon *mon = GetFirstAliveMonInParty_CrashIfNone(SaveArray_Party_Get(fieldSystem->saveData));
+            if ((u8)GetMonData(mon, leaf, NULL) == 0) {
+                u8 buf;
+                SetFlag99C(Save_VarsFlags_Get(fieldSystem->saveData));
+                buf = 1;
+                SetMonData(mon, leaf, &buf);
+                ov02_0224FC08(fieldSystem, *(void **)((u8 *)fieldSystem + 0x120), 1);
+                PlayFanfare(SEQ_ME_ACCE);
+            } else {
+                ov02_0224FC08(fieldSystem, *(void **)((u8 *)fieldSystem + 0x120), 0);
+            }
+            *state = 5;
+        }
+        break;
+    }
+    case 5:
+        if (IsPrintFinished((u8) * (u16 *)((u8 *)*(void **)((u8 *)fieldSystem + 0x120) + 0x86e)) == 1 && !IsFanfarePlaying() && (gSystem.newKeys & 3)) {
+            ClearFrameAndWindow2(*(void **)((u8 *)fieldSystem + 0x120), 0);
+            RemoveWindow(*(void **)((u8 *)fieldSystem + 0x120));
+            String_Delete(*(String **)((u8 *)*(void **)((u8 *)fieldSystem + 0x120) + 0x10));
+            *(u8 *)((u8 *)fieldSystem + 0xd2) &= ~0x40;
+            MapObject_PauseMovement(*(LocalMapObject **)((u8 *)fieldSystem + 0xe4));
+            return TRUE;
+        }
+        break;
+    }
+    return FALSE;
+}
