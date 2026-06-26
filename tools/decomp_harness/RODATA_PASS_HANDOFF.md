@@ -1,3 +1,11 @@
+# ✅ DONE (2026-06-25, HEAD cf50ce9ec) — rodata pass COMPLETE, overlay flipped to src, full ROM matches retail.
+# Solution: consolidated all rodata into ONE `static const struct sRodata` (+ `sData`) to beat MWCC's
+# .rodata size-sort; #define macros restore names; asm-ref fields use `=sRodata+offset`; 4 funcs that
+# load direct rodata addresses (Task_FieldDig/Teleport, ov02_02250738, ov02_0224BF58) -> NONMATCHING asm.
+# Full reusable recipe: patterns.py id `rodata-consolidate-one-struct-flip`. Tooling: gen_rodata_blob.py,
+# verify_rodata.py, sort_functions.py. The "approach (b) asm-data-split" notes below are superseded.
+# ---- original handoff (historical) ----
+
 # overlay_02_02248728 — rodata pass handoff (finalize the flip to src)
 
 **State (HEAD c9d1ab224):** all 364 *functions* are defined in
