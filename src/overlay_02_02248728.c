@@ -231,8 +231,8 @@ extern int ov01_021F3C0C(void *a0, int a1, const VecFx32 *a2, const VecFx32 *a3,
 extern void *ov01_021F3B60(void *a0, int a1);                                                                          // no header included here
 extern void ov01_021E8E40(void *a0, int a1, int a2, void *a3);                                                         // no header included here
 extern void ov01_021F36DC(int a0, void *a1);                                                                           // no header included here
-extern const VecFx32 ov02_02253DD8[];                                                                                  // rodata, defined later (CE28 per-object offset table, stride 0xc)
-extern const VecFx32 ov02_02253D90[];                                                                                  // rodata, defined later (PokecenterAnimRun per-object offset table)
+extern VecFx32 ov02_02253DD8[];                                                                                        // rodata, defined later (CE28 per-object offset table, stride 0xc)
+extern VecFx32 ov02_02253D90[];                                                                                        // rodata, defined later (PokecenterAnimRun per-object offset table)
 typedef struct ov02_SafariObjCfg {
     u8 buildModel;
     u8 isAnimated : 1;
@@ -296,8 +296,8 @@ extern void *Save_SafariZone_Get(SaveData *saveData);                           
 extern u8 SafariZone_GetObjectUnlockLevel(void *safariZone);                            // safari_zone.h, not included
 extern void *Field_GetBgEvents(FieldSystem *fieldSystem);                               // map_events.h, not included (BG_EVENT opaque)
 extern u32 Field_GetNumBgEvents(FieldSystem *fieldSystem);                              // map_events.h, not included
-extern const MovementScriptCommand ov02_022537DC;                                       // rodata, defined later
-extern const MovementScriptCommand ov02_022537B8;                                       // rodata, defined later
+extern const MovementScriptCommand ov02_022537DC[];                                     // rodata, defined later
+extern const MovementScriptCommand ov02_022537B8[];                                     // rodata, defined later
 
 // ov02_0224E020 dispatch tables (rodata, still in asm; defined later). Indexed by
 // data[0xc]: A34 update funcs return int (1 => advance state); A04 delete funcs
@@ -309,9 +309,9 @@ extern ov02_AnimDispatchFunc const ov02_02253A04[];
 // Field3dObjectTask from the fieldSystem. Indexed by the anim type.
 typedef Field3dObjectTask *(*ov02_CreateDispatchFunc)(FieldSystem *fieldSystem);
 extern ov02_CreateDispatchFunc const ov02_02253A1C[];
-extern const MovementScriptCommand ov02_02253820;                                                  // rodata, defined later
-extern const MovementScriptCommand ov02_02253794;                                                  // rodata, defined later
-extern const MovementScriptCommand ov02_02253770;                                                  // rodata, defined later
+extern const MovementScriptCommand ov02_02253820[];                                                // rodata, defined later
+extern const MovementScriptCommand ov02_02253794[];                                                // rodata, defined later
+extern const MovementScriptCommand ov02_02253770[];                                                // rodata, defined later
 extern const MovementScriptCommand ov02_02253A70[][5];                                             // rodata, defined later (per-direction movement scripts, stride 0x14)
 extern BOOL sub_02054C20(FieldSystem *fieldSystem, int targetType, int *outObj, void **outHandle); // unk_02054648.h, not included
 extern void sub_02054DC8(int idx, int width, VecFx32 *out);                                        // unk_02054648.h, not included
@@ -320,7 +320,7 @@ extern u8 GetMetatileBehavior(FieldSystem *fieldSystem, int x, int z);          
 extern void ov01_02203AB4(FieldSystem *fieldSystem, LocalMapObject *partnerPokeObj, int a2);       // overlay_01.h, not included
 extern const fx32 ov02_02253520[];                                                                 // rodata, defined later
 extern const fx32 ov02_02253430[];                                                                 // rodata, defined later
-extern const MovementScriptCommand ov02_02253884;                                                  // rodata, defined later
+extern const MovementScriptCommand ov02_02253884[];                                                // rodata, defined later
 extern u16 PlayerProfile_GetTrainerID_VisibleHalf(PlayerProfile *profile);                         // player_data.h, not included
 typedef struct WallpaperPasswordBank WallpaperPasswordBank;                                        // opaque; easy_chat.h not included
 extern WallpaperPasswordBank *WallpaperPasswordBank_Create(enum HeapID heapID);
@@ -1059,7 +1059,7 @@ WIP_LOCAL int ov02_0224C71C(void *a0, FieldSystem *fieldSystem, void *work) {
     void *sysTask = ov01_021FCD2C(fieldSystem, 4);
     *(void **)((u8 *)work + 0x1c) = sysTask;
     ov01_021FCD8C(sysTask, 1, 0xFFF6A000, 0xf);
-    *(EventObjectMovementMan **)((u8 *)work + 0x10) = EventObjectMovementMan_Create(*(LocalMapObject **)((u8 *)work + 0x20), &ov02_02253820);
+    *(EventObjectMovementMan **)((u8 *)work + 0x10) = EventObjectMovementMan_Create(*(LocalMapObject **)((u8 *)work + 0x20), ov02_02253820);
     *(int *)work = *(int *)work + 1;
     PlaySE(SEQ_SE_DP_TELE);
     return 0;
@@ -1748,8 +1748,8 @@ WIP_LOCAL int ov02_0224C6DC(TaskManager *taskManager, FieldSystem *fieldSystem, 
         return 0;
     }
     EventObjectMovementMan_Delete(*(EventObjectMovementMan **)((u8 *)work + 0x14));
-    *(EventObjectMovementMan **)((u8 *)work + 0x10) = EventObjectMovementMan_Create(*(LocalMapObject **)((u8 *)work + 0x20), &ov02_02253820);
-    *(EventObjectMovementMan **)((u8 *)work + 0x14) = EventObjectMovementMan_Create(*(LocalMapObject **)((u8 *)fieldSystem + 0xe4), &ov02_02253820);
+    *(EventObjectMovementMan **)((u8 *)work + 0x10) = EventObjectMovementMan_Create(*(LocalMapObject **)((u8 *)work + 0x20), ov02_02253820);
+    *(EventObjectMovementMan **)((u8 *)work + 0x14) = EventObjectMovementMan_Create(*(LocalMapObject **)((u8 *)fieldSystem + 0xe4), ov02_02253820);
     (*(int *)((u8 *)work))++;
     return 0;
 }
@@ -1757,7 +1757,7 @@ WIP_LOCAL int ov02_0224C6DC(TaskManager *taskManager, FieldSystem *fieldSystem, 
 WIP_LOCAL int ov02_0224C2A8(TaskManager *taskManager, FieldSystem *fieldSystem, void *work) {
     if (EventObjectMovementMan_IsFinish(*(EventObjectMovementMan **)((u8 *)work + 0x10)) == 1) {
         EventObjectMovementMan_Delete(*(EventObjectMovementMan **)((u8 *)work + 0x10));
-        *(EventObjectMovementMan **)((u8 *)work + 0x10) = EventObjectMovementMan_Create(*(LocalMapObject **)((u8 *)work + 0x20), &ov02_02253794);
+        *(EventObjectMovementMan **)((u8 *)work + 0x10) = EventObjectMovementMan_Create(*(LocalMapObject **)((u8 *)work + 0x20), ov02_02253794);
     }
     if (!IsPaletteFadeFinished()) {
         return 0;
@@ -1771,7 +1771,7 @@ WIP_LOCAL int ov02_0224C698(TaskManager *taskManager, FieldSystem *fieldSystem, 
     void *p = ov01_021FCD2C(fieldSystem, 4);
     *(void **)((u8 *)work + 0x1c) = p;
     ov01_021FCD8C(p, 1, 0xFFF6A000, 0xf);
-    *(EventObjectMovementMan **)((u8 *)work + 0x14) = EventObjectMovementMan_Create(*(LocalMapObject **)((u8 *)fieldSystem + 0xe4), &ov02_02253770);
+    *(EventObjectMovementMan **)((u8 *)work + 0x14) = EventObjectMovementMan_Create(*(LocalMapObject **)((u8 *)fieldSystem + 0xe4), ov02_02253770);
     (*(int *)((u8 *)work))++;
     PlaySE(SEQ_SE_DP_TELE);
     return 0;
@@ -2151,10 +2151,10 @@ WIP_LOCAL int ov02_0224C2EC(TaskManager *taskManager, FieldSystem *fieldSystem, 
     }
     EventObjectMovementMan_Delete(*(EventObjectMovementMan **)((u8 *)work + 0x10));
     if (++*(int *)((u8 *)work + 4) < 4) {
-        *(EventObjectMovementMan **)((u8 *)work + 0x10) = EventObjectMovementMan_Create(*(LocalMapObject **)((u8 *)work + 0x20), &ov02_02253794);
+        *(EventObjectMovementMan **)((u8 *)work + 0x10) = EventObjectMovementMan_Create(*(LocalMapObject **)((u8 *)work + 0x20), ov02_02253794);
         return 0;
     }
-    *(EventObjectMovementMan **)((u8 *)work + 0x10) = EventObjectMovementMan_Create(*(LocalMapObject **)((u8 *)work + 0x20), &ov02_02253884);
+    *(EventObjectMovementMan **)((u8 *)work + 0x10) = EventObjectMovementMan_Create(*(LocalMapObject **)((u8 *)work + 0x20), ov02_02253884);
     (*(int *)((u8 *)work))++;
     return 0;
 }
@@ -4085,9 +4085,9 @@ WIP_LOCAL int ov02_0224C05C(TaskManager *taskManager, FieldSystem *fieldSystem, 
     void *p = ov01_021FCD2C(fieldSystem, 4);
     *(void **)((u8 *)work + 0x1c) = p;
     ov01_021FCD8C(p, 1, 0xFFF6A000, 0xf);
-    *(EventObjectMovementMan **)((u8 *)work + 0x10) = EventObjectMovementMan_Create(*(LocalMapObject **)((u8 *)work + 0x20), &ov02_02253820);
+    *(EventObjectMovementMan **)((u8 *)work + 0x10) = EventObjectMovementMan_Create(*(LocalMapObject **)((u8 *)work + 0x20), ov02_02253820);
     if (*(int *)((u8 *)work + 8)) {
-        *(EventObjectMovementMan **)((u8 *)work + 0x14) = EventObjectMovementMan_Create(*(LocalMapObject **)((u8 *)fieldSystem + 0xe4), &ov02_02253820);
+        *(EventObjectMovementMan **)((u8 *)work + 0x14) = EventObjectMovementMan_Create(*(LocalMapObject **)((u8 *)fieldSystem + 0xe4), ov02_02253820);
     }
     (*(int *)((u8 *)work))++;
     PlaySE(SEQ_SE_DP_KAIDAN2);
@@ -4098,9 +4098,9 @@ WIP_LOCAL int ov02_0224C87C(TaskManager *taskManager, FieldSystem *fieldSystem, 
     void *p = ov01_021FCD2C(fieldSystem, 4);
     *(void **)((u8 *)work + 0x1c) = p;
     ov01_021FCD8C(p, 1, 0xFFF6A000, 0xf);
-    *(EventObjectMovementMan **)((u8 *)work + 0x10) = EventObjectMovementMan_Create(*(LocalMapObject **)((u8 *)work + 0x20), &ov02_022537DC);
+    *(EventObjectMovementMan **)((u8 *)work + 0x10) = EventObjectMovementMan_Create(*(LocalMapObject **)((u8 *)work + 0x20), ov02_022537DC);
     if (*(int *)((u8 *)work + 8)) {
-        *(EventObjectMovementMan **)((u8 *)work + 0x14) = EventObjectMovementMan_Create(*(LocalMapObject **)((u8 *)fieldSystem + 0xe4), &ov02_022537DC);
+        *(EventObjectMovementMan **)((u8 *)work + 0x14) = EventObjectMovementMan_Create(*(LocalMapObject **)((u8 *)fieldSystem + 0xe4), ov02_022537DC);
     }
     (*(int *)((u8 *)work))++;
     PlaySE(SEQ_SE_DP_KAIDAN2);
@@ -4688,10 +4688,10 @@ WIP_LOCAL void *ov02_0224A468(void *mgr, VecFx32 *pos, int drawPriority, int d) 
 WIP_LOCAL int ov02_0224C14C(TaskManager *taskManager, FieldSystem *fieldSystem, void *work) {
     if (EventObjectMovementMan_IsFinish(*(EventObjectMovementMan **)((u8 *)work + 0x10)) == 1) {
         EventObjectMovementMan_Delete(*(EventObjectMovementMan **)((u8 *)work + 0x10));
-        *(EventObjectMovementMan **)((u8 *)work + 0x10) = EventObjectMovementMan_Create(*(LocalMapObject **)((u8 *)work + 0x20), &ov02_02253794);
+        *(EventObjectMovementMan **)((u8 *)work + 0x10) = EventObjectMovementMan_Create(*(LocalMapObject **)((u8 *)work + 0x20), ov02_02253794);
         if (*(int *)((u8 *)work + 8)) {
             EventObjectMovementMan_Delete(*(EventObjectMovementMan **)((u8 *)work + 0x14));
-            *(EventObjectMovementMan **)((u8 *)work + 0x14) = EventObjectMovementMan_Create(*(LocalMapObject **)((u8 *)fieldSystem + 0xe4), &ov02_02253794);
+            *(EventObjectMovementMan **)((u8 *)work + 0x14) = EventObjectMovementMan_Create(*(LocalMapObject **)((u8 *)fieldSystem + 0xe4), ov02_02253794);
         }
     }
     if (!IsPaletteFadeFinished()) {
@@ -4804,10 +4804,10 @@ WIP_LOCAL void FollowMon_ExpandInteractionMessage(void *work, void *dest, enum H
 WIP_LOCAL int ov02_0224C7D4(TaskManager *taskManager, FieldSystem *fieldSystem, void *work) {
     if (EventObjectMovementMan_IsFinish(*(EventObjectMovementMan **)((u8 *)work + 0x10)) == 1) {
         EventObjectMovementMan_Delete(*(EventObjectMovementMan **)((u8 *)work + 0x10));
-        *(EventObjectMovementMan **)((u8 *)work + 0x10) = EventObjectMovementMan_Create(*(LocalMapObject **)((u8 *)work + 0x20), &ov02_02253794);
+        *(EventObjectMovementMan **)((u8 *)work + 0x10) = EventObjectMovementMan_Create(*(LocalMapObject **)((u8 *)work + 0x20), ov02_02253794);
         if (*(int *)((u8 *)work + 8)) {
             EventObjectMovementMan_Delete(*(EventObjectMovementMan **)((u8 *)work + 0x14));
-            *(EventObjectMovementMan **)((u8 *)work + 0x14) = EventObjectMovementMan_Create(*(LocalMapObject **)((u8 *)fieldSystem + 0xe4), &ov02_02253794);
+            *(EventObjectMovementMan **)((u8 *)work + 0x14) = EventObjectMovementMan_Create(*(LocalMapObject **)((u8 *)fieldSystem + 0xe4), ov02_02253794);
         }
     }
     if (!IsPaletteFadeFinished()) {
@@ -4918,10 +4918,10 @@ WIP_LOCAL int ov02_0224C8D0(TaskManager *taskManager, FieldSystem *fieldSystem, 
         return 0;
     }
     EventObjectMovementMan_Delete(*(EventObjectMovementMan **)((u8 *)work + 0x10));
-    *(EventObjectMovementMan **)((u8 *)work + 0x10) = EventObjectMovementMan_Create(*(LocalMapObject **)((u8 *)work + 0x20), &ov02_022537B8);
+    *(EventObjectMovementMan **)((u8 *)work + 0x10) = EventObjectMovementMan_Create(*(LocalMapObject **)((u8 *)work + 0x20), ov02_022537B8);
     if (*(int *)((u8 *)work + 8)) {
         EventObjectMovementMan_Delete(*(EventObjectMovementMan **)((u8 *)work + 0x14));
-        *(EventObjectMovementMan **)((u8 *)work + 0x14) = EventObjectMovementMan_Create(*(LocalMapObject **)((u8 *)fieldSystem + 0xe4), &ov02_022537B8);
+        *(EventObjectMovementMan **)((u8 *)work + 0x14) = EventObjectMovementMan_Create(*(LocalMapObject **)((u8 *)fieldSystem + 0xe4), ov02_022537B8);
     }
     if (PlayerAvatar_GetState(fieldSystem->playerAvatar) != 2) {
         if (*(int *)((u8 *)work + 8)) {
@@ -4944,7 +4944,7 @@ WIP_LOCAL int ov02_0224C234(TaskManager *taskManager, FieldSystem *fieldSystem, 
     p = ov01_021FCD2C(fieldSystem, 4);
     *(void **)((u8 *)work + 0x1c) = p;
     ov01_021FCD8C(p, 1, 0xFFF6A000, 1);
-    *(EventObjectMovementMan **)((u8 *)work + 0x10) = EventObjectMovementMan_Create(*(LocalMapObject **)((u8 *)work + 0x20), &ov02_02253794);
+    *(EventObjectMovementMan **)((u8 *)work + 0x10) = EventObjectMovementMan_Create(*(LocalMapObject **)((u8 *)work + 0x20), ov02_02253794);
     (*(int *)((u8 *)work))++;
     return 0;
 }
@@ -5551,10 +5551,10 @@ WIP_LOCAL int ov02_0224C0B0(TaskManager *taskManager, FieldSystem *fieldSystem, 
         return 0;
     }
     EventObjectMovementMan_Delete(*(EventObjectMovementMan **)((u8 *)work + 0x10));
-    *(EventObjectMovementMan **)((u8 *)work + 0x10) = EventObjectMovementMan_Create(*(LocalMapObject **)((u8 *)work + 0x20), &ov02_02253794);
+    *(EventObjectMovementMan **)((u8 *)work + 0x10) = EventObjectMovementMan_Create(*(LocalMapObject **)((u8 *)work + 0x20), ov02_02253794);
     if (*(int *)((u8 *)work + 8)) {
         EventObjectMovementMan_Delete(*(EventObjectMovementMan **)((u8 *)work + 0x14));
-        *(EventObjectMovementMan **)((u8 *)work + 0x14) = EventObjectMovementMan_Create(*(LocalMapObject **)((u8 *)fieldSystem + 0xe4), &ov02_02253794);
+        *(EventObjectMovementMan **)((u8 *)work + 0x14) = EventObjectMovementMan_Create(*(LocalMapObject **)((u8 *)fieldSystem + 0xe4), ov02_02253794);
     }
     if (++*(int *)((u8 *)work + 4) < 8) {
         return 0;
@@ -5573,10 +5573,10 @@ WIP_LOCAL int ov02_0224C75C(TaskManager *taskManager, FieldSystem *fieldSystem, 
         return 0;
     }
     EventObjectMovementMan_Delete(*(EventObjectMovementMan **)((u8 *)work + 0x10));
-    *(EventObjectMovementMan **)((u8 *)work + 0x10) = EventObjectMovementMan_Create(*(LocalMapObject **)((u8 *)work + 0x20), &ov02_02253794);
+    *(EventObjectMovementMan **)((u8 *)work + 0x10) = EventObjectMovementMan_Create(*(LocalMapObject **)((u8 *)work + 0x20), ov02_02253794);
     if (*(int *)((u8 *)work + 8)) {
         EventObjectMovementMan_Delete(*(EventObjectMovementMan **)((u8 *)work + 0x14));
-        *(EventObjectMovementMan **)((u8 *)work + 0x14) = EventObjectMovementMan_Create(*(LocalMapObject **)((u8 *)fieldSystem + 0xe4), &ov02_02253794);
+        *(EventObjectMovementMan **)((u8 *)work + 0x14) = EventObjectMovementMan_Create(*(LocalMapObject **)((u8 *)fieldSystem + 0xe4), ov02_02253794);
     }
     if (++*(int *)((u8 *)work + 4) < 8) {
         return 0;
@@ -5591,10 +5591,10 @@ WIP_LOCAL int ov02_0224C93C(TaskManager *taskManager, FieldSystem *fieldSystem, 
         return 0;
     }
     EventObjectMovementMan_Delete(*(EventObjectMovementMan **)((u8 *)work + 0x10));
-    *(EventObjectMovementMan **)((u8 *)work + 0x10) = EventObjectMovementMan_Create(*(LocalMapObject **)((u8 *)work + 0x20), &ov02_02253794);
+    *(EventObjectMovementMan **)((u8 *)work + 0x10) = EventObjectMovementMan_Create(*(LocalMapObject **)((u8 *)work + 0x20), ov02_02253794);
     if (*(int *)((u8 *)work + 8)) {
         EventObjectMovementMan_Delete(*(EventObjectMovementMan **)((u8 *)work + 0x14));
-        *(EventObjectMovementMan **)((u8 *)work + 0x14) = EventObjectMovementMan_Create(*(LocalMapObject **)((u8 *)fieldSystem + 0xe4), &ov02_02253794);
+        *(EventObjectMovementMan **)((u8 *)work + 0x14) = EventObjectMovementMan_Create(*(LocalMapObject **)((u8 *)fieldSystem + 0xe4), ov02_02253794);
     }
     if (++*(int *)((u8 *)work + 4) < 8) {
         return 0;
@@ -5607,10 +5607,10 @@ WIP_LOCAL int ov02_0224C93C(TaskManager *taskManager, FieldSystem *fieldSystem, 
 WIP_LOCAL int ov02_0224C9B8(TaskManager *taskManager, FieldSystem *fieldSystem, void *work) {
     if (EventObjectMovementMan_IsFinish(*(EventObjectMovementMan **)((u8 *)work + 0x10)) == 1) {
         EventObjectMovementMan_Delete(*(EventObjectMovementMan **)((u8 *)work + 0x10));
-        *(EventObjectMovementMan **)((u8 *)work + 0x10) = EventObjectMovementMan_Create(*(LocalMapObject **)((u8 *)work + 0x20), &ov02_02253794);
+        *(EventObjectMovementMan **)((u8 *)work + 0x10) = EventObjectMovementMan_Create(*(LocalMapObject **)((u8 *)work + 0x20), ov02_02253794);
         if (*(int *)((u8 *)work + 8)) {
             EventObjectMovementMan_Delete(*(EventObjectMovementMan **)((u8 *)work + 0x14));
-            *(EventObjectMovementMan **)((u8 *)work + 0x14) = EventObjectMovementMan_Create(*(LocalMapObject **)((u8 *)fieldSystem + 0xe4), &ov02_02253794);
+            *(EventObjectMovementMan **)((u8 *)work + 0x14) = EventObjectMovementMan_Create(*(LocalMapObject **)((u8 *)fieldSystem + 0xe4), ov02_02253794);
         }
     }
     if (!IsPaletteFadeFinished()) {
@@ -8640,3 +8640,337 @@ _0224EE42:
     pop {r3, r4, r5, r6, r7, pc}
 }
 // clang-format on
+
+// ===================================================================
+// rodata / .data definitions (finalization flip-to-src; byte-exact, typed)
+// ===================================================================
+// ==== rodata-only forward externs (referenced only from other rodata) ====
+extern ov02_StateMachineFunc const ov02_022532F8[];
+extern ov02_StateMachineFunc const ov02_02253300[];
+extern ov02_StateMachineFunc const ov02_02253330[];
+extern ov02_StateMachineFunc const ov02_02253420[];
+extern ov02_StateMachineFunc const ov02_022534D0[];
+extern void sub_02068DD0(void);
+extern void sub_02068DD4(void);
+
+ov02_StateMachineFunc const ov02_022532F8[] = { (ov02_StateMachineFunc)ov02_02248E10 };
+const u16 ov02_022532FC[] = { 0x0007, 0x0008 };
+ov02_StateMachineFunc const ov02_02253300[] = { (ov02_StateMachineFunc)ov02_0224AC28 };
+const u16 ov02_02253304[] = { 0x0011, 0x0014, 0x0017 };
+const u16 ov02_0225330A[] = { 0x0013, 0x0016, 0x0019 };
+const u16 ov02_02253310[] = { 0x0012, 0x0015, 0x0018, 0x0000, 0x0000, 0x0000, 0x0010, 0x0000 };
+ov02_StateMachineFunc *const ov02_02253320[] = { (ov02_StateMachineFunc *)ov02_022532F8, (ov02_StateMachineFunc *)ov02_022534D0, (ov02_StateMachineFunc *)0x1, (ov02_StateMachineFunc *)0xF };
+ov02_StateMachineFunc const ov02_02253330[] = { (ov02_StateMachineFunc)ov02_0224ACE0, (ov02_StateMachineFunc)ov02_0224ADEC, (ov02_StateMachineFunc)0x0, (ov02_StateMachineFunc)0x6, (ov02_StateMachineFunc)0x1, (ov02_StateMachineFunc)0xE };
+const VecFx32 ov02_02253348 = { 0x00080000, 0x00054000, 0 };
+const VecFx32 ov02_02253354 = { 0x00080000, 0x00068000, 0 };
+const VecFx32 ov02_02253360 = { 0x00001000, 0x00001000, 0 };
+const VecFx32 ov02_0225336C = { 0x00001400, 0x00001400, 0 };
+const VecFx32 ov02_02253378 = { 0x00001000, 0x00001000, 0 };
+const VecFx32 ov02_02253384 = { 0x00128000, 0x00060000, 0 };
+const VecFx32 ov02_02253390 = { 0x00001000, 0x00001000, 0 };
+const VecFx32 ov02_0225339C = { 0x00080000, 0x0006F000, 0 };
+const VecFx32 ov02_022533A8 = { 0x00002000, 0x00002000, 0 };
+const VecFx32 ov02_022533B4 = { 0x00001000, 0x00001000, 0 };
+ov02_StateMachineFunc *const ov02_022533C0[] = { (ov02_StateMachineFunc *)ov02_02253300, (ov02_StateMachineFunc *)ov02_02253330, (ov02_StateMachineFunc *)ov02_02253420 };
+const VecFx32 ov02_022533CC = { 0x00002000, 0x00002000, 0 };
+const VecFx32 ov02_022533D8 = { 0x00088000, 0x0004F000, 0 };
+const VecFx32 ov02_022533E4 = { 0x00088000, 0x00058000, 0 };
+const VecFx32 ov02_022533F0 = { 0x00000400, 0x00000400, 0 };
+const VecFx32 ov02_022533FC = { 0x00080000, 0x00060000, 0 };
+const VecFx32 ov02_02253408 = { 0x00080000, 0x00060000, 0 };
+const VecFx32 ov02_02253414 = { 0x00128000, 0x00060000, 0 };
+ov02_StateMachineFunc const ov02_02253420[] = { (ov02_StateMachineFunc)ov02_0224AF70, (ov02_StateMachineFunc)ov02_0224B0E0, (ov02_StateMachineFunc)ov02_0224B158, (ov02_StateMachineFunc)ov02_0224B294 };
+const fx32 ov02_02253430[] = {
+    (fx32)0xFFFFC000,
+    (fx32)0xFFFFA000,
+    (fx32)0xFFFF9000,
+    (fx32)0xFFFF8000,
+};
+const ov02_LaunchTemplate ov02_02253440 = { 0x8, (void *)ov02_0224B6D0, (void *)sub_02068DD4, (void *)ov02_0224B6E4, (void *)sub_02068DD0 };
+const ov02_LaunchTemplate ov02_02253454 = { 0x74, (void *)ov02_02248D98, (void *)ov02_02248DE4, (void *)ov02_02248DF0, (void *)sub_02068DD0 };
+const ov02_LaunchTemplate ov02_02253468 = { 0x24, (void *)ov02_0224AA80, (void *)ov02_0224AAC8, (void *)ov02_0224AAD4, (void *)ov02_0224AB54 };
+const ov02_LaunchTemplate ov02_0225347C = { 0x68, (void *)ov02_0224ABCC, (void *)ov02_0224ABF8, (void *)ov02_0224AC04, (void *)ov02_0224AC24 };
+const ov02_LaunchTemplate ov02_02253490 = { 0xC, (void *)ov02_0224B7CC, (void *)ov02_0224B804, (void *)ov02_0224B808, (void *)ov02_0224B87C };
+const ov02_LaunchTemplate ov02_022534A4 = { 0x24, (void *)ov02_0224B350, (void *)sub_02068DD4, (void *)ov02_0224B3FC, (void *)sub_02068DD0 };
+ov02_StateMachineFunc const ov02_022534B8[] = { (ov02_StateMachineFunc)ov02_0224B494, (ov02_StateMachineFunc)ov02_0224B4AC, (ov02_StateMachineFunc)ov02_0224B5F0, (ov02_StateMachineFunc)ov02_0224B638, (ov02_StateMachineFunc)ov02_0224B664, (ov02_StateMachineFunc)ov02_0224B68C };
+ov02_StateMachineFunc const ov02_022534D0[] = { (ov02_StateMachineFunc)ov02_02248F88, (ov02_StateMachineFunc)ov02_02249088, (ov02_StateMachineFunc)ov02_022490BC, (ov02_StateMachineFunc)ov02_022491A8, (ov02_StateMachineFunc)ov02_022491CC, (ov02_StateMachineFunc)ov02_02249290, (ov02_StateMachineFunc)ov02_0224939C, (ov02_StateMachineFunc)ov02_022493EC };
+ov02_StateMachineFunc const ov02_022534F0[] = { (ov02_StateMachineFunc)ov02_022495D0, (ov02_StateMachineFunc)ov02_02249A5C, (ov02_StateMachineFunc)ov02_0224B938, (ov02_StateMachineFunc)ov02_0224B964, (ov02_StateMachineFunc)ov02_02249AD8, (ov02_StateMachineFunc)ov02_02249AF0, (ov02_StateMachineFunc)ov02_02249B80, (ov02_StateMachineFunc)ov02_02249BA8, (ov02_StateMachineFunc)ov02_02249C74, (ov02_StateMachineFunc)ov02_02249CD8, (ov02_StateMachineFunc)ov02_02249954, (ov02_StateMachineFunc)ov02_0224997C };
+const fx32 ov02_02253520[] = {
+    (fx32)0xFFFF4000,
+    (fx32)0xFFFF0000,
+    (fx32)0xFFFEC000,
+    (fx32)0xFFFE8000,
+    (fx32)0xFFFE6000,
+    (fx32)0xFFFE4000,
+    (fx32)0xFFFE4000,
+    (fx32)0xFFFE4000,
+    (fx32)0xFFFE6000,
+    (fx32)0xFFFE8000,
+    (fx32)0xFFFEA000,
+    (fx32)0xFFFEC000,
+};
+ov02_StateMachineFunc const ov02_02253550[] = { (ov02_StateMachineFunc)ov02_022495B8, (ov02_StateMachineFunc)ov02_022495E8, (ov02_StateMachineFunc)ov02_02249658, (ov02_StateMachineFunc)ov02_02249690, (ov02_StateMachineFunc)ov02_022496D0, (ov02_StateMachineFunc)ov02_02249754, (ov02_StateMachineFunc)ov02_02249774, (ov02_StateMachineFunc)ov02_022497C0, (ov02_StateMachineFunc)ov02_02249838, (ov02_StateMachineFunc)ov02_02249858, (ov02_StateMachineFunc)ov02_022498BC, (ov02_StateMachineFunc)ov02_02249940, (ov02_StateMachineFunc)ov02_02249968, (ov02_StateMachineFunc)ov02_0224997C };
+ov02_StateMachineFunc const ov02_02253588[] = { (ov02_StateMachineFunc)ov02_022495B8, (ov02_StateMachineFunc)ov02_022499EC, (ov02_StateMachineFunc)ov02_02249658, (ov02_StateMachineFunc)ov02_02249690, (ov02_StateMachineFunc)ov02_022496D0, (ov02_StateMachineFunc)ov02_02249754, (ov02_StateMachineFunc)ov02_02249774, (ov02_StateMachineFunc)ov02_022497C0, (ov02_StateMachineFunc)ov02_02249838, (ov02_StateMachineFunc)ov02_02249858, (ov02_StateMachineFunc)ov02_02249AC4, (ov02_StateMachineFunc)ov02_02249AD8, (ov02_StateMachineFunc)ov02_02249AF0, (ov02_StateMachineFunc)ov02_02249B10, (ov02_StateMachineFunc)ov02_02249B38, (ov02_StateMachineFunc)ov02_02249B60, (ov02_StateMachineFunc)ov02_02249BA8, (ov02_StateMachineFunc)ov02_02249BD8, (ov02_StateMachineFunc)ov02_02249C74, (ov02_StateMachineFunc)ov02_02249CD8, (ov02_StateMachineFunc)ov02_02249940, (ov02_StateMachineFunc)ov02_02249968, (ov02_StateMachineFunc)ov02_0224997C };
+const ov02_A9D8Entry ov02_022535E4[] = {
+    { 0x0000F000, 0x0003F000, 0x00010000, (void *)0x85, 0x0 },
+    { 0x0004C000, 0x00043000, 0x00010000, (void *)0x85, 0x0 },
+    { 0x00080000, 0x0003D000, 0x00018000, (void *)0x80, 0x1 },
+    { 0x000F0000, 0x00045000, 0x00010000, (void *)0x85, 0x0 },
+    { 0x00028000, 0x0004E000, 0x00018000, (void *)0x80, 0x1 },
+    { 0x00048000, 0x0005B000, 0x00010000, (void *)0x85, 0x0 },
+    { 0x000D0000, 0x00056000, 0x00018000, (void *)0x80, 0x1 },
+    { 0x00038000, 0x00074000, 0x00010000, (void *)0x85, 0x0 },
+    { 0x0005F000, 0x0006D000, 0x00018000, (void *)0x80, 0x1 },
+    { 0x0009F000, 0x00064000, 0x00010000, (void *)0x85, 0x0 },
+    { 0x00018000, 0x0007E000, 0x00018000, (void *)0x80, 0x1 },
+    { 0x0008C000, 0x0007D000, 0x00018000, (void *)0x80, 0x1 },
+    { 0x000DD000, 0x0007C000, 0x00018000, (void *)0x80, 0x1 },
+};
+const ov02_BF58Cfg ov02_022536E8 = { 0x21, 0x8A };
+ov02_FieldTaskFunc const ov02_022536F0[] = {
+    (ov02_FieldTaskFunc)ov02_0224C234,
+    (ov02_FieldTaskFunc)ov02_0224C2A8,
+    (ov02_FieldTaskFunc)ov02_0224C2EC,
+    (ov02_FieldTaskFunc)ov02_0224C338,
+};
+ov02_FieldTaskFunc const ov02_02253700[] = {
+    (ov02_FieldTaskFunc)ov02_0224C05C,
+    (ov02_FieldTaskFunc)ov02_0224C0B0,
+    (ov02_FieldTaskFunc)ov02_0224C14C,
+    (ov02_FieldTaskFunc)ov02_0224C1B8,
+};
+ov02_FieldTaskFunc const ov02_02253710[] = {
+    (ov02_FieldTaskFunc)ov02_0224C87C,
+    (ov02_FieldTaskFunc)ov02_0224C8D0,
+    (ov02_FieldTaskFunc)ov02_0224C93C,
+    (ov02_FieldTaskFunc)ov02_0224C9B8,
+    (ov02_FieldTaskFunc)ov02_0224CA38,
+};
+ov02_FieldTaskFunc const ov02_02253724[] = {
+    (ov02_FieldTaskFunc)ov02_0224C4B4,
+    (ov02_FieldTaskFunc)ov02_0224C4D8,
+    (ov02_FieldTaskFunc)ov02_0224C71C,
+    (ov02_FieldTaskFunc)ov02_0224C75C,
+    (ov02_FieldTaskFunc)ov02_0224C7D4,
+    (ov02_FieldTaskFunc)ov02_0224C840,
+};
+ov02_FieldTaskFunc const ov02_0225373C[] = {
+    (ov02_FieldTaskFunc)ov02_0224C680,
+    (ov02_FieldTaskFunc)ov02_0224C698,
+    (ov02_FieldTaskFunc)ov02_0224C6DC,
+    (ov02_FieldTaskFunc)ov02_0224C75C,
+    (ov02_FieldTaskFunc)ov02_0224C7D4,
+    (ov02_FieldTaskFunc)ov02_0224C840,
+};
+ov02_FieldTaskFunc const ov02_02253754[] = {
+    (ov02_FieldTaskFunc)ov02_0224C4B4,
+    (ov02_FieldTaskFunc)ov02_0224C4D8,
+    (ov02_FieldTaskFunc)ov02_0224C87C,
+    (ov02_FieldTaskFunc)ov02_0224C8D0,
+    (ov02_FieldTaskFunc)ov02_0224C93C,
+    (ov02_FieldTaskFunc)ov02_0224C9B8,
+    (ov02_FieldTaskFunc)ov02_0224CA38,
+};
+const MovementScriptCommand ov02_02253770[] = {
+    { 0x1,  0x1 },
+    { 0x3C, 0x2 },
+    { 0x2,  0x1 },
+    { 0x3C, 0x2 },
+    { 0x0,  0x1 },
+    { 0x3C, 0x2 },
+    { 0x3,  0x1 },
+    { 0x3C, 0x2 },
+    { 0xFE, 0x0 },
+};
+const MovementScriptCommand ov02_02253794[] = {
+    { 0x0,  0x1 },
+    { 0x3,  0x1 },
+    { 0x1,  0x1 },
+    { 0x2,  0x1 },
+    { 0x0,  0x1 },
+    { 0x3,  0x1 },
+    { 0x1,  0x1 },
+    { 0x2,  0x1 },
+    { 0xFE, 0x0 },
+};
+const MovementScriptCommand ov02_022537B8[] = {
+    { 0x1,  0x1 },
+    { 0x2,  0x1 },
+    { 0x0,  0x1 },
+    { 0x3,  0x1 },
+    { 0x1,  0x1 },
+    { 0x2,  0x1 },
+    { 0x0,  0x1 },
+    { 0x3,  0x1 },
+    { 0xFE, 0x0 },
+};
+const MovementScriptCommand ov02_022537DC[] = {
+    { 0x1,  0x1 },
+    { 0x3C, 0x2 },
+    { 0x2,  0x1 },
+    { 0x3C, 0x2 },
+    { 0x0,  0x1 },
+    { 0x3C, 0x2 },
+    { 0x3,  0x1 },
+    { 0x3C, 0x2 },
+    { 0x1,  0x1 },
+    { 0x3C, 0x1 },
+    { 0x2,  0x1 },
+    { 0x3C, 0x1 },
+    { 0x0,  0x1 },
+    { 0x3C, 0x1 },
+    { 0x3,  0x1 },
+    { 0x3C, 0x1 },
+    { 0xFE, 0x0 },
+};
+const MovementScriptCommand ov02_02253820[] = {
+    { 0x1,  0x1 },
+    { 0x3C, 0x2 },
+    { 0x2,  0x1 },
+    { 0x3C, 0x2 },
+    { 0x0,  0x1 },
+    { 0x3C, 0x2 },
+    { 0x3,  0x1 },
+    { 0x3C, 0x2 },
+    { 0x1,  0x1 },
+    { 0x3C, 0x1 },
+    { 0x2,  0x1 },
+    { 0x3C, 0x1 },
+    { 0x0,  0x1 },
+    { 0x3C, 0x1 },
+    { 0x3,  0x1 },
+    { 0x3C, 0x1 },
+    { 0x1,  0x1 },
+    { 0x2,  0x1 },
+    { 0x0,  0x1 },
+    { 0x3,  0x1 },
+    { 0x1,  0x1 },
+    { 0x2,  0x1 },
+    { 0x0,  0x1 },
+    { 0x3,  0x1 },
+    { 0xFE, 0x0 },
+};
+const MovementScriptCommand ov02_02253884[] = {
+    { 0x1,  0x1 },
+    { 0x2,  0x1 },
+    { 0x0,  0x1 },
+    { 0x3,  0x1 },
+    { 0x1,  0x1 },
+    { 0x2,  0x1 },
+    { 0x0,  0x1 },
+    { 0x3,  0x1 },
+    { 0x1,  0x1 },
+    { 0x3C, 0x1 },
+    { 0x2,  0x1 },
+    { 0x3C, 0x1 },
+    { 0x0,  0x1 },
+    { 0x3C, 0x1 },
+    { 0x3,  0x1 },
+    { 0x3C, 0x1 },
+    { 0x1,  0x1 },
+    { 0x3C, 0x2 },
+    { 0x2,  0x1 },
+    { 0x3C, 0x3 },
+    { 0x0,  0x1 },
+    { 0x3C, 0x4 },
+    { 0x3,  0x1 },
+    { 0x3C, 0x5 },
+    { 0x1,  0x1 },
+    { 0xFE, 0x0 },
+};
+const u8 ov02_022538EC[] = {
+    0x10,
+    0x0F,
+    0x0E,
+    0x0B,
+    0x0C,
+    0x09,
+    0xB4,
+    0x00,
+    0x00,
+    0x00,
+    0x0E,
+    0x01,
+    0x5A,
+    0x00,
+    0x00,
+    0x00,
+};
+const Field3dObjectTaskTemplate ov02_022538FC = { 0x400, 0xF0, (Field3dObjectTaskFunc)ov02_0224D310, (Field3dObjectTaskFunc)ov02_0224D3A4, (Field3dObjectTaskFunc)ov02_0224D3B4, (Field3dObjectTaskFunc)ov02_0224D3E8 };
+const Field3dObjectTaskTemplate ov02_02253914 = { 0x400, 0xF0, (Field3dObjectTaskFunc)ov02_0224D5B4, (Field3dObjectTaskFunc)ov02_0224D648, (Field3dObjectTaskFunc)ov02_0224D658, (Field3dObjectTaskFunc)ov02_0224D670 };
+const Field3dObjectTaskTemplate ov02_0225392C = { 0x400, 0x114, (Field3dObjectTaskFunc)ov02_0224DAA4, (Field3dObjectTaskFunc)ov02_0224DB8C, (Field3dObjectTaskFunc)ov02_0224DB9C, (Field3dObjectTaskFunc)ov02_0224DC58 };
+const Field3dObjectTaskTemplate ov02_02253944 = { 0x400, 0x1CC, (Field3dObjectTaskFunc)ov02_0224D43C, (Field3dObjectTaskFunc)ov02_0224D468, (Field3dObjectTaskFunc)ov02_0224D488, (Field3dObjectTaskFunc)ov02_0224D580 };
+const Field3dObjectTaskTemplate ov02_0225395C = { 0x400, 0xD10, (Field3dObjectTaskFunc)ov02_0224D880, (Field3dObjectTaskFunc)ov02_0224D914, (Field3dObjectTaskFunc)ov02_0224D950, (Field3dObjectTaskFunc)ov02_0224D98C };
+const Field3dObjectTaskTemplate ov02_02253974 = { 0x400, 0xF0, (Field3dObjectTaskFunc)ov02_0224D1E4, (Field3dObjectTaskFunc)ov02_0224D278, (Field3dObjectTaskFunc)ov02_0224D288, (Field3dObjectTaskFunc)ov02_0224D2BC };
+const Field3dObjectTaskTemplate ov02_0225398C = { 0x400, 0xF0, (Field3dObjectTaskFunc)ov02_0224D358, (Field3dObjectTaskFunc)ov02_0224D3A4, (Field3dObjectTaskFunc)ov02_0224D3B4, (Field3dObjectTaskFunc)ov02_0224D3E8 };
+const Field3dObjectTaskTemplate ov02_022539A4 = { 0x400, 0x114, (Field3dObjectTaskFunc)ov02_0224D9C0, (Field3dObjectTaskFunc)ov02_0224DB8C, (Field3dObjectTaskFunc)ov02_0224DB9C, (Field3dObjectTaskFunc)ov02_0224DC58 };
+const Field3dObjectTaskTemplate ov02_022539BC = { 0x400, 0xF0, (Field3dObjectTaskFunc)ov02_0224D22C, (Field3dObjectTaskFunc)ov02_0224D278, (Field3dObjectTaskFunc)ov02_0224D288, (Field3dObjectTaskFunc)ov02_0224D2BC };
+const Field3dObjectTaskTemplate ov02_022539D4 = { 0x400, 0xE9C, (Field3dObjectTaskFunc)ov02_0224DCB0, (Field3dObjectTaskFunc)ov02_0224DD4C, (Field3dObjectTaskFunc)ov02_0224DD8C, (Field3dObjectTaskFunc)ov02_0224DDC8 };
+const Field3dObjectTaskTemplate ov02_022539EC = { 0x400, 0xE9C, (Field3dObjectTaskFunc)ov02_0224DD38, (Field3dObjectTaskFunc)ov02_0224DD4C, (Field3dObjectTaskFunc)ov02_0224DD8C, (Field3dObjectTaskFunc)ov02_0224DDC8 };
+ov02_AnimDispatchFunc const ov02_02253A04[] = { (ov02_AnimDispatchFunc)ov02_0224D2F0, (ov02_AnimDispatchFunc)ov02_0224D41C, (ov02_AnimDispatchFunc)ov02_0224D41C, (ov02_AnimDispatchFunc)ov02_0224D2F0, (ov02_AnimDispatchFunc)ov02_0224DC8C, (ov02_AnimDispatchFunc)ov02_0224DC8C };
+ov02_CreateDispatchFunc const ov02_02253A1C[] = { (ov02_CreateDispatchFunc)ov02_0224D2C8, (ov02_CreateDispatchFunc)ov02_0224D3F4, (ov02_CreateDispatchFunc)ov02_0224D408, (ov02_CreateDispatchFunc)ov02_0224D2DC, (ov02_CreateDispatchFunc)ov02_0224DC64, (ov02_CreateDispatchFunc)ov02_0224DC78 };
+ov02_AnimDispatchFunc const ov02_02253A34[] = { (ov02_AnimDispatchFunc)ov02_0224D2F8, (ov02_AnimDispatchFunc)ov02_0224D424, (ov02_AnimDispatchFunc)ov02_0224D424, (ov02_AnimDispatchFunc)ov02_0224D2F8, (ov02_AnimDispatchFunc)ov02_0224DC94, (ov02_AnimDispatchFunc)ov02_0224DC94 };
+const u8 ov02_02253A4C[] = {
+    0xFF,
+    0x01,
+    0xFF,
+    0x01,
+    0x01,
+    0xFF,
+    0x00,
+    0x00,
+};
+const ov02_FieldList5 ov02_02253A5C = {
+    { 0xB5, 0xB6, 0xB7, 0xB8, 0xB9 }
+};
+const MovementScriptCommand ov02_02253A70[][5] = {
+    { { 0x49, 0x1 }, { 0x30, 0x1 }, { 0x3E, 0x1 }, { 0x4A, 0x1 }, { 0xFE, 0x0 } },
+    { { 0x49, 0x1 }, { 0x31, 0x1 }, { 0x3E, 0x1 }, { 0x4A, 0x1 }, { 0xFE, 0x0 } },
+    { { 0x49, 0x1 }, { 0x32, 0x1 }, { 0x3E, 0x1 }, { 0x4A, 0x1 }, { 0xFE, 0x0 } },
+    { { 0x49, 0x1 }, { 0x33, 0x1 }, { 0x3E, 0x1 }, { 0x4A, 0x1 }, { 0xFE, 0x0 } },
+};
+const u32 ov02_02253AC0[] = {
+    0x00000004,
+    0x00000005,
+    0x00000004,
+    0x00000004,
+    0x00000001,
+    0x00000004,
+    0x00000003,
+    0x00000002,
+    0x00000001,
+    0x00000002,
+    0x00000005,
+    0x00000006,
+    0x00000003,
+    0x00000001,
+    0x00000001,
+    0x00000003,
+    0x00000006,
+    0x00000003,
+    0x00000005,
+    0x00000006,
+    0x00000002,
+    0x00000002,
+    0x00000001,
+    0x00000003,
+    0x00000006,
+};
+const VecFx32 ov02_02253B24 = { 0x00001000, 0x00001000, 0x00001000 };
+const VecFx32 ov02_02253B30 = { 0x00001000, 0x00001000, 0x00001000 };
+VecFx32 ov02_02253D90[] = {
+    { (fx32)0xFFFFB800, 0x0000C000, (fx32)0xFFFFB800 },
+    { 0x00004800,       0x0000C000, (fx32)0xFFFFB800 },
+    { (fx32)0xFFFFB800, 0x0000C000, 0                },
+    { 0x00004800,       0x0000C000, 0                },
+    { (fx32)0xFFFFB800, 0x0000C000, 0x00004800       },
+    { 0x00004800,       0x0000C000, 0x00004800       },
+};
+VecFx32 ov02_02253DD8[] = {
+    { (fx32)0xFFFFB800, 0x0000C000, (fx32)0xFFFFB800 },
+    { 0x00004800,       0x0000C000, (fx32)0xFFFFB800 },
+    { (fx32)0xFFFFB800, 0x0000C000, 0                },
+    { 0x00004800,       0x0000C000, 0                },
+    { (fx32)0xFFFFB800, 0x0000C000, 0x00004800       },
+    { 0x00004800,       0x0000C000, 0x00004800       },
+};
