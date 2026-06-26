@@ -1,5 +1,5 @@
 {
- "generated": "2026-06-22T05:03:48Z",
+ "generated": "2026-06-26T23:39:59Z",
  "weights": {
   "insn_line": 1.0,
   "unknown_callee": 40.0,
@@ -10,52 +10,6 @@
   "special_section": 500.0
  },
  "queue": [
-  {
-   "file": "asm/overlay_01_021FC66C.s",
-   "score": 1397.2,
-   "special_sections": [],
-   "functions": 37,
-   "insn_lines": 770,
-   "data_only": false,
-   "unknown_callees": [
-    "ClearFrameAndWindow2",
-    "Field_PlayerAvatar_ApplyTransitionFlags",
-    "Field_PlayerAvatar_OrrTransitionFlags",
-    "MapObject_AreBitsSetForMovementScriptInit",
-    "MapObject_ClearHeldMovementIfActive",
-    "PlaySE",
-    "ov01_02200400",
-    "ov01_02200540"
-   ],
-   "jumptable_words": 0,
-   "rodata_bytes": 144,
-   "arm_functions": 0,
-   "gated_by": [
-    "ipa-shared-headers"
-   ],
-   "cluster_partners": [
-    {
-     "file": "asm/overlay_01_021F1AFC.s",
-     "shared_symbols": 2
-    },
-    {
-     "file": "asm/unk_02062108.s",
-     "shared_symbols": 2
-    },
-    {
-     "file": "asm/overlay_01_022001E4.s",
-     "shared_symbols": 2
-    },
-    {
-     "file": "asm/render_window.s",
-     "shared_symbols": 1
-    },
-    {
-     "file": "asm/unk_02005D10.s",
-     "shared_symbols": 1
-    }
-   ]
-  },
   {
    "file": "asm/unk_02054648.s",
    "score": 1413.6,
@@ -7944,20 +7898,6 @@
      "shared_symbols": 3
     }
    ]
-  },
-  {
-   "file": "asm/overlay_02_02248728.s",
-   "score": 15254.8,
-   "special_sections": [],
-   "functions": 364,
-   "insn_lines": 15149,
-   "data_only": false,
-   "unknown_callees": [],
-   "jumptable_words": 0,
-   "rodata_bytes": 2116,
-   "arm_functions": 0,
-   "gated_by": [],
-   "cluster_partners": []
   },
   {
    "file": "asm/overlay_45_thumb.s",

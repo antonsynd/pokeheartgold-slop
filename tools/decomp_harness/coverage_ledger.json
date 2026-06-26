@@ -1,6 +1,6 @@
 {
  "summary": {
-  "generated": "2026-06-26T03:27:30Z",
+  "generated": "2026-06-26T23:42:50Z",
   "by_status": {
    "matched": {
     "files": 95,
@@ -15,29 +15,29 @@
     "text_bytes_est": 55750
    },
    "pending": {
-    "files": 152,
-    "functions": 17655,
-    "insn_lines": 879131,
-    "text_bytes_est": 1964912
+    "files": 151,
+    "functions": 17618,
+    "insn_lines": 878361,
+    "text_bytes_est": 1963168
    },
    "upstream": {
-    "files": 378,
+    "files": 379,
     "functions": 0,
     "insn_lines": 0,
     "text_bytes_est": 0
    }
   },
   "function_totals": {
-   "tracked": 20048,
+   "tracked": 20011,
    "matched": 1552,
    "partial_in_blocked": 70,
-   "pending": 17655
+   "pending": 17618
   },
   "blockers": [
    {
     "id": "ipa-shared-headers",
     "blocks_files": 2,
-    "gates_pending_files": 104
+    "gates_pending_files": 103
    },
    {
     "id": "param-copyprop-cmp",
@@ -44516,343 +44516,10 @@
    "source": "retained_asm"
   },
   {
-   "file": "asm/overlay_01_021FC66C.s",
-   "lsf_kind": "asm",
-   "status": "pending",
-   "lines": 1002,
-   "function_count": 37,
-   "text_bytes_est": 1744,
-   "data_only": false,
-   "sections": {
-    "rodata_bytes": 144,
-    "data_bytes": 0,
-    "bss_bytes": 0,
-    "other_bytes": 0
-   },
-   "other_sections": [],
-   "jumptable_words": 0,
-   "imports": [
-    "BattleSetup_Delete",
-    "ClearFrameAndWindow2",
-    "DestroyMsgData",
-    "FieldSystem_GetGearPhoneRingManager",
-    "FieldSystem_PerformFishEncounterCheck",
-    "FieldSystem_StartForcedWildBattle",
-    "FieldSystem_UnkSub108_GetMonMood",
-    "Field_PlayerAvatar_ApplyTransitionFlags",
-    "Field_PlayerAvatar_OrrTransitionFlags",
-    "FollowMon_GetMapObject",
-    "FollowMon_IsActive",
-    "GF_AssertFail",
-    "GameStats_Inc",
-    "GearPhoneRingManager_ResetIfActive",
-    "GetFirstAliveMonInParty_CrashIfNone",
-    "GetMonData",
-    "Heap_AllocAtEnd",
-    "Heap_Free",
-    "IsPrintFinished",
-    "LCRandom",
-    "MapObjectManager_PauseAllMovement",
-    "MapObjectManager_UnpauseAllMovement",
-    "MapObject_AreBitsSetForMovementScriptInit",
-    "MapObject_ClearHeldMovementIfActive",
-    "MapObject_UnpauseMovement",
-    "MessageFormat_Delete",
-    "MessageFormat_New_Custom",
-    "NewMsgDataFromNarc",
-    "PlaySE",
-    "PlayerAvatar_GetMapObject",
-    "PlayerAvatar_GetState",
-    "PlayerAvatar_GetTransitionBits",
-    "ReadMsgDataIntoString",
-    "RemoveWindow",
-    "SaveArray_Party_Get",
-    "Save_GameStats_Get",
-    "Save_PlayerData_GetOptionsAddr",
-    "StringExpandPlaceholders",
-    "String_Delete",
-    "String_New",
-    "SysTask_CreateOnMainQueue",
-    "SysTask_Destroy",
-    "SysTask_GetData",
-    "TaskManager_GetEnvironment",
-    "TaskManager_GetFieldSystem",
-    "_s32_div_f",
-    "gSystem",
-    "memset",
-    "ov01_02200400",
-    "ov01_02200540",
-    "sub_0205B514",
-    "sub_0205B564",
-    "sub_0205B5B4",
-    "sub_0205F328",
-    "sub_02068B48"
-   ],
-   "exports": [
-    "CreateFishingRodTaskEnv",
-    "Task_OverworldFish"
-   ],
-   "functions": [
-    {
-     "name": "CreateFishingRodTaskEnv",
-     "mode": "thumb",
-     "insns": 20,
-     "size_est": 44,
-     "status": "pending"
-    },
-    {
-     "name": "Task_OverworldFish",
-     "mode": "thumb",
-     "insns": 71,
-     "size_est": 176,
-     "status": "pending"
-    },
-    {
-     "name": "ov01_021FC748",
-     "mode": "thumb",
-     "insns": 16,
-     "size_est": 36,
-     "status": "pending"
-    },
-    {
-     "name": "ov01_021FC76C",
-     "mode": "thumb",
-     "insns": 5,
-     "size_est": 12,
-     "status": "pending"
-    },
-    {
-     "name": "ov01_021FC778",
-     "mode": "thumb",
-     "insns": 5,
-     "size_est": 12,
-     "status": "pending"
-    },
-    {
-     "name": "ov01_021FC784",
-     "mode": "thumb",
-     "insns": 8,
-     "size_est": 22,
-     "status": "pending"
-    },
-    {
-     "name": "ov01_021FC798",
-     "mode": "thumb",
-     "insns": 21,
-     "size_est": 46,
-     "status": "pending"
-    },
-    {
-     "name": "ov01_021FC7C4",
-     "mode": "thumb",
-     "insns": 10,
-     "size_est": 24,
-     "status": "pending"
-    },
-    {
-     "name": "ov01_021FC7DC",
-     "mode": "thumb",
-     "insns": 23,
-     "size_est": 56,
-     "status": "pending"
-    },
-    {
-     "name": "ov01_021FC814",
-     "mode": "thumb",
-     "insns": 27,
-     "size_est": 56,
-     "status": "pending"
-    },
-    {
-     "name": "ov01_021FC84C",
-     "mode": "thumb",
-     "insns": 30,
-     "size_est": 64,
-     "status": "pending"
-    },
-    {
-     "name": "ov01_021FC88C",
-     "mode": "thumb",
-     "insns": 41,
-     "size_est": 94,
-     "status": "pending"
-    },
-    {
-     "name": "ov01_021FC8E8",
-     "mode": "thumb",
-     "insns": 22,
-     "size_est": 46,
-     "status": "pending"
-    },
-    {
-     "name": "ov01_021FC914",
-     "mode": "thumb",
-     "insns": 14,
-     "size_est": 32,
-     "status": "pending"
-    },
-    {
-     "name": "ov01_021FC934",
-     "mode": "thumb",
-     "insns": 24,
-     "size_est": 52,
-     "status": "pending"
-    },
-    {
-     "name": "ov01_021FC968",
-     "mode": "thumb",
-     "insns": 12,
-     "size_est": 26,
-     "status": "pending"
-    },
-    {
-     "name": "ov01_021FC980",
-     "mode": "thumb",
-     "insns": 7,
-     "size_est": 14,
-     "status": "pending"
-    },
-    {
-     "name": "ov01_021FC98C",
-     "mode": "thumb",
-     "insns": 15,
-     "size_est": 34,
-     "status": "pending"
-    },
-    {
-     "name": "ov01_021FC9AC",
-     "mode": "thumb",
-     "insns": 20,
-     "size_est": 48,
-     "status": "pending"
-    },
-    {
-     "name": "ov01_021FC9DC",
-     "mode": "thumb",
-     "insns": 7,
-     "size_est": 14,
-     "status": "pending"
-    },
-    {
-     "name": "ov01_021FC9E8",
-     "mode": "thumb",
-     "insns": 31,
-     "size_est": 68,
-     "status": "pending"
-    },
-    {
-     "name": "ov01_021FCA2C",
-     "mode": "thumb",
-     "insns": 21,
-     "size_est": 44,
-     "status": "pending"
-    },
-    {
-     "name": "ov01_021FCA58",
-     "mode": "thumb",
-     "insns": 24,
-     "size_est": 60,
-     "status": "pending"
-    },
-    {
-     "name": "ov01_021FCA94",
-     "mode": "thumb",
-     "insns": 10,
-     "size_est": 20,
-     "status": "pending"
-    },
-    {
-     "name": "ov01_021FCAA8",
-     "mode": "thumb",
-     "insns": 13,
-     "size_est": 28,
-     "status": "pending"
-    },
-    {
-     "name": "ov01_021FCAC4",
-     "mode": "thumb",
-     "insns": 15,
-     "size_est": 36,
-     "status": "pending"
-    },
-    {
-     "name": "ov01_021FCAE8",
-     "mode": "thumb",
-     "insns": 10,
-     "size_est": 20,
-     "status": "pending"
-    },
-    {
-     "name": "ov01_021FCAFC",
-     "mode": "thumb",
-     "insns": 12,
-     "size_est": 24,
-     "status": "pending"
-    },
-    {
-     "name": "ov01_021FCB14",
-     "mode": "thumb",
-     "insns": 25,
-     "size_est": 58,
-     "status": "pending"
-    },
-    {
-     "name": "ov01_021FCB4C",
-     "mode": "thumb",
-     "insns": 12,
-     "size_est": 32,
-     "status": "pending"
-    },
-    {
-     "name": "ov01_021FCB6C",
-     "mode": "thumb",
-     "insns": 16,
-     "size_est": 38,
-     "status": "pending"
-    },
-    {
-     "name": "ov01_021FCB90",
-     "mode": "thumb",
-     "insns": 25,
-     "size_est": 60,
-     "status": "pending"
-    },
-    {
-     "name": "ov01_021FCBCC",
-     "mode": "thumb",
-     "insns": 22,
-     "size_est": 52,
-     "status": "pending"
-    },
-    {
-     "name": "ov01_021FCC00",
-     "mode": "thumb",
-     "insns": 19,
-     "size_est": 40,
-     "status": "pending"
-    },
-    {
-     "name": "ov01_021FCC2C",
-     "mode": "thumb",
-     "insns": 30,
-     "size_est": 72,
-     "status": "pending"
-    },
-    {
-     "name": "ov01_021FCC74",
-     "mode": "thumb",
-     "insns": 28,
-     "size_est": 60,
-     "status": "pending"
-    },
-    {
-     "name": "ov01_021FCCB0",
-     "mode": "thumb",
-     "insns": 59,
-     "size_est": 124,
-     "status": "pending"
-    }
-   ]
+   "file": "asm/field/overlay_01_021FC66C.s",
+   "lsf_kind": "src",
+   "status": "upstream",
+   "functions": []
   },
   {
    "file": "asm/overlay_01_021FCD2C.s",
