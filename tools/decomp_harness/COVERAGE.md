@@ -1,14 +1,14 @@
 # Decomp Coverage Ledger
 
-*Generated 2026-06-27T00:28:00Z by `coverage_ledger.py` — do not hand-edit; regenerate after each decomp.*
+*Generated 2026-06-27T00:29:38Z by `coverage_ledger.py` — do not hand-edit; regenerate after each decomp.*
 
-Tracked functions (files with retained asm): **20011** — matched 1552, pending 17618, plus 70 matched-but-blocked inside failed files.
+Tracked functions (files with retained asm): **20011** — matched 1552, pending 17592, plus 70 matched-but-blocked inside failed files.
 
 | status | files | functions | insn lines | ~text bytes |
 |---|---|---|---|---|
 | matched | 95 | 1552 | 44762 | 98932 |
-| blocked | 46 | 841 | 25418 | 55750 |
-| pending | 151 | 17618 | 878361 | 1963168 |
+| blocked | 47 | 867 | 26390 | 57828 |
+| pending | 150 | 17592 | 877389 | 1961090 |
 | upstream | 379 | 0 | 0 | 0 |
 
 ## Blockers (value-ordered: fix what gates the most)
@@ -20,7 +20,7 @@ Tracked functions (files with retained asm): **20011** — matched 1552, pending
 | objdiff-false-positives | 0 | 0 | RESOLVED. objdiff.py had a critical bug: the byte extraction regex did not match MWCC's ARM Thumb objdump format (packed hex like 'b418' vs expected space-separated 'b4 18'). It extracted 0 bytes for every function, so 0==0 always reported MATCH. 11 decomps accepted via objdiff were not actually byte-matching. Fixed in this session; all 11 non-matching decomps reverted to asm. 2 decomps that truly match (unk_0202DB34, battle_arcade_game_board_data) kept. |
 | ext-data-section-split | 1 | 0 | Data-only files exporting multiple EXTERNAL (.public) const arrays: MWCC -ipa file emits each top-level const as its own .rodata section, and mwldarm orders/aligns them differently than the asm's single packed .rodata, so the linked overlay/module SHA1 fails even though objdiff --summary (per-section) reports a match. Symbols referenced by other TUs must stay non-static, so they cannot be pooled into one section via `static`. |
 
-## Blocked files (46)
+## Blocked files (47)
 
 | file | functions | insn lines | data-only | notes |
 |---|---|---|---|---|
@@ -34,6 +34,7 @@ Tracked functions (files with retained asm): **20011** — matched 1552, pending
 | asm/unk_0200FA24.s | 33 | 787 |  | ipa-shared-headers IPA-blocked: header signature conflicts, IPA CSE caching, loop codegen. C file exists at src/unk_0200FA24.c but cannot b |
 | asm/overlay_80_0223AC24.s | 32 | 1194 |  |   |
 | asm/unk_02034354.s | 30 | 921 |  |  link-battle comm PlayerProfile manager (30 funcs); 21/30 matched WIP; remaining 9 incl sub_02034638 NONMATCHING (int-ret |
+| asm/unk_02054648.s | 26 | 972 |  |   |
 | asm/unk_0206979C.s | 25 | 282 |  | regalloc-reg-number-swap 24/25 NEAR-MISS. NNS_G3d anim/render wrapper; all fns match except sub_020698E8, which has a maxFrame/0-const r3<->r4 re |
 | asm/overlay_01_021F3610.s | 24 | 872 |  |   |
 | asm/overlay_01_021FD41C.s | 24 | 685 |  |  20/24 matched; Camera/3D-effect map-object effect (dependent on overlay_01_021F1348 cluster head via local externs). 20/24 functions ma |
@@ -171,7 +172,7 @@ Tracked functions (files with retained asm): **20011** — matched 1552, pending
 | asm/unk_data_020FD978.s | 0 | 0 | yes | harness |
 | asm/overlay_01_data_02208BFC.s | 0 | 0 | yes | retained_asm |
 
-## Pending files (151)
+## Pending files (150)
 
 | file | functions | insn lines | data-only | notes |
 |---|---|---|---|---|
@@ -297,7 +298,6 @@ Tracked functions (files with retained asm): **20011** — matched 1552, pending
 | asm/overlay_115.s | 31 | 2171 |  |  |
 | asm/unk_0205A44C.s | 28 | 895 |  |  |
 | asm/overlay_01_022001E4.s | 28 | 542 |  |  |
-| asm/unk_02054648.s | 26 | 972 |  |  |
 | asm/overlay_80_02231BF8.s | 26 | 932 |  |  |
 | asm/overlay_80_022324C4.s | 26 | 1973 |  |  |
 | asm/unk_020863F4.s | 24 | 1725 |  |  |

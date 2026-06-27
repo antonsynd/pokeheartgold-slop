@@ -1037,6 +1037,11 @@
       "reason": "ApricornBox save module (39 funcs); 16/39 matched WIP. KEY: solved the non-self-contained-header include-order issue (clang-format off block: global.h/heap.h/pm_string.h before unk_02031B0C.h). Remaining 23 mostly small + 3 complex (C30/DA0/2354). See HANDOFF_unk_02031B0C.md. main.lsf on asm.",
       "functions": 39,
       "matched_wip": 16
+    },
+    {
+      "file": "asm/unk_02054648.s",
+      "result": "deferred",
+      "note": "WIP 21/26 fns byte-match (improved from 10/26). main.lsf on asm; build matches retail. Remaining 5: sub_02054654 (big height selector), sub_02054D10 (45 diffs), + MWCC layout nuances sub_02054874/020548C0/02054954. Resume per src/unk_02054648.c handoff. Deferred from loop to keep progress moving."
     }
   ],
   "in_progress": {
