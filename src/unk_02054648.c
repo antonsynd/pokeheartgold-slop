@@ -1,25 +1,34 @@
-// WIP / DEFERRED (10/26 functions byte-match): terrain/map-attribute/collision
+// WIP / DEFERRED (21/26 functions byte-match): terrain/map-attribute/collision
 // query module over FieldSystem. main.lsf is kept on asm/unk_02054648.o until
 // all 26 match. To resume: flip main.lsf to src/unk_02054648.o and iterate with
 //   python3 tools/decomp_harness/objdiff.py build/heartgold.us/asm/unk_02054648.o \
 //     build/heartgold.us/src/unk_02054648.o --summary
 //
-// MATCHED (10): sub_02054648, sub_02054774, sub_02054790, sub_020547A4(asm),
-//   sub_0205489C, sub_02054940, sub_02054A60, sub_02054AE4, sub_02054C20,
-//   sub_02054DC8(asm), sub_02054E00.
-// STILL OFF — known leads:
-//   * GetMetatileBehavior / sub_020548C0 / sub_020548EC: metatile attr is read
-//     SIGNED (asr) and bit-fields are double-truncated ((u8)((u8)x)); likely a
-//     signed bitfield struct or a (u8)/cast pattern — model the u16 out as a
-//     packed signed struct {s16 behavior:8; :7; flag:1} or replicate the casts.
-//   * sub_020547D8 / sub_02054824: terrain-attr tile lookup (close; SIZE/DIFF).
-//   * sub_02054954 / sub_02054A9C: AABB / fx32 center math (sub_02054A9C is ~18
-//     bytes off — register/struct-copy shape).
+// MATCHED (21): sub_02054648, sub_02054774, sub_02054790, sub_020547A4(asm),
+//   sub_020547D8, sub_02054824, sub_0205489C, sub_020548EC, GetMetatileBehavior,
+//   sub_02054940, sub_020549A8, sub_020549F4, sub_02054A60, sub_02054A9C,
+//   sub_02054AE4, sub_02054B74, sub_02054C20, sub_02054C90, sub_02054DC8(asm),
+//   sub_02054E00, sub_02054E20.
+// Key fixes this pass: metatile getters read the u16 attr through u8 intermediates
+//   (each narrowing assign forces a (u8); GetMetatileBehavior needs `int v=(u8)attr;
+//   return v;` for the double-trunc). sub_02054824 block index = `coord / 32`
+//   (signed-div idiom), not a hand-rolled `(x+(x>>31))>>5`. sub_02054A9C AABB is the
+//   && form (one shared `return 0`). sub_02054874/D8 cache unk2C in a local; D8
+//   sentinel is 0xFF (movs #255) not 0xFFFF. sub_02054B74/C90 dropped a redundant
+//   `if(count==0)continue;` (for-loop guard already covers it); sub_02054C90 has only
+//   5 params (no bounds — caller in overlay_02 confirms). 549A8/F4: `if(elev==0){..}
+//   return 1;` (early-return at end). E00/E20: declare loop counter before the table
+//   pointer (counter -> lower reg).
+// STILL OFF (5) — known leads:
 //   * sub_02054654: the big mode-aware height selector (~32 bytes off; the
-//     mesh_height stack slot + ov01_021FAE50 5/6-arg stack layout).
-//   * sub_02054B74 / sub_02054C90 / sub_02054D10: grid double-loops (model on
-//     src/unk_02054E00.c idiom; walking pointers + u8 inner counters).
-//   * sub_020549A8 / sub_020549F4 / sub_02054874 / sub_02054E20: wrappers.
+//     mesh_height stack slot + ov01_021FAE50 5/6-arg stack layout). Hardest.
+//   * sub_02054D10: 45 diffs. arr@sp+8 / outerI@sp+12 slot order set via decl reorder
+//     (outerI before arr) but more slot/loop-shape work remains.
+//   * sub_02054874 / sub_020548C0 / sub_02054954: small (2-6 byte) MWCC block-layout
+//     fragility. 874: NULL-return wants to be inline / F6600 at end (both `if(call)..`
+//     and `if(!call)..` forms put NULL at end). 548C0: needs call==0 and flag!=1 to
+//     SHARE one `return 0` block; MWCC keeps inlining the call==0 fail. 954: wants
+//     `bge`/`ble` branch order; mine emits `blt`/`bgt`.
 // FieldSystem (field_system.h, FROZEN): unk2C@0x2c, mapMatrix@0x30,
 //   terrainAttributes@0x5c, unk60@0x60 (typed u32 but is a 2-fn vtable, cast to
 //   FieldTileProvider*), 0x98 is filler (read via cast). Provider slot 0 is a
@@ -73,7 +82,7 @@ static BOOL sub_02054A9C(void *obj, s32 *bounds, VecFx32 *delta);
 BOOL sub_02054AE4(FieldSystem *fieldSystem, int targetType, s32 *bounds, int *outObj);
 BOOL sub_02054B74(FieldSystem *fieldSystem, u32 *values, u32 count, s32 *bounds, int *outObj, int *outVal);
 BOOL sub_02054C20(FieldSystem *fieldSystem, int targetType, int *outObj, void **outHandle);
-BOOL sub_02054C90(FieldSystem *fieldSystem, u32 *values, u32 count, s32 *bounds, int *outObj, int *outVal);
+BOOL sub_02054C90(FieldSystem *fieldSystem, u32 *values, u32 count, int *outObj, int *outVal);
 int *sub_02054D10(FieldSystem *fieldSystem, enum HeapID heapId, int capacity, s32 *bounds, u32 fillValue);
 void sub_02054DC8(int idx, int width, VecFx32 *out);
 static BOOL sub_02054E00(u16 behavior);
@@ -190,12 +199,13 @@ _020547D2:
 // clang-format on
 
 static BOOL sub_020547D8(FieldSystem *fieldSystem, int x, int z, u16 *out) {
+    FieldSystemUnkSub2C *unk2C = fieldSystem->unk2C;
     u8 tileIdx;
-    if (!ov01_021F654C(fieldSystem->unk2C, x, z, &tileIdx)) {
-        *out = 0xFFFF;
+    if (!ov01_021F654C(unk2C, x, z, &tileIdx)) {
+        *out = 0xFF;
         return FALSE;
     }
-    const u16 *tileData = (const u16 *)ov01_021F65E4(fieldSystem->unk2C, tileIdx);
+    const u16 *tileData = (const u16 *)ov01_021F65E4(unk2C, tileIdx);
     int col = x % 32;
     int row = z % 32;
     int idx = col + row * 32;
@@ -205,8 +215,8 @@ static BOOL sub_020547D8(FieldSystem *fieldSystem, int x, int z, u16 *out) {
 
 static BOOL sub_02054824(FieldSystem *fieldSystem, int x, int z, u16 *out) {
     u8 mapWidth = MapMatrix_GetWidth(fieldSystem->mapMatrix);
-    int block_col = (x + (x >> 31)) >> 5;
-    int block_row = (z + (z >> 31)) >> 5;
+    int block_col = x / 32;
+    int block_row = z / 32;
     int matrix_idx = block_col + block_row * mapWidth;
     const u16 *tileData = TerrainAttributes_Get(matrix_idx, fieldSystem->terrainAttributes);
     int col = x % 32;
@@ -217,11 +227,12 @@ static BOOL sub_02054824(FieldSystem *fieldSystem, int x, int z, u16 *out) {
 }
 
 void *sub_02054874(FieldSystem *fieldSystem, int x, int z) {
+    FieldSystemUnkSub2C *unk2C = fieldSystem->unk2C;
     u8 tileIdx;
-    if (!ov01_021F654C(fieldSystem->unk2C, x, z, &tileIdx)) {
-        return NULL;
+    if (ov01_021F654C(unk2C, x, z, &tileIdx)) {
+        return ov01_021F6600(unk2C, tileIdx);
     }
-    return ov01_021F6600(fieldSystem->unk2C, tileIdx);
+    return NULL;
 }
 
 void sub_0205489C(u32 *a0, int a1) {
@@ -239,7 +250,12 @@ BOOL sub_020548C0(FieldSystem *fieldSystem, int x, int z) {
     if (!((FieldTileProvider *)fieldSystem->unk60)->unk4(fieldSystem, x, z, &attr)) {
         return FALSE;
     }
-    return (attr >> 15) & 1;
+    u8 v = attr >> 15;
+    u8 flag = v & 1;
+    if (flag == 1) {
+        return TRUE;
+    }
+    return FALSE;
 }
 
 u8 sub_020548EC(FieldSystem *fieldSystem, int x, int z) {
@@ -247,7 +263,8 @@ u8 sub_020548EC(FieldSystem *fieldSystem, int x, int z) {
     if (!((FieldTileProvider *)fieldSystem->unk60)->unk4(fieldSystem, x, z, &attr)) {
         return 0;
     }
-    return (u8)((attr >> 8) & 0x7F);
+    u8 v = attr >> 8;
+    return v & 0x7F;
 }
 
 u8 GetMetatileBehavior(FieldSystem *fieldSystem, int x, int z) {
@@ -255,7 +272,8 @@ u8 GetMetatileBehavior(FieldSystem *fieldSystem, int x, int z) {
     if (!((FieldTileProvider *)fieldSystem->unk60)->unk4(fieldSystem, x, z, &attr)) {
         return 0xFF;
     }
-    return (u8)attr;
+    int v = (u8)attr;
+    return v;
 }
 
 fx32 sub_02054940(FieldSystem *fieldSystem, fx32 y, fx32 x, fx32 z, u8 *outSelector) {
@@ -280,9 +298,10 @@ static int sub_02054954(FieldSystem *fieldSystem, VecFx32 *playerPos, int xInFro
         result = -1;
     }
     if (high - low < 0x14000) {
-        return 0;
+        result = 0;
+    } else {
+        GF_ASSERT(result != 0);
     }
-    GF_ASSERT(result != 0);
     return result;
 }
 
@@ -292,14 +311,14 @@ BOOL sub_020549A8(FieldSystem *fieldSystem, VecFx32 *playerPos, int xInFront, in
     if (a4 != 0) {
         *(u8 *)a4 = (u8)elev;
     }
-    if (elev != 0) {
-        return 1;
+    if (elev == 0) {
+        BOOL attr = sub_020548C0(fieldSystem, xInFront, yInFront);
+        if (!attr && selector == 2) {
+            GetMetatileBehavior(fieldSystem, xInFront, yInFront);
+        }
+        return attr;
     }
-    BOOL attr = sub_020548C0(fieldSystem, xInFront, yInFront);
-    if (!attr && selector == 2) {
-        GetMetatileBehavior(fieldSystem, xInFront, yInFront);
-    }
-    return attr;
+    return 1;
 }
 
 u32 sub_020549F4(FieldSystem *fieldSystem, VecFx32 *playerPos, u32 x, u32 y, u32 *a4) {
@@ -308,18 +327,18 @@ u32 sub_020549F4(FieldSystem *fieldSystem, VecFx32 *playerPos, u32 x, u32 y, u32
     if (a4 != NULL) {
         *(u8 *)a4 = (u8)elev;
     }
-    if (elev != 0) {
-        return 1;
-    }
-    u32 result;
-    if (sub_02064938(fieldSystem, x, y, (u32)playerPos->y, (u32)&result)) {
+    if (elev == 0) {
+        u32 result;
+        if (!sub_02064938(fieldSystem, x, y, (u32)playerPos->y, (u32)&result)) {
+            result = sub_020548C0(fieldSystem, (int)x, (int)y);
+            if (!result && selector == 2) {
+                GetMetatileBehavior(fieldSystem, (int)x, (int)y);
+            }
+            return result;
+        }
         return result;
     }
-    result = sub_020548C0(fieldSystem, (int)x, (int)y);
-    if (!result && selector == 2) {
-        GetMetatileBehavior(fieldSystem, (int)x, (int)y);
-    }
-    return result;
+    return 1;
 }
 
 void sub_02054A60(int x, int z, int dx, int dz, int hw, int hh, s32 *out) {
@@ -339,19 +358,10 @@ static BOOL sub_02054A9C(void *obj, s32 *bounds, VecFx32 *delta) {
     ov01_021F3B0C(&local, obj);
     local.x += delta->x;
     local.z += delta->z;
-    if (bounds[0] > local.x) {
-        return FALSE;
+    if (bounds[0] <= local.x && local.x <= bounds[2] && bounds[1] <= local.z && local.z <= bounds[3]) {
+        return TRUE;
     }
-    if (bounds[2] < local.x) {
-        return FALSE;
-    }
-    if (bounds[1] > local.z) {
-        return FALSE;
-    }
-    if (bounds[3] < local.z) {
-        return FALSE;
-    }
-    return TRUE;
+    return FALSE;
 }
 
 BOOL sub_02054AE4(FieldSystem *fieldSystem, int targetType, s32 *bounds, int *outObj) {
@@ -398,9 +408,6 @@ BOOL sub_02054B74(FieldSystem *fieldSystem, u32 *values, u32 count, s32 *bounds,
                 if (sub_02054A9C((void *)obj, bounds, &tileCenter)) {
                     int val = ov01_021F3B34(obj);
                     u8 k;
-                    if (count == 0) {
-                        continue;
-                    }
                     for (k = 0; k < count; k++) {
                         if (val == (int)values[k]) {
                             if (outObj != NULL) {
@@ -444,7 +451,7 @@ BOOL sub_02054C20(FieldSystem *fieldSystem, int targetType, int *outObj, void **
     return FALSE;
 }
 
-BOOL sub_02054C90(FieldSystem *fieldSystem, u32 *values, u32 count, s32 *bounds, int *outObj, int *outVal) {
+BOOL sub_02054C90(FieldSystem *fieldSystem, u32 *values, u32 count, int *outObj, int *outVal) {
     u8 outerI;
     for (outerI = 0; outerI < 4; outerI++) {
         s32 slotCount;
@@ -455,9 +462,6 @@ BOOL sub_02054C90(FieldSystem *fieldSystem, u32 *values, u32 count, s32 *bounds,
                 int obj = ov01_021F3B44(slotCount, innerJ);
                 int val = ov01_021F3B34(obj);
                 u8 k;
-                if (count == 0) {
-                    continue;
-                }
                 for (k = 0; k < count; k++) {
                     if (val == (int)values[k]) {
                         if (outObj != NULL) {
@@ -476,13 +480,13 @@ BOOL sub_02054C90(FieldSystem *fieldSystem, u32 *values, u32 count, s32 *bounds,
 }
 
 int *sub_02054D10(FieldSystem *fieldSystem, enum HeapID heapId, int capacity, s32 *bounds, u32 fillValue) {
+    u8 outerI;
     int *arr = (int *)Heap_AllocAtEnd(heapId, capacity * 4);
     int i;
     u8 count = 0;
     for (i = 0; i < capacity; i++) {
         arr[i] = (int)fillValue;
     }
-    u8 outerI;
     for (outerI = 0; outerI < 4; outerI++) {
         s32 slotCount;
         ov01_021F630C(outerI, fieldSystem->unk2C, &slotCount);
@@ -542,8 +546,8 @@ asm void sub_02054DC8(int idx, int width, VecFx32 *out) {
 // clang-format on
 
 static BOOL sub_02054E00(u16 behavior) {
-    const u16 *p = sBehaviors1;
     int i;
+    const u16 *p = sBehaviors1;
     for (i = 0; i < 4; i++, p++) {
         if (behavior == *p) {
             return TRUE;
@@ -553,8 +557,8 @@ static BOOL sub_02054E00(u16 behavior) {
 }
 
 BOOL sub_02054E20(u16 behavior) {
-    const u16 *p;
     int i;
+    const u16 *p;
     if (!sub_02054E00(behavior)) {
         return FALSE;
     }
