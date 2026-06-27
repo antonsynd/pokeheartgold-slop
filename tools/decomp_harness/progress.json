@@ -1047,6 +1047,11 @@
       "file": "asm/overlay_114.s",
       "result": "deferred",
       "note": "Large/complex: 2 ~270-line jump-table transition state machines + 12 undeclared multi-arg helpers (stack/fx32 args) + 2 word-array data structs w/ embedded sub-structs + HW blend regs. Full pre-analysis (both state machines, helper sigs, struct offsets) in knowledge.json. Focused-session target; est 15-25 build cycles."
+    },
+    {
+      "file": "asm/unk_0205A44C.s",
+      "result": "deferred",
+      "note": "Mail/easy-chat buffering: 28 fns + ~24 rodata lookup tables + 4 jump tables + 13 undeclared cluster helpers + large 2-struct (ctx+0x80->work) layout. Mechanical but detailed; full pre-analysis in knowledge.json. Focused-session target; write directly (drafter subagent looped without producing output)."
     }
   ],
   "in_progress": {
