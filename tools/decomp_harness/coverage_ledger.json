@@ -1,6 +1,6 @@
 {
  "summary": {
-  "generated": "2026-06-27T00:29:38Z",
+  "generated": "2026-06-27T00:36:53Z",
   "by_status": {
    "matched": {
     "files": 95,
@@ -9,16 +9,16 @@
     "text_bytes_est": 98932
    },
    "blocked": {
-    "files": 47,
-    "functions": 867,
-    "insn_lines": 26390,
-    "text_bytes_est": 57828
+    "files": 48,
+    "functions": 869,
+    "insn_lines": 26932,
+    "text_bytes_est": 59034
    },
    "pending": {
-    "files": 150,
-    "functions": 17592,
-    "insn_lines": 877389,
-    "text_bytes_est": 1961090
+    "files": 149,
+    "functions": 17590,
+    "insn_lines": 876847,
+    "text_bytes_est": 1959884
    },
    "upstream": {
     "files": 379,
@@ -31,13 +31,13 @@
    "tracked": 20011,
    "matched": 1552,
    "partial_in_blocked": 70,
-   "pending": 17592
+   "pending": 17590
   },
   "blockers": [
    {
     "id": "ipa-shared-headers",
     "blocks_files": 2,
-    "gates_pending_files": 103
+    "gates_pending_files": 102
    },
    {
     "id": "param-copyprop-cmp",
@@ -174498,7 +174498,7 @@
   {
    "file": "asm/overlay_114.s",
    "lsf_kind": "asm",
-   "status": "pending",
+   "status": "blocked",
    "lines": 601,
    "function_count": 2,
    "text_bytes_est": 1206,
@@ -174551,16 +174551,20 @@
      "mode": "thumb",
      "insns": 263,
      "size_est": 588,
-     "status": "pending"
+     "status": "blocked"
     },
     {
      "name": "ov114_0225F280",
      "mode": "thumb",
      "insns": 279,
      "size_est": 618,
-     "status": "pending"
+     "status": "blocked"
     }
-   ]
+   ],
+   "blocked_reason": "",
+   "attempts": null,
+   "blocker_id": null,
+   "kept_c": false
   },
   {
    "file": "asm/overlay_115.s",
