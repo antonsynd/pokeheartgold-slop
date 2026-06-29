@@ -1,6 +1,6 @@
 {
  "summary": {
-  "generated": "2026-06-29T19:53:13Z",
+  "generated": "2026-06-29T20:00:15Z",
   "by_status": {
    "matched": {
     "files": 96,
@@ -9,16 +9,16 @@
     "text_bytes_est": 102054
    },
    "blocked": {
-    "files": 56,
-    "functions": 1013,
-    "insn_lines": 33437,
-    "text_bytes_est": 73422
+    "files": 57,
+    "functions": 1054,
+    "insn_lines": 35115,
+    "text_bytes_est": 77250
    },
    "pending": {
-    "files": 137,
-    "functions": 17294,
-    "insn_lines": 867027,
-    "text_bytes_est": 1938132
+    "files": 136,
+    "functions": 17253,
+    "insn_lines": 865349,
+    "text_bytes_est": 1934304
    },
    "upstream": {
     "files": 382,
@@ -31,7 +31,7 @@
    "tracked": 19930,
    "matched": 1623,
    "partial_in_blocked": 70,
-   "pending": 17294
+   "pending": 17253
   },
   "blockers": [
    {
@@ -48134,7 +48134,7 @@
   {
    "file": "asm/overlay_02_02245B80.s",
    "lsf_kind": "asm",
-   "status": "pending",
+   "status": "blocked",
    "lines": 1982,
    "function_count": 41,
    "text_bytes_est": 3828,
@@ -48155,289 +48155,293 @@
      "mode": "thumb",
      "insns": 11,
      "size_est": 28,
-     "status": "pending"
+     "status": "blocked"
     },
     {
      "name": "ov02_02245B9C",
      "mode": "thumb",
      "insns": 19,
      "size_est": 44,
-     "status": "pending"
+     "status": "blocked"
     },
     {
      "name": "ov02_02245BC8",
      "mode": "thumb",
      "insns": 146,
      "size_est": 324,
-     "status": "pending"
+     "status": "blocked"
     },
     {
      "name": "ov02_02245D18",
      "mode": "thumb",
      "insns": 67,
      "size_est": 152,
-     "status": "pending"
+     "status": "blocked"
     },
     {
      "name": "ov02_02245DB0",
      "mode": "thumb",
      "insns": 20,
      "size_est": 48,
-     "status": "pending"
+     "status": "blocked"
     },
     {
      "name": "ov02_02245DE0",
      "mode": "thumb",
      "insns": 16,
      "size_est": 38,
-     "status": "pending"
+     "status": "blocked"
     },
     {
      "name": "ov02_02245E04",
      "mode": "thumb",
      "insns": 43,
      "size_est": 100,
-     "status": "pending"
+     "status": "blocked"
     },
     {
      "name": "ov02_02245E68",
      "mode": "thumb",
      "insns": 51,
      "size_est": 114,
-     "status": "pending"
+     "status": "blocked"
     },
     {
      "name": "ov02_02245ED8",
      "mode": "thumb",
      "insns": 117,
      "size_est": 248,
-     "status": "pending"
+     "status": "blocked"
     },
     {
      "name": "ov02_02245FD0",
      "mode": "thumb",
      "insns": 53,
      "size_est": 120,
-     "status": "pending"
+     "status": "blocked"
     },
     {
      "name": "ov02_02246048",
      "mode": "thumb",
      "insns": 44,
      "size_est": 102,
-     "status": "pending"
+     "status": "blocked"
     },
     {
      "name": "ov02_022460AC",
      "mode": "thumb",
      "insns": 13,
      "size_est": 32,
-     "status": "pending"
+     "status": "blocked"
     },
     {
      "name": "ov02_022460CC",
      "mode": "thumb",
      "insns": 21,
      "size_est": 48,
-     "status": "pending"
+     "status": "blocked"
     },
     {
      "name": "ov02_022460FC",
      "mode": "thumb",
      "insns": 63,
      "size_est": 142,
-     "status": "pending"
+     "status": "blocked"
     },
     {
      "name": "ShowLegendaryWing",
      "mode": "thumb",
      "insns": 13,
      "size_est": 32,
-     "status": "pending"
+     "status": "blocked"
     },
     {
      "name": "ov02_022461AC",
      "mode": "thumb",
      "insns": 21,
      "size_est": 48,
-     "status": "pending"
+     "status": "blocked"
     },
     {
      "name": "ov02_022461DC",
      "mode": "thumb",
      "insns": 105,
      "size_est": 240,
-     "status": "pending"
+     "status": "blocked"
     },
     {
      "name": "ov02_022462DC",
      "mode": "thumb",
      "insns": 6,
      "size_est": 12,
-     "status": "pending"
+     "status": "blocked"
     },
     {
      "name": "ov02_022462E8",
      "mode": "thumb",
      "insns": 11,
      "size_est": 28,
-     "status": "pending"
+     "status": "blocked"
     },
     {
      "name": "ov02_02246304",
      "mode": "thumb",
      "insns": 19,
      "size_est": 44,
-     "status": "pending"
+     "status": "blocked"
     },
     {
      "name": "ov02_02246330",
      "mode": "thumb",
      "insns": 45,
      "size_est": 104,
-     "status": "pending"
+     "status": "blocked"
     },
     {
      "name": "ov02_02246398",
      "mode": "thumb",
      "insns": 75,
      "size_est": 172,
-     "status": "pending"
+     "status": "blocked"
     },
     {
      "name": "ov02_02246444",
      "mode": "thumb",
      "insns": 32,
      "size_est": 76,
-     "status": "pending"
+     "status": "blocked"
     },
     {
      "name": "ov02_02246490",
      "mode": "thumb",
      "insns": 61,
      "size_est": 124,
-     "status": "pending"
+     "status": "blocked"
     },
     {
      "name": "ov02_0224650C",
      "mode": "thumb",
      "insns": 18,
      "size_est": 42,
-     "status": "pending"
+     "status": "blocked"
     },
     {
      "name": "ov02_02246534",
      "mode": "thumb",
      "insns": 8,
      "size_est": 20,
-     "status": "pending"
+     "status": "blocked"
     },
     {
      "name": "ov02_02246548",
      "mode": "thumb",
      "insns": 94,
      "size_est": 228,
-     "status": "pending"
+     "status": "blocked"
     },
     {
      "name": "ov02_0224662C",
      "mode": "thumb",
      "insns": 8,
      "size_est": 16,
-     "status": "pending"
+     "status": "blocked"
     },
     {
      "name": "ov02_0224663C",
      "mode": "thumb",
      "insns": 100,
      "size_est": 218,
-     "status": "pending"
+     "status": "blocked"
     },
     {
      "name": "ov02_02246714",
      "mode": "thumb",
      "insns": 21,
      "size_est": 48,
-     "status": "pending"
+     "status": "blocked"
     },
     {
      "name": "ov02_02246744",
      "mode": "thumb",
      "insns": 38,
      "size_est": 86,
-     "status": "pending"
+     "status": "blocked"
     },
     {
      "name": "ov02_02246798",
      "mode": "thumb",
      "insns": 18,
      "size_est": 46,
-     "status": "pending"
+     "status": "blocked"
     },
     {
      "name": "OpenAlphHiddenRoom",
      "mode": "thumb",
      "insns": 15,
      "size_est": 36,
-     "status": "pending"
+     "status": "blocked"
     },
     {
      "name": "ov02_022467E8",
      "mode": "thumb",
      "insns": 21,
      "size_est": 48,
-     "status": "pending"
+     "status": "blocked"
     },
     {
      "name": "ov02_02246818",
      "mode": "thumb",
      "insns": 35,
      "size_est": 84,
-     "status": "pending"
+     "status": "blocked"
     },
     {
      "name": "ov02_0224686C",
      "mode": "thumb",
      "insns": 106,
      "size_est": 246,
-     "status": "pending"
+     "status": "blocked"
     },
     {
      "name": "ov02_02246964",
      "mode": "thumb",
      "insns": 25,
      "size_est": 62,
-     "status": "pending"
+     "status": "blocked"
     },
     {
      "name": "ov02_022469A0",
      "mode": "thumb",
      "insns": 10,
      "size_est": 20,
-     "status": "pending"
+     "status": "blocked"
     },
     {
      "name": "ov02_022469B4",
      "mode": "thumb",
      "insns": 15,
      "size_est": 36,
-     "status": "pending"
+     "status": "blocked"
     },
     {
      "name": "ov02_022469D8",
      "mode": "thumb",
      "insns": 40,
      "size_est": 92,
-     "status": "pending"
+     "status": "blocked"
     },
     {
      "name": "ov02_02246A34",
      "mode": "thumb",
      "insns": 34,
      "size_est": 80,
-     "status": "pending"
+     "status": "blocked"
     }
-   ]
+   ],
+   "blocked_reason": "",
+   "attempts": 0,
+   "blocker_id": null,
+   "kept_c": false
   },
   {
    "file": "asm/field/encounter_check.s",

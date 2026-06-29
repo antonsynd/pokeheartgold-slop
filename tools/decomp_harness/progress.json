@@ -1140,6 +1140,14 @@
       "attempts": 1,
       "result": "deferred_wip",
       "note": "15/19 functions byte-match (WIP, compiles). Battle Frontier script commands FrtCmd_092..107 + 3 helpers. main.lsf kept on asm so ROM matches. Hand-written (drafter fails on 900+ line files). Frontier-script family idiom: ctx->frontierSystem->unk0 handle, FrontierScript_ReadVar/ReadVarPtr args, Frontier_GetData = large raw-offset struct. Remaining 4: FrtCmd_095/098 (+4B register-reuse scheduling tie in the 0x24 launch-arg struct build - asm reuses r3=0 for p[6] while staging a3=2 late), ov80_0222FC08 (1B branch-polarity tie on cmp #0xff), FrtCmd_103 (+56B 42-case dispatcher - simple cases done, cases 17/18/34/39 mon-count loops are semantic guesses needing re-derivation; verify jump-table case order + data offsets, 0x3F0 trainer sub-structs stride 0x38). See WIP header."
+    },
+    {
+      "file": "asm/overlay_02_02245B80.s",
+      "lines": 1982,
+      "functions": 41,
+      "attempts": 0,
+      "result": "deferred_analysis",
+      "note": "ANALYSIS-ONLY defer (no code) \u2014 LARGEST remaining file (1982 lines, 41 fns), all static. overlay_02 battle cluster (sibling of the 364-fn overlay_02_02248728). TaskManager-driven animated battle-effect/scene module: heavy TaskManager_Call/GetFieldSystem/GetEnvironment state machines, BG/graphics (SetBgPriority, GfGfx_EngineATogglePlanes), Heap_Alloc/Free, PlaySE, and SOFT-FLOAT math (_fflt/_fadd/_fsub/_ffix in ~6 fns -> those must stay C, can't NONMATCHING). 102B rodata (small byte tables ov02_0225321C..). 0 unknown callees (all headered). Needs a dedicated focused session (drafter can't handle 1900+ lines; the soft-float coloring fns are the hard core). Triage-easiest of the remaining queue, which is now ALL large files (47/68/34/39/44-fn)."
     }
   ],
   "in_progress": {
