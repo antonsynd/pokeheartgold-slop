@@ -1,6 +1,6 @@
 {
  "summary": {
-  "generated": "2026-06-29T19:14:25Z",
+  "generated": "2026-06-29T19:23:23Z",
   "by_status": {
    "matched": {
     "files": 96,
@@ -9,16 +9,16 @@
     "text_bytes_est": 102054
    },
    "blocked": {
-    "files": 54,
-    "functions": 973,
-    "insn_lines": 31396,
-    "text_bytes_est": 68964
+    "files": 55,
+    "functions": 994,
+    "insn_lines": 32686,
+    "text_bytes_est": 71726
    },
    "pending": {
-    "files": 139,
-    "functions": 17334,
-    "insn_lines": 869068,
-    "text_bytes_est": 1942590
+    "files": 138,
+    "functions": 17313,
+    "insn_lines": 867778,
+    "text_bytes_est": 1939828
    },
    "upstream": {
     "files": 382,
@@ -31,13 +31,13 @@
    "tracked": 19930,
    "matched": 1623,
    "partial_in_blocked": 70,
-   "pending": 17334
+   "pending": 17313
   },
   "blockers": [
    {
     "id": "ipa-shared-headers",
     "blocks_files": 2,
-    "gates_pending_files": 98
+    "gates_pending_files": 97
    },
    {
     "id": "param-copyprop-cmp",
@@ -66872,7 +66872,7 @@
   {
    "file": "asm/overlay_12_0226ADE0.s",
    "lsf_kind": "asm",
-   "status": "pending",
+   "status": "blocked",
    "lines": 1516,
    "function_count": 21,
    "text_bytes_est": 2762,
@@ -66931,149 +66931,153 @@
      "mode": "thumb",
      "insns": 65,
      "size_est": 142,
-     "status": "pending"
+     "status": "blocked"
     },
     {
      "name": "ov12_0226AE78",
      "mode": "thumb",
      "insns": 19,
      "size_est": 46,
-     "status": "pending"
+     "status": "blocked"
     },
     {
      "name": "ov12_0226AEAC",
      "mode": "thumb",
      "insns": 12,
      "size_est": 28,
-     "status": "pending"
+     "status": "blocked"
     },
     {
      "name": "ov12_0226AEC8",
      "mode": "thumb",
      "insns": 10,
      "size_est": 24,
-     "status": "pending"
+     "status": "blocked"
     },
     {
      "name": "ov12_0226AEE0",
      "mode": "thumb",
      "insns": 48,
      "size_est": 104,
-     "status": "pending"
+     "status": "blocked"
     },
     {
      "name": "ov12_0226AF48",
      "mode": "thumb",
      "insns": 18,
      "size_est": 36,
-     "status": "pending"
+     "status": "blocked"
     },
     {
      "name": "ov12_0226AF6C",
      "mode": "thumb",
      "insns": 25,
      "size_est": 56,
-     "status": "pending"
+     "status": "blocked"
     },
     {
      "name": "ov12_0226AFA4",
      "mode": "thumb",
      "insns": 18,
      "size_est": 36,
-     "status": "pending"
+     "status": "blocked"
     },
     {
      "name": "ov12_0226AFC8",
      "mode": "thumb",
      "insns": 16,
      "size_est": 38,
-     "status": "pending"
+     "status": "blocked"
     },
     {
      "name": "ov12_0226AFEC",
      "mode": "thumb",
      "insns": 72,
      "size_est": 164,
-     "status": "pending"
+     "status": "blocked"
     },
     {
      "name": "ov12_0226B098",
      "mode": "thumb",
      "insns": 81,
      "size_est": 170,
-     "status": "pending"
+     "status": "blocked"
     },
     {
      "name": "ov12_0226B144",
      "mode": "thumb",
      "insns": 28,
      "size_est": 60,
-     "status": "pending"
+     "status": "blocked"
     },
     {
      "name": "ov12_0226B180",
      "mode": "thumb",
      "insns": 131,
      "size_est": 278,
-     "status": "pending"
+     "status": "blocked"
     },
     {
      "name": "ov12_0226B29C",
      "mode": "thumb",
      "insns": 121,
      "size_est": 262,
-     "status": "pending"
+     "status": "blocked"
     },
     {
      "name": "ov12_0226B3B0",
      "mode": "thumb",
      "insns": 235,
      "size_est": 498,
-     "status": "pending"
+     "status": "blocked"
     },
     {
      "name": "ov12_0226B5B0",
      "mode": "thumb",
      "insns": 108,
      "size_est": 226,
-     "status": "pending"
+     "status": "blocked"
     },
     {
      "name": "ov12_0226B694",
      "mode": "thumb",
      "insns": 45,
      "size_est": 96,
-     "status": "pending"
+     "status": "blocked"
     },
     {
      "name": "ov12_0226B6F8",
      "mode": "thumb",
      "insns": 144,
      "size_est": 304,
-     "status": "pending"
+     "status": "blocked"
     },
     {
      "name": "ov12_0226B82C",
      "mode": "thumb",
      "insns": 41,
      "size_est": 88,
-     "status": "pending"
+     "status": "blocked"
     },
     {
      "name": "ov12_0226B884",
      "mode": "thumb",
      "insns": 30,
      "size_est": 60,
-     "status": "pending"
+     "status": "blocked"
     },
     {
      "name": "ov12_0226B8C4",
      "mode": "thumb",
      "insns": 23,
      "size_est": 46,
-     "status": "pending"
+     "status": "blocked"
     }
-   ]
+   ],
+   "blocked_reason": "",
+   "attempts": 0,
+   "blocker_id": null,
+   "kept_c": false
   },
   {
    "file": "asm/battle/battle_cursor.s",

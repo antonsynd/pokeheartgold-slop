@@ -1124,6 +1124,14 @@
       "attempts": 1,
       "result": "deferred_wip",
       "note": "11/20 functions byte-match (WIP, compiles). Window/blend MMIO + sin/cos gradient-effect module (cluster of unk_0201010C). main.lsf kept on asm so ROM matches. All structs derived (manager UnkStruct_02012DD8, 0x4C effect struct, input descriptor, 4 SysTask slot structs); register macros confirmed (reg_G2_WININ/WINOUT/WIN0H/V, reg_GX_DISPCNT, reg_G2S_DB_*). Matching: DD8, E10, 13220, 132A8, 13424, 13440, 13468, 134BC, 134D0, 134EC, 13504. Remaining 9: MMIO codegen ties (132E8/1333C read a reg byte via a STACK local that MWCC inlines; 131F4 DISPCNT 4B operand-schedule tie; 13364 WIN0H/V 56B + 13488 4B slot/strh modeling) + math (13004 sin/cos gradient interp 8B, E6C big-init 12B incl the sub_02010F84 10-arg call, F54 4B, 131AC strh-loop 4B). Drafter failed (output-token limit on this large file) -> hand-written first pass. See WIP header. Resume as a targeted session."
+    },
+    {
+      "file": "asm/overlay_12_0226ADE0.s",
+      "lines": 1516,
+      "functions": 21,
+      "attempts": 0,
+      "result": "deferred_analysis",
+      "note": "ANALYSIS-ONLY defer (no code yet) \u2014 large battle sprite/animation manager, drafter fails on 1500+ line files. 7 exports (ov12_0226ADE0 loader, AE78 unloader, AEE0 init, AF48/AFA4 done-predicates, AF6C update, AFC8 delete) + 14 statics. STRUCT: work = 0x140 alloc (ov12_0226AEAC Heap_Alloc(5<<6) + MI_CpuFill8 zero); layout = 0x1C header (sprite ptr @+0, flag @+4) + 6 sub-slots of 0x30 each starting @+0x1C (slot: sprite ptr @+0, flag @+4). Loops are `for i in 0..5: slot = work+0x1C+i*0x30`. Resource IDs (literals): char 0x4FBF, pltt 0x4E45, cell 0x4FB8, anim 0x4FAD; NARC_New(8,5); SpriteSystem_Load{Char,PaletteBuffer,Cell,Anim}ResObjFromOpenNarc (sigs in sprite_system.h). RODATA (136B, static const): position tables ov12_0226EB18/EB20/EB28/EB30 (8B each = {s16 x, s16, s16, s16}?) + 2 templates EB38/EB6C (~52B, embed the 4 resource IDs). Biggest fns: B3B0 (265 lines, main per-frame animation), B6F8 (157), B180 (141), B29C (132, slot init), B5B0 (116). 27 blend/ManagedSprite calls. Mechanical (SpriteSystem/ManagedSprite headered) -> tractable in a focused session; watch the rodata size-sort (use the one-struct consolidation if the static tables mis-order). Resume: hand-write per-function (drafter can't)."
     }
   ],
   "in_progress": {

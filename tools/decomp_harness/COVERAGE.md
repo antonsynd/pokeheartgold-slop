@@ -1,26 +1,26 @@
 # Decomp Coverage Ledger
 
-*Generated 2026-06-29T19:14:25Z by `coverage_ledger.py` — do not hand-edit; regenerate after each decomp.*
+*Generated 2026-06-29T19:23:23Z by `coverage_ledger.py` — do not hand-edit; regenerate after each decomp.*
 
-Tracked functions (files with retained asm): **19930** — matched 1623, pending 17334, plus 70 matched-but-blocked inside failed files.
+Tracked functions (files with retained asm): **19930** — matched 1623, pending 17313, plus 70 matched-but-blocked inside failed files.
 
 | status | files | functions | insn lines | ~text bytes |
 |---|---|---|---|---|
 | matched | 96 | 1623 | 46222 | 102054 |
-| blocked | 54 | 973 | 31396 | 68964 |
-| pending | 139 | 17334 | 869068 | 1942590 |
+| blocked | 55 | 994 | 32686 | 71726 |
+| pending | 138 | 17313 | 867778 | 1939828 |
 | upstream | 382 | 0 | 0 | 0 |
 
 ## Blockers (value-ordered: fix what gates the most)
 
 | id | blocks | gates pending files | description |
 |---|---|---|---|
-| ipa-shared-headers | 2 | 98 | MWCC -ipa file: changing a signature in a shared header cascades codegen changes into every already-matched caller in other compilation units. Files sharing many declarations (sound.h family) must be decompiled together or after a coordinated header fix. |
+| ipa-shared-headers | 2 | 97 | MWCC -ipa file: changing a signature in a shared header cascades codegen changes into every already-matched caller in other compilation units. Files sharing many declarations (sound.h family) must be decompiled together or after a coordinated header fix. |
 | param-copyprop-cmp | 1 | 37 | MWCC copy-propagates parameter copies: 'adds r4, r0, #0; cmp r4, #N' at function entry cannot be produced from pure C (MWCC substitutes back to r0). Affected functions need the NONMATCHING inline-asm fallback. |
 | objdiff-false-positives | 0 | 0 | RESOLVED. objdiff.py had a critical bug: the byte extraction regex did not match MWCC's ARM Thumb objdump format (packed hex like 'b418' vs expected space-separated 'b4 18'). It extracted 0 bytes for every function, so 0==0 always reported MATCH. 11 decomps accepted via objdiff were not actually byte-matching. Fixed in this session; all 11 non-matching decomps reverted to asm. 2 decomps that truly match (unk_0202DB34, battle_arcade_game_board_data) kept. |
 | ext-data-section-split | 1 | 0 | Data-only files exporting multiple EXTERNAL (.public) const arrays: MWCC -ipa file emits each top-level const as its own .rodata section, and mwldarm orders/aligns them differently than the asm's single packed .rodata, so the linked overlay/module SHA1 fails even though objdiff --summary (per-section) reports a match. Symbols referenced by other TUs must stay non-static, so they cannot be pooled into one section via `static`. |
 
-## Blocked files (54)
+## Blocked files (55)
 
 | file | functions | insn lines | data-only | notes |
 |---|---|---|---|---|
@@ -42,6 +42,7 @@ Tracked functions (files with retained asm): **19930** — matched 1623, pending
 | asm/unk_0205AC88.s | 22 | 831 |  |   |
 | asm/unk_020957B0.s | 22 | 750 |  |  22 fns / 750 insns, NO header/caller/sibling (all types inferred). Byte-packed command structs + stack-arg (sp+0x20 sign |
 | asm/unk_0201956C.s | 21 | 778 |  |   |
+| asm/overlay_12_0226ADE0.s | 21 | 1290 |  |   |
 | asm/unk_02012DD8.s | 20 | 889 |  |   |
 | asm/unk_0203A3B0.s | 20 | 713 |  |   |
 | asm/overlay_80_022310C4.s | 20 | 1240 |  |   |
@@ -180,7 +181,7 @@ Tracked functions (files with retained asm): **19930** — matched 1623, pending
 | asm/unk_data_020FD978.s | 0 | 0 | yes | harness |
 | asm/overlay_01_data_02208BFC.s | 0 | 0 | yes | retained_asm |
 
-## Pending files (139)
+## Pending files (138)
 
 | file | functions | insn lines | data-only | notes |
 |---|---|---|---|---|
@@ -307,7 +308,6 @@ Tracked functions (files with retained asm): **19930** — matched 1623, pending
 | asm/unk_020863F4.s | 24 | 1725 |  |  |
 | asm/overlay_01_021FDA14.s | 23 | 886 |  |  |
 | asm/unk_020755E8.s | 22 | 3262 |  |  |
-| asm/overlay_12_0226ADE0.s | 21 | 1290 |  |  |
 | asm/overlay_80_0222FD08.s | 21 | 1636 |  |  |
 | asm/overlay_46.s | 20 | 1498 |  |  |
 | asm/overlay_80_0223A00C.s | 20 | 1401 |  |  |
