@@ -1,5 +1,5 @@
 {
- "generated": "2026-06-29T16:50:42Z",
+ "generated": "2026-06-29T17:16:13Z",
  "weights": {
   "insn_line": 1.0,
   "unknown_callee": 40.0,
@@ -10,74 +10,6 @@
   "special_section": 500.0
  },
  "queue": [
-  {
-   "file": "asm/overlay_12_battle_command.s",
-   "score": 1595.8,
-   "special_sections": [],
-   "functions": 0,
-   "insn_lines": 0,
-   "data_only": true,
-   "unknown_callees": [
-    "BattleController_EmitDrawYesNoBox",
-    "BattleController_EmitIncrementGameStat",
-    "BattleController_EmitPokemonSendOut",
-    "BattleController_EmitSetStatus2Effect",
-    "DrawFrameAndWindow1",
-    "PlayBGM",
-    "PlaySE",
-    "UnkBallData_SetBallAnimation",
-    "ov07_02232F60",
-    "ov07_02233DB8",
-    "ov07_02233ECC",
-    "ov07_02233F20",
-    "ov12_02237D00",
-    "ov12_02261294",
-    "ov12_022628A0",
-    "ov12_02263564",
-    "ov12_0226399C",
-    "ov12_02263A1C",
-    "ov12_02263D14",
-    "ov12_02265FC4",
-    "ov18_021F8974",
-    "ov18_021F89C8",
-    "ov18_021F89D0",
-    "ov18_021F95AC",
-    "ov18_021F95F8",
-    "sub_0200602C",
-    "sub_0200E398",
-    "sub_0200E3D8",
-    "sub_0200E5D4",
-    "sub_0200FBF4"
-   ],
-   "jumptable_words": 0,
-   "rodata_bytes": 1915,
-   "arm_functions": 0,
-   "gated_by": [
-    "ipa-shared-headers"
-   ],
-   "cluster_partners": [
-    {
-     "file": "asm/overlay_12_battle_controller.s",
-     "shared_symbols": 9
-    },
-    {
-     "file": "asm/overlay_07.s",
-     "shared_symbols": 5
-    },
-    {
-     "file": "asm/overlay_18.s",
-     "shared_symbols": 5
-    },
-    {
-     "file": "asm/render_window.s",
-     "shared_symbols": 4
-    },
-    {
-     "file": "asm/unk_02005D10.s",
-     "shared_symbols": 3
-    }
-   ]
-  },
   {
    "file": "asm/overlay_01_022001E4.s",
    "score": 1605.6,

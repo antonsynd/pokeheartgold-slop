@@ -1,6 +1,6 @@
 {
  "summary": {
-  "generated": "2026-06-29T16:52:42Z",
+  "generated": "2026-06-29T17:18:05Z",
   "by_status": {
    "matched": {
     "files": 96,
@@ -9,13 +9,13 @@
     "text_bytes_est": 102054
    },
    "blocked": {
-    "files": 52,
+    "files": 53,
     "functions": 953,
     "insn_lines": 30507,
     "text_bytes_est": 67110
    },
    "pending": {
-    "files": 142,
+    "files": 141,
     "functions": 17382,
     "insn_lines": 870499,
     "text_bytes_est": 1945682
@@ -37,7 +37,7 @@
    {
     "id": "ipa-shared-headers",
     "blocks_files": 2,
-    "gates_pending_files": 101
+    "gates_pending_files": 100
    },
    {
     "id": "param-copyprop-cmp",
@@ -63960,7 +63960,7 @@
   {
    "file": "asm/overlay_12_battle_command.s",
    "lsf_kind": "asm",
-   "status": "pending",
+   "status": "blocked",
    "lines": 568,
    "function_count": 0,
    "text_bytes_est": 0,
@@ -64404,7 +64404,11 @@
     "sub_020744A8"
    ],
    "exports": [],
-   "functions": []
+   "functions": [],
+   "blocked_reason": "",
+   "attempts": 1,
+   "blocker_id": null,
+   "kept_c": false
   },
   {
    "file": "asm/battle/battle_controller_player.s",

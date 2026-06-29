@@ -1100,6 +1100,14 @@
       "attempts": 1,
       "result": "deferred_analyzed",
       "note": "Analyzed, not yet written (deferred for a targeted session). Camera/3D-effect family (ov01_021F1348 cluster) multi-sub-object MANAGER variant: ov01_021FEEEC ctor (ov01_021F1430(arg,4,0,0)), ov01_021FEF18 manager-init registers sub-objects via ov01_021F18D4/1908/1930/1758 with const templates (ov01_02209160/178/190/1A8 byte arrays), ov01_021FEFF8 cleanup (18FC/1924/1970/18C8), spawn fns ov01_021FF070/0E4 (ov01_021F1620 + template ov01_02209138), and cb1s ov01_021FF174/394 which BLOCK-COPY (ldmia/stmia) the sub_02068D98 data -> MATCHABLE per insight camera-family-blockcopy-cb1-matches. Approach: per-file manager/work/data structs + LOCAL externs for the ov01_021F18xx framework (do NOT include overlay_01_021F1348.h / overlay_01.h). Template: src/field/overlay_01_021FE780.c. Main work is deriving the multi-slot manager struct + the ~12 framework signatures from call sites. Two rodata templates {0x40,cb1,thunk,cb2,cb} @02209138 and {0x28,...} @0220914C, plus 4 sub-object byte templates."
+    },
+    {
+      "file": "asm/overlay_12_battle_command.s",
+      "lines": 568,
+      "functions": 0,
+      "attempts": 1,
+      "result": "deferred_blocker",
+      "note": "DATA-ONLY (23 battle tables: catch/damage/pickup/prize tables, 4 TempStatsStruct stat-order tables, 2 ManagedSpriteTemplates, the 225-entry sBattleScriptCommandTable). WIP src/battle/overlay_12_battle_command.c written + byte-correct DATA + compiles clean; main.lsf kept on asm so ROM matches. BLOCKER = rodata size-sort: MWCC -ipa file emits each const global as a separate .rodata section, linker concatenates SIZE-sorted, but retail is SOURCE order (small pickup-weight/honey/camo tables sit AFTER the 900B command table). Confirmed via nm main.elf (sFlailDamageTable links 0x226C318 vs retail 0x226C300). FIX = consolidate all tables into ONE static const struct (one section -> source order) with padding members for the inter-table .balign 4, expose the 20 public names via #define aliases in a new shared header, and replace local externs in battle_command.c + ~10 other consumers. See [[static-const-tables-must-be-one-array-not-separate-objects]] + WIP header. Coordinated multi-file change -> planned session."
     }
   ],
   "in_progress": {
