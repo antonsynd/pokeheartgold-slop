@@ -1,6 +1,6 @@
 {
  "summary": {
-  "generated": "2026-06-29T19:23:23Z",
+  "generated": "2026-06-29T19:53:13Z",
   "by_status": {
    "matched": {
     "files": 96,
@@ -9,16 +9,16 @@
     "text_bytes_est": 102054
    },
    "blocked": {
-    "files": 55,
-    "functions": 994,
-    "insn_lines": 32686,
-    "text_bytes_est": 71726
+    "files": 56,
+    "functions": 1013,
+    "insn_lines": 33437,
+    "text_bytes_est": 73422
    },
    "pending": {
-    "files": 138,
-    "functions": 17313,
-    "insn_lines": 867778,
-    "text_bytes_est": 1939828
+    "files": 137,
+    "functions": 17294,
+    "insn_lines": 867027,
+    "text_bytes_est": 1938132
    },
    "upstream": {
     "files": 382,
@@ -31,7 +31,7 @@
    "tracked": 19930,
    "matched": 1623,
    "partial_in_blocked": 70,
-   "pending": 17313
+   "pending": 17294
   },
   "blockers": [
    {
@@ -128964,7 +128964,7 @@
   {
    "file": "asm/overlay_80_0222F608.s",
    "lsf_kind": "asm",
-   "status": "pending",
+   "status": "blocked",
    "lines": 918,
    "function_count": 19,
    "text_bytes_est": 1696,
@@ -129064,135 +129064,139 @@
      "mode": "thumb",
      "insns": 27,
      "size_est": 66,
-     "status": "pending"
+     "status": "blocked"
     },
     {
      "name": "FrtCmd_093",
      "mode": "thumb",
      "insns": 12,
      "size_est": 30,
-     "status": "pending"
+     "status": "blocked"
     },
     {
      "name": "FrtCmd_094",
      "mode": "thumb",
      "insns": 8,
      "size_est": 20,
-     "status": "pending"
+     "status": "blocked"
     },
     {
      "name": "FrtCmd_095",
      "mode": "thumb",
      "insns": 45,
      "size_est": 100,
-     "status": "pending"
+     "status": "blocked"
     },
     {
      "name": "FrtCmd_096",
      "mode": "thumb",
      "insns": 17,
      "size_est": 40,
-     "status": "pending"
+     "status": "blocked"
     },
     {
      "name": "FrtCmd_097",
      "mode": "thumb",
      "insns": 29,
      "size_est": 66,
-     "status": "pending"
+     "status": "blocked"
     },
     {
      "name": "FrtCmd_098",
      "mode": "thumb",
      "insns": 56,
      "size_est": 122,
-     "status": "pending"
+     "status": "blocked"
     },
     {
      "name": "ov80_0222F7CC",
      "mode": "thumb",
      "insns": 9,
      "size_est": 22,
-     "status": "pending"
+     "status": "blocked"
     },
     {
      "name": "FrtCmd_099",
      "mode": "thumb",
      "insns": 8,
      "size_est": 20,
-     "status": "pending"
+     "status": "blocked"
     },
     {
      "name": "FrtCmd_100",
      "mode": "thumb",
      "insns": 8,
      "size_est": 20,
-     "status": "pending"
+     "status": "blocked"
     },
     {
      "name": "FrtCmd_101",
      "mode": "thumb",
      "insns": 8,
      "size_est": 20,
-     "status": "pending"
+     "status": "blocked"
     },
     {
      "name": "FrtCmd_102",
      "mode": "thumb",
      "insns": 8,
      "size_est": 20,
-     "status": "pending"
+     "status": "blocked"
     },
     {
      "name": "FrtCmd_103",
      "mode": "thumb",
      "insns": 403,
      "size_est": 890,
-     "status": "pending"
+     "status": "blocked"
     },
     {
      "name": "ov80_0222FC08",
      "mode": "thumb",
      "insns": 19,
      "size_est": 44,
-     "status": "pending"
+     "status": "blocked"
     },
     {
      "name": "FrtCmd_104",
      "mode": "thumb",
      "insns": 12,
      "size_est": 28,
-     "status": "pending"
+     "status": "blocked"
     },
     {
      "name": "FrtCmd_105",
      "mode": "thumb",
      "insns": 20,
      "size_est": 50,
-     "status": "pending"
+     "status": "blocked"
     },
     {
      "name": "FrtCmd_106",
      "mode": "thumb",
      "insns": 14,
      "size_est": 32,
-     "status": "pending"
+     "status": "blocked"
     },
     {
      "name": "ov80_0222FCA0",
      "mode": "thumb",
      "insns": 22,
      "size_est": 48,
-     "status": "pending"
+     "status": "blocked"
     },
     {
      "name": "FrtCmd_107",
      "mode": "thumb",
      "insns": 26,
      "size_est": 58,
-     "status": "pending"
+     "status": "blocked"
     }
-   ]
+   ],
+   "blocked_reason": "",
+   "attempts": 1,
+   "blocker_id": null,
+   "kept_c": false
   },
   {
    "file": "asm/overlay_80_0222FD08.s",

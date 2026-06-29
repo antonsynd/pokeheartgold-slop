@@ -1,14 +1,14 @@
 # Decomp Coverage Ledger
 
-*Generated 2026-06-29T19:23:23Z by `coverage_ledger.py` — do not hand-edit; regenerate after each decomp.*
+*Generated 2026-06-29T19:53:13Z by `coverage_ledger.py` — do not hand-edit; regenerate after each decomp.*
 
-Tracked functions (files with retained asm): **19930** — matched 1623, pending 17313, plus 70 matched-but-blocked inside failed files.
+Tracked functions (files with retained asm): **19930** — matched 1623, pending 17294, plus 70 matched-but-blocked inside failed files.
 
 | status | files | functions | insn lines | ~text bytes |
 |---|---|---|---|---|
 | matched | 96 | 1623 | 46222 | 102054 |
-| blocked | 55 | 994 | 32686 | 71726 |
-| pending | 138 | 17313 | 867778 | 1939828 |
+| blocked | 56 | 1013 | 33437 | 73422 |
+| pending | 137 | 17294 | 867027 | 1938132 |
 | upstream | 382 | 0 | 0 | 0 |
 
 ## Blockers (value-ordered: fix what gates the most)
@@ -20,7 +20,7 @@ Tracked functions (files with retained asm): **19930** — matched 1623, pending
 | objdiff-false-positives | 0 | 0 | RESOLVED. objdiff.py had a critical bug: the byte extraction regex did not match MWCC's ARM Thumb objdump format (packed hex like 'b418' vs expected space-separated 'b4 18'). It extracted 0 bytes for every function, so 0==0 always reported MATCH. 11 decomps accepted via objdiff were not actually byte-matching. Fixed in this session; all 11 non-matching decomps reverted to asm. 2 decomps that truly match (unk_0202DB34, battle_arcade_game_board_data) kept. |
 | ext-data-section-split | 1 | 0 | Data-only files exporting multiple EXTERNAL (.public) const arrays: MWCC -ipa file emits each top-level const as its own .rodata section, and mwldarm orders/aligns them differently than the asm's single packed .rodata, so the linked overlay/module SHA1 fails even though objdiff --summary (per-section) reports a match. Symbols referenced by other TUs must stay non-static, so they cannot be pooled into one section via `static`. |
 
-## Blocked files (55)
+## Blocked files (56)
 
 | file | functions | insn lines | data-only | notes |
 |---|---|---|---|---|
@@ -46,6 +46,7 @@ Tracked functions (files with retained asm): **19930** — matched 1623, pending
 | asm/unk_02012DD8.s | 20 | 889 |  |   |
 | asm/unk_0203A3B0.s | 20 | 713 |  |   |
 | asm/overlay_80_022310C4.s | 20 | 1240 |  |   |
+| asm/overlay_80_0222F608.s | 19 | 751 |  |   |
 | asm/unk_020210A0.s | 18 | 597 |  |  Intricate touchpad auto-sampling driver (overlay_33-class). Fully decoded (struct TouchpadState 0x5C, all 18 fns) but de |
 | asm/overlay_80_02237A70.s | 18 | 642 |  |   |
 | asm/unk_0208F814.s | 17 | 387 |  | ipa-shared-headers  |
@@ -181,7 +182,7 @@ Tracked functions (files with retained asm): **19930** — matched 1623, pending
 | asm/unk_data_020FD978.s | 0 | 0 | yes | harness |
 | asm/overlay_01_data_02208BFC.s | 0 | 0 | yes | retained_asm |
 
-## Pending files (138)
+## Pending files (137)
 
 | file | functions | insn lines | data-only | notes |
 |---|---|---|---|---|
@@ -311,7 +312,6 @@ Tracked functions (files with retained asm): **19930** — matched 1623, pending
 | asm/overlay_80_0222FD08.s | 21 | 1636 |  |  |
 | asm/overlay_46.s | 20 | 1498 |  |  |
 | asm/overlay_80_0223A00C.s | 20 | 1401 |  |  |
-| asm/overlay_80_0222F608.s | 19 | 751 |  |  |
 | asm/overlay_01_022031C0.s | 18 | 932 |  |  |
 | asm/unk_02085604.s | 17 | 1676 |  |  |
 | asm/overlay_93_arm.s | 17 | 871 |  |  |

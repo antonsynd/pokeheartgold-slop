@@ -1132,6 +1132,14 @@
       "attempts": 0,
       "result": "deferred_analysis",
       "note": "ANALYSIS-ONLY defer (no code yet) \u2014 large battle sprite/animation manager, drafter fails on 1500+ line files. 7 exports (ov12_0226ADE0 loader, AE78 unloader, AEE0 init, AF48/AFA4 done-predicates, AF6C update, AFC8 delete) + 14 statics. STRUCT: work = 0x140 alloc (ov12_0226AEAC Heap_Alloc(5<<6) + MI_CpuFill8 zero); layout = 0x1C header (sprite ptr @+0, flag @+4) + 6 sub-slots of 0x30 each starting @+0x1C (slot: sprite ptr @+0, flag @+4). Loops are `for i in 0..5: slot = work+0x1C+i*0x30`. Resource IDs (literals): char 0x4FBF, pltt 0x4E45, cell 0x4FB8, anim 0x4FAD; NARC_New(8,5); SpriteSystem_Load{Char,PaletteBuffer,Cell,Anim}ResObjFromOpenNarc (sigs in sprite_system.h). RODATA (136B, static const): position tables ov12_0226EB18/EB20/EB28/EB30 (8B each = {s16 x, s16, s16, s16}?) + 2 templates EB38/EB6C (~52B, embed the 4 resource IDs). Biggest fns: B3B0 (265 lines, main per-frame animation), B6F8 (157), B180 (141), B29C (132, slot init), B5B0 (116). 27 blend/ManagedSprite calls. Mechanical (SpriteSystem/ManagedSprite headered) -> tractable in a focused session; watch the rodata size-sort (use the one-struct consolidation if the static tables mis-order). Resume: hand-write per-function (drafter can't)."
+    },
+    {
+      "file": "asm/overlay_80_0222F608.s",
+      "lines": 918,
+      "functions": 19,
+      "attempts": 1,
+      "result": "deferred_wip",
+      "note": "15/19 functions byte-match (WIP, compiles). Battle Frontier script commands FrtCmd_092..107 + 3 helpers. main.lsf kept on asm so ROM matches. Hand-written (drafter fails on 900+ line files). Frontier-script family idiom: ctx->frontierSystem->unk0 handle, FrontierScript_ReadVar/ReadVarPtr args, Frontier_GetData = large raw-offset struct. Remaining 4: FrtCmd_095/098 (+4B register-reuse scheduling tie in the 0x24 launch-arg struct build - asm reuses r3=0 for p[6] while staging a3=2 late), ov80_0222FC08 (1B branch-polarity tie on cmp #0xff), FrtCmd_103 (+56B 42-case dispatcher - simple cases done, cases 17/18/34/39 mon-count loops are semantic guesses needing re-derivation; verify jump-table case order + data offsets, 0x3F0 trainer sub-structs stride 0x38). See WIP header."
     }
   ],
   "in_progress": {
