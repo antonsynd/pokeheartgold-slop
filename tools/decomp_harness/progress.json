@@ -1076,6 +1076,14 @@
       "attempts": 1,
       "result": "deferred_wip",
       "note": "12/20 functions byte-match (WIP). Large float-heavy Frontier facility-logic overlay (cluster partner of overlay_80_02230B8C). C file src/frontier/overlay_80_022310C4.c is written + compiles; main.lsf kept at asm so the ROM matches. Remaining: ov80_022310C4 big init (global ov80_0223DD44 reload pattern + u16 loop counters + stack frame 0x18), ov80_02231A14 (float, ~12B off), ov80_022318D0/02231930 (~4B, missing (u16) after (u8)), ov80_022313C8/0223157C (~8B). Deferred so the loop advances; resume as a targeted task. See WIP header in the .c."
+    },
+    {
+      "file": "asm/unk_0205AC88.s",
+      "lines": 984,
+      "functions": 22,
+      "attempts": 1,
+      "result": "deferred_wip",
+      "note": "15/22 functions byte-match (WIP, compiles). Multiplayer follower-NPC walking controller. Full struct layout derived (UnkStruct_0205AC88 0x4E8 / Follower 0x18 at +0xC[51] / MailManager 0x350). main.lsf kept on asm so ROM matches. Remaining: sub_0205AD60 (hoist work->unk00 to callee reg), sub_0205AD9C (re-derive - rushed first pass likely wrong), sub_0205AEA8/AF78/B27C (dual-base follower walk work+i*0x18 + 0xC offsets; AF78 has inline 5-case jumptable), sub_0205B13C/B35C (minor). See WIP header in src/unk_0205AC88.c. Resume as targeted task."
     }
   ],
   "in_progress": {
@@ -1088,9 +1096,9 @@
     "notes": "WIP 225/364 byte-matched (objdiff). Latest batch (+2): ov02_0224B3B0 (B364 clone), ov02_0224D358 (D-init clone). Deferred ov02_0224D73C/DEA8 (2-instr scheduling), ov02_0224F64C (jump table), ov02_02250738 (rodata-template local array). ROM still matches retail (main.lsf on asm)."
   },
   "stats": {
-    "total_attempts": 157,
+    "total_attempts": 158,
     "total_matched": 67,
-    "total_failed": 29
+    "total_failed": 30
   },
   "matched": [
     {
