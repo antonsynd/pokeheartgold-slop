@@ -1,14 +1,14 @@
 # Decomp Coverage Ledger
 
-*Generated 2026-06-27T02:05:10Z by `coverage_ledger.py` — do not hand-edit; regenerate after each decomp.*
+*Generated 2026-06-29T04:16:07Z by `coverage_ledger.py` — do not hand-edit; regenerate after each decomp.*
 
-Tracked functions (files with retained asm): **20011** — matched 1552, pending 17562, plus 70 matched-but-blocked inside failed files.
+Tracked functions (files with retained asm): **20011** — matched 1623, pending 17491, plus 70 matched-but-blocked inside failed files.
 
 | status | files | functions | insn lines | ~text bytes |
 |---|---|---|---|---|
-| matched | 95 | 1552 | 44762 | 98932 |
+| matched | 96 | 1623 | 46222 | 102054 |
 | blocked | 49 | 897 | 27827 | 61008 |
-| pending | 148 | 17562 | 875952 | 1957910 |
+| pending | 147 | 17491 | 874492 | 1954788 |
 | upstream | 379 | 0 | 0 | 0 |
 
 ## Blockers (value-ordered: fix what gates the most)
@@ -74,11 +74,12 @@ Tracked functions (files with retained asm): **20011** — matched 1552, pending
 | asm/middleware.s | 0 | 0 | yes |  Data-only: 7 NUL-terminated SDK middleware version strings in a custom .version section (single ordered section, each .b |
 | asm/battle_arcade_game_board_data.s | 0 | 0 | yes | ext-data-section-split MWCC splits external const into per-symbol .rodata sections; reordered at link -> OVY_84 SHA1 fail. Stays asm. |
 
-## Matched files (asm retained) (95)
+## Matched files (asm retained) (96)
 
 | file | functions | insn lines | data-only | notes |
 |---|---|---|---|---|
 | asm/overlay_02_02248728.s | 364 | 15149 |  | retained_asm |
+| asm/unk_02030A98.s | 71 | 1460 |  | harness |
 | asm/unk_0202B614.s | 61 | 1186 |  | retained_asm |
 | asm/unk_020689C8.s | 48 | 477 |  | harness |
 | asm/unk_02074E5C.s | 46 | 895 |  | retained_asm |
@@ -174,7 +175,7 @@ Tracked functions (files with retained asm): **20011** — matched 1552, pending
 | asm/unk_data_020FD978.s | 0 | 0 | yes | harness |
 | asm/overlay_01_data_02208BFC.s | 0 | 0 | yes | retained_asm |
 
-## Pending files (148)
+## Pending files (147)
 
 | file | functions | insn lines | data-only | notes |
 |---|---|---|---|---|
@@ -246,7 +247,6 @@ Tracked functions (files with retained asm): **20011** — matched 1552, pending
 | asm/overlay_106.s | 76 | 2317 |  |  |
 | asm/unk_02032844.s | 75 | 2095 |  |  |
 | asm/overlay_01_021F4704.s | 72 | 3949 |  |  |
-| asm/unk_02030A98.s | 71 | 1460 |  |  |
 | asm/unk_02023694.s | 68 | 1676 |  |  |
 | asm/overlay_37.s | 67 | 3634 |  |  |
 | asm/nitrocrypto.s | 67 | 4312 |  |  |

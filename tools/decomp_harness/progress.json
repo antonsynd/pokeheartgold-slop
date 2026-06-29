@@ -690,6 +690,14 @@
       "attempts": 1,
       "result": "matched",
       "note": "compare-verified (full ROM SHA1 OK). Fishing-rod overworld task state machine (37 fns). Two structs: FishingRodWork env (0x18, returned by CreateFishingRodTaskEnv, forward-declared incomplete in include/overlay_01.h so defined locally) and FishingRodTaskData SysTask work (0x4c, embedded Window at 0x38). Dispatch: SysTask cb ov01_021FC798 do{}while(table[data->state](data,pa,mapObj)) over an 18-entry static const fn-ptr jump table. 3 rodata symbols (12/60/72 bytes) are size-ascending == retail, so 3 separate static const objects size-sort correctly (no consolidation needed). Two fixes after first build (35/37): (1) split-header for FieldSystem_PerformFishEncounterCheck \u2014 public encounter_check.h says u8 rodType which truncates the int field at the call site (lsls/lsrs #24, +4B); local int-width prototype + drop the include removes it (encounter_check.h not transitively included, sole caller). (2) ov01_021FCCB0 FollowMon early-return: wrap body in if(FollowMon_IsActive){...;return v;} return 0; to put the !active return-0 block at the END (beq-to-end) not inline. Mood bucket chain uses -10 via mvns 9 / -9 via +1 (matched as-is). LCRandom()%4 (u16->int signed mod idiom, ror#30 reused as *30 multiplier). MON_DATA_FRIENDSHIP fishing bonus. gSystem.newKeys&1 (A) merged bool form; &3 (A|B) if/return form."
+    },
+    {
+      "file": "asm/unk_02030A98.s",
+      "lines": 1908,
+      "functions": 71,
+      "attempts": 1,
+      "result": "matched",
+      "note": "compare-verified (full ROM SHA1 OK, HeartGold + SoulSilver). Battle Frontier save module (FrontierSave 0x1628 static _021D2AFC): 4 bit-flag families, 3 record families at +0x8E0 with 6 inline jump tables, 0x70 stats + 32x0x20 matrix at +0xE0, extra-chunk record (0xBA0 DECL_CHUNK_EX), 0x80 trainer-card builder+validators. NOT including unk_02030A98.h (frozen header mistypes 3 fns) \u2014 local prototypes, ABI-compatible. Fixes: void* param+cast forces stack-val homing; 2D-array matrix indexing; ((u32)idx<<23)>>24 nibble byte index; u16 v14 drops a u16-arg trunc."
     }
   ],
   "failed": [
@@ -1064,8 +1072,8 @@
     "notes": "WIP 225/364 byte-matched (objdiff). Latest batch (+2): ov02_0224B3B0 (B364 clone), ov02_0224D358 (D-init clone). Deferred ov02_0224D73C/DEA8 (2-instr scheduling), ov02_0224F64C (jump table), ov02_02250738 (rodata-template local array). ROM still matches retail (main.lsf on asm)."
   },
   "stats": {
-    "total_attempts": 154,
-    "total_matched": 65,
+    "total_attempts": 155,
+    "total_matched": 66,
     "total_failed": 28
   },
   "matched": [
