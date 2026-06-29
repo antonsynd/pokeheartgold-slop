@@ -1,6 +1,6 @@
 {
  "summary": {
-  "generated": "2026-06-29T18:22:41Z",
+  "generated": "2026-06-29T19:14:25Z",
   "by_status": {
    "matched": {
     "files": 96,
@@ -9,16 +9,16 @@
     "text_bytes_est": 102054
    },
    "blocked": {
-    "files": 53,
-    "functions": 953,
-    "insn_lines": 30507,
-    "text_bytes_est": 67110
+    "files": 54,
+    "functions": 973,
+    "insn_lines": 31396,
+    "text_bytes_est": 68964
    },
    "pending": {
-    "files": 140,
-    "functions": 17354,
-    "insn_lines": 869957,
-    "text_bytes_est": 1944444
+    "files": 139,
+    "functions": 17334,
+    "insn_lines": 869068,
+    "text_bytes_est": 1942590
    },
    "upstream": {
     "files": 382,
@@ -31,13 +31,13 @@
    "tracked": 19930,
    "matched": 1623,
    "partial_in_blocked": 70,
-   "pending": 17354
+   "pending": 17334
   },
   "blockers": [
    {
     "id": "ipa-shared-headers",
     "blocks_files": 2,
-    "gates_pending_files": 99
+    "gates_pending_files": 98
    },
    {
     "id": "param-copyprop-cmp",
@@ -3338,7 +3338,7 @@
   {
    "file": "asm/unk_02012DD8.s",
    "lsf_kind": "asm",
-   "status": "pending",
+   "status": "blocked",
    "lines": 1029,
    "function_count": 20,
    "text_bytes_est": 1854,
@@ -3391,142 +3391,146 @@
      "mode": "thumb",
      "insns": 27,
      "size_est": 58,
-     "status": "pending"
+     "status": "blocked"
     },
     {
      "name": "sub_02012E10",
      "mode": "thumb",
      "insns": 41,
      "size_est": 92,
-     "status": "pending"
+     "status": "blocked"
     },
     {
      "name": "sub_02012E6C",
      "mode": "thumb",
      "insns": 104,
      "size_est": 226,
-     "status": "pending"
+     "status": "blocked"
     },
     {
      "name": "sub_02012F54",
      "mode": "thumb",
      "insns": 81,
      "size_est": 170,
-     "status": "pending"
+     "status": "blocked"
     },
     {
      "name": "sub_02013004",
      "mode": "thumb",
      "insns": 207,
      "size_est": 422,
-     "status": "pending"
+     "status": "blocked"
     },
     {
      "name": "sub_020131AC",
      "mode": "thumb",
      "insns": 35,
      "size_est": 74,
-     "status": "pending"
+     "status": "blocked"
     },
     {
      "name": "sub_020131F4",
      "mode": "thumb",
      "insns": 21,
      "size_est": 42,
-     "status": "pending"
+     "status": "blocked"
     },
     {
      "name": "sub_02013220",
      "mode": "thumb",
      "insns": 66,
      "size_est": 132,
-     "status": "pending"
+     "status": "blocked"
     },
     {
      "name": "sub_020132A8",
      "mode": "thumb",
      "insns": 31,
      "size_est": 62,
-     "status": "pending"
+     "status": "blocked"
     },
     {
      "name": "sub_020132E8",
      "mode": "thumb",
      "insns": 39,
      "size_est": 78,
-     "status": "pending"
+     "status": "blocked"
     },
     {
      "name": "sub_0201333C",
      "mode": "thumb",
      "insns": 19,
      "size_est": 38,
-     "status": "pending"
+     "status": "blocked"
     },
     {
      "name": "sub_02013364",
      "mode": "thumb",
      "insns": 93,
      "size_est": 186,
-     "status": "pending"
+     "status": "blocked"
     },
     {
      "name": "sub_02013424",
      "mode": "thumb",
      "insns": 13,
      "size_est": 28,
-     "status": "pending"
+     "status": "blocked"
     },
     {
      "name": "sub_02013440",
      "mode": "thumb",
      "insns": 19,
      "size_est": 40,
-     "status": "pending"
+     "status": "blocked"
     },
     {
      "name": "sub_02013468",
      "mode": "thumb",
      "insns": 15,
      "size_est": 32,
-     "status": "pending"
+     "status": "blocked"
     },
     {
      "name": "sub_02013488",
      "mode": "thumb",
      "insns": 25,
      "size_est": 52,
-     "status": "pending"
+     "status": "blocked"
     },
     {
      "name": "sub_020134BC",
      "mode": "thumb",
      "insns": 8,
      "size_est": 20,
-     "status": "pending"
+     "status": "blocked"
     },
     {
      "name": "sub_020134D0",
      "mode": "thumb",
      "insns": 12,
      "size_est": 28,
-     "status": "pending"
+     "status": "blocked"
     },
     {
      "name": "sub_020134EC",
      "mode": "thumb",
      "insns": 11,
      "size_est": 26,
-     "status": "pending"
+     "status": "blocked"
     },
     {
      "name": "sub_02013504",
      "mode": "thumb",
      "insns": 22,
      "size_est": 48,
-     "status": "pending"
+     "status": "blocked"
     }
-   ]
+   ],
+   "blocked_reason": "",
+   "attempts": 1,
+   "blocker_id": null,
+   "kept_c": true
   },
   {
    "file": "asm/unk_02013534.s",

@@ -1116,6 +1116,14 @@
       "attempts": 1,
       "result": "deferred_blocker",
       "note": "DATA-ONLY (23 battle tables: catch/damage/pickup/prize tables, 4 TempStatsStruct stat-order tables, 2 ManagedSpriteTemplates, the 225-entry sBattleScriptCommandTable). WIP src/battle/overlay_12_battle_command.c written + byte-correct DATA + compiles clean; main.lsf kept on asm so ROM matches. BLOCKER = rodata size-sort: MWCC -ipa file emits each const global as a separate .rodata section, linker concatenates SIZE-sorted, but retail is SOURCE order (small pickup-weight/honey/camo tables sit AFTER the 900B command table). Confirmed via nm main.elf (sFlailDamageTable links 0x226C318 vs retail 0x226C300). FIX = consolidate all tables into ONE static const struct (one section -> source order) with padding members for the inter-table .balign 4, expose the 20 public names via #define aliases in a new shared header, and replace local externs in battle_command.c + ~10 other consumers. See [[static-const-tables-must-be-one-array-not-separate-objects]] + WIP header. Coordinated multi-file change -> planned session."
+    },
+    {
+      "file": "asm/unk_02012DD8.s",
+      "lines": 1029,
+      "functions": 20,
+      "attempts": 1,
+      "result": "deferred_wip",
+      "note": "11/20 functions byte-match (WIP, compiles). Window/blend MMIO + sin/cos gradient-effect module (cluster of unk_0201010C). main.lsf kept on asm so ROM matches. All structs derived (manager UnkStruct_02012DD8, 0x4C effect struct, input descriptor, 4 SysTask slot structs); register macros confirmed (reg_G2_WININ/WINOUT/WIN0H/V, reg_GX_DISPCNT, reg_G2S_DB_*). Matching: DD8, E10, 13220, 132A8, 13424, 13440, 13468, 134BC, 134D0, 134EC, 13504. Remaining 9: MMIO codegen ties (132E8/1333C read a reg byte via a STACK local that MWCC inlines; 131F4 DISPCNT 4B operand-schedule tie; 13364 WIN0H/V 56B + 13488 4B slot/strh modeling) + math (13004 sin/cos gradient interp 8B, E6C big-init 12B incl the sub_02010F84 10-arg call, F54 4B, 131AC strh-loop 4B). Drafter failed (output-token limit on this large file) -> hand-written first pass. See WIP header. Resume as a targeted session."
     }
   ],
   "in_progress": {
