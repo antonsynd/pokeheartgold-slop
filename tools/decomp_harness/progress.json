@@ -698,6 +698,14 @@
       "attempts": 1,
       "result": "matched",
       "note": "compare-verified (full ROM SHA1 OK, HeartGold + SoulSilver). Battle Frontier save module (FrontierSave 0x1628 static _021D2AFC): 4 bit-flag families, 3 record families at +0x8E0 with 6 inline jump tables, 0x70 stats + 32x0x20 matrix at +0xE0, extra-chunk record (0xBA0 DECL_CHUNK_EX), 0x80 trainer-card builder+validators. NOT including unk_02030A98.h (frozen header mistypes 3 fns) \u2014 local prototypes, ABI-compatible. Fixes: void* param+cast forces stack-val homing; 2D-array matrix indexing; ((u32)idx<<23)>>24 nibble byte index; u16 v14 drops a u16-arg trunc."
+    },
+    {
+      "file": "asm/overlay_80_02230B8C.s",
+      "lines": 678,
+      "functions": 15,
+      "attempts": 1,
+      "result": "matched",
+      "note": "compare-verified (full ROM SHA1 OK, HeartGold + SoulSilver). Battle Frontier script-command overlay: FrtCmd_139..149, FrtCmd_118/199 + 2 statics (ov80_02230D5C resume cb, ov80_02231040 resume predicate). FrtCmd_145 is a 39-case inline jump table (cases in body-address order, with an explicit empty case 38/0x26 to size the table). Calls sub_02030B14/BD0/BF4 (just-decompiled unk_02030A98 internals, local externs). Frontier data accessed as raw u8* offsets (facility struct not in any header). Fixes: switch range-check uses add #0xfe (additive inverse) not sub #2; case-38 extends jumptable bound; int (not u16) for a compared read+1."
     }
   ],
   "failed": [
@@ -1072,8 +1080,8 @@
     "notes": "WIP 225/364 byte-matched (objdiff). Latest batch (+2): ov02_0224B3B0 (B364 clone), ov02_0224D358 (D-init clone). Deferred ov02_0224D73C/DEA8 (2-instr scheduling), ov02_0224F64C (jump table), ov02_02250738 (rodata-template local array). ROM still matches retail (main.lsf on asm)."
   },
   "stats": {
-    "total_attempts": 155,
-    "total_matched": 66,
+    "total_attempts": 156,
+    "total_matched": 67,
     "total_failed": 28
   },
   "matched": [

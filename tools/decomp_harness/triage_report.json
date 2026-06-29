@@ -1,5 +1,5 @@
 {
- "generated": "2026-06-29T04:08:44Z",
+ "generated": "2026-06-29T04:52:23Z",
  "weights": {
   "insn_line": 1.0,
   "unknown_callee": 40.0,
@@ -10,59 +10,6 @@
   "special_section": 500.0
  },
  "queue": [
-  {
-   "file": "asm/overlay_80_02230B8C.s",
-   "score": 1386.0,
-   "special_sections": [],
-   "functions": 15,
-   "insn_lines": 546,
-   "data_only": false,
-   "unknown_callees": [
-    "FrontierScript_ReadVar",
-    "FrontierScript_ReadVarPtr",
-    "Sound_SetSceneAndPlayBGM",
-    "ov80_0222BE9C",
-    "ov80_0222F44C",
-    "ov80_022310C4",
-    "ov80_022313C0",
-    "ov80_022314A0",
-    "ov80_022314DC",
-    "ov80_0223151C",
-    "ov80_0223157C",
-    "ov80_022317C0",
-    "ov80_022317CC",
-    "ov80_022317D0",
-    "ov80_02231804",
-    "ov80_02231828",
-    "ov80_02231844",
-    "ov80_02231888",
-    "ov80_022319B0",
-    "ov80_02231A04",
-    "sub_02096910"
-   ],
-   "jumptable_words": 0,
-   "rodata_bytes": 0,
-   "arm_functions": 0,
-   "gated_by": [],
-   "cluster_partners": [
-    {
-     "file": "asm/overlay_80_022310C4.s",
-     "shared_symbols": 15
-    },
-    {
-     "file": "asm/overlay_80_0222BDF4.s",
-     "shared_symbols": 4
-    },
-    {
-     "file": "asm/unk_02004A44.s",
-     "shared_symbols": 1
-    },
-    {
-     "file": "asm/unk_02096910.s",
-     "shared_symbols": 1
-    }
-   ]
-  },
   {
    "file": "asm/overlay_80_022310C4.s",
    "score": 1440.0,
@@ -7088,7 +7035,7 @@
   },
   {
    "file": "asm/overlay_80_0222BDF4.s",
-   "score": 11766.0,
+   "score": 11246.0,
    "special_sections": [],
    "functions": 203,
    "insn_lines": 6401,
@@ -7118,7 +7065,6 @@
     "FrtCmd_105",
     "FrtCmd_106",
     "FrtCmd_107",
-    "FrtCmd_118",
     "FrtCmd_132",
     "FrtCmd_133",
     "FrtCmd_134",
@@ -7126,17 +7072,6 @@
     "FrtCmd_136",
     "FrtCmd_137",
     "FrtCmd_138",
-    "FrtCmd_139",
-    "FrtCmd_140",
-    "FrtCmd_141",
-    "FrtCmd_142",
-    "FrtCmd_143",
-    "FrtCmd_144",
-    "FrtCmd_145",
-    "FrtCmd_146",
-    "FrtCmd_147",
-    "FrtCmd_148",
-    "FrtCmd_149",
     "FrtCmd_151",
     "FrtCmd_152",
     "FrtCmd_153",
@@ -7156,7 +7091,6 @@
     "FrtCmd_167",
     "FrtCmd_168",
     "FrtCmd_169",
-    "FrtCmd_199",
     "IsPaletteFadeFinished",
     "PlaySE",
     "Sound_SetSceneAndPlayBGM",
@@ -7229,16 +7163,16 @@
      "shared_symbols": 16
     },
     {
-     "file": "asm/overlay_80_02230B8C.s",
-     "shared_symbols": 13
-    },
-    {
      "file": "asm/overlay_80_0223AC24.s",
      "shared_symbols": 11
     },
     {
      "file": "asm/overlay_80_02235438.s",
      "shared_symbols": 8
+    },
+    {
+     "file": "asm/render_window.s",
+     "shared_symbols": 6
     }
    ]
   },

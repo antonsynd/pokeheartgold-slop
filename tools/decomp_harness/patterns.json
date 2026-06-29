@@ -1347,6 +1347,18 @@
       "category": "codegen",
       "title": "Packed-nibble array get/set: byte index ((u32)idx<<23)>>24, nibble shift (u8)(idx%2)*4, two separate RMWs for the writer",
       "body": "A 4-bit packed array indexed by a signed int idx (base[idx/2], nibble idx%2): the byte index is NOT idx/2 (which emits the signed round-toward-zero idiom add+asr). Retail uses ((u32)idx<<23)>>24 (lsls#23;lsrs#24) — write that literal. The nibble multiply is (u8)(idx%2)*4 (the (u8) mask makes MWCC fold (x<<24>>24)<<2 into lsls#24;lsrs#22) — idx%2 keeps the signed ror dance (lsr#31;lsl#31;sub;ror#31;add). Reader: return (base[bi] >> ((u8)(idx%2)*4)) & 0xf. Writer is TWO separate read-modify-writes (the asm re-reads after the mask store): u8 nibble=idx%2; if(nibble==0) base[bi]&=0xf0; else base[bi]&=0xf; base[bi]|=(u8)(val<<(nibble*4)); — CSE the masked nibble via a u8 local, and keep even (nibble==0) as the fall-through. A caller looping over the writer passes (u8)i (cast i to u8 at the call) even though the loop counter i stays int. Verified unk_02030A98 sub_02030BD0/sub_02030BF4/sub_02030C34."
+    },
+    {
+      "id": "switch-jumptable-bound-needs-max-default-case",
+      "category": "codegen",
+      "title": "A dense switch jump-table bound (cmp #maxcase; bls) needs the MAX case label present even when it maps to default — add an explicit empty case to extend the table",
+      "body": "For a dense switch(u8) that emits an add-pc jump table, the range guard is cmp val,#<maxCaseLabel>; bls/bhi default. MWCC sizes the table 0..maxCaseLabel from the LARGEST case label in the source, not from the value range. If the retail table has N entries (e.g. cases 0..0x26 = 39 shorts, bound cmp #0x26) but your highest handled case is lower (e.g. 0x25), MWCC emits a smaller table and bound cmp #0x25 — one real instruction diff at the bound plus a shorter table. FIX: add an explicit empty case for the top value even though it behaves like default: case 0x26: break;  This extends the table to the retail size and sets the bound to cmp #0x26; the new entry just points at the shared break/return target (same as default). Verified ov80 overlay_80_02230B8C FrtCmd_145 (39-entry table, case 38/0x26 maps to default). Related: [[jumptable-needs-all-dense-cases-explicit]], [[objdiff-jumptable-false-size]] (the inline table data makes objdiff report a bogus SIZE/section delta — confirm with chiri pkg -- compare)."
+    },
+    {
+      "id": "u8-range-check-add-inverse-not-sub",
+      "category": "codegen",
+      "title": "A u8 range check (x-lo) in [0,n] may compile to add #(256-lo) (additive inverse) not sub #lo — write (u8)(x + (256-lo)) to match",
+      "body": "An if-else range test on a u8 written (u8)(x - lo) <= n compiles to sub rX,#lo; lsl#0x18;lsr#0x18; cmp #n; bhi. The retail build sometimes computes the SAME thing with an ADD of the additive inverse: add rX,#(256-lo); (u8); cmp #n; bhi (e.g. lo=2 -> add #0xfe). To reproduce the add form, write (u8)(x + (256 - lo)) <= n (e.g. (u8)(mode + 0xfe) <= 1 for modes {2,3}). Semantically identical mod 256, but the encoding (add #0xfe vs sub #2) must match. NOTE: rewriting the if-else as a real switch(x){case lo: case lo+1:} did NOT match here (MWCC generated a different/worse dispatch) — keep the if-else and just flip the subtract to the add-inverse. Also seen: a u16 local for a (read+1) value that is only COMPARED (not stored as u16) forces a spurious lsl#16;lsr#16 truncation — use int when the asm compares the full promoted value. Verified ov80 overlay_80_02230B8C FrtCmd_142 (mode-2 range) / FrtCmd_145 case 37."
     }
   ]
 }
