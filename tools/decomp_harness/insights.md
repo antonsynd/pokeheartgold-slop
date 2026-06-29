@@ -372,6 +372,14 @@ For a dense switch(u8) that emits an add-pc jump table, the range guard is cmp v
 
 An if-else range test on a u8 written (u8)(x - lo) <= n compiles to sub rX,#lo; lsl#0x18;lsr#0x18; cmp #n; bhi. The retail build sometimes computes the SAME thing with an ADD of the additive inverse: add rX,#(256-lo); (u8); cmp #n; bhi (e.g. lo=2 -> add #0xfe). To reproduce the add form, write (u8)(x + (256 - lo)) <= n (e.g. (u8)(mode + 0xfe) <= 1 for modes {2,3}). Semantically identical mod 256, but the encoding (add #0xfe vs sub #2) must match. NOTE: rewriting the if-else as a real switch(x){case lo: case lo+1:} did NOT match here (MWCC generated a different/worse dispatch) — keep the if-else and just flip the subtract to the add-inverse. Also seen: a u16 local for a (read+1) value that is only COMPARED (not stored as u16) forces a spurious lsl#16;lsr#16 truncation — use int when the asm compares the full promoted value. Verified ov80 overlay_80_02230B8C FrtCmd_142 (mode-2 range) / FrtCmd_145 case 37.
 
+### Aggregate init {0,0,0} vs field-by-field changes the zeroing store base register  <!-- id: vecfx32-aggregate-init-store-base -->
+
+Zeroing a stack VecFx32 with field-by-field `v.x=0;v.y=0;v.z=0;` makes MWCC emit SP-relative stores `str r0,[sp,#N]` (encoding 90xx). The aggregate initializer `VecFx32 v = {0,0,0};` instead emits `add rN,sp,#0` then `str r0,[rN,#off]` (encoding 60xx) — a register-base store. When the retail asm shows `add r1,sp,#0` before the zero stores, use the aggregate initializer to match. Cost is a 2-byte add. Seen in ov01_021F8F08.
+
+### do-while loop hoists a loop-invariant terminator constant; while-loop may reload it  <!-- id: do-while-hoists-loop-invariant-const -->
+
+A linear table search that compares against a sentinel each iteration (e.g. spriteId==0xFFFF terminator) matches better as a do-while than a while. The asm loads the 0xFFFF into a register ONCE before the loop (hoisted invariant); a head-controlled while-loop made MWCC reload/restructure it. Form: `p=table; do { if (p->key==target) return p; p++; } while (p->key != 0xFFFF); GF_AssertFail(); return NULL;`. Seen in ObjectEvent_GetGraphicsInfo (overlay_01_021F8D80).
+
 ## Matching Tricks
 
 ### Small source changes that move codegen  <!-- id: decl-order-tricks -->
@@ -605,6 +613,14 @@ To reproduce a retail stack-struct zeroing emitted via a BASE POINTER (add rN,sp
 ### A single-use stack pointer param read lazily in a branch homes to the top when declared void* + cast to a local  <!-- id: stack-ptr-param-home-via-void-cast -->
 
 A setter whose value-pointer is the 5th (stack) argument and is dereferenced exactly once inside an if/switch branch: MWCC may load the stack arg LAZILY at the use site (ldr rN,[sp,#8] inside the branch) instead of homing it into the dead 4th-arg register at the prologue. The retail build homes it at the TOP (push; ldr r3,[sp,#8]; cmp ...). Declaring the param as u8* and copying to a u8* local (u8 *p = val) does NOT help — MWCC coalesces the same-type copy and still loads lazily. FIX: declare the param as void* and add a typed local with a CAST (void *val_ param; u8 *val = val_;). The void*->u8* cast makes MWCC materialize the pointer at the assignment point (function top) so the load is hoisted to the prologue, matching. Verified on unk_02030A98 sub_02030C6C/sub_02030E18/sub_02030FB0 (the FrontierSave bit-flag setters set(p,id,bit,unused,val) with val the 5th stack arg). The matched jump-table setters in the same file (sub_02030B30 etc.) already used void* val_ + u8 *val = val_ and matched first try. Related: [[u16-stack-param-as-int-avoids-ldrh-basepointer]].
+
+### Dense switch jump table needs an explicit case 0 even when it is a no-op  <!-- id: dense-switch-needs-case-zero -->
+
+When the asm uses an inline jump table for a switch over a small contiguous range (e.g. dir 0-3) but case 0 does nothing, you must still write `case 0: break;` explicitly. Without it, MWCC sees cases {1,2,3} as non-contiguous-from-0 and emits a compare-chain (cmp/beq per case) instead of the `add r0,r5,r5; add r0,pc; ldrh; add pc` jump table. Adding `case 0: break;` makes it dense 0-3 -> jump table. Seen in ov01_021F8FC0 (overlay_01_021F8D80).
+
+### Put the common return last so MWCC shares one epilogue block; early-return the rest  <!-- id: single-trailing-return-shares-epilogue -->
+
+When a boolean predicate has many branches all returning, and the asm shows a single shared return-block at the end (multiple `blt/bge` targeting it) plus several inline early returns, write the source so the shared value is the SINGLE trailing return and all other paths `return` early. E.g. `return FALSE` once at the end with every TRUE case returning early — MWCC merges the FALSE epilogue to one block. Writing nested if/else with inline returns on both values prevents the merge and bloats the function (24 extra bytes in ov01_021F8FC0 before the fix).
 
 ## IPA (-ipa file) Behavior
 

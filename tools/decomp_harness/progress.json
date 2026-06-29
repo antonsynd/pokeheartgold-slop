@@ -706,6 +706,14 @@
       "attempts": 1,
       "result": "matched",
       "note": "compare-verified (full ROM SHA1 OK, HeartGold + SoulSilver). Battle Frontier script-command overlay: FrtCmd_139..149, FrtCmd_118/199 + 2 statics (ov80_02230D5C resume cb, ov80_02231040 resume predicate). FrtCmd_145 is a 39-case inline jump table (cases in body-address order, with an explicit empty case 38/0x26 to size the table). Calls sub_02030B14/BD0/BF4 (just-decompiled unk_02030A98 internals, local externs). Frontier data accessed as raw u8* offsets (facility struct not in any header). Fixes: switch range-check uses add #0xfe (additive inverse) not sub #2; case-38 extends jumptable bound; int (not u16) for a compared read+1."
+    },
+    {
+      "file": "asm/overlay_01_021F8D80.s",
+      "lines": 986,
+      "functions": 38,
+      "attempts": 1,
+      "result": "matched",
+      "note": "compare-verified (full ROM SHA1 OK, HeartGold + SoulSilver). Field-object jump/movement system ('FldObjSys'): 29 exports + 9 statics. Per-object move struct (FieldObjMove) cast over LocalMapObject.unk108[0x20] from sub_0205F40C; unk10 u32 overlaps s8 cell-deltas at 0x12/0x13 (accessed via ((s8*)mv)[0x12]); unk17 modeled as a bitfield (bit0/bit2 set/clear/test). ov01_021F8D80 arg2 is a distinct caller-owned movement-step struct. Frozen header overlay_01_021F8D80.h declares only ov01_021F902C; all other exports use local prototypes (IPA discipline); ov01_021F9408 matched against overlay_01.h's signature via local proto. Static rodata dispatch table ov01_02208B5C[2]. Key matching fixes: (1) dense switch(dir) needs explicit `case 0: break;` to emit the jump table (else MWCC emits a compare-chain); (2) VecFx32 zero via aggregate init `= {0,0,0}` emits add rN,sp + str[rN] (matches asm) where field-by-field emits sp-relative stores; (3) ObjectEvent_GetGraphicsInfo search as do-while hoists the 0xFFFF terminator to a reg; (4) single trailing `return FALSE` + early `return TRUE`s so MWCC shares the FALSE epilogue; (5) fx32->cell is signed `/0x1000` not `>>12`. ov01_021F8E70/8FC0 inline jump tables -> objdiff SIZE false-positives (bytes identical; ROM SHA1 confirms)."
     }
   ],
   "failed": [
