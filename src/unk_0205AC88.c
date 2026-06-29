@@ -1,26 +1,29 @@
-// WIP / DEFERRED (15/22 functions byte-match as of this session). Compiles
+// WIP / DEFERRED (18/22 functions byte-match as of this session). Compiles
 // cleanly; main.lsf is intentionally still on asm/unk_0205AC88.o so the ROM
 // matches. To resume: flip main.lsf to src/unk_0205AC88.o and finish the rest.
 //
 // Multiplayer "linked-walking" follower-NPC controller. Struct layout fully
 // derived (UnkStruct_0205AC88 0x4E8, Follower 0x18 at +0xC[51], MailManager
-// 0x350). Matching: sub_0205AC88, AD0C, AD24, AD3C, AEA0, B0DC, B118, B1E4,
-// B218, B240, B338, B380, B3A0, B3B8, B3CC.
+// 0x350). Matching now includes AD60, B13C, B35C (fixed this session:
+// AD60 hoists work->unk00 to a local before the FieldSystem call; B13C passes
+// ov01_021FD8E8(obj, 1) for relation==1 reusing the r1=1 from f->state=1;
+// B35C inits the counter before the elem pointer via `for (i=0, e=...)`).
 //
-// Still mismatching (leads):
-//  - sub_0205AD60 (18B): MWCC must hoist work->unk00 into a callee reg before
-//    the FieldSystem_TaskIsRunning call (asm pushes r4,r5; this C pushes r4
-//    only). Read work->unk00 into a local at the top.
-//  - sub_0205AD9C (SIZE): this implementation is a rushed/likely-wrong first
-//    pass — RE-DERIVE from the asm (_0205ADD0 branch: record!=0 path compares
-//    record[0x50] vs followers[idx].id, then a 4-iter loop over follower
-//    sub-slots indexed by _020FC824[idx]+j with state 0/2/4 handling).
-//  - sub_0205AEA8 / sub_0205AF78 / sub_0205B27C (SIZE/28B): the dual-base
-//    follower walk — asm walks `work + i*0x18` with +0xC field immediates while
-//    the helpers get `&followers[i]`. Model with an explicit walking base or
-//    match the indexed/walking forms; this is the [[idx-stride-cse]] fragility.
-//    AF78 also has an inline 5-case jump table (objdiff SIZE false-positive).
-//  - sub_0205B13C (SIZE/4B), sub_0205B35C (2B): minor.
+// Still mismatching — all 4 share ONE root cause (do NOT treat as independent):
+//   the retail asm SPILLS `work` (and, in the record path, `record+0x50`) to the
+//   stack and reloads it inside the loop, so its frame is LARGER than ours
+//   (e.g. AEA8 206B asm vs 192B mine; AD9C 256 vs 244). MWCC-on-our-C keeps those
+//   live values in callee-saved registers instead — fewer spills, smaller code.
+//   This is a liveness/register-pressure divergence, not a logic bug: tried both
+//   the walking-pointer (`Follower *f = &followers[0]; f++`) and the indexed
+//   (`work->followers[i]`) forms for AEA8 — neither reproduces the spill.
+//   The spill is most likely driven by the `record` profile being a NESTED
+//   sub-struct: the asm computes `record+0x50` (kept live in a reg) THEN
+//   `record+0x60` (= +0x50 + 0x10, the PlayerProfile), i.e. `&record->a.b`,
+//   which our flat `(PlayerProfile*)(record+0x60)` cast does not model. Get the
+//   real container struct for `record` (the sub_0205A1F4 return type) and the
+//   spill pressure should fall out. Affected: sub_0205AD9C, AEA8, AF78, B27C.
+//   AF78 also has an inline 5-case jump table (objdiff SIZE false-positive).
 
 #include "unk_0205AC88.h"
 
@@ -158,61 +161,56 @@ void sub_0205AD3C(struct UnkStruct_0205AC88 *a0) {
 
 static void sub_0205AD60(SysTask *task, void *work_) {
     UnkStruct_0205AC88 *work = work_;
+    struct UnkStruct_02059E1C *unk00 = work->unk00;
 #pragma unused(task)
     if (!FieldSystem_TaskIsRunning(work->fieldSystem)) {
         work->playerAvatar = work->fieldSystem->playerAvatar;
-        sub_0205AEA8(work, work->unk00, work->fieldSystem->mapObjectManager, work->palPad);
+        sub_0205AEA8(work, unk00, work->fieldSystem->mapObjectManager, work->palPad);
         sub_0205AF78(work, work->fieldSystem->mapObjectManager);
     }
 }
 
 static BOOL sub_0205AD9C(UnkStruct_0205AC88 *work, int idx, void *record, SavePalPad *palPad) {
-    int i = 0;
+    int j;
     BOOL ret = FALSE;
-    u8 *r;
+    int v;
     if (record == NULL) {
-        u16 v = _020FC824[idx];
-        for (i = 0; i < 4; i++) {
+        v = _020FC824[idx];
+        for (j = 0; j < 4; j++) {
             sub_0205AEA0(&work->followers[0], v, 3);
             v++;
         }
         return FALSE;
     }
-    r = (u8 *)record + 0x80;
-    if (*(u32 *)((u8 *)record + 0x50) == work->followers[idx].id) {
-        u16 v = _020FC824[idx];
-        int j = i;
-        for (; j < 4; j++) {
-            Follower *f = &work->followers[v];
-            if (work->followers[v].state == 0) {
-                if (((u8 *)r + j)[0x18] != 0) {
-                    f->cmd = 2;
-                    f->relation = 0;
-                    f->avatar = ((u8 *)r + j)[0x18] & 0x7f;
-                    f->relation = PalPad_PlayerIdIsFriendOrMutual(palPad, *(u32 *)(r + j * 4));
-                    ret = TRUE;
-                }
-            } else if (work->followers[v].state == 2) {
-                if (((u8 *)r + j)[0x18] == 0) {
-                    sub_0205AEA0(&work->followers[0], v, 3);
-                } else {
-                    ret = TRUE;
-                }
-            } else if (work->followers[v].state == 4) {
-                f->cmd = 0;
-            }
-            v++;
-        }
-        return ret;
-    }
-    {
-        u16 v = _020FC824[idx];
-        for (; i < 4; i++) {
+    if (*(u32 *)((u8 *)record + 0x50) != work->followers[idx].id) {
+        v = _020FC824[idx];
+        for (j = 0; j < 4; j++) {
             sub_0205AEA0(&work->followers[0], v, 3);
             v++;
         }
+        return FALSE;
     }
-    return FALSE;
+    v = _020FC824[idx];
+    for (j = 0; j < 4; j++) {
+        if (work->followers[v].state == 0) {
+            if (((u8 *)record + 0x98)[j] != 0) {
+                work->followers[v].cmd = 2;
+                work->followers[v].avatar = ((u8 *)record + 0x98)[j] & 0x7f;
+                work->followers[v].relation = PalPad_PlayerIdIsFriendOrMutual(palPad, ((u32 *)((u8 *)record + 0x80))[j]);
+                ret = TRUE;
+            }
+        } else if (work->followers[v].state == 2) {
+            if (((u8 *)record + 0x98)[j] == 0) {
+                sub_0205AEA0(&work->followers[0], v, 3);
+            } else {
+                ret = TRUE;
+            }
+        } else if (work->followers[v].state == 4) {
+            work->followers[v].cmd = 0;
+        }
+        v++;
+    }
+    return ret;
 }
 
 static void sub_0205AEA0(Follower *base, int idx, u8 val) {
@@ -221,37 +219,36 @@ static void sub_0205AEA0(Follower *base, int idx, u8 val) {
 
 static void sub_0205AEA8(UnkStruct_0205AC88 *work, struct UnkStruct_02059E1C *unk00, MapObjectManager *unused, SavePalPad *palPad) {
     int i;
-    Follower *f = &work->followers[0];
+    Follower *base = &work->followers[0];
 #pragma unused(unused)
     for (i = 0; i < 0xa; i++) {
         void *record = sub_0205A1F4(unk00, i);
         PlayerProfile *profile = record != NULL ? (PlayerProfile *)((u8 *)record + 0x60) : NULL;
-        if (f->state == 0) {
+        if (work->followers[i].state == 0) {
             if (record != NULL) {
-                f->avatar = PlayerProfile_GetAvatar(profile);
-                f->relation = PalPad_PlayerIdIsFriendOrMutual(palPad, PlayerProfile_GetTrainerID(profile));
-                f->id = *(u32 *)profile;
+                work->followers[i].avatar = PlayerProfile_GetAvatar(profile);
+                work->followers[i].relation = PalPad_PlayerIdIsFriendOrMutual(palPad, PlayerProfile_GetTrainerID(profile));
+                work->followers[i].id = *(u32 *)profile;
                 if (sub_0205AD9C(work, i, record, palPad)) {
-                    f->cmd = 2;
+                    work->followers[i].cmd = 2;
                 } else {
-                    f->cmd = 1;
+                    work->followers[i].cmd = 1;
                 }
             }
-        } else if (f->state == 2) {
+        } else if (work->followers[i].state == 2) {
             if (record == NULL) {
-                sub_0205AEA0(&work->followers[0], i, 3);
-            } else if (*(u32 *)profile != f->id) {
-                sub_0205AEA0(&work->followers[0], i, 3);
+                sub_0205AEA0(base, i, 3);
+            } else if (*(u32 *)profile != work->followers[i].id) {
+                sub_0205AEA0(base, i, 3);
             }
             if (sub_0205AD9C(work, i, record, palPad)) {
-                if (f->unk09 == 1) {
-                    f->cmd = 3;
+                if (work->followers[i].unk09 == 1) {
+                    work->followers[i].cmd = 3;
                 }
             }
-        } else if (f->state == 4) {
-            f->cmd = 0;
+        } else if (work->followers[i].state == 4) {
+            work->followers[i].cmd = 0;
         }
-        f++;
     }
 }
 
@@ -370,7 +367,7 @@ static void sub_0205B13C(Follower *f, LocalMapObject *obj, u32 playerX, u32 play
         return;
     }
     if (f->relation == 1) {
-        f->fx1 = ov01_021FD8E8(obj, 0);
+        f->fx1 = ov01_021FD8E8(obj, 1);
     } else if (f->relation >= 2) {
         f->fx1 = ov01_021FD8E8(obj, 2);
     }
@@ -456,8 +453,8 @@ static void sub_0205B338(MailElem *e) {
 
 static void sub_0205B35C(MailManager *m) {
     int i;
-    MailElem *e = m->elems;
-    for (i = 0; i < 0x1e; i++) {
+    MailElem *e;
+    for (i = 0, e = m->elems; i < 0x1e; i++) {
         sub_0205B338(e);
         e++;
     }

@@ -1081,9 +1081,9 @@
       "file": "asm/unk_0205AC88.s",
       "lines": 984,
       "functions": 22,
-      "attempts": 1,
+      "attempts": 2,
       "result": "deferred_wip",
-      "note": "15/22 functions byte-match (WIP, compiles). Multiplayer follower-NPC walking controller. Full struct layout derived (UnkStruct_0205AC88 0x4E8 / Follower 0x18 at +0xC[51] / MailManager 0x350). main.lsf kept on asm so ROM matches. Remaining: sub_0205AD60 (hoist work->unk00 to callee reg), sub_0205AD9C (re-derive - rushed first pass likely wrong), sub_0205AEA8/AF78/B27C (dual-base follower walk work+i*0x18 + 0xC offsets; AF78 has inline 5-case jumptable), sub_0205B13C/B35C (minor). See WIP header in src/unk_0205AC88.c. Resume as targeted task."
+      "note": "18/22 functions byte-match (WIP, compiles; up from 15/22). Multiplayer follower-NPC walking controller. Full struct layout derived (UnkStruct_0205AC88 0x4E8 / Follower 0x18 at +0xC[51] / MailManager 0x350). main.lsf kept on asm so ROM matches. Fixed this session: AD60 (hoist work->unk00), B13C (ov01_021FD8E8(obj,1) reusing r1=1 from f->state=1), B35C (init counter before elem ptr). Remaining 4 share ONE root cause: retail asm SPILLS `work` (+ record+0x50 in the record path) to the stack and reloads inside the loop, giving a LARGER frame than ours (AEA8 206B vs 192B, AD9C 256 vs 244) \u2014 MWCC-on-our-C keeps those live in callee regs. Tried walking-ptr and indexed forms for AEA8; neither reproduces the spill. Likely the `record` profile is a NESTED sub-struct (asm does record+0x50 then +0x60 = &record->a.b) \u2014 need the real sub_0205A1F4 return type. Affected: AD9C, AEA8, AF78, B27C (AF78 also has inline 5-case jumptable -> objdiff SIZE false-positive). See WIP header."
     },
     {
       "file": "asm/overlay_01_021FEEEC.s",
