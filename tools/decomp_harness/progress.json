@@ -714,6 +714,14 @@
       "attempts": 1,
       "result": "matched",
       "note": "compare-verified (full ROM SHA1 OK, HeartGold + SoulSilver). Field-object jump/movement system ('FldObjSys'): 29 exports + 9 statics. Per-object move struct (FieldObjMove) cast over LocalMapObject.unk108[0x20] from sub_0205F40C; unk10 u32 overlaps s8 cell-deltas at 0x12/0x13 (accessed via ((s8*)mv)[0x12]); unk17 modeled as a bitfield (bit0/bit2 set/clear/test). ov01_021F8D80 arg2 is a distinct caller-owned movement-step struct. Frozen header overlay_01_021F8D80.h declares only ov01_021F902C; all other exports use local prototypes (IPA discipline); ov01_021F9408 matched against overlay_01.h's signature via local proto. Static rodata dispatch table ov01_02208B5C[2]. Key matching fixes: (1) dense switch(dir) needs explicit `case 0: break;` to emit the jump table (else MWCC emits a compare-chain); (2) VecFx32 zero via aggregate init `= {0,0,0}` emits add rN,sp + str[rN] (matches asm) where field-by-field emits sp-relative stores; (3) ObjectEvent_GetGraphicsInfo search as do-while hoists the 0xFFFF terminator to a reg; (4) single trailing `return FALSE` + early `return TRUE`s so MWCC shares the FALSE epilogue; (5) fx32->cell is signed `/0x1000` not `>>12`. ov01_021F8E70/8FC0 inline jump tables -> objdiff SIZE false-positives (bytes identical; ROM SHA1 confirms)."
+    },
+    {
+      "file": "asm/overlay_01_022001E4.s",
+      "lines": 706,
+      "functions": 28,
+      "attempts": 1,
+      "result": "matched",
+      "note": "compare-verified (full ROM SHA1 OK, HeartGold + SoulSilver). Field-effect cluster (ov01_021F1348 family) manager+effect: 5 exports + 23 statics. Per-file structs (UnkManager 0x14, UnkData 0x10, UnkWork 0x44, two cb templates + a 24B config) + local externs, NO cluster header. Sibling overlay_01_022006A8.c is the structural template. drafter-first (25/28 first build). Fixes: cb2 case-0 branch polarity inverted (if(unk1c!=0)subtract else advance); ov01_02200540 arg-eval tie fixed by hoisting `int priority = MapObject_GetPriority(mapObject)+1;` into a temp before the ov01_021F1620 call (forces priority+1 computed before &data). KEY RODATA WIN: MWCC SIZE-SORTS static const objects, so the two templates(20B each)+config(24B) had to be combined into ONE `static const struct { Template templates[2]; Config config; } sRodata` to keep retail field order (templates before the smaller config); consumers use &sRodata.config / &sRodata.templates[1]. The {1,0xC} model array is a local-init in ov01_022003C4 that size-sorts (8B) ahead of sRodata(64B). The unreferenced template[0]/cbs 418/480 stay alive via the array."
     }
   ],
   "failed": [

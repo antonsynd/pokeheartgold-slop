@@ -1383,6 +1383,12 @@
       "category": "matching-tricks",
       "title": "Put the common return last so MWCC shares one epilogue block; early-return the rest",
       "body": "When a boolean predicate has many branches all returning, and the asm shows a single shared return-block at the end (multiple `blt/bge` targeting it) plus several inline early returns, write the source so the shared value is the SINGLE trailing return and all other paths `return` early. E.g. `return FALSE` once at the end with every TRUE case returning early — MWCC merges the FALSE epilogue to one block. Writing nested if/else with inline returns on both values prevents the merge and bloats the function (24 extra bytes in ov01_021F8FC0 before the fix)."
+    },
+    {
+      "id": "size-sorted-static-consts-combine-into-struct",
+      "category": "data-sections",
+      "title": "MWCC size-sorts static const rodata objects too — combine into one struct to keep retail order",
+      "body": "MWCC -ipa file size-sorts STATIC const objects in .rodata (smallest first), not just exported ones. A matching sibling can pass by luck when size-order == source-order. When retail order is NOT size-sorted (e.g. a 40-byte template array sits BEFORE a 24-byte config), combine the out-of-size-order objects into ONE `static const struct {...}` so they stay in field/declaration order; consumers reference members (&s.config, &s.templates[1]). Confirmed: overlay_01_022001E4 (2 cb templates + config -> one struct fixed a 6-byte rodata diff). A function-LOCAL array initializer (e.g. `int models[2]={1,0xC};`) is also an anonymous const that participates in the same size-sort (it sorted 8B ahead of the 64B combined struct, matching retail). Diagnose with: arm-none-eabi-objcopy -O binary --only-section=.rodata then cmp/xxd vs the asm .o; or nm sorted by address."
     }
   ]
 }
