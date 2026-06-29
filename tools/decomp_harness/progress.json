@@ -1084,6 +1084,14 @@
       "attempts": 1,
       "result": "deferred_wip",
       "note": "15/22 functions byte-match (WIP, compiles). Multiplayer follower-NPC walking controller. Full struct layout derived (UnkStruct_0205AC88 0x4E8 / Follower 0x18 at +0xC[51] / MailManager 0x350). main.lsf kept on asm so ROM matches. Remaining: sub_0205AD60 (hoist work->unk00 to callee reg), sub_0205AD9C (re-derive - rushed first pass likely wrong), sub_0205AEA8/AF78/B27C (dual-base follower walk work+i*0x18 + 0xC offsets; AF78 has inline 5-case jumptable), sub_0205B13C/B35C (minor). See WIP header in src/unk_0205AC88.c. Resume as targeted task."
+    },
+    {
+      "file": "asm/overlay_01_021FEEEC.s",
+      "lines": 728,
+      "functions": 14,
+      "attempts": 1,
+      "result": "deferred_analyzed",
+      "note": "Analyzed, not yet written (deferred for a targeted session). Camera/3D-effect family (ov01_021F1348 cluster) multi-sub-object MANAGER variant: ov01_021FEEEC ctor (ov01_021F1430(arg,4,0,0)), ov01_021FEF18 manager-init registers sub-objects via ov01_021F18D4/1908/1930/1758 with const templates (ov01_02209160/178/190/1A8 byte arrays), ov01_021FEFF8 cleanup (18FC/1924/1970/18C8), spawn fns ov01_021FF070/0E4 (ov01_021F1620 + template ov01_02209138), and cb1s ov01_021FF174/394 which BLOCK-COPY (ldmia/stmia) the sub_02068D98 data -> MATCHABLE per insight camera-family-blockcopy-cb1-matches. Approach: per-file manager/work/data structs + LOCAL externs for the ov01_021F18xx framework (do NOT include overlay_01_021F1348.h / overlay_01.h). Template: src/field/overlay_01_021FE780.c. Main work is deriving the multi-slot manager struct + the ~12 framework signatures from call sites. Two rodata templates {0x40,cb1,thunk,cb2,cb} @02209138 and {0x28,...} @0220914C, plus 4 sub-object byte templates."
     }
   ],
   "in_progress": {
@@ -1096,9 +1104,9 @@
     "notes": "WIP 225/364 byte-matched (objdiff). Latest batch (+2): ov02_0224B3B0 (B364 clone), ov02_0224D358 (D-init clone). Deferred ov02_0224D73C/DEA8 (2-instr scheduling), ov02_0224F64C (jump table), ov02_02250738 (rodata-template local array). ROM still matches retail (main.lsf on asm)."
   },
   "stats": {
-    "total_attempts": 158,
+    "total_attempts": 159,
     "total_matched": 67,
-    "total_failed": 30
+    "total_failed": 31
   },
   "matched": [
     {
