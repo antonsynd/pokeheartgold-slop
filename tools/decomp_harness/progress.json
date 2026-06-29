@@ -1068,6 +1068,14 @@
       "file": "asm/unk_0205A44C.s",
       "result": "deferred",
       "note": "Mail/easy-chat buffering: 28 fns + ~24 rodata lookup tables + 4 jump tables + 13 undeclared cluster helpers + large 2-struct (ctx+0x80->work) layout. Mechanical but detailed; full pre-analysis in knowledge.json. Focused-session target; write directly (drafter subagent looped without producing output)."
+    },
+    {
+      "file": "asm/overlay_80_022310C4.s",
+      "lines": 1397,
+      "functions": 20,
+      "attempts": 1,
+      "result": "deferred_wip",
+      "note": "12/20 functions byte-match (WIP). Large float-heavy Frontier facility-logic overlay (cluster partner of overlay_80_02230B8C). C file src/frontier/overlay_80_022310C4.c is written + compiles; main.lsf kept at asm so the ROM matches. Remaining: ov80_022310C4 big init (global ov80_0223DD44 reload pattern + u16 loop counters + stack frame 0x18), ov80_02231A14 (float, ~12B off), ov80_022318D0/02231930 (~4B, missing (u16) after (u8)), ov80_022313C8/0223157C (~8B). Deferred so the loop advances; resume as a targeted task. See WIP header in the .c."
     }
   ],
   "in_progress": {
@@ -1080,9 +1088,9 @@
     "notes": "WIP 225/364 byte-matched (objdiff). Latest batch (+2): ov02_0224B3B0 (B364 clone), ov02_0224D358 (D-init clone). Deferred ov02_0224D73C/DEA8 (2-instr scheduling), ov02_0224F64C (jump table), ov02_02250738 (rodata-template local array). ROM still matches retail (main.lsf on asm)."
   },
   "stats": {
-    "total_attempts": 156,
+    "total_attempts": 157,
     "total_matched": 67,
-    "total_failed": 28
+    "total_failed": 29
   },
   "matched": [
     {
