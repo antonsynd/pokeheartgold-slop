@@ -13,10 +13,15 @@ Score components (weights are heuristics — tune in WEIGHTS):
   jumptable words   — switch tables: case-order matching is fiddly
   rodata bytes      — data-section ordering risk
   arm functions     — rarer, different idioms than Thumb
-  blocker gating    — file imports symbols exported by a known-blocked file
+  blocker gating    — file is predicted to hit a registered blocker; the
+                      prediction rule is per-blocker (gate_mode in
+                      blockers.json, resolved by asmscan.blocker_gates)
 
 Cluster partners are reported per file: pending files that define symbols this
 file imports (decompile together to avoid IPA header churn).
+
+Rows also carry copyprop_funcs: functions whose entry idiom is unreachable
+from C (param-copyprop-cmp) — route them straight to the NONMATCHING fallback.
 
 Usage:
   python3 tools/decomp_harness/triage.py                 # write report, show top 20
@@ -64,23 +69,19 @@ def build_report(ledger):
         for sym in r.get("exports", []):
             export_map[sym] = r["file"]
 
+    # per-blocker gate_mode semantics live in asmscan.blocker_gates;
+    # gate_weight scales the blocker_gated score penalty (0.0 = informational
+    # gate, e.g. copyprop files just need a routine NONMATCHING fallback)
     gated_files = {}
-    blocked_exports = {}
-    by_file = {r["file"]: r for r in files}
+    gate_weights = {}
     blockers_path = HARNESS / "blockers.json"
     if blockers_path.exists():
+        import asmscan
         with open(blockers_path) as f:
             for b in json.load(f)["blockers"]:
-                syms = set()
-                for bf in b.get("files_blocked", []):
-                    syms.update(by_file.get(bf, {}).get("exports", []))
-                if syms:
-                    blocked_exports[b["id"]] = syms
-    for r in pending:
-        imports = set(r.get("imports", []))
-        for bid, syms in blocked_exports.items():
-            if imports & syms:
-                gated_files.setdefault(r["file"], []).append(bid)
+                gate_weights[b["id"]] = b.get("gate_weight", 1.0)
+                for gf in asmscan.blocker_gates(b, files):
+                    gated_files.setdefault(gf, []).append(b["id"])
 
     rows = []
     for r in pending:
@@ -103,9 +104,10 @@ def build_report(ledger):
             + WEIGHTS["jumptable_word"] * r.get("jumptable_words", 0)
             + WEIGHTS["rodata_byte"] * rodata
             + WEIGHTS["arm_function"] * arm_fns
-            + WEIGHTS["blocker_gated"] * len(gates)
+            + WEIGHTS["blocker_gated"] * sum(gate_weights.get(bid, 1.0) for bid in gates)
             + WEIGHTS["special_section"] * len(special)
         )
+        copyprop = [f["name"] for f in r.get("functions", []) if f.get("copyprop_entry")]
         rows.append({
             "file": r["file"],
             "score": round(score, 1),
@@ -118,6 +120,10 @@ def build_report(ledger):
             "rodata_bytes": rodata,
             "arm_functions": arm_fns,
             "gated_by": gates,
+            # entry idiom is unreachable from C — route these straight to the
+            # NONMATCHING fallback instead of burning match attempts (no score
+            # penalty: the fallback is routine)
+            "copyprop_funcs": copyprop,
             "cluster_partners": [{"file": f, "shared_symbols": n} for f, n in partners],
         })
 

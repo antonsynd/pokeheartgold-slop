@@ -52,7 +52,13 @@ Mark items done with `[x]` and a one-line result + commit hash.*
 
 ## Tier 0 — Registry hygiene + free wins (~3–4 days total; no new tooling required)
 
-### T0.1 blockers.json / gating cleanup  `[ ]`  (0.5 day, zero build risk)
+### T0.1 blockers.json / gating cleanup  `[x]`  (done 2026-07-01)
+*Result: unk_0200FA24 split into `ipa-cse-literal-pool`; per-blocker `gate_mode` +
+`gate_weight` in blockers.json, resolved by `asmscan.blocker_gates`; copyprop entry-idiom
+scan added to asmscan (20 sites / 9 files confirmed, surfaced as `copyprop_funcs` in triage
+rows, zero score penalty); data-label capture fixes import/export split for data-only files
+(ext-data-section-split now gates 3 real pending files incl. unk_data_020FDB44); ipa gate
+count dropped 97 → 0 predictive (defining file only). Queue head score 1708 → 1361.*
 - Split `unk_0200FA24.s` into new blocker id `ipa-cse-literal-pool`.
 - Add a `gate_kind` field: `defines-frozen-header-symbols` (real) vs
   `imports-blocked-file-symbols` (weak; near-zero triage weight).

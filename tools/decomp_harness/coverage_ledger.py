@@ -85,8 +85,11 @@ def build_ledger():
 
         scan = asmscan.parse_asm(asm_path)
         publics = asmscan.parse_inc(ROOT / "asm" / "include" / (name + ".inc"))
-        imports = sorted(set(publics) - scan["defined"])
-        exports = sorted(set(publics) & scan["defined"])
+        # .public lists mix imports and exports; a symbol is exported if this
+        # file defines it — as a function OR as a data label
+        defined_here = scan["defined"] | scan["data_labels"]
+        imports = sorted(set(publics) - defined_here)
+        exports = sorted(set(publics) & defined_here)
 
         if obj["kind"] == "src":
             status = "matched"
@@ -113,6 +116,7 @@ def build_ledger():
                     "insns": f["insns"],
                     "size_est": f["size_est"],
                     "status": status,
+                    **({"copyprop_entry": True} if f.get("copyprop_entry") else {}),
                 }
                 for f in scan["functions"]
             ],
@@ -234,19 +238,12 @@ def write_markdown(files, summary, blockers, out_path):
 
 
 def compute_gating(files, blockers):
-    """For each blocker, find pending files importing symbols exported by its
-    blocked files — those decomps will likely hit the same wall."""
-    by_file = {r["file"]: r for r in files}
+    """For each blocker, find pending files it predictively gates. Gating
+    semantics are per-blocker via gate_mode in blockers.json — see
+    asmscan.blocker_gates (legacy import-based gating over-counts badly for
+    blockers whose files export ubiquitous APIs)."""
     for b in blockers:
-        exported = set()
-        for f in b.get("files_blocked", []):
-            exported.update(by_file.get(f, {}).get("exports", []))
-        gates = []
-        if exported:
-            for r in files:
-                if r["status"] == "pending" and exported & set(r.get("imports", [])):
-                    gates.append(r["file"])
-        b["gates_pending"] = sorted(gates)
+        b["gates_pending"] = asmscan.blocker_gates(b, files)
 
 
 def main():

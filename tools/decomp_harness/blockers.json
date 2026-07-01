@@ -1,36 +1,49 @@
 {
-  "_comment": "Hand-curated blocker registry. 'files_blocked' lists asm files whose decomp failed on this blocker; gating estimates (which pending files this blocker likely also affects) are computed by coverage_ledger.py from the symbol graph at generation time. Keep fix_plan current \u2014 fixing the blocker that gates the most files is worth more than individual decomps.",
+  "_comment": "Hand-curated blocker registry. 'files_blocked' lists asm files whose decomp failed on this blocker. 'gate_mode' controls how coverage_ledger/triage predict which pending files the blocker also affects (see asmscan.blocker_gates): 'imports' (legacy symbol-import overlap; over-counts for ubiquitous APIs), 'none' (no prediction), 'copyprop_entry' (entry-idiom scan), 'data_only_multi_public' (file shape scan). Keep fix_plan current — fixing the blocker that gates the most files is worth more than individual decomps. Registry audited 2026-07-01 (see tools/decomp_harness/ROADMAP.md T0.1): gate counts before the audit conflated root causes and were mostly false positives.",
   "blockers": [
     {
       "id": "ipa-shared-headers",
-      "description": "MWCC -ipa file: changing a signature in a shared header cascades codegen changes into every already-matched caller in other compilation units. Files sharing many declarations (sound.h family) must be decompiled together or after a coordinated header fix.",
+      "gate_mode": "none",
+      "description": "MWCC -ipa file: changing a signature in a shared header cascades codegen changes into every already-matched caller in other compilation units. Affects only files that must ADD or CHANGE declarations in a frozen header — call-only consumers of the exported APIs are NOT gated (proven by patterns 'ipa-blocked-files-can-call-sound-fns-without-cascade' and 'false-ipa-gate-shared-imports'; the old import-based gate count of ~97 was noise).",
       "files_blocked": [
-        "asm/unk_02005D10.s",
+        "asm/unk_02005D10.s"
+      ],
+      "fix_plan": "Decompile unk_02005D10.s itself with split-header discipline (ROADMAP T0.4): the defining .c uses local prototypes with codegen-correct types; sound.h stays frozen at the state its ~108 matched consumers were matched against. The 2026-06-10 blocked attempt edited sound.h directly and predates the split-header convention (13+ *_internal.h precedents in-tree). Gate check: objdiff the first 5 functions before committing to the rest. Do NOT attempt a big-bang header fix — the matched consumers are not wrong, they are matched."
+    },
+    {
+      "id": "ipa-cse-literal-pool",
+      "gate_mode": "none",
+      "description": "MWCC -ipa file caches repeated literal-pool addresses/large offsets in callee-saved registers across calls where retail reloads them (or vice versa). A codegen-shape problem, not a header problem — split from ipa-shared-headers 2026-07-01, where this file's ubiquitous exports (BeginNormalPaletteFade family, imported by ~84 pending .inc files) badly inflated the gate count.",
+      "files_blocked": [
         "asm/unk_0200FA24.s"
       ],
-      "fix_plan": "Identify the header-sharing cluster (sound.h / sound_chatot.h consumers), fix all signatures in one change, and re-match affected files in a single commit. Alternatively decompile the cluster as a group."
+      "fix_plan": "Permuter-class search over cache/reload flip mutations (introduce/remove local temp for base+offset — see patterns hoist-size-local-callee-saved, no-cache-reloaded-pointer-across-calls) once the decomp-permuter harness exists (ROADMAP T1.4). Until then: NONMATCHING fallback for the affected functions, land the rest in C."
     },
     {
       "id": "param-copyprop-cmp",
-      "description": "MWCC copy-propagates parameter copies: 'adds r4, r0, #0; cmp r4, #N' at function entry cannot be produced from pure C (MWCC substitutes back to r0). Affected functions need the NONMATCHING inline-asm fallback.",
+      "gate_mode": "copyprop_entry",
+      "gate_weight": 0.0,
+      "description": "MWCC copy-propagates parameter copies: 'adds r4, r0, #0; cmp r4, #N' at function entry cannot be produced from pure C (MWCC substitutes back to r0; the shape only arises for saved return values after a bl). Affected functions need the NONMATCHING inline-asm fallback — routine, not a wall. Entry-idiom scan (asmscan) finds 20 sites in 9 files: overlay_102 (6), unk_02077678 (4), overlay_96 (3), overlay_48 (2), overlay_112, unk_02004A44, unk_0200B150, unk_020517A4, unk_02058034 (1 each). Gated files carry the affected function names in triage_report copyprop_funcs.",
       "files_blocked": [
         "asm/unk_0200B150.s"
       ],
-      "fix_plan": "Use NONMATCHING inline asm for the single affected function (OamManager_Create) and re-land the file with the other 10/11 matched functions in C."
+      "fix_plan": "NEVER EXECUTED as of 2026-07-01: main.lsf still links asm/unk_0200B150.o and src/unk_0200B150.c does not exist — ~10 matched functions were reverted and lost. Execute now (ROADMAP T0.2): re-decompile unk_0200B150 (11 fns, 313 lines) with OamManager_Create as NONMATCHING inline asm (mechanics: pattern nonmatching-inline-asm-mwasmarm-gotchas; end-to-end precedent unk_02014A08). Serves as the pilot for the nonmatch_fallback.py one-command generator (ROADMAP T1.5)."
     },
     {
       "id": "objdiff-false-positives",
-      "description": "RESOLVED. objdiff.py had a critical bug: the byte extraction regex did not match MWCC's ARM Thumb objdump format (packed hex like 'b418' vs expected space-separated 'b4 18'). It extracted 0 bytes for every function, so 0==0 always reported MATCH. 11 decomps accepted via objdiff were not actually byte-matching. Fixed in this session; all 11 non-matching decomps reverted to asm. 2 decomps that truly match (unk_0202DB34, battle_arcade_game_board_data) kept.",
+      "gate_mode": "none",
+      "description": "RESOLVED. objdiff.py had a critical bug: the byte extraction regex did not match MWCC's ARM Thumb objdump format (packed hex like 'b418' vs expected space-separated 'b4 18'). It extracted 0 bytes for every function, so 0==0 always reported MATCH. 11 decomps accepted via objdiff were not actually byte-matching. Fixed; all 11 non-matching decomps reverted to asm. 2 decomps that truly match (unk_0202DB34, battle_arcade_game_board_data) kept.",
       "files_blocked": [],
-      "fix_plan": "No further action. The objdiff tool is now fixed. Future decomps will be properly byte-verified."
+      "fix_plan": "No further action here, but the deeper text-parsing fragility remains (jump-table false SIZE mismatches, TODO.md) — raw-section extraction rewrite is ROADMAP T1.2."
     },
     {
       "id": "ext-data-section-split",
-      "description": "Data-only files exporting multiple EXTERNAL (.public) const arrays: MWCC -ipa file emits each top-level const as its own .rodata section, and mwldarm orders/aligns them differently than the asm's single packed .rodata, so the linked overlay/module SHA1 fails even though objdiff --summary (per-section) reports a match. Symbols referenced by other TUs must stay non-static, so they cannot be pooled into one section via `static`.",
+      "gate_mode": "data_only_multi_public",
+      "description": "Data-only files exporting multiple EXTERNAL (.public) const arrays: MWCC -ipa file emits each top-level const as its own .rodata section, and mwldarm orders them size-bucketed and permuted (NOT source order), so the linked overlay/module SHA1 fails even though objdiff --summary (per-section) reports a match. Verify these files ONLY with chiri pkg -- compare.",
       "files_blocked": [
         "asm/battle_arcade_game_board_data.s"
       ],
-      "fix_plan": "Find a single-ordered-section technique for external const data under MWCC (e.g. a #pragma/section directive, a wrapper struct that keeps named members in order, or a verified ordering trick). Until then these data files stay asm. Verify ONLY with chiri pkg -- compare (objdiff --summary cannot see cross-section reordering)."
+      "fix_plan": "A proven counter-recipe EXISTS and was never back-applied: commit 14a499941 matched unk_data_020FD978.c (17 exported const arrays) by reading the placed section order (objdump -t) and rewriting source definitions in the inverse per-size-bucket permutation — pattern 'exported-const-fnptr-array-section-reorder'. Run the three T0.3 experiments (ROADMAP): (1) recover the b530ce56f draft, check per-symbol section alignment with objdump -h (this file needs odd-address packing), apply the inverse permutation, full compare; (2) '#pragma section ... begin/end' wrap (pattern version-custom-section-data-unmatchable saw const data land packed and ordered in merged .rodata); (3) factor -ipa file into $(IPAFLAGS) and compile the data-only TU without it. Then apply the winner to the gated files, starting with unk_data_020FDB44.s (96 exports, direct sibling of the solved file)."
     }
   ]
 }
