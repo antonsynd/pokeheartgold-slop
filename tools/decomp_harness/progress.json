@@ -722,6 +722,14 @@
       "attempts": 1,
       "result": "matched",
       "note": "compare-verified (full ROM SHA1 OK, HeartGold + SoulSilver). Field-effect cluster (ov01_021F1348 family) manager+effect: 5 exports + 23 statics. Per-file structs (UnkManager 0x14, UnkData 0x10, UnkWork 0x44, two cb templates + a 24B config) + local externs, NO cluster header. Sibling overlay_01_022006A8.c is the structural template. drafter-first (25/28 first build). Fixes: cb2 case-0 branch polarity inverted (if(unk1c!=0)subtract else advance); ov01_02200540 arg-eval tie fixed by hoisting `int priority = MapObject_GetPriority(mapObject)+1;` into a temp before the ov01_021F1620 call (forces priority+1 computed before &data). KEY RODATA WIN: MWCC SIZE-SORTS static const objects, so the two templates(20B each)+config(24B) had to be combined into ONE `static const struct { Template templates[2]; Config config; } sRodata` to keep retail field order (templates before the smaller config); consumers use &sRodata.config / &sRodata.templates[1]. The {1,0xC} model array is a local-init in ov01_022003C4 that size-sorts (8B) ahead of sRodata(64B). The unreferenced template[0]/cbs 418/480 stay alive via the array."
+    },
+    {
+      "file": "asm/unk_0202FBCC.s",
+      "lines": 2074,
+      "functions": 39,
+      "attempts": 12,
+      "result": "matched",
+      "note": "35 matching C + 4 NONMATCHING (sub_0203018C/302A4/304F0 reg-alloc spill walls, sub_0202FF08 dedup reconstruction); full ROM SHA1 passes"
     }
   ],
   "failed": [
@@ -1150,18 +1158,10 @@
       "note": "ANALYSIS-ONLY defer (no code) \u2014 LARGEST remaining file (1982 lines, 41 fns), all static. overlay_02 battle cluster (sibling of the 364-fn overlay_02_02248728). TaskManager-driven animated battle-effect/scene module: heavy TaskManager_Call/GetFieldSystem/GetEnvironment state machines, BG/graphics (SetBgPriority, GfGfx_EngineATogglePlanes), Heap_Alloc/Free, PlaySE, and SOFT-FLOAT math (_fflt/_fadd/_fsub/_ffix in ~6 fns -> those must stay C, can't NONMATCHING). 102B rodata (small byte tables ov02_0225321C..). 0 unknown callees (all headered). Needs a dedicated focused session (drafter can't handle 1900+ lines; the soft-float coloring fns are the hard core). Triage-easiest of the remaining queue, which is now ALL large files (47/68/34/39/44-fn)."
     }
   ],
-  "in_progress": {
-    "file": "asm/overlay_02_02248728.s",
-    "lines": 17995,
-    "functions": 364,
-    "matched_so_far": 346,
-    "result": "wip-deferred",
-    "note": "178/364 (~49%). +1: ov02_RepelActiveRoamersFromMapNo (roamer loop). Attempted+deferred resource-ADD 02248980 (8-byte cached/reload diff). Deferred clusters: resource-ADD (980/A58/B30/BA0), jump-table funcs, D288/D3B4 dead-cmp, B298/B784 (sub_02068B0C), 16 huge fns. Handoff at EOF.",
-    "notes": "WIP 225/364 byte-matched (objdiff). Latest batch (+2): ov02_0224B3B0 (B364 clone), ov02_0224D358 (D-init clone). Deferred ov02_0224D73C/DEA8 (2-instr scheduling), ov02_0224F64C (jump table), ov02_02250738 (rodata-template local array). ROM still matches retail (main.lsf on asm)."
-  },
+  "in_progress": null,
   "stats": {
     "total_attempts": 159,
-    "total_matched": 67,
+    "total_matched": 68,
     "total_failed": 31
   },
   "matched": [

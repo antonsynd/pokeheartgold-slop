@@ -137,7 +137,7 @@ Static main
     Object src/unk_0202F370.o
     Object src/safari_zone.o
     Object src/photo_album.o
-    Object asm/unk_0202FBCC.o
+    Object src/unk_0202FBCC.o
     Object src/unk_02030A98.o
     Object src/unk_0203170C.o
     Object src/unk_020318C8.o

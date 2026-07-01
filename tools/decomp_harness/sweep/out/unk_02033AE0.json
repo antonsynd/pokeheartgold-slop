@@ -1,0 +1,587 @@
+{
+  "file": "asm/unk_02033AE0.s",
+  "functions": [
+    {
+      "name": "sub_02033AE0",
+      "mode": "thumb",
+      "signature_guess": "void sub_02033AE0(RingBuf *rb, void *buf, u16 capacity)",
+      "confidence": "high",
+      "struct_accesses": [
+        {"param": 0, "offset": "0x0", "width": 4, "meaning": "data buffer ptr = a1"},
+        {"param": 0, "offset": "0x4", "width": 2, "meaning": "readPos, zeroed"},
+        {"param": 0, "offset": "0x6", "width": 2, "meaning": "committedWritePos, zeroed"},
+        {"param": 0, "offset": "0x8", "width": 2, "meaning": "pendingWritePos, zeroed"},
+        {"param": 0, "offset": "0xa", "width": 2, "meaning": "capacity = a2"}
+      ],
+      "notes": "RingBuf constructor/init."
+    },
+    {
+      "name": "sub_02033AF0",
+      "mode": "thumb",
+      "signature_guess": "int sub_02033AF0(RingBuf *rb, const void *src, int count)",
+      "confidence": "medium",
+      "callees": ["sub_02033BF4", "sub_02037974", "sub_02033C14", "GF_AssertFail"],
+      "struct_accesses": [
+        {"param": 0, "offset": "0x0", "width": 4, "meaning": "data buffer ptr"},
+        {"param": 0, "offset": "0x8", "width": 2, "meaning": "pendingWritePos, advanced+wrapped"},
+        {"param": 0, "offset": "0xa", "width": 2, "meaning": "capacity (via sub_02033C14)"}
+      ],
+      "notes": "Writes count bytes from src at pendingWritePos, wrapping via sub_02033C14 (idx % capacity). Asserts via GF_AssertFail if src is NULL mid-loop. If sub_02033BF4(rb) (free-before-overrun) <= count, calls sub_02037974 instead and tail-returns its result. Return value on success path is the last wrapped index from sub_02033C14, not an explicit count -- verify against retail before assuming a 'return new pos' semantic."
+    },
+    {
+      "name": "sub_02033B4C",
+      "mode": "thumb",
+      "signature_guess": "int sub_02033B4C(RingBuf *rb, void *dest, int count)",
+      "confidence": "high",
+      "callees": ["sub_02033B78", "sub_02033C14"],
+      "struct_accesses": [
+        {"param": 0, "offset": "0x4", "width": 2, "meaning": "readPos, advanced by sub_02033C14 wrap"}
+      ],
+      "notes": "r0/r1/r2 pass straight through to sub_02033B78 unmodified (no instructions touch them before the bl); reads up to count bytes, then commits rb->readPos += actualCount (wrapped). Returns actual bytes copied."
+    },
+    {
+      "name": "sub_02033B68",
+      "mode": "thumb",
+      "signature_guess": "u8 sub_02033B68(RingBuf *rb)",
+      "confidence": "high",
+      "callees": ["sub_02033B4C"],
+      "notes": "Reads exactly 1 byte into a 1-byte stack temp via sub_02033B4C(rb,&tmp,1) and returns it. Callers compare the result to sentinel 0xee."
+    },
+    {
+      "name": "sub_02033B78",
+      "mode": "thumb",
+      "signature_guess": "static int sub_02033B78(RingBuf *rb, void *dest, int count)",
+      "confidence": "high",
+      "callees": ["sub_02033C14"],
+      "struct_accesses": [
+        {"param": 0, "offset": "0x4", "width": 2, "meaning": "readPos (local copy only, not stored back)"},
+        {"param": 0, "offset": "0x6", "width": 2, "meaning": "committedWritePos, loop stop condition"},
+        {"param": 0, "offset": "0x0", "width": 4, "meaning": "data buffer ptr"}
+      ],
+      "notes": "NOT in .public -- file-local/static. Byte-by-byte copy from rb into dest, stops early once wrapped readPos==committedWritePos (buffer drained); returns actual bytes copied. Does not persist the new readPos itself -- caller sub_02033B4C does that."
+    },
+    {
+      "name": "sub_02033BC4",
+      "mode": "thumb",
+      "signature_guess": "int sub_02033BC4(RingBuf *rb)",
+      "confidence": "high",
+      "struct_accesses": [
+        {"param": 0, "offset": "0x4", "width": 2, "meaning": "readPos"},
+        {"param": 0, "offset": "0x6", "width": 2, "meaning": "committedWritePos"},
+        {"param": 0, "offset": "0xa", "width": 2, "meaning": "capacity"}
+      ],
+      "notes": "Returns committedWritePos-readPos, wrapped by capacity if negative -- 'unread committed bytes available' count."
+    },
+    {
+      "name": "sub_02033BE4",
+      "mode": "thumb",
+      "signature_guess": "int sub_02033BE4(RingBuf *rb)",
+      "confidence": "high",
+      "callees": ["sub_02033BC4"],
+      "struct_accesses": [{"param": 0, "offset": "0xa", "width": 2, "meaning": "capacity"}],
+      "notes": "Returns capacity - sub_02033BC4(rb)."
+    },
+    {
+      "name": "sub_02033BF4",
+      "mode": "thumb",
+      "signature_guess": "static int sub_02033BF4(RingBuf *rb)",
+      "confidence": "medium",
+      "struct_accesses": [
+        {"param": 0, "offset": "0x4", "width": 2, "meaning": "readPos"},
+        {"param": 0, "offset": "0x8", "width": 2, "meaning": "pendingWritePos"},
+        {"param": 0, "offset": "0xa", "width": 2, "meaning": "capacity"}
+      ],
+      "notes": "NOT in .public. Distance between readPos and pendingWritePos, wrapped by capacity; used by sub_02033AF0 to bound a raw write before it would overrun unread data."
+    },
+    {
+      "name": "sub_02033C14",
+      "mode": "thumb",
+      "signature_guess": "static int sub_02033C14(RingBuf *rb, int index)",
+      "confidence": "high",
+      "callees": ["_s32_div_f"],
+      "struct_accesses": [{"param": 0, "offset": "0xa", "width": 2, "meaning": "capacity, divisor"}],
+      "notes": "NOT in .public. index % rb->capacity via the _s32_div_f software-division runtime (remainder returned in r1, forwarded as r0). Used everywhere as the wrap-index helper."
+    },
+    {
+      "name": "sub_02033C28",
+      "mode": "thumb",
+      "signature_guess": "void sub_02033C28(RingBuf *rb)",
+      "confidence": "high",
+      "struct_accesses": [
+        {"param": 0, "offset": "0x8", "width": 2, "meaning": "pendingWritePos, source"},
+        {"param": 0, "offset": "0x6", "width": 2, "meaning": "committedWritePos, destination"}
+      ],
+      "notes": "Commit: committedWritePos = pendingWritePos. Two-phase write commit."
+    },
+    {
+      "name": "sub_02033C30",
+      "mode": "thumb",
+      "signature_guess": "static void *sub_02033C30(Session *mgr)",
+      "confidence": "high",
+      "struct_accesses": [
+        {"param": 0, "offset": "0x18", "width": 4, "meaning": "node pool array ptr"},
+        {"param": 0, "offset": "0x1c", "width": 4, "meaning": "node pool count"}
+      ],
+      "notes": "NOT in .public. Linear scan of mgr->nodePool[0..count) (stride 0x10) for first element whose byte field +0xe == 0 (free slot); returns its pointer or NULL."
+    },
+    {
+      "name": "sub_02033C50",
+      "mode": "thumb",
+      "signature_guess": "BOOL sub_02033C50(Session *mgr)",
+      "confidence": "high",
+      "struct_accesses": [
+        {"param": 0, "offset": "0x18", "width": 4, "meaning": "node pool array ptr"},
+        {"param": 0, "offset": "0x1c", "width": 4, "meaning": "node pool count"}
+      ],
+      "notes": "Returns TRUE only if every pool node has field +0xe == 0 (all free); returns FALSE as soon as one busy node is found."
+    },
+    {
+      "name": "sub_02033C70",
+      "mode": "thumb",
+      "signature_guess": "static BOOL sub_02033C70(void *listHeadTailPair)",
+      "confidence": "medium",
+      "struct_accesses": [
+        {"param": 0, "offset": "0x0", "width": 4, "meaning": "list head"},
+        {"param": 0, "offset": "0x4", "width": 4, "meaning": "list tail"}
+      ],
+      "notes": "NOT in .public. Pops the head of an intrusive singly-linked list (node 'next' at node+0x8, node+0x4 cleared on the new head); returns FALSE if already empty. Called both as sub_02033C70(mgr) (primary list at mgr+0x0/0x4) and sub_02033C70(mgr+8) (secondary list, reusing the same 0/4-relative logic against mgr+0x8/0xc) -- see Session struct hypothesis."
+    },
+    {
+      "name": "sub_02033C94",
+      "mode": "thumb",
+      "signature_guess": "static BOOL sub_02033C94(Request *req, u8 byte)",
+      "confidence": "high",
+      "struct_accesses": [
+        {"param": 0, "offset": "0x0", "width": 4, "meaning": "output ptr, post-incremented"},
+        {"param": 0, "offset": "0x4", "width": 4, "meaning": "remaining length, decremented"}
+      ],
+      "notes": "NOT in .public. Writes byte to *req->ptr, advances ptr, decrements remaining; returns TRUE when remaining reaches 0."
+    },
+    {
+      "name": "sub_02033CB0",
+      "mode": "thumb",
+      "signature_guess": "static BOOL sub_02033CB0(NodeElem *node, Request *req)",
+      "confidence": "medium",
+      "callees": ["sub_020341DC", "sub_02033C94"],
+      "struct_accesses": [
+        {"param": 0, "offset": "0xe", "width": 1, "meaning": "categoryId, used as table index into _020F6980 family via sub_020341DC"},
+        {"param": 0, "offset": "0xf", "width": 1, "meaning": "flags, bit0 toggled"},
+        {"param": 0, "offset": "0xc", "width": 2, "meaning": "cached u16 value, pushed byte-by-byte into req when sentinel"},
+        {"param": 1, "offset": "0x4", "width": 4, "meaning": "remaining length, compared against table getSize()"}
+      ],
+      "notes": "NOT in .public. Looks up CommCommand[node->categoryId] getSize via sub_020341DC; if size unavailable/too small returns 1 (clears flags bit0) without consuming; else pushes node->0xc (as 1 or 2 bytes depending on the 0xFFFF sentinel) via sub_02033C94, sets flags bit0, returns 0. BOOL polarity looks inverted (0 = consumed) -- verify against retail."
+    },
+    {
+      "name": "sub_02033D28",
+      "mode": "thumb",
+      "signature_guess": "static BOOL sub_02033D28(NodeElem *node, Request *req, RingBuf *ringBuf, int flag)",
+      "confidence": "medium",
+      "callees": ["sub_020341DC", "sub_02033CB0", "sub_02033B4C", "MI_CpuCopy8"],
+      "struct_accesses": [
+        {"param": 0, "offset": "0x0", "width": 4, "meaning": "node source data ptr, advanced as bytes are drained"},
+        {"param": 0, "offset": "0xc", "width": 2, "meaning": "node remaining payload size, decremented"},
+        {"param": 0, "offset": "0xf", "width": 1, "meaning": "flags; bit1 selects raw MI_CpuCopy8/manual-loop drain vs sub_02033B4C(ringBuf,...) drain"},
+        {"param": 1, "offset": "0x0", "width": 4, "meaning": "req output ptr"},
+        {"param": 1, "offset": "0x4", "width": 4, "meaning": "req remaining length"}
+      ],
+      "notes": "NOT in .public. Drains node payload into req, either via the RingBuf (sub_02033B4C) or directly (MI_CpuCopy8/manual byte loop) depending on node flags bit1; special-cases req->remaining == -1 (0xFFFFFFFF) as 'fully drained, stop early'. Heavy function -- needs careful byte-for-byte branch verification."
+    },
+    {
+      "name": "sub_02033DF0",
+      "mode": "thumb",
+      "signature_guess": "BOOL sub_02033DF0(Session *mgr, void *data, int len, int flag, BOOL unused5, BOOL commitToRingBuf)",
+      "confidence": "low",
+      "callees": ["sub_02033C30", "GF_AssertFail", "sub_020341DC", "sub_02033BE4", "sub_02033AF0", "sub_02033C28"],
+      "struct_accesses": [
+        {"param": 0, "offset": "0x14", "width": 4, "meaning": "RingBuf *ringBuffer"},
+        {"param": 0, "offset": "0x0", "width": 4, "meaning": "primary list head, set on first enqueue"},
+        {"param": 0, "offset": "0x4", "width": 4, "meaning": "primary list tail"}
+      ],
+      "notes": "push {r3-r7,lr}; sub sp,#8 -> incoming stack args begin at [sp,#0x20] (5th param) and [sp,#0x24] (6th param). Only [sp,#0x24] is read in the body (used as a 'also write into ringBuffer + commit' flag); [sp,#0x20] is set by every observed caller (constant 1 in the one verified call site) but never loaded here -- likely dead/reserved, confirm before committing to 6 real params. Finds a free node via sub_02033C30 (fails if none), computes item size via sub_020341DC(id) falling back to flag(r3) on the 0xFFFF sentinel, optionally writes+commits len bytes into mgr->ringBuffer (asserting via sub_02033BE4 there is enough free space), then appends the node to mgr's primary list."
+    },
+    {
+      "name": "sub_02033E88",
+      "mode": "thumb",
+      "signature_guess": "static void *sub_02033E88(Session *mgr)",
+      "confidence": "high",
+      "struct_accesses": [
+        {"param": 0, "offset": "0x10", "width": 4, "meaning": "override/cached next ptr, checked first"},
+        {"param": 0, "offset": "0x0", "width": 4, "meaning": "primary list head, checked second"},
+        {"param": 0, "offset": "0x8", "width": 4, "meaning": "secondary list head, fallback"}
+      ],
+      "notes": "NOT in .public. 'Peek next': mgr->0x10 if set, else mgr->0x0, else mgr->0x8 (may be NULL)."
+    },
+    {
+      "name": "sub_02033EA8",
+      "mode": "thumb",
+      "signature_guess": "static void sub_02033EA8(Session *mgr)",
+      "confidence": "high",
+      "callees": ["sub_02033C70"],
+      "struct_accesses": [{"param": 0, "offset": "0x10", "width": 4, "meaning": "override ptr, cleared if set"}],
+      "notes": "NOT in .public. If mgr->0x10 set, clears it and returns; else pops the primary list (sub_02033C70(mgr) over 0x0/0x4), falling back to the secondary list (sub_02033C70(mgr+8) over 0x8/0xc) if the primary was empty."
+    },
+    {
+      "name": "sub_02033ECC",
+      "mode": "thumb",
+      "signature_guess": "BOOL sub_02033ECC(Session *mgr, Request *req, int flag)",
+      "confidence": "medium",
+      "callees": ["sub_02033E88", "sub_02033EA8", "sub_02033D28", "MI_CpuFill8"],
+      "struct_accesses": [
+        {"param": 1, "offset": "0x4", "width": 4, "meaning": "req remaining length, loop bound"},
+        {"param": 0, "offset": "0x14", "width": 4, "meaning": "RingBuf *, passed through to sub_02033D28"}
+      ],
+      "notes": "Drains queued nodes (peek via sub_02033E88, pop via sub_02033EA8) into req via sub_02033D28 until req->remaining<=0 or queue empty; zeroes fully-consumed 0x10-byte nodes via MI_CpuFill8; pads leftover req bytes with sentinel 0xee. flag(r2/a2) is hardcoded to 1 for the very first dispatch call but reloaded from the stack-saved a2 on subsequent loop iterations -- verify against retail before assuming a constant."
+    },
+    {
+      "name": "sub_02033F44",
+      "mode": "thumb",
+      "signature_guess": "void sub_02033F44(Session *mgr, int nodeCount, RingBuf *ringBuf)",
+      "confidence": "high",
+      "callees": ["MI_CpuFill8", "Heap_Alloc"],
+      "struct_accesses": [
+        {"param": 0, "offset": "0x0", "width": 32, "meaning": "whole 0x20-byte header zeroed via MI_CpuFill8 first"},
+        {"param": 0, "offset": "0x18", "width": 4, "meaning": "node pool array = Heap_Alloc(HEAP_ID_15, nodeCount*0x10)"},
+        {"param": 0, "offset": "0x1c", "width": 4, "meaning": "= nodeCount"},
+        {"param": 0, "offset": "0x14", "width": 4, "meaning": "= ringBuf (3rd param, NOT an element-size int)"}
+      ],
+      "notes": "Element size is hardcoded 0x10 (lsl r7,r4,#4), not a parameter. Confirmed by sub_02033DF0 treating mgr->0x14 as a RingBuf* (passed straight to sub_02033BE4)."
+    },
+    {
+      "name": "sub_02033F70",
+      "mode": "thumb",
+      "signature_guess": "void sub_02033F70(Session *mgr)",
+      "confidence": "high",
+      "callees": ["MI_CpuFill8"],
+      "struct_accesses": [
+        {"param": 0, "offset": "0x18/0x1c", "width": 4, "meaning": "node pool zeroed (count*0x10 bytes)"},
+        {"param": 0, "offset": "0x0,0x4,0x8,0xc,0x10", "width": 4, "meaning": "5 header words individually zeroed"}
+      ],
+      "notes": "Resets a session; preserves RingBuf ptr at 0x14."
+    },
+    {
+      "name": "sub_02033F90",
+      "mode": "thumb",
+      "signature_guess": "void sub_02033F90(Session *mgr)",
+      "confidence": "high",
+      "callees": ["Heap_Free"],
+      "struct_accesses": [{"param": 0, "offset": "0x18", "width": 4, "meaning": "node pool array, freed"}],
+      "notes": "Tail-calls Heap_Free(mgr->nodePool) via ldr r3,=Heap_Free; bx r3."
+    },
+    {
+      "name": "sub_02033F9C",
+      "mode": "thumb",
+      "signature_guess": "BOOL sub_02033F9C(Session *mgr, int id)",
+      "confidence": "high",
+      "struct_accesses": [
+        {"param": 0, "offset": "0x18/0x1c", "width": 4, "meaning": "node pool array/count"},
+        {"param": 0, "offset": "node+0xe", "width": 1, "meaning": "categoryId compared to id"}
+      ],
+      "notes": "Linear scan for any node with field+0xe == id; returns TRUE if found."
+    },
+    {
+      "name": "sub_02033FC4",
+      "mode": "thumb",
+      "signature_guess": "u8 sub_02033FC4(int index)",
+      "confidence": "high",
+      "callees": ["GF_AssertFail"],
+      "notes": "Copies the 0x29-byte _020F692C table to a stack buffer, asserts index<0x29, returns the copy[index]. The stack-copy step looks like a compiler artifact of how the source indexes the table -- reproduce structurally rather than just `return table[index]` to match."
+    },
+    {
+      "name": "sub_02033FF0",
+      "mode": "thumb",
+      "signature_guess": "u8 sub_02033FF0(int index)",
+      "confidence": "high",
+      "callees": ["GF_AssertFail"],
+      "notes": "Identical pattern to sub_02033FC4 but over _020F6955 (0x2B bytes); same 0x29 assert bound and stack-copy structure."
+    },
+    {
+      "name": "sub_0203401C",
+      "mode": "thumb",
+      "signature_guess": "BOOL sub_0203401C(int);",
+      "confidence": "high",
+      "notes": "FROZEN by include/unk_02033AE0.h (verbatim signature) -- consumed by 7 already-matched files (src/unk_02096C88.c, src/unk_02074E5C.c, src/unk_0208FB64.c, src/unk_0208F658.c, src/unk_020971F8.c, src/unk_02091564.c, src/battle/battle_setup.c). Do not change this prototype. True for id in {7,9,0xd,0x1a} (cmp-chain, no jump table)."
+    },
+    {
+      "name": "sub_02034044",
+      "mode": "thumb",
+      "signature_guess": "BOOL sub_02034044(int id)",
+      "confidence": "medium",
+      "notes": "Inline jump table over (id-0x13) for the dense range 0..0x11 (18 cases). Per insights.md (jumptable-needs-all-dense-cases-explicit / dense-switch-needs-case-zero / switch-jumptable-density): the C switch must list every case 0..17 explicitly, in this exact source order, or MWCC will emit a cmp-chain instead of the add-pc table."
+    },
+    {
+      "name": "sub_02034084",
+      "mode": "thumb",
+      "signature_guess": "BOOL sub_02034084(int id)",
+      "confidence": "high",
+      "notes": "Plain cmp-chain (no jump table): true for id in {0x1d, 0x21, 0x23}. Per insights.md switch-form-avoids-equality-or-range-opt, do not let `x==c1 || x==c2` collapse into a range check -- keep as explicit equality chain to match."
+    },
+    {
+      "name": "sub_02034098",
+      "mode": "thumb",
+      "signature_guess": "BOOL sub_02034098(int id)",
+      "confidence": "medium",
+      "notes": "Hybrid: cmp r0,#0x17 first; if <=0x17 does inline jump table over (id-0x13) for range 0..4 (5 cases, all true); else single cmp against 0x22. Match the exact dense-jumptable-then-cmp-chain shape per insights.md switch lowering notes."
+    },
+    {
+      "name": "sub_020340C4",
+      "mode": "thumb",
+      "signature_guess": "BOOL sub_020340C4(int id)",
+      "confidence": "medium",
+      "notes": "Hybrid: inline jump table over id 0..8 (dense, 9 cases) when id in range, else cmp-chain tail for id in {0x25..0x28}. Same dense-jumptable + cmp-chain hybrid pattern as sub_020340C4's siblings; reproduce case order and the explicit dense range exactly."
+    },
+    {
+      "name": "sub_0203410C",
+      "mode": "thumb",
+      "signature_guess": "void sub_0203410C(void *, int, void *arg2);",
+      "confidence": "high",
+      "callees": ["Heap_Alloc"],
+      "struct_accesses": [
+        {"param": "global _021D412C", "offset": "0x0/0x4/0x8", "width": 4, "meaning": "= a0/a1/a2"},
+        {"param": "global _021D412C", "offset": "0xc-0x13", "width": 1, "meaning": "u8[8] per-channel flags, zeroed"},
+        {"param": "global _021D412C", "offset": "0x14", "width": 1, "meaning": "active/status byte, zeroed"}
+      ],
+      "notes": "FROZEN by include/unk_02033AE0.h (verbatim signature). Lazily Heap_Allocs (HEAP_ID_15, 0x18 bytes) the global CommRegistry singleton (_021D412C) on first call."
+    },
+    {
+      "name": "sub_02034154",
+      "mode": "thumb",
+      "signature_guess": "void sub_02034154(void)",
+      "confidence": "high",
+      "callees": ["Heap_Free"],
+      "notes": "Frees and NULLs the global CommRegistry (_021D412C) if allocated."
+    },
+    {
+      "name": "sub_02034170",
+      "mode": "thumb",
+      "signature_guess": "void sub_02034170(int a0, int cmdId, void *data, void *arg3)",
+      "confidence": "high",
+      "callees": ["GF_AssertFail", "sub_02037974"],
+      "callback_refs": ["dynamic blx through _020F6980[cmdId].handler (cmdId<0x16) or global registry's dynamic table (cmdId>=0x16)"],
+      "notes": "Matches the CommHandler typedef found at src/unk_02096C88.c:31 (`typedef void (*CommHandler)(int, int, void *, void *);`) exactly -- a0/a1/a2/a3 pass straight through unmodified from a verified caller (asm/unk_02035900.s sub_020371A8 tail-forwards its own 4 incoming params). Looks up CommCommand[cmdId].handler in the static 22-entry table or the dynamic registry-extension table, then tail-invokes handler(a0, data, arg3, ctx) where ctx = registry->0x8 or 0 if no registry is installed."
+    },
+    {
+      "name": "sub_020341DC",
+      "mode": "thumb",
+      "signature_guess": "u32 sub_020341DC(int cmdId)",
+      "confidence": "high",
+      "callees": ["GF_AssertFail", "sub_02037974"],
+      "callback_refs": ["blx through _020F6980[cmdId].getSize, a zero-arg call matching CommGetSize"],
+      "notes": "Matches CommGetSize typedef (`typedef u32 (*CommGetSize)(void);`, src/unk_02096C88.c:32). Returns 0 if the slot or registry is missing."
+    },
+    {
+      "name": "sub_02034244",
+      "mode": "thumb",
+      "signature_guess": "BOOL sub_02034244(int cmdId)",
+      "confidence": "high",
+      "notes": "Returns whether CommCommand[cmdId].getBuf is non-NULL (static or dynamic table depending on cmdId range)."
+    },
+    {
+      "name": "sub_02034280",
+      "mode": "thumb",
+      "signature_guess": "void *sub_02034280(int cmdId, void *arg)",
+      "confidence": "high",
+      "callback_refs": ["blx through _020F6980[cmdId].getBuf"],
+      "notes": "Matches CommGetBuf typedef (`typedef void *(*CommGetBuf)(int, void *);`, src/unk_02096C88.c:33). Tail-invokes getBuf(arg, ctx) where ctx=registry->0x8 for the dynamic-table path, or a hardcoded 0 for the static-table path. A 3rd register is sometimes loaded by callers right before the call but is never read by this function -- benign scheduling artifact, not a real parameter."
+    },
+    {
+      "name": "sub_020342B8",
+      "mode": "thumb",
+      "signature_guess": "u32 sub_020342B8(void);",
+      "confidence": "high",
+      "notes": "FROZEN by include/unk_02033AE0.h. Returns constant 0xFFFF sentinel."
+    },
+    {
+      "name": "sub_020342C0",
+      "mode": "thumb",
+      "signature_guess": "u32 sub_020342C0(void);",
+      "confidence": "high",
+      "notes": "FROZEN by include/unk_02033AE0.h. Returns constant 0; used as the default CommGetSize stub throughout _020F6980 and also reused (cast as CommGetSize) in src/unk_02096C88.c's sProtocolTable."
+    },
+    {
+      "name": "sub_020342C4",
+      "mode": "thumb",
+      "signature_guess": "u32 sub_020342C4(void);",
+      "confidence": "high",
+      "notes": "FROZEN by include/unk_02033AE0.h. Returns constant 1; default CommGetSize stub."
+    },
+    {
+      "name": "sub_020342C8",
+      "mode": "thumb",
+      "signature_guess": "static u32 sub_020342C8(void)",
+      "confidence": "high",
+      "notes": "NOT in .public (not in the frozen header either). Returns constant 2; used once in _020F6980 as a getSize stub."
+    },
+    {
+      "name": "sub_020342CC",
+      "mode": "thumb",
+      "signature_guess": "static void sub_020342CC(int idx)",
+      "confidence": "medium",
+      "callees": ["sub_0203769C", "sub_020373B4", "sub_02037108"],
+      "struct_accesses": [
+        {"param": "global _021D412C", "offset": "0xc+idx", "width": 1, "meaning": "per-channel ready flag, set to 1"}
+      ],
+      "notes": "NOT in .public. If sub_0203769C()==0 (local/host check), sets registry flag[idx]=1, then loops j=0..7 calling sub_020373B4(j) combined with registry flag[j] to decide whether to broadcast sub_02037108(0xe,0,0). Reads like a 'mark ready, broadcast once all ready' coordinator."
+    },
+    {
+      "name": "sub_02034310",
+      "mode": "thumb",
+      "signature_guess": "static void sub_02034310(int unused0, int unused1, int a2)",
+      "confidence": "low",
+      "callees": ["sub_020376E0 (tail call)"],
+      "struct_accesses": [
+        {"param": "global _021D412C", "offset": "0x0/0x4/0x8", "width": 4, "meaning": "dynamicTable/dynamicCount/ctx, zeroed"},
+        {"param": "global _021D412C", "offset": "0x14", "width": 1, "meaning": "active flag, set to 1"}
+      ],
+      "notes": "NOT in .public. r0/r1 are never read in the body (only r2/a2 feeds the tail call), hence low confidence on the first two param types/names. Resets the registry's dynamic-table fields, marks it active, then tail-calls sub_020376E0(0xf, a2)."
+    },
+    {
+      "name": "sub_02034338",
+      "mode": "thumb",
+      "signature_guess": "static void sub_02034338(int idx)",
+      "confidence": "medium",
+      "callees": ["sub_0203769C"],
+      "struct_accesses": [
+        {"param": "global _021D412C", "offset": "0xc+idx", "width": 1, "meaning": "per-channel ready flag, cleared to 0"}
+      ],
+      "notes": "NOT in .public. Mirror of sub_020342CC: if sub_0203769C()==0, clears registry flag[idx]."
+    }
+  ],
+  "data": [
+    {
+      "label": "_021D412C",
+      "section": "bss",
+      "bytes": 4,
+      "shape_guess": "global CommRegistry* singleton, lazily Heap_Alloc'd (0x18 bytes: CommCommand* dynamicTable @0x0, u32 dynamicCount @0x4, void *ctx @0x8, u8 flags[8] @0xc, u8 active @0x14)"
+    },
+    {
+      "label": "_020F692C",
+      "section": "rodata",
+      "bytes": 41,
+      "shape_guess": "u8[0x29] lookup table indexed 0..0x28, consumed only by sub_02033FC4 (assert-bounded)"
+    },
+    {
+      "label": "_020F6955",
+      "section": "rodata",
+      "bytes": 43,
+      "shape_guess": "u8[0x2B] lookup table, consumed only by sub_02033FF0; the function's own assert bound is 0x29, 2 bytes short of the table's actual span -- size is authoritative from address delta (0x6980-0x6955), not from re-counting bytes"
+    },
+    {
+      "label": "_020F6980",
+      "section": "rodata",
+      "bytes": 264,
+      "shape_guess": "CommCommand[22] = {void(*handler)(int,int,void*,void*); u32(*getSize)(void); void*(*getBuf)(int,void*);} -- static dispatch table for cmdId 0..0x15, indexed *0xc by sub_02034170/020341DC/02034244/02034280; many entries NULL/stub (sub_020342C0/C4/C8). Order in C must match this exactly (declaration-order rodata)."
+    }
+  ],
+  "imports": {
+    "Heap_Alloc": {"known_prototype": "void *Heap_Alloc(enum HeapID heapID, u32 size)", "header": "include/heap.h"},
+    "Heap_Free": {"known_prototype": "void Heap_Free(void *ptr)", "header": "include/heap.h"},
+    "GF_AssertFail": {"known_prototype": "void GF_AssertFail(void)", "header": "include/error_handling.h"},
+    "MI_CpuFill8": {"known_prototype": "void MI_CpuFill8(void *dest, u8 data, u32 size)", "header": "NitroSDK nitro/mi/memory.h"},
+    "MI_CpuCopy8": {"known_prototype": "void MI_CpuCopy8(const void *src, void *dest, u32 size)", "header": "NitroSDK nitro/mi/memory.h"},
+    "_s32_div_f": {"known_prototype": "s32 _s32_div_f(s32 dividend, s32 divisor)", "header": "MWCC runtime intrinsic, no project header (extern-declare locally; per insights.md s32-div-runtime-not-callable-in-inline-asm CORRECTION it IS callable from inline asm)"},
+    "sub_0203769C": {"known_prototype": "BOOL sub_0203769C(void)", "header": "include/unk_02035900.h"},
+    "sub_020373B4": {"known_prototype": "BOOL sub_020373B4(int)", "header": "include/unk_02035900.h"},
+    "sub_02034520": {"signature_guess": "int sub_02034520(void)", "evidence": "forward-declared locally in src/unk_02034354.c (not yet in include/unk_02034354.h); defined in asm/unk_02034354.s; used as a CommCommand.handler/getSize slot value in _020F6980"},
+    "sub_02034524": {"signature_guess": "void sub_02034524(void)", "evidence": "forward-declared locally in src/unk_02034354.c; defined in asm/unk_02034354.s; table slot value"},
+    "sub_0203453C": {"signature_guess": "void sub_0203453C(int a0, int a1, void *a2)", "evidence": "forward-declared locally in src/unk_02034354.c; defined in asm/unk_02034354.s; table slot value"},
+    "sub_020345D0": {"signature_guess": "void sub_020345D0(int a0, int a1, void *a2)", "evidence": "forward-declared locally in src/unk_02034354.c; defined in asm/unk_02034354.s; table slot value"},
+    "sub_02037108": {"signature_guess": "void sub_02037108(int cmd, int a1, void *a2)", "evidence": "called as sub_02037108(0xe,0,0) from sub_020342CC; defined in asm/unk_02035900.s; not yet in include/unk_02035900.h"},
+    "sub_020376E0": {"signature_guess": "void sub_020376E0(int a0, int a1)", "evidence": "tail-call target from sub_02034310 with (0xf, a2); defined in asm/unk_02035900.s"},
+    "sub_0203776C": {"signature_guess": "void sub_0203776C(int,int,void*,void*)", "evidence": "CommCommand.handler table slot (paired with getSize=sub_020342C0); defined in asm/unk_02035900.s"},
+    "sub_02037618": {"signature_guess": "void sub_02037618(int,int,void*,void*)", "evidence": "CommCommand.handler table slot (paired with getSize=sub_020342C4); defined in asm/unk_02035900.s"},
+    "sub_02037640": {"signature_guess": "void sub_02037640(int,int,void*,void*)", "evidence": "table slot, same shape as sub_02037618; defined in asm/unk_02035900.s"},
+    "sub_02037668": {"signature_guess": "void sub_02037668(int,int,void*,void*)", "evidence": "table slot, same shape; defined in asm/unk_02035900.s"},
+    "sub_02037974": {"signature_guess": "void sub_02037974(void)", "evidence": "called with no args from error/bounds paths in sub_02033AF0, sub_02034170, sub_020341DC; looks like an assert/log stub; defined in asm/unk_02035900.s"},
+    "sub_02037A24": {"signature_guess": "void sub_02037A24(int,int,void*,void*)", "evidence": "CommCommand.handler table slot (paired with getSize=sub_020342C4); defined in asm/unk_020379A0.s"},
+    "sub_02037A98": {"signature_guess": "u32 sub_02037A98(void)", "evidence": "CommCommand.getSize table slot (column 2); defined in asm/unk_020379A0.s"},
+    "sub_02037AAC": {"signature_guess": "void sub_02037AAC(int,int,void*,void*)", "evidence": "table slot; defined in asm/unk_020379A0.s"},
+    "sub_02037B6C": {"signature_guess": "void sub_02037B6C(int,int,void*,void*)", "evidence": "table slot, paired with getSize=sub_02037B88; defined in asm/unk_020379A0.s"},
+    "sub_02037B88": {"signature_guess": "u32 sub_02037B88(void)", "evidence": "table slot getSize column; defined in asm/unk_020379A0.s"},
+    "sub_02037C68": {"signature_guess": "void sub_02037C68(int,int,void*,void*)", "evidence": "table slot, paired with getSize=sub_02037C94; defined in asm/unk_020379A0.s"},
+    "sub_02037C94": {"signature_guess": "u32 sub_02037C94(void)", "evidence": "table slot getSize column; NOTE this is a different function from this file's own sub_02033C94 -- name collision risk is purely numeric, no actual conflict; defined as the FIRST function in asm/unk_02037C94.s (separate file)"},
+    "sub_02038B3C": {"signature_guess": "void sub_02038B3C(int,int,void*,void*)", "evidence": "table slot, paired with getSize=sub_02038C18; defined in asm/unk_02037C94.s"},
+    "sub_02038B9C": {"signature_guess": "void sub_02038B9C(int,int,void*,void*)", "evidence": "table slot, paired with getSize=sub_02038C18; defined in asm/unk_02037C94.s"},
+    "sub_02038C18": {"signature_guess": "u32 sub_02038C18(void)", "evidence": "table slot getSize column; defined in asm/unk_02037C94.s"},
+    "sub_02039220": {"signature_guess": "void sub_02039220(int,int,void*,void*)", "evidence": "table slot, paired with getSize=sub_020342C0; defined in asm/unk_02037C94.s"}
+  },
+  "shared_struct_hypotheses": [
+    {
+      "name": "RingBuf",
+      "size_guess": "0xc",
+      "fields": [
+        {"offset": "0x0", "width": 4, "meaning": "data buffer ptr"},
+        {"offset": "0x4", "width": 2, "meaning": "readPos (s16, consumer cursor)"},
+        {"offset": "0x6", "width": 2, "meaning": "committedWritePos (s16, visible-to-readers tail)"},
+        {"offset": "0x8", "width": 2, "meaning": "pendingWritePos (s16, in-progress write cursor, becomes committed via sub_02033C28)"},
+        {"offset": "0xa", "width": 2, "meaning": "capacity (s16)"}
+      ]
+    },
+    {
+      "name": "Session (a.k.a. comm channel)",
+      "size_guess": ">=0x20 (CpuFill8 zeroes exactly 0x20 bytes in sub_02033F44; caller-side array stride seen as 0x40 in asm/unk_02035900.s, implying trailing fields owned by other files)",
+      "fields": [
+        {"offset": "0x0", "width": 4, "meaning": "primary pending-item list head"},
+        {"offset": "0x4", "width": 4, "meaning": "primary pending-item list tail"},
+        {"offset": "0x8", "width": 4, "meaning": "secondary list head"},
+        {"offset": "0xc", "width": 4, "meaning": "secondary list tail"},
+        {"offset": "0x10", "width": 4, "meaning": "override/cached 'next' ptr, checked before either list"},
+        {"offset": "0x14", "width": 4, "meaning": "RingBuf *ringBuffer"},
+        {"offset": "0x18", "width": 4, "meaning": "NodeElem *nodePool (Heap_Alloc'd array, HEAP_ID_15)"},
+        {"offset": "0x1c", "width": 4, "meaning": "u32 nodePoolCount"}
+      ]
+    },
+    {
+      "name": "NodeElem (pending-item pool slot)",
+      "size_guess": "0x10 (matches Heap_Alloc(count<<4))",
+      "fields": [
+        {"offset": "0x0", "width": 4, "meaning": "source data ptr (raw-copy mode), advanced as drained"},
+        {"offset": "0x4", "width": 4, "meaning": "unknown -- cleared to 0 when promoted off a list in sub_02033C70, not otherwise referenced in this file"},
+        {"offset": "0x8", "width": 4, "meaning": "intrusive singly-linked-list 'next' ptr"},
+        {"offset": "0xc", "width": 2, "meaning": "remaining payload size / cached value, decremented as drained"},
+        {"offset": "0xe", "width": 1, "meaning": "categoryId; 0 == free slot"},
+        {"offset": "0xf", "width": 1, "meaning": "flags bitfield: bit0=consumed/started, bit1=drain-via-RingBuf vs raw-copy mode"}
+      ]
+    },
+    {
+      "name": "Request (a.k.a. PendingItem descriptor)",
+      "size_guess": ">=0xc",
+      "fields": [
+        {"offset": "0x0", "width": 4, "meaning": "output/data ptr"},
+        {"offset": "0x4", "width": 4, "meaning": "length / remaining"},
+        {"offset": "0x8", "width": 2, "meaning": "u16 tag/cmdId; 0xFFFF == sentinel 'none'"},
+        {"offset": "0xa", "width": 1, "meaning": "u8 status; 0xee == sentinel 'empty/free'"}
+      ]
+    },
+    {
+      "name": "CommRegistry (global singleton at _021D412C)",
+      "size_guess": "0x18 (Heap_Alloc(HEAP_ID_15, 0x18) in sub_0203410C)",
+      "fields": [
+        {"offset": "0x0", "width": 4, "meaning": "CommCommand *dynamicTable (extends _020F6980 for cmdId>=0x16)"},
+        {"offset": "0x4", "width": 4, "meaning": "u32 dynamicCount"},
+        {"offset": "0x8", "width": 4, "meaning": "void *ctx, passed as the trailing arg to dispatched handlers/getBuf"},
+        {"offset": "0xc", "width": 1, "meaning": "u8[8] per-channel ready flags (indices 0..7)"},
+        {"offset": "0x14", "width": 1, "meaning": "u8 active/status flag"}
+      ]
+    },
+    {
+      "name": "CommCommand (matches typedef independently re-derived in src/unk_02096C88.c)",
+      "size_guess": "0xc",
+      "fields": [
+        {"offset": "0x0", "width": 4, "meaning": "CommHandler handler -- void(*)(int,int,void*,void*)"},
+        {"offset": "0x4", "width": 4, "meaning": "CommGetSize getSize -- u32(*)(void)"},
+        {"offset": "0x8", "width": 4, "meaning": "CommGetBuf getBuf -- void*(*)(int,void*)"}
+      ]
+    }
+  ],
+  "risks": [
+    "FROZEN HEADER: include/unk_02033AE0.h already declares sub_0203401C, sub_0203410C, sub_020342C0, sub_020342C4, sub_020342B8 (verbatim signatures given above) and is #included by 7 already-matched files (src/unk_02096C88.c, src/unk_02074E5C.c, src/unk_0208FB64.c, src/unk_0208F658.c, src/unk_020971F8.c, src/unk_02091564.c, src/battle/battle_setup.c). Do NOT change these 5 prototypes when writing src/unk_02033AE0.c -- IPA will cascade codegen breakage into all 7 consumers. The header also declares an unrelated sub_02057A08 (not part of this .s file) that must stay untouched.",
+    "src/unk_02034354.c, include/unk_02035900.h, include/unk_020379A0.h, and include/unk_02037C94.h are themselves split/frozen headers for not-yet-fully-decompiled or partially-decompiled neighbor files; sub_02034520/24/3C/D0, sub_02037108/76E0/776C/7618/7640/7668/7974, sub_02037A24/A98/AAC/B6C/B88/C68, and sub_02038B3C/B9C/C18/039220 are imported from those files' .s sources, not their headers -- when those neighbor files get decompiled, watch for their headers gaining new declarations that could retroactively affect unk_02033AE0.c's own IPA state if it ever includes them.",
+    "Dense inline jump tables in sub_02034044/02034098/020340C4 (and a pure cmp-chain in sub_0203401C/02034084) must be written with explicit, source-ordered switch cases per insights.md (jumptable-needs-all-dense-cases-explicit, dense-switch-needs-case-zero, switch-jumptable-density, switch-case-source-order) or MWCC will silently fall back to a cmp-chain and the function will mismatch.",
+    "Two functions accessed via the same numeric-looking ID across files: this file's local static sub_02033C94 (RingBuf/Request byte-push helper) vs. the imported sub_02037C94 from a different file (asm/unk_02037C94.s) -- pure coincidence of address proximity, not an actual symbol collision, but easy to mis-cite when cross-referencing.",
+    "sub_02033DF0 has an apparently-dead 5th parameter (stack slot at incoming-sp+0, loaded by the one verified caller but never read in the callee) -- confirm this isn't a struct-split or alignment artifact before finalizing its C signature; getting this wrong changes the stack frame shape for every call site in asm/unk_02035900.s.",
+    "_020F692C and _020F6955 rodata table sizes must be taken from the address delta to the next label (0x29 and 0x2B respectively), not from re-deriving byte counts off the .byte rows; the 0x29-vs-0x2B mismatch in sub_02033FF0's assert bound is real but is not a bug worth chasing -- match it as-is.",
+    "_s32_div_f and the MI_Cpu* SDK calls are standard intrinsics/SDK functions; per insights.md mwcc-asm-function-pool-and-blx and s32-div-runtime-not-callable-in-inline-asm (CORRECTION), these are fine to call directly from matching C.",
+    "sub_02033D28 is the most semantically complex function in the file (dual drain paths gated by a flags bitfield, a -1 sentinel early-exit) -- treat the notes/struct_accesses as a starting hypothesis only and verify every branch against the byte diff, not just the happy path."
+  ],
+  "notes": "This file implements a generic message-queue/communication framework reused across many overlays: a RingBuf byte ring buffer (sub_02033AE0..C28 family), a fixed-size NodeElem pool manager wrapped in a Session struct (sub_02033C30..F9C family), and a CommCommand{handler,getSize,getBuf} dispatch table (the rodata array at _020F6980 plus sub_02034170/020341DC/02034244/02034280) with a lazily-allocated global CommRegistry (_021D412C) that extends the static 22-entry table dynamically for cmdId>=0x16. The CommHandler/CommGetSize/CommGetBuf typedefs were independently re-derived (and verbatim-matched) in src/unk_02096C88.c, strongly cross-validating the dispatcher signatures. 14 of the file's 44 defined functions are NOT in .public (file-local/static): sub_02033B78, sub_02033BF4, sub_02033C14, sub_02033C30, sub_02033C70, sub_02033C94, sub_02033CB0, sub_02033D28, sub_02033E88, sub_02033EA8, sub_020342C8, sub_020342CC, sub_02034310, sub_02034338. Function order in the new src/unk_02033AE0.c must follow the asm order given in 'functions' above; rodata order (_020F692C, _020F6955, _020F6980) must likewise match exactly."
+}

@@ -1,0 +1,353 @@
+{
+  "file": "asm/unk_02023694.s",
+  "functions": [
+    {"name": "sub_02023694", "mode": "thumb", "signature_guess": "static void sub_02023694(UnkStruct_02023694 *instance)", "confidence": "high", "callees": [], "struct_accesses": [
+      {"param": 0, "offset": "0x0", "width": 1, "meaning": "inUse flag = 0"},
+      {"param": 0, "offset": "0x1", "width": 1, "meaning": "active flag = 0"},
+      {"param": 0, "offset": "0x3", "width": 1, "meaning": "delState flag = 0"},
+      {"param": 0, "offset": "0x4", "width": 4, "meaning": "Node *nodeArray = 0"},
+      {"param": 0, "offset": "0x8", "width": 4, "meaning": "count = 0"},
+      {"param": 0, "offset": "0xd0", "width": 4, "meaning": "Node **freeStack = 0"},
+      {"param": 0, "offset": "0xd4", "width": 4, "meaning": "freeStackTop = 0"},
+      {"param": 0, "offset": "0xd8", "width": 4, "meaning": "NNSFndAllocator * = 0"},
+      {"param": 0, "offset": "0xdc", "width": 4, "meaning": "UnkStruct_0202068C * = 0"}
+    ], "notes": "Zero-init for the 0xe0-byte Instance/pool-element header only. The embedded Node region (0xc..0xd0) is zeroed separately by sub_020236BC, called only from sub_020237EC. Not exported (absent from .inc public list)."},
+
+    {"name": "sub_020236BC", "mode": "thumb", "signature_guess": "static void sub_020236BC(UnkStruct_02023D44 *node)", "confidence": "high", "callees": [], "struct_accesses": [
+      {"param": 0, "offset": "0x0..0x8", "width": 12, "meaning": "VecFx32 pos = {0,0,0}"},
+      {"param": 0, "offset": "0xc..0x14", "width": 12, "meaning": "VecFx32 scale = {0x1000,0x1000,0x1000} (FX32_ONE)"},
+      {"param": 0, "offset": "0x18", "width": 4, "meaning": "MtxFx33 *rotation = NULL"},
+      {"param": 0, "offset": "0x20", "width": 4, "meaning": "callback fn ptr = NULL"},
+      {"param": 0, "offset": "0x24", "width": 1, "meaning": "active flag (u8) = 0"},
+      {"param": 0, "offset": "0x94/0x98/0x9c", "width": 4, "meaning": "texVram/tex4x4Vram/plttVram keys = 0"},
+      {"param": 0, "offset": "0xa0", "width": 16, "meaning": "embedded UnkStruct_02026E18 terrain-blend table, byte-cleared in a 16-iteration strb loop"},
+      {"param": 0, "offset": "0xb0", "width": 4, "meaning": "UnkStruct_0202068C_entry * = 0"},
+      {"param": 0, "offset": "0xb4", "width": 1, "meaning": "state = 0"},
+      {"param": 0, "offset": "0xb6", "width": 2, "meaning": "segmentIndex (u16) = 0"},
+      {"param": 0, "offset": "0xbc/0xc0", "width": 4, "meaning": "prev/next active-list links = 0"}
+    ], "notes": "Zero-init for the 0xc4-byte Node struct, called with node = instance+0xc (sentinel) from sub_020237EC, and per-array-element from sub_02024248. The pos/scale/rotation field types and offsets are pinned by GF3dRender_DrawModel's known prototype (include/gf_3d_render.h) via sub_02023950's call. Not exported."},
+
+    {"name": "sub_02023738", "mode": "thumb", "signature_guess": "void sub_02023738(int count, enum HeapID heapId)", "confidence": "high", "callees": ["Heap_Alloc", "sub_02023694"], "struct_accesses": [], "notes": "Allocates the file-scope singleton pool (bss _021D2208: {Instance *ptr; int count;}) as count*0xe0 bytes via Heap_Alloc, then zero-inits each element via sub_02023694. Caller overlay_01_021E5900.s:180 passes r0=4,r1=4 (both literal 4); overlay_45_thumb.s:14483 passes r0=1,r1=heapId reg. Exported (in .inc)."},
+
+    {"name": "sub_02023778", "mode": "thumb", "signature_guess": "void sub_02023778(void)", "confidence": "high", "callees": ["sub_02023874", "Heap_Free"], "struct_accesses": [], "notes": "Tears down the singleton pool: sub_02023874 on every element, Heap_Free(pool.ptr), zero the singleton. No-arg callers confirmed (overlay_01_021E5900.s:581, overlay_45_thumb.s:14644). Exported."},
+
+    {"name": "sub_020237B0", "mode": "thumb", "signature_guess": "void sub_020237B0(void)", "confidence": "high", "callees": ["sub_02023950"], "struct_accesses": [
+      {"param": -1, "offset": "instance+0x1", "width": 1, "meaning": "if active==1, call sub_02023950(instance)"},
+      {"param": -1, "offset": "instance+0x3", "width": 1, "meaning": "if delState==1, advance to 2 (two-phase deferred-delete state machine)"}
+    ], "notes": "Per-frame 'update all instances' driver. No-arg caller confirmed at overlay_45_thumb.s:14692, overlay_01_021E5900.s:1156. Exported."},
+
+    {"name": "sub_020237EC", "mode": "thumb", "signature_guess": "UnkStruct_02023694 *sub_020237EC(const UnkStruct_020237EC_Params *desc) /* desc = {u32 count; enum HeapID heapId;} */", "confidence": "high", "callees": ["sub_0202391C", "GF_AssertFail", "Heap_Alloc", "sub_020236BC", "sub_02024248", "HeapExp_FndInitAllocator", "sub_0202068C"], "struct_accesses": [
+      {"param": 0, "offset": "0x0", "width": 4, "meaning": "desc->count"},
+      {"param": 0, "offset": "0x4", "width": 4, "meaning": "desc->heapId"}
+    ], "notes": "Finds a free Instance slot (sub_0202391C); if none, GF_AssertFail() and RETURN 0 (insights.md id assert-return-not-gf-assert applies -- write explicit if/return, not GF_ASSERT macro). On success allocates instance->field4 (count*0xc4 Node array), instance->field0xd0 (count*4 ptr array), inits the embedded sentinel Node (sub_020236BC), inits free-stack (sub_02024248), allocates a fixed 0x10-byte NNSFndAllocator workmem + HeapExp_FndInitAllocator, and instance->field0xdc via sub_0202068C(count, heapId). Returns the Instance pointer. Real callers exist: overlay_01_021F1348.s:560 (arg = &localStruct{count,heapId}), overlay_45_thumb.s:14488 (arg = sp+0x20 local). Exported."},
+
+    {"name": "sub_02023874", "mode": "thumb", "signature_guess": "BOOL sub_02023874(UnkStruct_02023694 *instance)", "confidence": "high", "callees": ["GF_AssertFail", "sub_020238BC", "Heap_Free", "sub_020206C8", "sub_02023694"], "struct_accesses": [
+      {"param": 0, "offset": "0x0", "width": 1, "meaning": "if inUse, run teardown; else skip straight to return 1"}
+    ], "notes": "Destructor for one Instance: walks/destroys the node list (sub_020238BC), Heap_Free's field4/0xd0/0xd8 arrays, sub_020206C8(field0xdc), then sub_02023694 to re-zero. Returns 0 only via the entry null-guard (GF_AssertFail then return 0), else always 1. Exported. Caller: overlay_45_thumb.s:14643 (ldr r0,[r4,#0xc]; bl sub_02023874)."},
+
+    {"name": "sub_020238BC", "mode": "thumb", "signature_guess": "static BOOL sub_020238BC(UnkStruct_02023694 *instance)", "confidence": "medium", "callees": ["GF_AssertFail", "sub_02023DA4"], "struct_accesses": [
+      {"param": 0, "offset": "0x0", "width": 1, "meaning": "inUse guard"},
+      {"param": 0, "offset": "0xc8", "width": 4, "meaning": "list head; compared against &instance->Node(0xc) sentinel to detect empty list"},
+      {"param": 0, "offset": "0xc/0xbc", "width": 4, "meaning": "walks node->prev (0xbc) calling sub_02023DA4(node) per entry until back at sentinel"}
+    ], "notes": "Has an unusual double `bne` immediately after the entry null-check: `cmp r0,#0; bne CONT; bne SKIP2; bl GF_AssertFail` -- the second bne reuses the same flags and is unreachable, most likely a nested/duplicate GF_ASSERT(instance!=NULL) compiled inside the instance==NULL branch. Reproduce literally; simplifying away the dead branch will likely change codegen shape. Not exported."},
+
+    {"name": "sub_020238F8", "mode": "thumb", "signature_guess": "BOOL sub_020238F8(UnkStruct_02023694 *instance)", "confidence": "high", "callees": ["GF_AssertFail"], "struct_accesses": [
+      {"param": 0, "offset": "0x3", "width": 1, "meaning": "delState; returns (delState != 0)"}
+    ], "notes": "Operates on Instance (not Node) -- offset 0x3 matches the delState byte zeroed by sub_02023694 and advanced by sub_020237B0/sub_02023DA4. Exported."},
+
+    {"name": "sub_02023910", "mode": "thumb", "signature_guess": "void sub_02023910(UnkStruct_02023694 *instance)", "confidence": "high", "callees": [], "struct_accesses": [
+      {"param": 0, "offset": "0x3", "width": 1, "meaning": "if delState==2, reset to 0"}
+    ], "notes": "Instance-level (same field as sub_020238F8). Completes the deferred-delete two-phase state machine: sub_02023DA4 sets 1, sub_020237B0 advances 1->2, this resets 2->0. Exported."},
+
+    {"name": "sub_0202391C", "mode": "thumb", "signature_guess": "static UnkStruct_02023694 *sub_0202391C(void)", "confidence": "high", "callees": [], "struct_accesses": [
+      {"param": -1, "offset": "g_pool.ptr[i]+0x0", "width": 1, "meaning": "scans the Instance array (stride 0xe0) for inUse==0"}
+    ], "notes": "Returns the first free Instance slot in the singleton pool, or NULL if all in use (no GF_AssertFail itself -- caller sub_020237EC asserts). Not exported."},
+
+    {"name": "sub_02023950", "mode": "thumb", "signature_guess": "static void sub_02023950(UnkStruct_02023694 *instance)", "confidence": "medium", "callees": ["MTX_Identity33_", "sub_020243FC", "sub_02023FEC", "sub_02023FC0", "GF3dRender_DrawModel", "sub_0202441C"], "struct_accesses": [
+      {"param": 0, "offset": "0xc8", "width": 4, "meaning": "list-walk start"},
+      {"param": -1, "offset": "node+0x24", "width": 1, "meaning": "per-node active flag gate"},
+      {"param": -1, "offset": "node+0x20/0x1c", "width": 4, "meaning": "optional callback(node, userData) invoked via blx"},
+      {"param": -1, "offset": "node+0xb4", "width": 1, "meaning": "state: 3 -> sub_02023FEC, 2 -> sub_02023FC0"},
+      {"param": -1, "offset": "node+0x0/0xc/0x18/0x30", "width": 0, "meaning": "GF3dRender_DrawModel(&node.renderObj(0x30), &node.pos(0x0), node.rotation(0x18) or &localIdentity, &node.scale(0xc))"}
+    ], "notes": "Per-Instance draw-all driver: walks the active-Node doubly-linked list from the embedded sentinel. The translation/rotation/scale argument offsets are pinned by GF3dRender_DrawModel's known prototype. Not exported (called only by sub_020237B0)."},
+
+    {"name": "sub_020239D0", "mode": "thumb", "signature_guess": "static void sub_020239D0(UnkStruct_02023D44 *node, UnkStruct_02023E04 *desc)", "confidence": "medium", "callees": ["sub_02023C04", "sub_02023C20", "sub_02023C9C", "sub_020242E4"], "struct_accesses": [
+      {"param": 0, "offset": "0x28", "width": 4, "meaning": "owning Instance back-pointer"},
+      {"param": 0, "offset": "0xb4", "width": 1, "meaning": "set to 2 ('allocator-VRAM' bind path)"},
+      {"param": 1, "offset": "0x8", "width": 4, "meaning": "desc->field8 stored to node->field0x2c (segment range table)"}
+    ], "notes": "'Bind path A': computes VRAM keys via the allocator callbacks (through sub_02023C20/sub_02023AA0), inserts node into the Instance's active list if it was previously unbound (field0xb4==1). Not exported -- dispatched only from sub_02024380."},
+
+    {"name": "sub_02023A20", "mode": "thumb", "signature_guess": "static void sub_02023A20(UnkStruct_02023D44 *node, UnkStruct_02023E04 *desc)", "confidence": "medium", "callees": ["sub_02023C04", "sub_02023B70", "sub_02023CF0", "sub_02023D24", "sub_020242E4"], "struct_accesses": [
+      {"param": 1, "offset": "0x1c/0x20/0x24", "width": 4, "meaning": "desc-supplied explicit texVram/tex4x4Vram/plttVram keys, copied straight into node+0x94/0x98/0x9c"},
+      {"param": 1, "offset": "0x8", "width": 4, "meaning": "desc->field8 -> node->field0x2c (segment range table)"},
+      {"param": 0, "offset": "0xb4", "width": 1, "meaning": "set to 3 ('explicit-VRAM' bind path)"}
+    ], "notes": "'Bind path B': used when desc->field0x1c != 0 (the dispatch condition checked in sub_02024380) -- caller supplies VRAM keys directly instead of allocating. Releases any prior tex/pal VRAM via sub_02023B70 first if node was state 2. Not exported."},
+
+    {"name": "sub_02023AA0", "mode": "thumb", "signature_guess": "static void sub_02023AA0(NNSG3dResTex *tex, u32 *outTexVram, u32 *outTex4x4Vram, u32 *outPlttVram)", "confidence": "medium", "callees": ["NNS_G3dTexGetRequiredSize", "NNS_G3dTex4x4GetRequiredSize", "NNS_G3dPlttGetRequiredSize", "NNS_GfdDefaultFuncAllocTexVram", "NNS_GfdDefaultFuncAllocPlttVram", "GF_AssertFail"], "struct_accesses": [], "notes": "Allocates VRAM for texture/4x4-texture/palette via the NNS default allocator function-pointer globals (loaded then blx'd); each output defaults to 0 if the corresponding required-size is 0. Asserts (but does not abort) if an allocator returns NULL for a nonzero-size request. Called from sub_02023C20 with outTexVram=&node+0x94 etc. Not exported."},
+
+    {"name": "sub_02023B38", "mode": "thumb", "signature_guess": "static void sub_02023B38(void *texKeyHandle, void *unused1, void *unused2, u32 *outPlttResult)", "confidence": "low", "callees": ["NNS_G3dTexReleaseTexKey", "NNS_G3dPlttReleasePlttKey"], "struct_accesses": [], "notes": "Only r0 and r3 are used in the body (r1/r2 pushed-but-unread); both Release calls appear to use the SAME r0 handle. Caller sub_0202441C passes 3 distinct stack-local out-pointers as r1/r2/r3 -- exact role of the unused params is unconfirmed; treat this prototype as a low-confidence placeholder. Not exported."},
+
+    {"name": "sub_02023B4C", "mode": "thumb", "signature_guess": "static void sub_02023B4C(UnkStruct_02023D44 *node, void *mdlSet, void **texKeyPtr, void **tex4x4OrPltKeyPtr)", "confidence": "low", "callees": ["NNS_G3dTexSetTexKey", "NNS_G3dPlttSetPlttKey", "NNS_G3dBindMdlSet"], "struct_accesses": [], "notes": "5th arg via [sp,0x10] also dereferenced. Sets tex key, pltt key, then binds mdlSet to node's renderObj. Called only from sub_020243FC with node+0x8c/0x84/0x94/0x98 region. Not exported; param roles approximate."},
+
+    {"name": "sub_02023B70", "mode": "thumb", "signature_guess": "static void sub_02023B70(u32 *texVramKey, u32 *tex4x4VramKey, u32 *plttVramKey)", "confidence": "medium", "callees": ["NNS_GfdDefaultFuncFreeTexVram", "NNS_GfdDefaultFuncFreePlttVram"], "struct_accesses": [], "notes": "Frees each of the 3 VRAM keys (via blx through the Free function-pointer globals) if nonzero; symmetric counterpart to sub_02023AA0. Called with &node.field0x94/0x98/0x9c. Not exported."},
+
+    {"name": "sub_02023BA4", "mode": "thumb", "signature_guess": "static BOOL sub_02023BA4(NNSG3dResTex *texA, NNSG3dResTex *texB)", "confidence": "medium", "callees": ["NNS_G3dTexGetRequiredSize", "NNS_G3dTex4x4GetRequiredSize", "NNS_G3dPlttGetRequiredSize"], "struct_accesses": [], "notes": "Returns FALSE if either pointer is NULL/mismatched-null, else TRUE iff all three required-size results match between A and B (used to decide whether existing VRAM can be reused). Called from sub_02023C20. Not exported."},
+
+    {"name": "sub_02023C04", "mode": "thumb", "signature_guess": "static void sub_02023C04(UnkStruct_02023694 *instance, UnkStruct_02023D44 *node)", "confidence": "medium", "callees": ["sub_02020738"], "struct_accesses": [
+      {"param": 1, "offset": "0xb0", "width": 4, "meaning": "UnkStruct_0202068C_entry*; if set, release via sub_02020738 then clear to 0"}
+    ], "notes": "Not exported."},
+
+    {"name": "sub_02023C20", "mode": "thumb", "signature_guess": "static void sub_02023C20(UnkStruct_02023D44 *node, UnkStruct_02023E04 *desc)", "confidence": "high", "callees": ["sub_02024328", "NNS_G3dRenderObjInit", "sub_02023BA4", "sub_02023B70", "sub_02023AA0"], "struct_accesses": [
+      {"param": 0, "offset": "0x84", "width": 4, "meaning": "mdlSet (return value of sub_02024328)"},
+      {"param": 0, "offset": "0x88", "width": 4, "meaning": "model (resMdl), out-param 1 of sub_02024328"},
+      {"param": 0, "offset": "0x8c", "width": 4, "meaning": "tex, out-param 2 of sub_02024328"},
+      {"param": 0, "offset": "0x30", "width": 0, "meaning": "NNSG3dRenderObj, embedded; NNS_G3dRenderObjInit(&node.renderObj, node.model)"},
+      {"param": 0, "offset": "0xb4", "width": 1, "meaning": "if ==3 (explicit VRAM mode) skip new VRAM alloc; else compare/free old, alloc new via sub_02023AA0"}
+    ], "notes": "Resolves the model/tex from desc via sub_02024328, inits the embedded G3D render object, and allocates (or reuses) VRAM. Confirms node+0x84=mdlSet, +0x88=model, +0x8c=tex (corrects an earlier draft hypothesis that 0x88 was the model SET). Not exported."},
+
+    {"name": "sub_02023C9C", "mode": "thumb", "signature_guess": "static void sub_02023C9C(UnkStruct_02023694 *instance, UnkStruct_02023D44 *node, UnkStruct_02023E04 *desc)", "confidence": "medium", "callees": ["sub_02024374", "sub_020206E0"], "struct_accesses": [
+      {"param": 1, "offset": "0x90", "width": 4, "meaning": "= sub_02024374(desc) i.e. desc->field4 (secondary resource selector)"},
+      {"param": 1, "offset": "0xa0", "width": 16, "meaning": "copied byte-for-byte from desc+0xc (embedded UnkStruct_02026E18)"},
+      {"param": 1, "offset": "0xb0", "width": 4, "meaning": "= sub_020206E0(instance->field0xdc, &node.field0xb0_region, node.field0x90, node.field0x94, node.field0x9c, node.field0xb8) result (UnkStruct_0202068C_entry*)"}
+    ], "notes": "Wires the node into the external UnkStruct_0202068C anim-state manager via the already-known sub_020206E0 prototype. Not exported."},
+
+    {"name": "sub_02023CF0", "mode": "thumb", "signature_guess": "static void sub_02023CF0(UnkStruct_02023D44 *node, UnkStruct_02023E04 *desc)", "confidence": "medium", "callees": ["sub_02024328", "NNS_G3dRenderObjInit", "sub_02024374"], "struct_accesses": [
+      {"param": 0, "offset": "0x84/0x88", "width": 4, "meaning": "same mdlSet/model resolution as sub_02023C20"},
+      {"param": 0, "offset": "0x90", "width": 4, "meaning": "= sub_02024374(desc)"}
+    ], "notes": "Bind-path-B counterpart of sub_02023C20+sub_02023C9C combined (no VRAM allocation, since path B supplies VRAM keys directly). Not exported."},
+
+    {"name": "sub_02023D24", "mode": "thumb", "signature_guess": "static void sub_02023D24(UnkStruct_02023D44 *node, UnkStruct_02023E04 *desc)", "confidence": "high", "callees": [], "struct_accesses": [
+      {"param": 0, "offset": "0xa0", "width": 16, "meaning": "copied from desc+0xc (UnkStruct_02026E18)"},
+      {"param": 0, "offset": "0xb0", "width": 4, "meaning": "reset to 0"}
+    ], "notes": "Not exported."},
+
+    {"name": "sub_02023D44", "mode": "thumb", "signature_guess": "UnkStruct_02023D44 *sub_02023D44(const UnkStruct_02023D44_Params *params) /* params = {Instance *instance; UnkStruct_02023E04 *desc; VecFx32 pos; VecFx32 scale;} size 0x20 */", "confidence": "high", "callees": ["sub_02024280", "sub_02024380"], "struct_accesses": [
+      {"param": 0, "offset": "0x0", "width": 4, "meaning": "params->instance"},
+      {"param": 0, "offset": "0x4", "width": 4, "meaning": "params->desc (forwarded to sub_02024380 as-is, dereferenced there)"},
+      {"param": 0, "offset": "0x8/0xc/0x10", "width": 4, "meaning": "params pos xyz -> node+0x0/0x4/0x8"},
+      {"param": 0, "offset": "0x14/0x18/0x1c", "width": 4, "meaning": "params scale xyz -> node+0xc/0x10/0x14"}
+    ], "notes": "Allocates a Node from the Instance freelist (sub_02024280); returns NULL (no assert) if instance==NULL or pool exhausted. Sets node->field0x28=instance, node->field0x24=1, node->field0xb4=1, node->field0xb6=0, then delegates full bind to sub_02024380(node, params->desc). Real C-bound callers exist already (overlay_01_021F1348.s:611, overlay_01_021F944C.s:2167, overlay_45_thumb.s:14864) -- all still asm, so no IPA risk yet, but this signature becomes load-bearing once any of them decompile. Exported."},
+
+    {"name": "sub_02023DA4", "mode": "thumb", "signature_guess": "BOOL sub_02023DA4(UnkStruct_02023D44 *node)", "confidence": "high", "callees": ["GF_AssertFail", "sub_02024308", "sub_02023B70", "sub_02023C04", "sub_020242AC"], "struct_accesses": [
+      {"param": 0, "offset": "0xb4", "width": 1, "meaning": "asserts != 1 (must not be mid-load); if 0 returns FALSE early; else proceeds"},
+      {"param": 0, "offset": "0x28", "width": 4, "meaning": "owning Instance back-pointer, used for sub_02023C04/sub_020242AC and the final write"}
+    ], "notes": "The trailing `mov r0,#1; strb r0,[r4,#3]` writes to the OWNING INSTANCE's delState byte (r4 = node->field0x28, an Instance*), NOT a field of node itself -- this is the deferred-delete signal consumed by sub_020237B0/sub_020238F8/sub_02023910. Unlinks from the active list (sub_02024308), conditionally releases VRAM (sub_02023B70) if state==2, then returns the node to the Instance freelist (sub_020242AC). Real caller: overlay_01_022001E4.s:470, overlay_01_021F944C.s:170/219/3307/3340, overlay_45_thumb.s:14918, plus this file's own sub_020238BC. Exported."},
+
+    {"name": "sub_02023E04", "mode": "thumb", "signature_guess": "void sub_02023E04(UnkStruct_02023E04 *desc, void *resSel0, void *resSel1, const void *rangeTable, const UnkStruct_02026E18 *blendTable, u32 texVramKey, u32 tex4x4VramKey, u32 plttVramKey) /* 4 stack args at original [sp,8/0xc/0x10/0x14] */", "confidence": "medium", "callees": [], "struct_accesses": [
+      {"param": 0, "offset": "0x0/0x4/0x8", "width": 4, "meaning": "desc->resSel0=r1, resSel1=r2, rangeTable=r3"},
+      {"param": 0, "offset": "0xc..0x18", "width": 16, "meaning": "copied 4 words from the stack-passed blendTable ptr [sp,8] (matches UnkStruct_02026E18 layout)"},
+      {"param": 0, "offset": "0x1c/0x20/0x24", "width": 4, "meaning": "explicit VRAM keys from [sp,0xc]/[sp,0x10]/[sp,0x14]"}
+    ], "notes": "Builds the transient 0x20-byte UnkStruct_02023E04 init-descriptor with explicit ('path B') VRAM keys. Caller overlay_45_thumb.s:14827 supplies r3 = a label (ov45_02254C98) for the rangeTable field -- this is data (segment range table), not a function pointer, despite the label syntax looking identical to a `bl` target; resolved by tracing it through to node->field0x2c which sub_02024394/sub_020243A4 treat as a {s32 min,s32 max,u32 loop}[] table. Exported."},
+
+    {"name": "sub_02023E2C", "mode": "thumb", "signature_guess": "void sub_02023E2C(UnkStruct_02023E04 *desc, void *resSel0, void *resSel1, const void *rangeTable) /* 1 stack arg: const UnkStruct_02026E18 *blendTable at [sp,8] */", "confidence": "high", "callees": [], "struct_accesses": [
+      {"param": 0, "offset": "0x1c/0x20/0x24", "width": 4, "meaning": "zeroed (path A: allocator-computed VRAM keys, not caller-supplied)"}
+    ], "notes": "sub_02023E04 variant without explicit VRAM keys. Caller overlay_45_thumb.s:14806, overlay_01_021F944C.s:3150. Exported."},
+
+    {"name": "sub_02023E50", "mode": "thumb", "signature_guess": "void sub_02023E50(VecFx32 *dst /* &node->pos */, const VecFx32 *src)", "confidence": "high", "callees": ["GF_AssertFail"], "struct_accesses": [{"param": 0, "offset": "0x0", "width": 12, "meaning": "12-byte copy from src"}], "notes": "Effectively SetPosition given node IS the VecFx32 (offset 0). Exported."},
+
+    {"name": "sub_02023E68", "mode": "thumb", "signature_guess": "VecFx32 *sub_02023E68(UnkStruct_02023D44 *node)", "confidence": "high", "callees": ["GF_AssertFail"], "struct_accesses": [], "notes": "Null-checks then returns node unchanged -- GetPositionPtr (pos lives at offset 0). Exported."},
+
+    {"name": "sub_02023E78", "mode": "thumb", "signature_guess": "void sub_02023E78(UnkStruct_02023D44 *node, const VecFx32 *scale)", "confidence": "high", "callees": ["GF_AssertFail"], "struct_accesses": [{"param": 0, "offset": "0xc", "width": 12, "meaning": "node->scale = *scale"}], "notes": "SetScale. Exported."},
+
+    {"name": "sub_02023E94", "mode": "thumb", "signature_guess": "VecFx32 *sub_02023E94(UnkStruct_02023D44 *node)", "confidence": "high", "callees": ["GF_AssertFail"], "struct_accesses": [{"param": 0, "offset": "0xc", "width": 4, "meaning": "GetScalePtr, returns &node->scale"}], "notes": "Exported."},
+
+    {"name": "sub_02023EA4", "mode": "thumb", "signature_guess": "void sub_02023EA4(UnkStruct_02023D44 *node, u8 active)", "confidence": "high", "callees": ["GF_AssertFail"], "struct_accesses": [{"param": 0, "offset": "0x24", "width": 1, "meaning": "node->activeFlag = active (param narrowed to u8 by strb)"}], "notes": "Exported."},
+
+    {"name": "sub_02023EB8", "mode": "thumb", "signature_guess": "u8 sub_02023EB8(UnkStruct_02023D44 *node)", "confidence": "high", "callees": ["GF_AssertFail"], "struct_accesses": [{"param": 0, "offset": "0x24", "width": 1, "meaning": "return node->activeFlag"}], "notes": "Exported."},
+
+    {"name": "sub_02023EC8", "mode": "thumb", "signature_guess": "void sub_02023EC8(UnkStruct_02023D44 *node, UnkStruct_02023E04 *desc)", "confidence": "high", "callees": ["GF_AssertFail", "sub_02024380"], "struct_accesses": [], "notes": "Public re-bind entry point (rebinds model/texture from a fresh descriptor). Real caller: overlay_01_022053EC.s:641 (2 args confirmed). Exported."},
+
+    {"name": "sub_02023EE0", "mode": "thumb", "signature_guess": "void sub_02023EE0(UnkStruct_02023D44 *node, u16 segmentIndex)", "confidence": "high", "callees": ["GF_AssertFail"], "struct_accesses": [{"param": 0, "offset": "0xb6", "width": 2, "meaning": "node->segmentIndex = segmentIndex"}], "notes": "Exported."},
+
+    {"name": "sub_02023EF4", "mode": "thumb", "signature_guess": "u16 sub_02023EF4(UnkStruct_02023D44 *node)", "confidence": "high", "callees": ["GF_AssertFail"], "struct_accesses": [{"param": 0, "offset": "0xb6", "width": 2, "meaning": "return node->segmentIndex"}], "notes": "Exported."},
+
+    {"name": "sub_02023F04", "mode": "thumb", "signature_guess": "void sub_02023F04(UnkStruct_02023D44 *node, u32 delta)", "confidence": "medium", "callees": ["GF_AssertFail", "sub_020243A4"], "struct_accesses": [], "notes": "Very high fanout (60+ call sites in asm/overlay_01_021F72DC.s alone, all still asm) -- almost certainly the public 'advance animation frame' API. delta's exact width/signedness is only weakly evidenced here (no narrowing instructions visible in this leaf wrapper); resolving it precisely will require inspecting a representative overlay_01_021F72DC.s call site's argument setup when that file is attempted. Exported."},
+
+    {"name": "sub_02023F1C", "mode": "thumb", "signature_guess": "void sub_02023F1C(UnkStruct_02023D44 *node, u32 frame)", "confidence": "high", "callees": ["GF_AssertFail"], "struct_accesses": [{"param": 0, "offset": "0xb8", "width": 4, "meaning": "node->frame = frame (raw set, no clamp)"}], "notes": "Exported."},
+
+    {"name": "sub_02023F30", "mode": "thumb", "signature_guess": "u32 sub_02023F30(UnkStruct_02023D44 *node)", "confidence": "high", "callees": ["GF_AssertFail"], "struct_accesses": [{"param": 0, "offset": "0xb8", "width": 4, "meaning": "return node->frame"}], "notes": "Exported."},
+
+    {"name": "sub_02023F40", "mode": "thumb", "signature_guess": "void sub_02023F40(UnkStruct_02023D44 *node, u32 delta)", "confidence": "medium", "callees": ["GF_AssertFail", "sub_02024394"], "struct_accesses": [{"param": 0, "offset": "0xb8", "width": 4, "meaning": "node->frame = node->frame + delta - sub_02024394(node, node->segmentIndex)"}], "notes": "Re-bases frame relative to the current segment's start (likely used when changing segmentIndex). Exported."},
+
+    {"name": "sub_02023F70", "mode": "thumb", "signature_guess": "u32 sub_02023F70(UnkStruct_02023D44 *node)", "confidence": "medium", "callees": ["GF_AssertFail", "sub_02024394"], "struct_accesses": [{"param": 0, "offset": "0xb8", "width": 4, "meaning": "return node->frame - sub_02024394(node, node->segmentIndex)"}], "notes": "Frame relative to current segment start. Exported."},
+
+    {"name": "sub_02023F90", "mode": "thumb", "signature_guess": "NNSG3dResMdl *sub_02023F90(UnkStruct_02023D44 *node)", "confidence": "high", "callees": ["GF_AssertFail"], "struct_accesses": [{"param": 0, "offset": "0x88", "width": 4, "meaning": "return node->model (resMdl, NOT the model set -- mdlSet is at 0x84)"}], "notes": "Exported."},
+
+    {"name": "sub_02023FA0", "mode": "thumb", "signature_guess": "u32 sub_02023FA0(UnkStruct_02023D44 *node)", "confidence": "high", "callees": ["GF_AssertFail"], "struct_accesses": [{"param": 0, "offset": "0x94", "width": 4, "meaning": "return node->texVramKey"}], "notes": "Exported."},
+
+    {"name": "sub_02023FB0", "mode": "thumb", "signature_guess": "u32 sub_02023FB0(UnkStruct_02023D44 *node)", "confidence": "high", "callees": ["GF_AssertFail"], "struct_accesses": [{"param": 0, "offset": "0x9c", "width": 4, "meaning": "return node->plttVramKey"}], "notes": "Exported."},
+
+    {"name": "sub_02023FC0", "mode": "thumb", "signature_guess": "void sub_02023FC0(UnkStruct_02023D44 *node)", "confidence": "high", "callees": ["sub_02020764"], "struct_accesses": [
+      {"param": 0, "offset": "0xb4", "width": 1, "meaning": "gate: only acts if state==2"},
+      {"param": 0, "offset": "0xb0/0xb8", "width": 4, "meaning": "sub_02020764(node->animEntry, node->frame) -- matches known prototype in include/unk_0202068C.h"}
+    ], "notes": "Pushes the current frame to the external UnkStruct_0202068C_entry tracker. Exported."},
+
+    {"name": "sub_02023FDC", "mode": "thumb", "signature_guess": "NNSG3dResMdl *sub_02023FDC(UnkStruct_02023D44 *node)", "confidence": "medium", "callees": [], "struct_accesses": [{"param": 0, "offset": "0x88", "width": 4, "meaning": "return node->model -- same field as sub_02023F90"}], "notes": "No null-check/no push -- a leaner duplicate of sub_02023F90's getter, likely used in a hot/internal path that already validated node. Exported (listed in .inc) despite being functionally redundant with sub_02023F90."},
+
+    {"name": "sub_02023FE4", "mode": "thumb", "signature_guess": "void sub_02023FE4(UnkStruct_02023D44 *node, void (*callback)(UnkStruct_02023D44 *, void *), void *userData)", "confidence": "high", "callees": [], "struct_accesses": [
+      {"param": 0, "offset": "0x1c", "width": 4, "meaning": "node->userData = userData (r2)"},
+      {"param": 0, "offset": "0x20", "width": 4, "meaning": "node->callback = callback (r1)"}
+    ], "notes": "These are NODE fields 0x1c/0x20 (userData/callback context, invoked by sub_02023950's per-frame draw loop) -- a different struct from the DESC fields 0x1c/0x20/0x24 (explicit VRAM keys) used in sub_02023A20/sub_02024380, despite sharing offset numbers; do not conflate the two. Caller overlay_45_thumb.s:14868 confirms 2 args after sub_02023D44. Exported."},
+
+    {"name": "sub_02023FEC", "mode": "thumb", "signature_guess": "static void sub_02023FEC(UnkStruct_02023D44 *node)", "confidence": "medium", "callees": ["sub_02026DE0", "sub_0202403C", "sub_02024140"], "struct_accesses": [
+      {"param": 0, "offset": "0xb8", "width": 4, "meaning": "key = (u16)((frame << 4) >> 16)"},
+      {"param": 0, "offset": "0xa0", "width": 16, "meaning": "passed as the lookup table to sub_02026DE0(table, key) -> packed {lo,hi} byte pair"},
+      {"param": 0, "offset": "0x88/0x90", "width": 4, "meaning": "sub_0202403C(node->model, node->field0x90, lo) and sub_02024140(node->model, node->field0x90, hi)"}
+    ], "notes": "Terrain/height-based dual-channel blend apply, called when state==3 from sub_02023950. Depends on sub_02026DE0's 2-byte struct-return convention (confirmed by tools/decomp_harness/sweep/out/unk_02026DE0.json). Not exported."},
+
+    {"name": "sub_0202403C", "mode": "thumb", "signature_guess": "static void sub_0202403C(void *mdlSet, void *resSel, u8 index)", "confidence": "low", "callees": ["sub_020240C4"], "struct_accesses": [], "notes": "Walks an NNS-style resource block (header+8=subblock offset, +2 ldrh pair = name-table offset) to find an entry and apply `index` via sub_020240C4 when a flag bit is set; semantics inferred structurally only, not cross-validated against an existing NNS header. Not exported."},
+
+    {"name": "sub_020240C4", "mode": "thumb", "signature_guess": "static void sub_020240C4(void *base, void *entryDesc, u32 delta)", "confidence": "low", "callees": ["GF_AssertFail"], "struct_accesses": [], "notes": "Per-entry accumulate with a 0xFFFF clamp assert. Not exported."},
+
+    {"name": "sub_02024140", "mode": "thumb", "signature_guess": "static void sub_02024140(void *mdlSet, void *resSel, u8 index)", "confidence": "low", "callees": ["sub_020241CC"], "struct_accesses": [], "notes": "Structurally parallel to sub_0202403C/sub_020240C4 but with a different header layout (offset 0x34 redirection, halved count when a flag bit is set). Not exported."},
+
+    {"name": "sub_020241CC", "mode": "thumb", "signature_guess": "static void sub_020241CC(void *base, void *entryDesc, u32 delta)", "confidence": "low", "callees": ["GF_AssertFail"], "struct_accesses": [], "notes": "Same shape as sub_020240C4 but accumulates into a u16 field with a 0x1FFF clamp assert. Not exported."},
+
+    {"name": "sub_02024248", "mode": "thumb", "signature_guess": "static void sub_02024248(UnkStruct_02023694 *instance)", "confidence": "high", "callees": ["sub_020236BC"], "struct_accesses": [
+      {"param": 0, "offset": "0x4/0x8", "width": 4, "meaning": "nodeArray, count"},
+      {"param": 0, "offset": "0xd0", "width": 4, "meaning": "freeStack[i] = &nodeArray[i] after zero-init"},
+      {"param": 0, "offset": "0xd4", "width": 4, "meaning": "reset to 0"}
+    ], "notes": "Builds the free-pointer stack. Not exported."},
+
+    {"name": "sub_02024280", "mode": "thumb", "signature_guess": "static UnkStruct_02023D44 *sub_02024280(UnkStruct_02023694 *instance)", "confidence": "high", "callees": [], "struct_accesses": [
+      {"param": 0, "offset": "0xd4", "width": 4, "meaning": "freeStackTop; returns NULL if >= count, else pop and increment"},
+      {"param": 0, "offset": "0xd0", "width": 4, "meaning": "freeStack[top]"}
+    ], "notes": "Not exported."},
+
+    {"name": "sub_020242AC", "mode": "thumb", "signature_guess": "static BOOL sub_020242AC(UnkStruct_02023694 *instance, UnkStruct_02023D44 *node)", "confidence": "high", "callees": ["sub_020236BC"], "struct_accesses": [{"param": 0, "offset": "0xd4", "width": 4, "meaning": "if <=0, fail (FALSE); else decrement and push node onto freeStack"}], "notes": "Push-back / free; re-zeros the node via sub_020236BC before pushing. Not exported."},
+
+    {"name": "sub_020242E4", "mode": "thumb", "signature_guess": "static void sub_020242E4(UnkStruct_02023D44 *prevNode, UnkStruct_02023D44 *newNode)", "confidence": "high", "callees": [], "struct_accesses": [
+      {"param": 0, "offset": "0xc0", "width": 4, "meaning": "prevNode->next"},
+      {"param": 1, "offset": "0xc0/0xbc", "width": 4, "meaning": "newNode->next, newNode->prev"}
+    ], "notes": "Doubly-linked-list insert-after (prev=0xbc, next=0xc0). Not exported."},
+
+    {"name": "sub_02024308", "mode": "thumb", "signature_guess": "static void sub_02024308(UnkStruct_02023D44 *node)", "confidence": "high", "callees": [], "struct_accesses": [{"param": 0, "offset": "0xbc/0xc0", "width": 4, "meaning": "unlink node from the doubly-linked active list"}], "notes": "Not exported."},
+
+    {"name": "sub_02024328", "mode": "thumb", "signature_guess": "static NNSG3dMdlSet *sub_02024328(UnkStruct_02023E04 *desc, void **outModel, void **outTex)", "confidence": "medium", "callees": ["sub_0202443C", "NNS_G3dGetMdlSet", "NNS_G3dGetTex"], "struct_accesses": [{"param": 0, "offset": "0x0", "width": 4, "meaning": "desc->resSel0, via sub_0202443C(desc,0)"}], "notes": "Resolves the primary resource selector into an mdlSet/model pair; outTex only written if outTex!=NULL. Not exported."},
+
+    {"name": "sub_02024374", "mode": "thumb", "signature_guess": "static void *sub_02024374(UnkStruct_02023E04 *desc)", "confidence": "high", "callees": ["sub_0202443C"], "struct_accesses": [{"param": 0, "offset": "0x4", "width": 4, "meaning": "tail-calls sub_0202443C(desc,1) -> desc->resSel1"}], "notes": "Pure tail call (`ldr r3,=sub_0202443C; mov r1,#1; bx r3`). Not exported."},
+
+    {"name": "sub_02024380", "mode": "thumb", "signature_guess": "static void sub_02024380(UnkStruct_02023D44 *node, UnkStruct_02023E04 *desc)", "confidence": "high", "callees": ["sub_020239D0", "sub_02023A20"], "struct_accesses": [{"param": 1, "offset": "0x1c", "width": 4, "meaning": "dispatch: nonzero -> sub_02023A20 (explicit-VRAM path B), zero -> sub_020239D0 (allocator path A)"}], "notes": "Central bind dispatcher, called from sub_02023D44 (create) and sub_02023EC8 (re-bind). Not exported."},
+
+    {"name": "sub_02024394", "mode": "thumb", "signature_guess": "static s32 sub_02024394(UnkStruct_02023D44 *node, u32 segmentIndex)", "confidence": "medium", "callees": ["sub_02024454"], "struct_accesses": [{"param": 0, "offset": "0x2c", "width": 4, "meaning": "segmentRanges table ptr (0xc-byte stride: {s32 min; s32 max; u32 loopFlag})"}], "notes": "Returns table[segmentIndex].min << 12 (fx32). Not exported."},
+
+    {"name": "sub_020243A4", "mode": "thumb", "signature_guess": "static void sub_020243A4(UnkStruct_02023D44 *node, u32 delta)", "confidence": "medium", "callees": ["sub_02024454", "sub_020243C4"], "struct_accesses": [{"param": 0, "offset": "0xb6/0x2c/0xb8", "width": 0, "meaning": "looks up segmentRanges[node->segmentIndex], then clamps/accumulates &node->frame by delta"}], "notes": "Not exported."},
+
+    {"name": "sub_020243C4", "mode": "thumb", "signature_guess": "static BOOL sub_020243C4(const UnkStruct_RangeEntry *range /* {s32 min; s32 max; u32 loop;} */, u32 *value, u32 delta)", "confidence": "medium", "callees": [], "struct_accesses": [
+      {"param": 0, "offset": "0x0", "width": 4, "meaning": "min << 12"},
+      {"param": 0, "offset": "0x4", "width": 4, "meaning": "max << 12"},
+      {"param": 0, "offset": "0x8", "width": 4, "meaning": "loop-enable flag"}
+    ], "notes": "Clamps *value+delta to [min<<12, max<<12); returns TRUE if it wrapped due to loop flag. Not exported."},
+
+    {"name": "sub_020243FC", "mode": "thumb", "signature_guess": "static void sub_020243FC(UnkStruct_02023D44 *node)", "confidence": "low", "callees": ["sub_02023B4C"], "struct_accesses": [{"param": 0, "offset": "0x84/0x88/0x94/0x98/0x9c", "width": 4, "meaning": "forwards mdlSet/model/texKey/tex4x4Key-ish fields into sub_02023B4C"}], "notes": "Not exported; see sub_02023B4C's low-confidence param notes."},
+
+    {"name": "sub_0202441C", "mode": "thumb", "signature_guess": "static void sub_0202441C(UnkStruct_02023D44 *node)", "confidence": "medium", "callees": ["NNS_G3dReleaseMdlSet", "sub_02023B38"], "struct_accesses": [{"param": 0, "offset": "0x84/0x8c", "width": 4, "meaning": "NNS_G3dReleaseMdlSet(node->mdlSet); sub_02023B38(node->tex, ...)"}], "notes": "Called every draw, right after GF3dRender_DrawModel, from sub_02023950 -- likely releasing a transient reference acquired for the draw-command submission rather than tearing the node down. Not exported."},
+
+    {"name": "sub_0202443C", "mode": "thumb", "signature_guess": "static void *sub_0202443C(UnkStruct_02023E04 *desc, int mode)", "confidence": "high", "callees": [], "struct_accesses": [{"param": 0, "offset": "0x0/0x4", "width": 4, "meaning": "mode 0 -> field0, mode 1 -> field4, else NULL"}], "notes": "Generic 2-field selector shared by sub_02024328 (mode 0) and sub_02024374 (mode 1, via tail call). Not exported."},
+
+    {"name": "sub_02024454", "mode": "thumb", "signature_guess": "static void *sub_02024454(void *table, u32 index)", "confidence": "high", "callees": [], "struct_accesses": [], "notes": "table + index*0xc -- fixed 0xc-byte stride indexer, used by sub_02024394/sub_020243A4 against the segmentRanges table. Leaf, no stack frame. Not exported."}
+  ],
+  "data": [
+    {"label": "_021D2208", "section": "bss", "bytes": 8, "shape_guess": "file-scope singleton: struct { UnkStruct_02023694 *ptr; int count; } -- the static pool array base+count, written only by sub_02023738 (alloc) and sub_02023778 (free)"}
+  ],
+  "imports": {
+    "GF_AssertFail": {"known_prototype": "void GF_AssertFail(void);", "header": "include/error_handling.h"},
+    "Heap_Alloc": {"known_prototype": "void *Heap_Alloc(enum HeapID heapID, u32 size);", "header": "include/heap.h"},
+    "Heap_Free": {"known_prototype": "void Heap_Free(void *ptr);", "header": "include/heap.h"},
+    "HeapExp_FndInitAllocator": {"known_prototype": "void HeapExp_FndInitAllocator(NNSFndAllocator *pAllocator, enum HeapID heapID, int alignment);", "header": "include/heap.h"},
+    "GF3dRender_DrawModel": {"known_prototype": "void GF3dRender_DrawModel(NNSG3dRenderObj *obj, const VecFx32 *translation, const MtxFx33 *rotation, const VecFx32 *scale);", "header": "include/gf_3d_render.h", "evidence": "pins UnkStruct_02023D44 field types at 0x0 (pos), 0x18 (rotation ptr), 0xc (scale)"},
+    "sub_0202068C": {"known_prototype": "UnkStruct_0202068C *sub_0202068C(int count, enum HeapID heapId);", "header": "include/unk_0202068C.h"},
+    "sub_020206C8": {"known_prototype": "void sub_020206C8(UnkStruct_0202068C *manager);", "header": "include/unk_0202068C.h"},
+    "sub_020206E0": {"known_prototype": "UnkStruct_0202068C_entry *sub_020206E0(UnkStruct_0202068C *manager, void *animState, void *model, u32 charVram, u32 palVram, u32 frame);", "header": "include/unk_0202068C.h"},
+    "sub_02020738": {"known_prototype": "void sub_02020738(UnkStruct_0202068C_entry *entry);", "header": "include/unk_0202068C.h"},
+    "sub_02020764": {"known_prototype": "void sub_02020764(UnkStruct_0202068C_entry *entry, u32 frame);", "header": "include/unk_0202068C.h"},
+    "sub_02026DE0": {"signature_guess": "struct { u8 lo; u8 hi; } sub_02026DE0(const UnkStruct_02026E18 *table, u16 key);", "evidence": "pinned by tools/decomp_harness/sweep/out/unk_02026DE0.json; asm/unk_02026DE0.s not yet decompiled, no header exists yet"},
+    "NNS_G3dRenderObjInit": {"header": "NNS SDK (lib/include/nnsys/g3d/...), include via global.h per insights.md id nns-leaf-headers-via-global"},
+    "NNS_G3dTexGetRequiredSize": {"header": "NNS SDK, via global.h"},
+    "NNS_G3dTex4x4GetRequiredSize": {"header": "NNS SDK, via global.h"},
+    "NNS_G3dTexSetTexKey": {"header": "NNS SDK, via global.h"},
+    "NNS_G3dTexReleaseTexKey": {"header": "NNS SDK, via global.h"},
+    "NNS_G3dPlttGetRequiredSize": {"header": "NNS SDK, via global.h"},
+    "NNS_G3dPlttSetPlttKey": {"header": "NNS SDK, via global.h"},
+    "NNS_G3dPlttReleasePlttKey": {"header": "NNS SDK, via global.h"},
+    "NNS_G3dBindMdlSet": {"header": "NNS SDK, via global.h"},
+    "NNS_G3dReleaseMdlSet": {"header": "NNS SDK, via global.h"},
+    "NNS_G3dGetMdlSet": {"header": "NNS SDK, via global.h"},
+    "NNS_G3dGetTex": {"header": "NNS SDK, via global.h"},
+    "MTX_Identity33_": {"header": "lib/include/nitro/fx/fx_mtx33.h, via global.h"},
+    "NNS_GfdDefaultFuncAllocTexVram": {"signature_guess": "extern NNSGfdFuncAllocTexVram NNS_GfdDefaultFuncAllocTexVram; /* function-pointer global, loaded via ldr then called via blx, not a plain function */", "header": "NNS SDK gfd headers, via global.h"},
+    "NNS_GfdDefaultFuncFreeTexVram": {"signature_guess": "extern NNSGfdFuncFreeTexVram NNS_GfdDefaultFuncFreeTexVram; /* function-pointer global */", "header": "NNS SDK gfd headers, via global.h"},
+    "NNS_GfdDefaultFuncAllocPlttVram": {"signature_guess": "extern NNSGfdFuncAllocPlttVram NNS_GfdDefaultFuncAllocPlttVram; /* function-pointer global */", "header": "NNS SDK gfd headers, via global.h"},
+    "NNS_GfdDefaultFuncFreePlttVram": {"signature_guess": "extern NNSGfdFuncFreePlttVram NNS_GfdDefaultFuncFreePlttVram; /* function-pointer global */", "header": "NNS SDK gfd headers, via global.h"}
+  },
+  "shared_struct_hypotheses": [
+    {"name": "UnkStruct_02023694", "size_guess": "0xe0 (pool element stride, confirmed by sub_02023738's count*0xe0 Heap_Alloc)", "fields": [
+      {"offset": "0x0", "width": 1, "meaning": "inUse (BOOL/u8)"},
+      {"offset": "0x1", "width": 1, "meaning": "active (drives per-frame update in sub_020237B0)"},
+      {"offset": "0x3", "width": 1, "meaning": "delState: 0 idle / 1 pending / 2 advanced"},
+      {"offset": "0x4", "width": 4, "meaning": "UnkStruct_02023D44 *nodeArray (count elements, 0xc4 stride)"},
+      {"offset": "0x8", "width": 4, "meaning": "count"},
+      {"offset": "0xc", "width": 196, "meaning": "embedded UnkStruct_02023D44 sentinel/head node"},
+      {"offset": "0xc8", "width": 4, "meaning": "list anchor (== &sentinel at init)"},
+      {"offset": "0xcc", "width": 4, "meaning": "duplicate of 0xc8 at init; distinct role unconfirmed"},
+      {"offset": "0xd0", "width": 4, "meaning": "UnkStruct_02023D44 **freeStack (count pointers)"},
+      {"offset": "0xd4", "width": 4, "meaning": "freeStackTop (free entries remaining)"},
+      {"offset": "0xd8", "width": 4, "meaning": "NNSFndAllocator *workAllocator (fixed 0x10-byte workmem)"},
+      {"offset": "0xdc", "width": 4, "meaning": "UnkStruct_0202068C *animMgr"}
+    ]},
+    {"name": "UnkStruct_02023D44", "size_guess": "0xc4 (embedded at Instance+0xc; also the array-element type at Instance+0x4)", "fields": [
+      {"offset": "0x0", "width": 12, "meaning": "VecFx32 pos (pinned by GF3dRender_DrawModel translation arg)"},
+      {"offset": "0xc", "width": 12, "meaning": "VecFx32 scale, default FX32_ONE (pinned by GF3dRender_DrawModel scale arg)"},
+      {"offset": "0x18", "width": 4, "meaning": "MtxFx33 *rotation, NULL=identity (pinned by GF3dRender_DrawModel rotation arg)"},
+      {"offset": "0x1c", "width": 4, "meaning": "void *userData (callback context, set by sub_02023FE4)"},
+      {"offset": "0x20", "width": 4, "meaning": "void (*callback)(node,userData), invoked per-frame by sub_02023950"},
+      {"offset": "0x24", "width": 1, "meaning": "active flag (u8)"},
+      {"offset": "0x28", "width": 4, "meaning": "UnkStruct_02023694 *owningInstance (back-pointer)"},
+      {"offset": "0x2c", "width": 4, "meaning": "segmentRanges table ptr (UnkStruct_RangeEntry[], 0xc stride)"},
+      {"offset": "0x30", "width": 84, "meaning": "embedded NNSG3dRenderObj"},
+      {"offset": "0x84", "width": 4, "meaning": "NNSG3dMdlSet *mdlSet"},
+      {"offset": "0x88", "width": 4, "meaning": "NNSG3dResMdl *model"},
+      {"offset": "0x8c", "width": 4, "meaning": "NNSG3dResTex *tex"},
+      {"offset": "0x90", "width": 4, "meaning": "secondary resource ptr (from desc->resSel1)"},
+      {"offset": "0x94", "width": 4, "meaning": "texVramKey"},
+      {"offset": "0x98", "width": 4, "meaning": "tex4x4VramKey"},
+      {"offset": "0x9c", "width": 4, "meaning": "plttVramKey"},
+      {"offset": "0xa0", "width": 16, "meaning": "embedded UnkStruct_02026E18 (terrain/height blend table)"},
+      {"offset": "0xb0", "width": 4, "meaning": "UnkStruct_0202068C_entry *animEntry"},
+      {"offset": "0xb4", "width": 1, "meaning": "state: 0 unbound, 1 mid-bind, 2 allocator-VRAM path, 3 explicit-VRAM path"},
+      {"offset": "0xb6", "width": 2, "meaning": "segmentIndex (u16)"},
+      {"offset": "0xb8", "width": 4, "meaning": "frame (fx32-ish playback position)"},
+      {"offset": "0xbc", "width": 4, "meaning": "prev (active-list link)"},
+      {"offset": "0xc0", "width": 4, "meaning": "next (active-list link)"}
+    ]},
+    {"name": "UnkStruct_02023E04", "size_guess": "0x20 (transient init-descriptor, built on caller's stack by sub_02023E04/sub_02023E2C and consumed by sub_02024380's bind dispatch)", "fields": [
+      {"offset": "0x0", "width": 4, "meaning": "resSel0 (primary resource selector, selector mode 0)"},
+      {"offset": "0x4", "width": 4, "meaning": "resSel1 (secondary resource selector, selector mode 1)"},
+      {"offset": "0x8", "width": 4, "meaning": "segmentRanges table ptr, copied to node->field0x2c"},
+      {"offset": "0xc", "width": 16, "meaning": "embedded UnkStruct_02026E18 (by value), copied to node->field0xa0"},
+      {"offset": "0x1c", "width": 4, "meaning": "explicit texVramKey override; nonzero selects bind-path-B (sub_02023A20) over path-A (sub_020239D0)"},
+      {"offset": "0x20", "width": 4, "meaning": "explicit tex4x4VramKey override"},
+      {"offset": "0x24", "width": 4, "meaning": "explicit plttVramKey override"}
+    ]},
+    {"name": "UnkStruct_RangeEntry", "size_guess": "0xc", "fields": [
+      {"offset": "0x0", "width": 4, "meaning": "s32 min (frame range start, pre-shift; used as min<<12 fx32)"},
+      {"offset": "0x4", "width": 4, "meaning": "s32 max"},
+      {"offset": "0x8", "width": 4, "meaning": "u32 loop-enable flag"}
+    ]}
+  ],
+  "risks": [
+    "asm/include/unk_02023694.inc is a FAMILY-WIDE .public list shared by multiple .s files (sprite/cell-anim/G2d machinery); the bulk of it (Sys_AllocAndReadFile, all Sprite_*/SpriteList_*, all NNS_G2d*, GX_LoadOAM, GXS_LoadOAM, DC_FlushRange, MIi_CpuClear16, memset, _u32_div_f, FX_SinCosTable_, ClearMainOAM, ClearSubOAM, Sprite_GetCurrentAnimFrameExAttr, Sprite_GetCellAnim) is NEVER referenced inside unk_02023694.s itself -- do not generate prototypes/header entries for those from this file",
+    "exactly 31 of 68 functions are exported (match .inc lines 13-43: sub_02023738 through sub_02023FE4 inclusive, in that .inc order); the remaining 37 are not in .public and must stay static -- getting any of these wrong adds unnecessary header surface and IPA exposure",
+    "GF_AssertFail call-site shapes split into two distinct C idioms used throughout this file: (a) fall-through asserts where execution continues after the call regardless (write as GF_ASSERT(cond), see insights.md id gf-assert-direction), vs (b) guard asserts where the function RETURNS a sentinel value (0/NULL/FALSE) after the call (write as explicit if(){GF_AssertFail();return X;}, NOT the GF_ASSERT macro -- insights.md id assert-return-not-gf-assert). Misclassifying any of the ~20 occurrences will mismatch.",
+    "many null-checks use `add rD, rS, #0` (a register-copy that also sets flags in Thumb) immediately followed by bne/beq with NO separate cmp instruction; write straightforward `if (a0 != NULL)` so MWCC can fuse the copy+compare -- introducing an extra temp/cast could force a separate cmp and break the match",
+    "sub_020238BC has an apparently-dead second `bne` reusing the first cmp's flags right after the entry null-check -- looks like a nested/duplicate GF_ASSERT(a0 != NULL) compiled inside the a0-is-NULL branch; reproduce literally",
+    "the 0x1c/0x20/0x24 offsets mean completely different things in UnkStruct_02023D44 (userData/callback/-) versus UnkStruct_02023E04 (explicit VRAM key overrides) -- do not let struct-access notes from one bleed into the other when writing the two header types",
+    "do not include NNS SDK leaf headers (<nnsys/g3d/...>, gfd vram types) directly -- include only via global.h (insights.md id nns-leaf-headers-via-global), or MWCC will fail on undefined NNSG3dResMdlSet-family types",
+    "objdiff.py can false-positive on bl-relocation placeholder bytes for every external call in this heavily-NNS/Heap-calling file -- always confirm with chiri pkg -- compare, never accept on objdiff --summary alone (insights.md id objdiff-bl-placeholder-falsepos)",
+    "sub_02023F04 has 60+ call sites concentrated in asm/overlay_01_021F72DC.s (all still asm, no IPA risk yet) -- its delta/frame parameter type is the least-evidenced signature guess in this file and should be re-examined against that overlay's call-site setup before finalizing the header",
+    "sub_02023B38 and sub_020243FC have only structurally-inferred (low confidence) parameter roles for r1/r2 -- do not treat their signature_guess as load-bearing; re-derive from the actual decomp attempt",
+    "this file mixes two largely-independent subsystems (pool/freelist/list manager for Instances: sub_02023694..sub_020237EC plus sub_02024248..sub_02024308; and per-Node accessors/G3D VRAM-bind helpers: sub_02023D44 onward plus the static cluster sub_020239D0..sub_02023D24) -- function order in the C file must still follow the asm exactly, but consider grouping comments to keep the two clusters readable",
+    "no .rodata/.data sections and no DECL_CHUNK_EX/save_arrays.c involvement in this file; the only data symbol is the bss singleton _021D2208"
+  ],
+  "notes": "68 thumb functions implementing a 3D-model 'object pool' manager (likely the overworld 3D-model/follower render-object system, given the GF3dRender_DrawModel/NNS_G3d* usage and the height-based terrain-blend lookup via the already-analyzed unk_02026DE0.s sibling file). Two-level structure: a fixed-size singleton array of UnkStruct_02023694 'Instance' pool elements (0xe0 bytes, allocated once via sub_02023738 into bss singleton _021D2208), each owning its own freelist-backed sub-pool of UnkStruct_02023D44 'Node' objects (0xc4 bytes) threaded on a doubly-linked active list. Node creation/binding goes through a transient UnkStruct_02023E04 descriptor (0x20 bytes, built by exported sub_02023E04/sub_02023E2C) that sub_02024380 dispatches to one of two bind paths (allocator-computed VRAM keys vs caller-supplied explicit keys). All real callers found (overlay_01_021F1348.s, overlay_01_021F944C.s, overlay_45_thumb.s, overlay_01_021E5900.s, overlay_01_022001E4.s, overlay_01_022053EC.s, overlay_01_02203A18.s, overlay_01_021F72DC.s and many other overlay_01_*.s frame-setter call sites, unk_020632B0.s) are still unconverted asm, so there is currently no IPA cascade risk from any signature choice here -- but sub_02023F04's huge fanout makes it the highest-priority signature to get exactly right before it is locked in by a future decomp of one of its callers."
+}

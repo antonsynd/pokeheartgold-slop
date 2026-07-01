@@ -1,0 +1,437 @@
+{
+  "file": "asm/unk_0202FBCC.s",
+  "functions": [
+    {
+      "name": "sub_0202FBCC",
+      "mode": "thumb",
+      "signature_guess": "u32 sub_0202FBCC(void)",
+      "confidence": "high",
+      "notes": "Trivial: returns literal 0x1D50. Registered as SAVESIZEFN in src/save_arrays.c DECL_CHUNK_EX(sub_0202FBCC, sub_0202FBD4) for gExtraSaveChunkHeaders idx 2-5 (SAVE_PAGE_MAX+4/6/8/10). sizeof(struct UnkStruct_0202FBCC) == 0x1D50, matches include/unk_0202FBCC.h filler size."
+    },
+    {
+      "name": "sub_0202FBD4",
+      "mode": "thumb",
+      "signature_guess": "void sub_0202FBD4(void *a0)",
+      "confidence": "high",
+      "callees": ["MIi_CpuClear32"],
+      "struct_accesses": [
+        {"param": 0, "offset": "0x0", "width": 4, "meaning": "sentinel/header word, set to 0xFFFFFFFF after clear"}
+      ],
+      "notes": "SAVEINITFN counterpart of sub_0202FBCC. MIi_CpuClear32(0, a0, 0x1D50) then *a0 = ~0u."
+    },
+    {
+      "name": "sub_0202FBF0",
+      "mode": "thumb",
+      "signature_guess": "void sub_0202FBF0(SaveData *save, enum HeapID heapID, u32 *out)",
+      "confidence": "high",
+      "callees": ["Heap_Free", "sub_0202711C", "sub_0202FBD4"],
+      "notes": "Already declared in include/unk_0202FBCC.h, confirmed by 3 callers in src/encounter.c (all `sub_0202FBF0(fieldSystem->saveData, HEAP_ID_FIELD2, &local_u32)`). Frees previous _021D2AF8 if set, loads chunk idx 0 via sub_0202711C(save, heapID, out, 0), stores into _021D2AF8, calls sub_0202FBD4 on the loaded pointer (init/reset, not just load!). Note: idx is hardcoded 0 (chunk index, +2 inside sub_0202711C -> SAVE chunk 2)."
+    },
+    {
+      "name": "sub_0202FC24",
+      "mode": "thumb",
+      "signature_guess": "void sub_0202FC24(void)",
+      "confidence": "high",
+      "callees": ["GF_AssertFail", "Heap_Free"],
+      "notes": "Caller in src/battle/battle_system.c: `sub_0202FC24();` no args, return value unused. Asserts _021D2AF8 != 0, frees it, zeroes the global."
+    },
+    {
+      "name": "sub_0202FC48",
+      "mode": "thumb",
+      "signature_guess": "BOOL sub_0202FC48(void)",
+      "confidence": "high",
+      "notes": "Matches include/unk_0202FBCC.h prototype, confirmed by 3 callers (src/battle/battle_system.c, src/unk_02087A78.c, src/encounter.c) all comparing the result to 1/0/TRUE. Returns (_021D2AF8 != 0)."
+    },
+    {
+      "name": "sub_0202FC5C",
+      "mode": "thumb",
+      "signature_guess": "struct UnkStruct_0202FBCC *sub_0202FC5C(void)",
+      "confidence": "medium",
+      "callees": ["GF_AssertFail"],
+      "notes": "Asserts _021D2AF8 != 0, returns it unmodified. No caller found yet in decompiled src/ or asm/ neighbors searched (may be called from a still-undecompiled overlay, e.g. overlay_40.s which touches _021D2AF8 directly)."
+    },
+    {
+      "name": "sub_0202FC74",
+      "mode": "thumb",
+      "signature_guess": "void *sub_0202FC74(void)",
+      "confidence": "medium",
+      "callees": ["GF_AssertFail"],
+      "struct_accesses": [{"param": -1, "offset": "0x4", "width": "n/a", "meaning": "start of payload after 4-byte sentinel header"}],
+      "notes": "Returns _021D2AF8 + 4. Mirrors sub_020307DC exactly (same body); the two are duplicate/aliased accessors."
+    },
+    {
+      "name": "sub_0202FC90",
+      "mode": "thumb",
+      "signature_guess": "int sub_0202FC90(SaveData *save, enum HeapID heapID, int *status, void *outProfile, int idx)",
+      "confidence": "medium",
+      "callees": ["Heap_Free", "sub_0202711C", "sub_02030258", "sub_02030154", "sub_0203018C", "sub_020304F0"],
+      "struct_accesses": [
+        {"param": -1, "offset": "0xe8", "width": "n/a", "meaning": "payload base, decrypted in place via sub_02030258 (_MonDecryptSegment), seed from checksum at payload+0x1C64"},
+        {"param": 2, "offset": "0x0", "width": 4, "meaning": "in/out status code, deref'd before call (must be 1 to proceed) and set to 3/0/2/1 on the various exit paths"}
+      ],
+      "notes": "5th param on stack ([sp,#0x18], idx forwarded to sub_0202711C(save,heapID,status,idx)). Every observed return path is `mov r0,#1` (constant); the real result is communicated via *status (3=initial-load-mismatch,0=CRC-fail via sub_02030154,2=struct-check-fail via sub_0203018C,1=success). outProfile (4th param) is optional (NULL-checked) and passed to sub_020304F0(outProfile, save) on success."
+    },
+    {
+      "name": "sub_0202FD28",
+      "mode": "thumb",
+      "signature_guess": "int sub_0202FD28(SaveData *save, enum HeapID heapID, int *status, int idx)",
+      "confidence": "medium",
+      "callees": ["sub_0202711C", "sub_02030258", "sub_02030154", "sub_0203018C", "Heap_Free"],
+      "notes": "Forwards all 4 incoming args directly to sub_0202711C (passthrough call with same register set, no reshuffle). Unlike sub_0202FC90 it always frees the loaded chunk before returning (does not keep it in _021D2AF8) and returns a genuine BOOL (1=valid,0=invalid) while still writing a status code (3/0/2/1) through *status. Looks like a 'validate without loading' variant used during save corruption checks for one of the 4 Battle Hall rank chunks."
+    },
+    {
+      "name": "sub_0202FDA4",
+      "mode": "thumb",
+      "signature_guess": "int sub_0202FDA4(SaveData *save, struct UnkStruct_0202FBCC *data, int idx, u16 *state)",
+      "confidence": "medium",
+      "callees": ["sub_0201A728", "sub_0201A748", "sub_02027134", "Save_PrepareForAsyncWrite", "sub_0201A738", "Save_WriteFileAsync", "sub_0201A774"],
+      "struct_accesses": [{"param": 3, "offset": "0x0", "width": 2, "meaning": "async-commit state: 0=request write via sub_02027134, 1=poll Save_WriteFileAsync, else done"}],
+      "notes": "r1/r2/r3 of this fn map 1:1 onto sub_02027134(SaveData*, struct UnkStruct_0202FBCC*, int idx) verified via src/save_arrays.c signature, confirming param order. Async-save state machine; state pointer (4th param) is u16 and switched 0/1/default."
+    },
+    {
+      "name": "sub_0202FE14",
+      "mode": "thumb",
+      "signature_guess": "int sub_0202FE14(SaveData *save, int field, u16 roundCount, int idx, u16 *state, u16 *writeState)",
+      "confidence": "low",
+      "callees": ["sub_0202FF08", "SaveArray_CalcCRC16", "sub_02030250", "sub_0202FDA4"],
+      "struct_accesses": [
+        {"param": -1, "offset": "0x84", "width": "0x58 bytes", "meaning": "CRC'd over via SaveArray_CalcCRC16, checksum stored at +0x60"},
+        {"param": -1, "offset": "0xe8", "width": "n/a", "meaning": "payload, magic 0xE281 stamped at +0x48 (relative to 0x84-block) and checksum region near end"}
+      ],
+      "notes": "6 params (4 reg + 2 stack: state at [sp,#0x18] drives the outer switch 0/1/default, a 6th stack arg [sp,#0x1c] is forwarded as the inner state ptr to sub_0202FDA4 in case 1). Case 0 builds a fresh record via sub_0202FF08(save, _021D2AF8+0x84, _021D2AF8+0xe8, field, roundCount), stamps two 0xE281 magic halfwords, computes 2 CRC16s, re-encrypts payload via sub_02030250 (_MonEncryptSegment). Lowest-confidence function in the file; param roles are best-effort from register flow, recommend re-deriving from objdiff/asmdiff before committing a prototype."
+    },
+    {
+      "name": "sub_0202FEB8",
+      "mode": "thumb",
+      "signature_guess": "void sub_0202FEB8(int level, int *outA, int *outB)",
+      "confidence": "medium",
+      "notes": "Leaf, no push/pop. Inline jump table at _0202FED2 (10 entries) plus range checks for case values 0x1a-0x20. Buckets `level` into one of two (outA,outB) pairs: (4,3) for the 'normal' bucket, (2,6) for the 'tough' bucket -- likely battle-round/streak counts per difficulty tier. Called only from sub_0202FF08 with `level` = that function's field-selector param."
+    },
+    {
+      "name": "sub_0202FF08",
+      "mode": "thumb",
+      "signature_guess": "void sub_0202FF08(SaveData *save, void *dst, void *src, int rulesetSel, u16 roundCount)",
+      "confidence": "low",
+      "callees": ["MI_CpuFill8", "sub_0202FEB8", "sub_020291E8", "sub_0202925C"],
+      "struct_accesses": [
+        {"param": 1, "offset": "0x18", "width": 4, "meaning": "copy of rodata default-table _020F68C4 (4 bytes)"},
+        {"param": 1, "offset": "0x24", "width": 2, "meaning": "roundCount (5th param) stored here"},
+        {"param": 1, "offset": "0x26", "width": 1, "meaning": "rulesetSel (4th param) stored here"},
+        {"param": 1, "offset": "0x28", "width": "0x20 bytes (16 x u16)", "meaning": "LinkBattleRuleset snapshot copied from sub_020291E8()/sub_0202925C() result"},
+        {"param": 2, "offset": "0xc4", "width": 2, "meaning": "flags field selecting which of two size variants to use for nested record scan"},
+        {"param": 2, "offset": "0x1154", "width": "n/a, stride 0x2A4 (4 records)", "meaning": "challenger-record array scanned for duplicate-move/ID checks against rodata default tables"}
+      ],
+      "notes": "Largest function in file (~0x315 bytes), builds a new Battle Hall opponent record. 5th param (roundCount) arrives on the stack at the call site via a manual `str r1,[sp]` before reassigning r1-r3, easy to mis-derive. Internal jump table at _02030060 (14 entries) dispatches rulesetSel 0-13 to sub_020291E8(save, id 0-5) for ids 0-13 mod, or sub_0202925C() for the 'custom' bucket -- both return LinkBattleRuleset* (16 x u16), copied into dst+0x28. Stack frame 0x2c; recommend treating as NONMATCHING-candidate given size/complexity unless register allocation falls out cleanly."
+    },
+    {
+      "name": "sub_02030154",
+      "mode": "thumb",
+      "signature_guess": "int sub_02030154(SaveData *save, void *p)",
+      "confidence": "medium",
+      "callees": ["Save_CheckExtraChunksExist"],
+      "struct_accesses": [
+        {"param": 1, "offset": "0xe8+0x1C62", "width": 2, "meaning": "magic value, expect 0xE281"},
+        {"param": 1, "offset": "0x84+0x48", "width": 2, "meaning": "magic value, expect 0xE281"}
+      ],
+      "notes": "Returns 1 (invalid) if Save_CheckExtraChunksExist(save)==0, or if either magic halfword != 0xE281; else 0 (valid). 'Format header matches' check."
+    },
+    {
+      "name": "sub_0203018C",
+      "mode": "thumb",
+      "signature_guess": "int sub_0203018C(SaveData *save, void *p)",
+      "confidence": "medium",
+      "callees": ["SaveArray_CalcCRC16"],
+      "struct_accesses": [
+        {"param": 1, "offset": "0x84", "width": "0x58 bytes", "meaning": "CRC16'd, compared to stored checksum at +0x60"},
+        {"param": 1, "offset": "0xe8", "width": "variable", "meaning": "CRC16'd with seed at +0x1C64, compared to stored checksum"},
+        {"param": 1, "offset": "0xe8+0x1154", "width": "n/a, 4 outer x 6 inner x stride 0x2A4/4 nested", "meaning": "bounds-checks each of 4 challenger records' fields against fixed caps (0x1D3+0x45=0x218, 0x1D3+0x1c=0x1EF)"}
+      ],
+      "notes": "BOOL structural-validity check across both CRCs and a nested 4x6x4 bound-check loop over the challenger-record array. Returns 0 on any failure, 1 if all pass."
+    },
+    {
+      "name": "sub_02030250",
+      "mode": "thumb",
+      "signature_guess": "void sub_02030250(u16 *data, u32 size, u32 seed)",
+      "confidence": "high",
+      "callees": ["_MonEncryptSegment"],
+      "notes": "Pure tail-call trampoline: `ldr r3,=_MonEncryptSegment; bx r3`. Signature identical to _MonEncryptSegment in include/math_util.h."
+    },
+    {
+      "name": "sub_02030258",
+      "mode": "thumb",
+      "signature_guess": "void sub_02030258(u16 *data, u32 size, u32 seed)",
+      "confidence": "high",
+      "callees": ["_MonDecryptSegment"],
+      "notes": "Tail-call trampoline to _MonDecryptSegment, same shape as sub_02030250."
+    },
+    {
+      "name": "sub_02030260",
+      "mode": "thumb",
+      "signature_guess": "void sub_02030260(int battlerId, u32 a1, u8 data)",
+      "confidence": "high",
+      "notes": "Already declared in include/unk_0202FBCC.h; confirmed by 2 callers in src/battle/battle_system.c (ov12_0223BDDC, ov12_0223BF14). Writes a byte at _021D2AF8 + battlerId*0x400 + a1 + 0x238 (0x8e*4)."
+    },
+    {
+      "name": "sub_0203027C",
+      "mode": "thumb",
+      "signature_guess": "u8 sub_0203027C(int battlerId, u32 a1)",
+      "confidence": "high",
+      "callees": ["GF_AssertFail"],
+      "notes": "Already declared in include/unk_0202FBCC.h; confirmed by 2 callers in src/battle/battle_system.c. Mirrors sub_02030260's addressing exactly (read instead of write), with an added GF_AssertFail(_021D2AF8!=0) guard sub_02030260 lacks."
+    },
+    {
+      "name": "sub_020302A4",
+      "mode": "thumb",
+      "signature_guess": "void sub_020302A4(SaveData *save)",
+      "confidence": "low",
+      "callees": ["sub_020306DC", "PlayerProfile_Copy", "sub_02006EFC", "Save_Pokedex_Get", "Pokedex_Copy", "Save_PlayerData_GetOptionsAddr-equivalent", "Options_Copy"],
+      "struct_accesses": [
+        {"param": 0, "offset": "0x14", "width": 4, "meaning": "read via SaveData internal record-array indexing"},
+        {"param": 0, "offset": "0x53*4=0x14c .. 0x68", "width": "various", "meaning": "~20 raw field copies into _021D2AF8+0xe8 region (likely the PlayerProfile/options/party-source record)"},
+        {"param": 0, "offset": "0x13*0x10=0x130", "width": 4, "meaning": "raw chunk-array index read (matches Save_PlayerData_GetOptionsAddr's internal indexing scheme), passed to Options_Copy"}
+      ],
+      "notes": "Single-parameter SaveData* function (verified: only r0 used, stored at sp[0] and reused for every sub-call including Save_Pokedex_Get(saveData)). Snapshots ~20 raw SaveData-internal fields plus party (via sub_020306DC, 4x loop stride 0x34/0x70), Pokedex, and Options into the _021D2AF8 working buffer. This is effectively a 'load current save into Battle Hall work area' counterpart to Save_Frontier_Load. Very large/intricate field-copy function -- high NONMATCHING risk; verify every offset against objdiff before trusting field names."
+    },
+    {
+      "name": "sub_0203049C",
+      "mode": "thumb",
+      "signature_guess": "void sub_0203049C(int idx, u32 value)",
+      "confidence": "medium",
+      "struct_accesses": [{"param": -1, "offset": "0x7f*4=0x1FC + idx*4", "width": 4, "meaning": "u32[N] slot array, set if global loaded"}],
+      "notes": "No-op if _021D2AF8 == 0."
+    },
+    {
+      "name": "sub_020304B4",
+      "mode": "thumb",
+      "signature_guess": "BOOL sub_020304B4(void)",
+      "confidence": "medium",
+      "struct_accesses": [{"param": -1, "offset": "0xe8+0x45*4=0x114, stride 4, 4 records", "width": 4, "meaning": "per-record value compared <= 0x140 (320)"}],
+      "notes": "No parameters used. Returns 1 if _021D2AF8==0 OR all 4 records pass the <=0x140 bound check, else 0."
+    },
+    {
+      "name": "sub_020304F0",
+      "mode": "thumb",
+      "signature_guess": "void sub_020304F0(void *dest, SaveData *save)",
+      "confidence": "medium",
+      "callees": ["Save_Pokedex_Get", "Pokedex_Copy", "sub_02030724", "sub_02030724-related PlayerProfile_Copy", "Save_PlayerData_GetOptionsAddr-equivalent", "Options_Copy"],
+      "notes": "Inverse of sub_020302A4: copies _021D2AF8+0xe8 region OUT into dest (field-by-field, same offset set as sub_020302A4 mirrored). Called by sub_0202FC90 as `sub_020304F0(outProfile, save)` confirming (void*, SaveData*) order. Same NONMATCHING risk as sub_020302A4 -- large field-copy twin."
+    },
+    {
+      "name": "sub_020306DC",
+      "mode": "thumb",
+      "signature_guess": "void sub_020306DC(Party *party, void *dest)",
+      "confidence": "high",
+      "callees": ["MI_CpuFill8", "Party_GetMaxCount", "Party_GetCount", "Party_GetMonByIndex", "sub_02072A98"],
+      "struct_accesses": [
+        {"param": 1, "offset": "0x0", "width": 2, "meaning": "Party_GetMaxCount() result"},
+        {"param": 1, "offset": "0x2", "width": 2, "meaning": "Party_GetCount() result"},
+        {"param": 1, "offset": "0x4, stride 0x70", "width": "0x70 bytes (UnkPokemonStruct_02072A98)", "meaning": "flattened party entries via sub_02072A98"}
+      ],
+      "notes": "Fills dest (0x2A4 = 4 + 6*0x70 bytes) with zero first via MI_CpuFill8. Types confirmed against include/pokemon.h sub_02072A98 prototype."
+    },
+    {
+      "name": "sub_02030724",
+      "mode": "thumb",
+      "signature_guess": "void sub_02030724(void *src, Party *party)",
+      "confidence": "high",
+      "callees": ["AllocMonZeroed", "Party_InitWithMaxSize", "sub_02072D64", "SetMonData", "Party_AddMon", "Heap_Free"],
+      "notes": "Inverse of sub_020306DC. Allocates a scratch Pokemon via AllocMonZeroed(HEAP_ID equivalent of param value 0xb), Party_InitWithMaxSize(party, src->maxCount), then for each of src->count entries: sub_02072D64(entry,mon) to populate, SetMonData(mon, MON_DATA_..=0xa2, &localByte), Party_AddMon(party, mon); frees the scratch mon at the end."
+    },
+    {
+      "name": "sub_0203077C",
+      "mode": "thumb",
+      "signature_guess": "void *sub_0203077C(enum HeapID heapID)",
+      "confidence": "high",
+      "callees": ["GF_AssertFail", "Heap_Alloc", "MIi_CpuCopy32"],
+      "struct_accesses": [{"param": -1, "offset": "0x84", "width": "0x64 bytes", "meaning": "descriptor/header sub-struct, duplicated into a fresh Heap_Alloc'd 0x64-byte buffer"}],
+      "notes": "Asserts _021D2AF8 != 0 first."
+    },
+    {
+      "name": "sub_020307AC",
+      "mode": "thumb",
+      "signature_guess": "void *sub_020307AC(enum HeapID heapID)",
+      "confidence": "high",
+      "callees": ["GF_AssertFail", "Heap_Alloc", "MIi_CpuCopy32"],
+      "struct_accesses": [{"param": -1, "offset": "0x4", "width": "0x80 bytes", "meaning": "ruleset sub-struct, duplicated into a fresh Heap_Alloc'd 0x80-byte buffer"}],
+      "notes": "Mirrors sub_0203077C for the offset-4 (0x80-byte) sub-struct instead of offset-0x84."
+    },
+    {
+      "name": "sub_020307DC",
+      "mode": "thumb",
+      "signature_guess": "void *sub_020307DC(void)",
+      "confidence": "high",
+      "callees": ["GF_AssertFail"],
+      "notes": "Returns _021D2AF8 + 4. Byte-identical body to sub_0202FC74 (duplicate accessor)."
+    },
+    {
+      "name": "sub_020307F8",
+      "mode": "thumb",
+      "signature_guess": "void *sub_020307F8(void)",
+      "confidence": "high",
+      "callees": ["GF_AssertFail"],
+      "notes": "Returns _021D2AF8 + 0x84 (the descriptor sub-struct, raw pointer not a copy)."
+    },
+    {
+      "name": "sub_02030814",
+      "mode": "thumb",
+      "signature_guess": "void sub_02030814(void *outRuleset, void *outDescriptor, void *outPayload, void *outProfile, SaveData *save)",
+      "confidence": "low",
+      "callees": ["GF_AssertFail", "MI_CpuCopy8", "sub_02030258", "sub_020304F0"],
+      "struct_accesses": [
+        {"param": 1, "offset": "0x84", "width": "0x64 bytes", "meaning": "copied via MI_CpuCopy8"},
+        {"param": 2, "offset": "0xe8", "width": "decrypted in place via sub_02030258, seed at +0x1D4C", "meaning": "payload copy"},
+        {"param": 0, "offset": "0x4", "width": "0x80 bytes", "meaning": "ruleset copy"}
+      ],
+      "notes": "5 params (4 reg + SaveData* on stack at [sp,#0x18]). outProfile (4th param) is NULL-checked; if non-NULL calls sub_020304F0(outProfile, save). 'Export everything' snapshot extractor of the live work buffer. Recommend re-verifying param order against objdiff before committing."
+    },
+    {
+      "name": "sub_0203088C",
+      "mode": "thumb",
+      "signature_guess": "void sub_0203088C(void *record, int field, int idx, u32 *outA, u32 *outB)",
+      "confidence": "low",
+      "callees": ["GF_AssertFail"],
+      "notes": "Leaf-ish, inline jump table at _020308A2 (6 entries, field 0-5). All cases except case 4 set r1=0 (likely a dead/unused second return value); case 4 returns two genuine adjacent u32 fields at record+0x58/+0x5c. No caller found in decompiled src/ to disambiguate the real C return shape -- treat with caution, may need to inspect a not-yet-decompiled caller (overlay_40.s is the most likely candidate, given it accesses _021D2AF8 directly)."
+    },
+    {
+      "name": "sub_02030920",
+      "mode": "thumb",
+      "signature_guess": "void *sub_02030920(enum HeapID heapID)",
+      "confidence": "high",
+      "callees": ["Heap_Alloc", "MI_CpuFill8"],
+      "notes": "Allocates and zeroes a fresh 0x64-byte buffer (same size as the offset-0x84 descriptor sub-struct)."
+    },
+    {
+      "name": "sub_02030938",
+      "mode": "thumb",
+      "signature_guess": "void sub_02030938(void *ptr)",
+      "confidence": "high",
+      "callees": ["Heap_Free"],
+      "notes": "Pure tail-call trampoline to Heap_Free."
+    },
+    {
+      "name": "sub_02030940",
+      "mode": "thumb",
+      "signature_guess": "void sub_02030940(void *dest)",
+      "confidence": "high",
+      "callees": ["MI_CpuFill8"],
+      "notes": "Tail-call: MI_CpuFill8(dest, 0, 0x58)."
+    },
+    {
+      "name": "sub_0203094C",
+      "mode": "thumb",
+      "signature_guess": "void *sub_0203094C(SaveData *save)",
+      "confidence": "medium",
+      "callees": ["Save_Frontier_GetStatic"],
+      "notes": "Returns Save_Frontier_GetStatic(save) + 0x8e0 (0x8e<<4). Likely the Battle Hall sub-section embedded inside FrontierSave (include/save_frontier.h); cross-check against unk_02030A98.c's FrontierSave field layout before naming."
+    },
+    {
+      "name": "sub_0203095C",
+      "mode": "thumb",
+      "signature_guess": "BOOL sub_0203095C(const u8 *p)",
+      "confidence": "high",
+      "notes": "Returns bit 4 of *p (lsl#0x1b; lsr#0x1f isolates that bit). Paired bitfield getter with sub_02030964 (setter)."
+    },
+    {
+      "name": "sub_02030964",
+      "mode": "thumb",
+      "signature_guess": "void sub_02030964(u8 *p, BOOL value)",
+      "confidence": "high",
+      "notes": "Sets/clears bit 4 of *p from value&1. Pair to sub_0203095C; matches the flags-byte-union-manual-mask pattern noted in insights.md."
+    },
+    {
+      "name": "sub_02030978",
+      "mode": "thumb",
+      "signature_guess": "void sub_02030978(void *record, u32 field, u32 idx, const void *val)",
+      "confidence": "medium",
+      "notes": "Generic field-set dispatcher, inline jump table at _0203098A (10 entries, field 0-9). Mirrors the known unk_02030A98.c family shape (sub_02030B30/sub_02030C6C/etc, void*val_ pattern). Field 0/1 are sub-byte bitfields at record offset 0 (1-bit and 3-bit), field 2 is a byte at offset1, fields 3/4/7 are u16 arrays at offsets 4/0x20/0x3c (stride2, indexed by idx), fields 5/8 are byte arrays at offsets 0x28/0x44 (indexed by idx), fields 6/9 are u32 arrays at offsets 0x2c/0x48 (stride4, indexed by idx)."
+    },
+    {
+      "name": "sub_02030A24",
+      "mode": "thumb",
+      "signature_guess": "u32 sub_02030A24(void *record, u32 field, u32 idx)",
+      "confidence": "medium",
+      "notes": "Getter mirror of sub_02030978 -- identical jump-table dispatch (_02030A34, 10 entries) and identical offset/stride set, but reads instead of writes (widths ldrb/ldrh/ldr matching the setter's val widths). Field 9 out of range (>9) returns 0."
+    }
+  ],
+  "data": [
+    {"label": "_021D2AF8", "section": "bss", "bytes": 4, "shape_guess": "exported (.public) global pointer to the currently-loaded struct UnkStruct_0202FBCC (Battle Hall live work buffer); also accessed directly from asm/overlay_40.s (not yet decompiled)"},
+    {"label": "_020F68C4", "section": "rodata", "bytes": 4, "shape_guess": "static u8[4] default table, copied into the new record at offset 0x18 by sub_0202FF08 -- file-local, no .public"},
+    {"label": "_020F68C8", "section": "rodata", "bytes": 8, "shape_guess": "static u8[8] default table, copied into the new record at offset 0x1c by sub_0202FF08 -- file-local, no .public"}
+  ],
+  "imports": {
+    "Heap_Alloc": {"known_prototype": "void *Heap_Alloc(enum HeapID heapID, u32 size)", "header": "include/heap.h"},
+    "Heap_Free": {"known_prototype": "void Heap_Free(void *ptr)", "header": "include/heap.h"},
+    "GF_AssertFail": {"known_prototype": "void GF_AssertFail(void)", "header": "include/error_handling.h"},
+    "_MonEncryptSegment": {"known_prototype": "void _MonEncryptSegment(u16 *data, u32 size, u32 seed)", "header": "include/math_util.h"},
+    "_MonDecryptSegment": {"known_prototype": "void _MonDecryptSegment(u16 *data, u32 size, u32 seed)", "header": "include/math_util.h"},
+    "sub_0202711C": {"known_prototype": "struct UnkStruct_0202FBCC *sub_0202711C(SaveData *saveData, enum HeapID heapID, int *ret_p, int idx)", "header": "include/save_arrays.h (defined in src/save_arrays.c)"},
+    "sub_02027134": {"known_prototype": "int sub_02027134(SaveData *saveData, struct UnkStruct_0202FBCC *data, int idx)", "header": "include/save_arrays.h (defined in src/save_arrays.c)"},
+    "Save_CheckExtraChunksExist": {"known_prototype": "BOOL Save_CheckExtraChunksExist(SaveData *saveData)", "header": "include/save.h"},
+    "Save_PrepareForAsyncWrite": {"known_prototype": "void Save_PrepareForAsyncWrite(SaveData *saveData, int a1)", "header": "include/save.h"},
+    "Save_WriteFileAsync": {"known_prototype": "int Save_WriteFileAsync(SaveData *saveData)", "header": "include/save.h"},
+    "SaveArray_CalcCRC16": {"known_prototype": "u16 SaveArray_CalcCRC16(SaveData *saveData, const void *data, u32 size)", "header": "include/save.h"},
+    "Save_PlayerData_GetOptionsAddr": {"known_prototype": "Options *Save_PlayerData_GetOptionsAddr(SaveData *saveData)", "header": "include/player_data.h"},
+    "PlayerProfile_Copy": {"known_prototype": "void PlayerProfile_Copy(const PlayerProfile *src, PlayerProfile *dest)", "header": "include/player_data.h"},
+    "sub_020291E8": {"known_prototype": "LinkBattleRuleset *sub_020291E8(SaveData *saveData, int a1)", "header": "include/link_ruleset_data.h"},
+    "sub_0202925C": {"known_prototype": "LinkBattleRuleset *sub_0202925C(void)", "header": "include/link_ruleset_data.h"},
+    "Pokedex_Copy": {"known_prototype": "void Pokedex_Copy(const Pokedex *src, Pokedex *dest)", "header": "include/pokedex.h"},
+    "Save_Pokedex_Get": {"known_prototype": "Pokedex *Save_Pokedex_Get(SaveData *saveData)", "header": "include/pokedex.h"},
+    "Options_Copy": {"known_prototype": "void Options_Copy(Options *src, Options *dest)", "header": "include/options.h"},
+    "Save_Frontier_GetStatic": {"known_prototype": "FrontierSave *Save_Frontier_GetStatic(SaveData *saveData)", "header": "include/unk_02030A98.h (note: src/unk_02030A98.c deliberately does NOT include this header due to IPA-frozen mismatches -- see risks)"},
+    "AllocMonZeroed": {"known_prototype": "Pokemon *AllocMonZeroed(enum HeapID heapID)", "header": "include/pokemon.h"},
+    "SetMonData": {"known_prototype": "void SetMonData(Pokemon *mon, int attr, const void *ptr)", "header": "include/pokemon.h"},
+    "sub_02072A98": {"known_prototype": "void sub_02072A98(Pokemon *mon, struct UnkPokemonStruct_02072A98 *dest)", "header": "include/pokemon.h"},
+    "sub_02072D64": {"known_prototype": "void sub_02072D64(const struct UnkPokemonStruct_02072A98 *src, Pokemon *mon)", "header": "include/pokemon.h"},
+    "Party_InitWithMaxSize": {"known_prototype": "void Party_InitWithMaxSize(Party *party, int maxSize)", "header": "include/party.h"},
+    "Party_AddMon": {"known_prototype": "BOOL Party_AddMon(Party *party, const Pokemon *mon)", "header": "include/party.h"},
+    "Party_GetMaxCount": {"known_prototype": "int Party_GetMaxCount(const Party *party)", "header": "include/party.h"},
+    "Party_GetCount": {"known_prototype": "int Party_GetCount(const Party *party)", "header": "include/party.h"},
+    "Party_GetMonByIndex": {"known_prototype": "Pokemon *Party_GetMonByIndex(Party *party, int slot)", "header": "include/party.h"},
+    "sub_02006EFC": {"known_prototype": "u32 sub_02006EFC(SOUND_CHATOT *chatot)", "header": "include/sound_chatot.h"},
+    "sub_0201A728": {"known_prototype": "void sub_0201A728(int a0)", "header": "include/system.h"},
+    "sub_0201A738": {"known_prototype": "void sub_0201A738(int a0)", "header": "include/system.h"},
+    "sub_0201A748": {"known_prototype": "void sub_0201A748(enum HeapID heapID)", "header": "include/system.h"},
+    "sub_0201A774": {"known_prototype": "void sub_0201A774(void)", "header": "include/system.h"},
+    "MIi_CpuClear32": {"known_prototype": "void MIi_CpuClear32(register u32 value, register u32 *dst, register u32 size)", "header": "lib/include/nitro/mi/memory.h"},
+    "MIi_CpuCopy32": {"known_prototype": "void MIi_CpuCopy32(const register u32 *src, register u32 *dst, register u32 size)", "header": "lib/include/nitro/mi/memory.h"},
+    "MI_CpuFill8": {"known_prototype": "void MI_CpuFill8(void *dest, u8 data, u32 size)", "header": "lib/include/nitro/mi/memory.h"},
+    "MI_CpuCopy8": {"known_prototype": "void MI_CpuCopy8(const void *src, void *dst, u32 size)", "header": "lib/include/nitro/mi/memory.h"}
+  },
+  "shared_struct_hypotheses": [
+    {
+      "name": "UnkStruct_0202FBCC",
+      "size_guess": "0x1D50 (confirmed: sub_0202FBCC returns this literal; struct already declared as a u8[0x1D50] filler in include/unk_0202FBCC.h)",
+      "fields": [
+        {"offset": "0x0", "width": 4, "meaning": "sentinel header, set to 0xFFFFFFFF by sub_0202FBD4 init"},
+        {"offset": "0x4", "width": "0x80", "meaning": "ruleset sub-block (LinkBattleRuleset-derived, 16x u16 at +0x28 within it per sub_0202FF08); duplicated via sub_020307AC"},
+        {"offset": "0x84", "width": "0x64", "meaning": "descriptor/header sub-block: magic 0xE281 at +0x48, CRC16 (over first 0x58 bytes) stored at +0x60; duplicated via sub_0203077C, raw-returned via sub_020307F8"},
+        {"offset": "0xe8", "width": "0x1C64", "meaning": "main payload, encrypted/decrypted as one blob via sub_02030250/sub_02030258 (_MonEncryptSegment/_MonDecryptSegment) with seed built from the checksum at +0x1D4C (seed = chk | ((chk^0xFFFF)<<16)); magic 0xE281 also stamped at +0x1C62 within this block; contains a 4-entry challenger-record array near payload-relative 0x1154 (stride 0x2A4, embeds up to 6 flattened UnkPokemonStruct_02072A98 party entries each) and a 4-entry profile array near payload-relative 0x1BE0 (stride 0x20, PlayerProfile_Copy target); Options struct near payload-relative 0x1C60"}
+      ]
+    },
+    {
+      "name": "UnkStruct_0202FBCC_ChallengerRecord (working name, used by sub_0203088C/sub_02030978/sub_02030A24)",
+      "size_guess": ">= 0x4c, likely matches or nests inside the offset-0x4 0x80-byte ruleset sub-block",
+      "fields": [
+        {"offset": "0x0", "width": "bit0 + bits1-3", "meaning": "two packed flag fields, set via manual mask (bit0) and bitfield insert (bits1-3)"},
+        {"offset": "0x1", "width": 1, "meaning": "plain byte field"},
+        {"offset": "0x4", "width": 2, "meaning": "u16[] indexed array, stride 2"},
+        {"offset": "0x20", "width": 2, "meaning": "u16[] indexed array, stride 2"},
+        {"offset": "0x28", "width": 1, "meaning": "u8[] indexed array"},
+        {"offset": "0x2c", "width": 4, "meaning": "u32[] indexed array, stride 4"},
+        {"offset": "0x3c", "width": 2, "meaning": "u16[] indexed array, stride 2"},
+        {"offset": "0x44", "width": 1, "meaning": "u8[] indexed array"},
+        {"offset": "0x48", "width": 4, "meaning": "u32[] indexed array, stride 4"}
+      ]
+    }
+  ],
+  "risks": [
+    "5 inline jump tables in this file (_0202FED2 in sub_0202FEB8, _02030060 in sub_0202FF08, _020308A2 in sub_0203088C, _0203098A in sub_02030978, _02030A34 in sub_02030A24) -- per tools/decomp_harness/insights.md, MWCC requires ALL dense cases explicit (incl. default-equal cases) to emit add-pc tables instead of cmp/beq chains, body layout must follow source declaration order matching the asm's ascending-address case order, and objdiff frequently misreports SIZE/section on these (false positives) -- always confirm with `chiri pkg -- compare`, not objdiff alone.",
+    "IPA split-header precedent directly applicable: the immediately-following file unk_02030A98.s/.c (next address after this file's last function) is ALREADY matched and its src/unk_02030A98.c explicitly does NOT include its own public header include/unk_02030A98.h because several matched definitions disagree with the frozen header (return-type/arg-count mismatches). include/unk_0202FBCC.h is currently a near-empty stub (4 prototypes) already included by 3 decompiled callers (src/battle/battle_system.c, src/encounter.c, src/unk_02087A78.c) -- adding the other 35 function prototypes to it risks an IPA cascade in those already-matched TUs. Follow the same pattern: put the full local prototype set in a private/internal header or local externs in the new unk_0202FBCC.c, and leave the public header frozen at its current 4-symbol surface unless a caller needs more.",
+    "src/save_arrays.c has `DECL_CHUNK_EX(sub_0202FBCC, sub_0202FBD4)` plus 4 gExtraSaveChunkHeaders entries (idx 2-5) casting them through (SAVESIZEFN)/(SAVEINITFN) -- per insights.md 'save-chunk-ipa-safe', do NOT modify save_arrays.c or replace the macro; leave it as forward-declared externs coexisting with the new header.",
+    "Encrypt/decrypt seed construction must match exactly: seed = chk | ((chk ^ 0xFFFF) << 16) where chk is the raw u16 checksum -- this exact idiom recurs 3x in the file (sub_0202FC90, sub_0202FD28, sub_02030814) and must be reproduced literally, not algebraically simplified, to match MWCC codegen.",
+    "sub_020302A4 and sub_020304F0 are large mirror-image field-copy functions (~20 raw offset reads/writes each) with only medium/low confidence on exact field semantics -- high risk of NONMATCHING on register allocation per the project's idx-stride-cse and adjacent-field-store-forces-reload insights; consider decompiling in small chunks with frequent objdiff checks.",
+    "sub_0202FF08 (largest function, ~0x315 bytes, 5 params with the 5th passed via a manual stack pre-write) and sub_0202FE14 (6 params, nested state machine) are the highest-complexity/lowest-confidence functions in the file; budget for possible NONMATCHING fallback per the project's documented patterns for similarly large field-copy/dispatch functions.",
+    "asm/overlay_40.s (Battle Hall overlay, not yet decompiled) reads/writes the exported global _021D2AF8 directly -- once a header is created for this file, overlay_40's eventual decomp will need to use whatever extern declaration this file settles on."
+  ],
+  "notes": "This file implements the 'Battle Hall' battle-facility save-chunk subsystem: a single struct type (UnkStruct_0202FBCC, 0x1D50 bytes) registered 4 times in src/save_arrays.c's gExtraSaveChunkHeaders (chunk indices 2-5, presumably one per difficulty/rank tier), with a process-global pointer (_021D2AF8) holding whichever instance is currently loaded into memory. The struct itself layers a sentinel header (0x0), a LinkBattleRuleset-derived ruleset block (0x4, 0x80 bytes), a CRC-checked descriptor block (0x84, 0x64 bytes), and an encrypted payload (0xe8, 0x1C64 bytes) containing 4 challenger trainer records (party + profile snapshots) plus an Options struct. Functions break into clean groups: load/save/free lifecycle (sub_0202FBCC/FBD4/FBF0/FC24/FC48/FC5C/FC74/FC90/FD28/FDA4/FE14), CRC/format validators (sub_02030154/0203018C), per-battler encrypted-log byte accessors (sub_02030260/0203027C, already header-declared and caller-confirmed), bulk save<->work-buffer field copiers (sub_020302A4/020304F0/020306DC/02030724), simple sub-block extractors/duplicators (sub_0203077C/020307AC/020307DC/020307F8/02030814/02030920/02030938/02030940), and a generic field get/set dispatcher pair for the per-record struct (sub_02030978/02030A24, plus the odd dual-return sub_0203088C). All 33 distinct imported symbols already have prototypes in existing headers (heap.h, save.h, player_data.h, pokedex.h, options.h, party.h, pokemon.h, link_ruleset_data.h, system.h, math_util.h, error_handling.h, save_arrays.h, unk_02030A98.h, nitro/mi/memory.h, sound_chatot.h), so no new import signatures need to be guessed from scratch -- the main remaining work is internal struct-field naming and the IPA-safe header split."
+}
