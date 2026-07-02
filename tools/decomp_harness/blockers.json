@@ -23,11 +23,9 @@
       "id": "param-copyprop-cmp",
       "gate_mode": "copyprop_entry",
       "gate_weight": 0.0,
-      "description": "MWCC copy-propagates parameter copies: 'adds r4, r0, #0; cmp r4, #N' at function entry cannot be produced from pure C (MWCC substitutes back to r0; the shape only arises for saved return values after a bl). Affected functions need the NONMATCHING inline-asm fallback — routine, not a wall. Entry-idiom scan (asmscan) finds 20 sites in 9 files: overlay_102 (6), unk_02077678 (4), overlay_96 (3), overlay_48 (2), overlay_112, unk_02004A44, unk_0200B150, unk_020517A4, unk_02058034 (1 each). Gated files carry the affected function names in triage_report copyprop_funcs.",
-      "files_blocked": [
-        "asm/unk_0200B150.s"
-      ],
-      "fix_plan": "NEVER EXECUTED as of 2026-07-01: main.lsf still links asm/unk_0200B150.o and src/unk_0200B150.c does not exist — ~10 matched functions were reverted and lost. Execute now (ROADMAP T0.2): re-decompile unk_0200B150 (11 fns, 313 lines) with OamManager_Create as NONMATCHING inline asm (mechanics: pattern nonmatching-inline-asm-mwasmarm-gotchas; end-to-end precedent unk_02014A08). Serves as the pilot for the nonmatch_fallback.py one-command generator (ROADMAP T1.5)."
+      "description": "MWCC copy-propagates parameter copies: 'adds r4, r0, #0; cmp r4, #N' at function entry cannot be produced from pure C (MWCC substitutes back to r0; the shape only arises for saved return values after a bl). Affected functions need the NONMATCHING inline-asm fallback — routine, not a wall (proven: unk_0200B150 re-landed 2026-07-02 via ROADMAP T0.2, full ROM SHA1 OK). Entry-idiom scan (asmscan) finds the remaining sites in pending files: overlay_102 (6), unk_02077678 (4), overlay_96 (3), overlay_48 (2), overlay_112, unk_02004A44, unk_020517A4, unk_02058034 (1 each). Gated files carry the affected function names in triage_report copyprop_funcs.",
+      "files_blocked": [],
+      "fix_plan": "Per-function NONMATCHING inline-asm fallback at decomp time (mechanics: pattern nonmatching-inline-asm-mwasmarm-gotchas; end-to-end precedents unk_02014A08, unk_0200B150/OamManager_Create). Automate as the nonmatch_fallback.py one-command generator (ROADMAP T1.5)."
     },
     {
       "id": "objdiff-false-positives",

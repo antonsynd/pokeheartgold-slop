@@ -1,18 +1,18 @@
 {
  "summary": {
-  "generated": "2026-07-01T23:58:15Z",
+  "generated": "2026-07-02T04:29:24Z",
   "by_status": {
    "matched": {
-    "files": 97,
-    "functions": 1662,
-    "insn_lines": 46196,
-    "text_bytes_est": 102180
+    "files": 98,
+    "functions": 1673,
+    "insn_lines": 46434,
+    "text_bytes_est": 102706
    },
    "blocked": {
-    "files": 57,
-    "functions": 1054,
-    "insn_lines": 34015,
-    "text_bytes_est": 75050
+    "files": 56,
+    "functions": 1043,
+    "insn_lines": 33777,
+    "text_bytes_est": 74524
    },
    "pending": {
     "files": 135,
@@ -29,8 +29,8 @@
   },
   "function_totals": {
    "tracked": 19930,
-   "matched": 1662,
-   "partial_in_blocked": 70,
+   "matched": 1673,
+   "partial_in_blocked": 60,
    "pending": 17214
   },
   "blockers": [
@@ -46,7 +46,7 @@
    },
    {
     "id": "param-copyprop-cmp",
-    "blocks_files": 1,
+    "blocks_files": 0,
     "gates_pending_files": 6
    },
    {
@@ -1476,8 +1476,8 @@
   },
   {
    "file": "asm/unk_0200B150.s",
-   "lsf_kind": "asm",
-   "status": "blocked",
+   "lsf_kind": "src",
+   "status": "matched",
    "lines": 313,
    "function_count": 11,
    "text_bytes_est": 526,
@@ -1517,7 +1517,7 @@
      "mode": "thumb",
      "insns": 33,
      "size_est": 68,
-     "status": "blocked",
+     "status": "matched",
      "copyprop_entry": true
     },
     {
@@ -1525,77 +1525,73 @@
      "mode": "thumb",
      "insns": 64,
      "size_est": 142,
-     "status": "blocked"
+     "status": "matched"
     },
     {
      "name": "OamManager_ApplyAndResetBuffers",
      "mode": "thumb",
      "insns": 13,
      "size_est": 30,
-     "status": "blocked"
+     "status": "matched"
     },
     {
      "name": "OamManager_Free",
      "mode": "thumb",
      "insns": 23,
      "size_est": 54,
-     "status": "blocked"
+     "status": "matched"
     },
     {
      "name": "sub_0200B27C",
      "mode": "thumb",
      "insns": 41,
      "size_est": 88,
-     "status": "blocked"
+     "status": "matched"
     },
     {
      "name": "thunk_ClearMainOAM",
      "mode": "thumb",
      "insns": 3,
      "size_est": 6,
-     "status": "blocked"
+     "status": "matched"
     },
     {
      "name": "thunk_ClearSubOAM",
      "mode": "thumb",
      "insns": 3,
      "size_est": 6,
-     "status": "blocked"
+     "status": "matched"
     },
     {
      "name": "sub_0200B2F0",
      "mode": "thumb",
      "insns": 13,
      "size_est": 30,
-     "status": "blocked"
+     "status": "matched"
     },
     {
      "name": "sub_0200B310",
      "mode": "thumb",
      "insns": 15,
      "size_est": 34,
-     "status": "blocked"
+     "status": "matched"
     },
     {
      "name": "sub_0200B334",
      "mode": "thumb",
      "insns": 14,
      "size_est": 32,
-     "status": "blocked"
+     "status": "matched"
     },
     {
      "name": "sub_0200B358",
      "mode": "thumb",
      "insns": 16,
      "size_est": 36,
-     "status": "blocked"
+     "status": "matched"
     }
    ],
-   "blocked_reason": "10/11 functions matched. OamManager_Create has 1-byte mismatch: target asm uses 'cmp r4, #4' but MWCC generates 'cmp r0, #4' for all tried C structures. Pattern 'adds r4,r0,#0; cmp r4,#N' only appears in matched code after function calls; with parameters MWCC always uses r0 via copy propagation. C reference kept in src/unk_0200B150.c.",
-   "attempts": 25,
-   "blocker_id": "param-copyprop-cmp",
-   "partial_matched": 10,
-   "kept_c": false
+   "source": "harness"
   },
   {
    "file": "asm/brightness.s",

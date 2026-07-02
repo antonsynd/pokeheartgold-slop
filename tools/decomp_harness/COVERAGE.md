@@ -1,13 +1,13 @@
 # Decomp Coverage Ledger
 
-*Generated 2026-07-01T23:58:15Z by `coverage_ledger.py` — do not hand-edit; regenerate after each decomp.*
+*Generated 2026-07-02T04:29:24Z by `coverage_ledger.py` — do not hand-edit; regenerate after each decomp.*
 
-Tracked functions (files with retained asm): **19930** — matched 1662, pending 17214, plus 70 matched-but-blocked inside failed files.
+Tracked functions (files with retained asm): **19930** — matched 1673, pending 17214, plus 60 matched-but-blocked inside failed files.
 
 | status | files | functions | insn lines | ~text bytes |
 |---|---|---|---|---|
-| matched | 97 | 1662 | 46196 | 102180 |
-| blocked | 57 | 1054 | 34015 | 75050 |
+| matched | 98 | 1673 | 46434 | 102706 |
+| blocked | 56 | 1043 | 33777 | 74524 |
 | pending | 135 | 17214 | 845249 | 1893758 |
 | upstream | 382 | 0 | 0 | 0 |
 
@@ -15,13 +15,13 @@ Tracked functions (files with retained asm): **19930** — matched 1662, pending
 
 | id | blocks | gates pending files | description |
 |---|---|---|---|
-| param-copyprop-cmp | 1 | 6 | MWCC copy-propagates parameter copies: 'adds r4, r0, #0; cmp r4, #N' at function entry cannot be produced from pure C (MWCC substitutes back to r0; the shape only arises for saved return values after a bl). Affected functions need the NONMATCHING inline-asm fallback — routine, not a wall. Entry-idiom scan (asmscan) finds 20 sites in 9 files: overlay_102 (6), unk_02077678 (4), overlay_96 (3), overlay_48 (2), overlay_112, unk_02004A44, unk_0200B150, unk_020517A4, unk_02058034 (1 each). Gated files carry the affected function names in triage_report copyprop_funcs. |
+| param-copyprop-cmp | 0 | 6 | MWCC copy-propagates parameter copies: 'adds r4, r0, #0; cmp r4, #N' at function entry cannot be produced from pure C (MWCC substitutes back to r0; the shape only arises for saved return values after a bl). Affected functions need the NONMATCHING inline-asm fallback — routine, not a wall (proven: unk_0200B150 re-landed 2026-07-02 via ROADMAP T0.2, full ROM SHA1 OK). Entry-idiom scan (asmscan) finds the remaining sites in pending files: overlay_102 (6), unk_02077678 (4), overlay_96 (3), overlay_48 (2), overlay_112, unk_02004A44, unk_020517A4, unk_02058034 (1 each). Gated files carry the affected function names in triage_report copyprop_funcs. |
 | ext-data-section-split | 1 | 3 | Data-only files exporting multiple EXTERNAL (.public) const arrays: MWCC -ipa file emits each top-level const as its own .rodata section, and mwldarm orders them size-bucketed and permuted (NOT source order), so the linked overlay/module SHA1 fails even though objdiff --summary (per-section) reports a match. Verify these files ONLY with chiri pkg -- compare. |
 | ipa-shared-headers | 1 | 0 | MWCC -ipa file: changing a signature in a shared header cascades codegen changes into every already-matched caller in other compilation units. Affects only files that must ADD or CHANGE declarations in a frozen header — call-only consumers of the exported APIs are NOT gated (proven by patterns 'ipa-blocked-files-can-call-sound-fns-without-cascade' and 'false-ipa-gate-shared-imports'; the old import-based gate count of ~97 was noise). |
 | ipa-cse-literal-pool | 1 | 0 | MWCC -ipa file caches repeated literal-pool addresses/large offsets in callee-saved registers across calls where retail reloads them (or vice versa). A codegen-shape problem, not a header problem — split from ipa-shared-headers 2026-07-01, where this file's ubiquitous exports (BeginNormalPaletteFade family, imported by ~84 pending .inc files) badly inflated the gate count. |
 | objdiff-false-positives | 0 | 0 | RESOLVED. objdiff.py had a critical bug: the byte extraction regex did not match MWCC's ARM Thumb objdump format (packed hex like 'b418' vs expected space-separated 'b4 18'). It extracted 0 bytes for every function, so 0==0 always reported MATCH. 11 decomps accepted via objdiff were not actually byte-matching. Fixed; all 11 non-matching decomps reverted to asm. 2 decomps that truly match (unk_0202DB34, battle_arcade_game_board_data) kept. |
 
-## Blocked files (57)
+## Blocked files (56)
 
 | file | functions | insn lines | data-only | notes |
 |---|---|---|---|---|
@@ -59,7 +59,6 @@ Tracked functions (files with retained asm): **19930** — matched 1662, pending
 | asm/overlay_80_02236450.s | 14 | 814 |  |   |
 | asm/overlay_33.s | 12 | 550 |  |  11/12 functions byte-match (WIP src/overlay_33.c kept, main.lsf left on asm). Touchscreen selection-menu overlay: work s |
 | asm/overlay_38_thumb.s | 12 | 681 |  |  Outlier: ~700 insns GTS/DWC Wi-Fi crypto+parser (LCG cipher, SHA1, hex codec, 2 state machines). Fully decoded in attemp |
-| asm/unk_0200B150.s | 11 | 238 |  | param-copyprop-cmp 10/11 matched; 10/11 functions matched. OamManager_Create has 1-byte mismatch: target asm uses 'cmp r4, #4' but MWCC generates 'cmp r0, |
 | asm/unk_02020B8C.s | 11 | 595 |  |  2D/3D overworld geometry FX math. 9/11 byte-match (WIP src/unk_02020B8C.c kept, main.lsf reverted to asm so build stays  |
 | asm/overlay_80_02235438.s | 11 | 349 |  |  Battle Frontier script commands (11 funcs); 9/11 matched WIP; remaining FrtCmd_132 (switch body-order/layout) + FrtCmd_1 |
 | asm/overlay_01_021EABA8.s | 10 | 386 |  |  WIP 7/10 functions + rodata + bss matched (see attempts_log). Camera preset/transition overlay. Holdouts: ov01_021EAEE0  |
@@ -83,7 +82,7 @@ Tracked functions (files with retained asm): **19930** — matched 1662, pending
 | asm/overlay_12_battle_command.s | 0 | 0 | yes |   |
 | asm/battle_arcade_game_board_data.s | 0 | 0 | yes | ext-data-section-split MWCC splits external const into per-symbol .rodata sections; reordered at link -> OVY_84 SHA1 fail. Stays asm. |
 
-## Matched files (asm retained) (97)
+## Matched files (asm retained) (98)
 
 | file | functions | insn lines | data-only | notes |
 |---|---|---|---|---|
@@ -134,6 +133,7 @@ Tracked functions (files with retained asm): **19930** — matched 1662, pending
 | asm/overlay_01_021FB5D4.s | 12 | 291 |  | harness |
 | asm/overlay_01_021FCD2C.s | 12 | 156 |  | harness |
 | asm/overlay_01_022051EC.s | 12 | 219 |  | retained_asm |
+| asm/unk_0200B150.s | 11 | 238 |  | harness |
 | asm/unk_02055244.s | 11 | 189 |  | harness |
 | asm/unk_0205BB1C.s | 11 | 551 |  | harness |
 | asm/unk_02097024.s | 11 | 198 |  | harness |

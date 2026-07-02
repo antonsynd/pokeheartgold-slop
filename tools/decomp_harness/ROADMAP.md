@@ -69,10 +69,16 @@ count dropped 97 → 0 predictive (defining file only). Queue head score 1708 �
 - Regenerate ledger + triage. Success: gate counts drop to defining-file level; queue order
   changes; `false-ipa-gate-shared-imports`-style deprioritizations disappear.
 
-### T0.2 Re-land unk_0200B150  `[ ]`  (0.5–1 day)
+### T0.2 Re-land unk_0200B150  `[x]`  (0.5–1 day)
 11 functions, 313 lines. 10 in C; `OamManager_Create` as NONMATCHING inline asm
 (mechanics fully documented in pattern `nonmatching-inline-asm-mwasmarm-gotchas`; verified
 end-to-end precedent: unk_02014A08). Serves as the pilot case for T1.5 nonmatch_fallback.
+
+**Result (2026-07-02):** 11/11 objdiff match on first build; full ROM SHA1 OK. Frozen
+`unk_0200B150.h` included as-is; NNS OAM API + `sub_02025C54`/`C98` declared as local
+externs; the 5 non-`.public` functions are `static` (callback typedefs from
+`g2d_RendererCore.h` matched exactly). `param-copyprop-cmp` now has `files_blocked: []` —
+it is a routine per-function fallback, not a file blocker.
 
 ### T0.3 battle_arcade_game_board_data — run the three experiments  `[ ]`  (≤1 day total)
 1. Recover the old draft (`git show b530ce56f`), build, `objdump -h` the .o (check per-symbol
