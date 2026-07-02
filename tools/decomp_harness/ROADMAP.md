@@ -80,7 +80,24 @@ externs; the 5 non-`.public` functions are `static` (callback typedefs from
 `g2d_RendererCore.h` matched exactly). `param-copyprop-cmp` now has `files_blocked: []` —
 it is a routine per-function fallback, not a file blocker.
 
-### T0.3 battle_arcade_game_board_data — run the three experiments  `[ ]`  (≤1 day total)
+### T0.3 battle_arcade_game_board_data — run the three experiments  `[x]`  (≤1 day total)
+
+**Result (2026-07-02): SOLVED — landed as C (`battle_arcade_game_board_data.c` + `data2.c`),
+full ROM SHA1 OK.** All three planned experiments ran and each disproved the blocker's
+premise: the "mwldarm size-bucket reorder" was actually **MWCC's own size-ascending
+emission of file-scope external consts, in every mode** (per-symbol sections with `-ipa`,
+merged without, pragma or not). Winning recipe (pattern
+`ext-const-split-tu-size-ascending-recipe`): `#pragma section PARENT begin/end` merges each
+TU's consts into ONE packed .rodata (odd-address packing preserved); **split the TU wherever
+the retail layout breaks size-ascending order** (second `Object` line in main.lsf); fix
+equal-size ties empirically via `nm` placed addresses (BgTemplate triple `[A,B,C]`→emits
+`[C,A,B]`). Bonus discovery (pattern `asm-bss-space-may-be-ovt-alignment-fiction`): the
+asm's `_0223FA20: .space 0x20` bss is split-time fiction — mwldarm dead-strips it even from
+the asm .o, and the OVT `bss_size=0x20` is the consumer's 2-byte bss 32-aligned. Defining it
+in C flips exactly ONE ROM byte (the OVT entry). `FORCE_ACTIVE { sym }` injected into the
+generated lcf works if an unreferenced section is ever genuinely needed; `#pragma
+force_active` does not survive to the linker. Application to the remaining gated files
+(unk_data_020FDB44.s first) is follow-on work, tracked in blockers.json fix_plan.
 1. Recover the old draft (`git show b530ce56f`), build, `objdump -h` the .o (check per-symbol
    section alignment — file needs odd-address packing: ov84_0223F904 is 7 bytes,
    ov84_0223F90B starts odd), `objdump -t` for placed order, apply the inverse Q-permutation

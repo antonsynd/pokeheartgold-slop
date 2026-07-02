@@ -738,6 +738,14 @@
    "attempts": 26,
    "result": "matched",
    "note": "compare-verified (full ROM SHA1 OK). ROADMAP T0.2 re-land: dual NNS OAM manager wrapper (0x3c heap struct: main mgr +0x00, sub mgr +0x1c, heapID +0x38). 10 C + OamManager_Create NONMATCHING inline asm (param-copyprop-cmp: retail 'cmp r4,#4' on the param copy is unreachable from C). All 11 matched on first build. IPA-safe: frozen unk_0200B150.h included as-is; NNS OAM API (stubbed in lib/include) + sub_02025C54/C98 declared locally; statics for non-.public fns (sub_0200B194, 4 render callbacks) \u2014 -inline on,noauto keeps their bl calls. Callback typedefs from g2d_RendererCore.h (NNSG2dOamRegisterFunction/NNSG2dAffineRegisterFunction) matched signatures exactly."
+  },
+  {
+   "file": "asm/battle_arcade_game_board_data.s",
+   "lines": 99,
+   "functions": 0,
+   "attempts": 2,
+   "result": "matched",
+   "note": "compare-verified (full ROM SHA1 OK). ROADMAP T0.3: data-only file, 14 exported const objects. Landed as TWO TUs (battle_arcade_game_board_data.c + data2.c, both in main.lsf OVY_84) because MWCC emits file-scope external consts SIZE-ASCENDING (not the linker \u2014 all three planned experiments disproved the mwldarm-reorder theory) and the retail layout is only piecewise size-ascending. #pragma section PARENT begin/end merges each TU's consts into one packed .rodata (odd-address packing preserved); equal-size ties fixed empirically (BgTemplate triple defined [964,980,948] to emit [948,964,980]; the 16-byte 924/913 pair defined swapped). The asm's '_0223FA20: .space 0x20' bss is split-time fiction (OVT bss_size=0x20 = consumer's 2-byte bss 32-aligned; mwldarm dead-strips it from the asm .o too) \u2014 NOT defined in C. Patterns: ext-const-split-tu-size-ascending-recipe, asm-bss-space-may-be-ovt-alignment-fiction."
   }
  ],
  "failed": [
@@ -756,12 +764,6 @@
    "attempts": 50,
    "result": "blocked",
    "reason": "IPA-blocked: header signature conflicts, IPA CSE caching, loop codegen. C file exists at src/unk_0200FA24.c but cannot byte-match due to MWCC -ipa file cross-function optimization."
-  },
-  {
-   "file": "asm/battle_arcade_game_board_data.s",
-   "result": "blocked",
-   "blocker_id": "ext-data-section-split",
-   "reason": "MWCC splits external const into per-symbol .rodata sections; reordered at link -> OVY_84 SHA1 fail. Stays asm."
   },
   {
    "file": "asm/unk_02026DE0.s",

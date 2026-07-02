@@ -37,11 +37,9 @@
     {
       "id": "ext-data-section-split",
       "gate_mode": "data_only_multi_public",
-      "description": "Data-only files exporting multiple EXTERNAL (.public) const arrays: MWCC -ipa file emits each top-level const as its own .rodata section, and mwldarm orders them size-bucketed and permuted (NOT source order), so the linked overlay/module SHA1 fails even though objdiff --summary (per-section) reports a match. Verify these files ONLY with chiri pkg -- compare.",
-      "files_blocked": [
-        "asm/battle_arcade_game_board_data.s"
-      ],
-      "fix_plan": "A proven counter-recipe EXISTS and was never back-applied: commit 14a499941 matched unk_data_020FD978.c (17 exported const arrays) by reading the placed section order (objdump -t) and rewriting source definitions in the inverse per-size-bucket permutation — pattern 'exported-const-fnptr-array-section-reorder'. Run the three T0.3 experiments (ROADMAP): (1) recover the b530ce56f draft, check per-symbol section alignment with objdump -h (this file needs odd-address packing), apply the inverse permutation, full compare; (2) '#pragma section ... begin/end' wrap (pattern version-custom-section-data-unmatchable saw const data land packed and ordered in merged .rodata); (3) factor -ipa file into $(IPAFLAGS) and compile the data-only TU without it. Then apply the winner to the gated files, starting with unk_data_020FDB44.s (96 exports, direct sibling of the solved file)."
+      "description": "Data-only files exporting multiple EXTERNAL (.public) const arrays: MWCC (all modes — with/without -ipa file, pragma or not; T0.3 experiments 2026-07-02 disproved the earlier mwldarm-reorder theory) emits file-scope external consts SIZE-ASCENDING with a deterministic equal-size scramble, so a retail layout that is not size-ascending cannot come from one TU in source order. objdiff cannot see section order — verify these files ONLY with chiri pkg -- compare.",
+      "files_blocked": [],
+      "fix_plan": "SOLVED — full recipe in pattern ext-const-split-tu-size-ascending-recipe (pilot battle_arcade_game_board_data.c + data2.c, ROM SHA1 OK): wrap consts in '#pragma section PARENT begin/end' (merges to one packed .rodata, preserves odd-address packing), split the TU wherever the retail layout breaks size-ascending order (extra Object line in main.lsf), fix equal-size ties empirically via nm placed addresses, and check the green xMAP before porting any unreferenced .bss (may be OVT-alignment fiction — pattern asm-bss-space-may-be-ovt-alignment-fiction). Remaining application targets (gated): unk_data_020FDB44.s (96 exports, sibling of solved unk_data_020FD978), unk_data_020FCBD8.s, overlay_01_sprite_data.s."
     }
   ]
 }

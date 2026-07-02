@@ -1,15 +1,15 @@
 {
  "summary": {
-  "generated": "2026-07-02T04:29:24Z",
+  "generated": "2026-07-02T04:58:11Z",
   "by_status": {
    "matched": {
-    "files": 98,
+    "files": 99,
     "functions": 1673,
     "insn_lines": 46434,
     "text_bytes_est": 102706
    },
    "blocked": {
-    "files": 56,
+    "files": 55,
     "functions": 1043,
     "insn_lines": 33777,
     "text_bytes_est": 74524
@@ -21,7 +21,7 @@
     "text_bytes_est": 1893758
    },
    "upstream": {
-    "files": 382,
+    "files": 383,
     "functions": 0,
     "insn_lines": 0,
     "text_bytes_est": 0
@@ -56,7 +56,7 @@
    },
    {
     "id": "ext-data-section-split",
-    "blocks_files": 1,
+    "blocks_files": 0,
     "gates_pending_files": 3
    }
   ]
@@ -137593,8 +137593,8 @@
   },
   {
    "file": "asm/battle_arcade_game_board_data.s",
-   "lsf_kind": "asm",
-   "status": "blocked",
+   "lsf_kind": "src",
+   "status": "matched",
    "lines": 98,
    "function_count": 0,
    "text_bytes_est": 0,
@@ -137625,10 +137625,13 @@
     "ov84_0223F9F8"
    ],
    "functions": [],
-   "blocked_reason": "MWCC splits external const into per-symbol .rodata sections; reordered at link -> OVY_84 SHA1 fail. Stays asm.",
-   "attempts": null,
-   "blocker_id": "ext-data-section-split",
-   "kept_c": false
+   "source": "harness"
+  },
+  {
+   "file": "asm/battle_arcade_game_board_data2.s",
+   "lsf_kind": "src",
+   "status": "upstream",
+   "functions": []
   },
   {
    "file": "asm/overlay_85.s",

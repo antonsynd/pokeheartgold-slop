@@ -1,5 +1,5 @@
 {
- "generated": "2026-07-02T04:24:35Z",
+ "generated": "2026-07-02T04:56:25Z",
  "weights": {
   "insn_line": 1.0,
   "unknown_callee": 40.0,
@@ -7416,7 +7416,7 @@
   },
   {
    "file": "asm/overlay_70.s",
-   "score": 25543.4,
+   "score": 25503.4,
    "special_sections": [],
    "functions": 519,
    "insn_lines": 23556,
@@ -7437,7 +7437,6 @@
     "TradeSequence_Main",
     "WaitingIcon_New",
     "_0223DD40",
-    "_0223F900",
     "gOverlayTemplate_PokemonSummary",
     "ov00_021E6A70",
     "ov38_0221BE84",
