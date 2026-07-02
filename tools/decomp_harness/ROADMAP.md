@@ -172,8 +172,9 @@ pattern `ipa-file-flag-effects-and-removal-nonviability`):
 > T1.3+T1.5+T1.6 in 4256b94aa, T1.4 in this commit. The inner loop is now
 > compile_one.sh + objdiff (~1.4 s vs 45–120 s), NONMATCHING fallback is one command,
 > matched TUs are drift-guarded (verify_matched.sh 483/483), and 71 NONMATCHING blocks
-> are queued-ready for the permuter. Open follow-ups: T1.6 hook wiring (pre-commit +
-> nightly) awaits user approval; overnight permuter queue on the regalloc-tiebreak class.
+> are queued-ready for the permuter. T1.6 hook wiring applied (pre-commit quick smoke,
+> capture-on-attest, nightly launchd check). Open follow-up: overnight permuter queue on
+> the regalloc-tiebreak class.
 
 ### T1.1 compile_one.sh — single-TU fast path  `[x]`  (2–4 h) **← everything else depends on this**
 
@@ -342,9 +343,12 @@ failures, 624 s serial (~1.3 s/TU).** `ipa_map.py`: header→consumer index from
 dsprot .d files with loud partial-coverage banner — currently 100% (483/483 matched TUs have
 .d data); query by path/basename, `--matched`, `--stats`, `--json`. `ipa_check.sh` head-1 bug
 fixed: iterates ALL matched includers of a changed header (source-grep based, .d-purge-proof).
-Hook wiring deliberately NOT applied — pending user approval: pre-commit ipa_check on staged
-include/ changes + `--quick 20` smoke; `capture` after every green compare; nightly full
-check (10 min) + periodic .d refresh.
+Hook wiring APPLIED (user-approved 2026-07-02): pre-commit runs `verify_matched.sh check
+--quick 20` on staged include/*.h changes (after ipa_check) and auto-stages
+matched_manifest.json; `build_attestation.sh` recaptures the manifest after every green
+compare; nightly full check via `nightly_check.sh` + launchd agent
+`com.pokeheartgold.verify-matched` (03:30 daily, skips if MWCC busy, logs to
+~/Library/Logs/pokeheartgold_verify_matched.log, drops a VERIFY_DRIFT marker on failure).
 - `verify_matched.sh`: SHA1 manifest of `build/heartgold.us/src/*.o` captured after every
   green compare; check mode recompiles matched TUs via compile_one.sh and diffs. Wire as
   optional pre-commit + overnight loop.

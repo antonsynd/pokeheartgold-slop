@@ -113,3 +113,4 @@ __pycache__
 scratchpad_blocks.txt
 scratchpad_*.txt
 tools/decomp-permuter/
+tools/decomp_harness/VERIFY_DRIFT

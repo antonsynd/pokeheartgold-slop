@@ -115,6 +115,17 @@ echo "[attest] Wrote $ATTESTATION"
 echo "[attest] Status: $STATUS | Commit: $COMMIT | Hash: $SOURCE_HASH"
 
 if [[ "$STATUS" == "MATCH" ]]; then
+    # T1.6 regression guard: recapture the matched-TU fingerprint manifest
+    # while the just-verified objects are fresh. Failure to capture is loud
+    # but never turns a green attestation red.
+    if [[ -x "$REPO/tools/decomp_harness/verify_matched.sh" ]]; then
+        echo "[attest] Recapturing matched-TU manifest (verify_matched.sh capture) ..."
+        if "$REPO/tools/decomp_harness/verify_matched.sh" capture; then
+            echo "[attest] Manifest recaptured — stage tools/decomp_harness/matched_manifest.json if changed."
+        else
+            echo "[attest] WARNING: manifest capture failed; run verify_matched.sh capture manually." >&2
+        fi
+    fi
     exit 0
 else
     exit 1

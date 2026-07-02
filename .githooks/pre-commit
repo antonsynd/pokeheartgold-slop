@@ -23,6 +23,19 @@ if git diff --cached --name-only --diff-filter=M -- 'include/*.h' | grep -q .; t
         if ! tools/decomp_harness/ipa_check.sh; then
             exit 1
         fi
+        # T1.6 drift smoke: header edits are the main regression vector for
+        # already-matched TUs — recompile a random sample of 20 and diff their
+        # allocatable-section fingerprints against the manifest (~30 s).
+        # Requires a manifest and MWCC not already busy (prebuild_guard rules).
+        if [ -f tools/decomp_harness/matched_manifest.json ]; then
+            if ! tools/decomp_harness/verify_matched.sh check --quick 20; then
+                echo ""
+                echo "verify_matched --quick 20 found drift in already-matched TUs."
+                echo "Run: tools/decomp_harness/verify_matched.sh check   (full sweep)"
+                echo "to see the extent, and fix or split-header the change."
+                exit 1
+            fi
+        fi
     fi
 fi
 
@@ -36,6 +49,9 @@ if git diff --cached --name-only | grep -qE '^(main\.lsf|src/|asm/|include/)'; t
         exit 1
     fi
     git add build_attestation.json 2>/dev/null || true
+    # build_attestation.sh recaptures the matched-TU manifest after a green
+    # compare; keep the committed manifest in sync with the attestation.
+    git add tools/decomp_harness/matched_manifest.json 2>/dev/null || true
 fi
 
 # Regenerate the coverage ledger when decomp-related files change, so COVERAGE.md
