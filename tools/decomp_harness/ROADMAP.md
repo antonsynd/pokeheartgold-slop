@@ -124,9 +124,28 @@ codegen-correct types only**; sound.h stays frozen for its ~108 matched consumer
 Gate check: objdiff the first 5 functions vs the saved asm .o before committing to the rest.
 Retires the biggest registered blocker.
 
-### T0.5 30-minute disproof experiment  `[ ]`
+### T0.5 30-minute disproof experiment  `[x]`
 Recompile one already-matched code TU without `-ipa file`, `cmp` the .o. Expected: mismatch —
 documents that the flag is load-bearing for code TUs (closes strategy (d) forever).
+
+**Result (2026-07-02): strategy (d) closed, but NOT for the expected reason** (full detail in
+pattern `ipa-file-flag-effects-and-removal-nonviability`):
+1. Sampled codegen is byte-**identical** without `-ipa file` — `unk_0200B150` 11/11 and
+   `unk_0202FBCC` 39/39 objdiff MATCH. The flag is not unconditionally load-bearing for
+   codegen; cascade-prone behavior is narrower than assumed (IPA-only optimizations such as
+   the `unk_0200FA24` literal-pool CSE). **New diagnostic**: before blaming IPA for a
+   mismatch, recompile the TU without `-ipa` and objdiff.
+2. Tree-wide removal is still non-viable because **rodata emission differs without `-ipa`**
+   (T0.3 experiments: different .rodata section structure for external consts), so link
+   layout shifts even where `.text` matches — e.g. `unk_data_020FD978.c` was matched
+   against the `-ipa` emission shape. Split-header discipline stays in force as cheap
+   insurance.
+3. **Incidental find (fixed en route):** the tree did not build from clean —
+   `frontier_cmd_arcade.c:375` had `illegal implicit conversion from 'int' to 'HeapID'`
+   in BOTH ipa modes, introduced by c3c4576ee's typed header decls (2026-06-21) and masked
+   ever since by a stale cached `.o` (the `.d`-deletion build recoveries erase header
+   dependency tracking). Fixed with the proper enumerators (`HEAP_ID_FIELD2`,
+   `NARC_a_2_0_2`). Validates T1.6 `verify_matched.sh` (periodic full clean rebuilds).
 
 ---
 

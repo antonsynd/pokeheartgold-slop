@@ -372,8 +372,8 @@ BOOL FrtCmd_ArcadeAction(FrontierScriptContext *ctx) {
         ov80_02233F1C(ctx, arcadeCtx, var0);
         break;
     case 40:
-        ov80_0222A474(&arcadeCtx->unkF4[0], arcadeCtx->unk74[arcadeCtx->unk11], 0xb, 0xcc);
-        ov80_0222A474(&arcadeCtx->unkF4[1], arcadeCtx->unk74[arcadeCtx->unk11 + 7], 0xb, 0xcc);
+        ov80_0222A474(&arcadeCtx->unkF4[0], arcadeCtx->unk74[arcadeCtx->unk11], HEAP_ID_FIELD2, NARC_a_2_0_2);
+        ov80_0222A474(&arcadeCtx->unkF4[1], arcadeCtx->unk74[arcadeCtx->unk11 + 7], HEAP_ID_FIELD2, NARC_a_2_0_2);
         break;
     case 41:
         ov80_02234B7C(arcadeCtx, frontierMap, var0, var1);
