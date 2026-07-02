@@ -229,7 +229,22 @@ Regression harness: old-vs-new verdicts over every file that has BOTH a committe
 matched .c (enumerate first — most matched files have no buildable asm .o); require identical
 verdicts except the known jump-table false positives, which must flip to MATCH.
 
-### T1.3 objdiff --score and --classify  `[ ]`  (1 day, after T1.2)
+### T1.3 objdiff --score and --classify  `[x]`  (1 day, after T1.2)
+
+**Result (2026-07-02, delegated to Opus, verified by orchestrator):** `--score [--json]`
+(matched-halfword ratio; JSON schema documented in objdiff.py — the permuter fitness value is
+`diff_halfwords`, minimize to 0) and `--classify [FN]` labeling mismatches
+{register-rename-equivalent, schedule-equivalent, spill-slot-shift,
+extra/missing-instructions, size-diff, logic-diff}, order/rename-tolerant (adjacent swap =
+distance 1; pure rename/spill-shift = distance 0). Classifier decodes via the $a/$t/$d
+mapping symbols. All six synthetic-mutation demos label correctly. Auto-feed:
+`--classify --attempts-json --attempts-file asm/<n>.s | attempts_log.py add --json -`
+(attempts_log gained optional `classify_label`, fully backward compatible). Data sections in
+cmd_summary are now reloc-masked — and this exposed that `objcopy -O binary /dev/stdout` is
+EMPTY on macOS under subprocess capture, so the old SECT check had been silently comparing
+empty-vs-empty; bytes now come from the in-file ELF reader and the check is live for the
+first time (proven both directions on crafted ELFs). Regression parity unchanged (309/310 +
+known pad flip, 0 self-compare fails).
 - `--score`: matched-halfword ratio per function (objdiff already computes real_diffs and
   throws the ratio away).
 - `--classify`: one of {register-rename-equivalent, schedule-equivalent, spill-slot-shift,
@@ -255,7 +270,20 @@ permuter_settings.toml (`compiler_type = "mwcc"`). Pure Python — fine on macOS
   permuter-candidacy; each permuter success deletes committed inline asm. Copyprop/SROA-class
   blocks are tagged "provably unreachable — do not queue".
 
-### T1.5 nonmatch_fallback.py — finish transcribe_nonmatching.py  `[ ]`  (0.5–1 day)
+### T1.5 nonmatch_fallback.py — finish transcribe_nonmatching.py  `[x]`  (0.5–1 day)
+
+**Result (2026-07-02, delegated to Opus, verified by orchestrator):** transcribe_nonmatching.py
+git-mv'd to `nonmatch_fallback.py`; one command emits the complete paste-ready block
+(extern decls from REFS incl. compiler-rt prototypes, `#ifdef NONMATCHING` C-doc stub,
+`#else` + clang-format guards + `asm <sig> {...}`), sig priority include/*.h →
+knowledge.json → --sig, decode_one named-`.hword` fallback instead of SystemExit,
+multi-jump-table support. Validated byte-exact against committed hand-written blocks
+(OamManager_Create instruction-for-instruction; ov01_02200A08 4-entry table exact), and the
+orchestrator ran the multi-table case (ov86_021E7984: both tables — 4+8 entries — exact and
+in order; trailing literal pool correctly folded to `ldr =` forms, incl. `=gSystem` symbol
+refs). /decomp SKILL.md failure path now invokes it as one command. Limitations: Thumb-only
+(ARM hits .hword fallback with WARN); statics without header/knowledge sigs need --sig;
+data-symbol refs emitted as `// extern` hints for the operator to type correctly.
 Existing script already folds literal pools (`ldr rN,=X`), fixes `[rN]`→`[rN,#0]`, strips
 `.balign`, re-encodes jump tables from the assembled .o. Gaps to close:
 - `--sig` is in the usage string but never registered with argparse (lines 160–162).
@@ -268,7 +296,20 @@ Existing script already folds literal pools (`ldr rN,=X`), fixes `[rN]`→`[rN,#
 - Signature source: include/*.h → knowledge.json → `--sig`.
 - Wire into the /decomp skill failure path: fallback becomes one command.
 
-### T1.6 verify_matched.sh + ipa_map.py — regression guard  `[ ]`  (1 day, after T1.1)
+### T1.6 verify_matched.sh + ipa_map.py — regression guard  `[x]`  (1 day, after T1.1)
+
+**Result (2026-07-02, delegated to Opus, verified by orchestrator):** `verify_matched.sh`
+capture/check/`--file`/`--quick N` — fingerprints SHF_ALLOC sections only, by section index
+(duplicate-name-safe; .bss as type+size), so the MWCC/Wine DWARF comp_dir CWD problem never
+enters the hash. Manifest at `matched_manifest.json` (schema v1, per-section sha1s + rollup;
+recapture after every green compare). **Full check pass: 483/483 clean, 0 drift, 0 compile
+failures, 624 s serial (~1.3 s/TU).** `ipa_map.py`: header→consumer index from build/sub/
+dsprot .d files with loud partial-coverage banner — currently 100% (483/483 matched TUs have
+.d data); query by path/basename, `--matched`, `--stats`, `--json`. `ipa_check.sh` head-1 bug
+fixed: iterates ALL matched includers of a changed header (source-grep based, .d-purge-proof).
+Hook wiring deliberately NOT applied — pending user approval: pre-commit ipa_check on staged
+include/ changes + `--quick 20` smoke; `capture` after every green compare; nightly full
+check (10 min) + periodic .d refresh.
 - `verify_matched.sh`: SHA1 manifest of `build/heartgold.us/src/*.o` captured after every
   green compare; check mode recompiles matched TUs via compile_one.sh and diffs. Wire as
   optional pre-commit + overnight loop.

@@ -108,7 +108,22 @@ Iterate on step 5 until objdiff is green, then:
 
 ### On Failure (after max retries)
 
-1. Use NONMATCHING fallback for unmatched functions (see DECOMP_AGENT.md)
+1. Generate the NONMATCHING fallback for each unmatched function — one command
+   produces the complete paste-ready block (extern decls, `#ifdef NONMATCHING`
+   C-doc stub + `#else` hand-written `asm <sig> { ... }` under
+   `// clang-format off/on`, literal pools folded to `ldr rN,=X`, jump tables
+   re-encoded from the assembled `.o`):
+   ```bash
+   python3 tools/decomp_harness/nonmatch_fallback.py \
+     asm/<basename>.s build/heartgold.us/asm/<basename>.o <func> \
+     [--sig 'void <func>(int a)']   # --sig only if no include/*.h or knowledge.json prototype
+   ```
+   Paste the block into `src/<basename>.c` at the function's position (order must
+   match the asm). Fill in named params if the emitted sig used bare types, move
+   the `// extern` hint lines to real extern decls near the top of the TU (delete
+   any already declared; runtime helpers like `_s32_div_f` are emitted as real
+   prototypes and must stay), and document the intended C shape in the stub.
+   Record the blocker in `blockers.json`. See DECOMP_AGENT.md for the convention.
 2. If even NONMATCHING doesn't build cleanly, revert: `./tools/decomp_harness/revert.sh asm/<basename>.s`
 3. Mark as failed in progress.json (include a `reason`, and a `blocker_id` if it
    matches an entry in `blockers.json`). If it's a *new* systemic blocker, add it

@@ -38,52 +38,80 @@ trap 'rm -rf "$tmpdir"' EXIT
 
 cascade_found=0
 
+# Matched TUs = source files linked via `Object src/*.o` in main.lsf. Only
+# these can regress silently under an IPA cascade (everything else is still
+# handwritten asm), so those are the includers we must test — ALL of them,
+# not just the first one found.
+matched_list="$tmpdir/matched.txt"
+grep -oE 'Object src/[^ ]+\.o' main.lsf 2>/dev/null | sed 's#Object ##; s#\.o$#.c#' | sort -u > "$matched_list"
+
 for header in $headers; do
     [[ -f "$header" ]] || continue
     basename=$(basename "$header" .h)
+    hbase=$(basename "$header")
 
-    # Find a C file that includes this header and has a built .o
-    includer=$(grep -rl "#include \"$(basename "$header")\"" src/ --include='*.c' 2>/dev/null | head -1 || true)
-    if [[ -z "$includer" ]]; then
-        echo "ipa_check: $header — no C includer found, skipping"
+    # Every matched C file that directly includes this header. (Transitive
+    # includers are only visible with .d data — see ipa_map.py; this check
+    # stays robust to purged .d files by grepping source directly.)
+    includers=$(grep -rlF "#include \"$hbase\"" src/ --include='*.c' 2>/dev/null \
+                | sort -u | grep -Fxf "$matched_list" || true)
+    if [[ -z "$includers" ]]; then
+        echo "ipa_check: $header — no matched C includer, skipping (no regression risk)"
         continue
     fi
 
-    includer_base=$(basename "$includer" .c)
-    old_obj="$tmpdir/${includer_base}_old.o"
-    new_obj="$tmpdir/${includer_base}_new.o"
+    n_inc=$(printf '%s\n' "$includers" | grep -c .)
+    echo "ipa_check: $header — testing $n_inc matched includer(s)"
 
-    # Save current (staged) header, restore HEAD version
+    # Save the staged header once; we flip HEAD<->staged around each compile.
     cp "$header" "$tmpdir/staged_header"
-    git show "HEAD:$header" > "$header" 2>/dev/null || { echo "ipa_check: $header — no HEAD version, skipping"; cp "$tmpdir/staged_header" "$header"; continue; }
-
-    # Compile with old header
-    if ! $MWCC $MWCFLAGS -c -o "$old_obj" "$includer" >/dev/null 2>&1; then
-        echo "ipa_check: $header — old header fails to compile $includer (expected if fixing a build break), skipping"
-        cp "$tmpdir/staged_header" "$header"
+    if ! git show "HEAD:$header" > "$tmpdir/head_header" 2>/dev/null; then
+        echo "ipa_check: $header — no HEAD version (new file), skipping"
         continue
     fi
 
-    # Restore staged header
+    header_cascade=0
+    while IFS= read -r includer; do
+        [[ -n "$includer" ]] || continue
+        includer_base=$(basename "$includer" .c)
+        old_obj="$tmpdir/${includer_base}_old.o"
+        new_obj="$tmpdir/${includer_base}_new.o"
+
+        # Compile with OLD (HEAD) header.
+        cp "$tmpdir/head_header" "$header"
+        if ! $MWCC $MWCFLAGS -c -o "$old_obj" "$includer" >/dev/null 2>&1; then
+            echo "  ~ $includer — old header fails to compile (expected if fixing a build break), skipping"
+            cp "$tmpdir/staged_header" "$header"
+            continue
+        fi
+
+        # Compile with NEW (staged) header.
+        cp "$tmpdir/staged_header" "$header"
+        if ! $MWCC $MWCFLAGS -c -o "$new_obj" "$includer" >/dev/null 2>&1; then
+            echo "  ~ $includer — new header fails to compile, skipping"
+            continue
+        fi
+
+        if cmp -s "$old_obj" "$new_obj"; then
+            echo "  ✓ $includer — no cascade"
+        else
+            old_size=$(wc -c < "$old_obj")
+            new_size=$(wc -c < "$new_obj")
+            echo "  ✗ $includer — CASCADE ($old_size → $new_size bytes)"
+            header_cascade=1
+            cascade_found=1
+        fi
+    done <<< "$includers"
+
+    # Ensure the staged header is back in place no matter which path we took.
     cp "$tmpdir/staged_header" "$header"
 
-    # Compile with new header
-    if ! $MWCC $MWCFLAGS -c -o "$new_obj" "$includer" >/dev/null 2>&1; then
-        echo "ipa_check: $header — new header fails to compile $includer, skipping"
-        continue
-    fi
-
-    # Compare
-    if cmp -s "$old_obj" "$new_obj"; then
-        echo "ipa_check: $header — no IPA cascade in $includer ✓"
-    else
-        old_size=$(wc -c < "$old_obj")
-        new_size=$(wc -c < "$new_obj")
-        echo "WARNING: $header — IPA cascade detected!"
-        echo "  $includer produces different .o ($old_size → $new_size bytes)"
+    if [[ "$header_cascade" -ne 0 ]]; then
+        echo "WARNING: $header — IPA cascade detected in matched TU(s) above."
         echo "  Use the split-header pattern: keep the public header frozen,"
         echo "  put corrected prototypes in ${basename}_internal.h"
-        cascade_found=1
+    else
+        echo "ipa_check: $header — no cascade across $n_inc matched includer(s) ✓"
     fi
 done
 

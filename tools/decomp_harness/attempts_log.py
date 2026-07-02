@@ -17,8 +17,19 @@ Record fields:
                    | instruction_diff | section_diff | build_error
                    | blocked | abandoned
   diff_signature — compact byte/insn diff ("cmp r4,#4 vs cmp r0,#4 @entry")
+  classify_label — optional objdiff --classify label (register-rename-equivalent
+                   | schedule-equivalent | spill-slot-shift |
+                   extra/missing-instructions | size-diff | logic-diff). Machine-
+                   assigned; complements the free-text diff_signature.
   lesson         — what this rules out or suggests for next time
   pattern_id     — optional patterns.json id this confirmed/produced
+
+Auto-feed from objdiff (the classifier is the fitness/candidate filter, T1.3/T1.4):
+  python3 tools/decomp_harness/objdiff.py <asm.o> <c.o> --classify \
+      --attempts-json --attempts-file asm/<name>.s \
+      | python3 tools/decomp_harness/attempts_log.py add --json -
+  (objdiff emits one JSON record per mismatched function with outcome mapped
+   from the label and classify_label set; add --json ingests each line.)
 
 Usage:
   # append (flags)
@@ -63,34 +74,52 @@ def read_log():
     return records
 
 
-def cmd_add(args):
-    if args.json:
-        raw = sys.stdin.read() if args.json == "-" else args.json
-        record = json.loads(raw)
-    else:
-        record = {
-            "file": args.file,
-            "function": args.function,
-            "approach": args.approach,
-            "outcome": args.outcome,
-        }
-        if args.diff:
-            record["diff_signature"] = args.diff
-        if args.lesson:
-            record["lesson"] = args.lesson
-        if args.pattern_id:
-            record["pattern_id"] = args.pattern_id
-
+def _validate(record):
     for field in ("file", "function", "approach", "outcome"):
         if not record.get(field):
             sys.exit(f"missing required field: {field}")
     if record["outcome"] not in OUTCOMES:
         sys.exit(f"outcome must be one of: {', '.join(sorted(OUTCOMES))}")
 
+
+def _append(record):
+    _validate(record)
     record.setdefault("ts", datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"))
     with open(LOG, "a") as f:
         f.write(json.dumps(record) + "\n")
     print(f"logged: {record['file']} {record['function']} -> {record['outcome']}")
+
+
+def cmd_add(args):
+    if args.json:
+        raw = sys.stdin.read() if args.json == "-" else args.json
+        # Accept either a single JSON object or JSONL (one record per line, as
+        # emitted by `objdiff.py --classify --attempts-json`).
+        stripped = raw.strip()
+        try:
+            obj = json.loads(stripped)
+            records = obj if isinstance(obj, list) else [obj]
+        except json.JSONDecodeError:
+            records = [json.loads(line) for line in stripped.splitlines() if line.strip()]
+        for record in records:
+            _append(record)
+        return
+
+    record = {
+        "file": args.file,
+        "function": args.function,
+        "approach": args.approach,
+        "outcome": args.outcome,
+    }
+    if args.diff:
+        record["diff_signature"] = args.diff
+    if args.classify_label:
+        record["classify_label"] = args.classify_label
+    if args.lesson:
+        record["lesson"] = args.lesson
+    if args.pattern_id:
+        record["pattern_id"] = args.pattern_id
+    _append(record)
 
 
 def cmd_query(args):
@@ -108,6 +137,7 @@ def cmd_query(args):
         print(f"[{r.get('ts', '?')}] {r['file']} :: {r['function']}")
         print(f"  approach: {r['approach']}")
         print(f"  outcome:  {r['outcome']}"
+              + (f"  [{r['classify_label']}]" if r.get("classify_label") else "")
               + (f"  ({r['diff_signature']})" if r.get("diff_signature") else ""))
         if r.get("lesson"):
             print(f"  lesson:   {r['lesson']}")
@@ -144,6 +174,8 @@ def main():
     add.add_argument("--approach")
     add.add_argument("--outcome")
     add.add_argument("--diff")
+    add.add_argument("--classify-label", dest="classify_label",
+                     help="objdiff --classify label (machine-assigned)")
     add.add_argument("--lesson")
     add.add_argument("--pattern-id", dest="pattern_id")
     add.set_defaults(fn=cmd_add)

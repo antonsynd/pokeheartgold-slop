@@ -163,20 +163,33 @@ class Elf:
 def get_functions(objfile):
     """Extract per-function raw bytes and the set of reloc-masked byte offsets.
 
-    Returns (funcs, masks, sizes, unknown):
+    Returns (funcs, masks, sizes, unknown, modes):
       funcs[name]  -> bytes of the function (raw, sliced from its ELF section)
       masks[name]  -> set of byte offsets within the function that are relocated
       sizes[name]  -> symbol size in bytes
       unknown      -> set of reloc-type numbers seen but not in the width table
                       (masked at the default width; surfaced so a caller can warn)
+      modes[name]  -> sorted list of (rel_offset, kind) ARM/Thumb/data mapping
+                      symbols ($a/$t/$d) inside the function, so the lightweight
+                      decoder in the --score/--classify path knows how to read
+                      each region. Always begins with a (0, kind) entry.
     """
     elf = Elf(objfile)
     relocs = elf.relocs_by_section()
     unknown = set()
 
+    # Collect ARM/Thumb/data mapping symbols per section index. Names are "$a",
+    # "$t", "$d" (optionally "$a.0" etc); the second char is the kind.
+    mapsyms = {}
+    for name, value, size, shndx, stype in elf.symbols():
+        if len(name) >= 2 and name[0] == "$" and name[1] in "atd":
+            if shndx < SHN_LORESERVE:
+                mapsyms.setdefault(shndx, []).append((value, name[1]))
+
     funcs = {}
     masks = {}
     sizes = {}
+    modes = {}
 
     for name, value, size, shndx, stype in elf.symbols():
         if not name or name.startswith("$"):
@@ -210,11 +223,20 @@ def get_functions(objfile):
             for b in range(rel, min(rel + width, size)):
                 mask.add(b)
 
+        fmodes = sorted(
+            (v - value, k) for v, k in mapsyms.get(shndx, ())
+            if value <= v < value + size)
+        if not fmodes or fmodes[0][0] != 0:
+            # Default to Thumb at the function start (DS ARM9 code is ~99.5%
+            # Thumb; a leading $a/$t would already have supplied the real kind).
+            fmodes = [(0, "t")] + fmodes
+
         funcs[name] = bytes(body)
         masks[name] = mask
         sizes[name] = size
+        modes[name] = fmodes
 
-    return funcs, masks, sizes, unknown
+    return funcs, masks, sizes, unknown, modes
 
 
 def trailing_pad_ok(a, b):
@@ -285,6 +307,355 @@ def compare_func(asm_bytes, asm_mask, c_bytes, c_mask, verbose=False):
             print(f"    ... and {len(real_diffs) - 20} more")
 
     return match, real_diffs, masked_diffs
+
+
+# ---------------------------------------------------------------------------
+# Scoring — per-function matched-halfword ratio (permuter fitness, T1.4).
+# ---------------------------------------------------------------------------
+
+def func_score(asm_bytes, asm_mask, c_bytes, c_mask):
+    """Per-function match score derived from the same masking as compare_func.
+
+    Returns a dict:
+      status            match | mismatch | size
+      score             matched_halfwords / total_halfwords, 1.0 == byte-identical
+                        (size differences drag the ratio down via total_halfwords)
+      matched_halfwords number of halfwords that compare equal (masked = equal)
+      total_halfwords   max(len_asm, len_c) // 2 (so a longer/shorter side is penalized)
+      diff_halfwords    real (non-masked) differing halfwords in the common region
+      masked_halfwords  halfwords fully inside a reloc mask (don't-care)
+      asm_bytes/c_bytes symbol sizes
+
+    Permuter fitness (T1.4): minimize diff_halfwords (raw, integer, deterministic);
+    or equivalently maximize score. diff_halfwords == 0 AND matched==total is a match.
+    """
+    pad = (len(asm_bytes) != len(c_bytes)) and trailing_pad_ok(asm_bytes, c_bytes)
+    match, real_diffs, masked_bytes_n = compare_func(
+        asm_bytes, asm_mask, c_bytes, c_mask)
+
+    min_len = min(len(asm_bytes), len(c_bytes))
+    max_len = max(len(asm_bytes), len(c_bytes))
+    total_hw = max_len // 2 if max_len >= 2 else (1 if max_len else 0)
+    diff_hw = len(real_diffs)
+
+    # masked halfwords in the common region (both bytes of a hw touched by a mask
+    # count once; approximate by counting hw with any masked byte).
+    masked_hw = 0
+    for hw in range(min_len // 2):
+        lo = hw * 2
+        if lo in asm_mask or lo in c_mask or (lo + 1) in asm_mask or (lo + 1) in c_mask:
+            masked_hw += 1
+
+    matched_hw = (max_len // 2) - diff_hw - max(0, (max_len - min_len) // 2)
+    if pad:
+        # benign trailing .balign pad: the missing tail halfwords are matches.
+        matched_hw = (min_len // 2) - diff_hw
+        total_hw = min_len // 2
+    if matched_hw < 0:
+        matched_hw = 0
+    score = 1.0 if total_hw == 0 else matched_hw / total_hw
+
+    if match:
+        status = "match"
+    elif (len(asm_bytes) != len(c_bytes)) and not pad:
+        status = "size"
+    else:
+        status = "mismatch"
+
+    return {
+        "status": status,
+        "score": round(score, 6),
+        "matched_halfwords": matched_hw,
+        "total_halfwords": total_hw,
+        "diff_halfwords": diff_hw,
+        "masked_halfwords": masked_hw,
+        "asm_bytes": len(asm_bytes),
+        "c_bytes": len(c_bytes),
+    }
+
+
+# ---------------------------------------------------------------------------
+# Lightweight Thumb / ARM / data decoder for --classify (stdlib only).
+#
+# We decode into a flat list of "tokens", one per machine instruction (or data
+# word). Each token carries enough to answer the classifier's questions:
+#   key      raw bytes tuple (reloc-masked to zero) — instruction identity for
+#            order/rename-tolerant alignment and multiset comparison
+#   kind     't' (Thumb16), 't32' (Thumb BL/BLX pair), 'a' (ARM), 'd' (data)
+#   For Thumb16 only, register/immediate decomposition:
+#     fmt      encoding-format id
+#     regs     tuple of register-field values
+#     imm      immediate field value (or None)
+#     is_sp    True for SP-relative loads/stores and SP adjusts (spill slots)
+#     op       halfword with register fields zeroed, immediate KEPT
+#              (op-equal + hw-differ => difference is purely register fields)
+#     op_noimm halfword with register AND immediate fields zeroed (the "shape")
+# ---------------------------------------------------------------------------
+
+def thumb16_layout(hw):
+    """(fmt, reg_fields[(shift,width)...], imm_field(shift,width)|None, is_sp)."""
+    if (hw >> 11) in (0b00000, 0b00001, 0b00010):   # LSL/LSR/ASR by imm5
+        return ("shift_imm", [(3, 3), (0, 3)], (6, 5), False)
+    if (hw >> 11) == 0b00011:                        # ADD/SUB reg or imm3
+        op = (hw >> 9) & 0b11
+        if op in (0b00, 0b01):
+            return ("addsub_reg", [(6, 3), (3, 3), (0, 3)], None, False)
+        return ("addsub_imm3", [(3, 3), (0, 3)], (6, 3), False)
+    if (hw >> 13) == 0b001:                          # MOV/CMP/ADD/SUB imm8
+        return ("alu_imm8", [(8, 3)], (0, 8), False)
+    if (hw >> 10) == 0b010000:                       # data-processing reg
+        return ("alu_reg", [(3, 3), (0, 3)], None, False)
+    if (hw >> 10) == 0b010001:                       # hi-reg ops / BX
+        return ("hi_reg", [(3, 4), (0, 3)], None, False)
+    if (hw >> 11) == 0b01001:                         # LDR Rd,[PC,#imm]
+        return ("ldr_pc", [(8, 3)], (0, 8), False)
+    if (hw >> 12) == 0b0101:                          # load/store register offset
+        return ("ldst_reg", [(6, 3), (3, 3), (0, 3)], None, False)
+    if (hw >> 13) == 0b011:                           # load/store word/byte imm5
+        return ("ldst_imm5", [(3, 3), (0, 3)], (6, 5), False)
+    if (hw >> 12) == 0b1000:                          # load/store halfword imm5
+        return ("ldst_h", [(3, 3), (0, 3)], (6, 5), False)
+    if (hw >> 12) == 0b1001:                          # SP-relative load/store
+        return ("ldst_sp", [(8, 3)], (0, 8), True)
+    if (hw >> 12) == 0b1010:                          # ADD Rd,PC/SP,#imm
+        return ("add_pcsp", [(8, 3)], (0, 8), bool((hw >> 11) & 1))
+    if (hw >> 8) == 0b10110000:                       # ADD/SUB SP,#imm7
+        return ("add_sp", [], (0, 7), True)
+    if (hw >> 12) == 0b1011:                          # push/pop + misc
+        return ("pushpop", [], (0, 9), False)
+    if (hw >> 12) == 0b1100:                          # LDMIA/STMIA
+        return ("ldstm", [(8, 3)], (0, 8), False)
+    if (hw >> 12) == 0b1101:                           # cond branch / SWI
+        if (hw >> 8) == 0b11011111:
+            return ("swi", [], (0, 8), False)
+        return ("b_cond", [], (0, 8), False)
+    if (hw >> 11) == 0b11100:                          # unconditional branch
+        return ("b", [], (0, 11), False)
+    if (hw >> 11) in (0b11110, 0b11111, 0b11101):      # BL/BLX halfword
+        return ("bl_hw", [], (0, 11), False)
+    return ("unknown", [], None, False)
+
+
+def decode_thumb16(hw):
+    fmt, regfields, immfield, is_sp = thumb16_layout(hw)
+    reg_mask = 0
+    regs = []
+    for shift, width in regfields:
+        m = ((1 << width) - 1) << shift
+        reg_mask |= m
+        regs.append((hw >> shift) & ((1 << width) - 1))
+    imm = None
+    imm_mask = 0
+    if immfield:
+        shift, width = immfield
+        imm_mask = ((1 << width) - 1) << shift
+        imm = (hw >> shift) & ((1 << width) - 1)
+    return {
+        "kind": "t", "fmt": fmt, "regs": tuple(regs), "imm": imm,
+        "is_sp": is_sp,
+        "op": hw & 0xFFFF & ~reg_mask,
+        "op_noimm": hw & 0xFFFF & ~reg_mask & ~imm_mask,
+        "hw": hw,
+    }
+
+
+def decode_function(data, modes):
+    """Decode masked function bytes into a flat token list using mapping symbols.
+
+    `data` must already have reloc-masked byte offsets zeroed so that relocated
+    fields (BL targets, ABS32 words) compare equal between the two objects.
+    """
+    n = len(data)
+    segs = []
+    for i, (off, kind) in enumerate(modes):
+        end = modes[i + 1][0] if i + 1 < len(modes) else n
+        if off >= n:
+            continue
+        segs.append((off, min(end, n), kind))
+    if not segs:
+        segs = [(0, n, "t")]
+
+    tokens = []
+    for start, end, kind in segs:
+        p = start
+        while p < end:
+            if kind == "t":
+                if p + 2 > end:  # stray trailing byte
+                    tokens.append({"kind": "d", "key": (data[p],)})
+                    p += 1
+                    continue
+                hw = data[p] | (data[p + 1] << 8)
+                if (hw >> 11) == 0b11110 and p + 4 <= end:
+                    # Thumb BL/BLX: two-halfword instruction.
+                    key = tuple(data[p:p + 4])
+                    tokens.append({"kind": "t32", "key": key})
+                    p += 4
+                    continue
+                tok = decode_thumb16(hw)
+                tok["key"] = (data[p], data[p + 1])
+                tokens.append(tok)
+                p += 2
+            elif kind == "a":
+                w = data[p:p + 4]
+                tokens.append({"kind": "a", "key": tuple(w)})
+                p += 4
+            else:  # 'd' data
+                w = data[p:p + 4]
+                tokens.append({"kind": "d", "key": tuple(w)})
+                p += len(w) if len(w) < 4 else 4
+    return tokens
+
+
+def _mask_bytes(b, mask):
+    a = bytearray(b)
+    for i in mask:
+        if i < len(a):
+            a[i] = 0
+    return bytes(a)
+
+
+def _align(seq_a, seq_c):
+    """Levenshtein alignment over token keys. Returns (ops, distance).
+
+    ops is a list of ('match'|'sub', i, j) / ('del', i, None) / ('ins', None, j).
+    """
+    na, nc = len(seq_a), len(seq_c)
+    dp = [[0] * (nc + 1) for _ in range(na + 1)]
+    for i in range(1, na + 1):
+        dp[i][0] = i
+    for j in range(1, nc + 1):
+        dp[0][j] = j
+    for i in range(1, na + 1):
+        ai = seq_a[i - 1]
+        for j in range(1, nc + 1):
+            if ai == seq_c[j - 1]:
+                dp[i][j] = dp[i - 1][j - 1]
+            else:
+                dp[i][j] = 1 + min(dp[i - 1][j - 1], dp[i - 1][j], dp[i][j - 1])
+    i, j = na, nc
+    ops = []
+    while i > 0 or j > 0:
+        if i > 0 and j > 0 and seq_a[i - 1] == seq_c[j - 1] and dp[i][j] == dp[i - 1][j - 1]:
+            ops.append(("match", i - 1, j - 1))
+            i -= 1
+            j -= 1
+        elif i > 0 and j > 0 and dp[i][j] == dp[i - 1][j - 1] + 1:
+            ops.append(("sub", i - 1, j - 1))
+            i -= 1
+            j -= 1
+        elif i > 0 and dp[i][j] == dp[i - 1][j] + 1:
+            ops.append(("del", i - 1, None))
+            i -= 1
+        else:
+            ops.append(("ins", None, j - 1))
+            j -= 1
+    ops.reverse()
+    return ops, dp[na][nc]
+
+
+def _categorize_sub(ta, tc):
+    """Classify a single aligned substitution of Thumb16 tokens."""
+    if ta.get("kind") != "t" or tc.get("kind") != "t":
+        return "other"
+    if ta["fmt"] != tc["fmt"]:
+        return "other"
+    if ta["op"] == tc["op"] and ta["hw"] != tc["hw"]:
+        return "rename"          # same opcode + same immediate, register fields differ
+    if ta["op_noimm"] == tc["op_noimm"] and ta["regs"] == tc["regs"]:
+        if ta["is_sp"]:
+            return "spill"       # same shape + same regs, SP-relative immediate differs
+        return "imm"             # non-SP immediate change
+    return "other"
+
+
+CLASSIFY_LABELS = (
+    "register-rename-equivalent", "schedule-equivalent", "spill-slot-shift",
+    "extra/missing-instructions", "size-diff", "logic-diff",
+)
+
+
+def classify_func(asm_bytes, asm_mask, c_bytes, c_mask, asm_modes, c_modes):
+    """Label a mismatched function. Order/rename-tolerant.
+
+    Priority: a pure reordering (transposition) is detected before substitution
+    analysis so a 2-instruction swap ranks as distance-1; pure register renaming
+    reports distance 0 (near-match). Returns a dict with label/distance/details.
+    """
+    a = _mask_bytes(asm_bytes, asm_mask)
+    c = _mask_bytes(c_bytes, c_mask)
+    ta = decode_function(a, asm_modes)
+    tc = decode_function(c, c_modes)
+    ka = [t["key"] for t in ta]
+    kc = [t["key"] for t in tc]
+
+    size_diff = (len(asm_bytes) != len(c_bytes)) and not trailing_pad_ok(asm_bytes, c_bytes)
+
+    if ka == kc and not size_diff:
+        return {"label": "match", "distance": 0, "n_sub": 0, "n_indel": 0,
+                "detail": "byte-identical after masking"}
+
+    # Reordering: identical instruction multiset, different order.
+    if not size_diff and sorted(ka) == sorted(kc) and ka != kc:
+        moved = sum(1 for x, y in zip(ka, kc) if x != y)
+        return {"label": "schedule-equivalent", "distance": max(1, moved // 2),
+                "n_sub": 0, "n_indel": 0, "n_moved": moved,
+                "detail": f"{moved} instructions reordered (multiset identical)"}
+
+    ops, dist = _align(ka, kc)
+    subs = [(i, j) for kind, i, j in ops if kind == "sub"]
+    n_ins = sum(1 for o in ops if o[0] == "ins")
+    n_del = sum(1 for o in ops if o[0] == "del")
+    n_indel = n_ins + n_del
+    n_sub = len(subs)
+
+    # An indel is "interior" if aligned instructions match both before and after
+    # it — the signature of a hoist / CSE (extra/missing-instructions). Indels
+    # only at an end are a plain grow/shrink of the body (size-diff).
+    match_idx = [k for k, o in enumerate(ops) if o[0] == "match"]
+    interior_indel = False
+    if match_idx:
+        first_m, last_m = match_idx[0], match_idx[-1]
+        interior_indel = any(o[0] in ("ins", "del") and first_m < k < last_m
+                             for k, o in enumerate(ops))
+
+    if n_indel > 0 and n_sub == 0 and interior_indel:
+        return {"label": "extra/missing-instructions", "distance": n_indel,
+                "n_sub": 0, "n_indel": n_indel,
+                "detail": f"{n_ins} inserted / {n_del} deleted instructions "
+                          f"(interior; common instructions identical)"}
+
+    if size_diff:
+        return {"label": "size-diff", "distance": dist, "n_sub": n_sub, "n_indel": n_indel,
+                "detail": f"size {len(asm_bytes)} vs {len(c_bytes)} bytes, "
+                          f"{n_sub} sub / {n_indel} indel"}
+
+    if n_indel > 0:
+        return {"label": "logic-diff", "distance": dist, "n_sub": n_sub, "n_indel": n_indel,
+                "detail": f"{n_sub} substitutions + {n_indel} indels"}
+
+    cats = [_categorize_sub(ta[i], tc[j]) for i, j in subs]
+    if cats and all(x == "rename" for x in cats):
+        return {"label": "register-rename-equivalent", "distance": 0,
+                "n_sub": n_sub, "n_indel": 0,
+                "detail": f"{n_sub} instructions differ only in register fields"}
+    if cats and all(x == "spill" for x in cats):
+        return {"label": "spill-slot-shift", "distance": 0,
+                "n_sub": n_sub, "n_indel": 0,
+                "detail": f"{n_sub} SP-relative immediates shifted"}
+    return {"label": "logic-diff", "distance": n_sub, "n_sub": n_sub, "n_indel": 0,
+            "detail": f"{n_sub} substitutions ({', '.join(sorted(set(cats)))})"}
+
+
+# Map a classifier label onto an attempts_log outcome enum value.
+CLASSIFY_TO_OUTCOME = {
+    "register-rename-equivalent": "regalloc_diff",
+    "schedule-equivalent": "instruction_diff",
+    "spill-slot-shift": "regalloc_diff",
+    "extra/missing-instructions": "instruction_diff",
+    "size-diff": "size_mismatch",
+    "logic-diff": "instruction_diff",
+    "match": "matched",
+}
 
 
 # ---------------------------------------------------------------------------
@@ -410,6 +781,32 @@ def get_section_bytes(objfile, section):
     return raw.stdout
 
 
+def elf_data_section(objfile, secname):
+    """Concatenate same-named sections (file order) with an ABS32 reloc mask.
+
+    Returns (bytes, maskset) where maskset holds byte offsets covered by a
+    relocation (ABS32 pointer words in .rodata/.data resolve to the same value
+    at link time regardless of the placeholder here, so they are don't-care).
+    Byte layout mirrors `objcopy -O binary -j <secname>` for the common single-
+    section case; multi-section objects concatenate in file order.
+    """
+    elf = Elf(objfile)
+    relocs = elf.relocs_by_section()
+    buf = bytearray()
+    mask = set()
+    for idx, s in enumerate(elf.sections):
+        if s["name"] != secname:
+            continue
+        base = len(buf)
+        b = elf.section_bytes(idx)
+        buf.extend(b)
+        for r_offset, r_type in relocs.get(idx, ()):
+            w = RELOC_WIDTH.get(r_type, RELOC_WIDTH_DEFAULT)
+            for k in range(r_offset, min(r_offset + w, len(b))):
+                mask.add(base + k)
+    return bytes(buf), mask
+
+
 # ---------------------------------------------------------------------------
 # Extraction dispatch shared by the comparison commands.
 # ---------------------------------------------------------------------------
@@ -419,7 +816,7 @@ def _load(objfile, legacy):
     if legacy:
         funcs, _ = get_functions_legacy(objfile)
         return funcs, {}
-    funcs, masks, _, unknown = get_functions(objfile)
+    funcs, masks, _, unknown, _ = get_functions(objfile)
     if unknown:
         names = ", ".join(f"0x{t:x}" for t in sorted(unknown))
         print(f"warning: {objfile}: unknown reloc type(s) {names} masked at "
@@ -544,18 +941,38 @@ def cmd_summary(args):
             print(f"DIFF  {name} ({len(real_diffs)} diffs)")
             fail_count += 1
 
-    # Also verify data sections match
+    # Also verify data sections match. .rodata/.data may hold ABS32 pointer
+    # words that are relocated (a data pointer resolves to the same value at link
+    # time regardless of the placeholder here), so mask those before comparing —
+    # the same don't-care treatment compare_func applies to .text reloc fields.
+    #
+    # Bytes come from the raw ELF (elf_data_section), not `objcopy -O binary
+    # /dev/stdout`: on macOS the latter returns empty under subprocess capture,
+    # which silently disabled this whole check. The legacy path keeps objcopy so
+    # the --legacy verdict is byte-for-byte the historical one.
     sec_ok = True
     for sec in [".rodata", ".data", ".bss"]:
-        asm_b = get_section_bytes(args.asm_obj, sec)
-        c_b = get_section_bytes(args.c_obj, sec)
-        if asm_b != c_b:
-            if len(asm_b) != len(c_b):
-                print(f"SECT  {sec}: size mismatch (asm={len(asm_b)}, c={len(c_b)})")
-            else:
-                diffs = sum(1 for a, c in zip(asm_b, c_b) if a != c)
-                print(f"SECT  {sec}: {diffs} byte diffs (size={len(asm_b)})")
+        if args.legacy:
+            asm_b = get_section_bytes(args.asm_obj, sec)
+            c_b = get_section_bytes(args.c_obj, sec)
+            mask = set()
+        else:
+            asm_b, amask = elf_data_section(args.asm_obj, sec)
+            c_b, cmask = elf_data_section(args.c_obj, sec)
+            mask = amask | cmask
+        if asm_b == c_b:
+            continue
+        if len(asm_b) != len(c_b):
+            print(f"SECT  {sec}: size mismatch (asm={len(asm_b)}, c={len(c_b)})")
             sec_ok = False
+            continue
+        real = sum(1 for i, (a, c) in enumerate(zip(asm_b, c_b))
+                   if a != c and i not in mask)
+        if real == 0:
+            continue  # every differing byte is a relocated (don't-care) word
+        note = " after reloc masking" if mask else ""
+        print(f"SECT  {sec}: {real} byte diffs{note} (size={len(asm_b)})")
+        sec_ok = False
 
     total = ok_count + fail_count
     if sec_ok and fail_count == 0:
@@ -566,6 +983,119 @@ def cmd_summary(args):
     else:
         print(f"\n{ok_count}/{total} functions OK, {fail_count} mismatched")
     return 1
+
+
+def _load_full(objfile):
+    """Non-legacy load returning (funcs, masks, modes) for score/classify."""
+    funcs, masks, _, unknown, modes = get_functions(objfile)
+    if unknown:
+        names = ", ".join(f"0x{t:x}" for t in sorted(unknown))
+        print(f"warning: {objfile}: unknown reloc type(s) {names} masked at "
+              f"{RELOC_WIDTH_DEFAULT} bytes", file=sys.stderr)
+    return funcs, masks, modes
+
+
+def cmd_score(args):
+    """Per-function matched-halfword ratio. --json emits the permuter schema."""
+    asm_funcs, asm_masks, _ = _load_full(args.asm_obj)
+    c_funcs, c_masks, _ = _load_full(args.c_obj)
+
+    results = {}
+    for name in asm_funcs:
+        if name not in c_funcs:
+            results[name] = {"status": "missing", "score": 0.0,
+                             "matched_halfwords": 0,
+                             "total_halfwords": len(asm_funcs[name]) // 2,
+                             "diff_halfwords": len(asm_funcs[name]) // 2,
+                             "masked_halfwords": 0,
+                             "asm_bytes": len(asm_funcs[name]), "c_bytes": 0}
+            continue
+        results[name] = func_score(asm_funcs[name], asm_masks.get(name, set()),
+                                   c_funcs[name], c_masks.get(name, set()))
+
+    scores = [r["score"] for r in results.values()]
+    matched = sum(1 for r in results.values() if r["status"] == "match")
+    overall = {
+        "functions": len(results),
+        "matched": matched,
+        "mean_score": round(sum(scores) / len(scores), 6) if scores else 1.0,
+        "min_score": round(min(scores), 6) if scores else 1.0,
+    }
+
+    if args.json:
+        import json
+        print(json.dumps({"asm_obj": args.asm_obj, "c_obj": args.c_obj,
+                          "functions": results, "overall": overall}, indent=2))
+        return 0 if matched == len(results) else 1
+
+    print(f"{'Function':<44} {'Score':>7} {'Matched/Total':>16} {'Status':>9}")
+    print("-" * 80)
+    for name, r in sorted(results.items(), key=lambda kv: kv[1]["score"]):
+        print(f"{name:<44} {r['score']*100:6.2f}% "
+              f"{r['matched_halfwords']:>7}/{r['total_halfwords']:<8} {r['status']:>9}")
+    print("-" * 80)
+    print(f"{matched}/{overall['functions']} match | mean "
+          f"{overall['mean_score']*100:.2f}% | min {overall['min_score']*100:.2f}%")
+    return 0 if matched == len(results) else 1
+
+
+def cmd_classify(args):
+    """Label mismatched functions with a distance metric. --json for machine use."""
+    asm_funcs, asm_masks, asm_modes = _load_full(args.asm_obj)
+    c_funcs, c_masks, c_modes = _load_full(args.c_obj)
+
+    names = [args.function] if args.function else list(asm_funcs)
+    results = {}
+    for name in names:
+        if name not in asm_funcs or name not in c_funcs:
+            results[name] = {"label": "size-diff" if name in asm_funcs else "missing",
+                             "distance": -1, "n_sub": 0, "n_indel": 0,
+                             "detail": "function missing in one object"}
+            continue
+        asm_b, c_b = asm_funcs[name], c_funcs[name]
+        # Only classify actual mismatches; a matching function is labelled "match".
+        match, _, _ = compare_func(asm_b, asm_masks.get(name, set()), c_b,
+                                   c_masks.get(name, set()))
+        size_ok = len(asm_b) == len(c_b) or trailing_pad_ok(asm_b, c_b)
+        if match and size_ok:
+            results[name] = {"label": "match", "distance": 0, "n_sub": 0,
+                             "n_indel": 0, "detail": "byte-identical"}
+            continue
+        results[name] = classify_func(asm_b, asm_masks.get(name, set()), c_b,
+                                      c_masks.get(name, set()),
+                                      asm_modes.get(name, [(0, "t")]),
+                                      c_modes.get(name, [(0, "t")]))
+
+    if args.attempts_json:
+        import json
+        # Emit attempts_log-ready records (one JSON object per line) for the
+        # mismatched functions, ready to pipe into `attempts_log.py add --json -`.
+        for name, r in results.items():
+            if r["label"] == "match":
+                continue
+            print(json.dumps({
+                "file": args.attempts_file or "",
+                "function": name,
+                "approach": args.approach or "(auto: from objdiff --classify)",
+                "outcome": CLASSIFY_TO_OUTCOME.get(r["label"], "instruction_diff"),
+                "classify_label": r["label"],
+                "diff_signature": r["detail"],
+            }))
+        return 0
+
+    if args.json:
+        import json
+        print(json.dumps({"asm_obj": args.asm_obj, "c_obj": args.c_obj,
+                          "functions": results}, indent=2))
+        return 0
+
+    print(f"{'Function':<40} {'Label':<28} {'Dist':>4}  Detail")
+    print("-" * 100)
+    for name, r in sorted(results.items(), key=lambda kv: kv[1].get("distance", 0)):
+        if r["label"] == "match":
+            continue
+        print(f"{name:<40} {r['label']:<28} {r['distance']:>4}  {r['detail']}")
+    return 0
 
 
 def cmd_disasm(args):
@@ -647,6 +1177,18 @@ def main():
     mode.add_argument("--disasm", metavar="FN", dest="disasm_fn", help="Show disassembly for a specific function")
     mode.add_argument("--bytes", metavar="FN", dest="bytes_fn", help="Byte-level diff for a specific function")
     mode.add_argument("--sections", action="store_true", help="Compare section sizes only")
+    mode.add_argument("--score", action="store_true",
+                      help="Per-function matched-halfword ratio (permuter fitness)")
+    mode.add_argument("--classify", nargs="?", const="", metavar="FN", dest="classify_fn",
+                      help="Label mismatched functions; optional FN restricts to one")
+
+    parser.add_argument("--json", action="store_true",
+                        help="Machine-readable JSON for --score / --classify")
+    parser.add_argument("--attempts-json", action="store_true",
+                        help="With --classify: emit attempts_log records (one JSON/line) "
+                             "ready for `attempts_log.py add --json -`")
+    parser.add_argument("--attempts-file", help="asm/<name>.s to stamp into --attempts-json records")
+    parser.add_argument("--approach", help="approach string for --attempts-json records")
 
     args = parser.parse_args()
 
@@ -665,6 +1207,11 @@ def main():
         return cmd_bytes(args)
     elif args.sections:
         return cmd_sections(args)
+    elif args.score:
+        return cmd_score(args)
+    elif args.classify_fn is not None:
+        args.function = args.classify_fn or None
+        return cmd_classify(args)
     else:
         return cmd_compare(args)
 

@@ -1461,6 +1461,12 @@
       "category": "tooling",
       "title": "objdiff.py raw-ELF extraction + real reloc masking supersedes objdump-text parsing (jump-table false-SIZE class dead)",
       "body": "objdiff.py (2026-07-02 rewrite) slices function bytes directly from the ELF per-function .text sections (MWCC emits one section per function — nm-value schemes across a merged .text cannot work) and masks exactly the relocated fields from the reloc tables (THM_CALL/PC24/CALL/JUMP24/ABS32/REL32...). Consequences: (1) the jump-table false-SIZE class is gone — do not hand-wave SIZE mismatches anymore, they are real; (2) legacy text parsing under-counted size for 77% of functions by dropping literal-pool .word lines, so any pre-rewrite logged sizes/verdicts from asymmetric compares are unreliable; (3) benign trailing .balign 4,0 shows as ' PAD ' (body match), distinct from OK; (4) --summary exits 1 on any MISS/SIZE/DIFF/SECT (scriptable), --legacy keeps the old path; (5) data sections are still compared raw without reloc masking (T1.3) — chiri pkg -- compare remains authoritative."
+    },
+    {
+      "id": "objcopy-dev-stdout-empty-macos",
+      "category": "tooling",
+      "title": "objcopy -O binary to /dev/stdout returns EMPTY on macOS under subprocess capture — never pipe objcopy binary output",
+      "body": "On macOS, `objcopy -O binary --only-section=X <obj> /dev/stdout` produces 0 bytes when stdout is a captured pipe (Bad file descriptor class), for both host and arm-none-eabi objcopy. Consequence discovered 2026-07-02: objdiff.py's data-section (SECT) check had been silently comparing empty-vs-empty since inception — every historical 'data sections MATCH' verdict was a no-op. Fixed by reading section bytes via the in-file ELF parser (objdiff.Elf.section_bytes / elf_data_section), now also reloc-masked. Rule: on macOS never pipe objcopy -O binary to stdout; write to a temp file or parse the ELF directly. The --legacy objdiff path intentionally retains the objcopy behavior for historical verdict reproduction."
     }
   ]
 }
