@@ -37,11 +37,21 @@ For the target `asm/<basename>.s`:
    draft bodies via `tools/decomp_harness/delegate.sh` (local model) — drafts are untrusted;
    review against the patterns DB before building (see `tools/decomp_harness/DELEGATION.md`)
 4. **Update LSF**: In `main.lsf`, change `Object asm/<basename>.o` to `Object src/<basename>.o`
-5. **Build**: Run `chiri pkg -- build --target main --no-compare` (timeout 1200000) — fix compilation errors
-6. **Compare**: Run `chiri pkg -- compare` — if exit code is 0, SHA1 matches and you're done
+   (the LSF edit is only needed for the finalization link in step 10, not for the
+   compile_one inner loop below — but make it now so it isn't forgotten)
+5. **Compile (inner loop)**: Run `tools/decomp_harness/compile_one.sh src/<basename>.c`
+   (timeout 60000). This compiles the single TU standalone — NO full ARM9 link — and
+   objdiffs the result against the committed asm reference `build/heartgold.us/asm/<basename>.o`.
+   Iterate here: fix compile errors, reshape the C, re-run. One cycle is a few seconds
+   versus ~45–120 s for a full link. (`--no-objdiff` for compile-only; `--game soulsilver`
+   for the SS variant.)
+6. **Objdiff to green**: Keep iterating step 5 until objdiff reports all functions MATCH.
+   For a byte-level view of a still-diffing function, run
+   `python3 tools/decomp_harness/objdiff.py build/heartgold.us/asm/<basename>.o \
+   build/heartgold.us/compile_one/<basename>.o --bytes <fn>`.
 
-If comparison fails (non-zero exit):
-7. **Diff**: Run `./tools/asmdiff/asmdiff.sh <address>` to see byte differences
+Iterate on step 5 until objdiff is green, then:
+7. **Diff (optional)**: For a linked-address view, run `./tools/asmdiff/asmdiff.sh <address>`.
 8. **Adjust**: Modify the C code based on the diff (see DECOMP_AGENT.md for common fixes)
 9. **Log dead ends**: when a *distinct approach* for a function fails (not every
    iteration — every distinct C shape), record it:
@@ -51,7 +61,15 @@ If comparison fails (non-zero exit):
        --approach "<C shape tried>" --outcome <regalloc_diff|branch_polarity|...> \
        --diff "<compact byte/insn diff>" --lesson "<what this rules out>"
    ```
-10. **Repeat**: Go to step 5, max 50 build-compare cycles
+10. **Repeat**: Go to step 5, max 50 compile-objdiff cycles
+11. **Finalize (unchanged final gate)**: Once objdiff is green in the inner loop, run the
+    full link once to confirm section/rodata/alignment layout: `chiri pkg -- build --target
+    main --no-compare` (timeout 1200000), then `chiri pkg -- compare`. A file is only "done"
+    when **BOTH** hold: objdiff shows all functions MATCH **and** `chiri pkg -- compare` exits
+    0 (full-ROM SHA1). objdiff alone is never sufficient — the SHA1 check catches section-level
+    differences (alignment, padding, rodata layout) that a single-TU objdiff cannot see.
+    `compile_one.sh` + objdiff is the fast inner loop; `--target main` and full `compare` are
+    reserved for this finalization.
 
 ### On Success
 

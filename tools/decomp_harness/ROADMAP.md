@@ -168,7 +168,22 @@ pattern `ipa-file-flag-effects-and-removal-nonviability`):
 
 ## Tier 1 — Iteration-speed multipliers (~1 week; do in this order — later items stack on earlier)
 
-### T1.1 compile_one.sh — single-TU fast path  `[ ]`  (2–4 h) **← everything else depends on this**
+### T1.1 compile_one.sh — single-TU fast path  `[x]`  (2–4 h) **← everything else depends on this**
+
+**Result (2026-07-02, delegated to Opus, verified by orchestrator):** shipped
+`tools/decomp_harness/compile_one.sh <src/name.c> [--game soulsilver] [--no-objdiff]`.
+Exact make flag set (common.mk:125 MWCFLAGS with WORK_DIR=".") minus DEPFLAGS; output
+isolated at `build/<game>.us/compile_one/<subpath>.o`; auto-objdiffs vs the asm reference
+when present. Flag-parity proof: **all 483 matched TUs recompiled standalone and byte-compared
+against the make-built objects — 483/483 identical** (DEPFLAGS omission included). ~1.4 s
+warm per compile vs 45–120 s full link (~30–85×). Subtlety worth keeping: the script uses
+`pwd -L` (logical CWD) because MWCC/Wine embed the shell's `$PWD` as the DWARF build dir —
+the green baseline was built through the `/Users/anton/github` symlink, so resolving symlinks
+(`pwd -P`) makes every object differ in `.debug_line`/`.debug_info` only (never in
+.text/.rodata; DWARF is stripped from the ROM). /decomp SKILL.md updated: compile_one+objdiff
+is the inner loop; `--target main` + full `compare` reserved for finalization; final gate
+unchanged (objdiff AND full-ROM SHA1). No src TU has per-file flag overrides (the MWCCVER /
+EXCCFLAGS special cases are lib/ and nitrocrypto only).
 Today every inner-loop cycle pays a full ARM9 link (~45–120 s: Wine mwldarm over 815 objects
 + make/.d/hook overhead) that objdiff never looks at. The standalone-compile recipe already
 exists at `ipa_check.sh:22-23` (full expanded flag set: `-DHEARTGOLD -DGAME_REMASTER=0
@@ -186,7 +201,24 @@ Build `tools/decomp_harness/compile_one.sh <src/name.c>`:
   `chiri pkg -- compare` reserved for finalization. **The final gate is unchanged:** both
   objdiff AND full-ROM SHA1 must pass before a file is called done.
 
-### T1.2 objdiff.py raw-section rewrite  `[ ]`  (0.5–1 day, medium risk — regression-gate it)
+### T1.2 objdiff.py raw-section rewrite  `[x]`  (0.5–1 day, medium risk — regression-gate it)
+
+**Result (2026-07-02, delegated to Opus, verified by orchestrator):** objdiff.py now parses
+the ELF directly (in-file `Elf` class, stdlib struct) and slices each function's bytes from
+its own section by symbol (st_shndx + value/size — required because MWCC emits one `.text`
+section per function), masking every relocated field from the real reloc tables
+(THM_CALL/PC24/CALL/JUMP24/ABS32/REL32/etc; zero unlisted types across all 306 pending
+objects / 20,193 functions). New ` PAD ` verdict for benign trailing `.balign 4,0` (≤3 zero
+bytes). Old path kept behind `--legacy`. Regression (`objdiff_regression.py`, 310 pairs):
+309/310 verdict-identical, 0 self-compare failures; the 1 flip is the trailing-pad class
+correctly flipping to ALLMATCH. Jump-table false-SIZE class proven dead on
+unk_0202FBCC (legacy: 5 false SIZE; new: 39/39 MATCH, exit 0). Found along the way: the
+legacy text parser under-counted size for **77% of functions** (drops literal-pool `.word`
+lines) — legacy sizes were only meaningful in symmetric compares; new sizes are authoritative.
+Orchestrator hardening: injected-corruption test (unmasked body byte → DIFF/exit 1; reloc-
+masked byte → OK) and `--summary` now returns exit 1 on any MISS/SIZE/DIFF/SECT (was always
+0). T1.3 note: data sections in cmd_summary are still compared raw with NO reloc masking —
+mask them in T1.3; `chiri pkg -- compare` remains the authoritative gate.
 Per TODO.md spec: slice raw `.text` bytes by `nm -S` symbol ranges (in-file
 `get_section_bytes()` at objdiff.py:217 already does raw extraction for cmd_summary); replace
 the `is_bl_halfword()` heuristic (lines 74–97) with real relocation masking from `readelf -r`

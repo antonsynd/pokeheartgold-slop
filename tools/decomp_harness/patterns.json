@@ -1449,6 +1449,18 @@
       "category": "matching-tricks",
       "title": "Inside 'if (x == CONST)', pass the CONST literal (not x) to a callee whose arg equals x — MWCC reuses the compare's constant register (zero arg-setup insns) and the switch dispatch temp shifts off r0",
       "body": "PlayCryEx (unk_02005D10) chatot branch: retail's case body starts 'add r1,r5,#0; bl PlayCry' with NO r0 setup — r0 still holds the =0x1B9 pool constant from 'cmp r4,r0', and since we are inside if(species==0x1B9), that IS the species value. Writing 'PlayCry(species, form)' made MWCC (a) rematerialize species from r4 ('adds r0,r4,#0', +2 bytes) and (b) allocate r0 as the jump-table dispatch temp ('ldr r0,[sp,#4]') because r0 looked dead; retail dispatches via r1. Writing 'PlayCry(0x1B9, form)' fixed BOTH in one stroke: the literal's value is live in r0, so no setup insn is emitted and the dispatch temp avoids r0. Symptom pair to recognize: an extra 'adds r0, rN' at a case-body head PLUS an r0-vs-r1 (or similar) switch-dispatch register swap in the same function. Later uses of x in the same body may still use the variable (retail: 'add r0,r4' for the next call) — only the FIRST call after the compare gets the literal. Sibling lesson from the same file: after 'mov rA,#K; str rA,[sp,#N]' (a stack call-arg), retail derives related constants FROM rA (e.g. 'sub r1,r1,#2' turning the stored 1 into -1) — read such sequences as literal args (…,-1,…,1) rather than (…,1,…) when drafting."
+    },
+    {
+      "id": "compile-one-standalone-flag-parity",
+      "category": "tooling",
+      "title": "compile_one.sh standalone MWCC compile is byte-identical to make's output (483/483 proven)",
+      "body": "tools/decomp_harness/compile_one.sh compiles a single src TU with common.mk's exact MWCFLAGS minus DEPFLAGS (-gccdep -MD) and produces byte-identical objects to the make build — proven by recompiling all 483 matched TUs and cmp'ing against build/heartgold.us/src/*.o (2026-07-02). Use it as the decomp inner loop (~1.4s warm vs 45-120s full link); .d files are never emitted so the Wine .d-corruption class is gone from the loop. CWD caveat: MWCC/Wine embed the shell's logical $PWD as the DWARF build dir — the script uses pwd -L, and to byte-reproduce a given make build you must invoke from the same (possibly symlinked) directory it used; the difference is .debug_* only and never affects .text/.rodata or the ROM. Final gate unchanged: objdiff AND chiri pkg -- compare."
+    },
+    {
+      "id": "objdiff-raw-elf-extraction-supersedes-text-parsing",
+      "category": "tooling",
+      "title": "objdiff.py raw-ELF extraction + real reloc masking supersedes objdump-text parsing (jump-table false-SIZE class dead)",
+      "body": "objdiff.py (2026-07-02 rewrite) slices function bytes directly from the ELF per-function .text sections (MWCC emits one section per function — nm-value schemes across a merged .text cannot work) and masks exactly the relocated fields from the reloc tables (THM_CALL/PC24/CALL/JUMP24/ABS32/REL32...). Consequences: (1) the jump-table false-SIZE class is gone — do not hand-wave SIZE mismatches anymore, they are real; (2) legacy text parsing under-counted size for 77% of functions by dropping literal-pool .word lines, so any pre-rewrite logged sizes/verdicts from asymmetric compares are unreliable; (3) benign trailing .balign 4,0 shows as ' PAD ' (body match), distinct from OK; (4) --summary exits 1 on any MISS/SIZE/DIFF/SECT (scriptable), --legacy keeps the old path; (5) data sections are still compared raw without reloc masking (T1.3) — chiri pkg -- compare remains authoritative."
     }
   ]
 }
