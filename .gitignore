@@ -112,3 +112,4 @@ __pycache__
 *.pyc
 scratchpad_blocks.txt
 scratchpad_*.txt
+tools/decomp-permuter/

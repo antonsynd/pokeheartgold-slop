@@ -1,0 +1,700 @@
+{
+  "schema": 1,
+  "generated": "2026-07-02",
+  "generator": "tools/decomp_harness/permuter/gen_nonmatching_registry.py",
+  "total": 74,
+  "candidates": 71,
+  "do_not_queue": 3,
+  "by_failure_class": {
+    "regalloc-tiebreak": 46,
+    "unknown": 15,
+    "control-flow-divergence": 3,
+    "header-locked-signature": 2,
+    "instruction-schedule": 2,
+    "soft-float": 1,
+    "param-copyprop-cmp": 1,
+    "arg-address-folding": 1,
+    "spill-slot-layout": 1,
+    "section-pad": 1,
+    "const-promotion": 1
+  },
+  "blocks": [
+    {
+      "file": "src/battle/battle_hp_bar.c",
+      "function": "BattleHpBar_LoadResources",
+      "line": 624,
+      "failure_class": "unknown",
+      "permuter_candidate": true,
+      "reason": "no recorded failure analysis; permuter may attempt",
+      "source": "none"
+    },
+    {
+      "file": "src/battle/battle_hp_bar.c",
+      "function": "ov12_02264F44",
+      "line": 857,
+      "failure_class": "unknown",
+      "permuter_candidate": true,
+      "reason": "no recorded failure analysis; permuter may attempt",
+      "source": "none"
+    },
+    {
+      "file": "src/battle/battle_hp_bar.c",
+      "function": "ov12_02265054",
+      "line": 952,
+      "failure_class": "unknown",
+      "permuter_candidate": true,
+      "reason": "no recorded failure analysis; permuter may attempt",
+      "source": "none"
+    },
+    {
+      "file": "src/field/overlay_2_gear_phone.c",
+      "function": "ov02_02251FDC",
+      "line": 145,
+      "failure_class": "unknown",
+      "permuter_candidate": true,
+      "reason": "no recorded failure analysis; permuter may attempt",
+      "source": "none"
+    },
+    {
+      "file": "src/frontier/overlay_80_02229EE0.c",
+      "function": "ov80_02229F04",
+      "line": 70,
+      "failure_class": "regalloc-tiebreak",
+      "permuter_candidate": true,
+      "reason": "MWCC register-allocation / scheduling tie-break; primary permuter target (equivalent C shapes flip the allocator)",
+      "source": "block_comment"
+    },
+    {
+      "file": "src/frontier/overlay_80_02229EE0.c",
+      "function": "ov80_02229F6C",
+      "line": 140,
+      "failure_class": "regalloc-tiebreak",
+      "permuter_candidate": true,
+      "reason": "MWCC register-allocation / scheduling tie-break; primary permuter target (equivalent C shapes flip the allocator)",
+      "source": "block_comment"
+    },
+    {
+      "file": "src/frontier/overlay_80_02229EE0.c",
+      "function": "ov80_0222A140",
+      "line": 462,
+      "failure_class": "regalloc-tiebreak",
+      "permuter_candidate": true,
+      "reason": "MWCC register-allocation / scheduling tie-break; primary permuter target (equivalent C shapes flip the allocator)",
+      "source": "block_comment"
+    },
+    {
+      "file": "src/frontier/overlay_80_02229EE0.c",
+      "function": "ov80_0222A480",
+      "line": 848,
+      "failure_class": "regalloc-tiebreak",
+      "permuter_candidate": true,
+      "reason": "MWCC register-allocation / scheduling tie-break; primary permuter target (equivalent C shapes flip the allocator)",
+      "source": "block_comment"
+    },
+    {
+      "file": "src/frontier/overlay_80_02229EE0.c",
+      "function": "ov80_0222A4EC",
+      "line": 926,
+      "failure_class": "regalloc-tiebreak",
+      "permuter_candidate": true,
+      "reason": "MWCC register-allocation / scheduling tie-break; primary permuter target (equivalent C shapes flip the allocator)",
+      "source": "block_comment"
+    },
+    {
+      "file": "src/frontier/overlay_80_02229EE0.c",
+      "function": "ov80_0222A52C",
+      "line": 969,
+      "failure_class": "regalloc-tiebreak",
+      "permuter_candidate": true,
+      "reason": "MWCC register-allocation / scheduling tie-break; primary permuter target (equivalent C shapes flip the allocator)",
+      "source": "block_comment"
+    },
+    {
+      "file": "src/frontier/overlay_80_02229EE0.c",
+      "function": "ov80_0222A5E0",
+      "line": 1101,
+      "failure_class": "regalloc-tiebreak",
+      "permuter_candidate": true,
+      "reason": "MWCC register-allocation / scheduling tie-break; primary permuter target (equivalent C shapes flip the allocator)",
+      "source": "block_comment"
+    },
+    {
+      "file": "src/frontier/overlay_80_02229EE0.c",
+      "function": "ov80_0222A6B8",
+      "line": 1305,
+      "failure_class": "regalloc-tiebreak",
+      "permuter_candidate": true,
+      "reason": "MWCC register-allocation / scheduling tie-break; primary permuter target (equivalent C shapes flip the allocator)",
+      "source": "block_comment"
+    },
+    {
+      "file": "src/frontier/overlay_80_02229EE0.c",
+      "function": "ov80_0222A7EC",
+      "line": 1500,
+      "failure_class": "regalloc-tiebreak",
+      "permuter_candidate": true,
+      "reason": "MWCC register-allocation / scheduling tie-break; primary permuter target (equivalent C shapes flip the allocator)",
+      "source": "block_comment"
+    },
+    {
+      "file": "src/frontier/overlay_80_02235900.c",
+      "function": "FrtCmd_179",
+      "line": 266,
+      "failure_class": "regalloc-tiebreak",
+      "permuter_candidate": true,
+      "reason": "MWCC register-allocation / scheduling tie-break; primary permuter target (equivalent C shapes flip the allocator)",
+      "source": "attempts_log"
+    },
+    {
+      "file": "src/frontier/overlay_80_02236B78.c",
+      "function": "ov80_02236BE4",
+      "line": 71,
+      "failure_class": "regalloc-tiebreak",
+      "permuter_candidate": true,
+      "reason": "MWCC register-allocation / scheduling tie-break; primary permuter target (equivalent C shapes flip the allocator)",
+      "source": "attempts_log"
+    },
+    {
+      "file": "src/frontier/overlay_80_02236B78.c",
+      "function": "ov80_02236C2C",
+      "line": 147,
+      "failure_class": "regalloc-tiebreak",
+      "permuter_candidate": true,
+      "reason": "MWCC register-allocation / scheduling tie-break; primary permuter target (equivalent C shapes flip the allocator)",
+      "source": "attempts_log"
+    },
+    {
+      "file": "src/frontier/overlay_80_02236B78.c",
+      "function": "ov80_02236C9C",
+      "line": 230,
+      "failure_class": "regalloc-tiebreak",
+      "permuter_candidate": true,
+      "reason": "MWCC register-allocation / scheduling tie-break; primary permuter target (equivalent C shapes flip the allocator)",
+      "source": "attempts_log"
+    },
+    {
+      "file": "src/frontier/overlay_80_02236B78.c",
+      "function": "ov80_02236E90",
+      "line": 548,
+      "failure_class": "regalloc-tiebreak",
+      "permuter_candidate": true,
+      "reason": "MWCC register-allocation / scheduling tie-break; primary permuter target (equivalent C shapes flip the allocator)",
+      "source": "attempts_log"
+    },
+    {
+      "file": "src/frontier/overlay_80_02236B78.c",
+      "function": "ov80_02236F24",
+      "line": 675,
+      "failure_class": "regalloc-tiebreak",
+      "permuter_candidate": true,
+      "reason": "MWCC register-allocation / scheduling tie-break; primary permuter target (equivalent C shapes flip the allocator)",
+      "source": "attempts_log"
+    },
+    {
+      "file": "src/frontier/overlay_80_02236B78.c",
+      "function": "ov80_022371B0",
+      "line": 1055,
+      "failure_class": "regalloc-tiebreak",
+      "permuter_candidate": true,
+      "reason": "MWCC register-allocation / scheduling tie-break; primary permuter target (equivalent C shapes flip the allocator)",
+      "source": "attempts_log"
+    },
+    {
+      "file": "src/frontier/overlay_80_02236B78.c",
+      "function": "ov80_02237264",
+      "line": 1187,
+      "failure_class": "regalloc-tiebreak",
+      "permuter_candidate": true,
+      "reason": "MWCC register-allocation / scheduling tie-break; primary permuter target (equivalent C shapes flip the allocator)",
+      "source": "attempts_log"
+    },
+    {
+      "file": "src/frontier/overlay_80_022372D8.c",
+      "function": "ov80_02237334",
+      "line": 70,
+      "failure_class": "control-flow-divergence",
+      "permuter_candidate": true,
+      "reason": "draft C diverges structurally (stack frame / control flow); permuter needs a compiling near-match first, low confidence",
+      "source": "attempts_log"
+    },
+    {
+      "file": "src/frontier/overlay_80_022372D8.c",
+      "function": "ov80_02237448",
+      "line": 309,
+      "failure_class": "control-flow-divergence",
+      "permuter_candidate": true,
+      "reason": "draft C diverges structurally (stack frame / control flow); permuter needs a compiling near-match first, low confidence",
+      "source": "attempts_log"
+    },
+    {
+      "file": "src/frontier/overlay_80_022372D8.c",
+      "function": "ov80_022375D0",
+      "line": 635,
+      "failure_class": "control-flow-divergence",
+      "permuter_candidate": true,
+      "reason": "draft C diverges structurally (stack frame / control flow); permuter needs a compiling near-match first, low confidence",
+      "source": "attempts_log"
+    },
+    {
+      "file": "src/overlay_01_021E7FDC.c",
+      "function": "UnkFieldSpriteRenderer_ov01_021E7FDC_Init",
+      "line": 47,
+      "failure_class": "regalloc-tiebreak",
+      "permuter_candidate": true,
+      "reason": "MWCC register-allocation / scheduling tie-break; primary permuter target (equivalent C shapes flip the allocator)",
+      "source": "attempts_log"
+    },
+    {
+      "file": "src/overlay_01_021E7FDC.c",
+      "function": "ov01_021E81F0",
+      "line": 306,
+      "failure_class": "regalloc-tiebreak",
+      "permuter_candidate": true,
+      "reason": "MWCC register-allocation / scheduling tie-break; primary permuter target (equivalent C shapes flip the allocator)",
+      "source": "attempts_log"
+    },
+    {
+      "file": "src/overlay_01_021E7FDC.c",
+      "function": "ov01_021E8298",
+      "line": 423,
+      "failure_class": "regalloc-tiebreak",
+      "permuter_candidate": true,
+      "reason": "MWCC register-allocation / scheduling tie-break; primary permuter target (equivalent C shapes flip the allocator)",
+      "source": "attempts_log"
+    },
+    {
+      "file": "src/overlay_01_021FB4C0.c",
+      "function": "ov01_021FB55C",
+      "line": 54,
+      "failure_class": "unknown",
+      "permuter_candidate": true,
+      "reason": "no recorded failure analysis; permuter may attempt",
+      "source": "none"
+    },
+    {
+      "file": "src/overlay_01_021FE590.c",
+      "function": "ov01_021FE70C",
+      "line": 166,
+      "failure_class": "regalloc-tiebreak",
+      "permuter_candidate": true,
+      "reason": "MWCC register-allocation / scheduling tie-break; primary permuter target (equivalent C shapes flip the allocator)",
+      "source": "attempts_log"
+    },
+    {
+      "file": "src/overlay_01_02200858.c",
+      "function": "ov01_02200A08",
+      "line": 178,
+      "failure_class": "regalloc-tiebreak",
+      "permuter_candidate": true,
+      "reason": "MWCC register-allocation / scheduling tie-break; primary permuter target (equivalent C shapes flip the allocator)",
+      "source": "attempts_log"
+    },
+    {
+      "file": "src/overlay_02_02248728.c",
+      "function": "ov02_022508B4",
+      "line": 9042,
+      "failure_class": "header-locked-signature",
+      "permuter_candidate": false,
+      "reason": "frozen public-header signature (e.g. BOOL/int return vs void decl); resolve with split-header / local-prototype discipline (blocker ipa-shared-headers), not a codegen search",
+      "source": "attempts_log"
+    },
+    {
+      "file": "src/overlay_58.c",
+      "function": "ov58_022379C0",
+      "line": 139,
+      "failure_class": "soft-float",
+      "permuter_candidate": true,
+      "reason": "soft-float helper call sequence differs; permuter may reorder the C expression but low confidence",
+      "source": "attempts_log"
+    },
+    {
+      "file": "src/unk_0200B150.c",
+      "function": "OamManager_Create",
+      "line": 34,
+      "failure_class": "param-copyprop-cmp",
+      "permuter_candidate": false,
+      "reason": "provably unreachable per blocker param-copyprop-cmp: MWCC copy-props param copies back to r0; the 'adds rN,r0,#0; cmp' entry idiom cannot arise from pure C",
+      "source": "blocker:param-copyprop-cmp"
+    },
+    {
+      "file": "src/unk_02013534.c",
+      "function": "sub_02013728",
+      "line": 206,
+      "failure_class": "regalloc-tiebreak",
+      "permuter_candidate": true,
+      "reason": "MWCC register-allocation / scheduling tie-break; primary permuter target (equivalent C shapes flip the allocator)",
+      "source": "attempts_log"
+    },
+    {
+      "file": "src/unk_02013534.c",
+      "function": "sub_020138E0",
+      "line": 373,
+      "failure_class": "header-locked-signature",
+      "permuter_candidate": false,
+      "reason": "frozen public-header signature (e.g. BOOL/int return vs void decl); resolve with split-header / local-prototype discipline (blocker ipa-shared-headers), not a codegen search",
+      "source": "attempts_log"
+    },
+    {
+      "file": "src/unk_02013534.c",
+      "function": "sub_02013A50",
+      "line": 484,
+      "failure_class": "regalloc-tiebreak",
+      "permuter_candidate": true,
+      "reason": "MWCC register-allocation / scheduling tie-break; primary permuter target (equivalent C shapes flip the allocator)",
+      "source": "attempts_log"
+    },
+    {
+      "file": "src/unk_02013534.c",
+      "function": "sub_02013AD0",
+      "line": 577,
+      "failure_class": "regalloc-tiebreak",
+      "permuter_candidate": true,
+      "reason": "MWCC register-allocation / scheduling tie-break; primary permuter target (equivalent C shapes flip the allocator)",
+      "source": "attempts_log"
+    },
+    {
+      "file": "src/unk_02013534.c",
+      "function": "sub_02013CD0",
+      "line": 731,
+      "failure_class": "regalloc-tiebreak",
+      "permuter_candidate": true,
+      "reason": "MWCC register-allocation / scheduling tie-break; primary permuter target (equivalent C shapes flip the allocator)",
+      "source": "attempts_log"
+    },
+    {
+      "file": "src/unk_02014A08.c",
+      "function": "sub_02014CBC",
+      "line": 130,
+      "failure_class": "instruction-schedule",
+      "permuter_candidate": true,
+      "reason": "instruction scheduling / load-delay-slot fill differs; primary permuter target (statement reorder / temp introduction)",
+      "source": "attempts_log"
+    },
+    {
+      "file": "src/unk_0202068C.c",
+      "function": "sub_02020780",
+      "line": 82,
+      "failure_class": "regalloc-tiebreak",
+      "permuter_candidate": true,
+      "reason": "MWCC register-allocation / scheduling tie-break; primary permuter target (equivalent C shapes flip the allocator)",
+      "source": "attempts_log"
+    },
+    {
+      "file": "src/unk_0202B614.c",
+      "function": "sub_0202BCAC",
+      "line": 434,
+      "failure_class": "regalloc-tiebreak",
+      "permuter_candidate": true,
+      "reason": "MWCC register-allocation / scheduling tie-break; primary permuter target (equivalent C shapes flip the allocator)",
+      "source": "attempts_log"
+    },
+    {
+      "file": "src/unk_0202B614.c",
+      "function": "sub_0202BF80",
+      "line": 672,
+      "failure_class": "regalloc-tiebreak",
+      "permuter_candidate": true,
+      "reason": "MWCC register-allocation / scheduling tie-break; primary permuter target (equivalent C shapes flip the allocator)",
+      "source": "attempts_log"
+    },
+    {
+      "file": "src/unk_0202C034.c",
+      "function": "sub_0202C2F8",
+      "line": 193,
+      "failure_class": "regalloc-tiebreak",
+      "permuter_candidate": true,
+      "reason": "MWCC register-allocation / scheduling tie-break; primary permuter target (equivalent C shapes flip the allocator)",
+      "source": "attempts_log"
+    },
+    {
+      "file": "src/unk_0202C034.c",
+      "function": "sub_0202C318",
+      "line": 228,
+      "failure_class": "regalloc-tiebreak",
+      "permuter_candidate": true,
+      "reason": "MWCC register-allocation / scheduling tie-break; primary permuter target (equivalent C shapes flip the allocator)",
+      "source": "attempts_log"
+    },
+    {
+      "file": "src/unk_0202C034.c",
+      "function": "sub_0202C338",
+      "line": 263,
+      "failure_class": "arg-address-folding",
+      "permuter_candidate": true,
+      "reason": "MWCC folds an argument address differently; codegen-shape search candidate",
+      "source": "attempts_log"
+    },
+    {
+      "file": "src/unk_0202C034.c",
+      "function": "sub_0202C46C",
+      "line": 384,
+      "failure_class": "regalloc-tiebreak",
+      "permuter_candidate": true,
+      "reason": "MWCC register-allocation / scheduling tie-break; primary permuter target (equivalent C shapes flip the allocator)",
+      "source": "attempts_log"
+    },
+    {
+      "file": "src/unk_0202C034.c",
+      "function": "sub_0202C4F0",
+      "line": 453,
+      "failure_class": "instruction-schedule",
+      "permuter_candidate": true,
+      "reason": "instruction scheduling / load-delay-slot fill differs; primary permuter target (statement reorder / temp introduction)",
+      "source": "attempts_log"
+    },
+    {
+      "file": "src/unk_0202D230.c",
+      "function": "sub_0202D3DC",
+      "line": 172,
+      "failure_class": "unknown",
+      "permuter_candidate": true,
+      "reason": "no recorded failure analysis; permuter may attempt",
+      "source": "none"
+    },
+    {
+      "file": "src/unk_0202D230.c",
+      "function": "sub_0202D564",
+      "line": 304,
+      "failure_class": "unknown",
+      "permuter_candidate": true,
+      "reason": "no recorded failure analysis; permuter may attempt",
+      "source": "none"
+    },
+    {
+      "file": "src/unk_0202D230.c",
+      "function": "sub_0202D5DC",
+      "line": 355,
+      "failure_class": "unknown",
+      "permuter_candidate": true,
+      "reason": "no recorded failure analysis; permuter may attempt",
+      "source": "none"
+    },
+    {
+      "file": "src/unk_0202D230.c",
+      "function": "sub_0202D678",
+      "line": 456,
+      "failure_class": "unknown",
+      "permuter_candidate": true,
+      "reason": "no recorded failure analysis; permuter may attempt",
+      "source": "none"
+    },
+    {
+      "file": "src/unk_0202D230.c",
+      "function": "sub_0202D720",
+      "line": 546,
+      "failure_class": "unknown",
+      "permuter_candidate": true,
+      "reason": "no recorded failure analysis; permuter may attempt",
+      "source": "none"
+    },
+    {
+      "file": "src/unk_0202D230.c",
+      "function": "sub_0202D804",
+      "line": 677,
+      "failure_class": "unknown",
+      "permuter_candidate": true,
+      "reason": "no recorded failure analysis; permuter may attempt",
+      "source": "none"
+    },
+    {
+      "file": "src/unk_0202FBCC.c",
+      "function": "sub_0202FF08",
+      "line": 260,
+      "failure_class": "spill-slot-layout",
+      "permuter_candidate": true,
+      "reason": "spill-slot / stack-frame layout differs; permuter may find it via temp-var and statement-order mutations",
+      "source": "attempts_log"
+    },
+    {
+      "file": "src/unk_0202FBCC.c",
+      "function": "sub_0203018C",
+      "line": 700,
+      "failure_class": "regalloc-tiebreak",
+      "permuter_candidate": true,
+      "reason": "MWCC register-allocation / scheduling tie-break; primary permuter target (equivalent C shapes flip the allocator)",
+      "source": "attempts_log"
+    },
+    {
+      "file": "src/unk_0202FBCC.c",
+      "function": "sub_020302A4",
+      "line": 872,
+      "failure_class": "regalloc-tiebreak",
+      "permuter_candidate": true,
+      "reason": "MWCC register-allocation / scheduling tie-break; primary permuter target (equivalent C shapes flip the allocator)",
+      "source": "attempts_log"
+    },
+    {
+      "file": "src/unk_0202FBCC.c",
+      "function": "sub_020304F0",
+      "line": 1212,
+      "failure_class": "regalloc-tiebreak",
+      "permuter_candidate": true,
+      "reason": "MWCC register-allocation / scheduling tie-break; primary permuter target (equivalent C shapes flip the allocator)",
+      "source": "attempts_log"
+    },
+    {
+      "file": "src/unk_02034354.c",
+      "function": "sub_02034638",
+      "line": 184,
+      "failure_class": "unknown",
+      "permuter_candidate": true,
+      "reason": "no recorded failure analysis; permuter may attempt",
+      "source": "none"
+    },
+    {
+      "file": "src/unk_0203DB6C.c",
+      "function": "GetInteractedBackgroundEventScript",
+      "line": 96,
+      "failure_class": "regalloc-tiebreak",
+      "permuter_candidate": true,
+      "reason": "MWCC register-allocation / scheduling tie-break; primary permuter target (equivalent C shapes flip the allocator)",
+      "source": "attempts_log"
+    },
+    {
+      "file": "src/unk_02068FC8.c",
+      "function": "sub_02068FC8",
+      "line": 87,
+      "failure_class": "regalloc-tiebreak",
+      "permuter_candidate": true,
+      "reason": "MWCC register-allocation / scheduling tie-break; primary permuter target (equivalent C shapes flip the allocator)",
+      "source": "attempts_log"
+    },
+    {
+      "file": "src/unk_02074E5C.c",
+      "function": "sub_02074F9C",
+      "line": 200,
+      "failure_class": "regalloc-tiebreak",
+      "permuter_candidate": true,
+      "reason": "MWCC register-allocation / scheduling tie-break; primary permuter target (equivalent C shapes flip the allocator)",
+      "source": "block_comment"
+    },
+    {
+      "file": "src/unk_02074E5C.c",
+      "function": "sub_02075028",
+      "line": 312,
+      "failure_class": "regalloc-tiebreak",
+      "permuter_candidate": true,
+      "reason": "MWCC register-allocation / scheduling tie-break; primary permuter target (equivalent C shapes flip the allocator)",
+      "source": "block_comment"
+    },
+    {
+      "file": "src/unk_02074E5C.c",
+      "function": "sub_02075074",
+      "line": 379,
+      "failure_class": "regalloc-tiebreak",
+      "permuter_candidate": true,
+      "reason": "MWCC register-allocation / scheduling tie-break; primary permuter target (equivalent C shapes flip the allocator)",
+      "source": "block_comment"
+    },
+    {
+      "file": "src/unk_02074E5C.c",
+      "function": "sub_02075350",
+      "line": 564,
+      "failure_class": "regalloc-tiebreak",
+      "permuter_candidate": true,
+      "reason": "MWCC register-allocation / scheduling tie-break; primary permuter target (equivalent C shapes flip the allocator)",
+      "source": "block_comment"
+    },
+    {
+      "file": "src/unk_02074E5C.c",
+      "function": "sub_020753D4",
+      "line": 633,
+      "failure_class": "regalloc-tiebreak",
+      "permuter_candidate": true,
+      "reason": "MWCC register-allocation / scheduling tie-break; primary permuter target (equivalent C shapes flip the allocator)",
+      "source": "block_comment"
+    },
+    {
+      "file": "src/unk_02074E5C.c",
+      "function": "sub_02075554",
+      "line": 768,
+      "failure_class": "regalloc-tiebreak",
+      "permuter_candidate": true,
+      "reason": "MWCC register-allocation / scheduling tie-break; primary permuter target (equivalent C shapes flip the allocator)",
+      "source": "block_comment"
+    },
+    {
+      "file": "src/unk_020773AC.c",
+      "function": "sub_02077604",
+      "line": 207,
+      "failure_class": "regalloc-tiebreak",
+      "permuter_candidate": true,
+      "reason": "MWCC register-allocation / scheduling tie-break; primary permuter target (equivalent C shapes flip the allocator)",
+      "source": "attempts_log"
+    },
+    {
+      "file": "src/unk_020773AC.c",
+      "function": "sub_02077664",
+      "line": 261,
+      "failure_class": "section-pad",
+      "permuter_candidate": true,
+      "reason": "section / literal-pool / trailing-pad layout artifact; permuter may reshape it, low confidence",
+      "source": "attempts_log"
+    },
+    {
+      "file": "src/unk_02087284.c",
+      "function": "sub_02087284",
+      "line": 91,
+      "failure_class": "unknown",
+      "permuter_candidate": true,
+      "reason": "no recorded failure analysis; permuter may attempt",
+      "source": "none"
+    },
+    {
+      "file": "src/unk_02087284.c",
+      "function": "sub_020872DC",
+      "line": 160,
+      "failure_class": "unknown",
+      "permuter_candidate": true,
+      "reason": "no recorded failure analysis; permuter may attempt",
+      "source": "none"
+    },
+    {
+      "file": "src/unk_02087284.c",
+      "function": "sub_020873D4",
+      "line": 270,
+      "failure_class": "unknown",
+      "permuter_candidate": true,
+      "reason": "no recorded failure analysis; permuter may attempt",
+      "source": "none"
+    },
+    {
+      "file": "src/unk_0208FB64.c",
+      "function": "sub_0208FBF0",
+      "line": 189,
+      "failure_class": "const-promotion",
+      "permuter_candidate": true,
+      "reason": "MWCC constant/offset-promotion heuristic not source-controllable; permuter constant-mutation pass may hit it",
+      "source": "attempts_log"
+    },
+    {
+      "file": "src/unk_02091880.c",
+      "function": "sub_020918D4",
+      "line": 71,
+      "failure_class": "regalloc-tiebreak",
+      "permuter_candidate": true,
+      "reason": "MWCC register-allocation / scheduling tie-break; primary permuter target (equivalent C shapes flip the allocator)",
+      "source": "attempts_log"
+    },
+    {
+      "file": "src/unk_02091880.c",
+      "function": "ECMenuBuild_TrendySayings",
+      "line": 149,
+      "failure_class": "regalloc-tiebreak",
+      "permuter_candidate": true,
+      "reason": "MWCC register-allocation / scheduling tie-break; primary permuter target (equivalent C shapes flip the allocator)",
+      "source": "attempts_log"
+    }
+  ],
+  "_notes": {
+    "reference_for_candidate": "For a permuter run, the reference object is build/<game>/asm/<name>.o when the file is pending, or build/<game>/src/<name>.o (last green build) for a NONMATCHING function inside an already-matched TU \u2014 score_candidate.py picks this automatically.",
+    "permuter_candidate_false_means": "provably not a codegen-search problem (blocker-gated copy-prop entry idiom, or a frozen-header signature lock resolved by split-header discipline).",
+    "known_blocker_ids": [
+      "ipa-shared-headers",
+      "ipa-cse-literal-pool",
+      "param-copyprop-cmp",
+      "objdiff-false-positives",
+      "ext-data-section-split"
+    ]
+  }
+}

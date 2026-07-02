@@ -1,0 +1,32 @@
+# permuter_settings.toml — canonical decomp-permuter settings for pokeheartgold
+# (ROADMAP T1.4). emit_job.sh writes a per-job copy of the [job-relevant] keys into
+# each <job_dir>/settings.toml; this file is the source of truth for them.
+#
+# compiler_type   selects decomp-permuter's randomization-pass weights. MWCC-ARM
+#                 behaves like the "mwcc" profile (see decomp-permuter
+#                 default_weights.toml [mwcc]); this matches the SonicRushAdventure
+#                 precedent (also MWCC / ARM).
+# objdump_command the scorer disassembles the WHOLE candidate object and diffs it
+#                 against target.o. Our target.o is the full retail-matching TU and
+#                 every candidate is a full-TU compile with identical siblings, so
+#                 only the target function contributes to the score. devkitARM's
+#                 arm-none-eabi-objdump is the ARM ELF disassembler.
+# func_name       set per-job by emit_job.sh to the promoted target function.
+#
+# NOTE: compile.sh (compile_wrapper.sh) is NOT a plain single-file compile. It
+# splices the permuter's candidate function back into the real seed TU and compiles
+# the full unit, so MWCC -ipa file codegen stays faithful to the actual ROM build.
+# base.c is parse-only and never fed to MWCC.
+
+compiler_type = "mwcc"
+objdump_command = "arm-none-eabi-objdump -drz"
+
+# func_name is filled in per job, e.g.:
+# func_name = "sub_02014CBC"
+
+# Optional: bias the search toward the passes that fix codegen tie-breaks. These
+# are decomp-permuter randomization-pass weights (see --help=randomization-passes).
+# Left at the mwcc defaults for the pilot; uncomment to tune per campaign.
+# [weight_overrides]
+# perm_temp_for_expr = 100
+# perm_reorder_stmts = 20

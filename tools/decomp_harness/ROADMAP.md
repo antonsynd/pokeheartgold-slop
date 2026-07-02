@@ -168,6 +168,13 @@ pattern `ipa-file-flag-effects-and-removal-nonviability`):
 
 ## Tier 1 — Iteration-speed multipliers (~1 week; do in this order — later items stack on earlier)
 
+> **TIER 1 COMPLETE (2026-07-02).** All six items landed: T1.1+T1.2 in 55da79a95,
+> T1.3+T1.5+T1.6 in 4256b94aa, T1.4 in this commit. The inner loop is now
+> compile_one.sh + objdiff (~1.4 s vs 45–120 s), NONMATCHING fallback is one command,
+> matched TUs are drift-guarded (verify_matched.sh 483/483), and 71 NONMATCHING blocks
+> are queued-ready for the permuter. Open follow-ups: T1.6 hook wiring (pre-commit +
+> nightly) awaits user approval; overnight permuter queue on the regalloc-tiebreak class.
+
 ### T1.1 compile_one.sh — single-TU fast path  `[x]`  (2–4 h) **← everything else depends on this**
 
 **Result (2026-07-02, delegated to Opus, verified by orchestrator):** shipped
@@ -253,7 +260,35 @@ known pad flip, 0 self-compare fails).
 - Auto-feed the label into attempts_log entries (replace free-text diff_signature); this is
   the permuter's fitness function and candidate filter.
 
-### T1.4 decomp-permuter integration  `[ ]`  (1–2 days, after T1.1/T1.3)
+### T1.4 decomp-permuter integration  `[x]`  (1–2 days, after T1.1/T1.3)
+
+**Result (2026-07-02, delegated to Opus, verified by orchestrator):** integration
+architecture is **option (a)** — decomp-permuter drives the search with its native
+whole-object objdump scorer; our `score_candidate.py` (via `gate_win.py`) is the final
+sibling-guard gate at win time (inner loop stays fast; the guard stays non-negotiable).
+IPA-faithful by construction: per-job `compile.sh` splices the candidate's target function
+back into the real full TU (`seed_full.c`, target's NONMATCHING C promoted, siblings on asm)
+and compiles the whole unit with the make-equivalent flags; `target.o` is the full
+retail-matching TU so siblings cancel in the whole-object diff and score 0 ⟺ target matches
+retail. Shipped under `tools/decomp_harness/permuter/`: `score_candidate.py` (fitness =
+target `diff_halfwords`; exit 5 on any baseline-matching sibling regression), `emit_job.sh`,
+`make_seed.py`/`make_base.py`/`fn_extract.py`/`mwcc_compile.py`, `gate_win.py`,
+`run_queue.sh` (serial overnight driver — one Wine/MWCC at a time), `permuter_settings.toml`
+(`compiler_type="mwcc"`, `arm-none-eabi-objdump -drz`), README with full contract.
+`nonmatching_registry.json`: 74 blocks classified, **71 permuter candidates**, 3 do_not_queue
+(provably-not-a-search classes). Upstream clone pinned at 70d74f7 (gitignored,
+`.venv` with pynacl/toml/Levenshtein; user-approved) — **zero local patches needed**.
+**Pilot (bounded 40 min, unk_02014A08 `sub_02014CBC`, instruction-schedule class): 2264
+iterations, base 485 → best 435 (one accepted improvement: a local's `s16`→`unsigned int`);
+no full match, harness proven end-to-end.** `gate_win.py` on the pilot's best output:
+full-TU recompile green, target `diff_halfwords=45/86`, all 18 guarded siblings
+byte-identical, exit 0. Known wart (upstream, non-blocking): the randomizer typemap only
+registers *defined* functions, so passes touching a call to a declared-only sibling throw
+`KeyError` — 5 failures in 2264 iterations, counted and skipped by the permuter; no patch
+needed for queue use. Next use: point `run_queue.sh` at the 46 regalloc-tiebreak + 2
+instruction-schedule candidates overnight; a gated win still requires the standard finalize
+(objdiff AND full `chiri pkg -- compare`) before its inline asm is deleted.
+
 **Verified:** simonlindholm/decomp-permuter supports ARM32 (PR #127, merged 2022-06-17,
 uses arm-none-eabi-objdump); MWCC-ARM wrapper precedent: SonicRushAdventure-Decomp's
 permuter_settings.toml (`compiler_type = "mwcc"`). Pure Python — fine on macOS ARM64.
