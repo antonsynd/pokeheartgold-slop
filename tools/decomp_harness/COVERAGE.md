@@ -1,13 +1,13 @@
 # Decomp Coverage Ledger
 
-*Generated 2026-07-02T05:33:21Z by `coverage_ledger.py` — do not hand-edit; regenerate after each decomp.*
+*Generated 2026-07-02T06:15:46Z by `coverage_ledger.py` — do not hand-edit; regenerate after each decomp.*
 
-Tracked functions (files with retained asm): **19930** — matched 1673, pending 17214, plus 60 matched-but-blocked inside failed files.
+Tracked functions (files with retained asm): **19930** — matched 1723, pending 17214, plus 20 matched-but-blocked inside failed files.
 
 | status | files | functions | insn lines | ~text bytes |
 |---|---|---|---|---|
-| matched | 99 | 1673 | 46434 | 102706 |
-| blocked | 55 | 1043 | 33777 | 74524 |
+| matched | 100 | 1723 | 48018 | 106548 |
+| blocked | 54 | 993 | 32193 | 70682 |
 | pending | 135 | 17214 | 845249 | 1893758 |
 | upstream | 383 | 0 | 0 | 0 |
 
@@ -17,18 +17,17 @@ Tracked functions (files with retained asm): **19930** — matched 1673, pending
 |---|---|---|---|
 | param-copyprop-cmp | 0 | 6 | MWCC copy-propagates parameter copies: 'adds r4, r0, #0; cmp r4, #N' at function entry cannot be produced from pure C (MWCC substitutes back to r0; the shape only arises for saved return values after a bl). Affected functions need the NONMATCHING inline-asm fallback — routine, not a wall (proven: unk_0200B150 re-landed 2026-07-02 via ROADMAP T0.2, full ROM SHA1 OK). Entry-idiom scan (asmscan) finds the remaining sites in pending files: overlay_102 (6), unk_02077678 (4), overlay_96 (3), overlay_48 (2), overlay_112, unk_02004A44, unk_020517A4, unk_02058034 (1 each). Gated files carry the affected function names in triage_report copyprop_funcs. |
 | ext-data-section-split | 0 | 3 | Data-only files exporting multiple EXTERNAL (.public) const arrays: MWCC (all modes — with/without -ipa file, pragma or not; T0.3 experiments 2026-07-02 disproved the earlier mwldarm-reorder theory) emits file-scope external consts SIZE-ASCENDING with a deterministic equal-size scramble, so a retail layout that is not size-ascending cannot come from one TU in source order. objdiff cannot see section order — verify these files ONLY with chiri pkg -- compare. |
-| ipa-shared-headers | 1 | 0 | MWCC -ipa file: changing a signature in a shared header cascades codegen changes into every already-matched caller in other compilation units. Affects only files that must ADD or CHANGE declarations in a frozen header — call-only consumers of the exported APIs are NOT gated (proven by patterns 'ipa-blocked-files-can-call-sound-fns-without-cascade' and 'false-ipa-gate-shared-imports'; the old import-based gate count of ~97 was noise). |
+| ipa-shared-headers | 0 | 0 | MWCC -ipa file: changing a signature in a shared header cascades codegen changes into every already-matched caller in other compilation units. Affects only files that must ADD or CHANGE declarations in a frozen header — call-only consumers of the exported APIs are NOT gated (proven by patterns 'ipa-blocked-files-can-call-sound-fns-without-cascade' and 'false-ipa-gate-shared-imports'). Diagnostic before blaming IPA for any mismatch: recompile the TU without '-ipa file' and objdiff (pattern ipa-file-flag-effects-and-removal-nonviability). |
 | ipa-cse-literal-pool | 1 | 0 | MWCC -ipa file caches repeated literal-pool addresses/large offsets in callee-saved registers across calls where retail reloads them (or vice versa). A codegen-shape problem, not a header problem — split from ipa-shared-headers 2026-07-01, where this file's ubiquitous exports (BeginNormalPaletteFade family, imported by ~84 pending .inc files) badly inflated the gate count. |
 | objdiff-false-positives | 0 | 0 | RESOLVED. objdiff.py had a critical bug: the byte extraction regex did not match MWCC's ARM Thumb objdump format (packed hex like 'b418' vs expected space-separated 'b4 18'). It extracted 0 bytes for every function, so 0==0 always reported MATCH. 11 decomps accepted via objdiff were not actually byte-matching. Fixed; all 11 non-matching decomps reverted to asm. 2 decomps that truly match (unk_0202DB34, battle_arcade_game_board_data) kept. |
 
-## Blocked files (55)
+## Blocked files (54)
 
 | file | functions | insn lines | data-only | notes |
 |---|---|---|---|---|
 | asm/unk_02014DA0.s | 63 | 1189 |  |  SPL particle-emitter display (63 funcs); 50/63 matched WIP; remaining 13 incl EBC(41), sub_02015550(+24), sub_02015460 h |
 | asm/overlay_01_021F1348.s | 61 | 831 |  |  Camera/3D-effect cluster HEAD (GF3dGfxRawResMan resource manager). 61 funcs, 2 manager struct families. Drafted via 3 pa |
 | asm/overlay_01_02204004.s | 51 | 956 |  |   |
-| asm/unk_02005D10.s | 50 | 1584 |  | ipa-shared-headers 40/50 matched; IPA header dependency: changing return types (void→BOOL) in shared headers breaks already-matched unk_02004A44.c. 40/50  |
 | asm/overlay_02_02245B80.s | 41 | 1635 |  |   |
 | asm/unk_02015DD8.s | 40 | 679 |  |  Tractable but large (40 fns NNS G2D sprite manager + GE-register renderer). Fully decoded in attempts_log (struct layout |
 | asm/unk_02031B0C.s | 39 | 1300 |  |  ApricornBox save module (39 funcs); 16/39 matched WIP. KEY: solved the non-self-contained-header include-order issue (cl |
@@ -81,13 +80,14 @@ Tracked functions (files with retained asm): **19930** — matched 1673, pending
 | asm/middleware.s | 0 | 0 | yes |  Data-only: 7 NUL-terminated SDK middleware version strings in a custom .version section (single ordered section, each .b |
 | asm/overlay_12_battle_command.s | 0 | 0 | yes |   |
 
-## Matched files (asm retained) (99)
+## Matched files (asm retained) (100)
 
 | file | functions | insn lines | data-only | notes |
 |---|---|---|---|---|
 | asm/overlay_02_02248728.s | 364 | 14752 |  | retained_asm |
 | asm/unk_02030A98.s | 71 | 1383 |  | harness |
 | asm/unk_0202B614.s | 61 | 1125 |  | retained_asm |
+| asm/unk_02005D10.s | 50 | 1584 |  | harness |
 | asm/unk_020689C8.s | 48 | 429 |  | harness |
 | asm/unk_02074E5C.s | 46 | 849 |  | retained_asm |
 | asm/unk_02013534.s | 40 | 1211 |  | retained_asm |

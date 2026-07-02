@@ -116,13 +116,30 @@ force_active` does not survive to the linker. Application to the remaining gated
 - Verification for data files is `chiri pkg -- compare` ONLY (objdiff --summary cannot see
   cross-section reordering).
 
-### T0.4 Decompile unk_02005D10.s with split-header discipline  `[ ]`  (1–2 days)
+### T0.4 Decompile unk_02005D10.s with split-header discipline  `[x]`  (1–2 days)
 50 functions / 1,933 lines, mostly small sound wrappers. The 2026-06-10 blocked attempt
 edited sound.h directly — that predates the now-standard split-header pattern (13+
 *_internal.h precedents in-tree). Plan: defining .c uses **local prototypes with
 codegen-correct types only**; sound.h stays frozen for its ~108 matched consumers.
 Gate check: objdiff the first 5 functions vs the saved asm .o before committing to the rest.
 Retires the biggest registered blocker.
+
+**Result (2026-07-02): DONE — 50/50 in pure C (zero NONMATCHING), full ROM SHA1 OK, all
+four frozen sound headers untouched.** Pipeline: asm-analyzer pre-report → decomp-drafter
+first pass (40/50 on first build) → 5 fix rounds (all 5 gate functions matched
+immediately). The `ipa-shared-headers` blocker is retired (`files_blocked: []`) — the
+split-header/local-prototype discipline dissolves it completely. Notable levers: literal
+`-1` args derived from a stored `1` (drafter misread), reverse-decl stack-slot ordering ×2,
+`(u32)` casts for `bhi` range checks ×2, stack-param reload + separate local for
+`sub_02006C14`, unrolled byte-zeroing + task temp, and new pattern
+`const-arg-reuses-compare-register` (PlayCryEx chatot body passes `PlayCry(0x1B9, form)`).
+
+**Known, deliberate header debt (do not "fix" casually):** the four frozen headers still
+declare `void`/narrow signatures for 8+ of this file's exports (e.g. `void PlayBGM(u16)` vs
+the true `BOOL`). Reconciling them is the exact edit that cascaded on 2026-06-10. With the
+T0.5 no-ipa diagnostic, a controlled reconciliation experiment (edit headers → full clean
+`compare`) is now cheap to attempt in a future session — file under T1.6/T2.4 hygiene. Until
+then the defining `.c`'s local prototypes are the source of truth for these signatures.
 
 ### T0.5 30-minute disproof experiment  `[x]`
 Recompile one already-matched code TU without `-ipa file`, `cmp` the .o. Expected: mismatch —

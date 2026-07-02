@@ -746,17 +746,17 @@
    "attempts": 2,
    "result": "matched",
    "note": "compare-verified (full ROM SHA1 OK). ROADMAP T0.3: data-only file, 14 exported const objects. Landed as TWO TUs (battle_arcade_game_board_data.c + data2.c, both in main.lsf OVY_84) because MWCC emits file-scope external consts SIZE-ASCENDING (not the linker \u2014 all three planned experiments disproved the mwldarm-reorder theory) and the retail layout is only piecewise size-ascending. #pragma section PARENT begin/end merges each TU's consts into one packed .rodata (odd-address packing preserved); equal-size ties fixed empirically (BgTemplate triple defined [964,980,948] to emit [948,964,980]; the 16-byte 924/913 pair defined swapped). The asm's '_0223FA20: .space 0x20' bss is split-time fiction (OVT bss_size=0x20 = consumer's 2-byte bss 32-aligned; mwldarm dead-strips it from the asm .o too) \u2014 NOT defined in C. Patterns: ext-const-split-tu-size-ascending-recipe, asm-bss-space-may-be-ovt-alignment-fiction."
+  },
+  {
+   "file": "asm/unk_02005D10.s",
+   "lines": 1497,
+   "functions": 50,
+   "attempts": 2,
+   "result": "matched",
+   "note": "compare-verified (full ROM SHA1 OK). ROADMAP T0.4: GF sound wrapper layer (BGM/SE/cry/fanfare over GF_SdatGetAttrPtr state). ALL 50 in pure C, zero NONMATCHING \u2014 the ipa-shared-headers blocker dissolves under split-header discipline: sound.h/unk_02005D10.h/sound_chatot.h/sound_02004A44.h untouched; every sound callee AND every export has local prototypes with codegen-correct types (many frozen decls are void where the asm returns BOOL \u2014 ABI-identical, linker indifferent). Pipeline: asm-analyzer report -> decomp-drafter first pass (40/50 first build) -> 5 fix rounds. Key fixes: sub_02006C14 arg1 is -1 not 1 (retail derives it from the stored 1 via sub #2); GF_GetPlayerNoBySeq local proto takes int (u16 proto inserted lsl/lsr at PlaySE's int arg); reverse-decl stack slots (sub_02006920 six attr ptrs before p35; PlayCryEx panHalf/volAdj before the four attr ptrs); unsigned (u32)species range compares (bhi not bgt) in PlayCry AND PlayCryEx; sub_02006C14 reloads the seqNo stack param per use with a separate u16 seq local for the final call; sub_02006838 unrolled p[0..7]=0 + task temp (no data->task reload); PlayCryEx volAdj two-statement form (volAdj=volume; volAdj-=30) but panHalf SINGLE expression (pan/2+0x40); chatot body passes PlayCry(0x1B9, form) literal so MWCC reuses the compare constant in r0 and the switch dispatch takes r1 (pattern const-arg-reuses-compare-register)."
   }
  ],
  "failed": [
-  {
-   "file": "asm/unk_02005D10.s",
-   "lines": 1933,
-   "functions": 50,
-   "attempts": 15,
-   "result": "blocked",
-   "reason": "IPA header dependency: changing return types (void\u2192BOOL) in shared headers breaks already-matched unk_02004A44.c. 40/50 functions matched but 10 require header changes that cascade via MWCC -ipa file. Must be decompiled together with unk_02004A44.c or after fixing header architecture."
-  },
   {
    "file": "asm/unk_0200FA24.s",
    "lines": 1042,

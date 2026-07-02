@@ -1,18 +1,18 @@
 {
  "summary": {
-  "generated": "2026-07-02T05:33:21Z",
+  "generated": "2026-07-02T06:15:46Z",
   "by_status": {
    "matched": {
-    "files": 99,
-    "functions": 1673,
-    "insn_lines": 46434,
-    "text_bytes_est": 102706
+    "files": 100,
+    "functions": 1723,
+    "insn_lines": 48018,
+    "text_bytes_est": 106548
    },
    "blocked": {
-    "files": 55,
-    "functions": 1043,
-    "insn_lines": 33777,
-    "text_bytes_est": 74524
+    "files": 54,
+    "functions": 993,
+    "insn_lines": 32193,
+    "text_bytes_est": 70682
    },
    "pending": {
     "files": 135,
@@ -29,14 +29,14 @@
   },
   "function_totals": {
    "tracked": 19930,
-   "matched": 1673,
-   "partial_in_blocked": 60,
+   "matched": 1723,
+   "partial_in_blocked": 20,
    "pending": 17214
   },
   "blockers": [
    {
     "id": "ipa-shared-headers",
-    "blocks_files": 1,
+    "blocks_files": 0,
     "gates_pending_files": 0
    },
    {
@@ -943,8 +943,8 @@
   },
   {
    "file": "asm/unk_02005D10.s",
-   "lsf_kind": "asm",
-   "status": "blocked",
+   "lsf_kind": "src",
+   "status": "matched",
    "lines": 1933,
    "function_count": 50,
    "text_bytes_est": 3842,
@@ -1062,357 +1062,353 @@
      "mode": "thumb",
      "insns": 23,
      "size_est": 56,
-     "status": "blocked"
+     "status": "matched"
     },
     {
      "name": "PlayBGM",
      "mode": "thumb",
      "insns": 36,
      "size_est": 88,
-     "status": "blocked"
+     "status": "matched"
     },
     {
      "name": "sub_02005DA0",
      "mode": "thumb",
      "insns": 14,
      "size_est": 36,
-     "status": "blocked"
+     "status": "matched"
     },
     {
      "name": "sub_02005DC4",
      "mode": "thumb",
      "insns": 19,
      "size_est": 46,
-     "status": "blocked"
+     "status": "matched"
     },
     {
      "name": "sub_02005DF4",
      "mode": "thumb",
      "insns": 30,
      "size_est": 78,
-     "status": "blocked"
+     "status": "matched"
     },
     {
      "name": "sub_02005E44",
      "mode": "thumb",
      "insns": 45,
      "size_est": 110,
-     "status": "blocked"
+     "status": "matched"
     },
     {
      "name": "StopBGM",
      "mode": "thumb",
      "insns": 19,
      "size_est": 54,
-     "status": "blocked"
+     "status": "matched"
     },
     {
      "name": "sub_02005EEC",
      "mode": "thumb",
      "insns": 12,
      "size_est": 34,
-     "status": "blocked"
+     "status": "matched"
     },
     {
      "name": "GF_SndStartFadeInBGM",
      "mode": "thumb",
      "insns": 24,
      "size_est": 62,
-     "status": "blocked"
+     "status": "matched"
     },
     {
      "name": "GF_SndStartFadeOutBGM",
      "mode": "thumb",
      "insns": 21,
      "size_est": 56,
-     "status": "blocked"
+     "status": "matched"
     },
     {
      "name": "GF_SndGetFadeTimer",
      "mode": "thumb",
      "insns": 5,
      "size_est": 12,
-     "status": "blocked"
+     "status": "matched"
     },
     {
      "name": "sub_02005F94",
      "mode": "thumb",
      "insns": 4,
      "size_est": 12,
-     "status": "blocked"
+     "status": "matched"
     },
     {
      "name": "Sound_Stop",
      "mode": "thumb",
      "insns": 22,
      "size_est": 56,
-     "status": "blocked"
+     "status": "matched"
     },
     {
      "name": "sub_02005FD8",
      "mode": "thumb",
      "insns": 33,
      "size_est": 84,
-     "status": "blocked"
+     "status": "matched"
     },
     {
      "name": "sub_0200602C",
      "mode": "thumb",
      "insns": 13,
      "size_est": 30,
-     "status": "blocked"
+     "status": "matched"
     },
     {
      "name": "PlaySE",
      "mode": "thumb",
      "insns": 13,
      "size_est": 32,
-     "status": "blocked"
+     "status": "matched"
     },
     {
      "name": "sub_0200606C",
      "mode": "thumb",
      "insns": 12,
      "size_est": 28,
-     "status": "blocked"
+     "status": "matched"
     },
     {
      "name": "sub_02006088",
      "mode": "thumb",
      "insns": 21,
      "size_est": 52,
-     "status": "blocked"
+     "status": "matched"
     },
     {
      "name": "sub_020060BC",
      "mode": "thumb",
      "insns": 41,
      "size_est": 90,
-     "status": "blocked"
+     "status": "matched"
     },
     {
      "name": "sub_02006118",
      "mode": "thumb",
      "insns": 11,
      "size_est": 26,
-     "status": "blocked"
+     "status": "matched"
     },
     {
      "name": "PlaySE_SetPitch",
      "mode": "thumb",
      "insns": 13,
      "size_est": 30,
-     "status": "blocked"
+     "status": "matched"
     },
     {
      "name": "StopSE",
      "mode": "thumb",
      "insns": 3,
      "size_est": 6,
-     "status": "blocked"
+     "status": "matched"
     },
     {
      "name": "sub_0200615C",
      "mode": "thumb",
      "insns": 6,
      "size_est": 16,
-     "status": "blocked"
+     "status": "matched"
     },
     {
      "name": "sub_0200616C",
      "mode": "thumb",
      "insns": 10,
      "size_est": 22,
-     "status": "blocked"
+     "status": "matched"
     },
     {
      "name": "IsSEPlaying",
      "mode": "thumb",
      "insns": 4,
      "size_est": 12,
-     "status": "blocked"
+     "status": "matched"
     },
     {
      "name": "sub_02006190",
      "mode": "thumb",
      "insns": 3,
      "size_est": 6,
-     "status": "blocked"
+     "status": "matched"
     },
     {
      "name": "GF_IsAnySEPlaying",
      "mode": "thumb",
      "insns": 13,
      "size_est": 28,
-     "status": "blocked"
+     "status": "matched"
     },
     {
      "name": "sub_020061B4",
      "mode": "thumb",
      "insns": 10,
      "size_est": 28,
-     "status": "blocked"
+     "status": "matched"
     },
     {
      "name": "sub_020061D0",
      "mode": "thumb",
      "insns": 10,
      "size_est": 26,
-     "status": "blocked"
+     "status": "matched"
     },
     {
      "name": "sub_020061EC",
      "mode": "thumb",
      "insns": 18,
      "size_est": 42,
-     "status": "blocked"
+     "status": "matched"
     },
     {
      "name": "PlayCry",
      "mode": "thumb",
      "insns": 86,
      "size_est": 196,
-     "status": "blocked"
+     "status": "matched"
     },
     {
      "name": "sub_020062E0",
      "mode": "thumb",
      "insns": 15,
      "size_est": 32,
-     "status": "blocked"
+     "status": "matched"
     },
     {
      "name": "sub_02006300",
      "mode": "thumb",
      "insns": 35,
      "size_est": 96,
-     "status": "blocked"
+     "status": "matched"
     },
     {
      "name": "IsCryFinished",
      "mode": "thumb",
      "insns": 26,
      "size_est": 66,
-     "status": "blocked"
+     "status": "matched"
     },
     {
      "name": "PlayCryEx",
      "mode": "thumb",
      "insns": 449,
      "size_est": 1084,
-     "status": "blocked"
+     "status": "matched"
     },
     {
      "name": "sub_02006820",
      "mode": "thumb",
      "insns": 10,
      "size_est": 24,
-     "status": "blocked"
+     "status": "matched"
     },
     {
      "name": "sub_02006838",
      "mode": "thumb",
      "insns": 32,
      "size_est": 74,
-     "status": "blocked"
+     "status": "matched"
     },
     {
      "name": "sub_02006884",
      "mode": "thumb",
      "insns": 47,
      "size_est": 116,
-     "status": "blocked"
+     "status": "matched"
     },
     {
      "name": "sub_020068F8",
      "mode": "thumb",
      "insns": 16,
      "size_est": 40,
-     "status": "blocked"
+     "status": "matched"
     },
     {
      "name": "sub_02006920",
      "mode": "thumb",
      "insns": 101,
      "size_est": 234,
-     "status": "blocked"
+     "status": "matched"
     },
     {
      "name": "sub_02006A0C",
      "mode": "thumb",
      "insns": 17,
      "size_est": 34,
-     "status": "blocked"
+     "status": "matched"
     },
     {
      "name": "sub_02006A30",
      "mode": "thumb",
      "insns": 59,
      "size_est": 142,
-     "status": "blocked"
+     "status": "matched"
     },
     {
      "name": "sub_02006AC0",
      "mode": "thumb",
      "insns": 21,
      "size_est": 50,
-     "status": "blocked"
+     "status": "matched"
     },
     {
      "name": "sub_02006AF4",
      "mode": "thumb",
      "insns": 20,
      "size_est": 46,
-     "status": "blocked"
+     "status": "matched"
     },
     {
      "name": "PlayFanfare",
      "mode": "thumb",
      "insns": 36,
      "size_est": 94,
-     "status": "blocked"
+     "status": "matched"
     },
     {
      "name": "sub_02006B84",
      "mode": "thumb",
      "insns": 19,
      "size_est": 42,
-     "status": "blocked"
+     "status": "matched"
     },
     {
      "name": "sub_02006BB0",
      "mode": "thumb",
      "insns": 10,
      "size_est": 28,
-     "status": "blocked"
+     "status": "matched"
     },
     {
      "name": "IsFanfarePlaying",
      "mode": "thumb",
      "insns": 20,
      "size_est": 54,
-     "status": "blocked"
+     "status": "matched"
     },
     {
      "name": "sub_02006C04",
      "mode": "thumb",
      "insns": 6,
      "size_est": 14,
-     "status": "blocked"
+     "status": "matched"
     },
     {
      "name": "sub_02006C14",
      "mode": "thumb",
      "insns": 51,
      "size_est": 118,
-     "status": "blocked"
+     "status": "matched"
     }
    ],
-   "blocked_reason": "IPA header dependency: changing return types (void\u2192BOOL) in shared headers breaks already-matched unk_02004A44.c. 40/50 functions matched but 10 require header changes that cascade via MWCC -ipa file. Must be decompiled together with unk_02004A44.c or after fixing header architecture.",
-   "attempts": 15,
-   "blocker_id": "ipa-shared-headers",
-   "partial_matched": 40,
-   "kept_c": false
+   "source": "harness"
   },
   {
    "file": "asm/sound_chatot.s",
