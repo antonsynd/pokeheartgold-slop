@@ -104,7 +104,14 @@ Iterate on step 5 until objdiff is green, then:
    ```bash
    python3 tools/decomp_harness/triage.py --rebuild --top 5
    ```
-5. Report the result
+5. **Sweep top-up** (keeps pre-analysis ahead of the queue): check for un-swept
+   upcoming targets and close the gap — sweeps are read-only, so kick them off
+   while the finalize `compare` build runs:
+   ```bash
+   python3 tools/decomp_harness/sweep_gap.py --check   # exit 1 = gap
+   ```
+   If it reports a gap, invoke `/decomp-sweep` with the printed file list.
+6. Report the result
 
 ### On Failure (after max retries)
 

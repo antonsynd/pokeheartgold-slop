@@ -29,7 +29,10 @@ This skill is designed to be used with `/loop /decomp-loop` for continuous auton
       with `attempts_log.py add`
    i. On success: update progress.json, add new insights via `patterns.py add`
       (insights.md is generated — never edit it directly), run
-      `triage.py --rebuild --top 0` to refresh ledger + queue, then **commit
+      `triage.py --rebuild --top 0` to refresh ledger + queue; then run
+      `python3 tools/decomp_harness/sweep_gap.py --check` and, if it reports
+      un-swept upcoming targets, run the /decomp-sweep workflow for the printed
+      files (read-only — safe to overlap with the compare build); then **commit
       this file's work incrementally** — one commit per matched file (the new
       C/H, the `main.lsf` flip, and the refreshed harness state together) once
       `chiri pkg -- compare` confirms the match, before moving to the next

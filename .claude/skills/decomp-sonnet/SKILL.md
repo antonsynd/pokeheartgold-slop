@@ -111,7 +111,9 @@ judgment is what matters here.
    ```
 3. Add new insights: `python3 tools/decomp_harness/patterns.py add --json '...'`
 4. Regenerate ledger + triage: `python3 tools/decomp_harness/triage.py --rebuild --top 5`
-5. Report: file name, match result, attempts, whether the Sonnet draft needed major surgery
+5. Sweep top-up: `python3 tools/decomp_harness/sweep_gap.py --check` — on a gap,
+   run the /decomp-sweep workflow for the printed files (read-only)
+6. Report: file name, match result, attempts, whether the Sonnet draft needed major surgery
 
 ### Phase 7 — On Failure (after max retries)
 

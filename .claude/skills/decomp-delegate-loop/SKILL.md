@@ -40,6 +40,9 @@ completely using the `/decomp-delegate` workflow — Qwen drafts, Claude judges.
    - Update `progress.json` (include `"note": "delegate-drafted"` in the entry)
    - Add new insights via `patterns.py add` if any
    - `python3 tools/decomp_harness/triage.py --rebuild --top 0`
+   - `python3 tools/decomp_harness/sweep_gap.py --check` — if it reports
+     un-swept upcoming targets, run the /decomp-sweep workflow for the printed
+     files (read-only; safe during the compare build)
    - **Commit this file's work incrementally** — one commit per matched file (the
      new C/H, the `main.lsf` flip, and the refreshed harness state together),
      only after `chiri pkg -- compare` confirmed the match, before moving to the

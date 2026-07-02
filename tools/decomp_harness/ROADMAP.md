@@ -401,7 +401,17 @@ Top 20 files = 50% of pending functions; they cannot be attacked incrementally a
   migration; ov70 GTS-like script app; ov18 Pokédex; ov83 Frontier records.
   Cleanest first targets after pilot: ov14, ov18.
 
-### T2.2 Sweep top-up as standing process  `[ ]`  (1–2 h of skill/process change)
+### T2.2 Sweep top-up as standing process  `[x]`  (1–2 h of skill/process change)
+
+**Result (2026-07-02):** `sweep_gap.py [--top N] [--check]` prints the un-swept files among
+the top-N triage targets (same "swept" definition as the /decomp-sweep skill: a per-file
+result in `sweep/out/`; exit 1 on gap with `--check`). Wired into the on-success checklist
+of all six decomp skills (decomp, decomp-loop, decomp-delegate, decomp-delegate-loop,
+decomp-sonnet, decomp-sonnet-loop): after the triage rebuild, run `sweep_gap.py --check`
+and close any gap via the /decomp-sweep workflow (read-only — overlaps the compare build).
+At wiring time the gap was 8/10. The "sweep new chunks immediately after each T2.1 split"
+half is a T2.1-workflow step: run /decomp-sweep on the chunk files right after a split
+commit lands.
 Sweep coverage is 2/135 pending files; every session re-derives signatures — also the top
 feeder of IPA header trouble. Add to /decomp + loop skills' on-success checklist (or a Stop
 hook): if fewer than N of the top-N triage targets have knowledge.json entries, run
