@@ -365,7 +365,26 @@ compare; nightly full check via `nightly_check.sh` + launchd agent
 
 ## Tier 2 — Scaling into the giants (weeks 2–3)
 
-### T2.1 split_overlay.py  `[ ]`  (2–4 days incl. pilot)
+### T2.1 split_overlay.py  `[x]`  (2–4 days incl. pilot)
+
+**Result (2026-07-02):** `split_overlay.py` (602 lines) built and pilot-validated on overlay_83.
+Parser: `thumb_func_start`/`arm_func_start` + authoritative `; 0xADDR` comments; tail symbols
+from section transitions. Reference graph: `bl`/`.word`/`=sym` operands with DSU over tail
+symbols so coupled rodata (jump tables, pointer arrays) stays together. Cuts require
+reference-cleanliness (prefix-max/suffix-min), an aligned tail boundary, and section alignment
+of the next function; a soft `--target-lines` budget (default 1500) coalesces tiny functions.
+Emits chunks + per-chunk `.inc` (cross-chunk refs promoted to `.public`), rewrites `main.lsf`
+in address order, writes a manifest to `split_manifests/`. **Pilot overlay_83:** 278 fns /
+62 tail syms / 69 raw clean cuts → 5 chunks; both ROMs retail-SHA1 green pre- AND
+post-monolith-deletion (SoulSilver gate exercised despite no version conditionals — standing
+rule). Harness migration: attempts_log/knowledge/progress had zero monolith refs; generated
+ledger + triage regenerated via `triage.py --rebuild` (0 stale refs, 5 chunk paths queued).
+CLAUDE.md split-is-a-rename exception documented. **Limitations:** no pooled mode yet —
+ov112 (1 clean cut) and ov74_thumb (0) need the overlay-80 pooled-rodata fallback or manual
+boundary hints; `--dry-run` each giant first. Next targets: ov14, ov18 (check upstream pret
+per T3.3 before each).
+
+Original spec (retained):
 Top 20 files = 50% of pending functions; they cannot be attacked incrementally as monoliths.
 - **Precedent:** upstream commit `706fa629a` ("Split Overlay 80") shipped its xMAP splitter as
   `Untitled.ipynb` (MIT, luckytyphlosion), deleted next commit. Recover:

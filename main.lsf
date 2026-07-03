@@ -1053,7 +1053,11 @@ Overlay OVY_82
 Overlay OVY_83
 {
     After OVY_80
-    Object asm/overlay_83.o
+    Object asm/overlay_83_0223DD60.o
+    Object asm/overlay_83_02242FE8.o
+    Object asm/overlay_83_02243D7C.o
+    Object asm/overlay_83_02246E08.o
+    Object asm/overlay_83_022479E4.o
 }
 Overlay OVY_84
 {
