@@ -653,7 +653,17 @@ Overlay OVY_13
 Overlay OVY_14
 {
     After main
-    Object asm/overlay_14.o
+    Object asm/overlay_14_021E5900.o
+    Object asm/overlay_14_021EAF08.o
+    Object asm/overlay_14_021EE26C.o
+    Object asm/overlay_14_021EEF34.o
+    Object asm/overlay_14_021EFDE4.o
+    Object asm/overlay_14_021F0A80.o
+    Object asm/overlay_14_021F1808.o
+    Object asm/overlay_14_021F2490.o
+    Object asm/overlay_14_021F4B90.o
+    Object asm/overlay_14_021F58B8.o
+    Object asm/overlay_14_021F6628.o
 }
 Overlay OVY_15
 {

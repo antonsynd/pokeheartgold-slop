@@ -102,10 +102,15 @@ def parse(path):
     cur_func = None
     header_end = 0              # first line after the .include header block
 
-    # find header end: the leading `.include`/blank block before first .text
+    # find header end: the leading include/preprocessor/blank block before the
+    # first .text. Monoliths may open with C-preprocessor lines (e.g.
+    # `#include "constants/pokemon.h"` in overlay_14) that provide identifiers
+    # used in the body -- they are part of the preamble and must be carried
+    # into every chunk.
     for i, ln in enumerate(lines):
         s = ln.strip()
-        if s.startswith('.include') or s == '' or s.startswith('.text'):
+        if (s.startswith('.include') or s.startswith('#include')
+                or s.startswith('#pragma') or s == '' or s.startswith('.text')):
             header_end = i + 1
             if s.startswith('.text'):
                 break
@@ -413,9 +418,21 @@ def emit(base, lines, funcs, syms, chunks, header_lines, orig_public, out_asm_di
             inc_lines.append('.public %s\n' % p)
 
         # ---- build .s text ----
-        s_lines = ['\t.include "asm/macros.inc"\n',
-                   '\t.include "%s.inc"\n' % chunk_name,
-                   '\t.include "global.inc"\n', '\n']
+        # carry the monolith's real preamble verbatim (it may contain
+        # C-preprocessor #includes whose identifiers the body uses); swap the
+        # monolith's own .inc for this chunk's.
+        own_inc = re.compile(r'\.include\s+"%s\.inc"' % re.escape(base))
+        s_lines = []
+        for ln in lines[:header_lines]:
+            s = ln.strip()
+            if s.startswith('.text'):
+                continue
+            if own_inc.search(s):
+                s_lines.append('\t.include "%s.inc"\n' % chunk_name)
+            else:
+                s_lines.append(ln)
+        if not s_lines or s_lines[-1].strip() != '':
+            s_lines.append('\n')
         # text
         if fhi > flo:
             s_lines.append('    .text\n\n')

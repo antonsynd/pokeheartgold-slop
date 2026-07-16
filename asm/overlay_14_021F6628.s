@@ -1,0 +1,3225 @@
+#include "constants/pokemon.h"
+	.include "asm/macros.inc"
+	.include "overlay_14_021F6628.inc"
+	.include "global.inc"
+
+    .text
+
+	thumb_func_start ov14_021F6628
+ov14_021F6628: ; 0x021F6628
+	push {r3, lr}
+	mov r0, #1
+	mov r1, #0x1b
+	mov r2, #0x19
+	mov r3, #0xa
+	bl NewMsgDataFromNarc
+	pop {r3, pc}
+	thumb_func_end ov14_021F6628
+
+	thumb_func_start ov14_021F6638
+ov14_021F6638: ; 0x021F6638
+	push {r4, lr}
+	mov r1, #0xf
+	add r4, r0, #0
+	bl FillWindowPixelBuffer
+	ldr r1, _021F6650 ; =0x0000038E
+	add r0, r4, #0
+	mov r2, #0xa
+	bl sub_0200E948
+	pop {r4, pc}
+	nop
+_021F6650: .word 0x0000038E
+	thumb_func_end ov14_021F6638
+
+	thumb_func_start ov14_021F6654
+ov14_021F6654: ; 0x021F6654
+	push {r4, r5, r6, lr}
+	add r6, r0, #0
+	add r5, r6, #0
+	lsl r4, r1, #4
+	add r5, #0x30
+	add r0, r5, r4
+	mov r1, #1
+	bl ClearFrameAndWindow2
+	add r0, r5, r4
+	bl GetWindowBgId
+	add r1, r0, #0
+	ldr r0, [r6, #0x14]
+	bl ScheduleBgTilemapBufferTransfer
+	pop {r4, r5, r6, pc}
+	.balign 4, 0
+	thumb_func_end ov14_021F6654
+
+	thumb_func_start ov14_021F6678
+ov14_021F6678: ; 0x021F6678
+	ldr r3, _021F6684 ; =ClearFrameAndWindow2
+	add r0, #0x30
+	lsl r1, r1, #4
+	add r0, r0, r1
+	mov r1, #1
+	bx r3
+	.balign 4, 0
+_021F6684: .word ClearFrameAndWindow2
+	thumb_func_end ov14_021F6678
+
+	thumb_func_start ov14_021F6688
+ov14_021F6688: ; 0x021F6688
+	ldr r3, _021F6694 ; =ClearFrameAndWindow2
+	add r0, #0x30
+	lsl r1, r1, #4
+	add r0, r0, r1
+	mov r1, #0
+	bx r3
+	.balign 4, 0
+_021F6694: .word ClearFrameAndWindow2
+	thumb_func_end ov14_021F6688
+
+	thumb_func_start ov14_021F6698
+ov14_021F6698: ; 0x021F6698
+	push {r3, r4, r5, r6, r7, lr}
+	sub sp, #0x18
+	add r5, r0, #0
+	str r1, [sp, #0x14]
+	add r4, r2, #0
+	bl ov14_021F6628
+	add r7, r0, #0
+	ldr r0, [r5, #0x34]
+	lsl r6, r4, #4
+	add r0, #0x30
+	add r0, r0, r6
+	bl ov14_021F6638
+	mov r1, #0
+	str r1, [sp]
+	str r1, [sp, #4]
+	mov r0, #1
+	str r0, [sp, #8]
+	ldr r0, _021F66E4 ; =0x0001020F
+	ldr r3, [sp, #0x14]
+	str r0, [sp, #0xc]
+	str r1, [sp, #0x10]
+	ldr r0, [r5, #0x34]
+	add r1, r7, #0
+	add r2, r4, #0
+	bl ov14_021F4FBC
+	ldr r0, [r5, #0x34]
+	add r0, #0x30
+	add r0, r0, r6
+	bl ScheduleWindowCopyToVram
+	add r0, r7, #0
+	bl DestroyMsgData
+	add sp, #0x18
+	pop {r3, r4, r5, r6, r7, pc}
+	.balign 4, 0
+_021F66E4: .word 0x0001020F
+	thumb_func_end ov14_021F6698
+
+	thumb_func_start ov14_021F66E8
+ov14_021F66E8: ; 0x021F66E8
+	push {r3, lr}
+	add r3, r1, #0
+	cmp r2, #1
+	bne _021F66FA
+	mov r1, #0xb
+	add r2, r3, #0
+	bl ov14_021F6698
+	pop {r3, pc}
+_021F66FA:
+	mov r1, #0xc
+	add r2, r3, #0
+	bl ov14_021F6698
+	pop {r3, pc}
+	thumb_func_end ov14_021F66E8
+
+	thumb_func_start ov14_021F6704
+ov14_021F6704: ; 0x021F6704
+	push {r3, r4, r5, lr}
+	add r5, r0, #0
+	ldr r0, [r5, #0x34]
+	add r3, r1, #0
+	ldr r0, [r0, #0x24]
+	add r4, r2, #0
+	mov r1, #0
+	add r2, r3, #0
+	bl BufferItemName
+	add r0, r5, #0
+	mov r1, #0x17
+	add r2, r4, #0
+	bl ov14_021F6698
+	pop {r3, r4, r5, pc}
+	thumb_func_end ov14_021F6704
+
+	thumb_func_start ov14_021F6724
+ov14_021F6724: ; 0x021F6724
+	ldr r3, _021F672C ; =ov14_021F6698
+	add r2, r1, #0
+	mov r1, #0x18
+	bx r3
+	.balign 4, 0
+_021F672C: .word ov14_021F6698
+	thumb_func_end ov14_021F6724
+
+	thumb_func_start ov14_021F6730
+ov14_021F6730: ; 0x021F6730
+	ldr r3, _021F6738 ; =ov14_021F6698
+	add r2, r1, #0
+	mov r1, #0x36
+	bx r3
+	.balign 4, 0
+_021F6738: .word ov14_021F6698
+	thumb_func_end ov14_021F6730
+
+	thumb_func_start ov14_021F673C
+ov14_021F673C: ; 0x021F673C
+	push {r3, r4, r5, lr}
+	add r5, r0, #0
+	ldr r0, [r5, #0x34]
+	add r3, r1, #0
+	ldr r0, [r0, #0x24]
+	add r4, r2, #0
+	mov r1, #0
+	add r2, r3, #0
+	bl BufferItemName
+	add r0, r5, #0
+	mov r1, #0xf
+	add r2, r4, #0
+	bl ov14_021F6698
+	pop {r3, r4, r5, pc}
+	thumb_func_end ov14_021F673C
+
+	thumb_func_start ov14_021F675C
+ov14_021F675C: ; 0x021F675C
+	ldr r3, _021F6764 ; =ov14_021F6698
+	add r2, r1, #0
+	mov r1, #0xe
+	bx r3
+	.balign 4, 0
+_021F6764: .word ov14_021F6698
+	thumb_func_end ov14_021F675C
+
+	thumb_func_start ov14_021F6768
+ov14_021F6768: ; 0x021F6768
+	push {r3, r4, r5, lr}
+	add r5, r0, #0
+	add r3, r1, #0
+	add r4, r2, #0
+	cmp r3, #0
+	ldr r0, [r5, #0x34]
+	bne _021F678C
+	ldr r0, [r0, #0x24]
+	mov r1, #0
+	mov r2, #0x70
+	bl BufferItemName
+	add r0, r5, #0
+	mov r1, #0x37
+	add r2, r4, #0
+	bl ov14_021F6698
+	pop {r3, r4, r5, pc}
+_021F678C:
+	ldr r0, [r0, #0x24]
+	mov r1, #0
+	add r2, r3, #0
+	bl BufferItemName
+	add r0, r5, #0
+	mov r1, #0x10
+	add r2, r4, #0
+	bl ov14_021F6698
+	pop {r3, r4, r5, pc}
+	.balign 4, 0
+	thumb_func_end ov14_021F6768
+
+	thumb_func_start ov14_021F67A4
+ov14_021F67A4: ; 0x021F67A4
+	ldr r3, _021F67AC ; =ov14_021F6698
+	add r2, r1, #0
+	mov r1, #0x23
+	bx r3
+	.balign 4, 0
+_021F67AC: .word ov14_021F6698
+	thumb_func_end ov14_021F67A4
+
+	thumb_func_start ov14_021F67B0
+ov14_021F67B0: ; 0x021F67B0
+	push {r4, r5, r6, lr}
+	add r4, r0, #0
+	add r6, r2, #0
+	cmp r1, #6
+	bhi _021F6836
+	add r1, r1, r1
+	add r1, pc
+	ldrh r1, [r1, #6]
+	lsl r1, r1, #0x10
+	asr r1, r1, #0x10
+	add pc, r1
+_021F67C6: ; jump table
+	.short _021F67D4 - _021F67C6 - 2 ; case 0
+	.short _021F67D8 - _021F67C6 - 2 ; case 1
+	.short _021F67F4 - _021F67C6 - 2 ; case 2
+	.short _021F6810 - _021F67C6 - 2 ; case 3
+	.short _021F6814 - _021F67C6 - 2 ; case 4
+	.short _021F6830 - _021F67C6 - 2 ; case 5
+	.short _021F6834 - _021F67C6 - 2 ; case 6
+_021F67D4:
+	mov r5, #2
+	b _021F6836
+_021F67D8:
+	add r2, r4, #0
+	add r2, #0x21
+	ldrb r1, [r4, #0x1f]
+	ldrb r2, [r2]
+	mov r5, #3
+	bl ov14_021E60C0
+	add r2, r0, #0
+	ldr r0, [r4, #0x34]
+	mov r1, #0
+	ldr r0, [r0, #0x24]
+	bl BufferBoxMonNickname
+	b _021F6836
+_021F67F4:
+	add r2, r4, #0
+	add r2, #0x21
+	ldrb r1, [r4, #0x1f]
+	ldrb r2, [r2]
+	mov r5, #4
+	bl ov14_021E60C0
+	add r2, r0, #0
+	ldr r0, [r4, #0x34]
+	mov r1, #0
+	ldr r0, [r0, #0x24]
+	bl BufferBoxMonNickname
+	b _021F6836
+_021F6810:
+	mov r5, #0x1f
+	b _021F6836
+_021F6814:
+	add r2, r4, #0
+	add r2, #0x21
+	ldrb r1, [r4, #0x1f]
+	ldrb r2, [r2]
+	mov r5, #0x20
+	bl ov14_021E60C0
+	add r2, r0, #0
+	ldr r0, [r4, #0x34]
+	mov r1, #0
+	ldr r0, [r0, #0x24]
+	bl BufferBoxMonNickname
+	b _021F6836
+_021F6830:
+	mov r5, #0x21
+	b _021F6836
+_021F6834:
+	mov r5, #6
+_021F6836:
+	add r0, r4, #0
+	add r1, r5, #0
+	add r2, r6, #0
+	bl ov14_021F6698
+	pop {r4, r5, r6, pc}
+	.balign 4, 0
+	thumb_func_end ov14_021F67B0
+
+	thumb_func_start ov14_021F6844
+ov14_021F6844: ; 0x021F6844
+	cmp r1, #0
+	beq _021F684E
+	cmp r1, #1
+	beq _021F6852
+	b _021F6854
+_021F684E:
+	mov r1, #7
+	b _021F6854
+_021F6852:
+	mov r1, #0xa
+_021F6854:
+	ldr r3, _021F6858 ; =ov14_021F6698
+	bx r3
+	.balign 4, 0
+_021F6858: .word ov14_021F6698
+	thumb_func_end ov14_021F6844
+
+	thumb_func_start ov14_021F685C
+ov14_021F685C: ; 0x021F685C
+	push {r4, r5, r6, lr}
+	add r5, r0, #0
+	add r6, r3, #0
+	cmp r2, #6
+	bhi _021F68B2
+	add r1, r2, r2
+	add r1, pc
+	ldrh r1, [r1, #6]
+	lsl r1, r1, #0x10
+	asr r1, r1, #0x10
+	add pc, r1
+_021F6872: ; jump table
+	.short _021F6880 - _021F6872 - 2 ; case 0
+	.short _021F6884 - _021F6872 - 2 ; case 1
+	.short _021F68A0 - _021F6872 - 2 ; case 2
+	.short _021F68A4 - _021F6872 - 2 ; case 3
+	.short _021F68A8 - _021F6872 - 2 ; case 4
+	.short _021F68AC - _021F6872 - 2 ; case 5
+	.short _021F68B0 - _021F6872 - 2 ; case 6
+_021F6880:
+	mov r4, #0x12
+	b _021F68B2
+_021F6884:
+	add r2, r5, #0
+	add r2, #0x21
+	ldrb r1, [r5, #0x1f]
+	ldrb r2, [r2]
+	mov r4, #0
+	bl ov14_021E60C0
+	add r2, r0, #0
+	ldr r0, [r5, #0x34]
+	add r1, r4, #0
+	ldr r0, [r0, #0x24]
+	bl BufferBoxMonNickname
+	b _021F68B2
+_021F68A0:
+	mov r4, #5
+	b _021F68B2
+_021F68A4:
+	mov r4, #0x13
+	b _021F68B2
+_021F68A8:
+	mov r4, #0xd
+	b _021F68B2
+_021F68AC:
+	mov r4, #0x1d
+	b _021F68B2
+_021F68B0:
+	mov r4, #0x1e
+_021F68B2:
+	add r0, r5, #0
+	add r1, r4, #0
+	add r2, r6, #0
+	bl ov14_021F6698
+	pop {r4, r5, r6, pc}
+	.balign 4, 0
+	thumb_func_end ov14_021F685C
+
+	thumb_func_start ov14_021F68C0
+ov14_021F68C0: ; 0x021F68C0
+	push {r4, r5, r6, lr}
+	add r5, r0, #0
+	add r6, r2, #0
+	cmp r1, #7
+	bhi _021F6918
+	add r0, r1, r1
+	add r0, pc
+	ldrh r0, [r0, #6]
+	lsl r0, r0, #0x10
+	asr r0, r0, #0x10
+	add pc, r0
+_021F68D6: ; jump table
+	.short _021F6918 - _021F68D6 - 2 ; case 0
+	.short _021F6918 - _021F68D6 - 2 ; case 1
+	.short _021F68E6 - _021F68D6 - 2 ; case 2
+	.short _021F68F8 - _021F68D6 - 2 ; case 3
+	.short _021F690A - _021F68D6 - 2 ; case 4
+	.short _021F690E - _021F68D6 - 2 ; case 5
+	.short _021F6912 - _021F68D6 - 2 ; case 6
+	.short _021F6916 - _021F68D6 - 2 ; case 7
+_021F68E6:
+	ldr r3, [r5, #0x34]
+	ldr r2, _021F6924 ; =0x000088C8
+	ldr r0, [r3, #0x24]
+	ldrh r2, [r3, r2]
+	mov r1, #0
+	mov r4, #0x1a
+	bl BufferItemName
+	b _021F6918
+_021F68F8:
+	ldr r3, [r5, #0x34]
+	ldr r2, _021F6924 ; =0x000088C8
+	ldr r0, [r3, #0x24]
+	ldrh r2, [r3, r2]
+	mov r1, #0
+	mov r4, #0x1b
+	bl BufferItemName
+	b _021F6918
+_021F690A:
+	mov r4, #0x18
+	b _021F6918
+_021F690E:
+	mov r4, #0x22
+	b _021F6918
+_021F6912:
+	mov r4, #0xe
+	b _021F6918
+_021F6916:
+	mov r4, #0x3b
+_021F6918:
+	add r0, r5, #0
+	add r1, r4, #0
+	add r2, r6, #0
+	bl ov14_021F6698
+	pop {r4, r5, r6, pc}
+	.balign 4, 0
+_021F6924: .word 0x000088C8
+	thumb_func_end ov14_021F68C0
+
+	thumb_func_start ov14_021F6928
+ov14_021F6928: ; 0x021F6928
+	push {r3, r4, r5, r6, r7, lr}
+	sub sp, #0x10
+	add r5, r0, #0
+	add r6, r1, #0
+	add r4, r2, #0
+	bl ov14_021F6628
+	add r7, r0, #0
+	cmp r4, #0xa
+	bhi _021F6996
+	add r0, r4, r4
+	add r0, pc
+	ldrh r0, [r0, #6]
+	lsl r0, r0, #0x10
+	asr r0, r0, #0x10
+	add pc, r0
+_021F6948: ; jump table
+	.short _021F695E - _021F6948 - 2 ; case 0
+	.short _021F6962 - _021F6948 - 2 ; case 1
+	.short _021F6966 - _021F6948 - 2 ; case 2
+	.short _021F696A - _021F6948 - 2 ; case 3
+	.short _021F696E - _021F6948 - 2 ; case 4
+	.short _021F6972 - _021F6948 - 2 ; case 5
+	.short _021F6984 - _021F6948 - 2 ; case 6
+	.short _021F6988 - _021F6948 - 2 ; case 7
+	.short _021F698C - _021F6948 - 2 ; case 8
+	.short _021F6990 - _021F6948 - 2 ; case 9
+	.short _021F6994 - _021F6948 - 2 ; case 10
+_021F695E:
+	mov r4, #0x24
+	b _021F6996
+_021F6962:
+	mov r4, #0x25
+	b _021F6996
+_021F6966:
+	mov r4, #0x26
+	b _021F6996
+_021F696A:
+	mov r4, #0x27
+	b _021F6996
+_021F696E:
+	mov r4, #0x1c
+	b _021F6996
+_021F6972:
+	ldr r3, [r5, #0x34]
+	ldr r2, _021F69E8 ; =0x000088C8
+	ldr r0, [r3, #0x24]
+	ldrh r2, [r3, r2]
+	mov r1, #0
+	mov r4, #0x19
+	bl BufferItemName
+	b _021F6996
+_021F6984:
+	mov r4, #0x38
+	b _021F6996
+_021F6988:
+	mov r4, #0x39
+	b _021F6996
+_021F698C:
+	mov r4, #0x3a
+	b _021F6996
+_021F6990:
+	mov r4, #0x3b
+	b _021F6996
+_021F6994:
+	mov r4, #0x3c
+_021F6996:
+	add r0, r7, #0
+	add r1, r4, #0
+	bl NewString_ReadMsgData
+	add r4, r0, #0
+	ldr r1, [r5, #0x34]
+	add r2, r4, #0
+	ldr r0, [r1, #0x24]
+	ldr r1, [r1, #0x28]
+	bl StringExpandPlaceholders
+	add r0, r4, #0
+	bl String_Delete
+	ldr r0, [r5, #0x34]
+	lsl r4, r6, #4
+	add r0, #0x30
+	add r0, r0, r4
+	mov r1, #0xf
+	bl FillWindowPixelBuffer
+	ldr r2, [r5, #0x34]
+	mov r3, #0
+	str r3, [sp]
+	mov r0, #0xff
+	str r0, [sp, #4]
+	ldr r0, _021F69EC ; =0x0001020F
+	mov r1, #1
+	str r0, [sp, #8]
+	add r0, r2, #0
+	str r3, [sp, #0xc]
+	add r0, #0x30
+	ldr r2, [r2, #0x28]
+	add r0, r0, r4
+	bl AddTextPrinterParameterizedWithColor
+	add r0, r7, #0
+	bl DestroyMsgData
+	add sp, #0x10
+	pop {r3, r4, r5, r6, r7, pc}
+	.balign 4, 0
+_021F69E8: .word 0x000088C8
+_021F69EC: .word 0x0001020F
+	thumb_func_end ov14_021F6928
+
+	thumb_func_start ov14_021F69F0
+ov14_021F69F0: ; 0x021F69F0
+	push {r3, r4, r5, lr}
+	add r5, r0, #0
+	ldr r0, [r5, #0x34]
+	lsl r4, r1, #4
+	add r0, #0x30
+	ldr r1, _021F6A10 ; =0x0000038E
+	add r0, r0, r4
+	mov r2, #0xa
+	bl sub_0200E948
+	ldr r0, [r5, #0x34]
+	add r0, #0x30
+	add r0, r0, r4
+	bl ScheduleWindowCopyToVram
+	pop {r3, r4, r5, pc}
+	.balign 4, 0
+_021F6A10: .word 0x0000038E
+	thumb_func_end ov14_021F69F0
+
+	thumb_func_start ov14_021F6A14
+ov14_021F6A14: ; 0x021F6A14
+	ldr r3, _021F6A1C ; =TouchscreenHitbox_FindRectAtTouchNew
+	ldr r0, _021F6A20 ; =ov14_021F864C
+	bx r3
+	nop
+_021F6A1C: .word TouchscreenHitbox_FindRectAtTouchNew
+_021F6A20: .word ov14_021F864C
+	thumb_func_end ov14_021F6A14
+
+	thumb_func_start ov14_021F6A24
+ov14_021F6A24: ; 0x021F6A24
+	ldr r3, _021F6A2C ; =TouchscreenHitbox_FindRectAtTouchNew
+	ldr r0, _021F6A30 ; =ov14_021F8614
+	bx r3
+	nop
+_021F6A2C: .word TouchscreenHitbox_FindRectAtTouchNew
+_021F6A30: .word ov14_021F8614
+	thumb_func_end ov14_021F6A24
+
+	thumb_func_start ov14_021F6A34
+ov14_021F6A34: ; 0x021F6A34
+	ldr r3, _021F6A3C ; =TouchscreenHitbox_FindRectAtTouchNew
+	ldr r0, _021F6A40 ; =ov14_021F8630
+	bx r3
+	nop
+_021F6A3C: .word TouchscreenHitbox_FindRectAtTouchNew
+_021F6A40: .word ov14_021F8630
+	thumb_func_end ov14_021F6A34
+
+	thumb_func_start ov14_021F6A44
+ov14_021F6A44: ; 0x021F6A44
+	push {r4, r5, lr}
+	sub sp, #0xc
+	add r4, r0, #0
+	ldr r0, [r4]
+	ldr r0, [r0, #8]
+	cmp r0, #3
+	bhi _021F6A74
+	add r0, r0, r0
+	add r0, pc
+	ldrh r0, [r0, #6]
+	lsl r0, r0, #0x10
+	asr r0, r0, #0x10
+	add pc, r0
+_021F6A5E: ; jump table
+	.short _021F6A66 - _021F6A5E - 2 ; case 0
+	.short _021F6A6A - _021F6A5E - 2 ; case 1
+	.short _021F6A6E - _021F6A5E - 2 ; case 2
+	.short _021F6A72 - _021F6A5E - 2 ; case 3
+_021F6A66:
+	mov r5, #0
+	b _021F6A74
+_021F6A6A:
+	mov r5, #2
+	b _021F6A74
+_021F6A6E:
+	mov r5, #3
+	b _021F6A74
+_021F6A72:
+	mov r5, #6
+_021F6A74:
+	add r0, r4, #0
+	bl ov14_021F6B10
+	mov r0, #0xc
+	add r2, r5, #0
+	mul r2, r0
+	mov r0, #1
+	str r0, [sp]
+	ldr r0, [r4, #0x2c]
+	ldr r1, _021F6AB4 ; =ov14_021F8B10 + 4
+	lsl r0, r0, #0x18
+	lsr r0, r0, #0x18
+	str r0, [sp, #4]
+	mov r0, #0xa
+	str r0, [sp, #8]
+	ldr r0, _021F6AB8 ; =ov14_021F8B10
+	ldr r3, _021F6ABC ; =ov14_021F8B10 + 8
+	ldr r0, [r0, r2]
+	ldr r1, [r1, r2]
+	ldr r2, [r3, r2]
+	add r3, r4, #0
+	bl GridInputHandler_Create
+	ldr r1, [r4, #0x34]
+	str r0, [r1, #0x2c]
+	ldr r1, [r4, #0x2c]
+	add r0, r4, #0
+	bl ov14_021F6B28
+	add sp, #0xc
+	pop {r4, r5, pc}
+	nop
+_021F6AB4: .word ov14_021F8B10 + 4
+_021F6AB8: .word ov14_021F8B10
+_021F6ABC: .word ov14_021F8B10 + 8
+	thumb_func_end ov14_021F6A44
+
+	thumb_func_start ov14_021F6AC0
+ov14_021F6AC0: ; 0x021F6AC0
+	push {r3, r4, r5, r6, lr}
+	sub sp, #0xc
+	add r6, r1, #0
+	add r5, r0, #0
+	add r4, r2, #0
+	bl ov14_021F6B10
+	mov r0, #0xc
+	add r2, r6, #0
+	mul r2, r0
+	mov r0, #1
+	str r0, [sp]
+	lsl r0, r4, #0x18
+	lsr r0, r0, #0x18
+	str r0, [sp, #4]
+	mov r0, #0xa
+	str r0, [sp, #8]
+	ldr r0, _021F6B04 ; =ov14_021F8B10
+	ldr r1, _021F6B08 ; =ov14_021F8B10 + 4
+	ldr r3, _021F6B0C ; =ov14_021F8B10 + 8
+	ldr r0, [r0, r2]
+	ldr r1, [r1, r2]
+	ldr r2, [r3, r2]
+	add r3, r5, #0
+	bl GridInputHandler_Create
+	ldr r1, [r5, #0x34]
+	str r0, [r1, #0x2c]
+	add r0, r5, #0
+	add r1, r4, #0
+	bl ov14_021F6B28
+	add sp, #0xc
+	pop {r3, r4, r5, r6, pc}
+	.balign 4, 0
+_021F6B04: .word ov14_021F8B10
+_021F6B08: .word ov14_021F8B10 + 4
+_021F6B0C: .word ov14_021F8B10 + 8
+	thumb_func_end ov14_021F6AC0
+
+	thumb_func_start ov14_021F6B10
+ov14_021F6B10: ; 0x021F6B10
+	push {r4, lr}
+	add r4, r0, #0
+	ldr r0, [r4, #0x34]
+	ldr r0, [r0, #0x2c]
+	cmp r0, #0
+	beq _021F6B26
+	bl GridInputHandler_Free
+	ldr r0, [r4, #0x34]
+	mov r1, #0
+	str r1, [r0, #0x2c]
+_021F6B26:
+	pop {r4, pc}
+	thumb_func_end ov14_021F6B10
+
+	thumb_func_start ov14_021F6B28
+ov14_021F6B28: ; 0x021F6B28
+	push {r3, r4, r5, lr}
+	add r4, r0, #0
+	ldr r0, [r4, #0x34]
+	ldr r0, [r0, #0x2c]
+	bl GridInputHandler_GetDpadBox
+	add r5, r0, #0
+	ldr r0, [r4, #0x34]
+	mov r1, #9
+	mov r2, #1
+	bl ov14_021F2A18
+	add r1, sp, #0
+	add r0, r5, #0
+	add r1, #1
+	add r2, sp, #0
+	bl DpadMenuBox_GetPosition
+	mov r0, #0x32
+	ldr r1, [r4, #0x34]
+	lsl r0, r0, #4
+	add r2, sp, #0
+	ldr r0, [r1, r0]
+	ldrb r1, [r2, #1]
+	ldrb r2, [r2]
+	bl ManagedSprite_SetPositionXY
+	pop {r3, r4, r5, pc}
+	thumb_func_end ov14_021F6B28
+
+	thumb_func_start ov14_021F6B60
+ov14_021F6B60: ; 0x021F6B60
+	push {r3, r4, r5, lr}
+	add r5, r0, #0
+	ldr r0, [r5, #0x34]
+	add r4, r1, #0
+	lsl r1, r4, #0x18
+	ldr r0, [r0, #0x2c]
+	lsr r1, r1, #0x18
+	bl GridInputHandler_SetNextInput
+	add r0, r5, #0
+	add r1, r4, #0
+	bl ov14_021F6B28
+	pop {r3, r4, r5, pc}
+	thumb_func_end ov14_021F6B60
+
+	thumb_func_start ov14_021F6B7C
+ov14_021F6B7C: ; 0x021F6B7C
+	ldr r3, _021F6B88 ; =ov14_021F2A18
+	ldr r0, [r0, #0x34]
+	mov r1, #9
+	mov r2, #0
+	bx r3
+	nop
+_021F6B88: .word ov14_021F2A18
+	thumb_func_end ov14_021F6B7C
+
+	thumb_func_start ov14_021F6B8C
+ov14_021F6B8C: ; 0x021F6B8C
+	push {r4, lr}
+	add r4, r0, #0
+	ldr r0, [r4, #0x34]
+	bl ov14_021F7AC4
+	ldr r0, [r4, #0x34]
+	ldr r1, _021F6BA0 ; =ov14_021E9F20
+	bl ov14_021E5A50
+	pop {r4, pc}
+	.balign 4, 0
+_021F6BA0: .word ov14_021E9F20
+	thumb_func_end ov14_021F6B8C
+
+	thumb_func_start ov14_021F6BA4
+ov14_021F6BA4: ; 0x021F6BA4
+	push {r3, r4, r5, lr}
+	add r5, r0, #0
+	ldr r0, [r5, #0x34]
+	add r4, r1, #0
+	lsl r1, r4, #0x18
+	ldr r0, [r0, #0x2c]
+	lsr r1, r1, #0x18
+	bl GridInputHandler_SetNextInput
+	add r0, r5, #0
+	add r1, r4, #0
+	bl ov14_021F6B28
+	pop {r3, r4, r5, pc}
+	thumb_func_end ov14_021F6BA4
+
+	thumb_func_start ov14_021F6BC0
+ov14_021F6BC0: ; 0x021F6BC0
+	push {r4, r5, r6, lr}
+	add r5, r0, #0
+	ldr r0, [r5, #0x34]
+	ldr r0, [r0, #0x2c]
+	bl GridInputHandler_GetNextInput
+	add r6, r0, #0
+	ldr r0, [r5, #0x34]
+	ldr r0, [r0, #0x2c]
+	bl GridInputHandler_HandleInput_AllowHold
+	add r4, r0, #0
+	cmp r4, #0xc
+	ldr r1, [r5, #0x34]
+	bhs _021F6C18
+	mov r0, #0x2f
+	lsl r0, r0, #4
+	ldr r0, [r1, r0]
+	bl ov14_021E8544
+	cmp r0, #0
+	bne _021F6C0C
+	cmp r4, #7
+	blo _021F6C14
+	cmp r4, #0xb
+	bhi _021F6C14
+	ldr r0, [r5, #0x34]
+	add r1, r6, #0
+	ldr r0, [r0, #0x2c]
+	bl GridInputHandler_SetNextInput
+	add r0, r5, #0
+	add r1, r6, #0
+	bl ov14_021F6B28
+	mov r0, #0
+	mvn r0, r0
+	pop {r4, r5, r6, pc}
+_021F6C0C:
+	cmp r4, #6
+	bne _021F6C14
+	mov r0, #0xb
+	pop {r4, r5, r6, pc}
+_021F6C14:
+	add r0, r4, #0
+	pop {r4, r5, r6, pc}
+_021F6C18:
+	mov r0, #0x2f
+	lsl r0, r0, #4
+	ldr r0, [r1, r0]
+	bl ov14_021E8544
+	cmp r0, #1
+	bne _021F6C36
+	cmp r4, #6
+	beq _021F6C32
+	mov r0, #1
+	mvn r0, r0
+	cmp r4, r0
+	bne _021F6C36
+_021F6C32:
+	mov r0, #0xb
+	pop {r4, r5, r6, pc}
+_021F6C36:
+	add r0, r4, #0
+	pop {r4, r5, r6, pc}
+	.balign 4, 0
+	thumb_func_end ov14_021F6BC0
+
+	thumb_func_start ov14_021F6C3C
+ov14_021F6C3C: ; 0x021F6C3C
+	push {r3, r4, r5, lr}
+	add r5, r0, #0
+	mov r0, #0
+	mvn r0, r0
+	add r4, r1, #0
+	cmp r2, r0
+	beq _021F6C7E
+	mov r0, #0x2f
+	ldr r1, [r5, #0x34]
+	lsl r0, r0, #4
+	ldr r0, [r1, r0]
+	bl ov14_021E8544
+	cmp r0, #0
+	bne _021F6C70
+	add r0, r5, #0
+	add r0, #0x21
+	ldrb r4, [r0]
+	cmp r4, #0xff
+	beq _021F6C6C
+	cmp r4, #0x1e
+	blo _021F6C6C
+	sub r4, #0x1e
+	b _021F6C7E
+_021F6C6C:
+	mov r4, #0
+	b _021F6C7E
+_021F6C70:
+	cmp r4, #8
+	beq _021F6C7E
+	cmp r4, #9
+	beq _021F6C7E
+	cmp r4, #0xa
+	beq _021F6C7E
+	mov r4, #7
+_021F6C7E:
+	ldr r0, [r5, #0x34]
+	lsl r1, r4, #0x18
+	ldr r0, [r0, #0x2c]
+	lsr r1, r1, #0x18
+	bl GridInputHandler_SetNextInput
+	add r0, r5, #0
+	add r1, r4, #0
+	bl ov14_021F6B28
+	pop {r3, r4, r5, pc}
+	thumb_func_end ov14_021F6C3C
+
+	thumb_func_start ov14_021F6C94
+ov14_021F6C94: ; 0x021F6C94
+	push {r3, r4, r5, lr}
+	add r4, r1, #0
+	add r5, r0, #0
+	sub r0, r4, #6
+	cmp r0, #1
+	bhi _021F6CB4
+	add r0, r5, #0
+	add r0, #0x25
+	ldrb r0, [r0]
+	mov r1, #6
+	bl _s32_div_f
+	add r4, r1, #0
+	ldr r1, [r5, #0x34]
+	ldr r0, _021F6D10 ; =0x0000043C
+	str r4, [r1, r0]
+_021F6CB4:
+	ldr r0, [r5, #0x34]
+	lsl r1, r4, #0x18
+	ldr r0, [r0, #0x2c]
+	lsr r1, r1, #0x18
+	bl GridInputHandler_SetNextInput
+	ldr r0, [r5, #0x34]
+	add r1, r4, #0
+	ldr r0, [r0, #0x2c]
+	bl GridInputHandler_GetDpadBox
+	add r1, sp, #0
+	add r1, #1
+	add r2, sp, #0
+	bl DpadMenuBox_GetPosition
+	mov r0, #0x32
+	ldr r1, [r5, #0x34]
+	lsl r0, r0, #4
+	add r2, sp, #0
+	ldr r0, [r1, r0]
+	ldrb r1, [r2, #1]
+	ldrb r2, [r2]
+	bl ManagedSprite_SetPositionXY
+	ldr r0, [r5, #0x34]
+	mov r1, #9
+	mov r2, #1
+	bl ov14_021F2A18
+	cmp r4, #0
+	blt _021F6D04
+	cmp r4, #5
+	bgt _021F6D04
+	ldr r0, [r5, #0x34]
+	mov r1, #9
+	mov r2, #0xe
+	bl ov14_021F29E4
+	pop {r3, r4, r5, pc}
+_021F6D04:
+	ldr r0, [r5, #0x34]
+	mov r1, #9
+	mov r2, #8
+	bl ov14_021F29E4
+	pop {r3, r4, r5, pc}
+	.balign 4, 0
+_021F6D10: .word 0x0000043C
+	thumb_func_end ov14_021F6C94
+
+	thumb_func_start ov14_021F6D14
+ov14_021F6D14: ; 0x021F6D14
+	push {r4, r5, r6, lr}
+	add r4, r1, #0
+	add r5, r0, #0
+	add r6, r2, #0
+	cmp r4, #0
+	blt _021F6D30
+	cmp r4, #5
+	bgt _021F6D30
+	ldr r0, [r5, #0x34]
+	mov r1, #9
+	mov r2, #0xe
+	bl ov14_021F29E4
+	b _021F6D3A
+_021F6D30:
+	ldr r0, [r5, #0x34]
+	mov r1, #9
+	mov r2, #8
+	bl ov14_021F29E4
+_021F6D3A:
+	cmp r6, #8
+	bne _021F6D56
+	cmp r4, #0
+	bne _021F6D56
+	ldr r1, [r5, #0x34]
+	ldr r0, _021F6E60 ; =0x0000043C
+	mov r2, #8
+	ldr r4, [r1, r0]
+	ldr r0, [r1, #0x2c]
+	lsl r1, r4, #0x18
+	lsr r1, r1, #0x18
+	add r3, r2, #0
+	bl GridInputHandler_SetNextLastUnk0FInputs
+_021F6D56:
+	cmp r4, #0
+	blt _021F6D64
+	cmp r4, #5
+	bgt _021F6D64
+	ldr r1, [r5, #0x34]
+	ldr r0, _021F6E60 ; =0x0000043C
+	str r4, [r1, r0]
+_021F6D64:
+	cmp r4, #0
+	bne _021F6DC0
+	cmp r6, #5
+	bne _021F6DC0
+	add r0, r5, #0
+	add r0, #0x25
+	ldrb r0, [r0]
+	add r0, r0, #1
+	cmp r0, #0x12
+	blt _021F6D7C
+	mov r1, #0
+	b _021F6D84
+_021F6D7C:
+	add r0, r5, #0
+	add r0, #0x25
+	ldrb r0, [r0]
+	add r1, r0, #1
+_021F6D84:
+	add r0, r5, #0
+	add r0, #0x25
+	strb r1, [r0]
+	add r0, r5, #0
+	bl ov14_021F49E0
+	add r0, r5, #0
+	bl ov14_021F48B4
+	add r0, r5, #0
+	bl ov14_021F4848
+	add r0, r5, #0
+	bl ov14_021F57B8
+	ldr r0, [r5, #0x34]
+	mov r1, #5
+	mov r2, #4
+	bl ov14_021F29E4
+	ldr r0, [r5, #0x34]
+	add r1, r4, #0
+	add r2, r6, #0
+	bl ov14_021F7AC4
+	ldr r0, [r5, #0x34]
+	ldr r1, _021F6E64 ; =ov14_021E9F20
+	bl ov14_021E5A50
+	pop {r4, r5, r6, pc}
+_021F6DC0:
+	cmp r4, #5
+	bne _021F6E1A
+	cmp r6, #0
+	bne _021F6E1A
+	add r0, r5, #0
+	add r0, #0x25
+	ldrb r0, [r0]
+	sub r0, r0, #1
+	bpl _021F6DD6
+	mov r1, #0x11
+	b _021F6DDE
+_021F6DD6:
+	add r0, r5, #0
+	add r0, #0x25
+	ldrb r0, [r0]
+	sub r1, r0, #1
+_021F6DDE:
+	add r0, r5, #0
+	add r0, #0x25
+	strb r1, [r0]
+	add r0, r5, #0
+	bl ov14_021F49E0
+	add r0, r5, #0
+	bl ov14_021F48B4
+	add r0, r5, #0
+	bl ov14_021F4848
+	add r0, r5, #0
+	bl ov14_021F57B8
+	ldr r0, [r5, #0x34]
+	mov r1, #4
+	mov r2, #2
+	bl ov14_021F29E4
+	ldr r0, [r5, #0x34]
+	add r1, r4, #0
+	add r2, r6, #0
+	bl ov14_021F7AC4
+	ldr r0, [r5, #0x34]
+	ldr r1, _021F6E64 ; =ov14_021E9F20
+	bl ov14_021E5A50
+	pop {r4, r5, r6, pc}
+_021F6E1A:
+	cmp r4, #0
+	blt _021F6E4A
+	cmp r4, #5
+	bgt _021F6E4A
+	cmp r6, #8
+	beq _021F6E4A
+	add r0, r5, #0
+	add r0, #0x25
+	ldrb r0, [r0]
+	mov r1, #6
+	bl _s32_div_f
+	mov r1, #6
+	mul r1, r0
+	add r0, r5, #0
+	add r1, r4, r1
+	add r0, #0x25
+	strb r1, [r0]
+	add r0, r5, #0
+	bl ov14_021F48B4
+	add r0, r5, #0
+	bl ov14_021F57B8
+_021F6E4A:
+	ldr r0, [r5, #0x34]
+	add r1, r4, #0
+	add r2, r6, #0
+	bl ov14_021F7AC4
+	ldr r0, [r5, #0x34]
+	ldr r1, _021F6E64 ; =ov14_021E9F20
+	bl ov14_021E5A50
+	pop {r4, r5, r6, pc}
+	nop
+_021F6E60: .word 0x0000043C
+_021F6E64: .word ov14_021E9F20
+	thumb_func_end ov14_021F6D14
+
+	thumb_func_start ov14_021F6E68
+ov14_021F6E68: ; 0x021F6E68
+	push {r3, r4, r5, lr}
+	add r5, r0, #0
+	ldr r0, [r5, #0x34]
+	add r4, r1, #0
+	lsl r1, r4, #0x18
+	ldr r0, [r0, #0x2c]
+	lsr r1, r1, #0x18
+	bl GridInputHandler_SetNextInput
+	cmp r4, #6
+	beq _021F6E8A
+	cmp r4, #7
+	beq _021F6E8A
+	add r0, r5, #0
+	add r1, r4, #0
+	bl ov14_021F6B28
+_021F6E8A:
+	pop {r3, r4, r5, pc}
+	thumb_func_end ov14_021F6E68
+
+	thumb_func_start ov14_021F6E8C
+ov14_021F6E8C: ; 0x021F6E8C
+	push {r4, r5, r6, lr}
+	add r5, r0, #0
+	ldr r0, [r5, #0x34]
+	ldr r0, [r0, #0x2c]
+	bl GridInputHandler_GetNextInput
+	add r6, r0, #0
+	ldr r0, [r5, #0x34]
+	ldr r0, [r0, #0x2c]
+	bl GridInputHandler_HandleInput_AllowHold
+	add r4, r0, #0
+	cmp r4, #0x27
+	ldr r1, [r5, #0x34]
+	bhs _021F6EE4
+	mov r0, #0x2f
+	lsl r0, r0, #4
+	ldr r0, [r1, r0]
+	bl ov14_021E8544
+	cmp r0, #0
+	bne _021F6ED8
+	cmp r4, #0x22
+	blo _021F6EE0
+	cmp r4, #0x26
+	bhi _021F6EE0
+	ldr r0, [r5, #0x34]
+	add r1, r6, #0
+	ldr r0, [r0, #0x2c]
+	bl GridInputHandler_SetNextInput
+	add r0, r5, #0
+	add r1, r6, #0
+	bl ov14_021F6B28
+	mov r0, #0
+	mvn r0, r0
+	pop {r4, r5, r6, pc}
+_021F6ED8:
+	cmp r4, #0x21
+	bne _021F6EE0
+	mov r0, #0x26
+	pop {r4, r5, r6, pc}
+_021F6EE0:
+	add r0, r4, #0
+	pop {r4, r5, r6, pc}
+_021F6EE4:
+	mov r0, #0x2f
+	lsl r0, r0, #4
+	ldr r0, [r1, r0]
+	bl ov14_021E8544
+	cmp r0, #1
+	bne _021F6F02
+	cmp r4, #0x21
+	beq _021F6EFE
+	mov r0, #1
+	mvn r0, r0
+	cmp r4, r0
+	bne _021F6F02
+_021F6EFE:
+	mov r0, #0x26
+	pop {r4, r5, r6, pc}
+_021F6F02:
+	add r0, r4, #0
+	pop {r4, r5, r6, pc}
+	.balign 4, 0
+	thumb_func_end ov14_021F6E8C
+
+	thumb_func_start ov14_021F6F08
+ov14_021F6F08: ; 0x021F6F08
+	push {r3, r4, r5, lr}
+	add r5, r0, #0
+	mov r0, #0
+	mvn r0, r0
+	add r4, r1, #0
+	cmp r2, r0
+	beq _021F6F5A
+	mov r0, #0x2f
+	ldr r1, [r5, #0x34]
+	lsl r0, r0, #4
+	ldr r0, [r1, r0]
+	bl ov14_021E8544
+	cmp r0, #0
+	bne _021F6F4C
+	add r0, r4, #0
+	sub r0, #0x1f
+	cmp r0, #1
+	bhi _021F6F32
+	mov r4, #0x1e
+	b _021F6F5A
+_021F6F32:
+	cmp r4, #0x1e
+	beq _021F6F5A
+	cmp r4, #0x21
+	beq _021F6F5A
+	add r0, r5, #0
+	add r0, #0x21
+	ldrb r4, [r0]
+	cmp r4, #0xff
+	beq _021F6F48
+	cmp r4, #0x1e
+	blo _021F6F5A
+_021F6F48:
+	mov r4, #0
+	b _021F6F5A
+_021F6F4C:
+	cmp r4, #0x23
+	beq _021F6F5A
+	cmp r4, #0x24
+	beq _021F6F5A
+	cmp r4, #0x25
+	beq _021F6F5A
+	mov r4, #0x22
+_021F6F5A:
+	ldr r0, [r5, #0x34]
+	lsl r1, r4, #0x18
+	ldr r0, [r0, #0x2c]
+	lsr r1, r1, #0x18
+	bl GridInputHandler_SetNextInput
+	add r0, r5, #0
+	add r1, r4, #0
+	bl ov14_021F6B28
+	pop {r3, r4, r5, pc}
+	thumb_func_end ov14_021F6F08
+
+	thumb_func_start ov14_021F6F70
+ov14_021F6F70: ; 0x021F6F70
+	push {r3, r4, r5, lr}
+	add r5, r0, #0
+	ldr r0, [r5, #0x34]
+	add r4, r1, #0
+	lsl r1, r4, #0x18
+	ldr r0, [r0, #0x2c]
+	lsr r1, r1, #0x18
+	bl GridInputHandler_SetNextInput
+	cmp r4, #0x1f
+	beq _021F6F92
+	cmp r4, #0x20
+	beq _021F6F92
+	add r0, r5, #0
+	add r1, r4, #0
+	bl ov14_021F6B28
+_021F6F92:
+	pop {r3, r4, r5, pc}
+	thumb_func_end ov14_021F6F70
+
+	thumb_func_start ov14_021F6F94
+ov14_021F6F94: ; 0x021F6F94
+	push {r4, r5, r6, lr}
+	add r5, r0, #0
+	ldr r0, [r5, #0x34]
+	ldr r0, [r0, #0x2c]
+	bl GridInputHandler_GetNextInput
+	add r6, r0, #0
+	ldr r0, [r5, #0x34]
+	ldr r0, [r0, #0x2c]
+	bl GridInputHandler_HandleInput_AllowHold
+	add r4, r0, #0
+	mov r0, #0x2f
+	ldr r1, [r5, #0x34]
+	lsl r0, r0, #4
+	ldr r0, [r1, r0]
+	bl ov14_021E8544
+	cmp r0, #0
+	bne _021F6FDC
+	cmp r4, #0x24
+	blo _021F700C
+	cmp r4, #0x28
+	bhi _021F700C
+	ldr r0, [r5, #0x34]
+	add r1, r6, #0
+	ldr r0, [r0, #0x2c]
+	bl GridInputHandler_SetNextInput
+	add r0, r5, #0
+	add r1, r6, #0
+	bl ov14_021F6B28
+	mov r0, #0
+	mvn r0, r0
+	pop {r4, r5, r6, pc}
+_021F6FDC:
+	add r0, r4, #0
+	sub r0, #0x21
+	cmp r0, #1
+	bhi _021F6FFC
+	ldr r0, [r5, #0x34]
+	add r1, r6, #0
+	ldr r0, [r0, #0x2c]
+	bl GridInputHandler_SetNextInput
+	add r0, r5, #0
+	add r1, r6, #0
+	bl ov14_021F6B28
+	mov r0, #0
+	mvn r0, r0
+	pop {r4, r5, r6, pc}
+_021F6FFC:
+	cmp r4, #0x23
+	beq _021F7008
+	mov r0, #1
+	mvn r0, r0
+	cmp r4, r0
+	bne _021F700C
+_021F7008:
+	mov r0, #0x29
+	pop {r4, r5, r6, pc}
+_021F700C:
+	add r0, r4, #0
+	pop {r4, r5, r6, pc}
+	thumb_func_end ov14_021F6F94
+
+	thumb_func_start ov14_021F7010
+ov14_021F7010: ; 0x021F7010
+	push {r3, r4, r5, lr}
+	add r5, r0, #0
+	mov r0, #0
+	mvn r0, r0
+	add r4, r1, #0
+	cmp r2, r0
+	beq _021F7076
+	mov r0, #0x2f
+	ldr r1, [r5, #0x34]
+	lsl r0, r0, #4
+	ldr r0, [r1, r0]
+	bl ov14_021E8544
+	cmp r0, #0
+	bne _021F7060
+	add r0, r4, #0
+	sub r0, #0x1e
+	cmp r0, #5
+	bhi _021F7052
+	add r0, r0, r0
+	add r0, pc
+	ldrh r0, [r0, #6]
+	lsl r0, r0, #0x10
+	asr r0, r0, #0x10
+	add pc, r0
+_021F7042: ; jump table
+	.short _021F7076 - _021F7042 - 2 ; case 0
+	.short _021F704E - _021F7042 - 2 ; case 1
+	.short _021F704E - _021F7042 - 2 ; case 2
+	.short _021F7076 - _021F7042 - 2 ; case 3
+	.short _021F7076 - _021F7042 - 2 ; case 4
+	.short _021F7076 - _021F7042 - 2 ; case 5
+_021F704E:
+	mov r4, #0x1e
+	b _021F7076
+_021F7052:
+	add r0, r5, #0
+	add r0, #0x21
+	ldrb r4, [r0]
+	cmp r4, #0x1e
+	blo _021F7076
+	mov r4, #0
+	b _021F7076
+_021F7060:
+	cmp r4, #0x24
+	bne _021F7074
+	cmp r4, #0x25
+	bne _021F7074
+	cmp r4, #0x26
+	bne _021F7074
+	cmp r4, #0x27
+	bne _021F7074
+	cmp r4, #0x28
+	beq _021F7076
+_021F7074:
+	mov r4, #0x24
+_021F7076:
+	ldr r0, [r5, #0x34]
+	lsl r1, r4, #0x18
+	ldr r0, [r0, #0x2c]
+	lsr r1, r1, #0x18
+	bl GridInputHandler_SetNextInput
+	add r0, r5, #0
+	add r1, r4, #0
+	bl ov14_021F6B28
+	pop {r3, r4, r5, pc}
+	thumb_func_end ov14_021F7010
+
+	thumb_func_start ov14_021F708C
+ov14_021F708C: ; 0x021F708C
+	push {r4, lr}
+	add r4, r0, #0
+	ldr r0, [r4, #0x34]
+	bl ov14_021F7AC4
+	ldr r0, [r4, #0x34]
+	ldr r1, _021F70A0 ; =ov14_021E9F20
+	bl ov14_021E5A50
+	pop {r4, pc}
+	.balign 4, 0
+_021F70A0: .word ov14_021E9F20
+	thumb_func_end ov14_021F708C
+
+	thumb_func_start ov14_021F70A4
+ov14_021F70A4: ; 0x021F70A4
+	push {r3, r4, r5, lr}
+	add r5, r0, #0
+	ldr r0, [r5, #0x34]
+	add r4, r1, #0
+	lsl r1, r4, #0x18
+	ldr r0, [r0, #0x2c]
+	lsr r1, r1, #0x18
+	bl GridInputHandler_SetNextInput
+	add r0, r5, #0
+	add r1, r4, #0
+	bl ov14_021F6B28
+	pop {r3, r4, r5, pc}
+	thumb_func_end ov14_021F70A4
+
+	thumb_func_start ov14_021F70C0
+ov14_021F70C0: ; 0x021F70C0
+	push {r3, r4, r5, lr}
+	add r5, r0, #0
+	mov r0, #0x2f
+	ldr r1, [r5, #0x34]
+	lsl r0, r0, #4
+	ldr r0, [r1, r0]
+	bl ov14_021E85E4
+	cmp r0, #0
+	bne _021F70DE
+	ldr r0, [r5, #0x34]
+	mov r1, #0x2d
+	ldr r0, [r0, #0x2c]
+	bl GridInputHandler_ClearEnabledFlag
+_021F70DE:
+	ldr r0, [r5, #0x34]
+	ldr r0, [r0, #0x2c]
+	bl GridInputHandler_HandleInput_AllowHold
+	add r4, r0, #0
+	ldr r0, [r5, #0x34]
+	ldr r0, [r0, #0x2c]
+	bl GridInputHandler_SetAllEnabled
+	add r0, r4, #0
+	pop {r3, r4, r5, pc}
+	thumb_func_end ov14_021F70C0
+
+	thumb_func_start ov14_021F70F4
+ov14_021F70F4: ; 0x021F70F4
+	push {r3, r4, r5, lr}
+	add r4, r1, #0
+	add r5, r0, #0
+	add r0, r4, #0
+	sub r0, #0x2b
+	cmp r0, #1
+	bhi _021F7118
+	add r0, r5, #0
+	add r0, #0x25
+	ldrb r0, [r0]
+	mov r1, #6
+	bl _s32_div_f
+	add r4, r1, #0
+	ldr r1, [r5, #0x34]
+	ldr r0, _021F717C ; =0x0000043C
+	add r4, #0x25
+	str r4, [r1, r0]
+_021F7118:
+	ldr r0, [r5, #0x34]
+	lsl r1, r4, #0x18
+	ldr r0, [r0, #0x2c]
+	lsr r1, r1, #0x18
+	bl GridInputHandler_SetNextInput
+	ldr r0, [r5, #0x34]
+	add r1, r4, #0
+	ldr r0, [r0, #0x2c]
+	bl GridInputHandler_GetDpadBox
+	add r1, sp, #0
+	add r1, #1
+	add r2, sp, #0
+	bl DpadMenuBox_GetPosition
+	mov r0, #0x32
+	ldr r1, [r5, #0x34]
+	lsl r0, r0, #4
+	add r2, sp, #0
+	ldr r0, [r1, r0]
+	ldrb r1, [r2, #1]
+	ldrb r2, [r2]
+	bl ManagedSprite_SetPositionXY
+	ldr r0, [r5, #0x34]
+	mov r1, #9
+	mov r2, #1
+	bl ov14_021F2A18
+	ldr r0, [r5, #0x34]
+	ldr r1, _021F7180 ; =0x0000044B
+	ldrb r1, [r0, r1]
+	cmp r1, #0
+	bne _021F7178
+	cmp r4, #0x25
+	blt _021F7170
+	cmp r4, #0x2a
+	bgt _021F7170
+	mov r1, #9
+	mov r2, #0xe
+	bl ov14_021F29E4
+	pop {r3, r4, r5, pc}
+_021F7170:
+	mov r1, #9
+	mov r2, #8
+	bl ov14_021F29E4
+_021F7178:
+	pop {r3, r4, r5, pc}
+	nop
+_021F717C: .word 0x0000043C
+_021F7180: .word 0x0000044B
+	thumb_func_end ov14_021F70F4
+
+	thumb_func_start ov14_021F7184
+ov14_021F7184: ; 0x021F7184
+	push {r4, r5, r6, lr}
+	add r5, r0, #0
+	add r4, r1, #0
+	ldr r0, [r5, #0x34]
+	ldr r1, _021F72FC ; =0x0000044B
+	add r6, r2, #0
+	ldrb r1, [r0, r1]
+	cmp r1, #0
+	bne _021F71B0
+	cmp r4, #0x25
+	blt _021F71A8
+	cmp r4, #0x2a
+	bgt _021F71A8
+	mov r1, #9
+	mov r2, #0xe
+	bl ov14_021F29E4
+	b _021F71B0
+_021F71A8:
+	mov r1, #9
+	mov r2, #8
+	bl ov14_021F29E4
+_021F71B0:
+	cmp r4, #0x25
+	bne _021F71EE
+	cmp r6, #0
+	blt _021F71BC
+	cmp r6, #5
+	ble _021F71D0
+_021F71BC:
+	cmp r6, #0x18
+	blt _021F71C4
+	cmp r6, #0x1d
+	ble _021F71D0
+_021F71C4:
+	cmp r6, #0x1e
+	blt _021F71CC
+	cmp r6, #0x1f
+	ble _021F71D0
+_021F71CC:
+	cmp r6, #0x24
+	bne _021F71EE
+_021F71D0:
+	ldr r1, [r5, #0x34]
+	ldr r0, _021F7300 ; =0x0000043C
+	ldr r4, [r1, r0]
+	ldr r0, [r1, #0x2c]
+	bl GridInputHandler_GetUnk0F
+	add r3, r0, #0
+	ldr r0, [r5, #0x34]
+	lsl r1, r4, #0x18
+	lsl r2, r6, #0x18
+	ldr r0, [r0, #0x2c]
+	lsr r1, r1, #0x18
+	lsr r2, r2, #0x18
+	bl GridInputHandler_SetNextLastUnk0FInputs
+_021F71EE:
+	cmp r4, #0x25
+	blt _021F71FC
+	cmp r4, #0x2a
+	bgt _021F71FC
+	ldr r1, [r5, #0x34]
+	ldr r0, _021F7300 ; =0x0000043C
+	str r4, [r1, r0]
+_021F71FC:
+	cmp r4, #0x25
+	bne _021F7258
+	cmp r6, #0x2a
+	bne _021F7258
+	add r0, r5, #0
+	add r0, #0x25
+	ldrb r0, [r0]
+	add r0, r0, #1
+	cmp r0, #0x12
+	blt _021F7214
+	mov r1, #0
+	b _021F721C
+_021F7214:
+	add r0, r5, #0
+	add r0, #0x25
+	ldrb r0, [r0]
+	add r1, r0, #1
+_021F721C:
+	add r0, r5, #0
+	add r0, #0x25
+	strb r1, [r0]
+	add r0, r5, #0
+	bl ov14_021F49E0
+	add r0, r5, #0
+	bl ov14_021F48B4
+	add r0, r5, #0
+	bl ov14_021F4848
+	add r0, r5, #0
+	bl ov14_021F57B8
+	ldr r0, [r5, #0x34]
+	mov r1, #5
+	mov r2, #4
+	bl ov14_021F29E4
+	ldr r0, [r5, #0x34]
+	add r1, r4, #0
+	add r2, r6, #0
+	bl ov14_021F7AC4
+	ldr r0, [r5, #0x34]
+	ldr r1, _021F7304 ; =ov14_021E9F20
+	bl ov14_021E5A50
+	pop {r4, r5, r6, pc}
+_021F7258:
+	cmp r4, #0x2a
+	bne _021F72B2
+	cmp r6, #0x25
+	bne _021F72B2
+	add r0, r5, #0
+	add r0, #0x25
+	ldrb r0, [r0]
+	sub r0, r0, #1
+	bpl _021F726E
+	mov r1, #0x11
+	b _021F7276
+_021F726E:
+	add r0, r5, #0
+	add r0, #0x25
+	ldrb r0, [r0]
+	sub r1, r0, #1
+_021F7276:
+	add r0, r5, #0
+	add r0, #0x25
+	strb r1, [r0]
+	add r0, r5, #0
+	bl ov14_021F49E0
+	add r0, r5, #0
+	bl ov14_021F48B4
+	add r0, r5, #0
+	bl ov14_021F4848
+	add r0, r5, #0
+	bl ov14_021F57B8
+	ldr r0, [r5, #0x34]
+	mov r1, #4
+	mov r2, #2
+	bl ov14_021F29E4
+	ldr r0, [r5, #0x34]
+	add r1, r4, #0
+	add r2, r6, #0
+	bl ov14_021F7AC4
+	ldr r0, [r5, #0x34]
+	ldr r1, _021F7304 ; =ov14_021E9F20
+	bl ov14_021E5A50
+	pop {r4, r5, r6, pc}
+_021F72B2:
+	cmp r4, #0x25
+	blt _021F72E8
+	cmp r4, #0x2a
+	bgt _021F72E8
+	cmp r6, #0x25
+	blt _021F72E8
+	cmp r6, #0x2a
+	bgt _021F72E8
+	add r0, r5, #0
+	add r0, #0x25
+	ldrb r0, [r0]
+	mov r1, #6
+	bl _s32_div_f
+	mov r1, #6
+	mul r1, r0
+	add r1, r4, r1
+	add r0, r5, #0
+	sub r1, #0x25
+	add r0, #0x25
+	strb r1, [r0]
+	add r0, r5, #0
+	bl ov14_021F48B4
+	add r0, r5, #0
+	bl ov14_021F57B8
+_021F72E8:
+	ldr r0, [r5, #0x34]
+	add r1, r4, #0
+	add r2, r6, #0
+	bl ov14_021F7AC4
+	ldr r0, [r5, #0x34]
+	ldr r1, _021F7304 ; =ov14_021E9F20
+	bl ov14_021E5A50
+	pop {r4, r5, r6, pc}
+	.balign 4, 0
+_021F72FC: .word 0x0000044B
+_021F7300: .word 0x0000043C
+_021F7304: .word ov14_021E9F20
+	thumb_func_end ov14_021F7184
+
+	thumb_func_start ov14_021F7308
+ov14_021F7308: ; 0x021F7308
+	push {r3, r4, r5, lr}
+	add r4, r1, #0
+	add r5, r0, #0
+	cmp r4, #0x25
+	blt _021F731C
+	cmp r4, #0x2a
+	bgt _021F731C
+	ldr r1, [r5, #0x34]
+	ldr r0, _021F733C ; =0x0000043C
+	str r4, [r1, r0]
+_021F731C:
+	cmp r4, #0x2b
+	beq _021F7338
+	cmp r4, #0x2c
+	beq _021F7338
+	ldr r0, [r5, #0x34]
+	lsl r1, r4, #0x18
+	ldr r0, [r0, #0x2c]
+	lsr r1, r1, #0x18
+	bl GridInputHandler_SetNextInput
+	add r0, r5, #0
+	add r1, r4, #0
+	bl ov14_021F6B28
+_021F7338:
+	pop {r3, r4, r5, pc}
+	nop
+_021F733C: .word 0x0000043C
+	thumb_func_end ov14_021F7308
+
+	thumb_func_start ov14_021F7340
+ov14_021F7340: ; 0x021F7340
+	push {r3, r4, r5, lr}
+	add r5, r0, #0
+	mov r0, #0x2f
+	ldr r1, [r5, #0x34]
+	lsl r0, r0, #4
+	ldr r0, [r1, r0]
+	bl ov14_021E85E4
+	cmp r0, #0
+	bne _021F735E
+	ldr r0, [r5, #0x34]
+	mov r1, #0x2d
+	ldr r0, [r0, #0x2c]
+	bl GridInputHandler_ClearEnabledFlag
+_021F735E:
+	ldr r0, [r5, #0x34]
+	mov r1, #0x2b
+	ldr r0, [r0, #0x2c]
+	bl GridInputHandler_ClearEnabledFlag
+	ldr r0, [r5, #0x34]
+	mov r1, #0x2c
+	ldr r0, [r0, #0x2c]
+	bl GridInputHandler_ClearEnabledFlag
+	ldr r0, [r5, #0x34]
+	ldr r0, [r0, #0x2c]
+	bl GridInputHandler_HandleInput_AllowHold
+	add r4, r0, #0
+	ldr r0, [r5, #0x34]
+	ldr r0, [r0, #0x2c]
+	bl GridInputHandler_SetAllEnabled
+	add r0, r4, #0
+	pop {r3, r4, r5, pc}
+	thumb_func_end ov14_021F7340
+
+	thumb_func_start ov14_021F7388
+ov14_021F7388: ; 0x021F7388
+	push {r4, r5, r6, lr}
+	add r5, r0, #0
+	ldr r0, [r5, #0x34]
+	ldr r0, [r0, #0x2c]
+	bl GridInputHandler_GetNextInput
+	add r6, r0, #0
+	ldr r0, [r5, #0x34]
+	ldr r0, [r0, #0x2c]
+	bl GridInputHandler_HandleInput_AllowHold
+	add r4, r0, #0
+	mov r0, #0x2f
+	ldr r1, [r5, #0x34]
+	lsl r0, r0, #4
+	ldr r0, [r1, r0]
+	bl ov14_021E8544
+	cmp r0, #0
+	bne _021F73D0
+	cmp r4, #8
+	blo _021F73E0
+	cmp r4, #0xc
+	bhi _021F73E0
+	ldr r0, [r5, #0x34]
+	add r1, r6, #0
+	ldr r0, [r0, #0x2c]
+	bl GridInputHandler_SetNextInput
+	add r0, r5, #0
+	add r1, r6, #0
+	bl ov14_021F6B28
+	mov r0, #0
+	mvn r0, r0
+	pop {r4, r5, r6, pc}
+_021F73D0:
+	cmp r4, #7
+	beq _021F73DC
+	mov r0, #1
+	mvn r0, r0
+	cmp r4, r0
+	bne _021F73E0
+_021F73DC:
+	mov r0, #0xd
+	pop {r4, r5, r6, pc}
+_021F73E0:
+	add r0, r4, #0
+	pop {r4, r5, r6, pc}
+	thumb_func_end ov14_021F7388
+
+	thumb_func_start ov14_021F73E4
+ov14_021F73E4: ; 0x021F73E4
+	push {r3, r4, r5, lr}
+	add r5, r0, #0
+	mov r0, #0
+	mvn r0, r0
+	add r4, r1, #0
+	cmp r2, r0
+	beq _021F742E
+	mov r0, #0x2f
+	ldr r1, [r5, #0x34]
+	lsl r0, r0, #4
+	ldr r0, [r1, r0]
+	bl ov14_021E8544
+	cmp r0, #0
+	bne _021F7418
+	cmp r4, #8
+	blt _021F742E
+	add r0, r5, #0
+	add r0, #0x21
+	ldrb r4, [r0]
+	cmp r4, #0x1e
+	blo _021F7414
+	sub r4, #0x1e
+	b _021F742E
+_021F7414:
+	mov r4, #0
+	b _021F742E
+_021F7418:
+	cmp r4, #8
+	bne _021F742C
+	cmp r4, #9
+	bne _021F742C
+	cmp r4, #0xa
+	bne _021F742C
+	cmp r4, #0xb
+	bne _021F742C
+	cmp r4, #0xc
+	beq _021F742E
+_021F742C:
+	mov r4, #8
+_021F742E:
+	ldr r0, [r5, #0x34]
+	lsl r1, r4, #0x18
+	ldr r0, [r0, #0x2c]
+	lsr r1, r1, #0x18
+	bl GridInputHandler_SetNextInput
+	add r0, r5, #0
+	add r1, r4, #0
+	bl ov14_021F6B28
+	pop {r3, r4, r5, pc}
+	thumb_func_end ov14_021F73E4
+
+	thumb_func_start ov14_021F7444
+ov14_021F7444: ; 0x021F7444
+	push {r4, r5, r6, lr}
+	add r5, r0, #0
+	add r4, r1, #0
+	mov r0, #0x2f
+	ldr r1, [r5, #0x34]
+	lsl r0, r0, #4
+	ldr r0, [r1, r0]
+	add r6, r2, #0
+	bl ov14_021E8544
+	cmp r0, #1
+	bne _021F747E
+	cmp r4, #6
+	bgt _021F7492
+	cmp r6, #7
+	blt _021F7492
+	add r0, r5, #0
+	bl ov14_021E76B8
+	ldr r0, [r5, #0x34]
+	add r1, r4, #0
+	add r2, r6, #0
+	bl ov14_021F7AC4
+	ldr r0, [r5, #0x34]
+	ldr r1, _021F74A8 ; =ov14_021EA180
+	bl ov14_021E5A50
+	pop {r4, r5, r6, pc}
+_021F747E:
+	cmp r4, #0xc
+	bne _021F7492
+	cmp r6, #7
+	bne _021F7492
+	ldr r0, [r5, #0x34]
+	mov r1, #7
+	ldr r0, [r0, #0x2c]
+	bl GridInputHandler_SetNextInput
+	mov r4, #7
+_021F7492:
+	ldr r0, [r5, #0x34]
+	add r1, r4, #0
+	add r2, r6, #0
+	bl ov14_021F7AC4
+	ldr r0, [r5, #0x34]
+	ldr r1, _021F74AC ; =ov14_021E9F20
+	bl ov14_021E5A50
+	pop {r4, r5, r6, pc}
+	nop
+_021F74A8: .word ov14_021EA180
+_021F74AC: .word ov14_021E9F20
+	thumb_func_end ov14_021F7444
+
+	thumb_func_start ov14_021F74B0
+ov14_021F74B0: ; 0x021F74B0
+	push {r4, r5, r6, lr}
+	add r5, r0, #0
+	ldr r0, [r5, #0x34]
+	ldr r0, [r0, #0x2c]
+	bl GridInputHandler_GetNextInput
+	add r6, r0, #0
+	ldr r0, [r5, #0x34]
+	ldr r0, [r0, #0x2c]
+	bl GridInputHandler_HandleInput_AllowHold
+	add r4, r0, #0
+	mov r0, #0x2f
+	ldr r1, [r5, #0x34]
+	lsl r0, r0, #4
+	ldr r0, [r1, r0]
+	bl ov14_021E8544
+	cmp r0, #0
+	bne _021F74F4
+	cmp r4, #0x24
+	bne _021F7524
+	ldr r0, [r5, #0x34]
+	add r1, r6, #0
+	ldr r0, [r0, #0x2c]
+	bl GridInputHandler_SetNextInput
+	add r0, r5, #0
+	add r1, r6, #0
+	bl ov14_021F6B28
+	mov r0, #0
+	mvn r0, r0
+	pop {r4, r5, r6, pc}
+_021F74F4:
+	add r0, r4, #0
+	sub r0, #0x21
+	cmp r0, #1
+	bhi _021F7514
+	ldr r0, [r5, #0x34]
+	add r1, r6, #0
+	ldr r0, [r0, #0x2c]
+	bl GridInputHandler_SetNextInput
+	add r0, r5, #0
+	add r1, r6, #0
+	bl ov14_021F6B28
+	mov r0, #0
+	mvn r0, r0
+	pop {r4, r5, r6, pc}
+_021F7514:
+	cmp r4, #0x23
+	beq _021F7520
+	mov r0, #1
+	mvn r0, r0
+	cmp r4, r0
+	bne _021F7524
+_021F7520:
+	mov r0, #0x25
+	pop {r4, r5, r6, pc}
+_021F7524:
+	add r0, r4, #0
+	pop {r4, r5, r6, pc}
+	thumb_func_end ov14_021F74B0
+
+	thumb_func_start ov14_021F7528
+ov14_021F7528: ; 0x021F7528
+	push {r3, r4, r5, lr}
+	add r5, r0, #0
+	mov r0, #0
+	mvn r0, r0
+	add r4, r1, #0
+	cmp r2, r0
+	beq _021F757E
+	mov r0, #0x2f
+	ldr r1, [r5, #0x34]
+	lsl r0, r0, #4
+	ldr r0, [r1, r0]
+	bl ov14_021E8544
+	cmp r0, #0
+	bne _021F7578
+	add r0, r4, #0
+	sub r0, #0x1e
+	cmp r0, #5
+	bhi _021F756A
+	add r0, r0, r0
+	add r0, pc
+	ldrh r0, [r0, #6]
+	lsl r0, r0, #0x10
+	asr r0, r0, #0x10
+	add pc, r0
+_021F755A: ; jump table
+	.short _021F757E - _021F755A - 2 ; case 0
+	.short _021F7566 - _021F755A - 2 ; case 1
+	.short _021F7566 - _021F755A - 2 ; case 2
+	.short _021F757E - _021F755A - 2 ; case 3
+	.short _021F757E - _021F755A - 2 ; case 4
+	.short _021F757E - _021F755A - 2 ; case 5
+_021F7566:
+	mov r4, #0x1e
+	b _021F757E
+_021F756A:
+	add r0, r5, #0
+	add r0, #0x21
+	ldrb r4, [r0]
+	cmp r4, #0x1e
+	blo _021F757E
+	mov r4, #0
+	b _021F757E
+_021F7578:
+	cmp r4, #0x24
+	beq _021F757E
+	mov r4, #0x24
+_021F757E:
+	ldr r0, [r5, #0x34]
+	lsl r1, r4, #0x18
+	ldr r0, [r0, #0x2c]
+	lsr r1, r1, #0x18
+	bl GridInputHandler_SetNextInput
+	add r0, r5, #0
+	add r1, r4, #0
+	bl ov14_021F6B28
+	pop {r3, r4, r5, pc}
+	thumb_func_end ov14_021F7528
+
+	thumb_func_start ov14_021F7594
+ov14_021F7594: ; 0x021F7594
+	push {r4, lr}
+	add r4, r0, #0
+	ldr r0, [r4, #0x34]
+	bl ov14_021F7AC4
+	ldr r0, [r4, #0x34]
+	ldr r1, _021F75A8 ; =ov14_021E9F20
+	bl ov14_021E5A50
+	pop {r4, pc}
+	.balign 4, 0
+_021F75A8: .word ov14_021E9F20
+	thumb_func_end ov14_021F7594
+
+	thumb_func_start ov14_021F75AC
+ov14_021F75AC: ; 0x021F75AC
+	push {r3, r4, r5, lr}
+	add r5, r0, #0
+	ldr r0, [r5, #0x34]
+	add r4, r1, #0
+	lsl r1, r4, #0x18
+	ldr r0, [r0, #0x2c]
+	lsr r1, r1, #0x18
+	bl GridInputHandler_SetNextInput
+	add r0, r5, #0
+	add r1, r4, #0
+	bl ov14_021F6B28
+	pop {r3, r4, r5, pc}
+	thumb_func_end ov14_021F75AC
+
+	thumb_func_start ov14_021F75C8
+ov14_021F75C8: ; 0x021F75C8
+	push {r4, r5, r6, lr}
+	add r5, r0, #0
+	ldr r0, [r5, #0x34]
+	ldr r0, [r0, #0x2c]
+	bl GridInputHandler_GetNextInput
+	add r6, r0, #0
+	ldr r0, [r5, #0x34]
+	ldr r0, [r0, #0x2c]
+	bl GridInputHandler_HandleInput_AllowHold
+	add r4, r0, #0
+	mov r0, #0x2f
+	ldr r1, [r5, #0x34]
+	lsl r0, r0, #4
+	ldr r0, [r1, r0]
+	bl ov14_021E8544
+	cmp r0, #0
+	bne _021F760C
+	cmp r4, #8
+	bne _021F761C
+	ldr r0, [r5, #0x34]
+	add r1, r6, #0
+	ldr r0, [r0, #0x2c]
+	bl GridInputHandler_SetNextInput
+	add r0, r5, #0
+	add r1, r6, #0
+	bl ov14_021F6B28
+	mov r0, #0
+	mvn r0, r0
+	pop {r4, r5, r6, pc}
+_021F760C:
+	cmp r4, #7
+	beq _021F7618
+	mov r0, #1
+	mvn r0, r0
+	cmp r4, r0
+	bne _021F761C
+_021F7618:
+	mov r0, #9
+	pop {r4, r5, r6, pc}
+_021F761C:
+	add r0, r4, #0
+	pop {r4, r5, r6, pc}
+	thumb_func_end ov14_021F75C8
+
+	thumb_func_start ov14_021F7620
+ov14_021F7620: ; 0x021F7620
+	push {r3, r4, r5, lr}
+	add r5, r0, #0
+	mov r0, #0
+	mvn r0, r0
+	add r4, r1, #0
+	cmp r2, r0
+	beq _021F765A
+	mov r0, #0x2f
+	ldr r1, [r5, #0x34]
+	lsl r0, r0, #4
+	ldr r0, [r1, r0]
+	bl ov14_021E8544
+	cmp r0, #0
+	bne _021F7654
+	cmp r4, #8
+	blt _021F765A
+	add r0, r5, #0
+	add r0, #0x21
+	ldrb r4, [r0]
+	cmp r4, #0x1e
+	blo _021F7650
+	sub r4, #0x1e
+	b _021F765A
+_021F7650:
+	mov r4, #0
+	b _021F765A
+_021F7654:
+	cmp r4, #8
+	beq _021F765A
+	mov r4, #8
+_021F765A:
+	ldr r0, [r5, #0x34]
+	lsl r1, r4, #0x18
+	ldr r0, [r0, #0x2c]
+	lsr r1, r1, #0x18
+	bl GridInputHandler_SetNextInput
+	add r0, r5, #0
+	add r1, r4, #0
+	bl ov14_021F6B28
+	pop {r3, r4, r5, pc}
+	thumb_func_end ov14_021F7620
+
+	thumb_func_start ov14_021F7670
+ov14_021F7670: ; 0x021F7670
+	push {r4, lr}
+	add r4, r0, #0
+	ldr r0, [r4, #0x34]
+	bl ov14_021F7AC4
+	ldr r0, [r4, #0x34]
+	ldr r1, _021F7684 ; =ov14_021E9F20
+	bl ov14_021E5A50
+	pop {r4, pc}
+	.balign 4, 0
+_021F7684: .word ov14_021E9F20
+	thumb_func_end ov14_021F7670
+
+	thumb_func_start ov14_021F7688
+ov14_021F7688: ; 0x021F7688
+	push {r3, r4, r5, lr}
+	add r4, r1, #0
+	add r5, r0, #0
+	sub r0, r4, #6
+	cmp r0, #1
+	bhi _021F76A8
+	add r0, r5, #0
+	add r0, #0x25
+	ldrb r0, [r0]
+	mov r1, #6
+	bl _s32_div_f
+	add r4, r1, #0
+	ldr r1, [r5, #0x34]
+	ldr r0, _021F76FC ; =0x0000043C
+	str r4, [r1, r0]
+_021F76A8:
+	ldr r0, [r5, #0x34]
+	lsl r1, r4, #0x18
+	ldr r0, [r0, #0x2c]
+	lsr r1, r1, #0x18
+	bl GridInputHandler_SetNextInput
+	ldr r0, [r5, #0x34]
+	add r1, r4, #0
+	ldr r0, [r0, #0x2c]
+	bl GridInputHandler_GetDpadBox
+	add r1, sp, #0
+	add r1, #1
+	add r2, sp, #0
+	bl DpadMenuBox_GetPosition
+	mov r0, #0x32
+	ldr r1, [r5, #0x34]
+	lsl r0, r0, #4
+	add r2, sp, #0
+	ldr r0, [r1, r0]
+	ldrb r1, [r2, #1]
+	ldrb r2, [r2]
+	bl ManagedSprite_SetPositionXY
+	cmp r4, #0
+	blt _021F76EE
+	cmp r4, #5
+	bgt _021F76EE
+	ldr r0, [r5, #0x34]
+	mov r1, #9
+	mov r2, #0xe
+	bl ov14_021F29E4
+	pop {r3, r4, r5, pc}
+_021F76EE:
+	ldr r0, [r5, #0x34]
+	mov r1, #9
+	mov r2, #8
+	bl ov14_021F29E4
+	pop {r3, r4, r5, pc}
+	nop
+_021F76FC: .word 0x0000043C
+	thumb_func_end ov14_021F7688
+
+	thumb_func_start ov14_021F7700
+ov14_021F7700: ; 0x021F7700
+	push {r4, r5, r6, lr}
+	add r4, r1, #0
+	add r5, r0, #0
+	add r6, r2, #0
+	cmp r4, #0
+	blt _021F771C
+	cmp r4, #5
+	bgt _021F771C
+	ldr r0, [r5, #0x34]
+	mov r1, #9
+	mov r2, #0xe
+	bl ov14_021F29E4
+	b _021F7726
+_021F771C:
+	ldr r0, [r5, #0x34]
+	mov r1, #9
+	mov r2, #8
+	bl ov14_021F29E4
+_021F7726:
+	cmp r6, #8
+	bne _021F7742
+	cmp r4, #0
+	bne _021F7742
+	ldr r1, [r5, #0x34]
+	ldr r0, _021F784C ; =0x0000043C
+	mov r2, #8
+	ldr r4, [r1, r0]
+	ldr r0, [r1, #0x2c]
+	lsl r1, r4, #0x18
+	lsr r1, r1, #0x18
+	add r3, r2, #0
+	bl GridInputHandler_SetNextLastUnk0FInputs
+_021F7742:
+	cmp r4, #0
+	blt _021F7750
+	cmp r4, #5
+	bgt _021F7750
+	ldr r1, [r5, #0x34]
+	ldr r0, _021F784C ; =0x0000043C
+	str r4, [r1, r0]
+_021F7750:
+	cmp r4, #0
+	bne _021F77AC
+	cmp r6, #5
+	bne _021F77AC
+	add r0, r5, #0
+	add r0, #0x25
+	ldrb r0, [r0]
+	add r0, r0, #1
+	cmp r0, #0x12
+	blt _021F7768
+	mov r1, #0
+	b _021F7770
+_021F7768:
+	add r0, r5, #0
+	add r0, #0x25
+	ldrb r0, [r0]
+	add r1, r0, #1
+_021F7770:
+	add r0, r5, #0
+	add r0, #0x25
+	strb r1, [r0]
+	add r0, r5, #0
+	bl ov14_021F49E0
+	add r0, r5, #0
+	bl ov14_021F48B4
+	add r0, r5, #0
+	bl ov14_021F4848
+	add r0, r5, #0
+	bl ov14_021F57B8
+	ldr r0, [r5, #0x34]
+	mov r1, #5
+	mov r2, #4
+	bl ov14_021F29E4
+	ldr r0, [r5, #0x34]
+	add r1, r4, #0
+	add r2, r6, #0
+	bl ov14_021F7AC4
+	ldr r0, [r5, #0x34]
+	ldr r1, _021F7850 ; =ov14_021E9F20
+	bl ov14_021E5A50
+	pop {r4, r5, r6, pc}
+_021F77AC:
+	cmp r4, #5
+	bne _021F7806
+	cmp r6, #0
+	bne _021F7806
+	add r0, r5, #0
+	add r0, #0x25
+	ldrb r0, [r0]
+	sub r0, r0, #1
+	bpl _021F77C2
+	mov r1, #0x11
+	b _021F77CA
+_021F77C2:
+	add r0, r5, #0
+	add r0, #0x25
+	ldrb r0, [r0]
+	sub r1, r0, #1
+_021F77CA:
+	add r0, r5, #0
+	add r0, #0x25
+	strb r1, [r0]
+	add r0, r5, #0
+	bl ov14_021F49E0
+	add r0, r5, #0
+	bl ov14_021F48B4
+	add r0, r5, #0
+	bl ov14_021F4848
+	add r0, r5, #0
+	bl ov14_021F57B8
+	ldr r0, [r5, #0x34]
+	mov r1, #4
+	mov r2, #2
+	bl ov14_021F29E4
+	ldr r0, [r5, #0x34]
+	add r1, r4, #0
+	add r2, r6, #0
+	bl ov14_021F7AC4
+	ldr r0, [r5, #0x34]
+	ldr r1, _021F7850 ; =ov14_021E9F20
+	bl ov14_021E5A50
+	pop {r4, r5, r6, pc}
+_021F7806:
+	cmp r4, #0
+	blt _021F7836
+	cmp r4, #5
+	bgt _021F7836
+	cmp r6, #8
+	beq _021F7836
+	add r0, r5, #0
+	add r0, #0x25
+	ldrb r0, [r0]
+	mov r1, #6
+	bl _s32_div_f
+	mov r1, #6
+	mul r1, r0
+	add r0, r5, #0
+	add r1, r4, r1
+	add r0, #0x25
+	strb r1, [r0]
+	add r0, r5, #0
+	bl ov14_021F48B4
+	add r0, r5, #0
+	bl ov14_021F57B8
+_021F7836:
+	ldr r0, [r5, #0x34]
+	add r1, r4, #0
+	add r2, r6, #0
+	bl ov14_021F7AC4
+	ldr r0, [r5, #0x34]
+	ldr r1, _021F7850 ; =ov14_021E9F20
+	bl ov14_021E5A50
+	pop {r4, r5, r6, pc}
+	nop
+_021F784C: .word 0x0000043C
+_021F7850: .word ov14_021E9F20
+	thumb_func_end ov14_021F7700
+
+	thumb_func_start ov14_021F7854
+ov14_021F7854: ; 0x021F7854
+	push {r3, r4, r5, lr}
+	add r5, r0, #0
+	ldr r0, [r5, #0x34]
+	add r4, r1, #0
+	lsl r1, r4, #0x18
+	ldr r0, [r0, #0x2c]
+	lsr r1, r1, #0x18
+	bl GridInputHandler_SetNextInput
+	cmp r4, #6
+	beq _021F7876
+	cmp r4, #7
+	beq _021F7876
+	add r0, r5, #0
+	add r1, r4, #0
+	bl ov14_021F6B28
+_021F7876:
+	pop {r3, r4, r5, pc}
+	thumb_func_end ov14_021F7854
+
+	thumb_func_start ov14_021F7878
+ov14_021F7878: ; 0x021F7878
+	push {r3, r4, r5, r6, lr}
+	sub sp, #4
+	add r4, r1, #0
+	add r5, r0, #0
+	sub r0, r4, #4
+	cmp r0, #1
+	bhi _021F789C
+	ldr r0, [r5, #0x34]
+	ldr r6, _021F78F4 ; =0x0000044D
+	ldrb r1, [r0, r6]
+	sub r6, #0x11
+	lsr r3, r1, #0x1f
+	lsl r2, r1, #0x1e
+	sub r2, r2, r3
+	mov r1, #0x1e
+	ror r2, r1
+	add r4, r3, r2
+	str r4, [r0, r6]
+_021F789C:
+	ldr r0, [r5, #0x34]
+	lsl r1, r4, #0x18
+	ldr r0, [r0, #0x2c]
+	lsr r1, r1, #0x18
+	bl GridInputHandler_SetNextInput
+	ldr r0, [r5, #0x34]
+	add r1, r4, #0
+	ldr r0, [r0, #0x2c]
+	bl GridInputHandler_GetDpadBox
+	add r1, sp, #0
+	add r1, #1
+	add r2, sp, #0
+	bl DpadMenuBox_GetPosition
+	mov r0, #0x32
+	ldr r1, [r5, #0x34]
+	lsl r0, r0, #4
+	add r2, sp, #0
+	ldr r0, [r1, r0]
+	ldrb r1, [r2, #1]
+	ldrb r2, [r2]
+	bl ManagedSprite_SetPositionXY
+	cmp r4, #0
+	blt _021F78E4
+	cmp r4, #3
+	bgt _021F78E4
+	ldr r0, [r5, #0x34]
+	mov r1, #9
+	mov r2, #0xe
+	bl ov14_021F29E4
+	add sp, #4
+	pop {r3, r4, r5, r6, pc}
+_021F78E4:
+	ldr r0, [r5, #0x34]
+	mov r1, #9
+	mov r2, #8
+	bl ov14_021F29E4
+	add sp, #4
+	pop {r3, r4, r5, r6, pc}
+	nop
+_021F78F4: .word 0x0000044D
+	thumb_func_end ov14_021F7878
+
+	thumb_func_start ov14_021F78F8
+ov14_021F78F8: ; 0x021F78F8
+	push {r4, r5, r6, lr}
+	add r4, r1, #0
+	add r5, r0, #0
+	add r6, r2, #0
+	cmp r4, #0
+	blt _021F7914
+	cmp r4, #3
+	bgt _021F7914
+	ldr r0, [r5, #0x34]
+	mov r1, #9
+	mov r2, #0xe
+	bl ov14_021F29E4
+	b _021F791E
+_021F7914:
+	ldr r0, [r5, #0x34]
+	mov r1, #9
+	mov r2, #8
+	bl ov14_021F29E4
+_021F791E:
+	cmp r6, #6
+	bne _021F793A
+	cmp r4, #0
+	bne _021F793A
+	ldr r1, [r5, #0x34]
+	ldr r0, _021F7A20 ; =0x0000043C
+	mov r2, #6
+	ldr r4, [r1, r0]
+	ldr r0, [r1, #0x2c]
+	lsl r1, r4, #0x18
+	lsr r1, r1, #0x18
+	add r3, r2, #0
+	bl GridInputHandler_SetNextLastUnk0FInputs
+_021F793A:
+	cmp r4, #0
+	blt _021F7948
+	cmp r4, #3
+	bgt _021F7948
+	ldr r1, [r5, #0x34]
+	ldr r0, _021F7A20 ; =0x0000043C
+	str r4, [r1, r0]
+_021F7948:
+	cmp r4, #0
+	bne _021F7998
+	cmp r6, #3
+	bne _021F7998
+	ldr r0, [r5, #0x34]
+	ldr r1, _021F7A24 ; =0x0000044D
+	ldrb r2, [r0, r1]
+	add r2, r2, #1
+	cmp r2, #0x18
+	blt _021F7960
+	mov r2, #0
+	b _021F7960
+_021F7960:
+	strb r2, [r0, r1]
+	add r0, r5, #0
+	bl ov14_021F462C
+	add r0, r5, #0
+	bl ov14_021F4530
+	add r0, r5, #0
+	bl ov14_021F459C
+	add r0, r5, #0
+	bl ov14_021F58B8
+	ldr r0, [r5, #0x34]
+	mov r1, #5
+	mov r2, #4
+	bl ov14_021F29E4
+	ldr r0, [r5, #0x34]
+	add r1, r4, #0
+	add r2, r6, #0
+	bl ov14_021F7AC4
+	ldr r0, [r5, #0x34]
+	ldr r1, _021F7A28 ; =ov14_021E9F20
+	bl ov14_021E5A50
+	pop {r4, r5, r6, pc}
+_021F7998:
+	cmp r4, #3
+	bne _021F79E6
+	cmp r6, #0
+	bne _021F79E6
+	ldr r0, [r5, #0x34]
+	ldr r1, _021F7A24 ; =0x0000044D
+	ldrb r2, [r0, r1]
+	sub r2, r2, #1
+	bpl _021F79AE
+	mov r2, #0x17
+	b _021F79AE
+_021F79AE:
+	strb r2, [r0, r1]
+	add r0, r5, #0
+	bl ov14_021F462C
+	add r0, r5, #0
+	bl ov14_021F4530
+	add r0, r5, #0
+	bl ov14_021F459C
+	add r0, r5, #0
+	bl ov14_021F58B8
+	ldr r0, [r5, #0x34]
+	mov r1, #4
+	mov r2, #2
+	bl ov14_021F29E4
+	ldr r0, [r5, #0x34]
+	add r1, r4, #0
+	add r2, r6, #0
+	bl ov14_021F7AC4
+	ldr r0, [r5, #0x34]
+	ldr r1, _021F7A28 ; =ov14_021E9F20
+	bl ov14_021E5A50
+	pop {r4, r5, r6, pc}
+_021F79E6:
+	cmp r4, #0
+	blt _021F7A0C
+	cmp r4, #3
+	bgt _021F7A0C
+	cmp r6, #6
+	beq _021F7A0C
+	ldr r0, [r5, #0x34]
+	ldr r1, _021F7A24 ; =0x0000044D
+	ldrb r2, [r0, r1]
+	lsr r2, r2, #2
+	lsl r2, r2, #2
+	add r2, r4, r2
+	strb r2, [r0, r1]
+	add r0, r5, #0
+	bl ov14_021F459C
+	add r0, r5, #0
+	bl ov14_021F58B8
+_021F7A0C:
+	ldr r0, [r5, #0x34]
+	add r1, r4, #0
+	add r2, r6, #0
+	bl ov14_021F7AC4
+	ldr r0, [r5, #0x34]
+	ldr r1, _021F7A28 ; =ov14_021E9F20
+	bl ov14_021E5A50
+	pop {r4, r5, r6, pc}
+	.balign 4, 0
+_021F7A20: .word 0x0000043C
+_021F7A24: .word 0x0000044D
+_021F7A28: .word ov14_021E9F20
+	thumb_func_end ov14_021F78F8
+
+	thumb_func_start ov14_021F7A2C
+ov14_021F7A2C: ; 0x021F7A2C
+	push {r3, r4, r5, lr}
+	add r5, r0, #0
+	ldr r0, [r5, #0x34]
+	add r4, r1, #0
+	lsl r1, r4, #0x18
+	ldr r0, [r0, #0x2c]
+	lsr r1, r1, #0x18
+	bl GridInputHandler_SetNextInput
+	cmp r4, #4
+	beq _021F7A4E
+	cmp r4, #5
+	beq _021F7A4E
+	add r0, r5, #0
+	add r1, r4, #0
+	bl ov14_021F6B28
+_021F7A4E:
+	pop {r3, r4, r5, pc}
+	thumb_func_end ov14_021F7A2C
+
+	thumb_func_start ov14_021F7A50
+ov14_021F7A50: ; 0x021F7A50
+	push {r3, r4, r5, lr}
+	add r5, r0, #0
+	ldr r0, [r5, #0x34]
+	mov r1, #0x2b
+	ldr r0, [r0, #0x2c]
+	bl GridInputHandler_ClearEnabledFlag
+	ldr r0, [r5, #0x34]
+	mov r1, #0x2c
+	ldr r0, [r0, #0x2c]
+	bl GridInputHandler_ClearEnabledFlag
+	ldr r0, [r5, #0x34]
+	mov r1, #0x2d
+	ldr r0, [r0, #0x2c]
+	bl GridInputHandler_ClearEnabledFlag
+	ldr r0, [r5, #0x34]
+	mov r1, #0x25
+	ldr r0, [r0, #0x2c]
+	bl GridInputHandler_ClearEnabledFlag
+	ldr r0, [r5, #0x34]
+	mov r1, #0x26
+	ldr r0, [r0, #0x2c]
+	bl GridInputHandler_ClearEnabledFlag
+	ldr r0, [r5, #0x34]
+	mov r1, #0x27
+	ldr r0, [r0, #0x2c]
+	bl GridInputHandler_ClearEnabledFlag
+	ldr r0, [r5, #0x34]
+	mov r1, #0x28
+	ldr r0, [r0, #0x2c]
+	bl GridInputHandler_ClearEnabledFlag
+	ldr r0, [r5, #0x34]
+	mov r1, #0x29
+	ldr r0, [r0, #0x2c]
+	bl GridInputHandler_ClearEnabledFlag
+	ldr r0, [r5, #0x34]
+	mov r1, #0x2a
+	ldr r0, [r0, #0x2c]
+	bl GridInputHandler_ClearEnabledFlag
+	ldr r0, [r5, #0x34]
+	ldr r0, [r0, #0x2c]
+	bl GridInputHandler_HandleInput_AllowHold
+	add r4, r0, #0
+	ldr r0, [r5, #0x34]
+	ldr r0, [r0, #0x2c]
+	bl GridInputHandler_SetAllEnabled
+	add r0, r4, #0
+	pop {r3, r4, r5, pc}
+	thumb_func_end ov14_021F7A50
+
+	thumb_func_start ov14_021F7AC4
+ov14_021F7AC4: ; 0x021F7AC4
+	push {r3, r4, r5, lr}
+	add r5, r0, #0
+	ldr r0, [r5, #0x2c]
+	add r4, r2, #0
+	bl GridInputHandler_GetDpadBox
+	add r1, sp, #0
+	add r2, sp, #0
+	add r1, #3
+	add r2, #2
+	bl DpadMenuBox_GetPosition
+	ldr r0, [r5, #0x2c]
+	add r1, r4, #0
+	bl GridInputHandler_GetDpadBox
+	add r1, sp, #0
+	add r1, #1
+	add r2, sp, #0
+	bl DpadMenuBox_GetPosition
+	mov r0, #0xa
+	mov r1, #8
+	bl Heap_Alloc
+	add r4, r0, #0
+	ldr r1, [r4, #4]
+	mov r0, #3
+	and r1, r0
+	mov r0, #0x10
+	orr r0, r1
+	str r0, [r4, #4]
+	add r0, sp, #0
+	ldrb r1, [r0, #3]
+	strb r1, [r4]
+	ldrb r1, [r0, #2]
+	strb r1, [r4, #1]
+	ldrb r1, [r0, #1]
+	ldrb r0, [r0, #3]
+	cmp r0, r1
+	blo _021F7B24
+	sub r0, r0, r1
+	strb r0, [r4, #2]
+	ldr r1, [r4, #4]
+	mov r0, #1
+	bic r1, r0
+	str r1, [r4, #4]
+	b _021F7B34
+_021F7B24:
+	sub r0, r1, r0
+	strb r0, [r4, #2]
+	ldr r1, [r4, #4]
+	mov r0, #1
+	bic r1, r0
+	mov r0, #1
+	orr r0, r1
+	str r0, [r4, #4]
+_021F7B34:
+	add r0, sp, #0
+	ldrb r1, [r0]
+	ldrb r0, [r0, #2]
+	cmp r0, r1
+	blo _021F7B4C
+	sub r0, r0, r1
+	strb r0, [r4, #3]
+	ldr r1, [r4, #4]
+	mov r0, #2
+	bic r1, r0
+	str r1, [r4, #4]
+	b _021F7B58
+_021F7B4C:
+	sub r0, r1, r0
+	strb r0, [r4, #3]
+	ldr r1, [r4, #4]
+	mov r0, #2
+	orr r0, r1
+	str r0, [r4, #4]
+_021F7B58:
+	ldrb r0, [r4, #2]
+	ldr r1, [r4, #4]
+	lsl r0, r0, #8
+	lsr r1, r1, #2
+	bl _u32_div_f
+	lsr r0, r0, #8
+	strb r0, [r4, #2]
+	ldrb r0, [r4, #3]
+	ldr r1, [r4, #4]
+	lsl r0, r0, #8
+	lsr r1, r1, #2
+	bl _u32_div_f
+	lsr r0, r0, #8
+	strb r0, [r4, #3]
+	str r4, [r5, #0xc]
+	pop {r3, r4, r5, pc}
+	thumb_func_end ov14_021F7AC4
+
+	thumb_func_start ov14_021F7B7C
+ov14_021F7B7C: ; 0x021F7B7C
+	push {r3, lr}
+	ldr r1, [r0, #0x34]
+	mov r0, #0x2f
+	lsl r0, r0, #4
+	ldr r0, [r1, r0]
+	bl ov14_021E8648
+	cmp r0, #0
+	bne _021F7B92
+	mov r0, #0
+	pop {r3, pc}
+_021F7B92:
+	ldr r0, _021F7BB4 ; =gSystem
+	ldr r1, [r0, #0x48]
+	mov r0, #2
+	lsl r0, r0, #0xa
+	tst r0, r1
+	beq _021F7BA2
+	mov r0, #1
+	pop {r3, pc}
+_021F7BA2:
+	ldr r0, _021F7BB8 ; =ov14_021F86C8
+	bl TouchscreenHitbox_TouchNewIsIn
+	cmp r0, #1
+	bne _021F7BB0
+	mov r0, #1
+	pop {r3, pc}
+_021F7BB0:
+	mov r0, #0
+	pop {r3, pc}
+	.balign 4, 0
+_021F7BB4: .word gSystem
+_021F7BB8: .word ov14_021F86C8
+	thumb_func_end ov14_021F7B7C
+
+
+    .rodata
+
+ov14_021F8614: ; 0x021F8614
+	.byte 0x38, 0x4F, 0x1E, 0x35, 0x40, 0x57, 0x42, 0x59, 0x58, 0x6F, 0x1E, 0x35
+	.byte 0x60, 0x77, 0x42, 0x59, 0x78, 0x8F, 0x1E, 0x35, 0x80, 0x97, 0x42, 0x59, 0xFF, 0x00, 0x00, 0x00
+
+ov14_021F8630: ; 0x021F8630
+	.byte 0x38, 0x4F, 0xB6, 0xCD, 0x40, 0x57, 0xDA, 0xF1, 0x58, 0x6F, 0xB6, 0xCD, 0x60, 0x77, 0xDA, 0xF1
+	.byte 0x78, 0x8F, 0xB6, 0xCD, 0x80, 0x97, 0xDA, 0xF1, 0xFF, 0x00, 0x00, 0x00
+
+ov14_021F864C: ; 0x021F864C
+	.byte 0x28, 0x3F, 0x0C, 0x23
+	.byte 0x28, 0x3F, 0x24, 0x3B, 0x28, 0x3F, 0x3C, 0x53, 0x28, 0x3F, 0x54, 0x6B, 0x28, 0x3F, 0x6C, 0x83
+	.byte 0x28, 0x3F, 0x84, 0x9B, 0x40, 0x57, 0x0C, 0x23, 0x40, 0x57, 0x24, 0x3B, 0x40, 0x57, 0x3C, 0x53
+	.byte 0x40, 0x57, 0x54, 0x6B, 0x40, 0x57, 0x6C, 0x83, 0x40, 0x57, 0x84, 0x9B, 0x58, 0x6F, 0x0C, 0x23
+	.byte 0x58, 0x6F, 0x24, 0x3B, 0x58, 0x6F, 0x3C, 0x53, 0x58, 0x6F, 0x54, 0x6B, 0x58, 0x6F, 0x6C, 0x83
+	.byte 0x58, 0x6F, 0x84, 0x9B, 0x70, 0x87, 0x0C, 0x23, 0x70, 0x87, 0x24, 0x3B, 0x70, 0x87, 0x3C, 0x53
+	.byte 0x70, 0x87, 0x54, 0x6B, 0x70, 0x87, 0x6C, 0x83, 0x70, 0x87, 0x84, 0x9B, 0x88, 0x9F, 0x0C, 0x23
+	.byte 0x88, 0x9F, 0x24, 0x3B, 0x88, 0x9F, 0x3C, 0x53, 0x88, 0x9F, 0x54, 0x6B, 0x88, 0x9F, 0x6C, 0x83
+	.byte 0x88, 0x9F, 0x84, 0x9B, 0xFF, 0x00, 0x00, 0x00
+
+ov14_021F86C8: ; 0x021F86C8
+	.byte 0xA8, 0xBF, 0x00, 0x87
+
+ov14_021F86CC:
+	.word ov14_021F7878
+	.word ov14_021F6B7C
+	.word ov14_021F78F8
+	.word ov14_021F7A2C
+
+ov14_021F86DC:
+	.word ov14_021F6F08
+	.word ov14_021F6B7C
+	.word ov14_021F6B8C
+	.word ov14_021F6F70
+
+ov14_021F86EC:
+	.word ov14_021F6C3C
+	.word ov14_021F6B7C
+	.word ov14_021F6B8C
+	.word ov14_021F6BA4
+
+ov14_021F86FC:
+	.word ov14_021F6C94
+	.word ov14_021F6B7C
+	.word ov14_021F6D14
+	.word ov14_021F6E68
+
+ov14_021F870C:
+	.word ov14_021F7688
+	.word ov14_021F6B7C
+	.word ov14_021F7700
+	.word ov14_021F7854
+
+ov14_021F871C:
+	.word ov14_021F73E4
+	.word ov14_021F6B7C
+	.word ov14_021F7444
+	.word ov14_021F6BA4
+
+ov14_021F872C:
+	.word ov14_021F70F4
+	.word ov14_021F6B7C
+	.word ov14_021F7184
+	.word ov14_021F7308
+
+ov14_021F873C:
+	.word ov14_021F7010
+	.word ov14_021F6B7C
+	.word ov14_021F708C
+	.word ov14_021F70A4
+
+ov14_021F874C:
+	.word ov14_021F6B60
+	.word ov14_021F6B7C
+	.word ov14_021F6B8C
+	.word ov14_021F6BA4
+
+ov14_021F875C:
+	.word ov14_021F7620
+	.word ov14_021F6B7C
+	.word ov14_021F7670
+	.word ov14_021F6BA4
+
+ov14_021F876C:
+	.word ov14_021F7528
+	.word ov14_021F6B7C
+	.word ov14_021F7594
+	.word ov14_021F75AC
+
+ov14_021F877C:
+	.byte 0x3C, 0x4B, 0xBC, 0xCB
+	.byte 0x3C, 0x4B, 0xDC, 0xEB, 0x54, 0x63, 0xBC, 0xCB, 0x54, 0x63, 0xDC, 0xEB, 0x6C, 0x7B, 0xBC, 0xCB
+	.byte 0x6C, 0x7B, 0xDC, 0xEB, 0x82, 0x9D, 0xB2, 0xF5, 0xA2, 0xBD, 0xB2, 0xF5, 0xFF, 0x00, 0x00, 0x00
+
+ov14_021F87A0:
+	.byte 0x17, 0x2E, 0x2F, 0x46, 0x17, 0x2E, 0x5D, 0x74, 0x17, 0x2E, 0x8B, 0xA2, 0x17, 0x2E, 0xB9, 0xD0
+	.byte 0x17, 0x2E, 0x02, 0x17, 0x17, 0x2E, 0xE8, 0xFD, 0x70, 0x9F, 0xA8, 0xFF, 0xA8, 0xBF, 0xC0, 0xFF
+	.byte 0xFF, 0x00, 0x00, 0x00
+
+ov14_021F87C4:
+	.byte 0x38, 0x4F, 0x1E, 0x35, 0x40, 0x57, 0x42, 0x59, 0x58, 0x6F, 0x1E, 0x35
+	.byte 0x60, 0x77, 0x42, 0x59, 0x78, 0x8F, 0x1E, 0x35, 0x80, 0x97, 0x42, 0x59, 0xA2, 0xBD, 0x1A, 0x5D
+	.byte 0xA8, 0xBF, 0xC0, 0xFF, 0x88, 0x9F, 0xA8, 0xFF, 0xA8, 0xBF, 0xC0, 0xFF, 0xFF, 0x00, 0x00, 0x00
+
+ov14_021F87F0:
+	.byte 0x47, 0x5E, 0x1F, 0x36, 0x47, 0x5E, 0x41, 0x58, 0x47, 0x5E, 0x63, 0x7A, 0x47, 0x5E, 0x85, 0x9C
+	.byte 0x47, 0x5E, 0xA7, 0xBE, 0x47, 0x5E, 0xC9, 0xE0, 0x47, 0x5E, 0x01, 0x16, 0x47, 0x5E, 0xE9, 0xFE
+	.byte 0x70, 0x9F, 0xA8, 0xFF, 0xA8, 0xBF, 0xC0, 0xFF, 0xFF, 0x00, 0x00, 0x00
+
+ov14_021F881C:
+	.byte 0x38, 0x4F, 0x1E, 0x35
+	.byte 0x40, 0x57, 0x42, 0x59, 0x58, 0x6F, 0x1E, 0x35, 0x60, 0x77, 0x42, 0x59, 0x78, 0x8F, 0x1E, 0x35
+	.byte 0x80, 0x97, 0x42, 0x59, 0xA8, 0xBF, 0xC0, 0xFF, 0x40, 0x57, 0xA8, 0xFF, 0x58, 0x6F, 0xA8, 0xFF
+	.byte 0x70, 0x87, 0xA8, 0xFF, 0x88, 0x9F, 0xA8, 0xFF, 0xA8, 0xBF, 0xC0, 0xFF, 0xFF, 0x00, 0x00, 0x00
+
+ov14_021F8850:
+	.byte 0x0F, 0x26, 0x1F, 0x36, 0x0F, 0x26, 0x41, 0x58, 0x0F, 0x26, 0x63, 0x7A, 0x0F, 0x26, 0x85, 0x9C
+	.byte 0x0F, 0x26, 0xA7, 0xBE, 0x0F, 0x26, 0xC9, 0xE0, 0x0F, 0x26, 0x01, 0x16, 0x0F, 0x26, 0xE9, 0xFE
+	.byte 0x40, 0x6F, 0xA8, 0xFF, 0x70, 0x87, 0xA8, 0xFF, 0x88, 0x9F, 0xA8, 0xFF, 0xA8, 0xBF, 0xC0, 0xFF
+	.byte 0xFF, 0x00, 0x00, 0x00
+
+ov14_021F8884:
+	.byte 0x38, 0x4F, 0x1E, 0x35, 0x40, 0x57, 0x42, 0x59, 0x58, 0x6F, 0x1E, 0x35
+	.byte 0x60, 0x77, 0x42, 0x59, 0x78, 0x8F, 0x1E, 0x35, 0x80, 0x97, 0x42, 0x59, 0xA2, 0xBD, 0x1A, 0x5D
+	.byte 0xA8, 0xBF, 0xC0, 0xFF, 0x28, 0x3F, 0xA8, 0xFF, 0x40, 0x57, 0xA8, 0xFF, 0x58, 0x6F, 0xA8, 0xFF
+	.byte 0x70, 0x87, 0xA8, 0xFF, 0x88, 0x9F, 0xA8, 0xFF, 0xA8, 0xBF, 0xC0, 0xFF, 0xFF, 0x00, 0x00, 0x00
+
+ov14_021F88C0:
+	.byte 0xCC, 0x38, 0x00, 0x00, 0x00, 0x02, 0x00, 0x01, 0xEC, 0x38, 0x00, 0x00, 0x01, 0x03, 0x00, 0x01
+	.byte 0xCC, 0x50, 0x00, 0x00, 0x00, 0x04, 0x02, 0x03, 0xEC, 0x50, 0x00, 0x00, 0x01, 0x05, 0x02, 0x03
+	.byte 0xCC, 0x68, 0x00, 0x00, 0x02, 0x06, 0x04, 0x05, 0xEC, 0x68, 0x00, 0x00, 0x03, 0x06, 0x04, 0x05
+	.byte 0xD4, 0x82, 0x00, 0x00, 0x84, 0x07, 0x06, 0x06, 0xD4, 0xA2, 0x00, 0x00, 0x06, 0x07, 0x07, 0x07
+
+ov14_021F8900:
+	.byte 0x3B, 0x1F, 0x00, 0x00, 0x00, 0x06, 0x03, 0x01, 0x69, 0x1F, 0x00, 0x00, 0x01, 0x06, 0x00, 0x02
+	.byte 0x97, 0x1F, 0x00, 0x00, 0x02, 0x06, 0x01, 0x03, 0xC5, 0x1F, 0x00, 0x00, 0x03, 0x06, 0x02, 0x00
+	.byte 0x00, 0x00, 0x00, 0x00, 0x04, 0x04, 0x04, 0x04, 0x00, 0x00, 0x00, 0x00, 0x05, 0x05, 0x05, 0x05
+	.byte 0xD4, 0x70, 0x00, 0x00, 0x00, 0x07, 0x06, 0x06, 0xE0, 0xA8, 0x00, 0x00, 0x06, 0x07, 0x07, 0x07
+
+ov14_021F8940:
+	.byte 0x2B, 0x53, 0x00, 0x00, 0x00, 0x08, 0x05, 0x01, 0x4D, 0x53, 0x00, 0x00, 0x01, 0x08, 0x00, 0x02
+	.byte 0x6F, 0x53, 0x00, 0x00, 0x02, 0x08, 0x01, 0x03, 0x91, 0x53, 0x00, 0x00, 0x03, 0x08, 0x02, 0x04
+	.byte 0xB3, 0x53, 0x00, 0x00, 0x04, 0x08, 0x03, 0x05, 0xD5, 0x53, 0x00, 0x00, 0x05, 0x08, 0x04, 0x00
+	.byte 0x0C, 0x53, 0x00, 0x00, 0x06, 0x06, 0x06, 0x06, 0xF4, 0x53, 0x00, 0x00, 0x07, 0x07, 0x07, 0x07
+	.byte 0xD4, 0x70, 0x00, 0x00, 0x00, 0x09, 0x08, 0x08, 0xE0, 0xA8, 0x00, 0x00, 0x08, 0x09, 0x09, 0x09
+
+ov14_021F8990:
+	.byte 0x28, 0x34, 0x00, 0x00, 0x04, 0x02, 0x00, 0x01, 0x50, 0x3C, 0x00, 0x00, 0x05, 0x03, 0x00, 0x02
+	.byte 0x28, 0x54, 0x00, 0x00, 0x00, 0x04, 0x01, 0x03, 0x50, 0x5C, 0x00, 0x00, 0x01, 0x05, 0x02, 0x04
+	.byte 0x28, 0x74, 0x00, 0x00, 0x02, 0x06, 0x03, 0x05, 0x50, 0x7C, 0x00, 0x00, 0x03, 0x06, 0x04, 0x06
+	.byte 0x3C, 0xA2, 0x00, 0x00, 0x85, 0x07, 0x05, 0x07, 0xE0, 0xA8, 0x00, 0x00, 0x06, 0x07, 0x06, 0x07
+	.byte 0xD4, 0x88, 0x00, 0x00, 0x09, 0x09, 0x08, 0x08, 0xE0, 0xA8, 0x00, 0x00, 0x08, 0x08, 0x09, 0x09
+
+ov14_021F89E0:
+	.byte 0x2B, 0x17, 0x00, 0x00, 0x00, 0x08, 0x05, 0x01, 0x4D, 0x17, 0x00, 0x00, 0x01, 0x08, 0x00, 0x02
+	.byte 0x6F, 0x17, 0x00, 0x00, 0x02, 0x08, 0x01, 0x03, 0x91, 0x17, 0x00, 0x00, 0x03, 0x08, 0x02, 0x04
+	.byte 0xB3, 0x17, 0x00, 0x00, 0x04, 0x08, 0x03, 0x05, 0xD5, 0x17, 0x00, 0x00, 0x05, 0x08, 0x04, 0x00
+	.byte 0x00, 0x00, 0x00, 0x00, 0x06, 0x06, 0x06, 0x06, 0x00, 0x00, 0x00, 0x00, 0x07, 0x07, 0x07, 0x07
+	.byte 0xD4, 0x40, 0x00, 0x00, 0x00, 0x09, 0x08, 0x08, 0xD4, 0x70, 0x00, 0x00, 0x08, 0x0A, 0x09, 0x09
+	.byte 0xD4, 0x88, 0x00, 0x00, 0x09, 0x0B, 0x0A, 0x0A, 0xE0, 0xA8, 0x00, 0x00, 0x0A, 0x0B, 0x0B, 0x0B
+
+ov14_021F8A40:
+	.byte 0x28, 0x34, 0x00, 0x00, 0x06, 0x02, 0x00, 0x01, 0x50, 0x3C, 0x00, 0x00, 0x06, 0x03, 0x00, 0x02
+	.byte 0x28, 0x54, 0x00, 0x00, 0x00, 0x04, 0x01, 0x03, 0x50, 0x5C, 0x00, 0x00, 0x01, 0x05, 0x02, 0x04
+	.byte 0x28, 0x74, 0x00, 0x00, 0x02, 0x06, 0x03, 0x05, 0x50, 0x7C, 0x00, 0x00, 0x03, 0x06, 0x04, 0x06
+	.byte 0xE0, 0xA8, 0x00, 0x00, 0x85, 0x00, 0x05, 0x06, 0xD4, 0x40, 0x00, 0x00, 0x0B, 0x08, 0x07, 0x07
+	.byte 0xD4, 0x58, 0x00, 0x00, 0x07, 0x09, 0x08, 0x08, 0xD4, 0x70, 0x00, 0x00, 0x08, 0x0A, 0x09, 0x09
+	.byte 0xD4, 0x88, 0x00, 0x00, 0x09, 0x0B, 0x0A, 0x0A, 0xE0, 0xA8, 0x00, 0x00, 0x0A, 0x07, 0x0B, 0x0B
+
+ov14_021F8AA0:
+	.byte 0x28, 0x34, 0x00, 0x00, 0x07, 0x02, 0x00, 0x01, 0x50, 0x3C, 0x00, 0x00, 0x07, 0x03, 0x00, 0x02
+	.byte 0x28, 0x54, 0x00, 0x00, 0x00, 0x04, 0x01, 0x03, 0x50, 0x5C, 0x00, 0x00, 0x01, 0x05, 0x02, 0x04
+	.byte 0x28, 0x74, 0x00, 0x00, 0x02, 0x06, 0x03, 0x05, 0x50, 0x7C, 0x00, 0x00, 0x03, 0x06, 0x04, 0x06
+	.byte 0x3C, 0xA2, 0x00, 0x00, 0x85, 0x07, 0x05, 0x07, 0xE0, 0xA8, 0x00, 0x00, 0x06, 0x00, 0x06, 0x07
+	.byte 0xD4, 0x28, 0x00, 0x00, 0x0D, 0x09, 0x08, 0x08, 0xD4, 0x40, 0x00, 0x00, 0x08, 0x0A, 0x09, 0x09
+	.byte 0xD4, 0x58, 0x00, 0x00, 0x09, 0x0B, 0x0A, 0x0A, 0xD4, 0x70, 0x00, 0x00, 0x0A, 0x0C, 0x0B, 0x0B
+	.byte 0xD4, 0x88, 0x00, 0x00, 0x0B, 0x0D, 0x0C, 0x0C, 0xE0, 0xA8, 0x00, 0x00, 0x0C, 0x08, 0x0D, 0x0D
+
+ov14_021F8B10: ; 0x021F8B10
+	.word ov14_021F881C, ov14_021F8A40, ov14_021F86EC
+	.word ov14_021F87F0, ov14_021F8940, ov14_021F86FC
+	.word ov14_021F8C30, ov14_021F8F68, ov14_021F86DC
+	.word ov14_021F8CD0, ov14_021F90A0, ov14_021F873C
+	.word ov14_021F8D7C, ov14_021F91F0, ov14_021F872C
+	.word ov14_021F8884, ov14_021F8AA0, ov14_021F871C
+	.word ov14_021F8B94, ov14_021F8E38, ov14_021F876C
+	.word ov14_021F87C4, ov14_021F8990, ov14_021F875C
+	.word ov14_021F877C, ov14_021F88C0, ov14_021F874C
+	.word ov14_021F8850, ov14_021F89E0, ov14_021F870C
+	.word ov14_021F87A0, ov14_021F8900, ov14_021F86CC
+
+ov14_021F8B94:
+	.byte 0x28, 0x3F, 0x0C, 0x23, 0x28, 0x3F, 0x24, 0x3B, 0x28, 0x3F, 0x3C, 0x53
+	.byte 0x28, 0x3F, 0x54, 0x6B, 0x28, 0x3F, 0x6C, 0x83, 0x28, 0x3F, 0x84, 0x9B, 0x40, 0x57, 0x0C, 0x23
+	.byte 0x40, 0x57, 0x24, 0x3B, 0x40, 0x57, 0x3C, 0x53, 0x40, 0x57, 0x54, 0x6B, 0x40, 0x57, 0x6C, 0x83
+	.byte 0x40, 0x57, 0x84, 0x9B, 0x58, 0x6F, 0x0C, 0x23, 0x58, 0x6F, 0x24, 0x3B, 0x58, 0x6F, 0x3C, 0x53
+	.byte 0x58, 0x6F, 0x54, 0x6B, 0x58, 0x6F, 0x6C, 0x83, 0x58, 0x6F, 0x84, 0x9B, 0x70, 0x87, 0x0C, 0x23
+	.byte 0x70, 0x87, 0x24, 0x3B, 0x70, 0x87, 0x3C, 0x53, 0x70, 0x87, 0x54, 0x6B, 0x70, 0x87, 0x6C, 0x83
+	.byte 0x70, 0x87, 0x84, 0x9B, 0x88, 0x9F, 0x0C, 0x23, 0x88, 0x9F, 0x24, 0x3B, 0x88, 0x9F, 0x3C, 0x53
+	.byte 0x88, 0x9F, 0x54, 0x6B, 0x88, 0x9F, 0x6C, 0x83, 0x88, 0x9F, 0x84, 0x9B, 0x11, 0x27, 0x1A, 0x8D
+	.byte 0x11, 0x26, 0x01, 0x16, 0x11, 0x26, 0x91, 0xA6, 0xA8, 0xBF, 0x00, 0x57, 0xA8, 0xBF, 0x60, 0xB7
+	.byte 0xA8, 0xBF, 0xC0, 0xFF, 0x88, 0x9F, 0xA8, 0xFF, 0xA8, 0xBF, 0xC0, 0xFF, 0xFF, 0x00, 0x00, 0x00
+
+ov14_021F8C30:
+	.byte 0x28, 0x3F, 0x0C, 0x23, 0x28, 0x3F, 0x24, 0x3B, 0x28, 0x3F, 0x3C, 0x53, 0x28, 0x3F, 0x54, 0x6B
+	.byte 0x28, 0x3F, 0x6C, 0x83, 0x28, 0x3F, 0x84, 0x9B, 0x40, 0x57, 0x0C, 0x23, 0x40, 0x57, 0x24, 0x3B
+	.byte 0x40, 0x57, 0x3C, 0x53, 0x40, 0x57, 0x54, 0x6B, 0x40, 0x57, 0x6C, 0x83, 0x40, 0x57, 0x84, 0x9B
+	.byte 0x58, 0x6F, 0x0C, 0x23, 0x58, 0x6F, 0x24, 0x3B, 0x58, 0x6F, 0x3C, 0x53, 0x58, 0x6F, 0x54, 0x6B
+	.byte 0x58, 0x6F, 0x6C, 0x83, 0x58, 0x6F, 0x84, 0x9B, 0x70, 0x87, 0x0C, 0x23, 0x70, 0x87, 0x24, 0x3B
+	.byte 0x70, 0x87, 0x3C, 0x53, 0x70, 0x87, 0x54, 0x6B, 0x70, 0x87, 0x6C, 0x83, 0x70, 0x87, 0x84, 0x9B
+	.byte 0x88, 0x9F, 0x0C, 0x23, 0x88, 0x9F, 0x24, 0x3B, 0x88, 0x9F, 0x3C, 0x53, 0x88, 0x9F, 0x54, 0x6B
+	.byte 0x88, 0x9F, 0x6C, 0x83, 0x88, 0x9F, 0x84, 0x9B, 0x11, 0x27, 0x1A, 0x8D, 0x11, 0x26, 0x01, 0x16
+	.byte 0x11, 0x26, 0x91, 0xA6, 0xA8, 0xBF, 0xC0, 0xFF, 0x40, 0x57, 0xA8, 0xFF, 0x58, 0x6F, 0xA8, 0xFF
+	.byte 0x70, 0x87, 0xA8, 0xFF, 0x88, 0x9F, 0xA8, 0xFF, 0xA8, 0xBF, 0xC0, 0xFF, 0xFF, 0x00, 0x00, 0x00
+
+ov14_021F8CD0:
+	.byte 0x28, 0x3F, 0x0C, 0x23, 0x28, 0x3F, 0x24, 0x3B, 0x28, 0x3F, 0x3C, 0x53, 0x28, 0x3F, 0x54, 0x6B
+	.byte 0x28, 0x3F, 0x6C, 0x83, 0x28, 0x3F, 0x84, 0x9B, 0x40, 0x57, 0x0C, 0x23, 0x40, 0x57, 0x24, 0x3B
+	.byte 0x40, 0x57, 0x3C, 0x53, 0x40, 0x57, 0x54, 0x6B, 0x40, 0x57, 0x6C, 0x83, 0x40, 0x57, 0x84, 0x9B
+	.byte 0x58, 0x6F, 0x0C, 0x23, 0x58, 0x6F, 0x24, 0x3B, 0x58, 0x6F, 0x3C, 0x53, 0x58, 0x6F, 0x54, 0x6B
+	.byte 0x58, 0x6F, 0x6C, 0x83, 0x58, 0x6F, 0x84, 0x9B, 0x70, 0x87, 0x0C, 0x23, 0x70, 0x87, 0x24, 0x3B
+	.byte 0x70, 0x87, 0x3C, 0x53, 0x70, 0x87, 0x54, 0x6B, 0x70, 0x87, 0x6C, 0x83, 0x70, 0x87, 0x84, 0x9B
+	.byte 0x88, 0x9F, 0x0C, 0x23, 0x88, 0x9F, 0x24, 0x3B, 0x88, 0x9F, 0x3C, 0x53, 0x88, 0x9F, 0x54, 0x6B
+	.byte 0x88, 0x9F, 0x6C, 0x83, 0x88, 0x9F, 0x84, 0x9B, 0x11, 0x27, 0x1A, 0x8D, 0x11, 0x26, 0x01, 0x16
+	.byte 0x11, 0x26, 0x91, 0xA6, 0xA8, 0xBF, 0x00, 0x57, 0xA8, 0xBF, 0x60, 0xB7, 0xA8, 0xBF, 0xC0, 0xFF
+	.byte 0x28, 0x3F, 0xA8, 0xFF, 0x40, 0x57, 0xA8, 0xFF, 0x58, 0x6F, 0xA8, 0xFF, 0x70, 0x87, 0xA8, 0xFF
+	.byte 0x88, 0x9F, 0xA8, 0xFF, 0xA8, 0xBF, 0xC0, 0xFF, 0xFF, 0x00, 0x00, 0x00
+
+ov14_021F8D7C:
+	.byte 0x28, 0x3F, 0x0C, 0x23
+	.byte 0x28, 0x3F, 0x24, 0x3B, 0x28, 0x3F, 0x3C, 0x53, 0x28, 0x3F, 0x54, 0x6B, 0x28, 0x3F, 0x6C, 0x83
+	.byte 0x28, 0x3F, 0x84, 0x9B, 0x40, 0x57, 0x0C, 0x23, 0x40, 0x57, 0x24, 0x3B, 0x40, 0x57, 0x3C, 0x53
+	.byte 0x40, 0x57, 0x54, 0x6B, 0x40, 0x57, 0x6C, 0x83, 0x40, 0x57, 0x84, 0x9B, 0x58, 0x6F, 0x0C, 0x23
+	.byte 0x58, 0x6F, 0x24, 0x3B, 0x58, 0x6F, 0x3C, 0x53, 0x58, 0x6F, 0x54, 0x6B, 0x58, 0x6F, 0x6C, 0x83
+	.byte 0x58, 0x6F, 0x84, 0x9B, 0x70, 0x87, 0x0C, 0x23, 0x70, 0x87, 0x24, 0x3B, 0x70, 0x87, 0x3C, 0x53
+	.byte 0x70, 0x87, 0x54, 0x6B, 0x70, 0x87, 0x6C, 0x83, 0x70, 0x87, 0x84, 0x9B, 0x88, 0x9F, 0x0C, 0x23
+	.byte 0x88, 0x9F, 0x24, 0x3B, 0x88, 0x9F, 0x3C, 0x53, 0x88, 0x9F, 0x54, 0x6B, 0x88, 0x9F, 0x6C, 0x83
+	.byte 0x88, 0x9F, 0x84, 0x9B, 0x38, 0x4F, 0xB6, 0xCD, 0x40, 0x57, 0xDA, 0xF1, 0x58, 0x6F, 0xB6, 0xCD
+	.byte 0x60, 0x77, 0xDA, 0xF1, 0x78, 0x8F, 0xB6, 0xCD, 0x80, 0x97, 0xDA, 0xF1, 0xA2, 0xBD, 0xB2, 0xF5
+	.byte 0x0F, 0x26, 0x1F, 0x36, 0x0F, 0x26, 0x41, 0x58, 0x0F, 0x26, 0x63, 0x7A, 0x0F, 0x26, 0x85, 0x9C
+	.byte 0x0F, 0x26, 0xA7, 0xBE, 0x0F, 0x26, 0xC9, 0xE0, 0x0F, 0x26, 0x01, 0x16, 0x0F, 0x26, 0xE9, 0xFE
+	.byte 0xA8, 0xBF, 0x00, 0x87, 0xFF, 0x00, 0x00, 0x00
+
+ov14_021F8E38:
+	.byte 0x18, 0x24, 0x00, 0x00, 0x1E, 0x06, 0x05, 0x01
+	.byte 0x30, 0x24, 0x00, 0x00, 0x1E, 0x07, 0x00, 0x02, 0x48, 0x24, 0x00, 0x00, 0x1E, 0x08, 0x01, 0x03
+	.byte 0x60, 0x24, 0x00, 0x00, 0x1E, 0x09, 0x02, 0x04, 0x78, 0x24, 0x00, 0x00, 0x1E, 0x0A, 0x03, 0x05
+	.byte 0x90, 0x24, 0x00, 0x00, 0x1E, 0x0B, 0x04, 0x00, 0x18, 0x3C, 0x00, 0x00, 0x00, 0x0C, 0x0B, 0x07
+	.byte 0x30, 0x3C, 0x00, 0x00, 0x01, 0x0D, 0x06, 0x08, 0x48, 0x3C, 0x00, 0x00, 0x02, 0x0E, 0x07, 0x09
+	.byte 0x60, 0x3C, 0x00, 0x00, 0x03, 0x0F, 0x08, 0x0A, 0x78, 0x3C, 0x00, 0x00, 0x04, 0x10, 0x09, 0x0B
+	.byte 0x90, 0x3C, 0x00, 0x00, 0x05, 0x11, 0x0A, 0x06, 0x18, 0x54, 0x00, 0x00, 0x06, 0x12, 0x11, 0x0D
+	.byte 0x30, 0x54, 0x00, 0x00, 0x07, 0x13, 0x0C, 0x0E, 0x48, 0x54, 0x00, 0x00, 0x08, 0x14, 0x0D, 0x0F
+	.byte 0x60, 0x54, 0x00, 0x00, 0x09, 0x15, 0x0E, 0x10, 0x78, 0x54, 0x00, 0x00, 0x0A, 0x16, 0x0F, 0x11
+	.byte 0x90, 0x54, 0x00, 0x00, 0x0B, 0x17, 0x10, 0x0C, 0x18, 0x6C, 0x00, 0x00, 0x0C, 0x18, 0x17, 0x13
+	.byte 0x30, 0x6C, 0x00, 0x00, 0x0D, 0x19, 0x12, 0x14, 0x48, 0x6C, 0x00, 0x00, 0x0E, 0x1A, 0x13, 0x15
+	.byte 0x60, 0x6C, 0x00, 0x00, 0x0F, 0x1B, 0x14, 0x16, 0x78, 0x6C, 0x00, 0x00, 0x10, 0x1C, 0x15, 0x17
+	.byte 0x90, 0x6C, 0x00, 0x00, 0x11, 0x1D, 0x16, 0x12, 0x18, 0x84, 0x00, 0x00, 0x12, 0xA1, 0x1D, 0x19
+	.byte 0x30, 0x84, 0x00, 0x00, 0x13, 0xA1, 0x18, 0x1A, 0x48, 0x84, 0x00, 0x00, 0x14, 0xA1, 0x19, 0x1B
+	.byte 0x60, 0x84, 0x00, 0x00, 0x15, 0xA1, 0x1A, 0x1C, 0x78, 0x84, 0x00, 0x00, 0x16, 0xA1, 0x1B, 0x1D
+	.byte 0x90, 0x84, 0x00, 0x00, 0x17, 0xA1, 0x1C, 0x18, 0x54, 0x10, 0x00, 0x00, 0x21, 0x80, 0x1E, 0x1E
+	.byte 0x00, 0x00, 0x00, 0x00, 0x1F, 0x1F, 0x1F, 0x1F, 0x00, 0x00, 0x00, 0x00, 0x20, 0x20, 0x20, 0x20
+	.byte 0x2C, 0xA8, 0x00, 0x00, 0x98, 0x1E, 0x21, 0x22, 0x8C, 0xA8, 0x00, 0x00, 0x98, 0x1E, 0x21, 0x23
+	.byte 0xE0, 0xA8, 0x00, 0x00, 0x98, 0x1E, 0x22, 0x23, 0xD4, 0x88, 0x00, 0x00, 0x25, 0x25, 0x24, 0x24
+	.byte 0xE0, 0xA8, 0x00, 0x00, 0x24, 0x24, 0x25, 0x25
+
+ov14_021F8F68:
+	.byte 0x18, 0x24, 0x00, 0x00, 0x1E, 0x06, 0x05, 0x01
+	.byte 0x30, 0x24, 0x00, 0x00, 0x1E, 0x07, 0x00, 0x02, 0x48, 0x24, 0x00, 0x00, 0x1E, 0x08, 0x01, 0x03
+	.byte 0x60, 0x24, 0x00, 0x00, 0x1E, 0x09, 0x02, 0x04, 0x78, 0x24, 0x00, 0x00, 0x1E, 0x0A, 0x03, 0x05
+	.byte 0x90, 0x24, 0x00, 0x00, 0x1E, 0x0B, 0x04, 0x00, 0x18, 0x3C, 0x00, 0x00, 0x00, 0x0C, 0x0B, 0x07
+	.byte 0x30, 0x3C, 0x00, 0x00, 0x01, 0x0D, 0x06, 0x08, 0x48, 0x3C, 0x00, 0x00, 0x02, 0x0E, 0x07, 0x09
+	.byte 0x60, 0x3C, 0x00, 0x00, 0x03, 0x0F, 0x08, 0x0A, 0x78, 0x3C, 0x00, 0x00, 0x04, 0x10, 0x09, 0x0B
+	.byte 0x90, 0x3C, 0x00, 0x00, 0x05, 0x11, 0x0A, 0x06, 0x18, 0x54, 0x00, 0x00, 0x06, 0x12, 0x11, 0x0D
+	.byte 0x30, 0x54, 0x00, 0x00, 0x07, 0x13, 0x0C, 0x0E, 0x48, 0x54, 0x00, 0x00, 0x08, 0x14, 0x0D, 0x0F
+	.byte 0x60, 0x54, 0x00, 0x00, 0x09, 0x15, 0x0E, 0x10, 0x78, 0x54, 0x00, 0x00, 0x0A, 0x16, 0x0F, 0x11
+	.byte 0x90, 0x54, 0x00, 0x00, 0x0B, 0x17, 0x10, 0x0C, 0x18, 0x6C, 0x00, 0x00, 0x0C, 0x18, 0x17, 0x13
+	.byte 0x30, 0x6C, 0x00, 0x00, 0x0D, 0x19, 0x12, 0x14, 0x48, 0x6C, 0x00, 0x00, 0x0E, 0x1A, 0x13, 0x15
+	.byte 0x60, 0x6C, 0x00, 0x00, 0x0F, 0x1B, 0x14, 0x16, 0x78, 0x6C, 0x00, 0x00, 0x10, 0x1C, 0x15, 0x17
+	.byte 0x90, 0x6C, 0x00, 0x00, 0x11, 0x1D, 0x16, 0x12, 0x18, 0x84, 0x00, 0x00, 0x12, 0x21, 0x1D, 0x19
+	.byte 0x30, 0x84, 0x00, 0x00, 0x13, 0x21, 0x18, 0x1A, 0x48, 0x84, 0x00, 0x00, 0x14, 0x21, 0x19, 0x1B
+	.byte 0x60, 0x84, 0x00, 0x00, 0x15, 0x21, 0x1A, 0x1C, 0x78, 0x84, 0x00, 0x00, 0x16, 0x21, 0x1B, 0x1D
+	.byte 0x90, 0x84, 0x00, 0x00, 0x17, 0x21, 0x1C, 0x18, 0x54, 0x10, 0x00, 0x00, 0x21, 0x80, 0x1E, 0x1E
+	.byte 0x00, 0x00, 0x00, 0x00, 0x1F, 0x1F, 0x1F, 0x1F, 0x00, 0x00, 0x00, 0x00, 0x20, 0x20, 0x20, 0x20
+	.byte 0xE0, 0xA8, 0x00, 0x00, 0x98, 0x1E, 0x21, 0x21, 0xD4, 0x40, 0x00, 0x00, 0x26, 0x23, 0x22, 0x22
+	.byte 0xD4, 0x58, 0x00, 0x00, 0x22, 0x24, 0x23, 0x23, 0xD4, 0x70, 0x00, 0x00, 0x23, 0x25, 0x24, 0x24
+	.byte 0xD4, 0x88, 0x00, 0x00, 0x24, 0x26, 0x25, 0x25, 0xE0, 0xA8, 0x00, 0x00, 0x25, 0x22, 0x26, 0x26
+
+ov14_021F90A0:
+	.byte 0x18, 0x24, 0x00, 0x00, 0x1E, 0x06, 0x05, 0x01, 0x30, 0x24, 0x00, 0x00, 0x1E, 0x07, 0x00, 0x02
+	.byte 0x48, 0x24, 0x00, 0x00, 0x1E, 0x08, 0x01, 0x03, 0x60, 0x24, 0x00, 0x00, 0x1E, 0x09, 0x02, 0x04
+	.byte 0x78, 0x24, 0x00, 0x00, 0x1E, 0x0A, 0x03, 0x05, 0x90, 0x24, 0x00, 0x00, 0x1E, 0x0B, 0x04, 0x00
+	.byte 0x18, 0x3C, 0x00, 0x00, 0x00, 0x0C, 0x0B, 0x07, 0x30, 0x3C, 0x00, 0x00, 0x01, 0x0D, 0x06, 0x08
+	.byte 0x48, 0x3C, 0x00, 0x00, 0x02, 0x0E, 0x07, 0x09, 0x60, 0x3C, 0x00, 0x00, 0x03, 0x0F, 0x08, 0x0A
+	.byte 0x78, 0x3C, 0x00, 0x00, 0x04, 0x10, 0x09, 0x0B, 0x90, 0x3C, 0x00, 0x00, 0x05, 0x11, 0x0A, 0x06
+	.byte 0x18, 0x54, 0x00, 0x00, 0x06, 0x12, 0x11, 0x0D, 0x30, 0x54, 0x00, 0x00, 0x07, 0x13, 0x0C, 0x0E
+	.byte 0x48, 0x54, 0x00, 0x00, 0x08, 0x14, 0x0D, 0x0F, 0x60, 0x54, 0x00, 0x00, 0x09, 0x15, 0x0E, 0x10
+	.byte 0x78, 0x54, 0x00, 0x00, 0x0A, 0x16, 0x0F, 0x11, 0x90, 0x54, 0x00, 0x00, 0x0B, 0x17, 0x10, 0x0C
+	.byte 0x18, 0x6C, 0x00, 0x00, 0x0C, 0x18, 0x17, 0x13, 0x30, 0x6C, 0x00, 0x00, 0x0D, 0x19, 0x12, 0x14
+	.byte 0x48, 0x6C, 0x00, 0x00, 0x0E, 0x1A, 0x13, 0x15, 0x60, 0x6C, 0x00, 0x00, 0x0F, 0x1B, 0x14, 0x16
+	.byte 0x78, 0x6C, 0x00, 0x00, 0x10, 0x1C, 0x15, 0x17, 0x90, 0x6C, 0x00, 0x00, 0x11, 0x1D, 0x16, 0x12
+	.byte 0x18, 0x84, 0x00, 0x00, 0x12, 0xA1, 0x1D, 0x19, 0x30, 0x84, 0x00, 0x00, 0x13, 0xA1, 0x18, 0x1A
+	.byte 0x48, 0x84, 0x00, 0x00, 0x14, 0xA1, 0x19, 0x1B, 0x60, 0x84, 0x00, 0x00, 0x15, 0xA1, 0x1A, 0x1C
+	.byte 0x78, 0x84, 0x00, 0x00, 0x16, 0xA1, 0x1B, 0x1D, 0x90, 0x84, 0x00, 0x00, 0x17, 0xA1, 0x1C, 0x18
+	.byte 0x54, 0x10, 0x00, 0x00, 0x21, 0x80, 0x1E, 0x1E, 0x00, 0x00, 0x00, 0x00, 0x1F, 0x1F, 0x1F, 0x1F
+	.byte 0x00, 0x00, 0x00, 0x00, 0x20, 0x20, 0x20, 0x20, 0x2C, 0xA8, 0x00, 0x00, 0x98, 0x1E, 0x21, 0x22
+	.byte 0x8C, 0xA8, 0x00, 0x00, 0x98, 0x1E, 0x21, 0x23, 0xE0, 0xA8, 0x00, 0x00, 0x98, 0x1E, 0x22, 0x23
+	.byte 0xD4, 0x28, 0x00, 0x00, 0x29, 0x25, 0x24, 0x24, 0xD4, 0x40, 0x00, 0x00, 0x24, 0x26, 0x25, 0x25
+	.byte 0xD4, 0x58, 0x00, 0x00, 0x25, 0x27, 0x26, 0x26, 0xD4, 0x70, 0x00, 0x00, 0x26, 0x28, 0x27, 0x27
+	.byte 0xD4, 0x88, 0x00, 0x00, 0x27, 0x29, 0x28, 0x28, 0xE0, 0xA8, 0x00, 0x00, 0x28, 0x24, 0x29, 0x29
+ov14_021F91F0:
+	.byte 0x18, 0x24, 0x00, 0x00, 0x25, 0x06, 0x1F, 0x01, 0x30, 0x24, 0x00, 0x00, 0x25, 0x07, 0x00, 0x02
+	.byte 0x48, 0x24, 0x00, 0x00, 0x25, 0x08, 0x01, 0x03, 0x60, 0x24, 0x00, 0x00, 0x25, 0x09, 0x02, 0x04
+	.byte 0x78, 0x24, 0x00, 0x00, 0x25, 0x0A, 0x03, 0x05, 0x90, 0x24, 0x00, 0x00, 0x25, 0x0B, 0x04, 0x9E
+	.byte 0x18, 0x3C, 0x00, 0x00, 0x00, 0x0C, 0x1F, 0x07, 0x30, 0x3C, 0x00, 0x00, 0x01, 0x0D, 0x06, 0x08
+	.byte 0x48, 0x3C, 0x00, 0x00, 0x02, 0x0E, 0x07, 0x09, 0x60, 0x3C, 0x00, 0x00, 0x03, 0x0F, 0x08, 0x0A
+	.byte 0x78, 0x3C, 0x00, 0x00, 0x04, 0x10, 0x09, 0x0B, 0x90, 0x3C, 0x00, 0x00, 0x05, 0x11, 0x0A, 0x9E
+	.byte 0x18, 0x54, 0x00, 0x00, 0x06, 0x12, 0x21, 0x0D, 0x30, 0x54, 0x00, 0x00, 0x07, 0x13, 0x0C, 0x0E
+	.byte 0x48, 0x54, 0x00, 0x00, 0x08, 0x14, 0x0D, 0x0F, 0x60, 0x54, 0x00, 0x00, 0x09, 0x15, 0x0E, 0x10
+	.byte 0x78, 0x54, 0x00, 0x00, 0x0A, 0x16, 0x0F, 0x11, 0x90, 0x54, 0x00, 0x00, 0x0B, 0x17, 0x10, 0xA0
+	.byte 0x18, 0x6C, 0x00, 0x00, 0x0C, 0x18, 0x21, 0x13, 0x30, 0x6C, 0x00, 0x00, 0x0D, 0x19, 0x12, 0x14
+	.byte 0x48, 0x6C, 0x00, 0x00, 0x0E, 0x1A, 0x13, 0x15, 0x60, 0x6C, 0x00, 0x00, 0x0F, 0x1B, 0x14, 0x16
+	.byte 0x78, 0x6C, 0x00, 0x00, 0x10, 0x1C, 0x15, 0x17, 0x90, 0x6C, 0x00, 0x00, 0x11, 0x1D, 0x16, 0xA2
+	.byte 0x18, 0x84, 0x00, 0x00, 0x12, 0x25, 0x23, 0x19, 0x30, 0x84, 0x00, 0x00, 0x13, 0x25, 0x18, 0x1A
+	.byte 0x48, 0x84, 0x00, 0x00, 0x14, 0x25, 0x19, 0x1B, 0x60, 0x84, 0x00, 0x00, 0x15, 0x25, 0x1A, 0x1C
+	.byte 0x78, 0x84, 0x00, 0x00, 0x16, 0x25, 0x1B, 0x1D, 0x90, 0x84, 0x00, 0x00, 0x17, 0x25, 0x1C, 0xA2
+	.byte 0xC0, 0x34, 0x00, 0x00, 0x25, 0x20, 0x85, 0x1F, 0xE8, 0x3C, 0x00, 0x00, 0x25, 0x21, 0x1E, 0x80
+	.byte 0xC0, 0x54, 0x00, 0x00, 0x1E, 0x22, 0x91, 0x21, 0xE8, 0x5C, 0x00, 0x00, 0x1F, 0x23, 0x20, 0x8C
+	.byte 0xC0, 0x74, 0x00, 0x00, 0x20, 0x24, 0x97, 0x23, 0xE8, 0x7C, 0x00, 0x00, 0x21, 0x24, 0x22, 0x98
+	.byte 0xD4, 0xA2, 0x00, 0x00, 0xA3, 0x25, 0x24, 0x24, 0x2B, 0x17, 0x00, 0x00, 0x18, 0x80, 0x2A, 0x26
+	.byte 0x4D, 0x17, 0x00, 0x00, 0x18, 0x80, 0x25, 0x27, 0x6F, 0x17, 0x00, 0x00, 0x18, 0x80, 0x26, 0x28
+	.byte 0x91, 0x17, 0x00, 0x00, 0x18, 0x80, 0x27, 0x29, 0xB3, 0x17, 0x00, 0x00, 0x18, 0x80, 0x28, 0x2A
+	.byte 0xD5, 0x17, 0x00, 0x00, 0x18, 0x80, 0x29, 0x25, 0x00, 0x00, 0x00, 0x00, 0x2B, 0x2B, 0x2B, 0x2B
+	.byte 0x00, 0x00, 0x00, 0x00, 0x2C, 0x2C, 0x2C, 0x2C, 0x44, 0xA8, 0x00, 0x00, 0x2D, 0x2D, 0x2D, 0x2D
