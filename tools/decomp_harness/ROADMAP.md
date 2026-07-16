@@ -487,13 +487,29 @@ ov92 (81), ov83_02246E08 (16). Known limits: copyprop-cmp is the weakest signal 
 pointer, calibrate `medium` hits against one real build); dead-store trades recall for
 precision near calls.
 
-### T2.5 Parameterize the rodata pipeline  `[ ]`  (1–2 days)
+### T2.5 Parameterize the rodata pipeline  `[x]`  (1–2 days)
 gen_rodata.py:12, gen_rodata_blob.py:18-25, verify_rodata.py:11-16 hardcode one overlay.
 Generalize to `gen_rodata_pass.py <asm/name.s>` (base addresses derivable from symbol names);
 fold verify_rodata's symbol-addressed byte comparison into `objdiff --rodata`. Longer-term:
 a pre-build rodata layout **emulator** encoding MWCC's rules (first-pinned-rest-reversed,
 static size-sort, anon @NNNN templates first, dropped trailing .balign) so layout is
 validated before any compile.
+
+**Result (2026-07-16).** `gen_rodata_pass.py` supersedes all three hardcoded scripts (kept as
+reference until a second one-struct case proves the tool). Address derivation per symbol:
+`; 0xADDR` comment → address-encoded name (≥6 hex digits) → section_base + running offset,
+with accumulated-vs-derivable cross-checks reported as parse-gap warnings. Recipe
+auto-selects one-struct vs ext-const. CLI: report / `--emit` (C skeleton) / `--json`.
+`objdiff.py --rodata` folds in verify_rodata (per-symbol and map-driven modes, reloc-masked,
+per-symbol OK/DIFF + byte offsets); regression suite 322/322 verdict-identical.
+Independently verified: layout reproduction on overlay_02_02248728 exact (76/76 fields,
+span 0x844, asm-ref offsets sRodata+0x5F4/+0x754 match the committed inline asm); built pair
+82/82 MATCH; negative test (non-relocated byte flip) → DIFF at exact symbol+offset, exit 1.
+Note: ~37% of ov02 sRodata bytes are reloc-masked (fptr tables) — correct at .o level; the
+full-ROM SHA1 gate owns link-level divergence. Dry-runs clean on unk_data_020FDB44 (ext-const,
+96 publics, base from filename) and overlay_01_sprite_data. Limits: skeleton types only;
+mid-array split labels not auto-merged (byte-identical anyway); layout emulator still future
+work. Next: wire `--emit` into finalization to replace gen_rodata_blob.py.
 
 ### T2.6 m2c as a third draft channel  `[ ]`  (0.5 day to wire)
 m2c supports `--target arm`; in-tree tools/m2ctx already generates its context input. Output

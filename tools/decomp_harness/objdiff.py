@@ -7,6 +7,8 @@ Usage:
     objdiff.py <asm_obj> <c_obj> --disasm <fn> # show both disassemblies side-by-side
     objdiff.py <asm_obj> <c_obj> --bytes <fn>  # byte-level diff for one function
     objdiff.py --sections <asm_obj> <c_obj>    # compare section sizes
+    objdiff.py <asm_obj> <c_obj> --rodata      # per-symbol .rodata/.data byte diff
+    objdiff.py <asm_obj> <c_obj> --rodata --map asm/name.s   # force the symbol map
     objdiff.py <asm_obj> <c_obj> --legacy      # use the old objdump-text extractor
 
 Typical decomp workflow:
@@ -807,6 +809,89 @@ def elf_data_section(objfile, secname):
     return bytes(buf), mask
 
 
+# Section-name prefixes MWCC/GCC place read-only / initialized data in. A .rodata
+# TU can be split into `.rodata`, `.rodata.str1.4`, etc.; consolidated data files
+# use the plain names. We treat both `.rodata*` and `.data*` families.
+def _is_data_secname(name, kind):
+    """kind in ('rodata','data'). True for that section family."""
+    if kind == "rodata":
+        return name == ".rodata" or name.startswith(".rodata.")
+    return name == ".data" or name.startswith(".data.")
+
+
+def elf_data_symbols(objfile):
+    """Per-object rodata/data layout for symbol-addressed comparison.
+
+    Returns (secs, syms):
+      secs[shndx] -> (masked_bytes, maskset, kind)  every .rodata*/.data* section
+      syms[name]  -> {shndx, value, size, kind}  for OBJECT/NOTYPE symbols that
+                     live in a .rodata*/.data* section and have nonzero size
+    A "masked byte" is one covered by a relocation (a don't-care pointer word).
+    """
+    elf = Elf(objfile)
+    relocs = elf.relocs_by_section()
+    secs = {}
+    for idx, s in enumerate(elf.sections):
+        for kind in ("rodata", "data"):
+            if _is_data_secname(s["name"], kind):
+                b = elf.section_bytes(idx)
+                mask = set()
+                for r_offset, r_type in relocs.get(idx, ()):
+                    w = RELOC_WIDTH.get(r_type, RELOC_WIDTH_DEFAULT)
+                    for k in range(r_offset, min(r_offset + w, len(b))):
+                        mask.add(k)
+                secs[idx] = (b, mask, kind)
+    syms = {}
+    for name, value, size, shndx, stype in elf.symbols():
+        if not name or name.startswith("$") or name.startswith("."):
+            continue
+        if size == 0 or shndx not in secs:
+            continue
+        if stype not in (STT_FUNC, 0, 1):  # NOTYPE, OBJECT, or (defensively) FUNC
+            continue
+        # Prefer the largest symbol at a given name so a consolidated container
+        # (sRodata) wins over a zero-alias / dwarf shadow.
+        prev = syms.get(name)
+        if prev and prev["size"] >= size:
+            continue
+        syms[name] = {"shndx": shndx, "value": value, "size": size,
+                      "kind": secs[shndx][2]}
+    return secs, syms
+
+
+def _kind_blob(secs, kind):
+    """Concatenate all sections of a kind (shndx order) -> (bytes, maskset)."""
+    buf = bytearray()
+    mask = set()
+    for idx in sorted(secs):
+        b, m, k = secs[idx]
+        if k != kind:
+            continue
+        base = len(buf)
+        buf.extend(b)
+        for off in m:
+            mask.add(base + off)
+    return bytes(buf), mask
+
+
+def _diff_slice(a_bytes, a_mask, c_bytes, c_mask):
+    """Compare two equal-region byte slices with union masking.
+
+    Returns (ok, size_mismatch, diff_offsets) where diff_offsets are the
+    non-masked differing byte offsets (relative to the slice start).
+    """
+    if len(a_bytes) != len(c_bytes):
+        return False, True, []
+    diffs = []
+    for i in range(len(a_bytes)):
+        if a_bytes[i] == c_bytes[i]:
+            continue
+        if i in a_mask or i in c_mask:
+            continue
+        diffs.append(i)
+    return (len(diffs) == 0), False, diffs
+
+
 # ---------------------------------------------------------------------------
 # Extraction dispatch shared by the comparison commands.
 # ---------------------------------------------------------------------------
@@ -983,6 +1068,107 @@ def cmd_summary(args):
     else:
         print(f"\n{ok_count}/{total} functions OK, {fail_count} mismatched")
     return 1
+
+
+def _autodetect_s(*objfiles):
+    """Infer asm/<name>.s from a built object path (build/.../<name>.o)."""
+    root = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+    root = os.path.dirname(root)  # repo root (tools/decomp_harness -> repo)
+    for o in objfiles:
+        stem = os.path.splitext(os.path.basename(o))[0]
+        cand = os.path.join(root, "asm", stem + ".s")
+        if os.path.exists(cand):
+            return cand
+    return None
+
+
+def cmd_rodata(args):
+    """Symbol-by-symbol .rodata/.data comparison (folds in verify_rodata.py).
+
+    Two modes, auto-selected:
+      per-symbol  both objects expose the same named data symbols (the ext-const
+                  / flat-symbol case) — slice each symbol from its own object by
+                  the symbol table and compare, reloc-masked.
+      map-driven  the layout is taken from a `.s` file (the one-struct /
+                  consolidated case, where the src collapsed to sRodata/sData) —
+                  slice each `.s` symbol from the concatenated section blob at
+                  (retail_addr - section_base) on both sides.
+    """
+    asm_secs, asm_syms = elf_data_symbols(args.asm_obj)
+    c_secs, c_syms = elf_data_symbols(args.c_obj)
+
+    shared = sorted(n for n in asm_syms if n in c_syms
+                    and asm_syms[n]["kind"] == c_syms[n]["kind"])
+    records = []  # (name, kind, addr_or_off, size, ok, size_mismatch, diffs)
+
+    if len(shared) >= 2:
+        mode = "per-symbol (shared symbol tables)"
+        for n in shared:
+            a = asm_syms[n]
+            c = c_syms[n]
+            ab, am, _ = asm_secs[a["shndx"]]
+            cb, cm, _ = c_secs[c["shndx"]]
+            asl = ab[a["value"]:a["value"] + a["size"]]
+            aslm = {i - a["value"] for i in am
+                    if a["value"] <= i < a["value"] + a["size"]}
+            csl = cb[c["value"]:c["value"] + c["size"]]
+            cslm = {i - c["value"] for i in cm
+                    if c["value"] <= i < c["value"] + c["size"]}
+            ok, sz, diffs = _diff_slice(asl, aslm, csl, cslm)
+            records.append((n, a["kind"], a["value"], a["size"], ok, sz, diffs,
+                            len(csl)))
+    else:
+        map_path = args.map or _autodetect_s(args.asm_obj, args.c_obj)
+        if not map_path or not os.path.exists(map_path):
+            print("error: --rodata needs shared data symbols or a --map <asm/x.s> "
+                  f"(auto-detect failed for {args.asm_obj} / {args.c_obj})",
+                  file=sys.stderr)
+            return 2
+        sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+        import gen_rodata_pass
+        layout = gen_rodata_pass.symbol_layout(map_path)
+        mode = f"map-driven ({os.path.relpath(map_path)})"
+        blobs = {}
+        for kind in ("rodata", "data"):
+            ab, am = _kind_blob(asm_secs, kind)
+            cb, cm = _kind_blob(c_secs, kind)
+            blobs[kind] = (ab, am, cb, cm)
+            if kind in layout["bases"] and len(ab) != len(cb):
+                print(f"SECT  .{kind}: size mismatch asm={len(ab)} c={len(cb)} "
+                      "(layout diverged before per-symbol check)")
+        for s in layout["symbols"]:
+            kind = s["kind"]
+            ab, am, cb, cm = blobs[kind]
+            off = s["offset"]
+            asl = ab[off:off + s["size"]]
+            aslm = {i - off for i in am if off <= i < off + s["size"]}
+            csl = cb[off:off + s["size"]]
+            cslm = {i - off for i in cm if off <= i < off + s["size"]}
+            ok, sz, diffs = _diff_slice(asl, aslm, csl, cslm)
+            records.append((s["name"], kind, s["addr"], s["size"], ok, sz, diffs,
+                            len(csl)))
+
+    ok_n = sum(1 for r in records if r[4])
+    bad = [r for r in records if not r[4]]
+    print(f"rodata/.data symbol comparison: {mode}")
+    print(f"  asm: {args.asm_obj}")
+    print(f"  c:   {args.c_obj}\n")
+    if args.verbose:
+        for name, kind, addr, size, ok, sz, diffs, csize in records:
+            tag = " OK " if ok else "DIFF"
+            print(f"  {tag}  {name:<28} .{kind:<6} @0x{addr:08X} [{size}B]")
+    for name, kind, addr, size, ok, sz, diffs, csize in bad:
+        if sz:
+            print(f"DIFF  {name} @0x{addr:08X}: SIZE asm={size} c={csize}")
+        else:
+            head = ", ".join(f"+0x{d:X}" for d in diffs[:12])
+            more = f" (+{len(diffs)-12} more)" if len(diffs) > 12 else ""
+            print(f"DIFF  {name} @0x{addr:08X}: {len(diffs)} byte diff(s) at {head}{more}")
+    print(f"\n{'=' * 60}")
+    print(f"  {ok_n}/{len(records)} rodata/.data symbols MATCH"
+          + (f", {len(bad)} DIFF" if bad else ""))
+    print(f"{'=' * 60}")
+    return 0 if not bad else 1
 
 
 def _load_full(objfile):
@@ -1181,7 +1367,14 @@ def main():
                       help="Per-function matched-halfword ratio (permuter fitness)")
     mode.add_argument("--classify", nargs="?", const="", metavar="FN", dest="classify_fn",
                       help="Label mismatched functions; optional FN restricts to one")
+    mode.add_argument("--rodata", action="store_true",
+                      help="Per-symbol .rodata/.data byte comparison (reloc-masked)")
 
+    parser.add_argument("--map", dest="map", metavar="ASM_S",
+                        help="With --rodata: asm/<name>.s giving the symbol layout "
+                             "(auto-detected from the object path if omitted)")
+    parser.add_argument("-v", "--verbose", action="store_true",
+                        help="With --rodata: list every symbol (OK and DIFF)")
     parser.add_argument("--json", action="store_true",
                         help="Machine-readable JSON for --score / --classify")
     parser.add_argument("--attempts-json", action="store_true",
@@ -1207,6 +1400,8 @@ def main():
         return cmd_bytes(args)
     elif args.sections:
         return cmd_sections(args)
+    elif args.rodata:
+        return cmd_rodata(args)
     elif args.score:
         return cmd_score(args)
     elif args.classify_fn is not None:
