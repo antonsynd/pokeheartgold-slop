@@ -856,7 +856,19 @@ Overlay OVY_48
 Overlay OVY_49
 {
     After OVY_45
-    Object asm/overlay_49.o
+    Object asm/overlay_49_02258800.o
+    Object asm/overlay_49_022595CC.o
+    Object asm/overlay_49_0225A154.o
+    Object asm/overlay_49_0225CB50.o
+    Object asm/overlay_49_0225D6AC.o
+    Object asm/overlay_49_0225EEAC.o
+    Object asm/overlay_49_02261FC0.o
+    Object asm/overlay_49_02262DB8.o
+    Object asm/overlay_49_02263B74.o
+    Object asm/overlay_49_022649F4.o
+    Object asm/overlay_49_022655E0.o
+    Object asm/overlay_49_02267F94.o
+    Object asm/overlay_49_02268D94.o
 }
 Overlay trainer_card
 {

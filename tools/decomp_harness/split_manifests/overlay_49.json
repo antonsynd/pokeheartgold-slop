@@ -1,0 +1,301 @@
+{
+  "overlay": "overlay_49",
+  "source": "asm/overlay_49.s",
+  "align": 4,
+  "num_functions": 665,
+  "num_tail_symbols": 121,
+  "raw_clean_cuts": 293,
+  "num_chunks": 13,
+  "chunks": [
+    {
+      "chunk": "overlay_49_02258800",
+      "asm": "asm/overlay_49_02258800.s",
+      "inc": "asm/include/overlay_49_02258800.inc",
+      "start_addr": "0x02258800",
+      "func_range": [
+        "ov49_02258800",
+        "ov49_022594D8"
+      ],
+      "addr_range": [
+        "0x02258800",
+        "0x022594D8"
+      ],
+      "num_funcs": 69,
+      "tail_range": [
+        "_02269624",
+        "ov49_022696C0"
+      ],
+      "num_tail_syms": 11,
+      "num_publics": 144,
+      "num_imports": 88,
+      "num_exports": 56
+    },
+    {
+      "chunk": "overlay_49_022595CC",
+      "asm": "asm/overlay_49_022595CC.s",
+      "inc": "asm/include/overlay_49_022595CC.inc",
+      "start_addr": "0x022595CC",
+      "func_range": [
+        "ov49_022595CC",
+        "ov49_0225A144"
+      ],
+      "addr_range": [
+        "0x022595CC",
+        "0x0225A144"
+      ],
+      "num_funcs": 46,
+      "tail_range": null,
+      "num_tail_syms": 0,
+      "num_publics": 149,
+      "num_imports": 104,
+      "num_exports": 45
+    },
+    {
+      "chunk": "overlay_49_0225A154",
+      "asm": "asm/overlay_49_0225A154.s",
+      "inc": "asm/include/overlay_49_0225A154.inc",
+      "start_addr": "0x0225A154",
+      "func_range": [
+        "ov49_0225A154",
+        "ov49_0225CAD4"
+      ],
+      "addr_range": [
+        "0x0225A154",
+        "0x0225CAD4"
+      ],
+      "num_funcs": 159,
+      "tail_range": [
+        "ov49_022696E8",
+        "ov49_022699AC"
+      ],
+      "num_tail_syms": 23,
+      "num_publics": 303,
+      "num_imports": 220,
+      "num_exports": 83
+    },
+    {
+      "chunk": "overlay_49_0225CB50",
+      "asm": "asm/overlay_49_0225CB50.s",
+      "inc": "asm/include/overlay_49_0225CB50.inc",
+      "start_addr": "0x0225CB50",
+      "func_range": [
+        "ov49_0225CB50",
+        "ov49_0225D5FC"
+      ],
+      "addr_range": [
+        "0x0225CB50",
+        "0x0225D5FC"
+      ],
+      "num_funcs": 58,
+      "tail_range": [
+        "ov49_02269A6C",
+        "ov49_02269A6C"
+      ],
+      "num_tail_syms": 1,
+      "num_publics": 110,
+      "num_imports": 55,
+      "num_exports": 55
+    },
+    {
+      "chunk": "overlay_49_0225D6AC",
+      "asm": "asm/overlay_49_0225D6AC.s",
+      "inc": "asm/include/overlay_49_0225D6AC.inc",
+      "start_addr": "0x0225D6AC",
+      "func_range": [
+        "ov49_0225D6AC",
+        "ov49_0225EE4C"
+      ],
+      "addr_range": [
+        "0x0225D6AC",
+        "0x0225EE4C"
+      ],
+      "num_funcs": 61,
+      "tail_range": [
+        "ov49_02269A74",
+        "ov49_02269AAC"
+      ],
+      "num_tail_syms": 5,
+      "num_publics": 123,
+      "num_imports": 82,
+      "num_exports": 41
+    },
+    {
+      "chunk": "overlay_49_0225EEAC",
+      "asm": "asm/overlay_49_0225EEAC.s",
+      "inc": "asm/include/overlay_49_0225EEAC.inc",
+      "start_addr": "0x0225EEAC",
+      "func_range": [
+        "ov49_0225EEAC",
+        "ov49_02261DBC"
+      ],
+      "addr_range": [
+        "0x0225EEAC",
+        "0x02261DBC"
+      ],
+      "num_funcs": 66,
+      "tail_range": [
+        "ov49_02269B38",
+        "ov49_02269D20"
+      ],
+      "num_tail_syms": 23,
+      "num_publics": 190,
+      "num_imports": 176,
+      "num_exports": 14
+    },
+    {
+      "chunk": "overlay_49_02261FC0",
+      "asm": "asm/overlay_49_02261FC0.s",
+      "inc": "asm/include/overlay_49_02261FC0.inc",
+      "start_addr": "0x02261FC0",
+      "func_range": [
+        "ov49_02261FC0",
+        "ov49_02262D70"
+      ],
+      "addr_range": [
+        "0x02261FC0",
+        "0x02262D70"
+      ],
+      "num_funcs": 10,
+      "tail_range": [
+        "ov49_02269DF8",
+        "ov49_02269DFC"
+      ],
+      "num_tail_syms": 2,
+      "num_publics": 90,
+      "num_imports": 86,
+      "num_exports": 4
+    },
+    {
+      "chunk": "overlay_49_02262DB8",
+      "asm": "asm/overlay_49_02262DB8.s",
+      "inc": "asm/include/overlay_49_02262DB8.inc",
+      "start_addr": "0x02262DB8",
+      "func_range": [
+        "ov49_02262DB8",
+        "ov49_02262FB4"
+      ],
+      "addr_range": [
+        "0x02262DB8",
+        "0x02262FB4"
+      ],
+      "num_funcs": 6,
+      "tail_range": null,
+      "num_tail_syms": 0,
+      "num_publics": 92,
+      "num_imports": 87,
+      "num_exports": 5
+    },
+    {
+      "chunk": "overlay_49_02263B74",
+      "asm": "asm/overlay_49_02263B74.s",
+      "inc": "asm/include/overlay_49_02263B74.inc",
+      "start_addr": "0x02263B74",
+      "func_range": [
+        "ov49_02263B74",
+        "ov49_022644E8"
+      ],
+      "addr_range": [
+        "0x02263B74",
+        "0x022644E8"
+      ],
+      "num_funcs": 2,
+      "tail_range": null,
+      "num_tail_syms": 0,
+      "num_publics": 72,
+      "num_imports": 70,
+      "num_exports": 2
+    },
+    {
+      "chunk": "overlay_49_022649F4",
+      "asm": "asm/overlay_49_022649F4.s",
+      "inc": "asm/include/overlay_49_022649F4.inc",
+      "start_addr": "0x022649F4",
+      "func_range": [
+        "ov49_022649F4",
+        "ov49_02265434"
+      ],
+      "addr_range": [
+        "0x022649F4",
+        "0x02265434"
+      ],
+      "num_funcs": 38,
+      "tail_range": [
+        "ov49_02269E1C",
+        "ov49_02269EC6"
+      ],
+      "num_tail_syms": 5,
+      "num_publics": 108,
+      "num_imports": 72,
+      "num_exports": 36
+    },
+    {
+      "chunk": "overlay_49_022655E0",
+      "asm": "asm/overlay_49_022655E0.s",
+      "inc": "asm/include/overlay_49_022655E0.inc",
+      "start_addr": "0x022655E0",
+      "func_range": [
+        "ov49_022655E0",
+        "ov49_02267F40"
+      ],
+      "addr_range": [
+        "0x022655E0",
+        "0x02267F40"
+      ],
+      "num_funcs": 90,
+      "tail_range": [
+        "ov49_0226A450",
+        "ov49_0226A7C8"
+      ],
+      "num_tail_syms": 30,
+      "num_publics": 78,
+      "num_imports": 64,
+      "num_exports": 14
+    },
+    {
+      "chunk": "overlay_49_02267F94",
+      "asm": "asm/overlay_49_02267F94.s",
+      "inc": "asm/include/overlay_49_02267F94.inc",
+      "start_addr": "0x02267F94",
+      "func_range": [
+        "ov49_02267F94",
+        "ov49_02268D0C"
+      ],
+      "addr_range": [
+        "0x02267F94",
+        "0x02268D0C"
+      ],
+      "num_funcs": 43,
+      "tail_range": [
+        "ov49_0226A7D8",
+        "ov49_0226A8B4"
+      ],
+      "num_tail_syms": 17,
+      "num_publics": 61,
+      "num_imports": 51,
+      "num_exports": 10
+    },
+    {
+      "chunk": "overlay_49_02268D94",
+      "asm": "asm/overlay_49_02268D94.s",
+      "inc": "asm/include/overlay_49_02268D94.inc",
+      "start_addr": "0x02268D94",
+      "func_range": [
+        "ov49_02268D94",
+        "ov49_022695C4"
+      ],
+      "addr_range": [
+        "0x02268D94",
+        "0x022695C4"
+      ],
+      "num_funcs": 17,
+      "tail_range": [
+        "ov49_0226A8C8",
+        "ov49_0226A8DC"
+      ],
+      "num_tail_syms": 4,
+      "num_publics": 75,
+      "num_imports": 68,
+      "num_exports": 7
+    }
+  ]
+}
