@@ -531,13 +531,24 @@ asm/overlay_02_02248728.s 3×, plus 5 src files — the grep is cheap, wire it i
 their finalization requires `chiri pkg -- build --game both` with COMPARE=1. T2.1 splits of
 version-conditional overlays must validate under both versions.
 
-### T3.3 Upstream pret sync  `[ ]`  (0.5 day for the script, then weekly)
+### T3.3 Upstream pret sync  `[x]`  (0.5 day for the script, then weekly)
 pret/pokeheartgold is actively landing decomps of the same files (the 382 "upstream" ledger
 entries are their finished work; local upstream ref was ~3 weeks stale at analysis time).
 Build a ~30-line weekly report: `git fetch upstream` + diff upstream src/ against the local
 pending queue → "files upstream already matched" (retire for free) and "files upstream is
 working on" (don't collide). Define a merge policy for split-renamed files using the T2.1
 manifest. Check before starting any giant.
+
+**Result (2026-07-16).** `upstream_sync.py`: `git fetch upstream` then run; maps NEW
+upstream src (vs local HEAD) onto the pending triage queue by overlay number and embedded
+address (split-chunk aware). First run (upstream/master f02bd7464, 2026-07-13): upstream has
+matched **overlay_42 entirely** (4 C files) and **6 overlay_03 files** — both pending
+monoliths locally → DO NOT start them; port upstream's C instead. party_gauge.c /
+field_control.c are new upstream src with no local-asm mapping (check by hand). ov14, ov18,
+ov96, ov92, ov49 all still asm upstream → no collision, safe to proceed locally. **Open:**
+merge policy for porting upstream C into this fork (fork diverged; `upstream-merge-wip`
+parked) — needs a user decision before any port. Standing cadence: run weekly and before
+starting any giant.
 
 ### T3.4 Parallel-session capacity  `[ ]`  (1 day)
 At ~45–50 fns/day serial, the remaining 17k functions take 12+ months. The structural fix:
