@@ -48,7 +48,16 @@ After all agents in the wave return:
 
 ```bash
 python3 tools/decomp_harness/sweep/merge_sweep.py
+for f in <swept asm files>; do
+  python3 tools/decomp_harness/asm_oracle.py "$f" --update-knowledge
+done
 ```
+
+The oracle pass (T2.4) adds machine-derived signedness/width/exact-type
+constraints and NONMATCHING pre-flags under each file's `oracle` key —
+evidence-backed, unlike the sweep agents' hypotheses. merge_sweep preserves
+existing oracle blocks across rebuilds, so the order of the two steps is not
+load-bearing.
 
 Report: files analyzed, symbol/struct counts, and especially any
 `signature_conflicts` — those are exactly the prototypes that will cause IPA

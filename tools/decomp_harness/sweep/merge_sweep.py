@@ -34,6 +34,21 @@ def main():
     structs = {}
     files = {}
 
+    # Preserve additive oracle blocks written by asm_oracle.py (T2.4) across this
+    # full rebuild. They live under files[<file>]["oracle"], are NOT sweep-derived,
+    # and would otherwise be dropped because this script rebuilds `files` from
+    # scratch. This carry-forward is purely additive: it never creates or edits
+    # oracle content, only re-attaches what was already there.
+    prev_oracle = {}
+    if KNOWLEDGE.exists():
+        try:
+            prev = json.loads(KNOWLEDGE.read_text())
+            for fname, entry in prev.get("files", {}).items():
+                if isinstance(entry, dict) and "oracle" in entry:
+                    prev_oracle[fname] = entry["oracle"]
+        except (json.JSONDecodeError, OSError):
+            pass
+
     for path in sorted(OUT.glob("*.json")):
         try:
             with open(path) as f:
@@ -97,6 +112,11 @@ def main():
                 desc = {k: v for k, v in field.items() if k != "offset"}
                 desc["source"] = src_file
                 slot.append(desc)
+
+    # re-attach preserved oracle blocks (additive; creates an oracle-only entry
+    # for files that were oracle'd but not swept)
+    for fname, oracle in prev_oracle.items():
+        files.setdefault(fname, {})["oracle"] = oracle
 
     # conflict report: symbols with >1 distinct signature guess
     conflicts = sorted(

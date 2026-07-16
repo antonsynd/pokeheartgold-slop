@@ -465,11 +465,27 @@ and `float_annotate.py` (read-only triage annotator: per-function helper sequenc
 float/double constants, compare-operator hints; smoke-tested on overlay_49 — correctly
 annotates the 0.5f round-half-away idiom). Ready to attack ov96/ov92/ov49.
 
-### T2.4 Asm-derived type/idiom oracle at sweep time  `[ ]`  (1 day)
+### T2.4 Asm-derived type/idiom oracle at sweep time  `[x]`  (1 day)
 Scan .s at sweep time for: blt/bge vs bcc/bhs → signedness constraints; lsl/lsr truncation
 pairs → width constraints; _s32/_u32/_ffix helper names → exact types; copyprop-cmp entry
 signature + dead-store stack buffers → pre-flag NONMATCHING-inevitable in knowledge.json.
 Each of these currently costs a build-diff cycle to discover per function.
+
+**Result (2026-07-16).** `asm_oracle.py` (stdlib-only, read-only). Four detectors, every
+claim carries its asm evidence line: signedness from cmp+branch pairs (soft-float compare
+branches EXCLUDED — verified 0/152 contaminated in ov92; backward scan stops at labels/calls,
+precision-biased); widths from lsl/lsr truncation pairs + ldrb/ldrh/ldrsb/ldrsh access widths;
+exact types from runtime helper names incl. the FX_Mul idiom (_ll_mul + asr#0x1f pair +
+(+0x800,>>12) tail — 18/18 hits in ov49 cross-check the T2.3 inventory); NONMATCHING
+pre-flags (copyprop-cmp with four structural discriminators for benign look-alikes, all
+low-confidence advisory; dead-store-stack bounded by the outgoing-arg zone, conservative to
+a fault — 0 FPs on validation set). CLI: human report / `--func` / `--json` /
+`--update-knowledge` (additive under `files[<f>]["oracle"]`, idempotent). merge_sweep.py
+gained a strictly-additive carry-forward guard so full sweep rebuilds preserve oracle blocks.
+Wired into the /decomp-sweep skill checklist. Validated on ov49 (400 funcs w/ constraints),
+ov92 (81), ov83_02246E08 (16). Known limits: copyprop-cmp is the weakest signal (audit
+pointer, calibrate `medium` hits against one real build); dead-store trades recall for
+precision near calls.
 
 ### T2.5 Parameterize the rodata pipeline  `[ ]`  (1–2 days)
 gen_rodata.py:12, gen_rodata_blob.py:18-25, verify_rodata.py:11-16 hardcode one overlay.
