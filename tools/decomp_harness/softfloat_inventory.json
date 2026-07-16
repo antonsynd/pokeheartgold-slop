@@ -1,0 +1,342 @@
+{
+  "_s32_div_f": {
+    "total": 1106,
+    "top_files": {
+      "asm/overlay_96.s": 415,
+      "asm/overlay_07.s": 61,
+      "asm/overlay_108.s": 42,
+      "asm/overlay_14.s": 41,
+      "asm/overlay_93_thumb_2.s": 39,
+      "asm/overlay_74_thumb.s": 39,
+      "asm/overlay_40.s": 30,
+      "asm/overlay_71.s": 21
+    }
+  },
+  "_fflt": {
+    "total": 422,
+    "top_files": {
+      "asm/overlay_96.s": 87,
+      "asm/overlay_49.s": 66,
+      "asm/overlay_92.s": 38,
+      "asm/overlay_02_02248728.s": 28,
+      "asm/overlay_74_thumb.s": 21,
+      "asm/unk_020632B0.s": 16,
+      "asm/overlay_59.s": 16,
+      "asm/overlay_02_02245B80.s": 12
+    }
+  },
+  "_u32_div_f": {
+    "total": 294,
+    "top_files": {
+      "asm/overlay_18.s": 36,
+      "asm/overlay_96.s": 36,
+      "asm/overlay_45_thumb.s": 26,
+      "asm/overlay_112.s": 15,
+      "asm/overlay_01_021EB1E8.s": 14,
+      "asm/overlay_49.s": 12,
+      "asm/overlay_28.s": 10,
+      "asm/overlay_80_0222BDF4.s": 8
+    }
+  },
+  "_ffix": {
+    "total": 262,
+    "top_files": {
+      "asm/overlay_96.s": 66,
+      "asm/overlay_49.s": 49,
+      "asm/overlay_92.s": 36,
+      "asm/overlay_02_02248728.s": 14,
+      "asm/overlay_74_thumb.s": 11,
+      "asm/unk_020632B0.s": 8,
+      "asm/overlay_59.s": 8,
+      "asm/overlay_27.s": 6
+    }
+  },
+  "_fadd": {
+    "total": 256,
+    "top_files": {
+      "asm/overlay_92.s": 53,
+      "asm/overlay_49.s": 49,
+      "asm/overlay_96.s": 37,
+      "asm/overlay_02_02248728.s": 14,
+      "asm/overlay_74_thumb.s": 13,
+      "asm/unk_02087284.s": 8,
+      "asm/unk_020632B0.s": 8,
+      "asm/overlay_59.s": 8
+    }
+  },
+  "_fsub": {
+    "total": 227,
+    "top_files": {
+      "asm/overlay_92.s": 47,
+      "asm/overlay_96.s": 33,
+      "asm/overlay_49.s": 25,
+      "asm/overlay_02_02248728.s": 14,
+      "asm/overlay_74_thumb.s": 12,
+      "asm/overlay_07.s": 12,
+      "asm/unk_02087284.s": 8,
+      "asm/unk_020632B0.s": 8
+    }
+  },
+  "_ll_mul": {
+    "total": 192,
+    "top_files": {
+      "asm/overlay_91.s": 45,
+      "asm/overlay_49.s": 18,
+      "asm/overlay_93_thumb_2.s": 16,
+      "asm/unk_02020B8C.s": 11,
+      "asm/overlay_96.s": 11,
+      "asm/overlay_07.s": 10,
+      "asm/overlay_92.s": 8,
+      "asm/unk_02025C44.s": 8
+    }
+  },
+  "_fmul": {
+    "total": 171,
+    "top_files": {
+      "asm/overlay_92.s": 74,
+      "asm/overlay_96.s": 46,
+      "asm/overlay_74_thumb.s": 14,
+      "asm/unk_02087284.s": 11,
+      "asm/overlay_07.s": 7,
+      "asm/unk_0208DE40.s": 6,
+      "asm/overlay_58.s": 6,
+      "asm/overlay_18.s": 4
+    }
+  },
+  "_f2d": {
+    "total": 94,
+    "top_files": {
+      "asm/overlay_96.s": 64,
+      "asm/overlay_92.s": 21,
+      "asm/overlay_80_022310C4.s": 7,
+      "asm/overlay_01_021EB1E8.s": 1,
+      "asm/overlay_07.s": 1
+    }
+  },
+  "_fdiv": {
+    "total": 85,
+    "top_files": {
+      "asm/unk_0208DE40.s": 18,
+      "asm/overlay_92.s": 18,
+      "asm/overlay_96.s": 12,
+      "asm/overlay_74_thumb.s": 10,
+      "asm/overlay_18.s": 7,
+      "asm/unk_02087284.s": 6,
+      "asm/overlay_80_022310C4.s": 5,
+      "asm/overlay_93_thumb_2.s": 4
+    }
+  },
+  "_dmul": {
+    "total": 69,
+    "top_files": {
+      "asm/overlay_96.s": 44,
+      "asm/overlay_92.s": 13,
+      "asm/overlay_02_02248728.s": 4,
+      "asm/overlay_01_021F3378.s": 3,
+      "asm/overlay_80_022310C4.s": 2,
+      "asm/overlay_80_022340E8.s": 1,
+      "asm/overlay_01_021EB1E8.s": 1,
+      "asm/overlay_74_thumb.s": 1
+    }
+  },
+  "_d2f": {
+    "total": 59,
+    "top_files": {
+      "asm/overlay_96.s": 38,
+      "asm/overlay_92.s": 15,
+      "asm/overlay_80_022310C4.s": 5,
+      "asm/overlay_01_021EB1E8.s": 1
+    }
+  },
+  "_dflt": {
+    "total": 55,
+    "top_files": {
+      "asm/overlay_96.s": 44,
+      "asm/overlay_01_021F3378.s": 6,
+      "asm/overlay_02_02248728.s": 2,
+      "asm/overlay_92.s": 2,
+      "asm/overlay_74_thumb.s": 1
+    }
+  },
+  "_ffltu": {
+    "total": 50,
+    "top_files": {
+      "asm/overlay_96.s": 30,
+      "asm/overlay_49.s": 8,
+      "asm/overlay_58.s": 6,
+      "asm/overlay_92.s": 4,
+      "asm/overlay_80_022372D8.s": 2
+    }
+  },
+  "_fgr": {
+    "total": 45,
+    "top_files": {
+      "asm/overlay_92.s": 20,
+      "asm/overlay_96.s": 9,
+      "asm/overlay_74_thumb.s": 6,
+      "asm/unk_02087284.s": 4,
+      "asm/unk_0208DE40.s": 3,
+      "asm/overlay_18.s": 2,
+      "asm/overlay_40.s": 1
+    }
+  },
+  "_ddiv": {
+    "total": 43,
+    "top_files": {
+      "asm/overlay_96.s": 38,
+      "asm/overlay_02_02248728.s": 4,
+      "asm/overlay_01_021EB1E8.s": 1
+    }
+  },
+  "_dfix": {
+    "total": 42,
+    "top_files": {
+      "asm/overlay_96.s": 34,
+      "asm/overlay_02_02248728.s": 4,
+      "asm/overlay_01_021F3378.s": 3,
+      "asm/overlay_74_thumb.s": 1
+    }
+  },
+  "_dsub": {
+    "total": 42,
+    "top_files": {
+      "asm/overlay_96.s": 34,
+      "asm/overlay_92.s": 7,
+      "asm/overlay_80_022310C4.s": 1
+    }
+  },
+  "_dadd": {
+    "total": 39,
+    "top_files": {
+      "asm/overlay_96.s": 29,
+      "asm/overlay_02_02248728.s": 4,
+      "asm/overlay_01_021F3378.s": 3,
+      "asm/overlay_80_022310C4.s": 2,
+      "asm/overlay_01_021EB1E8.s": 1
+    }
+  },
+  "_dfltu": {
+    "total": 15,
+    "top_files": {
+      "asm/overlay_96.s": 11,
+      "asm/overlay_02_02248728.s": 2,
+      "asm/overlay_80_022340E8.s": 1,
+      "asm/overlay_01_021EB1E8.s": 1
+    }
+  },
+  "_ll_udiv": {
+    "total": 12,
+    "top_files": {
+      "asm/overlay_40.s": 5,
+      "asm/overlay_112.s": 3,
+      "asm/overlay_43.s": 2,
+      "asm/overlay_13_thumb_2.s": 1,
+      "asm/overlay_47.s": 1
+    }
+  },
+  "_dgr": {
+    "total": 11,
+    "top_files": {
+      "asm/overlay_96.s": 11
+    }
+  },
+  "_ll_sdiv": {
+    "total": 9,
+    "top_files": {
+      "asm/overlay_89.s": 6,
+      "asm/overlay_93_arm.s": 3
+    }
+  },
+  "_ull_mod": {
+    "total": 8,
+    "top_files": {
+      "asm/overlay_40.s": 4,
+      "asm/overlay_43.s": 2,
+      "asm/overlay_74_thumb.s": 1,
+      "asm/overlay_75.s": 1
+    }
+  },
+  "_dgeq": {
+    "total": 7,
+    "top_files": {
+      "asm/overlay_96.s": 5,
+      "asm/overlay_01_021EB1E8.s": 1,
+      "asm/overlay_92.s": 1
+    }
+  },
+  "_dls": {
+    "total": 7,
+    "top_files": {
+      "asm/overlay_96.s": 6,
+      "asm/overlay_80_022310C4.s": 1
+    }
+  },
+  "_fls": {
+    "total": 6,
+    "top_files": {
+      "asm/overlay_96.s": 4,
+      "asm/unk_02087284.s": 1,
+      "asm/overlay_74_thumb.s": 1
+    }
+  },
+  "_ffixu": {
+    "total": 6,
+    "top_files": {
+      "asm/overlay_58.s": 5,
+      "asm/overlay_96.s": 1
+    }
+  },
+  "_dleq": {
+    "total": 6,
+    "top_files": {
+      "asm/overlay_96.s": 5,
+      "asm/overlay_07.s": 1
+    }
+  },
+  "_f_lltof": {
+    "total": 4,
+    "top_files": {
+      "asm/overlay_92.s": 4
+    }
+  },
+  "_dneq": {
+    "total": 3,
+    "top_files": {
+      "asm/overlay_92.s": 2,
+      "asm/overlay_80_022310C4.s": 1
+    }
+  },
+  "_fleq": {
+    "total": 3,
+    "top_files": {
+      "asm/overlay_96.s": 3
+    }
+  },
+  "_dfixu": {
+    "total": 2,
+    "top_files": {
+      "asm/overlay_80_022340E8.s": 1,
+      "asm/overlay_96.s": 1
+    }
+  },
+  "_feq": {
+    "total": 2,
+    "top_files": {
+      "asm/unk_02087284.s": 1,
+      "asm/overlay_74_thumb.s": 1
+    }
+  },
+  "_fneq": {
+    "total": 2,
+    "top_files": {
+      "asm/overlay_95.s": 1,
+      "asm/overlay_80_022310C4.s": 1
+    }
+  },
+  "_f_ulltof": {
+    "total": 2,
+    "top_files": {
+      "asm/overlay_112.s": 2
+    }
+  }
+}

@@ -438,12 +438,32 @@ hook): if fewer than N of the top-N triage targets have knowledge.json entries, 
 **After each T2.1 split lands, immediately sweep the new chunks** (chunks are sweep-sized;
 the monoliths never were).
 
-### T2.3 Soft-float codegen pattern pack  `[ ]`  (1–2 days, before attacking overlay_96/92)
+### T2.3 Soft-float codegen pattern pack  `[x]`  (1–2 days, before attacking overlay_96/92)
 2,542 soft-float runtime call sites (_dadd/_fmul/_f2d/_ll_*) across 109 workload files:
 ov96=850, ov92=276, ov49=120, ov07=100, ov74=98. Harvest C-expression → exact MWCC call +
 register-marshalling sequences (r0–r3 args, double register pairing, result moves) from
 already-matched C/asm pairs into a patterns.json section; optionally a small annotator that
 marks a .s function with reconstructed float expressions.
+
+**Result (2026-07-16).** Six `codegen` patterns added to patterns.json (source of truth;
+insights.md regenerated via `patterns.py gen`):
+- `softfloat-register-marshalling-and-double-word-order` — f32 one-reg args; doubles as
+  r0:r1/r2:r3 pairs with LOW word in the even reg; pool doubles stored lo-then-hi.
+- `softfloat-compare-helpers-use-unsigned-branch` — full helper → C-operator → skip-branch
+  table (_fgr→bls, _fls→bhs, _fleq→bhi, _fgeq→blo, _feq→bne, _fneq→beq; same for _d*).
+- `softfloat-constant-materialization` — mov+lsl for 24-low-zero f32 bit patterns (0.5f),
+  pool .word otherwise; doubles always two pool words lo/hi; decode recipe.
+- `softfloat-int-conversion-signedness-glossary` — _fflt/_ffltu/_dflt/_dfltu/_ffix/_ffixu/
+  _dfix/_dfixu pin the exact C cast + operand signedness.
+- `softfloat-float-div-by-unsuffixed-literal-promotes-to-double` — `x / 10.0` vs `x / 10.0f`
+  changes the whole helper chain (_f2d/_ddiv/_d2f vs _fdiv).
+- `softfloat-ll-64bit-arith-helpers` — _ll_mul flanked by asr#0x1f + (+0x800,>>12) IS FX_Mul.
+All claims spot-verified against live asm (overlay_01_021F3378 _dadd word order; overlay_96
+_ffltu/_f2d/_ddiv chain and _dgeq→blo; overlay_92 _fgr→bls; inventory counts exact by grep).
+Deliverables: `softfloat_inventory.json` (36 helpers, 3,658 call sites, per-helper top files)
+and `float_annotate.py` (read-only triage annotator: per-function helper sequence, decoded
+float/double constants, compare-operator hints; smoke-tested on overlay_49 — correctly
+annotates the 0.5f round-half-away idiom). Ready to attack ov96/ov92/ov49.
 
 ### T2.4 Asm-derived type/idiom oracle at sweep time  `[ ]`  (1 day)
 Scan .s at sweep time for: blt/bge vs bcc/bhs → signedness constraints; lsl/lsr truncation
