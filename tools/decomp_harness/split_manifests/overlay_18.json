@@ -1,0 +1,123 @@
+{
+  "overlay": "overlay_18",
+  "source": "asm/overlay_18.s",
+  "align": 4,
+  "num_functions": 405,
+  "num_tail_symbols": 93,
+  "raw_clean_cuts": 73,
+  "num_chunks": 5,
+  "chunks": [
+    {
+      "chunk": "overlay_18_021EE35C",
+      "asm": "asm/overlay_18_021EE35C.s",
+      "inc": "asm/include/overlay_18_021EE35C.inc",
+      "start_addr": "0x021EE35C",
+      "func_range": [
+        "ov18_021EE35C",
+        "ov18_021F0900"
+      ],
+      "addr_range": [
+        "0x021EE35C",
+        "0x021F0900"
+      ],
+      "num_funcs": 74,
+      "tail_range": [
+        "ov18_021F9DB0",
+        "ov18_021F9FDC"
+      ],
+      "num_tail_syms": 7,
+      "num_publics": 49,
+      "num_imports": 47,
+      "num_exports": 2
+    },
+    {
+      "chunk": "overlay_18_021F0918",
+      "asm": "asm/overlay_18_021F0918.s",
+      "inc": "asm/include/overlay_18_021F0918.inc",
+      "start_addr": "0x021F0918",
+      "func_range": [
+        "ov18_021F0918",
+        "ov18_021F69E8"
+      ],
+      "addr_range": [
+        "0x021F0918",
+        "0x021F69E8"
+      ],
+      "num_funcs": 217,
+      "tail_range": [
+        "ov18_021FA304",
+        "ov18_021FB5B4"
+      ],
+      "num_tail_syms": 34,
+      "num_publics": 125,
+      "num_imports": 120,
+      "num_exports": 5
+    },
+    {
+      "chunk": "overlay_18_021F6AB0",
+      "asm": "asm/overlay_18_021F6AB0.s",
+      "inc": "asm/include/overlay_18_021F6AB0.inc",
+      "start_addr": "0x021F6AB0",
+      "func_range": [
+        "ov18_021F6AB0",
+        "ov18_021F7E70"
+      ],
+      "addr_range": [
+        "0x021F6AB0",
+        "0x021F7E70"
+      ],
+      "num_funcs": 53,
+      "tail_range": [
+        "ov18_021FB618",
+        "ov18_021FBD3C"
+      ],
+      "num_tail_syms": 45,
+      "num_publics": 31,
+      "num_imports": 29,
+      "num_exports": 2
+    },
+    {
+      "chunk": "overlay_18_021F7ED4",
+      "asm": "asm/overlay_18_021F7ED4.s",
+      "inc": "asm/include/overlay_18_021F7ED4.inc",
+      "start_addr": "0x021F7ED4",
+      "func_range": [
+        "ov18_021F7ED4",
+        "ov18_021F89F8"
+      ],
+      "addr_range": [
+        "0x021F7ED4",
+        "0x021F89F8"
+      ],
+      "num_funcs": 23,
+      "tail_range": null,
+      "num_tail_syms": 0,
+      "num_publics": 38,
+      "num_imports": 31,
+      "num_exports": 7
+    },
+    {
+      "chunk": "overlay_18_021F8AB8",
+      "asm": "asm/overlay_18_021F8AB8.s",
+      "inc": "asm/include/overlay_18_021F8AB8.inc",
+      "start_addr": "0x021F8AB8",
+      "func_range": [
+        "ov18_021F8AB8",
+        "ov18_021F9694"
+      ],
+      "addr_range": [
+        "0x021F8AB8",
+        "0x021F9694"
+      ],
+      "num_funcs": 38,
+      "tail_range": [
+        "ov18_021FBD50",
+        "ov18_021FBE10"
+      ],
+      "num_tail_syms": 7,
+      "num_publics": 95,
+      "num_imports": 76,
+      "num_exports": 19
+    }
+  ]
+}

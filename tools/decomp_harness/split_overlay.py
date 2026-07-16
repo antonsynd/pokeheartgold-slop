@@ -105,12 +105,14 @@ def parse(path):
     # find header end: the leading include/preprocessor/blank block before the
     # first .text. Monoliths may open with C-preprocessor lines (e.g.
     # `#include "constants/pokemon.h"` in overlay_14) that provide identifiers
-    # used in the body -- they are part of the preamble and must be carried
-    # into every chunk.
+    # used in the body, or `.extern` declarations for symbols defined in the
+    # overlay's already-decompiled C objects (overlay_18) -- both are part of
+    # the preamble and must be carried into every chunk.
     for i, ln in enumerate(lines):
         s = ln.strip()
         if (s.startswith('.include') or s.startswith('#include')
-                or s.startswith('#pragma') or s == '' or s.startswith('.text')):
+                or s.startswith('#pragma') or s.startswith('.extern')
+                or s == '' or s.startswith('.text')):
             header_end = i + 1
             if s.startswith('.text'):
                 break
