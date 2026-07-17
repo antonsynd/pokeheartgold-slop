@@ -1,6 +1,6 @@
 # Decomp Coverage Ledger
 
-*Generated 2026-07-16T22:25:39Z by `coverage_ledger.py` — do not hand-edit; regenerate after each decomp.*
+*Generated 2026-07-17T01:32:46Z by `coverage_ledger.py` — do not hand-edit; regenerate after each decomp.*
 
 Tracked functions (files with retained asm): **19930** — matched 1723, pending 17214, plus 20 matched-but-blocked inside failed files.
 
@@ -8,7 +8,7 @@ Tracked functions (files with retained asm): **19930** — matched 1723, pending
 |---|---|---|---|---|
 | matched | 100 | 1723 | 48018 | 106548 |
 | blocked | 54 | 993 | 32193 | 70682 |
-| pending | 165 | 17214 | 845249 | 1893758 |
+| pending | 173 | 17214 | 845249 | 1893758 |
 | upstream | 383 | 0 | 0 | 0 |
 
 ## Blockers (value-ordered: fix what gates the most)
@@ -185,7 +185,7 @@ Tracked functions (files with retained asm): **19930** — matched 1723, pending
 | asm/overlay_01_data_02208BFC.s | 0 | 0 | yes | retained_asm |
 | asm/battle_arcade_game_board_data.s | 0 | 0 | yes | harness |
 
-## Pending files (165)
+## Pending files (173)
 
 | file | functions | insn lines | data-only | notes |
 |---|---|---|---|---|
@@ -196,7 +196,6 @@ Tracked functions (files with retained asm): **19930** — matched 1723, pending
 | asm/overlay_112.s | 522 | 23933 |  |  |
 | asm/overlay_70.s | 519 | 23556 |  |  |
 | asm/overlay_74_thumb.s | 495 | 24729 |  |  |
-| asm/overlay_41.s | 353 | 10882 |  |  |
 | asm/overlay_08.s | 266 | 15738 |  |  |
 | asm/overlay_102.s | 256 | 8718 |  |  |
 | asm/overlay_85.s | 255 | 8468 |  |  |
@@ -271,6 +270,7 @@ Tracked functions (files with retained asm): **19930** — matched 1723, pending
 | asm/overlay_49_0225EEAC.s | 66 | 5027 |  |  |
 | asm/overlay_108_021E8850.s | 66 | 3407 |  |  |
 | asm/unk_0205FD20.s | 63 | 2271 |  |  |
+| asm/overlay_41_02245EA0.s | 63 | 1380 |  |  |
 | asm/unk_02016EDC.s | 62 | 1931 |  |  |
 | asm/overlay_95.s | 62 | 3039 |  |  |
 | asm/overlay_49_0225D6AC.s | 61 | 2703 |  |  |
@@ -293,16 +293,21 @@ Tracked functions (files with retained asm): **19930** — matched 1723, pending
 | asm/overlay_113.s | 49 | 2034 |  |  |
 | asm/overlay_98.s | 47 | 1310 |  |  |
 | asm/overlay_31.s | 46 | 2733 |  |  |
+| asm/overlay_41_02248400.s | 46 | 1253 |  |  |
 | asm/overlay_49_022595CC.s | 46 | 1265 |  |  |
 | asm/unk_02033AE0.s | 44 | 959 |  |  |
+| asm/overlay_41_02249A40.s | 43 | 1303 |  |  |
 | asm/overlay_49_02267F94.s | 43 | 1554 |  |  |
 | asm/overlay_67.s | 43 | 2250 |  |  |
+| asm/overlay_41_02247828.s | 42 | 1331 |  |  |
 | asm/overlay_trainer_card_signature.s | 42 | 2238 |  |  |
 | asm/unk_0208B1AC.s | 41 | 2005 |  |  |
 | asm/overlay_01_021E6880.s | 41 | 2557 |  |  |
+| asm/overlay_41_02248ED4.s | 41 | 1292 |  |  |
 | asm/render_window.s | 40 | 2610 |  |  |
 | asm/overlay_01_021E8744.s | 40 | 1091 |  |  |
 | asm/overlay_01_022053EC.s | 40 | 1592 |  |  |
+| asm/overlay_41_0224B21C.s | 40 | 1348 |  |  |
 | asm/frontier_map.s | 40 | 2050 |  |  |
 | asm/overlay_83_02246E08.s | 39 | 1339 |  |  |
 | asm/overlay_97.s | 39 | 2560 |  |  |
@@ -310,7 +315,9 @@ Tracked functions (files with retained asm): **19930** — matched 1723, pending
 | asm/overlay_01_021E5900.s | 38 | 1425 |  |  |
 | asm/overlay_14_021EE26C.s | 38 | 1321 |  |  |
 | asm/overlay_18_021F8AB8.s | 38 | 1357 |  |  |
+| asm/overlay_41_0224A5A4.s | 38 | 1417 |  |  |
 | asm/overlay_49_022649F4.s | 38 | 1266 |  |  |
+| asm/overlay_41_02246B34.s | 37 | 1412 |  |  |
 | asm/overlay_69.s | 37 | 3237 |  |  |
 | asm/overlay_32.s | 36 | 1354 |  |  |
 | asm/overlay_34.s | 36 | 1981 |  |  |
@@ -349,6 +356,7 @@ Tracked functions (files with retained asm): **19930** — matched 1723, pending
 | asm/overlay_83_02242FE8.s | 7 | 1412 |  |  |
 | asm/overlay_49_02262DB8.s | 6 | 1405 |  |  |
 | asm/overlay_119.s | 6 | 2588 |  |  |
+| asm/overlay_41_0224BE34.s | 3 | 146 |  |  |
 | asm/overlay_49_02263B74.s | 2 | 1450 |  |  |
 | asm/unk_data_020FCBD8.s | 0 | 0 | yes |  |
 | asm/unk_data_020FDB44.s | 0 | 0 | yes |  |
