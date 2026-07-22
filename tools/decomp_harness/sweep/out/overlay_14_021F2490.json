@@ -1,0 +1,2360 @@
+{
+ "file": "asm/overlay_14_021F2490.s",
+ "notes": "Box/PC-storage screen sprite+state code. TWO work structs dominate: an OUTER app-work passed as r0 to the exported menu-action handlers (fields at +0x0 parent, +0x4 PCStorage*, +0x8 Party*, small u8 flags 0x1f/0x21/0x24/0x25/0x29/0x2b, +0x2c/+0x30 ints, +0x34 -> SUB), and a large SUB sprite-work reached via outer->[0x34] (SpriteSystem* at 0xbd<<2=0x2F4, SpriteManager* at 0xbe<<2=0x2F8, ManagedSprite* array at 0xbf<<2=0x2FC indexed by param). Many helpers take the SUB directly; the exported handlers take the OUTER. The 31 exported handlers ov14_021F2574..ov14_021F2930 + ov14_021F25E4 are all entries in a shared function-pointer table (asm/overlay_14_021EAF08.s:6410-6442) so they MUST share one prototype: int (*)(AppWork*) - some set r0 to a status (021F2778->0x43) while others tail-propagate a callee return. ov14_021F2490 is NOT a table entry: called as ov14_021F2490(a0,1,0xa1) from ov14_021EEF34.s:832.",
+ "functions": [
+  {
+   "name": "ov14_021F2490",
+   "mode": "thumb",
+   "signature_guess": "int ov14_021F2490(AppWork *a0, BOOL a1, int a2)",
+   "confidence": "high",
+   "callees": [
+    "sub_02019B10"
+   ],
+   "struct_accesses": [
+    {
+     "param": 0,
+     "offset": "0x34",
+     "width": 4,
+     "meaning": "SUB pointer"
+    },
+    {
+     "param": 0,
+     "offset": "0x30",
+     "width": 4,
+     "meaning": "stores a2"
+    }
+   ],
+   "notes": "caller ov14_021EEF34.s:832 passes (a0,1,0xa1); returns 8; bit-manipulates SUB bitfield bytes at 0x88D4/0x88D9."
+  },
+  {
+   "name": "ov14_021F2534",
+   "mode": "thumb",
+   "signature_guess": "void ov14_021F2534(AppWork *a0)",
+   "confidence": "medium",
+   "callees": [
+    "ov14_021F3488",
+    "ov14_021F43F4"
+   ],
+   "struct_accesses": [
+    {
+     "param": 0,
+     "offset": "0x0",
+     "width": 4,
+     "meaning": "parent ptr; parent[0x8] is switch value 0..3"
+    }
+   ],
+   "notes": "static (not in .public). jump table _021F254C on parent[0x8]."
+  },
+  {
+   "name": "ov14_021F2574",
+   "mode": "thumb",
+   "signature_guess": "int ov14_021F2574(AppWork *a0)",
+   "confidence": "high",
+   "callees": [
+    "ov14_021F2A18",
+    "ov14_021F66E8",
+    "ov14_021F2534",
+    "ov14_021F0254"
+   ],
+   "notes": "table handler; ov14_021F0254(a0,3)."
+  },
+  {
+   "name": "ov14_021F259C",
+   "mode": "thumb",
+   "signature_guess": "int ov14_021F259C(AppWork *a0)",
+   "confidence": "high",
+   "callees": [
+    "ov14_021F2A18",
+    "ov14_021F66E8",
+    "ov14_021F2534",
+    "ov14_021F0254"
+   ],
+   "notes": "table handler; mirror of 2574; ov14_021F0254(a0,4)."
+  },
+  {
+   "name": "ov14_021F25C4",
+   "mode": "thumb",
+   "signature_guess": "int ov14_021F25C4(AppWork *a0)",
+   "confidence": "high",
+   "callees": [
+    "ov14_021E76B8",
+    "ov14_021F0AD8"
+   ]
+  },
+  {
+   "name": "ov14_021F25D4",
+   "mode": "thumb",
+   "signature_guess": "int ov14_021F25D4(AppWork *a0)",
+   "confidence": "high",
+   "callees": [
+    "ov14_021E76B8",
+    "ov14_021F0C88"
+   ]
+  },
+  {
+   "name": "ov14_021F25E4",
+   "mode": "thumb",
+   "signature_guess": "int ov14_021F25E4(AppWork *a0)",
+   "confidence": "high",
+   "callees": [
+    "ov14_021F40E8",
+    "ov14_021F2A18",
+    "ov14_021F1100"
+   ],
+   "struct_accesses": [
+    {
+     "param": 0,
+     "offset": "0x24",
+     "width": 1,
+     "meaning": "=1"
+    },
+    {
+     "param": 0,
+     "offset": "0x29",
+     "width": 1,
+     "meaning": "=0"
+    }
+   ],
+   "notes": "table handler (last entry @021EAF08.s:6442)."
+  },
+  {
+   "name": "ov14_021F2610",
+   "mode": "thumb",
+   "signature_guess": "int ov14_021F2610(AppWork *a0)",
+   "confidence": "high",
+   "callees": [
+    "ov14_021F027C"
+   ],
+   "notes": "thunk -> ov14_021F027C(a0, 0)."
+  },
+  {
+   "name": "ov14_021F261C",
+   "mode": "thumb",
+   "signature_guess": "int ov14_021F261C(AppWork *a0)",
+   "confidence": "high",
+   "callees": [
+    "ov14_021F0910"
+   ],
+   "notes": "thunk -> ov14_021F0910(a0)."
+  },
+  {
+   "name": "ov14_021F2624",
+   "mode": "thumb",
+   "signature_guess": "int ov14_021F2624(AppWork *a0)",
+   "confidence": "high",
+   "callees": [
+    "ov14_021F0A80"
+   ],
+   "notes": "thunk -> ov14_021F0A80(a0)."
+  },
+  {
+   "name": "ov14_021F262C",
+   "mode": "thumb",
+   "signature_guess": "int ov14_021F262C(AppWork *a0)",
+   "confidence": "high",
+   "callees": [
+    "ov14_021F09BC"
+   ],
+   "notes": "thunk -> ov14_021F09BC(a0)."
+  },
+  {
+   "name": "ov14_021F2634",
+   "mode": "thumb",
+   "signature_guess": "int ov14_021F2634(AppWork *a0)",
+   "confidence": "high",
+   "callees": [
+    "ov14_021F0AAC"
+   ],
+   "notes": "thunk -> ov14_021F0AAC(a0)."
+  },
+  {
+   "name": "ov14_021F263C",
+   "mode": "thumb",
+   "signature_guess": "int ov14_021F263C(AppWork *a0)",
+   "confidence": "high",
+   "callees": [
+    "ov14_021E84A4",
+    "ov14_021E8248",
+    "ov14_021E82A8",
+    "ov14_021E8328",
+    "ov14_021E884C",
+    "ov14_021F40E8",
+    "ov14_021F0234"
+   ],
+   "struct_accesses": [
+    {
+     "param": 0,
+     "offset": "0x34",
+     "width": 4,
+     "meaning": "SUB; SUB[0x2F0] passed to ov14_021E8* fns"
+    }
+   ],
+   "notes": "ov14_021F0234(a0, ov14_021EA180, 0x4a) - arg2 is a fn ptr."
+  },
+  {
+   "name": "ov14_021F2690",
+   "mode": "thumb",
+   "signature_guess": "int ov14_021F2690(AppWork *a0)",
+   "confidence": "high",
+   "callees": [
+    "ov14_021E76B8",
+    "ov14_021F40E8",
+    "ov14_021F0C0C"
+   ],
+   "struct_accesses": [
+    {
+     "param": 0,
+     "offset": "0x2b",
+     "width": 1,
+     "meaning": "branch flag"
+    }
+   ]
+  },
+  {
+   "name": "ov14_021F26B4",
+   "mode": "thumb",
+   "signature_guess": "int ov14_021F26B4(AppWork *a0)",
+   "confidence": "high",
+   "callees": [
+    "ov14_021E84A4",
+    "ov14_021E8328",
+    "ov14_021E884C",
+    "ov14_021F40E8",
+    "ov14_021F0234"
+   ],
+   "notes": "ov14_021F0234(a0, ov14_021EA180, 0x4c)."
+  },
+  {
+   "name": "ov14_021F26F0",
+   "mode": "thumb",
+   "signature_guess": "int ov14_021F26F0(AppWork *a0)",
+   "confidence": "high",
+   "callees": [
+    "ov14_021E76B8",
+    "ov14_021F0B34"
+   ]
+  },
+  {
+   "name": "ov14_021F2700",
+   "mode": "thumb",
+   "signature_guess": "int ov14_021F2700(AppWork *a0)",
+   "confidence": "high",
+   "callees": [
+    "ov14_021F2A18",
+    "ov14_021F0F0C"
+   ],
+   "notes": "ov14_021F0F0C(a0, 3)."
+  },
+  {
+   "name": "ov14_021F2718",
+   "mode": "thumb",
+   "signature_guess": "int ov14_021F2718(AppWork *a0)",
+   "confidence": "high",
+   "callees": [
+    "ov14_021E76B8",
+    "ov14_021F0CD8"
+   ]
+  },
+  {
+   "name": "ov14_021F2728",
+   "mode": "thumb",
+   "signature_guess": "int ov14_021F2728(AppWork *a0)",
+   "confidence": "high",
+   "callees": [
+    "ov14_021F0F0C"
+   ],
+   "notes": "thunk -> ov14_021F0F0C(a0, 1)."
+  },
+  {
+   "name": "ov14_021F2734",
+   "mode": "thumb",
+   "signature_guess": "int ov14_021F2734(AppWork *a0)",
+   "confidence": "high",
+   "callees": [
+    "ov14_021F6654",
+    "ov14_021F2A18",
+    "ov14_021F3488",
+    "ov14_021F1090"
+   ],
+   "notes": "ov14_021F3488(a0,1,1); ov14_021F1090(a0,0x3f)."
+  },
+  {
+   "name": "ov14_021F2760",
+   "mode": "thumb",
+   "signature_guess": "int ov14_021F2760(AppWork *a0)",
+   "confidence": "high",
+   "callees": [
+    "ov14_021F027C"
+   ],
+   "notes": "thunk -> ov14_021F027C(a0, 2)."
+  },
+  {
+   "name": "ov14_021F276C",
+   "mode": "thumb",
+   "signature_guess": "int ov14_021F276C(AppWork *a0)",
+   "confidence": "high",
+   "callees": [
+    "ov14_021F0F0C"
+   ],
+   "notes": "thunk -> ov14_021F0F0C(a0, 2)."
+  },
+  {
+   "name": "ov14_021F2778",
+   "mode": "thumb",
+   "signature_guess": "int ov14_021F2778(AppWork *a0)",
+   "confidence": "high",
+   "callees": [
+    "ov14_021F6654",
+    "ov14_021F2A18",
+    "ov14_021F3488",
+    "_s32_div_f"
+   ],
+   "struct_accesses": [
+    {
+     "param": 0,
+     "offset": "0x25",
+     "width": 1,
+     "meaning": "read; /6 -> SUB[0x43C]"
+    },
+    {
+     "param": 0,
+     "offset": "0x2c",
+     "width": 4,
+     "meaning": "=9"
+    }
+   ],
+   "notes": "returns 0x43; parent[0x8]==3 selects ov14_021F3488(a0,0x81,0) vs (a0,1,0)."
+  },
+  {
+   "name": "ov14_021F27CC",
+   "mode": "thumb",
+   "signature_guess": "int ov14_021F27CC(AppWork *a0)",
+   "confidence": "high",
+   "callees": [
+    "ov14_021F13B0"
+   ],
+   "notes": "thunk -> ov14_021F13B0(a0)."
+  },
+  {
+   "name": "ov14_021F27D4",
+   "mode": "thumb",
+   "signature_guess": "int ov14_021F27D4(AppWork *a0)",
+   "confidence": "high",
+   "callees": [
+    "ov14_021E84A4",
+    "ov14_021E8328",
+    "ov14_021E884C",
+    "ov14_021F40E8",
+    "ov14_021F0234"
+   ],
+   "notes": "ov14_021F0234(a0, ov14_021EA130, 0x59)."
+  },
+  {
+   "name": "ov14_021F2810",
+   "mode": "thumb",
+   "signature_guess": "int ov14_021F2810(AppWork *a0)",
+   "confidence": "high",
+   "callees": [
+    "ov14_021F1414"
+   ],
+   "notes": "thunk -> ov14_021F1414(a0)."
+  },
+  {
+   "name": "ov14_021F2818",
+   "mode": "thumb",
+   "signature_guess": "int ov14_021F2818(AppWork *a0)",
+   "confidence": "high",
+   "callees": [
+    "ov14_021F5EB4",
+    "ov14_021E84A4",
+    "ov14_021E8328",
+    "ov14_021E884C",
+    "ov14_021F40E8",
+    "ov14_021F0234"
+   ],
+   "notes": "ov14_021F5EB4(a0,0); ov14_021F0234(a0, ov14_021EA130, 0x70)."
+  },
+  {
+   "name": "ov14_021F2858",
+   "mode": "thumb",
+   "signature_guess": "int ov14_021F2858(AppWork *a0)",
+   "confidence": "high",
+   "callees": [
+    "ov14_021E76B8",
+    "ov14_021F3488",
+    "ov14_021F0AD8"
+   ],
+   "notes": "ov14_021F3488(a0,0x82,1)."
+  },
+  {
+   "name": "ov14_021F2874",
+   "mode": "thumb",
+   "signature_guess": "int ov14_021F2874(AppWork *a0)",
+   "confidence": "high",
+   "callees": [
+    "ov14_021E76B8",
+    "ov14_021F3488",
+    "ov14_021F0C88"
+   ]
+  },
+  {
+   "name": "ov14_021F2890",
+   "mode": "thumb",
+   "signature_guess": "int ov14_021F2890(AppWork *a0)",
+   "confidence": "high",
+   "callees": [
+    "ov14_021F1EB8"
+   ],
+   "notes": "thunk -> ov14_021F1EB8(a0)."
+  },
+  {
+   "name": "ov14_021F2898",
+   "mode": "thumb",
+   "signature_guess": "int ov14_021F2898(AppWork *a0)",
+   "confidence": "high",
+   "callees": [
+    "ov14_021E84A4",
+    "ov14_021E8248",
+    "ov14_021E82A8",
+    "ov14_021E8328",
+    "ov14_021F40DC",
+    "ov14_021E88F8",
+    "ov14_021F0234"
+   ],
+   "struct_accesses": [
+    {
+     "param": 0,
+     "offset": "0x34",
+     "width": 4,
+     "meaning": "SUB; SUB[0x88C8] u16 gate for ov14_021E88F8"
+    }
+   ],
+   "notes": "ov14_021F0234(a0, ov14_021EA674, 0x76)."
+  },
+  {
+   "name": "ov14_021F28FC",
+   "mode": "thumb",
+   "signature_guess": "int ov14_021F28FC(AppWork *a0)",
+   "confidence": "high",
+   "callees": [
+    "ov14_021F2A18",
+    "ov14_021F0F0C"
+   ],
+   "notes": "ov14_021F0F0C(a0, 4)."
+  },
+  {
+   "name": "ov14_021F2914",
+   "mode": "thumb",
+   "signature_guess": "int ov14_021F2914(AppWork *a0)",
+   "confidence": "high",
+   "callees": [
+    "ov14_021E76B8",
+    "ov14_021F2A18",
+    "ov14_021F0C0C"
+   ],
+   "notes": "ov14_021F2A18(SUB,0xb,0)."
+  },
+  {
+   "name": "ov14_021F2930",
+   "mode": "thumb",
+   "signature_guess": "int ov14_021F2930(AppWork *a0)",
+   "confidence": "high",
+   "callees": [
+    "ov14_021E84A4",
+    "ov14_021E8328",
+    "ov14_021F40DC",
+    "ov14_021E88F8",
+    "ov14_021F0234"
+   ],
+   "notes": "ov14_021F0234(a0, ov14_021EA674, 0x8c); SUB[0x88C8] gate."
+  },
+  {
+   "name": "ov14_021F297C",
+   "mode": "thumb",
+   "signature_guess": "void ov14_021F297C(AppWork *a0)",
+   "confidence": "high",
+   "callees": [
+    "GfGfx_EngineATogglePlanes",
+    "GfGfx_EngineBTogglePlanes",
+    "ov14_021F2AC8",
+    "ov14_021F2B88",
+    "ov14_021F2BB8",
+    "ov14_021F4D10"
+   ],
+   "notes": "init entry; passes SUB to 2AC8/2B88/4D10, OUTER to 2BB8."
+  },
+  {
+   "name": "ov14_021F29AC",
+   "mode": "thumb",
+   "signature_guess": "void ov14_021F29AC(SpriteWork *s)",
+   "confidence": "high",
+   "callees": [
+    "ov14_021F4E68",
+    "ov14_021F2C04",
+    "ov14_021F2B68"
+   ],
+   "notes": "teardown; arg is SUB."
+  },
+  {
+   "name": "ov14_021F29C4",
+   "mode": "thumb",
+   "signature_guess": "void ov14_021F29C4(SpriteWork *s)",
+   "confidence": "high",
+   "callees": [
+    "ManagedSprite_TickFrame"
+   ],
+   "struct_accesses": [
+    {
+     "param": 0,
+     "offset": "0x2FC",
+     "width": 4,
+     "meaning": "ManagedSprite*[0..14] (0xbf<<2)"
+    }
+   ],
+   "notes": "loops 15 sprites."
+  },
+  {
+   "name": "ov14_021F29E4",
+   "mode": "thumb",
+   "signature_guess": "void ov14_021F29E4(SpriteWork *s, int index, int anim)",
+   "confidence": "high",
+   "callees": [
+    "ManagedSprite_SetAnimationFrame",
+    "ManagedSprite_SetAnim"
+   ]
+  },
+  {
+   "name": "ov14_021F2A04",
+   "mode": "thumb",
+   "signature_guess": "BOOL ov14_021F2A04(SpriteWork *s, int index)",
+   "confidence": "high",
+   "callees": [
+    "ManagedSprite_IsAnimated"
+   ],
+   "notes": "thunk."
+  },
+  {
+   "name": "ov14_021F2A18",
+   "mode": "thumb",
+   "signature_guess": "void ov14_021F2A18(SpriteWork *s, int index, int on)",
+   "confidence": "high",
+   "callees": [
+    "ManagedSprite_SetDrawFlag"
+   ],
+   "notes": "SetDrawFlag(sprite[index], on==1?1:0)."
+  },
+  {
+   "name": "ov14_021F2A44",
+   "mode": "thumb",
+   "signature_guess": "BOOL ov14_021F2A44(SpriteWork *s, int index)",
+   "confidence": "high",
+   "callees": [
+    "ManagedSprite_GetDrawFlag"
+   ]
+  },
+  {
+   "name": "ov14_021F2A60",
+   "mode": "thumb",
+   "signature_guess": "void ov14_021F2A60(SpriteWork *s, int index, int priority)",
+   "confidence": "high",
+   "callees": [
+    "ManagedSprite_SetPriority"
+   ],
+   "notes": "thunk."
+  },
+  {
+   "name": "ov14_021F2A74",
+   "mode": "thumb",
+   "signature_guess": "void ov14_021F2A74(SpriteWork *s, int index, int drawPriority)",
+   "confidence": "high",
+   "callees": [
+    "ManagedSprite_SetDrawPriority"
+   ],
+   "struct_accesses": [
+    {
+     "param": 0,
+     "offset": "0x88D2",
+     "width": 2,
+     "meaning": "guard flag set 1 around call, then 0"
+    }
+   ]
+  },
+  {
+   "name": "ov14_021F2A9C",
+   "mode": "thumb",
+   "signature_guess": "void ov14_021F2A9C(SpriteWork *s, int index, int oamMode)",
+   "confidence": "high",
+   "callees": [
+    "ManagedSprite_SetOamMode"
+   ]
+  },
+  {
+   "name": "ov14_021F2AC8",
+   "mode": "thumb",
+   "signature_guess": "void ov14_021F2AC8(SpriteWork *s)",
+   "confidence": "high",
+   "callees": [
+    "SpriteSystem_Alloc",
+    "SpriteManager_New",
+    "SpriteSystem_Init",
+    "SpriteSystem_InitSprites",
+    "SpriteSystem_InitManagerWithCapacities",
+    "SpriteSystem_GetRenderer",
+    "G2dRenderer_SetSubSurfaceCoords"
+   ],
+   "struct_accesses": [
+    {
+     "param": 0,
+     "offset": "0x2F4",
+     "width": 4,
+     "meaning": "SpriteSystem* (0xbd<<2)"
+    },
+    {
+     "param": 0,
+     "offset": "0x2F8",
+     "width": 4,
+     "meaning": "SpriteManager* (0xbe<<2)"
+    }
+   ],
+   "notes": "static; stack structs copied from rodata via ldmia/stmia (80D4/80EC/80A8)."
+  },
+  {
+   "name": "ov14_021F2B68",
+   "mode": "thumb",
+   "signature_guess": "void ov14_021F2B68(SpriteWork *s)",
+   "confidence": "high",
+   "callees": [
+    "SpriteSystem_FreeResourcesAndManager",
+    "SpriteSystem_Free"
+   ],
+   "notes": "static."
+  },
+  {
+   "name": "ov14_021F2B88",
+   "mode": "thumb",
+   "signature_guess": "void ov14_021F2B88(SpriteWork *s)",
+   "confidence": "high",
+   "callees": [
+    "ov14_021F41E4",
+    "ov14_021F42EC",
+    "ov14_021F2C84",
+    "ov14_021F3DE8",
+    "ov14_021F3714",
+    "ov14_021F34EC",
+    "ov14_021F3C08"
+   ],
+   "notes": "static; resource-load orchestrator."
+  },
+  {
+   "name": "ov14_021F2BB8",
+   "mode": "thumb",
+   "signature_guess": "void ov14_021F2BB8(AppWork *a0)",
+   "confidence": "high",
+   "callees": [
+    "ov14_021F4278",
+    "ov14_021F4380",
+    "ov14_021F2D1C",
+    "ov14_021F3E70",
+    "ov14_021F37F4",
+    "ov14_021F35BC",
+    "ov14_021F3CB4"
+   ],
+   "notes": "static; passes SUB to most, OUTER to ov14_021F35BC."
+  },
+  {
+   "name": "ov14_021F2BE8",
+   "mode": "thumb",
+   "signature_guess": "void ov14_021F2BE8(SpriteWork *s, int index)",
+   "confidence": "high",
+   "callees": [
+    "Sprite_DeleteAndFreeResources"
+   ],
+   "notes": "static."
+  },
+  {
+   "name": "ov14_021F2C04",
+   "mode": "thumb",
+   "signature_guess": "void ov14_021F2C04(SpriteWork *s)",
+   "confidence": "high",
+   "callees": [
+    "ov14_021F2BE8"
+   ],
+   "notes": "static; loops 0x45 slots."
+  },
+  {
+   "name": "ov14_021F2C1C",
+   "mode": "thumb",
+   "signature_guess": "void ov14_021F2C1C(SpriteWork *s, int index, void *src, u32 size)",
+   "confidence": "high",
+   "callees": [
+    "Sprite_GetImageProxy",
+    "NNS_G2dGetImageLocation",
+    "DC_FlushRange",
+    "GX_LoadOBJ"
+   ],
+   "notes": "static; main-engine OBJ char upload; loc(proxy,1)."
+  },
+  {
+   "name": "ov14_021F2C50",
+   "mode": "thumb",
+   "signature_guess": "void ov14_021F2C50(SpriteWork *s, int index, void *src, u32 size)",
+   "confidence": "high",
+   "callees": [
+    "Sprite_GetImageProxy",
+    "NNS_G2dGetImageLocation",
+    "DC_FlushRange",
+    "GXS_LoadOBJ"
+   ],
+   "notes": "static; sub-engine variant; loc(proxy,2)."
+  },
+  {
+   "name": "ov14_021F2C84",
+   "mode": "thumb",
+   "signature_guess": "void ov14_021F2C84(SpriteWork *s)",
+   "confidence": "high",
+   "callees": [
+    "SpriteSystem_LoadCharResObj",
+    "SpriteSystem_LoadPlttResObj",
+    "SpriteSystem_LoadCellResObj",
+    "SpriteSystem_LoadAnimResObj",
+    "sub_02074490",
+    "sub_0207449C",
+    "sub_020744A8"
+   ],
+   "notes": "static; loads 0x24 char res (base id 0xC0F9)."
+  },
+  {
+   "name": "ov14_021F2D1C",
+   "mode": "thumb",
+   "signature_guess": "void ov14_021F2D1C(SpriteWork *s)",
+   "confidence": "high",
+   "callees": [
+    "_u32_div_f",
+    "SpriteSystem_NewSprite"
+   ],
+   "struct_accesses": [
+    {
+     "param": 0,
+     "offset": "0x360",
+     "width": 4,
+     "meaning": "box-icon ManagedSprite*[0x24]"
+    },
+    {
+     "param": 0,
+     "offset": "0x4094",
+     "width": 1,
+     "meaning": "slot->spriteIndex map, stores 0x19+i"
+    }
+   ],
+   "notes": "static; template ov14_021F810C via ldmia/stmia."
+  },
+  {
+   "name": "ov14_021F2DC4",
+   "mode": "thumb",
+   "signature_guess": "void *ov14_021F2DC4(SpriteWork *s, int boxmonIconArg, void **outAlloc)",
+   "confidence": "medium",
+   "callees": [
+    "Boxmon_GetIconNaix",
+    "GfGfxLoader_GetCharDataFromOpenNarc"
+   ],
+   "struct_accesses": [
+    {
+     "param": 0,
+     "offset": "0x454",
+     "width": 4,
+     "meaning": "open NARC handle"
+    }
+   ],
+   "notes": "static; returns char data ptr."
+  },
+  {
+   "name": "ov14_021F2DE8",
+   "mode": "thumb",
+   "signature_guess": "void ov14_021F2DE8(AppWork *a0, int boxId)",
+   "confidence": "medium",
+   "callees": [
+    "PCStorage_GetMonDataByIndexPair",
+    "ov14_021E60C0",
+    "ov14_021F2DC4",
+    "MIi_CpuCopy32",
+    "Heap_Free",
+    "Boxmon_GetIconPalette"
+   ],
+   "struct_accesses": [
+    {
+     "param": 0,
+     "offset": "0x4",
+     "width": 4,
+     "meaning": "PCStorage*"
+    },
+    {
+     "param": 0,
+     "offset": "0x458",
+     "width": 4,
+     "meaning": "char buffer base (0x200 stride)"
+    }
+   ],
+   "notes": "loops 30 box slots; writes SUB[0x4076] palette, SUB[0x4058] valid flag."
+  },
+  {
+   "name": "ov14_021F2E78",
+   "mode": "thumb",
+   "signature_guess": "void ov14_021F2E78(SpriteWork *s, void *src, int index, int palette)",
+   "confidence": "high",
+   "callees": [
+    "ov14_021F2C1C",
+    "ManagedSprite_SetPaletteOverride"
+   ],
+   "notes": "C1C(s,index,src,0x200); SetPaletteOverride(sprite,palette+3)."
+  },
+  {
+   "name": "ov14_021F2EA0",
+   "mode": "thumb",
+   "signature_guess": "void ov14_021F2EA0(AppWork *a0, int boxmonArg, int index)",
+   "confidence": "medium",
+   "callees": [
+    "ov14_021F2DC4",
+    "Boxmon_GetIconPalette",
+    "ov14_021F2E78",
+    "Heap_Free"
+   ],
+   "notes": "static."
+  },
+  {
+   "name": "ov14_021F2ED0",
+   "mode": "thumb",
+   "signature_guess": "void ov14_021F2ED0(AppWork *a0, int boxId, int slot, int index)",
+   "confidence": "medium",
+   "callees": [
+    "ManagedSprite_SetDrawFlag",
+    "ov14_021E6070",
+    "ov14_021E60C0",
+    "ov14_021F2EA0"
+   ]
+  },
+  {
+   "name": "ov14_021F2F20",
+   "mode": "thumb",
+   "signature_guess": "void ov14_021F2F20(AppWork *a0)",
+   "confidence": "high",
+   "callees": [
+    "ov14_021F2ED0"
+   ],
+   "struct_accesses": [
+    {
+     "param": 0,
+     "offset": "0x1f",
+     "width": 1,
+     "meaning": "boxId arg"
+    }
+   ],
+   "notes": "loops 30: ov14_021F2ED0(a0, a0[0x1f], i, i+0x19)."
+  },
+  {
+   "name": "ov14_021F2F3C",
+   "mode": "thumb",
+   "signature_guess": "void ov14_021F2F3C(AppWork *a0)",
+   "confidence": "high",
+   "callees": [
+    "Party_GetCount",
+    "Party_GetMonByIndex",
+    "Mon_GetBoxMon",
+    "ov14_021F2EA0",
+    "ov14_021F2A18"
+   ],
+   "struct_accesses": [
+    {
+     "param": 0,
+     "offset": "0x8",
+     "width": 4,
+     "meaning": "Party*"
+    },
+    {
+     "param": 0,
+     "offset": "0x40B2",
+     "width": 1,
+     "meaning": "SUB party-slot spriteIndex"
+    }
+   ]
+  },
+  {
+   "name": "ov14_021F2F88",
+   "mode": "thumb",
+   "signature_guess": "void ov14_021F2F88(int index, s16 *outX, s16 *outY, int mode)",
+   "confidence": "high",
+   "callees": [
+    "_u32_div_f"
+   ],
+   "notes": "exported; pure position calc; index<0x1e -> grid; >=0x1e -> tables 80BC/80BE; mode==2 shifts x+0x98."
+  },
+  {
+   "name": "ov14_021F2FDC",
+   "mode": "thumb",
+   "signature_guess": "void ov14_021F2FDC(AppWork *a0)",
+   "confidence": "high",
+   "callees": [
+    "Party_GetCount",
+    "ManagedSprite_SetPositionXY",
+    "ov14_021F3190",
+    "ov14_021F2A18"
+   ],
+   "notes": "positions 6 party icons from table 80BC."
+  },
+  {
+   "name": "ov14_021F3044",
+   "mode": "thumb",
+   "signature_guess": "void ov14_021F3044(AppWork *a0)",
+   "confidence": "high",
+   "callees": [
+    "Party_GetCount",
+    "ManagedSprite_SetPositionXY",
+    "ov14_021F3190",
+    "ov14_021F2A18"
+   ],
+   "notes": "as 2FDC but y+0x98."
+  },
+  {
+   "name": "ov14_021F30B0",
+   "mode": "thumb",
+   "signature_guess": "void ov14_021F30B0(AppWork *a0)",
+   "confidence": "high",
+   "callees": [
+    "Party_GetCount",
+    "ManagedSprite_SetPositionXY",
+    "ov14_021F3190",
+    "ov14_021F2A18"
+   ],
+   "notes": "as 2FDC but x-0x90."
+  },
+  {
+   "name": "ov14_021F311C",
+   "mode": "thumb",
+   "signature_guess": "void ov14_021F311C(AppWork *a0)",
+   "confidence": "high",
+   "callees": [
+    "Party_GetCount",
+    "ManagedSprite_SetPositionXY",
+    "ov14_021F3190",
+    "ov14_021F2A18"
+   ],
+   "notes": "as 2FDC with x-0x90 and y+0x98."
+  },
+  {
+   "name": "ov14_021F3190",
+   "mode": "thumb",
+   "signature_guess": "void ov14_021F3190(SpriteWork *s, int slotByteOff, int mode)",
+   "confidence": "high",
+   "callees": [
+    "ov14_021F2A60",
+    "ov14_021F2A74"
+   ],
+   "struct_accesses": [
+    {
+     "param": 0,
+     "offset": "0x4094",
+     "width": 1,
+     "meaning": "[s+off+0x4094] -> spriteIndex"
+    }
+   ]
+  },
+  {
+   "name": "ov14_021F31E0",
+   "mode": "thumb",
+   "signature_guess": "void ov14_021F31E0(SpriteWork *s, int slotByteOff, int cmp)",
+   "confidence": "high",
+   "callees": [
+    "ov14_021F2A60",
+    "ov14_021F2A74"
+   ]
+  },
+  {
+   "name": "ov14_021F3210",
+   "mode": "thumb",
+   "signature_guess": "void ov14_021F3210(AppWork *a0, int dir)",
+   "confidence": "medium",
+   "callees": [
+    "ManagedSprite_GetPositionXY",
+    "ManagedSprite_SetPositionXY",
+    "ov14_021F2E78",
+    "ov14_021F34DC"
+   ],
+   "notes": "vertical scroll of 30 icons by dir; wrap at +0xB0/-0xF; uses SUB 0x4094/0x458/0x4076/0x4058."
+  },
+  {
+   "name": "ov14_021F32E0",
+   "mode": "thumb",
+   "signature_guess": "void ov14_021F32E0(AppWork *a0)",
+   "confidence": "medium",
+   "callees": [
+    "sub_02019B1C",
+    "ManagedSprite_SetPositionXY"
+   ],
+   "notes": "positions 6 sprites using table ov14_021F808C plus jitter."
+  },
+  {
+   "name": "ov14_021F3354",
+   "mode": "thumb",
+   "signature_guess": "void ov14_021F3354(AffineAnimWork *w)",
+   "confidence": "high",
+   "callees": [
+    "ManagedSprite_SetAffineOverwriteMode",
+    "ManagedSprite_SetAffineScale",
+    "ManagedSprite_SetAffineTranslation"
+   ],
+   "struct_accesses": [
+    {
+     "param": 0,
+     "offset": "0x0",
+     "width": 4,
+     "meaning": "ManagedSprite*"
+    },
+    {
+     "param": 0,
+     "offset": "0x7",
+     "width": 1,
+     "meaning": "frame counter"
+    },
+    {
+     "param": 0,
+     "offset": "0x8",
+     "width": 4,
+     "meaning": "fx32 scale = 0xFE<<0x16"
+    }
+   ],
+   "notes": "small standalone anim struct (~0xc bytes)."
+  },
+  {
+   "name": "ov14_021F3380",
+   "mode": "thumb",
+   "signature_guess": "BOOL ov14_021F3380(AffineAnimWork *w)",
+   "confidence": "high",
+   "callees": [
+    "_fsub",
+    "ManagedSprite_SetAffineScale"
+   ],
+   "notes": "w[7]++, w[8]-=0.025f; return w[7]!=0x28."
+  },
+  {
+   "name": "ov14_021F33B0",
+   "mode": "thumb",
+   "signature_guess": "BOOL ov14_021F33B0(AffineAnimWork *w)",
+   "confidence": "high",
+   "callees": [
+    "_fadd",
+    "ManagedSprite_SetAffineScale"
+   ],
+   "notes": "w[7]-=2, w[8]+=0.025f twice; return w[7]!=0."
+  },
+  {
+   "name": "ov14_021F33E8",
+   "mode": "thumb",
+   "signature_guess": "void ov14_021F33E8(AffineAnimWork *w)",
+   "confidence": "high",
+   "callees": [
+    "ManagedSprite_SetDrawFlag",
+    "ov14_021F33FC"
+   ]
+  },
+  {
+   "name": "ov14_021F33FC",
+   "mode": "thumb",
+   "signature_guess": "void ov14_021F33FC(AffineAnimWork *w)",
+   "confidence": "high",
+   "callees": [
+    "ManagedSprite_SetAffineTranslation",
+    "ManagedSprite_SetAffineScale",
+    "ManagedSprite_SetAffineOverwriteMode"
+   ],
+   "notes": "reset affine."
+  },
+  {
+   "name": "ov14_021F3420",
+   "mode": "thumb",
+   "signature_guess": "void ov14_021F3420(AppWork *a0, int oamMode, int start, int end, int cond)",
+   "confidence": "medium",
+   "callees": [
+    "ov14_021E6070",
+    "ov14_021F2A9C"
+   ],
+   "notes": "static; cond at [sp+0x18]; uses SUB 0x4094."
+  },
+  {
+   "name": "ov14_021F3488",
+   "mode": "thumb",
+   "signature_guess": "void ov14_021F3488(AppWork *a0, int mask, int oamMode)",
+   "confidence": "high",
+   "callees": [
+    "ov14_021F3420"
+   ],
+   "notes": "bit0->[0,0x1e), bit1->[0x1e,0x24); bit7 sets cond flag."
+  },
+  {
+   "name": "ov14_021F34C8",
+   "mode": "thumb",
+   "signature_guess": "void ov14_021F34C8(SpriteWork *s, int slotByteOff, int oamMode)",
+   "confidence": "high",
+   "callees": [
+    "ov14_021F2A9C"
+   ],
+   "notes": "thunk -> ov14_021F2A9C(s, s[0x4094+off], oamMode)."
+  },
+  {
+   "name": "ov14_021F34DC",
+   "mode": "thumb",
+   "signature_guess": "void ov14_021F34DC(AppWork *a0, int slot)",
+   "confidence": "high",
+   "callees": [
+    "ov14_021F3420"
+   ],
+   "notes": "static; ov14_021F3420(a0,1,slot,slot+1,1)."
+  },
+  {
+   "name": "ov14_021F34EC",
+   "mode": "thumb",
+   "signature_guess": "void ov14_021F34EC(SpriteWork *s)",
+   "confidence": "high",
+   "callees": [
+    "SpriteSystem_LoadCharResObj",
+    "SpriteSystem_LoadPlttResObj",
+    "SpriteSystem_LoadCellResObj",
+    "SpriteSystem_LoadAnimResObj"
+   ],
+   "notes": "static; res 0xC11D/0xC11E/0xC0FA/0xC0FB."
+  },
+  {
+   "name": "ov14_021F35BC",
+   "mode": "thumb",
+   "signature_guess": "void ov14_021F35BC(AppWork *a0)",
+   "confidence": "high",
+   "callees": [
+    "SpriteSystem_NewSpriteWithYOffset",
+    "ManagedSprite_SetDrawFlag"
+   ],
+   "notes": "SUB sprites 0xC1<<2, 0xC2<<2; templates 8210/8244."
+  },
+  {
+   "name": "ov14_021F3614",
+   "mode": "thumb",
+   "signature_guess": "void ov14_021F3614(SpriteWork *s, BoxmonDispInfo *info, int index)",
+   "confidence": "low",
+   "callees": [
+    "Heap_AllocAtEnd",
+    "GetBoxmonSpriteCharAndPlttNarcIds",
+    "sub_02014510",
+    "Sprite_GetImageProxy",
+    "NNS_G2dGetImageLocation",
+    "GXS_LoadOBJ",
+    "Sprite_GetPaletteProxy",
+    "NNS_G2dGetImagePaletteLocation",
+    "GfGfxLoader_GXLoadPal",
+    "DC_FlushRange",
+    "Heap_Free"
+   ],
+   "struct_accesses": [
+    {
+     "param": 1,
+     "offset": "0x4",
+     "width": 2,
+     "meaning": "species (==0x147 special)"
+    },
+    {
+     "param": 1,
+     "offset": "0x8",
+     "width": 4,
+     "meaning": "personality/otid"
+    },
+    {
+     "param": 1,
+     "offset": "0x12",
+     "width": 1,
+     "meaning": "bit7 flag"
+    }
+   ],
+   "notes": "static; boxmon icon into sub-screen OBJ."
+  },
+  {
+   "name": "ov14_021F36DC",
+   "mode": "thumb",
+   "signature_guess": "void ov14_021F36DC(AppWork *a0, BoxmonDispInfo *info, int index)",
+   "confidence": "medium",
+   "callees": [
+    "ov14_021F3614",
+    "ManagedSprite_SetDrawFlag"
+   ],
+   "struct_accesses": [
+    {
+     "param": 0,
+     "offset": "0x88D0",
+     "width": 2,
+     "meaning": "double-buffer toggle 0<->1"
+    }
+   ]
+  },
+  {
+   "name": "ov14_021F3714",
+   "mode": "thumb",
+   "signature_guess": "void ov14_021F3714(SpriteWork *s)",
+   "confidence": "high",
+   "callees": [
+    "SpriteSystem_LoadCharResObj",
+    "GetItemIndexMapping",
+    "SpriteSystem_LoadPlttResObj",
+    "SpriteSystem_LoadCellResObj",
+    "SpriteSystem_LoadAnimResObj"
+   ],
+   "notes": "static; item-icon res 0xC11F/0xC120/0xC0FC/0xC0FD/0xC0FB."
+  },
+  {
+   "name": "ov14_021F37F4",
+   "mode": "thumb",
+   "signature_guess": "void ov14_021F37F4(SpriteWork *s)",
+   "confidence": "high",
+   "callees": [
+    "SpriteSystem_NewSprite",
+    "ManagedSprite_SetDrawFlag",
+    "SpriteSystem_NewSpriteWithYOffset"
+   ],
+   "notes": "sprites 0xCA<<2/0xCB<<2; templates 83E4/8418."
+  },
+  {
+   "name": "ov14_021F3844",
+   "mode": "thumb",
+   "signature_guess": "void ov14_021F3844(SpriteWork *s, int itemId)",
+   "confidence": "medium",
+   "callees": [
+    "GetItemIndexMapping",
+    "GfGfxLoader_GetCharData",
+    "ov14_021F2C1C",
+    "Heap_Free",
+    "Sprite_GetPaletteProxy",
+    "NNS_G2dGetImagePaletteLocation",
+    "GfGfxLoader_GXLoadPal"
+   ],
+   "notes": "main-engine item icon (sprite index 0xb)."
+  },
+  {
+   "name": "ov14_021F38B0",
+   "mode": "thumb",
+   "signature_guess": "void ov14_021F38B0(SpriteWork *s, int itemId)",
+   "confidence": "medium",
+   "callees": [
+    "GetItemIndexMapping",
+    "GfGfxLoader_GetCharData",
+    "ov14_021F2C50",
+    "Heap_Free",
+    "Sprite_GetPaletteProxy",
+    "NNS_G2dGetImagePaletteLocation",
+    "GfGfxLoader_GXLoadPal"
+   ],
+   "notes": "sub-engine variant (sprite index 0xc)."
+  },
+  {
+   "name": "ov14_021F391C",
+   "mode": "thumb",
+   "signature_guess": "void ov14_021F391C(SpriteWork *s, int enable)",
+   "confidence": "high",
+   "callees": [
+    "ManagedSprite_SetAffineOverwriteMode",
+    "ManagedSprite_SetAffineTranslation"
+   ],
+   "notes": "sprite 0xCA<<2."
+  },
+  {
+   "name": "ov14_021F395C",
+   "mode": "thumb",
+   "signature_guess": "void ov14_021F395C(SpriteWork *s, s16 x, s16 y)",
+   "confidence": "high",
+   "callees": [
+    "ManagedSprite_SetPositionXY"
+   ],
+   "notes": "thunk on sprite 0xCA<<2."
+  },
+  {
+   "name": "ov14_021F396C",
+   "mode": "thumb",
+   "signature_guess": "void ov14_021F396C(SpriteWork *s, int index, int mode)",
+   "confidence": "high",
+   "callees": [
+    "ov14_021F2F88",
+    "ov14_021F395C"
+   ],
+   "notes": "pos = 2F88(index,mode) + (8,8)."
+  },
+  {
+   "name": "ov14_021F39A0",
+   "mode": "thumb",
+   "signature_guess": "void ov14_021F39A0(SpriteWork *s, int index, int mode)",
+   "confidence": "high",
+   "callees": [
+    "ov14_021F2F88",
+    "ov14_021F395C"
+   ],
+   "notes": "pos = 2F88 result, y+4."
+  },
+  {
+   "name": "ov14_021F39D0",
+   "mode": "thumb",
+   "signature_guess": "void ov14_021F39D0(SpriteWork *s)",
+   "confidence": "low",
+   "callees": [
+    "ManagedSprite_GetPositionXY",
+    "ManagedSprite_GetDrawPriority",
+    "ManagedSprite_GetPriority",
+    "SpriteSystem_NewSprite",
+    "ManagedSprite_SetPaletteOverride",
+    "ManagedSprite_SetDrawFlag",
+    "ManagedSprite_SetPositionXY",
+    "ov14_021F2A74",
+    "ManagedSprite_SetPriority"
+   ],
+   "struct_accesses": [
+    {
+     "param": 0,
+     "offset": "0x88C8",
+     "width": 2,
+     "meaning": "gate (0 -> early return)"
+    },
+    {
+     "param": 0,
+     "offset": "0x3F0",
+     "width": 4,
+     "meaning": "8-sprite ring array 0x3f<<4"
+    }
+   ],
+   "notes": "creates/repositions 8 aura sprites around sprite 0xCA using tables 8070/8078."
+  },
+  {
+   "name": "ov14_021F3B3C",
+   "mode": "thumb",
+   "signature_guess": "void ov14_021F3B3C(SpriteWork *s)",
+   "confidence": "high",
+   "callees": [
+    "ManagedSprite_SetDrawFlag"
+   ],
+   "notes": "loops 8 sprites at 0x3f<<4, SetDrawFlag 1."
+  },
+  {
+   "name": "ov14_021F3B5C",
+   "mode": "thumb",
+   "signature_guess": "void ov14_021F3B5C(SpriteWork *s)",
+   "confidence": "medium",
+   "callees": [
+    "ManagedSprite_GetPositionXY",
+    "ManagedSprite_SetPositionXY"
+   ],
+   "notes": "repositions 8 aura sprites relative to sprite 0xCA."
+  },
+  {
+   "name": "ov14_021F3BC0",
+   "mode": "thumb",
+   "signature_guess": "void ov14_021F3BC0(SpriteWork *s)",
+   "confidence": "medium",
+   "callees": [
+    "sub_02019B1C",
+    "ManagedSprite_SetPositionXY",
+    "ManagedSprite_SetDrawFlag"
+   ],
+   "notes": "sprite 0xCB<<2."
+  },
+  {
+   "name": "ov14_021F3C08",
+   "mode": "thumb",
+   "signature_guess": "void ov14_021F3C08(SpriteWork *s)",
+   "confidence": "high",
+   "callees": [
+    "SpriteSystem_LoadCharResObj",
+    "SpriteSystem_LoadPlttResObj",
+    "SpriteSystem_LoadCellResObj",
+    "SpriteSystem_LoadAnimResObj"
+   ],
+   "notes": "static; res 0xC121/0xC122/0xC0FE/0xC0FC."
+  },
+  {
+   "name": "ov14_021F3CB4",
+   "mode": "thumb",
+   "signature_guess": "void ov14_021F3CB4(AppWork *a0)",
+   "confidence": "high",
+   "callees": [
+    "SpriteSystem_NewSpriteWithYOffset",
+    "ManagedSprite_SetDrawFlag"
+   ],
+   "notes": "SUB sprites 0x33<<4, 0xCD<<2; templates 844C/8480."
+  },
+  {
+   "name": "ov14_021F3D0C",
+   "mode": "thumb",
+   "signature_guess": "void ov14_021F3D0C(SpriteWork *s, int r1, int index, int r3)",
+   "confidence": "low",
+   "callees": [
+    "sub_020776B4",
+    "sub_02077678",
+    "GfGfxLoader_GetCharData",
+    "ov14_021F2C50",
+    "Heap_Free",
+    "ManagedSprite_GetPaletteOverrideOffset",
+    "sub_0207769C",
+    "ManagedSprite_SetPaletteOverride"
+   ],
+   "notes": "static; item/ball icon into sprite[index]."
+  },
+  {
+   "name": "ov14_021F3D70",
+   "mode": "thumb",
+   "signature_guess": "void ov14_021F3D70(SpriteWork *s, BoxmonDispInfo *info)",
+   "confidence": "low",
+   "callees": [
+    "ManagedSprite_SetDrawFlag",
+    "ov14_021F3D0C"
+   ],
+   "struct_accesses": [
+    {
+     "param": 1,
+     "offset": "0xc",
+     "width": 1,
+     "meaning": "item id 1"
+    },
+    {
+     "param": 1,
+     "offset": "0xd",
+     "width": 1,
+     "meaning": "item id 2"
+    },
+    {
+     "param": 1,
+     "offset": "0x12",
+     "width": 1,
+     "meaning": "bit7 flag"
+    }
+   ],
+   "notes": "exported; sprites 0x33<<4 and 0xCD<<2 held item indicators."
+  },
+  {
+   "name": "ov14_021F3DE8",
+   "mode": "thumb",
+   "signature_guess": "void ov14_021F3DE8(SpriteWork *s)",
+   "confidence": "high",
+   "callees": [
+    "SpriteSystem_LoadCharResObj",
+    "SpriteSystem_LoadPlttResObj",
+    "SpriteSystem_LoadCellResObj",
+    "SpriteSystem_LoadAnimResObj"
+   ],
+   "notes": "static; res 0xC12D/0xC101/0xC0FF."
+  },
+  {
+   "name": "ov14_021F3E70",
+   "mode": "thumb",
+   "signature_guess": "void ov14_021F3E70(SpriteWork *s)",
+   "confidence": "high",
+   "callees": [
+    "SpriteSystem_NewSprite",
+    "ov14_021F2A18"
+   ],
+   "notes": "static; creates ~10 UI sprites from templates 81A8..83B0."
+  },
+  {
+   "name": "ov14_021F3F6C",
+   "mode": "thumb",
+   "signature_guess": "void ov14_021F3F6C(AppWork *a0)",
+   "confidence": "low",
+   "callees": [
+    "ManagedSprite_GetPositionXY",
+    "ManagedSprite_GetDrawPriority",
+    "ManagedSprite_GetPriority",
+    "SpriteSystem_NewSprite",
+    "ManagedSprite_SetPaletteOverride",
+    "ManagedSprite_SetDrawFlag",
+    "Sprite_GetImageProxy",
+    "Sprite_SetImageProxy",
+    "ManagedSprite_SetPositionXY",
+    "ov14_021F2A74",
+    "ManagedSprite_SetPriority"
+   ],
+   "struct_accesses": [
+    {
+     "param": 0,
+     "offset": "0x21",
+     "width": 1,
+     "meaning": "selected slot (0xff -> early return)"
+    }
+   ],
+   "notes": "cursor/selection highlight builder; SUB 0x3f<<4 ring."
+  },
+  {
+   "name": "ov14_021F40DC",
+   "mode": "thumb",
+   "signature_guess": "void ov14_021F40DC(AppWork *a0)",
+   "confidence": "high",
+   "callees": [
+    "ov14_021F40E8"
+   ],
+   "notes": "thunk -> ov14_021F40E8(a0, 0)."
+  },
+  {
+   "name": "ov14_021F40E8",
+   "mode": "thumb",
+   "signature_guess": "void ov14_021F40E8(AppWork *a0, int show)",
+   "confidence": "medium",
+   "callees": [
+    "ManagedSprite_SetDrawFlag",
+    "ManagedSprite_GetDrawPriority",
+    "ov14_021F2A74",
+    "ManagedSprite_GetPriority",
+    "ManagedSprite_SetPriority"
+   ],
+   "struct_accesses": [
+    {
+     "param": 0,
+     "offset": "0x21",
+     "width": 1,
+     "meaning": "selected slot"
+    }
+   ],
+   "notes": "show/hide the 8 cursor ring sprites."
+  },
+  {
+   "name": "ov14_021F4174",
+   "mode": "thumb",
+   "signature_guess": "void ov14_021F4174(AppWork *a0)",
+   "confidence": "medium",
+   "callees": [
+    "ManagedSprite_GetPositionXY",
+    "ManagedSprite_SetPositionXY"
+   ],
+   "struct_accesses": [
+    {
+     "param": 0,
+     "offset": "0x21",
+     "width": 1,
+     "meaning": "selected slot (0xff -> return)"
+    }
+   ],
+   "notes": "repositions 8 ring sprites onto selected slot."
+  },
+  {
+   "name": "ov14_021F41E4",
+   "mode": "thumb",
+   "signature_guess": "void ov14_021F41E4(SpriteWork *s)",
+   "confidence": "high",
+   "callees": [
+    "SpriteSystem_LoadCharResObj",
+    "SpriteSystem_LoadPlttResObj",
+    "SpriteSystem_LoadCellResObj",
+    "SpriteSystem_LoadAnimResObj"
+   ],
+   "notes": "static; 6 char res base 0xC123."
+  },
+  {
+   "name": "ov14_021F4278",
+   "mode": "thumb",
+   "signature_guess": "void ov14_021F4278(SpriteWork *s)",
+   "confidence": "medium",
+   "callees": [
+    "SpriteSystem_NewSprite"
+   ],
+   "struct_accesses": [
+    {
+     "param": 0,
+     "offset": "0x338",
+     "width": 4,
+     "meaning": "6 sprites 0xCE<<2"
+    }
+   ],
+   "notes": "static; template 8140 per-slot with y offset."
+  },
+  {
+   "name": "ov14_021F42EC",
+   "mode": "thumb",
+   "signature_guess": "void ov14_021F42EC(SpriteWork *s)",
+   "confidence": "high",
+   "callees": [
+    "SpriteSystem_LoadCharResObj",
+    "SpriteSystem_LoadPlttResObj",
+    "SpriteSystem_LoadCellResObj",
+    "SpriteSystem_LoadAnimResObj"
+   ],
+   "notes": "static; 4 char res base 0xC129."
+  },
+  {
+   "name": "ov14_021F4380",
+   "mode": "thumb",
+   "signature_guess": "void ov14_021F4380(SpriteWork *s)",
+   "confidence": "medium",
+   "callees": [
+    "SpriteSystem_NewSprite"
+   ],
+   "struct_accesses": [
+    {
+     "param": 0,
+     "offset": "0x350",
+     "width": 4,
+     "meaning": "4 sprites 0x35<<4"
+    }
+   ],
+   "notes": "static; template 8174."
+  },
+  {
+   "name": "ov14_021F43F4",
+   "mode": "thumb",
+   "signature_guess": "void ov14_021F43F4(SpriteWork *s, int on)",
+   "confidence": "high",
+   "callees": [
+    "ov14_021F2A18"
+   ],
+   "notes": "static; SetDrawFlag on sprites 0 and 1."
+  },
+  {
+   "name": "ov14_021F4410",
+   "mode": "thumb",
+   "signature_guess": "void ov14_021F4410(SpriteWork *s)",
+   "confidence": "high",
+   "callees": [
+    "sub_020136B4"
+   ],
+   "struct_accesses": [
+    {
+     "param": 0,
+     "offset": "0x414",
+     "width": 4,
+     "meaning": "TextOBJ/window handle"
+    }
+   ],
+   "notes": "static thunk; sub_020136B4([s+0x414], -48, -8)."
+  },
+  {
+   "name": "ov14_021F4428",
+   "mode": "thumb",
+   "signature_guess": "void ov14_021F4428(AppWork *a0)",
+   "confidence": "medium",
+   "callees": [
+    "ManagedSprite_SetPositionXY",
+    "ov14_021F462C",
+    "ov14_021F29E4",
+    "ov14_021F4410",
+    "TextOBJ_SetSpritesDrawFlag"
+   ],
+   "notes": "lays out box-menu header sprites (0xC3,0x31<<4,0xC5,0xC6,0xC7)."
+  },
+  {
+   "name": "ov14_021F44B4",
+   "mode": "thumb",
+   "signature_guess": "void ov14_021F44B4(SpriteWork *s, int dy)",
+   "confidence": "medium",
+   "callees": [
+    "ManagedSprite_GetPositionXY",
+    "ManagedSprite_SetPositionXY",
+    "ov14_021F4410"
+   ],
+   "notes": "shifts sprites 0xC3..0xC7 and 0x35<<4 by dy."
+  },
+  {
+   "name": "ov14_021F4530",
+   "mode": "thumb",
+   "signature_guess": "void ov14_021F4530(AppWork *a0)",
+   "confidence": "medium",
+   "callees": [
+    "ov14_021E7930",
+    "ov14_021F2A18",
+    "ManagedSprite_GetPositionXY",
+    "ManagedSprite_SetPositionXY"
+   ],
+   "struct_accesses": [
+    {
+     "param": 0,
+     "offset": "0x25",
+     "width": 1,
+     "meaning": "scroll/cursor pos"
+    }
+   ],
+   "notes": "sprite 0xC5 arrow; SUB[0x44D] compare."
+  },
+  {
+   "name": "ov14_021F459C",
+   "mode": "thumb",
+   "signature_guess": "void ov14_021F459C(AppWork *a0)",
+   "confidence": "low",
+   "callees": [
+    "ManagedSprite_GetPositionXY",
+    "ManagedSprite_SetPositionXY",
+    "ov14_021F4410"
+   ],
+   "notes": "positions sprites 0xC6/0xC7; SUB[0x44D]."
+  },
+  {
+   "name": "ov14_021F462C",
+   "mode": "thumb",
+   "signature_guess": "void ov14_021F462C(AppWork *a0)",
+   "confidence": "low",
+   "callees": [
+    "Heap_AllocAtEnd",
+    "AllocAtEndAndReadWholeNarcMemberByIdPair",
+    "NNS_G2dGetUnpackedCharacterData",
+    "MI_CpuCopy8",
+    "ov14_021F46B0",
+    "ov14_021F2C1C",
+    "Heap_Free"
+   ],
+   "notes": "static; uploads 4 tile blocks (narc 0x13/0x4a); SUB[0x44D] index."
+  },
+  {
+   "name": "ov14_021F46B0",
+   "mode": "thumb",
+   "signature_guess": "void ov14_021F46B0(AppWork *a0, u8 *buf, int r2, int matchVal, int count)",
+   "confidence": "low",
+   "callees": [
+    "PCStorage_IsBonusWallpaperUnlocked"
+   ],
+   "struct_accesses": [
+    {
+     "param": 0,
+     "offset": "0x4",
+     "width": 4,
+     "meaning": "PCStorage*"
+    }
+   ],
+   "notes": "static; remaps bytes==matchVal, clamping wallpaper id."
+  },
+  {
+   "name": "ov14_021F46F4",
+   "mode": "thumb",
+   "signature_guess": "void ov14_021F46F4(SpriteWork *s)",
+   "confidence": "high",
+   "callees": [
+    "sub_020136B4"
+   ],
+   "notes": "static; positions two text windows (0x414/0x424)."
+  },
+  {
+   "name": "ov14_021F4720",
+   "mode": "thumb",
+   "signature_guess": "void ov14_021F4720(AppWork *a0)",
+   "confidence": "medium",
+   "callees": [
+    "ManagedSprite_SetPositionXY",
+    "ov14_021F49E0",
+    "ov14_021F29E4",
+    "ov14_021F46F4",
+    "TextOBJ_SetSpritesDrawFlag"
+   ],
+   "notes": "reset variant of ov14_021F4428."
+  },
+  {
+   "name": "ov14_021F47B8",
+   "mode": "thumb",
+   "signature_guess": "void ov14_021F47B8(AppWork *a0, int dy)",
+   "confidence": "medium",
+   "callees": [
+    "ManagedSprite_GetPositionXY",
+    "ManagedSprite_SetPositionXY",
+    "ov14_021F46F4"
+   ],
+   "notes": "shifts sprites 0xC3..0xC7 and 0xCE<<2 by dy."
+  },
+  {
+   "name": "ov14_021F4848",
+   "mode": "thumb",
+   "signature_guess": "void ov14_021F4848(AppWork *a0)",
+   "confidence": "medium",
+   "callees": [
+    "_s32_div_f",
+    "ov14_021F2A18",
+    "ManagedSprite_GetPositionXY",
+    "ManagedSprite_SetPositionXY"
+   ],
+   "notes": "sprite 0xC5 page arrow using /6 pages; a0[0x25],a0[0x1f]."
+  },
+  {
+   "name": "ov14_021F48B4",
+   "mode": "thumb",
+   "signature_guess": "void ov14_021F48B4(AppWork *a0)",
+   "confidence": "low",
+   "callees": [
+    "_s32_div_f",
+    "ManagedSprite_GetPositionXY",
+    "ManagedSprite_SetPositionXY",
+    "ov14_021F46F4"
+   ],
+   "notes": "sprites 0xC6/0xC7 via table ov14_021F8068; a0[0x25]/6."
+  },
+  {
+   "name": "ov14_021F4940",
+   "mode": "thumb",
+   "signature_guess": "void ov14_021F4940(SpriteWork *s, int index, s16 *x, s16 *y)",
+   "confidence": "high",
+   "callees": [
+    "ManagedSprite_GetPositionXY"
+   ],
+   "notes": "thunk on sprite array 0xCE<<2."
+  },
+  {
+   "name": "ov14_021F4958",
+   "mode": "thumb",
+   "signature_guess": "void ov14_021F4958(AppWork *a0, int index)",
+   "confidence": "low",
+   "callees": [
+    "AllocAtEndAndReadWholeNarcMemberByIdPair",
+    "NNS_G2dGetUnpackedCharacterData",
+    "MI_CpuCopy8",
+    "Heap_Free",
+    "ov14_021E7930",
+    "ov14_021F46B0",
+    "ov14_021F4A64"
+   ],
+   "notes": "builds one column of box grid tilemap (narc 0x13/0x46); SUB[0x40C8]."
+  },
+  {
+   "name": "ov14_021F49C8",
+   "mode": "thumb",
+   "signature_guess": "void ov14_021F49C8(AppWork *a0)",
+   "confidence": "high",
+   "callees": [
+    "ov14_021F4958"
+   ],
+   "notes": "loops 0..0x12: ov14_021F4958(a0, i)."
+  },
+  {
+   "name": "ov14_021F49E0",
+   "mode": "thumb",
+   "signature_guess": "void ov14_021F49E0(AppWork *a0)",
+   "confidence": "medium",
+   "callees": [
+    "_s32_div_f",
+    "ov14_021F2C1C"
+   ],
+   "notes": "re-uploads 6 grid columns for current page; a0[0x25], SUB[0x40C8]."
+  },
+  {
+   "name": "ov14_021F4A20",
+   "mode": "thumb",
+   "signature_guess": "void ov14_021F4A20(AppWork *a0, int col)",
+   "confidence": "medium",
+   "callees": [
+    "_s32_div_f",
+    "_u32_div_f",
+    "ov14_021F2C1C"
+   ],
+   "notes": "uploads one grid column if col page matches current."
+  },
+  {
+   "name": "ov14_021F4A64",
+   "mode": "thumb",
+   "signature_guess": "void ov14_021F4A64(AppWork *a0, int r1, void *dest)",
+   "confidence": "low",
+   "callees": [
+    "PCStorage_GetMonByIndexPair",
+    "AcquireBoxMonLock",
+    "GetBoxMonData",
+    "GetMonBaseStatEx_HandleAlternateForm",
+    "MIi_CpuClear16",
+    "ReleaseBoxMonLock"
+   ],
+   "struct_accesses": [
+    {
+     "param": 0,
+     "offset": "0x4",
+     "width": 4,
+     "meaning": "PCStorage*"
+    }
+   ],
+   "notes": "static; masks empty grid cells using species/egg/form; nested 5x6 loops; palette table ov14_021F8080."
+  }
+ ],
+ "data": [
+  {
+   "label": "ov14_021F8068",
+   "section": "rodata",
+   "bytes": 8,
+   "shape_guess": "u8[8] x-coordinate table (page arrows)"
+  },
+  {
+   "label": "ov14_021F8070",
+   "section": "rodata",
+   "bytes": 8,
+   "shape_guess": "s8[8] ring X offset table"
+  },
+  {
+   "label": "ov14_021F8078",
+   "section": "rodata",
+   "bytes": 8,
+   "shape_guess": "s8[8] ring Y offset table"
+  },
+  {
+   "label": "ov14_021F8080",
+   "section": "rodata",
+   "bytes": 12,
+   "shape_guess": "u8[12] palette-index map (ov14_021F4A64)"
+  },
+  {
+   "label": "ov14_021F808C",
+   "section": "rodata",
+   "bytes": 12,
+   "shape_guess": "s16[6] coord pairs (ov14_021F32E0)"
+  },
+  {
+   "label": "ov14_021F8098",
+   "section": "rodata",
+   "bytes": 16,
+   "shape_guess": "u32[4] arg block for sub_02014510"
+  },
+  {
+   "label": "ov14_021F80A8",
+   "section": "rodata",
+   "bytes": 20,
+   "shape_guess": "SpriteSystem init config (ov14_021F2AC8)"
+  },
+  {
+   "label": "ov14_021F80BC",
+   "section": "rodata",
+   "bytes": 2,
+   "shape_guess": "s16 base X; adjacent to 80BE forms coord pairs"
+  },
+  {
+   "label": "ov14_021F80BE",
+   "section": "rodata",
+   "bytes": 22,
+   "shape_guess": "s16[] party-slot coord table (6 pairs with 80BC)"
+  },
+  {
+   "label": "ov14_021F80D4",
+   "section": "rodata",
+   "bytes": 24,
+   "shape_guess": "u32[6] SpriteResourceCapacities"
+  },
+  {
+   "label": "ov14_021F80EC",
+   "section": "rodata",
+   "bytes": 32,
+   "shape_guess": "u32[8] VRAM transfer/size config"
+  },
+  {
+   "label": "ov14_021F810C",
+   "section": "rodata",
+   "bytes": 52,
+   "shape_guess": "ManagedSpriteTemplate (2D1C/3F6C)"
+  },
+  {
+   "label": "ov14_021F8140",
+   "section": "rodata",
+   "bytes": 52,
+   "shape_guess": "ManagedSpriteTemplate (4278)"
+  },
+  {
+   "label": "ov14_021F8174",
+   "section": "rodata",
+   "bytes": 52,
+   "shape_guess": "ManagedSpriteTemplate (4380)"
+  },
+  {
+   "label": "ov14_021F81A8",
+   "section": "rodata",
+   "bytes": 52,
+   "shape_guess": "ManagedSpriteTemplate (3E70)"
+  },
+  {
+   "label": "ov14_021F81DC",
+   "section": "rodata",
+   "bytes": 52,
+   "shape_guess": "ManagedSpriteTemplate (3E70)"
+  },
+  {
+   "label": "ov14_021F8210",
+   "section": "rodata",
+   "bytes": 52,
+   "shape_guess": "ManagedSpriteTemplate (35BC)"
+  },
+  {
+   "label": "ov14_021F8244",
+   "section": "rodata",
+   "bytes": 52,
+   "shape_guess": "ManagedSpriteTemplate (35BC)"
+  },
+  {
+   "label": "ov14_021F8278",
+   "section": "rodata",
+   "bytes": 52,
+   "shape_guess": "ManagedSpriteTemplate (3E70)"
+  },
+  {
+   "label": "ov14_021F82AC",
+   "section": "rodata",
+   "bytes": 52,
+   "shape_guess": "ManagedSpriteTemplate (3E70)"
+  },
+  {
+   "label": "ov14_021F82E0",
+   "section": "rodata",
+   "bytes": 52,
+   "shape_guess": "ManagedSpriteTemplate (3E70)"
+  },
+  {
+   "label": "ov14_021F8314",
+   "section": "rodata",
+   "bytes": 52,
+   "shape_guess": "ManagedSpriteTemplate (3E70)"
+  },
+  {
+   "label": "ov14_021F8348",
+   "section": "rodata",
+   "bytes": 52,
+   "shape_guess": "ManagedSpriteTemplate (3E70)"
+  },
+  {
+   "label": "ov14_021F837C",
+   "section": "rodata",
+   "bytes": 52,
+   "shape_guess": "ManagedSpriteTemplate (3E70)"
+  },
+  {
+   "label": "ov14_021F83B0",
+   "section": "rodata",
+   "bytes": 52,
+   "shape_guess": "ManagedSpriteTemplate (3E70)"
+  },
+  {
+   "label": "ov14_021F83E4",
+   "section": "rodata",
+   "bytes": 52,
+   "shape_guess": "ManagedSpriteTemplate (37F4, ring source 39D0)"
+  },
+  {
+   "label": "ov14_021F8418",
+   "section": "rodata",
+   "bytes": 52,
+   "shape_guess": "ManagedSpriteTemplate (37F4)"
+  },
+  {
+   "label": "ov14_021F844C",
+   "section": "rodata",
+   "bytes": 52,
+   "shape_guess": "ManagedSpriteTemplate (3CB4)"
+  },
+  {
+   "label": "ov14_021F8480",
+   "section": "rodata",
+   "bytes": 52,
+   "shape_guess": "ManagedSpriteTemplate (3CB4)"
+  }
+ ],
+ "imports": {
+  "Party_GetCount": {
+   "known_prototype": "int Party_GetCount(const Party *party)",
+   "header": "include/party.h"
+  },
+  "Party_GetMonByIndex": {
+   "known_prototype": "Pokemon *Party_GetMonByIndex(Party *party, int slot)",
+   "header": "include/party.h"
+  },
+  "Mon_GetBoxMon": {
+   "known_prototype": "BoxPokemon *Mon_GetBoxMon(Pokemon *mon)",
+   "header": "include/pokemon.h"
+  },
+  "ManagedSprite_TickFrame": {
+   "known_prototype": "void ManagedSprite_TickFrame(ManagedSprite *managedSprite)",
+   "header": "include/sprite_system.h"
+  },
+  "ManagedSprite_SetDrawFlag": {
+   "known_prototype": "void ManagedSprite_SetDrawFlag(ManagedSprite *managedSprite, int flag)",
+   "header": "include/sprite_system.h"
+  },
+  "ManagedSprite_SetPositionXY": {
+   "known_prototype": "void ManagedSprite_SetPositionXY(ManagedSprite *managedSprite, s16 x, s16 y)",
+   "header": "include/sprite_system.h"
+  },
+  "ManagedSprite_GetPositionXY": {
+   "known_prototype": "void ManagedSprite_GetPositionXY(ManagedSprite *managedSprite, s16 *x, s16 *y)",
+   "header": "include/sprite_system.h"
+  },
+  "ManagedSprite_SetAffineScale": {
+   "known_prototype": "void ManagedSprite_SetAffineScale(ManagedSprite *managedSprite, f32 x, f32 y)",
+   "header": "include/sprite_system.h"
+  },
+  "ManagedSprite_SetPaletteOverride": {
+   "known_prototype": "void ManagedSprite_SetPaletteOverride(ManagedSprite *managedSprite, int index)",
+   "header": "include/sprite_system.h"
+  },
+  "SpriteSystem_Alloc": {
+   "known_prototype": "SpriteSystem *SpriteSystem_Alloc(enum HeapID heapID)",
+   "header": "include/sprite_system.h"
+  },
+  "SpriteManager_New": {
+   "known_prototype": "SpriteManager *SpriteManager_New(SpriteSystem *spriteSystem)",
+   "header": "include/sprite_system.h"
+  },
+  "SpriteSystem_NewSprite": {
+   "known_prototype": "ManagedSprite *SpriteSystem_NewSprite(SpriteSystem *spriteSystem, SpriteManager *spriteManager, const ManagedSpriteTemplate *unkTemplate)",
+   "header": "include/sprite_system.h"
+  },
+  "SpriteSystem_NewSpriteWithYOffset": {
+   "known_prototype": "ManagedSprite *SpriteSystem_NewSpriteWithYOffset(SpriteSystem *spriteSystem, SpriteManager *spriteManager, const ManagedSpriteTemplate *unkTemplate, fx32 yOffset)",
+   "header": "include/sprite_system.h"
+  },
+  "SpriteSystem_LoadCharResObj": {
+   "known_prototype": "BOOL SpriteSystem_LoadCharResObj(SpriteSystem *spriteSystem, SpriteManager *spriteManager, NarcId narcId, int fileId, BOOL compressed, int vram, int resId)",
+   "header": "include/sprite_system.h"
+  },
+  "ov14_021F0234": {
+   "signature_guess": "void ov14_021F0234(AppWork *a0, void *stateFn, int a2)",
+   "evidence": "arg2 is a fn ptr (ov14_021EA130/180/674)"
+  },
+  "ov14_021F0254": {
+   "signature_guess": "int ov14_021F0254(AppWork *a0, int a1)",
+   "evidence": "called (a0,3)/(a0,4)"
+  },
+  "ov14_021F027C": {
+   "signature_guess": "int ov14_021F027C(AppWork *a0, int a1)",
+   "evidence": "thunks pass a1 in {0,2}"
+  },
+  "ov14_021F0F0C": {
+   "signature_guess": "int ov14_021F0F0C(AppWork *a0, int a1)",
+   "evidence": "thunks pass a1 in {1,2,3,4}"
+  },
+  "ov14_021E76B8": {
+   "signature_guess": "void ov14_021E76B8(AppWork *a0)",
+   "evidence": "r0=a0 unchanged, no return use"
+  },
+  "PCStorage_GetMonDataByIndexPair": {
+   "header": "verify include/pokemon_storage_system.h",
+   "evidence": "6-arg NARC-style getter"
+  },
+  "PCStorage_GetMonByIndexPair": {
+   "header": "verify include/pokemon_storage_system.h",
+   "evidence": "returns BoxPokemon*"
+  },
+  "AllocAtEndAndReadWholeNarcMemberByIdPair": {
+   "signature_guess": "void *AllocAtEndAndReadWholeNarcMemberByIdPair(NarcId narcId, int fileId, HeapID heapId)",
+   "evidence": "3 args, returns buffer"
+  }
+ },
+ "shared_struct_hypotheses": [
+  {
+   "name": "AppWork (r0 of exported handlers)",
+   "size_guess": ">=0x38",
+   "fields": [
+    {
+     "offset": "0x0",
+     "width": 4,
+     "meaning": "parent ptr; parent[0x8] state (0..3, ==3 special)"
+    },
+    {
+     "offset": "0x4",
+     "width": 4,
+     "meaning": "PCStorage *"
+    },
+    {
+     "offset": "0x8",
+     "width": 4,
+     "meaning": "Party *"
+    },
+    {
+     "offset": "0x1f",
+     "width": 1,
+     "meaning": "count/boxId"
+    },
+    {
+     "offset": "0x21",
+     "width": 1,
+     "meaning": "selected slot (0xff = none)"
+    },
+    {
+     "offset": "0x24",
+     "width": 1,
+     "meaning": "u8 flag"
+    },
+    {
+     "offset": "0x25",
+     "width": 1,
+     "meaning": "scroll/page position (/6)"
+    },
+    {
+     "offset": "0x29",
+     "width": 1,
+     "meaning": "u8 flag"
+    },
+    {
+     "offset": "0x2b",
+     "width": 1,
+     "meaning": "u8 flag"
+    },
+    {
+     "offset": "0x2c",
+     "width": 4,
+     "meaning": "int state (set 9)"
+    },
+    {
+     "offset": "0x30",
+     "width": 4,
+     "meaning": "int (ov14_021F2490 arg2)"
+    },
+    {
+     "offset": "0x34",
+     "width": 4,
+     "meaning": "SpriteWork *"
+    }
+   ]
+  },
+  {
+   "name": "SpriteWork (AppWork->0x34)",
+   "size_guess": ">=0x88DA",
+   "fields": [
+    {
+     "offset": "0x2F0",
+     "width": 4,
+     "meaning": "gfx/BG context (0x2f<<4)"
+    },
+    {
+     "offset": "0x2F4",
+     "width": 4,
+     "meaning": "SpriteSystem * (0xbd<<2)"
+    },
+    {
+     "offset": "0x2F8",
+     "width": 4,
+     "meaning": "SpriteManager * (0xbe<<2)"
+    },
+    {
+     "offset": "0x2FC",
+     "width": 4,
+     "meaning": "ManagedSprite *sprites[] base (0xbf<<2); named slots 0x328(0xCA),0x32C(0xCB),0x330(0x33<<4),0x334(0xCD),0x338(0xCE<<2 x6),0x350(0x35<<4 x4),0x360(box icons x0x24),0x3F0(0x3f<<4 ring x8)"
+    },
+    {
+     "offset": "0x414",
+     "width": 4,
+     "meaning": "TextOBJ/window handle A"
+    },
+    {
+     "offset": "0x424",
+     "width": 4,
+     "meaning": "TextOBJ/window handle B"
+    },
+    {
+     "offset": "0x43C",
+     "width": 4,
+     "meaning": "int (page/6)"
+    },
+    {
+     "offset": "0x44D",
+     "width": 1,
+     "meaning": "wallpaper/box selector byte"
+    },
+    {
+     "offset": "0x454",
+     "width": 4,
+     "meaning": "open NARC * (box-icon)"
+    },
+    {
+     "offset": "0x458",
+     "width": 1,
+     "meaning": "box-icon char buffer (0x200 stride, 30 entries)"
+    },
+    {
+     "offset": "0x4058",
+     "width": 1,
+     "meaning": "per-slot valid flag[30]"
+    },
+    {
+     "offset": "0x4076",
+     "width": 1,
+     "meaning": "per-slot palette[30]"
+    },
+    {
+     "offset": "0x4094",
+     "width": 1,
+     "meaning": "slot->spriteIndex map (box)"
+    },
+    {
+     "offset": "0x40B2",
+     "width": 1,
+     "meaning": "party-slot->spriteIndex map[6]"
+    },
+    {
+     "offset": "0x40C8",
+     "width": 1,
+     "meaning": "grid tilemap scratch buffer (0x400 stride)"
+    },
+    {
+     "offset": "0x88C8",
+     "width": 2,
+     "meaning": "u16 gate flag"
+    },
+    {
+     "offset": "0x88D0",
+     "width": 2,
+     "meaning": "u16 double-buffer toggle"
+    },
+    {
+     "offset": "0x88D2",
+     "width": 2,
+     "meaning": "u16 guard flag around SetDrawPriority"
+    },
+    {
+     "offset": "0x88D4",
+     "width": 1,
+     "meaning": "bitfield byte (bic/orr in 2490)"
+    }
+   ]
+  },
+  {
+   "name": "AffineAnimWork (ov14_021F3354/3380/33B0/33E8/33FC)",
+   "size_guess": "~0xc",
+   "fields": [
+    {
+     "offset": "0x0",
+     "width": 4,
+     "meaning": "ManagedSprite *"
+    },
+    {
+     "offset": "0x7",
+     "width": 1,
+     "meaning": "frame counter"
+    },
+    {
+     "offset": "0x8",
+     "width": 4,
+     "meaning": "fx32 affine scale"
+    }
+   ]
+  },
+  {
+   "name": "BoxmonDispInfo (ov14_021F3614/36DC/3D70)",
+   "size_guess": ">=0x14",
+   "fields": [
+    {
+     "offset": "0x4",
+     "width": 2,
+     "meaning": "species (0x147 special-cased)"
+    },
+    {
+     "offset": "0x8",
+     "width": 4,
+     "meaning": "personality/id"
+    },
+    {
+     "offset": "0xc",
+     "width": 1,
+     "meaning": "held-item icon 1"
+    },
+    {
+     "offset": "0xd",
+     "width": 1,
+     "meaning": "held-item icon 2"
+    },
+    {
+     "offset": "0x12",
+     "width": 1,
+     "meaning": "bit7 = shiny/egg flag"
+    }
+   ]
+  }
+ ],
+ "risks": [
+  "SHARED FUNCTION-POINTER TABLE: the 31 exported handlers ov14_021F2574..ov14_021F2930 + ov14_021F25E4 are .word entries in one table at asm/overlay_14_021EAF08.s:6410-6442, so they MUST be declared with a single uniform prototype int(*)(AppWork*). Handlers that look void actually tail-propagate a callee r0; declare them returning the table type. Changing this signature also affects overlay_14_021EAF08 codegen (IPA).",
+  "IPA header discipline: this chunk exports ~95 ov14_* symbols consumed by sibling overlay_14 chunks (021EAF08, 021EEF34, 021EE26C, 021EFDE4). Do NOT add these prototypes to a shared header the matched siblings include; use a split *_internal.h.",
+  "TWO struct levels (AppWork vs SpriteWork=AppWork->0x34): helpers take SpriteWork directly while exported handlers take AppWork. Classify by whether the body does ldr [rX,#0x34] (AppWork) or indexes 0xbf<<2/0xbd<<2 directly (SpriteWork).",
+  "rodata ORDER is load-bearing: 30 objects ov14_021F8068..021F8480 must be emitted in this exact declaration order (mostly 0x34-byte ManagedSpriteTemplate consts + a few tables).",
+  "ldmia/stmia inline struct copies: 2AC8/2D1C/4278/4380/39D0/3F6C copy a rodata ManagedSpriteTemplate into a stack local via ldmia!/stmia! (MWCC pattern for local struct-copy assignment). Do not use memcpy.",
+  "Soft-float and division: _fadd/_fsub/_s32_div_f/_u32_div_f appear throughout. 0.025f encodes as 0x3CCCCCCD; signed div (_s32_div_f) for [0x25], unsigned (_u32_div_f) for indices.",
+  "Large SpriteWork offsets encoded as (imm<<shift): 0xbf<<2, 0x2f<<4, 0x33<<4, 0x36<<4, 0x3f<<4, 0xc1<<2..0xce<<2. Express as array indices so MWCC regenerates the constant loads.",
+  "PCStorage/Boxmon getter prototypes not header-confirmed this pass - verify against include/pokemon_storage_system.h / include/pokemon.h.",
+  "ov14_021F2DC4 return type and 3rd out-param inferred from a single call chain - low confidence."
+ ]
+}

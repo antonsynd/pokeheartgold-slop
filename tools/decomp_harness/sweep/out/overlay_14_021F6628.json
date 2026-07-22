@@ -1,0 +1,1647 @@
+{
+ "file": "asm/overlay_14_021F6628.s",
+ "notes": "Large (67 thumb funcs) overlay_14 chunk: a grid/touch cursor-navigation menu (uses GridInputHandler + DpadMenuBox + TouchscreenHitbox). TWO distinct struct pointers flow as a0: (A) a 'context' struct whose [+0x34] holds (B) a large 'work' struct. MOST functions take the context; the exceptions ov14_021F6654/6678/6688 take the WORK struct directly (windows at work+0x30, BgConfig at work+0x14) -- do NOT assume a uniform a0 type. The 11 GridCallbacks tables (ov14_021F86CC..876C) reference ~40 static callbacks defined here; they are stored as DpadGridCallback = void(*)(void*,int,int), so ALL table-referenced callbacks must be declared void fn(void *data, int newTarget, int prevTarget) even when they ignore trailing args. No .data/.bss; .rodata only. No callers exist in decompiled C (whole overlay is asm) so no existing-header IPA hazard.",
+ "functions": [
+  {
+   "name": "ov14_021F6628",
+   "mode": "thumb",
+   "signature_guess": "MsgData *ov14_021F6628(void)",
+   "confidence": "high",
+   "callees": [
+    "NewMsgDataFromNarc"
+   ],
+   "notes": "export. returns NewMsgDataFromNarc(1, 0x1b, 0x19, 0xa); no params."
+  },
+  {
+   "name": "ov14_021F6638",
+   "mode": "thumb",
+   "signature_guess": "static void ov14_021F6638(Window *window)",
+   "confidence": "high",
+   "callees": [
+    "FillWindowPixelBuffer",
+    "sub_0200E948"
+   ],
+   "notes": "static. FillWindowPixelBuffer(window, 0xf); sub_0200E948(window, 0x38E, 0xa). pool 0x38E."
+  },
+  {
+   "name": "ov14_021F6654",
+   "mode": "thumb",
+   "signature_guess": "void ov14_021F6654(UnkWork_ov14 *work, int windowIdx)",
+   "confidence": "high",
+   "callees": [
+    "ClearFrameAndWindow2",
+    "GetWindowBgId",
+    "ScheduleBgTilemapBufferTransfer"
+   ],
+   "struct_accesses": [
+    {
+     "param": 0,
+     "offset": "0x30",
+     "width": 16,
+     "meaning": "Window array base; window = &work->windows[windowIdx]"
+    },
+    {
+     "param": 0,
+     "offset": "0x14",
+     "width": 4,
+     "meaning": "BgConfig*"
+    }
+   ],
+   "notes": "export. a0 is the WORK struct DIRECTLY (not the context). ClearFrameAndWindow2(win, TRUE); ScheduleBgTilemapBufferTransfer(work->bgConfig, GetWindowBgId(win))."
+  },
+  {
+   "name": "ov14_021F6678",
+   "mode": "thumb",
+   "signature_guess": "void ov14_021F6678(UnkWork_ov14 *work, int windowIdx)",
+   "confidence": "high",
+   "callees": [
+    "ClearFrameAndWindow2"
+   ],
+   "notes": "export. tail: ClearFrameAndWindow2(&work->windows[windowIdx], 1). a0 = WORK."
+  },
+  {
+   "name": "ov14_021F6688",
+   "mode": "thumb",
+   "signature_guess": "void ov14_021F6688(UnkWork_ov14 *work, int windowIdx)",
+   "confidence": "high",
+   "callees": [
+    "ClearFrameAndWindow2"
+   ],
+   "notes": "export. tail: ClearFrameAndWindow2(&work->windows[windowIdx], 0). a0 = WORK."
+  },
+  {
+   "name": "ov14_021F6698",
+   "mode": "thumb",
+   "signature_guess": "static void ov14_021F6698(UnkCtx_ov14 *ctx, int entryId, int windowIdx)",
+   "confidence": "high",
+   "callees": [
+    "ov14_021F6628",
+    "ov14_021F6638",
+    "ov14_021F4FBC",
+    "ScheduleWindowCopyToVram",
+    "DestroyMsgData"
+   ],
+   "struct_accesses": [
+    {
+     "param": 0,
+     "offset": "0x34",
+     "width": 4,
+     "meaning": "work ptr; windows at work+0x30+idx*0x10"
+    }
+   ],
+   "notes": "static. core 'print message entry' helper. loads MsgData, ov14_021F4FBC(work, msgData, windowIdx, +5 stack args incl 0x1020F color), schedules copy."
+  },
+  {
+   "name": "ov14_021F66E8",
+   "mode": "thumb",
+   "signature_guess": "void ov14_021F66E8(UnkCtx_ov14 *ctx, int windowIdx, int which)",
+   "confidence": "high",
+   "callees": [
+    "ov14_021F6698"
+   ],
+   "notes": "export. which==1 ? 6698(ctx,0xb,windowIdx) : 6698(ctx,0xc,windowIdx)."
+  },
+  {
+   "name": "ov14_021F6704",
+   "mode": "thumb",
+   "signature_guess": "void ov14_021F6704(UnkCtx_ov14 *ctx, int itemId, int windowIdx)",
+   "confidence": "high",
+   "callees": [
+    "BufferItemName",
+    "ov14_021F6698"
+   ],
+   "notes": "export. BufferItemName(work->msgFmt(+0x24),0,itemId); 6698(ctx,0x17,windowIdx)."
+  },
+  {
+   "name": "ov14_021F6724",
+   "mode": "thumb",
+   "signature_guess": "void ov14_021F6724(UnkCtx_ov14 *ctx, int windowIdx)",
+   "confidence": "high",
+   "callees": [
+    "ov14_021F6698"
+   ],
+   "notes": "export. tail: 6698(ctx, 0x18, windowIdx)."
+  },
+  {
+   "name": "ov14_021F6730",
+   "mode": "thumb",
+   "signature_guess": "void ov14_021F6730(UnkCtx_ov14 *ctx, int windowIdx)",
+   "confidence": "high",
+   "callees": [
+    "ov14_021F6698"
+   ],
+   "notes": "export. tail: 6698(ctx, 0x36, windowIdx)."
+  },
+  {
+   "name": "ov14_021F673C",
+   "mode": "thumb",
+   "signature_guess": "void ov14_021F673C(UnkCtx_ov14 *ctx, int itemId, int windowIdx)",
+   "confidence": "high",
+   "callees": [
+    "BufferItemName",
+    "ov14_021F6698"
+   ],
+   "notes": "export. BufferItemName(work->msgFmt,0,itemId); 6698(ctx,0xf,windowIdx)."
+  },
+  {
+   "name": "ov14_021F675C",
+   "mode": "thumb",
+   "signature_guess": "void ov14_021F675C(UnkCtx_ov14 *ctx, int windowIdx)",
+   "confidence": "high",
+   "callees": [
+    "ov14_021F6698"
+   ],
+   "notes": "export. tail: 6698(ctx, 0xe, windowIdx)."
+  },
+  {
+   "name": "ov14_021F6768",
+   "mode": "thumb",
+   "signature_guess": "void ov14_021F6768(UnkCtx_ov14 *ctx, int itemId, int windowIdx)",
+   "confidence": "high",
+   "callees": [
+    "BufferItemName",
+    "ov14_021F6698"
+   ],
+   "notes": "export. itemId==0 ? BufferItemName(...,0x70)+6698(ctx,0x37,wid) : BufferItemName(...,itemId)+6698(ctx,0x10,wid)."
+  },
+  {
+   "name": "ov14_021F67A4",
+   "mode": "thumb",
+   "signature_guess": "void ov14_021F67A4(UnkCtx_ov14 *ctx, int windowIdx)",
+   "confidence": "high",
+   "callees": [
+    "ov14_021F6698"
+   ],
+   "notes": "export. tail: 6698(ctx, 0x23, windowIdx)."
+  },
+  {
+   "name": "ov14_021F67B0",
+   "mode": "thumb",
+   "signature_guess": "void ov14_021F67B0(UnkCtx_ov14 *ctx, int kind, int windowIdx)",
+   "confidence": "high",
+   "callees": [
+    "ov14_021E60C0",
+    "BufferBoxMonNickname",
+    "ov14_021F6698"
+   ],
+   "struct_accesses": [
+    {
+     "param": 0,
+     "offset": "0x1f",
+     "width": 1,
+     "meaning": "u8 box index arg to ov14_021E60C0"
+    },
+    {
+     "param": 0,
+     "offset": "0x21",
+     "width": 1,
+     "meaning": "u8 slot arg to ov14_021E60C0"
+    },
+    {
+     "param": 0,
+     "offset": "0x34",
+     "width": 4,
+     "meaning": "work; work->msgFmt at +0x24"
+    }
+   ],
+   "notes": "export. switch(kind) 0..6 -> entryId {2,3,4,0x1f,0x20,0x21,6}; cases 1/2/4 buffer box-mon nickname; 6698(ctx,entryId,windowIdx). JUMP TABLE _021F67C6."
+  },
+  {
+   "name": "ov14_021F6844",
+   "mode": "thumb",
+   "signature_guess": "void ov14_021F6844(UnkCtx_ov14 *ctx, int sel, int windowIdx)",
+   "confidence": "high",
+   "callees": [
+    "ov14_021F6698"
+   ],
+   "notes": "export. sel==0->7, sel==1->0xa; tail 6698(ctx, entryId, windowIdx)."
+  },
+  {
+   "name": "ov14_021F685C",
+   "mode": "thumb",
+   "signature_guess": "void ov14_021F685C(UnkCtx_ov14 *ctx, int unused, int kind, int windowIdx)",
+   "confidence": "medium",
+   "callees": [
+    "ov14_021E60C0",
+    "BufferBoxMonNickname",
+    "ov14_021F6698"
+   ],
+   "notes": "export. 4-arg: r1 UNUSED; switch(kind r2) 0..6 -> entryId {0x12,0,5,0x13,0xd,0x1d,0x1e}, case 1 buffers box-mon nickname; 6698(ctx,entryId,windowIdx=r3). JUMP TABLE _021F6872."
+  },
+  {
+   "name": "ov14_021F68C0",
+   "mode": "thumb",
+   "signature_guess": "void ov14_021F68C0(UnkCtx_ov14 *ctx, int kind, int windowIdx)",
+   "confidence": "high",
+   "callees": [
+    "BufferItemName",
+    "ov14_021F6698"
+   ],
+   "struct_accesses": [
+    {
+     "param": 0,
+     "offset": "0x34",
+     "width": 4,
+     "meaning": "work; work[0x88C8] u16 item id"
+    }
+   ],
+   "notes": "export. switch(kind) 0..7 (0/1 fall to default); cases 2/3 BufferItemName(work->msgFmt,0,*(u16*)(work+0x88C8)); 6698(ctx,entryId,windowIdx). JUMP TABLE _021F68D6. pool 0x88C8."
+  },
+  {
+   "name": "ov14_021F6928",
+   "mode": "thumb",
+   "signature_guess": "void ov14_021F6928(UnkCtx_ov14 *ctx, int windowIdx, int kind)",
+   "confidence": "high",
+   "callees": [
+    "ov14_021F6628",
+    "BufferItemName",
+    "NewString_ReadMsgData",
+    "StringExpandPlaceholders",
+    "String_Delete",
+    "FillWindowPixelBuffer",
+    "AddTextPrinterParameterizedWithColor",
+    "DestroyMsgData"
+   ],
+   "struct_accesses": [
+    {
+     "param": 0,
+     "offset": "0x34",
+     "width": 4,
+     "meaning": "work; msgFmt(+0x24), str(+0x28), windows(+0x30), work[0x88C8] u16"
+    }
+   ],
+   "notes": "export. switch(kind) 0..0xa -> entryId; NewString_ReadMsgData; StringExpandPlaceholders(work->msgFmt, work->str, s); AddTextPrinterParameterizedWithColor. JUMP TABLE _021F6948. pools 0x88C8, 0x1020F."
+  },
+  {
+   "name": "ov14_021F69F0",
+   "mode": "thumb",
+   "signature_guess": "void ov14_021F69F0(UnkCtx_ov14 *ctx, int windowIdx)",
+   "confidence": "high",
+   "callees": [
+    "sub_0200E948",
+    "ScheduleWindowCopyToVram"
+   ],
+   "notes": "export. sub_0200E948(&work->windows[windowIdx], 0x38E, 0xa); ScheduleWindowCopyToVram(win). pool 0x38E."
+  },
+  {
+   "name": "ov14_021F6A14",
+   "mode": "thumb",
+   "signature_guess": "int ov14_021F6A14(void)",
+   "confidence": "high",
+   "callees": [
+    "TouchscreenHitbox_FindRectAtTouchNew"
+   ],
+   "notes": "export. tail: TouchscreenHitbox_FindRectAtTouchNew(ov14_021F864C); no params."
+  },
+  {
+   "name": "ov14_021F6A24",
+   "mode": "thumb",
+   "signature_guess": "int ov14_021F6A24(void)",
+   "confidence": "high",
+   "callees": [
+    "TouchscreenHitbox_FindRectAtTouchNew"
+   ],
+   "notes": "export. tail: TouchscreenHitbox_FindRectAtTouchNew(ov14_021F8614)."
+  },
+  {
+   "name": "ov14_021F6A34",
+   "mode": "thumb",
+   "signature_guess": "int ov14_021F6A34(void)",
+   "confidence": "high",
+   "callees": [
+    "TouchscreenHitbox_FindRectAtTouchNew"
+   ],
+   "notes": "export. tail: TouchscreenHitbox_FindRectAtTouchNew(ov14_021F8630)."
+  },
+  {
+   "name": "ov14_021F6A44",
+   "mode": "thumb",
+   "signature_guess": "void ov14_021F6A44(UnkCtx_ov14 *ctx)",
+   "confidence": "high",
+   "callees": [
+    "ov14_021F6B10",
+    "GridInputHandler_Create",
+    "ov14_021F6B28"
+   ],
+   "struct_accesses": [
+    {
+     "param": 0,
+     "offset": "0x0",
+     "width": 4,
+     "meaning": "sub-obj ptr; [ptr+8] switch state 0..3"
+    },
+    {
+     "param": 0,
+     "offset": "0x2c",
+     "width": 1,
+     "meaning": "u8 initialPos"
+    },
+    {
+     "param": 0,
+     "offset": "0x34",
+     "width": 4,
+     "meaning": "work; work->grid stored at +0x2c"
+    }
+   ],
+   "notes": "export. state = *(int*)(*(void**)ctx + 8), switch 0..3 -> mode {0,2,3,6}; GridInputHandler_Create(ov14_021F8B10[mode] triple, ctx, 1, ctx->unk2c, 0xa). JUMP TABLE _021F6A5E."
+  },
+  {
+   "name": "ov14_021F6AC0",
+   "mode": "thumb",
+   "signature_guess": "void ov14_021F6AC0(UnkCtx_ov14 *ctx, int mode, u8 initialPos)",
+   "confidence": "high",
+   "callees": [
+    "ov14_021F6B10",
+    "GridInputHandler_Create",
+    "ov14_021F6B28"
+   ],
+   "notes": "export. row = &ov14_021F8B10[mode*3]; GridInputHandler_Create(row[0],row[1],row[2], ctx, TRUE, initialPos&0xff, 0xa) -> work->grid(+0x2c); 6B28(ctx, initialPos)."
+  },
+  {
+   "name": "ov14_021F6B10",
+   "mode": "thumb",
+   "signature_guess": "void ov14_021F6B10(UnkCtx_ov14 *ctx)",
+   "confidence": "high",
+   "callees": [
+    "GridInputHandler_Free"
+   ],
+   "struct_accesses": [
+    {
+     "param": 0,
+     "offset": "0x34",
+     "width": 4,
+     "meaning": "work; grid at +0x2c"
+    }
+   ],
+   "notes": "export. if (work->grid) { GridInputHandler_Free(work->grid); work->grid = NULL; }"
+  },
+  {
+   "name": "ov14_021F6B28",
+   "mode": "thumb",
+   "signature_guess": "static void ov14_021F6B28(UnkCtx_ov14 *ctx, int target)",
+   "confidence": "high",
+   "callees": [
+    "GridInputHandler_GetDpadBox",
+    "ov14_021F2A18",
+    "DpadMenuBox_GetPosition",
+    "ManagedSprite_SetPositionXY"
+   ],
+   "notes": "static. positions cursor ManagedSprite (work[0x320]=0x32<<4) at the dpad box for target. 2-byte sp local (u8 x,y)."
+  },
+  {
+   "name": "ov14_021F6B60",
+   "mode": "thumb",
+   "signature_guess": "void ov14_021F6B60(void *data, int newTarget, int prevTarget)",
+   "confidence": "high",
+   "callees": [
+    "GridInputHandler_SetNextInput",
+    "ov14_021F6B28"
+   ],
+   "notes": "static GridCallbacks.onButton (table 874C). SetNextInput(grid,newTarget)+6B28. ignores prev."
+  },
+  {
+   "name": "ov14_021F6B7C",
+   "mode": "thumb",
+   "signature_guess": "void ov14_021F6B7C(void *data, int newTarget, int prevTarget)",
+   "confidence": "high",
+   "callees": [
+    "ov14_021F2A18"
+   ],
+   "notes": "static GridCallbacks.onSwitchToTouchMode -- the COMMON [1] entry in ALL 11 tables. tail: ov14_021F2A18(data->work(+0x34), 9, 0)."
+  },
+  {
+   "name": "ov14_021F6B8C",
+   "mode": "thumb",
+   "signature_guess": "void ov14_021F6B8C(void *data, int newTarget, int prevTarget)",
+   "confidence": "high",
+   "callees": [
+    "ov14_021F7AC4",
+    "ov14_021E5A50"
+   ],
+   "notes": "static GridCallbacks cb. 7AC4(work); ov14_021E5A50(work, ov14_021E9F20). ignores args 1/2."
+  },
+  {
+   "name": "ov14_021F6BA4",
+   "mode": "thumb",
+   "signature_guess": "void ov14_021F6BA4(void *data, int newTarget, int prevTarget)",
+   "confidence": "high",
+   "callees": [
+    "GridInputHandler_SetNextInput",
+    "ov14_021F6B28"
+   ],
+   "notes": "static GridCallbacks.onTouch. SetNextInput(grid,newTarget&0xff)+6B28."
+  },
+  {
+   "name": "ov14_021F6BC0",
+   "mode": "thumb",
+   "signature_guess": "int ov14_021F6BC0(UnkCtx_ov14 *ctx)",
+   "confidence": "high",
+   "callees": [
+    "GridInputHandler_GetNextInput",
+    "GridInputHandler_HandleInput_AllowHold",
+    "ov14_021E8544",
+    "GridInputHandler_SetNextInput",
+    "ov14_021F6B28"
+   ],
+   "struct_accesses": [
+    {
+     "param": 0,
+     "offset": "0x34",
+     "width": 4,
+     "meaning": "work; grid(+0x2c), handle at work[0x2f0]"
+    }
+   ],
+   "notes": "export. input poller returning processed input code (int). branches on HandleInput vs ov14_021E8544(work[0x2f0])."
+  },
+  {
+   "name": "ov14_021F6C3C",
+   "mode": "thumb",
+   "signature_guess": "void ov14_021F6C3C(void *data, int newTarget, int prevTarget)",
+   "confidence": "high",
+   "callees": [
+    "ov14_021E8544",
+    "GridInputHandler_SetNextInput",
+    "ov14_021F6B28"
+   ],
+   "struct_accesses": [
+    {
+     "param": 0,
+     "offset": "0x21",
+     "width": 1,
+     "meaning": "u8 read on 021E8544==0 path"
+    }
+   ],
+   "notes": "static GridCallbacks.onKeyMove (table 86EC)."
+  },
+  {
+   "name": "ov14_021F6C94",
+   "mode": "thumb",
+   "signature_guess": "void ov14_021F6C94(void *data, int newTarget, int prevTarget)",
+   "confidence": "high",
+   "callees": [
+    "_s32_div_f",
+    "GridInputHandler_SetNextInput",
+    "GridInputHandler_GetDpadBox",
+    "DpadMenuBox_GetPosition",
+    "ManagedSprite_SetPositionXY",
+    "ov14_021F2A18",
+    "ov14_021F29E4"
+   ],
+   "struct_accesses": [
+    {
+     "param": 0,
+     "offset": "0x25",
+     "width": 1,
+     "meaning": "u8 cursor pos %6"
+    },
+    {
+     "param": 0,
+     "offset": "0x34",
+     "width": 4,
+     "meaning": "work[0x43C] int"
+    }
+   ],
+   "notes": "static GridCallbacks.onButton (table 86FC). newTarget in [6,7] -> pos25 %6. SIGNED %6 via _s32_div_f. pool 0x43C."
+  },
+  {
+   "name": "ov14_021F6D14",
+   "mode": "thumb",
+   "signature_guess": "void ov14_021F6D14(void *data, int newTarget, int prevTarget)",
+   "confidence": "medium",
+   "callees": [
+    "ov14_021F29E4",
+    "GridInputHandler_SetNextLastUnk0FInputs",
+    "ov14_021F49E0",
+    "ov14_021F48B4",
+    "ov14_021F4848",
+    "ov14_021F57B8",
+    "ov14_021F7AC4",
+    "ov14_021E5A50",
+    "_s32_div_f"
+   ],
+   "struct_accesses": [
+    {
+     "param": 0,
+     "offset": "0x25",
+     "width": 1,
+     "meaning": "u8 cursor pos wraps 0..0x11 (18)"
+    },
+    {
+     "param": 0,
+     "offset": "0x34",
+     "width": 4,
+     "meaning": "work[0x43C] int"
+    }
+   ],
+   "notes": "static GridCallbacks.onKeyMove (table 86FC). large scroll; wraps pos25 mod 18; refreshes list. pools 0x43C, ov14_021E9F20. SIGNED %6."
+  },
+  {
+   "name": "ov14_021F6E68",
+   "mode": "thumb",
+   "signature_guess": "void ov14_021F6E68(void *data, int newTarget, int prevTarget)",
+   "confidence": "high",
+   "callees": [
+    "GridInputHandler_SetNextInput",
+    "ov14_021F6B28"
+   ],
+   "notes": "static GridCallbacks.onTouch (table 86FC). SetNextInput; if newTarget not in {6,7} 6B28."
+  },
+  {
+   "name": "ov14_021F6E8C",
+   "mode": "thumb",
+   "signature_guess": "int ov14_021F6E8C(UnkCtx_ov14 *ctx)",
+   "confidence": "high",
+   "callees": [
+    "GridInputHandler_GetNextInput",
+    "GridInputHandler_HandleInput_AllowHold",
+    "ov14_021E8544",
+    "GridInputHandler_SetNextInput",
+    "ov14_021F6B28"
+   ],
+   "notes": "export. input poller (sibling of 6BC0), thresholds 0x22..0x26/0x21."
+  },
+  {
+   "name": "ov14_021F6F08",
+   "mode": "thumb",
+   "signature_guess": "void ov14_021F6F08(void *data, int newTarget, int prevTarget)",
+   "confidence": "high",
+   "callees": [
+    "ov14_021E8544",
+    "GridInputHandler_SetNextInput",
+    "ov14_021F6B28"
+   ],
+   "struct_accesses": [
+    {
+     "param": 0,
+     "offset": "0x21",
+     "width": 1,
+     "meaning": "u8 read on 021E8544==0 path"
+    }
+   ],
+   "notes": "static GridCallbacks.onButton (table 86DC)."
+  },
+  {
+   "name": "ov14_021F6F70",
+   "mode": "thumb",
+   "signature_guess": "void ov14_021F6F70(void *data, int newTarget, int prevTarget)",
+   "confidence": "high",
+   "callees": [
+    "GridInputHandler_SetNextInput",
+    "ov14_021F6B28"
+   ],
+   "notes": "static GridCallbacks.onTouch (table 86DC). SetNextInput; if not in {0x1f,0x20} 6B28."
+  },
+  {
+   "name": "ov14_021F6F94",
+   "mode": "thumb",
+   "signature_guess": "int ov14_021F6F94(UnkCtx_ov14 *ctx)",
+   "confidence": "high",
+   "callees": [
+    "GridInputHandler_GetNextInput",
+    "GridInputHandler_HandleInput_AllowHold",
+    "ov14_021E8544",
+    "GridInputHandler_SetNextInput",
+    "ov14_021F6B28"
+   ],
+   "notes": "export. input poller, thresholds 0x24..0x28/0x21..0x22/0x23/0x29."
+  },
+  {
+   "name": "ov14_021F7010",
+   "mode": "thumb",
+   "signature_guess": "void ov14_021F7010(void *data, int newTarget, int prevTarget)",
+   "confidence": "high",
+   "callees": [
+    "ov14_021E8544",
+    "GridInputHandler_SetNextInput",
+    "ov14_021F6B28"
+   ],
+   "struct_accesses": [
+    {
+     "param": 0,
+     "offset": "0x21",
+     "width": 1,
+     "meaning": "u8 read on touch path"
+    }
+   ],
+   "notes": "static GridCallbacks.onButton (table 873C). switch (newTarget-0x1e) 0..5. JUMP TABLE _021F7042."
+  },
+  {
+   "name": "ov14_021F708C",
+   "mode": "thumb",
+   "signature_guess": "void ov14_021F708C(void *data, int newTarget, int prevTarget)",
+   "confidence": "high",
+   "callees": [
+    "ov14_021F7AC4",
+    "ov14_021E5A50"
+   ],
+   "notes": "static GridCallbacks.onKeyMove (table 873C). 7AC4(work); ov14_021E5A50(work, ov14_021E9F20)."
+  },
+  {
+   "name": "ov14_021F70A4",
+   "mode": "thumb",
+   "signature_guess": "void ov14_021F70A4(void *data, int newTarget, int prevTarget)",
+   "confidence": "high",
+   "callees": [
+    "GridInputHandler_SetNextInput",
+    "ov14_021F6B28"
+   ],
+   "notes": "static GridCallbacks.onTouch (table 873C)."
+  },
+  {
+   "name": "ov14_021F70C0",
+   "mode": "thumb",
+   "signature_guess": "int ov14_021F70C0(UnkCtx_ov14 *ctx)",
+   "confidence": "high",
+   "callees": [
+    "ov14_021E85E4",
+    "GridInputHandler_ClearEnabledFlag",
+    "GridInputHandler_HandleInput_AllowHold",
+    "GridInputHandler_SetAllEnabled"
+   ],
+   "notes": "export. if !ov14_021E85E4(work[0x2f0]) ClearEnabledFlag(grid,0x2d); r=HandleInput; SetAllEnabled; return r."
+  },
+  {
+   "name": "ov14_021F70F4",
+   "mode": "thumb",
+   "signature_guess": "void ov14_021F70F4(void *data, int newTarget, int prevTarget)",
+   "confidence": "medium",
+   "callees": [
+    "_s32_div_f",
+    "GridInputHandler_SetNextInput",
+    "GridInputHandler_GetDpadBox",
+    "DpadMenuBox_GetPosition",
+    "ManagedSprite_SetPositionXY",
+    "ov14_021F2A18",
+    "ov14_021F29E4"
+   ],
+   "struct_accesses": [
+    {
+     "param": 0,
+     "offset": "0x25",
+     "width": 1,
+     "meaning": "u8 cursor pos %6"
+    },
+    {
+     "param": 0,
+     "offset": "0x34",
+     "width": 4,
+     "meaning": "work[0x43C] int; work[0x44B] u8"
+    }
+   ],
+   "notes": "static GridCallbacks.onButton (table 872C). newTarget in [0x2b,0x2c] -> pos25%6 + 0x25. pools 0x43C, 0x44B."
+  },
+  {
+   "name": "ov14_021F7184",
+   "mode": "thumb",
+   "signature_guess": "void ov14_021F7184(void *data, int newTarget, int prevTarget)",
+   "confidence": "medium",
+   "callees": [
+    "ov14_021F29E4",
+    "GridInputHandler_GetUnk0F",
+    "GridInputHandler_SetNextLastUnk0FInputs",
+    "ov14_021F49E0",
+    "ov14_021F48B4",
+    "ov14_021F4848",
+    "ov14_021F57B8",
+    "ov14_021F7AC4",
+    "ov14_021E5A50",
+    "_s32_div_f"
+   ],
+   "struct_accesses": [
+    {
+     "param": 0,
+     "offset": "0x25",
+     "width": 1,
+     "meaning": "u8 cursor pos wraps 0..0x11"
+    },
+    {
+     "param": 0,
+     "offset": "0x34",
+     "width": 4,
+     "meaning": "work[0x43C] int, work[0x44B] u8"
+    }
+   ],
+   "notes": "static GridCallbacks.onKeyMove (table 872C). LARGE ~384B; paged scroll 0x25..0x2a. pools 0x44B,0x43C,ov14_021E9F20. SIGNED %6."
+  },
+  {
+   "name": "ov14_021F7308",
+   "mode": "thumb",
+   "signature_guess": "void ov14_021F7308(void *data, int newTarget, int prevTarget)",
+   "confidence": "high",
+   "callees": [
+    "GridInputHandler_SetNextInput",
+    "ov14_021F6B28"
+   ],
+   "struct_accesses": [
+    {
+     "param": 0,
+     "offset": "0x34",
+     "width": 4,
+     "meaning": "work[0x43C] int written when newTarget 0x25..0x2a"
+    }
+   ],
+   "notes": "static GridCallbacks.onTouch (table 872C). pool 0x43C."
+  },
+  {
+   "name": "ov14_021F7340",
+   "mode": "thumb",
+   "signature_guess": "int ov14_021F7340(UnkCtx_ov14 *ctx)",
+   "confidence": "high",
+   "callees": [
+    "ov14_021E85E4",
+    "GridInputHandler_ClearEnabledFlag",
+    "GridInputHandler_HandleInput_AllowHold",
+    "GridInputHandler_SetAllEnabled"
+   ],
+   "notes": "export. like 70C0 but clears flags 0x2d,0x2b,0x2c first."
+  },
+  {
+   "name": "ov14_021F7388",
+   "mode": "thumb",
+   "signature_guess": "int ov14_021F7388(UnkCtx_ov14 *ctx)",
+   "confidence": "high",
+   "callees": [
+    "GridInputHandler_GetNextInput",
+    "GridInputHandler_HandleInput_AllowHold",
+    "ov14_021E8544",
+    "GridInputHandler_SetNextInput",
+    "ov14_021F6B28"
+   ],
+   "notes": "export. input poller, thresholds 8..0xc/7/0xd."
+  },
+  {
+   "name": "ov14_021F73E4",
+   "mode": "thumb",
+   "signature_guess": "void ov14_021F73E4(void *data, int newTarget, int prevTarget)",
+   "confidence": "high",
+   "callees": [
+    "ov14_021E8544",
+    "GridInputHandler_SetNextInput",
+    "ov14_021F6B28"
+   ],
+   "struct_accesses": [
+    {
+     "param": 0,
+     "offset": "0x21",
+     "width": 1,
+     "meaning": "u8 read on touch path"
+    }
+   ],
+   "notes": "static GridCallbacks.onButton (table 871C)."
+  },
+  {
+   "name": "ov14_021F7444",
+   "mode": "thumb",
+   "signature_guess": "void ov14_021F7444(void *data, int newTarget, int prevTarget)",
+   "confidence": "high",
+   "callees": [
+    "ov14_021E8544",
+    "ov14_021E76B8",
+    "ov14_021F7AC4",
+    "ov14_021E5A50",
+    "GridInputHandler_SetNextInput"
+   ],
+   "notes": "static GridCallbacks.onKeyMove (table 871C). pools ov14_021EA180, ov14_021E9F20."
+  },
+  {
+   "name": "ov14_021F74B0",
+   "mode": "thumb",
+   "signature_guess": "int ov14_021F74B0(UnkCtx_ov14 *ctx)",
+   "confidence": "high",
+   "callees": [
+    "GridInputHandler_GetNextInput",
+    "GridInputHandler_HandleInput_AllowHold",
+    "ov14_021E8544",
+    "GridInputHandler_SetNextInput",
+    "ov14_021F6B28"
+   ],
+   "notes": "export. input poller."
+  },
+  {
+   "name": "ov14_021F7528",
+   "mode": "thumb",
+   "signature_guess": "void ov14_021F7528(void *data, int newTarget, int prevTarget)",
+   "confidence": "high",
+   "callees": [
+    "ov14_021E8544",
+    "GridInputHandler_SetNextInput",
+    "ov14_021F6B28"
+   ],
+   "struct_accesses": [
+    {
+     "param": 0,
+     "offset": "0x21",
+     "width": 1,
+     "meaning": "u8 read on touch path"
+    }
+   ],
+   "notes": "static GridCallbacks.onButton (table 876C). switch (newTarget-0x1e) 0..5. JUMP TABLE _021F755A."
+  },
+  {
+   "name": "ov14_021F7594",
+   "mode": "thumb",
+   "signature_guess": "void ov14_021F7594(void *data, int newTarget, int prevTarget)",
+   "confidence": "high",
+   "callees": [
+    "ov14_021F7AC4",
+    "ov14_021E5A50"
+   ],
+   "notes": "static GridCallbacks.onKeyMove (table 876C). pool ov14_021E9F20."
+  },
+  {
+   "name": "ov14_021F75AC",
+   "mode": "thumb",
+   "signature_guess": "void ov14_021F75AC(void *data, int newTarget, int prevTarget)",
+   "confidence": "high",
+   "callees": [
+    "GridInputHandler_SetNextInput",
+    "ov14_021F6B28"
+   ],
+   "notes": "static GridCallbacks.onTouch (table 876C)."
+  },
+  {
+   "name": "ov14_021F75C8",
+   "mode": "thumb",
+   "signature_guess": "int ov14_021F75C8(UnkCtx_ov14 *ctx)",
+   "confidence": "high",
+   "callees": [
+    "GridInputHandler_GetNextInput",
+    "GridInputHandler_HandleInput_AllowHold",
+    "ov14_021E8544",
+    "GridInputHandler_SetNextInput",
+    "ov14_021F6B28"
+   ],
+   "notes": "export. input poller, threshold ==8/7/9."
+  },
+  {
+   "name": "ov14_021F7620",
+   "mode": "thumb",
+   "signature_guess": "void ov14_021F7620(void *data, int newTarget, int prevTarget)",
+   "confidence": "high",
+   "callees": [
+    "ov14_021E8544",
+    "GridInputHandler_SetNextInput",
+    "ov14_021F6B28"
+   ],
+   "struct_accesses": [
+    {
+     "param": 0,
+     "offset": "0x21",
+     "width": 1,
+     "meaning": "u8 read on touch path"
+    }
+   ],
+   "notes": "static GridCallbacks.onButton (table 875C)."
+  },
+  {
+   "name": "ov14_021F7670",
+   "mode": "thumb",
+   "signature_guess": "void ov14_021F7670(void *data, int newTarget, int prevTarget)",
+   "confidence": "high",
+   "callees": [
+    "ov14_021F7AC4",
+    "ov14_021E5A50"
+   ],
+   "notes": "static GridCallbacks.onKeyMove (table 875C). pool ov14_021E9F20."
+  },
+  {
+   "name": "ov14_021F7688",
+   "mode": "thumb",
+   "signature_guess": "void ov14_021F7688(void *data, int newTarget, int prevTarget)",
+   "confidence": "medium",
+   "callees": [
+    "_s32_div_f",
+    "GridInputHandler_SetNextInput",
+    "GridInputHandler_GetDpadBox",
+    "DpadMenuBox_GetPosition",
+    "ManagedSprite_SetPositionXY",
+    "ov14_021F29E4"
+   ],
+   "struct_accesses": [
+    {
+     "param": 0,
+     "offset": "0x25",
+     "width": 1,
+     "meaning": "u8 cursor pos %6"
+    },
+    {
+     "param": 0,
+     "offset": "0x34",
+     "width": 4,
+     "meaning": "work[0x43C] int"
+    }
+   ],
+   "notes": "static GridCallbacks.onButton (table 870C). newTarget in [6,7]. pool 0x43C."
+  },
+  {
+   "name": "ov14_021F7700",
+   "mode": "thumb",
+   "signature_guess": "void ov14_021F7700(void *data, int newTarget, int prevTarget)",
+   "confidence": "medium",
+   "callees": [
+    "ov14_021F29E4",
+    "GridInputHandler_SetNextLastUnk0FInputs",
+    "ov14_021F49E0",
+    "ov14_021F48B4",
+    "ov14_021F4848",
+    "ov14_021F57B8",
+    "ov14_021F7AC4",
+    "ov14_021E5A50",
+    "_s32_div_f"
+   ],
+   "struct_accesses": [
+    {
+     "param": 0,
+     "offset": "0x25",
+     "width": 1,
+     "meaning": "u8 cursor pos wraps 0..0x11"
+    },
+    {
+     "param": 0,
+     "offset": "0x34",
+     "width": 4,
+     "meaning": "work[0x43C] int"
+    }
+   ],
+   "notes": "static GridCallbacks.onKeyMove (table 870C). LARGE ~332B. pools 0x43C, ov14_021E9F20."
+  },
+  {
+   "name": "ov14_021F7854",
+   "mode": "thumb",
+   "signature_guess": "void ov14_021F7854(void *data, int newTarget, int prevTarget)",
+   "confidence": "high",
+   "callees": [
+    "GridInputHandler_SetNextInput",
+    "ov14_021F6B28"
+   ],
+   "notes": "static GridCallbacks.onTouch (table 870C). SetNextInput; if not in {6,7} 6B28."
+  },
+  {
+   "name": "ov14_021F7878",
+   "mode": "thumb",
+   "signature_guess": "void ov14_021F7878(void *data, int newTarget, int prevTarget)",
+   "confidence": "medium",
+   "callees": [
+    "GridInputHandler_SetNextInput",
+    "GridInputHandler_GetDpadBox",
+    "DpadMenuBox_GetPosition",
+    "ManagedSprite_SetPositionXY",
+    "ov14_021F29E4"
+   ],
+   "struct_accesses": [
+    {
+     "param": 0,
+     "offset": "0x34",
+     "width": 4,
+     "meaning": "work[0x44D] u8; work[0x43C] via 0x44D-0x11"
+    }
+   ],
+   "notes": "static GridCallbacks.onButton (table 86CC). newTarget in [4,5] uses SIGNED %4/rounding rotate idiom (lsr#0x1f;lsl#0x1e;ror) on work[0x44D]. pool 0x44D. HAZARD: verify div/mod-by-4 codegen."
+  },
+  {
+   "name": "ov14_021F78F8",
+   "mode": "thumb",
+   "signature_guess": "void ov14_021F78F8(void *data, int newTarget, int prevTarget)",
+   "confidence": "medium",
+   "callees": [
+    "ov14_021F29E4",
+    "GridInputHandler_SetNextLastUnk0FInputs",
+    "ov14_021F462C",
+    "ov14_021F4530",
+    "ov14_021F459C",
+    "ov14_021F58B8",
+    "ov14_021F7AC4",
+    "ov14_021E5A50"
+   ],
+   "struct_accesses": [
+    {
+     "param": 0,
+     "offset": "0x34",
+     "width": 4,
+     "meaning": "work[0x44D] u8 cursor, wraps 0..0x17 (24); (val>>2<<2)+newTarget"
+    }
+   ],
+   "notes": "static GridCallbacks.onKeyMove (table 86CC). LARGE ~336B. work[0x44D] mod 24 and `& ~3`. pool 0x44D, ov14_021E9F20."
+  },
+  {
+   "name": "ov14_021F7A2C",
+   "mode": "thumb",
+   "signature_guess": "void ov14_021F7A2C(void *data, int newTarget, int prevTarget)",
+   "confidence": "high",
+   "callees": [
+    "GridInputHandler_SetNextInput",
+    "ov14_021F6B28"
+   ],
+   "notes": "static GridCallbacks.onTouch (table 86CC). SetNextInput; if not in {4,5} 6B28."
+  },
+  {
+   "name": "ov14_021F7A50",
+   "mode": "thumb",
+   "signature_guess": "int ov14_021F7A50(UnkCtx_ov14 *ctx)",
+   "confidence": "high",
+   "callees": [
+    "GridInputHandler_ClearEnabledFlag",
+    "GridInputHandler_HandleInput_AllowHold",
+    "GridInputHandler_SetAllEnabled"
+   ],
+   "notes": "export. clears enabled flags 0x2b..0x2a (9), HandleInput, SetAllEnabled, return r."
+  },
+  {
+   "name": "ov14_021F7AC4",
+   "mode": "thumb",
+   "signature_guess": "void ov14_021F7AC4(UnkWork_ov14 *work, int a1, int a2)",
+   "confidence": "medium",
+   "callees": [
+    "GridInputHandler_GetDpadBox",
+    "DpadMenuBox_GetPosition",
+    "Heap_Alloc",
+    "_u32_div_f"
+   ],
+   "struct_accesses": [
+    {
+     "param": 0,
+     "offset": "0x2c",
+     "width": 4,
+     "meaning": "GridInputHandler*"
+    },
+    {
+     "param": 0,
+     "offset": "0xc",
+     "width": 4,
+     "meaning": "ptr = Heap_Alloc(0xa,8) stored here"
+    }
+   ],
+   "notes": "export. a0 is WORK-like (grid+0x2c, stores 8-byte result at +0xc). builds anim-delta from two dpad box positions; UNSIGNED div (_u32_div_f); sign bit-flags at result[4]. a1/a2 dpad box targets. Heap_Alloc(0xa,..) -> HEAP_ID_10."
+  },
+  {
+   "name": "ov14_021F7B7C",
+   "mode": "thumb",
+   "signature_guess": "int ov14_021F7B7C(UnkCtx_ov14 *ctx)",
+   "confidence": "high",
+   "callees": [
+    "ov14_021E8648",
+    "TouchscreenHitbox_TouchNewIsIn"
+   ],
+   "struct_accesses": [
+    {
+     "param": 0,
+     "offset": "0x34",
+     "width": 4,
+     "meaning": "work; handle at work[0x2f0]"
+    }
+   ],
+   "notes": "export. if !ov14_021E8648(work[0x2f0]) return 0; if (gSystem->unk48 & 0x800) return 1; return TouchscreenHitbox_TouchNewIsIn(ov14_021F86C8)==1. reads gSystem[0x48]."
+  }
+ ],
+ "data": [
+  {
+   "label": "ov14_021F8614",
+   "section": "rodata",
+   "bytes": 28,
+   "shape_guess": "TouchscreenHitbox[7] (4B rect, 0xFF-term) -- ref by ov14_021F6A24"
+  },
+  {
+   "label": "ov14_021F8630",
+   "section": "rodata",
+   "bytes": 28,
+   "shape_guess": "TouchscreenHitbox[7] -- ref by ov14_021F6A34"
+  },
+  {
+   "label": "ov14_021F864C",
+   "section": "rodata",
+   "bytes": 124,
+   "shape_guess": "TouchscreenHitbox[31] -- ref by ov14_021F6A14"
+  },
+  {
+   "label": "ov14_021F86C8",
+   "section": "rodata",
+   "bytes": 4,
+   "shape_guess": "TouchscreenHitbox[1] {0xA8,0xBF,0x00,0x87} -- ref by ov14_021F7B7C"
+  },
+  {
+   "label": "ov14_021F86CC",
+   "section": "rodata",
+   "bytes": 16,
+   "shape_guess": "const GridCallbacks {7878,6B7C,78F8,7A2C} (master row 10)"
+  },
+  {
+   "label": "ov14_021F86DC",
+   "section": "rodata",
+   "bytes": 16,
+   "shape_guess": "const GridCallbacks {6F08,6B7C,6B8C,6F70} (row 2)"
+  },
+  {
+   "label": "ov14_021F86EC",
+   "section": "rodata",
+   "bytes": 16,
+   "shape_guess": "const GridCallbacks {6C3C,6B7C,6B8C,6BA4} (row 0)"
+  },
+  {
+   "label": "ov14_021F86FC",
+   "section": "rodata",
+   "bytes": 16,
+   "shape_guess": "const GridCallbacks {6C94,6B7C,6D14,6E68} (row 1)"
+  },
+  {
+   "label": "ov14_021F870C",
+   "section": "rodata",
+   "bytes": 16,
+   "shape_guess": "const GridCallbacks {7688,6B7C,7700,7854} (row 9)"
+  },
+  {
+   "label": "ov14_021F871C",
+   "section": "rodata",
+   "bytes": 16,
+   "shape_guess": "const GridCallbacks {73E4,6B7C,7444,6BA4} (row 5)"
+  },
+  {
+   "label": "ov14_021F872C",
+   "section": "rodata",
+   "bytes": 16,
+   "shape_guess": "const GridCallbacks {70F4,6B7C,7184,7308} (row 4)"
+  },
+  {
+   "label": "ov14_021F873C",
+   "section": "rodata",
+   "bytes": 16,
+   "shape_guess": "const GridCallbacks {7010,6B7C,708C,70A4} (row 3)"
+  },
+  {
+   "label": "ov14_021F874C",
+   "section": "rodata",
+   "bytes": 16,
+   "shape_guess": "const GridCallbacks {6B60,6B7C,6B8C,6BA4} (row 8)"
+  },
+  {
+   "label": "ov14_021F875C",
+   "section": "rodata",
+   "bytes": 16,
+   "shape_guess": "const GridCallbacks {7620,6B7C,7670,6BA4} (row 7)"
+  },
+  {
+   "label": "ov14_021F876C",
+   "section": "rodata",
+   "bytes": 16,
+   "shape_guess": "const GridCallbacks {7528,6B7C,7594,75AC} (row 6)"
+  },
+  {
+   "label": "ov14_021F877C",
+   "section": "rodata",
+   "bytes": 36,
+   "shape_guess": "TouchscreenHitbox[9] (col0 row 8)"
+  },
+  {
+   "label": "ov14_021F87A0",
+   "section": "rodata",
+   "bytes": 36,
+   "shape_guess": "TouchscreenHitbox[9] (col0 row 10)"
+  },
+  {
+   "label": "ov14_021F87C4",
+   "section": "rodata",
+   "bytes": 44,
+   "shape_guess": "TouchscreenHitbox[11] (col0 row 7)"
+  },
+  {
+   "label": "ov14_021F87F0",
+   "section": "rodata",
+   "bytes": 44,
+   "shape_guess": "TouchscreenHitbox[11] (col0 row 1)"
+  },
+  {
+   "label": "ov14_021F881C",
+   "section": "rodata",
+   "bytes": 56,
+   "shape_guess": "TouchscreenHitbox[14] (col0 row 0)"
+  },
+  {
+   "label": "ov14_021F8850",
+   "section": "rodata",
+   "bytes": 36,
+   "shape_guess": "TouchscreenHitbox[9] (col0 row 9)"
+  },
+  {
+   "label": "ov14_021F8884",
+   "section": "rodata",
+   "bytes": 60,
+   "shape_guess": "TouchscreenHitbox[15] (col0 row 5)"
+  },
+  {
+   "label": "ov14_021F88C0",
+   "section": "rodata",
+   "bytes": 64,
+   "shape_guess": "DpadMenuBox[8] (8B each) (col1 row 8)"
+  },
+  {
+   "label": "ov14_021F8900",
+   "section": "rodata",
+   "bytes": 64,
+   "shape_guess": "DpadMenuBox[8] (col1 row 10)"
+  },
+  {
+   "label": "ov14_021F8940",
+   "section": "rodata",
+   "bytes": 80,
+   "shape_guess": "DpadMenuBox[10] (col1 row 1)"
+  },
+  {
+   "label": "ov14_021F8990",
+   "section": "rodata",
+   "bytes": 80,
+   "shape_guess": "DpadMenuBox[10] (col1 row 7)"
+  },
+  {
+   "label": "ov14_021F89E0",
+   "section": "rodata",
+   "bytes": 96,
+   "shape_guess": "DpadMenuBox[12] (col1 row 9)"
+  },
+  {
+   "label": "ov14_021F8A40",
+   "section": "rodata",
+   "bytes": 96,
+   "shape_guess": "DpadMenuBox[12] (col1 row 0)"
+  },
+  {
+   "label": "ov14_021F8AA0",
+   "section": "rodata",
+   "bytes": 112,
+   "shape_guess": "DpadMenuBox[14] (col1 row 5)"
+  },
+  {
+   "label": "ov14_021F8B10",
+   "section": "rodata",
+   "bytes": 132,
+   "shape_guess": "MASTER table: 11 rows {const TouchscreenHitbox *hitboxes; const DpadMenuBox *dpadBoxes; const GridCallbacks *callbacks;} indexed by mode (used by 6A44/6AC0 GridInputHandler_Create). References data BEFORE and AFTER this label."
+  },
+  {
+   "label": "ov14_021F8B94",
+   "section": "rodata",
+   "bytes": 168,
+   "shape_guess": "TouchscreenHitbox array (col0 row 6)"
+  },
+  {
+   "label": "ov14_021F8C30",
+   "section": "rodata",
+   "bytes": 160,
+   "shape_guess": "TouchscreenHitbox array (col0 row 2)"
+  },
+  {
+   "label": "ov14_021F8CD0",
+   "section": "rodata",
+   "bytes": 172,
+   "shape_guess": "TouchscreenHitbox array (col0 row 3)"
+  },
+  {
+   "label": "ov14_021F8D7C",
+   "section": "rodata",
+   "bytes": 188,
+   "shape_guess": "TouchscreenHitbox array (col0 row 4)"
+  },
+  {
+   "label": "ov14_021F8E38",
+   "section": "rodata",
+   "bytes": 200,
+   "shape_guess": "DpadMenuBox array (col1 row 6)"
+  },
+  {
+   "label": "ov14_021F8F68",
+   "section": "rodata",
+   "bytes": 176,
+   "shape_guess": "DpadMenuBox array (col1 row 2)"
+  },
+  {
+   "label": "ov14_021F90A0",
+   "section": "rodata",
+   "bytes": 176,
+   "shape_guess": "DpadMenuBox array (col1 row 3)"
+  },
+  {
+   "label": "ov14_021F91F0",
+   "section": "rodata",
+   "bytes": 232,
+   "shape_guess": "DpadMenuBox array (col1 row 4); extends to end of file"
+  }
+ ],
+ "imports": {
+  "NewMsgDataFromNarc": {
+   "known_prototype": "MsgData *NewMsgDataFromNarc(MsgDataLoadType type, NarcId narc, s32 fileId, enum HeapID heapID)",
+   "header": "include/msgdata.h"
+  },
+  "DestroyMsgData": {
+   "known_prototype": "void DestroyMsgData(MsgData *msgData)",
+   "header": "include/msgdata.h"
+  },
+  "NewString_ReadMsgData": {
+   "known_prototype": "String *NewString_ReadMsgData(MsgData *msgData, s32 strno)",
+   "header": "include/msgdata.h"
+  },
+  "StringExpandPlaceholders": {
+   "known_prototype": "void StringExpandPlaceholders(MessageFormat *messageFormat, String *dest, String *src)",
+   "header": "include/message_format.h"
+  },
+  "String_Delete": {
+   "known_prototype": "void String_Delete(String *string)",
+   "header": "include/pm_string.h"
+  },
+  "BufferItemName": {
+   "known_prototype": "void BufferItemName(MessageFormat *messageFormat, u32 fieldno, u32 itemId)",
+   "header": "include/message_format.h"
+  },
+  "BufferBoxMonNickname": {
+   "known_prototype": "void BufferBoxMonNickname(MessageFormat *messageFormat, u32 fieldno, BoxPokemon *boxmon)",
+   "header": "include/message_format.h"
+  },
+  "FillWindowPixelBuffer": {
+   "known_prototype": "void FillWindowPixelBuffer(Window *window, u8 fillValue)",
+   "header": "include/bg_window.h"
+  },
+  "GetWindowBgId": {
+   "known_prototype": "u8 GetWindowBgId(Window *window)",
+   "header": "include/bg_window.h"
+  },
+  "ScheduleWindowCopyToVram": {
+   "known_prototype": "void ScheduleWindowCopyToVram(Window *window)",
+   "header": "include/bg_window.h"
+  },
+  "ScheduleBgTilemapBufferTransfer": {
+   "known_prototype": "void ScheduleBgTilemapBufferTransfer(BgConfig *bgConfig, u8 bgId)",
+   "header": "include/bg_window.h"
+  },
+  "AddTextPrinterParameterizedWithColor": {
+   "known_prototype": "u8 AddTextPrinterParameterizedWithColor(Window *window, FontID fontId, String *string, u32 x, u32 y, u32 textSpeed, u32 color, PrinterCallback_t callback)",
+   "header": "include/text.h"
+  },
+  "ClearFrameAndWindow2": {
+   "known_prototype": "void ClearFrameAndWindow2(Window *window, BOOL dont_copy_to_vram)",
+   "header": "include/render_window.h"
+  },
+  "DpadMenuBox_GetPosition": {
+   "known_prototype": "void DpadMenuBox_GetPosition(const DpadMenuBox *dpadBoxes, u8 *px, u8 *py)",
+   "header": "include/unk_02020A0C.h"
+  },
+  "ManagedSprite_SetPositionXY": {
+   "known_prototype": "void ManagedSprite_SetPositionXY(ManagedSprite *managedSprite, s16 x, s16 y)",
+   "header": "include/sprite_system.h"
+  },
+  "TouchscreenHitbox_FindRectAtTouchNew": {
+   "known_prototype": "int TouchscreenHitbox_FindRectAtTouchNew(const TouchscreenHitbox *hitboxes)",
+   "header": "include/touchscreen.h"
+  },
+  "TouchscreenHitbox_TouchNewIsIn": {
+   "known_prototype": "BOOL TouchscreenHitbox_TouchNewIsIn(const TouchscreenHitbox *hitbox)",
+   "header": "include/touchscreen.h"
+  },
+  "GridInputHandler_Create": {
+   "known_prototype": "GridInputHandler *GridInputHandler_Create(const TouchscreenHitbox *hitBoxes, const DpadMenuBox *dpadBoxes, const GridCallbacks *callbacks, void *callbackParam, BOOL inputState, u8 initialPos, enum HeapID heapId)",
+   "header": "include/unk_02019BA4.h"
+  },
+  "GridInputHandler_Free": {
+   "known_prototype": "void GridInputHandler_Free(GridInputHandler *inputHandler)",
+   "header": "include/unk_02019BA4.h"
+  },
+  "GridInputHandler_HandleInput_AllowHold": {
+   "known_prototype": "int GridInputHandler_HandleInput_AllowHold(GridInputHandler *inputHandler)",
+   "header": "include/unk_02019BA4.h"
+  },
+  "GridInputHandler_GetNextInput": {
+   "known_prototype": "int GridInputHandler_GetNextInput(GridInputHandler *inputHandler)",
+   "header": "include/unk_02019BA4.h"
+  },
+  "GridInputHandler_GetUnk0F": {
+   "known_prototype": "int GridInputHandler_GetUnk0F(GridInputHandler *inputHandler)",
+   "header": "include/unk_02019BA4.h"
+  },
+  "GridInputHandler_SetNextInput": {
+   "known_prototype": "void GridInputHandler_SetNextInput(GridInputHandler *inputHandler, int nextInput)",
+   "header": "include/unk_02019BA4.h"
+  },
+  "GridInputHandler_SetNextLastUnk0FInputs": {
+   "known_prototype": "void GridInputHandler_SetNextLastUnk0FInputs(GridInputHandler *inputHandler, int nextInput, int lastInput, int unk0F)",
+   "header": "include/unk_02019BA4.h"
+  },
+  "GridInputHandler_SetAllEnabled": {
+   "known_prototype": "void GridInputHandler_SetAllEnabled(GridInputHandler *inputHandler)",
+   "header": "include/unk_02019BA4.h"
+  },
+  "GridInputHandler_ClearEnabledFlag": {
+   "known_prototype": "void GridInputHandler_ClearEnabledFlag(GridInputHandler *inputHandler, u32 target)",
+   "header": "include/unk_02019BA4.h"
+  },
+  "GridInputHandler_GetDpadBox": {
+   "known_prototype": "const DpadMenuBox *GridInputHandler_GetDpadBox(GridInputHandler *inputHandler, int target)",
+   "header": "include/unk_02019BA4.h"
+  },
+  "Heap_Alloc": {
+   "known_prototype": "void *Heap_Alloc(enum HeapID heapId, u32 size)",
+   "header": "include/heap.h"
+  },
+  "_s32_div_f": {
+   "known_prototype": "s32 _s32_div_f(s32 num, s32 den) -- MWCC softdiv; quotient r0, remainder r1",
+   "header": "runtime (mwcc)"
+  },
+  "_u32_div_f": {
+   "known_prototype": "u32 _u32_div_f(u32 num, u32 den) -- MWCC softdiv",
+   "header": "runtime (mwcc)"
+  },
+  "gSystem": {
+   "known_prototype": "extern struct SysConfig gSystem; -- read at offset 0x48 (bit 0x800 tested)",
+   "header": "include/system.h (likely)"
+  },
+  "sub_0200E948": {
+   "signature_guess": "void sub_0200E948(Window *window, int a1, int a2)",
+   "evidence": "called sub_0200E948(window, 0x38E, 0xa); 3 args, no return use"
+  },
+  "ov14_021E5A50": {
+   "signature_guess": "void ov14_021E5A50(UnkWork_ov14 *work, DpadGridCallback cb)",
+   "evidence": "(work=ctx[0x34], funcptr ov14_021E9F20/ov14_021EA180); sibling ov14 chunk"
+  },
+  "ov14_021E60C0": {
+   "signature_guess": "BoxPokemon *ov14_021E60C0(UnkCtx_ov14 *ctx, u8 box, u8 slot)",
+   "evidence": "result passed as 3rd arg (BoxPokemon*) to BufferBoxMonNickname; box=ctx[0x1f], slot=ctx[0x21]"
+  },
+  "ov14_021E76B8": {
+   "signature_guess": "void ov14_021E76B8(UnkCtx_ov14 *ctx)",
+   "evidence": "1 arg"
+  },
+  "ov14_021E8544": {
+   "signature_guess": "BOOL ov14_021E8544(void *handle)",
+   "evidence": "arg=work[0x2f0]; compared 0/1"
+  },
+  "ov14_021E85E4": {
+   "signature_guess": "BOOL ov14_021E85E4(void *handle)",
+   "evidence": "arg=work[0x2f0]; compared 0"
+  },
+  "ov14_021E8648": {
+   "signature_guess": "BOOL ov14_021E8648(void *handle)",
+   "evidence": "arg=work[0x2f0] (7B7C); compared 0"
+  },
+  "ov14_021E9F20": {
+   "signature_guess": "void ov14_021E9F20(void *data, int newTarget, int prevTarget) /* DpadGridCallback, defined in another ov14 chunk */",
+   "evidence": "ldr =ov14_021E9F20 passed to ov14_021E5A50 as callback -- IMPORT"
+  },
+  "ov14_021EA180": {
+   "signature_guess": "void ov14_021EA180(void *data, int newTarget, int prevTarget) /* DpadGridCallback */",
+   "evidence": "passed to ov14_021E5A50 as callback (7444) -- IMPORT"
+  },
+  "ov14_021F29E4": {
+   "signature_guess": "void ov14_021F29E4(UnkWork_ov14 *work, int a1, int a2)",
+   "evidence": "(work, 9, 0xe/8/4/2); 3 args"
+  },
+  "ov14_021F2A18": {
+   "signature_guess": "void ov14_021F2A18(UnkWork_ov14 *work, int a1, int a2)",
+   "evidence": "(work, 9, 1/0); tail-called from 6B7C so likely void"
+  },
+  "ov14_021F4530": {
+   "signature_guess": "void ov14_021F4530(UnkCtx_ov14 *ctx)",
+   "evidence": "1 arg"
+  },
+  "ov14_021F459C": {
+   "signature_guess": "void ov14_021F459C(UnkCtx_ov14 *ctx)",
+   "evidence": "1 arg"
+  },
+  "ov14_021F462C": {
+   "signature_guess": "void ov14_021F462C(UnkCtx_ov14 *ctx)",
+   "evidence": "1 arg"
+  },
+  "ov14_021F4848": {
+   "signature_guess": "void ov14_021F4848(UnkCtx_ov14 *ctx)",
+   "evidence": "1 arg"
+  },
+  "ov14_021F48B4": {
+   "signature_guess": "void ov14_021F48B4(UnkCtx_ov14 *ctx)",
+   "evidence": "1 arg"
+  },
+  "ov14_021F49E0": {
+   "signature_guess": "void ov14_021F49E0(UnkCtx_ov14 *ctx)",
+   "evidence": "1 arg"
+  },
+  "ov14_021F4FBC": {
+   "signature_guess": "void ov14_021F4FBC(UnkWork_ov14 *work, MsgData *msgData, int windowIdx, int a3, ...)",
+   "evidence": "called in 6698 with 5 stack args (0,0,1,0x1020F,0); r0=work,r1=msgData,r2=windowIdx,r3=[sp+0x14]"
+  },
+  "ov14_021F57B8": {
+   "signature_guess": "void ov14_021F57B8(UnkCtx_ov14 *ctx)",
+   "evidence": "1 arg"
+  },
+  "ov14_021F58B8": {
+   "signature_guess": "void ov14_021F58B8(UnkCtx_ov14 *ctx)",
+   "evidence": "1 arg"
+  }
+ },
+ "shared_struct_hypotheses": [
+  {
+   "name": "UnkCtx_ov14 (a0 of most functions)",
+   "size_guess": ">=0x38",
+   "fields": [
+    {
+     "offset": "0x0",
+     "width": 4,
+     "meaning": "void* sub-object; *(int*)(ptr+8) is a state/switch discriminant 0..3"
+    },
+    {
+     "offset": "0x1f",
+     "width": 1,
+     "meaning": "u8 box/mon index (arg to ov14_021E60C0)"
+    },
+    {
+     "offset": "0x21",
+     "width": 1,
+     "meaning": "u8 slot/param (arg to ov14_021E60C0; read on touch-fallback paths)"
+    },
+    {
+     "offset": "0x25",
+     "width": 1,
+     "meaning": "u8 cursor row/position (read+written across handlers; wraps mod 18; used with %6)"
+    },
+    {
+     "offset": "0x2c",
+     "width": 1,
+     "meaning": "u8 initial cursor pos passed to GridInputHandler_Create"
+    },
+    {
+     "offset": "0x34",
+     "width": 4,
+     "meaning": "UnkWork_ov14 *work"
+    }
+   ]
+  },
+  {
+   "name": "UnkWork_ov14 (ctx->work at +0x34; ALSO direct a0 of 6654/6678/6688 and a0 of 7AC4)",
+   "size_guess": ">=0x88CA",
+   "fields": [
+    {
+     "offset": "0xc",
+     "width": 4,
+     "meaning": "ptr to 8-byte anim-delta struct (Heap_Alloc in 7AC4)"
+    },
+    {
+     "offset": "0x14",
+     "width": 4,
+     "meaning": "BgConfig*"
+    },
+    {
+     "offset": "0x24",
+     "width": 4,
+     "meaning": "MessageFormat*"
+    },
+    {
+     "offset": "0x28",
+     "width": 4,
+     "meaning": "String* (text buffer)"
+    },
+    {
+     "offset": "0x2c",
+     "width": 4,
+     "meaning": "GridInputHandler*"
+    },
+    {
+     "offset": "0x30",
+     "width": 16,
+     "meaning": "Window array (stride 0x10), indexed by windowIdx"
+    },
+    {
+     "offset": "0x2f0",
+     "width": 4,
+     "meaning": "handle passed to ov14_021E8544/85E4/8648 (0x2f<<4)"
+    },
+    {
+     "offset": "0x320",
+     "width": 4,
+     "meaning": "ManagedSprite* cursor sprite (0x32<<4)"
+    },
+    {
+     "offset": "0x43c",
+     "width": 4,
+     "meaning": "int current cursor/box position"
+    },
+    {
+     "offset": "0x44b",
+     "width": 1,
+     "meaning": "u8 flag (7184/70F4 gate)"
+    },
+    {
+     "offset": "0x44d",
+     "width": 1,
+     "meaning": "u8 grid page counter (7878/78F8, wraps mod 24, & ~3)"
+    },
+    {
+     "offset": "0x88c8",
+     "width": 2,
+     "meaning": "u16 item id (68C0/6928 BufferItemName)"
+    }
+   ]
+  }
+ ],
+ "risks": [
+  "INTERLEAVED RODATA ORDER is the top hazard: declare static const arrays in EXACT file order (8614,8630,864C,86C8, then 11 GridCallbacks 86CC..876C, then TouchscreenHitbox arrays 877C/87A0/87C4/87F0/881C/8850/8884, then DpadMenuBox arrays 88C0/8900/8940/8990/89E0/8A40/8AA0, then MASTER table 8B10, then 8B94/8C30/8CD0/8D7C/8E38/8F68/90A0/91F0). Master table 8B10 references arrays defined both before and after it.",
+  "The 11 GridCallbacks tables reference ~40 static callbacks; all callbacks must be declared void(*)(void*,int,int) (DpadGridCallback) to assign without casts. .text function order is fixed.",
+  "8 JUMP TABLES (switch lowering) at _021F67C6/_021F6872/_021F68D6/_021F6948/_021F6A5E/_021F7042/_021F755A (+inner) -- lower to dense switch with exact case ranges (add pc, rN idiom).",
+  "Signed vs unsigned branches: input-code checks use unsigned bhi/blo/bhs vs small constants; cursor bounds use signed blt/bgt. Match per-comparison (cast-unsigned-for-branch / u16-from-ldrh-unsigned-branch).",
+  "SIGNED %/ by 6 -> _s32_div_f (write x%6, x/6); UNSIGNED div in 7AC4 -> _u32_div_f. 7878 uses signed div/mod-by-4 rounding idiom (lsr#31;lsl#30;sub;ror); 78F8 uses & ~3 (lsr#2;lsl#2) -- verify codegen.",
+  "TWO struct types flow as a0. Do NOT assume uniform a0: ov14_021F6654/6678/6688 (+7AC4) take the WORK struct directly; everyone else takes the CONTEXT (work = ctx[0x34]).",
+  "Heap_Alloc(0xa, 8) needs enum HeapID -> use HEAP_ID_10 to avoid int->enum error.",
+  "No decompiled-C callers for any export -> no shared-header IPA cascade risk; ~15 ov14_021Exxxx/021Fxxxx imports come from sibling overlay_14 chunks (not in include/) -- forward-declare locally.",
+  "No .data/.bss sections; .rodata only."
+ ]
+}

@@ -1,0 +1,815 @@
+{
+ "file": "asm/overlay_14_021E5900.s",
+ "functions": [
+  {
+   "name": "PCBox_Init",
+   "mode": "thumb",
+   "signature_guess": "BOOL PCBox_Init(OverlayManager *ovy, int *state)",
+   "confidence": "high",
+   "callees": [
+    "Heap_Create",
+    "OverlayManager_CreateAndGetData",
+    "MI_CpuFill8",
+    "OverlayManager_GetArgs",
+    "SaveArray_PCStorage_Get",
+    "PCStorage_GetActiveBox",
+    "SaveArray_Party_Get",
+    "Save_Bag_Get",
+    "Save_PlayerData_GetOptionsAddr"
+   ],
+   "struct_accesses": [
+    {
+     "param": "ret",
+     "offset": "0x0",
+     "width": 4,
+     "meaning": "args = OverlayManager_GetArgs(ovy); args0 is SaveData ptr"
+    },
+    {
+     "param": "ret",
+     "offset": "0x4",
+     "width": 4,
+     "meaning": "PCStorage ptr = SaveArray_PCStorage_Get(save)"
+    },
+    {
+     "param": "ret",
+     "offset": "0x8",
+     "width": 4,
+     "meaning": "Party ptr = SaveArray_Party_Get(save)"
+    },
+    {
+     "param": "ret",
+     "offset": "0xc",
+     "width": 4,
+     "meaning": "Bag ptr = Save_Bag_Get(save)"
+    },
+    {
+     "param": "ret",
+     "offset": "0x10",
+     "width": 4,
+     "meaning": "Options ptr = Save_PlayerData_GetOptionsAddr(save)"
+    },
+    {
+     "param": "ret",
+     "offset": "0x1f",
+     "width": 1,
+     "meaning": "activeBox = PCStorage_GetActiveBox() (u8)"
+    },
+    {
+     "param": "ret",
+     "offset": "0x21",
+     "width": 1,
+     "meaning": "init 0xff (cursor/target box index?)"
+    },
+    {
+     "param": "ret",
+     "offset": "0x2c",
+     "width": 4,
+     "meaning": "init 0"
+    },
+    {
+     "param": "ret",
+     "offset": "0x30",
+     "width": 4,
+     "meaning": "init 0xb (initial state for main state machine)"
+    }
+   ],
+   "notes": "Allocates 0x38-byte PCBoxAppData via OverlayManager_CreateAndGetData(ovy,0x38,HEAP_ID_9); Heap_Create(3,9,0x10000) first. Returns 1. state param unused. Registered as sOverlayTemplate_PCBox {PCBox_Init,PCBox_Main,PCBox_Exit,OVY_14} in src/launch_application.c:407."
+  },
+  {
+   "name": "PCBox_Main",
+   "mode": "thumb",
+   "signature_guess": "BOOL PCBox_Main(OverlayManager *ovy, int *state)",
+   "confidence": "high",
+   "callees": [
+    "OverlayManager_GetData",
+    "ov14_021EAF8C"
+   ],
+   "notes": "returns ov14_021EAF8C(appData, state)==0 ? TRUE : FALSE. ov14_021EAF8C is the main dispatcher, defined in a sibling chunk."
+  },
+  {
+   "name": "PCBox_Exit",
+   "mode": "thumb",
+   "signature_guess": "BOOL PCBox_Exit(OverlayManager *ovy, int *state)",
+   "confidence": "high",
+   "callees": [
+    "OverlayManager_GetData",
+    "PCStorage_SetActiveBox",
+    "OverlayManager_FreeData",
+    "Heap_Destroy"
+   ],
+   "struct_accesses": [
+    {
+     "param": 0,
+     "offset": "0x4",
+     "width": 4,
+     "meaning": "PCStorage ptr passed to PCStorage_SetActiveBox"
+    },
+    {
+     "param": 0,
+     "offset": "0x1f",
+     "width": 1,
+     "meaning": "activeBox arg to PCStorage_SetActiveBox"
+    }
+   ],
+   "notes": "Heap_Destroy(9). returns 1."
+  },
+  {
+   "name": "ov14_021E59AC",
+   "mode": "thumb",
+   "signature_guess": "void ov14_021E59AC(void *unused, PCBoxAppData *app)",
+   "confidence": "medium",
+   "callees": [
+    "ov14_021E5A14",
+    "PaletteData_PushTransparentBuffers",
+    "DoScheduledBgGpuUpdates",
+    "ov14_021F29C4",
+    "SpriteSystem_DrawSprites",
+    "SpriteSystem_TransferOam"
+   ],
+   "struct_accesses": [
+    {
+     "param": 1,
+     "offset": "0x34",
+     "width": 4,
+     "meaning": "app->work (large render/work struct)"
+    }
+   ],
+   "callback_refs": [
+    "work+4 called via blx if non-null, then cleared (vblank/anim callback taking app)"
+   ],
+   "notes": "Actual arg1 (r1) is the app pointer; r0 ignored. work+0x14=BgConfig, work+0x18=PaletteData, work+0x88D2=u16 flag gating sprite draw, work[0xbe<<2=0x2F8]=SpriteSystem. Writes 0x027E0000+0x3FF8 |= 1. Likely a VBlank/main-render callback."
+  },
+  {
+   "name": "ov14_021E5A70",
+   "mode": "thumb",
+   "signature_guess": "void ov14_021E5A70(PCBoxAppData *app)",
+   "confidence": "high",
+   "callees": [
+    "BgConfig_Alloc",
+    "SetBothScreensModesAndDisable",
+    "InitBgFromTemplate",
+    "BgClearTilemapBufferAndCommit",
+    "BG_ClearCharDataRange"
+   ],
+   "struct_accesses": [
+    {
+     "param": 0,
+     "offset": "0x34",
+     "width": 4,
+     "meaning": "app->work; work+0x14 = BgConfig ptr stored here"
+    }
+   ],
+   "notes": "BG setup. Copies GraphicsModes (ov14_021F7BC8, 16B) and 7 BgTemplates (0x1c each) into stack locals via ldmia/stmia and InitBgFromTemplate (bgIds 0..6). HAZARD: needs 7 SEPARATE stack BgTemplate locals (frame 0xd4) per insight bg-init-separate-template-locals."
+  },
+  {
+   "name": "ov14_021E5C00",
+   "mode": "thumb",
+   "signature_guess": "void ov14_021E5C00(PCBoxAppData *app)",
+   "confidence": "high",
+   "callees": [
+    "FreeBgTilemapBuffer",
+    "Heap_Free"
+   ],
+   "struct_accesses": [
+    {
+     "param": 0,
+     "offset": "0x34",
+     "width": 4,
+     "meaning": "app->work; work+0x14 = BgConfig ptr"
+    }
+   ],
+   "notes": "Frees tilemap buffers 6..0 then Heap_Free(bgConfig). Mirror of ov14_021E5A70."
+  },
+  {
+   "name": "ov14_021E5D78",
+   "mode": "thumb",
+   "signature_guess": "void ov14_021E5D78(PCBoxAppData *app)",
+   "confidence": "high",
+   "callees": [
+    "NewMsgDataFromNarc",
+    "MessagePrinter_New",
+    "MessageFormat_New",
+    "String_New"
+   ],
+   "struct_accesses": [
+    {
+     "param": 0,
+     "offset": "0x34",
+     "width": 4,
+     "meaning": "app->work; +0x20=MsgData, +0x1c=MessagePrinter, +0x24=MessageFormat, +0x28=String"
+    }
+   ],
+   "notes": "Message subsystem init on HEAP_ID_10."
+  },
+  {
+   "name": "ov14_021E5DB8",
+   "mode": "thumb",
+   "signature_guess": "void ov14_021E5DB8(PCBoxAppData *app)",
+   "confidence": "high",
+   "callees": [
+    "String_Delete",
+    "MessageFormat_Delete",
+    "MessagePrinter_Delete",
+    "DestroyMsgData"
+   ],
+   "notes": "Teardown mirror of ov14_021E5D78; work+0x28/0x24/0x1c/0x20."
+  },
+  {
+   "name": "ov14_021E5E74",
+   "mode": "thumb",
+   "signature_guess": "void ov14_021E5E74(PCBoxAppData *app)",
+   "confidence": "high",
+   "callees": [
+    "PaletteData_Init",
+    "PaletteData_AllocBuffers"
+   ],
+   "struct_accesses": [
+    {
+     "param": 0,
+     "offset": "0x34",
+     "width": 4,
+     "meaning": "app->work; +0x18 = PaletteData ptr"
+    }
+   ],
+   "notes": "PaletteData_AllocBuffers(pal,0,0x200,HEAP_ID_10)."
+  },
+  {
+   "name": "ov14_021E6048",
+   "mode": "thumb",
+   "signature_guess": "void ov14_021E6048(PCBoxAppData *app)",
+   "confidence": "medium",
+   "callees": [
+    "GridInputHandler_IsButtonInputMode",
+    "MenuInputStateMgr_SetState"
+   ],
+   "struct_accesses": [
+    {
+     "param": 0,
+     "offset": "0x0",
+     "width": 4,
+     "meaning": "app->args; args+4 = MenuInputStateMgr"
+    },
+    {
+     "param": 0,
+     "offset": "0x34",
+     "width": 4,
+     "meaning": "work; work+0x2c = GridInputHandler"
+    }
+   ],
+   "notes": "Sets menu input state 0 or 1 based on button-input mode."
+  },
+  {
+   "name": "ov14_021E6070",
+   "mode": "thumb",
+   "signature_guess": "u32 ov14_021E6070(PCBoxAppData *app, u32 slot, int attr, void *dest)",
+   "confidence": "high",
+   "callees": [
+    "ov14_021E60C0",
+    "GetBoxMonData"
+   ],
+   "struct_accesses": [
+    {
+     "param": 0,
+     "offset": "0x1f",
+     "width": 1,
+     "meaning": "activeBox passed to ov14_021E60C0"
+    }
+   ],
+   "notes": "boxmon = ov14_021E60C0(app, app->activeBox, slot); return boxmon ? GetBoxMonData(boxmon,attr,dest) : 0."
+  },
+  {
+   "name": "ov14_021E6094",
+   "mode": "thumb",
+   "signature_guess": "void ov14_021E6094(PCBoxAppData *app, u32 slot, int attr, void *src)",
+   "confidence": "high",
+   "callees": [
+    "ov14_021E60C0",
+    "SetBoxMonData",
+    "PCStorage_SetBoxModified"
+   ],
+   "struct_accesses": [
+    {
+     "param": 0,
+     "offset": "0x1f",
+     "width": 1,
+     "meaning": "activeBox"
+    },
+    {
+     "param": 0,
+     "offset": "0x4",
+     "width": 4,
+     "meaning": "PCStorage for SetBoxModified"
+    }
+   ],
+   "notes": "Sets attr on the box/party mon at slot; if slot<0x1e marks box modified. slot>=0x1e means party."
+  },
+  {
+   "name": "ov14_021E60C0",
+   "mode": "thumb",
+   "signature_guess": "BoxPokemon *ov14_021E60C0(PCBoxAppData *app, u32 box, u32 index)",
+   "confidence": "high",
+   "callees": [
+    "Party_GetCount",
+    "Party_GetMonByIndex",
+    "Mon_GetBoxMon",
+    "PCStorage_GetMonByIndexPair"
+   ],
+   "struct_accesses": [
+    {
+     "param": 0,
+     "offset": "0x8",
+     "width": 4,
+     "meaning": "Party"
+    },
+    {
+     "param": 0,
+     "offset": "0x4",
+     "width": 4,
+     "meaning": "PCStorage"
+    }
+   ],
+   "notes": "Central mon resolver. box==0xff OR index>=0x1e -> party slot (index-0x1e via Party_GetMonByIndex+Mon_GetBoxMon, bounds-checked by Party_GetCount, else NULL); index==0xff -> NULL; else PCStorage_GetMonByIndexPair(storage, box, index). 0x1e=30 is party/box slot boundary."
+  },
+  {
+   "name": "ov14_021E6100",
+   "mode": "thumb",
+   "signature_guess": "void ov14_021E6100(PCBoxAppData *app, u32 box, u32 index)",
+   "confidence": "high",
+   "callees": [
+    "PCStorage_DeleteBoxMonByIndexPair",
+    "Party_RemoveMon"
+   ],
+   "struct_accesses": [
+    {
+     "param": 0,
+     "offset": "0x4",
+     "width": 4,
+     "meaning": "PCStorage"
+    },
+    {
+     "param": 0,
+     "offset": "0x8",
+     "width": 4,
+     "meaning": "Party"
+    }
+   ],
+   "notes": "index<0x1e -> delete box mon; else Party_RemoveMon(party, index-0x1e)."
+  },
+  {
+   "name": "ov14_021E611C",
+   "mode": "thumb",
+   "signature_guess": "void ov14_021E611C(PCBoxAppData *app, UnkMove *a1, UnkMove *a2)",
+   "confidence": "low",
+   "callees": [
+    "ov14_021E60C0",
+    "CopyBoxPokemonToPokemon",
+    "Party_GetMonByIndex",
+    "CopyPokemonToPokemon",
+    "SetMonData",
+    "Party_SafeCopyMonToSlot_ResetAprijuiceModifiers",
+    "Mon_GetBoxMon",
+    "PCStorage_PlaceMonInBoxByIndexPair",
+    "ov14_021F4958",
+    "ov14_021F4A20"
+   ],
+   "notes": "Move/swap operation between box and party. a1/a2 are move-descriptor structs with off0=Pokemon ptr, off4=index, off8=box. MON_DATA_MOOD reset to 0. Struct-move helper; deep analysis skipped."
+  },
+  {
+   "name": "ov14_021E6464",
+   "mode": "thumb",
+   "signature_guess": "int ov14_021E6464(PCBoxAppData *app, int slot)",
+   "confidence": "medium",
+   "callees": [
+    "_s32_div_f"
+   ],
+   "struct_accesses": [
+    {
+     "param": 0,
+     "offset": "0x25",
+     "width": 1,
+     "meaning": "u8 field divided by 6 (scroll/page base)"
+    }
+   ],
+   "notes": "return (slot & 0x7f) + (app->field25 / 6) * 6. HAZARD: _s32_div_f signed-div idiom."
+  },
+  {
+   "name": "ov14_021E6480",
+   "mode": "thumb",
+   "signature_guess": "BOOL ov14_021E6480(PCBoxAppData *app, u32 partySlot)",
+   "confidence": "medium",
+   "callees": [
+    "Party_GetCount",
+    "Party_GetMonByIndex",
+    "GetMonData"
+   ],
+   "struct_accesses": [
+    {
+     "param": 0,
+     "offset": "0x8",
+     "width": 4,
+     "meaning": "Party"
+    }
+   ],
+   "notes": "Scans party (skipping partySlot) for a non-egg (attr 0x4c==0) that has attr 0xa3 set; returns 1 if found."
+  },
+  {
+   "name": "ov14_021E64D0",
+   "mode": "thumb",
+   "signature_guess": "BOOL ov14_021E64D0(BoxPokemon *boxMon)",
+   "confidence": "medium",
+   "callees": [
+    "GetBoxMonData",
+    "BoxMon_UpdateArceusForm",
+    "BoxMon_UpdateGiratinaForm"
+   ],
+   "notes": "Arceus(species 0x1ED=493)/Giratina(0x1E7=487) form re-eval; returns 1 if form (attr 0x70) changed. attr 5=species, 0x70=form."
+  },
+  {
+   "name": "ov14_021E71C8",
+   "mode": "thumb",
+   "signature_guess": "int ov14_021E71C8(u16 value)",
+   "confidence": "medium",
+   "callees": [],
+   "struct_accesses": [
+    {
+     "param": "data",
+     "offset": "0x0",
+     "width": 2,
+     "meaning": "scans ov14_021F7BC0 u16[4] for value"
+    }
+   ],
+   "notes": "Linear search of rodata table ov14_021F7BC0 (4 u16 entries); returns index or -1. Used by ov14_021E71E8 for ribbon-group mapping."
+  },
+  {
+   "name": "ov14_021E7264",
+   "mode": "thumb",
+   "signature_guess": "void ov14_021E7264(PCBoxAppData *app)",
+   "confidence": "high",
+   "callees": [
+    "Heap_Free"
+   ],
+   "struct_accesses": [
+    {
+     "param": 0,
+     "offset": "0x34",
+     "width": 4,
+     "meaning": "work; work+0x88DC = ptr to Heap_Free"
+    }
+   ],
+   "notes": "tail-call Heap_Free(work off 0x88DC)."
+  }
+ ],
+ "data": [
+  {
+   "label": "_021F7BBC",
+   "section": "rodata",
+   "bytes": 4,
+   "shape_guess": "u16[2] {0x9F08,0x9F28}"
+  },
+  {
+   "label": "ov14_021F7BC0",
+   "section": "rodata",
+   "bytes": 8,
+   "shape_guess": "u16[4] lookup table {0x0039,0x01AF,0x007F,0x0013} scanned by ov14_021E71C8"
+  },
+  {
+   "label": "ov14_021F7BC8",
+   "section": "rodata",
+   "bytes": 16,
+   "shape_guess": "GraphicsModes struct (arg to SetBothScreensModesAndDisable in ov14_021E5A70)"
+  },
+  {
+   "label": "ov14_021F7BD8",
+   "section": "rodata",
+   "bytes": 24,
+   "shape_guess": "table (6x u32 = fx/coord pairs)"
+  },
+  {
+   "label": "ov14_021F7BF0",
+   "section": "rodata",
+   "bytes": 24,
+   "shape_guess": "table"
+  },
+  {
+   "label": "ov14_021F7C08",
+   "section": "rodata",
+   "bytes": 24,
+   "shape_guess": "table"
+  },
+  {
+   "label": "ov14_021F7C20",
+   "section": "rodata",
+   "bytes": 28,
+   "shape_guess": "BgTemplate (0x1c) for InitBgFromTemplate bg0"
+  },
+  {
+   "label": "ov14_021F7C3C",
+   "section": "rodata",
+   "bytes": 28,
+   "shape_guess": "BgTemplate bg1"
+  },
+  {
+   "label": "ov14_021F7C58",
+   "section": "rodata",
+   "bytes": 28,
+   "shape_guess": "BgTemplate bg4 (used out of address order, after C90)"
+  },
+  {
+   "label": "ov14_021F7C74",
+   "section": "rodata",
+   "bytes": 28,
+   "shape_guess": "BgTemplate bg2"
+  },
+  {
+   "label": "ov14_021F7C90",
+   "section": "rodata",
+   "bytes": 28,
+   "shape_guess": "BgTemplate bg3"
+  },
+  {
+   "label": "ov14_021F7CAC",
+   "section": "rodata",
+   "bytes": 28,
+   "shape_guess": "BgTemplate bg5"
+  },
+  {
+   "label": "ov14_021F7CC8",
+   "section": "rodata",
+   "bytes": 28,
+   "shape_guess": "BgTemplate bg6"
+  },
+  {
+   "label": "ov14_021F7CE4",
+   "section": "rodata",
+   "bytes": 40,
+   "shape_guess": "GraphicsBanks struct (arg to GfGfx_SetBanks in ov14_021E5A60)"
+  },
+  {
+   "label": "ov14_021F7D0C",
+   "section": "rodata",
+   "bytes": 8,
+   "shape_guess": "u8[5]+pad {0,1,2,3,4}"
+  },
+  {
+   "label": "ov14_021F7D14",
+   "section": "rodata",
+   "bytes": 8,
+   "shape_guess": "u8[8] {0,1,2,3,4,6,7,0xFF}"
+  }
+ ],
+ "imports": {
+  "GetBoxMonData": {
+   "known_prototype": "u32 GetBoxMonData(BoxPokemon *boxMon, int attr, void *ptr)",
+   "header": "include/pokemon.h"
+  },
+  "SetBoxMonData": {
+   "known_prototype": "void SetBoxMonData(BoxPokemon *boxMon, int attr, const void *ptr)",
+   "header": "include/pokemon.h"
+  },
+  "GetMonData": {
+   "known_prototype": "u32 GetMonData(Pokemon *mon, int attr, void *ptr)",
+   "header": "include/pokemon.h"
+  },
+  "Mon_GetBoxMon": {
+   "known_prototype": "BoxPokemon *Mon_GetBoxMon(Pokemon *mon)",
+   "header": "include/pokemon.h"
+  },
+  "OverlayManager_CreateAndGetData": {
+   "known_prototype": "void *OverlayManager_CreateAndGetData(OverlayManager *man, u32 size, enum HeapID heapID)",
+   "header": "include/overlay_manager.h"
+  },
+  "OverlayManager_GetArgs": {
+   "known_prototype": "void *OverlayManager_GetArgs(OverlayManager *man)",
+   "header": "include/overlay_manager.h"
+  },
+  "OverlayManager_GetData": {
+   "known_prototype": "void *OverlayManager_GetData(OverlayManager *man)",
+   "header": "include/overlay_manager.h"
+  },
+  "OverlayManager_FreeData": {
+   "known_prototype": "void OverlayManager_FreeData(OverlayManager *man)",
+   "header": "include/overlay_manager.h"
+  },
+  "Party_GetMonByIndex": {
+   "known_prototype": "Pokemon *Party_GetMonByIndex(Party *party, int slot)",
+   "header": "include/party.h"
+  },
+  "Party_GetCount": {
+   "known_prototype": "int Party_GetCount(Party *party)",
+   "header": "include/party.h"
+  },
+  "PCStorage_GetActiveBox": {
+   "known_prototype": "int PCStorage_GetActiveBox(PCStorage *storage)",
+   "header": "include/pokemon_storage_system.h"
+  },
+  "PCStorage_GetMonByIndexPair": {
+   "known_prototype": "BoxPokemon *PCStorage_GetMonByIndexPair(PCStorage *storage, u32 boxno, u32 slotno)",
+   "header": "include/pokemon_storage_system.h"
+  },
+  "Heap_Create": {
+   "known_prototype": "void Heap_Create(enum HeapID parent, enum HeapID child, u32 size)",
+   "header": "include/heap.h"
+  },
+  "Heap_Destroy": {
+   "known_prototype": "void Heap_Destroy(enum HeapID heapId)",
+   "header": "include/heap.h"
+  },
+  "Heap_Free": {
+   "known_prototype": "void Heap_Free(void *ptr)",
+   "header": "include/heap.h"
+  },
+  "Heap_AllocAtEnd": {
+   "signature_guess": "void *Heap_AllocAtEnd(enum HeapID heapId, u32 size)",
+   "evidence": "Heap_AllocAtEnd(0xa,0xc) in ov14_021E71E8; see include/heap.h"
+  },
+  "ov14_021EAF8C": {
+   "signature_guess": "int ov14_021EAF8C(PCBoxAppData *app, int *state)",
+   "evidence": "main state dispatcher; return 0 => keep running (PCBox_Main). Defined in a sibling ov14 chunk."
+  },
+  "ov14_021F4958": {
+   "signature_guess": "void ov14_021F4958(PCBoxAppData *app, int slot)",
+   "evidence": "called after every box/party mon mutation with (app, activeBox-or-slot); sibling chunk"
+  },
+  "ov14_021F4A20": {
+   "signature_guess": "void ov14_021F4A20(PCBoxAppData *app, int slot)",
+   "evidence": "paired with ov14_021F4958 after mutations; sibling chunk"
+  },
+  "ov14_021F3190": {
+   "signature_guess": "void ov14_021F3190(PCBoxRenderWork *work, u32 slot, int a2)",
+   "evidence": "sprite/slot refresh; sibling chunk"
+  },
+  "ov14_021F2F88": {
+   "signature_guess": "void ov14_021F2F88(int a0, int a1, s16 *outXY, u8 a3)",
+   "evidence": "computes a sprite XY into a 2x s16 stack buffer; sibling chunk"
+  },
+  "_s32_div_f": {
+   "signature_guess": "s32 _s32_div_f(s32 num, s32 den)",
+   "evidence": "MWCC soft-division helper; used with den=6 and den=0x1e"
+  }
+ },
+ "shared_struct_hypotheses": [
+  {
+   "name": "PCBoxAppData",
+   "size_guess": "0x38 (OverlayManager_CreateAndGetData size)",
+   "fields": [
+    {
+     "offset": "0x0",
+     "width": 4,
+     "meaning": "PCBoxArgs ptr (from OverlayManager_GetArgs; off0 = SaveData ptr)"
+    },
+    {
+     "offset": "0x4",
+     "width": 4,
+     "meaning": "PCStorage ptr"
+    },
+    {
+     "offset": "0x8",
+     "width": 4,
+     "meaning": "Party ptr"
+    },
+    {
+     "offset": "0xc",
+     "width": 4,
+     "meaning": "Bag ptr"
+    },
+    {
+     "offset": "0x10",
+     "width": 4,
+     "meaning": "Options ptr"
+    },
+    {
+     "offset": "0x1f",
+     "width": 1,
+     "meaning": "u8 activeBox"
+    },
+    {
+     "offset": "0x21",
+     "width": 1,
+     "meaning": "u8 target/cursor box (init 0xff)"
+    },
+    {
+     "offset": "0x22",
+     "width": 1,
+     "meaning": "u8 (cursor/box param used in sprite placement)"
+    },
+    {
+     "offset": "0x25",
+     "width": 1,
+     "meaning": "u8 (page base, /6 in ov14_021E6464)"
+    },
+    {
+     "offset": "0x2c",
+     "width": 4,
+     "meaning": "u32 (init 0)"
+    },
+    {
+     "offset": "0x30",
+     "width": 4,
+     "meaning": "u32 main state (init 0xb)"
+    },
+    {
+     "offset": "0x34",
+     "width": 4,
+     "meaning": "PCBoxRenderWork ptr (large work/render struct, allocated in sibling chunk)"
+    }
+   ]
+  },
+  {
+   "name": "PCBoxRenderWork",
+   "size_guess": ">=0x88E0 (offsets up to 0x88DC observed)",
+   "fields": [
+    {
+     "offset": "0x4",
+     "width": 4,
+     "meaning": "callback fn ptr (called via blx in ov14_021E59AC, then cleared)"
+    },
+    {
+     "offset": "0xc",
+     "width": 4,
+     "meaning": "ptr to move/cursor sub-struct (7-entry array of 0x20 at +4; sub-fields +0xe0/0xe4/0xe8/0xec)"
+    },
+    {
+     "offset": "0x14",
+     "width": 4,
+     "meaning": "BgConfig ptr"
+    },
+    {
+     "offset": "0x18",
+     "width": 4,
+     "meaning": "PaletteData ptr"
+    },
+    {
+     "offset": "0x1c",
+     "width": 4,
+     "meaning": "MessagePrinter ptr"
+    },
+    {
+     "offset": "0x20",
+     "width": 4,
+     "meaning": "MsgData ptr"
+    },
+    {
+     "offset": "0x24",
+     "width": 4,
+     "meaning": "MessageFormat ptr"
+    },
+    {
+     "offset": "0x28",
+     "width": 4,
+     "meaning": "String ptr"
+    },
+    {
+     "offset": "0x2c",
+     "width": 4,
+     "meaning": "GridInputHandler ptr"
+    },
+    {
+     "offset": "0x2f8",
+     "width": 4,
+     "meaning": "(0xbe<<2) SpriteSystem ptr"
+    },
+    {
+     "offset": "0x2fc",
+     "width": 4,
+     "meaning": "(0xbf<<2) base of ManagedSprite ptr array indexed by sprite id"
+    },
+    {
+     "offset": "0x434",
+     "width": 4,
+     "meaning": "YesNoPrompt ptr"
+    },
+    {
+     "offset": "0x4094",
+     "width": 1,
+     "meaning": "u8[] sprite-id table (per box slot)"
+    },
+    {
+     "offset": "0x88D2",
+     "width": 2,
+     "meaning": "u16 flag gating sprite draw"
+    },
+    {
+     "offset": "0x88D4",
+     "width": 1,
+     "meaning": "packed cursor-anim state struct (bitfields at bytes 0/1, state at byte 2, counter byte 3)"
+    },
+    {
+     "offset": "0x88DC",
+     "width": 4,
+     "meaning": "heap-alloc'd ribbon/lock sub-buffer (Heap_AllocAtEnd 0xc)"
+    }
+   ]
+  }
+ ],
+ "risks": [
+  "PCBoxRenderWork is a very large struct (>0x88E0) allocated in a SIBLING ov14 chunk (via ov14_021EAF8C path); every function here dereferences app->work at 0x34. Field types (many ldrb/ldrh/ldr at fixed offsets) must be pinned exactly before decompiling this chunk - get the work struct definition from the allocating chunk first.",
+  "Rodata ordering is load-bearing: 7 BgTemplates + GraphicsModes(ov14_021F7BC8) + GraphicsBanks(ov14_021F7CE4) must emit in exact declaration order; note BgTemplate use order in ov14_021E5A70 is NOT address order (C58 used for bg4 comes after C90).",
+  "ov14_021E5A70 InitBgFromTemplate loop needs 7 SEPARATE stack BgTemplate locals (frame 0xd4), per insight bg-init-separate-template-locals; a single reused local collapses the frame and mismatches.",
+  "Signed-division idioms: _s32_div_f (ov14_021E6464 /6, ov14_021E7278 /0x1e) and the round-toward-zero /8 idiom (asr;lsr#0x1d;add;asr#3) in ov14_021E6B48/6C0C must be matched carefully.",
+  "Fixed-point sprite-position math (mul then lsr#0x10) in ov14_021E65C4/66F4/6814 - FX16/FX32 scaling; register scheduling sensitive.",
+  "Bitfield extracts in ov14_021E5F4C / ov14_021E5EFC on packed cursor-anim struct at work+0x88D4 - model as bitfields/union.",
+  "Several large state machines not analyzed in detail (ov14_021E8D20, 8FD4, 96C8, 9A24, 9C88, A254, A4C8, A778, ACD4) - likely switch/jump-table lowering; expect objdiff SIZE false-positives on jump tables, gate on chiri pkg compare.",
+  "0x1e (30) is the pervasive party/box slot boundary and 0x80 is a party-flag bit throughout the move logic (ov14_021E6CF8/6F3C/7034/690C): slot>=0x1e => party slot (slot-0x1e), high bit 0x80 => party-origin marker."
+ ],
+ "notes": "Chunk 1 of the 11-way split of overlay_14 (PC Box storage UI). Export/import split: the .inc .public block (lines 188-347) lists the NON-STATIC functions defined in this chunk; every thumb_func_start in the .s NOT in that subset is a static/local helper. All functions are Thumb. ov14_* symbols in .public NOT defined here are imports from sibling chunks. Deep-analyzed the entry callbacks + box/party mon accessor family (021E6070/6094/60C0/6100/6464/6480/64D0) at high confidence; the ~140 remaining drawing/state/move helpers share PCBoxAppData(0x38) + PCBoxRenderWork(0x34) and were surveyed at signature level. Lower confidence on move/swap ops (021E611C-021E7034) and the large state machines."
+}

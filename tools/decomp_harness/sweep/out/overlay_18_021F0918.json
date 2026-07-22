@@ -1,0 +1,457 @@
+{
+ "file": "asm/overlay_18_021F0918.s",
+ "functions": [
+  {
+   "name": "ov18_021F0918",
+   "mode": "thumb",
+   "signature_guess": "void ov18_021F0918(PokedexAppData *pokedexApp)",
+   "confidence": "high",
+   "callees": [
+    "ov18_021F0D7C",
+    "ov18_021EE388"
+   ],
+   "notes": "Chunk-entry helper. Already declared pokedex_internal.h:450. NOT in .public (internal). Calls ov18_021EE388 in sibling chunk overlay_18_021EE35C."
+  },
+  {
+   "name": "ov18_021F0928",
+   "mode": "thumb",
+   "signature_guess": "void ov18_021F0928(PokedexAppData *pokedexApp)",
+   "confidence": "high",
+   "callees": [
+    "ov18_021F0940",
+    "ov18_021F0C50",
+    "ov18_021F0D2C"
+   ],
+   "notes": "EXPORT (.public). Declared pokedex_internal.h:451. Three-call dispatch, all passed the same pokedexApp pointer."
+  },
+  {
+   "name": "ov18_021F0940",
+   "mode": "thumb",
+   "signature_guess": "void ov18_021F0940(PokedexAppData *pokedexApp)",
+   "confidence": "high",
+   "callees": [
+    "FillWindowPixelBuffer",
+    "ov18_021F09D8",
+    "ov18_021EE3AC",
+    "CopyWindowPixelsToVram_TextMode",
+    "GetWindowX",
+    "GetWindowY",
+    "sub_020196E8"
+   ],
+   "struct_accesses": [
+    {
+     "param": 0,
+     "offset": "0x8",
+     "width": 4,
+     "meaning": "unk_0008 (UnkStruct_0201956C*), arg0 to sub_020196E8"
+    },
+    {
+     "param": 0,
+     "offset": "0xc",
+     "width": "0x10 each",
+     "meaning": "windows[] array base; loops i=0..5 over windows[i+10] (Window is 0x10 bytes)"
+    },
+    {
+     "param": 0,
+     "offset": "0x65c",
+     "width": 4,
+     "meaning": "msgData (MsgData*), arg to ov18_021EE3AC"
+    },
+    {
+     "param": 0,
+     "offset": "0x18c4",
+     "width": 1,
+     "meaning": "numSeenForms (s8)"
+    },
+    {
+     "param": 0,
+     "offset": "0x18c5",
+     "width": 1,
+     "meaning": "unk_18C5 (s8) scroll/cursor index"
+    }
+   ],
+   "notes": "Declared pokedex_internal.h:452. Redraws 6 form-name windows (windows[10..15]). Loop count 6."
+  },
+  {
+   "name": "ov18_021F118C",
+   "mode": "thumb",
+   "signature_guess": "void ov18_021F118C(PokedexAppData *pokedexApp, int index, int animId)",
+   "confidence": "high",
+   "callees": [
+    "ManagedSprite_SetAnimationFrame",
+    "ManagedSprite_SetAnim"
+   ],
+   "struct_accesses": [
+    {
+     "param": 0,
+     "offset": "0x670",
+     "width": 4,
+     "meaning": "sprites[index] (ManagedSprite*), array indexed by index*4"
+    }
+   ],
+   "notes": "EXPORT. Declared pokedex_internal.h:460 as (PokedexAppData*, int a1, int a2). Caller ov18_021E8BF4.c:705 uses ov18_021F118C(pokedexApp, 2, 6). Sets frame 0 then anim=animId on sprites[index]. Sprite pointer array at struct +0x670."
+  },
+  {
+   "name": "ov18_021F11C0",
+   "mode": "thumb",
+   "signature_guess": "void ov18_021F11C0(PokedexAppData *pokedexApp, int index, int visible)",
+   "confidence": "high",
+   "callees": [
+    "ManagedSprite_SetDrawFlag"
+   ],
+   "struct_accesses": [
+    {
+     "param": 0,
+     "offset": "0x670",
+     "width": 4,
+     "meaning": "sprites[index] (ManagedSprite*)"
+    }
+   ],
+   "notes": "EXPORT. Declared pokedex_internal.h:462 as (PokedexAppData*, int a1, int a2). Callers ov18_021E5C40.c:1204/1530 use e.g. ov18_021F11C0(pokedexApp, 10, 0). Draw flag = (a2==1) ? TRUE : FALSE on sprites[index]."
+  },
+  {
+   "name": "ov18_021F11EC",
+   "mode": "thumb",
+   "signature_guess": "int ov18_021F11EC(PokedexAppData *pokedexApp, SomeSpriteTemplate *tmpl)",
+   "confidence": "medium",
+   "callees": [
+    "SpriteSystem_NewSprite",
+    "SpriteSystem_NewSpriteWithYOffset"
+   ],
+   "struct_accesses": [
+    {
+     "param": 0,
+     "offset": "0x668",
+     "width": 4,
+     "meaning": "SpriteSystem* (header names this filler_0668 - actually a live pointer)"
+    },
+    {
+     "param": 0,
+     "offset": "0x66c",
+     "width": 4,
+     "meaning": "unk_066C (SpriteManager*)"
+    },
+    {
+     "param": 1,
+     "offset": "0x10",
+     "width": 4,
+     "meaning": "tmpl mode; ==1 -> NewSprite else NewSpriteWithYOffset(y=0x200000)"
+    }
+   ],
+   "notes": "Not in .public; likely a static helper. Confirms filler_0668 at struct +0x668 is a live SpriteSystem*."
+  },
+  {
+   "name": "ov18_021F3AD0",
+   "mode": "thumb",
+   "signature_guess": "int ov18_021F3AD0(PokedexAppData *pokedexApp, int a1)",
+   "confidence": "high",
+   "notes": "EXPORT. Declared pokedex_internal.h:504. Body is just: return a1 + 0x34; (pokedexApp arg ignored). Inverse of sibling ov18_021F3AB0 which returns sprite Y - 0x34. Screen/logical Y coord transform."
+  },
+  {
+   "name": "ov18_021F3618",
+   "mode": "thumb",
+   "signature_guess": "void ov18_021F3618(PokedexAppData *pokedexApp, int state)",
+   "confidence": "high",
+   "callees": [
+    "ov18_021F34EC",
+    "ov18_021F3544",
+    "ov18_021F34C4",
+    "ov18_021F3560",
+    "ov18_021F118C"
+   ],
+   "struct_accesses": [
+    {
+     "param": 0,
+     "offset": "0x1878",
+     "width": 4,
+     "meaning": "dexSearchCriteria-region members read as args (0x1878/0x187C)"
+    }
+   ],
+   "notes": "Declared pokedex_internal.h:497. PC-relative jump table (switch state 0..3) at ov18_021F362C. cmp r1,#3; bhi default. Switch-lowering hazard."
+  },
+  {
+   "name": "ov18_021F69E8",
+   "mode": "thumb",
+   "signature_guess": "void ov18_021F69E8(PokedexAppData *pokedexApp, u32 species, int a2, int a3)",
+   "confidence": "medium",
+   "callees": [
+    "Heap_AllocAtEnd",
+    "Pokedex_GetSeenSpindaPersonality",
+    "GetMonSpriteCharAndPlttNarcIdsEx",
+    "sub_02014510",
+    "Convert4bppTo8bpp",
+    "BG_LoadCharTilesData",
+    "Heap_Free",
+    "LoadRectToBgTilemapRect",
+    "ScheduleBgTilemapBufferTransfer"
+   ],
+   "struct_accesses": [
+    {
+     "param": 0,
+     "offset": "0x0",
+     "width": 4,
+     "meaning": "args (PokedexArgs*), then double-deref to Pokedex* for Pokedex_GetSeenSpindaPersonality"
+    },
+    {
+     "param": 0,
+     "offset": "0x4",
+     "width": 4,
+     "meaning": "bgConfig (BgConfig*), arg to BG_LoadCharTilesData / LoadRectToBgTilemapRect / ScheduleBgTilemapBufferTransfer"
+    }
+   ],
+   "notes": "Not in the pokedex_internal.h list excerpt (chunk-local static). Loads a mon sprite (0xC80-byte Heap_AllocAtEnd) into BG7, special-cases species 0x147 (Spinda) for personality. Copies 16-byte template from rodata ov18_021FA338; final tilemap from ov18_021FB5B4."
+  }
+ ],
+ "data": [
+  {
+   "label": "ov18_021FA304",
+   "section": "rodata",
+   "bytes": 12,
+   "shape_guess": "u8[12] decreasing bar/scale table; the ONLY rodata symbol in .public"
+  },
+  {
+   "label": "ov18_021FA310",
+   "section": "rodata",
+   "bytes": 24,
+   "shape_guess": "u8[24] two 12-byte scale rows"
+  },
+  {
+   "label": "ov18_021FA328",
+   "section": "rodata",
+   "bytes": 16,
+   "shape_guess": "u8[16] / 4x u32 {0,0,10,10}"
+  },
+  {
+   "label": "ov18_021FA338",
+   "section": "rodata",
+   "bytes": 16,
+   "shape_guess": "16-byte template copied to stack by ov18_021F69E8 (4x u32 {0,0,0xA,0xA})"
+  },
+  {
+   "label": "ov18_021FA348",
+   "section": "rodata",
+   "bytes": 18,
+   "shape_guess": "u16[9] {1,4,7,10,13,16,20,24,28}"
+  },
+  {
+   "label": "ov18_021FA35A",
+   "section": "rodata",
+   "bytes": 18,
+   "shape_guess": "u16[9] {1,4,7,10,13,16,20,24,0xFF}"
+  },
+  {
+   "label": "ov18_021FA36C",
+   "section": "rodata",
+   "bytes": 20,
+   "shape_guess": "u16[10] mixed config"
+  },
+  {
+   "label": "ov18_021FA380",
+   "section": "rodata",
+   "bytes": 24,
+   "shape_guess": "u32 config {0x51,0x12,0x0F,0x0F,0,0}"
+  },
+  {
+   "label": "ov18_021FA398",
+   "section": "rodata",
+   "bytes": 24,
+   "shape_guess": "u16[12] increasing graph scale {0x0F,0x2D,0x5A,0x87,...,0x1EF}"
+  },
+  {
+   "label": "ov18_021FA3B0",
+   "section": "rodata",
+   "bytes": 24,
+   "shape_guess": "u8[12][2] coordinate pairs {8,8},{16,8},...,{24,16}"
+  },
+  {
+   "label": "ov18_021FA3C8",
+   "section": "rodata",
+   "bytes": 32,
+   "shape_guess": "u32[8] flags/offsets"
+  },
+  {
+   "label": "ov18_021FA3E8..ov18_021FA554",
+   "section": "rodata",
+   "bytes": "8 x 0x34 (52) each",
+   "shape_guess": "8 sprite-template-like structs (pos x/y, 0x0A, mode, 4x FX32 0xC5xx values, sentinels 0xFFFFFFFF)"
+  },
+  {
+   "label": "ov18_021FA588 / ov18_021FA5CC",
+   "section": "rodata",
+   "bytes": "0x44 (68) each",
+   "shape_guess": "2 larger template structs"
+  },
+  {
+   "label": "ov18_021FA610",
+   "section": "rodata",
+   "bytes": 416,
+   "shape_guess": "large table (0x1A0)"
+  },
+  {
+   "label": "ov18_021FA7B0",
+   "section": "rodata",
+   "bytes": 468,
+   "shape_guess": "large table (0x1D4)"
+  },
+  {
+   "label": "ov18_021FA984",
+   "section": "rodata",
+   "bytes": 416,
+   "shape_guess": "large table (0x1A0)"
+  },
+  {
+   "label": "ov18_021FAB24..ov18_021FABF4",
+   "section": "rodata",
+   "bytes": "5 x 0x34 (52) each",
+   "shape_guess": "5 more sprite-template structs"
+  },
+  {
+   "label": "ov18_021FAC28",
+   "section": "rodata",
+   "bytes": 988,
+   "shape_guess": "large table (0x3DC)"
+  },
+  {
+   "label": "ov18_021FB004",
+   "section": "rodata",
+   "bytes": 1352,
+   "shape_guess": "large table (0x548)"
+  },
+  {
+   "label": "ov18_021FB54C / ov18_021FB580",
+   "section": "rodata",
+   "bytes": "0x34 (52) each",
+   "shape_guess": "2 template structs"
+  },
+  {
+   "label": "ov18_021FB5B4",
+   "section": "rodata",
+   "bytes": "~220 (last symbol)",
+   "shape_guess": "u16 tilemap rect 11x10 (BG7), source for LoadRectToBgTilemapRect in ov18_021F69E8"
+  }
+ ],
+ "imports": {
+  "Heap_AllocAtEnd": {
+   "known_prototype": "void *Heap_AllocAtEnd(HeapID heapId, u32 size)",
+   "header": "include/heap.h"
+  },
+  "Heap_Free": {
+   "known_prototype": "void Heap_Free(void *ptr)",
+   "header": "include/heap.h"
+  },
+  "ManagedSprite/SpriteSystem/SpriteManager/Sprite family": {
+   "note": "existing sprite headers (e.g. include/sprite.h). Already project-declared; do not re-derive."
+  },
+  "Pokedex_GetSeenSpindaPersonality / Pokedex_GetSeenFormByIdx / Pokedex_SpeciesGetLastSeenGender / Pokedex_GetInternationalViewFlag": {
+   "note": "include/pokedex.h"
+  },
+  "GetMonSpriteCharAndPlttNarcIdsEx / GetMonBaseStat_HandleAlternateForm / GetMonPicHeightBySpeciesGenderForm / GetBattleMonIconNaixEx / GetBattleMonIconPaletteEx": {
+   "note": "pokemon graphics/stat headers"
+  },
+  "BG_LoadCharTilesData / LoadRectToBgTilemapRect / ScheduleBgTilemapBufferTransfer / GetWindowX/Y/Width / FillWindowPixelBuffer / CopyWindowPixelsToVram_TextMode / ClearWindowTilemapAndScheduleTransfer / ScheduleWindowCopyToVram / Convert4bppTo8bpp": {
+   "note": "include/bg_window.h"
+  },
+  "PaletteData / GfGfxLoader / GfGfx / NNS_G2dGet / GX_LoadOBJ / GXS_LoadOBJ / G2dRenderer_SetSubSurfaceCoords": {
+   "note": "graphics loader / palette / NNS G2d headers"
+  },
+  "NARC_New / NARC_Delete": {
+   "note": "include/narc.h"
+  },
+  "BufferString / String_Delete / MessageFormat / PlaySE / LanguageToDexFlag / PlayerProfile_GetTrainerGender": {
+   "note": "message/string/sound/save headers"
+  },
+  "FX_Div / FX_SinCosTable_ / MIi_CpuClearFast / DC_FlushRange / _fadd / _fsub / _fmul / _fdiv / _ffix / _fflt / _fgr / _s32_div_f / _u32_div_f": {
+   "note": "NitroSDK + MWCC soft-float runtime (auto-linked, no header decl needed)"
+  },
+  "ov18_021EE388 / ov18_021EE3AC / sub_02014510 / sub_020196E8 / sub_02019B1C / sub_0207449x / sub_0209129x": {
+   "note": "cross-chunk (overlay_18) and cross-overlay callees; declared in pokedex_internal.h or unk_020xxxxx headers"
+  }
+ },
+ "shared_struct_hypotheses": [
+  {
+   "name": "PokedexAppData",
+   "size_guess": "0x1910 (already fully defined in include/application/pokedex/pokedex_internal.h:267)",
+   "fields": [
+    {
+     "offset": "0x0",
+     "width": 4,
+     "meaning": "args (PokedexArgs*); first deref is Pokedex*"
+    },
+    {
+     "offset": "0x4",
+     "width": 4,
+     "meaning": "bgConfig (BgConfig*)"
+    },
+    {
+     "offset": "0x8",
+     "width": 4,
+     "meaning": "unk_0008 (UnkStruct_0201956C*)"
+    },
+    {
+     "offset": "0xc",
+     "width": "0x10*101",
+     "meaning": "windows[101] (Window, 0x10 each)"
+    },
+    {
+     "offset": "0x65c",
+     "width": 4,
+     "meaning": "msgData"
+    },
+    {
+     "offset": "0x668",
+     "width": 4,
+     "meaning": "SpriteSystem* (header names this filler_0668 - it is a live pointer, see ov18_021F11EC)"
+    },
+    {
+     "offset": "0x66c",
+     "width": 4,
+     "meaning": "unk_066C (SpriteManager*)"
+    },
+    {
+     "offset": "0x670",
+     "width": "4 * N",
+     "meaning": "ManagedSprite *sprites[] array (index*4). HEADER GAP: currently absorbed into filler_0770[0x1E0] (header comment offset off by 0x100; true filler spans 0x670..0x850). All this chunk sprite accessors index this array."
+    },
+    {
+     "offset": "0x1860",
+     "width": 4,
+     "meaning": "unk_1860 state flag (== 1 checks)"
+    },
+    {
+     "offset": "0x1878/0x187c",
+     "width": 4,
+     "meaning": "dexSearchCriteria-region members used as coord/arg pairs"
+    },
+    {
+     "offset": "0x18a2",
+     "width": 2,
+     "meaning": "curSpecies (u16)"
+    },
+    {
+     "offset": "0x18a4",
+     "width": "0x20",
+     "meaning": "seenForms[0x20]"
+    },
+    {
+     "offset": "0x18c4",
+     "width": 1,
+     "meaning": "numSeenForms (s8)"
+    },
+    {
+     "offset": "0x18c5",
+     "width": 1,
+     "meaning": "unk_18C5 (s8) cursor/scroll"
+    }
+   ]
+  }
+ ],
+ "risks": [
+  "SIGNATURES ALREADY EXIST: essentially every function in this chunk is already prototyped in include/application/pokedex/pokedex_internal.h (lines 434-560), all with first param PokedexAppData *pokedexApp. Copy verbatim rather than re-derive; a few chunk-local statics (e.g. ov18_021F11EC, ov18_021F69E8) are not listed and are true statics.",
+  "IPA HEADER FREEZE: pokedex_internal.h is included by 4 already-matched sibling C files (ov18_021E5AA0.c, ov18_021E590C.c, ov18_021E5C40.c, ov18_021E8BF4.c). Do NOT modify it. In particular, do NOT rename the filler around 0x670/0x668 into a named sprites[] array in the shared struct - that PokedexAppData change would cascade IPA codegen to those 4 TUs. Access sprites[] via local cast/pointer arithmetic on the existing filler, matching split-header discipline.",
+  "SWITCH LOWERING: PC-relative jump tables at ov18_021F362C (021F3618, 4 cases), ov18_021F56F2 (021F56DC), ov18_021F57CA (021F57B4), ov18_021F58A2 (021F588C). C switch must reproduce the same table; watch case ordering and the cmp rN,#hi; bhi default bound.",
+  "RODATA ORDERING: 35 rodata symbols (ov18_021FA304 .. ov18_021FB5B4) must emit in this exact declaration order; several are large fixed tables (0x1A0/0x1D4/0x3DC/0x548). Only ov18_021FA304 is .public; the rest are file .global. One static-const array out of order fails SHA1 even if objdiff passes per-function.",
+  "SIZE: very large chunk (~230 thumb functions, ~12.2k asm lines, 258KB) - the biggest overlay_18 chunk. Expect a long build/compare cycle; decompile incrementally.",
+  "CROSS-CHUNK CALLS: many callees (ov18_021EE388/3AC, ov18_021F6AB0, ov18_021F8xxx, ov18_021FA304, ov18_021FB618) live in adjacent overlay_18 chunks (overlay_18_021EE35C.s, overlay_18_021F6AB0.s). Use header prototypes, not new local decls with divergent types."
+ ],
+ "notes": "Pokedex application sprite/graph screen chunk (species size/weight bars, form sprites, mon-icon rendering). Signatures are a solved problem - pokedex_internal.h already declares them with correct PokedexAppData* types. Real work is C-shape/switch/rodata matching and the struct hazard: the ManagedSprite* sprite array at PokedexAppData+0x670 is currently unnamed filler in a frozen shared header, so it must be reached without editing that header."
+}

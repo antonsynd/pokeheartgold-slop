@@ -1,0 +1,935 @@
+{
+ "file": "asm/overlay_14_021F1808.s",
+ "functions": [
+  {
+   "name": "ov14_021F1808",
+   "mode": "thumb",
+   "signature_guess": "int ov14_021F1808(UnkStruct_ov14_021F1808 *ctx, int a1)",
+   "confidence": "high",
+   "callees": [
+    "ov14_021E6070",
+    "ov14_021F5FBC",
+    "ov14_021E8434",
+    "ov14_021E8234",
+    "ov14_021E8294",
+    "ov14_021E8314",
+    "ov14_021F2A18",
+    "ov14_021F396C",
+    "ov14_021F3844",
+    "ov14_021F39D0",
+    "ov14_021E88BC",
+    "ov14_021F0234"
+   ],
+   "struct_accesses": [
+    {
+     "param": 0,
+     "offset": "0x21",
+     "width": 1,
+     "meaning": "u8 cursor/party index, set from a1 (strb)"
+    },
+    {
+     "param": 0,
+     "offset": "0x34",
+     "width": 4,
+     "meaning": "ptr to work struct"
+    }
+   ],
+   "notes": "a1 stored as u8 at ctx+0x21 then passed to ov14_021E6070; result written to work+0x88C8 (u16 item id). Tail-returns ov14_021F0234(ctx, ov14_021EA408 callback, 0x76). Pool: 0x88C8, ov14_021EA408."
+  },
+  {
+   "name": "ov14_021F18B0",
+   "mode": "thumb",
+   "signature_guess": "int ov14_021F18B0(UnkStruct_ov14_021F1808 *ctx, int a1)",
+   "confidence": "high",
+   "callees": [
+    "ov14_021E6070",
+    "ov14_021E8544",
+    "ov14_021E83F4",
+    "ov14_021E84A4",
+    "ov14_021E8234",
+    "ov14_021E8294",
+    "ov14_021E8314",
+    "ov14_021F5FBC",
+    "ov14_021F2A18",
+    "ov14_021F396C",
+    "ov14_021F3844",
+    "ov14_021F39D0",
+    "ov14_021F34C8",
+    "ov14_021E88BC",
+    "ov14_021F2A44",
+    "ov14_021F40DC",
+    "ov14_021F2F88",
+    "ov14_021F1F24",
+    "ov14_021F0234"
+   ],
+   "struct_accesses": [
+    {
+     "param": 0,
+     "offset": "0x21",
+     "width": 1,
+     "meaning": "u8 index from a1"
+    },
+    {
+     "param": 0,
+     "offset": "0x34",
+     "width": 4,
+     "meaning": "work ptr; work+0x88C8=u16 item, work+0x40B8/0x40BC=s32 x/y coords (value+8)"
+    }
+   ],
+   "notes": "Reads work+0x88C8 old value before overwrite. Uses sp+0/sp+2 s16 output of ov14_021F2F88 stored to work+0x40B8/+0x40BC. Tail ov14_021F0234(ctx, ov14_021EA4C8 callback, 0x7e). Pool: 0x88C8, 0x40B8, ov14_021EA4C8."
+  },
+  {
+   "name": "ov14_021F19F0",
+   "mode": "thumb",
+   "signature_guess": "int ov14_021F19F0(UnkStruct_ov14_021F1808 *ctx, int a1)",
+   "confidence": "high",
+   "callees": [
+    "ov14_021E6070",
+    "ov14_021F6408",
+    "GridInputHandler_SetNextInput",
+    "GridInputHandler_SetButtonInputMode",
+    "ov14_021E8648",
+    "ov14_021E85E4",
+    "ov14_021E85D0",
+    "ov14_021F0234",
+    "PlaySE",
+    "ov14_021F2A18",
+    "ov14_021F396C",
+    "ov14_021F3844",
+    "ov14_021F39D0",
+    "ov14_021F34C8",
+    "ov14_021E88BC",
+    "ov14_021E8634",
+    "ov14_021F2F88",
+    "ov14_021F1F24"
+   ],
+   "struct_accesses": [
+    {
+     "param": 0,
+     "offset": "0x21",
+     "width": 1,
+     "meaning": "u8 index from a1"
+    },
+    {
+     "param": 0,
+     "offset": "0x34",
+     "width": 4,
+     "meaning": "work ptr; work+0x2c=GridInputHandler*"
+    }
+   ],
+   "notes": "Early return 0x82 on one branch. Uses work+0x2c as GridInputHandler*. Tail ov14_021F0234(ctx, ov14_021E99A0 callback, 0x82) or (ov14_021EA778, 0x84). Pool: 0x88C8, ov14_021E99A0, 0x5EB (SE), 0x40B8, ov14_021EA778."
+  },
+  {
+   "name": "ov14_021F1B4C",
+   "mode": "thumb",
+   "signature_guess": "int ov14_021F1B4C(UnkStruct_ov14_021F1808 *ctx, int a1)",
+   "confidence": "high",
+   "callees": [
+    "ov14_021E6070",
+    "PlaySE",
+    "ov14_021F2A18",
+    "ov14_021F39A0",
+    "ov14_021F3844",
+    "ov14_021F34C8",
+    "ov14_021E88BC",
+    "ov14_021E8648",
+    "ov14_021E8634",
+    "ov14_021F0234"
+   ],
+   "struct_accesses": [
+    {
+     "param": 0,
+     "offset": "0x21",
+     "width": 1,
+     "meaning": "u8 index from a1"
+    },
+    {
+     "param": 0,
+     "offset": "0x34",
+     "width": 4,
+     "meaning": "work; work+0x88CA=u16 (strh a1), work+0x88C8=u16 item, work+0x44B=u8 flag=1"
+    }
+   ],
+   "notes": "Early return 0x82 when work+0x88C8==0. Tail ov14_021F0234(ctx, ov14_021EAA04 callback, 0x88). Pool: 0x88CA, 0x88C8, 0x5EB, 0x44B, ov14_021EAA04."
+  },
+  {
+   "name": "ov14_021F1C04",
+   "mode": "thumb",
+   "signature_guess": "static int ov14_021F1C04(UnkStruct_ov14_021F1808 *ctx)",
+   "confidence": "high",
+   "callees": [
+    "GridInputHandler_GetNextInput",
+    "ov14_021E7588",
+    "ov14_021E8620",
+    "ov14_021E765C",
+    "ov14_021F1F24",
+    "ov14_021F0234"
+   ],
+   "struct_accesses": [
+    {
+     "param": 0,
+     "offset": "0x34",
+     "width": 4,
+     "meaning": "work; work+0x2c=GridInputHandler*"
+    }
+   ],
+   "notes": "NOT in .public -> static. If GetNextInput result < 0x24 calls ov14_021E7588, else ov14_021E765C. Tail ov14_021F0234(ctx, ov14_021EAC24 callback, 0x86)."
+  },
+  {
+   "name": "ov14_021F1C4C",
+   "mode": "thumb",
+   "signature_guess": "int ov14_021F1C4C(UnkStruct_ov14_021F1808 *ctx, int a1)",
+   "confidence": "high",
+   "callees": [
+    "ManagedSprite_GetPositionXY",
+    "ManagedSprite_SetPositionXY",
+    "ov14_021F1C04",
+    "ov14_021E6AA0",
+    "ov14_021E88F8",
+    "ov14_021F0234"
+   ],
+   "struct_accesses": [
+    {
+     "param": 0,
+     "offset": "0x34",
+     "width": 4,
+     "meaning": "work; work+0x44C=u8 (strb a1), work+0x44B=u8=0, work+0x320 (0x32<<4)=ManagedSprite* (Get), work+0x328 (0xca<<2)=ManagedSprite* (Set)"
+    }
+   ],
+   "notes": "a1 is r1 (int), stored u8 at work+0x44C and passed as r2 to ov14_021E6AA0. Two ManagedSprite objects at work+0x320 and work+0x328; y = getY+8. Tail ov14_021F0234(ctx, ov14_021EAB54 callback, 0x8a) or falls through to ov14_021F1C04. Pool: 0x44C, ov14_021EAB54."
+  },
+  {
+   "name": "ov14_021F1CDC",
+   "mode": "thumb",
+   "signature_guess": "int ov14_021F1CDC(UnkStruct_ov14_021F1808 *ctx, int a1)",
+   "confidence": "high",
+   "callees": [
+    "ov14_021E6070",
+    "ov14_021F5FBC",
+    "ov14_021E8434",
+    "ov14_021E8314",
+    "ov14_021F2A18",
+    "ov14_021F396C",
+    "ov14_021F3844",
+    "ov14_021F39D0",
+    "ov14_021E88BC",
+    "ov14_021F0234"
+   ],
+   "struct_accesses": [
+    {
+     "param": 0,
+     "offset": "0x21",
+     "width": 1,
+     "meaning": "u8 index from a1"
+    },
+    {
+     "param": 0,
+     "offset": "0x34",
+     "width": 4,
+     "meaning": "work; work+0x88C8=u16 item"
+    }
+   ],
+   "notes": "Tail ov14_021F0234(ctx, ov14_021EA408 callback, 0x8c). Same callback as 021F1808 but state 0x8c. Pool: 0x88C8, ov14_021EA408."
+  },
+  {
+   "name": "ov14_021F1D6C",
+   "mode": "thumb",
+   "signature_guess": "int ov14_021F1D6C(UnkStruct_ov14_021F1808 *ctx, int a1)",
+   "confidence": "high",
+   "callees": [
+    "ov14_021E6070",
+    "ov14_021E8544",
+    "ov14_021E83F4",
+    "ov14_021E84A4",
+    "ov14_021E8314",
+    "ov14_021F5FBC",
+    "ov14_021F2A18",
+    "ov14_021F396C",
+    "ov14_021F3844",
+    "ov14_021F39D0",
+    "ov14_021F34C8",
+    "ov14_021E88BC",
+    "ItemIdIsMail",
+    "ov14_021F6928",
+    "ov14_021F2A44",
+    "ov14_021F40DC",
+    "ov14_021F2F88",
+    "ov14_021F1F24",
+    "ov14_021F0234"
+   ],
+   "struct_accesses": [
+    {
+     "param": 0,
+     "offset": "0x21",
+     "width": 1,
+     "meaning": "u8 index from a1"
+    },
+    {
+     "param": 0,
+     "offset": "0x34",
+     "width": 4,
+     "meaning": "work; work+0x88C8=u16 item, work+0x40B8/0x40BC=coords"
+    }
+   ],
+   "notes": "Branches on ItemIdIsMail(work+0x88C8): ov14_021F6928(ctx,0x28,9) vs (ctx,0x28,0xa). Tail ov14_021F0234(ctx, ov14_021EACD4 callback, 0x8d). Pool: 0x88C8, 0x40B8, ov14_021EACD4."
+  },
+  {
+   "name": "ov14_021F1EB8",
+   "mode": "thumb",
+   "signature_guess": "int ov14_021F1EB8(UnkStruct_ov14_021F1808 *ctx)",
+   "confidence": "high",
+   "callees": [
+    "ov14_021F2A18",
+    "ov14_021E60C0",
+    "GetBoxMonData",
+    "ov14_021F027C",
+    "ov14_021E84A4",
+    "ov14_021F0234"
+   ],
+   "struct_accesses": [
+    {
+     "param": 0,
+     "offset": "0x1f",
+     "width": 1,
+     "meaning": "u8 param passed to ov14_021E60C0 (as r1)"
+    },
+    {
+     "param": 0,
+     "offset": "0x21",
+     "width": 1,
+     "meaning": "u8 index passed to ov14_021E60C0 (as r2)"
+    },
+    {
+     "param": 0,
+     "offset": "0x2c",
+     "width": 4,
+     "meaning": "s32 set to 0x24 when held item == 0"
+    },
+    {
+     "param": 0,
+     "offset": "0x34",
+     "width": 4,
+     "meaning": "work; work+0x88C8=u16 item"
+    }
+   ],
+   "notes": "Single arg (no r1 read). ov14_021E60C0 returns BoxPokemon*; GetBoxMonData(boxMon, 0x4c held-item attr, NULL). r4 holds state constant 0x7c/0x78 for tail ov14_021F0234(ctx, ov14_021E9450 callback, r4). Pool: 0x88C8, ov14_021E9450."
+  },
+  {
+   "name": "ov14_021F1F24",
+   "mode": "thumb",
+   "signature_guess": "static void ov14_021F1F24(UnkStruct_ov14_021F1808 *ctx)",
+   "confidence": "high",
+   "callees": [
+    "Heap_Alloc"
+   ],
+   "struct_accesses": [
+    {
+     "param": 0,
+     "offset": "0x34",
+     "width": 4,
+     "meaning": "work ptr"
+    },
+    {
+     "param": 0,
+     "offset": "work+0xc",
+     "width": 4,
+     "meaning": "work+0xc = Heap_Alloc(HEAPID 0xa, 0x1c) result"
+    }
+   ],
+   "notes": "NOT in .public -> static. Allocates a 0x1c-byte buffer into work+0xc with heapId 0xa. Called by 021F18B0/19F0/1C4C/1D6C/1C04."
+  },
+  {
+   "name": "ov14_021F1F38",
+   "mode": "thumb",
+   "signature_guess": "void ov14_021F1F38(UnkStruct_ov14_021F1808 *ctx)",
+   "confidence": "high",
+   "callees": [
+    "Heap_Free"
+   ],
+   "struct_accesses": [
+    {
+     "param": 0,
+     "offset": "work+0xc",
+     "width": 4,
+     "meaning": "work+0xc buffer freed"
+    }
+   ],
+   "notes": "Tail-call bx to Heap_Free(work+0xc). void return. Pool: Heap_Free."
+  },
+  {
+   "name": "ov14_021F1F44",
+   "mode": "thumb",
+   "signature_guess": "int ov14_021F1F44(UnkStruct_ov14_021F1808 *ctx)",
+   "confidence": "medium",
+   "callees": [
+    "ov14_021F7B7C",
+    "PlaySE",
+    "GridInputHandler_GetNextInput",
+    "ov14_021F2330",
+    "ov14_021F7340",
+    "GridInputHandler_IsButtonInputMode",
+    "ov14_021F0244",
+    "ov14_021F15C8"
+   ],
+   "struct_accesses": [
+    {
+     "param": 0,
+     "offset": "0x26",
+     "width": 1,
+     "meaning": "u8 flag = 1"
+    },
+    {
+     "param": 0,
+     "offset": "0x27",
+     "width": 1,
+     "meaning": "u8 flag = 1"
+    },
+    {
+     "param": 0,
+     "offset": "0x28",
+     "width": 1,
+     "meaning": "u8 = GridInputHandler_GetNextInput result"
+    },
+    {
+     "param": 0,
+     "offset": "0x34",
+     "width": 4,
+     "meaning": "work; work+0x2c=GridInputHandler*"
+    }
+   ],
+   "notes": "Contains a SIGNED switch with negative cases: r4 = ov14_021F7340(ctx) or -1 (from mvn) when not button mode; compares against -2/-3/-4 (mvn) and 0x24..0x2a via inline jump table _021F1FB6 (7 entries, cases 0..6). See risks. Returns int state (0x73/0x74 path via ov14_021F0244/ov14_021F15C8). Pool: 0x5DD, 0x5DC."
+  },
+  {
+   "name": "ov14_021F2010",
+   "mode": "thumb",
+   "signature_guess": "int ov14_021F2010(UnkStruct_ov14_021F1808 *ctx)",
+   "confidence": "high",
+   "callees": [
+    "Heap_Free"
+   ],
+   "struct_accesses": [
+    {
+     "param": 0,
+     "offset": "work+0xc",
+     "width": 4,
+     "meaning": "work+0xc freed"
+    }
+   ],
+   "notes": "Frees work+0xc, returns 0x73."
+  },
+  {
+   "name": "ov14_021F2020",
+   "mode": "thumb",
+   "signature_guess": "int ov14_021F2020(UnkStruct_ov14_021F1808 *ctx)",
+   "confidence": "medium",
+   "callees": [
+    "ov14_021E6070",
+    "Bag_AddItem",
+    "ov14_021E60C0",
+    "ov14_021F673C",
+    "ov14_021E6094",
+    "ov14_021E64D0",
+    "ov14_021F2ED0",
+    "ov14_021E75F4",
+    "PlaySE",
+    "ov14_021F675C"
+   ],
+   "struct_accesses": [
+    {
+     "param": 0,
+     "offset": "0x0c",
+     "width": 4,
+     "meaning": "Bag* passed to Bag_AddItem (this+0xc, NOT work)"
+    },
+    {
+     "param": 0,
+     "offset": "0x1f",
+     "width": 1,
+     "meaning": "u8 arg to ov14_021E60C0"
+    },
+    {
+     "param": 0,
+     "offset": "0x21",
+     "width": 1,
+     "meaning": "u8 index"
+    },
+    {
+     "param": 0,
+     "offset": "0x30",
+     "width": 4,
+     "meaning": "s32 = 0xe (next state)"
+    },
+    {
+     "param": 0,
+     "offset": "0x34",
+     "width": 4,
+     "meaning": "work; work+0x21+0x4094 = u8 read"
+    }
+   ],
+   "notes": "Bag_AddItem(this+0xc, itemId=ov14_021E6070 result, 1, HEAPID 0xa). NOTE this+0xc here is a Bag* param, distinct from work+0xc buffer. Returns 6. Pool: 0x4094, 0x5F3."
+  },
+  {
+   "name": "ov14_021F20C4",
+   "mode": "thumb",
+   "signature_guess": "int ov14_021F20C4(UnkStruct_ov14_021F1808 *ctx)",
+   "confidence": "high",
+   "callees": [
+    "ov14_021F40DC",
+    "ov14_021F6654",
+    "ov14_021E71E8",
+    "ov14_021F3354",
+    "ov14_021E884C"
+   ],
+   "struct_accesses": [
+    {
+     "param": 0,
+     "offset": "0x34",
+     "width": 4,
+     "meaning": "work; work+0x88DC=u32 passed to ov14_021F3354"
+    }
+   ],
+   "notes": "Returns 0x1a. Pool: 0x88DC."
+  },
+  {
+   "name": "ov14_021F20F4",
+   "mode": "thumb",
+   "signature_guess": "int ov14_021F20F4(UnkStruct_ov14_021F1808 *ctx)",
+   "confidence": "medium",
+   "callees": [
+    "Save_Bag_Get",
+    "Bag_AddItem",
+    "PlaySE",
+    "ov14_021F68C0",
+    "ov14_021E6094",
+    "ov14_021E60C0",
+    "ov14_021E64D0",
+    "ov14_021F2ED0",
+    "ov14_021E7588",
+    "ov14_021F40DC",
+    "ov14_021F6654",
+    "ov14_021F391C",
+    "ov14_021F29E4",
+    "ov14_021E88F8"
+   ],
+   "struct_accesses": [
+    {
+     "param": 0,
+     "offset": "0x00",
+     "width": 4,
+     "meaning": "this+0 = parent ptr; (*(this+0))+0 = SaveData* for Save_Bag_Get"
+    },
+    {
+     "param": 0,
+     "offset": "0x1f",
+     "width": 1,
+     "meaning": "u8 arg"
+    },
+    {
+     "param": 0,
+     "offset": "0x21",
+     "width": 1,
+     "meaning": "u8 index"
+    },
+    {
+     "param": 0,
+     "offset": "0x30",
+     "width": 4,
+     "meaning": "s32 = 0x7a on fail path"
+    },
+    {
+     "param": 0,
+     "offset": "0x34",
+     "width": 4,
+     "meaning": "work; work+0x88C8=u16 item, work+0x21+0x4094=u8"
+    }
+   ],
+   "notes": "Bag_AddItem(Save_Bag_Get(saveData), work+0x88C8, 1, HEAPID 0xa). Returns 6 (fail) or 0x79. Pool: 0x88C8, 0x5F3, 0x4094."
+  },
+  {
+   "name": "ov14_021F21B4",
+   "mode": "thumb",
+   "signature_guess": "int ov14_021F21B4(UnkStruct_ov14_021F1808 *ctx)",
+   "confidence": "high",
+   "callees": [
+    "PlaySE",
+    "ov14_021F0204"
+   ],
+   "struct_accesses": [
+    {
+     "param": 0,
+     "offset": "0x30",
+     "width": 4,
+     "meaning": "s32 = 0xb3 (next state)"
+    }
+   ],
+   "notes": "PlaySE(0x60D); ctx+0x30=0xb3; tail-returns ov14_021F0204(ctx, 1). Pool: 0x60D."
+  },
+  {
+   "name": "ov14_021F21D0",
+   "mode": "thumb",
+   "signature_guess": "int ov14_021F21D0(UnkStruct_ov14_021F1808 *ctx)",
+   "confidence": "medium",
+   "callees": [
+    "ov14_021F6654",
+    "GridInputHandler_SetButtonInputMode",
+    "ov14_021F685C",
+    "ov14_021F3488",
+    "ov14_021F43F4"
+   ],
+   "struct_accesses": [
+    {
+     "param": 0,
+     "offset": "0x00",
+     "width": 4,
+     "meaning": "this+0 = parent ptr; (*(this+0))+8 = int switch selector (0..3)"
+    },
+    {
+     "param": 0,
+     "offset": "0x34",
+     "width": 4,
+     "meaning": "work; work+0x2c=GridInputHandler*"
+    }
+   ],
+   "notes": "Inline jump table _021F21FA over (*(this+0))+8, dense 0..3 -> returns 0x5b / 0x51 / 0xc / 0x75; default returns 0xc. See switch risks. No pool words (jump table only)."
+  },
+  {
+   "name": "ov14_021F2270",
+   "mode": "thumb",
+   "signature_guess": "int ov14_021F2270(UnkStruct_ov14_021F1808 *ctx, int a1, int nextState)",
+   "confidence": "medium",
+   "callees": [
+    "sub_02019B1C",
+    "sub_02019B44",
+    "sub_02019B10"
+   ],
+   "struct_accesses": [
+    {
+     "param": 0,
+     "offset": "0x34",
+     "width": 4,
+     "meaning": "work; work+0x2f0=UnkStruct_0201956C*, work+0x88D4..+0x88DB = message-box bitfield/config bytes"
+    }
+   ],
+   "notes": "a1 (r1) passed to sub_02019B1C/B44/B10 as int index. nextState (r2) stored at ctx+0x30. Packs 8 bytes into work+0x88D4.. (config = 0x0d/0xc0 variant). Returns 8. Near-identical body to 021F2330 (differs in config nibbles 0xd/0xc0 vs 0x3/0x20). Pool: 0x88D4."
+  },
+  {
+   "name": "ov14_021F2330",
+   "mode": "thumb",
+   "signature_guess": "int ov14_021F2330(UnkStruct_ov14_021F1808 *ctx, int a1, int nextState)",
+   "confidence": "medium",
+   "callees": [
+    "sub_02019B1C",
+    "sub_02019B44",
+    "sub_02019B10"
+   ],
+   "struct_accesses": [
+    {
+     "param": 0,
+     "offset": "0x34",
+     "width": 4,
+     "meaning": "work; work+0x2f0=UnkStruct_0201956C*, work+0x88D4.. config bytes"
+    }
+   ],
+   "notes": "Twin of 021F2270; config nibbles 0x3/0x20. nextState -> ctx+0x30. Returns 8. Pool: 0x88D4."
+  },
+  {
+   "name": "ov14_021F23F0",
+   "mode": "thumb",
+   "signature_guess": "int ov14_021F23F0(UnkStruct_ov14_021F1808 *ctx, int a1, int nextState)",
+   "confidence": "medium",
+   "callees": [
+    "sub_02019B10"
+   ],
+   "struct_accesses": [
+    {
+     "param": 0,
+     "offset": "0x34",
+     "width": 4,
+     "meaning": "work; work+0x2f0=UnkStruct_0201956C* (idx 2 fixed), work+0x88D4.. + work+0x88D8.. config bytes"
+    }
+   ],
+   "notes": "a1 (r4) only used as boolean: work+0x88D4+5 = (a1==0 ? 0x10 : 0x14). nextState (r6) -> ctx+0x30. Writes work+0x88D8=0x16, +0x88DA=9, +0x88DB=4. Returns 8. Pool: 0x88D4, 0x88D8."
+  }
+ ],
+ "imports": {
+  "Heap_Alloc": {
+   "known_prototype": "void *Heap_Alloc(enum HeapID heapID, u32 size)",
+   "header": "include/heap.h"
+  },
+  "Heap_Free": {
+   "known_prototype": "void Heap_Free(void *ptr)",
+   "header": "include/heap.h"
+  },
+  "PlaySE": {
+   "known_prototype": "void PlaySE(u16 sndseq)",
+   "header": "include/unk_02005D10.h",
+   "evidence": "IMPORT FROM BLOCKED FILE unk_02005D10 - see risks/IPA note"
+  },
+  "Bag_AddItem": {
+   "known_prototype": "BOOL Bag_AddItem(Bag *bag, u16 itemId, u16 quantity, enum HeapID heapID)",
+   "header": "include/bag.h"
+  },
+  "Save_Bag_Get": {
+   "known_prototype": "Bag *Save_Bag_Get(SaveData *saveData)",
+   "header": "include/bag.h"
+  },
+  "GetBoxMonData": {
+   "known_prototype": "u32 GetBoxMonData(BoxPokemon *boxMon, int attr, void *ptr)",
+   "header": "include/pokemon.h"
+  },
+  "ItemIdIsMail": {
+   "known_prototype": "BOOL ItemIdIsMail(u16 itemId)",
+   "header": "include/item.h"
+  },
+  "ManagedSprite_GetPositionXY": {
+   "known_prototype": "void ManagedSprite_GetPositionXY(ManagedSprite *managedSprite, s16 *x, s16 *y)",
+   "header": "include/sprite_system.h"
+  },
+  "ManagedSprite_SetPositionXY": {
+   "known_prototype": "void ManagedSprite_SetPositionXY(ManagedSprite *managedSprite, s16 x, s16 y)",
+   "header": "include/sprite_system.h"
+  },
+  "GridInputHandler_GetNextInput": {
+   "known_prototype": "int GridInputHandler_GetNextInput(GridInputHandler *inputHandler)",
+   "header": "include/unk_02019BA4.h"
+  },
+  "GridInputHandler_SetNextInput": {
+   "known_prototype": "void GridInputHandler_SetNextInput(GridInputHandler *inputHandler, int nextInput)",
+   "header": "include/unk_02019BA4.h"
+  },
+  "GridInputHandler_IsButtonInputMode": {
+   "known_prototype": "BOOL GridInputHandler_IsButtonInputMode(GridInputHandler *inputHandler)",
+   "header": "include/unk_02019BA4.h"
+  },
+  "GridInputHandler_SetButtonInputMode": {
+   "known_prototype": "void GridInputHandler_SetButtonInputMode(GridInputHandler *inputHandler, BOOL isButtons)",
+   "header": "include/unk_02019BA4.h"
+  },
+  "sub_02019B44": {
+   "known_prototype": "void sub_02019B44(UnkStruct_0201956C *a0, int a1, u16 *a2, u16 *a3)",
+   "header": "include/unk_0201956C.h"
+  },
+  "sub_02019B1C": {
+   "signature_guess": "void sub_02019B1C(UnkStruct_0201956C *a0, int a1, u16 *a2, u16 *a3)",
+   "evidence": "same object (work+0x2f0) and pattern as sub_02019B44; called with r2=sp+1, r3=sp+0; not yet in a header"
+  },
+  "sub_02019B10": {
+   "signature_guess": "int sub_02019B10(UnkStruct_0201956C *a0, int a1)",
+   "evidence": "returns a value later masked (lsl#0x19; lsr#0x18) to ~7 bits; only r0/r1 loaded; not in a header"
+  },
+  "ov14_021F0234": {
+   "signature_guess": "int ov14_021F0234(UnkStruct_ov14_021F1808 *ctx, StateFn callback, int stateId)",
+   "evidence": "the state-transition dispatcher: called at tail of most handlers with r1=callback fn ptr, r2=state constant; result is returned by the handler"
+  },
+  "ov14_021F0204": {
+   "signature_guess": "int ov14_021F0204(UnkStruct_ov14_021F1808 *ctx, int a1)",
+   "evidence": "tail-returned by 021F21B4 with a1=1"
+  },
+  "ov14_021F0244": {
+   "signature_guess": "int ov14_021F0244(UnkStruct_ov14_021F1808 *ctx, int a1)",
+   "evidence": "called with a1=0x74"
+  },
+  "ov14_021F027C": {
+   "signature_guess": "void ov14_021F027C(UnkStruct_ov14_021F1808 *ctx, int a1)",
+   "evidence": "called with a1=1"
+  },
+  "ov14_021F15C8": {
+   "signature_guess": "int ov14_021F15C8(UnkStruct_ov14_021F1808 *ctx, int a1)",
+   "evidence": "called with a1=0xff or the switch selector r4"
+  },
+  "ov14_021E6070": {
+   "signature_guess": "u16 ov14_021E6070(UnkStruct_ov14_021F1808 *ctx, int a1, int a2, int a3)",
+   "evidence": "called (ctx, ctx+0x21 u8, 6, 0); u16 result strh into work+0x88C8"
+  },
+  "ov14_021E6094": {
+   "signature_guess": "void ov14_021E6094(UnkStruct_ov14_021F1808 *ctx, int a1, int a2, u16 *a3)",
+   "evidence": "(ctx, ctx+0x21 u8, 6, sp u16)"
+  },
+  "ov14_021E60C0": {
+   "signature_guess": "BoxPokemon *ov14_021E60C0(UnkStruct_ov14_021F1808 *ctx, int a1, int a2)",
+   "evidence": "(ctx, ctx+0x1f u8, ctx+0x21 u8); result fed to GetBoxMonData/ov14_021E64D0"
+  },
+  "ov14_021E64D0": {
+   "signature_guess": "BOOL ov14_021E64D0(BoxPokemon *a0)",
+   "evidence": "result of ov14_021E60C0 passed in; cmp #1"
+  },
+  "ov14_021F2A18": {
+   "signature_guess": "void ov14_021F2A18(void *work, int a1, int a2)",
+   "evidence": "(work=[ctx+0x34], 0xb or 9, 0)"
+  },
+  "ov14_021F2A44": {
+   "signature_guess": "BOOL ov14_021F2A44(void *work, int a1)",
+   "evidence": "(work, 0xb); cmp #1"
+  },
+  "ov14_021F396C": {
+   "signature_guess": "void ov14_021F396C(void *work, int a1, int a2)",
+   "evidence": "(work, ctx+0x21 u8, 0/1/2)"
+  },
+  "ov14_021F3844": {
+   "signature_guess": "void ov14_021F3844(void *work, u16 a1)",
+   "evidence": "(work, work+0x88C8 u16 item)"
+  },
+  "ov14_021F34C8": {
+   "signature_guess": "void ov14_021F34C8(void *work, int a1, int a2)",
+   "evidence": "(work, ctx+0x21 u8, 1)"
+  },
+  "ov14_021F2F88": {
+   "signature_guess": "void ov14_021F2F88(int a0, s16 *outX, s16 *outY, int a3)",
+   "evidence": "(ctx+0x21 u8, sp+2, sp+0, 0/1/2); outputs two s16 later added +8 and stored to work+0x40B8/+0x40BC"
+  },
+  "ov14_021F6928": {
+   "signature_guess": "void ov14_021F6928(UnkStruct_ov14_021F1808 *ctx, int a1, int a2)",
+   "evidence": "(ctx, 0x28, 9 or 0xa)"
+  }
+ },
+ "shared_struct_hypotheses": [
+  {
+   "name": "UnkStruct_ov14_021F1808",
+   "size_guess": ">=0x38 (fields up to 0x34 observed)",
+   "note": "The overlay-14 app/task context passed in r0 to every handler. A decompiler working other overlay_14 chunks should already have a canonical name - reconcile before committing. Field 0x34 is a pointer to a large work struct (below).",
+   "fields": [
+    {
+     "offset": "0x00",
+     "width": 4,
+     "meaning": "parent ptr; (+0)=SaveData*, (+8)=int state selector"
+    },
+    {
+     "offset": "0x0c",
+     "width": 4,
+     "meaning": "Bag* (used by ov14_021F2020 Bag_AddItem) - CAUTION: not the same as work+0xc"
+    },
+    {
+     "offset": "0x1f",
+     "width": 1,
+     "meaning": "u8 (arg to ov14_021E60C0/6094)"
+    },
+    {
+     "offset": "0x21",
+     "width": 1,
+     "meaning": "u8 cursor/party index; set from a1 in entry handlers"
+    },
+    {
+     "offset": "0x26",
+     "width": 1,
+     "meaning": "u8 flag"
+    },
+    {
+     "offset": "0x27",
+     "width": 1,
+     "meaning": "u8 flag"
+    },
+    {
+     "offset": "0x28",
+     "width": 1,
+     "meaning": "u8 saved input"
+    },
+    {
+     "offset": "0x2c",
+     "width": 4,
+     "meaning": "s32 (set 0x24 in 021F1EB8)"
+    },
+    {
+     "offset": "0x30",
+     "width": 4,
+     "meaning": "s32 next-state id (post-message)"
+    },
+    {
+     "offset": "0x34",
+     "width": 4,
+     "meaning": "ptr to work struct"
+    }
+   ]
+  },
+  {
+   "name": "UnkStruct_ov14_021F1808_work (at ctx+0x34)",
+   "size_guess": ">0x88DC bytes (large scene/data struct)",
+   "fields": [
+    {
+     "offset": "0x0c",
+     "width": 4,
+     "meaning": "void* Heap_Alloc(0xa, 0x1c) buffer (021F1F24/1F38/2010)"
+    },
+    {
+     "offset": "0x2c",
+     "width": 4,
+     "meaning": "GridInputHandler*"
+    },
+    {
+     "offset": "0x2f0",
+     "width": 4,
+     "meaning": "UnkStruct_0201956C* (text/window printer for sub_02019Bxx and ov14_021E8xxx)"
+    },
+    {
+     "offset": "0x320",
+     "width": 4,
+     "meaning": "ManagedSprite* (0x32<<4)"
+    },
+    {
+     "offset": "0x328",
+     "width": 4,
+     "meaning": "ManagedSprite* (0xca<<2)"
+    },
+    {
+     "offset": "0x40B8",
+     "width": 4,
+     "meaning": "s32 x coord (stored value+8)"
+    },
+    {
+     "offset": "0x40BC",
+     "width": 4,
+     "meaning": "s32 y coord (stored value+8)"
+    },
+    {
+     "offset": "0x4094",
+     "width": 1,
+     "meaning": "u8[] table indexed by ctx+0x21 (work+0x21+0x4094)"
+    },
+    {
+     "offset": "0x44b",
+     "width": 1,
+     "meaning": "u8 flag"
+    },
+    {
+     "offset": "0x44c",
+     "width": 1,
+     "meaning": "u8 (set from a1 in 021F1C4C)"
+    },
+    {
+     "offset": "0x88c8",
+     "width": 2,
+     "meaning": "u16 selected item id"
+    },
+    {
+     "offset": "0x88ca",
+     "width": 2,
+     "meaning": "u16 (021F1B4C writes a1)"
+    },
+    {
+     "offset": "0x88d4",
+     "width": 8,
+     "meaning": "message-box config byte block (bitfield-packed by 021F2270/2330/23F0)"
+    },
+    {
+     "offset": "0x88d8",
+     "width": 4,
+     "meaning": "config bytes (021F23F0 writes 0x16,9,4)"
+    },
+    {
+     "offset": "0x88dc",
+     "width": 4,
+     "meaning": "u32 (arg to ov14_021F3354)"
+    }
+   ]
+  }
+ ],
+ "risks": [
+  "SIGNED switch in ov14_021F1F44 with inline jump table _021F1FB6 (7 dense cases 0..6) AND negative case comparisons (-2/-3/-4 via mvn). To reproduce the add-pc/ldrh jump table, all dense cases 0..6 must be explicit (incl. no-op cases) and body layout must follow retail address order - see insights.md switch-case-body-layout-follows-source-order-not-case-value, dense-switch-needs-case-zero, switch-jumptable-density. High matching risk.",
+  "Inline jump table _021F21FA in ov14_021F21D0 (dense cases 0..3 -> states 0x5b/0x51/0xc/0x75, default 0xc). Write all four cases explicitly + default; keep case bodies in address order.",
+  "ov14_021F2270 and ov14_021F2330 are near-identical twins (differ only in config nibble constants 0xd/0xc0 vs 0x3/0x20). Easy to accidentally CSE/merge; keep both bodies verbatim.",
+  "PlaySE is imported from blocked file unk_02005D10 (project_ipa_blocker). Do NOT add/modify declarations in include/unk_02005D10.h; PlaySE prototype is already frozen there - include the existing header, do not touch it.",
+  "IPA (-ipa file): this overlay shared handler signatures are load-bearing. ov14_021F0234 (ctx, StateFn, int) shape is reused by every handler tail - get it right once and keep it consistent across all overlay_14 chunks. Adding new declarations to any shared header cascades codegen; use the split-header pattern if a new header is needed.",
+  "this+0xc (Bag*) vs work+0xc (0x1c buffer) are DIFFERENT fields at the same numeric offset on two different structs - do not conflate.",
+  "sub_02019B10 / sub_02019B1C have no committed prototype yet; if a header is added for them it must not perturb already-matched files that include unk_0201956C.h."
+ ],
+ "notes": "No .rodata/.data/.bss in this chunk - all constants are inline literal pools (.word) and two inline .text jump tables; nothing for save_arrays.c. All 19 .public-and-defined symbols are true exports; ov14_021F1C04 and ov14_021F1F24 are defined but NOT in .public -> emit as static. Function order (file order): 1808,18B0,19F0,1B4C,1C04(static),1C4C,1CDC,1D6C,1EB8,1F24(static),1F38,1F44,2010,2020,20C4,20F4,21B4,21D0,2270,2330,23F0. This is a state-handler bank for an overlay-14 item/party screen: each handler mutates the work struct (item id, message box, sprites) and tail-transitions via ov14_021F0234(ctx, next_callback, next_state)."
+}

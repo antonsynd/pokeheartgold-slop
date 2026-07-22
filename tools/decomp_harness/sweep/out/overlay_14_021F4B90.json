@@ -1,0 +1,1214 @@
+{
+ "file": "asm/overlay_14_021F4B90.s",
+ "summary": "PC Box / Pokemon storage-box UI drawing chunk of overlay 14 (27 thumb functions, no ARM). Two struct params dominate: an OUTER work struct (SaveData holder @0, PCStorage* @4, boxId bytes @0x1f/@0x25, pointer @0x34 to an INNER graphics/UI struct G) and G itself (BgConfig @0x14, MsgData @0x20, MessageFormat @0x24, String @0x28, Window[] @0x30, ManagedSprite*[] @0x2fc/@0x338, TextOBJ @0x414/@0x424, flags byte @0x44e).",
+ "functions": [
+  {
+   "name": "ov14_021F4B90",
+   "mode": "thumb",
+   "signature_guess": "void ov14_021F4B90(void *g, int index, int x, int y, int a4)",
+   "confidence": "high",
+   "callees": [
+    "ManagedSprite_SetPositionXY",
+    "ov14_021F2A18",
+    "ov14_021F2A60"
+   ],
+   "struct_accesses": [
+    {
+     "param": 0,
+     "offset": "0x2fc + index*4",
+     "width": 4,
+     "meaning": "ManagedSprite* array (0xbf<<2 base)"
+    }
+   ],
+   "notes": "5 params (a4 at [sp,#0x10]). Sets sprite[index] pos to (x,y) then ov14_021F2A18(g,index,a4), ov14_021F2A60(g,index,0). x/y passed as s16."
+  },
+  {
+   "name": "ov14_021F4BC0",
+   "mode": "thumb",
+   "signature_guess": "void ov14_021F4BC0(void *work)",
+   "confidence": "high",
+   "callees": [
+    "ov14_021F4B90",
+    "ManagedSprite_GetPositionXY",
+    "ov14_021F49E0",
+    "ov14_021F29E4",
+    "ov14_021F46F4",
+    "TextOBJ_SetSpritesDrawFlag",
+    "sub_020137F0"
+   ],
+   "struct_accesses": [
+    {
+     "param": 0,
+     "offset": "0x34",
+     "width": 4,
+     "meaning": "-> inner gfx struct G"
+    }
+   ],
+   "notes": "Positions sprites 4..8 then a 0..5 loop reading sprite[i] (G+0x338) pos and re-placing sprite[i+0xf]. Draws two TextOBJ (G[0x414]/G[0x424])."
+  },
+  {
+   "name": "ov14_021F4CA0",
+   "mode": "thumb",
+   "signature_guess": "void ov14_021F4CA0(void *work)",
+   "confidence": "high",
+   "callees": [
+    "ov14_021F2A18",
+    "TextOBJ_SetSpritesDrawFlag"
+   ],
+   "notes": "Hides sprites 4..8 and 0..5+0xf via ov14_021F2A18(G,idx,0); clears TextOBJ draw flags. Inverse of ov14_021F4BC0."
+  },
+  {
+   "name": "ov14_021F4D10",
+   "mode": "thumb",
+   "signature_guess": "void ov14_021F4D10(void *g)",
+   "confidence": "medium",
+   "callees": [
+    "FontSystem_NewInit",
+    "InitWindow",
+    "AddTextWindowTopLeftCorner",
+    "sub_02013688",
+    "sub_02021AC8",
+    "SpriteManager_GetSpriteList",
+    "SpriteManager_FindPlttResourceProxy",
+    "sub_020135D8",
+    "sub_020138B0",
+    "sub_020138E0",
+    "RemoveWindow"
+   ],
+   "struct_accesses": [
+    {
+     "param": 0,
+     "offset": "0x410",
+     "width": 4,
+     "meaning": "FontSystem ctx (0x41<<4)"
+    },
+    {
+     "param": 0,
+     "offset": "0x414",
+     "width": 4,
+     "meaning": "TextOBJ* (first)"
+    },
+    {
+     "param": 0,
+     "offset": "0x424",
+     "width": 4,
+     "meaning": "TextOBJ* (second)"
+    },
+    {
+     "param": 0,
+     "offset": "0x14",
+     "width": 4,
+     "meaning": "BgConfig*"
+    },
+    {
+     "param": 0,
+     "offset": "0x2f8",
+     "width": 4,
+     "meaning": "SpriteManager* (0xbe<<2)"
+    },
+    {
+     "param": 0,
+     "offset": "0x318",
+     "width": 4,
+     "meaning": "resource ptr (0xc6<<2)"
+    }
+   ],
+   "notes": "a0 is INNER gfx struct G. Builds two windowed text-OBJ sprites (box-name labels) via sub_020135D8, stored G[0x414]/G[0x424]. Frame sub sp,#0x48; pool 0xC101,0x414,0x424."
+  },
+  {
+   "name": "ov14_021F4E68",
+   "mode": "thumb",
+   "signature_guess": "void ov14_021F4E68(void *g)",
+   "confidence": "high",
+   "callees": [
+    "sub_02021B5C",
+    "FontOAM_Delete",
+    "sub_020135AC"
+   ],
+   "struct_accesses": [
+    {
+     "param": 0,
+     "offset": "0x418 + i*0x10",
+     "width": 4,
+     "meaning": "FontOAM ctx (i=0,1)"
+    },
+    {
+     "param": 0,
+     "offset": "0x414 + i*0x10",
+     "width": 4,
+     "meaning": "TextOBJ* (i=0,1)"
+    },
+    {
+     "param": 0,
+     "offset": "0x410",
+     "width": 4,
+     "meaning": "FontSystem ctx"
+    }
+   ],
+   "notes": "Teardown of ov14_021F4D10. 2-iter loop (stride 0x10) then sub_020135AC(G[0x410]). Saves a0 at [sp]."
+  },
+  {
+   "name": "ov14_021F4EA0",
+   "mode": "thumb",
+   "signature_guess": "void ov14_021F4EA0(void *g, Window *window, int index)",
+   "confidence": "high",
+   "callees": [
+    "sub_02013910",
+    "TextOBJ_CopyFromBGWindow",
+    "sub_02013938"
+   ],
+   "struct_accesses": [
+    {
+     "param": 0,
+     "offset": "0x414 + index*0x10",
+     "width": 4,
+     "meaning": "TextOBJ* (index=0 or 1)"
+    }
+   ],
+   "notes": "sub_02013910(window,0xa)->tmp; TextOBJ_CopyFromBGWindow(G[0x414+index*0x10], tmp, window, 0xa); sub_02013938(tmp)."
+  },
+  {
+   "name": "ov14_021F4ED0",
+   "mode": "thumb",
+   "signature_guess": "void ov14_021F4ED0(void *work)",
+   "confidence": "high",
+   "callees": [
+    "FontID_Alloc",
+    "AddWindow"
+   ],
+   "struct_accesses": [
+    {
+     "param": 0,
+     "offset": "0x34",
+     "width": 4,
+     "meaning": "-> G"
+    },
+    {
+     "param": 0,
+     "offset": "G+0x30 + i*0x10",
+     "width": 16,
+     "meaning": "Window array (0x2c entries)"
+    },
+    {
+     "param": 0,
+     "offset": "G+0x14",
+     "width": 4,
+     "meaning": "BgConfig*"
+    }
+   ],
+   "notes": "FontID_Alloc(4,0xa); loop i=0..0x2b: AddWindow(G->bgConfig, &G->windows[i], &ov14_021F84B4[i]) -- the rodata WindowTemplate[0x2c]."
+  },
+  {
+   "name": "ov14_021F4F00",
+   "mode": "thumb",
+   "signature_guess": "void ov14_021F4F00(void *work)",
+   "confidence": "high",
+   "callees": [
+    "RemoveWindow",
+    "FontID_Release"
+   ],
+   "struct_accesses": [
+    {
+     "param": 0,
+     "offset": "G+0x30 + i*0x10",
+     "width": 16,
+     "meaning": "Window array"
+    }
+   ],
+   "notes": "loop i=0..0x2b RemoveWindow(&G->windows[i]); FontID_Release(4). Counter narrowed lsl#16/lsr#16 -> u16 index."
+  },
+  {
+   "name": "ov14_021F4F24",
+   "mode": "thumb",
+   "signature_guess": "void ov14_021F4F24(Window *window, String *str, int x, int y, int fontId, u32 color, int align)",
+   "confidence": "high",
+   "callees": [
+    "FontID_String_GetWidth",
+    "FontID_String_GetWidthMultiline",
+    "AddTextPrinterParameterizedWithColor"
+   ],
+   "notes": "7 params: fontId=[sp,#0x28], color=[sp,#0x2c], align=[sp,#0x30]. align 1=right, 2=center, 3=center multiline. width is u32 so /2 is unsigned lsr -- keep width u32."
+  },
+  {
+   "name": "ov14_021F4F84",
+   "mode": "thumb",
+   "signature_guess": "void ov14_021F4F84(void *g, MsgData *msgData, int winIndex, u32 msgId, int x, int y, int fontId, u32 color, int align)",
+   "confidence": "high",
+   "callees": [
+    "NewString_ReadMsgData",
+    "ov14_021F4F24",
+    "String_Delete"
+   ],
+   "struct_accesses": [
+    {
+     "param": 0,
+     "offset": "0x30 + winIndex*0x10",
+     "width": 16,
+     "meaning": "Window array"
+    }
+   ],
+   "notes": "9 params (x/y/fontId/color/align at [sp,#0x20/0x24/0x28/0x2c/0x30]). str=NewString_ReadMsgData(msgData,msgId); ov14_021F4F24(&g->windows[winIndex],...). Verified vs caller ov14_021F566C."
+  },
+  {
+   "name": "ov14_021F4FBC",
+   "mode": "thumb",
+   "signature_guess": "void ov14_021F4FBC(void *g, MsgData *msgData, int winIndex, u32 msgId, int x, int y, int fontId, u32 color, int align)",
+   "confidence": "high",
+   "callees": [
+    "NewString_ReadMsgData",
+    "StringExpandPlaceholders",
+    "ov14_021F4F24",
+    "String_Delete"
+   ],
+   "struct_accesses": [
+    {
+     "param": 0,
+     "offset": "0x24",
+     "width": 4,
+     "meaning": "MessageFormat*"
+    },
+    {
+     "param": 0,
+     "offset": "0x28",
+     "width": 4,
+     "meaning": "String* scratch (expand dest)"
+    },
+    {
+     "param": 0,
+     "offset": "0x30 + winIndex*0x10",
+     "width": 16,
+     "meaning": "Window array"
+    }
+   ],
+   "notes": "Like ov14_021F4F84 but StringExpandPlaceholders(g->msgFmt, g->str@0x28, raw) then prints g->str@0x28."
+  },
+  {
+   "name": "ov14_021F5000",
+   "mode": "thumb",
+   "signature_guess": "void ov14_021F5000(void *g, BoxMonDisplayEntry *entry, int winIndex)",
+   "confidence": "high",
+   "callees": [
+    "FillWindowPixelBuffer",
+    "BufferBoxMonSpeciesName",
+    "ov14_021F4FBC",
+    "ScheduleWindowCopyToVram"
+   ],
+   "struct_accesses": [
+    {
+     "param": 1,
+     "offset": "0x12",
+     "width": 1,
+     "meaning": "bit7 = isEgg (skip if set)"
+    },
+    {
+     "param": 1,
+     "offset": "0x0",
+     "width": 4,
+     "meaning": "BoxPokemon*"
+    },
+    {
+     "param": 0,
+     "offset": "0x24",
+     "width": 4,
+     "meaning": "MessageFormat*"
+    },
+    {
+     "param": 0,
+     "offset": "0x20",
+     "width": 4,
+     "meaning": "MsgData*"
+    }
+   ],
+   "notes": "Species-name field. color literal 0x00010200."
+  },
+  {
+   "name": "ov14_021F5054",
+   "mode": "thumb",
+   "signature_guess": "void ov14_021F5054(void *g, BoxMonDisplayEntry *entry, int winIndex)",
+   "confidence": "high",
+   "callees": [
+    "FillWindowPixelBuffer",
+    "BufferBoxMonNickname",
+    "ov14_021F4FBC",
+    "ScheduleWindowCopyToVram"
+   ],
+   "struct_accesses": [
+    {
+     "param": 1,
+     "offset": "0x0",
+     "width": 4,
+     "meaning": "BoxPokemon*"
+    }
+   ],
+   "notes": "Nickname field (no egg guard). ov14_021F4FBC msgId 1."
+  },
+  {
+   "name": "ov14_021F50A0",
+   "mode": "thumb",
+   "signature_guess": "void ov14_021F50A0(void *g, BoxMonDisplayEntry *entry, int winIndex)",
+   "confidence": "high",
+   "callees": [
+    "FillWindowPixelBuffer",
+    "sub_0200CDAC",
+    "BufferIntegerAsString",
+    "ov14_021F4FBC",
+    "ScheduleWindowCopyToVram"
+   ],
+   "struct_accesses": [
+    {
+     "param": 1,
+     "offset": "0x12",
+     "width": 1,
+     "meaning": "bit7 isEgg; bits0-6 = level"
+    },
+    {
+     "param": 0,
+     "offset": "0x1c",
+     "width": 4,
+     "meaning": "render/icon resource (sub_0200CDAC arg)"
+    }
+   ],
+   "notes": "Level field. If not egg: sub_0200CDAC(g[0x1c],1,win,0,5); BufferIntegerAsString level=(entry[0x12]&0x7f); ov14_021F4FBC msgId 0x5a."
+  },
+  {
+   "name": "ov14_021F5114",
+   "mode": "thumb",
+   "signature_guess": "void ov14_021F5114(void *g, BoxMonDisplayEntry *entry, int winIndex)",
+   "confidence": "high",
+   "callees": [
+    "FillWindowPixelBuffer",
+    "ov14_021F4F84",
+    "ScheduleWindowCopyToVram"
+   ],
+   "struct_accesses": [
+    {
+     "param": 1,
+     "offset": "0x12",
+     "width": 1,
+     "meaning": "bit7 isEgg"
+    },
+    {
+     "param": 1,
+     "offset": "0x13",
+     "width": 1,
+     "meaning": "bit7 = gender known; bits0-6 gender (0=M,1=F)"
+    }
+   ],
+   "notes": "Gender symbol. gender 0 -> msgId 0x52 color 0x00070800; gender 1 -> msgId 0x53 color 0x000C0400. Uses ov14_021F4F84."
+  },
+  {
+   "name": "ov14_021F5190",
+   "mode": "thumb",
+   "signature_guess": "void ov14_021F5190(void *work, BoxMonDisplayEntry *entry, int winIndex)",
+   "confidence": "high",
+   "callees": [
+    "FillWindowPixelBuffer",
+    "SaveArray_IsNatDexEnabled",
+    "Pokedex_ConvertToCurrentDexNo",
+    "sub_0200CDAC",
+    "BufferIntegerAsString",
+    "ov14_021F4FBC",
+    "ScheduleWindowCopyToVram"
+   ],
+   "struct_accesses": [
+    {
+     "param": 0,
+     "offset": "0x0",
+     "width": 4,
+     "meaning": "ptr; *[0]=SaveData* for SaveArray_IsNatDexEnabled"
+    },
+    {
+     "param": 0,
+     "offset": "0x34",
+     "width": 4,
+     "meaning": "-> G"
+    },
+    {
+     "param": 1,
+     "offset": "0x4",
+     "width": 2,
+     "meaning": "species (u16)"
+    },
+    {
+     "param": 1,
+     "offset": "0x12",
+     "width": 1,
+     "meaning": "bit7 isEgg"
+    }
+   ],
+   "notes": "IMPORTANT: a0 is OUTER work (not G) -- needs SaveData via work[0][0]. dexNo=Pokedex_ConvertToCurrentDexNo(natDex, species); ov14_021F4FBC msgId 0x5b."
+  },
+  {
+   "name": "ov14_021F521C",
+   "mode": "thumb",
+   "signature_guess": "void ov14_021F521C(void *g, BoxMonDisplayEntry *entry, int winIndex)",
+   "confidence": "high",
+   "callees": [
+    "FillWindowPixelBuffer",
+    "BufferNatureName",
+    "ov14_021F4FBC",
+    "ov14_021F4F84",
+    "ScheduleWindowCopyToVram"
+   ],
+   "struct_accesses": [
+    {
+     "param": 1,
+     "offset": "0x12",
+     "width": 1,
+     "meaning": "bit7 isEgg"
+    },
+    {
+     "param": 1,
+     "offset": "0xf",
+     "width": 1,
+     "meaning": "nature id (u8)"
+    }
+   ],
+   "notes": "Nature field. not egg: BufferNatureName + ov14_021F4FBC msgId 0x55. egg: ov14_021F4F84 msgId 0x5d."
+  },
+  {
+   "name": "ov14_021F528C",
+   "mode": "thumb",
+   "signature_guess": "void ov14_021F528C(void *g, BoxMonDisplayEntry *entry, int winIndex)",
+   "confidence": "high",
+   "callees": [
+    "FillWindowPixelBuffer",
+    "BufferAbilityName",
+    "ov14_021F4FBC",
+    "ov14_021F4F84",
+    "ScheduleWindowCopyToVram"
+   ],
+   "struct_accesses": [
+    {
+     "param": 1,
+     "offset": "0x12",
+     "width": 1,
+     "meaning": "bit7 isEgg"
+    },
+    {
+     "param": 1,
+     "offset": "0xe",
+     "width": 1,
+     "meaning": "ability id (u8)"
+    }
+   ],
+   "notes": "Ability field. not egg: BufferAbilityName + ov14_021F4FBC msgId 0x54. egg: ov14_021F4F84 msgId 0x5d."
+  },
+  {
+   "name": "ov14_021F52FC",
+   "mode": "thumb",
+   "signature_guess": "void ov14_021F52FC(void *g, BoxMonDisplayEntry *entry, int winIndex)",
+   "confidence": "high",
+   "callees": [
+    "FillWindowPixelBuffer",
+    "BufferItemName",
+    "ov14_021F4FBC",
+    "ov14_021F4F84",
+    "ScheduleWindowCopyToVram"
+   ],
+   "struct_accesses": [
+    {
+     "param": 1,
+     "offset": "0x6",
+     "width": 2,
+     "meaning": "held item id (u16); guard is item==0 (beq) not egg"
+    }
+   ],
+   "notes": "Item field. item!=0: BufferItemName + ov14_021F4FBC msgId 0x56. item==0: ov14_021F4F84 msgId 0x5c."
+  },
+  {
+   "name": "ov14_021F5368",
+   "mode": "thumb",
+   "signature_guess": "void ov14_021F5368(void *work, BoxMonDisplayEntry *entry)",
+   "confidence": "high",
+   "callees": [
+    "ov14_021F5000",
+    "ov14_021F5054",
+    "ov14_021F50A0",
+    "ov14_021F5114",
+    "ov14_021F5190",
+    "ov14_021F521C",
+    "ov14_021F528C",
+    "ov14_021F52FC"
+   ],
+   "struct_accesses": [
+    {
+     "param": 0,
+     "offset": "0x34",
+     "width": 4,
+     "meaning": "-> G"
+    }
+   ],
+   "notes": "Draws all fields of one entry: passes G([work+0x34]) to species(win0)/nick(win1)/level(win2)/gender(win4)/nature(win6)/ability(win7)/item(win8), but OUTER work to ov14_021F5190 (dex, win5)."
+  },
+  {
+   "name": "ov14_021F53C0",
+   "mode": "thumb",
+   "signature_guess": "void ov14_021F53C0(void *g)",
+   "confidence": "high",
+   "callees": [
+    "ClearWindowTilemapAndScheduleTransfer"
+   ],
+   "struct_accesses": [
+    {
+     "param": 0,
+     "offset": "0x30/0x40/0x50/0x70/0x80/0x90/0xa0/0xb0",
+     "width": 16,
+     "meaning": "8 Window entries cleared"
+    }
+   ],
+   "notes": "a0 is INNER G (windows at +0x30). Clears windows 0,1,2,4,5,6,7,8 (skips 0x60)."
+  },
+  {
+   "name": "ov14_021F5404",
+   "mode": "thumb",
+   "signature_guess": "int ov14_021F5404(void *work, void *menuEntries)",
+   "confidence": "medium",
+   "callees": [
+    "GfGfxLoader_GetCharData",
+    "NewMsgDataFromNarc",
+    "BlitBitmapRect",
+    "ov14_021F4F84",
+    "CopyWindowPixelsToVram_TextMode",
+    "DestroyMsgData",
+    "Heap_Free"
+   ],
+   "struct_accesses": [
+    {
+     "param": 0,
+     "offset": "0x34",
+     "width": 4,
+     "meaning": "-> G"
+    },
+    {
+     "param": 0,
+     "offset": "G+0x44e",
+     "width": 1,
+     "meaning": "flags byte (bits0-3 read/written, bits4-6 masked)"
+    },
+    {
+     "param": 1,
+     "offset": "0x12",
+     "width": 1,
+     "meaning": "bit7 isEgg branch"
+    },
+    {
+     "param": 1,
+     "offset": "0x14 + n*2",
+     "width": 2,
+     "meaning": "u16 msgId table indexed by outer loop n (stride 2)"
+    }
+   ],
+   "notes": "Menu/stat panel builder. Returns base window index (9 if flags&0xf==0 else 0xd). char data NARC 0x13 member 6; msg NarcId 0x2ee file 0x1b. Nested loops 4x0xb BlitBitmapRect. Toggles G->flags@0x44e low nibble. HAZARD: flags byte is manual-mask/bitfield union."
+  },
+  {
+   "name": "ov14_021F5564",
+   "mode": "thumb",
+   "signature_guess": "int ov14_021F5564(void *work, int itemId)",
+   "confidence": "medium",
+   "callees": [
+    "FillWindowPixelBuffer",
+    "GetItemNameIntoString",
+    "ov14_021F4F24",
+    "CopyWindowPixelsToVram_TextMode",
+    "GetItemDescIntoString"
+   ],
+   "struct_accesses": [
+    {
+     "param": 0,
+     "offset": "0x34",
+     "width": 4,
+     "meaning": "-> G"
+    },
+    {
+     "param": 0,
+     "offset": "G+0x44e",
+     "width": 1,
+     "meaning": "flags byte (bit0 flip; low nibble selects window 0x14 vs 0x16)"
+    },
+    {
+     "param": 0,
+     "offset": "G+0x28",
+     "width": 4,
+     "meaning": "String*/heapID source"
+    }
+   ],
+   "notes": "itemId=[sp,#0xc]. Returns window index (0x14 if flags&0xf==0 else 0x16). Fills two sub-windows; if itemId!=0 draws name+desc via ov14_021F4F24. Same flags-byte toggle as ov14_021F5404."
+  },
+  {
+   "name": "ov14_021F5620",
+   "mode": "thumb",
+   "signature_guess": "void ov14_021F5620(void *work)",
+   "confidence": "medium",
+   "callees": [
+    "ov14_021F6628",
+    "FillWindowPixelBuffer",
+    "ov14_021F4F84",
+    "DestroyMsgData",
+    "CopyWindowToVram"
+   ],
+   "struct_accesses": [
+    {
+     "param": 0,
+     "offset": "0x34",
+     "width": 4,
+     "meaning": "-> G"
+    },
+    {
+     "param": 0,
+     "offset": "G+0x60",
+     "width": 16,
+     "meaning": "Window (offset 0x60)"
+    },
+    {
+     "param": 0,
+     "offset": "0x0",
+     "width": 4,
+     "meaning": "ptr; [0][8]+0x32 -> r3 arg"
+    }
+   ],
+   "notes": "msgData=ov14_021F6628(); draws one string into window@G+0x60 (msgId 3, color 0x10200), then DestroyMsgData + CopyWindowToVram."
+  },
+  {
+   "name": "ov14_021F566C",
+   "mode": "thumb",
+   "signature_guess": "void ov14_021F566C(void *work)",
+   "confidence": "high",
+   "callees": [
+    "FillWindowPixelBuffer",
+    "ov14_021F4F84",
+    "CopyWindowToVram"
+   ],
+   "struct_accesses": [
+    {
+     "param": 0,
+     "offset": "0x34",
+     "width": 4,
+     "meaning": "-> G"
+    },
+    {
+     "param": 0,
+     "offset": "G+0x140",
+     "width": 16,
+     "meaning": "Window (5<<6)"
+    },
+    {
+     "param": 0,
+     "offset": "G+0x150",
+     "width": 16,
+     "meaning": "Window (0x15<<4)"
+    },
+    {
+     "param": 0,
+     "offset": "G+0x160",
+     "width": 16,
+     "meaning": "Window (0x16<<4)"
+    }
+   ],
+   "notes": "Draws 3 fixed header labels (msgIds 0x57 win0x11, 0x58 win0x12, 0x59 win0x13, color 0x10200) then CopyWindowToVram each."
+  },
+  {
+   "name": "ov14_021F5718",
+   "mode": "thumb",
+   "signature_guess": "void ov14_021F5718(void *work, void *tilemapSrc, int a2, u8 a3, u8 a4)",
+   "confidence": "low",
+   "callees": [
+    "Heap_AllocAtEnd",
+    "AddWindowParameterized",
+    "MIi_CpuCopy32",
+    "String_New",
+    "PCStorage_GetBoxName",
+    "ov14_021F4F24",
+    "String_Delete",
+    "CopyWindowPixelsToVram_TextMode",
+    "RemoveWindow",
+    "Heap_Free"
+   ],
+   "struct_accesses": [
+    {
+     "param": 0,
+     "offset": "0x34",
+     "width": 4,
+     "meaning": "-> G (bgConfig@0x14)"
+    },
+    {
+     "param": 0,
+     "offset": "0x4",
+     "width": 4,
+     "meaning": "PCStorage*"
+    },
+    {
+     "param": 0,
+     "offset": "0x1f",
+     "width": 1,
+     "meaning": "boxId"
+    }
+   ],
+   "notes": "5 params (a4 at [sp,#0x30]). Allocs temp Window (Heap_AllocAtEnd(0xa,0x10)), AddWindowParameterized(bgConfig,tmpWin,3,...), MIi_CpuCopy32(tilemapSrc, tmpWin->tilemap@0xc, a4*a3*0x20), String_New + PCStorage_GetBoxName([work+4],[work+0x1f],str), ov14_021F4F24; cleans up. a2=u16,a3=u8,a4=u8. Low confidence on exact a1..a4."
+  },
+  {
+   "name": "ov14_021F57B8",
+   "mode": "thumb",
+   "signature_guess": "void ov14_021F57B8(void *work)",
+   "confidence": "high",
+   "callees": [
+    "InitWindow",
+    "AddTextWindowTopLeftCorner",
+    "String_New",
+    "PCStorage_GetBoxName",
+    "ov14_021F4F24",
+    "String_Delete",
+    "ov14_021F4EA0",
+    "RemoveWindow",
+    "NewString_ReadMsgData",
+    "PCStorage_CountMonsAndEggsInBox",
+    "BufferIntegerAsString",
+    "StringExpandPlaceholders"
+   ],
+   "struct_accesses": [
+    {
+     "param": 0,
+     "offset": "0x34",
+     "width": 4,
+     "meaning": "-> G (bgConfig@0x14, msgData@0x20, msgFmt@0x24, str@0x28)"
+    },
+    {
+     "param": 0,
+     "offset": "0x4",
+     "width": 4,
+     "meaning": "PCStorage*"
+    },
+    {
+     "param": 0,
+     "offset": "0x25",
+     "width": 1,
+     "meaning": "boxId (ldrb [work+0x25])"
+    }
+   ],
+   "notes": "Called 9x from overlay_14_021F6628.s. Two InitWindow/AddTextWindowTopLeftCorner blocks: box name label into TextOBJ 0 via ov14_021F4EA0; mon-count string (msgId 0x18, PCStorage_CountMonsAndEggsInBox) into TextOBJ 1. Frame sub sp,#0x1c."
+  }
+ ],
+ "data": [
+  {
+   "label": "ov14_021F84B4",
+   "section": "rodata",
+   "bytes": 352,
+   "shape_guess": "static const WindowTemplate ov14_021F84B4[0x2c] (8-byte entries: u8 bgId,x,y,width,height,palette; u16 baseTile). First entry {4,8,5,8,2,0xF,0x0069}. Consumed by ov14_021F4ED0 AddWindow loop (count 0x2c) and ov14_021F4F00 RemoveWindow loop. Trailing entries use bgId 3/6/0x16."
+  }
+ ],
+ "imports": {
+  "ManagedSprite_SetPositionXY": {
+   "known_prototype": "void ManagedSprite_SetPositionXY(ManagedSprite *managedSprite, s16 x, s16 y)",
+   "header": "include/sprite_system.h"
+  },
+  "ManagedSprite_GetPositionXY": {
+   "known_prototype": "void ManagedSprite_GetPositionXY(ManagedSprite *managedSprite, s16 *x, s16 *y)",
+   "header": "include/sprite_system.h"
+  },
+  "FillWindowPixelBuffer": {
+   "known_prototype": "void FillWindowPixelBuffer(Window *window, u8 fillValue)",
+   "header": "include/bg_window.h"
+  },
+  "AddWindow": {
+   "known_prototype": "void AddWindow(BgConfig *bgConfig, Window *window, const WindowTemplate *template)",
+   "header": "include/bg_window.h"
+  },
+  "AddWindowParameterized": {
+   "known_prototype": "void AddWindowParameterized(BgConfig *bgConfig, Window *window, u8 bgId, u8 x, u8 y, u8 width, u8 height, u8 paletteNum, u16 baseTile)",
+   "header": "include/bg_window.h"
+  },
+  "AddTextWindowTopLeftCorner": {
+   "known_prototype": "void AddTextWindowTopLeftCorner(BgConfig *bgConfig, Window *window, u8 width, u8 height, u16 baseTile, u8 paletteNum)",
+   "header": "include/bg_window.h"
+  },
+  "InitWindow": {
+   "known_prototype": "void InitWindow(Window *window)",
+   "header": "include/bg_window.h"
+  },
+  "RemoveWindow": {
+   "known_prototype": "void RemoveWindow(Window *window)",
+   "header": "include/bg_window.h"
+  },
+  "BlitBitmapRect": {
+   "known_prototype": "void BlitBitmapRect(Window *window, void *src, u16 srcX, u16 srcY, u16 srcWidth, u16 srcHeight, u16 destX, u16 destY, u16 destWidth, u16 destHeight, u16 colorKey)",
+   "header": "include/bg_window.h"
+  },
+  "ScheduleWindowCopyToVram": {
+   "known_prototype": "void ScheduleWindowCopyToVram(Window *window)",
+   "header": "include/bg_window.h"
+  },
+  "ClearWindowTilemapAndScheduleTransfer": {
+   "known_prototype": "void ClearWindowTilemapAndScheduleTransfer(Window *window)",
+   "header": "include/bg_window.h"
+  },
+  "CopyWindowToVram": {
+   "known_prototype": "void CopyWindowToVram(Window *window)",
+   "header": "include/bg_window.h"
+  },
+  "CopyWindowPixelsToVram_TextMode": {
+   "known_prototype": "void CopyWindowPixelsToVram_TextMode(Window *window)",
+   "header": "include/bg_window.h"
+  },
+  "AddTextPrinterParameterizedWithColor": {
+   "known_prototype": "u8 AddTextPrinterParameterizedWithColor(Window *window, FontID fontId, String *string, u32 x, u32 y, u32 textSpeed, u32 color, PrinterCallback_t callback)",
+   "header": "include/text.h"
+  },
+  "FontID_Alloc": {
+   "known_prototype": "void FontID_Alloc(FontID fontId, enum HeapID heapID)",
+   "header": "include/font.h"
+  },
+  "FontID_Release": {
+   "known_prototype": "void FontID_Release(FontID fontId)",
+   "header": "include/font.h"
+  },
+  "FontID_String_GetWidth": {
+   "known_prototype": "u32 FontID_String_GetWidth(u32 fontId, String *string, u32 letterSpacing)",
+   "header": "include/font.h"
+  },
+  "FontID_String_GetWidthMultiline": {
+   "known_prototype": "u32 FontID_String_GetWidthMultiline(u32 fontId, String *string, u32 letterSpacing)",
+   "header": "include/font.h"
+  },
+  "FontSystem_NewInit": {
+   "known_prototype": "UnkStruct_02013534 *FontSystem_NewInit(int a0, enum HeapID heapId)",
+   "header": "include/unk_02013534.h"
+  },
+  "TextOBJ_SetSpritesDrawFlag": {
+   "known_prototype": "void TextOBJ_SetSpritesDrawFlag(TextOBJ *textOBJ, BOOL draw)",
+   "header": "include/unk_02013534.h"
+  },
+  "TextOBJ_CopyFromBGWindow": {
+   "known_prototype": "void TextOBJ_CopyFromBGWindow(TextOBJ *textOBJ, UnkStruct_02013910 *a1, Window *window, enum HeapID heapID)",
+   "header": "include/unk_02013534.h"
+  },
+  "BufferIntegerAsString": {
+   "known_prototype": "void BufferIntegerAsString(MessageFormat *messageFormat, u32 idx, s32 num, u32 numDigits, PrintingMode strconvmode, BOOL whichCharset)",
+   "header": "include/message_format.h"
+  },
+  "BufferBoxMonSpeciesName": {
+   "known_prototype": "void BufferBoxMonSpeciesName(MessageFormat *messageFormat, u32 fieldno, BoxPokemon *boxmon)",
+   "header": "include/message_format.h"
+  },
+  "BufferBoxMonNickname": {
+   "known_prototype": "void BufferBoxMonNickname(MessageFormat *messageFormat, u32 fieldno, BoxPokemon *boxmon)",
+   "header": "include/message_format.h"
+  },
+  "BufferAbilityName": {
+   "known_prototype": "void BufferAbilityName(MessageFormat *messageFormat, u32 fieldno, u32 abilityId)",
+   "header": "include/message_format.h"
+  },
+  "BufferNatureName": {
+   "known_prototype": "void BufferNatureName(MessageFormat *messageFormat, u32 fieldno, u32 natureId)",
+   "header": "include/message_format.h"
+  },
+  "BufferItemName": {
+   "known_prototype": "void BufferItemName(MessageFormat *messageFormat, u32 fieldno, u32 itemId)",
+   "header": "include/message_format.h"
+  },
+  "StringExpandPlaceholders": {
+   "known_prototype": "void StringExpandPlaceholders(MessageFormat *messageFormat, String *dest, String *src)",
+   "header": "include/message_format.h"
+  },
+  "GetItemNameIntoString": {
+   "known_prototype": "void GetItemNameIntoString(String *dest, u16 itemId, enum HeapID heapID)",
+   "header": "include/item.h"
+  },
+  "GetItemDescIntoString": {
+   "known_prototype": "void GetItemDescIntoString(String *dest, u16 itemId, enum HeapID heapID)",
+   "header": "include/item.h"
+  },
+  "NewString_ReadMsgData": {
+   "known_prototype": "String *NewString_ReadMsgData(MsgData *msgData, s32 strno)",
+   "header": "include/msgdata.h"
+  },
+  "NewMsgDataFromNarc": {
+   "known_prototype": "MsgData *NewMsgDataFromNarc(MsgDataLoadType type, NarcId narc, s32 fileId, enum HeapID heapID)",
+   "header": "include/msgdata.h"
+  },
+  "DestroyMsgData": {
+   "known_prototype": "void DestroyMsgData(MsgData *msgData)",
+   "header": "include/msgdata.h"
+  },
+  "GfGfxLoader_GetCharData": {
+   "known_prototype": "void *GfGfxLoader_GetCharData(NarcId narcId, s32 memberNo, BOOL isCompressed, NNSG2dCharacterData **ppCharData, enum HeapID heapID)",
+   "header": "include/gf_gfx_loader.h"
+  },
+  "SaveArray_IsNatDexEnabled": {
+   "known_prototype": "BOOL SaveArray_IsNatDexEnabled(SaveData *saveData)",
+   "header": "include/pokedex_util.h"
+  },
+  "Pokedex_ConvertToCurrentDexNo": {
+   "known_prototype": "u32 Pokedex_ConvertToCurrentDexNo(BOOL natDexFlag, u32 species)",
+   "header": "include/pokedex_util.h"
+  },
+  "PCStorage_GetBoxName": {
+   "known_prototype": "void PCStorage_GetBoxName(PCStorage *pcStorage, u32 boxno, String *dest)",
+   "header": "include/pokemon_storage_system.h"
+  },
+  "PCStorage_CountMonsAndEggsInBox": {
+   "known_prototype": "int PCStorage_CountMonsAndEggsInBox(PCStorage *storage, u32 boxno)",
+   "header": "include/pokemon_storage_system.h"
+  },
+  "Heap_AllocAtEnd": {
+   "known_prototype": "void *Heap_AllocAtEnd(enum HeapID heapID, u32 size)",
+   "header": "include/heap.h"
+  },
+  "Heap_Free": {
+   "known_prototype": "void Heap_Free(void *ptr)",
+   "header": "include/heap.h"
+  },
+  "MIi_CpuCopy32": {
+   "known_prototype": "void MIi_CpuCopy32(const void *src, void *dest, u32 size)",
+   "header": "NitroSDK (nitro/mi)"
+  },
+  "String_New": {
+   "signature_guess": "String *String_New(u32 capacity, enum HeapID heapID)",
+   "evidence": "(0x14,0xa); confirm header include/string.h"
+  },
+  "String_Delete": {
+   "signature_guess": "void String_Delete(String *string)",
+   "evidence": "confirm header include/string.h"
+  },
+  "ov14_021F2A18": {
+   "signature_guess": "void ov14_021F2A18(void *g, int index, int a2)",
+   "evidence": "(g,index,flag) from B90/BC0/CA0; sibling overlay_14 chunk"
+  },
+  "ov14_021F2A60": {
+   "signature_guess": "void ov14_021F2A60(void *g, int index, int a2)",
+   "evidence": "(g,index,0) from B90"
+  },
+  "ov14_021F29E4": {
+   "signature_guess": "void ov14_021F29E4(void *g, int a1, int a2)",
+   "evidence": "(g,7,5) from BC0"
+  },
+  "ov14_021F46F4": {
+   "signature_guess": "void ov14_021F46F4(void *g)",
+   "evidence": "1 arg from BC0"
+  },
+  "ov14_021F49E0": {
+   "signature_guess": "void ov14_021F49E0(void *work)",
+   "evidence": "1 arg (outer work) from BC0"
+  },
+  "ov14_021F6628": {
+   "signature_guess": "MsgData *ov14_021F6628(void)",
+   "evidence": "no-arg call; return DestroyMsgData'd in 5620"
+  },
+  "sub_0200CDAC": {
+   "signature_guess": "void sub_0200CDAC(void *a0, int a1, Window *win, int a3, int a4)",
+   "evidence": "5 args (a4 on stack); blits dex/level icon before BufferIntegerAsString -- verify header"
+  },
+  "sub_020135AC": {
+   "signature_guess": "void sub_020135AC(void *a0)",
+   "evidence": "FontSystem/textobj teardown; likely include/unk_02013534.h"
+  },
+  "sub_020135D8": {
+   "signature_guess": "TextOBJ *sub_020135D8(void *params)",
+   "evidence": "builds text-obj sprite from a stack param block, returns ptr -> G[0x414]/G[0x424]; include/unk_02013534.h"
+  },
+  "sub_02013688": {
+   "signature_guess": "void sub_02013688(Window *window, int a1, int a2)",
+   "evidence": "(window,1,0xa); include/unk_02013534.h"
+  },
+  "sub_020137F0": {
+   "signature_guess": "void sub_020137F0(TextOBJ *textOBJ, int a1)",
+   "evidence": "(textobj,0/1); include/unk_02013534.h"
+  },
+  "sub_020138B0": {
+   "signature_guess": "void sub_020138B0(TextOBJ *textOBJ, int a1)",
+   "evidence": "(textobj,1); include/unk_02013534.h"
+  },
+  "sub_020138E0": {
+   "signature_guess": "void sub_020138E0(TextOBJ *textOBJ, int a1)",
+   "evidence": "(textobj,1); include/unk_02013534.h"
+  },
+  "sub_02013910": {
+   "signature_guess": "UnkStruct_02013910 *sub_02013910(Window *window, enum HeapID heapID)",
+   "evidence": "(window,0xa)->tmp used by TextOBJ_CopyFromBGWindow; include/unk_02013534.h"
+  },
+  "sub_02013938": {
+   "signature_guess": "void sub_02013938(UnkStruct_02013910 *a0)",
+   "evidence": "frees the sub_02013910 result; include/unk_02013534.h"
+  },
+  "sub_02021AC8": {
+   "signature_guess": "void sub_02021AC8(Window *window, int a1, int a2, void *a3)",
+   "evidence": "(window,1,1,&fontOAM_slot) -- verify header"
+  },
+  "sub_02021B5C": {
+   "signature_guess": "void sub_02021B5C(void *a0)",
+   "evidence": "teardown paired with FontOAM_Delete in E68"
+  },
+  "SpriteManager_GetSpriteList": {
+   "signature_guess": "void *SpriteManager_GetSpriteList(SpriteManager *mgr)",
+   "evidence": "include/sprite_system.h -- verify exact name"
+  },
+  "SpriteManager_FindPlttResourceProxy": {
+   "signature_guess": "void *SpriteManager_FindPlttResourceProxy(SpriteManager *mgr, int id)",
+   "evidence": "(mgr,0xC101); include/sprite_system.h -- verify"
+  },
+  "FontOAM_Delete": {
+   "signature_guess": "void FontOAM_Delete(void *fontOAM)",
+   "evidence": "include/unk_02013534.h -- verify"
+  }
+ },
+ "shared_struct_hypotheses": [
+  {
+   "name": "OuterWork (a0 of BC0/CA0/ED0/F00/5190/5368/5404/5564/5620/566C/5718/57B8)",
+   "size_guess": ">=0x38",
+   "fields": [
+    {
+     "offset": "0x0",
+     "width": 4,
+     "meaning": "ptr to sub-struct whose [0] is SaveData* (SaveArray_IsNatDexEnabled)"
+    },
+    {
+     "offset": "0x4",
+     "width": 4,
+     "meaning": "PCStorage*"
+    },
+    {
+     "offset": "0x1f",
+     "width": 1,
+     "meaning": "u8 boxId (used by ov14_021F5718)"
+    },
+    {
+     "offset": "0x25",
+     "width": 1,
+     "meaning": "u8 boxId (used by ov14_021F57B8)"
+    },
+    {
+     "offset": "0x34",
+     "width": 4,
+     "meaning": "-> InnerGfx G"
+    }
+   ]
+  },
+  {
+   "name": "InnerGfx G (a0 of B90/D10/E68/EA0/F84/FBC/5000..52FC; = OuterWork->0x34)",
+   "size_guess": ">=0x460",
+   "fields": [
+    {
+     "offset": "0x14",
+     "width": 4,
+     "meaning": "BgConfig*"
+    },
+    {
+     "offset": "0x1c",
+     "width": 4,
+     "meaning": "icon/render resource (sub_0200CDAC arg)"
+    },
+    {
+     "offset": "0x20",
+     "width": 4,
+     "meaning": "MsgData*"
+    },
+    {
+     "offset": "0x24",
+     "width": 4,
+     "meaning": "MessageFormat*"
+    },
+    {
+     "offset": "0x28",
+     "width": 4,
+     "meaning": "String* scratch (StringExpandPlaceholders dest / heapID source)"
+    },
+    {
+     "offset": "0x30",
+     "width": "0x2c0",
+     "meaning": "Window windows[0x2c] (0x10 each; also referenced at fixed 0x60,0x140,0x150,0x160)"
+    },
+    {
+     "offset": "0x2f8",
+     "width": 4,
+     "meaning": "SpriteManager* (0xbe<<2)"
+    },
+    {
+     "offset": "0x2fc",
+     "width": "0x54+",
+     "meaning": "ManagedSprite* array (0xbf<<2), indexed 0..0x14"
+    },
+    {
+     "offset": "0x318",
+     "width": 4,
+     "meaning": "resource ptr (0xc6<<2)"
+    },
+    {
+     "offset": "0x338",
+     "width": "0x18",
+     "meaning": "ManagedSprite* array (0xce<<2), indexed 0..5"
+    },
+    {
+     "offset": "0x410",
+     "width": 4,
+     "meaning": "FontSystem/FontOAM ctx (0x41<<4)"
+    },
+    {
+     "offset": "0x414",
+     "width": 4,
+     "meaning": "TextOBJ* [0] (stride 0x10 -> 0x424 is [1])"
+    },
+    {
+     "offset": "0x418",
+     "width": 4,
+     "meaning": "FontOAM ctx [0] (stride 0x10)"
+    },
+    {
+     "offset": "0x44e",
+     "width": 1,
+     "meaning": "flags byte: bit0 toggled via manual mask (selects window bank), bits4-6 masked separately"
+    }
+   ]
+  },
+  {
+   "name": "BoxMonDisplayEntry (a1 of 5000/5054/50A0/5114/5190/521C/528C/52FC)",
+   "size_guess": ">=0x16",
+   "fields": [
+    {
+     "offset": "0x0",
+     "width": 4,
+     "meaning": "BoxPokemon*"
+    },
+    {
+     "offset": "0x4",
+     "width": 2,
+     "meaning": "u16 species"
+    },
+    {
+     "offset": "0x6",
+     "width": 2,
+     "meaning": "u16 held item id"
+    },
+    {
+     "offset": "0xe",
+     "width": 1,
+     "meaning": "u8 ability id"
+    },
+    {
+     "offset": "0xf",
+     "width": 1,
+     "meaning": "u8 nature id"
+    },
+    {
+     "offset": "0x12",
+     "width": 1,
+     "meaning": "bit7 = isEgg, bits0-6 = level"
+    },
+    {
+     "offset": "0x13",
+     "width": 1,
+     "meaning": "bit7 = gender known, bits0-6 = gender (0=M,1=F)"
+    }
+   ]
+  }
+ ],
+ "risks": [
+  "rodata ov14_021F84B4 is a WindowTemplate[0x2c] (0x160 bytes); must emit in-order as a single static const array declared before/consumed by ov14_021F4ED0 -- rodata ordering is byte-load-bearing.",
+  "G->flags byte @0x44e is written with a manual bit0 mask (bic/and/orr, no (u8) narrow) plus separate nibble masks in ov14_021F5404/5564 -- model as union {u8 raw; struct bits} per flags-byte-union-manual-mask-bit0; a plain bitfield assign inserts a spurious (u8) narrow at bit0.",
+  "Stack-passed x/y/fontId/color/align in ov14_021F4F24/4F84/4FBC are read sp-direct with ldr (word) -> declare int/u32 not u16, else Thumb ldrh forces an extra base-pointer add (u16-stack-param-as-int-avoids-ldrh-basepointer).",
+  "In ov14_021F4F24 center-align, FontID_String_GetWidth returns u32 so width/2 emits an unsigned lsr -- keep width u32 (inverse of u32-call-return-makes-divide insight).",
+  "ov14_021F4F00 loop counter is narrowed each iter (lsl#16/lsr#16) -> u16; ov14_021F5404/5564 use full-width u16 indices with unsigned bounds (bcc/blo).",
+  "ov14_021F5404 and ov14_021F5718 have complex nested loops and multi-arg stack calls; medium/low confidence on some arg widths -- verify ov14_021F5718 a2/a3/a4 against its caller in overlay_14_021F6628.s.",
+  "ov14_021F5190 takes the OUTER work (needs SaveData); its siblings 5000/5054/50A0/5114/521C/528C/52FC take the INNER G -- do not unify the first param type across the family.",
+  "Several imports (sub_020135xx / sub_02021Axx / SpriteManager_* / FontOAM_Delete) prototypes are inferred -- confirm exact headers (likely include/unk_02013534.h) before adding declarations to avoid IPA header churn."
+ ],
+ "notes": "27 thumb funcs, no ARM, no .data/.bss (single rodata array). C function order must match: B90,BC0,CA0,D10,E68,EA0,ED0,F00,F24,F84,FBC,5000,5054,50A0,5114,5190,521C,528C,52FC,5368,53C0,5404,5564,5620,566C,5718,57B8. All ov14_* imports (29E4,2A18,2A60,46F4,49E0,6628) resolve within sibling overlay_14 chunks -- extern them, do not add to a shared header. color literal 0x00010200 recurs as standard text color. This is the box-list / box-mon detail panel renderer of the PC storage overlay."
+}

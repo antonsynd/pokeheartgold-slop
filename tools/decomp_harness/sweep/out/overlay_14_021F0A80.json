@@ -1,0 +1,1078 @@
+{
+ "file": "asm/overlay_14_021F0A80.s",
+ "summary": "35 Thumb FSM/UI handler functions from the overlay_14 PC-Box storage scene. Every function takes r0 = a shared overlay work struct (call it PCBoxWork). Key fields: +0x04 PCStorage*, +0x08 Party*, +0x25 u8 cursor (wraps mod 6 / mod 0x12), +0x30 u32 next-state, +0x34 pointer to a large (>0x88CC) render/sub-context. Handlers return an int state-result code; most tail into ov14_021F0234 (sets callback + next-state, returns 5). No .rodata/.data/.bss - only inline literal pools and one inline .short jump table inside ov14_021F0F0C.",
+ "functions": [
+  {
+   "name": "ov14_021F0A80",
+   "mode": "thumb",
+   "signature_guess": "int ov14_021F0A80(PCBoxWork *work)",
+   "confidence": "high",
+   "callees": [
+    "ov14_021F2A18",
+    "ov14_021E84A4",
+    "ov14_021F0234"
+   ],
+   "struct_accesses": [
+    {
+     "param": 0,
+     "offset": "0x34",
+     "width": 4,
+     "meaning": "sub-context ptr; [subctx+0x2f0]=ManagedSprite*"
+    }
+   ],
+   "notes": "sets next state 0x13 with callback ov14_021E9434; returns ov14_021F0234 result"
+  },
+  {
+   "name": "ov14_021F0AAC",
+   "mode": "thumb",
+   "signature_guess": "int ov14_021F0AAC(PCBoxWork *work)",
+   "confidence": "high",
+   "callees": [
+    "ov14_021F2A18",
+    "ov14_021E84A4",
+    "ov14_021F0234"
+   ],
+   "notes": "same shape as 021F0A80; state 0x19, callback ov14_021E9450"
+  },
+  {
+   "name": "ov14_021F0AD8",
+   "mode": "thumb",
+   "signature_guess": "int ov14_021F0AD8(PCBoxWork *work)",
+   "confidence": "high",
+   "callees": [
+    "ov14_021F43F4",
+    "ov14_021F3488",
+    "ov14_021F2A18",
+    "ov14_021E8234",
+    "ov14_021E8294",
+    "ov14_021E8314",
+    "ov14_021F0234"
+   ],
+   "struct_accesses": [
+    {
+     "param": 0,
+     "offset": "0x23",
+     "width": 1,
+     "meaning": "flag set to 1 (add r0,#0x23; strb)"
+    }
+   ],
+   "notes": "state 0x22, callback ov14_021E94BC"
+  },
+  {
+   "name": "ov14_021F0B34",
+   "mode": "thumb",
+   "signature_guess": "int ov14_021F0B34(PCBoxWork *work)",
+   "confidence": "high",
+   "callees": [
+    "ov14_021F2A18",
+    "ov14_021E8544",
+    "ov14_021EC710",
+    "ov14_021E76B8",
+    "ov14_021F1100"
+   ],
+   "struct_accesses": [
+    {
+     "param": 0,
+     "offset": "0x23",
+     "width": 1,
+     "meaning": "flag cleared to 0"
+    }
+   ],
+   "notes": "if ov14_021E8544()==0 -> ov14_021EC710 else ov14_021E76B8 + ov14_021F1100(work,0x25)"
+  },
+  {
+   "name": "ov14_021F0B70",
+   "mode": "thumb",
+   "signature_guess": "int ov14_021F0B70(PCBoxWork *work)",
+   "confidence": "medium",
+   "callees": [
+    "ov14_021E81A8",
+    "ov14_021F63F0",
+    "ov14_021F63A8",
+    "ov14_021E8368",
+    "ov14_021E82DC",
+    "ov14_021E7E78",
+    "ov14_021F30B0"
+   ],
+   "notes": "returns result of tail ov14_021F30B0; could be void"
+  },
+  {
+   "name": "ov14_021F0BB4",
+   "mode": "thumb",
+   "signature_guess": "int ov14_021F0BB4(PCBoxWork *work)",
+   "confidence": "medium",
+   "callees": [
+    "ov14_021E81A8",
+    "ov14_021F63F0",
+    "ov14_021F63B8",
+    "ov14_021E8368",
+    "ov14_021E7E88",
+    "ov14_021F311C"
+   ],
+   "notes": "mirror of 021F0B70; returns ov14_021F311C result"
+  },
+  {
+   "name": "ov14_021F0BF4",
+   "mode": "thumb",
+   "signature_guess": "int ov14_021F0BF4(PCBoxWork *work)",
+   "confidence": "medium",
+   "callees": [
+    "ov14_021F30B0",
+    "ov14_021E7E78"
+   ],
+   "notes": "returns ov14_021E7E78 result"
+  },
+  {
+   "name": "ov14_021F0C0C",
+   "mode": "thumb",
+   "signature_guess": "int ov14_021F0C0C(PCBoxWork *work)",
+   "confidence": "high",
+   "callees": [
+    "ov14_021F2A18",
+    "ov14_021E8020",
+    "ov14_021E8544",
+    "ov14_021E84A4",
+    "ov14_021F0234"
+   ],
+   "struct_accesses": [
+    {
+     "param": 0,
+     "offset": "0x21",
+     "width": 1,
+     "meaning": "set to 0xff"
+    }
+   ],
+   "notes": "state 0x2d, callback ov14_021E952C; conditional ov14_021E84A4 when ov14_021E8544()==1"
+  },
+  {
+   "name": "ov14_021F0C58",
+   "mode": "thumb",
+   "signature_guess": "int ov14_021F0C58(PCBoxWork *work)",
+   "confidence": "high",
+   "callees": [
+    "ov14_021F3488",
+    "ov14_021E805C",
+    "ov14_021F0234"
+   ],
+   "struct_accesses": [
+    {
+     "param": 0,
+     "offset": "0x21",
+     "width": 1,
+     "meaning": "set to 0xff"
+    }
+   ],
+   "notes": "state 0x2e, callback ov14_021E954C"
+  },
+  {
+   "name": "ov14_021F0C88",
+   "mode": "thumb",
+   "signature_guess": "int ov14_021F0C88(PCBoxWork *work)",
+   "confidence": "high",
+   "callees": [
+    "ov14_021F2A18",
+    "ov14_021E8234",
+    "ov14_021E8294",
+    "ov14_021E8314",
+    "ov14_021F0234"
+   ],
+   "struct_accesses": [
+    {
+     "param": 0,
+     "offset": "0x24",
+     "width": 1,
+     "meaning": "set to 1"
+    },
+    {
+     "param": 0,
+     "offset": "0x29",
+     "width": 1,
+     "meaning": "set to 0"
+    }
+   ],
+   "notes": "state 0x2f, callback ov14_021E94BC"
+  },
+  {
+   "name": "ov14_021F0CD8",
+   "mode": "thumb",
+   "signature_guess": "int ov14_021F0CD8(PCBoxWork *work)",
+   "confidence": "high",
+   "callees": [
+    "ov14_021F29E4",
+    "ov14_021F2A18",
+    "ov14_021E85E4",
+    "ov14_021F0EE8",
+    "ov14_021E8648",
+    "ov14_021F0D34",
+    "ov14_021F1090"
+   ],
+   "struct_accesses": [
+    {
+     "param": 0,
+     "offset": "0x24",
+     "width": 1,
+     "meaning": "set to 0"
+    }
+   ],
+   "notes": "3-way branch: 021E85E4()==1 -> 021F0EE8(work,0x31); 021E8648()==1 -> 021F0D34(work,0x31); else 021F1090(work,0x32)"
+  },
+  {
+   "name": "ov14_021F0D34",
+   "mode": "thumb",
+   "signature_guess": "int ov14_021F0D34(PCBoxWork *work, int nextState)",
+   "confidence": "high",
+   "callees": [
+    "ov14_021E8634",
+    "ov14_021F0234"
+   ],
+   "notes": "r1(nextState) forwarded as arg3 to ov14_021F0234; callback ov14_021E9970"
+  },
+  {
+   "name": "ov14_021F0D58",
+   "mode": "thumb",
+   "signature_guess": "int ov14_021F0D58(PCBoxWork *work, int nextState)",
+   "confidence": "medium",
+   "callees": [
+    "_s32_div_f",
+    "ov14_021F48B4",
+    "ov14_021F57B8",
+    "ov14_021E85E4",
+    "GridInputHandler_SetNextInput",
+    "GridInputHandler_SetButtonInputMode",
+    "ov14_021F29E4",
+    "ov14_021F0EE8",
+    "ov14_021E8648",
+    "ov14_021E8634",
+    "ov14_021F0234",
+    "ov14_021F604C"
+   ],
+   "struct_accesses": [
+    {
+     "param": 0,
+     "offset": "0x00",
+     "width": 4,
+     "meaning": "ptr; [*+8] compared to 3 to pick 0x82 vs 0x29"
+    },
+    {
+     "param": 0,
+     "offset": "0x25",
+     "width": 1,
+     "meaning": "cursor, mod 6 wrap logic"
+    },
+    {
+     "param": 0,
+     "offset": "0x1f",
+     "width": 1,
+     "meaning": "cursor bound compared to +0x25"
+    },
+    {
+     "param": 0,
+     "offset": "0x2c",
+     "width": 4,
+     "meaning": "cached value"
+    }
+   ],
+   "notes": "large FSM handler; uses [work+0x34]+0x2c=GridInputHandler*; _s32_div_f for x/6, x%6; callbacks ov14_021E9970 / ov14_021E9920"
+  },
+  {
+   "name": "ov14_021F0EE8",
+   "mode": "thumb",
+   "signature_guess": "int ov14_021F0EE8(PCBoxWork *work, int nextState)",
+   "confidence": "high",
+   "callees": [
+    "ov14_021E85D0",
+    "ov14_021F0234"
+   ],
+   "notes": "callback ov14_021E9970; nextState forwarded"
+  },
+  {
+   "name": "ov14_021F0F0C",
+   "mode": "thumb",
+   "signature_guess": "int ov14_021F0F0C(PCBoxWork *work, int sel)",
+   "confidence": "high",
+   "callees": [
+    "ov14_021F2DE8",
+    "ov14_021E7930",
+    "ov14_021E783C",
+    "ov14_021F4848",
+    "ov14_021E85E4",
+    "ov14_021E85D0",
+    "ov14_021F0234"
+   ],
+   "struct_accesses": [
+    {
+     "param": 0,
+     "offset": "0x1f",
+     "width": 1,
+     "meaning": "compared with cursor to choose callback/dir"
+    },
+    {
+     "param": 0,
+     "offset": "0x23",
+     "width": 1,
+     "meaning": "flag branch in case 0"
+    },
+    {
+     "param": 0,
+     "offset": "0x30",
+     "width": 4,
+     "meaning": "next-state written per case (0xc/0x24/0x3d/0x47/0x29/0x82)"
+    }
+   ],
+   "notes": "INLINE JUMP TABLE: switch(sel) cases 0..4 (cmp r5,#4; bhi). callback ov14_021E92AC or ov14_021E9370 by direction"
+  },
+  {
+   "name": "ov14_021F1004",
+   "mode": "thumb",
+   "signature_guess": "void ov14_021F1004(PCBoxWork *work, int delta)",
+   "confidence": "medium",
+   "callees": [
+    "ov14_021F49E0",
+    "ov14_021F48B4",
+    "ov14_021F4848",
+    "ov14_021F57B8",
+    "ov14_021F29E4"
+   ],
+   "struct_accesses": [
+    {
+     "param": 0,
+     "offset": "0x25",
+     "width": 1,
+     "meaning": "cursor += 6*delta, wrap in [0,0x12)"
+    }
+   ],
+   "notes": "helper called (return ignored) by 021F11F8/021F1504; delta sign picks ov14_021F29E4(work,5,4) vs (4,2)"
+  },
+  {
+   "name": "ov14_021F1058",
+   "mode": "thumb",
+   "signature_guess": "int ov14_021F1058(PCBoxWork *work, int nextState)",
+   "confidence": "high",
+   "callees": [
+    "ov14_021F4720",
+    "ov14_021F4848",
+    "ov14_021F48B4",
+    "ov14_021F57B8",
+    "ov14_021E86E0",
+    "ov14_021F0234"
+   ],
+   "notes": "callback ov14_021E9554"
+  },
+  {
+   "name": "ov14_021F1090",
+   "mode": "thumb",
+   "signature_guess": "int ov14_021F1090(PCBoxWork *work, int nextState)",
+   "confidence": "high",
+   "callees": [
+    "ov14_021E8704",
+    "ov14_021F0234"
+   ],
+   "notes": "callback ov14_021E9590"
+  },
+  {
+   "name": "ov14_021F10B4",
+   "mode": "thumb",
+   "signature_guess": "int ov14_021F10B4(PCBoxWork *work, int nextState)",
+   "confidence": "high",
+   "callees": [
+    "ov14_021F5EC4",
+    "ov14_021E8328",
+    "ov14_021F0234"
+   ],
+   "notes": "callback ov14_021E95B4"
+  },
+  {
+   "name": "ov14_021F10DC",
+   "mode": "thumb",
+   "signature_guess": "int ov14_021F10DC(PCBoxWork *work, int nextState)",
+   "confidence": "high",
+   "callees": [
+    "ov14_021E8314",
+    "ov14_021F0234"
+   ],
+   "notes": "callback ov14_021E95B4"
+  },
+  {
+   "name": "ov14_021F1100",
+   "mode": "thumb",
+   "signature_guess": "int ov14_021F1100(PCBoxWork *work, int nextState)",
+   "confidence": "high",
+   "callees": [
+    "ov14_021E84A4",
+    "ov14_021F0234"
+   ],
+   "struct_accesses": [
+    {
+     "param": 0,
+     "offset": "0x21",
+     "width": 1,
+     "meaning": "set to 0xff"
+    }
+   ],
+   "notes": "callback ov14_021E9434"
+  },
+  {
+   "name": "ov14_021F1128",
+   "mode": "thumb",
+   "signature_guess": "int ov14_021F1128(PCBoxWork *work)",
+   "confidence": "high",
+   "callees": [
+    "ov14_021F2A18",
+    "_s32_div_f",
+    "ov14_021E8544",
+    "ov14_021ED5B0",
+    "ov14_021F1100"
+   ],
+   "struct_accesses": [
+    {
+     "param": 0,
+     "offset": "0x1f",
+     "width": 1,
+     "meaning": "divided by 6"
+    },
+    {
+     "param": 0,
+     "offset": "0x2c",
+     "width": 4,
+     "meaning": "stored [work+0x34]+0x43C value"
+    },
+    {
+     "param": 0,
+     "offset": "0x34",
+     "width": 4,
+     "meaning": "[subctx+0x43C]=u32 written then re-read"
+    }
+   ],
+   "notes": "if ov14_021E8544()==0 -> ov14_021ED5B0 else ov14_021F1100(work,0x35)"
+  },
+  {
+   "name": "ov14_021F1170",
+   "mode": "thumb",
+   "signature_guess": "int ov14_021F1170(PCBoxWork *work, int delta)",
+   "confidence": "high",
+   "callees": [
+    "_s32_div_f",
+    "ov14_021F48B4",
+    "ov14_021F57B8",
+    "GridInputHandler_GetNextInput",
+    "GridInputHandler_SetNextLastUnk0FInputs",
+    "GridInputHandler_GetDpadBox",
+    "DpadMenuBox_GetPosition",
+    "ManagedSprite_SetPositionXY",
+    "ov14_021F29E4",
+    "ov14_021F2A18"
+   ],
+   "struct_accesses": [
+    {
+     "param": 0,
+     "offset": "0x25",
+     "width": 1,
+     "meaning": "cursor col = (x%6)+6*delta"
+    },
+    {
+     "param": 0,
+     "offset": "0x34",
+     "width": 4,
+     "meaning": "[subctx+0x43C]=u32 input; +0x2c=GridInputHandler*; +0x320=ManagedSprite*"
+    }
+   ],
+   "notes": "returns 0x3d explicitly; sp holds DpadMenuBox position (u8 px at sp+1, py at sp)"
+  },
+  {
+   "name": "ov14_021F11F8",
+   "mode": "thumb",
+   "signature_guess": "int ov14_021F11F8(PCBoxWork *work)",
+   "confidence": "high",
+   "callees": [
+    "ov14_021F1004",
+    "_s32_div_f",
+    "GridInputHandler_SetNextInput",
+    "GridInputHandler_SetButtonInputMode"
+   ],
+   "notes": "returns 0x3d explicitly; calls ov14_021F1004 (r1 carries prior value)"
+  },
+  {
+   "name": "ov14_021F1228",
+   "mode": "thumb",
+   "signature_guess": "void ov14_021F1228(PCBoxWork *work, int delta)",
+   "confidence": "medium",
+   "callees": [
+    "ov14_021F29E4",
+    "ov14_021F462C",
+    "ov14_021F4530",
+    "ov14_021F58B8",
+    "GridInputHandler_SetNextInput",
+    "GridInputHandler_SetButtonInputMode"
+   ],
+   "struct_accesses": [
+    {
+     "param": 0,
+     "offset": "0x34",
+     "width": 4,
+     "meaning": "[subctx+0x44D]=u8 wraps by 4*delta in [0,0x18); +0x2c=GridInputHandler*"
+    }
+   ],
+   "notes": "no r0 set on exit -> likely void; delta sign picks ov14_021F29E4(subctx,5,4) vs (4,2)"
+  },
+  {
+   "name": "ov14_021F129C",
+   "mode": "thumb",
+   "signature_guess": "void ov14_021F129C(PCBoxWork *work, int lowBits)",
+   "confidence": "medium",
+   "callees": [
+    "ov14_021F459C",
+    "ov14_021F58B8",
+    "GridInputHandler_GetNextInput",
+    "GridInputHandler_SetNextLastUnk0FInputs",
+    "GridInputHandler_GetDpadBox",
+    "DpadMenuBox_GetPosition",
+    "ManagedSprite_SetPositionXY",
+    "ov14_021F29E4",
+    "ov14_021F2A18"
+   ],
+   "struct_accesses": [
+    {
+     "param": 0,
+     "offset": "0x34",
+     "width": 4,
+     "meaning": "[subctx+0x44D]=(u8>>2<<2)+r1; +0x43C=u32 input; +0x2c=GridInputHandler*; +0x320=ManagedSprite*"
+    }
+   ],
+   "notes": "no r0 set on exit -> likely void"
+  },
+  {
+   "name": "ov14_021F131C",
+   "mode": "thumb",
+   "signature_guess": "int ov14_021F131C(PCBoxWork *work)",
+   "confidence": "medium",
+   "callees": [
+    "PCStorage_IsBonusWallpaperUnlocked",
+    "PlaySE",
+    "ov14_021F2270",
+    "ov14_021E7930"
+   ],
+   "struct_accesses": [
+    {
+     "param": 0,
+     "offset": "0x04",
+     "width": 4,
+     "meaning": "PCStorage* -> IsBonusWallpaperUnlocked"
+    },
+    {
+     "param": 0,
+     "offset": "0x25",
+     "width": 1,
+     "meaning": "cursor compared to bound"
+    },
+    {
+     "param": 0,
+     "offset": "0x1f",
+     "width": 1,
+     "meaning": "cursor bound"
+    },
+    {
+     "param": 0,
+     "offset": "0x34",
+     "width": 4,
+     "meaning": "[subctx+0x44D]=u8 wallpaper idx"
+    }
+   ],
+   "notes": "SE ids 0x5F3/0x5DC/0x5DD; returns ov14_021F2270 result"
+  },
+  {
+   "name": "ov14_021F13B0",
+   "mode": "thumb",
+   "signature_guess": "int ov14_021F13B0(PCBoxWork *work)",
+   "confidence": "high",
+   "callees": [
+    "ov14_021F2A18",
+    "Party_GetCount",
+    "ov14_021F6654",
+    "ov14_021E84A4",
+    "ov14_021E884C",
+    "ov14_021F0234",
+    "ov14_021E83F4",
+    "ov14_021F685C"
+   ],
+   "struct_accesses": [
+    {
+     "param": 0,
+     "offset": "0x08",
+     "width": 4,
+     "meaning": "Party* -> Party_GetCount"
+    },
+    {
+     "param": 0,
+     "offset": "0x30",
+     "width": 4,
+     "meaning": "next-state set to 0xe on full-party path"
+    }
+   ],
+   "notes": "if Party_GetCount()==6 -> returns 6 with state 0xe; else state 0x53 callback ov14_021E9434"
+  },
+  {
+   "name": "ov14_021F1414",
+   "mode": "thumb",
+   "signature_guess": "int ov14_021F1414(PCBoxWork *work)",
+   "confidence": "high",
+   "callees": [
+    "ov14_021F6654",
+    "ov14_021F2A18",
+    "ov14_021E84A4",
+    "ov14_021F0234"
+   ],
+   "notes": "state 0x5c, callback ov14_021E9450"
+  },
+  {
+   "name": "ov14_021F1448",
+   "mode": "thumb",
+   "signature_guess": "int ov14_021F1448(PCBoxWork *work, int delta)",
+   "confidence": "high",
+   "callees": [
+    "_s32_div_f",
+    "System_GetTouchNew",
+    "PCStorage_CountMonsAndEggsInBox",
+    "PlaySE",
+    "ov14_021F48B4",
+    "ov14_021F57B8",
+    "GridInputHandler_GetNextInput",
+    "GridInputHandler_SetNextLastUnk0FInputs",
+    "GridInputHandler_GetDpadBox",
+    "DpadMenuBox_GetPosition",
+    "ManagedSprite_SetPositionXY",
+    "ov14_021F29E4",
+    "ov14_021F2A18"
+   ],
+   "struct_accesses": [
+    {
+     "param": 0,
+     "offset": "0x04",
+     "width": 4,
+     "meaning": "PCStorage* -> CountMonsAndEggsInBox(box=[work+0x25])"
+    },
+    {
+     "param": 0,
+     "offset": "0x25",
+     "width": 1,
+     "meaning": "cursor/box"
+    }
+   ],
+   "notes": "returns 0x66 (touch, box full) or 0x61; SE 0x5F3/0x5DD"
+  },
+  {
+   "name": "ov14_021F1504",
+   "mode": "thumb",
+   "signature_guess": "int ov14_021F1504(PCBoxWork *work)",
+   "confidence": "high",
+   "callees": [
+    "ov14_021F1004",
+    "_s32_div_f",
+    "GridInputHandler_SetNextInput",
+    "GridInputHandler_SetButtonInputMode"
+   ],
+   "notes": "returns 0x61 explicitly"
+  },
+  {
+   "name": "ov14_021F1534",
+   "mode": "thumb",
+   "signature_guess": "int ov14_021F1534(PCBoxWork *work)",
+   "confidence": "high",
+   "callees": [
+    "ov14_021F2270"
+   ],
+   "notes": "pure tail-call: return ov14_021F2270(work, 0xa, 0x62); bx r3 form"
+  },
+  {
+   "name": "ov14_021F1540",
+   "mode": "thumb",
+   "signature_guess": "int ov14_021F1540(PCBoxWork *work)",
+   "confidence": "high",
+   "callees": [
+    "ov14_021F29E4",
+    "PCStorage_CountMonsAndEggsInBox",
+    "PlaySE",
+    "ov14_021F2270"
+   ],
+   "struct_accesses": [
+    {
+     "param": 0,
+     "offset": "0x04",
+     "width": 4,
+     "meaning": "PCStorage*"
+    },
+    {
+     "param": 0,
+     "offset": "0x25",
+     "width": 1,
+     "meaning": "box index"
+    }
+   ],
+   "notes": "SE 0x5F3 (box full=0x1e) / 0x5DD; returns ov14_021F2270(work,0xc,0x66)"
+  },
+  {
+   "name": "ov14_021F1580",
+   "mode": "thumb",
+   "signature_guess": "int ov14_021F1580(PCBoxWork *work, u8 sel)",
+   "confidence": "high",
+   "callees": [
+    "ov14_021F3190",
+    "ov14_021F40DC",
+    "ov14_021E8824",
+    "ov14_021F0234"
+   ],
+   "struct_accesses": [
+    {
+     "param": 0,
+     "offset": "0x21",
+     "width": 1,
+     "meaning": "= sel (strb r1)"
+    },
+    {
+     "param": 0,
+     "offset": "0x2a",
+     "width": 1,
+     "meaning": "flag, if 0 call ov14_021E8824"
+    },
+    {
+     "param": 0,
+     "offset": "0x34",
+     "width": 4,
+     "meaning": "[subctx+0x44B]=u8 set to 1"
+    }
+   ],
+   "notes": "state 0x73, callback ov14_021EA254; r1 stored as u8 -> u8 param"
+  },
+  {
+   "name": "ov14_021F15C8",
+   "mode": "thumb",
+   "signature_guess": "int ov14_021F15C8(PCBoxWork *work, int target)",
+   "confidence": "medium",
+   "callees": [
+    "ManagedSprite_GetPositionXY",
+    "ManagedSprite_SetPositionXY",
+    "Party_GetCount",
+    "ov14_021E765C",
+    "ov14_021E8634",
+    "ov14_021E884C",
+    "_s32_div_f",
+    "ov14_021F48B4",
+    "ov14_021F57B8",
+    "Party_GetMonByIndex",
+    "GetMonData",
+    "ItemIdIsMail",
+    "ov14_021E6480",
+    "PCStorage_CountEmptySpotsInBox",
+    "ov14_021E7588",
+    "GridInputHandler_GetNextInput",
+    "ov14_021F08BC",
+    "ov14_021F0234"
+   ],
+   "struct_accesses": [
+    {
+     "param": 0,
+     "offset": "0x04",
+     "width": 4,
+     "meaning": "PCStorage*"
+    },
+    {
+     "param": 0,
+     "offset": "0x08",
+     "width": 4,
+     "meaning": "Party*"
+    },
+    {
+     "param": 0,
+     "offset": "0x1f",
+     "width": 1,
+     "meaning": "cursor bound"
+    },
+    {
+     "param": 0,
+     "offset": "0x21",
+     "width": 1,
+     "meaning": "u8 selection index"
+    },
+    {
+     "param": 0,
+     "offset": "0x22",
+     "width": 1,
+     "meaning": "set to 2"
+    },
+    {
+     "param": 0,
+     "offset": "0x25",
+     "width": 1,
+     "meaning": "cursor col"
+    },
+    {
+     "param": 0,
+     "offset": "0x34",
+     "width": 4,
+     "meaning": "[subctx+0x88CC]=BOOL(target==0xff); +0x4094 base=u8 table; +0x2fc(0xbf<<2) ptr array; +0x320/+0x44C/+0x44B fields"
+    }
+   ],
+   "notes": "largest handler; target compared to 0xff/0x24/0x1e; GetMonData attrs 6(item)/0xa2(egg); ItemIdIsMail gate; state 0x2b callback ov14_021EA378"
+  }
+ ],
+ "imports": {
+  "DpadMenuBox_GetPosition": {
+   "known_prototype": "void DpadMenuBox_GetPosition(const DpadMenuBox *dpadBoxes, u8 *px, u8 *py)",
+   "header": "include/unk_02020A0C.h"
+  },
+  "GetMonData": {
+   "known_prototype": "u32 GetMonData(Pokemon *mon, int attr, void *ptr)",
+   "header": "include/pokemon.h"
+  },
+  "GridInputHandler_GetDpadBox": {
+   "known_prototype": "const DpadMenuBox *GridInputHandler_GetDpadBox(GridInputHandler *inputHandler, int target)",
+   "header": "include/unk_02019BA4.h"
+  },
+  "GridInputHandler_GetNextInput": {
+   "known_prototype": "int GridInputHandler_GetNextInput(GridInputHandler *inputHandler)",
+   "header": "include/unk_02019BA4.h"
+  },
+  "GridInputHandler_IsButtonInputMode": {
+   "known_prototype": "BOOL GridInputHandler_IsButtonInputMode(GridInputHandler *inputHandler)",
+   "header": "include/unk_02019BA4.h"
+  },
+  "GridInputHandler_SetButtonInputMode": {
+   "known_prototype": "void GridInputHandler_SetButtonInputMode(GridInputHandler *inputHandler, BOOL isButtons)",
+   "header": "include/unk_02019BA4.h"
+  },
+  "GridInputHandler_SetNextInput": {
+   "known_prototype": "void GridInputHandler_SetNextInput(GridInputHandler *inputHandler, int nextInput)",
+   "header": "include/unk_02019BA4.h"
+  },
+  "GridInputHandler_SetNextLastUnk0FInputs": {
+   "known_prototype": "void GridInputHandler_SetNextLastUnk0FInputs(GridInputHandler *inputHandler, int nextInput, int lastInput, int unk0F)",
+   "header": "include/unk_02019BA4.h"
+  },
+  "ItemIdIsMail": {
+   "known_prototype": "BOOL ItemIdIsMail(u16 itemId)",
+   "header": "include/item.h"
+  },
+  "ManagedSprite_GetPositionXY": {
+   "known_prototype": "void ManagedSprite_GetPositionXY(ManagedSprite *managedSprite, s16 *x, s16 *y)",
+   "header": "include/sprite_system.h"
+  },
+  "ManagedSprite_SetPositionXY": {
+   "known_prototype": "void ManagedSprite_SetPositionXY(ManagedSprite *managedSprite, s16 x, s16 y)",
+   "header": "include/sprite_system.h"
+  },
+  "PCStorage_CountEmptySpotsInBox": {
+   "known_prototype": "int PCStorage_CountEmptySpotsInBox(PCStorage *storage, u32 boxno)",
+   "header": "include/pokemon_storage_system.h"
+  },
+  "PCStorage_CountMonsAndEggsInBox": {
+   "known_prototype": "int PCStorage_CountMonsAndEggsInBox(PCStorage *storage, u32 boxno)",
+   "header": "include/pokemon_storage_system.h"
+  },
+  "PCStorage_IsBonusWallpaperUnlocked": {
+   "known_prototype": "BOOL PCStorage_IsBonusWallpaperUnlocked(PCStorage *storage, u32 wallpaper)",
+   "header": "include/pokemon_storage_system.h"
+  },
+  "Party_GetCount": {
+   "known_prototype": "int Party_GetCount(const Party *party)",
+   "header": "include/party.h"
+  },
+  "Party_GetMonByIndex": {
+   "known_prototype": "Pokemon *Party_GetMonByIndex(Party *party, int slot)",
+   "header": "include/party.h"
+  },
+  "PlaySE": {
+   "known_prototype": "void PlaySE(u16 sndseq)",
+   "header": "include/unk_02005D10.h",
+   "warning": "unk_02005D10.h is IPA-blocked (see project_ipa_blocker) - do NOT add declarations to it; use split-header / local extern for the defining .c"
+  },
+  "System_GetTouchNew": {
+   "known_prototype": "BOOL System_GetTouchNew(void)",
+   "header": "include/touchscreen.h"
+  },
+  "_s32_div_f": {
+   "known_prototype": "runtime signed divide; returns quotient in r0, remainder in r1",
+   "evidence": "used for x/6, x%6, x%0x12, x%0x18 wrap math - reproduce via C /,% on int and match the div/mul-back idiom"
+  },
+  "ov14_021F0234": {
+   "signature_guess": "int ov14_021F0234(PCBoxWork *work, void *callbackFn, int nextState)",
+   "evidence": "defined in overlay_14_021EFDE4.s: str r2,[r0,#0x30]; ldr r0,[r0,#0x34]; bl ov14_021E5A44(subctx, callbackFn); returns 5. r1 is a callback fn ptr (the ov14_021E9xxx labels)"
+  },
+  "ov14_021F2270": {
+   "signature_guess": "int ov14_021F2270(PCBoxWork *work, int a1, int nextState)",
+   "evidence": "called as (work, immA, immB) then result returned; text/transition helper"
+  },
+  "ov14_021F29E4": {
+   "signature_guess": "void ov14_021F29E4(void *subctx, int a1, int a2)",
+   "evidence": "called with subctx=[work+0x34] and two small ints; return ignored"
+  },
+  "ov14_021F2A18": {
+   "signature_guess": "void ov14_021F2A18(void *subctx, int a1, int a2)",
+   "evidence": "same shape as 021F29E4; typically (subctx, 9, 0)"
+  },
+  "ov14_021E84A4": {
+   "signature_guess": "void ov14_021E84A4(ManagedSprite *sprite)",
+   "evidence": "arg is [subctx+0x2f0] sprite ptr"
+  },
+  "ov14_021E7930": {
+   "signature_guess": "int ov14_021E7930(PCBoxWork *work, u8 idx)",
+   "evidence": "returns value compared to cursor/wallpaper bound"
+  },
+  "ov14_021E783C": {
+   "signature_guess": "void ov14_021E783C(PCBoxWork *work, int a1, int dir)",
+   "evidence": "3 args, dir 0/1"
+  },
+  "ov14_others": {
+   "signature_guess": "overlay_14-internal helpers (ov14_021E6480..ov14_021F685C); most take PCBoxWork* or subctx in r0",
+   "evidence": "all imported from neighbor overlay_14 chunks (021E5900 / 021EAF08 / 021EE26C / 021EEF34 / 021EFDE4 / 021F1808 / 021F2490); resolve exact protos from their own chunks when decompiled"
+  }
+ },
+ "shared_struct_hypotheses": [
+  {
+   "name": "PCBoxWork",
+   "size_guess": ">=0x38 (through +0x34)",
+   "note": "shared overlay_14 PC-Box scene work struct passed as r0 to every function",
+   "fields": [
+    {
+     "offset": "0x00",
+     "width": 4,
+     "meaning": "ptr; [*+8]=int mode compared to 3"
+    },
+    {
+     "offset": "0x04",
+     "width": 4,
+     "meaning": "PCStorage *"
+    },
+    {
+     "offset": "0x08",
+     "width": 4,
+     "meaning": "Party *"
+    },
+    {
+     "offset": "0x1f",
+     "width": 1,
+     "meaning": "u8 cursor bound / count"
+    },
+    {
+     "offset": "0x21",
+     "width": 1,
+     "meaning": "u8 selection index"
+    },
+    {
+     "offset": "0x22",
+     "width": 1,
+     "meaning": "u8 mode (set to 2)"
+    },
+    {
+     "offset": "0x23",
+     "width": 1,
+     "meaning": "u8 flag"
+    },
+    {
+     "offset": "0x24",
+     "width": 1,
+     "meaning": "u8 flag"
+    },
+    {
+     "offset": "0x25",
+     "width": 1,
+     "meaning": "u8 cursor position (wraps mod 6 / mod 0x12)"
+    },
+    {
+     "offset": "0x29",
+     "width": 1,
+     "meaning": "u8"
+    },
+    {
+     "offset": "0x2a",
+     "width": 1,
+     "meaning": "u8 flag"
+    },
+    {
+     "offset": "0x2c",
+     "width": 4,
+     "meaning": "u32 cached input value"
+    },
+    {
+     "offset": "0x30",
+     "width": 4,
+     "meaning": "u32 next-state code (written by ov14_021F0234)"
+    },
+    {
+     "offset": "0x34",
+     "width": 4,
+     "meaning": "ptr to large render sub-context (>0x88CC bytes)"
+    }
+   ]
+  },
+  {
+   "name": "PCBoxSubContext",
+   "size_guess": ">0x88CC (via [work+0x34])",
+   "fields": [
+    {
+     "offset": "0x2c",
+     "width": 4,
+     "meaning": "GridInputHandler *"
+    },
+    {
+     "offset": "0x2f0",
+     "width": 4,
+     "meaning": "ManagedSprite * (0x2f<<4)"
+    },
+    {
+     "offset": "0x320",
+     "width": 4,
+     "meaning": "ManagedSprite * (0x32<<4)"
+    },
+    {
+     "offset": "0x2fc",
+     "width": 4,
+     "meaning": "ptr array base (0xbf<<2)"
+    },
+    {
+     "offset": "0x438",
+     "width": 2,
+     "meaning": "u16"
+    },
+    {
+     "offset": "0x43c",
+     "width": 4,
+     "meaning": "u32 last input value"
+    },
+    {
+     "offset": "0x44b",
+     "width": 1,
+     "meaning": "u8 flag"
+    },
+    {
+     "offset": "0x44c",
+     "width": 1,
+     "meaning": "u8"
+    },
+    {
+     "offset": "0x44d",
+     "width": 1,
+     "meaning": "u8 wallpaper/box selector (wraps mod 0x18)"
+    },
+    {
+     "offset": "0x4094",
+     "width": 1,
+     "meaning": "u8 table base (indexed by [work+0x21])"
+    },
+    {
+     "offset": "0x88cc",
+     "width": 4,
+     "meaning": "BOOL (target==0xff)"
+    }
+   ]
+  }
+ ],
+ "risks": [
+  "INLINE JUMP TABLE in ov14_021F0F0C: dense switch(sel) cases 0..4, guard cmp r5,#4; bhi. Must list ALL 5 cases explicitly and in source (body-address) order or the .short table diverges (insights: jumptable-needs-all-dense-cases-explicit, switch-case-body-layout-follows-source-order).",
+  "PlaySE is imported from include/unk_02005D10.h which is IPA-blocked - do NOT add declarations to it; use split-header pattern / local extern (see memory project_ipa_blocker, feedback_ipa_header_discipline).",
+  "_s32_div_f modulo/division idioms (x/6, x%6, x%0x12=18, x%0x18=24) with signed round-toward-zero and mul-back (mul r1,r0; add; cmp) - match the exact C /,% forms; several use the bpl/blt/sub wrap idiom for signed modulo.",
+  "35 exports must appear in this exact file order in the C (state-handler ordering is load-bearing for the linker/section layout).",
+  "No callers in decompiled C yet - the ov14_021E9xxx callback labels and neighbor ov14_* helpers are all imports from other overlay_14 chunks; the FSM handler signatures (return int state-code, r0=PCBoxWork*, optional r1=int/u8) are inferred from ov14_021F0234's contract, not from an existing header.",
+  "ov14_021F1228 / ov14_021F129C return type ambiguous (no r0 set on exit) - likely void; verify against callers when the dispatcher chunk is decompiled.",
+  "No .rodata/.data/.bss sections; only inline literal pools (sound ids 0x5DC/0x5DD/0x5F3, subctx offsets 0x43C/0x44B-0x44D/0x4094/0x88CC) and the one inline jump table."
+ ],
+ "notes": "This chunk is the input/state-transition layer of the overlay_14 Pokemon Storage (PC Box) UI. Handlers return an int FSM result code and typically end by calling ov14_021F0234(work, callback, nextState) which stores nextState at [work+0x30], swaps the active callback via [work+0x34], and returns 5. r0 is always the shared PCBoxWork*; r1 (when present) is the next-state index (or a u8 selection for 021F1580). Naming PCBoxWork/PCBoxSubContext is provisional - no existing header defines them yet."
+}

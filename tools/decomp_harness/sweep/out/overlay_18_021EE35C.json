@@ -1,0 +1,1372 @@
+{
+ "file": "asm/overlay_18_021EE35C.s",
+ "summary": "Split chunk of overlay_18 (Pokedex application). 74 thumb funcs drawing Pokedex info/stats/location pages into PokedexAppData->windows[]. CRITICAL: nearly every non-static function here ALREADY has a frozen prototype in include/application/pokedex/pokedex_internal.h and struct PokedexAppData (size 0x1910) is fully defined there (267-324). Match those signatures/types EXACTLY; do not edit that header (IPA cascade into already-matched ov18_021E5C40.c/ov18_021E8BF4.c). First arg always PokedexAppData *pokedexApp (r0).",
+ "functions": [
+  {
+   "name": "ov18_021EE35C",
+   "mode": "thumb",
+   "signature_guess": "static void ov18_021EE35C(PokedexAppData *pokedexApp, const WindowTemplate *templates, u32 count)",
+   "confidence": "high",
+   "callees": [
+    "AddWindow"
+   ],
+   "notes": "static (not .public, not in header). Loops AddWindow(pokedexApp->bgConfig[+4], &windows[i] (0xc,stride0x10), &templates[i] (stride8))."
+  },
+  {
+   "name": "ov18_021EE388",
+   "mode": "thumb",
+   "signature_guess": "void ov18_021EE388(PokedexAppData *pokedexApp)",
+   "confidence": "high",
+   "callees": [
+    "RemoveWindow"
+   ],
+   "notes": "header:407, .public (called from sibling chunk 021F0918.s and src ov18_021E8BF4.c). Loops 101 windows, RemoveWindow if [+0x18]!=0."
+  },
+  {
+   "name": "ov18_021EE3AC",
+   "mode": "thumb",
+   "signature_guess": "void ov18_021EE3AC(PokedexAppData *pokedexApp, MsgData *msgData, int windowIndex, u32 msgId, int a4, int a5, int a6, u32 a7, int a8)",
+   "confidence": "medium",
+   "callees": [
+    "NewString_ReadMsgData",
+    "StringExpandPlaceholders",
+    "ov18_021F95FC",
+    "String_Delete"
+   ],
+   "notes": ".public (from sibling asm 021F0918.s) but NOT in header. Keep NON-static; do NOT add to header. 9 params (r0-r3 + 5 stack). Uses msgFormat(0x660)/strBufFormatted(0x664)."
+  },
+  {
+   "name": "ov18_021EE3FC",
+   "mode": "thumb",
+   "signature_guess": "void ov18_021EE3FC(PokedexAppData *pokedexApp)",
+   "confidence": "high",
+   "callees": [
+    "ov18_021EE35C",
+    "ov18_021EE508",
+    "ov18_021EE5FC",
+    "ov18_021F8824",
+    "ov18_021F8838",
+    "ov18_021EE6BC",
+    "ov18_021EE8B8"
+   ],
+   "notes": "header:408. Init ov18_021EE35C(app, ov18_021F9F3C, 0x14=20)."
+  },
+  {
+   "name": "ov18_021EE44C",
+   "mode": "thumb",
+   "signature_guess": "static void ov18_021EE44C(PokedexAppData *pokedexApp, int windowBase, int a2)",
+   "confidence": "medium",
+   "callees": [
+    "GfGfxLoader_GetCharDataFromOpenNarc",
+    "BlitBitmapRect",
+    "ov18_021F9648",
+    "Heap_Free"
+   ],
+   "notes": "static. Blits 12 8x8 tiles from gfxNarc(0x854)."
+  },
+  {
+   "name": "ov18_021EE508",
+   "mode": "thumb",
+   "signature_guess": "static void ov18_021EE508(PokedexAppData *pokedexApp, int a1, int a2)",
+   "confidence": "medium",
+   "callees": [
+    "ov18_021EE44C",
+    "ScheduleWindowCopyToVram"
+   ],
+   "notes": "static wrapper."
+  },
+  {
+   "name": "ov18_021EE520",
+   "mode": "thumb",
+   "signature_guess": "static void ov18_021EE520(PokedexAppData *pokedexApp, int windowIndex, int value)",
+   "confidence": "medium",
+   "callees": [
+    "GfGfxLoader_GetCharDataFromOpenNarc",
+    "BlitBitmapRect",
+    "Heap_Free",
+    "MessagePrinter_New",
+    "PrintUIntOnWindow",
+    "MessagePrinter_Delete"
+   ],
+   "notes": "static. Blits then prints uint."
+  },
+  {
+   "name": "ov18_021EE5E4",
+   "mode": "thumb",
+   "signature_guess": "static void ov18_021EE5E4(PokedexAppData *pokedexApp, int a1, int a2)",
+   "confidence": "medium",
+   "callees": [
+    "ov18_021EE520",
+    "ScheduleWindowCopyToVram"
+   ],
+   "notes": "static wrapper."
+  },
+  {
+   "name": "ov18_021EE5FC",
+   "mode": "thumb",
+   "signature_guess": "void ov18_021EE5FC(PokedexAppData *pokedexApp)",
+   "confidence": "high",
+   "callees": [
+    "ov18_021EE5E4"
+   ],
+   "notes": "header:409. unk_185D toggle (eor 1), u16 at 0x102C/0x102E."
+  },
+  {
+   "name": "ov18_021EE638",
+   "mode": "thumb",
+   "signature_guess": "void ov18_021EE638(PokedexAppData *pokedexApp, u32 species, int a2)",
+   "confidence": "high",
+   "callees": [
+    "FillWindowPixelBuffer",
+    "ov18_021E590C",
+    "Pokedex_GetInternationalViewFlag",
+    "ov18_021F95FC",
+    "String_Delete",
+    "ScheduleWindowCopyToVram",
+    "ClearWindowTilemapAndScheduleTransfer"
+   ],
+   "notes": "header:410. species==0 clears. unk_185C."
+  },
+  {
+   "name": "ov18_021EE6BC",
+   "mode": "thumb",
+   "signature_guess": "void ov18_021EE6BC(PokedexAppData *pokedexApp, int species, int a2)",
+   "confidence": "high",
+   "callees": [
+    "ov18_021EE71C",
+    "ov18_021EE75C",
+    "ov18_021EE7DC",
+    "ov18_021EE834"
+   ],
+   "notes": "header:411. window ids 7-10."
+  },
+  {
+   "name": "ov18_021EE6EC",
+   "mode": "thumb",
+   "signature_guess": "void ov18_021EE6EC(PokedexAppData *pokedexApp, int species, int a2)",
+   "confidence": "high",
+   "callees": [
+    "ov18_021EE71C",
+    "ov18_021EE75C",
+    "ov18_021EE7DC",
+    "ov18_021EE834"
+   ],
+   "notes": "header:412. window ids 0x51-0x54."
+  },
+  {
+   "name": "ov18_021EE71C",
+   "mode": "thumb",
+   "signature_guess": "static void ov18_021EE71C(PokedexAppData *pokedexApp, int windowIndex)",
+   "confidence": "medium",
+   "callees": [
+    "FillWindowPixelBuffer",
+    "ov18_021F9648",
+    "ScheduleWindowCopyToVram"
+   ],
+   "notes": "static."
+  },
+  {
+   "name": "ov18_021EE75C",
+   "mode": "thumb",
+   "signature_guess": "static void ov18_021EE75C(PokedexAppData *pokedexApp, int species, int windowIndex)",
+   "confidence": "medium",
+   "callees": [
+    "FillWindowPixelBuffer",
+    "Pokedex_ConvertToCurrentDexNo",
+    "BufferIntegerAsString",
+    "ov18_021EE3AC",
+    "ScheduleWindowCopyToVram",
+    "ClearWindowTilemapAndScheduleTransfer"
+   ],
+   "notes": "static. unk_1858; species==0 clear."
+  },
+  {
+   "name": "ov18_021EE7DC",
+   "mode": "thumb",
+   "signature_guess": "static void ov18_021EE7DC(PokedexAppData *pokedexApp, int species, int windowIndex)",
+   "confidence": "medium",
+   "callees": [
+    "FillWindowPixelBuffer",
+    "ov18_021E590C",
+    "ov18_021F95FC",
+    "String_Delete",
+    "ScheduleWindowCopyToVram",
+    "ClearWindowTilemapAndScheduleTransfer"
+   ],
+   "notes": "static."
+  },
+  {
+   "name": "ov18_021EE834",
+   "mode": "thumb",
+   "signature_guess": "static void ov18_021EE834(PokedexAppData *pokedexApp, int species, int a2, int windowIndex)",
+   "confidence": "medium",
+   "callees": [
+    "FillWindowPixelBuffer",
+    "ov18_021E595C",
+    "GetWindowWidth",
+    "ov18_021F95FC",
+    "String_Delete",
+    "ScheduleWindowCopyToVram",
+    "ClearWindowTilemapAndScheduleTransfer"
+   ],
+   "notes": "static. u16 unk_1030[a2].+2 (0x1032) picks language."
+  },
+  {
+   "name": "ov18_021EE8B8",
+   "mode": "thumb",
+   "signature_guess": "void ov18_021EE8B8(PokedexAppData *pokedexApp, u32 species, int a2)",
+   "confidence": "high",
+   "callees": [
+    "ClearWindowTilemapAndScheduleTransfer",
+    "ov18_021EE984",
+    "ov18_021EE9FC",
+    "ov18_021EEA40",
+    "ov18_021EEAE4",
+    "ov18_021EEB94",
+    "ov18_021EEBE4",
+    "ov18_021EEC34",
+    "ov18_021EECB0",
+    "ov18_021EED00"
+   ],
+   "notes": "header:413. clears 9 windows; unk_185C==2 metric vs imperial."
+  },
+  {
+   "name": "ov18_021EE984",
+   "mode": "thumb",
+   "signature_guess": "static void ov18_021EE984(PokedexAppData *pokedexApp, int species, int a2, int windowIndex)",
+   "confidence": "medium",
+   "callees": [
+    "FillWindowPixelBuffer",
+    "ov18_021E59A8",
+    "GetWindowWidth",
+    "FontID_String_GetWidthMultiline",
+    "ov18_021F95FC",
+    "String_Delete",
+    "ScheduleWindowCopyToVram"
+   ],
+   "notes": "static. Centered multiline; guard unk_1030[a2].+2==2."
+  },
+  {
+   "name": "ov18_021EE9FC",
+   "mode": "thumb",
+   "signature_guess": "static void ov18_021EE9FC(PokedexAppData *pokedexApp, int windowIndex)",
+   "confidence": "medium",
+   "callees": [
+    "FillWindowPixelBuffer",
+    "ov18_021F9648",
+    "ScheduleWindowCopyToVram"
+   ],
+   "notes": "static; msg 0xa."
+  },
+  {
+   "name": "ov18_021EEA40",
+   "mode": "thumb",
+   "signature_guess": "static void ov18_021EEA40(PokedexAppData *pokedexApp, int windowIndex)",
+   "confidence": "medium",
+   "callees": [
+    "FillWindowPixelBuffer",
+    "ov18_021F9648",
+    "ScheduleWindowCopyToVram"
+   ],
+   "notes": "static; msg 0xb (twin of ov18_021EE9FC)."
+  },
+  {
+   "name": "ov18_021EEA84",
+   "mode": "thumb",
+   "signature_guess": "static void ov18_021EEA84(PokedexAppData *pokedexApp, int a1, int a2, int windowIndex, int a4, int a5, int a6, int a7)",
+   "confidence": "low",
+   "callees": [
+    "GetDexHeightMsgBank",
+    "NewMsgDataFromNarc",
+    "NewString_ReadMsgData",
+    "ov18_021F95FC",
+    "String_Delete",
+    "DestroyMsgData"
+   ],
+   "notes": "static height-string draw; a2==2 language variant; stack params."
+  },
+  {
+   "name": "ov18_021EEAE4",
+   "mode": "thumb",
+   "signature_guess": "static void ov18_021EEAE4(PokedexAppData *pokedexApp, int a1, int a2, int windowIndex)",
+   "confidence": "medium",
+   "callees": [
+    "FillWindowPixelBuffer",
+    "ov18_021EEA84",
+    "ScheduleWindowCopyToVram"
+   ],
+   "notes": "static height wrapper; unk_1030[a2].+2."
+  },
+  {
+   "name": "ov18_021EEB34",
+   "mode": "thumb",
+   "signature_guess": "static void ov18_021EEB34(PokedexAppData *pokedexApp, int a1, int a2, int windowIndex, int a4, int a5, int a6, int a7)",
+   "confidence": "low",
+   "callees": [
+    "GetDexWeightMsgBank",
+    "NewMsgDataFromNarc",
+    "NewString_ReadMsgData",
+    "ov18_021F95FC",
+    "String_Delete",
+    "DestroyMsgData"
+   ],
+   "notes": "static weight-string draw; twin of ov18_021EEA84."
+  },
+  {
+   "name": "ov18_021EEB94",
+   "mode": "thumb",
+   "signature_guess": "static void ov18_021EEB94(PokedexAppData *pokedexApp, int a1, int a2, int windowIndex)",
+   "confidence": "medium",
+   "callees": [
+    "FillWindowPixelBuffer",
+    "ov18_021EEB34",
+    "ScheduleWindowCopyToVram"
+   ],
+   "notes": "static weight wrapper."
+  },
+  {
+   "name": "ov18_021EEBE4",
+   "mode": "thumb",
+   "signature_guess": "static void ov18_021EEBE4(PokedexAppData *pokedexApp, int windowIndex)",
+   "confidence": "medium",
+   "callees": [
+    "FillWindowPixelBuffer",
+    "LanguageToDexFlag",
+    "ov18_021F9648",
+    "ScheduleWindowCopyToVram"
+   ],
+   "notes": "static; unk_185C->LanguageToDexFlag; msg 0x7a+flag."
+  },
+  {
+   "name": "ov18_021EEC34",
+   "mode": "thumb",
+   "signature_guess": "static void ov18_021EEC34(PokedexAppData *pokedexApp, int a1, int windowIndex, int a3)",
+   "confidence": "medium",
+   "callees": [
+    "FillWindowPixelBuffer",
+    "Pokedex_ConvertToCurrentDexNo",
+    "BufferIntegerAsString",
+    "ov18_021EE3AC",
+    "ScheduleWindowCopyToVram"
+   ],
+   "notes": "static dex-number; a3==1 toggles flag."
+  },
+  {
+   "name": "ov18_021EECB0",
+   "mode": "thumb",
+   "signature_guess": "static void ov18_021EECB0(PokedexAppData *pokedexApp, int species, int windowIndex)",
+   "confidence": "medium",
+   "callees": [
+    "FillWindowPixelBuffer",
+    "ov18_021E590C",
+    "ov18_021F95FC",
+    "String_Delete",
+    "ScheduleWindowCopyToVram"
+   ],
+   "notes": "static species-name; unk_185C."
+  },
+  {
+   "name": "ov18_021EED00",
+   "mode": "thumb",
+   "signature_guess": "static void ov18_021EED00(PokedexAppData *pokedexApp, int a1, int a2, int windowIndex)",
+   "confidence": "medium",
+   "callees": [
+    "FillWindowPixelBuffer",
+    "ov18_021E595C",
+    "ov18_021F95FC",
+    "String_Delete",
+    "ScheduleWindowCopyToVram"
+   ],
+   "notes": "static; unk_1030[a2].+2==2 language; unk_185C."
+  },
+  {
+   "name": "ov18_021EED70",
+   "mode": "thumb",
+   "signature_guess": "void ov18_021EED70(PokedexAppData *pokedexApp, int species, int a2)",
+   "confidence": "high",
+   "callees": [
+    "ClearWindowTilemapAndScheduleTransfer",
+    "ov18_021EE984",
+    "ov18_021EE9FC",
+    "ov18_021EEA40",
+    "ov18_021EEAE4",
+    "ov18_021EEB94",
+    "ov18_021EEBE4",
+    "ov18_021EEC34",
+    "ov18_021EECB0",
+    "ov18_021EED00"
+   ],
+   "notes": "header:414. Sibling of ov18_021EE8B8 (ids 0x55-0x5d, abs offsets 0x55C-0x5DC)."
+  },
+  {
+   "name": "ov18_021EEE58",
+   "mode": "thumb",
+   "signature_guess": "void ov18_021EEE58(PokedexAppData *pokedexApp)",
+   "confidence": "high",
+   "callees": [
+    "ov18_021EE35C",
+    "ov18_021EEED0",
+    "ov18_021EF45C",
+    "ov18_021EF528",
+    "ov18_021EEE84"
+   ],
+   "notes": "header:415. Init ov18_021EE35C(app, ov18_021F9FDC, 0x65=101)."
+  },
+  {
+   "name": "ov18_021EEE84",
+   "mode": "thumb",
+   "signature_guess": "static void ov18_021EEE84(PokedexAppData *pokedexApp)",
+   "confidence": "medium",
+   "callees": [
+    "sub_02019A60"
+   ],
+   "notes": "static. 5x sub_02019A60(unk_0008[+8], n, &field 0x11C/0x12C/0x13C)."
+  },
+  {
+   "name": "ov18_021EEED0",
+   "mode": "thumb",
+   "signature_guess": "void ov18_021EEED0(PokedexAppData *pokedexApp, int a1)",
+   "confidence": "high",
+   "callees": [
+    "FillWindowPixelBuffer",
+    "ov18_021F9648",
+    "BufferIntegerAsString",
+    "ov18_021EE3AC",
+    "ScheduleWindowCopyToVram"
+   ],
+   "notes": "header:416. HAZARD add-pc jump table (_021EEEF6) 11 dense cases 0..10, guard cmp #0xa;bls. u16 unk_102C. Write all cases in ASM body order."
+  },
+  {
+   "name": "ov18_021EF1E4",
+   "mode": "thumb",
+   "signature_guess": "static void ov18_021EF1E4(PokedexAppData *pokedexApp, int windowIndex)",
+   "confidence": "high",
+   "callees": [
+    "FillWindowPixelBuffer",
+    "ov18_021F9648",
+    "ScheduleWindowCopyToVram"
+   ],
+   "notes": "static; msg 0x1a. One of 7 near-identical (1E4/220/25C/298/2D4/310/34C) differing by msgId+width."
+  },
+  {
+   "name": "ov18_021EF220",
+   "mode": "thumb",
+   "signature_guess": "static void ov18_021EF220(PokedexAppData *pokedexApp, int windowIndex)",
+   "confidence": "high",
+   "callees": [
+    "FillWindowPixelBuffer",
+    "ov18_021F9648"
+   ],
+   "notes": "static; msg 0x1b."
+  },
+  {
+   "name": "ov18_021EF25C",
+   "mode": "thumb",
+   "signature_guess": "static void ov18_021EF25C(PokedexAppData *pokedexApp, int windowIndex)",
+   "confidence": "high",
+   "callees": [
+    "FillWindowPixelBuffer",
+    "ov18_021F9648"
+   ],
+   "notes": "static; msg 0x1c."
+  },
+  {
+   "name": "ov18_021EF298",
+   "mode": "thumb",
+   "signature_guess": "static void ov18_021EF298(PokedexAppData *pokedexApp, int windowIndex)",
+   "confidence": "high",
+   "callees": [
+    "FillWindowPixelBuffer",
+    "ov18_021F9648"
+   ],
+   "notes": "static; msg 0x1d."
+  },
+  {
+   "name": "ov18_021EF2D4",
+   "mode": "thumb",
+   "signature_guess": "static void ov18_021EF2D4(PokedexAppData *pokedexApp, int windowIndex)",
+   "confidence": "high",
+   "callees": [
+    "FillWindowPixelBuffer",
+    "ov18_021F9648"
+   ],
+   "notes": "static; msg 0x1e."
+  },
+  {
+   "name": "ov18_021EF310",
+   "mode": "thumb",
+   "signature_guess": "static void ov18_021EF310(PokedexAppData *pokedexApp, int windowIndex)",
+   "confidence": "high",
+   "callees": [
+    "FillWindowPixelBuffer",
+    "ov18_021F9648"
+   ],
+   "notes": "static; msg 0x1f."
+  },
+  {
+   "name": "ov18_021EF34C",
+   "mode": "thumb",
+   "signature_guess": "static void ov18_021EF34C(PokedexAppData *pokedexApp, int windowIndex)",
+   "confidence": "high",
+   "callees": [
+    "FillWindowPixelBuffer",
+    "ov18_021F9648"
+   ],
+   "notes": "static; msg 0x20."
+  },
+  {
+   "name": "ov18_021EF388",
+   "mode": "thumb",
+   "signature_guess": "static void ov18_021EF388(PokedexAppData *pokedexApp, int windowIndex, int a2)",
+   "confidence": "medium",
+   "callees": [
+    "GfGfxLoader_GetCharDataFromOpenNarc",
+    "BlitBitmapRect",
+    "Heap_Free",
+    "GetWindowWidth",
+    "ov18_021F9648",
+    "CopyWindowPixelsToVram_TextMode"
+   ],
+   "notes": "static. Blits 8 tile pairs; centers text (signed-halve lsr#0x1f;add;asr#1); a2=msgId."
+  },
+  {
+   "name": "ov18_021EF45C",
+   "mode": "thumb",
+   "signature_guess": "void ov18_021EF45C(PokedexAppData *pokedexApp)",
+   "confidence": "high",
+   "callees": [
+    "ov18_021E613C",
+    "FillWindowPixelBuffer",
+    "ov18_021EF1E4",
+    "ov18_021EF388",
+    "ScheduleWindowCopyToVram"
+   ],
+   "notes": "header:417. label column (ids 0x53-0x6b)."
+  },
+  {
+   "name": "ov18_021EF528",
+   "mode": "thumb",
+   "signature_guess": "void ov18_021EF528(PokedexAppData *pokedexApp)",
+   "confidence": "high",
+   "callees": [
+    "ov18_021EFBE8",
+    "ov18_021EFC3C",
+    "ov18_021EFC9C",
+    "ov18_021EFD00",
+    "ov18_021EFDB4",
+    "ov18_021EFE70",
+    "ScheduleWindowCopyToVram"
+   ],
+   "notes": "header:418. unk_1850+criteria 0x28/0x2c/0x30/0x34; unk_1870/1874."
+  },
+  {
+   "name": "ov18_021EF5D8",
+   "mode": "thumb",
+   "signature_guess": "void ov18_021EF5D8(PokedexAppData *pokedexApp)",
+   "confidence": "high",
+   "callees": [
+    "ov18_021E613C",
+    "FillWindowPixelBuffer",
+    "ov18_021F9648",
+    "ov18_021EF388",
+    "ov18_021EFBE8",
+    "ScheduleWindowCopyToVram"
+   ],
+   "notes": "header:419. windows 0x93-0xaf."
+  },
+  {
+   "name": "ov18_021EF764",
+   "mode": "thumb",
+   "signature_guess": "void ov18_021EF764(PokedexAppData *pokedexApp)",
+   "confidence": "high",
+   "callees": [
+    "ov18_021E613C",
+    "FillWindowPixelBuffer",
+    "ov18_021F9648",
+    "ov18_021E7698",
+    "_s32_div_f",
+    "ov18_021EF388",
+    "ov18_021EFC3C",
+    "ScheduleWindowCopyToVram"
+   ],
+   "notes": "header:420. 0x1b entries; _s32_div_f(x,7) 7-wide grid."
+  },
+  {
+   "name": "ov18_021EF848",
+   "mode": "thumb",
+   "signature_guess": "void ov18_021EF848(PokedexAppData *pokedexApp)",
+   "confidence": "high",
+   "callees": [
+    "ov18_021E613C",
+    "FillWindowPixelBuffer",
+    "ov18_021F9648",
+    "ov18_021EF388",
+    "ov18_021EFC9C",
+    "ScheduleWindowCopyToVram"
+   ],
+   "notes": "header:421. literal ldr =ov18_021F9DE4+7*8+2 stride2 (pointer-into-array)."
+  },
+  {
+   "name": "ov18_021EF91C",
+   "mode": "thumb",
+   "signature_guess": "void ov18_021EF91C(PokedexAppData *pokedexApp)",
+   "confidence": "high",
+   "callees": [
+    "ov18_021E613C",
+    "FillWindowPixelBuffer",
+    "ov18_021F9648",
+    "ov18_021EF388",
+    "ov18_021EFD00",
+    "ScheduleWindowCopyToVram"
+   ],
+   "notes": "header:422. unk_1850 criteria 0x28/0x2c."
+  },
+  {
+   "name": "ov18_021EF9B4",
+   "mode": "thumb",
+   "signature_guess": "void ov18_021EF9B4(PokedexAppData *pokedexApp)",
+   "confidence": "high",
+   "callees": [
+    "ov18_021E613C",
+    "FillWindowPixelBuffer",
+    "ov18_021F9648",
+    "ov18_021EF388",
+    "ov18_021EFDB4",
+    "ScheduleWindowCopyToVram"
+   ],
+   "notes": "header:423. unk_1850 criteria 0x30/0x34 (+2)."
+  },
+  {
+   "name": "ov18_021EFA50",
+   "mode": "thumb",
+   "signature_guess": "void ov18_021EFA50(PokedexAppData *pokedexApp)",
+   "confidence": "high",
+   "callees": [
+    "ov18_021E613C",
+    "FillWindowPixelBuffer",
+    "ov18_021F9648",
+    "ov18_021EF388",
+    "ov18_021EFE70",
+    "ScheduleWindowCopyToVram"
+   ],
+   "notes": "header:424. unk_1860==1 branch."
+  },
+  {
+   "name": "ov18_021EFB88",
+   "mode": "thumb",
+   "signature_guess": "void ov18_021EFB88(PokedexAppData *pokedexApp)",
+   "confidence": "high",
+   "callees": [
+    "ov18_021E613C",
+    "FillWindowPixelBuffer",
+    "ov18_021F9648",
+    "ov18_021EF388",
+    "ScheduleWindowCopyToVram"
+   ],
+   "notes": "header:425."
+  },
+  {
+   "name": "ov18_021EFBE8",
+   "mode": "thumb",
+   "signature_guess": "void ov18_021EFBE8(PokedexAppData *pokedexApp, int a1)",
+   "confidence": "high",
+   "callees": [
+    "FillWindowPixelBuffer",
+    "GetWindowWidth",
+    "ov18_021F9648",
+    "ScheduleWindowCopyToVram"
+   ],
+   "notes": "header:426. a1=windowIndex; criteria 0x1868 (+0x29 msg)."
+  },
+  {
+   "name": "ov18_021EFC3C",
+   "mode": "thumb",
+   "signature_guess": "void ov18_021EFC3C(PokedexAppData *pokedexApp, int windowId)",
+   "confidence": "high",
+   "callees": [
+    "FillWindowPixelBuffer",
+    "GetWindowWidth",
+    "ov18_021F9648"
+   ],
+   "notes": "header:427. criteria 0x186C; 0x1a->msg0x71 else +0x45."
+  },
+  {
+   "name": "ov18_021EFC9C",
+   "mode": "thumb",
+   "signature_guess": "void ov18_021EFC9C(PokedexAppData *pokedexApp, u32 type, int windowId, int a3)",
+   "confidence": "high",
+   "callees": [
+    "FillWindowPixelBuffer",
+    "GetWindowWidth",
+    "ov18_021F9648"
+   ],
+   "notes": "header:428. ov18_021F9DC0[type] (u16); a3==-1 center."
+  },
+  {
+   "name": "ov18_021EFD00",
+   "mode": "thumb",
+   "signature_guess": "void ov18_021EFD00(PokedexAppData *pokedexApp, u16 a1, int a2)",
+   "confidence": "high",
+   "callees": [
+    "FillWindowPixelBuffer",
+    "_u32_div_f",
+    "BufferIntegerAsString",
+    "GetWindowWidth",
+    "ov18_021EE3AC"
+   ],
+   "notes": "header:429. height fp: a1==0x3E7 special; (a1*10000)/254 then /10."
+  },
+  {
+   "name": "ov18_021EFDB4",
+   "mode": "thumb",
+   "signature_guess": "void ov18_021EFDB4(PokedexAppData *pokedexApp, u16 a1, int a2)",
+   "confidence": "high",
+   "callees": [
+    "FillWindowPixelBuffer",
+    "_u32_div_f",
+    "BufferIntegerAsString",
+    "GetWindowWidth",
+    "ov18_021EE3AC"
+   ],
+   "notes": "header:430. twin of D00; a1==0x270F special; (a1*0x35D2E+0xC350)/0x186A0."
+  },
+  {
+   "name": "ov18_021EFE70",
+   "mode": "thumb",
+   "signature_guess": "void ov18_021EFE70(PokedexAppData *pokedexApp, int a1)",
+   "confidence": "high",
+   "callees": [
+    "FillWindowPixelBuffer",
+    "GetWindowWidth",
+    "ov18_021F9648"
+   ],
+   "notes": "header:431. a1=windowIndex; criteria 0x1888 (+0x41 msg)."
+  },
+  {
+   "name": "ov18_021EFEC4",
+   "mode": "thumb",
+   "signature_guess": "void ov18_021EFEC4(PokedexAppData *pokedexApp)",
+   "confidence": "high",
+   "callees": [
+    "FillWindowPixelBuffer",
+    "ov18_021EF1E4",
+    "ov18_021EFBE8",
+    "ov18_021EFC3C",
+    "ov18_021EFC9C",
+    "ov18_021EFD00",
+    "ov18_021EFDB4",
+    "ov18_021EFE70",
+    "CopyWindowPixelsToVram_TextMode"
+   ],
+   "notes": "header:432. search redraw; windows[1..0xf] at 0x1c stride0x10."
+  },
+  {
+   "name": "ov18_021EFFEC",
+   "mode": "thumb",
+   "signature_guess": "void ov18_021EFFEC(PokedexAppData *pokedexApp)",
+   "confidence": "high",
+   "callees": [
+    "sub_02019B08",
+    "ov18_021EE44C",
+    "ov18_021EE520",
+    "ov18_021F006C"
+   ],
+   "notes": "header:433. unk_185D toggle; u16 unk_102C/102E."
+  },
+  {
+   "name": "ov18_021F006C",
+   "mode": "thumb",
+   "signature_guess": "static void ov18_021F006C(PokedexAppData *pokedexApp, int windowIndex)",
+   "confidence": "medium",
+   "callees": [
+    "sub_02019B08",
+    "GetWindowBaseTile",
+    "GetWindowX",
+    "GetWindowY",
+    "GetWindowWidth",
+    "GetWindowHeight",
+    "CopyWindowPixelsToVram_TextMode"
+   ],
+   "notes": "static. Manual tilemap poke; mov ip,rN (r12) loop counter across nested loops - reg-alloc sensitive; writes base|0xF000."
+  },
+  {
+   "name": "ov18_021F0118",
+   "mode": "thumb",
+   "signature_guess": "void ov18_021F0118(PokedexAppData *pokedexApp, int a1)",
+   "confidence": "high",
+   "callees": [
+    "ScheduleWindowCopyToVram",
+    "ClearWindowTilemapAndScheduleTransfer"
+   ],
+   "notes": "header:434. a1==1 schedule windows[0..0x10] else clear."
+  },
+  {
+   "name": "ov18_021F014C",
+   "mode": "thumb",
+   "signature_guess": "void ov18_021F014C(PokedexAppData *pokedexApp)",
+   "confidence": "high",
+   "callees": [
+    "ClearWindowTilemapAndScheduleTransfer"
+   ],
+   "notes": "header:435. clears abs 0x51C ids 0x51-0x5d."
+  },
+  {
+   "name": "ov18_021F0168",
+   "mode": "thumb",
+   "signature_guess": "void ov18_021F0168(PokedexAppData *pokedexApp)",
+   "confidence": "high",
+   "callees": [
+    "sub_020195F4"
+   ],
+   "notes": "header:436. 6x sub_020195F4(unk_0008, i+0x11, 2, 0x12)."
+  },
+  {
+   "name": "ov18_021F018C",
+   "mode": "thumb",
+   "signature_guess": "void ov18_021F018C(PokedexAppData *pokedexApp)",
+   "confidence": "high",
+   "callees": [
+    "sub_02019B08"
+   ],
+   "notes": "header:437. ov18_021F9E4C + i*8 + 0x46 (u16), tilemap OR 0x1000."
+  },
+  {
+   "name": "ov18_021F01D4",
+   "mode": "thumb",
+   "signature_guess": "void ov18_021F01D4(PokedexAppData *pokedexApp)",
+   "confidence": "high",
+   "callees": [
+    "sub_02019B08"
+   ],
+   "notes": "header:438. twin of 018C using ov18_021F9EBC + i*8 + 0x56."
+  },
+  {
+   "name": "ov18_021F021C",
+   "mode": "thumb",
+   "signature_guess": "void ov18_021F021C(PokedexAppData *pokedexApp)",
+   "confidence": "high",
+   "callees": [
+    "ov18_021EE35C",
+    "FillWindowPixelBuffer",
+    "ov18_021F9648",
+    "ov18_021E590C",
+    "ov18_021F95FC",
+    "String_Delete",
+    "ScheduleWindowCopyToVram",
+    "CopyWindowPixelsToVram_TextMode",
+    "ov18_021F03E0",
+    "ov18_021F0428"
+   ],
+   "notes": "header:439. Init ov18_021EE35C(app, ov18_021F9E4C, 0xe=14). curSpecies(0x18A2); unk_1860 branch."
+  },
+  {
+   "name": "ov18_021F03C0",
+   "mode": "thumb",
+   "signature_guess": "void ov18_021F03C0(PokedexAppData *pokedexApp)",
+   "confidence": "high",
+   "callees": [
+    "ClearWindowTilemapAndScheduleTransfer",
+    "ov18_021EE388"
+   ],
+   "notes": "header:441. clears windows[0..0xe] then ov18_021EE388."
+  },
+  {
+   "name": "ov18_021F03E0",
+   "mode": "thumb",
+   "signature_guess": "void ov18_021F03E0(PokedexAppData *pokedexApp)",
+   "confidence": "high",
+   "callees": [
+    "FillWindowPixelBuffer",
+    "ov18_021F9648",
+    "ScheduleWindowCopyToVram"
+   ],
+   "notes": "header:442. ldrsb unk_18C9 (+0x81 msg)."
+  },
+  {
+   "name": "ov18_021F0428",
+   "mode": "thumb",
+   "signature_guess": "void ov18_021F0428(PokedexAppData *pokedexApp)",
+   "confidence": "high",
+   "callees": [
+    "FillWindowPixelBuffer",
+    "ov18_021F04C0",
+    "ov18_021EE3AC",
+    "CopyWindowPixelsToVram_TextMode",
+    "GetWindowX",
+    "GetWindowY",
+    "sub_020196E8"
+   ],
+   "notes": "header:443. 6 rows; ldrsb unk_18CA scroll; int bound at 0x1900."
+  },
+  {
+   "name": "ov18_021F04C0",
+   "mode": "thumb",
+   "signature_guess": "static int ov18_021F04C0(PokedexAppData *pokedexApp, int a1)",
+   "confidence": "medium",
+   "callees": [
+    "ov18_021E8AE0",
+    "MapHeader_GetMapSec",
+    "BufferLandmarkName"
+   ],
+   "notes": "static. Returns msg id 0x85/0x86/0x87. ptr at 0x18FC then [ptr][a1*4]; ==-1 checks ldrsb unk_18C8."
+  },
+  {
+   "name": "ov18_021F0504",
+   "mode": "thumb",
+   "signature_guess": "void ov18_021F0504(PokedexAppData *pokedexApp, int a1)",
+   "confidence": "high",
+   "callees": [
+    "sub_02019B1C",
+    "FillWindowPixelBuffer",
+    "sub_020196E8",
+    "ov18_021F04C0",
+    "ov18_021EE3AC",
+    "CopyWindowPixelsToVram_TextMode"
+   ],
+   "notes": "header:444. called with a1=1 and a1=-1 (scroll dir). ldrsb unk_18CA."
+  },
+  {
+   "name": "ov18_021F05E8",
+   "mode": "thumb",
+   "signature_guess": "void ov18_021F05E8(PokedexAppData *pokedexApp)",
+   "confidence": "high",
+   "callees": [
+    "ov18_021EE35C",
+    "FillWindowPixelBuffer",
+    "Pokedex_CheckMonCaughtFlag",
+    "ov18_021F9648",
+    "ov18_021E590C",
+    "ov18_021F95FC",
+    "String_Delete",
+    "PlayerProfile_GetPlayerName_NewString",
+    "ov18_021EEA84",
+    "ov18_021EEB34",
+    "PlayerProfile_GetTrainerGender"
+   ],
+   "notes": "header:445. Init ov18_021EE35C(app, ov18_021F9DE4, 0xd=13). caught info: curSpecies, player name/gender, height/weight."
+  },
+  {
+   "name": "ov18_021F0838",
+   "mode": "thumb",
+   "signature_guess": "void ov18_021F0838(PokedexAppData *pokedexApp)",
+   "confidence": "high",
+   "callees": [
+    "ClearWindowTilemapAndScheduleTransfer",
+    "ov18_021EE388"
+   ],
+   "notes": "header:446. clears windows[0..0xd] then ov18_021EE388."
+  },
+  {
+   "name": "ov18_021F0858",
+   "mode": "thumb",
+   "signature_guess": "void ov18_021F0858(PokedexAppData *pokedexApp)",
+   "confidence": "high",
+   "callees": [
+    "ov18_021EE35C",
+    "FillWindowPixelBuffer",
+    "ov18_021F9648",
+    "ScheduleWindowCopyToVram"
+   ],
+   "notes": "header:447. Init ov18_021EE35C(app, ov18_021F9DB0, 2)."
+  },
+  {
+   "name": "ov18_021F08E0",
+   "mode": "thumb",
+   "signature_guess": "void ov18_021F08E0(PokedexAppData *pokedexApp)",
+   "confidence": "high",
+   "callees": [
+    "ClearWindowTilemapAndScheduleTransfer",
+    "ov18_021EE388"
+   ],
+   "notes": "header:448. clears windows[0..2] then ov18_021EE388."
+  },
+  {
+   "name": "ov18_021F0900",
+   "mode": "thumb",
+   "signature_guess": "void ov18_021F0900(PokedexAppData *pokedexApp)",
+   "confidence": "high",
+   "callees": [
+    "ov18_021EE35C",
+    "ov18_021F0928"
+   ],
+   "notes": "header:449. Init ov18_021EE35C(app, ov18_021F9EBC, 0x10=16) then ov18_021F0928 (sibling chunk). LAST func in chunk."
+  }
+ ],
+ "data": [
+  {
+   "label": "ov18_021F9DB0",
+   "section": "rodata",
+   "bytes": 16,
+   "shape_guess": "static const WindowTemplate[2] {u8 bgId,left,top,w,h,pal; u16 baseTile}",
+   "notes": "NOT .global -> static const. Used by ov18_021F0858."
+  },
+  {
+   "label": "ov18_021F9DC0",
+   "section": "rodata",
+   "bytes": 36,
+   "shape_guess": "const u16[18] tile/gfx index table (0x2F..0x40)",
+   "notes": ".global. Indexed by ov18_021EFC9C[type]."
+  },
+  {
+   "label": "ov18_021F9DE4",
+   "section": "rodata",
+   "bytes": 104,
+   "shape_guess": "const WindowTemplate[13]",
+   "notes": ".global. ov18_021F05E8 init; ov18_021EF848 indexes +7*8+2."
+  },
+  {
+   "label": "ov18_021F9E4C",
+   "section": "rodata",
+   "bytes": 112,
+   "shape_guess": "const WindowTemplate[14]",
+   "notes": ".global. ov18_021F021C init; ov18_021F018C reads +0x46."
+  },
+  {
+   "label": "ov18_021F9EBC",
+   "section": "rodata",
+   "bytes": 128,
+   "shape_guess": "const WindowTemplate[16]",
+   "notes": ".global. ov18_021F0900 init; ov18_021F01D4 reads +0x56."
+  },
+  {
+   "label": "ov18_021F9F3C",
+   "section": "rodata",
+   "bytes": 160,
+   "shape_guess": "const WindowTemplate[20]",
+   "notes": ".global. ov18_021EE3FC init."
+  },
+  {
+   "label": "ov18_021F9FDC",
+   "section": "rodata",
+   "bytes": 808,
+   "shape_guess": "const WindowTemplate[101]",
+   "notes": ".global. ov18_021EEE58 init. Largest; ordering must be exact."
+  }
+ ],
+ "shared_struct_hypotheses": [
+  {
+   "name": "PokedexAppData",
+   "size_guess": "0x1910 (ALREADY DEFINED pokedex_internal.h:267-324 - do NOT redefine)",
+   "fields": [
+    {
+     "offset": "0x0",
+     "width": 4,
+     "meaning": "args (PokedexArgs*)"
+    },
+    {
+     "offset": "0x4",
+     "width": 4,
+     "meaning": "bgConfig (BgConfig*)"
+    },
+    {
+     "offset": "0x8",
+     "width": 4,
+     "meaning": "unk_0008 (UnkStruct_0201956C*) grid helper arg"
+    },
+    {
+     "offset": "0xc",
+     "width": 4,
+     "meaning": "windows[101] (Window stride0x10)"
+    },
+    {
+     "offset": "0x65c",
+     "width": 4,
+     "meaning": "msgData (MsgData*)"
+    },
+    {
+     "offset": "0x660",
+     "width": 4,
+     "meaning": "msgFormat (MessageFormat*)"
+    },
+    {
+     "offset": "0x664",
+     "width": 4,
+     "meaning": "strBufFormatted (String*)"
+    },
+    {
+     "offset": "0x854",
+     "width": 4,
+     "meaning": "gfxNarc (NARC*)"
+    },
+    {
+     "offset": "0x1850",
+     "width": 4,
+     "meaning": "unk_1850 (*) criteria/form table"
+    },
+    {
+     "offset": "0x1858",
+     "width": 1,
+     "meaning": "unk_1858 region"
+    },
+    {
+     "offset": "0x185c",
+     "width": 1,
+     "meaning": "unk_185C (lang/view flag ==2 metric)"
+    },
+    {
+     "offset": "0x185d",
+     "width": 1,
+     "meaning": "unk_185D (page toggle eor1)"
+    },
+    {
+     "offset": "0x1860",
+     "width": 4,
+     "meaning": "unk_1860 (int flag ==1)"
+    },
+    {
+     "offset": "0x1868",
+     "width": 4,
+     "meaning": "dexSearchCriteria[10]"
+    },
+    {
+     "offset": "0x18a2",
+     "width": 2,
+     "meaning": "curSpecies (u16)"
+    },
+    {
+     "offset": "0x18c8",
+     "width": 1,
+     "meaning": "unk_18C8 (s8)"
+    },
+    {
+     "offset": "0x18c9",
+     "width": 1,
+     "meaning": "unk_18C9 (s8 index)"
+    },
+    {
+     "offset": "0x18ca",
+     "width": 1,
+     "meaning": "unk_18CA (s8 scroll)"
+    },
+    {
+     "offset": "0x1032",
+     "width": 2,
+     "meaning": "unk_1030[i].+2 (u16 seen/caught, stride4)"
+    }
+   ]
+  }
+ ],
+ "imports": {
+  "AddWindow": {
+   "known_prototype": "void AddWindow(BgConfig*, Window*, const WindowTemplate*)",
+   "header": "include/bg_window.h"
+  },
+  "RemoveWindow": {
+   "known_prototype": "void RemoveWindow(Window*)",
+   "header": "include/bg_window.h"
+  },
+  "FillWindowPixelBuffer": {
+   "known_prototype": "void FillWindowPixelBuffer(Window*, u8)",
+   "header": "include/bg_window.h"
+  },
+  "ScheduleWindowCopyToVram": {
+   "known_prototype": "void ScheduleWindowCopyToVram(Window*)",
+   "header": "include/bg_window.h"
+  },
+  "ClearWindowTilemapAndScheduleTransfer": {
+   "known_prototype": "void ClearWindowTilemapAndScheduleTransfer(Window*)",
+   "header": "include/bg_window.h"
+  },
+  "CopyWindowPixelsToVram_TextMode": {
+   "known_prototype": "void CopyWindowPixelsToVram_TextMode(Window*)",
+   "header": "include/bg_window.h"
+  },
+  "GetWindowWidth": {
+   "known_prototype": "u8 GetWindowWidth(Window*)",
+   "header": "include/bg_window.h"
+  },
+  "GetWindowHeight": {
+   "known_prototype": "u8 GetWindowHeight(Window*)",
+   "header": "include/bg_window.h"
+  },
+  "GetWindowX": {
+   "known_prototype": "u8 GetWindowX(Window*)",
+   "header": "include/bg_window.h"
+  },
+  "GetWindowY": {
+   "known_prototype": "u8 GetWindowY(Window*)",
+   "header": "include/bg_window.h"
+  },
+  "GetWindowBaseTile": {
+   "known_prototype": "u16 GetWindowBaseTile(Window*)",
+   "header": "include/bg_window.h"
+  },
+  "BlitBitmapRect": {
+   "known_prototype": "see include/blit.h",
+   "header": "include/blit.h"
+  },
+  "GfGfxLoader_GetCharDataFromOpenNarc": {
+   "known_prototype": "void *GfGfxLoader_GetCharDataFromOpenNarc(NARC*, u32, BOOL, void**, HeapID)",
+   "header": "include/gf_gfx_loader.h"
+  },
+  "Heap_Free": {
+   "known_prototype": "void Heap_Free(void*)",
+   "header": "include/heap.h"
+  },
+  "BufferIntegerAsString": {
+   "known_prototype": "see include/message_format.h",
+   "header": "include/message_format.h"
+  },
+  "BufferLandmarkName": {
+   "known_prototype": "see include/message_format.h",
+   "header": "include/message_format.h"
+  },
+  "StringExpandPlaceholders": {
+   "known_prototype": "void StringExpandPlaceholders(MessageFormat*, String*, String*)",
+   "header": "include/message_format.h"
+  },
+  "NewString_ReadMsgData": {
+   "known_prototype": "String *NewString_ReadMsgData(MsgData*, u32)",
+   "header": "include/msgdata.h"
+  },
+  "NewMsgDataFromNarc": {
+   "known_prototype": "MsgData *NewMsgDataFromNarc(int, NarcId, u32, HeapID)",
+   "header": "include/msgdata.h"
+  },
+  "DestroyMsgData": {
+   "known_prototype": "void DestroyMsgData(MsgData*)",
+   "header": "include/msgdata.h"
+  },
+  "String_Delete": {
+   "known_prototype": "void String_Delete(String*)",
+   "header": "include/strbuf.h"
+  },
+  "MessagePrinter_New": {
+   "known_prototype": "see include/text.h",
+   "header": "include/text.h"
+  },
+  "MessagePrinter_Delete": {
+   "known_prototype": "see include/text.h",
+   "header": "include/text.h"
+  },
+  "PrintUIntOnWindow": {
+   "known_prototype": "see include/text.h",
+   "header": "include/text.h"
+  },
+  "FontID_String_GetWidthMultiline": {
+   "known_prototype": "u32 FontID_String_GetWidthMultiline(int, String*, int)",
+   "header": "include/font.h"
+  },
+  "GetDexHeightMsgBank": {
+   "known_prototype": "int GetDexHeightMsgBank(...)",
+   "header": "include/dex_mon_measures.h"
+  },
+  "GetDexWeightMsgBank": {
+   "known_prototype": "int GetDexWeightMsgBank(...)",
+   "header": "include/dex_mon_measures.h"
+  },
+  "LanguageToDexFlag": {
+   "known_prototype": "see pokedex header",
+   "header": "include/pokedex_util.h"
+  },
+  "Pokedex_ConvertToCurrentDexNo": {
+   "known_prototype": "see pokedex.h",
+   "header": "include/pokedex.h"
+  },
+  "Pokedex_CheckMonCaughtFlag": {
+   "known_prototype": "see pokedex.h",
+   "header": "include/pokedex.h"
+  },
+  "Pokedex_GetInternationalViewFlag": {
+   "known_prototype": "see pokedex.h",
+   "header": "include/pokedex.h"
+  },
+  "MapHeader_GetMapSec": {
+   "known_prototype": "see map_header.h",
+   "header": "include/map_header.h"
+  },
+  "PlayerProfile_GetPlayerName_NewString": {
+   "known_prototype": "String *PlayerProfile_GetPlayerName_NewString(PlayerProfile*, HeapID)",
+   "header": "include/player_data.h"
+  },
+  "PlayerProfile_GetTrainerGender": {
+   "known_prototype": "u32 PlayerProfile_GetTrainerGender(PlayerProfile*)",
+   "header": "include/player_data.h"
+  },
+  "_s32_div_f": {
+   "known_prototype": "MWCC soft-div runtime (quot r0, rem r1)",
+   "header": "runtime"
+  },
+  "_u32_div_f": {
+   "known_prototype": "MWCC soft-div runtime (quot r0, rem r1)",
+   "header": "runtime"
+  },
+  "ov18_021E590C": {
+   "known_prototype": "String *ov18_021E590C(u16 species, int language, enum HeapID)",
+   "header": "pokedex_internal.h:326"
+  },
+  "ov18_021E595C": {
+   "known_prototype": "String *ov18_021E595C(u16 species, int language, enum HeapID)",
+   "header": "pokedex_internal.h:327"
+  },
+  "ov18_021E59A8": {
+   "known_prototype": "String *ov18_021E59A8(u16 species, int language, int a2, enum HeapID)",
+   "header": "pokedex_internal.h:328"
+  },
+  "ov18_021E613C": {
+   "known_prototype": "void ov18_021E613C(PokedexAppData*, u8 bgId)",
+   "header": "pokedex_internal.h:335"
+  },
+  "ov18_021E7698": {
+   "known_prototype": "u8 ov18_021E7698(int)",
+   "header": "pokedex_internal.h:382"
+  },
+  "ov18_021E8AE0": {
+   "signature_guess": "returns value consumed by MapHeader_GetMapSec",
+   "evidence": ".extern; called in ov18_021F04C0"
+  },
+  "ov18_021F95FC": {
+   "signature_guess": "void ov18_021F95FC(Window*, String*, int x, int y, int a4, u32 color, int a6)",
+   "evidence": "wrapped by ov18_021EE3AC and draw helpers"
+  },
+  "ov18_021F9648": {
+   "signature_guess": "void ov18_021F9648(Window*, MessageFormat/MsgData*, u32 msgId, int a3, ...)",
+   "evidence": "ubiquitous; r1=msgData(0x65C), r2=msgId, x/y/color stack args"
+  },
+  "ov18_021F8824": {
+   "signature_guess": "int ov18_021F8824(PokedexAppData*)",
+   "evidence": "return into r4 in ov18_021EE3FC"
+  },
+  "ov18_021F8838": {
+   "signature_guess": "int ov18_021F8838(PokedexAppData*)",
+   "evidence": "return into r6 in ov18_021EE3FC"
+  },
+  "ov18_021F0928": {
+   "known_prototype": "void ov18_021F0928(PokedexAppData*)",
+   "header": "pokedex_internal.h:451 (sibling chunk 021F0918)"
+  },
+  "sub_020195F4": {
+   "signature_guess": "void sub_020195F4(UnkStruct_0201956C*, int, int, int)",
+   "evidence": "include/unk_0201956C.h"
+  },
+  "sub_020196E8": {
+   "signature_guess": "void sub_020196E8(UnkStruct_0201956C*, int, int, int)",
+   "evidence": "grid helper"
+  },
+  "sub_02019A60": {
+   "signature_guess": "void sub_02019A60(UnkStruct_0201956C*, int, void*)",
+   "evidence": "grid helper"
+  },
+  "sub_02019B08": {
+   "signature_guess": "void *sub_02019B08(UnkStruct_0201956C*, int)",
+   "evidence": "returns tilemap ptr for direct pokes"
+  },
+  "sub_02019B1C": {
+   "signature_guess": "void sub_02019B1C(UnkStruct_0201956C*, int, int, s8*)",
+   "evidence": "writes s8 read via ldrsb in ov18_021F0504"
+  }
+ },
+ "risks": [
+  "PROTOTYPES FROZEN: all non-static funcs already declared in pokedex_internal.h (407-449) and PokedexAppData fully defined (267-324). Match exactly. Defining .c includes pokedex_internal.h; declarations already exist so NO header edit needed and NO IPA cascade - but do NOT add/change/remove anything in that header (cascades into already-matched ov18_021E5C40.c and ov18_021E8BF4.c).",
+  "ov18_021EE3AC is .public (from sibling asm 021F0918.s) but NOT in header. Keep NON-static; do NOT add to shared header (IPA risk) - linker resolves it.",
+  "ov18_021EE35C is static (not .public, not in header).",
+  "ov18_021EEED0 has an add-pc jump table (_021EEEF6): 11 dense cases 0..10, guard cmp #0xa;bls. Write ALL 11 cases explicitly in ASM textual body order (insights: switch-case-body-layout-follows-source-order; jumptable-needs-all-dense-cases-explicit).",
+  "Rodata order is load-bearing: ov18_021F9DB0(static), ov18_021F9DC0, ov18_021F9DE4, ov18_021F9E4C, ov18_021F9EBC, ov18_021F9F3C, ov18_021F9FDC. Only ov18_021F9DB0 lacks .global.",
+  "ov18_021F006C uses mov ip,rN (r12) as loop counter across nested loops - reg-alloc sensitive.",
+  "Centered-text helpers use signed-halve idiom (lsl#3;lsr#0x1f;add;asr#1) = signed /2 - keep int types, not lsr.",
+  "_s32_div_f/_u32_div_f return quotient(r0)+remainder(r1); express as / and % on same operands so MWCC folds to one call.",
+  "Split-overlay chunk (manifest tools/decomp_harness/split_manifests/overlay_18.json); target src/application/pokedex/ov18_021EE35C.c. Trailing .global ov18_021FA304 after ; file boundary belongs to next chunk (import here).",
+  "ov18_021EF848 uses pointer-into-array literal ldr =ov18_021F9DE4+7*8+2."
+ ],
+ "notes": "Homogeneous Pokedex page-rendering chunk (~74 thumb funcs) drawing into PokedexAppData->windows[]. Decompilation heavily constrained (all signatures+struct exist). Real work: (1) repetitive FillWindowPixelBuffer/ov18_021F9648/ScheduleWindowCopyToVram idioms, (2) the ov18_021EEED0 11-case jump table, (3) exact rodata WindowTemplate ordering, (4) manual tilemap-poke loop in ov18_021F006C. First arg always PokedexAppData *pokedexApp in r0."
+}

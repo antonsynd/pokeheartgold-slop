@@ -1,0 +1,669 @@
+{
+ "file": "asm/overlay_14_021EAF08.s",
+ "notes": "PC Box (Pokemon storage) UI application, one address-ordered chunk of overlay_14 (~0x021EAF08-0x021EE000). All ~90 thumb_func_start entries are STATIC except 4 exported (ov14_021EAF08, ov14_021EAF8C, ov14_021EC710, ov14_021ED5B0). Nearly every function takes r0 = PCBoxAppWork* (0x38-byte work). Master jump table ov14_021F7D9C (this chunk .rodata) is indexed by work->state (work+0x30), ~179 fn pointers spanning many sibling ov14 chunks; ov14_021EAF8C reads *pState, calls table[state](work), stores return back to *pState. Work layout confirmed from PCBox_Init (asm/overlay_14_021E5900.s: OverlayManager_CreateAndGetData size 0x38). work+0x34 = PCBoxData* (heap 0x88E0 in ov14_021EAFAC). Most static handlers: int fn(PCBoxAppWork *work) returning next state index (or a callback-registration result via ov14_021F0234).",
+ "functions": [
+  {
+   "name": "ov14_021EAF08",
+   "mode": "thumb",
+   "signature_guess": "int ov14_021EAF08(PCBoxAppWork *work)",
+   "confidence": "high",
+   "callees": [
+    "ov14_021E80A8",
+    "ov14_021F2A04",
+    "ov14_021E7AD4",
+    "ov14_021E7B8C"
+   ],
+   "struct_accesses": [
+    {
+     "param": 0,
+     "offset": "0x34",
+     "width": 4,
+     "meaning": "PCBoxData*"
+    },
+    {
+     "param": 0,
+     "offset": "0x21",
+     "width": 1,
+     "meaning": "cursor slot u8"
+    }
+   ],
+   "notes": "Registered as poll/wait callback (ov14_021F0234 id 0x90 in ov14_021EFF00). Reads data[0x10] small state 0/1. Returns 1 busy, 0 when done. Referenced as fn ptr from asm/overlay_14_021EFDE4.s."
+  },
+  {
+   "name": "ov14_021EAF8C",
+   "mode": "thumb",
+   "signature_guess": "int ov14_021EAF8C(PCBoxAppWork *work, u32 *pState)",
+   "confidence": "high",
+   "callback_refs": [
+    "dispatches ov14_021F7D9C[*pState](work)"
+   ],
+   "notes": "Master exec step. Called from PCBox_Main (asm/overlay_14_021E5900.s:63) as ov14_021EAF8C(OverlayManager_GetData(ovm), &state). state=*pState; calls table[state](work); stores return to *pState; returns 1 while new state != 0xB3 else 0."
+  },
+  {
+   "name": "ov14_021EAFAC",
+   "mode": "thumb",
+   "signature_guess": "int ov14_021EAFAC(PCBoxAppWork *work)",
+   "confidence": "high",
+   "callees": [
+    "Heap_Create",
+    "Heap_Alloc",
+    "MI_CpuFill8",
+    "NARC_New",
+    "SysTask_CreateOnVBlankQueue",
+    "GfGfx_EngineASetPlanes"
+   ],
+   "struct_accesses": [
+    {
+     "param": 0,
+     "offset": "0x34",
+     "width": 4,
+     "meaning": "PCBoxData* = Heap_Alloc(0xa, 0x88E0)"
+    },
+    {
+     "param": 0,
+     "offset": "0x30",
+     "width": 4,
+     "meaning": "return next state"
+    },
+    {
+     "param": 0,
+     "offset": "0x1f",
+     "width": 1,
+     "meaning": "currentBox"
+    },
+    {
+     "param": 0,
+     "offset": "0x00",
+     "width": 4,
+     "meaning": "args*; [args+8]=mode 0..3 gates init"
+    }
+   ],
+   "notes": "Init state (work->state=0xB). data[0x450]=NARC_New(2), data[0x454]=NARC_New(0x14), data[0]=SysTask_CreateOnVBlankQueue(ov14_021E59AC,work,0). Returns work->[0x30]. Heap_Alloc size 0x88E0 = PCBoxData size."
+  },
+  {
+   "name": "ov14_021EB0E4",
+   "mode": "thumb",
+   "signature_guess": "int ov14_021EB0E4(PCBoxAppWork *work)",
+   "confidence": "high",
+   "callees": [
+    "SysTask_Destroy",
+    "NARC_Delete",
+    "Heap_Free",
+    "Heap_Destroy"
+   ],
+   "notes": "Teardown mirror of ov14_021EAFAC; frees data (work+0x34), destroys heap 0xA. Returns work->[0x30]."
+  },
+  {
+   "name": "ov14_021EB170",
+   "mode": "thumb",
+   "signature_guess": "int ov14_021EB170(PCBoxAppWork *work)",
+   "confidence": "high",
+   "callees": [
+    "IsPaletteFadeFinished"
+   ],
+   "notes": "Wait-for-fade. Returns data[0x440] when done else 2."
+  },
+  {
+   "name": "ov14_021EB18C",
+   "mode": "thumb",
+   "signature_guess": "int ov14_021EB18C(PCBoxAppWork *work)",
+   "confidence": "high",
+   "callees": [
+    "PaletteData_GetSelectedBuffersBitmask"
+   ],
+   "notes": "data[0x18]=PaletteData*. Returns work->[0x30] when bitmask==0 else 3."
+  },
+  {
+   "name": "ov14_021EB1A4",
+   "mode": "thumb",
+   "signature_guess": "int ov14_021EB1A4(PCBoxAppWork *work)",
+   "confidence": "high",
+   "notes": "No push; bx lr. data[0x444] delay counter decremented; returns work->[0x30] at 0, else 4."
+  },
+  {
+   "name": "ov14_021EB1C0",
+   "mode": "thumb",
+   "signature_guess": "int ov14_021EB1C0(PCBoxAppWork *work)",
+   "confidence": "high",
+   "callback_refs": [
+    "tail-calls ov14_021F7D9C[work->state](work)"
+   ],
+   "notes": "data[4] gate: if nonzero return 5, else re-dispatch master table."
+  },
+  {
+   "name": "ov14_021EB1E0",
+   "mode": "thumb",
+   "signature_guess": "int ov14_021EB1E0(PCBoxAppWork *work)",
+   "confidence": "high",
+   "callees": [
+    "System_GetTouchNew",
+    "PlaySE"
+   ],
+   "notes": "gSystem+0x48 heldKeys mask 3 (A|B). PlaySE 0x5DD. Returns work->[0x30] on input else 6."
+  },
+  {
+   "name": "ov14_021EB218",
+   "mode": "thumb",
+   "signature_guess": "int ov14_021EB218(PCBoxAppWork *work)",
+   "confidence": "high",
+   "callees": [
+    "YesNoPrompt_HandleInput",
+    "YesNoPrompt_Reset"
+   ],
+   "notes": "data[0x434]=YesNoPrompt*, data[0x438]=u16 pair idx (stride 8). result 1->yes cb ov14_021F7D74[idx*8], result 2->no cb ov14_021F7D78[idx*8], else 7."
+  },
+  {
+   "name": "ov14_021EB290",
+   "mode": "thumb",
+   "signature_guess": "int ov14_021EB290(PCBoxAppWork *work)",
+   "confidence": "high",
+   "notes": "work->0x1e submenu idx *0xC into ov14_021F7D50; calls entry fn0. Returns 0xA."
+  },
+  {
+   "name": "ov14_021EB2A8",
+   "mode": "thumb",
+   "signature_guess": "int ov14_021EB2A8(PCBoxAppWork *work)",
+   "confidence": "high",
+   "callees": [
+    "OverlayManager_Run",
+    "OverlayManager_Delete"
+   ],
+   "struct_accesses": [
+    {
+     "param": 0,
+     "offset": "0x14",
+     "width": 4,
+     "meaning": "OverlayManager* nested"
+    },
+    {
+     "param": 0,
+     "offset": "0x1e",
+     "width": 1,
+     "meaning": "submenu idx into ov14_021F7D50 stride 0xC"
+    },
+    {
+     "param": 0,
+     "offset": "0x30",
+     "width": 4,
+     "meaning": "next state = table[idx].word2"
+    }
+   ],
+   "notes": "Runs nested OverlayManager (work+0x14). On done calls fn1, sets work->state=table[idx].u32_2, returns 0; else 0xA."
+  },
+  {
+   "name": "ov14_021EB2EC",
+   "mode": "thumb",
+   "signature_guess": "int ov14_021EB2EC(PCBoxAppWork *work)",
+   "confidence": "high",
+   "callees": [
+    "PlaySE",
+    "ov14_021F685C",
+    "ov14_021F3488",
+    "ov14_021F01D8"
+   ],
+   "notes": "MWCC switch(mode=[args+8], 0..3) via add pc,r0 + inline .short table _021EB30A (4 cases). Not rodata. PlaySE 0x60C."
+  },
+  {
+   "name": "ov14_021EB388",
+   "mode": "thumb",
+   "signature_guess": "int ov14_021EB388(PCBoxAppWork *work)",
+   "confidence": "medium",
+   "callees": [
+    "ov14_021F6A14",
+    "ov14_021E6070",
+    "System_GetTouchNewCoords",
+    "GridInputHandler_GetNextInput",
+    "GridInputHandler_SetNextInput",
+    "ov14_021F0234"
+   ],
+   "struct_accesses": [
+    {
+     "param": 0,
+     "offset": "0x21",
+     "width": 1,
+     "meaning": "cursor slot"
+    },
+    {
+     "param": 0,
+     "offset": "0x2c",
+     "width": 4,
+     "meaning": "count =0x25 written"
+    },
+    {
+     "param": 0,
+     "offset": "0x34",
+     "width": 4,
+     "meaning": "PCBoxData; data[0x2c]=GridInputHandler*, data[0x2f0]=sprite set, data[0x40B8..0x40BC]=touch coords, data[0x4094]=u8[] box-slot array"
+    }
+   ],
+   "notes": "Largest handler (~480 lines). Two-level MWCC switch on signed ov14_021F6F94() result: negatives -1..-3 via mvn AND 0x1e..0x29 via inline .short table _021EB4B8 (12 cases). HAZARD: signed switch mixed negative/positive ranges. Returns 0xC most paths."
+  },
+  {
+   "name": "ov14_021EC710",
+   "mode": "thumb",
+   "signature_guess": "int ov14_021EC710(PCBoxAppWork *work)",
+   "confidence": "high",
+   "callees": [
+    "ov14_021E7F4C",
+    "ov14_021F0234"
+   ],
+   "callback_refs": [
+    "ov14_021F0234(work, ov14_021E9518, 0x26)"
+   ],
+   "notes": "Exported; also bl from asm/overlay_14_021F0A80.s:112. data[0x2f0]=sprite set."
+  },
+  {
+   "name": "ov14_021ED5B0",
+   "mode": "thumb",
+   "signature_guess": "int ov14_021ED5B0(PCBoxAppWork *work)",
+   "confidence": "high",
+   "callees": [
+    "ov14_021E834C",
+    "ov14_021E8234",
+    "ov14_021F0234"
+   ],
+   "callback_refs": [
+    "ov14_021F0234(work, ov14_021E94BC, 0x35)"
+   ],
+   "notes": "Exported; also bl from asm/overlay_14_021F0A80.s:865. Branch on mode [args+8]==1. data[0x2f0]=sprite set."
+  },
+  {
+   "name": "ov14_021EC730",
+   "mode": "thumb",
+   "signature_guess": "int ov14_021EC730(PCBoxAppWork *work)",
+   "confidence": "high",
+   "callees": [
+    "ov14_021F43F4",
+    "ov14_021F3488",
+    "ov14_021F6AC0",
+    "ov14_021F0234"
+   ],
+   "notes": "Branch [args+8]==3. work->0x24 flag. ov14_021F0234(work, ov14_021E94BC, 0x75 or 0xC)."
+  }
+ ],
+ "data": [
+  {
+   "label": "ov14_021F7D1C",
+   "section": "rodata",
+   "bytes": 16,
+   "shape_guess": "u32[4]={0x46,0x41,0x43,0x44} param list for ov14_021F5EE4(count=4)"
+  },
+  {
+   "label": "ov14_021F7D2C",
+   "section": "rodata",
+   "bytes": 16,
+   "shape_guess": "u32[4]={0x45,0x41,0x43,0x44} param list count=4"
+  },
+  {
+   "label": "ov14_021F7D3C",
+   "section": "rodata",
+   "bytes": 20,
+   "shape_guess": "u32[5]={0x0001003D,0x41,0x42,0x43,0x44} count=5; first word maybe two u16 {0x003D,0x0001}"
+  },
+  {
+   "label": "ov14_021F7D50",
+   "section": "rodata",
+   "bytes": 36,
+   "shape_guess": "struct{void(*enter)(PCBoxAppWork*); void(*exit)(PCBoxAppWork*); u32 nextState;}[3] indexed by work->0x1e (stride 0xC): {ov14_021E89B8,ov14_021E8A7C,0xF},{ov14_021E8ACC,ov14_021E8B1C,0x11},{ov14_021E8B3C,ov14_021E8B80,0x10}"
+  },
+  {
+   "label": "ov14_021F7D74",
+   "section": "rodata",
+   "bytes": 4,
+   "shape_guess": "first cell of interleaved yes/no cb table; yes[0]=ov14_021F2020"
+  },
+  {
+   "label": "ov14_021F7D78",
+   "section": "rodata",
+   "bytes": 36,
+   "shape_guess": "remaining cells; with 021F7D74 forms {yes,no}[5] 8-byte pairs indexed by data[0x438]"
+  },
+  {
+   "label": "ov14_021F7D9C",
+   "section": "rodata",
+   "bytes": 716,
+   "shape_guess": "int(*)(PCBoxAppWork*) master state jump table ~179 entries indexed by work->0x30; entries span this + many sibling ov14 chunks"
+  }
+ ],
+ "imports": {
+  "Heap_Alloc": {
+   "known_prototype": "void *Heap_Alloc(HeapID heapId, u32 size)",
+   "header": "include/heap.h"
+  },
+  "Heap_Create": {
+   "known_prototype": "BOOL Heap_Create(u32 parent, HeapID child, u32 size)",
+   "header": "include/heap.h"
+  },
+  "Heap_Free": {
+   "known_prototype": "void Heap_Free(void *ptr)",
+   "header": "include/heap.h"
+  },
+  "Heap_Destroy": {
+   "known_prototype": "void Heap_Destroy(HeapID heapId)",
+   "header": "include/heap.h"
+  },
+  "NARC_New": {
+   "known_prototype": "NARC *NARC_New(NarcID narcId, HeapID heapId)",
+   "header": "include/filesystem.h"
+  },
+  "NARC_Delete": {
+   "known_prototype": "void NARC_Delete(NARC *narc)",
+   "header": "include/filesystem.h"
+  },
+  "OverlayManager_Run": {
+   "known_prototype": "BOOL OverlayManager_Run(OverlayManager *man)",
+   "header": "include/overlay_manager.h"
+  },
+  "OverlayManager_Delete": {
+   "known_prototype": "void OverlayManager_Delete(OverlayManager *man)",
+   "header": "include/overlay_manager.h"
+  },
+  "OverlayManager_GetData": {
+   "header": "include/overlay_manager.h",
+   "note": "caller PCBox_Main fetches work with this"
+  },
+  "SysTask_CreateOnVBlankQueue": {
+   "known_prototype": "SysTask *SysTask_CreateOnVBlankQueue(SysTaskFunc func, void *work, u32 priority)",
+   "header": "include/sys_task_api.h"
+  },
+  "SysTask_Destroy": {
+   "known_prototype": "void SysTask_Destroy(SysTask *task)",
+   "header": "include/sys_task_api.h"
+  },
+  "PaletteData_GetSelectedBuffersBitmask": {
+   "header": "include/palette.h"
+  },
+  "IsPaletteFadeFinished": {
+   "header": "include/palette.h"
+  },
+  "YesNoPrompt_HandleInput": {
+   "known_prototype": "u32 YesNoPrompt_HandleInput(YesNoPrompt *prompt)",
+   "header": "include/yes_no_prompt.h"
+  },
+  "YesNoPrompt_Reset": {
+   "known_prototype": "void YesNoPrompt_Reset(YesNoPrompt *prompt)",
+   "header": "include/yes_no_prompt.h"
+  },
+  "Bag_TakeItem": {
+   "known_prototype": "BOOL Bag_TakeItem(Bag *bag, u16 itemId, u16 count, HeapID heapId)",
+   "header": "include/bag.h"
+  },
+  "PCStorage_SetBoxWallpaper": {
+   "header": "include/pokemon_storage_system.h"
+  },
+  "System_GetTouchNewCoords": {
+   "header": "include/touchscreen.h"
+  },
+  "System_GetTouchNew": {
+   "header": "include/touchscreen.h"
+  },
+  "GridInputHandler_GetNextInput": {
+   "header": "include/unk_02019BA4.h",
+   "signature_guess": "u32 GridInputHandler_GetNextInput(GridInputHandler *)"
+  },
+  "GridInputHandler_SetNextInput": {
+   "header": "include/unk_02019BA4.h",
+   "signature_guess": "void GridInputHandler_SetNextInput(GridInputHandler *, u32)"
+  },
+  "GridInputHandler_SetButtonInputMode": {
+   "header": "include/unk_02019BA4.h"
+  },
+  "PlaySE": {
+   "signature_guess": "void PlaySE(u16 seId)"
+  },
+  "MI_CpuFill8": {
+   "known_prototype": "void MI_CpuFill8(void *dst, u8 val, u32 size)"
+  },
+  "_s32_div_f": {
+   "known_prototype": "int _s32_div_f(int num, int den)",
+   "evidence": "MWCC soft-division helper; quotient r0 remainder r1; remainder used after call"
+  },
+  "gSystem": {
+   "known_prototype": "extern SysConfig gSystem; heldKeys at +0x48"
+  },
+  "ov14_021F0234": {
+   "signature_guess": "int ov14_021F0234(PCBoxAppWork *work, void (*cb)(PCBoxAppWork*), int msgId)",
+   "evidence": "registers wait/sub-state callback + message id; return propagated as handler result; sibling chunk"
+  },
+  "ov14_021F01D8": {
+   "signature_guess": "int ov14_021F01D8(PCBoxAppWork *work, int msgId)"
+  },
+  "ov14_021F5EE4": {
+   "signature_guess": "void ov14_021F5EE4(PCBoxAppWork *work, const u32 *paramList, int count)",
+   "evidence": "consumes rodata lists 021F7D1C/2C/3C"
+  },
+  "ov14_021F3488": {
+   "signature_guess": "void ov14_021F3488(PCBoxAppWork *work, int a1, int a2)"
+  },
+  "ov14_021F6AC0": {
+   "signature_guess": "void ov14_021F6AC0(PCBoxAppWork *work, int a1, int a2)"
+  },
+  "ov14_021E6070": {
+   "signature_guess": "int ov14_021E6070(PCBoxAppWork *work, int slot, int a2, int a3)",
+   "evidence": "hit-test/lookup returning id compared vs 0x1E7, -1"
+  }
+ },
+ "shared_struct_hypotheses": [
+  {
+   "name": "PCBoxAppWork",
+   "size_guess": "0x38 (OverlayManager_CreateAndGetData size in PCBox_Init)",
+   "fields": [
+    {
+     "offset": "0x00",
+     "width": 4,
+     "meaning": "OverlayManager args*; args[0]=SaveData*, args[8]=mode 0..3"
+    },
+    {
+     "offset": "0x04",
+     "width": 4,
+     "meaning": "PCStorage* (SaveArray_PCStorage_Get)"
+    },
+    {
+     "offset": "0x08",
+     "width": 4,
+     "meaning": "Party* (SaveArray_Party_Get)"
+    },
+    {
+     "offset": "0x0c",
+     "width": 4,
+     "meaning": "Bag* (Save_Bag_Get)"
+    },
+    {
+     "offset": "0x10",
+     "width": 4,
+     "meaning": "options addr (Save_PlayerData_GetOptionsAddr)"
+    },
+    {
+     "offset": "0x14",
+     "width": 4,
+     "meaning": "OverlayManager* nested sub-overlay"
+    },
+    {
+     "offset": "0x1c",
+     "width": 2,
+     "meaning": "u16 itemId"
+    },
+    {
+     "offset": "0x1e",
+     "width": 1,
+     "meaning": "u8 submenu index (indexes ov14_021F7D50)"
+    },
+    {
+     "offset": "0x1f",
+     "width": 1,
+     "meaning": "u8 currentBox (PCStorage_GetActiveBox)"
+    },
+    {
+     "offset": "0x21",
+     "width": 1,
+     "meaning": "u8 cursor slot 0..0x1E; 0x1E==box header; init 0xFF"
+    },
+    {
+     "offset": "0x24",
+     "width": 1,
+     "meaning": "u8 flag"
+    },
+    {
+     "offset": "0x25",
+     "width": 1,
+     "meaning": "u8 (page source /6 -> data[0x43C])"
+    },
+    {
+     "offset": "0x26",
+     "width": 1,
+     "meaning": "u8 phase flag"
+    },
+    {
+     "offset": "0x27",
+     "width": 1,
+     "meaning": "u8 flag"
+    },
+    {
+     "offset": "0x28",
+     "width": 1,
+     "meaning": "u8"
+    },
+    {
+     "offset": "0x29",
+     "width": 1,
+     "meaning": "u8 flag"
+    },
+    {
+     "offset": "0x2a",
+     "width": 1,
+     "meaning": "u8"
+    },
+    {
+     "offset": "0x2b",
+     "width": 1,
+     "meaning": "u8"
+    },
+    {
+     "offset": "0x2c",
+     "width": 4,
+     "meaning": "int counter/loop (init 0)"
+    },
+    {
+     "offset": "0x30",
+     "width": 4,
+     "meaning": "int master state index (init 0xB); drives ov14_021F7D9C"
+    },
+    {
+     "offset": "0x34",
+     "width": 4,
+     "meaning": "PCBoxData* (heap 0x88E0)"
+    }
+   ]
+  },
+  {
+   "name": "PCBoxData",
+   "size_guess": "0x88E0 (Heap_Alloc size in ov14_021EAFAC)",
+   "fields": [
+    {
+     "offset": "0x00",
+     "width": 4,
+     "meaning": "SysTask*"
+    },
+    {
+     "offset": "0x04",
+     "width": 4,
+     "meaning": "dispatch gate flag (ov14_021EB1C0)"
+    },
+    {
+     "offset": "0x0c",
+     "width": 4,
+     "meaning": "ptr (mon/mail data; [+0] u16)"
+    },
+    {
+     "offset": "0x10",
+     "width": 2,
+     "meaning": "u16 sub-state (ov14_021EAF08)"
+    },
+    {
+     "offset": "0x18",
+     "width": 4,
+     "meaning": "PaletteData*"
+    },
+    {
+     "offset": "0x2c",
+     "width": 4,
+     "meaning": "GridInputHandler*"
+    },
+    {
+     "offset": "0x2f0",
+     "width": 4,
+     "meaning": "sprite/actor manager (0x2f<<4)"
+    },
+    {
+     "offset": "0x434",
+     "width": 4,
+     "meaning": "YesNoPrompt*"
+    },
+    {
+     "offset": "0x438",
+     "width": 2,
+     "meaning": "u16 yes/no pair index (stride 8)"
+    },
+    {
+     "offset": "0x43c",
+     "width": 4,
+     "meaning": "int page (work->0x25 / 6)"
+    },
+    {
+     "offset": "0x444",
+     "width": 4,
+     "meaning": "u32 delay counter"
+    },
+    {
+     "offset": "0x44a",
+     "width": 1,
+     "meaning": "u8 flag"
+    },
+    {
+     "offset": "0x44b",
+     "width": 1,
+     "meaning": "u8 flag"
+    },
+    {
+     "offset": "0x44e",
+     "width": 1,
+     "meaning": "u8 flags (bit7)"
+    },
+    {
+     "offset": "0x450",
+     "width": 4,
+     "meaning": "NARC* (id 2)"
+    },
+    {
+     "offset": "0x454",
+     "width": 4,
+     "meaning": "NARC* (id 0x14)"
+    },
+    {
+     "offset": "0x4094",
+     "width": 1,
+     "meaning": "u8[] box-slot array indexed by cursor"
+    },
+    {
+     "offset": "0x40B8",
+     "width": 8,
+     "meaning": "touch coords {x,y} (System_GetTouchNewCoords)"
+    },
+    {
+     "offset": "0x88C8",
+     "width": 2,
+     "meaning": "u16 item id (sibling chunk ov14_021EFDE4)"
+    }
+   ]
+  }
+ ],
+ "risks": [
+  "OVERLAY-SPLIT RODATA: master jump table ov14_021F7D9C (~179 entries) + smaller tables reference functions across many sibling ov14 chunks. Emit table here in exact order with extern forward-decls; rodata order (021F7D1C, 021F7D2C, 021F7D3C, 021F7D50, 021F7D74, 021F7D78, 021F7D9C) must match asm exactly.",
+  "SIGNED-INT SWITCH: ov14_021EB388 switch on signed value with negative cases (-1..-3 via mvn) plus 0x1E..0x29 and a 12-entry inline jump table; MWCC lowering fragile - verify with objdiff.",
+  "INLINE SWITCH TABLES (add pc,r0 + .short deltas) in ov14_021EB2EC and ov14_021EB388 are MWCC switch lowering, NOT data - write as C switch.",
+  "~90 functions, only 4 exported. Keep other ~86 static to avoid IPA header churn; do not add beyond the 4 public symbols to any shared header.",
+  "_s32_div_f soft-division helper: emitted for int/const; write plain division and let compiler regenerate.",
+  "gSystem heldKeys read at +0x48 with masks (3=A|B, 0x10/0x20=dpad).",
+  "PCBoxData is 0x88E0 bytes; many offsets only partially observed here - sibling chunks (021E5900, 021EE26C, 021EEF34, 021F0A80, 021EFDE4) define the rest; do not finalize full struct from this chunk alone."
+ ]
+}
