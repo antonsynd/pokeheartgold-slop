@@ -104,7 +104,7 @@ static void sub_02078CB4(void *a0);
 static UnkAppArgs3C *sub_02078CC8(FieldSystem *fieldSystem, enum HeapID heapId, int a2);
 static void sub_02078D10(void *a0);
 
-BOOL sub_02078D24(int a0);
+BOOL sub_02078D24(s32 a0);
 
 static const u8 sBattleModeData[] = { 0x03, 0x04, 0x04, 0x04 };
 
@@ -405,7 +405,7 @@ static void sub_02078D10(void *a0) {
     UnloadOverlayByID(FS_OVERLAY_ID(OVY_90));
 }
 
-BOOL sub_02078D24(int a0) {
+BOOL sub_02078D24(s32 a0) {
     TrainerInfo *info = sub_020398C8();
     u8 a = info->unk0.unk1B;
     u8 b = info->unk24[a0].unk1B;

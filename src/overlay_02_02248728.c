@@ -20,6 +20,8 @@
 // only changes the .o symbol-table binding, which is stripped from the linked
 // overlay — it does NOT affect ROM bytes / the SHA1. Finalize WIP_LOCAL -> static
 // when flipping main.lsf to src.
+#define OV02_02248728_OWN_DECLS
+
 #include "global.h"
 
 #include "constants/gx.h"
@@ -246,7 +248,7 @@ extern void ov01_021F8F74(LocalMapObject *mapObject, int a1);                   
 extern BOOL ov01_022055DC(LocalMapObject *mapObject);                                                                // no header included here
 extern void ov01_021FF0E4(LocalMapObject *mapObject, int a1, u32 x, u32 z, int a4);                                  // no header included here
 extern void ov01_021FF964(LocalMapObject *mapObject, int a1, u32 x, u32 z, int a4);                                  // no header included here
-extern BOOL sub_0205B6F4(u8 tile);                                                                                   // no header included here
+extern BOOL MetatileBehavior_IsVeryTallGrass(u8 tile);                                                               // no header included here
 WIP_LOCAL void ov02_0224A9D8(void *work, int a1);                                                                    // still in asm; forward decl for callers
 
 // NewMsgDataFromNarc / MessageFormat_* / Buffer* / MapHeader_GetMapSec are reachable
@@ -6013,7 +6015,7 @@ WIP_LOCAL BOOL ov02_0224E4DC(u8 tile, int flag) {
     if (flag != 0) {
         return FALSE;
     }
-    return sub_0205BAE4(tile);
+    return MetatileBehavior_IsSurfableWater_thunk(tile);
 }
 
 // SafariDecoration_CreateArgs
@@ -8390,9 +8392,9 @@ WIP_LOCAL void ov02_0224FE70(void *a0, LocalMapObject *obj, u8 dir) {
         int behavior;
         ov02_0224FF04(obj, *(u8 *)((u8 *)a0 + 0x87c), &x, &z);
         behavior = GetMetatileBehavior(fieldSystem, x, z);
-        if (MetatileBehavior_IsEncounterGrass(behavior) == 1) {
+        if (MetatileBehavior_IsTallGrass(behavior) == 1) {
             ov01_021FF0E4(obj, 0, x, z, 1);
-        } else if (sub_0205B6F4(behavior) == 1) {
+        } else if (MetatileBehavior_IsVeryTallGrass(behavior) == 1) {
             ov01_021FF964(obj, 0, x, z, 1);
         }
         break;

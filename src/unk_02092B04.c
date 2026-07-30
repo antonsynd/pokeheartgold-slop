@@ -20,7 +20,7 @@ typedef struct UnkStruct_02092B04 {
     UnkStruct_02092B04_sub *unk2A0;
 } UnkStruct_02092B04;
 
-extern BOOL ov03_02256E2C(TaskManager *taskman);
+extern BOOL Task_Mart(TaskManager *taskman);
 
 static u8 sub_02092B40(FieldSystem *fieldSystem, UnkStruct_02092B04 *env);
 static void sub_02092B7C(TaskManager *taskman);
@@ -56,7 +56,7 @@ static void sub_02092B7C(TaskManager *taskman) {
     UnkStruct_02092B04 *env = TaskManager_GetEnvironment(taskman);
     if (sub_020505C8(fieldSystem)) {
         ov01_021E636C(1);
-        TaskManager_Jump(taskman, ov03_02256E2C, env);
+        TaskManager_Jump(taskman, Task_Mart, env);
         env->unk272 = 0x1A;
     }
 }

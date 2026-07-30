@@ -33,6 +33,8 @@
 //   terrainAttributes@0x5c, unk60@0x60 (typed u32 but is a 2-fn vtable, cast to
 //   FieldTileProvider*), 0x98 is filler (read via cast). Provider slot 0 is a
 //   5-arg fx32 getHeight, slot 1 a 4-arg BOOL getAttr.
+#define UNK_02054648_OWN_DECLS
+
 #include "unk_02054648.h"
 
 #include "global.h"

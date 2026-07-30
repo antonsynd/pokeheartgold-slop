@@ -21,7 +21,13 @@ void sub_02032058(SaveApricornBox *saveApricornBox, u32 steps);
 String *sub_020322AC(SaveApricornBox *apricornBox, u16 a1, u32 a2);
 String *sub_02032308(SaveApricornBox *apricornBox, u16 a1, u32 a2);
 int ApricornBox_CountApricorn(SaveApricornBox *apricornBox, u32 a1);
+// The defining TU was matched with a u16 second param; upstream's overlay_03
+// shop_menu was matched against u32.
+#ifdef UNK_02031B0C_OWN_DECLS
+void ApricornBox_GiveApricorn(SaveApricornBox *apricornBox, u16 a1, u8 a2);
+#else
 void ApricornBox_GiveApricorn(SaveApricornBox *apricornBox, u32 a1, u8 a2);
+#endif
 int ApricornBox_GetKurtQuantity(SaveApricornBox *apricornBox);
 void ApricornBox_SetKurtApricorn(SaveApricornBox *apricornBox, u32 a0, u32 a1);
 int ApricornBox_GetKurtBall(SaveApricornBox *apricornBox);

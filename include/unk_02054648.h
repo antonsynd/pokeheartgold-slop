@@ -5,7 +5,10 @@
 
 #include "script.h"
 
+// The defining TU was matched with a void * return type.
+#ifndef UNK_02054648_OWN_DECLS
 SoundplateStruct *sub_02054874(FieldSystem *fieldSystem, int x, int z);
+#endif
 void sub_0205489C(u32 *a0, int a1);
 BOOL sub_020548C0(FieldSystem *fieldSystem, int x, int z);
 u8 GetMetatileBehavior(FieldSystem *fieldSystem, int x, int z);

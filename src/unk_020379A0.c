@@ -1,3 +1,5 @@
+#define UNK_020379A0_OWN_DECLS
+
 #include "unk_020379A0.h"
 
 #include "unk_02035900.h"

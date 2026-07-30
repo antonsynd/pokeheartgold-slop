@@ -36,13 +36,13 @@ static void ov01_021F336C(void *work);
 BOOL ov01_021F3114(FieldSystem *fieldSystem, PlayerAvatar *avatar) {
     u8 tile = sub_0205F504(PlayerAvatar_GetMapObject(avatar));
     int direction;
-    if (sub_0205B9DC(tile) == 1) {
+    if (MetatileBehavior_IsSlideEast(tile) == 1) {
         direction = 3;
-    } else if (sub_0205B9E8(tile) == 1) {
+    } else if (MetatileBehavior_IsSlideWest(tile) == 1) {
         direction = 2;
-    } else if (sub_0205B9F4(tile) == 1) {
+    } else if (MetatileBehavior_IsSlideNorth(tile) == 1) {
         direction = 0;
-    } else if (sub_0205BA00(tile) == 1) {
+    } else if (MetatileBehavior_IsSlideSouth(tile) == 1) {
         direction = 1;
     } else {
         return 0;
@@ -99,19 +99,19 @@ static BOOL ov01_021F31CC(TaskManager *taskManager) {
         if (--work->unk4 != 0) {
             break;
         }
-        if (sub_0205B9DC(tile) == 1) {
+        if (MetatileBehavior_IsSlideEast(tile) == 1) {
             work->unk0 = 3;
             ov04_02256BE4(work->unkC, tile);
-        } else if (sub_0205B9E8(tile) == 1) {
+        } else if (MetatileBehavior_IsSlideWest(tile) == 1) {
             work->unk0 = 2;
             ov04_02256BE4(work->unkC, tile);
-        } else if (sub_0205B9F4(tile) == 1) {
+        } else if (MetatileBehavior_IsSlideNorth(tile) == 1) {
             work->unk0 = 0;
             ov04_02256BE4(work->unkC, tile);
-        } else if (sub_0205BA00(tile) == 1) {
+        } else if (MetatileBehavior_IsSlideSouth(tile) == 1) {
             work->unk0 = 1;
             ov04_02256BE4(work->unkC, tile);
-        } else if (sub_0205BA0C(tile) == 1) {
+        } else if (MetatileBehavior_StopSliding(tile) == 1) {
             work->unk0 = ov01_021F31A0(work->unk0);
             MapObject_ClearFlagsBits(mapObject, (MapObjectFlagBits)0x80);
             MapObject_ClearFlagsBits(mapObject, (MapObjectFlagBits)(1 << 8));

@@ -1,3 +1,5 @@
+#define UNK_02013534_OWN_DECLS
+
 #include "unk_02013534.h"
 
 #include "global.h"

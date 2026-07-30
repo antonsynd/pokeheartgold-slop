@@ -31,7 +31,13 @@ typedef struct TextOBJ {
 } TextOBJ;
 
 UnkStruct_02013534 *FontSystem_NewInit(int a0, enum HeapID heapId);
+// The defining TU was matched with u32 * params; upstream callers were
+// matched against int *. Pointer-type-only split, no codegen difference.
+#ifdef UNK_02013534_OWN_DECLS
+void sub_02013794(void *a0, u32 *a1, u32 *a2);
+#else
 void sub_02013794(void *a0, int *a1, int *a2);
+#endif
 int sub_02013688(Window *window, NNS_G2D_VRAM_TYPE vram, int a2);
 void sub_020135AC(UnkStruct_02013534 *a0);
 void sub_02013820(TextOBJ *textOBJ, int a1);

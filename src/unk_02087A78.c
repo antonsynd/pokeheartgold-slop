@@ -3,6 +3,7 @@
 #include "constants/heap.h"
 
 #include "overlay_manager.h"
+#include "poke_overlay.h"
 
 // External symbols kept out of shared headers to avoid IPA cascade; declared
 // locally with the types they were matched against (opaque structs as void *).

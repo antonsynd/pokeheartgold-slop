@@ -1,3 +1,5 @@
+#define UNK_02034354_OWN_DECLS
+
 #include "unk_02034354.h"
 
 #include <nitro/mi/memory.h>

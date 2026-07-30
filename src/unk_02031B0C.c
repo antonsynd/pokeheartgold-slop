@@ -2,6 +2,8 @@
 #include "global.h"
 #include "heap.h"
 #include "pm_string.h"
+#define UNK_02031B0C_OWN_DECLS
+
 #include "unk_02031B0C.h"
 // clang-format on
 

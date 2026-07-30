@@ -81,8 +81,12 @@ void ov02_022469B4(TaskManager *man, LocalMapObject *obj1, LocalMapObject *obj2)
 void OpenAlphHiddenRoom(TaskManager *man, u32 a1);
 int ov02_0224E340(FieldSystem *fieldSystem);
 
+// The defining TU was matched with WIP_LOCAL int(void *) shapes for these
+// two; it must not see the public prototypes or MWCC rejects the redecl.
+#ifndef OV02_02248728_OWN_DECLS
 u16 ov02_0224E698(FieldSystem *fieldSystem);
 u16 ov02_0224E754(FieldSystem *fieldSystem, u16 *varPointer);
+#endif
 
 SafariDecorationArgs *SafariDecoration_CreateArgs(FieldSystem *fieldSystem, enum HeapID heapID);
 

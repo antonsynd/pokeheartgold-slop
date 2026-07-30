@@ -65,10 +65,10 @@ extern void sub_020699AC(NNSG3dRenderObj *a0, VecFx32 *a1, VecFx32 *a2, MtxFx33 
 extern void sub_02020DA4(MtxFx33 *rotation, u16 xAngle, u16 yAngle, u16 zAngle);
 extern BOOL sub_0205F0A8(LocalMapObject *object, u32 objectId, u32 mapId);
 extern u16 sub_0205F504(LocalMapObject *object);
-extern BOOL sub_0205B718(u8 tile);
-extern BOOL sub_0205B724(u8 tile);
-extern BOOL sub_0205B730(u8 tile);
-extern BOOL sub_0205B73C(u8 tile);
+extern BOOL MetatileBehavior_IsWarpEntranceEast(u8 tile);
+extern BOOL MetatileBehavior_IsWarpEntranceWest(u8 tile);
+extern BOOL MetatileBehavior_IsWarpEntranceNorth(u8 tile);
+extern BOOL MetatileBehavior_IsWarpEntranceSouth(u8 tile);
 
 UnkOv01_02200858 *ov01_02200858(void *a0);
 void ov01_02200874(UnkOv01_02200858 *manager);
@@ -312,16 +312,16 @@ _A08_end:
 #endif
 
 static int ov01_02200AB0(u8 tile) {
-    if (sub_0205B730(tile)) {
+    if (MetatileBehavior_IsWarpEntranceNorth(tile)) {
         return 0;
     }
-    if (sub_0205B73C(tile)) {
+    if (MetatileBehavior_IsWarpEntranceSouth(tile)) {
         return 1;
     }
-    if (sub_0205B724(tile)) {
+    if (MetatileBehavior_IsWarpEntranceWest(tile)) {
         return 2;
     }
-    if (sub_0205B718(tile)) {
+    if (MetatileBehavior_IsWarpEntranceEast(tile)) {
         return 3;
     }
     return -1;
