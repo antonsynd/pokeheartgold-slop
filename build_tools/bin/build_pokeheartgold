@@ -160,6 +160,20 @@ def _make_env(game: str) -> MutableMapping[str, str]:
     return env
 
 
+def _make_bin() -> str:
+    # Apple's bundled GNU Make 3.81 hangs in its parallel dependency walk on
+    # large invalidations (see tools/decomp_harness/TODO.md); prefer a newer
+    # GNU Make when one is available. MAKE_BIN overrides; sub-makes inherit
+    # whichever binary we pick via $(MAKE).
+    override = os.environ.get("MAKE_BIN")
+    if override:
+        return override
+    for candidate in ("/opt/homebrew/bin/gmake", "/usr/local/bin/gmake"):
+        if os.access(candidate, os.X_OK):
+            return candidate
+    return "make"
+
+
 def _run_make(
     targets: Sequence[str],
     game: str,
@@ -167,7 +181,7 @@ def _run_make(
     compare: bool,
     rest: Sequence[str],
 ) -> None:
-    cmd: MutableSequence[str] = ["make"]
+    cmd: MutableSequence[str] = [_make_bin()]
 
     if jobs is not None:
         cmd.append(f"-j{jobs}")

@@ -8,19 +8,22 @@ command substitution; with zero `.d` files grep exits 1, and under
 with exit code 0 from the caller's perspective. Guard the pipeline with
 `|| true`.
 
-## GNU Make 3.81 hangs with -j4 after mass invalidation (2026-07-30)
+## RESOLVED: GNU Make 3.81 -j hang → project-local gmake 4.4.1 (2026-07-30)
 
-Observed during the upstream merge (378 files changed + full `.d` wipe):
-`make -j4 main` spins in its dependency walk indefinitely (90+ CPU-minutes,
-zero compiler processes spawned), while `make -j1` on the identical tree
-starts compiling within seconds. Stack samples show update_file/check_dep
-recursion. Until root-caused, use `-j1` for post-merge / cold rebuilds.
-Candidate real fix: project-local GNU Make 4.4 (`brew install make`,
-wire `gmake` through build_tools/bin/build_pokeheartgold without touching
-PATH) — likely also much faster at the big-graph walk. Note: with all `.d`
-files missing, header edits do NOT trigger recompiles (deps come from
-`include $(wildcard $(DEPFILES))`), so after a `.d` wipe only a
-tidy + full rebuild is trustworthy for the SHA1 gate.
+Apple's bundled Make 3.81 spins indefinitely in its parallel dependency walk
+after mass invalidation (90+ CPU-minutes, zero compiler processes; `-j1` on
+the same tree compiles immediately). Fixed by preferring Homebrew GNU Make
+4.4.1: `build_tools/bin/build_pokeheartgold::_make_bin()` picks
+`/opt/homebrew/bin/gmake` (or `/usr/local/bin/gmake`) when present,
+`MAKE_BIN` env var overrides, falls back to `make`. Sub-makes inherit via
+`$(MAKE)`. Validated: full tidy rebuild `-j8` = ~6 min (vs ~55 min serial
+3.81), all 990 objects fresh, rom.sha1 OK. Install prerequisite (macOS):
+`brew install make`. Raw `make` invocations outside the wrapper still use
+3.81 — go through chiri, or use `-j1` there.
+
+Still true: with all `.d` files missing, header edits do NOT trigger
+recompiles (deps come from `include $(wildcard $(DEPFILES))`), so after a
+`.d` wipe only a tidy + full rebuild is trustworthy for the SHA1 gate.
 
 ## Build reliability: Wine/.d file flakiness
 
