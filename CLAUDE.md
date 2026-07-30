@@ -36,7 +36,7 @@ After pulling upstream, if things break try in order: `make tidy && make compare
 
 Prerequisites are **not** in the repo and must be staged manually (see `INSTALL.md`): MWCC `2.0/sp2p2` at `tools/mwccarm/2.0/sp2p2/mwccarm.exe`, NitroSDK binaries at `tools/bin/`, and the NitroSDK LCF templates copied to `ARM9-TS.lcf.template` (root) / `sub/ARM7-TS.lcf.template` / `mwldarm.response.template` (root). Without these `make` will fail early. On macOS/Linux, MWCC runs via `wine`; `nitrocrypto.o` is special-cased to build with MWCC `1.2/sp2p3`.
 
-On macOS, install prerequisites via Homebrew: `brew tap osx-cross/homebrew-arm && brew install gnu-sed arm-gcc-bin wine-crossover`. The build requires `gsed` (GNU sed) — without it, `.d` dependency files retain Wine `Z:` paths and break `make`.
+On macOS, install prerequisites via Homebrew: `brew tap osx-cross/homebrew-arm && brew install gnu-sed arm-gcc-bin wine-crossover make`. The build requires `gsed` (GNU sed) — without it, `.d` dependency files retain Wine `Z:` paths and break `make`. The `make` formula provides `gmake` (GNU Make 4.4), which the chiri wrapper prefers automatically — Apple's bundled Make 3.81 hangs in its parallel dependency walk after large invalidations (fall back to `-j1` if only 3.81 is available; `MAKE_BIN` env var overrides the choice).
 
 **ARM64 / Apple Silicon builds:** MWCC via Wine on ARM64 (Rosetta 2) produces identical output to native x86_64. Only the retail SHA1 files (`main.sha1` / `rom.sha1`) are used — no platform-specific variants.
 
