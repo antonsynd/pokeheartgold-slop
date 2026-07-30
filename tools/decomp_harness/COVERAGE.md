@@ -1,15 +1,15 @@
 # Decomp Coverage Ledger
 
-*Generated 2026-07-17T01:32:46Z by `coverage_ledger.py` — do not hand-edit; regenerate after each decomp.*
+*Generated 2026-07-30T17:59:33Z by `coverage_ledger.py` — do not hand-edit; regenerate after each decomp.*
 
-Tracked functions (files with retained asm): **19930** — matched 1723, pending 17214, plus 20 matched-but-blocked inside failed files.
+Tracked functions (files with retained asm): **19494** — matched 1711, pending 16811, plus 20 matched-but-blocked inside failed files.
 
 | status | files | functions | insn lines | ~text bytes |
 |---|---|---|---|---|
-| matched | 100 | 1723 | 48018 | 106548 |
-| blocked | 54 | 993 | 32193 | 70682 |
-| pending | 173 | 17214 | 845249 | 1893758 |
-| upstream | 383 | 0 | 0 | 0 |
+| matched | 99 | 1711 | 47170 | 104672 |
+| blocked | 53 | 972 | 30927 | 67968 |
+| pending | 169 | 16811 | 828863 | 1856928 |
+| upstream | 397 | 0 | 0 | 0 |
 
 ## Blockers (value-ordered: fix what gates the most)
 
@@ -21,7 +21,7 @@ Tracked functions (files with retained asm): **19930** — matched 1723, pending
 | ipa-cse-literal-pool | 1 | 0 | MWCC -ipa file caches repeated literal-pool addresses/large offsets in callee-saved registers across calls where retail reloads them (or vice versa). A codegen-shape problem, not a header problem — split from ipa-shared-headers 2026-07-01, where this file's ubiquitous exports (BeginNormalPaletteFade family, imported by ~84 pending .inc files) badly inflated the gate count. |
 | objdiff-false-positives | 0 | 0 | RESOLVED. objdiff.py had a critical bug: the byte extraction regex did not match MWCC's ARM Thumb objdump format (packed hex like 'b418' vs expected space-separated 'b4 18'). It extracted 0 bytes for every function, so 0==0 always reported MATCH. 11 decomps accepted via objdiff were not actually byte-matching. Fixed; all 11 non-matching decomps reverted to asm. 2 decomps that truly match (unk_0202DB34, battle_arcade_game_board_data) kept. |
 
-## Blocked files (54)
+## Blocked files (53)
 
 | file | functions | insn lines | data-only | notes |
 |---|---|---|---|---|
@@ -43,7 +43,6 @@ Tracked functions (files with retained asm): **19930** — matched 1723, pending
 | asm/unk_0205AC88.s | 22 | 808 |  |   |
 | asm/unk_020957B0.s | 22 | 723 |  |  22 fns / 750 insns, NO header/caller/sibling (all types inferred). Byte-packed command structs + stack-arg (sp+0x20 sign |
 | asm/unk_0201956C.s | 21 | 757 |  |   |
-| asm/overlay_12_0226ADE0.s | 21 | 1266 |  |   |
 | asm/unk_02012DD8.s | 20 | 869 |  |   |
 | asm/unk_0203A3B0.s | 20 | 693 |  |   |
 | asm/overlay_80_022310C4.s | 20 | 1219 |  |   |
@@ -80,7 +79,7 @@ Tracked functions (files with retained asm): **19930** — matched 1723, pending
 | asm/middleware.s | 0 | 0 | yes |  Data-only: 7 NUL-terminated SDK middleware version strings in a custom .version section (single ordered section, each .b |
 | asm/overlay_12_battle_command.s | 0 | 0 | yes |   |
 
-## Matched files (asm retained) (100)
+## Matched files (asm retained) (99)
 
 | file | functions | insn lines | data-only | notes |
 |---|---|---|---|---|
@@ -128,7 +127,6 @@ Tracked functions (files with retained asm): **19930** — matched 1723, pending
 | asm/unk_02067A60.s | 12 | 363 |  | harness |
 | asm/unk_02068FC8.s | 12 | 599 |  | harness |
 | asm/unk_0208DE40.s | 12 | 762 |  | harness |
-| asm/overlay_01_021E7FDC.s | 12 | 848 |  | harness |
 | asm/overlay_01_021FB5D4.s | 12 | 291 |  | harness |
 | asm/overlay_01_021FCD2C.s | 12 | 156 |  | harness |
 | asm/overlay_01_022051EC.s | 12 | 219 |  | retained_asm |
@@ -185,7 +183,7 @@ Tracked functions (files with retained asm): **19930** — matched 1723, pending
 | asm/overlay_01_data_02208BFC.s | 0 | 0 | yes | retained_asm |
 | asm/battle_arcade_game_board_data.s | 0 | 0 | yes | harness |
 
-## Pending files (173)
+## Pending files (169)
 
 | file | functions | insn lines | data-only | notes |
 |---|---|---|---|---|
@@ -208,8 +206,6 @@ Tracked functions (files with retained asm): **19930** — matched 1723, pending
 | asm/overlay_15.s | 203 | 12648 |  |  |
 | asm/overlay_80_0222BDF4.s | 203 | 6189 |  |  |
 | asm/overlay_81.s | 197 | 9583 |  |  |
-| asm/overlay_42.s | 183 | 4826 |  |  |
-| asm/overlay_03.s | 179 | 9003 |  |  |
 | asm/unk_02037C94.s | 176 | 4077 |  |  |
 | asm/overlay_43.s | 169 | 8806 |  |  |
 | asm/overlay_59.s | 163 | 8111 |  |  |
@@ -302,7 +298,6 @@ Tracked functions (files with retained asm): **19930** — matched 1723, pending
 | asm/overlay_41_02247828.s | 42 | 1331 |  |  |
 | asm/overlay_trainer_card_signature.s | 42 | 2238 |  |  |
 | asm/unk_0208B1AC.s | 41 | 2005 |  |  |
-| asm/overlay_01_021E6880.s | 41 | 2557 |  |  |
 | asm/overlay_41_02248ED4.s | 41 | 1292 |  |  |
 | asm/render_window.s | 40 | 2610 |  |  |
 | asm/overlay_01_021E8744.s | 40 | 1091 |  |  |
@@ -361,5 +356,4 @@ Tracked functions (files with retained asm): **19930** — matched 1723, pending
 | asm/unk_data_020FCBD8.s | 0 | 0 | yes |  |
 | asm/unk_data_020FDB44.s | 0 | 0 | yes |  |
 | asm/overlay_01_sprite_data.s | 0 | 0 | yes |  |
-| asm/overlay_44.s | 0 | 0 | yes |  |
 

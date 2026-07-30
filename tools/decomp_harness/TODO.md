@@ -1,5 +1,27 @@
 # Decomp Harness TODOs
 
+## recomp.sh dies silently when no .d files exist (2026-07-30)
+
+`fix_d_files()` runs `grep -rl 'Z:\\' build/ --include='*.d' | wc -l` inside a
+command substitution; with zero `.d` files grep exits 1, and under
+`set -euo pipefail` the whole script exits before the tidy/rebuild phases —
+with exit code 0 from the caller's perspective. Guard the pipeline with
+`|| true`.
+
+## GNU Make 3.81 hangs with -j4 after mass invalidation (2026-07-30)
+
+Observed during the upstream merge (378 files changed + full `.d` wipe):
+`make -j4 main` spins in its dependency walk indefinitely (90+ CPU-minutes,
+zero compiler processes spawned), while `make -j1` on the identical tree
+starts compiling within seconds. Stack samples show update_file/check_dep
+recursion. Until root-caused, use `-j1` for post-merge / cold rebuilds.
+Candidate real fix: project-local GNU Make 4.4 (`brew install make`,
+wire `gmake` through build_tools/bin/build_pokeheartgold without touching
+PATH) — likely also much faster at the big-graph walk. Note: with all `.d`
+files missing, header edits do NOT trigger recompiles (deps come from
+`include $(wildcard $(DEPFILES))`), so after a `.d` wipe only a
+tidy + full rebuild is trustworthy for the SHA1 gate.
+
 ## Build reliability: Wine/.d file flakiness
 
 The filesystem build invokes Wine (mwasmarm.exe) hundreds of times. Transient Wine failures produce:
