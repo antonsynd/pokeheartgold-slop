@@ -362,7 +362,7 @@ _022470D4:
 	lsl r7, r7, #2
 _02247110:
 	ldr r0, [r4, r7]
-	bl sub_0200ACF0
+	bl SpriteTransfer_CreateCharTransferTask
 	add r6, r6, #1
 	add r4, #0x10
 	cmp r6, #0xe
@@ -372,7 +372,7 @@ _02247110:
 	lsl r6, r6, #6
 _02247124:
 	ldr r0, [r5, r6]
-	bl sub_0200AF94
+	bl SpriteTransfer_CreateExtPlttTransferTask
 	add r4, r4, #1
 	add r5, #0x10
 	cmp r4, #0xb
@@ -490,7 +490,7 @@ _02247206:
 	lsl r0, r4, #4
 	add r0, r5, r0
 	ldr r0, [r0, r6]
-	bl sub_0200AEB0
+	bl SpriteTransfer_DeleteCharTransferTask
 	add r0, r4, #1
 	lsl r0, r0, #0x18
 	lsr r4, r0, #0x18
@@ -503,7 +503,7 @@ _02247220:
 	lsl r0, r4, #4
 	add r0, r5, r0
 	ldr r0, [r0, r6]
-	bl sub_0200B0A8
+	bl SpriteTransfer_DeletePlttTransferTask
 	add r0, r4, #1
 	lsl r0, r0, #0x18
 	lsr r4, r0, #0x18
@@ -556,7 +556,7 @@ ov83_02247264: ; 0x02247264
 	mov r2, #0x12
 	bl ReplaceCharResObjFromNarc
 	add r0, r4, #0
-	bl sub_0200AE8C
+	bl SpriteTransfer_ReplaceCharData
 	add sp, #8
 	pop {r4, r5, r6, pc}
 	thumb_func_end ov83_02247264
@@ -586,7 +586,7 @@ ov83_022472A0: ; 0x022472A0
 	mov r2, #0x12
 	bl ReplacePlttResObjFromNarc
 	add r0, r4, #0
-	bl sub_0200B084
+	bl SpriteTransfer_ReplacePlttData
 	add sp, #8
 	pop {r4, r5, r6, pc}
 	thumb_func_end ov83_022472A0

@@ -1,20 +1,14 @@
 #ifndef POKEHEARTGOLD_OVY_44_H
 #define POKEHEARTGOLD_OVY_44_H
 
-#include "global.h"
-
-#include "heap.h"
 #include "list_menu_2d.h"
-#include "main.h"
 #include "overlay_44_02232E9C.h"
 #include "render_window.h"
-#include "sprite.h"
 #include "unk_02009D48.h"
-#include "yes_no_prompt.h"
 
 typedef struct UnkStruct_ov44_022341C0 {
-    u32 unk0;
-    u32 unk4;
+    UnkStruct_ov42_02228110 *unk0;
+    UnkStruct_ov42_0222903C *unk4;
     u16 unk8;
     s16 unkA;
 } UnkStruct_ov44_022341C0;
@@ -48,8 +42,8 @@ typedef struct UnkStruct_ov44_02232F64 {
     SpriteList *spriteList; // 0x18
     G2dRenderer g2dRenderer;
     GF_2DGfxResMan *gf2DGfxResManList[4];
-    u32 unk154;
-    u32 unk158;
+    UnkStruct_ov42_022280A8 *unk154;
+    UnkStruct_ov42_02228EDC *unk158;
     UnkStruct_ov44_022341C0 unk15C[4];
     Window windowList[5]; // 0x18C - 0x1DC
     struct ListMenu2D *listMenu2D;
@@ -227,5 +221,7 @@ s32 ov44_02235218(UnkStruct_ov44_02235340 *arg0, UnkStruct_ov44_args *arg1, enum
 s32 ov44_02235268(UnkStruct_ov44_02235340 *arg0, UnkStruct_ov44_args *arg1, enum HeapID heapID);
 s32 ov44_0223532C(UnkStruct_ov44_02235340 *arg0, UnkStruct_ov44_args *arg1, enum HeapID heapID);
 s32 ov44_02235340(UnkStruct_ov44_02235340 *arg0, UnkStruct_ov44_args *arg1, enum HeapID heapID);
+UnkStruct_ov44_02232914 ov44_02232E90(s32 arg0);
+const u32 *ov44_02232E9C(u32 arg0);
 
 #endif // POKEHEARTGOLD_OVY_44_H

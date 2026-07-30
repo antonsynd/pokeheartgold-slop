@@ -1403,7 +1403,7 @@ ov41_0224AFF8: ; 0x0224AFF8
 	mov r3, #0
 	bl AddCharResObjFromOpenNarc
 	str r0, [r5]
-	bl sub_0200ADA4
+	bl SpriteTransfer_CreateCharTransferTask_AllocAtEnd
 	ldr r0, [r5]
 	bl sub_0200A740
 	ldr r2, [sp, #0x2c]
@@ -1419,7 +1419,7 @@ ov41_0224AFF8: ; 0x0224AFF8
 	ldr r0, [r4, #4]
 	bl AddPlttResObjFromOpenNarc
 	str r0, [r5, #4]
-	bl sub_0200B00C
+	bl SpriteTransfer_CreatePlttTransferTask
 	ldr r0, [r5, #4]
 	bl sub_0200A740
 	ldr r2, [sp, #0x30]
@@ -1455,9 +1455,9 @@ ov41_0224B084: ; 0x0224B084
 	add r5, r0, #0
 	ldr r0, [r5]
 	add r4, r1, #0
-	bl sub_0200AEB0
+	bl SpriteTransfer_DeleteCharTransferTask
 	ldr r0, [r5, #4]
-	bl sub_0200B0A8
+	bl SpriteTransfer_DeletePlttTransferTask
 	ldr r0, [r4]
 	ldr r1, [r5]
 	bl DestroySingle2DGfxResObj

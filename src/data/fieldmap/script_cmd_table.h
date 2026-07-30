@@ -1,3 +1,5 @@
+#include "script.h"
+
 #ifdef _IN_SCRCMD_C
 BOOL ScrCmd_Nop(ScriptContext *ctx);
 BOOL ScrCmd_Dummy(ScriptContext *ctx);
@@ -55,7 +57,7 @@ BOOL ScrCmd_OpenMsg(ScriptContext *ctx);
 BOOL ScrCmd_CloseMsg(ScriptContext *ctx);
 BOOL ScrCmd_HoldMsg(ScriptContext *ctx);
 BOOL ScrCmd_DirectionSignpost(ScriptContext *ctx);
-BOOL ScrCmd_055(ScriptContext *ctx);
+BOOL ScrCmd_056(ScriptContext *ctx);
 BOOL ScrCmd_057(ScriptContext *ctx);
 BOOL ScrCmd_058(ScriptContext *ctx);
 BOOL ScrCmd_TrainerTips(ScriptContext *ctx);
@@ -301,11 +303,11 @@ BOOL ScrCmd_298(ScriptContext *ctx);
 BOOL ScrCmd_CheckEscortMode(ScriptContext *ctx);
 BOOL ScrCmd_SetEscortMode(ScriptContext *ctx);
 BOOL ScrCmd_ClearEscortMode(ScriptContext *ctx);
-BOOL ScrCmd_302(ScriptContext *ctx);
-BOOL ScrCmd_303(ScriptContext *ctx);
-BOOL ScrCmd_304(ScriptContext *ctx);
-BOOL ScrCmd_305(ScriptContext *ctx);
-BOOL ScrCmd_306(ScriptContext *ctx);
+BOOL ScrCmd_CheckStepTakenFlag(ScriptContext *ctx);
+BOOL ScrCmd_SetStepTakenFlag(ScriptContext *ctx);
+BOOL ScrCmd_GetStepTakenFlag(ScriptContext *ctx);
+BOOL ScrCmd_CheckGameClearFlag(ScriptContext *ctx);
+BOOL ScrCmd_SetGameClearFlag(ScriptContext *ctx);
 BOOL ScrCmd_307(ScriptContext *ctx);
 BOOL ScrCmd_308(ScriptContext *ctx);
 BOOL ScrCmd_309(ScriptContext *ctx);
@@ -484,7 +486,7 @@ BOOL ScrCmd_GiveRibbon(ScriptContext *ctx);
 BOOL ScrCmd_BufferRibbonName(ScriptContext *ctx);
 BOOL ScrCmd_GetEVTotal(ScriptContext *ctx);
 BOOL ScrCmd_GetWeekday(ScriptContext *ctx);
-BOOL ScrCmd_485(ScriptContext *ctx);
+BOOL ScrCmd_StartBattleRegulationMenuTask(ScriptContext *ctx);
 BOOL ScrCmd_Dummy(ScriptContext *ctx);
 BOOL ScrCmd_PokeCenAnim(ScriptContext *ctx);
 BOOL ScrCmd_ElevatorAnim(ScriptContext *ctx);
@@ -790,8 +792,8 @@ BOOL ScrCmd_JudgeBugContest(ScriptContext *ctx);
 BOOL ScrCmd_BufferBugContestMonNick(ScriptContext *ctx);
 BOOL ScrCmd_BugContestGetTimeLeft(ScriptContext *ctx);
 BOOL ScrCmd_IsBugContestantRegistered(ScriptContext *ctx);
-BOOL ScrCmd_791(ScriptContext *ctx);
-BOOL ScrCmd_792(ScriptContext *ctx);
+BOOL ScrCmd_CheckSafariZoneChallengeCompleted(ScriptContext *ctx);
+BOOL ScrCmd_UpdateSafariZoneIGT(ScriptContext *ctx);
 BOOL ScrCmd_BankTransaction(ScriptContext *ctx);
 BOOL ScrCmd_CheckBankBalance(ScriptContext *ctx);
 BOOL ScrCmd_795(ScriptContext *ctx);
@@ -910,7 +912,7 @@ const ScrCmdFunc gScriptCmdTable[] = {
     ScrCmd_CloseMsg,
     ScrCmd_HoldMsg,
     ScrCmd_DirectionSignpost,
-    ScrCmd_055,
+    ScrCmd_056,
     ScrCmd_057,
     ScrCmd_058,
     ScrCmd_TrainerTips,
@@ -1156,11 +1158,11 @@ const ScrCmdFunc gScriptCmdTable[] = {
     ScrCmd_CheckEscortMode,
     ScrCmd_SetEscortMode,
     ScrCmd_ClearEscortMode,
-    ScrCmd_302,
-    ScrCmd_303,
-    ScrCmd_304,
-    ScrCmd_305,
-    ScrCmd_306,
+    ScrCmd_CheckStepTakenFlag,
+    ScrCmd_SetStepTakenFlag,
+    ScrCmd_GetStepTakenFlag,
+    ScrCmd_CheckGameClearFlag,
+    ScrCmd_SetGameClearFlag,
     ScrCmd_307,
     ScrCmd_308,
     ScrCmd_309,
@@ -1339,7 +1341,7 @@ const ScrCmdFunc gScriptCmdTable[] = {
     ScrCmd_BufferRibbonName,
     ScrCmd_GetEVTotal,
     ScrCmd_GetWeekday,
-    ScrCmd_485,
+    ScrCmd_StartBattleRegulationMenuTask,
     ScrCmd_Dummy,
     ScrCmd_PokeCenAnim,
     ScrCmd_ElevatorAnim,
@@ -1645,8 +1647,8 @@ const ScrCmdFunc gScriptCmdTable[] = {
     ScrCmd_BufferBugContestMonNick,
     ScrCmd_BugContestGetTimeLeft,
     ScrCmd_IsBugContestantRegistered,
-    ScrCmd_791,
-    ScrCmd_792,
+    ScrCmd_CheckSafariZoneChallengeCompleted,
+    ScrCmd_UpdateSafariZoneIGT,
     ScrCmd_BankTransaction,
     ScrCmd_CheckBankBalance,
     ScrCmd_795,

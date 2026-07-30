@@ -941,11 +941,39 @@ static const s16 sMainMenuButtonsScreenOffsets[][3] = {
 };
 
 ALIGN(4)
-static const u8 sMainMenuButtonsTouchscreenRect[][4] = {
-    { 4,  15, 2,  29 },
-    { 17, 23, 0,  9  },
-    { 17, 23, 22, 31 },
-    { 18, 23, 11, 20 }
+static const TouchscreenHitbox sMainMenuButtonsTouchscreenRect[] = {
+    {
+     .rect = {
+            .top = 4,
+            .bottom = 15,
+            .left = 2,
+            .right = 29,
+        },
+     },
+    {
+     .rect = {
+            .top = 17,
+            .bottom = 23,
+            .left = 0,
+            .right = 9,
+        },
+     },
+    {
+     .rect = {
+            .top = 17,
+            .bottom = 23,
+            .left = 22,
+            .right = 31,
+        },
+     },
+    {
+     .rect = {
+            .top = 18,
+            .bottom = 23,
+            .left = 11,
+            .right = 20,
+        },
+     },
 };
 
 ALIGN(4)
@@ -1144,23 +1172,36 @@ static const s16 ov12_0226E286[][3] = {
 };
 
 ALIGN(4)
-static const u8 ov12_0226E24C[][4] = {
-    { 0xd, 0x14, 0, 31 },
-    { 0x4, 0xb,  0, 31 }
+static const TouchscreenHitbox ov12_0226E24C[] = {
+    {
+     .rect = {
+            .top = 13,
+            .bottom = 20,
+            .left = 0,
+            .right = 31,
+        },
+     },
+    {
+     .rect = {
+            .top = 4,
+            .bottom = 11,
+            .left = 0,
+            .right = 31,
+        },
+     },
 };
 
 ALIGN(4)
 static const s16 ov12_0226E228[] = { 0, 192, 384 };
 
 ALIGN(4)
-static const TouchscreenHitbox ov12_0226E20C[] = {
-    {
-     .rect = {
-            .top = 18,
-            .bottom = 23,
-            .left = 0,
-            .right = 31 },
-     },
+static const TouchscreenHitbox ov12_0226E20C = {
+    .rect = {
+             .top = 18,
+             .bottom = 23,
+             .left = 0,
+             .right = 31,
+             },
 };
 
 static const ALIGN(4) S16Pos ov12_0226E2D8[] = {
@@ -3763,11 +3804,18 @@ static int BattleInput_CursorMove_MainMenu(BattleInput *battleInput, int shouldI
         return sCursorArrayMainMenu[cursor->menuY][cursor->menuX];
     case PAD_BUTTON_B:
         if (battleInput->unk66F == 1) {
+#ifdef __clang__
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wtautological-constant-out-of-range-compare"
+#endif
             for (i = 0; i < menu->touchscreenRect[i].rect.top != TOUCHSCREEN_RECTLIST_END; i++) {
                 if (BATTLE_INPUT_RUN == menu->touchInput[i]) {
                     return i;
                 }
             }
+#ifdef __clang__
+#pragma clang diagnostic pop
+#endif
         }
         break;
     }
@@ -3878,11 +3926,18 @@ static int BattleInput_CursorMove_FightMenu(BattleInput *battleInput, int param1
     case PAD_BUTTON_A:
         return sCursorArrayFightMenu[cursor->menuY][cursor->menuX];
     case PAD_BUTTON_B:
+#ifdef __clang__
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wtautological-constant-out-of-range-compare"
+#endif
         for (i = 0; i < menuTemplate->touchscreenRect[i].rect.top != TOUCHSCREEN_RECTLIST_END; i++) {
             if (BATTLE_INPUT_CANCEL == menuTemplate->touchInput[i]) {
                 return i;
             }
         }
+#ifdef __clang__
+#pragma clang diagnostic pop
+#endif
 
         break;
     }

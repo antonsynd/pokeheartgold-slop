@@ -1,12 +1,12 @@
-#include "overlay_01_021F3114.h"
-
 #include "global.h"
 
 #include "constants/sndseq.h"
 
+#include "field_system.h"
 #include "heap.h"
 #include "map_object.h"
 #include "metatile_behavior.h"
+#include "player_avatar.h"
 #include "task.h"
 #include "unk_02005D10.h"
 
@@ -18,6 +18,8 @@ typedef struct {
     PlayerAvatar *unk10;
     int unk14;
 } UnkOv01_021F3114;
+
+BOOL ov01_021F3114(FieldSystem *fieldSystem, PlayerAvatar *avatar);
 
 extern int sub_0206234C(int a0, int a1);
 extern void sub_0205DFD4(PlayerAvatar *avatar, int a1);

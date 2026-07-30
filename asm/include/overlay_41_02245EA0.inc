@@ -68,8 +68,8 @@
 .public ov41_02246D2C
 .public ov41_02246D54
 .public ov41_02246DA8
-.public sub_0200ADA4
-.public sub_0200B00C
+.public SpriteTransfer_CreateCharTransferTask_AllocAtEnd
+.public SpriteTransfer_CreatePlttTransferTask
 .public sub_02015DDC
 .public sub_02015E20
 .public sub_02015E64

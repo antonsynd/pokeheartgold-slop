@@ -1,7 +1,6 @@
-#include "overlay_01_021FB5D4.h"
-
 #include "global.h"
 
+#include "constants/heap.h"
 #include "constants/sndseq.h"
 
 #include "heap.h"
@@ -11,6 +10,10 @@
 #include "unk_02014A08.h"
 
 void G3X_SetHOffset(int offset);
+
+void *ov01_021FB5D4(enum HeapID heapId, void *manager);
+void ov01_021FB610(void *work);
+void FieldSystem_DoPoisonEffect(void *data);
 
 typedef struct {
     u32 state;
@@ -55,7 +58,7 @@ void ov01_021FB610(void *data) {
     Heap_Free(work);
 }
 
-void ov01_021FB630(void *data) {
+void FieldSystem_DoPoisonEffect(void *data) {
     UnkStruct_Ov01_021FB5D4 *work = data;
     GF_ASSERT(work->state == 0);
     work->slot = ov01_021FB530(work->manager, ov01_021FB7DC, work);

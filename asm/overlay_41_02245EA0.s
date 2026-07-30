@@ -607,7 +607,7 @@ ov41_022462E4: ; 0x022462E4
 	str r4, [sp, #8]
 	ldr r0, [r0, #0x48]
 	bl AddCharResObjFromOpenNarc
-	bl sub_0200ADA4
+	bl SpriteTransfer_CreateCharTransferTask_AllocAtEnd
 	add sp, #0xc
 	pop {r3, r4, pc}
 	.balign 4, 0
@@ -627,7 +627,7 @@ ov41_02246304: ; 0x02246304
 	str r4, [sp, #0xc]
 	ldr r0, [r0, #0x4c]
 	bl AddPlttResObjFromOpenNarc
-	bl sub_0200B00C
+	bl SpriteTransfer_CreatePlttTransferTask
 	add sp, #0x10
 	pop {r4, pc}
 	.balign 4, 0

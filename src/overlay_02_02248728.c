@@ -50,12 +50,12 @@
 #include "save_local_field_data.h"
 #include "script_pokemon_util.h"
 #include "sprite.h"
+#include "sprite_transfer.h"
 #include "sys_task_api.h"
 #include "task.h"
 #include "unk_02005D10.h"
 #include "unk_02009D48.h"
 #include "unk_0200A090.h"
-#include "unk_0200ACF0.h"
 #include "unk_0200FA24.h"
 #include "unk_02013FDC.h"
 #include "unk_02062108.h"
@@ -1147,12 +1147,12 @@ WIP_LOCAL void ov02_0224886C(void *mgr) {
     int i;
     for (i = 0; i < *(u8 *)mgr; i++) {
         if (*(s8 *)((u8 *)mgr + 4) != (*(AnimResEntry **)((u8 *)mgr + 0x144))[i].id) {
-            sub_0200AEB0((*(AnimResEntry **)((u8 *)mgr + 0x144))[i].res);
+            SpriteTransfer_DeleteCharTransferTask((*(AnimResEntry **)((u8 *)mgr + 0x144))[i].res);
         }
     }
     for (i = 0; i < *((u8 *)mgr + 1); i++) {
         if (*(s8 *)((u8 *)mgr + 5) != (*(AnimResEntry **)((u8 *)mgr + 0x148))[i].id) {
-            sub_0200B0A8((*(AnimResEntry **)((u8 *)mgr + 0x148))[i].res);
+            SpriteTransfer_DeletePlttTransferTask((*(AnimResEntry **)((u8 *)mgr + 0x148))[i].res);
         }
     }
     for (i = 0; i < *((u8 *)mgr + 2); i++) {
@@ -1244,7 +1244,7 @@ WIP_LOCAL BOOL ov02_022489F0(void *mgr, int a1) {
     int count = *(u8 *)mgr;
     for (i = 0; i < count; i++) {
         if (a1 == (*(AnimResEntry **)((u8 *)mgr + 0x144))[i].id) {
-            return sub_0200ADA4((*(AnimResEntry **)((u8 *)mgr + 0x144))[i].res);
+            return SpriteTransfer_CreateCharTransferTask_AllocAtEnd((*(AnimResEntry **)((u8 *)mgr + 0x144))[i].res);
         }
     }
     GF_AssertFail();
@@ -1330,7 +1330,7 @@ WIP_LOCAL BOOL ov02_02248AC8(void *mgr, int a1) {
     int count = *((u8 *)mgr + 1);
     for (i = 0; i < count; i++) {
         if (a1 == (*(AnimResEntry **)((u8 *)mgr + 0x148))[i].id) {
-            return sub_0200B00C((*(AnimResEntry **)((u8 *)mgr + 0x148))[i].res);
+            return SpriteTransfer_CreatePlttTransferTask((*(AnimResEntry **)((u8 *)mgr + 0x148))[i].res);
         }
     }
     GF_AssertFail();
@@ -2314,12 +2314,12 @@ WIP_LOCAL void ov02_02249D5C(SysTask *task, void *work) {
     if (*(int *)((u8 *)work + 0x210) == 0) {
         for (i = 0; i < 4; i++) {
             if (((SpriteResource **)work)[0x6b + i] != NULL) {
-                sub_0200ADA4(((SpriteResource **)work)[0x6b + i]);
+                SpriteTransfer_CreateCharTransferTask_AllocAtEnd(((SpriteResource **)work)[0x6b + i]);
             }
         }
         for (i = 0; i < 3; i++) {
             if (((SpriteResource **)work)[0x6f + i] != NULL) {
-                sub_0200B00C(((SpriteResource **)work)[0x6f + i]);
+                SpriteTransfer_CreatePlttTransferTask(((SpriteResource **)work)[0x6f + i]);
             }
         }
         if (*(void **)((u8 *)work + 0x218) != NULL) {
@@ -2362,7 +2362,7 @@ WIP_LOCAL void ov02_02249DD8(SysTask *task, void *work) {
 WIP_LOCAL void ov02_02249E58(SysTask *task, void *work) {
     SpriteResource *res = SpriteResourceCollection_Find(*(GF_2DGfxResMan **)((u8 *)work + 0x19c), 0);
     if (*(int *)((u8 *)work + 0x210) == 0) {
-        sub_0200ADA4(res);
+        SpriteTransfer_CreateCharTransferTask_AllocAtEnd(res);
         SysTask_CreateOnVWaitQueue(ov02_02249E90, work, 0x80);
         *(int *)((u8 *)work + 0x210) = *(int *)((u8 *)work + 0x210) + 1;
     }
@@ -2478,12 +2478,12 @@ WIP_LOCAL void ov02_0224A288(void *work) {
     int i;
     for (i = 0; i < 4; i++) {
         if (((SpriteResource **)work)[0x6b + i] != NULL) {
-            sub_0200AEB0(((SpriteResource **)work)[0x6b + i]);
+            SpriteTransfer_DeleteCharTransferTask(((SpriteResource **)work)[0x6b + i]);
         }
     }
     for (i = 0; i < 3; i++) {
         if (((SpriteResource **)work)[0x6f + i] != NULL) {
-            sub_0200B0A8(((SpriteResource **)work)[0x6f + i]);
+            SpriteTransfer_DeletePlttTransferTask(((SpriteResource **)work)[0x6f + i]);
         }
     }
     for (i = 0; i < 4; i++) {
@@ -2722,7 +2722,7 @@ WIP_LOCAL SpriteResource *ov02_0224A810(void *mgr, NARC *narc) {
 }
 
 WIP_LOCAL void ov02_0224A834(void *mgr, void *src) {
-    u32 location = NNS_G2dGetImageLocation(sub_0200AF00(SpriteResourceCollection_Find(*(GF_2DGfxResMan **)((u8 *)mgr + 0x19c), 3)), NNS_G2D_VRAM_TYPE_2DMAIN);
+    u32 location = NNS_G2dGetImageLocation(SpriteTransfer_GetCharProxy(SpriteResourceCollection_Find(*(GF_2DGfxResMan **)((u8 *)mgr + 0x19c), 3)), NNS_G2D_VRAM_TYPE_2DMAIN);
     DC_FlushRange(src, 0xC80);
     GX_LoadOBJ(src, location, 0xC80);
 }
@@ -2732,7 +2732,7 @@ WIP_LOCAL SpriteResource *ov02_0224A868(void *mgr, NARC *narc) {
 }
 
 WIP_LOCAL void ov02_0224A88C(void *mgr, void *dst) {
-    NNSG2dImageProxy *proxy = sub_0200AF00(SpriteResourceCollection_Find(*(GF_2DGfxResMan **)((u8 *)mgr + 0x19c), 3));
+    NNSG2dImageProxy *proxy = SpriteTransfer_GetCharProxy(SpriteResourceCollection_Find(*(GF_2DGfxResMan **)((u8 *)mgr + 0x19c), 3));
     u32 location = NNS_G2dGetImagePaletteLocation(SpriteTransfer_GetPaletteProxy(SpriteResourceCollection_Find(*(GF_2DGfxResMan **)((u8 *)mgr + 0x1a0), 3), proxy), NNS_G2D_VRAM_TYPE_2DMAIN);
     DC_FlushRange(dst, 0x20);
     GX_LoadOBJPltt(dst, location, 0x20);
@@ -2743,7 +2743,7 @@ WIP_LOCAL void ov02_0224A8D4(void *work) {
 
     {
         SpriteResource *res = SpriteResourceCollection_Find(*(GF_2DGfxResMan **)((u8 *)work + 0x19c), 3);
-        sub_0200AEB0(res);
+        SpriteTransfer_DeleteCharTransferTask(res);
         DestroySingle2DGfxResObj(*(GF_2DGfxResMan **)((u8 *)work + 0x19c), res);
         for (i = 0; i < 4; i++) {
             if (((SpriteResource **)work)[0x6b + i] == res) {
@@ -2757,7 +2757,7 @@ WIP_LOCAL void ov02_0224A8D4(void *work) {
     }
     {
         SpriteResource *res = SpriteResourceCollection_Find(*(GF_2DGfxResMan **)((u8 *)work + 0x1a0), 3);
-        sub_0200B0A8(res);
+        SpriteTransfer_DeletePlttTransferTask(res);
         DestroySingle2DGfxResObj(*(GF_2DGfxResMan **)((u8 *)work + 0x1a0), res);
         for (i = 0; i < 3; i++) {
             if (((SpriteResource **)work)[0x6f + i] == res) {
