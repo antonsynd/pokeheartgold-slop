@@ -5,9 +5,9 @@
 #include "field_warp_tasks.h"
 #include "heap.h"
 #include "launch_application.h"
+#include "screen_fade.h"
 #include "sound.h"
 #include "task.h"
-#include "unk_0200FA24.h"
 #include "unk_02055244.h"
 #include "unk_02055418.h"
 
@@ -98,7 +98,7 @@ static BOOL sub_02097AA0(TaskManager *taskManager) {
     UnkStruct_020979A8 *work = TaskManager_GetEnvironment(taskManager);
     switch (work->unk0) {
     case 0:
-        BeginNormalPaletteFade(0, 0, 0, 0, 6, 1, HEAP_ID_FIELD2);
+        BeginNormalPaletteFade(FADE_BOTH_SCREENS, FADE_TYPE_BRIGHTNESS_OUT, FADE_TYPE_BRIGHTNESS_OUT, 0, 6, 1, HEAP_ID_FIELD2);
         GF_SndStartFadeOutBGM(0, 6);
         work->unk0 = 1;
         break;

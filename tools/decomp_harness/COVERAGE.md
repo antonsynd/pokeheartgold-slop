@@ -1,15 +1,15 @@
 # Decomp Coverage Ledger
 
-*Generated 2026-07-30T17:59:33Z by `coverage_ledger.py` — do not hand-edit; regenerate after each decomp.*
+*Generated 2026-08-07T20:52:18Z by `coverage_ledger.py` — do not hand-edit; regenerate after each decomp.*
 
-Tracked functions (files with retained asm): **19494** — matched 1711, pending 16811, plus 20 matched-but-blocked inside failed files.
+Tracked functions (files with retained asm): **19378** — matched 1684, pending 16773, plus 20 matched-but-blocked inside failed files.
 
 | status | files | functions | insn lines | ~text bytes |
 |---|---|---|---|---|
-| matched | 99 | 1711 | 47170 | 104672 |
-| blocked | 53 | 972 | 30927 | 67968 |
-| pending | 169 | 16811 | 828863 | 1856928 |
-| upstream | 397 | 0 | 0 | 0 |
+| matched | 97 | 1684 | 46621 | 103460 |
+| blocked | 52 | 921 | 29971 | 65922 |
+| pending | 168 | 16773 | 827438 | 1853516 |
+| upstream | 401 | 0 | 0 | 0 |
 
 ## Blockers (value-ordered: fix what gates the most)
 
@@ -21,13 +21,12 @@ Tracked functions (files with retained asm): **19494** — matched 1711, pending
 | ipa-cse-literal-pool | 1 | 0 | MWCC -ipa file caches repeated literal-pool addresses/large offsets in callee-saved registers across calls where retail reloads them (or vice versa). A codegen-shape problem, not a header problem — split from ipa-shared-headers 2026-07-01, where this file's ubiquitous exports (BeginNormalPaletteFade family, imported by ~84 pending .inc files) badly inflated the gate count. |
 | objdiff-false-positives | 0 | 0 | RESOLVED. objdiff.py had a critical bug: the byte extraction regex did not match MWCC's ARM Thumb objdump format (packed hex like 'b418' vs expected space-separated 'b4 18'). It extracted 0 bytes for every function, so 0==0 always reported MATCH. 11 decomps accepted via objdiff were not actually byte-matching. Fixed; all 11 non-matching decomps reverted to asm. 2 decomps that truly match (unk_0202DB34, battle_arcade_game_board_data) kept. |
 
-## Blocked files (53)
+## Blocked files (52)
 
 | file | functions | insn lines | data-only | notes |
 |---|---|---|---|---|
 | asm/unk_02014DA0.s | 63 | 1189 |  |  SPL particle-emitter display (63 funcs); 50/63 matched WIP; remaining 13 incl EBC(41), sub_02015550(+24), sub_02015460 h |
 | asm/overlay_01_021F1348.s | 61 | 831 |  |  Camera/3D-effect cluster HEAD (GF3dGfxRawResMan resource manager). 61 funcs, 2 manager struct families. Drafted via 3 pa |
-| asm/overlay_01_02204004.s | 51 | 956 |  |   |
 | asm/overlay_02_02245B80.s | 41 | 1635 |  |   |
 | asm/unk_02015DD8.s | 40 | 679 |  |  Tractable but large (40 fns NNS G2D sprite manager + GE-register renderer). Fully decoded in attempts_log (struct layout |
 | asm/unk_02031B0C.s | 39 | 1300 |  |  ApricornBox save module (39 funcs); 16/39 matched WIP. KEY: solved the non-self-contained-header include-order issue (cl |
@@ -79,7 +78,7 @@ Tracked functions (files with retained asm): **19494** — matched 1711, pending
 | asm/middleware.s | 0 | 0 | yes |  Data-only: 7 NUL-terminated SDK middleware version strings in a custom .version section (single ordered section, each .b |
 | asm/overlay_12_battle_command.s | 0 | 0 | yes |   |
 
-## Matched files (asm retained) (99)
+## Matched files (asm retained) (97)
 
 | file | functions | insn lines | data-only | notes |
 |---|---|---|---|---|
@@ -114,11 +113,9 @@ Tracked functions (files with retained asm): **19494** — matched 1711, pending
 | asm/overlay_01_021FB04C.s | 16 | 352 |  | harness |
 | asm/overlay_01_021FE200.s | 16 | 391 |  | harness |
 | asm/unk_0205BFF0.s | 15 | 254 |  | harness |
-| asm/overlay_01_021EA8E0.s | 14 | 316 |  | harness |
 | asm/overlay_58.s | 14 | 470 |  | harness |
 | asm/frontier_system.s | 14 | 328 |  | harness |
 | asm/unk_02078834.s | 13 | 596 |  | retained_asm |
-| asm/overlay_01_021F3D38.s | 13 | 233 |  | harness |
 | asm/overlay_01_021FC4C4.s | 13 | 178 |  | harness |
 | asm/overlay_01_021FE590.s | 13 | 211 |  | harness |
 | asm/overlay_01_02203A18.s | 13 | 450 |  | retained_asm |
@@ -183,7 +180,7 @@ Tracked functions (files with retained asm): **19494** — matched 1711, pending
 | asm/overlay_01_data_02208BFC.s | 0 | 0 | yes | retained_asm |
 | asm/battle_arcade_game_board_data.s | 0 | 0 | yes | harness |
 
-## Pending files (169)
+## Pending files (168)
 
 | file | functions | insn lines | data-only | notes |
 |---|---|---|---|---|
@@ -307,7 +304,6 @@ Tracked functions (files with retained asm): **19494** — matched 1711, pending
 | asm/overlay_83_02246E08.s | 39 | 1339 |  |  |
 | asm/overlay_97.s | 39 | 2560 |  |  |
 | asm/overlay_120.s | 39 | 1994 |  |  |
-| asm/overlay_01_021E5900.s | 38 | 1425 |  |  |
 | asm/overlay_14_021EE26C.s | 38 | 1321 |  |  |
 | asm/overlay_18_021F8AB8.s | 38 | 1357 |  |  |
 | asm/overlay_41_0224A5A4.s | 38 | 1417 |  |  |

@@ -2,6 +2,8 @@
 
 #include "global.h"
 
+#include "field/overlay_01_021FD1B8.h"
+
 #include "map_object.h"
 
 typedef struct {
@@ -53,15 +55,6 @@ typedef struct {
     UnkOv01_021FD1B8_Cb2 unk10;
 } UnkOv01_021FD1B8_Template;
 
-extern void *ov01_021F1430(void *a0, int a1, int a2, int a3);
-extern void ov01_021F1448(void *a0);
-extern FieldSystem *ov01_021F146C(LocalMapObject *mapObject);
-extern UnkOv01_021FD1B8 *ov01_021F1450(FieldSystem *fieldSystem, int a1);
-extern void ov01_021F1620(FieldSystem *fieldSystem, const UnkOv01_021FD1B8_Template *a1, VecFx32 *a2, int a3, UnkOv01_021FD1B8_Data *a4, int a5);
-extern void ov01_021F1640(void *a0);
-extern void ov01_021F19F4(void *a0, UnkOv01_021FD1B8_sub *a1, int a2, int a3, int a4);
-
-extern void *sub_02068D98(void *a0);
 extern void sub_02068DA8(void *a0, VecFx32 *a1);
 extern void sub_02068DB8(void *a0, VecFx32 *a1);
 extern void sub_02069784(UnkOv01_021FD1B8_sub *a0);
@@ -100,7 +93,7 @@ static const UnkOv01_021FD1B8_Entry ov01_02208E30[] = {
 };
 
 void *ov01_021FD1B8(void *a0) {
-    UnkOv01_021FD1B8 *mgr = ov01_021F1430(a0, sizeof(UnkOv01_021FD1B8), 0, 0);
+    UnkOv01_021FD1B8 *mgr = (UnkOv01_021FD1B8 *)ov01_021F1430(a0, sizeof(UnkOv01_021FD1B8), 0, 0);
     mgr->unk0 = a0;
     return mgr;
 }
@@ -116,7 +109,7 @@ void ov01_021FD1CC(void *a0) {
 
 static void ov01_021FD1E8(UnkOv01_021FD1B8_Element *element, u32 id, int a2, FieldSystem *fieldSystem) {
     element->id = id;
-    ov01_021F19F4(fieldSystem, &element->sub, 0, a2, 0);
+    ov01_021F19F4(fieldSystem, (UnkOv01_021FFECC_sub *)&element->sub, 0, a2, 0);
     sub_02069978(&element->renderObj, &element->sub);
 }
 
@@ -150,12 +143,12 @@ static UnkOv01_021FD1B8_Element *ov01_021FD244(UnkOv01_021FD1B8 *mgr, u32 id) {
 }
 
 static void ov01_021FD258(FieldSystem *fieldSystem, int count) {
-    UnkOv01_021FD1B8 *mgr = ov01_021F1450(fieldSystem, 0x14);
+    UnkOv01_021FD1B8 *mgr = (UnkOv01_021FD1B8 *)ov01_021F1450(fieldSystem, 0x14);
     UnkOv01_021FD1B8_Element *element;
     int i;
     GF_ASSERT(count != 0);
     mgr->count = count;
-    mgr->array = ov01_021F1430(fieldSystem, sizeof(UnkOv01_021FD1B8_Element) * count, 0, 0);
+    mgr->array = (UnkOv01_021FD1B8_Element *)ov01_021F1430(fieldSystem, sizeof(UnkOv01_021FD1B8_Element) * count, 0, 0);
     element = mgr->array;
     i = count;
     do {
@@ -165,7 +158,7 @@ static void ov01_021FD258(FieldSystem *fieldSystem, int count) {
 }
 
 static void ov01_021FD290(FieldSystem *fieldSystem, u32 id, int a2) {
-    UnkOv01_021FD1B8 *mgr = ov01_021F1450(fieldSystem, 0x14);
+    UnkOv01_021FD1B8 *mgr = (UnkOv01_021FD1B8 *)ov01_021F1450(fieldSystem, 0x14);
     if (ov01_021FD244(mgr, id) == NULL) {
         UnkOv01_021FD1B8_Element *element = ov01_021FD244(mgr, 0xFFFF);
         if (element == NULL) {
@@ -177,7 +170,7 @@ static void ov01_021FD290(FieldSystem *fieldSystem, u32 id, int a2) {
 }
 
 static NNSG3dRenderObj *ov01_021FD2CC(FieldSystem *fieldSystem, u32 id) {
-    UnkOv01_021FD1B8 *mgr = ov01_021F1450(fieldSystem, 0x14);
+    UnkOv01_021FD1B8 *mgr = (UnkOv01_021FD1B8 *)ov01_021F1450(fieldSystem, 0x14);
     UnkOv01_021FD1B8_Element *element = ov01_021FD244(mgr, id);
     GF_ASSERT(element != NULL);
     return &element->renderObj;
@@ -189,7 +182,7 @@ void ov01_021FD2EC(LocalMapObject *mapObject, VecFx32 *a1) {
     data.unk0 = MapObject_GetSpriteID(mapObject);
     data.fieldSystem = fieldSystem;
     data.mapObject = mapObject;
-    ov01_021F1620(fieldSystem, &ov01_02208E1C, a1, 0, &data, MapObject_GetPriorityPlusValue(mapObject, 2));
+    ov01_021F1620(fieldSystem, (const UnkOv01_02209280 *)&ov01_02208E1C, a1, 0, (UnkOv01_021FFF5C *)&data, MapObject_GetPriorityPlusValue(mapObject, 2));
 }
 
 static BOOL ov01_021FD328(void *a0, UnkOv01_021FD1B8_Work *work) {
@@ -213,7 +206,7 @@ static void ov01_021FD37C(void *a0, UnkOv01_021FD1B8_Work *work) {
     VecFx32 facing;
     LocalMapObject *mapObject = work->data.mapObject;
     if (sub_0205F0A8(mapObject, work->unk4, work->unk8) == 0) {
-        ov01_021F1640(a0);
+        ov01_021F1640((int)a0);
         return;
     }
     MapObject_CopyPositionVector(mapObject, &position);
@@ -230,12 +223,12 @@ static void ov01_021FD3E0(void *a0, UnkOv01_021FD1B8_Work *work) {
     sub_020699BC(work->unk18, &position);
 }
 
-void ov01_021FD3F8(FieldSystem *fieldSystem) {
+void FieldEffect_InitRenderObject(FieldEffectManager *fieldEffectManager) {
     const UnkOv01_021FD1B8_Entry *entry = ov01_02208E30;
     u32 i = 12;
-    ov01_021FD258(fieldSystem, i);
+    ov01_021FD258((FieldSystem *)fieldEffectManager, i);
     do {
-        ov01_021FD290(fieldSystem, entry->id, entry->unk4);
+        ov01_021FD290((FieldSystem *)fieldEffectManager, entry->id, entry->unk4);
         entry++;
     } while (--i);
 }

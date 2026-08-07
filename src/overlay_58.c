@@ -14,8 +14,8 @@
 #include "party_menu.h"
 #include "player_data.h"
 #include "pokemon_mood.h"
+#include "screen_fade.h"
 #include "system.h"
-#include "unk_0200FA24.h"
 
 FS_EXTERN_OVERLAY(OVY_59);
 
@@ -474,8 +474,8 @@ static void ov58_02237CCC(void) {
     GfGfx_DisableEngineBPlanes();
     *(u32 *)0x04000000 &= 0xFFFFE0FF;
     *(u32 *)0x04001000 &= 0xFFFFE0FF;
-    sub_0200FBF4(0, 0);
-    sub_0200FBF4(1, 0);
-    sub_0200FBDC(0);
-    sub_0200FBDC(1);
+    sub_0200FBF4(PM_LCD_TOP, RGB_BLACK);
+    sub_0200FBF4(PM_LCD_BOTTOM, RGB_BLACK);
+    ResetVisibleHardwareWindows(PM_LCD_TOP);
+    ResetVisibleHardwareWindows(PM_LCD_BOTTOM);
 }

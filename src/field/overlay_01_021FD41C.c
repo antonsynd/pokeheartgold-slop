@@ -53,19 +53,10 @@ typedef struct {
     UnkOv01_021FD41C_Cb2 unk10;
 } UnkOv01_021FD41C_Template;
 
-extern UnkOv01_021FD41C_Work *ov01_021F1430(void *a0, int a1, int a2, int a3);
-extern void ov01_021F1448(void *a0);
-extern FieldSystem *ov01_021F1468(LocalMapObject *a0);
-extern FieldSystem *ov01_021F146C(LocalMapObject *mapObject);
-extern void *ov01_021F1620(FieldSystem *fieldSystem, const UnkOv01_021FD41C_Template *a1, VecFx32 *a2, int a3, UnkOv01_021FD41C_Data *a4, int a5);
-extern void ov01_021F1640(int a0);
-extern void ov01_021F19F4(void *a0, UnkOv01_021FD41C_sub *a1, int a2, int a3, int a4);
-extern UnkOv01_021FD41C_Work *ov01_021F1450(FieldSystem *fieldSystem, int a1);
 extern BOOL ov01_021F8F88(LocalMapObject *a0);
 extern void ov01_021F8FA0(LocalMapObject *a0, VecFx32 *a1);
 
 extern void NNS_G3dMdlSetMdlAlphaAll(NNSG3dResMdl *pMdl, int alpha);
-extern UnkOv01_021FD41C_Data *sub_02068D98(void *a0);
 extern u32 sub_02068D90(void *a0);
 extern void sub_02068DA8(void *a0, VecFx32 *a1);
 extern void sub_02068DB8(void *a0, VecFx32 *a1);
@@ -127,7 +118,7 @@ static const struct {
 };
 
 UnkOv01_021FD41C_Work *ov01_021FD41C(LocalMapObject *mapObject) {
-    UnkOv01_021FD41C_Work *work = ov01_021F1430(mapObject, sizeof(UnkOv01_021FD41C_Work), 0, 0);
+    UnkOv01_021FD41C_Work *work = (UnkOv01_021FD41C_Work *)ov01_021F1430(mapObject, sizeof(UnkOv01_021FD41C_Work), 0, 0);
     work->unk20 = mapObject;
     ov01_021FD5CC(work);
     ov01_021FD458(work);
@@ -141,7 +132,7 @@ void ov01_021FD440(UnkOv01_021FD41C_Work *work) {
 }
 
 static void ov01_021FD458(UnkOv01_021FD41C_Work *work) {
-    FieldSystem *fieldSystem = ov01_021F1468(work->unk20);
+    FieldSystem *fieldSystem = (FieldSystem *)ov01_021F1468((FieldSystem *)work->unk20);
     u32 priority = MapObjectManager_GetPriority(fieldSystem->mapObjectManager) - 1;
     work->unk24 = SysTask_CreateOnMainQueue(ov01_021FD4F4, work, priority);
 }
@@ -217,7 +208,7 @@ static void ov01_021FD4F4(SysTask *task, void *data) {
 static void ov01_021FD5CC(UnkOv01_021FD41C_Work *work) {
     int i;
     for (i = 0; i < 4; i++) {
-        ov01_021F19F4(work->unk20, &work->unk28[i], 0, sRodata.arr_e90[i], 0);
+        ov01_021F19F4(work->unk20, (UnkOv01_021FFECC_sub *)&work->unk28[i], 0, sRodata.arr_e90[i], 0);
         sub_02069978(&work->unk78[i], &work->unk28[i]);
     }
 }
@@ -242,7 +233,7 @@ void ov01_021FD640(LocalMapObject *mapObject) {
     data.unk4 = ov01_021F1450(fieldSystem, 0);
     data.unk8 = mapObject;
     MapObject_CopyPositionVector(mapObject, &position);
-    ov01_021F1620(fieldSystem, &sRodata.tmpl_ea0, &position, 0, &data, MapObject_GetPriorityPlusValue(mapObject, 2));
+    ov01_021F1620(fieldSystem, (const UnkOv01_02209280 *)&sRodata.tmpl_ea0, &position, 0, (UnkOv01_021FFF5C *)&data, MapObject_GetPriorityPlusValue(mapObject, 2));
 }
 
 void ov01_021FD684(LocalMapObject *mapObject) {
@@ -253,11 +244,11 @@ void ov01_021FD684(LocalMapObject *mapObject) {
     data.unk4 = ov01_021F1450(fieldSystem, 0);
     data.unk8 = mapObject;
     MapObject_CopyPositionVector(mapObject, &position);
-    ov01_021F1620(fieldSystem, &sRodata.tmpl_ec8, &position, 3, &data, MapObject_GetPriorityPlusValue(mapObject, 2));
+    ov01_021F1620(fieldSystem, (const UnkOv01_02209280 *)&sRodata.tmpl_ec8, &position, 3, (UnkOv01_021FFF5C *)&data, MapObject_GetPriorityPlusValue(mapObject, 2));
 }
 
 static BOOL ov01_021FD6C8(void *param0, UnkOv01_021FD41C_InstanceWork *work) {
-    UnkOv01_021FD41C_Data *data = sub_02068D98(param0);
+    UnkOv01_021FD41C_Data *data = (UnkOv01_021FD41C_Data *)sub_02068D98(param0);
     *(UnkOv01_021FD41C_Data *)&work->unk14 = *data;
     work->unk10 = sub_02068D90(param0);
     work->unk0 = MapObject_GetSpriteID(work->unk1c);
@@ -280,7 +271,7 @@ static void ov01_021FD718(void *param0, UnkOv01_021FD41C_InstanceWork *work) {
         ov01_021F1640((int)param0);
         return;
     }
-    if (sub_0205F5E8(mapObject, (MapObjectManagerFlagBits)8) != 0) {
+    if (sub_0205F5E8(mapObject, (MapObjectFlagBits)8) != 0) {
         ov01_021F1640((int)param0);
         return;
     }
@@ -310,7 +301,7 @@ static void ov01_021FD7D4(void *param0, UnkOv01_021FD41C_InstanceWork *work) {
 }
 
 static BOOL ov01_021FD784(void *param0, UnkOv01_021FD41C_InstanceWork *work) {
-    UnkOv01_021FD41C_Data *data = sub_02068D98(param0);
+    UnkOv01_021FD41C_Data *data = (UnkOv01_021FD41C_Data *)sub_02068D98(param0);
     *(UnkOv01_021FD41C_Data *)&work->unk14 = *data;
     work->unk10 = sub_02068D90(param0);
     work->unk0 = MapObject_GetSpriteID(work->unk1c);
@@ -364,7 +355,7 @@ void ov01_021FD8E8(LocalMapObject *mapObject, int a1) {
     data.unk4 = ov01_021F1450(fieldSystem, 0);
     data.unk8 = mapObject;
     MapObject_CopyPositionVector(mapObject, &position);
-    ov01_021F1620(fieldSystem, &sRodata.tmpl_edc, &position, a1, &data, MapObject_GetPriorityPlusValue(mapObject, 2));
+    ov01_021F1620(fieldSystem, (const UnkOv01_02209280 *)&sRodata.tmpl_edc, &position, a1, (UnkOv01_021FFF5C *)&data, MapObject_GetPriorityPlusValue(mapObject, 2));
 }
 
 static void ov01_021FD92C(void *param0, UnkOv01_021FD41C_InstanceWork *work) {

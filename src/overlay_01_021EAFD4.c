@@ -28,16 +28,16 @@ typedef struct {
 
 static char ov01_02209898[] = "data/fld_anime%d.bin";
 
-UnkStruct_ov01_021EAFD4 *ov01_021EAFD4(void);
-int ov01_021EB00C(UnkStruct_ov01_021EAFD4 *work, void *a1);
-void ov01_021EB114(UnkStruct_ov01_021EAFD4 *work);
-void ov01_021EB1BC(UnkStruct_ov01_021EAFD4 *work);
-void ov01_021EB1DC(void *a0);
+UnkStruct_ov01_021EAFD4 *FieldTextureManager_Init(void);
+int FieldTextureManager_LoadTexture(UnkStruct_ov01_021EAFD4 *work, void *a1);
+void FieldTextureManager_Free(UnkStruct_ov01_021EAFD4 *work);
+void FieldTextureManager_FreeAllSlots(UnkStruct_ov01_021EAFD4 *work);
+void FieldTextureManager_Destroy(void *a0);
 
 static int ov01_021EB058(UnkStruct_ov01_021EAFD4 *work, void *a1, int memberIdx, NARC *narc);
 static void ov01_021EB18C(UnkStruct_ov01_021EAFD4 *work, int i);
 
-UnkStruct_ov01_021EAFD4 *ov01_021EAFD4(void) {
+UnkStruct_ov01_021EAFD4 *FieldTextureManager_Init(void) {
     UnkStruct_ov01_021EAFD4 *work = Heap_Alloc(HEAP_ID_FIELD1, sizeof(UnkStruct_ov01_021EAFD4));
     GF_ASSERT(work != NULL);
     {
@@ -55,7 +55,7 @@ UnkStruct_ov01_021EAFD4 *ov01_021EAFD4(void) {
     return work;
 }
 
-int ov01_021EB00C(UnkStruct_ov01_021EAFD4 *work, void *a1) {
+int FieldTextureManager_LoadTexture(UnkStruct_ov01_021EAFD4 *work, void *a1) {
     int count = 0;
     NARC *narc = NARC_New(NARC_a_1_3_9, HEAP_ID_FIELD1);
     u32 i;
@@ -95,7 +95,7 @@ static int ov01_021EB058(UnkStruct_ov01_021EAFD4 *work, void *a1, int memberIdx,
     return slot;
 }
 
-void ov01_021EB114(UnkStruct_ov01_021EAFD4 *work) {
+void FieldTextureManager_Free(UnkStruct_ov01_021EAFD4 *work) {
     int i;
     if (work == NULL) {
         return;
@@ -138,7 +138,7 @@ static void ov01_021EB18C(UnkStruct_ov01_021EAFD4 *work, int i) {
     work->entries[i].unk16 = 0;
 }
 
-void ov01_021EB1BC(UnkStruct_ov01_021EAFD4 *work) {
+void FieldTextureManager_FreeAllSlots(UnkStruct_ov01_021EAFD4 *work) {
     int i;
     if (work == NULL) {
         return;
@@ -149,7 +149,7 @@ void ov01_021EB1BC(UnkStruct_ov01_021EAFD4 *work) {
     Heap_Free(work->unk0);
 }
 
-void ov01_021EB1DC(void *a0) {
+void FieldTextureManager_Destroy(void *a0) {
     if (a0 != NULL) {
         Heap_Free(a0);
     }

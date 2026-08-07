@@ -66,13 +66,7 @@ typedef struct {
     void (*unk10)(void *, UnkOv01_02203A18_Work *);
 } UnkOv01_02203A18_Template;
 
-extern UnkOv01_02203A18 *ov01_021F1430(void *a0, int a1, int a2, int a3);
-extern void ov01_021F1448(void *a0);
-extern UnkOv01_02203A18 *ov01_021F1450(FieldSystem *fieldSystem, int a1);
-extern FieldSystem *ov01_021F146C(LocalMapObject *mapObject);
 extern void *ov01_021F14B4(FieldSystem *a0, int a1, int a2);
-extern void *ov01_021F1620(FieldSystem *fieldSystem, const UnkOv01_02203A18_Template *a1, VecFx32 *a2, int a3, UnkOv01_02203A18_Data *a4, int a5);
-extern void ov01_021F1640(void *a0);
 extern void *ov01_021F1740(FieldSystem *fieldSystem, int a1, VecFx32 *a2);
 extern void ov01_021F1758(void *a0, int a1, int a2, int a3, int a4, int a5, const void *a6);
 extern void ov01_021F18C8(void *a0, int a1);
@@ -84,10 +78,8 @@ extern void ov01_021F1930(void *a0, int a1, int a2, int a3);
 extern void ov01_021F1970(void *a0, int a1);
 extern void *ov01_021F1AD4(FieldSystem *a0, int a1);
 
-extern UnkOv01_02203A18_Data *sub_02068D98(void *a0);
 extern u32 sub_02068D90(void *a0);
 extern void sub_02068DA8(void *a0, VecFx32 *a1);
-extern void sub_02068DB8(void *a0, VecFx32 *a1);
 
 extern BOOL sub_02023DA4(Sprite *sprite);
 extern void sub_02023E50(Sprite *sprite, VecFx32 *a1);
@@ -141,7 +133,7 @@ static const u32 ov01_02209544[][2] = {
 };
 
 UnkOv01_02203A18 *ov01_02203A18(void *a0) {
-    UnkOv01_02203A18 *manager = ov01_021F1430(a0, sizeof(UnkOv01_02203A18), 0, 0);
+    UnkOv01_02203A18 *manager = (UnkOv01_02203A18 *)ov01_021F1430(a0, sizeof(UnkOv01_02203A18), 0, 0);
     manager->unk0 = a0;
     manager->unk4 = 0;
     ov01_02203B28(manager);
@@ -161,7 +153,7 @@ static void *ov01_02203A48(LocalMapObject *mapObject, int a1) {
     UnkOv01_02203A18 *manager;
     int priority;
     data.unk0 = fieldSystem;
-    manager = ov01_021F1450(fieldSystem, 0x12);
+    manager = (UnkOv01_02203A18 *)ov01_021F1450(fieldSystem, 0x12);
     data.unk4 = manager;
     data.unk8 = mapObject;
     if (manager->unk4 != 0) {
@@ -173,7 +165,9 @@ static void *ov01_02203A48(LocalMapObject *mapObject, int a1) {
     facing.y = 0;
     VEC_Add(&pos, &facing, &pos);
     priority = MapObject_GetPriority(mapObject) + 1;
-    return ov01_021F1620(fieldSystem, &ov01_02209518, &pos, a1, &data, priority);
+    // ov01_021F1620 is void per header; the caller discards this function's
+    // result, so omitting `return` keeps the trailing bl's r0 unconsumed as retail does.
+    ov01_021F1620(fieldSystem, (const UnkOv01_02209280 *)&ov01_02209518, &pos, a1, (UnkOv01_021FFF5C *)&data, priority);
 }
 
 void ov01_02203AB4(FieldSystem *fieldSystem, LocalMapObject *a1, int a2) {
@@ -192,7 +186,7 @@ static BOOL ov01_02203AD8(TaskManager *taskManager) {
         (*state)++;
         break;
     case 1:
-        if (ov01_021F1450(ov01_021F146C(env->unk4), 0x12)->unk4 == 0) {
+        if (((UnkOv01_02203A18 *)ov01_021F1450(ov01_021F146C(env->unk4), 0x12))->unk4 == 0) {
             Heap_Free(env);
             return TRUE;
         }
@@ -226,7 +220,7 @@ static BOOL ov01_02203BB4(void *param0, UnkOv01_02203A18_Work *work) {
     void *node;
     u32 idx;
     u32 vramAddr;
-    work->unk30 = *sub_02068D98(param0);
+    work->unk30 = *(UnkOv01_02203A18_Data *)sub_02068D98(param0);
     work->unk8 = MapObject_GetID(work->unk30.unk8);
     work->unkC = MapObject_GetMapID(work->unk30.unk8);
     work->unk28 = 6 << 0xc;
@@ -300,7 +294,7 @@ static void ov01_02203CB8(void *param0, UnkOv01_02203A18_Work *work) {
         break;
     case 3:
         work->unk30.unk4->unk4 = 0;
-        ov01_021F1640(param0);
+        ov01_021F1640((int)param0);
         return;
     }
     sub_02068DA8(param0, &result);

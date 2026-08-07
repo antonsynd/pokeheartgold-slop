@@ -1,5 +1,7 @@
 #include "unk_020961D8.h"
 
+#include "field/fieldmap.h"
+
 #include "field_system.h"
 #include "heap.h"
 #include "launch_application.h"
@@ -8,7 +10,7 @@
 #include "message_format.h"
 #include "overlay_01.h"
 #include "save_misc_data.h"
-#include "unk_0200FA24.h"
+#include "screen_fade.h"
 
 typedef struct BattleGreetingEditWork {
     FieldSystem *fieldSystem;
@@ -65,7 +67,7 @@ static BOOL sub_02096260(TaskManager *taskman) {
         if (!sub_020505C8(work->fieldSystem)) {
             break;
         }
-        ov01_021E636C(1);
+        FieldMap_FadeScreen(FADE_TYPE_BRIGHTNESS_IN);
         work->state = 3;
         break;
     case 3:

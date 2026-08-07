@@ -7,7 +7,7 @@
 #include "render_window.h"
 #include "text.h"
 
-void sub_0205B4EC(enum GFPalLoadLocation location, int a1);
+void FieldMessage_LoadTextPalettes(int location, int a1);
 void sub_0205B514(BgConfig *bgConfig, Window *window, int a2);
 void sub_0205B564(Window *window, Options *options);
 void sub_0205B5A8(Window *window);
@@ -20,12 +20,12 @@ void sub_0205B6A0(Window *window, u32 a, u32 b);
 extern void sub_0200EC0C(BgConfig *bgConfig, u8 a1, u16 a2, u8 a3, u8 a4, u32 a5, enum HeapID heapID);
 extern void DrawFrameAndWindow3(Window *window, BOOL dont_copy_to_vram, u16 baseTile, u8 palette_num, u8 a4);
 
-void sub_0205B4EC(enum GFPalLoadLocation location, int a1) {
+void FieldMessage_LoadTextPalettes(int location, int a1) {
     if (a1 == 1) {
         ResetAllTextPrinters();
     }
-    LoadFontPal0(location, GF_PAL_SLOT_13_OFFSET, HEAP_ID_FIELD1);
-    LoadFontPal1(location, GF_PAL_SLOT_12_OFFSET, HEAP_ID_FIELD1);
+    LoadFontPal0((enum GFPalLoadLocation)location, GF_PAL_SLOT_13_OFFSET, HEAP_ID_FIELD1);
+    LoadFontPal1((enum GFPalLoadLocation)location, GF_PAL_SLOT_12_OFFSET, HEAP_ID_FIELD1);
 }
 
 void sub_0205B514(BgConfig *bgConfig, Window *window, int a2) {

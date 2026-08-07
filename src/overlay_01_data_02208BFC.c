@@ -56,7 +56,7 @@ extern void ov01_02203E64(void *);
 extern void *ov01_022051EC(void *);
 extern void ov01_02205208(void *);
 
-const u32 ov01_02208BFC[] = {
+const u32 defaultFieldEffectRenderers[] = {
     0x14,
     0x13,
     0x11,

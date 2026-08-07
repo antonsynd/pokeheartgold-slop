@@ -21,7 +21,7 @@ static BOOL ov01_021FB368(int px, int py, UnkStruct_Ov01_021FB368_sub *zone) {
     return FALSE;
 }
 
-UnkStruct_Ov01_021FB368 *ov01_021FB3A4(u32 count, enum HeapID heapId) {
+UnkStruct_Ov01_021FB368 *DynamicTerrainHeightManager_New(u32 count, enum HeapID heapId) {
     UnkStruct_Ov01_021FB368 *manager = Heap_Alloc(heapId, sizeof(UnkStruct_Ov01_021FB368));
     u8 i;
     manager->zones = Heap_Alloc(heapId, sizeof(UnkStruct_Ov01_021FB368_sub) * count);
@@ -41,7 +41,7 @@ void ov01_021FB3E4(int index, int x, int y, int width, int height, int value, Un
     manager->zones[index].active = 1;
 }
 
-void ov01_021FB418(UnkStruct_Ov01_021FB368 *manager) {
+void DynamicTerrainHeightManager_Free(UnkStruct_Ov01_021FB368 *manager) {
     Heap_Free(manager->zones);
     Heap_Free(manager);
 }

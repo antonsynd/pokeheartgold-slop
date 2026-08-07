@@ -18,10 +18,10 @@ typedef struct UnkStruct_Ov01_021FB4C0 {
     UnkStruct_Ov01_021FB4C0_sub slots[2]; // 0x04
 } UnkStruct_Ov01_021FB4C0;
 
-UnkStruct_Ov01_021FB4C0 *ov01_021FB4C0(enum HeapID heapId);
-void ov01_021FB4D4(UnkStruct_Ov01_021FB4C0 *manager);
-void ov01_021FB4F4(UnkStruct_Ov01_021FB4C0 *manager);
-void ov01_021FB514(UnkStruct_Ov01_021FB4C0 *manager);
+UnkStruct_Ov01_021FB4C0 *HBlankSystem_New(enum HeapID heapId);
+void HBlankSystem_Delete(UnkStruct_Ov01_021FB4C0 *manager);
+void HBlankSystem_Start(UnkStruct_Ov01_021FB4C0 *manager);
+void HBlankSystem_Stop(UnkStruct_Ov01_021FB4C0 *manager);
 UnkStruct_Ov01_021FB4C0_sub *ov01_021FB530(UnkStruct_Ov01_021FB4C0 *manager, UnkFuncPtr_Ov01_021FB4C0 callback, void *data);
 void ov01_021FB554(UnkStruct_Ov01_021FB4C0_sub *slot);
 

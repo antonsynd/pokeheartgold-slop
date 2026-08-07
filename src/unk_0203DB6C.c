@@ -1,11 +1,11 @@
 #include "global.h"
 
 #include "field_system.h"
-#include "fieldmap.h"
 #include "map_events.h"
 #include "map_object.h"
 #include "metatile_behavior.h"
 #include "player_avatar.h"
+#include "script_manager.h"
 #include "unk_02054648.h"
 
 void sub_0203DB6C(void);
@@ -15,11 +15,11 @@ static u32 _GetCoordsOfFacingTile(FieldSystem *fieldSystem, u32 *outX, u32 *outZ
 static BOOL sub_0203DBD4(PlayerAvatar *playerAvatar, LocalMapObject *obj);
 void FieldSystem_GetFacingObject(FieldSystem *fieldSystem, LocalMapObject **ret_p);
 BOOL sub_0203DC64(FieldSystem *fieldSystem, LocalMapObject **ret_p);
-u16 GetInteractedBackgroundEventScript(FieldSystem *fieldSystem, BG_EVENT *bgEvents, int num);
-static BOOL BgEventIsUncollectedHiddenItem(FieldSystem *fieldSystem, BG_EVENT *bgEvent);
-static BOOL BgEventDirectionIsCompatibleWithPlayerFacing(FieldSystem *fieldSystem, BG_EVENT *bgEvent);
-u16 sub_0203DDA4(FieldSystem *fieldSystem, BG_EVENT *events, int num);
-u16 sub_0203DE04(FieldSystem *fieldSystem, COORD_EVENT *coordEvents, int num);
+u16 GetInteractedBackgroundEventScript(FieldSystem *fieldSystem, BgEvent *bgEvents, int num);
+static BOOL BgEventIsUncollectedHiddenItem(FieldSystem *fieldSystem, BgEvent *bgEvent);
+static BOOL BgEventDirectionIsCompatibleWithPlayerFacing(FieldSystem *fieldSystem, BgEvent *bgEvent);
+u16 sub_0203DDA4(FieldSystem *fieldSystem, BgEvent *events, int num);
+u16 sub_0203DE04(FieldSystem *fieldSystem, CoordEvent *coordEvents, int num);
 
 void sub_0203DB6C(void) {
 }
@@ -98,7 +98,7 @@ BOOL sub_0203DC64(FieldSystem *fieldSystem, LocalMapObject **ret_p) {
 // emits for `bgEvents[i]` (field access) and `&bgEvents[i]` (passed to the
 // helpers): retail loads/increments the field pointer before the passed copy,
 // and sinks both inits past the loop guard. See attempts log.
-u16 GetInteractedBackgroundEventScript(FieldSystem *fieldSystem, BG_EVENT *bgEvents, int num) {
+u16 GetInteractedBackgroundEventScript(FieldSystem *fieldSystem, BgEvent *bgEvents, int num) {
     u32 x;
     u32 z;
     int i;
@@ -120,7 +120,7 @@ u16 GetInteractedBackgroundEventScript(FieldSystem *fieldSystem, BG_EVENT *bgEve
 }
 #else
 // clang-format off
-asm u16 GetInteractedBackgroundEventScript(FieldSystem *fieldSystem, BG_EVENT *bgEvents, int num) {
+asm u16 GetInteractedBackgroundEventScript(FieldSystem *fieldSystem, BgEvent *bgEvents, int num) {
     push {r3, r4, r5, r6, r7, lr}
     sub sp, #0x10
     str r1, [sp]
@@ -187,7 +187,7 @@ _0203DD04:
 // clang-format on
 #endif
 
-static BOOL BgEventIsUncollectedHiddenItem(FieldSystem *fieldSystem, BG_EVENT *bgEvent) {
+static BOOL BgEventIsUncollectedHiddenItem(FieldSystem *fieldSystem, BgEvent *bgEvent) {
     u8 ret;
     if (bgEvent->type != 2) {
         return FALSE;
@@ -200,7 +200,7 @@ static BOOL BgEventIsUncollectedHiddenItem(FieldSystem *fieldSystem, BG_EVENT *b
     return ret;
 }
 
-static BOOL BgEventDirectionIsCompatibleWithPlayerFacing(FieldSystem *fieldSystem, BG_EVENT *bgEvent) {
+static BOOL BgEventDirectionIsCompatibleWithPlayerFacing(FieldSystem *fieldSystem, BgEvent *bgEvent) {
     if (bgEvent->dir == 4) {
         return TRUE;
     }
@@ -229,7 +229,7 @@ static BOOL BgEventDirectionIsCompatibleWithPlayerFacing(FieldSystem *fieldSyste
     return FALSE;
 }
 
-u16 sub_0203DDA4(FieldSystem *fieldSystem, BG_EVENT *events, int num) {
+u16 sub_0203DDA4(FieldSystem *fieldSystem, BgEvent *events, int num) {
     u32 x;
     u32 z;
     int i;
@@ -245,7 +245,7 @@ u16 sub_0203DDA4(FieldSystem *fieldSystem, BG_EVENT *events, int num) {
     return 0xFFFF;
 }
 
-u16 sub_0203DE04(FieldSystem *fieldSystem, COORD_EVENT *coordEvents, int num) {
+u16 sub_0203DE04(FieldSystem *fieldSystem, CoordEvent *coordEvents, int num) {
     int playerX = PlayerAvatar_GetXCoord(fieldSystem->playerAvatar);
     int playerZ = PlayerAvatar_GetZCoord(fieldSystem->playerAvatar);
     int i;

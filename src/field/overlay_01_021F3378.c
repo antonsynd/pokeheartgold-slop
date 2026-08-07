@@ -6,8 +6,8 @@
 #include "map_object.h"
 #include "overlay_01.h"
 #include "player_avatar.h"
+#include "screen_fade.h"
 #include "sys_task.h"
-#include "unk_0200FA24.h"
 
 typedef struct {
     FieldSystem *fieldSystem;
@@ -61,7 +61,7 @@ static void ov01_021F33B8(SysTask *task, void *data) {
         sub_0205F9A0(mapObject, &position);
         work->counter++;
         if (work->counter == 0x14) {
-            BeginNormalPaletteFade(2, 0, 0, 0, 6, 1, HEAP_ID_FIELD1);
+            BeginNormalPaletteFade(FADE_SUB_THEN_MAIN, FADE_TYPE_BRIGHTNESS_OUT, FADE_TYPE_BRIGHTNESS_OUT, 0, 6, 1, HEAP_ID_FIELD1);
             return;
         }
         if (work->counter > 0x14) {
@@ -102,7 +102,7 @@ static void ov01_021F348C(SysTask *task, void *data) {
         sub_0205F9A0(mapObject, &position);
         work->counter++;
         if (work->counter == 2) {
-            BeginNormalPaletteFade(1, 1, 1, 0, 6, 1, HEAP_ID_FIELD1);
+            BeginNormalPaletteFade(FADE_MAIN_THEN_SUB, FADE_TYPE_BRIGHTNESS_IN, FADE_TYPE_BRIGHTNESS_IN, 0, 6, 1, HEAP_ID_FIELD1);
         }
         if (work->counter > 0x14) {
             work->state = 2;

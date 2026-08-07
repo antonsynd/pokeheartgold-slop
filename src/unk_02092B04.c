@@ -2,9 +2,12 @@
 
 #include "global.h"
 
+#include "field/fieldmap.h"
+
 #include "bag_view.h"
 #include "heap.h"
 #include "overlay_01.h"
+#include "screen_fade.h"
 
 typedef struct UnkStruct_02092B04_sub {
     u8 unk0[2];
@@ -55,7 +58,7 @@ static void sub_02092B7C(TaskManager *taskman) {
     FieldSystem *fieldSystem = TaskManager_GetFieldSystem(taskman);
     UnkStruct_02092B04 *env = TaskManager_GetEnvironment(taskman);
     if (sub_020505C8(fieldSystem)) {
-        ov01_021E636C(1);
+        FieldMap_FadeScreen(FADE_TYPE_BRIGHTNESS_IN);
         TaskManager_Jump(taskman, Task_Mart, env);
         env->unk272 = 0x1A;
     }

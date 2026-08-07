@@ -34,14 +34,7 @@ typedef struct {
     void (*unk10)(void *, UnkOv01_022051EC_Work *);
 } UnkOv01_022051EC_Template;
 
-extern UnkOv01_022051EC *ov01_021F1430(void *a0, int a1, int a2, int a3);
-extern void ov01_021F1448(void *a0);
-extern UnkOv01_022051EC *ov01_021F1450(FieldSystem *fieldSystem, int a1);
-extern void *ov01_021F1620(FieldSystem *fieldSystem, const UnkOv01_022051EC_Template *a1, VecFx32 *a2, int a3, UnkOv01_022051EC_Data *a4, int a5);
-
 extern UnkOv01_022051EC_Data *sub_02068D74(void *a0);
-extern UnkOv01_022051EC_Data *sub_02068D98(void *a0);
-extern void sub_02068DB8(void *a0, VecFx32 *a1);
 
 UnkOv01_022051EC *ov01_022051EC(void *a0);
 void ov01_02205208(UnkOv01_022051EC *manager);
@@ -62,7 +55,7 @@ static const UnkOv01_022051EC_Template ov01_022096CC = {
 };
 
 UnkOv01_022051EC *ov01_022051EC(void *a0) {
-    UnkOv01_022051EC *manager = ov01_021F1430(a0, sizeof(UnkOv01_022051EC), 0, 0);
+    UnkOv01_022051EC *manager = (UnkOv01_022051EC *)ov01_021F1430(a0, sizeof(UnkOv01_022051EC), 0, 0);
     manager->unk0 = a0;
     ov01_02205218(manager);
     return manager;
@@ -94,8 +87,10 @@ static void ov01_022052A4(UnkOv01_022051EC *manager) {
 void *ov01_022052C4(FieldSystem *fieldSystem, VecFx32 *a1) {
     UnkOv01_022051EC_Data data;
     data.unk0 = fieldSystem;
-    data.unk4 = ov01_021F1450(fieldSystem, 0x16);
-    return ov01_021F1620(fieldSystem, &ov01_022096CC, a1, 0, &data, 0xff);
+    data.unk4 = (UnkOv01_022051EC *)ov01_021F1450(fieldSystem, 0x16);
+    // ov01_021F1620 is void per header; the caller discards this function's
+    // result, so omitting `return` keeps the trailing bl's r0 unconsumed as retail does.
+    ov01_021F1620(fieldSystem, (const UnkOv01_02209280 *)&ov01_022096CC, a1, 0, (UnkOv01_021FFF5C *)&data, 0xff);
 }
 
 void *ov01_022052F4(void *a0) {
@@ -104,7 +99,7 @@ void *ov01_022052F4(void *a0) {
 
 static BOOL ov01_02205300(void *param0, UnkOv01_022051EC_Work *work) {
     VecFx32 vec;
-    UnkOv01_022051EC_Data *data = sub_02068D98(param0);
+    UnkOv01_022051EC_Data *data = (UnkOv01_022051EC_Data *)sub_02068D98(param0);
     UnkOv01_022051EC *manager;
     work->unk4 = data->unk4;
     work->unk0 = 0;

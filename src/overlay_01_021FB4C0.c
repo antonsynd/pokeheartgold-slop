@@ -10,28 +10,28 @@ static void ov01_021FB594(void *arg);
 static void ov01_021FB5B0(void *param0, void *param1);
 static UnkStruct_Ov01_021FB4C0_sub *ov01_021FB5B4(UnkStruct_Ov01_021FB4C0 *manager);
 
-UnkStruct_Ov01_021FB4C0 *ov01_021FB4C0(enum HeapID heapId) {
+UnkStruct_Ov01_021FB4C0 *HBlankSystem_New(enum HeapID heapId) {
     UnkStruct_Ov01_021FB4C0 *manager = Heap_Alloc(heapId, sizeof(UnkStruct_Ov01_021FB4C0));
     ov01_021FB55C(manager);
     return manager;
 }
 
-void ov01_021FB4D4(UnkStruct_Ov01_021FB4C0 *manager) {
+void HBlankSystem_Delete(UnkStruct_Ov01_021FB4C0 *manager) {
     if (manager != NULL) {
         if (manager->state == 1) {
-            ov01_021FB514(manager);
+            HBlankSystem_Stop(manager);
         }
         ov01_021FB55C(manager);
         Heap_Free(manager);
     }
 }
 
-void ov01_021FB4F4(UnkStruct_Ov01_021FB4C0 *manager) {
+void HBlankSystem_Start(UnkStruct_Ov01_021FB4C0 *manager) {
     GF_ASSERT(Main_SetHBlankIntrCB(ov01_021FB594, manager) == TRUE);
     manager->state = 1;
 }
 
-void ov01_021FB514(UnkStruct_Ov01_021FB4C0 *manager) {
+void HBlankSystem_Stop(UnkStruct_Ov01_021FB4C0 *manager) {
     GF_ASSERT(Main_SetHBlankIntrCB(NULL, NULL) == TRUE);
     manager->state = 0;
 }

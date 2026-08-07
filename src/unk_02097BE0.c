@@ -35,7 +35,7 @@ static BOOL sub_02097CD8(TaskManager *taskMan);
 void sub_02097BE0(FieldSystem *fieldSystem, u16 scene) {
     UnkStruct_02097BE0 *env = Heap_AllocAtEnd(HEAP_ID_FIELD2, sizeof(UnkStruct_02097BE0));
 
-    env->unk_00 = **(UnkStruct_0203FCC4 **)fieldSystem->filler48;
+    env->unk_00 = **(UnkStruct_0203FCC4 **)&fieldSystem->modelAttributes;
     env->unk_48 = scene;
     env->unk_50 = 0;
     switch (Field_GetTimeOfDay(fieldSystem)) {

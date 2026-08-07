@@ -1,37 +1,37 @@
 {
  "summary": {
-  "generated": "2026-07-30T17:59:33Z",
+  "generated": "2026-08-07T20:52:18Z",
   "by_status": {
    "matched": {
-    "files": 99,
-    "functions": 1711,
-    "insn_lines": 47170,
-    "text_bytes_est": 104672
+    "files": 97,
+    "functions": 1684,
+    "insn_lines": 46621,
+    "text_bytes_est": 103460
    },
    "blocked": {
-    "files": 53,
-    "functions": 972,
-    "insn_lines": 30927,
-    "text_bytes_est": 67968
+    "files": 52,
+    "functions": 921,
+    "insn_lines": 29971,
+    "text_bytes_est": 65922
    },
    "pending": {
-    "files": 169,
-    "functions": 16811,
-    "insn_lines": 828863,
-    "text_bytes_est": 1856928
+    "files": 168,
+    "functions": 16773,
+    "insn_lines": 827438,
+    "text_bytes_est": 1853516
    },
    "upstream": {
-    "files": 397,
+    "files": 401,
     "functions": 0,
     "insn_lines": 0,
     "text_bytes_est": 0
    }
   },
   "function_totals": {
-   "tracked": 19494,
-   "matched": 1711,
+   "tracked": 19378,
+   "matched": 1684,
    "partial_in_blocked": 20,
-   "pending": 16811
+   "pending": 16773
   },
   "blockers": [
    {
@@ -2093,10 +2093,10 @@
     "BeginNormalPaletteFade",
     "HandleFadeUpdateFrame",
     "IsPaletteFadeFinished",
+    "ResetVisibleHardwareWindows",
     "SetMasterBrightness",
     "SetMasterBrightnessNeutral",
     "sub_0200FB70",
-    "sub_0200FBDC",
     "sub_0200FBF4",
     "sub_0200FC20",
     "sub_0200FC60",
@@ -2134,7 +2134,7 @@
      "status": "blocked"
     },
     {
-     "name": "sub_0200FBDC",
+     "name": "ResetVisibleHardwareWindows",
      "mode": "thumb",
      "insns": 5,
      "size_est": 10,
@@ -7017,9 +7017,9 @@
     "sub_02026DE0"
    ],
    "exports": [
-    "sub_02023738",
-    "sub_02023778",
-    "sub_020237B0",
+    "BillboardLists_Create",
+    "BillboardLists_Delete",
+    "BillboardLists_Draw",
     "sub_020237EC",
     "sub_02023874",
     "sub_020238F8",
@@ -7065,21 +7065,21 @@
      "status": "pending"
     },
     {
-     "name": "sub_02023738",
+     "name": "BillboardLists_Create",
      "mode": "thumb",
      "insns": 28,
      "size_est": 62,
      "status": "pending"
     },
     {
-     "name": "sub_02023778",
+     "name": "BillboardLists_Delete",
      "mode": "thumb",
      "insns": 25,
      "size_est": 54,
      "status": "pending"
     },
     {
-     "name": "sub_020237B0",
+     "name": "BillboardLists_Draw",
      "mode": "thumb",
      "insns": 28,
      "size_est": 58,
@@ -15619,7 +15619,7 @@
    "functions": []
   },
   {
-   "file": "asm/fieldmap.s",
+   "file": "asm/script_manager.s",
    "lsf_kind": "src",
    "status": "upstream",
    "functions": []
@@ -15924,6 +15924,7 @@
    "jumptable_words": 0,
    "imports": [
     "GF_AssertFail",
+    "Gymmick_CheckCollision",
     "Heap_AllocAtEnd",
     "MapMatrix_GetWidth",
     "TerrainAttributes_Get",
@@ -15941,8 +15942,7 @@
     "ov01_021F6600",
     "ov01_021FAE50",
     "ov01_021FB42C",
-    "ov01_021FB474",
-    "sub_02064938"
+    "ov01_021FB474"
    ],
    "exports": [
     "GetMetatileBehavior",
@@ -16420,6 +16420,7 @@
     "Camera_OffsetLookAtPosAndTarget",
     "Camera_SetFixedTarget",
     "Camera_SetLookAtTargetAndRecalcPos",
+    "FieldMap_FadeScreen",
     "Field_PlayerAvatar_ApplyTransitionFlags",
     "Field_PlayerAvatar_OrrTransitionFlags",
     "FollowMon_GetMapObject",
@@ -16450,7 +16451,6 @@
     "TaskManager_GetEnvironment",
     "TaskManager_GetFieldSystem",
     "VEC_Subtract",
-    "ov01_021E636C",
     "ov01_021E90C0",
     "ov01_021E90D4",
     "ov01_021E90DC",
@@ -16631,6 +16631,7 @@
     "sub_0206234C"
    ],
    "exports": [
+    "CommPlayerManager_ForcePosition",
     "sub_02056D7C",
     "sub_02056E38",
     "sub_02056E60",
@@ -16658,8 +16659,7 @@
     "sub_02057F28",
     "sub_02057F58",
     "sub_02057F70",
-    "sub_02057F80",
-    "sub_02057FA4"
+    "sub_02057F80"
    ],
    "functions": [
     {
@@ -17034,7 +17034,7 @@
      "status": "pending"
     },
     {
-     "name": "sub_02057FA4",
+     "name": "CommPlayerManager_ForcePosition",
      "mode": "thumb",
      "insns": 58,
      "size_est": 126,
@@ -17073,13 +17073,13 @@
     "Heap_Free",
     "MI_CpuFill8",
     "Party_Copy",
+    "ResetVisibleHardwareWindows",
     "SaveArray_Party_Alloc",
     "StartMapSceneScript",
     "SysTask_CreateOnMainQueue",
     "SysTask_Destroy",
     "ov03_02255BEC",
     "ov03_02255C54",
-    "sub_0200FBDC",
     "sub_0200FC60",
     "sub_02034434",
     "sub_02034638",
@@ -17546,6 +17546,7 @@
     "DestroyListMenuCursorObj",
     "DestroyMsgData",
     "DrawFrameAndWindow1",
+    "FieldMap_FadeScreen",
     "FieldSystem_ApplicationIsRunning",
     "FieldSystem_CreateTask",
     "FieldSystem_GetSaveData",
@@ -17603,7 +17604,6 @@
     "gOverlayTemplate_PartyMenu",
     "gOverlayTemplate_PokemonSummary",
     "gSystem",
-    "ov01_021E636C",
     "sub_0200E5D4",
     "sub_02034434",
     "sub_02034818",
@@ -18671,8 +18671,8 @@
     "sub_0200EC0C"
    ],
    "exports": [
+    "FieldMessage_LoadTextPalettes",
     "IsPrintFinished",
-    "sub_0205B4EC",
     "sub_0205B514",
     "sub_0205B564",
     "sub_0205B5A8",
@@ -18683,7 +18683,7 @@
    ],
    "functions": [
     {
-     "name": "sub_0205B4EC",
+     "name": "FieldMessage_LoadTextPalettes",
      "mode": "thumb",
      "insns": 16,
      "size_est": 38,
@@ -19880,6 +19880,7 @@
     "MapObjectArray_NextObject",
     "MapObjectManager_GetObjectCount",
     "MapObjectManager_GetObjects2",
+    "MapObjectManager_NotEndMovement",
     "MapObject_AddCurrentX",
     "MapObject_AddCurrentY",
     "MapObject_AddCurrentZ",
@@ -19912,7 +19913,6 @@
     "MapObject_GetYRange",
     "MapObject_GetZCoord",
     "MapObject_SetCurrentY",
-    "MapObject_SetFlag2",
     "MapObject_SetFlag24",
     "MapObject_SetFlag26",
     "MapObject_SetFlag28",
@@ -19921,6 +19921,7 @@
     "MapObject_SetPreviousX",
     "MapObject_SetPreviousY",
     "MapObject_SetPreviousZ",
+    "MapObject_SetStartMovement",
     "MapObject_TestFlagsBits",
     "MetatileBehavior_HasReflectiveSurface",
     "MetatileBehavior_IsIce",
@@ -19980,7 +19981,6 @@
     "sub_0205F51C",
     "sub_0205F524",
     "sub_0205F5E8",
-    "sub_0205F610",
     "sub_0205F73C",
     "sub_0205F8D0",
     "sub_0205F9C0",
@@ -20481,7 +20481,7 @@
     "GetDeltaXByFacingDirection",
     "GetDeltaYByFacingDirection",
     "LCRandom",
-    "MapObject_ClearFlag3",
+    "MapObject_ClearEndMovement",
     "MapObject_ClearFlagsBits",
     "MapObject_ClearSingleMovement",
     "MapObject_ForceSetHeldMovement",
@@ -23576,8 +23576,8 @@
     "MapObjectManager_GetFirstActiveObjectWithMovement1",
     "MapObjectManager_GetNextObjectWithFlagFromIndex",
     "MapObject_CheckSingleMovement",
+    "MapObject_ClearEndMovement",
     "MapObject_ClearFlag18",
-    "MapObject_ClearFlag3",
     "MapObject_ClearFlagsBits",
     "MapObject_ClearSingleMovement",
     "MapObject_ForceSetHeldMovement",
@@ -27910,6 +27910,7 @@
    "other_sections": [],
    "jumptable_words": 0,
    "imports": [
+    "Field_SetEnvironmentSoundState_None_Unk2",
     "GF_SndHandleSetPlayerVolume",
     "GfGfx_SwapDisplay",
     "Heap_Create",
@@ -27930,7 +27931,6 @@
     "ov40_0222DAC0",
     "sub_0200616C",
     "sub_0202AC0C",
-    "sub_0203E354",
     "sub_02055198",
     "sub_02087988",
     "sub_02087A78"
@@ -30676,6 +30676,7 @@
    "other_sections": [],
    "jumptable_words": 0,
    "imports": [
+    "FieldMap_FadeScreen",
     "FieldSystem_ApplicationIsRunning",
     "FieldSystem_LoadFieldOverlay",
     "Heap_Free",
@@ -30683,7 +30684,6 @@
     "TaskManager_GetFieldSystem",
     "TaskManager_Jump",
     "Task_Mart",
-    "ov01_021E636C",
     "sub_020505C8",
     "sub_0207791C"
    ],
@@ -31565,6 +31565,7 @@
     "EasyChat_CreateArgs",
     "EasyChat_FreeArgs",
     "EasyChat_LaunchApp",
+    "FieldMap_FadeScreen",
     "FieldSystem_ApplicationIsRunning",
     "FieldSystem_LoadFieldOverlay",
     "Heap_Alloc",
@@ -31579,7 +31580,6 @@
     "TaskManager_Call",
     "TaskManager_GetEnvironment",
     "TaskManager_GetFieldSystem",
-    "ov01_021E636C",
     "sub_020505C8",
     "sub_02090D20",
     "sub_02090D34",
@@ -33378,510 +33378,10 @@
    ]
   },
   {
-   "file": "asm/overlay_01_021E5900.s",
-   "lsf_kind": "asm",
-   "status": "pending",
-   "lines": 1711,
-   "function_count": 38,
-   "text_bytes_est": 3412,
-   "data_only": false,
-   "sections": {
-    "rodata_bytes": 156,
-    "data_bytes": 0,
-    "bss_bytes": 0,
-    "other_bytes": 0
-   },
-   "other_sections": [],
-   "jumptable_words": 0,
-   "imports": [
-    "AllocAtEndAndReadWholeNarcMemberByIdPair",
-    "BG_ClearCharDataRange",
-    "BeginNormalPaletteFade",
-    "BgClearTilemapBufferAndCommit",
-    "BgConfig_Alloc",
-    "CARD_SpiWaitGetStatus",
-    "Camera_GetAngle",
-    "Camera_PushLookAtToNNSGlb",
-    "CheckFlag96A",
-    "DC_FlushRange",
-    "DSProt_DetectDummy",
-    "DSProt_DetectFlashcart",
-    "DSProt_DetectNotEmulator",
-    "DSProt_DetectNotFlashcart",
-    "DoScheduledBgGpuUpdates",
-    "FS_LoadOverlay",
-    "FS_UnloadOverlay",
-    "FX_SinCosTable_",
-    "Field3dObjectTaskManager_Create",
-    "Field3dObjectTaskManager_Delete",
-    "Field3dObjectTaskManager_RunDrawTasks",
-    "FieldBGM_GetEffective",
-    "FieldBGM_PlayEffectiveForMapHeader",
-    "FieldBGM_TryFadeOut",
-    "FieldDrawMapNameInfo_Create",
-    "FieldDrawMapNameInfo_Destroy",
-    "FieldSystem_DrawMapNameAnimation",
-    "FieldSystem_GetSaveData",
-    "FieldSystem_StartBugContestTimer",
-    "FieldSystem_TaskIsRunning",
-    "FieldWeatherUpdate_UsedFlash",
-    "Field_GetNumObjectEvents",
-    "Field_GetObjectEvents",
-    "Field_InitMapEvents",
-    "Field_InitMapObjectsFromZoneEventData",
-    "FreeBgTilemapBuffer",
-    "GF3dRender_DeleteSimpleManager",
-    "GF3dRender_InitSimpleManager",
-    "GF_AssertFail",
-    "GF_CreateVramTransferManager",
-    "GF_DestroyVramTransferManager",
-    "GF_RunVramTransferTasks",
-    "GX_LoadBGPltt",
-    "GfGfx_BothDispOn",
-    "GfGfx_EngineATogglePlanes",
-    "GfGfx_SetBanks",
-    "GfGfx_SwapDisplay",
-    "HBlankInterruptDisable",
-    "HandleLoadOverlay",
-    "Heap_Alloc",
-    "Heap_AllocAtEnd",
-    "Heap_Create",
-    "Heap_Destroy",
-    "Heap_Free",
-    "InitBgFromTemplate",
-    "LocalFieldData_GetCameraType",
-    "LocalFieldData_GetWeatherType",
-    "MI_CpuFill8",
-    "MIi_CpuCopyFast",
-    "Main_SetVBlankIntrCB",
-    "MapHeader_GetAreaDataBank",
-    "MapHeader_GetMapSec",
-    "MapHeader_GetMoveModelBank",
-    "MapMatrix_GetMapHeader",
-    "MapObjectManager_ClearFlagsBits",
-    "NNS_G2dInitOamManagerModule",
-    "NNS_G3dGlb",
-    "NNS_G3dGlbFlushP",
-    "OamManager_ApplyAndResetBuffers",
-    "OamManager_Create",
-    "OamManager_Free",
-    "ObjCharTransfer_ClearBuffers",
-    "ObjCharTransfer_Destroy",
-    "ObjCharTransfer_InitEx",
-    "ObjPlttTransfer_Destroy",
-    "ObjPlttTransfer_Init",
-    "ObjPlttTransfer_Reset",
-    "OverlayManager_GetArgs",
-    "PlayerAvatar_GetFacingDirection",
-    "PlayerAvatar_GetPositionVector",
-    "PlayerAvatar_GetXCoord",
-    "PlayerAvatar_GetZCoord",
-    "RequestSwap3DBuffers",
-    "Save_GetGymmickPtr",
-    "Save_Gymmick_GetType",
-    "Save_LocalFieldData_Get",
-    "Save_VarsFlags_Get",
-    "SetBothScreensModesAndDisable",
-    "SysTask_CreateOnMainQueue",
-    "Thunk_G3X_Reset",
-    "TryStartMapScriptByType",
-    "UnloadOverlayByID",
-    "_ll_mul",
-    "_u32_div_f",
-    "gG3dDepthBufferingMode",
-    "ov01_021E7F00",
-    "ov01_021E87E4",
-    "ov01_021E8A28",
-    "ov01_021E8AEC",
-    "ov01_021E8DB4",
-    "ov01_021E8DD4",
-    "ov01_021EA220",
-    "ov01_021EA284",
-    "ov01_021EA2A4",
-    "ov01_021EA824",
-    "ov01_021EA840",
-    "ov01_021EA8E0",
-    "ov01_021EA8FC",
-    "ov01_021EA910",
-    "ov01_021EAB44",
-    "ov01_021EAB58",
-    "ov01_021EAB6C",
-    "ov01_021EAB80",
-    "ov01_021EABA8",
-    "ov01_021EAC30",
-    "ov01_021EAD8C",
-    "ov01_021EAF18",
-    "ov01_021EAF34",
-    "ov01_021EAF54",
-    "ov01_021EAF70",
-    "ov01_021EAFD4",
-    "ov01_021EB00C",
-    "ov01_021EB114",
-    "ov01_021EB1BC",
-    "ov01_021EB1DC",
-    "ov01_021EB1F4",
-    "ov01_021EB234",
-    "ov01_021EB260",
-    "ov01_021F1348",
-    "ov01_021F1384",
-    "ov01_021F1390",
-    "ov01_021F13D0",
-    "ov01_021F13EC",
-    "ov01_021F13F4",
-    "ov01_021F3638",
-    "ov01_021F3660",
-    "ov01_021F3C9C",
-    "ov01_021F3D38",
-    "ov01_021F3D50",
-    "ov01_021F3D98",
-    "ov01_021F50F0",
-    "ov01_021F6020",
-    "ov01_021F6118",
-    "ov01_021F61A8",
-    "ov01_021F61F8",
-    "ov01_021F62B0",
-    "ov01_021F62CC",
-    "ov01_021F62E8",
-    "ov01_021F6304",
-    "ov01_021F6830",
-    "ov01_021F91F8",
-    "ov01_021F9250",
-    "ov01_021FA1D0",
-    "ov01_021FB3A4",
-    "ov01_021FB418",
-    "ov01_021FB4C0",
-    "ov01_021FB4D4",
-    "ov01_021FB4F4",
-    "ov01_021FB5D4",
-    "ov01_021FB610",
-    "ov01_021FB888",
-    "ov01_021FB904",
-    "ov01_021FB934",
-    "ov01_021FB944",
-    "ov01_021FB9CC",
-    "ov01_021FBA14",
-    "ov01_021FBA3C",
-    "ov01_021FD3F8",
-    "ov01_02204004",
-    "ov01_02204084",
-    "ov01_022041C4",
-    "ov01_02204278",
-    "ov01_02204350",
-    "ov01_0220460C",
-    "ov01_02204634",
-    "ov01_02204744",
-    "ov01_02204764",
-    "ov01_022047DC",
-    "ov01_02205424",
-    "ov01_022057DC",
-    "ov01_022059AC",
-    "ov01_02208BFC",
-    "ov02_0224F864",
-    "ov02_0224F8F4",
-    "sub_02005D00",
-    "sub_0200FBDC",
-    "sub_02023738",
-    "sub_02023778",
-    "sub_020237B0",
-    "sub_02023910",
-    "sub_0203E348",
-    "sub_02053018",
-    "sub_02053038",
-    "sub_02055680",
-    "sub_020556A8",
-    "sub_02057FA4",
-    "sub_0205B4EC",
-    "sub_0205C46C",
-    "sub_0205E104",
-    "sub_0205E4C8",
-    "sub_0205E520",
-    "sub_0205E580",
-    "sub_0205F1A0",
-    "sub_0205F55C",
-    "sub_0205F568",
-    "sub_0205F5F8",
-    "sub_020648EC",
-    "sub_02064910",
-    "sub_02096594"
-   ],
-   "exports": [
-    "ov01_021E5924",
-    "ov01_021E5BE4",
-    "ov01_021E5C24",
-    "ov01_021E6048",
-    "ov01_021E6050",
-    "ov01_021E631C",
-    "ov01_021E6340",
-    "ov01_021E636C"
-   ],
-   "functions": [
-    {
-     "name": "ov01_021E5900",
-     "mode": "thumb",
-     "insns": 11,
-     "size_est": 34,
-     "status": "pending"
-    },
-    {
-     "name": "ov01_021E5924",
-     "mode": "thumb",
-     "insns": 272,
-     "size_est": 660,
-     "status": "pending"
-    },
-    {
-     "name": "ov01_021E5BE4",
-     "mode": "thumb",
-     "insns": 26,
-     "size_est": 62,
-     "status": "pending"
-    },
-    {
-     "name": "ov01_021E5C24",
-     "mode": "thumb",
-     "insns": 249,
-     "size_est": 630,
-     "status": "pending"
-    },
-    {
-     "name": "ov01_021E5EB8",
-     "mode": "thumb",
-     "insns": 10,
-     "size_est": 26,
-     "status": "pending"
-    },
-    {
-     "name": "ov01_021E5ED4",
-     "mode": "thumb",
-     "insns": 21,
-     "size_est": 46,
-     "status": "pending"
-    },
-    {
-     "name": "ov01_021E5F04",
-     "mode": "thumb",
-     "insns": 76,
-     "size_est": 186,
-     "status": "pending"
-    },
-    {
-     "name": "ov01_021E5FC0",
-     "mode": "thumb",
-     "insns": 42,
-     "size_est": 104,
-     "status": "pending"
-    },
-    {
-     "name": "ov01_021E6028",
-     "mode": "thumb",
-     "insns": 14,
-     "size_est": 30,
-     "status": "pending"
-    },
-    {
-     "name": "ov01_021E6048",
-     "mode": "thumb",
-     "insns": 3,
-     "size_est": 6,
-     "status": "pending"
-    },
-    {
-     "name": "ov01_021E6050",
-     "mode": "thumb",
-     "insns": 3,
-     "size_est": 6,
-     "status": "pending"
-    },
-    {
-     "name": "ov01_021E6058",
-     "mode": "thumb",
-     "insns": 96,
-     "size_est": 216,
-     "status": "pending"
-    },
-    {
-     "name": "ov01_021E6138",
-     "mode": "thumb",
-     "insns": 24,
-     "size_est": 62,
-     "status": "pending"
-    },
-    {
-     "name": "ov01_021E6178",
-     "mode": "thumb",
-     "insns": 16,
-     "size_est": 36,
-     "status": "pending"
-    },
-    {
-     "name": "ov01_021E619C",
-     "mode": "thumb",
-     "insns": 3,
-     "size_est": 6,
-     "status": "pending"
-    },
-    {
-     "name": "ov01_021E61A4",
-     "mode": "thumb",
-     "insns": 24,
-     "size_est": 58,
-     "status": "pending"
-    },
-    {
-     "name": "ov01_021E61E0",
-     "mode": "thumb",
-     "insns": 21,
-     "size_est": 50,
-     "status": "pending"
-    },
-    {
-     "name": "ov01_021E6214",
-     "mode": "thumb",
-     "insns": 4,
-     "size_est": 12,
-     "status": "pending"
-    },
-    {
-     "name": "ov01_021E6220",
-     "mode": "thumb",
-     "insns": 107,
-     "size_est": 244,
-     "status": "pending"
-    },
-    {
-     "name": "ov01_021E631C",
-     "mode": "thumb",
-     "insns": 18,
-     "size_est": 36,
-     "status": "pending"
-    },
-    {
-     "name": "ov01_021E6340",
-     "mode": "thumb",
-     "insns": 18,
-     "size_est": 36,
-     "status": "pending"
-    },
-    {
-     "name": "ov01_021E6364",
-     "mode": "thumb",
-     "insns": 4,
-     "size_est": 8,
-     "status": "pending"
-    },
-    {
-     "name": "ov01_021E636C",
-     "mode": "thumb",
-     "insns": 34,
-     "size_est": 74,
-     "status": "pending"
-    },
-    {
-     "name": "ov01_021E63B8",
-     "mode": "thumb",
-     "insns": 67,
-     "size_est": 162,
-     "status": "pending"
-    },
-    {
-     "name": "ov01_021E6460",
-     "mode": "thumb",
-     "insns": 31,
-     "size_est": 68,
-     "status": "pending"
-    },
-    {
-     "name": "ov01_021E64A4",
-     "mode": "thumb",
-     "insns": 89,
-     "size_est": 218,
-     "status": "pending"
-    },
-    {
-     "name": "ov01_021E6580",
-     "mode": "thumb",
-     "insns": 64,
-     "size_est": 170,
-     "status": "pending"
-    },
-    {
-     "name": "ov01_021E662C",
-     "mode": "thumb",
-     "insns": 9,
-     "size_est": 22,
-     "status": "pending"
-    },
-    {
-     "name": "ov01_021E6644",
-     "mode": "thumb",
-     "insns": 38,
-     "size_est": 82,
-     "status": "pending"
-    },
-    {
-     "name": "ov01_021E6698",
-     "mode": "thumb",
-     "insns": 2,
-     "size_est": 4,
-     "status": "pending"
-    },
-    {
-     "name": "ov01_021E669C",
-     "mode": "thumb",
-     "insns": 2,
-     "size_est": 4,
-     "status": "pending"
-    },
-    {
-     "name": "ov01_021E66A0",
-     "mode": "thumb",
-     "insns": 3,
-     "size_est": 6,
-     "status": "pending"
-    },
-    {
-     "name": "ov01_021E66A8",
-     "mode": "thumb",
-     "insns": 7,
-     "size_est": 14,
-     "status": "pending"
-    },
-    {
-     "name": "ov01_021E66B8",
-     "mode": "thumb",
-     "insns": 7,
-     "size_est": 14,
-     "status": "pending"
-    },
-    {
-     "name": "ov01_021E66C8",
-     "mode": "thumb",
-     "insns": 7,
-     "size_est": 14,
-     "status": "pending"
-    },
-    {
-     "name": "ov01_021E66D8",
-     "mode": "thumb",
-     "insns": 1,
-     "size_est": 2,
-     "status": "pending"
-    },
-    {
-     "name": "ov01_021E66DC",
-     "mode": "thumb",
-     "insns": 1,
-     "size_est": 2,
-     "status": "pending"
-    },
-    {
-     "name": "ov01_021E66E0",
-     "mode": "thumb",
-     "insns": 1,
-     "size_est": 2,
-     "status": "pending"
-    }
-   ]
+   "file": "asm/field/fieldmap.s",
+   "lsf_kind": "src",
+   "status": "upstream",
+   "functions": []
   },
   {
    "file": "asm/field/overlay_01_021E66E4.s",
@@ -33946,11 +33446,11 @@
     "ov01_02204834"
    ],
    "exports": [
-    "ov01_021E87E4",
+    "MapPropAnimationManager_Free",
+    "MapPropAnimationManager_Init",
+    "MapPropAnimationManager_UnloadAllAnimations",
     "ov01_021E8970",
-    "ov01_021E8A28",
     "ov01_021E8A8C",
-    "ov01_021E8AEC",
     "ov01_021E8B04",
     "ov01_021E8B60",
     "ov01_021E8B6C",
@@ -33987,7 +33487,7 @@
      "status": "pending"
     },
     {
-     "name": "ov01_021E87E4",
+     "name": "MapPropAnimationManager_Init",
      "mode": "thumb",
      "insns": 55,
      "size_est": 116,
@@ -34029,7 +33529,7 @@
      "status": "pending"
     },
     {
-     "name": "ov01_021E8A28",
+     "name": "MapPropAnimationManager_UnloadAllAnimations",
      "mode": "thumb",
      "insns": 20,
      "size_est": 40,
@@ -34050,7 +33550,7 @@
      "status": "pending"
     },
     {
-     "name": "ov01_021E8AEC",
+     "name": "MapPropAnimationManager_Free",
      "mode": "thumb",
      "insns": 10,
      "size_est": 24,
@@ -34280,6 +33780,7 @@
     "Camera_SetPerspectiveClippingPlane",
     "CreateCameraTranslationWrapper",
     "DeleteCameraTranslationWrapper",
+    "FieldMap_FadeScreen",
     "FollowMon_GetMapObject",
     "FollowMon_IsActive",
     "GF_AssertFail",
@@ -34311,7 +33812,6 @@
     "TaskManager_Call",
     "TaskManager_GetEnvironment",
     "TaskManager_GetFieldSystem",
-    "ov01_021E636C",
     "ov01_021E8BAC",
     "ov01_021E8DE8",
     "ov01_021E8E98",
@@ -34338,6 +33838,9 @@
     "sub_02054D10"
    ],
    "exports": [
+    "AreaLightManager_Free",
+    "AreaLightManager_New",
+    "AreaLightManager_UpdateActiveTemplate",
     "LoadAreaOrDungeonLightTxt",
     "ov01_021E90C0",
     "ov01_021E90D4",
@@ -34357,9 +33860,6 @@
     "ov01_021E9F78",
     "ov01_021E9FF8",
     "ov01_021EA128",
-    "ov01_021EA220",
-    "ov01_021EA284",
-    "ov01_021EA2A4",
     "ov01_021EA3B0"
    ],
    "functions": [
@@ -34532,21 +34032,21 @@
      "status": "pending"
     },
     {
-     "name": "ov01_021EA220",
+     "name": "AreaLightManager_New",
      "mode": "thumb",
      "insns": 44,
      "size_est": 98,
      "status": "pending"
     },
     {
-     "name": "ov01_021EA284",
+     "name": "AreaLightManager_Free",
      "mode": "thumb",
      "insns": 13,
      "size_est": 32,
      "status": "pending"
     },
     {
-     "name": "ov01_021EA2A4",
+     "name": "AreaLightManager_UpdateActiveTemplate",
      "mode": "thumb",
      "insns": 42,
      "size_est": 90,
@@ -34696,162 +34196,10 @@
    "functions": []
   },
   {
-   "file": "asm/overlay_01_021EA8E0.s",
+   "file": "asm/field/model_attributes.s",
    "lsf_kind": "src",
-   "status": "matched",
-   "lines": 425,
-   "function_count": 14,
-   "text_bytes_est": 696,
-   "data_only": false,
-   "sections": {
-    "rodata_bytes": 0,
-    "data_bytes": 0,
-    "bss_bytes": 0,
-    "other_bytes": 0
-   },
-   "other_sections": [],
-   "jumptable_words": 0,
-   "imports": [
-    "Heap_Alloc",
-    "Heap_FreeExplicit",
-    "MIi_CpuClear32",
-    "NNS_G3dGlbLightColor",
-    "NNS_G3dGlbLightVector",
-    "NNS_G3dGlbMaterialColorDiffAmb",
-    "NNS_G3dGlbMaterialColorSpecEmi",
-    "NNS_G3dGlbPolygonAttr",
-    "NNS_G3dMdlSetMdl1DotAll",
-    "NNS_G3dMdlSetMdlAlphaAll",
-    "NNS_G3dMdlSetMdlAmbAll",
-    "NNS_G3dMdlSetMdlCullModeAll",
-    "NNS_G3dMdlSetMdlDepthTestCondAll",
-    "NNS_G3dMdlSetMdlDiffAll",
-    "NNS_G3dMdlSetMdlEmiAll",
-    "NNS_G3dMdlSetMdlFarClipAll",
-    "NNS_G3dMdlSetMdlFogEnableFlagAll",
-    "NNS_G3dMdlSetMdlLightEnableFlagAll",
-    "NNS_G3dMdlSetMdlPolygonIDAll",
-    "NNS_G3dMdlSetMdlPolygonModeAll",
-    "NNS_G3dMdlSetMdlSpecAll",
-    "NNS_G3dMdlSetMdlXLDepthUpdateAll"
-   ],
-   "exports": [
-    "ov01_021EA8E0",
-    "ov01_021EA8FC",
-    "ov01_021EA910",
-    "ov01_021EA9B0",
-    "ov01_021EAAB8",
-    "ov01_021EAAE0",
-    "ov01_021EAAF4",
-    "ov01_021EAB08",
-    "ov01_021EAB1C",
-    "ov01_021EAB30",
-    "ov01_021EAB44",
-    "ov01_021EAB58",
-    "ov01_021EAB6C",
-    "ov01_021EAB80"
-   ],
-   "functions": [
-    {
-     "name": "ov01_021EA8E0",
-     "mode": "thumb",
-     "insns": 11,
-     "size_est": 26,
-     "status": "matched"
-    },
-    {
-     "name": "ov01_021EA8FC",
-     "mode": "thumb",
-     "insns": 8,
-     "size_est": 18,
-     "status": "matched"
-    },
-    {
-     "name": "ov01_021EA910",
-     "mode": "thumb",
-     "insns": 75,
-     "size_est": 160,
-     "status": "matched"
-    },
-    {
-     "name": "ov01_021EA9B0",
-     "mode": "thumb",
-     "insns": 118,
-     "size_est": 264,
-     "status": "matched"
-    },
-    {
-     "name": "ov01_021EAAB8",
-     "mode": "thumb",
-     "insns": 19,
-     "size_est": 40,
-     "status": "matched"
-    },
-    {
-     "name": "ov01_021EAAE0",
-     "mode": "thumb",
-     "insns": 9,
-     "size_est": 20,
-     "status": "matched"
-    },
-    {
-     "name": "ov01_021EAAF4",
-     "mode": "thumb",
-     "insns": 9,
-     "size_est": 20,
-     "status": "matched"
-    },
-    {
-     "name": "ov01_021EAB08",
-     "mode": "thumb",
-     "insns": 8,
-     "size_est": 18,
-     "status": "matched"
-    },
-    {
-     "name": "ov01_021EAB1C",
-     "mode": "thumb",
-     "insns": 9,
-     "size_est": 20,
-     "status": "matched"
-    },
-    {
-     "name": "ov01_021EAB30",
-     "mode": "thumb",
-     "insns": 8,
-     "size_est": 18,
-     "status": "matched"
-    },
-    {
-     "name": "ov01_021EAB44",
-     "mode": "thumb",
-     "insns": 8,
-     "size_est": 18,
-     "status": "matched"
-    },
-    {
-     "name": "ov01_021EAB58",
-     "mode": "thumb",
-     "insns": 8,
-     "size_est": 18,
-     "status": "matched"
-    },
-    {
-     "name": "ov01_021EAB6C",
-     "mode": "thumb",
-     "insns": 8,
-     "size_est": 18,
-     "status": "matched"
-    },
-    {
-     "name": "ov01_021EAB80",
-     "mode": "thumb",
-     "insns": 18,
-     "size_est": 38,
-     "status": "matched"
-    }
-   ],
-   "source": "harness"
+   "status": "upstream",
+   "functions": []
   },
   {
    "file": "asm/overlay_01_021EABA8.s",
@@ -34887,21 +34235,21 @@
     "_s32_div_f"
    ],
    "exports": [
-    "ov01_021EABA8",
-    "ov01_021EAC30",
+    "FieldCamera_Create",
+    "FieldCamera_Delete",
     "ov01_021EACBC",
     "ov01_021EAD8C"
    ],
    "functions": [
     {
-     "name": "ov01_021EABA8",
+     "name": "FieldCamera_Create",
      "mode": "thumb",
      "insns": 58,
      "size_est": 134,
      "status": "blocked"
     },
     {
-     "name": "ov01_021EAC30",
+     "name": "FieldCamera_Delete",
      "mode": "thumb",
      "insns": 10,
      "size_est": 28,
@@ -35002,10 +34350,10 @@
     "sub_0203DB74"
    ],
    "exports": [
-    "ov01_021EAF18",
-    "ov01_021EAF34",
-    "ov01_021EAF54",
-    "ov01_021EAF70"
+    "FieldSystem_EndBottomScreen",
+    "FieldSystem_InitBottomScreen",
+    "FieldSystem_IsBottomScreenDone",
+    "FieldSystem_IsBottomScreenRunningDummy"
    ],
    "functions": [
     {
@@ -35016,28 +34364,28 @@
      "status": "matched"
     },
     {
-     "name": "ov01_021EAF18",
+     "name": "FieldSystem_InitBottomScreen",
      "mode": "thumb",
      "insns": 12,
      "size_est": 28,
      "status": "matched"
     },
     {
-     "name": "ov01_021EAF34",
+     "name": "FieldSystem_IsBottomScreenRunningDummy",
      "mode": "thumb",
      "insns": 14,
      "size_est": 32,
      "status": "matched"
     },
     {
-     "name": "ov01_021EAF54",
+     "name": "FieldSystem_EndBottomScreen",
      "mode": "thumb",
      "insns": 12,
      "size_est": 28,
      "status": "matched"
     },
     {
-     "name": "ov01_021EAF70",
+     "name": "FieldSystem_IsBottomScreenDone",
      "mode": "thumb",
      "insns": 12,
      "size_est": 28,
@@ -35119,22 +34467,22 @@
     "sub_020209E0"
    ],
    "exports": [
-    "ov01_021EAFD4",
-    "ov01_021EB00C",
-    "ov01_021EB114",
-    "ov01_021EB1BC",
-    "ov01_021EB1DC"
+    "FieldTextureManager_Destroy",
+    "FieldTextureManager_Free",
+    "FieldTextureManager_FreeAllSlots",
+    "FieldTextureManager_Init",
+    "FieldTextureManager_LoadTexture"
    ],
    "functions": [
     {
-     "name": "ov01_021EAFD4",
+     "name": "FieldTextureManager_Init",
      "mode": "thumb",
      "insns": 26,
      "size_est": 56,
      "status": "matched"
     },
     {
-     "name": "ov01_021EB00C",
+     "name": "FieldTextureManager_LoadTexture",
      "mode": "thumb",
      "insns": 34,
      "size_est": 76,
@@ -35148,7 +34496,7 @@
      "status": "matched"
     },
     {
-     "name": "ov01_021EB114",
+     "name": "FieldTextureManager_Free",
      "mode": "thumb",
      "insns": 58,
      "size_est": 120,
@@ -35162,14 +34510,14 @@
      "status": "matched"
     },
     {
-     "name": "ov01_021EB1BC",
+     "name": "FieldTextureManager_FreeAllSlots",
      "mode": "thumb",
      "insns": 13,
      "size_est": 30,
      "status": "matched"
     },
     {
-     "name": "ov01_021EB1DC",
+     "name": "FieldTextureManager_Destroy",
      "mode": "thumb",
      "insns": 5,
      "size_est": 12,
@@ -35282,11 +34630,11 @@
     "sub_02020E10"
    ],
    "exports": [
-    "FieldWeatherUpdate_UsedFlash",
+    "WeatherManager_ChangeWeather",
+    "WeatherManager_Delete",
+    "WeatherManager_New",
+    "WeatherManager_SetWeather",
     "ov01_021EB1E8",
-    "ov01_021EB1F4",
-    "ov01_021EB234",
-    "ov01_021EB260",
     "ov01_021EB31C"
    ],
    "functions": [
@@ -35298,28 +34646,28 @@
      "status": "pending"
     },
     {
-     "name": "ov01_021EB1F4",
+     "name": "WeatherManager_New",
      "mode": "thumb",
      "insns": 29,
      "size_est": 64,
      "status": "pending"
     },
     {
-     "name": "ov01_021EB234",
+     "name": "WeatherManager_Delete",
      "mode": "thumb",
      "insns": 18,
      "size_est": 42,
      "status": "pending"
     },
     {
-     "name": "ov01_021EB260",
+     "name": "WeatherManager_SetWeather",
      "mode": "thumb",
      "insns": 35,
      "size_est": 86,
      "status": "pending"
     },
     {
-     "name": "FieldWeatherUpdate_UsedFlash",
+     "name": "WeatherManager_ChangeWeather",
      "mode": "thumb",
      "insns": 43,
      "size_est": 96,
@@ -36475,13 +35823,13 @@
     "SysTask_CreateOnVWaitQueue",
     "SysTask_Destroy",
     "SysTask_GetData",
+    "Thunk_BgConfig_Init",
+    "Thunk_ov01_021E6138",
     "UnloadOverlayByID",
     "_ll_mul",
     "_s32_div_f",
     "_u32_div_f",
     "memset",
-    "ov01_021E6048",
-    "ov01_021E6050",
     "ov01_021E631C",
     "ov01_021E6340",
     "ov01_021FB530",
@@ -37278,12 +36626,12 @@
     "sub_02069894"
    ],
    "exports": [
-    "ov01_021F1348",
-    "ov01_021F1384",
+    "FieldEffectManager_Free",
+    "FieldEffectManager_InitAnimManagerList",
+    "FieldEffectManager_InitRenderers",
+    "FieldEffectManager_New",
+    "FieldEffectManager_Render",
     "ov01_021F1390",
-    "ov01_021F13D0",
-    "ov01_021F13EC",
-    "ov01_021F13F4",
     "ov01_021F1430",
     "ov01_021F1448",
     "ov01_021F1450",
@@ -37313,14 +36661,14 @@
    ],
    "functions": [
     {
-     "name": "ov01_021F1348",
+     "name": "FieldEffectManager_New",
      "mode": "thumb",
      "insns": 24,
      "size_est": 58,
      "status": "blocked"
     },
     {
-     "name": "ov01_021F1384",
+     "name": "FieldEffectManager_InitAnimManagerList",
      "mode": "thumb",
      "insns": 5,
      "size_est": 10,
@@ -37341,21 +36689,21 @@
      "status": "blocked"
     },
     {
-     "name": "ov01_021F13D0",
+     "name": "FieldEffectManager_InitRenderers",
      "mode": "thumb",
      "insns": 13,
      "size_est": 28,
      "status": "blocked"
     },
     {
-     "name": "ov01_021F13EC",
+     "name": "FieldEffectManager_Render",
      "mode": "thumb",
      "insns": 3,
      "size_est": 6,
      "status": "blocked"
     },
     {
-     "name": "ov01_021F13F4",
+     "name": "FieldEffectManager_Free",
      "mode": "thumb",
      "insns": 14,
      "size_est": 40,
@@ -37769,6 +37117,7 @@
     "FieldSystem_CreateTask",
     "FieldSystem_FlagClear",
     "FieldSystem_FlagSet",
+    "FieldSystem_ProcessSoundplate",
     "FieldSystem_UnkSub108_AddMonMood",
     "FollowMon_GetMapObject",
     "FollowMon_IsActive",
@@ -37837,7 +37186,6 @@
     "TaskManager_GetEnvironment",
     "TaskManager_GetFieldSystem",
     "memset",
-    "ov01_021E7F00",
     "ov01_021F1640",
     "ov01_021FA930",
     "ov01_021FE7DC",
@@ -38625,7 +37973,8 @@
     "sub_02020D2C"
    ],
    "exports": [
-    "ov01_021F3638",
+    "MapPropManager_LoadOne",
+    "MapPropManager_New",
     "ov01_021F3660",
     "ov01_021F36AC",
     "ov01_021F36DC",
@@ -38644,7 +37993,6 @@
     "ov01_021F3B44",
     "ov01_021F3B4C",
     "ov01_021F3B60",
-    "ov01_021F3C0C",
     "ov01_021F3C9C"
    ],
    "functions": [
@@ -38656,7 +38004,7 @@
      "status": "blocked"
     },
     {
-     "name": "ov01_021F3638",
+     "name": "MapPropManager_New",
      "mode": "thumb",
      "insns": 16,
      "size_est": 38,
@@ -38803,7 +38151,7 @@
      "status": "blocked"
     },
     {
-     "name": "ov01_021F3C0C",
+     "name": "MapPropManager_LoadOne",
      "mode": "thumb",
      "insns": 69,
      "size_est": 142,
@@ -38823,137 +38171,10 @@
    "kept_c": false
   },
   {
-   "file": "asm/overlay_01_021F3D38.s",
+   "file": "asm/field/signpost.s",
    "lsf_kind": "src",
-   "status": "matched",
-   "lines": 327,
-   "function_count": 13,
-   "text_bytes_est": 516,
-   "data_only": false,
-   "sections": {
-    "rodata_bytes": 0,
-    "data_bytes": 0,
-    "bss_bytes": 0,
-    "other_bytes": 0
-   },
-   "other_sections": [],
-   "jumptable_words": 0,
-   "imports": [
-    "BgCommitTilemapBufferToVram",
-    "BgSetPosTextAndCommit",
-    "Bg_GetYpos",
-    "FillBgTilemapRect",
-    "Heap_Alloc",
-    "Heap_Free",
-    "RemoveWindow",
-    "sub_0205B63C",
-    "sub_0205B6A0"
-   ],
-   "exports": [
-    "ov01_021F3D38",
-    "ov01_021F3D50",
-    "ov01_021F3D68",
-    "ov01_021F3D70",
-    "ov01_021F3D80",
-    "ov01_021F3D84",
-    "ov01_021F3D88",
-    "ov01_021F3D98",
-    "ov01_021F3DFC"
-   ],
-   "functions": [
-    {
-     "name": "ov01_021F3D38",
-     "mode": "thumb",
-     "insns": 11,
-     "size_est": 24,
-     "status": "matched"
-    },
-    {
-     "name": "ov01_021F3D50",
-     "mode": "thumb",
-     "insns": 10,
-     "size_est": 24,
-     "status": "matched"
-    },
-    {
-     "name": "ov01_021F3D68",
-     "mode": "thumb",
-     "insns": 3,
-     "size_est": 6,
-     "status": "matched"
-    },
-    {
-     "name": "ov01_021F3D70",
-     "mode": "thumb",
-     "insns": 8,
-     "size_est": 16,
-     "status": "matched"
-    },
-    {
-     "name": "ov01_021F3D80",
-     "mode": "thumb",
-     "insns": 1,
-     "size_est": 2,
-     "status": "matched"
-    },
-    {
-     "name": "ov01_021F3D84",
-     "mode": "thumb",
-     "insns": 2,
-     "size_est": 4,
-     "status": "matched"
-    },
-    {
-     "name": "ov01_021F3D88",
-     "mode": "thumb",
-     "insns": 8,
-     "size_est": 16,
-     "status": "matched"
-    },
-    {
-     "name": "ov01_021F3D98",
-     "mode": "thumb",
-     "insns": 41,
-     "size_est": 90,
-     "status": "matched"
-    },
-    {
-     "name": "ov01_021F3DFC",
-     "mode": "thumb",
-     "insns": 7,
-     "size_est": 18,
-     "status": "matched"
-    },
-    {
-     "name": "ov01_021F3E10",
-     "mode": "thumb",
-     "insns": 27,
-     "size_est": 60,
-     "status": "matched"
-    },
-    {
-     "name": "ov01_021F3E4C",
-     "mode": "thumb",
-     "insns": 37,
-     "size_est": 82,
-     "status": "matched"
-    },
-    {
-     "name": "ov01_021F3EA0",
-     "mode": "thumb",
-     "insns": 28,
-     "size_est": 62,
-     "status": "matched"
-    },
-    {
-     "name": "ov01_021F3EE0",
-     "mode": "thumb",
-     "insns": 50,
-     "size_est": 112,
-     "status": "matched"
-    }
-   ],
-   "source": "harness"
+   "status": "upstream",
+   "functions": []
   },
   {
    "file": "asm/overlay_01_021F3F50.s",
@@ -39294,6 +38515,7 @@
    "jumptable_words": 0,
    "imports": [
     "AllocAtEndAndReadFromNarcMemberByIdPair",
+    "AreaDataManager_GetMapTexture",
     "GF3dRender_BindModelSet",
     "GF3dRender_DrawModel",
     "GF3dRender_ResTexIsLoaded",
@@ -39309,6 +38531,7 @@
     "MapMatrix_GetMapAltitude",
     "MapMatrix_GetMatrixId",
     "MapMatrix_GetWidth",
+    "MapPropManager_New",
     "NARC_Delete",
     "NARC_New",
     "NARC_ReadFile",
@@ -39328,7 +38551,6 @@
     "_s32_div_f",
     "_u32_div_f",
     "ov01_021EA3B0",
-    "ov01_021F3638",
     "ov01_021F3660",
     "ov01_021F36AC",
     "ov01_021F3744",
@@ -39345,7 +38567,6 @@
     "ov01_021FB308",
     "ov01_021FB354",
     "ov01_021FB360",
-    "ov01_021FB9CC",
     "ov01_021FBA00",
     "ov01_02204678",
     "ov01_02204688",
@@ -39356,15 +38577,15 @@
     "sub_02054E20"
    ],
    "exports": [
-    "ov01_021F50F0",
-    "ov01_021F6020",
-    "ov01_021F6118",
-    "ov01_021F61A8",
-    "ov01_021F61F8",
-    "ov01_021F62B0",
-    "ov01_021F62CC",
-    "ov01_021F62E8",
-    "ov01_021F6304",
+    "MapLoadManager_End",
+    "MapLoadManager_ForgetTrackedTarget",
+    "MapLoadManager_FreeNARCAndLoadedMapBuffers",
+    "MapLoadManager_HasEnded",
+    "MapLoadManager_InitialLoad",
+    "MapLoadManager_New",
+    "MapLoadManager_RenderLoadedMaps",
+    "MapLoadManager_Tick",
+    "MapLoadManager_TrackTarget",
     "ov01_021F630C",
     "ov01_021F6320",
     "ov01_021F6328",
@@ -39532,7 +38753,7 @@
      "status": "pending"
     },
     {
-     "name": "ov01_021F50F0",
+     "name": "MapLoadManager_Tick",
      "mode": "thumb",
      "insns": 452,
      "size_est": 950,
@@ -39567,7 +38788,7 @@
      "status": "pending"
     },
     {
-     "name": "ov01_021F595C",
+     "name": "MapLoadManager_RenderLoadedMap",
      "mode": "thumb",
      "insns": 76,
      "size_est": 160,
@@ -39714,14 +38935,14 @@
      "status": "pending"
     },
     {
-     "name": "ov01_021F6020",
+     "name": "MapLoadManager_New",
      "mode": "thumb",
      "insns": 113,
      "size_est": 242,
      "status": "pending"
     },
     {
-     "name": "ov01_021F6118",
+     "name": "MapLoadManager_InitialLoad",
      "mode": "thumb",
      "insns": 17,
      "size_est": 38,
@@ -39735,7 +38956,7 @@
      "status": "pending"
     },
     {
-     "name": "ov01_021F61A8",
+     "name": "MapLoadManager_RenderLoadedMaps",
      "mode": "thumb",
      "insns": 24,
      "size_est": 50,
@@ -39749,35 +38970,35 @@
      "status": "pending"
     },
     {
-     "name": "ov01_021F61F8",
+     "name": "MapLoadManager_End",
      "mode": "thumb",
      "insns": 81,
      "size_est": 178,
      "status": "pending"
     },
     {
-     "name": "ov01_021F62B0",
+     "name": "MapLoadManager_FreeNARCAndLoadedMapBuffers",
      "mode": "thumb",
      "insns": 11,
      "size_est": 28,
      "status": "pending"
     },
     {
-     "name": "ov01_021F62CC",
+     "name": "MapLoadManager_HasEnded",
      "mode": "thumb",
      "insns": 13,
      "size_est": 26,
      "status": "pending"
     },
     {
-     "name": "ov01_021F62E8",
+     "name": "MapLoadManager_TrackTarget",
      "mode": "thumb",
      "insns": 14,
      "size_est": 28,
      "status": "pending"
     },
     {
-     "name": "ov01_021F6304",
+     "name": "MapLoadManager_ForgetTrackedTarget",
      "mode": "thumb",
      "insns": 4,
      "size_est": 8,
@@ -42487,9 +41708,9 @@
     "Heap_Free"
    ],
    "exports": [
-    "ov01_021FB3A4",
+    "DynamicTerrainHeightManager_Free",
+    "DynamicTerrainHeightManager_New",
     "ov01_021FB3E4",
-    "ov01_021FB418",
     "ov01_021FB42C",
     "ov01_021FB474",
     "ov01_021FB4A0"
@@ -42503,7 +41724,7 @@
      "status": "matched"
     },
     {
-     "name": "ov01_021FB3A4",
+     "name": "DynamicTerrainHeightManager_New",
      "mode": "thumb",
      "insns": 30,
      "size_est": 64,
@@ -42517,7 +41738,7 @@
      "status": "matched"
     },
     {
-     "name": "ov01_021FB418",
+     "name": "DynamicTerrainHeightManager_Free",
      "mode": "thumb",
      "insns": 7,
      "size_est": 18,
@@ -42570,37 +41791,37 @@
     "Main_SetHBlankIntrCB"
    ],
    "exports": [
-    "ov01_021FB4C0",
-    "ov01_021FB4D4",
-    "ov01_021FB4F4",
-    "ov01_021FB514",
+    "HBlankSystem_Delete",
+    "HBlankSystem_New",
+    "HBlankSystem_Start",
+    "HBlankSystem_Stop",
     "ov01_021FB530",
     "ov01_021FB554"
    ],
    "functions": [
     {
-     "name": "ov01_021FB4C0",
+     "name": "HBlankSystem_New",
      "mode": "thumb",
      "insns": 7,
      "size_est": 18,
      "status": "matched"
     },
     {
-     "name": "ov01_021FB4D4",
+     "name": "HBlankSystem_Delete",
      "mode": "thumb",
      "insns": 12,
      "size_est": 30,
      "status": "matched"
     },
     {
-     "name": "ov01_021FB4F4",
+     "name": "HBlankSystem_Start",
      "mode": "thumb",
      "insns": 13,
      "size_est": 30,
      "status": "matched"
     },
     {
-     "name": "ov01_021FB514",
+     "name": "HBlankSystem_Stop",
      "mode": "thumb",
      "insns": 11,
      "size_est": 26,
@@ -42852,6 +42073,12 @@
     "sprintf"
    ],
    "exports": [
+    "AreaDataManager_Alloc",
+    "AreaDataManager_Free",
+    "AreaDataManager_GetAreaLightArchiveID",
+    "AreaDataManager_GetMapPropModelFile",
+    "AreaDataManager_GetMapTexture",
+    "AreaDataManager_Load",
     "Field3dModelAnimation_FrameAdvanceAndCheck",
     "Field3dModelAnimation_FrameAdvanceAndLoop",
     "Field3dModelAnimation_FrameSet",
@@ -42868,17 +42095,11 @@
     "Field3dObject_SetPos",
     "Field3dObject_SetPosEx",
     "Field3dObject_SetXRotation",
-    "ov01_021FB888",
     "ov01_021FB904",
     "ov01_021FB90C",
-    "ov01_021FB934",
-    "ov01_021FB944",
-    "ov01_021FB9CC",
     "ov01_021FB9E0",
     "ov01_021FB9F4",
     "ov01_021FBA00",
-    "ov01_021FBA14",
-    "ov01_021FBA3C",
     "ov01_021FBD38",
     "ov01_021FBDFC",
     "ov01_021FBE70",
@@ -42893,7 +42114,7 @@
      "status": "blocked"
     },
     {
-     "name": "ov01_021FB888",
+     "name": "AreaDataManager_Alloc",
      "mode": "thumb",
      "insns": 52,
      "size_est": 118,
@@ -42914,21 +42135,21 @@
      "status": "blocked"
     },
     {
-     "name": "ov01_021FB934",
+     "name": "AreaDataManager_GetMapPropModelFile",
      "mode": "thumb",
      "insns": 6,
      "size_est": 14,
      "status": "blocked"
     },
     {
-     "name": "ov01_021FB944",
+     "name": "AreaDataManager_Free",
      "mode": "thumb",
      "insns": 57,
      "size_est": 128,
      "status": "blocked"
     },
     {
-     "name": "ov01_021FB9CC",
+     "name": "AreaDataManager_GetMapTexture",
      "mode": "thumb",
      "insns": 8,
      "size_est": 18,
@@ -42956,14 +42177,14 @@
      "status": "blocked"
     },
     {
-     "name": "ov01_021FBA14",
+     "name": "AreaDataManager_GetAreaLightArchiveID",
      "mode": "thumb",
      "insns": 19,
      "size_est": 38,
      "status": "blocked"
     },
     {
-     "name": "ov01_021FBA3C",
+     "name": "AreaDataManager_Load",
      "mode": "thumb",
      "insns": 280,
      "size_est": 634,
@@ -43524,7 +42745,7 @@
     "ov01_02205208"
    ],
    "exports": [
-    "ov01_02208BFC",
+    "defaultFieldEffectRenderers",
     "ov01_02208C5C"
    ],
    "functions": [],
@@ -46494,443 +45715,10 @@
    "source": "harness"
   },
   {
-   "file": "asm/overlay_01_02204004.s",
-   "lsf_kind": "asm",
-   "status": "blocked",
-   "lines": 1279,
-   "function_count": 51,
-   "text_bytes_est": 2046,
-   "data_only": false,
-   "sections": {
-    "rodata_bytes": 5,
-    "data_bytes": 0,
-    "bss_bytes": 0,
-    "other_bytes": 0
-   },
-   "other_sections": [],
-   "jumptable_words": 0,
-   "imports": [
-    "AllocAndReadWholeNarcMemberByIdPair",
-    "GF_AssertFail",
-    "GF_RTC_GetTimeOfDay",
-    "HeapExp_FndInitAllocator",
-    "Heap_Alloc",
-    "Heap_Free",
-    "MIi_CpuClear16",
-    "MIi_CpuClearFast",
-    "NNS_FndAllocFromAllocator",
-    "NNS_G3dAllocAnmObj",
-    "NNS_G3dAnmObjInit",
-    "NNS_G3dFreeAnmObj",
-    "NNS_G3dGetAnmByIdx",
-    "NNS_G3dGetMdlSet",
-    "NNS_G3dRenderObjAddAnmObj",
-    "NNS_G3dRenderObjInit",
-    "NNS_G3dRenderObjRemoveAnmObj",
-    "_02110A0C"
-   ],
-   "exports": [
-    "Field3dObjectList_GetRenderObjectByID",
-    "ov01_02204004",
-    "ov01_02204084",
-    "ov01_022040A4",
-    "ov01_022040F8",
-    "ov01_0220411C",
-    "ov01_02204154",
-    "ov01_022041C4",
-    "ov01_022041D8",
-    "ov01_02204278",
-    "ov01_022042FC",
-    "ov01_0220431C",
-    "ov01_02204350",
-    "ov01_022043D8",
-    "ov01_02204424",
-    "ov01_02204470",
-    "ov01_022044C8",
-    "ov01_022044E0",
-    "ov01_02204500",
-    "ov01_0220450C",
-    "ov01_02204518",
-    "ov01_02204554",
-    "ov01_0220455C",
-    "ov01_02204560",
-    "ov01_02204570",
-    "ov01_02204590",
-    "ov01_0220460C",
-    "ov01_02204634",
-    "ov01_0220463C",
-    "ov01_02204678",
-    "ov01_02204688",
-    "ov01_02204698",
-    "ov01_02204744",
-    "ov01_02204764",
-    "ov01_0220476C",
-    "ov01_022047DC",
-    "ov01_02204834"
-   ],
-   "functions": [
-    {
-     "name": "ov01_02204004",
-     "mode": "thumb",
-     "insns": 58,
-     "size_est": 126,
-     "status": "blocked"
-    },
-    {
-     "name": "ov01_02204084",
-     "mode": "thumb",
-     "insns": 11,
-     "size_est": 30,
-     "status": "blocked"
-    },
-    {
-     "name": "ov01_022040A4",
-     "mode": "thumb",
-     "insns": 12,
-     "size_est": 26,
-     "status": "blocked"
-    },
-    {
-     "name": "ov01_022040C0",
-     "mode": "thumb",
-     "insns": 7,
-     "size_est": 14,
-     "status": "blocked"
-    },
-    {
-     "name": "Field3dObjectList_GetRenderObjectByID",
-     "mode": "thumb",
-     "insns": 10,
-     "size_est": 20,
-     "status": "blocked"
-    },
-    {
-     "name": "ov01_022040E4",
-     "mode": "thumb",
-     "insns": 9,
-     "size_est": 20,
-     "status": "blocked"
-    },
-    {
-     "name": "ov01_022040F8",
-     "mode": "thumb",
-     "insns": 14,
-     "size_est": 34,
-     "status": "blocked"
-    },
-    {
-     "name": "ov01_0220411C",
-     "mode": "thumb",
-     "insns": 17,
-     "size_est": 38,
-     "status": "blocked"
-    },
-    {
-     "name": "ov01_02204144",
-     "mode": "thumb",
-     "insns": 8,
-     "size_est": 16,
-     "status": "blocked"
-    },
-    {
-     "name": "ov01_02204154",
-     "mode": "thumb",
-     "insns": 9,
-     "size_est": 18,
-     "status": "blocked"
-    },
-    {
-     "name": "ov01_02204168",
-     "mode": "thumb",
-     "insns": 43,
-     "size_est": 90,
-     "status": "blocked"
-    },
-    {
-     "name": "ov01_022041C4",
-     "mode": "thumb",
-     "insns": 9,
-     "size_est": 20,
-     "status": "blocked"
-    },
-    {
-     "name": "ov01_022041D8",
-     "mode": "thumb",
-     "insns": 74,
-     "size_est": 158,
-     "status": "blocked"
-    },
-    {
-     "name": "ov01_02204278",
-     "mode": "thumb",
-     "insns": 58,
-     "size_est": 130,
-     "status": "blocked"
-    },
-    {
-     "name": "ov01_022042FC",
-     "mode": "thumb",
-     "insns": 14,
-     "size_est": 30,
-     "status": "blocked"
-    },
-    {
-     "name": "ov01_0220431C",
-     "mode": "thumb",
-     "insns": 22,
-     "size_est": 48,
-     "status": "blocked"
-    },
-    {
-     "name": "ov01_0220434C",
-     "mode": "thumb",
-     "insns": 2,
-     "size_est": 4,
-     "status": "blocked"
-    },
-    {
-     "name": "ov01_02204350",
-     "mode": "thumb",
-     "insns": 66,
-     "size_est": 136,
-     "status": "blocked"
-    },
-    {
-     "name": "ov01_022043D8",
-     "mode": "thumb",
-     "insns": 37,
-     "size_est": 74,
-     "status": "blocked"
-    },
-    {
-     "name": "ov01_02204424",
-     "mode": "thumb",
-     "insns": 37,
-     "size_est": 76,
-     "status": "blocked"
-    },
-    {
-     "name": "ov01_02204470",
-     "mode": "thumb",
-     "insns": 26,
-     "size_est": 62,
-     "status": "blocked"
-    },
-    {
-     "name": "ov01_022044B0",
-     "mode": "thumb",
-     "insns": 9,
-     "size_est": 20,
-     "status": "blocked"
-    },
-    {
-     "name": "ov01_022044C4",
-     "mode": "thumb",
-     "insns": 2,
-     "size_est": 4,
-     "status": "blocked"
-    },
-    {
-     "name": "ov01_022044C8",
-     "mode": "thumb",
-     "insns": 11,
-     "size_est": 22,
-     "status": "blocked"
-    },
-    {
-     "name": "ov01_022044E0",
-     "mode": "thumb",
-     "insns": 16,
-     "size_est": 32,
-     "status": "blocked"
-    },
-    {
-     "name": "ov01_02204500",
-     "mode": "thumb",
-     "insns": 5,
-     "size_est": 10,
-     "status": "blocked"
-    },
-    {
-     "name": "ov01_0220450C",
-     "mode": "thumb",
-     "insns": 5,
-     "size_est": 10,
-     "status": "blocked"
-    },
-    {
-     "name": "ov01_02204518",
-     "mode": "thumb",
-     "insns": 28,
-     "size_est": 58,
-     "status": "blocked"
-    },
-    {
-     "name": "ov01_02204554",
-     "mode": "thumb",
-     "insns": 4,
-     "size_est": 8,
-     "status": "blocked"
-    },
-    {
-     "name": "ov01_0220455C",
-     "mode": "thumb",
-     "insns": 2,
-     "size_est": 4,
-     "status": "blocked"
-    },
-    {
-     "name": "ov01_02204560",
-     "mode": "thumb",
-     "insns": 7,
-     "size_est": 14,
-     "status": "blocked"
-    },
-    {
-     "name": "ov01_02204570",
-     "mode": "thumb",
-     "insns": 16,
-     "size_est": 32,
-     "status": "blocked"
-    },
-    {
-     "name": "ov01_02204590",
-     "mode": "thumb",
-     "insns": 2,
-     "size_est": 4,
-     "status": "blocked"
-    },
-    {
-     "name": "ov01_02204594",
-     "mode": "thumb",
-     "insns": 36,
-     "size_est": 72,
-     "status": "blocked"
-    },
-    {
-     "name": "ov01_022045DC",
-     "mode": "thumb",
-     "insns": 24,
-     "size_est": 48,
-     "status": "blocked"
-    },
-    {
-     "name": "ov01_0220460C",
-     "mode": "thumb",
-     "insns": 16,
-     "size_est": 38,
-     "status": "blocked"
-    },
-    {
-     "name": "ov01_02204634",
-     "mode": "thumb",
-     "insns": 3,
-     "size_est": 6,
-     "status": "blocked"
-    },
-    {
-     "name": "ov01_0220463C",
-     "mode": "thumb",
-     "insns": 25,
-     "size_est": 60,
-     "status": "blocked"
-    },
-    {
-     "name": "ov01_02204678",
-     "mode": "thumb",
-     "insns": 7,
-     "size_est": 14,
-     "status": "blocked"
-    },
-    {
-     "name": "ov01_02204688",
-     "mode": "thumb",
-     "insns": 7,
-     "size_est": 14,
-     "status": "blocked"
-    },
-    {
-     "name": "ov01_02204698",
-     "mode": "thumb",
-     "insns": 5,
-     "size_est": 10,
-     "status": "blocked"
-    },
-    {
-     "name": "ov01_022046A4",
-     "mode": "thumb",
-     "insns": 14,
-     "size_est": 34,
-     "status": "blocked"
-    },
-    {
-     "name": "ov01_022046C8",
-     "mode": "thumb",
-     "insns": 6,
-     "size_est": 12,
-     "status": "blocked"
-    },
-    {
-     "name": "ov01_022046D4",
-     "mode": "thumb",
-     "insns": 8,
-     "size_est": 20,
-     "status": "blocked"
-    },
-    {
-     "name": "ov01_022046E8",
-     "mode": "thumb",
-     "insns": 30,
-     "size_est": 62,
-     "status": "blocked"
-    },
-    {
-     "name": "ov01_02204728",
-     "mode": "thumb",
-     "insns": 13,
-     "size_est": 26,
-     "status": "blocked"
-    },
-    {
-     "name": "ov01_02204744",
-     "mode": "thumb",
-     "insns": 12,
-     "size_est": 30,
-     "status": "blocked"
-    },
-    {
-     "name": "ov01_02204764",
-     "mode": "thumb",
-     "insns": 3,
-     "size_est": 6,
-     "status": "blocked"
-    },
-    {
-     "name": "ov01_0220476C",
-     "mode": "thumb",
-     "insns": 52,
-     "size_est": 110,
-     "status": "blocked"
-    },
-    {
-     "name": "ov01_022047DC",
-     "mode": "thumb",
-     "insns": 40,
-     "size_est": 86,
-     "status": "blocked"
-    },
-    {
-     "name": "ov01_02204834",
-     "mode": "thumb",
-     "insns": 5,
-     "size_est": 10,
-     "status": "blocked"
-    }
-   ],
-   "blocked_reason": "",
-   "attempts": null,
-   "blocker_id": null,
-   "kept_c": false
+   "file": "asm/field/overlay_01_02204004.s",
+   "lsf_kind": "src",
+   "status": "upstream",
+   "functions": []
   },
   {
    "file": "asm/field/overlay_01_apricorn_tree_anim.s",
@@ -50513,6 +49301,8 @@
     "IsCameraTranslationFinished",
     "IsSEPlaying",
     "MI_CpuFill8",
+    "MapLoadManager_ForgetTrackedTarget",
+    "MapLoadManager_TrackTarget",
     "MapObjectArray_NextObject2",
     "MapObjectManager_GetFirstActiveObjectByID",
     "MapObjectManager_GetObjectCount",
@@ -50529,6 +49319,7 @@
     "MapObject_SetCurrentZ",
     "MapObject_SetHeldMovement",
     "MapObject_SetPositionVector",
+    "MapPropManager_LoadOne",
     "MetatileBehavior_IsMagma",
     "NNS_G3dMdlSetMdlFogEnableFlagAll",
     "PlaySE",
@@ -50581,9 +49372,6 @@
     "ov01_021F3B3C",
     "ov01_021F3B44",
     "ov01_021F3B4C",
-    "ov01_021F3C0C",
-    "ov01_021F62E8",
-    "ov01_021F6304",
     "ov01_021F72DC",
     "ov01_021FA2D4",
     "ov01_021FA930",
@@ -80483,6 +79271,7 @@
     "Destroy2DGfxResObjMan",
     "DestroyMsgData",
     "DestroySysTaskAndEnvironment",
+    "FieldMessage_LoadTextPalettes",
     "FieldSystem_TaskIsRunning",
     "FillWindowPixelBuffer",
     "FontID_SetAccessDirect",
@@ -80548,8 +79337,7 @@
     "sub_02035754",
     "sub_02035784",
     "sub_02035798",
-    "sub_0205AA84",
-    "sub_0205B4EC"
+    "sub_0205AA84"
    ],
    "exports": [
     "ov34_0225D7A8",
@@ -91752,6 +90540,9 @@
    "other_sections": [],
    "jumptable_words": 0,
    "imports": [
+    "BillboardLists_Create",
+    "BillboardLists_Delete",
+    "BillboardLists_Draw",
     "BufferIntegerAsString",
     "BufferString",
     "BufferWiFiPlazaActivityName",
@@ -91945,9 +90736,6 @@
     "sub_020182A0",
     "sub_020182A8",
     "sub_0201FA34",
-    "sub_02023738",
-    "sub_02023778",
-    "sub_020237B0",
     "sub_020237EC",
     "sub_02023874",
     "sub_02023910",
@@ -104609,6 +103397,7 @@
     "PlaySE",
     "ReadMsgDataIntoString",
     "RemoveWindow",
+    "ResetVisibleHardwareWindows",
     "Save_PlayerData_GetOptionsAddr",
     "ScheduleBgTilemapBufferTransfer",
     "ScheduleWindowCopyToVram",
@@ -104645,7 +103434,6 @@
     "_s32_div_f",
     "gSystem",
     "memset",
-    "sub_0200FBDC",
     "sub_0200FBF4",
     "sub_020210BC",
     "sub_02021148",
@@ -105569,6 +104357,7 @@
     "PlaySE",
     "ReadMsgDataIntoString",
     "RemoveWindow",
+    "ResetVisibleHardwareWindows",
     "ScheduleBgTilemapBufferTransfer",
     "SetBothScreensModesAndDisable",
     "SetMasterBrightnessNeutral",
@@ -105605,7 +104394,6 @@
     "YesNoPrompt_Reset",
     "gSystem",
     "memset",
-    "sub_0200FBDC",
     "sub_0200FBF4",
     "sub_0203A964",
     "sub_02074490",
@@ -107174,6 +105962,7 @@
     "Party_GetMonAprijuiceModifiers",
     "Party_GetMonByIndex",
     "Party_SetMonAprijuiceModifiers",
+    "ResetVisibleHardwareWindows",
     "SaveArray_Party_Get",
     "Save_Bag_Get",
     "Save_Mailbox_Get",
@@ -107190,7 +105979,6 @@
     "ov59_0223A8E0",
     "ov59_0223A948",
     "ov59_0223A9B8",
-    "sub_0200FBDC",
     "sub_0200FBF4",
     "sub_02031DA0"
    ],
@@ -107427,6 +106215,7 @@
     "Pokepic_StartPaletteFade",
     "ReadMsgDataIntoString",
     "RemoveWindow",
+    "ResetVisibleHardwareWindows",
     "SaveArray_Party_Get",
     "Save_ApricornBox_Get",
     "Save_PlayerData_GetOptionsAddr",
@@ -107492,7 +106281,6 @@
     "gSystem",
     "ov58_022379C0",
     "sub_0200D2A4",
-    "sub_0200FBDC",
     "sub_0200FBF4",
     "sub_02014DA0",
     "sub_02014DB4",
@@ -110212,6 +109000,7 @@
     "OverlayManager_GetData",
     "PlaySE",
     "RemoveWindow",
+    "ResetVisibleHardwareWindows",
     "Save_FrontierData_Get",
     "Save_Frontier_GetStatic",
     "Save_PlayerData_GetOptionsAddr",
@@ -110244,7 +109033,6 @@
     "TouchscreenHitbox_TouchNewIsIn",
     "gSystem",
     "memset",
-    "sub_0200FBDC",
     "sub_0202D488",
     "sub_0202D5DC",
     "sub_0202D8D0",
@@ -126822,6 +125610,7 @@
     "Pokemon_GetIconPalette",
     "ReadMsgDataIntoString",
     "RemoveWindow",
+    "ResetVisibleHardwareWindows",
     "SaveArray_Party_Get",
     "SaveGameNormal",
     "Save_CheckExtraChunksExist",
@@ -126931,7 +125720,6 @@
     "ov84_0223DFF0",
     "sub_0200E5D4",
     "sub_0200F450",
-    "sub_0200FBDC",
     "sub_0200FBF4",
     "sub_02014494",
     "sub_02015494",
@@ -149155,6 +147943,7 @@
     "DestroyMsgData",
     "DoScheduledBgGpuUpdates",
     "DrawFrameAndWindow2",
+    "Field_SetEnvironmentSoundState_None_Unk2",
     "FillWindowPixelBuffer",
     "FontID_Alloc",
     "FontID_Release",
@@ -149306,7 +148095,6 @@
     "sub_02016EDC",
     "sub_02016F2C",
     "sub_02017068",
-    "sub_0203E354",
     "sub_0207083C",
     "sub_0207294C",
     "sub_020729A4"
@@ -161238,6 +160026,7 @@
     "Pokedex_GetSeenFormByIdx",
     "Pokedex_GetSeenSpindaPersonality",
     "Pokedex_SpeciesGetLastSeenGender",
+    "ResetVisibleHardwareWindows",
     "ScheduleSetBgPosText",
     "ScheduleWindowCopyToVram",
     "SetBothScreensModesAndDisable",
@@ -161293,8 +160082,7 @@
     "ov98_0221F090",
     "ov98_0221F0EC",
     "ov98_0221F120",
-    "ov98_0221F150",
-    "sub_0200FBDC"
+    "ov98_0221F150"
    ],
    "exports": [
     "PokeathlonCourseRecord_Exit",
@@ -166825,6 +165613,7 @@
     "ReadMsgDataIntoString",
     "RemoveWindow",
     "ReplaceCharResObjFromNarc",
+    "ResetVisibleHardwareWindows",
     "SafariDecoration_Exit",
     "SafariDecoration_Init",
     "SafariDecoration_Main",
@@ -166904,7 +165693,6 @@
     "_u32_div_f",
     "gSystem",
     "sub_0200D2A4",
-    "sub_0200FBDC",
     "sub_0200FBF4",
     "sub_020135AC",
     "sub_02013910",
@@ -168115,6 +166903,7 @@
     "PhotoAlbum_SetPhotoAtIndex",
     "PlaySE",
     "RemoveWindow",
+    "ResetVisibleHardwareWindows",
     "Save_PhotoAlbum_Get",
     "Save_PlayerData_GetOptionsAddr",
     "Save_PlayerData_GetProfile",
@@ -168163,7 +166952,6 @@
     "_s32_div_f",
     "gSystem",
     "sub_0200D2A4",
-    "sub_0200FBDC",
     "sub_0200FBF4",
     "sub_020210BC",
     "sub_02021148",
@@ -168835,6 +167623,7 @@
     "RemoveTextPrinter",
     "RemoveWindow",
     "ResetAllTextPrinters",
+    "ResetVisibleHardwareWindows",
     "ScheduleBgTilemapBufferTransfer",
     "ScheduleSetBgPosText",
     "ScheduleWindowCopyToVram",
@@ -168869,7 +167658,6 @@
     "YesNoPrompt_Reset",
     "gSystem",
     "sub_0200CE7C",
-    "sub_0200FBDC",
     "sub_02074490",
     "sub_0207449C",
     "sub_020744A8"
@@ -169481,6 +168269,7 @@
     "RegisterMainOverlay",
     "ReleaseBoxMonLock",
     "RemoveWindow",
+    "ResetVisibleHardwareWindows",
     "SaveArray_PCStorage_Get",
     "SaveArray_Party_Get",
     "SaveGameNormal",
@@ -169567,7 +168356,6 @@
     "memset",
     "sub_02006B84",
     "sub_0200F450",
-    "sub_0200FBDC",
     "sub_02014494",
     "sub_02014540",
     "sub_020145B4",
@@ -173338,6 +172126,7 @@
     "Pokedex_GetSeenFormNum_Unown",
     "ReadMsgDataIntoString",
     "RemoveWindow",
+    "ResetVisibleHardwareWindows",
     "Save_PlayerData_GetOptionsAddr",
     "Save_PlayerData_GetProfile",
     "Save_Pokedex_Get",
@@ -173383,7 +172172,6 @@
     "gSystem",
     "sub_0200D2A4",
     "sub_0200E2B8",
-    "sub_0200FBDC",
     "sub_0200FBF4",
     "sub_020210BC",
     "sub_02021148",
@@ -173765,6 +172553,8 @@
     "BeginNormalPaletteFade",
     "G2x_SetBlendAlpha_",
     "GfGfx_EngineATogglePlanes",
+    "HBlankSystem_Start",
+    "HBlankSystem_Stop",
     "Heap_Alloc",
     "IsPaletteFadeFinished",
     "SpriteList_RenderAndAnimateSprites",
@@ -173787,8 +172577,6 @@
     "ov01_021F06EC",
     "ov01_021F0718",
     "ov01_021F074C",
-    "ov01_021FB4F4",
-    "ov01_021FB514",
     "sub_0200FBF4"
    ],
    "exports": [
@@ -174271,6 +173059,8 @@
     "GfGfxLoader_GXLoadPalFromOpenNarc",
     "GfGfxLoader_GetScrnDataFromOpenNarc",
     "GfGfx_EngineATogglePlanes",
+    "HBlankSystem_Start",
+    "HBlankSystem_Stop",
     "Heap_Alloc",
     "Heap_Free",
     "IsBrightnessTransitionActive",
@@ -174315,8 +173105,6 @@
     "ov01_021F12B4",
     "ov01_021F12D0",
     "ov01_021F1310",
-    "ov01_021FB4F4",
-    "ov01_021FB514",
     "sub_0200FBF4"
    ],
    "exports": [
@@ -174471,6 +173259,8 @@
     "FillWindowPixelBuffer",
     "G2x_SetBlendAlpha_",
     "GfGfx_EngineATogglePlanes",
+    "HBlankSystem_Start",
+    "HBlankSystem_Stop",
     "Heap_Alloc",
     "IsPaletteFadeFinished",
     "RemoveWindow",
@@ -174522,8 +173312,6 @@
     "ov01_021F12D0",
     "ov01_021F12E8",
     "ov01_021F1310",
-    "ov01_021FB4F4",
-    "ov01_021FB514",
     "sub_0200FBF4",
     "sub_0200FC20"
    ],
@@ -174615,6 +173403,8 @@
     "GfGfxLoader_LoadFromOpenNarc",
     "GfGfx_EngineASetPlanes",
     "GfGfx_EngineATogglePlanes",
+    "HBlankSystem_Start",
+    "HBlankSystem_Stop",
     "Heap_Alloc",
     "Heap_Free",
     "InitBgFromTemplate",
@@ -174654,8 +173444,6 @@
     "ov01_021F12B4",
     "ov01_021F12D0",
     "ov01_021F12E8",
-    "ov01_021FB4F4",
-    "ov01_021FB514",
     "sub_0200FC20"
    ],
    "exports": [

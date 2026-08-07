@@ -2,7 +2,7 @@
 
 #include "field_system.h"
 #include "overlay_01.h"
-#include "unk_0200FA24.h"
+#include "screen_fade.h"
 
 void CallTask_RestoreOverworld(TaskManager *taskManager);
 
@@ -58,7 +58,7 @@ void PaletteFadeUntilFinished(TaskManager *taskManager) {
         GF_AssertFail();
         return;
     }
-    BeginNormalPaletteFade(0, 0, 0, 0, 6, 1, HEAP_ID_FIELD1);
+    BeginNormalPaletteFade(FADE_BOTH_SCREENS, FADE_TYPE_BRIGHTNESS_OUT, FADE_TYPE_BRIGHTNESS_OUT, 0, 6, 1, HEAP_ID_FIELD1);
     TaskManager_Call(taskManager, sub_020552D4, NULL);
 }
 
@@ -67,7 +67,7 @@ void CallTask_FadeFromBlack(TaskManager *taskManager) {
         GF_AssertFail();
         return;
     }
-    BeginNormalPaletteFade(0, 1, 1, 0, 6, 1, HEAP_ID_FIELD1);
+    BeginNormalPaletteFade(FADE_BOTH_SCREENS, FADE_TYPE_BRIGHTNESS_IN, FADE_TYPE_BRIGHTNESS_IN, 0, 6, 1, HEAP_ID_FIELD1);
     TaskManager_Call(taskManager, sub_020552D4, NULL);
 }
 

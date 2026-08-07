@@ -14,7 +14,7 @@ void *Save_Misc_Get(void *saveData);
 void sub_0202AC0C(void *saveMisc, u8 *a1);
 BOOL sub_02055198(void *fieldSystem, u16 seqNo);
 int sub_02087988(void *mgr);
-void sub_0203E354(void);
+void Field_SetEnvironmentSoundState_None_Unk2(void);
 void GfGfx_SwapDisplay(void);
 void GF_SndHandleSetPlayerVolume(u32 a0, u32 a1);
 
@@ -108,7 +108,7 @@ static BOOL sub_02087F2C(OverlayManager *man, int *state) {
         UnloadOverlayByID(FS_OVERLAY_ID(OVY_40));
         gSystem.screensFlipped = 0;
         GfGfx_SwapDisplay();
-        sub_0203E354();
+        Field_SetEnvironmentSoundState_None_Unk2();
         return TRUE;
     }
     return FALSE;

@@ -29,11 +29,18 @@
 //     and `if(!call)..` forms put NULL at end). 548C0: needs call==0 and flag!=1 to
 //     SHARE one `return 0` block; MWCC keeps inlining the call==0 fail. 954: wants
 //     `bge`/`ble` branch order; mine emits `blt`/`bgt`.
-// FieldSystem (field_system.h, FROZEN): unk2C@0x2c, mapMatrix@0x30,
+// FieldSystem (field_system.h): mapLoadManager@0x2c, mapMatrix@0x30,
 //   terrainAttributes@0x5c, unk60@0x60 (typed u32 but is a 2-fn vtable, cast to
-//   FieldTileProvider*), 0x98 is filler (read via cast). Provider slot 0 is a
+//   FieldTileProvider*), 0x98 is dynamicTerrainHeightManager (read via cast). Provider slot 0 is a
 //   5-arg fx32 getHeight, slot 1 a 4-arg BOOL getAttr.
 #define UNK_02054648_OWN_DECLS
+
+// field/dynamic_terrain_height.h (via field_system.h) declares the manager with
+// upstream's types; this TU was matched against the overlay_01_021FB368_internal.h
+// view. Shadow upstream's decls so the internal header's stand (New/Free are
+// never called here — only the struct layout and zone query functions are used).
+#define DynamicTerrainHeightManager_New  DynamicTerrainHeightManager_New_UpstreamDecl
+#define DynamicTerrainHeightManager_Free DynamicTerrainHeightManager_Free_UpstreamDecl
 
 #include "unk_02054648.h"
 
@@ -43,23 +50,26 @@
 #include "field_types_def.h"
 #include "heap.h"
 #include "map_matrix.h"
-#include "overlay_01_021FB368_internal.h"
 #include "terrain_attributes.h"
 #include "unk_020648EC.h"
 
+#undef DynamicTerrainHeightManager_New
+#undef DynamicTerrainHeightManager_Free
+#include "overlay_01_021FB368_internal.h"
+
 void _s32_div_f(void);
 
-void ov01_021F630C(int idx, FieldSystemUnkSub2C *unk2C, s32 *out);
+void ov01_021F630C(int idx, MapLoadManager *unk2C, s32 *out);
 int ov01_021F3B44(int count, u8 j);
 int ov01_021F3B34(int handle);
 void ov01_021F3B0C(VecFx32 *out, void *src);
 u8 ov01_021F6328(int linearTileIdx);
-u8 ov01_021F635C(int matrixBlockIdx, int tileData, FieldSystemUnkSub2C *unk2C);
-void *ov01_021F652C(FieldSystemUnkSub2C *unk2C, int i);
-BOOL ov01_021F654C(FieldSystemUnkSub2C *unk2C, int x, int z, u8 *outIdx);
-void *ov01_021F65D0(FieldSystemUnkSub2C *unk2C, u8 idx);
-void *ov01_021F65E4(FieldSystemUnkSub2C *unk2C, u8 idx);
-void *ov01_021F6600(FieldSystemUnkSub2C *unk2C, u8 idx);
+u8 ov01_021F635C(int matrixBlockIdx, int tileData, MapLoadManager *unk2C);
+void *ov01_021F652C(MapLoadManager *unk2C, int i);
+BOOL ov01_021F654C(MapLoadManager *unk2C, int x, int z, u8 *outIdx);
+void *ov01_021F65D0(MapLoadManager *unk2C, u8 idx);
+void *ov01_021F65E4(MapLoadManager *unk2C, u8 idx);
+void *ov01_021F6600(MapLoadManager *unk2C, u8 idx);
 int ov01_021FAE50(int mode, fx32 arg1, fx32 x, fx32 z, void *mesh, fx32 *out);
 
 typedef struct FieldTileProvider {
@@ -105,12 +115,12 @@ static s32 sub_02054648(s32 a, s32 b) {
 static fx32 sub_02054654(FieldSystem *fieldSystem, int mode, fx32 refHeight, fx32 xFx32, fx32 zFx32, u8 *outSelector) {
     fx32 height = 0;
     u8 selector = 0;
-    FieldSystemUnkSub2C *unk2C = fieldSystem->unk2C;
+    MapLoadManager *unk2C = fieldSystem->mapLoadManager;
     u8 mapWidth = MapMatrix_GetWidth(fieldSystem->mapMatrix);
     int width32 = (int)mapWidth << 5;
     int tile_x = (xFx32 + (xFx32 >> 31)) >> 16;
     int tile_z = (zFx32 + (zFx32 >> 31)) >> 16;
-    UnkStruct_Ov01_021FB368 *zoneMgr = *(UnkStruct_Ov01_021FB368 **)fieldSystem->filler_98;
+    UnkStruct_Ov01_021FB368 *zoneMgr = *(UnkStruct_Ov01_021FB368 **)&fieldSystem->dynamicTerrainHeightManager;
     u8 zoneIdx;
     BOOL zoneFound = ov01_021FB42C(tile_x, tile_z, zoneMgr, &zoneIdx);
     int block_col = tile_x >> 5;
@@ -201,7 +211,7 @@ _020547D2:
 // clang-format on
 
 static BOOL sub_020547D8(FieldSystem *fieldSystem, int x, int z, u16 *out) {
-    FieldSystemUnkSub2C *unk2C = fieldSystem->unk2C;
+    MapLoadManager *unk2C = fieldSystem->mapLoadManager;
     u8 tileIdx;
     if (!ov01_021F654C(unk2C, x, z, &tileIdx)) {
         *out = 0xFF;
@@ -229,7 +239,7 @@ static BOOL sub_02054824(FieldSystem *fieldSystem, int x, int z, u16 *out) {
 }
 
 void *sub_02054874(FieldSystem *fieldSystem, int x, int z) {
-    FieldSystemUnkSub2C *unk2C = fieldSystem->unk2C;
+    MapLoadManager *unk2C = fieldSystem->mapLoadManager;
     u8 tileIdx;
     if (ov01_021F654C(unk2C, x, z, &tileIdx)) {
         return ov01_021F6600(unk2C, tileIdx);
@@ -237,11 +247,11 @@ void *sub_02054874(FieldSystem *fieldSystem, int x, int z) {
     return NULL;
 }
 
-void sub_0205489C(u32 *a0, int a1) {
+void sub_0205489C(void **a0, int a1) {
     if (a1 == 0) {
-        *a0 = (u32)&sProvider0;
+        *a0 = (void *)&sProvider0;
     } else if (a1 == 1) {
-        *a0 = (u32)&sProvider1;
+        *a0 = (void *)&sProvider1;
     } else {
         GF_ASSERT(FALSE);
     }
@@ -331,7 +341,7 @@ u32 sub_020549F4(FieldSystem *fieldSystem, VecFx32 *playerPos, u32 x, u32 y, u32
     }
     if (elev == 0) {
         u32 result;
-        if (!sub_02064938(fieldSystem, x, y, (u32)playerPos->y, (u32)&result)) {
+        if (!Gymmick_CheckCollision(fieldSystem, x, y, (u32)playerPos->y, (u32)&result)) {
             result = sub_020548C0(fieldSystem, (int)x, (int)y);
             if (!result && selector == 2) {
                 GetMetatileBehavior(fieldSystem, (int)x, (int)y);
@@ -370,9 +380,9 @@ BOOL sub_02054AE4(FieldSystem *fieldSystem, int targetType, s32 *bounds, int *ou
     u8 outerI;
     for (outerI = 0; outerI < 4; outerI++) {
         s32 count;
-        ov01_021F630C(outerI, fieldSystem->unk2C, &count);
+        ov01_021F630C(outerI, fieldSystem->mapLoadManager, &count);
         if (count != 0) {
-            void *tileHandle = ov01_021F652C(fieldSystem->unk2C, outerI);
+            void *tileHandle = ov01_021F652C(fieldSystem->mapLoadManager, outerI);
             u8 mapWidth = MapMatrix_GetWidth(fieldSystem->mapMatrix);
             VecFx32 tileCenter;
             sub_02054DC8((int)tileHandle, mapWidth, &tileCenter);
@@ -398,9 +408,9 @@ BOOL sub_02054B74(FieldSystem *fieldSystem, u32 *values, u32 count, s32 *bounds,
     u8 outerI;
     for (outerI = 0; outerI < 4; outerI++) {
         s32 slotCount;
-        ov01_021F630C(outerI, fieldSystem->unk2C, &slotCount);
+        ov01_021F630C(outerI, fieldSystem->mapLoadManager, &slotCount);
         if (slotCount != 0) {
-            void *tileHandle = ov01_021F652C(fieldSystem->unk2C, outerI);
+            void *tileHandle = ov01_021F652C(fieldSystem->mapLoadManager, outerI);
             u8 mapWidth = MapMatrix_GetWidth(fieldSystem->mapMatrix);
             VecFx32 tileCenter;
             sub_02054DC8((int)tileHandle, mapWidth, &tileCenter);
@@ -432,7 +442,7 @@ BOOL sub_02054C20(FieldSystem *fieldSystem, int targetType, int *outObj, void **
     u8 outerI;
     for (outerI = 0; outerI < 4; outerI++) {
         s32 slotCount;
-        ov01_021F630C(outerI, fieldSystem->unk2C, &slotCount);
+        ov01_021F630C(outerI, fieldSystem->mapLoadManager, &slotCount);
         if (slotCount != 0) {
             u8 innerJ;
             for (innerJ = 0; innerJ < 32; innerJ++) {
@@ -443,7 +453,7 @@ BOOL sub_02054C20(FieldSystem *fieldSystem, int targetType, int *outObj, void **
                         *outObj = obj;
                     }
                     if (outHandle != NULL) {
-                        *outHandle = ov01_021F652C(fieldSystem->unk2C, outerI);
+                        *outHandle = ov01_021F652C(fieldSystem->mapLoadManager, outerI);
                     }
                     return TRUE;
                 }
@@ -457,7 +467,7 @@ BOOL sub_02054C90(FieldSystem *fieldSystem, u32 *values, u32 count, int *outObj,
     u8 outerI;
     for (outerI = 0; outerI < 4; outerI++) {
         s32 slotCount;
-        ov01_021F630C(outerI, fieldSystem->unk2C, &slotCount);
+        ov01_021F630C(outerI, fieldSystem->mapLoadManager, &slotCount);
         if (slotCount != 0) {
             u8 innerJ;
             for (innerJ = 0; innerJ < 32; innerJ++) {
@@ -491,9 +501,9 @@ int *sub_02054D10(FieldSystem *fieldSystem, enum HeapID heapId, int capacity, s3
     }
     for (outerI = 0; outerI < 4; outerI++) {
         s32 slotCount;
-        ov01_021F630C(outerI, fieldSystem->unk2C, &slotCount);
+        ov01_021F630C(outerI, fieldSystem->mapLoadManager, &slotCount);
         if (slotCount != 0) {
-            void *tileHandle = ov01_021F652C(fieldSystem->unk2C, outerI);
+            void *tileHandle = ov01_021F652C(fieldSystem->mapLoadManager, outerI);
             u8 mapWidth = MapMatrix_GetWidth(fieldSystem->mapMatrix);
             VecFx32 tileCenter;
             sub_02054DC8((int)tileHandle, mapWidth, &tileCenter);

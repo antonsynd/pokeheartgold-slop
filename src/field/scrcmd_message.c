@@ -2,7 +2,6 @@
 
 #include "bg_window.h"
 #include "field_system.h"
-#include "fieldmap.h"
 #include "font.h"
 #include "mail_message.h"
 #include "map_object.h"
@@ -12,6 +11,7 @@
 #include "pm_string.h"
 #include "scrcmd.h"
 #include "script.h"
+#include "script_manager.h"
 #include "text.h"
 #include "text_0205B4EC.h"
 

@@ -35,13 +35,15 @@ for header in $files; do
     # - end with ); (actual declarations, not calls or definitions)
     # - don't start with control flow keywords
     # Match lines like "type name(...);" — require a return type before the name
+    # `|| true`: with pipefail, a header with no matching declarations makes
+    # the greps exit non-zero, which set -e turns into a silent abort.
     dupes=$(grep -vE '^\s*(\*|//|/\*|#|\{|\})' "$header" \
         | grep -E '\)\s*;' \
         | grep -E '^\s*[A-Za-z_]' \
         | grep -oE '\b[A-Za-z_][A-Za-z_0-9]+\s+[A-Za-z_][A-Za-z_0-9]*\s*\(' \
         | grep -oE '[A-Za-z_][A-Za-z_0-9]*\s*\($' \
         | sed 's/\s*(//' \
-        | sort | uniq -d)
+        | sort | uniq -d || true)
 
     if [[ -n "$dupes" ]]; then
         for fn in $dupes; do

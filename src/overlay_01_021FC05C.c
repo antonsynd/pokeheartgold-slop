@@ -194,7 +194,7 @@ static BOOL ov01_021FC2C4(FieldSystem *fieldSystem) {
 }
 
 static BOOL ov01_021FC2C8(FieldSystem *fieldSystem) {
-    int v = ov01_021EB31C(fieldSystem->unk4->unk_0C);
+    int v = ov01_021EB31C(fieldSystem->unk4->weatherManager);
     int i;
     for (i = 0; i < 3; i++) {
         if (v == ov01_02208BC0[i]) {

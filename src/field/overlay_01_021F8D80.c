@@ -54,7 +54,7 @@ extern fx32 ov01_022054E0(LocalMapObject *object);
 extern int ov01_02205564(LocalMapObject *object);
 extern int ov01_022055B0(LocalMapObject *object);
 extern void ov01_02205808(int a0, LocalMapObject *object, Sprite *sprite);
-extern void ov01_021F944C(void *fldObjSys, MapObjectManager *manager, u32 objectCount, u32 priority, u32 a4, u32 a5, u32 a6, u32 a7);
+extern void ov01_021F944C(void *fldObjSys, MapObjectManager *manager, u32 objectCount, u32 priority, int a4, int a5, const int *a6, int a7);
 extern void ov01_021F94A0(void *fldObjSys);
 extern void ov01_021F9510(LocalMapObject *object, FieldObjMove *mv);
 extern void ov01_021F95A8(LocalMapObject *object, FieldObjMove *mv);
@@ -84,7 +84,7 @@ static void ov01_021F9154(LocalMapObject *object, Sprite *sprite, FieldObjMove *
 static void ov01_021F917C(LocalMapObject *object, Sprite *sprite, FieldObjMove *mv);
 static void ov01_021F91A4(LocalMapObject *object, Sprite *sprite);
 static void ov01_021F91E4(LocalMapObject *object);
-void ov01_021F91F8(MapObjectManager *manager, u32 a1, u32 a2, u32 a3, u32 a4);
+void ov01_021F91F8(MapObjectManager *manager, int a1, int a2, const int *a3, int a4);
 void ov01_021F9250(MapObjectManager *manager);
 static void FldObjSys_OpenMModelNarc(MapObjectManager *manager);
 static void FldObjSys_CloseMModelNarc(MapObjectManager *manager);
@@ -339,21 +339,21 @@ static void ov01_021F91E4(LocalMapObject *object) {
     ov01_021F95A8(object, (FieldObjMove *)sub_0205F40C(object));
 }
 
-void ov01_021F91F8(MapObjectManager *manager, u32 a1, u32 a2, u32 a3, u32 a4) {
+void ov01_021F91F8(MapObjectManager *manager, int a1, int a2, const int *a3, int a4) {
     u32 objectCount;
     u32 priority;
-    GF_ASSERT(MapObjectManager_GetFlagsBitsMask(manager, (MapObjectManagerFlagBits)1) == 0);
+    GF_ASSERT(MapObjectManager_GetFlagsBitsMask(manager, (MapObjectFlagBits)1) == 0);
     FldObjSys_OpenMModelNarc(manager);
     objectCount = MapObjectManager_GetObjectCount(manager);
     priority = MapObjectManager_GetPriority(manager) - 1;
     ov01_021F944C(sub_0205F1A0(manager), manager, objectCount, priority, a1, a2, a3, a4);
-    MapObjectManager_SetFlagsBits(manager, (MapObjectManagerFlagBits)1);
+    MapObjectManager_SetFlagsBits(manager, (MapObjectFlagBits)1);
 }
 
 void ov01_021F9250(MapObjectManager *manager) {
     GF_ASSERT(sub_0205F5D4(manager) == TRUE);
     ov01_021F94A0(sub_0205F1A0(manager));
-    MapObjectManager_ClearFlagsBits(manager, (MapObjectManagerFlagBits)1);
+    MapObjectManager_ClearFlagsBits(manager, (MapObjectFlagBits)1);
     FldObjSys_CloseMModelNarc(manager);
 }
 
@@ -366,7 +366,7 @@ static void FldObjSys_CloseMModelNarc(MapObjectManager *manager) {
 }
 
 void ov01_021F92A0(LocalMapObject *object) {
-    if (MapObjectManager_GetFlagsBitsMask(MapObject_GetManager(object), (MapObjectManagerFlagBits)4) == 0 && MapObject_GetFlagsBitsMask(object, (MapObjectFlagBits)(1 << 0xe)) != 0) {
+    if (MapObjectManager_GetFlagsBitsMask(MapObject_GetManager(object), (MapObjectFlagBits)4) == 0 && MapObject_GetFlagsBitsMask(object, (MapObjectFlagBits)(1 << 0xe)) != 0) {
         if (MapObject_CheckMovementPaused(object) == 0 || MapObject_CheckFlag4(object) != 0) {
             sub_0205F484(object);
         }

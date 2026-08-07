@@ -22,6 +22,10 @@
 // when flipping main.lsf to src.
 #define OV02_02248728_OWN_DECLS
 
+// map_prop.h (via field_system.h) declares MapPropManager_LoadOne as void-return, but
+// this TU was matched consuming r0 (real return, non-void). Shadow the header decl
+// so the int-return extern below stands without an indirect-call cast.
+#define MapPropManager_LoadOne MapPropManager_LoadOne_UpstreamVoidDecl
 #include "global.h"
 
 #include "constants/gx.h"
@@ -37,7 +41,6 @@
 #include "field_roamer.h"
 #include "field_system.h"
 #include "field_warp_tasks.h"
-#include "fieldmap.h"
 #include "filesystem.h"
 #include "filesystem_files_def.h"
 #include "follow_mon.h"
@@ -50,6 +53,8 @@
 #include "pokemon.h"
 #include "roamer.h"
 #include "save_local_field_data.h"
+#include "screen_fade.h"
+#include "script_manager.h"
 #include "script_pokemon_util.h"
 #include "sprite.h"
 #include "sprite_transfer.h"
@@ -58,7 +63,6 @@
 #include "unk_02005D10.h"
 #include "unk_02009D48.h"
 #include "unk_0200A090.h"
-#include "unk_0200FA24.h"
 #include "unk_02013FDC.h"
 #include "unk_02062108.h"
 
@@ -124,7 +128,6 @@ typedef struct ov02_A9D8Entry {
 // follow-mon task-data accessor (defined in unk_020689C8.c); local extern matches
 // the convention used by other overlays that don't pull in the full header.
 extern void *sub_02068D74(void *work);
-extern void *sub_02068D98(void *a0);              // no header included here
 extern void sub_02068B48(int a0);                 // unk_020689C8.h
 extern void ov01_021E8E70(void *a, int b, int c); // no header yet
 extern BOOL ov01_022060B8(FieldSystem *fieldSystem, u8 a1, u8 a2);
@@ -169,7 +172,6 @@ extern void sub_02066BE8(void *state, u32 a1, u16 value);                       
 extern void ov01_021FBD38(Field3dModel *model, void *narcData);                                                             // no header included here
 extern void ov01_021FBDFC(Field3dModel *model);                                                                             // no header included here
 extern void ov01_021FBE70(Field3DModelAnimation *anim, Field3dModel *model, void *anmResource, NNSFndAllocator *allocator); // no header included here
-extern void ov01_021F1448(void *a0);                                                                                        // no header included here
 extern void *ov01_021FCD2C(FieldSystem *fieldSystem, int a1);                                                               // no header included here
 extern void ov01_021FCD8C(void *a0, int a1, fx32 a2, int a3);                                                               // no header included here
 extern void *Save_SafariZone_Get(SaveData *saveData);                                                                       // safari_zone.h, not included
@@ -213,7 +215,8 @@ extern void *ov01_021FB90C(int a0, void *a1);                                   
 extern BOOL ov01_021E8F10(void *a0, int a1);                                                                           // no header included here
 extern void ov01_021E8ED0(void *a0, void *a1, int a2);                                                                 // no header included here
 extern NNSG3dResMdlSet *NNS_G3dGetMdlSet(const NNSG3dResFileHeader *header);                                           // res_struct_accessor.h, not included (IPA)
-extern int ov01_021F3C0C(void *a0, int a1, const VecFx32 *a2, const VecFx32 *a3, void *a4);                            // overlay_01.h not included (real return non-void)
+#undef MapPropManager_LoadOne
+extern int MapPropManager_LoadOne(void *a0, int a1, const VecFx32 *a2, const VecFx32 *a3, void *a4);                   // overlay_01.h not included (real return non-void)
 extern void *ov01_021F3B60(void *a0, int a1);                                                                          // no header included here
 extern void ov01_021E8E40(void *a0, int a1, int a2, void *a3);                                                         // no header included here
 extern void ov01_021F36DC(int a0, void *a1);                                                                           // no header included here
@@ -235,10 +238,9 @@ extern BOOL ov01_02206268(FieldSystem *fieldSystem);                            
 extern int ov01_022062CC(FieldSystem *fieldSystem);                                                                  // overlay_01.h, not included
 extern void PlayCryEx(int, int, int, int, int, int);                                                                 // sound_02004A44.h, not included
 extern void PlayCry(u16 species, u8 form);                                                                           // sound_chatot.h, not included
-extern int Field_GetTimeOfDay(FieldSystem *fieldSystem);                                                             // unk_02055418.h, not included (TIMEOFDAY as int)
 extern void GfGfx_EngineATogglePlanes(u8 planeMask, u8 enable);                                                      // gf_gfx_planes.h, not included
 extern void *GfGfxLoader_LoadFromNarc(NarcId narcId, s32 fileId, BOOL isCompressed, enum HeapID heapID, BOOL atEnd); // gf_gfx_loader.h, not included
-extern void sub_0205B4EC(int a0, int a1);                                                                            // text_0205B4EC.h, not included
+extern void FieldMessage_LoadTextPalettes(int a0, int a1);                                                           // text_0205B4EC.h, not included
 extern void *sub_020689C8(int a0, int a1);                                                                           // unk_020689C8.h, not included
 extern u16 GF_DegreeToSinCosIdx(u16 deg);                                                                            // math_util.h, not included
 extern u16 LCRandom(void);                                                                                           // math_util.h, not included
@@ -261,7 +263,7 @@ extern u8 sub_0205B5B4(Window *window, String *string, Options *options, BOOL sp
 extern u32 PlayerProfile_GetTrainerID(PlayerProfile *profile);                          // player_data.h, not included
 extern void *Save_SafariZone_Get(SaveData *saveData);                                   // safari_zone.h, not included (opaque)
 extern u8 SafariZone_GetObjectUnlockLevel(void *safariZone);                            // safari_zone.h, not included
-extern void *Field_GetBgEvents(FieldSystem *fieldSystem);                               // map_events.h, not included (BG_EVENT opaque)
+extern void *Field_GetBgEvents(FieldSystem *fieldSystem);                               // map_events.h, not included (BgEvent opaque)
 extern u32 Field_GetNumBgEvents(FieldSystem *fieldSystem);                              // map_events.h, not included
 
 // ov02_0224E020 dispatch tables (rodata, still in asm; defined later). Indexed by
@@ -282,7 +284,6 @@ extern WallpaperPasswordBank *WallpaperPasswordBank_Create(enum HeapID heapID);
 extern void WallpaperPasswordBank_Delete(WallpaperPasswordBank *bank);
 extern u32 WallpaperPasswordBank_GetCount(WallpaperPasswordBank *bank);
 extern s16 WallpaperPasswordBank_GetIndexOfWord(WallpaperPasswordBank *bank, s32 word);
-extern void sub_02068DB8(void *a0, VecFx32 *out);                            // no header included here
 extern u32 sub_02068D90(void *a0);                                           // unk_020689C8.c, no C proto
 extern void sub_02068DA8(void *a0, VecFx32 *src);                            // unk_020689C8.c, no C proto
 extern void Field3dObject_SetPos(Field3dObject *object, const VecFx32 *pos); // .public, no C proto yet
@@ -1823,11 +1824,11 @@ WIP_LOCAL NARC *ov02_022493F0(void) {
 }
 
 WIP_LOCAL void ov02_022493FC(void) {
-    BeginNormalPaletteFade(0, 1, 1, RGB_WHITE, 6, 1, HEAP_ID_FIELD1);
+    BeginNormalPaletteFade(FADE_BOTH_SCREENS, FADE_TYPE_BRIGHTNESS_IN, FADE_TYPE_BRIGHTNESS_IN, RGB_WHITE, 6, 1, HEAP_ID_FIELD1);
 }
 
 WIP_LOCAL void ov02_02249420(void) {
-    BeginNormalPaletteFade(0, 0, 0, RGB_WHITE, 6, 1, HEAP_ID_FIELD1);
+    BeginNormalPaletteFade(FADE_BOTH_SCREENS, FADE_TYPE_BRIGHTNESS_OUT, FADE_TYPE_BRIGHTNESS_OUT, RGB_WHITE, 6, 1, HEAP_ID_FIELD1);
 }
 
 WIP_LOCAL void ov02_02249444(FieldSystem *fieldSystem, BOOL visible) {
@@ -2423,7 +2424,7 @@ WIP_LOCAL void ov02_02249FD4(void *work) {
     ov02_0224A288(work);
     reg_G2_BG0CNT = (reg_G2_BG0CNT & ~3) | *(u16 *)((u8 *)work + 0x24);
     reg_G2_BG3CNT = (reg_G2_BG3CNT & ~3) | *(u16 *)((u8 *)work + 0x26);
-    sub_0205B4EC(0, 1);
+    FieldMessage_LoadTextPalettes(0, 1);
     GfGfx_EngineATogglePlanes(8, 1);
 }
 
@@ -2433,7 +2434,7 @@ WIP_LOCAL void ov02_0224A028(void *work) {
     ov02_0224A288(work);
     reg_G2_BG0CNT = (reg_G2_BG0CNT & ~3) | *(u16 *)((u8 *)work + 0x24);
     reg_G2_BG3CNT = (reg_G2_BG3CNT & ~3) | *(u16 *)((u8 *)work + 0x26);
-    sub_0205B4EC(0, 1);
+    FieldMessage_LoadTextPalettes(0, 1);
     GfGfx_EngineATogglePlanes(8, 1);
 }
 
@@ -3680,7 +3681,7 @@ WIP_LOCAL BOOL PokecenterAnimRun(TaskManager *taskManager) {
         vec28.y = ((VecFx32 *)env)->y + ov02_02253D90[*(u8 *)((u8 *)env + 0xd)].y;
         vec28.z = ((VecFx32 *)env)->z + ov02_02253D90[*(u8 *)((u8 *)env + 0xd)].z;
         PlaySE(SEQ_SE_DP_BOWA);
-        *(u8 *)((u8 *)env + *(u8 *)((u8 *)env + 0xd) + 0x10) = ov01_021F3C0C(*(void **)((u8 *)fieldSystem + 0x9c), 0x6b, &vec28, &vec18, *(void **)((u8 *)fieldSystem + 0x54));
+        *(u8 *)((u8 *)env + *(u8 *)((u8 *)env + 0xd) + 0x10) = MapPropManager_LoadOne(*(void **)((u8 *)fieldSystem + 0x9c), 0x6b, &vec28, &vec18, *(void **)((u8 *)fieldSystem + 0x54));
         (*(u8 *)((u8 *)env + 0xf))++;
         break;
     }
@@ -3894,9 +3895,9 @@ WIP_LOCAL int ov02_0224C0B0(TaskManager *taskManager, FieldSystem *fieldSystem, 
         return 0;
     }
     if (*(int *)((u8 *)work + 0xc) == 2) {
-        BeginNormalPaletteFade(0, 0, 0, 0, 6, 1, HEAP_ID_FIELD1);
+        BeginNormalPaletteFade(FADE_BOTH_SCREENS, FADE_TYPE_BRIGHTNESS_OUT, FADE_TYPE_BRIGHTNESS_OUT, 0, 6, 1, HEAP_ID_FIELD1);
     } else {
-        BeginNormalPaletteFade(0, 0, 0, 0x7fff, 6, 1, HEAP_ID_FIELD1);
+        BeginNormalPaletteFade(FADE_BOTH_SCREENS, FADE_TYPE_BRIGHTNESS_OUT, FADE_TYPE_BRIGHTNESS_OUT, 0x7fff, 6, 1, HEAP_ID_FIELD1);
     }
     (*(int *)((u8 *)work))++;
     return 0;
@@ -3956,9 +3957,9 @@ WIP_LOCAL BOOL ov02_0224C1F8(TaskManager *taskManager) {
 WIP_LOCAL int ov02_0224C234(TaskManager *taskManager, FieldSystem *fieldSystem, void *work) {
     void *p;
     if (*(int *)((u8 *)work + 0xc) == 2) {
-        BeginNormalPaletteFade(0, 1, 1, 0, 6, 1, HEAP_ID_FIELD1);
+        BeginNormalPaletteFade(FADE_BOTH_SCREENS, FADE_TYPE_BRIGHTNESS_IN, FADE_TYPE_BRIGHTNESS_IN, 0, 6, 1, HEAP_ID_FIELD1);
     } else {
-        BeginNormalPaletteFade(0, 1, 1, 0x7fff, 6, 1, HEAP_ID_FIELD1);
+        BeginNormalPaletteFade(FADE_BOTH_SCREENS, FADE_TYPE_BRIGHTNESS_IN, FADE_TYPE_BRIGHTNESS_IN, 0x7fff, 6, 1, HEAP_ID_FIELD1);
     }
     p = ov01_021FCD2C(fieldSystem, 4);
     *(void **)((u8 *)work + 0x1c) = p;
@@ -4377,7 +4378,7 @@ WIP_LOCAL int ov02_0224C75C(TaskManager *taskManager, FieldSystem *fieldSystem, 
     if (++*(int *)((u8 *)work + 4) < 8) {
         return 0;
     }
-    BeginNormalPaletteFade(0, 0, 0, 0, 6, 1, HEAP_ID_FIELD1);
+    BeginNormalPaletteFade(FADE_BOTH_SCREENS, FADE_TYPE_BRIGHTNESS_OUT, FADE_TYPE_BRIGHTNESS_OUT, 0, 6, 1, HEAP_ID_FIELD1);
     (*(int *)((u8 *)work))++;
     return 0;
 }
@@ -4460,7 +4461,7 @@ WIP_LOCAL int ov02_0224C93C(TaskManager *taskManager, FieldSystem *fieldSystem, 
     if (++*(int *)((u8 *)work + 4) < 8) {
         return 0;
     }
-    BeginNormalPaletteFade(0, 0, 0, 0x7fff, 6, 1, HEAP_ID_FIELD1);
+    BeginNormalPaletteFade(FADE_BOTH_SCREENS, FADE_TYPE_BRIGHTNESS_OUT, FADE_TYPE_BRIGHTNESS_OUT, 0x7fff, 6, 1, HEAP_ID_FIELD1);
     (*(int *)((u8 *)work))++;
     return 0;
 }
@@ -4740,7 +4741,7 @@ WIP_LOCAL BOOL ov02_0224CE28(TaskManager *taskManager) {
         vec24.y = ((VecFx32 *)env)->y + ov02_02253DD8[*(u8 *)((u8 *)env + 0xd)].y;
         vec24.z = ((VecFx32 *)env)->z + ov02_02253DD8[*(u8 *)((u8 *)env + 0xd)].z;
         PlaySE(SEQ_SE_DP_BOWA);
-        *(u8 *)((u8 *)env + *(u8 *)((u8 *)env + 0xd) + 0x10) = ov01_021F3C0C(*(void **)((u8 *)fieldSystem + 0x9c), 0x6b, &vec24, &vec18, *(void **)((u8 *)fieldSystem + 0x54));
+        *(u8 *)((u8 *)env + *(u8 *)((u8 *)env + 0xd) + 0x10) = MapPropManager_LoadOne(*(void **)((u8 *)fieldSystem + 0x9c), 0x6b, &vec24, &vec18, *(void **)((u8 *)fieldSystem + 0x54));
         (*(u8 *)((u8 *)env + 0xf))++;
         break;
     }
@@ -7798,7 +7799,7 @@ WIP_LOCAL void ov02_0224F64C(FieldSystem *fieldSystem, void *arg1) {
 }
 
 WIP_LOCAL void ov02_0224F698(FieldSystem *fieldSystem, void *out) {
-    *(s8 *)((u8 *)out + 0x15) = FieldSystem_UnkSub108_GetMonMood(*(FieldSystemUnk108 **)((u8 *)fieldSystem + 0x108));
+    *(s8 *)((u8 *)out + 0x15) = FieldSystem_UnkSub108_GetMonMood(*(FieldSystemUnkSub108 **)((u8 *)fieldSystem + 0x108));
 }
 
 WIP_LOCAL void ov02_0224F6AC(FieldSystem *fieldSystem, int a1, int a2, void *work) {
@@ -8755,14 +8756,14 @@ WIP_LOCAL void FollowMon_PlaceholdersSet(void *work, void *messageFormat) {
 WIP_LOCAL void ov02_02250504(void *work) {
     Pokemon *mon = GetFirstAliveMonInParty_CrashIfNone(SaveArray_Party_Get(*(SaveData **)((u8 *)work + 0xc)));
     int val;
-    val = FieldSystem_UnkSub108_GetMonMood(*(FieldSystemUnk108 **)((u8 *)work + 0x108));
+    val = FieldSystem_UnkSub108_GetMonMood(*(FieldSystemUnkSub108 **)((u8 *)work + 0x108));
     val += *(s8 *)((u8 *)*(void **)((u8 *)work + 0x120) + 0x815);
     if (val > 0x7f) {
         val = 0x7f;
     } else if (val < -127) {
         val = -127;
     }
-    FieldSystem_UnkSub108_SetMonMood(*(FieldSystemUnk108 **)((u8 *)work + 0x108), val);
+    FieldSystem_UnkSub108_SetMonMood(*(FieldSystemUnkSub108 **)((u8 *)work + 0x108), val);
     val = GetMonData(mon, MON_DATA_FRIENDSHIP, NULL);
     val += *(s8 *)((u8 *)*(void **)((u8 *)work + 0x120) + 0x814);
     if (val > 0xff) {

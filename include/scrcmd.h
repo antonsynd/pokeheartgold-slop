@@ -3,9 +3,9 @@
 
 #include "constants/scrcmd.h"
 
-#include "fieldmap.h"
 #include "save_special_ribbons.h"
 #include "script.h"
+#include "script_manager.h"
 
 static inline u16 ScriptGetVar(ScriptContext *ctx) {
     return FieldSystem_VarGet(ctx->fieldSystem, ScriptReadHalfword(ctx));
@@ -715,7 +715,6 @@ BOOL ScrCmd_GetPartyMonForm(ScriptContext *ctx);
 BOOL ScrCmd_677(ScriptContext *ctx);
 BOOL ScrCmd_678(ScriptContext *ctx);
 BOOL ScrCmd_679(ScriptContext *ctx);
-BOOL ScrCmd_AddSpecialGameStat(ScriptContext *ctx);
 BOOL ScrCmd_681(ScriptContext *ctx);
 BOOL ScrCmd_682(ScriptContext *ctx);
 BOOL ScrCmd_GetStaticEncounterOutcome(ScriptContext *ctx);
@@ -761,7 +760,7 @@ BOOL ScrCmd_722(ScriptContext *ctx);
 BOOL ScrCmd_723(ScriptContext *ctx);
 BOOL ScrCmd_724(ScriptContext *ctx);
 BOOL ScrCmd_725(ScriptContext *ctx);
-BOOL ScrCmd_726(ScriptContext *ctx);
+BOOL ScrCmd_ProcessSoundplate(ScriptContext *ctx);
 BOOL ScrCmd_GetFollowPokePartyIndex(ScriptContext *ctx);
 BOOL ScrCmd_728(ScriptContext *ctx);
 BOOL ScrCmd_729(ScriptContext *ctx);
