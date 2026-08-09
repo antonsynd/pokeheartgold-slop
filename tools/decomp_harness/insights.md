@@ -516,6 +516,31 @@ matched exactly.
 
 So: fix the register assignment with declaration order first, then if you are left with a handful of `mov`-only diffs at the top of the function, reorder the initialisers.
 
+### `x == 1 || x == 2` gets range-optimised to sub/cmp; retail's `cmp #1 / cmpne #2` chain comes from a switch with an explicit empty case  <!-- id: contiguous-equality-range-opt-vs-switch -->
+
+When the compared values are CONTIGUOUS, MWCC rewrites `x == 1 || x == 2` into a range test (`sub r0, r0, #1; cmp r0, #1`). Retail's two-compare chain
+    cmp r0, #0
+    beq  end
+    cmp r0, #1
+    cmpne r0, #2
+    bne  end
+is NOT reachable from the `||` form -- nesting it inside `if (x != 0)` does not suppress the optimisation either.
+
+What produces it is a switch with an explicit empty case for the value tested first:
+    switch (x) {
+    case 0:
+        break;
+    case 1:
+    case 2:
+        f();
+        break;
+    }
+The leading `cmp #0; beq` is the empty case, and the fall-through pair becomes cmp/cmpne.
+
+READ IT THE OTHER WAY TOO: a leading equality test against a value whose arm does nothing is a strong hint the original was a switch, not an if-chain -- an if-chain would have no reason to test it.
+
+MEASURED: ov93_0225F44C in src/overlay_93_arm.c.
+
 ## Matching Tricks
 
 ### Small source changes that move codegen  <!-- id: decl-order-tricks -->

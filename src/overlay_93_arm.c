@@ -192,6 +192,7 @@ BOOL ov93_0225F370(Ov93Ctx *ctx) {
 BOOL ov93_0225F44C(Ov93Ctx *ctx) {
     s32 arg1 = 0;
     fx32 delta;
+    s32 v;
     int r;
 
     if (ctx->unk_238 == 1) {
@@ -213,16 +214,22 @@ BOOL ov93_0225F44C(Ov93Ctx *ctx) {
             ctx->unk_274 = TRUE;
         }
 
-        ctx->unk_23C = ctx->unk_210;
-        delta = ((ctx->unk_210 - ctx->unk_22C) << FX32_SHIFT) - (ctx->unk_230 + (sUnk_02262C04[ctx->unk_270][3] << FX32_SHIFT));
+        v = ctx->unk_210;
+        delta = ((v - ctx->unk_22C) << FX32_SHIFT) - (ctx->unk_230 + (sUnk_02262C04[ctx->unk_270][3] << FX32_SHIFT));
+        ctx->unk_23C = v;
     } else {
         arg1 = 1;
         delta = -ctx->unk_248;
     }
 
     r = ov93_0225F548(ctx, arg1, delta);
-    if (r != 0 && (r == 1 || r == 2)) {
+    switch (r) {
+    case 0:
+        break;
+    case 1:
+    case 2:
         ov93_0225EB38(ctx);
+        break;
     }
 
     ctx->unk_230 = -(ctx->unk_020 + (ctx->unk_010 - ctx->unk_020) / 2);

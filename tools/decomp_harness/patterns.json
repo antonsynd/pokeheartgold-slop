@@ -1601,6 +1601,12 @@
       "category": "codegen",
       "title": "ARM mode: declaration order picks the registers, and the order of the ZERO initialisers picks which register the shared 0 is materialised in",
       "body": "[[c89-decl-order-fixes-swapped-registers]] holds in ARM mode too, and there is a second, finer knob on top of it.\n\nWhen several locals start at 0, MWCC materialises the constant ONCE and copies it: retail emitted\n    mov lr, #0        ; i\n    mov r4, lr        ; v\n    mov ip, lr        ; the 0 used by two stores\nWhich variable gets the `mov #0` and which get the copies follows the order the zeros are written in SOURCE, independently of declaration order.\n\nMEASURED on ov93_0225EF0C: `s32 i; s32 v = 0; for (i = 0; ...)` gave the right REGISTERS (i in lr, v in r4 -- fixed by declaring i first) but the wrong zero source: v's initialiser is textually first, so MWCC emitted `mov r4,#0; mov lr,r4; mov ip,r4` -- exactly 3 halfword diffs, everything else identical. Rewriting the init as a comma expression in the for-header so i's zero comes first:\n    s32 i;\n    s32 v;\n    for (i = 0, v = 0; i < 8; i++)\nmatched exactly.\n\nSo: fix the register assignment with declaration order first, then if you are left with a handful of `mov`-only diffs at the top of the function, reorder the initialisers."
+    },
+    {
+      "id": "contiguous-equality-range-opt-vs-switch",
+      "category": "codegen",
+      "title": "`x == 1 || x == 2` gets range-optimised to sub/cmp; retail's `cmp #1 / cmpne #2` chain comes from a switch with an explicit empty case",
+      "body": "When the compared values are CONTIGUOUS, MWCC rewrites `x == 1 || x == 2` into a range test (`sub r0, r0, #1; cmp r0, #1`). Retail's two-compare chain\n    cmp r0, #0\n    beq  end\n    cmp r0, #1\n    cmpne r0, #2\n    bne  end\nis NOT reachable from the `||` form -- nesting it inside `if (x != 0)` does not suppress the optimisation either.\n\nWhat produces it is a switch with an explicit empty case for the value tested first:\n    switch (x) {\n    case 0:\n        break;\n    case 1:\n    case 2:\n        f();\n        break;\n    }\nThe leading `cmp #0; beq` is the empty case, and the fall-through pair becomes cmp/cmpne.\n\nREAD IT THE OTHER WAY TOO: a leading equality test against a value whose arm does nothing is a strong hint the original was a switch, not an if-chain -- an if-chain would have no reason to test it.\n\nMEASURED: ov93_0225F44C in src/overlay_93_arm.c."
     }
   ]
 }
