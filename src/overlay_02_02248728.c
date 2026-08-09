@@ -160,7 +160,7 @@ extern void *Save_FashionData_GetFashionCase(void *fashionData);                
 extern int sub_0202BA2C(void *fashionCase, int a1, int a2);                                                                 // fashion_case.h, not included
 extern void FashionCase_GiveFashionItem(void *fashionCase, int id, int quantity);                                           // fashion_case.h, not included
 extern void SetFlag99C(void *state);                                                                                        // sys_flags.h, not included
-extern BOOL IsPrintFinished(u8 printerId);                                                                                  // text_0205B4EC.h, not included
+extern BOOL DialogBox_IsPrintFinished(u8 printerId);                                                                        // text_0205B4EC.h, not included
 extern void ov01_021F6A9C(FieldSystem *fieldSystem, int a1, void *a2);                                                      // overlay_01.h, not included
 extern int ov01_021F6B00(FieldSystem *fieldSystem);                                                                         // overlay_01.h, not included
 extern BOOL ov01_021F6B10(FieldSystem *fieldSystem);                                                                        // overlay_01.h, not included
@@ -216,10 +216,10 @@ extern BOOL ov01_021E8F10(void *a0, int a1);                                    
 extern void ov01_021E8ED0(void *a0, void *a1, int a2);                                                                 // no header included here
 extern NNSG3dResMdlSet *NNS_G3dGetMdlSet(const NNSG3dResFileHeader *header);                                           // res_struct_accessor.h, not included (IPA)
 #undef MapPropManager_LoadOne
-extern int MapPropManager_LoadOne(void *a0, int a1, const VecFx32 *a2, const VecFx32 *a3, void *a4);                   // overlay_01.h not included (real return non-void)
-extern void *ov01_021F3B60(void *a0, int a1);                                                                          // no header included here
-extern void ov01_021E8E40(void *a0, int a1, int a2, void *a3);                                                         // no header included here
-extern void ov01_021F36DC(int a0, void *a1);                                                                           // no header included here
+extern int MapPropManager_LoadOne(void *a0, int a1, const VecFx32 *a2, const VecFx32 *a3, void *a4); // overlay_01.h not included (real return non-void)
+extern void *ov01_021F3B60(void *a0, int a1);                                                        // no header included here
+extern void ov01_021E8E40(void *a0, int a1, int a2, void *a3);                                       // no header included here
+extern void ov01_021F36DC(int a0, void *a1);                                                         // no header included here
 typedef struct ov02_SafariObjCfg {
     u8 buildModel;
     u8 isAnimated : 1;
@@ -255,16 +255,16 @@ WIP_LOCAL void ov02_0224A9D8(void *work, int a1);                               
 
 // NewMsgDataFromNarc / MessageFormat_* / Buffer* / MapHeader_GetMapSec are reachable
 // transitively (msgdata.h / message_format.h / map_header.h) — no local externs.
-extern PlayerProfile *Save_PlayerData_GetProfile(SaveData *saveData);                   // player_data.h, not included
-extern String *String_New(u32 maxsize, enum HeapID heapID);                             // pm_string.h, not included
-extern void sub_0205B514(BgConfig *bgConfig, Window *window, int a2);                   // text_0205B4EC.h, not included
-extern void sub_0205B564(Window *window, Options *options);                             // text_0205B4EC.h, not included
-extern u8 sub_0205B5B4(Window *window, String *string, Options *options, BOOL speedup); // text_0205B4EC.h, not included
-extern u32 PlayerProfile_GetTrainerID(PlayerProfile *profile);                          // player_data.h, not included
-extern void *Save_SafariZone_Get(SaveData *saveData);                                   // safari_zone.h, not included (opaque)
-extern u8 SafariZone_GetObjectUnlockLevel(void *safariZone);                            // safari_zone.h, not included
-extern void *Field_GetBgEvents(FieldSystem *fieldSystem);                               // map_events.h, not included (BgEvent opaque)
-extern u32 Field_GetNumBgEvents(FieldSystem *fieldSystem);                              // map_events.h, not included
+extern PlayerProfile *Save_PlayerData_GetProfile(SaveData *saveData);                             // player_data.h, not included
+extern String *String_New(u32 maxsize, enum HeapID heapID);                                       // pm_string.h, not included
+extern void DialogBox_AddWindowToLayer3(BgConfig *bgConfig, Window *window, int a2);              // text_0205B4EC.h, not included
+extern void DialogBox_LoadFrame(Window *window, Options *options);                                // text_0205B4EC.h, not included
+extern u8 DialogBox_PrintMessage(Window *window, String *string, Options *options, BOOL speedup); // text_0205B4EC.h, not included
+extern u32 PlayerProfile_GetTrainerID(PlayerProfile *profile);                                    // player_data.h, not included
+extern void *Save_SafariZone_Get(SaveData *saveData);                                             // safari_zone.h, not included (opaque)
+extern u8 SafariZone_GetObjectUnlockLevel(void *safariZone);                                      // safari_zone.h, not included
+extern void *Field_GetBgEvents(FieldSystem *fieldSystem);                                         // map_events.h, not included (BgEvent opaque)
+extern u32 Field_GetNumBgEvents(FieldSystem *fieldSystem);                                        // map_events.h, not included
 
 // ov02_0224E020 dispatch tables (rodata, still in asm; defined later). Indexed by
 // data[0xc]: A34 update funcs return int (1 => advance state); A04 delete funcs
@@ -8138,7 +8138,7 @@ _0224FA50:
     ldrh r0, [r4, r0]
     lsl r0, r0, #0x18
     lsr r0, r0, #0x18
-    bl IsPrintFinished
+    bl DialogBox_IsPrintFinished
     cmp r0, #1
     bne _0224FB28
     ldr r1, =0x0000086C
@@ -8268,11 +8268,11 @@ WIP_LOCAL BOOL FollowMon_TryPrintInteractionMessage(void *work, void *window, vo
     void *options;
     if (*(u16 *)((u8 *)arg2 + 2) != 0) {
         *(String **)((u8 *)window + 0x10) = String_New(0x400, HEAP_ID_FIELD2);
-        sub_0205B514(*(BgConfig **)((u8 *)work + 8), window, 3);
+        DialogBox_AddWindowToLayer3(*(BgConfig **)((u8 *)work + 8), window, 3);
         FollowMon_ExpandInteractionMessage(work, *(String **)((u8 *)window + 0x10), HEAP_ID_FIELD2, *(u16 *)((u8 *)arg2 + 2) - 1);
         options = Save_PlayerData_GetOptionsAddr(*(SaveData **)((u8 *)work + 0xc));
-        sub_0205B564(window, options);
-        *(u16 *)((u8 *)window + 0x86e) = sub_0205B5B4(window, *(String **)((u8 *)window + 0x10), options, 1);
+        DialogBox_LoadFrame(window, options);
+        *(u16 *)((u8 *)window + 0x86e) = DialogBox_PrintMessage(window, *(String **)((u8 *)window + 0x10), options, 1);
         *(u8 *)((u8 *)work + 0xd2) |= 0x40;
         return TRUE;
     }
@@ -8282,11 +8282,11 @@ WIP_LOCAL BOOL FollowMon_TryPrintInteractionMessage(void *work, void *window, vo
 WIP_LOCAL void ov02_0224FC08(void *work, void *window, int arg2) {
     void *options;
     *(String **)((u8 *)window + 0x10) = String_New(0x400, HEAP_ID_FIELD2);
-    sub_0205B514(*(BgConfig **)((u8 *)work + 8), window, 3);
+    DialogBox_AddWindowToLayer3(*(BgConfig **)((u8 *)work + 8), window, 3);
     ov02_0224FCE0(work, *(String **)((u8 *)window + 0x10), HEAP_ID_FIELD2, arg2, *(u8 *)((u8 *)window + 0x816));
     options = Save_PlayerData_GetOptionsAddr(*(SaveData **)((u8 *)work + 0xc));
-    sub_0205B564(window, options);
-    *(u16 *)((u8 *)window + 0x86e) = sub_0205B5B4(window, *(String **)((u8 *)window + 0x10), options, 1);
+    DialogBox_LoadFrame(window, options);
+    *(u16 *)((u8 *)window + 0x86e) = DialogBox_PrintMessage(window, *(String **)((u8 *)window + 0x10), options, 1);
     *(u8 *)((u8 *)work + 0xd2) |= 0x40;
 }
 
@@ -8730,7 +8730,7 @@ WIP_LOCAL BOOL Task_FollowMonInteract(TaskManager *taskManager) {
         break;
     }
     case 5:
-        if (IsPrintFinished((u8) * (u16 *)((u8 *)*(void **)((u8 *)fieldSystem + 0x120) + 0x86e)) == 1 && !IsFanfarePlaying() && (gSystem.newKeys & 3)) {
+        if (DialogBox_IsPrintFinished((u8) * (u16 *)((u8 *)*(void **)((u8 *)fieldSystem + 0x120) + 0x86e)) == 1 && !IsFanfarePlaying() && (gSystem.newKeys & 3)) {
             ClearFrameAndWindow2(*(void **)((u8 *)fieldSystem + 0x120), 0);
             RemoveWindow(*(void **)((u8 *)fieldSystem + 0x120));
             String_Delete(*(String **)((u8 *)*(void **)((u8 *)fieldSystem + 0x120) + 0x10));

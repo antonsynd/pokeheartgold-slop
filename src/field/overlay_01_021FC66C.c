@@ -31,7 +31,6 @@
 #include "sys_task_api.h"
 #include "task.h"
 #include "text.h"
-#include "text_0205B4EC.h"
 #include "unk_02005D10.h"
 #include "unk_02062108.h"
 #include "unk_020689C8.h"
@@ -422,8 +421,8 @@ static void ov01_021FCB4C(FishingRodTaskData *data) {
 
 static void ov01_021FCB6C(FishingRodTaskData *data) {
     FieldSystem *fieldSystem = data->fieldSystem;
-    sub_0205B514(fieldSystem->bgConfig, &data->window, 3);
-    sub_0205B564(&data->window, Save_PlayerData_GetOptionsAddr(fieldSystem->saveData));
+    DialogBox_AddWindowToLayer3(fieldSystem->bgConfig, &data->window, GF_BG_LYR_MAIN_3);
+    DialogBox_LoadFrame(&data->window, Save_PlayerData_GetOptionsAddr(fieldSystem->saveData));
 }
 
 static void ov01_021FCB90(FishingRodTaskData *data, int msgId) {
@@ -432,11 +431,11 @@ static void ov01_021FCB90(FishingRodTaskData *data, int msgId) {
     fieldSystem = data->fieldSystem;
     ReadMsgDataIntoString(data->msgData, msgId, data->unk30);
     StringExpandPlaceholders(data->unk34, data->unk2c, data->unk30);
-    data->printerId = sub_0205B5B4(&data->window, data->unk2c, Save_PlayerData_GetOptionsAddr(fieldSystem->saveData), 1);
+    data->printerId = DialogBox_PrintMessage(&data->window, data->unk2c, Save_PlayerData_GetOptionsAddr(fieldSystem->saveData), 1);
 }
 
 static int ov01_021FCBCC(FishingRodTaskData *data) {
-    if (IsPrintFinished(data->printerId) == 1 && ov01_021FCAFC() == 1) {
+    if (DialogBox_IsPrintFinished(data->printerId) == 1 && ov01_021FCAFC() == 1) {
         ClearFrameAndWindow2(&data->window, FALSE);
         RemoveWindow(&data->window);
         return 1;

@@ -2,13 +2,13 @@
 #define POKEHEARTGOLD_MATH_UTIL_H
 
 #include "heap.h"
+#include "sys_task.h"
 
 u16 GF_DegreeToSinCosIdxNoWrap(u16 deg);
 fx32 GF_SinDegNoWrap(u16 deg);
 fx32 GF_CosDegNoWrap(u16 deg);
 fx32 GF_SinDeg(u16 deg);
 fx32 GF_CosDeg(u16 deg);
-u16 GF_DegreeToSinCosIdxNoWrap(u16 deg);
 u16 GF_DegreeToSinCosIdx(u16 deg);
 fx32 GF_SinDegFX32(fx32 deg);
 fx32 GF_CosDegFX32(fx32 deg);
@@ -24,7 +24,7 @@ void SetMTRNGSeed(u32 seed);
 u32 MTRandom(void);
 void _MonEncryptSegment(u16 *data, u32 size, u32 seed);
 void _MonDecryptSegment(u16 *data, u32 size, u32 seed);
-fx32 sub_02096594(void);
+void Task_AntipiracyMath(SysTask *task_unused, void *data_unused);
 
 static inline u16 LCRandRange(const u16 maximum) {
     GF_ASSERT(maximum != 0);

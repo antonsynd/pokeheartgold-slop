@@ -26,6 +26,7 @@
 #include "bg_window.h"
 #include "bug_contest.h"
 #include "camera.h"
+#include "dialog_box.h"
 #include "dsprot.h"
 #include "field_bgm.h"
 #include "field_system.h"
@@ -57,7 +58,6 @@
 #include "system.h"
 #include "task.h"
 #include "terrain_attributes.h"
-#include "text_0205B4EC.h"
 #include "unk_0200B150.h"
 #include "unk_02023694.h"
 #include "unk_02026E30.h"
@@ -185,7 +185,7 @@ BOOL FieldMap_Init(OverlayManager *man, int *state) {
         GfGfx_SwapDisplay();
         fieldSystem->bgConfig = BgConfig_Alloc(HEAP_ID_FIELD1);
         BgConfig_Init(fieldSystem->bgConfig);
-        FieldMessage_LoadTextPalettes(0, TRUE);
+        FieldMessage_LoadTextPalettes(GF_PAL_LOCATION_MAIN_BG, TRUE);
         TryStartMapScriptByType(fieldSystem, INIT_SCRIPT_ON_LOAD);
 
         if (offset % 4217 != 0) {

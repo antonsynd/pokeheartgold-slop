@@ -40,6 +40,7 @@ for header in $files; do
     dupes=$(grep -vE '^\s*(\*|//|/\*|#|\{|\})' "$header" \
         | grep -E '\)\s*;' \
         | grep -E '^\s*[A-Za-z_]' \
+        | grep -vE '^\s*typedef\b' \
         | grep -oE '\b[A-Za-z_][A-Za-z_0-9]+\s+[A-Za-z_][A-Za-z_0-9]*\s*\(' \
         | grep -oE '[A-Za-z_][A-Za-z_0-9]*\s*\($' \
         | sed 's/\s*(//' \

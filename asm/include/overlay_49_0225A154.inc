@@ -207,7 +207,7 @@
 .public SpriteTransfer_CreatePlttTransferTask
 .public SpriteTransfer_DeletePlttTransferTask
 .public sub_0200E5D4
-.public sub_0200EC0C
+.public LoadMapSignpostFrameAndGraphic
 .public sub_0200F450
 .public sub_0200F478
 .public sub_02020654

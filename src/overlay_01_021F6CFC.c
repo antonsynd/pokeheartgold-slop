@@ -14,7 +14,6 @@
 #include "render_window.h"
 #include "task.h"
 #include "text.h"
-#include "text_0205B4EC.h"
 #include "unk_0202C034.h"
 #include "unk_02030A98.h"
 #include "unk_02034354.h"
@@ -318,9 +317,9 @@ static void ov01_021F71C4(Work *work, int msgId) {
     }
     ReadMsgDataIntoString(work->msgData, msgId, work->unk8);
     StringExpandPlaceholders(work->messageFormat, work->unkC, work->unk8);
-    sub_0205B514(work->fieldSystem->bgConfig, &work->window, 3);
-    sub_0205B564(&work->window, Save_PlayerData_GetOptionsAddr(work->fieldSystem->saveData));
-    work->textPrinterId = sub_0205B5B4(&work->window, work->unkC, Save_PlayerData_GetOptionsAddr(work->fieldSystem->saveData), 1);
+    DialogBox_AddWindowToLayer3(work->fieldSystem->bgConfig, &work->window, GF_BG_LYR_MAIN_3);
+    DialogBox_LoadFrame(&work->window, Save_PlayerData_GetOptionsAddr(work->fieldSystem->saveData));
+    work->textPrinterId = DialogBox_PrintMessage(&work->window, work->unkC, Save_PlayerData_GetOptionsAddr(work->fieldSystem->saveData), 1);
 }
 
 static void ov01_021F722C(Work *work) {
