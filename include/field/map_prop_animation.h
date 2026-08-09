@@ -14,7 +14,7 @@ typedef struct MapPropOneShotAnimationManager {
 } MapPropOneShotAnimationManager;
 
 MapPropAnimationManager *MapPropAnimationManager_Init(NARC *narc, FieldSystemUnkSubC8 *unkSubC8);
-void ov01_021E8970(int modelNum, int animNum, int a2, UnkStruct_FieldSysC0_SubC *renderObj, MapPropAnimationManager *mapPropAnimationManager);
+BOOL ov01_021E8970(int modelNum, int animNum, int a2, UnkStruct_FieldSysC0_SubC *renderObj, MapPropAnimationManager *mapPropAnimationManager);
 void MapPropAnimationManager_UnloadAllAnimations(MapPropAnimationManager *mapPropAnimationManager);
 void ov01_021E8A8C(MapPropAnimationManager *mapPropAnimationManager, UnkStruct_FieldSysC0_SubC *renderObj, int modelNum, int animNum);
 void MapPropAnimationManager_Free(MapPropAnimationManager *mapPropAnimationManager);

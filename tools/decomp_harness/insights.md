@@ -670,6 +670,20 @@ When a boolean predicate has many branches all returning, and the asm shows a si
 
 PlayCryEx (unk_02005D10) chatot branch: retail's case body starts 'add r1,r5,#0; bl PlayCry' with NO r0 setup — r0 still holds the =0x1B9 pool constant from 'cmp r4,r0', and since we are inside if(species==0x1B9), that IS the species value. Writing 'PlayCry(species, form)' made MWCC (a) rematerialize species from r4 ('adds r0,r4,#0', +2 bytes) and (b) allocate r0 as the jump-table dispatch temp ('ldr r0,[sp,#4]') because r0 looked dead; retail dispatches via r1. Writing 'PlayCry(0x1B9, form)' fixed BOTH in one stroke: the literal's value is live in r0, so no setup insn is emitted and the dispatch temp avoids r0. Symptom pair to recognize: an extra 'adds r0, rN' at a case-body head PLUS an r0-vs-r1 (or similar) switch-dispatch register swap in the same function. Later uses of x in the same body may still use the variable (retail: 'add r0,r4' for the next call) — only the FIRST call after the compare gets the literal. Sibling lesson from the same file: after 'mov rA,#K; str rA,[sp,#N]' (a stack call-arg), retail derives related constants FROM rA (e.g. 'sub r1,r1,#2' turning the stored 1 into -1) — read such sequences as literal args (…,-1,…,1) rather than (…,1,…) when drafting.
 
+### Four micro-shape tells that pin C source form from Thumb bytes: branch polarity, cmp operand order, bcc-vs-blt, and value-returning early exits  <!-- id: micro-shape-tells-branch-polarity-operand-order-signedness -->
+
+When a function is logically correct but off by a handful of bytes, the codegen usually names the exact source form. All four confirmed in src/overlay_01_021E8744.c (27/40 -> 29/40 by applying them):
+
+1. **Branch polarity = which arm was written first.** `return a0 ? a0->obj : NULL;` emits `cmp r0,#0; beq L; ldr; bx lr; L: mov r0,#0; bx lr` (non-NULL arm first). Retail had `cmp r0,#0; bne L; mov r0,#0; bx lr; L: ldr` -> the source was an explicit `if (a0 == NULL) { return NULL; } return a0->obj;`. A ternary and an if/return are NOT interchangeable for matching.
+
+2. **`cmp` operand order mirrors source operand order**, and is often asymmetric across a single `&&` chain. Retail: `cmp r4,r2` (r4=param id, r2=field) for one test but `cmp r2,r5` (r2=field, r5=param) for the next -> source was `... && id == aux[i].id && aux[i].a1 == a1 ...`. Writing both field-first left 7 byte diffs; fixing just the one operand order made the whole first 0x3E bytes match.
+
+3. **`bcc`/`blo` vs `blt` = unsignedness of the compared value.** `GF_ASSERT(idx < 6)` with `s32 idx` emits `blt`; retail's `bcc` means the parameter was unsigned -> change to `u32 idx`. One-byte diff, one-word fix.
+
+4. **`movs r0,#0` before an early `pop` means the function RETURNS A VALUE even if a frozen header says `void`.** ov01_021E8970 set r0=0 at every early exit and r0=1 on the success path: it is `BOOL`, and the header's `void` was simply wrong (24 bytes of missing returns). See [[ipa-header-return-type-widening-can-be-safe]] for how to land that fix.
+
+What these do NOT explain: pure register-allocation swaps (retail r2=index/r1=pointer vs emitted r1=index/r2=pointer in a second loop). Those need structural experimentation, not an operand tweak.
+
 ## IPA (-ipa file) Behavior
 
 ### Shared-header signatures are load-bearing across compilation units  <!-- id: ipa-shared-headers -->
@@ -731,6 +745,16 @@ Mirror of [[public-header-overwidens-narrow-stack-params]] but for a REGISTER (r
 ### -ipa file: sampled codegen is byte-IDENTICAL without it; removal is blocked by DATA emission differences, not codegen — and always objdiff a no-ipa recompile before blaming IPA  <!-- id: ipa-file-flag-effects-and-removal-nonviability -->
 
 ROADMAP T0.5 experiment (2026-07-02). (1) CODEGEN: recompiling matched TUs WITHOUT -ipa file produced byte-identical functions — unk_0200B150 11/11 and unk_0202FBCC 39/39 objdiff MATCH (incl. their NONMATCHING inline-asm fns). -ipa is NOT unconditionally load-bearing for codegen; the cascade-prone behavior is narrower than assumed (IPA-only optimizations like the literal-pool/large-offset CSE in unk_0200FA24, and recompilation sensitivity to declaration changes). NEW DIAGNOSTIC: before attributing any mismatch to an IPA cascade, recompile the affected TU with the same command minus '-ipa file' and objdiff — if identical, IPA is innocent. (2) Tree-wide flag removal (old 'strategy (d)') is still non-viable: rodata emission differs without -ipa (external consts get a different .rodata section structure — see ext-const-split-tu-size-ascending-recipe experiments), so overlay/module layout shifts even where .text matches; data files like unk_data_020FD978.c were matched against the -ipa emission shape. (3) CAUTION on experiment hygiene: the first no-ipa full build 'failed the front end' at frontier_cmd_arcade.c int->enum — that turned out to be a LATENT breakage present in BOTH modes (see stale-object-masks-broken-tu), not an ipa effect. Keep the split-header discipline as cheap insurance.
+
+### Changing a shared header's return type void->BOOL can be IPA-safe when all callers discard the result — TEST it, don't assume a cascade  <!-- id: ipa-header-return-type-widening-can-be-safe -->
+
+IPA discipline says treat every shared-header edit as a cascade risk, and the default fix is the split/_internal.h pattern. But a RETURN-TYPE widening where every caller discards the value is worth testing first, because it is the semantically correct fix and costs one build to settle.
+
+MEASURED: `include/field/map_prop_animation.h` declared `void ov01_021E8970(...)` but the asm sets r0=0 at every early exit and r0=1 on success — it is `BOOL`. That header is included by 4 TUs (overlay_01.h, field_system.h, field/area_data.h, field/map_load_manager.h chains) with 3 already-matched call sites (legend_cutscene_camera.c x2, overlay_03/shop_menu.c), ALL of which ignore the return value. Changing void->BOOL and running `chiri pkg -- compare` gave `pokeheartgold.us.nds: OK` — NO cascade.
+
+ISOLATION TRICK: to test a header edit without a finished .c, revert main.lsf to the asm object and keep ONLY the header change, then run compare. The asm object ignores the C prototype, so a pass isolates the header edit as IPA-safe and banks that answer for later. If it fails, fall back to [[frozen-prototype-header-split]].
+
+Does NOT generalize to: adding/removing parameters, narrowing a param type (see [[frozen-callee-proto-for-narrowed-args]] — that DOES change call sites via integer narrowing), or any caller that USES the returned value.
 
 ## Data Sections
 

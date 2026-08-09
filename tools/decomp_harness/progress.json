@@ -1176,9 +1176,19 @@
       "note": "ANALYSIS-ONLY defer (no code) \u2014 LARGEST remaining file (1982 lines, 41 fns), all static. overlay_02 battle cluster (sibling of the 364-fn overlay_02_02248728). TaskManager-driven animated battle-effect/scene module: heavy TaskManager_Call/GetFieldSystem/GetEnvironment state machines, BG/graphics (SetBgPriority, GfGfx_EngineATogglePlanes), Heap_Alloc/Free, PlaySE, and SOFT-FLOAT math (_fflt/_fadd/_fsub/_ffix in ~6 fns -> those must stay C, can't NONMATCHING). 102B rodata (small byte tables ov02_0225321C..). 0 unknown callees (all headered). Needs a dedicated focused session (drafter can't handle 1900+ lines; the soft-float coloring fns are the hard core). Triage-easiest of the remaining queue, which is now ALL large files (47/68/34/39/44-fn)."
     }
   ],
-  "in_progress": null,
+  "in_progress": [
+    {
+      "file": "asm/overlay_01_021E8744.s",
+      "lines": 1388,
+      "functions": 40,
+      "matched_functions": 29,
+      "attempts": 4,
+      "result": "wip",
+      "note": "WIP 29/40 functions matching. src/overlay_01_021E8744.c is committed but NOT linked - main.lsf still points at asm/overlay_01_021E8744.o, so the tree builds and compare passes. To resume: flip main.lsf to src/, rebuild, objdiff against build/heartgold.us/asm/overlay_01_021E8744.o. The map_prop_animation.h void->BOOL change for ov01_021E8970 is ALREADY LANDED and PROVEN IPA-safe (compare OK with the header edit isolated). REMAINING 11: MapPropAnimationManager_Init (12 diffs), ov01_021E8970 (9), ov01_021E8DE8 (SIZE 88 vs 82), ov01_021E8F3C (101 - largest fn, drafter flagged least-confident), ov01_021E8744 (7 - regalloc: retail r2=index/r1=ptr in 2nd loop vs emitted swapped; first 0x3E bytes DO match), ov01_021E8864 (2 - retail returns r0 directly on the ==8 arm, emitted routes through a shared epilogue), ov01_021E8894 (7), ov01_021E8BE8 (SIZE 88 vs 84), ov01_021E8C60 (17), ov01_021E8D10 (7), ov01_021E8D6C (7). The four 7-diff functions likely share one regalloc/loop-shape root cause. Ground-truth signatures for every ov01_0220xxxx import come from the already-decompiled src/field/overlay_01_02204004.c."
+    }
+  ],
   "stats": {
-    "total_attempts": 165,
+    "total_attempts": 169,
     "total_matched": 70,
     "total_failed": 31
   },
