@@ -1,12 +1,12 @@
 {
  "summary": {
-  "generated": "2026-08-07T20:52:18Z",
+  "generated": "2026-08-09T05:05:08Z",
   "by_status": {
    "matched": {
     "files": 97,
-    "functions": 1684,
-    "insn_lines": 46621,
-    "text_bytes_est": 103460
+    "functions": 1678,
+    "insn_lines": 46547,
+    "text_bytes_est": 103314
    },
    "blocked": {
     "files": 52,
@@ -15,23 +15,23 @@
     "text_bytes_est": 65922
    },
    "pending": {
-    "files": 168,
-    "functions": 16773,
-    "insn_lines": 827438,
-    "text_bytes_est": 1853516
+    "files": 167,
+    "functions": 16770,
+    "insn_lines": 827292,
+    "text_bytes_est": 1853170
    },
    "upstream": {
-    "files": 401,
+    "files": 402,
     "functions": 0,
     "insn_lines": 0,
     "text_bytes_est": 0
    }
   },
   "function_totals": {
-   "tracked": 19378,
-   "matched": 1684,
+   "tracked": 19369,
+   "matched": 1678,
    "partial_in_blocked": 20,
-   "pending": 16773
+   "pending": 16770
   },
   "blockers": [
    {
@@ -1714,6 +1714,7 @@
     "DrawFrameAndWindow3",
     "DrawPokemonPicFromMon",
     "DrawPokemonPicFromSpecies",
+    "LoadMapSignpostFrameAndGraphic",
     "LoadUserFrameGfx1",
     "LoadUserFrameGfx2",
     "WaitingIcon_New",
@@ -1725,7 +1726,6 @@
     "sub_0200E948",
     "sub_0200EB68",
     "sub_0200EB80",
-    "sub_0200EC0C",
     "sub_0200F450",
     "sub_0200F478"
    ],
@@ -1850,7 +1850,7 @@
      "status": "pending"
     },
     {
-     "name": "sub_0200EC0C",
+     "name": "LoadMapSignpostFrameAndGraphic",
      "mode": "thumb",
      "insns": 54,
      "size_est": 120,
@@ -17545,6 +17545,11 @@
     "CopyWindowPixelsToVram_TextMode",
     "DestroyListMenuCursorObj",
     "DestroyMsgData",
+    "DialogBox_AddWindowToLayer3",
+    "DialogBox_Clear",
+    "DialogBox_IsPrintFinished",
+    "DialogBox_LoadFrame",
+    "DialogBox_PrintMessage",
     "DrawFrameAndWindow1",
     "FieldMap_FadeScreen",
     "FieldSystem_ApplicationIsRunning",
@@ -17564,7 +17569,6 @@
     "Heap_Free",
     "InitWindow",
     "IsPaletteFadeFinished",
-    "IsPrintFinished",
     "LinkBattleRuleset_GetRuleValue",
     "ListMenuCursorNew",
     "ListMenuUpdateCursorObj",
@@ -17653,10 +17657,6 @@
     "sub_0205AB88",
     "sub_0205ABB0",
     "sub_0205ABBC",
-    "sub_0205B514",
-    "sub_0205B564",
-    "sub_0205B5A8",
-    "sub_0205B5B4",
     "sub_0205F55C",
     "sub_02070D90",
     "sub_02088288",
@@ -18636,117 +18636,10 @@
    "functions": []
   },
   {
-   "file": "asm/text_0205B4EC.s",
+   "file": "asm/dialog_box.s",
    "lsf_kind": "src",
-   "status": "matched",
-   "lines": 274,
-   "function_count": 9,
-   "text_bytes_est": 492,
-   "data_only": false,
-   "sections": {
-    "rodata_bytes": 0,
-    "data_bytes": 0,
-    "bss_bytes": 0,
-    "other_bytes": 0
-   },
-   "other_sections": [],
-   "jumptable_words": 0,
-   "imports": [
-    "AddTextPrinterParameterized",
-    "AddWindowParameterized",
-    "DrawFrameAndWindow2",
-    "DrawFrameAndWindow3",
-    "FillWindowPixelBuffer",
-    "GetWindowBgId",
-    "LoadFontPal0",
-    "LoadFontPal1",
-    "LoadUserFrameGfx2",
-    "Options_GetFrame",
-    "Options_GetTextFrameDelay",
-    "ResetAllTextPrinters",
-    "TextFlags_SetAutoScrollParam",
-    "TextFlags_SetCanABSpeedUpPrint",
-    "TextFlags_SetCanTouchSpeedUpPrint",
-    "TextPrinterCheckActive",
-    "sub_0200EC0C"
-   ],
-   "exports": [
-    "FieldMessage_LoadTextPalettes",
-    "IsPrintFinished",
-    "sub_0205B514",
-    "sub_0205B564",
-    "sub_0205B5A8",
-    "sub_0205B5B4",
-    "sub_0205B5EC",
-    "sub_0205B63C",
-    "sub_0205B6A0"
-   ],
-   "functions": [
-    {
-     "name": "FieldMessage_LoadTextPalettes",
-     "mode": "thumb",
-     "insns": 16,
-     "size_est": 38,
-     "status": "matched"
-    },
-    {
-     "name": "sub_0205B514",
-     "mode": "thumb",
-     "insns": 37,
-     "size_est": 78,
-     "status": "matched"
-    },
-    {
-     "name": "sub_0205B564",
-     "mode": "thumb",
-     "insns": 28,
-     "size_est": 66,
-     "status": "matched"
-    },
-    {
-     "name": "sub_0205B5A8",
-     "mode": "thumb",
-     "insns": 5,
-     "size_est": 10,
-     "status": "matched"
-    },
-    {
-     "name": "sub_0205B5B4",
-     "mode": "thumb",
-     "insns": 23,
-     "size_est": 56,
-     "status": "matched"
-    },
-    {
-     "name": "sub_0205B5EC",
-     "mode": "thumb",
-     "insns": 23,
-     "size_est": 54,
-     "status": "matched"
-    },
-    {
-     "name": "IsPrintFinished",
-     "mode": "thumb",
-     "insns": 10,
-     "size_est": 22,
-     "status": "matched"
-    },
-    {
-     "name": "sub_0205B63C",
-     "mode": "thumb",
-     "insns": 47,
-     "size_est": 98,
-     "status": "matched"
-    },
-    {
-     "name": "sub_0205B6A0",
-     "mode": "thumb",
-     "insns": 31,
-     "size_est": 70,
-     "status": "matched"
-    }
-   ],
-   "source": "harness"
+   "status": "upstream",
+   "functions": []
   },
   {
    "file": "asm/metatile_behavior.s",
@@ -39422,6 +39315,9 @@
     "Bag_HasItem",
     "BufferPlayersName",
     "DestroyMsgData",
+    "DialogBox_AddWindowToLayer3",
+    "DialogBox_LoadFrame",
+    "DialogBox_PrintMessage",
     "FieldSystem_CreateTask",
     "Heap_AllocAtEnd",
     "Heap_Free",
@@ -39460,10 +39356,7 @@
     "sub_02037454",
     "sub_0203A1C4",
     "sub_0203A280",
-    "sub_0203E30C",
-    "sub_0205B514",
-    "sub_0205B564",
-    "sub_0205B5B4"
+    "sub_0203E30C"
    ],
    "exports": [
     "ov01_021F729C"
@@ -89000,8 +88893,8 @@
   },
   {
    "file": "asm/overlay_41_0224BE34.s",
-   "lsf_kind": "asm",
-   "status": "pending",
+   "lsf_kind": "src",
+   "status": "matched",
    "lines": 167,
    "function_count": 3,
    "text_bytes_est": 346,
@@ -89047,23 +88940,24 @@
      "mode": "thumb",
      "insns": 16,
      "size_est": 38,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ov41_0224BE5C",
      "mode": "thumb",
      "insns": 14,
      "size_est": 34,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ov41_0224BE80",
      "mode": "thumb",
      "insns": 116,
      "size_est": 274,
-     "status": "pending"
+     "status": "matched"
     }
-   ]
+   ],
+   "source": "retained_asm"
   },
   {
    "file": "asm/overlay_42_02227D30.s",
@@ -97974,6 +97868,7 @@
     "ListMenu_ProcessInput",
     "LoadFontPal0",
     "LoadFontPal1",
+    "LoadMapSignpostFrameAndGraphic",
     "LoadRectToBgTilemapRect",
     "LoadUserFrameGfx1",
     "LoadUserFrameGfx2",
@@ -98095,7 +97990,6 @@
     "ov49_02268968",
     "sub_0200A740",
     "sub_0200E5D4",
-    "sub_0200EC0C",
     "sub_0200F450",
     "sub_0200F478",
     "sub_02020654",

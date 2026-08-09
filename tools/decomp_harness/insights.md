@@ -884,6 +884,17 @@ ov02_02248C10 (matched) is the per-sprite creator: builds SpriteResourcesHeader 
 
 sub_02068B0C(UnkTaskManager *mgr, UnkTemplateBase *src, VecFx32 *pos, u32 a3, void *a4, u32 priority) is defined in unk_020689C8.c (types local to that TU). Callers in overlay_02 build pos as VecFx32 {0,0,0} (or pass a VecFx32* arg straight through), and build a small per-call struct on the stack whose address is a4 (1-6 words, populated from the caller args; unwritten words are left uninitialized and still match). priority is a small code (0x81/0x82/0x85/0x87). To decomp a caller: local-extern sub_02068B0C with a mirrored 5-word ov02_LaunchTemplate src type, extern the ov02_022534xx rodata templates, declare an anonymous a4 struct, assign its members (order them so MWCC frees arg registers in asm order), then store the return at work->offset or discard. Seen in ov02_0224B72C/AB58/B298/D58/AA44.
 
+### First C file in an all-asm overlay: declare its .public functions in the .c (MWCC -W pedantic 'function has no prototype')  <!-- id: first-chunk-decomp-needs-local-prototypes -->
+
+MWCC builds with `-W all -W pedantic -W error`, which rejects a non-static function definition that has no prior prototype: `src\<name>.c:NN: function has no prototype` -> `Errors caused tool to abort`. When you decompile the FIRST chunk of an overlay whose other chunks are still asm, there is no header to include: the remaining callers reference the symbol through `.public` in their `.inc`, not through C. Do NOT create a shared header just to satisfy this, and do NOT add the decls to an existing widely-included header (IPA cascade risk). Instead declare the exported functions in the .c itself, above their definitions, using the file-local struct type:
+
+    typedef struct UnkStruct_ov41_0224BE34 { ... } UnkStruct_ov41_0224BE34;
+    void ov41_0224BE34(UnkStruct_ov41_0224BE34 *param0);   // prototype for the -W pedantic check
+    void ov41_0224BE5C(UnkStruct_ov41_0224BE34 *param0);
+    static void ov41_0224BE80(UnkStruct_ov41_0224BE34 *param0);  // fwd decl, called before defined
+
+Static functions need a forward declaration only if called before their definition (function order must follow the asm). Distinguish exports from imports via `thumb_func_start`/`arm_func_start` in the .s: a `.public` symbol NOT defined locally is an import and needs an `extern`-style local declaration instead. Example: src/overlay_41_0224BE34.c (first C file in overlay_41). Related: [[self-contained-when-own-header-not-self-sufficient]] (same self-contained principle when a frozen own-header exists).
+
 ## NONMATCHING Fallback
 
 ### NONMATCHING inline asm syntax (MWCC)  <!-- id: nonmatching-inline-asm-syntax -->
