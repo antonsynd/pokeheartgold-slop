@@ -1191,10 +1191,10 @@
       "file": "asm/overlay_93_arm.s",
       "lines": 995,
       "functions": 17,
-      "matched_functions": 8,
-      "attempts": 3,
+      "matched_functions": 10,
+      "attempts": 4,
       "result": "wip",
-      "note": "WIP 8/17, rodata byte-identical. src/overlay_93_arm.c committed but NOT linked - main.lsf:1155 still points at asm/overlay_93_arm.o, so both ROMs still match. First ARM-mode decomp in the tree. SCAFFOLD: global.h, then project headers, then <nitro/code32.h> LAST inside a clang-format off/on guard; anything re-including code16.h after it silently returns you to Thumb (tell: function size not a multiple of 4). Patterns arm-mode-c-requires-code32-after-global-h and arm-regalloc-init-order-picks-the-zero-source. DONE (8): EF0C, EF5C, F8AC, F9D8, FABC, FB00, FB6C, FBE4. RODATA DONE: sUnk_02262C04 is u8[13][4] (ov93_02262C07 == &sUnk_02262C04[0][3], retail indexes it with ldrb r0,[r0,r1,lsl #2]); sSpriteTemplate_02262C38 is a ManagedSpriteTemplate (0x34). Both are 52 bytes and the equal-size tie kept declaration order - if a future edit perturbs it, swap the declarations. REMAINING 9: EE98, EFAC, F268, F370, F44C, F548, F8E4, F94C, F9AC. ov93_0225F9AC is (s64)ov93_0225F94C(ctx) * 100 / 0x3200000 via _ll_sdiv - do F94C first for its signature. ov93_0225F370 reads sUnk_02262C04 through FOUR bases (C05/C06/C07 are fields 1/2/3 of record i; C08 is field 0 of record i+1). Hardest: EE98 (128-byte shininess table, 64-bit n^4>>24 chain, feeds NNS_G3dGeBufferOP_N(0x34, buf, 0x20)) and F548 (~230 lines)."
+      "note": "WIP 10/17, rodata byte-identical. NOT linked - main.lsf:1155 still points at asm/overlay_93_arm.o, so both ROMs still match. First ARM-mode decomp in the tree. SCAFFOLD: global.h, then project headers, then <nitro/code32.h> LAST inside a clang-format off/on guard. DONE (10): EF0C, EF5C, F8AC, F94C, F9AC, F9D8, FABC, FB00, FB6C, FBE4. CLOSE: ov93_0225F8E4 is at 4 diffs - body is exact, but retail schedules ldr lr,[sp,#8] (p4) BEFORE add r4,r2,r1 and we emit them swapped. An explicit sum local did not move it; likely needs a different first-use order for p4/p5 or is a plain scheduling tie. REMAINING 6: EE98, EFAC, F268, F370, F44C, F548. ov93_0225F370 reads sUnk_02262C04 through four bases (C05/C06/C07 are fields 1/2/3 of record i; C08 is field 0 of record i+1). Hardest: EE98 (128-byte shininess table built from a 64-bit n^4>>24 chain, fed to NNS_G3dGeBufferOP_N(0x34, buf, 0x20)) and F548 (~230 lines). Ov93Ctx fields known so far: 0x0C, 0x10, 0x1C, 0x20, 0x24 SpriteSystem*, 0x28 SpriteManager*, 0x8C PaletteData*, 0xD4, 0xD8, 0xE4, 0x21C, 0x224, 0x230 fx32, 0x238, 0x270."
     }
   ],
   "stats": {

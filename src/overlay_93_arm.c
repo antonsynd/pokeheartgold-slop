@@ -12,12 +12,22 @@
 // clang-format on
 
 typedef struct Ov93Ctx {
-    u8 padding_000[0x24];
+    u8 padding_000[0xC];
+    s32 unk_00C; // 0x00C
+    s32 unk_010; // 0x010
+    u8 padding_014[0x8];
+    s32 unk_01C;                  // 0x01C
+    s32 unk_020;                  // 0x020
     SpriteSystem *spriteSystem;   // 0x024
     SpriteManager *spriteManager; // 0x028
     u8 padding_02C[0x60];
     PaletteData *paletteData; // 0x08C
-    u8 padding_090[0x18C];
+    u8 padding_090[0x44];
+    s32 unk_0D4; // 0x0D4
+    s32 unk_0D8; // 0x0D8
+    u8 padding_0DC[0x8];
+    s32 unk_0E4; // 0x0E4
+    u8 padding_0E8[0x134];
     s32 unk_21C; // 0x21C
     u8 padding_220[0x4];
     s32 unk_224; // 0x224
@@ -49,6 +59,9 @@ typedef struct Ov93Nodes {
 void ov93_0225EF0C(Ov93Nodes *nodes);
 void ov93_0225EF5C(Ov93Nodes *nodes);
 int ov93_0225F8AC(Ov93Ctx *ctx, int a1);
+BOOL ov93_0225F8E4(s32 a0, s32 a1, s32 a2, s32 a3, s32 *p4, s32 *p5);
+int ov93_0225F94C(Ov93Ctx *ctx);
+int ov93_0225F9AC(Ov93Ctx *ctx);
 void ov93_0225F9D8(Ov93Ctx *ctx);
 ManagedSprite *ov93_0225FB00(Ov93Ctx *ctx);
 void ov93_0225FB6C(Ov93Ctx *ctx, ManagedSprite *sprite);
@@ -133,6 +146,38 @@ int ov93_0225F8AC(Ov93Ctx *ctx, int a1) {
         return 2;
     }
     return 0;
+}
+
+BOOL ov93_0225F8E4(s32 a0, s32 a1, s32 a2, s32 a3, s32 *p4, s32 *p5) {
+    BOOL ret = FALSE;
+    s32 sum = a2 + a1;
+
+    if (sum > 0x64000) {
+        a1 -= sum - 0x64000;
+        ret = TRUE;
+    }
+
+    *p4 = a2;
+    *p5 = a3;
+    *p4 = a2 + a1;
+
+    if (a3 > a2) {
+        *p5 = a3;
+    } else {
+        *p5 = a3 - (a1 * 25) / 100;
+    }
+
+    return ret;
+}
+
+int ov93_0225F94C(Ov93Ctx *ctx) {
+    s32 mid = ctx->unk_020 + (ctx->unk_010 - ctx->unk_020) / 2;
+
+    return FX_Mul((ctx->unk_01C - ctx->unk_00C) + (ctx->unk_0E4 - ctx->unk_0D4), -(ctx->unk_0D8 - mid)) / 2;
+}
+
+int ov93_0225F9AC(Ov93Ctx *ctx) {
+    return (s64)ov93_0225F94C(ctx) * 100 / 0x3200000;
 }
 
 void ov93_0225F9D8(Ov93Ctx *ctx) {
