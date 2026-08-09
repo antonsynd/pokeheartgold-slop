@@ -1192,3 +1192,15 @@ The permuter scaffolding under tools/decomp_harness/permuter/ was written for NO
   4. emit_job.sh preferred build/<game>/src/<name>.o over build/<game>/asm/<name>.o as the reference, contradicting its own README. For a pending file that scores the seed against OUR OWN last compile, so base score = 0 and the search never starts. Precedence flipped; and for a live target (rc 3) target.o is now COPIED from the reference instead of compiled from the TU.
 
 STILL OPEN: with a correct asm reference the permuter runs but its objdump scorer reports base score 4420 for a function that differs by 7 instructions -- the score is not calibrated for a live-target-vs-asm-object reference (symbol/relocation layout of the assembled object differs from a compiled one). Until that is settled the permuter cannot rank candidates for live targets. Also add `#define NULL 0` to the base.c prelude (done) or type-aware passes KeyError on NULL.
+
+### 'No rule to make target include/<old>.h' after an upstream merge that renamed a file -- stale .d files in the OTHER game's build dir  <!-- id: stale-d-files-after-a-rename-merge -->
+
+Symptom: HeartGold builds clean but `chiri pkg -- build --game soulsilver` dies with
+  gmake: *** No rule to make target 'include/text_0205B4EC.h', needed by 'build/soulsilver.us/src/alph_puzzle.o'
+for a header that no longer exists.
+
+Cause: the two games have SEPARATE build trees. A merge that renames a header regenerates the .d files only for whichever game you have been building; the other tree keeps .d files naming the old path, and make cannot satisfy them. It is NOT caused by whatever you just changed -- check this before suspecting your own commit.
+
+Fix: `find build/<game>.us -name '*.d' -delete` and rebuild. Worth also sweeping the game you DO build (`grep -l <oldname> build/*/**/*.d`), since a single orphan can survive there too.
+
+HIT: after the pret PR #491-499 fieldmap merge renamed text_0205B4EC -> dialog_box. Cost a full SoulSilver build cycle to diagnose. Related: [[cross-environment-d-files]] if one exists.
