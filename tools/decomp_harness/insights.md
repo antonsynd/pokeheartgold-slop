@@ -24,6 +24,23 @@ MWCC -W error treats passing an int literal to an enum-typed parameter as an ill
 
 A right shift `x >> n` where x is u8 or u16 promotes x to signed int per C integer promotion, so MWCC emits an arithmetic shift (asr). If the asm shows a logical/unsigned shift (lsr) at that spot, the original operand was an unsigned type that does NOT promote to signed — i.e. u32 (or unsigned int). Fix: declare/cast the operand as u32 (e.g. change a derived param type from u8 to u32, or write ((u32)x >> n)). Left shifts (<<) are unaffected (lsl either way). Seen in unk_0205BFF0.c sub_0205C0A0: `b >> 1` with b as u8 emitted `asr r0,r1,#1` (0x1048); retail had `lsr r0,r1,#1` (0x0848); changing b to u32 fixed it. Note u16 also promotes to signed int, so u16 does NOT give lsr — only u32/unsigned does.
 
+### Decompiling ARM-mode (arm_func_start) asm to C: #include <nitro/code32.h> AFTER global.h, guarded from clang-format  <!-- id: arm-mode-c-requires-code32-after-global-h -->
+
+This tree had no ARM-mode C precedent -- every `_arm.o` in main.lsf came from lib/NitroDWC assembly -- but ARM-mode decomps do work. PROVEN on asm/overlay_93_arm.s (ov93_0225EF0C and ov93_0225EF5C match byte-for-byte).
+
+`include/global.h` pulls in `<nitro/code16.h>`, which is `#pragma thumb on`. To emit ARM you include `<nitro/code32.h>` (`#pragma thumb off`) AFTER it. The trap: clang-format sorts angle-bracket includes above quoted ones, silently hoisting code32.h above global.h so code16.h runs last and you get THUMB with no diagnostic. The build succeeds and objdiff just shows wrong sizes.
+
+Required form:
+    #include "global.h"
+
+    // clang-format off
+    #include <nitro/code32.h>
+    // clang-format on
+
+Quick check that you actually got ARM: every function size must be a multiple of 4, and objdump should show 4-byte encodings (`e92d4010 push {r4, lr}`), not 2-byte Thumb. A size like 74 is proof you are still in Thumb.
+
+Note code32.h also redefines FX_Mul32x64c and MATH_CountLeadingZeros to their inline variants -- another reason to include the real header rather than writing a bare `#pragma thumb off`.
+
 ## General Codegen
 
 ### Register allocation follows declaration order  <!-- id: regalloc-order -->
@@ -480,6 +497,24 @@ A same-width `u8 v = flag;` does NOT work: MWCC copy-propagates it and reloads t
 The wider local also pins the live range, which fixes the accompanying register choice -- the parameter takes r4 and the later local takes r5, matching retail, instead of the reverse.
 
 MEASURED: ov01_021E8DE8 in src/overlay_01_021E8744.c. Same live-range-pinning idea as [[c89-decl-order-fixes-swapped-registers]].
+
+### ARM mode: declaration order picks the registers, and the order of the ZERO initialisers picks which register the shared 0 is materialised in  <!-- id: arm-regalloc-init-order-picks-the-zero-source -->
+
+[[c89-decl-order-fixes-swapped-registers]] holds in ARM mode too, and there is a second, finer knob on top of it.
+
+When several locals start at 0, MWCC materialises the constant ONCE and copies it: retail emitted
+    mov lr, #0        ; i
+    mov r4, lr        ; v
+    mov ip, lr        ; the 0 used by two stores
+Which variable gets the `mov #0` and which get the copies follows the order the zeros are written in SOURCE, independently of declaration order.
+
+MEASURED on ov93_0225EF0C: `s32 i; s32 v = 0; for (i = 0; ...)` gave the right REGISTERS (i in lr, v in r4 -- fixed by declaring i first) but the wrong zero source: v's initialiser is textually first, so MWCC emitted `mov r4,#0; mov lr,r4; mov ip,r4` -- exactly 3 halfword diffs, everything else identical. Rewriting the init as a comma expression in the for-header so i's zero comes first:
+    s32 i;
+    s32 v;
+    for (i = 0, v = 0; i < 8; i++)
+matched exactly.
+
+So: fix the register assignment with declaration order first, then if you are left with a handful of `mov`-only diffs at the top of the function, reorder the initialisers.
 
 ## Matching Tricks
 

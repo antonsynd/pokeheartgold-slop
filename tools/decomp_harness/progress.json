@@ -1186,7 +1186,17 @@
       "note": "ANALYSIS-ONLY defer (no code) \u2014 LARGEST remaining file (1982 lines, 41 fns), all static. overlay_02 battle cluster (sibling of the 364-fn overlay_02_02248728). TaskManager-driven animated battle-effect/scene module: heavy TaskManager_Call/GetFieldSystem/GetEnvironment state machines, BG/graphics (SetBgPriority, GfGfx_EngineATogglePlanes), Heap_Alloc/Free, PlaySE, and SOFT-FLOAT math (_fflt/_fadd/_fsub/_ffix in ~6 fns -> those must stay C, can't NONMATCHING). 102B rodata (small byte tables ov02_0225321C..). 0 unknown callees (all headered). Needs a dedicated focused session (drafter can't handle 1900+ lines; the soft-float coloring fns are the hard core). Triage-easiest of the remaining queue, which is now ALL large files (47/68/34/39/44-fn)."
     }
   ],
-  "in_progress": [],
+  "in_progress": [
+    {
+      "file": "asm/overlay_93_arm.s",
+      "lines": 995,
+      "functions": 17,
+      "matched_functions": 2,
+      "attempts": 1,
+      "result": "wip",
+      "note": "WIP 2/17. src/overlay_93_arm.c is committed but NOT linked - main.lsf:1155 still points at asm/overlay_93_arm.o, so the tree builds and both ROMs match. THIS IS THE FIRST ARM-MODE DECOMP IN THE TREE and the scaffold is now proven: see pattern arm-mode-c-requires-code32-after-global-h for the clang-format trap (code32.h MUST stay below global.h or you silently get Thumb) and arm-regalloc-init-order-picks-the-zero-source for the ordering knobs. Iterate with ./tools/decomp_harness/compile_one.sh src/overlay_93_arm.c (3s, no link) and objdiff against build/heartgold.us/asm/overlay_93_arm.o; ALWAYS read compile_one output rather than silencing it. DONE: ov93_0225EF0C, ov93_0225EF5C. REMAINING 15. Easiest next: ov93_0225FABC (4 SpriteManager_Unload* calls on ctx->unk_28 with ids 0x2713/0x2715), ov93_0225F9D8 (NARC_New 0xC9 + four SpriteSystem_Load*FromOpenNarc + NARC_Delete), ov93_0225FB00, ov93_0225FB6C, ov93_0225FBE4. Harder: ov93_0225EE98 builds a 128-byte shininess table via a 64-bit n^4>>24 chain and feeds NNS_G3dGeBufferOP_N(0x34, buf, 0x20); ov93_0225F548 is ~230 lines; several use _ll_sdiv (64-bit divide) and FX_SinCosTable_. Data symbols ov93_02262C05..08 and ov93_02262C38 live in asm/overlay_93_thumb_2.s, the chunk linked after this one. 104 bytes of rodata at the tail still to do."
+    }
+  ],
   "stats": {
     "total_attempts": 169,
     "total_matched": 70,
