@@ -762,6 +762,14 @@
       "attempts": 2,
       "result": "matched",
       "note": "compare-verified (full ROM SHA1 OK). First C file in overlay_41 (all other chunks still asm). Self-contained .c: file-local UnkStruct_ov41_0224BE34 (SaveFashionDataSub* @0x000, Sprite* @0x198, Window* @0x19C) + local prototypes for the two .public fns, since no header exists and callers reference the symbols via .inc .public. Attempt 1 failed on '-W pedantic: function has no prototype'. Key matching detail: FontID_String_GetWidth returns u32 but the result must be held in an int so `width / 2` emits the signed lsr/add/asr idiom rather than an unsigned shift. objdiff 3/3 MATCH with .text -4 (two interior 2-mod-4 functions losing their .balign trailing pad) \u2014 benign per balign-trailing-pad-section-size-falsepos, since the last function is 0-mod-4 and the linker 4-aligns the following functions."
+    },
+    {
+      "file": "asm/overlay_83_022479E4.s",
+      "lines": 522,
+      "functions": 20,
+      "attempts": 4,
+      "result": "matched",
+      "note": "compare-verified (full ROM SHA1 OK). First C file in overlay_83. 20 functions (13 exported, 7 static) + 13 static const rodata objects, all typed with real structs (GridCallbacks/TouchscreenHitbox/DpadMenuBox from unk_02019BA4.h, touchscreen.h, unk_02020A0C.h). ov83_02248610/0x02248611 are NOT two objects: DpadMenuBox is 8 bytes, so they are .left/.top of one array read at stride 8. gSystem+0x48 = gSystem.newKeys. TWO fixes were needed: (1) ov83_02247BC4 - a two-case switch compiled to a jump-to-shared-block with a trailing b.n where retail used an if-else chain with inline returns (size delta), and the out-of-range path had to be an explicit 'default:' inside the switch with the touchscreen block AFTER the switch reached via break (block-order delta). (2) rodata tie order: MWCC is size-ascending but equal-size ties are not a simple rule - the 32-byte pair came out reversed and the 16-byte GridCallbacks run came out rotated left by one, while the 20- and 28-byte pairs kept declaration order. The vtable rotation was INVISIBLE to objdiff (all words are relocations, masked -> 'data sections MATCH' on a broken ROM); diagnosed by dumping OVY_83.sbin. objdiff .text -4 (two interior 2-mod-4 funcs) was benign - verified via nm that every ov83_ symbol links at the address encoded in its name."
     }
   ],
   "failed": [
@@ -1170,8 +1178,8 @@
   ],
   "in_progress": null,
   "stats": {
-    "total_attempts": 161,
-    "total_matched": 69,
+    "total_attempts": 165,
+    "total_matched": 70,
     "total_failed": 31
   },
   "matched": [
