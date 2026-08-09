@@ -541,6 +541,58 @@ READ IT THE OTHER WAY TOO: a leading equality test against a value whose arm doe
 
 MEASURED: ov93_0225F44C in src/overlay_93_arm.c.
 
+### MWCC/ARM if-converts the ELSE arm, not the THEN arm -- put the SHORT arm in `else` to get retail's predicated block  <!-- id: arm-if-conversion-only-predicates-the-else-block -->
+
+Retail shape (one branch, three predicated instructions):
+    cmp     r0, #0x8000
+    smullls r1, r6, r2, r0
+    addls   r6, r0, r6
+    movls   r1, r0, lsr #0x1f
+    bls     merge
+    <5-instruction hi path>
+  merge:
+
+Writing the short arm as the THEN block --
+    if ((u32)x <= 0x8000) { short } else { long }
+-- gives two branches instead (`bhi else / short / b merge / else: long`), i.e. ONE INSTRUCTION LARGER, and the extra live range cascades into a different callee-saved assignment for every variable after it.
+
+Flipping the test so the short arm is the ELSE --
+    if ((u32)x > 0x8000) { long } else { short }
+-- makes MWCC hoist the else block above the then block, predicate it, and reuse the same branch for the skip. Exactly retail. The ternary form `cond ? short : long` behaves like the THEN case and does NOT help.
+
+Rule of thumb: when retail has predicated instructions immediately after a `cmp`, the source arm they came from is the `else`. Confirmed on ov93_0225F548 (step = angle/7 vs -(0x10000-angle)/7).
+
+### When retail recycles r6/r7/r8 for a second set of values, those values are the SAME C locals reassigned -- fresh locals get pushed out to ip/lr  <!-- id: callee-saved-recycling-follows-variable-identity -->
+
+ov93_0225F548 computes three values in its first half (a, b, mid -> r6, r7, r8) and three unrelated ones in its second half (angular step, running angle, running mid offset). Retail puts the second three back in r6, r7, r8 and gives ip/lr to the loop counter and the per-step delta.
+
+Writing the second three as FRESH locals -- in any declaration order, including a C89 block ordered exactly like retail's register numbering -- produced a stable rotation instead: acc=r6, accMid=r7, i=r8, deltaMid=ip, step=lr. Declaration order had literally no effect here (several permutations tried), so the usual declaration-order lever [[c89-decl-order-fixes-swapped-registers]] does not apply to this ARM-mode recycling.
+
+What did work: reassign the ORIGINAL locals.
+    a = angleB / 7;      /* was -unk_04 */
+    b = a;               /* was -unk_14 */
+    mid = deltaMid;      /* was the midpoint */
+MWCC coalesces each reassignment onto the register that variable already owned, and the remaining new locals fall into ip/lr in declaration order. Byte-exact with no other change.
+
+Tell: retail reuses a low callee-saved register for a value with no relationship to the one that died there, while your version parks that value in ip or lr.
+
+### A stack-parameter `ldr` that sits one slot too late moves up when you hoist the first (dead) store through that pointer above the intervening `if`  <!-- id: hoist-the-dead-pointer-store-to-move-a-stack-param-load -->
+
+ov93_0225F8E4 differed from retail by exactly one scheduling swap:
+    retail:  push / ldr lr,[sp,#8] / add r4,r2,r1 / mov r0,#0
+    ours:    push / add r4,r2,r1 / ldr lr,[sp,#8] / mov r0,#0
+The load feeds `str r2,[lr]` about ten instructions later, so the scheduler is free either way and no amount of reordering the LOCALS moves it: swapping the declaration order, dropping the `sum` temp, adding an `excess` temp, moving `ret = TRUE` first inside the `if`, and binding `s32 *dst = p4;` as the first local ALL left it at four diffs.
+
+What worked: move the first store through the pointer above the `if`.
+    *p4 = a2;                 /* was below the if, next to *p5 = a3 */
+    sum = a2 + a1;
+    if (sum > 0x64000) { a1 -= sum - 0x64000; ret = TRUE; }
+    *p5 = a3;
+    *p4 = a2 + a1;
+MWCC sinks the store itself back down next to `*p5 = a3` (it can prove p4 does not alias a local), but the earlier first use anchors the `ldr` at the top of the block. Semantics are unchanged -- that store is dead either way, and the relative order of the p4/p5 stores is preserved even if the two pointers alias.
+
+Generalisation: to pull a stack-parameter load earlier, give the parameter an earlier first use, even one the optimiser will move back.
+
 ## Matching Tricks
 
 ### Small source changes that move codegen  <!-- id: decl-order-tricks -->
@@ -1045,6 +1097,31 @@ MWCC builds with `-W all -W pedantic -W error`, which rejects a non-static funct
     static void ov41_0224BE80(UnkStruct_ov41_0224BE34 *param0);  // fwd decl, called before defined
 
 Static functions need a forward declaration only if called before their definition (function order must follow the asm). Distinguish exports from imports via `thumb_func_start`/`arm_func_start` in the .s: a `.public` symbol NOT defined locally is an import and needs an `extern`-style local declaration instead. Example: src/overlay_41_0224BE34.c (first C file in overlay_41). Related: [[self-contained-when-own-header-not-self-sufficient]] (same self-contained principle when a frozen own-header exists).
+
+### Immediate-mode 3D drawing in this tree is raw `NNS_G3dGeBufferOP_N` calls with one throwaway local per command -- each gets its own stack slot  <!-- id: nnsg3d-immediate-mode-is-one-local-per-ge-command -->
+
+The SDK's `G3_Begin`/`G3_TexCoord`/`G3_Vtx16` inline helpers are NOT what this codebase compiles to (they write GE registers directly). Retail uses the buffered form, exactly like sub_0201FAC8 in unk_0201F990.c:
+    u32 begin = GX_BEGIN_QUADS;
+    NNS_G3dGeBufferOP_N(G3OP_BEGIN, &begin, G3OP_BEGIN_NPARAMS);
+    ...
+    NNS_G3dGeBufferOP_N(G3OP_END, NULL, G3OP_END_NPARAMS);   /* NULL args, 0 params */
+
+Every command's parameter block is a separate local and MWCC does NOT overlap the slots, even for sibling `{ }` scopes inside a loop body. ov93_0225EFAC draws 8 quads x 4 vertices from a 0x48-byte frame: 1 slot for BEGIN plus 4 x (TEXCOORD, NORMAL, VTX_16[2]) plus the two s16 the vertex helper writes through. Slots run high-to-low in declaration order, so the source order can be read straight off the offsets.
+
+Packing, both confirmed byte-exact:
+    texcoord = (u16)(fx16)(s >> (FX32_SHIFT - 4)) | ((u32)(u16)(fx16)(t >> (FX32_SHIFT - 4)) << 16);
+    vtx[0]   = (u32)(u16)x | ((u32)(u16)y << 16);   vtx[1] = 0;
+The DOUBLE cast matters: `(u16)(fx16)` emits `lsl #8; asr #16; lsl #16; lsr #16`, while a single `(u16)` or an `& 0xffff` emits a shorter, different sequence. And the operand that is NOT shifted left by 16 must come FIRST in the `|` -- it is the one the `orr` folds into its shifter operand.
+
+### When two functions in one file disagree about what lives at an offset, they take DIFFERENT structs -- resolve it at the call sites, not by guessing  <!-- id: conflicting-offsets-mean-two-structs-check-the-call-sites -->
+
+overlay_93_arm.c looked like one context type until ov93_0225F548 showed an 8-element 0x20-byte array at +0x0C running to +0x20B, which collides with the `SpriteSystem*` at +0x24 and `PaletteData*` at +0x8C that ov93_0225F9D8 uses. Both readings produced matching code, so objdiff could not decide it.
+
+The call sites did: in overlay_93_thumb_1.s the drawing functions are called with r4 (a 0x278-byte MI_CpuFill8 allocation) and the sprite loaders with r5 (an unrelated object). Two structs, passed side by side.
+
+Workflow: when offsets conflict, grep `bl <func>` across the overlay's asm and look at which register each call sets up. Splitting the type is codegen-neutral as long as every offset stays put -- verify with a recompile before building anything.
+
+Bonus once unified: flat `unk_010`/`unk_020`/`unk_0D4` fields turned out to be `nodes[0].unk_04`, `nodes[0].unk_14`, `nodes[6].unk_08`, which is what those functions actually mean.
 
 ## NONMATCHING Fallback
 

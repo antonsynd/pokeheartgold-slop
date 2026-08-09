@@ -12,25 +12,33 @@
 #include <nitro/code32.h>
 // clang-format on
 
-typedef struct Ov93Ctx {
-    u8 padding_000[0xC];
-    s32 unk_00C; // 0x00C
-    s32 unk_010; // 0x010
-    u8 padding_014[0x8];
-    s32 unk_01C;                  // 0x01C
-    s32 unk_020;                  // 0x020
+typedef struct Ov93Node {
+    s32 unk_00;
+    s32 unk_04;
+    s32 unk_08;
+    s32 unk_0C;
+    s32 unk_10;
+    s32 unk_14;
+    s32 unk_18;
+    s32 unk_1C;
+} Ov93Node;
+
+// The sprite/resource owner. A different object from Ov93Ctx -- the two are
+// passed side by side from the overlay's task function.
+typedef struct Ov93App {
+    u8 padding_000[0x24];
     SpriteSystem *spriteSystem;   // 0x024
     SpriteManager *spriteManager; // 0x028
     u8 padding_02C[0x60];
     PaletteData *paletteData; // 0x08C
-    u8 padding_090[0x44];
-    s32 unk_0D4; // 0x0D4
-    s32 unk_0D8; // 0x0D8
-    u8 padding_0DC[0x8];
-    s32 unk_0E4; // 0x0E4
-    u8 padding_0E8[0x124];
-    s32 unk_20C; // 0x20C
-    s32 unk_210; // 0x210
+} Ov93App;
+
+typedef struct Ov93Ctx {
+    u8 padding_000[0xC];
+    Ov93Node unk_00C[8]; // 0x00C
+    Ov93Node unk_10C[8]; // 0x10C
+    s32 unk_20C;         // 0x20C
+    s32 unk_210;         // 0x210
     u8 padding_214[0x4];
     s32 unk_218; // 0x218
     s32 unk_21C; // 0x21C
@@ -50,37 +58,30 @@ typedef struct Ov93Ctx {
     u8 unk_274;  // 0x274
 } Ov93Ctx;
 
-typedef struct Ov93Node {
-    s32 unk_00;
-    s32 unk_04;
-    s32 unk_08;
-    s32 unk_0C;
-    s32 unk_10;
-    s32 unk_14;
-    s32 unk_18;
-    s32 unk_1C;
-} Ov93Node;
+// fx32 -> the 1:11:4 pair the TEXCOORD command wants, packed t:s.
+#define OV93_PACK_TEXCOORD(s, t) ((u16)(fx16)((s) >> (FX32_SHIFT - 4)) | ((u32)(u16)(fx16)((t) >> (FX32_SHIFT - 4)) << 16))
+// VTX_16 first parameter word: x in the low half, y in the high half.
+#define OV93_PACK_VTX16_XY(x, y) ((u32)(u16)(x) | ((u32)(u16)(y) << 16))
+// GX_PACK_NORMAL(0, 0, FX16_ONE - 1) -- straight at the camera.
+#define OV93_NORMAL_FRONT 0x1FF00000
 
-typedef struct Ov93Nodes {
-    u8 padding_000[0xC];
-    Ov93Node unk_00C[8];
-    Ov93Node unk_10C[8];
-} Ov93Nodes;
+u16 FX_Atan2Idx(fx32 y, fx32 x);
 
 void ov93_0225EE98(void);
-void ov93_0225EF0C(Ov93Nodes *nodes);
-void ov93_0225EF5C(Ov93Nodes *nodes);
+void ov93_0225EF0C(Ov93Ctx *ctx);
+void ov93_0225EF5C(Ov93Ctx *ctx);
+void ov93_0225EFAC(Ov93Ctx *ctx);
 int ov93_0225F8AC(Ov93Ctx *ctx, int a1);
 void ov93_0225F268(s32 a0, s32 a1, s16 *p2, s16 *p3);
 BOOL ov93_0225F370(Ov93Ctx *ctx);
 BOOL ov93_0225F44C(Ov93Ctx *ctx);
 int ov93_0225F548(Ov93Ctx *ctx, int a1, fx32 a2);
 void ov93_0225EB38(Ov93Ctx *ctx);
-BOOL ov93_0225F8E4(s32 a0, s32 a1, s32 a2, s32 a3, s32 *p4, s32 *p5);
+BOOL ov93_0225F8E4(Ov93Ctx *ctx, s32 a1, s32 a2, s32 a3, s32 *p4, s32 *p5);
 int ov93_0225F94C(Ov93Ctx *ctx);
 int ov93_0225F9AC(Ov93Ctx *ctx);
-void ov93_0225F9D8(Ov93Ctx *ctx);
-ManagedSprite *ov93_0225FB00(Ov93Ctx *ctx);
+void ov93_0225F9D8(Ov93App *app);
+ManagedSprite *ov93_0225FB00(Ov93App *app);
 void ov93_0225FB6C(Ov93Ctx *ctx, ManagedSprite *sprite);
 
 static const u8 sUnk_02262C04[13][4] = {
@@ -111,7 +112,7 @@ static const ManagedSpriteTemplate sSpriteTemplate_02262C38 = {
     1,
     0,
 };
-void ov93_0225FABC(Ov93Ctx *ctx);
+void ov93_0225FABC(Ov93App *app);
 void ov93_0225FBE4(ManagedSprite *sprite);
 
 void ov93_0225EE98(void) {
@@ -128,37 +129,106 @@ void ov93_0225EE98(void) {
     NNS_G3dGeBufferOP_N(G3OP_SHININESS, (u32 *)shininess, G3OP_SHININESS_NPARAMS);
 }
 
-void ov93_0225EF0C(Ov93Nodes *nodes) {
+void ov93_0225EF0C(Ov93Ctx *ctx) {
     s32 i;
     s32 v;
 
     for (i = 0, v = 0; i < 8; i++) {
-        nodes->unk_00C[i].unk_00 = 0;
-        nodes->unk_00C[i].unk_04 = v;
-        nodes->unk_00C[i].unk_08 = 0;
-        nodes->unk_00C[i].unk_0C = v - 0x10000;
-        nodes->unk_00C[i].unk_10 = 0x80000;
-        nodes->unk_00C[i].unk_14 = v;
-        nodes->unk_00C[i].unk_18 = 0x80000;
-        nodes->unk_00C[i].unk_1C = v - 0x10000;
+        ctx->unk_00C[i].unk_00 = 0;
+        ctx->unk_00C[i].unk_04 = v;
+        ctx->unk_00C[i].unk_08 = 0;
+        ctx->unk_00C[i].unk_0C = v - 0x10000;
+        ctx->unk_00C[i].unk_10 = 0x80000;
+        ctx->unk_00C[i].unk_14 = v;
+        ctx->unk_00C[i].unk_18 = 0x80000;
+        ctx->unk_00C[i].unk_1C = v - 0x10000;
         v -= 0x10000;
     }
 }
 
-void ov93_0225EF5C(Ov93Nodes *nodes) {
+void ov93_0225EF5C(Ov93Ctx *ctx) {
     s32 i;
     s32 v;
 
     for (i = 0, v = 0; i < 8; i++) {
-        nodes->unk_10C[i].unk_00 = 0;
-        nodes->unk_10C[i].unk_04 = v;
-        nodes->unk_10C[i].unk_08 = 0;
-        nodes->unk_10C[i].unk_0C = v + 0x10000;
-        nodes->unk_10C[i].unk_10 = 0x80000;
-        nodes->unk_10C[i].unk_14 = v;
-        nodes->unk_10C[i].unk_18 = 0x80000;
-        nodes->unk_10C[i].unk_1C = v + 0x10000;
+        ctx->unk_10C[i].unk_00 = 0;
+        ctx->unk_10C[i].unk_04 = v;
+        ctx->unk_10C[i].unk_08 = 0;
+        ctx->unk_10C[i].unk_0C = v + 0x10000;
+        ctx->unk_10C[i].unk_10 = 0x80000;
+        ctx->unk_10C[i].unk_14 = v;
+        ctx->unk_10C[i].unk_18 = 0x80000;
+        ctx->unk_10C[i].unk_1C = v + 0x10000;
         v += 0x10000;
+    }
+}
+
+void ov93_0225EFAC(Ov93Ctx *ctx) {
+    s16 x;
+    s16 y;
+    s32 i;
+
+    for (i = 0; i < 8; i++) {
+        u32 begin = GX_BEGIN_QUADS;
+
+        NNS_G3dGeBufferOP_N(G3OP_BEGIN, &begin, G3OP_BEGIN_NPARAMS);
+        {
+            u32 texcoord;
+            u32 normal;
+            u32 vtx[2];
+
+            ov93_0225F268(ctx->unk_00C[i].unk_00, ctx->unk_00C[i].unk_04, &x, &y);
+            texcoord = OV93_PACK_TEXCOORD(ctx->unk_10C[i].unk_00, ctx->unk_10C[i].unk_04);
+            NNS_G3dGeBufferOP_N(G3OP_TEXCOORD, &texcoord, G3OP_TEXCOORD_NPARAMS);
+            normal = OV93_NORMAL_FRONT;
+            NNS_G3dGeBufferOP_N(G3OP_NORMAL, &normal, G3OP_NORMAL_NPARAMS);
+            vtx[0] = OV93_PACK_VTX16_XY(x, y);
+            vtx[1] = 0;
+            NNS_G3dGeBufferOP_N(G3OP_VTX_16, vtx, G3OP_VTX_16_NPARAMS);
+        }
+        {
+            u32 texcoord;
+            u32 normal;
+            u32 vtx[2];
+
+            ov93_0225F268(ctx->unk_00C[i].unk_08, ctx->unk_00C[i].unk_0C, &x, &y);
+            texcoord = OV93_PACK_TEXCOORD(ctx->unk_10C[i].unk_08, ctx->unk_10C[i].unk_0C);
+            NNS_G3dGeBufferOP_N(G3OP_TEXCOORD, &texcoord, G3OP_TEXCOORD_NPARAMS);
+            normal = OV93_NORMAL_FRONT;
+            NNS_G3dGeBufferOP_N(G3OP_NORMAL, &normal, G3OP_NORMAL_NPARAMS);
+            vtx[0] = OV93_PACK_VTX16_XY(x, y);
+            vtx[1] = 0;
+            NNS_G3dGeBufferOP_N(G3OP_VTX_16, vtx, G3OP_VTX_16_NPARAMS);
+        }
+        {
+            u32 texcoord;
+            u32 normal;
+            u32 vtx[2];
+
+            ov93_0225F268(ctx->unk_00C[i].unk_18, ctx->unk_00C[i].unk_1C, &x, &y);
+            texcoord = OV93_PACK_TEXCOORD(ctx->unk_10C[i].unk_18, ctx->unk_10C[i].unk_1C);
+            NNS_G3dGeBufferOP_N(G3OP_TEXCOORD, &texcoord, G3OP_TEXCOORD_NPARAMS);
+            normal = OV93_NORMAL_FRONT;
+            NNS_G3dGeBufferOP_N(G3OP_NORMAL, &normal, G3OP_NORMAL_NPARAMS);
+            vtx[0] = OV93_PACK_VTX16_XY(x, y);
+            vtx[1] = 0;
+            NNS_G3dGeBufferOP_N(G3OP_VTX_16, vtx, G3OP_VTX_16_NPARAMS);
+        }
+        {
+            u32 texcoord;
+            u32 normal;
+            u32 vtx[2];
+
+            ov93_0225F268(ctx->unk_00C[i].unk_10, ctx->unk_00C[i].unk_14, &x, &y);
+            texcoord = OV93_PACK_TEXCOORD(ctx->unk_10C[i].unk_10, ctx->unk_10C[i].unk_14);
+            NNS_G3dGeBufferOP_N(G3OP_TEXCOORD, &texcoord, G3OP_TEXCOORD_NPARAMS);
+            normal = OV93_NORMAL_FRONT;
+            NNS_G3dGeBufferOP_N(G3OP_NORMAL, &normal, G3OP_NORMAL_NPARAMS);
+            vtx[0] = OV93_PACK_VTX16_XY(x, y);
+            vtx[1] = 0;
+            NNS_G3dGeBufferOP_N(G3OP_VTX_16, vtx, G3OP_VTX_16_NPARAMS);
+        }
+        NNS_G3dGeBufferOP_N(G3OP_END, NULL, G3OP_END_NPARAMS);
     }
 }
 
@@ -203,7 +273,7 @@ BOOL ov93_0225F370(Ov93Ctx *ctx) {
     ctx->unk_224 = ctx->unk_20C;
     ctx->unk_228 = ctx->unk_210;
     ctx->unk_22C = ctx->unk_210 - y;
-    ctx->unk_230 = -(ctx->unk_020 + (ctx->unk_010 - ctx->unk_020) / 2);
+    ctx->unk_230 = -(ctx->unk_00C[0].unk_14 + (ctx->unk_00C[0].unk_04 - ctx->unk_00C[0].unk_14) / 2);
     ctx->unk_240 = ov93_0225F9AC(ctx);
     return TRUE;
 }
@@ -251,8 +321,117 @@ BOOL ov93_0225F44C(Ov93Ctx *ctx) {
         break;
     }
 
-    ctx->unk_230 = -(ctx->unk_020 + (ctx->unk_010 - ctx->unk_020) / 2);
+    ctx->unk_230 = -(ctx->unk_00C[0].unk_14 + (ctx->unk_00C[0].unk_04 - ctx->unk_00C[0].unk_14) / 2);
     return TRUE;
+}
+
+int ov93_0225F548(Ov93Ctx *ctx, int a1, fx32 a2) {
+    s32 hi;
+    s32 lo;
+    BOOL flag;
+    // a, b and mid are recycled after the early-out below: a becomes the
+    // angular step, b the running angle and mid the running mid offset. They
+    // share retail's registers, so they have to stay the same locals.
+    s32 a;
+    s32 b;
+    s32 mid;
+    s32 newMid;
+    s32 i;
+    s32 deltaMid;
+    s32 angleA;
+    s32 angleB;
+
+    a = -ctx->unk_00C[0].unk_04;
+    b = -ctx->unk_00C[0].unk_14;
+    mid = b + (a - b) / 2;
+    flag = FALSE;
+
+    switch (ov93_0225F8AC(ctx, a1)) {
+    case 0:
+        hi = a + a2;
+        lo = b + a2;
+        break;
+    case 1:
+        flag = ov93_0225F8E4(ctx, a2, a, b, &hi, &lo);
+        break;
+    case 2:
+        flag = ov93_0225F8E4(ctx, a2, b, a, &lo, &hi);
+        break;
+    }
+
+    newMid = lo + (hi - lo) / 2;
+    if (mid == newMid && a == hi && b == lo) {
+        return 0;
+    }
+
+    if (newMid < 0) {
+        newMid = 0;
+    }
+    if (hi < 0) {
+        hi = 0;
+    }
+    if (lo < 0) {
+        lo = 0;
+    }
+    if (newMid > FX32_CONST(100)) {
+        newMid = FX32_CONST(100);
+        flag = TRUE;
+    }
+    if (hi > FX32_CONST(100)) {
+        hi = FX32_CONST(100);
+        flag = TRUE;
+    }
+    if (lo > FX32_CONST(100)) {
+        lo = FX32_CONST(100);
+        flag = TRUE;
+    }
+
+    // Cases 0 and 2 are spelled out twice on purpose -- retail emits both
+    // blocks, so they cannot be folded into one label.
+    switch (ov93_0225F8AC(ctx, a1)) {
+    default:
+    case 0:
+        angleB = FX_Atan2Idx(lo - newMid, FX32_CONST(64));
+        angleA = (u16)(angleB + 0x8000);
+        break;
+    case 2:
+        angleB = FX_Atan2Idx(lo - newMid, FX32_CONST(64));
+        angleA = (u16)(angleB + 0x8000);
+        break;
+    case 1:
+        angleA = FX_Atan2Idx(hi - newMid, -FX32_CONST(64));
+        angleB = (u16)(angleA + 0x8000);
+        break;
+    }
+
+    ctx->unk_00C[0].unk_00 = (FX_CosIdx(angleA) << 6) + FX32_CONST(64);
+    ctx->unk_00C[0].unk_04 = -(newMid + (FX_SinIdx(angleA) << 6));
+    ctx->unk_00C[0].unk_10 = (FX_CosIdx(angleB) << 6) + FX32_CONST(64);
+    ctx->unk_00C[0].unk_14 = -(newMid + (FX_SinIdx(angleB) << 6));
+
+    deltaMid = (FX32_CONST(112) - newMid) / 7;
+    if ((u32)angleB > 0x8000) {
+        a = -(0x10000 - angleB) / 7;
+    } else {
+        a = angleB / 7;
+    }
+
+    b = a;
+    mid = deltaMid;
+    for (i = 1; i < 7; i++) {
+        ctx->unk_00C[i].unk_00 = (FX_CosIdx(angleA - b) << 6) + FX32_CONST(64);
+        ctx->unk_00C[i].unk_04 = -(newMid + (FX_SinIdx(angleA - b) << 6) + mid);
+        ctx->unk_00C[i].unk_10 = (FX_CosIdx(angleB - b) << 6) + FX32_CONST(64);
+        ctx->unk_00C[i].unk_14 = -(newMid + (FX_SinIdx(angleB - b) << 6) + mid);
+        ctx->unk_00C[i - 1].unk_08 = ctx->unk_00C[i].unk_00;
+        ctx->unk_00C[i - 1].unk_0C = ctx->unk_00C[i].unk_04;
+        ctx->unk_00C[i - 1].unk_18 = ctx->unk_00C[i].unk_10;
+        ctx->unk_00C[i - 1].unk_1C = ctx->unk_00C[i].unk_14;
+        b += a;
+        mid += deltaMid;
+    }
+
+    return flag == TRUE ? 2 : 0;
 }
 
 int ov93_0225F8AC(Ov93Ctx *ctx, int a1) {
@@ -272,16 +451,17 @@ int ov93_0225F8AC(Ov93Ctx *ctx, int a1) {
     return 0;
 }
 
-BOOL ov93_0225F8E4(s32 a0, s32 a1, s32 a2, s32 a3, s32 *p4, s32 *p5) {
+BOOL ov93_0225F8E4(Ov93Ctx *ctx, s32 a1, s32 a2, s32 a3, s32 *p4, s32 *p5) {
     BOOL ret = FALSE;
-    s32 sum = a2 + a1;
+    s32 sum;
 
+    *p4 = a2;
+    sum = a2 + a1;
     if (sum > 0x64000) {
         a1 -= sum - 0x64000;
         ret = TRUE;
     }
 
-    *p4 = a2;
     *p5 = a3;
     *p4 = a2 + a1;
 
@@ -295,35 +475,35 @@ BOOL ov93_0225F8E4(s32 a0, s32 a1, s32 a2, s32 a3, s32 *p4, s32 *p5) {
 }
 
 int ov93_0225F94C(Ov93Ctx *ctx) {
-    s32 mid = ctx->unk_020 + (ctx->unk_010 - ctx->unk_020) / 2;
+    s32 mid = ctx->unk_00C[0].unk_14 + (ctx->unk_00C[0].unk_04 - ctx->unk_00C[0].unk_14) / 2;
 
-    return FX_Mul((ctx->unk_01C - ctx->unk_00C) + (ctx->unk_0E4 - ctx->unk_0D4), -(ctx->unk_0D8 - mid)) / 2;
+    return FX_Mul((ctx->unk_00C[0].unk_10 - ctx->unk_00C[0].unk_00) + (ctx->unk_00C[6].unk_18 - ctx->unk_00C[6].unk_08), -(ctx->unk_00C[6].unk_0C - mid)) / 2;
 }
 
 int ov93_0225F9AC(Ov93Ctx *ctx) {
     return (s64)ov93_0225F94C(ctx) * 100 / 0x3200000;
 }
 
-void ov93_0225F9D8(Ov93Ctx *ctx) {
+void ov93_0225F9D8(Ov93App *app) {
     NARC *narc = NARC_New(NARC_a_1_9_9, HEAP_ID_117);
 
-    SpriteSystem_LoadPaletteBufferFromOpenNarc(ctx->paletteData, PLTTBUF_MAIN_OBJ, ctx->spriteSystem, ctx->spriteManager, narc, 0x3A, FALSE, 1, 1, 0x2715);
-    SpriteSystem_LoadCharResObjFromOpenNarc(ctx->spriteSystem, ctx->spriteManager, narc, 0x37, FALSE, 1, 0x2713);
-    SpriteSystem_LoadCellResObjFromOpenNarc(ctx->spriteSystem, ctx->spriteManager, narc, 0x39, FALSE, 0x2713);
-    SpriteSystem_LoadAnimResObjFromOpenNarc(ctx->spriteSystem, ctx->spriteManager, narc, 0x38, FALSE, 0x2713);
+    SpriteSystem_LoadPaletteBufferFromOpenNarc(app->paletteData, PLTTBUF_MAIN_OBJ, app->spriteSystem, app->spriteManager, narc, 0x3A, FALSE, 1, 1, 0x2715);
+    SpriteSystem_LoadCharResObjFromOpenNarc(app->spriteSystem, app->spriteManager, narc, 0x37, FALSE, 1, 0x2713);
+    SpriteSystem_LoadCellResObjFromOpenNarc(app->spriteSystem, app->spriteManager, narc, 0x39, FALSE, 0x2713);
+    SpriteSystem_LoadAnimResObjFromOpenNarc(app->spriteSystem, app->spriteManager, narc, 0x38, FALSE, 0x2713);
     NARC_Delete(narc);
 }
 
-void ov93_0225FABC(Ov93Ctx *ctx) {
-    SpriteManager_UnloadCharObjById(ctx->spriteManager, 0x2713);
-    SpriteManager_UnloadCellObjById(ctx->spriteManager, 0x2713);
-    SpriteManager_UnloadAnimObjById(ctx->spriteManager, 0x2713);
-    SpriteManager_UnloadPlttObjById(ctx->spriteManager, 0x2715);
+void ov93_0225FABC(Ov93App *app) {
+    SpriteManager_UnloadCharObjById(app->spriteManager, 0x2713);
+    SpriteManager_UnloadCellObjById(app->spriteManager, 0x2713);
+    SpriteManager_UnloadAnimObjById(app->spriteManager, 0x2713);
+    SpriteManager_UnloadPlttObjById(app->spriteManager, 0x2715);
 }
 
-ManagedSprite *ov93_0225FB00(Ov93Ctx *ctx) {
+ManagedSprite *ov93_0225FB00(Ov93App *app) {
     ManagedSpriteTemplate template = sSpriteTemplate_02262C38;
-    ManagedSprite *sprite = SpriteSystem_NewSprite(ctx->spriteSystem, ctx->spriteManager, &template);
+    ManagedSprite *sprite = SpriteSystem_NewSprite(app->spriteSystem, app->spriteManager, &template);
 
     ManagedSprite_SetDrawFlag(sprite, FALSE);
     Sprite_TickFrame(sprite->sprite);

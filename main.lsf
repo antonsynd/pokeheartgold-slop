@@ -1152,7 +1152,7 @@ Overlay OVY_93
 {
     After OVY_90
     Object asm/overlay_93_thumb_1.o
-    Object asm/overlay_93_arm.o
+    Object src/overlay_93_arm.o
     Object asm/overlay_93_thumb_2.o
 }
 Overlay OVY_94
