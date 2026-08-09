@@ -1,6 +1,6 @@
 # Decomp Coverage Ledger
 
-*Generated 2026-08-09T06:01:18Z by `coverage_ledger.py` — do not hand-edit; regenerate after each decomp.*
+*Generated 2026-08-09T18:01:17Z by `coverage_ledger.py` — do not hand-edit; regenerate after each decomp.*
 
 Tracked functions (files with retained asm): **19369** — matched 1698, pending 16750, plus 20 matched-but-blocked inside failed files.
 

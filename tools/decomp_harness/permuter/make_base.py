@@ -58,6 +58,7 @@ typedef signed short fx16;
 typedef int BOOL;
 typedef unsigned int size_t;
 typedef signed short fx16x2;
+#define NULL 0
 """
 
 SCALAR_NAMES = {
@@ -122,6 +123,24 @@ def find_struct_def(name, roots):
     return None
 
 
+def split_struct_def(name, struct_text):
+    """Split `typedef struct [tag] {...} name;` into a forward typedef and a
+    tagged body definition.
+
+    Returns (forward, body) where forward is `typedef struct name name;` and
+    body is `struct name {...};`. Emitting every forward declaration before any
+    body lets structs reference each other through pointers in any order --
+    including cycles -- which a dependency sort over by-value members alone
+    cannot express.
+    """
+    open_m = re.search(r"typedef\s+struct\s+(\w+)?\s*\{", struct_text)
+    if open_m is None:
+        return None, struct_text
+    brace = struct_text.index("{", open_m.start())
+    body = struct_text[brace:struct_text.rindex("}") + 1]
+    return f"typedef struct {name} {name};", f"struct {name} {body};"
+
+
 def struct_member_typenames(struct_text: str, pointers=False):
     """Type identifiers used as struct member types.
 
@@ -173,6 +192,11 @@ def find_prototype(name, roots):
             proto = m.group(1).strip()
             # reject if this is actually a definition body follows (handled by ';')
             if proto.startswith(("if", "for", "while", "switch", "return")):
+                continue
+            # reject a local initialized declaration -- `T *v = name(args);` also
+            # ends in ');' but declares v, not name. A real prototype has nothing
+            # before the callee except its return type.
+            if "=" in proto[:proto.index(name)]:
                 continue
             return proto + ";"
     return None
@@ -302,8 +326,15 @@ def make_base(seed_source: str, func: str, extra=(), struct_roots=None):
     if order:
         parts.append("")
         parts.append("/* real struct definitions (for type-aware permuter passes) */")
+        bodies = []
         for n in order:
-            parts.append(strip_comments(defined[n]).rstrip())
+            fwd, body = split_struct_def(n, strip_comments(defined[n]).rstrip())
+            if fwd is None:
+                bodies.append(body)
+                continue
+            parts.append(fwd)
+            bodies.append(body)
+        parts.extend(bodies)
     if prototypes:
         parts.append("")
         parts.append("/* called-function prototypes (callee return types for passes) */")

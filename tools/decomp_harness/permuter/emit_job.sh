@@ -58,9 +58,12 @@ esac
 
 BASENAME="$(basename "${TU%.c}")"
 # Reference for the score_candidate GATE (defaults inside score_candidate.py too).
+# asm first: for a pending file the assembled object IS the retail truth, while
+# build/<game>/src/<name>.o is just our own last compile -- scoring against that
+# makes the seed trivially perfect (base score 0) and the search never starts.
 if [[ -z "$REF" ]]; then
-    if   [[ -f "build/$BUILD/src/$BASENAME.o" ]]; then REF="build/$BUILD/src/$BASENAME.o"
-    elif [[ -f "build/$BUILD/asm/$BASENAME.o" ]]; then REF="build/$BUILD/asm/$BASENAME.o"
+    if   [[ -f "build/$BUILD/asm/$BASENAME.o" ]]; then REF="build/$BUILD/asm/$BASENAME.o"
+    elif [[ -f "build/$BUILD/src/$BASENAME.o" ]]; then REF="build/$BUILD/src/$BASENAME.o"
     fi
 fi
 
@@ -70,14 +73,25 @@ mkdir -p "$JOB_DIR"
 echo "emit_job: [$BASENAME :: $FUNC]  game=$GAME"
 
 # 1. seed_full.c — promote the target's NONMATCHING C body to live.
+set +e
 python3 "$SCRIPT_DIR/make_seed.py" "$TU" "$FUNC" -o "$JOB_DIR/seed_full.c"
+SEED_RC=$?
+set -e
+[[ $SEED_RC -eq 0 || $SEED_RC -eq 3 ]] || exit $SEED_RC
 
 # 2. base.c — permuter-parseable single-function source (+ typed context).
 python3 "$SCRIPT_DIR/make_base.py" "$JOB_DIR/seed_full.c" "$FUNC" -o "$JOB_DIR/base.c"
 
 # 3. target.o — full-TU reference (target = retail asm variant), make-equivalent.
-pkill -f 'mwccarm' 2>/dev/null || true; sleep 0.3
-python3 "$SCRIPT_DIR/mwcc_compile.py" "$TU" -o "$JOB_DIR/target.o" --game "$GAME"
+# When the target is already live C (rc 3) the TU has no asm variant to fall back
+# to, so compiling it would just reproduce our own output; use the reference.
+if [[ $SEED_RC -eq 3 ]]; then
+    [[ -n "$REF" ]] || { echo "emit_job: no reference object for live target $FUNC" >&2; exit 4; }
+    cp "$REF" "$JOB_DIR/target.o"
+else
+    pkill -f 'mwccarm' 2>/dev/null || true; sleep 0.3
+    python3 "$SCRIPT_DIR/mwcc_compile.py" "$TU" -o "$JOB_DIR/target.o" --game "$GAME"
+fi
 
 # 4. compile.sh — the splice wrapper.
 cp "$SCRIPT_DIR/compile_wrapper.sh" "$JOB_DIR/compile.sh"

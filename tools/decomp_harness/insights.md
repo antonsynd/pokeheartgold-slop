@@ -424,6 +424,63 @@ An un-suffixed decimal literal (10.0, 2.0) has type double in C, so `f32val / 10
 
 MWCC lowers 64-bit (long long / s64 / u64) integer math to _ll_*/_ull_* helpers using the same register-pair ABI as doubles: arg1=r0:r1 (lo:hi), arg2=r2:r3 (lo:hi), result=r0:r1. _ll_mul = signed 64x64->64 multiply; _ll_sdiv/_ll_udiv = signed/unsigned 64-bit divide; _ull_mod = unsigned 64-bit modulo (signed mod would be _ll_mod). The dominant use is the inlined FX_Mul / FX_MulInline: `((s64)a * (s64)b + 0x800) >> 12`. Verified idiom (overlay_91, overlay_02_02248728): `asr r1,r0,#0x1f; asr r3,r2,#0x1f; bl _ll_mul` sign-extends both 32-bit factors to 64-bit (r0:r1, r2:r3), multiplies, then `mov r2,#2; lsl r2,#0xa` (=0x800) `add r0,r0,r2` and an asr/lsr #0xc combine the 64-bit product and shift right 12 -> the fx32 rounded product. So a bl _ll_mul flanked by two asr #0x1f and a +0x800/>>12 tail IS FX_Mul(a,b) (equivalently `(s64)a*b` in a VecFx32 dot/scale). For 64-bit divide/mod helpers, the C source has an s64/u64 operand. Verified overlay_91, overlay_02_02248728.
 
+### Swapped-register diffs: hoist locals to a C89 block and order them so the LOWER-register one is declared first (stack slots read out in reverse)  <!-- id: c89-decl-order-fixes-swapped-registers -->
+
+Sharpens [[regalloc-order]] into a repeatable recipe. Symptom: the function is structurally identical to retail -- same instructions, same order, same size -- but N of them differ, and every difference is two registers exchanged (retail i=r5/slot=r4, emitted i=r4/slot=r5).
+
+MWCC assigns registers to INTERFERING locals in source declaration order, first-declared getting the lower register. C99 mid-block and in-for declarations therefore give a different assignment than retail's C89 top-of-function block. Recipe: hoist every local to a declaration block at the top and order them so the variable retail puts in the LOWER register is declared FIRST.
+
+Reading retail's order off the object: stack SLOTS are assigned in REVERSE declaration order (last declared gets the lowest sp offset). For a function with spilled locals, sort the spill offsets descending and you have the source declaration order directly -- no guessing.
+
+SCOPE LIMIT: only locals whose live ranges INTERFERE. Two counters in sequential loops do NOT interfere; MWCC coalesces them into one register whether they are one variable, two variables, or declared in either order, and declaration order changes nothing (see [[loop2-induction-pointer-regalloc]]).
+
+MEASURED (src/overlay_01_021E8744.c): ov01_021E8D10 (slot before i), ov01_021E8C60 (i before ret), ov01_021E8970 (i before fileId), ov01_021E8BE8 (i before freeIdx). Each went from a multi-instruction DIFF to an exact match with no other change. Related: [[loop2-induction-pointer-regalloc]], [[u8-stack-param-ldrb-vs-hoisted-ldr]].
+
+### Early 'return CONST' folded into a shared boolean tail -- write the other return as 'cond ? TRUE : FALSE'  <!-- id: ternary-prevents-return-tail-merge -->
+
+When a function has an early `return CONST;` and a later `return <boolexpr>;` whose boolean materializes in a register OTHER than r0, MWCC merges the early return into the shared `mov r0, rN` tail (`movs r1,#0; b L`) instead of emitting its own `mov r0,#0; bx lr`. Same size, 2 diffs.
+
+Why the register matters: MWCC does the AND in place on the value's register and uses the constant register as the boolean. For `(a0 & 1) == 1` the value is a0 (already r0), so the boolean lands in r1 and a final `add r0,r1,#0` is needed -- that move is what the early return gets folded into. For `((a0 >> 1) & 1) == 1` the shift needs a temp (r1), the constant goes to r0, the result is already in r0, no move is needed, and both returns stay separate on their own. So the merge only bites when a move is required.
+
+FIX: `return (a0 & 1) == 1 ? TRUE : FALSE;`
+DOES NOT WORK: explicit `BOOL ret` temp, if/else, `1 == (a0 & 1)`, `(a0 & 1) != 0` (changes cmp to `cmp #0`, +4 bytes), u32 param, `return 0` vs `return FALSE`.
+
+MEASURED: ov01_021E8864 in src/overlay_01_021E8744.c; its sibling ov01_021E887C matched without the ternary for exactly the reason above.
+
+### Two sequential loops over one array: retail's SECOND loop puts the induction pointer in a lower register than the index  <!-- id: loop2-induction-pointer-regalloc -->
+
+Observed in retail across four functions in one file: loop1 has index < pointer, loop2 has index > pointer, every time. The naive `for (i...) arr[i]` form emits index < pointer in BOTH loops, so the second loop is always a register-swap mismatch.
+
+Declaration order does NOT fix this. The two counters have disjoint live ranges, so MWCC coalesces them into a single register regardless -- verified over six declaration permutations plus int-vs-s32. This is the documented exception to [[c89-decl-order-fixes-swapped-registers]].
+
+WHAT WORKS: declare the induction pointer as a real local and split the addressing the way retail does -- pointer deref in the CONDITION, index form in the BODY:
+    for (j = 0, p = arr; j < N; j++, p++) {
+        if (p->field == 0) { arr[j].x = ...; break; }
+    }
+TWO PRECONDITIONS, both must hold:
+  (1) the walking base must be at offset 0 from what retail actually walks. ov01_021E8894 fails this -- retail walks `mgr` and puts 0x14 in the load, so `slot = mgr->slots` costs an extra `add rX,#16` (+2 bytes) even though it does fix the registers.
+  (2) the loop needs a constant trip count. With a runtime bound the source-level `p = arr` is emitted BEFORE the zero-trip guard, while retail's compiler-generated pointer sits AFTER it (ov01_021E8D6C).
+
+When either fails, this lever is unavailable and the function stays a register-swap mismatch.
+
+MEASURED: fixed ov01_021E8744; unavailable for MapPropAnimationManager_Init (stores go through mgr-walking base with 0x110..0x11C register offsets), ov01_021E8894 (precondition 1), ov01_021E8D6C (precondition 2).
+
+### u8 stack param read as one hoisted 'ldr' instead of retail's 'add rX,sp,#N; ldrb' -- copy it into a WIDER local at the use site  <!-- id: u8-stack-param-ldrb-vs-hoisted-ldr -->
+
+Thumb-1 has no sp-relative ldrb, so a genuine u8 stack-parameter read costs 2 instructions. When the first use sits behind intervening calls, MWCC instead emits a 1-instruction `ldr` of the whole slot (legal: it assumes the caller pre-narrowed) and hoists it into the prologue. Retail, loading at the use site, emits the 2-instruction ldrb -- a 4-byte size gap plus a different callee-saved assignment.
+
+Declaring the parameter u8 vs s32 makes NO difference once the hoist happens; both compile identically. Confirmed by probe: an isolated function with a u8 stack param and a nearby use DOES emit `add r1,sp,#N; ldrb r2,[r1]`.
+
+FIX: keep the parameter u8, add a WIDER local, assign at retail's load point:
+    s32 v;  /* declared before the other locals */
+    ...
+    v = flag;   /* <- retail's ldrb lands here */
+A same-width `u8 v = flag;` does NOT work: MWCC copy-propagates it and reloads the slot after the intervening call (memory it cannot prove unaliased), giving two ldrb sequences instead of one.
+
+The wider local also pins the live range, which fixes the accompanying register choice -- the parameter takes r4 and the later local takes r5, matching retail, instead of the reverse.
+
+MEASURED: ov01_021E8DE8 in src/overlay_01_021E8744.c. Same live-range-pinning idea as [[c89-decl-order-fixes-swapped-registers]].
+
 ## Matching Tricks
 
 ### Small source changes that move codegen  <!-- id: decl-order-tricks -->
@@ -1114,3 +1171,24 @@ objdiff masks relocated words before comparing data sections. A const struct mad
 DIAGNOSE (no reference .sbin needed): (1) `arm-none-eabi-nm build/heartgold.us/main.elf | grep ovXX_` and check each symbol lands at the address encoded in its own name (ovXX_AABBCCDD must link at 0xAABBCCDD) — this rules .text placement in or out in one step, and is how I proved a `.text -4` objdiff delta was benign padding rather than the cause. (2) If .text is clean, dump the linked overlay directly: overlay base = lowest ovXX_ symbol address (also visible as the OVY_XX section vaddr in `objdump -h main.elf`); file offset = addr - base; `xxd -s $((offset)) -l N build/heartgold.us/OVY_XX.sbin`. Decode the pointer words and compare against the retail `.word ovXX_...` list in the .s — remember the linker sets the Thumb bit, so expect addr|1.
 
 COROLLARY: `objdiff --summary` claiming "data sections MATCH" is NOT sufficient for any file whose .rodata contains function pointers. Only compare (or a direct sbin dump) is authoritative. Related: [[objdiff-usage]], [[objdiff-bl-placeholder-falsepos]], [[section-mapping]].
+
+### Silencing compile_one.sh makes objdiff score the PREVIOUS object -- a broken source file reads as a clean result  <!-- id: objdiff-scores-stale-object-on-silent-compile-failure -->
+
+compile_one.sh writes build/<game>/compile_one/<name>.o and LEAVES THE OLD ONE IN PLACE on failure. So `compile_one.sh f.c >/dev/null 2>&1; objdiff.py ref build/.../compile_one/f.o` silently scores stale bytes whenever the compile breaks.
+
+HIT FOR REAL: a scripted revert rewrote `r->` back to `row->` and also matched inside `mgr->`, producing `mgrow->`. The compile failed, its output was discarded, and objdiff cheerfully reported the pre-corruption 36/40.
+
+ALWAYS let compile_one print and grep its output for DIFF/SIZE/mismatch/FAILED, or check its exit status. Same failure class as a SIGPIPE-killed build whose trailing `echo` returns 0.
+
+COROLLARY for scripted edits: never do a bare substring replace of a short token like `r->` -- scope it to the function body AND use a word boundary, or rewrite the whole function text.
+
+### decomp-permuter on a live (non-NONMATCHING) target: three scaffolding bugs fixed, scoring still uncalibrated  <!-- id: permuter-live-target-wiring -->
+
+The permuter scaffolding under tools/decomp_harness/permuter/ was written for NONMATCHING functions (C body under #ifdef, asm under #else). Pointing it at a plain mismatching decomp exposed three real bugs, all now fixed:
+
+  1. make_seed.py hard-failed with 'no #ifdef NONMATCHING block'. A function that is already live needs no promotion -- the TU IS the seed. Now returns rc 3 for that case.
+  2. make_base.py emitted struct definitions in a by-value-only dependency order, so a struct referenced through a POINTER could be emitted after its user and base.c never parsed. Now emits `typedef struct X X;` forward declarations for all structs first, then `struct X {...};` bodies -- which also handles cycles that no dependency sort can express.
+  3. make_base.py's find_prototype scraped local initialized declarations (`T *v = f(args);` also ends in `);`) as if they were prototypes for f, emitting a bogus line that broke the parse. Now rejects any candidate with `=` before the callee name.
+  4. emit_job.sh preferred build/<game>/src/<name>.o over build/<game>/asm/<name>.o as the reference, contradicting its own README. For a pending file that scores the seed against OUR OWN last compile, so base score = 0 and the search never starts. Precedence flipped; and for a live target (rc 3) target.o is now COPIED from the reference instead of compiled from the TU.
+
+STILL OPEN: with a correct asm reference the permuter runs but its objdump scorer reports base score 4420 for a function that differs by 7 instructions -- the score is not calibrated for a live-target-vs-asm-object reference (symbol/relocation layout of the assembled object differs from a compiled one). Until that is settled the permuter cannot rank candidates for live targets. Also add `#define NULL 0` to the base.c prelude (done) or type-aware passes KeyError on NULL.

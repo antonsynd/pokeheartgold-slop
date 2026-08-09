@@ -56,7 +56,7 @@ u16 ov01_021E8B9C(MapPropAnimationManagerInternal *mgr);
 void ov01_021E8B60(MapPropAnimManagerSlot *slot, s32 unkC);
 void ov01_021E8B78(MapPropAnimManagerSlot *slot);
 s32 ov01_021E8BAC(MapPropAnimationManagerInternal *mgr, s32 fileId);
-void ov01_021E8DE8(MapPropAnimationManagerInternal *mgr, MapPropOneShotAnimationManagerInternal *ctrl, u8 id, s32 modelNum, UnkStruct_FieldSysC0_SubC *a4, NNSG3dResMdl *model, NNSG3dResTex *texture, s32 count, u8 flag, s32 unk10);
+void ov01_021E8DE8(MapPropAnimationManagerInternal *mgr, MapPropOneShotAnimationManagerInternal *ctrl, int id, s32 modelNum, UnkStruct_FieldSysC0_SubC *a4, NNSG3dResMdl *model, NNSG3dResTex *texture, s32 count, u8 flag, s32 unk10);
 void ov01_021E8E40(MapPropOneShotAnimationManagerInternal *ctrl, u8 id, u32 idx, UnkStruct_FieldSysC0_SubC *val);
 void ov01_021E8E70(MapPropOneShotAnimationManagerInternal *ctrl, u8 id, s32 idx);
 void ov01_021E8E98(MapPropOneShotAnimationManagerInternal *ctrl, u8 id, s32 idx, s32 sndseq);
@@ -67,20 +67,24 @@ void ov01_021E8F3C(s32 modelNum, NNSG3dResMdl *model, UnkStruct_FieldSysC0_SubC 
 void ov01_021E90B0(MapPropOneShotAnimationManagerInternal *ctrl, u8 id, u8 flag);
 
 static BOOL ov01_021E8744(MapPropAnimManagerAux *auxArr, void *a1, FieldSystemUnkSubCC_Sub0_SubStruct *obj, u8 id) {
+    MapPropAnimManagerAux *aux;
+    s32 i;
+    s32 j;
+
     GF_ASSERT(ov01_02204554(obj) != -1);
 
-    for (s32 i = 0; i < 2; i++) {
+    for (i = 0; i < 2; i++) {
         if (auxArr[i].active != 0 && id == auxArr[i].id && auxArr[i].a1 == a1) {
             return FALSE;
         }
     }
 
-    for (s32 i = 0; i < 2; i++) {
-        if (auxArr[i].active == 0) {
-            auxArr[i].active = TRUE;
-            auxArr[i].id = id;
-            auxArr[i].obj = obj;
-            auxArr[i].a1 = a1;
+    for (j = 0, aux = auxArr; j < 2; j++, aux++) {
+        if (aux->active == 0) {
+            auxArr[j].active = TRUE;
+            auxArr[j].id = id;
+            auxArr[j].obj = obj;
+            auxArr[j].a1 = a1;
             break;
         }
     }
@@ -97,18 +101,20 @@ static void ov01_021E87A8(NARC *narc, FieldSystemUnkSubCC_Sub0 *resource, FieldS
 
 MapPropAnimationManager *MapPropAnimationManager_Init(NARC *narc, FieldSystemUnkSubC8 *unkSubC8) {
     MapPropAnimationManagerInternal *mgr = Heap_Alloc(HEAP_ID_FIELD1, sizeof(MapPropAnimationManagerInternal));
+    s32 j;
+    s32 i;
 
-    for (s32 i = 0; i < 16; i++) {
+    for (i = 0; i < 16; i++) {
         mgr->slots[i].active = 0;
         mgr->slots[i].id = 0;
         mgr->slots[i].target = 0;
     }
 
-    for (s32 i = 0; i < 2; i++) {
-        mgr->aux[i].active = FALSE;
-        mgr->aux[i].a1 = NULL;
-        mgr->aux[i].obj = NULL;
-        mgr->aux[i].id = 0;
+    for (j = 0; j < 2; j++) {
+        mgr->aux[j].active = FALSE;
+        mgr->aux[j].a1 = NULL;
+        mgr->aux[j].obj = NULL;
+        mgr->aux[j].id = 0;
     }
 
     mgr->narc = NARC_New(NARC_a_1_0_6, HEAP_ID_FIELD1);
@@ -129,7 +135,7 @@ static BOOL ov01_021E8864(s32 a0) {
     if (a0 == 8) {
         return FALSE;
     }
-    return (a0 & 1) == 1;
+    return (a0 & 1) == 1 ? TRUE : FALSE;
 }
 
 static BOOL ov01_021E887C(s32 a0) {
@@ -141,11 +147,15 @@ static BOOL ov01_021E887C(s32 a0) {
 
 static MapPropAnimManagerSlot *ov01_021E8894(s32 modelNum, s32 animNum, s32 unk8, s32 target, s32 unk10, s32 unkC, BOOL expectedFlag, NNSG3dResMdl *model, NNSG3dResTex *texture, MapPropAnimationManagerInternal *mgr) {
     MapPropAnimResRow row;
+    s32 i;
+    s32 j;
+    s32 fileId;
+    FieldSystemUnkSubCC_Sub0_SubStruct *obj;
 
     NARC_ReadWholeMember(mgr->srcNarc, modelNum, &row);
     GF_ASSERT(animNum < 4);
 
-    s32 fileId = row.fileId[animNum];
+    fileId = row.fileId[animNum];
     if (fileId == -1) {
         return NULL;
     }
@@ -154,27 +164,27 @@ static MapPropAnimManagerSlot *ov01_021E8894(s32 modelNum, s32 animNum, s32 unk8
         return NULL;
     }
 
-    for (s32 i = 0; i < 16; i++) {
-        if (target != 0 && mgr->slots[i].target == target) {
+    for (i = 0; i < 16; i++) {
+        if (target != 0 && target == mgr->slots[i].target) {
             GF_AssertFail();
         }
     }
 
-    for (s32 i = 0; i < 16; i++) {
-        if (mgr->slots[i].active == 0) {
-            mgr->slots[i].active = TRUE;
+    for (j = 0; j < 16; j++) {
+        if (mgr->slots[j].active == 0) {
+            mgr->slots[j].active = TRUE;
 
-            FieldSystemUnkSubCC_Sub0_SubStruct *obj = ov01_022042FC(mgr->resource);
+            obj = ov01_022042FC(mgr->resource);
             GF_ASSERT(obj != NULL);
 
             ov01_022044C8(obj, unk8, unkC, unk10);
-            mgr->slots[i].id = fileId;
-            mgr->slots[i].target = target;
+            mgr->slots[j].id = fileId;
+            mgr->slots[j].target = target;
             ov01_021E87A8(mgr->narc, mgr->resource, obj, fileId, model, texture);
-            mgr->slots[i].obj = obj;
-            ov01_022044E0(mgr->slots[i].obj);
+            mgr->slots[j].obj = obj;
+            ov01_022044E0(mgr->slots[j].obj);
 
-            return &mgr->slots[i];
+            return &mgr->slots[j];
         }
     }
 
@@ -184,6 +194,10 @@ static MapPropAnimManagerSlot *ov01_021E8894(s32 modelNum, s32 animNum, s32 unk8
 
 BOOL ov01_021E8970(int modelNum, int animNum, int target, UnkStruct_FieldSysC0_SubC *renderObj, MapPropAnimationManager *mapPropAnimationManager) {
     MapPropAnimationManagerInternal *mgr = (MapPropAnimationManagerInternal *)mapPropAnimationManager;
+    MapPropAnimResRow row;
+    s32 i;
+    s32 fileId;
+    BOOL added;
 
     if (mgr == NULL) {
         GF_AssertFail();
@@ -194,11 +208,10 @@ BOOL ov01_021E8970(int modelNum, int animNum, int target, UnkStruct_FieldSysC0_S
         return FALSE;
     }
 
-    MapPropAnimResRow row;
     NARC_ReadWholeMember(mgr->srcNarc, modelNum, &row);
     GF_ASSERT(animNum < 4);
 
-    s32 fileId = row.fileId[animNum];
+    fileId = row.fileId[animNum];
     if (fileId == -1) {
         return FALSE;
     }
@@ -207,9 +220,8 @@ BOOL ov01_021E8970(int modelNum, int animNum, int target, UnkStruct_FieldSysC0_S
         return FALSE;
     }
 
-    for (s32 i = 0; i < 16; i++) {
+    for (i = 0; i < 16; i++) {
         if (mgr->slots[i].id == fileId) {
-            BOOL added;
             if (row.unk2 != 0) {
                 added = ov01_021E8744(mgr->aux, renderObj, mgr->slots[i].obj, (u8)fileId);
             } else {
@@ -356,22 +368,26 @@ s32 ov01_021E8BAC(MapPropAnimationManagerInternal *mgr, s32 fileId) {
 }
 
 static MapPropOneShotSubCtrl *ov01_021E8BE8(MapPropOneShotAnimationManagerInternal *ctrl, u8 id) {
+    u8 i;
+    u8 freeIdx;
+
     GF_ASSERT(id != 0);
 
-    u8 freeIdx = 16;
-    for (u8 i = 0; i < 16; i++) {
+    freeIdx = 16;
+    for (i = 0; i < 16; i++) {
         if (freeIdx == 16 && ctrl->subCtrls[i].id == 0) {
             freeIdx = i;
         }
     }
 
-    if (freeIdx == 16) {
+    if (freeIdx != 16) {
+        ctrl->subCtrls[freeIdx].id = id;
+        ctrl->subCtrls[freeIdx].flag = 0;
+    } else {
         GF_AssertFail();
         return NULL;
     }
 
-    ctrl->subCtrls[freeIdx].id = id;
-    ctrl->subCtrls[freeIdx].flag = 0;
     return &ctrl->subCtrls[freeIdx];
 }
 
@@ -386,12 +402,16 @@ static void ov01_021E8C40(MapPropOneShotSubCtrl *sc) {
 }
 
 static MapPropOneShotSubCtrl *ov01_021E8C60(MapPropOneShotAnimationManagerInternal *ctrl, u8 id) {
-    for (s32 i = 0; i < 16; i++) {
-        if (ctrl->subCtrls[i].id == id) {
-            return &ctrl->subCtrls[i];
+    s32 i;
+    MapPropOneShotSubCtrl *ret = NULL;
+
+    for (i = 0; i < 16; i++) {
+        if (id == ctrl->subCtrls[i].id) {
+            ret = &ctrl->subCtrls[i];
+            break;
         }
     }
-    return NULL;
+    return ret;
 }
 
 static void ov01_021E8C88(UnkStruct_FieldSysC0_SubC *a0, s32 count, MapPropOneShotSubCtrl *sc) {
@@ -427,8 +447,11 @@ static MapPropAnimManagerSlot *ov01_021E8CBC(MapPropOneShotSubCtrl *sc, s32 idx)
 }
 
 static void ov01_021E8D10(s32 modelNum, NNSG3dResMdl *model, NNSG3dResTex *texture, s32 count, s32 unk8, s32 unk10, MapPropAnimationManagerInternal *mgr, MapPropOneShotSubCtrl *sc) {
-    for (s32 i = 0; i < count; i++) {
-        MapPropAnimManagerSlot *slot = ov01_021E8894(modelNum, i, unk8, 0, unk10, 1, TRUE, model, texture, mgr);
+    MapPropAnimManagerSlot *slot;
+    s32 i;
+
+    for (i = 0; i < count; i++) {
+        slot = ov01_021E8894(modelNum, i, unk8, 0, unk10, 1, TRUE, model, texture, mgr);
         GF_ASSERT(slot != NULL);
         ov01_021E8CA4(sc, i, slot);
     }
@@ -436,16 +459,18 @@ static void ov01_021E8D10(s32 modelNum, NNSG3dResMdl *model, NNSG3dResTex *textu
 
 static void ov01_021E8D6C(MapPropAnimationManagerInternal *mgr, MapPropOneShotSubCtrl *sc) {
     FieldSystemUnkSubCC_Sub0_SubStruct *obj = ov01_021E8858(sc->current);
+    s32 i;
+    s32 j;
 
-    for (s32 i = 0; i < 6; i++) {
+    for (i = 0; i < 6; i++) {
         if (sc->secondary[i] != NULL) {
             ov01_02204518(sc->secondary[i], obj);
         }
     }
 
-    for (s32 i = 0; i < sc->count; i++) {
-        ov01_021E8A50(sc->primary[i], mgr);
-        sc->primary[i] = NULL;
+    for (j = 0; j < sc->count; j++) {
+        ov01_021E8A50(sc->primary[j], mgr);
+        sc->primary[j] = NULL;
     }
 }
 
@@ -462,8 +487,11 @@ void ov01_021E8DD4(MapPropOneShotAnimationManager **mapPropOneShotAnimationManag
     }
 }
 
-void ov01_021E8DE8(MapPropAnimationManagerInternal *mgr, MapPropOneShotAnimationManagerInternal *ctrl, u8 id, s32 modelNum, UnkStruct_FieldSysC0_SubC *a4, NNSG3dResMdl *model, NNSG3dResTex *texture, s32 count, u8 flag, s32 unk10) {
-    MapPropOneShotSubCtrl *sc = ov01_021E8BE8(ctrl, id);
+void ov01_021E8DE8(MapPropAnimationManagerInternal *mgr, MapPropOneShotAnimationManagerInternal *ctrl, int id, s32 modelNum, UnkStruct_FieldSysC0_SubC *a4, NNSG3dResMdl *model, NNSG3dResTex *texture, s32 count, u8 flag, s32 unk10) {
+    s32 v;
+    MapPropOneShotSubCtrl *sc;
+
+    sc = ov01_021E8BE8(ctrl, id);
     if (sc == NULL) {
         GF_AssertFail();
         return;
@@ -471,12 +499,13 @@ void ov01_021E8DE8(MapPropAnimationManagerInternal *mgr, MapPropOneShotAnimation
 
     ov01_021E8C88(a4, count, sc);
 
-    GF_ASSERT(flag != 0);
-    if (flag == 0) {
-        flag = 1;
+    v = flag;
+    GF_ASSERT(v != 0);
+    if (v == 0) {
+        v = 1;
     }
 
-    ov01_021E8D10(modelNum, model, texture, count, flag, unk10, mgr, sc);
+    ov01_021E8D10(modelNum, model, texture, count, v, unk10, mgr, sc);
     sc->modelNum = modelNum;
 }
 
@@ -535,70 +564,85 @@ s32 ov01_021E8F30(MapPropOneShotAnimationManagerInternal *ctrl, u8 id) {
 }
 
 void ov01_021E8F3C(s32 modelNum, NNSG3dResMdl *model, UnkStruct_FieldSysC0_SubC *renderObj, NNSG3dResTex *texture, MapPropAnimResRow *row, MapPropAnimationManagerInternal *mgr, FieldSystemUnkSub104 *unk104) {
-    u8 collectedCount = 0;
     FieldSystemUnkSubCC_Sub0_SubStruct *collected[4];
+    s32 fileId;
+    s32 j;
+    u8 collectedCount;
+    BOOL flag14;
+    s32 i;
+    s32 timeIndex;
 
-    if (modelNum < ov01_021E8B9C(mgr) && row->unk0 != 0) {
-        u8 *rowPtr = (u8 *)row;
+    collectedCount = 0;
 
-        for (s32 j = 0; j < 4; j++) {
-            s32 fileId = *(s32 *)(rowPtr + 8);
-            if (fileId == -1) {
-                break;
-            }
+    if (modelNum >= ov01_021E8B9C(mgr)) {
+        return;
+    }
 
-            if (ov01_021E8864(row->unk1) == 0) {
-                break;
-            }
+    if (row->unk0 == 0) {
+        return;
+    }
 
-            BOOL flag14 = (ov01_021E887C(row->unk1) == 0);
-            s32 i;
-
-            for (i = 0; i < 16; i++) {
-                if (mgr->slots[i].active != 0) {
-                    continue;
-                }
-
-                mgr->slots[i].active = TRUE;
-
-                FieldSystemUnkSubCC_Sub0_SubStruct *obj = ov01_022042FC(mgr->resource);
-                GF_ASSERT(obj != NULL);
-
-                if (row->unk2 != 0) {
-                    ov01_022044C8(obj, 1, 1, 0);
-                } else {
-                    ov01_022044C8(obj, -1, 0, 0);
-                }
-
-                mgr->slots[i].id = fileId;
-                mgr->slots[i].target = 0;
-                ov01_021E87A8(mgr->narc, mgr->resource, obj, fileId, model, texture);
-                mgr->slots[i].obj = obj;
-                ov01_022044E0(mgr->slots[i].obj);
-
-                if (flag14) {
-                    BOOL added = TRUE;
-                    if (row->unk2 != 0) {
-                        added = ov01_021E8744(mgr->aux, renderObj, mgr->slots[i].obj, (u8)fileId);
-                    }
-                    if (added) {
-                        ov01_0220450C(renderObj, mgr->slots[i].obj);
-                    }
-                } else if (row->unk1 == 8) {
-                    collected[collectedCount] = mgr->slots[i].obj;
-                    collectedCount++;
-                }
-
-                break;
-            }
-
-            GF_ASSERT(i != 16);
-            rowPtr += 4;
+    for (j = 0; j < 4; j++) {
+        fileId = row->fileId[j];
+        if (fileId == -1) {
+            return;
         }
+
+        if (ov01_021E8864(row->unk1)) {
+            return;
+        }
+
+        if (ov01_021E887C(row->unk1) == 0) {
+            flag14 = TRUE;
+        } else {
+            flag14 = FALSE;
+        }
+
+        for (i = 0; i < 16; i++) {
+            if (mgr->slots[i].active != 0) {
+                continue;
+            }
+
+            mgr->slots[i].active = TRUE;
+
+            FieldSystemUnkSubCC_Sub0_SubStruct *obj = ov01_022042FC(mgr->resource);
+            GF_ASSERT(obj != NULL);
+
+            if (row->unk2 != 0) {
+                ov01_022044C8(obj, 1, 1, 0);
+            } else {
+                ov01_022044C8(obj, -1, 0, 0);
+            }
+
+            mgr->slots[i].id = fileId;
+            mgr->slots[i].target = 0;
+            ov01_021E87A8(mgr->narc, mgr->resource, obj, fileId, model, texture);
+            mgr->slots[i].obj = obj;
+            ov01_022044E0(obj);
+
+            if (flag14) {
+                BOOL added;
+                if (row->unk2 != 0) {
+                    added = ov01_021E8744(mgr->aux, renderObj, mgr->slots[i].obj, (u8)fileId);
+                } else {
+                    added = TRUE;
+                }
+
+                if (added) {
+                    ov01_0220450C(renderObj, mgr->slots[i].obj);
+                }
+            } else if (row->unk1 == 8) {
+                collected[collectedCount++] = mgr->slots[i].obj;
+            }
+
+            break;
+        }
+
+        GF_ASSERT(i != 16);
     }
 
     if (row->unk1 == 8) {
-        s32 timeIndex = ov01_02204834(unk104);
+        timeIndex = ov01_02204834(unk104);
         ov01_0220450C(renderObj, collected[timeIndex]);
         ov01_0220476C(unk104, renderObj, collected, 4);
     }

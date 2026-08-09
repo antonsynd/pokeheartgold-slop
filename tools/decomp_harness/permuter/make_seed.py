@@ -120,15 +120,26 @@ def main():
     try:
         seed = promote(source, args.func)
     except ValueError as e:
-        sys.exit(str(e))
+        # A function that is already live (a plain mismatching decomp, no
+        # NONMATCHING fallback yet) needs no promotion -- the TU *is* the seed.
+        if _defines_func(source, args.func):
+            seed = source
+            note = "already live, TU used verbatim"
+            already_live = True
+        else:
+            sys.exit(str(e))
+    else:
+        note = f"{args.func} promoted to live C"
+        already_live = False
     if args.out is None:
         sys.stdout.write(seed)
     else:
         with open(args.out, "w", encoding="utf-8") as f:
             f.write(seed)
-        print(f"make_seed: wrote {args.out} ({args.func} promoted to live C)",
-              file=sys.stderr)
-    return 3 if False else 0
+        print(f"make_seed: wrote {args.out} ({note})", file=sys.stderr)
+    # 3 tells emit_job.sh the TU compiles to our own output, not the retail
+    # variant -- so target.o must come from the assembled reference instead.
+    return 3 if already_live else 0
 
 
 if __name__ == "__main__":

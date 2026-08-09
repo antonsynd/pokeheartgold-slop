@@ -1181,10 +1181,10 @@
       "file": "asm/overlay_01_021E8744.s",
       "lines": 1388,
       "functions": 40,
-      "matched_functions": 29,
-      "attempts": 4,
+      "matched_functions": 36,
+      "attempts": 5,
       "result": "wip",
-      "note": "WIP 29/40 functions matching. src/overlay_01_021E8744.c is committed but NOT linked - main.lsf still points at asm/overlay_01_021E8744.o, so the tree builds and compare passes. To resume: flip main.lsf to src/, rebuild, objdiff against build/heartgold.us/asm/overlay_01_021E8744.o. The map_prop_animation.h void->BOOL change for ov01_021E8970 is ALREADY LANDED and PROVEN IPA-safe (compare OK with the header edit isolated). REMAINING 11: MapPropAnimationManager_Init (12 diffs), ov01_021E8970 (9), ov01_021E8DE8 (SIZE 88 vs 82), ov01_021E8F3C (101 - largest fn, drafter flagged least-confident), ov01_021E8744 (7 - regalloc: retail r2=index/r1=ptr in 2nd loop vs emitted swapped; first 0x3E bytes DO match), ov01_021E8864 (2 - retail returns r0 directly on the ==8 arm, emitted routes through a shared epilogue), ov01_021E8894 (7), ov01_021E8BE8 (SIZE 88 vs 84), ov01_021E8C60 (17), ov01_021E8D10 (7), ov01_021E8D6C (7). The four 7-diff functions likely share one regalloc/loop-shape root cause. Ground-truth signatures for every ov01_0220xxxx import come from the already-decompiled src/field/overlay_01_02204004.c."
+      "note": "WIP 36/40 (was 29/40). src/overlay_01_021E8744.c is committed but NOT linked - main.lsf:493 still points at asm/overlay_01_021E8744.o, so the tree builds and compare passes. Resume: flip main.lsf to src/, then iterate with ./tools/decomp_harness/compile_one.sh src/overlay_01_021E8744.c (3s per cycle, no link) and objdiff against build/heartgold.us/asm/overlay_01_021E8744.o. ALWAYS read compile_one output - silencing it makes objdiff score a stale object. REMAINING 4: MapPropAnimationManager_Init (12 diffs), ov01_021E8894 (7), ov01_021E8D6C (7) - all three are the same loop2 index-vs-induction-pointer register swap, see pattern loop2-induction-pointer-regalloc for what has been ruled out and why the explicit-pointer lever is unavailable in each; and ov01_021E8F3C (SIZE 372 vs 356) - retail spills row and keeps obj in r6, we do the reverse. The decomp-permuter is now wired for live targets (see pattern permuter-live-target-wiring) but its scorer is not calibrated against an asm reference object - base score 4420 for a 7-instruction diff - so it cannot rank candidates yet. Calibrating that is the highest-value next step for all four."
     }
   ],
   "stats": {
