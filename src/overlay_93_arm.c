@@ -71,6 +71,7 @@ void ov93_0225EE98(void);
 void ov93_0225EF0C(Ov93Nodes *nodes);
 void ov93_0225EF5C(Ov93Nodes *nodes);
 int ov93_0225F8AC(Ov93Ctx *ctx, int a1);
+void ov93_0225F268(s32 a0, s32 a1, s16 *p2, s16 *p3);
 BOOL ov93_0225F370(Ov93Ctx *ctx);
 BOOL ov93_0225F44C(Ov93Ctx *ctx);
 int ov93_0225F548(Ov93Ctx *ctx, int a1, fx32 a2);
@@ -161,10 +162,28 @@ void ov93_0225EF5C(Ov93Nodes *nodes) {
     }
 }
 
+void ov93_0225F268(s32 a0, s32 a1, s16 *p2, s16 *p3);
 BOOL ov93_0225F370(Ov93Ctx *ctx);
 BOOL ov93_0225F44C(Ov93Ctx *ctx);
 int ov93_0225F548(Ov93Ctx *ctx, int a1, fx32 a2);
 void ov93_0225EB38(Ov93Ctx *ctx);
+void ov93_0225F268(s32 a0, s32 a1, s16 *p2, s16 *p3) {
+    s32 x = ((s64)a0 << FX32_SHIFT) / 0x80000;
+    s32 y = ((s64)a1 << FX32_SHIFT) / 0x80000;
+
+    GF_ASSERT(x <= 0x7FFF);
+    GF_ASSERT(x >= -0x8000);
+    GF_ASSERT(y <= 0x7FFF);
+    GF_ASSERT(y >= -0x8000);
+    GF_ASSERT(x - 0x800 <= 0x7FFF);
+    GF_ASSERT(x - 0x800 >= -0x8000);
+    GF_ASSERT(y + 0x800 <= 0x7FFF);
+    GF_ASSERT(y + 0x800 >= -0x8000);
+
+    *p2 = x - 0x800;
+    *p3 = y + 0x800;
+}
+
 BOOL ov93_0225F370(Ov93Ctx *ctx) {
     s32 i;
     s32 y;
