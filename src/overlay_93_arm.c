@@ -1,11 +1,31 @@
 #include "global.h"
 
+#include "palette.h"
+#include "sprite.h"
+#include "sprite_system.h"
+
 // This file is ARM code, not Thumb. global.h pulls in <nitro/code16.h>
 // (#pragma thumb on), so code32.h has to come after it -- keep clang-format
 // from sorting it back above global.h.
 // clang-format off
 #include <nitro/code32.h>
 // clang-format on
+
+typedef struct Ov93Ctx {
+    u8 padding_000[0x24];
+    SpriteSystem *spriteSystem;   // 0x024
+    SpriteManager *spriteManager; // 0x028
+    u8 padding_02C[0x60];
+    PaletteData *paletteData; // 0x08C
+    u8 padding_090[0x18C];
+    s32 unk_21C; // 0x21C
+    u8 padding_220[0x10];
+    fx32 unk_230; // 0x230
+    u8 padding_234[0x4];
+    s32 unk_238; // 0x238
+    u8 padding_23C[0x34];
+    s32 unk_270; // 0x270
+} Ov93Ctx;
 
 typedef struct Ov93Node {
     s32 unk_00;
@@ -26,6 +46,9 @@ typedef struct Ov93Nodes {
 
 void ov93_0225EF0C(Ov93Nodes *nodes);
 void ov93_0225EF5C(Ov93Nodes *nodes);
+void ov93_0225F9D8(Ov93Ctx *ctx);
+void ov93_0225FABC(Ov93Ctx *ctx);
+void ov93_0225FBE4(ManagedSprite *sprite);
 
 void ov93_0225EF0C(Ov93Nodes *nodes) {
     s32 i;
@@ -59,4 +82,25 @@ void ov93_0225EF5C(Ov93Nodes *nodes) {
         nodes->unk_10C[i].unk_1C = v + 0x10000;
         v += 0x10000;
     }
+}
+
+void ov93_0225F9D8(Ov93Ctx *ctx) {
+    NARC *narc = NARC_New(NARC_a_1_9_9, HEAP_ID_117);
+
+    SpriteSystem_LoadPaletteBufferFromOpenNarc(ctx->paletteData, PLTTBUF_MAIN_OBJ, ctx->spriteSystem, ctx->spriteManager, narc, 0x3A, FALSE, 1, 1, 0x2715);
+    SpriteSystem_LoadCharResObjFromOpenNarc(ctx->spriteSystem, ctx->spriteManager, narc, 0x37, FALSE, 1, 0x2713);
+    SpriteSystem_LoadCellResObjFromOpenNarc(ctx->spriteSystem, ctx->spriteManager, narc, 0x39, FALSE, 0x2713);
+    SpriteSystem_LoadAnimResObjFromOpenNarc(ctx->spriteSystem, ctx->spriteManager, narc, 0x38, FALSE, 0x2713);
+    NARC_Delete(narc);
+}
+
+void ov93_0225FABC(Ov93Ctx *ctx) {
+    SpriteManager_UnloadCharObjById(ctx->spriteManager, 0x2713);
+    SpriteManager_UnloadCellObjById(ctx->spriteManager, 0x2713);
+    SpriteManager_UnloadAnimObjById(ctx->spriteManager, 0x2713);
+    SpriteManager_UnloadPlttObjById(ctx->spriteManager, 0x2715);
+}
+
+void ov93_0225FBE4(ManagedSprite *sprite) {
+    Sprite_DeleteAndFreeResources(sprite);
 }
