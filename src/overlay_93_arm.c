@@ -19,7 +19,9 @@ typedef struct Ov93Ctx {
     PaletteData *paletteData; // 0x08C
     u8 padding_090[0x18C];
     s32 unk_21C; // 0x21C
-    u8 padding_220[0x10];
+    u8 padding_220[0x4];
+    s32 unk_224; // 0x224
+    u8 padding_228[0x8];
     fx32 unk_230; // 0x230
     u8 padding_234[0x4];
     s32 unk_238; // 0x238
@@ -46,7 +48,39 @@ typedef struct Ov93Nodes {
 
 void ov93_0225EF0C(Ov93Nodes *nodes);
 void ov93_0225EF5C(Ov93Nodes *nodes);
+int ov93_0225F8AC(Ov93Ctx *ctx, int a1);
 void ov93_0225F9D8(Ov93Ctx *ctx);
+ManagedSprite *ov93_0225FB00(Ov93Ctx *ctx);
+void ov93_0225FB6C(Ov93Ctx *ctx, ManagedSprite *sprite);
+
+static const u8 sUnk_02262C04[13][4] = {
+    { 0x80, 0x40, 0xC0, 0x10 },
+    { 0xA8, 0x28, 0xD8, 0x00 },
+    { 0xA8, 0x54, 0xAC, 0x08 },
+    { 0xA8, 0x00, 0x00, 0x00 },
+    { 0x00, 0x00, 0xFF, 0x0F },
+    { 0x00, 0x00, 0xFF, 0x0F },
+    { 0x00, 0x00, 0xFF, 0x0F },
+    { 0x00, 0x00, 0x00, 0x00 },
+    { 0x00, 0x00, 0x00, 0x00 },
+    { 0x01, 0xF0, 0x00, 0x00 },
+    { 0x01, 0xF0, 0x00, 0x00 },
+    { 0x01, 0xF0, 0x00, 0x00 },
+    { 0x00, 0x00, 0x00, 0x00 },
+};
+
+static const ManagedSpriteTemplate sSpriteTemplate_02262C38 = {
+    0,
+    0,
+    0,
+    0,
+    14,
+    0,
+    NNS_G2D_VRAM_TYPE_2DMAIN,
+    { 0x2713, 0x2715, 0x2713, 0x2713, -1, -1 },
+    1,
+    0,
+};
 void ov93_0225FABC(Ov93Ctx *ctx);
 void ov93_0225FBE4(ManagedSprite *sprite);
 
@@ -84,6 +118,23 @@ void ov93_0225EF5C(Ov93Nodes *nodes) {
     }
 }
 
+int ov93_0225F8AC(Ov93Ctx *ctx, int a1) {
+    s32 x;
+
+    if (a1 == 1) {
+        return 0;
+    }
+
+    x = ctx->unk_21C;
+    if (ctx->unk_224 < x - 0x10) {
+        return 1;
+    }
+    if (ctx->unk_224 > x + 0x10) {
+        return 2;
+    }
+    return 0;
+}
+
 void ov93_0225F9D8(Ov93Ctx *ctx) {
     NARC *narc = NARC_New(NARC_a_1_9_9, HEAP_ID_117);
 
@@ -99,6 +150,29 @@ void ov93_0225FABC(Ov93Ctx *ctx) {
     SpriteManager_UnloadCellObjById(ctx->spriteManager, 0x2713);
     SpriteManager_UnloadAnimObjById(ctx->spriteManager, 0x2713);
     SpriteManager_UnloadPlttObjById(ctx->spriteManager, 0x2715);
+}
+
+ManagedSprite *ov93_0225FB00(Ov93Ctx *ctx) {
+    ManagedSpriteTemplate template = sSpriteTemplate_02262C38;
+    ManagedSprite *sprite = SpriteSystem_NewSprite(ctx->spriteSystem, ctx->spriteManager, &template);
+
+    ManagedSprite_SetDrawFlag(sprite, FALSE);
+    Sprite_TickFrame(sprite->sprite);
+    return sprite;
+}
+
+void ov93_0225FB6C(Ov93Ctx *ctx, ManagedSprite *sprite) {
+    int anim;
+
+    if (ctx->unk_238 != 0) {
+        anim = ov93_0225F8AC(ctx, 0) + 1;
+    } else {
+        anim = 0;
+    }
+
+    ManagedSprite_SetPositionXYWithSubscreenOffset(sprite, (s16)ctx->unk_21C, (s16)(sUnk_02262C04[ctx->unk_270][3] + (ctx->unk_230 >> FX32_SHIFT)), FX32_CONST(352));
+    ManagedSprite_SetAnim(sprite, anim);
+    Sprite_TickFrame(sprite->sprite);
 }
 
 void ov93_0225FBE4(ManagedSprite *sprite) {
