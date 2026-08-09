@@ -1,5 +1,5 @@
 {
- "generated": "2026-08-09T18:01:17Z",
+ "generated": "2026-08-09T18:16:55Z",
  "weights": {
   "insn_line": 1.0,
   "unknown_callee": 40.0,
@@ -10,21 +10,6 @@
   "special_section": 500.0
  },
  "queue": [
-  {
-   "file": "asm/overlay_01_021E8744.s",
-   "score": 1091.0,
-   "special_sections": [],
-   "functions": 40,
-   "insn_lines": 1091,
-   "data_only": false,
-   "unknown_callees": [],
-   "jumptable_words": 0,
-   "rodata_bytes": 0,
-   "arm_functions": 0,
-   "gated_by": [],
-   "copyprop_funcs": [],
-   "cluster_partners": []
-  },
   {
    "file": "asm/overlay_93_arm.s",
    "score": 1324.2,
@@ -2852,6 +2837,60 @@
    ]
   },
   {
+   "file": "asm/overlay_01_021E90C0.s",
+   "score": 3117.6,
+   "special_sections": [],
+   "functions": 35,
+   "insn_lines": 2433,
+   "data_only": false,
+   "unknown_callees": [
+    "BeginNormalPaletteFade",
+    "IsPaletteFadeFinished",
+    "MapObject_AreBitsSetForMovementScriptInit",
+    "MapObject_ClearHeldMovementIfActive",
+    "MapObject_IsMovementPaused",
+    "MapObject_SetHeldMovement",
+    "ov01_021F3B38",
+    "ov01_021F3B3C",
+    "ov01_021FB904",
+    "ov01_021FB9E0",
+    "ov01_02205790",
+    "ov01_022057C4",
+    "ov01_02205990",
+    "sub_02054A60",
+    "sub_02054AE4",
+    "sub_02054B74",
+    "sub_02054D10"
+   ],
+   "jumptable_words": 0,
+   "rodata_bytes": 92,
+   "arm_functions": 0,
+   "gated_by": [],
+   "copyprop_funcs": [],
+   "cluster_partners": [
+    {
+     "file": "asm/unk_02062108.s",
+     "shared_symbols": 4
+    },
+    {
+     "file": "asm/unk_02054648.s",
+     "shared_symbols": 4
+    },
+    {
+     "file": "asm/overlay_01_022053EC.s",
+     "shared_symbols": 3
+    },
+    {
+     "file": "asm/unk_0200FA24.s",
+     "shared_symbols": 2
+    },
+    {
+     "file": "asm/overlay_01_021F3610.s",
+     "shared_symbols": 2
+    }
+   ]
+  },
+  {
    "file": "asm/overlay_49_02267F94.s",
    "score": 3166.0,
    "special_sections": [],
@@ -3048,67 +3087,6 @@
     {
      "file": "asm/overlay_14_021F58B8.s",
      "shared_symbols": 1
-    }
-   ]
-  },
-  {
-   "file": "asm/overlay_01_021E90C0.s",
-   "score": 3397.6,
-   "special_sections": [],
-   "functions": 35,
-   "insn_lines": 2433,
-   "data_only": false,
-   "unknown_callees": [
-    "BeginNormalPaletteFade",
-    "IsPaletteFadeFinished",
-    "MapObject_AreBitsSetForMovementScriptInit",
-    "MapObject_ClearHeldMovementIfActive",
-    "MapObject_IsMovementPaused",
-    "MapObject_SetHeldMovement",
-    "ov01_021E8BAC",
-    "ov01_021E8DE8",
-    "ov01_021E8E98",
-    "ov01_021E8ED0",
-    "ov01_021E8F10",
-    "ov01_021E8F30",
-    "ov01_021E90B0",
-    "ov01_021F3B38",
-    "ov01_021F3B3C",
-    "ov01_021FB904",
-    "ov01_021FB9E0",
-    "ov01_02205790",
-    "ov01_022057C4",
-    "ov01_02205990",
-    "sub_02054A60",
-    "sub_02054AE4",
-    "sub_02054B74",
-    "sub_02054D10"
-   ],
-   "jumptable_words": 0,
-   "rodata_bytes": 92,
-   "arm_functions": 0,
-   "gated_by": [],
-   "copyprop_funcs": [],
-   "cluster_partners": [
-    {
-     "file": "asm/overlay_01_021E8744.s",
-     "shared_symbols": 7
-    },
-    {
-     "file": "asm/unk_02062108.s",
-     "shared_symbols": 4
-    },
-    {
-     "file": "asm/unk_02054648.s",
-     "shared_symbols": 4
-    },
-    {
-     "file": "asm/overlay_01_022053EC.s",
-     "shared_symbols": 3
-    },
-    {
-     "file": "asm/unk_0200FA24.s",
-     "shared_symbols": 2
     }
    ]
   },
@@ -7458,6 +7436,82 @@
    ]
   },
   {
+   "file": "asm/overlay_04.s",
+   "score": 7680.4,
+   "special_sections": [],
+   "functions": 89,
+   "insn_lines": 6015,
+   "data_only": false,
+   "unknown_callees": [
+    "Field3dModelAnimation_FrameAdvanceAndCheck",
+    "Field3dModelAnimation_FrameAdvanceAndLoop",
+    "Field3dModelAnimation_FrameSet",
+    "Field3dModelAnimation_LoadFromFilesystem",
+    "Field3dModelAnimation_Unload",
+    "Field3dModel_LoadFromFilesystem",
+    "Field3dModel_Unload",
+    "Field3dObject_AddAnimation",
+    "Field3dObject_Draw",
+    "Field3dObject_GetActiveFlag",
+    "Field3dObject_InitFromModel",
+    "Field3dObject_SetActiveFlag",
+    "Field3dObject_SetPosEx",
+    "GetMetatileBehavior",
+    "MapLoadManager_ForgetTrackedTarget",
+    "MapLoadManager_TrackTarget",
+    "MapObject_AreBitsSetForMovementScriptInit",
+    "MapObject_ClearHeldMovement",
+    "MapObject_SetHeldMovement",
+    "MapPropManager_LoadOne",
+    "ov01_021F3B04",
+    "ov01_021F3B08",
+    "ov01_021F3B0C",
+    "ov01_021F3B1C",
+    "ov01_021F3B2C",
+    "ov01_021F3B38",
+    "ov01_021F3B3C",
+    "ov01_021F3B44",
+    "ov01_021F3B4C",
+    "ov01_021F72DC",
+    "ov01_021FA2D4",
+    "ov01_021FA930",
+    "ov01_021FB9E0",
+    "ov01_021FBF28",
+    "ov01_02205A34",
+    "ov01_02205A60",
+    "sub_02023F90",
+    "sub_020548C0",
+    "sub_02060F78"
+   ],
+   "jumptable_words": 0,
+   "rodata_bytes": 2108,
+   "arm_functions": 0,
+   "gated_by": [],
+   "copyprop_funcs": [],
+   "cluster_partners": [
+    {
+     "file": "asm/overlay_01_021FB878.s",
+     "shared_symbols": 15
+    },
+    {
+     "file": "asm/overlay_01_021F3610.s",
+     "shared_symbols": 10
+    },
+    {
+     "file": "asm/unk_02062108.s",
+     "shared_symbols": 3
+    },
+    {
+     "file": "asm/unk_02054648.s",
+     "shared_symbols": 2
+    },
+    {
+     "file": "asm/overlay_01_021F4704.s",
+     "shared_symbols": 2
+    }
+   ]
+  },
+  {
    "file": "asm/overlay_90.s",
    "score": 7734.8,
    "special_sections": [],
@@ -7588,94 +7642,6 @@
     },
     {
      "file": "asm/unk_0200FA24.s",
-     "shared_symbols": 2
-    }
-   ]
-  },
-  {
-   "file": "asm/overlay_04.s",
-   "score": 8160.4,
-   "special_sections": [],
-   "functions": 89,
-   "insn_lines": 6015,
-   "data_only": false,
-   "unknown_callees": [
-    "Field3dModelAnimation_FrameAdvanceAndCheck",
-    "Field3dModelAnimation_FrameAdvanceAndLoop",
-    "Field3dModelAnimation_FrameSet",
-    "Field3dModelAnimation_LoadFromFilesystem",
-    "Field3dModelAnimation_Unload",
-    "Field3dModel_LoadFromFilesystem",
-    "Field3dModel_Unload",
-    "Field3dObject_AddAnimation",
-    "Field3dObject_Draw",
-    "Field3dObject_GetActiveFlag",
-    "Field3dObject_InitFromModel",
-    "Field3dObject_SetActiveFlag",
-    "Field3dObject_SetPosEx",
-    "GetMetatileBehavior",
-    "MapLoadManager_ForgetTrackedTarget",
-    "MapLoadManager_TrackTarget",
-    "MapObject_AreBitsSetForMovementScriptInit",
-    "MapObject_ClearHeldMovement",
-    "MapObject_SetHeldMovement",
-    "MapPropManager_LoadOne",
-    "ov01_021E8970",
-    "ov01_021E8A8C",
-    "ov01_021E8B04",
-    "ov01_021E8B60",
-    "ov01_021E8B6C",
-    "ov01_021E8B78",
-    "ov01_021E8B84",
-    "ov01_021E8B90",
-    "ov01_021E8BAC",
-    "ov01_021E8DE8",
-    "ov01_021E8E70",
-    "ov01_021E8ED0",
-    "ov01_021F3B04",
-    "ov01_021F3B08",
-    "ov01_021F3B0C",
-    "ov01_021F3B1C",
-    "ov01_021F3B2C",
-    "ov01_021F3B38",
-    "ov01_021F3B3C",
-    "ov01_021F3B44",
-    "ov01_021F3B4C",
-    "ov01_021F72DC",
-    "ov01_021FA2D4",
-    "ov01_021FA930",
-    "ov01_021FB9E0",
-    "ov01_021FBF28",
-    "ov01_02205A34",
-    "ov01_02205A60",
-    "sub_02023F90",
-    "sub_020548C0",
-    "sub_02060F78"
-   ],
-   "jumptable_words": 0,
-   "rodata_bytes": 2108,
-   "arm_functions": 0,
-   "gated_by": [],
-   "copyprop_funcs": [],
-   "cluster_partners": [
-    {
-     "file": "asm/overlay_01_021FB878.s",
-     "shared_symbols": 15
-    },
-    {
-     "file": "asm/overlay_01_021E8744.s",
-     "shared_symbols": 12
-    },
-    {
-     "file": "asm/overlay_01_021F3610.s",
-     "shared_symbols": 10
-    },
-    {
-     "file": "asm/unk_02062108.s",
-     "shared_symbols": 3
-    },
-    {
-     "file": "asm/unk_02054648.s",
      "shared_symbols": 2
     }
    ]

@@ -770,6 +770,16 @@
       "attempts": 4,
       "result": "matched",
       "note": "compare-verified (full ROM SHA1 OK). First C file in overlay_83. 20 functions (13 exported, 7 static) + 13 static const rodata objects, all typed with real structs (GridCallbacks/TouchscreenHitbox/DpadMenuBox from unk_02019BA4.h, touchscreen.h, unk_02020A0C.h). ov83_02248610/0x02248611 are NOT two objects: DpadMenuBox is 8 bytes, so they are .left/.top of one array read at stride 8. gSystem+0x48 = gSystem.newKeys. TWO fixes were needed: (1) ov83_02247BC4 - a two-case switch compiled to a jump-to-shared-block with a trailing b.n where retail used an if-else chain with inline returns (size delta), and the out-of-range path had to be an explicit 'default:' inside the switch with the touchscreen block AFTER the switch reached via break (block-order delta). (2) rodata tie order: MWCC is size-ascending but equal-size ties are not a simple rule - the 32-byte pair came out reversed and the 16-byte GridCallbacks run came out rotated left by one, while the 20- and 28-byte pairs kept declaration order. The vtable rotation was INVISIBLE to objdiff (all words are relocations, masked -> 'data sections MATCH' on a broken ROM); diagnosed by dumping OVY_83.sbin. objdiff .text -4 (two interior 2-mod-4 funcs) was benign - verified via nm that every ov83_ symbol links at the address encoded in its name."
+    },
+    {
+      "file": "asm/overlay_01_021E8744.s",
+      "lines": 1388,
+      "functions": 40,
+      "matched_functions": 40,
+      "nonmatching": 4,
+      "attempts": 6,
+      "result": "matched",
+      "note": "Linked and ROM-verified. 36 of 40 functions are real C; 4 ship as NONMATCHING inline asm with the C reconstruction retained under #ifdef NONMATCHING. MapPropAnimationManager_Init, ov01_021E8894 and ov01_021E8D6C are one shared MWCC tie-break -- the second loop over an array exchanges the index and the generated induction pointer relative to retail; ov01_021E8F3C matches instruction-for-instruction but spills row instead of obj, costing 16 bytes. See patterns loop2-induction-pointer-regalloc and permuter-live-target-wiring; the permuter can now be pointed at these four via the standard NONMATCHING path."
     }
   ],
   "failed": [
@@ -1176,17 +1186,7 @@
       "note": "ANALYSIS-ONLY defer (no code) \u2014 LARGEST remaining file (1982 lines, 41 fns), all static. overlay_02 battle cluster (sibling of the 364-fn overlay_02_02248728). TaskManager-driven animated battle-effect/scene module: heavy TaskManager_Call/GetFieldSystem/GetEnvironment state machines, BG/graphics (SetBgPriority, GfGfx_EngineATogglePlanes), Heap_Alloc/Free, PlaySE, and SOFT-FLOAT math (_fflt/_fadd/_fsub/_ffix in ~6 fns -> those must stay C, can't NONMATCHING). 102B rodata (small byte tables ov02_0225321C..). 0 unknown callees (all headered). Needs a dedicated focused session (drafter can't handle 1900+ lines; the soft-float coloring fns are the hard core). Triage-easiest of the remaining queue, which is now ALL large files (47/68/34/39/44-fn)."
     }
   ],
-  "in_progress": [
-    {
-      "file": "asm/overlay_01_021E8744.s",
-      "lines": 1388,
-      "functions": 40,
-      "matched_functions": 36,
-      "attempts": 5,
-      "result": "wip",
-      "note": "WIP 36/40 (was 29/40). src/overlay_01_021E8744.c is committed but NOT linked - main.lsf:493 still points at asm/overlay_01_021E8744.o, so the tree builds and compare passes. Resume: flip main.lsf to src/, then iterate with ./tools/decomp_harness/compile_one.sh src/overlay_01_021E8744.c (3s per cycle, no link) and objdiff against build/heartgold.us/asm/overlay_01_021E8744.o. ALWAYS read compile_one output - silencing it makes objdiff score a stale object. REMAINING 4: MapPropAnimationManager_Init (12 diffs), ov01_021E8894 (7), ov01_021E8D6C (7) - all three are the same loop2 index-vs-induction-pointer register swap, see pattern loop2-induction-pointer-regalloc for what has been ruled out and why the explicit-pointer lever is unavailable in each; and ov01_021E8F3C (SIZE 372 vs 356) - retail spills row and keeps obj in r6, we do the reverse. The decomp-permuter is now wired for live targets (see pattern permuter-live-target-wiring) but its scorer is not calibrated against an asm reference object - base score 4420 for a 7-instruction diff - so it cannot rank candidates yet. Calibrating that is the highest-value next step for all four."
-    }
-  ],
+  "in_progress": [],
   "stats": {
     "total_attempts": 169,
     "total_matched": 70,

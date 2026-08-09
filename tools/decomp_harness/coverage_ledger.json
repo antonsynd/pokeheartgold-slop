@@ -1,12 +1,12 @@
 {
  "summary": {
-  "generated": "2026-08-09T18:01:17Z",
+  "generated": "2026-08-09T18:16:55Z",
   "by_status": {
    "matched": {
-    "files": 98,
-    "functions": 1698,
-    "insn_lines": 46882,
-    "text_bytes_est": 104030
+    "files": 99,
+    "functions": 1738,
+    "insn_lines": 47973,
+    "text_bytes_est": 106414
    },
    "blocked": {
     "files": 52,
@@ -15,10 +15,10 @@
     "text_bytes_est": 65922
    },
    "pending": {
-    "files": 166,
-    "functions": 16750,
-    "insn_lines": 826957,
-    "text_bytes_est": 1852454
+    "files": 165,
+    "functions": 16710,
+    "insn_lines": 825866,
+    "text_bytes_est": 1850070
    },
    "upstream": {
     "files": 402,
@@ -29,9 +29,9 @@
   },
   "function_totals": {
    "tracked": 19369,
-   "matched": 1698,
+   "matched": 1738,
    "partial_in_blocked": 20,
-   "pending": 16750
+   "pending": 16710
   },
   "blockers": [
    {
@@ -33296,8 +33296,8 @@
   },
   {
    "file": "asm/overlay_01_021E8744.s",
-   "lsf_kind": "asm",
-   "status": "pending",
+   "lsf_kind": "src",
+   "status": "matched",
    "lines": 1388,
    "function_count": 40,
    "text_bytes_est": 2384,
@@ -33370,282 +33370,283 @@
      "mode": "thumb",
      "insns": 48,
      "size_est": 100,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ov01_021E87A8",
      "mode": "thumb",
      "insns": 25,
      "size_est": 58,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "MapPropAnimationManager_Init",
      "mode": "thumb",
      "insns": 55,
      "size_est": 116,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ov01_021E8858",
      "mode": "thumb",
      "insns": 6,
      "size_est": 12,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ov01_021E8864",
      "mode": "thumb",
      "insns": 11,
      "size_est": 22,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ov01_021E887C",
      "mode": "thumb",
      "insns": 11,
      "size_est": 22,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ov01_021E8894",
      "mode": "thumb",
      "insns": 100,
      "size_est": 220,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ov01_021E8970",
      "mode": "thumb",
      "insns": 85,
      "size_est": 184,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "MapPropAnimationManager_UnloadAllAnimations",
      "mode": "thumb",
      "insns": 20,
      "size_est": 40,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ov01_021E8A50",
      "mode": "thumb",
      "insns": 26,
      "size_est": 58,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ov01_021E8A8C",
      "mode": "thumb",
      "insns": 43,
      "size_est": 94,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "MapPropAnimationManager_Free",
      "mode": "thumb",
      "insns": 10,
      "size_est": 24,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ov01_021E8B04",
      "mode": "thumb",
      "insns": 41,
      "size_est": 90,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ov01_021E8B60",
      "mode": "thumb",
      "insns": 5,
      "size_est": 10,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ov01_021E8B6C",
      "mode": "thumb",
      "insns": 5,
      "size_est": 10,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ov01_021E8B78",
      "mode": "thumb",
      "insns": 5,
      "size_est": 10,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ov01_021E8B84",
      "mode": "thumb",
      "insns": 5,
      "size_est": 10,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ov01_021E8B90",
      "mode": "thumb",
      "insns": 5,
      "size_est": 10,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ov01_021E8B9C",
      "mode": "thumb",
      "insns": 7,
      "size_est": 14,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ov01_021E8BAC",
      "mode": "thumb",
      "insns": 29,
      "size_est": 60,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ov01_021E8BE8",
      "mode": "thumb",
      "insns": 41,
      "size_est": 86,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ov01_021E8C40",
      "mode": "thumb",
      "insns": 16,
      "size_est": 32,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ov01_021E8C60",
      "mode": "thumb",
      "insns": 20,
      "size_est": 40,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ov01_021E8C88",
      "mode": "thumb",
      "insns": 12,
      "size_est": 26,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ov01_021E8CA4",
      "mode": "thumb",
      "insns": 11,
      "size_est": 24,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ov01_021E8CBC",
      "mode": "thumb",
      "insns": 36,
      "size_est": 82,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ov01_021E8D10",
      "mode": "thumb",
      "insns": 43,
      "size_est": 92,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ov01_021E8D6C",
      "mode": "thumb",
      "insns": 32,
      "size_est": 70,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ov01_021E8DB4",
      "mode": "thumb",
      "insns": 13,
      "size_est": 30,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ov01_021E8DD4",
      "mode": "thumb",
      "insns": 9,
      "size_est": 20,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ov01_021E8DE8",
      "mode": "thumb",
      "insns": 38,
      "size_est": 86,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ov01_021E8E40",
      "mode": "thumb",
      "insns": 20,
      "size_est": 46,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ov01_021E8E70",
      "mode": "thumb",
      "insns": 15,
      "size_est": 38,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ov01_021E8E98",
      "mode": "thumb",
      "insns": 23,
      "size_est": 56,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ov01_021E8ED0",
      "mode": "thumb",
      "insns": 16,
      "size_est": 40,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ov01_021E8EF8",
      "mode": "thumb",
      "insns": 10,
      "size_est": 24,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ov01_021E8F10",
      "mode": "thumb",
      "insns": 13,
      "size_est": 32,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ov01_021E8F30",
      "mode": "thumb",
      "insns": 4,
      "size_est": 10,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ov01_021E8F3C",
      "mode": "thumb",
      "insns": 171,
      "size_est": 372,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ov01_021E90B0",
      "mode": "thumb",
      "insns": 6,
      "size_est": 14,
-     "status": "pending"
+     "status": "matched"
     }
-   ]
+   ],
+   "source": "harness"
   },
   {
    "file": "asm/overlay_01_021E90C0.s",
