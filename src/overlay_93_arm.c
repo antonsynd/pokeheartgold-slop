@@ -3,6 +3,7 @@
 #include "palette.h"
 #include "sprite.h"
 #include "sprite_system.h"
+#include "unk_02005D10.h"
 
 // This file is ARM code, not Thumb. global.h pulls in <nitro/code16.h>
 // (#pragma thumb on), so code32.h has to come after it -- keep clang-format
@@ -40,10 +41,13 @@ typedef struct Ov93Ctx {
     fx32 unk_230; // 0x230
     u8 padding_234[0x4];
     s32 unk_238; // 0x238
-    u8 padding_23C[0x4];
+    s32 unk_23C; // 0x23C
     s32 unk_240; // 0x240
-    u8 padding_244[0x2C];
+    u8 padding_244[0x4];
+    s32 unk_248; // 0x248
+    u8 padding_24C[0x24];
     s32 unk_270; // 0x270
+    u8 unk_274;  // 0x274
 } Ov93Ctx;
 
 typedef struct Ov93Node {
@@ -68,6 +72,9 @@ void ov93_0225EF0C(Ov93Nodes *nodes);
 void ov93_0225EF5C(Ov93Nodes *nodes);
 int ov93_0225F8AC(Ov93Ctx *ctx, int a1);
 BOOL ov93_0225F370(Ov93Ctx *ctx);
+BOOL ov93_0225F44C(Ov93Ctx *ctx);
+int ov93_0225F548(Ov93Ctx *ctx, int a1, fx32 a2);
+void ov93_0225EB38(Ov93Ctx *ctx);
 BOOL ov93_0225F8E4(s32 a0, s32 a1, s32 a2, s32 a3, s32 *p4, s32 *p5);
 int ov93_0225F94C(Ov93Ctx *ctx);
 int ov93_0225F9AC(Ov93Ctx *ctx);
@@ -154,24 +161,10 @@ void ov93_0225EF5C(Ov93Nodes *nodes) {
     }
 }
 
-int ov93_0225F8AC(Ov93Ctx *ctx, int a1) {
-    s32 x;
-
-    if (a1 == 1) {
-        return 0;
-    }
-
-    x = ctx->unk_21C;
-    if (ctx->unk_224 < x - 0x10) {
-        return 1;
-    }
-    if (ctx->unk_224 > x + 0x10) {
-        return 2;
-    }
-    return 0;
-}
-
 BOOL ov93_0225F370(Ov93Ctx *ctx);
+BOOL ov93_0225F44C(Ov93Ctx *ctx);
+int ov93_0225F548(Ov93Ctx *ctx, int a1, fx32 a2);
+void ov93_0225EB38(Ov93Ctx *ctx);
 BOOL ov93_0225F370(Ov93Ctx *ctx) {
     s32 i;
     s32 y;
@@ -194,6 +187,63 @@ BOOL ov93_0225F370(Ov93Ctx *ctx) {
     ctx->unk_230 = -(ctx->unk_020 + (ctx->unk_010 - ctx->unk_020) / 2);
     ctx->unk_240 = ov93_0225F9AC(ctx);
     return TRUE;
+}
+
+BOOL ov93_0225F44C(Ov93Ctx *ctx) {
+    s32 arg1 = 0;
+    fx32 delta;
+    int r;
+
+    if (ctx->unk_238 == 1) {
+        s32 prev = ctx->unk_23C;
+        s32 cur = ctx->unk_210;
+
+        if (cur < prev) {
+            ctx->unk_274 = FALSE;
+            return FALSE;
+        }
+
+        if (cur == prev) {
+            ctx->unk_274 = FALSE;
+            return TRUE;
+        }
+
+        if (prev != -1 && cur > prev && !IsSEPlaying(0x58F)) {
+            PlaySE(0x58F);
+            ctx->unk_274 = TRUE;
+        }
+
+        ctx->unk_23C = ctx->unk_210;
+        delta = ((ctx->unk_210 - ctx->unk_22C) << FX32_SHIFT) - (ctx->unk_230 + (sUnk_02262C04[ctx->unk_270][3] << FX32_SHIFT));
+    } else {
+        arg1 = 1;
+        delta = -ctx->unk_248;
+    }
+
+    r = ov93_0225F548(ctx, arg1, delta);
+    if (r != 0 && (r == 1 || r == 2)) {
+        ov93_0225EB38(ctx);
+    }
+
+    ctx->unk_230 = -(ctx->unk_020 + (ctx->unk_010 - ctx->unk_020) / 2);
+    return TRUE;
+}
+
+int ov93_0225F8AC(Ov93Ctx *ctx, int a1) {
+    s32 x;
+
+    if (a1 == 1) {
+        return 0;
+    }
+
+    x = ctx->unk_21C;
+    if (ctx->unk_224 < x - 0x10) {
+        return 1;
+    }
+    if (ctx->unk_224 > x + 0x10) {
+        return 2;
+    }
+    return 0;
 }
 
 BOOL ov93_0225F8E4(s32 a0, s32 a1, s32 a2, s32 a3, s32 *p4, s32 *p5) {
