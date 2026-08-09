@@ -27,15 +27,22 @@ typedef struct Ov93Ctx {
     s32 unk_0D8; // 0x0D8
     u8 padding_0DC[0x8];
     s32 unk_0E4; // 0x0E4
-    u8 padding_0E8[0x134];
+    u8 padding_0E8[0x124];
+    s32 unk_20C; // 0x20C
+    s32 unk_210; // 0x210
+    u8 padding_214[0x4];
+    s32 unk_218; // 0x218
     s32 unk_21C; // 0x21C
     u8 padding_220[0x4];
-    s32 unk_224; // 0x224
-    u8 padding_228[0x8];
+    s32 unk_224;  // 0x224
+    s32 unk_228;  // 0x228
+    s32 unk_22C;  // 0x22C
     fx32 unk_230; // 0x230
     u8 padding_234[0x4];
     s32 unk_238; // 0x238
-    u8 padding_23C[0x34];
+    u8 padding_23C[0x4];
+    s32 unk_240; // 0x240
+    u8 padding_244[0x2C];
     s32 unk_270; // 0x270
 } Ov93Ctx;
 
@@ -56,9 +63,11 @@ typedef struct Ov93Nodes {
     Ov93Node unk_10C[8];
 } Ov93Nodes;
 
+void ov93_0225EE98(void);
 void ov93_0225EF0C(Ov93Nodes *nodes);
 void ov93_0225EF5C(Ov93Nodes *nodes);
 int ov93_0225F8AC(Ov93Ctx *ctx, int a1);
+BOOL ov93_0225F370(Ov93Ctx *ctx);
 BOOL ov93_0225F8E4(s32 a0, s32 a1, s32 a2, s32 a3, s32 *p4, s32 *p5);
 int ov93_0225F94C(Ov93Ctx *ctx);
 int ov93_0225F9AC(Ov93Ctx *ctx);
@@ -96,6 +105,20 @@ static const ManagedSpriteTemplate sSpriteTemplate_02262C38 = {
 };
 void ov93_0225FABC(Ov93Ctx *ctx);
 void ov93_0225FBE4(ManagedSprite *sprite);
+
+void ov93_0225EE98(void) {
+    u8 shininess[128];
+    u8 *p = shininess;
+    u8 i;
+
+    for (i = 0; i < 0x7F; i++) {
+        s32 n = i * 2 + 1;
+        p[i] = (u8)(((s64)n * n * n * n) >> 24);
+    }
+
+    p[0x7F] = 0xFF;
+    NNS_G3dGeBufferOP_N(G3OP_SHININESS, (u32 *)shininess, G3OP_SHININESS_NPARAMS);
+}
 
 void ov93_0225EF0C(Ov93Nodes *nodes) {
     s32 i;
@@ -146,6 +169,31 @@ int ov93_0225F8AC(Ov93Ctx *ctx, int a1) {
         return 2;
     }
     return 0;
+}
+
+BOOL ov93_0225F370(Ov93Ctx *ctx);
+BOOL ov93_0225F370(Ov93Ctx *ctx) {
+    s32 i;
+    s32 y;
+
+    if (ctx->unk_238 == 1 || ctx->unk_218 == 0) {
+        return FALSE;
+    }
+
+    i = ctx->unk_270;
+    y = sUnk_02262C04[i][3] + (ctx->unk_230 >> FX32_SHIFT);
+
+    if (ctx->unk_20C < sUnk_02262C04[i][1] || ctx->unk_20C > sUnk_02262C04[i][2] || ctx->unk_210 < y || ctx->unk_210 > sUnk_02262C04[i + 1][0]) {
+        return FALSE;
+    }
+
+    ctx->unk_238 = TRUE;
+    ctx->unk_224 = ctx->unk_20C;
+    ctx->unk_228 = ctx->unk_210;
+    ctx->unk_22C = ctx->unk_210 - y;
+    ctx->unk_230 = -(ctx->unk_020 + (ctx->unk_010 - ctx->unk_020) / 2);
+    ctx->unk_240 = ov93_0225F9AC(ctx);
+    return TRUE;
 }
 
 BOOL ov93_0225F8E4(s32 a0, s32 a1, s32 a2, s32 a3, s32 *p4, s32 *p5) {

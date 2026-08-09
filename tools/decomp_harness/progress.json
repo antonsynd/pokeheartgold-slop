@@ -1191,10 +1191,10 @@
       "file": "asm/overlay_93_arm.s",
       "lines": 995,
       "functions": 17,
-      "matched_functions": 10,
-      "attempts": 4,
+      "matched_functions": 12,
+      "attempts": 5,
       "result": "wip",
-      "note": "WIP 10/17, rodata byte-identical. NOT linked - main.lsf:1155 still points at asm/overlay_93_arm.o, so both ROMs still match. First ARM-mode decomp in the tree. SCAFFOLD: global.h, then project headers, then <nitro/code32.h> LAST inside a clang-format off/on guard. DONE (10): EF0C, EF5C, F8AC, F94C, F9AC, F9D8, FABC, FB00, FB6C, FBE4. CLOSE: ov93_0225F8E4 is at 4 diffs - body is exact, but retail schedules ldr lr,[sp,#8] (p4) BEFORE add r4,r2,r1 and we emit them swapped. An explicit sum local did not move it; likely needs a different first-use order for p4/p5 or is a plain scheduling tie. REMAINING 6: EE98, EFAC, F268, F370, F44C, F548. ov93_0225F370 reads sUnk_02262C04 through four bases (C05/C06/C07 are fields 1/2/3 of record i; C08 is field 0 of record i+1). Hardest: EE98 (128-byte shininess table built from a 64-bit n^4>>24 chain, fed to NNS_G3dGeBufferOP_N(0x34, buf, 0x20)) and F548 (~230 lines). Ov93Ctx fields known so far: 0x0C, 0x10, 0x1C, 0x20, 0x24 SpriteSystem*, 0x28 SpriteManager*, 0x8C PaletteData*, 0xD4, 0xD8, 0xE4, 0x21C, 0x224, 0x230 fx32, 0x238, 0x270."
+      "note": "WIP 12/17, rodata byte-identical. NOT linked - main.lsf:1155 still points at asm/overlay_93_arm.o, so both ROMs still match. First ARM-mode decomp in the tree. SCAFFOLD: global.h, then project headers, then <nitro/code32.h> LAST inside a clang-format off/on guard. DONE (12): EE98, EF0C, EF5C, F370, F8AC, F94C, F9AC, F9D8, FABC, FB00, FB6C, FBE4. RODATA TABLE ROLES (confirmed from F370): sUnk_02262C04[i][1]/[2] bound ctx->unk_20C, [i][3] is a y offset added to (unk_230 >> 12), and ov93_02262C08 is [i+1][0] - an off-by-one-record base, which MWCC emits correctly from sUnk_02262C04[i + 1][0]. CLOSE: ov93_0225F8E4 at 4 diffs - body exact, but retail schedules ldr lr,[sp,#8] before add r4,r2,r1 and we emit them swapped; an explicit sum local did not move it. REMAINING 4 untouched: EFAC (~178 lines), F268 (~76), F44C (~69), F548 (~230). RECURRING LEVER in this file: when retail keeps a base/induction pointer in its own register, declare it as an explicit local BEFORE the loop counter - that fixed EF0C-style regalloc, and it is what made EE98 match (retail keeps the buffer in r3 and separately recomputes add r1,sp,#0 for the call argument)."
     }
   ],
   "stats": {
