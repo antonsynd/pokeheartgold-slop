@@ -593,6 +593,46 @@ MWCC sinks the store itself back down next to `*p5 = a3` (it can prove p4 does n
 
 Generalisation: to pull a stack-parameter load earlier, give the parameter an earlier first use, even one the optimiser will move back.
 
+### Two sequential init loops: ONE shared index, declared before the Heap_Alloc'd struct pointer  <!-- id: sequential-loops-share-one-index-declared-before-alloc-ptr -->
+
+Resolves the case [[loop2-induction-pointer-regalloc]] recorded as unavailable for MapPropAnimationManager_Init. Upstream (pret PR #500) matched it, and the shape is the lesson.
+
+SHAPE THAT MATCHES -- one counter reused across both loops, declared BEFORE the pointer that receives the allocation:
+    Manager *Init(...) {
+        int i;
+        Manager *mgr = Heap_Alloc(HEAP_ID_FIELD1, sizeof(Manager));
+        for (i = 0; i < N_A; i++) { mgr->a[i].x = ...; }
+        for (i = 0; i < N_B; i++) { mgr->b[i].y = ...; }
+        ...
+        return mgr;
+    }
+
+WHAT WE HAD (register-swap mismatch, shipped as NONMATCHING):
+        Manager *mgr = Heap_Alloc(...);
+        s32 j;
+        s32 i;
+        for (i...) {} for (j...) {}
+
+TWO INDEPENDENT KNOBS, and the earlier note only permuted the first:
+  (1) ONE index variable, not two. Six permutations of two counters were tried and
+      all failed -- because MWCC coalesces them anyway, the fix was never going to
+      come from reordering them against each other.
+  (2) the index is declared BEFORE the allocation-result pointer. That is the
+      interference edge that actually decides the assignment here: the index and the
+      struct pointer ARE live at the same time (the loop stores through the pointer),
+      so [[c89-decl-order-fixes-swapped-registers]] applies to THAT pair -- not to the
+      two counters, which have disjoint live ranges.
+
+Generalization: when two sequential loops walk different arrays of one heap-allocated
+struct, treat the (index, struct pointer) pair as the interfering pair and order those,
+rather than hunting for an order between the counters.
+
+VERIFIED: src/field/map_prop_animation.c, merged at b4ad11dbb; both heartgold and
+soulsilver rom.sha1 pass from a clean tree. Upstream also matched the other three
+functions we had shipped NONMATCHING in that file (ov01_021E8894, ov01_021E8D6C,
+ov01_021E8F3C) -- our variants are preserved in src/overlay_01_021E8744.c at commit
+aba9e1d0f for side-by-side study. Related: [[regalloc-order]], [[index-vs-walking-pointer-regalloc]].
+
 ## Matching Tricks
 
 ### Small source changes that move codegen  <!-- id: decl-order-tricks -->
