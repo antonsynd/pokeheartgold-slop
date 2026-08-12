@@ -1,4 +1,10 @@
+// Upstream PR #500 published ov01_021EA9B0 in model_attributes.h typed against the real
+// NNSG3dResMdl. This TU was matched against the opaque `struct NNSG3dResMdl` below (kept
+// so the nnsys headers stay out of its IPA view), which is a distinct type -- shadow the
+// upstream decl so the definition here stands.
+#define ov01_021EA9B0 ov01_021EA9B0_UpstreamDecl
 #include "field/model_attributes.h"
+#undef ov01_021EA9B0
 
 #include <nitro/mi/memory.h>
 #include <nnsys/g3d/glbstate.h>

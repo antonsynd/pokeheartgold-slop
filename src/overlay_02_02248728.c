@@ -26,6 +26,30 @@
 // this TU was matched consuming r0 (real return, non-void). Shadow the header decl
 // so the int-return extern below stands without an indirect-call cast.
 #define MapPropManager_LoadOne MapPropManager_LoadOne_UpstreamVoidDecl
+
+// Upstream PR #500/#502 named the map-prop animation/manager API and published it in
+// map_prop_animation.h / map_prop.h (both visible here via field_system.h). This TU was
+// matched against the untyped `void *` view below, so shadow every upstream decl we
+// consume and keep our own -- see the IPA header discipline note in CLAUDE.md.
+#define MapPropOneShotAnimationManager_LoadPropAnimations      MapPropOneShotAnimationManager_LoadPropAnimations_UpstreamDecl
+#define MapPropOneShotAnimationManager_SetAnimationRenderObj   MapPropOneShotAnimationManager_SetAnimationRenderObj_UpstreamDecl
+#define MapPropOneShotAnimationManager_PlayAnimation           MapPropOneShotAnimationManager_PlayAnimation_UpstreamDecl
+#define MapPropOneShotAnimationManager_UnloadAnimation         MapPropOneShotAnimationManager_UnloadAnimation_UpstreamDecl
+#define MapPropOneShotAnimationManager_IsAnimationLoopFinished MapPropOneShotAnimationManager_IsAnimationLoopFinished_UpstreamDecl
+#define MapPropManager_RemoveMapPropByIndex                    MapPropManager_RemoveMapPropByIndex_UpstreamDecl
+#define MapPropManager_GetMapPropByIndex_Checked_RequireActive MapPropManager_GetMapPropByIndex_Checked_RequireActive_UpstreamDecl
+#define MapProp_GetTranslation                                 MapProp_GetTranslation_UpstreamDecl
+#define MapProp_GetRenderSurface                               MapProp_GetRenderSurface_UpstreamDecl
+#define MapProp_GetResModel                                    MapProp_GetResModel_UpstreamDecl
+
+// map_prop.h also drags in safari_zone.h, which this TU deliberately did not include --
+// it was matched against opaque `void *` safari handles and an int-returning sub_0202F620.
+// Same treatment: shadow the typed upstream decls, keep ours.
+#define sub_0202F620                    sub_0202F620_UpstreamDecl
+#define Save_SafariZone_Get             Save_SafariZone_Get_UpstreamDecl
+#define SafariZone_GetAreaSet           SafariZone_GetAreaSet_UpstreamDecl
+#define SafariZone_GetObjectUnlockLevel SafariZone_GetObjectUnlockLevel_UpstreamDecl
+
 #include "global.h"
 
 #include "constants/gx.h"
@@ -33,7 +57,7 @@
 #include "constants/sndseq.h"
 #include "constants/std_script.h"
 
-#include "field/overlay_01_021E66E4.h"
+#include "field/field_3d_object_task.h"
 #include "field/overlay_01_021FB878.h"
 #include "nnsys/g3d/binres/res_struct_accessor_inline.h"
 
@@ -65,6 +89,23 @@
 #include "unk_0200A090.h"
 #include "unk_02013FDC.h"
 #include "unk_02062108.h"
+
+// Headers are in; drop the shadowing so the externs below bind the real symbols with
+// this TU's matching-time signatures.
+#undef MapPropOneShotAnimationManager_LoadPropAnimations
+#undef MapPropOneShotAnimationManager_SetAnimationRenderObj
+#undef MapPropOneShotAnimationManager_PlayAnimation
+#undef MapPropOneShotAnimationManager_UnloadAnimation
+#undef MapPropOneShotAnimationManager_IsAnimationLoopFinished
+#undef MapPropManager_RemoveMapPropByIndex
+#undef MapPropManager_GetMapPropByIndex_Checked_RequireActive
+#undef MapProp_GetTranslation
+#undef MapProp_GetRenderSurface
+#undef MapProp_GetResModel
+#undef sub_0202F620
+#undef Save_SafariZone_Get
+#undef SafariZone_GetAreaSet
+#undef SafariZone_GetObjectUnlockLevel
 
 // WIP_LOCAL marks a function that is file-local in the original (-> `static` in
 // the final) but is left global during WIP so it survives dead-code elimination
@@ -128,8 +169,8 @@ typedef struct ov02_A9D8Entry {
 // follow-mon task-data accessor (defined in unk_020689C8.c); local extern matches
 // the convention used by other overlays that don't pull in the full header.
 extern void *sub_02068D74(void *work);
-extern void sub_02068B48(int a0);                 // unk_020689C8.h
-extern void ov01_021E8E70(void *a, int b, int c); // no header yet
+extern void sub_02068B48(int a0);                                                // unk_020689C8.h
+extern void MapPropOneShotAnimationManager_PlayAnimation(void *a, int b, int c); // no header yet
 extern BOOL ov01_022060B8(FieldSystem *fieldSystem, u8 a1, u8 a2);
 extern BOOL ov01_02205D68(FieldSystem *fieldSystem); // no header included here
 extern void sub_020689F8(void *a0);                  // unk_020689C8.h
@@ -206,20 +247,20 @@ WIP_LOCAL BOOL ov02_022508D8(TaskManager *taskManager);
 typedef struct ov02_FieldList5 {
     u32 v[5];
 } ov02_FieldList5;
-extern int sub_02054C90(void *a0, void *a1, int a2, void **a3, void **a4);                                             // no header included here
-extern void *ov01_021FB9E0(void *a0);                                                                                  // no header included here
-extern void *ov01_021F3B38(void *a0);                                                                                  // no header included here
-extern void *ov01_021F3B3C(void *a0);                                                                                  // no header included here
-extern void ov01_021E8DE8(void *a0, void *a1, int a2, void *a3, void *a4, void *a5, void *a6, int a7, int a8, int a9); // no header included here
-extern void *ov01_021FB90C(int a0, void *a1);                                                                          // no header included here
-extern BOOL ov01_021E8F10(void *a0, int a1);                                                                           // no header included here
-extern void ov01_021E8ED0(void *a0, void *a1, int a2);                                                                 // no header included here
-extern NNSG3dResMdlSet *NNS_G3dGetMdlSet(const NNSG3dResFileHeader *header);                                           // res_struct_accessor.h, not included (IPA)
+extern int sub_02054C90(void *a0, void *a1, int a2, void **a3, void **a4);                                                                                 // no header included here
+extern void *ov01_021FB9E0(void *a0);                                                                                                                      // no header included here
+extern void *MapProp_GetRenderSurface(void *a0);                                                                                                           // no header included here
+extern void *MapProp_GetResModel(void *a0);                                                                                                                // no header included here
+extern void MapPropOneShotAnimationManager_LoadPropAnimations(void *a0, void *a1, int a2, void *a3, void *a4, void *a5, void *a6, int a7, int a8, int a9); // no header included here
+extern void *ov01_021FB90C(int a0, void *a1);                                                                                                              // no header included here
+extern BOOL MapPropOneShotAnimationManager_IsAnimationLoopFinished(void *a0, int a1);                                                                      // no header included here
+extern void MapPropOneShotAnimationManager_UnloadAnimation(void *a0, void *a1, int a2);                                                                    // no header included here
+extern NNSG3dResMdlSet *NNS_G3dGetMdlSet(const NNSG3dResFileHeader *header);                                                                               // res_struct_accessor.h, not included (IPA)
 #undef MapPropManager_LoadOne
-extern int MapPropManager_LoadOne(void *a0, int a1, const VecFx32 *a2, const VecFx32 *a3, void *a4); // overlay_01.h not included (real return non-void)
-extern void *ov01_021F3B60(void *a0, int a1);                                                        // no header included here
-extern void ov01_021E8E40(void *a0, int a1, int a2, void *a3);                                       // no header included here
-extern void ov01_021F36DC(int a0, void *a1);                                                         // no header included here
+extern int MapPropManager_LoadOne(void *a0, int a1, const VecFx32 *a2, const VecFx32 *a3, void *a4);  // overlay_01.h not included (real return non-void)
+extern void *MapPropManager_GetMapPropByIndex_Checked_RequireActive(void *a0, int a1);                // no header included here
+extern void MapPropOneShotAnimationManager_SetAnimationRenderObj(void *a0, int a1, int a2, void *a3); // no header included here
+extern void MapPropManager_RemoveMapPropByIndex(int a0, void *a1);                                    // no header included here
 typedef struct ov02_SafariObjCfg {
     u8 buildModel;
     u8 isAnimated : 1;
@@ -275,7 +316,7 @@ typedef int (*ov02_AnimDispatchFunc)(void *data);
 typedef Field3dObjectTask *(*ov02_CreateDispatchFunc)(FieldSystem *fieldSystem);
 extern BOOL sub_02054C20(FieldSystem *fieldSystem, int targetType, int *outObj, void **outHandle); // unk_02054648.h, not included
 extern void sub_02054DC8(int idx, int width, VecFx32 *out);                                        // unk_02054648.h, not included
-extern void ov01_021F3B0C(VecFx32 *out, void *src);                                                // unk_02054648.h, not included
+extern void MapProp_GetTranslation(VecFx32 *out, void *src);                                       // unk_02054648.h, not included
 extern u8 GetMetatileBehavior(FieldSystem *fieldSystem, int x, int z);                             // unk_02054648.h, not included
 extern void ov01_02203AB4(FieldSystem *fieldSystem, LocalMapObject *partnerPokeObj, int a2);       // overlay_01.h, not included
 extern u16 PlayerProfile_GetTrainerID_VisibleHalf(PlayerProfile *profile);                         // player_data.h, not included
@@ -3636,7 +3677,7 @@ void PokecenterAnimCreate(FieldSystem *fieldSystem, u8 kind) {
         *(u8 *)((u8 *)data + 0xe) = 0;
         *(u8 *)((u8 *)data + 0xf) = 0;
         sub_02054DC8((int)outHandle, MapMatrix_GetWidth(fieldSystem->mapMatrix), &tileCenter);
-        ov01_021F3B0C(&local, (void *)outObj);
+        MapProp_GetTranslation(&local, (void *)outObj);
         *(VecFx32 *)data = local;
         ((VecFx32 *)data)->x += tileCenter.x;
         ((VecFx32 *)data)->z += tileCenter.z;
@@ -3660,13 +3701,13 @@ WIP_LOCAL BOOL PokecenterAnimRun(TaskManager *taskManager) {
         void *v;
         void *v5;
         v = ov01_021FB9E0(*(void **)((u8 *)fieldSystem + 0x34));
-        ov01_021E8DE8(*(void **)((u8 *)fieldSystem + 0x54), *(void **)((u8 *)fieldSystem + 0x58), 0x10, (void *)0x6b, NULL, mdl1, v, 1, 1, 0);
+        MapPropOneShotAnimationManager_LoadPropAnimations(*(void **)((u8 *)fieldSystem + 0x54), *(void **)((u8 *)fieldSystem + 0x58), 0x10, (void *)0x6b, NULL, mdl1, v, 1, 1, 0);
         if (sub_02054C20(fieldSystem, 0x25, &outObj, NULL) == 0) {
             GF_AssertFail();
         }
-        v5 = ov01_021F3B38((void *)outObj);
+        v5 = MapProp_GetRenderSurface((void *)outObj);
         v = ov01_021FB9E0(*(void **)((u8 *)fieldSystem + 0x34));
-        ov01_021E8DE8(*(void **)((u8 *)fieldSystem + 0x54), *(void **)((u8 *)fieldSystem + 0x58), 0x20, (void *)0x25, v5, mdl2, v, 1, 1, 0);
+        MapPropOneShotAnimationManager_LoadPropAnimations(*(void **)((u8 *)fieldSystem + 0x54), *(void **)((u8 *)fieldSystem + 0x58), 0x20, (void *)0x25, v5, mdl2, v, 1, 1, 0);
         (*(u8 *)((u8 *)env + 0xf))++;
         break;
     }
@@ -3694,24 +3735,24 @@ WIP_LOCAL BOOL PokecenterAnimRun(TaskManager *taskManager) {
             if (*(u8 *)((u8 *)env + 0xd) < *(u8 *)((u8 *)env + 0xc)) {
                 *(u8 *)((u8 *)env + 0xf) = 1;
             } else {
-                ov01_021E8E40(*(void **)((u8 *)fieldSystem + 0x58), 0x10, 0, ov01_021F3B38(ov01_021F3B60(*(void **)((u8 *)fieldSystem + 0x9c), *(u8 *)((u8 *)env + 0x10))));
+                MapPropOneShotAnimationManager_SetAnimationRenderObj(*(void **)((u8 *)fieldSystem + 0x58), 0x10, 0, MapProp_GetRenderSurface(MapPropManager_GetMapPropByIndex_Checked_RequireActive(*(void **)((u8 *)fieldSystem + 0x9c), *(u8 *)((u8 *)env + 0x10))));
                 (*(u8 *)((u8 *)env + 0xf))++;
             }
         }
         break;
     case 3:
-        ov01_021E8E70(*(void **)((u8 *)fieldSystem + 0x58), 0x10, 0);
-        ov01_021E8E70(*(void **)((u8 *)fieldSystem + 0x58), 0x20, 0);
+        MapPropOneShotAnimationManager_PlayAnimation(*(void **)((u8 *)fieldSystem + 0x58), 0x10, 0);
+        MapPropOneShotAnimationManager_PlayAnimation(*(void **)((u8 *)fieldSystem + 0x58), 0x20, 0);
         PlayFanfare(SEQ_ME_ASA);
         (*(u8 *)((u8 *)env + 0xf))++;
         break;
     case 4:
-        if (ov01_021E8F10(*(void **)((u8 *)fieldSystem + 0x58), 0x10) && ov01_021E8F10(*(void **)((u8 *)fieldSystem + 0x58), 0x20) && !IsFanfarePlaying()) {
+        if (MapPropOneShotAnimationManager_IsAnimationLoopFinished(*(void **)((u8 *)fieldSystem + 0x58), 0x10) && MapPropOneShotAnimationManager_IsAnimationLoopFinished(*(void **)((u8 *)fieldSystem + 0x58), 0x20) && !IsFanfarePlaying()) {
             u8 i;
-            ov01_021E8ED0(*(void **)((u8 *)fieldSystem + 0x54), *(void **)((u8 *)fieldSystem + 0x58), 0x20);
-            ov01_021E8ED0(*(void **)((u8 *)fieldSystem + 0x54), *(void **)((u8 *)fieldSystem + 0x58), 0x10);
+            MapPropOneShotAnimationManager_UnloadAnimation(*(void **)((u8 *)fieldSystem + 0x54), *(void **)((u8 *)fieldSystem + 0x58), 0x20);
+            MapPropOneShotAnimationManager_UnloadAnimation(*(void **)((u8 *)fieldSystem + 0x54), *(void **)((u8 *)fieldSystem + 0x58), 0x10);
             for (i = 0; i < *(u8 *)((u8 *)env + 0xc); i++) {
-                ov01_021F36DC(*(u8 *)((u8 *)env + i + 0x10), *(void **)((u8 *)fieldSystem + 0x9c));
+                MapPropManager_RemoveMapPropByIndex(*(u8 *)((u8 *)env + i + 0x10), *(void **)((u8 *)fieldSystem + 0x9c));
             }
             (*(u8 *)((u8 *)env + 0xf))++;
         }
@@ -3749,23 +3790,23 @@ WIP_LOCAL BOOL ov02_0224BE24(TaskManager *taskManager) {
         if (sub_02054C20(fieldSystem, 0xd0, &outObj, NULL) == 0) {
             GF_AssertFail();
         }
-        v5 = ov01_021F3B38((void *)outObj);
+        v5 = MapProp_GetRenderSurface((void *)outObj);
         v6 = ov01_021FB9E0(*(void **)((u8 *)fieldSystem + 0x34));
-        ov01_021E8DE8(*(void **)((u8 *)fieldSystem + 0x54), *(void **)((u8 *)fieldSystem + 0x58), 1, (void *)0xd0, v5, mdl, v6, 2, *(u8 *)env, 0);
+        MapPropOneShotAnimationManager_LoadPropAnimations(*(void **)((u8 *)fieldSystem + 0x54), *(void **)((u8 *)fieldSystem + 0x58), 1, (void *)0xd0, v5, mdl, v6, 2, *(u8 *)env, 0);
         (*(u8 *)((u8 *)env + 2))++;
         break;
     }
     case 1:
         GF_ASSERT(*(u8 *)((u8 *)env + 1) == 0 || *(u8 *)((u8 *)env + 1) == 1);
-        ov01_021E8E70(*(void **)((u8 *)fieldSystem + 0x58), 1, *(u8 *)((u8 *)env + 1));
+        MapPropOneShotAnimationManager_PlayAnimation(*(void **)((u8 *)fieldSystem + 0x58), 1, *(u8 *)((u8 *)env + 1));
         PlaySE(SEQ_SE_DP_ELEBETA2);
         (*(u8 *)((u8 *)env + 2))++;
         break;
     case 2:
-        if (ov01_021E8F10(*(void **)((u8 *)fieldSystem + 0x58), 1)) {
+        if (MapPropOneShotAnimationManager_IsAnimationLoopFinished(*(void **)((u8 *)fieldSystem + 0x58), 1)) {
             StopSE(SEQ_SE_DP_ELEBETA2, 0);
             PlaySE(SEQ_SE_DP_PINPON);
-            ov01_021E8ED0(*(void **)((u8 *)fieldSystem + 0x54), *(void **)((u8 *)fieldSystem + 0x58), 1);
+            MapPropOneShotAnimationManager_UnloadAnimation(*(void **)((u8 *)fieldSystem + 0x54), *(void **)((u8 *)fieldSystem + 0x58), 1);
             (*(u8 *)((u8 *)env + 2))++;
         }
         break;
@@ -3804,10 +3845,10 @@ asm void ov02_0224BF58(FieldSystem *fieldSystem, u8 a1) {
     bl ov01_021FB9E0
     add r6, r0, #0
     ldr r0, [sp, #0x24]
-    bl ov01_021F3B38
+    bl MapProp_GetRenderSurface
     add r4, r0, #0
     ldr r0, [sp, #0x24]
-    bl ov01_021F3B3C
+    bl MapProp_GetResModel
     str r4, [sp, #0]
     str r0, [sp, #4]
     str r6, [sp, #8]
@@ -3821,7 +3862,7 @@ asm void ov02_0224BF58(FieldSystem *fieldSystem, u8 a1) {
     ldr r1, [r5, #0x58]
     ldr r3, [sp, #0x20]
     add r2, r7, #0
-    bl ov01_021E8DE8
+    bl MapPropOneShotAnimationManager_LoadPropAnimations
     add sp, #0x28
     pop {r3, r4, r5, r6, r7, pc}
 _0224BFB4:
@@ -3832,11 +3873,11 @@ _0224BFB4:
 // clang-format on
 
 WIP_LOCAL void ov02_0224BFC0(FieldSystem *fieldSystem, u8 a1) {
-    ov01_021E8E70(*(void **)((u8 *)fieldSystem + 0x58), a1, 0);
+    MapPropOneShotAnimationManager_PlayAnimation(*(void **)((u8 *)fieldSystem + 0x58), a1, 0);
 }
 
 WIP_LOCAL void ov02_0224BFCC(FieldSystem *fieldSystem, u8 a1) {
-    ov01_021E8E70(*(void **)((u8 *)fieldSystem + 0x58), a1, 1);
+    MapPropOneShotAnimationManager_PlayAnimation(*(void **)((u8 *)fieldSystem + 0x58), a1, 1);
 }
 
 struct FieldMoveTaskEnvironment *CreateFieldEscapeRopeTaskEnv(FieldSystem *fieldSystem, enum HeapID heapID) {
@@ -4707,7 +4748,7 @@ void ov02_0224CDB0(FieldSystem *fieldSystem, u8 a1) {
         *(u8 *)((u8 *)data + 0xe) = 0;
         *(u8 *)((u8 *)data + 0xf) = 0;
         sub_02054DC8((int)outHandle, MapMatrix_GetWidth(fieldSystem->mapMatrix), &tileCenter);
-        ov01_021F3B0C(&local, (void *)outObj);
+        MapProp_GetTranslation(&local, (void *)outObj);
         *(VecFx32 *)data = local;
         ((VecFx32 *)data)->x += tileCenter.x;
         ((VecFx32 *)data)->z += tileCenter.z;
@@ -4726,7 +4767,7 @@ WIP_LOCAL BOOL ov02_0224CE28(TaskManager *taskManager) {
         NNSG3dResMdlSet *mdlSet = NNS_G3dGetMdlSet(*(NNSG3dResFileHeader **)ov01_021FB90C(0x6b, *(void **)((u8 *)fieldSystem + 0x34)));
         NNSG3dResMdl *mdl = NNS_G3dGetMdlByIdx(mdlSet, 0);
         void *v = ov01_021FB9E0(*(void **)((u8 *)fieldSystem + 0x34));
-        ov01_021E8DE8(*(void **)((u8 *)fieldSystem + 0x54), *(void **)((u8 *)fieldSystem + 0x58), 0x10, (void *)0x6b, NULL, mdl, v, 1, 1, 0);
+        MapPropOneShotAnimationManager_LoadPropAnimations(*(void **)((u8 *)fieldSystem + 0x54), *(void **)((u8 *)fieldSystem + 0x58), 0x10, (void *)0x6b, NULL, mdl, v, 1, 1, 0);
         (*(u8 *)((u8 *)env + 0xf))++;
         break;
     }
@@ -4754,21 +4795,21 @@ WIP_LOCAL BOOL ov02_0224CE28(TaskManager *taskManager) {
             if (*(u8 *)((u8 *)env + 0xd) < *(u8 *)((u8 *)env + 0xc)) {
                 *(u8 *)((u8 *)env + 0xf) = 1;
             } else {
-                ov01_021E8E40(*(void **)((u8 *)fieldSystem + 0x58), 0x10, 0, ov01_021F3B38(ov01_021F3B60(*(void **)((u8 *)fieldSystem + 0x9c), *(u8 *)((u8 *)env + 0x10))));
+                MapPropOneShotAnimationManager_SetAnimationRenderObj(*(void **)((u8 *)fieldSystem + 0x58), 0x10, 0, MapProp_GetRenderSurface(MapPropManager_GetMapPropByIndex_Checked_RequireActive(*(void **)((u8 *)fieldSystem + 0x9c), *(u8 *)((u8 *)env + 0x10))));
                 (*(u8 *)((u8 *)env + 0xf))++;
             }
         }
         break;
     case 3:
-        ov01_021E8E70(*(void **)((u8 *)fieldSystem + 0x58), 0x10, 0);
+        MapPropOneShotAnimationManager_PlayAnimation(*(void **)((u8 *)fieldSystem + 0x58), 0x10, 0);
         (*(u8 *)((u8 *)env + 0xf))++;
         break;
     case 4:
-        if (ov01_021E8F10(*(void **)((u8 *)fieldSystem + 0x58), 0x10)) {
+        if (MapPropOneShotAnimationManager_IsAnimationLoopFinished(*(void **)((u8 *)fieldSystem + 0x58), 0x10)) {
             u8 i;
-            ov01_021E8ED0(*(void **)((u8 *)fieldSystem + 0x54), *(void **)((u8 *)fieldSystem + 0x58), 0x10);
+            MapPropOneShotAnimationManager_UnloadAnimation(*(void **)((u8 *)fieldSystem + 0x54), *(void **)((u8 *)fieldSystem + 0x58), 0x10);
             for (i = 0; i < *(u8 *)((u8 *)env + 0xc); i++) {
-                ov01_021F36DC(*(u8 *)((u8 *)env + i + 0x10), *(void **)((u8 *)fieldSystem + 0x9c));
+                MapPropManager_RemoveMapPropByIndex(*(u8 *)((u8 *)env + i + 0x10), *(void **)((u8 *)fieldSystem + 0x9c));
             }
             (*(u8 *)((u8 *)env + 0xf))++;
         }

@@ -60,6 +60,13 @@
 void _s32_div_f(void);
 
 void ov01_021F630C(int idx, MapLoadManager *unk2C, s32 *out);
+// Upstream PR #502 renamed these three (now defined in src/field/map_prop_manager.c and
+// declared in field/map_prop.h, which field_system.h pulls in above). This TU is still on
+// asm/ in main.lsf, so the stale names below are inert prototypes -- but when it flips to
+// src, rename them and shadow the header decls the way src/overlay_02_02248728.c does:
+//   ov01_021F3B44 -> MapPropManager_GetMapPropByIndex
+//   ov01_021F3B34 -> MapProp_GetBuildModel
+//   ov01_021F3B0C -> MapProp_GetTranslation
 int ov01_021F3B44(int count, u8 j);
 int ov01_021F3B34(int handle);
 void ov01_021F3B0C(VecFx32 *out, void *src);

@@ -5,7 +5,7 @@
 #include "constants/sndseq.h"
 
 #include "field/encounter_check.h"
-#include "field/overlay_01_021E66E4.h"
+#include "field/field_3d_object_task.h"
 
 #include "bg_window.h"
 #include "field_system.h"
