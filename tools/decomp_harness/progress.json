@@ -780,6 +780,16 @@
       "attempts": 6,
       "result": "matched",
       "note": "Linked and ROM-verified. 36 of 40 functions are real C; 4 ship as NONMATCHING inline asm with the C reconstruction retained under #ifdef NONMATCHING. MapPropAnimationManager_Init, ov01_021E8894 and ov01_021E8D6C are one shared MWCC tie-break -- the second loop over an array exchanges the index and the generated induction pointer relative to retail; ov01_021E8F3C matches instruction-for-instruction but spills row instead of obj, costing 16 bytes. See patterns loop2-induction-pointer-regalloc and permuter-live-target-wiring; the permuter can now be pointed at these four via the standard NONMATCHING path."
+    },
+    {
+      "file": "asm/overlay_29.s",
+      "lines": 1675,
+      "functions": 34,
+      "matched_functions": 34,
+      "nonmatching": 0,
+      "attempts": 5,
+      "result": "matched",
+      "note": "compare-verified (HG + SS full ROM SHA1 OK). Numeric-entry sub-app (sub-screen number pad; launched from the ov01_02206C60 sub-app table next to touch_save_app). 34/34 in pure C, zero NONMATCHING. The 2026-08-25 section_diff blocker (MWCC size-sorts separate u8[] hitbox lists into alignment-1 sections) was solved by consolidating ALL rodata (0x0225E114..0x0225E304, 31 symbols) into ONE static const NumberEntryRodata struct in address order; every rodata reference -- self-referencing pointer tables, two BgTemplate struct copies, variable-indexed xOffsets[n][i] -- folded to a single =sRodata+off pool literal without hoisting. Other decisive fixes: constructor loop divides a THRESHOLD (100000/10^i) not the value; threshold assigned before numDigits=0 (pins it to r0); gSystem.newKeys (0x48) not heldKeys; VRAM banks are SUB_BG_32_H/SUB_OBJ_16_I; digit sprites are a separate digitSprites[6] field at 0x188 (sprites[5+i] emits add #5); blink helper takes u8 seq; Horner loop declares value before i."
     }
   ],
   "failed": [
@@ -1199,7 +1209,7 @@
   ],
   "stats": {
     "total_attempts": 169,
-    "total_matched": 70,
+    "total_matched": 71,
     "total_failed": 31
   },
   "matched": [
