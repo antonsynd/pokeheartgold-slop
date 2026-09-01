@@ -790,6 +790,16 @@
       "attempts": 5,
       "result": "matched",
       "note": "compare-verified (HG + SS full ROM SHA1 OK). Numeric-entry sub-app (sub-screen number pad; launched from the ov01_02206C60 sub-app table next to touch_save_app). 34/34 in pure C, zero NONMATCHING. The 2026-08-25 section_diff blocker (MWCC size-sorts separate u8[] hitbox lists into alignment-1 sections) was solved by consolidating ALL rodata (0x0225E114..0x0225E304, 31 symbols) into ONE static const NumberEntryRodata struct in address order; every rodata reference -- self-referencing pointer tables, two BgTemplate struct copies, variable-indexed xOffsets[n][i] -- folded to a single =sRodata+off pool literal without hoisting. Other decisive fixes: constructor loop divides a THRESHOLD (100000/10^i) not the value; threshold assigned before numDigits=0 (pins it to r0); gSystem.newKeys (0x48) not heldKeys; VRAM banks are SUB_BG_32_H/SUB_OBJ_16_I; digit sprites are a separate digitSprites[6] field at 0x188 (sprites[5+i] emits add #5); blink helper takes u8 seq; Horner loop declares value before i."
+    },
+    {
+      "file": "asm/overlay_98.s",
+      "lines": 1635,
+      "functions": 47,
+      "matched_functions": 47,
+      "nonmatching": 1,
+      "attempts": 9,
+      "result": "matched",
+      "note": "compare-verified (HG full ROM SHA1 OK; SS gate run in the same session). Shared helper overlay for the overlay_96/99 stats screens: SpriteSystem holder (ctor/dtor, 10-sprite row builder, mon-sprite + icon loaders), Window+MessageFormat text holder (ctor/dtor + print wrappers), rank/threshold lookups, display teardown. 46/47 pure C + 1 NONMATCHING (ov98_0221EF24: byte struct copy from the consolidated rodata folds the literal at 32-byte granularity). 9 rodata objects consolidated into one struct (0xDC bytes). Signature surprises: E970 has an unused r3 with animate on the stack; ED3C takes 3 params; EC3C passes a 32-bit fontId into AddTextPrinterParameterizedWithColor (local wider prototype, text.h untouched). Register-only mismatches solved with a scripted variant sweep (compound assignments, temp for call result, out-pointer declared last, i-before-count)."
     }
   ],
   "failed": [
@@ -1209,7 +1219,7 @@
   ],
   "stats": {
     "total_attempts": 169,
-    "total_matched": 71,
+    "total_matched": 72,
     "total_failed": 31
   },
   "matched": [

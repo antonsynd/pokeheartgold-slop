@@ -1180,7 +1180,7 @@ Overlay OVY_97
 Overlay OVY_98
 {
     After OVY_96
-    Object asm/overlay_98.o
+    Object src/overlay_98.o
 }
 Overlay OVY_99
 {
