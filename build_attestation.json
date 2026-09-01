@@ -1,8 +1,8 @@
 {
-  "source_hash": "add3a42944171304daf2a6648be5771af149cffa",
+  "source_hash": "6dab8afefb72a5c0c0298b1b56fcb435cd70aee7",
   "retail_sha1": "4fcded0e2713dc03929845de631d0932ea2b5a37",
   "status": "MATCH",
-  "commit": "2cf7e9bf7",
-  "timestamp": "2026-09-01T20:40:50Z",
+  "commit": "490ce1667",
+  "timestamp": "2026-09-01T21:51:47Z",
   "host": "Darwin arm64"
 }

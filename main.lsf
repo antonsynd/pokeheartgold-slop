@@ -698,7 +698,7 @@ Overlay OVY_18
     Object asm/overlay_18_021EE35C.o
     Object asm/overlay_18_021F0918.o
     Object asm/overlay_18_021F6AB0.o
-    Object asm/overlay_18_021F7ED4.o
+    Object src/overlay_18_021F7ED4.o
     Object src/overlay_18_021F8AB8.o
 }
 Overlay OVY_19

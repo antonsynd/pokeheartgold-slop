@@ -76,3 +76,25 @@ Documented in patterns `switch-jumptable-density` and
 jump-table function, confirm with `objdiff --disasm` (bytes identical) and trust
 `chiri pkg -- compare` (authoritative). The BL-placeholder false positive that
 used to compound this was fixed (see `is_bl_halfword` byte-order fix).
+
+## decomp-permuter scaffolding gaps (2026-09-01, ov18_021F831C job)
+
+`emit_job.sh` produced a `base.c` the permuter could not parse and a splice the
+compiler could not build, so the job never iterated:
+
+- `make_base.py` copies file-local function-like macros verbatim but drops the
+  leading `#` (`define DEX_SORT_FILE(member) ...`), and pycparser cannot expand
+  macros anyway. It also leaves `GF_ASSERT(...)`, `FALSE`/`TRUE` and
+  `DEX_SEARCH_*` constants unresolved (it declared `typedef struct FALSE FALSE;`
+  as an opaque type). Workaround used: hand-substitute numeric constants,
+  `GF_AssertFail();`, and `#define FALSE 0` in `base.c`.
+- After that, `compile_wrapper.sh`'s spliced `*.full.c` failed with a
+  `declaration syntax error` on every case-body line plus
+  `undefined identifier 'fileList'`, i.e. the pycparser-regenerated function
+  text is not accepted by MWCC once spliced back into the seed TU (likely the
+  regenerated declarations/labels). Needs a look at `fn_extract.py` /
+  `compile_wrapper.sh` with this job as the repro:
+  `scratchpad/permuter_jobs/overlay_18_021F7ED4_ov18_021F831C`.
+- Proposed fix: have `make_base.py` run the target function through the real
+  preprocessor (`mwcc -E` or `cpp` with the project include path) so `base.c`
+  is macro-free, and make the splice re-indent/normalise before compiling.
