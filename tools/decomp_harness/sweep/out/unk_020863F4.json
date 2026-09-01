@@ -1,0 +1,730 @@
+{
+ "file": "asm/unk_020863F4.s",
+ "functions": [
+  {
+   "name": "sub_020863F4",
+   "mode": "thumb",
+   "signature_guess": "void sub_020863F4(UnkStruct_020850F4 *ctx)",
+   "confidence": "high",
+   "callees": [
+    "SpriteSystem_Alloc",
+    "SpriteSystem_Init",
+    "SpriteManager_New",
+    "SpriteSystem_InitSprites",
+    "SpriteSystem_InitManagerWithCapacities",
+    "GF_AssertFail"
+   ],
+   "struct_accesses": [
+    {
+     "param": 0,
+     "offset": "0x2F0",
+     "width": 4,
+     "meaning": "SpriteSystem* = SpriteSystem_Alloc(HEAP_ID_108)"
+    },
+    {
+     "param": 0,
+     "offset": "0x2F4",
+     "width": 4,
+     "meaning": "SpriteManager* = SpriteManager_New"
+    }
+   ],
+   "notes": "3 stack struct copies via ldmia/stmia: OamManagerParam oam=_021027F4 (sp+0x2c, declared first), OamCharTransferParam xfer=_021027C8 (sp+0x18), SpriteResourceCountsListUnion counts=_021027DC (sp+0). SpriteSystem_Init(sys,&oam,&xfer,0x20); GF_ASSERT(InitSprites(sys,mgr,0x80)); GF_ASSERT(InitManagerWithCapacities(sys,mgr,&counts))."
+  },
+  {
+   "name": "sub_02086490",
+   "mode": "thumb",
+   "signature_guess": "void sub_02086490(UnkStruct_020850F4 *ctx)",
+   "confidence": "high",
+   "callees": [
+    "GfGfxLoader_LoadCharDataFromOpenNarc",
+    "GfGfxLoader_LoadScrnDataFromOpenNarc",
+    "PaletteData_LoadNarc",
+    "SpriteSystem_LoadPaletteBufferFromOpenNarc",
+    "SpriteSystem_LoadCharResObjFromOpenNarc",
+    "SpriteSystem_LoadCellResObjFromOpenNarc",
+    "SpriteSystem_LoadAnimResObjFromOpenNarc",
+    "Options_GetFrame",
+    "LoadUserFrameGfx2",
+    "sub_0200E640"
+   ],
+   "struct_accesses": [
+    {
+     "param": 0,
+     "offset": "0x2EC",
+     "width": 4,
+     "meaning": "NARC* (open narc, all *FromOpenNarc calls)"
+    },
+    {
+     "param": 0,
+     "offset": "0x2F8",
+     "width": 4,
+     "meaning": "BgConfig*"
+    },
+    {
+     "param": 0,
+     "offset": "0x2FC",
+     "width": 4,
+     "meaning": "PaletteData*"
+    },
+    {
+     "param": 0,
+     "offset": "0x3D8",
+     "width": 4,
+     "meaning": "Options* -> Options_GetFrame"
+    }
+   ],
+   "notes": "Locals: mgr=r5, sys=r6, pltt/bgConfig spilled, narc=r4. Char(narc,0xC,bg,LYR_MAIN_1,0,0,0,HEAP_ID_108); Scrn(0xE, MAIN_1); PaletteData_LoadNarc(pltt,NARC_a_1_9_0(0xBE),0xD,heap,PLTTBUF_MAIN_BG,0x20,0); Char(0xF,SUB_1); Scrn(0x11,SUB_1); LoadNarc(0xBE,0x10,heap,PLTTBUF_SUB_BG,0x20,0). Then 3 resource sets: resId 1000 {pltt file1 pltt_num1, char0, cell2, anim3}, 1001 {pltt5 num1, char4, cell6, anim7}, 1002 {pltt9 num2, char8, cellA, animB}; all compressed=0, vram=1, bufferId=PLTTBUF_MAIN_OBJ. frame=Options_GetFrame(ctx->options); LoadUserFrameGfx2(bg,LYR_SUB_0,1,0xA,(u8)frame,heap); LoadNarc(pltt,0x26,sub_0200E640(frame),heap,PLTTBUF_SUB_BG,0x20,0xB0); LoadNarc(pltt,NARC_graphic_font(0x10),8,heap,PLTTBUF_SUB_BG,0x20,0xC0). Pool: 0x3E9,0x3EA; 0x3E8 built as mov 0xFA lsl 2."
+  },
+  {
+   "name": "sub_020866CC",
+   "mode": "thumb",
+   "signature_guess": "void sub_020866CC(UnkStruct_020850F4 *ctx)",
+   "confidence": "high",
+   "callees": [
+    "Sprite_DeleteAndFreeResources",
+    "sub_02086FE8",
+    "RemoveWindow"
+   ],
+   "notes": "for i<ctx->unk2D0: Delete(digits[i].sprite); for i<ctx->unk3EC: Delete(unk1C0[i].sprite); for i<2: unk268[i].sprite; for i<3: unk214[i].sprite; sub_02086FE8(ctx); RemoveWindow(&ctx->window @0x39C). All loops use 0x1c-stride walking pointer, bound reloaded each iter."
+  },
+  {
+   "name": "sub_02086758",
+   "mode": "thumb",
+   "signature_guess": "void sub_02086758(UnkStruct_020850F4 *ctx)",
+   "confidence": "high",
+   "callees": [
+    "_u32_div_f",
+    "SpriteSystem_NewSprite",
+    "ManagedSprite_SetPositionXY",
+    "ManagedSprite_SetAnim",
+    "ManagedSprite_TickFrame",
+    "sub_02086D98",
+    "ManagedSprite_SetAffineOverwriteMode"
+   ],
+   "struct_accesses": [
+    {
+     "param": 0,
+     "offset": "0x3E0",
+     "width": 4,
+     "meaning": "u32 number split into digits (%10, /10 via _u32_div_f)"
+    },
+    {
+     "param": 0,
+     "offset": "0x3F0",
+     "width": 4,
+     "meaning": "int digit count: fill digits[unk3F0-1..0].unk0 = n%10+1"
+    }
+   ],
+   "notes": "Order at top: j=0 ([sp+0xc]); sys ([sp+8]); mgr ([sp+4]); ctx spilled [sp]. ManagedSpriteTemplate at sp+0x10: x=y=z=anim=0, drawPriority=10, pal=0, vram=1, resIdList={1000,1000,1000,1000,-1,-1}, bgPriority=0, vramTransfer=0. Countdown for(i=unk3F0-1;i>=0;i--){digits[i].unk0=num%10+1; num/=10;} (u32 num; two _u32_div_f calls, divisor 10 hoisted in r7). Then s16 x=0x4C; for(i=0;i<unk3EC+unk2D0;i++){ if(unk3EC!=0 && i==unk1C0[j].unk0+j+1){unk1C0[j].sprite=NewSprite; SetPositionXY(sp,x,0x18); SetAnim(sp,0x16); TickFrame; j++;} else {digits[k].sprite=NewSprite; SetPositionXY(x,0x18); SetAnim(sp,sub_02086D98(digits[k].unk0,digits[k].unk8)); SetAffineOverwriteMode(sp,2); TickFrame; k++;} x+=8; }. 1000 formed as (0x2F0 offset reg)+0xF8 — constant materialization hazard."
+  },
+  {
+   "name": "sub_020868A0",
+   "mode": "thumb",
+   "signature_guess": "void sub_020868A0(UnkStruct_020850F4 *ctx)",
+   "confidence": "high",
+   "callees": [
+    "SpriteSystem_NewSprite",
+    "sub_02086AE4",
+    "ManagedSprite_SetAnim",
+    "ManagedSprite_TickFrame",
+    "sub_02086B2C",
+    "ManagedSprite_SetOamMode",
+    "sub_02086AB4"
+   ],
+   "notes": "Template at sp+0: drawPriority=0, pal=0, vram=1, resIds 1001x4,-1,-1. Creates unk214[0..2].sprite (0x220,0x23C,0x258). sub_02086AE4(ctx,ctx->unk3F0); SetAnim(unk214[0].sprite,0); Tick. unk214[1].dx=0;dy=0;unk0=1; sub_02086B2C(ctx,0); SetAnim(unk214[1].sprite,unk214[1].unk0); Tick; SetOamMode(..,GX_OAM_MODE_XLU=1). Same for unk214[2] (also sub_02086B2C(ctx,0) — r1 literally 0). sub_02086AB4(ctx,1,0); sub_02086AB4(ctx,2,0)."
+  },
+  {
+   "name": "sub_020869BC",
+   "mode": "thumb",
+   "signature_guess": "void sub_020869BC(UnkStruct_020850F4 *ctx)",
+   "confidence": "high",
+   "callees": [
+    "SpriteSystem_NewSprite",
+    "ManagedSprite_SetPositionXY",
+    "ManagedSprite_SetAnim",
+    "ManagedSprite_TickFrame"
+   ],
+   "notes": "Template: drawPriority=10, pal=0 (STORED TWICE at sp+0xc — initializer plus explicit template.pal=0 before first NewSprite), vram=1, resIds 1002x4,-1,-1. unk268[0].sprite=NewSprite; template.pal=1; unk268[1].sprite=NewSprite. Position each at center of hitboxes[26]/[27]: x=(s16)((left+right)/2), y=(s16)((top+bottom)/2) (signed /2 idiom lsr#31). SetAnim 0, Tick each."
+  },
+  {
+   "name": "sub_02086AB4",
+   "mode": "thumb",
+   "signature_guess": "void sub_02086AB4(UnkStruct_020850F4 *ctx, int idx, int flag)",
+   "confidence": "high",
+   "callees": [
+    "ManagedSprite_SetDrawFlag"
+   ],
+   "notes": "if(flag==1) SetDrawFlag(ctx->unk214[idx].sprite,1); else SetDrawFlag(...,0); — two separate calls each with own pop (not a ternary)."
+  },
+  {
+   "name": "sub_02086AE4",
+   "mode": "thumb",
+   "signature_guess": "void sub_02086AE4(UnkStruct_020850F4 *ctx, int idx)",
+   "confidence": "high",
+   "callees": [
+    "ManagedSprite_GetPositionXY",
+    "ManagedSprite_SetPositionXY"
+   ],
+   "struct_accesses": [
+    {
+     "param": 0,
+     "offset": "0x3F0",
+     "width": 4,
+     "meaning": "if(idx < unk3F0) return"
+    },
+    {
+     "param": 0,
+     "offset": "0x214",
+     "width": 4,
+     "meaning": "unk214[0].unk0 = idx"
+    }
+   ],
+   "notes": "if(idx>=ctx->unk3F0){ sp=digits[idx].sprite; unk214[0].unk0=idx; GetPositionXY(sp,&x,&y); SetPositionXY(unk214[0].sprite,x,(s16)(y+0x10)); } Locals s16 x at sp+2, y at sp+0 -> declare x before y."
+  },
+  {
+   "name": "sub_02086B2C",
+   "mode": "thumb",
+   "signature_guess": "void sub_02086B2C(UnkStruct_020850F4 *ctx, int idx)",
+   "confidence": "high",
+   "callees": [
+    "ManagedSprite_SetPositionXY"
+   ],
+   "notes": "hb=&ctx->hitboxes[idx+16] (index add then *4, base 0x304); SetPositionXY(ctx->unk214[1].sprite,(s16)((hb.left+hb.right)/2),(s16)((hb.top+hb.bottom)/2))."
+  },
+  {
+   "name": "sub_02086B6C",
+   "mode": "thumb",
+   "signature_guess": "void sub_02086B6C(UnkStruct_020850F4 *ctx, int hitboxIdx, int spriteIdx)",
+   "confidence": "high",
+   "callees": [
+    "ManagedSprite_SetPositionXY"
+   ],
+   "notes": "Same as B2C but sprite=ctx->unk214[spriteIdx].sprite, hb=hitboxes[hitboxIdx+16]."
+  },
+  {
+   "name": "sub_02086BB4",
+   "mode": "thumb",
+   "signature_guess": "void sub_02086BB4(UnkStruct_020850F4 *ctx)",
+   "confidence": "high",
+   "callees": [
+    "ManagedSprite_TickFrame",
+    "ManagedSprite_GetActiveAnim",
+    "ManagedSprite_IsAnimated",
+    "ManagedSprite_SetAnim",
+    "sub_02086AB4"
+   ],
+   "struct_accesses": [
+    {
+     "param": 0,
+     "offset": "0x374",
+     "width": 4,
+     "meaning": "int, compared ==1 selects sub_02086AB4(ctx,1,0) vs (ctx,1,1)"
+    }
+   ],
+   "notes": "Tick unk214[0..2].sprite; for(i=1;i<3;i++){ anim=GetActiveAnim(unk214[i].sprite); if(anim==3){ if(!IsAnimated){ SetAnim(sp,unk214[i].unk0); if(unk374==1)AB4(ctx,1,0) else AB4(ctx,1,1); AB4(ctx,2,0);} } else { if(anim!=unk214[i].unk0) SetAnim(sp,unk214[i].unk0); if(GetActiveAnim(unk214[2].sprite)!=3){ if(unk374==1)AB4(ctx,1,0) else AB4(ctx,1,1);} } }"
+  },
+  {
+   "name": "sub_02086C80",
+   "mode": "thumb",
+   "signature_guess": "static void sub_02086C80(TextOBJ *obj, int x, int y)",
+   "confidence": "high",
+   "callees": [
+    "sub_020136B4"
+   ],
+   "notes": "NOT in .inc -> static. if(obj!=NULL) sub_020136B4(obj,x,y)."
+  },
+  {
+   "name": "sub_02086C8C",
+   "mode": "thumb",
+   "signature_guess": "void sub_02086C8C(UnkStruct_020850F4 *ctx)",
+   "confidence": "high",
+   "callees": [
+    "ManagedSprite_SetAnim",
+    "sub_02086C80"
+   ],
+   "notes": "for(i=0;i<2;i++) (i spilled at [sp]; r5=ctx+4*i serves hitboxes[26+i] AND textObjs[i]; r4=ctx+0x1c*i for unk268[i]). s16 x=(s16)((l+r)/2); x-=0x28 (re-narrowed); s16 y=(t+b)/2; y-=7. switch(unk268[i].unk0){case 0: counter=0; break; case 1: counter++; switch(counter){case 1: SetAnim(sp,1); C80(textObjs[i],x,y); break; case 2: SetAnim(sp,2); C80(..,x,y-1); break; case 10: SetAnim(sp,0); C80(x,y); unk268[i].unk0++;} break; default: SetAnim(sp,0); C80(x,y); unk268[i].unk0=0;}. Inner switch reloads u8 counter after strb. Pool 0x36E."
+  },
+  {
+   "name": "sub_02086D98",
+   "mode": "thumb",
+   "signature_guess": "int sub_02086D98(int anim, BOOL flag)",
+   "confidence": "high",
+   "notes": "int off=0; if(flag==0) off=11; return off+anim; (add r0,r2,r0 — try off+anim before anim+off). Leaf, no push."
+  },
+  {
+   "name": "sub_02086DA4",
+   "mode": "thumb",
+   "signature_guess": "void sub_02086DA4(UnkStruct_020850F4 *ctx)",
+   "confidence": "high",
+   "notes": "Leaf (push r4-r7 only). for(i=0;i<unk2D0;i++){ if(i>=unk2DC && i<unk2E0) digits[i].unk8=1; else digits[i].unk8=0; } constants 0/1 hoisted in r1/r2, offsets 0x2DC/0x2E0 hoisted r7/r6."
+  },
+  {
+   "name": "sub_02086DE4",
+   "mode": "thumb",
+   "signature_guess": "void sub_02086DE4(UnkStruct_020850F4 *ctx, BOOL animate)",
+   "confidence": "high",
+   "callees": [
+    "ManagedSprite_GetPositionXY",
+    "ManagedSprite_SetPositionXY"
+   ],
+   "struct_accesses": [
+    {
+     "param": 0,
+     "offset": "0x2D4",
+     "width": 4,
+     "meaning": "index into s16 unk2A0[]"
+    },
+    {
+     "param": 0,
+     "offset": "0x2A0",
+     "width": 2,
+     "meaning": "s16 base x = unk2A0[unk2D4]"
+    }
+   ],
+   "notes": "Callers pass 0 and 1. s16 x=ctx->unk2A0[ctx->unk2D4]; j=0 (spilled sp+8); for(i=0;i<unk2D0;i++){ if(i>=unk2DC&&i<unk2E0){x+= i==unk2DC?0x14:0x20;} else {x+= i==0?0x14:8;} GetPositionXY(digits[i].sprite,&px,&py); if(!animate) SetPositionXY(sp,x,py); else {digits[i].dx=(x-px)/2; dy=0; counter=2; scaleIdx=0;} if(i==unk1C0[j].unk0 && j!=unk3EC){ GetPositionXY(unk1C0[j].sprite,&px,&py); if(unk2DC==unk2E0) x+=8; else if(i>unk2DC&&i<unk2E0) x+=0x14; else x+=8; if(!animate) SetPositionXY(unk1C0[j].sprite,x,py); else {unk1C0[j].dx=(x-px)/2; dy=0; counter=2;} j++; } }. px at sp+0xe, py at sp+0xc (declare px before py). Each x+= written as if/else pairs (bne branches), x re-narrowed to s16 after each add."
+  },
+  {
+   "name": "sub_02086F44",
+   "mode": "thumb",
+   "signature_guess": "void sub_02086F44(UnkStruct_020850F4 *ctx)",
+   "confidence": "high",
+   "callees": [
+    "ManagedSprite_GetPositionXY"
+   ],
+   "notes": "for(i=0;i<unk2D0;i++){ if(i>=unk2DC&&i<unk2E0){hw=0x10;hh=0x10;} else {hw=4;hh=8;} (hw spilled [sp], hh=r7) GetPositionXY(digits[i].sprite,&x,&y); hb=digits[i].hitbox (u8*/TouchscreenHitbox*, reloaded before every store); hb->top=y-hh; hb->left=x-hw; hb->bottom=y+hh; hb->right=x+hw; }. Here x at sp+4, y at sp+6 -> declare y BEFORE x (opposite of AE4/DE4)."
+  },
+  {
+   "name": "sub_02086FCC",
+   "mode": "thumb",
+   "signature_guess": "void sub_02086FCC(UnkStruct_020850F4 *ctx)",
+   "confidence": "high",
+   "callees": [
+    "FontSystem_NewInit",
+    "FontID_Alloc"
+   ],
+   "notes": "ctx->fontSystem(0x378)=FontSystem_NewInit(2,HEAP_ID_108); FontID_Alloc(2,HEAP_ID_108)."
+  },
+  {
+   "name": "sub_02086FE8",
+   "mode": "thumb",
+   "signature_guess": "static void sub_02086FE8(UnkStruct_020850F4 *ctx)",
+   "confidence": "high",
+   "callees": [
+    "FontID_Release",
+    "FontOAM_Delete",
+    "sub_02021B5C",
+    "sub_020135AC"
+   ],
+   "notes": "NOT in .inc -> static. FontID_Release(2); FontOAM_Delete(textObjs[0]@0x37C); sub_02021B5C(&unk384[0]); FontOAM_Delete(textObjs[1]@0x380); sub_02021B5C(&unk384[1]@0x390); sub_020135AC(fontSystem)."
+  },
+  {
+   "name": "sub_02087028",
+   "mode": "thumb",
+   "signature_guess": "static void sub_02087028(UnkStruct_020850F4 *ctx)",
+   "confidence": "high",
+   "callees": [
+    "SpriteSystem_LoadPaletteBuffer"
+   ],
+   "notes": "NOT in .inc -> static. SpriteSystem_LoadPaletteBuffer(ctx->pltt,PLTTBUF_MAIN_OBJ,sys,mgr,NARC_graphic_font(0x10),8,0,1,1,1003). Offsets 0x2FC/0x2F0/0x2F4 formed by subtracting from pool 0x3EB — regalloc quirk."
+  },
+  {
+   "name": "sub_02087064",
+   "mode": "thumb",
+   "signature_guess": "void sub_02087064(UnkStruct_020850F4 *ctx)",
+   "confidence": "high",
+   "callees": [
+    "sub_02087028",
+    "sub_02087090"
+   ],
+   "notes": "sub_02087028(ctx); sub_02087090(ctx,0,0x4E,0xA5,0); sub_02087090(ctx,1,0xAC,0xA5,0)."
+  },
+  {
+   "name": "sub_02087090",
+   "mode": "thumb",
+   "signature_guess": "static void sub_02087090(UnkStruct_020850F4 *ctx, int idx, int unusedX, int unusedY, int a4)",
+   "confidence": "medium",
+   "callees": [
+    "NewMsgDataFromNarc",
+    "NewString_ReadMsgData",
+    "InitWindow",
+    "AddTextWindowTopLeftCorner",
+    "FontID_String_GetCenterAlignmentX",
+    "AddTextPrinterParameterizedWithColor",
+    "sub_02013688",
+    "sub_02021AC8",
+    "SpriteManager_GetSpriteList",
+    "SpriteManager_FindPlttResourceProxy",
+    "sub_020135D8",
+    "sub_020138E0",
+    "String_Delete",
+    "DestroyMsgData",
+    "RemoveWindow"
+   ],
+   "notes": "NOT in .inc -> static. r2/r3 never read (dead params, but 5th stack arg IS used). msg=NewMsgDataFromNarc(0,NARC_msgdata_msg,NARC_msg_msg_0038_bin,heap); str=ReadMsgData(msg,idx+2); InitWindow(&win); AddTextWindowTopLeftCorner(ctx->bgConfig,&win,10,2,0,0); cx=FontID_String_GetCenterAlignmentX(2,str,0,0x50); AddTextPrinterParameterizedWithColor(&win,2,str,cx,0,0xFF,MAKE_TEXT_COLOR(15,13,2),NULL); sub_02013688(&win,1,heap); sub_02021AC8(1,1,1,&ctx->unk384[idx]); s16 hx=(l+r)/2 of hitboxes[idx+26] (r7), hy spilled; TextOBJTemplate t (sp+0x2c, declared BEFORE Window win sp+0x1c): fontSystem, &win, GetSpriteList(mgr), FindPlttResourceProxy(mgr,1003), sprite=NULL, offset=unk384[idx].offset, x=(s16)(hx-0x28), y=(s16)(hy-7), 0,0, vram=1, heap; textObjs[idx]=sub_020135D8(&t); sub_020138E0(textObjs[idx],a4); String_Delete; DestroyMsgData; RemoveWindow(&win). Pool 0xF0D02, 0x306."
+  },
+  {
+   "name": "sub_020871C4",
+   "mode": "thumb",
+   "signature_guess": "void sub_020871C4(BgConfig *bgConfig, Window *window, int bgId, int x, int y, int width, int height, int baseTile, int msgId)",
+   "confidence": "medium",
+   "callees": [
+    "InitWindow",
+    "AddWindowParameterized",
+    "DrawFrameAndWindow2",
+    "FillWindowPixelBuffer",
+    "CopyWindowToVram",
+    "sub_02087230"
+   ],
+   "notes": "9 params (5 on stack). Callee narrows bgId,x,y,width,height to u8 and baseTile to u16 at the AddWindowParameterized call -> declare them int/u32, NOT u8/u16. AddWindowParameterized(bg,win,bgId,x,y,w,h,12,baseTile); DrawFrameAndWindow2(win,TRUE,1,11); FillWindowPixelBuffer(win,0xF); CopyWindowToVram(win); sub_02087230(win,msgId). Caller (unk_02085604 sub_02085820): (ctx->bgConfig,&ctx->window,4,2,0x15,0x1B,2,0x64,ctx->unk3E4)."
+  },
+  {
+   "name": "sub_02087230",
+   "mode": "thumb",
+   "signature_guess": "static void sub_02087230(Window *window, int msgId)",
+   "confidence": "high",
+   "callees": [
+    "FillWindowPixelBuffer",
+    "NewMsgDataFromNarc",
+    "NewString_ReadMsgData",
+    "AddTextPrinterParameterized",
+    "CopyWindowToVram",
+    "String_Delete",
+    "DestroyMsgData"
+   ],
+   "notes": "NOT in .inc -> static. Fill(win,0xF); msg=NewMsgDataFromNarc(0,NARC_msgdata_msg,38,HEAP_ID_108); str=Read(msg,msgId); Fill(win,0xF) again; AddTextPrinterParameterized(win,1,str,0,0,0,NULL); CopyWindowToVram; String_Delete; DestroyMsgData."
+  }
+ ],
+ "data": [
+  {
+   "label": "_021027C8",
+   "section": "rodata",
+   "bytes": 20,
+   "shape_guess": "static const OamCharTransferParam {0x60, 0x10000, 0x4000, GX_OBJVRAMMODE_CHAR_1D_64K (0x100010), GX_OBJVRAMMODE_CHAR_1D_32K (0x10)}"
+  },
+  {
+   "label": "_021027DC",
+   "section": "rodata",
+   "bytes": 24,
+   "shape_guess": "static const SpriteResourceCountsListUnion {0x60,0x20,0x40,0x40,0x10,0x10}"
+  },
+  {
+   "label": "_021027F4",
+   "section": "rodata",
+   "bytes": 32,
+   "shape_guess": "static const OamManagerParam {0,0x80,0,0x20,0,0x80,0,0x20}"
+  }
+ ],
+ "imports": {
+  "SpriteSystem_Alloc": {
+   "known_prototype": "SpriteSystem *SpriteSystem_Alloc(enum HeapID)",
+   "header": "include/sprite_system.h"
+  },
+  "SpriteSystem_Init": {
+   "known_prototype": "BOOL SpriteSystem_Init(SpriteSystem*, const OamManagerParam*, const OamCharTransferParam*, int)",
+   "header": "include/sprite_system.h"
+  },
+  "SpriteSystem_NewSprite": {
+   "known_prototype": "ManagedSprite *SpriteSystem_NewSprite(SpriteSystem*, SpriteManager*, const ManagedSpriteTemplate*)",
+   "header": "include/sprite_system.h"
+  },
+  "SpriteSystem_LoadPaletteBufferFromOpenNarc": {
+   "known_prototype": "u8 (PaletteData*, PaletteBufferId, SpriteSystem*, SpriteManager*, NARC*, int fileId, BOOL compressed, int pltt_num, int vram, int resId)",
+   "header": "include/sprite_system.h"
+  },
+  "ManagedSprite_*": {
+   "known_prototype": "all in sprite_system.h: SetPositionXY(s16,s16), GetPositionXY(s16*,s16*), SetAnim(int), GetActiveAnim->u16, IsAnimated->BOOL, SetDrawFlag(int), SetAffineOverwriteMode(u8), SetOamMode(GXOamMode), TickFrame",
+   "header": "include/sprite_system.h"
+  },
+  "GfGfxLoader_LoadCharDataFromOpenNarc": {
+   "known_prototype": "u32 (NARC*, s32 memberNo, BgConfig*, GFBgLayer, u32 tileStart, u32 szByte, BOOL isCompressed, enum HeapID)",
+   "header": "include/gf_gfx_loader.h"
+  },
+  "PaletteData_LoadNarc": {
+   "known_prototype": "void (PaletteData*, NarcId, s32 memberNo, enum HeapID, PaletteBufferId, u32 size, u16 pos)",
+   "header": "include/palette.h"
+  },
+  "LoadUserFrameGfx2": {
+   "known_prototype": "void (BgConfig*, GFBgLayer, u16 baseTile, u8 paletteNum, u8 frame, enum HeapID)",
+   "header": "include/render_window.h"
+  },
+  "DrawFrameAndWindow2": {
+   "known_prototype": "void (Window*, BOOL dont_copy_to_vram, u16 baseTile, u8 palette_num)",
+   "header": "include/render_window.h"
+  },
+  "sub_0200E640": {
+   "signature_guess": "u32 sub_0200E640(u32 frame)",
+   "evidence": "asm/render_window.s: add r0,#0x1a; bx lr (frame+26 = narc member). NO prototype anywhere in include/ — use a local extern in the .c; do not add to render_window.h (IPA cascade)"
+  },
+  "Options_GetFrame": {
+   "known_prototype": "u32 Options_GetFrame(Options*)",
+   "header": "include/options.h"
+  },
+  "FontSystem_NewInit": {
+   "known_prototype": "UnkStruct_02013534 *FontSystem_NewInit(int, enum HeapID)",
+   "header": "include/unk_02013534.h"
+  },
+  "sub_020135D8": {
+   "known_prototype": "TextOBJ *sub_020135D8(TextOBJTemplate*)",
+   "header": "include/unk_02013534.h"
+  },
+  "sub_020138E0": {
+   "known_prototype": "void sub_020138E0(TextOBJ*, int)",
+   "header": "include/unk_02013534.h"
+  },
+  "sub_020136B4": {
+   "known_prototype": "void sub_020136B4(TextOBJ*, int, int)",
+   "header": "include/unk_02013534.h"
+  },
+  "sub_02013688": {
+   "known_prototype": "int sub_02013688(Window*, NNS_G2D_VRAM_TYPE, int)",
+   "header": "include/unk_02013534.h"
+  },
+  "FontOAM_Delete": {
+   "known_prototype": "void FontOAM_Delete(TextOBJ*)",
+   "header": "include/unk_02013534.h"
+  },
+  "sub_020135AC": {
+   "known_prototype": "void sub_020135AC(UnkStruct_02013534*)",
+   "header": "include/unk_02013534.h"
+  },
+  "sub_02021AC8": {
+   "known_prototype": "BOOL sub_02021AC8(u32 size, BOOL atEnd, NNS_G2D_VRAM_TYPE, UnkStruct_02021AC8*)",
+   "header": "include/obj_char_transfer.h"
+  },
+  "sub_02021B5C": {
+   "known_prototype": "void sub_02021B5C(UnkStruct_02021AC8*)",
+   "header": "include/obj_char_transfer.h"
+  },
+  "FontID_Alloc": {
+   "known_prototype": "void FontID_Alloc(FontID, enum HeapID); FontID_Release(FontID); u32 FontID_String_GetCenterAlignmentX(FontID, String*, u32, u32)",
+   "header": "include/font.h"
+  },
+  "NewMsgDataFromNarc": {
+   "known_prototype": "MsgData *NewMsgDataFromNarc(MsgDataLoadType, NarcId, s32, enum HeapID); NewString_ReadMsgData(MsgData*, s32); DestroyMsgData",
+   "header": "include/msgdata.h"
+  },
+  "AddTextPrinterParameterizedWithColor": {
+   "known_prototype": "u8 (Window*, FontID, String*, u32 x, u32 y, u32 speed, u32 color, PrinterCallback_t)",
+   "header": "include/text.h"
+  },
+  "AddWindowParameterized": {
+   "known_prototype": "void (BgConfig*, Window*, u8 bgId, u8 x, u8 y, u8 w, u8 h, u8 paletteNum, u16 baseTile); AddTextWindowTopLeftCorner(BgConfig*, Window*, u8 w, u8 h, u16 baseTile, u8 pal); InitWindow/RemoveWindow/CopyWindowToVram/FillWindowPixelBuffer(Window*,u8)",
+   "header": "include/bg_window.h"
+  },
+  "GF_AssertFail": {
+   "known_prototype": "GF_ASSERT macro",
+   "header": "include/assert.h"
+  },
+  "_u32_div_f": {
+   "signature_guess": "compiler runtime: u32 % and / on a u32 variable",
+   "evidence": "must be unsigned dividend (u32 number) or BL target becomes _s32_div_f (objdiff-invisible, breaks SHA1)"
+  }
+ },
+ "shared_struct_hypotheses": [
+  {
+   "name": "UnkStruct_020863F4_Entry",
+   "size_guess": "0x1c (stride of all sprite loops)",
+   "fields": [
+    {
+     "offset": "0x0",
+     "width": 4,
+     "meaning": "int unk0: digit value+1 / anim index / state (unk268 uses as state 0,1,other)"
+    },
+    {
+     "offset": "0x4",
+     "width": 4,
+     "meaning": "int unk4 (neighbor only)"
+    },
+    {
+     "offset": "0x8",
+     "width": 4,
+     "meaning": "int/BOOL highlighted (set 0/1 by sub_02086DA4; 2nd arg of sub_02086D98)"
+    },
+    {
+     "offset": "0xC",
+     "width": 4,
+     "meaning": "ManagedSprite *sprite"
+    },
+    {
+     "offset": "0x10",
+     "width": 4,
+     "meaning": "TouchscreenHitbox *hitbox (u8 top,bottom,left,right written by sub_02086F44)"
+    },
+    {
+     "offset": "0x14",
+     "width": 2,
+     "meaning": "s16 dx"
+    },
+    {
+     "offset": "0x16",
+     "width": 2,
+     "meaning": "s16 dy"
+    },
+    {
+     "offset": "0x18",
+     "width": 1,
+     "meaning": "u8 counter (move steps / anim tick)"
+    },
+    {
+     "offset": "0x19",
+     "width": 1,
+     "meaning": "u8 scaleIdx"
+    }
+   ]
+  },
+  {
+   "name": "UnkStruct_020850F4",
+   "size_guess": "0x3F4 (OverlayManager_CreateAndGetData(ovy,0x3F4,HEAP_ID_108) in unk_020850F4.s)",
+   "fields": [
+    {
+     "offset": "0x0",
+     "width": 448,
+     "meaning": "Entry digits[16]"
+    },
+    {
+     "offset": "0x1C0",
+     "width": 84,
+     "meaning": "Entry unk1C0[3] (separator sprites, anim 0x16; count at 0x3EC)"
+    },
+    {
+     "offset": "0x214",
+     "width": 84,
+     "meaning": "Entry unk214[3] (cursor/selection sprites, res 1001)"
+    },
+    {
+     "offset": "0x268",
+     "width": 56,
+     "meaning": "Entry unk268[2] (button sprites, res 1002, paired with textObjs[])"
+    },
+    {
+     "offset": "0x2A0",
+     "width": 48,
+     "meaning": "s16 unk2A0[24] base x table indexed by unk2D4"
+    },
+    {
+     "offset": "0x2D0",
+     "width": 4,
+     "meaning": "int numDigitSlots (loop bound over digits[])"
+    },
+    {
+     "offset": "0x2D4",
+     "width": 4,
+     "meaning": "int index into unk2A0"
+    },
+    {
+     "offset": "0x2DC",
+     "width": 4,
+     "meaning": "int rangeLo"
+    },
+    {
+     "offset": "0x2E0",
+     "width": 4,
+     "meaning": "int rangeHi (exclusive)"
+    },
+    {
+     "offset": "0x2E4",
+     "width": 8,
+     "meaning": "int rangeLo2/rangeHi2 (neighbor)"
+    },
+    {
+     "offset": "0x2EC",
+     "width": 4,
+     "meaning": "NARC *narc"
+    },
+    {
+     "offset": "0x2F0",
+     "width": 4,
+     "meaning": "SpriteSystem *spriteSystem"
+    },
+    {
+     "offset": "0x2F4",
+     "width": 4,
+     "meaning": "SpriteManager *spriteManager"
+    },
+    {
+     "offset": "0x2F8",
+     "width": 4,
+     "meaning": "BgConfig *bgConfig"
+    },
+    {
+     "offset": "0x2FC",
+     "width": 4,
+     "meaning": "PaletteData *pltt"
+    },
+    {
+     "offset": "0x304",
+     "width": 112,
+     "meaning": "TouchscreenHitbox hitboxes[28] (idx 16.. via +16, 26/27 for buttons)"
+    },
+    {
+     "offset": "0x374",
+     "width": 4,
+     "meaning": "int unk374 (==1 test in BB4)"
+    },
+    {
+     "offset": "0x378",
+     "width": 4,
+     "meaning": "UnkStruct_02013534 *fontSystem"
+    },
+    {
+     "offset": "0x37C",
+     "width": 8,
+     "meaning": "TextOBJ *textObjs[2]"
+    },
+    {
+     "offset": "0x384",
+     "width": 24,
+     "meaning": "UnkStruct_02021AC8 unk384[2]"
+    },
+    {
+     "offset": "0x39C",
+     "width": 16,
+     "meaning": "Window window"
+    },
+    {
+     "offset": "0x3D8",
+     "width": 4,
+     "meaning": "Options *options"
+    },
+    {
+     "offset": "0x3E0",
+     "width": 4,
+     "meaning": "u32 number (digits extracted)"
+    },
+    {
+     "offset": "0x3E4",
+     "width": 4,
+     "meaning": "int msgId for title window"
+    },
+    {
+     "offset": "0x3E8",
+     "width": 4,
+     "meaning": "int flag (neighbor)"
+    },
+    {
+     "offset": "0x3EC",
+     "width": 4,
+     "meaning": "int numUnk1C0"
+    },
+    {
+     "offset": "0x3F0",
+     "width": 4,
+     "meaning": "int numDigits (current number length; cursor idx)"
+    }
+   ]
+  }
+ ],
+ "risks": [
+  "rodata: 3 separate file-scope const structs of different types — MWCC -ipa reorders separate const objects (insights mwcc-rodata-const-struct-first-pinned-rest-reversed / static-const-tables-must-be-one-array-not-separate-objects); need emitted order _021027C8,_021027DC,_021027F4; try define order C8, F4, DC and verify with nm -n; only chiri pkg -- compare is authoritative",
+  "struct copies must be whole-struct assignments (ldmia/stmia pairs, 20-byte one = 2 pairs + ldr/str); local decl order first-declared=highest sp (oam, xfer, counts)",
+  "s16 x/y local order flips between functions: AE4/DE4 x higher than y, F44 y higher than x",
+  "sub_0200E640 undeclared in include/ — local extern only (IPA header discipline)",
+  "u32 division: number field must be u32 or _u32_div_f becomes _s32_div_f (objdiff blind)",
+  "constant 1000 materialized as offset-reg+0xF8 in 758/8A0/9BC — depends on live 0x2F0 temp; load spriteSystem/spriteManager into locals right before template init",
+  "sub_020869BC double store of template.pal=0 needs explicit redundant assignment",
+  "sub_02087090 has two dead params (r2,r3) but a live 5th stack param; keep 5-arg signature",
+  "hitbox index arithmetic: use ctx->hitboxes[idx+16] / [idx+26] (add-then-shift), not a separate sub-array base",
+  "struct is shared with still-asm neighbors unk_020850F4.s/unk_02085604.s — put Entry+ctx in a new header; neighbors will include it later"
+ ],
+ "notes": "Numeric input / digit-display touchscreen app (digits, separators, cursor sprites, two text buttons from msg bank 0038 strings idx+2, title window via sub_020871C4). Static module, .text ~0xE9C bytes, all thumb, no .data/.bss. gOverlayTemplate_Battle/gNatureStatMods in .public are unused leftovers. 5 functions absent from .inc (C80, FE8, 7028, 7090, 7230) are static; all others are called from unk_02085604.s/unk_020850F4.s with the ctx pointer in r0. Heap 0x6C=HEAP_ID_108; NARC 0xBE=NARC_a_1_9_0, 0x10=NARC_graphic_font, 0x1B=NARC_msgdata_msg, msg file 38=NARC_msg_msg_0038_bin."
+}

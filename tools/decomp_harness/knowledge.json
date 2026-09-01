@@ -24267,6 +24267,789 @@
    ],
    "sweep_output": "sweep/out/unk_02078DD8.json"
   },
+  "asm/unk_020863F4.s": {
+   "notes": "Numeric input / digit-display touchscreen app (digits, separators, cursor sprites, two text buttons from msg bank 0038 strings idx+2, title window via sub_020871C4). Static module, .text ~0xE9C bytes, all thumb, no .data/.bss. gOverlayTemplate_Battle/gNatureStatMods in .public are unused leftovers. 5 functions absent from .inc (C80, FE8, 7028, 7090, 7230) are static; all others are called from unk_02085604.s/unk_020850F4.s with the ctx pointer in r0. Heap 0x6C=HEAP_ID_108; NARC 0xBE=NARC_a_1_9_0, 0x10=NARC_graphic_font, 0x1B=NARC_msgdata_msg, msg file 38=NARC_msg_msg_0038_bin.",
+   "oracle": {
+    "functions": {
+     "sub_02086490": {
+      "widths": [
+       {
+        "confidence": "high",
+        "evidence": "L315: lsl r0, r4, #0x18 ; L316: lsr r0, r0, #0x18",
+        "kind": "truncation-pair",
+        "register": "r0",
+        "verdict": "u8"
+       }
+      ]
+     },
+     "sub_020866CC": {
+      "signedness": [
+       {
+        "branch": "ble",
+        "confidence": "high",
+        "evidence": "L364: cmp r0, #0  =>  L365: ble _020866F2",
+        "register": "r0",
+        "verdict": "signed"
+       },
+       {
+        "branch": "blt",
+        "confidence": "high",
+        "evidence": "L375: cmp r4, r0  =>  L376: blt _020866E2",
+        "register": "r4",
+        "verdict": "signed"
+       },
+       {
+        "branch": "ble",
+        "confidence": "high",
+        "evidence": "L382: cmp r0, #0  =>  L383: ble _02086718",
+        "register": "r0",
+        "verdict": "signed"
+       },
+       {
+        "branch": "blt",
+        "confidence": "high",
+        "evidence": "L395: cmp r5, r0  =>  L396: blt _02086704",
+        "register": "r5",
+        "verdict": "signed"
+       },
+       {
+        "branch": "blt",
+        "confidence": "high",
+        "evidence": "L407: cmp r5, #2  =>  L408: blt _02086720",
+        "register": "r5",
+        "verdict": "signed"
+       },
+       {
+        "branch": "blt",
+        "confidence": "high",
+        "evidence": "L418: cmp r5, #3  =>  L419: blt _02086736",
+        "register": "r5",
+        "verdict": "signed"
+       }
+      ]
+     },
+     "sub_02086758": {
+      "exact_types": [
+       {
+        "confidence": "high",
+        "evidence": "L487: bl _u32_div_f",
+        "helper": "_u32_div_f",
+        "verdict": "unsigned 32-bit int / or %  (both operands unsigned int)"
+       },
+       {
+        "confidence": "high",
+        "evidence": "L492: bl _u32_div_f",
+        "helper": "_u32_div_f",
+        "verdict": "unsigned 32-bit int / or %  (both operands unsigned int)"
+       }
+      ],
+      "signedness": [
+       {
+        "branch": "ble",
+        "confidence": "high",
+        "evidence": "L508: cmp r1, #0  =>  L509: ble _0208689C",
+        "register": "r1",
+        "verdict": "signed"
+       },
+       {
+        "branch": "blt",
+        "confidence": "high",
+        "evidence": "L585: cmp r6, r1  =>  L586: blt _020867FA",
+        "register": "r6",
+        "verdict": "signed"
+       }
+      ],
+      "widths": [
+       {
+        "confidence": "high",
+        "evidence": "L532: lsl r1, r7, #0x10 ; L534: asr r1, r1, #0x10",
+        "kind": "truncation-pair",
+        "register": "r1",
+        "verdict": "s16"
+       },
+       {
+        "confidence": "high",
+        "evidence": "L556: lsl r1, r7, #0x10 ; L558: asr r1, r1, #0x10",
+        "kind": "truncation-pair",
+        "register": "r1",
+        "verdict": "s16"
+       },
+       {
+        "base": "r2",
+        "confidence": "high",
+        "evidence": "L448: strh r1, [r2]",
+        "kind": "store-width",
+        "offset": "#0",
+        "verdict": "u16"
+       },
+       {
+        "base": "r2",
+        "confidence": "high",
+        "evidence": "L449: strh r1, [r2, #2]",
+        "kind": "store-width",
+        "offset": "#2",
+        "verdict": "u16"
+       },
+       {
+        "base": "r2",
+        "confidence": "high",
+        "evidence": "L450: strh r1, [r2, #4]",
+        "kind": "store-width",
+        "offset": "#4",
+        "verdict": "u16"
+       },
+       {
+        "base": "r2",
+        "confidence": "high",
+        "evidence": "L451: strh r1, [r2, #6]",
+        "kind": "store-width",
+        "offset": "#6",
+        "verdict": "u16"
+       }
+      ]
+     },
+     "sub_020868A0": {
+      "widths": [
+       {
+        "base": "r0",
+        "confidence": "high",
+        "evidence": "L604: strh r2, [r0]",
+        "kind": "store-width",
+        "offset": "#0",
+        "verdict": "u16"
+       },
+       {
+        "base": "r0",
+        "confidence": "high",
+        "evidence": "L605: strh r2, [r0, #2]",
+        "kind": "store-width",
+        "offset": "#2",
+        "verdict": "u16"
+       },
+       {
+        "base": "r0",
+        "confidence": "high",
+        "evidence": "L606: strh r2, [r0, #4]",
+        "kind": "store-width",
+        "offset": "#4",
+        "verdict": "u16"
+       },
+       {
+        "base": "r0",
+        "confidence": "high",
+        "evidence": "L607: strh r2, [r0, #6]",
+        "kind": "store-width",
+        "offset": "#6",
+        "verdict": "u16"
+       },
+       {
+        "base": "r5",
+        "confidence": "high",
+        "evidence": "L660: strh r1, [r5, r2]",
+        "kind": "store-width",
+        "offset": "(r2)",
+        "verdict": "u16"
+       },
+       {
+        "base": "r5",
+        "confidence": "high",
+        "evidence": "L662: strh r1, [r5, r0]",
+        "kind": "store-width",
+        "offset": "(r0)",
+        "verdict": "u16"
+       }
+      ]
+     },
+     "sub_020869BC": {
+      "widths": [
+       {
+        "base": "r1",
+        "confidence": "high",
+        "evidence": "L734: strh r0, [r1]",
+        "kind": "store-width",
+        "offset": "#0",
+        "verdict": "u16"
+       },
+       {
+        "base": "r1",
+        "confidence": "high",
+        "evidence": "L735: strh r0, [r1, #2]",
+        "kind": "store-width",
+        "offset": "#2",
+        "verdict": "u16"
+       },
+       {
+        "base": "r1",
+        "confidence": "high",
+        "evidence": "L736: strh r0, [r1, #4]",
+        "kind": "store-width",
+        "offset": "#4",
+        "verdict": "u16"
+       },
+       {
+        "base": "r1",
+        "confidence": "high",
+        "evidence": "L737: strh r0, [r1, #6]",
+        "kind": "store-width",
+        "offset": "#6",
+        "verdict": "u16"
+       },
+       {
+        "base": "r5",
+        "confidence": "high",
+        "evidence": "L772: ldrb r3, [r5, r1]",
+        "kind": "load-width",
+        "offset": "(r1)",
+        "verdict": "u8"
+       },
+       {
+        "base": "r5",
+        "confidence": "high",
+        "evidence": "L785: ldrb r3, [r5, r3]",
+        "kind": "load-width",
+        "offset": "(r3)",
+        "verdict": "u8"
+       },
+       {
+        "base": "r5",
+        "confidence": "high",
+        "evidence": "L786: ldrb r2, [r5, r2]",
+        "kind": "load-width",
+        "offset": "(r2)",
+        "verdict": "u8"
+       }
+      ]
+     },
+     "sub_02086AE4": {
+      "signedness": [
+       {
+        "branch": "blt",
+        "confidence": "high",
+        "evidence": "L877: cmp r1, r0  =>  L878: blt _02086B26",
+        "register": "r1",
+        "verdict": "signed"
+       }
+      ],
+      "widths": [
+       {
+        "confidence": "high",
+        "evidence": "L898: lsl r2, r2, #0x10 ; L900: asr r2, r2, #0x10",
+        "kind": "truncation-pair",
+        "register": "r2",
+        "verdict": "s16"
+       },
+       {
+        "base": "r3",
+        "confidence": "high",
+        "evidence": "L894: ldrsh r2, [r3, r2]",
+        "kind": "load-width",
+        "offset": "(r2)",
+        "verdict": "s16"
+       },
+       {
+        "base": "r3",
+        "confidence": "high",
+        "evidence": "L896: ldrsh r1, [r3, r1]",
+        "kind": "load-width",
+        "offset": "(r1)",
+        "verdict": "s16"
+       }
+      ]
+     },
+     "sub_02086B2C": {
+      "widths": [
+       {
+        "base": "r3",
+        "confidence": "high",
+        "evidence": "L920: ldrb r4, [r3, r1]",
+        "kind": "load-width",
+        "offset": "(r1)",
+        "verdict": "u8"
+       },
+       {
+        "base": "r3",
+        "confidence": "high",
+        "evidence": "L931: ldrb r4, [r3, r4]",
+        "kind": "load-width",
+        "offset": "(r4)",
+        "verdict": "u8"
+       },
+       {
+        "base": "r3",
+        "confidence": "high",
+        "evidence": "L932: ldrb r2, [r3, r2]",
+        "kind": "load-width",
+        "offset": "(r2)",
+        "verdict": "u8"
+       }
+      ]
+     },
+     "sub_02086B6C": {
+      "widths": [
+       {
+        "base": "r3",
+        "confidence": "high",
+        "evidence": "L957: ldrb r4, [r3, r1]",
+        "kind": "load-width",
+        "offset": "(r1)",
+        "verdict": "u8"
+       },
+       {
+        "base": "r3",
+        "confidence": "high",
+        "evidence": "L969: ldrb r4, [r3, r4]",
+        "kind": "load-width",
+        "offset": "(r4)",
+        "verdict": "u8"
+       },
+       {
+        "base": "r3",
+        "confidence": "high",
+        "evidence": "L970: ldrb r2, [r3, r2]",
+        "kind": "load-width",
+        "offset": "(r2)",
+        "verdict": "u8"
+       }
+      ]
+     },
+     "sub_02086BB4": {
+      "signedness": [
+       {
+        "branch": "blt",
+        "confidence": "high",
+        "evidence": "L1077: cmp r6, #3  =>  L1078: blt _02086BE0",
+        "register": "r6",
+        "verdict": "signed"
+       }
+      ]
+     },
+     "sub_02086C8C": {
+      "signedness": [
+       {
+        "branch": "blt",
+        "confidence": "high",
+        "evidence": "L1221: cmp r0, #2  =>  L1222: blt _02086C96",
+        "register": "r0",
+        "verdict": "signed"
+       }
+      ],
+      "widths": [
+       {
+        "confidence": "high",
+        "evidence": "L1110: lsl r0, r0, #0x10 ; L1111: asr r7, r0, #0x10",
+        "kind": "truncation-pair",
+        "register": "r0",
+        "verdict": "s16"
+       },
+       {
+        "confidence": "high",
+        "evidence": "L1123: lsl r0, r0, #0x10 ; L1124: asr r6, r0, #0x10",
+        "kind": "truncation-pair",
+        "register": "r0",
+        "verdict": "s16"
+       },
+       {
+        "base": "r5",
+        "confidence": "high",
+        "evidence": "L1101: ldrb r1, [r5, r0]",
+        "kind": "load-width",
+        "offset": "(r0)",
+        "verdict": "u8"
+       },
+       {
+        "base": "r4",
+        "confidence": "high",
+        "evidence": "L1137: strb r1, [r4, r0]",
+        "kind": "store-width",
+        "offset": "(r0)",
+        "verdict": "u8"
+       },
+       {
+        "base": "r4",
+        "confidence": "high",
+        "evidence": "L1142: ldrb r0, [r4, r0]",
+        "kind": "load-width",
+        "offset": "(r0)",
+        "verdict": "u8"
+       }
+      ]
+     },
+     "sub_02086DA4": {
+      "signedness": [
+       {
+        "branch": "ble",
+        "confidence": "high",
+        "evidence": "L1246: cmp r1, #0  =>  L1247: ble _02086DDE",
+        "register": "r1",
+        "verdict": "signed"
+       },
+       {
+        "branch": "blt",
+        "confidence": "high",
+        "evidence": "L1256: cmp r3, r5  =>  L1257: blt _02086DCE",
+        "register": "r3",
+        "verdict": "signed"
+       },
+       {
+        "branch": "bge",
+        "confidence": "high",
+        "evidence": "L1259: cmp r3, r5  =>  L1260: bge _02086DCE",
+        "register": "r3",
+        "verdict": "signed"
+       },
+       {
+        "branch": "blt",
+        "confidence": "high",
+        "evidence": "L1271: cmp r3, r5  =>  L1272: blt _02086DBE",
+        "register": "r3",
+        "verdict": "signed"
+       }
+      ]
+     },
+     "sub_02086DE4": {
+      "signedness": [
+       {
+        "branch": "bgt",
+        "confidence": "high",
+        "evidence": "L1299: cmp r0, #0  =>  L1300: bgt _02086E0E",
+        "register": "r0",
+        "verdict": "signed"
+       },
+       {
+        "branch": "blt",
+        "confidence": "high",
+        "evidence": "L1310: cmp r4, r0  =>  L1311: blt _02086E3E",
+        "register": "r4",
+        "verdict": "signed"
+       },
+       {
+        "branch": "bge",
+        "confidence": "high",
+        "evidence": "L1316: cmp r4, r1  =>  L1317: bge _02086E3E",
+        "register": "r4",
+        "verdict": "signed"
+       },
+       {
+        "branch": "ble",
+        "confidence": "high",
+        "evidence": "L1406: cmp r4, r1  =>  L1407: ble _02086EE2",
+        "register": "r4",
+        "verdict": "signed"
+       },
+       {
+        "branch": "bge",
+        "confidence": "high",
+        "evidence": "L1408: cmp r4, r0  =>  L1409: bge _02086EE2",
+        "register": "r4",
+        "verdict": "signed"
+       },
+       {
+        "branch": "bge",
+        "confidence": "high",
+        "evidence": "L1461: cmp r4, r0  =>  L1462: bge _02086F3E",
+        "register": "r4",
+        "verdict": "signed"
+       }
+      ],
+      "widths": [
+       {
+        "confidence": "high",
+        "evidence": "L1321: lsl r0, r5, #0x10 ; L1322: asr r5, r0, #0x10",
+        "kind": "truncation-pair",
+        "register": "r0",
+        "verdict": "s16"
+       },
+       {
+        "confidence": "high",
+        "evidence": "L1326: lsl r0, r5, #0x10 ; L1327: asr r5, r0, #0x10",
+        "kind": "truncation-pair",
+        "register": "r0",
+        "verdict": "s16"
+       },
+       {
+        "confidence": "high",
+        "evidence": "L1333: lsl r0, r5, #0x10 ; L1334: asr r5, r0, #0x10",
+        "kind": "truncation-pair",
+        "register": "r0",
+        "verdict": "s16"
+       },
+       {
+        "confidence": "high",
+        "evidence": "L1338: lsl r0, r5, #0x10 ; L1339: asr r5, r0, #0x10",
+        "kind": "truncation-pair",
+        "register": "r0",
+        "verdict": "s16"
+       },
+       {
+        "confidence": "high",
+        "evidence": "L1402: lsl r0, r5, #0x10 ; L1403: asr r5, r0, #0x10",
+        "kind": "truncation-pair",
+        "register": "r0",
+        "verdict": "s16"
+       },
+       {
+        "confidence": "high",
+        "evidence": "L1411: lsl r0, r5, #0x10 ; L1412: asr r5, r0, #0x10",
+        "kind": "truncation-pair",
+        "register": "r0",
+        "verdict": "s16"
+       },
+       {
+        "confidence": "high",
+        "evidence": "L1416: lsl r0, r5, #0x10 ; L1417: asr r5, r0, #0x10",
+        "kind": "truncation-pair",
+        "register": "r0",
+        "verdict": "s16"
+       },
+       {
+        "base": "r2",
+        "confidence": "high",
+        "evidence": "L1295: ldrsh r5, [r2, r0]",
+        "kind": "load-width",
+        "offset": "(r0)",
+        "verdict": "s16"
+       },
+       {
+        "base": "r3",
+        "confidence": "high",
+        "evidence": "L1351: ldrsh r2, [r3, r2]",
+        "kind": "load-width",
+        "offset": "(r2)",
+        "verdict": "s16"
+       },
+       {
+        "base": "r1",
+        "confidence": "high",
+        "evidence": "L1359: ldrsh r0, [r1, r0]",
+        "kind": "load-width",
+        "offset": "(r0)",
+        "verdict": "s16"
+       },
+       {
+        "base": "r7",
+        "confidence": "high",
+        "evidence": "L1364: strh r0, [r7, #0x14]",
+        "kind": "store-width",
+        "offset": "#0x14",
+        "verdict": "u16"
+       },
+       {
+        "base": "r7",
+        "confidence": "high",
+        "evidence": "L1366: strh r0, [r7, #0x16]",
+        "kind": "store-width",
+        "offset": "#0x16",
+        "verdict": "u16"
+       },
+       {
+        "base": "r7",
+        "confidence": "high",
+        "evidence": "L1368: strb r0, [r7, #0x18]",
+        "kind": "store-width",
+        "offset": "#0x18",
+        "verdict": "u8"
+       },
+       {
+        "base": "r7",
+        "confidence": "high",
+        "evidence": "L1370: strb r0, [r7, #0x19]",
+        "kind": "store-width",
+        "offset": "#0x19",
+        "verdict": "u8"
+       },
+       {
+        "base": "r6",
+        "confidence": "high",
+        "evidence": "L1441: strh r1, [r6, r0]",
+        "kind": "store-width",
+        "offset": "(r0)",
+        "verdict": "u16"
+       },
+       {
+        "base": "r6",
+        "confidence": "high",
+        "evidence": "L1448: strb r1, [r6, r0]",
+        "kind": "store-width",
+        "offset": "(r0)",
+        "verdict": "u8"
+       }
+      ]
+     },
+     "sub_02086F44": {
+      "signedness": [
+       {
+        "branch": "ble",
+        "confidence": "high",
+        "evidence": "L1479: cmp r0, #0  =>  L1480: ble _02086FC8",
+        "register": "r0",
+        "verdict": "signed"
+       },
+       {
+        "branch": "blt",
+        "confidence": "high",
+        "evidence": "L1486: cmp r4, r0  =>  L1487: blt _02086F74",
+        "register": "r4",
+        "verdict": "signed"
+       },
+       {
+        "branch": "bge",
+        "confidence": "high",
+        "evidence": "L1491: cmp r4, r0  =>  L1492: bge _02086F74",
+        "register": "r4",
+        "verdict": "signed"
+       },
+       {
+        "branch": "blt",
+        "confidence": "high",
+        "evidence": "L1538: cmp r4, r0  =>  L1539: blt _02086F58",
+        "register": "r4",
+        "verdict": "signed"
+       }
+      ],
+      "widths": [
+       {
+        "base": "r1",
+        "confidence": "high",
+        "evidence": "L1509: ldrsh r0, [r1, r0]",
+        "kind": "load-width",
+        "offset": "(r0)",
+        "verdict": "s16"
+       },
+       {
+        "base": "r0",
+        "confidence": "high",
+        "evidence": "L1513: strb r1, [r0]",
+        "kind": "store-width",
+        "offset": "#0",
+        "verdict": "u8"
+       },
+       {
+        "base": "r0",
+        "confidence": "high",
+        "evidence": "L1520: strb r1, [r0, #2]",
+        "kind": "store-width",
+        "offset": "#2",
+        "verdict": "u8"
+       },
+       {
+        "base": "r0",
+        "confidence": "high",
+        "evidence": "L1526: strb r1, [r0, #1]",
+        "kind": "store-width",
+        "offset": "#1",
+        "verdict": "u8"
+       },
+       {
+        "base": "r0",
+        "confidence": "high",
+        "evidence": "L1534: strb r1, [r0, #3]",
+        "kind": "store-width",
+        "offset": "#3",
+        "verdict": "u8"
+       }
+      ]
+     },
+     "sub_02087090": {
+      "widths": [
+       {
+        "confidence": "high",
+        "evidence": "L1753: lsl r2, r7, #0x10 ; L1754: asr r2, r2, #0x10",
+        "kind": "truncation-pair",
+        "register": "r2",
+        "verdict": "s16"
+       },
+       {
+        "confidence": "high",
+        "evidence": "L1759: lsl r2, r2, #0x10 ; L1760: asr r2, r2, #0x10",
+        "kind": "truncation-pair",
+        "register": "r2",
+        "verdict": "s16"
+       },
+       {
+        "base": "r3",
+        "confidence": "high",
+        "evidence": "L1710: ldrb r1, [r3, r0]",
+        "kind": "load-width",
+        "offset": "(r0)",
+        "verdict": "u8"
+       },
+       {
+        "base": "r3",
+        "confidence": "high",
+        "evidence": "L1711: ldrb r2, [r3, r2]",
+        "kind": "load-width",
+        "offset": "(r2)",
+        "verdict": "u8"
+       },
+       {
+        "base": "r3",
+        "confidence": "high",
+        "evidence": "L1718: ldrb r2, [r3, r1]",
+        "kind": "load-width",
+        "offset": "(r1)",
+        "verdict": "u8"
+       }
+      ]
+     },
+     "sub_020871C4": {
+      "widths": [
+       {
+        "confidence": "high",
+        "evidence": "L1799: lsl r0, r0, #0x18 ; L1800: lsr r0, r0, #0x18",
+        "kind": "truncation-pair",
+        "register": "r0",
+        "verdict": "u8"
+       },
+       {
+        "confidence": "high",
+        "evidence": "L1804: lsl r0, r0, #0x18 ; L1805: lsr r0, r0, #0x18",
+        "kind": "truncation-pair",
+        "register": "r0",
+        "verdict": "u8"
+       },
+       {
+        "confidence": "high",
+        "evidence": "L1809: lsl r0, r0, #0x18 ; L1810: lsr r0, r0, #0x18",
+        "kind": "truncation-pair",
+        "register": "r0",
+        "verdict": "u8"
+       },
+       {
+        "confidence": "high",
+        "evidence": "L1816: lsl r0, r0, #0x10 ; L1817: lsr r0, r0, #0x10",
+        "kind": "truncation-pair",
+        "register": "r0",
+        "verdict": "u16"
+       }
+      ]
+     }
+    },
+    "generated": "2026-09-01T22:30:26Z",
+    "summary": {
+     "copyprop_cmp": 0,
+     "dead_store": 0,
+     "exact_types": 2,
+     "functions": 15,
+     "signed": 25,
+     "unsigned": 0,
+     "widths": 64
+    },
+    "tool": "asm_oracle.py"
+   },
+   "risks": [
+    "rodata: 3 separate file-scope const structs of different types \u2014 MWCC -ipa reorders separate const objects (insights mwcc-rodata-const-struct-first-pinned-rest-reversed / static-const-tables-must-be-one-array-not-separate-objects); need emitted order _021027C8,_021027DC,_021027F4; try define order C8, F4, DC and verify with nm -n; only chiri pkg -- compare is authoritative",
+    "struct copies must be whole-struct assignments (ldmia/stmia pairs, 20-byte one = 2 pairs + ldr/str); local decl order first-declared=highest sp (oam, xfer, counts)",
+    "s16 x/y local order flips between functions: AE4/DE4 x higher than y, F44 y higher than x",
+    "sub_0200E640 undeclared in include/ \u2014 local extern only (IPA header discipline)",
+    "u32 division: number field must be u32 or _u32_div_f becomes _s32_div_f (objdiff blind)",
+    "constant 1000 materialized as offset-reg+0xF8 in 758/8A0/9BC \u2014 depends on live 0x2F0 temp; load spriteSystem/spriteManager into locals right before template init",
+    "sub_020869BC double store of template.pal=0 needs explicit redundant assignment",
+    "sub_02087090 has two dead params (r2,r3) but a live 5th stack param; keep 5-arg signature",
+    "hitbox index arithmetic: use ctx->hitboxes[idx+16] / [idx+26] (add-then-shift), not a separate sub-array base",
+    "struct is shared with still-asm neighbors unk_020850F4.s/unk_02085604.s \u2014 put Entry+ctx in a new header; neighbors will include it later"
+   ],
+   "sweep_output": "sweep/out/unk_020863F4.json"
+  },
   "asm/unk_020915B0.s": {
    "notes": "Small, self-contained main-menu 'Nintendo WFC Setup' launcher: loads DWC overlay (OVY_0) + OVY_13, runs ov13_0221BA00 with heap 0x30 (0x41000 bytes under parent heap 3), then resets the system. LoadOVY38/UnloadOVY38 are exports used only by still-asm callers (overlay_45/72/75, unk_02037C94, unk_020192D0). No .data/.bss, no save_arrays.c DECL_CHUNK_EX involvement, no jump tables. Function order in C must be: LoadDwcOverlay, UnloadDwcOverlay, LoadOVY13, UnloadOVY13, sub_020915F0, LoadOVY38, UnloadOVY38, sub_02091634, then the rodata template. Key headers: include/unk_020915B0.h, include/overlay_manager.h, include/poke_overlay.h; consumer src/application/main_menu/main_menu.c.",
    "risks": [
@@ -24316,13 +25099,14 @@
    "sweep_output": "sweep/out/unk_02097B78.json"
   }
  },
- "generated": "2026-09-01T20:54:09Z",
+ "generated": "2026-09-01T22:30:25Z",
  "signature_conflicts": [
   "DestroySysTaskAndEnvironment",
   "GridInputHandler_GetNextInput",
   "Heap_AllocAtEnd",
   "String_Delete",
   "String_New",
+  "_u32_div_f",
   "gSystem",
   "ov14_021E6070",
   "ov14_021E6094",
@@ -28683,6 +29467,278 @@
     "asm/unk_02078DD8.s"
    ]
   },
+  "UnkStruct_020850F4": {
+   "fields": {
+    "0x0": [
+     {
+      "meaning": "Entry digits[16]",
+      "source": "asm/unk_020863F4.s",
+      "width": 448
+     }
+    ],
+    "0x1C0": [
+     {
+      "meaning": "Entry unk1C0[3] (separator sprites, anim 0x16; count at 0x3EC)",
+      "source": "asm/unk_020863F4.s",
+      "width": 84
+     }
+    ],
+    "0x214": [
+     {
+      "meaning": "Entry unk214[3] (cursor/selection sprites, res 1001)",
+      "source": "asm/unk_020863F4.s",
+      "width": 84
+     }
+    ],
+    "0x268": [
+     {
+      "meaning": "Entry unk268[2] (button sprites, res 1002, paired with textObjs[])",
+      "source": "asm/unk_020863F4.s",
+      "width": 56
+     }
+    ],
+    "0x2A0": [
+     {
+      "meaning": "s16 unk2A0[24] base x table indexed by unk2D4",
+      "source": "asm/unk_020863F4.s",
+      "width": 48
+     }
+    ],
+    "0x2D0": [
+     {
+      "meaning": "int numDigitSlots (loop bound over digits[])",
+      "source": "asm/unk_020863F4.s",
+      "width": 4
+     }
+    ],
+    "0x2D4": [
+     {
+      "meaning": "int index into unk2A0",
+      "source": "asm/unk_020863F4.s",
+      "width": 4
+     }
+    ],
+    "0x2DC": [
+     {
+      "meaning": "int rangeLo",
+      "source": "asm/unk_020863F4.s",
+      "width": 4
+     }
+    ],
+    "0x2E0": [
+     {
+      "meaning": "int rangeHi (exclusive)",
+      "source": "asm/unk_020863F4.s",
+      "width": 4
+     }
+    ],
+    "0x2E4": [
+     {
+      "meaning": "int rangeLo2/rangeHi2 (neighbor)",
+      "source": "asm/unk_020863F4.s",
+      "width": 8
+     }
+    ],
+    "0x2EC": [
+     {
+      "meaning": "NARC *narc",
+      "source": "asm/unk_020863F4.s",
+      "width": 4
+     }
+    ],
+    "0x2F0": [
+     {
+      "meaning": "SpriteSystem *spriteSystem",
+      "source": "asm/unk_020863F4.s",
+      "width": 4
+     }
+    ],
+    "0x2F4": [
+     {
+      "meaning": "SpriteManager *spriteManager",
+      "source": "asm/unk_020863F4.s",
+      "width": 4
+     }
+    ],
+    "0x2F8": [
+     {
+      "meaning": "BgConfig *bgConfig",
+      "source": "asm/unk_020863F4.s",
+      "width": 4
+     }
+    ],
+    "0x2FC": [
+     {
+      "meaning": "PaletteData *pltt",
+      "source": "asm/unk_020863F4.s",
+      "width": 4
+     }
+    ],
+    "0x304": [
+     {
+      "meaning": "TouchscreenHitbox hitboxes[28] (idx 16.. via +16, 26/27 for buttons)",
+      "source": "asm/unk_020863F4.s",
+      "width": 112
+     }
+    ],
+    "0x374": [
+     {
+      "meaning": "int unk374 (==1 test in BB4)",
+      "source": "asm/unk_020863F4.s",
+      "width": 4
+     }
+    ],
+    "0x378": [
+     {
+      "meaning": "UnkStruct_02013534 *fontSystem",
+      "source": "asm/unk_020863F4.s",
+      "width": 4
+     }
+    ],
+    "0x37C": [
+     {
+      "meaning": "TextOBJ *textObjs[2]",
+      "source": "asm/unk_020863F4.s",
+      "width": 8
+     }
+    ],
+    "0x384": [
+     {
+      "meaning": "UnkStruct_02021AC8 unk384[2]",
+      "source": "asm/unk_020863F4.s",
+      "width": 24
+     }
+    ],
+    "0x39C": [
+     {
+      "meaning": "Window window",
+      "source": "asm/unk_020863F4.s",
+      "width": 16
+     }
+    ],
+    "0x3D8": [
+     {
+      "meaning": "Options *options",
+      "source": "asm/unk_020863F4.s",
+      "width": 4
+     }
+    ],
+    "0x3E0": [
+     {
+      "meaning": "u32 number (digits extracted)",
+      "source": "asm/unk_020863F4.s",
+      "width": 4
+     }
+    ],
+    "0x3E4": [
+     {
+      "meaning": "int msgId for title window",
+      "source": "asm/unk_020863F4.s",
+      "width": 4
+     }
+    ],
+    "0x3E8": [
+     {
+      "meaning": "int flag (neighbor)",
+      "source": "asm/unk_020863F4.s",
+      "width": 4
+     }
+    ],
+    "0x3EC": [
+     {
+      "meaning": "int numUnk1C0",
+      "source": "asm/unk_020863F4.s",
+      "width": 4
+     }
+    ],
+    "0x3F0": [
+     {
+      "meaning": "int numDigits (current number length; cursor idx)",
+      "source": "asm/unk_020863F4.s",
+      "width": 4
+     }
+    ]
+   },
+   "size_guesses": {
+    "asm/unk_020863F4.s": "0x3F4 (OverlayManager_CreateAndGetData(ovy,0x3F4,HEAP_ID_108) in unk_020850F4.s)"
+   },
+   "sources": [
+    "asm/unk_020863F4.s"
+   ]
+  },
+  "UnkStruct_020863F4_Entry": {
+   "fields": {
+    "0x0": [
+     {
+      "meaning": "int unk0: digit value+1 / anim index / state (unk268 uses as state 0,1,other)",
+      "source": "asm/unk_020863F4.s",
+      "width": 4
+     }
+    ],
+    "0x10": [
+     {
+      "meaning": "TouchscreenHitbox *hitbox (u8 top,bottom,left,right written by sub_02086F44)",
+      "source": "asm/unk_020863F4.s",
+      "width": 4
+     }
+    ],
+    "0x14": [
+     {
+      "meaning": "s16 dx",
+      "source": "asm/unk_020863F4.s",
+      "width": 2
+     }
+    ],
+    "0x16": [
+     {
+      "meaning": "s16 dy",
+      "source": "asm/unk_020863F4.s",
+      "width": 2
+     }
+    ],
+    "0x18": [
+     {
+      "meaning": "u8 counter (move steps / anim tick)",
+      "source": "asm/unk_020863F4.s",
+      "width": 1
+     }
+    ],
+    "0x19": [
+     {
+      "meaning": "u8 scaleIdx",
+      "source": "asm/unk_020863F4.s",
+      "width": 1
+     }
+    ],
+    "0x4": [
+     {
+      "meaning": "int unk4 (neighbor only)",
+      "source": "asm/unk_020863F4.s",
+      "width": 4
+     }
+    ],
+    "0x8": [
+     {
+      "meaning": "int/BOOL highlighted (set 0/1 by sub_02086DA4; 2nd arg of sub_02086D98)",
+      "source": "asm/unk_020863F4.s",
+      "width": 4
+     }
+    ],
+    "0xC": [
+     {
+      "meaning": "ManagedSprite *sprite",
+      "source": "asm/unk_020863F4.s",
+      "width": 4
+     }
+    ]
+   },
+   "size_guesses": {
+    "asm/unk_020863F4.s": "0x1c (stride of all sprite loops)"
+   },
+   "sources": [
+    "asm/unk_020863F4.s"
+   ]
+  },
   "UnkStruct_021E8744": {
    "fields": {
     "0x10": [
@@ -31100,6 +32156,12 @@
     "asm/overlay_32.s": "GF2DGfxResObj *AddPlttResObjFromOpenNarc(GfxResObjMan *man, NARC *narc, u32 memberId, BOOL compressed, u32 resId, u32 type, HeapID heapId)"
    }
   },
+  "AddTextPrinterParameterized": {
+   "callers": [
+    "asm/unk_020863F4.s"
+   ],
+   "signature_sources": {}
+  },
   "AddTextPrinterParameterizedWithColor": {
    "callers": [
     "asm/overlay_14_021F4B90.s",
@@ -31108,11 +32170,12 @@
     "asm/overlay_32.s",
     "asm/overlay_83_02243D7C.s",
     "asm/overlay_83_02246E08.s",
-    "asm/overlay_98.s"
+    "asm/overlay_98.s",
+    "asm/unk_020863F4.s"
    ],
    "confidence": "low",
    "header": "include/text.h",
-   "known_prototype": "u8 AddTextPrinterParameterizedWithColor(Window *window, FontID fontId, String *string, u32 x, u32 y, u32 textSpeed, u32 color, PrinterCallback_t callback)",
+   "known_prototype": "u8 (Window*, FontID, String*, u32 x, u32 y, u32 speed, u32 color, PrinterCallback_t)",
    "signature_guess": "void AddTextPrinterParameterizedWithColor(Window *window, u32 fontId, const String *str, s32 x, s32 y, u32 speed, u32 color, void *callback)",
    "signature_sources": {
     "asm/overlay_32.s": "void AddTextPrinterParameterizedWithColor(Window *window, u32 fontId, const String *str, s32 x, s32 y, u32 speed, u32 color, void *callback)"
@@ -31128,7 +32191,8 @@
    "callers": [
     "asm/overlay_14_021F4B90.s",
     "asm/overlay_14_021F58B8.s",
-    "asm/overlay_80_0223A00C.s"
+    "asm/overlay_80_0223A00C.s",
+    "asm/unk_020863F4.s"
    ],
    "header": "include/bg_window.h",
    "known_prototype": "void AddTextWindowTopLeftCorner(BgConfig *bgConfig, Window *window, u8 width, u8 height, u16 baseTile, u8 paletteNum)",
@@ -31153,10 +32217,11 @@
   },
   "AddWindowParameterized": {
    "callers": [
-    "asm/overlay_14_021F4B90.s"
+    "asm/overlay_14_021F4B90.s",
+    "asm/unk_020863F4.s"
    ],
    "header": "include/bg_window.h",
-   "known_prototype": "void AddWindowParameterized(BgConfig *bgConfig, Window *window, u8 bgId, u8 x, u8 y, u8 width, u8 height, u8 paletteNum, u16 baseTile)",
+   "known_prototype": "void (BgConfig*, Window*, u8 bgId, u8 x, u8 y, u8 w, u8 h, u8 paletteNum, u16 baseTile); AddTextWindowTopLeftCorner(BgConfig*, Window*, u8 w, u8 h, u16 baseTile, u8 pal); InitWindow/RemoveWindow/CopyWindowToVram/FillWindowPixelBuffer(Window*,u8)",
    "signature_sources": {}
   },
   "AllocAtEndAndReadWholeNarcMemberByIdPair": {
@@ -31555,7 +32620,8 @@
   },
   "CopyWindowToVram": {
    "callers": [
-    "asm/overlay_14_021F4B90.s"
+    "asm/overlay_14_021F4B90.s",
+    "asm/unk_020863F4.s"
    ],
    "header": "include/bg_window.h",
    "known_prototype": "void CopyWindowToVram(Window *window)",
@@ -31631,7 +32697,8 @@
     "asm/overlay_32.s",
     "asm/overlay_80_0223A00C.s",
     "asm/overlay_83_02243D7C.s",
-    "asm/overlay_98.s"
+    "asm/overlay_98.s",
+    "asm/unk_020863F4.s"
    ],
    "confidence": "low",
    "header": "include/msgdata.h",
@@ -31677,8 +32744,11 @@
   },
   "DrawFrameAndWindow2": {
    "callers": [
-    "asm/overlay_83_02246E08.s"
+    "asm/overlay_83_02246E08.s",
+    "asm/unk_020863F4.s"
    ],
+   "header": "include/render_window.h",
+   "known_prototype": "void (Window*, BOOL dont_copy_to_vram, u16 baseTile, u8 palette_num)",
    "signature_sources": {}
   },
   "FS_CloseFile": {
@@ -31819,7 +32889,8 @@
     "asm/overlay_83_02242FE8.s",
     "asm/overlay_83_02243D7C.s",
     "asm/overlay_83_02246E08.s",
-    "asm/overlay_98.s"
+    "asm/overlay_98.s",
+    "asm/unk_020863F4.s"
    ],
    "confidence": "low",
    "header": "include/bg_window.h",
@@ -31878,11 +32949,12 @@
     "asm/overlay_29.s",
     "asm/overlay_32.s",
     "asm/overlay_83_02243D7C.s",
-    "asm/overlay_98.s"
+    "asm/overlay_98.s",
+    "asm/unk_020863F4.s"
    ],
    "confidence": "low",
    "header": "include/font.h",
-   "known_prototype": "void FontID_Alloc(FontID fontId, enum HeapID heapID)",
+   "known_prototype": "void FontID_Alloc(FontID, enum HeapID); FontID_Release(FontID); u32 FontID_String_GetCenterAlignmentX(FontID, String*, u32, u32)",
    "signature_guess": "void FontID_Alloc(u32 fontId, HeapID heapId)",
    "signature_sources": {
     "asm/overlay_32.s": "void FontID_Alloc(u32 fontId, HeapID heapId)"
@@ -31894,7 +32966,8 @@
     "asm/overlay_29.s",
     "asm/overlay_32.s",
     "asm/overlay_83_02243D7C.s",
-    "asm/overlay_98.s"
+    "asm/overlay_98.s",
+    "asm/unk_020863F4.s"
    ],
    "confidence": "low",
    "header": "include/font.h",
@@ -31903,6 +32976,12 @@
    "signature_sources": {
     "asm/overlay_32.s": "void FontID_Release(u32 fontId)"
    }
+  },
+  "FontID_String_GetCenterAlignmentX": {
+   "callers": [
+    "asm/unk_020863F4.s"
+   ],
+   "signature_sources": {}
   },
   "FontID_String_GetWidth": {
    "callers": [
@@ -31934,9 +33013,12 @@
   "FontOAM_Delete": {
    "callers": [
     "asm/overlay_14_021F4B90.s",
-    "asm/overlay_80_0223A00C.s"
+    "asm/overlay_80_0223A00C.s",
+    "asm/unk_020863F4.s"
    ],
    "confidence": "low",
+   "header": "include/unk_02013534.h",
+   "known_prototype": "void FontOAM_Delete(TextOBJ*)",
    "signature_guess": "void FontOAM_Delete(void *fontOAM)",
    "signature_sources": {
     "asm/overlay_14_021F4B90.s": "void FontOAM_Delete(void *fontOAM)"
@@ -31945,10 +33027,11 @@
   "FontSystem_NewInit": {
    "callers": [
     "asm/overlay_14_021F4B90.s",
-    "asm/overlay_80_0223A00C.s"
+    "asm/overlay_80_0223A00C.s",
+    "asm/unk_020863F4.s"
    ],
    "header": "include/unk_02013534.h",
-   "known_prototype": "UnkStruct_02013534 *FontSystem_NewInit(int a0, enum HeapID heapId)",
+   "known_prototype": "UnkStruct_02013534 *FontSystem_NewInit(int, enum HeapID)",
    "signature_sources": {}
   },
   "FreeBgTilemapBuffer": {
@@ -32086,11 +33169,12 @@
     "asm/unk_0203BA5C.s",
     "asm/unk_02056680.s",
     "asm/unk_02069660.s",
-    "asm/unk_02078DD8.s"
+    "asm/unk_02078DD8.s",
+    "asm/unk_020863F4.s"
    ],
    "confidence": "low",
-   "header": "include/assert.h (via global.h)",
-   "known_prototype": "void GF_AssertFail(void) (use GF_ASSERT macro)",
+   "header": "include/assert.h",
+   "known_prototype": "GF_ASSERT macro",
    "signature_guess": "void GF_AssertFail(void)",
    "signature_sources": {
     "asm/unk_02056680.s": "void GF_AssertFail(void)"
@@ -32610,9 +33694,12 @@
     "asm/overlay_29.s",
     "asm/overlay_32.s",
     "asm/overlay_80_0223A00C.s",
-    "asm/overlay_83_02243D7C.s"
+    "asm/overlay_83_02243D7C.s",
+    "asm/unk_020863F4.s"
    ],
    "confidence": "low",
+   "header": "include/gf_gfx_loader.h",
+   "known_prototype": "u32 (NARC*, s32 memberNo, BgConfig*, GFBgLayer, u32 tileStart, u32 szByte, BOOL isCompressed, enum HeapID)",
    "signature_guess": "u32 GfGfxLoader_LoadCharDataFromOpenNarc(NARC *narc, u32 memberId, BgConfig *bg, u8 layer, ...)",
    "signature_sources": {
     "asm/overlay_32.s": "u32 GfGfxLoader_LoadCharDataFromOpenNarc(NARC *narc, u32 memberId, BgConfig *bg, u8 layer, ...)"
@@ -32639,7 +33726,8 @@
     "asm/overlay_29.s",
     "asm/overlay_32.s",
     "asm/overlay_80_0223A00C.s",
-    "asm/overlay_83_02243D7C.s"
+    "asm/overlay_83_02243D7C.s",
+    "asm/unk_020863F4.s"
    ],
    "confidence": "low",
    "signature_guess": "u32 GfGfxLoader_LoadScrnDataFromOpenNarc(NARC *narc, u32 memberId, BgConfig *bg, u8 layer, ...)",
@@ -33041,7 +34129,8 @@
    "callers": [
     "asm/overlay_14_021F4B90.s",
     "asm/overlay_14_021F58B8.s",
-    "asm/overlay_80_0223A00C.s"
+    "asm/overlay_80_0223A00C.s",
+    "asm/unk_020863F4.s"
    ],
    "header": "include/bg_window.h",
    "known_prototype": "void InitWindow(Window *window)",
@@ -33242,8 +34331,11 @@
   },
   "LoadUserFrameGfx2": {
    "callers": [
-    "asm/overlay_83_02246E08.s"
+    "asm/overlay_83_02246E08.s",
+    "asm/unk_020863F4.s"
    ],
+   "header": "include/render_window.h",
+   "known_prototype": "void (BgConfig*, GFBgLayer, u16 baseTile, u8 paletteNum, u8 frame, enum HeapID)",
    "signature_sources": {}
   },
   "LocationIsDiamondPearlCompatible": {
@@ -33387,6 +34479,18 @@
    "callers": [],
    "signature_sources": {}
   },
+  "ManagedSprite_*": {
+   "callers": [],
+   "header": "include/sprite_system.h",
+   "known_prototype": "all in sprite_system.h: SetPositionXY(s16,s16), GetPositionXY(s16*,s16*), SetAnim(int), GetActiveAnim->u16, IsAnimated->BOOL, SetDrawFlag(int), SetAffineOverwriteMode(u8), SetOamMode(GXOamMode), TickFrame",
+   "signature_sources": {}
+  },
+  "ManagedSprite_GetActiveAnim": {
+   "callers": [
+    "asm/unk_020863F4.s"
+   ],
+   "signature_sources": {}
+  },
   "ManagedSprite_GetDrawFlag": {
    "callers": [
     "asm/overlay_14_021F2490.s"
@@ -33410,7 +34514,8 @@
     "asm/overlay_14_021F0A80.s",
     "asm/overlay_14_021F1808.s",
     "asm/overlay_14_021F2490.s",
-    "asm/overlay_14_021F4B90.s"
+    "asm/overlay_14_021F4B90.s",
+    "asm/unk_020863F4.s"
    ],
    "header": "include/sprite_system.h",
    "known_prototype": "void ManagedSprite_GetPositionXY(ManagedSprite *managedSprite, s16 *x, s16 *y)",
@@ -33424,13 +34529,15 @@
   },
   "ManagedSprite_IsAnimated": {
    "callers": [
-    "asm/overlay_14_021F2490.s"
+    "asm/overlay_14_021F2490.s",
+    "asm/unk_020863F4.s"
    ],
    "signature_sources": {}
   },
   "ManagedSprite_SetAffineOverwriteMode": {
    "callers": [
-    "asm/overlay_14_021F2490.s"
+    "asm/overlay_14_021F2490.s",
+    "asm/unk_020863F4.s"
    ],
    "signature_sources": {}
   },
@@ -33453,7 +34560,8 @@
     "asm/overlay_14_021F2490.s",
     "asm/overlay_18_021F0918.s",
     "asm/overlay_93_arm.s",
-    "asm/overlay_98.s"
+    "asm/overlay_98.s",
+    "asm/unk_020863F4.s"
    ],
    "header": "include/sprite_system.h",
    "known_prototype": "void ManagedSprite_SetAnim(ManagedSprite *, int)",
@@ -33484,7 +34592,8 @@
     "asm/overlay_18_021F0918.s",
     "asm/overlay_80_0223A00C.s",
     "asm/overlay_93_arm.s",
-    "asm/overlay_98.s"
+    "asm/overlay_98.s",
+    "asm/unk_020863F4.s"
    ],
    "header": "include/sprite_system.h",
    "known_prototype": "void ManagedSprite_SetDrawFlag(ManagedSprite *managedSprite, int flag)",
@@ -33498,7 +34607,8 @@
   },
   "ManagedSprite_SetOamMode": {
    "callers": [
-    "asm/overlay_14_021F2490.s"
+    "asm/overlay_14_021F2490.s",
+    "asm/unk_020863F4.s"
    ],
    "signature_sources": {}
   },
@@ -33519,7 +34629,8 @@
     "asm/overlay_14_021F1808.s",
     "asm/overlay_14_021F2490.s",
     "asm/overlay_14_021F4B90.s",
-    "asm/overlay_14_021F6628.s"
+    "asm/overlay_14_021F6628.s",
+    "asm/unk_020863F4.s"
    ],
    "header": "include/sprite_system.h",
    "known_prototype": "void ManagedSprite_SetPositionXY(ManagedSprite *managedSprite, s16 x, s16 y)",
@@ -33542,7 +34653,8 @@
   },
   "ManagedSprite_TickFrame": {
    "callers": [
-    "asm/overlay_14_021F2490.s"
+    "asm/overlay_14_021F2490.s",
+    "asm/unk_020863F4.s"
    ],
    "header": "include/sprite_system.h",
    "known_prototype": "void ManagedSprite_TickFrame(ManagedSprite *managedSprite)",
@@ -33995,11 +35107,12 @@
     "asm/overlay_32.s",
     "asm/overlay_80_0223A00C.s",
     "asm/overlay_83_02243D7C.s",
-    "asm/overlay_98.s"
+    "asm/overlay_98.s",
+    "asm/unk_020863F4.s"
    ],
    "confidence": "low",
    "header": "include/msgdata.h",
-   "known_prototype": "MsgData *NewMsgDataFromNarc(int type, NarcId narcId, u32 datId, HeapID heapId)",
+   "known_prototype": "MsgData *NewMsgDataFromNarc(MsgDataLoadType, NarcId, s32, enum HeapID); NewString_ReadMsgData(MsgData*, s32); DestroyMsgData",
    "signature_guess": "MsgData *NewMsgDataFromNarc(int mode, NarcId narcId, u32 msgId, HeapID heapId)",
    "signature_sources": {
     "asm/overlay_32.s": "MsgData *NewMsgDataFromNarc(int mode, NarcId narcId, u32 msgId, HeapID heapId)"
@@ -34016,7 +35129,8 @@
     "asm/overlay_80_0223A00C.s",
     "asm/overlay_83_02243D7C.s",
     "asm/overlay_83_022479E4.s",
-    "asm/overlay_98.s"
+    "asm/overlay_98.s",
+    "asm/unk_020863F4.s"
    ],
    "confidence": "low",
    "header": "include/msgdata.h",
@@ -34109,10 +35223,11 @@
    "callers": [
     "asm/overlay_83_0223DD60.s",
     "asm/overlay_83_02242FE8.s",
-    "asm/overlay_83_02243D7C.s"
+    "asm/overlay_83_02243D7C.s",
+    "asm/unk_020863F4.s"
    ],
    "header": "include/options.h",
-   "known_prototype": "u32 Options_GetFrame(Options *options)",
+   "known_prototype": "u32 Options_GetFrame(Options*)",
    "signature_sources": {}
   },
   "OverlayManager_CreateAndGetData": {
@@ -34433,8 +35548,11 @@
   },
   "PaletteData_LoadNarc": {
    "callers": [
-    "asm/overlay_80_0223A00C.s"
+    "asm/overlay_80_0223A00C.s",
+    "asm/unk_020863F4.s"
    ],
+   "header": "include/palette.h",
+   "known_prototype": "void (PaletteData*, NarcId, s32 memberNo, enum HeapID, PaletteBufferId, u32 size, u16 pos)",
    "signature_sources": {}
   },
   "PaletteData_LoadPalette": {
@@ -34802,7 +35920,8 @@
     "asm/overlay_32.s",
     "asm/overlay_80_0223A00C.s",
     "asm/overlay_83_02246E08.s",
-    "asm/overlay_98.s"
+    "asm/overlay_98.s",
+    "asm/unk_020863F4.s"
    ],
    "confidence": "low",
    "header": "include/bg_window.h",
@@ -35122,7 +36241,8 @@
   "SpriteManager_FindPlttResourceProxy": {
    "callers": [
     "asm/overlay_14_021F4B90.s",
-    "asm/overlay_80_0223A00C.s"
+    "asm/overlay_80_0223A00C.s",
+    "asm/unk_020863F4.s"
    ],
    "confidence": "low",
    "signature_guess": "void *SpriteManager_FindPlttResourceProxy(SpriteManager *mgr, int id)",
@@ -35133,7 +36253,8 @@
   "SpriteManager_GetSpriteList": {
    "callers": [
     "asm/overlay_14_021F4B90.s",
-    "asm/overlay_80_0223A00C.s"
+    "asm/overlay_80_0223A00C.s",
+    "asm/unk_020863F4.s"
    ],
    "confidence": "low",
    "signature_guess": "void *SpriteManager_GetSpriteList(SpriteManager *mgr)",
@@ -35144,7 +36265,8 @@
   "SpriteManager_New": {
    "callers": [
     "asm/overlay_14_021F2490.s",
-    "asm/overlay_98.s"
+    "asm/overlay_98.s",
+    "asm/unk_020863F4.s"
    ],
    "header": "include/sprite_system.h",
    "known_prototype": "SpriteManager *SpriteManager_New(SpriteSystem *spriteSystem)",
@@ -35207,10 +36329,11 @@
   "SpriteSystem_Alloc": {
    "callers": [
     "asm/overlay_14_021F2490.s",
-    "asm/overlay_98.s"
+    "asm/overlay_98.s",
+    "asm/unk_020863F4.s"
    ],
    "header": "include/sprite_system.h",
-   "known_prototype": "SpriteSystem *SpriteSystem_Alloc(enum HeapID heapID)",
+   "known_prototype": "SpriteSystem *SpriteSystem_Alloc(enum HeapID)",
    "signature_sources": {}
   },
   "SpriteSystem_DrawSprites": {
@@ -35243,21 +36366,26 @@
   "SpriteSystem_Init": {
    "callers": [
     "asm/overlay_14_021F2490.s",
-    "asm/overlay_98.s"
+    "asm/overlay_98.s",
+    "asm/unk_020863F4.s"
    ],
+   "header": "include/sprite_system.h",
+   "known_prototype": "BOOL SpriteSystem_Init(SpriteSystem*, const OamManagerParam*, const OamCharTransferParam*, int)",
    "signature_sources": {}
   },
   "SpriteSystem_InitManagerWithCapacities": {
    "callers": [
     "asm/overlay_14_021F2490.s",
-    "asm/overlay_98.s"
+    "asm/overlay_98.s",
+    "asm/unk_020863F4.s"
    ],
    "signature_sources": {}
   },
   "SpriteSystem_InitSprites": {
    "callers": [
     "asm/overlay_14_021F2490.s",
-    "asm/overlay_98.s"
+    "asm/overlay_98.s",
+    "asm/unk_020863F4.s"
    ],
    "signature_sources": {}
   },
@@ -35272,7 +36400,8 @@
    "callers": [
     "asm/overlay_80_02239AF8.s",
     "asm/overlay_80_0223A00C.s",
-    "asm/overlay_93_arm.s"
+    "asm/overlay_93_arm.s",
+    "asm/unk_020863F4.s"
    ],
    "header": "include/sprite_system.h",
    "known_prototype": "BOOL SpriteSystem_LoadAnimResObjFromOpenNarc(SpriteSystem *spriteSystem, SpriteManager *spriteManager, NARC *narc, int fileId, BOOL compressed, int resId)",
@@ -35289,7 +36418,8 @@
    "callers": [
     "asm/overlay_80_02239AF8.s",
     "asm/overlay_80_0223A00C.s",
-    "asm/overlay_93_arm.s"
+    "asm/overlay_93_arm.s",
+    "asm/unk_020863F4.s"
    ],
    "header": "include/sprite_system.h",
    "known_prototype": "BOOL SpriteSystem_LoadCellResObjFromOpenNarc(SpriteSystem *spriteSystem, SpriteManager *spriteManager, NARC *narc, int fileId, BOOL compressed, int resId)",
@@ -35308,20 +36438,28 @@
    "callers": [
     "asm/overlay_80_02239AF8.s",
     "asm/overlay_80_0223A00C.s",
-    "asm/overlay_93_arm.s"
+    "asm/overlay_93_arm.s",
+    "asm/unk_020863F4.s"
    ],
    "header": "include/sprite_system.h",
    "known_prototype": "BOOL SpriteSystem_LoadCharResObjFromOpenNarc(SpriteSystem *spriteSystem, SpriteManager *spriteManager, NARC *narc, int fileId, BOOL compressed, int vram, int resId)",
+   "signature_sources": {}
+  },
+  "SpriteSystem_LoadPaletteBuffer": {
+   "callers": [
+    "asm/unk_020863F4.s"
+   ],
    "signature_sources": {}
   },
   "SpriteSystem_LoadPaletteBufferFromOpenNarc": {
    "callers": [
     "asm/overlay_80_02239AF8.s",
     "asm/overlay_80_0223A00C.s",
-    "asm/overlay_93_arm.s"
+    "asm/overlay_93_arm.s",
+    "asm/unk_020863F4.s"
    ],
    "header": "include/sprite_system.h",
-   "known_prototype": "u8 SpriteSystem_LoadPaletteBufferFromOpenNarc(PaletteData *plttData, PaletteBufferId bufferId, SpriteSystem *spriteSystem, SpriteManager *spriteManager, NARC *narc, int fileId, BOOL compressed, int pltt_num, int vram, int resId)",
+   "known_prototype": "u8 (PaletteData*, PaletteBufferId, SpriteSystem*, SpriteManager*, NARC*, int fileId, BOOL compressed, int pltt_num, int vram, int resId)",
    "signature_sources": {}
   },
   "SpriteSystem_LoadPlttResObj": {
@@ -35338,10 +36476,11 @@
     "asm/overlay_80_02239AF8.s",
     "asm/overlay_80_0223A00C.s",
     "asm/overlay_93_arm.s",
-    "asm/overlay_98.s"
+    "asm/overlay_98.s",
+    "asm/unk_020863F4.s"
    ],
    "header": "include/sprite_system.h",
-   "known_prototype": "ManagedSprite *SpriteSystem_NewSprite(SpriteSystem *spriteSystem, SpriteManager *spriteManager, const ManagedSpriteTemplate *unkTemplate)",
+   "known_prototype": "ManagedSprite *SpriteSystem_NewSprite(SpriteSystem*, SpriteManager*, const ManagedSpriteTemplate*)",
    "signature_sources": {}
   },
   "SpriteSystem_NewSpriteWithYOffset": {
@@ -35389,7 +36528,8 @@
     "asm/overlay_80_02239AF8.s",
     "asm/overlay_80_0223A00C.s",
     "asm/overlay_93_arm.s",
-    "asm/overlay_98.s"
+    "asm/overlay_98.s",
+    "asm/unk_020863F4.s"
    ],
    "header": "include/sprite_system.h",
    "known_prototype": "void Sprite_DeleteAndFreeResources(ManagedSprite *managedSprite)",
@@ -35560,7 +36700,8 @@
     "asm/overlay_80_0223A00C.s",
     "asm/overlay_83_02243D7C.s",
     "asm/overlay_83_022479E4.s",
-    "asm/overlay_98.s"
+    "asm/overlay_98.s",
+    "asm/unk_020863F4.s"
    ],
    "confidence": "low",
    "header": "include/pm_string.h",
@@ -35992,14 +37133,16 @@
     "asm/overlay_18_021EE35C.s",
     "asm/overlay_18_021F7ED4.s",
     "asm/overlay_29.s",
-    "asm/overlay_98.s"
+    "asm/overlay_98.s",
+    "asm/unk_020863F4.s"
    ],
    "confidence": "low",
    "header": "none",
    "known_prototype": "compiler runtime; emitted by unsigned 32-bit /",
    "signature_guess": "unsigned __u32_div_f(unsigned num, unsigned den) /* MWCC runtime, quotient r0 remainder r1 */",
    "signature_sources": {
-    "asm/overlay_29.s": "unsigned __u32_div_f(unsigned num, unsigned den) /* MWCC runtime, quotient r0 remainder r1 */"
+    "asm/overlay_29.s": "unsigned __u32_div_f(unsigned num, unsigned den) /* MWCC runtime, quotient r0 remainder r1 */",
+    "asm/unk_020863F4.s": "compiler runtime: u32 % and / on a u32 variable"
    }
   },
   "gSystem": {
@@ -59579,6 +60722,16 @@
    ],
    "signature_sources": {}
   },
+  "sub_0200E640": {
+   "callers": [
+    "asm/unk_020863F4.s"
+   ],
+   "confidence": "low",
+   "signature_guess": "u32 sub_0200E640(u32 frame)",
+   "signature_sources": {
+    "asm/unk_020863F4.s": "u32 sub_0200E640(u32 frame)"
+   }
+  },
   "sub_0200E948": {
    "callers": [
     "asm/overlay_14_021F6628.s"
@@ -59603,9 +60756,12 @@
   "sub_020135AC": {
    "callers": [
     "asm/overlay_14_021F4B90.s",
-    "asm/overlay_80_0223A00C.s"
+    "asm/overlay_80_0223A00C.s",
+    "asm/unk_020863F4.s"
    ],
    "confidence": "low",
+   "header": "include/unk_02013534.h",
+   "known_prototype": "void sub_020135AC(UnkStruct_02013534*)",
    "signature_guess": "void sub_020135AC(void *a0)",
    "signature_sources": {
     "asm/overlay_14_021F4B90.s": "void sub_020135AC(void *a0)"
@@ -59614,9 +60770,12 @@
   "sub_020135D8": {
    "callers": [
     "asm/overlay_14_021F4B90.s",
-    "asm/overlay_80_0223A00C.s"
+    "asm/overlay_80_0223A00C.s",
+    "asm/unk_020863F4.s"
    ],
    "confidence": "low",
+   "header": "include/unk_02013534.h",
+   "known_prototype": "TextOBJ *sub_020135D8(TextOBJTemplate*)",
    "signature_guess": "TextOBJ *sub_020135D8(void *params)",
    "signature_sources": {
     "asm/overlay_14_021F4B90.s": "TextOBJ *sub_020135D8(void *params)"
@@ -59625,9 +60784,12 @@
   "sub_02013688": {
    "callers": [
     "asm/overlay_14_021F4B90.s",
-    "asm/overlay_80_0223A00C.s"
+    "asm/overlay_80_0223A00C.s",
+    "asm/unk_020863F4.s"
    ],
    "confidence": "low",
+   "header": "include/unk_02013534.h",
+   "known_prototype": "int sub_02013688(Window*, NNS_G2D_VRAM_TYPE, int)",
    "signature_guess": "void sub_02013688(Window *window, int a1, int a2)",
    "signature_sources": {
     "asm/overlay_14_021F4B90.s": "void sub_02013688(Window *window, int a1, int a2)"
@@ -59636,8 +60798,11 @@
   "sub_020136B4": {
    "callers": [
     "asm/overlay_14_021F2490.s",
-    "asm/overlay_80_0223A00C.s"
+    "asm/overlay_80_0223A00C.s",
+    "asm/unk_020863F4.s"
    ],
+   "header": "include/unk_02013534.h",
+   "known_prototype": "void sub_020136B4(TextOBJ*, int, int)",
    "signature_sources": {}
   },
   "sub_020137F0": {
@@ -59663,9 +60828,12 @@
   "sub_020138E0": {
    "callers": [
     "asm/overlay_14_021F4B90.s",
-    "asm/overlay_80_0223A00C.s"
+    "asm/overlay_80_0223A00C.s",
+    "asm/unk_020863F4.s"
    ],
    "confidence": "low",
+   "header": "include/unk_02013534.h",
+   "known_prototype": "void sub_020138E0(TextOBJ*, int)",
    "signature_guess": "void sub_020138E0(TextOBJ *textOBJ, int a1)",
    "signature_sources": {
     "asm/overlay_14_021F4B90.s": "void sub_020138E0(TextOBJ *textOBJ, int a1)"
@@ -60135,9 +61303,12 @@
   "sub_02021AC8": {
    "callers": [
     "asm/overlay_14_021F4B90.s",
-    "asm/overlay_80_0223A00C.s"
+    "asm/overlay_80_0223A00C.s",
+    "asm/unk_020863F4.s"
    ],
    "confidence": "low",
+   "header": "include/obj_char_transfer.h",
+   "known_prototype": "BOOL sub_02021AC8(u32 size, BOOL atEnd, NNS_G2D_VRAM_TYPE, UnkStruct_02021AC8*)",
    "signature_guess": "void sub_02021AC8(Window *window, int a1, int a2, void *a3)",
    "signature_sources": {
     "asm/overlay_14_021F4B90.s": "void sub_02021AC8(Window *window, int a1, int a2, void *a3)"
@@ -60146,9 +61317,12 @@
   "sub_02021B5C": {
    "callers": [
     "asm/overlay_14_021F4B90.s",
-    "asm/overlay_80_0223A00C.s"
+    "asm/overlay_80_0223A00C.s",
+    "asm/unk_020863F4.s"
    ],
    "confidence": "low",
+   "header": "include/obj_char_transfer.h",
+   "known_prototype": "void sub_02021B5C(UnkStruct_02021AC8*)",
    "signature_guess": "void sub_02021B5C(void *a0)",
    "signature_sources": {
     "asm/overlay_14_021F4B90.s": "void sub_02021B5C(void *a0)"
@@ -65318,6 +66492,426 @@
     "asm/overlay_83_02246E08.s"
    ],
    "signature_sources": {}
+  },
+  "sub_020863F4": {
+   "callers": [],
+   "confidence": "high",
+   "defined_in": "asm/unk_020863F4.s",
+   "mode": "thumb",
+   "notes": [
+    "[asm/unk_020863F4.s] 3 stack struct copies via ldmia/stmia: OamManagerParam oam=_021027F4 (sp+0x2c, declared first), OamCharTransferParam xfer=_021027C8 (sp+0x18), SpriteResourceCountsListUnion counts=_021027DC (sp+0). SpriteSystem_Init(sys,&oam,&xfer,0x20); GF_ASSERT(InitSprites(sys,mgr,0x80)); GF_ASSERT(InitManagerWithCapacities(sys,mgr,&counts))."
+   ],
+   "signature_guess": "void sub_020863F4(UnkStruct_020850F4 *ctx)",
+   "signature_sources": {
+    "asm/unk_020863F4.s": "void sub_020863F4(UnkStruct_020850F4 *ctx)"
+   },
+   "struct_accesses": [
+    {
+     "meaning": "SpriteSystem* = SpriteSystem_Alloc(HEAP_ID_108)",
+     "offset": "0x2F0",
+     "param": 0,
+     "width": 4
+    },
+    {
+     "meaning": "SpriteManager* = SpriteManager_New",
+     "offset": "0x2F4",
+     "param": 0,
+     "width": 4
+    }
+   ]
+  },
+  "sub_02086490": {
+   "callers": [],
+   "confidence": "high",
+   "defined_in": "asm/unk_020863F4.s",
+   "mode": "thumb",
+   "notes": [
+    "[asm/unk_020863F4.s] Locals: mgr=r5, sys=r6, pltt/bgConfig spilled, narc=r4. Char(narc,0xC,bg,LYR_MAIN_1,0,0,0,HEAP_ID_108); Scrn(0xE, MAIN_1); PaletteData_LoadNarc(pltt,NARC_a_1_9_0(0xBE),0xD,heap,PLTTBUF_MAIN_BG,0x20,0); Char(0xF,SUB_1); Scrn(0x11,SUB_1); LoadNarc(0xBE,0x10,heap,PLTTBUF_SUB_BG,0x20,0). Then 3 resource sets: resId 1000 {pltt file1 pltt_num1, char0, cell2, anim3}, 1001 {pltt5 num1, char4, cell6, anim7}, 1002 {pltt9 num2, char8, cellA, animB}; all compressed=0, vram=1, bufferId=PLTTBUF_MAIN_OBJ. frame=Options_GetFrame(ctx->options); LoadUserFrameGfx2(bg,LYR_SUB_0,1,0xA,(u8)frame,heap); LoadNarc(pltt,0x26,sub_0200E640(frame),heap,PLTTBUF_SUB_BG,0x20,0xB0); LoadNarc(pltt,NARC_graphic_font(0x10),8,heap,PLTTBUF_SUB_BG,0x20,0xC0). Pool: 0x3E9,0x3EA; 0x3E8 built as mov 0xFA lsl 2."
+   ],
+   "signature_guess": "void sub_02086490(UnkStruct_020850F4 *ctx)",
+   "signature_sources": {
+    "asm/unk_020863F4.s": "void sub_02086490(UnkStruct_020850F4 *ctx)"
+   },
+   "struct_accesses": [
+    {
+     "meaning": "NARC* (open narc, all *FromOpenNarc calls)",
+     "offset": "0x2EC",
+     "param": 0,
+     "width": 4
+    },
+    {
+     "meaning": "BgConfig*",
+     "offset": "0x2F8",
+     "param": 0,
+     "width": 4
+    },
+    {
+     "meaning": "PaletteData*",
+     "offset": "0x2FC",
+     "param": 0,
+     "width": 4
+    },
+    {
+     "meaning": "Options* -> Options_GetFrame",
+     "offset": "0x3D8",
+     "param": 0,
+     "width": 4
+    }
+   ]
+  },
+  "sub_020866CC": {
+   "callers": [],
+   "confidence": "high",
+   "defined_in": "asm/unk_020863F4.s",
+   "mode": "thumb",
+   "notes": [
+    "[asm/unk_020863F4.s] for i<ctx->unk2D0: Delete(digits[i].sprite); for i<ctx->unk3EC: Delete(unk1C0[i].sprite); for i<2: unk268[i].sprite; for i<3: unk214[i].sprite; sub_02086FE8(ctx); RemoveWindow(&ctx->window @0x39C). All loops use 0x1c-stride walking pointer, bound reloaded each iter."
+   ],
+   "signature_guess": "void sub_020866CC(UnkStruct_020850F4 *ctx)",
+   "signature_sources": {
+    "asm/unk_020863F4.s": "void sub_020866CC(UnkStruct_020850F4 *ctx)"
+   }
+  },
+  "sub_02086758": {
+   "callers": [],
+   "confidence": "high",
+   "defined_in": "asm/unk_020863F4.s",
+   "mode": "thumb",
+   "notes": [
+    "[asm/unk_020863F4.s] Order at top: j=0 ([sp+0xc]); sys ([sp+8]); mgr ([sp+4]); ctx spilled [sp]. ManagedSpriteTemplate at sp+0x10: x=y=z=anim=0, drawPriority=10, pal=0, vram=1, resIdList={1000,1000,1000,1000,-1,-1}, bgPriority=0, vramTransfer=0. Countdown for(i=unk3F0-1;i>=0;i--){digits[i].unk0=num%10+1; num/=10;} (u32 num; two _u32_div_f calls, divisor 10 hoisted in r7). Then s16 x=0x4C; for(i=0;i<unk3EC+unk2D0;i++){ if(unk3EC!=0 && i==unk1C0[j].unk0+j+1){unk1C0[j].sprite=NewSprite; SetPositionXY(sp,x,0x18); SetAnim(sp,0x16); TickFrame; j++;} else {digits[k].sprite=NewSprite; SetPositionXY(x,0x18); SetAnim(sp,sub_02086D98(digits[k].unk0,digits[k].unk8)); SetAffineOverwriteMode(sp,2); TickFrame; k++;} x+=8; }. 1000 formed as (0x2F0 offset reg)+0xF8 \u2014 constant materialization hazard."
+   ],
+   "signature_guess": "void sub_02086758(UnkStruct_020850F4 *ctx)",
+   "signature_sources": {
+    "asm/unk_020863F4.s": "void sub_02086758(UnkStruct_020850F4 *ctx)"
+   },
+   "struct_accesses": [
+    {
+     "meaning": "u32 number split into digits (%10, /10 via _u32_div_f)",
+     "offset": "0x3E0",
+     "param": 0,
+     "width": 4
+    },
+    {
+     "meaning": "int digit count: fill digits[unk3F0-1..0].unk0 = n%10+1",
+     "offset": "0x3F0",
+     "param": 0,
+     "width": 4
+    }
+   ]
+  },
+  "sub_020868A0": {
+   "callers": [],
+   "confidence": "high",
+   "defined_in": "asm/unk_020863F4.s",
+   "mode": "thumb",
+   "notes": [
+    "[asm/unk_020863F4.s] Template at sp+0: drawPriority=0, pal=0, vram=1, resIds 1001x4,-1,-1. Creates unk214[0..2].sprite (0x220,0x23C,0x258). sub_02086AE4(ctx,ctx->unk3F0); SetAnim(unk214[0].sprite,0); Tick. unk214[1].dx=0;dy=0;unk0=1; sub_02086B2C(ctx,0); SetAnim(unk214[1].sprite,unk214[1].unk0); Tick; SetOamMode(..,GX_OAM_MODE_XLU=1). Same for unk214[2] (also sub_02086B2C(ctx,0) \u2014 r1 literally 0). sub_02086AB4(ctx,1,0); sub_02086AB4(ctx,2,0)."
+   ],
+   "signature_guess": "void sub_020868A0(UnkStruct_020850F4 *ctx)",
+   "signature_sources": {
+    "asm/unk_020863F4.s": "void sub_020868A0(UnkStruct_020850F4 *ctx)"
+   }
+  },
+  "sub_020869BC": {
+   "callers": [],
+   "confidence": "high",
+   "defined_in": "asm/unk_020863F4.s",
+   "mode": "thumb",
+   "notes": [
+    "[asm/unk_020863F4.s] Template: drawPriority=10, pal=0 (STORED TWICE at sp+0xc \u2014 initializer plus explicit template.pal=0 before first NewSprite), vram=1, resIds 1002x4,-1,-1. unk268[0].sprite=NewSprite; template.pal=1; unk268[1].sprite=NewSprite. Position each at center of hitboxes[26]/[27]: x=(s16)((left+right)/2), y=(s16)((top+bottom)/2) (signed /2 idiom lsr#31). SetAnim 0, Tick each."
+   ],
+   "signature_guess": "void sub_020869BC(UnkStruct_020850F4 *ctx)",
+   "signature_sources": {
+    "asm/unk_020863F4.s": "void sub_020869BC(UnkStruct_020850F4 *ctx)"
+   }
+  },
+  "sub_02086AB4": {
+   "callers": [
+    "asm/unk_020863F4.s"
+   ],
+   "confidence": "high",
+   "defined_in": "asm/unk_020863F4.s",
+   "mode": "thumb",
+   "notes": [
+    "[asm/unk_020863F4.s] if(flag==1) SetDrawFlag(ctx->unk214[idx].sprite,1); else SetDrawFlag(...,0); \u2014 two separate calls each with own pop (not a ternary)."
+   ],
+   "signature_guess": "void sub_02086AB4(UnkStruct_020850F4 *ctx, int idx, int flag)",
+   "signature_sources": {
+    "asm/unk_020863F4.s": "void sub_02086AB4(UnkStruct_020850F4 *ctx, int idx, int flag)"
+   }
+  },
+  "sub_02086AE4": {
+   "callers": [
+    "asm/unk_020863F4.s"
+   ],
+   "confidence": "high",
+   "defined_in": "asm/unk_020863F4.s",
+   "mode": "thumb",
+   "notes": [
+    "[asm/unk_020863F4.s] if(idx>=ctx->unk3F0){ sp=digits[idx].sprite; unk214[0].unk0=idx; GetPositionXY(sp,&x,&y); SetPositionXY(unk214[0].sprite,x,(s16)(y+0x10)); } Locals s16 x at sp+2, y at sp+0 -> declare x before y."
+   ],
+   "signature_guess": "void sub_02086AE4(UnkStruct_020850F4 *ctx, int idx)",
+   "signature_sources": {
+    "asm/unk_020863F4.s": "void sub_02086AE4(UnkStruct_020850F4 *ctx, int idx)"
+   },
+   "struct_accesses": [
+    {
+     "meaning": "if(idx < unk3F0) return",
+     "offset": "0x3F0",
+     "param": 0,
+     "width": 4
+    },
+    {
+     "meaning": "unk214[0].unk0 = idx",
+     "offset": "0x214",
+     "param": 0,
+     "width": 4
+    }
+   ]
+  },
+  "sub_02086B2C": {
+   "callers": [
+    "asm/unk_020863F4.s"
+   ],
+   "confidence": "high",
+   "defined_in": "asm/unk_020863F4.s",
+   "mode": "thumb",
+   "notes": [
+    "[asm/unk_020863F4.s] hb=&ctx->hitboxes[idx+16] (index add then *4, base 0x304); SetPositionXY(ctx->unk214[1].sprite,(s16)((hb.left+hb.right)/2),(s16)((hb.top+hb.bottom)/2))."
+   ],
+   "signature_guess": "void sub_02086B2C(UnkStruct_020850F4 *ctx, int idx)",
+   "signature_sources": {
+    "asm/unk_020863F4.s": "void sub_02086B2C(UnkStruct_020850F4 *ctx, int idx)"
+   }
+  },
+  "sub_02086B6C": {
+   "callers": [],
+   "confidence": "high",
+   "defined_in": "asm/unk_020863F4.s",
+   "mode": "thumb",
+   "notes": [
+    "[asm/unk_020863F4.s] Same as B2C but sprite=ctx->unk214[spriteIdx].sprite, hb=hitboxes[hitboxIdx+16]."
+   ],
+   "signature_guess": "void sub_02086B6C(UnkStruct_020850F4 *ctx, int hitboxIdx, int spriteIdx)",
+   "signature_sources": {
+    "asm/unk_020863F4.s": "void sub_02086B6C(UnkStruct_020850F4 *ctx, int hitboxIdx, int spriteIdx)"
+   }
+  },
+  "sub_02086BB4": {
+   "callers": [],
+   "confidence": "high",
+   "defined_in": "asm/unk_020863F4.s",
+   "mode": "thumb",
+   "notes": [
+    "[asm/unk_020863F4.s] Tick unk214[0..2].sprite; for(i=1;i<3;i++){ anim=GetActiveAnim(unk214[i].sprite); if(anim==3){ if(!IsAnimated){ SetAnim(sp,unk214[i].unk0); if(unk374==1)AB4(ctx,1,0) else AB4(ctx,1,1); AB4(ctx,2,0);} } else { if(anim!=unk214[i].unk0) SetAnim(sp,unk214[i].unk0); if(GetActiveAnim(unk214[2].sprite)!=3){ if(unk374==1)AB4(ctx,1,0) else AB4(ctx,1,1);} } }"
+   ],
+   "signature_guess": "void sub_02086BB4(UnkStruct_020850F4 *ctx)",
+   "signature_sources": {
+    "asm/unk_020863F4.s": "void sub_02086BB4(UnkStruct_020850F4 *ctx)"
+   },
+   "struct_accesses": [
+    {
+     "meaning": "int, compared ==1 selects sub_02086AB4(ctx,1,0) vs (ctx,1,1)",
+     "offset": "0x374",
+     "param": 0,
+     "width": 4
+    }
+   ]
+  },
+  "sub_02086C80": {
+   "callers": [
+    "asm/unk_020863F4.s"
+   ],
+   "confidence": "high",
+   "defined_in": "asm/unk_020863F4.s",
+   "mode": "thumb",
+   "notes": [
+    "[asm/unk_020863F4.s] NOT in .inc -> static. if(obj!=NULL) sub_020136B4(obj,x,y)."
+   ],
+   "signature_guess": "static void sub_02086C80(TextOBJ *obj, int x, int y)",
+   "signature_sources": {
+    "asm/unk_020863F4.s": "static void sub_02086C80(TextOBJ *obj, int x, int y)"
+   }
+  },
+  "sub_02086C8C": {
+   "callers": [],
+   "confidence": "high",
+   "defined_in": "asm/unk_020863F4.s",
+   "mode": "thumb",
+   "notes": [
+    "[asm/unk_020863F4.s] for(i=0;i<2;i++) (i spilled at [sp]; r5=ctx+4*i serves hitboxes[26+i] AND textObjs[i]; r4=ctx+0x1c*i for unk268[i]). s16 x=(s16)((l+r)/2); x-=0x28 (re-narrowed); s16 y=(t+b)/2; y-=7. switch(unk268[i].unk0){case 0: counter=0; break; case 1: counter++; switch(counter){case 1: SetAnim(sp,1); C80(textObjs[i],x,y); break; case 2: SetAnim(sp,2); C80(..,x,y-1); break; case 10: SetAnim(sp,0); C80(x,y); unk268[i].unk0++;} break; default: SetAnim(sp,0); C80(x,y); unk268[i].unk0=0;}. Inner switch reloads u8 counter after strb. Pool 0x36E."
+   ],
+   "signature_guess": "void sub_02086C8C(UnkStruct_020850F4 *ctx)",
+   "signature_sources": {
+    "asm/unk_020863F4.s": "void sub_02086C8C(UnkStruct_020850F4 *ctx)"
+   }
+  },
+  "sub_02086D98": {
+   "callers": [
+    "asm/unk_020863F4.s"
+   ],
+   "confidence": "high",
+   "defined_in": "asm/unk_020863F4.s",
+   "mode": "thumb",
+   "notes": [
+    "[asm/unk_020863F4.s] int off=0; if(flag==0) off=11; return off+anim; (add r0,r2,r0 \u2014 try off+anim before anim+off). Leaf, no push."
+   ],
+   "signature_guess": "int sub_02086D98(int anim, BOOL flag)",
+   "signature_sources": {
+    "asm/unk_020863F4.s": "int sub_02086D98(int anim, BOOL flag)"
+   }
+  },
+  "sub_02086DA4": {
+   "callers": [],
+   "confidence": "high",
+   "defined_in": "asm/unk_020863F4.s",
+   "mode": "thumb",
+   "notes": [
+    "[asm/unk_020863F4.s] Leaf (push r4-r7 only). for(i=0;i<unk2D0;i++){ if(i>=unk2DC && i<unk2E0) digits[i].unk8=1; else digits[i].unk8=0; } constants 0/1 hoisted in r1/r2, offsets 0x2DC/0x2E0 hoisted r7/r6."
+   ],
+   "signature_guess": "void sub_02086DA4(UnkStruct_020850F4 *ctx)",
+   "signature_sources": {
+    "asm/unk_020863F4.s": "void sub_02086DA4(UnkStruct_020850F4 *ctx)"
+   }
+  },
+  "sub_02086DE4": {
+   "callers": [],
+   "confidence": "high",
+   "defined_in": "asm/unk_020863F4.s",
+   "mode": "thumb",
+   "notes": [
+    "[asm/unk_020863F4.s] Callers pass 0 and 1. s16 x=ctx->unk2A0[ctx->unk2D4]; j=0 (spilled sp+8); for(i=0;i<unk2D0;i++){ if(i>=unk2DC&&i<unk2E0){x+= i==unk2DC?0x14:0x20;} else {x+= i==0?0x14:8;} GetPositionXY(digits[i].sprite,&px,&py); if(!animate) SetPositionXY(sp,x,py); else {digits[i].dx=(x-px)/2; dy=0; counter=2; scaleIdx=0;} if(i==unk1C0[j].unk0 && j!=unk3EC){ GetPositionXY(unk1C0[j].sprite,&px,&py); if(unk2DC==unk2E0) x+=8; else if(i>unk2DC&&i<unk2E0) x+=0x14; else x+=8; if(!animate) SetPositionXY(unk1C0[j].sprite,x,py); else {unk1C0[j].dx=(x-px)/2; dy=0; counter=2;} j++; } }. px at sp+0xe, py at sp+0xc (declare px before py). Each x+= written as if/else pairs (bne branches), x re-narrowed to s16 after each add."
+   ],
+   "signature_guess": "void sub_02086DE4(UnkStruct_020850F4 *ctx, BOOL animate)",
+   "signature_sources": {
+    "asm/unk_020863F4.s": "void sub_02086DE4(UnkStruct_020850F4 *ctx, BOOL animate)"
+   },
+   "struct_accesses": [
+    {
+     "meaning": "index into s16 unk2A0[]",
+     "offset": "0x2D4",
+     "param": 0,
+     "width": 4
+    },
+    {
+     "meaning": "s16 base x = unk2A0[unk2D4]",
+     "offset": "0x2A0",
+     "param": 0,
+     "width": 2
+    }
+   ]
+  },
+  "sub_02086F44": {
+   "callers": [],
+   "confidence": "high",
+   "defined_in": "asm/unk_020863F4.s",
+   "mode": "thumb",
+   "notes": [
+    "[asm/unk_020863F4.s] for(i=0;i<unk2D0;i++){ if(i>=unk2DC&&i<unk2E0){hw=0x10;hh=0x10;} else {hw=4;hh=8;} (hw spilled [sp], hh=r7) GetPositionXY(digits[i].sprite,&x,&y); hb=digits[i].hitbox (u8*/TouchscreenHitbox*, reloaded before every store); hb->top=y-hh; hb->left=x-hw; hb->bottom=y+hh; hb->right=x+hw; }. Here x at sp+4, y at sp+6 -> declare y BEFORE x (opposite of AE4/DE4)."
+   ],
+   "signature_guess": "void sub_02086F44(UnkStruct_020850F4 *ctx)",
+   "signature_sources": {
+    "asm/unk_020863F4.s": "void sub_02086F44(UnkStruct_020850F4 *ctx)"
+   }
+  },
+  "sub_02086FCC": {
+   "callers": [],
+   "confidence": "high",
+   "defined_in": "asm/unk_020863F4.s",
+   "mode": "thumb",
+   "notes": [
+    "[asm/unk_020863F4.s] ctx->fontSystem(0x378)=FontSystem_NewInit(2,HEAP_ID_108); FontID_Alloc(2,HEAP_ID_108)."
+   ],
+   "signature_guess": "void sub_02086FCC(UnkStruct_020850F4 *ctx)",
+   "signature_sources": {
+    "asm/unk_020863F4.s": "void sub_02086FCC(UnkStruct_020850F4 *ctx)"
+   }
+  },
+  "sub_02086FE8": {
+   "callers": [
+    "asm/unk_020863F4.s"
+   ],
+   "confidence": "high",
+   "defined_in": "asm/unk_020863F4.s",
+   "mode": "thumb",
+   "notes": [
+    "[asm/unk_020863F4.s] NOT in .inc -> static. FontID_Release(2); FontOAM_Delete(textObjs[0]@0x37C); sub_02021B5C(&unk384[0]); FontOAM_Delete(textObjs[1]@0x380); sub_02021B5C(&unk384[1]@0x390); sub_020135AC(fontSystem)."
+   ],
+   "signature_guess": "static void sub_02086FE8(UnkStruct_020850F4 *ctx)",
+   "signature_sources": {
+    "asm/unk_020863F4.s": "static void sub_02086FE8(UnkStruct_020850F4 *ctx)"
+   }
+  },
+  "sub_02087028": {
+   "callers": [
+    "asm/unk_020863F4.s"
+   ],
+   "confidence": "high",
+   "defined_in": "asm/unk_020863F4.s",
+   "mode": "thumb",
+   "notes": [
+    "[asm/unk_020863F4.s] NOT in .inc -> static. SpriteSystem_LoadPaletteBuffer(ctx->pltt,PLTTBUF_MAIN_OBJ,sys,mgr,NARC_graphic_font(0x10),8,0,1,1,1003). Offsets 0x2FC/0x2F0/0x2F4 formed by subtracting from pool 0x3EB \u2014 regalloc quirk."
+   ],
+   "signature_guess": "static void sub_02087028(UnkStruct_020850F4 *ctx)",
+   "signature_sources": {
+    "asm/unk_020863F4.s": "static void sub_02087028(UnkStruct_020850F4 *ctx)"
+   }
+  },
+  "sub_02087064": {
+   "callers": [],
+   "confidence": "high",
+   "defined_in": "asm/unk_020863F4.s",
+   "mode": "thumb",
+   "notes": [
+    "[asm/unk_020863F4.s] sub_02087028(ctx); sub_02087090(ctx,0,0x4E,0xA5,0); sub_02087090(ctx,1,0xAC,0xA5,0)."
+   ],
+   "signature_guess": "void sub_02087064(UnkStruct_020850F4 *ctx)",
+   "signature_sources": {
+    "asm/unk_020863F4.s": "void sub_02087064(UnkStruct_020850F4 *ctx)"
+   }
+  },
+  "sub_02087090": {
+   "callers": [
+    "asm/unk_020863F4.s"
+   ],
+   "confidence": "medium",
+   "defined_in": "asm/unk_020863F4.s",
+   "mode": "thumb",
+   "notes": [
+    "[asm/unk_020863F4.s] NOT in .inc -> static. r2/r3 never read (dead params, but 5th stack arg IS used). msg=NewMsgDataFromNarc(0,NARC_msgdata_msg,NARC_msg_msg_0038_bin,heap); str=ReadMsgData(msg,idx+2); InitWindow(&win); AddTextWindowTopLeftCorner(ctx->bgConfig,&win,10,2,0,0); cx=FontID_String_GetCenterAlignmentX(2,str,0,0x50); AddTextPrinterParameterizedWithColor(&win,2,str,cx,0,0xFF,MAKE_TEXT_COLOR(15,13,2),NULL); sub_02013688(&win,1,heap); sub_02021AC8(1,1,1,&ctx->unk384[idx]); s16 hx=(l+r)/2 of hitboxes[idx+26] (r7), hy spilled; TextOBJTemplate t (sp+0x2c, declared BEFORE Window win sp+0x1c): fontSystem, &win, GetSpriteList(mgr), FindPlttResourceProxy(mgr,1003), sprite=NULL, offset=unk384[idx].offset, x=(s16)(hx-0x28), y=(s16)(hy-7), 0,0, vram=1, heap; textObjs[idx]=sub_020135D8(&t); sub_020138E0(textObjs[idx],a4); String_Delete; DestroyMsgData; RemoveWindow(&win). Pool 0xF0D02, 0x306."
+   ],
+   "signature_guess": "static void sub_02087090(UnkStruct_020850F4 *ctx, int idx, int unusedX, int unusedY, int a4)",
+   "signature_sources": {
+    "asm/unk_020863F4.s": "static void sub_02087090(UnkStruct_020850F4 *ctx, int idx, int unusedX, int unusedY, int a4)"
+   }
+  },
+  "sub_020871C4": {
+   "callers": [],
+   "confidence": "medium",
+   "defined_in": "asm/unk_020863F4.s",
+   "mode": "thumb",
+   "notes": [
+    "[asm/unk_020863F4.s] 9 params (5 on stack). Callee narrows bgId,x,y,width,height to u8 and baseTile to u16 at the AddWindowParameterized call -> declare them int/u32, NOT u8/u16. AddWindowParameterized(bg,win,bgId,x,y,w,h,12,baseTile); DrawFrameAndWindow2(win,TRUE,1,11); FillWindowPixelBuffer(win,0xF); CopyWindowToVram(win); sub_02087230(win,msgId). Caller (unk_02085604 sub_02085820): (ctx->bgConfig,&ctx->window,4,2,0x15,0x1B,2,0x64,ctx->unk3E4)."
+   ],
+   "signature_guess": "void sub_020871C4(BgConfig *bgConfig, Window *window, int bgId, int x, int y, int width, int height, int baseTile, int msgId)",
+   "signature_sources": {
+    "asm/unk_020863F4.s": "void sub_020871C4(BgConfig *bgConfig, Window *window, int bgId, int x, int y, int width, int height, int baseTile, int msgId)"
+   }
+  },
+  "sub_02087230": {
+   "callers": [
+    "asm/unk_020863F4.s"
+   ],
+   "confidence": "high",
+   "defined_in": "asm/unk_020863F4.s",
+   "mode": "thumb",
+   "notes": [
+    "[asm/unk_020863F4.s] NOT in .inc -> static. Fill(win,0xF); msg=NewMsgDataFromNarc(0,NARC_msgdata_msg,38,HEAP_ID_108); str=Read(msg,msgId); Fill(win,0xF) again; AddTextPrinterParameterized(win,1,str,0,0,0,NULL); CopyWindowToVram; String_Delete; DestroyMsgData."
+   ],
+   "signature_guess": "static void sub_02087230(Window *window, int msgId)",
+   "signature_sources": {
+    "asm/unk_020863F4.s": "static void sub_02087230(Window *window, int msgId)"
+   }
   },
   "sub_020915F0": {
    "callers": [
