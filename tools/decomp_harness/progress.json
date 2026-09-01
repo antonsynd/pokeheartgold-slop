@@ -800,6 +800,16 @@
       "attempts": 9,
       "result": "matched",
       "note": "compare-verified (HG full ROM SHA1 OK; SS gate run in the same session). Shared helper overlay for the overlay_96/99 stats screens: SpriteSystem holder (ctor/dtor, 10-sprite row builder, mon-sprite + icon loaders), Window+MessageFormat text holder (ctor/dtor + print wrappers), rank/threshold lookups, display teardown. 46/47 pure C + 1 NONMATCHING (ov98_0221EF24: byte struct copy from the consolidated rodata folds the literal at 32-byte granularity). 9 rodata objects consolidated into one struct (0xDC bytes). Signature surprises: E970 has an unused r3 with animate on the stack; ED3C takes 3 params; EC3C passes a 32-bit fontId into AddTextPrinterParameterizedWithColor (local wider prototype, text.h untouched). Register-only mismatches solved with a scripted variant sweep (compound assignments, temp for call result, out-pointer declared last, i-before-count)."
+    },
+    {
+      "file": "asm/overlay_18_021F8AB8.s",
+      "lines": 1650,
+      "functions": 38,
+      "matched_functions": 38,
+      "nonmatching": 0,
+      "attempts": 4,
+      "result": "matched",
+      "note": "compare-verified (HG + SS full ROM SHA1 OK). Last chunk of the overlay_18 (Pokedex) split: the in-battle 'new Pokedex entry' popup (dex number/name/category/height/weight text, pokeball + type-icon + footprint sprites, mon picture, BG palette flash). 38/38 pure C, zero NONMATCHING, first compile hit 35/38. Work object is a 0x258-byte struct (PokedexEntryPopup, NOT PokedexAppData) allocated by ov18_021F8974 in the still-asm 021F7ED4 chunk; overlay_18.h keeps its OverlayManager* declarations for battle_command.c untouched. Seven rodata objects (0x108 bytes, 0x10/0x1C/0x1C/0x1C/0x48/0x14/0x48 sizes) consolidated into one struct; all references (three BgTemplate copies, WindowTemplate[9] pointer walk, u8/u32 table lookups, ObjCharTransferTemplate copy at offset 0) folded to exact pool literals. Fixes: two 4-iteration loops need int i with a literal bound (NELEMS makes the compare unsigned -> bcc); ov18_021F8CCC needs the window x-offset arithmetic (GetWindowWidth()*8-4 and the centred (w*8-strwidth)/2) in an int temp so it is computed eagerly into r2 right after the call. Local wider prototypes: AddTextPrinterParameterizedWithColor (u32 fontId, as overlay_98) and ov18_021E590C/595C/59A8 (int species; pokedex_internal.h says u16)."
     }
   ],
   "failed": [
@@ -1218,8 +1228,8 @@
     }
   ],
   "stats": {
-    "total_attempts": 169,
-    "total_matched": 72,
+    "total_attempts": 173,
+    "total_matched": 73,
     "total_failed": 31
   },
   "matched": [
@@ -1318,6 +1328,7 @@
       "c_functions": 59,
       "nonmatching": 2,
       "note": "compare-verified (full ROM SHA1 OK). FashionCase save module (idx 0xc): SaveFashionData 0x834 = 11x SaveFashionDataSub(0x74, status+FashionMon+marker bitmask+MailMessage+10 markers) + 5x 0x98 + FashionCase 0x40. fashion_case.h frozen (callers in scrcmd_c/bag_view/etc.) -> detailed structs defined locally, header NOT included (split). Bit-packed accessories(4-bit), flags(1-bit), wallpapers(8-bit): word=(u8)((u32)id>>n), shift=(u8)(id%m)*scale, helpers take int id (u8 param drops the word (u8) mask). 59 C matched. NONMATCHING (2): sub_0202BCAC (volatile u16 pos[4] gets layout but a y-spill reload remains) and sub_0202BF80 (count first-check reload) are MWCC homed-value-reload tie-breaks -> inline asm. Key tricks: id&0xFF breaks CSE of repeated (u8)id across two helper calls; id=(u8)(id-0x3d);(u8)id forces double truncation; split GET into its own stmt for result+qty operand order; (u32)quantity for unsigned cmp; CRC dedup via MATHi_CRC32InitTableRev/MATH_CalcCRC32."
-    }
+    },
+    "asm/overlay_18_021F8AB8.s"
   ]
 }
