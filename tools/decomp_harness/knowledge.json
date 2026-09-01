@@ -927,6 +927,847 @@
    ],
    "sweep_output": "sweep/out/overlay_18_021F0918.json"
   },
+  "asm/overlay_18_021F7ED4.s": {
+   "notes": "Text-only file: no .rodata/.data/.bss, all jump tables are inline in .text, so no rodata-ordering concerns. 23 thumb functions, ~1.3 KB. Semantics: the Pokedex search pipeline -- ov18_021F7ED4 runs the species list through seen-filter, sort-order, letter, type x2, body type, area, height, weight filters (each helper reads src/srcCount, writes dst/count, ALL-sentinel = memcpy passthrough), then ov18_021F81D8 commits the result into pokedexApp->unk_0878; 8824/8838/8850/8884/891C/8950 are accessors over that result; 8974/89C8/89D0/89F8 are the battle-side new-dex-entry popup constructor/poller/destructor/task wrapping the already-matched src/overlay_18_021F8AB8.c. Includes needed: application/pokedex/pokedex_internal.h (with the two shims above), overlay_18_021F8AB8.h, dex_mon_measures.h, gf_gfx_loader.h, heap.h, pokedex.h, pokedex_util.h, filesystem.h, sound_02004A44.h, unk_02005D10.h, sprite.h, sys_task_api.h, <nitro/gx/gx.h> for G2_BlendNone, and graphic/zukan_gra.naix if NARC_graphic_zukan_gra is used for 0x44. Constants: HEAP_ID_POKEDEX_APP = 0x25 (include/constants/heap.h), NATIONAL_DEX_COUNT*2 = 0x3DA, DEX_SEARCH_LETTERS_ALL = 26, DEX_SEARCH_TYPE_ALL = 17, DEX_SEARCH_BODYTYPE_ALL = 14, 1<<DEX_SEARCH_AREA_ALL = 8, 1<<DEX_SEARCH_AREA_KANTO = 4 (include/application/pokedex/pokedex_internal_constants.h). No prior attempts logged for this file in attempts_log.jsonl; the neighbor 8AB8 log (ts 2026-09-01) confirms int-vs-u32 loop-bound and call-result-temp lessons that also apply here.",
+   "oracle": {
+    "functions": {
+     "ov18_021F8168": {
+      "nonmatching_flags": [
+       {
+        "confidence": "low",
+        "detail": "param r0 copied to r5 at entry, then r5 (the copy) compared while r0 is live and no bl precedes -- MWCC uses the copy [likely benign: GF_ASSERT idiom; copy reg reassigned later (mutable local); value used across a later call (copy motivated) -- audit]",
+        "evidence": "L330: add r5, r0, #0 ; L335: cmp r5, #0x52",
+        "kind": "copyprop-cmp-entry",
+        "verdict": "NONMATCHING-suspect"
+       }
+      ],
+      "signedness": [
+       {
+        "branch": "blo",
+        "confidence": "high",
+        "evidence": "L335: cmp r5, #0x52  =>  L336: blo _021F8178",
+        "register": "r5",
+        "verdict": "unsigned"
+       }
+      ]
+     },
+     "ov18_021F8198": {
+      "signedness": [
+       {
+        "branch": "bls",
+        "confidence": "high",
+        "evidence": "L369: cmp r7, #0  =>  L370: bls _021F81D2",
+        "register": "r7",
+        "verdict": "unsigned"
+       },
+       {
+        "branch": "blo",
+        "confidence": "high",
+        "evidence": "L388: cmp r6, r7  =>  L389: blo _021F81AE",
+        "register": "r6",
+        "verdict": "unsigned"
+       }
+      ],
+      "widths": [
+       {
+        "base": "r4",
+        "confidence": "high",
+        "evidence": "L372: ldrh r1, [r4]",
+        "kind": "load-width",
+        "offset": "#0",
+        "verdict": "u16"
+       },
+       {
+        "base": "r1",
+        "confidence": "high",
+        "evidence": "L381: strh r0, [r1, r2]",
+        "kind": "store-width",
+        "offset": "(r2)",
+        "verdict": "u16"
+       }
+      ]
+     },
+     "ov18_021F81D8": {
+      "signedness": [
+       {
+        "branch": "blo",
+        "confidence": "high",
+        "evidence": "L436: cmp r7, r0  =>  L437: blo _021F81F8",
+        "register": "r7",
+        "verdict": "unsigned"
+       }
+      ],
+      "widths": [
+       {
+        "base": "r5",
+        "confidence": "high",
+        "evidence": "L404: strh r0, [r5, r1]",
+        "kind": "store-width",
+        "offset": "(r1)",
+        "verdict": "u16"
+       },
+       {
+        "base": "r5",
+        "confidence": "high",
+        "evidence": "L408: strh r7, [r5, r0]",
+        "kind": "store-width",
+        "offset": "(r0)",
+        "verdict": "u16"
+       },
+       {
+        "base": "r4",
+        "confidence": "high",
+        "evidence": "L415: ldrh r0, [r4]",
+        "kind": "load-width",
+        "offset": "#0",
+        "verdict": "u16"
+       },
+       {
+        "base": "r5",
+        "confidence": "high",
+        "evidence": "L416: strh r0, [r5]",
+        "kind": "store-width",
+        "offset": "#0",
+        "verdict": "u16"
+       },
+       {
+        "base": "r5",
+        "confidence": "high",
+        "evidence": "L423: strh r0, [r5, #2]",
+        "kind": "store-width",
+        "offset": "#2",
+        "verdict": "u16"
+       },
+       {
+        "base": "r6",
+        "confidence": "high",
+        "evidence": "L424: ldrh r0, [r6]",
+        "kind": "load-width",
+        "offset": "#0",
+        "verdict": "u16"
+       },
+       {
+        "base": "r6",
+        "confidence": "high",
+        "evidence": "L426: strh r0, [r6]",
+        "kind": "store-width",
+        "offset": "#0",
+        "verdict": "u16"
+       }
+      ]
+     },
+     "ov18_021F822C": {
+      "signedness": [
+       {
+        "branch": "bhi",
+        "confidence": "high",
+        "evidence": "L453: cmp r0, #5  =>  L454: bhi _021F82A6",
+        "register": "r0",
+        "verdict": "unsigned"
+       }
+      ],
+      "widths": [
+       {
+        "confidence": "high",
+        "evidence": "L458: lsl r0, r0, #0x10 ; L459: asr r0, r0, #0x10",
+        "kind": "truncation-pair",
+        "register": "r0",
+        "verdict": "s16"
+       },
+       {
+        "base": "r0",
+        "confidence": "high",
+        "evidence": "L457: ldrh r0, [r0, #6]",
+        "kind": "load-width",
+        "offset": "#6",
+        "verdict": "u16"
+       }
+      ]
+     },
+     "ov18_021F831C": {
+      "signedness": [
+       {
+        "branch": "bls",
+        "confidence": "high",
+        "evidence": "L578: cmp r0, #0x11  =>  L579: bls _021F8330",
+        "register": "r0",
+        "verdict": "unsigned"
+       }
+      ],
+      "widths": [
+       {
+        "confidence": "high",
+        "evidence": "L585: lsl r0, r0, #0x10 ; L586: asr r0, r0, #0x10",
+        "kind": "truncation-pair",
+        "register": "r0",
+        "verdict": "s16"
+       },
+       {
+        "base": "r0",
+        "confidence": "high",
+        "evidence": "L584: ldrh r0, [r0, #6]",
+        "kind": "load-width",
+        "offset": "#6",
+        "verdict": "u16"
+       }
+      ]
+     },
+     "ov18_021F8468": {
+      "signedness": [
+       {
+        "branch": "bhi",
+        "confidence": "high",
+        "evidence": "L747: cmp r0, #0xe  =>  L748: bhi _021F855C",
+        "register": "r0",
+        "verdict": "unsigned"
+       }
+      ],
+      "widths": [
+       {
+        "confidence": "high",
+        "evidence": "L752: lsl r0, r0, #0x10 ; L753: asr r0, r0, #0x10",
+        "kind": "truncation-pair",
+        "register": "r0",
+        "verdict": "s16"
+       },
+       {
+        "base": "r0",
+        "confidence": "high",
+        "evidence": "L751: ldrh r0, [r0, #6]",
+        "kind": "load-width",
+        "offset": "#6",
+        "verdict": "u16"
+       }
+      ]
+     },
+     "ov18_021F8584": {
+      "signedness": [
+       {
+        "branch": "bls",
+        "confidence": "high",
+        "evidence": "L912: cmp r6, #0  =>  L913: bls _021F8638",
+        "register": "r6",
+        "verdict": "unsigned"
+       },
+       {
+        "branch": "blo",
+        "confidence": "high",
+        "evidence": "L944: cmp r0, r6  =>  L945: blo _021F85BA",
+        "register": "r0",
+        "verdict": "unsigned"
+       },
+       {
+        "branch": "bls",
+        "confidence": "high",
+        "evidence": "L951: cmp r6, #0  =>  L952: bls _021F8638",
+        "register": "r6",
+        "verdict": "unsigned"
+       },
+       {
+        "branch": "blo",
+        "confidence": "high",
+        "evidence": "L979: cmp r0, r6  =>  L980: blo _021F8604",
+        "register": "r0",
+        "verdict": "unsigned"
+       }
+      ],
+      "widths": [
+       {
+        "base": "r5",
+        "confidence": "high",
+        "evidence": "L918: ldrh r1, [r5]",
+        "kind": "load-width",
+        "offset": "#0",
+        "verdict": "u16"
+       },
+       {
+        "base": "r0",
+        "confidence": "high",
+        "evidence": "L921: ldrb r0, [r0, r1]",
+        "kind": "load-width",
+        "offset": "(r1)",
+        "verdict": "u8"
+       },
+       {
+        "base": "r1",
+        "confidence": "high",
+        "evidence": "L935: strh r0, [r1, r2]",
+        "kind": "store-width",
+        "offset": "(r2)",
+        "verdict": "u16"
+       }
+      ]
+     },
+     "ov18_021F8640": {
+      "signedness": [
+       {
+        "branch": "bls",
+        "confidence": "high",
+        "evidence": "L1015: cmp r0, #0  =>  L1016: bls _021F86C4",
+        "register": "r0",
+        "verdict": "unsigned"
+       },
+       {
+        "branch": "blt",
+        "confidence": "high",
+        "evidence": "L1032: cmp r1, r3  =>  L1033: blt _021F86BA",
+        "register": "r1",
+        "verdict": "signed"
+       },
+       {
+        "branch": "bgt",
+        "confidence": "high",
+        "evidence": "L1036: cmp r1, r0  =>  L1037: bgt _021F86BA",
+        "register": "r1",
+        "verdict": "signed"
+       },
+       {
+        "branch": "blo",
+        "confidence": "high",
+        "evidence": "L1055: cmp r7, r0  =>  L1056: blo _021F8680",
+        "register": "r7",
+        "verdict": "unsigned"
+       }
+      ],
+      "widths": [
+       {
+        "base": "r4",
+        "confidence": "high",
+        "evidence": "L1024: ldrh r2, [r4]",
+        "kind": "load-width",
+        "offset": "#0",
+        "verdict": "u16"
+       },
+       {
+        "base": "r3",
+        "confidence": "high",
+        "evidence": "L1031: ldrh r3, [r3, r0]",
+        "kind": "load-width",
+        "offset": "(r0)",
+        "verdict": "u16"
+       },
+       {
+        "base": "r1",
+        "confidence": "high",
+        "evidence": "L1047: strh r0, [r1, r2]",
+        "kind": "store-width",
+        "offset": "(r2)",
+        "verdict": "u16"
+       }
+      ]
+     },
+     "ov18_021F86D0": {
+      "signedness": [
+       {
+        "branch": "bls",
+        "confidence": "high",
+        "evidence": "L1092: cmp r0, #0  =>  L1093: bls _021F8758",
+        "register": "r0",
+        "verdict": "unsigned"
+       },
+       {
+        "branch": "blt",
+        "confidence": "high",
+        "evidence": "L1110: cmp r1, r3  =>  L1111: blt _021F874E",
+        "register": "r1",
+        "verdict": "signed"
+       },
+       {
+        "branch": "bgt",
+        "confidence": "high",
+        "evidence": "L1115: cmp r1, r0  =>  L1116: bgt _021F874E",
+        "register": "r1",
+        "verdict": "signed"
+       },
+       {
+        "branch": "blo",
+        "confidence": "high",
+        "evidence": "L1134: cmp r7, r0  =>  L1135: blo _021F8710",
+        "register": "r7",
+        "verdict": "unsigned"
+       }
+      ],
+      "widths": [
+       {
+        "base": "r4",
+        "confidence": "high",
+        "evidence": "L1101: ldrh r2, [r4]",
+        "kind": "load-width",
+        "offset": "#0",
+        "verdict": "u16"
+       },
+       {
+        "base": "r3",
+        "confidence": "high",
+        "evidence": "L1109: ldrh r3, [r3, #2]",
+        "kind": "load-width",
+        "offset": "#2",
+        "verdict": "u16"
+       },
+       {
+        "base": "r0",
+        "confidence": "high",
+        "evidence": "L1114: ldrh r0, [r0, #2]",
+        "kind": "load-width",
+        "offset": "#2",
+        "verdict": "u16"
+       },
+       {
+        "base": "r1",
+        "confidence": "high",
+        "evidence": "L1126: strh r0, [r1, r2]",
+        "kind": "store-width",
+        "offset": "(r2)",
+        "verdict": "u16"
+       }
+      ]
+     },
+     "ov18_021F8764": {
+      "nonmatching_flags": [
+       {
+        "confidence": "low",
+        "detail": "param r3 copied to r5 at entry, then r5 (the copy) compared while r3 is live and no bl precedes -- MWCC uses the copy [likely benign: value used across a later call (copy motivated) -- audit]",
+        "evidence": "L1159: add r5, r3, #0 ; L1170: cmp r5, #0",
+        "kind": "copyprop-cmp-entry",
+        "verdict": "NONMATCHING-suspect"
+       }
+      ],
+      "signedness": [
+       {
+        "branch": "bls",
+        "confidence": "high",
+        "evidence": "L1164: cmp r0, #0  =>  L1165: bls _021F8820",
+        "register": "r0",
+        "verdict": "unsigned"
+       },
+       {
+        "branch": "bls",
+        "confidence": "high",
+        "evidence": "L1170: cmp r5, #0  =>  L1171: bls _021F87BE",
+        "register": "r5",
+        "verdict": "unsigned"
+       },
+       {
+        "branch": "blo",
+        "confidence": "high",
+        "evidence": "L1192: cmp r4, r5  =>  L1193: blo _021F879A",
+        "register": "r4",
+        "verdict": "unsigned"
+       },
+       {
+        "branch": "blo",
+        "confidence": "high",
+        "evidence": "L1200: cmp r3, r2  =>  L1201: blo _021F8790",
+        "register": "r3",
+        "verdict": "unsigned"
+       },
+       {
+        "branch": "bls",
+        "confidence": "high",
+        "evidence": "L1206: cmp r0, #0  =>  L1207: bls _021F8820",
+        "register": "r0",
+        "verdict": "unsigned"
+       },
+       {
+        "branch": "bls",
+        "confidence": "high",
+        "evidence": "L1211: cmp r5, #0  =>  L1212: bls _021F8812",
+        "register": "r5",
+        "verdict": "unsigned"
+       },
+       {
+        "branch": "blo",
+        "confidence": "high",
+        "evidence": "L1238: cmp r6, r5  =>  L1239: blo _021F87E0",
+        "register": "r6",
+        "verdict": "unsigned"
+       },
+       {
+        "branch": "blo",
+        "confidence": "high",
+        "evidence": "L1246: cmp r1, r0  =>  L1247: blo _021F87D8",
+        "register": "r1",
+        "verdict": "unsigned"
+       }
+      ],
+      "widths": [
+       {
+        "base": "r1",
+        "confidence": "high",
+        "evidence": "L1172: ldrh r2, [r1]",
+        "kind": "load-width",
+        "offset": "#0",
+        "verdict": "u16"
+       },
+       {
+        "base": "r6",
+        "confidence": "high",
+        "evidence": "L1175: ldrh r3, [r6]",
+        "kind": "load-width",
+        "offset": "#0",
+        "verdict": "u16"
+       },
+       {
+        "base": "r3",
+        "confidence": "high",
+        "evidence": "L1182: strh r2, [r3, r4]",
+        "kind": "store-width",
+        "offset": "(r4)",
+        "verdict": "u16"
+       },
+       {
+        "base": "r7",
+        "confidence": "high",
+        "evidence": "L1215: ldrh r1, [r7]",
+        "kind": "load-width",
+        "offset": "#0",
+        "verdict": "u16"
+       },
+       {
+        "base": "r4",
+        "confidence": "high",
+        "evidence": "L1216: ldrh r0, [r4]",
+        "kind": "load-width",
+        "offset": "#0",
+        "verdict": "u16"
+       },
+       {
+        "base": "r0",
+        "confidence": "high",
+        "evidence": "L1228: strh r2, [r0, r1]",
+        "kind": "store-width",
+        "offset": "(r1)",
+        "verdict": "u16"
+       }
+      ]
+     },
+     "ov18_021F8824": {
+      "widths": [
+       {
+        "base": "r0",
+        "confidence": "high",
+        "evidence": "L1256: ldrb r2, [r0, r1]",
+        "kind": "load-width",
+        "offset": "(r1)",
+        "verdict": "u8"
+       }
+      ]
+     },
+     "ov18_021F8838": {
+      "widths": [
+       {
+        "base": "r1",
+        "confidence": "high",
+        "evidence": "L1275: ldrh r0, [r1, r0]",
+        "kind": "load-width",
+        "offset": "(r0)",
+        "verdict": "u16"
+       }
+      ]
+     },
+     "ov18_021F8850": {
+      "signedness": [
+       {
+        "branch": "bls",
+        "confidence": "high",
+        "evidence": "L1288: cmp r5, #0  =>  L1289: bls _021F8878",
+        "register": "r5",
+        "verdict": "unsigned"
+       },
+       {
+        "branch": "blo",
+        "confidence": "high",
+        "evidence": "L1304: cmp r3, r5  =>  L1305: blo _021F885E",
+        "register": "r3",
+        "verdict": "unsigned"
+       }
+      ],
+      "widths": [
+       {
+        "base": "r0",
+        "confidence": "high",
+        "evidence": "L1286: ldrh r5, [r0, r2]",
+        "kind": "load-width",
+        "offset": "(r2)",
+        "verdict": "u16"
+       },
+       {
+        "base": "r0",
+        "confidence": "high",
+        "evidence": "L1293: ldrh r4, [r0]",
+        "kind": "load-width",
+        "offset": "#0",
+        "verdict": "u16"
+       }
+      ]
+     },
+     "ov18_021F8884": {
+      "signedness": [
+       {
+        "branch": "bls",
+        "confidence": "high",
+        "evidence": "L1329: cmp r0, #0  =>  L1330: bls _021F88FE",
+        "register": "r0",
+        "verdict": "unsigned"
+       },
+       {
+        "branch": "blo",
+        "confidence": "high",
+        "evidence": "L1353: cmp r6, r0  =>  L1354: blo _021F88A8",
+        "register": "r6",
+        "verdict": "unsigned"
+       },
+       {
+        "branch": "bls",
+        "confidence": "high",
+        "evidence": "L1359: cmp r0, #0  =>  L1360: bls _021F88FE",
+        "register": "r0",
+        "verdict": "unsigned"
+       },
+       {
+        "branch": "blo",
+        "confidence": "high",
+        "evidence": "L1376: cmp r1, r2  =>  L1377: blo _021F88EA",
+        "register": "r1",
+        "verdict": "unsigned"
+       }
+      ],
+      "widths": [
+       {
+        "base": "r5",
+        "confidence": "high",
+        "evidence": "L1327: ldrh r0, [r5, r0]",
+        "kind": "load-width",
+        "offset": "(r0)",
+        "verdict": "u16"
+       },
+       {
+        "base": "r5",
+        "confidence": "high",
+        "evidence": "L1336: ldrb r0, [r5, r0]",
+        "kind": "load-width",
+        "offset": "(r0)",
+        "verdict": "u8"
+       },
+       {
+        "base": "r4",
+        "confidence": "high",
+        "evidence": "L1337: ldrh r1, [r4, r1]",
+        "kind": "load-width",
+        "offset": "(r1)",
+        "verdict": "u16"
+       },
+       {
+        "base": "r0",
+        "confidence": "high",
+        "evidence": "L1345: strh r2, [r0, r1]",
+        "kind": "store-width",
+        "offset": "(r1)",
+        "verdict": "u16"
+       },
+       {
+        "base": "r5",
+        "confidence": "high",
+        "evidence": "L1352: ldrh r0, [r5, r7]",
+        "kind": "load-width",
+        "offset": "(r7)",
+        "verdict": "u16"
+       },
+       {
+        "base": "r0",
+        "confidence": "high",
+        "evidence": "L1370: ldrh r2, [r0, r2]",
+        "kind": "load-width",
+        "offset": "(r2)",
+        "verdict": "u16"
+       },
+       {
+        "base": "r0",
+        "confidence": "high",
+        "evidence": "L1371: strh r2, [r0, r3]",
+        "kind": "store-width",
+        "offset": "(r3)",
+        "verdict": "u16"
+       },
+       {
+        "base": "r0",
+        "confidence": "high",
+        "evidence": "L1372: ldrh r2, [r0, r4]",
+        "kind": "load-width",
+        "offset": "(r4)",
+        "verdict": "u16"
+       },
+       {
+        "base": "r0",
+        "confidence": "high",
+        "evidence": "L1373: strh r2, [r0, r6]",
+        "kind": "store-width",
+        "offset": "(r6)",
+        "verdict": "u16"
+       }
+      ]
+     },
+     "ov18_021F891C": {
+      "widths": [
+       {
+        "base": "r2",
+        "confidence": "high",
+        "evidence": "L1397: ldrh r0, [r2, r0]",
+        "kind": "load-width",
+        "offset": "(r0)",
+        "verdict": "u16"
+       },
+       {
+        "base": "r2",
+        "confidence": "high",
+        "evidence": "L1402: ldrh r1, [r2, r1]",
+        "kind": "load-width",
+        "offset": "(r1)",
+        "verdict": "u16"
+       },
+       {
+        "base": "r2",
+        "confidence": "high",
+        "evidence": "L1403: ldrb r0, [r2, r0]",
+        "kind": "load-width",
+        "offset": "(r0)",
+        "verdict": "u8"
+       }
+      ]
+     },
+     "ov18_021F8950": {
+      "exact_types": [
+       {
+        "confidence": "high",
+        "evidence": "L1424: bl _u32_div_f",
+        "helper": "_u32_div_f",
+        "verdict": "unsigned 32-bit int / or %  (both operands unsigned int)"
+       },
+       {
+        "confidence": "high",
+        "evidence": "L1430: bl _u32_div_f",
+        "helper": "_u32_div_f",
+        "verdict": "unsigned 32-bit int / or %  (both operands unsigned int)"
+       }
+      ]
+     },
+     "ov18_021F8974": {
+      "widths": [
+       {
+        "base": "r5",
+        "confidence": "high",
+        "evidence": "L1456: ldrb r0, [r5]",
+        "kind": "load-width",
+        "offset": "#0",
+        "verdict": "u8"
+       },
+       {
+        "base": "r2",
+        "confidence": "high",
+        "evidence": "L1458: strb r0, [r2]",
+        "kind": "store-width",
+        "offset": "#0",
+        "verdict": "u8"
+       },
+       {
+        "base": "r4",
+        "confidence": "high",
+        "evidence": "L1469: strh r2, [r4, r0]",
+        "kind": "store-width",
+        "offset": "(r0)",
+        "verdict": "u16"
+       }
+      ]
+     },
+     "ov18_021F89F8": {
+      "signedness": [
+       {
+        "branch": "bhi",
+        "confidence": "high",
+        "evidence": "L1516: cmp r0, #4  =>  L1517: bhi _021F8AA0",
+        "register": "r0",
+        "verdict": "unsigned"
+       }
+      ],
+      "widths": [
+       {
+        "confidence": "high",
+        "evidence": "L1521: lsl r0, r0, #0x10 ; L1522: asr r0, r0, #0x10",
+        "kind": "truncation-pair",
+        "register": "r0",
+        "verdict": "s16"
+       },
+       {
+        "confidence": "high",
+        "evidence": "L1570: lsl r1, r1, #0x10 ; L1571: lsr r1, r1, #0x10",
+        "kind": "truncation-pair",
+        "register": "r1",
+        "verdict": "u16"
+       },
+       {
+        "base": "r4",
+        "confidence": "high",
+        "evidence": "L1515: ldrh r0, [r4, r1]",
+        "kind": "load-width",
+        "offset": "(r1)",
+        "verdict": "u16"
+       },
+       {
+        "base": "r0",
+        "confidence": "high",
+        "evidence": "L1520: ldrh r0, [r0, #6]",
+        "kind": "load-width",
+        "offset": "#6",
+        "verdict": "u16"
+       },
+       {
+        "base": "r0",
+        "confidence": "high",
+        "evidence": "L1533: strh r1, [r0]",
+        "kind": "store-width",
+        "offset": "#0",
+        "verdict": "u16"
+       },
+       {
+        "base": "r4",
+        "confidence": "high",
+        "evidence": "L1549: strh r1, [r4, r0]",
+        "kind": "store-width",
+        "offset": "(r0)",
+        "verdict": "u16"
+       }
+      ]
+     }
+    },
+    "generated": "2026-09-01T20:54:10Z",
+    "summary": {
+     "copyprop_cmp": 2,
+     "dead_store": 0,
+     "exact_types": 2,
+     "functions": 18,
+     "signed": 4,
+     "unsigned": 30,
+     "widths": 56
+    },
+    "tool": "asm_oracle.py"
+   },
+   "risks": [
+    "Return-type conflicts with frozen headers: ov18_021F7ED4 is declared void in pokedex_internal.h but returns TRUE; ov18_021F891C is declared u16 but returns unmasked u32. Do NOT edit pokedex_internal.h (5+ matched pokedex TUs include it). Use the shim already used in src/overlay_18_021F8AB8.c: #define ov18_021F7ED4 ov18_021F7ED4_UpstreamDecl and #define ov18_021F891C ov18_021F891C_UpstreamDecl BEFORE #include application/pokedex/pokedex_internal.h, then #undef both and declare BOOL ov18_021F7ED4(...) / u32 ov18_021F891C(...) locally.",
+    "ov18_021F8974/89C8/89D0 are declared with OverlayManager * in include/overlay_18.h (used by matched src/battle/battle_command.c). Define them with exactly those types and cast to PokedexEntryPopup * inside; do not change overlay_18.h.",
+    "No new header is needed: every export already has a declaration (pokedex_internal.h / overlay_18.h). Do not add declarations to either header (IPA cascade). All 13 non-exported helpers should be static with file-local prototypes.",
+    "Switch body SOURCE order must match asm layout: 822C case 0 first then 1..5; 831C case 17 (ALL) first then 0..16; 8468 case 14 (ALL) first then 7,13,11,5,4,12,9,6,1,2,3,10,0,8; 89F8 needs an explicit empty case 4 to keep the 5-entry jump table.",
+    "Unsigned compares everywhere: GF_ASSERT(fileIdx < 82) uses blo -> u32 param; all loop counters compare with blo/bls -> u32 (int would give blt/ble).",
+    "ldr+str self-stores of stack params at entry (8584 [0x30]; 8640/86D0 [0x28],[0x2c]; 8764 [0x2c],[0x34]) are MWCC home-slot spills, not source; keep those params unassigned to locals so they stay memory-resident across the loop.",
+    "8640/86D0 hoist min*4/max*4 to stack temps before the loop: write unk_1850[min].unk_0 inline in the loop condition (insight inline-invariant-in-loop-forces-param-spill); precomputed lo/hi locals will shrink the function.",
+    "8584 has two loop counters in different stack slots ([sp,#0xc] and [sp,#8]) -> declare a distinct u32 i in each branch block.",
+    "8974: 0x18-byte ldrb/strb copy loop is most likely an inlined constant-size memcpy(popup, unkStruct, sizeof(UnkStruct_50C)); a struct assignment would emit ldmia/stmia pairs. Try memcpy first.",
+    "heights/weights are void * in PokedexAppData; index through a local (s32 *) cast, do not retype the header field.",
+    "IsCryFinished lives in unk_02005D10.h (the IPA-sensitive TU per memory); including the header is fine, never modify it.",
+    "tst operand order varies (const-first for mask&8 / mask&4, var-first for byte&1): if a tst comes out with swapped registers, swap the source operand order.",
+    "The .extern lines at the top of the .s (ov18_021E5900 .. ov18_021E8B5C) are stale split leftovers; nothing in this file references them."
+   ],
+   "sweep_output": "sweep/out/overlay_18_021F7ED4.json"
+  },
   "asm/overlay_18_021F8AB8.s": {
    "notes": "Overlay 18 (Pokedex) \"Pokemon info/cry/footprint popup\" sub-app: chunk 5 of 5 in the overlay_18 split (tools/decomp_harness/split_manifests/overlay_18.json), addresses 0x021F8AB8-0x021F9694, 38 thumb functions (no ARM, no jump tables). This is the LAST chunk; the prior chunk (overlay_18_021F7ED4.s) and everything before it up to ov18_021F8950 is already declared in include/application/pokedex/pokedex_internal.h using PokedexAppData* as param0.\n\nCRITICAL FINDING: this chunk's functions do NOT operate on PokedexAppData - field offsets contradict that struct (e.g. PokedexAppData+0xC is `Window windows[101]` but this file reads work+0xC as a `Pokemon *mon` pointer via AcquireMonLock/GetMonData/ReleaseMonLock). This file's param0 is a SEPARATE, larger local \"work\" struct (name it UnkStruct_ov18_021F8AB8) built by ov18_021F8FA0 and torn down by ov18_021F91F0, embedding: BgConfig* bgConfig @0x0, PaletteData* @0x4, Pokemon* mon @0xC, BOOL natDexFlag @0x10 (confirmed via Pokedex_ConvertToCurrentDexNo(work[0x10], work[0x244]) matching include/pokedex_util.h Pokedex_ConvertToCurrentDexNo(BOOL natDexFlag, u32 species)), enum HeapID heapId @0x14, NARC *gfxNarc (open handle) @0x1C, Pokepic* @0x20 (return of ov18_021F95F8, `ldr r0,[r0,#0x20]`), Window windows[9] stride 0x10 @0x24..0xA4 (matches include/bg_window.h Window, size 0x10: BgConfig*(4)+5 bytes+u16 bitfield(2)+pixelBuffer ptr(4)), SpriteList*/G2dRenderer handle @0xB4 with an embedded G2dRenderer struct @0xB8+, four GF_2DGfxResMan* handles (2DGfxResObjMan[4]) @0x1E0/0x1E4/0x1E8/0x1EC (built by static ov18_021F8F60, destroyed by static ov18_021F8F84), three 0x10-byte ResHandleGroup blocks {charResObj,plttResObj,cellResObj,animResObj} at @0x1F4 (built ov18_021F8FF8 / destroyed ov18_021F9054), @0x208 (built ov18_021F9068 / destroyed ov18_021F9108), @0x230 (built ov18_021F9150 / destroyed ov18_021F91DC), Sprite* handles at @0x204 (0x81*4), @0x218 (0x86*4), @0x22C (0x8B*4), @0x1F0 (0x1F*0x10), and cached GetMonData results at @0x244 (species, attr 5), @0x248 (attr 0x70), @0x24C (attr 0xB1), @0x250 (attr 0xB2, note 0x25<<4 not <<2), plus a u16 palette-flash frame counter @0x242. All struct offsets are synthesized via `mov rX,#imm; lsl rX,#shift` (thumb immediate-offset-too-large idiom) rather than plain ldr/str immediates - reproducing this only requires declaring the real struct at these byte offsets, no special-casing needed.\n\nImport/export split (verified against asm/include/overlay_18_021F8AB8.inc .public list, 19 entries = 18 funcs + 1 rodata symbol, cross-referenced with thumb_func_start):\nEXPORTED (non-static, 18): ov18_021F8AB8, 021F8B10, 021F8BEC, 021F8C0C, 021F8C48, 021F8C68, 021F8CCC, 021F8F10, 021F8FA0, 021F91F0, 021F95AC, 021F95CC, 021F95F8, 021F95FC, 021F9648, 021F967C, 021F9688, 021F9694.\nSTATIC (20, absent from .public, must stay static): 021F8F28, 021F8F58, 021F8F60, 021F8F84, 021F8FF8, 021F9054, 021F9068, 021F9108, 021F9150, 021F91DC, 021F922C, 021F92AC, 021F92DC, 021F9310, 021F9370, 021F94A0, 021F94BC, 021F9508, 021F9518, 021F959C.\n\nIMPORTS: three functions (ov18_021E5900/5904/5908) come from src/poketool/pokefoot.c which has NO shared header - only local forward decls there (NarcId ov18_021E5900(void); int ov18_021E5904(int); int ov18_021E5908(void);), so this new file must declare them locally too. Thirteen more (ov18_021E590C/595C/59A8/613C/6D10/7698/8AB0/8ACC/8AE0/8B0C/8B18/8B24/8B5C) ARE declared in include/application/pokedex/pokedex_internal.h and can be called by including that header (safe: this file only CALLS them, never changes their signatures - no IPA cascade). All other imports are present with matching prototypes: AcquireMonLock/GetMonData/ReleaseMonLock -> pokemon.h; InitBgFromTemplate/FreeBgTilemapBuffer/BG_ClearCharDataRange/BgTilemapRectChangePalette/ScheduleBgTilemapBufferTransfer/AddWindow/FillWindowPixelBuffer/RemoveWindow/GetWindowWidth/ScheduleWindowCopyToVram/SetBgPriority -> bg_window.h; GfGfxLoader_* -> gf_gfx_loader.h; PaletteData_* -> palette.h; NewMsgDataFromNarc/DestroyMsgData/NewString_ReadMsgData -> msgdata.h; MessageFormat_New/StringExpandPlaceholders/BufferIntegerAsString -> message_format.h; String_New/String_Delete -> pm_string.h; AddTextPrinterParameterizedWithColor -> text.h; FontID_String_GetWidth(Multiline) -> font.h; Pokedex_ConvertToCurrentDexNo -> pokedex_util.h; GetDexHeightMsgBank/GetDexWeightMsgBank -> dex_mon_measures.h; Create2DGfxResObjMan/Destroy2DGfxResObjMan/DestroySingle2DGfxResObj/AddCharResObjFromOpenNarc/AddCellOrAnimResObjFromOpenNarc/AddPlttResObjFromOpenNarc/GF2DGfxResObj_GetResID/sub_0200A740 -> unk_0200A090.h; CreateSpriteResourcesHeader/G2dRenderer_Init -> unk_02009D48.h; SpriteTransfer_* -> sprite_transfer.h; Sprite_Create/Delete/SetDrawFlag/SetPalIndexRespectVramOffset/GetImageProxy/SpriteList_Delete/ClearMainOAM -> sprite.h; ObjCharTransfer_InitEx/Destroy -> obj_char_transfer.h; GfGfx_EngineATogglePlanes/GfGfx_EngineBTogglePlanes -> gf_gfx_planes.h; Heap_AllocAtEnd -> heap.h; NARC_New/NARC_Delete -> filesystem.h; GetPokemonSpriteCharAndPlttNarcIds -> pokemon.h; PokepicManager_CreatePokepic/Pokepic_StartPaletteFade/Pokepic_ResumePaletteFade -> pokepic.h; memcpy/memset/Heap_Free/DC_FlushRange/GX_LoadOBJ/NNS_G2dGetImageLocation are SDK/libc.\n\nData sections (7 rodata symbols, order load-bearing, total ~0xF8 bytes): ov18_021FBD50 (0x10, 4 words, param block for ObjCharTransfer_InitEx via ov18_021F8F28), ov18_021FBD60/7C/98 (0x1C each = BgTemplate, matches include/bg_window.h BgTemplate exactly; used in ov18_021F8B10 for 3 BGs), ov18_021FBDB4 (0x48 = WindowTemplate[9], 8-byte struct, consumed in a loop in ov18_021F8CCC), ov18_021FBDFC (0x14 = u8[20] lookup table, indexed by ov18_021F9688 via ldrb r0,[r1,r0]), ov18_021FBE10 (0x48 = u32[18] lookup table, indexed *4 by ov18_021F967C).\n\nNo DECL_CHUNK_EX / save_arrays.c involvement (pure UI/gfx module, no save data). No jump tables, no soft-float, no signed/unsigned division idioms, no ARM-mode code, no 2-mod-4-sized functions - this file is clean on the classic MWCC matching blockers; the primary risk is struct-offset/signature discovery.\n\nSuggested C signatures for the 18 exported functions (param0 typed as UnkStruct_ov18_021F8AB8 *work unless noted): void ov18_021F8AB8(work) [cache species/attrs from work->mon]; void ov18_021F8B10(work) [alloc 3 BGs from BD7C/BD60/BD98 templates + load char/scrn/pal data]; void ov18_021F8BEC(work) [free BG tilemaps 3/2/1]; void ov18_021F8C0C(work) [begin palette fade + Pokepic_StartPaletteFade]; BOOL ov18_021F8C48(work) [poll palette-fade-done, TRUE when settled]; void ov18_021F8C68(work) [frame-counted BgTilemapRectChangePalette flasher, resets counter at 0x20 frames]; void ov18_021F8CCC(work) [build 9 windows + print dex-entry text: number/name/type/height/weight via ov18_021F9648/021F95FC]; void ov18_021F8F10(work) [remove the 9 windows - mirror of 8CCC]; void ov18_021F8FA0(work) [master init: G2dRenderer_Init, ClearMainOAM, then all static sub-builders]; void ov18_021F91F0(work) [master teardown, mirrors 8FA0 in reverse, deletes SpriteList]; void ov18_021F95AC(man) [4x Sprite_SetDrawFlag(FALSE) over sprite slots stride 0x14 - SEE RISK on param type]; void ov18_021F95CC(work) [PokepicManager_CreatePokepic, stores result @work+0x20]; Pokepic *ov18_021F95F8(man) [return work->+0x20 - frozen signature, see risk]; u8 ov18_021F95FC(Window *win, FontID fontId, String *str, int x, int alignMode, u32 color) [thin wrapper over AddTextPrinterParameterizedWithColor with left/center/right x-adjustment via FontID_String_GetWidth]; void ov18_021F9648(Window *win, MsgData *msgData, int strNo, FontID fontId, int x, int alignMode, u32 color) [NewString_ReadMsgData + ov18_021F95FC + String_Delete]; u32 ov18_021F967C(int idx) [ov18_021FBE10[idx] table lookup]; u8 ov18_021F9688(int idx) [ov18_021FBDFC[idx] byte table lookup, pal-index helper]; void *ov18_021F9694(void *dst_ignored, enum HeapID heapId) [footprint/mini-icon 0x80-byte buffer builder via GfGfxLoader_GetCharData+memcpy, heap-allocated, caller frees].",
    "risks": [
@@ -23475,7 +24316,7 @@
    "sweep_output": "sweep/out/unk_02097B78.json"
   }
  },
- "generated": "2026-09-01T19:21:26Z",
+ "generated": "2026-09-01T20:54:09Z",
  "signature_conflicts": [
   "DestroySysTaskAndEnvironment",
   "GridInputHandler_GetNextInput",
@@ -23536,6 +24377,8 @@
   "ov14_021F75C8",
   "ov14_021F7A50",
   "ov14_021F7B7C",
+  "ov18_021F8824",
+  "ov18_021F8838",
   "ov35_02259D80",
   "ov80_02237FA4",
   "ov83_02242AB4",
@@ -26318,6 +27161,152 @@
    "sources": [
     "asm/overlay_18_021EE35C.s",
     "asm/overlay_18_021F0918.s"
+   ]
+  },
+  "PokedexAppData (existing, include/application/pokedex/pokedex_internal.h)": {
+   "fields": {
+    "0x0": [
+     {
+      "meaning": "args -> args->pokedex at +0",
+      "source": "asm/overlay_18_021F7ED4.s",
+      "width": 4
+     }
+    ],
+    "0x1030": [
+     {
+      "meaning": "unk_1030[518] {u16 unk_0 species, u16 unk_2 status}; cleared as 0x818 block; indexed by page*15+col, by dexNo-1, or i+1",
+      "source": "asm/overlay_18_021F7ED4.s",
+      "width": 2072
+     }
+    ],
+    "0x1848": [
+     {
+      "meaning": "heights: declared void *, used as s32[species]; cast locally, do not retype the header field",
+      "source": "asm/overlay_18_021F7ED4.s",
+      "width": 4
+     }
+    ],
+    "0x184C": [
+     {
+      "meaning": "weights: same, s32[species]",
+      "source": "asm/overlay_18_021F7ED4.s",
+      "width": 4
+     }
+    ],
+    "0x1850": [
+     {
+      "meaning": "unk_1850: PokedexAppData_UnkSub1850 * {u16 unk_0 height bound, u16 unk_2 weight bound}[153]",
+      "source": "asm/overlay_18_021F7ED4.s",
+      "width": 4
+     }
+    ],
+    "0x1854": [
+     {
+      "meaning": "unk_1854: u8 * area flags per species",
+      "source": "asm/overlay_18_021F7ED4.s",
+      "width": 4
+     }
+    ],
+    "0x1858": [
+     {
+      "meaning": "unk_1858 natDex flag (u8)",
+      "source": "asm/overlay_18_021F7ED4.s",
+      "width": 1
+     }
+    ],
+    "0x1859": [
+     {
+      "meaning": "unk_1859 page/row",
+      "source": "asm/overlay_18_021F7ED4.s",
+      "width": 1
+     }
+    ],
+    "0x185A": [
+     {
+      "meaning": "unk_185A column (0..14)",
+      "source": "asm/overlay_18_021F7ED4.s",
+      "width": 1
+     }
+    ],
+    "0x1860": [
+     {
+      "meaning": "unk_1860 int flag",
+      "source": "asm/overlay_18_021F7ED4.s",
+      "width": 4
+     }
+    ],
+    "0x878": [
+     {
+      "meaning": "unk_0878 PokedexAppData_UnkSub0878: u16 unk_000[493][2] (species, 1=seen/2=caught), u16 unk_7B4 count, u16 unk_7B6 caught count; cleared as one 0x7B8 block",
+      "source": "asm/overlay_18_021F7ED4.s",
+      "width": 1976
+     }
+    ]
+   },
+   "size_guesses": {
+    "asm/overlay_18_021F7ED4.s": "0x1910 (unchanged)"
+   },
+   "sources": [
+    "asm/overlay_18_021F7ED4.s"
+   ]
+  },
+  "PokedexEntryPopup (existing, include/overlay_18_021F8AB8.h)": {
+   "fields": {
+    "0x0": [
+     {
+      "meaning": "UnkStruct_50C copied in by ov18_021F8974 (bgConfig, paletteData, pokepicManager, mon, natDexEnabled, heapId)",
+      "source": "asm/overlay_18_021F7ED4.s",
+      "width": 24
+     }
+    ],
+    "0x18": [
+     {
+      "meaning": "task",
+      "source": "asm/overlay_18_021F7ED4.s",
+      "width": 4
+     }
+    ],
+    "0x1C": [
+     {
+      "meaning": "gfxNarc",
+      "source": "asm/overlay_18_021F7ED4.s",
+      "width": 4
+     }
+    ],
+    "0x240": [
+     {
+      "meaning": "unk_240 task state 0..4",
+      "source": "asm/overlay_18_021F7ED4.s",
+      "width": 2
+     }
+    ],
+    "0x244": [
+     {
+      "meaning": "species (u32, cast to u16 for PlayCryEx)",
+      "source": "asm/overlay_18_021F7ED4.s",
+      "width": 4
+     }
+    ],
+    "0x254": [
+     {
+      "meaning": "unk_254 done flag read by ov18_021F89C8",
+      "source": "asm/overlay_18_021F7ED4.s",
+      "width": 4
+     }
+    ],
+    "0xB4": [
+     {
+      "meaning": "spriteList",
+      "source": "asm/overlay_18_021F7ED4.s",
+      "width": 4
+     }
+    ]
+   },
+   "size_guesses": {
+    "asm/overlay_18_021F7ED4.s": "0x258 (Heap_Alloc size confirms)"
+   },
+   "sources": [
+    "asm/overlay_18_021F7ED4.s"
    ]
   },
   "Request (a.k.a. PendingItem descriptor)": {
@@ -30989,6 +31978,14 @@
     "asm/overlay_83_0223DD60.s": "u32 FrontierSave_GetStat(void *frontierStatic, int a1, int a2)"
    }
   },
+  "G2_BlendNone": {
+   "callers": [
+    "asm/overlay_18_021F7ED4.s"
+   ],
+   "header": "lib/include/nitro/gx/g2.h (<nitro/gx/gx.h>)",
+   "known_prototype": "static inline void G2_BlendNone(void) { reg_G2_BLDCNT = 0; }",
+   "signature_sources": {}
+  },
   "G2dRenderer_Init": {
    "callers": [
     "asm/overlay_29.s",
@@ -31075,6 +32072,7 @@
     "asm/overlay_01_021F6830.s",
     "asm/overlay_01_021FB368.s",
     "asm/overlay_01_021FB4C0.s",
+    "asm/overlay_18_021F7ED4.s",
     "asm/overlay_80_02239AF8.s",
     "asm/overlay_80_0223A00C.s",
     "asm/overlay_83_02243D7C.s",
@@ -31441,6 +32439,14 @@
    ],
    "signature_sources": {}
   },
+  "GetPokedexDataNarcID": {
+   "callers": [
+    "asm/overlay_18_021F7ED4.s"
+   ],
+   "header": "include/dex_mon_measures.h",
+   "known_prototype": "NarcId GetPokedexDataNarcID(void)",
+   "signature_sources": {}
+  },
   "GetSpecialSpawnWarpData": {
    "callers": [],
    "confidence": "high",
@@ -31611,6 +32617,14 @@
    "signature_sources": {
     "asm/overlay_32.s": "u32 GfGfxLoader_LoadCharDataFromOpenNarc(NARC *narc, u32 memberId, BgConfig *bg, u8 layer, ...)"
    }
+  },
+  "GfGfxLoader_LoadFromNarc_GetSizeOut": {
+   "callers": [
+    "asm/overlay_18_021F7ED4.s"
+   ],
+   "header": "include/gf_gfx_loader.h",
+   "known_prototype": "void *GfGfxLoader_LoadFromNarc_GetSizeOut(NarcId narcId, s32 fileId, BOOL isCompressed, enum HeapID heapID, BOOL atEnd, u32 *sizeOut)",
+   "signature_sources": {}
   },
   "GfGfxLoader_LoadFromOpenNarc": {
    "callers": [
@@ -31891,6 +32905,7 @@
     "asm/overlay_14_021EFDE4.s",
     "asm/overlay_14_021F1808.s",
     "asm/overlay_14_021F6628.s",
+    "asm/overlay_18_021F7ED4.s",
     "asm/overlay_80_022384D8.s",
     "asm/overlay_80_0223A00C.s",
     "asm/overlay_83_02246E08.s",
@@ -31910,6 +32925,7 @@
     "asm/overlay_14_021F2490.s",
     "asm/overlay_14_021F4B90.s",
     "asm/overlay_18_021F0918.s",
+    "asm/overlay_18_021F7ED4.s",
     "asm/overlay_83_02246E08.s",
     "asm/overlay_98.s",
     "asm/unk_02056680.s",
@@ -31973,6 +32989,7 @@
     "asm/overlay_14_021F58B8.s",
     "asm/overlay_18_021EE35C.s",
     "asm/overlay_18_021F0918.s",
+    "asm/overlay_18_021F7ED4.s",
     "asm/overlay_32.s",
     "asm/overlay_80_022384D8.s",
     "asm/overlay_80_0223A00C.s",
@@ -32028,6 +33045,14 @@
    ],
    "header": "include/bg_window.h",
    "known_prototype": "void InitWindow(Window *window)",
+   "signature_sources": {}
+  },
+  "IsCryFinished": {
+   "callers": [
+    "asm/overlay_18_021F7ED4.s"
+   ],
+   "header": "include/unk_02005D10.h",
+   "known_prototype": "BOOL IsCryFinished(void)",
    "signature_sources": {}
   },
   "IsPaletteFadeFinished": {
@@ -32248,6 +33273,12 @@
    ],
    "header": "lib/include/nitro/mi/memory.h",
    "known_prototype": "void MI_Copy36B(const void *pSrc, void *pDst)",
+   "signature_sources": {}
+  },
+  "MI_CpuClear32": {
+   "callers": [
+    "asm/overlay_18_021F7ED4.s"
+   ],
    "signature_sources": {}
   },
   "MI_CpuCopy8": {
@@ -32673,6 +33704,7 @@
    "callers": [
     "asm/overlay_01_021E8744.s",
     "asm/overlay_14_021EAF08.s",
+    "asm/overlay_18_021F7ED4.s",
     "asm/overlay_29.s",
     "asm/overlay_32.s",
     "asm/overlay_80_0223A00C.s",
@@ -32701,6 +33733,7 @@
    "callers": [
     "asm/overlay_01_021E8744.s",
     "asm/overlay_14_021EAF08.s",
+    "asm/overlay_18_021F7ED4.s",
     "asm/overlay_29.s",
     "asm/overlay_32.s",
     "asm/overlay_80_0223A00C.s",
@@ -33485,6 +34518,14 @@
    ],
    "signature_sources": {}
   },
+  "PlayCryEx": {
+   "callers": [
+    "asm/overlay_18_021F7ED4.s"
+   ],
+   "header": "include/sound_02004A44.h (declared void there; src/unk_02005D10.c defines it BOOL -- include the header, do not redeclare)",
+   "known_prototype": "void PlayCryEx(int mode, int species, int pan, int volume, int heapId, int form)",
+   "signature_sources": {}
+  },
   "PlaySE": {
    "callers": [
     "asm/overlay_01_021E8744.s",
@@ -33651,19 +34692,29 @@
   },
   "Pokedex_CheckMonCaughtFlag": {
    "callers": [
-    "asm/overlay_18_021EE35C.s"
+    "asm/overlay_18_021EE35C.s",
+    "asm/overlay_18_021F7ED4.s"
    ],
    "header": "include/pokedex.h",
-   "known_prototype": "see pokedex.h",
+   "known_prototype": "BOOL Pokedex_CheckMonCaughtFlag(const Pokedex *pokedex, u16 species)",
+   "signature_sources": {}
+  },
+  "Pokedex_CheckMonSeenFlag": {
+   "callers": [
+    "asm/overlay_18_021F7ED4.s"
+   ],
+   "header": "include/pokedex.h",
+   "known_prototype": "BOOL Pokedex_CheckMonSeenFlag(const Pokedex *pokedex, u16 species)",
    "signature_sources": {}
   },
   "Pokedex_ConvertToCurrentDexNo": {
    "callers": [
     "asm/overlay_14_021F4B90.s",
-    "asm/overlay_18_021EE35C.s"
+    "asm/overlay_18_021EE35C.s",
+    "asm/overlay_18_021F7ED4.s"
    ],
-   "header": "include/pokedex.h",
-   "known_prototype": "see pokedex.h",
+   "header": "include/pokedex_util.h",
+   "known_prototype": "u32 Pokedex_ConvertToCurrentDexNo(BOOL natDexFlag, u32 species)",
    "signature_sources": {}
   },
   "Pokedex_Copy": {
@@ -34054,6 +35105,7 @@
   },
   "SpriteList_RenderAndAnimateSprites": {
    "callers": [
+    "asm/overlay_18_021F7ED4.s",
     "asm/overlay_29.s",
     "asm/overlay_32.s",
     "asm/overlay_83_0223DD60.s",
@@ -34537,6 +35589,7 @@
   "SysTask_CreateOnMainQueue": {
    "callers": [
     "asm/overlay_01_021FCD2C.s",
+    "asm/overlay_18_021F7ED4.s",
     "asm/overlay_80_022384D8.s",
     "asm/overlay_80_0223A00C.s"
    ],
@@ -34569,6 +35622,7 @@
    "callers": [
     "asm/overlay_01_021FCD2C.s",
     "asm/overlay_14_021EAF08.s",
+    "asm/overlay_18_021F7ED4.s",
     "asm/overlay_80_022384D8.s",
     "asm/overlay_80_0223A00C.s",
     "asm/unk_02069660.s"
@@ -34936,12 +35990,13 @@
     "asm/overlay_14_021F2490.s",
     "asm/overlay_14_021F6628.s",
     "asm/overlay_18_021EE35C.s",
+    "asm/overlay_18_021F7ED4.s",
     "asm/overlay_29.s",
     "asm/overlay_98.s"
    ],
    "confidence": "low",
-   "header": "runtime",
-   "known_prototype": "MWCC soft-div runtime (quot r0, rem r1)",
+   "header": "none",
+   "known_prototype": "compiler runtime; emitted by unsigned 32-bit /",
    "signature_guess": "unsigned __u32_div_f(unsigned num, unsigned den) /* MWCC runtime, quotient r0 remainder r1 */",
    "signature_sources": {
     "asm/overlay_29.s": "unsigned __u32_div_f(unsigned num, unsigned den) /* MWCC runtime, quotient r0 remainder r1 */"
@@ -34959,9 +36014,18 @@
     "asm/overlay_98.s": "extern SysGlobals gSystem"
    }
   },
+  "memcpy": {
+   "callers": [
+    "asm/overlay_18_021F7ED4.s"
+   ],
+   "header": "string.h via global.h",
+   "known_prototype": "void *memcpy(void *, const void *, size_t)",
+   "signature_sources": {}
+  },
   "memset": {
    "callers": [
     "asm/overlay_01_021FCD2C.s",
+    "asm/overlay_18_021F7ED4.s",
     "asm/overlay_80_0223A00C.s",
     "asm/overlay_83_0223DD60.s",
     "asm/overlay_83_02242FE8.s",
@@ -48829,25 +49893,683 @@
     }
    ]
   },
+  "ov18_021F7ED4": {
+   "callers": [],
+   "confidence": "high",
+   "defined_in": "asm/overlay_18_021F7ED4.s",
+   "mode": "thumb",
+   "notes": [
+    "[asm/overlay_18_021F7ED4.s] EXPORTED (6 call sites in src/application/pokedex/ov18_021E8BF4.c, return value unused there). pokedex_internal.h declares it VOID with (PokedexAppData*, u8, u32 x10) but the asm ends mov r0,#1 -> it returns TRUE; keep the header frozen and use the #define shim (see risks). Frame: sub sp,#0x24; incoming stack args a4..a11 at [sp,#0x38..0x54]; locals [0x10]=order spill, [0x14]=letter spill, [0x18]=count2, [0x1c]=count1, [0x20]=listCount. Flow: MI_CpuClear32(&app->unk_0878, sizeof(PokedexAppData_UnkSub0878)); buf1=Heap_AllocAtEnd(HEAP_ID_POKEDEX_APP(0x25), 0x3DA=NATIONAL_DEX_COUNT*2); GF_ASSERT(buf1!=NULL) (bne-over-assert polarity); memset(buf1,0,0x3DA); count1=0; same for buf2/count2; if(natDexFlag==0) list=ov18_021F8168(1,&listCount); else list=ov18_021F8168(0,&listCount) (else branch reuses r0=0 left from the count2 store, write the literal 0); ov18_021F8198(buf1,&count1,app->args->pokedex,list,listCount); ov18_021F822C(order,buf2,&count2,buf1,count1,pokedex); SWAP; ov18_021F82CC(letter,...); if(count2==0)->end; SWAP; ov18_021F831C(type1,...); if(count2==0)->end; SWAP; ov18_021F831C(type2,...); if(count2==0)->end; SWAP; ov18_021F8468(bodyType,...); if(count2==0)->end; SWAP; if(app->unk_1860==0 && (areaMask & 4)){ ov18_021F8584(app,6,buf2,&count2,buf1,count1,pokedex); if(count2==0)->end; } else { ov18_021F8584(app,areaMask,...); if(count2==0)->end; } SWAP; ov18_021F8640(app,(u16)heightMin,(u16)heightMax,buf2,&count2,buf1,count1,pokedex); SWAP; ov18_021F86D0(app,(u16)weightMin,(u16)weightMax,buf2,&count2,buf1,count1,pokedex); ov18_021F81D8(&app->unk_0878,pokedex,buf2,count2); end: Heap_Free(list); Heap_Free(buf2); Heap_Free(buf1); return TRUE. SWAP = memcpy(buf1,buf2,count2*2); count1=count2; memset(buf2,0,count2*2); count2=0. The count2==0 exits all target the single end label (nested ifs or a do{}while(0)/goto shape, try nested first). The lsl/lsr #16 on a6..a9 at the 8640/86D0 call sites come from those callees taking u16 params while these params are u32. Mask literals: 4 = 1<<DEX_SEARCH_AREA_KANTO, 6 = (1<<DEX_SEARCH_AREA_JOHTO)|(1<<DEX_SEARCH_AREA_KANTO); asm is mov r0,#4; tst r0,r1 (constant operand first)."
+   ],
+   "signature_guess": "BOOL ov18_021F7ED4(PokedexAppData *pokedexApp, u8 natDexFlag, u32 order, u32 letter, u32 type1, u32 type2, u32 heightMin, u32 heightMax, u32 weightMin, u32 weightMax, u32 areaMask, u32 bodyType)",
+   "signature_sources": {
+    "asm/overlay_18_021F7ED4.s": "BOOL ov18_021F7ED4(PokedexAppData *pokedexApp, u8 natDexFlag, u32 order, u32 letter, u32 type1, u32 type2, u32 heightMin, u32 heightMax, u32 weightMin, u32 weightMax, u32 areaMask, u32 bodyType)"
+   },
+   "struct_accesses": [
+    {
+     "meaning": "args (PokedexArgs *); args->pokedex ([args+0]) is reloaded before every filter call",
+     "offset": "0x0",
+     "param": 0,
+     "width": 4
+    },
+    {
+     "meaning": "&unk_0878 (PokedexAppData_UnkSub0878): MI_CpuClear32 size 0x7B8 (MWCC derives it as 0x878-0xC0) and passed as arg0 of ov18_021F81D8",
+     "offset": "0x878",
+     "param": 0,
+     "width": 4
+    },
+    {
+     "meaning": "unk_1860 int; if ==0 && (areaMask & 4) the area filter is called with literal 6 instead of areaMask",
+     "offset": "0x1860",
+     "param": 0,
+     "width": 4
+    }
+   ]
+  },
+  "ov18_021F8168": {
+   "callers": [
+    "asm/overlay_18_021F7ED4.s"
+   ],
+   "confidence": "high",
+   "defined_in": "asm/overlay_18_021F7ED4.s",
+   "mode": "thumb",
+   "notes": [
+    "[asm/overlay_18_021F7ED4.s] Not in .public, only called in-file -> static. GF_ASSERT(fileIdx < 82) with blo -> unsigned compare, declare the param u32 (or cast). Body: ret = GfGfxLoader_LoadFromNarc_GetSizeOut(GetPokedexDataNarcID(), fileIdx + 11, FALSE, HEAP_ID_POKEDEX_APP, FALSE, &size); *countOut = size >> 1; return ret. File map: 0/1 = national/johto species list, 2..6 = sort orders, letter+7, type+0x33, body+0x44."
+   ],
+   "signature_guess": "static u16 *ov18_021F8168(u32 fileIdx, u32 *countOut)",
+   "signature_sources": {
+    "asm/overlay_18_021F7ED4.s": "static u16 *ov18_021F8168(u32 fileIdx, u32 *countOut)"
+   },
+   "struct_accesses": [
+    {
+     "meaning": "*countOut = loadedSize / 2 (u16 element count)",
+     "offset": "0x0",
+     "param": 1,
+     "width": 4
+    }
+   ]
+  },
+  "ov18_021F8198": {
+   "callers": [
+    "asm/overlay_18_021F7ED4.s"
+   ],
+   "confidence": "high",
+   "defined_in": "asm/overlay_18_021F7ED4.s",
+   "mode": "thumb",
+   "notes": [
+    "[asm/overlay_18_021F7ED4.s] 5th param on stack ([sp,#0x20]). Loop: for (i = 0; i < srcCount; i++) if (Pokedex_CheckMonSeenFlag(pokedex, src[i])) { dst[*count] = src[i]; (*count)++; } -- two statements (index read, then increment), unsigned counter (blo). src is walked (adds #2) by MWCC strength reduction, still write src[i]."
+   ],
+   "signature_guess": "static void ov18_021F8198(u16 *dst, u32 *count, Pokedex *pokedex, u16 *src, u32 srcCount)",
+   "signature_sources": {
+    "asm/overlay_18_021F7ED4.s": "static void ov18_021F8198(u16 *dst, u32 *count, Pokedex *pokedex, u16 *src, u32 srcCount)"
+   },
+   "struct_accesses": [
+    {
+     "meaning": "*count = 0 then dst[*count] = src[i]; (*count)++ per seen mon",
+     "offset": "0x0",
+     "param": 1,
+     "width": 4
+    }
+   ]
+  },
+  "ov18_021F81D8": {
+   "callers": [
+    "asm/overlay_18_021F7ED4.s"
+   ],
+   "confidence": "high",
+   "defined_in": "asm/overlay_18_021F7ED4.s",
+   "mode": "thumb",
+   "notes": [
+    "[asm/overlay_18_021F7ED4.s] Called once from ov18_021F7ED4 with &pokedexApp->unk_0878. Body: sub->unk_7B4 = count; sub->unk_7B6 = 0; for (i = 0; i < count; i++) { sub->unk_000[i][0] = src[i]; if (Pokedex_CheckMonCaughtFlag(pokedex, src[i])) { sub->unk_000[i][1] = 2; sub->unk_7B6++; } else { sub->unk_000[i][1] = 1; } }. src[i] is loaded twice (before and after the strh) -- do not cache it in a temp. MWCC walks the sub pointer by 4 and pre-computes &sub->unk_7B6 in r6; that is strength reduction, keep indexed source."
+   ],
+   "signature_guess": "static void ov18_021F81D8(PokedexAppData_UnkSub0878 *sub, Pokedex *pokedex, u16 *src, u32 count)",
+   "signature_sources": {
+    "asm/overlay_18_021F7ED4.s": "static void ov18_021F81D8(PokedexAppData_UnkSub0878 *sub, Pokedex *pokedex, u16 *src, u32 count)"
+   },
+   "struct_accesses": [
+    {
+     "meaning": "unk_7B4 = count (total entries)",
+     "offset": "0x7B4",
+     "param": 0,
+     "width": 2
+    },
+    {
+     "meaning": "unk_7B6 = 0 then ++ per caught mon",
+     "offset": "0x7B6",
+     "param": 0,
+     "width": 2
+    },
+    {
+     "meaning": "unk_000[i][0] = src[i] (species), stride 4",
+     "offset": "0x0",
+     "param": 0,
+     "width": 2
+    },
+    {
+     "meaning": "unk_000[i][1] = caught ? 2 : 1",
+     "offset": "0x2",
+     "param": 0,
+     "width": 2
+    }
+   ]
+  },
+  "ov18_021F822C": {
+   "callers": [
+    "asm/overlay_18_021F7ED4.s"
+   ],
+   "confidence": "high",
+   "defined_in": "asm/overlay_18_021F7ED4.s",
+   "mode": "thumb",
+   "notes": [
+    "[asm/overlay_18_021F7ED4.s] Dense jump table 0..5 (cmp #5; bhi). Case body order = source order: case 0 (DEX_ORDER_NATIONAL: memcpy(dst,src,srcCount*2); *count = srcCount; return) FIRST, then cases 1..5 loading file 2..6 via ov18_021F8168(n,&fileCount) (case 1 also sets flag=1), default: GF_AssertFail(). flag local starts 0 (mov r4,#0 in prologue). Tail: ov18_021F8764(dst,count,src,srcCount,fileList,fileCount,flag,pokedex); Heap_Free(fileList). Stack args at [sp,#0x30]=srcCount, [sp,#0x34]=pokedex."
+   ],
+   "signature_guess": "static void ov18_021F822C(u32 order, u16 *dst, u32 *count, u16 *src, u32 srcCount, Pokedex *pokedex)",
+   "signature_sources": {
+    "asm/overlay_18_021F7ED4.s": "static void ov18_021F822C(u32 order, u16 *dst, u32 *count, u16 *src, u32 srcCount, Pokedex *pokedex)"
+   },
+   "struct_accesses": [
+    {
+     "meaning": "*count = srcCount on the passthrough case",
+     "offset": "0x0",
+     "param": 2,
+     "width": 4
+    }
+   ]
+  },
+  "ov18_021F82CC": {
+   "callers": [
+    "asm/overlay_18_021F7ED4.s"
+   ],
+   "confidence": "high",
+   "defined_in": "asm/overlay_18_021F7ED4.s",
+   "mode": "thumb",
+   "notes": [
+    "[asm/overlay_18_021F7ED4.s] if (letter == DEX_SEARCH_LETTERS_ALL (0x1a)) { memcpy(dst,src,srcCount*2); *count = srcCount; return; } fileList = ov18_021F8168(letter + 7, &fileCount); ov18_021F8764(dst,count,src,srcCount,fileList,fileCount,TRUE,pokedex); Heap_Free(fileList). Stack args [sp,#0x28]=srcCount, [sp,#0x2c]=pokedex."
+   ],
+   "signature_guess": "static void ov18_021F82CC(u32 letter, u16 *dst, u32 *count, u16 *src, u32 srcCount, Pokedex *pokedex)",
+   "signature_sources": {
+    "asm/overlay_18_021F7ED4.s": "static void ov18_021F82CC(u32 letter, u16 *dst, u32 *count, u16 *src, u32 srcCount, Pokedex *pokedex)"
+   }
+  },
+  "ov18_021F831C": {
+   "callers": [
+    "asm/overlay_18_021F7ED4.s"
+   ],
+   "confidence": "high",
+   "defined_in": "asm/overlay_18_021F7ED4.s",
+   "mode": "thumb",
+   "notes": [
+    "[asm/overlay_18_021F7ED4.s] switch (ov18_021F8970(type)) -- the identity call is real (bl then cmp r0,#0x11), 18-entry jump table 0..17. SOURCE ORDER of bodies: case 17 (DEX_SEARCH_TYPE_ALL: memcpy passthrough, *count = srcCount, return) FIRST, then cases 0..16 in order each doing fileList = ov18_021F8168(0x33 + n, &fileCount), default GF_AssertFail(). Tail: ov18_021F8764(dst,count,src,srcCount,fileList,fileCount,FALSE,pokedex); Heap_Free(fileList). Note flag is FALSE here (caught check applies) unlike letter/body (TRUE)."
+   ],
+   "signature_guess": "static void ov18_021F831C(u32 type, u16 *dst, u32 *count, u16 *src, u32 srcCount, Pokedex *pokedex)",
+   "signature_sources": {
+    "asm/overlay_18_021F7ED4.s": "static void ov18_021F831C(u32 type, u16 *dst, u32 *count, u16 *src, u32 srcCount, Pokedex *pokedex)"
+   }
+  },
+  "ov18_021F8468": {
+   "callers": [
+    "asm/overlay_18_021F7ED4.s"
+   ],
+   "confidence": "high",
+   "defined_in": "asm/overlay_18_021F7ED4.s",
+   "mode": "thumb",
+   "notes": [
+    "[asm/overlay_18_021F7ED4.s] 15-entry jump table 0..14. Body SOURCE ORDER (must be reproduced): case 14 (DEX_SEARCH_BODYTYPE_ALL, memcpy passthrough + return) first, then cases in FILE order 0x44..0x51: case 7->0x44, 13->0x45, 11->0x46, 5->0x47, 4->0x48, 12->0x49, 9->0x4A, 6->0x4B, 1->0x4C, 2->0x4D, 3->0x4E, 10->0x4F, 0->0x50, 8->0x51; default GF_AssertFail(). Tail: ov18_021F8764(dst,count,src,srcCount,fileList,fileCount,TRUE,pokedex); Heap_Free(fileList)."
+   ],
+   "signature_guess": "static void ov18_021F8468(u32 bodyType, u16 *dst, u32 *count, u16 *src, u32 srcCount, Pokedex *pokedex)",
+   "signature_sources": {
+    "asm/overlay_18_021F7ED4.s": "static void ov18_021F8468(u32 bodyType, u16 *dst, u32 *count, u16 *src, u32 srcCount, Pokedex *pokedex)"
+   }
+  },
+  "ov18_021F8584": {
+   "callers": [
+    "asm/overlay_18_021F7ED4.s"
+   ],
+   "confidence": "high",
+   "defined_in": "asm/overlay_18_021F7ED4.s",
+   "mode": "thumb",
+   "notes": [
+    "[asm/overlay_18_021F7ED4.s] Stack args [sp,#0x28]=src, [sp,#0x2c]=srcCount (kept in r6), [sp,#0x30]=pokedex (ldr+str self-store idiom = MWCC home-slot spill, not source). if (areaMask & 8 /*1<<DEX_SEARCH_AREA_ALL*/) { memcpy(dst,src,srcCount*2); *count = srcCount; return; } else if (areaMask == 6) { for (i..srcCount) if ((areaMask & unk_1854[src[i]]) && !(unk_1854[src[i]] & 1) && Pokedex_CheckMonSeenFlag(pokedex,src[i])) { dst[*count]=src[i]; (*count)++; } } else { for (i..srcCount) if ((unk_1854[src[i]] & areaMask) && Pokedex_CheckMonSeenFlag(pokedex,src[i])) append; }. The two loops use DIFFERENT stack slots for their counters ([sp,#0xc] vs [sp,#8]) -> declare a separate u32 i inside each block. The 6-path reloads the table byte for both tests (no temp). tst operand order differs per test (tst r0(8),r7 / tst r2(mask),r0(byte) / tst r0(byte),r2(1) / tst r0(byte),r7(mask)) -- flip source operand order if a tst comes out swapped."
+   ],
+   "signature_guess": "static void ov18_021F8584(PokedexAppData *pokedexApp, u32 areaMask, u16 *dst, u32 *count, u16 *src, u32 srcCount, Pokedex *pokedex)",
+   "signature_sources": {
+    "asm/overlay_18_021F7ED4.s": "static void ov18_021F8584(PokedexAppData *pokedexApp, u32 areaMask, u16 *dst, u32 *count, u16 *src, u32 srcCount, Pokedex *pokedex)"
+   },
+   "struct_accesses": [
+    {
+     "meaning": "unk_1854 (u8 *) per-species area flag byte, indexed by species; bit0 = unknown-area, bits 1/2 = Johto/Kanto",
+     "offset": "0x1854",
+     "param": 0,
+     "width": 4
+    },
+    {
+     "meaning": "*count append index",
+     "offset": "0x0",
+     "param": 3,
+     "width": 4
+    }
+   ]
+  },
+  "ov18_021F8640": {
+   "callers": [
+    "asm/overlay_18_021F7ED4.s"
+   ],
+   "confidence": "high",
+   "defined_in": "asm/overlay_18_021F7ED4.s",
+   "mode": "thumb",
+   "notes": [
+    "[asm/overlay_18_021F7ED4.s] No entry narrowing on r1/r2 (caller narrows) yet they are used as indices -> u16 params, matches the lsl/lsr at the call site in ov18_021F7ED4. Stack args [sp,#0x20]=count (r5), [0x24]=src, [0x28]=srcCount, [0x2c]=pokedex (self-store idiom). if (min == 0 && max == 0x98) { memcpy passthrough; *count = srcCount; return; } for (i=0;i<srcCount;i++) { h = heights[src[i]]; if (h >= unk_1850[min].unk_0 && h <= unk_1850[max].unk_0 && Pokedex_CheckMonCaughtFlag(pokedex, src[i])) { dst[*count] = src[i]; (*count)++; } }. MWCC hoists min*4 and max*4 into stack temps ([sp,#8],[sp,#4]) before the loop: per insight inline-invariant-in-loop-forces-param-spill write pokedexApp->unk_1850[min].unk_0 INLINE in the loop condition, do not precompute lo/hi locals. Compare is signed (blt/bgt) -> s32 height vs u16 promoted to int."
+   ],
+   "signature_guess": "static void ov18_021F8640(PokedexAppData *pokedexApp, u16 min, u16 max, u16 *dst, u32 *count, u16 *src, u32 srcCount, Pokedex *pokedex)",
+   "signature_sources": {
+    "asm/overlay_18_021F7ED4.s": "static void ov18_021F8640(PokedexAppData *pokedexApp, u16 min, u16 max, u16 *dst, u32 *count, u16 *src, u32 srcCount, Pokedex *pokedex)"
+   },
+   "struct_accesses": [
+    {
+     "meaning": "heights: s32 table indexed by species (ldr [tbl, species*4], signed cmp blt/bgt). Field is void * in the header -> cast ((s32 *)pokedexApp->heights)[species] locally",
+     "offset": "0x1848",
+     "param": 0,
+     "width": 4
+    },
+    {
+     "meaning": "unk_1850: PokedexAppData_UnkSub1850[] {u16 unk_0 height, u16 unk_2 weight} indexed by slider index min/max",
+     "offset": "0x1850",
+     "param": 0,
+     "width": 4
+    }
+   ]
+  },
+  "ov18_021F86D0": {
+   "callers": [
+    "asm/overlay_18_021F7ED4.s"
+   ],
+   "confidence": "high",
+   "defined_in": "asm/overlay_18_021F7ED4.s",
+   "mode": "thumb",
+   "notes": [
+    "[asm/overlay_18_021F7ED4.s] Byte-identical twin of ov18_021F8640 using weights and unk_1850[].unk_2; same 0x98 passthrough check and same hoisting behaviour."
+   ],
+   "signature_guess": "static void ov18_021F86D0(PokedexAppData *pokedexApp, u16 min, u16 max, u16 *dst, u32 *count, u16 *src, u32 srcCount, Pokedex *pokedex)",
+   "signature_sources": {
+    "asm/overlay_18_021F7ED4.s": "static void ov18_021F86D0(PokedexAppData *pokedexApp, u16 min, u16 max, u16 *dst, u32 *count, u16 *src, u32 srcCount, Pokedex *pokedex)"
+   },
+   "struct_accesses": [
+    {
+     "meaning": "weights: s32 table indexed by species",
+     "offset": "0x184C",
+     "param": 0,
+     "width": 4
+    },
+    {
+     "meaning": "unk_1850[min].unk_2 / unk_1850[max].unk_2 (weight bounds, ldrh [base+idx*4, #2])",
+     "offset": "0x1850",
+     "param": 0,
+     "width": 4
+    }
+   ]
+  },
+  "ov18_021F8764": {
+   "callers": [
+    "asm/overlay_18_021F7ED4.s"
+   ],
+   "confidence": "high",
+   "defined_in": "asm/overlay_18_021F7ED4.s",
+   "mode": "thumb",
+   "notes": [
+    "[asm/overlay_18_021F7ED4.s] Stack args [sp,#0x28]=fileList, [0x2c]=fileCount, [0x30]=flag, [0x34]=pokedex (0x2c and 0x34 show the ldr+str self-store spill idiom). *count = 0; if (flag == 1) { for (i=0;i<fileCount;i++) for (j=0;j<srcCount;j++) if (fileList[i] == src[j]) { dst[*count] = fileList[i]; (*count)++; break; } } else { same double loop but the append is gated by && Pokedex_CheckMonCaughtFlag(pokedex, fileList[i]) }. Outer loop is over the NARC file list (preserves file order), inner over src. Compare is cmp r0,#1; bne -> write flag == 1 / == TRUE, not if (flag). Outer counter lives in [sp,#0xc] both paths (one variable), inner j in r4/r6."
+   ],
+   "signature_guess": "static void ov18_021F8764(u16 *dst, u32 *count, u16 *src, u32 srcCount, u16 *fileList, u32 fileCount, BOOL skipCaughtCheck, Pokedex *pokedex)",
+   "signature_sources": {
+    "asm/overlay_18_021F7ED4.s": "static void ov18_021F8764(u16 *dst, u32 *count, u16 *src, u32 srcCount, u16 *fileList, u32 fileCount, BOOL skipCaughtCheck, Pokedex *pokedex)"
+   },
+   "struct_accesses": [
+    {
+     "meaning": "*count = 0 then append index",
+     "offset": "0x0",
+     "param": 1,
+     "width": 4
+    }
+   ]
+  },
   "ov18_021F8824": {
    "callers": [
-    "asm/overlay_18_021EE35C.s"
+    "asm/overlay_18_021EE35C.s",
+    "asm/overlay_18_021F7ED4.s"
    ],
-   "confidence": "low",
-   "signature_guess": "int ov18_021F8824(PokedexAppData*)",
+   "confidence": "high",
+   "defined_in": "asm/overlay_18_021F7ED4.s",
+   "mode": "thumb",
+   "notes": [
+    "[asm/overlay_18_021F7ED4.s] EXPORTED, matches pokedex_internal.h. return pokedexApp->unk_185A + pokedexApp->unk_1859 * 15; (mov r0,#0xf; mul r0,r1; add r0,r2,r0). No return mask -> u32 is right. Leaf, bx lr."
+   ],
+   "signature_guess": "u32 ov18_021F8824(PokedexAppData *pokedexApp)",
    "signature_sources": {
-    "asm/overlay_18_021EE35C.s": "int ov18_021F8824(PokedexAppData*)"
-   }
+    "asm/overlay_18_021EE35C.s": "int ov18_021F8824(PokedexAppData*)",
+    "asm/overlay_18_021F7ED4.s": "u32 ov18_021F8824(PokedexAppData *pokedexApp)"
+   },
+   "struct_accesses": [
+    {
+     "meaning": "unk_185A column (loaded first)",
+     "offset": "0x185A",
+     "param": 0,
+     "width": 1
+    },
+    {
+     "meaning": "unk_1859 row",
+     "offset": "0x1859",
+     "param": 0,
+     "width": 1
+    }
+   ]
   },
   "ov18_021F8838": {
    "callers": [
     "asm/overlay_18_021EE35C.s"
    ],
-   "confidence": "low",
-   "signature_guess": "int ov18_021F8838(PokedexAppData*)",
+   "confidence": "high",
+   "defined_in": "asm/overlay_18_021F7ED4.s",
+   "mode": "thumb",
+   "notes": [
+    "[asm/overlay_18_021F7ED4.s] EXPORTED, matches pokedex_internal.h (u16 via ldrh, no mask needed)."
+   ],
+   "signature_guess": "u16 ov18_021F8838(PokedexAppData *pokedexApp)",
    "signature_sources": {
-    "asm/overlay_18_021EE35C.s": "int ov18_021F8838(PokedexAppData*)"
+    "asm/overlay_18_021EE35C.s": "int ov18_021F8838(PokedexAppData*)",
+    "asm/overlay_18_021F7ED4.s": "u16 ov18_021F8838(PokedexAppData *pokedexApp)"
+   },
+   "struct_accesses": [
+    {
+     "meaning": "unk_1030[ov18_021F8824(app)].unk_0 (species), stride 4",
+     "offset": "0x1030",
+     "param": 0,
+     "width": 2
+    }
+   ]
+  },
+  "ov18_021F8850": {
+   "callers": [],
+   "confidence": "high",
+   "defined_in": "asm/overlay_18_021F7ED4.s",
+   "mode": "thumb",
+   "notes": [
+    "[asm/overlay_18_021F7ED4.s] EXPORTED, matches header (caller ov18_021E8BF4.c:3467 passes &pokedexApp->unk_0878). Leaf: push {r4,r5} only. u16 first = 0; for (i = 0; i < sub->unk_7B4; i++) { if (first == 0) first = sub->unk_000[i][0]; if (species == sub->unk_000[i][0]) return species; } return first. MWCC walks r0 (sub) by 4 -- strength reduction of unk_000[i][0]; if the hoisted count does not reproduce, try a local u16 count = sub->unk_7B4."
+   ],
+   "signature_guess": "u32 ov18_021F8850(PokedexAppData_UnkSub0878 *sub, u16 species)",
+   "signature_sources": {
+    "asm/overlay_18_021F7ED4.s": "u32 ov18_021F8850(PokedexAppData_UnkSub0878 *sub, u16 species)"
+   },
+   "struct_accesses": [
+    {
+     "meaning": "unk_7B4 count, loaded ONCE before the loop (hoisted)",
+     "offset": "0x7B4",
+     "param": 0,
+     "width": 2
+    },
+    {
+     "meaning": "unk_000[i][0] species, stride 4",
+     "offset": "0x0",
+     "param": 0,
+     "width": 2
+    }
+   ]
+  },
+  "ov18_021F8884": {
+   "callers": [],
+   "confidence": "high",
+   "defined_in": "asm/overlay_18_021F7ED4.s",
+   "mode": "thumb",
+   "notes": [
+    "[asm/overlay_18_021F7ED4.s] EXPORTED, matches header; called with 0/1. MI_CpuClear32(pokedexApp->unk_1030, sizeof(pokedexApp->unk_1030)); if (a1 == 1) { for (i=0;i<count;i++) { dexNo = Pokedex_ConvertToCurrentDexNo(app->unk_1858, app->unk_0878.unk_000[i][0]); app->unk_1030[dexNo - 1].unk_0 = unk_000[i][0]; app->unk_1030[dexNo - 1].unk_2 = unk_000[i][1]; } } else { for (i=0;i<count;i++) { app->unk_1030[i + 1].unk_0 = unk_000[i][0]; app->unk_1030[i + 1].unk_2 = unk_000[i][1]; } }. NOTE the else path stores at 0x1034+i*4, i.e. index i+1 (slot 0 unused). Counters unsigned (blo)."
+   ],
+   "signature_guess": "void ov18_021F8884(PokedexAppData *pokedexApp, int a1)",
+   "signature_sources": {
+    "asm/overlay_18_021F7ED4.s": "void ov18_021F8884(PokedexAppData *pokedexApp, int a1)"
+   },
+   "struct_accesses": [
+    {
+     "meaning": "unk_1030[518] cleared with MI_CpuClear32 size 0x818 (MWCC materialises it as 0x1030>>1)",
+     "offset": "0x1030",
+     "param": 0,
+     "width": 4
+    },
+    {
+     "meaning": "unk_0878.unk_7B4 count, RELOADED every iteration in both loops (stores may alias) -> write i < pokedexApp->unk_0878.unk_7B4 inline",
+     "offset": "0x102C",
+     "param": 0,
+     "width": 2
+    },
+    {
+     "meaning": "unk_1858 natDex flag -> Pokedex_ConvertToCurrentDexNo arg0",
+     "offset": "0x1858",
+     "param": 0,
+     "width": 1
+    },
+    {
+     "meaning": "unk_0878.unk_000[i][0]/[1] source pairs",
+     "offset": "0x878",
+     "param": 0,
+     "width": 2
+    }
+   ]
+  },
+  "ov18_021F891C": {
+   "callers": [
+    "asm/overlay_18_021F7ED4.s"
+   ],
+   "confidence": "high",
+   "defined_in": "asm/overlay_18_021F7ED4.s",
+   "mode": "thumb",
+   "notes": [
+    "[asm/overlay_18_021F7ED4.s] EXPORTED. pokedex_internal.h declares it u16 (3 matched callers) but the asm returns Pokedex_ConvertToCurrentDexNo() full-width with NO lsl/lsr mask -> real return type is u32 (insight narrow-return-type-masks-split-header). Define it u32 locally via the #define shim; that also makes ov18_021F8950 emit _u32_div_f naturally. Body: if (a1 == 0) return app->unk_0878.unk_7B4; return Pokedex_ConvertToCurrentDexNo(app->unk_1858, app->unk_0878.unk_000[app->unk_0878.unk_7B4 - 1][0]);"
+   ],
+   "signature_guess": "u32 ov18_021F891C(PokedexAppData *pokedexApp, BOOL a1)",
+   "signature_sources": {
+    "asm/overlay_18_021F7ED4.s": "u32 ov18_021F891C(PokedexAppData *pokedexApp, BOOL a1)"
+   },
+   "struct_accesses": [
+    {
+     "meaning": "unk_0878.unk_7B4 count",
+     "offset": "0x102C",
+     "param": 0,
+     "width": 2
+    },
+    {
+     "meaning": "unk_1858 natDex flag",
+     "offset": "0x1858",
+     "param": 0,
+     "width": 1
+    },
+    {
+     "meaning": "unk_0878.unk_000[count - 1][0] last species",
+     "offset": "0x878",
+     "param": 0,
+     "width": 2
+    }
+   ]
+  },
+  "ov18_021F8950": {
+   "callers": [],
+   "confidence": "high",
+   "defined_in": "asm/overlay_18_021F7ED4.s",
+   "mode": "thumb",
+   "notes": [
+    "[asm/overlay_18_021F7ED4.s] EXPORTED, matches header. if (a1 == 0) return ov18_021F891C(pokedexApp, a1) / 15; else return (ov18_021F891C(pokedexApp, a1) - 1) / 15; -- pass a1 through in BOTH branches (no mov r1 before either bl). Division is _u32_div_f: requires the u32 return type of 891C (a u16 return would promote to int and emit _s32_div_f)."
+   ],
+   "signature_guess": "u32 ov18_021F8950(PokedexAppData *pokedexApp, int a1)",
+   "signature_sources": {
+    "asm/overlay_18_021F7ED4.s": "u32 ov18_021F8950(PokedexAppData *pokedexApp, int a1)"
    }
+  },
+  "ov18_021F8970": {
+   "callers": [
+    "asm/overlay_18_021F7ED4.s"
+   ],
+   "confidence": "medium",
+   "defined_in": "asm/overlay_18_021F7ED4.s",
+   "mode": "thumb",
+   "notes": [
+    "[asm/overlay_18_021F7ED4.s] Body is a bare bx lr and the caller uses r0 afterwards -> identity function: { return type; }. Only referenced from ov18_021F831C. With -inline on,noauto a plain static is not inlined, so bl is preserved; if MWCC folds it, drop static."
+   ],
+   "signature_guess": "static u32 ov18_021F8970(u32 type)",
+   "signature_sources": {
+    "asm/overlay_18_021F7ED4.s": "static u32 ov18_021F8970(u32 type)"
+   }
+  },
+  "ov18_021F8974": {
+   "callers": [],
+   "confidence": "high",
+   "defined_in": "asm/overlay_18_021F7ED4.s",
+   "mode": "thumb",
+   "notes": [
+    "[asm/overlay_18_021F7ED4.s] EXPORTED to src/battle/battle_command.c via include/overlay_18.h (OverlayManager * types are frozen there). popup = Heap_Alloc(unkStruct->heapID, 0x258 = sizeof(PokedexEntryPopup)); memset(popup, 0, 0x258); then a 0x18-byte ldrb/strb loop = MWCC-inlined constant-size memcpy(popup, unkStruct, sizeof(UnkStruct_50C)) (a struct assignment would emit ldmia/stmia pairs, so try memcpy first); popup->gfxNarc(0x1C) = NARC_New(0x44 = NARC_graphic_zukan_gra, popup->heapId(0x14)); popup->unk_240 = 0 (strh); popup->unk_254 = 0; popup->task(0x18) = SysTask_CreateOnMainQueue(ov18_021F89F8, popup, 0); return (OverlayManager *)popup. Define with the header signature and cast at the return (pointer casts are free)."
+   ],
+   "signature_guess": "OverlayManager *ov18_021F8974(UnkStruct_50C *unkStruct)  /* really returns PokedexEntryPopup * */",
+   "signature_sources": {
+    "asm/overlay_18_021F7ED4.s": "OverlayManager *ov18_021F8974(UnkStruct_50C *unkStruct)  /* really returns PokedexEntryPopup * */"
+   },
+   "struct_accesses": [
+    {
+     "meaning": "unkStruct->heapID for Heap_Alloc; the whole 0x18-byte UnkStruct_50C is then copied to popup+0",
+     "offset": "0x14",
+     "param": 0,
+     "width": 4
+    }
+   ]
+  },
+  "ov18_021F89C8": {
+   "callers": [],
+   "confidence": "high",
+   "defined_in": "asm/overlay_18_021F7ED4.s",
+   "mode": "thumb",
+   "notes": [
+    "[asm/overlay_18_021F7ED4.s] EXPORTED (battle_command.c compares result == 1). return ((PokedexEntryPopup *)man)->unk_254;"
+   ],
+   "signature_guess": "s32 ov18_021F89C8(OverlayManager *man)",
+   "signature_sources": {
+    "asm/overlay_18_021F7ED4.s": "s32 ov18_021F89C8(OverlayManager *man)"
+   },
+   "struct_accesses": [
+    {
+     "meaning": "PokedexEntryPopup.unk_254 done flag (set to 1 when the cry finishes)",
+     "offset": "0x254",
+     "param": 0,
+     "width": 4
+    }
+   ]
+  },
+  "ov18_021F89D0": {
+   "callers": [],
+   "confidence": "high",
+   "defined_in": "asm/overlay_18_021F7ED4.s",
+   "mode": "thumb",
+   "notes": [
+    "[asm/overlay_18_021F7ED4.s] EXPORTED. Cast man to PokedexEntryPopup *; call order 91F0, 8F10, 8BEC, NARC_Delete, SysTask_Destroy, Heap_Free(popup)."
+   ],
+   "signature_guess": "void ov18_021F89D0(OverlayManager *man)",
+   "signature_sources": {
+    "asm/overlay_18_021F7ED4.s": "void ov18_021F89D0(OverlayManager *man)"
+   },
+   "struct_accesses": [
+    {
+     "meaning": "gfxNarc -> NARC_Delete",
+     "offset": "0x1C",
+     "param": 0,
+     "width": 4
+    },
+    {
+     "meaning": "task -> SysTask_Destroy",
+     "offset": "0x18",
+     "param": 0,
+     "width": 4
+    }
+   ]
+  },
+  "ov18_021F89F8": {
+   "callers": [],
+   "confidence": "high",
+   "defined_in": "asm/overlay_18_021F7ED4.s",
+   "mode": "thumb",
+   "notes": [
+    "[asm/overlay_18_021F7ED4.s] Task callback; the SysTask * arg is unused, data -> popup. switch (popup->unk_240): case 0: reg_G2_BLDCNT = 0 (G2_BlendNone() inline, raw strh to 0x04000050); ov18_021F8AB8; 8B10; 8CCC; 8FA0; 95CC; 8C0C; unk_240 = 1; break. case 1: if (ov18_021F8C48(popup) == TRUE) unk_240 = 2; break (cmp r0,#1). case 2: PlayCryEx(14, (u16)popup->species, 0x1FF, 0x1FF, 0x1FF, 0); unk_240 = 3; break (0x1FF literals are derived by sub #0x41 from the 0x240 constant -- read them as literal args; same 0x1FF triple appears in src/overlay_02_02248728.c). case 3: if (!IsCryFinished()) { unk_254 = 1; unk_240 = 4; } break. case 4: break; -- the explicit empty case 4 is REQUIRED to get the 5-entry table (insight switch-jumptable-bound-needs-max-default-case). After the switch: SpriteList_RenderAndAnimateSprites(popup->spriteList); ov18_021F8C68(popup). sub sp,#8 is for the 6-arg PlayCryEx."
+   ],
+   "signature_guess": "static void ov18_021F89F8(SysTask *task, void *data)",
+   "signature_sources": {
+    "asm/overlay_18_021F7ED4.s": "static void ov18_021F89F8(SysTask *task, void *data)"
+   },
+   "struct_accesses": [
+    {
+     "meaning": "unk_240 state 0..4 (switch, 5-entry jump table)",
+     "offset": "0x240",
+     "param": 1,
+     "width": 2
+    },
+    {
+     "meaning": "species, passed to PlayCryEx as (u16) -- explicit lsl/lsr narrowing",
+     "offset": "0x244",
+     "param": 1,
+     "width": 4
+    },
+    {
+     "meaning": "unk_254 = 1 when cry done",
+     "offset": "0x254",
+     "param": 1,
+     "width": 4
+    },
+    {
+     "meaning": "spriteList -> SpriteList_RenderAndAnimateSprites every frame",
+     "offset": "0xB4",
+     "param": 1,
+     "width": 4
+    }
+   ]
+  },
+  "ov18_021F8AB8": {
+   "callers": [
+    "asm/overlay_18_021F7ED4.s"
+   ],
+   "header": "include/overlay_18_021F8AB8.h",
+   "known_prototype": "void ov18_021F8AB8(PokedexEntryPopup *popup)",
+   "signature_sources": {}
+  },
+  "ov18_021F8B10": {
+   "callers": [
+    "asm/overlay_18_021F7ED4.s"
+   ],
+   "header": "include/overlay_18_021F8AB8.h",
+   "known_prototype": "void ov18_021F8B10(PokedexEntryPopup *popup)",
+   "signature_sources": {}
+  },
+  "ov18_021F8BEC": {
+   "callers": [
+    "asm/overlay_18_021F7ED4.s"
+   ],
+   "header": "include/overlay_18_021F8AB8.h",
+   "known_prototype": "void ov18_021F8BEC(PokedexEntryPopup *popup)",
+   "signature_sources": {}
+  },
+  "ov18_021F8C0C": {
+   "callers": [
+    "asm/overlay_18_021F7ED4.s"
+   ],
+   "header": "include/overlay_18_021F8AB8.h",
+   "known_prototype": "void ov18_021F8C0C(PokedexEntryPopup *popup)",
+   "signature_sources": {}
+  },
+  "ov18_021F8C48": {
+   "callers": [
+    "asm/overlay_18_021F7ED4.s"
+   ],
+   "header": "include/overlay_18_021F8AB8.h",
+   "known_prototype": "BOOL ov18_021F8C48(PokedexEntryPopup *popup)",
+   "signature_sources": {}
+  },
+  "ov18_021F8C68": {
+   "callers": [
+    "asm/overlay_18_021F7ED4.s"
+   ],
+   "header": "include/overlay_18_021F8AB8.h",
+   "known_prototype": "void ov18_021F8C68(PokedexEntryPopup *popup)",
+   "signature_sources": {}
+  },
+  "ov18_021F8CCC": {
+   "callers": [
+    "asm/overlay_18_021F7ED4.s"
+   ],
+   "header": "include/overlay_18_021F8AB8.h",
+   "known_prototype": "void ov18_021F8CCC(PokedexEntryPopup *popup)",
+   "signature_sources": {}
+  },
+  "ov18_021F8F10": {
+   "callers": [
+    "asm/overlay_18_021F7ED4.s"
+   ],
+   "header": "include/overlay_18_021F8AB8.h",
+   "known_prototype": "void ov18_021F8F10(PokedexEntryPopup *popup)",
+   "signature_sources": {}
+  },
+  "ov18_021F8FA0": {
+   "callers": [
+    "asm/overlay_18_021F7ED4.s"
+   ],
+   "header": "include/overlay_18_021F8AB8.h",
+   "known_prototype": "void ov18_021F8FA0(PokedexEntryPopup *popup)",
+   "signature_sources": {}
+  },
+  "ov18_021F91F0": {
+   "callers": [
+    "asm/overlay_18_021F7ED4.s"
+   ],
+   "header": "include/overlay_18_021F8AB8.h",
+   "known_prototype": "void ov18_021F91F0(PokedexEntryPopup *popup)",
+   "signature_sources": {}
+  },
+  "ov18_021F95CC": {
+   "callers": [
+    "asm/overlay_18_021F7ED4.s"
+   ],
+   "header": "include/overlay_18_021F8AB8.h",
+   "known_prototype": "void ov18_021F95CC(PokedexEntryPopup *popup)",
+   "signature_sources": {}
   },
   "ov18_021F95FC": {
    "callers": [

@@ -1,0 +1,795 @@
+{
+  "file": "asm/overlay_18_021F7ED4.s",
+  "functions": [
+    {
+      "name": "ov18_021F7ED4",
+      "mode": "thumb",
+      "signature_guess": "BOOL ov18_021F7ED4(PokedexAppData *pokedexApp, u8 natDexFlag, u32 order, u32 letter, u32 type1, u32 type2, u32 heightMin, u32 heightMax, u32 weightMin, u32 weightMax, u32 areaMask, u32 bodyType)",
+      "confidence": "high",
+      "callees": [
+        "MI_CpuClear32",
+        "Heap_AllocAtEnd",
+        "GF_AssertFail",
+        "memset",
+        "ov18_021F8168",
+        "ov18_021F8198",
+        "ov18_021F822C",
+        "memcpy",
+        "ov18_021F82CC",
+        "ov18_021F831C",
+        "ov18_021F8468",
+        "ov18_021F8584",
+        "ov18_021F8640",
+        "ov18_021F86D0",
+        "ov18_021F81D8",
+        "Heap_Free"
+      ],
+      "struct_accesses": [
+        {
+          "param": 0,
+          "offset": "0x0",
+          "width": 4,
+          "meaning": "args (PokedexArgs *); args->pokedex ([args+0]) is reloaded before every filter call"
+        },
+        {
+          "param": 0,
+          "offset": "0x878",
+          "width": 4,
+          "meaning": "&unk_0878 (PokedexAppData_UnkSub0878): MI_CpuClear32 size 0x7B8 (MWCC derives it as 0x878-0xC0) and passed as arg0 of ov18_021F81D8"
+        },
+        {
+          "param": 0,
+          "offset": "0x1860",
+          "width": 4,
+          "meaning": "unk_1860 int; if ==0 && (areaMask & 4) the area filter is called with literal 6 instead of areaMask"
+        }
+      ],
+      "notes": "EXPORTED (6 call sites in src/application/pokedex/ov18_021E8BF4.c, return value unused there). pokedex_internal.h declares it VOID with (PokedexAppData*, u8, u32 x10) but the asm ends mov r0,#1 -> it returns TRUE; keep the header frozen and use the #define shim (see risks). Frame: sub sp,#0x24; incoming stack args a4..a11 at [sp,#0x38..0x54]; locals [0x10]=order spill, [0x14]=letter spill, [0x18]=count2, [0x1c]=count1, [0x20]=listCount. Flow: MI_CpuClear32(&app->unk_0878, sizeof(PokedexAppData_UnkSub0878)); buf1=Heap_AllocAtEnd(HEAP_ID_POKEDEX_APP(0x25), 0x3DA=NATIONAL_DEX_COUNT*2); GF_ASSERT(buf1!=NULL) (bne-over-assert polarity); memset(buf1,0,0x3DA); count1=0; same for buf2/count2; if(natDexFlag==0) list=ov18_021F8168(1,&listCount); else list=ov18_021F8168(0,&listCount) (else branch reuses r0=0 left from the count2 store, write the literal 0); ov18_021F8198(buf1,&count1,app->args->pokedex,list,listCount); ov18_021F822C(order,buf2,&count2,buf1,count1,pokedex); SWAP; ov18_021F82CC(letter,...); if(count2==0)->end; SWAP; ov18_021F831C(type1,...); if(count2==0)->end; SWAP; ov18_021F831C(type2,...); if(count2==0)->end; SWAP; ov18_021F8468(bodyType,...); if(count2==0)->end; SWAP; if(app->unk_1860==0 && (areaMask & 4)){ ov18_021F8584(app,6,buf2,&count2,buf1,count1,pokedex); if(count2==0)->end; } else { ov18_021F8584(app,areaMask,...); if(count2==0)->end; } SWAP; ov18_021F8640(app,(u16)heightMin,(u16)heightMax,buf2,&count2,buf1,count1,pokedex); SWAP; ov18_021F86D0(app,(u16)weightMin,(u16)weightMax,buf2,&count2,buf1,count1,pokedex); ov18_021F81D8(&app->unk_0878,pokedex,buf2,count2); end: Heap_Free(list); Heap_Free(buf2); Heap_Free(buf1); return TRUE. SWAP = memcpy(buf1,buf2,count2*2); count1=count2; memset(buf2,0,count2*2); count2=0. The count2==0 exits all target the single end label (nested ifs or a do{}while(0)/goto shape, try nested first). The lsl/lsr #16 on a6..a9 at the 8640/86D0 call sites come from those callees taking u16 params while these params are u32. Mask literals: 4 = 1<<DEX_SEARCH_AREA_KANTO, 6 = (1<<DEX_SEARCH_AREA_JOHTO)|(1<<DEX_SEARCH_AREA_KANTO); asm is mov r0,#4; tst r0,r1 (constant operand first)."
+    },
+    {
+      "name": "ov18_021F8168",
+      "mode": "thumb",
+      "signature_guess": "static u16 *ov18_021F8168(u32 fileIdx, u32 *countOut)",
+      "confidence": "high",
+      "callees": [
+        "GF_AssertFail",
+        "GetPokedexDataNarcID",
+        "GfGfxLoader_LoadFromNarc_GetSizeOut"
+      ],
+      "struct_accesses": [
+        {
+          "param": 1,
+          "offset": "0x0",
+          "width": 4,
+          "meaning": "*countOut = loadedSize / 2 (u16 element count)"
+        }
+      ],
+      "notes": "Not in .public, only called in-file -> static. GF_ASSERT(fileIdx < 82) with blo -> unsigned compare, declare the param u32 (or cast). Body: ret = GfGfxLoader_LoadFromNarc_GetSizeOut(GetPokedexDataNarcID(), fileIdx + 11, FALSE, HEAP_ID_POKEDEX_APP, FALSE, &size); *countOut = size >> 1; return ret. File map: 0/1 = national/johto species list, 2..6 = sort orders, letter+7, type+0x33, body+0x44."
+    },
+    {
+      "name": "ov18_021F8198",
+      "mode": "thumb",
+      "signature_guess": "static void ov18_021F8198(u16 *dst, u32 *count, Pokedex *pokedex, u16 *src, u32 srcCount)",
+      "confidence": "high",
+      "callees": [
+        "Pokedex_CheckMonSeenFlag"
+      ],
+      "struct_accesses": [
+        {
+          "param": 1,
+          "offset": "0x0",
+          "width": 4,
+          "meaning": "*count = 0 then dst[*count] = src[i]; (*count)++ per seen mon"
+        }
+      ],
+      "notes": "5th param on stack ([sp,#0x20]). Loop: for (i = 0; i < srcCount; i++) if (Pokedex_CheckMonSeenFlag(pokedex, src[i])) { dst[*count] = src[i]; (*count)++; } -- two statements (index read, then increment), unsigned counter (blo). src is walked (adds #2) by MWCC strength reduction, still write src[i]."
+    },
+    {
+      "name": "ov18_021F81D8",
+      "mode": "thumb",
+      "signature_guess": "static void ov18_021F81D8(PokedexAppData_UnkSub0878 *sub, Pokedex *pokedex, u16 *src, u32 count)",
+      "confidence": "high",
+      "callees": [
+        "Pokedex_CheckMonCaughtFlag"
+      ],
+      "struct_accesses": [
+        {
+          "param": 0,
+          "offset": "0x7B4",
+          "width": 2,
+          "meaning": "unk_7B4 = count (total entries)"
+        },
+        {
+          "param": 0,
+          "offset": "0x7B6",
+          "width": 2,
+          "meaning": "unk_7B6 = 0 then ++ per caught mon"
+        },
+        {
+          "param": 0,
+          "offset": "0x0",
+          "width": 2,
+          "meaning": "unk_000[i][0] = src[i] (species), stride 4"
+        },
+        {
+          "param": 0,
+          "offset": "0x2",
+          "width": 2,
+          "meaning": "unk_000[i][1] = caught ? 2 : 1"
+        }
+      ],
+      "notes": "Called once from ov18_021F7ED4 with &pokedexApp->unk_0878. Body: sub->unk_7B4 = count; sub->unk_7B6 = 0; for (i = 0; i < count; i++) { sub->unk_000[i][0] = src[i]; if (Pokedex_CheckMonCaughtFlag(pokedex, src[i])) { sub->unk_000[i][1] = 2; sub->unk_7B6++; } else { sub->unk_000[i][1] = 1; } }. src[i] is loaded twice (before and after the strh) -- do not cache it in a temp. MWCC walks the sub pointer by 4 and pre-computes &sub->unk_7B6 in r6; that is strength reduction, keep indexed source."
+    },
+    {
+      "name": "ov18_021F822C",
+      "mode": "thumb",
+      "signature_guess": "static void ov18_021F822C(u32 order, u16 *dst, u32 *count, u16 *src, u32 srcCount, Pokedex *pokedex)",
+      "confidence": "high",
+      "callees": [
+        "memcpy",
+        "ov18_021F8168",
+        "GF_AssertFail",
+        "ov18_021F8764",
+        "Heap_Free"
+      ],
+      "struct_accesses": [
+        {
+          "param": 2,
+          "offset": "0x0",
+          "width": 4,
+          "meaning": "*count = srcCount on the passthrough case"
+        }
+      ],
+      "notes": "Dense jump table 0..5 (cmp #5; bhi). Case body order = source order: case 0 (DEX_ORDER_NATIONAL: memcpy(dst,src,srcCount*2); *count = srcCount; return) FIRST, then cases 1..5 loading file 2..6 via ov18_021F8168(n,&fileCount) (case 1 also sets flag=1), default: GF_AssertFail(). flag local starts 0 (mov r4,#0 in prologue). Tail: ov18_021F8764(dst,count,src,srcCount,fileList,fileCount,flag,pokedex); Heap_Free(fileList). Stack args at [sp,#0x30]=srcCount, [sp,#0x34]=pokedex."
+    },
+    {
+      "name": "ov18_021F82CC",
+      "mode": "thumb",
+      "signature_guess": "static void ov18_021F82CC(u32 letter, u16 *dst, u32 *count, u16 *src, u32 srcCount, Pokedex *pokedex)",
+      "confidence": "high",
+      "callees": [
+        "memcpy",
+        "ov18_021F8168",
+        "ov18_021F8764",
+        "Heap_Free"
+      ],
+      "notes": "if (letter == DEX_SEARCH_LETTERS_ALL (0x1a)) { memcpy(dst,src,srcCount*2); *count = srcCount; return; } fileList = ov18_021F8168(letter + 7, &fileCount); ov18_021F8764(dst,count,src,srcCount,fileList,fileCount,TRUE,pokedex); Heap_Free(fileList). Stack args [sp,#0x28]=srcCount, [sp,#0x2c]=pokedex."
+    },
+    {
+      "name": "ov18_021F831C",
+      "mode": "thumb",
+      "signature_guess": "static void ov18_021F831C(u32 type, u16 *dst, u32 *count, u16 *src, u32 srcCount, Pokedex *pokedex)",
+      "confidence": "high",
+      "callees": [
+        "ov18_021F8970",
+        "memcpy",
+        "ov18_021F8168",
+        "GF_AssertFail",
+        "ov18_021F8764",
+        "Heap_Free"
+      ],
+      "notes": "switch (ov18_021F8970(type)) -- the identity call is real (bl then cmp r0,#0x11), 18-entry jump table 0..17. SOURCE ORDER of bodies: case 17 (DEX_SEARCH_TYPE_ALL: memcpy passthrough, *count = srcCount, return) FIRST, then cases 0..16 in order each doing fileList = ov18_021F8168(0x33 + n, &fileCount), default GF_AssertFail(). Tail: ov18_021F8764(dst,count,src,srcCount,fileList,fileCount,FALSE,pokedex); Heap_Free(fileList). Note flag is FALSE here (caught check applies) unlike letter/body (TRUE)."
+    },
+    {
+      "name": "ov18_021F8468",
+      "mode": "thumb",
+      "signature_guess": "static void ov18_021F8468(u32 bodyType, u16 *dst, u32 *count, u16 *src, u32 srcCount, Pokedex *pokedex)",
+      "confidence": "high",
+      "callees": [
+        "memcpy",
+        "ov18_021F8168",
+        "GF_AssertFail",
+        "ov18_021F8764",
+        "Heap_Free"
+      ],
+      "notes": "15-entry jump table 0..14. Body SOURCE ORDER (must be reproduced): case 14 (DEX_SEARCH_BODYTYPE_ALL, memcpy passthrough + return) first, then cases in FILE order 0x44..0x51: case 7->0x44, 13->0x45, 11->0x46, 5->0x47, 4->0x48, 12->0x49, 9->0x4A, 6->0x4B, 1->0x4C, 2->0x4D, 3->0x4E, 10->0x4F, 0->0x50, 8->0x51; default GF_AssertFail(). Tail: ov18_021F8764(dst,count,src,srcCount,fileList,fileCount,TRUE,pokedex); Heap_Free(fileList)."
+    },
+    {
+      "name": "ov18_021F8584",
+      "mode": "thumb",
+      "signature_guess": "static void ov18_021F8584(PokedexAppData *pokedexApp, u32 areaMask, u16 *dst, u32 *count, u16 *src, u32 srcCount, Pokedex *pokedex)",
+      "confidence": "high",
+      "callees": [
+        "memcpy",
+        "Pokedex_CheckMonSeenFlag"
+      ],
+      "struct_accesses": [
+        {
+          "param": 0,
+          "offset": "0x1854",
+          "width": 4,
+          "meaning": "unk_1854 (u8 *) per-species area flag byte, indexed by species; bit0 = unknown-area, bits 1/2 = Johto/Kanto"
+        },
+        {
+          "param": 3,
+          "offset": "0x0",
+          "width": 4,
+          "meaning": "*count append index"
+        }
+      ],
+      "notes": "Stack args [sp,#0x28]=src, [sp,#0x2c]=srcCount (kept in r6), [sp,#0x30]=pokedex (ldr+str self-store idiom = MWCC home-slot spill, not source). if (areaMask & 8 /*1<<DEX_SEARCH_AREA_ALL*/) { memcpy(dst,src,srcCount*2); *count = srcCount; return; } else if (areaMask == 6) { for (i..srcCount) if ((areaMask & unk_1854[src[i]]) && !(unk_1854[src[i]] & 1) && Pokedex_CheckMonSeenFlag(pokedex,src[i])) { dst[*count]=src[i]; (*count)++; } } else { for (i..srcCount) if ((unk_1854[src[i]] & areaMask) && Pokedex_CheckMonSeenFlag(pokedex,src[i])) append; }. The two loops use DIFFERENT stack slots for their counters ([sp,#0xc] vs [sp,#8]) -> declare a separate u32 i inside each block. The 6-path reloads the table byte for both tests (no temp). tst operand order differs per test (tst r0(8),r7 / tst r2(mask),r0(byte) / tst r0(byte),r2(1) / tst r0(byte),r7(mask)) -- flip source operand order if a tst comes out swapped."
+    },
+    {
+      "name": "ov18_021F8640",
+      "mode": "thumb",
+      "signature_guess": "static void ov18_021F8640(PokedexAppData *pokedexApp, u16 min, u16 max, u16 *dst, u32 *count, u16 *src, u32 srcCount, Pokedex *pokedex)",
+      "confidence": "high",
+      "callees": [
+        "memcpy",
+        "Pokedex_CheckMonCaughtFlag"
+      ],
+      "struct_accesses": [
+        {
+          "param": 0,
+          "offset": "0x1848",
+          "width": 4,
+          "meaning": "heights: s32 table indexed by species (ldr [tbl, species*4], signed cmp blt/bgt). Field is void * in the header -> cast ((s32 *)pokedexApp->heights)[species] locally"
+        },
+        {
+          "param": 0,
+          "offset": "0x1850",
+          "width": 4,
+          "meaning": "unk_1850: PokedexAppData_UnkSub1850[] {u16 unk_0 height, u16 unk_2 weight} indexed by slider index min/max"
+        }
+      ],
+      "notes": "No entry narrowing on r1/r2 (caller narrows) yet they are used as indices -> u16 params, matches the lsl/lsr at the call site in ov18_021F7ED4. Stack args [sp,#0x20]=count (r5), [0x24]=src, [0x28]=srcCount, [0x2c]=pokedex (self-store idiom). if (min == 0 && max == 0x98) { memcpy passthrough; *count = srcCount; return; } for (i=0;i<srcCount;i++) { h = heights[src[i]]; if (h >= unk_1850[min].unk_0 && h <= unk_1850[max].unk_0 && Pokedex_CheckMonCaughtFlag(pokedex, src[i])) { dst[*count] = src[i]; (*count)++; } }. MWCC hoists min*4 and max*4 into stack temps ([sp,#8],[sp,#4]) before the loop: per insight inline-invariant-in-loop-forces-param-spill write pokedexApp->unk_1850[min].unk_0 INLINE in the loop condition, do not precompute lo/hi locals. Compare is signed (blt/bgt) -> s32 height vs u16 promoted to int."
+    },
+    {
+      "name": "ov18_021F86D0",
+      "mode": "thumb",
+      "signature_guess": "static void ov18_021F86D0(PokedexAppData *pokedexApp, u16 min, u16 max, u16 *dst, u32 *count, u16 *src, u32 srcCount, Pokedex *pokedex)",
+      "confidence": "high",
+      "callees": [
+        "memcpy",
+        "Pokedex_CheckMonCaughtFlag"
+      ],
+      "struct_accesses": [
+        {
+          "param": 0,
+          "offset": "0x184C",
+          "width": 4,
+          "meaning": "weights: s32 table indexed by species"
+        },
+        {
+          "param": 0,
+          "offset": "0x1850",
+          "width": 4,
+          "meaning": "unk_1850[min].unk_2 / unk_1850[max].unk_2 (weight bounds, ldrh [base+idx*4, #2])"
+        }
+      ],
+      "notes": "Byte-identical twin of ov18_021F8640 using weights and unk_1850[].unk_2; same 0x98 passthrough check and same hoisting behaviour."
+    },
+    {
+      "name": "ov18_021F8764",
+      "mode": "thumb",
+      "signature_guess": "static void ov18_021F8764(u16 *dst, u32 *count, u16 *src, u32 srcCount, u16 *fileList, u32 fileCount, BOOL skipCaughtCheck, Pokedex *pokedex)",
+      "confidence": "high",
+      "callees": [
+        "Pokedex_CheckMonCaughtFlag"
+      ],
+      "struct_accesses": [
+        {
+          "param": 1,
+          "offset": "0x0",
+          "width": 4,
+          "meaning": "*count = 0 then append index"
+        }
+      ],
+      "notes": "Stack args [sp,#0x28]=fileList, [0x2c]=fileCount, [0x30]=flag, [0x34]=pokedex (0x2c and 0x34 show the ldr+str self-store spill idiom). *count = 0; if (flag == 1) { for (i=0;i<fileCount;i++) for (j=0;j<srcCount;j++) if (fileList[i] == src[j]) { dst[*count] = fileList[i]; (*count)++; break; } } else { same double loop but the append is gated by && Pokedex_CheckMonCaughtFlag(pokedex, fileList[i]) }. Outer loop is over the NARC file list (preserves file order), inner over src. Compare is cmp r0,#1; bne -> write flag == 1 / == TRUE, not if (flag). Outer counter lives in [sp,#0xc] both paths (one variable), inner j in r4/r6."
+    },
+    {
+      "name": "ov18_021F8824",
+      "mode": "thumb",
+      "signature_guess": "u32 ov18_021F8824(PokedexAppData *pokedexApp)",
+      "confidence": "high",
+      "callees": [],
+      "struct_accesses": [
+        {
+          "param": 0,
+          "offset": "0x185A",
+          "width": 1,
+          "meaning": "unk_185A column (loaded first)"
+        },
+        {
+          "param": 0,
+          "offset": "0x1859",
+          "width": 1,
+          "meaning": "unk_1859 row"
+        }
+      ],
+      "notes": "EXPORTED, matches pokedex_internal.h. return pokedexApp->unk_185A + pokedexApp->unk_1859 * 15; (mov r0,#0xf; mul r0,r1; add r0,r2,r0). No return mask -> u32 is right. Leaf, bx lr."
+    },
+    {
+      "name": "ov18_021F8838",
+      "mode": "thumb",
+      "signature_guess": "u16 ov18_021F8838(PokedexAppData *pokedexApp)",
+      "confidence": "high",
+      "callees": [
+        "ov18_021F8824"
+      ],
+      "struct_accesses": [
+        {
+          "param": 0,
+          "offset": "0x1030",
+          "width": 2,
+          "meaning": "unk_1030[ov18_021F8824(app)].unk_0 (species), stride 4"
+        }
+      ],
+      "notes": "EXPORTED, matches pokedex_internal.h (u16 via ldrh, no mask needed)."
+    },
+    {
+      "name": "ov18_021F8850",
+      "mode": "thumb",
+      "signature_guess": "u32 ov18_021F8850(PokedexAppData_UnkSub0878 *sub, u16 species)",
+      "confidence": "high",
+      "callees": [],
+      "struct_accesses": [
+        {
+          "param": 0,
+          "offset": "0x7B4",
+          "width": 2,
+          "meaning": "unk_7B4 count, loaded ONCE before the loop (hoisted)"
+        },
+        {
+          "param": 0,
+          "offset": "0x0",
+          "width": 2,
+          "meaning": "unk_000[i][0] species, stride 4"
+        }
+      ],
+      "notes": "EXPORTED, matches header (caller ov18_021E8BF4.c:3467 passes &pokedexApp->unk_0878). Leaf: push {r4,r5} only. u16 first = 0; for (i = 0; i < sub->unk_7B4; i++) { if (first == 0) first = sub->unk_000[i][0]; if (species == sub->unk_000[i][0]) return species; } return first. MWCC walks r0 (sub) by 4 -- strength reduction of unk_000[i][0]; if the hoisted count does not reproduce, try a local u16 count = sub->unk_7B4."
+    },
+    {
+      "name": "ov18_021F8884",
+      "mode": "thumb",
+      "signature_guess": "void ov18_021F8884(PokedexAppData *pokedexApp, int a1)",
+      "confidence": "high",
+      "callees": [
+        "MI_CpuClear32",
+        "Pokedex_ConvertToCurrentDexNo"
+      ],
+      "struct_accesses": [
+        {
+          "param": 0,
+          "offset": "0x1030",
+          "width": 4,
+          "meaning": "unk_1030[518] cleared with MI_CpuClear32 size 0x818 (MWCC materialises it as 0x1030>>1)"
+        },
+        {
+          "param": 0,
+          "offset": "0x102C",
+          "width": 2,
+          "meaning": "unk_0878.unk_7B4 count, RELOADED every iteration in both loops (stores may alias) -> write i < pokedexApp->unk_0878.unk_7B4 inline"
+        },
+        {
+          "param": 0,
+          "offset": "0x1858",
+          "width": 1,
+          "meaning": "unk_1858 natDex flag -> Pokedex_ConvertToCurrentDexNo arg0"
+        },
+        {
+          "param": 0,
+          "offset": "0x878",
+          "width": 2,
+          "meaning": "unk_0878.unk_000[i][0]/[1] source pairs"
+        }
+      ],
+      "notes": "EXPORTED, matches header; called with 0/1. MI_CpuClear32(pokedexApp->unk_1030, sizeof(pokedexApp->unk_1030)); if (a1 == 1) { for (i=0;i<count;i++) { dexNo = Pokedex_ConvertToCurrentDexNo(app->unk_1858, app->unk_0878.unk_000[i][0]); app->unk_1030[dexNo - 1].unk_0 = unk_000[i][0]; app->unk_1030[dexNo - 1].unk_2 = unk_000[i][1]; } } else { for (i=0;i<count;i++) { app->unk_1030[i + 1].unk_0 = unk_000[i][0]; app->unk_1030[i + 1].unk_2 = unk_000[i][1]; } }. NOTE the else path stores at 0x1034+i*4, i.e. index i+1 (slot 0 unused). Counters unsigned (blo)."
+    },
+    {
+      "name": "ov18_021F891C",
+      "mode": "thumb",
+      "signature_guess": "u32 ov18_021F891C(PokedexAppData *pokedexApp, BOOL a1)",
+      "confidence": "high",
+      "callees": [
+        "Pokedex_ConvertToCurrentDexNo"
+      ],
+      "struct_accesses": [
+        {
+          "param": 0,
+          "offset": "0x102C",
+          "width": 2,
+          "meaning": "unk_0878.unk_7B4 count"
+        },
+        {
+          "param": 0,
+          "offset": "0x1858",
+          "width": 1,
+          "meaning": "unk_1858 natDex flag"
+        },
+        {
+          "param": 0,
+          "offset": "0x878",
+          "width": 2,
+          "meaning": "unk_0878.unk_000[count - 1][0] last species"
+        }
+      ],
+      "notes": "EXPORTED. pokedex_internal.h declares it u16 (3 matched callers) but the asm returns Pokedex_ConvertToCurrentDexNo() full-width with NO lsl/lsr mask -> real return type is u32 (insight narrow-return-type-masks-split-header). Define it u32 locally via the #define shim; that also makes ov18_021F8950 emit _u32_div_f naturally. Body: if (a1 == 0) return app->unk_0878.unk_7B4; return Pokedex_ConvertToCurrentDexNo(app->unk_1858, app->unk_0878.unk_000[app->unk_0878.unk_7B4 - 1][0]);"
+    },
+    {
+      "name": "ov18_021F8950",
+      "mode": "thumb",
+      "signature_guess": "u32 ov18_021F8950(PokedexAppData *pokedexApp, int a1)",
+      "confidence": "high",
+      "callees": [
+        "ov18_021F891C",
+        "_u32_div_f"
+      ],
+      "notes": "EXPORTED, matches header. if (a1 == 0) return ov18_021F891C(pokedexApp, a1) / 15; else return (ov18_021F891C(pokedexApp, a1) - 1) / 15; -- pass a1 through in BOTH branches (no mov r1 before either bl). Division is _u32_div_f: requires the u32 return type of 891C (a u16 return would promote to int and emit _s32_div_f)."
+    },
+    {
+      "name": "ov18_021F8970",
+      "mode": "thumb",
+      "signature_guess": "static u32 ov18_021F8970(u32 type)",
+      "confidence": "medium",
+      "callees": [],
+      "notes": "Body is a bare bx lr and the caller uses r0 afterwards -> identity function: { return type; }. Only referenced from ov18_021F831C. With -inline on,noauto a plain static is not inlined, so bl is preserved; if MWCC folds it, drop static."
+    },
+    {
+      "name": "ov18_021F8974",
+      "mode": "thumb",
+      "signature_guess": "OverlayManager *ov18_021F8974(UnkStruct_50C *unkStruct)  /* really returns PokedexEntryPopup * */",
+      "confidence": "high",
+      "callees": [
+        "Heap_Alloc",
+        "memset",
+        "NARC_New",
+        "SysTask_CreateOnMainQueue"
+      ],
+      "struct_accesses": [
+        {
+          "param": 0,
+          "offset": "0x14",
+          "width": 4,
+          "meaning": "unkStruct->heapID for Heap_Alloc; the whole 0x18-byte UnkStruct_50C is then copied to popup+0"
+        }
+      ],
+      "callback_refs": [
+        "ov18_021F89F8 stored as SysTask callback (priority 0)"
+      ],
+      "notes": "EXPORTED to src/battle/battle_command.c via include/overlay_18.h (OverlayManager * types are frozen there). popup = Heap_Alloc(unkStruct->heapID, 0x258 = sizeof(PokedexEntryPopup)); memset(popup, 0, 0x258); then a 0x18-byte ldrb/strb loop = MWCC-inlined constant-size memcpy(popup, unkStruct, sizeof(UnkStruct_50C)) (a struct assignment would emit ldmia/stmia pairs, so try memcpy first); popup->gfxNarc(0x1C) = NARC_New(0x44 = NARC_graphic_zukan_gra, popup->heapId(0x14)); popup->unk_240 = 0 (strh); popup->unk_254 = 0; popup->task(0x18) = SysTask_CreateOnMainQueue(ov18_021F89F8, popup, 0); return (OverlayManager *)popup. Define with the header signature and cast at the return (pointer casts are free)."
+    },
+    {
+      "name": "ov18_021F89C8",
+      "mode": "thumb",
+      "signature_guess": "s32 ov18_021F89C8(OverlayManager *man)",
+      "confidence": "high",
+      "callees": [],
+      "struct_accesses": [
+        {
+          "param": 0,
+          "offset": "0x254",
+          "width": 4,
+          "meaning": "PokedexEntryPopup.unk_254 done flag (set to 1 when the cry finishes)"
+        }
+      ],
+      "notes": "EXPORTED (battle_command.c compares result == 1). return ((PokedexEntryPopup *)man)->unk_254;"
+    },
+    {
+      "name": "ov18_021F89D0",
+      "mode": "thumb",
+      "signature_guess": "void ov18_021F89D0(OverlayManager *man)",
+      "confidence": "high",
+      "callees": [
+        "ov18_021F91F0",
+        "ov18_021F8F10",
+        "ov18_021F8BEC",
+        "NARC_Delete",
+        "SysTask_Destroy",
+        "Heap_Free"
+      ],
+      "struct_accesses": [
+        {
+          "param": 0,
+          "offset": "0x1C",
+          "width": 4,
+          "meaning": "gfxNarc -> NARC_Delete"
+        },
+        {
+          "param": 0,
+          "offset": "0x18",
+          "width": 4,
+          "meaning": "task -> SysTask_Destroy"
+        }
+      ],
+      "notes": "EXPORTED. Cast man to PokedexEntryPopup *; call order 91F0, 8F10, 8BEC, NARC_Delete, SysTask_Destroy, Heap_Free(popup)."
+    },
+    {
+      "name": "ov18_021F89F8",
+      "mode": "thumb",
+      "signature_guess": "static void ov18_021F89F8(SysTask *task, void *data)",
+      "confidence": "high",
+      "callees": [
+        "G2_BlendNone",
+        "ov18_021F8AB8",
+        "ov18_021F8B10",
+        "ov18_021F8CCC",
+        "ov18_021F8FA0",
+        "ov18_021F95CC",
+        "ov18_021F8C0C",
+        "ov18_021F8C48",
+        "PlayCryEx",
+        "IsCryFinished",
+        "SpriteList_RenderAndAnimateSprites",
+        "ov18_021F8C68"
+      ],
+      "struct_accesses": [
+        {
+          "param": 1,
+          "offset": "0x240",
+          "width": 2,
+          "meaning": "unk_240 state 0..4 (switch, 5-entry jump table)"
+        },
+        {
+          "param": 1,
+          "offset": "0x244",
+          "width": 4,
+          "meaning": "species, passed to PlayCryEx as (u16) -- explicit lsl/lsr narrowing"
+        },
+        {
+          "param": 1,
+          "offset": "0x254",
+          "width": 4,
+          "meaning": "unk_254 = 1 when cry done"
+        },
+        {
+          "param": 1,
+          "offset": "0xB4",
+          "width": 4,
+          "meaning": "spriteList -> SpriteList_RenderAndAnimateSprites every frame"
+        }
+      ],
+      "notes": "Task callback; the SysTask * arg is unused, data -> popup. switch (popup->unk_240): case 0: reg_G2_BLDCNT = 0 (G2_BlendNone() inline, raw strh to 0x04000050); ov18_021F8AB8; 8B10; 8CCC; 8FA0; 95CC; 8C0C; unk_240 = 1; break. case 1: if (ov18_021F8C48(popup) == TRUE) unk_240 = 2; break (cmp r0,#1). case 2: PlayCryEx(14, (u16)popup->species, 0x1FF, 0x1FF, 0x1FF, 0); unk_240 = 3; break (0x1FF literals are derived by sub #0x41 from the 0x240 constant -- read them as literal args; same 0x1FF triple appears in src/overlay_02_02248728.c). case 3: if (!IsCryFinished()) { unk_254 = 1; unk_240 = 4; } break. case 4: break; -- the explicit empty case 4 is REQUIRED to get the 5-entry table (insight switch-jumptable-bound-needs-max-default-case). After the switch: SpriteList_RenderAndAnimateSprites(popup->spriteList); ov18_021F8C68(popup). sub sp,#8 is for the 6-arg PlayCryEx."
+    }
+  ],
+  "imports": {
+    "GF_AssertFail": {
+      "known_prototype": "void GF_AssertFail(void)",
+      "header": "include/global.h (GF_ASSERT macro)"
+    },
+    "GetPokedexDataNarcID": {
+      "known_prototype": "NarcId GetPokedexDataNarcID(void)",
+      "header": "include/dex_mon_measures.h"
+    },
+    "GfGfxLoader_LoadFromNarc_GetSizeOut": {
+      "known_prototype": "void *GfGfxLoader_LoadFromNarc_GetSizeOut(NarcId narcId, s32 fileId, BOOL isCompressed, enum HeapID heapID, BOOL atEnd, u32 *sizeOut)",
+      "header": "include/gf_gfx_loader.h"
+    },
+    "Heap_Alloc": {
+      "known_prototype": "void *Heap_Alloc(enum HeapID heapID, u32 size)",
+      "header": "include/heap.h"
+    },
+    "Heap_AllocAtEnd": {
+      "known_prototype": "void *Heap_AllocAtEnd(enum HeapID heapID, u32 size)",
+      "header": "include/heap.h"
+    },
+    "Heap_Free": {
+      "known_prototype": "void Heap_Free(void *ptr)",
+      "header": "include/heap.h"
+    },
+    "IsCryFinished": {
+      "known_prototype": "BOOL IsCryFinished(void)",
+      "header": "include/unk_02005D10.h"
+    },
+    "MIi_CpuClear32": {
+      "known_prototype": "static inline void MI_CpuClear32(void *dest, u32 size) -> MIi_CpuClear32(0, dest, size)",
+      "header": "lib/include/nitro/mi/memory.h (via global.h); call MI_CpuClear32, never MIi_ directly"
+    },
+    "NARC_New": {
+      "known_prototype": "NARC *NARC_New(NarcId narc_id, enum HeapID heapID)",
+      "header": "include/filesystem.h"
+    },
+    "NARC_Delete": {
+      "known_prototype": "void NARC_Delete(NARC *narc)",
+      "header": "include/filesystem.h"
+    },
+    "PlayCryEx": {
+      "known_prototype": "void PlayCryEx(int mode, int species, int pan, int volume, int heapId, int form)",
+      "header": "include/sound_02004A44.h (declared void there; src/unk_02005D10.c defines it BOOL -- include the header, do not redeclare)"
+    },
+    "Pokedex_CheckMonCaughtFlag": {
+      "known_prototype": "BOOL Pokedex_CheckMonCaughtFlag(const Pokedex *pokedex, u16 species)",
+      "header": "include/pokedex.h"
+    },
+    "Pokedex_CheckMonSeenFlag": {
+      "known_prototype": "BOOL Pokedex_CheckMonSeenFlag(const Pokedex *pokedex, u16 species)",
+      "header": "include/pokedex.h"
+    },
+    "Pokedex_ConvertToCurrentDexNo": {
+      "known_prototype": "u32 Pokedex_ConvertToCurrentDexNo(BOOL natDexFlag, u32 species)",
+      "header": "include/pokedex_util.h"
+    },
+    "SpriteList_RenderAndAnimateSprites": {
+      "known_prototype": "void SpriteList_RenderAndAnimateSprites(SpriteList *spriteList)",
+      "header": "include/sprite.h"
+    },
+    "SysTask_CreateOnMainQueue": {
+      "known_prototype": "SysTask *SysTask_CreateOnMainQueue(SysTaskFunc func, void *data, u32 priority)",
+      "header": "include/sys_task_api.h"
+    },
+    "SysTask_Destroy": {
+      "known_prototype": "void SysTask_Destroy(SysTask *task)",
+      "header": "include/sys_task_api.h"
+    },
+    "_u32_div_f": {
+      "known_prototype": "compiler runtime; emitted by unsigned 32-bit /",
+      "header": "none"
+    },
+    "memcpy": {
+      "known_prototype": "void *memcpy(void *, const void *, size_t)",
+      "header": "string.h via global.h"
+    },
+    "memset": {
+      "known_prototype": "void *memset(void *, int, size_t)",
+      "header": "string.h via global.h"
+    },
+    "G2_BlendNone": {
+      "known_prototype": "static inline void G2_BlendNone(void) { reg_G2_BLDCNT = 0; }",
+      "header": "lib/include/nitro/gx/g2.h (<nitro/gx/gx.h>)"
+    },
+    "ov18_021F8AB8": {
+      "known_prototype": "void ov18_021F8AB8(PokedexEntryPopup *popup)",
+      "header": "include/overlay_18_021F8AB8.h"
+    },
+    "ov18_021F8B10": {
+      "known_prototype": "void ov18_021F8B10(PokedexEntryPopup *popup)",
+      "header": "include/overlay_18_021F8AB8.h"
+    },
+    "ov18_021F8BEC": {
+      "known_prototype": "void ov18_021F8BEC(PokedexEntryPopup *popup)",
+      "header": "include/overlay_18_021F8AB8.h"
+    },
+    "ov18_021F8C0C": {
+      "known_prototype": "void ov18_021F8C0C(PokedexEntryPopup *popup)",
+      "header": "include/overlay_18_021F8AB8.h"
+    },
+    "ov18_021F8C48": {
+      "known_prototype": "BOOL ov18_021F8C48(PokedexEntryPopup *popup)",
+      "header": "include/overlay_18_021F8AB8.h"
+    },
+    "ov18_021F8C68": {
+      "known_prototype": "void ov18_021F8C68(PokedexEntryPopup *popup)",
+      "header": "include/overlay_18_021F8AB8.h"
+    },
+    "ov18_021F8CCC": {
+      "known_prototype": "void ov18_021F8CCC(PokedexEntryPopup *popup)",
+      "header": "include/overlay_18_021F8AB8.h"
+    },
+    "ov18_021F8F10": {
+      "known_prototype": "void ov18_021F8F10(PokedexEntryPopup *popup)",
+      "header": "include/overlay_18_021F8AB8.h"
+    },
+    "ov18_021F8FA0": {
+      "known_prototype": "void ov18_021F8FA0(PokedexEntryPopup *popup)",
+      "header": "include/overlay_18_021F8AB8.h"
+    },
+    "ov18_021F91F0": {
+      "known_prototype": "void ov18_021F91F0(PokedexEntryPopup *popup)",
+      "header": "include/overlay_18_021F8AB8.h"
+    },
+    "ov18_021F95CC": {
+      "known_prototype": "void ov18_021F95CC(PokedexEntryPopup *popup)",
+      "header": "include/overlay_18_021F8AB8.h"
+    }
+  },
+  "shared_struct_hypotheses": [
+    {
+      "name": "PokedexAppData (existing, include/application/pokedex/pokedex_internal.h)",
+      "size_guess": "0x1910 (unchanged)",
+      "fields": [
+        {
+          "offset": "0x0",
+          "width": 4,
+          "meaning": "args -> args->pokedex at +0"
+        },
+        {
+          "offset": "0x878",
+          "width": 1976,
+          "meaning": "unk_0878 PokedexAppData_UnkSub0878: u16 unk_000[493][2] (species, 1=seen/2=caught), u16 unk_7B4 count, u16 unk_7B6 caught count; cleared as one 0x7B8 block"
+        },
+        {
+          "offset": "0x1030",
+          "width": 2072,
+          "meaning": "unk_1030[518] {u16 unk_0 species, u16 unk_2 status}; cleared as 0x818 block; indexed by page*15+col, by dexNo-1, or i+1"
+        },
+        {
+          "offset": "0x1848",
+          "width": 4,
+          "meaning": "heights: declared void *, used as s32[species]; cast locally, do not retype the header field"
+        },
+        {
+          "offset": "0x184C",
+          "width": 4,
+          "meaning": "weights: same, s32[species]"
+        },
+        {
+          "offset": "0x1850",
+          "width": 4,
+          "meaning": "unk_1850: PokedexAppData_UnkSub1850 * {u16 unk_0 height bound, u16 unk_2 weight bound}[153]"
+        },
+        {
+          "offset": "0x1854",
+          "width": 4,
+          "meaning": "unk_1854: u8 * area flags per species"
+        },
+        {
+          "offset": "0x1858",
+          "width": 1,
+          "meaning": "unk_1858 natDex flag (u8)"
+        },
+        {
+          "offset": "0x1859",
+          "width": 1,
+          "meaning": "unk_1859 page/row"
+        },
+        {
+          "offset": "0x185A",
+          "width": 1,
+          "meaning": "unk_185A column (0..14)"
+        },
+        {
+          "offset": "0x1860",
+          "width": 4,
+          "meaning": "unk_1860 int flag"
+        }
+      ]
+    },
+    {
+      "name": "PokedexEntryPopup (existing, include/overlay_18_021F8AB8.h)",
+      "size_guess": "0x258 (Heap_Alloc size confirms)",
+      "fields": [
+        {
+          "offset": "0x0",
+          "width": 24,
+          "meaning": "UnkStruct_50C copied in by ov18_021F8974 (bgConfig, paletteData, pokepicManager, mon, natDexEnabled, heapId)"
+        },
+        {
+          "offset": "0x18",
+          "width": 4,
+          "meaning": "task"
+        },
+        {
+          "offset": "0x1C",
+          "width": 4,
+          "meaning": "gfxNarc"
+        },
+        {
+          "offset": "0xB4",
+          "width": 4,
+          "meaning": "spriteList"
+        },
+        {
+          "offset": "0x240",
+          "width": 2,
+          "meaning": "unk_240 task state 0..4"
+        },
+        {
+          "offset": "0x244",
+          "width": 4,
+          "meaning": "species (u32, cast to u16 for PlayCryEx)"
+        },
+        {
+          "offset": "0x254",
+          "width": 4,
+          "meaning": "unk_254 done flag read by ov18_021F89C8"
+        }
+      ]
+    }
+  ],
+  "risks": [
+    "Return-type conflicts with frozen headers: ov18_021F7ED4 is declared void in pokedex_internal.h but returns TRUE; ov18_021F891C is declared u16 but returns unmasked u32. Do NOT edit pokedex_internal.h (5+ matched pokedex TUs include it). Use the shim already used in src/overlay_18_021F8AB8.c: #define ov18_021F7ED4 ov18_021F7ED4_UpstreamDecl and #define ov18_021F891C ov18_021F891C_UpstreamDecl BEFORE #include application/pokedex/pokedex_internal.h, then #undef both and declare BOOL ov18_021F7ED4(...) / u32 ov18_021F891C(...) locally.",
+    "ov18_021F8974/89C8/89D0 are declared with OverlayManager * in include/overlay_18.h (used by matched src/battle/battle_command.c). Define them with exactly those types and cast to PokedexEntryPopup * inside; do not change overlay_18.h.",
+    "No new header is needed: every export already has a declaration (pokedex_internal.h / overlay_18.h). Do not add declarations to either header (IPA cascade). All 13 non-exported helpers should be static with file-local prototypes.",
+    "Switch body SOURCE order must match asm layout: 822C case 0 first then 1..5; 831C case 17 (ALL) first then 0..16; 8468 case 14 (ALL) first then 7,13,11,5,4,12,9,6,1,2,3,10,0,8; 89F8 needs an explicit empty case 4 to keep the 5-entry jump table.",
+    "Unsigned compares everywhere: GF_ASSERT(fileIdx < 82) uses blo -> u32 param; all loop counters compare with blo/bls -> u32 (int would give blt/ble).",
+    "ldr+str self-stores of stack params at entry (8584 [0x30]; 8640/86D0 [0x28],[0x2c]; 8764 [0x2c],[0x34]) are MWCC home-slot spills, not source; keep those params unassigned to locals so they stay memory-resident across the loop.",
+    "8640/86D0 hoist min*4/max*4 to stack temps before the loop: write unk_1850[min].unk_0 inline in the loop condition (insight inline-invariant-in-loop-forces-param-spill); precomputed lo/hi locals will shrink the function.",
+    "8584 has two loop counters in different stack slots ([sp,#0xc] and [sp,#8]) -> declare a distinct u32 i in each branch block.",
+    "8974: 0x18-byte ldrb/strb copy loop is most likely an inlined constant-size memcpy(popup, unkStruct, sizeof(UnkStruct_50C)); a struct assignment would emit ldmia/stmia pairs. Try memcpy first.",
+    "heights/weights are void * in PokedexAppData; index through a local (s32 *) cast, do not retype the header field.",
+    "IsCryFinished lives in unk_02005D10.h (the IPA-sensitive TU per memory); including the header is fine, never modify it.",
+    "tst operand order varies (const-first for mask&8 / mask&4, var-first for byte&1): if a tst comes out with swapped registers, swap the source operand order.",
+    "The .extern lines at the top of the .s (ov18_021E5900 .. ov18_021E8B5C) are stale split leftovers; nothing in this file references them."
+  ],
+  "notes": "Text-only file: no .rodata/.data/.bss, all jump tables are inline in .text, so no rodata-ordering concerns. 23 thumb functions, ~1.3 KB. Semantics: the Pokedex search pipeline -- ov18_021F7ED4 runs the species list through seen-filter, sort-order, letter, type x2, body type, area, height, weight filters (each helper reads src/srcCount, writes dst/count, ALL-sentinel = memcpy passthrough), then ov18_021F81D8 commits the result into pokedexApp->unk_0878; 8824/8838/8850/8884/891C/8950 are accessors over that result; 8974/89C8/89D0/89F8 are the battle-side new-dex-entry popup constructor/poller/destructor/task wrapping the already-matched src/overlay_18_021F8AB8.c. Includes needed: application/pokedex/pokedex_internal.h (with the two shims above), overlay_18_021F8AB8.h, dex_mon_measures.h, gf_gfx_loader.h, heap.h, pokedex.h, pokedex_util.h, filesystem.h, sound_02004A44.h, unk_02005D10.h, sprite.h, sys_task_api.h, <nitro/gx/gx.h> for G2_BlendNone, and graphic/zukan_gra.naix if NARC_graphic_zukan_gra is used for 0x44. Constants: HEAP_ID_POKEDEX_APP = 0x25 (include/constants/heap.h), NATIONAL_DEX_COUNT*2 = 0x3DA, DEX_SEARCH_LETTERS_ALL = 26, DEX_SEARCH_TYPE_ALL = 17, DEX_SEARCH_BODYTYPE_ALL = 14, 1<<DEX_SEARCH_AREA_ALL = 8, 1<<DEX_SEARCH_AREA_KANTO = 4 (include/application/pokedex/pokedex_internal_constants.h). No prior attempts logged for this file in attempts_log.jsonl; the neighbor 8AB8 log (ts 2026-09-01) confirms int-vs-u32 loop-bound and call-result-temp lessons that also apply here."
+}
