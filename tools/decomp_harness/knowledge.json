@@ -233,6 +233,657 @@
    ],
    "sweep_output": "sweep/out/overlay_14_021F4B90.json"
   },
+  "asm/overlay_14_021F58B8.s": {
+   "notes": "30 thumb functions, no .rodata/.data/.bss in this chunk (literal pools only: 0x44D, 0x10200, 0xE0F00 x2, 0x90A00 x2, 0x90A0D, 0x3EB, and three ov14_021F6208 / one sub_02019A60 pool addresses for the bx r3 tail calls). PC Box UI window-frame/text drawing helpers. Graphics source is GfGfxLoader_GetCharData(NARC_a_0_1_9 (0x13), member 0x40 (8x8 frame set, tile offset 0 or 0x180 by flag) or 0xe (24-wide tab frame), TRUE, &charData, HEAP_ID_10); pixel base = charData->pRawData (NNSG2dCharacterData +0x14). Text colors: 0x00010200 = MAKE_TEXT_COLOR(1,2,0), 0x000E0F00 = (14,15,0), 0x00090A00 = (9,10,0), 0x00090A0D = (9,10,13). Font id 4 (FontID_Alloc(4, HEAP_ID_10) in neighbor), font 0 in 58B8. Compiler flags: -O4,p -ipa file -inline on,noauto -char signed (no auto inlining of statics). Window index map used here: 0x18-0x1c (5C84/5E94/5EB4/5EC4/5ED4 frames), 0x1d-0x21 (5FBC/5EE4 stack of 5 windows 0x21-i, mgr entries 3..7 / 7-i), 0x20/0x21 (6070), 0x22-0x24 (6338 family, mgr entries 1-2 via sub_02019A60), 0x29 (5BD8 family; mgr entry 0xc via 60BC), 0x2a (604C; mgr 0xe), 0x2b (6408; mgr 0xf), 0x18/0x19/0x1a/0x1c mapped to mgr entries 8/9/0xa/0xb. Exported functions are called only from sibling asm chunks (021E5900, 021EAF08, 021EE26C, 021EEF34, 021EFDE4, 021F0A80, 021F1808, 021F2490, 021F6628); no C callers yet, so prototypes are free to choose but become load-bearing for those chunks.",
+   "oracle": {
+    "functions": {
+     "ov14_021F58B8": {
+      "signedness": [
+       {
+        "branch": "blo",
+        "confidence": "high",
+        "evidence": "L27: cmp r1, #0x10  =>  L28: blo _021F590E",
+        "register": "r1",
+        "verdict": "unsigned"
+       }
+      ],
+      "widths": [
+       {
+        "base": "r2",
+        "confidence": "high",
+        "evidence": "L26: ldrb r1, [r2, r0]",
+        "kind": "load-width",
+        "offset": "(r0)",
+        "verdict": "u8"
+       },
+       {
+        "base": "r2",
+        "confidence": "high",
+        "evidence": "L44: ldrb r1, [r2, r1]",
+        "kind": "load-width",
+        "offset": "(r1)",
+        "verdict": "u8"
+       }
+      ]
+     },
+     "ov14_021F5950": {
+      "signedness": [
+       {
+        "branch": "ble",
+        "confidence": "high",
+        "evidence": "L218: cmp r0, #1  =>  L219: ble _021F5AFE",
+        "register": "r0",
+        "verdict": "signed"
+       },
+       {
+        "branch": "blt",
+        "confidence": "high",
+        "evidence": "L284: cmp r7, r0  =>  L285: blt _021F5A9A",
+        "register": "r7",
+        "verdict": "signed"
+       },
+       {
+        "branch": "ble",
+        "confidence": "high",
+        "evidence": "L289: cmp r0, #1  =>  L290: ble _021F5B8E",
+        "register": "r0",
+        "verdict": "signed"
+       },
+       {
+        "branch": "blt",
+        "confidence": "high",
+        "evidence": "L356: cmp r7, r0  =>  L357: blt _021F5B2A",
+        "register": "r7",
+        "verdict": "signed"
+       }
+      ],
+      "widths": [
+       {
+        "confidence": "high",
+        "evidence": "L154: lsl r1, r7, #0x10 ; L156: lsr r1, r1, #0x10",
+        "kind": "truncation-pair",
+        "register": "r1",
+        "verdict": "u16"
+       },
+       {
+        "confidence": "high",
+        "evidence": "L179: lsl r1, r1, #0x10 ; L181: lsr r1, r1, #0x10",
+        "kind": "truncation-pair",
+        "register": "r1",
+        "verdict": "u16"
+       },
+       {
+        "confidence": "high",
+        "evidence": "L196: lsl r1, r7, #0x10 ; L198: lsr r1, r1, #0x10",
+        "kind": "truncation-pair",
+        "register": "r1",
+        "verdict": "u16"
+       },
+       {
+        "confidence": "high",
+        "evidence": "L202: lsl r1, r1, #0x10 ; L203: lsr r1, r1, #0x10",
+        "kind": "truncation-pair",
+        "register": "r1",
+        "verdict": "u16"
+       },
+       {
+        "confidence": "high",
+        "evidence": "L232: lsl r0, r0, #0x10 ; L234: lsr r0, r0, #0x10",
+        "kind": "truncation-pair",
+        "register": "r0",
+        "verdict": "u16"
+       },
+       {
+        "confidence": "high",
+        "evidence": "L247: lsl r0, r0, #0x10 ; L248: lsr r0, r0, #0x10",
+        "kind": "truncation-pair",
+        "register": "r0",
+        "verdict": "u16"
+       },
+       {
+        "confidence": "high",
+        "evidence": "L268: lsl r0, r0, #0x10 ; L269: lsr r0, r0, #0x10",
+        "kind": "truncation-pair",
+        "register": "r0",
+        "verdict": "u16"
+       },
+       {
+        "confidence": "high",
+        "evidence": "L281: lsl r0, r0, #0x18 ; L282: lsr r7, r0, #0x18",
+        "kind": "truncation-pair",
+        "register": "r0",
+        "verdict": "u8"
+       },
+       {
+        "confidence": "high",
+        "evidence": "L304: lsl r0, r0, #0x10 ; L306: lsr r0, r0, #0x10",
+        "kind": "truncation-pair",
+        "register": "r0",
+        "verdict": "u16"
+       },
+       {
+        "confidence": "high",
+        "evidence": "L317: lsl r0, r0, #0x10 ; L318: lsr r0, r0, #0x10",
+        "kind": "truncation-pair",
+        "register": "r0",
+        "verdict": "u16"
+       },
+       {
+        "confidence": "high",
+        "evidence": "L337: lsl r0, r0, #0x10 ; L338: lsr r0, r0, #0x10",
+        "kind": "truncation-pair",
+        "register": "r0",
+        "verdict": "u16"
+       },
+       {
+        "confidence": "high",
+        "evidence": "L353: lsl r0, r0, #0x18 ; L354: lsr r7, r0, #0x18",
+        "kind": "truncation-pair",
+        "register": "r0",
+        "verdict": "u8"
+       }
+      ]
+     },
+     "ov14_021F5BD8": {
+      "signedness": [
+       {
+        "branch": "bhi",
+        "confidence": "high",
+        "evidence": "L436: cmp r1, #1  =>  L437: bhi _021F5C5A",
+        "register": "r1",
+        "verdict": "unsigned"
+       }
+      ],
+      "widths": [
+       {
+        "confidence": "high",
+        "evidence": "L434: lsl r1, r1, #0x18 ; L435: lsr r1, r1, #0x18",
+        "kind": "truncation-pair",
+        "register": "r1",
+        "verdict": "u8"
+       },
+       {
+        "base": "r0",
+        "confidence": "high",
+        "evidence": "L431: ldrb r0, [r0, #0x10]",
+        "kind": "load-width",
+        "offset": "#0x10",
+        "verdict": "u8"
+       }
+      ]
+     },
+     "ov14_021F5C94": {
+      "signedness": [
+       {
+        "branch": "ble",
+        "confidence": "high",
+        "evidence": "L619: cmp r0, #1  =>  L620: ble _021F5E4A",
+        "register": "r0",
+        "verdict": "signed"
+       },
+       {
+        "branch": "blt",
+        "confidence": "high",
+        "evidence": "L693: cmp r7, r0  =>  L694: blt _021F5DB8",
+        "register": "r7",
+        "verdict": "signed"
+       }
+      ],
+      "widths": [
+       {
+        "confidence": "high",
+        "evidence": "L632: lsl r0, r0, #0x10 ; L633: lsr r0, r0, #0x10",
+        "kind": "truncation-pair",
+        "register": "r0",
+        "verdict": "u16"
+       },
+       {
+        "confidence": "high",
+        "evidence": "L653: lsl r0, r0, #0x10 ; L654: lsr r0, r0, #0x10",
+        "kind": "truncation-pair",
+        "register": "r0",
+        "verdict": "u16"
+       },
+       {
+        "confidence": "high",
+        "evidence": "L673: lsl r0, r0, #0x10 ; L674: lsr r0, r0, #0x10",
+        "kind": "truncation-pair",
+        "register": "r0",
+        "verdict": "u16"
+       },
+       {
+        "confidence": "high",
+        "evidence": "L690: lsl r0, r0, #0x18 ; L691: lsr r7, r0, #0x18",
+        "kind": "truncation-pair",
+        "register": "r0",
+        "verdict": "u8"
+       }
+      ]
+     },
+     "ov14_021F5EE4": {
+      "signedness": [
+       {
+        "branch": "bls",
+        "confidence": "high",
+        "evidence": "L798: cmp r6, #0  =>  L799: bls _021F5F90",
+        "register": "r6",
+        "verdict": "unsigned"
+       },
+       {
+        "branch": "blo",
+        "confidence": "high",
+        "evidence": "L865: cmp r4, r6  =>  L866: blo _021F5F0E",
+        "register": "r4",
+        "verdict": "unsigned"
+       },
+       {
+        "branch": "bhs",
+        "confidence": "high",
+        "evidence": "L868: cmp r6, #5  =>  L869: bhs _021F5FB6",
+        "register": "r6",
+        "verdict": "unsigned"
+       },
+       {
+        "branch": "blo",
+        "confidence": "high",
+        "evidence": "L884: cmp r6, #5  =>  L885: blo _021F5F96",
+        "register": "r6",
+        "verdict": "unsigned"
+       }
+      ],
+      "widths": [
+       {
+        "confidence": "high",
+        "evidence": "L821: lsl r0, r0, #0x18 ; L822: lsr r0, r0, #0x18",
+        "kind": "truncation-pair",
+        "register": "r0",
+        "verdict": "u8"
+       },
+       {
+        "confidence": "high",
+        "evidence": "L825: lsl r0, r0, #0x18 ; L826: lsr r0, r0, #0x18",
+        "kind": "truncation-pair",
+        "register": "r0",
+        "verdict": "u8"
+       },
+       {
+        "confidence": "high",
+        "evidence": "L847: lsl r0, r0, #0x18 ; L848: lsr r0, r0, #0x18",
+        "kind": "truncation-pair",
+        "register": "r0",
+        "verdict": "u8"
+       },
+       {
+        "confidence": "high",
+        "evidence": "L851: lsl r0, r0, #0x18 ; L852: lsr r0, r0, #0x18",
+        "kind": "truncation-pair",
+        "register": "r0",
+        "verdict": "u8"
+       },
+       {
+        "base": "r2",
+        "confidence": "high",
+        "evidence": "L809: ldrh r0, [r2, #2]",
+        "kind": "load-width",
+        "offset": "#2",
+        "verdict": "u16"
+       },
+       {
+        "base": "r2",
+        "confidence": "high",
+        "evidence": "L812: ldrh r2, [r2]",
+        "kind": "load-width",
+        "offset": "#0",
+        "verdict": "u16"
+       },
+       {
+        "base": "r7",
+        "confidence": "high",
+        "evidence": "L818: ldrh r0, [r7, #2]",
+        "kind": "load-width",
+        "offset": "#2",
+        "verdict": "u16"
+       },
+       {
+        "base": "r7",
+        "confidence": "high",
+        "evidence": "L824: ldrh r0, [r7]",
+        "kind": "load-width",
+        "offset": "#0",
+        "verdict": "u16"
+       }
+      ]
+     },
+     "ov14_021F60BC": {
+      "signedness": [
+       {
+        "branch": "ble",
+        "confidence": "high",
+        "evidence": "L1081: cmp r4, #0  =>  L1082: ble _021F6164",
+        "register": "r4",
+        "verdict": "signed"
+       },
+       {
+        "branch": "blt",
+        "confidence": "high",
+        "evidence": "L1110: cmp r1, r0  =>  L1111: blt _021F613E",
+        "register": "r1",
+        "verdict": "signed"
+       },
+       {
+        "branch": "ble",
+        "confidence": "high",
+        "evidence": "L1117: cmp r1, #0  =>  L1118: ble _021F61AE",
+        "register": "r1",
+        "verdict": "signed"
+       },
+       {
+        "branch": "blt",
+        "confidence": "high",
+        "evidence": "L1149: cmp r0, r1  =>  L1150: blt _021F6184",
+        "register": "r0",
+        "verdict": "signed"
+       },
+       {
+        "branch": "ble",
+        "confidence": "high",
+        "evidence": "L1154: cmp r1, #0  =>  L1155: ble _021F6200",
+        "register": "r1",
+        "verdict": "signed"
+       },
+       {
+        "branch": "ble",
+        "confidence": "high",
+        "evidence": "L1161: cmp r0, #0  =>  L1162: ble _021F61EA",
+        "register": "r0",
+        "verdict": "signed"
+       },
+       {
+        "branch": "blt",
+        "confidence": "high",
+        "evidence": "L1182: cmp r3, r0  =>  L1183: blt _021F61C6",
+        "register": "r3",
+        "verdict": "signed"
+       },
+       {
+        "branch": "blt",
+        "confidence": "high",
+        "evidence": "L1194: cmp r0, r1  =>  L1195: blt _021F61B6",
+        "register": "r0",
+        "verdict": "signed"
+       }
+      ],
+      "widths": [
+       {
+        "confidence": "high",
+        "evidence": "L1087: lsl r0, r0, #0x10 ; L1089: lsr r0, r0, #0x10",
+        "kind": "truncation-pair",
+        "register": "r0",
+        "verdict": "u16"
+       },
+       {
+        "confidence": "high",
+        "evidence": "L1088: lsl r4, r4, #0x10 ; L1090: lsr r6, r4, #0x10",
+        "kind": "truncation-pair",
+        "register": "r4",
+        "verdict": "u16"
+       },
+       {
+        "confidence": "high",
+        "evidence": "L1106: lsl r0, r0, #0x10 ; L1107: lsr r1, r0, #0x10",
+        "kind": "truncation-pair",
+        "register": "r0",
+        "verdict": "u16"
+       },
+       {
+        "confidence": "high",
+        "evidence": "L1123: lsl r3, r3, #0x10 ; L1125: lsr r3, r3, #0x10",
+        "kind": "truncation-pair",
+        "register": "r3",
+        "verdict": "u16"
+       },
+       {
+        "confidence": "high",
+        "evidence": "L1124: lsl r1, r1, #0x10 ; L1126: lsr r1, r1, #0x10",
+        "kind": "truncation-pair",
+        "register": "r1",
+        "verdict": "u16"
+       },
+       {
+        "confidence": "high",
+        "evidence": "L1146: lsl r0, r4, #0x10 ; L1147: lsr r0, r0, #0x10",
+        "kind": "truncation-pair",
+        "register": "r0",
+        "verdict": "u16"
+       },
+       {
+        "confidence": "high",
+        "evidence": "L1174: lsl r0, r0, #0x10 ; L1175: lsr r2, r0, #0x10",
+        "kind": "truncation-pair",
+        "register": "r0",
+        "verdict": "u16"
+       },
+       {
+        "confidence": "high",
+        "evidence": "L1177: lsl r0, r0, #0x10 ; L1178: lsr r3, r0, #0x10",
+        "kind": "truncation-pair",
+        "register": "r0",
+        "verdict": "u16"
+       },
+       {
+        "confidence": "high",
+        "evidence": "L1187: lsl r0, r0, #0x10 ; L1188: lsr r0, r0, #0x10",
+        "kind": "truncation-pair",
+        "register": "r0",
+        "verdict": "u16"
+       },
+       {
+        "base": "r4",
+        "confidence": "high",
+        "evidence": "L1046: ldrb r0, [r4, #9]",
+        "kind": "load-width",
+        "offset": "#9",
+        "verdict": "u8"
+       },
+       {
+        "base": "r7",
+        "confidence": "high",
+        "evidence": "L1053: strh r1, [r7]",
+        "kind": "store-width",
+        "offset": "#0",
+        "verdict": "u16"
+       },
+       {
+        "base": "r3",
+        "confidence": "high",
+        "evidence": "L1054: ldrh r4, [r3, #2]",
+        "kind": "load-width",
+        "offset": "#2",
+        "verdict": "u16"
+       },
+       {
+        "base": "r7",
+        "confidence": "high",
+        "evidence": "L1059: strh r1, [r7, r4]",
+        "kind": "store-width",
+        "offset": "(r4)",
+        "verdict": "u16"
+       },
+       {
+        "base": "r3",
+        "confidence": "high",
+        "evidence": "L1060: ldrh r4, [r3]",
+        "kind": "load-width",
+        "offset": "#0",
+        "verdict": "u16"
+       },
+       {
+        "base": "r7",
+        "confidence": "high",
+        "evidence": "L1077: strh r6, [r7, r1]",
+        "kind": "store-width",
+        "offset": "(r1)",
+        "verdict": "u16"
+       },
+       {
+        "base": "r0",
+        "confidence": "high",
+        "evidence": "L1095: strh r6, [r0, #2]",
+        "kind": "store-width",
+        "offset": "#2",
+        "verdict": "u16"
+       },
+       {
+        "base": "r4",
+        "confidence": "high",
+        "evidence": "L1104: strh r0, [r4, #2]",
+        "kind": "store-width",
+        "offset": "#2",
+        "verdict": "u16"
+       },
+       {
+        "base": "r6",
+        "confidence": "high",
+        "evidence": "L1114: ldrh r1, [r6]",
+        "kind": "load-width",
+        "offset": "#0",
+        "verdict": "u16"
+       },
+       {
+        "base": "r6",
+        "confidence": "high",
+        "evidence": "L1130: ldrh r1, [r6, #2]",
+        "kind": "load-width",
+        "offset": "#2",
+        "verdict": "u16"
+       },
+       {
+        "base": "r7",
+        "confidence": "high",
+        "evidence": "L1137: strh r1, [r7, r3]",
+        "kind": "store-width",
+        "offset": "(r3)",
+        "verdict": "u16"
+       },
+       {
+        "base": "r1",
+        "confidence": "high",
+        "evidence": "L1144: strh r0, [r1]",
+        "kind": "store-width",
+        "offset": "#0",
+        "verdict": "u16"
+       },
+       {
+        "base": "r0",
+        "confidence": "high",
+        "evidence": "L1158: ldrh r6, [r0, #2]",
+        "kind": "load-width",
+        "offset": "#2",
+        "verdict": "u16"
+       },
+       {
+        "base": "r0",
+        "confidence": "high",
+        "evidence": "L1191: ldrh r0, [r0]",
+        "kind": "load-width",
+        "offset": "#0",
+        "verdict": "u16"
+       }
+      ]
+     },
+     "ov14_021F6408": {
+      "signedness": [
+       {
+        "branch": "ble",
+        "confidence": "high",
+        "evidence": "L1627: cmp r0, #3  =>  L1628: ble _021F65D8",
+        "register": "r0",
+        "verdict": "signed"
+       },
+       {
+        "branch": "blt",
+        "confidence": "high",
+        "evidence": "L1703: cmp r7, r0  =>  L1704: blt _021F6542",
+        "register": "r7",
+        "verdict": "signed"
+       }
+      ],
+      "widths": [
+       {
+        "confidence": "high",
+        "evidence": "L1567: lsl r0, r6, #0x10 ; L1569: lsr r0, r0, #0x10",
+        "kind": "truncation-pair",
+        "register": "r0",
+        "verdict": "u16"
+       },
+       {
+        "confidence": "high",
+        "evidence": "L1586: lsl r0, r6, #0x10 ; L1588: lsr r0, r0, #0x10",
+        "kind": "truncation-pair",
+        "register": "r0",
+        "verdict": "u16"
+       },
+       {
+        "confidence": "high",
+        "evidence": "L1637: lsl r0, r6, #0x10 ; L1638: lsr r0, r0, #0x10",
+        "kind": "truncation-pair",
+        "register": "r0",
+        "verdict": "u16"
+       },
+       {
+        "confidence": "high",
+        "evidence": "L1659: lsl r0, r6, #0x10 ; L1660: lsr r0, r0, #0x10",
+        "kind": "truncation-pair",
+        "register": "r0",
+        "verdict": "u16"
+       },
+       {
+        "confidence": "high",
+        "evidence": "L1680: lsl r0, r6, #0x10 ; L1681: lsr r0, r0, #0x10",
+        "kind": "truncation-pair",
+        "register": "r0",
+        "verdict": "u16"
+       },
+       {
+        "confidence": "high",
+        "evidence": "L1700: lsl r0, r0, #0x18 ; L1701: lsr r7, r0, #0x18",
+        "kind": "truncation-pair",
+        "register": "r0",
+        "verdict": "u8"
+       }
+      ]
+     }
+    },
+    "generated": "2026-09-01T19:21:26Z",
+    "summary": {
+     "copyprop_cmp": 0,
+     "dead_store": 0,
+     "exact_types": 0,
+     "functions": 7,
+     "signed": 16,
+     "unsigned": 6,
+     "widths": 57
+    },
+    "tool": "asm_oracle.py"
+   },
+   "risks": [
+    "ov14_021F5BD8 u8 stack param (align) first used after 7 calls, read with add r0,sp,#0x18; ldrb [r0,#0x10] and compared as (u8)(align-2)<=1 -- insight u8-stack-param-ldrb-vs-hoisted-ldr predicts MWCC may hoist a word ldr; the u8-typed range compare (add #0xfe; lsl/lsr 24) also constrains the fix",
+    "Tail-call shape: 62CC/62E4/62FC/63F0 are ldr r3,=f; bx r3 sibling calls (<=3 register args); 5C84/5EB4/5EC4/5ED4/604C/63A8/63B8 are push {r3,lr}/bl/pop because all four arg registers are occupied; 5E94/5FBC have if/else dual call sites and are not tail-called. Write plain last-statement calls (void); do not force with return",
+    "sys caching: in 5950/5BD8/5C94 r5 = work->sys+0x30 and r4 = winIdx<<4 stay live across external calls while msgData is re-read as work->sys->msgData via a spilled work; in 6408 r4 = work->sys is live across calls but msgData still goes through work->sys. Needs a local for the window base but a full work->sys->msgData expression for the string",
+    "ov14_021F58B8 reloads the 0x44D pool constant twice and pushes only r4,r5 -- insight large-field-offset-const-promotion-callee-reg-nonmatching: MWCC may hoist 0x44D into a callee-saved reg (extra push)",
+    "ov14_021F5950 assigns color = 0xE0F00 in BOTH if/else arms (identical value, separate stores) plus tile offset 0x180/0 -- keep the duplicated assignment; 5BD8 instead hoists the constant into r6 before NewString_ReadMsgData",
+    "Loop-counter widths differ per function: u8 in 5950/5C94/6408 (lsl/lsr 24, signed blt against int bound), u16 in 60BC (lsl/lsr 16), u32 in 5EE4 (blo/bhs, no narrowing, count param reused as counter)",
+    "(width*8)/2 is a SIGNED divide (lsr #31; add; asr #1) in 5950/5BD8/5C94/6338/6408 -> int width locals (contrast: neighbor 021F4B90 note says width is u32 there)",
+    "ov14_021F60BC: heavy register pressure (ip holds pal+0x3ed), w/h address-taken u16 locals re-read via ldrh each iteration, i+1 CSE'd with the loop increment, 0x3e8 base constant reused via add #2/#9/#0xb -- likely needs regalloc iteration",
+    "ov14_021F6338 4th param is dead but every caller passes 0; dropping it changes call sites in 638C/63A8/63B8",
+    "sub_02019A60 has no public prototype (local to matched src/unk_0201956C.c) -- must use a local extern here; do NOT add to include/unk_0201956C.h (IPA cascade into matched includers)",
+    "include/overlay_14.h is included by matched src/scrcmd_c.c and src/launch_application.c -- put the new boxapp/boxsys/table typedefs in a separate internal header, not overlay_14.h",
+    "Static-ness of the 8 non-.public functions (5950, 5BD8, 5C94, 5ED4, 605C, 60BC, 6208, 6338) is inferred only from absence of cross-chunk references; no IPA constant propagation is visible (5ED4/60BC still forward r1) so either linkage should compile the same, but static is the natural choice",
+    "First-param type split constrains 8 sibling asm chunks: work-taking exports 58B8/5C84/5E94/5EB4/5EC4/5EE4/5FBC/604C/6070/6094/60A8/6314/6408 vs sys-taking exports 6244/62CC/62E4/62FC/638C/63A8/63B8/63C8/63F0 (callers pass ldr r0,[work,#0x34])",
+    "BlitBitmapRect has 7 stack args (11 total); all dst coords are int expressions narrowed to u16 at the call site -- pass the expressions directly, not pre-narrowed locals"
+   ],
+   "sweep_output": "sweep/out/overlay_14_021F58B8.json"
+  },
   "asm/overlay_14_021F6628.s": {
    "notes": "Large (67 thumb funcs) overlay_14 chunk: a grid/touch cursor-navigation menu (uses GridInputHandler + DpadMenuBox + TouchscreenHitbox). TWO distinct struct pointers flow as a0: (A) a 'context' struct whose [+0x34] holds (B) a large 'work' struct. MOST functions take the context; the exceptions ov14_021F6654/6678/6688 take the WORK struct directly (windows at work+0x30, BgConfig at work+0x14) -- do NOT assume a uniform a0 type. The 11 GridCallbacks tables (ov14_021F86CC..876C) reference ~40 static callbacks defined here; they are stored as DpadGridCallback = void(*)(void*,int,int), so ALL table-referenced callbacks must be declared void fn(void *data, int newTarget, int prevTarget) even when they ignore trailing args. No .data/.bss; .rodata only. No callers exist in decompiled C (whole overlay is asm) so no existing-header IPA hazard.",
    "risks": [
@@ -22824,7 +23475,7 @@
    "sweep_output": "sweep/out/unk_02097B78.json"
   }
  },
- "generated": "2026-08-09T05:31:32Z",
+ "generated": "2026-09-01T19:21:26Z",
  "signature_conflicts": [
   "DestroySysTaskAndEnvironment",
   "GridInputHandler_GetNextInput",
@@ -22868,8 +23519,12 @@
   "ov14_021F4958",
   "ov14_021F49E0",
   "ov14_021F4A20",
+  "ov14_021F4EA0",
+  "ov14_021F4F84",
   "ov14_021F4FBC",
   "ov14_021F57B8",
+  "ov14_021F58B8",
+  "ov14_021F5EE4",
   "ov14_021F685C",
   "ov14_021F68C0",
   "ov14_021F6928",
@@ -27823,8 +28478,39 @@
     "asm/overlay_14_021F1808.s"
    ]
   },
+  "UnkStruct_ov14_021F7D3C": {
+   "fields": {
+    "0x0": [
+     {
+      "meaning": "u16 msgId",
+      "source": "asm/overlay_14_021F58B8.s",
+      "width": 2
+     }
+    ],
+    "0x2": [
+     {
+      "meaning": "u16 type (0 = 8x8 frame via ov14_021F5950 + palette 0xc; 1 = tab frame via ov14_021F5C94 + palette 2)",
+      "source": "asm/overlay_14_021F58B8.s",
+      "width": 2
+     }
+    ]
+   },
+   "size_guesses": {
+    "asm/overlay_14_021F58B8.s": "4 bytes per entry, 5 entries (rodata in asm/overlay_14_021EAF08.s)"
+   },
+   "sources": [
+    "asm/overlay_14_021F58B8.s"
+   ]
+  },
   "UnkStruct_ov14_boxapp": {
    "fields": {
+    "0x0": [
+     {
+      "meaning": "PCBoxArgs *args (args->unk8 compared == 3 in ov14_021F5E94; PCBoxArgs from include/overlay_14.h)",
+      "source": "asm/overlay_14_021F58B8.s",
+      "width": 4
+     }
+    ],
     "0x1c": [
      {
       "meaning": "u16 param (page/box id?)",
@@ -27872,14 +28558,28 @@
       "meaning": "UnkStruct_ov14_boxsys *sys (box-system substruct)",
       "source": "asm/overlay_14_021EEF34.s",
       "width": 4
+     },
+     {
+      "meaning": "UnkStruct_ov14_boxsys *sys",
+      "source": "asm/overlay_14_021F58B8.s",
+      "width": 4
+     }
+    ],
+    "0x4": [
+     {
+      "meaning": "PCStorage *storage",
+      "source": "asm/overlay_14_021F58B8.s",
+      "width": 4
      }
     ]
    },
    "size_guesses": {
-    "asm/overlay_14_021EEF34.s": ">=0x38 (main app work struct)"
+    "asm/overlay_14_021EEF34.s": ">=0x38 (main app work struct)",
+    "asm/overlay_14_021F58B8.s": ">=0x38 (sibling sweeps)"
    },
    "sources": [
-    "asm/overlay_14_021EEF34.s"
+    "asm/overlay_14_021EEF34.s",
+    "asm/overlay_14_021F58B8.s"
    ]
   },
   "UnkStruct_ov14_boxsys": {
@@ -27898,6 +28598,27 @@
       "width": 4
      }
     ],
+    "0x14": [
+     {
+      "meaning": "BgConfig *bgConfig",
+      "source": "asm/overlay_14_021F58B8.s",
+      "width": 4
+     }
+    ],
+    "0x20": [
+     {
+      "meaning": "MsgData *msgData",
+      "source": "asm/overlay_14_021F58B8.s",
+      "width": 4
+     }
+    ],
+    "0x2F0": [
+     {
+      "meaning": "UnkStruct_0201956C *unk2F0 tilemap-window manager (sub_02019xxx)",
+      "source": "asm/overlay_14_021F58B8.s",
+      "width": 4
+     }
+    ],
     "0x2c": [
      {
       "meaning": "GridInputHandler *",
@@ -27910,6 +28631,13 @@
       "meaning": "ManagedSprite * (accessed as 0x2f<<4)",
       "source": "asm/overlay_14_021EEF34.s",
       "width": 4
+     }
+    ],
+    "0x30": [
+     {
+      "meaning": "Window windows[0x2c] (sizeof(Window)=0x10; ends at 0x2F0; AddWindow loop in neighbor ov14_021F4ED0)",
+      "source": "asm/overlay_14_021F58B8.s",
+      "width": 704
      }
     ],
     "0x320": [
@@ -27938,6 +28666,20 @@
       "meaning": "u32 touch Y",
       "source": "asm/overlay_14_021EEF34.s",
       "width": 4
+     }
+    ],
+    "0x414": [
+     {
+      "meaning": "TextOBJ * array stride 0x10 (neighbor ov14_021F4EA0)",
+      "source": "asm/overlay_14_021F58B8.s",
+      "width": 4
+     }
+    ],
+    "0x44D": [
+     {
+      "meaning": "u8 wallpaper index (0..0x17; >=0x10 bonus)",
+      "source": "asm/overlay_14_021F58B8.s",
+      "width": 1
      }
     ],
     "0x44b": [
@@ -27970,10 +28712,12 @@
     ]
    },
    "size_guesses": {
-    "asm/overlay_14_021EEF34.s": ">=0x88CC (very large; register+register addressing with pool offset constants)"
+    "asm/overlay_14_021EEF34.s": ">=0x88CC (very large; register+register addressing with pool offset constants)",
+    "asm/overlay_14_021F58B8.s": ">=0x88CA (sibling: u16 at 0x88C8)"
    },
    "sources": [
-    "asm/overlay_14_021EEF34.s"
+    "asm/overlay_14_021EEF34.s",
+    "asm/overlay_14_021F58B8.s"
    ]
   },
   "UnkStruct_ov29_0225D520": {
@@ -29394,6 +30138,7 @@
   "AddTextWindowTopLeftCorner": {
    "callers": [
     "asm/overlay_14_021F4B90.s",
+    "asm/overlay_14_021F58B8.s",
     "asm/overlay_80_0223A00C.s"
    ],
    "header": "include/bg_window.h",
@@ -29543,6 +30288,7 @@
   "BlitBitmapRect": {
    "callers": [
     "asm/overlay_14_021F4B90.s",
+    "asm/overlay_14_021F58B8.s",
     "asm/overlay_18_021EE35C.s"
    ],
    "header": "include/blit.h",
@@ -29803,6 +30549,7 @@
   "CopyWindowPixelsToVram_TextMode": {
    "callers": [
     "asm/overlay_14_021F4B90.s",
+    "asm/overlay_14_021F58B8.s",
     "asm/overlay_18_021EE35C.s",
     "asm/overlay_18_021F0918.s",
     "asm/overlay_29.s",
@@ -30074,6 +30821,7 @@
   "FillWindowPixelBuffer": {
    "callers": [
     "asm/overlay_14_021F4B90.s",
+    "asm/overlay_14_021F58B8.s",
     "asm/overlay_14_021F6628.s",
     "asm/overlay_18_021EE35C.s",
     "asm/overlay_18_021F0918.s",
@@ -30740,6 +31488,7 @@
   },
   "GetWindowBaseTile": {
    "callers": [
+    "asm/overlay_14_021F58B8.s",
     "asm/overlay_18_021EE35C.s"
    ],
    "header": "include/bg_window.h",
@@ -30748,6 +31497,7 @@
   },
   "GetWindowBgId": {
    "callers": [
+    "asm/overlay_14_021F58B8.s",
     "asm/overlay_14_021F6628.s",
     "asm/overlay_83_02246E08.s"
    ],
@@ -30757,6 +31507,7 @@
   },
   "GetWindowHeight": {
    "callers": [
+    "asm/overlay_14_021F58B8.s",
     "asm/overlay_18_021EE35C.s"
    ],
    "header": "include/bg_window.h",
@@ -30765,6 +31516,7 @@
   },
   "GetWindowWidth": {
    "callers": [
+    "asm/overlay_14_021F58B8.s",
     "asm/overlay_18_021EE35C.s",
     "asm/overlay_29.s",
     "asm/overlay_32.s",
@@ -30781,6 +31533,7 @@
   },
   "GetWindowX": {
    "callers": [
+    "asm/overlay_14_021F58B8.s",
     "asm/overlay_18_021EE35C.s",
     "asm/overlay_18_021F0918.s"
    ],
@@ -30790,6 +31543,7 @@
   },
   "GetWindowY": {
    "callers": [
+    "asm/overlay_14_021F58B8.s",
     "asm/overlay_18_021EE35C.s",
     "asm/overlay_18_021F0918.s"
    ],
@@ -30821,6 +31575,7 @@
    "callers": [
     "asm/overlay_14_021F2490.s",
     "asm/overlay_14_021F4B90.s",
+    "asm/overlay_14_021F58B8.s",
     "asm/overlay_83_02246E08.s"
    ],
    "header": "include/gf_gfx_loader.h",
@@ -31215,6 +31970,7 @@
     "asm/overlay_14_021F1808.s",
     "asm/overlay_14_021F2490.s",
     "asm/overlay_14_021F4B90.s",
+    "asm/overlay_14_021F58B8.s",
     "asm/overlay_18_021EE35C.s",
     "asm/overlay_18_021F0918.s",
     "asm/overlay_32.s",
@@ -31267,6 +32023,7 @@
   "InitWindow": {
    "callers": [
     "asm/overlay_14_021F4B90.s",
+    "asm/overlay_14_021F58B8.s",
     "asm/overlay_80_0223A00C.s"
    ],
    "header": "include/bg_window.h",
@@ -32218,6 +32975,7 @@
   "NewString_ReadMsgData": {
    "callers": [
     "asm/overlay_14_021F4B90.s",
+    "asm/overlay_14_021F58B8.s",
     "asm/overlay_14_021F6628.s",
     "asm/overlay_18_021EE35C.s",
     "asm/overlay_29.s",
@@ -32561,7 +33319,8 @@
   "PCStorage_IsBonusWallpaperUnlocked": {
    "callers": [
     "asm/overlay_14_021F0A80.s",
-    "asm/overlay_14_021F2490.s"
+    "asm/overlay_14_021F2490.s",
+    "asm/overlay_14_021F58B8.s"
    ],
    "header": "include/pokemon_storage_system.h",
    "known_prototype": "BOOL PCStorage_IsBonusWallpaperUnlocked(PCStorage *storage, u32 wallpaper)",
@@ -32986,6 +33745,7 @@
   "RemoveWindow": {
    "callers": [
     "asm/overlay_14_021F4B90.s",
+    "asm/overlay_14_021F58B8.s",
     "asm/overlay_18_021EE35C.s",
     "asm/overlay_29.s",
     "asm/overlay_32.s",
@@ -33740,6 +34500,7 @@
    "callers": [
     "asm/overlay_14_021E5900.s",
     "asm/overlay_14_021F4B90.s",
+    "asm/overlay_14_021F58B8.s",
     "asm/overlay_14_021F6628.s",
     "asm/overlay_18_021EE35C.s",
     "asm/overlay_29.s",
@@ -44164,7 +44925,8 @@
   },
   "ov14_021F4EA0": {
    "callers": [
-    "asm/overlay_14_021F4B90.s"
+    "asm/overlay_14_021F4B90.s",
+    "asm/overlay_14_021F58B8.s"
    ],
    "confidence": "high",
    "defined_in": "asm/overlay_14_021F4B90.s",
@@ -44174,7 +44936,8 @@
    ],
    "signature_guess": "void ov14_021F4EA0(void *g, Window *window, int index)",
    "signature_sources": {
-    "asm/overlay_14_021F4B90.s": "void ov14_021F4EA0(void *g, Window *window, int index)"
+    "asm/overlay_14_021F4B90.s": "void ov14_021F4EA0(void *g, Window *window, int index)",
+    "asm/overlay_14_021F58B8.s": "void ov14_021F4EA0(UnkStruct_ov14_boxsys *sys, Window *window, int index)"
    },
    "struct_accesses": [
     {
@@ -44241,7 +45004,8 @@
   },
   "ov14_021F4F24": {
    "callers": [
-    "asm/overlay_14_021F4B90.s"
+    "asm/overlay_14_021F4B90.s",
+    "asm/overlay_14_021F58B8.s"
    ],
    "confidence": "high",
    "defined_in": "asm/overlay_14_021F4B90.s",
@@ -44251,12 +45015,14 @@
    ],
    "signature_guess": "void ov14_021F4F24(Window *window, String *str, int x, int y, int fontId, u32 color, int align)",
    "signature_sources": {
-    "asm/overlay_14_021F4B90.s": "void ov14_021F4F24(Window *window, String *str, int x, int y, int fontId, u32 color, int align)"
+    "asm/overlay_14_021F4B90.s": "void ov14_021F4F24(Window *window, String *str, int x, int y, int fontId, u32 color, int align)",
+    "asm/overlay_14_021F58B8.s": "void ov14_021F4F24(Window *window, String *str, int x, int y, int fontId, u32 color, int align)"
    }
   },
   "ov14_021F4F84": {
    "callers": [
-    "asm/overlay_14_021F4B90.s"
+    "asm/overlay_14_021F4B90.s",
+    "asm/overlay_14_021F58B8.s"
    ],
    "confidence": "high",
    "defined_in": "asm/overlay_14_021F4B90.s",
@@ -44266,7 +45032,8 @@
    ],
    "signature_guess": "void ov14_021F4F84(void *g, MsgData *msgData, int winIndex, u32 msgId, int x, int y, int fontId, u32 color, int align)",
    "signature_sources": {
-    "asm/overlay_14_021F4B90.s": "void ov14_021F4F84(void *g, MsgData *msgData, int winIndex, u32 msgId, int x, int y, int fontId, u32 color, int align)"
+    "asm/overlay_14_021F4B90.s": "void ov14_021F4F84(void *g, MsgData *msgData, int winIndex, u32 msgId, int x, int y, int fontId, u32 color, int align)",
+    "asm/overlay_14_021F58B8.s": "void ov14_021F4F84(UnkStruct_ov14_boxsys *sys, MsgData *msgData, int winIndex, int msgId, u8 x, u8 y, int fontId, u32 color, int align)"
    },
    "struct_accesses": [
     {
@@ -44823,69 +45590,600 @@
     "asm/overlay_14_021F0A80.s",
     "asm/overlay_14_021F6628.s"
    ],
-   "confidence": "low",
-   "signature_guess": "void ov14_021F58B8(UnkCtx_ov14 *ctx)",
+   "confidence": "high",
+   "defined_in": "asm/overlay_14_021F58B8.s",
+   "mode": "thumb",
+   "notes": [
+    "[asm/overlay_14_021F58B8.s] Local Window window (sp+0xc, 16 bytes; frame sub sp,#0x1c). InitWindow(&window); AddTextWindowTopLeftCorner(work->sys->bgConfig, &window, 12, 2, 0, 0); if (work->sys->unk44D >= 0x10) { if (!PCStorage_IsBonusWallpaperUnlocked(work->storage, work->sys->unk44D - 0x10)) str = NewString_ReadMsgData(work->sys->msgData, 0x3b); else str = NewString_ReadMsgData(work->sys->msgData, work->sys->unk44D + 0x23); } else str = NewString_ReadMsgData(work->sys->msgData, work->sys->unk44D + 0x23); ov14_021F4F24(&window, str, 0x30, 0, 0, MAKE_TEXT_COLOR(1,2,0), 2); String_Delete(str); ov14_021F4EA0(work->sys, &window, 0); RemoveWindow(&window). Field expressions are re-read in the unlocked branch (ldr sys, ldr =0x44d, ldrb again) -- write the field each time, do NOT cache unk44D in a local. Retail reloads the 0x44D pool constant twice and pushes only r4,r5."
+   ],
+   "signature_guess": "void ov14_021F58B8(UnkStruct_ov14_boxapp *work)",
    "signature_sources": {
+    "asm/overlay_14_021F58B8.s": "void ov14_021F58B8(UnkStruct_ov14_boxapp *work)",
     "asm/overlay_14_021F6628.s": "void ov14_021F58B8(UnkCtx_ov14 *ctx)"
+   },
+   "struct_accesses": [
+    {
+     "meaning": "PCStorage * (arg0 of PCStorage_IsBonusWallpaperUnlocked)",
+     "offset": "0x4",
+     "param": 0,
+     "width": 4
+    },
+    {
+     "meaning": "UnkStruct_ov14_boxsys *sys; re-read after every call (no local)",
+     "offset": "0x34",
+     "param": 0,
+     "width": 4
+    },
+    {
+     "meaning": "BgConfig * (AddTextWindowTopLeftCorner arg0)",
+     "offset": "sys+0x14",
+     "param": 0,
+     "width": 4
+    },
+    {
+     "meaning": "MsgData *",
+     "offset": "sys+0x20",
+     "param": 0,
+     "width": 4
+    },
+    {
+     "meaning": "u8 wallpaper index; >=0x10 means bonus wallpaper (idx-0x10); msgId = idx+0x23; offset comes from literal pool",
+     "offset": "sys+0x44D",
+     "param": 0,
+     "width": 1
+    }
+   ]
+  },
+  "ov14_021F5950": {
+   "callers": [
+    "asm/overlay_14_021F58B8.s"
+   ],
+   "confidence": "high",
+   "defined_in": "asm/overlay_14_021F58B8.s",
+   "mode": "thumb",
+   "notes": [
+    "[asm/overlay_14_021F58B8.s] Not in .public (in-chunk only). Frame drawer for generic 8x8 tile frame. Calls GetWindowBgId/X/Y and discards results (dead locals, keep the calls), keeps int width (sp+0x30) and int height (sp+0x3c). if (flag == 1) { FillWindowPixelBuffer(win, 0xb); color = MAKE_TEXT_COLOR(14,15,0); off = 0x180; } else { FillWindowPixelBuffer(win, 4); color = MAKE_TEXT_COLOR(14,15,0); off = 0; } -- color stored in BOTH branches to sp+0x4c (same value; keep the duplicate assignment), off to sp+0x40. data = GfGfxLoader_GetCharData(NARC_a_0_1_9 /*0x13*/, 0x40, TRUE, &charData, HEAP_ID_10 /*0xa*/); pixels = charData->pRawData (NNSG2dCharacterData +0x14). 4 corner blits BlitBitmapRect(win, pixels+off+K, 0,0, 8,8, dx,dy, 8,8, 0xff) with K/dx/dy = 0x00/0/0, 0x40/(w-1)*8/0, 0x120/0/(h-1)*8, 0x160/(w-1)*8/(h-1)*8. Loop u8 i=1; i<height-1 (signed blt): left K=0x60 @(0,i*8), right K=0xa0 @((w-1)*8,i*8). Loop u8 i=1; i<width-1: top K=0x20 @(i*8,0), bottom K=0x140 @(i*8,(h-1)*8). dx/dy exprs narrowed lsl/lsr 16 (u16 params). Then Heap_Free(data); str = NewString_ReadMsgData(work->sys->msgData, msgId); ov14_021F4F24(win, str, (width*8)/2 /*signed asr -> int width*/, 4, 4, color, 2); String_Delete(str); CopyWindowPixelsToVram_TextMode(win). Loop invariants (off+0x60, off+0xa0, (w-1)*8, h-1) are hoisted by MWCC into stack slots with an odd double store (str off; add #0x60; str) -- write natural code first."
+   ],
+   "signature_guess": "static void ov14_021F5950(UnkStruct_ov14_boxapp *work, int winIdx, int msgId, int flag)",
+   "signature_sources": {
+    "asm/overlay_14_021F58B8.s": "static void ov14_021F5950(UnkStruct_ov14_boxapp *work, int winIdx, int msgId, int flag)"
+   },
+   "struct_accesses": [
+    {
+     "meaning": "sys; r5 = sys+0x30 (windows base) cached across all calls; r4 = winIdx<<4; window = r5+r4 recomputed per call",
+     "offset": "0x34",
+     "param": 0,
+     "width": 4
+    },
+    {
+     "meaning": "MsgData *, re-read via work (spilled at sp+0x1c) -> work->sys->msgData, NOT via the cached sys",
+     "offset": "sys+0x20",
+     "param": 0,
+     "width": 4
+    },
+    {
+     "meaning": "Window windows[]",
+     "offset": "sys+0x30 + winIdx*0x10",
+     "param": 0,
+     "width": 16
+    }
+   ]
+  },
+  "ov14_021F5BD8": {
+   "callers": [
+    "asm/overlay_14_021F58B8.s"
+   ],
+   "confidence": "high",
+   "defined_in": "asm/overlay_14_021F58B8.s",
+   "mode": "thumb",
+   "notes": [
+    "[asm/overlay_14_021F58B8.s] Not in .public. 5th param is a u8 STACK param read at the use site with the sp-illegal base trick: add r0,sp,#0x18; ldrb r0,[r0,#0x10] (= entry sp+0). All 3 callers pass 3. Body: bgId/x/y/height discarded, width kept (sp+0x10); if (flag==1) Fill(win,0xb) else Fill(win,4); str = NewString_ReadMsgData(work->sys->msgData, msgId); color 0xE0F00 is loaded into r6 BEFORE that call (hoisted shared constant); if (align == 2 || align == 3) [emitted as (u8)(align-2) <= 1: add #0xfe; lsl/lsr 24; cmp #1; bhi -- range opt on a u8] ov14_021F4F24(win, str, (width*8)/2, 0, 4, color, align); else ov14_021F4F24(win, str, 0, 0, 4, color, align); String_Delete(str); CopyWindowPixelsToVram_TextMode(win). HAZARD: insight u8-stack-param-ldrb-vs-hoisted-ldr -- first use of align is behind 7 calls, MWCC may hoist a word ldr into the prologue; the (u8) narrowing in the compare means the value must stay u8-typed, so a plain int copy will not reproduce the add #0xfe form."
+   ],
+   "signature_guess": "static void ov14_021F5BD8(UnkStruct_ov14_boxapp *work, int winIdx, int msgId, int flag, u8 align)",
+   "signature_sources": {
+    "asm/overlay_14_021F58B8.s": "static void ov14_021F5BD8(UnkStruct_ov14_boxapp *work, int winIdx, int msgId, int flag, u8 align)"
+   },
+   "struct_accesses": [
+    {
+     "meaning": "sys; r5 = sys+0x30 cached, r4 = winIdx<<4",
+     "offset": "0x34",
+     "param": 0,
+     "width": 4
+    },
+    {
+     "meaning": "MsgData * re-read via work (r7)",
+     "offset": "sys+0x20",
+     "param": 0,
+     "width": 4
+    }
+   ]
+  },
+  "ov14_021F5C84": {
+   "callers": [],
+   "confidence": "high",
+   "defined_in": "asm/overlay_14_021F58B8.s",
+   "mode": "thumb",
+   "notes": [
+    "[asm/overlay_14_021F58B8.s] ov14_021F5950(work, 0x18, 0x3c, flag). push {r3,lr}/bl/pop, NOT a tail call (4 register args). External callers pass 0."
+   ],
+   "signature_guess": "void ov14_021F5C84(UnkStruct_ov14_boxapp *work, int flag)",
+   "signature_sources": {
+    "asm/overlay_14_021F58B8.s": "void ov14_021F5C84(UnkStruct_ov14_boxapp *work, int flag)"
    }
+  },
+  "ov14_021F5C94": {
+   "callers": [
+    "asm/overlay_14_021F58B8.s"
+   ],
+   "confidence": "high",
+   "defined_in": "asm/overlay_14_021F58B8.s",
+   "mode": "thumb",
+   "notes": [
+    "[asm/overlay_14_021F58B8.s] Not in .public. Tab-style frame (3 rows) from NARC_a_0_1_9 member 0xe, HEAP_ID_10. int width = GetWindowWidth(win) (sp+0x2c). Blits (src offset, srcW x srcH, dstX, dstY): 0xae0 24x8 @0,0; 0xb60 24x8 @0,8; 0xb20 24x8 @0,16; 0xd60 8x8 @(w-1)*8,0; 0xd20 8x8 @(w-1)*8,8; 0xd40 8x8 @(w-1)*8,16. Loop u8 i=1; i<width-1: 0xb00 @i*8,0; 0xb80 @i*8,8; 0xb40 @i*8,16. All srcX=srcY=0, colorKey 0xff. Then Heap_Free(data); str=NewString_ReadMsgData(work->sys->msgData,msgId); ov14_021F4F24(win,str,(width*8)/2,4,4,MAKE_TEXT_COLOR(9,10,0),2); String_Delete; CopyWindowPixelsToVram_TextMode."
+   ],
+   "signature_guess": "static void ov14_021F5C94(UnkStruct_ov14_boxapp *work, int winIdx, int msgId)",
+   "signature_sources": {
+    "asm/overlay_14_021F58B8.s": "static void ov14_021F5C94(UnkStruct_ov14_boxapp *work, int winIdx, int msgId)"
+   },
+   "struct_accesses": [
+    {
+     "meaning": "sys; r5 = sys+0x30 cached, r4 = winIdx<<4; work spilled sp+0x1c, msgId spilled sp+0x20",
+     "offset": "0x34",
+     "param": 0,
+     "width": 4
+    },
+    {
+     "meaning": "MsgData * via work->sys",
+     "offset": "sys+0x20",
+     "param": 0,
+     "width": 4
+    }
+   ]
+  },
+  "ov14_021F5E94": {
+   "callers": [],
+   "confidence": "high",
+   "defined_in": "asm/overlay_14_021F58B8.s",
+   "mode": "thumb",
+   "notes": [
+    "[asm/overlay_14_021F58B8.s] if (work->args->unk8 == 3) ov14_021F5C94(work, 0x19, 0x40); else ov14_021F5C94(work, 0x19, 0x3d); -- two separate bl+pop sites (if/else), not a tail call despite 3 args."
+   ],
+   "signature_guess": "void ov14_021F5E94(UnkStruct_ov14_boxapp *work)",
+   "signature_sources": {
+    "asm/overlay_14_021F58B8.s": "void ov14_021F5E94(UnkStruct_ov14_boxapp *work)"
+   },
+   "struct_accesses": [
+    {
+     "meaning": "PCBoxArgs *args",
+     "offset": "0x0",
+     "param": 0,
+     "width": 4
+    },
+    {
+     "meaning": "PCBoxArgs.unk8 (mode) compared == 3",
+     "offset": "args+0x8",
+     "param": 0,
+     "width": 4
+    }
+   ]
   },
   "ov14_021F5EB4": {
    "callers": [
     "asm/overlay_14_021EE26C.s",
     "asm/overlay_14_021F2490.s"
    ],
-   "signature_sources": {}
+   "confidence": "high",
+   "defined_in": "asm/overlay_14_021F58B8.s",
+   "mode": "thumb",
+   "notes": [
+    "[asm/overlay_14_021F58B8.s] ov14_021F5950(work, 0x1a, 0x3e, flag). All 8 external callers pass 0."
+   ],
+   "signature_guess": "void ov14_021F5EB4(UnkStruct_ov14_boxapp *work, int flag)",
+   "signature_sources": {
+    "asm/overlay_14_021F58B8.s": "void ov14_021F5EB4(UnkStruct_ov14_boxapp *work, int flag)"
+   }
   },
   "ov14_021F5EC4": {
    "callers": [
     "asm/overlay_14_021F0A80.s"
    ],
-   "signature_sources": {}
+   "confidence": "high",
+   "defined_in": "asm/overlay_14_021F58B8.s",
+   "mode": "thumb",
+   "notes": [
+    "[asm/overlay_14_021F58B8.s] ov14_021F5950(work, 0x1b, 0x4c, flag)."
+   ],
+   "signature_guess": "void ov14_021F5EC4(UnkStruct_ov14_boxapp *work, int flag)",
+   "signature_sources": {
+    "asm/overlay_14_021F58B8.s": "void ov14_021F5EC4(UnkStruct_ov14_boxapp *work, int flag)"
+   }
+  },
+  "ov14_021F5ED4": {
+   "callers": [
+    "asm/overlay_14_021F58B8.s"
+   ],
+   "confidence": "high",
+   "defined_in": "asm/overlay_14_021F58B8.s",
+   "mode": "thumb",
+   "notes": [
+    "[asm/overlay_14_021F58B8.s] Not in .public; only caller is ov14_021F6314 (passes 0). ov14_021F5950(work, 0x1c, 0x47, flag). Still forwards r1 (no IPA constant propagation observed)."
+   ],
+   "signature_guess": "static void ov14_021F5ED4(UnkStruct_ov14_boxapp *work, int flag)",
+   "signature_sources": {
+    "asm/overlay_14_021F58B8.s": "static void ov14_021F5ED4(UnkStruct_ov14_boxapp *work, int flag)"
+   }
   },
   "ov14_021F5EE4": {
    "callers": [],
-   "confidence": "low",
-   "signature_guess": "void ov14_021F5EE4(PCBoxAppWork *work, const u32 *paramList, int count)",
+   "confidence": "medium",
+   "defined_in": "asm/overlay_14_021F58B8.s",
+   "mode": "thumb",
+   "notes": [
+    "[asm/overlay_14_021F58B8.s] Table arg is rodata ov14_021F7D3C in asm/overlay_14_021EAF08.s: {0x3D,1},{0x41,0},{0x42,0},{0x43,0},{0x44,0}; caller passes count=5. Body: u16 w (sp+0x16), h (sp+0x14): sub_02019B44(work->sys->unk2F0, 3, &w, &h); for (u32 i=0; i<count; i++) [blo, count-1 hoisted to sp+0x10] { e = &entries[count-1-i]; if (e->type == 0) { ov14_021F5950(work, 0x21-i, e->msgId, 0); sub_020199F4(work->sys->unk2F0, 7-i, 0, 0, (u8)w, (u8)h, 0xc); } else { ov14_021F5C94(work, 0x21-i, e->msgId); sub_020199F4(..., 7-i, 0, 0, (u8)w, (u8)h, 2); } } then for (; count < 5; count++) [bhs/blo unsigned, reuses the param as counter] { FillWindowPixelBuffer(&work->sys->windows[0x21-count], 0); CopyWindowPixelsToVram_TextMode(&work->sys->windows[0x21-count]); }. Address of w passed as a2 (tilesW), h as a3 (tilesH); h sits at the lower stack address."
+   ],
+   "signature_guess": "void ov14_021F5EE4(UnkStruct_ov14_boxapp *work, const UnkStruct_ov14_021F7D3C *entries, u32 count)",
    "signature_sources": {
-    "asm/overlay_14_021EAF08.s": "void ov14_021F5EE4(PCBoxAppWork *work, const u32 *paramList, int count)"
-   }
+    "asm/overlay_14_021EAF08.s": "void ov14_021F5EE4(PCBoxAppWork *work, const u32 *paramList, int count)",
+    "asm/overlay_14_021F58B8.s": "void ov14_021F5EE4(UnkStruct_ov14_boxapp *work, const UnkStruct_ov14_021F7D3C *entries, u32 count)"
+   },
+   "struct_accesses": [
+    {
+     "meaning": "sys, re-read before every use (no local)",
+     "offset": "0x34",
+     "param": 0,
+     "width": 4
+    },
+    {
+     "meaning": "UnkStruct_0201956C * tilemap manager (materialized as mov #0x2f; lsl #4)",
+     "offset": "sys+0x2F0",
+     "param": 0,
+     "width": 4
+    },
+    {
+     "meaning": "Window windows[]",
+     "offset": "sys+0x30 + (0x21-count)*0x10",
+     "param": 0,
+     "width": 16
+    },
+    {
+     "meaning": "u16 msgId of entry [count-1-i]",
+     "offset": "0x0",
+     "param": 1,
+     "width": 2
+    },
+    {
+     "meaning": "u16 type: 0 -> ov14_021F5950 frame + palette 0xc, nonzero -> ov14_021F5C94 frame + palette 2",
+     "offset": "0x2",
+     "param": 1,
+     "width": 2
+    }
+   ]
   },
   "ov14_021F5FBC": {
    "callers": [
     "asm/overlay_14_021EE26C.s",
     "asm/overlay_14_021F1808.s"
    ],
-   "signature_sources": {}
+   "confidence": "medium",
+   "defined_in": "asm/overlay_14_021F58B8.s",
+   "mode": "thumb",
+   "notes": [
+    "[asm/overlay_14_021F58B8.s] Fill windows 0x1d,0x1e,0x1f,0x20 with 0 then CopyWindowPixelsToVram_TextMode each (two separate 4-call groups); if (flag == 0) ov14_021F5950(work, 0x21, 0x51, 0); else ov14_021F5950(work, 0x21, 0x50, 0). Callers pass 0 or a u16 field ldrh [sys+0x88C8]; int vs u16 indistinguishable here."
+   ],
+   "signature_guess": "void ov14_021F5FBC(UnkStruct_ov14_boxapp *work, int flag)",
+   "signature_sources": {
+    "asm/overlay_14_021F58B8.s": "void ov14_021F5FBC(UnkStruct_ov14_boxapp *work, int flag)"
+   },
+   "struct_accesses": [
+    {
+     "meaning": "sys, re-read 8 times (no local)",
+     "offset": "0x34",
+     "param": 0,
+     "width": 4
+    },
+    {
+     "meaning": "&sys->windows[0x1d..0x20] (constant index folded: mov #2,lsl #8 / mov #0x21..0x23,lsl #4)",
+     "offset": "sys+0x200/0x210/0x220/0x230",
+     "param": 0,
+     "width": 16
+    }
+   ]
   },
   "ov14_021F604C": {
    "callers": [
     "asm/overlay_14_021F0A80.s"
    ],
-   "signature_sources": {}
+   "confidence": "high",
+   "defined_in": "asm/overlay_14_021F58B8.s",
+   "mode": "thumb",
+   "notes": [
+    "[asm/overlay_14_021F58B8.s] ov14_021F5950(work, 0x2a, 0x3f, 0); push/bl/pop (4 args -> no tail call)."
+   ],
+   "signature_guess": "void ov14_021F604C(UnkStruct_ov14_boxapp *work)",
+   "signature_sources": {
+    "asm/overlay_14_021F58B8.s": "void ov14_021F604C(UnkStruct_ov14_boxapp *work)"
+   }
+  },
+  "ov14_021F605C": {
+   "callers": [
+    "asm/overlay_14_021F58B8.s"
+   ],
+   "confidence": "high",
+   "defined_in": "asm/overlay_14_021F58B8.s",
+   "mode": "thumb",
+   "notes": [
+    "[asm/overlay_14_021F58B8.s] Not in .public. ov14_021F5BD8(work, 0x29, 0x4d, 0, 3)."
+   ],
+   "signature_guess": "static void ov14_021F605C(UnkStruct_ov14_boxapp *work)",
+   "signature_sources": {
+    "asm/overlay_14_021F58B8.s": "static void ov14_021F605C(UnkStruct_ov14_boxapp *work)"
+   }
+  },
+  "ov14_021F6070": {
+   "callers": [],
+   "confidence": "high",
+   "defined_in": "asm/overlay_14_021F58B8.s",
+   "mode": "thumb",
+   "notes": [
+    "[asm/overlay_14_021F58B8.s] ov14_021F605C(work); ov14_021F5950(work, 0x20, 0x1a, 0); ov14_021F5950(work, 0x21, 0x1b, 0)."
+   ],
+   "signature_guess": "void ov14_021F6070(UnkStruct_ov14_boxapp *work)",
+   "signature_sources": {
+    "asm/overlay_14_021F58B8.s": "void ov14_021F6070(UnkStruct_ov14_boxapp *work)"
+   }
+  },
+  "ov14_021F6094": {
+   "callers": [],
+   "confidence": "high",
+   "defined_in": "asm/overlay_14_021F58B8.s",
+   "mode": "thumb",
+   "notes": [
+    "[asm/overlay_14_021F58B8.s] ov14_021F5BD8(work, 0x29, 0x4e, 0, 3)."
+   ],
+   "signature_guess": "void ov14_021F6094(UnkStruct_ov14_boxapp *work)",
+   "signature_sources": {
+    "asm/overlay_14_021F58B8.s": "void ov14_021F6094(UnkStruct_ov14_boxapp *work)"
+   }
   },
   "ov14_021F60A8": {
    "callers": [
     "asm/overlay_14_021EE26C.s"
    ],
-   "signature_sources": {}
+   "confidence": "high",
+   "defined_in": "asm/overlay_14_021F58B8.s",
+   "mode": "thumb",
+   "notes": [
+    "[asm/overlay_14_021F58B8.s] ov14_021F5BD8(work, 0x29, 0x4f, 0, 3)."
+   ],
+   "signature_guess": "void ov14_021F60A8(UnkStruct_ov14_boxapp *work)",
+   "signature_sources": {
+    "asm/overlay_14_021F58B8.s": "void ov14_021F60A8(UnkStruct_ov14_boxapp *work)"
+   }
+  },
+  "ov14_021F60BC": {
+   "callers": [
+    "asm/overlay_14_021F58B8.s"
+   ],
+   "confidence": "medium",
+   "defined_in": "asm/overlay_14_021F58B8.s",
+   "mode": "thumb",
+   "notes": [
+    "[asm/overlay_14_021F58B8.s] Not in .public; single caller ov14_021F6244 (mgr, 0xc, &sys->windows[0x29]). Writes a tilemap frame directly into the manager entry buffer. u16 *buf = sub_02019B08(mgr, index); u16 w (sp+0xe), h (sp+0xc): sub_02019B44(mgr, index, &w, &h); u16 tile = GetWindowBaseTile(window); u16 pal = window->paletteNum << 12. Corners: buf[0]=pal+0x3e8; buf[w-1]=pal+0x3ea; buf[(h-1)*w]=pal+0x3f1; buf[h*w-1]=pal+0x3f3 (0x3e8 kept in r0 and derived by add #2/#9/#0xb). Loop u16 i=0; i<w-2 (blt): buf[i+1]=pal+0x3e9; buf[i+(h-1)*w+1]=pal+0x3f2 (both hoisted; +1 folded into strh #2). Loop u16 i=0; i<h-2: buf[w*(i+1)]=pal+0x3eb (pool); buf[(i+2)*w-1]=pal+0x3ed (held in ip); i+1 CSE'd with the increment. Nested u16 j<h-2, u16 i<w-2: buf[i+w*(j+1)+1] = pal + tile++ (tile narrowed u16). w/h re-read via ldrh from the stack each iteration (address-taken locals). Register pressure high (ip used); expect regalloc iteration."
+   ],
+   "signature_guess": "static void ov14_021F60BC(UnkStruct_0201956C *mgr, int index, Window *window)",
+   "signature_sources": {
+    "asm/overlay_14_021F58B8.s": "static void ov14_021F60BC(UnkStruct_0201956C *mgr, int index, Window *window)"
+   },
+   "struct_accesses": [
+    {
+     "meaning": "Window.paletteNum; pal = (u16)(paletteNum << 12) emitted as lsl #28; lsr #16",
+     "offset": "0x9",
+     "param": 2,
+     "width": 1
+    }
+   ]
+  },
+  "ov14_021F6208": {
+   "callers": [
+    "asm/overlay_14_021F58B8.s"
+   ],
+   "confidence": "high",
+   "defined_in": "asm/overlay_14_021F58B8.s",
+   "mode": "thumb",
+   "notes": [
+    "[asm/overlay_14_021F58B8.s] Not in .public. bgId = GetWindowBgId(window) (r7); width (sp+4), height (sp+0) as word locals; sub_020195F4(mgr, index, bgId, width, height); sub_02019A60(mgr, index, window). sub_02019A60 is NOT declared in include/unk_0201956C.h (only a local prototype in src/unk_0201956C.c taking UnkSrc_02019A60 *) -> declare a local extern in this TU with Window * (or void *); do not touch the shared header."
+   ],
+   "signature_guess": "static void ov14_021F6208(UnkStruct_0201956C *mgr, int index, Window *window)",
+   "signature_sources": {
+    "asm/overlay_14_021F58B8.s": "static void ov14_021F6208(UnkStruct_0201956C *mgr, int index, Window *window)"
+   }
+  },
+  "ov14_021F6244": {
+   "callers": [],
+   "confidence": "high",
+   "defined_in": "asm/overlay_14_021F58B8.s",
+   "mode": "thumb",
+   "notes": [
+    "[asm/overlay_14_021F58B8.s] Takes the SUB-struct (callers pass ldr r0,[work,#0x34]). Sequence: 6208(mgr,3,&win[0x1d]); 6208(mgr,4,&win[0x1e]); 6208(mgr,5,&win[0x1f]); 6208(mgr,6,&win[0x20]); 6208(mgr,7,&win[0x21]); ov14_021F60BC(mgr,0xc,&win[0x29]); 6208(mgr,0xe,&win[0x2a]); 6208(mgr,0xf,&win[0x2b])."
+   ],
+   "signature_guess": "void ov14_021F6244(UnkStruct_ov14_boxsys *sys)",
+   "signature_sources": {
+    "asm/overlay_14_021F58B8.s": "void ov14_021F6244(UnkStruct_ov14_boxsys *sys)"
+   },
+   "struct_accesses": [
+    {
+     "meaning": "UnkStruct_0201956C *mgr, re-read for every call (mov #0x2f; lsl #4)",
+     "offset": "0x2F0",
+     "param": 0,
+     "width": 4
+    },
+    {
+     "meaning": "&sys->windows[0x1d..0x21], [0x29], [0x2a], [0x2b] (offsets derived from the 0x2f0 register via sub #0xf0.. -- MWCC constant reuse)",
+     "offset": "0x200..0x240, 0x2C0, 0x2D0, 0x2E0",
+     "param": 0,
+     "width": 16
+    }
+   ]
+  },
+  "ov14_021F62CC": {
+   "callers": [],
+   "confidence": "high",
+   "defined_in": "asm/overlay_14_021F58B8.s",
+   "mode": "thumb",
+   "notes": [
+    "[asm/overlay_14_021F58B8.s] Tail call (ldr r3,=ov14_021F6208; bx r3): ov14_021F6208(sys->unk2F0, 8, &sys->windows[0x18]) (sys+0x1b0). Plain last-statement call; MWCC sibling-calls because only 3 register args leave r3 free."
+   ],
+   "signature_guess": "void ov14_021F62CC(UnkStruct_ov14_boxsys *sys)",
+   "signature_sources": {
+    "asm/overlay_14_021F58B8.s": "void ov14_021F62CC(UnkStruct_ov14_boxsys *sys)"
+   }
+  },
+  "ov14_021F62E4": {
+   "callers": [],
+   "confidence": "high",
+   "defined_in": "asm/overlay_14_021F58B8.s",
+   "mode": "thumb",
+   "notes": [
+    "[asm/overlay_14_021F58B8.s] Tail call: ov14_021F6208(sys->unk2F0, 9, &sys->windows[0x19]) (sys+0x1c0)."
+   ],
+   "signature_guess": "void ov14_021F62E4(UnkStruct_ov14_boxsys *sys)",
+   "signature_sources": {
+    "asm/overlay_14_021F58B8.s": "void ov14_021F62E4(UnkStruct_ov14_boxsys *sys)"
+   }
+  },
+  "ov14_021F62FC": {
+   "callers": [],
+   "confidence": "high",
+   "defined_in": "asm/overlay_14_021F58B8.s",
+   "mode": "thumb",
+   "notes": [
+    "[asm/overlay_14_021F58B8.s] Tail call: ov14_021F6208(sys->unk2F0, 0xa, &sys->windows[0x1a]) (sys+0x1d0)."
+   ],
+   "signature_guess": "void ov14_021F62FC(UnkStruct_ov14_boxsys *sys)",
+   "signature_sources": {
+    "asm/overlay_14_021F58B8.s": "void ov14_021F62FC(UnkStruct_ov14_boxsys *sys)"
+   }
+  },
+  "ov14_021F6314": {
+   "callers": [],
+   "confidence": "high",
+   "defined_in": "asm/overlay_14_021F58B8.s",
+   "mode": "thumb",
+   "notes": [
+    "[asm/overlay_14_021F58B8.s] Takes work (caller passes r4). ov14_021F6208(work->sys->unk2F0, 0xb, &work->sys->windows[0x1c]) (sys+0x1f0); ov14_021F5ED4(work, 0)."
+   ],
+   "signature_guess": "void ov14_021F6314(UnkStruct_ov14_boxapp *work)",
+   "signature_sources": {
+    "asm/overlay_14_021F58B8.s": "void ov14_021F6314(UnkStruct_ov14_boxapp *work)"
+   },
+   "struct_accesses": [
+    {
+     "meaning": "sys (single read into r3)",
+     "offset": "0x34",
+     "param": 0,
+     "width": 4
+    }
+   ]
+  },
+  "ov14_021F6338": {
+   "callers": [
+    "asm/overlay_14_021F58B8.s"
+   ],
+   "confidence": "high",
+   "defined_in": "asm/overlay_14_021F58B8.s",
+   "mode": "thumb",
+   "notes": [
+    "[asm/overlay_14_021F58B8.s] Not in .public. 4th param never read but every caller passes mov r3,#0 -> keep it in the prototype (-W nounusedarg is on). FillWindowPixelBuffer(win, 0xd); ov14_021F4F84(sys, sys->msgData, winIdx, msgId, (u8)((GetWindowWidth(win)*8)/2), 0, 4, MAKE_TEXT_COLOR(9,10,13), 2); CopyWindowPixelsToVram_TextMode(win). The x arg is narrowed lsl #23; lsr #24 -> ov14_021F4F84's 5th param must be u8 in the prototype this TU sees; division is signed (asr form)."
+   ],
+   "signature_guess": "static void ov14_021F6338(UnkStruct_ov14_boxsys *sys, int winIdx, int msgId, int unused)",
+   "signature_sources": {
+    "asm/overlay_14_021F58B8.s": "static void ov14_021F6338(UnkStruct_ov14_boxsys *sys, int winIdx, int msgId, int unused)"
+   },
+   "struct_accesses": [
+    {
+     "meaning": "MsgData * (via r7 = sys)",
+     "offset": "0x20",
+     "param": 0,
+     "width": 4
+    },
+    {
+     "meaning": "Window; r5 = sys+0x30, r4 = winIdx<<4",
+     "offset": "0x30 + winIdx*0x10",
+     "param": 0,
+     "width": 16
+    }
+   ]
+  },
+  "ov14_021F638C": {
+   "callers": [],
+   "confidence": "high",
+   "defined_in": "asm/overlay_14_021F58B8.s",
+   "mode": "thumb",
+   "notes": [
+    "[asm/overlay_14_021F58B8.s] ov14_021F6338(sys, 0x22, 0x48, 0); ov14_021F6338(sys, 0x23, 0x49, 0). Caller passes work->sys."
+   ],
+   "signature_guess": "void ov14_021F638C(UnkStruct_ov14_boxsys *sys)",
+   "signature_sources": {
+    "asm/overlay_14_021F58B8.s": "void ov14_021F638C(UnkStruct_ov14_boxsys *sys)"
+   }
   },
   "ov14_021F63A8": {
    "callers": [
     "asm/overlay_14_021F0A80.s"
    ],
-   "signature_sources": {}
+   "confidence": "high",
+   "defined_in": "asm/overlay_14_021F58B8.s",
+   "mode": "thumb",
+   "notes": [
+    "[asm/overlay_14_021F58B8.s] ov14_021F6338(sys, 0x24, 0x4a, 0); push/bl/pop (4 args, no tail call)."
+   ],
+   "signature_guess": "void ov14_021F63A8(UnkStruct_ov14_boxsys *sys)",
+   "signature_sources": {
+    "asm/overlay_14_021F58B8.s": "void ov14_021F63A8(UnkStruct_ov14_boxsys *sys)"
+   }
   },
   "ov14_021F63B8": {
    "callers": [
     "asm/overlay_14_021F0A80.s"
    ],
-   "signature_sources": {}
+   "confidence": "high",
+   "defined_in": "asm/overlay_14_021F58B8.s",
+   "mode": "thumb",
+   "notes": [
+    "[asm/overlay_14_021F58B8.s] ov14_021F6338(sys, 0x24, 0x4b, 0)."
+   ],
+   "signature_guess": "void ov14_021F63B8(UnkStruct_ov14_boxsys *sys)",
+   "signature_sources": {
+    "asm/overlay_14_021F58B8.s": "void ov14_021F63B8(UnkStruct_ov14_boxsys *sys)"
+   }
+  },
+  "ov14_021F63C8": {
+   "callers": [],
+   "confidence": "high",
+   "defined_in": "asm/overlay_14_021F58B8.s",
+   "mode": "thumb",
+   "notes": [
+    "[asm/overlay_14_021F58B8.s] sub_02019A60(sys->unk2F0, 2, &sys->windows[0x22]) (sys+0x250); sub_02019A60(sys->unk2F0, 2, &sys->windows[0x23]) (sys+0x260)."
+   ],
+   "signature_guess": "void ov14_021F63C8(UnkStruct_ov14_boxsys *sys)",
+   "signature_sources": {
+    "asm/overlay_14_021F58B8.s": "void ov14_021F63C8(UnkStruct_ov14_boxsys *sys)"
+   }
   },
   "ov14_021F63F0": {
    "callers": [
     "asm/overlay_14_021F0A80.s"
    ],
-   "signature_sources": {}
+   "confidence": "high",
+   "defined_in": "asm/overlay_14_021F58B8.s",
+   "mode": "thumb",
+   "notes": [
+    "[asm/overlay_14_021F58B8.s] Tail call (bx r3) to external sub_02019A60(sys->unk2F0, 1, &sys->windows[0x24]) (sys+0x270)."
+   ],
+   "signature_guess": "void ov14_021F63F0(UnkStruct_ov14_boxsys *sys)",
+   "signature_sources": {
+    "asm/overlay_14_021F58B8.s": "void ov14_021F63F0(UnkStruct_ov14_boxsys *sys)"
+   }
   },
   "ov14_021F6408": {
    "callers": [
@@ -44893,7 +46191,36 @@
     "asm/overlay_14_021EFDE4.s",
     "asm/overlay_14_021F1808.s"
    ],
-   "signature_sources": {}
+   "confidence": "high",
+   "defined_in": "asm/overlay_14_021F58B8.s",
+   "mode": "thumb",
+   "notes": [
+    "[asm/overlay_14_021F58B8.s] Same shape as ov14_021F5C94 but fixed window 0x2b, tiles from NARC_a_0_1_9 member 0xe, HEAP_ID_10. int width = GetWindowWidth(win) (sp+0x20). Blits: 0x7a0 24x8 @0,0; 0xba0 24x8 @0,8; 0xfa0 24x8 @0,16; 0xd00 8x8 @(w-1)*8,0; 0xce0 8x8 @(w-1)*8,8; 0xcc0 8x8 @(w-1)*8,16; loop u8 i=3; i<width-1: 0xc20 @i*8,0; 0xca0 @i*8,8; 0xc80 @i*8,16. Heap_Free(data); str = NewString_ReadMsgData(work->sys->msgData, 0x41); ov14_021F4F24(win, str, (width*8)/2, 4, 4, MAKE_TEXT_COLOR(9,10,0), 2); String_Delete(str); CopyWindowPixelsToVram_TextMode(win). Matching detail: a sys local is used for window addresses but the msgData read goes through work->sys (mirrors the r5=sys+0x30 / work->sys->msgData split in 5950/5BD8/5C94)."
+   ],
+   "signature_guess": "void ov14_021F6408(UnkStruct_ov14_boxapp *work)",
+   "signature_sources": {
+    "asm/overlay_14_021F58B8.s": "void ov14_021F6408(UnkStruct_ov14_boxapp *work)"
+   },
+   "struct_accesses": [
+    {
+     "meaning": "sys cached in r4 for the whole function (local), work spilled to sp+0x1c",
+     "offset": "0x34",
+     "param": 0,
+     "width": 4
+    },
+    {
+     "meaning": "&sys->windows[0x2b], recomputed per use as r4 + (0x2e<<4)",
+     "offset": "sys+0x2E0",
+     "param": 0,
+     "width": 16
+    },
+    {
+     "meaning": "MsgData * -- re-read as work->sys->msgData through the spilled work, NOT r4",
+     "offset": "sys+0x20",
+     "param": 0,
+     "width": 4
+    }
+   ]
   },
   "ov14_021F6628": {
    "callers": [
@@ -56699,9 +58026,12 @@
   },
   "sub_020195F4": {
    "callers": [
+    "asm/overlay_14_021F58B8.s",
     "asm/overlay_18_021EE35C.s"
    ],
    "confidence": "low",
+   "header": "include/unk_0201956C.h",
+   "known_prototype": "void sub_020195F4(UnkStruct_0201956C *a0, int a1, int a2, int a3, int a4)",
    "signature_guess": "void sub_020195F4(UnkStruct_0201956C*, int, int, int)",
    "signature_sources": {
     "asm/overlay_18_021EE35C.s": "void sub_020195F4(UnkStruct_0201956C*, int, int, int)"
@@ -56744,23 +58074,36 @@
    "known_prototype": "BOOL sub_020199E4(UnkStruct_0201956C *a0, int a1)",
    "signature_sources": {}
   },
+  "sub_020199F4": {
+   "callers": [
+    "asm/overlay_14_021F58B8.s"
+   ],
+   "header": "include/unk_0201956C.h",
+   "known_prototype": "void sub_020199F4(UnkStruct_0201956C *a0, int a1, u8 x, u8 y, u8 width, u8 height, u8 palette)",
+   "signature_sources": {}
+  },
   "sub_02019A60": {
    "callers": [
     "asm/overlay_14_021EEF34.s",
+    "asm/overlay_14_021F58B8.s",
     "asm/overlay_18_021EE35C.s"
    ],
    "confidence": "low",
    "signature_guess": "void sub_02019A60(void *managedSprite, int a1, void *a2)",
    "signature_sources": {
     "asm/overlay_14_021EEF34.s": "void sub_02019A60(void *managedSprite, int a1, void *a2)",
+    "asm/overlay_14_021F58B8.s": "void sub_02019A60(UnkStruct_0201956C *mgr, int a1, Window *window)",
     "asm/overlay_18_021EE35C.s": "void sub_02019A60(UnkStruct_0201956C*, int, void*)"
    }
   },
   "sub_02019B08": {
    "callers": [
+    "asm/overlay_14_021F58B8.s",
     "asm/overlay_18_021EE35C.s"
    ],
    "confidence": "low",
+   "header": "include/unk_0201956C.h",
+   "known_prototype": "u16 *sub_02019B08(UnkStruct_0201956C *a0, int a1)",
    "signature_guess": "void *sub_02019B08(UnkStruct_0201956C*, int)",
    "signature_sources": {
     "asm/overlay_18_021EE35C.s": "void *sub_02019B08(UnkStruct_0201956C*, int)"
@@ -56792,7 +58135,8 @@
   },
   "sub_02019B44": {
    "callers": [
-    "asm/overlay_14_021F1808.s"
+    "asm/overlay_14_021F1808.s",
+    "asm/overlay_14_021F58B8.s"
    ],
    "header": "include/unk_0201956C.h",
    "known_prototype": "void sub_02019B44(UnkStruct_0201956C *a0, int a1, u16 *a2, u16 *a3)",
