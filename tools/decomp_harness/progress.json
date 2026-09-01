@@ -830,6 +830,16 @@
       "attempts": 2,
       "result": "matched",
       "note": "compare-verified (HG + SS full ROM SHA1 OK). Sub-screen player-name picker (8 names/page x 4 pages from sub_0202C6F4 name store, grid cursor, L/R page arrows, cancel). 36/36 pure C, zero NONMATCHING, first compile 34/36. Modelled directly on the matched same-author sibling src/overlay_29.c: one-struct rodata in address order (9 symbols, 0x180), blink FSM bitfield struct {isBg:1,target:7,seqA:4,seqB:4,phase,timer,x,y,w,h}, DB1C/DBAC/DC0C resource+sprite trio, GridInputHandler callbacks. Fixes: gSystem.newAndRepeatedKeys (0x4c, key-repeat page flip) not newKeys (0x48); ov32_0225DF80 needs the explicit `if (f() == FALSE) { return a; } else { return 1; }` form to keep the tested-false branch inline (both early-return spellings invert the branch). Jump-table fn ov32_0225DE34 shows the usual objdiff .short/movs rendering FP; nm sizes identical (0x14c)."
+    },
+    {
+      "file": "asm/overlay_01_021F6830.s",
+      "lines": 739,
+      "functions": 31,
+      "matched_functions": 31,
+      "nonmatching": 0,
+      "attempts": 3,
+      "result": "matched",
+      "note": "compare-verified (HG + SS full ROM SHA1 OK). Bottom-screen sub-app dispatcher: the 9-row {init, main, exit, overlayId} table ov01_02206C60 (ov27 x2, ov30 touch save, ov31, ov28, ov29, ov32, ov33, local OVY_34 view-photo row), the SysTask state machine ov01_021F69C0 (load overlay -> fade -> main -> exit -> swap row -> fade), the FieldSystem-facing accessors (021F6A9C..6B64, frozen prototypes in overlay_01.h / overlay_01_021F6830.h kept), the sprite-ID whitelist and script-ID range predicates used by overlay_27, and the 6C28/6CA0 helpers over overlay_01_021F6CFC.c's work struct (mirrored locally). 31/31 pure C on the first successful compile; the only iteration was MWCC rejecting `BOOL (*)(void *)` exit callbacks in a `BOOL (*)(BgConfig *)` column (cast the initializers). No header changed: still-asm ov27/28/31/34/35 callees are local externs; fieldSystem+0xD4 (filler_D4) accessed via a cast macro. Rodata order (u16 whitelist, then the fn-ptr table) came out in declaration order; verified with nm -n + objdump -r since objdiff masks relocated tables. Verifier follow-up: ov01_021F6B88/6BA0/6BAC (the OVY_34 row callbacks, referenced only from the file's own table, absent from .public) made static; re-verified 31/31, HG+SS SHA1 OK, attestation re-run."
     }
   ],
   "failed": [
@@ -1248,8 +1258,8 @@
     }
   ],
   "stats": {
-    "total_attempts": 205,
-    "total_matched": 75,
+    "total_attempts": 208,
+    "total_matched": 76,
     "total_failed": 31
   },
   "matched": [
