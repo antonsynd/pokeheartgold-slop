@@ -1,12 +1,12 @@
 {
  "summary": {
-  "generated": "2026-09-01T21:52:25Z",
+  "generated": "2026-09-01T22:29:25Z",
   "by_status": {
    "matched": {
-    "files": 103,
-    "functions": 1857,
-    "insn_lines": 53057,
-    "text_bytes_est": 119286
+    "files": 104,
+    "functions": 1893,
+    "insn_lines": 54411,
+    "text_bytes_est": 122308
    },
    "blocked": {
     "files": 51,
@@ -15,10 +15,10 @@
     "text_bytes_est": 64116
    },
    "pending": {
-    "files": 160,
-    "functions": 16551,
-    "insn_lines": 819691,
-    "text_bytes_est": 1834814
+    "files": 159,
+    "functions": 16515,
+    "insn_lines": 818337,
+    "text_bytes_est": 1831792
    },
    "upstream": {
     "files": 404,
@@ -29,9 +29,9 @@
   },
   "function_totals": {
    "tracked": 19305,
-   "matched": 1857,
+   "matched": 1893,
    "partial_in_blocked": 20,
-   "pending": 16551
+   "pending": 16515
   },
   "blockers": [
    {
@@ -78041,8 +78041,8 @@
   },
   {
    "file": "asm/overlay_32.s",
-   "lsf_kind": "asm",
-   "status": "pending",
+   "lsf_kind": "src",
+   "status": "matched",
    "lines": 1628,
    "function_count": 36,
    "text_bytes_est": 3022,
@@ -78141,254 +78141,255 @@
      "mode": "thumb",
      "insns": 69,
      "size_est": 166,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ov32_0225D5CC",
      "mode": "thumb",
      "insns": 21,
      "size_est": 60,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ov32_0225D608",
      "mode": "thumb",
      "insns": 2,
      "size_est": 4,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ov32_0225D60C",
      "mode": "thumb",
      "insns": 16,
      "size_est": 36,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ov32_0225D634",
      "mode": "thumb",
      "insns": 63,
      "size_est": 138,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ov32_0225D6C4",
      "mode": "thumb",
      "insns": 11,
      "size_est": 28,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ov32_0225D6E0",
      "mode": "thumb",
      "insns": 48,
      "size_est": 104,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ov32_0225D748",
      "mode": "thumb",
      "insns": 16,
      "size_est": 36,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ov32_0225D76C",
      "mode": "thumb",
      "insns": 11,
      "size_est": 26,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ov32_0225D788",
      "mode": "thumb",
      "insns": 73,
      "size_est": 168,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ov32_0225D834",
      "mode": "thumb",
      "insns": 11,
      "size_est": 24,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ov32_0225D84C",
      "mode": "thumb",
      "insns": 135,
      "size_est": 312,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ov32_0225D988",
      "mode": "thumb",
      "insns": 109,
      "size_est": 250,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ov32_0225DA88",
      "mode": "thumb",
      "insns": 24,
      "size_est": 56,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ov32_0225DAC0",
      "mode": "thumb",
      "insns": 10,
      "size_est": 26,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ov32_0225DADC",
      "mode": "thumb",
      "insns": 16,
      "size_est": 34,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ov32_0225DB00",
      "mode": "thumb",
      "insns": 12,
      "size_est": 26,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ov32_0225DB1C",
      "mode": "thumb",
      "insns": 63,
      "size_est": 142,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ov32_0225DBAC",
      "mode": "thumb",
      "insns": 42,
      "size_est": 94,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ov32_0225DC0C",
      "mode": "thumb",
      "insns": 43,
      "size_est": 90,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ov32_0225DC68",
      "mode": "thumb",
      "insns": 49,
      "size_est": 104,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ov32_0225DCD4",
      "mode": "thumb",
      "insns": 21,
      "size_est": 48,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ov32_0225DD04",
      "mode": "thumb",
      "insns": 15,
      "size_est": 32,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ov32_0225DD24",
      "mode": "thumb",
      "insns": 36,
      "size_est": 80,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ov32_0225DD74",
      "mode": "thumb",
      "insns": 23,
      "size_est": 50,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ov32_0225DDAC",
      "mode": "thumb",
      "insns": 5,
      "size_est": 10,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ov32_0225DDB8",
      "mode": "thumb",
      "insns": 1,
      "size_est": 2,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ov32_0225DDBC",
      "mode": "thumb",
      "insns": 3,
      "size_est": 6,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ov32_0225DDC4",
      "mode": "thumb",
      "insns": 46,
      "size_est": 104,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ov32_0225DE34",
      "mode": "thumb",
      "insns": 136,
      "size_est": 304,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ov32_0225DF80",
      "mode": "thumb",
      "insns": 12,
      "size_est": 26,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ov32_0225DF9C",
      "mode": "thumb",
      "insns": 36,
      "size_est": 74,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ov32_0225DFE8",
      "mode": "thumb",
      "insns": 44,
      "size_est": 94,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ov32_0225E048",
      "mode": "thumb",
      "insns": 45,
      "size_est": 94,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ov32_0225E0A8",
      "mode": "thumb",
      "insns": 40,
      "size_est": 80,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ov32_0225E0FC",
      "mode": "thumb",
      "insns": 47,
      "size_est": 94,
-     "status": "pending"
+     "status": "matched"
     }
-   ]
+   ],
+   "source": "harness"
   },
   {
    "file": "asm/overlay_33.s",
