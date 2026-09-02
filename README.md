@@ -13,29 +13,31 @@ Setup lives in [INSTALL.md](INSTALL.md). For other pret projects, see [pret.gith
 
 ## Progress
 
+<!-- PROGRESS_START -->
 ### This fork vs upstream ([pret/pokeheartgold](https://github.com/pret/pokeheartgold))
 
 ```
 Files decompiled (C / total linked objects)
-  Fork       ███████████████████████████████████░░░░░░░░░░░░░░░  70.1%  (503 / 718)
+  Fork       ███████████████████████████████████░░░░░░░░░░░░░░░  70.9%  (509 / 718)
   Upstream   █████████████████████████████░░░░░░░░░░░░░░░░░░░░░  57.1%  (388 / 679)
 
 Functions in C (of ~29k total ROM functions)
-  Fork       ████████████████████░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░  40.4%  (11,924)
-  Upstream   ████████████████░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░  32.9%  (9,578)
+  Fork       █████████████████████░░░░░░░░░░░░░░░░░░░░░░░░░░░░░  41.1%  (12,139)
+  Upstream   █████████████████░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░  34.6%  (10,195)
 
 Functions fully matching (byte-identical to retail)
-  Fork       ████████████████████░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░  40.2%  (11,854)
-  Upstream   ████████████████░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░  32.9%  (9,574)
+  Fork       ████████████████████░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░  40.9%  (12,066)
+  Upstream   █████████████████░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░  34.5%  (10,191)
 ```
 
 | Metric | Fork | Upstream | Delta |
 |--------|-----:|--------:|------:|
-| Files decompiled | 503 | 388 | **+115** |
-| Functions in C | 11,924 | 9,578 | **+2,346** |
-| NONMATCHING stubs | 70 | 4 | +66 |
+| Files decompiled | 509 | 388 | **+121** |
+| Functions in C | 12,139 | 10,195 | **+1,944** |
+| NONMATCHING stubs | 73 | 4 | +69 |
 
 Detailed function-level coverage, active blockers, and the triage queue are tracked in **[`COVERAGE.md`](tools/decomp_harness/COVERAGE.md)**, regenerated from the build by `coverage_ledger.py`.
+<!-- PROGRESS_END -->
 
 ## Architecture
 
