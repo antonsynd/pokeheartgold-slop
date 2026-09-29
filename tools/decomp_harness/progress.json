@@ -840,6 +840,16 @@
       "attempts": 3,
       "result": "matched",
       "note": "compare-verified (HG + SS full ROM SHA1 OK). Bottom-screen sub-app dispatcher: the 9-row {init, main, exit, overlayId} table ov01_02206C60 (ov27 x2, ov30 touch save, ov31, ov28, ov29, ov32, ov33, local OVY_34 view-photo row), the SysTask state machine ov01_021F69C0 (load overlay -> fade -> main -> exit -> swap row -> fade), the FieldSystem-facing accessors (021F6A9C..6B64, frozen prototypes in overlay_01.h / overlay_01_021F6830.h kept), the sprite-ID whitelist and script-ID range predicates used by overlay_27, and the 6C28/6CA0 helpers over overlay_01_021F6CFC.c's work struct (mirrored locally). 31/31 pure C on the first successful compile; the only iteration was MWCC rejecting `BOOL (*)(void *)` exit callbacks in a `BOOL (*)(BgConfig *)` column (cast the initializers). No header changed: still-asm ov27/28/31/34/35 callees are local externs; fieldSystem+0xD4 (filler_D4) accessed via a cast macro. Rodata order (u16 whitelist, then the fn-ptr table) came out in declaration order; verified with nm -n + objdump -r since objdiff masks relocated tables. Verifier follow-up: ov01_021F6B88/6BA0/6BAC (the OVY_34 row callbacks, referenced only from the file's own table, absent from .public) made static; re-verified 31/31, HG+SS SHA1 OK, attestation re-run."
+    },
+    {
+      "file": "asm/unk_02056680.s",
+      "lines": 842,
+      "functions": 11,
+      "matched_functions": 11,
+      "nonmatching": 0,
+      "attempts": 2,
+      "result": "matched",
+      "note": "compare-verified (HG + SS full ROM SHA1 OK). Map-enter/exit warp transition tasks (sMapEnterRoutines / _020FC76C entries): door/stair/ladder TaskFuncs over FieldTransitionEnvironment (transitionState@2, unk18@0x18), four camera look-at recalcs for stair warps, and the ScrCmd_663 launcher sub_02056D00 -> static sub_02056D30 -> CallApplicationAsTask(ov45 template). 11/11 pure C, header unchanged (frozen); ov01_021E971C/ov01_021E9C40/sub_02054940/ov45 procs as local externs. Fixes: VecFx32 locals declared pos, delta before curTarget/lookAt (reverse stack-slot order); `unk = fenv->unk18 = call()` chained form for str-before-mov. memset() for the 0x10 byte-clear loop. objdiff .text -4 = two mid-file 2-mod-4 functions (benign, next fn 4-aligned)."
     }
   ],
   "failed": [
@@ -1259,7 +1269,7 @@
   ],
   "stats": {
     "total_attempts": 208,
-    "total_matched": 76,
+    "total_matched": 77,
     "total_failed": 31
   },
   "matched": [
@@ -1360,6 +1370,7 @@
       "note": "compare-verified (full ROM SHA1 OK). FashionCase save module (idx 0xc): SaveFashionData 0x834 = 11x SaveFashionDataSub(0x74, status+FashionMon+marker bitmask+MailMessage+10 markers) + 5x 0x98 + FashionCase 0x40. fashion_case.h frozen (callers in scrcmd_c/bag_view/etc.) -> detailed structs defined locally, header NOT included (split). Bit-packed accessories(4-bit), flags(1-bit), wallpapers(8-bit): word=(u8)((u32)id>>n), shift=(u8)(id%m)*scale, helpers take int id (u8 param drops the word (u8) mask). 59 C matched. NONMATCHING (2): sub_0202BCAC (volatile u16 pos[4] gets layout but a y-spill reload remains) and sub_0202BF80 (count first-check reload) are MWCC homed-value-reload tie-breaks -> inline asm. Key tricks: id&0xFF breaks CSE of repeated (u8)id across two helper calls; id=(u8)(id-0x3d);(u8)id forces double truncation; split GET into its own stmt for result+qty operand order; (u32)quantity for unsigned cmp; CRC dedup via MATHi_CRC32InitTableRev/MATH_CalcCRC32."
     },
     "asm/overlay_18_021F8AB8.s",
-    "asm/overlay_18_021F7ED4.s"
+    "asm/overlay_18_021F7ED4.s",
+    "asm/unk_02056680.s"
   ]
 }

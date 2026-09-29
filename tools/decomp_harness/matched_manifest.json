@@ -1,5 +1,5 @@
 {
- "count": 519,
+ "count": 520,
  "game": "heartgold.us",
  "schema": 1,
  "tus": {
@@ -74693,6 +74693,84 @@
      "name": ".text",
      "sha1": "d70ce65fea805a91cf10c8c3b952202953079461",
      "size": 132,
+     "type": 1
+    }
+   ]
+  },
+  "src/unk_02056680.c": {
+   "alloc_sha1": "efff8c497dc85c275861cec566aa57a4789ead89",
+   "object": "build/heartgold.us/src/unk_02056680.o",
+   "sections": [
+    {
+     "name": ".rodata",
+     "sha1": "594b0ee0f059e4885cdf418d3d103d81d5eb5f83",
+     "size": 16,
+     "type": 1
+    },
+    {
+     "name": ".text",
+     "sha1": "868d9c3401bd109efce944ae6544b1704a7e9de0",
+     "size": 120,
+     "type": 1
+    },
+    {
+     "name": ".text",
+     "sha1": "836c38fa4df4d81d3c90d0f498ff9ea8616c8e43",
+     "size": 186,
+     "type": 1
+    },
+    {
+     "name": ".text",
+     "sha1": "aeee8db9262b8de334e54b2161debaab1ef13a30",
+     "size": 104,
+     "type": 1
+    },
+    {
+     "name": ".text",
+     "sha1": "2bb490353cbfdc084ee638f1ad9ba087cba3e82d",
+     "size": 284,
+     "type": 1
+    },
+    {
+     "name": ".text",
+     "sha1": "d34c7a398d027ec15d0fde0c18edce37ea47b2d6",
+     "size": 284,
+     "type": 1
+    },
+    {
+     "name": ".text",
+     "sha1": "75aa530ddeae2ffd44974684f1dec9d9d8ef8817",
+     "size": 152,
+     "type": 1
+    },
+    {
+     "name": ".text",
+     "sha1": "14f563d29d07e511ac2302647434407127fb4af6",
+     "size": 218,
+     "type": 1
+    },
+    {
+     "name": ".text",
+     "sha1": "def15d791ca967f238d1369fb968e9b38d564bd2",
+     "size": 156,
+     "type": 1
+    },
+    {
+     "name": ".text",
+     "sha1": "014a886b2a14bc1fb540ad6450c96652fdde9d90",
+     "size": 156,
+     "type": 1
+    },
+    {
+     "name": ".text",
+     "sha1": "aa4a0cd90148b43b56775cda75302c7defe1e275",
+     "size": 48,
+     "type": 1
+    },
+    {
+     "name": ".text",
+     "sha1": "ad2b674029358d4a64ec393f924149b55fbd4acd",
+     "size": 76,
      "type": 1
     }
    ]

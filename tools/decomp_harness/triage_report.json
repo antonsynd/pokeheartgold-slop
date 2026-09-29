@@ -1,5 +1,5 @@
 {
- "generated": "2026-09-29T14:30:59Z",
+ "generated": "2026-09-29T16:30:16Z",
  "weights": {
   "insn_line": 1.0,
   "unknown_callee": 40.0,
@@ -10,61 +10,6 @@
   "special_section": 500.0
  },
  "queue": [
-  {
-   "file": "asm/unk_02056680.s",
-   "score": 1444.8,
-   "special_sections": [],
-   "functions": 11,
-   "insn_lines": 724,
-   "data_only": false,
-   "unknown_callees": [
-    "Field_PlayerAvatar_ApplyTransitionFlags",
-    "Field_PlayerAvatar_OrrTransitionFlags",
-    "GetMetatileBehavior",
-    "IsPaletteFadeFinished",
-    "MapObject_AreBitsSetForMovementScriptInit",
-    "MapObject_ClearHeldMovementIfActive",
-    "MapObject_IsMovementPaused",
-    "MapObject_SetHeldMovement",
-    "ov01_021E90C0",
-    "ov01_021E90D4",
-    "ov01_021E90DC",
-    "ov01_021E971C",
-    "ov01_021E9C40",
-    "ov01_02205790",
-    "ov45_02229EE0",
-    "ov45_02229F70",
-    "ov45_02229F94",
-    "sub_02054940"
-   ],
-   "jumptable_words": 0,
-   "rodata_bytes": 16,
-   "arm_functions": 0,
-   "gated_by": [],
-   "copyprop_funcs": [],
-   "cluster_partners": [
-    {
-     "file": "asm/overlay_01_021E90C0.s",
-     "shared_symbols": 5
-    },
-    {
-     "file": "asm/unk_02062108.s",
-     "shared_symbols": 4
-    },
-    {
-     "file": "asm/overlay_45_thumb.s",
-     "shared_symbols": 3
-    },
-    {
-     "file": "asm/overlay_01_021F1AFC.s",
-     "shared_symbols": 2
-    },
-    {
-     "file": "asm/unk_02054648.s",
-     "shared_symbols": 2
-    }
-   ]
-  },
   {
    "file": "asm/unk_02033AE0.s",
    "score": 1496.4,

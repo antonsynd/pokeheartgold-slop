@@ -1,14 +1,14 @@
 # Decomp Coverage Ledger
 
-*Generated 2026-09-29T15:30:29Z by `coverage_ledger.py` — do not hand-edit; regenerate after each decomp.*
+*Generated 2026-09-29T16:47:25Z by `coverage_ledger.py` — do not hand-edit; regenerate after each decomp.*
 
-Tracked functions (files with retained asm): **19040** — matched 1924, pending 16219, plus 20 matched-but-blocked inside failed files.
+Tracked functions (files with retained asm): **19040** — matched 1935, pending 16208, plus 20 matched-but-blocked inside failed files.
 
 | status | files | functions | insn lines | ~text bytes |
 |---|---|---|---|---|
-| matched | 105 | 1924 | 54935 | 123472 |
+| matched | 106 | 1935 | 55659 | 125218 |
 | blocked | 51 | 897 | 29123 | 64116 |
-| pending | 156 | 16219 | 807721 | 1808062 |
+| pending | 155 | 16208 | 806997 | 1806316 |
 | upstream | 414 | 0 | 0 | 0 |
 
 ## Blockers (value-ordered: fix what gates the most)
@@ -77,7 +77,7 @@ Tracked functions (files with retained asm): **19040** — matched 1924, pending
 | asm/middleware.s | 0 | 0 | yes |  Data-only: 7 NUL-terminated SDK middleware version strings in a custom .version section (single ordered section, each .b |
 | asm/overlay_12_battle_command.s | 0 | 0 | yes |   |
 
-## Matched files (asm retained) (105)
+## Matched files (asm retained) (106)
 
 | file | functions | insn lines | data-only | notes |
 |---|---|---|---|---|
@@ -136,6 +136,7 @@ Tracked functions (files with retained asm): **19040** — matched 1924, pending
 | asm/overlay_01_022051EC.s | 12 | 219 |  | retained_asm |
 | asm/unk_0200B150.s | 11 | 238 |  | harness |
 | asm/unk_02055244.s | 11 | 189 |  | harness |
+| asm/unk_02056680.s | 11 | 724 |  | harness |
 | asm/unk_0205BB1C.s | 11 | 551 |  | harness |
 | asm/unk_02097024.s | 11 | 198 |  | harness |
 | asm/overlay_01_021EAF00.s | 11 | 88 |  | harness |
@@ -187,7 +188,7 @@ Tracked functions (files with retained asm): **19040** — matched 1924, pending
 | asm/overlay_01_data_02208BFC.s | 0 | 0 | yes | retained_asm |
 | asm/battle_arcade_game_board_data.s | 0 | 0 | yes | harness |
 
-## Pending files (156)
+## Pending files (155)
 
 | file | functions | insn lines | data-only | notes |
 |---|---|---|---|---|
@@ -337,7 +338,6 @@ Tracked functions (files with retained asm): **19040** — matched 1924, pending
 | asm/overlay_49_02268D94.s | 17 | 940 |  |  |
 | asm/unk_02096910.s | 15 | 400 |  |  |
 | asm/overlay_14_021EEF34.s | 15 | 1538 |  |  |
-| asm/unk_02056680.s | 11 | 724 |  |  |
 | asm/overlay_49_02261FC0.s | 10 | 1432 |  |  |
 | asm/overlay_117.s | 9 | 1192 |  |  |
 | asm/overlay_83_02242FE8.s | 7 | 1412 |  |  |

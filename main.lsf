@@ -211,7 +211,7 @@ Static main
     Object src/catching_show.o
     Object asm/unk_02055BF0_data.o
     Object src/unk_02055BF0.o
-    Object asm/unk_02056680.o
+    Object src/unk_02056680.o
     Object asm/unk_02056D7C.o
     Object asm/unk_02058034.o
     Object asm/unk_02058AEC.o
