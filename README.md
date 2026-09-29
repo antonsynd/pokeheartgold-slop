@@ -18,22 +18,22 @@ Setup lives in [INSTALL.md](INSTALL.md). For other pret projects, see [pret.gith
 
 ```
 Files decompiled (C / total linked objects)
-  Fork       ███████████████████████████████████░░░░░░░░░░░░░░░  70.9%  (509 / 718)
-  Upstream   █████████████████████████████░░░░░░░░░░░░░░░░░░░░░  57.1%  (388 / 679)
+  Fork       ████████████████████████████████████░░░░░░░░░░░░░░  71.5%  (519 / 726)
+  Upstream   █████████████████████████████░░░░░░░░░░░░░░░░░░░░░  57.9%  (398 / 687)
 
 Functions in C (of ~29k total ROM functions)
-  Fork       █████████████████████░░░░░░░░░░░░░░░░░░░░░░░░░░░░░  41.1%  (12,139)
-  Upstream   █████████████████░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░  34.6%  (10,195)
+  Fork       █████████████████████░░░░░░░░░░░░░░░░░░░░░░░░░░░░░  42.0%  (12,404)
+  Upstream   ██████████████████░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░  35.5%  (10,460)
 
 Functions fully matching (byte-identical to retail)
-  Fork       ████████████████████░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░  40.9%  (12,066)
-  Upstream   █████████████████░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░  34.5%  (10,191)
+  Fork       █████████████████████░░░░░░░░░░░░░░░░░░░░░░░░░░░░░  41.8%  (12,331)
+  Upstream   ██████████████████░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░  35.4%  (10,456)
 ```
 
 | Metric | Fork | Upstream | Delta |
 |--------|-----:|--------:|------:|
-| Files decompiled | 509 | 388 | **+121** |
-| Functions in C | 12,139 | 10,195 | **+1,944** |
+| Files decompiled | 519 | 398 | **+121** |
+| Functions in C | 12,404 | 10,460 | **+1,944** |
 | NONMATCHING stubs | 73 | 4 | +69 |
 
 Detailed function-level coverage, active blockers, and the triage queue are tracked in **[`COVERAGE.md`](tools/decomp_harness/COVERAGE.md)**, regenerated from the build by `coverage_ledger.py`.
