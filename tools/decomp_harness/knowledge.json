@@ -112,6 +112,23 @@
    ],
    "sweep_output": "sweep/out/overlay_01_021FCD2C.json"
   },
+  "asm/overlay_01_021FDA14.s": {
+   "notes": "Map-object reflection field effect (water/puddle/ice reflections): two families sharing helpers. Family A (templates F88 via ov01_021FDA74 and F74 via ov01_021FDF88; F74 variant subtracts 0x514 from y and can use model 0xd for type>2 plus ov01_02205870 texture override) creates a flipped Billboard for a LocalMapObject using its sprite's BillboardResources; family B (template F9C via ov01_021FDE64, called from overlay_01_021F944C) mirrors an existing Billboard. Template layout {size, init, delete, update, draw} per src/unk_020689C8.c (unk4=init->unkB0, unk8=delete->unkBC, unkC=update->unkB4, unk10=draw->unkB8). Closest matched templates to copy structure from: src/overlay_01_021FF6B0.c (manager ctor/dtor + DataA pattern), src/overlay_01_021FE200.c (next file in main.lsf), src/overlay_01_021FFC0C.c (sub_0205F0A8 guard + int sub_0206121C). Magic ids: 0xff = obj_player, 0xfd = obj_partner_poke (include/constants/scrcmd.h), sprite 0xbc = 188. No callers in decompiled C except the data table src/overlay_01_data_02208BFC.c (local externs void *(void *) / void (void *) -- compatible). No prior attempts logged; not referenced by save_arrays.c. New header include/overlay_01_021FDA14.h (mirror include/overlay_01_021FE200.h) should declare only the 5 exports; nothing matched includes it yet, so no IPA risk.",
+   "risks": [
+    "Rodata: 3 x 20-byte fn-ptr templates + 2 x 24-byte IDENTICAL fx32[6] tables, retail order F74,F88,F9C,FB0,FC8 while text-use order is F88,F9C,F74 and FC8 used before FB0. Separate static consts get size-sorted with scrambled/reversed ties (and duplicate content worsens it) -> consolidate into ONE 'static const struct { Template t74, t88, t9C; fx32 offB0[6]; fx32 offC8[6]; } sRodata' and struct-copy members (typedef struct {fx32 v[6];} Offsets6; Offsets6 local = sRodata.offC8;) -- see insights ids rodata-multi-symbol-size-sorted-use-one-struct / local-array-init-as-named-const-struct-copy-for-rodata-order / consolidated-rodata-all-ref-kinds-fold-clean. Do NOT use function-local 'fx32 x[6] = {...}' initializers (anon @NNNN templates move). Precedent: src/field/overlay_01_021FD41C.c sRodata.",
+    "Templates reference static callbacks defined later -> forward-declare all static callbacks (and DA40, DA5C, DC7C, DD48, FE190) before sRodata.",
+    "objdiff is blind to relocated fn-ptr rodata order (insight objdiff-blind-to-relocated-data-order): only chiri pkg -- compare is authoritative.",
+    "Header conflicts: ov01_021F1620 (header void, needs void* return for DE64), sub_0206121C (header void, return tested), sub_02023EA4 (include/unk_02023694.h Sprite*,int vs in-progress C Billboard*,u8). Follow siblings: include map_object.h / player_avatar.h / field_system.h only, and use LOCAL externs for ov01_021F14xx/16xx/18xx, sub_02023xxx, sub_0206121C, sub_02068Dxx; do not include overlay_01_021F1348.h, unk_0205FD20.h or unk_02023694.h.",
+    "ov01_021FDC7C constant 0x1800 is materialized as 0x800 + (0x800<<1) with 0x800 hoisted above the facing-direction compare -- plain '0x1800 - facing.z' may emit mov #6;lsl #10 instead; if so try variants like (FX32_ONE + FX32_HALF) or '(2 << 10) + (2 << 11)' / reassociated forms and log the dead ends.",
+    "ov01_021FDC7C spills fx (=facing.x) at sp+4 and yOff at sp+0 as distinct locals, table at sp+8, facing at sp+0x20: local declaration order/ownership affects stack layout; keep fx as its own variable (not re-reading facing.x).",
+    "DB34/DF14 are in BOOL callback slots but DB34 returns nothing (no mov r0) -- no return statement.",
+    "Unsigned compare: FE190 uses bhi on work->unk10 -> field must be u32 (sub_02068D90 returns u32); DFD4 uses (==2 || ==5).",
+    "Template word0 for ov01_02208F9C is 0x38 though WorkB is 0x5C -- hardcode 0x38 (and 0x38 for the other two, which happens to equal sizeof(WorkA)).",
+    "Function order in C must match asm exactly; exported (non-static): ov01_021FDA14, ov01_021FDA30, ov01_021FDA74, ov01_021FDE64, ov01_021FDF88; everything else static.",
+    "Last function ov01_021FE190 ends at .balign 4 -- benign in an overlay (insight overlay-last-function-trailing-pad-benign)."
+   ],
+   "sweep_output": "sweep/out/overlay_01_021FDA14.json"
+  },
   "asm/overlay_01_022031C0.s": {
    "notes": "Field-effect module id 0x11 (registered in overlay_01_data_02208BFC). It is a 2-model 3D effect attached to the player/follower, with 4 behaviour variants selected by a1 in ov01_0220329C. Variant 1 also shrinks the follower sprite (sub_02023E78 scale = 1/counter) and nudges the follower position 4 frames along its facing axis, after flashing its palette white via VRAM transfer. Same family and recipe as the matched overlay_01_021FF854.c, overlay_01_021FFC0C.c and overlay_01_022051EC.c. Use their Template/Data/Work typedef style, `(void *param0, Work *work)` callback signatures and local externs. Constants: HEAP_ID_FIELD1=4, NARC_a_1_0_3=0x67, NNS_GFD_DST_3D_TEX_PLTT=1, FX32_ONE=0x1000. Exports (non-static): ov01_022031C0, ov01_022031E8, ov01_0220329C. Everything else is static. ov01_022055DC is listed in the .inc but is an import from overlay_01_022053EC.s.",
    "oracle": {
@@ -30933,7 +30950,7 @@
    "sweep_output": "sweep/out/unk_02097B78.json"
   }
  },
- "generated": "2026-09-29T18:30:49Z",
+ "generated": "2026-09-29T18:51:28Z",
  "signature_conflicts": [
   "DestroySysTaskAndEnvironment",
   "GridInputHandler_GetNextInput",
@@ -31016,14 +31033,25 @@
   "sub_02014510",
   "sub_02019A60",
   "sub_02019B1C",
+  "sub_02023DA4",
+  "sub_02023E50",
   "sub_02023E78",
+  "sub_02023EE0",
+  "sub_02023EF4",
+  "sub_02023F04",
+  "sub_02023F1C",
+  "sub_02023F30",
+  "sub_02023F40",
+  "sub_02023F70",
   "sub_02023FB0",
+  "sub_02023FC0",
   "sub_02026DE0",
   "sub_02030CC8",
   "sub_0203769C",
   "sub_0205C174",
   "sub_0205C1F0",
-  "sub_0205C268"
+  "sub_0205C268",
+  "sub_02068DA8"
  ],
  "structs": {
   "AffineAnimWork (ov14_021F3354/3380/33B0/33E8/33FC)": {
@@ -31208,6 +31236,30 @@
    },
    "sources": [
     "asm/overlay_80_0222AEF8.s"
+   ]
+  },
+  "BillboardResources (0x28)": {
+   "fields": {
+    "0x0": [
+     {
+      "meaning": "void *modelRes (overwritten with ov01_021F18F0 result)",
+      "source": "asm/overlay_01_021FDA14.s",
+      "width": 4
+     }
+    ],
+    "0x4": [
+     {
+      "meaning": "texture/anims/gfxSequence/keys -- opaque here; define locally as {void *modelRes; u8 rest[0x24];} since Billboard types live only in src/unk_02023694.c",
+      "source": "asm/overlay_01_021FDA14.s",
+      "width": 36
+     }
+    ]
+   },
+   "size_guesses": {
+    "asm/overlay_01_021FDA14.s": "0x28"
+   },
+   "sources": [
+    "asm/overlay_01_021FDA14.s"
    ]
   },
   "BoxMonDisplayEntry (a1 of 5000/5054/50A0/5114/5190/521C/528C/52FC)": {
@@ -35553,6 +35605,231 @@
    },
    "sources": [
     "asm/overlay_83_02246E08.s"
+   ]
+  },
+  "UnkOv01_021FDA14 (manager)": {
+   "fields": {
+    "0x0": [
+     {
+      "meaning": "void *unk0 = ctor arg (field effect manager), passed to ov01_021F18D4/18FC",
+      "source": "asm/overlay_01_021FDA14.s",
+      "width": 4
+     }
+    ]
+   },
+   "size_guesses": {
+    "asm/overlay_01_021FDA14.s": "0x4 (ov01_021F1430 size arg)"
+   },
+   "sources": [
+    "asm/overlay_01_021FDA14.s"
+   ]
+  },
+  "UnkOv01_021FDA14_DataA": {
+   "fields": {
+    "0x0": [
+     {
+      "meaning": "FieldSystem *fieldSystem (MapObject_GetFieldSystem)",
+      "source": "asm/overlay_01_021FDA14.s",
+      "width": 4
+     }
+    ],
+    "0x4": [
+     {
+      "meaning": "effMgr (ov01_021F146C; type as FieldSystem* like siblings)",
+      "source": "asm/overlay_01_021FDA14.s",
+      "width": 4
+     }
+    ],
+    "0x8": [
+     {
+      "meaning": "manager (ov01_021F1450(effMgr,1))",
+      "source": "asm/overlay_01_021FDA14.s",
+      "width": 4
+     }
+    ],
+    "0xc": [
+     {
+      "meaning": "LocalMapObject *mapObject",
+      "source": "asm/overlay_01_021FDA14.s",
+      "width": 4
+     }
+    ]
+   },
+   "size_guesses": {
+    "asm/overlay_01_021FDA14.s": "0x10"
+   },
+   "sources": [
+    "asm/overlay_01_021FDA14.s"
+   ]
+  },
+  "UnkOv01_021FDA14_DataB": {
+   "fields": {
+    "0x0": [
+     {
+      "meaning": "FieldSystem* (ov01_021F1468(effMgr))",
+      "source": "asm/overlay_01_021FDA14.s",
+      "width": 4
+     }
+    ],
+    "0x34": [
+     {
+      "meaning": "Billboard *srcBillboard",
+      "source": "asm/overlay_01_021FDA14.s",
+      "width": 4
+     }
+    ],
+    "0x4": [
+     {
+      "meaning": "effMgr",
+      "source": "asm/overlay_01_021FDA14.s",
+      "width": 4
+     }
+    ],
+    "0x8": [
+     {
+      "meaning": "manager (ov01_021F1450(effMgr,1))",
+      "source": "asm/overlay_01_021FDA14.s",
+      "width": 4
+     }
+    ],
+    "0xc": [
+     {
+      "meaning": "BillboardResources res (5 words copied as a loop)",
+      "source": "asm/overlay_01_021FDA14.s",
+      "width": 40
+     }
+    ]
+   },
+   "size_guesses": {
+    "asm/overlay_01_021FDA14.s": "0x38"
+   },
+   "sources": [
+    "asm/overlay_01_021FDA14.s"
+   ]
+  },
+  "UnkOv01_021FDA14_WorkA": {
+   "fields": {
+    "0x0": [
+     {
+      "meaning": "u32 objectId",
+      "source": "asm/overlay_01_021FDA14.s",
+      "width": 4
+     }
+    ],
+    "0x10": [
+     {
+      "meaning": "u32 type (sub_02068D90; unsigned compare in FE190)",
+      "source": "asm/overlay_01_021FDA14.s",
+      "width": 4
+     }
+    ],
+    "0x14": [
+     {
+      "meaning": "DataA data (0x14 fieldSystem, 0x18 effMgr, 0x1C manager, 0x20 mapObject)",
+      "source": "asm/overlay_01_021FDA14.s",
+      "width": 16
+     }
+    ],
+    "0x24": [
+     {
+      "meaning": "Billboard *billboard",
+      "source": "asm/overlay_01_021FDA14.s",
+      "width": 4
+     }
+    ],
+    "0x28": [
+     {
+      "meaning": "VecFx32 scale",
+      "source": "asm/overlay_01_021FDA14.s",
+      "width": 12
+     }
+    ],
+    "0x34": [
+     {
+      "meaning": "fx32 scaleDelta",
+      "source": "asm/overlay_01_021FDA14.s",
+      "width": 4
+     }
+    ],
+    "0x4": [
+     {
+      "meaning": "u32 mapId",
+      "source": "asm/overlay_01_021FDA14.s",
+      "width": 4
+     }
+    ],
+    "0x8": [
+     {
+      "meaning": "u32 spriteId",
+      "source": "asm/overlay_01_021FDA14.s",
+      "width": 4
+     }
+    ],
+    "0xc": [
+     {
+      "meaning": "BOOL billboardCreated",
+      "source": "asm/overlay_01_021FDA14.s",
+      "width": 4
+     }
+    ]
+   },
+   "size_guesses": {
+    "asm/overlay_01_021FDA14.s": "0x38 (== template word0)"
+   },
+   "sources": [
+    "asm/overlay_01_021FDA14.s"
+   ]
+  },
+  "UnkOv01_021FDA14_WorkB": {
+   "fields": {
+    "0x0": [
+     {
+      "meaning": "u32 type",
+      "source": "asm/overlay_01_021FDA14.s",
+      "width": 4
+     }
+    ],
+    "0x3c": [
+     {
+      "meaning": "Billboard *billboard",
+      "source": "asm/overlay_01_021FDA14.s",
+      "width": 4
+     }
+    ],
+    "0x4": [
+     {
+      "meaning": "DataB data (0x4 fs, 0x8 effMgr, 0xC manager, 0x10 res, 0x38 srcBillboard)",
+      "source": "asm/overlay_01_021FDA14.s",
+      "width": 56
+     }
+    ],
+    "0x40": [
+     {
+      "meaning": "VecFx32 scale",
+      "source": "asm/overlay_01_021FDA14.s",
+      "width": 12
+     }
+    ],
+    "0x4c": [
+     {
+      "meaning": "fx32 scaleDelta",
+      "source": "asm/overlay_01_021FDA14.s",
+      "width": 4
+     }
+    ],
+    "0x50": [
+     {
+      "meaning": "VecFx32 basePos",
+      "source": "asm/overlay_01_021FDA14.s",
+      "width": 12
+     }
+    ]
+   },
+   "size_guesses": {
+    "asm/overlay_01_021FDA14.s": "0x5C (template word0 is 0x38 anyway; task work buffer is 0x80)"
+   },
+   "sources": [
+    "asm/overlay_01_021FDA14.s"
    ]
   },
   "UnkOv01_021FFECC_sub": {
@@ -43670,6 +43947,22 @@
    "known_prototype": "BOOL MapObject_AreBitsSetForMovementScriptInit(LocalMapObject *obj)",
    "signature_sources": {}
   },
+  "MapObject_CheckFlag24": {
+   "callers": [
+    "asm/overlay_01_021FDA14.s"
+   ],
+   "header": "include/map_object.h",
+   "known_prototype": "BOOL MapObject_CheckFlag24(LocalMapObject *object)",
+   "signature_sources": {}
+  },
+  "MapObject_CheckVisible": {
+   "callers": [
+    "asm/overlay_01_021FDA14.s"
+   ],
+   "header": "include/map_object.h",
+   "known_prototype": "BOOL MapObject_CheckVisible(LocalMapObject *object)",
+   "signature_sources": {}
+  },
   "MapObject_ClearHeldMovementIfActive": {
    "callers": [
     "asm/unk_02056680.s"
@@ -43678,8 +43971,17 @@
    "known_prototype": "BOOL MapObject_ClearHeldMovementIfActive(LocalMapObject *obj)",
    "signature_sources": {}
   },
+  "MapObject_CopyFacingVector": {
+   "callers": [
+    "asm/overlay_01_021FDA14.s"
+   ],
+   "header": "include/map_object.h",
+   "known_prototype": "void MapObject_CopyFacingVector(LocalMapObject *object, VecFx32 *facingVector)",
+   "signature_sources": {}
+  },
   "MapObject_CopyPositionVector": {
    "callers": [
+    "asm/overlay_01_021FDA14.s",
     "asm/overlay_01_022031C0.s",
     "asm/unk_02056680.s"
    ],
@@ -43689,22 +43991,41 @@
   },
   "MapObject_GetFacingDirection": {
    "callers": [
+    "asm/overlay_01_021FDA14.s",
     "asm/overlay_01_022031C0.s"
    ],
    "header": "include/map_object.h",
    "known_prototype": "u32 MapObject_GetFacingDirection(LocalMapObject *object)",
    "signature_sources": {}
   },
+  "MapObject_GetFieldSystem": {
+   "callers": [
+    "asm/overlay_01_021FDA14.s"
+   ],
+   "header": "include/map_object.h",
+   "known_prototype": "FieldSystem *MapObject_GetFieldSystem(LocalMapObject *object)",
+   "signature_sources": {}
+  },
   "MapObject_GetID": {
    "callers": [
+    "asm/overlay_01_021FDA14.s",
     "asm/overlay_01_022031C0.s"
    ],
    "header": "include/map_object.h",
    "known_prototype": "u32 MapObject_GetID(LocalMapObject *object)",
    "signature_sources": {}
   },
+  "MapObject_GetManager": {
+   "callers": [
+    "asm/overlay_01_021FDA14.s"
+   ],
+   "header": "include/map_object.h",
+   "known_prototype": "MapObjectManager *MapObject_GetManager(LocalMapObject *object)",
+   "signature_sources": {}
+  },
   "MapObject_GetMapID": {
    "callers": [
+    "asm/overlay_01_021FDA14.s",
     "asm/overlay_01_022031C0.s"
    ],
    "header": "include/map_object.h",
@@ -43713,6 +44034,7 @@
   },
   "MapObject_GetPriorityPlusValue": {
    "callers": [
+    "asm/overlay_01_021FDA14.s",
     "asm/overlay_01_022031C0.s"
    ],
    "header": "include/map_object.h",
@@ -43721,6 +44043,7 @@
   },
   "MapObject_GetSpriteID": {
    "callers": [
+    "asm/overlay_01_021FDA14.s",
     "asm/overlay_01_022031C0.s"
    ],
    "header": "include/map_object.h",
@@ -45032,6 +45355,7 @@
   },
   "PlayerAvatar_GetMapObject": {
    "callers": [
+    "asm/overlay_01_021FDA14.s",
     "asm/unk_02056680.s"
    ],
    "header": "include/player_avatar.h",
@@ -46706,6 +47030,7 @@
   "_s32_div_f": {
    "callers": [
     "asm/overlay_01_021FCD2C.s",
+    "asm/overlay_01_021FDA14.s",
     "asm/overlay_01_022031C0.s",
     "asm/overlay_117.s",
     "asm/overlay_14_021E5900.s",
@@ -46724,8 +47049,9 @@
    "confidence": "low",
    "header": "MWCC runtime intrinsic, no project header (extern-declare locally; per insights.md s32-div-runtime-not-callable-in-inline-asm CORRECTION it IS callable from inline asm)",
    "known_prototype": "s32 _s32_div_f(s32 dividend, s32 divisor)",
-   "signature_guess": "s32 _s32_div_f(s32 num, s32 den)",
+   "signature_guess": "compiler runtime for signed '/'",
    "signature_sources": {
+    "asm/overlay_01_021FDA14.s": "compiler runtime for signed '/'",
     "asm/overlay_14_021E5900.s": "s32 _s32_div_f(s32 num, s32 den)",
     "asm/unk_02004A44.s": "compiler runtime for signed '/' (write x / 5)",
     "asm/unk_02016EDC.s": "compiler runtime for signed / and %"
@@ -48050,6 +48376,7 @@
   },
   "ov01_021F1430": {
    "callers": [
+    "asm/overlay_01_021FDA14.s",
     "asm/overlay_01_022031C0.s"
    ],
    "header": "include/overlay_01_021F1348.h (siblings use a local extern returning their own manager type)",
@@ -48058,6 +48385,7 @@
   },
   "ov01_021F1448": {
    "callers": [
+    "asm/overlay_01_021FDA14.s",
     "asm/overlay_01_022031C0.s"
    ],
    "header": "include/overlay_01_021F1348.h",
@@ -48066,6 +48394,7 @@
   },
   "ov01_021F1450": {
    "callers": [
+    "asm/overlay_01_021FDA14.s",
     "asm/overlay_01_022031C0.s"
    ],
    "header": "include/overlay_01_021F1348.h. a0 is really the FieldEffectManager; it returns the registered manager for id 0x11.",
@@ -48074,6 +48403,7 @@
   },
   "ov01_021F1468": {
    "callers": [
+    "asm/overlay_01_021FDA14.s",
     "asm/overlay_01_022031C0.s"
    ],
    "header": "include/overlay_01_021F1348.h. It is really `return mgr->unk10` on a FieldEffectManager*, and the result is used as FieldSystem* (FollowMon_GetMapObject, ->mapObjectManager at +0x3c). Siblings use a local `void *ov01_021F1468(...)`.",
@@ -48082,6 +48412,7 @@
   },
   "ov01_021F146C": {
    "callers": [
+    "asm/overlay_01_021FDA14.s",
     "asm/overlay_01_022031C0.s"
    ],
    "header": "include/overlay_01_021F1348.h. It actually returns MapObject_GetFieldSystem(obj)->fieldEffectManager (+0x44).",
@@ -48100,9 +48431,12 @@
   },
   "ov01_021F1620": {
    "callers": [
+    "asm/overlay_01_021FDA14.s",
     "asm/overlay_01_022031C0.s"
    ],
    "confidence": "low",
+   "header": "include/overlay_01_021F1348.h",
+   "known_prototype": "void ov01_021F1620(FieldSystem *fieldSystem, const UnkOv01_02209280 *a1, VecFx32 *a2, int a3, UnkOv01_021FFF5C *a4, int a5)",
    "signature_guess": "extern UnkStruct_0206793C *ov01_021F1620(void *fxMgr, const UnkOv01_022031C0_Template *tmpl, VecFx32 *pos, int a3, UnkOv01_022031C0_Data *data, int prio)",
    "signature_sources": {
     "asm/overlay_01_022031C0.s": "extern UnkStruct_0206793C *ov01_021F1620(void *fxMgr, const UnkOv01_022031C0_Template *tmpl, VecFx32 *pos, int a3, UnkOv01_022031C0_Data *data, int prio)"
@@ -48110,12 +48444,55 @@
   },
   "ov01_021F1640": {
    "callers": [
+    "asm/overlay_01_021FDA14.s",
     "asm/overlay_01_022031C0.s"
    ],
    "confidence": "low",
+   "header": "include/overlay_01_021F1348.h",
+   "known_prototype": "void ov01_021F1640(int a0)",
    "signature_guess": "extern void ov01_021F1640(void *a0)",
    "signature_sources": {
     "asm/overlay_01_022031C0.s": "extern void ov01_021F1640(void *a0)"
+   }
+  },
+  "ov01_021F16EC": {
+   "callers": [
+    "asm/overlay_01_021FDA14.s"
+   ],
+   "confidence": "low",
+   "signature_guess": "Billboard *ov01_021F16EC(void *effMgr, const BillboardResources *res, const VecFx32 *pos)",
+   "signature_sources": {
+    "asm/overlay_01_021FDA14.s": "Billboard *ov01_021F16EC(void *effMgr, const BillboardResources *res, const VecFx32 *pos)"
+   }
+  },
+  "ov01_021F18D4": {
+   "callers": [
+    "asm/overlay_01_021FDA14.s"
+   ],
+   "confidence": "low",
+   "signature_guess": "void ov01_021F18D4(void *a0, int a1, int a2)",
+   "signature_sources": {
+    "asm/overlay_01_021FDA14.s": "void ov01_021F18D4(void *a0, int a1, int a2)"
+   }
+  },
+  "ov01_021F18F0": {
+   "callers": [
+    "asm/overlay_01_021FDA14.s"
+   ],
+   "confidence": "low",
+   "signature_guess": "void *ov01_021F18F0(void *effMgr, int id)",
+   "signature_sources": {
+    "asm/overlay_01_021FDA14.s": "void *ov01_021F18F0(void *effMgr, int id)"
+   }
+  },
+  "ov01_021F18FC": {
+   "callers": [
+    "asm/overlay_01_021FDA14.s"
+   ],
+   "confidence": "low",
+   "signature_guess": "void ov01_021F18FC(void *a0, int a1)",
+   "signature_sources": {
+    "asm/overlay_01_021FDA14.s": "void ov01_021F18FC(void *a0, int a1)"
    }
   },
   "ov01_021F4464": {
@@ -48921,6 +49298,14 @@
     }
    ]
   },
+  "ov01_021F72DC": {
+   "callers": [
+    "asm/overlay_01_021FDA14.s"
+   ],
+   "header": "include/overlay_01_021F72DC.h",
+   "known_prototype": "Sprite *ov01_021F72DC(LocalMapObject *obj)",
+   "signature_sources": {}
+  },
   "ov01_021F771C": {
    "callers": [
     "asm/overlay_01_022031C0.s"
@@ -48930,6 +49315,24 @@
    "signature_sources": {
     "asm/overlay_01_022031C0.s": "extern Sprite *ov01_021F771C(MapObjectManager *mgr)"
    }
+  },
+  "ov01_021F9744": {
+   "callers": [
+    "asm/overlay_01_021FDA14.s"
+   ],
+   "confidence": "low",
+   "signature_guess": "BOOL ov01_021F9744(MapObjectManager *manager, u32 spriteId, BillboardResources *out)",
+   "signature_sources": {
+    "asm/overlay_01_021FDA14.s": "BOOL ov01_021F9744(MapObjectManager *manager, u32 spriteId, BillboardResources *out)"
+   }
+  },
+  "ov01_021FA2D4": {
+   "callers": [
+    "asm/overlay_01_021FDA14.s"
+   ],
+   "header": "include/overlay_01_021F944C.h",
+   "known_prototype": "BOOL ov01_021FA2D4(LocalMapObject *obj)",
+   "signature_sources": {}
   },
   "ov01_021FAC44": {
    "callers": [],
@@ -49863,6 +50266,587 @@
     }
    ]
   },
+  "ov01_021FDA14": {
+   "callers": [],
+   "confidence": "high",
+   "defined_in": "asm/overlay_01_021FDA14.s",
+   "mode": "thumb",
+   "notes": [
+    "[asm/overlay_01_021FDA14.s] Exported. Referenced from src/overlay_01_data_02208BFC.c table {0x01, ov01_021FDA14, ov01_021FDA30} with local extern 'void *ov01_021FDA14(void *)'. Same pattern as ov01_021FE200 / ov01_021FF6B0: m = ov01_021F1430(a0, sizeof(*m), 0, 0); m->unk0 = a0; ov01_021FDA40(m); return m;"
+   ],
+   "signature_guess": "UnkOv01_021FDA14 *ov01_021FDA14(void *a0)",
+   "signature_sources": {
+    "asm/overlay_01_021FDA14.s": "UnkOv01_021FDA14 *ov01_021FDA14(void *a0)"
+   },
+   "struct_accesses": [
+    {
+     "meaning": "manager->unk0 = a0 (manager alloc'd via ov01_021F1430(a0, 4, 0, 0), sizeof==4)",
+     "offset": "0x0",
+     "param": -1,
+     "width": 4
+    }
+   ]
+  },
+  "ov01_021FDA30": {
+   "callers": [],
+   "confidence": "high",
+   "defined_in": "asm/overlay_01_021FDA14.s",
+   "mode": "thumb",
+   "notes": [
+    "[asm/overlay_01_021FDA14.s] Exported (data-table destructor). ov01_021FDA5C(m); ov01_021F1448(m);"
+   ],
+   "signature_guess": "void ov01_021FDA30(UnkOv01_021FDA14 *manager)",
+   "signature_sources": {
+    "asm/overlay_01_021FDA14.s": "void ov01_021FDA30(UnkOv01_021FDA14 *manager)"
+   }
+  },
+  "ov01_021FDA40": {
+   "callers": [
+    "asm/overlay_01_021FDA14.s"
+   ],
+   "confidence": "high",
+   "defined_in": "asm/overlay_01_021FDA14.s",
+   "mode": "thumb",
+   "notes": [
+    "[asm/overlay_01_021FDA14.s] ov01_021F18D4(m->unk0, 2, 0x23); ov01_021F18D4(m->unk0, 0xd, 0x69); -- loads the two reflection model resources (ids 2 and 0xd). Needs forward decl (called from DA14 before definition)."
+   ],
+   "signature_guess": "static void ov01_021FDA40(UnkOv01_021FDA14 *manager)",
+   "signature_sources": {
+    "asm/overlay_01_021FDA14.s": "static void ov01_021FDA40(UnkOv01_021FDA14 *manager)"
+   },
+   "struct_accesses": [
+    {
+     "meaning": "unk0 (field effect manager ptr) passed to ov01_021F18D4",
+     "offset": "0x0",
+     "param": 0,
+     "width": 4
+    }
+   ]
+  },
+  "ov01_021FDA5C": {
+   "callers": [
+    "asm/overlay_01_021FDA14.s"
+   ],
+   "confidence": "high",
+   "defined_in": "asm/overlay_01_021FDA14.s",
+   "mode": "thumb",
+   "notes": [
+    "[asm/overlay_01_021FDA14.s] ov01_021F18FC(m->unk0, 2); ov01_021F18FC(m->unk0, 0xd); forward decl needed."
+   ],
+   "signature_guess": "static void ov01_021FDA5C(UnkOv01_021FDA14 *manager)",
+   "signature_sources": {
+    "asm/overlay_01_021FDA14.s": "static void ov01_021FDA5C(UnkOv01_021FDA14 *manager)"
+   }
+  },
+  "ov01_021FDA74": {
+   "callers": [],
+   "confidence": "high",
+   "defined_in": "asm/overlay_01_021FDA14.s",
+   "mode": "thumb",
+   "notes": [
+    "[asm/overlay_01_021FDA14.s] Exported; called from asm/unk_0205FD20.s (sub_020607D8) with type 0/1/2 (puddle/water/reflective) -- return ignored, so void or void* both OK. Body: data.unk0 = MapObject_GetFieldSystem(obj); data.unk4 = ov01_021F146C(obj); data.unk8 = ov01_021F1450(data.unk4, 1); data.unkC = obj; MapObject_CopyPositionVector(obj, &pos); return ov01_021F1620(data.unk4, &tmplF88, &pos, type, &data, MapObject_GetPriorityPlusValue(obj, 2)); NOTE the first arg of ov01_021F1620 is RELOADED from [sp+0xc] (data.unk4), not held in a callee-saved reg -> use data.unk4 directly rather than a separate local. Declare data before position (data@sp+8, pos@sp+0x18)."
+   ],
+   "signature_guess": "void *ov01_021FDA74(LocalMapObject *mapObject, int type)",
+   "signature_sources": {
+    "asm/overlay_01_021FDA14.s": "void *ov01_021FDA74(LocalMapObject *mapObject, int type)"
+   },
+   "struct_accesses": [
+    {
+     "meaning": "local DataA: {+0 MapObject_GetFieldSystem(obj), +4 ov01_021F146C(obj), +8 ov01_021F1450(data.unk4,1), +C mapObject}",
+     "offset": "sp+0x8",
+     "param": -1,
+     "width": 16
+    },
+    {
+     "meaning": "VecFx32 position from MapObject_CopyPositionVector",
+     "offset": "sp+0x18",
+     "param": -1,
+     "width": 12
+    }
+   ]
+  },
+  "ov01_021FDAC0": {
+   "callers": [],
+   "confidence": "high",
+   "defined_in": "asm/overlay_01_021FDA14.s",
+   "mode": "thumb",
+   "notes": [
+    "[asm/overlay_01_021FDA14.s] VecFx32 pos at sp+0; ov01_021FDC7C(work, work->data.mapObject, &pos); sub_02068DA8(param0, &pos); ov01_021FDD48(param0, work); return TRUE. mapObject reloaded from [r4+0x20] each time (no local)."
+   ],
+   "signature_guess": "static BOOL ov01_021FDAC0(void *param0, UnkOv01_021FDA14_WorkA *work)",
+   "signature_sources": {
+    "asm/overlay_01_021FDA14.s": "static BOOL ov01_021FDAC0(void *param0, UnkOv01_021FDA14_WorkA *work)"
+   },
+   "struct_accesses": [
+    {
+     "meaning": "work->data = *(DataA *)sub_02068D98(param0) (2x ldmia/stmia pair = 16-byte struct copy)",
+     "offset": "0x14",
+     "param": 1,
+     "width": 16
+    },
+    {
+     "meaning": "type = sub_02068D90(param0) (assigned AFTER the struct copy)",
+     "offset": "0x10",
+     "param": 1,
+     "width": 4
+    },
+    {
+     "meaning": "MapObject_GetID(work->data.mapObject)",
+     "offset": "0x0",
+     "param": 1,
+     "width": 4
+    },
+    {
+     "meaning": "MapObject_GetMapID",
+     "offset": "0x4",
+     "param": 1,
+     "width": 4
+    },
+    {
+     "meaning": "MapObject_GetSpriteID",
+     "offset": "0x8",
+     "param": 1,
+     "width": 4
+    },
+    {
+     "meaning": "scale VecFx32 = {FX32_ONE x3}",
+     "offset": "0x28",
+     "param": 1,
+     "width": 12
+    },
+    {
+     "meaning": "scale delta = 0x40; 0 if type == 2",
+     "offset": "0x34",
+     "param": 1,
+     "width": 4
+    }
+   ]
+  },
+  "ov01_021FDB34": {
+   "callers": [],
+   "confidence": "high",
+   "defined_in": "asm/overlay_01_021FDA14.s",
+   "mode": "thumb",
+   "notes": [
+    "[asm/overlay_01_021FDA14.s] if (work->unkC == 1) sub_02023DA4(work->unk24); -- NO return value on any path (r0 left as-is); write BOOL with no return statement (sibling FE524 idiom) or void + cast."
+   ],
+   "signature_guess": "static BOOL ov01_021FDB34(void *param0, UnkOv01_021FDA14_WorkA *work)",
+   "signature_sources": {
+    "asm/overlay_01_021FDA14.s": "static BOOL ov01_021FDB34(void *param0, UnkOv01_021FDA14_WorkA *work)"
+   },
+   "struct_accesses": [
+    {
+     "meaning": "billboardCreated flag",
+     "offset": "0xc",
+     "param": 1,
+     "width": 4
+    },
+    {
+     "meaning": "Billboard *",
+     "offset": "0x24",
+     "param": 1,
+     "width": 4
+    }
+   ]
+  },
+  "ov01_021FDB44": {
+   "callers": [],
+   "confidence": "high",
+   "defined_in": "asm/overlay_01_021FDA14.s",
+   "mode": "thumb",
+   "notes": [
+    "[asm/overlay_01_021FDA14.s] obj = work->data.mapObject; if (work->unk8 != MapObject_GetSpriteID(obj) || !sub_0205F0A8(obj, work->unk0, work->unk4) || !MapObject_CheckFlag24(obj)) { ov01_021F1640(param0); return; } work->scale.x += work->delta; if (work->scale.x >= 0x1200) { work->scale.x = 0x1200; work->delta = -work->delta; } else if (work->scale.x <= 0xE00) { work->scale.x = 0xE00; work->delta = -work->delta; } ov01_021FDC7C(work, obj, &pos); sub_02068DA8(param0, &pos); if (work->unkC == 0) ov01_021FDD48(param0, work);"
+   ],
+   "signature_guess": "static void ov01_021FDB44(void *param0, UnkOv01_021FDA14_WorkA *work)",
+   "signature_sources": {
+    "asm/overlay_01_021FDA14.s": "static void ov01_021FDB44(void *param0, UnkOv01_021FDA14_WorkA *work)"
+   },
+   "struct_accesses": [
+    {
+     "meaning": "mapObject (cached in local r6)",
+     "offset": "0x20",
+     "param": 1,
+     "width": 4
+    },
+    {
+     "meaning": "scale.x, bounced between 0xE00 and 0x1200",
+     "offset": "0x28",
+     "param": 1,
+     "width": 4
+    },
+    {
+     "meaning": "delta, negated at bounds",
+     "offset": "0x34",
+     "param": 1,
+     "width": 4
+    }
+   ]
+  },
+  "ov01_021FDBCC": {
+   "callers": [],
+   "confidence": "high",
+   "defined_in": "asm/overlay_01_021FDA14.s",
+   "mode": "thumb",
+   "notes": [
+    "[asm/overlay_01_021FDA14.s] Locals: pos@sp+0, facing@sp+0xc; BOOL hide = FALSE initialised at function top (mov r4,#0 before first call). Same early-out guard as DB44. Then if (work->unkC) { MapObject_CopyFacingVector(work->data.mapObject /*reloaded from +0x20, not local obj*/, &facing); if (facing.y != 0) hide = TRUE; if (MapObject_CheckVisible(obj) == TRUE) hide = TRUE; if (hide) sub_02023EA4(work->unk24, 0); else sub_02023EA4(work->unk24, 1); sub_02068DB8(param0,&pos); sub_02023E50(work->unk24,&pos); sub_02023E78(work->unk24,&work->scale); src = ov01_021F72DC(work->data.mapObject); sub_02023EE0(work->unk24, sub_02023EF4(src)); sub_02023F1C(work->unk24, sub_02023F30(src)); } -- copies the owner's billboard anim/frame onto the reflection."
+   ],
+   "signature_guess": "static void ov01_021FDBCC(void *param0, UnkOv01_021FDA14_WorkA *work)",
+   "signature_sources": {
+    "asm/overlay_01_021FDA14.s": "static void ov01_021FDBCC(void *param0, UnkOv01_021FDA14_WorkA *work)"
+   },
+   "struct_accesses": [
+    {
+     "meaning": "Billboard *",
+     "offset": "0x24",
+     "param": 1,
+     "width": 4
+    },
+    {
+     "meaning": "&scale passed to sub_02023E78",
+     "offset": "0x28",
+     "param": 1,
+     "width": 12
+    }
+   ]
+  },
+  "ov01_021FDC7C": {
+   "callers": [
+    "asm/overlay_01_021FDA14.s"
+   ],
+   "confidence": "high",
+   "defined_in": "asm/overlay_01_021FDA14.s",
+   "mode": "thumb",
+   "notes": [
+    "[asm/overlay_01_021FDA14.s] Stack: yOff@sp+0, fx@sp+4, fx32 offsets[6]@sp+8 (struct copy of ov01_02208FC8 via 3 ldmia/stmia pairs, done FIRST), facing@sp+0x20. Body: copy table; MapObject_CopyFacingVector(obj,&facing); fx = facing.x; if (MapObject_GetID(obj)==0xff /*obj_player*/ && MapObject_GetSpriteID(obj)==0xbc) { if (MapObject_GetFacingDirection(obj)==1) z = 0x1800 - facing.z; else z = facing.z; } else z = facing.z;  (two distinct else labels => nested if, not a single && chain). yOff = -(facing.y / 6); if (MapObject_GetID(obj)==0xfd /*obj_partner_poke*/ && MapObject_GetSpriteID(PlayerAvatar_GetMapObject(work->data.fieldSystem->playerAvatar))==0xbc) yOff = 0; MapObject_CopyPositionVector(obj,out); r = sub_0206121C(work->data.fieldSystem,out); out->x += fx; out->z += z - FX32_CONST(7); if (r == 0) out->y = 0; else out->y -= offsets[work->unk10]; out->y += yOff; (the two out->y assignments merge into one str)."
+   ],
+   "signature_guess": "static void ov01_021FDC7C(UnkOv01_021FDA14_WorkA *work, LocalMapObject *mapObject, VecFx32 *out)",
+   "signature_sources": {
+    "asm/overlay_01_021FDA14.s": "static void ov01_021FDC7C(UnkOv01_021FDA14_WorkA *work, LocalMapObject *mapObject, VecFx32 *out)"
+   },
+   "struct_accesses": [
+    {
+     "meaning": "data.fieldSystem; ->playerAvatar (FieldSystem+0x40), also first arg of sub_0206121C",
+     "offset": "0x14",
+     "param": 0,
+     "width": 4
+    },
+    {
+     "meaning": "type, index into 6-entry fx32 table ov01_02208FC8",
+     "offset": "0x10",
+     "param": 0,
+     "width": 4
+    },
+    {
+     "meaning": "VecFx32 out x/y/z",
+     "offset": "0x0/0x4/0x8",
+     "param": 2,
+     "width": 4
+    }
+   ]
+  },
+  "ov01_021FDD48": {
+   "callers": [
+    "asm/overlay_01_021FDA14.s"
+   ],
+   "confidence": "high",
+   "defined_in": "asm/overlay_01_021FDA14.s",
+   "mode": "thumb",
+   "notes": [
+    "[asm/overlay_01_021FDA14.s] Locals: BillboardResources res (0x28) @sp+0, VecFx32 pos @sp+0x28. if (ov01_021F9744(MapObject_GetManager(work->data.mapObject), work->unk8, &res) && ov01_021FA2D4(work->data.mapObject) != TRUE) { res.modelRes = ov01_021F18F0(work->data.effMgr, 2); sub_02068DB8(param0,&pos); work->unk24 = ov01_021F16EC(work->data.effMgr, &res, &pos); work->unkC = 1; }"
+   ],
+   "signature_guess": "static void ov01_021FDD48(void *param0, UnkOv01_021FDA14_WorkA *work)",
+   "signature_sources": {
+    "asm/overlay_01_021FDA14.s": "static void ov01_021FDD48(void *param0, UnkOv01_021FDA14_WorkA *work)"
+   },
+   "struct_accesses": [
+    {
+     "meaning": "spriteId -> ov01_021F9744 lookup",
+     "offset": "0x8",
+     "param": 1,
+     "width": 4
+    },
+    {
+     "meaning": "data.effMgr -> ov01_021F18F0 / ov01_021F16EC",
+     "offset": "0x18",
+     "param": 1,
+     "width": 4
+    },
+    {
+     "meaning": "Billboard* result of ov01_021F16EC",
+     "offset": "0x24",
+     "param": 1,
+     "width": 4
+    },
+    {
+     "meaning": "set to 1 (billboard created)",
+     "offset": "0xc",
+     "param": 1,
+     "width": 4
+    }
+   ]
+  },
+  "ov01_021FDD94": {
+   "callers": [
+    "asm/overlay_01_021FDA14.s"
+   ],
+   "confidence": "high",
+   "defined_in": "asm/overlay_01_021FDA14.s",
+   "mode": "thumb",
+   "notes": [
+    "[asm/overlay_01_021FDA14.s] res = work->data.res; res.modelRes = ov01_021F18F0(work->data.effMgr, 2); sub_02068DB8(param0,&pos); work->unk3C = ov01_021F16EC(work->data.effMgr,&res,&pos); src = work->data.srcBillboard; sub_02023EE0(work->unk3C, sub_02023EF4(src)); sub_02023F40(work->unk3C, sub_02023F70(src)); sub_02023F1C(work->unk3C, sub_02023F30(src)); sub_02023F04(work->unk3C, 0); sub_02023FC0(work->unk3C);  (src loaded AFTER the unk3C store)."
+   ],
+   "signature_guess": "static void ov01_021FDD94(void *param0, UnkOv01_021FDA14_WorkB *work)",
+   "signature_sources": {
+    "asm/overlay_01_021FDA14.s": "static void ov01_021FDD94(void *param0, UnkOv01_021FDA14_WorkB *work)"
+   },
+   "struct_accesses": [
+    {
+     "meaning": "data.res (BillboardResources) copied to stack via 5-iteration ldmia/stmia loop",
+     "offset": "0x10",
+     "param": 1,
+     "width": 40
+    },
+    {
+     "meaning": "data.effMgr",
+     "offset": "0x8",
+     "param": 1,
+     "width": 4
+    },
+    {
+     "meaning": "own Billboard* (result of ov01_021F16EC)",
+     "offset": "0x3c",
+     "param": 1,
+     "width": 4
+    },
+    {
+     "meaning": "data.srcBillboard (owner's billboard)",
+     "offset": "0x38",
+     "param": 1,
+     "width": 4
+    }
+   ]
+  },
+  "ov01_021FDE08": {
+   "callers": [
+    "asm/overlay_01_021FDA14.s"
+   ],
+   "confidence": "high",
+   "defined_in": "asm/overlay_01_021FDA14.s",
+   "mode": "thumb",
+   "notes": [
+    "[asm/overlay_01_021FDA14.s] fx32 offsets[6] = ov01_02208FB0 copied FIRST (sp+0). *out = work->unk50; r = sub_0206121C(work->data.fieldSystem, out); out->z -= FX32_CONST(7); if (r == 0) out->y = 0; else out->y -= offsets[work->unk0]; (each branch has its own epilogue here)."
+   ],
+   "signature_guess": "static void ov01_021FDE08(UnkOv01_021FDA14_WorkB *work, VecFx32 *out)",
+   "signature_sources": {
+    "asm/overlay_01_021FDA14.s": "static void ov01_021FDE08(UnkOv01_021FDA14_WorkB *work, VecFx32 *out)"
+   },
+   "struct_accesses": [
+    {
+     "meaning": "basePos VecFx32, struct-copied to *out (ldmia pair + ldr/str)",
+     "offset": "0x50",
+     "param": 0,
+     "width": 12
+    },
+    {
+     "meaning": "data.fieldSystem -> sub_0206121C",
+     "offset": "0x4",
+     "param": 0,
+     "width": 4
+    },
+    {
+     "meaning": "type -> index into ov01_02208FB0",
+     "offset": "0x0",
+     "param": 0,
+     "width": 4
+    }
+   ]
+  },
+  "ov01_021FDE64": {
+   "callers": [],
+   "confidence": "high",
+   "defined_in": "asm/overlay_01_021FDA14.s",
+   "mode": "thumb",
+   "notes": [
+    "[asm/overlay_01_021FDA14.s] Exported; single caller asm/overlay_01_021F944C.s ~line 3242: r0=ov01_021F146C(obj) (so a0 is really the effect manager, header-typed FieldSystem*), r1=owner+0x28 (resources), r2=[owner+0x24] (billboard), r3=&pos, stack: type(0..2), priority; RETURN VALUE IS USED (stored to [owner+0x54]) -> must return ov01_021F1620(...). Body: data.unk0 = ov01_021F1468(a0); data.unk4 = a0; data.unk8 = ov01_021F1450(a0,1); data.res = *res; data.srcBillboard = srcBillboard; return ov01_021F1620(a0, &tmplF9C, pos, type, &data, priority);"
+   ],
+   "signature_guess": "void *ov01_021FDE64(FieldSystem *effMgr, const BillboardResources *res, Billboard *srcBillboard, VecFx32 *pos, int type, int priority)",
+   "signature_sources": {
+    "asm/overlay_01_021FDA14.s": "void *ov01_021FDE64(FieldSystem *effMgr, const BillboardResources *res, Billboard *srcBillboard, VecFx32 *pos, int type, int priority)"
+   },
+   "struct_accesses": [
+    {
+     "meaning": "local DataB {+0 ov01_021F1468(a0), +4 a0, +8 ov01_021F1450(a0,1), +C res copy (5-iter ldmia loop), +34 srcBillboard}",
+     "offset": "sp+0x8",
+     "param": -1,
+     "width": 56
+    }
+   ]
+  },
+  "ov01_021FDEAC": {
+   "callers": [],
+   "confidence": "high",
+   "defined_in": "asm/overlay_01_021FDA14.s",
+   "mode": "thumb",
+   "notes": [
+    "[asm/overlay_01_021FDA14.s] ...; ov01_021FDE08(work,&pos); sub_02068DA8(param0,&pos); ov01_021FDD94(param0,work); sub_02068D18(param0); return TRUE;"
+   ],
+   "signature_guess": "static BOOL ov01_021FDEAC(void *param0, UnkOv01_021FDA14_WorkB *work)",
+   "signature_sources": {
+    "asm/overlay_01_021FDA14.s": "static BOOL ov01_021FDEAC(void *param0, UnkOv01_021FDA14_WorkB *work)"
+   },
+   "struct_accesses": [
+    {
+     "meaning": "work->data = *(DataB *)sub_02068D98(param0) (7-iteration ldmia/stmia loop, 0x38 bytes)",
+     "offset": "0x4",
+     "param": 1,
+     "width": 56
+    },
+    {
+     "meaning": "type = sub_02068D90(param0)",
+     "offset": "0x0",
+     "param": 1,
+     "width": 4
+    },
+    {
+     "meaning": "scale = FX32_ONE x3",
+     "offset": "0x40",
+     "param": 1,
+     "width": 12
+    },
+    {
+     "meaning": "delta = 0x40; 0 if type == 2",
+     "offset": "0x4c",
+     "param": 1,
+     "width": 4
+    },
+    {
+     "meaning": "basePos via sub_02068DB8(param0, &work->unk50)",
+     "offset": "0x50",
+     "param": 1,
+     "width": 12
+    }
+   ]
+  },
+  "ov01_021FDF14": {
+   "callers": [],
+   "confidence": "high",
+   "defined_in": "asm/overlay_01_021FDA14.s",
+   "mode": "thumb",
+   "notes": [
+    "[asm/overlay_01_021FDA14.s] Tail call (ldr r3,=sub_02023DA4; bx r3): sub_02023DA4(work->unk3C) -- 'return sub_02023DA4(work->unk3C);' or plain call both tail-call."
+   ],
+   "signature_guess": "static BOOL ov01_021FDF14(void *param0, UnkOv01_021FDA14_WorkB *work)",
+   "signature_sources": {
+    "asm/overlay_01_021FDA14.s": "static BOOL ov01_021FDF14(void *param0, UnkOv01_021FDA14_WorkB *work)"
+   }
+  },
+  "ov01_021FDF20": {
+   "callers": [],
+   "confidence": "high",
+   "defined_in": "asm/overlay_01_021FDA14.s",
+   "mode": "thumb",
+   "notes": [
+    "[asm/overlay_01_021FDA14.s] Same bounce code as DB44 but no validity guard; then ov01_021FDE08(work,&pos); sub_02068DA8(param0,&pos)."
+   ],
+   "signature_guess": "static void ov01_021FDF20(void *param0, UnkOv01_021FDA14_WorkB *work)",
+   "signature_sources": {
+    "asm/overlay_01_021FDA14.s": "static void ov01_021FDF20(void *param0, UnkOv01_021FDA14_WorkB *work)"
+   },
+   "struct_accesses": [
+    {
+     "meaning": "scale.x bounce 0xE00..0x1200",
+     "offset": "0x40",
+     "param": 1,
+     "width": 4
+    },
+    {
+     "meaning": "delta",
+     "offset": "0x4c",
+     "param": 1,
+     "width": 4
+    }
+   ]
+  },
+  "ov01_021FDF64": {
+   "callers": [],
+   "confidence": "high",
+   "defined_in": "asm/overlay_01_021FDA14.s",
+   "mode": "thumb",
+   "notes": [
+    "[asm/overlay_01_021FDA14.s] sub_02068DB8(param0,&pos); sub_02023E50(work->unk3C,&pos); sub_02023E78(work->unk3C,&work->scale /*+0x40*/);"
+   ],
+   "signature_guess": "static void ov01_021FDF64(void *param0, UnkOv01_021FDA14_WorkB *work)",
+   "signature_sources": {
+    "asm/overlay_01_021FDA14.s": "static void ov01_021FDF64(void *param0, UnkOv01_021FDA14_WorkB *work)"
+   }
+  },
+  "ov01_021FDF88": {
+   "callers": [],
+   "confidence": "high",
+   "defined_in": "asm/overlay_01_021FDA14.s",
+   "mode": "thumb",
+   "notes": [
+    "[asm/overlay_01_021FDA14.s] Exported; byte-identical to ov01_021FDA74 except template ov01_02208F74. Called from asm/unk_0205FD20.s with type 0..5 (3/4/5 variants), return ignored."
+   ],
+   "signature_guess": "void *ov01_021FDF88(LocalMapObject *mapObject, int type)",
+   "signature_sources": {
+    "asm/overlay_01_021FDA14.s": "void *ov01_021FDF88(LocalMapObject *mapObject, int type)"
+   }
+  },
+  "ov01_021FDFD4": {
+   "callers": [],
+   "confidence": "high",
+   "defined_in": "asm/overlay_01_021FDA14.s",
+   "mode": "thumb",
+   "notes": [
+    "[asm/overlay_01_021FDA14.s] Clone of DAC0 except: delta zeroed when (type == 2 || type == 5); after ov01_021FDC7C: pos.y -= 0x514 (pool literal); calls ov01_021FE190 instead of DD48 (forward decl needed)."
+   ],
+   "signature_guess": "static BOOL ov01_021FDFD4(void *param0, UnkOv01_021FDA14_WorkA *work)",
+   "signature_sources": {
+    "asm/overlay_01_021FDA14.s": "static BOOL ov01_021FDFD4(void *param0, UnkOv01_021FDA14_WorkA *work)"
+   }
+  },
+  "ov01_021FE058": {
+   "callers": [],
+   "confidence": "high",
+   "defined_in": "asm/overlay_01_021FDA14.s",
+   "mode": "thumb",
+   "notes": [
+    "[asm/overlay_01_021FDA14.s] Clone of DB44 with pos.y -= 0x514 after DC7C and ov01_021FE190 instead of DD48."
+   ],
+   "signature_guess": "static void ov01_021FE058(void *param0, UnkOv01_021FDA14_WorkA *work)",
+   "signature_sources": {
+    "asm/overlay_01_021FDA14.s": "static void ov01_021FE058(void *param0, UnkOv01_021FDA14_WorkA *work)"
+   }
+  },
+  "ov01_021FE0EC": {
+   "callers": [],
+   "confidence": "high",
+   "defined_in": "asm/overlay_01_021FDA14.s",
+   "mode": "thumb",
+   "notes": [
+    "[asm/overlay_01_021FDA14.s] Like DBCC but no facing check / no hide local: obj in r4. if (work->unkC) { if (MapObject_CheckVisible(obj) == TRUE) sub_02023EA4(work->unk24,0); else sub_02023EA4(work->unk24,1); sub_02068DB8(param0,&pos); pos.z -= FX32_ONE; sub_02023E50(...); sub_02023E78(work->unk24,&work->scale); src = ov01_021F72DC(work->data.mapObject); EE0/EF4; F1C/F30 }. Only pos (sp 0xc) on stack."
+   ],
+   "signature_guess": "static void ov01_021FE0EC(void *param0, UnkOv01_021FDA14_WorkA *work)",
+   "signature_sources": {
+    "asm/overlay_01_021FDA14.s": "static void ov01_021FE0EC(void *param0, UnkOv01_021FDA14_WorkA *work)"
+   }
+  },
+  "ov01_021FE190": {
+   "callers": [
+    "asm/overlay_01_021FDA14.s"
+   ],
+   "confidence": "high",
+   "defined_in": "asm/overlay_01_021FDA14.s",
+   "mode": "thumb",
+   "notes": [
+    "[asm/overlay_01_021FDA14.s] Like DD48 but: if (work->unk10 <= 2) res.modelRes = ov01_021F18F0(work->data.effMgr, 2); else res.modelRes = ov01_021F18F0(work->data.effMgr, 0xd);  (bhi => unk10 is UNSIGNED u32; effMgr load hoisted above branch). Then if (ov01_0220553C(work->data.mapObject)) ov01_02205870(TRUE, work->data.mapObject, work->unk24, &res); then DB8/16EC/unkC=1 as DD48. Last function in file (ends .balign 4)."
+   ],
+   "signature_guess": "static void ov01_021FE190(void *param0, UnkOv01_021FDA14_WorkA *work)",
+   "signature_sources": {
+    "asm/overlay_01_021FDA14.s": "static void ov01_021FE190(void *param0, UnkOv01_021FDA14_WorkA *work)"
+   }
+  },
   "ov01_022031C0": {
    "callers": [],
    "confidence": "high",
@@ -50407,6 +51391,14 @@
     "asm/overlay_01_021E8744.s": "int ov01_02204834(void *a0)"
    }
   },
+  "ov01_0220553C": {
+   "callers": [
+    "asm/overlay_01_021FDA14.s"
+   ],
+   "header": "include/overlay_01_022053EC.h",
+   "known_prototype": "BOOL ov01_0220553C(LocalMapObject *mapObject)",
+   "signature_sources": {}
+  },
   "ov01_022055DC": {
    "callers": [
     "asm/overlay_01_022031C0.s"
@@ -50422,6 +51414,16 @@
    "header": "include/overlay_01.h",
    "known_prototype": "void ov01_02205790(FieldSystem *fieldSystem, u8 a1)",
    "signature_sources": {}
+  },
+  "ov01_02205870": {
+   "callers": [
+    "asm/overlay_01_021FDA14.s"
+   ],
+   "confidence": "low",
+   "signature_guess": "void ov01_02205870(BOOL a0, LocalMapObject *obj, Billboard *unused, BillboardResources *res)",
+   "signature_sources": {
+    "asm/overlay_01_021FDA14.s": "void ov01_02205870(BOOL a0, LocalMapObject *obj, Billboard *unused, BillboardResources *res)"
+   }
   },
   "ov03_02256E2C": {
    "callers": [],
@@ -76918,6 +77920,7 @@
   },
   "sub_02023DA4": {
    "callers": [
+    "asm/overlay_01_021FDA14.s",
     "asm/unk_02023694.s"
    ],
    "confidence": "high",
@@ -76928,6 +77931,7 @@
    ],
    "signature_guess": "BOOL sub_02023DA4(UnkStruct_02023D44 *node)",
    "signature_sources": {
+    "asm/overlay_01_021FDA14.s": "BOOL sub_02023DA4(void *billboard)",
     "asm/unk_02023694.s": "BOOL sub_02023DA4(UnkStruct_02023D44 *node)"
    },
    "struct_accesses": [
@@ -77000,7 +78004,9 @@
    ]
   },
   "sub_02023E50": {
-   "callers": [],
+   "callers": [
+    "asm/overlay_01_021FDA14.s"
+   ],
    "confidence": "high",
    "defined_in": "asm/unk_02023694.s",
    "mode": "thumb",
@@ -77009,6 +78015,7 @@
    ],
    "signature_guess": "void sub_02023E50(VecFx32 *dst /* &node->pos */, const VecFx32 *src)",
    "signature_sources": {
+    "asm/overlay_01_021FDA14.s": "void sub_02023E50(void *billboard, VecFx32 *pos)",
     "asm/unk_02023694.s": "void sub_02023E50(VecFx32 *dst /* &node->pos */, const VecFx32 *src)"
    },
    "struct_accesses": [
@@ -77035,6 +78042,7 @@
   },
   "sub_02023E78": {
    "callers": [
+    "asm/overlay_01_021FDA14.s",
     "asm/overlay_01_022031C0.s"
    ],
    "confidence": "high",
@@ -77045,6 +78053,7 @@
    ],
    "signature_guess": "void sub_02023E78(UnkStruct_02023D44 *node, const VecFx32 *scale)",
    "signature_sources": {
+    "asm/overlay_01_021FDA14.s": "void sub_02023E78(void *billboard, VecFx32 *scale)",
     "asm/overlay_01_022031C0.s": "void sub_02023E78(Sprite *sprite, VecFx32 *scale)",
     "asm/unk_02023694.s": "void sub_02023E78(UnkStruct_02023D44 *node, const VecFx32 *scale)"
    },
@@ -77079,9 +78088,13 @@
    ]
   },
   "sub_02023EA4": {
-   "callers": [],
+   "callers": [
+    "asm/overlay_01_021FDA14.s"
+   ],
    "confidence": "high",
    "defined_in": "asm/unk_02023694.s",
+   "header": "include/unk_02023694.h",
+   "known_prototype": "void sub_02023EA4(Sprite *sprite, int arg1)",
    "mode": "thumb",
    "notes": [
     "[asm/unk_02023694.s] Exported."
@@ -77134,7 +78147,9 @@
    }
   },
   "sub_02023EE0": {
-   "callers": [],
+   "callers": [
+    "asm/overlay_01_021FDA14.s"
+   ],
    "confidence": "high",
    "defined_in": "asm/unk_02023694.s",
    "mode": "thumb",
@@ -77143,6 +78158,7 @@
    ],
    "signature_guess": "void sub_02023EE0(UnkStruct_02023D44 *node, u16 segmentIndex)",
    "signature_sources": {
+    "asm/overlay_01_021FDA14.s": "void sub_02023EE0(void *billboard, int animNum)",
     "asm/unk_02023694.s": "void sub_02023EE0(UnkStruct_02023D44 *node, u16 segmentIndex)"
    },
    "struct_accesses": [
@@ -77155,7 +78171,9 @@
    ]
   },
   "sub_02023EF4": {
-   "callers": [],
+   "callers": [
+    "asm/overlay_01_021FDA14.s"
+   ],
    "confidence": "high",
    "defined_in": "asm/unk_02023694.s",
    "mode": "thumb",
@@ -77164,6 +78182,7 @@
    ],
    "signature_guess": "u16 sub_02023EF4(UnkStruct_02023D44 *node)",
    "signature_sources": {
+    "asm/overlay_01_021FDA14.s": "int sub_02023EF4(void *billboard)",
     "asm/unk_02023694.s": "u16 sub_02023EF4(UnkStruct_02023D44 *node)"
    },
    "struct_accesses": [
@@ -77176,7 +78195,9 @@
    ]
   },
   "sub_02023F04": {
-   "callers": [],
+   "callers": [
+    "asm/overlay_01_021FDA14.s"
+   ],
    "confidence": "medium",
    "defined_in": "asm/unk_02023694.s",
    "mode": "thumb",
@@ -77185,11 +78206,14 @@
    ],
    "signature_guess": "void sub_02023F04(UnkStruct_02023D44 *node, u32 delta)",
    "signature_sources": {
+    "asm/overlay_01_021FDA14.s": "int sub_02023F04(void *billboard, fx32 numFrames)",
     "asm/unk_02023694.s": "void sub_02023F04(UnkStruct_02023D44 *node, u32 delta)"
    }
   },
   "sub_02023F1C": {
-   "callers": [],
+   "callers": [
+    "asm/overlay_01_021FDA14.s"
+   ],
    "confidence": "high",
    "defined_in": "asm/unk_02023694.s",
    "mode": "thumb",
@@ -77198,6 +78222,7 @@
    ],
    "signature_guess": "void sub_02023F1C(UnkStruct_02023D44 *node, u32 frame)",
    "signature_sources": {
+    "asm/overlay_01_021FDA14.s": "void sub_02023F1C(void *billboard, fx32 frameNum)",
     "asm/unk_02023694.s": "void sub_02023F1C(UnkStruct_02023D44 *node, u32 frame)"
    },
    "struct_accesses": [
@@ -77210,7 +78235,9 @@
    ]
   },
   "sub_02023F30": {
-   "callers": [],
+   "callers": [
+    "asm/overlay_01_021FDA14.s"
+   ],
    "confidence": "high",
    "defined_in": "asm/unk_02023694.s",
    "mode": "thumb",
@@ -77219,6 +78246,7 @@
    ],
    "signature_guess": "u32 sub_02023F30(UnkStruct_02023D44 *node)",
    "signature_sources": {
+    "asm/overlay_01_021FDA14.s": "fx32 sub_02023F30(void *billboard)",
     "asm/unk_02023694.s": "u32 sub_02023F30(UnkStruct_02023D44 *node)"
    },
    "struct_accesses": [
@@ -77231,7 +78259,9 @@
    ]
   },
   "sub_02023F40": {
-   "callers": [],
+   "callers": [
+    "asm/overlay_01_021FDA14.s"
+   ],
    "confidence": "medium",
    "defined_in": "asm/unk_02023694.s",
    "mode": "thumb",
@@ -77240,6 +78270,7 @@
    ],
    "signature_guess": "void sub_02023F40(UnkStruct_02023D44 *node, u32 delta)",
    "signature_sources": {
+    "asm/overlay_01_021FDA14.s": "void sub_02023F40(void *billboard, fx32 frame)",
     "asm/unk_02023694.s": "void sub_02023F40(UnkStruct_02023D44 *node, u32 delta)"
    },
    "struct_accesses": [
@@ -77252,7 +78283,9 @@
    ]
   },
   "sub_02023F70": {
-   "callers": [],
+   "callers": [
+    "asm/overlay_01_021FDA14.s"
+   ],
    "confidence": "medium",
    "defined_in": "asm/unk_02023694.s",
    "mode": "thumb",
@@ -77261,6 +78294,7 @@
    ],
    "signature_guess": "u32 sub_02023F70(UnkStruct_02023D44 *node)",
    "signature_sources": {
+    "asm/overlay_01_021FDA14.s": "fx32 sub_02023F70(void *billboard)",
     "asm/unk_02023694.s": "u32 sub_02023F70(UnkStruct_02023D44 *node)"
    },
    "struct_accesses": [
@@ -77340,6 +78374,7 @@
   },
   "sub_02023FC0": {
    "callers": [
+    "asm/overlay_01_021FDA14.s",
     "asm/unk_02023694.s"
    ],
    "confidence": "high",
@@ -77350,6 +78385,7 @@
    ],
    "signature_guess": "void sub_02023FC0(UnkStruct_02023D44 *node)",
    "signature_sources": {
+    "asm/overlay_01_021FDA14.s": "void sub_02023FC0(void *billboard)",
     "asm/unk_02023694.s": "void sub_02023FC0(UnkStruct_02023D44 *node)"
    },
    "struct_accesses": [
@@ -80987,6 +82023,14 @@
    "known_prototype": "void sub_0205C810(PlayerAvatar *avatar, VecFx32 *position, u32 direction)",
    "signature_sources": {}
   },
+  "sub_0205F0A8": {
+   "callers": [
+    "asm/overlay_01_021FDA14.s"
+   ],
+   "header": "include/map_object.h",
+   "known_prototype": "BOOL sub_0205F0A8(LocalMapObject *object, u32 objectId, u32 mapId)",
+   "signature_sources": {}
+  },
   "sub_0205F0F8": {
    "callers": [
     "asm/overlay_01_022031C0.s"
@@ -81021,19 +82065,45 @@
   },
   "sub_0206121C": {
    "callers": [
+    "asm/overlay_01_021FDA14.s",
     "asm/overlay_01_022031C0.s"
    ],
    "confidence": "low",
+   "header": "include/unk_0205FD20.h",
+   "known_prototype": "void sub_0206121C(TaskManager *taskman, VecFx32 *a1)",
    "signature_guess": "extern int sub_0206121C(void *a0 /*FieldSystem*/, VecFx32 *a1)",
    "signature_sources": {
     "asm/overlay_01_022031C0.s": "extern int sub_0206121C(void *a0 /*FieldSystem*/, VecFx32 *a1)"
    }
   },
+  "sub_02068D18": {
+   "callers": [
+    "asm/overlay_01_021FDA14.s"
+   ],
+   "confidence": "low",
+   "signature_guess": "BOOL sub_02068D18(void *work)",
+   "signature_sources": {
+    "asm/overlay_01_021FDA14.s": "BOOL sub_02068D18(void *work)"
+   }
+  },
+  "sub_02068D90": {
+   "callers": [
+    "asm/overlay_01_021FDA14.s"
+   ],
+   "confidence": "low",
+   "signature_guess": "u32 sub_02068D90(void *work)",
+   "signature_sources": {
+    "asm/overlay_01_021FDA14.s": "u32 sub_02068D90(void *work)"
+   }
+  },
   "sub_02068D98": {
    "callers": [
+    "asm/overlay_01_021FDA14.s",
     "asm/overlay_01_022031C0.s"
    ],
    "confidence": "low",
+   "header": "include/unk_020689C8.h",
+   "known_prototype": "UnkOv01_021FFFCC *sub_02068D98(void *a0)",
    "signature_guess": "extern UnkOv01_022031C0_Data *sub_02068D98(void *a0)",
    "signature_sources": {
     "asm/overlay_01_022031C0.s": "extern UnkOv01_022031C0_Data *sub_02068D98(void *a0)"
@@ -81041,16 +82111,19 @@
   },
   "sub_02068DA8": {
    "callers": [
+    "asm/overlay_01_021FDA14.s",
     "asm/overlay_01_022031C0.s"
    ],
    "confidence": "low",
-   "signature_guess": "extern void sub_02068DA8(void *a0, VecFx32 *a1)",
+   "signature_guess": "void sub_02068DA8(void *work, VecFx32 *src)",
    "signature_sources": {
+    "asm/overlay_01_021FDA14.s": "void sub_02068DA8(void *work, VecFx32 *src)",
     "asm/overlay_01_022031C0.s": "extern void sub_02068DA8(void *a0, VecFx32 *a1)"
    }
   },
   "sub_02068DB8": {
    "callers": [
+    "asm/overlay_01_021FDA14.s",
     "asm/overlay_01_022031C0.s"
    ],
    "header": "include/unk_020689C8.h (siblings use a local extern instead)",

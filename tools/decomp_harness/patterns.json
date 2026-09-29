@@ -1763,6 +1763,12 @@
       "category": "tooling",
       "title": "Before hand-decompiling a big shared-engine file, check pret/pokeplatinum for the same module (gh search code) and port it",
       "body": "HGSS and Platinum share most engine code and the same MWCC build, so a decompiled Platinum TU usually compiles byte-identical once renamed. Recipe: (1) grep the frozen HG header / asm labels for descriptive names (e.g. BillboardLists_Create in include/unk_02023694.h); (2) `gh search code <Name> --repo pret/pokeplatinum`; (3) fetch with `gh api repos/pret/pokeplatinum/contents/<path> -H \"Accept: application/vnd.github.raw\"`; (4) compare function order against the asm (thumb_func_start list) - map Platinum names to HG sub_ addresses so objdiff can pair symbols; drop Platinum-only functions and write HG-only ones from asm; (5) swap in HG equivalents for Platinum helper modules (e.g. BillboardListVRAMTransfer_* -> sub_0202068C family), fix static-ness from the .inc .public list, and define any SDK inlines missing from HG lib/include locally (here NNS_G3dGetMat/GetTexDataByIdx/GetPlttDataByIdx/GetMatDataByIdx + NNSG3dResMat*/Dict*Data structs). unk_02023694 (68 funcs, billboard.c) matched 68/68 on the FIRST compile this way."
+    },
+    {
+      "id": "shared-store-after-two-call-arms-use-ternary",
+      "category": "codegen",
+      "title": "Two if/else arms that each call f() and store to the same field: retail shares ONE store after the arms -> write a ternary",
+      "body": "If retail shows `cmp; bhi A; mov r1,#2; bl f; b J; A: mov r1,#0xd; bl f; J: str r0,[sp,#0]` (single store at the join), `if (c) x.f = f(a,2); else x.f = f(a,0xD);` emits a store in each arm. Writing `x.f = c ? f(a, 2) : f(a, 0xD);` gives the joined store. Seen overlay_01_021FDA14 ov01_021FE190 (res.modelRes = ov01_021F18F0 by type <= 2)."
     }
   ]
 }

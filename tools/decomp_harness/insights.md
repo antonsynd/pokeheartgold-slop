@@ -669,6 +669,10 @@ Retail loop shape: `ldr rMax,[s,#max]; movs rI,#0; ldr rP,[s,#base]; cmp rMax,#0
 
 Retail `lsls r5,idx,#2; adds r4,val,#1; movs r0,#15; adds r1,r0,#0; lsls r1,r5; subs r0,#16; ldr r3,[flags]; eors r0,r1; lsls r4,r5; ands r0,r3; orrs r0,r4; str` (no mvn) matched only with: `int shift = idx * 4; u32 value = (val + 1) << shift; u32 mask = 0xF << shift; *flags = (*flags & (mask ^ 0xFFFFFFFF)) | value;`. `~(0xF << s)` gives mvn; `(0xFFFFFFFF ^ mask)` with mask computed inline, or val+1 not pre-shifted into its own temp, schedules differently. Seen overlay_83_02246E08 ov83_022477EC (6-variant sweep with compile_one.sh).
 
+### Two if/else arms that each call f() and store to the same field: retail shares ONE store after the arms -> write a ternary  <!-- id: shared-store-after-two-call-arms-use-ternary -->
+
+If retail shows `cmp; bhi A; mov r1,#2; bl f; b J; A: mov r1,#0xd; bl f; J: str r0,[sp,#0]` (single store at the join), `if (c) x.f = f(a,2); else x.f = f(a,0xD);` emits a store in each arm. Writing `x.f = c ? f(a, 2) : f(a, 0xD);` gives the joined store. Seen overlay_01_021FDA14 ov01_021FE190 (res.modelRes = ov01_021F18F0 by type <= 2).
+
 ## Matching Tricks
 
 ### Small source changes that move codegen  <!-- id: decl-order-tricks -->

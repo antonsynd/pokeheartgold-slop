@@ -890,6 +890,16 @@
       "attempts": 1,
       "result": "matched",
       "note": "compare-verified (HG + SS full ROM SHA1 OK). Billboard (3D sprite) list system = pokeplatinum src/billboard.c. Ported verbatim with HG symbol names (sub_ addresses so objdiff pairs), HG VRAM-transfer helpers (sub_0202068C/206C8/206E0/20738/20764 in unk_0202068C.c), GF3dRender_DrawModel, and HG-specific accessors (sub_02023EC8 re-bind, sub_02023FA0/FB0 tex/pltt key getters; no rot-matrix/GetState/GetTexture/GetRenderObj). NNS material-dict inlines/structs absent from lib/include defined locally. Frozen include/unk_02023694.h not included. 68/68 first compile."
+    },
+    {
+      "file": "asm/overlay_01_021FDA14.s",
+      "lines": 1056,
+      "functions": 23,
+      "matched_functions": 22,
+      "nonmatching": 1,
+      "attempts": 45,
+      "result": "matched",
+      "note": "compare-verified (HG + SS full ROM SHA1 OK). Map-object reflection field effects (water/puddle/ice): manager ctor/dtor, two billboard-per-mapobject reflection families (templates F88/F74, the latter with y-0x514, model 0xd for type>2 and ov01_02205870 override) and a billboard-mirror family (F9C, created from overlay_01_021F944C). 22/23 C; ov01_021FDC7C is NONMATCHING inline asm (retail hoists the FX32_HALF materialisation above the facing compare; ~35 C spellings logged). Rodata as ONE sRodata struct (3 fn-ptr templates + 2 identical fx32[6] tables) and the asm body loads ldr =sRodata+0x54 cleanly. field_system.h NOT included (it pulls overlay_01_021F1348.h whose ov01_021F1620 returns void; DE64 needs the result) -> local FieldSystem view for playerAvatar@0x40. Fixes: ternary for the shared modelRes store, void delete callback, decl-order for res/pos stack slots."
     }
   ],
   "failed": [
@@ -1309,7 +1319,7 @@
   ],
   "stats": {
     "total_attempts": 208,
-    "total_matched": 81,
+    "total_matched": 82,
     "total_failed": 31
   },
   "matched": [
@@ -1415,6 +1425,7 @@
     "asm/unk_02033AE0.s",
     "asm/overlay_80_0223A00C.s",
     "asm/overlay_83_02246E08.s",
-    "asm/unk_02023694.s"
+    "asm/unk_02023694.s",
+    "asm/overlay_01_021FDA14.s"
   ]
 }
