@@ -20298,6 +20298,2215 @@
     "tool": "asm_oracle.py"
    }
   },
+  "asm/overlay_80_0222AEF8.s": {
+   "notes": "Pure .text file: 56 thumb functions, no .rodata/.data/.bss, and no DECL_CHUNK_EX involvement. Follow the recipe of the sub_0203410C command-table family (template src/unk_02091564.c): senders are BOOL f(work[, u8|u16 val]) and call sub_02037030(cmd, buf, size) or sub_02036FD8 for 0x200 mon blobs. Recv handlers are void f(int netId, int size, void *data, Ctx *ctx). Record getters are void *f(int netId, Ctx *ctx, int size) with GF_ASSERT(size <= 0x200). The file has four facility blocks in order. Tower, cmds 0x22-0x26, AEF8-B0E8, counter 0xd90. Factory, cmds 0x16-0x1c, B108-B52C, counter 0x702. Castle(?), cmds 0x2a-0x30, B5C8-BA5C, counter 0xa1a. Arcade, cmds 0x41-0x46, BA7C-BDD4, counter 0xa7c. Define local structs per facility, or use raw (u8*) offsets. Only the Arcade has an existing typed struct (ArcadeContext). A new header include/frontier/overlay_80_0222AEF8.h needs to expose just the sender functions, because the dispatchers are still asm. HEAP_ID 0xb = HEAP_ID_FIELD2. GetMonData attr 0x47 = MON_DATA_ATK_IV, attr 0 = MON_DATA_PERSONALITY.",
+   "oracle": {
+    "functions": {
+     "ov80_0222AEF8": {
+      "widths": [
+       {
+        "base": "r3",
+        "confidence": "high",
+        "evidence": "L13: ldrb r1, [r3, r0]",
+        "kind": "load-width",
+        "offset": "(r0)",
+        "verdict": "u8"
+       },
+       {
+        "base": "r3",
+        "confidence": "high",
+        "evidence": "L15: strb r1, [r3, r0]",
+        "kind": "store-width",
+        "offset": "(r0)",
+        "verdict": "u8"
+       }
+      ]
+     },
+     "ov80_0222AF3C": {
+      "widths": [
+       {
+        "base": "r3",
+        "confidence": "high",
+        "evidence": "L52: ldrb r1, [r3, r0]",
+        "kind": "load-width",
+        "offset": "(r0)",
+        "verdict": "u8"
+       },
+       {
+        "base": "r3",
+        "confidence": "high",
+        "evidence": "L54: strb r1, [r3, r0]",
+        "kind": "store-width",
+        "offset": "(r0)",
+        "verdict": "u8"
+       }
+      ]
+     },
+     "ov80_0222AF54": {
+      "signedness": [
+       {
+        "branch": "blt",
+        "confidence": "high",
+        "evidence": "L74: cmp r3, #0x14  =>  L75: blt _0222AF5E",
+        "register": "r3",
+        "verdict": "signed"
+       }
+      ],
+      "widths": [
+       {
+        "base": "r0",
+        "confidence": "high",
+        "evidence": "L69: ldrh r2, [r0, #0x18]",
+        "kind": "load-width",
+        "offset": "#0x18",
+        "verdict": "u16"
+       },
+       {
+        "base": "r4",
+        "confidence": "high",
+        "evidence": "L72: strh r2, [r4]",
+        "kind": "store-width",
+        "offset": "#0",
+        "verdict": "u16"
+       }
+      ]
+     },
+     "ov80_0222AF84": {
+      "signedness": [
+       {
+        "branch": "blt",
+        "confidence": "high",
+        "evidence": "L114: cmp r1, #0x14  =>  L115: blt _0222AFA8",
+        "register": "r1",
+        "verdict": "signed"
+       }
+      ],
+      "widths": [
+       {
+        "base": "r4",
+        "confidence": "high",
+        "evidence": "L97: ldrb r1, [r4, r0]",
+        "kind": "load-width",
+        "offset": "(r0)",
+        "verdict": "u8"
+       },
+       {
+        "base": "r4",
+        "confidence": "high",
+        "evidence": "L100: strb r1, [r4, r0]",
+        "kind": "store-width",
+        "offset": "(r0)",
+        "verdict": "u8"
+       },
+       {
+        "base": "r5",
+        "confidence": "high",
+        "evidence": "L109: ldrh r0, [r5]",
+        "kind": "load-width",
+        "offset": "#0",
+        "verdict": "u16"
+       },
+       {
+        "base": "r4",
+        "confidence": "high",
+        "evidence": "L112: strh r0, [r4, #0x18]",
+        "kind": "store-width",
+        "offset": "#0x18",
+        "verdict": "u16"
+       }
+      ]
+     },
+     "ov80_0222AFB8": {
+      "signedness": [
+       {
+        "branch": "blt",
+        "confidence": "high",
+        "evidence": "L135: cmp r4, #0x14  =>  L136: blt _0222AFC6",
+        "register": "r4",
+        "verdict": "signed"
+       }
+      ],
+      "widths": [
+       {
+        "base": "r0",
+        "confidence": "high",
+        "evidence": "L130: ldrh r3, [r0, r2]",
+        "kind": "load-width",
+        "offset": "(r2)",
+        "verdict": "u16"
+       },
+       {
+        "base": "r5",
+        "confidence": "high",
+        "evidence": "L133: strh r3, [r5]",
+        "kind": "store-width",
+        "offset": "#0",
+        "verdict": "u16"
+       }
+      ]
+     },
+     "ov80_0222AFEC": {
+      "signedness": [
+       {
+        "branch": "blt",
+        "confidence": "high",
+        "evidence": "L177: cmp r2, #0x14  =>  L178: blt _0222B014",
+        "register": "r2",
+        "verdict": "signed"
+       }
+      ],
+      "widths": [
+       {
+        "base": "r4",
+        "confidence": "high",
+        "evidence": "L158: ldrb r1, [r4, r0]",
+        "kind": "load-width",
+        "offset": "(r0)",
+        "verdict": "u8"
+       },
+       {
+        "base": "r4",
+        "confidence": "high",
+        "evidence": "L161: strb r1, [r4, r0]",
+        "kind": "store-width",
+        "offset": "(r0)",
+        "verdict": "u8"
+       },
+       {
+        "base": "r5",
+        "confidence": "high",
+        "evidence": "L172: ldrh r1, [r5]",
+        "kind": "load-width",
+        "offset": "#0",
+        "verdict": "u16"
+       },
+       {
+        "base": "r4",
+        "confidence": "high",
+        "evidence": "L175: strh r1, [r4, r0]",
+        "kind": "store-width",
+        "offset": "(r0)",
+        "verdict": "u16"
+       }
+      ]
+     },
+     "ov80_0222B024": {
+      "widths": [
+       {
+        "base": "r3",
+        "confidence": "high",
+        "evidence": "L188: strh r1, [r3, r2]",
+        "kind": "store-width",
+        "offset": "(r2)",
+        "verdict": "u16"
+       }
+      ]
+     },
+     "ov80_0222B048": {
+      "widths": [
+       {
+        "base": "r4",
+        "confidence": "high",
+        "evidence": "L211: ldrb r1, [r4, r0]",
+        "kind": "load-width",
+        "offset": "(r0)",
+        "verdict": "u8"
+       },
+       {
+        "base": "r4",
+        "confidence": "high",
+        "evidence": "L214: strb r1, [r4, r0]",
+        "kind": "store-width",
+        "offset": "(r0)",
+        "verdict": "u8"
+       },
+       {
+        "base": "r6",
+        "confidence": "high",
+        "evidence": "L218: ldrh r1, [r6]",
+        "kind": "load-width",
+        "offset": "#0",
+        "verdict": "u16"
+       }
+      ]
+     },
+     "ov80_0222B070": {
+      "widths": [
+       {
+        "base": "r5",
+        "confidence": "high",
+        "evidence": "L238: ldrb r1, [r5, r1]",
+        "kind": "load-width",
+        "offset": "(r1)",
+        "verdict": "u8"
+       }
+      ]
+     },
+     "ov80_0222B0B8": {
+      "widths": [
+       {
+        "base": "r4",
+        "confidence": "high",
+        "evidence": "L269: ldrb r1, [r4, r0]",
+        "kind": "load-width",
+        "offset": "(r0)",
+        "verdict": "u8"
+       },
+       {
+        "base": "r4",
+        "confidence": "high",
+        "evidence": "L272: strb r1, [r4, r0]",
+        "kind": "store-width",
+        "offset": "(r0)",
+        "verdict": "u8"
+       }
+      ]
+     },
+     "ov80_0222B0E8": {
+      "signedness": [
+       {
+        "branch": "ble",
+        "confidence": "high",
+        "evidence": "L295: cmp r2, r0  =>  L296: ble _0222B0FA",
+        "register": "r2",
+        "verdict": "signed"
+       }
+      ]
+     },
+     "ov80_0222B108": {
+      "widths": [
+       {
+        "base": "r5",
+        "confidence": "high",
+        "evidence": "L317: ldrh r0, [r5, #8]",
+        "kind": "load-width",
+        "offset": "#8",
+        "verdict": "u16"
+       },
+       {
+        "base": "r4",
+        "confidence": "high",
+        "evidence": "L320: strh r0, [r4, #2]",
+        "kind": "store-width",
+        "offset": "#2",
+        "verdict": "u16"
+       },
+       {
+        "base": "r5",
+        "confidence": "high",
+        "evidence": "L321: ldrh r0, [r5, #0xc]",
+        "kind": "load-width",
+        "offset": "#0xc",
+        "verdict": "u16"
+       },
+       {
+        "base": "r4",
+        "confidence": "high",
+        "evidence": "L322: strh r0, [r4, #4]",
+        "kind": "store-width",
+        "offset": "#4",
+        "verdict": "u16"
+       },
+       {
+        "base": "r5",
+        "confidence": "high",
+        "evidence": "L323: ldrh r0, [r5, #0xe]",
+        "kind": "load-width",
+        "offset": "#0xe",
+        "verdict": "u16"
+       },
+       {
+        "base": "r4",
+        "confidence": "high",
+        "evidence": "L324: strh r0, [r4, #6]",
+        "kind": "store-width",
+        "offset": "#6",
+        "verdict": "u16"
+       }
+      ]
+     },
+     "ov80_0222B140": {
+      "widths": [
+       {
+        "base": "r4",
+        "confidence": "high",
+        "evidence": "L344: ldrb r1, [r4, r0]",
+        "kind": "load-width",
+        "offset": "(r0)",
+        "verdict": "u8"
+       },
+       {
+        "base": "r4",
+        "confidence": "high",
+        "evidence": "L347: strb r1, [r4, r0]",
+        "kind": "store-width",
+        "offset": "(r0)",
+        "verdict": "u8"
+       },
+       {
+        "base": "r5",
+        "confidence": "high",
+        "evidence": "L351: ldrh r1, [r5, #2]",
+        "kind": "load-width",
+        "offset": "#2",
+        "verdict": "u16"
+       },
+       {
+        "base": "r4",
+        "confidence": "high",
+        "evidence": "L354: strh r1, [r4, r0]",
+        "kind": "store-width",
+        "offset": "(r0)",
+        "verdict": "u16"
+       },
+       {
+        "base": "r5",
+        "confidence": "high",
+        "evidence": "L355: ldrh r2, [r5, #4]",
+        "kind": "load-width",
+        "offset": "#4",
+        "verdict": "u16"
+       },
+       {
+        "base": "r4",
+        "confidence": "high",
+        "evidence": "L358: strh r2, [r4, r1]",
+        "kind": "store-width",
+        "offset": "(r1)",
+        "verdict": "u16"
+       },
+       {
+        "base": "r5",
+        "confidence": "high",
+        "evidence": "L359: ldrh r1, [r5, #6]",
+        "kind": "load-width",
+        "offset": "#6",
+        "verdict": "u16"
+       }
+      ]
+     },
+     "ov80_0222B174": {
+      "signedness": [
+       {
+        "branch": "blt",
+        "confidence": "high",
+        "evidence": "L380: cmp r3, #0xe  =>  L381: blt _0222B17E",
+        "register": "r3",
+        "verdict": "signed"
+       }
+      ],
+      "widths": [
+       {
+        "base": "r0",
+        "confidence": "high",
+        "evidence": "L375: ldrh r2, [r0, #0x18]",
+        "kind": "load-width",
+        "offset": "#0x18",
+        "verdict": "u16"
+       },
+       {
+        "base": "r4",
+        "confidence": "high",
+        "evidence": "L378: strh r2, [r4]",
+        "kind": "store-width",
+        "offset": "#0",
+        "verdict": "u16"
+       }
+      ]
+     },
+     "ov80_0222B1A4": {
+      "signedness": [
+       {
+        "branch": "blt",
+        "confidence": "high",
+        "evidence": "L419: cmp r1, #0xe  =>  L420: blt _0222B1C6",
+        "register": "r1",
+        "verdict": "signed"
+       }
+      ],
+      "widths": [
+       {
+        "base": "r4",
+        "confidence": "high",
+        "evidence": "L402: ldrb r1, [r4, r0]",
+        "kind": "load-width",
+        "offset": "(r0)",
+        "verdict": "u8"
+       },
+       {
+        "base": "r4",
+        "confidence": "high",
+        "evidence": "L405: strb r1, [r4, r0]",
+        "kind": "store-width",
+        "offset": "(r0)",
+        "verdict": "u8"
+       },
+       {
+        "base": "r5",
+        "confidence": "high",
+        "evidence": "L414: ldrh r0, [r5]",
+        "kind": "load-width",
+        "offset": "#0",
+        "verdict": "u16"
+       },
+       {
+        "base": "r4",
+        "confidence": "high",
+        "evidence": "L417: strh r0, [r4, #0x18]",
+        "kind": "store-width",
+        "offset": "#0x18",
+        "verdict": "u16"
+       }
+      ]
+     },
+     "ov80_0222B1DC": {
+      "signedness": [
+       {
+        "branch": "blt",
+        "confidence": "high",
+        "evidence": "L442: cmp r4, #6  =>  L443: blt _0222B1EA",
+        "register": "r4",
+        "verdict": "signed"
+       },
+       {
+        "branch": "blt",
+        "confidence": "high",
+        "evidence": "L454: cmp r5, #6  =>  L455: blt _0222B200",
+        "register": "r5",
+        "verdict": "signed"
+       },
+       {
+        "branch": "blt",
+        "confidence": "high",
+        "evidence": "L470: cmp r3, #6  =>  L471: blt _0222B218",
+        "register": "r3",
+        "verdict": "signed"
+       }
+      ],
+      "widths": [
+       {
+        "base": "r5",
+        "confidence": "high",
+        "evidence": "L437: ldrh r3, [r5, r2]",
+        "kind": "load-width",
+        "offset": "(r2)",
+        "verdict": "u16"
+       },
+       {
+        "base": "r6",
+        "confidence": "high",
+        "evidence": "L440: strh r3, [r6]",
+        "kind": "store-width",
+        "offset": "#0",
+        "verdict": "u16"
+       },
+       {
+        "base": "r3",
+        "confidence": "high",
+        "evidence": "L450: ldrb r3, [r3, r2]",
+        "kind": "load-width",
+        "offset": "(r2)",
+        "verdict": "u8"
+       },
+       {
+        "base": "r4",
+        "confidence": "high",
+        "evidence": "L452: strh r3, [r4, #0xc]",
+        "kind": "store-width",
+        "offset": "#0xc",
+        "verdict": "u16"
+       },
+       {
+        "base": "r2",
+        "confidence": "high",
+        "evidence": "L464: strh r6, [r2]",
+        "kind": "store-width",
+        "offset": "#0",
+        "verdict": "u16"
+       },
+       {
+        "base": "r2",
+        "confidence": "high",
+        "evidence": "L468: strh r6, [r2, #0xc]",
+        "kind": "store-width",
+        "offset": "#0xc",
+        "verdict": "u16"
+       }
+      ]
+     },
+     "ov80_0222B24C": {
+      "signedness": [
+       {
+        "branch": "blt",
+        "confidence": "high",
+        "evidence": "L515: cmp r2, #6  =>  L516: blt _0222B276",
+        "register": "r2",
+        "verdict": "signed"
+       },
+       {
+        "branch": "blt",
+        "confidence": "high",
+        "evidence": "L527: cmp r6, #6  =>  L528: blt _0222B28C",
+        "register": "r6",
+        "verdict": "signed"
+       },
+       {
+        "branch": "blt",
+        "confidence": "high",
+        "evidence": "L546: cmp r1, #6  =>  L547: blt _0222B2A6",
+        "register": "r1",
+        "verdict": "signed"
+       }
+      ],
+      "widths": [
+       {
+        "base": "r4",
+        "confidence": "high",
+        "evidence": "L494: ldrb r1, [r4, r0]",
+        "kind": "load-width",
+        "offset": "(r0)",
+        "verdict": "u8"
+       },
+       {
+        "base": "r4",
+        "confidence": "high",
+        "evidence": "L497: strb r1, [r4, r0]",
+        "kind": "store-width",
+        "offset": "(r0)",
+        "verdict": "u8"
+       },
+       {
+        "base": "r3",
+        "confidence": "high",
+        "evidence": "L510: ldrh r1, [r3]",
+        "kind": "load-width",
+        "offset": "#0",
+        "verdict": "u16"
+       },
+       {
+        "base": "r6",
+        "confidence": "high",
+        "evidence": "L513: strh r1, [r6, r0]",
+        "kind": "store-width",
+        "offset": "(r0)",
+        "verdict": "u16"
+       },
+       {
+        "base": "r3",
+        "confidence": "high",
+        "evidence": "L522: ldrh r2, [r3, #0xc]",
+        "kind": "load-width",
+        "offset": "#0xc",
+        "verdict": "u16"
+       },
+       {
+        "base": "r1",
+        "confidence": "high",
+        "evidence": "L526: strb r2, [r1, r0]",
+        "kind": "store-width",
+        "offset": "(r0)",
+        "verdict": "u8"
+       },
+       {
+        "base": "r5",
+        "confidence": "high",
+        "evidence": "L536: ldrh r0, [r5]",
+        "kind": "load-width",
+        "offset": "#0",
+        "verdict": "u16"
+       },
+       {
+        "base": "r5",
+        "confidence": "high",
+        "evidence": "L539: ldrh r7, [r5, #0xc]",
+        "kind": "load-width",
+        "offset": "#0xc",
+        "verdict": "u16"
+       }
+      ]
+     },
+     "ov80_0222B2C4": {
+      "signedness": [
+       {
+        "branch": "blt",
+        "confidence": "high",
+        "evidence": "L569: cmp r4, #4  =>  L570: blt _0222B2D2",
+        "register": "r4",
+        "verdict": "signed"
+       },
+       {
+        "branch": "blt",
+        "confidence": "high",
+        "evidence": "L580: cmp r5, #4  =>  L581: blt _0222B2E6",
+        "register": "r5",
+        "verdict": "signed"
+       },
+       {
+        "branch": "blt",
+        "confidence": "high",
+        "evidence": "L597: cmp r3, #4  =>  L598: blt _0222B300",
+        "register": "r3",
+        "verdict": "signed"
+       }
+      ],
+      "widths": [
+       {
+        "base": "r5",
+        "confidence": "high",
+        "evidence": "L564: ldrh r3, [r5, r2]",
+        "kind": "load-width",
+        "offset": "(r2)",
+        "verdict": "u16"
+       },
+       {
+        "base": "r6",
+        "confidence": "high",
+        "evidence": "L567: strh r3, [r6]",
+        "kind": "store-width",
+        "offset": "#0",
+        "verdict": "u16"
+       },
+       {
+        "base": "r3",
+        "confidence": "high",
+        "evidence": "L576: ldrb r3, [r3, r2]",
+        "kind": "load-width",
+        "offset": "(r2)",
+        "verdict": "u8"
+       },
+       {
+        "base": "r4",
+        "confidence": "high",
+        "evidence": "L578: strh r3, [r4, #8]",
+        "kind": "store-width",
+        "offset": "#8",
+        "verdict": "u16"
+       },
+       {
+        "base": "r2",
+        "confidence": "high",
+        "evidence": "L591: strh r6, [r2]",
+        "kind": "store-width",
+        "offset": "#0",
+        "verdict": "u16"
+       },
+       {
+        "base": "r2",
+        "confidence": "high",
+        "evidence": "L595: strh r6, [r2, #8]",
+        "kind": "store-width",
+        "offset": "#8",
+        "verdict": "u16"
+       }
+      ]
+     },
+     "ov80_0222B334": {
+      "signedness": [
+       {
+        "branch": "blt",
+        "confidence": "high",
+        "evidence": "L641: cmp r2, #4  =>  L642: blt _0222B35C",
+        "register": "r2",
+        "verdict": "signed"
+       },
+       {
+        "branch": "blt",
+        "confidence": "high",
+        "evidence": "L652: cmp r6, #4  =>  L653: blt _0222B370",
+        "register": "r6",
+        "verdict": "signed"
+       },
+       {
+        "branch": "blt",
+        "confidence": "high",
+        "evidence": "L671: cmp r1, #4  =>  L672: blt _0222B38A",
+        "register": "r1",
+        "verdict": "signed"
+       }
+      ],
+      "widths": [
+       {
+        "base": "r4",
+        "confidence": "high",
+        "evidence": "L621: ldrb r1, [r4, r0]",
+        "kind": "load-width",
+        "offset": "(r0)",
+        "verdict": "u8"
+       },
+       {
+        "base": "r4",
+        "confidence": "high",
+        "evidence": "L624: strb r1, [r4, r0]",
+        "kind": "store-width",
+        "offset": "(r0)",
+        "verdict": "u8"
+       },
+       {
+        "base": "r3",
+        "confidence": "high",
+        "evidence": "L636: ldrh r1, [r3]",
+        "kind": "load-width",
+        "offset": "#0",
+        "verdict": "u16"
+       },
+       {
+        "base": "r6",
+        "confidence": "high",
+        "evidence": "L639: strh r1, [r6, r0]",
+        "kind": "store-width",
+        "offset": "(r0)",
+        "verdict": "u16"
+       },
+       {
+        "base": "r3",
+        "confidence": "high",
+        "evidence": "L647: ldrh r2, [r3, #8]",
+        "kind": "load-width",
+        "offset": "#8",
+        "verdict": "u16"
+       },
+       {
+        "base": "r1",
+        "confidence": "high",
+        "evidence": "L651: strb r2, [r1, r0]",
+        "kind": "store-width",
+        "offset": "(r0)",
+        "verdict": "u8"
+       },
+       {
+        "base": "r5",
+        "confidence": "high",
+        "evidence": "L661: ldrh r0, [r5]",
+        "kind": "load-width",
+        "offset": "#0",
+        "verdict": "u16"
+       },
+       {
+        "base": "r5",
+        "confidence": "high",
+        "evidence": "L664: ldrh r7, [r5, #8]",
+        "kind": "load-width",
+        "offset": "#8",
+        "verdict": "u16"
+       }
+      ]
+     },
+     "ov80_0222B3B0": {
+      "widths": [
+       {
+        "base": "r3",
+        "confidence": "high",
+        "evidence": "L686: strh r1, [r3, r2]",
+        "kind": "store-width",
+        "offset": "(r2)",
+        "verdict": "u16"
+       }
+      ]
+     },
+     "ov80_0222B3D4": {
+      "widths": [
+       {
+        "base": "r4",
+        "confidence": "high",
+        "evidence": "L708: ldrb r1, [r4, r0]",
+        "kind": "load-width",
+        "offset": "(r0)",
+        "verdict": "u8"
+       },
+       {
+        "base": "r4",
+        "confidence": "high",
+        "evidence": "L711: strb r1, [r4, r0]",
+        "kind": "store-width",
+        "offset": "(r0)",
+        "verdict": "u8"
+       },
+       {
+        "base": "r6",
+        "confidence": "high",
+        "evidence": "L715: ldrh r1, [r6]",
+        "kind": "load-width",
+        "offset": "#0",
+        "verdict": "u16"
+       }
+      ]
+     },
+     "ov80_0222B3FC": {
+      "widths": [
+       {
+        "base": "r3",
+        "confidence": "high",
+        "evidence": "L730: strh r1, [r3, r2]",
+        "kind": "store-width",
+        "offset": "(r2)",
+        "verdict": "u16"
+       }
+      ]
+     },
+     "ov80_0222B420": {
+      "widths": [
+       {
+        "base": "r4",
+        "confidence": "high",
+        "evidence": "L752: ldrb r1, [r4, r0]",
+        "kind": "load-width",
+        "offset": "(r0)",
+        "verdict": "u8"
+       },
+       {
+        "base": "r4",
+        "confidence": "high",
+        "evidence": "L755: strb r1, [r4, r0]",
+        "kind": "store-width",
+        "offset": "(r0)",
+        "verdict": "u8"
+       },
+       {
+        "base": "r6",
+        "confidence": "high",
+        "evidence": "L759: ldrh r1, [r6]",
+        "kind": "load-width",
+        "offset": "#0",
+        "verdict": "u16"
+       }
+      ]
+     },
+     "ov80_0222B448": {
+      "signedness": [
+       {
+        "branch": "ble",
+        "confidence": "high",
+        "evidence": "L784: cmp r4, #0  =>  L785: ble _0222B49A",
+        "register": "r4",
+        "verdict": "signed"
+       },
+       {
+        "branch": "blt",
+        "confidence": "high",
+        "evidence": "L807: cmp r0, r4  =>  L808: blt _0222B46C",
+        "register": "r0",
+        "verdict": "signed"
+       },
+       {
+        "branch": "ble",
+        "confidence": "high",
+        "evidence": "L811: cmp r4, #0  =>  L812: ble _0222B4B2",
+        "register": "r4",
+        "verdict": "signed"
+       },
+       {
+        "branch": "blt",
+        "confidence": "high",
+        "evidence": "L821: cmp r3, r4  =>  L822: blt _0222B4A4",
+        "register": "r3",
+        "verdict": "signed"
+       },
+       {
+        "branch": "ble",
+        "confidence": "high",
+        "evidence": "L828: cmp r4, #0  =>  L829: ble _0222B4D6",
+        "register": "r4",
+        "verdict": "signed"
+       },
+       {
+        "branch": "blt",
+        "confidence": "high",
+        "evidence": "L841: cmp r0, r4  =>  L842: blt _0222B4C8",
+        "register": "r0",
+        "verdict": "signed"
+       },
+       {
+        "branch": "ble",
+        "confidence": "high",
+        "evidence": "L847: cmp r4, #0  =>  L848: ble _0222B506",
+        "register": "r4",
+        "verdict": "signed"
+       },
+       {
+        "branch": "blt",
+        "confidence": "high",
+        "evidence": "L867: cmp r3, r4  =>  L868: blt _0222B4F0",
+        "register": "r3",
+        "verdict": "signed"
+       }
+      ],
+      "widths": [
+       {
+        "base": "r5",
+        "confidence": "high",
+        "evidence": "L779: ldrb r0, [r5, #4]",
+        "kind": "load-width",
+        "offset": "#4",
+        "verdict": "u8"
+       },
+       {
+        "base": "r7",
+        "confidence": "high",
+        "evidence": "L797: strb r0, [r7]",
+        "kind": "store-width",
+        "offset": "#0",
+        "verdict": "u8"
+       },
+       {
+        "base": "r5",
+        "confidence": "high",
+        "evidence": "L816: ldrh r1, [r5, r0]",
+        "kind": "load-width",
+        "offset": "(r0)",
+        "verdict": "u16"
+       },
+       {
+        "base": "r2",
+        "confidence": "high",
+        "evidence": "L819: strh r1, [r2]",
+        "kind": "store-width",
+        "offset": "#0",
+        "verdict": "u16"
+       },
+       {
+        "base": "r3",
+        "confidence": "high",
+        "evidence": "L836: ldrb r1, [r3]",
+        "kind": "load-width",
+        "offset": "#0",
+        "verdict": "u8"
+       },
+       {
+        "base": "r0",
+        "confidence": "high",
+        "evidence": "L864: strh r5, [r0]",
+        "kind": "store-width",
+        "offset": "#0",
+        "verdict": "u16"
+       }
+      ]
+     },
+     "ov80_0222B52C": {
+      "signedness": [
+       {
+        "branch": "ble",
+        "confidence": "high",
+        "evidence": "L906: cmp r0, #0  =>  L907: ble _0222B566",
+        "register": "r0",
+        "verdict": "signed"
+       },
+       {
+        "branch": "blt",
+        "confidence": "high",
+        "evidence": "L917: cmp r3, r0  =>  L918: blt _0222B558",
+        "register": "r3",
+        "verdict": "signed"
+       },
+       {
+        "branch": "ble",
+        "confidence": "high",
+        "evidence": "L922: cmp r0, #0  =>  L923: ble _0222B586",
+        "register": "r0",
+        "verdict": "signed"
+       },
+       {
+        "branch": "blt",
+        "confidence": "high",
+        "evidence": "L935: cmp r6, r0  =>  L936: blt _0222B578",
+        "register": "r6",
+        "verdict": "signed"
+       },
+       {
+        "branch": "ble",
+        "confidence": "high",
+        "evidence": "L940: cmp r0, #0  =>  L941: ble _0222B5B8",
+        "register": "r0",
+        "verdict": "signed"
+       },
+       {
+        "branch": "blt",
+        "confidence": "high",
+        "evidence": "L962: cmp r1, r0  =>  L963: blt _0222B59C",
+        "register": "r1",
+        "verdict": "signed"
+       }
+      ],
+      "widths": [
+       {
+        "base": "r4",
+        "confidence": "high",
+        "evidence": "L895: ldrb r1, [r4, r0]",
+        "kind": "load-width",
+        "offset": "(r0)",
+        "verdict": "u8"
+       },
+       {
+        "base": "r4",
+        "confidence": "high",
+        "evidence": "L899: strb r1, [r4, r0]",
+        "kind": "store-width",
+        "offset": "(r0)",
+        "verdict": "u8"
+       },
+       {
+        "base": "r4",
+        "confidence": "high",
+        "evidence": "L903: ldrb r0, [r4, #4]",
+        "kind": "load-width",
+        "offset": "#4",
+        "verdict": "u8"
+       },
+       {
+        "base": "r5",
+        "confidence": "high",
+        "evidence": "L912: ldrh r2, [r5]",
+        "kind": "load-width",
+        "offset": "#0",
+        "verdict": "u16"
+       },
+       {
+        "base": "r6",
+        "confidence": "high",
+        "evidence": "L915: strh r2, [r6, r1]",
+        "kind": "store-width",
+        "offset": "(r1)",
+        "verdict": "u16"
+       },
+       {
+        "base": "r2",
+        "confidence": "high",
+        "evidence": "L933: strb r3, [r2, r1]",
+        "kind": "store-width",
+        "offset": "(r1)",
+        "verdict": "u8"
+       },
+       {
+        "base": "r6",
+        "confidence": "high",
+        "evidence": "L954: ldrh r7, [r6]",
+        "kind": "load-width",
+        "offset": "#0",
+        "verdict": "u16"
+       }
+      ]
+     },
+     "ov80_0222B5C8": {
+      "widths": [
+       {
+        "base": "r5",
+        "confidence": "high",
+        "evidence": "L978: ldrh r1, [r5, #0x14]",
+        "kind": "load-width",
+        "offset": "#0x14",
+        "verdict": "u16"
+       },
+       {
+        "base": "r5",
+        "confidence": "high",
+        "evidence": "L980: strh r1, [r5, r0]",
+        "kind": "store-width",
+        "offset": "(r0)",
+        "verdict": "u16"
+       },
+       {
+        "base": "r5",
+        "confidence": "high",
+        "evidence": "L981: ldrh r1, [r5, #0x16]",
+        "kind": "load-width",
+        "offset": "#0x16",
+        "verdict": "u16"
+       },
+       {
+        "base": "r5",
+        "confidence": "high",
+        "evidence": "L987: ldrb r0, [r5, #0x10]",
+        "kind": "load-width",
+        "offset": "#0x10",
+        "verdict": "u8"
+       },
+       {
+        "base": "r5",
+        "confidence": "high",
+        "evidence": "L999: strh r0, [r5, r1]",
+        "kind": "store-width",
+        "offset": "(r1)",
+        "verdict": "u16"
+       }
+      ]
+     },
+     "ov80_0222B628": {
+      "widths": [
+       {
+        "base": "r4",
+        "confidence": "high",
+        "evidence": "L1022: ldrb r1, [r4, r0]",
+        "kind": "load-width",
+        "offset": "(r0)",
+        "verdict": "u8"
+       },
+       {
+        "base": "r4",
+        "confidence": "high",
+        "evidence": "L1025: strb r1, [r4, r0]",
+        "kind": "store-width",
+        "offset": "(r0)",
+        "verdict": "u8"
+       },
+       {
+        "base": "r5",
+        "confidence": "high",
+        "evidence": "L1029: ldrh r1, [r5, #2]",
+        "kind": "load-width",
+        "offset": "#2",
+        "verdict": "u16"
+       },
+       {
+        "base": "r4",
+        "confidence": "high",
+        "evidence": "L1031: strh r1, [r4, r0]",
+        "kind": "store-width",
+        "offset": "(r0)",
+        "verdict": "u16"
+       },
+       {
+        "base": "r5",
+        "confidence": "high",
+        "evidence": "L1032: ldrh r2, [r5, #4]",
+        "kind": "load-width",
+        "offset": "#4",
+        "verdict": "u16"
+       },
+       {
+        "base": "r4",
+        "confidence": "high",
+        "evidence": "L1035: strh r2, [r4, r1]",
+        "kind": "store-width",
+        "offset": "(r1)",
+        "verdict": "u16"
+       },
+       {
+        "base": "r5",
+        "confidence": "high",
+        "evidence": "L1036: ldrh r1, [r5, #0x16]",
+        "kind": "load-width",
+        "offset": "#0x16",
+        "verdict": "u16"
+       }
+      ]
+     },
+     "ov80_0222B65C": {
+      "signedness": [
+       {
+        "branch": "blt",
+        "confidence": "high",
+        "evidence": "L1058: cmp r2, #0xe  =>  L1059: blt _0222B668",
+        "register": "r2",
+        "verdict": "signed"
+       }
+      ],
+      "widths": [
+       {
+        "base": "r3",
+        "confidence": "high",
+        "evidence": "L1054: ldrh r1, [r3, #0x30]",
+        "kind": "load-width",
+        "offset": "#0x30",
+        "verdict": "u16"
+       },
+       {
+        "base": "r3",
+        "confidence": "high",
+        "evidence": "L1056: strh r1, [r3, r0]",
+        "kind": "store-width",
+        "offset": "(r0)",
+        "verdict": "u16"
+       }
+      ]
+     },
+     "ov80_0222B690": {
+      "signedness": [
+       {
+        "branch": "blt",
+        "confidence": "high",
+        "evidence": "L1099: cmp r1, #0xe  =>  L1100: blt _0222B6B2",
+        "register": "r1",
+        "verdict": "signed"
+       }
+      ],
+      "widths": [
+       {
+        "base": "r4",
+        "confidence": "high",
+        "evidence": "L1082: ldrb r1, [r4, r0]",
+        "kind": "load-width",
+        "offset": "(r0)",
+        "verdict": "u8"
+       },
+       {
+        "base": "r4",
+        "confidence": "high",
+        "evidence": "L1085: strb r1, [r4, r0]",
+        "kind": "store-width",
+        "offset": "(r0)",
+        "verdict": "u8"
+       },
+       {
+        "base": "r5",
+        "confidence": "high",
+        "evidence": "L1094: ldrh r0, [r5]",
+        "kind": "load-width",
+        "offset": "#0",
+        "verdict": "u16"
+       },
+       {
+        "base": "r4",
+        "confidence": "high",
+        "evidence": "L1097: strh r0, [r4, #0x30]",
+        "kind": "store-width",
+        "offset": "#0x30",
+        "verdict": "u16"
+       }
+      ]
+     },
+     "ov80_0222B6C8": {
+      "widths": [
+       {
+        "base": "r4",
+        "confidence": "high",
+        "evidence": "L1112: ldrb r1, [r4, r0]",
+        "kind": "load-width",
+        "offset": "(r0)",
+        "verdict": "u8"
+       },
+       {
+        "base": "r4",
+        "confidence": "high",
+        "evidence": "L1115: strh r1, [r4, r0]",
+        "kind": "store-width",
+        "offset": "(r0)",
+        "verdict": "u16"
+       },
+       {
+        "base": "r4",
+        "confidence": "high",
+        "evidence": "L1120: ldrb r0, [r4, r1]",
+        "kind": "load-width",
+        "offset": "(r1)",
+        "verdict": "u8"
+       },
+       {
+        "base": "r4",
+        "confidence": "high",
+        "evidence": "L1125: strb r0, [r4, r1]",
+        "kind": "store-width",
+        "offset": "(r1)",
+        "verdict": "u8"
+       },
+       {
+        "base": "r4",
+        "confidence": "high",
+        "evidence": "L1152: strh r0, [r4, r1]",
+        "kind": "store-width",
+        "offset": "(r1)",
+        "verdict": "u16"
+       }
+      ]
+     },
+     "ov80_0222B740": {
+      "widths": [
+       {
+        "base": "r4",
+        "confidence": "high",
+        "evidence": "L1176: ldrb r1, [r4, r0]",
+        "kind": "load-width",
+        "offset": "(r0)",
+        "verdict": "u8"
+       },
+       {
+        "base": "r4",
+        "confidence": "high",
+        "evidence": "L1179: strb r1, [r4, r0]",
+        "kind": "store-width",
+        "offset": "(r0)",
+        "verdict": "u8"
+       },
+       {
+        "base": "r5",
+        "confidence": "high",
+        "evidence": "L1183: ldrh r1, [r5]",
+        "kind": "load-width",
+        "offset": "#0",
+        "verdict": "u16"
+       },
+       {
+        "base": "r4",
+        "confidence": "high",
+        "evidence": "L1190: ldrb r0, [r4, r1]",
+        "kind": "load-width",
+        "offset": "(r1)",
+        "verdict": "u8"
+       },
+       {
+        "base": "r4",
+        "confidence": "high",
+        "evidence": "L1205: strb r0, [r4, r1]",
+        "kind": "store-width",
+        "offset": "(r1)",
+        "verdict": "u8"
+       },
+       {
+        "base": "r0",
+        "confidence": "high",
+        "evidence": "L1219: strh r2, [r0]",
+        "kind": "store-width",
+        "offset": "#0",
+        "verdict": "u16"
+       },
+       {
+        "base": "r5",
+        "confidence": "high",
+        "evidence": "L1222: ldrh r1, [r5, #2]",
+        "kind": "load-width",
+        "offset": "#2",
+        "verdict": "u16"
+       }
+      ]
+     },
+     "ov80_0222B7E4": {
+      "signedness": [
+       {
+        "branch": "blt",
+        "confidence": "high",
+        "evidence": "L1270: cmp r4, #4  =>  L1271: blt _0222B7F4",
+        "register": "r4",
+        "verdict": "signed"
+       },
+       {
+        "branch": "blt",
+        "confidence": "high",
+        "evidence": "L1284: cmp r5, #4  =>  L1285: blt _0222B80C",
+        "register": "r5",
+        "verdict": "signed"
+       },
+       {
+        "branch": "blt",
+        "confidence": "high",
+        "evidence": "L1307: cmp r2, #4  =>  L1308: blt _0222B82E",
+        "register": "r2",
+        "verdict": "signed"
+       }
+      ],
+      "widths": [
+       {
+        "base": "r5",
+        "confidence": "high",
+        "evidence": "L1266: ldrh r2, [r5, r0]",
+        "kind": "load-width",
+        "offset": "(r0)",
+        "verdict": "u16"
+       },
+       {
+        "base": "r5",
+        "confidence": "high",
+        "evidence": "L1268: strh r2, [r5, r1]",
+        "kind": "store-width",
+        "offset": "(r1)",
+        "verdict": "u16"
+       },
+       {
+        "base": "r2",
+        "confidence": "high",
+        "evidence": "L1280: ldrb r2, [r2, r0]",
+        "kind": "load-width",
+        "offset": "(r0)",
+        "verdict": "u8"
+       },
+       {
+        "base": "r4",
+        "confidence": "high",
+        "evidence": "L1282: strh r2, [r4, r1]",
+        "kind": "store-width",
+        "offset": "(r1)",
+        "verdict": "u16"
+       },
+       {
+        "base": "r1",
+        "confidence": "high",
+        "evidence": "L1301: strh r4, [r1, r7]",
+        "kind": "store-width",
+        "offset": "(r7)",
+        "verdict": "u16"
+       },
+       {
+        "base": "r1",
+        "confidence": "high",
+        "evidence": "L1305: strh r4, [r1, r6]",
+        "kind": "store-width",
+        "offset": "(r6)",
+        "verdict": "u16"
+       }
+      ]
+     },
+     "ov80_0222B860": {
+      "signedness": [
+       {
+        "branch": "blt",
+        "confidence": "high",
+        "evidence": "L1351: cmp r2, #4  =>  L1352: blt _0222B88A",
+        "register": "r2",
+        "verdict": "signed"
+       },
+       {
+        "branch": "blt",
+        "confidence": "high",
+        "evidence": "L1363: cmp r6, #4  =>  L1364: blt _0222B8A0",
+        "register": "r6",
+        "verdict": "signed"
+       },
+       {
+        "branch": "blt",
+        "confidence": "high",
+        "evidence": "L1382: cmp r1, #4  =>  L1383: blt _0222B8BA",
+        "register": "r1",
+        "verdict": "signed"
+       }
+      ],
+      "widths": [
+       {
+        "base": "r4",
+        "confidence": "high",
+        "evidence": "L1330: ldrb r1, [r4, r0]",
+        "kind": "load-width",
+        "offset": "(r0)",
+        "verdict": "u8"
+       },
+       {
+        "base": "r4",
+        "confidence": "high",
+        "evidence": "L1333: strb r1, [r4, r0]",
+        "kind": "store-width",
+        "offset": "(r0)",
+        "verdict": "u8"
+       },
+       {
+        "base": "r3",
+        "confidence": "high",
+        "evidence": "L1346: ldrh r1, [r3]",
+        "kind": "load-width",
+        "offset": "#0",
+        "verdict": "u16"
+       },
+       {
+        "base": "r6",
+        "confidence": "high",
+        "evidence": "L1349: strh r1, [r6, r0]",
+        "kind": "store-width",
+        "offset": "(r0)",
+        "verdict": "u16"
+       },
+       {
+        "base": "r3",
+        "confidence": "high",
+        "evidence": "L1358: ldrh r2, [r3, #8]",
+        "kind": "load-width",
+        "offset": "#8",
+        "verdict": "u16"
+       },
+       {
+        "base": "r1",
+        "confidence": "high",
+        "evidence": "L1362: strb r2, [r1, r0]",
+        "kind": "store-width",
+        "offset": "(r0)",
+        "verdict": "u8"
+       },
+       {
+        "base": "r5",
+        "confidence": "high",
+        "evidence": "L1372: ldrh r0, [r5]",
+        "kind": "load-width",
+        "offset": "#0",
+        "verdict": "u16"
+       },
+       {
+        "base": "r5",
+        "confidence": "high",
+        "evidence": "L1375: ldrh r7, [r5, #8]",
+        "kind": "load-width",
+        "offset": "#8",
+        "verdict": "u16"
+       }
+      ]
+     },
+     "ov80_0222B8D8": {
+      "widths": [
+       {
+        "base": "r3",
+        "confidence": "high",
+        "evidence": "L1396: strh r1, [r3, r2]",
+        "kind": "store-width",
+        "offset": "(r2)",
+        "verdict": "u16"
+       }
+      ]
+     },
+     "ov80_0222B8F8": {
+      "widths": [
+       {
+        "base": "r4",
+        "confidence": "high",
+        "evidence": "L1416: ldrb r1, [r4, r0]",
+        "kind": "load-width",
+        "offset": "(r0)",
+        "verdict": "u8"
+       },
+       {
+        "base": "r4",
+        "confidence": "high",
+        "evidence": "L1419: strb r1, [r4, r0]",
+        "kind": "store-width",
+        "offset": "(r0)",
+        "verdict": "u8"
+       },
+       {
+        "base": "r6",
+        "confidence": "high",
+        "evidence": "L1423: ldrh r1, [r6]",
+        "kind": "load-width",
+        "offset": "#0",
+        "verdict": "u16"
+       }
+      ]
+     },
+     "ov80_0222B920": {
+      "widths": [
+       {
+        "base": "r3",
+        "confidence": "high",
+        "evidence": "L1439: strh r1, [r3, r2]",
+        "kind": "store-width",
+        "offset": "(r2)",
+        "verdict": "u16"
+       }
+      ]
+     },
+     "ov80_0222B940": {
+      "widths": [
+       {
+        "base": "r4",
+        "confidence": "high",
+        "evidence": "L1459: ldrb r1, [r4, r0]",
+        "kind": "load-width",
+        "offset": "(r0)",
+        "verdict": "u8"
+       },
+       {
+        "base": "r4",
+        "confidence": "high",
+        "evidence": "L1462: strb r1, [r4, r0]",
+        "kind": "store-width",
+        "offset": "(r0)",
+        "verdict": "u8"
+       },
+       {
+        "base": "r6",
+        "confidence": "high",
+        "evidence": "L1466: ldrh r1, [r6]",
+        "kind": "load-width",
+        "offset": "#0",
+        "verdict": "u16"
+       }
+      ]
+     },
+     "ov80_0222B968": {
+      "signedness": [
+       {
+        "branch": "ble",
+        "confidence": "high",
+        "evidence": "L1489: cmp r0, #0  =>  L1490: ble _0222B9AC",
+        "register": "r0",
+        "verdict": "signed"
+       },
+       {
+        "branch": "blt",
+        "confidence": "high",
+        "evidence": "L1507: cmp r4, r0  =>  L1508: blt _0222B990",
+        "register": "r4",
+        "verdict": "signed"
+       }
+      ],
+      "widths": [
+       {
+        "base": "r7",
+        "confidence": "high",
+        "evidence": "L1481: ldrb r0, [r7, #0x10]",
+        "kind": "load-width",
+        "offset": "#0x10",
+        "verdict": "u8"
+       }
+      ]
+     },
+     "ov80_0222B9CC": {
+      "signedness": [
+       {
+        "branch": "ble",
+        "confidence": "high",
+        "evidence": "L1556: cmp r0, #0  =>  L1557: ble _0222BA2E",
+        "register": "r0",
+        "verdict": "signed"
+       },
+       {
+        "branch": "blt",
+        "confidence": "high",
+        "evidence": "L1572: cmp r7, r0  =>  L1573: blt _0222BA0E",
+        "register": "r7",
+        "verdict": "signed"
+       }
+      ],
+      "widths": [
+       {
+        "base": "r0",
+        "confidence": "high",
+        "evidence": "L1535: ldrb r0, [r0, r1]",
+        "kind": "load-width",
+        "offset": "(r1)",
+        "verdict": "u8"
+       },
+       {
+        "base": "r0",
+        "confidence": "high",
+        "evidence": "L1540: strb r2, [r0, r1]",
+        "kind": "store-width",
+        "offset": "(r1)",
+        "verdict": "u8"
+       },
+       {
+        "base": "r0",
+        "confidence": "high",
+        "evidence": "L1546: ldrb r0, [r0, #0x10]",
+        "kind": "load-width",
+        "offset": "#0x10",
+        "verdict": "u8"
+       }
+      ]
+     },
+     "ov80_0222BA5C": {
+      "signedness": [
+       {
+        "branch": "ble",
+        "confidence": "high",
+        "evidence": "L1604: cmp r2, r0  =>  L1605: ble _0222BA6E",
+        "register": "r2",
+        "verdict": "signed"
+       }
+      ]
+     },
+     "ov80_0222BA7C": {
+      "widths": [
+       {
+        "base": "r4",
+        "confidence": "high",
+        "evidence": "L1623: ldrh r0, [r4, #0x18]",
+        "kind": "load-width",
+        "offset": "#0x18",
+        "verdict": "u16"
+       },
+       {
+        "base": "r4",
+        "confidence": "high",
+        "evidence": "L1625: strh r0, [r4, r1]",
+        "kind": "store-width",
+        "offset": "(r1)",
+        "verdict": "u16"
+       },
+       {
+        "base": "r4",
+        "confidence": "high",
+        "evidence": "L1627: ldrh r2, [r4, #0x1a]",
+        "kind": "load-width",
+        "offset": "#0x1a",
+        "verdict": "u16"
+       },
+       {
+        "base": "r4",
+        "confidence": "high",
+        "evidence": "L1630: strh r2, [r4, r0]",
+        "kind": "store-width",
+        "offset": "(r0)",
+        "verdict": "u16"
+       }
+      ]
+     },
+     "ov80_0222BAB0": {
+      "widths": [
+       {
+        "base": "r4",
+        "confidence": "high",
+        "evidence": "L1651: ldrb r1, [r4, r0]",
+        "kind": "load-width",
+        "offset": "(r0)",
+        "verdict": "u8"
+       },
+       {
+        "base": "r4",
+        "confidence": "high",
+        "evidence": "L1654: strb r1, [r4, r0]",
+        "kind": "store-width",
+        "offset": "(r0)",
+        "verdict": "u8"
+       },
+       {
+        "base": "r5",
+        "confidence": "high",
+        "evidence": "L1658: ldrh r1, [r5, #2]",
+        "kind": "load-width",
+        "offset": "#2",
+        "verdict": "u16"
+       },
+       {
+        "base": "r4",
+        "confidence": "high",
+        "evidence": "L1660: strh r1, [r4, r0]",
+        "kind": "store-width",
+        "offset": "(r0)",
+        "verdict": "u16"
+       },
+       {
+        "base": "r5",
+        "confidence": "high",
+        "evidence": "L1661: ldrh r1, [r5, #4]",
+        "kind": "load-width",
+        "offset": "#4",
+        "verdict": "u16"
+       }
+      ]
+     },
+     "ov80_0222BAE0": {
+      "signedness": [
+       {
+        "branch": "blt",
+        "confidence": "high",
+        "evidence": "L1685: cmp r3, #0xe  =>  L1686: blt _0222BAEA",
+        "register": "r3",
+        "verdict": "signed"
+       }
+      ],
+      "widths": [
+       {
+        "base": "r0",
+        "confidence": "high",
+        "evidence": "L1681: ldrh r0, [r0]",
+        "kind": "load-width",
+        "offset": "#0",
+        "verdict": "u16"
+       },
+       {
+        "base": "r4",
+        "confidence": "high",
+        "evidence": "L1683: strh r0, [r4, r2]",
+        "kind": "store-width",
+        "offset": "(r2)",
+        "verdict": "u16"
+       }
+      ]
+     },
+     "ov80_0222BB18": {
+      "signedness": [
+       {
+        "branch": "blt",
+        "confidence": "high",
+        "evidence": "L1728: cmp r2, #0xe  =>  L1729: blt _0222BB3A",
+        "register": "r2",
+        "verdict": "signed"
+       }
+      ],
+      "widths": [
+       {
+        "base": "r4",
+        "confidence": "high",
+        "evidence": "L1709: ldrb r1, [r4, r0]",
+        "kind": "load-width",
+        "offset": "(r0)",
+        "verdict": "u8"
+       },
+       {
+        "base": "r4",
+        "confidence": "high",
+        "evidence": "L1712: strb r1, [r4, r0]",
+        "kind": "store-width",
+        "offset": "(r0)",
+        "verdict": "u8"
+       },
+       {
+        "base": "r5",
+        "confidence": "high",
+        "evidence": "L1721: ldrh r1, [r5]",
+        "kind": "load-width",
+        "offset": "#0",
+        "verdict": "u16"
+       },
+       {
+        "base": "r0",
+        "confidence": "high",
+        "evidence": "L1725: strh r1, [r0]",
+        "kind": "store-width",
+        "offset": "#0",
+        "verdict": "u16"
+       }
+      ]
+     },
+     "ov80_0222BB54": {
+      "signedness": [
+       {
+        "branch": "blt",
+        "confidence": "high",
+        "evidence": "L1750: cmp r4, #4  =>  L1751: blt _0222BB62",
+        "register": "r4",
+        "verdict": "signed"
+       },
+       {
+        "branch": "blt",
+        "confidence": "high",
+        "evidence": "L1763: cmp r5, #4  =>  L1764: blt _0222BB78",
+        "register": "r5",
+        "verdict": "signed"
+       },
+       {
+        "branch": "blt",
+        "confidence": "high",
+        "evidence": "L1785: cmp r2, #4  =>  L1786: blt _0222BB98",
+        "register": "r2",
+        "verdict": "signed"
+       }
+      ],
+      "widths": [
+       {
+        "base": "r5",
+        "confidence": "high",
+        "evidence": "L1746: ldrh r2, [r5, r0]",
+        "kind": "load-width",
+        "offset": "(r0)",
+        "verdict": "u16"
+       },
+       {
+        "base": "r5",
+        "confidence": "high",
+        "evidence": "L1748: strh r2, [r5, r1]",
+        "kind": "store-width",
+        "offset": "(r1)",
+        "verdict": "u16"
+       },
+       {
+        "base": "r2",
+        "confidence": "high",
+        "evidence": "L1759: ldrb r2, [r2, r0]",
+        "kind": "load-width",
+        "offset": "(r0)",
+        "verdict": "u8"
+       },
+       {
+        "base": "r4",
+        "confidence": "high",
+        "evidence": "L1761: strh r2, [r4, r1]",
+        "kind": "store-width",
+        "offset": "(r1)",
+        "verdict": "u16"
+       },
+       {
+        "base": "r1",
+        "confidence": "high",
+        "evidence": "L1779: strh r4, [r1, r7]",
+        "kind": "store-width",
+        "offset": "(r7)",
+        "verdict": "u16"
+       },
+       {
+        "base": "r1",
+        "confidence": "high",
+        "evidence": "L1783: strh r4, [r1, r6]",
+        "kind": "store-width",
+        "offset": "(r6)",
+        "verdict": "u16"
+       }
+      ]
+     },
+     "ov80_0222BBD0": {
+      "signedness": [
+       {
+        "branch": "blt",
+        "confidence": "high",
+        "evidence": "L1831: cmp r2, #4  =>  L1832: blt _0222BBFA",
+        "register": "r2",
+        "verdict": "signed"
+       },
+       {
+        "branch": "blt",
+        "confidence": "high",
+        "evidence": "L1843: cmp r6, #4  =>  L1844: blt _0222BC10",
+        "register": "r6",
+        "verdict": "signed"
+       },
+       {
+        "branch": "blt",
+        "confidence": "high",
+        "evidence": "L1862: cmp r1, #4  =>  L1863: blt _0222BC2A",
+        "register": "r1",
+        "verdict": "signed"
+       }
+      ],
+      "widths": [
+       {
+        "base": "r4",
+        "confidence": "high",
+        "evidence": "L1810: ldrb r1, [r4, r0]",
+        "kind": "load-width",
+        "offset": "(r0)",
+        "verdict": "u8"
+       },
+       {
+        "base": "r4",
+        "confidence": "high",
+        "evidence": "L1813: strb r1, [r4, r0]",
+        "kind": "store-width",
+        "offset": "(r0)",
+        "verdict": "u8"
+       },
+       {
+        "base": "r3",
+        "confidence": "high",
+        "evidence": "L1826: ldrh r1, [r3]",
+        "kind": "load-width",
+        "offset": "#0",
+        "verdict": "u16"
+       },
+       {
+        "base": "r6",
+        "confidence": "high",
+        "evidence": "L1829: strh r1, [r6, r0]",
+        "kind": "store-width",
+        "offset": "(r0)",
+        "verdict": "u16"
+       },
+       {
+        "base": "r3",
+        "confidence": "high",
+        "evidence": "L1838: ldrh r2, [r3, #8]",
+        "kind": "load-width",
+        "offset": "#8",
+        "verdict": "u16"
+       },
+       {
+        "base": "r1",
+        "confidence": "high",
+        "evidence": "L1842: strb r2, [r1, r0]",
+        "kind": "store-width",
+        "offset": "(r0)",
+        "verdict": "u8"
+       },
+       {
+        "base": "r5",
+        "confidence": "high",
+        "evidence": "L1852: ldrh r0, [r5]",
+        "kind": "load-width",
+        "offset": "#0",
+        "verdict": "u16"
+       },
+       {
+        "base": "r5",
+        "confidence": "high",
+        "evidence": "L1855: ldrh r7, [r5, #8]",
+        "kind": "load-width",
+        "offset": "#8",
+        "verdict": "u16"
+       }
+      ]
+     },
+     "ov80_0222BC48": {
+      "widths": [
+       {
+        "base": "r3",
+        "confidence": "high",
+        "evidence": "L1875: strh r1, [r3, r2]",
+        "kind": "store-width",
+        "offset": "(r2)",
+        "verdict": "u16"
+       }
+      ]
+     },
+     "ov80_0222BC6C": {
+      "widths": [
+       {
+        "base": "r4",
+        "confidence": "high",
+        "evidence": "L1897: ldrb r1, [r4, r0]",
+        "kind": "load-width",
+        "offset": "(r0)",
+        "verdict": "u8"
+       },
+       {
+        "base": "r4",
+        "confidence": "high",
+        "evidence": "L1900: strb r1, [r4, r0]",
+        "kind": "store-width",
+        "offset": "(r0)",
+        "verdict": "u8"
+       },
+       {
+        "base": "r6",
+        "confidence": "high",
+        "evidence": "L1904: ldrh r1, [r6]",
+        "kind": "load-width",
+        "offset": "#0",
+        "verdict": "u16"
+       }
+      ]
+     },
+     "ov80_0222BC94": {
+      "widths": [
+       {
+        "base": "r3",
+        "confidence": "high",
+        "evidence": "L1919: strh r1, [r3, r2]",
+        "kind": "store-width",
+        "offset": "(r2)",
+        "verdict": "u16"
+       }
+      ]
+     },
+     "ov80_0222BCB8": {
+      "widths": [
+       {
+        "base": "r4",
+        "confidence": "high",
+        "evidence": "L1941: ldrb r1, [r4, r0]",
+        "kind": "load-width",
+        "offset": "(r0)",
+        "verdict": "u8"
+       },
+       {
+        "base": "r4",
+        "confidence": "high",
+        "evidence": "L1944: strb r1, [r4, r0]",
+        "kind": "store-width",
+        "offset": "(r0)",
+        "verdict": "u8"
+       },
+       {
+        "base": "r6",
+        "confidence": "high",
+        "evidence": "L1948: ldrh r1, [r6]",
+        "kind": "load-width",
+        "offset": "#0",
+        "verdict": "u16"
+       }
+      ]
+     },
+     "ov80_0222BCE0": {
+      "signedness": [
+       {
+        "branch": "ble",
+        "confidence": "high",
+        "evidence": "L1971: cmp r0, #0  =>  L1972: ble _0222BD22",
+        "register": "r0",
+        "verdict": "signed"
+       },
+       {
+        "branch": "blt",
+        "confidence": "high",
+        "evidence": "L1988: cmp r4, r0  =>  L1989: blt _0222BD06",
+        "register": "r4",
+        "verdict": "signed"
+       }
+      ],
+      "widths": [
+       {
+        "base": "r7",
+        "confidence": "high",
+        "evidence": "L1963: ldrb r0, [r7, #0x10]",
+        "kind": "load-width",
+        "offset": "#0x10",
+        "verdict": "u8"
+       }
+      ]
+     },
+     "ov80_0222BD44": {
+      "signedness": [
+       {
+        "branch": "ble",
+        "confidence": "high",
+        "evidence": "L2038: cmp r0, #0  =>  L2039: ble _0222BDA6",
+        "register": "r0",
+        "verdict": "signed"
+       },
+       {
+        "branch": "blt",
+        "confidence": "high",
+        "evidence": "L2054: cmp r7, r0  =>  L2055: blt _0222BD86",
+        "register": "r7",
+        "verdict": "signed"
+       }
+      ],
+      "widths": [
+       {
+        "base": "r0",
+        "confidence": "high",
+        "evidence": "L2017: ldrb r0, [r0, r1]",
+        "kind": "load-width",
+        "offset": "(r1)",
+        "verdict": "u8"
+       },
+       {
+        "base": "r0",
+        "confidence": "high",
+        "evidence": "L2022: strb r2, [r0, r1]",
+        "kind": "store-width",
+        "offset": "(r1)",
+        "verdict": "u8"
+       },
+       {
+        "base": "r0",
+        "confidence": "high",
+        "evidence": "L2028: ldrb r0, [r0, #0x10]",
+        "kind": "load-width",
+        "offset": "#0x10",
+        "verdict": "u8"
+       }
+      ]
+     },
+     "ov80_0222BDD4": {
+      "signedness": [
+       {
+        "branch": "ble",
+        "confidence": "high",
+        "evidence": "L2086: cmp r2, r0  =>  L2087: ble _0222BDE6",
+        "register": "r2",
+        "verdict": "signed"
+       }
+      ]
+     }
+    },
+    "generated": "2026-09-29T17:38:36Z",
+    "summary": {
+     "copyprop_cmp": 0,
+     "dead_store": 0,
+     "exact_types": 0,
+     "functions": 53,
+     "signed": 59,
+     "unsigned": 0,
+     "widths": 188
+    },
+    "tool": "asm_oracle.py"
+   },
+   "risks": [
+    "All recv handlers (column 1) and record getters B0E8/BA5C/BDD4 (column 3) are referenced from the .rodata comm table _02108594 in asm/unk_02096910.s. They must stay non-static and keep their exact names.",
+    "Sender callers live in still-asm dispatchers: ov80_02231844 (overlay_80_022310C4), ov80_02230AF8 (overlay_80_0222FD08), ov80_02233280 (overlay_80_022324C4), ov80_02234E50 (overlay_80_022340E8). The only C caller is the UNLINKED WIP src/frontier/overlay_80_022310C4.c, which has local 'extern u16 ov80_0222AF10(void*)' etc. (u16 return vs BOOL here). If it later includes a new header, reconcile the return types. There is no matched-C conflict today.",
+    "Do not edit ArcadeContext in include/frontier/overlay_80_022340E8.h (it is used by src/frontier/frontier_cmd_arcade.c and src/frontier/overlay_80_02238034.c; IPA header discipline). Access 0xa76 as u16 and 0x424/0x474/0x674 via casts or unk418 indexing instead.",
+    "include/unk_02030A98.h is described as frozen/mistyped by the WIP 022310C4.c. Prefer local externs for Save_Frontier_GetStatic/FrontierSave_GetStat/sub_02030E08/sub_02030FA0 if the header conflicts with other includes.",
+    "sub_02036FD8 has no header, and existing local externs declare it void. Here its result is used, so declare it BOOL locally in this TU.",
+    "Return idiom: 'if (sub_02037030(...) == TRUE) return TRUE; return FALSE;' (cmp #1/bne/mov #1/pop/mov #0/pop). 'return x == 1;' likely mismatches.",
+    "Empty recv handlers AEF8/AF3C end with a bare cmp and no branch. Write 'if (netId == sub_0203769C()) return;' with nothing after it. The recv counter ++ comes before the call in every handler.",
+    "Lo/hi split loops: senders read the u32 twice (two statements, lo then >>16). Receivers use two statements, 'a[i] = lo; a[i] |= hi << 16;', to get str/ldr/orr/str with the offset constant in 3 registers. B7E4/BB54 rematerialize the constant inside the loop (regalloc-sensitive).",
+    "B448/B52C use a dynamic count n (ov80_02236DD4) with a running offset variable and spilled stack locals. Match loop guards with 'if n>0' preheaders (patterns mwcc-dynamic-bound-loop-index-form, dynamic-count-loop-if-dowhile-preheader-walker). Stack layout: u8 atk[2] at sp+0x10, u32 pid[2] at sp+0x14.",
+    "B6C8 literal 'x - 6 == 4' compare (sub #6; cmp #4). Write it that way rather than 'x == 10'.",
+    "Loop compares are signed blt with literal bounds (20/14/6/4). Use int i and a literal, not NELEMS (pattern nelems-bound-makes-loop-compare-unsigned)."
+   ],
+   "sweep_output": "sweep/out/overlay_80_0222AEF8.json"
+  },
   "asm/overlay_80_022384D8.s": {
    "notes": "Self-contained overlay 80 (Battle Frontier UI) module: creates a SysTask that animates a 2x2 blinking tilemap rect at (14,2) on BG layer 3 every 3 frames, plus two pure stat-ID remap switches used by Frontier record code (results flow into FrontierSave_GetStat / sub_02031108). Heap 0x65 throughout. SysTask priority 0x1368C. No data sections. Function order in C must be: ov80_022384D8, ov80_022384FC, ov80_02238530, ov80_0223857C, ov80_022385B0, ov80_022385C4, ov80_022385D8, ov80_02238610 (statics need forward declarations since constructors call later-defined functions).",
    "risks": [
@@ -27227,7 +29436,7 @@
    "sweep_output": "sweep/out/unk_02097B78.json"
   }
  },
- "generated": "2026-09-29T16:50:35Z",
+ "generated": "2026-09-29T17:38:36Z",
  "signature_conflicts": [
   "DestroySysTaskAndEnvironment",
   "GridInputHandler_GetNextInput",
@@ -27293,6 +29502,7 @@
   "ov18_021F8824",
   "ov18_021F8838",
   "ov35_02259D80",
+  "ov80_02237B24",
   "ov80_02237FA4",
   "ov83_02242AB4",
   "ov83_02242AC0",
@@ -27444,6 +29654,65 @@
     "asm/overlay_14_021F2490.s"
    ]
   },
+  "ArcadeContext (existing, include/frontier/overlay_80_022340E8.h)": {
+   "fields": {
+    "0x4": [
+     {
+      "meaning": "SaveData * (unk0[1])",
+      "source": "asm/overlay_80_0222AEF8.s",
+      "width": 4
+     }
+    ],
+    "0x424": [
+     {
+      "meaning": "sendBuf = unk418 + 6",
+      "source": "asm/overlay_80_0222AEF8.s",
+      "width": 2
+     }
+    ],
+    "0x474": [
+     {
+      "meaning": "monSendBuf = unk418 + 46",
+      "source": "asm/overlay_80_0222AEF8.s",
+      "width": 1
+     }
+    ],
+    "0x674": [
+     {
+      "meaning": "recvBuf[2][0x200] = unk418 + 302",
+      "source": "asm/overlay_80_0222AEF8.s",
+      "width": 1
+     }
+    ],
+    "0x78": [
+     {
+      "meaning": "u16[14], named 'unk74' in header but at 0x78",
+      "source": "asm/overlay_80_0222AEF8.s",
+      "width": 2
+     }
+    ],
+    "0xa76": [
+     {
+      "meaning": "u16 store, but header declares u8 unkA76/unkA77",
+      "source": "asm/overlay_80_0222AEF8.s",
+      "width": 2
+     }
+    ],
+    "0xa7c": [
+     {
+      "meaning": "unkA7C recvCount",
+      "source": "asm/overlay_80_0222AEF8.s",
+      "width": 1
+     }
+    ]
+   },
+   "size_guesses": {
+    "asm/overlay_80_0222AEF8.s": "~0xa80"
+   },
+   "sources": [
+    "asm/overlay_80_0222AEF8.s"
+   ]
+  },
   "BoxMonDisplayEntry (a1 of 5000/5054/50A0/5114/5190/521C/528C/52FC)": {
    "fields": {
     "0x0": [
@@ -27570,6 +29839,177 @@
    },
    "sources": [
     "asm/unk_02056680.s"
+   ]
+  },
+  "CastleCommWork (global ov80_0223DD48, overlay_80_022324C4, Heap_Alloc 0xa28; facility identity unconfirmed)": {
+   "fields": {
+    "0x10": [
+     {
+      "meaning": "u8 type",
+      "source": "asm/overlay_80_0222AEF8.s",
+      "width": 1
+     }
+    ],
+    "0x14": [
+     {
+      "meaning": "u16",
+      "source": "asm/overlay_80_0222AEF8.s",
+      "width": 2
+     }
+    ],
+    "0x16": [
+     {
+      "meaning": "u16",
+      "source": "asm/overlay_80_0222AEF8.s",
+      "width": 2
+     }
+    ],
+    "0x26c": [
+     {
+      "meaning": "u16[4]",
+      "source": "asm/overlay_80_0222AEF8.s",
+      "width": 2
+     }
+    ],
+    "0x274": [
+     {
+      "meaning": "u8[4]",
+      "source": "asm/overlay_80_0222AEF8.s",
+      "width": 1
+     }
+    ],
+    "0x278": [
+     {
+      "meaning": "u32[4]",
+      "source": "asm/overlay_80_0222AEF8.s",
+      "width": 4
+     }
+    ],
+    "0x28": [
+     {
+      "meaning": "Party *",
+      "source": "asm/overlay_80_0222AEF8.s",
+      "width": 4
+     }
+    ],
+    "0x30": [
+     {
+      "meaning": "u16[14]",
+      "source": "asm/overlay_80_0222AEF8.s",
+      "width": 2
+     }
+    ],
+    "0x3c0": [
+     {
+      "meaning": "u16 sendBuf[20] (0x28)",
+      "source": "asm/overlay_80_0222AEF8.s",
+      "width": 2
+     }
+    ],
+    "0x3d6": [
+     {
+      "meaning": "u16 stat",
+      "source": "asm/overlay_80_0222AEF8.s",
+      "width": 2
+     }
+    ],
+    "0x4": [
+     {
+      "meaning": "SaveData *",
+      "source": "asm/overlay_80_0222AEF8.s",
+      "width": 4
+     }
+    ],
+    "0x410": [
+     {
+      "meaning": "u8 monSendBuf[0x200]",
+      "source": "asm/overlay_80_0222AEF8.s",
+      "width": 1
+     }
+    ],
+    "0x610": [
+     {
+      "meaning": "u8 recvBuf[2][0x200]",
+      "source": "asm/overlay_80_0222AEF8.s",
+      "width": 1
+     }
+    ],
+    "0xa10": [
+     {
+      "meaning": "u8",
+      "source": "asm/overlay_80_0222AEF8.s",
+      "width": 1
+     }
+    ],
+    "0xa11": [
+     {
+      "meaning": "u8",
+      "source": "asm/overlay_80_0222AEF8.s",
+      "width": 1
+     }
+    ],
+    "0xa12": [
+     {
+      "meaning": "u16",
+      "source": "asm/overlay_80_0222AEF8.s",
+      "width": 2
+     }
+    ],
+    "0xa16": [
+     {
+      "meaning": "u16",
+      "source": "asm/overlay_80_0222AEF8.s",
+      "width": 2
+     }
+    ],
+    "0xa18": [
+     {
+      "meaning": "u8 own selection",
+      "source": "asm/overlay_80_0222AEF8.s",
+      "width": 1
+     }
+    ],
+    "0xa19": [
+     {
+      "meaning": "u8 partner selection",
+      "source": "asm/overlay_80_0222AEF8.s",
+      "width": 1
+     }
+    ],
+    "0xa1a": [
+     {
+      "meaning": "u8 recvCount",
+      "source": "asm/overlay_80_0222AEF8.s",
+      "width": 1
+     }
+    ],
+    "0xa1b": [
+     {
+      "meaning": "u8 resolved selection",
+      "source": "asm/overlay_80_0222AEF8.s",
+      "width": 1
+     }
+    ],
+    "0xa1c": [
+     {
+      "meaning": "u16",
+      "source": "asm/overlay_80_0222AEF8.s",
+      "width": 2
+     }
+    ],
+    "0xa20": [
+     {
+      "meaning": "u16 * (0xEEDD sentinel target)",
+      "source": "asm/overlay_80_0222AEF8.s",
+      "width": 4
+     }
+    ]
+   },
+   "size_guesses": {
+    "asm/overlay_80_0222AEF8.s": "0xa28"
+   },
+   "sources": [
+    "asm/overlay_80_0222AEF8.s"
    ]
   },
   "CommCommand (matches typedef independently re-derived in src/unk_02096C88.c)": {
@@ -27759,6 +30199,184 @@
    },
    "sources": [
     "asm/overlay_83_022479E4.s"
+   ]
+  },
+  "FactoryCommWork (overlay_80_0222FD08, Heap_Alloc 0x708)": {
+   "fields": {
+    "0x18": [
+     {
+      "meaning": "u16[14]",
+      "source": "asm/overlay_80_0222AEF8.s",
+      "width": 2
+     }
+    ],
+    "0x254": [
+     {
+      "meaning": "u16[6] partner",
+      "source": "asm/overlay_80_0222AEF8.s",
+      "width": 2
+     }
+    ],
+    "0x260": [
+     {
+      "meaning": "u8[6] partner",
+      "source": "asm/overlay_80_0222AEF8.s",
+      "width": 1
+     }
+    ],
+    "0x268": [
+     {
+      "meaning": "u32[6] partner",
+      "source": "asm/overlay_80_0222AEF8.s",
+      "width": 4
+     }
+    ],
+    "0x3d2": [
+     {
+      "meaning": "u16[4]",
+      "source": "asm/overlay_80_0222AEF8.s",
+      "width": 2
+     }
+    ],
+    "0x3da": [
+     {
+      "meaning": "u8[4]",
+      "source": "asm/overlay_80_0222AEF8.s",
+      "width": 1
+     }
+    ],
+    "0x3e0": [
+     {
+      "meaning": "u32[4]",
+      "source": "asm/overlay_80_0222AEF8.s",
+      "width": 4
+     }
+    ],
+    "0x4": [
+     {
+      "meaning": "u8 type",
+      "source": "asm/overlay_80_0222AEF8.s",
+      "width": 1
+     }
+    ],
+    "0x4d4": [
+     {
+      "meaning": "Party *",
+      "source": "asm/overlay_80_0222AEF8.s",
+      "width": 4
+     }
+    ],
+    "0x4e8": [
+     {
+      "meaning": "u16[n]",
+      "source": "asm/overlay_80_0222AEF8.s",
+      "width": 2
+     }
+    ],
+    "0x4f8": [
+     {
+      "meaning": "SaveData *",
+      "source": "asm/overlay_80_0222AEF8.s",
+      "width": 4
+     }
+    ],
+    "0x504": [
+     {
+      "meaning": "u16 sendBuf[30] (0x3c)",
+      "source": "asm/overlay_80_0222AEF8.s",
+      "width": 2
+     }
+    ],
+    "0x57c": [
+     {
+      "meaning": "u8",
+      "source": "asm/overlay_80_0222AEF8.s",
+      "width": 1
+     }
+    ],
+    "0x57d": [
+     {
+      "meaning": "u8",
+      "source": "asm/overlay_80_0222AEF8.s",
+      "width": 1
+     }
+    ],
+    "0x57e": [
+     {
+      "meaning": "u16",
+      "source": "asm/overlay_80_0222AEF8.s",
+      "width": 2
+     }
+    ],
+    "0x580": [
+     {
+      "meaning": "u16",
+      "source": "asm/overlay_80_0222AEF8.s",
+      "width": 2
+     }
+    ],
+    "0x582": [
+     {
+      "meaning": "u16",
+      "source": "asm/overlay_80_0222AEF8.s",
+      "width": 2
+     }
+    ],
+    "0x584": [
+     {
+      "meaning": "u16[6]",
+      "source": "asm/overlay_80_0222AEF8.s",
+      "width": 2
+     }
+    ],
+    "0x590": [
+     {
+      "meaning": "u8[6]",
+      "source": "asm/overlay_80_0222AEF8.s",
+      "width": 1
+     }
+    ],
+    "0x598": [
+     {
+      "meaning": "u32[6]",
+      "source": "asm/overlay_80_0222AEF8.s",
+      "width": 4
+     }
+    ],
+    "0x702": [
+     {
+      "meaning": "u8 recvCount",
+      "source": "asm/overlay_80_0222AEF8.s",
+      "width": 1
+     }
+    ],
+    "0x8": [
+     {
+      "meaning": "u16",
+      "source": "asm/overlay_80_0222AEF8.s",
+      "width": 2
+     }
+    ],
+    "0xc": [
+     {
+      "meaning": "u16",
+      "source": "asm/overlay_80_0222AEF8.s",
+      "width": 2
+     }
+    ],
+    "0xe": [
+     {
+      "meaning": "u16",
+      "source": "asm/overlay_80_0222AEF8.s",
+      "width": 2
+     }
+    ]
+   },
+   "size_guesses": {
+    "asm/overlay_80_0222AEF8.s": "0x708"
+   },
+   "sources": [
+    "asm/overlay_80_0222AEF8.s"
    ]
   },
   "GF_SdatGetAttrPtr attr ids (src/sound.c SND_WORK)": {
@@ -30972,6 +33590,86 @@
    },
    "sources": [
     "asm/overlay_01_021F6830.s"
+   ]
+  },
+  "TowerCommWork (global ov80_0223DD44, Heap_Alloc 0xd98, overlay_80_022310C4)": {
+   "fields": {
+    "0x18": [
+     {
+      "meaning": "u16[20]",
+      "source": "asm/overlay_80_0222AEF8.s",
+      "width": 2
+     }
+    ],
+    "0x260": [
+     {
+      "meaning": "u8 party slot for mon send",
+      "source": "asm/overlay_80_0222AEF8.s",
+      "width": 1
+     }
+    ],
+    "0x268": [
+     {
+      "meaning": "u16[20]",
+      "source": "asm/overlay_80_0222AEF8.s",
+      "width": 2
+     }
+    ],
+    "0x6fc": [
+     {
+      "meaning": "SaveData *",
+      "source": "asm/overlay_80_0222AEF8.s",
+      "width": 4
+     }
+    ],
+    "0x72c": [
+     {
+      "meaning": "u16 sendBuf[22] (0x2c)",
+      "source": "asm/overlay_80_0222AEF8.s",
+      "width": 2
+     }
+    ],
+    "0x784": [
+     {
+      "meaning": "u8 monSendBuf[0x200]",
+      "source": "asm/overlay_80_0222AEF8.s",
+      "width": 1
+     }
+    ],
+    "0x984": [
+     {
+      "meaning": "u8 recvBuf[2][0x200]",
+      "source": "asm/overlay_80_0222AEF8.s",
+      "width": 1
+     }
+    ],
+    "0xd88": [
+     {
+      "meaning": "u8 partner value",
+      "source": "asm/overlay_80_0222AEF8.s",
+      "width": 1
+     }
+    ],
+    "0xd8c": [
+     {
+      "meaning": "Pokemon * recv destination",
+      "source": "asm/overlay_80_0222AEF8.s",
+      "width": 4
+     }
+    ],
+    "0xd90": [
+     {
+      "meaning": "u8 recvCount",
+      "source": "asm/overlay_80_0222AEF8.s",
+      "width": 1
+     }
+    ]
+   },
+   "size_guesses": {
+    "asm/overlay_80_0222AEF8.s": "0xd98"
+   },
+   "sources": [
+    "asm/overlay_80_0222AEF8.s"
    ]
   },
   "UnkCtx_ov14 (a0 of most functions)": {
@@ -35532,6 +38230,7 @@
   "AllocMonZeroed": {
    "callers": [
     "asm/overlay_14_021EFDE4.s",
+    "asm/overlay_80_0222AEF8.s",
     "asm/unk_0202FBCC.s"
    ],
    "header": "include/pokemon.h",
@@ -35586,6 +38285,14 @@
    "callers": [],
    "header": "include/bag.h",
    "known_prototype": "BOOL Bag_TakeItem(Bag *bag, u16 itemId, u16 count, HeapID heapId)",
+   "signature_sources": {}
+  },
+  "BattleArcade_GetMonCount": {
+   "callers": [
+    "asm/overlay_80_0222AEF8.s"
+   ],
+   "header": "include/frontier/overlay_80_02238034.h",
+   "known_prototype": "u8 BattleArcade_GetMonCount(u8 type, int a1)",
    "signature_sources": {}
   },
   "BeginNormalPaletteFade": {
@@ -36434,6 +39141,7 @@
   },
   "FrontierSave_GetStat": {
    "callers": [
+    "asm/overlay_80_0222AEF8.s",
     "asm/overlay_83_02242FE8.s",
     "asm/overlay_83_02243D7C.s",
     "asm/overlay_83_02246E08.s"
@@ -36586,6 +39294,7 @@
     "asm/overlay_01_022031C0.s",
     "asm/overlay_18_021F7ED4.s",
     "asm/overlay_41_02248400.s",
+    "asm/overlay_80_0222AEF8.s",
     "asm/overlay_80_02239AF8.s",
     "asm/overlay_80_0223A00C.s",
     "asm/overlay_83_02243D7C.s",
@@ -37387,6 +40096,7 @@
     "asm/overlay_14_021EE26C.s",
     "asm/overlay_14_021EFDE4.s",
     "asm/overlay_14_021F0A80.s",
+    "asm/overlay_80_0222AEF8.s",
     "asm/overlay_83_02243D7C.s"
    ],
    "header": "include/pokemon.h",
@@ -38020,6 +40730,7 @@
     "asm/overlay_18_021F7ED4.s",
     "asm/overlay_32.s",
     "asm/overlay_41_02248400.s",
+    "asm/overlay_80_0222AEF8.s",
     "asm/overlay_80_022384D8.s",
     "asm/overlay_80_0223A00C.s",
     "asm/overlay_83_02243D7C.s",
@@ -38338,6 +41049,7 @@
   "MI_CpuCopy8": {
    "callers": [
     "asm/overlay_14_021F2490.s",
+    "asm/overlay_80_0222AEF8.s",
     "asm/unk_02027010.s",
     "asm/unk_0202FBCC.s",
     "asm/unk_02033AE0.s"
@@ -39882,6 +42594,7 @@
   },
   "Party_AddMon": {
    "callers": [
+    "asm/overlay_80_0222AEF8.s",
     "asm/unk_0202FBCC.s"
    ],
    "header": "include/party.h",
@@ -39915,6 +42628,7 @@
     "asm/overlay_14_021EFDE4.s",
     "asm/overlay_14_021F0A80.s",
     "asm/overlay_14_021F2490.s",
+    "asm/overlay_80_0222AEF8.s",
     "asm/overlay_83_02242FE8.s",
     "asm/overlay_83_02243D7C.s",
     "asm/overlay_83_02246E08.s",
@@ -39946,6 +42660,14 @@
    "callers": [
     "asm/overlay_14_021E5900.s"
    ],
+   "signature_sources": {}
+  },
+  "Party_SwapSlots": {
+   "callers": [
+    "asm/overlay_80_0222AEF8.s"
+   ],
+   "header": "include/party.h",
+   "known_prototype": "BOOL Party_SwapSlots(Party *party, int slotA, int slotB)",
    "signature_sources": {}
   },
   "PlayBGM": {
@@ -40295,8 +43017,11 @@
   },
   "SaveArray_Party_Get": {
    "callers": [
-    "asm/overlay_14_021E5900.s"
+    "asm/overlay_14_021E5900.s",
+    "asm/overlay_80_0222AEF8.s"
    ],
+   "header": "include/party.h",
+   "known_prototype": "Party *SaveArray_Party_Get(SaveData *saveData)",
    "signature_sources": {}
   },
   "SaveSubstruct_UpdateCRC": {
@@ -40326,6 +43051,7 @@
   },
   "Save_Frontier_GetStatic": {
    "callers": [
+    "asm/overlay_80_0222AEF8.s",
     "asm/overlay_83_0223DD60.s",
     "asm/overlay_83_02242FE8.s",
     "asm/overlay_83_02243D7C.s",
@@ -40358,8 +43084,11 @@
   },
   "Save_PlayerData_GetProfile": {
    "callers": [
+    "asm/overlay_80_0222AEF8.s",
     "asm/overlay_83_02243D7C.s"
    ],
+   "header": "include/player_data.h",
+   "known_prototype": "PlayerProfile *Save_PlayerData_GetProfile(SaveData *saveData)",
    "signature_sources": {}
   },
   "Save_Pokedex_Get": {
@@ -40513,6 +43242,14 @@
    "callers": [
     "asm/overlay_98.s"
    ],
+   "signature_sources": {}
+  },
+  "SizeOfStructPokemon": {
+   "callers": [
+    "asm/overlay_80_0222AEF8.s"
+   ],
+   "header": "include/pokemon.h",
+   "known_prototype": "u32 SizeOfStructPokemon(void)",
    "signature_sources": {}
   },
   "SoundSys_GetGBSoundsState": {
@@ -59765,13 +62502,1652 @@
     "asm/overlay_83_02242FE8.s": "void ov80_0222A7CC(void *a0, int a1)"
    }
   },
+  "ov80_0222AEF8": {
+   "callers": [],
+   "confidence": "high",
+   "defined_in": "asm/overlay_80_0222AEF8.s",
+   "mode": "thumb",
+   "notes": [
+    "[asm/overlay_80_0222AEF8.s] Empty handler. Body is ctx->recvCount++; if (netId == sub_0203769C()) return;  The compare has no branch after it (cmp r4,r0 then pop). Size 0x18. Its body is identical to AF3C, but both must exist as separate functions."
+   ],
+   "signature_guess": "void ov80_0222AEF8(int netId, int size, void *data, TowerCommWork *ctx)",
+   "signature_sources": {
+    "asm/overlay_80_0222AEF8.s": "void ov80_0222AEF8(int netId, int size, void *data, TowerCommWork *ctx)"
+   },
+   "struct_accesses": [
+    {
+     "meaning": "recv counter, ++",
+     "offset": "0xd90",
+     "param": 3,
+     "width": 1
+    }
+   ]
+  },
+  "ov80_0222AF10": {
+   "callers": [],
+   "confidence": "high",
+   "defined_in": "asm/overlay_80_0222AEF8.s",
+   "mode": "thumb",
+   "notes": [
+    "[asm/overlay_80_0222AEF8.s] The Save_PlayerData_GetProfile result is discarded (probably an unused local). Next: if (sub_02037030(0x22, w->sendBuf, 0x2c) == TRUE) return TRUE; return FALSE;  Caller: ov80_02231844 in overlay_80_022310C4 (cmd case)."
+   ],
+   "signature_guess": "BOOL ov80_0222AF10(TowerCommWork *w)",
+   "signature_sources": {
+    "asm/overlay_80_0222AEF8.s": "BOOL ov80_0222AF10(TowerCommWork *w)"
+   },
+   "struct_accesses": [
+    {
+     "meaning": "SaveData *",
+     "offset": "0x6fc",
+     "param": 0,
+     "width": 4
+    },
+    {
+     "meaning": "send buffer (0x2c bytes)",
+     "offset": "0x72c",
+     "param": 0,
+     "width": 0
+    }
+   ]
+  },
+  "ov80_0222AF3C": {
+   "callers": [],
+   "confidence": "high",
+   "defined_in": "asm/overlay_80_0222AEF8.s",
+   "mode": "thumb",
+   "notes": [
+    "[asm/overlay_80_0222AEF8.s] Byte-identical to AEF8 (the empty recv for cmd 0x22)."
+   ],
+   "signature_guess": "void ov80_0222AF3C(int netId, int size, void *data, TowerCommWork *ctx)",
+   "signature_sources": {
+    "asm/overlay_80_0222AEF8.s": "void ov80_0222AF3C(int netId, int size, void *data, TowerCommWork *ctx)"
+   },
+   "struct_accesses": [
+    {
+     "meaning": "recv counter, ++",
+     "offset": "0xd90",
+     "param": 3,
+     "width": 1
+    }
+   ]
+  },
+  "ov80_0222AF54": {
+   "callers": [],
+   "confidence": "high",
+   "defined_in": "asm/overlay_80_0222AEF8.s",
+   "mode": "thumb",
+   "notes": [
+    "[asm/overlay_80_0222AEF8.s] for(i=0;i<20;i++) sendBuf[i]=unk18[i]; then sub_02037030(0x23, sendBuf, 0x2c)==1. Both pointers walk (ldrh [r0,#0x18])."
+   ],
+   "signature_guess": "BOOL ov80_0222AF54(TowerCommWork *w)",
+   "signature_sources": {
+    "asm/overlay_80_0222AEF8.s": "BOOL ov80_0222AF54(TowerCommWork *w)"
+   },
+   "struct_accesses": [
+    {
+     "meaning": "u16[20] source",
+     "offset": "0x18",
+     "param": 0,
+     "width": 2
+    },
+    {
+     "meaning": "u16 sendBuf[]",
+     "offset": "0x72c",
+     "param": 0,
+     "width": 2
+    }
+   ]
+  },
+  "ov80_0222AF84": {
+   "callers": [],
+   "confidence": "high",
+   "defined_in": "asm/overlay_80_0222AEF8.s",
+   "mode": "thumb",
+   "notes": [
+    "[asm/overlay_80_0222AEF8.s] Body: ctx->recvCount++; if (netId==sub_0203769C()) return; if (sub_0203769C()!=0) { for i<20: ctx->unk18[i]=data[i]; }. sub_0203769C is called twice."
+   ],
+   "signature_guess": "void ov80_0222AF84(int netId, int size, const u16 *data, TowerCommWork *ctx)",
+   "signature_sources": {
+    "asm/overlay_80_0222AEF8.s": "void ov80_0222AF84(int netId, int size, const u16 *data, TowerCommWork *ctx)"
+   },
+   "struct_accesses": [
+    {
+     "meaning": "recv counter ++",
+     "offset": "0xd90",
+     "param": 3,
+     "width": 1
+    },
+    {
+     "meaning": "u16[20] dest",
+     "offset": "0x18",
+     "param": 3,
+     "width": 2
+    }
+   ]
+  },
+  "ov80_0222AFB8": {
+   "callers": [],
+   "confidence": "high",
+   "defined_in": "asm/overlay_80_0222AEF8.s",
+   "mode": "thumb",
+   "notes": [
+    "[asm/overlay_80_0222AEF8.s] Same shape as AF54 but cmd 0x24 and source 0x268. The offset is kept in a register (mov #0x9a; lsl #2)."
+   ],
+   "signature_guess": "BOOL ov80_0222AFB8(TowerCommWork *w)",
+   "signature_sources": {
+    "asm/overlay_80_0222AEF8.s": "BOOL ov80_0222AFB8(TowerCommWork *w)"
+   },
+   "struct_accesses": [
+    {
+     "meaning": "u16[20] source",
+     "offset": "0x268",
+     "param": 0,
+     "width": 2
+    },
+    {
+     "meaning": "sendBuf",
+     "offset": "0x72c",
+     "param": 0,
+     "width": 2
+    }
+   ]
+  },
+  "ov80_0222AFEC": {
+   "callers": [],
+   "confidence": "high",
+   "defined_in": "asm/overlay_80_0222AEF8.s",
+   "mode": "thumb",
+   "notes": [
+    "[asm/overlay_80_0222AEF8.s] Mirror of AF84, writing to 0x268."
+   ],
+   "signature_guess": "void ov80_0222AFEC(int netId, int size, const u16 *data, TowerCommWork *ctx)",
+   "signature_sources": {
+    "asm/overlay_80_0222AEF8.s": "void ov80_0222AFEC(int netId, int size, const u16 *data, TowerCommWork *ctx)"
+   },
+   "struct_accesses": [
+    {
+     "meaning": "recv counter",
+     "offset": "0xd90",
+     "param": 3,
+     "width": 1
+    },
+    {
+     "meaning": "u16[20] dest",
+     "offset": "0x268",
+     "param": 3,
+     "width": 2
+    }
+   ]
+  },
+  "ov80_0222B024": {
+   "callers": [],
+   "confidence": "high",
+   "defined_in": "asm/overlay_80_0222AEF8.s",
+   "mode": "thumb",
+   "notes": [
+    "[asm/overlay_80_0222AEF8.s] The caller narrows (lsl/lsr #0x18), so the param is u8. Sends cmd 0x25, size 0x2c."
+   ],
+   "signature_guess": "BOOL ov80_0222B024(TowerCommWork *w, u8 val)",
+   "signature_sources": {
+    "asm/overlay_80_0222AEF8.s": "BOOL ov80_0222B024(TowerCommWork *w, u8 val)"
+   },
+   "struct_accesses": [
+    {
+     "meaning": "sendBuf[0]=val",
+     "offset": "0x72c",
+     "param": 0,
+     "width": 2
+    }
+   ]
+  },
+  "ov80_0222B048": {
+   "callers": [],
+   "confidence": "high",
+   "defined_in": "asm/overlay_80_0222AEF8.s",
+   "mode": "thumb",
+   "notes": [
+    "[asm/overlay_80_0222AEF8.s] if (netId != cur) ctx->unkD88 = data[0];"
+   ],
+   "signature_guess": "void ov80_0222B048(int netId, int size, const u16 *data, TowerCommWork *ctx)",
+   "signature_sources": {
+    "asm/overlay_80_0222AEF8.s": "void ov80_0222B048(int netId, int size, const u16 *data, TowerCommWork *ctx)"
+   },
+   "struct_accesses": [
+    {
+     "meaning": "recv counter",
+     "offset": "0xd90",
+     "param": 3,
+     "width": 1
+    },
+    {
+     "meaning": "u8 = data[0]",
+     "offset": "0xd88",
+     "param": 3,
+     "width": 1
+    }
+   ]
+  },
+  "ov80_0222B070": {
+   "callers": [],
+   "confidence": "high",
+   "defined_in": "asm/overlay_80_0222AEF8.s",
+   "mode": "thumb",
+   "notes": [
+    "[asm/overlay_80_0222AEF8.s] Order: u32 size = SizeOfStructPokemon(); MI_CpuCopy8(Party_GetMonByIndex(SaveArray_Party_Get(w->save), w->unk260), w->monBuf, size); return sub_02036FD8(0x26, w->monBuf, 0x200)==1. The size call comes first; save it in a local."
+   ],
+   "signature_guess": "BOOL ov80_0222B070(TowerCommWork *w)",
+   "signature_sources": {
+    "asm/overlay_80_0222AEF8.s": "BOOL ov80_0222B070(TowerCommWork *w)"
+   },
+   "struct_accesses": [
+    {
+     "meaning": "SaveData *",
+     "offset": "0x6fc",
+     "param": 0,
+     "width": 4
+    },
+    {
+     "meaning": "u8 party slot index",
+     "offset": "0x260",
+     "param": 0,
+     "width": 1
+    },
+    {
+     "meaning": "u8 monSendBuf[0x200]",
+     "offset": "0x784",
+     "param": 0,
+     "width": 0
+    }
+   ]
+  },
+  "ov80_0222B0B8": {
+   "callers": [],
+   "confidence": "high",
+   "defined_in": "asm/overlay_80_0222AEF8.s",
+   "mode": "thumb",
+   "notes": [
+    "[asm/overlay_80_0222AEF8.s] if (netId != cur) MI_CpuCopy8(data, ctx->unkD8C, SizeOfStructPokemon());"
+   ],
+   "signature_guess": "void ov80_0222B0B8(int netId, int size, void *data, TowerCommWork *ctx)",
+   "signature_sources": {
+    "asm/overlay_80_0222AEF8.s": "void ov80_0222B0B8(int netId, int size, void *data, TowerCommWork *ctx)"
+   },
+   "struct_accesses": [
+    {
+     "meaning": "recv counter",
+     "offset": "0xd90",
+     "param": 3,
+     "width": 1
+    },
+    {
+     "meaning": "Pokemon * destination",
+     "offset": "0xd8c",
+     "param": 3,
+     "width": 4
+    }
+   ]
+  },
+  "ov80_0222B0E8": {
+   "callers": [],
+   "confidence": "high",
+   "defined_in": "asm/overlay_80_0222AEF8.s",
+   "mode": "thumb",
+   "notes": [
+    "[asm/overlay_80_0222AEF8.s] GF_ASSERT(size <= 0x200); return (u8*)ctx + 0x984 + netId*0x200 (the asm computes ctx+0x984 first, then adds netId<<9)."
+   ],
+   "signature_guess": "void *ov80_0222B0E8(int netId, TowerCommWork *ctx, int size)",
+   "signature_sources": {
+    "asm/overlay_80_0222AEF8.s": "void *ov80_0222B0E8(int netId, TowerCommWork *ctx, int size)"
+   },
+   "struct_accesses": [
+    {
+     "meaning": "recvBuf[netId][0x200]",
+     "offset": "0x984",
+     "param": 1,
+     "width": 0
+    }
+   ]
+  },
+  "ov80_0222B108": {
+   "callers": [],
+   "confidence": "high",
+   "defined_in": "asm/overlay_80_0222AEF8.s",
+   "mode": "thumb",
+   "notes": [
+    "[asm/overlay_80_0222AEF8.s] u16 *buf = w->sendBuf is computed before the GetProfile call, whose result is discarded. buf[0] is untouched. Sends cmd 0x16, size 0x3c. Caller: ov80_02230AF8 in overlay_80_0222FD08."
+   ],
+   "signature_guess": "BOOL ov80_0222B108(FactoryCommWork *w)",
+   "signature_sources": {
+    "asm/overlay_80_0222AEF8.s": "BOOL ov80_0222B108(FactoryCommWork *w)"
+   },
+   "struct_accesses": [
+    {
+     "meaning": "SaveData * (computed as 0x504-0xc)",
+     "offset": "0x4f8",
+     "param": 0,
+     "width": 4
+    },
+    {
+     "meaning": "u16 -> buf[1]",
+     "offset": "0x8",
+     "param": 0,
+     "width": 2
+    },
+    {
+     "meaning": "u16 -> buf[2]",
+     "offset": "0xc",
+     "param": 0,
+     "width": 2
+    },
+    {
+     "meaning": "u16 -> buf[3]",
+     "offset": "0xe",
+     "param": 0,
+     "width": 2
+    },
+    {
+     "meaning": "u16 sendBuf[30] (0x3c bytes)",
+     "offset": "0x504",
+     "param": 0,
+     "width": 2
+    }
+   ]
+  },
+  "ov80_0222B140": {
+   "callers": [],
+   "confidence": "high",
+   "defined_in": "asm/overlay_80_0222AEF8.s",
+   "mode": "thumb",
+   "notes": [
+    "[asm/overlay_80_0222AEF8.s] Store order: 0x580, 0x582, 0x57e."
+   ],
+   "signature_guess": "void ov80_0222B140(int netId, int size, const u16 *data, FactoryCommWork *ctx)",
+   "signature_sources": {
+    "asm/overlay_80_0222AEF8.s": "void ov80_0222B140(int netId, int size, const u16 *data, FactoryCommWork *ctx)"
+   },
+   "struct_accesses": [
+    {
+     "meaning": "recv counter ++",
+     "offset": "0x702",
+     "param": 3,
+     "width": 1
+    },
+    {
+     "meaning": "= data[1]",
+     "offset": "0x580",
+     "param": 3,
+     "width": 2
+    },
+    {
+     "meaning": "= data[2]",
+     "offset": "0x582",
+     "param": 3,
+     "width": 2
+    },
+    {
+     "meaning": "= data[3]",
+     "offset": "0x57e",
+     "param": 3,
+     "width": 2
+    }
+   ]
+  },
+  "ov80_0222B174": {
+   "callers": [],
+   "confidence": "high",
+   "defined_in": "asm/overlay_80_0222AEF8.s",
+   "mode": "thumb",
+   "notes": [
+    "[asm/overlay_80_0222AEF8.s] cmd 0x17, size 0x3c, 14 elements."
+   ],
+   "signature_guess": "BOOL ov80_0222B174(FactoryCommWork *w)",
+   "signature_sources": {
+    "asm/overlay_80_0222AEF8.s": "BOOL ov80_0222B174(FactoryCommWork *w)"
+   },
+   "struct_accesses": [
+    {
+     "meaning": "u16[14] source",
+     "offset": "0x18",
+     "param": 0,
+     "width": 2
+    },
+    {
+     "meaning": "sendBuf",
+     "offset": "0x504",
+     "param": 0,
+     "width": 2
+    }
+   ]
+  },
+  "ov80_0222B1A4": {
+   "callers": [],
+   "confidence": "high",
+   "defined_in": "asm/overlay_80_0222AEF8.s",
+   "mode": "thumb",
+   "notes": [
+    "[asm/overlay_80_0222AEF8.s] Copies only if sub_0203769C()!=0 (non-parent side)."
+   ],
+   "signature_guess": "void ov80_0222B1A4(int netId, int size, const u16 *data, FactoryCommWork *ctx)",
+   "signature_sources": {
+    "asm/overlay_80_0222AEF8.s": "void ov80_0222B1A4(int netId, int size, const u16 *data, FactoryCommWork *ctx)"
+   },
+   "struct_accesses": [
+    {
+     "meaning": "recv counter",
+     "offset": "0x702",
+     "param": 3,
+     "width": 1
+    },
+    {
+     "meaning": "u16[14] dest",
+     "offset": "0x18",
+     "param": 3,
+     "width": 2
+    }
+   ]
+  },
+  "ov80_0222B1DC": {
+   "callers": [],
+   "confidence": "high",
+   "defined_in": "asm/overlay_80_0222AEF8.s",
+   "mode": "thumb",
+   "notes": [
+    "[asm/overlay_80_0222AEF8.s] Three loops i<6: buf[i]=u584[i]; buf[6+i]=u590[i]; then buf[12+i]=(u16)u598[i]; buf[18+i]=u598[i]>>16. The u32 is loaded twice, so write two separate reads. Sends cmd 0x18, size 0x3c."
+   ],
+   "signature_guess": "BOOL ov80_0222B1DC(FactoryCommWork *w)",
+   "signature_sources": {
+    "asm/overlay_80_0222AEF8.s": "BOOL ov80_0222B1DC(FactoryCommWork *w)"
+   },
+   "struct_accesses": [
+    {
+     "meaning": "u16[6]",
+     "offset": "0x584",
+     "param": 0,
+     "width": 2
+    },
+    {
+     "meaning": "u8[6]",
+     "offset": "0x590",
+     "param": 0,
+     "width": 1
+    },
+    {
+     "meaning": "u32[6] split into lo/hi u16",
+     "offset": "0x598",
+     "param": 0,
+     "width": 4
+    },
+    {
+     "meaning": "sendBuf",
+     "offset": "0x504",
+     "param": 0,
+     "width": 2
+    }
+   ]
+  },
+  "ov80_0222B24C": {
+   "callers": [],
+   "confidence": "high",
+   "defined_in": "asm/overlay_80_0222AEF8.s",
+   "mode": "thumb",
+   "notes": [
+    "[asm/overlay_80_0222AEF8.s] Guarded by netId!=cur && sub_0203769C()!=0. The third loop is str, then ldr/orr/str, so write two statements: a[i]=lo; a[i]|=hi<<16. The same constant is copied into 3 registers. Destination offsets differ from the B1DC source (partner data)."
+   ],
+   "signature_guess": "void ov80_0222B24C(int netId, int size, const u16 *data, FactoryCommWork *ctx)",
+   "signature_sources": {
+    "asm/overlay_80_0222AEF8.s": "void ov80_0222B24C(int netId, int size, const u16 *data, FactoryCommWork *ctx)"
+   },
+   "struct_accesses": [
+    {
+     "meaning": "recv counter",
+     "offset": "0x702",
+     "param": 3,
+     "width": 1
+    },
+    {
+     "meaning": "u16[6] = data[0..6)",
+     "offset": "0x254",
+     "param": 3,
+     "width": 2
+    },
+    {
+     "meaning": "u8[6] = data[6..12)",
+     "offset": "0x260",
+     "param": 3,
+     "width": 1
+    },
+    {
+     "meaning": "u32[6]: = data[12+i]; |= data[18+i]<<16",
+     "offset": "0x268",
+     "param": 3,
+     "width": 4
+    }
+   ]
+  },
+  "ov80_0222B2C4": {
+   "callers": [],
+   "confidence": "high",
+   "defined_in": "asm/overlay_80_0222AEF8.s",
+   "mode": "thumb",
+   "notes": [
+    "[asm/overlay_80_0222AEF8.s] Same shape as B1DC with 4 elements: buf[0..4), [4..8), [8..12) lo, [12..16) hi. cmd 0x19, size 0x3c."
+   ],
+   "signature_guess": "BOOL ov80_0222B2C4(FactoryCommWork *w)",
+   "signature_sources": {
+    "asm/overlay_80_0222AEF8.s": "BOOL ov80_0222B2C4(FactoryCommWork *w)"
+   },
+   "struct_accesses": [
+    {
+     "meaning": "u16[4]",
+     "offset": "0x3d2",
+     "param": 0,
+     "width": 2
+    },
+    {
+     "meaning": "u8[4]",
+     "offset": "0x3da",
+     "param": 0,
+     "width": 1
+    },
+    {
+     "meaning": "u32[4] lo/hi",
+     "offset": "0x3e0",
+     "param": 0,
+     "width": 4
+    },
+    {
+     "meaning": "sendBuf",
+     "offset": "0x504",
+     "param": 0,
+     "width": 2
+    }
+   ]
+  },
+  "ov80_0222B334": {
+   "callers": [],
+   "confidence": "high",
+   "defined_in": "asm/overlay_80_0222AEF8.s",
+   "mode": "thumb",
+   "notes": [
+    "[asm/overlay_80_0222AEF8.s] Mirror of B24C with 4 elements."
+   ],
+   "signature_guess": "void ov80_0222B334(int netId, int size, const u16 *data, FactoryCommWork *ctx)",
+   "signature_sources": {
+    "asm/overlay_80_0222AEF8.s": "void ov80_0222B334(int netId, int size, const u16 *data, FactoryCommWork *ctx)"
+   },
+   "struct_accesses": [
+    {
+     "meaning": "recv counter",
+     "offset": "0x702",
+     "param": 3,
+     "width": 1
+    },
+    {
+     "meaning": "u16[4]",
+     "offset": "0x3d2",
+     "param": 3,
+     "width": 2
+    },
+    {
+     "meaning": "u8[4]",
+     "offset": "0x3da",
+     "param": 3,
+     "width": 1
+    },
+    {
+     "meaning": "u32[4]",
+     "offset": "0x3e0",
+     "param": 3,
+     "width": 4
+    }
+   ]
+  },
+  "ov80_0222B3B0": {
+   "callers": [],
+   "confidence": "high",
+   "defined_in": "asm/overlay_80_0222AEF8.s",
+   "mode": "thumb",
+   "notes": [
+    "[asm/overlay_80_0222AEF8.s] The caller narrows to u8. cmd 0x1a, size 0x3c."
+   ],
+   "signature_guess": "BOOL ov80_0222B3B0(FactoryCommWork *w, u8 val)",
+   "signature_sources": {
+    "asm/overlay_80_0222AEF8.s": "BOOL ov80_0222B3B0(FactoryCommWork *w, u8 val)"
+   },
+   "struct_accesses": [
+    {
+     "meaning": "sendBuf[0]=val",
+     "offset": "0x504",
+     "param": 0,
+     "width": 2
+    }
+   ]
+  },
+  "ov80_0222B3D4": {
+   "callers": [],
+   "confidence": "high",
+   "defined_in": "asm/overlay_80_0222AEF8.s",
+   "mode": "thumb",
+   "signature_guess": "void ov80_0222B3D4(int netId, int size, const u16 *data, FactoryCommWork *ctx)",
+   "signature_sources": {
+    "asm/overlay_80_0222AEF8.s": "void ov80_0222B3D4(int netId, int size, const u16 *data, FactoryCommWork *ctx)"
+   },
+   "struct_accesses": [
+    {
+     "meaning": "recv counter",
+     "offset": "0x702",
+     "param": 3,
+     "width": 1
+    },
+    {
+     "meaning": "u8 = data[0]",
+     "offset": "0x57c",
+     "param": 3,
+     "width": 1
+    }
+   ]
+  },
+  "ov80_0222B3FC": {
+   "callers": [],
+   "confidence": "high",
+   "defined_in": "asm/overlay_80_0222AEF8.s",
+   "mode": "thumb",
+   "notes": [
+    "[asm/overlay_80_0222AEF8.s] cmd 0x1b."
+   ],
+   "signature_guess": "BOOL ov80_0222B3FC(FactoryCommWork *w, u8 val)",
+   "signature_sources": {
+    "asm/overlay_80_0222AEF8.s": "BOOL ov80_0222B3FC(FactoryCommWork *w, u8 val)"
+   },
+   "struct_accesses": [
+    {
+     "meaning": "sendBuf[0]=val",
+     "offset": "0x504",
+     "param": 0,
+     "width": 2
+    }
+   ]
+  },
+  "ov80_0222B420": {
+   "callers": [],
+   "confidence": "high",
+   "defined_in": "asm/overlay_80_0222AEF8.s",
+   "mode": "thumb",
+   "signature_guess": "void ov80_0222B420(int netId, int size, const u16 *data, FactoryCommWork *ctx)",
+   "signature_sources": {
+    "asm/overlay_80_0222AEF8.s": "void ov80_0222B420(int netId, int size, const u16 *data, FactoryCommWork *ctx)"
+   },
+   "struct_accesses": [
+    {
+     "meaning": "recv counter",
+     "offset": "0x702",
+     "param": 3,
+     "width": 1
+    },
+    {
+     "meaning": "u8 = data[0]",
+     "offset": "0x57d",
+     "param": 3,
+     "width": 1
+    }
+   ]
+  },
+  "ov80_0222B448": {
+   "callers": [],
+   "confidence": "medium",
+   "defined_in": "asm/overlay_80_0222AEF8.s",
+   "mode": "thumb",
+   "notes": [
+    "[asm/overlay_80_0222AEF8.s] Frame 0x1c: sp0 = buf ptr, sp4 = running offset (starts 0), sp8 = i, spC = mon, sp+0x10 = u8 atk[2..4], sp+0x14 = u32 pid[2]. Loop 1, i<n: mon=Party_GetMonByIndex(party,i); atk[i]=GetMonData(mon,MON_DATA_ATK_IV(0x47),NULL); pid[i]=GetMonData(mon,MON_DATA_PERSONALITY,NULL). Then buf[i]=u4E8[i]; ofs+=n; buf[ofs+i]=atk[i]; then buf[ofs+n+i]=(u16)pid[i] and buf[ofs+2n+i]=pid[i]>>16. cmd 0x1c, size 0x3c. Declare ofs as a separate int (it lives on the stack) and let i reuse sp8."
+   ],
+   "signature_guess": "BOOL ov80_0222B448(FactoryCommWork *w)",
+   "signature_sources": {
+    "asm/overlay_80_0222AEF8.s": "BOOL ov80_0222B448(FactoryCommWork *w)"
+   },
+   "struct_accesses": [
+    {
+     "meaning": "u8 type -> ov80_02236DD4 (count 3/2)",
+     "offset": "0x4",
+     "param": 0,
+     "width": 1
+    },
+    {
+     "meaning": "Party *",
+     "offset": "0x4d4",
+     "param": 0,
+     "width": 4
+    },
+    {
+     "meaning": "u16[n]",
+     "offset": "0x4e8",
+     "param": 0,
+     "width": 2
+    },
+    {
+     "meaning": "sendBuf",
+     "offset": "0x504",
+     "param": 0,
+     "width": 2
+    }
+   ]
+  },
+  "ov80_0222B52C": {
+   "callers": [],
+   "confidence": "medium",
+   "defined_in": "asm/overlay_80_0222AEF8.s",
+   "mode": "thumb",
+   "notes": [
+    "[asm/overlay_80_0222AEF8.s] No sub_0203769C()!=0 guard, only netId!=cur. The running offset lives in r7 (int ofs=0) and data is spilled to sp0. Last loop: a[i]=data[ofs+i]; a[i]|=data[ofs+n+i]<<16, with ofs+=n implied. The pool constant 0x598 is loaded twice (r2 and r3 inside the loop)."
+   ],
+   "signature_guess": "void ov80_0222B52C(int netId, int size, const u16 *data, FactoryCommWork *ctx)",
+   "signature_sources": {
+    "asm/overlay_80_0222AEF8.s": "void ov80_0222B52C(int netId, int size, const u16 *data, FactoryCommWork *ctx)"
+   },
+   "struct_accesses": [
+    {
+     "meaning": "recv counter",
+     "offset": "0x702",
+     "param": 3,
+     "width": 1
+    },
+    {
+     "meaning": "u8 type",
+     "offset": "0x4",
+     "param": 3,
+     "width": 1
+    },
+    {
+     "meaning": "u16[n]",
+     "offset": "0x584",
+     "param": 3,
+     "width": 2
+    },
+    {
+     "meaning": "u8[n]",
+     "offset": "0x590",
+     "param": 3,
+     "width": 1
+    },
+    {
+     "meaning": "u32[n] = lo | hi<<16",
+     "offset": "0x598",
+     "param": 3,
+     "width": 4
+    }
+   ]
+  },
+  "ov80_0222B5C8": {
+   "callers": [],
+   "confidence": "high",
+   "defined_in": "asm/overlay_80_0222AEF8.s",
+   "mode": "thumb",
+   "notes": [
+    "[asm/overlay_80_0222AEF8.s] sub_02030E08(save) result is discarded. Then w->buf[1]=w->u14; w->buf[2]=w->u16; fs=Save_Frontier_GetStatic(save); s=sub_0205C1F0(type); FrontierSave_GetStat(fs, s, sub_0205C268(sub_0205C1F0(type))) -> u3D6. cmd 0x2a, size 0x28. Caller: ov80_02233280 in overlay_80_022324C4."
+   ],
+   "signature_guess": "BOOL ov80_0222B5C8(CastleCommWork *w)",
+   "signature_sources": {
+    "asm/overlay_80_0222AEF8.s": "BOOL ov80_0222B5C8(CastleCommWork *w)"
+   },
+   "struct_accesses": [
+    {
+     "meaning": "SaveData *",
+     "offset": "0x4",
+     "param": 0,
+     "width": 4
+    },
+    {
+     "meaning": "u8 type",
+     "offset": "0x10",
+     "param": 0,
+     "width": 1
+    },
+    {
+     "meaning": "u16 -> 0x3c2",
+     "offset": "0x14",
+     "param": 0,
+     "width": 2
+    },
+    {
+     "meaning": "u16 -> 0x3c4",
+     "offset": "0x16",
+     "param": 0,
+     "width": 2
+    },
+    {
+     "meaning": "u16 sendBuf[20] (0x28)",
+     "offset": "0x3c0",
+     "param": 0,
+     "width": 2
+    },
+    {
+     "meaning": "= FrontierSave_GetStat(...)",
+     "offset": "0x3d6",
+     "param": 0,
+     "width": 2
+    }
+   ]
+  },
+  "ov80_0222B628": {
+   "callers": [],
+   "confidence": "high",
+   "defined_in": "asm/overlay_80_0222AEF8.s",
+   "mode": "thumb",
+   "signature_guess": "void ov80_0222B628(int netId, int size, const u16 *data, CastleCommWork *ctx)",
+   "signature_sources": {
+    "asm/overlay_80_0222AEF8.s": "void ov80_0222B628(int netId, int size, const u16 *data, CastleCommWork *ctx)"
+   },
+   "struct_accesses": [
+    {
+     "meaning": "recv counter",
+     "offset": "0xa1a",
+     "param": 3,
+     "width": 1
+    },
+    {
+     "meaning": "= data[1]",
+     "offset": "0xa16",
+     "param": 3,
+     "width": 2
+    },
+    {
+     "meaning": "= data[2]",
+     "offset": "0xa12",
+     "param": 3,
+     "width": 2
+    },
+    {
+     "meaning": "= data[11]",
+     "offset": "0xa1c",
+     "param": 3,
+     "width": 2
+    }
+   ]
+  },
+  "ov80_0222B65C": {
+   "callers": [],
+   "confidence": "high",
+   "defined_in": "asm/overlay_80_0222AEF8.s",
+   "mode": "thumb",
+   "notes": [
+    "[asm/overlay_80_0222AEF8.s] Uses a single walking pointer: ldrh [r3,#0x30] / strh [r3,0x3c0]. So index both fields of the same struct by i. cmd 0x2b, size 0x28."
+   ],
+   "signature_guess": "BOOL ov80_0222B65C(CastleCommWork *w)",
+   "signature_sources": {
+    "asm/overlay_80_0222AEF8.s": "BOOL ov80_0222B65C(CastleCommWork *w)"
+   },
+   "struct_accesses": [
+    {
+     "meaning": "u16[14]",
+     "offset": "0x30",
+     "param": 0,
+     "width": 2
+    },
+    {
+     "meaning": "sendBuf",
+     "offset": "0x3c0",
+     "param": 0,
+     "width": 2
+    }
+   ]
+  },
+  "ov80_0222B690": {
+   "callers": [],
+   "confidence": "high",
+   "defined_in": "asm/overlay_80_0222AEF8.s",
+   "mode": "thumb",
+   "notes": [
+    "[asm/overlay_80_0222AEF8.s] Requires sub_0203769C()!=0."
+   ],
+   "signature_guess": "void ov80_0222B690(int netId, int size, const u16 *data, CastleCommWork *ctx)",
+   "signature_sources": {
+    "asm/overlay_80_0222AEF8.s": "void ov80_0222B690(int netId, int size, const u16 *data, CastleCommWork *ctx)"
+   },
+   "struct_accesses": [
+    {
+     "meaning": "recv counter",
+     "offset": "0xa1a",
+     "param": 3,
+     "width": 1
+    },
+    {
+     "meaning": "u16[14] dest",
+     "offset": "0x30",
+     "param": 3,
+     "width": 2
+    }
+   ]
+  },
+  "ov80_0222B6C8": {
+   "callers": [],
+   "confidence": "medium",
+   "defined_in": "asm/overlay_80_0222AEF8.s",
+   "mode": "thumb",
+   "notes": [
+    "[asm/overlay_80_0222AEF8.s] buf[0]=a18. If (sub_0203769C()==0): if (a1b==0) a1b=a18; else if (a1b-6==4 [literal sub #6; cmp #4]) { if (a18!=4) a1b=a18; }. Else: if (a1b==4 && a18!=4) a1b=a18+6. Then buf[1]=a1b; send 0x2c, size 0x28. The pool 0xA1B is loaded before the bne, which is scheduling-sensitive."
+   ],
+   "signature_guess": "BOOL ov80_0222B6C8(CastleCommWork *w)",
+   "signature_sources": {
+    "asm/overlay_80_0222AEF8.s": "BOOL ov80_0222B6C8(CastleCommWork *w)"
+   },
+   "struct_accesses": [
+    {
+     "meaning": "u8 selection (own)",
+     "offset": "0xa18",
+     "param": 0,
+     "width": 1
+    },
+    {
+     "meaning": "u8 resolved selection",
+     "offset": "0xa1b",
+     "param": 0,
+     "width": 1
+    },
+    {
+     "meaning": "buf[0] = a18",
+     "offset": "0x3c0",
+     "param": 0,
+     "width": 2
+    },
+    {
+     "meaning": "buf[1] = a1b",
+     "offset": "0x3c2",
+     "param": 0,
+     "width": 2
+    }
+   ]
+  },
+  "ov80_0222B740": {
+   "callers": [],
+   "confidence": "medium",
+   "defined_in": "asm/overlay_80_0222AEF8.s",
+   "mode": "thumb",
+   "notes": [
+    "[asm/overlay_80_0222AEF8.s] if netId==cur return; a19=data[0]. Parent (sub_0203769C()==0): if a1b==0 { a1b=a19+6; if (a19!=4) *ctx->pA20=0xEEDD; } else if a1b==4 && a19!=4 { a18=a19+6; a1b=a19+6; } (a19 is reloaded between the stores). Child: a1b=data[1]; if (a1b!=4) *pA20=0xEEDD (a1b is reloaded after the store); if (a19==4 && a18!=0 && a18!=4) a1b=a18+6. The parent path has early returns (pop mid-function)."
+   ],
+   "signature_guess": "void ov80_0222B740(int netId, int size, const u16 *data, CastleCommWork *ctx)",
+   "signature_sources": {
+    "asm/overlay_80_0222AEF8.s": "void ov80_0222B740(int netId, int size, const u16 *data, CastleCommWork *ctx)"
+   },
+   "struct_accesses": [
+    {
+     "meaning": "recv counter",
+     "offset": "0xa1a",
+     "param": 3,
+     "width": 1
+    },
+    {
+     "meaning": "partner selection = data[0]",
+     "offset": "0xa19",
+     "param": 3,
+     "width": 1
+    },
+    {
+     "meaning": "own selection",
+     "offset": "0xa18",
+     "param": 3,
+     "width": 1
+    },
+    {
+     "meaning": "resolved selection",
+     "offset": "0xa1b",
+     "param": 3,
+     "width": 1
+    },
+    {
+     "meaning": "u16 * (written 0xEEDD)",
+     "offset": "0xa20",
+     "param": 3,
+     "width": 4
+    }
+   ]
+  },
+  "ov80_0222B7E4": {
+   "callers": [],
+   "confidence": "high",
+   "defined_in": "asm/overlay_80_0222AEF8.s",
+   "mode": "thumb",
+   "notes": [
+    "[asm/overlay_80_0222AEF8.s] cmd 0x2d, size 0x28. Regalloc hazard: 0x278 is rematerialized inside the third loop (mov r4,#0x9e; lsl) even though r5 already holds it."
+   ],
+   "signature_guess": "BOOL ov80_0222B7E4(CastleCommWork *w)",
+   "signature_sources": {
+    "asm/overlay_80_0222AEF8.s": "BOOL ov80_0222B7E4(CastleCommWork *w)"
+   },
+   "struct_accesses": [
+    {
+     "meaning": "u16[4]",
+     "offset": "0x26c",
+     "param": 0,
+     "width": 2
+    },
+    {
+     "meaning": "u8[4]",
+     "offset": "0x274",
+     "param": 0,
+     "width": 1
+    },
+    {
+     "meaning": "u32[4] lo/hi",
+     "offset": "0x278",
+     "param": 0,
+     "width": 4
+    },
+    {
+     "meaning": "sendBuf; [4..8)=u8s at 0x3c8, lo at 0x3d0, hi at 0x3d8",
+     "offset": "0x3c0",
+     "param": 0,
+     "width": 2
+    }
+   ]
+  },
+  "ov80_0222B860": {
+   "callers": [],
+   "confidence": "high",
+   "defined_in": "asm/overlay_80_0222AEF8.s",
+   "mode": "thumb",
+   "notes": [
+    "[asm/overlay_80_0222AEF8.s] Same template as B334. Requires sub_0203769C()!=0."
+   ],
+   "signature_guess": "void ov80_0222B860(int netId, int size, const u16 *data, CastleCommWork *ctx)",
+   "signature_sources": {
+    "asm/overlay_80_0222AEF8.s": "void ov80_0222B860(int netId, int size, const u16 *data, CastleCommWork *ctx)"
+   },
+   "struct_accesses": [
+    {
+     "meaning": "recv counter",
+     "offset": "0xa1a",
+     "param": 3,
+     "width": 1
+    },
+    {
+     "meaning": "u16[4]",
+     "offset": "0x26c",
+     "param": 3,
+     "width": 2
+    },
+    {
+     "meaning": "u8[4]",
+     "offset": "0x274",
+     "param": 3,
+     "width": 1
+    },
+    {
+     "meaning": "u32[4] = lo | hi<<16",
+     "offset": "0x278",
+     "param": 3,
+     "width": 4
+    }
+   ]
+  },
+  "ov80_0222B8D8": {
+   "callers": [],
+   "confidence": "medium",
+   "defined_in": "asm/overlay_80_0222AEF8.s",
+   "mode": "thumb",
+   "notes": [
+    "[asm/overlay_80_0222AEF8.s] The caller passes r2 without narrowing, so the param is u16 (dispatcher arg u16) or int. cmd 0x2e. No literal pool."
+   ],
+   "signature_guess": "BOOL ov80_0222B8D8(CastleCommWork *w, u16 val)",
+   "signature_sources": {
+    "asm/overlay_80_0222AEF8.s": "BOOL ov80_0222B8D8(CastleCommWork *w, u16 val)"
+   },
+   "struct_accesses": [
+    {
+     "meaning": "sendBuf[0]=val",
+     "offset": "0x3c0",
+     "param": 0,
+     "width": 2
+    }
+   ]
+  },
+  "ov80_0222B8F8": {
+   "callers": [],
+   "confidence": "high",
+   "defined_in": "asm/overlay_80_0222AEF8.s",
+   "mode": "thumb",
+   "signature_guess": "void ov80_0222B8F8(int netId, int size, const u16 *data, CastleCommWork *ctx)",
+   "signature_sources": {
+    "asm/overlay_80_0222AEF8.s": "void ov80_0222B8F8(int netId, int size, const u16 *data, CastleCommWork *ctx)"
+   },
+   "struct_accesses": [
+    {
+     "meaning": "recv counter",
+     "offset": "0xa1a",
+     "param": 3,
+     "width": 1
+    },
+    {
+     "meaning": "u8 = data[0]",
+     "offset": "0xa10",
+     "param": 3,
+     "width": 1
+    }
+   ]
+  },
+  "ov80_0222B920": {
+   "callers": [],
+   "confidence": "medium",
+   "defined_in": "asm/overlay_80_0222AEF8.s",
+   "mode": "thumb",
+   "notes": [
+    "[asm/overlay_80_0222AEF8.s] cmd 0x2f."
+   ],
+   "signature_guess": "BOOL ov80_0222B920(CastleCommWork *w, u16 val)",
+   "signature_sources": {
+    "asm/overlay_80_0222AEF8.s": "BOOL ov80_0222B920(CastleCommWork *w, u16 val)"
+   },
+   "struct_accesses": [
+    {
+     "meaning": "sendBuf[0]=val",
+     "offset": "0x3c0",
+     "param": 0,
+     "width": 2
+    }
+   ]
+  },
+  "ov80_0222B940": {
+   "callers": [],
+   "confidence": "high",
+   "defined_in": "asm/overlay_80_0222AEF8.s",
+   "mode": "thumb",
+   "signature_guess": "void ov80_0222B940(int netId, int size, const u16 *data, CastleCommWork *ctx)",
+   "signature_sources": {
+    "asm/overlay_80_0222AEF8.s": "void ov80_0222B940(int netId, int size, const u16 *data, CastleCommWork *ctx)"
+   },
+   "struct_accesses": [
+    {
+     "meaning": "recv counter",
+     "offset": "0xa1a",
+     "param": 3,
+     "width": 1
+    },
+    {
+     "meaning": "u8 = data[0]",
+     "offset": "0xa11",
+     "param": 3,
+     "width": 1
+    }
+   ]
+  },
+  "ov80_0222B968": {
+   "callers": [],
+   "confidence": "high",
+   "defined_in": "asm/overlay_80_0222AEF8.s",
+   "mode": "thumb",
+   "notes": [
+    "[asm/overlay_80_0222AEF8.s] n=ov80_02237B24(type,0) (spilled to sp0); size=SizeOfStructPokemon(); for i<n: MI_CpuCopy8(Party_GetMonByIndex(party,i), monBuf + i*size, size). The offset is strength-reduced in r5 and the base spilled to sp4. Then sub_02036FD8(0x30, monBuf, 0x200)==1."
+   ],
+   "signature_guess": "BOOL ov80_0222B968(CastleCommWork *w)",
+   "signature_sources": {
+    "asm/overlay_80_0222AEF8.s": "BOOL ov80_0222B968(CastleCommWork *w)"
+   },
+   "struct_accesses": [
+    {
+     "meaning": "u8 type",
+     "offset": "0x10",
+     "param": 0,
+     "width": 1
+    },
+    {
+     "meaning": "Party *",
+     "offset": "0x28",
+     "param": 0,
+     "width": 4
+    },
+    {
+     "meaning": "u8 monSendBuf[0x200]",
+     "offset": "0x410",
+     "param": 0,
+     "width": 0
+    }
+   ]
+  },
+  "ov80_0222B9CC": {
+   "callers": [],
+   "confidence": "high",
+   "defined_in": "asm/overlay_80_0222AEF8.s",
+   "mode": "thumb",
+   "notes": [
+    "[asm/overlay_80_0222AEF8.s] data and ctx are spilled to sp0/sp4 and n to sp8. Body: mon=AllocMonZeroed(HEAP_ID_FIELD2 /*0xb*/); for i<n { MI_CpuCopy8((u8*)data+i*size, mon, size); Party_AddMon(ctx->party, mon); } Heap_Free(mon); if (sub_0203769C()!=0) { Party_SwapSlots(party,0,2); Party_SwapSlots(party,1,3); }. Party is re-read from ctx for each call."
+   ],
+   "signature_guess": "void ov80_0222B9CC(int netId, int size, void *data, CastleCommWork *ctx)",
+   "signature_sources": {
+    "asm/overlay_80_0222AEF8.s": "void ov80_0222B9CC(int netId, int size, void *data, CastleCommWork *ctx)"
+   },
+   "struct_accesses": [
+    {
+     "meaning": "recv counter",
+     "offset": "0xa1a",
+     "param": 3,
+     "width": 1
+    },
+    {
+     "meaning": "u8 type",
+     "offset": "0x10",
+     "param": 3,
+     "width": 1
+    },
+    {
+     "meaning": "Party *",
+     "offset": "0x28",
+     "param": 3,
+     "width": 4
+    }
+   ]
+  },
+  "ov80_0222BA5C": {
+   "callers": [],
+   "confidence": "high",
+   "defined_in": "asm/overlay_80_0222AEF8.s",
+   "mode": "thumb",
+   "notes": [
+    "[asm/overlay_80_0222AEF8.s] GF_ASSERT(size<=0x200). No literal pool (0x61<<4)."
+   ],
+   "signature_guess": "void *ov80_0222BA5C(int netId, CastleCommWork *ctx, int size)",
+   "signature_sources": {
+    "asm/overlay_80_0222AEF8.s": "void *ov80_0222BA5C(int netId, CastleCommWork *ctx, int size)"
+   },
+   "struct_accesses": [
+    {
+     "meaning": "recvBuf[netId][0x200]",
+     "offset": "0x610",
+     "param": 1,
+     "width": 0
+    }
+   ]
+  },
+  "ov80_0222BA7C": {
+   "callers": [],
+   "confidence": "high",
+   "defined_in": "asm/overlay_80_0222AEF8.s",
+   "mode": "thumb",
+   "notes": [
+    "[asm/overlay_80_0222AEF8.s] sub_02030FA0 result is discarded. cmd 0x41, size 0x28. Store order: 0x426 then 0x428. Caller: ov80_02234E50 in overlay_80_022340E8."
+   ],
+   "signature_guess": "BOOL ov80_0222BA7C(ArcadeContext *ctx)",
+   "signature_sources": {
+    "asm/overlay_80_0222AEF8.s": "BOOL ov80_0222BA7C(ArcadeContext *ctx)"
+   },
+   "struct_accesses": [
+    {
+     "meaning": "SaveData * (ArcadeContext.unk0[1])",
+     "offset": "0x4",
+     "param": 0,
+     "width": 4
+    },
+    {
+     "meaning": "winStreak -> 0x426",
+     "offset": "0x18",
+     "param": 0,
+     "width": 2
+    },
+    {
+     "meaning": "unk1A -> 0x428",
+     "offset": "0x1a",
+     "param": 0,
+     "width": 2
+    },
+    {
+     "meaning": "sendBuf (inside unk418[] at index 6)",
+     "offset": "0x424",
+     "param": 0,
+     "width": 2
+    }
+   ]
+  },
+  "ov80_0222BAB0": {
+   "callers": [],
+   "confidence": "high",
+   "defined_in": "asm/overlay_80_0222AEF8.s",
+   "mode": "thumb",
+   "signature_guess": "void ov80_0222BAB0(int netId, int size, const u16 *data, ArcadeContext *ctx)",
+   "signature_sources": {
+    "asm/overlay_80_0222AEF8.s": "void ov80_0222BAB0(int netId, int size, const u16 *data, ArcadeContext *ctx)"
+   },
+   "struct_accesses": [
+    {
+     "meaning": "recv counter (unkA7C)",
+     "offset": "0xa7c",
+     "param": 3,
+     "width": 1
+    },
+    {
+     "meaning": "multiWinStreak = data[1]",
+     "offset": "0xa78",
+     "param": 3,
+     "width": 2
+    },
+    {
+     "meaning": "u16 = data[2] (header has u8 unkA76/unkA77)",
+     "offset": "0xa76",
+     "param": 3,
+     "width": 2
+    }
+   ]
+  },
+  "ov80_0222BAE0": {
+   "callers": [],
+   "confidence": "high",
+   "defined_in": "asm/overlay_80_0222AEF8.s",
+   "mode": "thumb",
+   "notes": [
+    "[asm/overlay_80_0222AEF8.s] Single walking pointer r4; reads through add r0,#0x78 because 0x78 exceeds the ldrh imm range. cmd 0x42, size 0x28."
+   ],
+   "signature_guess": "BOOL ov80_0222BAE0(ArcadeContext *ctx)",
+   "signature_sources": {
+    "asm/overlay_80_0222AEF8.s": "BOOL ov80_0222BAE0(ArcadeContext *ctx)"
+   },
+   "struct_accesses": [
+    {
+     "meaning": "u16[14] (header field 'unk74' at 0x78)",
+     "offset": "0x78",
+     "param": 0,
+     "width": 2
+    },
+    {
+     "meaning": "sendBuf",
+     "offset": "0x424",
+     "param": 0,
+     "width": 2
+    }
+   ]
+  },
+  "ov80_0222BB18": {
+   "callers": [],
+   "confidence": "high",
+   "defined_in": "asm/overlay_80_0222AEF8.s",
+   "mode": "thumb",
+   "notes": [
+    "[asm/overlay_80_0222AEF8.s] Requires sub_0203769C()!=0."
+   ],
+   "signature_guess": "void ov80_0222BB18(int netId, int size, const u16 *data, ArcadeContext *ctx)",
+   "signature_sources": {
+    "asm/overlay_80_0222AEF8.s": "void ov80_0222BB18(int netId, int size, const u16 *data, ArcadeContext *ctx)"
+   },
+   "struct_accesses": [
+    {
+     "meaning": "recv counter",
+     "offset": "0xa7c",
+     "param": 3,
+     "width": 1
+    },
+    {
+     "meaning": "u16[14] dest",
+     "offset": "0x78",
+     "param": 3,
+     "width": 2
+    }
+   ]
+  },
+  "ov80_0222BB54": {
+   "callers": [],
+   "confidence": "high",
+   "defined_in": "asm/overlay_80_0222AEF8.s",
+   "mode": "thumb",
+   "notes": [
+    "[asm/overlay_80_0222AEF8.s] Same template as B7E4, including the rematerialized constant 0x320 in the third loop. cmd 0x43."
+   ],
+   "signature_guess": "BOOL ov80_0222BB54(ArcadeContext *ctx)",
+   "signature_sources": {
+    "asm/overlay_80_0222AEF8.s": "BOOL ov80_0222BB54(ArcadeContext *ctx)"
+   },
+   "struct_accesses": [
+    {
+     "meaning": "unk314[4]",
+     "offset": "0x314",
+     "param": 0,
+     "width": 2
+    },
+    {
+     "meaning": "unk31C[4]",
+     "offset": "0x31c",
+     "param": 0,
+     "width": 1
+    },
+    {
+     "meaning": "unk320[4] lo/hi",
+     "offset": "0x320",
+     "param": 0,
+     "width": 4
+    },
+    {
+     "meaning": "sendBuf ([4..8) at 0x42c, lo at 0x434, hi at 0x43c)",
+     "offset": "0x424",
+     "param": 0,
+     "width": 2
+    }
+   ]
+  },
+  "ov80_0222BBD0": {
+   "callers": [],
+   "confidence": "high",
+   "defined_in": "asm/overlay_80_0222AEF8.s",
+   "mode": "thumb",
+   "signature_guess": "void ov80_0222BBD0(int netId, int size, const u16 *data, ArcadeContext *ctx)",
+   "signature_sources": {
+    "asm/overlay_80_0222AEF8.s": "void ov80_0222BBD0(int netId, int size, const u16 *data, ArcadeContext *ctx)"
+   },
+   "struct_accesses": [
+    {
+     "meaning": "recv counter",
+     "offset": "0xa7c",
+     "param": 3,
+     "width": 1
+    },
+    {
+     "meaning": "unk314[4]",
+     "offset": "0x314",
+     "param": 3,
+     "width": 2
+    },
+    {
+     "meaning": "unk31C[4]",
+     "offset": "0x31c",
+     "param": 3,
+     "width": 1
+    },
+    {
+     "meaning": "unk320[4] = lo | hi<<16",
+     "offset": "0x320",
+     "param": 3,
+     "width": 4
+    }
+   ]
+  },
+  "ov80_0222BC48": {
+   "callers": [],
+   "confidence": "medium",
+   "defined_in": "asm/overlay_80_0222AEF8.s",
+   "mode": "thumb",
+   "notes": [
+    "[asm/overlay_80_0222AEF8.s] cmd 0x44. The caller passes r2 unnarrowed (header ov80_02234E50 says u32 a2); u16 or int both give no narrowing at a u16/int callee."
+   ],
+   "signature_guess": "BOOL ov80_0222BC48(ArcadeContext *ctx, u16 val)",
+   "signature_sources": {
+    "asm/overlay_80_0222AEF8.s": "BOOL ov80_0222BC48(ArcadeContext *ctx, u16 val)"
+   },
+   "struct_accesses": [
+    {
+     "meaning": "sendBuf[0]=val",
+     "offset": "0x424",
+     "param": 0,
+     "width": 2
+    }
+   ]
+  },
+  "ov80_0222BC6C": {
+   "callers": [],
+   "confidence": "high",
+   "defined_in": "asm/overlay_80_0222AEF8.s",
+   "mode": "thumb",
+   "signature_guess": "void ov80_0222BC6C(int netId, int size, const u16 *data, ArcadeContext *ctx)",
+   "signature_sources": {
+    "asm/overlay_80_0222AEF8.s": "void ov80_0222BC6C(int netId, int size, const u16 *data, ArcadeContext *ctx)"
+   },
+   "struct_accesses": [
+    {
+     "meaning": "recv counter",
+     "offset": "0xa7c",
+     "param": 3,
+     "width": 1
+    },
+    {
+     "meaning": "unkA74 = data[0]",
+     "offset": "0xa74",
+     "param": 3,
+     "width": 1
+    }
+   ]
+  },
+  "ov80_0222BC94": {
+   "callers": [],
+   "confidence": "medium",
+   "defined_in": "asm/overlay_80_0222AEF8.s",
+   "mode": "thumb",
+   "notes": [
+    "[asm/overlay_80_0222AEF8.s] cmd 0x45."
+   ],
+   "signature_guess": "BOOL ov80_0222BC94(ArcadeContext *ctx, u16 val)",
+   "signature_sources": {
+    "asm/overlay_80_0222AEF8.s": "BOOL ov80_0222BC94(ArcadeContext *ctx, u16 val)"
+   },
+   "struct_accesses": [
+    {
+     "meaning": "sendBuf[0]=val",
+     "offset": "0x424",
+     "param": 0,
+     "width": 2
+    }
+   ]
+  },
+  "ov80_0222BCB8": {
+   "callers": [],
+   "confidence": "high",
+   "defined_in": "asm/overlay_80_0222AEF8.s",
+   "mode": "thumb",
+   "signature_guess": "void ov80_0222BCB8(int netId, int size, const u16 *data, ArcadeContext *ctx)",
+   "signature_sources": {
+    "asm/overlay_80_0222AEF8.s": "void ov80_0222BCB8(int netId, int size, const u16 *data, ArcadeContext *ctx)"
+   },
+   "struct_accesses": [
+    {
+     "meaning": "recv counter",
+     "offset": "0xa7c",
+     "param": 3,
+     "width": 1
+    },
+    {
+     "meaning": "unkA75 = data[0]",
+     "offset": "0xa75",
+     "param": 3,
+     "width": 1
+    }
+   ]
+  },
+  "ov80_0222BCE0": {
+   "callers": [],
+   "confidence": "high",
+   "defined_in": "asm/overlay_80_0222AEF8.s",
+   "mode": "thumb",
+   "notes": [
+    "[asm/overlay_80_0222AEF8.s] Clone of B968 using BattleArcade_GetMonCount(ctx->type,0). cmd 0x46."
+   ],
+   "signature_guess": "BOOL ov80_0222BCE0(ArcadeContext *ctx)",
+   "signature_sources": {
+    "asm/overlay_80_0222AEF8.s": "BOOL ov80_0222BCE0(ArcadeContext *ctx)"
+   },
+   "struct_accesses": [
+    {
+     "meaning": "type",
+     "offset": "0x10",
+     "param": 0,
+     "width": 1
+    },
+    {
+     "meaning": "playerParty",
+     "offset": "0x70",
+     "param": 0,
+     "width": 4
+    },
+    {
+     "meaning": "monSendBuf[0x200] (inside unk418)",
+     "offset": "0x474",
+     "param": 0,
+     "width": 0
+    }
+   ]
+  },
+  "ov80_0222BD44": {
+   "callers": [],
+   "confidence": "high",
+   "defined_in": "asm/overlay_80_0222AEF8.s",
+   "mode": "thumb",
+   "notes": [
+    "[asm/overlay_80_0222AEF8.s] Clone of B9CC."
+   ],
+   "signature_guess": "void ov80_0222BD44(int netId, int size, void *data, ArcadeContext *ctx)",
+   "signature_sources": {
+    "asm/overlay_80_0222AEF8.s": "void ov80_0222BD44(int netId, int size, void *data, ArcadeContext *ctx)"
+   },
+   "struct_accesses": [
+    {
+     "meaning": "recv counter",
+     "offset": "0xa7c",
+     "param": 3,
+     "width": 1
+    },
+    {
+     "meaning": "type",
+     "offset": "0x10",
+     "param": 3,
+     "width": 1
+    },
+    {
+     "meaning": "playerParty",
+     "offset": "0x70",
+     "param": 3,
+     "width": 4
+    }
+   ]
+  },
+  "ov80_0222BDD4": {
+   "callers": [],
+   "confidence": "high",
+   "defined_in": "asm/overlay_80_0222AEF8.s",
+   "mode": "thumb",
+   "notes": [
+    "[asm/overlay_80_0222AEF8.s] GF_ASSERT(size<=0x200)."
+   ],
+   "signature_guess": "void *ov80_0222BDD4(int netId, ArcadeContext *ctx, int size)",
+   "signature_sources": {
+    "asm/overlay_80_0222AEF8.s": "void *ov80_0222BDD4(int netId, ArcadeContext *ctx, int size)"
+   },
+   "struct_accesses": [
+    {
+     "meaning": "recvBuf[netId][0x200]",
+     "offset": "0x674",
+     "param": 1,
+     "width": 0
+    }
+   ]
+  },
+  "ov80_02236DD4": {
+   "callers": [
+    "asm/overlay_80_0222AEF8.s"
+   ],
+   "header": "include/frontier/overlay_80_02236B78.h (matched C: returns 3 for type 0/1, 2 for 2/3)",
+   "known_prototype": "int ov80_02236DD4(int a0)",
+   "signature_sources": {}
+  },
   "ov80_02237B24": {
    "callers": [
+    "asm/overlay_80_0222AEF8.s",
     "asm/overlay_83_02243D7C.s"
    ],
    "confidence": "low",
-   "signature_guess": "int ov80_02237B24(u8 a0, int a1)",
+   "signature_guess": "u8 ov80_02237B24(u8 type, int a1)",
    "signature_sources": {
+    "asm/overlay_80_0222AEF8.s": "u8 ov80_02237B24(u8 type, int a1)",
     "asm/overlay_83_02243D7C.s": "int ov80_02237B24(u8 a0, int a1)"
    }
   },
@@ -71089,14 +75465,25 @@
   },
   "sub_02030E08": {
    "callers": [
+    "asm/overlay_80_0222AEF8.s",
     "asm/overlay_83_0223DD60.s",
     "asm/overlay_83_02242FE8.s"
    ],
    "confidence": "low",
+   "header": "include/unk_02030A98.h",
+   "known_prototype": "u32 sub_02030E08(SaveData *saveData)",
    "signature_guess": "void *sub_02030E08(void *arg)",
    "signature_sources": {
     "asm/overlay_83_02242FE8.s": "void *sub_02030E08(void *arg)"
    }
+  },
+  "sub_02030FA0": {
+   "callers": [
+    "asm/overlay_80_0222AEF8.s"
+   ],
+   "header": "include/unk_02030A98.h",
+   "known_prototype": "void *sub_02030FA0(SaveData *saveData)",
+   "signature_sources": {}
   },
   "sub_02031108": {
    "callers": [
@@ -72185,11 +76572,24 @@
    ],
    "signature_sources": {}
   },
+  "sub_02036FD8": {
+   "callers": [
+    "asm/overlay_80_0222AEF8.s"
+   ],
+   "confidence": "low",
+   "signature_guess": "BOOL sub_02036FD8(int cmd, void *data, int size)",
+   "signature_sources": {
+    "asm/overlay_80_0222AEF8.s": "BOOL sub_02036FD8(int cmd, void *data, int size)"
+   }
+  },
   "sub_02037030": {
    "callers": [
+    "asm/overlay_80_0222AEF8.s",
     "asm/overlay_83_02243D7C.s"
    ],
    "confidence": "low",
+   "header": "include/unk_02035900.h",
+   "known_prototype": "BOOL sub_02037030(int arg0, void *arg1, int arg2)",
    "signature_guess": "BOOL sub_02037030(int a0, void *buf, int size)",
    "signature_sources": {
     "asm/overlay_83_02243D7C.s": "BOOL sub_02037030(int a0, void *buf, int size)"
@@ -72245,6 +76645,7 @@
   },
   "sub_0203769C": {
    "callers": [
+    "asm/overlay_80_0222AEF8.s",
     "asm/overlay_83_0223DD60.s",
     "asm/overlay_83_02243D7C.s",
     "asm/overlay_83_02246E08.s",
@@ -72817,10 +77218,13 @@
   },
   "sub_0205C1F0": {
    "callers": [
+    "asm/overlay_80_0222AEF8.s",
     "asm/overlay_83_02242FE8.s",
     "asm/overlay_83_02243D7C.s"
    ],
    "confidence": "low",
+   "header": "include/unk_0205BFF0.h",
+   "known_prototype": "u32 sub_0205C1F0(u8)",
    "signature_guess": "int sub_0205C1F0(u8 mode)",
    "signature_sources": {
     "asm/overlay_83_02242FE8.s": "int sub_0205C1F0(u8 mode)",
@@ -72829,11 +77233,14 @@
   },
   "sub_0205C268": {
    "callers": [
+    "asm/overlay_80_0222AEF8.s",
     "asm/overlay_83_02242FE8.s",
     "asm/overlay_83_02243D7C.s",
     "asm/overlay_83_02246E08.s"
    ],
    "confidence": "low",
+   "header": "include/player_avatar.h",
+   "known_prototype": "u32 sub_0205C268(u32 param0)",
    "signature_guess": "int sub_0205C268(int a0)",
    "signature_sources": {
     "asm/overlay_83_02242FE8.s": "int sub_0205C268(int a0)",

@@ -860,6 +860,16 @@
       "attempts": 5,
       "result": "matched",
       "note": "compare-verified (HG + SS full ROM SHA1 OK). Comm-layer core (pokeplatinum comm_ring/comm_queue/command-table analogue): RingBuf {u8 *data; s16 readPos; volatile s16 writePos; volatile s16 pendingPos; s16 size} (volatile inferred from reloads), CommQueueNode 0x10 {data, prev, next, u16 size, u8 cmd, headerSent:1, inRing:1} + CommQueueMan 0x20 (two lists, resume node, ring, node pool), the 22-entry {handler,getSize,getBuf} table + lazily allocated CommRegistry (bss) for cmd >= 22, and the small cmd-class predicates (switch trees/jump tables came out as plain switches). 44/44 pure C. Frozen include/unk_02033AE0.h NOT included (it declares sub_02034044(void)/s32 sub_02033FC4(u8) as matched by callers); TU carries its own prototypes; table callees declared locally with the CommHandler/CommGetSize/CommGetBuf types. Fixes: node-pool scans need a hoisted walking pointer declared before i; sub_02033C70 body inside if(head!=NULL); CommGetBuf takes a 3rd (size) arg passed through r2. Rodata order (two anon local-array templates for sub_02033FC4/FF0, then the static table) matched first try. objdiff .text -34 = 17 mid-file 2-mod-4 pads (benign)."
+    },
+    {
+      "file": "asm/overlay_80_0223A00C.s",
+      "lines": 1576,
+      "functions": 20,
+      "matched_functions": 20,
+      "nonmatching": 0,
+      "attempts": 6,
+      "result": "matched",
+      "note": "compare-verified (HG + SS full ROM SHA1 OK). Battle Frontier facility intro splash (ov80_0223A00C launched from overlay_80_0222BDF4 frontier script cmd): SysTask env 0x168 with a 19-state sequencer (fades, window-reveal scroll tasks writing WIN0/WIN1 via G2_SetWnd*Position in a VWait task, palette-cycle task over an 8-palette 0x100-byte buffer, 4-sprite affine pop-in with FX_Div interpolators, facility-name TextOBJ, slide-in logo sprite). 20/20 pure C; FX32_CONST(ctx->x) soft-float rounding macro matched directly. Text helper copied from battle_input.c BattleInput_CreateTextObject (new pattern). Fixes: palette buffer 0x100 not 0xE0; A8D4 tail `if (t + 1 <= dur) { t++; return FALSE; }` + `val + start`; A834 decl order; the two equal-size ManagedSpriteTemplates must be DEFINED in reverse address order (objdiff blind, OVY_80.sbin caught it). All non-entry functions static (none referenced elsewhere)."
     }
   ],
   "failed": [
@@ -1279,7 +1289,7 @@
   ],
   "stats": {
     "total_attempts": 208,
-    "total_matched": 78,
+    "total_matched": 79,
     "total_failed": 31
   },
   "matched": [
@@ -1382,6 +1392,7 @@
     "asm/overlay_18_021F8AB8.s",
     "asm/overlay_18_021F7ED4.s",
     "asm/unk_02056680.s",
-    "asm/unk_02033AE0.s"
+    "asm/unk_02033AE0.s",
+    "asm/overlay_80_0223A00C.s"
   ]
 }

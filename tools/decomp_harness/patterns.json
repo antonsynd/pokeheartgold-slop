@@ -1739,6 +1739,12 @@
       "category": "codegen",
       "title": "Linear scan with walking pointer (adds rP,#stride) + index counter: hoist `T *p = base;` declared BEFORE `int i;`, and write `p++` in the body",
       "body": "Retail loop shape: `ldr rMax,[s,#max]; movs rI,#0; ldr rP,[s,#base]; cmp rMax,#0; ble; L: ldrb r0,[rP,#off]; ...; adds rI,#1; adds rP,#16; cmp rI,rMax; blt L` with the found element returned as `adds r0,rP,#0`. Writing `for (i=0;i<s->max;i++) if (s->arr[i].f==0) return &s->arr[i];` instead loads the base inside the guarded region and recomputes `base + i<<4` for the return (+10 B). Fix: `T *p = s->arr; int i; for (i = 0; i < s->max; i++) { if (p->f == 0) return p; p++; }`. Declaration order decides which of p/i gets r1 vs r2: declare the pointer FIRST (it got r1, i r2, matching retail). Also: an equality test `p->cmd == cmd` emitted retail `cmp r0(ldrb),r1(param)` directly. Seen unk_02033AE0 sub_02033C30/C50/F9C (comm queue node pool scans). Related [[regalloc-order]]."
+    },
+    {
+      "id": "fontoam-textobj-helper-recipe",
+      "category": "file-patterns",
+      "title": "FontOAM TextOBJ creation helper (String -> window -> sub_020135D8) recurs across overlays: copy BattleInput_CreateTextObject",
+      "body": "The helper that measures a String (FontID_String_GetWidth + FX_ModS32(width,8) tile round-up), renders it into a temp Window (InitWindow / AddTextWindowTopLeftCorner(bg,&win,tiles,2,0,0) / AddTextPrinterParameterizedWithColorAndSpacing), reserves OBJ char VRAM (sub_02013688 + sub_02021AC8), fills a TextOBJTemplate {fontSystem, &window, SpriteManager_GetSpriteList, SpriteManager_FindPlttResourceProxy(palId), NULL, alloc.offset, x, y, 0, prio, vram, heap} and calls sub_020135D8 / sub_020138E0 / sub_020136B4, then RemoveWindow + stores {TextOBJ*, UnkStruct_02021AC8, u16 fontLength}, is the SAME function as src/battle/battle_input.c BattleInput_CreateTextObject. Its 11-arg signature (ctx, out, String*, fontId, color, palOffset, palId, x, y, centerText, displayObj{Window; u16 charLength; u16 fontLength}) matched verbatim in overlay_80_0223A00C (ov80_0223A62C) with only ctx field sources, the vram (2DMAIN) and y handling (y - 8, not +264) changed. Its companions: delete = FontOAM_Delete + sub_02021B5C(&alloc); measure = ov80_0223A75C-style. Grep a new file for sub_020135D8 and start from battle_input.c."
     }
   ]
 }
