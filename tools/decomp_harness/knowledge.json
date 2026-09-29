@@ -321,6 +321,299 @@
    ],
    "sweep_output": "sweep/out/overlay_01_022031C0.json"
   },
+  "asm/overlay_117.s": {
+   "notes": "Exports (all referenced only from the fn-ptr table ov01_022068C4 in asm/overlay_01_021EFB38.s; no C callers): ov117_0225F020, ov117_0225F4D4, ov117_0225F4E4, ov117_0225F4F4, ov117_0225F504, ov117_0225F514. Locals (not in .public, so static): ov117_0225F420, ov117_0225F470, ov117_0225F524. All other .inc symbols are imports. No IPA header conflicts, because nothing in src/ references ov117 symbols; a new include/overlay_117.h is optional. Closest template is src/overlay_118.c (sibling in the same ov01 field-transition family, ov114-ov120 dispatched by ov01_021EFB38): it uses the same work struct (state/+4/+0xC/+0x10/+0x14/+0x20), the callback shape (void *task, Work *work), and the same ov01_021EFCF8(1,-0x10,-0x10,&work->unk4,2) intro. No .data/.bss. No save_arrays DECL_CHUNK_EX involvement. Sizes: F020 ~0x400, F420 0x50, F470 0x64, wrappers 0x10 each, F524 ~0x5A8. Pool constants: 0x927C0 (600000 resource tag), 0xFFFFF99A (-0x666), 0x04000050 (BLDCNT), 0x00010200 (text color), 0x04000048 (WININ), 0x6060, 0xFFFF1FFF (DISPCNT wnd mask), 0x04000040 (WIN0H), 0x14A5, 0xFFFA0000, 0x04001000 (DB_DISPCNT), 0xFFFEFFFF, 0x7FFF. Message archive 0xbd = files/msgdata/msg/msg_0189.h.",
+   "oracle": {
+    "functions": {
+     "ov117_0225F020": {
+      "signedness": [
+       {
+        "branch": "bls",
+        "confidence": "high",
+        "evidence": "L16: cmp r0, #7  =>  L17: bls _0225F034",
+        "register": "r0",
+        "verdict": "unsigned"
+       },
+       {
+        "branch": "blt",
+        "confidence": "high",
+        "evidence": "L91: cmp r6, #6  =>  L92: blt _0225F0A2",
+        "register": "r6",
+        "verdict": "signed"
+       },
+       {
+        "branch": "blt",
+        "confidence": "high",
+        "evidence": "L144: cmp r1, #0  =>  L145: blt _0225F136",
+        "register": "r1",
+        "verdict": "signed"
+       },
+       {
+        "branch": "blt",
+        "confidence": "high",
+        "evidence": "L276: cmp r0, #6  =>  L277: blt _0225F256",
+        "register": "r0",
+        "verdict": "signed"
+       },
+       {
+        "branch": "blt",
+        "confidence": "high",
+        "evidence": "L370: cmp r6, #6  =>  L371: blt _0225F308",
+        "register": "r6",
+        "verdict": "signed"
+       },
+       {
+        "branch": "blt",
+        "confidence": "high",
+        "evidence": "L484: cmp r0, #6  =>  L485: blt _0225F358",
+        "register": "r0",
+        "verdict": "signed"
+       }
+      ],
+      "widths": [
+       {
+        "confidence": "high",
+        "evidence": "L23: lsl r1, r1, #0x10 ; L24: asr r1, r1, #0x10",
+        "kind": "truncation-pair",
+        "register": "r1",
+        "verdict": "s16"
+       },
+       {
+        "confidence": "high",
+        "evidence": "L461: lsl r1, r1, #0x10 ; L463: lsr r1, r1, #0x10",
+        "kind": "truncation-pair",
+        "register": "r1",
+        "verdict": "u16"
+       },
+       {
+        "base": "r1",
+        "confidence": "high",
+        "evidence": "L22: ldrh r1, [r1, #6]",
+        "kind": "load-width",
+        "offset": "#6",
+        "verdict": "u16"
+       }
+      ]
+     },
+     "ov117_0225F420": {
+      "widths": [
+       {
+        "base": "r2",
+        "confidence": "high",
+        "evidence": "L515: ldrh r0, [r2]",
+        "kind": "load-width",
+        "offset": "#0",
+        "verdict": "u16"
+       },
+       {
+        "base": "r2",
+        "confidence": "high",
+        "evidence": "L520: ldrh r0, [r2, #2]",
+        "kind": "load-width",
+        "offset": "#2",
+        "verdict": "u16"
+       }
+      ]
+     },
+     "ov117_0225F524": {
+      "exact_types": [
+       {
+        "confidence": "high",
+        "evidence": "L1056: bl _s32_div_f",
+        "helper": "_s32_div_f",
+        "verdict": "signed 32-bit int / or %  (both operands signed int)"
+       }
+      ],
+      "signedness": [
+       {
+        "branch": "bls",
+        "confidence": "high",
+        "evidence": "L642: cmp r0, #0xc  =>  L643: bls _0225F53A",
+        "register": "r0",
+        "verdict": "unsigned"
+       },
+       {
+        "branch": "bgt",
+        "confidence": "high",
+        "evidence": "L895: cmp r0, #0  =>  L896: bgt _0225F816",
+        "register": "r0",
+        "verdict": "signed"
+       },
+       {
+        "branch": "ble",
+        "confidence": "high",
+        "evidence": "L984: cmp r0, #0  =>  L985: ble _0225F818",
+        "register": "r0",
+        "verdict": "signed"
+       },
+       {
+        "branch": "bgt",
+        "confidence": "high",
+        "evidence": "L1026: cmp r1, #0x10  =>  L1027: bgt _0225F892",
+        "register": "r1",
+        "verdict": "signed"
+       },
+       {
+        "branch": "ble",
+        "confidence": "high",
+        "evidence": "L1031: cmp r1, #0x10  =>  L1032: ble _0225F87C",
+        "register": "r1",
+        "verdict": "signed"
+       },
+       {
+        "branch": "bgt",
+        "confidence": "high",
+        "evidence": "L1064: cmp r0, #0x82  =>  L1065: bgt _0225F90C",
+        "register": "r0",
+        "verdict": "signed"
+       },
+       {
+        "branch": "ble",
+        "confidence": "high",
+        "evidence": "L1102: cmp r0, #4  =>  L1103: ble _0225F91E",
+        "register": "r0",
+        "verdict": "signed"
+       },
+       {
+        "branch": "ble",
+        "confidence": "high",
+        "evidence": "L1145: cmp r0, #0  =>  L1146: ble _0225F970",
+        "register": "r0",
+        "verdict": "signed"
+       }
+      ],
+      "widths": [
+       {
+        "confidence": "high",
+        "evidence": "L649: lsl r0, r0, #0x10 ; L650: asr r0, r0, #0x10",
+        "kind": "truncation-pair",
+        "register": "r0",
+        "verdict": "s16"
+       },
+       {
+        "confidence": "high",
+        "evidence": "L951: lsl r1, r2, #0x18 ; L952: lsr r1, r1, #0x18",
+        "kind": "truncation-pair",
+        "register": "r1",
+        "verdict": "u8"
+       },
+       {
+        "base": "r0",
+        "confidence": "high",
+        "evidence": "L648: ldrh r0, [r0, #6]",
+        "kind": "load-width",
+        "offset": "#6",
+        "verdict": "u16"
+       },
+       {
+        "base": "r6",
+        "confidence": "high",
+        "evidence": "L683: ldrb r0, [r6, #1]",
+        "kind": "load-width",
+        "offset": "#1",
+        "verdict": "u8"
+       },
+       {
+        "base": "r6",
+        "confidence": "high",
+        "evidence": "L687: ldrb r0, [r6, #2]",
+        "kind": "load-width",
+        "offset": "#2",
+        "verdict": "u8"
+       },
+       {
+        "base": "r6",
+        "confidence": "high",
+        "evidence": "L691: ldrb r0, [r6, #3]",
+        "kind": "load-width",
+        "offset": "#3",
+        "verdict": "u8"
+       },
+       {
+        "base": "r6",
+        "confidence": "high",
+        "evidence": "L695: ldrb r3, [r6]",
+        "kind": "load-width",
+        "offset": "#0",
+        "verdict": "u8"
+       },
+       {
+        "base": "r0",
+        "confidence": "high",
+        "evidence": "L836: ldrh r3, [r0]",
+        "kind": "load-width",
+        "offset": "#0",
+        "verdict": "u16"
+       },
+       {
+        "base": "r0",
+        "confidence": "high",
+        "evidence": "L842: strh r1, [r0]",
+        "kind": "store-width",
+        "offset": "#0",
+        "verdict": "u16"
+       },
+       {
+        "base": "r0",
+        "confidence": "high",
+        "evidence": "L843: ldrh r6, [r0, #2]",
+        "kind": "load-width",
+        "offset": "#2",
+        "verdict": "u16"
+       },
+       {
+        "base": "r0",
+        "confidence": "high",
+        "evidence": "L848: strh r1, [r0, #2]",
+        "kind": "store-width",
+        "offset": "#2",
+        "verdict": "u16"
+       },
+       {
+        "base": "r1",
+        "confidence": "high",
+        "evidence": "L852: strh r2, [r1]",
+        "kind": "store-width",
+        "offset": "#0",
+        "verdict": "u16"
+       },
+       {
+        "base": "r0",
+        "confidence": "high",
+        "evidence": "L954: strh r1, [r0, #4]",
+        "kind": "store-width",
+        "offset": "#4",
+        "verdict": "u16"
+       }
+      ]
+     }
+    },
+    "generated": "2026-09-29T18:30:49Z",
+    "summary": {
+     "copyprop_cmp": 0,
+     "dead_store": 0,
+     "exact_types": 1,
+     "functions": 3,
+     "signed": 12,
+     "unsigned": 2,
+     "widths": 18
+    },
+    "tool": "asm_oracle.py"
+   },
+   "risks": [
+    "Two add-pc jump tables (F020: 0..7, F524: 0..12). List every case explicitly in source order, with the fallthroughs 1->2, 3->4, 6->7 in F524",
+    "F020 case 7 and F524 case 12 do NOT return after ov01_021EFCDC; control falls into the post-switch code, which uses the freed sub. Reproduce with 'break', not 'return'",
+    "ov117_0225F524 is static and defined after its 5 tail-call wrappers, so it needs a forward static prototype. The wrappers must forward (task, work, &table) exactly for the 'ldr r3,=F524; bx r3' tail call",
+    "Rodata is one contiguous block: 5 TrainerGfx tables (8 bytes each), then ONE 6x0x20 motion-struct array. Do not split the FAF4..FBB0 labels into separate arrays; MWCC folds field offsets into the literal pool, which produces the pool words FAF4/FAF8/.../FB10",
+    "F524 keeps constant 4 in r7 for the whole function and derives other constants from it (0x80000, 0x2000, 0x04000000, 0x4000). Other sites load literal 4. This likely comes from a 'HeapID heapId = HEAP_ID_4' local; register reuse may need permutation",
+    "ov01_021F074C is a struct-return/out-pointer helper. The caller passes &localVec directly (sp+0x40/sp+0x34). If 'vec = f()' introduces a temp copy, use the out-param prototype form",
+    "F020 stack frame (0x4c) has 4 spilled induction pointers plus i and done; local declaration order affects the offsets",
+    "Window/WIN/DISPCNT register writes must use the nitro inlines G2_SetWnd0InsidePlane / G2_SetWndOutsidePlane / G2_SetWnd0Position / GX_SetVisibleWnd / GXS_DispOff / G2_SetBlendAlpha to match the ldrh/bic/orr shapes",
+    "Two conflicting HBlankSystem_Start/Stop declarations exist (include/field/hblank_system.h vs include/overlay_01_021FB4C0_internal.h). Include only field/hblank_system.h",
+    "The ov01_021EF*/F0*/F1* helpers have no header (overlay_01_021EFB38 is still asm). Use local externs; for EFCF8/EFEC8/EFF28/EFCDC keep the int-typed shapes used in src/overlay_118.c"
+   ],
+   "sweep_output": "sweep/out/overlay_117.json"
+  },
   "asm/overlay_14_021E5900.s": {
    "notes": "Chunk 1 of the 11-way split of overlay_14 (PC Box storage UI). Export/import split: the .inc .public block (lines 188-347) lists the NON-STATIC functions defined in this chunk; every thumb_func_start in the .s NOT in that subset is a static/local helper. All functions are Thumb. ov14_* symbols in .public NOT defined here are imports from sibling chunks. Deep-analyzed the entry callbacks + box/party mon accessor family (021E6070/6094/60C0/6100/6464/6480/64D0) at high confidence; the ~140 remaining drawing/state/move helpers share PCBoxAppData(0x38) + PCBoxRenderWork(0x34) and were surveyed at signature level. Lower confidence on move/swap ops (021E611C-021E7034) and the large state machines.",
    "risks": [
@@ -30640,7 +30933,7 @@
    "sweep_output": "sweep/out/unk_02097B78.json"
   }
  },
- "generated": "2026-09-29T17:59:11Z",
+ "generated": "2026-09-29T18:30:49Z",
  "signature_conflicts": [
   "DestroySysTaskAndEnvironment",
   "GridInputHandler_GetNextInput",
@@ -37609,6 +37902,415 @@
     "asm/overlay_01_021FCD2C.s"
    ]
   },
+  "UnkStruct_ov01_Accel (ov01_021EFEC8/EFF28)": {
+   "fields": {
+    "0x0": [
+     {
+      "meaning": "fx32 cur",
+      "source": "asm/overlay_117.s",
+      "width": 4
+     }
+    ],
+    "0x10": [
+     {
+      "meaning": "int frame",
+      "source": "asm/overlay_117.s",
+      "width": 4
+     }
+    ],
+    "0x14": [
+     {
+      "meaning": "int frames",
+      "source": "asm/overlay_117.s",
+      "width": 4
+     }
+    ],
+    "0x4": [
+     {
+      "meaning": "fx32 start",
+      "source": "asm/overlay_117.s",
+      "width": 4
+     }
+    ],
+    "0x8": [
+     {
+      "meaning": "fx32 v0",
+      "source": "asm/overlay_117.s",
+      "width": 4
+     }
+    ],
+    "0xc": [
+     {
+      "meaning": "fx32 accel",
+      "source": "asm/overlay_117.s",
+      "width": 4
+     }
+    ]
+   },
+   "size_guesses": {
+    "asm/overlay_117.s": "0x18"
+   },
+   "sources": [
+    "asm/overlay_117.s"
+   ]
+  },
+  "UnkStruct_ov01_Lerp (ov01_021EFE34/EFE44)": {
+   "fields": {
+    "0x0": [
+     {
+      "meaning": "int cur",
+      "source": "asm/overlay_117.s",
+      "width": 4
+     }
+    ],
+    "0x10": [
+     {
+      "meaning": "int frames",
+      "source": "asm/overlay_117.s",
+      "width": 4
+     }
+    ],
+    "0x4": [
+     {
+      "meaning": "int start",
+      "source": "asm/overlay_117.s",
+      "width": 4
+     }
+    ],
+    "0x8": [
+     {
+      "meaning": "int delta",
+      "source": "asm/overlay_117.s",
+      "width": 4
+     }
+    ],
+    "0xc": [
+     {
+      "meaning": "int frame",
+      "source": "asm/overlay_117.s",
+      "width": 4
+     }
+    ]
+   },
+   "size_guesses": {
+    "asm/overlay_117.s": "0x14"
+   },
+   "sources": [
+    "asm/overlay_117.s"
+   ]
+  },
+  "UnkStruct_ov01_SpriteMgr": {
+   "fields": {
+    "0x0": [
+     {
+      "meaning": "SpriteList *",
+      "source": "asm/overlay_117.s",
+      "width": 4
+     }
+    ],
+    "0x12c": [
+     {
+      "meaning": "GF_2DGfxResMan *resMan[4]",
+      "source": "asm/overlay_117.s",
+      "width": 4
+     }
+    ],
+    "0x4": [
+     {
+      "meaning": "G2dRenderer (0x128 bytes)",
+      "source": "asm/overlay_117.s",
+      "width": 4
+     }
+    ]
+   },
+   "size_guesses": {
+    "asm/overlay_117.s": "0x13C"
+   },
+   "sources": [
+    "asm/overlay_117.s"
+   ]
+  },
+  "UnkStruct_ov01_SpriteRes": {
+   "fields": {
+    "0x0": [
+     {
+      "meaning": "GF_2DGfxResObj *obj[4] (char,pltt,cell,anim)",
+      "source": "asm/overlay_117.s",
+      "width": 4
+     }
+    ],
+    "0x10": [
+     {
+      "meaning": "SpriteResourcesHeader (0x24)",
+      "source": "asm/overlay_117.s",
+      "width": 4
+     }
+    ]
+   },
+   "size_guesses": {
+    "asm/overlay_117.s": "0x34"
+   },
+   "sources": [
+    "asm/overlay_117.s"
+   ]
+  },
+  "UnkStruct_ov01_SubAppWork (same object as Work_overlay118 in src/overlay_118.c)": {
+   "fields": {
+    "0x0": [
+     {
+      "meaning": "int state",
+      "source": "asm/overlay_117.s",
+      "width": 4
+     }
+    ],
+    "0x10": [
+     {
+      "meaning": "FieldSystem * (->bgConfig at +8, ->unk4->hBlankSystem at +4/+0x1c)",
+      "source": "asm/overlay_117.s",
+      "width": 4
+     }
+    ],
+    "0x14": [
+     {
+      "meaning": "int *doneOut",
+      "source": "asm/overlay_117.s",
+      "width": 4
+     }
+    ],
+    "0x18": [
+     {
+      "meaning": "u32, zeroed by ov01_021EFC94",
+      "source": "asm/overlay_117.s",
+      "width": 4
+     }
+    ],
+    "0x20": [
+     {
+      "meaning": "NARC * (NARC_New(0x6d,4))",
+      "source": "asm/overlay_117.s",
+      "width": 4
+     }
+    ],
+    "0x4": [
+     {
+      "meaning": "int fadeDone (ov01_021EFCF8 out-flag)",
+      "source": "asm/overlay_117.s",
+      "width": 4
+     }
+    ],
+    "0xc": [
+     {
+      "meaning": "void *sub (per-overlay work, freed by ov01_021EFCDC via Heap_FreeExplicit)",
+      "source": "asm/overlay_117.s",
+      "width": 4
+     }
+    ]
+   },
+   "size_guesses": {
+    "asm/overlay_117.s": "0x24 (CreateSysTaskAndEnvironment size in ov01_021EFC94)"
+   },
+   "sources": [
+    "asm/overlay_117.s"
+   ]
+  },
+  "UnkStruct_ov117_0225F020 (sub for F020)": {
+   "fields": {
+    "0x0": [
+     {
+      "meaning": "UnkStruct_ov01_SpriteMgr mgr (0x13C)",
+      "source": "asm/overlay_117.s",
+      "width": 4
+     }
+    ],
+    "0x13c": [
+     {
+      "meaning": "UnkStruct_ov01_SpriteRes res (0x34)",
+      "source": "asm/overlay_117.s",
+      "width": 4
+     }
+    ],
+    "0x170": [
+     {
+      "meaning": "Sprite *sprites[6]",
+      "source": "asm/overlay_117.s",
+      "width": 4
+     }
+    ],
+    "0x188": [
+     {
+      "meaning": "Accel scale[6] (stride 0x18)",
+      "source": "asm/overlay_117.s",
+      "width": 4
+     }
+    ],
+    "0x218": [
+     {
+      "meaning": "Accel x[6]",
+      "source": "asm/overlay_117.s",
+      "width": 4
+     }
+    ],
+    "0x2a8": [
+     {
+      "meaning": "Accel y[6]",
+      "source": "asm/overlay_117.s",
+      "width": 4
+     }
+    ],
+    "0x338": [
+     {
+      "meaning": "Lerp rot[6] (stride 0x14)",
+      "source": "asm/overlay_117.s",
+      "width": 4
+     }
+    ],
+    "0x3b0": [
+     {
+      "meaning": "int active[6]",
+      "source": "asm/overlay_117.s",
+      "width": 4
+     }
+    ],
+    "0x3c8": [
+     {
+      "meaning": "int idx",
+      "source": "asm/overlay_117.s",
+      "width": 4
+     }
+    ],
+    "0x3cc": [
+     {
+      "meaning": "int timer",
+      "source": "asm/overlay_117.s",
+      "width": 4
+     }
+    ]
+   },
+   "size_guesses": {
+    "asm/overlay_117.s": "0x3D0"
+   },
+   "sources": [
+    "asm/overlay_117.s"
+   ]
+  },
+  "UnkStruct_ov117_0225F524 (sub for F524)": {
+   "fields": {
+    "0x0": [
+     {
+      "meaning": "Sprite *sprite",
+      "source": "asm/overlay_117.s",
+      "width": 4
+     }
+    ],
+    "0x140": [
+     {
+      "meaning": "UnkStruct_ov01_SpriteRes res",
+      "source": "asm/overlay_117.s",
+      "width": 4
+     }
+    ],
+    "0x174": [
+     {
+      "meaning": "Accel accel (0x18)",
+      "source": "asm/overlay_117.s",
+      "width": 4
+     }
+    ],
+    "0x18c": [
+     {
+      "meaning": "UnkStruct_ov01_Wave wave (0xC)",
+      "source": "asm/overlay_117.s",
+      "width": 4
+     }
+    ],
+    "0x198": [
+     {
+      "meaning": "Window window (0x10)",
+      "source": "asm/overlay_117.s",
+      "width": 4
+     }
+    ],
+    "0x1a8": [
+     {
+      "meaning": "VecFx32 pos (passed to Sprite_SetMatrix)",
+      "source": "asm/overlay_117.s",
+      "width": 4
+     }
+    ],
+    "0x1b4": [
+     {
+      "meaning": "int counter",
+      "source": "asm/overlay_117.s",
+      "width": 4
+     }
+    ],
+    "0x1b8": [
+     {
+      "meaning": "int waveActive (never set to 1 here)",
+      "source": "asm/overlay_117.s",
+      "width": 4
+     }
+    ],
+    "0x4": [
+     {
+      "meaning": "UnkStruct_ov01_SpriteMgr mgr",
+      "source": "asm/overlay_117.s",
+      "width": 4
+     }
+    ]
+   },
+   "size_guesses": {
+    "asm/overlay_117.s": "0x1BC"
+   },
+   "sources": [
+    "asm/overlay_117.s"
+   ]
+  },
+  "UnkStruct_ov117_TrainerGfx": {
+   "fields": {
+    "0x0": [
+     {
+      "meaning": "u8 plttFile",
+      "source": "asm/overlay_117.s",
+      "width": 1
+     }
+    ],
+    "0x1": [
+     {
+      "meaning": "u8 charFile",
+      "source": "asm/overlay_117.s",
+      "width": 1
+     }
+    ],
+    "0x2": [
+     {
+      "meaning": "u8 cellFile",
+      "source": "asm/overlay_117.s",
+      "width": 1
+     }
+    ],
+    "0x3": [
+     {
+      "meaning": "u8 animFile",
+      "source": "asm/overlay_117.s",
+      "width": 1
+     }
+    ],
+    "0x4": [
+     {
+      "meaning": "u32 trainerId",
+      "source": "asm/overlay_117.s",
+      "width": 4
+     }
+    ]
+   },
+   "size_guesses": {
+    "asm/overlay_117.s": "0x8"
+   },
+   "sources": [
+    "asm/overlay_117.s"
+   ]
+  },
   "UnkStruct_ov14App": {
    "fields": {
     "0x0": [
@@ -39664,6 +40366,7 @@
   },
   "AddTextPrinterParameterizedWithColor": {
    "callers": [
+    "asm/overlay_117.s",
     "asm/overlay_14_021F4B90.s",
     "asm/overlay_14_021F6628.s",
     "asm/overlay_29.s",
@@ -39717,6 +40420,7 @@
   },
   "AddWindowParameterized": {
    "callers": [
+    "asm/overlay_117.s",
     "asm/overlay_14_021F4B90.s",
     "asm/unk_020863F4.s"
    ],
@@ -39762,12 +40466,15 @@
   },
   "BG_ClearCharDataRange": {
    "callers": [
+    "asm/overlay_117.s",
     "asm/overlay_14_021E5900.s",
     "asm/overlay_29.s",
     "asm/overlay_32.s",
     "asm/overlay_83_02243D7C.s"
    ],
    "confidence": "low",
+   "header": "include/bg_window.h",
+   "known_prototype": "void BG_ClearCharDataRange(u8 bgId, u32 size, u32 offset, enum HeapID heapID)",
    "signature_guess": "void BG_ClearCharDataRange(u8 layer, u32 size, u32 offset, HeapID heapId)",
    "signature_sources": {
     "asm/overlay_32.s": "void BG_ClearCharDataRange(u8 layer, u32 size, u32 offset, HeapID heapId)"
@@ -39781,6 +40488,14 @@
   },
   "BG_LoadCharTilesData / LoadRectToBgTilemapRect / ScheduleBgTilemapBufferTransfer / GetWindowX/Y/Width / FillWindowPixelBuffer / CopyWindowPixelsToVram_TextMode / ClearWindowTilemapAndScheduleTransfer / ScheduleWindowCopyToVram / Convert4bppTo8bpp": {
    "callers": [],
+   "signature_sources": {}
+  },
+  "BG_SetMaskColor": {
+   "callers": [
+    "asm/overlay_117.s"
+   ],
+   "header": "include/bg_window.h",
+   "known_prototype": "void BG_SetMaskColor(u8 bgId, u16 value)",
    "signature_sources": {}
   },
   "Bag_AddItem": {
@@ -39808,6 +40523,7 @@
   "BeginNormalPaletteFade": {
    "callers": [
     "asm/overlay_01_021F6830.s",
+    "asm/overlay_117.s",
     "asm/overlay_14_021EFDE4.s",
     "asm/overlay_80_0223A00C.s",
     "asm/overlay_83_02242FE8.s",
@@ -39819,12 +40535,15 @@
   },
   "BgClearTilemapBufferAndCommit": {
    "callers": [
+    "asm/overlay_117.s",
     "asm/overlay_14_021E5900.s",
     "asm/overlay_29.s",
     "asm/overlay_32.s",
     "asm/overlay_83_02243D7C.s"
    ],
    "confidence": "low",
+   "header": "include/bg_window.h",
+   "known_prototype": "void BgClearTilemapBufferAndCommit(BgConfig *bgConfig, u8 bgId)",
    "signature_guess": "void BgClearTilemapBufferAndCommit(BgConfig *bgConfig, u8 layer)",
    "signature_sources": {
     "asm/overlay_32.s": "void BgClearTilemapBufferAndCommit(BgConfig *bgConfig, u8 layer)"
@@ -39832,8 +40551,11 @@
   },
   "BgCommitTilemapBufferToVram": {
    "callers": [
+    "asm/overlay_117.s",
     "asm/overlay_83_02246E08.s"
    ],
+   "header": "include/bg_window.h",
+   "known_prototype": "void BgCommitTilemapBufferToVram(BgConfig *bgConfig, u8 bgId)",
    "signature_sources": {}
   },
   "BgConfig_Alloc": {
@@ -39850,6 +40572,14 @@
    "callers": [
     "asm/overlay_80_0223A00C.s"
    ],
+   "signature_sources": {}
+  },
+  "BgSetPosTextAndCommit": {
+   "callers": [
+    "asm/overlay_117.s"
+   ],
+   "header": "include/bg_window.h",
+   "known_prototype": "void BgSetPosTextAndCommit(BgConfig *bgConfig, u8 bgId, enum BgPosAdjustOp op, int val)",
    "signature_sources": {}
   },
   "BgTilemapRectChangePalette": {
@@ -39989,6 +40719,14 @@
   },
   "BufferString / String_Delete / MessageFormat / PlaySE / LanguageToDexFlag / PlayerProfile_GetTrainerGender": {
    "callers": [],
+   "signature_sources": {}
+  },
+  "BufferTrainerName": {
+   "callers": [
+    "asm/overlay_117.s"
+   ],
+   "header": "include/message_format.h",
+   "known_prototype": "void BufferTrainerName(MessageFormat *messageFormat, u32 fieldno, u32 trainerId)",
    "signature_sources": {}
   },
   "CARD_Init": {
@@ -40215,6 +40953,7 @@
   },
   "DestroyMsgData": {
    "callers": [
+    "asm/overlay_117.s",
     "asm/overlay_14_021E5900.s",
     "asm/overlay_14_021F4B90.s",
     "asm/overlay_14_021F6628.s",
@@ -40482,6 +41221,7 @@
   },
   "FillWindowPixelBuffer": {
    "callers": [
+    "asm/overlay_117.s",
     "asm/overlay_14_021F4B90.s",
     "asm/overlay_14_021F58B8.s",
     "asm/overlay_14_021F6628.s",
@@ -40712,8 +41452,11 @@
   },
   "G2x_SetBlendAlpha_": {
    "callers": [
+    "asm/overlay_117.s",
     "asm/overlay_83_02243D7C.s"
    ],
+   "header": "lib/include/nitro/gx/g2.h",
+   "known_prototype": "called via inline G2_SetBlendAlpha(int plane1,int plane2,int ev1,int ev2)",
    "signature_sources": {}
   },
   "G3X_GetBoxTestResult": {
@@ -41811,11 +42554,14 @@
   },
   "GfGfxLoader_GXLoadPalFromOpenNarc": {
    "callers": [
+    "asm/overlay_117.s",
     "asm/overlay_29.s",
     "asm/overlay_32.s",
     "asm/overlay_83_02243D7C.s"
    ],
    "confidence": "low",
+   "header": "include/gf_gfx_loader.h",
+   "known_prototype": "void GfGfxLoader_GXLoadPalFromOpenNarc(NARC *narc, s32 memberNo, enum GFPalLoadLocation location, enum GFPalSlotOffset palSlotOffset, u32 szByte, enum HeapID heapID)",
    "signature_guess": "void GfGfxLoader_GXLoadPalFromOpenNarc(NARC *narc, u32 memberId, u32 palType, u32 offset, u32 size, HeapID heapId)",
    "signature_sources": {
     "asm/overlay_32.s": "void GfGfxLoader_GXLoadPalFromOpenNarc(NARC *narc, u32 memberId, u32 palType, u32 offset, u32 size, HeapID heapId)"
@@ -41847,6 +42593,14 @@
     "asm/overlay_80_0223A00C.s",
     "asm/overlay_83_02243D7C.s"
    ],
+   "signature_sources": {}
+  },
+  "GfGfxLoader_GetScrnDataFromOpenNarc": {
+   "callers": [
+    "asm/overlay_117.s"
+   ],
+   "header": "include/gf_gfx_loader.h",
+   "known_prototype": "void *GfGfxLoader_GetScrnDataFromOpenNarc(NARC *narc, s32 memberNo, BOOL isCompressed, NNSG2dScreenData **ppScrnData, enum HeapID heapID)",
    "signature_sources": {}
   },
   "GfGfxLoader_LoadCharDataFromOpenNarc": {
@@ -41926,6 +42680,7 @@
   "GfGfx_EngineATogglePlanes": {
    "callers": [
     "asm/overlay_01_021F467C.s",
+    "asm/overlay_117.s",
     "asm/overlay_14_021F2490.s",
     "asm/overlay_83_02243D7C.s",
     "asm/overlay_83_02246E08.s",
@@ -42122,6 +42877,22 @@
    ],
    "signature_sources": {}
   },
+  "HBlankSystem_Start": {
+   "callers": [
+    "asm/overlay_117.s"
+   ],
+   "header": "include/field/hblank_system.h (also re-declared with a different param type in include/overlay_01_021FB4C0_internal.h; do not include that one)",
+   "known_prototype": "void HBlankSystem_Start(HBlankSystem *hBlankSystem)",
+   "signature_sources": {}
+  },
+  "HBlankSystem_Stop": {
+   "callers": [
+    "asm/overlay_117.s"
+   ],
+   "header": "include/field/hblank_system.h",
+   "known_prototype": "void HBlankSystem_Stop(HBlankSystem *hBlankSystem)",
+   "signature_sources": {}
+  },
   "HandleLoadOverlay": {
    "callers": [
     "asm/overlay_01_021F6830.s",
@@ -42150,6 +42921,7 @@
     "asm/overlay_01_021FAC44.s",
     "asm/overlay_01_021FB368.s",
     "asm/overlay_01_021FB4C0.s",
+    "asm/overlay_117.s",
     "asm/overlay_14_021EAF08.s",
     "asm/overlay_14_021EFDE4.s",
     "asm/overlay_14_021F1808.s",
@@ -42230,6 +43002,7 @@
     "asm/overlay_01_021FB368.s",
     "asm/overlay_01_021FB4C0.s",
     "asm/overlay_01_021FCD2C.s",
+    "asm/overlay_117.s",
     "asm/overlay_14_021E5900.s",
     "asm/overlay_14_021EAF08.s",
     "asm/overlay_14_021EE26C.s",
@@ -42304,6 +43077,14 @@
    "known_prototype": "void InitWindow(Window *window)",
    "signature_sources": {}
   },
+  "IsBrightnessTransitionActive": {
+   "callers": [
+    "asm/overlay_117.s"
+   ],
+   "header": "include/brightness.h",
+   "known_prototype": "BOOL IsBrightnessTransitionActive(u32 screenMask)",
+   "signature_sources": {}
+  },
   "IsCryFinished": {
    "callers": [
     "asm/overlay_18_021F7ED4.s"
@@ -42315,6 +43096,7 @@
   "IsPaletteFadeFinished": {
    "callers": [
     "asm/overlay_01_021F6830.s",
+    "asm/overlay_117.s",
     "asm/overlay_14_021EAF08.s",
     "asm/overlay_80_0223A00C.s",
     "asm/overlay_83_02242FE8.s",
@@ -42490,6 +43272,7 @@
   },
   "LoadRectToBgTilemapRect": {
    "callers": [
+    "asm/overlay_117.s",
     "asm/overlay_18_021F0918.s",
     "asm/overlay_80_022384D8.s"
    ],
@@ -42993,6 +43776,7 @@
   },
   "MessageFormat_Delete": {
    "callers": [
+    "asm/overlay_117.s",
     "asm/overlay_14_021E5900.s",
     "asm/overlay_32.s",
     "asm/overlay_83_02243D7C.s",
@@ -43006,12 +43790,15 @@
   },
   "MessageFormat_New": {
    "callers": [
+    "asm/overlay_117.s",
     "asm/overlay_14_021E5900.s",
     "asm/overlay_32.s",
     "asm/overlay_83_02243D7C.s",
     "asm/overlay_98.s"
    ],
    "confidence": "low",
+   "header": "include/message_format.h",
+   "known_prototype": "MessageFormat *MessageFormat_New(enum HeapID heapID)",
    "signature_guess": "MessageFormat *MessageFormat_New(HeapID heapId)",
    "signature_sources": {
     "asm/overlay_32.s": "MessageFormat *MessageFormat_New(HeapID heapId)"
@@ -43639,6 +44426,7 @@
   },
   "NewMsgDataFromNarc": {
    "callers": [
+    "asm/overlay_117.s",
     "asm/overlay_14_021E5900.s",
     "asm/overlay_14_021F4B90.s",
     "asm/overlay_14_021F6628.s",
@@ -44486,9 +45274,12 @@
   },
   "ReadMsgDataIntoString": {
    "callers": [
+    "asm/overlay_117.s",
     "asm/overlay_83_02243D7C.s",
     "asm/overlay_98.s"
    ],
+   "header": "include/msgdata.h",
+   "known_prototype": "void ReadMsgDataIntoString(MsgData *msgData, s32 strno, String *dest)",
    "signature_sources": {}
   },
   "ReadMsgData_ExpandPlaceholders": {
@@ -44511,6 +45302,7 @@
   },
   "RemoveWindow": {
    "callers": [
+    "asm/overlay_117.s",
     "asm/overlay_14_021F4B90.s",
     "asm/overlay_14_021F58B8.s",
     "asm/overlay_18_021EE35C.s",
@@ -44716,8 +45508,11 @@
   },
   "ScheduleSetBgPosText": {
    "callers": [
+    "asm/overlay_117.s",
     "asm/overlay_80_0223A00C.s"
    ],
+   "header": "include/bg_window.h",
+   "known_prototype": "void ScheduleSetBgPosText(BgConfig *bgConfig, u8 bgId, enum BgPosAdjustOp op, int value)",
    "signature_sources": {}
   },
   "ScheduleWindowCopyToVram": {
@@ -44762,6 +45557,14 @@
    "signature_sources": {
     "asm/unk_02097B78.s": "BOOL ScriptCinematic_Lugia(void *data)"
    }
+  },
+  "SetBgPriority": {
+   "callers": [
+    "asm/overlay_117.s"
+   ],
+   "header": "include/bg_window.h",
+   "known_prototype": "void SetBgPriority(u8 bgId, u16 priority)",
+   "signature_sources": {}
   },
   "SetBlendBrightness": {
    "callers": [
@@ -44944,6 +45747,7 @@
   },
   "SpriteList_RenderAndAnimateSprites": {
    "callers": [
+    "asm/overlay_117.s",
     "asm/overlay_18_021F7ED4.s",
     "asm/overlay_29.s",
     "asm/overlay_32.s",
@@ -45232,11 +46036,14 @@
   },
   "Sprite_Delete": {
    "callers": [
+    "asm/overlay_117.s",
     "asm/overlay_29.s",
     "asm/overlay_32.s",
     "asm/overlay_83_02246E08.s"
    ],
    "confidence": "low",
+   "header": "include/sprite.h",
+   "known_prototype": "void Sprite_Delete(Sprite *sprite)",
    "signature_guess": "void Sprite_Delete(Sprite *sprite)",
    "signature_sources": {
     "asm/overlay_32.s": "void Sprite_Delete(Sprite *sprite)"
@@ -45297,8 +46104,19 @@
   },
   "Sprite_SetAffineScale": {
    "callers": [
+    "asm/overlay_117.s",
     "asm/overlay_80_0223A00C.s"
    ],
+   "header": "include/sprite.h",
+   "known_prototype": "void Sprite_SetAffineScale(Sprite *sprite, VecFx32 *vec)",
+   "signature_sources": {}
+  },
+  "Sprite_SetAffineZRotation": {
+   "callers": [
+    "asm/overlay_117.s"
+   ],
+   "header": "include/sprite.h",
+   "known_prototype": "void Sprite_SetAffineZRotation(Sprite *sprite, u32 a1)",
    "signature_sources": {}
   },
   "Sprite_SetAnimActiveFlag": {
@@ -45334,10 +46152,13 @@
   },
   "Sprite_SetDrawFlag": {
    "callers": [
+    "asm/overlay_117.s",
     "asm/overlay_29.s",
     "asm/overlay_80_0223A00C.s",
     "asm/overlay_83_02246E08.s"
    ],
+   "header": "include/sprite.h",
+   "known_prototype": "void Sprite_SetDrawFlag(Sprite *sprite, BOOL flag)",
    "signature_sources": {}
   },
   "Sprite_SetImageProxy": {
@@ -45348,11 +46169,14 @@
   },
   "Sprite_SetMatrix": {
    "callers": [
+    "asm/overlay_117.s",
     "asm/overlay_29.s",
     "asm/overlay_32.s",
     "asm/overlay_83_02246E08.s"
    ],
    "confidence": "low",
+   "header": "include/sprite.h",
+   "known_prototype": "void Sprite_SetMatrix(Sprite *sprite, VecFx32 *vec)",
    "signature_guess": "void Sprite_SetMatrix(Sprite *sprite, const VecFx32 *pos)",
    "signature_sources": {
     "asm/overlay_32.s": "void Sprite_SetMatrix(Sprite *sprite, const VecFx32 *pos)"
@@ -45360,14 +46184,33 @@
   },
   "Sprite_SetOamMode": {
    "callers": [
+    "asm/overlay_117.s",
     "asm/overlay_83_02246E08.s"
    ],
+   "header": "include/sprite.h",
+   "known_prototype": "void Sprite_SetOamMode(Sprite *sprite, GXOamMode mode)",
    "signature_sources": {}
   },
   "Sprite_SetPalOffsetRespectVramOffset": {
    "callers": [
     "asm/overlay_83_02246E08.s"
    ],
+   "signature_sources": {}
+  },
+  "Sprite_SetPriority": {
+   "callers": [
+    "asm/overlay_117.s"
+   ],
+   "header": "include/sprite.h",
+   "known_prototype": "void Sprite_SetPriority(Sprite *sprite, u8 priority)",
+   "signature_sources": {}
+  },
+  "Sprite_SetScaleAndAffineType": {
+   "callers": [
+    "asm/overlay_117.s"
+   ],
+   "header": "include/sprite.h",
+   "known_prototype": "void Sprite_SetScaleAndAffineType(Sprite *sprite, VecFx32 *vec, u8 affine)",
    "signature_sources": {}
   },
   "Sprite_TickFrame": {
@@ -45391,8 +46234,17 @@
     "asm/overlay_32.s": "void Sprite_UpdateAnim(Sprite *sprite, fx32 dt)"
    }
   },
+  "StartBrightnessTransition": {
+   "callers": [
+    "asm/overlay_117.s"
+   ],
+   "header": "include/brightness.h",
+   "known_prototype": "void StartBrightnessTransition(u16 stepCount, s16 targetBrightness, s16 startBrightness, GXBlendPlaneMask surfaceMask, u32 screenMask)",
+   "signature_sources": {}
+  },
   "StringExpandPlaceholders": {
    "callers": [
+    "asm/overlay_117.s",
     "asm/overlay_14_021F4B90.s",
     "asm/overlay_14_021F6628.s",
     "asm/overlay_18_021EE35C.s",
@@ -45410,6 +46262,7 @@
   },
   "String_Delete": {
    "callers": [
+    "asm/overlay_117.s",
     "asm/overlay_14_021E5900.s",
     "asm/overlay_14_021F4B90.s",
     "asm/overlay_14_021F58B8.s",
@@ -45434,6 +46287,7 @@
   },
   "String_New": {
    "callers": [
+    "asm/overlay_117.s",
     "asm/overlay_14_021E5900.s",
     "asm/overlay_14_021F4B90.s",
     "asm/overlay_32.s",
@@ -45441,6 +46295,8 @@
     "asm/overlay_98.s"
    ],
    "confidence": "low",
+   "header": "include/pm_string.h",
+   "known_prototype": "String *String_New(u32 maxsize, enum HeapID heapID)",
    "signature_guess": "String *String_New(u32 capacity, enum HeapID heapID)",
    "signature_sources": {
     "asm/overlay_14_021F4B90.s": "String *String_New(u32 capacity, enum HeapID heapID)",
@@ -45594,8 +46450,11 @@
   },
   "ToggleBgLayer": {
    "callers": [
+    "asm/overlay_117.s",
     "asm/overlay_83_02246E08.s"
    ],
+   "header": "include/bg_window.h",
+   "known_prototype": "void ToggleBgLayer(u8 bgId, u8 toggle)",
    "signature_sources": {}
   },
   "TouchscreenHitbox_FindRectAtTouchNew": {
@@ -45848,6 +46707,7 @@
    "callers": [
     "asm/overlay_01_021FCD2C.s",
     "asm/overlay_01_022031C0.s",
+    "asm/overlay_117.s",
     "asm/overlay_14_021E5900.s",
     "asm/overlay_14_021EE26C.s",
     "asm/overlay_14_021EEF34.s",
@@ -45914,6 +46774,7 @@
   "memset": {
    "callers": [
     "asm/overlay_01_021FCD2C.s",
+    "asm/overlay_117.s",
     "asm/overlay_18_021F7ED4.s",
     "asm/overlay_41_02248400.s",
     "asm/overlay_80_0223A00C.s",
@@ -47034,6 +47895,158 @@
      "width": 4
     }
    ]
+  },
+  "ov01_021EFCDC": {
+   "callers": [
+    "asm/overlay_117.s"
+   ],
+   "header": "none (asm overlay_01_021EFB38.s); declare a local extern",
+   "known_prototype": "void ov01_021EFCDC(Work_overlay118 *a0, void *a1) (local extern in src/overlay_118.c; asm: NARC_Delete(work->narc); Heap_FreeExplicit(4, work->unkC); DestroySysTaskAndEnvironment(task))",
+   "signature_sources": {}
+  },
+  "ov01_021EFCF8": {
+   "callers": [
+    "asm/overlay_117.s"
+   ],
+   "header": "none; local extern",
+   "known_prototype": "void ov01_021EFCF8(int a0, int a1, int a2, int *a3, int a4) (local extern in src/overlay_118.c)",
+   "signature_sources": {}
+  },
+  "ov01_021EFE34": {
+   "callers": [
+    "asm/overlay_117.s"
+   ],
+   "confidence": "low",
+   "signature_guess": "void ov01_021EFE34(UnkStruct_ov01_Lerp *a0, int start, int end, int frames)",
+   "signature_sources": {
+    "asm/overlay_117.s": "void ov01_021EFE34(UnkStruct_ov01_Lerp *a0, int start, int end, int frames)"
+   }
+  },
+  "ov01_021EFE44": {
+   "callers": [
+    "asm/overlay_117.s"
+   ],
+   "confidence": "low",
+   "signature_guess": "BOOL ov01_021EFE44(UnkStruct_ov01_Lerp *a0)",
+   "signature_sources": {
+    "asm/overlay_117.s": "BOOL ov01_021EFE44(UnkStruct_ov01_Lerp *a0)"
+   }
+  },
+  "ov01_021EFEC8": {
+   "callers": [
+    "asm/overlay_117.s"
+   ],
+   "header": "none; local extern",
+   "known_prototype": "void ov01_021EFEC8(<0x18 accel struct> *a0, int start, int end, int v0, int frames) (ov118 uses int for all)",
+   "signature_sources": {}
+  },
+  "ov01_021EFF28": {
+   "callers": [
+    "asm/overlay_117.s"
+   ],
+   "header": "none; local extern",
+   "known_prototype": "BOOL ov01_021EFF28(<0x18 accel struct> *a0) (returns TRUE when finished)",
+   "signature_sources": {}
+  },
+  "ov01_021F0454": {
+   "callers": [
+    "asm/overlay_117.s"
+   ],
+   "confidence": "low",
+   "signature_guess": "void ov01_021F0454(NARC *narc, int scrnFile, int charFile, int plttFile, int palSlot, int numPals, BgConfig *bgConfig, int bgId)",
+   "signature_sources": {
+    "asm/overlay_117.s": "void ov01_021F0454(NARC *narc, int scrnFile, int charFile, int plttFile, int palSlot, int numPals, BgConfig *bgConfig, int bgId)"
+   }
+  },
+  "ov01_021F05C4": {
+   "callers": [
+    "asm/overlay_117.s"
+   ],
+   "confidence": "low",
+   "signature_guess": "void ov01_021F05C4(UnkStruct_ov01_SpriteMgr *mgr, int numSprites, int numResPerType)",
+   "signature_sources": {
+    "asm/overlay_117.s": "void ov01_021F05C4(UnkStruct_ov01_SpriteMgr *mgr, int numSprites, int numResPerType)"
+   }
+  },
+  "ov01_021F05F4": {
+   "callers": [
+    "asm/overlay_117.s"
+   ],
+   "confidence": "low",
+   "signature_guess": "void ov01_021F05F4(UnkStruct_ov01_SpriteMgr *mgr)",
+   "signature_sources": {
+    "asm/overlay_117.s": "void ov01_021F05F4(UnkStruct_ov01_SpriteMgr *mgr)"
+   }
+  },
+  "ov01_021F0614": {
+   "callers": [
+    "asm/overlay_117.s"
+   ],
+   "confidence": "low",
+   "signature_guess": "void ov01_021F0614(NARC *narc, UnkStruct_ov01_SpriteMgr *mgr, UnkStruct_ov01_SpriteRes *res, int plttFile, int numPltt, int charFile, int cellFile, int animFile, int resId)",
+   "signature_sources": {
+    "asm/overlay_117.s": "void ov01_021F0614(NARC *narc, UnkStruct_ov01_SpriteMgr *mgr, UnkStruct_ov01_SpriteRes *res, int plttFile, int numPltt, int charFile, int cellFile, int animFile, int resId)"
+   }
+  },
+  "ov01_021F06EC": {
+   "callers": [
+    "asm/overlay_117.s"
+   ],
+   "confidence": "low",
+   "signature_guess": "void ov01_021F06EC(UnkStruct_ov01_SpriteMgr *mgr, UnkStruct_ov01_SpriteRes *res)",
+   "signature_sources": {
+    "asm/overlay_117.s": "void ov01_021F06EC(UnkStruct_ov01_SpriteMgr *mgr, UnkStruct_ov01_SpriteRes *res)"
+   }
+  },
+  "ov01_021F0718": {
+   "callers": [
+    "asm/overlay_117.s"
+   ],
+   "confidence": "low",
+   "signature_guess": "Sprite *ov01_021F0718(UnkStruct_ov01_SpriteMgr *mgr, UnkStruct_ov01_SpriteRes *res, fx32 x, fx32 y, fx32 z, int priority)",
+   "signature_sources": {
+    "asm/overlay_117.s": "Sprite *ov01_021F0718(UnkStruct_ov01_SpriteMgr *mgr, UnkStruct_ov01_SpriteRes *res, fx32 x, fx32 y, fx32 z, int priority)"
+   }
+  },
+  "ov01_021F074C": {
+   "callers": [
+    "asm/overlay_117.s"
+   ],
+   "confidence": "low",
+   "signature_guess": "VecFx32 ov01_021F074C(fx32 x, fx32 y, fx32 z)  /* or void (VecFx32 *out, fx32 x, fx32 y, fx32 z) */",
+   "signature_sources": {
+    "asm/overlay_117.s": "VecFx32 ov01_021F074C(fx32 x, fx32 y, fx32 z)  /* or void (VecFx32 *out, fx32 x, fx32 y, fx32 z) */"
+   }
+  },
+  "ov01_021F12B4": {
+   "callers": [
+    "asm/overlay_117.s"
+   ],
+   "confidence": "low",
+   "signature_guess": "void ov01_021F12B4(UnkStruct_ov01_Wave *a0, HeapID heapId)",
+   "signature_sources": {
+    "asm/overlay_117.s": "void ov01_021F12B4(UnkStruct_ov01_Wave *a0, HeapID heapId)"
+   }
+  },
+  "ov01_021F12D0": {
+   "callers": [
+    "asm/overlay_117.s"
+   ],
+   "confidence": "low",
+   "signature_guess": "void ov01_021F12D0(UnkStruct_ov01_Wave *a0)",
+   "signature_sources": {
+    "asm/overlay_117.s": "void ov01_021F12D0(UnkStruct_ov01_Wave *a0)"
+   }
+  },
+  "ov01_021F1310": {
+   "callers": [
+    "asm/overlay_117.s"
+   ],
+   "confidence": "low",
+   "signature_guess": "void ov01_021F1310(UnkStruct_ov01_Wave *a0, int a1)",
+   "signature_sources": {
+    "asm/overlay_117.s": "void ov01_021F1310(UnkStruct_ov01_Wave *a0, int a1)"
+   }
   },
   "ov01_021F1430": {
    "callers": [
@@ -49417,6 +50430,249 @@
    "signature_sources": {
     "asm/unk_02092B04.s": "BOOL ov03_02256E2C(TaskManager *taskman)"
    }
+  },
+  "ov117_0225F020": {
+   "callers": [],
+   "confidence": "high",
+   "defined_in": "asm/overlay_117.s",
+   "mode": "thumb",
+   "notes": [
+    "[asm/overlay_117.s] Sub struct 0x3D0 (see UnkStruct_ov117_0225F020). Case 0: sub=Heap_Alloc(HEAP_ID_4,0x3D0); memset; ov01_021F05C4(sub,6,1); ov01_021F0614(work->narc, sub, &sub->res, 3, 1, 0x9c, 0x9e, 0x9d, 600000 /*0x927C0*/); for(i<6){sub->sprites[i]=ov01_021F0718(sub,&sub->res,0,0,0,0); Sprite_SetDrawFlag(sub->sprites[i],FALSE);} GfGfx_EngineATogglePlanes(GX_PLANEMASK_OBJ(0x10),1); work->state++. Case 1: ov01_021EFCF8(1,-0x10,-0x10,&work->unk4,2) (identical to ov118 case 1); state++. Case 2: if(work->unk4==0) break; work->state++ (CSEs with switch load: 'add r1,r0,#1'); sub->idx=0; sub->timer=tbl[sub->idx].delay. Case 3: sub->timer--; if(sub->timer<0){ i=sub->idx; ov01_021EFEC8(&sub->x[i],tbl[i].xStart,tbl[i].xEnd,tbl[i].xV0,8); same for y (yStart,yEnd,yV0,8); ov01_021EFEC8(&sub->scale[i],0x2000,0x29,-0x666,8); ov01_021EFE34(&sub->rot[i],0,tbl[i].rot,8); Sprite_SetDrawFlag(spr,TRUE); vec=(tbl.xStart,tbl.yStart,0)->Sprite_SetMatrix; vec2=(0x2000,0x2000,0)->Sprite_SetScaleAndAffineType(spr,&vec2,2); sub->active[i]=1; sub->idx++; if(sub->idx>=6) work->state++; else sub->timer=tbl[sub->idx].delay; } (sub->idx reloaded from memory at every use; the >=6 arm is the fall-through). Case 4: if(sub->active[5]==0) state++ (reads [sub+0x3C4]). Case 5: HBlankSystem_Stop(work->fieldSystem->unk4->hBlankSystem); BeginNormalPaletteFade(3,0x22,0,0,0xc,1,HEAP_ID_4); state++. Case 6: if(IsPaletteFadeFinished()) state++. Case 7: sub_0200FBF4(1,0); HBlankSystem_Start(...); if(work->unk14) *work->unk14=1; for(i<6) Sprite_Delete(sub->sprites[i]); ov01_021F06EC(sub,&sub->res); ov01_021F05F4(sub); ov01_021EFCDC(work,task); then FALLS THROUGH to the post-switch loop (no return; the retail code reads sub after it was freed, so keep the bug). Post-switch (every state, including default): for(i<6) if(sub->active[i]==1){ done=ov01_021EFF28(&sub->x[i]); ov01_021EFF28(&sub->y[i]); ov01_021EFF28(&sub->scale[i]); ov01_021EFE44(&sub->rot[i]); if(done){sub->active[i]=0; Sprite_SetDrawFlag(sub->sprites[i],FALSE);} vec=(x[i].cur,y[i].cur,0)->Sprite_SetMatrix; vec2=(scale[i].cur,scale[i].cur,0)->Sprite_SetAffineScale; Sprite_SetAffineZRotation(sub->sprites[i],(u16)sub->rot[i].cur); } then if(work->state!=7) SpriteList_RenderAndAnimateSprites(sub->mgr.spriteList). Stack frame 0x4c: sp+0x14 task, sp+0x18 work (spilled), sp+0x1c i, sp+0x20..0x2c = &rot[i],&scale[i],&y[i],&x[i] induction pointers, sp+0x30 done, sp+0x34 VecFx32 scale, sp+0x40 VecFx32 pos (both vecs are reused by case 3)."
+   ],
+   "signature_guess": "void ov117_0225F020(SysTask *task, UnkStruct_ov01_SubAppWork *work)",
+   "signature_sources": {
+    "asm/overlay_117.s": "void ov117_0225F020(SysTask *task, UnkStruct_ov01_SubAppWork *work)"
+   },
+   "struct_accesses": [
+    {
+     "meaning": "state (switch 0..7, jump table)",
+     "offset": "0x0",
+     "param": 1,
+     "width": 4
+    },
+    {
+     "meaning": "int done flag, &work->unk4 passed to ov01_021EFCF8; case 2 waits for != 0",
+     "offset": "0x4",
+     "param": 1,
+     "width": 4
+    },
+    {
+     "meaning": "sub ptr = Heap_Alloc(4, 0x3D0); cached in r4 at entry before switch",
+     "offset": "0xc",
+     "param": 1,
+     "width": 4
+    },
+    {
+     "meaning": "FieldSystem *; ->unk4->hBlankSystem (+4 then +0x1c)",
+     "offset": "0x10",
+     "param": 1,
+     "width": 4
+    },
+    {
+     "meaning": "int *doneOut; if non-NULL *p = 1 in final state",
+     "offset": "0x14",
+     "param": 1,
+     "width": 4
+    },
+    {
+     "meaning": "NARC * passed to ov01_021F0614",
+     "offset": "0x20",
+     "param": 1,
+     "width": 4
+    }
+   ]
+  },
+  "ov117_0225F420": {
+   "callers": [
+    "asm/overlay_117.s"
+   ],
+   "confidence": "high",
+   "defined_in": "asm/overlay_117.s",
+   "mode": "thumb",
+   "notes": [
+    "[asm/overlay_117.s] Not in .public, so static; only caller is ov117_0225F524 case 6 with (work,1,0xdd). void *buf=GfGfxLoader_GetScrnDataFromOpenNarc(work->narc,fileId,FALSE,&scrn,HEAP_ID_4); LoadRectToBgTilemapRect(fs->bgConfig,bgId,scrn->rawData,0,0,scrn->screenWidth/8,scrn->screenHeight/8); Heap_Free(buf); BgCommitTilemapBufferToVram(fs->bgConfig,bgId). The width/height come from ldrh plus lsl#0x15/lsr#0x18, i.e. the u16 field >>3 narrowed to u8 (same shape as ov01_021F0454, which the asm reuses)."
+   ],
+   "signature_guess": "static void ov117_0225F420(UnkStruct_ov01_SubAppWork *work, u8 bgId, int fileId)",
+   "signature_sources": {
+    "asm/overlay_117.s": "static void ov117_0225F420(UnkStruct_ov01_SubAppWork *work, u8 bgId, int fileId)"
+   },
+   "struct_accesses": [
+    {
+     "meaning": "NARC *",
+     "offset": "0x20",
+     "param": 0,
+     "width": 4
+    },
+    {
+     "meaning": "FieldSystem *; ->bgConfig (+8)",
+     "offset": "0x10",
+     "param": 0,
+     "width": 4
+    }
+   ]
+  },
+  "ov117_0225F470": {
+   "callers": [
+    "asm/overlay_117.s"
+   ],
+   "confidence": "high",
+   "defined_in": "asm/overlay_117.s",
+   "mode": "thumb",
+   "notes": [
+    "[asm/overlay_117.s] msg=NewMsgDataFromNarc(MSGDATA_LOAD_LAZY(1), NARC_msgdata_msg(0x1b), 0xbd /*msg_0189*/, heapId); fmt=MessageFormat_New(heapId); dest=String_New(0x80,heapId); src=String_New(0x80,heapId) (allocation order: dest first in r7, then src in r5); ReadMsgDataIntoString(msg,0,src); BufferTrainerName(fmt,0,trainerId); StringExpandPlaceholders(fmt,dest,src); DestroyMsgData(msg); MessageFormat_Delete(fmt); String_Delete(src); return dest. trainerId is spilled to [sp] (the push r3 slot)."
+   ],
+   "signature_guess": "static String *ov117_0225F470(u32 trainerId, HeapID heapId)",
+   "signature_sources": {
+    "asm/overlay_117.s": "static String *ov117_0225F470(u32 trainerId, HeapID heapId)"
+   }
+  },
+  "ov117_0225F4D4": {
+   "callers": [],
+   "confidence": "high",
+   "defined_in": "asm/overlay_117.s",
+   "mode": "thumb",
+   "notes": [
+    "[asm/overlay_117.s] Tail call: ov117_0225F524(task, work, &ov117_0225FACC). Called only through the fn-ptr table ov01_022068C4 (asm)."
+   ],
+   "signature_guess": "void ov117_0225F4D4(SysTask *task, UnkStruct_ov01_SubAppWork *work)",
+   "signature_sources": {
+    "asm/overlay_117.s": "void ov117_0225F4D4(SysTask *task, UnkStruct_ov01_SubAppWork *work)"
+   }
+  },
+  "ov117_0225F4E4": {
+   "callers": [],
+   "confidence": "high",
+   "defined_in": "asm/overlay_117.s",
+   "mode": "thumb",
+   "notes": [
+    "[asm/overlay_117.s] Tail call with &ov117_0225FAD4."
+   ],
+   "signature_guess": "void ov117_0225F4E4(SysTask *task, UnkStruct_ov01_SubAppWork *work)",
+   "signature_sources": {
+    "asm/overlay_117.s": "void ov117_0225F4E4(SysTask *task, UnkStruct_ov01_SubAppWork *work)"
+   }
+  },
+  "ov117_0225F4F4": {
+   "callers": [],
+   "confidence": "high",
+   "defined_in": "asm/overlay_117.s",
+   "mode": "thumb",
+   "notes": [
+    "[asm/overlay_117.s] Tail call with &ov117_0225FADC."
+   ],
+   "signature_guess": "void ov117_0225F4F4(SysTask *task, UnkStruct_ov01_SubAppWork *work)",
+   "signature_sources": {
+    "asm/overlay_117.s": "void ov117_0225F4F4(SysTask *task, UnkStruct_ov01_SubAppWork *work)"
+   }
+  },
+  "ov117_0225F504": {
+   "callers": [],
+   "confidence": "high",
+   "defined_in": "asm/overlay_117.s",
+   "mode": "thumb",
+   "notes": [
+    "[asm/overlay_117.s] Tail call with &ov117_0225FAE4."
+   ],
+   "signature_guess": "void ov117_0225F504(SysTask *task, UnkStruct_ov01_SubAppWork *work)",
+   "signature_sources": {
+    "asm/overlay_117.s": "void ov117_0225F504(SysTask *task, UnkStruct_ov01_SubAppWork *work)"
+   }
+  },
+  "ov117_0225F514": {
+   "callers": [],
+   "confidence": "high",
+   "defined_in": "asm/overlay_117.s",
+   "mode": "thumb",
+   "notes": [
+    "[asm/overlay_117.s] Tail call with &ov117_0225FAEC."
+   ],
+   "signature_guess": "void ov117_0225F514(SysTask *task, UnkStruct_ov01_SubAppWork *work)",
+   "signature_sources": {
+    "asm/overlay_117.s": "void ov117_0225F514(SysTask *task, UnkStruct_ov01_SubAppWork *work)"
+   }
+  },
+  "ov117_0225F524": {
+   "callers": [
+    "asm/overlay_117.s"
+   ],
+   "confidence": "high",
+   "defined_in": "asm/overlay_117.s",
+   "mode": "thumb",
+   "notes": [
+    "[asm/overlay_117.s] Case 0: sub=Heap_Alloc(heapId,0x1BC); memset; ov01_021F05C4(&sub->mgr,1,1); ov01_021F0614(narc,&sub->mgr,&sub->res,p->pltt,1,p->chr,p->cell,p->anim,600000); sub->sprite=ov01_021F0718(&sub->mgr,&sub->res,FX32(320)=0x140000,FX32(128)=0x80000,0,0); Sprite_SetDrawFlag(FALSE); Sprite_SetOamMode(GX_OAM_MODE_XLU=1); Sprite_SetPriority(0); GfGfx_EngineATogglePlanes(0x10,1); sub->pos={0x140000,0x80000,0} (three field stores); G2_SetBlendAlpha(2,0x3d,0xc,4); SetBgPriority(2,0),(3,1),(1,2),(0,3); ToggleBgLayer(1,0),(2,0),(3,0); ov01_021F0454(narc,0xd9,0xd8,0xd7,0,2,bgConfig,1); GfGfxLoader_GXLoadPalFromOpenNarc(narc,0x10,0,0x40,0x20,heapId); AddWindowParameterized(bgConfig,&sub->window,2,0,0x14,0x10,2,2,1); FillWindowPixelBuffer(&sub->window,0); str=ov117_0225F470(p->trainerId,heapId); AddTextPrinterParameterizedWithColor(&sub->window,0,str,0,0,0,MAKE_TEXT_COLOR(1,2,0)=0x10200,NULL); String_Delete(str); ov01_021F0454(narc,0xda,0xd8,0xd7,0,2,bgConfig,3); G2_SetWnd0InsidePlane(GX_WND_PLANEMASK_BG3,TRUE); G2_SetWndOutsidePlane(BG0|BG1|BG2|OBJ=0x17,TRUE); G2_SetWnd0Position(0,0x60,0xFF,0x60); ov01_021F12B4(&sub->wave,heapId); ov01_021EFCF8(1,0x10,-0x10,&work->unk4,1); state++. Case 1: ToggleBgLayer(1,1); sub->counter=0xc; state++; FALLTHROUGH. Case 2: BgSetPosTextAndCommit(bgConfig,1,BG_POS_OP_ADD_X(1),0x18); sub->counter--; if(sub->counter<=0) state++. Case 3: GX_SetVisibleWnd(GX_WNDMASK_W0); ToggleBgLayer(3,1); ov01_021EFEC8(&sub->accel,0,0x60000,0x4000,4); state++; FALLTHROUGH. Case 4: BgSetPosTextAndCommit(bgConfig,1,1,0x18); if(!ov01_021EFF28(&sub->accel)){ x=sub->accel.cur>>12; G2_SetWnd0Position(0,0x60-x,0xFF,0x60+x);} else { GX_SetVisibleWnd(GX_WNDMASK_NONE); BgSetPosTextAndCommit(bgConfig,1,0,0); sub->counter=0xd; state++; }. Case 5: counter--; if(counter<=0) state++. Case 6: ov117_0225F420(work,1,0xdd); SetBgPriority(1,1); SetBgPriority(3,2); G2_SetBlendAlpha(2,0x3d,0,0x10); Sprite_SetDrawFlag(sub->sprite,TRUE); sub->counter=0; state++; FALLTHROUGH. Case 7: done=0 (r6, set before cmp); if(sub->counter<=0x10){ sub->counter+=4; if(sub->counter>0x10){sub->counter=0x10; done=1;} G2_SetBlendAlpha(2,0x3d,sub->counter,0x10-sub->counter);} sub->pos.x += ((0x80000-sub->pos.x)*2)/3; if((sub->pos.x>>12)<=0x82){ sub->pos.x=0x80000; if(done==1){ StartBrightnessTransition(8,0,0x10,0x1e,1); BG_SetMaskColor(0,0x14A5); ToggleBgLayer(0,0); state++; } } if(sub->counter>4) ToggleBgLayer(2,1); ScheduleSetBgPosText(bgConfig,2,BG_POS_OP_SET_X,-((sub->pos.x>>12)+8)); Sprite_SetMatrix(sub->sprite,&sub->pos). Case 8: if(IsBrightnessTransitionActive(1)){ sub->counter=0x10; state++; }. Case 9: counter--; if(counter<=0){ ov01_021EFEC8(&sub->accel,sub->pos.x,-0x60000,0x2000,8); sub->counter=8; ToggleBgLayer(3,0); state++; }. Case 10: sub->pos.x=sub->accel.cur; v=-((sub->pos.x>>12)+8); if(v<0) ScheduleSetBgPosText(bgConfig,2,0,v); else ToggleBgLayer(2,0); Sprite_SetMatrix(sub->sprite,&sub->pos); if(ov01_021EFF28(&sub->accel)){ GXS_DispOff(); BG_SetMaskColor(4,0); BeginNormalPaletteFade(0,0,0,0x7FFF,4,1,4); state++; }. Case 11: if(IsPaletteFadeFinished()) state++. Case 12: if(work->unk14) *work->unk14=1; ov01_021F12D0(&sub->wave); sub->waveActive=0; Sprite_Delete(sub->sprite); ov01_021F06EC(&sub->mgr,&sub->res); ov01_021F05F4(&sub->mgr); RemoveWindow(&sub->window); BG_ClearCharDataRange(3,0x20,0,4); BG_ClearCharDataRange(1,0x20,0,4); BgClearTilemapBufferAndCommit(bgConfig,3); BgClearTilemapBufferAndCommit(bgConfig,1); ov01_021EFCDC(work,task); falls to the tail (use-after-free, keep it). Tail: if(sub->waveActive==1) ov01_021F1310(&sub->wave,2); if(work->state!=12) SpriteList_RenderAndAnimateSprites(sub->mgr.spriteList). sub->waveActive (0x1B8) is never set to 1 in this file. r7 holds constant 4 from entry and feeds heap args AND derived constants (lsl r3,r7,#0x11=0x80000; lsl r0,r7,#0xb=0x2000; lsl r2,r7,#0x18=0x04000000; lsl r3,r3,#0xc=0x4000). Other sites use literal 4 (BeginNormalPaletteFade, BG_ClearCharDataRange, case-4 GX_SetVisibleWnd uses 1<<0x1a). Start with a top-level local 'HeapID heapId = HEAP_ID_4;' (r7)."
+   ],
+   "signature_guess": "static void ov117_0225F524(SysTask *task, UnkStruct_ov01_SubAppWork *work, const UnkStruct_ov117_TrainerGfx *param)",
+   "signature_sources": {
+    "asm/overlay_117.s": "static void ov117_0225F524(SysTask *task, UnkStruct_ov01_SubAppWork *work, const UnkStruct_ov117_TrainerGfx *param)"
+   },
+   "struct_accesses": [
+    {
+     "meaning": "state, switch 0..12 via jump table; falls through 1->2, 3->4, 6->7",
+     "offset": "0x0",
+     "param": 1,
+     "width": 4
+    },
+    {
+     "meaning": "&work->unk4 passed to ov01_021EFCF8",
+     "offset": "0x4",
+     "param": 1,
+     "width": 4
+    },
+    {
+     "meaning": "sub = Heap_Alloc(4, 0x1BC)",
+     "offset": "0xc",
+     "param": 1,
+     "width": 4
+    },
+    {
+     "meaning": "FieldSystem * (->bgConfig at +8)",
+     "offset": "0x10",
+     "param": 1,
+     "width": 4
+    },
+    {
+     "meaning": "int *doneOut",
+     "offset": "0x14",
+     "param": 1,
+     "width": 4
+    },
+    {
+     "meaning": "NARC *",
+     "offset": "0x20",
+     "param": 1,
+     "width": 4
+    },
+    {
+     "meaning": "pltt file id -> ov01_021F0614 r3",
+     "offset": "0x0",
+     "param": 2,
+     "width": 1
+    },
+    {
+     "meaning": "char file id",
+     "offset": "0x1",
+     "param": 2,
+     "width": 1
+    },
+    {
+     "meaning": "cell file id",
+     "offset": "0x2",
+     "param": 2,
+     "width": 1
+    },
+    {
+     "meaning": "anim file id",
+     "offset": "0x3",
+     "param": 2,
+     "width": 1
+    },
+    {
+     "meaning": "trainerId -> ov117_0225F470",
+     "offset": "0x4",
+     "param": 2,
+     "width": 4
+    }
+   ]
   },
   "ov13_0221BA00": {
    "callers": [
@@ -73410,10 +74666,13 @@
   },
   "sub_0200FBF4": {
    "callers": [
+    "asm/overlay_117.s",
     "asm/overlay_80_0223A00C.s",
     "asm/overlay_98.s"
    ],
    "confidence": "low",
+   "header": "include/screen_fade.h",
+   "known_prototype": "void sub_0200FBF4(PMLCDTarget screen, u16 color)",
    "signature_guess": "void sub_0200FBF4(int engine, int a1)",
    "signature_sources": {
     "asm/overlay_98.s": "void sub_0200FBF4(int engine, int a1)"

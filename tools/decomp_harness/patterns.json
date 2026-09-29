@@ -1757,6 +1757,12 @@
       "category": "codegen",
       "title": "4-bit field insert where retail materializes ~mask as (15-16)^mask: write mask ^ 0xFFFFFFFF with value and mask precomputed",
       "body": "Retail `lsls r5,idx,#2; adds r4,val,#1; movs r0,#15; adds r1,r0,#0; lsls r1,r5; subs r0,#16; ldr r3,[flags]; eors r0,r1; lsls r4,r5; ands r0,r3; orrs r0,r4; str` (no mvn) matched only with: `int shift = idx * 4; u32 value = (val + 1) << shift; u32 mask = 0xF << shift; *flags = (*flags & (mask ^ 0xFFFFFFFF)) | value;`. `~(0xF << s)` gives mvn; `(0xFFFFFFFF ^ mask)` with mask computed inline, or val+1 not pre-shifted into its own temp, schedules differently. Seen overlay_83_02246E08 ov83_022477EC (6-variant sweep with compile_one.sh)."
+    },
+    {
+      "id": "port-from-pokeplatinum-when-names-match",
+      "category": "tooling",
+      "title": "Before hand-decompiling a big shared-engine file, check pret/pokeplatinum for the same module (gh search code) and port it",
+      "body": "HGSS and Platinum share most engine code and the same MWCC build, so a decompiled Platinum TU usually compiles byte-identical once renamed. Recipe: (1) grep the frozen HG header / asm labels for descriptive names (e.g. BillboardLists_Create in include/unk_02023694.h); (2) `gh search code <Name> --repo pret/pokeplatinum`; (3) fetch with `gh api repos/pret/pokeplatinum/contents/<path> -H \"Accept: application/vnd.github.raw\"`; (4) compare function order against the asm (thumb_func_start list) - map Platinum names to HG sub_ addresses so objdiff can pair symbols; drop Platinum-only functions and write HG-only ones from asm; (5) swap in HG equivalents for Platinum helper modules (e.g. BillboardListVRAMTransfer_* -> sub_0202068C family), fix static-ness from the .inc .public list, and define any SDK inlines missing from HG lib/include locally (here NNS_G3dGetMat/GetTexDataByIdx/GetPlttDataByIdx/GetMatDataByIdx + NNSG3dResMat*/Dict*Data structs). unk_02023694 (68 funcs, billboard.c) matched 68/68 on the FIRST compile this way."
     }
   ]
 }

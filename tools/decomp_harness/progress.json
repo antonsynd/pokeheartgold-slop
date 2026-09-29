@@ -880,6 +880,16 @@
       "attempts": 4,
       "result": "matched",
       "note": "compare-verified (HG + SS full ROM SHA1 OK). Battle Frontier (ov83) sprite/resource + UI helper module: 14x4 SpriteResource table setup/teardown (item icons, party-menu gfx, pokemon icons from Party with the slot-3 flag quirk), affine Sprite factory + 8-byte {s16 x,y; Sprite*} icon wrappers (main/sub screen), mon-pic-into-OBJ-VRAM loader (sub_02014510 / GXS_LoadOBJ), nibble-packed BG-toggle queue, YesNoPrompt holder, WindowTemplate table add/remove, frame and aligned text printer. 39/39 pure C, modelled on battle_arcade_game_board.c (ov84) which carries the same helpers. Fixes: decl-order swaps (7668 rect/pokepic, 7864 tileStart, 791C i/count), u16 seqNo, i <= 7, local AddTextPrinterParameterizedWithColor with u32 fontId (text.h narrows via u8 FontID), nibble insert needs (mask ^ 0xFFFFFFFF) with pre-shifted value (compile_one.sh variant sweep), and the three 0x10-byte rodata objects defined in reverse address order."
+    },
+    {
+      "file": "asm/unk_02023694.s",
+      "lines": 2047,
+      "functions": 68,
+      "matched_functions": 68,
+      "nonmatching": 0,
+      "attempts": 1,
+      "result": "matched",
+      "note": "compare-verified (HG + SS full ROM SHA1 OK). Billboard (3D sprite) list system = pokeplatinum src/billboard.c. Ported verbatim with HG symbol names (sub_ addresses so objdiff pairs), HG VRAM-transfer helpers (sub_0202068C/206C8/206E0/20738/20764 in unk_0202068C.c), GF3dRender_DrawModel, and HG-specific accessors (sub_02023EC8 re-bind, sub_02023FA0/FB0 tex/pltt key getters; no rot-matrix/GetState/GetTexture/GetRenderObj). NNS material-dict inlines/structs absent from lib/include defined locally. Frozen include/unk_02023694.h not included. 68/68 first compile."
     }
   ],
   "failed": [
@@ -1299,7 +1309,7 @@
   ],
   "stats": {
     "total_attempts": 208,
-    "total_matched": 80,
+    "total_matched": 81,
     "total_failed": 31
   },
   "matched": [
@@ -1404,6 +1414,7 @@
     "asm/unk_02056680.s",
     "asm/unk_02033AE0.s",
     "asm/overlay_80_0223A00C.s",
-    "asm/overlay_83_02246E08.s"
+    "asm/overlay_83_02246E08.s",
+    "asm/unk_02023694.s"
   ]
 }
