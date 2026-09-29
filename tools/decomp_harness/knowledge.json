@@ -32809,6 +32809,730 @@
    ],
    "sweep_output": "sweep/out/unk_02056680.json"
   },
+  "asm/unk_02061284.s": {
+   "notes": "NPC movement-type behaviours (look-around, wander, fixed-dir, spin, back-and-forth, route-walk) sitting between asm/unk_0205FD20.o and src/unk_data_020FD978.o in main.lsf. 81 thumb functions, 0x2108-0x1284 = ~0xE84 bytes of code plus ~0x46C bytes of rodata (_020FD4EC.._020FD978). Every exported function is referenced only as a .word from asm/unk_data_020FCBD8.s (movement-type callback table); none has a C caller or header declaration, so there are no prototype conflicts. A new include/unk_02061284.h is optional and should not be included by any existing matched file. No .data/.bss. No DECL_CHUNK_EX involvement. Ids 0x0-0xd and 0x26 lists are -1-terminated (random pick via sub_02061E00/E20/E44); ids 0xe-0x25 are fixed 4-step route lists indexed by step. Directions: 0=up 1=down 2=left 3=right.",
+   "oracle": {
+    "functions": {
+     "sub_02061284": {
+      "widths": [
+       {
+        "base": "r4",
+        "confidence": "high",
+        "evidence": "L29: strh r0, [r4, #2]",
+        "kind": "store-width",
+        "offset": "#2",
+        "verdict": "u16"
+       }
+      ]
+     },
+     "sub_02061338": {
+      "signedness": [
+       {
+        "branch": "bgt",
+        "confidence": "high",
+        "evidence": "L168: cmp r0, #0  =>  L169: bgt _02061390",
+        "register": "r0",
+        "verdict": "signed"
+       }
+      ],
+      "widths": [
+       {
+        "base": "r4",
+        "confidence": "high",
+        "evidence": "L160: ldrh r0, [r4]",
+        "kind": "load-width",
+        "offset": "#0",
+        "verdict": "u16"
+       },
+       {
+        "base": "r4",
+        "confidence": "high",
+        "evidence": "L164: ldrsh r1, [r4, r0]",
+        "kind": "load-width",
+        "offset": "(r0)",
+        "verdict": "s16"
+       },
+       {
+        "base": "r4",
+        "confidence": "high",
+        "evidence": "L166: strh r1, [r4, #2]",
+        "kind": "store-width",
+        "offset": "#2",
+        "verdict": "u16"
+       }
+      ]
+     },
+     "sub_020613F8": {
+      "signedness": [
+       {
+        "branch": "bhi",
+        "confidence": "high",
+        "evidence": "L257: cmp r0, #4  =>  L258: bhi _020614EE",
+        "register": "r0",
+        "verdict": "unsigned"
+       }
+      ],
+      "widths": [
+       {
+        "confidence": "high",
+        "evidence": "L262: lsl r0, r0, #0x10 ; L263: asr r0, r0, #0x10",
+        "kind": "truncation-pair",
+        "register": "r0",
+        "verdict": "s16"
+       },
+       {
+        "base": "r4",
+        "confidence": "high",
+        "evidence": "L256: ldrsh r0, [r4, r0]",
+        "kind": "load-width",
+        "offset": "(r0)",
+        "verdict": "s16"
+       },
+       {
+        "base": "r0",
+        "confidence": "high",
+        "evidence": "L261: ldrh r0, [r0, #6]",
+        "kind": "load-width",
+        "offset": "#6",
+        "verdict": "u16"
+       },
+       {
+        "base": "r4",
+        "confidence": "high",
+        "evidence": "L286: strh r0, [r4]",
+        "kind": "store-width",
+        "offset": "#0",
+        "verdict": "u16"
+       },
+       {
+        "base": "r4",
+        "confidence": "high",
+        "evidence": "L297: strh r0, [r4, #2]",
+        "kind": "store-width",
+        "offset": "#2",
+        "verdict": "u16"
+       }
+      ]
+     },
+     "sub_020614F4": {
+      "signedness": [
+       {
+        "branch": "bhi",
+        "confidence": "high",
+        "evidence": "L390: cmp r0, #0xd  =>  L391: bhi _020615E8",
+        "register": "r0",
+        "verdict": "unsigned"
+       }
+      ],
+      "widths": [
+       {
+        "confidence": "high",
+        "evidence": "L395: lsl r0, r0, #0x10 ; L396: asr r0, r0, #0x10",
+        "kind": "truncation-pair",
+        "register": "r0",
+        "verdict": "s16"
+       },
+       {
+        "base": "r0",
+        "confidence": "high",
+        "evidence": "L394: ldrh r0, [r0, #6]",
+        "kind": "load-width",
+        "offset": "#6",
+        "verdict": "u16"
+       }
+      ]
+     },
+     "sub_020615F0": {
+      "signedness": [
+       {
+        "branch": "bgt",
+        "confidence": "high",
+        "evidence": "L526: cmp r0, r4  =>  L527: bgt _0206162A",
+        "register": "r0",
+        "verdict": "signed"
+       },
+       {
+        "branch": "bge",
+        "confidence": "high",
+        "evidence": "L529: cmp r0, r4  =>  L530: bge _02061630",
+        "register": "r0",
+        "verdict": "signed"
+       },
+       {
+        "branch": "bgt",
+        "confidence": "high",
+        "evidence": "L537: cmp r0, r1  =>  L538: bgt _0206163C",
+        "register": "r0",
+        "verdict": "signed"
+       },
+       {
+        "branch": "bge",
+        "confidence": "high",
+        "evidence": "L540: cmp r0, r1  =>  L541: bge _02061642",
+        "register": "r0",
+        "verdict": "signed"
+       }
+      ]
+     },
+     "sub_020616C0": {
+      "widths": [
+       {
+        "base": "r0",
+        "confidence": "high",
+        "evidence": "L634: strb r4, [r0]",
+        "kind": "store-width",
+        "offset": "#0",
+        "verdict": "u8"
+       }
+      ]
+     },
+     "sub_020616FC": {
+      "widths": [
+       {
+        "base": "r4",
+        "confidence": "high",
+        "evidence": "L672: ldrsb r2, [r4, r7]",
+        "kind": "load-width",
+        "offset": "(r7)",
+        "verdict": "s8"
+       }
+      ]
+     },
+     "sub_02061720": {
+      "widths": [
+       {
+        "base": "r4",
+        "confidence": "high",
+        "evidence": "L707: strb r0, [r4, #2]",
+        "kind": "store-width",
+        "offset": "#2",
+        "verdict": "u8"
+       }
+      ]
+     },
+     "sub_02061754": {
+      "widths": [
+       {
+        "base": "r4",
+        "confidence": "high",
+        "evidence": "L725: strb r0, [r4, #2]",
+        "kind": "store-width",
+        "offset": "#2",
+        "verdict": "u8"
+       }
+      ]
+     },
+     "sub_02061770": {
+      "signedness": [
+       {
+        "branch": "bge",
+        "confidence": "high",
+        "evidence": "L753: cmp r0, #0x18  =>  L754: bge _020617A2",
+        "register": "r0",
+        "verdict": "signed"
+       }
+      ],
+      "widths": [
+       {
+        "base": "r4",
+        "confidence": "high",
+        "evidence": "L746: strb r0, [r4, #2]",
+        "kind": "store-width",
+        "offset": "#2",
+        "verdict": "u8"
+       }
+      ]
+     },
+     "sub_020617AC": {
+      "widths": [
+       {
+        "base": "r6",
+        "confidence": "high",
+        "evidence": "L790: ldrsb r0, [r6, r0]",
+        "kind": "load-width",
+        "offset": "(r0)",
+        "verdict": "s8"
+       },
+       {
+        "base": "r6",
+        "confidence": "high",
+        "evidence": "L836: strb r0, [r6, #2]",
+        "kind": "store-width",
+        "offset": "#2",
+        "verdict": "u8"
+       }
+      ]
+     },
+     "sub_02061850": {
+      "widths": [
+       {
+        "base": "r4",
+        "confidence": "high",
+        "evidence": "L863: ldrsb r2, [r4, r7]",
+        "kind": "load-width",
+        "offset": "(r7)",
+        "verdict": "s8"
+       }
+      ]
+     },
+     "sub_02061874": {
+      "widths": [
+       {
+        "base": "r4",
+        "confidence": "high",
+        "evidence": "L888: strb r0, [r4, #2]",
+        "kind": "store-width",
+        "offset": "#2",
+        "verdict": "u8"
+       }
+      ]
+     },
+     "sub_02061894": {
+      "widths": [
+       {
+        "base": "r4",
+        "confidence": "high",
+        "evidence": "L906: strb r0, [r4, #2]",
+        "kind": "store-width",
+        "offset": "#2",
+        "verdict": "u8"
+       }
+      ]
+     },
+     "sub_020618B0": {
+      "signedness": [
+       {
+        "branch": "bge",
+        "confidence": "high",
+        "evidence": "L916: cmp r0, #0x18  =>  L917: bge _020618BE",
+        "register": "r0",
+        "verdict": "signed"
+       }
+      ],
+      "widths": [
+       {
+        "base": "r1",
+        "confidence": "high",
+        "evidence": "L922: strb r0, [r1, #2]",
+        "kind": "store-width",
+        "offset": "#2",
+        "verdict": "u8"
+       }
+      ]
+     },
+     "sub_020618C8": {
+      "widths": [
+       {
+        "base": "r6",
+        "confidence": "high",
+        "evidence": "L953: ldrsb r0, [r6, r0]",
+        "kind": "load-width",
+        "offset": "(r0)",
+        "verdict": "s8"
+       },
+       {
+        "base": "r6",
+        "confidence": "high",
+        "evidence": "L1008: strb r0, [r6]",
+        "kind": "store-width",
+        "offset": "#0",
+        "verdict": "u8"
+       },
+       {
+        "base": "r6",
+        "confidence": "high",
+        "evidence": "L1011: strb r0, [r6, #2]",
+        "kind": "store-width",
+        "offset": "#2",
+        "verdict": "u8"
+       }
+      ]
+     },
+     "sub_0206199C": {
+      "widths": [
+       {
+        "base": "r4",
+        "confidence": "high",
+        "evidence": "L1047: ldrsh r2, [r4, r7]",
+        "kind": "load-width",
+        "offset": "(r7)",
+        "verdict": "s16"
+       }
+      ]
+     },
+     "sub_020619C0": {
+      "widths": [
+       {
+        "base": "r4",
+        "confidence": "high",
+        "evidence": "L1067: ldrsh r1, [r4, r1]",
+        "kind": "load-width",
+        "offset": "(r1)",
+        "verdict": "s16"
+       },
+       {
+        "base": "r4",
+        "confidence": "high",
+        "evidence": "L1086: strh r0, [r4]",
+        "kind": "store-width",
+        "offset": "#0",
+        "verdict": "u16"
+       }
+      ]
+     },
+     "sub_020619FC": {
+      "widths": [
+       {
+        "base": "r6",
+        "confidence": "high",
+        "evidence": "L1096: ldrsh r1, [r6, r1]",
+        "kind": "load-width",
+        "offset": "(r1)",
+        "verdict": "s16"
+       },
+       {
+        "base": "r6",
+        "confidence": "high",
+        "evidence": "L1131: strh r0, [r6, #2]",
+        "kind": "store-width",
+        "offset": "#2",
+        "verdict": "u16"
+       },
+       {
+        "base": "r6",
+        "confidence": "high",
+        "evidence": "L1172: strh r0, [r6]",
+        "kind": "store-width",
+        "offset": "#0",
+        "verdict": "u16"
+       }
+      ]
+     },
+     "sub_02061ABC": {
+      "widths": [
+       {
+        "base": "r4",
+        "confidence": "high",
+        "evidence": "L1197: strh r0, [r4]",
+        "kind": "store-width",
+        "offset": "#0",
+        "verdict": "u16"
+       }
+      ]
+     },
+     "sub_02061AEC": {
+      "widths": [
+       {
+        "base": "r4",
+        "confidence": "high",
+        "evidence": "L1214: strb r6, [r4, #2]",
+        "kind": "store-width",
+        "offset": "#2",
+        "verdict": "u8"
+       },
+       {
+        "base": "r4",
+        "confidence": "high",
+        "evidence": "L1216: strb r7, [r4, #3]",
+        "kind": "store-width",
+        "offset": "#3",
+        "verdict": "u8"
+       }
+      ]
+     },
+     "sub_02061C1C": {
+      "widths": [
+       {
+        "base": "r4",
+        "confidence": "high",
+        "evidence": "L1414: ldrb r2, [r4]",
+        "kind": "load-width",
+        "offset": "#0",
+        "verdict": "u8"
+       }
+      ]
+     },
+     "sub_02061C40": {
+      "widths": [
+       {
+        "base": "r4",
+        "confidence": "high",
+        "evidence": "L1431: ldrb r2, [r4, #1]",
+        "kind": "load-width",
+        "offset": "#1",
+        "verdict": "u8"
+       },
+       {
+        "base": "r4",
+        "confidence": "high",
+        "evidence": "L1432: ldrb r1, [r4, #2]",
+        "kind": "load-width",
+        "offset": "#2",
+        "verdict": "u8"
+       },
+       {
+        "base": "r4",
+        "confidence": "high",
+        "evidence": "L1436: ldrb r1, [r4, #3]",
+        "kind": "load-width",
+        "offset": "#3",
+        "verdict": "u8"
+       },
+       {
+        "base": "r4",
+        "confidence": "high",
+        "evidence": "L1447: strb r0, [r4, #1]",
+        "kind": "store-width",
+        "offset": "#1",
+        "verdict": "u8"
+       },
+       {
+        "base": "r4",
+        "confidence": "high",
+        "evidence": "L1548: strb r0, [r4]",
+        "kind": "store-width",
+        "offset": "#0",
+        "verdict": "u8"
+       }
+      ]
+     },
+     "sub_02061D50": {
+      "widths": [
+       {
+        "base": "r4",
+        "confidence": "high",
+        "evidence": "L1573: strb r0, [r4]",
+        "kind": "store-width",
+        "offset": "#0",
+        "verdict": "u8"
+       }
+      ]
+     },
+     "sub_02061E20": {
+      "exact_types": [
+       {
+        "confidence": "high",
+        "evidence": "L1701: bl _s32_div_f",
+        "helper": "_s32_div_f",
+        "verdict": "signed 32-bit int / or %  (both operands signed int)"
+       }
+      ]
+     },
+     "sub_02061E44": {
+      "exact_types": [
+       {
+        "confidence": "high",
+        "evidence": "L1721: bl _s32_div_f",
+        "helper": "_s32_div_f",
+        "verdict": "signed 32-bit int / or %  (both operands signed int)"
+       }
+      ]
+     },
+     "sub_02061E90": {
+      "signedness": [
+       {
+        "branch": "bgt",
+        "confidence": "high",
+        "evidence": "L1827: cmp r3, r6  =>  L1828: bgt _02061F52",
+        "register": "r3",
+        "verdict": "signed"
+       },
+       {
+        "branch": "blt",
+        "confidence": "high",
+        "evidence": "L1829: cmp r5, r6  =>  L1830: blt _02061F52",
+        "register": "r5",
+        "verdict": "signed"
+       },
+       {
+        "branch": "bgt",
+        "confidence": "high",
+        "evidence": "L1831: cmp r1, r4  =>  L1832: bgt _02061F52",
+        "register": "r1",
+        "verdict": "signed"
+       },
+       {
+        "branch": "blt",
+        "confidence": "high",
+        "evidence": "L1833: cmp r0, r4  =>  L1834: blt _02061F52",
+        "register": "r0",
+        "verdict": "signed"
+       }
+      ]
+     },
+     "sub_02061F5C": {
+      "signedness": [
+       {
+        "branch": "blt",
+        "confidence": "high",
+        "evidence": "L1882: cmp r2, r4  =>  L1883: blt _02061F92",
+        "register": "r2",
+        "verdict": "signed"
+       },
+       {
+        "branch": "ble",
+        "confidence": "high",
+        "evidence": "L1903: cmp r2, r1  =>  L1904: ble _02061FDA",
+        "register": "r2",
+        "verdict": "signed"
+       },
+       {
+        "branch": "bge",
+        "confidence": "high",
+        "evidence": "L1908: cmp r2, r1  =>  L1909: bge _02061FE0",
+        "register": "r2",
+        "verdict": "signed"
+       },
+       {
+        "branch": "ble",
+        "confidence": "high",
+        "evidence": "L1913: cmp r1, r0  =>  L1914: ble _02061FEA",
+        "register": "r1",
+        "verdict": "signed"
+       },
+       {
+        "branch": "bge",
+        "confidence": "high",
+        "evidence": "L1918: cmp r1, r0  =>  L1919: bge _02061FF0",
+        "register": "r1",
+        "verdict": "signed"
+       },
+       {
+        "branch": "blt",
+        "confidence": "high",
+        "evidence": "L1936: cmp r0, r4  =>  L1937: blt _02061FF8",
+        "register": "r0",
+        "verdict": "signed"
+       },
+       {
+        "branch": "blt",
+        "confidence": "high",
+        "evidence": "L1952: cmp r0, r4  =>  L1953: blt _02062012",
+        "register": "r0",
+        "verdict": "signed"
+       },
+       {
+        "branch": "blt",
+        "confidence": "high",
+        "evidence": "L1971: cmp r0, r4  =>  L1972: blt _02062028",
+        "register": "r0",
+        "verdict": "signed"
+       }
+      ]
+     },
+     "sub_02062050": {
+      "signedness": [
+       {
+        "branch": "bhi",
+        "confidence": "high",
+        "evidence": "L1987: cmp r0, #1  =>  L1988: bhi _02062060",
+        "register": "r0",
+        "verdict": "unsigned"
+       }
+      ]
+     },
+     "sub_02062064": {
+      "widths": [
+       {
+        "base": "r4",
+        "confidence": "high",
+        "evidence": "L2004: strb r0, [r4, #1]",
+        "kind": "store-width",
+        "offset": "#1",
+        "verdict": "u8"
+       }
+      ]
+     },
+     "sub_0206207C": {
+      "signedness": [
+       {
+        "branch": "bge",
+        "confidence": "high",
+        "evidence": "L2028: cmp r4, #4  =>  L2029: bge _020620A6",
+        "register": "r4",
+        "verdict": "signed"
+       },
+       {
+        "branch": "blt",
+        "confidence": "high",
+        "evidence": "L2037: cmp r4, #4  =>  L2038: blt _020620AE",
+        "register": "r4",
+        "verdict": "signed"
+       }
+      ],
+      "widths": [
+       {
+        "base": "r5",
+        "confidence": "high",
+        "evidence": "L2030: ldrsb r3, [r5, r2]",
+        "kind": "load-width",
+        "offset": "(r2)",
+        "verdict": "s8"
+       },
+       {
+        "base": "r5",
+        "confidence": "high",
+        "evidence": "L2047: strb r6, [r5]",
+        "kind": "store-width",
+        "offset": "#0",
+        "verdict": "u8"
+       },
+       {
+        "base": "r5",
+        "confidence": "high",
+        "evidence": "L2050: ldrsb r0, [r5, r0]",
+        "kind": "load-width",
+        "offset": "(r0)",
+        "verdict": "s8"
+       },
+       {
+        "base": "r5",
+        "confidence": "high",
+        "evidence": "L2066: strb r0, [r5, #2]",
+        "kind": "store-width",
+        "offset": "#2",
+        "verdict": "u8"
+       }
+      ]
+     },
+     "sub_020620F8": {
+      "widths": [
+       {
+        "base": "r1",
+        "confidence": "high",
+        "evidence": "L2081: ldrb r1, [r1, #2]",
+        "kind": "load-width",
+        "offset": "#2",
+        "verdict": "u8"
+       }
+      ]
+     }
+    },
+    "generated": "2026-09-29T20:17:23Z",
+    "summary": {
+     "copyprop_cmp": 0,
+     "dead_store": 0,
+     "exact_types": 2,
+     "functions": 32,
+     "signed": 21,
+     "unsigned": 3,
+     "widths": 47
+    },
+    "tool": "asm_oracle.py"
+   },
+   "risks": [
+    "RODATA ORDER is the main hazard: dispatch tables sit at 4EC/548/5A0/5D0 in REVERSE function order interleaved with dir lists, and _020FD790 (a file-scope list referenced by _020FD838) sits BETWEEN the two stack-copied arrays of sub_020618C8 (77C, 7A4). Function-local 'int a[5] = {...}' initialisers therefore likely cannot reproduce the layout; safest recipe is to define every rodata object at file scope in exact address order (forward-declare the static state functions before the fn tables) and copy the four 20-byte stack arrays via a 5-int struct typedef assignment (emits ldmia/stmia x2 + ldr/str). Try local-initialiser form only if the file-scope form misorders.",
+    "sub_02061E6C: the first loop compare uses constant 0 (MWCC folded sDirLists[0].id) -- table must be a static const visible in this TU with 0 as first id",
+    "Jump tables: sub_020613F8 (state 0..4, fallthrough 1->2->3->4, bodies in case order) and sub_020614F4 (movement 0..13, cases 0-5 = default GF_ASSERT, no bias subtraction -> may need explicit 'case 0..5:' labels grouped with default; see insights dense-switch-needs-case-zero / switch-jumptable-bound-needs-max-default-case)",
+    "sub_0206166C dead 'cmp r0,#1' -> switch with explicit empty case 1 (insight mwcc-switch-empty-case-dead-cmp)",
+    "sub_02061E90 'type==1||type==2' is a cmp/beq chain, not range-optimised -> use switch form (insights contiguous-equality-range-opt-vs-switch / switch-form-avoids-equality-or-range-opt); whereas sub_02062050 IS range-optimised (plain ||)",
+    "sub_02061F5C: three search loops with no zero-trip pre-check and a shared index register; register allocation (dx=r7, dz=r6, count=r4, list=r5) and stack slots ([sp+4]=z, [sp+8]=x, [sp+0xc]=avatar, [sp+0x10]=px) are declaration-order sensitive (reverse-decl stack slot insight) -- expect iteration",
+    "cmd = 0xc; if (r) cmd = 0x20 init-then-conditional form in sub_020619FC/sub_02061C40; branchy ternary GetFlagsBitsMask(...) ? 1 : 0 in sub_0206207C",
+    "IPA: do not add declarations to include/unk_0205FD20.h or include/unk_02062108.h (23 matched C files include them); declare sub_02060BB8, sub_02061200, sub_0206234C, sub_02062428, MapObject_ForceSetHeldMovement locally in the .c. Keep helper functions (sub_02062050, sub_02061E00/E20/E44/E6C/E90/F5C, sub_02062064/207C/20F8, sub_020614F4/15F0) non-static so -ipa file does not inline them; table-only state callbacks may be static",
+    "Stack-array declaration order in sub_020617AC/sub_020618C8: list A (sp+0x14) must be declared before list B (sp+0)"
+   ],
+   "sweep_output": "sweep/out/unk_02061284.json"
+  },
   "asm/unk_02069660.s": {
    "notes": "Small (~0x140 bytes), self-contained 3D model resource manager: load NSBMD from open NARC (sub_020696C4), bind tex/pltt to VRAM on next VBlank via one-shot SysTask (sub_02069714 -> sub_02069700 -> sub_020696E8), teardown (sub_02069784). No .rodata/.data/.bss. Pool constants only: sub_02069700 ptr + 0xFFFF (sub_02069714), NNS_GfdDefaultFuncFreeTexVram/PlttVram addresses (sub_02069744). Callers in decompiled C: src/field/overlay_01_021FFECC.c:44 (sub_02069784). Sibling file asm/unk_0206979C.s (sub_02069978, sub_020697DC) uses the same struct; analysis of asm/overlay_01_021F1348.s ov01_021F19F4/ov01_021F1A18 confirms the 6-arg shape for both sub_020696C4 and sub_020697DC.",
    "risks": [
@@ -33663,7 +34387,7 @@
    "sweep_output": "sweep/out/unk_02097B78.json"
   }
  },
- "generated": "2026-09-29T19:49:16Z",
+ "generated": "2026-09-29T20:17:23Z",
  "signature_conflicts": [
   "DestroySysTaskAndEnvironment",
   "GridInputHandler_GetNextInput",
@@ -34704,6 +35428,61 @@
     "asm/overlay_01_021E8744.s"
    ]
   },
+  "DirFlipState": {
+   "fields": {
+    "0x0": [
+     {
+      "meaning": "u8/s8 savedFacing (write-only here)",
+      "source": "asm/unk_02061284.s",
+      "width": 1
+     }
+    ],
+    "0x1": [
+     {
+      "meaning": "s8 row (ldrsb) into _020FD7E0",
+      "source": "asm/unk_02061284.s",
+      "width": 1
+     }
+    ],
+    "0x2": [
+     {
+      "meaning": "u8 savedFlag7 (ldrb)",
+      "source": "asm/unk_02061284.s",
+      "width": 1
+     }
+    ]
+   },
+   "size_guesses": {
+    "asm/unk_02061284.s": "0x4 (embedded)"
+   },
+   "sources": [
+    "asm/unk_02061284.s"
+   ]
+  },
+  "DirListEntry": {
+   "fields": {
+    "0x0": [
+     {
+      "meaning": "int id",
+      "source": "asm/unk_02061284.s",
+      "width": 4
+     }
+    ],
+    "0x4": [
+     {
+      "meaning": "const int *list",
+      "source": "asm/unk_02061284.s",
+      "width": 4
+     }
+    ]
+   },
+   "size_guesses": {
+    "asm/unk_02061284.s": "0x8"
+   },
+   "sources": [
+    "asm/unk_02061284.s"
+   ]
+  },
   "DpadMenuBox": {
    "fields": {},
    "size_guesses": {
@@ -35474,6 +36253,265 @@
    },
    "sources": [
     "asm/overlay_14_021EFDE4.s"
+   ]
+  },
+  "MoveData_BackForth": {
+   "fields": {
+    "0x0": [
+     {
+      "meaning": "s16 state",
+      "source": "asm/unk_02061284.s",
+      "width": 2
+     }
+    ],
+    "0x2": [
+     {
+      "meaning": "s16 reversed",
+      "source": "asm/unk_02061284.s",
+      "width": 2
+     }
+    ],
+    "0x4": [
+     {
+      "meaning": "DirFlipState dirFlip",
+      "source": "asm/unk_02061284.s",
+      "width": 4
+     }
+    ]
+   },
+   "size_guesses": {
+    "asm/unk_02061284.s": "0x8 (sub_0206197C)"
+   },
+   "sources": [
+    "asm/unk_02061284.s"
+   ]
+  },
+  "MoveData_FixedDir": {
+   "fields": {
+    "0x0": [
+     {
+      "meaning": "int dir",
+      "source": "asm/unk_02061284.s",
+      "width": 4
+     }
+    ],
+    "0x4": [
+     {
+      "meaning": "int state",
+      "source": "asm/unk_02061284.s",
+      "width": 4
+     }
+    ]
+   },
+   "size_guesses": {
+    "asm/unk_02061284.s": "0x8 (sub_02061648)"
+   },
+   "sources": [
+    "asm/unk_02061284.s"
+   ]
+  },
+  "MoveData_LookAround": {
+   "fields": {
+    "0x0": [
+     {
+      "meaning": "u16 unk0 (ldrh, ==0 gate; never written here)",
+      "source": "asm/unk_02061284.s",
+      "width": 2
+     }
+    ],
+    "0x2": [
+     {
+      "meaning": "s16 timer",
+      "source": "asm/unk_02061284.s",
+      "width": 2
+     }
+    ],
+    "0x4": [
+     {
+      "meaning": "int dirListId",
+      "source": "asm/unk_02061284.s",
+      "width": 4
+     }
+    ]
+   },
+   "size_guesses": {
+    "asm/unk_02061284.s": "0x8 (sub_0205F370(obj, 8) in sub_02061284)"
+   },
+   "sources": [
+    "asm/unk_02061284.s"
+   ]
+  },
+  "MoveData_Route": {
+   "fields": {
+    "0x0": [
+     {
+      "meaning": "u8 state",
+      "source": "asm/unk_02061284.s",
+      "width": 1
+     }
+    ],
+    "0x1": [
+     {
+      "meaning": "u8 step",
+      "source": "asm/unk_02061284.s",
+      "width": 1
+     }
+    ],
+    "0x2": [
+     {
+      "meaning": "u8 unk2 (=2)",
+      "source": "asm/unk_02061284.s",
+      "width": 1
+     }
+    ],
+    "0x3": [
+     {
+      "meaning": "u8 axis",
+      "source": "asm/unk_02061284.s",
+      "width": 1
+     }
+    ],
+    "0x4": [
+     {
+      "meaning": "int dirListId",
+      "source": "asm/unk_02061284.s",
+      "width": 4
+     }
+    ],
+    "0x8": [
+     {
+      "meaning": "DirFlipState dirFlip",
+      "source": "asm/unk_02061284.s",
+      "width": 4
+     }
+    ]
+   },
+   "size_guesses": {
+    "asm/unk_02061284.s": "0xc (sub_02061AEC)"
+   },
+   "sources": [
+    "asm/unk_02061284.s"
+   ]
+  },
+  "MoveData_Spin": {
+   "fields": {
+    "0x0": [
+     {
+      "meaning": "s8 spinDir (2 or 3)",
+      "source": "asm/unk_02061284.s",
+      "width": 1
+     }
+    ],
+    "0x1": [
+     {
+      "meaning": "padding/unused",
+      "source": "asm/unk_02061284.s",
+      "width": 1
+     }
+    ],
+    "0x2": [
+     {
+      "meaning": "s8 state (ldrsb index)",
+      "source": "asm/unk_02061284.s",
+      "width": 1
+     }
+    ],
+    "0x4": [
+     {
+      "meaning": "int timer (counts to 24)",
+      "source": "asm/unk_02061284.s",
+      "width": 4
+     }
+    ]
+   },
+   "size_guesses": {
+    "asm/unk_02061284.s": "0x8 (sub_020616C0)"
+   },
+   "sources": [
+    "asm/unk_02061284.s"
+   ]
+  },
+  "MoveData_Wander": {
+   "fields": {
+    "0x0": [
+     {
+      "meaning": "s16 state",
+      "source": "asm/unk_02061284.s",
+      "width": 2
+     }
+    ],
+    "0x2": [
+     {
+      "meaning": "s16 timer",
+      "source": "asm/unk_02061284.s",
+      "width": 2
+     }
+    ],
+    "0x4": [
+     {
+      "meaning": "int rangeLimited",
+      "source": "asm/unk_02061284.s",
+      "width": 4
+     }
+    ],
+    "0x8": [
+     {
+      "meaning": "int moveCmd",
+      "source": "asm/unk_02061284.s",
+      "width": 4
+     }
+    ],
+    "0xc": [
+     {
+      "meaning": "int dirListId",
+      "source": "asm/unk_02061284.s",
+      "width": 4
+     }
+    ]
+   },
+   "size_guesses": {
+    "asm/unk_02061284.s": "0x10 (sub_020613D0)"
+   },
+   "sources": [
+    "asm/unk_02061284.s"
+   ]
+  },
+  "MoveRangeRect": {
+   "fields": {
+    "0x0": [
+     {
+      "meaning": "int xMin",
+      "source": "asm/unk_02061284.s",
+      "width": 4
+     }
+    ],
+    "0x4": [
+     {
+      "meaning": "int zMin",
+      "source": "asm/unk_02061284.s",
+      "width": 4
+     }
+    ],
+    "0x8": [
+     {
+      "meaning": "int xMax",
+      "source": "asm/unk_02061284.s",
+      "width": 4
+     }
+    ],
+    "0xc": [
+     {
+      "meaning": "int zMax",
+      "source": "asm/unk_02061284.s",
+      "width": 4
+     }
+    ]
+   },
+   "size_guesses": {
+    "asm/unk_02061284.s": "0x10 (stack in sub_020615F0)"
+   },
+   "sources": [
+    "asm/unk_02061284.s"
    ]
   },
   "NodeElem (pending-item pool slot)": {
@@ -44829,6 +45867,14 @@
    "known_prototype": "BOOL FieldSystem_ApplicationIsRunning(FieldSystem *fieldSystem)",
    "signature_sources": {}
   },
+  "FieldSystem_GetPlayerAvatar": {
+   "callers": [
+    "asm/unk_02061284.s"
+   ],
+   "header": "include/player_avatar.h",
+   "known_prototype": "PlayerAvatar *FieldSystem_GetPlayerAvatar(FieldSystem *fieldSystem)",
+   "signature_sources": {}
+  },
   "FieldSystem_GetSaveData": {
    "callers": [
     "asm/unk_02095DF4.s"
@@ -45209,6 +46255,7 @@
     "asm/unk_02033AE0.s",
     "asm/unk_0203BA5C.s",
     "asm/unk_02056680.s",
+    "asm/unk_02061284.s",
     "asm/unk_02069660.s",
     "asm/unk_02078DD8.s",
     "asm/unk_020863F4.s"
@@ -45873,6 +46920,22 @@
      "width": 4
     }
    ]
+  },
+  "GetDeltaXByFacingDirection": {
+   "callers": [
+    "asm/unk_02061284.s"
+   ],
+   "header": "include/unk_0205FD20.h",
+   "known_prototype": "int GetDeltaXByFacingDirection(int direction)",
+   "signature_sources": {}
+  },
+  "GetDeltaYByFacingDirection": {
+   "callers": [
+    "asm/unk_02061284.s"
+   ],
+   "header": "include/unk_0205FD20.h",
+   "known_prototype": "int GetDeltaYByFacingDirection(int direction)",
+   "signature_sources": {}
   },
   "GetDexHeightMsgBank": {
    "callers": [
@@ -46785,7 +47848,8 @@
   },
   "LCRandom": {
    "callers": [
-    "asm/overlay_80_0222FD08.s"
+    "asm/overlay_80_0222FD08.s",
+    "asm/unk_02061284.s"
    ],
    "header": "include/math_util.h",
    "known_prototype": "u16 LCRandom(void)",
@@ -47352,12 +48416,36 @@
    "known_prototype": "BOOL MapObject_CheckVisible(LocalMapObject *object)",
    "signature_sources": {}
   },
+  "MapObject_ClearEndMovement": {
+   "callers": [
+    "asm/unk_02061284.s"
+   ],
+   "header": "include/map_object.h",
+   "known_prototype": "void MapObject_ClearEndMovement(LocalMapObject *object)",
+   "signature_sources": {}
+  },
+  "MapObject_ClearFlagsBits": {
+   "callers": [
+    "asm/unk_02061284.s"
+   ],
+   "header": "include/map_object.h",
+   "known_prototype": "void MapObject_ClearFlagsBits(LocalMapObject *object, MapObjectFlagBits bits)",
+   "signature_sources": {}
+  },
   "MapObject_ClearHeldMovementIfActive": {
    "callers": [
     "asm/unk_02056680.s"
    ],
    "header": "include/unk_02062108.h",
    "known_prototype": "BOOL MapObject_ClearHeldMovementIfActive(LocalMapObject *obj)",
+   "signature_sources": {}
+  },
+  "MapObject_ClearSingleMovement": {
+   "callers": [
+    "asm/unk_02061284.s"
+   ],
+   "header": "include/map_object.h",
+   "known_prototype": "void MapObject_ClearSingleMovement(LocalMapObject *object)",
    "signature_sources": {}
   },
   "MapObject_CopyFacingVector": {
@@ -47378,10 +48466,21 @@
    "known_prototype": "void MapObject_CopyPositionVector(LocalMapObject *object, VecFx32 *positionVector)",
    "signature_sources": {}
   },
+  "MapObject_ForceSetHeldMovement": {
+   "callers": [
+    "asm/unk_02061284.s"
+   ],
+   "confidence": "low",
+   "signature_guess": "void MapObject_ForceSetHeldMovement(LocalMapObject *obj, int movement)",
+   "signature_sources": {
+    "asm/unk_02061284.s": "void MapObject_ForceSetHeldMovement(LocalMapObject *obj, int movement)"
+   }
+  },
   "MapObject_GetFacingDirection": {
    "callers": [
     "asm/overlay_01_021FDA14.s",
-    "asm/overlay_01_022031C0.s"
+    "asm/overlay_01_022031C0.s",
+    "asm/unk_02061284.s"
    ],
    "header": "include/map_object.h",
    "known_prototype": "u32 MapObject_GetFacingDirection(LocalMapObject *object)",
@@ -47389,10 +48488,19 @@
   },
   "MapObject_GetFieldSystem": {
    "callers": [
-    "asm/overlay_01_021FDA14.s"
+    "asm/overlay_01_021FDA14.s",
+    "asm/unk_02061284.s"
    ],
    "header": "include/map_object.h",
    "known_prototype": "FieldSystem *MapObject_GetFieldSystem(LocalMapObject *object)",
+   "signature_sources": {}
+  },
+  "MapObject_GetFlagsBitsMask": {
+   "callers": [
+    "asm/unk_02061284.s"
+   ],
+   "header": "include/map_object.h",
+   "known_prototype": "u32 MapObject_GetFlagsBitsMask(LocalMapObject *object, MapObjectFlagBits bits)",
    "signature_sources": {}
   },
   "MapObject_GetID": {
@@ -47402,6 +48510,30 @@
    ],
    "header": "include/map_object.h",
    "known_prototype": "u32 MapObject_GetID(LocalMapObject *object)",
+   "signature_sources": {}
+  },
+  "MapObject_GetInitialFacingDirection": {
+   "callers": [
+    "asm/unk_02061284.s"
+   ],
+   "header": "include/map_object.h",
+   "known_prototype": "u32 MapObject_GetInitialFacingDirection(LocalMapObject *object)",
+   "signature_sources": {}
+  },
+  "MapObject_GetInitialX": {
+   "callers": [
+    "asm/unk_02061284.s"
+   ],
+   "header": "include/map_object.h",
+   "known_prototype": "u32 MapObject_GetInitialX(LocalMapObject *object)",
+   "signature_sources": {}
+  },
+  "MapObject_GetInitialZ": {
+   "callers": [
+    "asm/unk_02061284.s"
+   ],
+   "header": "include/map_object.h",
+   "known_prototype": "u32 MapObject_GetInitialZ(LocalMapObject *object)",
    "signature_sources": {}
   },
   "MapObject_GetManager": {
@@ -47419,6 +48551,38 @@
    ],
    "header": "include/map_object.h",
    "known_prototype": "u32 MapObject_GetMapID(LocalMapObject *object)",
+   "signature_sources": {}
+  },
+  "MapObject_GetMovement": {
+   "callers": [
+    "asm/unk_02061284.s"
+   ],
+   "header": "include/map_object.h",
+   "known_prototype": "u32 MapObject_GetMovement(LocalMapObject *object)",
+   "signature_sources": {}
+  },
+  "MapObject_GetNextFacingDirection": {
+   "callers": [
+    "asm/unk_02061284.s"
+   ],
+   "header": "include/map_object.h",
+   "known_prototype": "u32 MapObject_GetNextFacingDirection(LocalMapObject *object)",
+   "signature_sources": {}
+  },
+  "MapObject_GetParam": {
+   "callers": [
+    "asm/unk_02061284.s"
+   ],
+   "header": "include/map_object.h",
+   "known_prototype": "s32 MapObject_GetParam(LocalMapObject *object, u32 param)",
+   "signature_sources": {}
+  },
+  "MapObject_GetPositionVectorYCoordUInt": {
+   "callers": [
+    "asm/unk_02061284.s"
+   ],
+   "header": "include/map_object.h",
+   "known_prototype": "u32 MapObject_GetPositionVectorYCoordUInt(LocalMapObject *object)",
    "signature_sources": {}
   },
   "MapObject_GetPriorityPlusValue": {
@@ -47439,12 +48603,60 @@
    "known_prototype": "u32 MapObject_GetSpriteID(LocalMapObject *object)",
    "signature_sources": {}
   },
+  "MapObject_GetType": {
+   "callers": [
+    "asm/unk_02061284.s"
+   ],
+   "header": "include/map_object.h",
+   "known_prototype": "u32 MapObject_GetType(LocalMapObject *object)",
+   "signature_sources": {}
+  },
+  "MapObject_GetXCoord": {
+   "callers": [
+    "asm/unk_02061284.s"
+   ],
+   "header": "include/map_object.h",
+   "known_prototype": "u32 MapObject_GetXCoord(LocalMapObject *object)",
+   "signature_sources": {}
+  },
+  "MapObject_GetXRange": {
+   "callers": [
+    "asm/unk_02061284.s"
+   ],
+   "header": "include/map_object.h",
+   "known_prototype": "s32 MapObject_GetXRange(LocalMapObject *object)",
+   "signature_sources": {}
+  },
+  "MapObject_GetYRange": {
+   "callers": [
+    "asm/unk_02061284.s"
+   ],
+   "header": "include/map_object.h",
+   "known_prototype": "s32 MapObject_GetYRange(LocalMapObject *object)",
+   "signature_sources": {}
+  },
+  "MapObject_GetZCoord": {
+   "callers": [
+    "asm/unk_02061284.s"
+   ],
+   "header": "include/map_object.h",
+   "known_prototype": "u32 MapObject_GetZCoord(LocalMapObject *object)",
+   "signature_sources": {}
+  },
   "MapObject_IsMovementPaused": {
    "callers": [
     "asm/unk_02056680.s"
    ],
    "header": "include/unk_02062108.h",
    "known_prototype": "BOOL MapObject_IsMovementPaused(LocalMapObject *object)",
+   "signature_sources": {}
+  },
+  "MapObject_SetFacingDirection": {
+   "callers": [
+    "asm/unk_02061284.s"
+   ],
+   "header": "include/map_object.h",
+   "known_prototype": "void MapObject_SetFacingDirection(LocalMapObject *object, u32 direction)",
    "signature_sources": {}
   },
   "MapObject_SetFacingDirectionDirect": {
@@ -47455,12 +48667,36 @@
    "known_prototype": "void MapObject_SetFacingDirectionDirect(LocalMapObject *object, u32 direction)",
    "signature_sources": {}
   },
+  "MapObject_SetFlagsBits": {
+   "callers": [
+    "asm/unk_02061284.s"
+   ],
+   "header": "include/map_object.h",
+   "known_prototype": "void MapObject_SetFlagsBits(LocalMapObject *object, MapObjectFlagBits bits)",
+   "signature_sources": {}
+  },
   "MapObject_SetHeldMovement": {
    "callers": [
     "asm/unk_02056680.s"
    ],
    "header": "include/unk_02062108.h",
    "known_prototype": "void MapObject_SetHeldMovement(LocalMapObject *obj, u32 a1)",
+   "signature_sources": {}
+  },
+  "MapObject_SetNextFacingDirection": {
+   "callers": [
+    "asm/unk_02061284.s"
+   ],
+   "header": "include/map_object.h",
+   "known_prototype": "void MapObject_SetNextFacingDirection(LocalMapObject *object, u32 direction)",
+   "signature_sources": {}
+  },
+  "MapObject_SetOrQueueFacing": {
+   "callers": [
+    "asm/unk_02061284.s"
+   ],
+   "header": "include/map_object.h",
+   "known_prototype": "void MapObject_SetOrQueueFacing(LocalMapObject *object, u32 direction)",
    "signature_sources": {}
   },
   "MapObject_SetPositionVector": {
@@ -47470,6 +48706,14 @@
    ],
    "header": "include/map_object.h",
    "known_prototype": "void MapObject_SetPositionVector(LocalMapObject *object, VecFx32 *positionVector)",
+   "signature_sources": {}
+  },
+  "MapObject_SetSingleMovement": {
+   "callers": [
+    "asm/unk_02061284.s"
+   ],
+   "header": "include/map_object.h",
+   "known_prototype": "void MapObject_SetSingleMovement(LocalMapObject *object)",
    "signature_sources": {}
   },
   "MapObject_SetVisible": {
@@ -48758,7 +50002,8 @@
   "PlayerAvatar_GetMapObject": {
    "callers": [
     "asm/overlay_01_021FDA14.s",
-    "asm/unk_02056680.s"
+    "asm/unk_02056680.s",
+    "asm/unk_02061284.s"
    ],
    "header": "include/player_avatar.h",
    "known_prototype": "LocalMapObject *PlayerAvatar_GetMapObject(PlayerAvatar *avatar)",
@@ -48774,7 +50019,8 @@
   },
   "PlayerAvatar_GetXCoord": {
    "callers": [
-    "asm/unk_02056680.s"
+    "asm/unk_02056680.s",
+    "asm/unk_02061284.s"
    ],
    "header": "include/player_avatar.h",
    "known_prototype": "u32 PlayerAvatar_GetXCoord(PlayerAvatar *avatar)",
@@ -48782,9 +50028,12 @@
   },
   "PlayerAvatar_GetZCoord": {
    "callers": [
-    "asm/unk_02056680.s"
+    "asm/unk_02056680.s",
+    "asm/unk_02061284.s"
    ],
    "confidence": "low",
+   "header": "include/player_avatar.h",
+   "known_prototype": "u32 PlayerAvatar_GetZCoord(PlayerAvatar *avatar)",
    "signature_guess": "u32 PlayerAvatar_GetZCoord(PlayerAvatar *avatar)",
    "signature_sources": {
     "asm/unk_02056680.s": "u32 PlayerAvatar_GetZCoord(PlayerAvatar *avatar)"
@@ -50722,7 +51971,8 @@
     "asm/unk_02004A44.s",
     "asm/unk_02016EDC.s",
     "asm/unk_02032844.s",
-    "asm/unk_02033AE0.s"
+    "asm/unk_02033AE0.s",
+    "asm/unk_02061284.s"
    ],
    "confidence": "low",
    "header": "MWCC runtime intrinsic, no project header (extern-declare locally; per insights.md s32-div-runtime-not-callable-in-inline-asm CORRECTION it IS callable from inline asm)",
@@ -50734,7 +51984,8 @@
     "asm/overlay_80_0222FD08.s": "compiler intrinsic",
     "asm/unk_02004A44.s": "compiler runtime for signed '/' (write x / 5)",
     "asm/unk_02016EDC.s": "compiler runtime for signed / and %",
-    "asm/unk_02032844.s": "compiler helper for int '/'"
+    "asm/unk_02032844.s": "compiler helper for int '/'",
+    "asm/unk_02061284.s": "compiler runtime for signed %"
    }
   },
   "_u32_div_f": {
@@ -87746,6 +88997,14 @@
    "known_prototype": "void sub_0205C810(PlayerAvatar *avatar, VecFx32 *position, u32 direction)",
    "signature_sources": {}
   },
+  "sub_0205DE98": {
+   "callers": [
+    "asm/unk_02061284.s"
+   ],
+   "header": "include/unk_0205CB48.h",
+   "known_prototype": "BOOL sub_0205DE98(PlayerAvatar *playerAvatar)",
+   "signature_sources": {}
+  },
   "sub_0205F0A8": {
    "callers": [
     "asm/overlay_01_021FDA14.s"
@@ -87764,10 +89023,27 @@
   },
   "sub_0205F328": {
    "callers": [
-    "asm/unk_02056680.s"
+    "asm/unk_02056680.s",
+    "asm/unk_02061284.s"
    ],
    "header": "include/map_object.h",
    "known_prototype": "void sub_0205F328(LocalMapObject *object, u32 param1)",
+   "signature_sources": {}
+  },
+  "sub_0205F370": {
+   "callers": [
+    "asm/unk_02061284.s"
+   ],
+   "header": "include/map_object.h",
+   "known_prototype": "u8 *sub_0205F370(LocalMapObject *object, s32 size)",
+   "signature_sources": {}
+  },
+  "sub_0205F394": {
+   "callers": [
+    "asm/unk_02061284.s"
+   ],
+   "header": "include/map_object.h",
+   "known_prototype": "u8 *sub_0205F394(LocalMapObject *object)",
    "signature_sources": {}
   },
   "sub_0205F484": {
@@ -87786,6 +89062,42 @@
    "known_prototype": "void sub_0205FC94(LocalMapObject *object, u32 movement)",
    "signature_sources": {}
   },
+  "sub_02060BB8": {
+   "callers": [
+    "asm/unk_02061284.s"
+   ],
+   "confidence": "low",
+   "signature_guess": "u32 sub_02060BB8(LocalMapObject *obj, u32 dir)",
+   "signature_sources": {
+    "asm/unk_02061284.s": "u32 sub_02060BB8(LocalMapObject *obj, u32 dir)"
+   }
+  },
+  "sub_02060F78": {
+   "callers": [
+    "asm/unk_02061284.s"
+   ],
+   "header": "include/unk_0205FD20.h",
+   "known_prototype": "void sub_02060F78(LocalMapObject *object)",
+   "signature_sources": {}
+  },
+  "sub_020611F4": {
+   "callers": [
+    "asm/unk_02061284.s"
+   ],
+   "header": "include/unk_0205FD20.h",
+   "known_prototype": "u32 sub_020611F4(u32 direction)",
+   "signature_sources": {}
+  },
+  "sub_02061200": {
+   "callers": [
+    "asm/unk_02061284.s"
+   ],
+   "confidence": "low",
+   "signature_guess": "int sub_02061200(int x, int z, int px, int pz)",
+   "signature_sources": {
+    "asm/unk_02061284.s": "int sub_02061200(int x, int z, int px, int pz)"
+   }
+  },
   "sub_0206121C": {
    "callers": [
     "asm/overlay_01_021FDA14.s",
@@ -87797,6 +89109,1166 @@
    "signature_guess": "extern int sub_0206121C(void *a0 /*FieldSystem*/, VecFx32 *a1)",
    "signature_sources": {
     "asm/overlay_01_022031C0.s": "extern int sub_0206121C(void *a0 /*FieldSystem*/, VecFx32 *a1)"
+   }
+  },
+  "sub_02061284": {
+   "callers": [
+    "asm/unk_02061284.s"
+   ],
+   "confidence": "high",
+   "defined_in": "asm/unk_02061284.s",
+   "mode": "thumb",
+   "notes": [
+    "[asm/unk_02061284.s] data = (MoveData_LookAround *)sub_0205F370(obj, 8); order: timer store, dirListId store, sub_0205F328(obj,0), ClearSingleMovement. Not in .inc exports (only called via tail-call wrappers) but keep non-static."
+   ],
+   "signature_guess": "void sub_02061284(LocalMapObject *obj, int dirListId)",
+   "signature_sources": {
+    "asm/unk_02061284.s": "void sub_02061284(LocalMapObject *obj, int dirListId)"
+   },
+   "struct_accesses": [
+    {
+     "meaning": "s16 timer = sub_02061E20(_020FD7B8, -1) (random 16/32/48/64)",
+     "offset": "0x2",
+     "param": 0,
+     "width": 2
+    },
+    {
+     "meaning": "int dirListId = a1",
+     "offset": "0x4",
+     "param": 0,
+     "width": 4
+    }
+   ]
+  },
+  "sub_020612B4": {
+   "callers": [],
+   "confidence": "high",
+   "defined_in": "asm/unk_02061284.s",
+   "mode": "thumb",
+   "notes": [
+    "[asm/unk_02061284.s] tail-call wrapper: sub_02061284(obj, 0). Siblings sub_020612C0..sub_0206132C pass 1..10 in order (020612C0=1, 020612CC=2, 020612D8=3, 020612E4=4, 020612F0=5, 020612FC=6, 02061308=7, 02061314=8, 02061320=9, 0206132C=10). All are movement-type init callbacks referenced from asm/unk_data_020FCBD8.s"
+   ],
+   "signature_guess": "void sub_020612B4(LocalMapObject *obj)",
+   "signature_sources": {
+    "asm/unk_02061284.s": "void sub_020612B4(LocalMapObject *obj)"
+   }
+  },
+  "sub_020612C0": {
+   "callers": [],
+   "confidence": "high",
+   "defined_in": "asm/unk_02061284.s",
+   "mode": "thumb",
+   "notes": [
+    "[asm/unk_02061284.s] sub_02061284(obj, 1)"
+   ],
+   "signature_guess": "void sub_020612C0(LocalMapObject *obj)",
+   "signature_sources": {
+    "asm/unk_02061284.s": "void sub_020612C0(LocalMapObject *obj)"
+   }
+  },
+  "sub_020612CC": {
+   "callers": [],
+   "confidence": "high",
+   "defined_in": "asm/unk_02061284.s",
+   "mode": "thumb",
+   "notes": [
+    "[asm/unk_02061284.s] sub_02061284(obj, 2)"
+   ],
+   "signature_guess": "void sub_020612CC(LocalMapObject *obj)",
+   "signature_sources": {
+    "asm/unk_02061284.s": "void sub_020612CC(LocalMapObject *obj)"
+   }
+  },
+  "sub_020612D8": {
+   "callers": [],
+   "confidence": "high",
+   "defined_in": "asm/unk_02061284.s",
+   "mode": "thumb",
+   "notes": [
+    "[asm/unk_02061284.s] sub_02061284(obj, 3)"
+   ],
+   "signature_guess": "void sub_020612D8(LocalMapObject *obj)",
+   "signature_sources": {
+    "asm/unk_02061284.s": "void sub_020612D8(LocalMapObject *obj)"
+   }
+  },
+  "sub_020612E4": {
+   "callers": [],
+   "confidence": "high",
+   "defined_in": "asm/unk_02061284.s",
+   "mode": "thumb",
+   "notes": [
+    "[asm/unk_02061284.s] sub_02061284(obj, 4)"
+   ],
+   "signature_guess": "void sub_020612E4(LocalMapObject *obj)",
+   "signature_sources": {
+    "asm/unk_02061284.s": "void sub_020612E4(LocalMapObject *obj)"
+   }
+  },
+  "sub_020612F0": {
+   "callers": [],
+   "confidence": "high",
+   "defined_in": "asm/unk_02061284.s",
+   "mode": "thumb",
+   "notes": [
+    "[asm/unk_02061284.s] sub_02061284(obj, 5)"
+   ],
+   "signature_guess": "void sub_020612F0(LocalMapObject *obj)",
+   "signature_sources": {
+    "asm/unk_02061284.s": "void sub_020612F0(LocalMapObject *obj)"
+   }
+  },
+  "sub_020612FC": {
+   "callers": [],
+   "confidence": "high",
+   "defined_in": "asm/unk_02061284.s",
+   "mode": "thumb",
+   "notes": [
+    "[asm/unk_02061284.s] sub_02061284(obj, 6)"
+   ],
+   "signature_guess": "void sub_020612FC(LocalMapObject *obj)",
+   "signature_sources": {
+    "asm/unk_02061284.s": "void sub_020612FC(LocalMapObject *obj)"
+   }
+  },
+  "sub_02061308": {
+   "callers": [],
+   "confidence": "high",
+   "defined_in": "asm/unk_02061284.s",
+   "mode": "thumb",
+   "notes": [
+    "[asm/unk_02061284.s] sub_02061284(obj, 7)"
+   ],
+   "signature_guess": "void sub_02061308(LocalMapObject *obj)",
+   "signature_sources": {
+    "asm/unk_02061284.s": "void sub_02061308(LocalMapObject *obj)"
+   }
+  },
+  "sub_02061314": {
+   "callers": [],
+   "confidence": "high",
+   "defined_in": "asm/unk_02061284.s",
+   "mode": "thumb",
+   "notes": [
+    "[asm/unk_02061284.s] sub_02061284(obj, 8)"
+   ],
+   "signature_guess": "void sub_02061314(LocalMapObject *obj)",
+   "signature_sources": {
+    "asm/unk_02061284.s": "void sub_02061314(LocalMapObject *obj)"
+   }
+  },
+  "sub_02061320": {
+   "callers": [],
+   "confidence": "high",
+   "defined_in": "asm/unk_02061284.s",
+   "mode": "thumb",
+   "notes": [
+    "[asm/unk_02061284.s] sub_02061284(obj, 9)"
+   ],
+   "signature_guess": "void sub_02061320(LocalMapObject *obj)",
+   "signature_sources": {
+    "asm/unk_02061284.s": "void sub_02061320(LocalMapObject *obj)"
+   }
+  },
+  "sub_0206132C": {
+   "callers": [],
+   "confidence": "high",
+   "defined_in": "asm/unk_02061284.s",
+   "mode": "thumb",
+   "notes": [
+    "[asm/unk_02061284.s] sub_02061284(obj, 10)"
+   ],
+   "signature_guess": "void sub_0206132C(LocalMapObject *obj)",
+   "signature_sources": {
+    "asm/unk_02061284.s": "void sub_0206132C(LocalMapObject *obj)"
+   }
+  },
+  "sub_02061338": {
+   "callers": [],
+   "confidence": "high",
+   "defined_in": "asm/unk_02061284.s",
+   "mode": "thumb",
+   "notes": [
+    "[asm/unk_02061284.s] dir = sub_02061F5C(obj, data->dirListId, -1); if (dir != -1) SetFacingDirection(obj, dir); else if (data->unk0 == 0) { data->timer--; if (data->timer <= 0) { data->timer = sub_02061E20(_020FD7B8, -1); MapObject_SetFacingDirection(obj, sub_02061E44(data->dirListId, -1)); } } sub_02060F78(obj). The timer is re-read with ldrsh after strh -> write decrement and test as separate statements."
+   ],
+   "signature_guess": "void sub_02061338(LocalMapObject *obj)",
+   "signature_sources": {
+    "asm/unk_02061284.s": "void sub_02061338(LocalMapObject *obj)"
+   },
+   "struct_accesses": [
+    {
+     "meaning": "read via ldrh, compared == 0 (u16 flag/pause?)",
+     "offset": "0x0",
+     "param": 0,
+     "width": 2
+    },
+    {
+     "meaning": "s16 timer (ldrsh): timer--; if (timer <= 0) reroll",
+     "offset": "0x2",
+     "param": 0,
+     "width": 2
+    },
+    {
+     "meaning": "dirListId",
+     "offset": "0x4",
+     "param": 0,
+     "width": 4
+    }
+   ]
+  },
+  "sub_0206139C": {
+   "callers": [],
+   "confidence": "high",
+   "defined_in": "asm/unk_02061284.s",
+   "mode": "thumb",
+   "notes": [
+    "[asm/unk_02061284.s] empty (bx lr); delete callback"
+   ],
+   "signature_guess": "void sub_0206139C(LocalMapObject *obj)",
+   "signature_sources": {
+    "asm/unk_02061284.s": "void sub_0206139C(LocalMapObject *obj)"
+   }
+  },
+  "sub_020613A0": {
+   "callers": [],
+   "confidence": "high",
+   "defined_in": "asm/unk_02061284.s",
+   "mode": "thumb",
+   "notes": [
+    "[asm/unk_02061284.s] sub_020613D0(obj, 0xc, 0xb, 0) (push/bl/pop, 4 args so no tail call)"
+   ],
+   "signature_guess": "void sub_020613A0(LocalMapObject *obj)",
+   "signature_sources": {
+    "asm/unk_02061284.s": "void sub_020613A0(LocalMapObject *obj)"
+   }
+  },
+  "sub_020613B0": {
+   "callers": [],
+   "confidence": "high",
+   "defined_in": "asm/unk_02061284.s",
+   "mode": "thumb",
+   "notes": [
+    "[asm/unk_02061284.s] sub_020613D0(obj, 0xc, 0xc, 0); asm materialises r2 as 'add r2, r1, #0' (same constant)"
+   ],
+   "signature_guess": "void sub_020613B0(LocalMapObject *obj)",
+   "signature_sources": {
+    "asm/unk_02061284.s": "void sub_020613B0(LocalMapObject *obj)"
+   }
+  },
+  "sub_020613C0": {
+   "callers": [],
+   "confidence": "high",
+   "defined_in": "asm/unk_02061284.s",
+   "mode": "thumb",
+   "notes": [
+    "[asm/unk_02061284.s] sub_020613D0(obj, 0xc, 0xd, 0)"
+   ],
+   "signature_guess": "void sub_020613C0(LocalMapObject *obj)",
+   "signature_sources": {
+    "asm/unk_02061284.s": "void sub_020613C0(LocalMapObject *obj)"
+   }
+  },
+  "sub_020613D0": {
+   "callers": [
+    "asm/unk_02061284.s"
+   ],
+   "confidence": "high",
+   "defined_in": "asm/unk_02061284.s",
+   "mode": "thumb",
+   "notes": [
+    "[asm/unk_02061284.s] data = sub_0205F370(obj, 0x10); store order +4,+8,+0xc; not exported."
+   ],
+   "signature_guess": "void sub_020613D0(LocalMapObject *obj, int moveCmd, int dirListId, int rangeLimited)",
+   "signature_sources": {
+    "asm/unk_02061284.s": "void sub_020613D0(LocalMapObject *obj, int moveCmd, int dirListId, int rangeLimited)"
+   },
+   "struct_accesses": [
+    {
+     "meaning": "rangeLimited = a3 (stored first)",
+     "offset": "0x4",
+     "param": 0,
+     "width": 4
+    },
+    {
+     "meaning": "moveCmd = a1 (2nd arg to sub_0206234C)",
+     "offset": "0x8",
+     "param": 0,
+     "width": 4
+    },
+    {
+     "meaning": "dirListId = a2",
+     "offset": "0xc",
+     "param": 0,
+     "width": 4
+    }
+   ]
+  },
+  "sub_020613F8": {
+   "callers": [],
+   "confidence": "high",
+   "defined_in": "asm/unk_02061284.s",
+   "mode": "thumb",
+   "notes": [
+    "[asm/unk_02061284.s] Wander update. switch(data->state) jump table 0..4 with fallthrough 1->2->3->4. case0: ClearSingle; ClearEnd; ForceSetHeld(obj, sub_0206234C(GetFacing(obj), 0)); state++; break. case1: if (!sub_02062428(obj)) break; timer = sub_02061E20(_020FD7B8, -1); state++; /*ft*/ case2: timer--; if (timer != 0) break; state++; /*ft*/ case3: dir = sub_02061E44(data->dirListId, -1); SetOrQueueFacing(obj, dir); if (data->rangeLimited == 1 && sub_020615F0(obj, dir) == FALSE) { state = 0; break/return; } if (sub_02060BB8(obj, dir)) { state = 0; return; } ForceSetHeld(obj, sub_0206234C(dir, data->moveCmd)); SetSingleMovement(obj); state++; /*ft*/ case4: if (sub_02062428(obj)) { ClearSingle; state = 0; }. state++ is 'ldrsh;add;strh' (write data->state++). dir kept in r6."
+   ],
+   "signature_guess": "void sub_020613F8(LocalMapObject *obj)",
+   "signature_sources": {
+    "asm/unk_02061284.s": "void sub_020613F8(LocalMapObject *obj)"
+   },
+   "struct_accesses": [
+    {
+     "meaning": "s16 state (ldrsh), switch 0..4",
+     "offset": "0x0",
+     "param": 0,
+     "width": 2
+    },
+    {
+     "meaning": "s16 timer",
+     "offset": "0x2",
+     "param": 0,
+     "width": 2
+    },
+    {
+     "meaning": "rangeLimited (==1 -> check sub_020615F0)",
+     "offset": "0x4",
+     "param": 0,
+     "width": 4
+    },
+    {
+     "meaning": "moveCmd",
+     "offset": "0x8",
+     "param": 0,
+     "width": 4
+    },
+    {
+     "meaning": "dirListId",
+     "offset": "0xc",
+     "param": 0,
+     "width": 4
+    }
+   ]
+  },
+  "sub_020614F4": {
+   "callers": [
+    "asm/unk_02061284.s"
+   ],
+   "confidence": "high",
+   "defined_in": "asm/unk_02061284.s",
+   "mode": "thumb",
+   "notes": [
+    "[asm/unk_02061284.s] obj spilled to [sp]; yRange spilled to [sp+4]. switch(GetMovement(obj)) jump table 0..13, cases 0-5 -> default (GF_ASSERT(FALSE)). Case bodies in value order: 6:{x-xr,x,z-zr,z} 7:{x,x+xr,z-zr,z} 8:{x-xr,x,z,z+zr} 9:{x,x+xr,z,z+zr} 10:{x-xr,x,z-zr,z+zr} 11:{x,x+xr,z-zr,z+zr} 12:{x-xr,x+xr,z-zr,z} 13:{x-xr,x+xr,z,z+zr} as {xMin,xMax,zMin,zMax}; source store order is xMin, xMax, zMin, zMax (offsets 0,8,4,0xc). Each case returns directly (own epilogue)."
+   ],
+   "signature_guess": "void sub_020614F4(LocalMapObject *obj, MoveRangeRect *out)",
+   "signature_sources": {
+    "asm/unk_02061284.s": "void sub_020614F4(LocalMapObject *obj, MoveRangeRect *out)"
+   },
+   "struct_accesses": [
+    {
+     "meaning": "xMin",
+     "offset": "0x0",
+     "param": 1,
+     "width": 4
+    },
+    {
+     "meaning": "zMin",
+     "offset": "0x4",
+     "param": 1,
+     "width": 4
+    },
+    {
+     "meaning": "xMax",
+     "offset": "0x8",
+     "param": 1,
+     "width": 4
+    },
+    {
+     "meaning": "zMax",
+     "offset": "0xc",
+     "param": 1,
+     "width": 4
+    }
+   ]
+  },
+  "sub_020615F0": {
+   "callers": [
+    "asm/unk_02061284.s"
+   ],
+   "confidence": "high",
+   "defined_in": "asm/unk_02061284.s",
+   "mode": "thumb",
+   "notes": [
+    "[asm/unk_02061284.s] MoveRangeRect rect (0x10 on stack at sp+0); nx = GetXCoord + GetDeltaX(dir); nz = GetZCoord + GetDeltaY(dir); if (rect.xMin > nx || rect.xMax < nx) return FALSE; if (rect.zMin > nz || rect.zMax < nz) return FALSE; return TRUE. Signed compares -> int locals."
+   ],
+   "signature_guess": "BOOL sub_020615F0(LocalMapObject *obj, u32 dir)",
+   "signature_sources": {
+    "asm/unk_02061284.s": "BOOL sub_020615F0(LocalMapObject *obj, u32 dir)"
+   }
+  },
+  "sub_02061648": {
+   "callers": [
+    "asm/unk_02061284.s"
+   ],
+   "confidence": "high",
+   "defined_in": "asm/unk_02061284.s",
+   "mode": "thumb",
+   "notes": [
+    "[asm/unk_02061284.s] data = sub_0205F370(obj, 8); data->dir = a1; sub_0205F328(obj,0); ClearSingle; sub_02060F78(obj)"
+   ],
+   "signature_guess": "void sub_02061648(LocalMapObject *obj, int dir)",
+   "signature_sources": {
+    "asm/unk_02061284.s": "void sub_02061648(LocalMapObject *obj, int dir)"
+   },
+   "struct_accesses": [
+    {
+     "meaning": "int dir",
+     "offset": "0x0",
+     "param": 0,
+     "width": 4
+    }
+   ]
+  },
+  "sub_0206166C": {
+   "callers": [],
+   "confidence": "high",
+   "defined_in": "asm/unk_02061284.s",
+   "mode": "thumb",
+   "notes": [
+    "[asm/unk_02061284.s] switch (data->state) { case 0: SetFacingDirection(obj, data->dir); data->state++; break; case 1: break; } -- dead 'cmp r0,#1' before pop is the mwcc-switch-empty-case-dead-cmp idiom."
+   ],
+   "signature_guess": "void sub_0206166C(LocalMapObject *obj)",
+   "signature_sources": {
+    "asm/unk_02061284.s": "void sub_0206166C(LocalMapObject *obj)"
+   },
+   "struct_accesses": [
+    {
+     "meaning": "dir",
+     "offset": "0x0",
+     "param": 0,
+     "width": 4
+    },
+    {
+     "meaning": "int state",
+     "offset": "0x4",
+     "param": 0,
+     "width": 4
+    }
+   ]
+  },
+  "sub_02061690": {
+   "callers": [],
+   "confidence": "high",
+   "defined_in": "asm/unk_02061284.s",
+   "mode": "thumb",
+   "notes": [
+    "[asm/unk_02061284.s] tail call sub_02061648(obj, 0); 0206169C=1, 020616A8=2, 020616B4=3"
+   ],
+   "signature_guess": "void sub_02061690(LocalMapObject *obj)",
+   "signature_sources": {
+    "asm/unk_02061284.s": "void sub_02061690(LocalMapObject *obj)"
+   }
+  },
+  "sub_0206169C": {
+   "callers": [],
+   "confidence": "high",
+   "defined_in": "asm/unk_02061284.s",
+   "mode": "thumb",
+   "notes": [
+    "[asm/unk_02061284.s] sub_02061648(obj, 1)"
+   ],
+   "signature_guess": "void sub_0206169C(LocalMapObject *obj)",
+   "signature_sources": {
+    "asm/unk_02061284.s": "void sub_0206169C(LocalMapObject *obj)"
+   }
+  },
+  "sub_020616A8": {
+   "callers": [],
+   "confidence": "high",
+   "defined_in": "asm/unk_02061284.s",
+   "mode": "thumb",
+   "notes": [
+    "[asm/unk_02061284.s] sub_02061648(obj, 2)"
+   ],
+   "signature_guess": "void sub_020616A8(LocalMapObject *obj)",
+   "signature_sources": {
+    "asm/unk_02061284.s": "void sub_020616A8(LocalMapObject *obj)"
+   }
+  },
+  "sub_020616B4": {
+   "callers": [],
+   "confidence": "high",
+   "defined_in": "asm/unk_02061284.s",
+   "mode": "thumb",
+   "notes": [
+    "[asm/unk_02061284.s] sub_02061648(obj, 3)"
+   ],
+   "signature_guess": "void sub_020616B4(LocalMapObject *obj)",
+   "signature_sources": {
+    "asm/unk_02061284.s": "void sub_020616B4(LocalMapObject *obj)"
+   }
+  },
+  "sub_020616C0": {
+   "callers": [
+    "asm/unk_02061284.s"
+   ],
+   "confidence": "high",
+   "defined_in": "asm/unk_02061284.s",
+   "mode": "thumb",
+   "notes": [
+    "[asm/unk_02061284.s] data = sub_0205F370(obj, 8); data->spinDir = a1; sub_0205F328(obj,0); ClearSingle; sub_02060F78(obj)"
+   ],
+   "signature_guess": "void sub_020616C0(LocalMapObject *obj, int spinDir)",
+   "signature_sources": {
+    "asm/unk_02061284.s": "void sub_020616C0(LocalMapObject *obj, int spinDir)"
+   },
+   "struct_accesses": [
+    {
+     "meaning": "s8 spinDir (2=left/ccw, 3=right/cw), strb",
+     "offset": "0x0",
+     "param": 0,
+     "width": 1
+    }
+   ]
+  },
+  "sub_020616E4": {
+   "callers": [],
+   "confidence": "high",
+   "defined_in": "asm/unk_02061284.s",
+   "mode": "thumb",
+   "notes": [
+    "[asm/unk_02061284.s] sub_020616C0(obj, 2)"
+   ],
+   "signature_guess": "void sub_020616E4(LocalMapObject *obj)",
+   "signature_sources": {
+    "asm/unk_02061284.s": "void sub_020616E4(LocalMapObject *obj)"
+   }
+  },
+  "sub_020616F0": {
+   "callers": [],
+   "confidence": "high",
+   "defined_in": "asm/unk_02061284.s",
+   "mode": "thumb",
+   "notes": [
+    "[asm/unk_02061284.s] sub_020616C0(obj, 3)"
+   ],
+   "signature_guess": "void sub_020616F0(LocalMapObject *obj)",
+   "signature_sources": {
+    "asm/unk_02061284.s": "void sub_020616F0(LocalMapObject *obj)"
+   }
+  },
+  "sub_020616FC": {
+   "callers": [],
+   "confidence": "high",
+   "defined_in": "asm/unk_02061284.s",
+   "mode": "thumb",
+   "notes": [
+    "[asm/unk_02061284.s] data = sub_0205F394(obj); while (_020FD5D0[data->state](obj, data) == TRUE); table base kept in r6, offset const 2 in r7."
+   ],
+   "signature_guess": "void sub_020616FC(LocalMapObject *obj)",
+   "signature_sources": {
+    "asm/unk_02061284.s": "void sub_020616FC(LocalMapObject *obj)"
+   },
+   "struct_accesses": [
+    {
+     "meaning": "s8 state (ldrsb) index into _020FD5D0",
+     "offset": "0x2",
+     "param": 0,
+     "width": 1
+    }
+   ]
+  },
+  "sub_02061720": {
+   "callers": [],
+   "confidence": "high",
+   "defined_in": "asm/unk_02061284.s",
+   "mode": "thumb",
+   "notes": [
+    "[asm/unk_02061284.s] dir = sub_02061F5C(obj, 0x26, -1) (-1 materialised as 0x26-0x27); if (dir == -1) dir = GetFacing(obj); ForceSetHeld(obj, sub_0206234C(dir, 0)); data->state = 1; return TRUE (mov r0,#1 shared with strb)."
+   ],
+   "signature_guess": "BOOL sub_02061720(LocalMapObject *obj, MoveData_Spin *data)",
+   "signature_sources": {
+    "asm/unk_02061284.s": "BOOL sub_02061720(LocalMapObject *obj, MoveData_Spin *data)"
+   },
+   "struct_accesses": [
+    {
+     "meaning": "state = 1",
+     "offset": "0x2",
+     "param": 1,
+     "width": 1
+    }
+   ]
+  },
+  "sub_02061754": {
+   "callers": [],
+   "confidence": "high",
+   "defined_in": "asm/unk_02061284.s",
+   "mode": "thumb",
+   "notes": [
+    "[asm/unk_02061284.s] if (!sub_02062428(obj)) return FALSE; data->timer = 0; data->state = 2; return TRUE. Identical body to sub_02061894."
+   ],
+   "signature_guess": "BOOL sub_02061754(LocalMapObject *obj, MoveData_Spin *data)",
+   "signature_sources": {
+    "asm/unk_02061284.s": "BOOL sub_02061754(LocalMapObject *obj, MoveData_Spin *data)"
+   },
+   "struct_accesses": [
+    {
+     "meaning": "timer = 0",
+     "offset": "0x4",
+     "param": 1,
+     "width": 4
+    },
+    {
+     "meaning": "state = 2",
+     "offset": "0x2",
+     "param": 1,
+     "width": 1
+    }
+   ]
+  },
+  "sub_02061770": {
+   "callers": [],
+   "confidence": "high",
+   "defined_in": "asm/unk_02061284.s",
+   "mode": "thumb",
+   "notes": [
+    "[asm/unk_02061284.s] if (data->timer != 0 && sub_02061F5C(obj, 0x26, -1) != -1) { data->state = 0; return TRUE; } if (++data->timer < 24) return FALSE; data->state = 3; return TRUE."
+   ],
+   "signature_guess": "BOOL sub_02061770(LocalMapObject *obj, MoveData_Spin *data)",
+   "signature_sources": {
+    "asm/unk_02061284.s": "BOOL sub_02061770(LocalMapObject *obj, MoveData_Spin *data)"
+   },
+   "struct_accesses": [
+    {
+     "meaning": "int timer",
+     "offset": "0x4",
+     "param": 1,
+     "width": 4
+    },
+    {
+     "meaning": "state",
+     "offset": "0x2",
+     "param": 1,
+     "width": 1
+    }
+   ]
+  },
+  "sub_020617AC": {
+   "callers": [],
+   "confidence": "medium",
+   "defined_in": "asm/unk_02061284.s",
+   "mode": "thumb",
+   "notes": [
+    "[asm/unk_02061284.s] Two 20-byte stack arrays copied from rodata: A=_020FD754 {0,2,1,3,-1} at sp+0x14 (declare FIRST), B=_020FD768 {0,3,1,2,-1} at sp+0. list = A; if (data->spinDir != 2) list = B. dir = GetFacing; for (i = 0; list[i] != -1; i++) if (dir == list[i]) break; GF_ASSERT(list[i] != -1); i++; if (list[i] == -1) i = 0; SetFacing(obj, list[i]); data->state = 0; return TRUE. Copy is ldmia/stmia x2 + ldr/str (5 words)."
+   ],
+   "signature_guess": "BOOL sub_020617AC(LocalMapObject *obj, MoveData_Spin *data)",
+   "signature_sources": {
+    "asm/unk_02061284.s": "BOOL sub_020617AC(LocalMapObject *obj, MoveData_Spin *data)"
+   },
+   "struct_accesses": [
+    {
+     "meaning": "s8 spinDir (ldrsb), ==2 selects list A",
+     "offset": "0x0",
+     "param": 1,
+     "width": 1
+    },
+    {
+     "meaning": "state = 0",
+     "offset": "0x2",
+     "param": 1,
+     "width": 1
+    }
+   ]
+  },
+  "sub_02061844": {
+   "callers": [],
+   "confidence": "high",
+   "defined_in": "asm/unk_02061284.s",
+   "mode": "thumb",
+   "notes": [
+    "[asm/unk_02061284.s] sub_020616C0(obj, 3)"
+   ],
+   "signature_guess": "void sub_02061844(LocalMapObject *obj)",
+   "signature_sources": {
+    "asm/unk_02061284.s": "void sub_02061844(LocalMapObject *obj)"
+   }
+  },
+  "sub_02061850": {
+   "callers": [],
+   "confidence": "high",
+   "defined_in": "asm/unk_02061284.s",
+   "mode": "thumb",
+   "notes": [
+    "[asm/unk_02061284.s] same shape as sub_020616FC with _020FD5A0; index s8 at +2"
+   ],
+   "signature_guess": "void sub_02061850(LocalMapObject *obj)",
+   "signature_sources": {
+    "asm/unk_02061284.s": "void sub_02061850(LocalMapObject *obj)"
+   }
+  },
+  "sub_02061874": {
+   "callers": [],
+   "confidence": "high",
+   "defined_in": "asm/unk_02061284.s",
+   "mode": "thumb",
+   "notes": [
+    "[asm/unk_02061284.s] ForceSetHeld(obj, sub_0206234C(GetFacing(obj), 0)); data->state = 1; return TRUE"
+   ],
+   "signature_guess": "BOOL sub_02061874(LocalMapObject *obj, MoveData_Spin *data)",
+   "signature_sources": {
+    "asm/unk_02061284.s": "BOOL sub_02061874(LocalMapObject *obj, MoveData_Spin *data)"
+   }
+  },
+  "sub_02061894": {
+   "callers": [],
+   "confidence": "high",
+   "defined_in": "asm/unk_02061284.s",
+   "mode": "thumb",
+   "notes": [
+    "[asm/unk_02061284.s] identical to sub_02061754"
+   ],
+   "signature_guess": "BOOL sub_02061894(LocalMapObject *obj, MoveData_Spin *data)",
+   "signature_sources": {
+    "asm/unk_02061284.s": "BOOL sub_02061894(LocalMapObject *obj, MoveData_Spin *data)"
+   }
+  },
+  "sub_020618B0": {
+   "callers": [],
+   "confidence": "high",
+   "defined_in": "asm/unk_02061284.s",
+   "mode": "thumb",
+   "notes": [
+    "[asm/unk_02061284.s] leaf: if (++data->timer < 24) return FALSE; data->state = 3; return TRUE"
+   ],
+   "signature_guess": "BOOL sub_020618B0(LocalMapObject *obj, MoveData_Spin *data)",
+   "signature_sources": {
+    "asm/unk_02061284.s": "BOOL sub_020618B0(LocalMapObject *obj, MoveData_Spin *data)"
+   }
+  },
+  "sub_020618C8": {
+   "callers": [],
+   "confidence": "medium",
+   "defined_in": "asm/unk_02061284.s",
+   "mode": "thumb",
+   "notes": [
+    "[asm/unk_02061284.s] Same as sub_020617AC but arrays A=_020FD77C {0,2,1,3,-1} (sp+0x14), B=_020FD7A4 {0,3,1,2,-1} (sp+0); after SetFacing: if (GetFacing(obj) == GetInitialFacing(obj)) data->spinDir = sub_020611F4(data->spinDir); data->state = 0; return TRUE. Here B is loaded via r4 temp then 'add r5,r4' -- slightly different pool/reg shuffle than 17AC."
+   ],
+   "signature_guess": "BOOL sub_020618C8(LocalMapObject *obj, MoveData_Spin *data)",
+   "signature_sources": {
+    "asm/unk_02061284.s": "BOOL sub_020618C8(LocalMapObject *obj, MoveData_Spin *data)"
+   }
+  },
+  "sub_0206197C": {
+   "callers": [],
+   "confidence": "high",
+   "defined_in": "asm/unk_02061284.s",
+   "mode": "thumb",
+   "notes": [
+    "[asm/unk_02061284.s] data = sub_0205F370(obj, 8); if (sub_02062050(obj) == TRUE) sub_02062064(obj, &data->dirFlip /* +4 */);"
+   ],
+   "signature_guess": "void sub_0206197C(LocalMapObject *obj)",
+   "signature_sources": {
+    "asm/unk_02061284.s": "void sub_0206197C(LocalMapObject *obj)"
+   }
+  },
+  "sub_0206199C": {
+   "callers": [],
+   "confidence": "high",
+   "defined_in": "asm/unk_02061284.s",
+   "mode": "thumb",
+   "notes": [
+    "[asm/unk_02061284.s] while (_020FD548[data->state](obj, data) == TRUE); state is s16 at +0 (ldrsh [r4, r7] with r7=0)"
+   ],
+   "signature_guess": "void sub_0206199C(LocalMapObject *obj)",
+   "signature_sources": {
+    "asm/unk_02061284.s": "void sub_0206199C(LocalMapObject *obj)"
+   }
+  },
+  "sub_020619C0": {
+   "callers": [],
+   "confidence": "high",
+   "defined_in": "asm/unk_02061284.s",
+   "mode": "thumb",
+   "notes": [
+    "[asm/unk_02061284.s] dir = GetInitialFacing(obj); if (data->reversed == 1) dir = sub_020611F4(dir); SetNextFacing(obj, dir); if (sub_02062050(obj) == FALSE) SetFacing(obj, dir); data->state = 1; return TRUE."
+   ],
+   "signature_guess": "BOOL sub_020619C0(LocalMapObject *obj, MoveData_BackForth *data)",
+   "signature_sources": {
+    "asm/unk_02061284.s": "BOOL sub_020619C0(LocalMapObject *obj, MoveData_BackForth *data)"
+   },
+   "struct_accesses": [
+    {
+     "meaning": "s16 reversed flag (==1 -> flip initial dir)",
+     "offset": "0x2",
+     "param": 1,
+     "width": 2
+    },
+    {
+     "meaning": "state = 1",
+     "offset": "0x0",
+     "param": 1,
+     "width": 2
+    }
+   ]
+  },
+  "sub_020619FC": {
+   "callers": [],
+   "confidence": "medium",
+   "defined_in": "asm/unk_02061284.s",
+   "mode": "thumb",
+   "notes": [
+    "[asm/unk_02061284.s] if (data->reversed != 0) { ix=InitX; iz=InitZ (spilled [sp]); x; z; if (ix == x && iz == z) { dir = sub_020611F4(GetNextFacing(obj)); SetNextFacing; if (sub_02062050(obj) == FALSE) SetFacing; data->reversed = 0; } } dir = GetNextFacing(obj); r = sub_02060BB8(obj, dir); if (r & 1) { data->reversed = 1; dir = sub_020611F4(dir); r = sub_02060BB8(obj, dir); } cmd = 0xc; if (r != 0) cmd = 0x20; ForceSetHeld(obj, sub_0206234C(dir, cmd)); if (sub_02062050(obj) == TRUE) sub_0206207C(obj, &data->dirFlip); SetSingleMovement(obj); data->state = 2; return TRUE. Note strh reversed=1 happens BEFORE the sub_020611F4 call; 'tst r2, r1' with r2=r => (r & 1)."
+   ],
+   "signature_guess": "BOOL sub_020619FC(LocalMapObject *obj, MoveData_BackForth *data)",
+   "signature_sources": {
+    "asm/unk_02061284.s": "BOOL sub_020619FC(LocalMapObject *obj, MoveData_BackForth *data)"
+   }
+  },
+  "sub_02061ABC": {
+   "callers": [],
+   "confidence": "high",
+   "defined_in": "asm/unk_02061284.s",
+   "mode": "thumb",
+   "notes": [
+    "[asm/unk_02061284.s] if (sub_02062428(obj) == TRUE) { ClearSingle; if (sub_02062050(obj) == TRUE) sub_020620F8(obj, &data->dirFlip); data->state = 0; } return FALSE."
+   ],
+   "signature_guess": "BOOL sub_02061ABC(LocalMapObject *obj, MoveData_BackForth *data)",
+   "signature_sources": {
+    "asm/unk_02061284.s": "BOOL sub_02061ABC(LocalMapObject *obj, MoveData_BackForth *data)"
+   }
+  },
+  "sub_02061AEC": {
+   "callers": [
+    "asm/unk_02061284.s"
+   ],
+   "confidence": "high",
+   "defined_in": "asm/unk_02061284.s",
+   "mode": "thumb",
+   "notes": [
+    "[asm/unk_02061284.s] data = sub_0205F370(obj, 0xc); a3 spilled to [sp]; if (sub_02062050(obj) == TRUE) sub_02062064(obj, &data->dirFlip /* +8, computed as add r4,#8 */). Not exported."
+   ],
+   "signature_guess": "void sub_02061AEC(LocalMapObject *obj, int unk2, int axis, int dirListId)",
+   "signature_sources": {
+    "asm/unk_02061284.s": "void sub_02061AEC(LocalMapObject *obj, int unk2, int axis, int dirListId)"
+   },
+   "struct_accesses": [
+    {
+     "meaning": "u8 unk2 = a1 (always 2; compared against step)",
+     "offset": "0x2",
+     "param": 0,
+     "width": 1
+    },
+    {
+     "meaning": "u8 axis = a2 (0 = X, else Z)",
+     "offset": "0x3",
+     "param": 0,
+     "width": 1
+    },
+    {
+     "meaning": "int dirListId = a3",
+     "offset": "0x4",
+     "param": 0,
+     "width": 4
+    }
+   ]
+  },
+  "sub_02061B1C": {
+   "callers": [],
+   "confidence": "high",
+   "defined_in": "asm/unk_02061284.s",
+   "mode": "thumb",
+   "notes": [
+    "[asm/unk_02061284.s] sub_02061AEC(obj, 2, axis, id) wrappers in file order (axis,id): B1C(0,0xe) B2C(0,0xf) B3C(1,0x10) B4C(1,0x11) B5C(0,0x12) B6C(0,0x13) B7C(1,0x14) B8C(1,0x15) B9C(1,0x16) BAC(1,0x17) BBC(0,0x18) BCC(0,0x19) BDC(1,0x1a) BEC(1,0x1b) BFC(0,0x1c) C0C(0,0x1d); after sub_02061D50: D80(1,0x1e) D90(1,0x1f) DA0(0,0x20) DB0(0,0x21) DC0(1,0x22) DD0(1,0x23) DE0(0,0x24) DF0(0,0x25). All void(LocalMapObject*)."
+   ],
+   "signature_guess": "void sub_02061B1C(LocalMapObject *obj)",
+   "signature_sources": {
+    "asm/unk_02061284.s": "void sub_02061B1C(LocalMapObject *obj)"
+   }
+  },
+  "sub_02061C1C": {
+   "callers": [],
+   "confidence": "high",
+   "defined_in": "asm/unk_02061284.s",
+   "mode": "thumb",
+   "notes": [
+    "[asm/unk_02061284.s] while (_020FD4EC[data->state](obj, data) == TRUE); state is u8 at +0 (ldrb [r4]) -- push {r4,r5,r6,lr}, no r7 constant offset unlike the other dispatchers."
+   ],
+   "signature_guess": "void sub_02061C1C(LocalMapObject *obj)",
+   "signature_sources": {
+    "asm/unk_02061284.s": "void sub_02061C1C(LocalMapObject *obj)"
+   }
+  },
+  "sub_02061C40": {
+   "callers": [],
+   "confidence": "medium",
+   "defined_in": "asm/unk_02061284.s",
+   "mode": "thumb",
+   "notes": [
+    "[asm/unk_02061284.s] if (data->step == data->unk2) { if (data->axis == 0) { if (InitX(obj) == X(obj)) data->step++; } else { if (InitZ == Z) data->step++; } } if (data->step == 3) { ix, iz([sp]), x, z; if (ix == x && iz == z) data->step = 0; } list = sub_02061E6C(data->dirListId); dir = list[data->step]; SetNextFacing; if (sub_02062050(obj) == FALSE) SetFacing; r = sub_02060BB8(obj, dir); if (1 & r) { data->step++; dir = list[data->step]; SetNextFacing; if (!sub_02062050) SetFacing; r = sub_02060BB8(obj, dir); } cmd = 0xc; if (r != 0) cmd = 0x20; ForceSetHeld(obj, sub_0206234C(dir, cmd)); if (sub_02062050(obj) == TRUE) sub_0206207C(obj, &data->dirFlip); SetSingleMovement; data->state = 1; return TRUE. 'tst r1, r0' (r1=1) suggests (1 & r) operand order; step++ re-read after strb."
+   ],
+   "signature_guess": "BOOL sub_02061C40(LocalMapObject *obj, MoveData_Route *data)",
+   "signature_sources": {
+    "asm/unk_02061284.s": "BOOL sub_02061C40(LocalMapObject *obj, MoveData_Route *data)"
+   },
+   "struct_accesses": [
+    {
+     "meaning": "u8 step (0..3), index into route list",
+     "offset": "0x1",
+     "param": 1,
+     "width": 1
+    },
+    {
+     "meaning": "u8 unk2 compared to step",
+     "offset": "0x2",
+     "param": 1,
+     "width": 1
+    },
+    {
+     "meaning": "u8 axis",
+     "offset": "0x3",
+     "param": 1,
+     "width": 1
+    },
+    {
+     "meaning": "dirListId -> sub_02061E6C",
+     "offset": "0x4",
+     "param": 1,
+     "width": 4
+    },
+    {
+     "meaning": "dirFlip substruct (add r1,#8)",
+     "offset": "0x8",
+     "param": 1,
+     "width": 4
+    },
+    {
+     "meaning": "u8 state = 1",
+     "offset": "0x0",
+     "param": 1,
+     "width": 1
+    }
+   ]
+  },
+  "sub_02061D50": {
+   "callers": [],
+   "confidence": "high",
+   "defined_in": "asm/unk_02061284.s",
+   "mode": "thumb",
+   "notes": [
+    "[asm/unk_02061284.s] same as sub_02061ABC but u8 state and dirFlip at +8 ('add r1, r4, #0; add r1, #8' form)"
+   ],
+   "signature_guess": "BOOL sub_02061D50(LocalMapObject *obj, MoveData_Route *data)",
+   "signature_sources": {
+    "asm/unk_02061284.s": "BOOL sub_02061D50(LocalMapObject *obj, MoveData_Route *data)"
+   }
+  },
+  "sub_02061D80": {
+   "callers": [],
+   "confidence": "high",
+   "defined_in": "asm/unk_02061284.s",
+   "mode": "thumb",
+   "notes": [
+    "[asm/unk_02061284.s] sub_02061AEC(obj, 2, 1, 0x1e); see sub_02061B1C for full list D80..DF0"
+   ],
+   "signature_guess": "void sub_02061D80(LocalMapObject *obj)",
+   "signature_sources": {
+    "asm/unk_02061284.s": "void sub_02061D80(LocalMapObject *obj)"
+   }
+  },
+  "sub_02061E00": {
+   "callers": [
+    "asm/unk_02061284.s"
+   ],
+   "confidence": "high",
+   "defined_in": "asm/unk_02061284.s",
+   "mode": "thumb",
+   "notes": [
+    "[asm/unk_02061284.s] count entries: pointer walk, first compare hoisted: i = 0; while (*list != terminator) { list++; i++; } GF_ASSERT(i != 0); return i."
+   ],
+   "signature_guess": "int sub_02061E00(const int *list, int terminator)",
+   "signature_sources": {
+    "asm/unk_02061284.s": "int sub_02061E00(const int *list, int terminator)"
+   }
+  },
+  "sub_02061E20": {
+   "callers": [
+    "asm/unk_02061284.s"
+   ],
+   "confidence": "high",
+   "defined_in": "asm/unk_02061284.s",
+   "mode": "thumb",
+   "notes": [
+    "[asm/unk_02061284.s] return list[LCRandom() % sub_02061E00(list, terminator)]; LCRandom evaluated first (kept in r6); signed modulo via _s32_div_f (remainder in r1)."
+   ],
+   "signature_guess": "int sub_02061E20(const int *list, int terminator)",
+   "signature_sources": {
+    "asm/unk_02061284.s": "int sub_02061E20(const int *list, int terminator)"
+   }
+  },
+  "sub_02061E44": {
+   "callers": [
+    "asm/unk_02061284.s"
+   ],
+   "confidence": "high",
+   "defined_in": "asm/unk_02061284.s",
+   "mode": "thumb",
+   "notes": [
+    "[asm/unk_02061284.s] list = sub_02061E6C(dirListId); return list[LCRandom() % sub_02061E00(list, terminator)]; (not a call to sub_02061E20 -- inlined body)."
+   ],
+   "signature_guess": "int sub_02061E44(int dirListId, int terminator)",
+   "signature_sources": {
+    "asm/unk_02061284.s": "int sub_02061E44(int dirListId, int terminator)"
+   }
+  },
+  "sub_02061E6C": {
+   "callers": [
+    "asm/unk_02061284.s"
+   ],
+   "confidence": "medium",
+   "defined_in": "asm/unk_02061284.s",
+   "mode": "thumb",
+   "notes": [
+    "[asm/unk_02061284.s] Search _020FD838 {int id; const int *list;}[] until id == 0x27; return list on match; else GF_ASSERT(FALSE); return NULL. First iteration compares against constant 0 (mov r2,#0) -- MWCC constant-folded table[0].id, so the table must be a visible static const initialised in this TU. Likely C: 'const DirListEntry *e = sDirLists; while (e->id != 0x27) { if (e->id == id) return e->list; e++; }' (rotated loop)."
+   ],
+   "signature_guess": "const int *sub_02061E6C(int dirListId)",
+   "signature_sources": {
+    "asm/unk_02061284.s": "const int *sub_02061E6C(int dirListId)"
+   }
+  },
+  "sub_02061E90": {
+   "callers": [
+    "asm/unk_02061284.s"
+   ],
+   "confidence": "medium",
+   "defined_in": "asm/unk_02061284.s",
+   "mode": "thumb",
+   "notes": [
+    "[asm/unk_02061284.s] Returns direction toward player or -1. type = GetType; if type not 1 or 2 return -1 (cmp #1 beq; cmp #2 beq -- NOT range-optimised, so use a switch with explicit cases or check insight contiguous-equality-range-opt-vs-switch). avatar = FieldSystem_GetPlayerAvatar(MapObject_GetFieldSystem(obj)); if (!sub_0205DE98(avatar)) return -1; mv = GetMovement(obj); i=0; loop { v = _020FD800[i++]; if (v == mv) break; if (v == 0xff) break; } if (mv != v) return -1; if (GetPositionVectorYCoordUInt(PlayerAvatar_GetMapObject(avatar)) != GetPositionVectorYCoordUInt(obj)) return -1; px, pz; range = MapObject_GetParam(obj, 0) (spilled [sp]); x, z; if (z - range <= pz && z + range >= pz && x - range <= px && x + range >= px) return sub_02061200(x, z, px, pz); return -1. Signed compares -> int locals. Each -1 return has its own epilogue."
+   ],
+   "signature_guess": "int sub_02061E90(LocalMapObject *obj)",
+   "signature_sources": {
+    "asm/unk_02061284.s": "int sub_02061E90(LocalMapObject *obj)"
+   }
+  },
+  "sub_02061F5C": {
+   "callers": [
+    "asm/unk_02061284.s"
+   ],
+   "confidence": "medium",
+   "defined_in": "asm/unk_02061284.s",
+   "mode": "thumb",
+   "notes": [
+    "[asm/unk_02061284.s] sp 0x14 frame: [sp]=obj,[sp+4]=z,[sp+8]=x,[sp+0xc]=avatar,[sp+0x10]=px. list = sub_02061E6C(dirListId); count = sub_02061E00(list, terminator); if (count == 1) return -1; dir = sub_02061E90(obj); if (dir != -1) { for (i = 0; i < count; i++) if (dir == list[i]) return dir; (no loop pre-check emitted -> maybe do-while) dx = -1; dz = -1; x, z, avatar, px, pz; if (x > px) dx = 2; else if (x < px) dx = 3; if (z > pz) dz = 0; else if (z < pz) dz = 1; if (dx == -1) { loop: if (dz == list[i]) return dz; } else if (dz == -1) { loop: if (dx == list[i]) return dx; } else { loop: if (dx == list[i]) return dx; if (dz == list[i]) return dz; } return -1 }; when dir == -1 falls to common epilogue returning dir(-1). Loops walk list pointer (r5) with index r0; none has a zero-trip pre-check. Hard function; register allocation (r7=dx, r6=dz, r4=count, r5=list) and loop form are the main risks."
+   ],
+   "signature_guess": "int sub_02061F5C(LocalMapObject *obj, int dirListId, int terminator)",
+   "signature_sources": {
+    "asm/unk_02061284.s": "int sub_02061F5C(LocalMapObject *obj, int dirListId, int terminator)"
+   }
+  },
+  "sub_02062050": {
+   "callers": [
+    "asm/unk_02061284.s"
+   ],
+   "confidence": "high",
+   "defined_in": "asm/unk_02061284.s",
+   "mode": "thumb",
+   "notes": [
+    "[asm/unk_02061284.s] type == 7 || type == 8 -> TRUE (range-optimised sub #7; cmp #1; bhi) else FALSE. Must remain an out-of-line call (bl everywhere) -- keep non-static to avoid IPA inlining."
+   ],
+   "signature_guess": "BOOL sub_02062050(LocalMapObject *obj)",
+   "signature_sources": {
+    "asm/unk_02061284.s": "BOOL sub_02062050(LocalMapObject *obj)"
+   }
+  },
+  "sub_02062064": {
+   "callers": [
+    "asm/unk_02061284.s"
+   ],
+   "confidence": "high",
+   "defined_in": "asm/unk_02061284.s",
+   "mode": "thumb",
+   "notes": [
+    "[asm/unk_02061284.s] if (GetType(obj) == 7) { st->row = 0; } else { st->row = 1; }"
+   ],
+   "signature_guess": "void sub_02062064(LocalMapObject *obj, DirFlipState *st)",
+   "signature_sources": {
+    "asm/unk_02061284.s": "void sub_02062064(LocalMapObject *obj, DirFlipState *st)"
+   },
+   "struct_accesses": [
+    {
+     "meaning": "s8 row = (type == 7) ? 0 : 1 (two strb paths with separate pops)",
+     "offset": "0x1",
+     "param": 1,
+     "width": 1
+    }
+   ]
+  },
+  "sub_0206207C": {
+   "callers": [
+    "asm/unk_02061284.s"
+   ],
+   "confidence": "medium",
+   "defined_in": "asm/unk_02061284.s",
+   "mode": "thumb",
+   "notes": [
+    "[asm/unk_02061284.s] facing = GetFacing(obj); for (i = 0; i < 4; i++) if (facing == _020FD7E0[st->row][i]) break; GF_ASSERT(i < 4); st->facing = facing; newDir = _020FD7E0[st->row][(i + 1) % 4] (signed %4 idiom lsr#31/lsl#30/ror); st->flag = MapObject_GetFlagsBitsMask(obj, MAPOBJECTFLAG_UNK7) ? 1 : 0 (branchy ternary); SetFacing(obj, newDir); SetFlagsBits(obj, MAPOBJECTFLAG_UNK7). Loop uses r1=i*4 byte offset + r2=const 1 for ldrsb offset."
+   ],
+   "signature_guess": "void sub_0206207C(LocalMapObject *obj, DirFlipState *st)",
+   "signature_sources": {
+    "asm/unk_02061284.s": "void sub_0206207C(LocalMapObject *obj, DirFlipState *st)"
+   },
+   "struct_accesses": [
+    {
+     "meaning": "saved facing (strb)",
+     "offset": "0x0",
+     "param": 1,
+     "width": 1
+    },
+    {
+     "meaning": "s8 row into _020FD7E0[2][4] (ldrsb, <<4)",
+     "offset": "0x1",
+     "param": 1,
+     "width": 1
+    },
+    {
+     "meaning": "u8 saved MAPOBJECTFLAG_UNK7 state",
+     "offset": "0x2",
+     "param": 1,
+     "width": 1
+    }
+   ]
+  },
+  "sub_020620F8": {
+   "callers": [
+    "asm/unk_02061284.s"
+   ],
+   "confidence": "high",
+   "defined_in": "asm/unk_02061284.s",
+   "mode": "thumb",
+   "notes": [
+    "[asm/unk_02061284.s] if (st->flag == 0) MapObject_ClearFlagsBits(obj, MAPOBJECTFLAG_UNK7); flag read via ldrb (u8)."
+   ],
+   "signature_guess": "void sub_020620F8(LocalMapObject *obj, DirFlipState *st)",
+   "signature_sources": {
+    "asm/unk_02061284.s": "void sub_020620F8(LocalMapObject *obj, DirFlipState *st)"
+   }
+  },
+  "sub_0206234C": {
+   "callers": [
+    "asm/unk_02061284.s"
+   ],
+   "confidence": "low",
+   "signature_guess": "int sub_0206234C(int dir, int cmd)",
+   "signature_sources": {
+    "asm/unk_02061284.s": "int sub_0206234C(int dir, int cmd)"
+   }
+  },
+  "sub_02062428": {
+   "callers": [
+    "asm/unk_02061284.s"
+   ],
+   "confidence": "low",
+   "signature_guess": "BOOL sub_02062428(LocalMapObject *obj)",
+   "signature_sources": {
+    "asm/unk_02061284.s": "BOOL sub_02062428(LocalMapObject *obj)"
    }
   },
   "sub_02068D18": {

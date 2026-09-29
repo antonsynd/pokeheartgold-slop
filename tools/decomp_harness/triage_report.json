@@ -1,5 +1,5 @@
 {
- "generated": "2026-09-29T20:10:06Z",
+ "generated": "2026-09-29T20:28:29Z",
  "weights": {
   "insn_line": 1.0,
   "unknown_callee": 40.0,
@@ -10,65 +10,6 @@
   "special_section": 500.0
  },
  "queue": [
-  {
-   "file": "asm/overlay_01_022031C0.s",
-   "score": 1797.2,
-   "special_sections": [],
-   "functions": 18,
-   "insn_lines": 912,
-   "data_only": false,
-   "unknown_callees": [
-    "Field3dModelAnimation_FrameAdvanceAndCheck",
-    "Field3dModelAnimation_FrameSet",
-    "Field3dModelAnimation_LoadFromFilesystem",
-    "Field3dModelAnimation_Unload",
-    "Field3dObject_AddAnimation",
-    "Field3dObject_Draw",
-    "Field3dObject_InitFromModel",
-    "Field3dObject_SetActiveFlag",
-    "Field3dObject_SetPos",
-    "ov01_021F1430",
-    "ov01_021F1448",
-    "ov01_021F1450",
-    "ov01_021F1468",
-    "ov01_021F146C",
-    "ov01_021F14B4",
-    "ov01_021F1620",
-    "ov01_021F1640",
-    "ov01_021F771C",
-    "ov01_021FBD38",
-    "ov01_021FBDFC",
-    "ov01_022055DC",
-    "sub_0206121C"
-   ],
-   "jumptable_words": 0,
-   "rodata_bytes": 104,
-   "arm_functions": 0,
-   "gated_by": [],
-   "copyprop_funcs": [],
-   "cluster_partners": [
-    {
-     "file": "asm/overlay_01_021FB878.s",
-     "shared_symbols": 11
-    },
-    {
-     "file": "asm/overlay_01_021F1348.s",
-     "shared_symbols": 8
-    },
-    {
-     "file": "asm/overlay_01_021F72DC.s",
-     "shared_symbols": 1
-    },
-    {
-     "file": "asm/overlay_01_022053EC.s",
-     "shared_symbols": 1
-    },
-    {
-     "file": "asm/unk_0205FD20.s",
-     "shared_symbols": 1
-    }
-   ]
-  },
   {
    "file": "asm/unk_020863F4.s",
    "score": 1824.8,
@@ -293,6 +234,59 @@
    ]
   },
   {
+   "file": "asm/unk_020658D4.s",
+   "score": 1992.8,
+   "special_sections": [],
+   "functions": 50,
+   "insn_lines": 1346,
+   "data_only": false,
+   "unknown_callees": [
+    "GetDeltaXByFacingDirection",
+    "GetDeltaYByFacingDirection",
+    "GetMetatileBehavior",
+    "MapObject_ForceSetHeldMovement",
+    "ov01_021F1640",
+    "ov01_021FF070",
+    "ov01_021FF0E4",
+    "ov01_0220542C",
+    "ov01_022055DC",
+    "ov01_02205604",
+    "sub_02061200",
+    "sub_0206234C",
+    "sub_020623C8",
+    "sub_020623D8",
+    "sub_02062428",
+    "sub_02064518"
+   ],
+   "jumptable_words": 0,
+   "rodata_bytes": 136,
+   "arm_functions": 0,
+   "gated_by": [],
+   "copyprop_funcs": [],
+   "cluster_partners": [
+    {
+     "file": "asm/unk_02062108.s",
+     "shared_symbols": 5
+    },
+    {
+     "file": "asm/unk_0205FD20.s",
+     "shared_symbols": 3
+    },
+    {
+     "file": "asm/overlay_01_022053EC.s",
+     "shared_symbols": 3
+    },
+    {
+     "file": "asm/overlay_01_021FEEEC.s",
+     "shared_symbols": 2
+    },
+    {
+     "file": "asm/unk_02054648.s",
+     "shared_symbols": 1
+    }
+   ]
+  },
+  {
    "file": "asm/unk_02032844.s",
    "score": 2017.0,
    "special_sections": [],
@@ -342,60 +336,6 @@
     },
     {
      "file": "asm/unk_0205CB48.s",
-     "shared_symbols": 1
-    }
-   ]
-  },
-  {
-   "file": "asm/unk_020658D4.s",
-   "score": 2032.8,
-   "special_sections": [],
-   "functions": 50,
-   "insn_lines": 1346,
-   "data_only": false,
-   "unknown_callees": [
-    "GetDeltaXByFacingDirection",
-    "GetDeltaYByFacingDirection",
-    "GetMetatileBehavior",
-    "MapObject_ForceSetHeldMovement",
-    "ov01_021F1640",
-    "ov01_021FF070",
-    "ov01_021FF0E4",
-    "ov01_0220329C",
-    "ov01_0220542C",
-    "ov01_022055DC",
-    "ov01_02205604",
-    "sub_02061200",
-    "sub_0206234C",
-    "sub_020623C8",
-    "sub_020623D8",
-    "sub_02062428",
-    "sub_02064518"
-   ],
-   "jumptable_words": 0,
-   "rodata_bytes": 136,
-   "arm_functions": 0,
-   "gated_by": [],
-   "copyprop_funcs": [],
-   "cluster_partners": [
-    {
-     "file": "asm/unk_02062108.s",
-     "shared_symbols": 5
-    },
-    {
-     "file": "asm/unk_0205FD20.s",
-     "shared_symbols": 3
-    },
-    {
-     "file": "asm/overlay_01_022053EC.s",
-     "shared_symbols": 3
-    },
-    {
-     "file": "asm/overlay_01_021FEEEC.s",
-     "shared_symbols": 2
-    },
-    {
-     "file": "asm/unk_02054648.s",
      "shared_symbols": 1
     }
    ]
@@ -465,37 +405,8 @@
    "cluster_partners": []
   },
   {
-   "file": "asm/overlay_34.s",
-   "score": 2150.4,
-   "special_sections": [],
-   "functions": 36,
-   "insn_lines": 1981,
-   "data_only": false,
-   "unknown_callees": [
-    "sub_02035754",
-    "sub_02035784",
-    "sub_02035798",
-    "sub_0205AA84"
-   ],
-   "jumptable_words": 0,
-   "rodata_bytes": 188,
-   "arm_functions": 0,
-   "gated_by": [],
-   "copyprop_funcs": [],
-   "cluster_partners": [
-    {
-     "file": "asm/unk_02034B0C.s",
-     "shared_symbols": 3
-    },
-    {
-     "file": "asm/unk_0205A44C.s",
-     "shared_symbols": 1
-    }
-   ]
-  },
-  {
    "file": "asm/overlay_01_022053EC.s",
-   "score": 2167.2,
+   "score": 2127.2,
    "special_sections": [],
    "functions": 40,
    "insn_lines": 1592,
@@ -508,7 +419,6 @@
     "ov01_021F771C",
     "ov01_021F9744",
     "ov01_021FA44C",
-    "ov01_0220329C",
     "sub_02026E18",
     "sub_0206234C",
     "sub_0206599C",
@@ -540,6 +450,35 @@
     },
     {
      "file": "asm/overlay_01_021F72DC.s",
+     "shared_symbols": 1
+    }
+   ]
+  },
+  {
+   "file": "asm/overlay_34.s",
+   "score": 2150.4,
+   "special_sections": [],
+   "functions": 36,
+   "insn_lines": 1981,
+   "data_only": false,
+   "unknown_callees": [
+    "sub_02035754",
+    "sub_02035784",
+    "sub_02035798",
+    "sub_0205AA84"
+   ],
+   "jumptable_words": 0,
+   "rodata_bytes": 188,
+   "arm_functions": 0,
+   "gated_by": [],
+   "copyprop_funcs": [],
+   "cluster_partners": [
+    {
+     "file": "asm/unk_02034B0C.s",
+     "shared_symbols": 3
+    },
+    {
+     "file": "asm/unk_0205A44C.s",
      "shared_symbols": 1
     }
    ]

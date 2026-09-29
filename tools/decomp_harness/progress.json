@@ -920,6 +920,16 @@
       "attempts": 20,
       "result": "matched",
       "note": "compare-verified (HG + SS full ROM SHA1 OK). PC Box app (ov14) window/text/sprite helpers incl. ov14_021F4EA0/4F24/4F84 used by 021F58B8.c, the WindowTemplate[0x2C] table, mon-info/item-name panels, font-OAM text objects. First pass by decomp-drafter (26/27); ov14_021F5564 NONMATCHING inline asm (retail reloads the 0x44E bitfield literal 3x). Local AddTextPrinterParameterizedWithColor with u32 fontId (text.h narrows via FontID); structs local; include/overlay_14.h untouched."
+    },
+    {
+      "file": "asm/overlay_01_022031C0.s",
+      "lines": 1114,
+      "functions": 18,
+      "matched_functions": 18,
+      "nonmatching": 0,
+      "attempts": 1,
+      "result": "matched",
+      "note": "compare-verified (HG + SS full ROM SHA1 OK). Field-effect module 0x11 (2-model 3D effect on player/follower, 4 behaviour templates incl. follower shrink + white-palette VRAM flash). First pass by decomp-drafter from the sweep: 18/18 on first compile. One-struct sRodata (2 VecFx32 scale templates + 4 callback templates, address order), non-const u16[32] 0xFFFF palette in .data, local FieldSystem view (mapObjectManager@0x3C) to avoid field_system.h, frozen include/overlay_01_022031C0.h prototype for ov01_0220329C kept."
     }
   ],
   "failed": [
@@ -1339,7 +1349,7 @@
   ],
   "stats": {
     "total_attempts": 208,
-    "total_matched": 84,
+    "total_matched": 85,
     "total_failed": 31
   },
   "matched": [
@@ -1448,6 +1458,7 @@
     "asm/unk_02023694.s",
     "asm/overlay_01_021FDA14.s",
     "asm/overlay_14_021F58B8.s",
-    "asm/overlay_14_021F4B90.s"
+    "asm/overlay_14_021F4B90.s",
+    "asm/overlay_01_022031C0.s"
   ]
 }
