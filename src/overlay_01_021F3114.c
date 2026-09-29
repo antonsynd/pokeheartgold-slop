@@ -25,7 +25,7 @@ extern int sub_0206234C(int a0, int a1);
 extern void sub_0205DFD4(PlayerAvatar *avatar, int a1);
 extern BOOL sub_0205DFC8(PlayerAvatar *avatar);
 extern BOOL sub_0205DA34(PlayerAvatar *avatar, LocalMapObject *mapObject, int direction);
-extern void ov04_02256BE4(FieldSystem *fieldSystem, int a1);
+extern void ViridianGymmick_HandleTileAction(FieldSystem *fieldSystem, int a1);
 
 static void ov01_021F3170(FieldSystem *fieldSystem, PlayerAvatar *avatar, int direction);
 static int ov01_021F31A0(int direction);
@@ -101,16 +101,16 @@ static BOOL ov01_021F31CC(TaskManager *taskManager) {
         }
         if (MetatileBehavior_IsSlideEast(tile) == 1) {
             work->unk0 = 3;
-            ov04_02256BE4(work->unkC, tile);
+            ViridianGymmick_HandleTileAction(work->unkC, tile);
         } else if (MetatileBehavior_IsSlideWest(tile) == 1) {
             work->unk0 = 2;
-            ov04_02256BE4(work->unkC, tile);
+            ViridianGymmick_HandleTileAction(work->unkC, tile);
         } else if (MetatileBehavior_IsSlideNorth(tile) == 1) {
             work->unk0 = 0;
-            ov04_02256BE4(work->unkC, tile);
+            ViridianGymmick_HandleTileAction(work->unkC, tile);
         } else if (MetatileBehavior_IsSlideSouth(tile) == 1) {
             work->unk0 = 1;
-            ov04_02256BE4(work->unkC, tile);
+            ViridianGymmick_HandleTileAction(work->unkC, tile);
         } else if (MetatileBehavior_StopSliding(tile) == 1) {
             work->unk0 = ov01_021F31A0(work->unk0);
             MapObject_ClearFlagsBits(mapObject, (MapObjectFlagBits)0x80);

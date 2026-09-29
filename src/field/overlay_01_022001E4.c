@@ -79,7 +79,6 @@ extern void sub_02023E50(void *a0, VecFx32 *a1);
 extern void sub_02023EA4(void *a0, int a1);
 extern void *sub_02023F90(void *a0);
 extern void ov01_021F93AC(LocalMapObject *object, VecFx32 *out);
-extern void NNS_G3dMdlSetMdlFogEnableFlagAll(void *a0, int a1);
 
 UnkManager_022001E4 *ov01_022001E4(void *a0);
 void ov01_022001F8(UnkManager_022001E4 *m);

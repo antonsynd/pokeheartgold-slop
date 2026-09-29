@@ -8,12 +8,6 @@
 #include "gf_rtc.h"
 #include "pm_string.h"
 
-typedef struct DWCFriendData {
-    u32 unk0;
-    u32 unk4;
-    u32 unk8;
-} DWCFriendData;
-
 typedef struct BattleRecord {
     /* 0x00 */ u16 unk00[8];
     /* 0x10 */ u16 unk10[8];
@@ -32,52 +26,47 @@ typedef struct BattleRecord {
     /* 0x36 */ u16 unk36;
 } BattleRecord;
 
-struct UnkStruct_021D2230 {
+struct WiFiList {
     /* 0x000 */ u8 unk00[0x40];
     /* 0x040 */ DWCFriendData unk40[32];
     /* 0x1C0 */ BattleRecord unk1C0[32];
 };
 
-extern void sub_0203A01C(UnkStruct_021D2230 *a0);
-extern BOOL DWC_IsValidFriendData(DWCFriendData *friendData);
+extern void sub_0203A01C(WiFiList *a0);
 
 u32 sub_0202C034(void);
-void *sub_0202C08C(UnkStruct_021D2230 *a0);
-void *sub_0202C23C(UnkStruct_021D2230 *a0, int a1);
-void sub_0202C270(UnkStruct_021D2230 *a0, int a1, const String *a2);
-void sub_0202C2B4(UnkStruct_021D2230 *a0, int a1, const String *a2);
-BOOL sub_0202C2DC(UnkStruct_021D2230 *a0, int a1);
-void sub_0202C338(UnkStruct_021D2230 *a0, int a1);
-static void sub_0202C3E8(UnkStruct_021D2230 *a0, int a1, int a2);
-void sub_0202C4F0(UnkStruct_021D2230 *a0, int a1, int a2, int a3, int a4);
-void sub_0202C554(UnkStruct_021D2230 *a0, int a1, int a2);
-void sub_0202C584(UnkStruct_021D2230 *a0, int a1, int a2);
-void sub_0202C5B4(UnkStruct_021D2230 *a0, int a1, int a2);
-void sub_0202C5E4(UnkStruct_021D2230 *a0, int a1, int a2);
+BOOL sub_0202C2DC(WiFiList *a0, int a1);
+void sub_0202C338(WiFiList *a0, int a1);
+static void sub_0202C3E8(WiFiList *a0, int a1, int a2);
+void sub_0202C4F0(WiFiList *a0, int a1, int a2, int a3, int a4);
+void sub_0202C554(WiFiList *a0, int a1, int a2);
+void sub_0202C584(WiFiList *a0, int a1, int a2);
+void sub_0202C5B4(WiFiList *a0, int a1, int a2);
+void sub_0202C5E4(WiFiList *a0, int a1, int a2);
 
-static UnkStruct_021D2230 _021D2230;
+static WiFiList _021D2230;
 
 u32 sub_0202C034(void) {
-    return sizeof(UnkStruct_021D2230);
+    return sizeof(WiFiList);
 }
 
-void sub_0202C03C(UnkStruct_021D2230 *a0) {
+void sub_0202C03C(WiFiList *a0) {
     s32 i;
-    MIi_CpuClearFast(0, (u32 *)a0, sizeof(UnkStruct_021D2230));
+    MIi_CpuClearFast(0, (u32 *)a0, sizeof(WiFiList));
     for (i = 0; i < 32; i++) {
         a0->unk1C0[i].unk10[0] = 0xFFFF;
         a0->unk1C0[i].unk00[0] = 0xFFFF;
         a0->unk1C0[i].unk2E = 2;
     }
     sub_0203A01C(a0);
-    MI_CpuCopy8(a0, &_021D2230, sizeof(UnkStruct_021D2230));
+    MI_CpuCopy8(a0, &_021D2230, sizeof(WiFiList));
 }
 
-void *sub_0202C08C(UnkStruct_021D2230 *a0) {
-    return a0;
+DWCUserData *sub_0202C08C(WiFiList *a0) {
+    return (DWCUserData *)a0;
 }
 
-s32 sub_0202C090(UnkStruct_021D2230 *a0, s32 a1, s32 a2) {
+s32 sub_0202C090(WiFiList *a0, s32 a1, s32 a2) {
     s32 result;
     GF_ASSERT(a1 < 32);
     switch (a2) {
@@ -124,7 +113,7 @@ s32 sub_0202C090(UnkStruct_021D2230 *a0, s32 a1, s32 a2) {
     return result;
 }
 
-void sub_0202C190(UnkStruct_021D2230 *a0, int a1, int a2, u8 a3) {
+void sub_0202C190(WiFiList *a0, int a1, int a2, u32 a3) {
     GF_ASSERT(a1 < 32);
     switch (a2) {
     case 0:
@@ -160,38 +149,38 @@ void sub_0202C190(UnkStruct_021D2230 *a0, int a1, int a2, u8 a3) {
     }
 }
 
-void *sub_0202C23C(UnkStruct_021D2230 *a0, int a1) {
+DWCFriendData *sub_0202C23C(WiFiList *a0, int a1) {
     GF_ASSERT(a1 < 32);
     return &a0->unk40[a1];
 }
 
-u16 *sub_0202C254(UnkStruct_021D2230 *a0, s32 a1) {
+u16 *sub_0202C254(WiFiList *a0, s32 a1) {
     GF_ASSERT(a1 < 32);
     return a0->unk1C0[a1].unk10;
 }
 
-void sub_0202C270(UnkStruct_021D2230 *a0, int a1, const String *a2) {
+void sub_0202C270(WiFiList *a0, int a1, String *a2) {
     GF_ASSERT(a1 < 32);
     CopyStringToU16Array(a2, a0->unk1C0[a1].unk10, 16);
 }
 
-u16 *sub_0202C298(UnkStruct_021D2230 *a0, s32 a1) {
+u16 *sub_0202C298(WiFiList *a0, s32 a1) {
     GF_ASSERT(a1 < 32);
     return a0->unk1C0[a1].unk00;
 }
 
-void sub_0202C2B4(UnkStruct_021D2230 *a0, int a1, const String *a2) {
+void sub_0202C2B4(WiFiList *a0, int a1, String *a2) {
     GF_ASSERT(a1 < 32);
     CopyStringToU16Array(a2, a0->unk1C0[a1].unk00, 16);
 }
 
-BOOL sub_0202C2DC(UnkStruct_021D2230 *a0, int a1) {
+BOOL sub_0202C2DC(WiFiList *a0, int a1) {
     GF_ASSERT(a1 < 32);
     return DWC_IsValidFriendData(&a0->unk40[a1]);
 }
 
 #ifdef NONMATCHING
-int sub_0202C2F8(UnkStruct_021D2230 *a0) {
+int sub_0202C2F8(WiFiList *a0) {
     int count = 0;
     int i;
     for (i = 0; i < 32; i++) {
@@ -203,7 +192,7 @@ int sub_0202C2F8(UnkStruct_021D2230 *a0) {
 }
 #else
 // clang-format off
-asm int sub_0202C2F8(UnkStruct_021D2230 *a0) {
+asm int sub_0202C2F8(WiFiList *a0) {
 	push {r4, r5, r6, lr}
 	mov r5, #0
 	add r6, r0, #0
@@ -226,7 +215,7 @@ _0202C30E:
 #endif
 
 #ifdef NONMATCHING
-u16 sub_0202C318(UnkStruct_021D2230 *a0) {
+u16 sub_0202C318(WiFiList *a0) {
     int last = 0;
     int i;
     for (i = 0; i < 32; i++) {
@@ -238,7 +227,7 @@ u16 sub_0202C318(UnkStruct_021D2230 *a0) {
 }
 #else
 // clang-format off
-asm u16 sub_0202C318(UnkStruct_021D2230 *a0) {
+asm u16 sub_0202C318(WiFiList *a0) {
 	push {r4, r5, r6, lr}
 	mov r6, #0
 	add r5, r0, #0
@@ -261,7 +250,7 @@ _0202C32E:
 #endif
 
 #ifdef NONMATCHING
-void sub_0202C338(UnkStruct_021D2230 *a0, int a1) {
+void sub_0202C338(WiFiList *a0, int a1) {
     if (a1 >= 0 && a1 < 32) {
         if (a1 < 31) {
             BattleRecord *recDst = &a0->unk1C0[a1];
@@ -283,7 +272,7 @@ void sub_0202C338(UnkStruct_021D2230 *a0, int a1) {
 }
 #else
 // clang-format off
-asm void sub_0202C338(UnkStruct_021D2230 *a0, int a1) {
+asm void sub_0202C338(WiFiList *a0, int a1) {
 	push {r4, r5, r6, r7, lr}
 	sub sp, #0xc
 	str r0, [sp, #0]
@@ -369,7 +358,7 @@ _0202C3D8:
 // clang-format on
 #endif
 
-static void sub_0202C3E8(UnkStruct_021D2230 *a0, int a1, int a2) {
+static void sub_0202C3E8(WiFiList *a0, int a1, int a2) {
     if (a1 >= 0 && a1 < 32 && a2 >= 0 && a2 < 32) {
         MI_CpuCopy8(&a0->unk1C0[a2], &a0->unk1C0[a1], sizeof(BattleRecord));
         MI_CpuCopy8(&a0->unk40[a2], &a0->unk40[a1], sizeof(DWCFriendData));
@@ -382,7 +371,7 @@ static void sub_0202C3E8(UnkStruct_021D2230 *a0, int a1, int a2) {
 }
 
 #ifdef NONMATCHING
-void sub_0202C46C(UnkStruct_021D2230 *a0) {
+void sub_0202C46C(WiFiList *a0) {
     int gap = -1;
     int i;
     for (i = 0; i < 32; i++) {
@@ -401,7 +390,7 @@ void sub_0202C46C(UnkStruct_021D2230 *a0) {
 }
 #else
 // clang-format off
-asm void sub_0202C46C(UnkStruct_021D2230 *a0) {
+asm void sub_0202C46C(WiFiList *a0) {
 	push {r3, r4, r5, r6, r7, lr}
 	mov r5, #0
 	mvn r5, r5
@@ -440,7 +429,7 @@ _0202C4A6:
 // clang-format on
 #endif
 
-void sub_0202C4B0(UnkStruct_021D2230 *a0, s32 a1) {
+void sub_0202C4B0(WiFiList *a0, s32 a1) {
     RTCDate date;
     GF_RTC_CopyDate(&date);
     if (a1 >= 0 && a1 < 32) {
@@ -451,7 +440,7 @@ void sub_0202C4B0(UnkStruct_021D2230 *a0, s32 a1) {
 }
 
 #ifdef NONMATCHING
-void sub_0202C4F0(UnkStruct_021D2230 *a0, int a1, int a2, int a3, int a4) {
+void sub_0202C4F0(WiFiList *a0, int a1, int a2, int a3, int a4) {
     if (a1 >= 0 && a1 < 32) {
         a0->unk1C0[a1].unk24 += a2;
         if (a0->unk1C0[a1].unk24 > 0x270F) {
@@ -470,7 +459,7 @@ void sub_0202C4F0(UnkStruct_021D2230 *a0, int a1, int a2, int a3, int a4) {
 }
 #else
 // clang-format off
-asm void sub_0202C4F0(UnkStruct_021D2230 *a0, int a1, int a2, int a3, int a4) {
+asm void sub_0202C4F0(WiFiList *a0, int a1, int a2, int a3, int a4) {
 	push {r4, r5, r6, lr}
 	add r4, r0, #0
 	cmp r1, #0
@@ -523,7 +512,7 @@ _0202C548:
 // clang-format on
 #endif
 
-void sub_0202C554(UnkStruct_021D2230 *a0, int a1, int a2) {
+void sub_0202C554(WiFiList *a0, int a1, int a2) {
     if (a1 >= 0 && a1 < 32) {
         a0->unk1C0[a1].unk32 += a2;
         if (a0->unk1C0[a1].unk32 > 0x270F) {
@@ -533,7 +522,7 @@ void sub_0202C554(UnkStruct_021D2230 *a0, int a1, int a2) {
     }
 }
 
-void sub_0202C584(UnkStruct_021D2230 *a0, int a1, int a2) {
+void sub_0202C584(WiFiList *a0, int a1, int a2) {
     if (a1 >= 0 && a1 < 32) {
         a0->unk1C0[a1].unk34 += a2;
         if (a0->unk1C0[a1].unk34 > 0x270F) {
@@ -543,7 +532,7 @@ void sub_0202C584(UnkStruct_021D2230 *a0, int a1, int a2) {
     }
 }
 
-void sub_0202C5B4(UnkStruct_021D2230 *a0, int a1, int a2) {
+void sub_0202C5B4(WiFiList *a0, int a1, int a2) {
     if (a1 >= 0 && a1 < 32) {
         a0->unk1C0[a1].unk36 += a2;
         if (a0->unk1C0[a1].unk36 > 0x270F) {
@@ -553,7 +542,7 @@ void sub_0202C5B4(UnkStruct_021D2230 *a0, int a1, int a2) {
     }
 }
 
-void sub_0202C5E4(UnkStruct_021D2230 *a0, int a1, int a2) {
+void sub_0202C5E4(WiFiList *a0, int a1, int a2) {
     if (a2 >= 0 && a2 < 32 && a1 >= 0 && a1 < 32) {
         a0->unk1C0[a2].unk24 += a0->unk1C0[a1].unk24;
         if (a0->unk1C0[a2].unk24 > 0x270F) {
@@ -591,17 +580,17 @@ void sub_0202C5E4(UnkStruct_021D2230 *a0, int a1, int a2) {
     }
 }
 
-UnkStruct_021D2230 *sub_0202C6F4(SaveData *saveData) {
+WiFiList *sub_0202C6F4(SaveData *saveData) {
 #pragma unused(saveData)
     return &_021D2230;
 }
 
 void sub_0202C6FC(SaveData *saveData) {
     void *chunk = SaveArray_Get(saveData, SAVE_UNK_25);
-    MI_CpuCopy8(chunk, &_021D2230, sizeof(UnkStruct_021D2230));
+    MI_CpuCopy8(chunk, &_021D2230, sizeof(WiFiList));
 }
 
 void sub_0202C714(SaveData *saveData) {
     void *chunk = SaveArray_Get(saveData, SAVE_UNK_25);
-    MI_CpuCopy8(&_021D2230, chunk, sizeof(UnkStruct_021D2230));
+    MI_CpuCopy8(&_021D2230, chunk, sizeof(WiFiList));
 }

@@ -1,15 +1,15 @@
 # Decomp Coverage Ledger
 
-*Generated 2026-09-01T23:58:39Z by `coverage_ledger.py` — do not hand-edit; regenerate after each decomp.*
+*Generated 2026-09-29T15:30:29Z by `coverage_ledger.py` — do not hand-edit; regenerate after each decomp.*
 
-Tracked functions (files with retained asm): **19305** — matched 1924, pending 16484, plus 20 matched-but-blocked inside failed files.
+Tracked functions (files with retained asm): **19040** — matched 1924, pending 16219, plus 20 matched-but-blocked inside failed files.
 
 | status | files | functions | insn lines | ~text bytes |
 |---|---|---|---|---|
 | matched | 105 | 1924 | 54935 | 123472 |
 | blocked | 51 | 897 | 29123 | 64116 |
-| pending | 158 | 16484 | 817813 | 1830628 |
-| upstream | 404 | 0 | 0 | 0 |
+| pending | 156 | 16219 | 807721 | 1808062 |
+| upstream | 414 | 0 | 0 | 0 |
 
 ## Blockers (value-ordered: fix what gates the most)
 
@@ -187,7 +187,7 @@ Tracked functions (files with retained asm): **19305** — matched 1924, pending
 | asm/overlay_01_data_02208BFC.s | 0 | 0 | yes | retained_asm |
 | asm/battle_arcade_game_board_data.s | 0 | 0 | yes | harness |
 
-## Pending files (158)
+## Pending files (156)
 
 | file | functions | insn lines | data-only | notes |
 |---|---|---|---|---|
@@ -210,7 +210,6 @@ Tracked functions (files with retained asm): **19305** — matched 1924, pending
 | asm/overlay_15.s | 203 | 12648 |  |  |
 | asm/overlay_80_0222BDF4.s | 203 | 6189 |  |  |
 | asm/overlay_81.s | 197 | 9583 |  |  |
-| asm/unk_02037C94.s | 176 | 4077 |  |  |
 | asm/overlay_43.s | 169 | 8806 |  |  |
 | asm/overlay_59.s | 163 | 8111 |  |  |
 | asm/overlay_49_0225A154.s | 159 | 4667 |  |  |
@@ -243,7 +242,6 @@ Tracked functions (files with retained asm): **19305** — matched 1924, pending
 | asm/overlay_49_022655E0.s | 90 | 4663 |  |  |
 | asm/overlay_83_02243D7C.s | 90 | 5353 |  |  |
 | asm/overlay_00_thumb.s | 89 | 3729 |  |  |
-| asm/overlay_04.s | 89 | 6015 |  |  |
 | asm/overlay_108.s | 88 | 5292 |  |  |
 | asm/overlay_05.s | 87 | 5413 |  |  |
 | asm/overlay_01_021EFB38.s | 85 | 2703 |  |  |

@@ -76,7 +76,7 @@ typedef struct NamePickerData {
     FieldSystem *fieldSystem;                 // 0x008
     int *unkC;                                // 0x00C
     SysTask *task;                            // 0x010
-    UnkStruct_021D2230 *names;                // 0x014
+    WiFiList *names;                          // 0x014
     GridInputHandler *gridInput;              // 0x018
     NamePickerBlink blink;                    // 0x01C
     Window windows[NAME_PICKER_NUM_WINDOWS];  // 0x024

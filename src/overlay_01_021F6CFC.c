@@ -47,11 +47,8 @@ extern BOOL ov01_021F6C28(Work *work);
 extern BOOL ov01_021F6CA0(Work *work);
 
 // Local externs (correct types differ from / are absent in the frozen headers).
-extern BOOL sub_0203A1C4(SaveData *saveData, void *a1, enum HeapID heapID);
-extern void sub_0203A280(SaveData *saveData, int a1, int a2, int a3, int a4);
-extern u16 *sub_0202C23C(UnkStruct_021D2230 *a0, s32 a1);
-extern BOOL sub_0202C2DC(UnkStruct_021D2230 *a0, s32 a1);
-extern void sub_0202C338(UnkStruct_021D2230 *a0, s32 a1);
+extern BOOL sub_0202C2DC(WiFiList *a0, s32 a1);
+extern void sub_0202C338(WiFiList *a0, s32 a1);
 extern void sub_020311AC(FrontierSave *frontierSave, int a1);
 
 static BOOL ov01_021F6CFC(Work *work);
@@ -75,7 +72,7 @@ void ov01_021F729C(FieldSystem *fieldSystem);
 
 static BOOL ov01_021F6CFC(Work *work) {
     sub_0202C23C(sub_0202C6F4(work->saveData), 0);
-    if (!sub_0203A1C4(work->saveData, work->slots, HEAP_ID_FIELD1)) {
+    if (!sub_0203A1C4(work->saveData, (s32 *)work->slots, HEAP_ID_FIELD1)) {
         return TRUE;
     }
     work->unk88 = 0;
@@ -105,11 +102,11 @@ static BOOL ov01_021F6D78(Work *work) {
         return FALSE;
     }
     {
-        UnkStruct_021D2230 *store = sub_0202C6F4(work->saveData);
+        WiFiList *store = sub_0202C6F4(work->saveData);
         int i;
         for (i = 0; i < 0x20; i++) {
             if (!sub_0202C2DC(store, i)) {
-                sub_0203A280(work->saveData, work->unk88, i, 4, 0);
+                sub_0203A280(work->saveData, work->unk88, i, HEAP_ID_FIELD1, 0);
                 break;
             }
         }
@@ -130,10 +127,10 @@ static BOOL ov01_021F6E68(Work *work) {
     if (!ov01_021F6CA0(work)) {
         if (work->unk90 == 0) {
             int i;
-            UnkStruct_021D2230 *store = sub_0202C6F4(work->saveData);
+            WiFiList *store = sub_0202C6F4(work->saveData);
             for (i = 0; i < 0x20; i++) {
                 if (!sub_0202C2DC(store, i)) {
-                    sub_0203A280(work->saveData, work->unk88, i, 4, 0);
+                    sub_0203A280(work->saveData, work->unk88, i, HEAP_ID_FIELD1, 0);
                     break;
                 }
             }
@@ -217,7 +214,7 @@ static BOOL ov01_021F6FDC(Work *work) {
     case -1:
         break;
     default: {
-        UnkStruct_021D2230 *store;
+        WiFiList *store;
         PlayerProfile *profile;
         work->unk8c = work->unk94;
         store = sub_0202C6F4(work->saveData);
@@ -242,12 +239,12 @@ static BOOL ov01_021F7060(Work *work) {
 }
 
 static BOOL ov01_021F7084(Work *work) {
-    UnkStruct_021D2230 *store = sub_0202C6F4(work->saveData);
+    WiFiList *store = sub_0202C6F4(work->saveData);
     if (!ov01_021F6CA0(work)) {
         if (work->unk90 == 0) {
             sub_020311AC(Save_Frontier_GetStatic(work->saveData), work->unk8c);
             sub_0202C338(store, work->unk8c);
-            sub_0203A280(work->saveData, work->unk88, 0x1F, 4, 0);
+            sub_0203A280(work->saveData, work->unk88, 0x1F, HEAP_ID_FIELD1, 0);
             work->state = 1;
         } else {
             BufferPlayersName(work->messageFormat, 0, sub_02034818(work->unk88));

@@ -3,8 +3,15 @@
 #include "heap.h"
 #include "unk_02033AE0.h"
 #include "unk_02034354.h"
+
+// Upstream's unk_02037C94.h declares sub_02038C1C(s8); this TU was matched against an
+// int param (s8 would add a sign-extension at the call site). Shadow the upstream decl,
+// keep ours.
+#define sub_02038C1C sub_02038C1C_UpstreamDecl
 #include "unk_02035900.h"
 #include "unk_02037C94.h"
+#undef sub_02038C1C
+
 #include "unk_0205A44C.h"
 #include "unk_02091564.h"
 

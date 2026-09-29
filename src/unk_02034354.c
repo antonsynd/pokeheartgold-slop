@@ -1,5 +1,16 @@
 #define UNK_02034354_OWN_DECLS
 
+// Upstream PR #488 published typed decls for these (own-file getters in unk_02034354.h,
+// DWC_CreateExchangeToken in dwcaccount.h, sub_0203A084/sub_0203A378 in unk_02037C94.h).
+// This WIP TU keeps the signatures it is being matched against -- shadow the upstream decls.
+#define DWC_CreateExchangeToken DWC_CreateExchangeToken_UpstreamDecl
+#define sub_0203A084            sub_0203A084_UpstreamDecl
+#define sub_0203A378            sub_0203A378_UpstreamDecl
+#define sub_0203484C            sub_0203484C_UpstreamDecl
+#define sub_02034884            sub_02034884_UpstreamDecl
+#define sub_020348A8            sub_020348A8_UpstreamDecl
+#define sub_020348CC            sub_020348CC_UpstreamDecl
+
 #include "unk_02034354.h"
 
 #include <nitro/mi/memory.h>
@@ -16,12 +27,20 @@
 #include "unk_0202C034.h"
 #include "unk_02035900.h"
 
+#undef DWC_CreateExchangeToken
+#undef sub_0203A084
+#undef sub_0203A378
+#undef sub_0203484C
+#undef sub_02034884
+#undef sub_020348A8
+#undef sub_020348CC
+
 extern void DWC_CreateExchangeToken(void *a0, void *a1);
 extern void sub_020357C4(void *a0, int a1);
 extern BOOL sub_0203753C(int a0, void *a1, int a2);
 extern int sub_0203A084(SaveData *saveData, void *a1, int *a2);
 extern u8 sub_0203A378(SaveData *saveData, int a1);
-extern void sub_0202C4F0(UnkStruct_021D2230 *a0, int a1, int a2, int a3, int a4);
+extern void sub_0202C4F0(WiFiList *a0, int a1, int a2, int a3, int a4);
 
 typedef struct PlayerRecord {
     LinkBattleRuleset ruleset;
@@ -109,7 +128,7 @@ BOOL sub_02034420(void) {
 void sub_02034434(void) {
     int localIdx = sub_0203769C();
     SAV_FRIEND_GRP *friendGroup = Save_FriendGroup_Get(sMgr->saveData);
-    UnkStruct_021D2230 *unk = sub_0202C6F4(sMgr->saveData);
+    WiFiList *unk = sub_0202C6F4(sMgr->saveData);
     SaveWiFiHistory *wifiHistory = Save_WiFiHistory_Get(sMgr->saveData);
     PlayerProfile *profile;
     u16 *friendNamePtr;
@@ -490,7 +509,7 @@ void sub_02034A20(SaveData *saveData) {
     int idx;
     int res;
     void *dwcData;
-    UnkStruct_021D2230 *unk = sub_0202C6F4(saveData);
+    WiFiList *unk = sub_0202C6F4(saveData);
     i = 0;
     count = sub_02037454();
     if (count > 0) {

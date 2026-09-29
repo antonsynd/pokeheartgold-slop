@@ -2,7 +2,14 @@
 
 #include "unk_020379A0.h"
 
+// Upstream's unk_02035900.h declares these two void-returning; this TU was matched
+// consuming their BOOL result (sub_020376E0 tail-calls sub_02037030, so r0 is live).
+// Shadow the upstream decls, keep ours.
+#define sub_02037184 sub_02037184_UpstreamDecl
+#define sub_020376E0 sub_020376E0_UpstreamDecl
 #include "unk_02035900.h"
+#undef sub_02037184
+#undef sub_020376E0
 
 BOOL sub_02037184(int a0, void *a1);
 BOOL sub_020376E0(int a0, void *a1);

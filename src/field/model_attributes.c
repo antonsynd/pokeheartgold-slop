@@ -26,7 +26,6 @@ extern void NNS_G3dMdlSetMdlPolygonModeAll(struct NNSG3dResMdl *model, u32 val);
 extern void NNS_G3dMdlSetMdlCullModeAll(struct NNSG3dResMdl *model, u32 val);
 extern void NNS_G3dMdlSetMdlPolygonIDAll(struct NNSG3dResMdl *model, u32 val);
 extern void NNS_G3dMdlSetMdlAlphaAll(struct NNSG3dResMdl *model, u32 val);
-extern void NNS_G3dMdlSetMdlFogEnableFlagAll(struct NNSG3dResMdl *model, u32 val);
 extern void NNS_G3dMdlSetMdlDepthTestCondAll(struct NNSG3dResMdl *model, u32 val);
 extern void NNS_G3dMdlSetMdl1DotAll(struct NNSG3dResMdl *model, u32 val);
 extern void NNS_G3dMdlSetMdlFarClipAll(struct NNSG3dResMdl *model, u32 val);
@@ -126,7 +125,7 @@ void ov01_021EA9B0(ModelAttributes *modelAttributes, struct NNSG3dResMdl *model,
 
     mask = 2 << 0x10;
     if (flags & mask) {
-        NNS_G3dMdlSetMdlFogEnableFlagAll(model, modelAttributes->miscFlags & (mask >> 2));
+        NNS_G3dMdlSetMdlFogEnableFlagAll((NNSG3dResMdl *)model, modelAttributes->miscFlags & (mask >> 2));
     }
 
     mask = 1 << 0x12;

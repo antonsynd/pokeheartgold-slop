@@ -92,7 +92,6 @@ extern u32 sub_02020910(void *model, u8 index);
 extern u32 sub_020209AC(void *model, u8 index);
 
 extern void sub_02026E18(void *a0, UnkOv01_02203A18_Anim *a1);
-extern void NNS_G3dMdlSetMdlFogEnableFlagAll(void *model, int flag);
 
 UnkOv01_02203A18 *ov01_02203A18(void *a0);
 void ov01_02203A38(UnkOv01_02203A18 *manager);

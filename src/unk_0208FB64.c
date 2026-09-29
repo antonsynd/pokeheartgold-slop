@@ -5,8 +5,13 @@
 #include "math_util.h"
 #include "unk_02005D10.h"
 #include "unk_02033AE0.h"
+
+// Upstream's unk_02037C94.h declares sub_02038C1C(s8); this TU was matched calling it
+// with no argument (r0 left as-is). Shadow the upstream decl, keep ours.
+#define sub_02038C1C sub_02038C1C_UpstreamDecl
 #include "unk_02035900.h"
 #include "unk_02037C94.h"
+#undef sub_02038C1C
 
 extern void sub_02091570(int a0, int a1, void *a2, void *a3);
 extern u32 sub_02091590(void);

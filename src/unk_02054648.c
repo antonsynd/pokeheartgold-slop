@@ -348,7 +348,7 @@ u32 sub_020549F4(FieldSystem *fieldSystem, VecFx32 *playerPos, u32 x, u32 y, u32
     }
     if (elev == 0) {
         u32 result;
-        if (!Gymmick_CheckCollision(fieldSystem, x, y, (u32)playerPos->y, (u32)&result)) {
+        if (!Gymmick_CheckCollision(fieldSystem, x, y, (u32)playerPos->y, (BOOL *)&result)) {
             result = sub_020548C0(fieldSystem, (int)x, (int)y);
             if (!result && selector == 2) {
                 GetMetatileBehavior(fieldSystem, (int)x, (int)y);

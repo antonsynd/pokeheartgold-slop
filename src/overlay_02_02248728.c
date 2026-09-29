@@ -50,6 +50,10 @@
 #define SafariZone_GetAreaSet           SafariZone_GetAreaSet_UpstreamDecl
 #define SafariZone_GetObjectUnlockLevel SafariZone_GetObjectUnlockLevel_UpstreamDecl
 
+// Upstream PR #493 published ov01_021FB9E0 in overlay_01_021FB878.h typed against
+// AreaDataManager / NNSG3dResTex; this TU consumes it through an untyped `void *` extern.
+#define ov01_021FB9E0 ov01_021FB9E0_UpstreamDecl
+
 #include "global.h"
 
 #include "constants/gx.h"
@@ -106,6 +110,7 @@
 #undef Save_SafariZone_Get
 #undef SafariZone_GetAreaSet
 #undef SafariZone_GetObjectUnlockLevel
+#undef ov01_021FB9E0
 
 // WIP_LOCAL marks a function that is file-local in the original (-> `static` in
 // the final) but is left global during WIP so it survives dead-code elimination
