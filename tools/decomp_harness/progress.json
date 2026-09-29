@@ -930,6 +930,16 @@
       "attempts": 1,
       "result": "matched",
       "note": "compare-verified (HG + SS full ROM SHA1 OK). Field-effect module 0x11 (2-model 3D effect on player/follower, 4 behaviour templates incl. follower shrink + white-palette VRAM flash). First pass by decomp-drafter from the sweep: 18/18 on first compile. One-struct sRodata (2 VecFx32 scale templates + 4 callback templates, address order), non-const u16[32] 0xFFFF palette in .data, local FieldSystem view (mapObjectManager@0x3C) to avoid field_system.h, frozen include/overlay_01_022031C0.h prototype for ov01_0220329C kept."
+    },
+    {
+      "file": "asm/unk_020863F4.s",
+      "lines": 1889,
+      "functions": 24,
+      "matched_functions": 22,
+      "nonmatching": 2,
+      "attempts": 8,
+      "result": "matched",
+      "note": "compare-verified (HG full ROM SHA1 OK; SS build not run - blocked by permission classifier). Numeric-input app sprite/window helpers (UnkStruct_020850F4). First pass by decomp-drafter (21/24). sub_02086490 matched by declaring locals sys,narc,bg,pltt,mgr (regalloc) and assigning sys,mgr,pltt,bg,narc (scheduler load order). sub_02086758 + sub_020869BC NONMATCHING asm: ManagedSpriteTemplate init constant-derivation (-1 from 1 vs 10) / store scheduling unreproduced after vram-position, -1-position and 80 random statement-order sweeps."
     }
   ],
   "failed": [
@@ -1348,8 +1358,8 @@
     }
   ],
   "stats": {
-    "total_attempts": 208,
-    "total_matched": 85,
+    "total_attempts": 216,
+    "total_matched": 86,
     "total_failed": 31
   },
   "matched": [
@@ -1459,6 +1469,7 @@
     "asm/overlay_01_021FDA14.s",
     "asm/overlay_14_021F58B8.s",
     "asm/overlay_14_021F4B90.s",
-    "asm/overlay_01_022031C0.s"
+    "asm/overlay_01_022031C0.s",
+    "asm/unk_020863F4.s"
   ]
 }

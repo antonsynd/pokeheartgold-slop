@@ -1,5 +1,5 @@
 {
- "generated": "2026-09-29T20:28:29Z",
+ "generated": "2026-09-29T23:22:01Z",
  "weights": {
   "insn_line": 1.0,
   "unknown_callee": 40.0,
@@ -11,26 +11,30 @@
  },
  "queue": [
   {
-   "file": "asm/unk_020863F4.s",
-   "score": 1824.8,
+   "file": "asm/unk_02085604.s",
+   "score": 1787.6,
    "special_sections": [],
-   "functions": 24,
-   "insn_lines": 1701,
+   "functions": 17,
+   "insn_lines": 1659,
    "data_only": false,
    "unknown_callees": [
-    "DrawFrameAndWindow2",
-    "LoadUserFrameGfx2",
-    "sub_0200E640"
+    "BeginNormalPaletteFade",
+    "IsPaletteFadeFinished",
+    "sub_0203A4AC"
    ],
    "jumptable_words": 0,
-   "rodata_bytes": 76,
+   "rodata_bytes": 172,
    "arm_functions": 0,
    "gated_by": [],
    "copyprop_funcs": [],
    "cluster_partners": [
     {
-     "file": "asm/render_window.s",
-     "shared_symbols": 3
+     "file": "asm/unk_0200FA24.s",
+     "shared_symbols": 2
+    },
+    {
+     "file": "asm/unk_0203A3B0.s",
+     "shared_symbols": 1
     }
    ]
   },
@@ -1221,55 +1225,6 @@
     {
      "file": "asm/overlay_18_021F0918.s",
      "shared_symbols": 3
-    }
-   ]
-  },
-  {
-   "file": "asm/unk_02085604.s",
-   "score": 2467.6,
-   "special_sections": [],
-   "functions": 17,
-   "insn_lines": 1659,
-   "data_only": false,
-   "unknown_callees": [
-    "BeginNormalPaletteFade",
-    "IsPaletteFadeFinished",
-    "sub_0203A4AC",
-    "sub_02086490",
-    "sub_02086758",
-    "sub_020868A0",
-    "sub_020869BC",
-    "sub_02086AB4",
-    "sub_02086AE4",
-    "sub_02086B2C",
-    "sub_02086B6C",
-    "sub_02086BB4",
-    "sub_02086C8C",
-    "sub_02086D98",
-    "sub_02086DA4",
-    "sub_02086DE4",
-    "sub_02086F44",
-    "sub_02086FCC",
-    "sub_02087064",
-    "sub_020871C4"
-   ],
-   "jumptable_words": 0,
-   "rodata_bytes": 172,
-   "arm_functions": 0,
-   "gated_by": [],
-   "copyprop_funcs": [],
-   "cluster_partners": [
-    {
-     "file": "asm/unk_020863F4.s",
-     "shared_symbols": 17
-    },
-    {
-     "file": "asm/unk_0200FA24.s",
-     "shared_symbols": 2
-    },
-    {
-     "file": "asm/unk_0203A3B0.s",
-     "shared_symbols": 1
     }
    ]
   },

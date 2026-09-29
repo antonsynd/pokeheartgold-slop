@@ -33533,6 +33533,873 @@
    ],
    "sweep_output": "sweep/out/unk_02061284.json"
   },
+  "asm/unk_020658D4.s": {
+   "notes": "Static ARM9 module file (0x020658D4-0x02066598), 50 thumb functions, 0x88 bytes of .rodata at 0x020FE3CC, no .data/.bss, no DECL_CHUNK_EX involvement. It implements three map-object movement types whose init/update/delete/restore callbacks are referenced from the tables in asm/unk_data_020FCBD8.s (still asm): (A) follow-mon/player-follow movement (sub_020658D4 init + 02065900/38/68 update + 02065998 delete), with state tables _020FE404/414/424 over the handlers 02065A4C|02065B70|02065BE8, 02065C2C, 02065C48, 02065C90; (B) follow-another-object-with-same-trainerNum movement (02065FFC/02066024/02066054/02066058, states 02066064 and 020660A0); (C) a sprite-effect movement type with 4 variants (0206630C..02066330 init -> 020662C4, 0206633C update, 02066360 delete, 02066370 restore, states 020663B4 and 020663E4). All state handlers have the form BOOL (*)(LocalMapObject *, Data *) and are driven by 'while (tbl[data->state](obj, data) == TRUE);'. Callers in already-decompiled C: sub_020660C0 (src/scrcmd_c.c, via unk_020658D4.h), sub_020659CC (src/scrcmd_c.c, via unk_02054648.h), sub_02066420 (src/field/overlay_01_021FFECC.c). Asm callers: overlay_01_022053EC.s (0206599C, 020659A8, 020659B8, 020659CC) and unk_02062108.s (0206642C, 02066438). The last function ends 4-aligned, so there is no trailing-pad concern. Suggested includes: global.h, map_object.h, player_avatar.h, field_system.h, follow_mon.h, metatile_behavior.h, unk_02054648.h, unk_0205FD20.h, overlay_01.h, overlay_01_021F1348.h, assert.h, and unk_020658D4.h for the two existing prototypes. Do NOT include overlay_01_021FFECC.h.",
+   "oracle": {
+    "functions": {
+     "sub_02065900": {
+      "widths": [
+       {
+        "base": "r4",
+        "confidence": "high",
+        "evidence": "L54: ldrb r2, [r4]",
+        "kind": "load-width",
+        "offset": "#0",
+        "verdict": "u8"
+       }
+      ]
+     },
+     "sub_02065938": {
+      "widths": [
+       {
+        "base": "r4",
+        "confidence": "high",
+        "evidence": "L81: ldrb r2, [r4]",
+        "kind": "load-width",
+        "offset": "#0",
+        "verdict": "u8"
+       }
+      ]
+     },
+     "sub_02065968": {
+      "widths": [
+       {
+        "base": "r4",
+        "confidence": "high",
+        "evidence": "L108: ldrb r2, [r4]",
+        "kind": "load-width",
+        "offset": "#0",
+        "verdict": "u8"
+       }
+      ]
+     },
+     "sub_0206599C": {
+      "widths": [
+       {
+        "base": "r0",
+        "confidence": "high",
+        "evidence": "L132: ldrb r0, [r0, #3]",
+        "kind": "load-width",
+        "offset": "#3",
+        "verdict": "u8"
+       }
+      ]
+     },
+     "sub_020659A8": {
+      "widths": [
+       {
+        "base": "r0",
+        "confidence": "high",
+        "evidence": "L141: ldrh r0, [r0, #0xa]",
+        "kind": "load-width",
+        "offset": "#0xa",
+        "verdict": "u16"
+       }
+      ]
+     },
+     "sub_020659B8": {
+      "widths": [
+       {
+        "base": "r0",
+        "confidence": "high",
+        "evidence": "L152: ldrh r2, [r0, #0xa]",
+        "kind": "load-width",
+        "offset": "#0xa",
+        "verdict": "u16"
+       },
+       {
+        "base": "r0",
+        "confidence": "high",
+        "evidence": "L157: strh r1, [r0, #0xa]",
+        "kind": "store-width",
+        "offset": "#0xa",
+        "verdict": "u16"
+       }
+      ]
+     },
+     "sub_020659CC": {
+      "widths": [
+       {
+        "base": "r6",
+        "confidence": "high",
+        "evidence": "L185: strb r1, [r6]",
+        "kind": "store-width",
+        "offset": "#0",
+        "verdict": "u8"
+       }
+      ]
+     },
+     "sub_02065A4C": {
+      "widths": [
+       {
+        "confidence": "high",
+        "evidence": "L299: lsl r1, r1, #0x18 ; L301: lsr r1, r1, #0x18",
+        "kind": "truncation-pair",
+        "register": "r1",
+        "verdict": "u8"
+       },
+       {
+        "base": "r6",
+        "confidence": "high",
+        "evidence": "L262: strb r0, [r6]",
+        "kind": "store-width",
+        "offset": "#0",
+        "verdict": "u8"
+       },
+       {
+        "base": "r6",
+        "confidence": "high",
+        "evidence": "L267: ldrh r0, [r6, #0xa]",
+        "kind": "load-width",
+        "offset": "#0xa",
+        "verdict": "u16"
+       }
+      ]
+     },
+     "sub_02065B70": {
+      "widths": [
+       {
+        "base": "r4",
+        "confidence": "high",
+        "evidence": "L398: ldrb r0, [r4]",
+        "kind": "load-width",
+        "offset": "#0",
+        "verdict": "u8"
+       },
+       {
+        "base": "r4",
+        "confidence": "high",
+        "evidence": "L400: strb r0, [r4]",
+        "kind": "store-width",
+        "offset": "#0",
+        "verdict": "u8"
+       }
+      ]
+     },
+     "sub_02065BE8": {
+      "widths": [
+       {
+        "base": "r4",
+        "confidence": "high",
+        "evidence": "L431: ldrb r0, [r4]",
+        "kind": "load-width",
+        "offset": "#0",
+        "verdict": "u8"
+       },
+       {
+        "base": "r4",
+        "confidence": "high",
+        "evidence": "L433: strb r0, [r4]",
+        "kind": "store-width",
+        "offset": "#0",
+        "verdict": "u8"
+       }
+      ]
+     },
+     "sub_02065C2C": {
+      "widths": [
+       {
+        "base": "r4",
+        "confidence": "high",
+        "evidence": "L453: strb r0, [r4]",
+        "kind": "store-width",
+        "offset": "#0",
+        "verdict": "u8"
+       }
+      ]
+     },
+     "sub_02065C48": {
+      "signedness": [
+       {
+        "branch": "blo",
+        "confidence": "high",
+        "evidence": "L471: cmp r0, #2  =>  L472: blo _02065C78",
+        "register": "r0",
+        "verdict": "unsigned"
+       }
+      ],
+      "widths": [
+       {
+        "base": "r4",
+        "confidence": "high",
+        "evidence": "L467: ldrb r0, [r4, #2]",
+        "kind": "load-width",
+        "offset": "#2",
+        "verdict": "u8"
+       },
+       {
+        "base": "r4",
+        "confidence": "high",
+        "evidence": "L469: strb r0, [r4, #2]",
+        "kind": "store-width",
+        "offset": "#2",
+        "verdict": "u8"
+       },
+       {
+        "base": "r4",
+        "confidence": "high",
+        "evidence": "L476: strb r0, [r4]",
+        "kind": "store-width",
+        "offset": "#0",
+        "verdict": "u8"
+       },
+       {
+        "base": "r4",
+        "confidence": "high",
+        "evidence": "L477: strb r0, [r4, #3]",
+        "kind": "store-width",
+        "offset": "#3",
+        "verdict": "u8"
+       },
+       {
+        "base": "r4",
+        "confidence": "high",
+        "evidence": "L478: ldrh r2, [r4, #0xa]",
+        "kind": "load-width",
+        "offset": "#0xa",
+        "verdict": "u16"
+       },
+       {
+        "base": "r4",
+        "confidence": "high",
+        "evidence": "L481: strh r2, [r4, #0xa]",
+        "kind": "store-width",
+        "offset": "#0xa",
+        "verdict": "u16"
+       },
+       {
+        "base": "r4",
+        "confidence": "high",
+        "evidence": "L490: ldrb r0, [r4, #3]",
+        "kind": "load-width",
+        "offset": "#3",
+        "verdict": "u8"
+       }
+      ]
+     },
+     "sub_02065C90": {
+      "widths": [
+       {
+        "base": "r5",
+        "confidence": "high",
+        "evidence": "L516: strb r0, [r5]",
+        "kind": "store-width",
+        "offset": "#0",
+        "verdict": "u8"
+       }
+      ]
+     },
+     "sub_02065CD0": {
+      "widths": [
+       {
+        "base": "r4",
+        "confidence": "high",
+        "evidence": "L539: strb r0, [r4, #1]",
+        "kind": "store-width",
+        "offset": "#1",
+        "verdict": "u8"
+       },
+       {
+        "base": "r4",
+        "confidence": "high",
+        "evidence": "L542: ldrb r0, [r4, #1]",
+        "kind": "load-width",
+        "offset": "#1",
+        "verdict": "u8"
+       }
+      ]
+     },
+     "sub_02065CFC": {
+      "widths": [
+       {
+        "base": "r5",
+        "confidence": "high",
+        "evidence": "L562: strb r1, [r5, #1]",
+        "kind": "store-width",
+        "offset": "#1",
+        "verdict": "u8"
+       },
+       {
+        "base": "r5",
+        "confidence": "high",
+        "evidence": "L564: strh r0, [r5, #4]",
+        "kind": "store-width",
+        "offset": "#4",
+        "verdict": "u16"
+       },
+       {
+        "base": "r5",
+        "confidence": "high",
+        "evidence": "L567: strh r0, [r5, #6]",
+        "kind": "store-width",
+        "offset": "#6",
+        "verdict": "u16"
+       },
+       {
+        "base": "r5",
+        "confidence": "high",
+        "evidence": "L569: strh r0, [r5, #8]",
+        "kind": "store-width",
+        "offset": "#8",
+        "verdict": "u16"
+       }
+      ]
+     },
+     "sub_02065D24": {
+      "widths": [
+       {
+        "base": "r5",
+        "confidence": "high",
+        "evidence": "L587: ldrsh r1, [r5, r1]",
+        "kind": "load-width",
+        "offset": "(r1)",
+        "verdict": "s16"
+       }
+      ]
+     },
+     "sub_02065D58": {
+      "widths": [
+       {
+        "base": "r5",
+        "confidence": "high",
+        "evidence": "L610: strh r0, [r5, #4]",
+        "kind": "store-width",
+        "offset": "#4",
+        "verdict": "u16"
+       },
+       {
+        "base": "r5",
+        "confidence": "high",
+        "evidence": "L613: strh r0, [r5, #6]",
+        "kind": "store-width",
+        "offset": "#6",
+        "verdict": "u16"
+       }
+      ]
+     },
+     "sub_02065D78": {
+      "signedness": [
+       {
+        "branch": "bhi",
+        "confidence": "high",
+        "evidence": "L628: cmp r1, #3  =>  L629: bhi _02065DB2",
+        "register": "r1",
+        "verdict": "unsigned"
+       }
+      ],
+      "widths": [
+       {
+        "confidence": "high",
+        "evidence": "L633: lsl r1, r1, #0x10 ; L634: asr r1, r1, #0x10",
+        "kind": "truncation-pair",
+        "register": "r1",
+        "verdict": "s16"
+       },
+       {
+        "base": "r1",
+        "confidence": "high",
+        "evidence": "L632: ldrh r1, [r1, #6]",
+        "kind": "load-width",
+        "offset": "#6",
+        "verdict": "u16"
+       }
+      ]
+     },
+     "sub_02065DB4": {
+      "signedness": [
+       {
+        "branch": "bhi",
+        "confidence": "high",
+        "evidence": "L665: cmp r1, #3  =>  L666: bhi _02065DF0",
+        "register": "r1",
+        "verdict": "unsigned"
+       }
+      ],
+      "widths": [
+       {
+        "confidence": "high",
+        "evidence": "L670: lsl r1, r1, #0x10 ; L671: asr r1, r1, #0x10",
+        "kind": "truncation-pair",
+        "register": "r1",
+        "verdict": "s16"
+       },
+       {
+        "base": "r1",
+        "confidence": "high",
+        "evidence": "L669: ldrh r1, [r1, #6]",
+        "kind": "load-width",
+        "offset": "#6",
+        "verdict": "u16"
+       }
+      ]
+     },
+     "sub_02065DF4": {
+      "widths": [
+       {
+        "confidence": "high",
+        "evidence": "L751: lsl r0, r0, #0x10 ; L752: lsr r0, r0, #0x10",
+        "kind": "truncation-pair",
+        "register": "r0",
+        "verdict": "u16"
+       },
+       {
+        "confidence": "high",
+        "evidence": "L772: lsl r1, r1, #0x18 ; L774: lsr r1, r1, #0x18",
+        "kind": "truncation-pair",
+        "register": "r1",
+        "verdict": "u8"
+       },
+       {
+        "confidence": "high",
+        "evidence": "L791: lsl r0, r0, #0x10 ; L792: lsr r0, r0, #0x10",
+        "kind": "truncation-pair",
+        "register": "r0",
+        "verdict": "u16"
+       },
+       {
+        "confidence": "high",
+        "evidence": "L821: lsl r1, r1, #0x18 ; L823: lsr r1, r1, #0x18",
+        "kind": "truncation-pair",
+        "register": "r1",
+        "verdict": "u8"
+       },
+       {
+        "base": "r4",
+        "confidence": "high",
+        "evidence": "L754: ldrh r1, [r4, #0xa]",
+        "kind": "load-width",
+        "offset": "#0xa",
+        "verdict": "u16"
+       },
+       {
+        "base": "r4",
+        "confidence": "high",
+        "evidence": "L760: strh r0, [r4, #0xa]",
+        "kind": "store-width",
+        "offset": "#0xa",
+        "verdict": "u16"
+       },
+       {
+        "base": "r4",
+        "confidence": "high",
+        "evidence": "L767: strb r0, [r4, #2]",
+        "kind": "store-width",
+        "offset": "#2",
+        "verdict": "u8"
+       },
+       {
+        "base": "r4",
+        "confidence": "high",
+        "evidence": "L768: strb r0, [r4, #3]",
+        "kind": "store-width",
+        "offset": "#3",
+        "verdict": "u8"
+       },
+       {
+        "base": "r4",
+        "confidence": "high",
+        "evidence": "L837: strb r0, [r4]",
+        "kind": "store-width",
+        "offset": "#0",
+        "verdict": "u8"
+       }
+      ]
+     },
+     "sub_02065FFC": {
+      "widths": [
+       {
+        "base": "r4",
+        "confidence": "high",
+        "evidence": "L948: strb r0, [r4, #1]",
+        "kind": "store-width",
+        "offset": "#1",
+        "verdict": "u8"
+       }
+      ]
+     },
+     "sub_02066024": {
+      "widths": [
+       {
+        "base": "r4",
+        "confidence": "high",
+        "evidence": "L965: ldrb r2, [r4]",
+        "kind": "load-width",
+        "offset": "#0",
+        "verdict": "u8"
+       }
+      ]
+     },
+     "sub_02066058": {
+      "widths": [
+       {
+        "base": "r0",
+        "confidence": "high",
+        "evidence": "L990: strb r1, [r0, #1]",
+        "kind": "store-width",
+        "offset": "#1",
+        "verdict": "u8"
+       }
+      ]
+     },
+     "sub_02066064": {
+      "widths": [
+       {
+        "base": "r4",
+        "confidence": "high",
+        "evidence": "L1014: ldrb r0, [r4]",
+        "kind": "load-width",
+        "offset": "#0",
+        "verdict": "u8"
+       },
+       {
+        "base": "r4",
+        "confidence": "high",
+        "evidence": "L1016: strb r0, [r4]",
+        "kind": "store-width",
+        "offset": "#0",
+        "verdict": "u8"
+       }
+      ]
+     },
+     "sub_020660A0": {
+      "widths": [
+       {
+        "base": "r4",
+        "confidence": "high",
+        "evidence": "L1038: strb r0, [r4]",
+        "kind": "store-width",
+        "offset": "#0",
+        "verdict": "u8"
+       }
+      ]
+     },
+     "sub_020660C0": {
+      "signedness": [
+       {
+        "branch": "bhi",
+        "confidence": "high",
+        "evidence": "L1062: cmp r1, #8  =>  L1063: bhi _02066148",
+        "register": "r1",
+        "verdict": "unsigned"
+       }
+      ],
+      "widths": [
+       {
+        "confidence": "high",
+        "evidence": "L1067: lsl r1, r1, #0x10 ; L1068: asr r1, r1, #0x10",
+        "kind": "truncation-pair",
+        "register": "r1",
+        "verdict": "s16"
+       },
+       {
+        "base": "r1",
+        "confidence": "high",
+        "evidence": "L1066: ldrh r1, [r1, #6]",
+        "kind": "load-width",
+        "offset": "#6",
+        "verdict": "u16"
+       }
+      ]
+     },
+     "sub_02066150": {
+      "widths": [
+       {
+        "base": "r0",
+        "confidence": "high",
+        "evidence": "L1151: ldrb r0, [r0, #1]",
+        "kind": "load-width",
+        "offset": "#1",
+        "verdict": "u8"
+       },
+       {
+        "base": "r1",
+        "confidence": "high",
+        "evidence": "L1173: strb r0, [r1, #1]",
+        "kind": "store-width",
+        "offset": "#1",
+        "verdict": "u8"
+       }
+      ]
+     },
+     "sub_020661CC": {
+      "widths": [
+       {
+        "base": "r5",
+        "confidence": "high",
+        "evidence": "L1184: strb r0, [r5, #1]",
+        "kind": "store-width",
+        "offset": "#1",
+        "verdict": "u8"
+       },
+       {
+        "base": "r5",
+        "confidence": "high",
+        "evidence": "L1187: strh r0, [r5, #2]",
+        "kind": "store-width",
+        "offset": "#2",
+        "verdict": "u16"
+       },
+       {
+        "base": "r5",
+        "confidence": "high",
+        "evidence": "L1190: strh r0, [r5, #4]",
+        "kind": "store-width",
+        "offset": "#4",
+        "verdict": "u16"
+       },
+       {
+        "base": "r5",
+        "confidence": "high",
+        "evidence": "L1192: strh r0, [r5, #6]",
+        "kind": "store-width",
+        "offset": "#6",
+        "verdict": "u16"
+       }
+      ]
+     },
+     "sub_020662C4": {
+      "widths": [
+       {
+        "base": "r0",
+        "confidence": "high",
+        "evidence": "L1309: strb r5, [r0, #1]",
+        "kind": "store-width",
+        "offset": "#1",
+        "verdict": "u8"
+       }
+      ]
+     },
+     "sub_0206633C": {
+      "widths": [
+       {
+        "base": "r4",
+        "confidence": "high",
+        "evidence": "L1379: ldrb r2, [r4]",
+        "kind": "load-width",
+        "offset": "#0",
+        "verdict": "u8"
+       }
+      ]
+     },
+     "sub_02066370": {
+      "widths": [
+       {
+        "base": "r5",
+        "confidence": "high",
+        "evidence": "L1411: strb r1, [r5]",
+        "kind": "store-width",
+        "offset": "#0",
+        "verdict": "u8"
+       },
+       {
+        "base": "r5",
+        "confidence": "high",
+        "evidence": "L1414: ldrb r0, [r5, #2]",
+        "kind": "load-width",
+        "offset": "#2",
+        "verdict": "u8"
+       }
+      ]
+     },
+     "sub_020663B4": {
+      "widths": [
+       {
+        "base": "r4",
+        "confidence": "high",
+        "evidence": "L1442: ldrb r1, [r4, #2]",
+        "kind": "load-width",
+        "offset": "#2",
+        "verdict": "u8"
+       },
+       {
+        "base": "r4",
+        "confidence": "high",
+        "evidence": "L1446: ldrb r1, [r4, #1]",
+        "kind": "load-width",
+        "offset": "#1",
+        "verdict": "u8"
+       },
+       {
+        "base": "r4",
+        "confidence": "high",
+        "evidence": "L1456: ldrb r0, [r4]",
+        "kind": "load-width",
+        "offset": "#0",
+        "verdict": "u8"
+       },
+       {
+        "base": "r4",
+        "confidence": "high",
+        "evidence": "L1458: strb r0, [r4]",
+        "kind": "store-width",
+        "offset": "#0",
+        "verdict": "u8"
+       }
+      ]
+     },
+     "sub_020663E4": {
+      "widths": [
+       {
+        "base": "r4",
+        "confidence": "high",
+        "evidence": "L1467: ldrb r1, [r4, #2]",
+        "kind": "load-width",
+        "offset": "#2",
+        "verdict": "u8"
+       },
+       {
+        "base": "r4",
+        "confidence": "high",
+        "evidence": "L1478: ldrb r1, [r4, #1]",
+        "kind": "load-width",
+        "offset": "#1",
+        "verdict": "u8"
+       }
+      ]
+     },
+     "sub_02066438": {
+      "widths": [
+       {
+        "base": "r0",
+        "confidence": "high",
+        "evidence": "L1517: strb r1, [r0, #2]",
+        "kind": "store-width",
+        "offset": "#2",
+        "verdict": "u8"
+       }
+      ]
+     },
+     "sub_02066444": {
+      "signedness": [
+       {
+        "branch": "blo",
+        "confidence": "high",
+        "evidence": "L1558: cmp r1, #4  =>  L1559: blo _02066472",
+        "register": "r1",
+        "verdict": "unsigned"
+       },
+       {
+        "branch": "blo",
+        "confidence": "high",
+        "evidence": "L1574: cmp r2, #4  =>  L1575: blo _0206648E",
+        "register": "r2",
+        "verdict": "unsigned"
+       },
+       {
+        "branch": "blo",
+        "confidence": "high",
+        "evidence": "L1590: cmp r2, #4  =>  L1591: blo _020664AA",
+        "register": "r2",
+        "verdict": "unsigned"
+       }
+      ],
+      "widths": [
+       {
+        "confidence": "high",
+        "evidence": "L1556: lsl r0, r0, #0x18 ; L1557: lsr r1, r0, #0x18",
+        "kind": "truncation-pair",
+        "register": "r0",
+        "verdict": "u8"
+       },
+       {
+        "confidence": "high",
+        "evidence": "L1572: lsl r0, r0, #0x18 ; L1573: lsr r2, r0, #0x18",
+        "kind": "truncation-pair",
+        "register": "r0",
+        "verdict": "u8"
+       },
+       {
+        "confidence": "high",
+        "evidence": "L1588: lsl r0, r0, #0x18 ; L1589: lsr r2, r0, #0x18",
+        "kind": "truncation-pair",
+        "register": "r0",
+        "verdict": "u8"
+       }
+      ]
+     },
+     "sub_020664D8": {
+      "signedness": [
+       {
+        "branch": "bhi",
+        "confidence": "high",
+        "evidence": "L1650: cmp r0, #1  =>  L1651: bhi _02066596",
+        "register": "r0",
+        "verdict": "unsigned"
+       }
+      ],
+      "widths": [
+       {
+        "confidence": "high",
+        "evidence": "L1620: lsl r0, r6, #0x18 ; L1621: lsr r0, r0, #0x18",
+        "kind": "truncation-pair",
+        "register": "r0",
+        "verdict": "u8"
+       },
+       {
+        "confidence": "high",
+        "evidence": "L1630: lsl r0, r6, #0x18 ; L1631: lsr r0, r0, #0x18",
+        "kind": "truncation-pair",
+        "register": "r0",
+        "verdict": "u8"
+       },
+       {
+        "confidence": "high",
+        "evidence": "L1645: lsl r0, r0, #0x18 ; L1646: lsr r0, r0, #0x18",
+        "kind": "truncation-pair",
+        "register": "r0",
+        "verdict": "u8"
+       },
+       {
+        "confidence": "high",
+        "evidence": "L1648: lsl r0, r0, #0x18 ; L1649: lsr r0, r0, #0x18",
+        "kind": "truncation-pair",
+        "register": "r0",
+        "verdict": "u8"
+       },
+       {
+        "confidence": "high",
+        "evidence": "L1661: lsl r0, r4, #0x18 ; L1662: lsr r0, r0, #0x18",
+        "kind": "truncation-pair",
+        "register": "r0",
+        "verdict": "u8"
+       },
+       {
+        "confidence": "high",
+        "evidence": "L1675: lsl r0, r4, #0x18 ; L1676: lsr r0, r0, #0x18",
+        "kind": "truncation-pair",
+        "register": "r0",
+        "verdict": "u8"
+       }
+      ]
+     }
+    },
+    "generated": "2026-09-29T20:37:21Z",
+    "summary": {
+     "copyprop_cmp": 0,
+     "dead_store": 0,
+     "exact_types": 0,
+     "functions": 36,
+     "signed": 0,
+     "unsigned": 8,
+     "widths": 80
+    },
+    "tool": "asm_oracle.py"
+   },
+   "risks": [
+    "ov01_021FFF5C: include/overlay_01_021FFECC.h says void, but this file passes its return value to sub_02066420 (bl; add r1,r0,#0). Do NOT include overlay_01_021FFECC.h; declare locally 'extern int ov01_021FFF5C(LocalMapObject *, int);'. Do not edit the header: overlay_01_021FFECC.c is matched against it.",
+    "sub_02066420: the frozen header include/unk_020658D4.h says 'int sub_02066420(LocalMapObject *, int)', and matched src/field/overlay_01_021FFECC.c uses the return value. Define it as int with no return statement (-W nomissingreturn is on). The asm leaves r0 = the sub_0205F394 result.",
+    "IPA header discipline: include/unk_020658D4.h is included by src/scrcmd_c.c and src/field/overlay_01_021FFECC.c, and include/unk_02054648.h (which declares sub_020659CC) is included by ~15 matched files. Do NOT add the new exports to either header. Add local prototypes in the .c (MWCC -W error needs prototypes for non-static definitions), or use a split unk_020658D4_internal.h.",
+    "Exports without any C prototype that need local prototypes: sub_020658D4, 02065900, 02065938, 02065968, 02065998, 0206599C, 020659A8, 020659B8, 02065FFC, 02066024, 02066054, 02066058, 0206630C, 02066318, 02066324, 02066330, 0206633C, 02066360, 02066370, 0206642C, 02066438. All other functions are not in .public, so make them static.",
+    "Rodata (0x88 bytes, 10 objects) is already size-ascending (8,8,12,12,16x6), but the 16-byte tie order mixes local-array templates and fn tables (3F4 array, 404/414/424 tables, 434/444 arrays). The safest recipe is ONE 'static const struct { ... } sRodata' in address order, with typedef struct {u32 v[4];} wrappers and VecFx32 members struct-copied into locals, plus #define aliases. Verify with nm -n and chiri pkg -- compare; objdiff is blind to fn-ptr rodata order.",
+    "Inline jump tables: sub_02065D78 and sub_02065DB4 (cases 0x58-0x5B, default returns the switched value). sub_020660C0 (type 0..8) needs an explicit case 0 so the table starts at 0. objdiff may report a false SIZE mismatch on these functions.",
+    "Bitfield at data+0xA: bit0 is read with lsl31/lsr31 and bits1-2 with lsl29/lsr30. Use a u16 bitfield struct; manual masks fold to and/orr and change the codegen.",
+    "sub_02065DF4: the (u16) narrow of the sub_02066444 result before the 2-bit field insert needs a matching return type or cast. The (u8) casts on PlayerAvatar_GetFacingDirection and on mv for sub_02069E28/E50 are explicit because the follow_mon.h prototypes are frozen (sub_02069E28 takes u32 but the caller narrows).",
+    "Enum casts are required (-W noimplicitconv): MapObjectFlagBits for 0x10 (UNK4), 0x20 (UNK5), 0x1840 (MOVEMENT_PAUSED|UNK11|UNK12), 1<<20 (UNK20), and ACTIVE=1 for the GetNextObjectWithFlagFromIndex flag.",
+    "Discarded call results (FieldSystem_GetPlayerAvatar in sub_02065D78 and DB4; four coordinate getters in sub_02065FBC) must be bare statements; -W all -W error rejects unused locals.",
+    "sub_02066444 and ov01_0220542C (overlay_01_022053EC.s) share one shape; the stack slot order of the three local arrays (first copied goes to sp+0x20) may need declaration-order tuning."
+   ],
+   "sweep_output": "sweep/out/unk_020658D4.json"
+  },
   "asm/unk_02069660.s": {
    "notes": "Small (~0x140 bytes), self-contained 3D model resource manager: load NSBMD from open NARC (sub_020696C4), bind tex/pltt to VRAM on next VBlank via one-shot SysTask (sub_02069714 -> sub_02069700 -> sub_020696E8), teardown (sub_02069784). No .rodata/.data/.bss. Pool constants only: sub_02069700 ptr + 0xFFFF (sub_02069714), NNS_GfdDefaultFuncFreeTexVram/PlttVram addresses (sub_02069744). Callers in decompiled C: src/field/overlay_01_021FFECC.c:44 (sub_02069784). Sibling file asm/unk_0206979C.s (sub_02069978, sub_020697DC) uses the same struct; analysis of asm/overlay_01_021F1348.s ov01_021F19F4/ov01_021F1A18 confirms the 6-arg shape for both sub_020696C4 and sub_020697DC.",
    "risks": [
@@ -34387,11 +35254,12 @@
    "sweep_output": "sweep/out/unk_02097B78.json"
   }
  },
- "generated": "2026-09-29T20:17:23Z",
+ "generated": "2026-09-29T20:37:21Z",
  "signature_conflicts": [
   "DestroySysTaskAndEnvironment",
   "GridInputHandler_GetNextInput",
   "Heap_AllocAtEnd",
+  "MapObject_ForceSetHeldMovement",
   "String_Delete",
   "String_New",
   "_s32_div_f",
@@ -34497,6 +35365,8 @@
   "sub_0205C174",
   "sub_0205C1F0",
   "sub_0205C268",
+  "sub_02061200",
+  "sub_0206234C",
   "sub_02068DA8"
  ],
  "structs": {
@@ -35734,6 +36604,162 @@
    },
    "sources": [
     "asm/overlay_80_0222AEF8.s"
+   ]
+  },
+  "FieldSystem.followMon (existing FollowMon at FieldSystem+0xE4, include/field_system.h)": {
+   "fields": {
+    "0x100": [
+     {
+      "meaning": "followMon.unk1C: follow sub-state 0/1/2/3",
+      "source": "asm/unk_020658D4.s",
+      "width": 4
+     }
+    ],
+    "0xe8": [
+     {
+      "meaning": "followMon.unk4: pending player movement cmd (0x58..0x5B mapped to 0x10..0x13)",
+      "source": "asm/unk_020658D4.s",
+      "width": 4
+     }
+    ],
+    "0xec": [
+     {
+      "meaning": "followMon.unk8: target x",
+      "source": "asm/unk_020658D4.s",
+      "width": 4
+     }
+    ],
+    "0xf0": [
+     {
+      "meaning": "followMon.unkC: target z",
+      "source": "asm/unk_020658D4.s",
+      "width": 4
+     }
+    ]
+   },
+   "size_guesses": {
+    "asm/unk_020658D4.s": "0x20"
+   },
+   "sources": [
+    "asm/unk_020658D4.s"
+   ]
+  },
+  "FollowMoveData (per-object movement scratch via sub_0205F394, family A: sub_020658D4/02065900/38/68)": {
+   "fields": {
+    "0x0": [
+     {
+      "meaning": "u8 state (index into _020FE404/414/424)",
+      "source": "asm/unk_020658D4.s",
+      "width": 1
+     }
+    ],
+    "0x1": [
+     {
+      "meaning": "u8 active/initialized",
+      "source": "asm/unk_020658D4.s",
+      "width": 1
+     }
+    ],
+    "0x2": [
+     {
+      "meaning": "u8 unk2 repeat counter",
+      "source": "asm/unk_020658D4.s",
+      "width": 1
+     }
+    ],
+    "0x3": [
+     {
+      "meaning": "u8 unk3 tick counter (sub_0206599C)",
+      "source": "asm/unk_020658D4.s",
+      "width": 1
+     }
+    ],
+    "0x4": [
+     {
+      "meaning": "s16 player x (ldrsh)",
+      "source": "asm/unk_020658D4.s",
+      "width": 2
+     }
+    ],
+    "0x6": [
+     {
+      "meaning": "s16 player z",
+      "source": "asm/unk_020658D4.s",
+      "width": 2
+     }
+    ],
+    "0x8": [
+     {
+      "meaning": "s16/u16 unk8 = 0xFF",
+      "source": "asm/unk_020658D4.s",
+      "width": 2
+     }
+    ],
+    "0xa": [
+     {
+      "meaning": "u16 bitfield: unkA_0:1 (flag, sub_020659B8), unkA_1:2 (speed class 1..3, sub_020659A8), rest:13",
+      "source": "asm/unk_020658D4.s",
+      "width": 2
+     }
+    ]
+   },
+   "size_guesses": {
+    "asm/unk_020658D4.s": "0xC (sub_0205F370(obj, 0xC)); the scratch blob is at most 16 bytes and is memcpy'd in map_object.c save/restore"
+   },
+   "sources": [
+    "asm/unk_020658D4.s"
+   ]
+  },
+  "FollowObjData (family B: sub_02065FFC/02066024)": {
+   "fields": {
+    "0x0": [
+     {
+      "meaning": "u8 state (index into _020FE3D4)",
+      "source": "asm/unk_020658D4.s",
+      "width": 1
+     }
+    ],
+    "0x1": [
+     {
+      "meaning": "u8 active",
+      "source": "asm/unk_020658D4.s",
+      "width": 1
+     }
+    ],
+    "0x2": [
+     {
+      "meaning": "s16 target x",
+      "source": "asm/unk_020658D4.s",
+      "width": 2
+     }
+    ],
+    "0x4": [
+     {
+      "meaning": "s16 target z",
+      "source": "asm/unk_020658D4.s",
+      "width": 2
+     }
+    ],
+    "0x6": [
+     {
+      "meaning": "s16 unk6 = 0xFF",
+      "source": "asm/unk_020658D4.s",
+      "width": 2
+     }
+    ],
+    "0x8": [
+     {
+      "meaning": "LocalMapObject *target",
+      "source": "asm/unk_020658D4.s",
+      "width": 4
+     }
+    ]
+   },
+   "size_guesses": {
+    "asm/unk_020658D4.s": "0xC"
+   },
+   "sources": [
+    "asm/unk_020658D4.s"
    ]
   },
   "FrontierMon (0x38)": {
@@ -39266,6 +40292,44 @@
    },
    "sources": [
     "asm/unk_0203BA5C.s"
+   ]
+  },
+  "SpriteEffData (family C: sub_020662C4/0206633C/02066360/02066370)": {
+   "fields": {
+    "0x0": [
+     {
+      "meaning": "u8 state (index into _020FE3CC)",
+      "source": "asm/unk_020658D4.s",
+      "width": 1
+     }
+    ],
+    "0x1": [
+     {
+      "meaning": "u8 variant 0..3, passed as a1 to ov01_021FFF5C",
+      "source": "asm/unk_020658D4.s",
+      "width": 1
+     }
+    ],
+    "0x2": [
+     {
+      "meaning": "u8 disable flag (set by sub_02066438)",
+      "source": "asm/unk_020658D4.s",
+      "width": 1
+     }
+    ],
+    "0x4": [
+     {
+      "meaning": "int/void* effect handle (sub_02066420/sub_0206642C)",
+      "source": "asm/unk_020658D4.s",
+      "width": 4
+     }
+    ]
+   },
+   "size_guesses": {
+    "asm/unk_020658D4.s": "0x8 (sub_0205F370(obj, 8))"
+   },
+   "sources": [
+    "asm/unk_020658D4.s"
    ]
   },
   "SpriteWork (AppWork->0x34)": {
@@ -45869,7 +46933,8 @@
   },
   "FieldSystem_GetPlayerAvatar": {
    "callers": [
-    "asm/unk_02061284.s"
+    "asm/unk_02061284.s",
+    "asm/unk_020658D4.s"
    ],
    "header": "include/player_avatar.h",
    "known_prototype": "PlayerAvatar *FieldSystem_GetPlayerAvatar(FieldSystem *fieldSystem)",
@@ -46256,6 +47321,7 @@
     "asm/unk_0203BA5C.s",
     "asm/unk_02056680.s",
     "asm/unk_02061284.s",
+    "asm/unk_020658D4.s",
     "asm/unk_02069660.s",
     "asm/unk_02078DD8.s",
     "asm/unk_020863F4.s"
@@ -46923,7 +47989,8 @@
   },
   "GetDeltaXByFacingDirection": {
    "callers": [
-    "asm/unk_02061284.s"
+    "asm/unk_02061284.s",
+    "asm/unk_020658D4.s"
    ],
    "header": "include/unk_0205FD20.h",
    "known_prototype": "int GetDeltaXByFacingDirection(int direction)",
@@ -46931,7 +47998,8 @@
   },
   "GetDeltaYByFacingDirection": {
    "callers": [
-    "asm/unk_02061284.s"
+    "asm/unk_02061284.s",
+    "asm/unk_020658D4.s"
    ],
    "header": "include/unk_0205FD20.h",
    "known_prototype": "int GetDeltaYByFacingDirection(int direction)",
@@ -47037,7 +48105,8 @@
   },
   "GetMetatileBehavior": {
    "callers": [
-    "asm/unk_02056680.s"
+    "asm/unk_02056680.s",
+    "asm/unk_020658D4.s"
    ],
    "header": "include/unk_02054648.h",
    "known_prototype": "u8 GetMetatileBehavior(FieldSystem *fieldSystem, int x, int z)",
@@ -48392,6 +49461,22 @@
     "asm/unk_0203BA5C.s": "u32 MapHeader_GetSpawnIdForDeathWarp(u32 mapId)"
    }
   },
+  "MapObjectManager_GetFirstActiveObjectWithMovement1": {
+   "callers": [
+    "asm/unk_020658D4.s"
+   ],
+   "header": "include/player_avatar.h",
+   "known_prototype": "LocalMapObject *MapObjectManager_GetFirstActiveObjectWithMovement1(MapObjectManager *manager)",
+   "signature_sources": {}
+  },
+  "MapObjectManager_GetNextObjectWithFlagFromIndex": {
+   "callers": [
+    "asm/unk_020658D4.s"
+   ],
+   "header": "include/map_object.h",
+   "known_prototype": "BOOL MapObjectManager_GetNextObjectWithFlagFromIndex(MapObjectManager *manager, LocalMapObject **objectDest, s32 *index, MapObjectFlagBits flag)",
+   "signature_sources": {}
+  },
   "MapObject_AreBitsSetForMovementScriptInit": {
    "callers": [
     "asm/unk_02056680.s"
@@ -48408,6 +49493,14 @@
    "known_prototype": "BOOL MapObject_CheckFlag24(LocalMapObject *object)",
    "signature_sources": {}
   },
+  "MapObject_CheckSingleMovement": {
+   "callers": [
+    "asm/unk_020658D4.s"
+   ],
+   "header": "include/map_object.h",
+   "known_prototype": "BOOL MapObject_CheckSingleMovement(LocalMapObject *object)",
+   "signature_sources": {}
+  },
   "MapObject_CheckVisible": {
    "callers": [
     "asm/overlay_01_021FDA14.s"
@@ -48418,15 +49511,25 @@
   },
   "MapObject_ClearEndMovement": {
    "callers": [
-    "asm/unk_02061284.s"
+    "asm/unk_02061284.s",
+    "asm/unk_020658D4.s"
    ],
    "header": "include/map_object.h",
    "known_prototype": "void MapObject_ClearEndMovement(LocalMapObject *object)",
    "signature_sources": {}
   },
+  "MapObject_ClearFlag18": {
+   "callers": [
+    "asm/unk_020658D4.s"
+   ],
+   "header": "include/map_object.h",
+   "known_prototype": "void MapObject_ClearFlag18(LocalMapObject *object, BOOL clear)",
+   "signature_sources": {}
+  },
   "MapObject_ClearFlagsBits": {
    "callers": [
-    "asm/unk_02061284.s"
+    "asm/unk_02061284.s",
+    "asm/unk_020658D4.s"
    ],
    "header": "include/map_object.h",
    "known_prototype": "void MapObject_ClearFlagsBits(LocalMapObject *object, MapObjectFlagBits bits)",
@@ -48442,7 +49545,8 @@
   },
   "MapObject_ClearSingleMovement": {
    "callers": [
-    "asm/unk_02061284.s"
+    "asm/unk_02061284.s",
+    "asm/unk_020658D4.s"
    ],
    "header": "include/map_object.h",
    "known_prototype": "void MapObject_ClearSingleMovement(LocalMapObject *object)",
@@ -48468,19 +49572,22 @@
   },
   "MapObject_ForceSetHeldMovement": {
    "callers": [
-    "asm/unk_02061284.s"
+    "asm/unk_02061284.s",
+    "asm/unk_020658D4.s"
    ],
    "confidence": "low",
    "signature_guess": "void MapObject_ForceSetHeldMovement(LocalMapObject *obj, int movement)",
    "signature_sources": {
-    "asm/unk_02061284.s": "void MapObject_ForceSetHeldMovement(LocalMapObject *obj, int movement)"
+    "asm/unk_02061284.s": "void MapObject_ForceSetHeldMovement(LocalMapObject *obj, int movement)",
+    "asm/unk_020658D4.s": "void MapObject_ForceSetHeldMovement(LocalMapObject *object, u32 movement)"
    }
   },
   "MapObject_GetFacingDirection": {
    "callers": [
     "asm/overlay_01_021FDA14.s",
     "asm/overlay_01_022031C0.s",
-    "asm/unk_02061284.s"
+    "asm/unk_02061284.s",
+    "asm/unk_020658D4.s"
    ],
    "header": "include/map_object.h",
    "known_prototype": "u32 MapObject_GetFacingDirection(LocalMapObject *object)",
@@ -48489,7 +49596,8 @@
   "MapObject_GetFieldSystem": {
    "callers": [
     "asm/overlay_01_021FDA14.s",
-    "asm/unk_02061284.s"
+    "asm/unk_02061284.s",
+    "asm/unk_020658D4.s"
    ],
    "header": "include/map_object.h",
    "known_prototype": "FieldSystem *MapObject_GetFieldSystem(LocalMapObject *object)",
@@ -48497,7 +49605,8 @@
   },
   "MapObject_GetFlagsBitsMask": {
    "callers": [
-    "asm/unk_02061284.s"
+    "asm/unk_02061284.s",
+    "asm/unk_020658D4.s"
    ],
    "header": "include/map_object.h",
    "known_prototype": "u32 MapObject_GetFlagsBitsMask(LocalMapObject *object, MapObjectFlagBits bits)",
@@ -48538,7 +49647,8 @@
   },
   "MapObject_GetManager": {
    "callers": [
-    "asm/overlay_01_021FDA14.s"
+    "asm/overlay_01_021FDA14.s",
+    "asm/unk_020658D4.s"
    ],
    "header": "include/map_object.h",
    "known_prototype": "MapObjectManager *MapObject_GetManager(LocalMapObject *object)",
@@ -48547,7 +49657,8 @@
   "MapObject_GetMapID": {
    "callers": [
     "asm/overlay_01_021FDA14.s",
-    "asm/overlay_01_022031C0.s"
+    "asm/overlay_01_022031C0.s",
+    "asm/unk_020658D4.s"
    ],
    "header": "include/map_object.h",
    "known_prototype": "u32 MapObject_GetMapID(LocalMapObject *object)",
@@ -48559,6 +49670,14 @@
    ],
    "header": "include/map_object.h",
    "known_prototype": "u32 MapObject_GetMovement(LocalMapObject *object)",
+   "signature_sources": {}
+  },
+  "MapObject_GetMovementCommand": {
+   "callers": [
+    "asm/unk_020658D4.s"
+   ],
+   "header": "include/map_object.h",
+   "known_prototype": "u32 MapObject_GetMovementCommand(LocalMapObject *object)",
    "signature_sources": {}
   },
   "MapObject_GetNextFacingDirection": {
@@ -48585,6 +49704,22 @@
    "known_prototype": "u32 MapObject_GetPositionVectorYCoordUInt(LocalMapObject *object)",
    "signature_sources": {}
   },
+  "MapObject_GetPreviousXCoord": {
+   "callers": [
+    "asm/unk_020658D4.s"
+   ],
+   "header": "include/map_object.h",
+   "known_prototype": "u32 MapObject_GetPreviousXCoord(LocalMapObject *object)",
+   "signature_sources": {}
+  },
+  "MapObject_GetPreviousZCoord": {
+   "callers": [
+    "asm/unk_020658D4.s"
+   ],
+   "header": "include/map_object.h",
+   "known_prototype": "u32 MapObject_GetPreviousZCoord(LocalMapObject *object)",
+   "signature_sources": {}
+  },
   "MapObject_GetPriorityPlusValue": {
    "callers": [
     "asm/overlay_01_021FDA14.s",
@@ -48605,7 +49740,8 @@
   },
   "MapObject_GetType": {
    "callers": [
-    "asm/unk_02061284.s"
+    "asm/unk_02061284.s",
+    "asm/unk_020658D4.s"
    ],
    "header": "include/map_object.h",
    "known_prototype": "u32 MapObject_GetType(LocalMapObject *object)",
@@ -48613,7 +49749,8 @@
   },
   "MapObject_GetXCoord": {
    "callers": [
-    "asm/unk_02061284.s"
+    "asm/unk_02061284.s",
+    "asm/unk_020658D4.s"
    ],
    "header": "include/map_object.h",
    "known_prototype": "u32 MapObject_GetXCoord(LocalMapObject *object)",
@@ -48627,6 +49764,14 @@
    "known_prototype": "s32 MapObject_GetXRange(LocalMapObject *object)",
    "signature_sources": {}
   },
+  "MapObject_GetYCoord": {
+   "callers": [
+    "asm/unk_020658D4.s"
+   ],
+   "header": "include/map_object.h",
+   "known_prototype": "s32 MapObject_GetYCoord(LocalMapObject *object)",
+   "signature_sources": {}
+  },
   "MapObject_GetYRange": {
    "callers": [
     "asm/unk_02061284.s"
@@ -48637,7 +49782,8 @@
   },
   "MapObject_GetZCoord": {
    "callers": [
-    "asm/unk_02061284.s"
+    "asm/unk_02061284.s",
+    "asm/unk_020658D4.s"
    ],
    "header": "include/map_object.h",
    "known_prototype": "u32 MapObject_GetZCoord(LocalMapObject *object)",
@@ -48667,9 +49813,18 @@
    "known_prototype": "void MapObject_SetFacingDirectionDirect(LocalMapObject *object, u32 direction)",
    "signature_sources": {}
   },
+  "MapObject_SetFacingVector": {
+   "callers": [
+    "asm/unk_020658D4.s"
+   ],
+   "header": "include/map_object.h",
+   "known_prototype": "void MapObject_SetFacingVector(LocalMapObject *object, VecFx32 *facingVector)",
+   "signature_sources": {}
+  },
   "MapObject_SetFlagsBits": {
    "callers": [
-    "asm/unk_02061284.s"
+    "asm/unk_02061284.s",
+    "asm/unk_020658D4.s"
    ],
    "header": "include/map_object.h",
    "known_prototype": "void MapObject_SetFlagsBits(LocalMapObject *object, MapObjectFlagBits bits)",
@@ -48681,6 +49836,22 @@
    ],
    "header": "include/unk_02062108.h",
    "known_prototype": "void MapObject_SetHeldMovement(LocalMapObject *obj, u32 a1)",
+   "signature_sources": {}
+  },
+  "MapObject_SetMovementCommand": {
+   "callers": [
+    "asm/unk_020658D4.s"
+   ],
+   "header": "include/map_object.h",
+   "known_prototype": "void MapObject_SetMovementCommand(LocalMapObject *object, u32 command)",
+   "signature_sources": {}
+  },
+  "MapObject_SetMovementStep": {
+   "callers": [
+    "asm/unk_020658D4.s"
+   ],
+   "header": "include/map_object.h",
+   "known_prototype": "void MapObject_SetMovementStep(LocalMapObject *object, u32 step)",
    "signature_sources": {}
   },
   "MapObject_SetNextFacingDirection": {
@@ -48699,6 +49870,14 @@
    "known_prototype": "void MapObject_SetOrQueueFacing(LocalMapObject *object, u32 direction)",
    "signature_sources": {}
   },
+  "MapObject_SetPositionFromXYZAndDirection": {
+   "callers": [
+    "asm/unk_020658D4.s"
+   ],
+   "header": "include/map_object.h",
+   "known_prototype": "void MapObject_SetPositionFromXYZAndDirection(LocalMapObject *object, u32 x, u32 y, u32 z, u32 direction)",
+   "signature_sources": {}
+  },
   "MapObject_SetPositionVector": {
    "callers": [
     "asm/overlay_01_022031C0.s",
@@ -48710,7 +49889,8 @@
   },
   "MapObject_SetSingleMovement": {
    "callers": [
-    "asm/unk_02061284.s"
+    "asm/unk_02061284.s",
+    "asm/unk_020658D4.s"
    ],
    "header": "include/map_object.h",
    "known_prototype": "void MapObject_SetSingleMovement(LocalMapObject *object)",
@@ -48722,6 +49902,14 @@
    ],
    "header": "include/map_object.h",
    "known_prototype": "void MapObject_SetVisible(LocalMapObject *object, BOOL set)",
+   "signature_sources": {}
+  },
+  "MapObject_TestFlagsBits": {
+   "callers": [
+    "asm/unk_020658D4.s"
+   ],
+   "header": "include/map_object.h",
+   "known_prototype": "BOOL MapObject_TestFlagsBits(LocalMapObject *object, MapObjectFlagBits bits)",
    "signature_sources": {}
   },
   "MenuInputStateMgr_SetState": {
@@ -48778,6 +49966,22 @@
    ],
    "header": "include/text.h",
    "known_prototype": "see include/text.h",
+   "signature_sources": {}
+  },
+  "MetatileBehavior_IsTallGrass": {
+   "callers": [
+    "asm/unk_020658D4.s"
+   ],
+   "header": "include/metatile_behavior.h",
+   "known_prototype": "BOOL MetatileBehavior_IsTallGrass(u8 tile)",
+   "signature_sources": {}
+  },
+  "MetatileBehavior_IsVeryTallGrass": {
+   "callers": [
+    "asm/unk_020658D4.s"
+   ],
+   "header": "include/metatile_behavior.h",
+   "known_prototype": "BOOL MetatileBehavior_IsVeryTallGrass(u8 tile)",
    "signature_sources": {}
   },
   "Mon_GetBoxMon": {
@@ -49983,6 +51187,14 @@
     "asm/overlay_14_021EAF08.s": "void PlaySE(u16 seId)"
    }
   },
+  "PlayerAvatar_CheckFlag6": {
+   "callers": [
+    "asm/unk_020658D4.s"
+   ],
+   "header": "include/player_avatar.h",
+   "known_prototype": "BOOL PlayerAvatar_CheckFlag6(PlayerAvatar *avatar)",
+   "signature_sources": {}
+  },
   "PlayerAvatar_CopyPositionVector": {
    "callers": [
     "asm/unk_02056680.s"
@@ -49993,7 +51205,8 @@
   },
   "PlayerAvatar_GetFacingDirection": {
    "callers": [
-    "asm/unk_02056680.s"
+    "asm/unk_02056680.s",
+    "asm/unk_020658D4.s"
    ],
    "header": "include/player_avatar.h",
    "known_prototype": "u32 PlayerAvatar_GetFacingDirection(PlayerAvatar *avatar)",
@@ -50003,10 +51216,19 @@
    "callers": [
     "asm/overlay_01_021FDA14.s",
     "asm/unk_02056680.s",
-    "asm/unk_02061284.s"
+    "asm/unk_02061284.s",
+    "asm/unk_020658D4.s"
    ],
    "header": "include/player_avatar.h",
    "known_prototype": "LocalMapObject *PlayerAvatar_GetMapObject(PlayerAvatar *avatar)",
+   "signature_sources": {}
+  },
+  "PlayerAvatar_GetPlayerMoveState": {
+   "callers": [
+    "asm/unk_020658D4.s"
+   ],
+   "header": "include/player_avatar.h",
+   "known_prototype": "u32 PlayerAvatar_GetPlayerMoveState(PlayerAvatar *avatar)",
    "signature_sources": {}
   },
   "PlayerAvatar_GetPositionVector": {
@@ -50017,10 +51239,27 @@
    "known_prototype": "VecFx32 *PlayerAvatar_GetPositionVector(PlayerAvatar *avatar)",
    "signature_sources": {}
   },
+  "PlayerAvatar_GetPreviousXCoord": {
+   "callers": [
+    "asm/unk_020658D4.s"
+   ],
+   "header": "include/player_avatar.h",
+   "known_prototype": "u32 PlayerAvatar_GetPreviousXCoord(PlayerAvatar *avatar)",
+   "signature_sources": {}
+  },
+  "PlayerAvatar_GetPreviousZCoord": {
+   "callers": [
+    "asm/unk_020658D4.s"
+   ],
+   "header": "include/player_avatar.h",
+   "known_prototype": "u32 PlayerAvatar_GetPreviousZCoord(PlayerAvatar *avatar)",
+   "signature_sources": {}
+  },
   "PlayerAvatar_GetXCoord": {
    "callers": [
     "asm/unk_02056680.s",
-    "asm/unk_02061284.s"
+    "asm/unk_02061284.s",
+    "asm/unk_020658D4.s"
    ],
    "header": "include/player_avatar.h",
    "known_prototype": "u32 PlayerAvatar_GetXCoord(PlayerAvatar *avatar)",
@@ -50029,7 +51268,8 @@
   "PlayerAvatar_GetZCoord": {
    "callers": [
     "asm/unk_02056680.s",
-    "asm/unk_02061284.s"
+    "asm/unk_02061284.s",
+    "asm/unk_020658D4.s"
    ],
    "confidence": "low",
    "header": "include/player_avatar.h",
@@ -53384,7 +54624,8 @@
   "ov01_021F1640": {
    "callers": [
     "asm/overlay_01_021FDA14.s",
-    "asm/overlay_01_022031C0.s"
+    "asm/overlay_01_022031C0.s",
+    "asm/unk_020658D4.s"
    ],
    "confidence": "low",
    "header": "include/overlay_01_021F1348.h",
@@ -55786,6 +57027,50 @@
     "asm/overlay_01_021FDA14.s": "static void ov01_021FE190(void *param0, UnkOv01_021FDA14_WorkA *work)"
    }
   },
+  "ov01_021FF070": {
+   "callers": [
+    "asm/unk_020658D4.s"
+   ],
+   "confidence": "low",
+   "signature_guess": "void *ov01_021FF070(LocalMapObject *obj, int a1)",
+   "signature_sources": {
+    "asm/unk_020658D4.s": "void *ov01_021FF070(LocalMapObject *obj, int a1)"
+   }
+  },
+  "ov01_021FF0E4": {
+   "callers": [
+    "asm/unk_020658D4.s"
+   ],
+   "header": "include/overlay_01.h",
+   "known_prototype": "void ov01_021FF0E4(LocalMapObject *object, int a1, int x, int y, int a4)",
+   "signature_sources": {}
+  },
+  "ov01_021FF8F0": {
+   "callers": [
+    "asm/unk_020658D4.s"
+   ],
+   "confidence": "low",
+   "signature_guess": "void *ov01_021FF8F0(LocalMapObject *mapObject, int a1)",
+   "signature_sources": {
+    "asm/unk_020658D4.s": "void *ov01_021FF8F0(LocalMapObject *mapObject, int a1)"
+   }
+  },
+  "ov01_021FF964": {
+   "callers": [
+    "asm/unk_020658D4.s"
+   ],
+   "header": "include/overlay_01.h",
+   "known_prototype": "void ov01_021FF964(LocalMapObject *object, int a1, int x, int y, int a4)",
+   "signature_sources": {}
+  },
+  "ov01_021FFF5C": {
+   "callers": [
+    "asm/unk_020658D4.s"
+   ],
+   "header": "include/overlay_01_021FFECC.h (return type WRONG for this file: the result is used; declare locally as int, see risks)",
+   "known_prototype": "void ov01_021FFF5C(LocalMapObject *mapObject, int a1)",
+   "signature_sources": {}
+  },
   "ov01_022031C0": {
    "callers": [],
    "confidence": "high",
@@ -55895,9 +57180,13 @@
    }
   },
   "ov01_0220329C": {
-   "callers": [],
+   "callers": [
+    "asm/unk_020658D4.s"
+   ],
    "confidence": "high",
    "defined_in": "asm/overlay_01_022031C0.s",
+   "header": "include/overlay_01.h and include/overlay_01_022031C0.h",
+   "known_prototype": "UnkStruct_0206793C *ov01_0220329C(LocalMapObject *obj, int a1)",
    "mode": "thumb",
    "notes": [
     "[asm/overlay_01_022031C0.s] exported, size 0xc0. The prototype is FROZEN in include/overlay_01_022031C0.h (included by src/unk_02055BF0.c) and include/overlay_01.h, so keep it exactly. Stack layout: Data at sp+8 (0x24 bytes), pos at sp+0x2c. Body: fx = ov01_021F146C(obj); MapObject_CopyPositionVector(obj, &data.pos); data.pos.z += 6<<12 (FX32_CONST(6)); data.unk1C = 0; data.unk1E = 0; data.unk20 = -1; data.fxMgr = fx; data.fieldSystem = ov01_021F1468(fx); data.manager = ov01_021F1450(fx, 0x11); data.mapObject = obj; MapObject_CopyPositionVector(obj, &pos); prio = MapObject_GetPriorityPlusValue(obj, 2); then an if/else-if chain (not a switch: each test is cmp;bne next;body) with one tail call each: a1==0 -> return ov01_021F1620(fx, &tmpl ov01_022094DC, &pos, 1, &data, prio); a1==1 -> ov01_022094F0; a1==2 -> ov01_02209504; else -> ov01_022094C8. Every branch must `return` the ov01_021F1620 result, so the local extern of ov01_021F1620 needs a pointer return (siblings use void*). Callers: src/unk_02055BF0.c and src/field_warp_tasks.c (a1=1); asm/unk_020658D4.s x3; asm/overlay_01_022053EC.s x3 bl plus one `ldr r3,=ov01_0220329C` tail jump."
@@ -56330,6 +57619,16 @@
     "asm/overlay_01_021E8744.s": "int ov01_02204834(void *a0)"
    }
   },
+  "ov01_0220542C": {
+   "callers": [
+    "asm/unk_020658D4.s"
+   ],
+   "confidence": "low",
+   "signature_guess": "u32 ov01_0220542C(int followType, u32 movement)",
+   "signature_sources": {
+    "asm/unk_020658D4.s": "u32 ov01_0220542C(int followType, u32 movement)"
+   }
+  },
   "ov01_0220553C": {
    "callers": [
     "asm/overlay_01_021FDA14.s"
@@ -56340,10 +57639,19 @@
   },
   "ov01_022055DC": {
    "callers": [
-    "asm/overlay_01_022031C0.s"
+    "asm/overlay_01_022031C0.s",
+    "asm/unk_020658D4.s"
    ],
-   "header": "include/overlay_01.h (overlay_02 uses a local BOOL extern; the asm returns a u8-narrowed value)",
+   "header": "include/overlay_01.h",
    "known_prototype": "u8 ov01_022055DC(LocalMapObject *object)",
+   "signature_sources": {}
+  },
+  "ov01_02205604": {
+   "callers": [
+    "asm/unk_020658D4.s"
+   ],
+   "header": "include/overlay_01.h",
+   "known_prototype": "void ov01_02205604(LocalMapObject *object, int *p_x, int *p_y)",
    "signature_sources": {}
   },
   "ov01_02205790": {
@@ -89024,7 +90332,8 @@
   "sub_0205F328": {
    "callers": [
     "asm/unk_02056680.s",
-    "asm/unk_02061284.s"
+    "asm/unk_02061284.s",
+    "asm/unk_020658D4.s"
    ],
    "header": "include/map_object.h",
    "known_prototype": "void sub_0205F328(LocalMapObject *object, u32 param1)",
@@ -89032,7 +90341,8 @@
   },
   "sub_0205F370": {
    "callers": [
-    "asm/unk_02061284.s"
+    "asm/unk_02061284.s",
+    "asm/unk_020658D4.s"
    ],
    "header": "include/map_object.h",
    "known_prototype": "u8 *sub_0205F370(LocalMapObject *object, s32 size)",
@@ -89040,7 +90350,8 @@
   },
   "sub_0205F394": {
    "callers": [
-    "asm/unk_02061284.s"
+    "asm/unk_02061284.s",
+    "asm/unk_020658D4.s"
    ],
    "header": "include/map_object.h",
    "known_prototype": "u8 *sub_0205F394(LocalMapObject *object)",
@@ -89052,6 +90363,14 @@
    ],
    "header": "include/map_object.h",
    "known_prototype": "void sub_0205F484(LocalMapObject *object)",
+   "signature_sources": {}
+  },
+  "sub_0205F73C": {
+   "callers": [
+    "asm/unk_020658D4.s"
+   ],
+   "header": "include/map_object.h",
+   "known_prototype": "BOOL sub_0205F73C(LocalMapObject *object)",
    "signature_sources": {}
   },
   "sub_0205FC94": {
@@ -89090,12 +90409,14 @@
   },
   "sub_02061200": {
    "callers": [
-    "asm/unk_02061284.s"
+    "asm/unk_02061284.s",
+    "asm/unk_020658D4.s"
    ],
    "confidence": "low",
    "signature_guess": "int sub_02061200(int x, int z, int px, int pz)",
    "signature_sources": {
-    "asm/unk_02061284.s": "int sub_02061200(int x, int z, int px, int pz)"
+    "asm/unk_02061284.s": "int sub_02061200(int x, int z, int px, int pz)",
+    "asm/unk_020658D4.s": "int sub_02061200(int x, int z, int prevX, int prevZ)"
    }
   },
   "sub_0206121C": {
@@ -90253,22 +91574,860 @@
   },
   "sub_0206234C": {
    "callers": [
-    "asm/unk_02061284.s"
+    "asm/unk_02061284.s",
+    "asm/unk_020658D4.s"
    ],
    "confidence": "low",
    "signature_guess": "int sub_0206234C(int dir, int cmd)",
    "signature_sources": {
-    "asm/unk_02061284.s": "int sub_0206234C(int dir, int cmd)"
+    "asm/unk_02061284.s": "int sub_0206234C(int dir, int cmd)",
+    "asm/unk_020658D4.s": "int sub_0206234C(int dir, int movement)"
+   }
+  },
+  "sub_020623C8": {
+   "callers": [
+    "asm/unk_020658D4.s"
+   ],
+   "confidence": "low",
+   "signature_guess": "BOOL sub_020623C8(int movement)",
+   "signature_sources": {
+    "asm/unk_020658D4.s": "BOOL sub_020623C8(int movement)"
+   }
+  },
+  "sub_020623D8": {
+   "callers": [
+    "asm/unk_020658D4.s"
+   ],
+   "confidence": "low",
+   "signature_guess": "int sub_020623D8(int dir)",
+   "signature_sources": {
+    "asm/unk_020658D4.s": "int sub_020623D8(int dir)"
    }
   },
   "sub_02062428": {
    "callers": [
-    "asm/unk_02061284.s"
+    "asm/unk_02061284.s",
+    "asm/unk_020658D4.s"
    ],
    "confidence": "low",
    "signature_guess": "BOOL sub_02062428(LocalMapObject *obj)",
    "signature_sources": {
-    "asm/unk_02061284.s": "BOOL sub_02062428(LocalMapObject *obj)"
+    "asm/unk_02061284.s": "BOOL sub_02062428(LocalMapObject *obj)",
+    "asm/unk_020658D4.s": "BOOL sub_02062428(LocalMapObject *obj)"
+   }
+  },
+  "sub_02064518": {
+   "callers": [
+    "asm/unk_020658D4.s"
+   ],
+   "confidence": "low",
+   "signature_guess": "u32 sub_02064518(LocalMapObject *obj)",
+   "signature_sources": {
+    "asm/unk_020658D4.s": "u32 sub_02064518(LocalMapObject *obj)"
+   }
+  },
+  "sub_020658D4": {
+   "callers": [],
+   "confidence": "high",
+   "defined_in": "asm/unk_020658D4.s",
+   "mode": "thumb",
+   "notes": [
+    "[asm/unk_020658D4.s] Size 0x2C. Init callback in the movement-type tables in unk_data_020FCBD8.s ({id, init, update, delete, restore}). data = (FollowMoveData *)sub_0205F370(obj, 0xC) (the header returns u8*, so cast). Then sub_02065CD0(obj, data); sub_0205F328(obj, 0); MapObject_ClearSingleMovement(obj); MapObject_ClearFlag18(obj, FALSE)."
+   ],
+   "signature_guess": "void sub_020658D4(LocalMapObject *obj)",
+   "signature_sources": {
+    "asm/unk_020658D4.s": "void sub_020658D4(LocalMapObject *obj)"
+   }
+  },
+  "sub_02065900": {
+   "callers": [],
+   "confidence": "high",
+   "defined_in": "asm/unk_020658D4.s",
+   "mode": "thumb",
+   "notes": [
+    "[asm/unk_020658D4.s] Size 0x38. Update callback. data = sub_0205F394(obj); if (sub_02065CD0(obj, data)) { MapObject_ClearFlag18(obj, FALSE); while (_020FE404[data->state](obj, data) == TRUE) {} }. The table base is hoisted to r6 before the loop."
+   ],
+   "signature_guess": "void sub_02065900(LocalMapObject *obj)",
+   "signature_sources": {
+    "asm/unk_020658D4.s": "void sub_02065900(LocalMapObject *obj)"
+   }
+  },
+  "sub_02065938": {
+   "callers": [],
+   "confidence": "high",
+   "defined_in": "asm/unk_020658D4.s",
+   "mode": "thumb",
+   "notes": [
+    "[asm/unk_020658D4.s] Size 0x30. Same as sub_02065900 but without the ClearFlag18 call, and it uses table _020FE414."
+   ],
+   "signature_guess": "void sub_02065938(LocalMapObject *obj)",
+   "signature_sources": {
+    "asm/unk_020658D4.s": "void sub_02065938(LocalMapObject *obj)"
+   }
+  },
+  "sub_02065968": {
+   "callers": [],
+   "confidence": "high",
+   "defined_in": "asm/unk_020658D4.s",
+   "mode": "thumb",
+   "notes": [
+    "[asm/unk_020658D4.s] Size 0x30. Same as sub_02065938 but uses table _020FE424."
+   ],
+   "signature_guess": "void sub_02065968(LocalMapObject *obj)",
+   "signature_sources": {
+    "asm/unk_020658D4.s": "void sub_02065968(LocalMapObject *obj)"
+   }
+  },
+  "sub_02065998": {
+   "callers": [],
+   "confidence": "high",
+   "defined_in": "asm/unk_020658D4.s",
+   "mode": "thumb",
+   "notes": [
+    "[asm/unk_020658D4.s] Empty delete callback: bx lr."
+   ],
+   "signature_guess": "void sub_02065998(LocalMapObject *obj)",
+   "signature_sources": {
+    "asm/unk_020658D4.s": "void sub_02065998(LocalMapObject *obj)"
+   }
+  },
+  "sub_0206599C": {
+   "callers": [],
+   "confidence": "medium",
+   "defined_in": "asm/unk_020658D4.s",
+   "mode": "thumb",
+   "notes": [
+    "[asm/unk_020658D4.s] Returns ((FollowMoveData *)sub_0205F394(obj))->unk3. The only caller is ov01_022054E0 (asm), which compares the result signed (blt 0x10), so either int or u8 works. Not in any header."
+   ],
+   "signature_guess": "int sub_0206599C(LocalMapObject *obj)",
+   "signature_sources": {
+    "asm/unk_020658D4.s": "int sub_0206599C(LocalMapObject *obj)"
+   },
+   "struct_accesses": [
+    {
+     "meaning": "FollowMoveData.unk3 tick counter (ldrb)",
+     "offset": "0x3",
+     "param": 0,
+     "width": 1
+    }
+   ]
+  },
+  "sub_020659A8": {
+   "callers": [],
+   "confidence": "medium",
+   "defined_in": "asm/unk_020658D4.s",
+   "mode": "thumb",
+   "notes": [
+    "[asm/unk_020658D4.s] Returns data->unkA_1 as a 2-bit bitfield. The caller ov01_022054E0 (asm) narrows the result to u8. Not in any header."
+   ],
+   "signature_guess": "u8 sub_020659A8(LocalMapObject *obj)",
+   "signature_sources": {
+    "asm/unk_020658D4.s": "u8 sub_020659A8(LocalMapObject *obj)"
+   },
+   "struct_accesses": [
+    {
+     "meaning": "u16 bitfield bits 1-2 (lsl 29; lsr 30) = speed class 0..3",
+     "offset": "0xa",
+     "param": 0,
+     "width": 2
+    }
+   ]
+  },
+  "sub_020659B8": {
+   "callers": [],
+   "confidence": "high",
+   "defined_in": "asm/unk_020658D4.s",
+   "mode": "thumb",
+   "notes": [
+    "[asm/unk_020658D4.s] data->unkA_0 = 1. Write it through a bitfield: a manual |= 1 folds to orr without the bic. Called from overlay_01_022053EC.s (asm)."
+   ],
+   "signature_guess": "void sub_020659B8(LocalMapObject *obj)",
+   "signature_sources": {
+    "asm/unk_020658D4.s": "void sub_020659B8(LocalMapObject *obj)"
+   },
+   "struct_accesses": [
+    {
+     "meaning": "bitfield bit0 set to 1 (ldrh; bic 1; orr 1; strh)",
+     "offset": "0xa",
+     "param": 0,
+     "width": 2
+    }
+   ]
+  },
+  "sub_020659CC": {
+   "callers": [],
+   "confidence": "high",
+   "defined_in": "asm/unk_020658D4.s",
+   "mode": "thumb",
+   "notes": [
+    "[asm/unk_020658D4.s] Size 0x80. Already declared in include/unk_02054648.h as void sub_020659CC(LocalMapObject *object), and called from src/scrcmd_c.c:4572 and overlay_01_022053EC.s. Sequence: fs = MapObject_GetFieldSystem; data = sub_0205F394; ClearSingleMovement; ClearEndMovement; ClearFlagsBits(obj, MAPOBJECTFLAG_UNK5); SetMovementCommand(obj, 0xFF); SetMovementStep(obj, 0). Store order: data->state = 0; followMon.unk4 = 0; followMon.unk1C = 0; followMon.unk8 = 0; followMon.unkC = 0. Then MapObject_SetPositionFromXYZAndDirection(obj, GetX, GetY, GetZ, GetFacingDirection); the 5th argument goes on the stack. The asm comments naming these fields effectTimer/fieldSystem/duration/parentData are stale: FollowMon sits at 0xE4, so 0xE8=unk4, 0xEC=unk8, 0xF0=unkC, 0x100=unk1C."
+   ],
+   "signature_guess": "void sub_020659CC(LocalMapObject *obj)",
+   "signature_sources": {
+    "asm/unk_020658D4.s": "void sub_020659CC(LocalMapObject *obj)"
+   },
+   "struct_accesses": [
+    {
+     "meaning": "fieldSystem->followMon.unk4 = 0",
+     "offset": "fs+0xe8",
+     "param": 0,
+     "width": 4
+    },
+    {
+     "meaning": "fieldSystem->followMon.unk1C = 0",
+     "offset": "fs+0x100",
+     "param": 0,
+     "width": 4
+    },
+    {
+     "meaning": "fieldSystem->followMon.unk8 = 0",
+     "offset": "fs+0xec",
+     "param": 0,
+     "width": 4
+    },
+    {
+     "meaning": "fieldSystem->followMon.unkC = 0",
+     "offset": "fs+0xf0",
+     "param": 0,
+     "width": 4
+    }
+   ]
+  },
+  "sub_02065A4C": {
+   "callers": [],
+   "confidence": "high",
+   "defined_in": "asm/unk_020658D4.s",
+   "mode": "thumb",
+   "notes": [
+    "[asm/unk_020658D4.s] Size 0x124. State 0 handler in table _020FE404. Switch on fs->followMon.unk1C (0x100), written as an if-chain: ==1 sets it to 2 and returns FALSE; ==2 is the main body; ==3 sets it to 0 and falls to FALSE. Main body: sub_02065D58(obj, data); if (followMon.unk8 == GetX && followMon.unkC == GetZ) { unk1C = 0; data->state = 3; if (sub_02069E14(obj) && !data->unkA_0) FOLLOW_BLOCK; if (sub_020623C8(sub_02065D78(obj))) sub_02069E28(obj, (u8)PlayerAvatar_GetFacingDirection(FieldSystem_GetPlayerAvatar(fs))); return TRUE; } Otherwise: if (sub_02065DF4(obj, data) == TRUE) { if (sub_02069E14(obj)) FOLLOW_BLOCK; MapObject_SetSingleMovement(obj); followMon.unk1C = 3; return TRUE; } return FALSE. FOLLOW_BLOCK = if (sub_02069EAC(obj)) { ov01_0220329C(obj, 0); sub_02069E84(obj, 0); } else { sub_02069DC8(obj, FALSE); } sub_020664D8(obj). The same block appears in sub_02065B70, so a static inline or macro is plausible."
+   ],
+   "signature_guess": "static BOOL sub_02065A4C(LocalMapObject *obj, FollowMoveData *data)",
+   "signature_sources": {
+    "asm/unk_020658D4.s": "static BOOL sub_02065A4C(LocalMapObject *obj, FollowMoveData *data)"
+   },
+   "struct_accesses": [
+    {
+     "meaning": "state = 3",
+     "offset": "0x0",
+     "param": 1,
+     "width": 1
+    },
+    {
+     "meaning": "bit0 flag test (lsl 31; lsr 31)",
+     "offset": "0xa",
+     "param": 1,
+     "width": 2
+    }
+   ]
+  },
+  "sub_02065B70": {
+   "callers": [],
+   "confidence": "high",
+   "defined_in": "asm/unk_020658D4.s",
+   "mode": "thumb",
+   "notes": [
+    "[asm/unk_020658D4.s] Size 0x78. State 0 in _020FE414. ClearSingle; ClearEnd; if (sub_02065D24(obj, data) == TRUE) { sub_02065D58(obj, data); if (sub_02069E14(obj)) FOLLOW_BLOCK; if (sub_02065F44(obj) == TRUE) { SetSingleMovement; data->state++; return TRUE; } } return FALSE."
+   ],
+   "signature_guess": "static BOOL sub_02065B70(LocalMapObject *obj, FollowMoveData *data)",
+   "signature_sources": {
+    "asm/unk_020658D4.s": "static BOOL sub_02065B70(LocalMapObject *obj, FollowMoveData *data)"
+   }
+  },
+  "sub_02065BE8": {
+   "callers": [],
+   "confidence": "high",
+   "defined_in": "asm/unk_020658D4.s",
+   "mode": "thumb",
+   "notes": [
+    "[asm/unk_020658D4.s] Size 0x44. State 0 in _020FE424. Same shape as sub_02065B70 without the follow block, and it calls sub_02065FBC instead of sub_02065F44."
+   ],
+   "signature_guess": "static BOOL sub_02065BE8(LocalMapObject *obj, FollowMoveData *data)",
+   "signature_sources": {
+    "asm/unk_020658D4.s": "static BOOL sub_02065BE8(LocalMapObject *obj, FollowMoveData *data)"
+   }
+  },
+  "sub_02065C2C": {
+   "callers": [],
+   "confidence": "high",
+   "defined_in": "asm/unk_020658D4.s",
+   "mode": "thumb",
+   "notes": [
+    "[asm/unk_020658D4.s] State 1 in all three follow tables. if (sub_02062428(obj) == TRUE) { ClearSingleMovement; data->state = 0; } return FALSE."
+   ],
+   "signature_guess": "static BOOL sub_02065C2C(LocalMapObject *obj, FollowMoveData *data)",
+   "signature_sources": {
+    "asm/unk_020658D4.s": "static BOOL sub_02065C2C(LocalMapObject *obj, FollowMoveData *data)"
+   }
+  },
+  "sub_02065C48": {
+   "callers": [],
+   "confidence": "high",
+   "defined_in": "asm/unk_020658D4.s",
+   "mode": "thumb",
+   "notes": [
+    "[asm/unk_020658D4.s] Size 0x48. State 2. if (sub_02062428(obj) == TRUE) { data->unk2++; if (data->unk2 >= 2) { ClearSingle; data->state = 0; data->unk3 = 0; data->unkA_1 = 0; return FALSE; } MapObject_ForceSetHeldMovement(obj, sub_02069ED4(obj)); } data->unk3++; return FALSE. The early return reuses the r0=0 used for the strb."
+   ],
+   "signature_guess": "static BOOL sub_02065C48(LocalMapObject *obj, FollowMoveData *data)",
+   "signature_sources": {
+    "asm/unk_020658D4.s": "static BOOL sub_02065C48(LocalMapObject *obj, FollowMoveData *data)"
+   },
+   "struct_accesses": [
+    {
+     "meaning": "unk2 repeat counter (u8, compared >= 2 unsigned)",
+     "offset": "0x2",
+     "param": 1,
+     "width": 1
+    },
+    {
+     "meaning": "unk3 tick counter",
+     "offset": "0x3",
+     "param": 1,
+     "width": 1
+    },
+    {
+     "meaning": "bits 1-2 cleared (bic 6)",
+     "offset": "0xa",
+     "param": 1,
+     "width": 2
+    }
+   ]
+  },
+  "sub_02065C90": {
+   "callers": [],
+   "confidence": "high",
+   "defined_in": "asm/unk_020658D4.s",
+   "mode": "thumb",
+   "notes": [
+    "[asm/unk_020658D4.s] State 3. avatar = FieldSystem_GetPlayerAvatar(MapObject_GetFieldSystem(obj)); pobj = PlayerAvatar_GetMapObject(avatar); if (TestFlagsBits(pobj, MAPOBJECTFLAG_UNK4) == TRUE && TestFlagsBits(pobj, MAPOBJECTFLAG_UNK5) == TRUE) data->state = 0; if (PlayerAvatar_GetPlayerMoveState(avatar) == 3) data->state = 0; return FALSE."
+   ],
+   "signature_guess": "static BOOL sub_02065C90(LocalMapObject *obj, FollowMoveData *data)",
+   "signature_sources": {
+    "asm/unk_020658D4.s": "static BOOL sub_02065C90(LocalMapObject *obj, FollowMoveData *data)"
+   }
+  },
+  "sub_02065CD0": {
+   "callers": [
+    "asm/unk_020658D4.s"
+   ],
+   "confidence": "high",
+   "defined_in": "asm/unk_020658D4.s",
+   "mode": "thumb",
+   "notes": [
+    "[asm/unk_020658D4.s] if (MapObjectManager_GetFirstActiveObjectWithMovement1(MapObject_GetManager(obj)) == NULL) { data->unk1 = 0; return FALSE; } if (data->unk1 == 0) sub_02065CFC(obj, data); return TRUE."
+   ],
+   "signature_guess": "static BOOL sub_02065CD0(LocalMapObject *obj, FollowMoveData *data)",
+   "signature_sources": {
+    "asm/unk_020658D4.s": "static BOOL sub_02065CD0(LocalMapObject *obj, FollowMoveData *data)"
+   }
+  },
+  "sub_02065CFC": {
+   "callers": [
+    "asm/unk_020658D4.s"
+   ],
+   "confidence": "high",
+   "defined_in": "asm/unk_020658D4.s",
+   "mode": "thumb",
+   "notes": [
+    "[asm/unk_020658D4.s] avatar = ...; data->unk1 = 1 (stored before the GetX call); data->x = PlayerAvatar_GetXCoord; data->z = PlayerAvatar_GetZCoord; data->unk8 = 0xFF."
+   ],
+   "signature_guess": "static void sub_02065CFC(LocalMapObject *obj, FollowMoveData *data)",
+   "signature_sources": {
+    "asm/unk_020658D4.s": "static void sub_02065CFC(LocalMapObject *obj, FollowMoveData *data)"
+   }
+  },
+  "sub_02065D24": {
+   "callers": [
+    "asm/unk_020658D4.s"
+   ],
+   "confidence": "high",
+   "defined_in": "asm/unk_020658D4.s",
+   "mode": "thumb",
+   "notes": [
+    "[asm/unk_020658D4.s] if (avatar != NULL) { x = GetX; z = GetZ; if (x != data->x || z != data->z) return TRUE; } return FALSE. data->x and data->z are s16 (ldrsh)."
+   ],
+   "signature_guess": "static BOOL sub_02065D24(LocalMapObject *obj, FollowMoveData *data)",
+   "signature_sources": {
+    "asm/unk_020658D4.s": "static BOOL sub_02065D24(LocalMapObject *obj, FollowMoveData *data)"
+   }
+  },
+  "sub_02065D58": {
+   "callers": [
+    "asm/unk_020658D4.s"
+   ],
+   "confidence": "high",
+   "defined_in": "asm/unk_020658D4.s",
+   "mode": "thumb",
+   "notes": [
+    "[asm/unk_020658D4.s] data->x = PlayerAvatar_GetXCoord(avatar); data->z = PlayerAvatar_GetZCoord(avatar)."
+   ],
+   "signature_guess": "static void sub_02065D58(LocalMapObject *obj, FollowMoveData *data)",
+   "signature_sources": {
+    "asm/unk_020658D4.s": "static void sub_02065D58(LocalMapObject *obj, FollowMoveData *data)"
+   }
+  },
+  "sub_02065D78": {
+   "callers": [
+    "asm/unk_020658D4.s"
+   ],
+   "confidence": "medium",
+   "defined_in": "asm/unk_020658D4.s",
+   "mode": "thumb",
+   "notes": [
+    "[asm/unk_020658D4.s] fs = MapObject_GetFieldSystem(obj); FieldSystem_GetPlayerAvatar(fs) with the result DISCARDED (write it as a bare statement: -W all -W error rejects unused locals). v = fs->followMon.unk4; switch (v) { case 0x58: return 0x10; case 0x59: return 0x11; case 0x5A: return 0x12; case 0x5B: return 0x13; } return v. The default returns the input unchanged (r0 still holds it). The inline jump table is built from sub r1,#0x58 / cmp #3 / bhi."
+   ],
+   "signature_guess": "static u32 sub_02065D78(LocalMapObject *obj)",
+   "signature_sources": {
+    "asm/unk_020658D4.s": "static u32 sub_02065D78(LocalMapObject *obj)"
+   }
+  },
+  "sub_02065DB4": {
+   "callers": [
+    "asm/unk_020658D4.s"
+   ],
+   "confidence": "medium",
+   "defined_in": "asm/unk_020658D4.s",
+   "mode": "thumb",
+   "notes": [
+    "[asm/unk_020658D4.s] Same switch as sub_02065D78 but on MapObject_GetMovementCommand(PlayerAvatar_GetMapObject(FieldSystem_GetPlayerAvatar(MapObject_GetFieldSystem(obj)))). The default returns the command unchanged; callers test it against 0xFF."
+   ],
+   "signature_guess": "static u32 sub_02065DB4(LocalMapObject *obj)",
+   "signature_sources": {
+    "asm/unk_020658D4.s": "static u32 sub_02065DB4(LocalMapObject *obj)"
+   }
+  },
+  "sub_02065DF4": {
+   "callers": [
+    "asm/unk_020658D4.s"
+   ],
+   "confidence": "medium",
+   "defined_in": "asm/unk_020658D4.s",
+   "mode": "thumb",
+   "notes": [
+    "[asm/unk_020658D4.s] Size 0x150, sp frame 0x18. Stack locals: x@8, z@4, prevX@0, prevZ in r6, cmd@0x10, dir@0x14, newState@0xC. Flow: if (x == prevX && z == prevZ) return FALSE; cmd = sub_02065D78(obj); dir = sub_02061200(x, z, prevX, prevZ); ft = sub_02069EC0(obj); isRun = sub_020623C8(cmd); newState = 1. If ft != 0 and isRun: mv = ov01_0220542C(ft, sub_020623D8(ft)); data->unkA_1 = (u16)sub_02066444(mv); sub_02069E50(obj, (u8)mv); newState = 2; data->unk2 = data->unk3 = 0; sub_02069E28(obj, (u8)PlayerAvatar_GetFacingDirection(avatar)). If ft != 0 and not isRun: if (!PlayerAvatar_CheckFlag6(avatar)) return FALSE; then the same with ov01_0220542C(ft, cmd), ending with sub_02069E28(obj, 0). If ft == 0 and isRun: mv = sub_020623D8(dir); sub_02069E28(obj, (u8)facing). Else: mv = sub_0206234C(dir, cmd). Tail: MapObject_ForceSetHeldMovement(obj, mv); data->state = newState; return TRUE. mv reuses the ft register (r6), so assign the result back to the same local as ft."
+   ],
+   "signature_guess": "static BOOL sub_02065DF4(LocalMapObject *obj, FollowMoveData *data)",
+   "signature_sources": {
+    "asm/unk_020658D4.s": "static BOOL sub_02065DF4(LocalMapObject *obj, FollowMoveData *data)"
+   },
+   "struct_accesses": [
+    {
+     "meaning": "bits 1-2 = sub_02066444(mv), stored with a (u16) narrow first (lsl16/lsr16, then lsl30/lsr29)",
+     "offset": "0xa",
+     "param": 1,
+     "width": 2
+    },
+    {
+     "meaning": "= 0",
+     "offset": "0x2",
+     "param": 1,
+     "width": 1
+    },
+    {
+     "meaning": "= 0",
+     "offset": "0x3",
+     "param": 1,
+     "width": 1
+    },
+    {
+     "meaning": "state = newState (1 or 2), stored last",
+     "offset": "0x0",
+     "param": 1,
+     "width": 1
+    }
+   ]
+  },
+  "sub_02065F44": {
+   "callers": [
+    "asm/unk_020658D4.s"
+   ],
+   "confidence": "high",
+   "defined_in": "asm/unk_020658D4.s",
+   "mode": "thumb",
+   "notes": [
+    "[asm/unk_020658D4.s] Size 0x78. if (x == prevX && z == prevZ) return FALSE; cmd = sub_02065DB4(obj); dir = sub_02061200(x, z, prevX, prevZ) (dir stays live in r0 across the check); if (cmd == 0xFF) { GF_ASSERT(FALSE); return FALSE; } MapObject_ForceSetHeldMovement(obj, sub_0206234C(dir, cmd)); return TRUE."
+   ],
+   "signature_guess": "static BOOL sub_02065F44(LocalMapObject *obj)",
+   "signature_sources": {
+    "asm/unk_020658D4.s": "static BOOL sub_02065F44(LocalMapObject *obj)"
+   }
+  },
+  "sub_02065FBC": {
+   "callers": [
+    "asm/unk_020658D4.s"
+   ],
+   "confidence": "high",
+   "defined_in": "asm/unk_020658D4.s",
+   "mode": "thumb",
+   "notes": [
+    "[asm/unk_020658D4.s] Calls GetX, GetZ, PrevX and PrevZ and discards all results; write them as bare call statements (unused locals are -W error). Then cmd = sub_02065DB4(obj); if (cmd == 0xFF) return FALSE; ForceSetHeldMovement(obj, cmd); return TRUE."
+   ],
+   "signature_guess": "static BOOL sub_02065FBC(LocalMapObject *obj)",
+   "signature_sources": {
+    "asm/unk_020658D4.s": "static BOOL sub_02065FBC(LocalMapObject *obj)"
+   }
+  },
+  "sub_02065FFC": {
+   "callers": [],
+   "confidence": "high",
+   "defined_in": "asm/unk_020658D4.s",
+   "mode": "thumb",
+   "notes": [
+    "[asm/unk_020658D4.s] Init callback (table at unk_data_020FCBD8.s:515). data = (FollowObjData *)sub_0205F370(obj, 0xC); sub_02066150(obj, data); sub_0205F328(obj, 0); ClearSingleMovement; data->unk1 = 0."
+   ],
+   "signature_guess": "void sub_02065FFC(LocalMapObject *obj)",
+   "signature_sources": {
+    "asm/unk_020658D4.s": "void sub_02065FFC(LocalMapObject *obj)"
+   }
+  },
+  "sub_02066024": {
+   "callers": [],
+   "confidence": "high",
+   "defined_in": "asm/unk_020658D4.s",
+   "mode": "thumb",
+   "notes": [
+    "[asm/unk_020658D4.s] if (sub_02066150(obj, data)) while (_020FE3D4[data->state](obj, data) == TRUE) {}"
+   ],
+   "signature_guess": "void sub_02066024(LocalMapObject *obj)",
+   "signature_sources": {
+    "asm/unk_020658D4.s": "void sub_02066024(LocalMapObject *obj)"
+   }
+  },
+  "sub_02066054": {
+   "callers": [],
+   "confidence": "high",
+   "defined_in": "asm/unk_020658D4.s",
+   "mode": "thumb",
+   "notes": [
+    "[asm/unk_020658D4.s] Empty delete callback."
+   ],
+   "signature_guess": "void sub_02066054(LocalMapObject *obj)",
+   "signature_sources": {
+    "asm/unk_020658D4.s": "void sub_02066054(LocalMapObject *obj)"
+   }
+  },
+  "sub_02066058": {
+   "callers": [],
+   "confidence": "high",
+   "defined_in": "asm/unk_020658D4.s",
+   "mode": "thumb",
+   "notes": [
+    "[asm/unk_020658D4.s] Restore callback: ((FollowObjData *)sub_0205F394(obj))->unk1 = 0."
+   ],
+   "signature_guess": "void sub_02066058(LocalMapObject *obj)",
+   "signature_sources": {
+    "asm/unk_020658D4.s": "void sub_02066058(LocalMapObject *obj)"
+   }
+  },
+  "sub_02066064": {
+   "callers": [],
+   "confidence": "high",
+   "defined_in": "asm/unk_020658D4.s",
+   "mode": "thumb",
+   "notes": [
+    "[asm/unk_020658D4.s] ClearSingle; ClearEnd; if (sub_020661F0(obj, data) == TRUE && sub_0206623C(obj, data) == TRUE) { SetSingle; data->state++; return TRUE; } return FALSE."
+   ],
+   "signature_guess": "static BOOL sub_02066064(LocalMapObject *obj, FollowObjData *data)",
+   "signature_sources": {
+    "asm/unk_020658D4.s": "static BOOL sub_02066064(LocalMapObject *obj, FollowObjData *data)"
+   }
+  },
+  "sub_020660A0": {
+   "callers": [],
+   "confidence": "high",
+   "defined_in": "asm/unk_020658D4.s",
+   "mode": "thumb",
+   "notes": [
+    "[asm/unk_020658D4.s] if (sub_02062428(obj) == FALSE) return FALSE; ClearSingle; data->state = 0; return FALSE (r0 = 0 is shared with the strb)."
+   ],
+   "signature_guess": "static BOOL sub_020660A0(LocalMapObject *obj, FollowObjData *data)",
+   "signature_sources": {
+    "asm/unk_020658D4.s": "static BOOL sub_020660A0(LocalMapObject *obj, FollowObjData *data)"
+   }
+  },
+  "sub_020660C0": {
+   "callers": [],
+   "confidence": "high",
+   "defined_in": "asm/unk_020658D4.s",
+   "mode": "thumb",
+   "notes": [
+    "[asm/unk_020658D4.s] Size 0x90, frame 0xC. Existing prototype in include/unk_020658D4.h; called from src/scrcmd_c.c:1331 and 1356. Locals: int idx = 0 (sp+8, initialized FIRST, before GetType); type spilled to sp+0; mapId in r6; trainerNum = sub_02064518 in r5; mgr in r7; other at sp+4. switch (type) over 0..8 via an inline jump table: case 0 goes to the end, cases 1-8 share the search body. Write an explicit 'case 0:' plus cases 1..8, otherwise the bound becomes sub/cmp. Body: while (GetNextObjectWithFlagFromIndex(mgr, &other, &idx, MAPOBJECTFLAG_ACTIVE) == TRUE) { if (obj != other && MapObject_GetMapID(other) == mapId && sub_02064518(other) == trainerNum) return other; } return NULL."
+   ],
+   "signature_guess": "LocalMapObject *sub_020660C0(LocalMapObject *lastTalked)",
+   "signature_sources": {
+    "asm/unk_020658D4.s": "LocalMapObject *sub_020660C0(LocalMapObject *lastTalked)"
+   }
+  },
+  "sub_02066150": {
+   "callers": [
+    "asm/unk_020658D4.s"
+   ],
+   "confidence": "high",
+   "defined_in": "asm/unk_020658D4.s",
+   "mode": "thumb",
+   "notes": [
+    "[asm/unk_020658D4.s] The data pointer is spilled to sp+0. Order: mgr = GetManager; idx = 0; mapId; trainerNum. Same search loop as sub_020660C0 with no type switch. On a match: if (data->unk1 == 0) sub_020661CC(obj, data, other); return TRUE. After the loop: data->unk1 = 0; return FALSE."
+   ],
+   "signature_guess": "static BOOL sub_02066150(LocalMapObject *obj, FollowObjData *data)",
+   "signature_sources": {
+    "asm/unk_020658D4.s": "static BOOL sub_02066150(LocalMapObject *obj, FollowObjData *data)"
+   }
+  },
+  "sub_020661CC": {
+   "callers": [
+    "asm/unk_020658D4.s"
+   ],
+   "confidence": "high",
+   "defined_in": "asm/unk_020658D4.s",
+   "mode": "thumb",
+   "notes": [
+    "[asm/unk_020658D4.s] obj is unused. data->unk1 = 1; data->x = GetX(target); data->z = GetZ(target); data->unk6 = 0xFF; data->target = target."
+   ],
+   "signature_guess": "static void sub_020661CC(LocalMapObject *obj, FollowObjData *data, LocalMapObject *target)",
+   "signature_sources": {
+    "asm/unk_020658D4.s": "static void sub_020661CC(LocalMapObject *obj, FollowObjData *data, LocalMapObject *target)"
+   }
+  },
+  "sub_020661F0": {
+   "callers": [
+    "asm/unk_020658D4.s"
+   ],
+   "confidence": "high",
+   "defined_in": "asm/unk_020658D4.s",
+   "mode": "thumb",
+   "notes": [
+    "[asm/unk_020658D4.s] target = data->target is loaded first. if (x != tPrevX || z != tPrevZ) { if (MapObject_CheckSingleMovement(target) == TRUE || MapObject_GetFlagsBitsMask(target, MAPOBJECTFLAG_MOVEMENT_PAUSED | MAPOBJECTFLAG_UNK11 | MAPOBJECTFLAG_UNK12 /*0x1840*/) == 0) return TRUE; } return FALSE. The flag argument needs an enum cast."
+   ],
+   "signature_guess": "static BOOL sub_020661F0(LocalMapObject *obj, FollowObjData *data)",
+   "signature_sources": {
+    "asm/unk_020658D4.s": "static BOOL sub_020661F0(LocalMapObject *obj, FollowObjData *data)"
+   }
+  },
+  "sub_0206623C": {
+   "callers": [
+    "asm/unk_020658D4.s"
+   ],
+   "confidence": "high",
+   "defined_in": "asm/unk_020658D4.s",
+   "mode": "thumb",
+   "notes": [
+    "[asm/unk_020658D4.s] obj is spilled to sp+0. data->target is RELOADED for every call (4 separate ldr [r5,#8]), so write data->target each time and do not cache it in a local. x = GetX(obj); z = GetZ(obj); tx = GetX(target); tz = GetZ(target); tpx = PrevX(target); tpz = PrevZ(target); if (x == tx && z == tz) return FALSE; dir = sub_02061200(x, z, tpx, tpz); x += GetDeltaX(dir); z2 = z + GetDeltaY(dir); if (x != tx || z2 != tz) { ForceSetHeldMovement(obj, sub_0206234C(dir, 0xC)); return TRUE; } return FALSE."
+   ],
+   "signature_guess": "static BOOL sub_0206623C(LocalMapObject *obj, FollowObjData *data)",
+   "signature_sources": {
+    "asm/unk_020658D4.s": "static BOOL sub_0206623C(LocalMapObject *obj, FollowObjData *data)"
+   }
+  },
+  "sub_020662C4": {
+   "callers": [
+    "asm/unk_020658D4.s"
+   ],
+   "confidence": "medium",
+   "defined_in": "asm/unk_020658D4.s",
+   "mode": "thumb",
+   "notes": [
+    "[asm/unk_020658D4.s] Not in .public, so static; it is only reached through ldr=/bx tail calls from 0206630C..02066330. data = sub_0205F370(obj, 8); data->unk1 = param (stored immediately, no narrowing, so int works too); sub_0205F328(obj, 0); ClearSingle; SetFlagsBits(obj, MAPOBJECTFLAG_UNK20); VecFx32 v = _020FE3DC {0, -0x20000, 0}; MapObject_SetFacingVector(obj, &v). The copy uses ldmia/stmia plus ldr/str."
+   ],
+   "signature_guess": "static void sub_020662C4(LocalMapObject *obj, u8 param)",
+   "signature_sources": {
+    "asm/unk_020658D4.s": "static void sub_020662C4(LocalMapObject *obj, u8 param)"
+   }
+  },
+  "sub_0206630C": {
+   "callers": [],
+   "confidence": "high",
+   "defined_in": "asm/unk_020658D4.s",
+   "mode": "thumb",
+   "notes": [
+    "[asm/unk_020658D4.s] Tail call: { sub_020662C4(obj, 0); }. Init callback."
+   ],
+   "signature_guess": "void sub_0206630C(LocalMapObject *obj)",
+   "signature_sources": {
+    "asm/unk_020658D4.s": "void sub_0206630C(LocalMapObject *obj)"
+   }
+  },
+  "sub_02066318": {
+   "callers": [],
+   "confidence": "high",
+   "defined_in": "asm/unk_020658D4.s",
+   "mode": "thumb",
+   "notes": [
+    "[asm/unk_020658D4.s] sub_020662C4(obj, 1)."
+   ],
+   "signature_guess": "void sub_02066318(LocalMapObject *obj)",
+   "signature_sources": {
+    "asm/unk_020658D4.s": "void sub_02066318(LocalMapObject *obj)"
+   }
+  },
+  "sub_02066324": {
+   "callers": [],
+   "confidence": "high",
+   "defined_in": "asm/unk_020658D4.s",
+   "mode": "thumb",
+   "notes": [
+    "[asm/unk_020658D4.s] sub_020662C4(obj, 2)."
+   ],
+   "signature_guess": "void sub_02066324(LocalMapObject *obj)",
+   "signature_sources": {
+    "asm/unk_020658D4.s": "void sub_02066324(LocalMapObject *obj)"
+   }
+  },
+  "sub_02066330": {
+   "callers": [],
+   "confidence": "high",
+   "defined_in": "asm/unk_020658D4.s",
+   "mode": "thumb",
+   "notes": [
+    "[asm/unk_020658D4.s] sub_020662C4(obj, 3)."
+   ],
+   "signature_guess": "void sub_02066330(LocalMapObject *obj)",
+   "signature_sources": {
+    "asm/unk_020658D4.s": "void sub_02066330(LocalMapObject *obj)"
+   }
+  },
+  "sub_0206633C": {
+   "callers": [],
+   "confidence": "high",
+   "defined_in": "asm/unk_020658D4.s",
+   "mode": "thumb",
+   "notes": [
+    "[asm/unk_020658D4.s] Unguarded: data = sub_0205F394(obj); while (_020FE3CC[data->state](obj, data) == TRUE) {}. The table ldr is scheduled before the data move."
+   ],
+   "signature_guess": "void sub_0206633C(LocalMapObject *obj)",
+   "signature_sources": {
+    "asm/unk_020658D4.s": "void sub_0206633C(LocalMapObject *obj)"
+   }
+  },
+  "sub_02066360": {
+   "callers": [],
+   "confidence": "high",
+   "defined_in": "asm/unk_020658D4.s",
+   "mode": "thumb",
+   "notes": [
+    "[asm/unk_020658D4.s] Delete callback: h = sub_0206642C(obj); if (h != 0) ov01_021F1640(h). The header ov01_021F1640 takes int, so cast or type h as int."
+   ],
+   "signature_guess": "void sub_02066360(LocalMapObject *obj)",
+   "signature_sources": {
+    "asm/unk_020658D4.s": "void sub_02066360(LocalMapObject *obj)"
+   }
+  },
+  "sub_02066370": {
+   "callers": [],
+   "confidence": "high",
+   "defined_in": "asm/unk_020658D4.s",
+   "mode": "thumb",
+   "notes": [
+    "[asm/unk_020658D4.s] Restore callback. data->state = 0; sub_02066420(obj, 0); if (data->unk2 == 0) { VecFx32 v = _020FE3E8; SetFacingVector(obj, &v); SetFlagsBits(obj, MAPOBJECTFLAG_UNK20); }"
+   ],
+   "signature_guess": "void sub_02066370(LocalMapObject *obj)",
+   "signature_sources": {
+    "asm/unk_020658D4.s": "void sub_02066370(LocalMapObject *obj)"
+   }
+  },
+  "sub_020663B4": {
+   "callers": [],
+   "confidence": "high",
+   "defined_in": "asm/unk_020658D4.s",
+   "mode": "thumb",
+   "notes": [
+    "[asm/unk_020658D4.s] if (data->unk2 == 0) sub_02066420(obj, ov01_021FFF5C(obj, data->unk1)); ClearSingle; ClearEnd; data->state++; return FALSE. The return value of ov01_021FFF5C IS USED, even though include/overlay_01_021FFECC.h declares it void; see risks."
+   ],
+   "signature_guess": "static BOOL sub_020663B4(LocalMapObject *obj, SpriteEffData *data)",
+   "signature_sources": {
+    "asm/unk_020658D4.s": "static BOOL sub_020663B4(LocalMapObject *obj, SpriteEffData *data)"
+   }
+  },
+  "sub_020663E4": {
+   "callers": [],
+   "confidence": "high",
+   "defined_in": "asm/unk_020658D4.s",
+   "mode": "thumb",
+   "notes": [
+    "[asm/unk_020658D4.s] if (data->unk2 == 0) { if (sub_0206642C(obj) == 0 && sub_0205F73C(obj) == TRUE) sub_02066420(obj, ov01_021FFF5C(obj, data->unk1)); SetFlagsBits(obj, MAPOBJECTFLAG_UNK20); } return FALSE."
+   ],
+   "signature_guess": "static BOOL sub_020663E4(LocalMapObject *obj, SpriteEffData *data)",
+   "signature_sources": {
+    "asm/unk_020658D4.s": "static BOOL sub_020663E4(LocalMapObject *obj, SpriteEffData *data)"
+   }
+  },
+  "sub_02066420": {
+   "callers": [
+    "asm/unk_020658D4.s"
+   ],
+   "confidence": "high",
+   "defined_in": "asm/unk_020658D4.s",
+   "mode": "thumb",
+   "notes": [
+    "[asm/unk_020658D4.s] The body stores and has NO return statement: r0 is left holding the sub_0205F394 pointer. The frozen header include/unk_020658D4.h declares an int return, and src/field/overlay_01_021FFECC.c:93 does 'return sub_02066420(mapObject, 0);', so keep int and omit the return (-W nomissingreturn is set in common.mk)."
+   ],
+   "signature_guess": "int sub_02066420(LocalMapObject *mapObject, int a1)",
+   "signature_sources": {
+    "asm/unk_020658D4.s": "int sub_02066420(LocalMapObject *mapObject, int a1)"
+   },
+   "struct_accesses": [
+    {
+     "meaning": "SpriteEffData.effect handle = a1",
+     "offset": "0x4",
+     "param": 0,
+     "width": 4
+    }
+   ]
+  },
+  "sub_0206642C": {
+   "callers": [
+    "asm/unk_020658D4.s"
+   ],
+   "confidence": "medium",
+   "defined_in": "asm/unk_020658D4.s",
+   "mode": "thumb",
+   "notes": [
+    "[asm/unk_020658D4.s] Returns data->unk4 (effect handle). Callers: this file and unk_02062108.s:2529 (asm, passes the result to sub_02068B48). void* also works; int avoids casts for ov01_021F1640(int) and sub_02066420(.., int)."
+   ],
+   "signature_guess": "int sub_0206642C(LocalMapObject *obj)",
+   "signature_sources": {
+    "asm/unk_020658D4.s": "int sub_0206642C(LocalMapObject *obj)"
+   }
+  },
+  "sub_02066438": {
+   "callers": [],
+   "confidence": "high",
+   "defined_in": "asm/unk_020658D4.s",
+   "mode": "thumb",
+   "notes": [
+    "[asm/unk_020658D4.s] data->unk2 = 1. Called from unk_02062108.s:2597 (asm)."
+   ],
+   "signature_guess": "void sub_02066438(LocalMapObject *obj)",
+   "signature_sources": {
+    "asm/unk_020658D4.s": "void sub_02066438(LocalMapObject *obj)"
+   }
+  },
+  "sub_02066444": {
+   "callers": [
+    "asm/unk_020658D4.s"
+   ],
+   "confidence": "medium",
+   "defined_in": "asm/unk_020658D4.s",
+   "mode": "thumb",
+   "notes": [
+    "[asm/unk_020658D4.s] Size 0x94, frame 0x30. Three local u32[4] copies: sp+0x20 = _020FE3F4 {12..15} -> return 3; sp+0x10 = _020FE434 {16..19} -> return 2; sp+0x00 = _020FE444 {20..23} -> return 1; otherwise GF_ASSERT(FALSE); return 0. Loop counters are u8 (lsl24/lsr24; cmp 4; blo). Loop 1 uses r2 as the base (captured before the copies), loops 2 and 3 use r1. The shape is identical to ov01_0220542C (overlay_01_022053EC.s), so use it as a sibling template. The caller narrows the result to u16 before the bitfield insert: either return u16 with an explicit (u16) cast at the use site, or return int and cast (u16)."
+   ],
+   "signature_guess": "static int sub_02066444(u32 movement)",
+   "signature_sources": {
+    "asm/unk_020658D4.s": "static int sub_02066444(u32 movement)"
+   }
+  },
+  "sub_020664D8": {
+   "callers": [
+    "asm/unk_020658D4.s"
+   ],
+   "confidence": "high",
+   "defined_in": "asm/unk_020658D4.s",
+   "mode": "thumb",
+   "notes": [
+    "[asm/unk_020658D4.s] Size 0xC0. x@sp+8 and z@sp+4 are addressable (&x, &z are passed to ov01_02205604 later), so reuse the same int locals. metatile = GetMetatileBehavior(fs, x, z) is kept in an int local; it is narrowed to u8 at each use. if (IsTallGrass(m) == TRUE) ov01_021FF070(obj, 0); else if (IsVeryTallGrass(m) == TRUE) ov01_021FF8F0(obj, 0). if (ov01_022055DC(obj)) { u8 dir = MapObject_GetFacingDirection(obj); if (dir == 2 || dir == 3) (range-optimized to (u8)(dir-2) <= 1) { ov01_02205604(obj, &x, &z); m = GetMetatileBehavior(fs, x, z); if (IsTallGrass == TRUE) { ov01_021FF0E4(obj, 0, x, z, 1); return; } else if (IsVeryTallGrass == TRUE) ov01_021FF964(obj, 0, x, z, 1); } }. This is nearly the same shape as the matched ScrCmd_FacePlayer in src/scrcmd_c.c:1479-1501."
+   ],
+   "signature_guess": "static void sub_020664D8(LocalMapObject *obj)",
+   "signature_sources": {
+    "asm/unk_020658D4.s": "static void sub_020664D8(LocalMapObject *obj)"
    }
   },
   "sub_02068D18": {
@@ -90531,10 +92690,67 @@
   "sub_02069DC8": {
    "callers": [
     "asm/overlay_01_022031C0.s",
-    "asm/unk_02056680.s"
+    "asm/unk_02056680.s",
+    "asm/unk_020658D4.s"
    ],
    "header": "include/follow_mon.h",
    "known_prototype": "void sub_02069DC8(LocalMapObject *mapObject, BOOL enableBit)",
+   "signature_sources": {}
+  },
+  "sub_02069E14": {
+   "callers": [
+    "asm/unk_020658D4.s"
+   ],
+   "header": "include/follow_mon.h",
+   "known_prototype": "u8 sub_02069E14(LocalMapObject *mapObject)",
+   "signature_sources": {}
+  },
+  "sub_02069E28": {
+   "callers": [
+    "asm/unk_020658D4.s"
+   ],
+   "header": "include/follow_mon.h",
+   "known_prototype": "void sub_02069E28(LocalMapObject *mapObject, u32 a1)",
+   "signature_sources": {}
+  },
+  "sub_02069E50": {
+   "callers": [
+    "asm/unk_020658D4.s"
+   ],
+   "header": "include/follow_mon.h",
+   "known_prototype": "void sub_02069E50(LocalMapObject *mapObject, u8 a1)",
+   "signature_sources": {}
+  },
+  "sub_02069E84": {
+   "callers": [
+    "asm/unk_020658D4.s"
+   ],
+   "header": "include/follow_mon.h",
+   "known_prototype": "void sub_02069E84(LocalMapObject *mapObject, u8 a1)",
+   "signature_sources": {}
+  },
+  "sub_02069EAC": {
+   "callers": [
+    "asm/unk_020658D4.s"
+   ],
+   "header": "include/follow_mon.h",
+   "known_prototype": "u8 sub_02069EAC(LocalMapObject *mapObject)",
+   "signature_sources": {}
+  },
+  "sub_02069EC0": {
+   "callers": [
+    "asm/unk_020658D4.s"
+   ],
+   "header": "include/follow_mon.h",
+   "known_prototype": "u8 sub_02069EC0(LocalMapObject *mapObject)",
+   "signature_sources": {}
+  },
+  "sub_02069ED4": {
+   "callers": [
+    "asm/unk_020658D4.s"
+   ],
+   "header": "include/follow_mon.h",
+   "known_prototype": "u8 sub_02069ED4(LocalMapObject *mapObject)",
    "signature_sources": {}
   },
   "sub_02072A98": {

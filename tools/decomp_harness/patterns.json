@@ -1775,6 +1775,12 @@
       "category": "codegen",
       "title": "`lsl rX,#28; lsr rX,#16` on a u8 field = (u16)(field << 12), NOT (field & 0xF) << 12",
       "body": "MWCC folds the u16 narrowing of a left shift into one lsl/lsr pair: `u16 pal = window->paletteNum << 12;` (paletteNum u8) compiles to `ldrb r0,[r4,#9]; lsl r0,#28; lsr r5,r0,#16`. Writing `(paletteNum & 0xF) << 12` into a u16 adds an extra lsl#16/lsr#16 (4 bytes). General rule: lsl #(32-n-k); lsr #(32-n) = narrow-to-n-bits of (x << k). Seen overlay_14_021F58B8 ov14_021F60BC."
+    },
+    {
+      "id": "split-decl-from-assign-for-regs-vs-load-order",
+      "category": "codegen",
+      "title": "Split cached-pointer declarations from their assignments when regs and load order disagree",
+      "body": "When a function caches 5+ ctx fields in locals and the retail register/stack-slot assignment and the retail load order imply DIFFERENT orderings, no ordering of `T *x = ctx->x;` init-declarations matches (they tie both to one order). Declare the locals WITHOUT initializers in the order that reproduces the register/spill-slot assignment (regs follow declaration order), then assign them in a separate block in the order that reproduces the load schedule and the base-offset register choice (the first-assigned field decides which offset is materialized as the base, e.g. 0x2F0 vs 0x2F4). Recipe: sweep all 120 init-declaration orders first to find the register order (look for SIZE fixed / fewest diffs), then sweep assignment orders with those declarations fixed. Seen in unk_020863F4 sub_02086490 (decl sys,narc,bg,pltt,mgr; assign sys,mgr,pltt,bg,narc)."
     }
   ]
 }
