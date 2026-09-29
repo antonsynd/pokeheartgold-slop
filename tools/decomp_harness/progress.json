@@ -900,6 +900,16 @@
       "attempts": 45,
       "result": "matched",
       "note": "compare-verified (HG + SS full ROM SHA1 OK). Map-object reflection field effects (water/puddle/ice): manager ctor/dtor, two billboard-per-mapobject reflection families (templates F88/F74, the latter with y-0x514, model 0xd for type>2 and ov01_02205870 override) and a billboard-mirror family (F9C, created from overlay_01_021F944C). 22/23 C; ov01_021FDC7C is NONMATCHING inline asm (retail hoists the FX32_HALF materialisation above the facing compare; ~35 C spellings logged). Rodata as ONE sRodata struct (3 fn-ptr templates + 2 identical fx32[6] tables) and the asm body loads ldr =sRodata+0x54 cleanly. field_system.h NOT included (it pulls overlay_01_021F1348.h whose ov01_021F1620 returns void; DE64 needs the result) -> local FieldSystem view for playerAvatar@0x40. Fixes: ternary for the shared modelRes store, void delete callback, decl-order for res/pos stack slots."
+    },
+    {
+      "file": "asm/overlay_14_021F58B8.s",
+      "lines": 1741,
+      "functions": 30,
+      "matched_functions": 25,
+      "nonmatching": 5,
+      "attempts": 30,
+      "result": "matched",
+      "note": "compare-verified (HG + SS full ROM SHA1 OK). PC Box app (ov14) window-frame / text helpers: frame blits from NARC a/0/1/9 char sets, wallpaper-name text, tab windows, BG tilemap frame writer, yes/no-style windows. First pass by decomp-drafter (25/30), reviewed/iterated; 5 functions (ov14_021F5950, 5BD8, 5C94, 60BC, 6408) kept as NONMATCHING inline asm with the C under #ifdef NONMATCHING: MWCC spill/scheduling ties (width-1 spilled at first use for a CSE-d loop guard; constant-before-value scheduling). Structs local (boxapp work sys@0x34, box sys windows[]@0x30, msgData@0x20, bgConfig@0x14, unk44D); include/overlay_14.h untouched. Callers all still asm."
     }
   ],
   "failed": [
@@ -1319,7 +1329,7 @@
   ],
   "stats": {
     "total_attempts": 208,
-    "total_matched": 82,
+    "total_matched": 83,
     "total_failed": 31
   },
   "matched": [
@@ -1426,6 +1436,7 @@
     "asm/overlay_80_0223A00C.s",
     "asm/overlay_83_02246E08.s",
     "asm/unk_02023694.s",
-    "asm/overlay_01_021FDA14.s"
+    "asm/overlay_01_021FDA14.s",
+    "asm/overlay_14_021F58B8.s"
   ]
 }

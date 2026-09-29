@@ -22817,6 +22817,1238 @@
    ],
    "sweep_output": "sweep/out/overlay_80_0222AEF8.json"
   },
+  "asm/overlay_80_0222FD08.s": {
+   "notes": "Battle Factory core (overlay 80): alloc/init/free, rental generation/shuffle, resume-from-record, save commit, swap/trade, and the comm dispatcher. There are 21 thumb functions, 17 exported plus 4 static. The only caller of the exports is asm/overlay_80_0222F608.s (FrtCmd_092..107), which is still asm-linked; its WIP C in src/frontier/overlay_80_0222F608.c is NOT in main.lsf. Sibling C with the same data offsets: src/frontier/overlay_80_02236B78.c (linked, uses work+0x4D4/0x4F8 as raw offsets). There is no rodata or .data; bss is one 4-byte pointer, and save_arrays.c has no DECL_CHUNK_EX entries for it. knowledge.json already has a partial 'FactoryCommWork' struct entry for this 0x708 type. HEAP_ID 11 = HEAP_ID_FIELD2; NARC 0xcc/0xcd are the a/2/0/2 and a/2/0/3 trainer/mon NARCs; GetMonData attr 0x47 = MON_DATA_ATK_IV.",
+   "oracle": {
+    "functions": {
+     "ov80_0222FD08": {
+      "exact_types": [
+       {
+        "confidence": "high",
+        "evidence": "L194: bl _s32_div_f",
+        "helper": "_s32_div_f",
+        "verdict": "signed 32-bit int / or %  (both operands signed int)"
+       }
+      ],
+      "widths": [
+       {
+        "confidence": "high",
+        "evidence": "L73: lsl r2, r2, #0x18 ; L74: lsr r2, r2, #0x18",
+        "kind": "truncation-pair",
+        "register": "r2",
+        "verdict": "u8"
+       },
+       {
+        "confidence": "high",
+        "evidence": "L78: lsl r0, r0, #0x18 ; L79: lsr r0, r0, #0x18",
+        "kind": "truncation-pair",
+        "register": "r0",
+        "verdict": "u8"
+       },
+       {
+        "base": "r1",
+        "confidence": "high",
+        "evidence": "L50: strb r7, [r1, #4]",
+        "kind": "store-width",
+        "offset": "#4",
+        "verdict": "u8"
+       },
+       {
+        "base": "r1",
+        "confidence": "high",
+        "evidence": "L52: strb r0, [r1, #5]",
+        "kind": "store-width",
+        "offset": "#5",
+        "verdict": "u8"
+       },
+       {
+        "base": "r1",
+        "confidence": "high",
+        "evidence": "L54: strb r0, [r1, #6]",
+        "kind": "store-width",
+        "offset": "#6",
+        "verdict": "u8"
+       },
+       {
+        "base": "r2",
+        "confidence": "high",
+        "evidence": "L59: ldrb r3, [r2, #4]",
+        "kind": "load-width",
+        "offset": "#4",
+        "verdict": "u8"
+       },
+       {
+        "base": "r2",
+        "confidence": "high",
+        "evidence": "L68: ldrb r2, [r2, #5]",
+        "kind": "load-width",
+        "offset": "#5",
+        "verdict": "u8"
+       },
+       {
+        "base": "r5",
+        "confidence": "high",
+        "evidence": "L88: ldrb r0, [r5, #5]",
+        "kind": "load-width",
+        "offset": "#5",
+        "verdict": "u8"
+       },
+       {
+        "base": "r5",
+        "confidence": "high",
+        "evidence": "L89: ldrb r1, [r5, #4]",
+        "kind": "load-width",
+        "offset": "#4",
+        "verdict": "u8"
+       },
+       {
+        "base": "r5",
+        "confidence": "high",
+        "evidence": "L100: strh r0, [r5, #0xc]",
+        "kind": "store-width",
+        "offset": "#0xc",
+        "verdict": "u16"
+       },
+       {
+        "base": "r4",
+        "confidence": "high",
+        "evidence": "L107: ldrb r0, [r4, #5]",
+        "kind": "load-width",
+        "offset": "#5",
+        "verdict": "u8"
+       },
+       {
+        "base": "r4",
+        "confidence": "high",
+        "evidence": "L108: ldrb r1, [r4, #4]",
+        "kind": "load-width",
+        "offset": "#4",
+        "verdict": "u8"
+       },
+       {
+        "base": "r4",
+        "confidence": "high",
+        "evidence": "L124: strh r0, [r4, #0xc]",
+        "kind": "store-width",
+        "offset": "#0xc",
+        "verdict": "u16"
+       },
+       {
+        "base": "r4",
+        "confidence": "high",
+        "evidence": "L126: strh r0, [r4, #8]",
+        "kind": "store-width",
+        "offset": "#8",
+        "verdict": "u16"
+       },
+       {
+        "base": "r4",
+        "confidence": "high",
+        "evidence": "L139: strb r0, [r4, #4]",
+        "kind": "store-width",
+        "offset": "#4",
+        "verdict": "u8"
+       },
+       {
+        "base": "r4",
+        "confidence": "high",
+        "evidence": "L145: strb r0, [r4, #5]",
+        "kind": "store-width",
+        "offset": "#5",
+        "verdict": "u8"
+       },
+       {
+        "base": "r4",
+        "confidence": "high",
+        "evidence": "L150: strb r0, [r4, #6]",
+        "kind": "store-width",
+        "offset": "#6",
+        "verdict": "u8"
+       },
+       {
+        "base": "r4",
+        "confidence": "high",
+        "evidence": "L193: ldrh r0, [r4, #0xc]",
+        "kind": "load-width",
+        "offset": "#0xc",
+        "verdict": "u16"
+       },
+       {
+        "base": "r4",
+        "confidence": "high",
+        "evidence": "L195: strh r0, [r4, #0xe]",
+        "kind": "store-width",
+        "offset": "#0xe",
+        "verdict": "u16"
+       }
+      ]
+     },
+     "ov80_0222FF00": {
+      "signedness": [
+       {
+        "branch": "blt",
+        "confidence": "high",
+        "evidence": "L296: cmp r0, #6  =>  L297: blt _0222FF6A",
+        "register": "r0",
+        "verdict": "signed"
+       },
+       {
+        "branch": "blt",
+        "confidence": "high",
+        "evidence": "L322: cmp r5, #6  =>  L323: blt _0222FFA4",
+        "register": "r5",
+        "verdict": "signed"
+       },
+       {
+        "branch": "blt",
+        "confidence": "high",
+        "evidence": "L381: cmp r0, #6  =>  L382: blt _02230014",
+        "register": "r0",
+        "verdict": "signed"
+       },
+       {
+        "branch": "blt",
+        "confidence": "high",
+        "evidence": "L434: cmp r7, #6  =>  L435: blt _02230078",
+        "register": "r7",
+        "verdict": "signed"
+       },
+       {
+        "branch": "blt",
+        "confidence": "high",
+        "evidence": "L443: cmp r5, #6  =>  L444: blt _022300B0",
+        "register": "r5",
+        "verdict": "signed"
+       }
+      ],
+      "widths": [
+       {
+        "base": "r4",
+        "confidence": "high",
+        "evidence": "L240: ldrb r0, [r4, #4]",
+        "kind": "load-width",
+        "offset": "#4",
+        "verdict": "u8"
+       },
+       {
+        "base": "r4",
+        "confidence": "high",
+        "evidence": "L255: ldrh r1, [r4, #8]",
+        "kind": "load-width",
+        "offset": "#8",
+        "verdict": "u16"
+       },
+       {
+        "base": "r4",
+        "confidence": "high",
+        "evidence": "L262: ldrb r1, [r4, #5]",
+        "kind": "load-width",
+        "offset": "#5",
+        "verdict": "u8"
+       },
+       {
+        "base": "r0",
+        "confidence": "high",
+        "evidence": "L311: ldrh r6, [r0]",
+        "kind": "load-width",
+        "offset": "#0",
+        "verdict": "u16"
+       },
+       {
+        "base": "r1",
+        "confidence": "high",
+        "evidence": "L316: strh r6, [r1]",
+        "kind": "store-width",
+        "offset": "#0",
+        "verdict": "u16"
+       },
+       {
+        "base": "r2",
+        "confidence": "high",
+        "evidence": "L317: ldrh r6, [r2, r7]",
+        "kind": "load-width",
+        "offset": "(r7)",
+        "verdict": "u16"
+       },
+       {
+        "base": "r3",
+        "confidence": "high",
+        "evidence": "L320: strh r6, [r3]",
+        "kind": "store-width",
+        "offset": "#0",
+        "verdict": "u16"
+       },
+       {
+        "base": "r4",
+        "confidence": "high",
+        "evidence": "L337: ldrh r1, [r4, r1]",
+        "kind": "load-width",
+        "offset": "(r1)",
+        "verdict": "u16"
+       },
+       {
+        "base": "r4",
+        "confidence": "high",
+        "evidence": "L404: ldrb r1, [r4, #6]",
+        "kind": "load-width",
+        "offset": "#6",
+        "verdict": "u8"
+       },
+       {
+        "base": "r1",
+        "confidence": "high",
+        "evidence": "L408: ldrh r1, [r1, #0x18]",
+        "kind": "load-width",
+        "offset": "#0x18",
+        "verdict": "u16"
+       }
+      ]
+     },
+     "ov80_022300D4": {
+      "exact_types": [
+       {
+        "confidence": "high",
+        "evidence": "L464: bl _s32_div_f",
+        "helper": "_s32_div_f",
+        "verdict": "signed 32-bit int / or %  (both operands signed int)"
+       }
+      ],
+      "widths": [
+       {
+        "confidence": "high",
+        "evidence": "L465: lsl r0, r1, #0x10 ; L466: lsr r2, r0, #0x10",
+        "kind": "truncation-pair",
+        "register": "r0",
+        "verdict": "u16"
+       },
+       {
+        "base": "r1",
+        "confidence": "high",
+        "evidence": "L474: ldrh r1, [r1, r3]",
+        "kind": "load-width",
+        "offset": "(r3)",
+        "verdict": "u16"
+       },
+       {
+        "base": "r1",
+        "confidence": "high",
+        "evidence": "L482: ldrb r1, [r1, r5]",
+        "kind": "load-width",
+        "offset": "(r5)",
+        "verdict": "u8"
+       },
+       {
+        "base": "r3",
+        "confidence": "high",
+        "evidence": "L514: ldrh r6, [r3, r1]",
+        "kind": "load-width",
+        "offset": "(r1)",
+        "verdict": "u16"
+       },
+       {
+        "base": "r1",
+        "confidence": "high",
+        "evidence": "L518: strh r6, [r1, r3]",
+        "kind": "store-width",
+        "offset": "(r3)",
+        "verdict": "u16"
+       },
+       {
+        "base": "r1",
+        "confidence": "high",
+        "evidence": "L522: ldrb r3, [r1, r2]",
+        "kind": "load-width",
+        "offset": "(r2)",
+        "verdict": "u8"
+       },
+       {
+        "base": "r1",
+        "confidence": "high",
+        "evidence": "L525: strb r3, [r1, r5]",
+        "kind": "store-width",
+        "offset": "(r5)",
+        "verdict": "u8"
+       },
+       {
+        "base": "r1",
+        "confidence": "high",
+        "evidence": "L552: strh r3, [r1, r0]",
+        "kind": "store-width",
+        "offset": "(r0)",
+        "verdict": "u16"
+       },
+       {
+        "base": "r0",
+        "confidence": "high",
+        "evidence": "L556: strb r1, [r0, r2]",
+        "kind": "store-width",
+        "offset": "(r2)",
+        "verdict": "u8"
+       },
+       {
+        "base": "r1",
+        "confidence": "high",
+        "evidence": "L612: ldrh r6, [r1, r0]",
+        "kind": "load-width",
+        "offset": "(r0)",
+        "verdict": "u16"
+       },
+       {
+        "base": "r0",
+        "confidence": "high",
+        "evidence": "L616: strh r6, [r0, r1]",
+        "kind": "store-width",
+        "offset": "(r1)",
+        "verdict": "u16"
+       },
+       {
+        "base": "r0",
+        "confidence": "high",
+        "evidence": "L620: ldrb r1, [r0, r2]",
+        "kind": "load-width",
+        "offset": "(r2)",
+        "verdict": "u8"
+       },
+       {
+        "base": "r0",
+        "confidence": "high",
+        "evidence": "L623: strb r1, [r0, r5]",
+        "kind": "store-width",
+        "offset": "(r5)",
+        "verdict": "u8"
+       }
+      ]
+     },
+     "ov80_02230270": {
+      "signedness": [
+       {
+        "branch": "blt",
+        "confidence": "high",
+        "evidence": "L690: cmp r4, #0xe  =>  L691: blt _02230282",
+        "register": "r4",
+        "verdict": "signed"
+       },
+       {
+        "branch": "blt",
+        "confidence": "high",
+        "evidence": "L737: cmp r4, #4  =>  L738: blt _022302A6",
+        "register": "r4",
+        "verdict": "signed"
+       },
+       {
+        "branch": "blt",
+        "confidence": "high",
+        "evidence": "L772: cmp r7, #4  =>  L773: blt _02230324",
+        "register": "r7",
+        "verdict": "signed"
+       },
+       {
+        "branch": "blt",
+        "confidence": "high",
+        "evidence": "L821: cmp r4, #4  =>  L822: blt _0223035C",
+        "register": "r4",
+        "verdict": "signed"
+       },
+       {
+        "branch": "blt",
+        "confidence": "high",
+        "evidence": "L856: cmp r7, #4  =>  L857: blt _022303DA",
+        "register": "r7",
+        "verdict": "signed"
+       }
+      ],
+      "widths": [
+       {
+        "base": "r5",
+        "confidence": "high",
+        "evidence": "L675: ldrb r0, [r5, #4]",
+        "kind": "load-width",
+        "offset": "#4",
+        "verdict": "u8"
+       },
+       {
+        "base": "r6",
+        "confidence": "high",
+        "evidence": "L687: strh r0, [r6, #0x18]",
+        "kind": "store-width",
+        "offset": "#0x18",
+        "verdict": "u16"
+       },
+       {
+        "base": "r6",
+        "confidence": "high",
+        "evidence": "L706: strh r0, [r6]",
+        "kind": "store-width",
+        "offset": "#0",
+        "verdict": "u16"
+       },
+       {
+        "base": "r7",
+        "confidence": "high",
+        "evidence": "L723: strb r0, [r7]",
+        "kind": "store-width",
+        "offset": "#0",
+        "verdict": "u8"
+       },
+       {
+        "base": "r6",
+        "confidence": "high",
+        "evidence": "L724: ldrh r2, [r6]",
+        "kind": "load-width",
+        "offset": "#0",
+        "verdict": "u16"
+       },
+       {
+        "base": "r1",
+        "confidence": "high",
+        "evidence": "L728: strh r2, [r1, r0]",
+        "kind": "store-width",
+        "offset": "(r0)",
+        "verdict": "u16"
+       }
+      ]
+     },
+     "ov80_02230460": {
+      "signedness": [
+       {
+        "branch": "blt",
+        "confidence": "high",
+        "evidence": "L917: cmp r4, #6  =>  L918: blt _0223046A",
+        "register": "r4",
+        "verdict": "signed"
+       }
+      ],
+      "widths": [
+       {
+        "confidence": "high",
+        "evidence": "L910: lsl r1, r4, #0x18 ; L912: lsr r1, r1, #0x18",
+        "kind": "truncation-pair",
+        "register": "r1",
+        "verdict": "u8"
+       },
+       {
+        "base": "r5",
+        "confidence": "high",
+        "evidence": "L914: strh r0, [r5, r7]",
+        "kind": "store-width",
+        "offset": "(r7)",
+        "verdict": "u16"
+       }
+      ]
+     },
+     "ov80_02230484": {
+      "signedness": [
+       {
+        "branch": "blo",
+        "confidence": "high",
+        "evidence": "L927: cmp r1, #6  =>  L928: blo _02230492",
+        "register": "r1",
+        "verdict": "unsigned"
+       }
+      ],
+      "widths": [
+       {
+        "base": "r0",
+        "confidence": "high",
+        "evidence": "L935: ldrh r0, [r0, #0x10]",
+        "kind": "load-width",
+        "offset": "#0x10",
+        "verdict": "u16"
+       }
+      ]
+     },
+     "ov80_0223049C": {
+      "signedness": [
+       {
+        "branch": "bhs",
+        "confidence": "high",
+        "evidence": "L1074: cmp r6, r0  =>  L1075: bhs _02230608",
+        "register": "r6",
+        "verdict": "unsigned"
+       },
+       {
+        "branch": "blo",
+        "confidence": "high",
+        "evidence": "L1139: cmp r4, #0xe  =>  L1140: blo _0223064E",
+        "register": "r4",
+        "verdict": "unsigned"
+       },
+       {
+        "branch": "blo",
+        "confidence": "high",
+        "evidence": "L1194: cmp r4, r7  =>  L1195: blo _0223067C",
+        "register": "r4",
+        "verdict": "unsigned"
+       },
+       {
+        "branch": "blo",
+        "confidence": "high",
+        "evidence": "L1250: cmp r4, r7  =>  L1251: blo _022306F6",
+        "register": "r4",
+        "verdict": "unsigned"
+       }
+      ],
+      "widths": [
+       {
+        "confidence": "high",
+        "evidence": "L1098: lsl r2, r2, #0x18 ; L1100: lsr r2, r2, #0x18",
+        "kind": "truncation-pair",
+        "register": "r2",
+        "verdict": "u8"
+       },
+       {
+        "confidence": "high",
+        "evidence": "L1137: lsl r0, r0, #0x10 ; L1138: lsr r4, r0, #0x10",
+        "kind": "truncation-pair",
+        "register": "r0",
+        "verdict": "u16"
+       },
+       {
+        "confidence": "high",
+        "evidence": "L1192: lsl r0, r0, #0x10 ; L1193: lsr r4, r0, #0x10",
+        "kind": "truncation-pair",
+        "register": "r0",
+        "verdict": "u16"
+       },
+       {
+        "confidence": "high",
+        "evidence": "L1248: lsl r0, r0, #0x10 ; L1249: lsr r4, r0, #0x10",
+        "kind": "truncation-pair",
+        "register": "r0",
+        "verdict": "u16"
+       },
+       {
+        "base": "r5",
+        "confidence": "high",
+        "evidence": "L954: ldrb r0, [r5, #4]",
+        "kind": "load-width",
+        "offset": "#4",
+        "verdict": "u8"
+       },
+       {
+        "base": "r5",
+        "confidence": "high",
+        "evidence": "L959: ldrb r1, [r5, #5]",
+        "kind": "load-width",
+        "offset": "#5",
+        "verdict": "u8"
+       },
+       {
+        "base": "r0",
+        "confidence": "high",
+        "evidence": "L962: strb r1, [r0, #8]",
+        "kind": "store-width",
+        "offset": "#8",
+        "verdict": "u8"
+       },
+       {
+        "base": "r5",
+        "confidence": "high",
+        "evidence": "L981: ldrb r1, [r5, #6]",
+        "kind": "load-width",
+        "offset": "#6",
+        "verdict": "u8"
+       },
+       {
+        "base": "r5",
+        "confidence": "high",
+        "evidence": "L999: ldrh r3, [r5, #8]",
+        "kind": "load-width",
+        "offset": "#8",
+        "verdict": "u16"
+       },
+       {
+        "base": "r5",
+        "confidence": "high",
+        "evidence": "L1012: ldrh r3, [r5, #0xc]",
+        "kind": "load-width",
+        "offset": "#0xc",
+        "verdict": "u16"
+       },
+       {
+        "base": "r5",
+        "confidence": "high",
+        "evidence": "L1090: ldrb r1, [r5, #0xa]",
+        "kind": "load-width",
+        "offset": "#0xa",
+        "verdict": "u8"
+       },
+       {
+        "base": "r0",
+        "confidence": "high",
+        "evidence": "L1128: ldrh r0, [r0, #0x18]",
+        "kind": "load-width",
+        "offset": "#0x18",
+        "verdict": "u16"
+       },
+       {
+        "base": "r6",
+        "confidence": "high",
+        "evidence": "L1131: strh r0, [r6]",
+        "kind": "store-width",
+        "offset": "#0",
+        "verdict": "u16"
+       },
+       {
+        "base": "r1",
+        "confidence": "high",
+        "evidence": "L1157: ldrh r1, [r1, r0]",
+        "kind": "load-width",
+        "offset": "(r0)",
+        "verdict": "u16"
+       },
+       {
+        "base": "r0",
+        "confidence": "high",
+        "evidence": "L1160: strh r1, [r0]",
+        "kind": "store-width",
+        "offset": "#0",
+        "verdict": "u16"
+       },
+       {
+        "base": "r1",
+        "confidence": "high",
+        "evidence": "L1171: strb r0, [r1, #8]",
+        "kind": "store-width",
+        "offset": "#8",
+        "verdict": "u8"
+       }
+      ]
+     },
+     "ov80_02230784": {
+      "widths": [
+       {
+        "base": "r0",
+        "confidence": "high",
+        "evidence": "L1267: ldrb r1, [r0, #6]",
+        "kind": "load-width",
+        "offset": "#6",
+        "verdict": "u8"
+       },
+       {
+        "base": "r0",
+        "confidence": "high",
+        "evidence": "L1269: strb r1, [r0, #6]",
+        "kind": "store-width",
+        "offset": "#6",
+        "verdict": "u8"
+       }
+      ]
+     },
+     "ov80_02230790": {
+      "widths": [
+       {
+        "base": "r0",
+        "confidence": "high",
+        "evidence": "L1277: ldrb r0, [r0, #6]",
+        "kind": "load-width",
+        "offset": "#6",
+        "verdict": "u8"
+       }
+      ]
+     },
+     "ov80_02230794": {
+      "widths": [
+       {
+        "confidence": "high",
+        "evidence": "L1301: lsl r0, r0, #0x18 ; L1302: lsr r0, r0, #0x18",
+        "kind": "truncation-pair",
+        "register": "r0",
+        "verdict": "u8"
+       },
+       {
+        "base": "r2",
+        "confidence": "high",
+        "evidence": "L1286: ldrb r4, [r2, #6]",
+        "kind": "load-width",
+        "offset": "#6",
+        "verdict": "u8"
+       },
+       {
+        "base": "r1",
+        "confidence": "high",
+        "evidence": "L1293: ldrh r1, [r1, #0x18]",
+        "kind": "load-width",
+        "offset": "#0x18",
+        "verdict": "u16"
+       },
+       {
+        "base": "r0",
+        "confidence": "high",
+        "evidence": "L1300: ldrh r0, [r0, #4]",
+        "kind": "load-width",
+        "offset": "#4",
+        "verdict": "u16"
+       }
+      ]
+     },
+     "ov80_022307D4": {
+      "signedness": [
+       {
+        "branch": "bhs",
+        "confidence": "high",
+        "evidence": "L1322: cmp r1, #8  =>  L1323: bhs _022307E2",
+        "register": "r1",
+        "verdict": "unsigned"
+       }
+      ],
+      "widths": [
+       {
+        "base": "r0",
+        "confidence": "high",
+        "evidence": "L1320: strb r1, [r0, #0xa]",
+        "kind": "store-width",
+        "offset": "#0xa",
+        "verdict": "u8"
+       },
+       {
+        "base": "r0",
+        "confidence": "high",
+        "evidence": "L1321: ldrh r1, [r0, #0xe]",
+        "kind": "load-width",
+        "offset": "#0xe",
+        "verdict": "u16"
+       },
+       {
+        "base": "r0",
+        "confidence": "high",
+        "evidence": "L1325: strh r1, [r0, #0xe]",
+        "kind": "store-width",
+        "offset": "#0xe",
+        "verdict": "u16"
+       },
+       {
+        "base": "r0",
+        "confidence": "high",
+        "evidence": "L1329: strb r1, [r0, #6]",
+        "kind": "store-width",
+        "offset": "#6",
+        "verdict": "u8"
+       }
+      ]
+     },
+     "ov80_022307F0": {
+      "signedness": [
+       {
+        "branch": "ble",
+        "confidence": "high",
+        "evidence": "L1355: cmp r0, #0  =>  L1356: ble _0223086E",
+        "register": "r0",
+        "verdict": "signed"
+       },
+       {
+        "branch": "blt",
+        "confidence": "high",
+        "evidence": "L1392: cmp r7, r0  =>  L1393: blt _0223082A",
+        "register": "r7",
+        "verdict": "signed"
+       },
+       {
+        "branch": "ble",
+        "confidence": "high",
+        "evidence": "L1397: cmp r0, #0  =>  L1398: ble _022308A4",
+        "register": "r0",
+        "verdict": "signed"
+       },
+       {
+        "branch": "blt",
+        "confidence": "high",
+        "evidence": "L1418: cmp r7, r0  =>  L1419: blt _0223087C",
+        "register": "r7",
+        "verdict": "signed"
+       }
+      ],
+      "widths": [
+       {
+        "base": "r5",
+        "confidence": "high",
+        "evidence": "L1340: ldrb r0, [r5, #4]",
+        "kind": "load-width",
+        "offset": "#4",
+        "verdict": "u8"
+       },
+       {
+        "base": "r4",
+        "confidence": "high",
+        "evidence": "L1368: ldrh r0, [r4, r0]",
+        "kind": "load-width",
+        "offset": "(r0)",
+        "verdict": "u16"
+       },
+       {
+        "base": "r1",
+        "confidence": "high",
+        "evidence": "L1387: ldrh r1, [r1, r0]",
+        "kind": "load-width",
+        "offset": "(r0)",
+        "verdict": "u16"
+       },
+       {
+        "base": "r4",
+        "confidence": "high",
+        "evidence": "L1389: strh r1, [r4, r0]",
+        "kind": "store-width",
+        "offset": "(r0)",
+        "verdict": "u16"
+       }
+      ]
+     },
+     "ov80_022308C4": {
+      "signedness": [
+       {
+        "branch": "blt",
+        "confidence": "high",
+        "evidence": "L1448: cmp r1, #8  =>  L1449: blt _022308D2",
+        "register": "r1",
+        "verdict": "signed"
+       },
+       {
+        "branch": "ble",
+        "confidence": "high",
+        "evidence": "L1459: cmp r0, #0  =>  L1460: ble _0223092C",
+        "register": "r0",
+        "verdict": "signed"
+       },
+       {
+        "branch": "blt",
+        "confidence": "high",
+        "evidence": "L1482: cmp r7, r0  =>  L1483: blt _022308FE",
+        "register": "r7",
+        "verdict": "signed"
+       },
+       {
+        "branch": "ble",
+        "confidence": "high",
+        "evidence": "L1490: cmp r0, #0  =>  L1491: ble _0223098A",
+        "register": "r0",
+        "verdict": "signed"
+       },
+       {
+        "branch": "blt",
+        "confidence": "high",
+        "evidence": "L1527: cmp r7, r0  =>  L1528: blt _0223094A",
+        "register": "r7",
+        "verdict": "signed"
+       }
+      ],
+      "widths": [
+       {
+        "base": "r2",
+        "confidence": "high",
+        "evidence": "L1444: strh r0, [r2]",
+        "kind": "store-width",
+        "offset": "#0",
+        "verdict": "u16"
+       },
+       {
+        "base": "r3",
+        "confidence": "high",
+        "evidence": "L1445: strh r0, [r3]",
+        "kind": "store-width",
+        "offset": "#0",
+        "verdict": "u16"
+       },
+       {
+        "base": "r5",
+        "confidence": "high",
+        "evidence": "L1450: ldrb r0, [r5, #4]",
+        "kind": "load-width",
+        "offset": "#4",
+        "verdict": "u8"
+       },
+       {
+        "base": "r6",
+        "confidence": "high",
+        "evidence": "L1472: strh r0, [r6]",
+        "kind": "store-width",
+        "offset": "#0",
+        "verdict": "u16"
+       },
+       {
+        "base": "r4",
+        "confidence": "high",
+        "evidence": "L1477: strh r0, [r4]",
+        "kind": "store-width",
+        "offset": "#0",
+        "verdict": "u16"
+       },
+       {
+        "base": "r1",
+        "confidence": "high",
+        "evidence": "L1517: ldrh r2, [r1, r0]",
+        "kind": "load-width",
+        "offset": "(r0)",
+        "verdict": "u16"
+       },
+       {
+        "base": "r1",
+        "confidence": "high",
+        "evidence": "L1520: strh r2, [r1, r0]",
+        "kind": "store-width",
+        "offset": "(r0)",
+        "verdict": "u16"
+       },
+       {
+        "base": "r5",
+        "confidence": "high",
+        "evidence": "L1530: ldrb r0, [r5, #6]",
+        "kind": "load-width",
+        "offset": "#6",
+        "verdict": "u8"
+       },
+       {
+        "base": "r5",
+        "confidence": "high",
+        "evidence": "L1531: ldrb r1, [r5, #5]",
+        "kind": "load-width",
+        "offset": "#5",
+        "verdict": "u8"
+       },
+       {
+        "base": "r0",
+        "confidence": "high",
+        "evidence": "L1534: ldrh r0, [r0, #0x18]",
+        "kind": "load-width",
+        "offset": "#0x18",
+        "verdict": "u16"
+       }
+      ]
+     },
+     "ov80_022309F8": {
+      "widths": [
+       {
+        "base": "r4",
+        "confidence": "high",
+        "evidence": "L1587: ldrh r0, [r4, r1]",
+        "kind": "load-width",
+        "offset": "(r1)",
+        "verdict": "u16"
+       },
+       {
+        "base": "r2",
+        "confidence": "high",
+        "evidence": "L1607: ldrh r2, [r2, r0]",
+        "kind": "load-width",
+        "offset": "(r0)",
+        "verdict": "u16"
+       },
+       {
+        "base": "r4",
+        "confidence": "high",
+        "evidence": "L1609: ldrh r0, [r4, r0]",
+        "kind": "load-width",
+        "offset": "(r0)",
+        "verdict": "u16"
+       },
+       {
+        "base": "r0",
+        "confidence": "high",
+        "evidence": "L1613: strh r2, [r0, r1]",
+        "kind": "store-width",
+        "offset": "(r1)",
+        "verdict": "u16"
+       }
+      ]
+     },
+     "ov80_02230A60": {
+      "signedness": [
+       {
+        "branch": "ble",
+        "confidence": "high",
+        "evidence": "L1648: cmp r6, #0  =>  L1649: ble _02230ABC",
+        "register": "r6",
+        "verdict": "signed"
+       },
+       {
+        "branch": "blt",
+        "confidence": "high",
+        "evidence": "L1670: cmp r0, r6  =>  L1671: blt _02230A92",
+        "register": "r0",
+        "verdict": "signed"
+       },
+       {
+        "branch": "ble",
+        "confidence": "high",
+        "evidence": "L1676: cmp r6, #0  =>  L1677: ble _02230AD8",
+        "register": "r6",
+        "verdict": "signed"
+       },
+       {
+        "branch": "blt",
+        "confidence": "high",
+        "evidence": "L1684: cmp r5, r6  =>  L1685: blt _02230ACA",
+        "register": "r5",
+        "verdict": "signed"
+       }
+      ],
+      "widths": [
+       {
+        "base": "r4",
+        "confidence": "high",
+        "evidence": "L1634: ldrb r0, [r4, #4]",
+        "kind": "load-width",
+        "offset": "#4",
+        "verdict": "u8"
+       }
+      ]
+     },
+     "ov80_02230AE4": {
+      "signedness": [
+       {
+        "branch": "bhs",
+        "confidence": "high",
+        "evidence": "L1697: cmp r2, r1  =>  L1698: bhs _02230AF0",
+        "register": "r2",
+        "verdict": "unsigned"
+       }
+      ],
+      "widths": [
+       {
+        "base": "r0",
+        "confidence": "high",
+        "evidence": "L1695: ldrh r2, [r0, #8]",
+        "kind": "load-width",
+        "offset": "#8",
+        "verdict": "u16"
+       },
+       {
+        "base": "r0",
+        "confidence": "high",
+        "evidence": "L1700: strh r1, [r0, #8]",
+        "kind": "store-width",
+        "offset": "#8",
+        "verdict": "u16"
+       }
+      ]
+     },
+     "ov80_02230AF8": {
+      "signedness": [
+       {
+        "branch": "bhi",
+        "confidence": "high",
+        "evidence": "L1710: cmp r1, #6  =>  L1711: bhi _02230B48",
+        "register": "r1",
+        "verdict": "unsigned"
+       }
+      ],
+      "widths": [
+       {
+        "confidence": "high",
+        "evidence": "L1715: lsl r1, r1, #0x10 ; L1716: asr r1, r1, #0x10",
+        "kind": "truncation-pair",
+        "register": "r1",
+        "verdict": "s16"
+       },
+       {
+        "confidence": "high",
+        "evidence": "L1739: lsl r1, r2, #0x18 ; L1740: lsr r1, r1, #0x18",
+        "kind": "truncation-pair",
+        "register": "r1",
+        "verdict": "u8"
+       },
+       {
+        "confidence": "high",
+        "evidence": "L1744: lsl r1, r2, #0x18 ; L1745: lsr r1, r1, #0x18",
+        "kind": "truncation-pair",
+        "register": "r1",
+        "verdict": "u8"
+       },
+       {
+        "base": "r1",
+        "confidence": "high",
+        "evidence": "L1714: ldrh r1, [r1, #6]",
+        "kind": "load-width",
+        "offset": "#6",
+        "verdict": "u16"
+       }
+      ]
+     },
+     "ov80_02230B4C": {
+      "signedness": [
+       {
+        "branch": "bhi",
+        "confidence": "high",
+        "evidence": "L1759: cmp r3, #1  =>  L1760: bhi _02230B62",
+        "register": "r3",
+        "verdict": "unsigned"
+       },
+       {
+        "branch": "blo",
+        "confidence": "high",
+        "evidence": "L1761: cmp r2, #8  =>  L1762: blo _02230B5C",
+        "register": "r2",
+        "verdict": "unsigned"
+       },
+       {
+        "branch": "blo",
+        "confidence": "high",
+        "evidence": "L1770: cmp r2, #8  =>  L1771: blo _02230B6A",
+        "register": "r2",
+        "verdict": "unsigned"
+       }
+      ],
+      "widths": [
+       {
+        "base": "r0",
+        "confidence": "high",
+        "evidence": "L1757: ldrb r3, [r0, #4]",
+        "kind": "load-width",
+        "offset": "#4",
+        "verdict": "u8"
+       },
+       {
+        "base": "r0",
+        "confidence": "high",
+        "evidence": "L1758: ldrh r2, [r0, #0xe]",
+        "kind": "load-width",
+        "offset": "#0xe",
+        "verdict": "u16"
+       },
+       {
+        "base": "r1",
+        "confidence": "high",
+        "evidence": "L1767: ldrb r1, [r1, r2]",
+        "kind": "load-width",
+        "offset": "(r2)",
+        "verdict": "u8"
+       },
+       {
+        "base": "r0",
+        "confidence": "high",
+        "evidence": "L1780: ldrh r0, [r0, #0xc]",
+        "kind": "load-width",
+        "offset": "#0xc",
+        "verdict": "u16"
+       }
+      ]
+     }
+    },
+    "generated": "2026-09-29T19:23:09Z",
+    "summary": {
+     "copyprop_cmp": 0,
+     "dead_store": 0,
+     "exact_types": 2,
+     "functions": 18,
+     "signed": 24,
+     "unsigned": 11,
+     "widths": 107
+    },
+    "tool": "asm_oracle.py"
+   },
+   "risks": [
+    "Global re-read/CSE pattern in ov80_0222FD08. sData is reloaded after most stores, but the inner duplicate f(d->unk5, d->unk4) of each GetStat statement uses the pointer register from the previous load (r5 vs r4 mixing). The sibling ov80_022310C4 (WIP src/frontier/overlay_80_022310C4.c) has the same unresolved pattern with ov80_0223DD44. Try sData->field everywhere first, then local snapshot variants; this function may need a NONMATCHING asm fallback.",
+    "ov80_02236E24 is called with 9 args, but include/frontier/overlay_80_02236B78.h declares 8. Do not take this prototype from the header: use a local 9-param extern, or #define-shim or skip the header and declare the other 02236B78 functions locally.",
+    "sub_02030A24 and sub_02030AD4 need 4-param local prototypes (the 4th arg is literal 0) even though their C definitions take 3. sub_02030978/A24 idx must be u8 to get the caller-side lsl#24/lsr#24.",
+    "Four static functions are not in the .inc: ov80_0222FF00, ov80_022300D4, ov80_02230270, ov80_02230484. The first two are called before they are defined (from FEEC, and ov80_02230484 from 02230460), so they need forward static declarations.",
+    "ov80_022300D4 has heavy stack spilling (frame 0xdc) and two separate swap bodies with distinct 0x38 temps. Expect regalloc/decl-order iteration.",
+    "ov80_0223049C uses u16 loop counters (narrowing ++) with an UNSIGNED bound against Party_GetCount (blo plus a 'ldr r4,=0' zero-trip beq), so the count local must be u32. The 14-iteration loop is u16 < 14 (blo).",
+    "ov80_02230AF8 switch has no return after it; the default falls off with r0 = data. The jump table needs all cases 0..6 explicit.",
+    "The WIP (unlinked) caller src/frontier/overlay_80_0222F608.c has local externs with wrong return types: ov80_0222FD08 as u16 (it actually returns the data pointer), and u16 for 02230784/0790/0B4C/0AF8 (actually u8/u8/u8/BOOL). No matched C depends on them, but reconcile before creating a shared header.",
+    "ov80_0223BDD4/ov80_0223BDE0 are rodata owned by asm/overlay_80_0222BDF4.s. Declare them extern here; this file defines no rodata.",
+    "Struct copies of the 0x38-byte FrontierMon (7x ldmia/stmia loops) must be written as struct assignment. Arrays in ov80_02230270 are sized [6] even though only 4 entries are used (from the stack layout)."
+   ],
+   "sweep_output": "sweep/out/overlay_80_0222FD08.json"
+  },
   "asm/overlay_80_022384D8.s": {
    "notes": "Self-contained overlay 80 (Battle Frontier UI) module: creates a SysTask that animates a 2x2 blinking tilemap rect at (14,2) on BG layer 3 every 3 frames, plus two pure stat-ID remap switches used by Frontier record code (results flow into FrontierSave_GetStat / sub_02031108). Heap 0x65 throughout. SysTask priority 0x1368C. No data sections. Function order in C must be: ov80_022384D8, ov80_022384FC, ov80_02238530, ov80_0223857C, ov80_022385B0, ov80_022385C4, ov80_022385D8, ov80_02238610 (statics need forward declarations since constructors call later-defined functions).",
    "risks": [
@@ -30950,7 +32182,7 @@
    "sweep_output": "sweep/out/unk_02097B78.json"
   }
  },
- "generated": "2026-09-29T18:51:28Z",
+ "generated": "2026-09-29T19:23:09Z",
  "signature_conflicts": [
   "DestroySysTaskAndEnvironment",
   "GridInputHandler_GetNextInput",
@@ -31016,6 +32248,13 @@
   "ov18_021F8824",
   "ov18_021F8838",
   "ov35_02259D80",
+  "ov80_0222B108",
+  "ov80_0222B174",
+  "ov80_0222B1DC",
+  "ov80_0222B2C4",
+  "ov80_0222B3B0",
+  "ov80_0222B3FC",
+  "ov80_0222B448",
   "ov80_02237B24",
   "ov80_02237FA4",
   "ov83_02242AB4",
@@ -31046,6 +32285,8 @@
   "sub_02023FB0",
   "sub_02023FC0",
   "sub_02026DE0",
+  "sub_02030978",
+  "sub_02030A24",
   "sub_02030CC8",
   "sub_0203769C",
   "sub_0205C174",
@@ -31236,6 +32477,247 @@
    },
    "sources": [
     "asm/overlay_80_0222AEF8.s"
+   ]
+  },
+  "BattleFactoryData": {
+   "fields": {
+    "0x0": [
+     {
+      "meaning": "heapId (11)",
+      "source": "asm/overlay_80_0222FD08.s",
+      "width": 4
+     }
+    ],
+    "0x10": [
+     {
+      "meaning": "zeroed on new game",
+      "source": "asm/overlay_80_0222FD08.s",
+      "width": 4
+     }
+    ],
+    "0x14": [
+     {
+      "meaning": "battle result (FrtCmd_096)",
+      "source": "asm/overlay_80_0222FD08.s",
+      "width": 4
+     }
+    ],
+    "0x18": [
+     {
+      "meaning": "u16 trainerIds[14] (7 per side)",
+      "source": "asm/overlay_80_0222FD08.s",
+      "width": 2
+     }
+    ],
+    "0x254": [
+     {
+      "meaning": "RentalSet setA {u16 ids[6]; u8 b[6]; (pad2) u32 w[6]; FrontierMon mons[6] @+0x2C} (0x17C)",
+      "source": "asm/overlay_80_0222FD08.s",
+      "width": 380
+     }
+    ],
+    "0x34": [
+     {
+      "meaning": "FrontierTrainerData[2] (0x110 each; 0x34, 0x144)",
+      "source": "asm/overlay_80_0222FD08.s",
+      "width": 272
+     }
+    ],
+    "0x3d2": [
+     {
+      "meaning": "u16 oppIds[4]",
+      "source": "asm/overlay_80_0222FD08.s",
+      "width": 2
+     }
+    ],
+    "0x3da": [
+     {
+      "meaning": "u8 oppIvs[4]",
+      "source": "asm/overlay_80_0222FD08.s",
+      "width": 1
+     }
+    ],
+    "0x3e0": [
+     {
+      "meaning": "u32 oppPid[4]",
+      "source": "asm/overlay_80_0222FD08.s",
+      "width": 4
+     }
+    ],
+    "0x3f0": [
+     {
+      "meaning": "FrontierMon oppMons[4] (to 0x4D0)",
+      "source": "asm/overlay_80_0222FD08.s",
+      "width": 56
+     }
+    ],
+    "0x4": [
+     {
+      "meaning": "battleType (0 single, 1 double, 2 multi, 3 wifi/partner; ==3 uses var 4052)",
+      "source": "asm/overlay_80_0222FD08.s",
+      "width": 1
+     }
+    ],
+    "0x4d4": [
+     {
+      "meaning": "Party *playerParty",
+      "source": "asm/overlay_80_0222FD08.s",
+      "width": 4
+     }
+    ],
+    "0x4d8": [
+     {
+      "meaning": "Party *oppParty",
+      "source": "asm/overlay_80_0222FD08.s",
+      "width": 4
+     }
+    ],
+    "0x4dc": [
+     {
+      "meaning": "u16 selected[6] (from app result; [0]==0xff means no trade; [0]=player slot,[1]=opp slot)",
+      "source": "asm/overlay_80_0222FD08.s",
+      "width": 2
+     }
+    ],
+    "0x4e8": [
+     {
+      "meaning": "u16 playerIds[4]",
+      "source": "asm/overlay_80_0222FD08.s",
+      "width": 2
+     }
+    ],
+    "0x4f4": [
+     {
+      "meaning": "void *record (FrontierSave+0x8E0, 0x58-byte resume record)",
+      "source": "asm/overlay_80_0222FD08.s",
+      "width": 4
+     }
+    ],
+    "0x4f8": [
+     {
+      "meaning": "SaveData *save",
+      "source": "asm/overlay_80_0222FD08.s",
+      "width": 4
+     }
+    ],
+    "0x4fc": [
+     {
+      "meaning": "BattleSetup * (FrtCmd_096/097)",
+      "source": "asm/overlay_80_0222FD08.s",
+      "width": 4
+     }
+    ],
+    "0x5": [
+     {
+      "meaning": "levelMode (Lv50/Open)",
+      "source": "asm/overlay_80_0222FD08.s",
+      "width": 1
+     }
+    ],
+    "0x500": [
+     {
+      "meaning": "SysTask * (FrtCmd_103 case 31/32)",
+      "source": "asm/overlay_80_0222FD08.s",
+      "width": 4
+     }
+    ],
+    "0x504": [
+     {
+      "meaning": "comm send buffer (ov80_0222Bxxx, size 0x3c)",
+      "source": "asm/overlay_80_0222FD08.s",
+      "width": 60
+     }
+    ],
+    "0x57c": [
+     {
+      "meaning": "u8 (FrtCmd_103 case 24)",
+      "source": "asm/overlay_80_0222FD08.s",
+      "width": 1
+     }
+    ],
+    "0x57d": [
+     {
+      "meaning": "u8 (case 26)",
+      "source": "asm/overlay_80_0222FD08.s",
+      "width": 1
+     }
+    ],
+    "0x580": [
+     {
+      "meaning": "partner tradeCount",
+      "source": "asm/overlay_80_0222FD08.s",
+      "width": 2
+     }
+    ],
+    "0x584": [
+     {
+      "meaning": "RentalSet setB (partner), to 0x700",
+      "source": "asm/overlay_80_0222FD08.s",
+      "width": 380
+     }
+    ],
+    "0x6": [
+     {
+      "meaning": "battleNum in round (0..6)",
+      "source": "asm/overlay_80_0222FD08.s",
+      "width": 1
+     }
+    ],
+    "0x7": [
+     {
+      "meaning": "set by FrtCmd_103 case 0",
+      "source": "asm/overlay_80_0222FD08.s",
+      "width": 1
+     }
+    ],
+    "0x702": [
+     {
+      "meaning": "comm receive counter",
+      "source": "asm/overlay_80_0222FD08.s",
+      "width": 1
+     }
+    ],
+    "0x8": [
+     {
+      "meaning": "tradeCount (cap 9999)",
+      "source": "asm/overlay_80_0222FD08.s",
+      "width": 2
+     }
+    ],
+    "0xa": [
+     {
+      "meaning": "roundCleared flag",
+      "source": "asm/overlay_80_0222FD08.s",
+      "width": 1
+     }
+    ],
+    "0xb": [
+     {
+      "meaning": "one-shot flag (FrtCmd_103 case 41)",
+      "source": "asm/overlay_80_0222FD08.s",
+      "width": 1
+     }
+    ],
+    "0xc": [
+     {
+      "meaning": "winStreak (Factory Head at +1 == 21/49)",
+      "source": "asm/overlay_80_0222FD08.s",
+      "width": 2
+     }
+    ],
+    "0xe": [
+     {
+      "meaning": "round/tier = winStreak/7, cap 8",
+      "source": "asm/overlay_80_0222FD08.s",
+      "width": 2
+     }
+    ]
+   },
+   "size_guesses": {
+    "asm/overlay_80_0222FD08.s": "0x708 (Heap_Alloc/MI_CpuFill8 size)"
+   },
+   "sources": [
+    "asm/overlay_80_0222FD08.s"
    ]
   },
   "BillboardResources (0x28)": {
@@ -31750,6 +33232,72 @@
     "asm/overlay_83_022479E4.s"
    ]
   },
+  "FactoryAppArgs": {
+   "fields": {
+    "0x0": [
+     {
+      "meaning": "SaveData *",
+      "source": "asm/overlay_80_0222FD08.s",
+      "width": 4
+     }
+    ],
+    "0x10": [
+     {
+      "meaning": "u16 results[6] (read by ov80_02230484)",
+      "source": "asm/overlay_80_0222FD08.s",
+      "width": 2
+     }
+    ],
+    "0x1c": [
+     {
+      "meaning": "BattleFactoryData *",
+      "source": "asm/overlay_80_0222FD08.s",
+      "width": 4
+     }
+    ],
+    "0x4": [
+     {
+      "meaning": "battleType",
+      "source": "asm/overlay_80_0222FD08.s",
+      "width": 1
+     }
+    ],
+    "0x5": [
+     {
+      "meaning": "levelMode",
+      "source": "asm/overlay_80_0222FD08.s",
+      "width": 1
+     }
+    ],
+    "0x6": [
+     {
+      "meaning": "mode 0 rent / 1 swap",
+      "source": "asm/overlay_80_0222FD08.s",
+      "width": 1
+     }
+    ],
+    "0x8": [
+     {
+      "meaning": "Party *",
+      "source": "asm/overlay_80_0222FD08.s",
+      "width": 4
+     }
+    ],
+    "0xc": [
+     {
+      "meaning": "Party *",
+      "source": "asm/overlay_80_0222FD08.s",
+      "width": 4
+     }
+    ]
+   },
+   "size_guesses": {
+    "asm/overlay_80_0222FD08.s": "0x24 (FrtCmd_095/098 Heap_Alloc)"
+   },
+   "sources": [
+    "asm/overlay_80_0222FD08.s"
+   ]
+  },
   "FactoryCommWork (overlay_80_0222FD08, Heap_Alloc 0x708)": {
    "fields": {
     "0x18": [
@@ -31926,6 +33474,65 @@
    },
    "sources": [
     "asm/overlay_80_0222AEF8.s"
+   ]
+  },
+  "FrontierMon (0x38)": {
+   "fields": {
+    "0x0": [
+     {
+      "meaning": "species:11 | form:5",
+      "source": "asm/overlay_80_0222FD08.s",
+      "width": 2
+     }
+    ],
+    "0x10": [
+     {
+      "meaning": "personality",
+      "source": "asm/overlay_80_0222FD08.s",
+      "width": 4
+     }
+    ],
+    "0x14": [
+     {
+      "meaning": "IVs:30 | flag bit30",
+      "source": "asm/overlay_80_0222FD08.s",
+      "width": 4
+     }
+    ],
+    "0x18": [
+     {
+      "meaning": "EVs[6]; 0x1e ppUps, 0x1f language, 0x20 ability, 0x21 friendship, 0x22 nickname",
+      "source": "asm/overlay_80_0222FD08.s",
+      "width": 1
+     }
+    ],
+    "0x2": [
+     {
+      "meaning": "heldItem",
+      "source": "asm/overlay_80_0222FD08.s",
+      "width": 2
+     }
+    ],
+    "0x4": [
+     {
+      "meaning": "moves[4]",
+      "source": "asm/overlay_80_0222FD08.s",
+      "width": 2
+     }
+    ],
+    "0xc": [
+     {
+      "meaning": "otId",
+      "source": "asm/overlay_80_0222FD08.s",
+      "width": 4
+     }
+    ]
+   },
+   "size_guesses": {
+    "asm/overlay_80_0222FD08.s": "0x38"
+   },
+   "sources": [
+    "asm/overlay_80_0222FD08.s"
    ]
   },
   "GF_SdatGetAttrPtr attr ids (src/sound.c SND_WORK)": {
@@ -40722,6 +42329,7 @@
    "callers": [
     "asm/overlay_14_021EFDE4.s",
     "asm/overlay_80_0222AEF8.s",
+    "asm/overlay_80_0222FD08.s",
     "asm/unk_0202FBCC.s"
    ],
    "header": "include/pokemon.h",
@@ -41671,6 +43279,7 @@
   "FrontierSave_GetStat": {
    "callers": [
     "asm/overlay_80_0222AEF8.s",
+    "asm/overlay_80_0222FD08.s",
     "asm/overlay_83_02242FE8.s",
     "asm/overlay_83_02243D7C.s",
     "asm/overlay_83_02246E08.s"
@@ -41827,6 +43436,7 @@
     "asm/overlay_18_021F7ED4.s",
     "asm/overlay_41_02248400.s",
     "asm/overlay_80_0222AEF8.s",
+    "asm/overlay_80_0222FD08.s",
     "asm/overlay_80_02239AF8.s",
     "asm/overlay_80_0223A00C.s",
     "asm/overlay_83_02243D7C.s",
@@ -42434,6 +44044,14 @@
    "known_prototype": "void GX_SetBankForSubOBJ(int bank)",
    "signature_sources": {}
   },
+  "GameStats_Inc": {
+   "callers": [
+    "asm/overlay_80_0222FD08.s"
+   ],
+   "header": "include/game_stats.h",
+   "known_prototype": "u32 GameStats_Inc(GameStats *gameStats, int statIdx)",
+   "signature_sources": {}
+  },
   "GetBoxMonData": {
    "callers": [
     "asm/overlay_14_021E5900.s",
@@ -42630,6 +44248,7 @@
     "asm/overlay_14_021EFDE4.s",
     "asm/overlay_14_021F0A80.s",
     "asm/overlay_80_0222AEF8.s",
+    "asm/overlay_80_0222FD08.s",
     "asm/overlay_83_02243D7C.s"
    ],
    "header": "include/pokemon.h",
@@ -43205,6 +44824,7 @@
     "asm/overlay_14_021F6628.s",
     "asm/overlay_18_021F7ED4.s",
     "asm/overlay_41_02248400.s",
+    "asm/overlay_80_0222FD08.s",
     "asm/overlay_80_022384D8.s",
     "asm/overlay_80_0223A00C.s",
     "asm/overlay_83_02246E08.s",
@@ -43295,6 +44915,7 @@
     "asm/overlay_32.s",
     "asm/overlay_41_02248400.s",
     "asm/overlay_80_0222AEF8.s",
+    "asm/overlay_80_0222FD08.s",
     "asm/overlay_80_022384D8.s",
     "asm/overlay_80_0223A00C.s",
     "asm/overlay_83_02243D7C.s",
@@ -43402,6 +45023,14 @@
    ],
    "header": "include/item.h",
    "known_prototype": "BOOL ItemIdIsMail(u16 itemId)",
+   "signature_sources": {}
+  },
+  "LCRandom": {
+   "callers": [
+    "asm/overlay_80_0222FD08.s"
+   ],
+   "header": "include/math_util.h",
+   "known_prototype": "u16 LCRandom(void)",
    "signature_sources": {}
   },
   "LanguageToDexFlag": {
@@ -43638,6 +45267,7 @@
     "asm/overlay_01_021FAC44.s",
     "asm/overlay_14_021E5900.s",
     "asm/overlay_14_021EAF08.s",
+    "asm/overlay_80_0222FD08.s",
     "asm/overlay_80_022384D8.s",
     "asm/overlay_80_0223A00C.s",
     "asm/overlay_98.s",
@@ -45234,6 +46864,7 @@
     "asm/overlay_14_021EFDE4.s",
     "asm/overlay_14_021F0A80.s",
     "asm/overlay_14_021F2490.s",
+    "asm/overlay_80_0222FD08.s",
     "asm/unk_0202FBCC.s"
    ],
    "header": "include/party.h",
@@ -45256,6 +46887,7 @@
     "asm/overlay_14_021F0A80.s",
     "asm/overlay_14_021F2490.s",
     "asm/overlay_80_0222AEF8.s",
+    "asm/overlay_80_0222FD08.s",
     "asm/overlay_83_02242FE8.s",
     "asm/overlay_83_02243D7C.s",
     "asm/overlay_83_02246E08.s",
@@ -45285,8 +46917,11 @@
   },
   "Party_SafeCopyMonToSlot_ResetAprijuiceModifiers": {
    "callers": [
-    "asm/overlay_14_021E5900.s"
+    "asm/overlay_14_021E5900.s",
+    "asm/overlay_80_0222FD08.s"
    ],
+   "header": "include/party.h",
+   "known_prototype": "void Party_SafeCopyMonToSlot_ResetAprijuiceModifiers(Party *party, int slot, Pokemon *src)",
    "signature_sources": {}
   },
   "Party_SwapSlots": {
@@ -45687,6 +47322,14 @@
    ],
    "signature_sources": {}
   },
+  "SaveArray_Party_Alloc": {
+   "callers": [
+    "asm/overlay_80_0222FD08.s"
+   ],
+   "header": "include/party.h",
+   "known_prototype": "Party *SaveArray_Party_Alloc(enum HeapID heapID)",
+   "signature_sources": {}
+  },
   "SaveArray_Party_Get": {
    "callers": [
     "asm/overlay_14_021E5900.s",
@@ -45694,6 +47337,14 @@
    ],
    "header": "include/party.h",
    "known_prototype": "Party *SaveArray_Party_Get(SaveData *saveData)",
+   "signature_sources": {}
+  },
+  "SaveArray_Party_Init": {
+   "callers": [
+    "asm/overlay_80_0222FD08.s"
+   ],
+   "header": "include/party.h",
+   "known_prototype": "void SaveArray_Party_Init(Party *party)",
    "signature_sources": {}
   },
   "SaveSubstruct_UpdateCRC": {
@@ -45724,6 +47375,7 @@
   "Save_Frontier_GetStatic": {
    "callers": [
     "asm/overlay_80_0222AEF8.s",
+    "asm/overlay_80_0222FD08.s",
     "asm/overlay_83_0223DD60.s",
     "asm/overlay_83_02242FE8.s",
     "asm/overlay_83_02243D7C.s",
@@ -45737,6 +47389,14 @@
    "signature_sources": {
     "asm/overlay_83_0223DD60.s": "void *Save_Frontier_GetStatic(SaveData *)"
    }
+  },
+  "Save_GameStats_Get": {
+   "callers": [
+    "asm/overlay_80_0222FD08.s"
+   ],
+   "header": "include/game_stats.h",
+   "known_prototype": "GameStats *Save_GameStats_Get(SaveData *saveData)",
+   "signature_sources": {}
   },
   "Save_PlayerData_GetOptionsAddr": {
    "callers": [
@@ -45799,10 +47459,19 @@
   },
   "Save_VarsFlags_Get": {
    "callers": [
+    "asm/overlay_80_0222FD08.s",
     "asm/unk_0203BA5C.s"
    ],
    "header": "include/save_vars_flags.h",
    "known_prototype": "SaveVarsFlags *Save_VarsFlags_Get(SaveData *saveData)",
+   "signature_sources": {}
+  },
+  "Save_VarsFlags_GetVar4052": {
+   "callers": [
+    "asm/overlay_80_0222FD08.s"
+   ],
+   "header": "include/sys_vars.h",
+   "known_prototype": "u16 Save_VarsFlags_GetVar4052(SaveVarsFlags *state)",
    "signature_sources": {}
   },
   "Save_WriteFileAsync": {
@@ -47041,6 +48710,7 @@
     "asm/overlay_14_021F6628.s",
     "asm/overlay_18_021EE35C.s",
     "asm/overlay_41_02248400.s",
+    "asm/overlay_80_0222FD08.s",
     "asm/overlay_98.s",
     "asm/unk_02004A44.s",
     "asm/unk_02016EDC.s",
@@ -47053,6 +48723,7 @@
    "signature_sources": {
     "asm/overlay_01_021FDA14.s": "compiler runtime for signed '/'",
     "asm/overlay_14_021E5900.s": "s32 _s32_div_f(s32 num, s32 den)",
+    "asm/overlay_80_0222FD08.s": "compiler intrinsic",
     "asm/unk_02004A44.s": "compiler runtime for signed '/' (write x / 5)",
     "asm/unk_02016EDC.s": "compiler runtime for signed / and %"
    }
@@ -66279,6 +67950,38 @@
     "asm/overlay_41_02248400.s": "void ov41_02249DB4(UnkOv41ScrollBg *bg, UnkOv41ScrollBgTemplate *tmpl, int dx, int dy, int frames, int *doneFlag)"
    }
   },
+  "ov80_02229F04": {
+   "callers": [
+    "asm/overlay_80_0222FD08.s"
+   ],
+   "header": "none (local decl in src/frontier/overlay_80_02229EE0.c); siblings use a local extern",
+   "known_prototype": "void *ov80_02229F04(FrontierTrainerData *dst, u16 trainerId, enum HeapID heapId, NarcId narcId)",
+   "signature_sources": {}
+  },
+  "ov80_0222A140": {
+   "callers": [
+    "asm/overlay_80_0222FD08.s"
+   ],
+   "header": "none (local in src/frontier/overlay_80_02229EE0.c)",
+   "known_prototype": "void ov80_0222A140(void *src, Pokemon *mon, int level)",
+   "signature_sources": {}
+  },
+  "ov80_0222A30C": {
+   "callers": [
+    "asm/overlay_80_0222FD08.s"
+   ],
+   "header": "none (local in src/frontier/overlay_80_02229EE0.c)",
+   "known_prototype": "u16 ov80_0222A30C(u16 abilityId)",
+   "signature_sources": {}
+  },
+  "ov80_0222A3BC": {
+   "callers": [
+    "asm/overlay_80_0222FD08.s"
+   ],
+   "header": "none (local in src/frontier/overlay_80_02229EE0.c)",
+   "known_prototype": "void ov80_0222A3BC(SaveData *saveData, Party *party, Pokemon *mon)",
+   "signature_sources": {}
+  },
   "ov80_0222A3D4": {
    "callers": [
     "asm/overlay_83_02246E08.s"
@@ -66309,6 +68012,14 @@
     "asm/overlay_83_02243D7C.s": "int ov80_0222A43C(u16 curHp, u16 maxHp)"
    }
   },
+  "ov80_0222A52C": {
+   "callers": [
+    "asm/overlay_80_0222FD08.s"
+   ],
+   "header": "include/frontier/overlay_80_02229EE0.h",
+   "known_prototype": "void ov80_0222A52C(void *a0, u16 *a1, u8 *a2, u32 *a3, void *a4, u32 a5, u32 a6, u32 a7)",
+   "signature_sources": {}
+  },
   "ov80_0222A7CC": {
    "callers": [
     "asm/overlay_83_0223DD60.s",
@@ -66319,6 +68030,14 @@
    "signature_sources": {
     "asm/overlay_83_02242FE8.s": "void ov80_0222A7CC(void *a0, int a1)"
    }
+  },
+  "ov80_0222A840": {
+   "callers": [
+    "asm/overlay_80_0222FD08.s"
+   ],
+   "header": "none (local in src/frontier/overlay_80_02229EE0.c)",
+   "known_prototype": "void ov80_0222A840(SaveData *saveData)",
+   "signature_sources": {}
   },
   "ov80_0222AEF8": {
    "callers": [],
@@ -66627,7 +68346,9 @@
    ]
   },
   "ov80_0222B108": {
-   "callers": [],
+   "callers": [
+    "asm/overlay_80_0222FD08.s"
+   ],
    "confidence": "high",
    "defined_in": "asm/overlay_80_0222AEF8.s",
    "mode": "thumb",
@@ -66636,7 +68357,8 @@
    ],
    "signature_guess": "BOOL ov80_0222B108(FactoryCommWork *w)",
    "signature_sources": {
-    "asm/overlay_80_0222AEF8.s": "BOOL ov80_0222B108(FactoryCommWork *w)"
+    "asm/overlay_80_0222AEF8.s": "BOOL ov80_0222B108(FactoryCommWork *w)",
+    "asm/overlay_80_0222FD08.s": "BOOL ov80_0222B108(void *data)"
    },
    "struct_accesses": [
     {
@@ -66711,7 +68433,9 @@
    ]
   },
   "ov80_0222B174": {
-   "callers": [],
+   "callers": [
+    "asm/overlay_80_0222FD08.s"
+   ],
    "confidence": "high",
    "defined_in": "asm/overlay_80_0222AEF8.s",
    "mode": "thumb",
@@ -66720,7 +68444,8 @@
    ],
    "signature_guess": "BOOL ov80_0222B174(FactoryCommWork *w)",
    "signature_sources": {
-    "asm/overlay_80_0222AEF8.s": "BOOL ov80_0222B174(FactoryCommWork *w)"
+    "asm/overlay_80_0222AEF8.s": "BOOL ov80_0222B174(FactoryCommWork *w)",
+    "asm/overlay_80_0222FD08.s": "BOOL ov80_0222B174(void *data)"
    },
    "struct_accesses": [
     {
@@ -66765,7 +68490,9 @@
    ]
   },
   "ov80_0222B1DC": {
-   "callers": [],
+   "callers": [
+    "asm/overlay_80_0222FD08.s"
+   ],
    "confidence": "high",
    "defined_in": "asm/overlay_80_0222AEF8.s",
    "mode": "thumb",
@@ -66774,7 +68501,8 @@
    ],
    "signature_guess": "BOOL ov80_0222B1DC(FactoryCommWork *w)",
    "signature_sources": {
-    "asm/overlay_80_0222AEF8.s": "BOOL ov80_0222B1DC(FactoryCommWork *w)"
+    "asm/overlay_80_0222AEF8.s": "BOOL ov80_0222B1DC(FactoryCommWork *w)",
+    "asm/overlay_80_0222FD08.s": "BOOL ov80_0222B1DC(void *data)"
    },
    "struct_accesses": [
     {
@@ -66843,7 +68571,9 @@
    ]
   },
   "ov80_0222B2C4": {
-   "callers": [],
+   "callers": [
+    "asm/overlay_80_0222FD08.s"
+   ],
    "confidence": "high",
    "defined_in": "asm/overlay_80_0222AEF8.s",
    "mode": "thumb",
@@ -66852,7 +68582,8 @@
    ],
    "signature_guess": "BOOL ov80_0222B2C4(FactoryCommWork *w)",
    "signature_sources": {
-    "asm/overlay_80_0222AEF8.s": "BOOL ov80_0222B2C4(FactoryCommWork *w)"
+    "asm/overlay_80_0222AEF8.s": "BOOL ov80_0222B2C4(FactoryCommWork *w)",
+    "asm/overlay_80_0222FD08.s": "BOOL ov80_0222B2C4(void *data)"
    },
    "struct_accesses": [
     {
@@ -66921,7 +68652,9 @@
    ]
   },
   "ov80_0222B3B0": {
-   "callers": [],
+   "callers": [
+    "asm/overlay_80_0222FD08.s"
+   ],
    "confidence": "high",
    "defined_in": "asm/overlay_80_0222AEF8.s",
    "mode": "thumb",
@@ -66930,7 +68663,8 @@
    ],
    "signature_guess": "BOOL ov80_0222B3B0(FactoryCommWork *w, u8 val)",
    "signature_sources": {
-    "asm/overlay_80_0222AEF8.s": "BOOL ov80_0222B3B0(FactoryCommWork *w, u8 val)"
+    "asm/overlay_80_0222AEF8.s": "BOOL ov80_0222B3B0(FactoryCommWork *w, u8 val)",
+    "asm/overlay_80_0222FD08.s": "BOOL ov80_0222B3B0(void *data, u8 a1)"
    },
    "struct_accesses": [
     {
@@ -66966,7 +68700,9 @@
    ]
   },
   "ov80_0222B3FC": {
-   "callers": [],
+   "callers": [
+    "asm/overlay_80_0222FD08.s"
+   ],
    "confidence": "high",
    "defined_in": "asm/overlay_80_0222AEF8.s",
    "mode": "thumb",
@@ -66975,7 +68711,8 @@
    ],
    "signature_guess": "BOOL ov80_0222B3FC(FactoryCommWork *w, u8 val)",
    "signature_sources": {
-    "asm/overlay_80_0222AEF8.s": "BOOL ov80_0222B3FC(FactoryCommWork *w, u8 val)"
+    "asm/overlay_80_0222AEF8.s": "BOOL ov80_0222B3FC(FactoryCommWork *w, u8 val)",
+    "asm/overlay_80_0222FD08.s": "BOOL ov80_0222B3FC(void *data, u8 a1)"
    },
    "struct_accesses": [
     {
@@ -67011,7 +68748,9 @@
    ]
   },
   "ov80_0222B448": {
-   "callers": [],
+   "callers": [
+    "asm/overlay_80_0222FD08.s"
+   ],
    "confidence": "medium",
    "defined_in": "asm/overlay_80_0222AEF8.s",
    "mode": "thumb",
@@ -67020,7 +68759,8 @@
    ],
    "signature_guess": "BOOL ov80_0222B448(FactoryCommWork *w)",
    "signature_sources": {
-    "asm/overlay_80_0222AEF8.s": "BOOL ov80_0222B448(FactoryCommWork *w)"
+    "asm/overlay_80_0222AEF8.s": "BOOL ov80_0222B448(FactoryCommWork *w)",
+    "asm/overlay_80_0222FD08.s": "BOOL ov80_0222B448(void *data)"
    },
    "struct_accesses": [
     {
@@ -67949,12 +69689,626 @@
     }
    ]
   },
+  "ov80_0222FD08": {
+   "callers": [],
+   "confidence": "high",
+   "defined_in": "asm/overlay_80_0222FD08.s",
+   "mode": "thumb",
+   "notes": [
+    "[asm/overlay_80_0222FD08.s] Allocates 0x708 bytes into bss global _0223DD40 (sData), zero-fills it, and returns it. Stores are in this order: 0x4F4, 0x4F8, then heapId at +0. Locals: record = sData->unk4F4 (r5), bits = sub_02030AE8(save) (r4), a3 spilled to [sp] (push r3 slot). isResume==0 path: set unk4/5/6, then sub_02030940(record). flag = (unk4==3) ? Save_VarsFlags_GetVar4052(Save_VarsFlags_Get(sData->save)) : sub_02030AD4(bits, 10, (u8)(unk4 + unk5*4), 0). The (u8) narrowing happens once at the merge point, then if (flag == 1) the two GetStat stores run, else unkC = 0 and unk8 = 0, which share the trailing strh #8. Resume path: unk4/5/6 = sub_02030A24(record, 1/0/2, 0, 0), then both GetStat stores. Common tail: unkE = unkC/7, then if (ov80_02237254(unk4)==1) ov80_0222A840(save), then return sData. The asm re-reads the global after almost every store, but the inner duplicate sub_0205BFF0/C048 call args use the PREVIOUS statement's pointer register (see risks). Each stat store looks like FrontierSave_GetStat(Save_Frontier_GetStatic(d->save), f(d->unk5, d->unk4), sub_0205C268(f(d->unk5, d->unk4))), which suggests a macro."
+   ],
+   "signature_guess": "BattleFactoryData *ov80_0222FD08(SaveData *saveData, int isResume, u8 battleType, u8 levelMode)",
+   "signature_sources": {
+    "asm/overlay_80_0222FD08.s": "BattleFactoryData *ov80_0222FD08(SaveData *saveData, int isResume, u8 battleType, u8 levelMode)"
+   },
+   "struct_accesses": [
+    {
+     "meaning": "heapId = 11 (HEAP_ID_FIELD2)",
+     "offset": "0x0",
+     "param": -1,
+     "width": 4
+    },
+    {
+     "meaning": "battleType (a2), or record field 1 when resuming; ==3 means read var 4052 instead of the frontier bit",
+     "offset": "0x4",
+     "param": -1,
+     "width": 1
+    },
+    {
+     "meaning": "levelMode (a3), or record field 0",
+     "offset": "0x5",
+     "param": -1,
+     "width": 1
+    },
+    {
+     "meaning": "battle index within round = 0, or record field 2",
+     "offset": "0x6",
+     "param": -1,
+     "width": 1
+    },
+    {
+     "meaning": "trade count = FrontierSave_GetStat(sub_0205C048 id)",
+     "offset": "0x8",
+     "param": -1,
+     "width": 2
+    },
+    {
+     "meaning": "win streak = FrontierSave_GetStat(sub_0205BFF0 id)",
+     "offset": "0xc",
+     "param": -1,
+     "width": 2
+    },
+    {
+     "meaning": "round = winStreak / 7 (signed div via _s32_div_f)",
+     "offset": "0xe",
+     "param": -1,
+     "width": 2
+    },
+    {
+     "meaning": "= 0 (new-game path only)",
+     "offset": "0x10",
+     "param": -1,
+     "width": 4
+    },
+    {
+     "meaning": "Party* player party (SaveArray_Party_Alloc(11))",
+     "offset": "0x4d4",
+     "param": -1,
+     "width": 4
+    },
+    {
+     "meaning": "Party* opponent party",
+     "offset": "0x4d8",
+     "param": -1,
+     "width": 4
+    },
+    {
+     "meaning": "factory resume record = sub_0203094C(save) (FrontierSave+0x8E0, 0x58 bytes)",
+     "offset": "0x4f4",
+     "param": -1,
+     "width": 4
+    },
+    {
+     "meaning": "SaveData*",
+     "offset": "0x4f8",
+     "param": -1,
+     "width": 4
+    }
+   ]
+  },
+  "ov80_0222FEEC": {
+   "callers": [],
+   "confidence": "high",
+   "defined_in": "asm/overlay_80_0222FD08.s",
+   "mode": "thumb",
+   "notes": [
+    "[asm/overlay_80_0222FD08.s] if (isResume == 0) ov80_0222FF00(data); else ov80_02230270(data); The calls are plain bl, not tail calls. Both callees are static and defined LATER in the file, so they need forward declarations."
+   ],
+   "signature_guess": "void ov80_0222FEEC(BattleFactoryData *data, int isResume)",
+   "signature_sources": {
+    "asm/overlay_80_0222FD08.s": "void ov80_0222FEEC(BattleFactoryData *data, int isResume)"
+   }
+  },
+  "ov80_0222FF00": {
+   "callers": [
+    "asm/overlay_80_0222FD08.s"
+   ],
+   "confidence": "high",
+   "defined_in": "asm/overlay_80_0222FD08.s",
+   "mode": "thumb",
+   "notes": [
+    "[asm/overlay_80_0222FD08.s] Frame is 0x2D4. Locals, highest slot first: FrontierMon mons[12] @sp+0x34, u16 speciesB[6] @0x28, u16 itemB[6] @0x1c, int count @0x18 (6, or 12 in multi), int i @0x14. Step 1: call ov80_02236E24(ov80_022372B4(d), d->unk5, d->ids254, d->mons280, d->u8_260, d->u32_268, d->unk8, NULL, NULL). That is NINE args (5 on the stack). Step 2: ov80_022300D4(d,4,0) and ov80_022300D4(d,5,0). Step 3: struct-copy mons[i] = d->mons280[i] for 6 entries (the 7x ldmia/stmia loop). Step 4: if (ov80_02237254(d->unk4)==1), build speciesB[i] = d->mons280[i].species & 0x7ff (lsl#21/lsr#21) and itemB[i] = d->mons280[i].item. Then call ov80_02236E24(ov80_022372B4(d), d->unk5, d+0x584, d+0x5B0, d+0x590, d+0x598, d->unk580, speciesB, itemB), then ov80_022300D4(d,4,1) and (d,5,1), count = 12, and mons[6+i] = d->mons5B0[i]. Step 5: ov80_02236E90(ov80_02236DF8(d->unk4,1), d->unk18[d->unk6], d->unk5, mons, d+0x3D2, d+0x3F0, d+0x3DA, d+0x3E0, count). Step 6: for i<6, call AllocMonZeroed(11) INSIDE the loop, then ov80_0222A140(&d->mons280[i], mon, ov80_02237120(d)), ov80_0222A3BC(d->save, d->party4D4, mon), Heap_Free(mon). Step 7: for i<6, Party_GetMonByIndex(d->party4D4, i) with the result discarded."
+   ],
+   "signature_guess": "static void ov80_0222FF00(BattleFactoryData *data)",
+   "signature_sources": {
+    "asm/overlay_80_0222FD08.s": "static void ov80_0222FF00(BattleFactoryData *data)"
+   },
+   "struct_accesses": [
+    {
+     "meaning": "u16 trainerIds[14], filled by ov80_02236BE4(unk4, ov80_022372B4(d), d->unk18, 14)",
+     "offset": "0x18",
+     "param": 0,
+     "width": 2
+    },
+    {
+     "meaning": "rental set A: u16 ids[6]",
+     "offset": "0x254",
+     "param": 0,
+     "width": 2
+    },
+    {
+     "meaning": "set A u8[6]",
+     "offset": "0x260",
+     "param": 0,
+     "width": 1
+    },
+    {
+     "meaning": "set A u32[6]",
+     "offset": "0x268",
+     "param": 0,
+     "width": 4
+    },
+    {
+     "meaning": "set A FrontierMon[6] (0x38 stride); +0 u16 species:11, +2 u16 item",
+     "offset": "0x280",
+     "param": 0,
+     "width": 56
+    },
+    {
+     "meaning": "partner trade count (a6 of the second ov80_02236E24 call)",
+     "offset": "0x580",
+     "param": 0,
+     "width": 2
+    },
+    {
+     "meaning": "rental set B (partner): same 0x17C layout as 0x254",
+     "offset": "0x584",
+     "param": 0,
+     "width": 2
+    },
+    {
+     "meaning": "opponent ids u16[4]",
+     "offset": "0x3d2",
+     "param": 0,
+     "width": 2
+    },
+    {
+     "meaning": "opponent FrontierMon[4]",
+     "offset": "0x3f0",
+     "param": 0,
+     "width": 56
+    }
+   ]
+  },
+  "ov80_022300D4": {
+   "callers": [
+    "asm/overlay_80_0222FD08.s"
+   ],
+   "confidence": "high",
+   "defined_in": "asm/overlay_80_0222FD08.s",
+   "mode": "thumb",
+   "notes": [
+    "[asm/overlay_80_0222FD08.s] u16 r = LCRandom() % 6 (signed mod through _s32_div_f, remainder narrowed to u16). Then swap entry [slot] with [r] across all four parallel arrays. Order: save tmp id/u8/u32/mon from [slot]; copy [r] into [slot]; write the tmps into [r]. There are two fully separate code bodies for whichSet==0 and !=0, each with its own temps: tmpMon0 @sp+0xa4 and tmpMon1 @sp+0x6c (0x38 each), scalar temps @sp+0x1c/0x18/0x14 and @sp+8/4/0. Frame 0xdc, heavy address spills. A RentalSet sub-struct {u16 ids[6]; u8 b[6]; u32 w[6]; FrontierMon mons[6];} (0x17C bytes) at 0x254 and 0x584 is the likely source shape. slot is not narrowed (int). Callers pass slot 4/5."
+   ],
+   "signature_guess": "static void ov80_022300D4(BattleFactoryData *data, int slot, int whichSet)",
+   "signature_sources": {
+    "asm/overlay_80_0222FD08.s": "static void ov80_022300D4(BattleFactoryData *data, int slot, int whichSet)"
+   },
+   "struct_accesses": [
+    {
+     "meaning": "setA.ids[6] (whichSet==0)",
+     "offset": "0x254",
+     "param": 0,
+     "width": 2
+    },
+    {
+     "meaning": "setA.u8[6]",
+     "offset": "0x260",
+     "param": 0,
+     "width": 1
+    },
+    {
+     "meaning": "setA.u32[6]",
+     "offset": "0x268",
+     "param": 0,
+     "width": 4
+    },
+    {
+     "meaning": "setA.mons[6]",
+     "offset": "0x280",
+     "param": 0,
+     "width": 56
+    },
+    {
+     "meaning": "setB.ids (whichSet!=0); +0xC u8[6], +0x14 u32[6], +0x2C mons[6]",
+     "offset": "0x584",
+     "param": 0,
+     "width": 2
+    }
+   ]
+  },
+  "ov80_02230270": {
+   "callers": [
+    "asm/overlay_80_0222FD08.s"
+   ],
+   "confidence": "high",
+   "defined_in": "asm/overlay_80_0222FD08.s",
+   "mode": "thumb",
+   "notes": [
+    "[asm/overlay_80_0222FD08.s] Resume path. Calls ov80_02236DD4(d->unk4) and discards the result. Frame 0x19C. Local arrays are sized 6 even though only 4 entries are used: FrontierMon mons[6] @sp+0x4c, u16 ids[6] @0x40, u32 pid[6] @0x28, u8 iv[6] @0x20. Loop i<4: ids[i] = A24(rec,4,i,0); pid[i] = A24(rec,6,i,0); iv[i] = A24(rec,5,i,0); d->unk4E8[i] = ids[i] (reloaded from the stack). Then ov80_0222A52C(mons, ids, iv, pid, NULL, 4, 11, 0xcd). mon = AllocMonZeroed(11) is allocated ONCE, outside the loop. For i<4: ov80_0222A140(&mons[i], mon, ov80_02237120(d)); ov80_0222A3BC(d->save, d->party4D4, mon). Then Heap_Free(mon). The same block repeats with fields 7/9/8 into d->unk3D2[i] and party4D8, reusing the same local arrays. (u8)i narrowing happens at each A24 call, which implies a u8 idx param in the local prototype."
+   ],
+   "signature_guess": "static void ov80_02230270(BattleFactoryData *data)",
+   "signature_sources": {
+    "asm/overlay_80_0222FD08.s": "static void ov80_02230270(BattleFactoryData *data)"
+   },
+   "struct_accesses": [
+    {
+     "meaning": "unk18[i] = sub_02030A24(record, 3, (u8)i, 0), i<14",
+     "offset": "0x18",
+     "param": 0,
+     "width": 2
+    },
+    {
+     "meaning": "playerIds[4] = record field 4",
+     "offset": "0x4e8",
+     "param": 0,
+     "width": 2
+    },
+    {
+     "meaning": "oppIds[4] = record field 7",
+     "offset": "0x3d2",
+     "param": 0,
+     "width": 2
+    },
+    {
+     "meaning": "record",
+     "offset": "0x4f4",
+     "param": 0,
+     "width": 4
+    }
+   ]
+  },
+  "ov80_02230424": {
+   "callers": [],
+   "confidence": "high",
+   "defined_in": "asm/overlay_80_0222FD08.s",
+   "mode": "thumb",
+   "notes": [
+    "[asm/overlay_80_0222FD08.s] if (data != NULL) { if (party4D4) Heap_Free(party4D4); if (party4D8) Heap_Free(party4D8); MI_CpuFill8(data, 0, 0x708); Heap_Free(data); }. Use the if(data != NULL){...} form: the asm does beq to the epilogue. Does NOT clear the global."
+   ],
+   "signature_guess": "void ov80_02230424(BattleFactoryData *data)",
+   "signature_sources": {
+    "asm/overlay_80_0222FD08.s": "void ov80_02230424(BattleFactoryData *data)"
+   }
+  },
+  "ov80_02230460": {
+   "callers": [],
+   "confidence": "high",
+   "defined_in": "asm/overlay_80_0222FD08.s",
+   "mode": "thumb",
+   "notes": [
+    "[asm/overlay_80_0222FD08.s] for (int i = 0; i < 6; i++) data->unk4DC[i] = ov80_02230484(args, i). Signed blt. Caller-side u8 narrowing. args is the 0x24 app-launch struct built in FrtCmd_095/098; this is called from the static callback ov80_0222F7CC."
+   ],
+   "signature_guess": "void ov80_02230460(BattleFactoryData *data, FactoryAppArgs *args)",
+   "signature_sources": {
+    "asm/overlay_80_0222FD08.s": "void ov80_02230460(BattleFactoryData *data, FactoryAppArgs *args)"
+   },
+   "struct_accesses": [
+    {
+     "meaning": "u16 selected[6] = ov80_02230484(args, (u8)i)",
+     "offset": "0x4dc",
+     "param": 0,
+     "width": 2
+    }
+   ]
+  },
+  "ov80_02230484": {
+   "callers": [
+    "asm/overlay_80_0222FD08.s"
+   ],
+   "confidence": "high",
+   "defined_in": "asm/overlay_80_0222FD08.s",
+   "mode": "thumb",
+   "notes": [
+    "[asm/overlay_80_0222FD08.s] NOT in .inc, so static. Use if (idx >= 6) { GF_AssertFail(); return 0; } return args->unk10[idx]; with an explicit return, not GF_ASSERT (the assert path returns). It is defined after its caller, so it needs a forward declaration."
+   ],
+   "signature_guess": "static u16 ov80_02230484(FactoryAppArgs *args, u8 idx)",
+   "signature_sources": {
+    "asm/overlay_80_0222FD08.s": "static u16 ov80_02230484(FactoryAppArgs *args, u8 idx)"
+   },
+   "struct_accesses": [
+    {
+     "meaning": "u16 results[6] in the 0x24 launch-args struct",
+     "offset": "0x10",
+     "param": 0,
+     "width": 2
+    }
+   ]
+  },
+  "ov80_0223049C": {
+   "callers": [
+    "asm/overlay_80_0222FD08.s"
+   ],
+   "confidence": "high",
+   "defined_in": "asm/overlay_80_0222FD08.s",
+   "mode": "thumb",
+   "notes": [
+    "[asm/overlay_80_0222FD08.s] Save/commit routine; mode is 0/1/2. Locals: sp+0 bits = sub_02030AE8(save) (int, later passed as u32 a0 of sub_02030AA4); frontier = Save_Frontier_GetStatic(save) in r4; u16 hw @sp+4; u8 b @sp+0xc (written via 'add r0,sp,#4; strb [r0,#8]'); u32 w @sp+0x10; frame 0x20. ov80_02236DD4 and ov80_02236DF8(unk4,1) results are discarded. Record writes: field0 = unk5, field1 = unk4, sub_02030964(record, 1), field2 = unk6. Then sub_02031108(frontier, C048id, sub_0205C268(C048id), unk8) and sub_02031108(frontier, BFF0id, ..., unkC). if (mode != 2): old = GetStat(C01Cid); sub_0203126C(C01Cid, unkC); new = GetStat(C01Cid); if (unkC == old) sub_0203126C(C074id, unk8); else if (old < new) sub_02031108(C074id, unk8). Then b = unkA; sub_02030AA4(bits, 10, (u8)(unk4 + unk5*4), &b); if (unk4 == 3) { id = unk5 == 0 ? 0x66 : 0x68; sub_02031108(frontier, id, sub_0205C268(id), unkA); }. Always: for (u16 i = 0; i < 14; i++) { hw = unk18[i]; sub_02030978(rec, 3, (u8)i, &hw); }. Then n = Party_GetCount(party4D4) (UNSIGNED compare: blo, zero-trip beq with 'ldr r4,=0') and for u16 i < n: field4 = unk4E8[i], field5 = (u8)GetMonData(mon, 0x47 = MON_DATA_ATK_IV, NULL), field6 = GetMonData(mon, MON_DATA_PERSONALITY, NULL). The same loop repeats for party4D8 with fields 7/8/9 and unk3D2. Loop counters are u16 (narrowing ++); count needs u32 for blo."
+   ],
+   "signature_guess": "void ov80_0223049C(BattleFactoryData *data, int mode)",
+   "signature_sources": {
+    "asm/overlay_80_0222FD08.s": "void ov80_0223049C(BattleFactoryData *data, int mode)"
+   },
+   "struct_accesses": [
+    {
+     "meaning": "battleType",
+     "offset": "0x4",
+     "param": 0,
+     "width": 1
+    },
+    {
+     "meaning": "levelMode",
+     "offset": "0x5",
+     "param": 0,
+     "width": 1
+    },
+    {
+     "meaning": "battle index",
+     "offset": "0x6",
+     "param": 0,
+     "width": 1
+    },
+    {
+     "meaning": "trade count",
+     "offset": "0x8",
+     "param": 0,
+     "width": 2
+    },
+    {
+     "meaning": "cleared-round flag, written to frontier bit (unk4 + unk5*4)",
+     "offset": "0xa",
+     "param": 0,
+     "width": 1
+    },
+    {
+     "meaning": "win streak",
+     "offset": "0xc",
+     "param": 0,
+     "width": 2
+    },
+    {
+     "meaning": "playerIds[]",
+     "offset": "0x4e8",
+     "param": 0,
+     "width": 2
+    },
+    {
+     "meaning": "oppIds[]",
+     "offset": "0x3d2",
+     "param": 0,
+     "width": 2
+    }
+   ]
+  },
+  "ov80_02230784": {
+   "callers": [],
+   "confidence": "high",
+   "defined_in": "asm/overlay_80_0222FD08.s",
+   "mode": "thumb",
+   "notes": [
+    "[asm/overlay_80_0222FD08.s] data->unk6++; return data->unk6; (ldrb reload after strb)"
+   ],
+   "signature_guess": "u8 ov80_02230784(BattleFactoryData *data)",
+   "signature_sources": {
+    "asm/overlay_80_0222FD08.s": "u8 ov80_02230784(BattleFactoryData *data)"
+   }
+  },
+  "ov80_02230790": {
+   "callers": [],
+   "confidence": "high",
+   "defined_in": "asm/overlay_80_0222FD08.s",
+   "mode": "thumb",
+   "notes": [
+    "[asm/overlay_80_0222FD08.s] return data->unk6;"
+   ],
+   "signature_guess": "u8 ov80_02230790(BattleFactoryData *data)",
+   "signature_sources": {
+    "asm/overlay_80_0222FD08.s": "u8 ov80_02230790(BattleFactoryData *data)"
+   }
+  },
+  "ov80_02230794": {
+   "callers": [],
+   "confidence": "medium",
+   "defined_in": "asm/overlay_80_0222FD08.s",
+   "mode": "thumb",
+   "notes": [
+    "[asm/overlay_80_0222FD08.s] Almost a clone of the matched-in-WIP ov80_022317D0 (src/frontier/overlay_80_022310C4.c:392). Declares u8 buf[0x30] at sp+0; Heap_Free(ov80_02229F04(buf, data->unk18[(u8)(data->unk6 + side*7)], 11, 0xcc)); return ov80_0222A30C((u8)*(u16*)(buf+4)). Index computation: ldrb unk6; mov r3,#7; mul r3,r1; add r1,r4,r3; lsl#24; lsr#23. There is no entry narrowing of side, so int and u8 are equivalent."
+   ],
+   "signature_guess": "u16 ov80_02230794(BattleFactoryData *data, u8 side)",
+   "signature_sources": {
+    "asm/overlay_80_0222FD08.s": "u16 ov80_02230794(BattleFactoryData *data, u8 side)"
+   }
+  },
+  "ov80_022307C8": {
+   "callers": [],
+   "confidence": "high",
+   "defined_in": "asm/overlay_80_0222FD08.s",
+   "mode": "thumb",
+   "notes": [
+    "[asm/overlay_80_0222FD08.s] Tail call: ov80_0223049C(data, 1); emitted as ldr r3,=; bx r3."
+   ],
+   "signature_guess": "void ov80_022307C8(BattleFactoryData *data)",
+   "signature_sources": {
+    "asm/overlay_80_0222FD08.s": "void ov80_022307C8(BattleFactoryData *data)"
+   }
+  },
+  "ov80_022307D4": {
+   "callers": [],
+   "confidence": "high",
+   "defined_in": "asm/overlay_80_0222FD08.s",
+   "mode": "thumb",
+   "notes": [
+    "[asm/overlay_80_0222FD08.s] data->unkA = 1; if (data->unkE < 8) data->unkE++; data->unk6 = 0; ov80_0223049C(data, 0) as a tail call."
+   ],
+   "signature_guess": "void ov80_022307D4(BattleFactoryData *data)",
+   "signature_sources": {
+    "asm/overlay_80_0222FD08.s": "void ov80_022307D4(BattleFactoryData *data)"
+   }
+  },
+  "ov80_022307F0": {
+   "callers": [],
+   "confidence": "high",
+   "defined_in": "asm/overlay_80_0222FD08.s",
+   "mode": "thumb",
+   "notes": [
+    "[asm/overlay_80_0222FD08.s] nA = ov80_02236DD4(unk4) @sp+4; nB = ov80_02236DF8(unk4,1) @sp+0; SaveArray_Party_Init(party4D4); mon = AllocMonZeroed(11). for (int i = 0; i < nA; i++) { ov80_0222A140(&d->mons280[d->unk4DC[i]], mon, ov80_02237120(d)); ov80_0222A3BC(d->save, d->party4D4, mon); d->unk4E8[i] = d->ids254[d->unk4DC[i]]; }. for (i < nB): mons3F0[i] into party4D8. Then Heap_Free(mon). Signed ble/blt."
+   ],
+   "signature_guess": "void ov80_022307F0(BattleFactoryData *data)",
+   "signature_sources": {
+    "asm/overlay_80_0222FD08.s": "void ov80_022307F0(BattleFactoryData *data)"
+   }
+  },
+  "ov80_022308C4": {
+   "callers": [],
+   "confidence": "high",
+   "defined_in": "asm/overlay_80_0222FD08.s",
+   "mode": "thumb",
+   "notes": [
+    "[asm/overlay_80_0222FD08.s] Locals: u16 species[8] @sp+0x3c and u16 items[8] @sp+0x2c, zeroed in one loop of 8. nB = ov80_02236DF8(unk4,1); n1 = Party_GetCount(party4D4) as int; species[i]/items[i] = GetMonData(mon, MON_DATA_SPECIES/HELD_ITEM, NULL). n2 = Party_GetCount(party4D8); the same fill into species[n1+i]/items[n1+i], plus d->ids254[i] = d->unk3D2[i]. tbl = ov80_02236C2C(d->unk18[d->unk6], d->unk5); ov80_02236C9C(species, items, n1+n2, nB, d->unk3D2, 11, tbl, 0, d->u8_3DA); ov80_0222A52C(d->mons3F0, d->unk3D2, d->u8_3DA, NULL, d->u32_3E0, nB, 11, 0xcd)."
+   ],
+   "signature_guess": "void ov80_022308C4(BattleFactoryData *data)",
+   "signature_sources": {
+    "asm/overlay_80_0222FD08.s": "void ov80_022308C4(BattleFactoryData *data)"
+   }
+  },
+  "ov80_022309F8": {
+   "callers": [],
+   "confidence": "high",
+   "defined_in": "asm/overlay_80_0222FD08.s",
+   "mode": "thumb",
+   "notes": [
+    "[asm/overlay_80_0222FD08.s] Trade (swap) step. if (d->unk4DC[0] != 0xff) { Party_SafeCopyMonToSlot_ResetAprijuiceModifiers(d->party4D4, d->unk4DC[0], Party_GetMonByIndex(d->party4D8, d->unk4DC[1])); d->unk4E8[d->unk4DC[0]] = d->ids254[d->unk4DC[1]]; ov80_02230AE4(d); GameStats_Inc(Save_GameStats_Get(d->save), GAME_STAT_UNK65); }. The guard branches beq to the epilogue, so use the if(!=0xff){} form."
+   ],
+   "signature_guess": "void ov80_022309F8(BattleFactoryData *data)",
+   "signature_sources": {
+    "asm/overlay_80_0222FD08.s": "void ov80_022309F8(BattleFactoryData *data)"
+   }
+  },
+  "ov80_02230A60": {
+   "callers": [],
+   "confidence": "high",
+   "defined_in": "asm/overlay_80_0222FD08.s",
+   "mode": "thumb",
+   "notes": [
+    "[asm/overlay_80_0222FD08.s] ov80_02236DD4(unk4) result discarded; n = ov80_02236DF8(unk4,1) (r6); SaveArray_Party_Init(party4D8); mon = AllocMonZeroed(11). for (i @[sp]; i < n) load mons3F0[i] into party4D8. Heap_Free(mon). for (i < n) Party_GetMonByIndex(party4D8, i) with the result discarded. The first loop counter is spilled to [sp] because r4-r7 are all taken."
+   ],
+   "signature_guess": "void ov80_02230A60(BattleFactoryData *data)",
+   "signature_sources": {
+    "asm/overlay_80_0222FD08.s": "void ov80_02230A60(BattleFactoryData *data)"
+   }
+  },
+  "ov80_02230AE4": {
+   "callers": [
+    "asm/overlay_80_0222FD08.s"
+   ],
+   "confidence": "high",
+   "defined_in": "asm/overlay_80_0222FD08.s",
+   "mode": "thumb",
+   "notes": [
+    "[asm/overlay_80_0222FD08.s] if (data->unk8 < 9999) data->unk8++; (literal 0x270F)"
+   ],
+   "signature_guess": "void ov80_02230AE4(BattleFactoryData *data)",
+   "signature_sources": {
+    "asm/overlay_80_0222FD08.s": "void ov80_02230AE4(BattleFactoryData *data)"
+   }
+  },
+  "ov80_02230AF8": {
+   "callers": [],
+   "confidence": "medium",
+   "defined_in": "asm/overlay_80_0222FD08.s",
+   "mode": "thumb",
+   "notes": [
+    "[asm/overlay_80_0222FD08.s] Dense switch 0..6 compiled as an add-pc jump table with bhi default. Each case is 'return ov80_0222Bxxx(data)', and cases 4/5 pass arg, which is narrowed to u8 at the call site (the callee param is u8). The default falls off with r0 still = data and no return value, so write the switch with NO trailing return statement. Case 6's call shares the final pop."
+   ],
+   "signature_guess": "BOOL ov80_02230AF8(BattleFactoryData *data, int cmd, int arg)",
+   "signature_sources": {
+    "asm/overlay_80_0222FD08.s": "BOOL ov80_02230AF8(BattleFactoryData *data, int cmd, int arg)"
+   }
+  },
+  "ov80_02230B4C": {
+   "callers": [],
+   "confidence": "high",
+   "defined_in": "asm/overlay_80_0222FD08.s",
+   "mode": "thumb",
+   "notes": [
+    "[asm/overlay_80_0222FD08.s] u8 type = d->unk4; u16 round = d->unkE (loaded in that order). if (type <= 1) { v = round >= 8 ? 9 : ov80_0223BDD4[round]; } else { v = round >= 8 ? 0x15 : ov80_0223BDE0[round]; }. The asm branch polarity is 'blo table', so the >=8 constant is the fall-through: write if (round >= 8) v = K; else v = tbl[round]. Then if (type == 0 && (d->unkC == 0x15 || d->unkC == 0x31)) v = 0x14; return v."
+   ],
+   "signature_guess": "u8 ov80_02230B4C(BattleFactoryData *data)",
+   "signature_sources": {
+    "asm/overlay_80_0222FD08.s": "u8 ov80_02230B4C(BattleFactoryData *data)"
+   }
+  },
+  "ov80_02236BE4": {
+   "callers": [
+    "asm/overlay_80_0222FD08.s"
+   ],
+   "header": "include/frontier/overlay_80_02236B78.h",
+   "known_prototype": "void ov80_02236BE4(int a0, int a1, u16 *a2, int a3)",
+   "signature_sources": {}
+  },
+  "ov80_02236C2C": {
+   "callers": [
+    "asm/overlay_80_0222FD08.s"
+   ],
+   "header": "include/frontier/overlay_80_02236B78.h",
+   "known_prototype": "void *ov80_02236C2C(int a0, int a1)",
+   "signature_sources": {}
+  },
+  "ov80_02236C9C": {
+   "callers": [
+    "asm/overlay_80_0222FD08.s"
+   ],
+   "header": "include/frontier/overlay_80_02236B78.h",
+   "known_prototype": "int ov80_02236C9C(u16 *a0, u16 *a1, int a2, int a3, u16 *a4, int a5, void *a6, u16 a7, u8 *a8)",
+   "signature_sources": {}
+  },
   "ov80_02236DD4": {
    "callers": [
-    "asm/overlay_80_0222AEF8.s"
+    "asm/overlay_80_0222AEF8.s",
+    "asm/overlay_80_0222FD08.s"
    ],
-   "header": "include/frontier/overlay_80_02236B78.h (matched C: returns 3 for type 0/1, 2 for 2/3)",
+   "header": "include/frontier/overlay_80_02236B78.h",
    "known_prototype": "int ov80_02236DD4(int a0)",
+   "signature_sources": {}
+  },
+  "ov80_02236DF8": {
+   "callers": [
+    "asm/overlay_80_0222FD08.s"
+   ],
+   "header": "include/frontier/overlay_80_02236B78.h",
+   "known_prototype": "int ov80_02236DF8(int a0, int a1)",
+   "signature_sources": {}
+  },
+  "ov80_02236E24": {
+   "callers": [
+    "asm/overlay_80_0222FD08.s"
+   ],
+   "confidence": "low",
+   "signature_guess": "void ov80_02236E24(int a0, int a1, u16 *a2, void *a3, void *a4, void *a5, u16 a6, u16 *a7, u16 *a8)",
+   "signature_sources": {
+    "asm/overlay_80_0222FD08.s": "void ov80_02236E24(int a0, int a1, u16 *a2, void *a3, void *a4, void *a5, u16 a6, u16 *a7, u16 *a8)"
+   }
+  },
+  "ov80_02236E90": {
+   "callers": [
+    "asm/overlay_80_0222FD08.s"
+   ],
+   "header": "include/frontier/overlay_80_02236B78.h",
+   "known_prototype": "void ov80_02236E90(int a0, int a1, int a2, void *a3, u16 *a4, void *a5, void *a6, void *a7, int a8)",
+   "signature_sources": {}
+  },
+  "ov80_02237120": {
+   "callers": [
+    "asm/overlay_80_0222FD08.s"
+   ],
+   "header": "include/frontier/overlay_80_02236B78.h",
+   "known_prototype": "int ov80_02237120(void *work)",
+   "signature_sources": {}
+  },
+  "ov80_02237254": {
+   "callers": [
+    "asm/overlay_80_0222FD08.s"
+   ],
+   "header": "include/frontier/overlay_80_02236B78.h",
+   "known_prototype": "int ov80_02237254(int a0)",
+   "signature_sources": {}
+  },
+  "ov80_022372B4": {
+   "callers": [
+    "asm/overlay_80_0222FD08.s"
+   ],
+   "header": "include/frontier/overlay_80_02236B78.h",
+   "known_prototype": "int ov80_022372B4(void *work)",
    "signature_sources": {}
   },
   "ov80_02237B24": {
@@ -68975,6 +71329,22 @@
      "width": 4
     }
    ]
+  },
+  "ov80_0223BDD4": {
+   "callers": [],
+   "confidence": "low",
+   "signature_guess": "extern const u8 ov80_0223BDD4[12]",
+   "signature_sources": {
+    "asm/overlay_80_0222FD08.s": "extern const u8 ov80_0223BDD4[12]"
+   }
+  },
+  "ov80_0223BDE0": {
+   "callers": [],
+   "confidence": "low",
+   "signature_guess": "extern const u8 ov80_0223BDE0[12]",
+   "signature_sources": {
+    "asm/overlay_80_0222FD08.s": "extern const u8 ov80_0223BDE0[12]"
+   }
   },
   "ov83_0223DD60": {
    "callers": [],
@@ -80141,9 +82511,13 @@
    }
   },
   "sub_02030940": {
-   "callers": [],
+   "callers": [
+    "asm/overlay_80_0222FD08.s"
+   ],
    "confidence": "high",
    "defined_in": "asm/unk_0202FBCC.s",
+   "header": "none (only local decl in src/unk_0202FBCC.c) - declare locally",
+   "known_prototype": "void sub_02030940(void *dest)",
    "mode": "thumb",
    "notes": [
     "[asm/unk_0202FBCC.s] Tail-call: MI_CpuFill8(dest, 0, 0x58)."
@@ -80154,9 +82528,13 @@
    }
   },
   "sub_0203094C": {
-   "callers": [],
+   "callers": [
+    "asm/overlay_80_0222FD08.s"
+   ],
    "confidence": "medium",
    "defined_in": "asm/unk_0202FBCC.s",
+   "header": "none (src/unk_0202FBCC.c local) - declare locally",
+   "known_prototype": "void *sub_0203094C(SaveData *save)",
    "mode": "thumb",
    "notes": [
     "[asm/unk_0202FBCC.s] Returns Save_Frontier_GetStatic(save) + 0x8e0 (0x8e<<4). Likely the Battle Hall sub-section embedded inside FrontierSave (include/save_frontier.h); cross-check against unk_02030A98.c's FrontierSave field layout before naming."
@@ -80180,9 +82558,13 @@
    }
   },
   "sub_02030964": {
-   "callers": [],
+   "callers": [
+    "asm/overlay_80_0222FD08.s"
+   ],
    "confidence": "high",
    "defined_in": "asm/unk_0202FBCC.s",
+   "header": "none (src/unk_0202FBCC.c local) - declare locally",
+   "known_prototype": "void sub_02030964(u8 *p, BOOL value)",
    "mode": "thumb",
    "notes": [
     "[asm/unk_0202FBCC.s] Sets/clears bit 4 of *p from value&1. Pair to sub_0203095C; matches the flags-byte-union-manual-mask pattern noted in insights.md."
@@ -80193,7 +82575,9 @@
    }
   },
   "sub_02030978": {
-   "callers": [],
+   "callers": [
+    "asm/overlay_80_0222FD08.s"
+   ],
    "confidence": "medium",
    "defined_in": "asm/unk_0202FBCC.s",
    "mode": "thumb",
@@ -80202,11 +82586,14 @@
    ],
    "signature_guess": "void sub_02030978(void *record, u32 field, u32 idx, const void *val)",
    "signature_sources": {
+    "asm/overlay_80_0222FD08.s": "void sub_02030978(void *record, int field, u8 idx, const void *val)",
     "asm/unk_0202FBCC.s": "void sub_02030978(void *record, u32 field, u32 idx, const void *val)"
    }
   },
   "sub_02030A24": {
-   "callers": [],
+   "callers": [
+    "asm/overlay_80_0222FD08.s"
+   ],
    "confidence": "medium",
    "defined_in": "asm/unk_0202FBCC.s",
    "mode": "thumb",
@@ -80215,8 +82602,35 @@
    ],
    "signature_guess": "u32 sub_02030A24(void *record, u32 field, u32 idx)",
    "signature_sources": {
+    "asm/overlay_80_0222FD08.s": "u32 sub_02030A24(void *record, int field, u8 idx, void *unused)",
     "asm/unk_0202FBCC.s": "u32 sub_02030A24(void *record, u32 field, u32 idx)"
    }
+  },
+  "sub_02030AA4": {
+   "callers": [
+    "asm/overlay_80_0222FD08.s"
+   ],
+   "header": "include/unk_02030A98.h",
+   "known_prototype": "void sub_02030AA4(u32, u32, u8, u8 *)",
+   "signature_sources": {}
+  },
+  "sub_02030AD4": {
+   "callers": [
+    "asm/overlay_80_0222FD08.s"
+   ],
+   "confidence": "low",
+   "signature_guess": "u32 sub_02030AD4(u32 a0, u32 id, u8 bit, void *unused)",
+   "signature_sources": {
+    "asm/overlay_80_0222FD08.s": "u32 sub_02030AD4(u32 a0, u32 id, u8 bit, void *unused)"
+   }
+  },
+  "sub_02030AE8": {
+   "callers": [
+    "asm/overlay_80_0222FD08.s"
+   ],
+   "header": "include/unk_02030A98.h",
+   "known_prototype": "int sub_02030AE8(SaveData *)",
+   "signature_sources": {}
   },
   "sub_02030CC8": {
    "callers": [
@@ -80254,8 +82668,19 @@
   },
   "sub_02031108": {
    "callers": [
+    "asm/overlay_80_0222FD08.s",
     "asm/overlay_83_02243D7C.s"
    ],
+   "header": "include/unk_02030A98.h",
+   "known_prototype": "u32 sub_02031108(FrontierSave *, int, int, u16)",
+   "signature_sources": {}
+  },
+  "sub_0203126C": {
+   "callers": [
+    "asm/overlay_80_0222FD08.s"
+   ],
+   "header": "include/unk_02030A98.h",
+   "known_prototype": "void sub_0203126C(FrontierSave *a0, u32 a1, u32 a2, u16 a3)",
    "signature_sources": {}
   },
   "sub_02033AE0": {
@@ -81971,6 +84396,38 @@
    "known_prototype": "BOOL sub_0205B81C(u8 tile)",
    "signature_sources": {}
   },
+  "sub_0205BFF0": {
+   "callers": [
+    "asm/overlay_80_0222FD08.s"
+   ],
+   "header": "include/unk_0205BFF0.h",
+   "known_prototype": "int sub_0205BFF0(u8, u8)",
+   "signature_sources": {}
+  },
+  "sub_0205C01C": {
+   "callers": [
+    "asm/overlay_80_0222FD08.s"
+   ],
+   "header": "none (src/unk_0205BFF0.c local) - declare locally, do not add to the shared header",
+   "known_prototype": "int sub_0205C01C(u8 a, u8 b)",
+   "signature_sources": {}
+  },
+  "sub_0205C048": {
+   "callers": [
+    "asm/overlay_80_0222FD08.s"
+   ],
+   "header": "include/unk_0205BFF0.h",
+   "known_prototype": "int sub_0205C048(u8, u8)",
+   "signature_sources": {}
+  },
+  "sub_0205C074": {
+   "callers": [
+    "asm/overlay_80_0222FD08.s"
+   ],
+   "header": "none (src/unk_0205BFF0.c local) - declare locally",
+   "known_prototype": "int sub_0205C074(u8 a, u8 b)",
+   "signature_sources": {}
+  },
   "sub_0205C174": {
    "callers": [
     "asm/overlay_83_02243D7C.s",
@@ -82001,6 +84458,7 @@
   "sub_0205C268": {
    "callers": [
     "asm/overlay_80_0222AEF8.s",
+    "asm/overlay_80_0222FD08.s",
     "asm/overlay_83_02242FE8.s",
     "asm/overlay_83_02243D7C.s",
     "asm/overlay_83_02246E08.s"

@@ -673,6 +673,10 @@ Retail `lsls r5,idx,#2; adds r4,val,#1; movs r0,#15; adds r1,r0,#0; lsls r1,r5; 
 
 If retail shows `cmp; bhi A; mov r1,#2; bl f; b J; A: mov r1,#0xd; bl f; J: str r0,[sp,#0]` (single store at the join), `if (c) x.f = f(a,2); else x.f = f(a,0xD);` emits a store in each arm. Writing `x.f = c ? f(a, 2) : f(a, 0xD);` gives the joined store. Seen overlay_01_021FDA14 ov01_021FE190 (res.modelRes = ov01_021F18F0 by type <= 2).
 
+### `lsl rX,#28; lsr rX,#16` on a u8 field = (u16)(field << 12), NOT (field & 0xF) << 12  <!-- id: u16-shift-narrow-is-lsl-lsr-combined -->
+
+MWCC folds the u16 narrowing of a left shift into one lsl/lsr pair: `u16 pal = window->paletteNum << 12;` (paletteNum u8) compiles to `ldrb r0,[r4,#9]; lsl r0,#28; lsr r5,r0,#16`. Writing `(paletteNum & 0xF) << 12` into a u16 adds an extra lsl#16/lsr#16 (4 bytes). General rule: lsl #(32-n-k); lsr #(32-n) = narrow-to-n-bits of (x << k). Seen overlay_14_021F58B8 ov14_021F60BC.
+
 ## Matching Tricks
 
 ### Small source changes that move codegen  <!-- id: decl-order-tricks -->
