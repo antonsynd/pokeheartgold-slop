@@ -1,37 +1,88 @@
 name: update-progress
 
+# Keeps the progress views current without anyone running the generators by hand:
+#   README.md (bars + fork-vs-upstream table)  <- tools/update_readme_progress.py
+#   tools/decomp_harness/COVERAGE.md + coverage_ledger.json <- coverage_ledger.py
+# Both generators are pure Python over the tracked tree (no toolchain needed).
+
 on:
   push:
-    branches: [master]
+    branches: [mainline]
     paths:
       - 'main.lsf'
       - 'src/**'
       - 'asm/**'
+      - 'tools/decomp_harness/progress.json'
+      - 'tools/decomp_harness/blockers.json'
       - 'tools/decomp_harness/coverage_ledger.json'
+      - 'tools/decomp_harness/coverage_ledger.py'
+      - 'tools/decomp_harness/asmscan.py'
+      - 'tools/update_readme_progress.py'
       - '.github/progress_reference.json'
+      - '.github/workflows/update-progress.yml'
+  schedule:
+    # Upstream's side of the comparison moves on its own; refresh daily.
+    - cron: '30 6 * * *'
   workflow_dispatch:
 
 permissions:
   contents: write
 
+# Serialize runs so two quick pushes can't race each other's bot commit.
+concurrency:
+  group: update-progress
+  cancel-in-progress: false
+
 jobs:
-  update-readme:
+  update-progress:
     runs-on: ubuntu-latest
 
     steps:
       - uses: actions/checkout@v4
+        with:
+          ref: mainline
 
       - uses: actions/setup-python@v5
         with:
           python-version: '3.x'
 
-      - name: Update README progress
-        run: python3 tools/update_readme_progress.py
-
-      - name: Commit if changed
+      - name: Regenerate progress and push if changed
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add README.md
-          git diff --cached --quiet || git commit -m "docs: auto-update progress bars"
-          git push
+
+          ledger=(tools/decomp_harness/coverage_ledger.json tools/decomp_harness/COVERAGE.md)
+
+          # Regenerate from the current tip on every attempt, so a push that lands
+          # between checkout and our push just means "redo it on top", never a
+          # rebase conflict.
+          for attempt in 1 2 3; do
+            git fetch --depth=1 origin mainline
+            git reset --hard FETCH_HEAD
+
+            python3 tools/decomp_harness/coverage_ledger.py --quiet
+            # The ledger stamps its generation time; if that is the only change,
+            # drop the rewrite rather than committing a timestamp bump. (No grep -q:
+            # under pipefail its early exit can SIGPIPE the pipeline and read as
+            # "no change".)
+            real=$(git diff -U0 -- "${ledger[@]}" | grep -E '^[-+][^-+]' \
+                   | grep -vE '^[-+][[:space:]]*"generated": "|^[-+]\*Generated ' || true)
+            if [ -z "$real" ]; then
+              git checkout -- "${ledger[@]}"
+            fi
+
+            python3 tools/update_readme_progress.py
+
+            git add README.md "${ledger[@]}"
+            if git diff --cached --quiet; then
+              echo "Progress views already up to date"
+              exit 0
+            fi
+            git commit -m "docs: auto-update progress bars"
+            if git push origin HEAD:mainline; then
+              exit 0
+            fi
+            echo "Push rejected (mainline moved); retrying"
+            sleep $((attempt * 10))
+          done
+          exit 1
