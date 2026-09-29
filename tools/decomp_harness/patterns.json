@@ -1733,6 +1733,12 @@
       "category": "matching-tricks",
       "title": "`local = s->f = call()` emits str-then-mov; `local = call(); s->f = local;` emits mov-then-str",
       "body": "When a call result is both stored to a struct field and kept in a callee-saved local, the retail order `bl f; str r0,[r4,#off]; adds r7,r0,#0` (store FIRST, then copy to the local reg) comes from the chained form `FieldEnvSubUnk18 *unk = fenv->unk18 = ov01_021E90C0();`. Writing it as two statements (`unk = ov01_021E90C0(); fenv->unk18 = unk;`) makes MWCC move into r7 first and store r7 (`adds r7,r0,#0; str r7,[r4,#off]`) -- same size, 2 swapped halfwords. Seen unk_02056680 sub_020567B4. Related: [[chained-assign-store-order-and-alias-reload]]."
+    },
+    {
+      "id": "pointer-walk-loop-hoist-base-decl-before-index",
+      "category": "codegen",
+      "title": "Linear scan with walking pointer (adds rP,#stride) + index counter: hoist `T *p = base;` declared BEFORE `int i;`, and write `p++` in the body",
+      "body": "Retail loop shape: `ldr rMax,[s,#max]; movs rI,#0; ldr rP,[s,#base]; cmp rMax,#0; ble; L: ldrb r0,[rP,#off]; ...; adds rI,#1; adds rP,#16; cmp rI,rMax; blt L` with the found element returned as `adds r0,rP,#0`. Writing `for (i=0;i<s->max;i++) if (s->arr[i].f==0) return &s->arr[i];` instead loads the base inside the guarded region and recomputes `base + i<<4` for the return (+10 B). Fix: `T *p = s->arr; int i; for (i = 0; i < s->max; i++) { if (p->f == 0) return p; p++; }`. Declaration order decides which of p/i gets r1 vs r2: declare the pointer FIRST (it got r1, i r2, matching retail). Also: an equality test `p->cmd == cmd` emitted retail `cmp r0(ldrb),r1(param)` directly. Seen unk_02033AE0 sub_02033C30/C50/F9C (comm queue node pool scans). Related [[regalloc-order]]."
     }
   ]
 }

@@ -661,6 +661,10 @@ asm/overlay_18_021F8AB8.s has five: ov18_021F9054/021F91DC compute (popup+0x1F4,
 
 For a two-way return on a call result where retail lays the VARIABLE return inline after a `bne` and the CONSTANT return as the branch target (`bl f; cmp r0,#0; bne L1; ldrb r0,[..]; pop; L1: movs r0,#1; pop`), the source shape that reproduces it is the explicit if/else with the tested-false branch first: `if (f() == FALSE) { return data->nextState; } else { return 1; }`. All of these emit the OPPOSITE layout (`beq L; movs r0,#1; pop; L: ldrb; pop`): `if (!f()) return var; return 1;`, `if (f()) return 1; return var;`, `if (f() == TRUE) return 1; return var;`, `return f() ? 1 : var;`, and `int s = 1; if (!f()) s = var; return s;` (the last also adds a mov). MWCC's if/else lowering keeps the then-block inline and branches to the else-block; the trailing-return forms get canonicalised with the constant inline. Seen ov32_0225DF80 (overlay_32.s), 5-variant sweep. Related: [[then-branch-continue-jump-shapes-bne-join-b-end]].
 
+### Linear scan with walking pointer (adds rP,#stride) + index counter: hoist `T *p = base;` declared BEFORE `int i;`, and write `p++` in the body  <!-- id: pointer-walk-loop-hoist-base-decl-before-index -->
+
+Retail loop shape: `ldr rMax,[s,#max]; movs rI,#0; ldr rP,[s,#base]; cmp rMax,#0; ble; L: ldrb r0,[rP,#off]; ...; adds rI,#1; adds rP,#16; cmp rI,rMax; blt L` with the found element returned as `adds r0,rP,#0`. Writing `for (i=0;i<s->max;i++) if (s->arr[i].f==0) return &s->arr[i];` instead loads the base inside the guarded region and recomputes `base + i<<4` for the return (+10 B). Fix: `T *p = s->arr; int i; for (i = 0; i < s->max; i++) { if (p->f == 0) return p; p++; }`. Declaration order decides which of p/i gets r1 vs r2: declare the pointer FIRST (it got r1, i r2, matching retail). Also: an equality test `p->cmd == cmd` emitted retail `cmp r0(ldrb),r1(param)` directly. Seen unk_02033AE0 sub_02033C30/C50/F9C (comm queue node pool scans). Related [[regalloc-order]].
+
 ## Matching Tricks
 
 ### Small source changes that move codegen  <!-- id: decl-order-tricks -->

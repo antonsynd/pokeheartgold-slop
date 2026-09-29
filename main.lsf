@@ -146,7 +146,7 @@ Static main
     Object src/pokewalker.o
     Object src/save_trainer_house.o
     Object asm/unk_02032844.o
-    Object asm/unk_02033AE0.o
+    Object src/unk_02033AE0.o
     Object asm/unk_02034354.o
     Object asm/unk_02034B0C.o
     Object asm/unk_02035900.o
