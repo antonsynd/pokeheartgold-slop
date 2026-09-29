@@ -28443,6 +28443,1210 @@
    ],
    "sweep_output": "sweep/out/unk_02004A44.json"
   },
+  "asm/unk_02016EDC.s": {
+   "notes": "This file is the Pokepic animation script VM: a manager with N slots, each running a bytecode script from NARC a_0_9_0 (90) through a SysTask. There are 34 opcodes, 8 registers, loop and conditional-set operations, and up to 4 concurrent interpolation subtasks (types 0-4: sine/cosine wave, linear, lerp, clamped ramp) writing into slot fields 0x68..0x78. Only the five sub_02016EDC..sub_02017088 functions are exported (in the .inc); all others can be static. No .data/.bss. No DECL_CHUNK_EX involvement. No attempts_log or blockers entries for this file. External callers: overlay_12_022378C0, unk_02088288, unk_020755E8, overlay_57, overlay_95, overlay_12_battle_controller_opponent (all asm), src/pokemon.c (sub_02016F40 through the header) and src/unk_0208DE40.c (local decls).",
+   "oracle": {
+    "functions": {
+     "sub_02016EDC": {
+      "signedness": [
+       {
+        "branch": "ble",
+        "confidence": "high",
+        "evidence": "L79: cmp r5, #0  =>  L80: ble _02016F28",
+        "register": "r5",
+        "verdict": "signed"
+       },
+       {
+        "branch": "blt",
+        "confidence": "high",
+        "evidence": "L91: cmp r3, r5  =>  L92: blt _02016F1A",
+        "register": "r3",
+        "verdict": "signed"
+       }
+      ],
+      "widths": [
+       {
+        "base": "r4",
+        "confidence": "high",
+        "evidence": "L64: strb r7, [r4, #8]",
+        "kind": "store-width",
+        "offset": "#8",
+        "verdict": "u8"
+       },
+       {
+        "base": "r4",
+        "confidence": "high",
+        "evidence": "L66: strb r5, [r4, #9]",
+        "kind": "store-width",
+        "offset": "#9",
+        "verdict": "u8"
+       }
+      ]
+     },
+     "sub_02016F40": {
+      "signedness": [
+       {
+        "branch": "blo",
+        "confidence": "high",
+        "evidence": "L124: cmp r0, r1  =>  L125: blo _02016F60",
+        "register": "r0",
+        "verdict": "unsigned"
+       },
+       {
+        "branch": "blt",
+        "confidence": "high",
+        "evidence": "L151: cmp r6, #0x8f  =>  L153: blt _02016F9A",
+        "register": "r6",
+        "verdict": "signed"
+       }
+      ],
+      "widths": [
+       {
+        "base": "r0",
+        "confidence": "high",
+        "evidence": "L117: ldrh r6, [r0]",
+        "kind": "load-width",
+        "offset": "#0",
+        "verdict": "u16"
+       },
+       {
+        "base": "r0",
+        "confidence": "high",
+        "evidence": "L118: ldrh r0, [r0, #2]",
+        "kind": "load-width",
+        "offset": "#2",
+        "verdict": "u16"
+       },
+       {
+        "base": "r5",
+        "confidence": "high",
+        "evidence": "L120: ldrb r1, [r5, #9]",
+        "kind": "load-width",
+        "offset": "#9",
+        "verdict": "u8"
+       },
+       {
+        "base": "r5",
+        "confidence": "high",
+        "evidence": "L160: ldrb r0, [r5, #8]",
+        "kind": "load-width",
+        "offset": "#8",
+        "verdict": "u8"
+       },
+       {
+        "base": "r0",
+        "confidence": "high",
+        "evidence": "L164: ldrb r2, [r0, #4]",
+        "kind": "load-width",
+        "offset": "#4",
+        "verdict": "u8"
+       },
+       {
+        "base": "r1",
+        "confidence": "high",
+        "evidence": "L173: strb r2, [r1, r0]",
+        "kind": "store-width",
+        "offset": "(r0)",
+        "verdict": "u8"
+       },
+       {
+        "base": "r3",
+        "confidence": "high",
+        "evidence": "L202: strb r6, [r3, r1]",
+        "kind": "store-width",
+        "offset": "(r1)",
+        "verdict": "u8"
+       }
+      ]
+     },
+     "sub_02017068": {
+      "nonmatching_flags": [
+       {
+        "confidence": "low",
+        "detail": "param r1 copied to r4 at entry, then r4 (the copy) compared while r1 is live and no bl precedes -- MWCC uses the copy [likely benign: GF_ASSERT idiom; value used across a later call (copy motivated) -- audit]",
+        "evidence": "L264: add r4, r1, #0 ; L265: cmp r4, r0",
+        "kind": "copyprop-cmp-entry",
+        "verdict": "NONMATCHING-suspect"
+       }
+      ],
+      "signedness": [
+       {
+        "branch": "blo",
+        "confidence": "high",
+        "evidence": "L265: cmp r4, r0  =>  L266: blo _02017078",
+        "register": "r4",
+        "verdict": "unsigned"
+       }
+      ],
+      "widths": [
+       {
+        "base": "r5",
+        "confidence": "high",
+        "evidence": "L263: ldrb r0, [r5, #9]",
+        "kind": "load-width",
+        "offset": "#9",
+        "verdict": "u8"
+       }
+      ]
+     },
+     "sub_020170FC": {
+      "signedness": [
+       {
+        "branch": "blo",
+        "confidence": "high",
+        "evidence": "L387: cmp r4, #4  =>  L388: blo _0201710C",
+        "register": "r4",
+        "verdict": "unsigned"
+       },
+       {
+        "branch": "blo",
+        "confidence": "high",
+        "evidence": "L428: cmp r0, #0x22  =>  L429: blo _0201719E",
+        "register": "r0",
+        "verdict": "unsigned"
+       },
+       {
+        "branch": "blt",
+        "confidence": "high",
+        "evidence": "L460: cmp r1, r0  =>  L461: blt _0201718C",
+        "register": "r1",
+        "verdict": "signed"
+       }
+      ],
+      "widths": [
+       {
+        "confidence": "high",
+        "evidence": "L381: lsl r0, r0, #0x18 ; L382: lsr r6, r0, #0x18",
+        "kind": "truncation-pair",
+        "register": "r0",
+        "verdict": "u8"
+       },
+       {
+        "confidence": "high",
+        "evidence": "L385: lsl r0, r0, #0x18 ; L386: lsr r4, r0, #0x18",
+        "kind": "truncation-pair",
+        "register": "r0",
+        "verdict": "u8"
+       },
+       {
+        "base": "r1",
+        "confidence": "high",
+        "evidence": "L364: ldrb r1, [r1]",
+        "kind": "load-width",
+        "offset": "#0",
+        "verdict": "u8"
+       },
+       {
+        "base": "r0",
+        "confidence": "high",
+        "evidence": "L377: strb r1, [r0]",
+        "kind": "store-width",
+        "offset": "#0",
+        "verdict": "u8"
+       },
+       {
+        "base": "r5",
+        "confidence": "high",
+        "evidence": "L393: strb r1, [r5, r0]",
+        "kind": "store-width",
+        "offset": "(r0)",
+        "verdict": "u8"
+       },
+       {
+        "base": "r5",
+        "confidence": "high",
+        "evidence": "L396: ldrb r1, [r5, r0]",
+        "kind": "load-width",
+        "offset": "(r0)",
+        "verdict": "u8"
+       }
+      ]
+     },
+     "sub_02017220": {
+      "signedness": [
+       {
+        "branch": "blo",
+        "confidence": "high",
+        "evidence": "L538: cmp r3, #4  =>  L539: blo _0201722A",
+        "register": "r3",
+        "verdict": "unsigned"
+       }
+      ],
+      "widths": [
+       {
+        "confidence": "high",
+        "evidence": "L536: lsl r1, r1, #0x18 ; L537: lsr r3, r1, #0x18",
+        "kind": "truncation-pair",
+        "register": "r1",
+        "verdict": "u8"
+       }
+      ]
+     },
+     "sub_02017280": {
+      "widths": [
+       {
+        "base": "r4",
+        "confidence": "high",
+        "evidence": "L569: strb r0, [r4]",
+        "kind": "store-width",
+        "offset": "#0",
+        "verdict": "u8"
+       }
+      ]
+     },
+     "sub_02017294": {
+      "signedness": [
+       {
+        "branch": "blo",
+        "confidence": "high",
+        "evidence": "L584: cmp r0, #8  =>  L585: blo _020172B0",
+        "register": "r0",
+        "verdict": "unsigned"
+       }
+      ],
+      "widths": [
+       {
+        "base": "r4",
+        "confidence": "high",
+        "evidence": "L582: strb r0, [r4]",
+        "kind": "store-width",
+        "offset": "#0",
+        "verdict": "u8"
+       },
+       {
+        "base": "r4",
+        "confidence": "high",
+        "evidence": "L583: ldrb r0, [r4]",
+        "kind": "load-width",
+        "offset": "#0",
+        "verdict": "u8"
+       }
+      ]
+     },
+     "sub_020172C8": {
+      "widths": [
+       {
+        "base": "r0",
+        "confidence": "high",
+        "evidence": "L616: ldrb r0, [r0]",
+        "kind": "load-width",
+        "offset": "#0",
+        "verdict": "u8"
+       },
+       {
+        "base": "r0",
+        "confidence": "high",
+        "evidence": "L624: ldrb r0, [r0, #2]",
+        "kind": "load-width",
+        "offset": "#2",
+        "verdict": "u8"
+       },
+       {
+        "base": "r0",
+        "confidence": "high",
+        "evidence": "L650: ldrb r0, [r0, #1]",
+        "kind": "load-width",
+        "offset": "#1",
+        "verdict": "u8"
+       }
+      ]
+     },
+     "sub_0201733C": {
+      "widths": [
+       {
+        "base": "r0",
+        "confidence": "high",
+        "evidence": "L678: ldrb r0, [r0, #1]",
+        "kind": "load-width",
+        "offset": "#1",
+        "verdict": "u8"
+       },
+       {
+        "base": "r0",
+        "confidence": "high",
+        "evidence": "L693: ldrb r0, [r0, #3]",
+        "kind": "load-width",
+        "offset": "#3",
+        "verdict": "u8"
+       },
+       {
+        "base": "r0",
+        "confidence": "high",
+        "evidence": "L703: ldrb r0, [r0]",
+        "kind": "load-width",
+        "offset": "#0",
+        "verdict": "u8"
+       },
+       {
+        "base": "r0",
+        "confidence": "high",
+        "evidence": "L719: ldrb r0, [r0, #2]",
+        "kind": "load-width",
+        "offset": "#2",
+        "verdict": "u8"
+       }
+      ]
+     },
+     "sub_020173C8": {
+      "widths": [
+       {
+        "base": "r0",
+        "confidence": "high",
+        "evidence": "L743: ldrb r0, [r0, #3]",
+        "kind": "load-width",
+        "offset": "#3",
+        "verdict": "u8"
+       },
+       {
+        "base": "r0",
+        "confidence": "high",
+        "evidence": "L751: ldrb r0, [r0]",
+        "kind": "load-width",
+        "offset": "#0",
+        "verdict": "u8"
+       },
+       {
+        "base": "r0",
+        "confidence": "high",
+        "evidence": "L766: ldrb r0, [r0, #2]",
+        "kind": "load-width",
+        "offset": "#2",
+        "verdict": "u8"
+       },
+       {
+        "base": "r0",
+        "confidence": "high",
+        "evidence": "L794: ldrb r0, [r0, #1]",
+        "kind": "load-width",
+        "offset": "#1",
+        "verdict": "u8"
+       }
+      ]
+     },
+     "sub_02017470": {
+      "signedness": [
+       {
+        "branch": "ble",
+        "confidence": "high",
+        "evidence": "L826: cmp r0, #0  =>  L827: ble _02017484",
+        "register": "r0",
+        "verdict": "signed"
+       }
+      ]
+     },
+     "sub_02017504": {
+      "widths": [
+       {
+        "base": "r0",
+        "confidence": "high",
+        "evidence": "L915: ldrb r1, [r0]",
+        "kind": "load-width",
+        "offset": "#0",
+        "verdict": "u8"
+       },
+       {
+        "base": "r0",
+        "confidence": "high",
+        "evidence": "L916: ldrb r0, [r0, #1]",
+        "kind": "load-width",
+        "offset": "#1",
+        "verdict": "u8"
+       }
+      ]
+     },
+     "sub_0201752C": {
+      "widths": [
+       {
+        "base": "r0",
+        "confidence": "high",
+        "evidence": "L941: ldrb r0, [r0]",
+        "kind": "load-width",
+        "offset": "#0",
+        "verdict": "u8"
+       }
+      ]
+     },
+     "sub_02017550": {
+      "widths": [
+       {
+        "base": "r0",
+        "confidence": "high",
+        "evidence": "L963: ldrb r0, [r0]",
+        "kind": "load-width",
+        "offset": "#0",
+        "verdict": "u8"
+       }
+      ]
+     },
+     "sub_02017578": {
+      "widths": [
+       {
+        "base": "r0",
+        "confidence": "high",
+        "evidence": "L985: ldrb r0, [r0]",
+        "kind": "load-width",
+        "offset": "#0",
+        "verdict": "u8"
+       }
+      ]
+     },
+     "sub_0201759C": {
+      "exact_types": [
+       {
+        "confidence": "high",
+        "evidence": "L1004: bl _s32_div_f",
+        "helper": "_s32_div_f",
+        "verdict": "signed 32-bit int / or %  (both operands signed int)"
+       }
+      ],
+      "widths": [
+       {
+        "base": "r1",
+        "confidence": "high",
+        "evidence": "L1006: ldrb r1, [r1]",
+        "kind": "load-width",
+        "offset": "#0",
+        "verdict": "u8"
+       }
+      ]
+     },
+     "sub_020175C4": {
+      "exact_types": [
+       {
+        "confidence": "high",
+        "evidence": "L1026: bl _s32_div_f",
+        "helper": "_s32_div_f",
+        "verdict": "signed 32-bit int / or %  (both operands signed int)"
+       }
+      ],
+      "widths": [
+       {
+        "base": "r0",
+        "confidence": "high",
+        "evidence": "L1028: ldrb r0, [r0]",
+        "kind": "load-width",
+        "offset": "#0",
+        "verdict": "u8"
+       }
+      ]
+     },
+     "sub_020175EC": {
+      "signedness": [
+       {
+        "branch": "bls",
+        "confidence": "high",
+        "evidence": "L1092: cmp r0, #0x11  =>  L1093: bls _02017664",
+        "register": "r0",
+        "verdict": "unsigned"
+       }
+      ],
+      "widths": [
+       {
+        "base": "r0",
+        "confidence": "high",
+        "evidence": "L1045: ldrb r0, [r0]",
+        "kind": "load-width",
+        "offset": "#0",
+        "verdict": "u8"
+       },
+       {
+        "base": "r0",
+        "confidence": "high",
+        "evidence": "L1053: ldrb r0, [r0, #3]",
+        "kind": "load-width",
+        "offset": "#3",
+        "verdict": "u8"
+       },
+       {
+        "base": "r0",
+        "confidence": "high",
+        "evidence": "L1077: ldrb r0, [r0, #2]",
+        "kind": "load-width",
+        "offset": "#2",
+        "verdict": "u8"
+       },
+       {
+        "base": "r0",
+        "confidence": "high",
+        "evidence": "L1091: ldrb r0, [r0, #1]",
+        "kind": "load-width",
+        "offset": "#1",
+        "verdict": "u8"
+       }
+      ]
+     },
+     "sub_020176CC": {
+      "widths": [
+       {
+        "base": "r1",
+        "confidence": "high",
+        "evidence": "L1160: ldrb r1, [r1]",
+        "kind": "load-width",
+        "offset": "#0",
+        "verdict": "u8"
+       }
+      ]
+     },
+     "sub_02017714": {
+      "signedness": [
+       {
+        "branch": "blt",
+        "confidence": "high",
+        "evidence": "L1195: cmp r2, r1  =>  L1196: blt _0201772A",
+        "register": "r2",
+        "verdict": "signed"
+       }
+      ]
+     },
+     "sub_02017730": {
+      "widths": [
+       {
+        "base": "r2",
+        "confidence": "high",
+        "evidence": "L1219: ldrb r2, [r2]",
+        "kind": "load-width",
+        "offset": "#0",
+        "verdict": "u8"
+       }
+      ]
+     },
+     "sub_0201775C": {
+      "widths": [
+       {
+        "base": "r2",
+        "confidence": "high",
+        "evidence": "L1242: ldrb r2, [r2]",
+        "kind": "load-width",
+        "offset": "#0",
+        "verdict": "u8"
+       }
+      ]
+     },
+     "sub_02017788": {
+      "widths": [
+       {
+        "base": "r0",
+        "confidence": "high",
+        "evidence": "L1266: ldrb r0, [r0, #1]",
+        "kind": "load-width",
+        "offset": "#1",
+        "verdict": "u8"
+       },
+       {
+        "base": "r0",
+        "confidence": "high",
+        "evidence": "L1281: ldrb r0, [r0, #2]",
+        "kind": "load-width",
+        "offset": "#2",
+        "verdict": "u8"
+       },
+       {
+        "base": "r0",
+        "confidence": "high",
+        "evidence": "L1294: ldrb r0, [r0]",
+        "kind": "load-width",
+        "offset": "#0",
+        "verdict": "u8"
+       }
+      ]
+     },
+     "sub_02017808": {
+      "widths": [
+       {
+        "base": "r0",
+        "confidence": "high",
+        "evidence": "L1332: ldrsh r0, [r0, r1]",
+        "kind": "load-width",
+        "offset": "(r1)",
+        "verdict": "s16"
+       },
+       {
+        "base": "r0",
+        "confidence": "high",
+        "evidence": "L1336: ldrb r0, [r0]",
+        "kind": "load-width",
+        "offset": "#0",
+        "verdict": "u8"
+       }
+      ]
+     },
+     "sub_0201783C": {
+      "widths": [
+       {
+        "base": "r1",
+        "confidence": "high",
+        "evidence": "L1362: ldrsh r1, [r1, r2]",
+        "kind": "load-width",
+        "offset": "(r2)",
+        "verdict": "s16"
+       },
+       {
+        "base": "r0",
+        "confidence": "high",
+        "evidence": "L1365: ldrb r0, [r0]",
+        "kind": "load-width",
+        "offset": "#0",
+        "verdict": "u8"
+       }
+      ]
+     },
+     "sub_02017874": {
+      "widths": [
+       {
+        "base": "r0",
+        "confidence": "high",
+        "evidence": "L1388: ldrb r1, [r0]",
+        "kind": "load-width",
+        "offset": "#0",
+        "verdict": "u8"
+       },
+       {
+        "base": "r0",
+        "confidence": "high",
+        "evidence": "L1391: ldrb r0, [r0, #1]",
+        "kind": "load-width",
+        "offset": "#1",
+        "verdict": "u8"
+       }
+      ]
+     },
+     "sub_020178BC": {
+      "widths": [
+       {
+        "base": "r0",
+        "confidence": "high",
+        "evidence": "L1427: ldrb r1, [r0]",
+        "kind": "load-width",
+        "offset": "#0",
+        "verdict": "u8"
+       },
+       {
+        "base": "r0",
+        "confidence": "high",
+        "evidence": "L1430: ldrb r0, [r0, #1]",
+        "kind": "load-width",
+        "offset": "#1",
+        "verdict": "u8"
+       }
+      ]
+     },
+     "sub_0201790C": {
+      "widths": [
+       {
+        "base": "r0",
+        "confidence": "high",
+        "evidence": "L1467: ldrb r0, [r0, #3]",
+        "kind": "load-width",
+        "offset": "#3",
+        "verdict": "u8"
+       },
+       {
+        "base": "r0",
+        "confidence": "high",
+        "evidence": "L1517: ldrb r0, [r0, #1]",
+        "kind": "load-width",
+        "offset": "#1",
+        "verdict": "u8"
+       },
+       {
+        "base": "r0",
+        "confidence": "high",
+        "evidence": "L1532: ldrb r0, [r0, #2]",
+        "kind": "load-width",
+        "offset": "#2",
+        "verdict": "u8"
+       },
+       {
+        "base": "r0",
+        "confidence": "high",
+        "evidence": "L1545: ldrb r0, [r0]",
+        "kind": "load-width",
+        "offset": "#0",
+        "verdict": "u8"
+       }
+      ]
+     },
+     "sub_020179D4": {
+      "widths": [
+       {
+        "base": "r4",
+        "confidence": "high",
+        "evidence": "L1573: ldrb r0, [r4, r0]",
+        "kind": "load-width",
+        "offset": "(r0)",
+        "verdict": "u8"
+       }
+      ]
+     },
+     "sub_02017A1C": {
+      "signedness": [
+       {
+        "branch": "bge",
+        "confidence": "high",
+        "evidence": "L1635: cmp r0, #0  =>  L1636: bge _02017A7E",
+        "register": "r0",
+        "verdict": "signed"
+       }
+      ],
+      "widths": [
+       {
+        "confidence": "high",
+        "evidence": "L1626: lsl r2, r2, #0x10 ; L1628: lsr r2, r2, #0x10",
+        "kind": "truncation-pair",
+        "register": "r2",
+        "verdict": "u16"
+       },
+       {
+        "base": "r4",
+        "confidence": "high",
+        "evidence": "L1631: ldrb r0, [r4, r0]",
+        "kind": "load-width",
+        "offset": "(r0)",
+        "verdict": "u8"
+       }
+      ]
+     },
+     "sub_02017A84": {
+      "widths": [
+       {
+        "confidence": "high",
+        "evidence": "L1670: lsl r0, r0, #0x18 ; L1671: lsr r0, r0, #0x18",
+        "kind": "truncation-pair",
+        "register": "r0",
+        "verdict": "u8"
+       },
+       {
+        "base": "r0",
+        "confidence": "high",
+        "evidence": "L1678: ldrb r0, [r0]",
+        "kind": "load-width",
+        "offset": "#0",
+        "verdict": "u8"
+       }
+      ]
+     },
+     "sub_02017AEC": {
+      "widths": [
+       {
+        "base": "r3",
+        "confidence": "high",
+        "evidence": "L1740: ldrb r1, [r3, #2]",
+        "kind": "load-width",
+        "offset": "#2",
+        "verdict": "u8"
+       },
+       {
+        "base": "r3",
+        "confidence": "high",
+        "evidence": "L1741: ldrb r2, [r3, #1]",
+        "kind": "load-width",
+        "offset": "#1",
+        "verdict": "u8"
+       },
+       {
+        "base": "r3",
+        "confidence": "high",
+        "evidence": "L1742: ldrb r3, [r3]",
+        "kind": "load-width",
+        "offset": "#0",
+        "verdict": "u8"
+       }
+      ]
+     },
+     "sub_02017B2C": {
+      "widths": [
+       {
+        "base": "r4",
+        "confidence": "high",
+        "evidence": "L1760: strb r1, [r4, r0]",
+        "kind": "store-width",
+        "offset": "(r0)",
+        "verdict": "u8"
+       }
+      ]
+     },
+     "sub_02017B48": {
+      "widths": [
+       {
+        "base": "r0",
+        "confidence": "high",
+        "evidence": "L1772: strb r2, [r0, r1]",
+        "kind": "store-width",
+        "offset": "(r1)",
+        "verdict": "u8"
+       }
+      ]
+     },
+     "sub_02017B54": {
+      "widths": [
+       {
+        "base": "r4",
+        "confidence": "high",
+        "evidence": "L1787: ldrb r0, [r4, r0]",
+        "kind": "load-width",
+        "offset": "(r0)",
+        "verdict": "u8"
+       }
+      ]
+     },
+     "sub_02017BF8": {
+      "signedness": [
+       {
+        "branch": "bhi",
+        "confidence": "high",
+        "evidence": "L1889: cmp r0, #4  =>  L1890: bhi _02017C70",
+        "register": "r0",
+        "verdict": "unsigned"
+       }
+      ],
+      "widths": [
+       {
+        "confidence": "high",
+        "evidence": "L1894: lsl r0, r0, #0x10 ; L1895: asr r0, r0, #0x10",
+        "kind": "truncation-pair",
+        "register": "r0",
+        "verdict": "s16"
+       },
+       {
+        "base": "r0",
+        "confidence": "high",
+        "evidence": "L1893: ldrh r0, [r0, #6]",
+        "kind": "load-width",
+        "offset": "#6",
+        "verdict": "u16"
+       }
+      ]
+     },
+     "sub_02017C78": {
+      "signedness": [
+       {
+        "branch": "ble",
+        "confidence": "high",
+        "evidence": "L1983: cmp r0, #0  =>  L1984: ble _02017CCE",
+        "register": "r0",
+        "verdict": "signed"
+       },
+       {
+        "branch": "blt",
+        "confidence": "high",
+        "evidence": "L1999: cmp r4, r0  =>  L2000: blt _02017CB8",
+        "register": "r4",
+        "verdict": "signed"
+       }
+      ],
+      "widths": [
+       {
+        "confidence": "high",
+        "evidence": "L1964: lsl r1, r6, #0x18 ; L1965: lsr r1, r1, #0x18",
+        "kind": "truncation-pair",
+        "register": "r1",
+        "verdict": "u8"
+       },
+       {
+        "confidence": "high",
+        "evidence": "L1996: lsl r0, r0, #0x18 ; L1997: lsr r4, r0, #0x18",
+        "kind": "truncation-pair",
+        "register": "r0",
+        "verdict": "u8"
+       },
+       {
+        "confidence": "high",
+        "evidence": "L2011: lsl r0, r0, #0x18 ; L2012: lsr r0, r0, #0x18",
+        "kind": "truncation-pair",
+        "register": "r0",
+        "verdict": "u8"
+       },
+       {
+        "base": "r0",
+        "confidence": "high",
+        "evidence": "L2016: ldrb r0, [r0]",
+        "kind": "load-width",
+        "offset": "#0",
+        "verdict": "u8"
+       },
+       {
+        "base": "r0",
+        "confidence": "high",
+        "evidence": "L2034: strb r1, [r0]",
+        "kind": "store-width",
+        "offset": "#0",
+        "verdict": "u8"
+       }
+      ]
+     },
+     "sub_02017D20": {
+      "signedness": [
+       {
+        "branch": "bhi",
+        "confidence": "high",
+        "evidence": "L2057: cmp r0, #3  =>  L2058: bhi _02017DAC",
+        "register": "r0",
+        "verdict": "unsigned"
+       },
+       {
+        "branch": "blt",
+        "confidence": "high",
+        "evidence": "L2135: cmp r1, r0  =>  L2136: blt _02017DD2",
+        "register": "r1",
+        "verdict": "signed"
+       }
+      ],
+      "widths": [
+       {
+        "confidence": "high",
+        "evidence": "L2053: lsl r0, r0, #0x10 ; L2054: lsr r1, r0, #0x10",
+        "kind": "truncation-pair",
+        "register": "r0",
+        "verdict": "u16"
+       },
+       {
+        "confidence": "high",
+        "evidence": "L2062: lsl r0, r0, #0x10 ; L2063: asr r0, r0, #0x10",
+        "kind": "truncation-pair",
+        "register": "r0",
+        "verdict": "s16"
+       },
+       {
+        "base": "r0",
+        "confidence": "high",
+        "evidence": "L2061: ldrh r0, [r0, #6]",
+        "kind": "load-width",
+        "offset": "#6",
+        "verdict": "u16"
+       },
+       {
+        "base": "r0",
+        "confidence": "high",
+        "evidence": "L2075: ldrsh r0, [r0, r1]",
+        "kind": "load-width",
+        "offset": "(r1)",
+        "verdict": "s16"
+       },
+       {
+        "base": "r1",
+        "confidence": "high",
+        "evidence": "L2088: ldrsh r1, [r1, r2]",
+        "kind": "load-width",
+        "offset": "(r2)",
+        "verdict": "s16"
+       },
+       {
+        "base": "r0",
+        "confidence": "high",
+        "evidence": "L2125: ldrb r0, [r0]",
+        "kind": "load-width",
+        "offset": "#0",
+        "verdict": "u8"
+       }
+      ]
+     },
+     "sub_02017DD8": {
+      "exact_types": [
+       {
+        "confidence": "high",
+        "evidence": "L2154: bl _s32_div_f",
+        "helper": "_s32_div_f",
+        "verdict": "signed 32-bit int / or %  (both operands signed int)"
+       }
+      ],
+      "signedness": [
+       {
+        "branch": "bhi",
+        "confidence": "high",
+        "evidence": "L2161: cmp r0, #3  =>  L2162: bhi _02017E6A",
+        "register": "r0",
+        "verdict": "unsigned"
+       },
+       {
+        "branch": "blt",
+        "confidence": "high",
+        "evidence": "L2239: cmp r1, r0  =>  L2240: blt _02017E90",
+        "register": "r1",
+        "verdict": "signed"
+       }
+      ],
+      "widths": [
+       {
+        "confidence": "high",
+        "evidence": "L2157: lsl r0, r0, #0x10 ; L2158: lsr r1, r0, #0x10",
+        "kind": "truncation-pair",
+        "register": "r0",
+        "verdict": "u16"
+       },
+       {
+        "confidence": "high",
+        "evidence": "L2166: lsl r0, r0, #0x10 ; L2167: asr r0, r0, #0x10",
+        "kind": "truncation-pair",
+        "register": "r0",
+        "verdict": "s16"
+       },
+       {
+        "base": "r0",
+        "confidence": "high",
+        "evidence": "L2165: ldrh r0, [r0, #6]",
+        "kind": "load-width",
+        "offset": "#6",
+        "verdict": "u16"
+       },
+       {
+        "base": "r0",
+        "confidence": "high",
+        "evidence": "L2179: ldrsh r0, [r0, r1]",
+        "kind": "load-width",
+        "offset": "(r1)",
+        "verdict": "s16"
+       },
+       {
+        "base": "r1",
+        "confidence": "high",
+        "evidence": "L2192: ldrsh r1, [r1, r2]",
+        "kind": "load-width",
+        "offset": "(r2)",
+        "verdict": "s16"
+       },
+       {
+        "base": "r0",
+        "confidence": "high",
+        "evidence": "L2229: ldrb r0, [r0]",
+        "kind": "load-width",
+        "offset": "#0",
+        "verdict": "u8"
+       }
+      ]
+     },
+     "sub_02017E98": {
+      "signedness": [
+       {
+        "branch": "blt",
+        "confidence": "high",
+        "evidence": "L2274: cmp r1, r0  =>  L2275: blt _02017ED0",
+        "register": "r1",
+        "verdict": "signed"
+       }
+      ],
+      "widths": [
+       {
+        "base": "r0",
+        "confidence": "high",
+        "evidence": "L2265: ldrb r0, [r0]",
+        "kind": "load-width",
+        "offset": "#0",
+        "verdict": "u8"
+       }
+      ]
+     },
+     "sub_02017ED4": {
+      "exact_types": [
+       {
+        "confidence": "high",
+        "evidence": "L2292: bl _s32_div_f",
+        "helper": "_s32_div_f",
+        "verdict": "signed 32-bit int / or %  (both operands signed int)"
+       }
+      ],
+      "signedness": [
+       {
+        "branch": "blt",
+        "confidence": "high",
+        "evidence": "L2307: cmp r1, r0  =>  L2308: blt _02017F0C",
+        "register": "r1",
+        "verdict": "signed"
+       }
+      ],
+      "widths": [
+       {
+        "base": "r0",
+        "confidence": "high",
+        "evidence": "L2298: ldrb r0, [r0]",
+        "kind": "load-width",
+        "offset": "#0",
+        "verdict": "u8"
+       }
+      ]
+     },
+     "sub_02017F10": {
+      "signedness": [
+       {
+        "branch": "bge",
+        "confidence": "high",
+        "evidence": "L2337: cmp r2, #0  =>  L2339: bge _02017F4A",
+        "register": "r2",
+        "verdict": "signed"
+       },
+       {
+        "branch": "bgt",
+        "confidence": "high",
+        "evidence": "L2342: cmp r0, r2  =>  L2343: bgt _02017F90",
+        "register": "r0",
+        "verdict": "signed"
+       },
+       {
+        "branch": "blt",
+        "confidence": "high",
+        "evidence": "L2351: cmp r0, r2  =>  L2352: blt _02017F90",
+        "register": "r0",
+        "verdict": "signed"
+       },
+       {
+        "branch": "bge",
+        "confidence": "high",
+        "evidence": "L2364: cmp r2, #0  =>  L2366: bge _02017F7C",
+        "register": "r2",
+        "verdict": "signed"
+       },
+       {
+        "branch": "bgt",
+        "confidence": "high",
+        "evidence": "L2367: cmp r3, r2  =>  L2368: bgt _02017F90",
+        "register": "r3",
+        "verdict": "signed"
+       },
+       {
+        "branch": "blt",
+        "confidence": "high",
+        "evidence": "L2376: cmp r3, r2  =>  L2377: blt _02017F90",
+        "register": "r3",
+        "verdict": "signed"
+       }
+      ],
+      "widths": [
+       {
+        "base": "r0",
+        "confidence": "high",
+        "evidence": "L2331: ldrb r0, [r0]",
+        "kind": "load-width",
+        "offset": "#0",
+        "verdict": "u8"
+       }
+      ]
+     }
+    },
+    "generated": "2026-09-29T17:59:12Z",
+    "summary": {
+     "copyprop_cmp": 1,
+     "dead_store": 0,
+     "exact_types": 4,
+     "functions": 42,
+     "signed": 19,
+     "unsigned": 10,
+     "widths": 93
+    },
+    "tool": "asm_oracle.py"
+   },
+   "risks": [
+    "IPA/header: include/unk_02016EDC.h is pulled in by include/pokemon.h, so it is visible to many matched TUs. Keep it frozen (it already declares sub_02016F40(void *, void *, struct UnkStruct_0207294C *, u8)). Put the new struct typedefs and the other exports in include/unk_02016EDC_internal.h (or local to the .c). If the .c includes the public header, sub_02016F40 must be defined with void * params 0/1 and cast inside, or the prototypes conflict.",
+    "src/unk_0208DE40.c declares sub_02016F2C(void *) and sub_02017088(void *, int) locally, so don't add typed decls for these to any header it sees.",
+    "sub_02016F40 and sub_02017088 re-read mgr->slots for every field access; a cached PokepicScriptSlot * local will not match.",
+    "Three inline jump tables (sub_02017BF8 0x23..0x27, sub_02017D20 and sub_02017DD8 0x1E..0x21): write every case explicitly, in source order equal to value order.",
+    "Several if/else chains must stay chains, not switches: sub_02017A84 (8,10,9,11), sub_02017A1C (0x1B, 0x1D, then assert ==0x1C), and sub_0201790C (8..0xE).",
+    "Stack layout of the u8 register/mode locals (sp+0..3) and the int locals (sp+4/8/0xC) in the operand-decode helpers and opcodes: declaration order controls the offsets, so expect to permute declarations or use a small u8 array.",
+    "sub_020173C8 uses the signed x % 0x10000 idiom; sub_02017488 uses signed -x/8.",
+    "u8 loop counters (lsl/lsr #24) in sub_020170FC, sub_02017220 and sub_02017C78; int counter in sub_02016EDC.",
+    "sub_02017C78 loads argc once through the interior pool label _020F61C0 and once through &table[type]; one table struct should produce both.",
+    "Rodata order: the subtask-type table (60 bytes) comes before the 34-entry opcode table. Both reference functions, so forward-declare every static callback before the tables, or place the tables after the functions (rodata emission order is what matters)."
+   ],
+   "sweep_output": "sweep/out/unk_02016EDC.json"
+  },
   "asm/unk_02017FAC.s": {
    "notes": "Tiny pure-lookup module (4 thumb functions, ~0x84 bytes text, 6 bytes rodata, no .data/.bss). Semantics: location ids are partitioned into three banks (normal mapsecs 0.., gift met-locations 2000.., external met-locations 3000..); sub_02017FAC = id->bank, sub_02017FCC = id->offset-in-bank, sub_02017FE4 = (bank,offset)->id, LocationIsDiamondPearlCompatible = DP-transfer range check. Use constants from include/constants/map_sections.h. Header: include/map_section.h.",
    "risks": [
@@ -29436,7 +30640,7 @@
    "sweep_output": "sweep/out/unk_02097B78.json"
   }
  },
- "generated": "2026-09-29T17:38:36Z",
+ "generated": "2026-09-29T17:59:11Z",
  "signature_conflicts": [
   "DestroySysTaskAndEnvironment",
   "GridInputHandler_GetNextInput",
@@ -33011,6 +34215,309 @@
    },
    "sources": [
     "asm/overlay_18_021F7ED4.s"
+   ]
+  },
+  "PokepicScriptMgr (UnkStruct_02016EDC)": {
+   "fields": {
+    "0x0": [
+     {
+      "meaning": "PokepicScriptSlot *slots (count * 0x1D0)",
+      "source": "asm/unk_02016EDC.s",
+      "width": 4
+     }
+    ],
+    "0x4": [
+     {
+      "meaning": "enum HeapID heapID",
+      "source": "asm/unk_02016EDC.s",
+      "width": 4
+     }
+    ],
+    "0x8": [
+     {
+      "meaning": "u8 flag (enables flip from param->unk_4)",
+      "source": "asm/unk_02016EDC.s",
+      "width": 1
+     }
+    ],
+    "0x9": [
+     {
+      "meaning": "u8 count",
+      "source": "asm/unk_02016EDC.s",
+      "width": 1
+     }
+    ]
+   },
+   "size_guesses": {
+    "asm/unk_02016EDC.s": "0xC (Heap_Alloc size)"
+   },
+   "sources": [
+    "asm/unk_02016EDC.s"
+   ]
+  },
+  "PokepicScriptSlot": {
+   "fields": {
+    "0x0": [
+     {
+      "meaning": "Pokepic *pokepic",
+      "source": "asm/unk_02016EDC.s",
+      "width": 4
+     }
+    ],
+    "0x10": [
+     {
+      "meaning": "BOOL inUse",
+      "source": "asm/unk_02016EDC.s",
+      "width": 4
+     }
+    ],
+    "0x14": [
+     {
+      "meaning": "int scriptId",
+      "source": "asm/unk_02016EDC.s",
+      "width": 4
+     }
+    ],
+    "0x18": [
+     {
+      "meaning": "BOOL yield",
+      "source": "asm/unk_02016EDC.s",
+      "width": 4
+     }
+    ],
+    "0x1c": [
+     {
+      "meaning": "BOOL ended",
+      "source": "asm/unk_02016EDC.s",
+      "width": 4
+     }
+    ],
+    "0x1cc": [
+     {
+      "meaning": "u8 flip",
+      "source": "asm/unk_02016EDC.s",
+      "width": 1
+     }
+    ],
+    "0x1cd": [
+     {
+      "meaning": "u8 applyNow",
+      "source": "asm/unk_02016EDC.s",
+      "width": 1
+     }
+    ],
+    "0x1ce": [
+     {
+      "meaning": "u8 mode (0x1B/0x1C/0x1D, init 0x1C)",
+      "source": "asm/unk_02016EDC.s",
+      "width": 1
+     }
+    ],
+    "0x1cf": [
+     {
+      "meaning": "u8 fading",
+      "source": "asm/unk_02016EDC.s",
+      "width": 1
+     }
+    ],
+    "0x20": [
+     {
+      "meaning": "BOOL done (returned by sub_02017068)",
+      "source": "asm/unk_02016EDC.s",
+      "width": 4
+     }
+    ],
+    "0x24": [
+     {
+      "meaning": "int regs[8]",
+      "source": "asm/unk_02016EDC.s",
+      "width": 32
+     }
+    ],
+    "0x4": [
+     {
+      "meaning": "SysTask *task",
+      "source": "asm/unk_02016EDC.s",
+      "width": 4
+     }
+    ],
+    "0x44": [
+     {
+      "meaning": "int cmdCount (cap 0x100 per frame)",
+      "source": "asm/unk_02016EDC.s",
+      "width": 4
+     }
+    ],
+    "0x48": [
+     {
+      "meaning": "int loopTotal",
+      "source": "asm/unk_02016EDC.s",
+      "width": 4
+     }
+    ],
+    "0x4c": [
+     {
+      "meaning": "int loopIter",
+      "source": "asm/unk_02016EDC.s",
+      "width": 4
+     }
+    ],
+    "0x50": [
+     {
+      "meaning": "int *loopStart",
+      "source": "asm/unk_02016EDC.s",
+      "width": 4
+     }
+    ],
+    "0x54": [
+     {
+      "meaning": "int wait (frames)",
+      "source": "asm/unk_02016EDC.s",
+      "width": 4
+     }
+    ],
+    "0x58": [
+     {
+      "meaning": "int baseX",
+      "source": "asm/unk_02016EDC.s",
+      "width": 4
+     }
+    ],
+    "0x5c": [
+     {
+      "meaning": "int baseY",
+      "source": "asm/unk_02016EDC.s",
+      "width": 4
+     }
+    ],
+    "0x60": [
+     {
+      "meaning": "int offX (sel 8)",
+      "source": "asm/unk_02016EDC.s",
+      "width": 4
+     }
+    ],
+    "0x64": [
+     {
+      "meaning": "int offY (sel 9)",
+      "source": "asm/unk_02016EDC.s",
+      "width": 4
+     }
+    ],
+    "0x68": [
+     {
+      "meaning": "int unk68[5] (sel 0xA..0xE: extraX, extraY, affineW off, affineH off, zrot); indexed as an array by sub_02017BF8",
+      "source": "asm/unk_02016EDC.s",
+      "width": 20
+     }
+    ],
+    "0x7c": [
+     {
+      "meaning": "PokepicScriptSubTask subtasks[4]",
+      "source": "asm/unk_02016EDC.s",
+      "width": 336
+     }
+    ],
+    "0x8": [
+     {
+      "meaning": "int *scriptBuf (NARC 90 member, Heap_Free'd)",
+      "source": "asm/unk_02016EDC.s",
+      "width": 4
+     }
+    ],
+    "0xc": [
+     {
+      "meaning": "int *cursor",
+      "source": "asm/unk_02016EDC.s",
+      "width": 4
+     }
+    ]
+   },
+   "size_guesses": {
+    "asm/unk_02016EDC.s": "0x1D0"
+   },
+   "sources": [
+    "asm/unk_02016EDC.s"
+   ]
+  },
+  "PokepicScriptSubTask": {
+   "fields": {
+    "0x0": [
+     {
+      "meaning": "BOOL active",
+      "source": "asm/unk_02016EDC.s",
+      "width": 4
+     }
+    ],
+    "0x24": [
+     {
+      "meaning": "int *valuePtr (-> temp[i])",
+      "source": "asm/unk_02016EDC.s",
+      "width": 4
+     }
+    ],
+    "0x28": [
+     {
+      "meaning": "int *destPtr (-> slot->unk68[i])",
+      "source": "asm/unk_02016EDC.s",
+      "width": 4
+     }
+    ],
+    "0x2c": [
+     {
+      "meaning": "u8 op (0x18 set / 0x19 base+value / 0x1A accumulate)",
+      "source": "asm/unk_02016EDC.s",
+      "width": 1
+     }
+    ],
+    "0x2d": [
+     {
+      "meaning": "u8 delay",
+      "source": "asm/unk_02016EDC.s",
+      "width": 1
+     }
+    ],
+    "0x30": [
+     {
+      "meaning": "int base",
+      "source": "asm/unk_02016EDC.s",
+      "width": 4
+     }
+    ],
+    "0x34": [
+     {
+      "meaning": "unused padding",
+      "source": "asm/unk_02016EDC.s",
+      "width": 8
+     }
+    ],
+    "0x3c": [
+     {
+      "meaning": "int temp[5]",
+      "source": "asm/unk_02016EDC.s",
+      "width": 20
+     }
+    ],
+    "0x4": [
+     {
+      "meaning": "int args[8] (read from script; per-type meaning; args[6]/(+0x1C) is the wave counter)",
+      "source": "asm/unk_02016EDC.s",
+      "width": 32
+     }
+    ],
+    "0x50": [
+     {
+      "meaning": "void (*func)(PokepicScriptSubTask *, PokepicScriptSlot *)",
+      "source": "asm/unk_02016EDC.s",
+      "width": 4
+     }
+    ]
+   },
+   "size_guesses": {
+    "asm/unk_02016EDC.s": "0x54"
+   },
+   "sources": [
+    "asm/unk_02016EDC.s"
    ]
   },
   "Request (a.k.a. PendingItem descriptor)": {
@@ -38219,9 +39726,12 @@
   },
   "AllocAtEndAndReadWholeNarcMemberByIdPair": {
    "callers": [
-    "asm/overlay_14_021F2490.s"
+    "asm/overlay_14_021F2490.s",
+    "asm/unk_02016EDC.s"
    ],
    "confidence": "low",
+   "header": "include/filesystem.h",
+   "known_prototype": "void *AllocAtEndAndReadWholeNarcMemberByIdPair(NarcId narc_id, s32 file_id, enum HeapID heapID)",
    "signature_guess": "void *AllocAtEndAndReadWholeNarcMemberByIdPair(NarcId narcId, int fileId, HeapID heapId)",
    "signature_sources": {
     "asm/overlay_14_021F2490.s": "void *AllocAtEndAndReadWholeNarcMemberByIdPair(NarcId narcId, int fileId, HeapID heapId)"
@@ -38847,6 +40357,8 @@
   "FX_SinCosTable_": {
    "callers": [],
    "confidence": "low",
+   "header": "lib/include/nitro/fx/fx_trig.h",
+   "known_prototype": "extern const fx16 FX_SinCosTable_[] (use FX_SinIdx/FX_CosIdx inlines)",
    "signature_guess": "extern const s16 FX_SinCosTable_[]",
    "signature_sources": {
     "asm/overlay_93_arm.s": "extern const s16 FX_SinCosTable_[]"
@@ -39302,6 +40814,7 @@
     "asm/overlay_93_arm.s",
     "asm/overlay_98.s",
     "asm/unk_02004A44.s",
+    "asm/unk_02016EDC.s",
     "asm/unk_02017FAC.s",
     "asm/unk_02023694.s",
     "asm/unk_0202FBCC.s",
@@ -40648,6 +42161,7 @@
     "asm/overlay_83_02246E08.s",
     "asm/overlay_98.s",
     "asm/unk_02004A44.s",
+    "asm/unk_02016EDC.s",
     "asm/unk_02023694.s",
     "asm/unk_0202FBCC.s",
     "asm/unk_02033AE0.s",
@@ -40737,6 +42251,7 @@
     "asm/overlay_83_02246E08.s",
     "asm/overlay_98.s",
     "asm/unk_02004A44.s",
+    "asm/unk_02016EDC.s",
     "asm/unk_02023694.s",
     "asm/unk_0202FBCC.s",
     "asm/unk_02033AE0.s",
@@ -41066,6 +42581,7 @@
     "asm/overlay_80_022384D8.s",
     "asm/overlay_80_0223A00C.s",
     "asm/overlay_98.s",
+    "asm/unk_02016EDC.s",
     "asm/unk_0202FBCC.s",
     "asm/unk_02033AE0.s",
     "asm/unk_02097B78.s"
@@ -42919,6 +44435,46 @@
    "known_prototype": "const u8 Pokemon_GetIconPalette(Pokemon *mon)",
    "signature_sources": {}
   },
+  "Pokepic_AddAttr": {
+   "callers": [
+    "asm/unk_02016EDC.s"
+   ],
+   "header": "include/pokepic.h",
+   "known_prototype": "void Pokepic_AddAttr(Pokepic *pokepic, int attr, int addend)",
+   "signature_sources": {}
+  },
+  "Pokepic_GetAttr": {
+   "callers": [
+    "asm/unk_02016EDC.s"
+   ],
+   "header": "include/pokepic.h",
+   "known_prototype": "int Pokepic_GetAttr(Pokepic *pokepic, int attr)",
+   "signature_sources": {}
+  },
+  "Pokepic_ResumePaletteFade": {
+   "callers": [
+    "asm/unk_02016EDC.s"
+   ],
+   "header": "include/pokepic.h",
+   "known_prototype": "BOOL Pokepic_ResumePaletteFade(Pokepic *pokepic)",
+   "signature_sources": {}
+  },
+  "Pokepic_SetAttr": {
+   "callers": [
+    "asm/unk_02016EDC.s"
+   ],
+   "header": "include/pokepic.h",
+   "known_prototype": "void Pokepic_SetAttr(Pokepic *pokepic, int attr, int value)",
+   "signature_sources": {}
+  },
+  "Pokepic_StartPaletteFade": {
+   "callers": [
+    "asm/unk_02016EDC.s"
+   ],
+   "header": "include/pokepic.h",
+   "known_prototype": "void Pokepic_StartPaletteFade(Pokepic *pokepic, int start, int end, int framesPer, int targetColor)",
+   "signature_sources": {}
+  },
   "PrintUIntOnWindow": {
    "callers": [
     "asm/overlay_18_021EE35C.s",
@@ -43896,7 +45452,8 @@
     "asm/overlay_01_021FCD2C.s",
     "asm/overlay_18_021F7ED4.s",
     "asm/overlay_80_022384D8.s",
-    "asm/overlay_80_0223A00C.s"
+    "asm/overlay_80_0223A00C.s",
+    "asm/unk_02016EDC.s"
    ],
    "confidence": "low",
    "header": "include/sys_task_api.h",
@@ -43930,6 +45487,7 @@
     "asm/overlay_18_021F7ED4.s",
     "asm/overlay_80_022384D8.s",
     "asm/overlay_80_0223A00C.s",
+    "asm/unk_02016EDC.s",
     "asm/unk_02069660.s"
    ],
    "header": "include/sys_task_api.h",
@@ -44300,6 +45858,7 @@
     "asm/overlay_41_02248400.s",
     "asm/overlay_98.s",
     "asm/unk_02004A44.s",
+    "asm/unk_02016EDC.s",
     "asm/unk_02033AE0.s"
    ],
    "confidence": "low",
@@ -44308,7 +45867,8 @@
    "signature_guess": "s32 _s32_div_f(s32 num, s32 den)",
    "signature_sources": {
     "asm/overlay_14_021E5900.s": "s32 _s32_div_f(s32 num, s32 den)",
-    "asm/unk_02004A44.s": "compiler runtime for signed '/' (write x / 5)"
+    "asm/unk_02004A44.s": "compiler runtime for signed '/' (write x / 5)",
+    "asm/unk_02016EDC.s": "compiler runtime for signed / and %"
    }
   },
   "_u32_div_f": {
@@ -71977,6 +73537,918 @@
    "signature_sources": {
     "asm/overlay_83_02246E08.s": "void sub_02014510(u16, u16, HeapID, void *, void *buf, int, int, int, int)",
     "asm/overlay_98.s": "void sub_02014510(...)"
+   }
+  },
+  "sub_02016EDC": {
+   "callers": [],
+   "confidence": "high",
+   "defined_in": "asm/unk_02016EDC.s",
+   "mode": "thumb",
+   "notes": [
+    "[asm/unk_02016EDC.s] Heap_Alloc(heapID, 0xC) for mgr. Store order: flag(+8), count(+9), heapID(+4), then slots. count*0x1D0 is computed once into r7 and reused for MI_CpuFill8(slots,0,size). Loop 'for (i=0;i<count;i++) mgr->slots[i].done = 1;' (+0x20) with int i and signed blt, reloading mgr->slots on every iteration. Callers pass (heap, 1, 0) or (heap, 1, 1)."
+   ],
+   "signature_guess": "PokepicScriptMgr *sub_02016EDC(enum HeapID heapID, int count, int flag)",
+   "signature_sources": {
+    "asm/unk_02016EDC.s": "PokepicScriptMgr *sub_02016EDC(enum HeapID heapID, int count, int flag)"
+   },
+   "struct_accesses": [
+    {
+     "meaning": "mgr->flag = flag (stored first)",
+     "offset": "0x8",
+     "param": -1,
+     "width": 1
+    },
+    {
+     "meaning": "mgr->count = count",
+     "offset": "0x9",
+     "param": -1,
+     "width": 1
+    },
+    {
+     "meaning": "mgr->heapID",
+     "offset": "0x4",
+     "param": -1,
+     "width": 4
+    },
+    {
+     "meaning": "mgr->slots = Heap_Alloc(heapID, count*0x1D0)",
+     "offset": "0x0",
+     "param": -1,
+     "width": 4
+    }
+   ]
+  },
+  "sub_02016F2C": {
+   "callers": [],
+   "confidence": "high",
+   "defined_in": "asm/unk_02016EDC.s",
+   "mode": "thumb",
+   "notes": [
+    "[asm/unk_02016EDC.s] Heap_Free(mgr->slots); Heap_Free(mgr). src/unk_0208DE40.c declares it locally as void sub_02016F2C(void *a0)."
+   ],
+   "signature_guess": "void sub_02016F2C(PokepicScriptMgr *mgr)",
+   "signature_sources": {
+    "asm/unk_02016EDC.s": "void sub_02016F2C(PokepicScriptMgr *mgr)"
+   }
+  },
+  "sub_02016F40": {
+   "callers": [],
+   "confidence": "high",
+   "defined_in": "asm/unk_02016EDC.s",
+   "mode": "thumb",
+   "notes": [
+    "[asm/unk_02016EDC.s] Existing prototype in include/unk_02016EDC.h is load-bearing: pokemon.c calls it, and pokemon.h includes unk_02016EDC.h. Every field access re-reads mgr->slots and adds idx*0x1D0 (ldr r0,[r5]; add r0,r4), so write mgr->slots[idx].field each time with no cached slot pointer. Sequence: GF_ASSERT(mgr->slots[idx].inUse == 0); MI_CpuFill8(&slots[idx],0,0x1D0); inUse=1; pokepic=pic; the scriptId>=0x8F clamp; scriptId=...; flip=...; scriptBuf=AllocAtEndAndReadWholeNarcMemberByIdPair(NARC_a_0_9_0 (90), slots[idx].scriptId, mgr->heapID); cursor=scriptBuf; ended=0; done=0; applyNow(0x1CD)=0; mode(0x1CE)=0x1C; fading(0x1CF)=0; task=SysTask_CreateOnMainQueue(sub_020170C4,&slots[idx],0); wait=param->unk_2 (clamped); baseX=Pokepic_GetAttr(pic,POKEPIC_X); baseY=Pokepic_GetAttr(pic,POKEPIC_Y); fields 0x60,0x64,0x68,0x6C,0x70,0x74,0x78 = 0 in that order. param->unk_0/unk_2 are loaded into locals at entry, before the asserts."
+   ],
+   "signature_guess": "void sub_02016F40(void *mgr_, void *pokepic_, struct UnkStruct_0207294C *param, u8 idx)",
+   "signature_sources": {
+    "asm/unk_02016EDC.s": "void sub_02016F40(void *mgr_, void *pokepic_, struct UnkStruct_0207294C *param, u8 idx)"
+   },
+   "struct_accesses": [
+    {
+     "meaning": "scriptId (u16); if >= 0x8F then scriptId=0 and wait=0 (signed blt)",
+     "offset": "0x0",
+     "param": 2,
+     "width": 2
+    },
+    {
+     "meaning": "initial wait delay -> slot+0x54",
+     "offset": "0x2",
+     "param": 2,
+     "width": 2
+    },
+    {
+     "meaning": "flip flag -> slot+0x1CC, only when mgr->flag != 0, else 0",
+     "offset": "0x4",
+     "param": 2,
+     "width": 1
+    },
+    {
+     "meaning": "GF_ASSERT(idx < mgr->count)",
+     "offset": "0x9",
+     "param": 0,
+     "width": 1
+    },
+    {
+     "meaning": "heapID passed to the NARC read",
+     "offset": "0x4",
+     "param": 0,
+     "width": 4
+    }
+   ]
+  },
+  "sub_02017068": {
+   "callers": [],
+   "confidence": "high",
+   "defined_in": "asm/unk_02016EDC.s",
+   "mode": "thumb",
+   "notes": [
+    "[asm/unk_02016EDC.s] GF_ASSERT(idx < mgr->count) (unsigned blo); return mgr->slots[idx].done (+0x20). Callers test ==1."
+   ],
+   "signature_guess": "BOOL sub_02017068(PokepicScriptMgr *mgr, int idx)",
+   "signature_sources": {
+    "asm/unk_02016EDC.s": "BOOL sub_02017068(PokepicScriptMgr *mgr, int idx)"
+   }
+  },
+  "sub_02017088": {
+   "callers": [],
+   "confidence": "high",
+   "defined_in": "asm/unk_02016EDC.s",
+   "mode": "thumb",
+   "notes": [
+    "[asm/unk_02016EDC.s] if (slots[idx].task != NULL) { SysTask_Destroy(task); task=NULL; done=1; inUse=0; Heap_Free(scriptBuf); }. No assert. Re-reads mgr->slots on each access. src/unk_0208DE40.c declares it as void sub_02017088(void *a0, int a1)."
+   ],
+   "signature_guess": "void sub_02017088(PokepicScriptMgr *mgr, int idx)",
+   "signature_sources": {
+    "asm/unk_02016EDC.s": "void sub_02017088(PokepicScriptMgr *mgr, int idx)"
+   }
+  },
+  "sub_020170C4": {
+   "callers": [],
+   "confidence": "high",
+   "defined_in": "asm/unk_02016EDC.s",
+   "mode": "thumb",
+   "notes": [
+    "[asm/unk_02016EDC.s] if (slot->wait == 0) sub_020170FC(slot); else slot->wait--; if (slot->ended) { done=1; inUse=0; SysTask_Destroy(task); slot->task=NULL; Heap_Free(slot->scriptBuf); }"
+   ],
+   "signature_guess": "static void sub_020170C4(SysTask *task, PokepicScriptSlot *slot)",
+   "signature_sources": {
+    "asm/unk_02016EDC.s": "static void sub_020170C4(SysTask *task, PokepicScriptSlot *slot)"
+   }
+  },
+  "sub_020170FC": {
+   "callers": [
+    "asm/unk_02016EDC.s"
+   ],
+   "confidence": "medium",
+   "defined_in": "asm/unk_02016EDC.s",
+   "mode": "thumb",
+   "notes": [
+    "[asm/unk_02016EDC.s] Sets yield=0 and cmdCount=0 at 0x18/0x44. u8 i loop over 4 subtasks: if (sub->active) { if (sub->delay(+0x2D)==0) sub->func(sub,slot); else sub->delay--; } else inactive++ (u8). if (inactive==4) applyNow=0. if (applyNow) { sub_020179D4; sub_02017A1C; return; } if (fading 0x1CF) { if (Pokepic_ResumePaletteFade(pokepic)) return; fading=0; } Loop: cmdCount++; GF_ASSERT(*cursor < 0x22); table[*cursor](slot); if (ended) return; cursor++; if (yield) return; if (applyNow) {apply both; return;} continue while cmdCount < 0x100 (signed blt); after that GF_AssertFail(); ended=1. The subtask loop keeps r7=slot+0x7C as the base and indexes it with i*0x54."
+   ],
+   "signature_guess": "static void sub_020170FC(PokepicScriptSlot *slot)",
+   "signature_sources": {
+    "asm/unk_02016EDC.s": "static void sub_020170FC(PokepicScriptSlot *slot)"
+   },
+   "struct_accesses": [
+    {
+     "meaning": "SubTask subtasks[4], stride 0x54",
+     "offset": "0x7c",
+     "param": 0,
+     "width": 84
+    }
+   ]
+  },
+  "sub_020171F4": {
+   "callers": [
+    "asm/unk_02016EDC.s"
+   ],
+   "confidence": "high",
+   "defined_in": "asm/unk_02016EDC.s",
+   "mode": "thumb",
+   "notes": [
+    "[asm/unk_02016EDC.s] int v = script[idx]; GF_ASSERT(n == 1); return v;"
+   ],
+   "signature_guess": "static int sub_020171F4(int *script, int idx, int n)",
+   "signature_sources": {
+    "asm/unk_02016EDC.s": "static int sub_020171F4(int *script, int idx, int n)"
+   }
+  },
+  "sub_02017208": {
+   "callers": [
+    "asm/unk_02016EDC.s"
+   ],
+   "confidence": "high",
+   "defined_in": "asm/unk_02016EDC.s",
+   "mode": "thumb",
+   "notes": [
+    "[asm/unk_02016EDC.s] Tail call: return sub_020171F4(script, 0, n)."
+   ],
+   "signature_guess": "static int sub_02017208(int *script, int n)",
+   "signature_sources": {
+    "asm/unk_02016EDC.s": "static int sub_02017208(int *script, int n)"
+   }
+  },
+  "sub_02017214": {
+   "callers": [
+    "asm/unk_02016EDC.s"
+   ],
+   "confidence": "high",
+   "defined_in": "asm/unk_02016EDC.s",
+   "mode": "thumb",
+   "notes": [
+    "[asm/unk_02016EDC.s] Tail call: return sub_02017208(script, 1)."
+   ],
+   "signature_guess": "static int sub_02017214(int *script)",
+   "signature_sources": {
+    "asm/unk_02016EDC.s": "static int sub_02017214(int *script)"
+   }
+  },
+  "sub_02017220": {
+   "callers": [
+    "asm/unk_02016EDC.s"
+   ],
+   "confidence": "high",
+   "defined_in": "asm/unk_02016EDC.s",
+   "mode": "thumb",
+   "notes": [
+    "[asm/unk_02016EDC.s] u8 i<4 loop to find a subtask with active==0; MI_CpuFill8(sub,0,0x54); sub->active=1; sub->func=_020F61BC[type].func; return sub. If none is free: GF_AssertFail; return NULL. The caller narrows type to u8."
+   ],
+   "signature_guess": "static PokepicScriptSubTask *sub_02017220(PokepicScriptSlot *slot, u8 type)",
+   "signature_sources": {
+    "asm/unk_02016EDC.s": "static PokepicScriptSubTask *sub_02017220(PokepicScriptSlot *slot, u8 type)"
+   }
+  },
+  "sub_0201726C": {
+   "callers": [
+    "asm/unk_02016EDC.s"
+   ],
+   "confidence": "high",
+   "defined_in": "asm/unk_02016EDC.s",
+   "mode": "thumb",
+   "notes": [
+    "[asm/unk_02016EDC.s] slot->cursor++; *out = sub_02017214(slot->cursor); (cursor is int*, +4 bytes)"
+   ],
+   "signature_guess": "static void sub_0201726C(PokepicScriptSlot *slot, int *out)",
+   "signature_sources": {
+    "asm/unk_02016EDC.s": "static void sub_0201726C(PokepicScriptSlot *slot, int *out)"
+   }
+  },
+  "sub_02017280": {
+   "callers": [
+    "asm/unk_02016EDC.s"
+   ],
+   "confidence": "high",
+   "defined_in": "asm/unk_02016EDC.s",
+   "mode": "thumb",
+   "notes": [
+    "[asm/unk_02016EDC.s] Same as sub_0201726C but writes with strb."
+   ],
+   "signature_guess": "static void sub_02017280(PokepicScriptSlot *slot, u8 *out)",
+   "signature_sources": {
+    "asm/unk_02016EDC.s": "static void sub_02017280(PokepicScriptSlot *slot, u8 *out)"
+   }
+  },
+  "sub_02017294": {
+   "callers": [
+    "asm/unk_02016EDC.s"
+   ],
+   "confidence": "high",
+   "defined_in": "asm/unk_02016EDC.s",
+   "mode": "thumb",
+   "notes": [
+    "[asm/unk_02016EDC.s] Same read as sub_02017280, then GF_ASSERT(*reg < 8) (register index into regs[8]). Re-loads *reg with ldrb after the store."
+   ],
+   "signature_guess": "static void sub_02017294(PokepicScriptSlot *slot, u8 *reg)",
+   "signature_sources": {
+    "asm/unk_02016EDC.s": "static void sub_02017294(PokepicScriptSlot *slot, u8 *reg)"
+   }
+  },
+  "sub_020172B4": {
+   "callers": [
+    "asm/unk_02016EDC.s"
+   ],
+   "confidence": "high",
+   "defined_in": "asm/unk_02016EDC.s",
+   "mode": "thumb",
+   "notes": [
+    "[asm/unk_02016EDC.s] sub_02017294(slot,a); sub_02017294(slot,b)."
+   ],
+   "signature_guess": "static void sub_020172B4(PokepicScriptSlot *slot, u8 *a, u8 *b)",
+   "signature_sources": {
+    "asm/unk_02016EDC.s": "static void sub_020172B4(PokepicScriptSlot *slot, u8 *a, u8 *b)"
+   }
+  },
+  "sub_020172C8": {
+   "callers": [
+    "asm/unk_02016EDC.s"
+   ],
+   "confidence": "medium",
+   "defined_in": "asm/unk_02016EDC.s",
+   "mode": "thumb",
+   "notes": [
+    "[asm/unk_02016EDC.s] Reads dst reg, then u8 mode (sp+0). mode 0x12: read reg r (sp+2), *a=regs[r], then read imm into *b. mode 0x13: sub_020172B4(slot,&ra(sp+2),&rb(sp+1)), *a=regs[ra], *b=regs[rb]. else assert. The u8 locals sit at sp+0/1/2, so this is a stack-layout hazard."
+   ],
+   "signature_guess": "static void sub_020172C8(PokepicScriptSlot *slot, u8 *dst, int *a, int *b)",
+   "signature_sources": {
+    "asm/unk_02016EDC.s": "static void sub_020172C8(PokepicScriptSlot *slot, u8 *dst, int *a, int *b)"
+   }
+  },
+  "sub_0201733C": {
+   "callers": [
+    "asm/unk_02016EDC.s"
+   ],
+   "confidence": "medium",
+   "defined_in": "asm/unk_02016EDC.s",
+   "mode": "thumb",
+   "notes": [
+    "[asm/unk_02016EDC.s] Reads dst reg, u8 modeA (sp+1), u8 modeB (sp+0). modeA 0x12: read imm into *a; 0x13: read reg (sp+3), *a=regs[r]; else assert. Same for modeB with reg at sp+2 writing *b. The if/else-if chain compares 0x12 then 0x13."
+   ],
+   "signature_guess": "static void sub_0201733C(PokepicScriptSlot *slot, u8 *dst, int *a, int *b)",
+   "signature_sources": {
+    "asm/unk_02016EDC.s": "static void sub_0201733C(PokepicScriptSlot *slot, u8 *dst, int *a, int *b)"
+   }
+  },
+  "sub_020173C8": {
+   "callers": [
+    "asm/unk_02016EDC.s"
+   ],
+   "confidence": "medium",
+   "defined_in": "asm/unk_02016EDC.s",
+   "mode": "thumb",
+   "notes": [
+    "[asm/unk_02016EDC.s] sub_020172B4(slot,dst,&r(sp+3)); base=regs[r] (kept in r7); u8 mode(sp+0): 0x14 read imm into *amp / 0x15 read reg(sp+2) *amp=regs[]; read mode again (same sp+0 local): 0x14 imm into int v(sp+4) / 0x15 reg(sp+1) v=regs[]; *out = (base + v) % 0x10000 (signed-modulo idiom lsr#31/lsl#16/sub/ror/add)."
+   ],
+   "signature_guess": "static void sub_020173C8(PokepicScriptSlot *slot, u8 *dst, int *out, int *amp)",
+   "signature_sources": {
+    "asm/unk_02016EDC.s": "static void sub_020173C8(PokepicScriptSlot *slot, u8 *dst, int *out, int *amp)"
+   }
+  },
+  "sub_02017470": {
+   "callers": [
+    "asm/unk_02016EDC.s"
+   ],
+   "confidence": "high",
+   "defined_in": "asm/unk_02016EDC.s",
+   "mode": "thumb",
+   "notes": [
+    "[asm/unk_02016EDC.s] int d = *a - *b; if (d < 0) return 0xF; if (d > 0) return 0x10; return 0x11; (bpl on the subtraction result). Leaf with no push."
+   ],
+   "signature_guess": "static int sub_02017470(int *a, int *b)",
+   "signature_sources": {
+    "asm/unk_02016EDC.s": "static int sub_02017470(int *a, int *b)"
+   }
+  },
+  "sub_02017488": {
+   "callers": [
+    "asm/unk_02016EDC.s"
+   ],
+   "confidence": "high",
+   "defined_in": "asm/unk_02016EDC.s",
+   "mode": "thumb",
+   "notes": [
+    "[asm/unk_02016EDC.s] Tail call Pokepic_AddAttr(slot->pokepic, POKEPIC_Y, -slot->unk74 / 8) (signed /8 on the negated value)."
+   ],
+   "signature_guess": "static void sub_02017488(PokepicScriptSlot *slot)",
+   "signature_sources": {
+    "asm/unk_02016EDC.s": "static void sub_02017488(PokepicScriptSlot *slot)"
+   }
+  },
+  "sub_020174A4": {
+   "callers": [],
+   "confidence": "high",
+   "defined_in": "asm/unk_02016EDC.s",
+   "mode": "thumb",
+   "notes": [
+    "[asm/unk_02016EDC.s] Opcode 0 (end): sub_020174BC(slot); yield=1; ended=1."
+   ],
+   "signature_guess": "static void sub_020174A4(PokepicScriptSlot *slot)",
+   "signature_sources": {
+    "asm/unk_02016EDC.s": "static void sub_020174A4(PokepicScriptSlot *slot)"
+   }
+  },
+  "sub_020174B4": {
+   "callers": [],
+   "confidence": "high",
+   "defined_in": "asm/unk_02016EDC.s",
+   "mode": "thumb",
+   "notes": [
+    "[asm/unk_02016EDC.s] Opcode 1: yield=1."
+   ],
+   "signature_guess": "static void sub_020174B4(PokepicScriptSlot *slot)",
+   "signature_sources": {
+    "asm/unk_02016EDC.s": "static void sub_020174B4(PokepicScriptSlot *slot)"
+   }
+  },
+  "sub_020174BC": {
+   "callers": [
+    "asm/unk_02016EDC.s"
+   ],
+   "confidence": "high",
+   "defined_in": "asm/unk_02016EDC.s",
+   "mode": "thumb",
+   "notes": [
+    "[asm/unk_02016EDC.s] Opcode 2 (reset): SetAttr X=baseX(0x58), Y=baseY(0x5C), ZROT(9)=0, XPIVOT(0xA)=0, AFFINEW(0xC)=0x100, AFFINEH(0xD)=0x100."
+   ],
+   "signature_guess": "static void sub_020174BC(PokepicScriptSlot *slot)",
+   "signature_sources": {
+    "asm/unk_02016EDC.s": "static void sub_020174BC(PokepicScriptSlot *slot)"
+   }
+  },
+  "sub_02017504": {
+   "callers": [],
+   "confidence": "medium",
+   "defined_in": "asm/unk_02016EDC.s",
+   "mode": "thumb",
+   "notes": [
+    "[asm/unk_02016EDC.s] Opcode 5 (mov): sub_020172B4(slot,&dst(sp+1),&src(sp+0)); regs[dst]=regs[src]."
+   ],
+   "signature_guess": "static void sub_02017504(PokepicScriptSlot *slot)",
+   "signature_sources": {
+    "asm/unk_02016EDC.s": "static void sub_02017504(PokepicScriptSlot *slot)"
+   }
+  },
+  "sub_0201752C": {
+   "callers": [],
+   "confidence": "high",
+   "defined_in": "asm/unk_02016EDC.s",
+   "mode": "thumb",
+   "notes": [
+    "[asm/unk_02016EDC.s] Opcode 6: sub_020172C8(slot,&dst(sp0),&a(sp8),&b(sp4)); regs[dst]=a+b."
+   ],
+   "signature_guess": "static void sub_0201752C(PokepicScriptSlot *slot)",
+   "signature_sources": {
+    "asm/unk_02016EDC.s": "static void sub_0201752C(PokepicScriptSlot *slot)"
+   }
+  },
+  "sub_02017550": {
+   "callers": [],
+   "confidence": "high",
+   "defined_in": "asm/unk_02016EDC.s",
+   "mode": "thumb",
+   "notes": [
+    "[asm/unk_02016EDC.s] Opcode 7: regs[dst]=a*b."
+   ],
+   "signature_guess": "static void sub_02017550(PokepicScriptSlot *slot)",
+   "signature_sources": {
+    "asm/unk_02016EDC.s": "static void sub_02017550(PokepicScriptSlot *slot)"
+   }
+  },
+  "sub_02017578": {
+   "callers": [],
+   "confidence": "high",
+   "defined_in": "asm/unk_02016EDC.s",
+   "mode": "thumb",
+   "notes": [
+    "[asm/unk_02016EDC.s] Opcode 8: regs[dst]=a-b."
+   ],
+   "signature_guess": "static void sub_02017578(PokepicScriptSlot *slot)",
+   "signature_sources": {
+    "asm/unk_02016EDC.s": "static void sub_02017578(PokepicScriptSlot *slot)"
+   }
+  },
+  "sub_0201759C": {
+   "callers": [],
+   "confidence": "high",
+   "defined_in": "asm/unk_02016EDC.s",
+   "mode": "thumb",
+   "notes": [
+    "[asm/unk_02016EDC.s] Opcode 9: regs[dst]=a/b."
+   ],
+   "signature_guess": "static void sub_0201759C(PokepicScriptSlot *slot)",
+   "signature_sources": {
+    "asm/unk_02016EDC.s": "static void sub_0201759C(PokepicScriptSlot *slot)"
+   }
+  },
+  "sub_020175C4": {
+   "callers": [],
+   "confidence": "high",
+   "defined_in": "asm/unk_02016EDC.s",
+   "mode": "thumb",
+   "notes": [
+    "[asm/unk_02016EDC.s] Opcode 10: regs[dst]=a%b (uses r1 from _s32_div_f)."
+   ],
+   "signature_guess": "static void sub_020175C4(PokepicScriptSlot *slot)",
+   "signature_sources": {
+    "asm/unk_02016EDC.s": "static void sub_020175C4(PokepicScriptSlot *slot)"
+   }
+  },
+  "sub_020175EC": {
+   "callers": [],
+   "confidence": "medium",
+   "defined_in": "asm/unk_02016EDC.s",
+   "mode": "thumb",
+   "notes": [
+    "[asm/unk_02016EDC.s] Opcode 3 (conditional set). Stack: u8 mode sp+0, u8 cond sp+1, u8 r2 sp+2, u8 r3 sp+3, int value sp+4, int rhs sp+8, int lhs sp+0xC. mode 0x14: read reg r3, lhs=regs[r3], read imm into rhs; 0x15: sub_020172B4(&r3,&r2), lhs=regs[r3], rhs=regs[r2]. read cond, GF_ASSERT(cond <= 0x11). res=sub_02017470(&lhs,&rhs). mode again: 0x14 read reg r3 + imm value; 0x15 sub_020172B4(&r3,&r2), value=regs[r2]. if (cond == res) regs[r3] = value."
+   ],
+   "signature_guess": "static void sub_020175EC(PokepicScriptSlot *slot)",
+   "signature_sources": {
+    "asm/unk_02016EDC.s": "static void sub_020175EC(PokepicScriptSlot *slot)"
+   }
+  },
+  "sub_020176CC": {
+   "callers": [],
+   "confidence": "high",
+   "defined_in": "asm/unk_02016EDC.s",
+   "mode": "thumb",
+   "notes": [
+    "[asm/unk_02016EDC.s] Opcode 4: read reg r; slot->cursor++; regs[r] = sub_02017214(slot->cursor) (the read helper is inlined by hand, not a call to sub_0201726C)."
+   ],
+   "signature_guess": "static void sub_020176CC(PokepicScriptSlot *slot)",
+   "signature_sources": {
+    "asm/unk_02016EDC.s": "static void sub_020176CC(PokepicScriptSlot *slot)"
+   }
+  },
+  "sub_020176F0": {
+   "callers": [],
+   "confidence": "high",
+   "defined_in": "asm/unk_02016EDC.s",
+   "mode": "thumb",
+   "notes": [
+    "[asm/unk_02016EDC.s] Opcode 11 (loop start): GF_ASSERT(loopStart(0x50)==NULL); cursor++; loopStart=cursor (from the same register, no reload); loopTotal(0x48)=sub_02017214(slot->cursor) (reloaded); loopIter(0x4C)=0."
+   ],
+   "signature_guess": "static void sub_020176F0(PokepicScriptSlot *slot)",
+   "signature_sources": {
+    "asm/unk_02016EDC.s": "static void sub_020176F0(PokepicScriptSlot *slot)"
+   }
+  },
+  "sub_02017714": {
+   "callers": [],
+   "confidence": "high",
+   "defined_in": "asm/unk_02016EDC.s",
+   "mode": "thumb",
+   "notes": [
+    "[asm/unk_02016EDC.s] Opcode 12 (loop end): if (++loopIter >= loopTotal) { loopStart=NULL; loopIter=0; loopTotal=0; } else cursor=loopStart. Store order 0x50,0x4C,0x48."
+   ],
+   "signature_guess": "static void sub_02017714(PokepicScriptSlot *slot)",
+   "signature_sources": {
+    "asm/unk_02016EDC.s": "static void sub_02017714(PokepicScriptSlot *slot)"
+   }
+  },
+  "sub_02017730": {
+   "callers": [],
+   "confidence": "high",
+   "defined_in": "asm/unk_02016EDC.s",
+   "mode": "thumb",
+   "notes": [
+    "[asm/unk_02016EDC.s] Opcode 13: read int attr(sp4), read reg r(sp0); Pokepic_SetAttr(pokepic, attr, regs[r])."
+   ],
+   "signature_guess": "static void sub_02017730(PokepicScriptSlot *slot)",
+   "signature_sources": {
+    "asm/unk_02016EDC.s": "static void sub_02017730(PokepicScriptSlot *slot)"
+   }
+  },
+  "sub_0201775C": {
+   "callers": [],
+   "confidence": "high",
+   "defined_in": "asm/unk_02016EDC.s",
+   "mode": "thumb",
+   "notes": [
+    "[asm/unk_02016EDC.s] Opcode 14: same shape as sub_02017730 but calls Pokepic_AddAttr."
+   ],
+   "signature_guess": "static void sub_0201775C(PokepicScriptSlot *slot)",
+   "signature_sources": {
+    "asm/unk_02016EDC.s": "static void sub_0201775C(PokepicScriptSlot *slot)"
+   }
+  },
+  "sub_02017788": {
+   "callers": [],
+   "confidence": "medium",
+   "defined_in": "asm/unk_02016EDC.s",
+   "mode": "thumb",
+   "notes": [
+    "[asm/unk_02016EDC.s] Opcode 15: attr=read int(sp8); u8 mode(sp1): 0x14 imm into v(sp4), 0x15 reg(sp2) v=regs[]; u8 op(sp0): 0x16 SetAttr(attr,v), 0x17 AddAttr(attr,v), else assert."
+   ],
+   "signature_guess": "static void sub_02017788(PokepicScriptSlot *slot)",
+   "signature_sources": {
+    "asm/unk_02016EDC.s": "static void sub_02017788(PokepicScriptSlot *slot)"
+   }
+  },
+  "sub_02017808": {
+   "callers": [],
+   "confidence": "high",
+   "defined_in": "asm/unk_02016EDC.s",
+   "mode": "thumb",
+   "notes": [
+    "[asm/unk_02016EDC.s] Opcode 16: sub_020173C8(slot,&dst,&angle(sp8),&amp(sp4)); regs[dst] = FX_SinIdx(angle) * amp >> 12 (FX_SinCosTable_[(angle>>4)*2])."
+   ],
+   "signature_guess": "static void sub_02017808(PokepicScriptSlot *slot)",
+   "signature_sources": {
+    "asm/unk_02016EDC.s": "static void sub_02017808(PokepicScriptSlot *slot)"
+   }
+  },
+  "sub_0201783C": {
+   "callers": [],
+   "confidence": "high",
+   "defined_in": "asm/unk_02016EDC.s",
+   "mode": "thumb",
+   "notes": [
+    "[asm/unk_02016EDC.s] Opcode 17: same with FX_CosIdx (index (angle>>4)*2+1)."
+   ],
+   "signature_guess": "static void sub_0201783C(PokepicScriptSlot *slot)",
+   "signature_sources": {
+    "asm/unk_02016EDC.s": "static void sub_0201783C(PokepicScriptSlot *slot)"
+   }
+  },
+  "sub_02017874": {
+   "callers": [],
+   "confidence": "high",
+   "defined_in": "asm/unk_02016EDC.s",
+   "mode": "thumb",
+   "notes": [
+    "[asm/unk_02016EDC.s] Opcode 18: reg r(sp1); u8 sel(sp0): 8 -> unk60=regs[r]; 9 -> unk64=regs[r]; else assert."
+   ],
+   "signature_guess": "static void sub_02017874(PokepicScriptSlot *slot)",
+   "signature_sources": {
+    "asm/unk_02016EDC.s": "static void sub_02017874(PokepicScriptSlot *slot)"
+   }
+  },
+  "sub_020178BC": {
+   "callers": [],
+   "confidence": "high",
+   "defined_in": "asm/unk_02016EDC.s",
+   "mode": "thumb",
+   "notes": [
+    "[asm/unk_02016EDC.s] Opcode 19: same as sub_02017874 with += (unk60 += regs[r])."
+   ],
+   "signature_guess": "static void sub_020178BC(PokepicScriptSlot *slot)",
+   "signature_sources": {
+    "asm/unk_02016EDC.s": "static void sub_020178BC(PokepicScriptSlot *slot)"
+   }
+  },
+  "sub_0201790C": {
+   "callers": [],
+   "confidence": "medium",
+   "defined_in": "asm/unk_02016EDC.s",
+   "mode": "thumb",
+   "notes": [
+    "[asm/unk_02016EDC.s] Opcode 20: u8 sel(sp3) chooses int *p = &slot->unk60..unk78 for sel 8..0xE through an if/else chain in order 8,9,...,0xE, assert otherwise (p is left uninitialized on the assert path). u8 mode(sp1): 0x14 imm into v(sp4) / 0x15 reg(sp2). u8 op(sp0): 0x16 *p=v; 0x17 *p+=v; else assert."
+   ],
+   "signature_guess": "static void sub_0201790C(PokepicScriptSlot *slot)",
+   "signature_sources": {
+    "asm/unk_02016EDC.s": "static void sub_0201790C(PokepicScriptSlot *slot)"
+   }
+  },
+  "sub_020179D4": {
+   "callers": [
+    "asm/unk_02016EDC.s"
+   ],
+   "confidence": "high",
+   "defined_in": "asm/unk_02016EDC.s",
+   "mode": "thumb",
+   "notes": [
+    "[asm/unk_02016EDC.s] Opcode 21: if (flip 0x1CC) SetAttr(X, baseX - (unk60 + unk68)); else SetAttr(X, baseX + unk60 + unk68); then SetAttr(Y, baseY + unk64 + unk6C). slot->pokepic is loaded before the branch."
+   ],
+   "signature_guess": "static void sub_020179D4(PokepicScriptSlot *slot)",
+   "signature_sources": {
+    "asm/unk_02016EDC.s": "static void sub_020179D4(PokepicScriptSlot *slot)"
+   }
+  },
+  "sub_02017A1C": {
+   "callers": [
+    "asm/unk_02016EDC.s"
+   ],
+   "confidence": "high",
+   "defined_in": "asm/unk_02016EDC.s",
+   "mode": "thumb",
+   "notes": [
+    "[asm/unk_02016EDC.s] Opcode 22: SetAttr(AFFINEW, unk70+0x100); SetAttr(AFFINEH, unk74+0x100); SetAttr(ZROT, (u16)unk78). Then on mode(0x1CE): ==0x1B: if (unk74<0) sub_02017488; else ==0x1D: if (unk74!=0) sub_02017488; else GF_ASSERT(mode==0x1C). Compare order is 0x1B, 0x1D, 0x1C, so write an if/else chain."
+   ],
+   "signature_guess": "static void sub_02017A1C(PokepicScriptSlot *slot)",
+   "signature_sources": {
+    "asm/unk_02016EDC.s": "static void sub_02017A1C(PokepicScriptSlot *slot)"
+   }
+  },
+  "sub_02017A84": {
+   "callers": [],
+   "confidence": "medium",
+   "defined_in": "asm/unk_02016EDC.s",
+   "mode": "thumb",
+   "notes": [
+    "[asm/unk_02016EDC.s] Opcode 23: read reg r; slot->cursor++; u8 v=(u8)sub_02017214(slot->cursor); if (v==8||v==10) unk68=regs[r]; else if (v==9||v==11) unk6C=regs[r]; else assert. The compare chain is 8,10,9,11 (not a jump table)."
+   ],
+   "signature_guess": "static void sub_02017A84(PokepicScriptSlot *slot)",
+   "signature_sources": {
+    "asm/unk_02016EDC.s": "static void sub_02017A84(PokepicScriptSlot *slot)"
+   }
+  },
+  "sub_02017AD8": {
+   "callers": [],
+   "confidence": "high",
+   "defined_in": "asm/unk_02016EDC.s",
+   "mode": "thumb",
+   "notes": [
+    "[asm/unk_02016EDC.s] Opcode 31 (wait): sub_0201726C(slot,&slot->wait(0x54)); yield=1."
+   ],
+   "signature_guess": "static void sub_02017AD8(PokepicScriptSlot *slot)",
+   "signature_sources": {
+    "asm/unk_02016EDC.s": "static void sub_02017AD8(PokepicScriptSlot *slot)"
+   }
+  },
+  "sub_02017AEC": {
+   "callers": [],
+   "confidence": "medium",
+   "defined_in": "asm/unk_02016EDC.s",
+   "mode": "thumb",
+   "notes": [
+    "[asm/unk_02016EDC.s] Opcode 32: u8 a(sp6), b(sp5), c(sp4) read in that order, then int color(sp8); Pokepic_StartPaletteFade(pokepic, a, b, c, color). The u8 locals look like an array or struct at sp+4."
+   ],
+   "signature_guess": "static void sub_02017AEC(PokepicScriptSlot *slot)",
+   "signature_sources": {
+    "asm/unk_02016EDC.s": "static void sub_02017AEC(PokepicScriptSlot *slot)"
+   }
+  },
+  "sub_02017B2C": {
+   "callers": [],
+   "confidence": "high",
+   "defined_in": "asm/unk_02016EDC.s",
+   "mode": "thumb",
+   "notes": [
+    "[asm/unk_02016EDC.s] Opcode 33: if (Pokepic_ResumePaletteFade(pokepic)) { fading(0x1CF)=1; yield=1; }"
+   ],
+   "signature_guess": "static void sub_02017B2C(PokepicScriptSlot *slot)",
+   "signature_sources": {
+    "asm/unk_02016EDC.s": "static void sub_02017B2C(PokepicScriptSlot *slot)"
+   }
+  },
+  "sub_02017B48": {
+   "callers": [],
+   "confidence": "high",
+   "defined_in": "asm/unk_02016EDC.s",
+   "mode": "thumb",
+   "notes": [
+    "[asm/unk_02016EDC.s] Opcode 24: applyNow(0x1CD)=1."
+   ],
+   "signature_guess": "static void sub_02017B48(PokepicScriptSlot *slot)",
+   "signature_sources": {
+    "asm/unk_02016EDC.s": "static void sub_02017B48(PokepicScriptSlot *slot)"
+   }
+  },
+  "sub_02017B54": {
+   "callers": [],
+   "confidence": "medium",
+   "defined_in": "asm/unk_02016EDC.s",
+   "mode": "thumb",
+   "notes": [
+    "[asm/unk_02016EDC.s] Opcode 25: sub_02017280(slot,&slot->mode(0x1CE)); GF_ASSERT(mode==0x1B || mode==0x1D || mode==0x1C). The asm builds two bool temps (r2 for 1B||1D, r1 for (..)||1C), which is MWCC's lowering of the || chain inside the assert."
+   ],
+   "signature_guess": "static void sub_02017B54(PokepicScriptSlot *slot)",
+   "signature_sources": {
+    "asm/unk_02016EDC.s": "static void sub_02017B54(PokepicScriptSlot *slot)"
+   }
+  },
+  "sub_02017B8C": {
+   "callers": [],
+   "confidence": "high",
+   "defined_in": "asm/unk_02016EDC.s",
+   "mode": "thumb",
+   "notes": [
+    "[asm/unk_02016EDC.s] Opcode 26: tail call sub_02017C78(slot, 0)."
+   ],
+   "signature_guess": "static void sub_02017B8C(PokepicScriptSlot *slot)",
+   "signature_sources": {
+    "asm/unk_02016EDC.s": "static void sub_02017B8C(PokepicScriptSlot *slot)"
+   }
+  },
+  "sub_02017B98": {
+   "callers": [],
+   "confidence": "high",
+   "defined_in": "asm/unk_02016EDC.s",
+   "mode": "thumb",
+   "notes": [
+    "[asm/unk_02016EDC.s] Opcode 27: tail call sub_02017C78(slot, 1)."
+   ],
+   "signature_guess": "static void sub_02017B98(PokepicScriptSlot *slot)",
+   "signature_sources": {
+    "asm/unk_02016EDC.s": "static void sub_02017B98(PokepicScriptSlot *slot)"
+   }
+  },
+  "sub_02017BA4": {
+   "callers": [],
+   "confidence": "high",
+   "defined_in": "asm/unk_02016EDC.s",
+   "mode": "thumb",
+   "notes": [
+    "[asm/unk_02016EDC.s] Opcode 28: tail call sub_02017C78(slot, 2)."
+   ],
+   "signature_guess": "static void sub_02017BA4(PokepicScriptSlot *slot)",
+   "signature_sources": {
+    "asm/unk_02016EDC.s": "static void sub_02017BA4(PokepicScriptSlot *slot)"
+   }
+  },
+  "sub_02017BB0": {
+   "callers": [],
+   "confidence": "high",
+   "defined_in": "asm/unk_02016EDC.s",
+   "mode": "thumb",
+   "notes": [
+    "[asm/unk_02016EDC.s] Opcode 29: tail call sub_02017C78(slot, 3)."
+   ],
+   "signature_guess": "static void sub_02017BB0(PokepicScriptSlot *slot)",
+   "signature_sources": {
+    "asm/unk_02016EDC.s": "static void sub_02017BB0(PokepicScriptSlot *slot)"
+   }
+  },
+  "sub_02017BBC": {
+   "callers": [],
+   "confidence": "high",
+   "defined_in": "asm/unk_02016EDC.s",
+   "mode": "thumb",
+   "notes": [
+    "[asm/unk_02016EDC.s] Opcode 30: tail call sub_02017C78(slot, 4)."
+   ],
+   "signature_guess": "static void sub_02017BBC(PokepicScriptSlot *slot)",
+   "signature_sources": {
+    "asm/unk_02016EDC.s": "static void sub_02017BBC(PokepicScriptSlot *slot)"
+   }
+  },
+  "sub_02017BC8": {
+   "callers": [
+    "asm/unk_02016EDC.s"
+   ],
+   "confidence": "high",
+   "defined_in": "asm/unk_02016EDC.s",
+   "mode": "thumb",
+   "notes": [
+    "[asm/unk_02016EDC.s] if op==0x18 *dest=*value; else if 0x19 *dest=*base+*value; else if 0x1A *dest+=*value; else assert. Called with (sub->op(+0x2C), &sub->base(+0x30), sub->valuePtr(+0x24), sub->destPtr(+0x28))."
+   ],
+   "signature_guess": "static void sub_02017BC8(u8 op, int *base, int *value, int *dest)",
+   "signature_sources": {
+    "asm/unk_02016EDC.s": "static void sub_02017BC8(u8 op, int *base, int *value, int *dest)"
+   }
+  },
+  "sub_02017BF8": {
+   "callers": [
+    "asm/unk_02016EDC.s"
+   ],
+   "confidence": "high",
+   "defined_in": "asm/unk_02016EDC.s",
+   "mode": "thumb",
+   "notes": [
+    "[asm/unk_02016EDC.s] switch(sel) with cases 0x23..0x27 (jump table, sub #0x23; bhi default assert). Case i: sub->valuePtr=&sub->temp[i](0x3C+4i); sub->destPtr=&slot->unk68[i](0x68+4i); sub->base=slot->unk68[i]. Five explicit cases in order."
+   ],
+   "signature_guess": "static void sub_02017BF8(u8 sel, PokepicScriptSubTask *sub, PokepicScriptSlot *slot)",
+   "signature_sources": {
+    "asm/unk_02016EDC.s": "static void sub_02017BF8(u8 sel, PokepicScriptSubTask *sub, PokepicScriptSlot *slot)"
+   }
+  },
+  "sub_02017C78": {
+   "callers": [
+    "asm/unk_02016EDC.s"
+   ],
+   "confidence": "medium",
+   "defined_in": "asm/unk_02016EDC.s",
+   "mode": "thumb",
+   "notes": [
+    "[asm/unk_02016EDC.s] sub=sub_02017220(slot,(u8)type); read u8 into sub->op(+0x2C) and sub->delay(+0x2D); for (u8 i=0; i<_020F61BC[type].argc; i++) sub_0201726C(slot,&sub->args[i]) (args at +4); sub_02017BF8((u8)sub->args[_020F61BC[type].targetArg], sub, slot); if (sub->delay==0) sub->func(sub, slot); else sub->delay--. The first argc load goes through label _020F61C0+type*12 and the in-loop load through r6=&table[type] at +4. sub is spilled to the stack (sp+4)."
+   ],
+   "signature_guess": "static void sub_02017C78(PokepicScriptSlot *slot, int type)",
+   "signature_sources": {
+    "asm/unk_02016EDC.s": "static void sub_02017C78(PokepicScriptSlot *slot, int type)"
+   }
+  },
+  "sub_02017D20": {
+   "callers": [],
+   "confidence": "high",
+   "defined_in": "asm/unk_02016EDC.s",
+   "mode": "thumb",
+   "notes": [
+    "[asm/unk_02016EDC.s] Subtask type 0 (wave). angle=(u16)(args[4](+0x14) + (args[6](+0x1C)+1)*args[3](+0x10)); switch(args[0](+4)) cases 0x1E..0x21 (jump table): *valuePtr = FX_SinIdx(angle)*amp>>12, FX_CosIdx(...)*amp>>12, -(sin*amp>>12), -(cos*amp>>12); amp=args[2](+0xC). Then sub_02017BC8(op,&base,valuePtr,destPtr); if (++args[6] >= args[5](+0x18)) sub->active=0. Only r0 is used; the slot param is unused."
+   ],
+   "signature_guess": "static void sub_02017D20(PokepicScriptSubTask *sub, PokepicScriptSlot *slot)",
+   "signature_sources": {
+    "asm/unk_02016EDC.s": "static void sub_02017D20(PokepicScriptSubTask *sub, PokepicScriptSlot *slot)"
+   }
+  },
+  "sub_02017DD8": {
+   "callers": [],
+   "confidence": "high",
+   "defined_in": "asm/unk_02016EDC.s",
+   "mode": "thumb",
+   "notes": [
+    "[asm/unk_02016EDC.s] Type 1: same as sub_02017D20 but angle=(u16)(args[4] + ((args[6]+1)*args[3]) / args[5])."
+   ],
+   "signature_guess": "static void sub_02017DD8(PokepicScriptSubTask *sub, PokepicScriptSlot *slot)",
+   "signature_sources": {
+    "asm/unk_02016EDC.s": "static void sub_02017DD8(PokepicScriptSubTask *sub, PokepicScriptSlot *slot)"
+   }
+  },
+  "sub_02017E98": {
+   "callers": [],
+   "confidence": "high",
+   "defined_in": "asm/unk_02016EDC.s",
+   "mode": "thumb",
+   "notes": [
+    "[asm/unk_02016EDC.s] Type 2: *valuePtr += args[1](+8) + args[4](+0x14)*args[2](+0xC); sub_02017BC8(...); if (++args[4] >= args[3](+0x10)) active=0."
+   ],
+   "signature_guess": "static void sub_02017E98(PokepicScriptSubTask *sub, PokepicScriptSlot *slot)",
+   "signature_sources": {
+    "asm/unk_02016EDC.s": "static void sub_02017E98(PokepicScriptSubTask *sub, PokepicScriptSlot *slot)"
+   }
+  },
+  "sub_02017ED4": {
+   "callers": [],
+   "confidence": "high",
+   "defined_in": "asm/unk_02016EDC.s",
+   "mode": "thumb",
+   "notes": [
+    "[asm/unk_02016EDC.s] Type 3: *valuePtr = ((args[3](+0x10)+1) * args[1](+8)) / args[2](+0xC); sub_02017BC8; if (++args[3] >= args[2]) active=0."
+   ],
+   "signature_guess": "static void sub_02017ED4(PokepicScriptSubTask *sub, PokepicScriptSlot *slot)",
+   "signature_sources": {
+    "asm/unk_02016EDC.s": "static void sub_02017ED4(PokepicScriptSubTask *sub, PokepicScriptSlot *slot)"
+   }
+  },
+  "sub_02017F10": {
+   "callers": [],
+   "confidence": "medium",
+   "defined_in": "asm/unk_02016EDC.s",
+   "mode": "thumb",
+   "notes": [
+    "[asm/unk_02016EDC.s] Type 4: step=args[1](+8)+args[4](+0x14)*args[2](+0xC); *valuePtr += step; op 0x18 or 0x1A: limit=args[3](+0x10); if step<0 { if (*valuePtr <= limit) {*valuePtr=limit; active=0;} } else { if (*valuePtr >= limit) {...} }. op 0x19: t=base(+0x30)+*valuePtr; step<0: if (t<=limit) {*valuePtr += limit-t; active=0;} else: if (t>=limit) {*valuePtr -= t-limit; active=0;}. else assert. Then sub_02017BC8 and args[4]++ (no end check here). limit is loaded before the step-sign branch."
+   ],
+   "signature_guess": "static void sub_02017F10(PokepicScriptSubTask *sub, PokepicScriptSlot *slot)",
+   "signature_sources": {
+    "asm/unk_02016EDC.s": "static void sub_02017F10(PokepicScriptSubTask *sub, PokepicScriptSlot *slot)"
    }
   },
   "sub_02017FAC": {

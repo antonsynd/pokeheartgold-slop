@@ -1745,6 +1745,18 @@
       "category": "file-patterns",
       "title": "FontOAM TextOBJ creation helper (String -> window -> sub_020135D8) recurs across overlays: copy BattleInput_CreateTextObject",
       "body": "The helper that measures a String (FontID_String_GetWidth + FX_ModS32(width,8) tile round-up), renders it into a temp Window (InitWindow / AddTextWindowTopLeftCorner(bg,&win,tiles,2,0,0) / AddTextPrinterParameterizedWithColorAndSpacing), reserves OBJ char VRAM (sub_02013688 + sub_02021AC8), fills a TextOBJTemplate {fontSystem, &window, SpriteManager_GetSpriteList, SpriteManager_FindPlttResourceProxy(palId), NULL, alloc.offset, x, y, 0, prio, vram, heap} and calls sub_020135D8 / sub_020138E0 / sub_020136B4, then RemoveWindow + stores {TextOBJ*, UnkStruct_02021AC8, u16 fontLength}, is the SAME function as src/battle/battle_input.c BattleInput_CreateTextObject. Its 11-arg signature (ctx, out, String*, fontId, color, palOffset, palId, x, y, centerText, displayObj{Window; u16 charLength; u16 fontLength}) matched verbatim in overlay_80_0223A00C (ov80_0223A62C) with only ctx field sources, the vram (2DMAIN) and y handling (y - 8, not +264) changed. Its companions: delete = FontOAM_Delete + sub_02021B5C(&alloc); measure = ov80_0223A75C-style. Grep a new file for sub_020135D8 and start from battle_input.c."
+    },
+    {
+      "id": "callee-proto-narrowing-at-call-site-local-decl",
+      "category": "ipa",
+      "title": "Unwanted lsl/lsr #24 before a call = the header prototype narrows a param (e.g. FontID is u8) that the original TU passed as u32; declare the callee locally with the wide type",
+      "body": "If the only diff is an extra `lsls rN,#24; lsrs rN,#24` (or #16) immediately before a bl, and the caller variable is already an int/u32, the narrowing comes from the CALLEE prototype visible in your TU (e.g. include/text.h AddTextPrinterParameterizedWithColor(Window*, FontID fontId, ...) with typedef u8 FontID). The retail TU saw a prototype with a u32 param. Fix: do not include that header; declare the callee locally with the wider param type (u32 fontId). Making your own param FontID instead does NOT help (it just moves the load to ldrb of the stack arg). Seen overlay_83_02246E08 ov83_02247998. Watch for transitive includes: if the header comes in via another header you cannot drop, a local redeclaration will conflict."
+    },
+    {
+      "id": "nibble-field-insert-mask-xor-form",
+      "category": "codegen",
+      "title": "4-bit field insert where retail materializes ~mask as (15-16)^mask: write mask ^ 0xFFFFFFFF with value and mask precomputed",
+      "body": "Retail `lsls r5,idx,#2; adds r4,val,#1; movs r0,#15; adds r1,r0,#0; lsls r1,r5; subs r0,#16; ldr r3,[flags]; eors r0,r1; lsls r4,r5; ands r0,r3; orrs r0,r4; str` (no mvn) matched only with: `int shift = idx * 4; u32 value = (val + 1) << shift; u32 mask = 0xF << shift; *flags = (*flags & (mask ^ 0xFFFFFFFF)) | value;`. `~(0xF << s)` gives mvn; `(0xFFFFFFFF ^ mask)` with mask computed inline, or val+1 not pre-shifted into its own temp, schedules differently. Seen overlay_83_02246E08 ov83_022477EC (6-variant sweep with compile_one.sh)."
     }
   ]
 }

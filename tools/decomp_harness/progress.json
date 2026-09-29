@@ -870,6 +870,16 @@
       "attempts": 6,
       "result": "matched",
       "note": "compare-verified (HG + SS full ROM SHA1 OK). Battle Frontier facility intro splash (ov80_0223A00C launched from overlay_80_0222BDF4 frontier script cmd): SysTask env 0x168 with a 19-state sequencer (fades, window-reveal scroll tasks writing WIN0/WIN1 via G2_SetWnd*Position in a VWait task, palette-cycle task over an 8-palette 0x100-byte buffer, 4-sprite affine pop-in with FX_Div interpolators, facility-name TextOBJ, slide-in logo sprite). 20/20 pure C; FX32_CONST(ctx->x) soft-float rounding macro matched directly. Text helper copied from battle_input.c BattleInput_CreateTextObject (new pattern). Fixes: palette buffer 0x100 not 0xE0; A8D4 tail `if (t + 1 <= dur) { t++; return FALSE; }` + `val + start`; A834 decl order; the two equal-size ManagedSpriteTemplates must be DEFINED in reverse address order (objdiff blind, OVY_80.sbin caught it). All non-entry functions static (none referenced elsewhere)."
+    },
+    {
+      "file": "asm/overlay_83_02246E08.s",
+      "lines": 1632,
+      "functions": 39,
+      "matched_functions": 39,
+      "nonmatching": 0,
+      "attempts": 4,
+      "result": "matched",
+      "note": "compare-verified (HG + SS full ROM SHA1 OK). Battle Frontier (ov83) sprite/resource + UI helper module: 14x4 SpriteResource table setup/teardown (item icons, party-menu gfx, pokemon icons from Party with the slot-3 flag quirk), affine Sprite factory + 8-byte {s16 x,y; Sprite*} icon wrappers (main/sub screen), mon-pic-into-OBJ-VRAM loader (sub_02014510 / GXS_LoadOBJ), nibble-packed BG-toggle queue, YesNoPrompt holder, WindowTemplate table add/remove, frame and aligned text printer. 39/39 pure C, modelled on battle_arcade_game_board.c (ov84) which carries the same helpers. Fixes: decl-order swaps (7668 rect/pokepic, 7864 tileStart, 791C i/count), u16 seqNo, i <= 7, local AddTextPrinterParameterizedWithColor with u32 fontId (text.h narrows via u8 FontID), nibble insert needs (mask ^ 0xFFFFFFFF) with pre-shifted value (compile_one.sh variant sweep), and the three 0x10-byte rodata objects defined in reverse address order."
     }
   ],
   "failed": [
@@ -1289,7 +1299,7 @@
   ],
   "stats": {
     "total_attempts": 208,
-    "total_matched": 79,
+    "total_matched": 80,
     "total_failed": 31
   },
   "matched": [
@@ -1393,6 +1403,7 @@
     "asm/overlay_18_021F7ED4.s",
     "asm/unk_02056680.s",
     "asm/unk_02033AE0.s",
-    "asm/overlay_80_0223A00C.s"
+    "asm/overlay_80_0223A00C.s",
+    "asm/overlay_83_02246E08.s"
   ]
 }

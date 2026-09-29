@@ -1,12 +1,12 @@
 {
  "summary": {
-  "generated": "2026-09-29T17:58:55Z",
+  "generated": "2026-09-29T18:28:56Z",
   "by_status": {
    "matched": {
-    "files": 108,
-    "functions": 1999,
-    "insn_lines": 57998,
-    "text_bytes_est": 130246
+    "files": 109,
+    "functions": 2038,
+    "insn_lines": 59337,
+    "text_bytes_est": 133222
    },
    "blocked": {
     "files": 51,
@@ -15,10 +15,10 @@
     "text_bytes_est": 64116
    },
    "pending": {
-    "files": 153,
-    "functions": 16144,
-    "insn_lines": 804658,
-    "text_bytes_est": 1801288
+    "files": 152,
+    "functions": 16105,
+    "insn_lines": 803319,
+    "text_bytes_est": 1798312
    },
    "upstream": {
     "files": 414,
@@ -29,9 +29,9 @@
   },
   "function_totals": {
    "tracked": 19040,
-   "matched": 1999,
+   "matched": 2038,
    "partial_in_blocked": 20,
-   "pending": 16144
+   "pending": 16105
   },
   "blockers": [
    {
@@ -132818,8 +132818,8 @@
   },
   {
    "file": "asm/overlay_83_02246E08.s",
-   "lsf_kind": "asm",
-   "status": "pending",
+   "lsf_kind": "src",
+   "status": "matched",
    "lines": 1632,
    "function_count": 39,
    "text_bytes_est": 2976,
@@ -132976,275 +132976,276 @@
      "mode": "thumb",
      "insns": 373,
      "size_est": 834,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ov83_0224714C",
      "mode": "thumb",
      "insns": 82,
      "size_est": 174,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ov83_022471FC",
      "mode": "thumb",
      "insns": 44,
      "size_est": 102,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ov83_02247264",
      "mode": "thumb",
      "insns": 26,
      "size_est": 60,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ov83_022472A0",
      "mode": "thumb",
      "insns": 26,
      "size_est": 60,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ov83_022472DC",
      "mode": "thumb",
      "insns": 22,
      "size_est": 52,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ov83_02247314",
      "mode": "thumb",
      "insns": 74,
      "size_est": 168,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ov83_022473BC",
      "mode": "thumb",
      "insns": 70,
      "size_est": 152,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ov83_02247454",
      "mode": "thumb",
      "insns": 53,
      "size_est": 112,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ov83_022474C4",
      "mode": "thumb",
      "insns": 56,
      "size_est": 118,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ov83_0224753C",
      "mode": "thumb",
      "insns": 12,
      "size_est": 30,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ov83_0224755C",
      "mode": "thumb",
      "insns": 5,
      "size_est": 10,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ov83_02247568",
      "mode": "thumb",
      "insns": 23,
      "size_est": 50,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ov83_0224759C",
      "mode": "thumb",
      "insns": 26,
      "size_est": 56,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ov83_022475D4",
      "mode": "thumb",
      "insns": 10,
      "size_est": 24,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ov83_022475EC",
      "mode": "thumb",
      "insns": 8,
      "size_est": 20,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ov83_02247600",
      "mode": "thumb",
      "insns": 5,
      "size_est": 10,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ov83_0224760C",
      "mode": "thumb",
      "insns": 10,
      "size_est": 22,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ov83_02247624",
      "mode": "thumb",
      "insns": 5,
      "size_est": 10,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ov83_02247630",
      "mode": "thumb",
      "insns": 21,
      "size_est": 52,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ov83_02247668",
      "mode": "thumb",
      "insns": 91,
      "size_est": 210,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ov83_0224773C",
      "mode": "thumb",
      "insns": 20,
      "size_est": 42,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ov83_02247768",
      "mode": "thumb",
      "insns": 2,
      "size_est": 4,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ov83_0224776C",
      "mode": "thumb",
      "insns": 7,
      "size_est": 14,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ov83_0224777C",
      "mode": "thumb",
      "insns": 20,
      "size_est": 50,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ov83_022477B0",
      "mode": "thumb",
      "insns": 8,
      "size_est": 18,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ov83_022477C4",
      "mode": "thumb",
      "insns": 12,
      "size_est": 30,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ov83_022477E4",
      "mode": "thumb",
      "insns": 3,
      "size_est": 6,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ov83_022477EC",
      "mode": "thumb",
      "insns": 16,
      "size_est": 32,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ov83_0224780C",
      "mode": "thumb",
      "insns": 26,
      "size_est": 56,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ov83_02247844",
      "mode": "thumb",
      "insns": 8,
      "size_est": 18,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ov83_02247858",
      "mode": "thumb",
      "insns": 5,
      "size_est": 10,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ov83_02247864",
      "mode": "thumb",
      "insns": 37,
      "size_est": 78,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ov83_022478B4",
      "mode": "thumb",
      "insns": 13,
      "size_est": 30,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ov83_022478D4",
      "mode": "thumb",
      "insns": 32,
      "size_est": 68,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ov83_0224791C",
      "mode": "thumb",
      "insns": 18,
      "size_est": 38,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ov83_02247944",
      "mode": "thumb",
      "insns": 28,
      "size_est": 66,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ov83_02247988",
      "mode": "thumb",
      "insns": 7,
      "size_est": 14,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ov83_02247998",
      "mode": "thumb",
      "insns": 35,
      "size_est": 76,
-     "status": "pending"
+     "status": "matched"
     }
-   ]
+   ],
+   "source": "harness"
   },
   {
    "file": "asm/overlay_83_022479E4.s",

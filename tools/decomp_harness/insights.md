@@ -665,6 +665,10 @@ For a two-way return on a call result where retail lays the VARIABLE return inli
 
 Retail loop shape: `ldr rMax,[s,#max]; movs rI,#0; ldr rP,[s,#base]; cmp rMax,#0; ble; L: ldrb r0,[rP,#off]; ...; adds rI,#1; adds rP,#16; cmp rI,rMax; blt L` with the found element returned as `adds r0,rP,#0`. Writing `for (i=0;i<s->max;i++) if (s->arr[i].f==0) return &s->arr[i];` instead loads the base inside the guarded region and recomputes `base + i<<4` for the return (+10 B). Fix: `T *p = s->arr; int i; for (i = 0; i < s->max; i++) { if (p->f == 0) return p; p++; }`. Declaration order decides which of p/i gets r1 vs r2: declare the pointer FIRST (it got r1, i r2, matching retail). Also: an equality test `p->cmd == cmd` emitted retail `cmp r0(ldrb),r1(param)` directly. Seen unk_02033AE0 sub_02033C30/C50/F9C (comm queue node pool scans). Related [[regalloc-order]].
 
+### 4-bit field insert where retail materializes ~mask as (15-16)^mask: write mask ^ 0xFFFFFFFF with value and mask precomputed  <!-- id: nibble-field-insert-mask-xor-form -->
+
+Retail `lsls r5,idx,#2; adds r4,val,#1; movs r0,#15; adds r1,r0,#0; lsls r1,r5; subs r0,#16; ldr r3,[flags]; eors r0,r1; lsls r4,r5; ands r0,r3; orrs r0,r4; str` (no mvn) matched only with: `int shift = idx * 4; u32 value = (val + 1) << shift; u32 mask = 0xF << shift; *flags = (*flags & (mask ^ 0xFFFFFFFF)) | value;`. `~(0xF << s)` gives mvn; `(0xFFFFFFFF ^ mask)` with mask computed inline, or val+1 not pre-shifted into its own temp, schedules differently. Seen overlay_83_02246E08 ov83_022477EC (6-variant sweep with compile_one.sh).
+
 ## Matching Tricks
 
 ### Small source changes that move codegen  <!-- id: decl-order-tricks -->
@@ -1008,6 +1012,10 @@ MEASURED: `include/field/map_prop_animation.h` declared `void ov01_021E8970(...)
 ISOLATION TRICK: to test a header edit without a finished .c, revert main.lsf to the asm object and keep ONLY the header change, then run compare. The asm object ignores the C prototype, so a pass isolates the header edit as IPA-safe and banks that answer for later. If it fails, fall back to [[frozen-prototype-header-split]].
 
 Does NOT generalize to: adding/removing parameters, narrowing a param type (see [[frozen-callee-proto-for-narrowed-args]] — that DOES change call sites via integer narrowing), or any caller that USES the returned value.
+
+### Unwanted lsl/lsr #24 before a call = the header prototype narrows a param (e.g. FontID is u8) that the original TU passed as u32; declare the callee locally with the wide type  <!-- id: callee-proto-narrowing-at-call-site-local-decl -->
+
+If the only diff is an extra `lsls rN,#24; lsrs rN,#24` (or #16) immediately before a bl, and the caller variable is already an int/u32, the narrowing comes from the CALLEE prototype visible in your TU (e.g. include/text.h AddTextPrinterParameterizedWithColor(Window*, FontID fontId, ...) with typedef u8 FontID). The retail TU saw a prototype with a u32 param. Fix: do not include that header; declare the callee locally with the wider param type (u32 fontId). Making your own param FontID instead does NOT help (it just moves the load to ldrb of the stack arg). Seen overlay_83_02246E08 ov83_02247998. Watch for transitive includes: if the header comes in via another header you cannot drop, a local redeclaration will conflict.
 
 ## Data Sections
 

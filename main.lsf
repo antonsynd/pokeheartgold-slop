@@ -1106,7 +1106,7 @@ Overlay OVY_83
     Object asm/overlay_83_0223DD60.o
     Object asm/overlay_83_02242FE8.o
     Object asm/overlay_83_02243D7C.o
-    Object asm/overlay_83_02246E08.o
+    Object src/overlay_83_02246E08.o
     Object src/overlay_83_022479E4.o
 }
 Overlay OVY_84
