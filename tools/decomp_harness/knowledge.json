@@ -31289,6 +31289,1487 @@
    ],
    "sweep_output": "sweep/out/unk_0202FBCC.json"
   },
+  "asm/unk_02032844.s": {
+   "notes": "This is Nintendo's NitroSDK sample 'wh.c' wireless helper, with all static globals folded into one heap work struct (sWork). Mapping: 02032844 WH_ChangeSysState, 02032858 WH_SetError, 02033528 WH_Initialize, 02033668 WH_ParentConnect, 0203373C WH_ChildConnect, 02032B84 WH_ChildConnectAuto, 02032C1C WH_StartScan, 02032E24 WH_EndScan, 020332C0 WH_StartMeasureChannel, 02033468 WH_GetMeasureChannel, 02033858 WH_Finalize, 020338D0 WH_End, 02033298 WH_GetSystemState, 020332AC WH_GetLastError, 02033250 WH_GetBitmap, 020338F4 WH_GetCurrentAid, 020337D0 WH_SetReceiver, 02033800 WH_SendData, 020339B4 WH_SetGameInfo wrapper, 02033A0C WH_SetEntry wrapper. WM_ERRCODE_OPERATING=2 is the success check. WH error codes: 0x14 DISCONNECTED, 0x16 NO_RADIO, 0x18 NOMORE_CHANNEL, 0x19 FATAL. 72 thumb functions, 0x02032844-0x02033AE0, no arm funcs, no .rodata. Exports (34 .public minus 4 imports) = 30 functions; the other 42 functions are file-local (make them static). Callers are all still asm (unk_02034B0C.s, unk_02035900.s) except the 7 header functions used by src/unk_02037C94.c, src/field/field_control.c (sub_02033250 only), plus the local externs noted above. Nothing in src/save_arrays.c references this file.",
+   "oracle": {
+    "functions": {
+     "sub_02032858": {
+      "signedness": [
+       {
+        "branch": "bls",
+        "confidence": "high",
+        "evidence": "L36: cmp r2, #1  =>  L37: bls _0203286A",
+        "register": "r2",
+        "verdict": "unsigned"
+       }
+      ]
+     },
+     "sub_020328A4": {
+      "widths": [
+       {
+        "base": "r0",
+        "confidence": "high",
+        "evidence": "L74: ldrh r0, [r0, #2]",
+        "kind": "load-width",
+        "offset": "#2",
+        "verdict": "u16"
+       }
+      ]
+     },
+     "sub_020328C8": {
+      "signedness": [
+       {
+        "branch": "bhi",
+        "confidence": "high",
+        "evidence": "L99: cmp r0, #2  =>  L100: bhi _020328DC",
+        "register": "r0",
+        "verdict": "unsigned"
+       }
+      ],
+      "widths": [
+       {
+        "base": "r0",
+        "confidence": "high",
+        "evidence": "L130: strh r3, [r0, r1]",
+        "kind": "store-width",
+        "offset": "(r1)",
+        "verdict": "u16"
+       },
+       {
+        "base": "r2",
+        "confidence": "high",
+        "evidence": "L134: strh r0, [r2, r1]",
+        "kind": "store-width",
+        "offset": "(r1)",
+        "verdict": "u16"
+       }
+      ]
+     },
+     "sub_02032934": {
+      "signedness": [
+       {
+        "branch": "bgt",
+        "confidence": "high",
+        "evidence": "L161: cmp r0, #7  =>  L162: bgt _0203296C",
+        "register": "r0",
+        "verdict": "signed"
+       },
+       {
+        "branch": "bge",
+        "confidence": "high",
+        "evidence": "L161: cmp r0, #7  =>  L163: bge _02032986",
+        "register": "r0",
+        "verdict": "signed"
+       },
+       {
+        "branch": "bgt",
+        "confidence": "high",
+        "evidence": "L164: cmp r0, #2  =>  L165: bgt _02032A24",
+        "register": "r0",
+        "verdict": "signed"
+       },
+       {
+        "branch": "blt",
+        "confidence": "high",
+        "evidence": "L166: cmp r0, #0  =>  L167: blt _02032A24",
+        "register": "r0",
+        "verdict": "signed"
+       },
+       {
+        "branch": "bgt",
+        "confidence": "high",
+        "evidence": "L173: cmp r0, #9  =>  L174: bgt _02032974",
+        "register": "r0",
+        "verdict": "signed"
+       },
+       {
+        "branch": "bge",
+        "confidence": "high",
+        "evidence": "L204: cmp r0, r1  =>  L205: bge _020329C4",
+        "register": "r0",
+        "verdict": "signed"
+       }
+      ],
+      "widths": [
+       {
+        "confidence": "high",
+        "evidence": "L150: lsl r0, r1, #0x10 ; L151: lsr r4, r0, #0x10",
+        "kind": "truncation-pair",
+        "register": "r0",
+        "verdict": "u16"
+       },
+       {
+        "base": "r5",
+        "confidence": "high",
+        "evidence": "L147: ldrh r0, [r5, #0x10]",
+        "kind": "load-width",
+        "offset": "#0x10",
+        "verdict": "u16"
+       },
+       {
+        "base": "r5",
+        "confidence": "high",
+        "evidence": "L152: ldrh r0, [r5, #2]",
+        "kind": "load-width",
+        "offset": "#2",
+        "verdict": "u16"
+       },
+       {
+        "base": "r5",
+        "confidence": "high",
+        "evidence": "L160: ldrh r0, [r5, #8]",
+        "kind": "load-width",
+        "offset": "#8",
+        "verdict": "u16"
+       },
+       {
+        "base": "r2",
+        "confidence": "high",
+        "evidence": "L184: ldrb r1, [r2, r0]",
+        "kind": "load-width",
+        "offset": "(r0)",
+        "verdict": "u8"
+       },
+       {
+        "base": "r2",
+        "confidence": "high",
+        "evidence": "L186: strb r1, [r2, r0]",
+        "kind": "store-width",
+        "offset": "(r0)",
+        "verdict": "u8"
+       },
+       {
+        "base": "r2",
+        "confidence": "high",
+        "evidence": "L203: ldrb r1, [r2, r1]",
+        "kind": "load-width",
+        "offset": "(r1)",
+        "verdict": "u8"
+       },
+       {
+        "base": "r5",
+        "confidence": "high",
+        "evidence": "L207: ldrb r1, [r5, #0x14]",
+        "kind": "load-width",
+        "offset": "#0x14",
+        "verdict": "u8"
+       },
+       {
+        "base": "r3",
+        "confidence": "high",
+        "evidence": "L231: ldrh r2, [r3, r0]",
+        "kind": "load-width",
+        "offset": "(r0)",
+        "verdict": "u16"
+       },
+       {
+        "base": "r3",
+        "confidence": "high",
+        "evidence": "L233: strh r2, [r3, r0]",
+        "kind": "store-width",
+        "offset": "(r0)",
+        "verdict": "u16"
+       },
+       {
+        "base": "r0",
+        "confidence": "high",
+        "evidence": "L247: ldrh r6, [r0, r1]",
+        "kind": "load-width",
+        "offset": "(r1)",
+        "verdict": "u16"
+       },
+       {
+        "base": "r0",
+        "confidence": "high",
+        "evidence": "L249: strh r3, [r0, r1]",
+        "kind": "store-width",
+        "offset": "(r1)",
+        "verdict": "u16"
+       }
+      ]
+     },
+     "sub_02032A40": {
+      "signedness": [
+       {
+        "branch": "bhi",
+        "confidence": "high",
+        "evidence": "L284: cmp r0, #2  =>  L285: bhi _02032A58",
+        "register": "r0",
+        "verdict": "unsigned"
+       }
+      ],
+      "widths": [
+       {
+        "confidence": "high",
+        "evidence": "L298: lsl r0, r0, #0x10 ; L299: lsr r0, r0, #0x10",
+        "kind": "truncation-pair",
+        "register": "r0",
+        "verdict": "u16"
+       }
+      ]
+     },
+     "sub_02032AB0": {
+      "signedness": [
+       {
+        "branch": "bhi",
+        "confidence": "high",
+        "evidence": "L343: cmp r0, #3  =>  L344: bhi _02032B00",
+        "register": "r0",
+        "verdict": "unsigned"
+       }
+      ],
+      "widths": [
+       {
+        "confidence": "high",
+        "evidence": "L348: lsl r0, r0, #0x10 ; L349: asr r0, r0, #0x10",
+        "kind": "truncation-pair",
+        "register": "r0",
+        "verdict": "s16"
+       },
+       {
+        "base": "r0",
+        "confidence": "high",
+        "evidence": "L332: ldrh r1, [r0, #2]",
+        "kind": "load-width",
+        "offset": "#2",
+        "verdict": "u16"
+       },
+       {
+        "base": "r0",
+        "confidence": "high",
+        "evidence": "L341: ldrh r0, [r0, #4]",
+        "kind": "load-width",
+        "offset": "#4",
+        "verdict": "u16"
+       },
+       {
+        "base": "r0",
+        "confidence": "high",
+        "evidence": "L347: ldrh r0, [r0, #6]",
+        "kind": "load-width",
+        "offset": "#6",
+        "verdict": "u16"
+       }
+      ]
+     },
+     "sub_02032B30": {
+      "widths": [
+       {
+        "base": "r0",
+        "confidence": "high",
+        "evidence": "L401: ldrh r0, [r0, #2]",
+        "kind": "load-width",
+        "offset": "#2",
+        "verdict": "u16"
+       }
+      ]
+     },
+     "sub_02032B6C": {
+      "widths": [
+       {
+        "base": "r0",
+        "confidence": "high",
+        "evidence": "L436: ldrh r0, [r0, #2]",
+        "kind": "load-width",
+        "offset": "#2",
+        "verdict": "u16"
+       }
+      ]
+     },
+     "sub_02032B84": {
+      "widths": [
+       {
+        "base": "r3",
+        "confidence": "high",
+        "evidence": "L470: strh r0, [r3, r1]",
+        "kind": "store-width",
+        "offset": "(r1)",
+        "verdict": "u16"
+       },
+       {
+        "base": "r4",
+        "confidence": "high",
+        "evidence": "L472: ldrh r6, [r4, #4]",
+        "kind": "load-width",
+        "offset": "#4",
+        "verdict": "u16"
+       },
+       {
+        "base": "r3",
+        "confidence": "high",
+        "evidence": "L475: strh r6, [r3, r0]",
+        "kind": "store-width",
+        "offset": "(r0)",
+        "verdict": "u16"
+       },
+       {
+        "base": "r4",
+        "confidence": "high",
+        "evidence": "L477: ldrh r6, [r4, #2]",
+        "kind": "load-width",
+        "offset": "#2",
+        "verdict": "u16"
+       },
+       {
+        "base": "r4",
+        "confidence": "high",
+        "evidence": "L482: ldrh r4, [r4]",
+        "kind": "load-width",
+        "offset": "#0",
+        "verdict": "u16"
+       },
+       {
+        "base": "r4",
+        "confidence": "high",
+        "evidence": "L498: strh r7, [r4, r3]",
+        "kind": "store-width",
+        "offset": "(r3)",
+        "verdict": "u16"
+       },
+       {
+        "base": "r2",
+        "confidence": "high",
+        "evidence": "L506: strh r0, [r2, r1]",
+        "kind": "store-width",
+        "offset": "(r1)",
+        "verdict": "u16"
+       }
+      ]
+     },
+     "sub_02032C1C": {
+      "widths": [
+       {
+        "base": "r3",
+        "confidence": "high",
+        "evidence": "L539: strh r6, [r3, r2]",
+        "kind": "store-width",
+        "offset": "(r2)",
+        "verdict": "u16"
+       },
+       {
+        "base": "r5",
+        "confidence": "high",
+        "evidence": "L544: strh r2, [r5, r3]",
+        "kind": "store-width",
+        "offset": "(r3)",
+        "verdict": "u16"
+       },
+       {
+        "base": "r4",
+        "confidence": "high",
+        "evidence": "L550: ldrh r5, [r4, #4]",
+        "kind": "load-width",
+        "offset": "#4",
+        "verdict": "u16"
+       },
+       {
+        "base": "r4",
+        "confidence": "high",
+        "evidence": "L555: ldrh r5, [r4, #2]",
+        "kind": "load-width",
+        "offset": "#2",
+        "verdict": "u16"
+       },
+       {
+        "base": "r4",
+        "confidence": "high",
+        "evidence": "L559: ldrh r2, [r4]",
+        "kind": "load-width",
+        "offset": "#0",
+        "verdict": "u16"
+       },
+       {
+        "base": "r1",
+        "confidence": "high",
+        "evidence": "L562: strh r2, [r1, r0]",
+        "kind": "store-width",
+        "offset": "(r0)",
+        "verdict": "u16"
+       }
+      ]
+     },
+     "sub_02032C84": {
+      "exact_types": [
+       {
+        "confidence": "high",
+        "evidence": "L642: bl _s32_div_f",
+        "helper": "_s32_div_f",
+        "verdict": "signed 32-bit int / or %  (both operands signed int)"
+       }
+      ],
+      "signedness": [
+       {
+        "branch": "bls",
+        "confidence": "high",
+        "evidence": "L621: cmp r6, #0x10  =>  L622: bls _02032CE4",
+        "register": "r6",
+        "verdict": "unsigned"
+       }
+      ],
+      "widths": [
+       {
+        "base": "r3",
+        "confidence": "high",
+        "evidence": "L605: ldrh r2, [r3, r0]",
+        "kind": "load-width",
+        "offset": "(r0)",
+        "verdict": "u16"
+       },
+       {
+        "base": "r4",
+        "confidence": "high",
+        "evidence": "L616: ldrh r6, [r4, r6]",
+        "kind": "load-width",
+        "offset": "(r6)",
+        "verdict": "u16"
+       },
+       {
+        "base": "r4",
+        "confidence": "high",
+        "evidence": "L618: strh r6, [r4, r7]",
+        "kind": "store-width",
+        "offset": "(r7)",
+        "verdict": "u16"
+       },
+       {
+        "base": "r4",
+        "confidence": "high",
+        "evidence": "L620: ldrh r6, [r4, r0]",
+        "kind": "load-width",
+        "offset": "(r0)",
+        "verdict": "u16"
+       },
+       {
+        "base": "r4",
+        "confidence": "high",
+        "evidence": "L624: strh r3, [r4, r6]",
+        "kind": "store-width",
+        "offset": "(r6)",
+        "verdict": "u16"
+       },
+       {
+        "base": "r6",
+        "confidence": "high",
+        "evidence": "L628: ldrh r4, [r6, r4]",
+        "kind": "load-width",
+        "offset": "(r4)",
+        "verdict": "u16"
+       },
+       {
+        "base": "r3",
+        "confidence": "high",
+        "evidence": "L638: strh r2, [r3, r0]",
+        "kind": "store-width",
+        "offset": "(r0)",
+        "verdict": "u16"
+       },
+       {
+        "base": "r3",
+        "confidence": "high",
+        "evidence": "L646: strh r0, [r3, r1]",
+        "kind": "store-width",
+        "offset": "(r1)",
+        "verdict": "u16"
+       }
+      ]
+     },
+     "sub_02032D4C": {
+      "signedness": [
+       {
+        "branch": "blo",
+        "confidence": "high",
+        "evidence": "L720: cmp r0, #8  =>  L721: blo _02032DB8",
+        "register": "r0",
+        "verdict": "unsigned"
+       },
+       {
+        "branch": "blo",
+        "confidence": "high",
+        "evidence": "L729: cmp r0, #8  =>  L730: blo _02032E02",
+        "register": "r0",
+        "verdict": "unsigned"
+       }
+      ],
+      "widths": [
+       {
+        "base": "r4",
+        "confidence": "high",
+        "evidence": "L678: ldrh r0, [r4, #2]",
+        "kind": "load-width",
+        "offset": "#2",
+        "verdict": "u16"
+       },
+       {
+        "base": "r2",
+        "confidence": "high",
+        "evidence": "L694: strh r1, [r2, r0]",
+        "kind": "store-width",
+        "offset": "(r0)",
+        "verdict": "u16"
+       },
+       {
+        "base": "r4",
+        "confidence": "high",
+        "evidence": "L702: ldrh r1, [r4, #8]",
+        "kind": "load-width",
+        "offset": "#8",
+        "verdict": "u16"
+       },
+       {
+        "base": "r4",
+        "confidence": "high",
+        "evidence": "L719: ldrh r0, [r4, #0x36]",
+        "kind": "load-width",
+        "offset": "#0x36",
+        "verdict": "u16"
+       },
+       {
+        "base": "r1",
+        "confidence": "high",
+        "evidence": "L724: ldrb r1, [r1, #4]",
+        "kind": "load-width",
+        "offset": "#4",
+        "verdict": "u8"
+       },
+       {
+        "base": "r4",
+        "confidence": "high",
+        "evidence": "L738: ldrb r2, [r4]",
+        "kind": "load-width",
+        "offset": "#0",
+        "verdict": "u8"
+       },
+       {
+        "base": "r1",
+        "confidence": "high",
+        "evidence": "L755: ldrh r0, [r1, r0]",
+        "kind": "load-width",
+        "offset": "(r0)",
+        "verdict": "u16"
+       }
+      ]
+     },
+     "sub_02032E64": {
+      "widths": [
+       {
+        "base": "r0",
+        "confidence": "high",
+        "evidence": "L820: ldrh r0, [r0, #2]",
+        "kind": "load-width",
+        "offset": "#2",
+        "verdict": "u16"
+       },
+       {
+        "base": "r1",
+        "confidence": "high",
+        "evidence": "L831: ldrh r0, [r1, r0]",
+        "kind": "load-width",
+        "offset": "(r0)",
+        "verdict": "u16"
+       }
+      ]
+     },
+     "sub_02032E9C": {
+      "signedness": [
+       {
+        "branch": "bhi",
+        "confidence": "high",
+        "evidence": "L855: cmp r0, #2  =>  L856: bhi _02032EB4",
+        "register": "r0",
+        "verdict": "unsigned"
+       }
+      ],
+      "widths": [
+       {
+        "base": "r1",
+        "confidence": "high",
+        "evidence": "L870: strb r0, [r1]",
+        "kind": "store-width",
+        "offset": "#0",
+        "verdict": "u8"
+       }
+      ]
+     },
+     "sub_02032F0C": {
+      "widths": [
+       {
+        "base": "r4",
+        "confidence": "high",
+        "evidence": "L903: ldrh r0, [r4, #2]",
+        "kind": "load-width",
+        "offset": "#2",
+        "verdict": "u16"
+       },
+       {
+        "base": "r4",
+        "confidence": "high",
+        "evidence": "L937: ldrh r0, [r4, #8]",
+        "kind": "load-width",
+        "offset": "#8",
+        "verdict": "u16"
+       },
+       {
+        "base": "r1",
+        "confidence": "high",
+        "evidence": "L945: ldrb r0, [r1, r0]",
+        "kind": "load-width",
+        "offset": "(r0)",
+        "verdict": "u8"
+       },
+       {
+        "base": "r4",
+        "confidence": "high",
+        "evidence": "L964: ldrh r2, [r4, #0xa]",
+        "kind": "load-width",
+        "offset": "#0xa",
+        "verdict": "u16"
+       },
+       {
+        "base": "r1",
+        "confidence": "high",
+        "evidence": "L967: strh r2, [r1, r0]",
+        "kind": "store-width",
+        "offset": "(r0)",
+        "verdict": "u16"
+       }
+      ]
+     },
+     "sub_02032FCC": {
+      "widths": [
+       {
+        "confidence": "high",
+        "evidence": "L1002: lsl r0, r0, #0x10 ; L1003: lsr r0, r0, #0x10",
+        "kind": "truncation-pair",
+        "register": "r0",
+        "verdict": "u16"
+       },
+       {
+        "confidence": "high",
+        "evidence": "L1010: lsl r2, r2, #0x10 ; L1012: lsr r2, r2, #0x10",
+        "kind": "truncation-pair",
+        "register": "r2",
+        "verdict": "u16"
+       }
+      ]
+     },
+     "sub_0203301C": {
+      "signedness": [
+       {
+        "branch": "bhi",
+        "confidence": "high",
+        "evidence": "L1052: cmp r0, #3  =>  L1053: bhi _02033074",
+        "register": "r0",
+        "verdict": "unsigned"
+       }
+      ],
+      "widths": [
+       {
+        "confidence": "high",
+        "evidence": "L1057: lsl r0, r0, #0x10 ; L1058: asr r0, r0, #0x10",
+        "kind": "truncation-pair",
+        "register": "r0",
+        "verdict": "s16"
+       },
+       {
+        "base": "r0",
+        "confidence": "high",
+        "evidence": "L1035: ldrh r1, [r0, #2]",
+        "kind": "load-width",
+        "offset": "#2",
+        "verdict": "u16"
+       },
+       {
+        "base": "r0",
+        "confidence": "high",
+        "evidence": "L1050: ldrh r0, [r0, #4]",
+        "kind": "load-width",
+        "offset": "#4",
+        "verdict": "u16"
+       },
+       {
+        "base": "r0",
+        "confidence": "high",
+        "evidence": "L1056: ldrh r0, [r0, #6]",
+        "kind": "load-width",
+        "offset": "#6",
+        "verdict": "u16"
+       }
+      ]
+     },
+     "sub_020330A4": {
+      "widths": [
+       {
+        "base": "r0",
+        "confidence": "high",
+        "evidence": "L1108: ldrh r0, [r0, #2]",
+        "kind": "load-width",
+        "offset": "#2",
+        "verdict": "u16"
+       }
+      ]
+     },
+     "sub_020330F0": {
+      "widths": [
+       {
+        "base": "r0",
+        "confidence": "high",
+        "evidence": "L1149: ldrh r0, [r0, #2]",
+        "kind": "load-width",
+        "offset": "#2",
+        "verdict": "u16"
+       }
+      ]
+     },
+     "sub_0203312C": {
+      "widths": [
+       {
+        "base": "r4",
+        "confidence": "high",
+        "evidence": "L1184: ldrh r0, [r4, #2]",
+        "kind": "load-width",
+        "offset": "#2",
+        "verdict": "u16"
+       }
+      ]
+     },
+     "sub_0203314C": {
+      "widths": [
+       {
+        "confidence": "high",
+        "evidence": "L1217: lsl r0, r4, #0x10 ; L1218: lsr r0, r0, #0x10",
+        "kind": "truncation-pair",
+        "register": "r0",
+        "verdict": "u16"
+       }
+      ]
+     },
+     "sub_020331A4": {
+      "widths": [
+       {
+        "base": "r0",
+        "confidence": "high",
+        "evidence": "L1245: ldrh r1, [r0, #2]",
+        "kind": "load-width",
+        "offset": "#2",
+        "verdict": "u16"
+       }
+      ]
+     },
+     "sub_020331CC": {
+      "widths": [
+       {
+        "base": "r2",
+        "confidence": "high",
+        "evidence": "L1273: ldrh r0, [r2, #2]",
+        "kind": "load-width",
+        "offset": "#2",
+        "verdict": "u16"
+       },
+       {
+        "base": "r2",
+        "confidence": "high",
+        "evidence": "L1285: ldrh r0, [r2, #4]",
+        "kind": "load-width",
+        "offset": "#4",
+        "verdict": "u16"
+       },
+       {
+        "base": "r2",
+        "confidence": "high",
+        "evidence": "L1290: ldrh r0, [r2, #0x12]",
+        "kind": "load-width",
+        "offset": "#0x12",
+        "verdict": "u16"
+       },
+       {
+        "base": "r2",
+        "confidence": "high",
+        "evidence": "L1292: ldrh r2, [r2, #0x10]",
+        "kind": "load-width",
+        "offset": "#0x10",
+        "verdict": "u16"
+       }
+      ]
+     },
+     "sub_02033214": {
+      "widths": [
+       {
+        "base": "r0",
+        "confidence": "high",
+        "evidence": "L1312: ldrh r0, [r0, #2]",
+        "kind": "load-width",
+        "offset": "#2",
+        "verdict": "u16"
+       }
+      ]
+     },
+     "sub_02033240": {
+      "widths": [
+       {
+        "base": "r0",
+        "confidence": "high",
+        "evidence": "L1343: strh r1, [r0, #4]",
+        "kind": "store-width",
+        "offset": "#4",
+        "verdict": "u16"
+       }
+      ]
+     },
+     "sub_02033250": {
+      "widths": [
+       {
+        "base": "r1",
+        "confidence": "high",
+        "evidence": "L1354: ldrh r0, [r1, r0]",
+        "kind": "load-width",
+        "offset": "(r0)",
+        "verdict": "u16"
+       }
+      ]
+     },
+     "sub_02033264": {
+      "signedness": [
+       {
+        "branch": "blt",
+        "confidence": "high",
+        "evidence": "L1380: cmp r3, #0x10  =>  L1381: blt _02033274",
+        "register": "r3",
+        "verdict": "signed"
+       }
+      ],
+      "widths": [
+       {
+        "confidence": "high",
+        "evidence": "L1382: lsl r0, r2, #0x10 ; L1383: lsr r0, r0, #0x10",
+        "kind": "truncation-pair",
+        "register": "r0",
+        "verdict": "u16"
+       },
+       {
+        "base": "r1",
+        "confidence": "high",
+        "evidence": "L1369: ldrh r4, [r1, r0]",
+        "kind": "load-width",
+        "offset": "(r0)",
+        "verdict": "u16"
+       }
+      ]
+     },
+     "sub_020332C0": {
+      "widths": [
+       {
+        "base": "r0",
+        "confidence": "high",
+        "evidence": "L1424: ldrh r2, [r0, #4]",
+        "kind": "load-width",
+        "offset": "#4",
+        "verdict": "u16"
+       },
+       {
+        "base": "r0",
+        "confidence": "high",
+        "evidence": "L1425: ldrh r1, [r0, #2]",
+        "kind": "load-width",
+        "offset": "#2",
+        "verdict": "u16"
+       },
+       {
+        "base": "r0",
+        "confidence": "high",
+        "evidence": "L1426: ldrh r0, [r0]",
+        "kind": "load-width",
+        "offset": "#0",
+        "verdict": "u16"
+       },
+       {
+        "base": "r1",
+        "confidence": "high",
+        "evidence": "L1445: strh r4, [r1, r0]",
+        "kind": "store-width",
+        "offset": "(r0)",
+        "verdict": "u16"
+       }
+      ]
+     },
+     "sub_0203335C": {
+      "signedness": [
+       {
+        "branch": "bls",
+        "confidence": "high",
+        "evidence": "L1526: cmp r4, #0x10  =>  L1527: bls _020333B8",
+        "register": "r4",
+        "verdict": "unsigned"
+       }
+      ],
+      "widths": [
+       {
+        "confidence": "high",
+        "evidence": "L1524: lsl r1, r1, #0x10 ; L1525: lsr r4, r1, #0x10",
+        "kind": "truncation-pair",
+        "register": "r1",
+        "verdict": "u16"
+       },
+       {
+        "confidence": "high",
+        "evidence": "L1541: lsl r0, r0, #0x10 ; L1542: lsr r0, r0, #0x10",
+        "kind": "truncation-pair",
+        "register": "r0",
+        "verdict": "u16"
+       }
+      ]
+     },
+     "sub_020333D8": {
+      "signedness": [
+       {
+        "branch": "bls",
+        "confidence": "high",
+        "evidence": "L1568: cmp r4, r5  =>  L1569: bls _02033414",
+        "register": "r4",
+        "verdict": "unsigned"
+       }
+      ],
+      "widths": [
+       {
+        "confidence": "high",
+        "evidence": "L1591: lsl r0, r0, #0x10 ; L1592: lsr r0, r0, #0x10",
+        "kind": "truncation-pair",
+        "register": "r0",
+        "verdict": "u16"
+       },
+       {
+        "base": "r0",
+        "confidence": "high",
+        "evidence": "L1551: ldrh r1, [r0, #2]",
+        "kind": "load-width",
+        "offset": "#2",
+        "verdict": "u16"
+       },
+       {
+        "base": "r0",
+        "confidence": "high",
+        "evidence": "L1563: ldrh r1, [r0, #8]",
+        "kind": "load-width",
+        "offset": "#8",
+        "verdict": "u16"
+       },
+       {
+        "base": "r0",
+        "confidence": "high",
+        "evidence": "L1564: ldrh r5, [r0, #0xa]",
+        "kind": "load-width",
+        "offset": "#0xa",
+        "verdict": "u16"
+       },
+       {
+        "base": "r0",
+        "confidence": "high",
+        "evidence": "L1567: ldrh r4, [r0, r3]",
+        "kind": "load-width",
+        "offset": "(r3)",
+        "verdict": "u16"
+       },
+       {
+        "base": "r0",
+        "confidence": "high",
+        "evidence": "L1570: strh r5, [r0, r3]",
+        "kind": "store-width",
+        "offset": "(r3)",
+        "verdict": "u16"
+       },
+       {
+        "base": "r2",
+        "confidence": "high",
+        "evidence": "L1576: strh r4, [r2, r0]",
+        "kind": "store-width",
+        "offset": "(r0)",
+        "verdict": "u16"
+       },
+       {
+        "base": "r0",
+        "confidence": "high",
+        "evidence": "L1582: ldrh r5, [r0, r2]",
+        "kind": "load-width",
+        "offset": "(r2)",
+        "verdict": "u16"
+       },
+       {
+        "base": "r0",
+        "confidence": "high",
+        "evidence": "L1588: strh r4, [r0, r2]",
+        "kind": "store-width",
+        "offset": "(r2)",
+        "verdict": "u16"
+       }
+      ]
+     },
+     "sub_02033468": {
+      "widths": [
+       {
+        "base": "r1",
+        "confidence": "high",
+        "evidence": "L1633: ldrh r0, [r1, r0]",
+        "kind": "load-width",
+        "offset": "(r0)",
+        "verdict": "u16"
+       },
+       {
+        "base": "r3",
+        "confidence": "high",
+        "evidence": "L1638: strh r0, [r3, r1]",
+        "kind": "store-width",
+        "offset": "(r1)",
+        "verdict": "u16"
+       },
+       {
+        "base": "r0",
+        "confidence": "high",
+        "evidence": "L1640: ldrh r0, [r0, r1]",
+        "kind": "load-width",
+        "offset": "(r1)",
+        "verdict": "u16"
+       }
+      ]
+     },
+     "sub_02033494": {
+      "signedness": [
+       {
+        "branch": "blt",
+        "confidence": "high",
+        "evidence": "L1670: cmp r2, #0x10  =>  L1671: blt _020334A0",
+        "register": "r2",
+        "verdict": "signed"
+       },
+       {
+        "branch": "bls",
+        "confidence": "high",
+        "evidence": "L1672: cmp r3, #1  =>  L1673: bls _02033512",
+        "register": "r3",
+        "verdict": "unsigned"
+       },
+       {
+        "branch": "blt",
+        "confidence": "high",
+        "evidence": "L1714: cmp r3, #0x10  =>  L1715: blt _020334E8",
+        "register": "r3",
+        "verdict": "signed"
+       }
+      ],
+      "widths": [
+       {
+        "confidence": "high",
+        "evidence": "L1662: lsl r0, r0, #0x10 ; L1664: asr r0, r0, #0x10",
+        "kind": "truncation-pair",
+        "register": "r0",
+        "verdict": "s16"
+       },
+       {
+        "confidence": "high",
+        "evidence": "L1663: lsl r3, r3, #0x10 ; L1665: lsr r3, r3, #0x10",
+        "kind": "truncation-pair",
+        "register": "r3",
+        "verdict": "u16"
+       },
+       {
+        "confidence": "high",
+        "evidence": "L1668: lsl r2, r2, #0x10 ; L1669: asr r2, r2, #0x10",
+        "kind": "truncation-pair",
+        "register": "r2",
+        "verdict": "s16"
+       },
+       {
+        "confidence": "high",
+        "evidence": "L1687: lsl r0, r0, #0x18 ; L1688: lsr r0, r0, #0x18",
+        "kind": "truncation-pair",
+        "register": "r0",
+        "verdict": "u8"
+       },
+       {
+        "confidence": "high",
+        "evidence": "L1700: lsl r0, r0, #0x10 ; L1701: asr r0, r0, #0x10",
+        "kind": "truncation-pair",
+        "register": "r0",
+        "verdict": "s16"
+       },
+       {
+        "confidence": "high",
+        "evidence": "L1706: lsl r0, r0, #0x10 ; L1707: lsr r2, r0, #0x10",
+        "kind": "truncation-pair",
+        "register": "r0",
+        "verdict": "u16"
+       },
+       {
+        "confidence": "high",
+        "evidence": "L1712: lsl r0, r0, #0x10 ; L1713: asr r3, r0, #0x10",
+        "kind": "truncation-pair",
+        "register": "r0",
+        "verdict": "s16"
+       }
+      ]
+     },
+     "sub_02033528": {
+      "widths": [
+       {
+        "base": "r5",
+        "confidence": "high",
+        "evidence": "L1752: strh r4, [r5, r0]",
+        "kind": "store-width",
+        "offset": "(r0)",
+        "verdict": "u16"
+       },
+       {
+        "base": "r0",
+        "confidence": "high",
+        "evidence": "L1770: strh r4, [r0, #4]",
+        "kind": "store-width",
+        "offset": "#4",
+        "verdict": "u16"
+       },
+       {
+        "base": "r5",
+        "confidence": "high",
+        "evidence": "L1778: strb r6, [r5, r0]",
+        "kind": "store-width",
+        "offset": "(r0)",
+        "verdict": "u8"
+       },
+       {
+        "base": "r0",
+        "confidence": "high",
+        "evidence": "L1785: strb r4, [r0, r2]",
+        "kind": "store-width",
+        "offset": "(r2)",
+        "verdict": "u8"
+       }
+      ]
+     },
+     "sub_020335BC": {
+      "widths": [
+       {
+        "base": "r0",
+        "confidence": "high",
+        "evidence": "L1811: ldrh r0, [r0, #2]",
+        "kind": "load-width",
+        "offset": "#2",
+        "verdict": "u16"
+       }
+      ]
+     },
+     "sub_02033620": {
+      "widths": [
+       {
+        "base": "r0",
+        "confidence": "high",
+        "evidence": "L1865: ldrh r0, [r0, #2]",
+        "kind": "load-width",
+        "offset": "#2",
+        "verdict": "u16"
+       }
+      ]
+     },
+     "sub_02033668": {
+      "signedness": [
+       {
+        "branch": "blo",
+        "confidence": "high",
+        "evidence": "L1952: cmp r4, #5  =>  L1953: blo _020336DE",
+        "register": "r4",
+        "verdict": "unsigned"
+       }
+      ],
+      "widths": [
+       {
+        "base": "r0",
+        "confidence": "high",
+        "evidence": "L1937: strh r6, [r0, #0xc]",
+        "kind": "store-width",
+        "offset": "#0xc",
+        "verdict": "u16"
+       },
+       {
+        "base": "r0",
+        "confidence": "high",
+        "evidence": "L1939: strh r7, [r0, #0x32]",
+        "kind": "store-width",
+        "offset": "#0x32",
+        "verdict": "u16"
+       },
+       {
+        "base": "r0",
+        "confidence": "high",
+        "evidence": "L1941: ldrh r2, [r0, #0x10]",
+        "kind": "load-width",
+        "offset": "#0x10",
+        "verdict": "u16"
+       },
+       {
+        "base": "r0",
+        "confidence": "high",
+        "evidence": "L1943: strh r2, [r0, #0x18]",
+        "kind": "store-width",
+        "offset": "#0x18",
+        "verdict": "u16"
+       },
+       {
+        "base": "r0",
+        "confidence": "high",
+        "evidence": "L1951: strh r2, [r0, #0x34]",
+        "kind": "store-width",
+        "offset": "#0x34",
+        "verdict": "u16"
+       },
+       {
+        "base": "r0",
+        "confidence": "high",
+        "evidence": "L1956: strh r2, [r0, #0x36]",
+        "kind": "store-width",
+        "offset": "#0x36",
+        "verdict": "u16"
+       },
+       {
+        "base": "r0",
+        "confidence": "high",
+        "evidence": "L1973: strh r4, [r0, #0x10]",
+        "kind": "store-width",
+        "offset": "#0x10",
+        "verdict": "u16"
+       },
+       {
+        "base": "r2",
+        "confidence": "high",
+        "evidence": "L1976: strh r0, [r2, #0x16]",
+        "kind": "store-width",
+        "offset": "#0x16",
+        "verdict": "u16"
+       },
+       {
+        "base": "r2",
+        "confidence": "high",
+        "evidence": "L1979: strh r0, [r2, #0x12]",
+        "kind": "store-width",
+        "offset": "#0x12",
+        "verdict": "u16"
+       },
+       {
+        "base": "r1",
+        "confidence": "high",
+        "evidence": "L1982: strh r2, [r1, #0xe]",
+        "kind": "store-width",
+        "offset": "#0xe",
+        "verdict": "u16"
+       },
+       {
+        "base": "r1",
+        "confidence": "high",
+        "evidence": "L1989: strh r0, [r1, #0x14]",
+        "kind": "store-width",
+        "offset": "#0x14",
+        "verdict": "u16"
+       }
+      ]
+     },
+     "sub_020337D0": {
+      "widths": [
+       {
+        "confidence": "high",
+        "evidence": "L2083: lsl r0, r1, #0x10 ; L2085: lsr r0, r0, #0x10",
+        "kind": "truncation-pair",
+        "register": "r0",
+        "verdict": "u16"
+       }
+      ]
+     },
+     "sub_02033858": {
+      "signedness": [
+       {
+        "branch": "bhi",
+        "confidence": "high",
+        "evidence": "L2178: cmp r0, #5  =>  L2179: bhi _020338C2",
+        "register": "r0",
+        "verdict": "unsigned"
+       }
+      ],
+      "widths": [
+       {
+        "confidence": "high",
+        "evidence": "L2183: lsl r0, r0, #0x10 ; L2184: asr r0, r0, #0x10",
+        "kind": "truncation-pair",
+        "register": "r0",
+        "verdict": "s16"
+       },
+       {
+        "base": "r0",
+        "confidence": "high",
+        "evidence": "L2182: ldrh r0, [r0, #6]",
+        "kind": "load-width",
+        "offset": "#6",
+        "verdict": "u16"
+       }
+      ]
+     },
+     "sub_020338F4": {
+      "widths": [
+       {
+        "base": "r1",
+        "confidence": "high",
+        "evidence": "L2237: ldrh r0, [r1, r0]",
+        "kind": "load-width",
+        "offset": "(r0)",
+        "verdict": "u16"
+       }
+      ]
+     },
+     "sub_02033908": {
+      "widths": [
+       {
+        "base": "r2",
+        "confidence": "high",
+        "evidence": "L2251: strb r0, [r2, r1]",
+        "kind": "store-width",
+        "offset": "(r1)",
+        "verdict": "u8"
+       }
+      ]
+     },
+     "sub_020339B4": {
+      "widths": [
+       {
+        "confidence": "high",
+        "evidence": "L2367: lsl r0, r3, #0x10 ; L2368: lsr r0, r0, #0x10",
+        "kind": "truncation-pair",
+        "register": "r0",
+        "verdict": "u16"
+       }
+      ]
+     },
+     "sub_020339F0": {
+      "widths": [
+       {
+        "base": "r0",
+        "confidence": "high",
+        "evidence": "L2388: ldrh r0, [r0, #2]",
+        "kind": "load-width",
+        "offset": "#2",
+        "verdict": "u16"
+       },
+       {
+        "base": "r1",
+        "confidence": "high",
+        "evidence": "L2395: strb r2, [r1, r0]",
+        "kind": "store-width",
+        "offset": "(r0)",
+        "verdict": "u8"
+       }
+      ]
+     },
+     "sub_02033A0C": {
+      "widths": [
+       {
+        "base": "r3",
+        "confidence": "high",
+        "evidence": "L2411: strb r4, [r3, r0]",
+        "kind": "store-width",
+        "offset": "(r0)",
+        "verdict": "u8"
+       }
+      ]
+     },
+     "sub_02033A44": {
+      "signedness": [
+       {
+        "branch": "blo",
+        "confidence": "high",
+        "evidence": "L2440: cmp r0, #6  =>  L2441: blo _02033A58",
+        "register": "r0",
+        "verdict": "unsigned"
+       }
+      ],
+      "widths": [
+       {
+        "base": "r1",
+        "confidence": "high",
+        "evidence": "L2439: ldrb r0, [r1, r0]",
+        "kind": "load-width",
+        "offset": "(r0)",
+        "verdict": "u8"
+       }
+      ]
+     },
+     "sub_02033A68": {
+      "widths": [
+       {
+        "base": "r1",
+        "confidence": "high",
+        "evidence": "L2461: strb r2, [r1, r0]",
+        "kind": "store-width",
+        "offset": "(r0)",
+        "verdict": "u8"
+       }
+      ]
+     },
+     "sub_02033AA4": {
+      "widths": [
+       {
+        "base": "r2",
+        "confidence": "high",
+        "evidence": "L2497: strb r0, [r2, r1]",
+        "kind": "store-width",
+        "offset": "(r1)",
+        "verdict": "u8"
+       }
+      ]
+     },
+     "sub_02033AB8": {
+      "widths": [
+       {
+        "base": "r1",
+        "confidence": "high",
+        "evidence": "L2509: ldrb r0, [r1, r0]",
+        "kind": "load-width",
+        "offset": "(r0)",
+        "verdict": "u8"
+       }
+      ]
+     },
+     "sub_02033ACC": {
+      "widths": [
+       {
+        "base": "r2",
+        "confidence": "high",
+        "evidence": "L2521: strb r0, [r2, r1]",
+        "kind": "store-width",
+        "offset": "(r1)",
+        "verdict": "u8"
+       }
+      ]
+     }
+    },
+    "generated": "2026-09-29T19:49:16Z",
+    "summary": {
+     "copyprop_cmp": 0,
+     "dead_store": 0,
+     "exact_types": 1,
+     "functions": 48,
+     "signed": 9,
+     "unsigned": 15,
+     "widths": 134
+    },
+    "tool": "asm_oracle.py"
+   },
+   "risks": [
+    "IPA: include/unk_02032844.h is included by already-matched src/unk_02037C94.c and src/field/field_control.c -- do not add declarations there; use a split header (unk_02032844_internal.h) or local decls for the ~27 other exports",
+    "Header conflict: include/unk_02032844.h declares 'void sub_02033A0C(int)' but the asm returns BOOL; define it as BOOL in the C file via internal header, keep public header frozen",
+    "src/unk_02096C88.c and src/unk_0208FB64.c locally declare 'extern u32 sub_02033250(void)' while the header says u16 -- define as u16 (ldrh, no narrowing); do not touch those files",
+    "No NitroSDK WM/WVR headers exist in include/ or lib/ -- all WM_* prototypes, WMParentParam/WMBssDesc/WMScanParam and callback struct layouts must be declared locally; argument types (u16 vs int) affect narrowing codegen",
+    "Three inline jump tables: sub_02032AB0 and sub_0203301C (state-10, cases 10..13 with 11..13 explicit empty), sub_02033858 (connectMode 0..5 with cases 2,3 explicit empty; child body before parent body in source order)",
+    "sub_02032934 switch has empty case 0x1a (dead cmp) and body order 2,7,9,0; sub_02032F0C is an if/else chain in order 8,7,6,9,0x1a (not ascending, so not a switch)",
+    "Range-opt vs explicit cmps: sysState 4..6 checks in sub_020328C8/A40/E9C are range-optimised (write ||); sub_02033858 tests 6,5,4 explicitly (needs switch or chain that avoids range-opt)",
+    "Two infinite loops ('b .') in sub_020337D0 and sub_02033830: write as if(...) { while (1) {} }",
+    "sWork is reloaded from the global before almost every access; do not cache it in a local except where the asm keeps it in a register (sub_02032A40/FCC r4, sub_02032D4C r2)",
+    "bss _021D4124 is 8 bytes but only +4 is used -- layout of the unused +0 word must be reproduced (dummy static or 2-field struct); .data _0210F8FC must be non-const",
+    "Forward declarations needed: static callbacks are referenced before their definitions (sub_020328A4, sub_02032934, ...), and sub_02033830/sub_02033858 are called before they are defined"
+   ],
+   "sweep_output": "sweep/out/unk_02032844.json"
+  },
   "asm/unk_02033AE0.s": {
    "notes": "This file implements a generic message-queue/communication framework reused across many overlays: a RingBuf byte ring buffer (sub_02033AE0..C28 family), a fixed-size NodeElem pool manager wrapped in a Session struct (sub_02033C30..F9C family), and a CommCommand{handler,getSize,getBuf} dispatch table (the rodata array at _020F6980 plus sub_02034170/020341DC/02034244/02034280) with a lazily-allocated global CommRegistry (_021D412C) that extends the static 22-entry table dynamically for cmdId>=0x16. The CommHandler/CommGetSize/CommGetBuf typedefs were independently re-derived (and verbatim-matched) in src/unk_02096C88.c, strongly cross-validating the dispatcher signatures. 14 of the file's 44 defined functions are NOT in .public (file-local/static): sub_02033B78, sub_02033BF4, sub_02033C14, sub_02033C30, sub_02033C70, sub_02033C94, sub_02033CB0, sub_02033D28, sub_02033E88, sub_02033EA8, sub_020342C8, sub_020342CC, sub_02034310, sub_02034338. Function order in the new src/unk_02033AE0.c must follow the asm order given in 'functions' above; rodata order (_020F692C, _020F6955, _020F6980) must likewise match exactly.",
    "risks": [
@@ -32182,7 +33663,7 @@
    "sweep_output": "sweep/out/unk_02097B78.json"
   }
  },
- "generated": "2026-09-29T19:23:09Z",
+ "generated": "2026-09-29T19:49:16Z",
  "signature_conflicts": [
   "DestroySysTaskAndEnvironment",
   "GridInputHandler_GetNextInput",
@@ -42105,6 +43586,264 @@
     "asm/overlay_83_02246E08.s"
    ]
   },
+  "WHWork (NitroSDK wh.c work, pointed to by sWork at _021D4124+4)": {
+   "fields": {
+    "0x0": [
+     {
+      "meaning": "WMParentParam parentParam: +0 userGameInfo ptr, +4 u16 userGameInfoLength, +8 u32 ggid, +0xc u16 tgid, +0xe u16 entryFlag, +0x10 u16 maxEntry, +0x12 u16 multiBootFlag, +0x14 u16 KS_Flag, +0x16 u16 CS_Flag, +0x18 u16 beaconPeriod, +0x32 u16 channel, +0x34 u16 parentMaxSize, +0x36 u16 childMaxSize",
+      "source": "asm/unk_02032844.s",
+      "width": 64
+     }
+    ],
+    "0x1020": [
+     {
+      "meaning": "recvBuf",
+      "source": "asm/unk_02032844.s",
+      "width": 512
+     }
+    ],
+    "0x1220": [
+     {
+      "meaning": "WMBssDesc bssDesc (+0x36 u16 set to 1 in sub_02032B84)",
+      "source": "asm/unk_02032844.s",
+      "width": 192
+     }
+    ],
+    "0x12E0": [
+     {
+      "meaning": "WMScanParam: +0 scanBuf ptr, +4 u16 channel, +6 u16 maxChannelTime, +8 u8 bssid[6]",
+      "source": "asm/unk_02032844.s",
+      "width": 32
+     }
+    ],
+    "0x1300": [
+     {
+      "meaning": "scanFoundCb void(*)(WMBssDesc*)",
+      "source": "asm/unk_02032844.s",
+      "width": 4
+     }
+    ],
+    "0x1304": [
+     {
+      "meaning": "u32 sendBufSize",
+      "source": "asm/unk_02032844.s",
+      "width": 4
+     }
+    ],
+    "0x1308": [
+     {
+      "meaning": "u32 recvBufSize",
+      "source": "asm/unk_02032844.s",
+      "width": 4
+     }
+    ],
+    "0x130C": [
+     {
+      "meaning": "u16 channelIndex (0 = auto)",
+      "source": "asm/unk_02032844.s",
+      "width": 2
+     }
+    ],
+    "0x130E": [
+     {
+      "meaning": "u16 autoConnectFlag",
+      "source": "asm/unk_02032844.s",
+      "width": 2
+     }
+    ],
+    "0x1310": [
+     {
+      "meaning": "int sysState",
+      "source": "asm/unk_02032844.s",
+      "width": 4
+     }
+    ],
+    "0x1314": [
+     {
+      "meaning": "int connectMode (0 MP_PARENT,1 MP_CHILD,2 KS_PARENT,3 KS_CHILD,4 DS_PARENT,5 DS_CHILD)",
+      "source": "asm/unk_02032844.s",
+      "width": 4
+     }
+    ],
+    "0x1318": [
+     {
+      "meaning": "recvCb void(*)(u16 aid, void *data, u16 len)",
+      "source": "asm/unk_02032844.s",
+      "width": 4
+     }
+    ],
+    "0x131C": [
+     {
+      "meaning": "cleared in init, otherwise unused here",
+      "source": "asm/unk_02032844.s",
+      "width": 4
+     }
+    ],
+    "0x1320": [
+     {
+      "meaning": "beaconCb void(*)(u32 ggid, u8)",
+      "source": "asm/unk_02032844.s",
+      "width": 4
+     }
+    ],
+    "0x1324": [
+     {
+      "meaning": "disconnectCb void(*)(u16 aid) (never set in this file)",
+      "source": "asm/unk_02032844.s",
+      "width": 4
+     }
+    ],
+    "0x1328": [
+     {
+      "meaning": "connectCb void(*)(u16 aid)",
+      "source": "asm/unk_02032844.s",
+      "width": 4
+     }
+    ],
+    "0x132C": [
+     {
+      "meaning": "u16 currentAid",
+      "source": "asm/unk_02032844.s",
+      "width": 2
+     }
+    ],
+    "0x132E": [
+     {
+      "meaning": "u16 connectedBitmap",
+      "source": "asm/unk_02032844.s",
+      "width": 2
+     }
+    ],
+    "0x1330": [
+     {
+      "meaning": "int errCode",
+      "source": "asm/unk_02032844.s",
+      "width": 4
+     }
+    ],
+    "0x1334": [
+     {
+      "meaning": "u8 maxConnect (init 8)",
+      "source": "asm/unk_02032844.s",
+      "width": 1
+     }
+    ],
+    "0x1335": [
+     {
+      "meaning": "u8 rejectConnect flag",
+      "source": "asm/unk_02032844.s",
+      "width": 1
+     }
+    ],
+    "0x1338": [
+     {
+      "meaning": "u32 randSeed (LCG *69069+12345)",
+      "source": "asm/unk_02032844.s",
+      "width": 4
+     }
+    ],
+    "0x133C": [
+     {
+      "meaning": "u16 measuredChannel",
+      "source": "asm/unk_02032844.s",
+      "width": 2
+     }
+    ],
+    "0x133E": [
+     {
+      "meaning": "u16 minBusyRatio (init 101)",
+      "source": "asm/unk_02032844.s",
+      "width": 2
+     }
+    ],
+    "0x1340": [
+     {
+      "meaning": "u16 bestChannelBitmap",
+      "source": "asm/unk_02032844.s",
+      "width": 2
+     }
+    ],
+    "0x1342": [
+     {
+      "meaning": "u8 flag (sub_02033AA4/AB8), rejects connections when 1",
+      "source": "asm/unk_02032844.s",
+      "width": 1
+     }
+    ],
+    "0x1343": [
+     {
+      "meaning": "u8 flag (sub_02033ACC), rejects connections when 1",
+      "source": "asm/unk_02032844.s",
+      "width": 1
+     }
+    ],
+    "0x1344": [
+     {
+      "meaning": "u8 setEntryDone",
+      "source": "asm/unk_02032844.s",
+      "width": 1
+     }
+    ],
+    "0x1345": [
+     {
+      "meaning": "u8 beaconSentCount",
+      "source": "asm/unk_02032844.s",
+      "width": 1
+     }
+    ],
+    "0x40": [
+     {
+      "meaning": "u8 wmSysBuf[0xF00] (WM_SYSTEM_BUF_SIZE) for WM_Initialize",
+      "source": "asm/unk_02032844.s",
+      "width": 3840
+     }
+    ],
+    "0xF40": [
+     {
+      "meaning": "sendBuf (flushed with sendBufSize)",
+      "source": "asm/unk_02032844.s",
+      "width": 224
+     }
+    ]
+   },
+   "size_guesses": {
+    "asm/unk_02032844.s": "0x1360 (sub_020335B4 returns 0x1380 = size + 32 alignment slack; buffer is 32-aligned by sub_02033528)"
+   },
+   "sources": [
+    "asm/unk_02032844.s"
+   ]
+  },
+  "WM callback structs (not in tree)": {
+   "fields": {
+    "0x2": [
+     {
+      "meaning": "errcode (all WM callbacks)",
+      "source": "asm/unk_02032844.s",
+      "width": 2
+     }
+    ],
+    "0x4": [
+     {
+      "meaning": "state for StartMP/PortRecv callbacks",
+      "source": "asm/unk_02032844.s",
+      "width": 2
+     }
+    ],
+    "0x8": [
+     {
+      "meaning": "state for StartParent/StartScan/StartConnect; channel for MeasureChannel",
+      "source": "asm/unk_02032844.s",
+      "width": 2
+     }
+    ]
+   },
+   "size_guesses": {
+    "asm/unk_02032844.s": "n/a"
+   },
+   "sources": [
+    "asm/unk_02032844.s"
+   ]
+  },
   "sub_02056D00_work": {
    "fields": {
     "0x0": [
@@ -42820,8 +44559,27 @@
     "asm/overlay_14_021F2490.s",
     "asm/overlay_83_02243D7C.s",
     "asm/overlay_83_02246E08.s",
-    "asm/overlay_98.s"
+    "asm/overlay_98.s",
+    "asm/unk_02032844.s"
    ],
+   "header": "NitroSDK (via global.h)",
+   "known_prototype": "void DC_FlushRange(const void *addr, u32 size)",
+   "signature_sources": {}
+  },
+  "DC_InvalidateRange": {
+   "callers": [
+    "asm/unk_02032844.s"
+   ],
+   "header": "NitroSDK (via global.h)",
+   "known_prototype": "void DC_InvalidateRange(void *addr, u32 size)",
+   "signature_sources": {}
+  },
+  "DC_WaitWriteBufferEmpty": {
+   "callers": [
+    "asm/unk_02032844.s"
+   ],
+   "header": "NitroSDK (via global.h)",
+   "known_prototype": "void DC_WaitWriteBufferEmpty(void)",
    "signature_sources": {}
   },
   "Destroy2DGfxResObjMan": {
@@ -45256,6 +47014,7 @@
     "asm/overlay_80_0222AEF8.s",
     "asm/unk_02027010.s",
     "asm/unk_0202FBCC.s",
+    "asm/unk_02032844.s",
     "asm/unk_02033AE0.s"
    ],
    "header": "NitroSDK nitro/mi/memory.h",
@@ -46420,6 +48179,14 @@
    "signature_sources": {
     "asm/overlay_32.s": "String *NewString_ReadMsgData(MsgData *msgData, u32 entryId)"
    }
+  },
+  "OS_GetMacAddress": {
+   "callers": [
+    "asm/unk_02032844.s"
+   ],
+   "header": "NitroSDK (used in src/unk_02034354.c)",
+   "known_prototype": "void OS_GetMacAddress(u8 *macAddress)",
+   "signature_sources": {}
   },
   "OS_ResetSystem": {
    "callers": [
@@ -48598,6 +50365,246 @@
    "known_prototype": "void VEC_Subtract(const VecFx32 *a, const VecFx32 *b, VecFx32 *ab)",
    "signature_sources": {}
   },
+  "WM_Disconnect": {
+   "callers": [
+    "asm/unk_02032844.s"
+   ],
+   "confidence": "low",
+   "signature_guess": "int WM_Disconnect(void (*cb)(void *), u16 aid)",
+   "signature_sources": {
+    "asm/unk_02032844.s": "int WM_Disconnect(void (*cb)(void *), u16 aid)"
+   }
+  },
+  "WM_End": {
+   "callers": [
+    "asm/unk_02032844.s"
+   ],
+   "confidence": "low",
+   "signature_guess": "int WM_End(void (*cb)(void *))",
+   "signature_sources": {
+    "asm/unk_02032844.s": "int WM_End(void (*cb)(void *))"
+   }
+  },
+  "WM_EndMP": {
+   "callers": [
+    "asm/unk_02032844.s"
+   ],
+   "confidence": "low",
+   "signature_guess": "int WM_EndMP(void (*cb)(void *))",
+   "signature_sources": {
+    "asm/unk_02032844.s": "int WM_EndMP(void (*cb)(void *))"
+   }
+  },
+  "WM_EndParent": {
+   "callers": [
+    "asm/unk_02032844.s"
+   ],
+   "confidence": "low",
+   "signature_guess": "int WM_EndParent(void (*cb)(void *))",
+   "signature_sources": {
+    "asm/unk_02032844.s": "int WM_EndParent(void (*cb)(void *))"
+   }
+  },
+  "WM_EndScan": {
+   "callers": [
+    "asm/unk_02032844.s"
+   ],
+   "confidence": "low",
+   "signature_guess": "int WM_EndScan(void (*cb)(void *))",
+   "signature_sources": {
+    "asm/unk_02032844.s": "int WM_EndScan(void (*cb)(void *))"
+   }
+  },
+  "WM_GetAllowedChannel": {
+   "callers": [
+    "asm/unk_02032844.s"
+   ],
+   "confidence": "low",
+   "signature_guess": "u16 WM_GetAllowedChannel(void)",
+   "signature_sources": {
+    "asm/unk_02032844.s": "u16 WM_GetAllowedChannel(void)"
+   }
+  },
+  "WM_GetDispersionScanPeriod": {
+   "callers": [
+    "asm/unk_02032844.s"
+   ],
+   "confidence": "low",
+   "signature_guess": "u16 WM_GetDispersionScanPeriod(void)",
+   "signature_sources": {
+    "asm/unk_02032844.s": "u16 WM_GetDispersionScanPeriod(void)"
+   }
+  },
+  "WM_Initialize": {
+   "callers": [
+    "asm/unk_02032844.s"
+   ],
+   "confidence": "low",
+   "signature_guess": "int WM_Initialize(void *wmSysBuf, void (*cb)(void *), u16 dmaNo)",
+   "signature_sources": {
+    "asm/unk_02032844.s": "int WM_Initialize(void *wmSysBuf, void (*cb)(void *), u16 dmaNo)"
+   }
+  },
+  "WM_InitializeForListening": {
+   "callers": [
+    "asm/unk_02032844.s"
+   ],
+   "confidence": "low",
+   "signature_guess": "int WM_InitializeForListening(void *wmSysBuf, void (*cb)(void *), u16 dmaNo, BOOL indicateFlag)",
+   "signature_sources": {
+    "asm/unk_02032844.s": "int WM_InitializeForListening(void *wmSysBuf, void (*cb)(void *), u16 dmaNo, BOOL indicateFlag)"
+   }
+  },
+  "WM_MeasureChannel": {
+   "callers": [
+    "asm/unk_02032844.s"
+   ],
+   "confidence": "low",
+   "signature_guess": "int WM_MeasureChannel(void (*cb)(void *), u16 ccaMode, u16 edThreshold, u16 channel, u16 measureTime)",
+   "signature_sources": {
+    "asm/unk_02032844.s": "int WM_MeasureChannel(void (*cb)(void *), u16 ccaMode, u16 edThreshold, u16 channel, u16 measureTime)"
+   }
+  },
+  "WM_Reset": {
+   "callers": [
+    "asm/unk_02032844.s"
+   ],
+   "confidence": "low",
+   "signature_guess": "int WM_Reset(void (*cb)(void *))",
+   "signature_sources": {
+    "asm/unk_02032844.s": "int WM_Reset(void (*cb)(void *))"
+   }
+  },
+  "WM_SetEntry": {
+   "callers": [
+    "asm/unk_02032844.s"
+   ],
+   "confidence": "low",
+   "signature_guess": "int WM_SetEntry(void (*cb)(void *), BOOL enabled)",
+   "signature_sources": {
+    "asm/unk_02032844.s": "int WM_SetEntry(void (*cb)(void *), BOOL enabled)"
+   }
+  },
+  "WM_SetGameInfo": {
+   "callers": [
+    "asm/unk_02032844.s"
+   ],
+   "confidence": "low",
+   "signature_guess": "int WM_SetGameInfo(void (*cb)(void *), const u16 *userGameInfo, u16 userGameInfoSize, u32 ggid, u16 tgid, u8 attr)",
+   "signature_sources": {
+    "asm/unk_02032844.s": "int WM_SetGameInfo(void (*cb)(void *), const u16 *userGameInfo, u16 userGameInfoSize, u32 ggid, u16 tgid, u8 attr)"
+   }
+  },
+  "WM_SetIndCallback": {
+   "callers": [
+    "asm/unk_02032844.s"
+   ],
+   "confidence": "low",
+   "signature_guess": "int WM_SetIndCallback(void (*cb)(void *))",
+   "signature_sources": {
+    "asm/unk_02032844.s": "int WM_SetIndCallback(void (*cb)(void *))"
+   }
+  },
+  "WM_SetLifeTime": {
+   "callers": [
+    "asm/unk_02032844.s"
+   ],
+   "confidence": "low",
+   "signature_guess": "int WM_SetLifeTime(void (*cb)(void *), u16 tableNumber, u16 camLifeTime, u16 frameLifeTime, u16 mpLifeTime)",
+   "signature_sources": {
+    "asm/unk_02032844.s": "int WM_SetLifeTime(void (*cb)(void *), u16 tableNumber, u16 camLifeTime, u16 frameLifeTime, u16 mpLifeTime)"
+   }
+  },
+  "WM_SetMPDataToPortEx": {
+   "callers": [
+    "asm/unk_02032844.s"
+   ],
+   "confidence": "low",
+   "signature_guess": "int WM_SetMPDataToPortEx(void (*cb)(void *), void *arg, const u16 *sendData, u16 sendDataSize, u16 destBitmap, u16 port, u16 prio)",
+   "signature_sources": {
+    "asm/unk_02032844.s": "int WM_SetMPDataToPortEx(void (*cb)(void *), void *arg, const u16 *sendData, u16 sendDataSize, u16 destBitmap, u16 port, u16 prio)"
+   }
+  },
+  "WM_SetParentParameter": {
+   "callers": [
+    "asm/unk_02032844.s"
+   ],
+   "confidence": "low",
+   "signature_guess": "int WM_SetParentParameter(void (*cb)(void *), const WMParentParam *pparaBuf)",
+   "signature_sources": {
+    "asm/unk_02032844.s": "int WM_SetParentParameter(void (*cb)(void *), const WMParentParam *pparaBuf)"
+   }
+  },
+  "WM_SetPortCallback": {
+   "callers": [
+    "asm/unk_02032844.s"
+   ],
+   "confidence": "low",
+   "signature_guess": "int WM_SetPortCallback(u16 port, void (*cb)(void *), void *arg)",
+   "signature_sources": {
+    "asm/unk_02032844.s": "int WM_SetPortCallback(u16 port, void (*cb)(void *), void *arg)"
+   }
+  },
+  "WM_StartConnectEx": {
+   "callers": [
+    "asm/unk_02032844.s"
+   ],
+   "confidence": "low",
+   "signature_guess": "int WM_StartConnectEx(void (*cb)(void *), const WMBssDesc *pInfo, const u8 *ssid, BOOL powerSave, u16 authMode)",
+   "signature_sources": {
+    "asm/unk_02032844.s": "int WM_StartConnectEx(void (*cb)(void *), const WMBssDesc *pInfo, const u8 *ssid, BOOL powerSave, u16 authMode)"
+   }
+  },
+  "WM_StartMP": {
+   "callers": [
+    "asm/unk_02032844.s"
+   ],
+   "confidence": "low",
+   "signature_guess": "int WM_StartMP(void (*cb)(void *), u32 *recvBuf, u16 recvBufSize, u32 *sendBuf, u16 sendBufSize, u16 mpFreq)",
+   "signature_sources": {
+    "asm/unk_02032844.s": "int WM_StartMP(void (*cb)(void *), u32 *recvBuf, u16 recvBufSize, u32 *sendBuf, u16 sendBufSize, u16 mpFreq)"
+   }
+  },
+  "WM_StartParent": {
+   "callers": [
+    "asm/unk_02032844.s"
+   ],
+   "confidence": "low",
+   "signature_guess": "int WM_StartParent(void (*cb)(void *))",
+   "signature_sources": {
+    "asm/unk_02032844.s": "int WM_StartParent(void (*cb)(void *))"
+   }
+  },
+  "WM_StartScan": {
+   "callers": [
+    "asm/unk_02032844.s"
+   ],
+   "confidence": "low",
+   "signature_guess": "int WM_StartScan(void (*cb)(void *), const WMScanParam *param)",
+   "signature_sources": {
+    "asm/unk_02032844.s": "int WM_StartScan(void (*cb)(void *), const WMScanParam *param)"
+   }
+  },
+  "WMi_GetStatusAddress": {
+   "callers": [
+    "asm/unk_02032844.s"
+   ],
+   "confidence": "low",
+   "signature_guess": "void *WMi_GetStatusAddress(void)",
+   "signature_sources": {
+    "asm/unk_02032844.s": "void *WMi_GetStatusAddress(void)"
+   }
+  },
+  "WVR_TerminateAsync": {
+   "callers": [
+    "asm/unk_02032844.s"
+   ],
+   "confidence": "low",
+   "signature_guess": "int WVR_TerminateAsync(void (*cb)(void *), void *arg)",
+   "signature_sources": {
+    "asm/unk_02032844.s": "int WVR_TerminateAsync(void (*cb)(void *), void *arg)"
+   }
+  },
   "YesNoPrompt_Create": {
    "callers": [
     "asm/overlay_83_02246E08.s"
@@ -48714,6 +50721,7 @@
     "asm/overlay_98.s",
     "asm/unk_02004A44.s",
     "asm/unk_02016EDC.s",
+    "asm/unk_02032844.s",
     "asm/unk_02033AE0.s"
    ],
    "confidence": "low",
@@ -48725,7 +50733,8 @@
     "asm/overlay_14_021E5900.s": "s32 _s32_div_f(s32 num, s32 den)",
     "asm/overlay_80_0222FD08.s": "compiler intrinsic",
     "asm/unk_02004A44.s": "compiler runtime for signed '/' (write x / 5)",
-    "asm/unk_02016EDC.s": "compiler runtime for signed / and %"
+    "asm/unk_02016EDC.s": "compiler runtime for signed / and %",
+    "asm/unk_02032844.s": "compiler helper for int '/'"
    }
   },
   "_u32_div_f": {
@@ -48759,6 +50768,14 @@
     "asm/overlay_83_02242FE8.s": "extern struct SysWork gSystem; [gSystem+0x48] = held-button/key state",
     "asm/overlay_98.s": "extern SysGlobals gSystem"
    }
+  },
+  "memcmp": {
+   "callers": [
+    "asm/unk_02032844.s"
+   ],
+   "header": "lib/include/string.h",
+   "known_prototype": "int memcmp(const void *a, const void *b, size_t size)",
+   "signature_sources": {}
   },
   "memcpy": {
    "callers": [
@@ -82683,6 +84700,1226 @@
    "known_prototype": "void sub_0203126C(FrontierSave *a0, u32 a1, u32 a2, u16 a3)",
    "signature_sources": {}
   },
+  "sub_02032844": {
+   "callers": [
+    "asm/unk_02032844.s"
+   ],
+   "confidence": "high",
+   "defined_in": "asm/unk_02032844.s",
+   "mode": "thumb",
+   "notes": [
+    "[asm/unk_02032844.s] WH_ChangeSysState. States: 0 STOP,1 IDLE,2 SCANNING,3 BUSY,4 CONNECTED,5 DATASHARING,6 KEYSHARING,7 MEASURECHANNEL,8 CONNECT_FAIL,9 ERROR,10 FATAL"
+   ],
+   "signature_guess": "static void sub_02032844(int state)",
+   "signature_sources": {
+    "asm/unk_02032844.s": "static void sub_02032844(int state)"
+   },
+   "struct_accesses": [
+    {
+     "meaning": "sWork->sysState = state (WH_ChangeSysState)",
+     "offset": "0x1310",
+     "param": -1,
+     "width": 4
+    }
+   ]
+  },
+  "sub_02032858": {
+   "callers": [
+    "asm/unk_02032844.s"
+   ],
+   "confidence": "high",
+   "defined_in": "asm/unk_02032844.s",
+   "mode": "thumb",
+   "notes": [
+    "[asm/unk_02032844.s] WH_SetError: if (sysState == 9 || sysState == 10) return; errCode = code. The sub #9;cmp #1;bls is MWCC range-opt of the || form, so write || (not a switch)"
+   ],
+   "signature_guess": "static void sub_02032858(int errcode)",
+   "signature_sources": {
+    "asm/unk_02032844.s": "static void sub_02032858(int errcode)"
+   },
+   "struct_accesses": [
+    {
+     "meaning": "sWork->errCode",
+     "offset": "0x1330",
+     "param": -1,
+     "width": 4
+    }
+   ]
+  },
+  "sub_02032874": {
+   "callers": [
+    "asm/unk_02032844.s"
+   ],
+   "confidence": "high",
+   "defined_in": "asm/unk_02032844.s",
+   "mode": "thumb",
+   "notes": [
+    "[asm/unk_02032844.s] ChangeState(3); r=WM_SetParentParameter(sub_020328A4, &sWork->parentParam /*offset 0*/); if (r != 2 /*WM_ERRCODE_OPERATING*/) { SetError(r); ChangeState(9); return FALSE; } return TRUE"
+   ],
+   "signature_guess": "static BOOL sub_02032874(void)",
+   "signature_sources": {
+    "asm/unk_02032844.s": "static BOOL sub_02032874(void)"
+   }
+  },
+  "sub_020328A4": {
+   "callers": [],
+   "confidence": "high",
+   "defined_in": "asm/unk_02032844.s",
+   "mode": "thumb",
+   "notes": [
+    "[asm/unk_02032844.s] if (cb->errcode) { SetError(cb->errcode); ChangeState(9); return; } if (!sub_020328C8()) ChangeState(9);"
+   ],
+   "signature_guess": "static void sub_020328A4(void *arg)",
+   "signature_sources": {
+    "asm/unk_02032844.s": "static void sub_020328A4(void *arg)"
+   },
+   "struct_accesses": [
+    {
+     "meaning": "WMCallback.errcode",
+     "offset": "0x2",
+     "param": 0,
+     "width": 2
+    }
+   ]
+  },
+  "sub_020328C8": {
+   "callers": [
+    "asm/unk_02032844.s"
+   ],
+   "confidence": "high",
+   "defined_in": "asm/unk_02032844.s",
+   "mode": "thumb",
+   "notes": [
+    "[asm/unk_02032844.s] if (sysState is 4,5 or 6 -> range-opt sub#4/cmp#2/bhi) return TRUE; st=WMi_GetStatusAddress(); DC_InvalidateRange(&st->field_0x198,4); st->field_0x198 (u32)=0; DC_FlushRange(&st->field_0x198,4); r=WM_StartParent(sub_02032934); if (r!=2){SetError(r);return FALSE;} sWork->aid(0x132C)=0; sWork->bitmap(0x132E)=1; return TRUE (the mov r0,#1 is also the value stored to 0x132E). WMStatus has no header in the tree; use a local struct/offset 0x198."
+   ],
+   "signature_guess": "static BOOL sub_020328C8(void)",
+   "signature_sources": {
+    "asm/unk_02032844.s": "static BOOL sub_020328C8(void)"
+   }
+  },
+  "sub_02032934": {
+   "callers": [],
+   "confidence": "medium",
+   "defined_in": "asm/unk_02032844.s",
+   "mode": "thumb",
+   "notes": [
+    "[asm/unk_02032844.s] Parent callback. u16 aidBit = 1 << cb->aid computed at top BEFORE the errcode check. errcode!=0 -> SetError(errcode) (r0 reloaded), ChangeState(9). switch(cb->state) lowered as cmp-tree over {0,2,7,9,0x1a} with 0x1a an empty case (dead cmp #0x1a). Body layout order: case 2 (sWork->u8 0x1345++), case 7 (child connected), case 9 (disconnected), case 0 (if(!sub_02032A40()) ChangeState(9)). Case 7: if (w->u8_1343==1 || w->u8_1342==1 || sub_02033264() >= w->u8_1334 || sub_0203993C() != cb->ssid[0] || memcmp(_0210F8FC, &cb->ssid[1], 3) != 0) { r=WM_Disconnect(NULL, cb->aid); if (r != 2) { SetError(r); ChangeState(9);} return; } w->bitmap(0x132E) |= aidBit; if (w->connectCb(0x1328)) w->connectCb(cb->aid). Case 9: w->bitmap &= ~aidBit; if (w->disconnectCb(0x1324)) w->disconnectCb(cb->aid)."
+   ],
+   "signature_guess": "static void sub_02032934(void *arg)",
+   "signature_sources": {
+    "asm/unk_02032844.s": "static void sub_02032934(void *arg)"
+   },
+   "struct_accesses": [
+    {
+     "meaning": "errcode",
+     "offset": "0x2",
+     "param": 0,
+     "width": 2
+    },
+    {
+     "meaning": "state (WMStartParentCallback)",
+     "offset": "0x8",
+     "param": 0,
+     "width": 2
+    },
+    {
+     "meaning": "aid",
+     "offset": "0x10",
+     "param": 0,
+     "width": 2
+    },
+    {
+     "meaning": "ssid[0] compared to sub_0203993C()",
+     "offset": "0x14",
+     "param": 0,
+     "width": 1
+    },
+    {
+     "meaning": "ssid[1..3] memcmp'd against _0210F8FC \"DP\"",
+     "offset": "0x15",
+     "param": 0,
+     "width": 3
+    }
+   ]
+  },
+  "sub_02032A40": {
+   "callers": [
+    "asm/unk_02032844.s"
+   ],
+   "confidence": "high",
+   "defined_in": "asm/unk_02032844.s",
+   "mode": "thumb",
+   "notes": [
+    "[asm/unk_02032844.s] if (sysState 4..6) return TRUE; ChangeState(4); w cached in r4; r=WM_StartMP(sub_02032AB0, w->recvBuf(0x1020), (u16)w->recvBufSize(0x1308), w->sendBuf(0xF40), (u16)w->sendBufSize(0x1304), 1); if (r!=2){SetError(r);return FALSE;} return TRUE"
+   ],
+   "signature_guess": "static BOOL sub_02032A40(void)",
+   "signature_sources": {
+    "asm/unk_02032844.s": "static BOOL sub_02032A40(void)"
+   }
+  },
+  "sub_02032AB0": {
+   "callers": [],
+   "confidence": "medium",
+   "defined_in": "asm/unk_02032844.s",
+   "mode": "thumb",
+   "notes": [
+    "[asm/unk_02032844.s] Parent MP callback. errcode!=0 -> SetError(errcode) (register reused, no reload), ChangeState(9). switch(cb->state) JUMP TABLE on state-10, 4 entries: case 10 body, cases 11,12,13 explicit empty. Case 10: if (connectMode(0x1314)==2) { if (sysState==4) -> fallthrough; else if (sysState==6) return; } ChangeState(4). The separate cmp #4 beq to the same target suggests nested if/switch on sysState; low confidence on exact shape."
+   ],
+   "signature_guess": "static void sub_02032AB0(void *arg)",
+   "signature_sources": {
+    "asm/unk_02032844.s": "static void sub_02032AB0(void *arg)"
+   },
+   "struct_accesses": [
+    {
+     "meaning": "errcode",
+     "offset": "0x2",
+     "param": 0,
+     "width": 2
+    },
+    {
+     "meaning": "state (WMStartMPCallback)",
+     "offset": "0x4",
+     "param": 0,
+     "width": 2
+    }
+   ]
+  },
+  "sub_02032B0C": {
+   "callers": [
+    "asm/unk_02032844.s"
+   ],
+   "confidence": "high",
+   "defined_in": "asm/unk_02032844.s",
+   "mode": "thumb",
+   "notes": [
+    "[asm/unk_02032844.s] ChangeState(3); r=WM_EndMP(sub_02032B30); if(r!=2){SetError(r);return FALSE;} return TRUE"
+   ],
+   "signature_guess": "static BOOL sub_02032B0C(void)",
+   "signature_sources": {
+    "asm/unk_02032844.s": "static BOOL sub_02032B0C(void)"
+   }
+  },
+  "sub_02032B30": {
+   "callers": [],
+   "confidence": "high",
+   "defined_in": "asm/unk_02032844.s",
+   "mode": "thumb",
+   "notes": [
+    "[asm/unk_02032844.s] errcode -> SetError(errcode); sub_02033830(); return; else if(!sub_02032B50()) sub_02033830(); Needs forward decl of sub_02033830."
+   ],
+   "signature_guess": "static void sub_02032B30(void *arg)",
+   "signature_sources": {
+    "asm/unk_02032844.s": "static void sub_02032B30(void *arg)"
+   }
+  },
+  "sub_02032B50": {
+   "callers": [
+    "asm/unk_02032844.s"
+   ],
+   "confidence": "high",
+   "defined_in": "asm/unk_02032844.s",
+   "mode": "thumb",
+   "signature_guess": "static BOOL sub_02032B50(void)",
+   "signature_sources": {
+    "asm/unk_02032844.s": "static BOOL sub_02032B50(void)"
+   }
+  },
+  "sub_02032B6C": {
+   "callers": [],
+   "confidence": "high",
+   "defined_in": "asm/unk_02032844.s",
+   "mode": "thumb",
+   "notes": [
+    "[asm/unk_02032844.s] errcode -> SetError(errcode) only; else ChangeState(1)"
+   ],
+   "signature_guess": "static void sub_02032B6C(void *arg)",
+   "signature_sources": {
+    "asm/unk_02032844.s": "static void sub_02032B6C(void *arg)"
+   }
+  },
+  "sub_02032B84": {
+   "callers": [],
+   "confidence": "high",
+   "defined_in": "asm/unk_02032844.s",
+   "mode": "thumb",
+   "notes": [
+    "[asm/unk_02032844.s] WH_ChildConnectAuto. Store order: recvBufSize(0x1308)=0x200, sendBufSize(0x1304)=0x40, ChangeState(2), u16@0x1256 (bssDesc+0x36, WMBssDesc.channel?)=1, bssid[4](0x12EC), bssid[2](0x12EA), bssid[0](0x12E8), connectMode(0x1314)=mode, scanCb(0x1300)=NULL, channelIndex(0x130C)=channel, scanParam.channel(0x12E4)=0, autoConnect(0x130E)=1; if(!sub_02032C84()){ChangeState(9);return FALSE;} return TRUE. Caller unk_02034B0C passes (1, ptr, 0). sWork reloaded before every store (global pointer, not a cached local)."
+   ],
+   "signature_guess": "BOOL sub_02032B84(int connectMode, const u8 *macAddr, u16 channel)",
+   "signature_sources": {
+    "asm/unk_02032844.s": "BOOL sub_02032B84(int connectMode, const u8 *macAddr, u16 channel)"
+   },
+   "struct_accesses": [
+    {
+     "meaning": "macAddr read as 3 u16 (order +4,+2,+0) into scanParam.bssid",
+     "offset": "0x0/0x2/0x4",
+     "param": 1,
+     "width": 2
+    }
+   ]
+  },
+  "sub_02032C1C": {
+   "callers": [],
+   "confidence": "high",
+   "defined_in": "asm/unk_02032844.s",
+   "mode": "thumb",
+   "notes": [
+    "[asm/unk_02032844.s] WH_StartScan. ChangeState(2); scanCb(0x1300)=cb; channelIndex(0x130C)=channel; scanParam.channel(0x12E4)=0; autoConnect(0x130E)=0; bssid[4],[2],[0] from macAddr u16s; if(!sub_02032C84()){ChangeState(9);return FALSE;} return TRUE. Caller passes (sub_02034C20, stack 6-byte mac copy, 0)."
+   ],
+   "signature_guess": "BOOL sub_02032C1C(void (*scanCb)(void *bssDesc), const u8 *macAddr, u16 channel)",
+   "signature_sources": {
+    "asm/unk_02032844.s": "BOOL sub_02032C1C(void (*scanCb)(void *bssDesc), const u8 *macAddr, u16 channel)"
+   }
+  },
+  "sub_02032C84": {
+   "callers": [
+    "asm/unk_02032844.s"
+   ],
+   "confidence": "medium",
+   "defined_in": "asm/unk_02032844.s",
+   "mode": "thumb",
+   "notes": [
+    "[asm/unk_02032844.s] chanpat=WM_GetAllowedChannel(); if(chanpat==0x8000){SetError(3);sub_02039AD8(1);return FALSE;} if(chanpat==0){SetError(0x16);sub_02039AD8(1);return FALSE;} if(w->channelIndex(0x130C)==0){ do { scanParam.channel++; if(scanParam.channel>16) scanParam.channel=1; } while(!(chanpat & (1<<(scanParam.channel-1)))); } else scanParam.channel=channelIndex; scanParam.maxChannelTime(0x12E6)=WM_GetDispersionScanPeriod()/3; scanParam.scanBuf(0x12E0)=&w->bssDesc(0x1220); r=WM_StartScan(sub_02032D4C,&w->scanParam); if(r!=2){SetError(r);return FALSE;} return TRUE. Loop exit is 'tst; bne exit; b loop' (not beq loop) -- loop shape may need while(1){...if(...)break;} form."
+   ],
+   "signature_guess": "static BOOL sub_02032C84(void)",
+   "signature_sources": {
+    "asm/unk_02032844.s": "static BOOL sub_02032C84(void)"
+   }
+  },
+  "sub_02032D4C": {
+   "callers": [],
+   "confidence": "medium",
+   "defined_in": "asm/unk_02032844.s",
+   "mode": "thumb",
+   "notes": [
+    "[asm/unk_02032844.s] Scan callback (WMStartScanCallback). errcode -> SetError, ChangeState(9). If sysState!=2: autoConnect(0x130E)=0; if(!sub_02032E48()) ChangeState(9); return. Else state: 3 return; 4 -> rescan; 5: DC_InvalidateRange(&w->bssDesc,0xC0); if(w->beaconCb(0x1320) && gameInfoLength>=8) beaconCb(gameInfo.ggid, userGameInfo[4]); if(gameInfoLength>=8 && ggid==w->parentParam.ggid && (attr&3)==1){ if(w->scanCb(0x1300)) scanCb(&w->bssDesc); if(w->autoConnect){ if(!sub_02032E48()) ChangeState(9); return; } } fall to rescan: if(!sub_02032C84()) ChangeState(9). sWork loaded once and kept in r2 across the sysState check into DC_InvalidateRange arg."
+   ],
+   "signature_guess": "static void sub_02032D4C(void *arg)",
+   "signature_sources": {
+    "asm/unk_02032844.s": "static void sub_02032D4C(void *arg)"
+   },
+   "struct_accesses": [
+    {
+     "meaning": "errcode",
+     "offset": "0x2",
+     "param": 0,
+     "width": 2
+    },
+    {
+     "meaning": "state: 3 SCAN_START(ignore),4 PARENT_NOT_FOUND(rescan),5 PARENT_FOUND",
+     "offset": "0x8",
+     "param": 0,
+     "width": 2
+    },
+    {
+     "meaning": "gameInfoLength (>=8 check)",
+     "offset": "0x36",
+     "param": 0,
+     "width": 2
+    },
+    {
+     "meaning": "gameInfo.ggid",
+     "offset": "0x3c",
+     "param": 0,
+     "width": 4
+    },
+    {
+     "meaning": "gameInfo.gameNameCount_attribute; (x&3)==1 -> entry allowed",
+     "offset": "0x43",
+     "param": 0,
+     "width": 1
+    },
+    {
+     "meaning": "gameInfo.userGameInfo byte 4, passed to beacon cb",
+     "offset": "0x4c",
+     "param": 0,
+     "width": 1
+    }
+   ]
+  },
+  "sub_02032E24": {
+   "callers": [],
+   "confidence": "high",
+   "defined_in": "asm/unk_02032844.s",
+   "mode": "thumb",
+   "notes": [
+    "[asm/unk_02032844.s] WH_EndScan: if(sysState!=2) return FALSE; ChangeState(3); return TRUE"
+   ],
+   "signature_guess": "BOOL sub_02032E24(void)",
+   "signature_sources": {
+    "asm/unk_02032844.s": "BOOL sub_02032E24(void)"
+   }
+  },
+  "sub_02032E48": {
+   "callers": [
+    "asm/unk_02032844.s"
+   ],
+   "confidence": "high",
+   "defined_in": "asm/unk_02032844.s",
+   "mode": "thumb",
+   "signature_guess": "static BOOL sub_02032E48(void)",
+   "signature_sources": {
+    "asm/unk_02032844.s": "static BOOL sub_02032E48(void)"
+   }
+  },
+  "sub_02032E64": {
+   "callers": [],
+   "confidence": "high",
+   "defined_in": "asm/unk_02032844.s",
+   "mode": "thumb",
+   "notes": [
+    "[asm/unk_02032844.s] errcode -> SetError only; ChangeState(1); if(w->autoConnect(0x130E)){ if(!sub_02032E9C()) ChangeState(9); }"
+   ],
+   "signature_guess": "static void sub_02032E64(void *arg)",
+   "signature_sources": {
+    "asm/unk_02032844.s": "static void sub_02032E64(void *arg)"
+   }
+  },
+  "sub_02032E9C": {
+   "callers": [
+    "asm/unk_02032844.s"
+   ],
+   "confidence": "high",
+   "defined_in": "asm/unk_02032844.s",
+   "mode": "thumb",
+   "notes": [
+    "[asm/unk_02032844.s] if(sysState 4..6) return TRUE; ChangeState(3); u8 ssid[32] on stack at sp+4 (sp+0 = 5th arg); MI_CpuCopy8(_0210F8FC, &ssid[1], 3); ssid[0]=sub_0203993C(); r=WM_StartConnectEx(sub_02032F0C, &w->bssDesc(0x1220), ssid, TRUE, 0); if(r!=2){SetError(r);return FALSE;} return TRUE. Frame is 0x24 bytes."
+   ],
+   "signature_guess": "static BOOL sub_02032E9C(void)",
+   "signature_sources": {
+    "asm/unk_02032844.s": "static BOOL sub_02032E9C(void)"
+   }
+  },
+  "sub_02032F0C": {
+   "callers": [],
+   "confidence": "medium",
+   "defined_in": "asm/unk_02032844.s",
+   "mode": "thumb",
+   "notes": [
+    "[asm/unk_02032844.s] errcode!=0: SetError(errcode); reload errcode; if==0xc ChangeState(9); else if==0xb ChangeState(9); else if==1 { if(sub_02039918()) ChangeState(9); else ChangeState(8); } else ChangeState(9). errcode==0: state tests in order 8(return),7,6(return),9,0x1a(return),default ChangeState(9) -- NOT ascending so this is an if/else-if chain, not a switch. state 7: if(w->u8_1335){SetError(0x14);ChangeState(9);return;} ChangeState(4); if(!sub_02032FCC()){ChangeState(3);return;} w->aid(0x132C)=cb->aid. state 9: SetError(0x14); ChangeState(9)."
+   ],
+   "signature_guess": "static void sub_02032F0C(void *arg)",
+   "signature_sources": {
+    "asm/unk_02032844.s": "static void sub_02032F0C(void *arg)"
+   },
+   "struct_accesses": [
+    {
+     "meaning": "errcode",
+     "offset": "0x2",
+     "param": 0,
+     "width": 2
+    },
+    {
+     "meaning": "state (WMStartConnectCallback)",
+     "offset": "0x8",
+     "param": 0,
+     "width": 2
+    },
+    {
+     "meaning": "aid",
+     "offset": "0xa",
+     "param": 0,
+     "width": 2
+    }
+   ]
+  },
+  "sub_02032FCC": {
+   "callers": [
+    "asm/unk_02032844.s"
+   ],
+   "confidence": "high",
+   "defined_in": "asm/unk_02032844.s",
+   "mode": "thumb",
+   "notes": [
+    "[asm/unk_02032844.s] Same as sub_02032A40 minus state check/ChangeState; callback sub_0203301C"
+   ],
+   "signature_guess": "static BOOL sub_02032FCC(void)",
+   "signature_sources": {
+    "asm/unk_02032844.s": "static BOOL sub_02032FCC(void)"
+   }
+  },
+  "sub_0203301C": {
+   "callers": [],
+   "confidence": "medium",
+   "defined_in": "asm/unk_02032844.s",
+   "mode": "thumb",
+   "notes": [
+    "[asm/unk_02032844.s] Child MP callback. errcode: 0 -> continue; 0xf,9,0xd -> return (ignored); else SetError(errcode); ChangeState(9). State jump table (state-10, 4 entries, 11..13 explicit empty). Case 10: if(connectMode==3 && sysState==6) return; ChangeState(4)."
+   ],
+   "signature_guess": "static void sub_0203301C(void *arg)",
+   "signature_sources": {
+    "asm/unk_02032844.s": "static void sub_0203301C(void *arg)"
+   }
+  },
+  "sub_02033080": {
+   "callers": [
+    "asm/unk_02032844.s"
+   ],
+   "confidence": "high",
+   "defined_in": "asm/unk_02032844.s",
+   "mode": "thumb",
+   "signature_guess": "static BOOL sub_02033080(void)",
+   "signature_sources": {
+    "asm/unk_02032844.s": "static BOOL sub_02033080(void)"
+   }
+  },
+  "sub_020330A4": {
+   "callers": [],
+   "confidence": "high",
+   "defined_in": "asm/unk_02032844.s",
+   "mode": "thumb",
+   "notes": [
+    "[asm/unk_02032844.s] errcode -> SetError(errcode); sub_02033858(); return. else if(!sub_020330C8()) ChangeState(9). sub_02033858 is exported and defined later -> must be declared before use."
+   ],
+   "signature_guess": "static void sub_020330A4(void *arg)",
+   "signature_sources": {
+    "asm/unk_02032844.s": "static void sub_020330A4(void *arg)"
+   }
+  },
+  "sub_020330C8": {
+   "callers": [
+    "asm/unk_02032844.s"
+   ],
+   "confidence": "high",
+   "defined_in": "asm/unk_02032844.s",
+   "mode": "thumb",
+   "notes": [
+    "[asm/unk_02032844.s] ChangeState(3); r=WM_Disconnect(sub_020330F0, 0); if(r!=2){SetError(r); sub_02033830(); return FALSE;} return TRUE"
+   ],
+   "signature_guess": "static BOOL sub_020330C8(void)",
+   "signature_sources": {
+    "asm/unk_02032844.s": "static BOOL sub_020330C8(void)"
+   }
+  },
+  "sub_020330F0": {
+   "callers": [],
+   "confidence": "high",
+   "defined_in": "asm/unk_02032844.s",
+   "mode": "thumb",
+   "notes": [
+    "[asm/unk_02032844.s] errcode -> SetError; else ChangeState(1)"
+   ],
+   "signature_guess": "static void sub_020330F0(void *arg)",
+   "signature_sources": {
+    "asm/unk_02032844.s": "static void sub_020330F0(void *arg)"
+   }
+  },
+  "sub_02033108": {
+   "callers": [
+    "asm/unk_02032844.s"
+   ],
+   "confidence": "high",
+   "defined_in": "asm/unk_02032844.s",
+   "mode": "thumb",
+   "signature_guess": "static BOOL sub_02033108(void)",
+   "signature_sources": {
+    "asm/unk_02032844.s": "static BOOL sub_02033108(void)"
+   }
+  },
+  "sub_0203312C": {
+   "callers": [],
+   "confidence": "high",
+   "defined_in": "asm/unk_02032844.s",
+   "mode": "thumb",
+   "notes": [
+    "[asm/unk_02032844.s] errcode: ChangeState(9) FIRST, then SetError(cb->errcode) (reloaded); else ChangeState(1)"
+   ],
+   "signature_guess": "static void sub_0203312C(void *arg)",
+   "signature_sources": {
+    "asm/unk_02032844.s": "static void sub_0203312C(void *arg)"
+   }
+  },
+  "sub_0203314C": {
+   "callers": [
+    "asm/unk_02032844.s"
+   ],
+   "confidence": "medium",
+   "defined_in": "asm/unk_02032844.s",
+   "mode": "thumb",
+   "notes": [
+    "[asm/unk_02032844.s] DC_FlushRange(w->sendBuf(0xF40), w->sendBufSize(0x1304)); return WM_SetMPDataToPortEx(sub_020331A4, callback, data, size, 0xFFFF, (u16)port, 2) == 2 (mov1/mov0 on both paths -> BOOL). port is narrowed in-body (int param); size passed un-narrowed (u16 param)."
+   ],
+   "signature_guess": "static BOOL sub_0203314C(const void *data, u16 size, int port, void (*callback)(BOOL))",
+   "signature_sources": {
+    "asm/unk_02032844.s": "static BOOL sub_0203314C(const void *data, u16 size, int port, void (*callback)(BOOL))"
+   }
+  },
+  "sub_020331A4": {
+   "callers": [],
+   "confidence": "high",
+   "defined_in": "asm/unk_02032844.s",
+   "mode": "thumb",
+   "notes": [
+    "[asm/unk_02032844.s] if(errcode!=0 && errcode!=0xf){SetError(errcode);return;} if(cb->arg) ((void(*)(BOOL))cb->arg)(errcode==0 ? TRUE : FALSE)"
+   ],
+   "signature_guess": "static void sub_020331A4(void *arg)",
+   "signature_sources": {
+    "asm/unk_02032844.s": "static void sub_020331A4(void *arg)"
+   },
+   "struct_accesses": [
+    {
+     "meaning": "errcode",
+     "offset": "0x2",
+     "param": 0,
+     "width": 2
+    },
+    {
+     "meaning": "WMPortSendCallback.arg = user callback void(*)(BOOL)",
+     "offset": "0x20",
+     "param": 0,
+     "width": 4
+    }
+   ]
+  },
+  "sub_020331CC": {
+   "callers": [],
+   "confidence": "high",
+   "defined_in": "asm/unk_02032844.s",
+   "mode": "thumb",
+   "notes": [
+    "[asm/unk_02032844.s] errcode -> SetError, return. recvCb=w->0x1318 loaded before state test; if(recvCb){ if state==0x19 nothing; else if 0x15 recvCb(aid,data,length); else if 9 recvCb(aid,NULL,0); }"
+   ],
+   "signature_guess": "static void sub_020331CC(void *arg)",
+   "signature_sources": {
+    "asm/unk_02032844.s": "static void sub_020331CC(void *arg)"
+   },
+   "struct_accesses": [
+    {
+     "meaning": "state (WMPortRecvCallback): 0x19 PORT_INIT,0x15 PORT_RECV,9 DISCONNECTED",
+     "offset": "0x4",
+     "param": 0,
+     "width": 2
+    },
+    {
+     "meaning": "data",
+     "offset": "0xc",
+     "param": 0,
+     "width": 4
+    },
+    {
+     "meaning": "length",
+     "offset": "0x10",
+     "param": 0,
+     "width": 2
+    },
+    {
+     "meaning": "aid",
+     "offset": "0x12",
+     "param": 0,
+     "width": 2
+    }
+   ]
+  },
+  "sub_02033214": {
+   "callers": [],
+   "confidence": "high",
+   "defined_in": "asm/unk_02032844.s",
+   "mode": "thumb",
+   "notes": [
+    "[asm/unk_02032844.s] errcode -> ChangeState(10), return; WVR_TerminateAsync(NULL,NULL); ChangeState(0)"
+   ],
+   "signature_guess": "static void sub_02033214(void *arg)",
+   "signature_sources": {
+    "asm/unk_02032844.s": "static void sub_02033214(void *arg)"
+   }
+  },
+  "sub_02033234": {
+   "callers": [],
+   "confidence": "high",
+   "defined_in": "asm/unk_02032844.s",
+   "mode": "thumb",
+   "signature_guess": "void sub_02033234(u32 ggid)",
+   "signature_sources": {
+    "asm/unk_02032844.s": "void sub_02033234(u32 ggid)"
+   },
+   "struct_accesses": [
+    {
+     "meaning": "parentParam.ggid",
+     "offset": "0x8",
+     "param": -1,
+     "width": 4
+    }
+   ]
+  },
+  "sub_02033240": {
+   "callers": [],
+   "confidence": "high",
+   "defined_in": "asm/unk_02032844.s",
+   "mode": "thumb",
+   "notes": [
+    "[asm/unk_02032844.s] caller passes (ptr, 0x5c); no narrowing in body so u16 or int both fine"
+   ],
+   "signature_guess": "void sub_02033240(u16 *userGameInfo, u16 length)",
+   "signature_sources": {
+    "asm/unk_02032844.s": "void sub_02033240(u16 *userGameInfo, u16 length)"
+   },
+   "struct_accesses": [
+    {
+     "meaning": "parentParam.userGameInfo",
+     "offset": "0x0",
+     "param": -1,
+     "width": 4
+    },
+    {
+     "meaning": "parentParam.userGameInfoLength",
+     "offset": "0x4",
+     "param": -1,
+     "width": 2
+    }
+   ]
+  },
+  "sub_02033250": {
+   "callers": [
+    "asm/unk_02032844.s"
+   ],
+   "confidence": "high",
+   "defined_in": "asm/unk_02032844.s",
+   "mode": "thumb",
+   "notes": [
+    "[asm/unk_02032844.s] returns connected bitmap (0x132E). Already declared u16 in include/unk_02032844.h (keep)."
+   ],
+   "signature_guess": "u16 sub_02033250(void)",
+   "signature_sources": {
+    "asm/unk_02032844.s": "u16 sub_02033250(void)"
+   }
+  },
+  "sub_02033264": {
+   "callers": [
+    "asm/unk_02032844.s"
+   ],
+   "confidence": "high",
+   "defined_in": "asm/unk_02032844.s",
+   "mode": "thumb",
+   "notes": [
+    "[asm/unk_02032844.s] popcount of bitmap: int count=0; u16 bmp=w->bitmap; for(i=0;i<16;i++){ if(bmp&1) count++; bmp>>=1; } return count; (bmp u16: lsl#15/lsr#16; count int narrowed at return). Leaf, push{r3,r4}."
+   ],
+   "signature_guess": "static u16 sub_02033264(void)",
+   "signature_sources": {
+    "asm/unk_02032844.s": "static u16 sub_02033264(void)"
+   }
+  },
+  "sub_02033298": {
+   "callers": [],
+   "confidence": "high",
+   "defined_in": "asm/unk_02032844.s",
+   "mode": "thumb",
+   "notes": [
+    "[asm/unk_02032844.s] WH_GetSystemState: return sysState (0x1310)"
+   ],
+   "signature_guess": "int sub_02033298(void)",
+   "signature_sources": {
+    "asm/unk_02032844.s": "int sub_02033298(void)"
+   }
+  },
+  "sub_020332AC": {
+   "callers": [],
+   "confidence": "high",
+   "defined_in": "asm/unk_02032844.s",
+   "mode": "thumb",
+   "notes": [
+    "[asm/unk_02032844.s] WH_GetLastError: return errCode (0x1330)"
+   ],
+   "signature_guess": "int sub_020332AC(void)",
+   "signature_sources": {
+    "asm/unk_02032844.s": "int sub_020332AC(void)"
+   }
+  },
+  "sub_020332C0": {
+   "callers": [],
+   "confidence": "high",
+   "defined_in": "asm/unk_02032844.s",
+   "mode": "thumb",
+   "notes": [
+    "[asm/unk_02032844.s] WH_StartMeasureChannel. u8 mac[6] (8-byte frame); OS_GetMacAddress(mac); w->seed(0x1338) = *(u32*)0x027FFC3C (OS_GetVBlankCount inline) + ((u16*)mac)[0] + [1] + [2]; w->seed = w->seed*0x10DCD + 0x3039 (RAND, 69069/12345); measuredChannel(0x133C)=0; busyRatio(0x133E)=0x65; ChangeState(3); r=sub_0203335C(1); if(r==0x18){SetError(0x18);ChangeState(9);sub_02039AD8(1);return FALSE;} if(r!=2){SetError(r);ChangeState(9);return FALSE;} return TRUE"
+   ],
+   "signature_guess": "BOOL sub_020332C0(void)",
+   "signature_sources": {
+    "asm/unk_02032844.s": "BOOL sub_020332C0(void)"
+   }
+  },
+  "sub_0203335C": {
+   "callers": [
+    "asm/unk_02032844.s"
+   ],
+   "confidence": "high",
+   "defined_in": "asm/unk_02032844.s",
+   "mode": "thumb",
+   "notes": [
+    "[asm/unk_02032844.s] chanpat=WM_GetAllowedChannel(); if(==0x8000){SetError(3);ChangeState(9);sub_02039AD8(1);return 3;} if(==0){SetError(0x16);ChangeState(9);sub_02039AD8(1);return 0x18;} while(!(chanpat & (1<<(channel-1)))){ channel++; if(channel>16) return 0x18; } return sub_02033454(sub_020333D8, channel); (result narrowed to u16)"
+   ],
+   "signature_guess": "static u16 sub_0203335C(u16 channel)",
+   "signature_sources": {
+    "asm/unk_02032844.s": "static u16 sub_0203335C(u16 channel)"
+   }
+  },
+  "sub_020333D8": {
+   "callers": [],
+   "confidence": "high",
+   "defined_in": "asm/unk_02032844.s",
+   "mode": "thumb",
+   "notes": [
+    "[asm/unk_02032844.s] errcode -> SetError(errcode); ChangeState(9); sub_02039AD8(1); return. ch/ratio locals; if(w->busyRatio(0x133E) > ratio){ busyRatio=ratio; chanBitmap(0x1340)=1<<(ch-1);} else if(==){ chanBitmap |= 1<<(ch-1);} r=sub_0203335C(ch+1); if(r==0x18) ChangeState(7); else if(r!=2) ChangeState(9)"
+   ],
+   "signature_guess": "static void sub_020333D8(void *arg)",
+   "signature_sources": {
+    "asm/unk_02032844.s": "static void sub_020333D8(void *arg)"
+   },
+   "struct_accesses": [
+    {
+     "meaning": "channel (WMMeasureChannelCallback)",
+     "offset": "0x8",
+     "param": 0,
+     "width": 2
+    },
+    {
+     "meaning": "ccaBusyRatio",
+     "offset": "0xa",
+     "param": 0,
+     "width": 2
+    }
+   ]
+  },
+  "sub_02033454": {
+   "callers": [
+    "asm/unk_02032844.s"
+   ],
+   "confidence": "high",
+   "defined_in": "asm/unk_02032844.s",
+   "mode": "thumb",
+   "notes": [
+    "[asm/unk_02032844.s] return WM_MeasureChannel(cb, 3, 0x11, channel, 0x1e);"
+   ],
+   "signature_guess": "static int sub_02033454(void (*cb)(void *), u16 channel)",
+   "signature_sources": {
+    "asm/unk_02032844.s": "static int sub_02033454(void (*cb)(void *), u16 channel)"
+   }
+  },
+  "sub_02033468": {
+   "callers": [],
+   "confidence": "high",
+   "defined_in": "asm/unk_02032844.s",
+   "mode": "thumb",
+   "notes": [
+    "[asm/unk_02032844.s] ChangeState(1); w->measuredChannel(0x133C)=sub_02033494(w->chanBitmap(0x1340)); return w->measuredChannel (reloaded)"
+   ],
+   "signature_guess": "u16 sub_02033468(void)",
+   "signature_sources": {
+    "asm/unk_02032844.s": "u16 sub_02033468(void)"
+   }
+  },
+  "sub_02033494": {
+   "callers": [
+    "asm/unk_02032844.s"
+   ],
+   "confidence": "high",
+   "defined_in": "asm/unk_02032844.s",
+   "mode": "thumb",
+   "notes": [
+    "[asm/unk_02032844.s] SelectChannel: s16 i, s16 sel=0; u16 num=0; for(i=0;i<16;i++) if(bitmap&(1<<i)){sel=i+1;num++;} if(num<=1) return sel; RAND on w->seed; u16 pick=((w->seed & 0xff)*num)>>8 (seed reloaded after store); for(i=0;i<16;i++){ if(bitmap&1){ if(pick==0) return i+1; pick--; } bitmap>>=1; } return 0. Leaf push{r4-r7}."
+   ],
+   "signature_guess": "static s16 sub_02033494(u16 bitmap)",
+   "signature_sources": {
+    "asm/unk_02032844.s": "static s16 sub_02033494(u16 bitmap)"
+   }
+  },
+  "sub_02033528": {
+   "callers": [],
+   "confidence": "high",
+   "defined_in": "asm/unk_02032844.s",
+   "mode": "thumb",
+   "notes": [
+    "[asm/unk_02032844.s] WH_Initialize. if((u32)buf & 0x1f) buf += 0x20 - ((u32)buf & 0x1f); sWork=buf; store order: 0x1308=0,0x1304=0,0x1318=0,0x132C=0,0x132E=1,0x1330=0,0x1310=0,[0]=NULL,[4](u16)=0,0x131C=0,0x1334(u8)=8,0x1335(u8)=0,0x1342(u8)=0; if(!sub_020335D4(mode)) return FALSE (reuses r4=0); return TRUE."
+   ],
+   "signature_guess": "BOOL sub_02033528(void *buf, int mode)",
+   "signature_sources": {
+    "asm/unk_02032844.s": "BOOL sub_02033528(void *buf, int mode)"
+   }
+  },
+  "sub_020335B4": {
+   "callers": [],
+   "confidence": "high",
+   "defined_in": "asm/unk_02032844.s",
+   "mode": "thumb",
+   "notes": [
+    "[asm/unk_02032844.s] return 0x1380 (work size incl. 32-byte align slack; likely sizeof(WHWork)+32 with sizeof=0x1360)"
+   ],
+   "signature_guess": "u32 sub_020335B4(void)",
+   "signature_sources": {
+    "asm/unk_02032844.s": "u32 sub_020335B4(void)"
+   }
+  },
+  "sub_020335BC": {
+   "callers": [],
+   "confidence": "high",
+   "defined_in": "asm/unk_02032844.s",
+   "mode": "thumb",
+   "notes": [
+    "[asm/unk_02032844.s] Ind callback: if(cb->errcode==8){ChangeState(9);SetError(0x19);}"
+   ],
+   "signature_guess": "static void sub_020335BC(void *arg)",
+   "signature_sources": {
+    "asm/unk_02032844.s": "static void sub_020335BC(void *arg)"
+   }
+  },
+  "sub_020335D4": {
+   "callers": [
+    "asm/unk_02032844.s"
+   ],
+   "confidence": "high",
+   "defined_in": "asm/unk_02032844.s",
+   "mode": "thumb",
+   "notes": [
+    "[asm/unk_02032844.s] ChangeState(3); if(mode==1) r=WM_Initialize(w->wmBuf(+0x40), sub_02033620, 2); else r=WM_InitializeForListening(w->wmBuf, sub_02033620, 2, FALSE); if(r!=2){SetError(r);ChangeState(10);return FALSE;} return TRUE"
+   ],
+   "signature_guess": "static BOOL sub_020335D4(int mode)",
+   "signature_sources": {
+    "asm/unk_02032844.s": "static BOOL sub_020335D4(int mode)"
+   }
+  },
+  "sub_02033620": {
+   "callers": [],
+   "confidence": "high",
+   "defined_in": "asm/unk_02032844.s",
+   "mode": "thumb",
+   "notes": [
+    "[asm/unk_02032844.s] errcode -> SetError; ChangeState(10); sub_02039AD8(5); return. r=WM_SetIndCallback(sub_020335BC); if(r!=0) same error path with r. ChangeState(1)"
+   ],
+   "signature_guess": "static void sub_02033620(void *arg)",
+   "signature_sources": {
+    "asm/unk_02032844.s": "static void sub_02033620(void *arg)"
+   }
+  },
+  "sub_02033664": {
+   "callers": [],
+   "confidence": "high",
+   "defined_in": "asm/unk_02032844.s",
+   "mode": "thumb",
+   "notes": [
+    "[asm/unk_02032844.s] empty (bx lr) -- WM_SetLifeTime callback"
+   ],
+   "signature_guess": "static void sub_02033664(void *arg)",
+   "signature_sources": {
+    "asm/unk_02032844.s": "static void sub_02033664(void *arg)"
+   }
+  },
+  "sub_02033668": {
+   "callers": [],
+   "confidence": "medium",
+   "defined_in": "asm/unk_02032844.s",
+   "mode": "thumb",
+   "notes": [
+    "[asm/unk_02032844.s] WH_ParentConnect (6 args: stack0 -> 0x18, stack1 -> 0xe). if(sub_020340C4(sub_0203993C())) WM_SetLifeTime(sub_02033664, 0xFFFF, 0x64, 5, 0x64); recvBufSize=0x1C0; sendBufSize=0xE0; connectMode(0x1314)=mode; ChangeState(3); pp.tgid(0xc)=tgid; pp.channel(0x32)=channel; pp.beaconPeriod(0x18)=stack0; if(mode==0){pp.parentMaxSize(0x34)=0xC0; pp.childMaxSize(0x36)= maxEntry>=5 ? 0xC : 0x26;} else if(mode==4){0x34=0x64; 0x36=0xC;} pp.maxEntry(0x10)=maxEntry; pp.CS_Flag(0x16)=0; pp.multiBootFlag(0x12)=0; pp.entryFlag(0xe)=stack1; pp.KS_Flag(0x14)=(mode==2); if(mode==0||mode==2||mode==4) return sub_02032874(); return FALSE. The cmp r5,#0 is scheduled before several stores (compiler interleave). Caller: unk_02034B0C sub_0203540C passes (0, ldrh tgid, u16 channel, maxEntry, sub_02035724(), bitfield bit)."
+   ],
+   "signature_guess": "BOOL sub_02033668(int connectMode, u16 tgid, u16 channel, u16 maxEntry, u16 beaconPeriod, u16 entryFlag)",
+   "signature_sources": {
+    "asm/unk_02032844.s": "BOOL sub_02033668(int connectMode, u16 tgid, u16 channel, u16 maxEntry, u16 beaconPeriod, u16 entryFlag)"
+   }
+  },
+  "sub_0203373C": {
+   "callers": [],
+   "confidence": "high",
+   "defined_in": "asm/unk_02032844.s",
+   "mode": "thumb",
+   "notes": [
+    "[asm/unk_02032844.s] WH_ChildConnect. same SetLifeTime prologue; recvBufSize=0x200; sendBufSize=0x40; connectMode=mode; ChangeState(3); if(mode==1||mode==3||mode==5){ MI_CpuCopy8(bssDesc, &w->bssDesc, 0xC0); DC_FlushRange(&w->bssDesc,0xC0); DC_WaitWriteBufferEmpty(); return sub_02032E9C(); } return FALSE. Caller passes (1, work+0x114+idx*0xC0)."
+   ],
+   "signature_guess": "BOOL sub_0203373C(int connectMode, const void *bssDesc)",
+   "signature_sources": {
+    "asm/unk_02032844.s": "BOOL sub_0203373C(int connectMode, const void *bssDesc)"
+   }
+  },
+  "sub_020337D0": {
+   "callers": [],
+   "confidence": "high",
+   "defined_in": "asm/unk_02032844.s",
+   "mode": "thumb",
+   "notes": [
+    "[asm/unk_02032844.s] w->recvCb(0x1318)=cb; if(WM_SetPortCallback((u16)port, sub_020331CC, NULL) != 0){ ChangeState(9); while(1){} } Caller passes (sub_02036904 / sub_020367A8, 0xe)."
+   ],
+   "signature_guess": "void sub_020337D0(void (*recvCb)(u16 aid, void *data, u16 length), int port)",
+   "signature_sources": {
+    "asm/unk_02032844.s": "void sub_020337D0(void (*recvCb)(u16 aid, void *data, u16 length), int port)"
+   }
+  },
+  "sub_02033800": {
+   "callers": [],
+   "confidence": "medium",
+   "defined_in": "asm/unk_02032844.s",
+   "mode": "thumb",
+   "notes": [
+    "[asm/unk_02032844.s] if(sub_020338F4()==0 && !(sub_02033250() & 0xFE)) return FALSE; return sub_0203314C(data,size,port,callback). Callers (unk_02035900) pass (buf, 0xC0, 0xE, sub_02036ABC)."
+   ],
+   "signature_guess": "BOOL sub_02033800(const void *data, u16 size, int port, void (*callback)(BOOL))",
+   "signature_sources": {
+    "asm/unk_02032844.s": "BOOL sub_02033800(const void *data, u16 size, int port, void (*callback)(BOOL))"
+   }
+  },
+  "sub_02033830": {
+   "callers": [
+    "asm/unk_02032844.s"
+   ],
+   "confidence": "high",
+   "defined_in": "asm/unk_02032844.s",
+   "mode": "thumb",
+   "notes": [
+    "[asm/unk_02032844.s] if(sysState==2){ while(1){} } (b . with no reload); if(!sub_02033108()) ChangeState(10)"
+   ],
+   "signature_guess": "static void sub_02033830(void)",
+   "signature_sources": {
+    "asm/unk_02032844.s": "static void sub_02033830(void)"
+   }
+  },
+  "sub_02033858": {
+   "callers": [
+    "asm/unk_02032844.s"
+   ],
+   "confidence": "medium",
+   "defined_in": "asm/unk_02032844.s",
+   "mode": "thumb",
+   "notes": [
+    "[asm/unk_02032844.s] WH_Finalize. state tests 1(return),6,5,4 (descending, explicit cmps -- no range-opt, so NOT '||'; likely switch(sysState){case 1: return; case 6: case 5: case 4: ...; default: ChangeState(3); sub_02033830(); return;} or if-chain in that order). Connected path: ChangeState(3); switch(connectMode) JUMP TABLE 0..5: body order in asm = child (cases 1,5: if(!sub_02033080()) sub_02033830()) FIRST, then parent (cases 0,4: if(!sub_02032B0C()) sub_02033830()); cases 2,3 explicit empty."
+   ],
+   "signature_guess": "void sub_02033858(void)",
+   "signature_sources": {
+    "asm/unk_02032844.s": "void sub_02033858(void)"
+   }
+  },
+  "sub_020338D0": {
+   "callers": [],
+   "confidence": "high",
+   "defined_in": "asm/unk_02032844.s",
+   "mode": "thumb",
+   "notes": [
+    "[asm/unk_02032844.s] ChangeState(3); if(WM_End(sub_02033214)!=2){ChangeState(9);return FALSE;} return TRUE"
+   ],
+   "signature_guess": "BOOL sub_020338D0(void)",
+   "signature_sources": {
+    "asm/unk_02032844.s": "BOOL sub_020338D0(void)"
+   }
+  },
+  "sub_020338F4": {
+   "callers": [
+    "asm/unk_02032844.s"
+   ],
+   "confidence": "high",
+   "defined_in": "asm/unk_02032844.s",
+   "mode": "thumb",
+   "notes": [
+    "[asm/unk_02032844.s] return aid (0x132C)"
+   ],
+   "signature_guess": "u16 sub_020338F4(void)",
+   "signature_sources": {
+    "asm/unk_02032844.s": "u16 sub_020338F4(void)"
+   }
+  },
+  "sub_02033908": {
+   "callers": [],
+   "confidence": "high",
+   "defined_in": "asm/unk_02032844.s",
+   "mode": "thumb",
+   "notes": [
+    "[asm/unk_02032844.s] if(sWork != NULL) sWork->u8_1334 = x. Header already declares void(int)."
+   ],
+   "signature_guess": "void sub_02033908(int maxConnect)",
+   "signature_sources": {
+    "asm/unk_02032844.s": "void sub_02033908(int maxConnect)"
+   }
+  },
+  "sub_02033920": {
+   "callers": [],
+   "confidence": "high",
+   "defined_in": "asm/unk_02032844.s",
+   "mode": "thumb",
+   "notes": [
+    "[asm/unk_02032844.s] sysState == 1 (explicit mov 1/mov 0 returns)"
+   ],
+   "signature_guess": "BOOL sub_02033920(void)",
+   "signature_sources": {
+    "asm/unk_02032844.s": "BOOL sub_02033920(void)"
+   }
+  },
+  "sub_0203393C": {
+   "callers": [],
+   "confidence": "high",
+   "defined_in": "asm/unk_02032844.s",
+   "mode": "thumb",
+   "notes": [
+    "[asm/unk_02032844.s] sysState == 3"
+   ],
+   "signature_guess": "BOOL sub_0203393C(void)",
+   "signature_sources": {
+    "asm/unk_02032844.s": "BOOL sub_0203393C(void)"
+   }
+  },
+  "sub_02033958": {
+   "callers": [],
+   "confidence": "high",
+   "defined_in": "asm/unk_02032844.s",
+   "mode": "thumb",
+   "notes": [
+    "[asm/unk_02032844.s] sysState == 9"
+   ],
+   "signature_guess": "BOOL sub_02033958(void)",
+   "signature_sources": {
+    "asm/unk_02032844.s": "BOOL sub_02033958(void)"
+   }
+  },
+  "sub_02033974": {
+   "callers": [],
+   "confidence": "high",
+   "defined_in": "asm/unk_02032844.s",
+   "mode": "thumb",
+   "notes": [
+    "[asm/unk_02032844.s] sysState == 10. Header declares int -- keep int."
+   ],
+   "signature_guess": "int sub_02033974(void)",
+   "signature_sources": {
+    "asm/unk_02032844.s": "int sub_02033974(void)"
+   }
+  },
+  "sub_02033990": {
+   "callers": [],
+   "confidence": "high",
+   "defined_in": "asm/unk_02032844.s",
+   "mode": "thumb",
+   "notes": [
+    "[asm/unk_02032844.s] if(sWork==NULL) return FALSE; return sysState==2 (three distinct return blocks)"
+   ],
+   "signature_guess": "BOOL sub_02033990(void)",
+   "signature_sources": {
+    "asm/unk_02032844.s": "BOOL sub_02033990(void)"
+   }
+  },
+  "sub_020339B4": {
+   "callers": [],
+   "confidence": "medium",
+   "defined_in": "asm/unk_02032844.s",
+   "mode": "thumb",
+   "notes": [
+    "[asm/unk_02032844.s] if(sysState==4) WM_SetGameInfo(NULL, userGameInfo, (u16)size, ggid, (u16)tgid, 1); size/tgid narrowed in body -> int params. Return value unused by callers; void most likely."
+   ],
+   "signature_guess": "void sub_020339B4(u16 *userGameInfo, int size, u32 ggid, int tgid)",
+   "signature_sources": {
+    "asm/unk_02032844.s": "void sub_020339B4(u16 *userGameInfo, int size, u32 ggid, int tgid)"
+   }
+  },
+  "sub_020339F0": {
+   "callers": [],
+   "confidence": "high",
+   "defined_in": "asm/unk_02032844.s",
+   "mode": "thumb",
+   "notes": [
+    "[asm/unk_02032844.s] if(cb->errcode==0) w->u8_1344 = 1"
+   ],
+   "signature_guess": "static void sub_020339F0(void *arg)",
+   "signature_sources": {
+    "asm/unk_02032844.s": "static void sub_020339F0(void *arg)"
+   }
+  },
+  "sub_02033A0C": {
+   "callers": [],
+   "confidence": "high",
+   "defined_in": "asm/unk_02032844.s",
+   "mode": "thumb",
+   "notes": [
+    "[asm/unk_02032844.s] w->u8_1344=0; if(sysState==4 && WM_SetEntry(sub_020339F0, enabled)==2) return TRUE; return FALSE. HEADER CONFLICT: include/unk_02032844.h declares 'void sub_02033A0C(int arg0)' but asm returns BOOL."
+   ],
+   "signature_guess": "BOOL sub_02033A0C(BOOL enabled)",
+   "signature_sources": {
+    "asm/unk_02032844.s": "BOOL sub_02033A0C(BOOL enabled)"
+   }
+  },
+  "sub_02033A44": {
+   "callers": [],
+   "confidence": "high",
+   "defined_in": "asm/unk_02032844.s",
+   "mode": "thumb",
+   "notes": [
+    "[asm/unk_02032844.s] if(sWork==NULL) return FALSE; return w->u8_1345 >= 6"
+   ],
+   "signature_guess": "BOOL sub_02033A44(void)",
+   "signature_sources": {
+    "asm/unk_02032844.s": "BOOL sub_02033A44(void)"
+   }
+  },
+  "sub_02033A68": {
+   "callers": [],
+   "confidence": "high",
+   "defined_in": "asm/unk_02032844.s",
+   "mode": "thumb",
+   "notes": [
+    "[asm/unk_02032844.s] w->u8_1345 = 0"
+   ],
+   "signature_guess": "void sub_02033A68(void)",
+   "signature_sources": {
+    "asm/unk_02032844.s": "void sub_02033A68(void)"
+   }
+  },
+  "sub_02033A7C": {
+   "callers": [],
+   "confidence": "high",
+   "defined_in": "asm/unk_02032844.s",
+   "mode": "thumb",
+   "notes": [
+    "[asm/unk_02032844.s] w->beaconCb(0x1320)=cb; real type void(*)(u32 ggid, u8 x). Header declares void(void*) -- keep in public header."
+   ],
+   "signature_guess": "void sub_02033A7C(void *cb)",
+   "signature_sources": {
+    "asm/unk_02032844.s": "void sub_02033A7C(void *cb)"
+   }
+  },
+  "sub_02033A90": {
+   "callers": [],
+   "confidence": "high",
+   "defined_in": "asm/unk_02032844.s",
+   "mode": "thumb",
+   "notes": [
+    "[asm/unk_02032844.s] w->connectCb(0x1328)=cb; caller passes sub_02035ED0"
+   ],
+   "signature_guess": "void sub_02033A90(void (*connectCb)(u16 aid))",
+   "signature_sources": {
+    "asm/unk_02032844.s": "void sub_02033A90(void (*connectCb)(u16 aid))"
+   }
+  },
+  "sub_02033AA4": {
+   "callers": [],
+   "confidence": "high",
+   "defined_in": "asm/unk_02032844.s",
+   "mode": "thumb",
+   "notes": [
+    "[asm/unk_02032844.s] w->u8_1342 = x (header: void(int))"
+   ],
+   "signature_guess": "void sub_02033AA4(int x)",
+   "signature_sources": {
+    "asm/unk_02032844.s": "void sub_02033AA4(int x)"
+   }
+  },
+  "sub_02033AB8": {
+   "callers": [],
+   "confidence": "high",
+   "defined_in": "asm/unk_02032844.s",
+   "mode": "thumb",
+   "notes": [
+    "[asm/unk_02032844.s] return w->u8_1342"
+   ],
+   "signature_guess": "u8 sub_02033AB8(void)",
+   "signature_sources": {
+    "asm/unk_02032844.s": "u8 sub_02033AB8(void)"
+   }
+  },
+  "sub_02033ACC": {
+   "callers": [],
+   "confidence": "high",
+   "defined_in": "asm/unk_02032844.s",
+   "mode": "thumb",
+   "notes": [
+    "[asm/unk_02032844.s] w->u8_1343 = x (header: void(int))"
+   ],
+   "signature_guess": "void sub_02033ACC(int x)",
+   "signature_sources": {
+    "asm/unk_02032844.s": "void sub_02033ACC(int x)"
+   }
+  },
   "sub_02033AE0": {
    "callers": [],
    "confidence": "high",
@@ -83492,9 +86729,13 @@
    }
   },
   "sub_020340C4": {
-   "callers": [],
+   "callers": [
+    "asm/unk_02032844.s"
+   ],
    "confidence": "medium",
    "defined_in": "asm/unk_02033AE0.s",
+   "header": "none (local decl in src/unk_02033AE0.c) -- declare extern locally",
+   "known_prototype": "BOOL sub_020340C4(int cmd)",
    "mode": "thumb",
    "notes": [
     "[asm/unk_02033AE0.s] Hybrid: inline jump table over id 0..8 (dense, 9 cases) when id in range, else cmp-chain tail for id in {0x25..0x28}. Same dense-jumptable + cmp-chain hybrid pattern as sub_020340C4's siblings; reproduce case order and the explicit dense range exactly."
@@ -84024,6 +87265,30 @@
    "signature_sources": {
     "asm/unk_02033AE0.s": "void sub_02039220(int,int,void*,void*)"
    }
+  },
+  "sub_02039918": {
+   "callers": [
+    "asm/unk_02032844.s"
+   ],
+   "header": "include/unk_02037C94.h",
+   "known_prototype": "BOOL sub_02039918(void)",
+   "signature_sources": {}
+  },
+  "sub_0203993C": {
+   "callers": [
+    "asm/unk_02032844.s"
+   ],
+   "header": "include/unk_02037C94.h",
+   "known_prototype": "u8 sub_0203993C(void)",
+   "signature_sources": {}
+  },
+  "sub_02039AD8": {
+   "callers": [
+    "asm/unk_02032844.s"
+   ],
+   "header": "include/unk_02037C94.h",
+   "known_prototype": "BOOL sub_02039AD8(int arg0)",
+   "signature_sources": {}
   },
   "sub_0203A880": {
    "callers": [

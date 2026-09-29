@@ -910,6 +910,16 @@
       "attempts": 30,
       "result": "matched",
       "note": "compare-verified (HG + SS full ROM SHA1 OK). PC Box app (ov14) window-frame / text helpers: frame blits from NARC a/0/1/9 char sets, wallpaper-name text, tab windows, BG tilemap frame writer, yes/no-style windows. First pass by decomp-drafter (25/30), reviewed/iterated; 5 functions (ov14_021F5950, 5BD8, 5C94, 60BC, 6408) kept as NONMATCHING inline asm with the C under #ifdef NONMATCHING: MWCC spill/scheduling ties (width-1 spilled at first use for a CSE-d loop guard; constant-before-value scheduling). Structs local (boxapp work sys@0x34, box sys windows[]@0x30, msgData@0x20, bgConfig@0x14, unk44D); include/overlay_14.h untouched. Callers all still asm."
+    },
+    {
+      "file": "asm/overlay_14_021F4B90.s",
+      "lines": 1658,
+      "functions": 27,
+      "matched_functions": 26,
+      "nonmatching": 1,
+      "attempts": 20,
+      "result": "matched",
+      "note": "compare-verified (HG + SS full ROM SHA1 OK). PC Box app (ov14) window/text/sprite helpers incl. ov14_021F4EA0/4F24/4F84 used by 021F58B8.c, the WindowTemplate[0x2C] table, mon-info/item-name panels, font-OAM text objects. First pass by decomp-drafter (26/27); ov14_021F5564 NONMATCHING inline asm (retail reloads the 0x44E bitfield literal 3x). Local AddTextPrinterParameterizedWithColor with u32 fontId (text.h narrows via FontID); structs local; include/overlay_14.h untouched."
     }
   ],
   "failed": [
@@ -1329,7 +1339,7 @@
   ],
   "stats": {
     "total_attempts": 208,
-    "total_matched": 83,
+    "total_matched": 84,
     "total_failed": 31
   },
   "matched": [
@@ -1437,6 +1447,7 @@
     "asm/overlay_83_02246E08.s",
     "asm/unk_02023694.s",
     "asm/overlay_01_021FDA14.s",
-    "asm/overlay_14_021F58B8.s"
+    "asm/overlay_14_021F58B8.s",
+    "asm/overlay_14_021F4B90.s"
   ]
 }
