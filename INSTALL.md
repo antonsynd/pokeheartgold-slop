@@ -118,6 +118,10 @@ $ brew install wine-crossover
 
 Run `make` to build the ROM. The ROM will be output as `build/heartgold.us/pokeheartgold.us.nds`
 
+**macOS:** Homebrew's `make` formula installs GNU Make 4.x as `gmake`; use `gmake` wherever these instructions say `make`. The `make` bundled with macOS is GNU Make 3.81, which can hang during parallel (`-j`) builds of this project — the build prints a warning if it detects it.
+
+Optionally, `build_tools/bin/build_pokeheartgold` (python3) or [chiri](https://github.com/antonsynd/chiri) wrap these same targets in a small CLI (`build_tools/bin/build_pokeheartgold build --game soulsilver`, `... compare`, etc.) and pick `gmake` automatically. Neither is required.
+
 To build Pokemon SoulSilver, run `make soulsilver`. You do not need to clean your working tree in between compiling. Pokemon SoulSilver will be built as `build/soulsilver.us/pokesoulsilver.us.nds`.
 
 There are targets for building and testing changes to individual components without repackaging the ROM. For the ARM9 modules, run `make main`. For the ARM7 module, run `make sub`. For the filesystem, run `make filesystem`. To build these for SoulSilver, append `GAME_VERSION=SOULSILVER` to the appropriate command.

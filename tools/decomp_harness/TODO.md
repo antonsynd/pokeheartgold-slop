@@ -19,7 +19,8 @@ the same tree compiles immediately). Fixed by preferring Homebrew GNU Make
 `$(MAKE)`. Validated: full tidy rebuild `-j8` = ~6 min (vs ~55 min serial
 3.81), all 990 objects fresh, rom.sha1 OK. Install prerequisite (macOS):
 `brew install make`. Raw `make` invocations outside the wrapper still use
-3.81 — go through chiri, or use `-j1` there.
+3.81 — type `gmake`, go through the wrapper/chiri, or use `-j1` there.
+`common.mk` warns at top level when `MAKE_VERSION` is 3.x (2026-09-30).
 
 Still true: with all `.d` files missing, header edits do NOT trigger
 recompiles (deps come from `include $(wildcard $(DEPFILES))`), so after a

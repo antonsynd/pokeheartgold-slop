@@ -6,6 +6,20 @@ default: all
 
 PROJECT_ROOT := $(dir $(abspath $(lastword $(MAKEFILE_LIST))))
 
+# Wine derives its working directory from $PWD whenever $PWD names the same
+# directory as the real cwd, so a shell that entered the tree through a symlink
+# leaks the symlinked spelling into winepath output and MWCC's .d files. Pin
+# PWD to make's physical CURDIR so Wine sees the same path as PROJECT_ROOT.
+export PWD := $(CURDIR)
+
+# Apple's bundled GNU Make 3.81 can spin forever in its parallel dependency
+# walk after large invalidations. Warn once, from the top-level make only.
+ifeq ($(MAKELEVEL),0)
+ifneq ($(filter 3.%,$(MAKE_VERSION)),)
+$(warning GNU Make $(MAKE_VERSION) is known to hang with -j on this tree; use GNU Make 4.x (Homebrew: `gmake`) or build with -j1)
+endif
+endif
+
 ifeq ($(OS),Windows_NT)
 REALPATH := realpath
 else
@@ -155,7 +169,7 @@ patch_mwasmarm:
 ifeq ($(NODEP),)
 ifneq ($(WINPATH),)
 PROJECT_ROOT_NT := $(shell $(WINPATH) -w $(PROJECT_ROOT) | $(SED) 's/\\/\//g')
-PROJECT_ROOT_CWD_NT := $(shell $(WINPATH) -w . | $(SED) 's/\\/\//g')
+PROJECT_ROOT_CWD_NT := $(shell PWD=$(CURDIR) $(WINPATH) -w . | $(SED) 's/\\/\//g')
 ifneq ($(PROJECT_ROOT_NT),$(PROJECT_ROOT_CWD_NT))
 define fixdep
 $(SED) -i 's/\r//g; s/\\/\//g; s/\/$$/\\/g; s#$(PROJECT_ROOT_NT)#$(PROJECT_ROOT)#g; s#$(PROJECT_ROOT_CWD_NT)/##g' $(1)
@@ -181,6 +195,18 @@ BUILD_C ?= $(MW_COMPILE) -c -o
 
 $(DEPFILES):
 
+# A .d file that still contains a Wine 'Z:\' path was never passed through
+# fixdep (compile interrupted or failed); including it makes make spin at
+# 100% CPU. Drop such files so their objects simply rebuild.
+EXISTING_DEPFILES := $(wildcard $(DEPFILES))
+ifneq ($(EXISTING_DEPFILES),)
+BAD_DEPFILES := $(shell grep -l 'Z:\\' $(EXISTING_DEPFILES) 2>/dev/null)
+ifneq ($(BAD_DEPFILES),)
+$(info Removing $(words $(BAD_DEPFILES)) .d file(s) with unfixed Wine Z:\ paths)
+$(shell rm -f $(BAD_DEPFILES))
+endif
+endif
+
 $(BUILD_DIR)/lib/NitroSDK/%.o: MWCCVER := 2.0/sp2p3
 $(BUILD_DIR)/lib/MSL_C/%.o: MWCCVER := 2.0/sp2p3
 
@@ -196,7 +222,7 @@ $(BUILD_DIR)/%.o: %.s $(BUILD_DIR)/%.d
 	@$(WINE) $(MWAS) $(MWASFLAGS) $(DEPFLAGS) -o $@ $< || { rm -f $(BUILD_DIR)/%.d; exit 1; }
 	@$(call fixdep,$(BUILD_DIR)/$*.d)
 
-include $(wildcard $(DEPFILES))
+include $(filter-out $(BAD_DEPFILES),$(EXISTING_DEPFILES))
 else
 $(GLOBAL_ASM_OBJS): BUILD_C := $(ASM_PROCESSOR) "$(MW_COMPILE)" "$(MW_ASSEMBLE)"
 BUILD_C ?= $(MW_COMPILE) -c -o

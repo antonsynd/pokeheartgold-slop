@@ -19,6 +19,10 @@ SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
 PROJECT_ROOT="$(cd "$SCRIPT_DIR/../.." && pwd)"
 cd "$PROJECT_ROOT"
 
+# Same entry point `chiri pkg --` dispatches to; calling it directly means
+# chiri need not be installed.
+BUILD="$PROJECT_ROOT/build_tools/bin/build_pokeheartgold"
+
 RED='\033[0;31m'
 GREEN='\033[0;32m'
 YELLOW='\033[0;33m'
@@ -73,17 +77,17 @@ fix_d_files() {
 
 tidy_build() {
     echo -e "${YELLOW}Running tidy...${NC}"
-    chiri pkg -- tidy 2>&1 | tail -3
+    "$BUILD" tidy 2>&1 | tail -3
 }
 
 full_clean() {
     echo -e "${YELLOW}Running full clean...${NC}"
-    chiri pkg -- clean 2>&1 | tail -3
+    "$BUILD" clean 2>&1 | tail -3
 }
 
 rebuild_main() {
     echo -e "${YELLOW}Rebuilding ARM9 (main)...${NC}"
-    if chiri pkg -- build --target main --no-compare 2>&1 | tail -5; then
+    if "$BUILD" build --target main --no-compare 2>&1 | tail -5; then
         echo -e "${GREEN}Build succeeded${NC}"
     else
         echo -e "${RED}Build failed${NC}"

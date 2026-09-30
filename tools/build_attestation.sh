@@ -82,7 +82,7 @@ SOURCE_HASH=$(compute_source_hash)
 echo "[attest] Source hash: $SOURCE_HASH"
 
 echo "[attest] Building and verifying against retail SHA1 ..."
-if timeout 2400 chiri pkg -- compare 2>&1 | tee /dev/stderr | tail -1 | grep -q 'OK$'; then
+if timeout 2400 "$REPO/build_tools/bin/build_pokeheartgold" compare 2>&1 | tee /dev/stderr | tail -1 | grep -q 'OK$'; then
     STATUS="MATCH"
     echo ""
     echo "[attest] ROM matches retail SHA1."

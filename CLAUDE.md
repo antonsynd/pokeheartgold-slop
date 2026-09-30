@@ -8,7 +8,13 @@ WIP matching disassembly of Pokémon HeartGold and SoulSilver (US). Goal: byte-f
 
 ## Build
 
-The project is configured as a [chiri](https://github.com/antonsynd/chiri) package (`chiri_config.json5` → `build_tools/bin/build_pokeheartgold`). Prefer the chiri entry points when driving builds — they're thin wrappers around `make` with the right `GAME_VERSION` / `COMPARE` flags wired up:
+The build system is **GNU Make** (same Makefiles as upstream pret). There are three equivalent entry points; none adds build logic beyond flag plumbing:
+
+1. **Plain Make** — `make` / `gmake` from the repo root. Needs nothing project-specific.
+2. **The wrapper** — `build_tools/bin/build_pokeheartgold <cmd>` (python3 only). Adds a subcommand CLI, `--game both`, and picks Homebrew `gmake` over Apple's Make 3.81 automatically (`MAKE_BIN` overrides).
+3. **[chiri](https://github.com/antonsynd/chiri)** — `chiri pkg -- <cmd>`. *Optional.* `chiri_config.json5` just points chiri at the wrapper above, so `chiri pkg -- X` ≡ `build_tools/bin/build_pokeheartgold X`.
+
+Repo scripts (`build_attestation.sh`, `recomp.sh`, `find_x86_failures.sh`) call the wrapper directly, so chiri is never required. This doc and the `/decomp` skills use the chiri spelling for brevity; substitute either of the others freely. Wrapper/chiri commands:
 
 - `chiri pkg -- build` — build HeartGold (default)
 - `chiri pkg -- build --game soulsilver` — build SoulSilver
@@ -20,9 +26,9 @@ The project is configured as a [chiri](https://github.com/antonsynd/chiri) packa
 - `chiri pkg -- tidy` / `chiri pkg -- clean` — shallow / full clean
 - `chiri pkg -- format` — runs `./format.sh`
 
-Note the `--` separator: chiri consumes its own args first, then forwards everything after `--` to `build_tools/bin/build_pokeheartgold`. Extra args after a second `--` are passed through to `make` (e.g. `chiri pkg -- build -- FOO=bar`).
+Note the `--` separator: chiri consumes its own args first, then forwards everything after `--` to `build_tools/bin/build_pokeheartgold`. Extra args after a second `--` are passed through to `make` (e.g. `chiri pkg -- build -- FOO=bar`, or `build_tools/bin/build_pokeheartgold build -- FOO=bar` without chiri).
 
-Underlying raw `make` still works: `make` builds HeartGold (`build/heartgold.us/pokeheartgold.us.nds`); `make soulsilver` builds SoulSilver. Both are gated by a sha1 check unless you pass `COMPARE=0`. `GAME_VERSION=HEARTGOLD|SOULSILVER` is the version switch — all version-aware sub-targets honor it.
+Plain Make equivalents: `make` builds HeartGold (`build/heartgold.us/pokeheartgold.us.nds`); `make soulsilver` builds SoulSilver. Both are gated by a sha1 check unless you pass `COMPARE=0`. `GAME_VERSION=HEARTGOLD|SOULSILVER` is the version switch — all version-aware sub-targets honor it.
 
 Partial targets (avoid rebuilding the whole ROM while iterating):
 - `make main` — ARM9 modules only (matches the `.elf` / static + overlays)
@@ -36,7 +42,7 @@ After pulling upstream, if things break try in order: `make tidy && make compare
 
 Prerequisites are **not** in the repo and must be staged manually (see `INSTALL.md`): MWCC `2.0/sp2p2` at `tools/mwccarm/2.0/sp2p2/mwccarm.exe`, NitroSDK binaries at `tools/bin/`, and the NitroSDK LCF templates copied to `ARM9-TS.lcf.template` (root) / `sub/ARM7-TS.lcf.template` / `mwldarm.response.template` (root). Without these `make` will fail early. On macOS/Linux, MWCC runs via `wine`; `nitrocrypto.o` is special-cased to build with MWCC `1.2/sp2p3`.
 
-On macOS, install prerequisites via Homebrew: `brew tap osx-cross/homebrew-arm && brew install gnu-sed arm-gcc-bin wine-crossover make`. The build requires `gsed` (GNU sed) — without it, `.d` dependency files retain Wine `Z:` paths and break `make`. The `make` formula provides `gmake` (GNU Make 4.4), which the chiri wrapper prefers automatically — Apple's bundled Make 3.81 hangs in its parallel dependency walk after large invalidations (fall back to `-j1` if only 3.81 is available; `MAKE_BIN` env var overrides the choice).
+On macOS, install prerequisites via Homebrew: `brew tap osx-cross/homebrew-arm && brew install gnu-sed arm-gcc-bin wine-crossover make`. The build requires `gsed` (GNU sed) — without it, `.d` dependency files retain Wine `Z:` paths and break `make`. The `make` formula provides `gmake` (GNU Make 4.4), which the wrapper prefers automatically — Apple's bundled Make 3.81 hangs in its parallel dependency walk after large invalidations. When invoking Make directly on macOS, type `gmake`; `common.mk` prints a warning if it detects 3.81 (fall back to `-j1` if that's all you have).
 
 **ARM64 / Apple Silicon builds:** MWCC via Wine on ARM64 (Rosetta 2) produces identical output to native x86_64. Only the retail SHA1 files (`main.sha1` / `rom.sha1`) are used — no platform-specific variants.
 
@@ -46,7 +52,7 @@ On macOS, install prerequisites via Homebrew: `brew tap osx-cross/homebrew-arm &
 
 The shell is zsh: unquoted words starting with `=` (e.g. `echo ====` as a separator) fail with `... not found` — quote them.
 
-**Important:** Always use `chiri pkg -- build` rather than raw `make -C <path>`. If the project directory is accessed through a symlink, Wine resolves CWD differently than `winepath -w $(PROJECT_ROOT)`, and only `chiri` sets up the working directory correctly. If `make` spins at 100% CPU, kill it, run `find build -name "*.d" -delete`, then `chiri pkg -- tidy` and rebuild.
+**Symlinked checkouts and Wine paths.** Wine takes its working directory from `$PWD` whenever `$PWD` names the same directory as the real cwd, so a shell that entered the tree through a symlink (e.g. `~/github` → `~/Documents/github`) used to leak the symlinked spelling into `winepath` output and `.d` files. `common.mk` now pins `export PWD := $(CURDIR)` (make's physical path), so every entry point — `make`, `make -C <path>`, the wrapper, chiri — sees the same paths. `common.mk` also drops any `.d` still containing a Wine `Z:\` path (a compile that died before fixdep ran) before including it. If `make` still spins at 100% CPU, kill it, run `find build -name "*.d" -delete`, then `make tidy` and rebuild.
 
 **Build recovery:** `./tools/decomp_harness/recomp.sh` kills stale processes, cleans corrupted `.d` files, and rebuilds. Use it when builds hang or fail after switching asm→C. Use `--full` for a complete clean rebuild.
 
@@ -55,9 +61,9 @@ The shell is zsh: unquoted words starting with `=` (e.g. `echo ====` as a separa
 # Kill any leftover make/wine processes from prior builds
 pkill -f 'make.*heartgold\|make.*soulsilver\|mwccarm\|mwldarm\|mwasmarm' 2>/dev/null; sleep 1
 ```
-If a build times out, do `find build -name "*.d" -delete && chiri pkg -- tidy` before retrying.
+If a build times out, do `find build -name "*.d" -delete && make tidy` (or `chiri pkg -- tidy`) before retrying.
 
-A PreToolUse hook (`tools/decomp_harness/prebuild_guard.sh`, wired in `.claude/settings.json`) runs automatically before `chiri`/`make` commands: it blocks the build if MWCC processes are already running and deletes `.d` files corrupted with Wine `Z:\` paths. The manual cleanup above is the fallback if the hook is bypassed.
+A PreToolUse hook (`tools/decomp_harness/prebuild_guard.sh`, wired in `.claude/settings.json`) runs automatically before `chiri`/`make`/`gmake`/`build_tools/bin/build_pokeheartgold`/`tools/build_attestation.sh` commands: it blocks the build if MWCC processes are already running and deletes `.d` files corrupted with Wine `Z:\` paths. The manual cleanup above is the fallback if the hook is bypassed.
 
 ## Formatting
 

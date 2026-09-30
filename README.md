@@ -64,20 +64,34 @@ Decompilation converts `asm/*.s` to C one file at a time; the `.s` is kept as a 
 |------|------|
 | MWCC 2.0/sp2p2 | The original Metrowerks compiler (runs via Wine on macOS/Linux) |
 | devkitARM | `arm-none-eabi-*` assembler and linker utilities |
-| [chiri](https://github.com/antonsynd/chiri) | Build orchestrator — wraps `make` with the right flags |
+| GNU Make 4.x | The build system (`Makefile`, `common.mk`, `filesystem.mk`) — same as upstream pret |
+| [chiri](https://github.com/antonsynd/chiri) | *Optional* front end over `make` (`chiri pkg -- build`) |
 | `tools/decomp_harness/` | objdiff, coverage ledger, triage queue, and the MWCC pattern knowledge base |
 
 ## Building
 
-Needs the MWCC compiler, NitroSDK binaries, and devkitARM — see [INSTALL.md](INSTALL.md). Builds run through chiri:
+Needs the MWCC compiler, NitroSDK binaries, and devkitARM — see [INSTALL.md](INSTALL.md). The build is plain GNU Make; nothing project-specific has to be installed:
 
 ```bash
-chiri pkg -- build                    # HeartGold
-chiri pkg -- build --game soulsilver  # SoulSilver
-chiri pkg -- compare                  # build + verify the ROM SHA1 against retail
+make                      # HeartGold, verified against the retail SHA1
+make soulsilver           # SoulSilver
+make compare              # alias for the HeartGold build + SHA1 check
+make main COMPARE=0       # ARM9 only, skip the SHA1 check (fast iteration)
+make -j8                  # parallel
 ```
 
-`chiri pkg -- compare` is the authority on whether a decomp matches. A per-function `objdiff.py` pass is necessary but **not** sufficient — it can mask section-level differences (e.g. trailing `.balign` padding on a function whose body is 2-mod-4 bytes), so a file can show "all functions match" yet still fail the ROM SHA1.
+On macOS, use Homebrew's `gmake` in place of `make` — Apple's bundled GNU Make 3.81 can hang on parallel builds of this tree (the Makefile warns when it detects 3.81).
+
+The same operations are available through a small CLI wrapper, either directly (only needs `python3`) or via [chiri](https://github.com/antonsynd/chiri) if you have it installed. The wrapper picks `gmake` automatically when present:
+
+| Plain Make | Wrapper | chiri |
+|---|---|---|
+| `make` | `build_tools/bin/build_pokeheartgold build` | `chiri pkg -- build` |
+| `make soulsilver` | `… build --game soulsilver` | `chiri pkg -- build --game soulsilver` |
+| `make main COMPARE=0` | `… build --target main --no-compare` | `chiri pkg -- build --target main --no-compare` |
+| `make compare` | `… compare` | `chiri pkg -- compare` |
+
+The SHA1 check (`make compare`, or any of its equivalents) is the authority on whether a decomp matches. A per-function `objdiff.py` pass is necessary but **not** sufficient — it can mask section-level differences (e.g. trailing `.balign` padding on a function whose body is 2-mod-4 bytes), so a file can show "all functions match" yet still fail the ROM SHA1.
 
 ## Contributing
 

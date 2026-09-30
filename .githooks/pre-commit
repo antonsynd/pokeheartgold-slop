@@ -17,7 +17,7 @@ if git diff --cached --name-only --diff-filter=ACM -- 'include/*.h' | grep -q .;
 fi
 
 # Check for IPA cascade from header changes (requires a built tree).
-# Skipped if no build exists — run `chiri pkg -- build` first.
+# Skipped if no build exists — run `make` (or `chiri pkg -- build`) first.
 if git diff --cached --name-only --diff-filter=M -- 'include/*.h' | grep -q .; then
     if [ -d build/heartgold.us ]; then
         if ! tools/decomp_harness/ipa_check.sh; then

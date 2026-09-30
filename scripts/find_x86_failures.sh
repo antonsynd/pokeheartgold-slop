@@ -5,7 +5,7 @@
 # Run on the Ubuntu x86_64 machine from the project root:
 #   ./scripts/find_x86_failures.sh [--clean]
 #
-# --clean  Run 'chiri pkg -- tidy' before each test (fully deterministic but
+# --clean  Run a tidy before each test (fully deterministic but
 #           much slower — ~25 h for 60 files).  Default: incremental builds
 #           (~2-3 h total) which are deterministic enough here because we always
 #           revert to the same all-asm baseline between every test; only the one
@@ -19,6 +19,8 @@ set -euo pipefail
 
 REPO="$(git rev-parse --show-toplevel)"
 cd "$REPO"
+
+BUILD="$REPO/build_tools/bin/build_pokeheartgold"
 
 CLEAN_BETWEEN=0
 while [[ $# -gt 0 ]]; do
@@ -68,7 +70,7 @@ git checkout upstream/master -- main.lsf
 # will do its own full build anyway)
 if [[ $CLEAN_BETWEEN -eq 0 ]]; then
     echo "[x86check] Building all-asm baseline (fills .o cache for incremental tests) ..."
-    timeout 2700 chiri pkg -- build --no-compare >> "$BUILD_LOG" 2>&1
+    timeout 2700 "$BUILD" build --no-compare >> "$BUILD_LOG" 2>&1
     if ! sha1sum -c heartgold.us/rom.sha1 > /dev/null 2>&1; then
         echo "[x86check] ERROR: all-asm baseline fails rom.sha1. Fix this first."
         exit 1
@@ -122,7 +124,7 @@ while IFS= read -r src_rel; do
     mv main.lsf.tmp main.lsf
 
     if [[ $CLEAN_BETWEEN -eq 1 ]]; then
-        chiri pkg -- tidy >> "$BUILD_LOG" 2>&1
+        "$BUILD" tidy >> "$BUILD_LOG" 2>&1
     fi
 
     printf "  [%3d/%d] %-52s " "$IDX" "$TOTAL" "$src_rel"
@@ -130,7 +132,7 @@ while IFS= read -r src_rel; do
     # Cap each build at 30 min so a hang doesn't kill the overnight run
     BUILD_OK=0
     ROM_OK=0
-    if timeout 1800 chiri pkg -- build --no-compare >> "$BUILD_LOG" 2>&1; then
+    if timeout 1800 "$BUILD" build --no-compare >> "$BUILD_LOG" 2>&1; then
         BUILD_OK=1
         sha1sum -c heartgold.us/rom.sha1 > /dev/null 2>&1 && ROM_OK=1
     fi
