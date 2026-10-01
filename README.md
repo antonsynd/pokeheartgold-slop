@@ -1,40 +1,49 @@
-# Pokémon HeartGold and SoulSilver
+# pokeheartgold-slop: an LLM-assisted fork of pret/pokeheartgold
 
 [![Build status: matching](https://img.shields.io/badge/retail_SHA1-verified-brightgreen)](build_attestation.json)
 
-A work-in-progress matching decompilation of Pokémon HeartGold and SoulSilver (US). The goal is a byte-for-byte identical ROM: every C file must compile to the exact machine code of the retail binary.
+> [!IMPORTANT]
+> **This is an unofficial personal fork. It is not affiliated with, endorsed by, or reviewed by [pret](https://pret.github.io/).**
+>
+> * The canonical project is **[pret/pokeheartgold](https://github.com/pret/pokeheartgold)**. Most of the code here is its contributors' work, merged from upstream, and git history keeps their authorship.
+> * The additions in this fork are written with LLM agents. pret [prohibits AI-generated contributions](https://github.com/pret/pokeheartgold/blob/master/CONTRIBUTING.md#ai-policy), so **don't submit code from this fork upstream**. That includes code you have adapted or rewritten from it.
+> * Please **don't contact pret maintainers or post in pret channels about this fork**. Questions, complaints, and bug reports belong in this repo's [issues](https://github.com/antonsynd/pokeheartgold-slop/issues).
+
+An experiment in LLM-assisted matching decompilation of Pokémon HeartGold and SoulSilver (US), built on top of pret's work. The goal is a byte-for-byte identical ROM: every C file must compile to the exact machine code of the retail binary. Matching bytes is the only bar this fork checks automatically. pret's standards for naming, documentation, and code quality go further, and the additions here haven't been held to them.
 
 Target ROMs:
 
 * [**pokeheartgold.us.nds**](https://datomatic.no-intro.org/index.php?page=show_record&s=28&n=4787) — `sha1: 4fcded0e2713dc03929845de631d0932ea2b5a37`
 * [**pokesoulsilver.us.nds**](https://datomatic.no-intro.org/index.php?page=show_record&s=28&n=4788) — `sha1: f8dc38ea20c17541a43b58c5e6d18c1732c7e582`
 
-Setup lives in [INSTALL.md](INSTALL.md). For other pret projects, see [pret.github.io](https://pret.github.io/).
+Setup lives in [INSTALL.md](INSTALL.md).
 
 ## Progress
 
 <!-- PROGRESS_START -->
-### This fork vs upstream ([pret/pokeheartgold](https://github.com/pret/pokeheartgold))
+### Progress: upstream baseline + this fork's additions
+
+Most of the decompiled code here is the work of the [pret/pokeheartgold](https://github.com/pret/pokeheartgold) contributors, merged from upstream. The bars separate that baseline (█) from what this fork has added on top (▓). The additions are LLM-assisted and have **not** been reviewed by pret.
 
 ```
-Files decompiled (C / total linked objects)
-  Fork       ████████████████████████████████████░░░░░░░░░░░░░░  72.9%  (529 / 726)
-  Upstream   █████████████████████████████░░░░░░░░░░░░░░░░░░░░░  57.9%  (398 / 687)
-
 Functions in C (of ~29k total ROM functions)
-  Fork       ██████████████████████░░░░░░░░░░░░░░░░░░░░░░░░░░░░  43.1%  (12,708)
-  Upstream   ██████████████████░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░  35.5%  (10,460)
+  █████████████████▓▓▓▓▓░░░░░░░░░░░░░░░░░░░░░░░░░░░░  ~43.1%  (~12,708)
 
 Functions fully matching (byte-identical to retail)
-  Fork       █████████████████████░░░░░░░░░░░░░░░░░░░░░░░░░░░░░  42.8%  (12,626)
-  Upstream   ██████████████████░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░  35.4%  (10,456)
+  █████████████████▓▓▓▓░░░░░░░░░░░░░░░░░░░░░░░░░░░░░  ~42.8%  (~12,626)
+
+  █ pret/pokeheartgold   ▓ added in this fork   ░ not yet in C
 ```
 
-| Metric | Fork | Upstream | Delta |
-|--------|-----:|--------:|------:|
-| Files decompiled | 529 | 398 | **+131** |
-| Functions in C | 12,708 | 10,460 | **+2,248** |
-| NONMATCHING stubs | 82 | 4 | +78 |
+| | Functions in C | Fully matching | NONMATCHING blocks |
+|---|---:|---:|---:|
+| █ From pret/pokeheartgold | ~10,209 | ~10,205 | 4 |
+| ▓ Added in this fork (LLM-assisted) | 2,499 | 2,421 | 78 |
+| Total | ~12,708 | ~12,626 | 82 |
+
+The fork's additions are counted from the files it decompiled. pret's figures (~) are derived from an estimated ~29,500 total ROM functions, because upstream doesn't keep the asm for decompiled files. A NONMATCHING block is a function with a C version kept for reference that is still linked from handwritten asm. It counts toward *Functions in C* but not *Fully matching*.
+
+529 of 726 linked objects are C (72.9%). Object counts aren't comparable with upstream's, because this fork splits some overlays into smaller chunks.
 
 Detailed function-level coverage, active blockers, and the triage queue are tracked in **[`COVERAGE.md`](tools/decomp_harness/COVERAGE.md)**, regenerated from the build by `coverage_ledger.py`.
 <!-- PROGRESS_END -->
@@ -95,6 +104,10 @@ The SHA1 check (`make compare`, or any of its equivalents) is the authority on w
 
 ## Contributing
 
-The workflow is converting assembly to matching C — see the [decompilation workflow](CLAUDE.md#decompilation-workflow) in CLAUDE.md, or use the `/decomp` skill in Claude Code.
+Contributions to this fork follow [CONTRIBUTING.md](CONTRIBUTING.md). These rules are this fork's own and are **not** pret's. The workflow is converting assembly to matching C — see the [decompilation workflow](CLAUDE.md#decompilation-workflow) in CLAUDE.md, or use the `/decomp` skill in Claude Code.
 
 Enable the project hooks once per clone with `git config --local core.hooksPath .githooks/`. They run clang-format, reject duplicate header declarations (MWCC's `-W error` won't tolerate them), check for IPA cascades from header changes, and refresh `COVERAGE.md`.
+
+## Credits
+
+This fork exists because of the [pret/pokeheartgold](https://github.com/pret/pokeheartgold) contributors. They built the decompilation's foundation by hand, and it includes the build system, tools, headers, symbol names, and most of the C in this tree. If you want to contribute to the canonical HeartGold/SoulSilver decompilation, go there and follow their contributing guidelines.

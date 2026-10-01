@@ -1,9 +1,19 @@
 #!/usr/bin/env python3
 """Auto-update the README.md progress section from source-tree stats.
 
-Computes file-level progress from main.lsf, function-level progress from
-coverage_ledger.json, and NONMATCHING counts from grep.  Fetches upstream
-pret/pokeheartgold main.lsf for comparison.
+Splits decompiled functions into the upstream pret/pokeheartgold baseline and
+this fork's additions:
+
+  * Fork additions are measured: a src/ object is the fork's when it is not a
+    src/ object in upstream's main.lsf.  Its functions are counted from the
+    asm/*.s file the fork keeps as reference.
+  * The upstream baseline is derived: upstream deletes asm on decomp, so its
+    count is total_rom_functions (an estimate) - still-asm - fork additions,
+    and is printed with "~".
+  * NONMATCHING blocks are attributed per file by the same ownership rule.
+
+If upstream's main.lsf can't be fetched, ownership falls back to the coverage
+ledger's per-file status (which under-counts the fork) and the README says so.
 
 The progress section in README.md is delimited by:
     <!-- PROGRESS_START -->
@@ -16,7 +26,6 @@ Run:  python3 tools/update_readme_progress.py [--check]
 
 import json
 import re
-import subprocess
 import sys
 from pathlib import Path
 from urllib.request import urlopen
@@ -29,6 +38,7 @@ UPSTREAM_LSF_URL = (
 )
 BAR_WIDTH = 50
 REFERENCE_PATH = ROOT / ".github" / "progress_reference.json"
+FUNC_START_RE = re.compile(r"^\s*(?:thumb|arm)_func_start\b", re.M)
 
 
 def load_reference():
@@ -38,39 +48,9 @@ def load_reference():
     return {}
 
 
-def count_objects(lsf_text):
-    """Count src and asm Object lines in an LSF file (excludes lib/)."""
-    src = asm = 0
-    for line in lsf_text.splitlines():
-        m = re.match(r"\s*Object\s+(\S+)", line)
-        if not m:
-            continue
-        p = m.group(1)
-        if p.startswith("src/"):
-            src += 1
-        elif p.startswith("asm/"):
-            asm += 1
-    return src, asm
-
-
-def count_nonmatching(root):
-    """Count #ifdef NONMATCHING blocks in src/."""
-    result = subprocess.run(
-        ["grep", "-rc", "#ifdef NONMATCHING", str(root / "src")],
-        capture_output=True,
-        text=True,
-    )
-    total = 0
-    for line in result.stdout.strip().splitlines():
-        parts = line.rsplit(":", 1)
-        if len(parts) == 2 and parts[1].strip().isdigit():
-            total += int(parts[1])
-    return total
-
-
-def bar(pct, width=BAR_WIDTH):
-    filled = round(pct / 100 * width)
-    return "█" * filled + "░" * (width - filled)
+def lsf_objects(lsf_text):
+    """Object paths in an LSF file, in order."""
+    return re.findall(r"^\s*Object\s+(\S+)", lsf_text, re.M)
 
 
 def fetch_upstream_lsf():
@@ -90,6 +70,34 @@ def load_coverage_ledger(root):
     return None
 
 
+def nonmatching_by_object(root):
+    """{"src/....o": count of #ifdef NONMATCHING blocks} for every src/*.c."""
+    counts = {}
+    for c in (root / "src").rglob("*.c"):
+        n = c.read_text(errors="replace").count("#ifdef NONMATCHING")
+        if n:
+            counts[c.relative_to(root).with_suffix(".o").as_posix()] = n
+    return counts
+
+
+def asm_function_count(root, obj, asm_by_stem):
+    """Functions in the reference .s kept for a decompiled src/ object."""
+    s = root / "asm" / Path(obj[len("src/") :]).with_suffix(".s")
+    if not s.exists():
+        candidates = asm_by_stem.get(Path(obj).stem, [])
+        if len(candidates) != 1:
+            return 0  # data-only object, or ambiguous stem
+        s = candidates[0]
+    return len(FUNC_START_RE.findall(s.read_text(errors="replace")))
+
+
+def stacked_bar(base_pct, added_pct, width=BAR_WIDTH):
+    """Two-segment bar: upstream work (█), then this fork's additions (▓)."""
+    base = min(max(round(base_pct / 100 * width), 0), width)
+    total = min(max(round((base_pct + added_pct) / 100 * width), base), width)
+    return "█" * base + "▓" * (total - base) + "░" * (width - total)
+
+
 def fmt(n):
     """Format number with commas."""
     return f"{n:,}"
@@ -98,41 +106,22 @@ def fmt(n):
 def generate_progress(root):
     ref = load_reference()
     total_rom_fns = ref.get("total_rom_functions", 29500)
-    upstream_nm = ref.get("upstream_nonmatching", 4)
 
-    lsf_text = (root / "main.lsf").read_text()
-    f_src, f_asm = count_objects(lsf_text)
-    f_total = f_src + f_asm
+    objects = lsf_objects((root / "main.lsf").read_text())
+    src_objs = [o for o in objects if o.startswith("src/")]
+    f_src = len(src_objs)
+    f_total = f_src + sum(o.startswith("asm/") for o in objects)
     f_pct = f_src / f_total * 100 if f_total else 0
 
-    nm = count_nonmatching(root)
+    nm_by_obj = nonmatching_by_object(root)
+    nm = sum(nm_by_obj.values())
 
     ledger = load_coverage_ledger(root)
-
-    up_lsf = fetch_upstream_lsf()
-    up_src = up_asm = up_total = 0
-    up_pct = 0.0
-    if up_lsf:
-        up_src, up_asm = count_objects(up_lsf)
-        up_total = up_src + up_asm
-        up_pct = up_src / up_total * 100 if up_total else 0
+    up_lsf = fetch_upstream_lsf() if ledger else None
 
     lines = []
-    lines.append(
-        "### This fork vs upstream "
-        "([pret/pokeheartgold](https://github.com/pret/pokeheartgold))"
-    )
+    lines.append("### Progress: upstream baseline + this fork's additions")
     lines.append("")
-    lines.append("```")
-    lines.append("Files decompiled (C / total linked objects)")
-    lines.append(
-        f"  Fork       {bar(f_pct)}  {f_pct:4.1f}%  ({fmt(f_src)} / {fmt(f_total)})"
-    )
-    if up_lsf:
-        lines.append(
-            f"  Upstream   {bar(up_pct)}  {up_pct:4.1f}%  "
-            f"({fmt(up_src)} / {fmt(up_total)})"
-        )
 
     if ledger:
         s = ledger["summary"]
@@ -140,75 +129,111 @@ def generate_progress(root):
         pending_fns = ft.get("pending", 0)
         blocked_fns = s["by_status"].get("blocked", {}).get("functions", 0)
         partial_fns = ft.get("partial_in_blocked", 0)
-
         still_asm = pending_fns + blocked_fns - partial_fns
-        fork_in_c = total_rom_fns - still_asm
-        fork_matching = fork_in_c - nm
-        fork_c_pct = fork_in_c / total_rom_fns * 100
-        fork_match_pct = fork_matching / total_rom_fns * 100
+        total_in_c = total_rom_fns - still_asm
 
-        up_in_c = total_rom_fns - still_asm - ft.get("matched", 0) - partial_fns
-        up_matching = up_in_c - upstream_nm
-        up_c_pct = up_in_c / total_rom_fns * 100
-        up_match_pct = up_matching / total_rom_fns * 100
+        if up_lsf:
+            upstream_src = {o for o in lsf_objects(up_lsf) if o.startswith("src/")}
 
+            def is_fork(obj):
+                return obj not in upstream_src
+
+            asm_by_stem = {}
+            for a in (root / "asm").rglob("*.s"):
+                asm_by_stem.setdefault(a.stem, []).append(a)
+            fork_in_c = partial_fns + sum(
+                asm_function_count(root, o, asm_by_stem)
+                for o in src_objs
+                if is_fork(o)
+            )
+        else:
+            upstream_stems = {
+                Path(f["file"]).stem
+                for f in ledger["files"]
+                if f["status"] == "upstream"
+            }
+
+            def is_fork(obj):
+                return Path(obj).stem not in upstream_stems
+
+            fork_in_c = ft.get("matched", 0) + partial_fns
+
+        fork_nm = sum(n for o, n in nm_by_obj.items() if is_fork(o))
+        up_nm = nm - fork_nm
+        fork_matching = fork_in_c - fork_nm
+        up_in_c = max(total_in_c - fork_in_c, 0)
+        up_matching = max(up_in_c - up_nm, 0)
+        total_matching = up_matching + fork_matching
+
+        def pct(n):
+            return n / total_rom_fns * 100
+
+        lines.append(
+            "Most of the decompiled code here is the work of the "
+            "[pret/pokeheartgold](https://github.com/pret/pokeheartgold) "
+            "contributors, merged from upstream. The bars separate that baseline "
+            "(█) from what this fork has added on top (▓). The additions are "
+            "LLM-assisted and have **not** been reviewed by pret."
+        )
         lines.append("")
+        lines.append("```")
         lines.append(
             f"Functions in C (of ~{total_rom_fns // 1000}k total ROM functions)"
         )
         lines.append(
-            f"  Fork       {bar(fork_c_pct)}  {fork_c_pct:4.1f}%  ({fmt(fork_in_c)})"
+            f"  {stacked_bar(pct(up_in_c), pct(fork_in_c))}  "
+            f"~{pct(total_in_c):4.1f}%  (~{fmt(total_in_c)})"
         )
-        if up_lsf:
-            lines.append(
-                f"  Upstream   {bar(up_c_pct)}  {up_c_pct:4.1f}%  ({fmt(up_in_c)})"
-            )
-
         lines.append("")
         lines.append("Functions fully matching (byte-identical to retail)")
         lines.append(
-            f"  Fork       {bar(fork_match_pct)}  {fork_match_pct:4.1f}%  "
-            f"({fmt(fork_matching)})"
+            f"  {stacked_bar(pct(up_matching), pct(fork_matching))}  "
+            f"~{pct(total_matching):4.1f}%  (~{fmt(total_matching)})"
         )
-        if up_lsf:
+        lines.append("")
+        lines.append(
+            "  █ pret/pokeheartgold   ▓ added in this fork   ░ not yet in C"
+        )
+        lines.append("```")
+        lines.append("")
+
+        lines.append("| | Functions in C | Fully matching | NONMATCHING blocks |")
+        lines.append("|---|---:|---:|---:|")
+        lines.append(
+            f"| █ From pret/pokeheartgold | ~{fmt(up_in_c)} | "
+            f"~{fmt(up_matching)} | {up_nm} |"
+        )
+        lines.append(
+            f"| ▓ Added in this fork (LLM-assisted) | {fmt(fork_in_c)} | "
+            f"{fmt(fork_matching)} | {fork_nm} |"
+        )
+        lines.append(
+            f"| Total | ~{fmt(total_in_c)} | ~{fmt(total_matching)} | {nm} |"
+        )
+        lines.append("")
+        lines.append(
+            "The fork's additions are counted from the files it decompiled. "
+            "pret's figures (~) are derived from an estimated "
+            f"~{fmt(total_rom_fns)} total ROM functions, because upstream "
+            "doesn't keep the asm for decompiled files. A NONMATCHING block is "
+            "a function with a C version kept for reference that is still "
+            "linked from handwritten asm. It counts toward *Functions in C* "
+            "but not *Fully matching*."
+        )
+        if not up_lsf:
+            lines.append("")
             lines.append(
-                f"  Upstream   {bar(up_match_pct)}  {up_match_pct:4.1f}%  "
-                f"({fmt(up_matching)})"
+                "*Upstream's `main.lsf` was unavailable when this was generated, "
+                "so ownership comes from the coverage ledger, which under-counts "
+                "this fork's files.*"
             )
+        lines.append("")
 
-    lines.append("```")
-    lines.append("")
-
-    lines.append("| Metric | Fork | Upstream | Delta |")
-    lines.append("|--------|-----:|--------:|------:|")
-    if up_lsf:
-        file_delta = f_src - up_src
-        lines.append(
-            f"| Files decompiled | {fmt(f_src)} | {fmt(up_src)} | "
-            f"**+{fmt(file_delta)}** |"
-        )
-    else:
-        lines.append(
-            f"| Files decompiled | {fmt(f_src)} / {fmt(f_total)} | — | — |"
-        )
-
-    if ledger and up_lsf:
-        fn_delta = fork_in_c - up_in_c  # type: ignore[possibly-undefined]
-        lines.append(
-            f"| Functions in C | {fmt(fork_in_c)} | {fmt(up_in_c)} | "  # type: ignore[possibly-undefined]
-            f"**+{fmt(fn_delta)}** |"
-        )
-        lines.append(
-            f"| NONMATCHING stubs | {nm} | {upstream_nm} | +{nm - upstream_nm} |"
-        )
-    elif ledger:
-        lines.append(
-            f"| Functions in C | {fmt(fork_in_c)} | — | — |"  # type: ignore[possibly-undefined]
-        )
-        lines.append(f"| NONMATCHING stubs | {nm} | — | — |")
-    else:
-        lines.append(f"| NONMATCHING stubs | {nm} | — | — |")
-
+    lines.append(
+        f"{fmt(f_src)} of {fmt(f_total)} linked objects are C ({f_pct:.1f}%). "
+        "Object counts aren't comparable with upstream's, because this fork "
+        "splits some overlays into smaller chunks."
+    )
     lines.append("")
     lines.append(
         "Detailed function-level coverage, active blockers, and the triage queue "
@@ -231,11 +256,10 @@ def update_readme(root, check_only=False):
             "Progress markers not found in README.md, inserting them...",
             file=sys.stderr,
         )
-        old_heading = "### This fork vs upstream"
         next_section = "## Architecture"
-        h_idx = text.find(old_heading)
         s_idx = text.find(next_section)
-        if h_idx == -1 or s_idx == -1:
+        h_idx = text.rfind("\n### Progress", 0, s_idx) + 1 if s_idx != -1 else 0
+        if s_idx == -1 or h_idx == 0:
             print(
                 "ERROR: Could not find progress section boundaries in README.md",
                 file=sys.stderr,

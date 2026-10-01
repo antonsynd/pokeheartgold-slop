@@ -1,12 +1,23 @@
-# Contributing to pret/pokeheartgold
+# Contributing to this fork (pokeheartgold-slop)
 
 <!--toc:start-->
+- [Relationship to pret/pokeheartgold](#relationship-to-pretpokeheartgold)
+- [AI Policy (this fork only)](#ai-policy-this-fork-only)
 - [Code Formatting](#code-formatting)
 <!--toc:end-->
 
-This document provides a synopsis and loose guidelines for how to contribute to this project. It is a work in progress. Maintainers should expand this document.
+These guidelines cover contributions to **this fork only**. The first two sections below are specific to this fork and replace upstream's introduction and AI policy. [Code Formatting](#code-formatting) is unchanged from upstream.
 
-AI-assisted contributions are welcome. The only thing that matters is the result: the code must compile and produce a byte-for-byte matching ROM. How you got there — by hand, with a script, or with an AI tool — is up to you.
+## Relationship to pret/pokeheartgold
+
+This is an unofficial fork that pret doesn't endorse or review. The canonical project is [pret/pokeheartgold](https://github.com/pret/pokeheartgold), and its [CONTRIBUTING.md](https://github.com/pret/pokeheartgold/blob/master/CONTRIBUTING.md) **prohibits AI-generated contributions**. That policy covers anything you submit to pret.
+
+- Do not submit code from this fork to pret, including code adapted or rewritten from it.
+- Do not bring issues or questions about this fork to pret maintainers or pret community channels. Use this repository's issue tracker.
+
+## AI Policy (this fork only)
+
+AI-assisted contributions to *this fork* are welcome. The only thing that matters is the result: the code must compile and produce a byte-for-byte matching ROM. How you got there — by hand, with a script, or with an AI tool — is up to you.
 
 ## Code Formatting
 
