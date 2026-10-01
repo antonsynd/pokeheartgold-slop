@@ -10,7 +10,7 @@ cross-references progress.json + blockers.json to produce:
 Statuses (per file):
   matched   — linked from src/ and the original asm/<name>.s is retained
               (harness-decompiled, or upstream conversion that kept its asm)
-  upstream  — linked from src/ with no asm/<name>.s (decompiled before this
+  upstream  — linked from src/ with no retained .s (decompiled before this
               harness existed; no function detail available)
   blocked   — listed in progress.json "failed" (reason attached)
   pending   — still linked from asm/
@@ -59,6 +59,25 @@ def load_blockers():
 
 PARTIAL_RE = re.compile(r"(\d+)/(\d+) functions matched")
 
+# src/ objects carved out of another file's asm at decomp time (one .s landed
+# as several TUs), so they have no .s of their own: object name -> source .s.
+SPLIT_TUS = {
+    "battle_arcade_game_board_data2": "battle_arcade_game_board_data",
+}
+
+
+def find_asm(name):
+    """The retained .s for an LSF object name, or None.
+
+    Decomps that moved their C into a src/ subdirectory (src/field/,
+    src/frontier/, ...) keep the reference .s flat at asm/<basename>.s.
+    """
+    for rel in (name, Path(name).name):
+        path = ROOT / "asm" / (rel + ".s")
+        if path.exists():
+            return path
+    return None
+
 
 def build_ledger():
     completed, failed = load_progress()
@@ -67,24 +86,38 @@ def build_ledger():
 
     for obj in objects:
         name = obj["name"]
-        asm_path = ROOT / "asm" / (name + ".s")
-        asm_key = f"asm/{name}.s"
+        asm_path = find_asm(name)
+        asm_key = (
+            asm_path.relative_to(ROOT).as_posix() if asm_path else f"asm/{name}.s"
+        )
         row = {"file": asm_key, "lsf_kind": obj["kind"]}
 
-        if obj["kind"] == "src" and not asm_path.exists():
+        if obj["kind"] == "src" and Path(name).name in SPLIT_TUS:
+            row["status"] = "matched"
+            row["source"] = "split_tu"
+            row["split_from"] = f"asm/{SPLIT_TUS[Path(name).name]}.s"
+            # the source .s is ledgered on its own row; don't double-count
+            row.update(lines=0, function_count=0, text_bytes_est=0, data_only=True)
+            row["functions"] = []
+            files.append(row)
+            continue
+
+        if obj["kind"] == "src" and not asm_path:
             row["status"] = "upstream"
             row["functions"] = []
             files.append(row)
             continue
 
-        if not asm_path.exists():
+        if not asm_path:
             row["status"] = "missing_asm"
             row["functions"] = []
             files.append(row)
             continue
 
         scan = asmscan.parse_asm(asm_path)
-        publics = asmscan.parse_inc(ROOT / "asm" / "include" / (name + ".inc"))
+        publics = asmscan.parse_inc(
+            ROOT / "asm" / "include" / asm_path.relative_to(ROOT / "asm").with_suffix(".inc")
+        )
         # .public lists mix imports and exports; a symbol is exported if this
         # file defines it — as a function OR as a data label
         defined_here = scan["defined"] | scan["data_labels"]

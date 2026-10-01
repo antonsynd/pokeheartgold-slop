@@ -1,12 +1,12 @@
 {
  "summary": {
-  "generated": "2026-09-29T23:28:09Z",
+  "generated": "2026-10-01T14:00:37Z",
   "by_status": {
    "matched": {
-    "files": 115,
-    "functions": 2228,
-    "insn_lines": 67453,
-    "text_bytes_est": 151154
+    "files": 132,
+    "functions": 2482,
+    "insn_lines": 75170,
+    "text_bytes_est": 168518
    },
    "blocked": {
     "files": 51,
@@ -21,15 +21,15 @@
     "text_bytes_est": 1780380
    },
    "upstream": {
-    "files": 414,
+    "files": 397,
     "functions": 0,
     "insn_lines": 0,
     "text_bytes_est": 0
    }
   },
   "function_totals": {
-   "tracked": 19040,
-   "matched": 2228,
+   "tracked": 19294,
+   "matched": 2482,
    "partial_in_blocked": 20,
    "pending": 15915
   },
@@ -30811,16 +30811,154 @@
    "functions": []
   },
   {
-   "file": "asm/field/unk_020977CC.s",
+   "file": "asm/unk_020977CC.s",
    "lsf_kind": "src",
-   "status": "upstream",
-   "functions": []
+   "status": "matched",
+   "lines": 252,
+   "function_count": 4,
+   "text_bytes_est": 448,
+   "data_only": false,
+   "sections": {
+    "rodata_bytes": 0,
+    "data_bytes": 0,
+    "bss_bytes": 0,
+    "other_bytes": 0
+   },
+   "other_sections": [],
+   "jumptable_words": 0,
+   "imports": [
+    "BeginNormalPaletteFade",
+    "CallTask_LeaveOverworld",
+    "FieldBGM_PlayForMapHeader",
+    "FieldSystem_ApplicationIsRunning",
+    "Field_GetTimeOfDay",
+    "GF_AssertFail",
+    "GF_GetCurrentPlayingBGM",
+    "GF_SndGetFadeTimer",
+    "GF_SndStartFadeOutBGM",
+    "Heap_AllocAtEnd",
+    "Heap_Free",
+    "IsPaletteFadeFinished",
+    "LoadAreaOrDungeonLightTxt",
+    "PlayerProfile_GetTrainerGender",
+    "Save_PlayerData_GetProfile",
+    "StopBGM",
+    "TaskManager_Call",
+    "TaskManager_GetEnvironment",
+    "TaskManager_GetFieldSystem",
+    "TaskManager_GetStatePtr",
+    "sub_0203FC68",
+    "sub_020537F0",
+    "sub_02055408"
+   ],
+   "exports": [
+    "sub_020977CC"
+   ],
+   "functions": [
+    {
+     "name": "sub_020977CC",
+     "mode": "thumb",
+     "insns": 30,
+     "size_est": 66,
+     "status": "matched"
+    },
+    {
+     "name": "sub_02097810",
+     "mode": "thumb",
+     "insns": 40,
+     "size_est": 92,
+     "status": "matched"
+    },
+    {
+     "name": "sub_02097878",
+     "mode": "thumb",
+     "insns": 37,
+     "size_est": 86,
+     "status": "matched"
+    },
+    {
+     "name": "sub_020978D0",
+     "mode": "thumb",
+     "insns": 88,
+     "size_est": 204,
+     "status": "matched"
+    }
+   ],
+   "source": "harness"
   },
   {
-   "file": "asm/field/unk_020979A8.s",
+   "file": "asm/unk_020979A8.s",
    "lsf_kind": "src",
-   "status": "upstream",
-   "functions": []
+   "status": "matched",
+   "lines": 248,
+   "function_count": 4,
+   "text_bytes_est": 436,
+   "data_only": false,
+   "sections": {
+    "rodata_bytes": 0,
+    "data_bytes": 0,
+    "bss_bytes": 0,
+    "other_bytes": 0
+   },
+   "other_sections": [],
+   "jumptable_words": 0,
+   "imports": [
+    "BeginNormalPaletteFade",
+    "CallTask_LeaveOverworld",
+    "FieldBGM_PlayForMapHeader",
+    "FieldSystem_ApplicationIsRunning",
+    "Field_GetTimeOfDay",
+    "GF_AssertFail",
+    "GF_GetCurrentPlayingBGM",
+    "GF_SndGetFadeTimer",
+    "GF_SndStartFadeOutBGM",
+    "Heap_AllocAtEnd",
+    "Heap_Free",
+    "IsPaletteFadeFinished",
+    "LoadAreaOrDungeonLightTxt",
+    "StopBGM",
+    "TaskManager_Call",
+    "TaskManager_GetEnvironment",
+    "TaskManager_GetFieldSystem",
+    "TaskManager_GetStatePtr",
+    "sub_0203FC90",
+    "sub_020537F0",
+    "sub_02055408"
+   ],
+   "exports": [
+    "sub_020979A8"
+   ],
+   "functions": [
+    {
+     "name": "sub_020979A8",
+     "mode": "thumb",
+     "insns": 30,
+     "size_est": 66,
+     "status": "matched"
+    },
+    {
+     "name": "sub_020979EC",
+     "mode": "thumb",
+     "insns": 36,
+     "size_est": 80,
+     "status": "matched"
+    },
+    {
+     "name": "sub_02097A48",
+     "mode": "thumb",
+     "insns": 37,
+     "size_est": 86,
+     "status": "matched"
+    },
+    {
+     "name": "sub_02097AA0",
+     "mode": "thumb",
+     "insns": 88,
+     "size_est": 204,
+     "status": "matched"
+    }
+   ],
+   "source": "harness"
   },
   {
    "file": "asm/unk_02097B78.s",
@@ -32255,10 +32393,124 @@
    "functions": []
   },
   {
-   "file": "asm/field/model_attributes.s",
+   "file": "asm/model_attributes.s",
    "lsf_kind": "src",
-   "status": "upstream",
-   "functions": []
+   "status": "matched",
+   "lines": 425,
+   "function_count": 14,
+   "text_bytes_est": 696,
+   "data_only": false,
+   "sections": {
+    "rodata_bytes": 0,
+    "data_bytes": 0,
+    "bss_bytes": 0,
+    "other_bytes": 0
+   },
+   "other_sections": [],
+   "jumptable_words": 0,
+   "imports": [],
+   "exports": [],
+   "functions": [
+    {
+     "name": "ModelAttributes_Init",
+     "mode": "thumb",
+     "insns": 11,
+     "size_est": 26,
+     "status": "matched"
+    },
+    {
+     "name": "ModelAttributes_Free",
+     "mode": "thumb",
+     "insns": 8,
+     "size_est": 18,
+     "status": "matched"
+    },
+    {
+     "name": "ModelAttributes_ApplyGlobal",
+     "mode": "thumb",
+     "insns": 75,
+     "size_est": 160,
+     "status": "matched"
+    },
+    {
+     "name": "ov01_021EA9B0",
+     "mode": "thumb",
+     "insns": 118,
+     "size_est": 264,
+     "status": "matched"
+    },
+    {
+     "name": "ov01_021EAAB8",
+     "mode": "thumb",
+     "insns": 19,
+     "size_est": 40,
+     "status": "matched"
+    },
+    {
+     "name": "ov01_021EAAE0",
+     "mode": "thumb",
+     "insns": 9,
+     "size_est": 20,
+     "status": "matched"
+    },
+    {
+     "name": "ov01_021EAAF4",
+     "mode": "thumb",
+     "insns": 9,
+     "size_est": 20,
+     "status": "matched"
+    },
+    {
+     "name": "ov01_021EAB08",
+     "mode": "thumb",
+     "insns": 8,
+     "size_est": 18,
+     "status": "matched"
+    },
+    {
+     "name": "ov01_021EAB1C",
+     "mode": "thumb",
+     "insns": 9,
+     "size_est": 20,
+     "status": "matched"
+    },
+    {
+     "name": "ov01_021EAB30",
+     "mode": "thumb",
+     "insns": 8,
+     "size_est": 18,
+     "status": "matched"
+    },
+    {
+     "name": "ModelAttributes_SetPolygonMode",
+     "mode": "thumb",
+     "insns": 8,
+     "size_est": 18,
+     "status": "matched"
+    },
+    {
+     "name": "ModelAttributes_SetCullMode",
+     "mode": "thumb",
+     "insns": 8,
+     "size_est": 18,
+     "status": "matched"
+    },
+    {
+     "name": "ModelAttributes_SetAlpha",
+     "mode": "thumb",
+     "insns": 8,
+     "size_est": 18,
+     "status": "matched"
+    },
+    {
+     "name": "ModelAttributes_SetMiscAttrEnabled",
+     "mode": "thumb",
+     "insns": 18,
+     "size_est": 38,
+     "status": "matched"
+    }
+   ],
+   "source": "retained_asm"
   },
   {
    "file": "asm/overlay_01_021EABA8.s",
@@ -35979,10 +36231,76 @@
    "source": "harness"
   },
   {
-   "file": "asm/field/overlay_01_021F3378.s",
+   "file": "asm/overlay_01_021F3378.s",
    "lsf_kind": "src",
-   "status": "upstream",
-   "functions": []
+   "status": "matched",
+   "lines": 331,
+   "function_count": 4,
+   "text_bytes_est": 638,
+   "data_only": false,
+   "sections": {
+    "rodata_bytes": 0,
+    "data_bytes": 0,
+    "bss_bytes": 0,
+    "other_bytes": 0
+   },
+   "other_sections": [],
+   "jumptable_words": 0,
+   "imports": [
+    "BeginNormalPaletteFade",
+    "Heap_AllocAtEnd",
+    "Heap_Free",
+    "IsPaletteFadeFinished",
+    "MI_CpuFill8",
+    "MapObject_UnpauseMovement",
+    "PlaySE",
+    "PlayerAvatar_GetFacingDirection",
+    "PlayerAvatar_GetMapObject",
+    "PlayerAvatar_SetFacingDirection",
+    "SysTask_CreateOnMainQueue",
+    "SysTask_Destroy",
+    "_dadd",
+    "_dfix",
+    "_dflt",
+    "_dmul",
+    "ov01_021F92A0",
+    "sub_0205F990",
+    "sub_0205F9A0"
+   ],
+   "exports": [
+    "ov01_021F35C4"
+   ],
+   "functions": [
+    {
+     "name": "ov01_021F3378",
+     "mode": "thumb",
+     "insns": 27,
+     "size_est": 54,
+     "status": "matched"
+    },
+    {
+     "name": "ov01_021F33B8",
+     "mode": "thumb",
+     "insns": 89,
+     "size_est": 206,
+     "status": "matched"
+    },
+    {
+     "name": "ov01_021F348C",
+     "mode": "thumb",
+     "insns": 129,
+     "size_est": 306,
+     "status": "matched"
+    },
+    {
+     "name": "ov01_021F35C4",
+     "mode": "thumb",
+     "insns": 31,
+     "size_est": 72,
+     "status": "matched"
+    }
+   ],
+   "source": "harness"
   },
   {
    "file": "asm/field/map_prop_manager.s",
@@ -38154,10 +38472,383 @@
    ]
   },
   {
-   "file": "asm/field/overlay_01_021F8D80.s",
+   "file": "asm/overlay_01_021F8D80.s",
    "lsf_kind": "src",
-   "status": "upstream",
-   "functions": []
+   "status": "matched",
+   "lines": 986,
+   "function_count": 38,
+   "text_bytes_est": 1670,
+   "data_only": false,
+   "sections": {
+    "rodata_bytes": 8,
+    "data_bytes": 0,
+    "bss_bytes": 0,
+    "other_bytes": 0
+   },
+   "other_sections": [],
+   "jumptable_words": 0,
+   "imports": [
+    "GF_AssertFail",
+    "Heap_Alloc",
+    "Heap_AllocAtEnd",
+    "MapObjectManager_ClearFlagsBits",
+    "MapObjectManager_GetFlagsBitsMask",
+    "MapObjectManager_GetMapModelNarc",
+    "MapObjectManager_GetObjectCount",
+    "MapObjectManager_GetPriority",
+    "MapObjectManager_SetFlagsBits",
+    "MapObjectManager_SetMapModelNarc",
+    "MapObject_CheckFlag14",
+    "MapObject_CheckFlag4",
+    "MapObject_CheckMovementPaused",
+    "MapObject_ClearFlagsBits",
+    "MapObject_CopyFacingVector",
+    "MapObject_CopyPositionVector",
+    "MapObject_GetFacingDirection",
+    "MapObject_GetFlagsBitsMask",
+    "MapObject_GetManager",
+    "MapObject_GetSpriteID",
+    "MapObject_SetFacingDirection",
+    "MapObject_SetFacingVector",
+    "MapObject_SetFlagsBits",
+    "MapObject_SetVisible",
+    "MapObject_TestFlagsBits",
+    "NARC_Delete",
+    "NARC_GetMemberSize",
+    "NARC_New",
+    "NARC_ReadWholeMember",
+    "ov01_021F944C",
+    "ov01_021F94A0",
+    "ov01_021F9510",
+    "ov01_021F95A8",
+    "ov01_021F9610",
+    "ov01_021F9630",
+    "ov01_021FA298",
+    "ov01_021FA2D4",
+    "ov01_021FA3E8",
+    "ov01_021FA44C",
+    "ov01_021FD9CC",
+    "ov01_022054E0",
+    "ov01_02205564",
+    "ov01_022055B0",
+    "ov01_02205808",
+    "ov01_02206D00",
+    "ov01_022074A8",
+    "sub_02023EA4",
+    "sub_02023EE0",
+    "sub_02023F04",
+    "sub_02023F30",
+    "sub_02023F40",
+    "sub_0205F1A0",
+    "sub_0205F330",
+    "sub_0205F3E8",
+    "sub_0205F40C",
+    "sub_0205F484",
+    "sub_0205F5D4",
+    "sub_0205F990",
+    "sub_0205F9A0",
+    "sub_0205F9B0"
+   ],
+   "exports": [
+    "GetMoveModelNoBySpriteId",
+    "ObjectEvent_GetGraphicsInfo",
+    "ReadMModelFromNarcInternal",
+    "ov01_021F8D80",
+    "ov01_021F8E70",
+    "ov01_021F8F08",
+    "ov01_021F8F68",
+    "ov01_021F8F74",
+    "ov01_021F8F88",
+    "ov01_021F8FA0",
+    "ov01_021F902C",
+    "ov01_021F9048",
+    "ov01_021F9058",
+    "ov01_021F9078",
+    "ov01_021F90C8",
+    "ov01_021F90D0",
+    "ov01_021F90FC",
+    "ov01_021F91F8",
+    "ov01_021F9250",
+    "ov01_021F92A0",
+    "ov01_021F9318",
+    "ov01_021F9344",
+    "ov01_021F93AC",
+    "ov01_021F9408",
+    "ov01_021F9424",
+    "ov01_021F943C",
+    "ov01_021F9440",
+    "ov01_021F9444",
+    "ov01_021F9448"
+   ],
+   "functions": [
+    {
+     "name": "ov01_021F8D80",
+     "mode": "thumb",
+     "insns": 106,
+     "size_est": 240,
+     "status": "matched"
+    },
+    {
+     "name": "ov01_021F8E70",
+     "mode": "thumb",
+     "insns": 68,
+     "size_est": 142,
+     "status": "matched"
+    },
+    {
+     "name": "ov01_021F8F08",
+     "mode": "thumb",
+     "insns": 44,
+     "size_est": 94,
+     "status": "matched"
+    },
+    {
+     "name": "ov01_021F8F68",
+     "mode": "thumb",
+     "insns": 5,
+     "size_est": 12,
+     "status": "matched"
+    },
+    {
+     "name": "ov01_021F8F74",
+     "mode": "thumb",
+     "insns": 8,
+     "size_est": 18,
+     "status": "matched"
+    },
+    {
+     "name": "ov01_021F8F88",
+     "mode": "thumb",
+     "insns": 10,
+     "size_est": 22,
+     "status": "matched"
+    },
+    {
+     "name": "ov01_021F8FA0",
+     "mode": "thumb",
+     "insns": 14,
+     "size_est": 30,
+     "status": "matched"
+    },
+    {
+     "name": "ov01_021F8FC0",
+     "mode": "thumb",
+     "insns": 48,
+     "size_est": 100,
+     "status": "matched"
+    },
+    {
+     "name": "ov01_021F902C",
+     "mode": "thumb",
+     "insns": 11,
+     "size_est": 26,
+     "status": "matched"
+    },
+    {
+     "name": "ov01_021F9048",
+     "mode": "thumb",
+     "insns": 7,
+     "size_est": 16,
+     "status": "matched"
+    },
+    {
+     "name": "ov01_021F9058",
+     "mode": "thumb",
+     "insns": 13,
+     "size_est": 30,
+     "status": "matched"
+    },
+    {
+     "name": "ov01_021F9078",
+     "mode": "thumb",
+     "insns": 33,
+     "size_est": 80,
+     "status": "matched"
+    },
+    {
+     "name": "ov01_021F90C8",
+     "mode": "thumb",
+     "insns": 3,
+     "size_est": 6,
+     "status": "matched"
+    },
+    {
+     "name": "ov01_021F90D0",
+     "mode": "thumb",
+     "insns": 17,
+     "size_est": 42,
+     "status": "matched"
+    },
+    {
+     "name": "ov01_021F90FC",
+     "mode": "thumb",
+     "insns": 27,
+     "size_est": 66,
+     "status": "matched"
+    },
+    {
+     "name": "ov01_021F9140",
+     "mode": "thumb",
+     "insns": 8,
+     "size_est": 20,
+     "status": "matched"
+    },
+    {
+     "name": "ov01_021F9154",
+     "mode": "thumb",
+     "insns": 16,
+     "size_est": 38,
+     "status": "matched"
+    },
+    {
+     "name": "ov01_021F917C",
+     "mode": "thumb",
+     "insns": 16,
+     "size_est": 38,
+     "status": "matched"
+    },
+    {
+     "name": "ov01_021F91A4",
+     "mode": "thumb",
+     "insns": 27,
+     "size_est": 62,
+     "status": "matched"
+    },
+    {
+     "name": "ov01_021F91E4",
+     "mode": "thumb",
+     "insns": 7,
+     "size_est": 18,
+     "status": "matched"
+    },
+    {
+     "name": "ov01_021F91F8",
+     "mode": "thumb",
+     "insns": 36,
+     "size_est": 88,
+     "status": "matched"
+    },
+    {
+     "name": "ov01_021F9250",
+     "mode": "thumb",
+     "insns": 15,
+     "size_est": 42,
+     "status": "matched"
+    },
+    {
+     "name": "FldObjSys_OpenMModelNarc",
+     "mode": "thumb",
+     "insns": 9,
+     "size_est": 22,
+     "status": "matched"
+    },
+    {
+     "name": "FldObjSys_CloseMModelNarc",
+     "mode": "thumb",
+     "insns": 4,
+     "size_est": 12,
+     "status": "matched"
+    },
+    {
+     "name": "ov01_021F92A0",
+     "mode": "thumb",
+     "insns": 24,
+     "size_est": 60,
+     "status": "matched"
+    },
+    {
+     "name": "ObjectEvent_GetGraphicsInfo",
+     "mode": "thumb",
+     "insns": 17,
+     "size_est": 36,
+     "status": "matched"
+    },
+    {
+     "name": "GetMoveModelNoBySpriteId",
+     "mode": "thumb",
+     "insns": 9,
+     "size_est": 20,
+     "status": "matched"
+    },
+    {
+     "name": "ov01_021F9318",
+     "mode": "thumb",
+     "insns": 4,
+     "size_est": 12,
+     "status": "matched"
+    },
+    {
+     "name": "ov01_021F9324",
+     "mode": "thumb",
+     "insns": 14,
+     "size_est": 30,
+     "status": "matched"
+    },
+    {
+     "name": "ov01_021F9344",
+     "mode": "thumb",
+     "insns": 21,
+     "size_est": 48,
+     "status": "matched"
+    },
+    {
+     "name": "ReadMModelFromNarcInternal",
+     "mode": "thumb",
+     "insns": 22,
+     "size_est": 54,
+     "status": "matched"
+    },
+    {
+     "name": "ov01_021F93AC",
+     "mode": "thumb",
+     "insns": 41,
+     "size_est": 90,
+     "status": "matched"
+    },
+    {
+     "name": "ov01_021F9408",
+     "mode": "thumb",
+     "insns": 10,
+     "size_est": 26,
+     "status": "matched"
+    },
+    {
+     "name": "ov01_021F9424",
+     "mode": "thumb",
+     "insns": 9,
+     "size_est": 22,
+     "status": "matched"
+    },
+    {
+     "name": "ov01_021F943C",
+     "mode": "thumb",
+     "insns": 1,
+     "size_est": 2,
+     "status": "matched"
+    },
+    {
+     "name": "ov01_021F9440",
+     "mode": "thumb",
+     "insns": 1,
+     "size_est": 2,
+     "status": "matched"
+    },
+    {
+     "name": "ov01_021F9444",
+     "mode": "thumb",
+     "insns": 1,
+     "size_est": 2,
+     "status": "matched"
+    },
+    {
+     "name": "ov01_021F9448",
+     "mode": "thumb",
+     "insns": 1,
+     "size_est": 2,
+     "status": "matched"
+    }
+   ],
+   "source": "harness"
   },
   {
    "file": "asm/overlay_01_021F944C.s",
@@ -40573,10 +41264,344 @@
    "source": "retained_asm"
   },
   {
-   "file": "asm/field/overlay_01_021FC66C.s",
+   "file": "asm/overlay_01_021FC66C.s",
    "lsf_kind": "src",
-   "status": "upstream",
-   "functions": []
+   "status": "matched",
+   "lines": 1002,
+   "function_count": 37,
+   "text_bytes_est": 1670,
+   "data_only": false,
+   "sections": {
+    "rodata_bytes": 144,
+    "data_bytes": 0,
+    "bss_bytes": 0,
+    "other_bytes": 0
+   },
+   "other_sections": [],
+   "jumptable_words": 0,
+   "imports": [
+    "BattleSetup_Delete",
+    "ClearFrameAndWindow2",
+    "DestroyMsgData",
+    "DialogBox_AddWindowToLayer3",
+    "DialogBox_IsPrintFinished",
+    "DialogBox_LoadFrame",
+    "DialogBox_PrintMessage",
+    "FieldSystem_GetGearPhoneRingManager",
+    "FieldSystem_PerformFishEncounterCheck",
+    "FieldSystem_StartForcedWildBattle",
+    "FieldSystem_UnkSub108_GetMonMood",
+    "Field_PlayerAvatar_ApplyTransitionFlags",
+    "Field_PlayerAvatar_OrrTransitionFlags",
+    "FollowMon_GetMapObject",
+    "FollowMon_IsActive",
+    "GF_AssertFail",
+    "GameStats_Inc",
+    "GearPhoneRingManager_ResetIfActive",
+    "GetFirstAliveMonInParty_CrashIfNone",
+    "GetMonData",
+    "Heap_AllocAtEnd",
+    "Heap_Free",
+    "LCRandom",
+    "MapObjectManager_PauseAllMovement",
+    "MapObjectManager_UnpauseAllMovement",
+    "MapObject_AreBitsSetForMovementScriptInit",
+    "MapObject_ClearHeldMovementIfActive",
+    "MapObject_UnpauseMovement",
+    "MessageFormat_Delete",
+    "MessageFormat_New_Custom",
+    "NewMsgDataFromNarc",
+    "PlaySE",
+    "PlayerAvatar_GetMapObject",
+    "PlayerAvatar_GetState",
+    "PlayerAvatar_GetTransitionBits",
+    "ReadMsgDataIntoString",
+    "RemoveWindow",
+    "SaveArray_Party_Get",
+    "Save_GameStats_Get",
+    "Save_PlayerData_GetOptionsAddr",
+    "StringExpandPlaceholders",
+    "String_Delete",
+    "String_New",
+    "SysTask_CreateOnMainQueue",
+    "SysTask_Destroy",
+    "SysTask_GetData",
+    "TaskManager_GetEnvironment",
+    "TaskManager_GetFieldSystem",
+    "_s32_div_f",
+    "gSystem",
+    "memset",
+    "ov01_02200400",
+    "ov01_02200540",
+    "sub_0205F328",
+    "sub_02068B48"
+   ],
+   "exports": [
+    "CreateFishingRodTaskEnv",
+    "Task_OverworldFish"
+   ],
+   "functions": [
+    {
+     "name": "CreateFishingRodTaskEnv",
+     "mode": "thumb",
+     "insns": 19,
+     "size_est": 42,
+     "status": "matched"
+    },
+    {
+     "name": "Task_OverworldFish",
+     "mode": "thumb",
+     "insns": 70,
+     "size_est": 174,
+     "status": "matched"
+    },
+    {
+     "name": "ov01_021FC748",
+     "mode": "thumb",
+     "insns": 15,
+     "size_est": 34,
+     "status": "matched"
+    },
+    {
+     "name": "ov01_021FC76C",
+     "mode": "thumb",
+     "insns": 4,
+     "size_est": 10,
+     "status": "matched"
+    },
+    {
+     "name": "ov01_021FC778",
+     "mode": "thumb",
+     "insns": 4,
+     "size_est": 10,
+     "status": "matched"
+    },
+    {
+     "name": "ov01_021FC784",
+     "mode": "thumb",
+     "insns": 7,
+     "size_est": 20,
+     "status": "matched"
+    },
+    {
+     "name": "ov01_021FC798",
+     "mode": "thumb",
+     "insns": 20,
+     "size_est": 44,
+     "status": "matched"
+    },
+    {
+     "name": "ov01_021FC7C4",
+     "mode": "thumb",
+     "insns": 9,
+     "size_est": 22,
+     "status": "matched"
+    },
+    {
+     "name": "ov01_021FC7DC",
+     "mode": "thumb",
+     "insns": 22,
+     "size_est": 54,
+     "status": "matched"
+    },
+    {
+     "name": "ov01_021FC814",
+     "mode": "thumb",
+     "insns": 26,
+     "size_est": 54,
+     "status": "matched"
+    },
+    {
+     "name": "ov01_021FC84C",
+     "mode": "thumb",
+     "insns": 29,
+     "size_est": 62,
+     "status": "matched"
+    },
+    {
+     "name": "ov01_021FC88C",
+     "mode": "thumb",
+     "insns": 40,
+     "size_est": 92,
+     "status": "matched"
+    },
+    {
+     "name": "ov01_021FC8E8",
+     "mode": "thumb",
+     "insns": 21,
+     "size_est": 44,
+     "status": "matched"
+    },
+    {
+     "name": "ov01_021FC914",
+     "mode": "thumb",
+     "insns": 13,
+     "size_est": 30,
+     "status": "matched"
+    },
+    {
+     "name": "ov01_021FC934",
+     "mode": "thumb",
+     "insns": 23,
+     "size_est": 50,
+     "status": "matched"
+    },
+    {
+     "name": "ov01_021FC968",
+     "mode": "thumb",
+     "insns": 11,
+     "size_est": 24,
+     "status": "matched"
+    },
+    {
+     "name": "ov01_021FC980",
+     "mode": "thumb",
+     "insns": 6,
+     "size_est": 12,
+     "status": "matched"
+    },
+    {
+     "name": "ov01_021FC98C",
+     "mode": "thumb",
+     "insns": 14,
+     "size_est": 32,
+     "status": "matched"
+    },
+    {
+     "name": "ov01_021FC9AC",
+     "mode": "thumb",
+     "insns": 19,
+     "size_est": 46,
+     "status": "matched"
+    },
+    {
+     "name": "ov01_021FC9DC",
+     "mode": "thumb",
+     "insns": 6,
+     "size_est": 12,
+     "status": "matched"
+    },
+    {
+     "name": "ov01_021FC9E8",
+     "mode": "thumb",
+     "insns": 30,
+     "size_est": 66,
+     "status": "matched"
+    },
+    {
+     "name": "ov01_021FCA2C",
+     "mode": "thumb",
+     "insns": 20,
+     "size_est": 42,
+     "status": "matched"
+    },
+    {
+     "name": "ov01_021FCA58",
+     "mode": "thumb",
+     "insns": 23,
+     "size_est": 58,
+     "status": "matched"
+    },
+    {
+     "name": "ov01_021FCA94",
+     "mode": "thumb",
+     "insns": 9,
+     "size_est": 18,
+     "status": "matched"
+    },
+    {
+     "name": "ov01_021FCAA8",
+     "mode": "thumb",
+     "insns": 12,
+     "size_est": 26,
+     "status": "matched"
+    },
+    {
+     "name": "ov01_021FCAC4",
+     "mode": "thumb",
+     "insns": 14,
+     "size_est": 34,
+     "status": "matched"
+    },
+    {
+     "name": "ov01_021FCAE8",
+     "mode": "thumb",
+     "insns": 9,
+     "size_est": 18,
+     "status": "matched"
+    },
+    {
+     "name": "ov01_021FCAFC",
+     "mode": "thumb",
+     "insns": 11,
+     "size_est": 22,
+     "status": "matched"
+    },
+    {
+     "name": "ov01_021FCB14",
+     "mode": "thumb",
+     "insns": 24,
+     "size_est": 56,
+     "status": "matched"
+    },
+    {
+     "name": "ov01_021FCB4C",
+     "mode": "thumb",
+     "insns": 11,
+     "size_est": 30,
+     "status": "matched"
+    },
+    {
+     "name": "ov01_021FCB6C",
+     "mode": "thumb",
+     "insns": 15,
+     "size_est": 36,
+     "status": "matched"
+    },
+    {
+     "name": "ov01_021FCB90",
+     "mode": "thumb",
+     "insns": 24,
+     "size_est": 58,
+     "status": "matched"
+    },
+    {
+     "name": "ov01_021FCBCC",
+     "mode": "thumb",
+     "insns": 21,
+     "size_est": 50,
+     "status": "matched"
+    },
+    {
+     "name": "ov01_021FCC00",
+     "mode": "thumb",
+     "insns": 18,
+     "size_est": 38,
+     "status": "matched"
+    },
+    {
+     "name": "ov01_021FCC2C",
+     "mode": "thumb",
+     "insns": 29,
+     "size_est": 70,
+     "status": "matched"
+    },
+    {
+     "name": "ov01_021FCC74",
+     "mode": "thumb",
+     "insns": 27,
+     "size_est": 58,
+     "status": "matched"
+    },
+    {
+     "name": "ov01_021FCCB0",
+     "mode": "thumb",
+     "insns": 58,
+     "size_est": 122,
+     "status": "matched"
+    }
+   ],
+   "source": "harness"
   },
   {
    "file": "asm/overlay_01_021FCD2C.s",
@@ -40808,10 +41833,160 @@
    "source": "harness"
   },
   {
-   "file": "asm/field/overlay_01_021FD1B8.s",
+   "file": "asm/overlay_01_021FD1B8.s",
    "lsf_kind": "src",
-   "status": "upstream",
-   "functions": []
+   "status": "matched",
+   "lines": 380,
+   "function_count": 15,
+   "text_bytes_est": 586,
+   "data_only": false,
+   "sections": {
+    "rodata_bytes": 116,
+    "data_bytes": 0,
+    "bss_bytes": 0,
+    "other_bytes": 0
+   },
+   "other_sections": [],
+   "jumptable_words": 0,
+   "imports": [
+    "GF_AssertFail",
+    "MapObject_CheckFlag25",
+    "MapObject_CopyFacingVector",
+    "MapObject_CopyPositionVector",
+    "MapObject_GetID",
+    "MapObject_GetMapID",
+    "MapObject_GetPriorityPlusValue",
+    "MapObject_GetSpriteID",
+    "ov01_021F1430",
+    "ov01_021F1448",
+    "ov01_021F1450",
+    "ov01_021F146C",
+    "ov01_021F1620",
+    "ov01_021F1640",
+    "ov01_021F19F4",
+    "sub_0205F0A8",
+    "sub_0205F544",
+    "sub_02068D98",
+    "sub_02068DA8",
+    "sub_02068DB8",
+    "sub_02069784",
+    "sub_02069978",
+    "sub_020699BC"
+   ],
+   "exports": [
+    "FieldEffect_InitRenderObject",
+    "ov01_021FD1B8",
+    "ov01_021FD1CC",
+    "ov01_021FD2EC"
+   ],
+   "functions": [
+    {
+     "name": "ov01_021FD1B8",
+     "mode": "thumb",
+     "insns": 8,
+     "size_est": 18,
+     "status": "matched"
+    },
+    {
+     "name": "ov01_021FD1CC",
+     "mode": "thumb",
+     "insns": 10,
+     "size_est": 26,
+     "status": "matched"
+    },
+    {
+     "name": "ov01_021FD1E8",
+     "mode": "thumb",
+     "insns": 15,
+     "size_est": 34,
+     "status": "matched"
+    },
+    {
+     "name": "ov01_021FD20C",
+     "mode": "thumb",
+     "insns": 6,
+     "size_est": 12,
+     "status": "matched"
+    },
+    {
+     "name": "ov01_021FD21C",
+     "mode": "thumb",
+     "insns": 18,
+     "size_est": 38,
+     "status": "matched"
+    },
+    {
+     "name": "ov01_021FD244",
+     "mode": "thumb",
+     "insns": 10,
+     "size_est": 20,
+     "status": "matched"
+    },
+    {
+     "name": "ov01_021FD258",
+     "mode": "thumb",
+     "insns": 24,
+     "size_est": 54,
+     "status": "matched"
+    },
+    {
+     "name": "ov01_021FD290",
+     "mode": "thumb",
+     "insns": 24,
+     "size_est": 58,
+     "status": "matched"
+    },
+    {
+     "name": "ov01_021FD2CC",
+     "mode": "thumb",
+     "insns": 12,
+     "size_est": 30,
+     "status": "matched"
+    },
+    {
+     "name": "ov01_021FD2EC",
+     "mode": "thumb",
+     "insns": 25,
+     "size_est": 58,
+     "status": "matched"
+    },
+    {
+     "name": "ov01_021FD328",
+     "mode": "thumb",
+     "insns": 33,
+     "size_est": 80,
+     "status": "matched"
+    },
+    {
+     "name": "ov01_021FD378",
+     "mode": "thumb",
+     "insns": 1,
+     "size_est": 2,
+     "status": "matched"
+    },
+    {
+     "name": "ov01_021FD37C",
+     "mode": "thumb",
+     "insns": 44,
+     "size_est": 98,
+     "status": "matched"
+    },
+    {
+     "name": "ov01_021FD3E0",
+     "mode": "thumb",
+     "insns": 10,
+     "size_est": 24,
+     "status": "matched"
+    },
+    {
+     "name": "FieldEffect_InitRenderObject",
+     "mode": "thumb",
+     "insns": 15,
+     "size_est": 34,
+     "status": "matched"
+    }
+   ],
+   "source": "harness"
   },
   {
    "file": "asm/overlay_01_021FD41C.s",
@@ -42896,16 +44071,377 @@
    "source": "harness"
   },
   {
-   "file": "asm/field/overlay_01_022001E4.s",
+   "file": "asm/overlay_01_022001E4.s",
    "lsf_kind": "src",
-   "status": "upstream",
-   "functions": []
+   "status": "matched",
+   "lines": 706,
+   "function_count": 28,
+   "text_bytes_est": 1182,
+   "data_only": false,
+   "sections": {
+    "rodata_bytes": 72,
+    "data_bytes": 0,
+    "bss_bytes": 0,
+    "other_bytes": 0
+   },
+   "other_sections": [],
+   "jumptable_words": 0,
+   "imports": [
+    "GF_AssertFail",
+    "MapObject_CopyFacingVector",
+    "MapObject_CopyPositionVector",
+    "MapObject_GetID",
+    "MapObject_GetMapID",
+    "MapObject_GetPriority",
+    "NNS_G3dMdlSetMdlFogEnableFlagAll",
+    "PlaySE",
+    "VEC_Add",
+    "ov01_021F1430",
+    "ov01_021F1448",
+    "ov01_021F1450",
+    "ov01_021F146C",
+    "ov01_021F1620",
+    "ov01_021F1740",
+    "ov01_021F1758",
+    "ov01_021F18C8",
+    "ov01_021F18D4",
+    "ov01_021F18FC",
+    "ov01_021F1908",
+    "ov01_021F1924",
+    "ov01_021F1930",
+    "ov01_021F1970",
+    "ov01_021F93AC",
+    "sub_02023DA4",
+    "sub_02023E50",
+    "sub_02023EA4",
+    "sub_02023F90",
+    "sub_0205F0A8",
+    "sub_02068D74",
+    "sub_02068D90",
+    "sub_02068D98",
+    "sub_02068DA8",
+    "sub_02068DB8"
+   ],
+   "exports": [
+    "ov01_022001E4",
+    "ov01_022001F8",
+    "ov01_022003F4",
+    "ov01_02200400",
+    "ov01_02200540"
+   ],
+   "functions": [
+    {
+     "name": "ov01_022001E4",
+     "mode": "thumb",
+     "insns": 8,
+     "size_est": 18,
+     "status": "matched"
+    },
+    {
+     "name": "ov01_022001F8",
+     "mode": "thumb",
+     "insns": 6,
+     "size_est": 16,
+     "status": "matched"
+    },
+    {
+     "name": "ov01_02200208",
+     "mode": "thumb",
+     "insns": 4,
+     "size_est": 8,
+     "status": "matched"
+    },
+    {
+     "name": "ov01_02200210",
+     "mode": "thumb",
+     "insns": 7,
+     "size_est": 16,
+     "status": "matched"
+    },
+    {
+     "name": "ov01_02200220",
+     "mode": "thumb",
+     "insns": 4,
+     "size_est": 8,
+     "status": "matched"
+    },
+    {
+     "name": "ov01_02200228",
+     "mode": "thumb",
+     "insns": 7,
+     "size_est": 16,
+     "status": "matched"
+    },
+    {
+     "name": "ov01_02200238",
+     "mode": "thumb",
+     "insns": 7,
+     "size_est": 18,
+     "status": "matched"
+    },
+    {
+     "name": "ov01_0220024C",
+     "mode": "thumb",
+     "insns": 7,
+     "size_est": 18,
+     "status": "matched"
+    },
+    {
+     "name": "ov01_02200260",
+     "mode": "thumb",
+     "insns": 33,
+     "size_est": 74,
+     "status": "matched"
+    },
+    {
+     "name": "ov01_022002AC",
+     "mode": "thumb",
+     "insns": 35,
+     "size_est": 78,
+     "status": "matched"
+    },
+    {
+     "name": "ov01_022002FC",
+     "mode": "thumb",
+     "insns": 20,
+     "size_est": 48,
+     "status": "matched"
+    },
+    {
+     "name": "ov01_0220032C",
+     "mode": "thumb",
+     "insns": 20,
+     "size_est": 48,
+     "status": "matched"
+    },
+    {
+     "name": "ov01_0220035C",
+     "mode": "thumb",
+     "insns": 6,
+     "size_est": 14,
+     "status": "matched"
+    },
+    {
+     "name": "ov01_0220036C",
+     "mode": "thumb",
+     "insns": 6,
+     "size_est": 14,
+     "status": "matched"
+    },
+    {
+     "name": "ov01_0220037C",
+     "mode": "thumb",
+     "insns": 6,
+     "size_est": 14,
+     "status": "matched"
+    },
+    {
+     "name": "ov01_0220038C",
+     "mode": "thumb",
+     "insns": 6,
+     "size_est": 14,
+     "status": "matched"
+    },
+    {
+     "name": "ov01_0220039C",
+     "mode": "thumb",
+     "insns": 7,
+     "size_est": 18,
+     "status": "matched"
+    },
+    {
+     "name": "ov01_022003B0",
+     "mode": "thumb",
+     "insns": 7,
+     "size_est": 18,
+     "status": "matched"
+    },
+    {
+     "name": "ov01_022003C4",
+     "mode": "thumb",
+     "insns": 20,
+     "size_est": 46,
+     "status": "matched"
+    },
+    {
+     "name": "ov01_022003F4",
+     "mode": "thumb",
+     "insns": 4,
+     "size_est": 10,
+     "status": "matched"
+    },
+    {
+     "name": "ov01_02200400",
+     "mode": "thumb",
+     "insns": 10,
+     "size_est": 24,
+     "status": "matched"
+    },
+    {
+     "name": "ov01_02200418",
+     "mode": "thumb",
+     "insns": 43,
+     "size_est": 102,
+     "status": "matched"
+    },
+    {
+     "name": "ov01_02200480",
+     "mode": "thumb",
+     "insns": 50,
+     "size_est": 106,
+     "status": "matched"
+    },
+    {
+     "name": "ov01_022004EC",
+     "mode": "thumb",
+     "insns": 11,
+     "size_est": 28,
+     "status": "matched"
+    },
+    {
+     "name": "ov01_02200508",
+     "mode": "thumb",
+     "insns": 25,
+     "size_est": 54,
+     "status": "matched"
+    },
+    {
+     "name": "ov01_02200540",
+     "mode": "thumb",
+     "insns": 38,
+     "size_est": 90,
+     "status": "matched"
+    },
+    {
+     "name": "ov01_0220059C",
+     "mode": "thumb",
+     "insns": 49,
+     "size_est": 118,
+     "status": "matched"
+    },
+    {
+     "name": "ov01_02200614",
+     "mode": "thumb",
+     "insns": 68,
+     "size_est": 146,
+     "status": "matched"
+    }
+   ],
+   "source": "harness"
   },
   {
-   "file": "asm/field/overlay_01_022006A8.s",
+   "file": "asm/overlay_01_022006A8.s",
    "lsf_kind": "src",
-   "status": "upstream",
-   "functions": []
+   "status": "matched",
+   "lines": 253,
+   "function_count": 9,
+   "text_bytes_est": 418,
+   "data_only": false,
+   "sections": {
+    "rodata_bytes": 44,
+    "data_bytes": 0,
+    "bss_bytes": 0,
+    "other_bytes": 0
+   },
+   "other_sections": [],
+   "jumptable_words": 0,
+   "imports": [
+    "MapObject_CopyFacingVector",
+    "MapObject_CopyPositionVector",
+    "MapObject_GetFieldSystem",
+    "MapObject_GetID",
+    "MapObject_GetMapID",
+    "MapObject_GetPriorityPlusValue",
+    "ov01_021F1430",
+    "ov01_021F1448",
+    "ov01_021F1450",
+    "ov01_021F146C",
+    "ov01_021F1620",
+    "ov01_021F1640",
+    "ov01_021F1740",
+    "ov01_021F1758",
+    "ov01_021F18C8",
+    "ov01_021F18D4",
+    "ov01_021F18FC",
+    "ov01_021F1930",
+    "ov01_021F1970",
+    "sub_02023DA4",
+    "sub_02023E50",
+    "sub_0205F0A8",
+    "sub_02068D98",
+    "sub_02068DA8"
+   ],
+   "exports": [
+    "ov01_022006A8",
+    "ov01_022006C4",
+    "ov01_02200730"
+   ],
+   "functions": [
+    {
+     "name": "ov01_022006A8",
+     "mode": "thumb",
+     "insns": 11,
+     "size_est": 26,
+     "status": "matched"
+    },
+    {
+     "name": "ov01_022006C4",
+     "mode": "thumb",
+     "insns": 6,
+     "size_est": 16,
+     "status": "matched"
+    },
+    {
+     "name": "ov01_022006D4",
+     "mode": "thumb",
+     "insns": 26,
+     "size_est": 58,
+     "status": "matched"
+    },
+    {
+     "name": "ov01_02200710",
+     "mode": "thumb",
+     "insns": 12,
+     "size_est": 30,
+     "status": "matched"
+    },
+    {
+     "name": "ov01_02200730",
+     "mode": "thumb",
+     "insns": 34,
+     "size_est": 78,
+     "status": "matched"
+    },
+    {
+     "name": "ov01_02200780",
+     "mode": "thumb",
+     "insns": 34,
+     "size_est": 78,
+     "status": "matched"
+    },
+    {
+     "name": "ov01_022007D0",
+     "mode": "thumb",
+     "insns": 5,
+     "size_est": 10,
+     "status": "matched"
+    },
+    {
+     "name": "ov01_022007DC",
+     "mode": "thumb",
+     "insns": 12,
+     "size_est": 28,
+     "status": "matched"
+    },
+    {
+     "name": "ov01_022007F8",
+     "mode": "thumb",
+     "insns": 42,
+     "size_est": 94,
+     "status": "matched"
+    }
+   ],
+   "source": "harness"
   },
   {
    "file": "asm/overlay_01_02200858.s",
@@ -60629,10 +62165,67 @@
    "functions": []
   },
   {
-   "file": "asm/battle/overlay_12_0226BEC4.s",
+   "file": "asm/overlay_12_0226BEC4.s",
    "lsf_kind": "src",
-   "status": "upstream",
-   "functions": []
+   "status": "matched",
+   "lines": 142,
+   "function_count": 3,
+   "text_bytes_est": 262,
+   "data_only": false,
+   "sections": {
+    "rodata_bytes": 0,
+    "data_bytes": 0,
+    "bss_bytes": 0,
+    "other_bytes": 0
+   },
+   "other_sections": [],
+   "jumptable_words": 0,
+   "imports": [
+    "BattleInput_ChangeMenu",
+    "BattleInput_CheckFeedbackDone",
+    "BattleInput_CheckTouch",
+    "BattleSystem_GetBattleInput",
+    "GF_AssertFail",
+    "Heap_Alloc",
+    "Heap_Free",
+    "MI_CpuFill8",
+    "NARC_Delete",
+    "NARC_New",
+    "PlaySE",
+    "SysTask_CreateOnMainQueue",
+    "SysTask_Destroy",
+    "SysTask_GetData",
+    "ov12_0223BFFC",
+    "ov12_0223C080"
+   ],
+   "exports": [
+    "ov12_0226BEC4",
+    "ov12_0226BEF0"
+   ],
+   "functions": [
+    {
+     "name": "ov12_0226BEC4",
+     "mode": "thumb",
+     "insns": 18,
+     "size_est": 42,
+     "status": "matched"
+    },
+    {
+     "name": "ov12_0226BEF0",
+     "mode": "thumb",
+     "insns": 7,
+     "size_est": 20,
+     "status": "matched"
+    },
+    {
+     "name": "ov12_0226BF04",
+     "mode": "thumb",
+     "insns": 88,
+     "size_est": 200,
+     "status": "matched"
+    }
+   ],
+   "source": "retained_asm"
   },
   {
    "file": "asm/overlay_13_thumb_1.s",
@@ -121713,10 +123306,234 @@
    "functions": []
   },
   {
-   "file": "asm/frontier/overlay_80_02229EE0.s",
+   "file": "asm/overlay_80_02229EE0.s",
    "lsf_kind": "src",
-   "status": "upstream",
-   "functions": []
+   "status": "matched",
+   "lines": 1281,
+   "function_count": 21,
+   "text_bytes_est": 2354,
+   "data_only": false,
+   "sections": {
+    "rodata_bytes": 260,
+    "data_bytes": 0,
+    "bss_bytes": 0,
+    "other_bytes": 0
+   },
+   "other_sections": [],
+   "jumptable_words": 0,
+   "imports": [
+    "AllocAndReadWholeNarcMemberByIdPair",
+    "BufferPlayersName",
+    "CalcMonLevelAndStats",
+    "CalcShininessByOtIdAndPersonality",
+    "CalculateHpBarColor",
+    "CopyStringToU16Array",
+    "CopyU16StringArray",
+    "CreateMon",
+    "DestroyMsgData",
+    "GF_AssertFail",
+    "GetMonBaseStat",
+    "GetMonData",
+    "GetNatureFromPersonality",
+    "GetSpeciesNameIntoArray",
+    "Heap_Free",
+    "LCRandom",
+    "MI_CpuFill8",
+    "MapHeader_GetMapSec",
+    "MaskOfFlagNo",
+    "MonSetTrainerMemo",
+    "NewMsgDataFromNarc",
+    "NewString_ReadMsgData",
+    "Party_AddMon",
+    "PlayerProfile_GetTrainerGender",
+    "PlayerProfile_GetVersion",
+    "ReadWholeNarcMemberByIdPair",
+    "Save_PlayerData_GetProfile",
+    "Save_WiFiHistory_Get",
+    "SetMonData",
+    "Sprite_GetAnimationFrame",
+    "Sprite_GetAnimationNumber",
+    "Sprite_SetAnimCtrlSeq",
+    "Sprite_SetAnimationFrame",
+    "Sprite_SetMatrix",
+    "Sprite_UpdateAnim",
+    "String_Delete",
+    "ZeroMonData",
+    "_s32_div_f",
+    "gGameLanguage",
+    "sub_02034818",
+    "sub_0203769C",
+    "sub_02039F68",
+    "sub_0207217C"
+   ],
+   "exports": [
+    "ov80_02229EF4",
+    "ov80_02229F04",
+    "ov80_0222A140",
+    "ov80_0222A30C",
+    "ov80_0222A3BC",
+    "ov80_0222A3D4",
+    "ov80_0222A400",
+    "ov80_0222A43C",
+    "ov80_0222A474",
+    "ov80_0222A480",
+    "ov80_0222A4EC",
+    "ov80_0222A52C",
+    "ov80_0222A6B8",
+    "ov80_0222A7CC",
+    "ov80_0222A7EC",
+    "ov80_0222A840"
+   ],
+   "functions": [
+    {
+     "name": "ov80_02229EE0",
+     "mode": "thumb",
+     "insns": 8,
+     "size_est": 18,
+     "status": "matched"
+    },
+    {
+     "name": "ov80_02229EF4",
+     "mode": "thumb",
+     "insns": 7,
+     "size_est": 14,
+     "status": "matched"
+    },
+    {
+     "name": "ov80_02229F04",
+     "mode": "thumb",
+     "insns": 44,
+     "size_est": 102,
+     "status": "matched"
+    },
+    {
+     "name": "ov80_02229F6C",
+     "mode": "thumb",
+     "insns": 211,
+     "size_est": 448,
+     "status": "matched"
+    },
+    {
+     "name": "ov80_0222A140",
+     "mode": "thumb",
+     "insns": 202,
+     "size_est": 458,
+     "status": "matched"
+    },
+    {
+     "name": "ov80_0222A30C",
+     "mode": "thumb",
+     "insns": 18,
+     "size_est": 36,
+     "status": "matched"
+    },
+    {
+     "name": "ov80_0222A334",
+     "mode": "thumb",
+     "insns": 55,
+     "size_est": 134,
+     "status": "matched"
+    },
+    {
+     "name": "ov80_0222A3BC",
+     "mode": "thumb",
+     "insns": 9,
+     "size_est": 22,
+     "status": "matched"
+    },
+    {
+     "name": "ov80_0222A3D4",
+     "mode": "thumb",
+     "insns": 17,
+     "size_est": 42,
+     "status": "matched"
+    },
+    {
+     "name": "ov80_0222A400",
+     "mode": "thumb",
+     "insns": 27,
+     "size_est": 58,
+     "status": "matched"
+    },
+    {
+     "name": "ov80_0222A43C",
+     "mode": "thumb",
+     "insns": 21,
+     "size_est": 44,
+     "status": "matched"
+    },
+    {
+     "name": "ov80_0222A474",
+     "mode": "thumb",
+     "insns": 4,
+     "size_est": 12,
+     "status": "matched"
+    },
+    {
+     "name": "ov80_0222A480",
+     "mode": "thumb",
+     "insns": 53,
+     "size_est": 108,
+     "status": "matched"
+    },
+    {
+     "name": "ov80_0222A4EC",
+     "mode": "thumb",
+     "insns": 28,
+     "size_est": 62,
+     "status": "matched"
+    },
+    {
+     "name": "ov80_0222A52C",
+     "mode": "thumb",
+     "insns": 59,
+     "size_est": 120,
+     "status": "matched"
+    },
+    {
+     "name": "ov80_0222A5A4",
+     "mode": "thumb",
+     "insns": 30,
+     "size_est": 60,
+     "status": "matched"
+    },
+    {
+     "name": "ov80_0222A5E0",
+     "mode": "thumb",
+     "insns": 104,
+     "size_est": 216,
+     "status": "matched"
+    },
+    {
+     "name": "ov80_0222A6B8",
+     "mode": "thumb",
+     "insns": 127,
+     "size_est": 276,
+     "status": "matched"
+    },
+    {
+     "name": "ov80_0222A7CC",
+     "mode": "thumb",
+     "insns": 12,
+     "size_est": 30,
+     "status": "matched"
+    },
+    {
+     "name": "ov80_0222A7EC",
+     "mode": "thumb",
+     "insns": 39,
+     "size_est": 82,
+     "status": "matched"
+    },
+    {
+     "name": "ov80_0222A840",
+     "mode": "thumb",
+     "insns": 4,
+     "size_est": 12,
+     "status": "matched"
+    }
+   ],
+   "source": "retained_asm"
   },
   {
    "file": "asm/frontier_system.s",
@@ -124840,10 +126657,195 @@
    ]
   },
   {
-   "file": "asm/frontier/overlay_80_02230B8C.s",
+   "file": "asm/overlay_80_02230B8C.s",
    "lsf_kind": "src",
-   "status": "upstream",
-   "functions": []
+   "status": "matched",
+   "lines": 678,
+   "function_count": 15,
+   "text_bytes_est": 1222,
+   "data_only": false,
+   "sections": {
+    "rodata_bytes": 0,
+    "data_bytes": 0,
+    "bss_bytes": 0,
+    "other_bytes": 0
+   },
+   "other_sections": [],
+   "jumptable_words": 0,
+   "imports": [
+    "BattleSetup_Delete",
+    "FrontierScriptContext_Pause",
+    "FrontierScriptContext_ReadHalfWord",
+    "FrontierScript_ReadVar",
+    "FrontierScript_ReadVarPtr",
+    "Frontier_GetData",
+    "Frontier_GetLaunchArgs",
+    "Frontier_LaunchApplication",
+    "Frontier_SetData",
+    "GetMonData",
+    "GfGfx_EngineATogglePlanes",
+    "Heap_Alloc",
+    "Heap_Free",
+    "IsBattleResultWin",
+    "MI_CpuFill8",
+    "OS_ResetSystem",
+    "Party_AddMon",
+    "Party_GetMonByIndex",
+    "SaveArray_Party_Get",
+    "SaveArray_Party_Init",
+    "SetMonData",
+    "Sound_SetSceneAndPlayBGM",
+    "gOverlayTemplate_Battle",
+    "ov80_0222A474",
+    "ov80_0222BE9C",
+    "ov80_0222F44C",
+    "ov80_022310C4",
+    "ov80_022313C0",
+    "ov80_022314A0",
+    "ov80_022314DC",
+    "ov80_0223151C",
+    "ov80_0223157C",
+    "ov80_022317C0",
+    "ov80_022317CC",
+    "ov80_022317D0",
+    "ov80_02231804",
+    "ov80_02231828",
+    "ov80_02231844",
+    "ov80_02231888",
+    "ov80_022319B0",
+    "ov80_02231A04",
+    "ov80_022375D0",
+    "ov80_0223787C",
+    "ov80_0223792C",
+    "ov80_0223BDEC",
+    "sub_02030B14",
+    "sub_02030BD0",
+    "sub_02030BF4",
+    "sub_02096910"
+   ],
+   "exports": [
+    "FrtCmd_118",
+    "FrtCmd_139",
+    "FrtCmd_140",
+    "FrtCmd_141",
+    "FrtCmd_142",
+    "FrtCmd_143",
+    "FrtCmd_144",
+    "FrtCmd_145",
+    "FrtCmd_146",
+    "FrtCmd_147",
+    "FrtCmd_148",
+    "FrtCmd_149",
+    "FrtCmd_199"
+   ],
+   "functions": [
+    {
+     "name": "FrtCmd_139",
+     "mode": "thumb",
+     "insns": 34,
+     "size_est": 82,
+     "status": "matched"
+    },
+    {
+     "name": "FrtCmd_140",
+     "mode": "thumb",
+     "insns": 11,
+     "size_est": 28,
+     "status": "matched"
+    },
+    {
+     "name": "FrtCmd_141",
+     "mode": "thumb",
+     "insns": 7,
+     "size_est": 18,
+     "status": "matched"
+    },
+    {
+     "name": "FrtCmd_142",
+     "mode": "thumb",
+     "insns": 90,
+     "size_est": 204,
+     "status": "matched"
+    },
+    {
+     "name": "FrtCmd_143",
+     "mode": "thumb",
+     "insns": 15,
+     "size_est": 36,
+     "status": "matched"
+    },
+    {
+     "name": "FrtCmd_144",
+     "mode": "thumb",
+     "insns": 33,
+     "size_est": 76,
+     "status": "matched"
+    },
+    {
+     "name": "ov80_02230D5C",
+     "mode": "thumb",
+     "insns": 8,
+     "size_est": 20,
+     "status": "matched"
+    },
+    {
+     "name": "FrtCmd_145",
+     "mode": "thumb",
+     "insns": 231,
+     "size_est": 522,
+     "status": "matched"
+    },
+    {
+     "name": "FrtCmd_146",
+     "mode": "thumb",
+     "insns": 11,
+     "size_est": 26,
+     "status": "matched"
+    },
+    {
+     "name": "FrtCmd_147",
+     "mode": "thumb",
+     "insns": 19,
+     "size_est": 48,
+     "status": "matched"
+    },
+    {
+     "name": "FrtCmd_148",
+     "mode": "thumb",
+     "insns": 13,
+     "size_est": 30,
+     "status": "matched"
+    },
+    {
+     "name": "ov80_02231040",
+     "mode": "thumb",
+     "insns": 20,
+     "size_est": 44,
+     "status": "matched"
+    },
+    {
+     "name": "FrtCmd_149",
+     "mode": "thumb",
+     "insns": 25,
+     "size_est": 56,
+     "status": "matched"
+    },
+    {
+     "name": "FrtCmd_118",
+     "mode": "thumb",
+     "insns": 11,
+     "size_est": 28,
+     "status": "matched"
+    },
+    {
+     "name": "FrtCmd_199",
+     "mode": "thumb",
+     "insns": 2,
+     "size_est": 4,
+     "status": "matched"
+    }
+   ],
+   "source": "harness"
   },
   {
    "file": "asm/overlay_80_022310C4.s",
@@ -126575,10 +128577,195 @@
    "kept_c": false
   },
   {
-   "file": "asm/frontier/overlay_80_02235900.s",
+   "file": "asm/overlay_80_02235900.s",
    "lsf_kind": "src",
-   "status": "upstream",
-   "functions": []
+   "status": "matched",
+   "lines": 879,
+   "function_count": 17,
+   "text_bytes_est": 1686,
+   "data_only": false,
+   "sections": {
+    "rodata_bytes": 0,
+    "data_bytes": 0,
+    "bss_bytes": 0,
+    "other_bytes": 0
+   },
+   "other_sections": [],
+   "jumptable_words": 0,
+   "imports": [
+    "FrontierFieldSystem_Free",
+    "FrontierFieldSystem_New",
+    "FrontierFieldSystem_SetRandomFrontierTrainers",
+    "FrontierSave_GetStat",
+    "FrontierScriptContext_Pause",
+    "FrontierScriptContext_ReadHalfWord",
+    "FrontierScript_ReadVar",
+    "FrontierScript_ReadVarPtr",
+    "Frontier_GetData",
+    "Frontier_GetLaunchArgs",
+    "Frontier_SetData",
+    "HealParty",
+    "Heap_Free",
+    "SaveArray_Party_Get",
+    "Save_FrontierData_Get",
+    "Save_Frontier_GetStatic",
+    "ov80_0222A840",
+    "ov80_02235FC8",
+    "ov80_02235FEC",
+    "ov80_02235FF8",
+    "ov80_02236040",
+    "ov80_022385D8",
+    "ov80_02238610",
+    "sub_0202D57C",
+    "sub_02030C5C",
+    "sub_02031108",
+    "sub_0203769C",
+    "sub_02037B5C",
+    "sub_0204F878",
+    "sub_0205C048",
+    "sub_0205C11C",
+    "sub_0205C268",
+    "sub_02096910",
+    "sub_02096998"
+   ],
+   "exports": [
+    "FrtCmd_170",
+    "FrtCmd_171",
+    "FrtCmd_172",
+    "FrtCmd_173",
+    "FrtCmd_174",
+    "FrtCmd_175",
+    "FrtCmd_176",
+    "FrtCmd_177",
+    "FrtCmd_178",
+    "FrtCmd_179",
+    "FrtCmd_180",
+    "FrtCmd_181",
+    "FrtCmd_182",
+    "FrtCmd_202"
+   ],
+   "functions": [
+    {
+     "name": "FrtCmd_170",
+     "mode": "thumb",
+     "insns": 13,
+     "size_est": 32,
+     "status": "matched"
+    },
+    {
+     "name": "FrtCmd_171",
+     "mode": "thumb",
+     "insns": 7,
+     "size_est": 18,
+     "status": "matched"
+    },
+    {
+     "name": "FrtCmd_172",
+     "mode": "thumb",
+     "insns": 23,
+     "size_est": 58,
+     "status": "matched"
+    },
+    {
+     "name": "FrtCmd_173",
+     "mode": "thumb",
+     "insns": 13,
+     "size_est": 30,
+     "status": "matched"
+    },
+    {
+     "name": "ov80_02235990",
+     "mode": "thumb",
+     "insns": 16,
+     "size_est": 34,
+     "status": "matched"
+    },
+    {
+     "name": "FrtCmd_202",
+     "mode": "thumb",
+     "insns": 13,
+     "size_est": 30,
+     "status": "matched"
+    },
+    {
+     "name": "ov80_022359D4",
+     "mode": "thumb",
+     "insns": 28,
+     "size_est": 62,
+     "status": "matched"
+    },
+    {
+     "name": "FrtCmd_174",
+     "mode": "thumb",
+     "insns": 20,
+     "size_est": 46,
+     "status": "matched"
+    },
+    {
+     "name": "FrtCmd_175",
+     "mode": "thumb",
+     "insns": 30,
+     "size_est": 72,
+     "status": "matched"
+    },
+    {
+     "name": "FrtCmd_176",
+     "mode": "thumb",
+     "insns": 56,
+     "size_est": 120,
+     "status": "matched"
+    },
+    {
+     "name": "FrtCmd_177",
+     "mode": "thumb",
+     "insns": 12,
+     "size_est": 28,
+     "status": "matched"
+    },
+    {
+     "name": "FrtCmd_178",
+     "mode": "thumb",
+     "insns": 366,
+     "size_est": 840,
+     "status": "matched"
+    },
+    {
+     "name": "FrtCmd_179",
+     "mode": "thumb",
+     "insns": 100,
+     "size_est": 222,
+     "status": "matched"
+    },
+    {
+     "name": "FrtCmd_180",
+     "mode": "thumb",
+     "insns": 11,
+     "size_est": 28,
+     "status": "matched"
+    },
+    {
+     "name": "FrtCmd_181",
+     "mode": "thumb",
+     "insns": 6,
+     "size_est": 14,
+     "status": "matched"
+    },
+    {
+     "name": "ov80_02235F90",
+     "mode": "thumb",
+     "insns": 16,
+     "size_est": 34,
+     "status": "matched"
+    },
+    {
+     "name": "FrtCmd_182",
+     "mode": "thumb",
+     "insns": 7,
+     "size_est": 18,
+     "status": "matched"
+    }
+   ],
+   "source": "harness"
   },
   {
    "file": "asm/overlay_80_02235FC8.s",
@@ -126866,16 +129053,394 @@
    "kept_c": false
   },
   {
-   "file": "asm/frontier/overlay_80_02236B78.s",
+   "file": "asm/overlay_80_02236B78.s",
    "lsf_kind": "src",
-   "status": "upstream",
-   "functions": []
+   "status": "matched",
+   "lines": 1005,
+   "function_count": 17,
+   "text_bytes_est": 1808,
+   "data_only": false,
+   "sections": {
+    "rodata_bytes": 0,
+    "data_bytes": 8,
+    "bss_bytes": 0,
+    "other_bytes": 0
+   },
+   "other_sections": [],
+   "jumptable_words": 0,
+   "imports": [
+    "AllocMonZeroed",
+    "BattleSetup_AddMonToParty",
+    "BattleSetup_New",
+    "BattleSetup_SetAllySideBattlersToPlayer",
+    "CopyPokemonToPokemon",
+    "GF_AssertFail",
+    "HealParty",
+    "Heap_Free",
+    "LCRandom",
+    "Party_GetCount",
+    "Party_GetMonByIndex",
+    "Party_InitWithMaxSize",
+    "Party_RemoveMon",
+    "PlayerProfile_Copy",
+    "SaveArray_Party_Init",
+    "_s32_div_f",
+    "ov80_02229EF4",
+    "ov80_02229F04",
+    "ov80_0222A140",
+    "ov80_0222A3BC",
+    "ov80_0222A480",
+    "ov80_0222A52C",
+    "ov80_0223C464",
+    "ov80_0223C478",
+    "ov80_0223C47A",
+    "ov80_0223C47C",
+    "ov80_0223C47E",
+    "ov80_0223C4B8",
+    "ov80_0223C508",
+    "ov80_0223C558",
+    "sub_02034818",
+    "sub_0203769C",
+    "sub_02051D18"
+   ],
+   "exports": [
+    "ov80_02236BE4",
+    "ov80_02236C2C",
+    "ov80_02236C9C",
+    "ov80_02236DD4",
+    "ov80_02236DF8",
+    "ov80_02236E24",
+    "ov80_02236E90",
+    "ov80_02236F24",
+    "ov80_02237120",
+    "ov80_02237130",
+    "ov80_022371B0",
+    "ov80_02237254",
+    "ov80_022372B4",
+    "ov80_0223DD38"
+   ],
+   "functions": [
+    {
+     "name": "ov80_02236B78",
+     "mode": "thumb",
+     "insns": 46,
+     "size_est": 96,
+     "status": "matched"
+    },
+    {
+     "name": "ov80_02236BE4",
+     "mode": "thumb",
+     "insns": 34,
+     "size_est": 70,
+     "status": "matched"
+    },
+    {
+     "name": "ov80_02236C2C",
+     "mode": "thumb",
+     "insns": 34,
+     "size_est": 70,
+     "status": "matched"
+    },
+    {
+     "name": "ov80_02236C78",
+     "mode": "thumb",
+     "insns": 16,
+     "size_est": 32,
+     "status": "matched"
+    },
+    {
+     "name": "ov80_02236C9C",
+     "mode": "thumb",
+     "insns": 149,
+     "size_est": 310,
+     "status": "matched"
+    },
+    {
+     "name": "ov80_02236DD4",
+     "mode": "thumb",
+     "insns": 14,
+     "size_est": 28,
+     "status": "matched"
+    },
+    {
+     "name": "ov80_02236DF8",
+     "mode": "thumb",
+     "insns": 18,
+     "size_est": 36,
+     "status": "matched"
+    },
+    {
+     "name": "ov80_02236E24",
+     "mode": "thumb",
+     "insns": 50,
+     "size_est": 108,
+     "status": "matched"
+    },
+    {
+     "name": "ov80_02236E90",
+     "mode": "thumb",
+     "insns": 71,
+     "size_est": 148,
+     "status": "matched"
+    },
+    {
+     "name": "ov80_02236F24",
+     "mode": "thumb",
+     "insns": 191,
+     "size_est": 460,
+     "status": "matched"
+    },
+    {
+     "name": "ov80_022370F4",
+     "mode": "thumb",
+     "insns": 18,
+     "size_est": 36,
+     "status": "matched"
+    },
+    {
+     "name": "ov80_02237120",
+     "mode": "thumb",
+     "insns": 7,
+     "size_est": 14,
+     "status": "matched"
+    },
+    {
+     "name": "ov80_02237130",
+     "mode": "thumb",
+     "insns": 55,
+     "size_est": 124,
+     "status": "matched"
+    },
+    {
+     "name": "ov80_022371B0",
+     "mode": "thumb",
+     "insns": 71,
+     "size_est": 158,
+     "status": "matched"
+    },
+    {
+     "name": "ov80_02237254",
+     "mode": "thumb",
+     "insns": 8,
+     "size_est": 16,
+     "status": "matched"
+    },
+    {
+     "name": "ov80_02237264",
+     "mode": "thumb",
+     "insns": 33,
+     "size_est": 68,
+     "status": "matched"
+    },
+    {
+     "name": "ov80_022372B4",
+     "mode": "thumb",
+     "insns": 16,
+     "size_est": 34,
+     "status": "matched"
+    }
+   ],
+   "source": "retained_asm"
   },
   {
-   "file": "asm/frontier/overlay_80_022372D8.s",
+   "file": "asm/overlay_80_022372D8.s",
    "lsf_kind": "src",
-   "status": "upstream",
-   "functions": []
+   "status": "matched",
+   "lines": 1027,
+   "function_count": 18,
+   "text_bytes_est": 1890,
+   "data_only": false,
+   "sections": {
+    "rodata_bytes": 0,
+    "data_bytes": 0,
+    "bss_bytes": 0,
+    "other_bytes": 0
+   },
+   "other_sections": [],
+   "jumptable_words": 0,
+   "imports": [
+    "AllocMonZeroed",
+    "BattleSetup_AddMonToParty",
+    "BattleSetup_New",
+    "BattleSetup_SetAllySideBattlersToPlayer",
+    "CalcShininessByOtIdAndPersonality",
+    "CopyPokemonToPokemon",
+    "FX_Sqrt",
+    "GetMonData",
+    "HealParty",
+    "Heap_Free",
+    "LCRandom",
+    "Party_GetMonByIndex",
+    "Party_InitWithMaxSize",
+    "PlayerProfile_Copy",
+    "SaveArray_Party_Get",
+    "UpdateMonAbility",
+    "_fadd",
+    "_ffix",
+    "_ffltu",
+    "_fsub",
+    "_s32_div_f",
+    "_u32_div_f",
+    "ov80_02229F04",
+    "ov80_0222A140",
+    "ov80_0222A480",
+    "ov80_0222A4EC",
+    "ov80_0223C5A8",
+    "ov80_0223C5B4",
+    "ov80_0223C5B8",
+    "ov80_0223C5E0",
+    "ov80_0223C608",
+    "ov80_0223C698",
+    "ov80_0223C738",
+    "ov80_0223C990",
+    "ov80_0223CD4A",
+    "ov80_0223D4C0",
+    "sub_02030BD0",
+    "sub_02034818",
+    "sub_0203769C",
+    "sub_02051D18"
+   ],
+   "exports": [
+    "ov80_022372D8",
+    "ov80_02237334",
+    "ov80_02237448",
+    "ov80_022375D0",
+    "ov80_0223787C",
+    "ov80_02237920",
+    "ov80_0223792C",
+    "ov80_0223793C",
+    "ov80_022379C8",
+    "ov80_02237A40"
+   ],
+   "functions": [
+    {
+     "name": "ov80_022372D8",
+     "mode": "thumb",
+     "insns": 41,
+     "size_est": 88,
+     "status": "matched"
+    },
+    {
+     "name": "ov80_02237334",
+     "mode": "thumb",
+     "insns": 131,
+     "size_est": 270,
+     "status": "matched"
+    },
+    {
+     "name": "ov80_02237448",
+     "mode": "thumb",
+     "insns": 187,
+     "size_est": 380,
+     "status": "matched"
+    },
+    {
+     "name": "ov80_022375D0",
+     "mode": "thumb",
+     "insns": 251,
+     "size_est": 588,
+     "status": "matched"
+    },
+    {
+     "name": "ov80_02237820",
+     "mode": "thumb",
+     "insns": 22,
+     "size_est": 46,
+     "status": "matched"
+    },
+    {
+     "name": "ov80_02237850",
+     "mode": "thumb",
+     "insns": 18,
+     "size_est": 36,
+     "status": "matched"
+    },
+    {
+     "name": "ov80_0223787C",
+     "mode": "thumb",
+     "insns": 6,
+     "size_est": 12,
+     "status": "matched"
+    },
+    {
+     "name": "ov80_02237888",
+     "mode": "thumb",
+     "insns": 6,
+     "size_est": 12,
+     "status": "matched"
+    },
+    {
+     "name": "ov80_02237894",
+     "mode": "thumb",
+     "insns": 47,
+     "size_est": 98,
+     "status": "matched"
+    },
+    {
+     "name": "ov80_022378F8",
+     "mode": "thumb",
+     "insns": 18,
+     "size_est": 38,
+     "status": "matched"
+    },
+    {
+     "name": "ov80_02237920",
+     "mode": "thumb",
+     "insns": 5,
+     "size_est": 10,
+     "status": "matched"
+    },
+    {
+     "name": "ov80_0223792C",
+     "mode": "thumb",
+     "insns": 8,
+     "size_est": 16,
+     "status": "matched"
+    },
+    {
+     "name": "ov80_0223793C",
+     "mode": "thumb",
+     "insns": 19,
+     "size_est": 46,
+     "status": "matched"
+    },
+    {
+     "name": "ov80_0223796C",
+     "mode": "thumb",
+     "insns": 8,
+     "size_est": 18,
+     "status": "matched"
+    },
+    {
+     "name": "ov80_02237980",
+     "mode": "thumb",
+     "insns": 31,
+     "size_est": 62,
+     "status": "matched"
+    },
+    {
+     "name": "ov80_022379C0",
+     "mode": "thumb",
+     "insns": 4,
+     "size_est": 8,
+     "status": "matched"
+    },
+    {
+     "name": "ov80_022379C8",
+     "mode": "thumb",
+     "insns": 50,
+     "size_est": 114,
+     "status": "matched"
+    },
+    {
+     "name": "ov80_02237A40",
+     "mode": "thumb",
+     "insns": 18,
+     "size_est": 48,
+     "status": "matched"
+    }
+   ],
+   "source": "retained_asm"
   },
   {
    "file": "asm/overlay_80_02237A70.s",
@@ -127637,10 +130202,127 @@
    ]
   },
   {
-   "file": "asm/frontier/overlay_80_02239960.s",
+   "file": "asm/overlay_80_02239960.s",
    "lsf_kind": "src",
-   "status": "upstream",
-   "functions": []
+   "status": "matched",
+   "lines": 228,
+   "function_count": 10,
+   "text_bytes_est": 398,
+   "data_only": false,
+   "sections": {
+    "rodata_bytes": 0,
+    "data_bytes": 0,
+    "bss_bytes": 0,
+    "other_bytes": 0
+   },
+   "other_sections": [],
+   "jumptable_words": 0,
+   "imports": [
+    "Camera_SetPerspectiveClippingPlane",
+    "GF_AssertFail",
+    "Heap_Alloc",
+    "Heap_Free",
+    "MI_CpuFill8",
+    "NNS_GfdDefaultFuncAllocPlttVram",
+    "NNS_GfdDefaultFuncAllocTexVram",
+    "Thunk_G3X_Reset",
+    "sub_02014DA0",
+    "sub_02014DB4",
+    "sub_02014EBC",
+    "sub_02015264",
+    "sub_0201526C",
+    "sub_02015354",
+    "sub_02015394",
+    "sub_02015420",
+    "sub_0201543C",
+    "sub_02015460",
+    "sub_020154B0",
+    "sub_020154D0",
+    "sub_02015524",
+    "sub_02015528"
+   ],
+   "exports": [
+    "ov80_02239960",
+    "ov80_02239980",
+    "ov80_022399A4",
+    "ov80_02239A1C",
+    "ov80_02239A38",
+    "ov80_02239A60",
+    "ov80_02239A74"
+   ],
+   "functions": [
+    {
+     "name": "ov80_02239960",
+     "mode": "thumb",
+     "insns": 12,
+     "size_est": 30,
+     "status": "matched"
+    },
+    {
+     "name": "ov80_02239980",
+     "mode": "thumb",
+     "insns": 15,
+     "size_est": 34,
+     "status": "matched"
+    },
+    {
+     "name": "ov80_022399A4",
+     "mode": "thumb",
+     "insns": 50,
+     "size_est": 116,
+     "status": "matched"
+    },
+    {
+     "name": "ov80_02239A1C",
+     "mode": "thumb",
+     "insns": 12,
+     "size_est": 28,
+     "status": "matched"
+    },
+    {
+     "name": "ov80_02239A38",
+     "mode": "thumb",
+     "insns": 14,
+     "size_est": 38,
+     "status": "matched"
+    },
+    {
+     "name": "ov80_02239A60",
+     "mode": "thumb",
+     "insns": 9,
+     "size_est": 20,
+     "status": "matched"
+    },
+    {
+     "name": "ov80_02239A74",
+     "mode": "thumb",
+     "insns": 17,
+     "size_est": 36,
+     "status": "matched"
+    },
+    {
+     "name": "ov80_02239A98",
+     "mode": "thumb",
+     "insns": 9,
+     "size_est": 24,
+     "status": "matched"
+    },
+    {
+     "name": "ov80_02239AB0",
+     "mode": "thumb",
+     "insns": 15,
+     "size_est": 36,
+     "status": "matched"
+    },
+    {
+     "name": "ov80_02239AD4",
+     "mode": "thumb",
+     "insns": 15,
+     "size_est": 36,
+     "status": "matched"
+    }
+   ],
+   "source": "harness"
   },
   {
    "file": "asm/overlay_80_02239AF8.s",
@@ -133494,7 +136176,13 @@
   {
    "file": "asm/battle_arcade_game_board_data2.s",
    "lsf_kind": "src",
-   "status": "upstream",
+   "status": "matched",
+   "source": "split_tu",
+   "split_from": "asm/battle_arcade_game_board_data.s",
+   "lines": 0,
+   "function_count": 0,
+   "text_bytes_est": 0,
+   "data_only": true,
    "functions": []
   },
   {
