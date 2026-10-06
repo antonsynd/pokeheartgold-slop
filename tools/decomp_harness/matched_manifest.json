@@ -1,5 +1,5 @@
 {
- "count": 529,
+ "count": 530,
  "game": "heartgold.us",
  "schema": 1,
  "tus": {
@@ -78335,6 +78335,126 @@
      "name": ".text",
      "sha1": "ab41ef382436bbec56db7a88e21e3c4e589036ad",
      "size": 8,
+     "type": 1
+    }
+   ]
+  },
+  "src/unk_02085604.c": {
+   "alloc_sha1": "314384cd3da598139fd0a0a332514b2bd8dd5c79",
+   "object": "build/heartgold.us/src/unk_02085604.o",
+   "sections": [
+    {
+     "name": ".rodata",
+     "sha1": "efda90a525d3d3fc2ff98211e9745f689f39bf4d",
+     "size": 172,
+     "type": 1
+    },
+    {
+     "name": ".data",
+     "sha1": "91e165289c89971bd8c5f3d3f37d49a5a13bd03d",
+     "size": 56,
+     "type": 1
+    },
+    {
+     "name": ".text",
+     "sha1": "41301fe34bf42266802682bbb8ba9565b1b038b3",
+     "size": 132,
+     "type": 1
+    },
+    {
+     "name": ".text",
+     "sha1": "36897700f9f6c2bec4e000153eef5716dcae7222",
+     "size": 384,
+     "type": 1
+    },
+    {
+     "name": ".text",
+     "sha1": "05f10b52d4670327117e608b5898492bc2e0035b",
+     "size": 24,
+     "type": 1
+    },
+    {
+     "name": ".text",
+     "sha1": "4e0928929f706ad4ef3441a712dfb3f924f75d80",
+     "size": 188,
+     "type": 1
+    },
+    {
+     "name": ".text",
+     "sha1": "3dacb1a070a84f4ebd7f04a6894ba0394d4e8156",
+     "size": 90,
+     "type": 1
+    },
+    {
+     "name": ".text",
+     "sha1": "ce8806b5370c9da0ef9f9668ceb98d73f90dcf89",
+     "size": 58,
+     "type": 1
+    },
+    {
+     "name": ".text",
+     "sha1": "95e4635eb655d3f3791487733583af775b4967ab",
+     "size": 632,
+     "type": 1
+    },
+    {
+     "name": ".text",
+     "sha1": "f51a95b7a138d6aa6c0d871651254f203494dcfc",
+     "size": 52,
+     "type": 1
+    },
+    {
+     "name": ".text",
+     "sha1": "2b9341f4c0adebb89d70897db6c254c728ea50c6",
+     "size": 864,
+     "type": 1
+    },
+    {
+     "name": ".text",
+     "sha1": "1c3b5df929b9dc66e2b1f76b5afe3c4a2edb32d5",
+     "size": 124,
+     "type": 1
+    },
+    {
+     "name": ".text",
+     "sha1": "f27b4a5ae4bc1f284c8049b3eb97a9bfce5b238a",
+     "size": 188,
+     "type": 1
+    },
+    {
+     "name": ".text",
+     "sha1": "bdbb4b83e26794fdc3442697d23190b55c27b029",
+     "size": 200,
+     "type": 1
+    },
+    {
+     "name": ".text",
+     "sha1": "bde3ca14574d2302af5af380dd0252ba1f3b8706",
+     "size": 424,
+     "type": 1
+    },
+    {
+     "name": ".text",
+     "sha1": "51fb927f9f8aec06cab20c374f0c72efa9deebed",
+     "size": 90,
+     "type": 1
+    },
+    {
+     "name": ".text",
+     "sha1": "c617f922e2229fdec313f645cb87b7525a0e7dae",
+     "size": 18,
+     "type": 1
+    },
+    {
+     "name": ".text",
+     "sha1": "be16208e00d0ae94e30be3fa438277e569e7dd2c",
+     "size": 40,
+     "type": 1
+    },
+    {
+     "name": ".text",
+     "sha1": "c4fa0329598806e9e54f32d77cf8a0e27eb685fb",
+     "size": 52,
      "type": 1
     }
    ]

@@ -681,6 +681,18 @@ MWCC folds the u16 narrowing of a left shift into one lsl/lsr pair: `u16 pal = w
 
 When a function caches 5+ ctx fields in locals and the retail register/stack-slot assignment and the retail load order imply DIFFERENT orderings, no ordering of `T *x = ctx->x;` init-declarations matches (they tie both to one order). Declare the locals WITHOUT initializers in the order that reproduces the register/spill-slot assignment (regs follow declaration order), then assign them in a separate block in the order that reproduces the load schedule and the base-offset register choice (the first-assigned field decides which offset is materialized as the base, e.g. 0x2F0 vs 0x2F4). Recipe: sweep all 120 init-declaration orders first to find the register order (look for SIZE fixed / fewest diffs), then sweep assignment orders with those declarations fixed. Seen in unk_020863F4 sub_02086490 (decl sys,narc,bg,pltt,mgr; assign sys,mgr,pltt,bg,narc).
 
+### Retail `beq skip; b <far epilogue>` (2-byte longer than reusing a nearby trampoline) = the rest of the body is nested in `if (x == 0) { ... }`, not an early `if (x != 0) return;`  <!-- id: far-early-return-beq-b-pair-means-nested-if -->
+
+When a long void function returns from an early guard and the epilogue is >256 bytes away, MWCC must route the conditional exit through an unconditional `b`. With an early `if (event != 0) return;` it reuses an existing nearby `b <epilogue>` trampoline (one `bne` to it, 2 bytes). Retail instead emitted `beq <next>; b <epilogue>` inline (4 bytes), so the function came out exactly 2 bytes short with every later branch offset shifted. Fix: wrap the remaining body in `if (event == 0) { ... }` (the inner early returns stay). Seen in unk_02085604 sub_02086180 (TouchHitboxController callback: state/unk374 guards, then `if (event == 0)` around the whole handler).
+
+### One `sub/add; str` after a join with the field RELOADED in the else arm = `if (c) f = X - 1; else f--;` (tail-merged), not a ternary or a temp  <!-- id: if-else-field-update-tail-merged-reload -->
+
+Retail: `cmp; bne else; ldr r0,[X]; b join; else: ldr r0,[f] (reload); join: sub r0,#1; str r0,[f]`. Both `f = (c ? X : f) - 1;` and `tmp = c ? X : f; f = tmp - 1;` let MWCC CSE the else-arm load (no reload) and shift registers. Writing two complete assignments `if (f == A) { f = X - 1; } else { f--; }` makes MWCC tail-merge the identical `sub; str` into one block after the join while keeping the reload in the else arm. Same for the increment form `if (f == N - 1) f = Y; else f++;` (join is just the `str`). Seen in unk_02085604 sub_02085C20 (L/R shoulder buttons moving the digit cursor).
+
+### A field load scheduled BEFORE a preceding-in-source store (or held in a scratch reg across the compare) = the source read it into a local first  <!-- id: load-before-store-means-local-temp -->
+
+Retail loads `digits[cur].unk4` into r3 before computing/comparing `cur + 1 == numDigitSlots`, and loads `digits[next].unk4` once and both compares and stores it. Writing `if (cur + 1 == ctx->n) ... else if (ctx->digits[cur].unk4 != ctx->digits[cur + 1].unk4) { ctx->arg = ctx->digits[cur + 1].unk4; }` re-reads and reorders. Introduce `group = digits[cur].unk4; next = cur + 1; if (next == n) {...} else { nextGroup = digits[next].unk4; if (group != nextGroup) arg = nextGroup; else arg = next; }`. Same when a store of a constant precedes in source but retail loads the stored-from field first (`v = digits[cur].unk4; pendingAction = 1; pendingArg = v;`). Seen 3x in unk_02085604 (sub_02085C20, sub_02085FFC, sub_02086180).
+
 ## Matching Tricks
 
 ### Small source changes that move codegen  <!-- id: decl-order-tricks -->
