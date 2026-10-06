@@ -1,12 +1,12 @@
 {
  "summary": {
-  "generated": "2026-10-06T21:56:11Z",
+  "generated": "2026-10-06T22:18:51Z",
   "by_status": {
    "matched": {
-    "files": 133,
-    "functions": 2499,
-    "insn_lines": 76829,
-    "text_bytes_est": 172042
+    "files": 134,
+    "functions": 2594,
+    "insn_lines": 78593,
+    "text_bytes_est": 176346
    },
    "blocked": {
     "files": 51,
@@ -15,10 +15,10 @@
     "text_bytes_est": 64116
    },
    "pending": {
-    "files": 145,
-    "functions": 15898,
-    "insn_lines": 793544,
-    "text_bytes_est": 1776856
+    "files": 144,
+    "functions": 15803,
+    "insn_lines": 791780,
+    "text_bytes_est": 1772552
    },
    "upstream": {
     "files": 397,
@@ -29,9 +29,9 @@
   },
   "function_totals": {
    "tracked": 19294,
-   "matched": 2499,
+   "matched": 2594,
    "partial_in_blocked": 20,
-   "pending": 15898
+   "pending": 15803
   },
   "blockers": [
    {
@@ -47,7 +47,7 @@
    {
     "id": "param-copyprop-cmp",
     "blocks_files": 0,
-    "gates_pending_files": 6
+    "gates_pending_files": 5
    },
    {
     "id": "objdiff-false-positives",
@@ -124,8 +124,8 @@
   },
   {
    "file": "asm/unk_02004A44.s",
-   "lsf_kind": "asm",
-   "status": "pending",
+   "lsf_kind": "src",
+   "status": "matched",
    "lines": 2672,
    "function_count": 95,
    "text_bytes_est": 4304,
@@ -278,406 +278,406 @@
      "mode": "thumb",
      "insns": 6,
      "size_est": 14,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "GF_SND_BGM_DisableCheck",
      "mode": "thumb",
      "insns": 5,
      "size_est": 12,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "sub_02004A60",
      "mode": "thumb",
      "insns": 19,
      "size_est": 46,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "GF_GetCurrentPlayingBGM",
      "mode": "thumb",
      "insns": 5,
      "size_est": 12,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "GF_SetCurrentPlayingBGM",
      "mode": "thumb",
      "insns": 6,
      "size_est": 14,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "sub_02004AAC",
      "mode": "thumb",
      "insns": 5,
      "size_est": 12,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "sub_02004AB8",
      "mode": "thumb",
      "insns": 6,
      "size_est": 14,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "Sound_SetFieldBGM",
      "mode": "thumb",
      "insns": 6,
      "size_est": 14,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "Sound_SetScene",
      "mode": "thumb",
      "insns": 15,
      "size_est": 34,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "sub_02004AFC",
      "mode": "thumb",
      "insns": 8,
      "size_est": 20,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "sub_02004B10",
      "mode": "thumb",
      "insns": 8,
      "size_est": 20,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "sub_02004B24",
      "mode": "thumb",
      "insns": 283,
      "size_est": 708,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "sub_02004EB4",
      "mode": "thumb",
      "insns": 7,
      "size_est": 14,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "Sound_SetSceneAndPlayBGM",
      "mode": "thumb",
      "insns": 110,
      "size_est": 262,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "sub_02005060",
      "mode": "thumb",
      "insns": 15,
      "size_est": 44,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "sub_0200508C",
      "mode": "thumb",
      "insns": 76,
      "size_est": 190,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "sub_02005150",
      "mode": "thumb",
      "insns": 32,
      "size_est": 84,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "sub_020051A4",
      "mode": "thumb",
      "insns": 48,
      "size_est": 130,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "sub_02005228",
      "mode": "thumb",
      "insns": 18,
      "size_est": 54,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "sub_02005260",
      "mode": "thumb",
      "insns": 11,
      "size_est": 32,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "sub_02005280",
      "mode": "thumb",
      "insns": 12,
      "size_est": 34,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "sub_020052A4",
      "mode": "thumb",
      "insns": 12,
      "size_est": 34,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "sub_020052C8",
      "mode": "thumb",
      "insns": 9,
      "size_est": 26,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "sub_020052E4",
      "mode": "thumb",
      "insns": 11,
      "size_est": 30,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "BGM_SaveStateAndPlayNew",
      "mode": "thumb",
      "insns": 7,
      "size_est": 20,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "sub_02005318",
      "mode": "thumb",
      "insns": 5,
      "size_est": 14,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "sub_02005328",
      "mode": "thumb",
      "insns": 47,
      "size_est": 114,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "sub_020053A8",
      "mode": "thumb",
      "insns": 29,
      "size_est": 72,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "Sound_ClearBGMPauseFlags",
      "mode": "thumb",
      "insns": 10,
      "size_est": 24,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "GF_SndHandleMoveVolume",
      "mode": "thumb",
      "insns": 14,
      "size_est": 34,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "GF_SndHandleSetInitialVolume",
      "mode": "thumb",
      "insns": 11,
      "size_est": 26,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "sub_02005448",
      "mode": "thumb",
      "insns": 10,
      "size_est": 26,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "sub_02005464",
      "mode": "thumb",
      "insns": 22,
      "size_est": 52,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "GF_GetVolumeBySeqNo",
      "mode": "thumb",
      "insns": 8,
      "size_est": 18,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "GF_SetVolumeBySeqNo",
      "mode": "thumb",
      "insns": 7,
      "size_est": 20,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "GF_SndPlayerCountPlayingSeqByPlayerNo",
      "mode": "thumb",
      "insns": 7,
      "size_est": 18,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "GF_GetPlayerNoBySeq",
      "mode": "thumb",
      "insns": 12,
      "size_est": 26,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "GF_NNS_SndPlayerGetSeqNo",
      "mode": "thumb",
      "insns": 3,
      "size_est": 6,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "GF_GetBankInfoBySeqNo",
      "mode": "thumb",
      "insns": 4,
      "size_est": 12,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "GF_GetBankBySeqNo",
      "mode": "thumb",
      "insns": 8,
      "size_est": 18,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "sub_02005518",
      "mode": "thumb",
      "insns": 3,
      "size_est": 6,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "GF_MIC_StartAutoSampling",
      "mode": "thumb",
      "insns": 21,
      "size_est": 44,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "GF_MIC_StopAutoSampling",
      "mode": "thumb",
      "insns": 9,
      "size_est": 22,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "GF_MicPauseOnLidClose",
      "mode": "thumb",
      "insns": 11,
      "size_est": 26,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "GF_MicResumeOnLidOpen",
      "mode": "thumb",
      "insns": 15,
      "size_est": 36,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "sub_020055AC",
      "mode": "thumb",
      "insns": 34,
      "size_est": 84,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "sub_02005600",
      "mode": "thumb",
      "insns": 53,
      "size_est": 126,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "sub_02005680",
      "mode": "thumb",
      "insns": 41,
      "size_est": 102,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "sub_020056E8",
      "mode": "thumb",
      "insns": 29,
      "size_est": 62,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "sub_02005728",
      "mode": "thumb",
      "insns": 5,
      "size_est": 14,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "sub_02005738",
      "mode": "thumb",
      "insns": 5,
      "size_est": 14,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "sub_02005748",
      "mode": "thumb",
      "insns": 10,
      "size_est": 24,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "sub_02005760",
      "mode": "thumb",
      "insns": 7,
      "size_est": 18,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "sub_02005774",
      "mode": "thumb",
      "insns": 22,
      "size_est": 56,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "sub_020057AC",
      "mode": "thumb",
      "insns": 100,
      "size_est": 234,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "sub_02005898",
      "mode": "thumb",
      "insns": 15,
      "size_est": 30,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "sub_020058B8",
      "mode": "thumb",
      "insns": 24,
      "size_est": 60,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "sub_020058F4",
      "mode": "thumb",
      "insns": 8,
      "size_est": 20,
-     "status": "pending",
+     "status": "matched",
      "copyprop_entry": true
     },
     {
@@ -685,261 +685,262 @@
      "mode": "thumb",
      "insns": 3,
      "size_est": 6,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "sub_02005910",
      "mode": "thumb",
      "insns": 3,
      "size_est": 6,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "GF_SndHandleSetTrackPitch",
      "mode": "thumb",
      "insns": 8,
      "size_est": 20,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "sub_0200592C",
      "mode": "thumb",
      "insns": 9,
      "size_est": 24,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "sub_02005944",
      "mode": "thumb",
      "insns": 8,
      "size_est": 20,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "GF_SndHandleSetTrackPan",
      "mode": "thumb",
      "insns": 8,
      "size_est": 20,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "GF_SndHandleSetTempoRatio",
      "mode": "thumb",
      "insns": 6,
      "size_est": 16,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "GF_SndSetMonoFlag",
      "mode": "thumb",
      "insns": 8,
      "size_est": 18,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "sub_02005990",
      "mode": "thumb",
      "insns": 6,
      "size_est": 14,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "sub_020059A0",
      "mode": "thumb",
      "insns": 6,
      "size_est": 14,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "GF_SndGetAfterFadeDelayTimer",
      "mode": "thumb",
      "insns": 14,
      "size_est": 30,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "Sound_SetMasterVolume",
      "mode": "thumb",
      "insns": 3,
      "size_est": 6,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "sub_020059D8",
      "mode": "thumb",
      "insns": 3,
      "size_est": 6,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "sub_020059E0",
      "mode": "thumb",
      "insns": 6,
      "size_est": 14,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "GF_NowStartMusicId",
      "mode": "thumb",
      "insns": 15,
      "size_est": 32,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "sub_02005A10",
      "mode": "thumb",
      "insns": 26,
      "size_est": 58,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "GF_FadeStartMusicId",
      "mode": "thumb",
      "insns": 18,
      "size_est": 38,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "sub_02005A74",
      "mode": "thumb",
      "insns": 26,
      "size_est": 58,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "sub_02005AB0",
      "mode": "thumb",
      "insns": 23,
      "size_est": 60,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "GF_SndSetAllocatableChannelForBGMPlayer",
      "mode": "thumb",
      "insns": 5,
      "size_est": 10,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "sub_02005AF8",
      "mode": "thumb",
      "insns": 14,
      "size_est": 36,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "sub_02005B20",
      "mode": "thumb",
      "insns": 18,
      "size_est": 48,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "GF_SndHandleSetPlayerVolume",
      "mode": "thumb",
      "insns": 3,
      "size_est": 6,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "sub_02005B58",
      "mode": "thumb",
      "insns": 6,
      "size_est": 14,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "sub_02005B68",
      "mode": "thumb",
      "insns": 6,
      "size_est": 14,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "sub_02005B78",
      "mode": "thumb",
      "insns": 17,
      "size_est": 46,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "sub_02005BA8",
      "mode": "thumb",
      "insns": 28,
      "size_est": 62,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "sub_02005BEC",
      "mode": "thumb",
      "insns": 6,
      "size_est": 14,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "sub_02005BFC",
      "mode": "thumb",
      "insns": 5,
      "size_est": 12,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "sub_02005C08",
      "mode": "thumb",
      "insns": 6,
      "size_est": 14,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "SoundSys_GetGBSoundsState",
      "mode": "thumb",
      "insns": 5,
      "size_est": 12,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "SoundSys_ToggleGBSounds",
      "mode": "thumb",
      "insns": 27,
      "size_est": 72,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "GBSounds_GetGBSeqNoByDSSeqNo",
      "mode": "thumb",
      "insns": 20,
      "size_est": 40,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "GBSounds_GetDSSeqNoByGBSeqNo",
      "mode": "thumb",
      "insns": 19,
      "size_est": 38,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "GBSounds_SetAllocatableChannels",
      "mode": "thumb",
      "insns": 19,
      "size_est": 50,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "sub_02005CF4",
      "mode": "thumb",
      "insns": 5,
      "size_est": 10,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "sub_02005D00",
      "mode": "thumb",
      "insns": 7,
      "size_est": 14,
-     "status": "pending"
+     "status": "matched"
     }
-   ]
+   ],
+   "source": "harness"
   },
   {
    "file": "asm/unk_02005D10.s",

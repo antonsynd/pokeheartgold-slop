@@ -965,6 +965,10 @@ src/overlay_18_021F7ED4.c ov18_021F7ED4 (SIZE 660 vs 656, then 3-hunk diff). Sha
 
 When a call result is both stored to a struct field and kept in a callee-saved local, the retail order `bl f; str r0,[r4,#off]; adds r7,r0,#0` (store FIRST, then copy to the local reg) comes from the chained form `FieldEnvSubUnk18 *unk = fenv->unk18 = ov01_021E90C0();`. Writing it as two statements (`unk = ov01_021E90C0(); fenv->unk18 = unk;`) makes MWCC move into r7 first and store r7 (`adds r7,r0,#0; str r7,[r4,#off]`) -- same size, 2 swapped halfwords. Seen unk_02056680 sub_020567B4. Related: [[chained-assign-store-order-and-alias-reload]].
 
+### Entry `adds r4,rN,#0; bpl/bmi/beq/bne` (param copy whose FLAGS are the test vs 0, no cmp) IS plain C -- only `cmp rCopy,#N` (N != 0) is the param-copyprop-cmp blocker  <!-- id: param-copy-flag-test-vs-zero-is-plain-c -->
+
+Refines [[param-copyprop-cmp]]. When the parameter copy instruction itself sets the flags for a compare-with-zero (`add r4, r1, #0; bpl L` for `if (v < 0) v = 0;`, `add r5, r0, #0 ... bne L` for `GF_ASSERT(p != NULL)`), MWCC emits exactly that from ordinary C because the copy (kept live across a later call) is the flag-setting op. Matched in plain C in unk_02004A44: GF_SndHandleSetInitialVolume (clamp 0..0x7F), GF_SndPlayerCountPlayingSeqByPlayerNo (GF_ASSERT(playerNo >= 0)), sub_02005B78 (GF_ASSERT(dst != NULL)) -- a drafter had pre-emptively written all three as NONMATCHING asm. Also: asmscan flags `bl X; adds r4,r0,#0; cmp r4,#1` (a SAVED RETURN value, e.g. sub_020058F4) as a copyprop site -- that is a false positive and is plain C. Always try the C variant (temporarily `#if 1` the NONMATCHING branch) and byte-check before keeping an asm fallback.
+
 ## IPA (-ipa file) Behavior
 
 ### Shared-header signatures are load-bearing across compilation units  <!-- id: ipa-shared-headers -->

@@ -1799,6 +1799,12 @@
       "category": "codegen",
       "title": "A field load scheduled BEFORE a preceding-in-source store (or held in a scratch reg across the compare) = the source read it into a local first",
       "body": "Retail loads `digits[cur].unk4` into r3 before computing/comparing `cur + 1 == numDigitSlots`, and loads `digits[next].unk4` once and both compares and stores it. Writing `if (cur + 1 == ctx->n) ... else if (ctx->digits[cur].unk4 != ctx->digits[cur + 1].unk4) { ctx->arg = ctx->digits[cur + 1].unk4; }` re-reads and reorders. Introduce `group = digits[cur].unk4; next = cur + 1; if (next == n) {...} else { nextGroup = digits[next].unk4; if (group != nextGroup) arg = nextGroup; else arg = next; }`. Same when a store of a constant precedes in source but retail loads the stored-from field first (`v = digits[cur].unk4; pendingAction = 1; pendingArg = v;`). Seen 3x in unk_02085604 (sub_02085C20, sub_02085FFC, sub_02086180)."
+    },
+    {
+      "id": "param-copy-flag-test-vs-zero-is-plain-c",
+      "category": "matching-tricks",
+      "title": "Entry `adds r4,rN,#0; bpl/bmi/beq/bne` (param copy whose FLAGS are the test vs 0, no cmp) IS plain C -- only `cmp rCopy,#N` (N != 0) is the param-copyprop-cmp blocker",
+      "body": "Refines [[param-copyprop-cmp]]. When the parameter copy instruction itself sets the flags for a compare-with-zero (`add r4, r1, #0; bpl L` for `if (v < 0) v = 0;`, `add r5, r0, #0 ... bne L` for `GF_ASSERT(p != NULL)`), MWCC emits exactly that from ordinary C because the copy (kept live across a later call) is the flag-setting op. Matched in plain C in unk_02004A44: GF_SndHandleSetInitialVolume (clamp 0..0x7F), GF_SndPlayerCountPlayingSeqByPlayerNo (GF_ASSERT(playerNo >= 0)), sub_02005B78 (GF_ASSERT(dst != NULL)) -- a drafter had pre-emptively written all three as NONMATCHING asm. Also: asmscan flags `bl X; adds r4,r0,#0; cmp r4,#1` (a SAVED RETURN value, e.g. sub_020058F4) as a copyprop site -- that is a false positive and is plain C. Always try the C variant (temporarily `#if 1` the NONMATCHING branch) and byte-check before keeping an asm fallback."
     }
   ]
 }

@@ -950,6 +950,16 @@
       "attempts": 16,
       "result": "matched",
       "note": "compare-verified (HG + SS full ROM SHA1 OK). Numeric-input app state machine (init/main/animate/fade-out state table), d-pad/button + touch input handlers, group-range bookkeeping and hitbox setup for UnkStruct_020850F4 (struct mirrored locally from unk_020863F4.c and refined: groupRanges u16 pairs @0x2AA, state/subState/timer @0x2C0, pending action @0x3AC, args block @0x3B8). Rodata matched in natural order: named const structs for the key grid + hit rects (struct-copied), const fn-ptr state table; scale tables as non-const f32 in .data. Keys: nested `if (event == 0)` for the far beq/b pair, group/next/nextGroup locals, tail-merged if/else for L/R cursor moves, separate inner loop counter."
+    },
+    {
+      "file": "asm/unk_02004A44.s",
+      "lines": 2672,
+      "functions": 95,
+      "matched_functions": 95,
+      "nonmatching": 0,
+      "attempts": 6,
+      "result": "matched",
+      "note": "compare-verified (HG + SS full ROM SHA1 OK). Sound/BGM scene + SE-group loading, wave-out channels, mic auto-sampling, GB-sounds DS<->GB seq table. First pass by decomp-drafter (Sonnet; draft extracted from its report since the agent type lacks Write): 92/95 first compile. Fixes: sub_020052E4 3rd pass-through arg (5 call sites), byte-reverse loop recomputing size-1, decl order in sub_0200508C. The 3 drafter NONMATCHING asm blocks (param copy + bpl/bne vs 0) match in plain C, so the file is 95/95 C. Public include/sound_02004A44.h left frozen and NOT included (local prototypes with true types); rodata (8-entry pitch/volume table, 0x88 DS/GB seq pairs) and bss (0x10, 0x28, 0x7D0) matched in definition order."
     }
   ],
   "failed": [
@@ -1368,8 +1378,8 @@
     }
   ],
   "stats": {
-    "total_attempts": 232,
-    "total_matched": 87,
+    "total_attempts": 238,
+    "total_matched": 88,
     "total_failed": 31
   },
   "matched": [
@@ -1481,6 +1491,7 @@
     "asm/overlay_14_021F4B90.s",
     "asm/overlay_01_022031C0.s",
     "asm/unk_020863F4.s",
-    "asm/unk_02085604.s"
+    "asm/unk_02085604.s",
+    "asm/unk_02004A44.s"
   ]
 }
