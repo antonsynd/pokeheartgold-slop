@@ -693,6 +693,10 @@ Retail: `cmp; bne else; ldr r0,[X]; b join; else: ldr r0,[f] (reload); join: sub
 
 Retail loads `digits[cur].unk4` into r3 before computing/comparing `cur + 1 == numDigitSlots`, and loads `digits[next].unk4` once and both compares and stores it. Writing `if (cur + 1 == ctx->n) ... else if (ctx->digits[cur].unk4 != ctx->digits[cur + 1].unk4) { ctx->arg = ctx->digits[cur + 1].unk4; }` re-reads and reorders. Introduce `group = digits[cur].unk4; next = cur + 1; if (next == n) {...} else { nextGroup = digits[next].unk4; if (group != nextGroup) arg = nextGroup; else arg = next; }`. Same when a store of a constant precedes in source but retail loads the stored-from field first (`v = digits[cur].unk4; pendingAction = 1; pendingArg = v;`). Seen 3x in unk_02085604 (sub_02085C20, sub_02085FFC, sub_02086180).
 
+### When a function builds a stack template first, the ORDER of the template field stores (not local decl order) decides which callee-saved reg each parameter copy gets  <!-- id: template-init-order-sets-param-copy-regs -->
+
+In ov41_022485DC (overlay_41_02248400) the params board/type/idx were assigned r5/r4/r6 instead of retail r5/r6/r4, and 120 declaration orders of the locals changed nothing. Sweeping the order of the first five `tmpl.field = ...` statements fixed every register: retail is `tmpl.unk_00 = board->unk_58; tmpl.unk_18 = idx; tmpl.unk_04 = ...;` (the first statement must load through `board`, so board is copied first, and idx is used second). Its store order in the asm (unk_18 first) is the scheduler, not the source order. Afterwards only stack slots differed; swap the address-taken locals declaration order (`int x, y;` before `int w, h;`; first declared = higher sp offset). Recipe: when params land in rotated callee-saved regs and decl order has no effect, sweep the order of the opening statements (5! = 120 compiles, ~7 min with compile_one.sh).
+
 ## Matching Tricks
 
 ### Small source changes that move codegen  <!-- id: decl-order-tricks -->

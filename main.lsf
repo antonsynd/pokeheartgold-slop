@@ -828,7 +828,7 @@ Overlay OVY_41
     Object asm/overlay_41_02245EA0.o
     Object asm/overlay_41_02246B34.o
     Object asm/overlay_41_02247828.o
-    Object asm/overlay_41_02248400.o
+    Object src/overlay_41_02248400.o
     Object asm/overlay_41_02248ED4.o
     Object asm/overlay_41_02249A40.o
     Object asm/overlay_41_0224A5A4.o

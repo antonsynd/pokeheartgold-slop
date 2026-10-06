@@ -1,0 +1,1288 @@
+{
+  "file": "asm/frontier_map.s",
+  "functions": [
+    {
+      "name": "FrontierMap_Init",
+      "mode": "thumb",
+      "signature_guess": "FrontierMap *FrontierMap_Init(void *frontierWork)",
+      "confidence": "high",
+      "callees": [
+        "Frontier_GetLaunchArgs",
+        "Save_PlayerData_GetProfile",
+        "Main_SetVBlankIntrCB",
+        "HBlankInterruptDisable",
+        "GfGfx_DisableEngineAPlanes",
+        "GfGfx_DisableEngineBPlanes",
+        "Heap_Create",
+        "Heap_Alloc",
+        "MI_CpuFill8",
+        "ov80_022392DC",
+        "PaletteData_Init",
+        "PaletteData_SetAutoTransparent",
+        "PaletteData_AllocBuffers",
+        "BgConfig_Alloc",
+        "GF_CreateVramTransferManager",
+        "SetKeyRepeatTimers",
+        "FrontierMap_SetVramBank",
+        "FrontierMap_LoadPaletteData",
+        "ov80_02238FA0",
+        "sub_020210BC",
+        "sub_02021148",
+        "ov80_02239384",
+        "ov80_02239960",
+        "ov80_02239004",
+        "SysTask_CreateOnMainQueue",
+        "GfGfx_BothDispOn",
+        "GfGfx_EngineATogglePlanes",
+        "GfGfx_EngineBTogglePlanes",
+        "ov80_0222ACA0",
+        "Sound_SetFieldBGM",
+        "sub_02055198",
+        "TextFlags_SetAutoScrollParam",
+        "TextFlags_SetCanABSpeedUpPrint",
+        "TextFlags_SetCanTouchSpeedUpPrint",
+        "SysTask_CreateOnVBlankQueue",
+        "ov80_0222AD9C",
+        "sub_0203A880"
+      ],
+      "struct_accesses": [
+        {
+          "param": 0,
+          "offset": "0x8",
+          "width": 4,
+          "meaning": "map->frontierWork = param"
+        },
+        {
+          "param": 0,
+          "offset": "0xc1",
+          "width": 1,
+          "meaning": "map->frontierIdx = launchArgs->unk20"
+        },
+        {
+          "param": 0,
+          "offset": "0x70",
+          "width": 2,
+          "meaning": "u16[8] loaded res ids, init 0xFFFF loop"
+        }
+      ],
+      "callback_refs": [
+        "ov80_02238AB0 SysTask main prio 60000 -> map+0x94",
+        "ov80_02238ABC SysTask main prio 61000 -> map+0x98",
+        "FrontierMap_Update SysTask main prio 80000 -> map+0x9C",
+        "FrontierMap_VBlank as VBlank intr cb",
+        "ov80_02238AAC SysTask vblank prio 10 -> map+0xA0"
+      ],
+      "notes": "Order: args=Frontier_GetLaunchArgs(work); profile=Save_PlayerData_GetProfile(args->saveData); u8 idx=args->unk20; Main_SetVBlankIntrCB(NULL,NULL); HBlankInterruptDisable(); DisableA/B planes; GX_SetVisiblePlane(0); GXS_SetVisiblePlane(0); GX_SetVisibleWnd(GX_WNDMASK_NONE); GXS_SetVisibleWnd(0); G2_BlendNone(); G2S_BlendNone(); GX_SetDispSelect(GX_DISP_SELECT_MAIN_SUB) (POWCNT|=0x8000); Heap_Create(HEAP_ID_3,0x65,0x90000); map=Heap_Alloc(0x65,0xC4); MI_CpuFill8(map,0,0xC4); map->work=work; map->idxC1=idx; for i<8 unk70[i]=0xFFFF; unkC=ov80_022392DC(0x65); paletteData=PaletteData_Init(0x65); SetAutoTransparent(pd,TRUE); AllocBuffers(pd,0,0x200),(1,0x200),(2,0x1C0),(3,0x200) heap 0x65; bgConfig=BgConfig_Alloc(0x65); GF_CreateVramTransferManager(0x40,0x65); SetKeyRepeatTimers(4,8); FrontierMap_SetVramBank(map->bgConfig, idx); LoadPaletteData(map); ov80_02238FA0(map); sub_020210BC(); sub_02021148(4); ov80_02239384(map); unk10=ov80_02239960(0x65); ov80_02239004(map, idx, profile); 3 main SysTasks; GfGfx_BothDispOn(); Engine A/B TogglePlanes(GX_PLANEMASK_OBJ(0x10), ON); Sound_SetFieldBGM(ov80_0222ACA0(idx,3)) (u16 narrowing); sub_02055198(NULL, ov80_0222ACA0(idx,3)) (ACA0 called twice); TextFlags_SetAutoScrollParam(1); SetCanABSpeedUpPrint(FALSE); SetCanTouchSpeedUpPrint(FALSE); Main_SetVBlankIntrCB(FrontierMap_VBlank,map); taskA0=SysTask_CreateOnVBlankQueue(ov80_02238AAC,map,10); ov80_0222AD9C(map,&map->unk90,map->unkC1); sub_0203A880(); return map. Called from src/frontier.c via local extern FrontierMap *FrontierMap_Init(FrontierWork *)."
+    },
+    {
+      "name": "FrontierMap_Free",
+      "mode": "thumb",
+      "signature_guess": "void FrontierMap_Free(FrontierMap *map)",
+      "confidence": "high",
+      "callees": [
+        "Frontier_GetLaunchArgs",
+        "ov80_0222ADB4",
+        "ov80_0223927C",
+        "GfGfx_EngineATogglePlanes",
+        "FreeBgTilemapBuffer",
+        "ToggleBgLayer",
+        "ov80_022393E8",
+        "ov80_02239980",
+        "GF_DestroyVramTransferManager",
+        "PaletteData_FreeBuffers",
+        "PaletteData_Free",
+        "Heap_Free",
+        "SysTask_Destroy",
+        "ov80_0223937C",
+        "sub_02021238",
+        "Main_SetVBlankIntrCB",
+        "HBlankInterruptDisable",
+        "Heap_Destroy",
+        "TextFlags_SetCanABSpeedUpPrint",
+        "TextFlags_SetAutoScrollParam",
+        "TextFlags_SetCanTouchSpeedUpPrint",
+        "sub_0203A914",
+        "MIi_CpuClear16"
+      ],
+      "struct_accesses": [
+        {
+          "param": 0,
+          "offset": "0x94",
+          "width": 4,
+          "meaning": "SysTask* x4 at 0x94/0x98/0x9C/0xA0 destroyed"
+        }
+      ],
+      "notes": "Frontier_GetLaunchArgs(map->work) result DISCARDED (keep the bare call). ov80_0222ADB4(map,&map->unk90,map->unkC1); ov80_0223927C(map); EngineATogglePlanes(BG0,OFF),(BG1,OFF); FreeBgTilemapBuffer(bg,1),(2),(3); ToggleBgLayer(4,0); FreeBgTilemapBuffer(bg,4); ov80_022393E8(map); ov80_02239980(map->unk10); GF_DestroyVramTransferManager(); FreeBuffers 0..3; PaletteData_Free; Heap_Free(map->bgConfig); SysTask_Destroy x4; ov80_0223937C(map->unkC); sub_02021238(); Heap_Free(map); GX_SetVisibleWnd(GX_WNDMASK_NONE); GXS_SetVisibleWnd(0); Main_SetVBlankIntrCB(NULL,NULL); HBlankInterruptDisable(); Heap_Destroy(0x65); SetCanABSpeedUpPrint(FALSE); SetAutoScrollParam(0); SetCanTouchSpeedUpPrint(FALSE); sub_0203A914(); MI_CpuFill16((void*)HW_BG_PLTT,0x7FFF,0x200) then HW_OBJ_PLTT, HW_DB_BG_PLTT, HW_DB_OBJ_PLTT; G2_BlendNone(); G2S_BlendNone()."
+    },
+    {
+      "name": "ov80_022389C4",
+      "mode": "thumb",
+      "signature_guess": "void ov80_022389C4(FrontierMap *map)",
+      "confidence": "high",
+      "callees": [
+        "sub_0209686C",
+        "ov42_02228188",
+        "ov42_022291F4",
+        "ov80_02239740"
+      ],
+      "struct_accesses": [
+        {
+          "param": 0,
+          "offset": "0x8",
+          "width": 4,
+          "meaning": "frontierWork"
+        }
+      ],
+      "notes": "for i<0x20: e=sub_0209686C(map->work,i); if(e->obj){ e->tmpl.unkA(u8,+0x12)=ov42_02228188(e->obj,6); e->tmpl.unk2(+0xA)=..(5); e->tmpl.x(+0xE)=..(0); e->tmpl.y(+0x10)=..(1); e->tmpl.unkB(+0x13)=ov42_022291F4(e->unk4);} then ov80_02239740(map). Constant 6 hoisted into r7."
+    },
+    {
+      "name": "ov80_02238A18",
+      "mode": "thumb",
+      "signature_guess": "void ov80_02238A18(FrontierMap *map)",
+      "confidence": "high",
+      "callees": [
+        "sub_02096864",
+        "ov42_02228FE0",
+        "sub_0209686C",
+        "ov80_02239900",
+        "ov80_02239510",
+        "ov80_02239828"
+      ],
+      "struct_accesses": [
+        {
+          "param": 0,
+          "offset": "0x20",
+          "width": 4,
+          "meaning": "UnkStruct_ov42_02228EDC*"
+        }
+      ],
+      "notes": "UnkStruct_ov42_02228CDC *list=sub_02096864(work); for i<0x18 (ptr walk): if(list->unk0!=0xFFFF) ov42_02228FE0(map->unk20,list->unk0,list->unk2,0x65); FrontierMapObjTemplate tmpl (sp+0, frame 0x20); for i<0x20: e=sub_0209686C(work,i); if(e->tmpl.id(+0xC)!=0xFFFF){ov80_02239900(e,&tmpl); ov80_02239510(map,&tmpl,i);} ov80_02239828(map)."
+    },
+    {
+      "name": "FrontierMap_VBlank",
+      "mode": "thumb",
+      "signature_guess": "static void FrontierMap_VBlank(void *data)",
+      "confidence": "high",
+      "callees": [
+        "GF_RunVramTransferTasks",
+        "SpriteSystem_TransferOam",
+        "PaletteData_PushTransparentBuffers",
+        "DoScheduledBgGpuUpdates"
+      ],
+      "struct_accesses": [
+        {
+          "param": 0,
+          "offset": "0x4",
+          "width": 4,
+          "meaning": "paletteData"
+        },
+        {
+          "param": 0,
+          "offset": "0x0",
+          "width": 4,
+          "meaning": "bgConfig"
+        }
+      ],
+      "notes": "Ends with OS_SetIrqCheckFlag(OS_IE_V_BLANK) (0x027E0000+0x3FF8 |= 1)."
+    },
+    {
+      "name": "ov80_02238AAC",
+      "mode": "thumb",
+      "signature_guess": "static void ov80_02238AAC(SysTask *task, void *data)",
+      "confidence": "high",
+      "callees": [],
+      "notes": "empty body"
+    },
+    {
+      "name": "ov80_02238AB0",
+      "mode": "thumb",
+      "signature_guess": "static void ov80_02238AB0(SysTask *task, void *data)",
+      "confidence": "high",
+      "callees": [
+        "ov42_0222807C"
+      ],
+      "struct_accesses": [
+        {
+          "param": 1,
+          "offset": "0x14",
+          "width": 4,
+          "meaning": "UnkStruct_ov42_022280A8*"
+        }
+      ],
+      "notes": "tail call ov42_0222807C(map->unk14) (ldr r3,=fn; bx r3)"
+    },
+    {
+      "name": "ov80_02238ABC",
+      "mode": "thumb",
+      "signature_guess": "static void ov80_02238ABC(SysTask *task, void *data)",
+      "confidence": "high",
+      "callees": [
+        "ov80_02238C78"
+      ],
+      "notes": "tail call ov80_02238C78(data)"
+    },
+    {
+      "name": "FrontierMap_Update",
+      "mode": "thumb",
+      "signature_guess": "static void FrontierMap_Update(SysTask *task, void *data)",
+      "confidence": "high",
+      "callees": [
+        "sub_0209686C",
+        "ov42_02229358",
+        "FrontierMap_Scroll",
+        "ov42_022290DC",
+        "ManagedSprite_TickFrame",
+        "SpriteSystem_DrawSprites",
+        "SpriteSystem_UpdateTransfer",
+        "ov80_02239A38",
+        "RequestSwap3DBuffers"
+      ],
+      "struct_accesses": [
+        {
+          "param": 1,
+          "offset": "0x6c",
+          "width": 4,
+          "meaning": "u32 per-sprite anim-active bitmask"
+        },
+        {
+          "param": 1,
+          "offset": "0x3c",
+          "width": 4,
+          "meaning": "ManagedSprite *sprites[8]"
+        },
+        {
+          "param": 1,
+          "offset": "0x38",
+          "width": 4,
+          "meaning": "SpriteManager*"
+        }
+      ],
+      "notes": "e=sub_0209686C(map->work,0x1F); if(e->obj) ov42_02229358(&map->unk1C,e->obj); FrontierMap_Scroll(map); ov42_022290DC(map->unk20); u32 flags=map->unk6C; for i<8: if(map->sprites[i]!=NULL && (flags&1)) ManagedSprite_TickFrame(map->sprites[i]); flags>>=1; SpriteSystem_DrawSprites(map->unk38); SpriteSystem_UpdateTransfer(); ov80_02239A38(); RequestSwap3DBuffers(GX_SORTMODE_MANUAL(1), GX_BUFFERMODE_Z(0))."
+    },
+    {
+      "name": "FrontierMap_Scroll",
+      "mode": "thumb",
+      "signature_guess": "static void FrontierMap_Scroll(FrontierMap *map)",
+      "confidence": "high",
+      "callees": [
+        "Frontier_GetLaunchArgs",
+        "ov80_0222ACA0",
+        "ov42_02229420",
+        "ov80_02238B7C"
+      ],
+      "struct_accesses": [
+        {
+          "param": 0,
+          "offset": "0x24",
+          "width": 4,
+          "meaning": "UnkStruct_ov42_022293B8* bg scroller A"
+        },
+        {
+          "param": 0,
+          "offset": "0x28",
+          "width": 4,
+          "meaning": "UnkStruct_ov42_022293B8* bg scroller B"
+        }
+      ],
+      "notes": "switch(ov80_0222ACA0(args->unk20,0xC)){ case 0: default: if(map->unk24) ov42_02229420(map->unk24,&map->unk1C); if(map->unk28 && ov80_0222ACA0(args->unk20,0xD)==1) ov42_02229420(map->unk28,&map->unk1C); break; case 1: ov80_02238B7C(map); break; } -- asm is cmp0/beq, cmp1/beq, fallthrough into case-0 body, so default shares case 0."
+    },
+    {
+      "name": "ov80_02238B7C",
+      "mode": "thumb",
+      "signature_guess": "static void ov80_02238B7C(FrontierMap *map)",
+      "confidence": "medium",
+      "callees": [
+        "Frontier_GetLaunchArgs",
+        "ov42_022293A8",
+        "ov42_022293B0",
+        "_fflt",
+        "_fadd",
+        "_fsub",
+        "SpriteSystem_GetRenderer",
+        "_ffix",
+        "G2dRenderer_SetMainSurfaceCoords",
+        "ScheduleSetBgPosText",
+        "ov80_0222ACA0"
+      ],
+      "struct_accesses": [
+        {
+          "param": 0,
+          "offset": "0xa8",
+          "width": 2,
+          "meaning": "s16 scroll offset X (ldrsh)"
+        },
+        {
+          "param": 0,
+          "offset": "0xaa",
+          "width": 2,
+          "meaning": "s16 scroll offset Y (ldrsh)"
+        },
+        {
+          "param": 0,
+          "offset": "0x34",
+          "width": 4,
+          "meaning": "SpriteSystem*"
+        }
+      ],
+      "notes": "s16 y=ov42_022293A8(&map->unk1C)+map->unkAA; s16 x=ov42_022293B0(&map->unk1C)+map->unkA8; fy computed FIRST (sp+4) then fx (sp): if(v>0) f=0.5f+(f32)(v<<12) [_fadd(0.5f,fflt)] else f=(f32)(v<<12)-0.5f; then G2dRenderer_SetMainSurfaceCoords(SpriteSystem_GetRenderer(map->unk34),(fx32)fx,(fx32)fy) -- GetRenderer called before both _ffix (renderer spilled to sp+8). Try FX32_CONST(x)/FX32_CONST(y) inline first; fall back to explicit f32 temps (float-to-fx32-shared-ffix). Then ScheduleSetBgPosText(bg,3,BG_POS_OP_SET_X,x); (bg,3,BG_POS_OP_SET_Y,y); if(ACA0(args->unk20,9)!=0xFFFF && ACA0(args->unk20,0xD)==1){ same for bg 2 }. Frame 0x10."
+    },
+    {
+      "name": "ov80_02238C78",
+      "mode": "thumb",
+      "signature_guess": "static void ov80_02238C78(FrontierMap *map)",
+      "confidence": "high",
+      "callees": [
+        "ov42_02229A08",
+        "ov42_02228068",
+        "ov42_02229AC8",
+        "ov42_02228C80"
+      ],
+      "struct_accesses": [
+        {
+          "param": 0,
+          "offset": "0x30",
+          "width": 4,
+          "meaning": "UnkStruct_ov42_022299C0* move queue"
+        },
+        {
+          "param": 0,
+          "offset": "0x2c",
+          "width": 4,
+          "meaning": "UnkStruct_ov42_02229A40*"
+        },
+        {
+          "param": 0,
+          "offset": "0x14",
+          "width": 4,
+          "meaning": "UnkStruct_ov42_022280A8*"
+        },
+        {
+          "param": 0,
+          "offset": "0x18",
+          "width": 4,
+          "meaning": "UnkStruct_ov42_02227F68*"
+        }
+      ],
+      "notes": "locals: UnkStruct_ov42_02228EB0 ev (sp+0, 8B), UnkStruct_ov42_02228CDC req (sp+8, 4B). while(ov42_02229A08(map->unk30,(UnkStruct_ov44_02232031*)&ev)==1) ov42_02228068(map->unk14,&ev); while(ov42_02229AC8(map->unk2C,&req)==1){ if(ov42_02228C80(map->unk18,map->unk14,&req,&ev)==1) ov42_02228068(map->unk14,&ev);} (MWCC rotates while into if+do-while)."
+    },
+    {
+      "name": "FrontierMap_SetVramBank",
+      "mode": "thumb",
+      "signature_guess": "static void FrontierMap_SetVramBank(BgConfig *bgConfig, u8 idx)",
+      "confidence": "high",
+      "callees": [
+        "ov80_0222ACA0",
+        "GfGfx_DisableEngineAPlanes",
+        "GfGfx_SetBanks",
+        "MIi_CpuClear32",
+        "SetBothScreensModesAndDisable",
+        "InitBgFromTemplate",
+        "BgClearTilemapBufferAndCommit",
+        "BgSetPosTextAndCommit",
+        "GfGfx_EngineATogglePlanes"
+      ],
+      "notes": "Frame 0xA8 = four struct locals: sp+0x54 BgTemplate[3] (0x54, single struct copy of ov80_0223D600: 10 ldmia pairs + 1 word), sp+0x2C GraphicsBanks (=ov80_0223D5D8, 5 pairs), sp+0x1C GraphicsModes (=ov80_0223D560), sp+0 BgTemplate (=ov80_0223D59C). Declare in that order (first-declared = highest offset). mode=ACA0(idx,0); DisableEngineAPlanes; SetBanks(&banks); MI_CpuClear32 HW_BG_VRAM 0x80000, HW_DB_BG_VRAM 0x20000, HW_OBJ_VRAM 0x40000, HW_DB_OBJ_VRAM 0x20000; modes.bgMode(+4)=mode; SetBothScreensModesAndDisable(&modes); if(mode==0){t[1].colorMode=0; t[2].colorMode=0; t[1].bgExtPltt=0; t[2].bgExtPltt=0;} (store order as listed); u16 sz=(u16)ACA0(idx,4); t[2].size=sz; if(ACA0(idx,9)!=0xFFFF) t[1].size=sz; if(mode==0){InitBgFromTemplate(bg,1,&t[0],0),(2,&t[1],0),(3,&t[2],0)} else {(1,&t[0],0),(2,&t[1],2),(3,&t[2],2)}; each followed by BgClearTilemapBufferAndCommit and BgSetPosTextAndCommit(SET_X 0,0),(SET_Y 3,0). Then G2_SetBG0Priority(0) (BG0CNT &= ~3); GfGfx_EngineATogglePlanes(GX_PLANEMASK_BG0,ON); bg4 template copy; InitBgFromTemplate(bg,4,&tmpl4,0)+clear+setpos x/y."
+    },
+    {
+      "name": "FrontierMap_LoadPaletteData",
+      "mode": "thumb",
+      "signature_guess": "static void FrontierMap_LoadPaletteData(FrontierMap *map)",
+      "confidence": "high",
+      "callees": [
+        "PaletteData_LoadNarc",
+        "Frontier_GetLaunchArgs",
+        "Options_GetFrame",
+        "LoadUserFrameGfx2",
+        "PaletteData_LoadPaletteSlotFromHardware",
+        "LoadUserFrameGfx1"
+      ],
+      "notes": "PaletteData_LoadNarc(pd,0x10,7,0x65,0,0x20,0xE0); (pd,0x10,8,0x65,0,0x20,0xD0); LoadUserFrameGfx2(bg,1,0x3E2,0xB,(u8)Options_GetFrame(Frontier_GetLaunchArgs(map->work)->options),0x65); PaletteData_LoadPaletteSlotFromHardware(pd,0,0xB0,0x20); LoadUserFrameGfx1(bg,1,0x3D9,0xC,0,0x65); LoadPaletteSlotFromHardware(pd,0,0xC0,0x20)."
+    },
+    {
+      "name": "ov80_02238FA0",
+      "mode": "thumb",
+      "signature_guess": "static void ov80_02238FA0(FrontierMap *map)",
+      "confidence": "high",
+      "callees": [
+        "NARC_New",
+        "GfGfxLoader_LoadCharDataFromOpenNarc",
+        "GfGfxLoader_LoadScrnDataFromOpenNarc",
+        "PaletteData_LoadNarc",
+        "NARC_Delete"
+      ],
+      "notes": "narc=NARC_New(0xB7,0x65); LoadChar(narc,0x81,bg,4,0,0,TRUE,0x65); LoadScrn(narc,0x82,bg,4,0,0,TRUE,0x65); PaletteData_LoadNarc(pd,0xB7,0xBE,0x65,1,0x20,0); NARC_Delete(narc)."
+    },
+    {
+      "name": "ov80_02239004",
+      "mode": "thumb",
+      "signature_guess": "static void ov80_02239004(FrontierMap *map, u8 idx, PlayerProfile *profile)",
+      "confidence": "high",
+      "callees": [
+        "ov42_02228010",
+        "ov42_02227EE0",
+        "ov42_02229394",
+        "SpriteManager_GetSpriteList",
+        "ov80_0222A7EC",
+        "ov42_02228F24",
+        "ov80_0222ACA0",
+        "SpriteSystem_GetRenderer",
+        "ov42_022293B8",
+        "ov42_02229A40",
+        "ov42_02229974",
+        "ov42_02227F48",
+        "NARC_New",
+        "GfGfxLoader_LoadCharDataFromOpenNarc",
+        "PaletteData_LoadNarc",
+        "GfGfxLoader_GetPlttDataFromOpenNarc",
+        "DC_FlushRange",
+        "GX_BeginLoadBGExtPltt",
+        "GX_LoadBGExtPltt",
+        "GX_EndLoadBGExtPltt",
+        "Heap_Free",
+        "PaletteData_FillPaletteInBuffer",
+        "GfGfxLoader_LoadScrnDataFromOpenNarc",
+        "ScheduleBgTilemapBufferTransfer",
+        "NARC_Delete"
+      ],
+      "struct_accesses": [
+        {
+          "param": 0,
+          "offset": "0x14",
+          "width": 4,
+          "meaning": "=ov42_02228010(0x20,0x65)"
+        },
+        {
+          "param": 0,
+          "offset": "0x18",
+          "width": 4,
+          "meaning": "=ov42_02227EE0(0x10,0x10,0x65)"
+        },
+        {
+          "param": 0,
+          "offset": "0x1c",
+          "width": 4,
+          "meaning": "UnkStruct_ov44_02232914 inline, ov42_02229394(&map->unk1C)"
+        },
+        {
+          "param": 0,
+          "offset": "0x20",
+          "width": 4,
+          "meaning": "=ov42_02228F24(list,pd,0x20,ov80_0222A7EC(profile),0,1,0x65)"
+        },
+        {
+          "param": 0,
+          "offset": "0x24",
+          "width": 4,
+          "meaning": "ov42_022293B8 if ACA0(idx,0xC)==0"
+        },
+        {
+          "param": 0,
+          "offset": "0x28",
+          "width": 4,
+          "meaning": "second ov42_022293B8 if ACA0(idx,9)!=0xFFFF and ACA0(idx,0xC)==0"
+        },
+        {
+          "param": 0,
+          "offset": "0x2c",
+          "width": 4,
+          "meaning": "=ov42_02229A40(0x80,0x65)"
+        },
+        {
+          "param": 0,
+          "offset": "0x30",
+          "width": 4,
+          "meaning": "=ov42_02229974(0x80,0x65)"
+        }
+      ],
+      "notes": "Frame 0x2C: sp+0x20 UnkTemplate_ov42_022293B8 tmpl (11-byte struct copy of ov80_0223D554 -> ldrb/strb x11 loop), sp+0x1C/0x18 two NNSG2dPaletteData* out-params, sp+0x14 pltt alloc ptr, sp+0x10 narcId spill. tmpl.narcId=ACA0(idx,5); tmpl.fileId=ACA0(idx,6); s=ACA0(idx,0xC); if(s==0) map->unk24=ov42_022293B8(GetRenderer(map->unk34),map->bgConfig,&tmpl,0x65); if(ACA0(idx,9)!=0xFFFF){tmpl.fileId=ACA0(idx,9); tmpl.unk_1=2; tmpl.screenBase=1; tmpl.charBase=8; tmpl.priority=1; if(s==0) map->unk28=...;} unk2C/unk30; ov42_02227F48(map->unk18,ov80_0223D654); ext=ACA0(idx,0); narcId=ACA0(idx,5); narc=NARC_New(narcId,0x65); LoadChar(narc,ACA0(idx,7),bg,3,0,0,1,0x65); if(ext==0) PaletteData_LoadNarc(pd,narcId,ACA0(idx,8),0x65,0,0x160,0); else {p=GetPlttDataFromOpenNarc(narc,ACA0(idx,8),&pd1,0x65); DC_FlushRange(pd1->pRawData,pd1->szByte); GX_BeginLoadBGExtPltt(); GX_LoadBGExtPltt(pd1->pRawData,0x6000,0x2000); GX_EndLoadBGExtPltt(); Heap_Free(p);} PaletteData_FillPaletteInBuffer(pd,0,2,0,0,1); LoadScrn(narc,ACA0(idx,6),bg,3,...); if(ACA0(idx,9)!=0xFFFF){LoadChar(narc,ACA0(idx,0xA),bg,2,...); LoadScrn(narc,ACA0(idx,9),bg,2,...); if(ext!=0){same ext-pltt path with ACA0(idx,0xB), slot 0x4000 size 0x2000}} ScheduleBgTilemapBufferTransfer(bg,3); NARC_Delete(narc). ACA0 results are never cached (re-called each use)."
+    },
+    {
+      "name": "ov80_0223927C",
+      "mode": "thumb",
+      "signature_guess": "static void ov80_0223927C(FrontierMap *map)",
+      "confidence": "high",
+      "callees": [
+        "sub_02096868",
+        "ov42_02228100",
+        "GF_AssertFail",
+        "ov42_02228050",
+        "ov42_02227F28",
+        "ov42_02228F94",
+        "ov42_0222940C",
+        "ov42_02229A78",
+        "ov42_022299AC"
+      ],
+      "notes": "e=sub_02096868(work); for i<0x20 (e++ stride 0x3C): if(e->obj){ov42_02228100(e->obj); GF_ASSERT(e->unk38==0);} ov42_02228050(unk14); ov42_02227F28(unk18); ov42_02228F94(unk20); if(unk24) ov42_0222940C(unk24); if(unk28) ...; ov42_02229A78(unk2C); ov42_022299AC((u32*)unk30)."
+    },
+    {
+      "name": "ov80_022392DC",
+      "mode": "thumb",
+      "signature_guess": "static GF3DVramMan *ov80_022392DC(enum HeapID heapId)",
+      "confidence": "high",
+      "callees": [
+        "GF_3DVramMan_Create"
+      ],
+      "notes": "return GF_3DVramMan_Create(heapId, GF_3D_TEXALLOC_LNK, 1, GF_3D_PLTTALLOC_LNK, 1, ov80_022392F8);"
+    },
+    {
+      "name": "ov80_022392F8",
+      "mode": "thumb",
+      "signature_guess": "static void ov80_022392F8(void)",
+      "confidence": "high",
+      "callees": [
+        "GfGfx_EngineATogglePlanes",
+        "G3X_SetFog",
+        "G3X_SetClearColor"
+      ],
+      "callback_refs": [
+        "GF3DVramManInitFunc passed from ov80_022392DC"
+      ],
+      "notes": "GfGfx_EngineATogglePlanes(GX_PLANEMASK_BG0,ON); G2_SetBG0Priority(1); G3X_SetShading(GX_SHADING_TOON); G3X_AntiAlias(TRUE); G3X_AlphaTest(FALSE,0); G3X_AlphaBlend(TRUE); G3X_EdgeMarking(FALSE); G3X_SetFog(FALSE,0,0,0); G3X_SetClearColor(RGB_BLACK,0,0x7FFF,63,FALSE); G3_ViewPort(0,0,255,191). Template: src/party_menu.c Init3dVramManForPartyMenu."
+    },
+    {
+      "name": "ov80_0223937C",
+      "mode": "thumb",
+      "signature_guess": "static void ov80_0223937C(GF3DVramMan *vramMan)",
+      "confidence": "high",
+      "callees": [
+        "GF_3DVramMan_Delete"
+      ],
+      "notes": "tail call"
+    },
+    {
+      "name": "ov80_02239384",
+      "mode": "thumb",
+      "signature_guess": "static void ov80_02239384(FrontierMap *map)",
+      "confidence": "high",
+      "callees": [
+        "SpriteSystem_Alloc",
+        "SpriteSystem_Init",
+        "G2dRenderer_SetObjCharTransferReservedRegion",
+        "G2dRenderer_SetPlttTransferReservedRegion",
+        "SpriteManager_New",
+        "SpriteSystem_InitSprites",
+        "SpriteSystem_InitManagerWithCapacities",
+        "SpriteSystem_GetRenderer",
+        "G2dRenderer_SetSubSurfaceCoords"
+      ],
+      "struct_accesses": [
+        {
+          "param": 0,
+          "offset": "0x34",
+          "width": 4,
+          "meaning": "SpriteSystem*"
+        },
+        {
+          "param": 0,
+          "offset": "0x38",
+          "width": 4,
+          "meaning": "SpriteManager*"
+        }
+      ],
+      "notes": "map->unk34=SpriteSystem_Alloc(0x65); SpriteSystem_Init(map->unk34,&ov80_0223D5B8,&ov80_0223D570,0x20); G2dRenderer_SetObjCharTransferReservedRegion(NNS_G2D_VRAM_TYPE_2DMAIN,GX_OBJVRAMMODE_CHAR_1D_128K(0x200010)); G2dRenderer_SetPlttTransferReservedRegion(NNS_G2D_VRAM_TYPE_2DMAIN); map->unk38=SpriteManager_New(map->unk34); SpriteSystem_InitSprites(unk34,unk38,0x80); SpriteSystem_InitManagerWithCapacities(unk34,unk38,(SpriteResourceCountsListUnion*)&ov80_0223D584) (non-const param, cast); G2dRenderer_SetSubSurfaceCoords(GetRenderer(unk34),0,0x200000)."
+    },
+    {
+      "name": "ov80_022393E8",
+      "mode": "thumb",
+      "signature_guess": "static void ov80_022393E8(FrontierMap *map)",
+      "confidence": "high",
+      "callees": [
+        "ov80_02239BE8",
+        "ov80_02239B7C",
+        "Sprite_DeleteAndFreeResources",
+        "SpriteManager_UnloadCharObjById",
+        "SpriteManager_UnloadPlttObjById",
+        "SpriteManager_UnloadCellObjById",
+        "SpriteManager_UnloadAnimObjById",
+        "SpriteSystem_FreeResourcesAndManager",
+        "SpriteSystem_Free"
+      ],
+      "struct_accesses": [
+        {
+          "param": 0,
+          "offset": "0x80",
+          "width": 4,
+          "meaning": "ManagedSprite *unk80[4] (res ids 50000+i)"
+        }
+      ],
+      "notes": "for i<8 if(sprites[i]) ov80_02239BE8(sprites[i]); for i<8 if(unk70[i]!=0xFFFF) ov80_02239B7C(map->unk38,unk70[i]); for i<4 if(unk80[i]){Sprite_DeleteAndFreeResources(unk80[i]); Unload Char/Pltt/Cell/Anim ById(map->unk38, i+50000);} SpriteSystem_FreeResourcesAndManager(unk34,unk38); SpriteSystem_Free(unk34). 0xC350 reloaded from pool 3x then held in r7 for last call (natural MWCC)."
+    },
+    {
+      "name": "ov80_0223947C",
+      "mode": "thumb",
+      "signature_guess": "void ov80_0223947C(FrontierMap *map, const UnkStruct_ov42_02228CDC *res)",
+      "confidence": "high",
+      "callees": [
+        "sub_02096864",
+        "GF_AssertFail",
+        "ov42_02228FE0"
+      ],
+      "notes": "list=sub_02096864(map->work) (u16[0x18][2] = UnkStruct_ov42_02228CDC[0x18]); for i<0x18 if(res->unk0==list[i].unk0) return; (res->unk0 hoisted); for j<0x18 if(list[j].unk0==0xFFFF) break; GF_ASSERT(j!=0x18) (cmp/bne); list[j]=*res (4-byte align-2 struct copy = two ldrh/strh); ov42_02228FE0(map->unk20,res->unk0,res->unk2,0x65). Caller FrtCmd_034 passes &stack {u16 id; u8 b}."
+    },
+    {
+      "name": "ov80_022394D8",
+      "mode": "thumb",
+      "signature_guess": "void ov80_022394D8(FrontierMap *map, u16 resId)",
+      "confidence": "medium",
+      "callees": [
+        "sub_02096864",
+        "ov42_02229004"
+      ],
+      "notes": "for i<0x18: if(resId==list[i].unk0){ov42_02229004(map->unk20,resId); list[i].unk0=0xFFFF; return;} No narrowing either side; caller passes FrontierScript_ReadVar result unnarrowed (u16 or u32 both plausible)."
+    },
+    {
+      "name": "ov80_02239510",
+      "mode": "thumb",
+      "signature_guess": "UnkStruct_ov42_02228110 *ov80_02239510(FrontierMap *map, const FrontierMapObjTemplate *tmpl, int idx)",
+      "confidence": "high",
+      "callees": [
+        "sub_02096868",
+        "GF_AssertFail",
+        "ov42_022280B8",
+        "ov42_0222903C",
+        "ov42_02229200",
+        "ov80_02239914"
+      ],
+      "notes": "if(idx==-1){e=sub_02096868(work); for(idx=0;idx<0x20;idx++,e++) if(e->obj==NULL) break; GF_ASSERT(idx!=0x20);} UnkStruct_ov42_02122667 p (sp+8): p.unk0=tmpl->x(+6,s16); p.unk2=tmpl->y(+8,s16); p.unk4=tmpl->id(+4); p.unk6=tmpl->unk2; p.unk8=tmpl->unkA(u8); p.unkA=tmpl->unk0; obj=ov42_022280B8(map->unk14,&p); b=ov42_0222903C(map->unk20,obj,0,0x65); ov42_02229200(b,tmpl->unkB); ov80_02239914(map->work,idx,obj,b,tmpl); return obj. Callers pass idx=-1 or 0x1F (FrtCmd_036) or loop i (ov80_02238A18)."
+    },
+    {
+      "name": "ov80_02239590",
+      "mode": "thumb",
+      "signature_guess": "void ov80_02239590(FrontierMap *map, UnkStruct_ov42_02228110 *obj)",
+      "confidence": "high",
+      "callees": [
+        "sub_02096868",
+        "ov42_02228100",
+        "ov42_022290C4",
+        "GF_AssertFail",
+        "MI_CpuFill8"
+      ],
+      "notes": "for i<0x20 (ptr-walk compare): if(e[i].obj==obj){ov42_02228100(entries[i].obj); ov42_022290C4(entries[i].unk4); GF_ASSERT(entries[i].unk38==0); MI_CpuFill8(&entries[i],0,0x3C); entries[i].tmpl.id=0xFFFF; return;} -- body indexes via mul 0x3C (array index, not the walking ptr)."
+    },
+    {
+      "name": "ov80_022395E8",
+      "mode": "thumb",
+      "signature_guess": "void ov80_022395E8(FrontierMap *map, u16 id, UnkStruct_ov42_02228110 **outObj, UnkStruct_ov42_0222903C **outB)",
+      "confidence": "medium",
+      "callees": [
+        "sub_02096868",
+        "GF_AssertFail"
+      ],
+      "notes": "for i<0x20: if(id==e->tmpl.id){ if(outObj) *outObj=entries[i].obj; if(outB) *outB=entries[i].unk4; return;} GF_AssertFail(). FrtCmd_038 passes (map, ReadVar, NULL, &local)."
+    },
+    {
+      "name": "ov80_0223962C",
+      "mode": "thumb",
+      "signature_guess": "void ov80_0223962C(FrontierMap *map, u16 resId)",
+      "confidence": "high",
+      "callees": [
+        "GF_AssertFail"
+      ],
+      "notes": "for i<8 if(map->unk70[i]==0xFFFF){map->unk70[i]=resId; return;} GF_AssertFail();"
+    },
+    {
+      "name": "ov80_0223965C",
+      "mode": "thumb",
+      "signature_guess": "void ov80_0223965C(FrontierMap *map, u16 resId)",
+      "confidence": "high",
+      "callees": [],
+      "notes": "leaf push{r3,r4}: for i<8 if(resId==map->unk70[i]){map->unk70[i]=0xFFFF; return;}"
+    },
+    {
+      "name": "ov80_0223968C",
+      "mode": "thumb",
+      "signature_guess": "ManagedSprite *ov80_0223968C(FrontierMap *map, u16 slot, u16 resIdx)",
+      "confidence": "high",
+      "callees": [
+        "GF_AssertFail",
+        "ov80_02239BB8",
+        "ov80_02239708"
+      ],
+      "notes": "GF_ASSERT(slot<8) (blo); GF_ASSERT(map->sprites[slot]==NULL); s=ov80_02239BB8(map->unk34,map->unk38,resIdx); map->sprites[slot]=s; map->unk5C[slot]=resIdx; ov80_02239708(map,slot,FALSE); return s. Caller ov80_02239828 narrows (u16)i for slot -> slot is u16. slot*4 and result spilled to stack (frame 8); r7 = &map->sprites base."
+    },
+    {
+      "name": "ov80_022396D8",
+      "mode": "thumb",
+      "signature_guess": "void ov80_022396D8(FrontierMap *map, u16 slot)",
+      "confidence": "medium",
+      "callees": [
+        "GF_AssertFail",
+        "ov80_02239BE8"
+      ],
+      "notes": "GF_ASSERT(slot<8); GF_ASSERT(map->sprites[slot]!=NULL); ov80_02239BE8(map->sprites[slot]); map->sprites[slot]=NULL."
+    },
+    {
+      "name": "ov80_02239700",
+      "mode": "thumb",
+      "signature_guess": "ManagedSprite *ov80_02239700(FrontierMap *map, u16 slot)",
+      "confidence": "high",
+      "callees": [],
+      "notes": "return map->sprites[slot];"
+    },
+    {
+      "name": "ov80_02239708",
+      "mode": "thumb",
+      "signature_guess": "void ov80_02239708(FrontierMap *map, u16 slot, BOOL set)",
+      "confidence": "high",
+      "callees": [],
+      "notes": "if(set==TRUE) map->unk6C|=1<<slot; else map->unk6C&=~(1<<slot); (cmp r2,#1). Callers pass (u16)i from ov80_02239828."
+    },
+    {
+      "name": "ov80_02239734",
+      "mode": "thumb",
+      "signature_guess": "BOOL ov80_02239734(FrontierMap *map, u16 slot)",
+      "confidence": "high",
+      "callees": [],
+      "notes": "return (map->unk6C>>slot)&1;"
+    },
+    {
+      "name": "ov80_02239740",
+      "mode": "thumb",
+      "signature_guess": "static void ov80_02239740(FrontierMap *map)",
+      "confidence": "medium",
+      "callees": [
+        "sub_02096878",
+        "ManagedSprite_GetActiveAnim",
+        "ManagedSprite_GetAnimationFrame",
+        "ov80_02239734",
+        "ManagedSprite_GetDrawFlag",
+        "ManagedSprite_GetPositionXY"
+      ],
+      "notes": "Saves sprite state into FrontierMapSpriteSave (sub_02096878 = FrontierWork+0xA04). QUIRK loop 1: for(i=0;i<8;i++){ if(map->unk70[i]!=0xFFFF){ save->resIds[i]=map->unk70[i]; i++; } } -- single counter incremented TWICE on hit, same index for read and write (original bug; one register). Loop 2 i<8: if(map->sprites[i]){ st->anim=ManagedSprite_GetActiveAnim(s); st->frame=ManagedSprite_GetAnimationFrame(s); st->animActive=ov80_02239734(map,(u16)i); st->drawFlag=ManagedSprite_GetDrawFlag(s); st->resIdx=map->unk5C[i]; ManagedSprite_GetPositionXY(s,&st->x,&st->y); st->valid=1; } Frame 0x10 holds map, &st->x, &st->y and walking map+0x3C+2i. map+0x3C is CSE'd: unk70 read as [map+0x3C+2i+0x34], unk5C as [+0x20]."
+    },
+    {
+      "name": "ov80_02239828",
+      "mode": "thumb",
+      "signature_guess": "static void ov80_02239828(FrontierMap *map)",
+      "confidence": "high",
+      "callees": [
+        "sub_02096878",
+        "NARC_New",
+        "ov80_02239AF8",
+        "ov80_0223962C",
+        "ov80_0223968C",
+        "ManagedSprite_SetPositionXY",
+        "ManagedSprite_SetDrawFlag",
+        "ov80_02239708",
+        "ManagedSprite_SetAnim",
+        "ManagedSprite_SetAnimationFrame",
+        "NARC_Delete",
+        "sub_02096884"
+      ],
+      "notes": "save=sub_02096878(work); narc=NARC_New(0xB8,0x65); for i<8 if(save->resIds[i]!=0xFFFF){ov80_02239AF8(map->unk34,map->unk38,narc,map->paletteData,save->resIds[i]); ov80_0223962C(map,save->resIds[i]);} for i<8 (st++): if(st->valid==1){ s=ov80_0223968C(map,i,st->resIdx); ManagedSprite_SetPositionXY(s,st->x,st->y); ManagedSprite_SetDrawFlag(s,st->drawFlag); ov80_02239708(map,i,st->animActive); ManagedSprite_SetAnim(s,st->anim); ManagedSprite_SetAnimationFrame(s,st->frame);} NARC_Delete(narc); sub_02096884(map->work)."
+    },
+    {
+      "name": "ov80_022398E4",
+      "mode": "thumb",
+      "signature_guess": "void ov80_022398E4(FrontierMap *map, s16 *x, s16 *y)",
+      "confidence": "high",
+      "callees": [
+        "ov42_022293A8",
+        "ov42_022293B0"
+      ],
+      "notes": "*y=ov42_022293A8(&map->unk1C); *x=ov42_022293B0(&map->unk1C); (A8 call and its store first). Caller in asm/overlay_80_0222BDF4.s passes (map,&sp12,&sp10)."
+    },
+    {
+      "name": "ov80_02239900",
+      "mode": "thumb",
+      "signature_guess": "static void ov80_02239900(FrontierMapObjEntry *entry, FrontierMapObjTemplate *out)",
+      "confidence": "high",
+      "callees": [],
+      "notes": "*out=entry->tmpl; -- 0x1E-byte align-2 struct assignment compiles to the 15-iteration ldrh/strh loop."
+    },
+    {
+      "name": "ov80_02239914",
+      "mode": "thumb",
+      "signature_guess": "static void ov80_02239914(void *frontierWork, int idx, UnkStruct_ov42_02228110 *obj, UnkStruct_ov42_0222903C *b, const FrontierMapObjTemplate *tmpl)",
+      "confidence": "high",
+      "callees": [
+        "sub_0209686C"
+      ],
+      "notes": "e=sub_0209686C(work,idx); e->obj=obj; e->unk4=b; e->tmpl=*tmpl; (5th arg on stack [sp+0x10]; same 15-halfword struct-copy loop)."
+    },
+    {
+      "name": "ov80_02239938",
+      "mode": "thumb",
+      "signature_guess": "UnkStruct_02239938 *ov80_02239938(void *frontierWork, u32 id)",
+      "confidence": "high",
+      "callees": [
+        "sub_02096868",
+        "GF_AssertFail"
+      ],
+      "notes": "e=sub_02096868(work); for i<0x20 (e++ stride 0x3C): if(e->obj!=NULL && e->tmpl.id==id) return e; GF_AssertFail(); return NULL. Existing prototype in include/frontier/frontier_map.h (UnkStruct_02239938 is only 8 bytes there -> iterate with a private 0x3C struct and cast the return)."
+    }
+  ],
+  "data": [
+    {
+      "label": "ov80_0223D554",
+      "section": "rodata",
+      "bytes": 12,
+      "shape_guess": "UnkTemplate_ov42_022293B8 (11 bytes + 1 pad): {0,3,0,5,0xC,0,3,0,0,0,1}; byte-copied into local in ov80_02239004"
+    },
+    {
+      "label": "ov80_0223D560",
+      "section": "rodata",
+      "bytes": 16,
+      "shape_guess": "GraphicsModes {GX_DISPMODE_GRAPHICS, GX_BGMODE_5, GX_BGMODE_0, GX_BG0_AS_3D}; bgMode overwritten at runtime"
+    },
+    {
+      "label": "ov80_0223D570",
+      "section": "rodata",
+      "bytes": 20,
+      "shape_guess": "OamCharTransferParam {0x60, 0x10000, 0x4000, GX_OBJVRAMMODE_CHAR_1D_128K, GX_OBJVRAMMODE_CHAR_1D_32K}"
+    },
+    {
+      "label": "ov80_0223D584",
+      "section": "rodata",
+      "bytes": 24,
+      "shape_guess": "SpriteResourceCountsListUnion {0x60,0x20,0x40,0x40,8,8}"
+    },
+    {
+      "label": "ov80_0223D59C",
+      "section": "rodata",
+      "bytes": 28,
+      "shape_guess": "BgTemplate for bg4: bufferSize 0x800, size 1, screenBase 0xF, priority 3"
+    },
+    {
+      "label": "ov80_0223D5B8",
+      "section": "rodata",
+      "bytes": 32,
+      "shape_guess": "OamManagerParam {0,128,0,32,0,128,0,32}"
+    },
+    {
+      "label": "ov80_0223D5D8",
+      "section": "rodata",
+      "bytes": 40,
+      "shape_guess": "GraphicsBanks {6,0x40,0x80,0,0x10,0,0x100,0,1,0x20}"
+    },
+    {
+      "label": "ov80_0223D600",
+      "section": "rodata",
+      "bytes": 84,
+      "shape_guess": "BgTemplate[3] for bg1/2/3, copied as ONE 0x54 struct (wrap in struct {BgTemplate t[3];} or 3-member struct)"
+    },
+    {
+      "label": "ov80_0223D654",
+      "section": "rodata",
+      "bytes": 1024,
+      "shape_guess": "all-zero u32[16*16] grid passed to ov42_02227F48(map->unk18, ...) (ov42_02227EE0(0x10,0x10) grid)"
+    }
+  ],
+  "imports": {
+    "Frontier_GetLaunchArgs": {
+      "known_prototype": "FrontierLaunchArgs *Frontier_GetLaunchArgs(void *a0)",
+      "header": "include/frontier/frontier.h"
+    },
+    "sub_02096864": {
+      "known_prototype": "void *sub_02096864(void *a0)",
+      "header": "none: local decl in src/frontier.c; returns FrontierWork+0x24 (UnkStruct_ov42_02228CDC[0x18])"
+    },
+    "sub_02096868": {
+      "known_prototype": "void *sub_02096868(void *a0)",
+      "header": "none: local decl in src/frontier.c; returns FrontierWork+0x84 (0x3C-byte entries x 0x20)"
+    },
+    "sub_0209686C": {
+      "known_prototype": "void *sub_0209686C(void *a0, int idx)",
+      "header": "none: local decl in src/frontier.c"
+    },
+    "sub_02096878": {
+      "known_prototype": "void *sub_02096878(void *a0)",
+      "header": "none: local decl in src/frontier.c; returns FrontierWork+0xA04 (0x50-byte sprite save)"
+    },
+    "sub_02096884": {
+      "known_prototype": "void sub_02096884(void *a0)",
+      "header": "none: local decl in src/frontier.c"
+    },
+    "ov80_0222ACA0": {
+      "known_prototype": "s32 ov80_0222ACA0(s32 index, s32 fieldSel)",
+      "header": "include/overlay_80_0222ACA0.h"
+    },
+    "ov80_0222AD9C": {
+      "known_prototype": "void ov80_0222AD9C(void *a0, void *a1, s32 index)",
+      "header": "include/overlay_80_0222ACA0.h"
+    },
+    "ov80_0222ADB4": {
+      "known_prototype": "void ov80_0222ADB4(void *a0, void *a1, s32 index)",
+      "header": "include/overlay_80_0222ACA0.h"
+    },
+    "ov80_0222A7EC": {
+      "known_prototype": "u16 ov80_0222A7EC(PlayerProfile *profile)",
+      "header": "none: declared in src/frontier/overlay_80_02229EE0.c only, so use a local extern"
+    },
+    "ov80_02239960": {
+      "known_prototype": "UnkStruct_ov80_02239960 *ov80_02239960(enum HeapID heapId)",
+      "header": "none: src/frontier/overlay_80_02239960.c only (struct private there), so use a local extern with void *"
+    },
+    "ov80_02239980": {
+      "known_prototype": "void ov80_02239980(UnkStruct_ov80_02239960 *manager)",
+      "header": "none: src/frontier/overlay_80_02239960.c"
+    },
+    "ov80_02239A38": {
+      "known_prototype": "BOOL ov80_02239A38(void)",
+      "header": "none: src/frontier/overlay_80_02239960.c"
+    },
+    "ov80_02239AF8": {
+      "known_prototype": "void ov80_02239AF8(SpriteSystem *spriteSystem, SpriteManager *spriteManager, NARC *narc, PaletteData *plttData, u16 index)",
+      "header": "include/overlay_80_02239AF8.h"
+    },
+    "ov80_02239B7C": {
+      "known_prototype": "void ov80_02239B7C(SpriteManager *spriteManager, u32 index)",
+      "header": "include/overlay_80_02239AF8.h"
+    },
+    "ov80_02239BB8": {
+      "known_prototype": "ManagedSprite *ov80_02239BB8(SpriteSystem *spriteSystem, SpriteManager *spriteManager, u32 index)",
+      "header": "include/overlay_80_02239AF8.h"
+    },
+    "ov80_02239BE8": {
+      "known_prototype": "void ov80_02239BE8(ManagedSprite *managedSprite)",
+      "header": "include/overlay_80_02239AF8.h"
+    },
+    "Sound_SetFieldBGM": {
+      "known_prototype": "void Sound_SetFieldBGM(u16 seqNo)",
+      "header": "none: local extern (as in src/field_bgm.c, src/unk_02087A78.c)"
+    },
+    "sub_02055198": {
+      "known_prototype": "BOOL sub_02055198(FieldSystem *fieldSystem, u16 seqNo)",
+      "header": "include/field_bgm.h"
+    },
+    "sub_0203A880": {
+      "known_prototype": "void sub_0203A880(void)",
+      "header": "include/unk_0203A3B0.h"
+    },
+    "sub_0203A914": {
+      "known_prototype": "void sub_0203A914(void)",
+      "header": "include/unk_0203A3B0.h"
+    },
+    "sub_020210BC": {
+      "known_prototype": "void sub_020210BC(void)",
+      "header": "include/unk_020210A0.h"
+    },
+    "sub_02021148": {
+      "known_prototype": "BOOL sub_02021148(int)",
+      "header": "include/unk_020210A0.h"
+    },
+    "sub_02021238": {
+      "known_prototype": "BOOL sub_02021238(void)",
+      "header": "include/unk_020210A0.h"
+    },
+    "GF_3DVramMan_Create": {
+      "known_prototype": "GF3DVramMan *GF_3DVramMan_Create(enum HeapID heapID, int texMode, int numTex, int plttMode, int numPltt, GF3DVramManInitFunc initializer)",
+      "header": "include/gf_3d_vramman.h"
+    },
+    "SpriteSystem_Init": {
+      "known_prototype": "BOOL SpriteSystem_Init(SpriteSystem *, const OamManagerParam *, const OamCharTransferParam *, int)",
+      "header": "include/sprite_system.h"
+    },
+    "SpriteSystem_InitManagerWithCapacities": {
+      "known_prototype": "BOOL SpriteSystem_InitManagerWithCapacities(SpriteSystem *, SpriteManager *, SpriteResourceCountsListUnion *countsArray)",
+      "header": "include/sprite_system.h"
+    },
+    "G2dRenderer_SetMainSurfaceCoords": {
+      "known_prototype": "void G2dRenderer_SetMainSurfaceCoords(G2dRenderer *renderer, fx32 x, fx32 y)",
+      "header": "include/unk_02009D48.h"
+    },
+    "GfGfxLoader_GetPlttDataFromOpenNarc": {
+      "known_prototype": "void *GfGfxLoader_GetPlttDataFromOpenNarc(NARC *narc, s32 memberNo, NNSG2dPaletteData **ppPlttData, enum HeapID heapID)",
+      "header": "include/gf_gfx_loader.h"
+    },
+    "PaletteData_LoadNarc": {
+      "known_prototype": "void PaletteData_LoadNarc(PaletteData *data, NarcId narcID, s32 memberNo, enum HeapID heapID, PaletteBufferId bufferID, u32 size, u16 pos)",
+      "header": "include/palette.h"
+    },
+    "LoadUserFrameGfx2": {
+      "known_prototype": "void LoadUserFrameGfx2(BgConfig *bgConfig, GFBgLayer layer, u16 baseTile, u8 paletteNum, u8 frame, enum HeapID heapID)",
+      "header": "include/render_window.h"
+    },
+    "ov42_*": {
+      "known_prototype": "all 34 ov42_ imports declared",
+      "header": "include/overlay_42.h"
+    },
+    "ManagedSprite_*/SpriteSystem_*/SpriteManager_*": {
+      "known_prototype": "declared",
+      "header": "include/sprite_system.h"
+    },
+    "BG/GfGfx/PaletteData/SysTask/TextFlags": {
+      "known_prototype": "declared",
+      "header": "include/bg_window.h, include/gf_gfx_planes.h, include/palette.h, include/sys_task_api.h, include/render_text.h, include/system.h, include/vram_transfer_manager.h, include/heap.h, include/options.h, include/player_data.h, include/unk_02026E30.h, include/gf_gfx_loader.h"
+    }
+  },
+  "shared_struct_hypotheses": [
+    {
+      "name": "FrontierMap",
+      "size_guess": "0xC4 (Heap_Alloc/MI_CpuFill8 size)",
+      "fields": [
+        {
+          "offset": "0x0",
+          "width": 4,
+          "meaning": "BgConfig *bgConfig (header says u32 unk0)"
+        },
+        {
+          "offset": "0x4",
+          "width": 4,
+          "meaning": "PaletteData *paletteData"
+        },
+        {
+          "offset": "0x8",
+          "width": 4,
+          "meaning": "void *frontierWork (FrontierWork*, header u32 unk8)"
+        },
+        {
+          "offset": "0xc",
+          "width": 4,
+          "meaning": "GF3DVramMan *"
+        },
+        {
+          "offset": "0x10",
+          "width": 4,
+          "meaning": "UnkStruct_ov80_02239960 * (particle mgr; frontier_cmd_arcade passes map->unk10)"
+        },
+        {
+          "offset": "0x14",
+          "width": 4,
+          "meaning": "UnkStruct_ov42_022280A8 * (object list)"
+        },
+        {
+          "offset": "0x18",
+          "width": 4,
+          "meaning": "UnkStruct_ov42_02227F68 * (16x16 grid)"
+        },
+        {
+          "offset": "0x1c",
+          "width": 4,
+          "meaning": "UnkStruct_ov44_02232914 camera pos (inline s16 pair)"
+        },
+        {
+          "offset": "0x20",
+          "width": 4,
+          "meaning": "UnkStruct_ov42_02228EDC *"
+        },
+        {
+          "offset": "0x24",
+          "width": 4,
+          "meaning": "UnkStruct_ov42_022293B8 * bg scroller (bg3)"
+        },
+        {
+          "offset": "0x28",
+          "width": 4,
+          "meaning": "UnkStruct_ov42_022293B8 * bg scroller (bg2)"
+        },
+        {
+          "offset": "0x2c",
+          "width": 4,
+          "meaning": "UnkStruct_ov42_02229A40 *"
+        },
+        {
+          "offset": "0x30",
+          "width": 4,
+          "meaning": "UnkStruct_ov42_022299C0 * (created by ov42_02229974, whose header return type is 02229A40*, so cast)"
+        },
+        {
+          "offset": "0x34",
+          "width": 4,
+          "meaning": "SpriteSystem *"
+        },
+        {
+          "offset": "0x38",
+          "width": 4,
+          "meaning": "SpriteManager *"
+        },
+        {
+          "offset": "0x3c",
+          "width": 32,
+          "meaning": "ManagedSprite *sprites[8]"
+        },
+        {
+          "offset": "0x5c",
+          "width": 16,
+          "meaning": "u16 spriteResIdx[8]"
+        },
+        {
+          "offset": "0x6c",
+          "width": 4,
+          "meaning": "u32 animActive bitmask"
+        },
+        {
+          "offset": "0x70",
+          "width": 16,
+          "meaning": "u16 loadedResIds[8] (0xFFFF = empty)"
+        },
+        {
+          "offset": "0x80",
+          "width": 16,
+          "meaning": "ManagedSprite *unk80[4] (res ids 50000+i, created elsewhere)"
+        },
+        {
+          "offset": "0x90",
+          "width": 4,
+          "meaning": "unk90, passed by address to ov80_0222AD9C/ADB4"
+        },
+        {
+          "offset": "0x94",
+          "width": 16,
+          "meaning": "SysTask *tasks[4] (0x94,0x98,0x9C main; 0xA0 vblank)"
+        },
+        {
+          "offset": "0xa4",
+          "width": 4,
+          "meaning": "unknown"
+        },
+        {
+          "offset": "0xa8",
+          "width": 2,
+          "meaning": "s16 scroll offset X"
+        },
+        {
+          "offset": "0xaa",
+          "width": 2,
+          "meaning": "s16 scroll offset Y"
+        },
+        {
+          "offset": "0xac",
+          "width": 21,
+          "meaning": "unknown (0xAC..0xC0)"
+        },
+        {
+          "offset": "0xc1",
+          "width": 1,
+          "meaning": "u8 frontierIdx (launchArgs->unk20)"
+        }
+      ]
+    },
+    {
+      "name": "FrontierMapObjTemplate",
+      "size_guess": "0x1E, align 2 (struct copy = 15 halfword loop)",
+      "fields": [
+        {
+          "offset": "0x0",
+          "width": 2,
+          "meaning": "u16 unk0 (gfx id; 0xEEEE/0xEEEF sentinels from script)"
+        },
+        {
+          "offset": "0x2",
+          "width": 2,
+          "meaning": "u16 unk2 (=ov42_02228188(obj,5), direction?)"
+        },
+        {
+          "offset": "0x4",
+          "width": 2,
+          "meaning": "u16 id (0xFFFF = free)"
+        },
+        {
+          "offset": "0x6",
+          "width": 2,
+          "meaning": "s16 x"
+        },
+        {
+          "offset": "0x8",
+          "width": 2,
+          "meaning": "s16 y"
+        },
+        {
+          "offset": "0xa",
+          "width": 1,
+          "meaning": "u8 unkA (=ov42_02228188(obj,6))"
+        },
+        {
+          "offset": "0xb",
+          "width": 1,
+          "meaning": "u8 unkB (=ov42_022291F4, passed to ov42_02229200)"
+        },
+        {
+          "offset": "0xc",
+          "width": 1,
+          "meaning": "u8 unkC (script byte)"
+        },
+        {
+          "offset": "0xd",
+          "width": 17,
+          "meaning": "padding/unknown up to 0x1E"
+        }
+      ]
+    },
+    {
+      "name": "FrontierMapObjEntry (FrontierWork+0x84 [0x20])",
+      "size_guess": "0x3C",
+      "fields": [
+        {
+          "offset": "0x0",
+          "width": 4,
+          "meaning": "UnkStruct_ov42_02228110 *obj"
+        },
+        {
+          "offset": "0x4",
+          "width": 4,
+          "meaning": "UnkStruct_ov42_0222903C *unk4"
+        },
+        {
+          "offset": "0x8",
+          "width": 30,
+          "meaning": "FrontierMapObjTemplate tmpl (id at entry+0xC)"
+        },
+        {
+          "offset": "0x26",
+          "width": 16,
+          "meaning": "AnimSub (see src/overlay_80_02239BF0.c AnimEntry)"
+        },
+        {
+          "offset": "0x38",
+          "width": 4,
+          "meaning": "u32 unk38 (task ptr; must be 0 on free)"
+        }
+      ]
+    },
+    {
+      "name": "FrontierMapSpriteSave (FrontierWork+0xA04)",
+      "size_guess": "0x50",
+      "fields": [
+        {
+          "offset": "0x0",
+          "width": 16,
+          "meaning": "u16 resIds[8]"
+        },
+        {
+          "offset": "0x10",
+          "width": 2,
+          "meaning": "per-sprite [8] x 8 bytes: s16 x"
+        },
+        {
+          "offset": "0x12",
+          "width": 2,
+          "meaning": "s16 y"
+        },
+        {
+          "offset": "0x14",
+          "width": 1,
+          "meaning": "u8 resIdx"
+        },
+        {
+          "offset": "0x15",
+          "width": 1,
+          "meaning": "u8 anim"
+        },
+        {
+          "offset": "0x16",
+          "width": 2,
+          "meaning": "u16 frame:13, animActive:1 (bit13), drawFlag:1 (bit14), valid:1 (bit15), LSB-first"
+        }
+      ]
+    }
+  ],
+  "risks": [
+    "IPA/header: include/frontier/frontier_map.h is pulled into many already-matched TUs via frontier/frontier_system.h and overlay_80_022340E8.h (frontier.c, frontier_system.c, frontier_cmd_*.c ...). Its FrontierMap is only 0x14 bytes and UnkStruct_02239938 only 8. Do NOT add prototypes there. Either keep the full 0xC4 struct private to the new .c (no #include of frontier_map.h; then ov80_02239938 can return the private entry type), or use an _internal.h split. If you grow the struct in the shared header, test that change on its own first (insight ipa-header-return-type-widening isolation trick).",
+    "src/frontier.c (matched) calls FrontierMap_Init/Free/ov80_022389C4/ov80_02238A18 through LOCAL externs typed (FrontierWork *)/(FrontierMap *). Per-TU IPA means the new file's param types are free, but keep the arity/return types.",
+    "src/overlay_80_02239BF0.c locally declares ov80_02239938 as returning AnimEntry*, and frontier_cmd_arcade.c (via the header) as UnkStruct_02239938*. Both stay valid as long as the new .c does not include frontier_map.h.",
+    "ov80_02239740 double-increment quirk: on a hit the loop counter goes up twice and one index is used for both read and write. Reproduce literally (i++ inside the if), not with a separate dst counter.",
+    "Bitfields: the save record's u16 at +0x16 is frame:13 | animActive:1 | drawFlag:1 | valid:1. Writers narrow BOOL to u16 before the 1-bit insert (lsl#16;lsr#16;lsl#31;lsr#18). Use u16 bitfield members, not masks (insights bitfield-lsls-lsrs, single-bit-extract-folds-to-and-use-bitfield).",
+    "Rodata: 9 symbols, sizes 12,16,20,24,28,32,40,84,1024, already size-ascending with no ties, so MWCC's natural size sort should reproduce the order with separate static consts. If it does not, apply the one-struct consolidation recipe (rodata-multi-symbol-size-sorted-use-one-struct).",
+    "ov80_0223D654 is 1024 zero bytes but must stay in .rodata. Per const-uninit-global-lands-in-data-not-bss, zero-initialized objects can be moved to .bss/.data. Write an explicit zero initializer on a static const and check the section; fall back to folding it into a consolidated rodata struct.",
+    "ov80_0223D600 is copied as ONE 0x54-byte block (10 ldmia pairs + 1 word), so it needs a named static const struct containing 3 BgTemplates assigned to a local struct. A local array initializer would emit an anonymous blob that may sort last (mwcc-rodata-const-struct-first-pinned-rest-reversed, local-array-init-as-named-const-struct-copy-for-rodata-order).",
+    "ov80_0223D554 is an 11-byte, align-1 UnkTemplate_ov42_022293B8 copied with an 11-iteration ldrb/strb loop. Use plain struct assignment from a static const.",
+    "FrontierMap_SetVramBank stack layout: 4 separate struct locals, frame 0xA8 (bg-init-separate-template-locals). Declaration order sets the offsets.",
+    "Soft float in ov80_02238B7C: the y conversion is evaluated before x, and both _ffix calls come after SpriteSystem_GetRenderer (see insights fx32-const-rounds-vs-plain-shift, float-to-fx32-shared-ffix).",
+    "Type mismatches in include/overlay_42.h: ov42_02229974 returns 02229A40* but ov42_02229A08 takes 022299C0*; ov42_022299AC takes u32*; ov42_02229A08 fills UnkStruct_ov44_02232031* but the buffer feeds ov42_02228068(UnkStruct_ov42_02228EB0*). Bridge them with casts. Do not edit overlay_42.h.",
+    "Missing headers: sub_0209686x/78/84, ov80_0222A7EC, ov80_02239960/80/A38 and Sound_SetFieldBGM each need a local extern. Copy the types from the already-matched definers.",
+    "FrontierScript_ReadVar (header: u32) is probably u16 in the original. Asm callers pass its result unnarrowed to slot params that ov80_02239828 does narrow with (u16)i. Matters later for overlay_80_0222BDF4, not for this file.",
+    "Hardware-register idioms: use the NitroSDK inlines (GX_SetVisiblePlane/GXS_, GX_SetVisibleWnd/GXS_, G2_BlendNone/G2S_, GX_SetDispSelect, G2_SetBG0Priority, G3X_* set, G3_ViewPort, OS_SetIrqCheckFlag, MI_CpuFill16/MI_CpuClear32 on HW_* addresses). Raw stores would not reproduce the and/orr sequences."
+  ],
+  "notes": "40 thumb functions, 0 arm, no jump tables, 1280 bytes of .rodata, no .data/.bss, no save_arrays.c involvement (overlay 80). Linked as asm/frontier_map.o in main.lsf line 1085, between src/frontier/overlay_80_022372D8.o and src/frontier/overlay_80_02239960.o. .inc is asm/include/overlay_80_02238648.inc (not frontier_map.inc). Exported (non-static, listed in .inc): FrontierMap_Init, FrontierMap_Free, ov80_022389C4, ov80_02238A18, ov80_0223947C, ov80_022394D8, ov80_02239510, ov80_02239590, ov80_022395E8, ov80_0223962C, ov80_0223965C, ov80_0223968C, ov80_022396D8, ov80_02239700, ov80_02239708, ov80_02239734, ov80_022398E4, ov80_02239938. All other functions are file-local (static): FrontierMap_VBlank/Update/Scroll/SetVramBank/LoadPaletteData, ov80_02238AAC/AB0/ABC/B7C/C78, ov80_02238FA0, ov80_02239004, ov80_0223927C, ov80_022392DC/2F8/37C, ov80_02239384, ov80_022393E8, ov80_02239740/828/900/914. Callers: src/frontier.c (Init/Free/022389C4/02238A18), src/frontier/frontier_cmd_arcade.c and src/overlay_80_02239BF0.c (ov80_02239938), and asm/overlay_80_0222BDF4.s (FrtCmd_034..051 use the rest). Heap id 0x65 is used throughout. In frontier.c, FrontierWork lays out the arrays that sub_0209686x return: +0x24 u16[0x18][2], +0x84 0x3C x 0x20 entries, +0xA04 u16[8], +0xA14 0x40 bytes. No attempts_log entries exist for this file."
+}

@@ -960,6 +960,16 @@
       "attempts": 6,
       "result": "matched",
       "note": "compare-verified (HG + SS full ROM SHA1 OK). Sound/BGM scene + SE-group loading, wave-out channels, mic auto-sampling, GB-sounds DS<->GB seq table. First pass by decomp-drafter (Sonnet; draft extracted from its report since the agent type lacks Write): 92/95 first compile. Fixes: sub_020052E4 3rd pass-through arg (5 call sites), byte-reverse loop recomputing size-1, decl order in sub_0200508C. The 3 drafter NONMATCHING asm blocks (param copy + bpl/bne vs 0) match in plain C, so the file is 95/95 C. Public include/sound_02004A44.h left frozen and NOT included (local prototypes with true types); rodata (8-entry pitch/volume table, 0x88 DS/GB seq pairs) and bss (0x10, 0x28, 0x7D0) matched in definition order."
+    },
+    {
+      "file": "asm/overlay_41_02248400.s",
+      "lines": 1568,
+      "functions": 46,
+      "matched_functions": 45,
+      "nonmatching": 1,
+      "attempts": 45,
+      "result": "matched",
+      "note": "compare-verified (HG + SS full ROM SHA1 OK). Fashion-case accessory/wallpaper board (overlay 41): per-page circular node lists, page-swap SysTask slide animation, BG scroll templates, touch region checks. First pass by decomp-drafter (Sonnet; C returned in its report): 36/46 first compile. Fixes: stack-slot/register decl orders, inverted visibility branch, template builders in natural field order, list count read through board->lists[type] (no list pointer local), byte-reverse/grid helpers. ov41_022485DC matched only after sweeping the opening template-store order (pattern template-init-order-sets-param-copy-regs). ov41_02248B48 NONMATCHING asm: outY/row register swap unreproduced after ~30 variants. Types and ov41 callees declared locally; include/overlay_41.h untouched."
     }
   ],
   "failed": [
@@ -1378,8 +1388,8 @@
     }
   ],
   "stats": {
-    "total_attempts": 238,
-    "total_matched": 88,
+    "total_attempts": 283,
+    "total_matched": 89,
     "total_failed": 31
   },
   "matched": [
@@ -1492,6 +1502,7 @@
     "asm/overlay_01_022031C0.s",
     "asm/unk_020863F4.s",
     "asm/unk_02085604.s",
-    "asm/unk_02004A44.s"
+    "asm/unk_02004A44.s",
+    "asm/overlay_41_02248400.s"
   ]
 }

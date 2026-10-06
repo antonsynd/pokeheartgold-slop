@@ -1,5 +1,5 @@
 {
- "count": 531,
+ "count": 532,
  "game": "heartgold.us",
  "schema": 1,
  "tus": {
@@ -43643,6 +43643,288 @@
      "name": ".text",
      "sha1": "113000686854fd2ae08529db3dd0f8a761b79c34",
      "size": 60,
+     "type": 1
+    }
+   ]
+  },
+  "src/overlay_41_02248400.c": {
+   "alloc_sha1": "877bf30bcae7a0b9f678c731eb40328e720f17d8",
+   "object": "build/heartgold.us/src/overlay_41_02248400.o",
+   "sections": [
+    {
+     "name": ".text",
+     "sha1": "f2d364586b9ad75338a9eb0ba0965404731b0faf",
+     "size": 136,
+     "type": 1
+    },
+    {
+     "name": ".text",
+     "sha1": "884d986053f884df6d3d465a8b4b8a9f020d652a",
+     "size": 54,
+     "type": 1
+    },
+    {
+     "name": ".text",
+     "sha1": "697744e596574cd5127911db793450b54eb4f5a4",
+     "size": 40,
+     "type": 1
+    },
+    {
+     "name": ".text",
+     "sha1": "333212b4623a5735e10cdae909497ce71f0a4a0b",
+     "size": 156,
+     "type": 1
+    },
+    {
+     "name": ".text",
+     "sha1": "51020a9097167c58b2e80fb69eb4a2d12a287248",
+     "size": 86,
+     "type": 1
+    },
+    {
+     "name": ".text",
+     "sha1": "ea88d995d381fb5c13a9c7dc2d7b9bf42d86e1f0",
+     "size": 230,
+     "type": 1
+    },
+    {
+     "name": ".text",
+     "sha1": "4ad292479c4339fc0873d20e44dde15af0cc8f51",
+     "size": 42,
+     "type": 1
+    },
+    {
+     "name": ".text",
+     "sha1": "ab41ef382436bbec56db7a88e21e3c4e589036ad",
+     "size": 8,
+     "type": 1
+    },
+    {
+     "name": ".text",
+     "sha1": "b29a778195d100a4f9eb863e0d513a8662c3698a",
+     "size": 44,
+     "type": 1
+    },
+    {
+     "name": ".text",
+     "sha1": "f9440eba6a0975d4fc55a81966ba7ec4b04e93eb",
+     "size": 42,
+     "type": 1
+    },
+    {
+     "name": ".text",
+     "sha1": "c00f760305722f4bcc63565ef501d0b2a28e9652",
+     "size": 62,
+     "type": 1
+    },
+    {
+     "name": ".text",
+     "sha1": "0d7f8abfec3d2f9e1209eb78e41da561835bee08",
+     "size": 104,
+     "type": 1
+    },
+    {
+     "name": ".text",
+     "sha1": "129cc7add5ec8fbcd267c8175955c5aec2861829",
+     "size": 40,
+     "type": 1
+    },
+    {
+     "name": ".text",
+     "sha1": "8289696b3eaff86c5204f506653aa3a6df9b5737",
+     "size": 28,
+     "type": 1
+    },
+    {
+     "name": ".text",
+     "sha1": "d721d7928773f13b7b96afa9508b30f8ba0900ca",
+     "size": 28,
+     "type": 1
+    },
+    {
+     "name": ".text",
+     "sha1": "c96629182e677a6d40c5a46728228c22fad5b3bc",
+     "size": 50,
+     "type": 1
+    },
+    {
+     "name": ".text",
+     "sha1": "7c0f8445ef4be8be24798d6138fa725a2a087c53",
+     "size": 76,
+     "type": 1
+    },
+    {
+     "name": ".text",
+     "sha1": "58222605c16fad960acce5a07eb49ea7f27a0cde",
+     "size": 104,
+     "type": 1
+    },
+    {
+     "name": ".text",
+     "sha1": "5435935db441e2301c93203c81db3191dbea1aa4",
+     "size": 12,
+     "type": 1
+    },
+    {
+     "name": ".text",
+     "sha1": "ae2a57065600e719ac329b2ebd154083323ba012",
+     "size": 14,
+     "type": 1
+    },
+    {
+     "name": ".text",
+     "sha1": "6263eb83f600cffcd3d0c7fe39ce56b7222a9603",
+     "size": 40,
+     "type": 1
+    },
+    {
+     "name": ".text",
+     "sha1": "0939cbb130ae55cb7eb9349bfe680ff6f8bff833",
+     "size": 18,
+     "type": 1
+    },
+    {
+     "name": ".text",
+     "sha1": "4bb8bfcffb797fc1bf9181e4f03d43ed0c879684",
+     "size": 14,
+     "type": 1
+    },
+    {
+     "name": ".text",
+     "sha1": "2e9e0c3f3f996659626ef15b197492e1967f4d98",
+     "size": 58,
+     "type": 1
+    },
+    {
+     "name": ".text",
+     "sha1": "92a5705905c4af82aaee3e6dfd6e242440cb7f5b",
+     "size": 34,
+     "type": 1
+    },
+    {
+     "name": ".text",
+     "sha1": "fe8adbcdc4680fdeacded9c4795131d7e1464b40",
+     "size": 16,
+     "type": 1
+    },
+    {
+     "name": ".text",
+     "sha1": "2acff9c01d955d512add55fbeb6e58f406224e74",
+     "size": 16,
+     "type": 1
+    },
+    {
+     "name": ".text",
+     "sha1": "39734a4635e9b18cd31253c9e0116ff16268c3a0",
+     "size": 66,
+     "type": 1
+    },
+    {
+     "name": ".text",
+     "sha1": "b8a0dd79cfb132dbcba624a4fd5665a777701254",
+     "size": 40,
+     "type": 1
+    },
+    {
+     "name": ".text",
+     "sha1": "efab79da2a70afa8f021031bf2386224ac0ab6a9",
+     "size": 38,
+     "type": 1
+    },
+    {
+     "name": ".text",
+     "sha1": "9e93ce66d67a792184950ac7d5d712d2b33c1bff",
+     "size": 34,
+     "type": 1
+    },
+    {
+     "name": ".text",
+     "sha1": "a9f3ac8646a3ea83b6286aee46a528fe9283ef74",
+     "size": 26,
+     "type": 1
+    },
+    {
+     "name": ".text",
+     "sha1": "08ecf2b011e418710800c88138277202e660c64f",
+     "size": 36,
+     "type": 1
+    },
+    {
+     "name": ".text",
+     "sha1": "7bc7e4a664ce42c2859a043611e5e851d1fd9a62",
+     "size": 40,
+     "type": 1
+    },
+    {
+     "name": ".text",
+     "sha1": "8e52246313e96c0d6bbd8315126073674b2ae0aa",
+     "size": 60,
+     "type": 1
+    },
+    {
+     "name": ".text",
+     "sha1": "f74a112370965a46cfc35c68bc6e7f21b536a5d4",
+     "size": 120,
+     "type": 1
+    },
+    {
+     "name": ".text",
+     "sha1": "bc187e928215d65dad2f125a5adf829ebf32b3f5",
+     "size": 360,
+     "type": 1
+    },
+    {
+     "name": ".text",
+     "sha1": "5fd17d5b5daf5e28b360e6a53a4f941567604fcf",
+     "size": 24,
+     "type": 1
+    },
+    {
+     "name": ".text",
+     "sha1": "0e452872ba6a910fb790d5406bfb239f35d75f63",
+     "size": 40,
+     "type": 1
+    },
+    {
+     "name": ".text",
+     "sha1": "876d1c02edd088aac453a7123e313fde066a68ff",
+     "size": 34,
+     "type": 1
+    },
+    {
+     "name": ".text",
+     "sha1": "9eaf3b1fd96cd855ae5de89869e0b8fd5ff58518",
+     "size": 72,
+     "type": 1
+    },
+    {
+     "name": ".text",
+     "sha1": "c1fec1e50ad35f1a9f1aa5f5b5b654356f071651",
+     "size": 22,
+     "type": 1
+    },
+    {
+     "name": ".text",
+     "sha1": "13719f2f28b5b19f2ea1ecca67c44a7447f5ca0b",
+     "size": 28,
+     "type": 1
+    },
+    {
+     "name": ".text",
+     "sha1": "6193c08d673fb9d42b1927ae452dd39134e07f91",
+     "size": 60,
+     "type": 1
+    },
+    {
+     "name": ".text",
+     "sha1": "e828468976b68d8bc817d32516aaa05d29b26085",
+     "size": 2,
+     "type": 1
+    },
+    {
+     "name": ".text",
+     "sha1": "d29f95c6f2461a71c26c62ddfb4aae4347d67bc2",
+     "size": 78,
      "type": 1
     }
    ]

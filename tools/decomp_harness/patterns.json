@@ -1805,6 +1805,12 @@
       "category": "matching-tricks",
       "title": "Entry `adds r4,rN,#0; bpl/bmi/beq/bne` (param copy whose FLAGS are the test vs 0, no cmp) IS plain C -- only `cmp rCopy,#N` (N != 0) is the param-copyprop-cmp blocker",
       "body": "Refines [[param-copyprop-cmp]]. When the parameter copy instruction itself sets the flags for a compare-with-zero (`add r4, r1, #0; bpl L` for `if (v < 0) v = 0;`, `add r5, r0, #0 ... bne L` for `GF_ASSERT(p != NULL)`), MWCC emits exactly that from ordinary C because the copy (kept live across a later call) is the flag-setting op. Matched in plain C in unk_02004A44: GF_SndHandleSetInitialVolume (clamp 0..0x7F), GF_SndPlayerCountPlayingSeqByPlayerNo (GF_ASSERT(playerNo >= 0)), sub_02005B78 (GF_ASSERT(dst != NULL)) -- a drafter had pre-emptively written all three as NONMATCHING asm. Also: asmscan flags `bl X; adds r4,r0,#0; cmp r4,#1` (a SAVED RETURN value, e.g. sub_020058F4) as a copyprop site -- that is a false positive and is plain C. Always try the C variant (temporarily `#if 1` the NONMATCHING branch) and byte-check before keeping an asm fallback."
+    },
+    {
+      "id": "template-init-order-sets-param-copy-regs",
+      "category": "codegen",
+      "title": "When a function builds a stack template first, the ORDER of the template field stores (not local decl order) decides which callee-saved reg each parameter copy gets",
+      "body": "In ov41_022485DC (overlay_41_02248400) the params board/type/idx were assigned r5/r4/r6 instead of retail r5/r6/r4, and 120 declaration orders of the locals changed nothing. Sweeping the order of the first five `tmpl.field = ...` statements fixed every register: retail is `tmpl.unk_00 = board->unk_58; tmpl.unk_18 = idx; tmpl.unk_04 = ...;` (the first statement must load through `board`, so board is copied first, and idx is used second). Its store order in the asm (unk_18 first) is the scheduler, not the source order. Afterwards only stack slots differed; swap the address-taken locals declaration order (`int x, y;` before `int w, h;`; first declared = higher sp offset). Recipe: when params land in rotated callee-saved regs and decl order has no effect, sweep the order of the opening statements (5! = 120 compiles, ~7 min with compile_one.sh)."
     }
   ]
 }

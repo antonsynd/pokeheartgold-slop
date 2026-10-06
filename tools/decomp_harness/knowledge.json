@@ -12,6 +12,1182 @@
    ],
    "sweep_output": "sweep/out/battle_arcade_game_board_data.json"
   },
+  "asm/frontier_map.s": {
+   "notes": "40 thumb functions, 0 arm, no jump tables, 1280 bytes of .rodata, no .data/.bss, no save_arrays.c involvement (overlay 80). Linked as asm/frontier_map.o in main.lsf line 1085, between src/frontier/overlay_80_022372D8.o and src/frontier/overlay_80_02239960.o. .inc is asm/include/overlay_80_02238648.inc (not frontier_map.inc). Exported (non-static, listed in .inc): FrontierMap_Init, FrontierMap_Free, ov80_022389C4, ov80_02238A18, ov80_0223947C, ov80_022394D8, ov80_02239510, ov80_02239590, ov80_022395E8, ov80_0223962C, ov80_0223965C, ov80_0223968C, ov80_022396D8, ov80_02239700, ov80_02239708, ov80_02239734, ov80_022398E4, ov80_02239938. All other functions are file-local (static): FrontierMap_VBlank/Update/Scroll/SetVramBank/LoadPaletteData, ov80_02238AAC/AB0/ABC/B7C/C78, ov80_02238FA0, ov80_02239004, ov80_0223927C, ov80_022392DC/2F8/37C, ov80_02239384, ov80_022393E8, ov80_02239740/828/900/914. Callers: src/frontier.c (Init/Free/022389C4/02238A18), src/frontier/frontier_cmd_arcade.c and src/overlay_80_02239BF0.c (ov80_02239938), and asm/overlay_80_0222BDF4.s (FrtCmd_034..051 use the rest). Heap id 0x65 is used throughout. In frontier.c, FrontierWork lays out the arrays that sub_0209686x return: +0x24 u16[0x18][2], +0x84 0x3C x 0x20 entries, +0xA04 u16[8], +0xA14 0x40 bytes. No attempts_log entries exist for this file.",
+   "oracle": {
+    "functions": {
+     "FrontierMap_Free": {
+      "widths": [
+       {
+        "base": "r2",
+        "confidence": "high",
+        "evidence": "L230: ldrb r2, [r2]",
+        "kind": "load-width",
+        "offset": "#0",
+        "verdict": "u8"
+       },
+       {
+        "base": "r0",
+        "confidence": "high",
+        "evidence": "L345: strh r1, [r0]",
+        "kind": "store-width",
+        "offset": "#0",
+        "verdict": "u16"
+       }
+      ]
+     },
+     "FrontierMap_Init": {
+      "signedness": [
+       {
+        "branch": "blt",
+        "confidence": "high",
+        "evidence": "L76: cmp r2, #8  =>  L77: blt _022386D4",
+        "register": "r2",
+        "verdict": "signed"
+       }
+      ],
+      "widths": [
+       {
+        "confidence": "high",
+        "evidence": "L168: lsl r0, r0, #0x10 ; L169: lsr r0, r0, #0x10",
+        "kind": "truncation-pair",
+        "register": "r0",
+        "verdict": "u16"
+       },
+       {
+        "confidence": "high",
+        "evidence": "L175: lsl r1, r1, #0x10 ; L177: lsr r1, r1, #0x10",
+        "kind": "truncation-pair",
+        "register": "r1",
+        "verdict": "u16"
+       },
+       {
+        "base": "r4",
+        "confidence": "high",
+        "evidence": "L19: ldrb r5, [r4]",
+        "kind": "load-width",
+        "offset": "#0",
+        "verdict": "u8"
+       },
+       {
+        "base": "r1",
+        "confidence": "high",
+        "evidence": "L43: strh r2, [r1]",
+        "kind": "store-width",
+        "offset": "#0",
+        "verdict": "u16"
+       },
+       {
+        "base": "r0",
+        "confidence": "high",
+        "evidence": "L45: strh r2, [r0]",
+        "kind": "store-width",
+        "offset": "#0",
+        "verdict": "u16"
+       },
+       {
+        "base": "r2",
+        "confidence": "high",
+        "evidence": "L47: ldrh r1, [r2]",
+        "kind": "load-width",
+        "offset": "#0",
+        "verdict": "u16"
+       },
+       {
+        "base": "r2",
+        "confidence": "high",
+        "evidence": "L50: strh r0, [r2]",
+        "kind": "store-width",
+        "offset": "#0",
+        "verdict": "u16"
+       },
+       {
+        "base": "r0",
+        "confidence": "high",
+        "evidence": "L67: strb r5, [r0]",
+        "kind": "store-width",
+        "offset": "#0",
+        "verdict": "u8"
+       },
+       {
+        "base": "r2",
+        "confidence": "high",
+        "evidence": "L198: ldrb r2, [r2]",
+        "kind": "load-width",
+        "offset": "#0",
+        "verdict": "u8"
+       }
+      ]
+     },
+     "FrontierMap_LoadPaletteData": {
+      "widths": [
+       {
+        "confidence": "high",
+        "evidence": "L1032: lsl r0, r0, #0x18 ; L1033: lsr r0, r0, #0x18",
+        "kind": "truncation-pair",
+        "register": "r0",
+        "verdict": "u8"
+       }
+      ]
+     },
+     "FrontierMap_Scroll": {
+      "widths": [
+       {
+        "base": "r0",
+        "confidence": "high",
+        "evidence": "L552: ldrb r0, [r0]",
+        "kind": "load-width",
+        "offset": "#0",
+        "verdict": "u8"
+       },
+       {
+        "base": "r4",
+        "confidence": "high",
+        "evidence": "L571: ldrb r0, [r4]",
+        "kind": "load-width",
+        "offset": "#0",
+        "verdict": "u8"
+       }
+      ]
+     },
+     "FrontierMap_SetVramBank": {
+      "widths": [
+       {
+        "confidence": "high",
+        "evidence": "L829: lsl r0, r0, #0x10 ; L830: lsr r6, r0, #0x10",
+        "kind": "truncation-pair",
+        "register": "r0",
+        "verdict": "u16"
+       },
+       {
+        "base": "r1",
+        "confidence": "high",
+        "evidence": "L820: strb r2, [r1, #0xd]",
+        "kind": "store-width",
+        "offset": "#0xd",
+        "verdict": "u8"
+       },
+       {
+        "base": "r0",
+        "confidence": "high",
+        "evidence": "L822: strb r2, [r0, #9]",
+        "kind": "store-width",
+        "offset": "#9",
+        "verdict": "u8"
+       },
+       {
+        "base": "r1",
+        "confidence": "high",
+        "evidence": "L823: strb r2, [r1, #0x10]",
+        "kind": "store-width",
+        "offset": "#0x10",
+        "verdict": "u8"
+       },
+       {
+        "base": "r0",
+        "confidence": "high",
+        "evidence": "L824: strb r2, [r0, #0xc]",
+        "kind": "store-width",
+        "offset": "#0xc",
+        "verdict": "u8"
+       },
+       {
+        "base": "r0",
+        "confidence": "high",
+        "evidence": "L832: strb r6, [r0, #8]",
+        "kind": "store-width",
+        "offset": "#8",
+        "verdict": "u8"
+       },
+       {
+        "base": "r1",
+        "confidence": "high",
+        "evidence": "L956: ldrh r2, [r1]",
+        "kind": "load-width",
+        "offset": "#0",
+        "verdict": "u16"
+       },
+       {
+        "base": "r1",
+        "confidence": "high",
+        "evidence": "L959: strh r2, [r1]",
+        "kind": "store-width",
+        "offset": "#0",
+        "verdict": "u16"
+       }
+      ]
+     },
+     "FrontierMap_Update": {
+      "signedness": [
+       {
+        "branch": "blt",
+        "confidence": "high",
+        "evidence": "L531: cmp r6, #8  =>  L532: blt _02238AF4",
+        "register": "r6",
+        "verdict": "signed"
+       }
+      ]
+     },
+     "ov80_022389C4": {
+      "signedness": [
+       {
+        "branch": "blt",
+        "confidence": "high",
+        "evidence": "L394: cmp r5, #0x20  =>  L395: blt _022389CC",
+        "register": "r5",
+        "verdict": "signed"
+       }
+      ],
+      "widths": [
+       {
+        "base": "r4",
+        "confidence": "high",
+        "evidence": "L376: strb r0, [r4, #0x12]",
+        "kind": "store-width",
+        "offset": "#0x12",
+        "verdict": "u8"
+       },
+       {
+        "base": "r4",
+        "confidence": "high",
+        "evidence": "L380: strh r0, [r4, #0xa]",
+        "kind": "store-width",
+        "offset": "#0xa",
+        "verdict": "u16"
+       },
+       {
+        "base": "r4",
+        "confidence": "high",
+        "evidence": "L384: strh r0, [r4, #0xe]",
+        "kind": "store-width",
+        "offset": "#0xe",
+        "verdict": "u16"
+       },
+       {
+        "base": "r4",
+        "confidence": "high",
+        "evidence": "L388: strh r0, [r4, #0x10]",
+        "kind": "store-width",
+        "offset": "#0x10",
+        "verdict": "u16"
+       },
+       {
+        "base": "r4",
+        "confidence": "high",
+        "evidence": "L391: strb r0, [r4, #0x13]",
+        "kind": "store-width",
+        "offset": "#0x13",
+        "verdict": "u8"
+       }
+      ]
+     },
+     "ov80_02238A18": {
+      "signedness": [
+       {
+        "branch": "blt",
+        "confidence": "high",
+        "evidence": "L422: cmp r6, #0x18  =>  L423: blt _02238A2A",
+        "register": "r6",
+        "verdict": "signed"
+       },
+       {
+        "branch": "blt",
+        "confidence": "high",
+        "evidence": "L442: cmp r4, #0x20  =>  L443: blt _02238A48",
+        "register": "r4",
+        "verdict": "signed"
+       }
+      ],
+      "widths": [
+       {
+        "base": "r4",
+        "confidence": "high",
+        "evidence": "L412: ldrh r1, [r4]",
+        "kind": "load-width",
+        "offset": "#0",
+        "verdict": "u16"
+       },
+       {
+        "base": "r4",
+        "confidence": "high",
+        "evidence": "L415: ldrb r2, [r4, #2]",
+        "kind": "load-width",
+        "offset": "#2",
+        "verdict": "u8"
+       },
+       {
+        "base": "r0",
+        "confidence": "high",
+        "evidence": "L431: ldrh r1, [r0, #0xc]",
+        "kind": "load-width",
+        "offset": "#0xc",
+        "verdict": "u16"
+       }
+      ]
+     },
+     "ov80_02238B7C": {
+      "exact_types": [
+       {
+        "confidence": "high",
+        "evidence": "L615: bl _fflt",
+        "helper": "_fflt",
+        "verdict": "(f32)(s32)   signed int -> float   (operand is signed)"
+       },
+       {
+        "confidence": "high",
+        "evidence": "L624: bl _fflt",
+        "helper": "_fflt",
+        "verdict": "(f32)(s32)   signed int -> float   (operand is signed)"
+       },
+       {
+        "confidence": "high",
+        "evidence": "L633: bl _fflt",
+        "helper": "_fflt",
+        "verdict": "(f32)(s32)   signed int -> float   (operand is signed)"
+       },
+       {
+        "confidence": "high",
+        "evidence": "L642: bl _fflt",
+        "helper": "_fflt",
+        "verdict": "(f32)(s32)   signed int -> float   (operand is signed)"
+       },
+       {
+        "confidence": "high",
+        "evidence": "L652: bl _ffix",
+        "helper": "_ffix",
+        "verdict": "(s32)f32     float -> signed int"
+       },
+       {
+        "confidence": "high",
+        "evidence": "L655: bl _ffix",
+        "helper": "_ffix",
+        "verdict": "(s32)f32     float -> signed int"
+       }
+      ],
+      "signedness": [
+       {
+        "branch": "ble",
+        "confidence": "high",
+        "evidence": "L612: cmp r4, #0  =>  L613: ble _02238BC6",
+        "register": "r4",
+        "verdict": "signed"
+       },
+       {
+        "branch": "ble",
+        "confidence": "high",
+        "evidence": "L630: cmp r6, #0  =>  L631: ble _02238BEE",
+        "register": "r6",
+        "verdict": "signed"
+       }
+      ],
+      "widths": [
+       {
+        "confidence": "high",
+        "evidence": "L602: lsl r0, r0, #0x10 ; L603: asr r4, r0, #0x10",
+        "kind": "truncation-pair",
+        "register": "r0",
+        "verdict": "s16"
+       },
+       {
+        "confidence": "high",
+        "evidence": "L610: lsl r0, r0, #0x10 ; L611: asr r6, r0, #0x10",
+        "kind": "truncation-pair",
+        "register": "r0",
+        "verdict": "s16"
+       },
+       {
+        "base": "r5",
+        "confidence": "high",
+        "evidence": "L600: ldrsh r1, [r5, r1]",
+        "kind": "load-width",
+        "offset": "(r1)",
+        "verdict": "s16"
+       },
+       {
+        "base": "r0",
+        "confidence": "high",
+        "evidence": "L672: ldrb r0, [r0]",
+        "kind": "load-width",
+        "offset": "#0",
+        "verdict": "u8"
+       },
+       {
+        "base": "r7",
+        "confidence": "high",
+        "evidence": "L679: ldrb r0, [r7]",
+        "kind": "load-width",
+        "offset": "#0",
+        "verdict": "u8"
+       }
+      ]
+     },
+     "ov80_02239004": {
+      "widths": [
+       {
+        "base": "r3",
+        "confidence": "high",
+        "evidence": "L1157: ldrb r0, [r3]",
+        "kind": "load-width",
+        "offset": "#0",
+        "verdict": "u8"
+       },
+       {
+        "base": "r2",
+        "confidence": "high",
+        "evidence": "L1159: strb r0, [r2]",
+        "kind": "store-width",
+        "offset": "#0",
+        "verdict": "u8"
+       },
+       {
+        "base": "r1",
+        "confidence": "high",
+        "evidence": "L1167: strb r0, [r1, #0x10]",
+        "kind": "store-width",
+        "offset": "#0x10",
+        "verdict": "u8"
+       },
+       {
+        "base": "r1",
+        "confidence": "high",
+        "evidence": "L1172: strb r0, [r1, #0x11]",
+        "kind": "store-width",
+        "offset": "#0x11",
+        "verdict": "u8"
+       },
+       {
+        "base": "r1",
+        "confidence": "high",
+        "evidence": "L1198: strb r0, [r1, #9]",
+        "kind": "store-width",
+        "offset": "#9",
+        "verdict": "u8"
+       },
+       {
+        "base": "r1",
+        "confidence": "high",
+        "evidence": "L1201: strb r2, [r1, #0xb]",
+        "kind": "store-width",
+        "offset": "#0xb",
+        "verdict": "u8"
+       },
+       {
+        "base": "r1",
+        "confidence": "high",
+        "evidence": "L1202: strb r0, [r1, #0xc]",
+        "kind": "store-width",
+        "offset": "#0xc",
+        "verdict": "u8"
+       },
+       {
+        "base": "r1",
+        "confidence": "high",
+        "evidence": "L1203: strb r2, [r1, #0xe]",
+        "kind": "store-width",
+        "offset": "#0xe",
+        "verdict": "u8"
+       }
+      ]
+     },
+     "ov80_0223927C": {
+      "signedness": [
+       {
+        "branch": "blt",
+        "confidence": "high",
+        "evidence": "L1412: cmp r4, #0x20  =>  L1413: blt _0223928A",
+        "register": "r4",
+        "verdict": "signed"
+       }
+      ]
+     },
+     "ov80_022392F8": {
+      "widths": [
+       {
+        "base": "r0",
+        "confidence": "high",
+        "evidence": "L1463: ldrh r2, [r0]",
+        "kind": "load-width",
+        "offset": "#0",
+        "verdict": "u16"
+       },
+       {
+        "base": "r0",
+        "confidence": "high",
+        "evidence": "L1467: strh r1, [r0]",
+        "kind": "store-width",
+        "offset": "#0",
+        "verdict": "u16"
+       }
+      ]
+     },
+     "ov80_022393E8": {
+      "signedness": [
+       {
+        "branch": "blt",
+        "confidence": "high",
+        "evidence": "L1580: cmp r6, #8  =>  L1581: blt _022393F0",
+        "register": "r6",
+        "verdict": "signed"
+       },
+       {
+        "branch": "blt",
+        "confidence": "high",
+        "evidence": "L1596: cmp r6, #8  =>  L1597: blt _02239408",
+        "register": "r6",
+        "verdict": "signed"
+       },
+       {
+        "branch": "blt",
+        "confidence": "high",
+        "evidence": "L1626: cmp r4, #4  =>  L1627: blt _02239426",
+        "register": "r4",
+        "verdict": "signed"
+       }
+      ],
+      "widths": [
+       {
+        "base": "r0",
+        "confidence": "high",
+        "evidence": "L1588: ldrh r1, [r0]",
+        "kind": "load-width",
+        "offset": "#0",
+        "verdict": "u16"
+       }
+      ]
+     },
+     "ov80_0223947C": {
+      "signedness": [
+       {
+        "branch": "blt",
+        "confidence": "high",
+        "evidence": "L1656: cmp r1, #0x18  =>  L1657: blt _02239490",
+        "register": "r1",
+        "verdict": "signed"
+       },
+       {
+        "branch": "blt",
+        "confidence": "high",
+        "evidence": "L1667: cmp r4, #0x18  =>  L1668: blt _022394A4",
+        "register": "r4",
+        "verdict": "signed"
+       }
+      ],
+      "widths": [
+       {
+        "base": "r5",
+        "confidence": "high",
+        "evidence": "L1647: ldrh r3, [r5]",
+        "kind": "load-width",
+        "offset": "#0",
+        "verdict": "u16"
+       },
+       {
+        "base": "r2",
+        "confidence": "high",
+        "evidence": "L1651: ldrh r0, [r2]",
+        "kind": "load-width",
+        "offset": "#0",
+        "verdict": "u16"
+       },
+       {
+        "base": "r7",
+        "confidence": "high",
+        "evidence": "L1677: strh r0, [r7, r2]",
+        "kind": "store-width",
+        "offset": "(r2)",
+        "verdict": "u16"
+       },
+       {
+        "base": "r5",
+        "confidence": "high",
+        "evidence": "L1678: ldrh r0, [r5, #2]",
+        "kind": "load-width",
+        "offset": "#2",
+        "verdict": "u16"
+       },
+       {
+        "base": "r1",
+        "confidence": "high",
+        "evidence": "L1680: strh r0, [r1, #2]",
+        "kind": "store-width",
+        "offset": "#2",
+        "verdict": "u16"
+       },
+       {
+        "base": "r5",
+        "confidence": "high",
+        "evidence": "L1682: ldrb r2, [r5, #2]",
+        "kind": "load-width",
+        "offset": "#2",
+        "verdict": "u8"
+       }
+      ]
+     },
+     "ov80_022394D8": {
+      "signedness": [
+       {
+        "branch": "blt",
+        "confidence": "high",
+        "evidence": "L1715: cmp r4, #0x18  =>  L1716: blt _022394EA",
+        "register": "r4",
+        "verdict": "signed"
+       }
+      ],
+      "widths": [
+       {
+        "base": "r1",
+        "confidence": "high",
+        "evidence": "L1702: ldrh r0, [r1]",
+        "kind": "load-width",
+        "offset": "#0",
+        "verdict": "u16"
+       },
+       {
+        "base": "r7",
+        "confidence": "high",
+        "evidence": "L1710: strh r1, [r7, r0]",
+        "kind": "store-width",
+        "offset": "(r0)",
+        "verdict": "u16"
+       }
+      ]
+     },
+     "ov80_02239510": {
+      "signedness": [
+       {
+        "branch": "blt",
+        "confidence": "high",
+        "evidence": "L1742: cmp r4, #0x20  =>  L1743: blt _0223952A",
+        "register": "r4",
+        "verdict": "signed"
+       }
+      ],
+      "widths": [
+       {
+        "base": "r5",
+        "confidence": "high",
+        "evidence": "L1750: ldrsh r0, [r5, r0]",
+        "kind": "load-width",
+        "offset": "(r0)",
+        "verdict": "s16"
+       },
+       {
+        "base": "r1",
+        "confidence": "high",
+        "evidence": "L1752: strh r0, [r1]",
+        "kind": "store-width",
+        "offset": "#0",
+        "verdict": "u16"
+       },
+       {
+        "base": "r1",
+        "confidence": "high",
+        "evidence": "L1755: strh r0, [r1, #2]",
+        "kind": "store-width",
+        "offset": "#2",
+        "verdict": "u16"
+       },
+       {
+        "base": "r5",
+        "confidence": "high",
+        "evidence": "L1756: ldrh r0, [r5, #4]",
+        "kind": "load-width",
+        "offset": "#4",
+        "verdict": "u16"
+       },
+       {
+        "base": "r1",
+        "confidence": "high",
+        "evidence": "L1757: strh r0, [r1, #4]",
+        "kind": "store-width",
+        "offset": "#4",
+        "verdict": "u16"
+       },
+       {
+        "base": "r5",
+        "confidence": "high",
+        "evidence": "L1758: ldrh r0, [r5, #2]",
+        "kind": "load-width",
+        "offset": "#2",
+        "verdict": "u16"
+       },
+       {
+        "base": "r1",
+        "confidence": "high",
+        "evidence": "L1759: strh r0, [r1, #6]",
+        "kind": "store-width",
+        "offset": "#6",
+        "verdict": "u16"
+       },
+       {
+        "base": "r5",
+        "confidence": "high",
+        "evidence": "L1760: ldrb r0, [r5, #0xa]",
+        "kind": "load-width",
+        "offset": "#0xa",
+        "verdict": "u8"
+       },
+       {
+        "base": "r1",
+        "confidence": "high",
+        "evidence": "L1761: strh r0, [r1, #8]",
+        "kind": "store-width",
+        "offset": "#8",
+        "verdict": "u16"
+       },
+       {
+        "base": "r5",
+        "confidence": "high",
+        "evidence": "L1762: ldrh r0, [r5]",
+        "kind": "load-width",
+        "offset": "#0",
+        "verdict": "u16"
+       },
+       {
+        "base": "r1",
+        "confidence": "high",
+        "evidence": "L1763: strh r0, [r1, #0xa]",
+        "kind": "store-width",
+        "offset": "#0xa",
+        "verdict": "u16"
+       },
+       {
+        "base": "r5",
+        "confidence": "high",
+        "evidence": "L1773: ldrb r1, [r5, #0xb]",
+        "kind": "load-width",
+        "offset": "#0xb",
+        "verdict": "u8"
+       }
+      ]
+     },
+     "ov80_02239590": {
+      "signedness": [
+       {
+        "branch": "blt",
+        "confidence": "high",
+        "evidence": "L1825: cmp r1, #0x20  =>  L1826: blt _022395A0",
+        "register": "r1",
+        "verdict": "signed"
+       }
+      ],
+      "widths": [
+       {
+        "base": "r0",
+        "confidence": "high",
+        "evidence": "L1820: strh r1, [r0, #0xc]",
+        "kind": "store-width",
+        "offset": "#0xc",
+        "verdict": "u16"
+       }
+      ]
+     },
+     "ov80_022395E8": {
+      "signedness": [
+       {
+        "branch": "blt",
+        "confidence": "high",
+        "evidence": "L1864: cmp r1, #0x20  =>  L1865: blt _022395FA",
+        "register": "r1",
+        "verdict": "signed"
+       }
+      ],
+      "widths": [
+       {
+        "base": "r3",
+        "confidence": "high",
+        "evidence": "L1843: ldrh r2, [r3, #0xc]",
+        "kind": "load-width",
+        "offset": "#0xc",
+        "verdict": "u16"
+       }
+      ]
+     },
+     "ov80_0223962C": {
+      "signedness": [
+       {
+        "branch": "blt",
+        "confidence": "high",
+        "evidence": "L1892: cmp r4, #8  =>  L1893: blt _02239634",
+        "register": "r4",
+        "verdict": "signed"
+       }
+      ],
+      "widths": [
+       {
+        "base": "r2",
+        "confidence": "high",
+        "evidence": "L1881: ldrh r2, [r2]",
+        "kind": "load-width",
+        "offset": "#0",
+        "verdict": "u16"
+       },
+       {
+        "base": "r0",
+        "confidence": "high",
+        "evidence": "L1887: strh r1, [r0]",
+        "kind": "store-width",
+        "offset": "#0",
+        "verdict": "u16"
+       }
+      ]
+     },
+     "ov80_0223965C": {
+      "signedness": [
+       {
+        "branch": "blt",
+        "confidence": "high",
+        "evidence": "L1921: cmp r3, #8  =>  L1922: blt _02239662",
+        "register": "r3",
+        "verdict": "signed"
+       }
+      ],
+      "widths": [
+       {
+        "base": "r2",
+        "confidence": "high",
+        "evidence": "L1908: ldrh r2, [r2]",
+        "kind": "load-width",
+        "offset": "#0",
+        "verdict": "u16"
+       },
+       {
+        "base": "r0",
+        "confidence": "high",
+        "evidence": "L1915: strh r2, [r0]",
+        "kind": "store-width",
+        "offset": "#0",
+        "verdict": "u16"
+       }
+      ]
+     },
+     "ov80_0223968C": {
+      "nonmatching_flags": [
+       {
+        "confidence": "low",
+        "detail": "param r1 copied to r4 at entry, then r4 (the copy) compared while r1 is live and no bl precedes -- MWCC uses the copy [likely benign: GF_ASSERT idiom; value used across a later call (copy motivated) -- audit]",
+        "evidence": "L1933: add r4, r1, #0 ; L1936: cmp r4, #8",
+        "kind": "copyprop-cmp-entry",
+        "verdict": "NONMATCHING-suspect"
+       }
+      ],
+      "signedness": [
+       {
+        "branch": "blo",
+        "confidence": "high",
+        "evidence": "L1936: cmp r4, #8  =>  L1937: blo _0223969E",
+        "register": "r4",
+        "verdict": "unsigned"
+       }
+      ],
+      "widths": [
+       {
+        "base": "r0",
+        "confidence": "high",
+        "evidence": "L1959: strh r6, [r0]",
+        "kind": "store-width",
+        "offset": "#0",
+        "verdict": "u16"
+       }
+      ]
+     },
+     "ov80_022396D8": {
+      "nonmatching_flags": [
+       {
+        "confidence": "low",
+        "detail": "param r1 copied to r4 at entry, then r4 (the copy) compared while r1 is live and no bl precedes -- MWCC uses the copy [likely benign: GF_ASSERT idiom; copy reg reassigned later (mutable local); value used across a later call (copy motivated) -- audit]",
+        "evidence": "L1972: add r4, r1, #0 ; L1974: cmp r4, #8",
+        "kind": "copyprop-cmp-entry",
+        "verdict": "NONMATCHING-suspect"
+       }
+      ],
+      "signedness": [
+       {
+        "branch": "blo",
+        "confidence": "high",
+        "evidence": "L1974: cmp r4, #8  =>  L1975: blo _022396E6",
+        "register": "r4",
+        "verdict": "unsigned"
+       }
+      ]
+     },
+     "ov80_02239740": {
+      "signedness": [
+       {
+        "branch": "blt",
+        "confidence": "high",
+        "evidence": "L2059: cmp r3, #8  =>  L2060: blt _02239756",
+        "register": "r3",
+        "verdict": "signed"
+       },
+       {
+        "branch": "blt",
+        "confidence": "high",
+        "evidence": "L2138: cmp r7, #8  =>  L2139: blt _02239782",
+        "register": "r7",
+        "verdict": "signed"
+       }
+      ],
+      "widths": [
+       {
+        "confidence": "high",
+        "evidence": "L2088: lsl r1, r7, #0x10 ; L2090: lsr r1, r1, #0x10",
+        "kind": "truncation-pair",
+        "register": "r1",
+        "verdict": "u16"
+       },
+       {
+        "confidence": "high",
+        "evidence": "L2092: lsl r0, r0, #0x10 ; L2093: lsr r0, r0, #0x10",
+        "kind": "truncation-pair",
+        "register": "r0",
+        "verdict": "u16"
+       },
+       {
+        "confidence": "high",
+        "evidence": "L2103: lsl r0, r0, #0x10 ; L2104: lsr r0, r0, #0x10",
+        "kind": "truncation-pair",
+        "register": "r0",
+        "verdict": "u16"
+       },
+       {
+        "base": "r1",
+        "confidence": "high",
+        "evidence": "L2052: ldrh r1, [r1, #0x34]",
+        "kind": "load-width",
+        "offset": "#0x34",
+        "verdict": "u16"
+       },
+       {
+        "base": "r6",
+        "confidence": "high",
+        "evidence": "L2055: strh r1, [r6, r2]",
+        "kind": "store-width",
+        "offset": "(r2)",
+        "verdict": "u16"
+       },
+       {
+        "base": "r6",
+        "confidence": "high",
+        "evidence": "L2078: strb r0, [r6, #0x15]",
+        "kind": "store-width",
+        "offset": "#0x15",
+        "verdict": "u8"
+       },
+       {
+        "base": "r5",
+        "confidence": "high",
+        "evidence": "L2081: ldrh r2, [r5]",
+        "kind": "load-width",
+        "offset": "#0",
+        "verdict": "u16"
+       },
+       {
+        "base": "r5",
+        "confidence": "high",
+        "evidence": "L2087: strh r0, [r5]",
+        "kind": "store-width",
+        "offset": "#0",
+        "verdict": "u16"
+       },
+       {
+        "base": "r0",
+        "confidence": "high",
+        "evidence": "L2114: ldrh r0, [r0, #0x20]",
+        "kind": "load-width",
+        "offset": "#0x20",
+        "verdict": "u16"
+       },
+       {
+        "base": "r6",
+        "confidence": "high",
+        "evidence": "L2116: strb r0, [r6, #0x14]",
+        "kind": "store-width",
+        "offset": "#0x14",
+        "verdict": "u8"
+       }
+      ]
+     },
+     "ov80_02239828": {
+      "signedness": [
+       {
+        "branch": "blt",
+        "confidence": "high",
+        "evidence": "L2181: cmp r6, #8  =>  L2182: blt _02239844",
+        "register": "r6",
+        "verdict": "signed"
+       },
+       {
+        "branch": "blt",
+        "confidence": "high",
+        "evidence": "L2227: cmp r6, #8  =>  L2228: blt _02239870",
+        "register": "r6",
+        "verdict": "signed"
+       }
+      ],
+      "widths": [
+       {
+        "confidence": "high",
+        "evidence": "L2193: lsl r1, r6, #0x10 ; L2195: lsr r1, r1, #0x10",
+        "kind": "truncation-pair",
+        "register": "r1",
+        "verdict": "u16"
+       },
+       {
+        "base": "r4",
+        "confidence": "high",
+        "evidence": "L2165: ldrh r1, [r4]",
+        "kind": "load-width",
+        "offset": "#0",
+        "verdict": "u16"
+       },
+       {
+        "base": "r5",
+        "confidence": "high",
+        "evidence": "L2192: ldrb r2, [r5, #0x14]",
+        "kind": "load-width",
+        "offset": "#0x14",
+        "verdict": "u8"
+       },
+       {
+        "base": "r5",
+        "confidence": "high",
+        "evidence": "L2199: ldrsh r1, [r5, r1]",
+        "kind": "load-width",
+        "offset": "(r1)",
+        "verdict": "s16"
+       },
+       {
+        "base": "r5",
+        "confidence": "high",
+        "evidence": "L2200: ldrsh r2, [r5, r2]",
+        "kind": "load-width",
+        "offset": "(r2)",
+        "verdict": "s16"
+       },
+       {
+        "base": "r5",
+        "confidence": "high",
+        "evidence": "L2215: ldrb r1, [r5, #0x15]",
+        "kind": "load-width",
+        "offset": "#0x15",
+        "verdict": "u8"
+       }
+      ]
+     },
+     "ov80_022398E4": {
+      "widths": [
+       {
+        "base": "r4",
+        "confidence": "high",
+        "evidence": "L2248: strh r0, [r4]",
+        "kind": "store-width",
+        "offset": "#0",
+        "verdict": "u16"
+       },
+       {
+        "base": "r6",
+        "confidence": "high",
+        "evidence": "L2251: strh r0, [r6]",
+        "kind": "store-width",
+        "offset": "#0",
+        "verdict": "u16"
+       }
+      ]
+     },
+     "ov80_02239900": {
+      "widths": [
+       {
+        "base": "r0",
+        "confidence": "high",
+        "evidence": "L2260: ldrh r2, [r0]",
+        "kind": "load-width",
+        "offset": "#0",
+        "verdict": "u16"
+       },
+       {
+        "base": "r1",
+        "confidence": "high",
+        "evidence": "L2262: strh r2, [r1]",
+        "kind": "store-width",
+        "offset": "#0",
+        "verdict": "u16"
+       }
+      ]
+     },
+     "ov80_02239914": {
+      "widths": [
+       {
+        "base": "r3",
+        "confidence": "high",
+        "evidence": "L2282: ldrh r1, [r3]",
+        "kind": "load-width",
+        "offset": "#0",
+        "verdict": "u16"
+       },
+       {
+        "base": "r0",
+        "confidence": "high",
+        "evidence": "L2284: strh r1, [r0]",
+        "kind": "store-width",
+        "offset": "#0",
+        "verdict": "u16"
+       }
+      ]
+     },
+     "ov80_02239938": {
+      "signedness": [
+       {
+        "branch": "blt",
+        "confidence": "high",
+        "evidence": "L2308: cmp r2, #0x20  =>  L2309: blt _02239942",
+        "register": "r2",
+        "verdict": "signed"
+       }
+      ],
+      "widths": [
+       {
+        "base": "r0",
+        "confidence": "high",
+        "evidence": "L2302: ldrh r1, [r0, #0xc]",
+        "kind": "load-width",
+        "offset": "#0xc",
+        "verdict": "u16"
+       }
+      ]
+     }
+    },
+    "generated": "2026-10-06T22:25:34Z",
+    "summary": {
+     "copyprop_cmp": 2,
+     "dead_store": 0,
+     "exact_types": 6,
+     "functions": 28,
+     "signed": 24,
+     "unsigned": 2,
+     "widths": 96
+    },
+    "tool": "asm_oracle.py"
+   },
+   "risks": [
+    "IPA/header: include/frontier/frontier_map.h is pulled into many already-matched TUs via frontier/frontier_system.h and overlay_80_022340E8.h (frontier.c, frontier_system.c, frontier_cmd_*.c ...). Its FrontierMap is only 0x14 bytes and UnkStruct_02239938 only 8. Do NOT add prototypes there. Either keep the full 0xC4 struct private to the new .c (no #include of frontier_map.h; then ov80_02239938 can return the private entry type), or use an _internal.h split. If you grow the struct in the shared header, test that change on its own first (insight ipa-header-return-type-widening isolation trick).",
+    "src/frontier.c (matched) calls FrontierMap_Init/Free/ov80_022389C4/ov80_02238A18 through LOCAL externs typed (FrontierWork *)/(FrontierMap *). Per-TU IPA means the new file's param types are free, but keep the arity/return types.",
+    "src/overlay_80_02239BF0.c locally declares ov80_02239938 as returning AnimEntry*, and frontier_cmd_arcade.c (via the header) as UnkStruct_02239938*. Both stay valid as long as the new .c does not include frontier_map.h.",
+    "ov80_02239740 double-increment quirk: on a hit the loop counter goes up twice and one index is used for both read and write. Reproduce literally (i++ inside the if), not with a separate dst counter.",
+    "Bitfields: the save record's u16 at +0x16 is frame:13 | animActive:1 | drawFlag:1 | valid:1. Writers narrow BOOL to u16 before the 1-bit insert (lsl#16;lsr#16;lsl#31;lsr#18). Use u16 bitfield members, not masks (insights bitfield-lsls-lsrs, single-bit-extract-folds-to-and-use-bitfield).",
+    "Rodata: 9 symbols, sizes 12,16,20,24,28,32,40,84,1024, already size-ascending with no ties, so MWCC's natural size sort should reproduce the order with separate static consts. If it does not, apply the one-struct consolidation recipe (rodata-multi-symbol-size-sorted-use-one-struct).",
+    "ov80_0223D654 is 1024 zero bytes but must stay in .rodata. Per const-uninit-global-lands-in-data-not-bss, zero-initialized objects can be moved to .bss/.data. Write an explicit zero initializer on a static const and check the section; fall back to folding it into a consolidated rodata struct.",
+    "ov80_0223D600 is copied as ONE 0x54-byte block (10 ldmia pairs + 1 word), so it needs a named static const struct containing 3 BgTemplates assigned to a local struct. A local array initializer would emit an anonymous blob that may sort last (mwcc-rodata-const-struct-first-pinned-rest-reversed, local-array-init-as-named-const-struct-copy-for-rodata-order).",
+    "ov80_0223D554 is an 11-byte, align-1 UnkTemplate_ov42_022293B8 copied with an 11-iteration ldrb/strb loop. Use plain struct assignment from a static const.",
+    "FrontierMap_SetVramBank stack layout: 4 separate struct locals, frame 0xA8 (bg-init-separate-template-locals). Declaration order sets the offsets.",
+    "Soft float in ov80_02238B7C: the y conversion is evaluated before x, and both _ffix calls come after SpriteSystem_GetRenderer (see insights fx32-const-rounds-vs-plain-shift, float-to-fx32-shared-ffix).",
+    "Type mismatches in include/overlay_42.h: ov42_02229974 returns 02229A40* but ov42_02229A08 takes 022299C0*; ov42_022299AC takes u32*; ov42_02229A08 fills UnkStruct_ov44_02232031* but the buffer feeds ov42_02228068(UnkStruct_ov42_02228EB0*). Bridge them with casts. Do not edit overlay_42.h.",
+    "Missing headers: sub_0209686x/78/84, ov80_0222A7EC, ov80_02239960/80/A38 and Sound_SetFieldBGM each need a local extern. Copy the types from the already-matched definers.",
+    "FrontierScript_ReadVar (header: u32) is probably u16 in the original. Asm callers pass its result unnarrowed to slot params that ov80_02239828 does narrow with (u16)i. Matters later for overlay_80_0222BDF4, not for this file.",
+    "Hardware-register idioms: use the NitroSDK inlines (GX_SetVisiblePlane/GXS_, GX_SetVisibleWnd/GXS_, G2_BlendNone/G2S_, GX_SetDispSelect, G2_SetBG0Priority, G3X_* set, G3_ViewPort, OS_SetIrqCheckFlag, MI_CpuFill16/MI_CpuClear32 on HW_* addresses). Raw stores would not reproduce the and/orr sequences."
+   ],
+   "sweep_output": "sweep/out/frontier_map.json"
+  },
   "asm/overlay_01_021E8744.s": {
    "notes": "Two-layer sprite/effect manager: UnkStruct_021E8744 (0x13c, 16-slot resource pool + NARC) built by ov01_021E87E4 / torn down by ov01_021E8AEC, and a higher-level Controller (0x380, 16 SubCtrls of 0x38) built by ov01_021E8DB4. Exports = .public symbols that also have a thumb_func_start here. IMPORTANT: ov01_021E8EF8 is defined here but NOT in .public - it is local/static even though public siblings call it. No rodata/data/bss.",
    "risks": [
@@ -36171,7 +37347,7 @@
    "sweep_output": "sweep/out/unk_02097B78.json"
   }
  },
- "generated": "2026-10-06T21:57:47Z",
+ "generated": "2026-10-06T22:25:33Z",
  "signature_conflicts": [
   "DestroySysTaskAndEnvironment",
   "GridInputHandler_GetNextInput",
@@ -37677,6 +38853,375 @@
    },
    "sources": [
     "asm/unk_020658D4.s"
+   ]
+  },
+  "FrontierMap": {
+   "fields": {
+    "0x0": [
+     {
+      "meaning": "BgConfig *bgConfig (header says u32 unk0)",
+      "source": "asm/frontier_map.s",
+      "width": 4
+     }
+    ],
+    "0x10": [
+     {
+      "meaning": "UnkStruct_ov80_02239960 * (particle mgr; frontier_cmd_arcade passes map->unk10)",
+      "source": "asm/frontier_map.s",
+      "width": 4
+     }
+    ],
+    "0x14": [
+     {
+      "meaning": "UnkStruct_ov42_022280A8 * (object list)",
+      "source": "asm/frontier_map.s",
+      "width": 4
+     }
+    ],
+    "0x18": [
+     {
+      "meaning": "UnkStruct_ov42_02227F68 * (16x16 grid)",
+      "source": "asm/frontier_map.s",
+      "width": 4
+     }
+    ],
+    "0x1c": [
+     {
+      "meaning": "UnkStruct_ov44_02232914 camera pos (inline s16 pair)",
+      "source": "asm/frontier_map.s",
+      "width": 4
+     }
+    ],
+    "0x20": [
+     {
+      "meaning": "UnkStruct_ov42_02228EDC *",
+      "source": "asm/frontier_map.s",
+      "width": 4
+     }
+    ],
+    "0x24": [
+     {
+      "meaning": "UnkStruct_ov42_022293B8 * bg scroller (bg3)",
+      "source": "asm/frontier_map.s",
+      "width": 4
+     }
+    ],
+    "0x28": [
+     {
+      "meaning": "UnkStruct_ov42_022293B8 * bg scroller (bg2)",
+      "source": "asm/frontier_map.s",
+      "width": 4
+     }
+    ],
+    "0x2c": [
+     {
+      "meaning": "UnkStruct_ov42_02229A40 *",
+      "source": "asm/frontier_map.s",
+      "width": 4
+     }
+    ],
+    "0x30": [
+     {
+      "meaning": "UnkStruct_ov42_022299C0 * (created by ov42_02229974, whose header return type is 02229A40*, so cast)",
+      "source": "asm/frontier_map.s",
+      "width": 4
+     }
+    ],
+    "0x34": [
+     {
+      "meaning": "SpriteSystem *",
+      "source": "asm/frontier_map.s",
+      "width": 4
+     }
+    ],
+    "0x38": [
+     {
+      "meaning": "SpriteManager *",
+      "source": "asm/frontier_map.s",
+      "width": 4
+     }
+    ],
+    "0x3c": [
+     {
+      "meaning": "ManagedSprite *sprites[8]",
+      "source": "asm/frontier_map.s",
+      "width": 32
+     }
+    ],
+    "0x4": [
+     {
+      "meaning": "PaletteData *paletteData",
+      "source": "asm/frontier_map.s",
+      "width": 4
+     }
+    ],
+    "0x5c": [
+     {
+      "meaning": "u16 spriteResIdx[8]",
+      "source": "asm/frontier_map.s",
+      "width": 16
+     }
+    ],
+    "0x6c": [
+     {
+      "meaning": "u32 animActive bitmask",
+      "source": "asm/frontier_map.s",
+      "width": 4
+     }
+    ],
+    "0x70": [
+     {
+      "meaning": "u16 loadedResIds[8] (0xFFFF = empty)",
+      "source": "asm/frontier_map.s",
+      "width": 16
+     }
+    ],
+    "0x8": [
+     {
+      "meaning": "void *frontierWork (FrontierWork*, header u32 unk8)",
+      "source": "asm/frontier_map.s",
+      "width": 4
+     }
+    ],
+    "0x80": [
+     {
+      "meaning": "ManagedSprite *unk80[4] (res ids 50000+i, created elsewhere)",
+      "source": "asm/frontier_map.s",
+      "width": 16
+     }
+    ],
+    "0x90": [
+     {
+      "meaning": "unk90, passed by address to ov80_0222AD9C/ADB4",
+      "source": "asm/frontier_map.s",
+      "width": 4
+     }
+    ],
+    "0x94": [
+     {
+      "meaning": "SysTask *tasks[4] (0x94,0x98,0x9C main; 0xA0 vblank)",
+      "source": "asm/frontier_map.s",
+      "width": 16
+     }
+    ],
+    "0xa4": [
+     {
+      "meaning": "unknown",
+      "source": "asm/frontier_map.s",
+      "width": 4
+     }
+    ],
+    "0xa8": [
+     {
+      "meaning": "s16 scroll offset X",
+      "source": "asm/frontier_map.s",
+      "width": 2
+     }
+    ],
+    "0xaa": [
+     {
+      "meaning": "s16 scroll offset Y",
+      "source": "asm/frontier_map.s",
+      "width": 2
+     }
+    ],
+    "0xac": [
+     {
+      "meaning": "unknown (0xAC..0xC0)",
+      "source": "asm/frontier_map.s",
+      "width": 21
+     }
+    ],
+    "0xc": [
+     {
+      "meaning": "GF3DVramMan *",
+      "source": "asm/frontier_map.s",
+      "width": 4
+     }
+    ],
+    "0xc1": [
+     {
+      "meaning": "u8 frontierIdx (launchArgs->unk20)",
+      "source": "asm/frontier_map.s",
+      "width": 1
+     }
+    ]
+   },
+   "size_guesses": {
+    "asm/frontier_map.s": "0xC4 (Heap_Alloc/MI_CpuFill8 size)"
+   },
+   "sources": [
+    "asm/frontier_map.s"
+   ]
+  },
+  "FrontierMapObjEntry (FrontierWork+0x84 [0x20])": {
+   "fields": {
+    "0x0": [
+     {
+      "meaning": "UnkStruct_ov42_02228110 *obj",
+      "source": "asm/frontier_map.s",
+      "width": 4
+     }
+    ],
+    "0x26": [
+     {
+      "meaning": "AnimSub (see src/overlay_80_02239BF0.c AnimEntry)",
+      "source": "asm/frontier_map.s",
+      "width": 16
+     }
+    ],
+    "0x38": [
+     {
+      "meaning": "u32 unk38 (task ptr; must be 0 on free)",
+      "source": "asm/frontier_map.s",
+      "width": 4
+     }
+    ],
+    "0x4": [
+     {
+      "meaning": "UnkStruct_ov42_0222903C *unk4",
+      "source": "asm/frontier_map.s",
+      "width": 4
+     }
+    ],
+    "0x8": [
+     {
+      "meaning": "FrontierMapObjTemplate tmpl (id at entry+0xC)",
+      "source": "asm/frontier_map.s",
+      "width": 30
+     }
+    ]
+   },
+   "size_guesses": {
+    "asm/frontier_map.s": "0x3C"
+   },
+   "sources": [
+    "asm/frontier_map.s"
+   ]
+  },
+  "FrontierMapObjTemplate": {
+   "fields": {
+    "0x0": [
+     {
+      "meaning": "u16 unk0 (gfx id; 0xEEEE/0xEEEF sentinels from script)",
+      "source": "asm/frontier_map.s",
+      "width": 2
+     }
+    ],
+    "0x2": [
+     {
+      "meaning": "u16 unk2 (=ov42_02228188(obj,5), direction?)",
+      "source": "asm/frontier_map.s",
+      "width": 2
+     }
+    ],
+    "0x4": [
+     {
+      "meaning": "u16 id (0xFFFF = free)",
+      "source": "asm/frontier_map.s",
+      "width": 2
+     }
+    ],
+    "0x6": [
+     {
+      "meaning": "s16 x",
+      "source": "asm/frontier_map.s",
+      "width": 2
+     }
+    ],
+    "0x8": [
+     {
+      "meaning": "s16 y",
+      "source": "asm/frontier_map.s",
+      "width": 2
+     }
+    ],
+    "0xa": [
+     {
+      "meaning": "u8 unkA (=ov42_02228188(obj,6))",
+      "source": "asm/frontier_map.s",
+      "width": 1
+     }
+    ],
+    "0xb": [
+     {
+      "meaning": "u8 unkB (=ov42_022291F4, passed to ov42_02229200)",
+      "source": "asm/frontier_map.s",
+      "width": 1
+     }
+    ],
+    "0xc": [
+     {
+      "meaning": "u8 unkC (script byte)",
+      "source": "asm/frontier_map.s",
+      "width": 1
+     }
+    ],
+    "0xd": [
+     {
+      "meaning": "padding/unknown up to 0x1E",
+      "source": "asm/frontier_map.s",
+      "width": 17
+     }
+    ]
+   },
+   "size_guesses": {
+    "asm/frontier_map.s": "0x1E, align 2 (struct copy = 15 halfword loop)"
+   },
+   "sources": [
+    "asm/frontier_map.s"
+   ]
+  },
+  "FrontierMapSpriteSave (FrontierWork+0xA04)": {
+   "fields": {
+    "0x0": [
+     {
+      "meaning": "u16 resIds[8]",
+      "source": "asm/frontier_map.s",
+      "width": 16
+     }
+    ],
+    "0x10": [
+     {
+      "meaning": "per-sprite [8] x 8 bytes: s16 x",
+      "source": "asm/frontier_map.s",
+      "width": 2
+     }
+    ],
+    "0x12": [
+     {
+      "meaning": "s16 y",
+      "source": "asm/frontier_map.s",
+      "width": 2
+     }
+    ],
+    "0x14": [
+     {
+      "meaning": "u8 resIdx",
+      "source": "asm/frontier_map.s",
+      "width": 1
+     }
+    ],
+    "0x15": [
+     {
+      "meaning": "u8 anim",
+      "source": "asm/frontier_map.s",
+      "width": 1
+     }
+    ],
+    "0x16": [
+     {
+      "meaning": "u16 frame:13, animActive:1 (bit13), drawFlag:1 (bit14), valid:1 (bit15), LSB-first",
+      "source": "asm/frontier_map.s",
+      "width": 2
+     }
+    ]
+   },
+   "size_guesses": {
+    "asm/frontier_map.s": "0x50"
+   },
+   "sources": [
+    "asm/frontier_map.s"
    ]
   },
   "FrontierMon (0x38)": {
@@ -47438,6 +48983,12 @@
    "known_prototype": "Pokemon *AllocMonZeroed(enum HeapID heapID)",
    "signature_sources": {}
   },
+  "BG/GfGfx/PaletteData/SysTask/TextFlags": {
+   "callers": [],
+   "header": "include/bg_window.h, include/gf_gfx_planes.h, include/palette.h, include/sys_task_api.h, include/render_text.h, include/system.h, include/vram_transfer_manager.h, include/heap.h, include/options.h, include/player_data.h, include/unk_02026E30.h, include/gf_gfx_loader.h",
+   "known_prototype": "declared",
+   "signature_sources": {}
+  },
   "BGM_SaveStateAndPlayNew": {
    "callers": [],
    "confidence": "high",
@@ -47522,6 +49073,7 @@
   },
   "BgClearTilemapBufferAndCommit": {
    "callers": [
+    "asm/frontier_map.s",
     "asm/overlay_117.s",
     "asm/overlay_14_021E5900.s",
     "asm/overlay_29.s",
@@ -47547,6 +49099,7 @@
   },
   "BgConfig_Alloc": {
    "callers": [
+    "asm/frontier_map.s",
     "asm/overlay_14_021E5900.s",
     "asm/overlay_83_0223DD60.s",
     "asm/overlay_83_02242FE8.s"
@@ -47563,6 +49116,7 @@
   },
   "BgSetPosTextAndCommit": {
    "callers": [
+    "asm/frontier_map.s",
     "asm/overlay_117.s"
    ],
    "header": "include/bg_window.h",
@@ -47975,6 +49529,7 @@
   },
   "DC_FlushRange": {
    "callers": [
+    "asm/frontier_map.s",
     "asm/overlay_14_021F2490.s",
     "asm/overlay_83_02243D7C.s",
     "asm/overlay_83_02246E08.s",
@@ -48054,6 +49609,7 @@
   },
   "DoScheduledBgGpuUpdates": {
    "callers": [
+    "asm/frontier_map.s",
     "asm/overlay_14_021E5900.s",
     "asm/overlay_83_02243D7C.s"
    ],
@@ -48451,6 +50007,7 @@
   },
   "FreeBgTilemapBuffer": {
    "callers": [
+    "asm/frontier_map.s",
     "asm/overlay_14_021E5900.s",
     "asm/overlay_29.s",
     "asm/overlay_32.s",
@@ -48461,6 +50018,179 @@
    "signature_sources": {
     "asm/overlay_32.s": "void FreeBgTilemapBuffer(BgConfig *bgConfig, u8 layer)"
    }
+  },
+  "FrontierMap_Free": {
+   "callers": [],
+   "confidence": "high",
+   "defined_in": "asm/frontier_map.s",
+   "mode": "thumb",
+   "notes": [
+    "[asm/frontier_map.s] Frontier_GetLaunchArgs(map->work) result DISCARDED (keep the bare call). ov80_0222ADB4(map,&map->unk90,map->unkC1); ov80_0223927C(map); EngineATogglePlanes(BG0,OFF),(BG1,OFF); FreeBgTilemapBuffer(bg,1),(2),(3); ToggleBgLayer(4,0); FreeBgTilemapBuffer(bg,4); ov80_022393E8(map); ov80_02239980(map->unk10); GF_DestroyVramTransferManager(); FreeBuffers 0..3; PaletteData_Free; Heap_Free(map->bgConfig); SysTask_Destroy x4; ov80_0223937C(map->unkC); sub_02021238(); Heap_Free(map); GX_SetVisibleWnd(GX_WNDMASK_NONE); GXS_SetVisibleWnd(0); Main_SetVBlankIntrCB(NULL,NULL); HBlankInterruptDisable(); Heap_Destroy(0x65); SetCanABSpeedUpPrint(FALSE); SetAutoScrollParam(0); SetCanTouchSpeedUpPrint(FALSE); sub_0203A914(); MI_CpuFill16((void*)HW_BG_PLTT,0x7FFF,0x200) then HW_OBJ_PLTT, HW_DB_BG_PLTT, HW_DB_OBJ_PLTT; G2_BlendNone(); G2S_BlendNone()."
+   ],
+   "signature_guess": "void FrontierMap_Free(FrontierMap *map)",
+   "signature_sources": {
+    "asm/frontier_map.s": "void FrontierMap_Free(FrontierMap *map)"
+   },
+   "struct_accesses": [
+    {
+     "meaning": "SysTask* x4 at 0x94/0x98/0x9C/0xA0 destroyed",
+     "offset": "0x94",
+     "param": 0,
+     "width": 4
+    }
+   ]
+  },
+  "FrontierMap_Init": {
+   "callers": [],
+   "confidence": "high",
+   "defined_in": "asm/frontier_map.s",
+   "mode": "thumb",
+   "notes": [
+    "[asm/frontier_map.s] Order: args=Frontier_GetLaunchArgs(work); profile=Save_PlayerData_GetProfile(args->saveData); u8 idx=args->unk20; Main_SetVBlankIntrCB(NULL,NULL); HBlankInterruptDisable(); DisableA/B planes; GX_SetVisiblePlane(0); GXS_SetVisiblePlane(0); GX_SetVisibleWnd(GX_WNDMASK_NONE); GXS_SetVisibleWnd(0); G2_BlendNone(); G2S_BlendNone(); GX_SetDispSelect(GX_DISP_SELECT_MAIN_SUB) (POWCNT|=0x8000); Heap_Create(HEAP_ID_3,0x65,0x90000); map=Heap_Alloc(0x65,0xC4); MI_CpuFill8(map,0,0xC4); map->work=work; map->idxC1=idx; for i<8 unk70[i]=0xFFFF; unkC=ov80_022392DC(0x65); paletteData=PaletteData_Init(0x65); SetAutoTransparent(pd,TRUE); AllocBuffers(pd,0,0x200),(1,0x200),(2,0x1C0),(3,0x200) heap 0x65; bgConfig=BgConfig_Alloc(0x65); GF_CreateVramTransferManager(0x40,0x65); SetKeyRepeatTimers(4,8); FrontierMap_SetVramBank(map->bgConfig, idx); LoadPaletteData(map); ov80_02238FA0(map); sub_020210BC(); sub_02021148(4); ov80_02239384(map); unk10=ov80_02239960(0x65); ov80_02239004(map, idx, profile); 3 main SysTasks; GfGfx_BothDispOn(); Engine A/B TogglePlanes(GX_PLANEMASK_OBJ(0x10), ON); Sound_SetFieldBGM(ov80_0222ACA0(idx,3)) (u16 narrowing); sub_02055198(NULL, ov80_0222ACA0(idx,3)) (ACA0 called twice); TextFlags_SetAutoScrollParam(1); SetCanABSpeedUpPrint(FALSE); SetCanTouchSpeedUpPrint(FALSE); Main_SetVBlankIntrCB(FrontierMap_VBlank,map); taskA0=SysTask_CreateOnVBlankQueue(ov80_02238AAC,map,10); ov80_0222AD9C(map,&map->unk90,map->unkC1); sub_0203A880(); return map. Called from src/frontier.c via local extern FrontierMap *FrontierMap_Init(FrontierWork *)."
+   ],
+   "signature_guess": "FrontierMap *FrontierMap_Init(void *frontierWork)",
+   "signature_sources": {
+    "asm/frontier_map.s": "FrontierMap *FrontierMap_Init(void *frontierWork)"
+   },
+   "struct_accesses": [
+    {
+     "meaning": "map->frontierWork = param",
+     "offset": "0x8",
+     "param": 0,
+     "width": 4
+    },
+    {
+     "meaning": "map->frontierIdx = launchArgs->unk20",
+     "offset": "0xc1",
+     "param": 0,
+     "width": 1
+    },
+    {
+     "meaning": "u16[8] loaded res ids, init 0xFFFF loop",
+     "offset": "0x70",
+     "param": 0,
+     "width": 2
+    }
+   ]
+  },
+  "FrontierMap_LoadPaletteData": {
+   "callers": [
+    "asm/frontier_map.s"
+   ],
+   "confidence": "high",
+   "defined_in": "asm/frontier_map.s",
+   "mode": "thumb",
+   "notes": [
+    "[asm/frontier_map.s] PaletteData_LoadNarc(pd,0x10,7,0x65,0,0x20,0xE0); (pd,0x10,8,0x65,0,0x20,0xD0); LoadUserFrameGfx2(bg,1,0x3E2,0xB,(u8)Options_GetFrame(Frontier_GetLaunchArgs(map->work)->options),0x65); PaletteData_LoadPaletteSlotFromHardware(pd,0,0xB0,0x20); LoadUserFrameGfx1(bg,1,0x3D9,0xC,0,0x65); LoadPaletteSlotFromHardware(pd,0,0xC0,0x20)."
+   ],
+   "signature_guess": "static void FrontierMap_LoadPaletteData(FrontierMap *map)",
+   "signature_sources": {
+    "asm/frontier_map.s": "static void FrontierMap_LoadPaletteData(FrontierMap *map)"
+   }
+  },
+  "FrontierMap_Scroll": {
+   "callers": [
+    "asm/frontier_map.s"
+   ],
+   "confidence": "high",
+   "defined_in": "asm/frontier_map.s",
+   "mode": "thumb",
+   "notes": [
+    "[asm/frontier_map.s] switch(ov80_0222ACA0(args->unk20,0xC)){ case 0: default: if(map->unk24) ov42_02229420(map->unk24,&map->unk1C); if(map->unk28 && ov80_0222ACA0(args->unk20,0xD)==1) ov42_02229420(map->unk28,&map->unk1C); break; case 1: ov80_02238B7C(map); break; } -- asm is cmp0/beq, cmp1/beq, fallthrough into case-0 body, so default shares case 0."
+   ],
+   "signature_guess": "static void FrontierMap_Scroll(FrontierMap *map)",
+   "signature_sources": {
+    "asm/frontier_map.s": "static void FrontierMap_Scroll(FrontierMap *map)"
+   },
+   "struct_accesses": [
+    {
+     "meaning": "UnkStruct_ov42_022293B8* bg scroller A",
+     "offset": "0x24",
+     "param": 0,
+     "width": 4
+    },
+    {
+     "meaning": "UnkStruct_ov42_022293B8* bg scroller B",
+     "offset": "0x28",
+     "param": 0,
+     "width": 4
+    }
+   ]
+  },
+  "FrontierMap_SetVramBank": {
+   "callers": [
+    "asm/frontier_map.s"
+   ],
+   "confidence": "high",
+   "defined_in": "asm/frontier_map.s",
+   "mode": "thumb",
+   "notes": [
+    "[asm/frontier_map.s] Frame 0xA8 = four struct locals: sp+0x54 BgTemplate[3] (0x54, single struct copy of ov80_0223D600: 10 ldmia pairs + 1 word), sp+0x2C GraphicsBanks (=ov80_0223D5D8, 5 pairs), sp+0x1C GraphicsModes (=ov80_0223D560), sp+0 BgTemplate (=ov80_0223D59C). Declare in that order (first-declared = highest offset). mode=ACA0(idx,0); DisableEngineAPlanes; SetBanks(&banks); MI_CpuClear32 HW_BG_VRAM 0x80000, HW_DB_BG_VRAM 0x20000, HW_OBJ_VRAM 0x40000, HW_DB_OBJ_VRAM 0x20000; modes.bgMode(+4)=mode; SetBothScreensModesAndDisable(&modes); if(mode==0){t[1].colorMode=0; t[2].colorMode=0; t[1].bgExtPltt=0; t[2].bgExtPltt=0;} (store order as listed); u16 sz=(u16)ACA0(idx,4); t[2].size=sz; if(ACA0(idx,9)!=0xFFFF) t[1].size=sz; if(mode==0){InitBgFromTemplate(bg,1,&t[0],0),(2,&t[1],0),(3,&t[2],0)} else {(1,&t[0],0),(2,&t[1],2),(3,&t[2],2)}; each followed by BgClearTilemapBufferAndCommit and BgSetPosTextAndCommit(SET_X 0,0),(SET_Y 3,0). Then G2_SetBG0Priority(0) (BG0CNT &= ~3); GfGfx_EngineATogglePlanes(GX_PLANEMASK_BG0,ON); bg4 template copy; InitBgFromTemplate(bg,4,&tmpl4,0)+clear+setpos x/y."
+   ],
+   "signature_guess": "static void FrontierMap_SetVramBank(BgConfig *bgConfig, u8 idx)",
+   "signature_sources": {
+    "asm/frontier_map.s": "static void FrontierMap_SetVramBank(BgConfig *bgConfig, u8 idx)"
+   }
+  },
+  "FrontierMap_Update": {
+   "callers": [],
+   "confidence": "high",
+   "defined_in": "asm/frontier_map.s",
+   "mode": "thumb",
+   "notes": [
+    "[asm/frontier_map.s] e=sub_0209686C(map->work,0x1F); if(e->obj) ov42_02229358(&map->unk1C,e->obj); FrontierMap_Scroll(map); ov42_022290DC(map->unk20); u32 flags=map->unk6C; for i<8: if(map->sprites[i]!=NULL && (flags&1)) ManagedSprite_TickFrame(map->sprites[i]); flags>>=1; SpriteSystem_DrawSprites(map->unk38); SpriteSystem_UpdateTransfer(); ov80_02239A38(); RequestSwap3DBuffers(GX_SORTMODE_MANUAL(1), GX_BUFFERMODE_Z(0))."
+   ],
+   "signature_guess": "static void FrontierMap_Update(SysTask *task, void *data)",
+   "signature_sources": {
+    "asm/frontier_map.s": "static void FrontierMap_Update(SysTask *task, void *data)"
+   },
+   "struct_accesses": [
+    {
+     "meaning": "u32 per-sprite anim-active bitmask",
+     "offset": "0x6c",
+     "param": 1,
+     "width": 4
+    },
+    {
+     "meaning": "ManagedSprite *sprites[8]",
+     "offset": "0x3c",
+     "param": 1,
+     "width": 4
+    },
+    {
+     "meaning": "SpriteManager*",
+     "offset": "0x38",
+     "param": 1,
+     "width": 4
+    }
+   ]
+  },
+  "FrontierMap_VBlank": {
+   "callers": [],
+   "confidence": "high",
+   "defined_in": "asm/frontier_map.s",
+   "mode": "thumb",
+   "notes": [
+    "[asm/frontier_map.s] Ends with OS_SetIrqCheckFlag(OS_IE_V_BLANK) (0x027E0000+0x3FF8 |= 1)."
+   ],
+   "signature_guess": "static void FrontierMap_VBlank(void *data)",
+   "signature_sources": {
+    "asm/frontier_map.s": "static void FrontierMap_VBlank(void *data)"
+   },
+   "struct_accesses": [
+    {
+     "meaning": "paletteData",
+     "offset": "0x4",
+     "param": 0,
+     "width": 4
+    },
+    {
+     "meaning": "bgConfig",
+     "offset": "0x0",
+     "param": 0,
+     "width": 4
+    }
+   ]
   },
   "FrontierSave_GetStat": {
    "callers": [
@@ -48477,6 +50207,14 @@
    "signature_sources": {
     "asm/overlay_83_0223DD60.s": "u32 FrontierSave_GetStat(void *frontierStatic, int a1, int a2)"
    }
+  },
+  "Frontier_GetLaunchArgs": {
+   "callers": [
+    "asm/frontier_map.s"
+   ],
+   "header": "include/frontier/frontier.h",
+   "known_prototype": "FrontierLaunchArgs *Frontier_GetLaunchArgs(void *a0)",
+   "signature_sources": {}
   },
   "G2_BlendNone": {
    "callers": [
@@ -48498,20 +50236,31 @@
     "asm/overlay_32.s": "SpriteList *G2dRenderer_Init(G2dRenderer *renderer, u32 maxSprites, HeapID heapId)"
    }
   },
+  "G2dRenderer_SetMainSurfaceCoords": {
+   "callers": [
+    "asm/frontier_map.s"
+   ],
+   "header": "include/unk_02009D48.h",
+   "known_prototype": "void G2dRenderer_SetMainSurfaceCoords(G2dRenderer *renderer, fx32 x, fx32 y)",
+   "signature_sources": {}
+  },
   "G2dRenderer_SetObjCharTransferReservedRegion": {
    "callers": [
+    "asm/frontier_map.s",
     "asm/overlay_83_02243D7C.s"
    ],
    "signature_sources": {}
   },
   "G2dRenderer_SetPlttTransferReservedRegion": {
    "callers": [
+    "asm/frontier_map.s",
     "asm/overlay_83_02243D7C.s"
    ],
    "signature_sources": {}
   },
   "G2dRenderer_SetSubSurfaceCoords": {
    "callers": [
+    "asm/frontier_map.s",
     "asm/overlay_14_021F2490.s",
     "asm/overlay_29.s",
     "asm/overlay_32.s"
@@ -48540,6 +50289,18 @@
    "signature_sources": {
     "asm/unk_0201F990.s": "int G3X_GetBoxTestResult(u32 *result)"
    }
+  },
+  "G3X_SetClearColor": {
+   "callers": [
+    "asm/frontier_map.s"
+   ],
+   "signature_sources": {}
+  },
+  "G3X_SetFog": {
+   "callers": [
+    "asm/frontier_map.s"
+   ],
+   "signature_sources": {}
   },
   "GBSounds_GetDSSeqNoByGBSeqNo": {
    "callers": [
@@ -48619,8 +50380,23 @@
    "known_prototype": "void GF3dRender_DrawModel(NNSG3dRenderObj *obj, const VecFx32 *translation, const MtxFx33 *rotation, const VecFx32 *scale);",
    "signature_sources": {}
   },
+  "GF_3DVramMan_Create": {
+   "callers": [
+    "asm/frontier_map.s"
+   ],
+   "header": "include/gf_3d_vramman.h",
+   "known_prototype": "GF3DVramMan *GF_3DVramMan_Create(enum HeapID heapID, int texMode, int numTex, int plttMode, int numPltt, GF3DVramManInitFunc initializer)",
+   "signature_sources": {}
+  },
+  "GF_3DVramMan_Delete": {
+   "callers": [
+    "asm/frontier_map.s"
+   ],
+   "signature_sources": {}
+  },
   "GF_AssertFail": {
    "callers": [
+    "asm/frontier_map.s",
     "asm/overlay_01_021E8744.s",
     "asm/overlay_01_021EA6C4.s",
     "asm/overlay_01_021F6830.s",
@@ -48675,12 +50451,14 @@
   },
   "GF_CreateVramTransferManager": {
    "callers": [
+    "asm/frontier_map.s",
     "asm/overlay_83_02246E08.s"
    ],
    "signature_sources": {}
   },
   "GF_DestroyVramTransferManager": {
    "callers": [
+    "asm/frontier_map.s",
     "asm/overlay_83_0223DD60.s",
     "asm/overlay_83_02242FE8.s"
    ],
@@ -48870,6 +50648,7 @@
   },
   "GF_RunVramTransferTasks": {
    "callers": [
+    "asm/frontier_map.s",
     "asm/overlay_83_02243D7C.s"
    ],
    "signature_sources": {}
@@ -49197,6 +50976,24 @@
    ],
    "header": "nitro/GX",
    "known_prototype": "void GXS_SetGraphicsMode(GXBGMode bgMode)",
+   "signature_sources": {}
+  },
+  "GX_BeginLoadBGExtPltt": {
+   "callers": [
+    "asm/frontier_map.s"
+   ],
+   "signature_sources": {}
+  },
+  "GX_EndLoadBGExtPltt": {
+   "callers": [
+    "asm/frontier_map.s"
+   ],
+   "signature_sources": {}
+  },
+  "GX_LoadBGExtPltt": {
+   "callers": [
+    "asm/frontier_map.s"
+   ],
    "signature_sources": {}
   },
   "GX_LoadBGPltt": {
@@ -49712,6 +51509,14 @@
    ],
    "signature_sources": {}
   },
+  "GfGfxLoader_GetPlttDataFromOpenNarc": {
+   "callers": [
+    "asm/frontier_map.s"
+   ],
+   "header": "include/gf_gfx_loader.h",
+   "known_prototype": "void *GfGfxLoader_GetPlttDataFromOpenNarc(NARC *narc, s32 memberNo, NNSG2dPaletteData **ppPlttData, enum HeapID heapID)",
+   "signature_sources": {}
+  },
   "GfGfxLoader_GetScrnDataFromOpenNarc": {
    "callers": [
     "asm/overlay_117.s"
@@ -49722,6 +51527,7 @@
   },
   "GfGfxLoader_LoadCharDataFromOpenNarc": {
    "callers": [
+    "asm/frontier_map.s",
     "asm/overlay_29.s",
     "asm/overlay_32.s",
     "asm/overlay_80_0223A00C.s",
@@ -49762,6 +51568,7 @@
   },
   "GfGfxLoader_LoadScrnDataFromOpenNarc": {
    "callers": [
+    "asm/frontier_map.s",
     "asm/overlay_29.s",
     "asm/overlay_32.s",
     "asm/overlay_80_0223A00C.s",
@@ -49776,6 +51583,7 @@
   },
   "GfGfx_BothDispOn": {
    "callers": [
+    "asm/frontier_map.s",
     "asm/overlay_83_02242FE8.s"
    ],
    "header": "include/gf_gfx_planes.h",
@@ -49784,6 +51592,7 @@
   },
   "GfGfx_DisableEngineAPlanes": {
    "callers": [
+    "asm/frontier_map.s",
     "asm/overlay_83_02243D7C.s",
     "asm/overlay_98.s"
    ],
@@ -49791,6 +51600,7 @@
   },
   "GfGfx_DisableEngineBPlanes": {
    "callers": [
+    "asm/frontier_map.s",
     "asm/overlay_83_02243D7C.s",
     "asm/overlay_98.s"
    ],
@@ -49804,6 +51614,7 @@
   },
   "GfGfx_EngineATogglePlanes": {
    "callers": [
+    "asm/frontier_map.s",
     "asm/overlay_01_021F467C.s",
     "asm/overlay_117.s",
     "asm/overlay_14_021F2490.s",
@@ -49817,6 +51628,7 @@
   },
   "GfGfx_EngineBTogglePlanes": {
    "callers": [
+    "asm/frontier_map.s",
     "asm/overlay_14_021F2490.s",
     "asm/overlay_83_02243D7C.s",
     "asm/overlay_83_02246E08.s",
@@ -49826,6 +51638,7 @@
   },
   "GfGfx_SetBanks": {
    "callers": [
+    "asm/frontier_map.s",
     "asm/overlay_83_02243D7C.s",
     "asm/overlay_98.s"
    ],
@@ -49998,6 +51811,7 @@
   },
   "HBlankInterruptDisable": {
    "callers": [
+    "asm/frontier_map.s",
     "asm/overlay_98.s"
    ],
    "signature_sources": {}
@@ -50041,6 +51855,7 @@
   },
   "Heap_Alloc": {
    "callers": [
+    "asm/frontier_map.s",
     "asm/overlay_01_021E8744.s",
     "asm/overlay_01_021EA6C4.s",
     "asm/overlay_01_021F467C.s",
@@ -50094,6 +51909,7 @@
   },
   "Heap_Create": {
    "callers": [
+    "asm/frontier_map.s",
     "asm/overlay_14_021E5900.s",
     "asm/overlay_14_021EAF08.s",
     "asm/overlay_29.s",
@@ -50109,6 +51925,7 @@
   },
   "Heap_Destroy": {
    "callers": [
+    "asm/frontier_map.s",
     "asm/overlay_14_021E5900.s",
     "asm/overlay_14_021EAF08.s",
     "asm/overlay_29.s",
@@ -50124,6 +51941,7 @@
   },
   "Heap_Free": {
    "callers": [
+    "asm/frontier_map.s",
     "asm/overlay_01_021E8744.s",
     "asm/overlay_01_021EA6C4.s",
     "asm/overlay_01_021FAC44.s",
@@ -50183,6 +52001,7 @@
   },
   "InitBgFromTemplate": {
    "callers": [
+    "asm/frontier_map.s",
     "asm/overlay_14_021E5900.s",
     "asm/overlay_29.s",
     "asm/overlay_32.s",
@@ -50419,8 +52238,15 @@
    "known_prototype": "void LoadRectToBgTilemapRect(BgConfig *bgConfig, u8 bgId, const void *buffer, u8 destX, u8 destY, u8 width, u8 height)",
    "signature_sources": {}
   },
+  "LoadUserFrameGfx1": {
+   "callers": [
+    "asm/frontier_map.s"
+   ],
+   "signature_sources": {}
+  },
   "LoadUserFrameGfx2": {
    "callers": [
+    "asm/frontier_map.s",
     "asm/overlay_83_02246E08.s",
     "asm/unk_020863F4.s"
    ],
@@ -50498,6 +52324,7 @@
   },
   "MI_CpuFill8": {
    "callers": [
+    "asm/frontier_map.s",
     "asm/overlay_01_021FAC44.s",
     "asm/overlay_14_021E5900.s",
     "asm/overlay_14_021EAF08.s",
@@ -50516,12 +52343,14 @@
   },
   "MIi_CpuClear16": {
    "callers": [
+    "asm/frontier_map.s",
     "asm/overlay_14_021F2490.s"
    ],
    "signature_sources": {}
   },
   "MIi_CpuClear32": {
    "callers": [
+    "asm/frontier_map.s",
     "asm/overlay_01_021F467C.s",
     "asm/overlay_80_0223A00C.s",
     "asm/unk_0202FBCC.s"
@@ -50591,6 +52420,7 @@
   },
   "Main_SetVBlankIntrCB": {
    "callers": [
+    "asm/frontier_map.s",
     "asm/overlay_83_0223DD60.s",
     "asm/overlay_83_02242FE8.s",
     "asm/overlay_83_02243D7C.s",
@@ -50608,14 +52438,28 @@
    "known_prototype": "all in sprite_system.h: SetPositionXY(s16,s16), GetPositionXY(s16*,s16*), SetAnim(int), GetActiveAnim->u16, IsAnimated->BOOL, SetDrawFlag(int), SetAffineOverwriteMode(u8), SetOamMode(GXOamMode), TickFrame",
    "signature_sources": {}
   },
+  "ManagedSprite_*/SpriteSystem_*/SpriteManager_*": {
+   "callers": [],
+   "header": "include/sprite_system.h",
+   "known_prototype": "declared",
+   "signature_sources": {}
+  },
   "ManagedSprite_GetActiveAnim": {
    "callers": [
+    "asm/frontier_map.s",
     "asm/unk_020863F4.s"
+   ],
+   "signature_sources": {}
+  },
+  "ManagedSprite_GetAnimationFrame": {
+   "callers": [
+    "asm/frontier_map.s"
    ],
    "signature_sources": {}
   },
   "ManagedSprite_GetDrawFlag": {
    "callers": [
+    "asm/frontier_map.s",
     "asm/overlay_14_021F2490.s"
    ],
    "signature_sources": {}
@@ -50634,6 +52478,7 @@
   },
   "ManagedSprite_GetPositionXY": {
    "callers": [
+    "asm/frontier_map.s",
     "asm/overlay_14_021F0A80.s",
     "asm/overlay_14_021F1808.s",
     "asm/overlay_14_021F2490.s",
@@ -50680,6 +52525,7 @@
   },
   "ManagedSprite_SetAnim": {
    "callers": [
+    "asm/frontier_map.s",
     "asm/overlay_14_021F2490.s",
     "asm/overlay_18_021F0918.s",
     "asm/overlay_93_arm.s",
@@ -50704,6 +52550,7 @@
   },
   "ManagedSprite_SetAnimationFrame": {
    "callers": [
+    "asm/frontier_map.s",
     "asm/overlay_14_021F2490.s",
     "asm/overlay_18_021F0918.s"
    ],
@@ -50711,6 +52558,7 @@
   },
   "ManagedSprite_SetDrawFlag": {
    "callers": [
+    "asm/frontier_map.s",
     "asm/overlay_14_021F2490.s",
     "asm/overlay_18_021F0918.s",
     "asm/overlay_80_0223A00C.s",
@@ -50746,6 +52594,7 @@
   },
   "ManagedSprite_SetPositionXY": {
    "callers": [
+    "asm/frontier_map.s",
     "asm/overlay_14_021EE26C.s",
     "asm/overlay_14_021EEF34.s",
     "asm/overlay_14_021F0A80.s",
@@ -50776,6 +52625,7 @@
   },
   "ManagedSprite_TickFrame": {
    "callers": [
+    "asm/frontier_map.s",
     "asm/overlay_14_021F2490.s",
     "asm/unk_020863F4.s"
    ],
@@ -51352,6 +53202,7 @@
   },
   "NARC_Delete": {
    "callers": [
+    "asm/frontier_map.s",
     "asm/overlay_01_021E8744.s",
     "asm/overlay_14_021EAF08.s",
     "asm/overlay_18_021F7ED4.s",
@@ -51382,6 +53233,7 @@
   },
   "NARC_New": {
    "callers": [
+    "asm/frontier_map.s",
     "asm/overlay_01_021E8744.s",
     "asm/overlay_14_021EAF08.s",
     "asm/overlay_18_021F7ED4.s",
@@ -52075,6 +53927,7 @@
   },
   "Options_GetFrame": {
    "callers": [
+    "asm/frontier_map.s",
     "asm/overlay_83_0223DD60.s",
     "asm/overlay_83_02242FE8.s",
     "asm/overlay_83_02243D7C.s",
@@ -52356,6 +54209,7 @@
   },
   "PaletteData_AllocBuffers": {
    "callers": [
+    "asm/frontier_map.s",
     "asm/overlay_14_021E5900.s",
     "asm/overlay_83_02243D7C.s"
    ],
@@ -52373,8 +54227,15 @@
    ],
    "signature_sources": {}
   },
+  "PaletteData_FillPaletteInBuffer": {
+   "callers": [
+    "asm/frontier_map.s"
+   ],
+   "signature_sources": {}
+  },
   "PaletteData_Free": {
    "callers": [
+    "asm/frontier_map.s",
     "asm/overlay_83_02243D7C.s",
     "asm/overlay_98.s"
    ],
@@ -52382,6 +54243,7 @@
   },
   "PaletteData_FreeBuffers": {
    "callers": [
+    "asm/frontier_map.s",
     "asm/overlay_83_02243D7C.s"
    ],
    "signature_sources": {}
@@ -52394,6 +54256,7 @@
   },
   "PaletteData_Init": {
    "callers": [
+    "asm/frontier_map.s",
     "asm/overlay_14_021E5900.s",
     "asm/overlay_83_02243D7C.s",
     "asm/overlay_98.s"
@@ -52402,6 +54265,7 @@
   },
   "PaletteData_LoadNarc": {
    "callers": [
+    "asm/frontier_map.s",
     "asm/overlay_80_0223A00C.s",
     "asm/unk_020863F4.s"
    ],
@@ -52415,10 +54279,23 @@
    ],
    "signature_sources": {}
   },
+  "PaletteData_LoadPaletteSlotFromHardware": {
+   "callers": [
+    "asm/frontier_map.s"
+   ],
+   "signature_sources": {}
+  },
   "PaletteData_PushTransparentBuffers": {
    "callers": [
+    "asm/frontier_map.s",
     "asm/overlay_14_021E5900.s",
     "asm/overlay_83_02243D7C.s"
+   ],
+   "signature_sources": {}
+  },
+  "PaletteData_SetAutoTransparent": {
+   "callers": [
+    "asm/frontier_map.s"
    ],
    "signature_sources": {}
   },
@@ -52906,6 +54783,12 @@
    ],
    "signature_sources": {}
   },
+  "RequestSwap3DBuffers": {
+   "callers": [
+    "asm/frontier_map.s"
+   ],
+   "signature_sources": {}
+  },
   "SaveArray_CalcCRC16": {
    "callers": [
     "asm/unk_0202FBCC.s"
@@ -53030,6 +54913,7 @@
   },
   "Save_PlayerData_GetProfile": {
    "callers": [
+    "asm/frontier_map.s",
     "asm/overlay_80_0222AEF8.s",
     "asm/overlay_83_02243D7C.s"
    ],
@@ -53098,6 +54982,7 @@
   },
   "ScheduleBgTilemapBufferTransfer": {
    "callers": [
+    "asm/frontier_map.s",
     "asm/overlay_14_021F6628.s",
     "asm/overlay_18_021F0918.s",
     "asm/overlay_29.s",
@@ -53115,6 +55000,7 @@
   },
   "ScheduleSetBgPosText": {
    "callers": [
+    "asm/frontier_map.s",
     "asm/overlay_117.s",
     "asm/overlay_80_0223A00C.s"
    ],
@@ -53181,6 +55067,7 @@
   },
   "SetBothScreensModesAndDisable": {
    "callers": [
+    "asm/frontier_map.s",
     "asm/overlay_14_021E5900.s",
     "asm/overlay_83_02243D7C.s"
    ],
@@ -53192,6 +55079,12 @@
    ],
    "header": "include/pokemon.h",
    "known_prototype": "void SetBoxMonData(BoxPokemon *boxMon, int attr, const void *ptr)",
+   "signature_sources": {}
+  },
+  "SetKeyRepeatTimers": {
+   "callers": [
+    "asm/frontier_map.s"
+   ],
    "signature_sources": {}
   },
   "SetMonData": {
@@ -53262,9 +55155,13 @@
    }
   },
   "Sound_SetFieldBGM": {
-   "callers": [],
+   "callers": [
+    "asm/frontier_map.s"
+   ],
    "confidence": "high",
    "defined_in": "asm/unk_02004A44.s",
+   "header": "none: local extern (as in src/field_bgm.c, src/unk_02087A78.c)",
+   "known_prototype": "void Sound_SetFieldBGM(u16 seqNo)",
    "mode": "thumb",
    "notes": [
     "[asm/unk_02004A44.s] *(u16 *)attr(0x20) = seqNo"
@@ -53383,6 +55280,7 @@
   },
   "SpriteManager_GetSpriteList": {
    "callers": [
+    "asm/frontier_map.s",
     "asm/overlay_14_021F4B90.s",
     "asm/overlay_80_0223A00C.s",
     "asm/unk_020863F4.s"
@@ -53395,6 +55293,7 @@
   },
   "SpriteManager_New": {
    "callers": [
+    "asm/frontier_map.s",
     "asm/overlay_14_021F2490.s",
     "asm/overlay_98.s",
     "asm/unk_020863F4.s"
@@ -53405,6 +55304,7 @@
   },
   "SpriteManager_UnloadAnimObjById": {
    "callers": [
+    "asm/frontier_map.s",
     "asm/overlay_80_02239AF8.s",
     "asm/overlay_93_arm.s"
    ],
@@ -53418,6 +55318,7 @@
   },
   "SpriteManager_UnloadCellObjById": {
    "callers": [
+    "asm/frontier_map.s",
     "asm/overlay_80_02239AF8.s",
     "asm/overlay_93_arm.s"
    ],
@@ -53431,6 +55332,7 @@
   },
   "SpriteManager_UnloadCharObjById": {
    "callers": [
+    "asm/frontier_map.s",
     "asm/overlay_80_02239AF8.s",
     "asm/overlay_93_arm.s"
    ],
@@ -53440,6 +55342,7 @@
   },
   "SpriteManager_UnloadPlttObjById": {
    "callers": [
+    "asm/frontier_map.s",
     "asm/overlay_80_02239AF8.s",
     "asm/overlay_93_arm.s"
    ],
@@ -53459,6 +55362,7 @@
   },
   "SpriteSystem_Alloc": {
    "callers": [
+    "asm/frontier_map.s",
     "asm/overlay_14_021F2490.s",
     "asm/overlay_98.s",
     "asm/unk_020863F4.s"
@@ -53469,6 +55373,7 @@
   },
   "SpriteSystem_DrawSprites": {
    "callers": [
+    "asm/frontier_map.s",
     "asm/overlay_14_021E5900.s",
     "asm/overlay_98.s"
    ],
@@ -53476,6 +55381,7 @@
   },
   "SpriteSystem_Free": {
    "callers": [
+    "asm/frontier_map.s",
     "asm/overlay_14_021F2490.s",
     "asm/overlay_98.s"
    ],
@@ -53483,6 +55389,7 @@
   },
   "SpriteSystem_FreeResourcesAndManager": {
    "callers": [
+    "asm/frontier_map.s",
     "asm/overlay_14_021F2490.s",
     "asm/overlay_98.s"
    ],
@@ -53490,12 +55397,14 @@
   },
   "SpriteSystem_GetRenderer": {
    "callers": [
+    "asm/frontier_map.s",
     "asm/overlay_14_021F2490.s"
    ],
    "signature_sources": {}
   },
   "SpriteSystem_Init": {
    "callers": [
+    "asm/frontier_map.s",
     "asm/overlay_14_021F2490.s",
     "asm/overlay_98.s",
     "asm/unk_020863F4.s"
@@ -53506,14 +55415,18 @@
   },
   "SpriteSystem_InitManagerWithCapacities": {
    "callers": [
+    "asm/frontier_map.s",
     "asm/overlay_14_021F2490.s",
     "asm/overlay_98.s",
     "asm/unk_020863F4.s"
    ],
+   "header": "include/sprite_system.h",
+   "known_prototype": "BOOL SpriteSystem_InitManagerWithCapacities(SpriteSystem *, SpriteManager *, SpriteResourceCountsListUnion *countsArray)",
    "signature_sources": {}
   },
   "SpriteSystem_InitSprites": {
    "callers": [
+    "asm/frontier_map.s",
     "asm/overlay_14_021F2490.s",
     "asm/overlay_98.s",
     "asm/unk_020863F4.s"
@@ -53625,7 +55538,14 @@
   },
   "SpriteSystem_TransferOam": {
    "callers": [
+    "asm/frontier_map.s",
     "asm/overlay_14_021E5900.s"
+   ],
+   "signature_sources": {}
+  },
+  "SpriteSystem_UpdateTransfer": {
+   "callers": [
+    "asm/frontier_map.s"
    ],
    "signature_sources": {}
   },
@@ -53658,6 +55578,7 @@
   },
   "Sprite_DeleteAndFreeResources": {
    "callers": [
+    "asm/frontier_map.s",
     "asm/overlay_14_021F2490.s",
     "asm/overlay_80_02239AF8.s",
     "asm/overlay_80_0223A00C.s",
@@ -53912,6 +55833,7 @@
   },
   "SysTask_CreateOnMainQueue": {
    "callers": [
+    "asm/frontier_map.s",
     "asm/overlay_01_021FCD2C.s",
     "asm/overlay_18_021F7ED4.s",
     "asm/overlay_80_022384D8.s",
@@ -53928,6 +55850,7 @@
   },
   "SysTask_CreateOnVBlankQueue": {
    "callers": [
+    "asm/frontier_map.s",
     "asm/overlay_14_021EAF08.s",
     "asm/unk_02069660.s"
    ],
@@ -53945,6 +55868,7 @@
   },
   "SysTask_Destroy": {
    "callers": [
+    "asm/frontier_map.s",
     "asm/overlay_01_021FCD2C.s",
     "asm/overlay_14_021EAF08.s",
     "asm/overlay_18_021F7ED4.s",
@@ -54031,6 +55955,24 @@
    "known_prototype": "void TaskManager_Jump(TaskManager *taskman, TaskFunc taskFunc, void *env)",
    "signature_sources": {}
   },
+  "TextFlags_SetAutoScrollParam": {
+   "callers": [
+    "asm/frontier_map.s"
+   ],
+   "signature_sources": {}
+  },
+  "TextFlags_SetCanABSpeedUpPrint": {
+   "callers": [
+    "asm/frontier_map.s"
+   ],
+   "signature_sources": {}
+  },
+  "TextFlags_SetCanTouchSpeedUpPrint": {
+   "callers": [
+    "asm/frontier_map.s"
+   ],
+   "signature_sources": {}
+  },
   "TextOBJ_CopyFromBGWindow": {
    "callers": [
     "asm/overlay_14_021F4B90.s"
@@ -54057,6 +55999,7 @@
   },
   "ToggleBgLayer": {
    "callers": [
+    "asm/frontier_map.s",
     "asm/overlay_117.s",
     "asm/overlay_83_02246E08.s"
    ],
@@ -54510,6 +56453,7 @@
   },
   "_fadd": {
    "callers": [
+    "asm/frontier_map.s",
     "asm/overlay_14_021F2490.s",
     "asm/overlay_80_0223A00C.s"
    ],
@@ -54517,18 +56461,21 @@
   },
   "_ffix": {
    "callers": [
+    "asm/frontier_map.s",
     "asm/overlay_80_0223A00C.s"
    ],
    "signature_sources": {}
   },
   "_fflt": {
    "callers": [
+    "asm/frontier_map.s",
     "asm/overlay_80_0223A00C.s"
    ],
    "signature_sources": {}
   },
   "_fsub": {
    "callers": [
+    "asm/frontier_map.s",
     "asm/overlay_14_021F2490.s",
     "asm/overlay_80_0223A00C.s"
    ],
@@ -73887,6 +75834,210 @@
     "asm/overlay_41_02248400.s": "void ov41_02249DB4(UnkOv41ScrollBg *bg, UnkOv41ScrollBgTemplate *tmpl, int dx, int dy, int frames, int *doneFlag)"
    }
   },
+  "ov42_*": {
+   "callers": [],
+   "header": "include/overlay_42.h",
+   "known_prototype": "all 34 ov42_ imports declared",
+   "signature_sources": {}
+  },
+  "ov42_02227EE0": {
+   "callers": [
+    "asm/frontier_map.s"
+   ],
+   "signature_sources": {}
+  },
+  "ov42_02227F28": {
+   "callers": [
+    "asm/frontier_map.s"
+   ],
+   "signature_sources": {}
+  },
+  "ov42_02227F48": {
+   "callers": [
+    "asm/frontier_map.s"
+   ],
+   "signature_sources": {}
+  },
+  "ov42_02228010": {
+   "callers": [
+    "asm/frontier_map.s"
+   ],
+   "signature_sources": {}
+  },
+  "ov42_02228050": {
+   "callers": [
+    "asm/frontier_map.s"
+   ],
+   "signature_sources": {}
+  },
+  "ov42_02228068": {
+   "callers": [
+    "asm/frontier_map.s"
+   ],
+   "signature_sources": {}
+  },
+  "ov42_0222807C": {
+   "callers": [
+    "asm/frontier_map.s"
+   ],
+   "signature_sources": {}
+  },
+  "ov42_022280B8": {
+   "callers": [
+    "asm/frontier_map.s"
+   ],
+   "signature_sources": {}
+  },
+  "ov42_02228100": {
+   "callers": [
+    "asm/frontier_map.s"
+   ],
+   "signature_sources": {}
+  },
+  "ov42_02228188": {
+   "callers": [
+    "asm/frontier_map.s"
+   ],
+   "signature_sources": {}
+  },
+  "ov42_02228C80": {
+   "callers": [
+    "asm/frontier_map.s"
+   ],
+   "signature_sources": {}
+  },
+  "ov42_02228F24": {
+   "callers": [
+    "asm/frontier_map.s"
+   ],
+   "signature_sources": {}
+  },
+  "ov42_02228F94": {
+   "callers": [
+    "asm/frontier_map.s"
+   ],
+   "signature_sources": {}
+  },
+  "ov42_02228FE0": {
+   "callers": [
+    "asm/frontier_map.s"
+   ],
+   "signature_sources": {}
+  },
+  "ov42_02229004": {
+   "callers": [
+    "asm/frontier_map.s"
+   ],
+   "signature_sources": {}
+  },
+  "ov42_0222903C": {
+   "callers": [
+    "asm/frontier_map.s"
+   ],
+   "signature_sources": {}
+  },
+  "ov42_022290C4": {
+   "callers": [
+    "asm/frontier_map.s"
+   ],
+   "signature_sources": {}
+  },
+  "ov42_022290DC": {
+   "callers": [
+    "asm/frontier_map.s"
+   ],
+   "signature_sources": {}
+  },
+  "ov42_022291F4": {
+   "callers": [
+    "asm/frontier_map.s"
+   ],
+   "signature_sources": {}
+  },
+  "ov42_02229200": {
+   "callers": [
+    "asm/frontier_map.s"
+   ],
+   "signature_sources": {}
+  },
+  "ov42_02229358": {
+   "callers": [
+    "asm/frontier_map.s"
+   ],
+   "signature_sources": {}
+  },
+  "ov42_02229394": {
+   "callers": [
+    "asm/frontier_map.s"
+   ],
+   "signature_sources": {}
+  },
+  "ov42_022293A8": {
+   "callers": [
+    "asm/frontier_map.s"
+   ],
+   "signature_sources": {}
+  },
+  "ov42_022293B0": {
+   "callers": [
+    "asm/frontier_map.s"
+   ],
+   "signature_sources": {}
+  },
+  "ov42_022293B8": {
+   "callers": [
+    "asm/frontier_map.s"
+   ],
+   "signature_sources": {}
+  },
+  "ov42_0222940C": {
+   "callers": [
+    "asm/frontier_map.s"
+   ],
+   "signature_sources": {}
+  },
+  "ov42_02229420": {
+   "callers": [
+    "asm/frontier_map.s"
+   ],
+   "signature_sources": {}
+  },
+  "ov42_02229974": {
+   "callers": [
+    "asm/frontier_map.s"
+   ],
+   "signature_sources": {}
+  },
+  "ov42_022299AC": {
+   "callers": [
+    "asm/frontier_map.s"
+   ],
+   "signature_sources": {}
+  },
+  "ov42_02229A08": {
+   "callers": [
+    "asm/frontier_map.s"
+   ],
+   "signature_sources": {}
+  },
+  "ov42_02229A40": {
+   "callers": [
+    "asm/frontier_map.s"
+   ],
+   "signature_sources": {}
+  },
+  "ov42_02229A78": {
+   "callers": [
+    "asm/frontier_map.s"
+   ],
+   "signature_sources": {}
+  },
+  "ov42_02229AC8": {
+   "callers": [
+    "asm/frontier_map.s"
+   ],
+   "signature_sources": {}
+  },
   "ov45_0222D740": {
    "callers": [
     "asm/overlay_49_0225CB50.s"
@@ -75060,12 +77211,44 @@
     "asm/overlay_83_02242FE8.s": "void ov80_0222A7CC(void *a0, int a1)"
    }
   },
+  "ov80_0222A7EC": {
+   "callers": [
+    "asm/frontier_map.s"
+   ],
+   "header": "none: declared in src/frontier/overlay_80_02229EE0.c only, so use a local extern",
+   "known_prototype": "u16 ov80_0222A7EC(PlayerProfile *profile)",
+   "signature_sources": {}
+  },
   "ov80_0222A840": {
    "callers": [
     "asm/overlay_80_0222FD08.s"
    ],
    "header": "none (local in src/frontier/overlay_80_02229EE0.c)",
    "known_prototype": "void ov80_0222A840(SaveData *saveData)",
+   "signature_sources": {}
+  },
+  "ov80_0222ACA0": {
+   "callers": [
+    "asm/frontier_map.s"
+   ],
+   "header": "include/overlay_80_0222ACA0.h",
+   "known_prototype": "s32 ov80_0222ACA0(s32 index, s32 fieldSel)",
+   "signature_sources": {}
+  },
+  "ov80_0222AD9C": {
+   "callers": [
+    "asm/frontier_map.s"
+   ],
+   "header": "include/overlay_80_0222ACA0.h",
+   "known_prototype": "void ov80_0222AD9C(void *a0, void *a1, s32 index)",
+   "signature_sources": {}
+  },
+  "ov80_0222ADB4": {
+   "callers": [
+    "asm/frontier_map.s"
+   ],
+   "header": "include/overlay_80_0222ACA0.h",
+   "known_prototype": "void ov80_0222ADB4(void *a0, void *a1, s32 index)",
    "signature_sources": {}
   },
   "ov80_0222AEF8": {
@@ -77571,10 +79754,645 @@
     "asm/overlay_80_022384D8.s": "u32 ov80_02238610(u32 a0)"
    }
   },
-  "ov80_02239AF8": {
+  "ov80_022389C4": {
    "callers": [],
    "confidence": "high",
+   "defined_in": "asm/frontier_map.s",
+   "mode": "thumb",
+   "notes": [
+    "[asm/frontier_map.s] for i<0x20: e=sub_0209686C(map->work,i); if(e->obj){ e->tmpl.unkA(u8,+0x12)=ov42_02228188(e->obj,6); e->tmpl.unk2(+0xA)=..(5); e->tmpl.x(+0xE)=..(0); e->tmpl.y(+0x10)=..(1); e->tmpl.unkB(+0x13)=ov42_022291F4(e->unk4);} then ov80_02239740(map). Constant 6 hoisted into r7."
+   ],
+   "signature_guess": "void ov80_022389C4(FrontierMap *map)",
+   "signature_sources": {
+    "asm/frontier_map.s": "void ov80_022389C4(FrontierMap *map)"
+   },
+   "struct_accesses": [
+    {
+     "meaning": "frontierWork",
+     "offset": "0x8",
+     "param": 0,
+     "width": 4
+    }
+   ]
+  },
+  "ov80_02238A18": {
+   "callers": [],
+   "confidence": "high",
+   "defined_in": "asm/frontier_map.s",
+   "mode": "thumb",
+   "notes": [
+    "[asm/frontier_map.s] UnkStruct_ov42_02228CDC *list=sub_02096864(work); for i<0x18 (ptr walk): if(list->unk0!=0xFFFF) ov42_02228FE0(map->unk20,list->unk0,list->unk2,0x65); FrontierMapObjTemplate tmpl (sp+0, frame 0x20); for i<0x20: e=sub_0209686C(work,i); if(e->tmpl.id(+0xC)!=0xFFFF){ov80_02239900(e,&tmpl); ov80_02239510(map,&tmpl,i);} ov80_02239828(map)."
+   ],
+   "signature_guess": "void ov80_02238A18(FrontierMap *map)",
+   "signature_sources": {
+    "asm/frontier_map.s": "void ov80_02238A18(FrontierMap *map)"
+   },
+   "struct_accesses": [
+    {
+     "meaning": "UnkStruct_ov42_02228EDC*",
+     "offset": "0x20",
+     "param": 0,
+     "width": 4
+    }
+   ]
+  },
+  "ov80_02238AAC": {
+   "callers": [],
+   "confidence": "high",
+   "defined_in": "asm/frontier_map.s",
+   "mode": "thumb",
+   "notes": [
+    "[asm/frontier_map.s] empty body"
+   ],
+   "signature_guess": "static void ov80_02238AAC(SysTask *task, void *data)",
+   "signature_sources": {
+    "asm/frontier_map.s": "static void ov80_02238AAC(SysTask *task, void *data)"
+   }
+  },
+  "ov80_02238AB0": {
+   "callers": [],
+   "confidence": "high",
+   "defined_in": "asm/frontier_map.s",
+   "mode": "thumb",
+   "notes": [
+    "[asm/frontier_map.s] tail call ov42_0222807C(map->unk14) (ldr r3,=fn; bx r3)"
+   ],
+   "signature_guess": "static void ov80_02238AB0(SysTask *task, void *data)",
+   "signature_sources": {
+    "asm/frontier_map.s": "static void ov80_02238AB0(SysTask *task, void *data)"
+   },
+   "struct_accesses": [
+    {
+     "meaning": "UnkStruct_ov42_022280A8*",
+     "offset": "0x14",
+     "param": 1,
+     "width": 4
+    }
+   ]
+  },
+  "ov80_02238ABC": {
+   "callers": [],
+   "confidence": "high",
+   "defined_in": "asm/frontier_map.s",
+   "mode": "thumb",
+   "notes": [
+    "[asm/frontier_map.s] tail call ov80_02238C78(data)"
+   ],
+   "signature_guess": "static void ov80_02238ABC(SysTask *task, void *data)",
+   "signature_sources": {
+    "asm/frontier_map.s": "static void ov80_02238ABC(SysTask *task, void *data)"
+   }
+  },
+  "ov80_02238B7C": {
+   "callers": [
+    "asm/frontier_map.s"
+   ],
+   "confidence": "medium",
+   "defined_in": "asm/frontier_map.s",
+   "mode": "thumb",
+   "notes": [
+    "[asm/frontier_map.s] s16 y=ov42_022293A8(&map->unk1C)+map->unkAA; s16 x=ov42_022293B0(&map->unk1C)+map->unkA8; fy computed FIRST (sp+4) then fx (sp): if(v>0) f=0.5f+(f32)(v<<12) [_fadd(0.5f,fflt)] else f=(f32)(v<<12)-0.5f; then G2dRenderer_SetMainSurfaceCoords(SpriteSystem_GetRenderer(map->unk34),(fx32)fx,(fx32)fy) -- GetRenderer called before both _ffix (renderer spilled to sp+8). Try FX32_CONST(x)/FX32_CONST(y) inline first; fall back to explicit f32 temps (float-to-fx32-shared-ffix). Then ScheduleSetBgPosText(bg,3,BG_POS_OP_SET_X,x); (bg,3,BG_POS_OP_SET_Y,y); if(ACA0(args->unk20,9)!=0xFFFF && ACA0(args->unk20,0xD)==1){ same for bg 2 }. Frame 0x10."
+   ],
+   "signature_guess": "static void ov80_02238B7C(FrontierMap *map)",
+   "signature_sources": {
+    "asm/frontier_map.s": "static void ov80_02238B7C(FrontierMap *map)"
+   },
+   "struct_accesses": [
+    {
+     "meaning": "s16 scroll offset X (ldrsh)",
+     "offset": "0xa8",
+     "param": 0,
+     "width": 2
+    },
+    {
+     "meaning": "s16 scroll offset Y (ldrsh)",
+     "offset": "0xaa",
+     "param": 0,
+     "width": 2
+    },
+    {
+     "meaning": "SpriteSystem*",
+     "offset": "0x34",
+     "param": 0,
+     "width": 4
+    }
+   ]
+  },
+  "ov80_02238C78": {
+   "callers": [
+    "asm/frontier_map.s"
+   ],
+   "confidence": "high",
+   "defined_in": "asm/frontier_map.s",
+   "mode": "thumb",
+   "notes": [
+    "[asm/frontier_map.s] locals: UnkStruct_ov42_02228EB0 ev (sp+0, 8B), UnkStruct_ov42_02228CDC req (sp+8, 4B). while(ov42_02229A08(map->unk30,(UnkStruct_ov44_02232031*)&ev)==1) ov42_02228068(map->unk14,&ev); while(ov42_02229AC8(map->unk2C,&req)==1){ if(ov42_02228C80(map->unk18,map->unk14,&req,&ev)==1) ov42_02228068(map->unk14,&ev);} (MWCC rotates while into if+do-while)."
+   ],
+   "signature_guess": "static void ov80_02238C78(FrontierMap *map)",
+   "signature_sources": {
+    "asm/frontier_map.s": "static void ov80_02238C78(FrontierMap *map)"
+   },
+   "struct_accesses": [
+    {
+     "meaning": "UnkStruct_ov42_022299C0* move queue",
+     "offset": "0x30",
+     "param": 0,
+     "width": 4
+    },
+    {
+     "meaning": "UnkStruct_ov42_02229A40*",
+     "offset": "0x2c",
+     "param": 0,
+     "width": 4
+    },
+    {
+     "meaning": "UnkStruct_ov42_022280A8*",
+     "offset": "0x14",
+     "param": 0,
+     "width": 4
+    },
+    {
+     "meaning": "UnkStruct_ov42_02227F68*",
+     "offset": "0x18",
+     "param": 0,
+     "width": 4
+    }
+   ]
+  },
+  "ov80_02238FA0": {
+   "callers": [
+    "asm/frontier_map.s"
+   ],
+   "confidence": "high",
+   "defined_in": "asm/frontier_map.s",
+   "mode": "thumb",
+   "notes": [
+    "[asm/frontier_map.s] narc=NARC_New(0xB7,0x65); LoadChar(narc,0x81,bg,4,0,0,TRUE,0x65); LoadScrn(narc,0x82,bg,4,0,0,TRUE,0x65); PaletteData_LoadNarc(pd,0xB7,0xBE,0x65,1,0x20,0); NARC_Delete(narc)."
+   ],
+   "signature_guess": "static void ov80_02238FA0(FrontierMap *map)",
+   "signature_sources": {
+    "asm/frontier_map.s": "static void ov80_02238FA0(FrontierMap *map)"
+   }
+  },
+  "ov80_02239004": {
+   "callers": [
+    "asm/frontier_map.s"
+   ],
+   "confidence": "high",
+   "defined_in": "asm/frontier_map.s",
+   "mode": "thumb",
+   "notes": [
+    "[asm/frontier_map.s] Frame 0x2C: sp+0x20 UnkTemplate_ov42_022293B8 tmpl (11-byte struct copy of ov80_0223D554 -> ldrb/strb x11 loop), sp+0x1C/0x18 two NNSG2dPaletteData* out-params, sp+0x14 pltt alloc ptr, sp+0x10 narcId spill. tmpl.narcId=ACA0(idx,5); tmpl.fileId=ACA0(idx,6); s=ACA0(idx,0xC); if(s==0) map->unk24=ov42_022293B8(GetRenderer(map->unk34),map->bgConfig,&tmpl,0x65); if(ACA0(idx,9)!=0xFFFF){tmpl.fileId=ACA0(idx,9); tmpl.unk_1=2; tmpl.screenBase=1; tmpl.charBase=8; tmpl.priority=1; if(s==0) map->unk28=...;} unk2C/unk30; ov42_02227F48(map->unk18,ov80_0223D654); ext=ACA0(idx,0); narcId=ACA0(idx,5); narc=NARC_New(narcId,0x65); LoadChar(narc,ACA0(idx,7),bg,3,0,0,1,0x65); if(ext==0) PaletteData_LoadNarc(pd,narcId,ACA0(idx,8),0x65,0,0x160,0); else {p=GetPlttDataFromOpenNarc(narc,ACA0(idx,8),&pd1,0x65); DC_FlushRange(pd1->pRawData,pd1->szByte); GX_BeginLoadBGExtPltt(); GX_LoadBGExtPltt(pd1->pRawData,0x6000,0x2000); GX_EndLoadBGExtPltt(); Heap_Free(p);} PaletteData_FillPaletteInBuffer(pd,0,2,0,0,1); LoadScrn(narc,ACA0(idx,6),bg,3,...); if(ACA0(idx,9)!=0xFFFF){LoadChar(narc,ACA0(idx,0xA),bg,2,...); LoadScrn(narc,ACA0(idx,9),bg,2,...); if(ext!=0){same ext-pltt path with ACA0(idx,0xB), slot 0x4000 size 0x2000}} ScheduleBgTilemapBufferTransfer(bg,3); NARC_Delete(narc). ACA0 results are never cached (re-called each use)."
+   ],
+   "signature_guess": "static void ov80_02239004(FrontierMap *map, u8 idx, PlayerProfile *profile)",
+   "signature_sources": {
+    "asm/frontier_map.s": "static void ov80_02239004(FrontierMap *map, u8 idx, PlayerProfile *profile)"
+   },
+   "struct_accesses": [
+    {
+     "meaning": "=ov42_02228010(0x20,0x65)",
+     "offset": "0x14",
+     "param": 0,
+     "width": 4
+    },
+    {
+     "meaning": "=ov42_02227EE0(0x10,0x10,0x65)",
+     "offset": "0x18",
+     "param": 0,
+     "width": 4
+    },
+    {
+     "meaning": "UnkStruct_ov44_02232914 inline, ov42_02229394(&map->unk1C)",
+     "offset": "0x1c",
+     "param": 0,
+     "width": 4
+    },
+    {
+     "meaning": "=ov42_02228F24(list,pd,0x20,ov80_0222A7EC(profile),0,1,0x65)",
+     "offset": "0x20",
+     "param": 0,
+     "width": 4
+    },
+    {
+     "meaning": "ov42_022293B8 if ACA0(idx,0xC)==0",
+     "offset": "0x24",
+     "param": 0,
+     "width": 4
+    },
+    {
+     "meaning": "second ov42_022293B8 if ACA0(idx,9)!=0xFFFF and ACA0(idx,0xC)==0",
+     "offset": "0x28",
+     "param": 0,
+     "width": 4
+    },
+    {
+     "meaning": "=ov42_02229A40(0x80,0x65)",
+     "offset": "0x2c",
+     "param": 0,
+     "width": 4
+    },
+    {
+     "meaning": "=ov42_02229974(0x80,0x65)",
+     "offset": "0x30",
+     "param": 0,
+     "width": 4
+    }
+   ]
+  },
+  "ov80_0223927C": {
+   "callers": [
+    "asm/frontier_map.s"
+   ],
+   "confidence": "high",
+   "defined_in": "asm/frontier_map.s",
+   "mode": "thumb",
+   "notes": [
+    "[asm/frontier_map.s] e=sub_02096868(work); for i<0x20 (e++ stride 0x3C): if(e->obj){ov42_02228100(e->obj); GF_ASSERT(e->unk38==0);} ov42_02228050(unk14); ov42_02227F28(unk18); ov42_02228F94(unk20); if(unk24) ov42_0222940C(unk24); if(unk28) ...; ov42_02229A78(unk2C); ov42_022299AC((u32*)unk30)."
+   ],
+   "signature_guess": "static void ov80_0223927C(FrontierMap *map)",
+   "signature_sources": {
+    "asm/frontier_map.s": "static void ov80_0223927C(FrontierMap *map)"
+   }
+  },
+  "ov80_022392DC": {
+   "callers": [
+    "asm/frontier_map.s"
+   ],
+   "confidence": "high",
+   "defined_in": "asm/frontier_map.s",
+   "mode": "thumb",
+   "notes": [
+    "[asm/frontier_map.s] return GF_3DVramMan_Create(heapId, GF_3D_TEXALLOC_LNK, 1, GF_3D_PLTTALLOC_LNK, 1, ov80_022392F8);"
+   ],
+   "signature_guess": "static GF3DVramMan *ov80_022392DC(enum HeapID heapId)",
+   "signature_sources": {
+    "asm/frontier_map.s": "static GF3DVramMan *ov80_022392DC(enum HeapID heapId)"
+   }
+  },
+  "ov80_022392F8": {
+   "callers": [],
+   "confidence": "high",
+   "defined_in": "asm/frontier_map.s",
+   "mode": "thumb",
+   "notes": [
+    "[asm/frontier_map.s] GfGfx_EngineATogglePlanes(GX_PLANEMASK_BG0,ON); G2_SetBG0Priority(1); G3X_SetShading(GX_SHADING_TOON); G3X_AntiAlias(TRUE); G3X_AlphaTest(FALSE,0); G3X_AlphaBlend(TRUE); G3X_EdgeMarking(FALSE); G3X_SetFog(FALSE,0,0,0); G3X_SetClearColor(RGB_BLACK,0,0x7FFF,63,FALSE); G3_ViewPort(0,0,255,191). Template: src/party_menu.c Init3dVramManForPartyMenu."
+   ],
+   "signature_guess": "static void ov80_022392F8(void)",
+   "signature_sources": {
+    "asm/frontier_map.s": "static void ov80_022392F8(void)"
+   }
+  },
+  "ov80_0223937C": {
+   "callers": [
+    "asm/frontier_map.s"
+   ],
+   "confidence": "high",
+   "defined_in": "asm/frontier_map.s",
+   "mode": "thumb",
+   "notes": [
+    "[asm/frontier_map.s] tail call"
+   ],
+   "signature_guess": "static void ov80_0223937C(GF3DVramMan *vramMan)",
+   "signature_sources": {
+    "asm/frontier_map.s": "static void ov80_0223937C(GF3DVramMan *vramMan)"
+   }
+  },
+  "ov80_02239384": {
+   "callers": [
+    "asm/frontier_map.s"
+   ],
+   "confidence": "high",
+   "defined_in": "asm/frontier_map.s",
+   "mode": "thumb",
+   "notes": [
+    "[asm/frontier_map.s] map->unk34=SpriteSystem_Alloc(0x65); SpriteSystem_Init(map->unk34,&ov80_0223D5B8,&ov80_0223D570,0x20); G2dRenderer_SetObjCharTransferReservedRegion(NNS_G2D_VRAM_TYPE_2DMAIN,GX_OBJVRAMMODE_CHAR_1D_128K(0x200010)); G2dRenderer_SetPlttTransferReservedRegion(NNS_G2D_VRAM_TYPE_2DMAIN); map->unk38=SpriteManager_New(map->unk34); SpriteSystem_InitSprites(unk34,unk38,0x80); SpriteSystem_InitManagerWithCapacities(unk34,unk38,(SpriteResourceCountsListUnion*)&ov80_0223D584) (non-const param, cast); G2dRenderer_SetSubSurfaceCoords(GetRenderer(unk34),0,0x200000)."
+   ],
+   "signature_guess": "static void ov80_02239384(FrontierMap *map)",
+   "signature_sources": {
+    "asm/frontier_map.s": "static void ov80_02239384(FrontierMap *map)"
+   },
+   "struct_accesses": [
+    {
+     "meaning": "SpriteSystem*",
+     "offset": "0x34",
+     "param": 0,
+     "width": 4
+    },
+    {
+     "meaning": "SpriteManager*",
+     "offset": "0x38",
+     "param": 0,
+     "width": 4
+    }
+   ]
+  },
+  "ov80_022393E8": {
+   "callers": [
+    "asm/frontier_map.s"
+   ],
+   "confidence": "high",
+   "defined_in": "asm/frontier_map.s",
+   "mode": "thumb",
+   "notes": [
+    "[asm/frontier_map.s] for i<8 if(sprites[i]) ov80_02239BE8(sprites[i]); for i<8 if(unk70[i]!=0xFFFF) ov80_02239B7C(map->unk38,unk70[i]); for i<4 if(unk80[i]){Sprite_DeleteAndFreeResources(unk80[i]); Unload Char/Pltt/Cell/Anim ById(map->unk38, i+50000);} SpriteSystem_FreeResourcesAndManager(unk34,unk38); SpriteSystem_Free(unk34). 0xC350 reloaded from pool 3x then held in r7 for last call (natural MWCC)."
+   ],
+   "signature_guess": "static void ov80_022393E8(FrontierMap *map)",
+   "signature_sources": {
+    "asm/frontier_map.s": "static void ov80_022393E8(FrontierMap *map)"
+   },
+   "struct_accesses": [
+    {
+     "meaning": "ManagedSprite *unk80[4] (res ids 50000+i)",
+     "offset": "0x80",
+     "param": 0,
+     "width": 4
+    }
+   ]
+  },
+  "ov80_0223947C": {
+   "callers": [],
+   "confidence": "high",
+   "defined_in": "asm/frontier_map.s",
+   "mode": "thumb",
+   "notes": [
+    "[asm/frontier_map.s] list=sub_02096864(map->work) (u16[0x18][2] = UnkStruct_ov42_02228CDC[0x18]); for i<0x18 if(res->unk0==list[i].unk0) return; (res->unk0 hoisted); for j<0x18 if(list[j].unk0==0xFFFF) break; GF_ASSERT(j!=0x18) (cmp/bne); list[j]=*res (4-byte align-2 struct copy = two ldrh/strh); ov42_02228FE0(map->unk20,res->unk0,res->unk2,0x65). Caller FrtCmd_034 passes &stack {u16 id; u8 b}."
+   ],
+   "signature_guess": "void ov80_0223947C(FrontierMap *map, const UnkStruct_ov42_02228CDC *res)",
+   "signature_sources": {
+    "asm/frontier_map.s": "void ov80_0223947C(FrontierMap *map, const UnkStruct_ov42_02228CDC *res)"
+   }
+  },
+  "ov80_022394D8": {
+   "callers": [],
+   "confidence": "medium",
+   "defined_in": "asm/frontier_map.s",
+   "mode": "thumb",
+   "notes": [
+    "[asm/frontier_map.s] for i<0x18: if(resId==list[i].unk0){ov42_02229004(map->unk20,resId); list[i].unk0=0xFFFF; return;} No narrowing either side; caller passes FrontierScript_ReadVar result unnarrowed (u16 or u32 both plausible)."
+   ],
+   "signature_guess": "void ov80_022394D8(FrontierMap *map, u16 resId)",
+   "signature_sources": {
+    "asm/frontier_map.s": "void ov80_022394D8(FrontierMap *map, u16 resId)"
+   }
+  },
+  "ov80_02239510": {
+   "callers": [
+    "asm/frontier_map.s"
+   ],
+   "confidence": "high",
+   "defined_in": "asm/frontier_map.s",
+   "mode": "thumb",
+   "notes": [
+    "[asm/frontier_map.s] if(idx==-1){e=sub_02096868(work); for(idx=0;idx<0x20;idx++,e++) if(e->obj==NULL) break; GF_ASSERT(idx!=0x20);} UnkStruct_ov42_02122667 p (sp+8): p.unk0=tmpl->x(+6,s16); p.unk2=tmpl->y(+8,s16); p.unk4=tmpl->id(+4); p.unk6=tmpl->unk2; p.unk8=tmpl->unkA(u8); p.unkA=tmpl->unk0; obj=ov42_022280B8(map->unk14,&p); b=ov42_0222903C(map->unk20,obj,0,0x65); ov42_02229200(b,tmpl->unkB); ov80_02239914(map->work,idx,obj,b,tmpl); return obj. Callers pass idx=-1 or 0x1F (FrtCmd_036) or loop i (ov80_02238A18)."
+   ],
+   "signature_guess": "UnkStruct_ov42_02228110 *ov80_02239510(FrontierMap *map, const FrontierMapObjTemplate *tmpl, int idx)",
+   "signature_sources": {
+    "asm/frontier_map.s": "UnkStruct_ov42_02228110 *ov80_02239510(FrontierMap *map, const FrontierMapObjTemplate *tmpl, int idx)"
+   }
+  },
+  "ov80_02239590": {
+   "callers": [],
+   "confidence": "high",
+   "defined_in": "asm/frontier_map.s",
+   "mode": "thumb",
+   "notes": [
+    "[asm/frontier_map.s] for i<0x20 (ptr-walk compare): if(e[i].obj==obj){ov42_02228100(entries[i].obj); ov42_022290C4(entries[i].unk4); GF_ASSERT(entries[i].unk38==0); MI_CpuFill8(&entries[i],0,0x3C); entries[i].tmpl.id=0xFFFF; return;} -- body indexes via mul 0x3C (array index, not the walking ptr)."
+   ],
+   "signature_guess": "void ov80_02239590(FrontierMap *map, UnkStruct_ov42_02228110 *obj)",
+   "signature_sources": {
+    "asm/frontier_map.s": "void ov80_02239590(FrontierMap *map, UnkStruct_ov42_02228110 *obj)"
+   }
+  },
+  "ov80_022395E8": {
+   "callers": [],
+   "confidence": "medium",
+   "defined_in": "asm/frontier_map.s",
+   "mode": "thumb",
+   "notes": [
+    "[asm/frontier_map.s] for i<0x20: if(id==e->tmpl.id){ if(outObj) *outObj=entries[i].obj; if(outB) *outB=entries[i].unk4; return;} GF_AssertFail(). FrtCmd_038 passes (map, ReadVar, NULL, &local)."
+   ],
+   "signature_guess": "void ov80_022395E8(FrontierMap *map, u16 id, UnkStruct_ov42_02228110 **outObj, UnkStruct_ov42_0222903C **outB)",
+   "signature_sources": {
+    "asm/frontier_map.s": "void ov80_022395E8(FrontierMap *map, u16 id, UnkStruct_ov42_02228110 **outObj, UnkStruct_ov42_0222903C **outB)"
+   }
+  },
+  "ov80_0223962C": {
+   "callers": [
+    "asm/frontier_map.s"
+   ],
+   "confidence": "high",
+   "defined_in": "asm/frontier_map.s",
+   "mode": "thumb",
+   "notes": [
+    "[asm/frontier_map.s] for i<8 if(map->unk70[i]==0xFFFF){map->unk70[i]=resId; return;} GF_AssertFail();"
+   ],
+   "signature_guess": "void ov80_0223962C(FrontierMap *map, u16 resId)",
+   "signature_sources": {
+    "asm/frontier_map.s": "void ov80_0223962C(FrontierMap *map, u16 resId)"
+   }
+  },
+  "ov80_0223965C": {
+   "callers": [],
+   "confidence": "high",
+   "defined_in": "asm/frontier_map.s",
+   "mode": "thumb",
+   "notes": [
+    "[asm/frontier_map.s] leaf push{r3,r4}: for i<8 if(resId==map->unk70[i]){map->unk70[i]=0xFFFF; return;}"
+   ],
+   "signature_guess": "void ov80_0223965C(FrontierMap *map, u16 resId)",
+   "signature_sources": {
+    "asm/frontier_map.s": "void ov80_0223965C(FrontierMap *map, u16 resId)"
+   }
+  },
+  "ov80_0223968C": {
+   "callers": [
+    "asm/frontier_map.s"
+   ],
+   "confidence": "high",
+   "defined_in": "asm/frontier_map.s",
+   "mode": "thumb",
+   "notes": [
+    "[asm/frontier_map.s] GF_ASSERT(slot<8) (blo); GF_ASSERT(map->sprites[slot]==NULL); s=ov80_02239BB8(map->unk34,map->unk38,resIdx); map->sprites[slot]=s; map->unk5C[slot]=resIdx; ov80_02239708(map,slot,FALSE); return s. Caller ov80_02239828 narrows (u16)i for slot -> slot is u16. slot*4 and result spilled to stack (frame 8); r7 = &map->sprites base."
+   ],
+   "signature_guess": "ManagedSprite *ov80_0223968C(FrontierMap *map, u16 slot, u16 resIdx)",
+   "signature_sources": {
+    "asm/frontier_map.s": "ManagedSprite *ov80_0223968C(FrontierMap *map, u16 slot, u16 resIdx)"
+   }
+  },
+  "ov80_022396D8": {
+   "callers": [],
+   "confidence": "medium",
+   "defined_in": "asm/frontier_map.s",
+   "mode": "thumb",
+   "notes": [
+    "[asm/frontier_map.s] GF_ASSERT(slot<8); GF_ASSERT(map->sprites[slot]!=NULL); ov80_02239BE8(map->sprites[slot]); map->sprites[slot]=NULL."
+   ],
+   "signature_guess": "void ov80_022396D8(FrontierMap *map, u16 slot)",
+   "signature_sources": {
+    "asm/frontier_map.s": "void ov80_022396D8(FrontierMap *map, u16 slot)"
+   }
+  },
+  "ov80_02239700": {
+   "callers": [],
+   "confidence": "high",
+   "defined_in": "asm/frontier_map.s",
+   "mode": "thumb",
+   "notes": [
+    "[asm/frontier_map.s] return map->sprites[slot];"
+   ],
+   "signature_guess": "ManagedSprite *ov80_02239700(FrontierMap *map, u16 slot)",
+   "signature_sources": {
+    "asm/frontier_map.s": "ManagedSprite *ov80_02239700(FrontierMap *map, u16 slot)"
+   }
+  },
+  "ov80_02239708": {
+   "callers": [
+    "asm/frontier_map.s"
+   ],
+   "confidence": "high",
+   "defined_in": "asm/frontier_map.s",
+   "mode": "thumb",
+   "notes": [
+    "[asm/frontier_map.s] if(set==TRUE) map->unk6C|=1<<slot; else map->unk6C&=~(1<<slot); (cmp r2,#1). Callers pass (u16)i from ov80_02239828."
+   ],
+   "signature_guess": "void ov80_02239708(FrontierMap *map, u16 slot, BOOL set)",
+   "signature_sources": {
+    "asm/frontier_map.s": "void ov80_02239708(FrontierMap *map, u16 slot, BOOL set)"
+   }
+  },
+  "ov80_02239734": {
+   "callers": [
+    "asm/frontier_map.s"
+   ],
+   "confidence": "high",
+   "defined_in": "asm/frontier_map.s",
+   "mode": "thumb",
+   "notes": [
+    "[asm/frontier_map.s] return (map->unk6C>>slot)&1;"
+   ],
+   "signature_guess": "BOOL ov80_02239734(FrontierMap *map, u16 slot)",
+   "signature_sources": {
+    "asm/frontier_map.s": "BOOL ov80_02239734(FrontierMap *map, u16 slot)"
+   }
+  },
+  "ov80_02239740": {
+   "callers": [
+    "asm/frontier_map.s"
+   ],
+   "confidence": "medium",
+   "defined_in": "asm/frontier_map.s",
+   "mode": "thumb",
+   "notes": [
+    "[asm/frontier_map.s] Saves sprite state into FrontierMapSpriteSave (sub_02096878 = FrontierWork+0xA04). QUIRK loop 1: for(i=0;i<8;i++){ if(map->unk70[i]!=0xFFFF){ save->resIds[i]=map->unk70[i]; i++; } } -- single counter incremented TWICE on hit, same index for read and write (original bug; one register). Loop 2 i<8: if(map->sprites[i]){ st->anim=ManagedSprite_GetActiveAnim(s); st->frame=ManagedSprite_GetAnimationFrame(s); st->animActive=ov80_02239734(map,(u16)i); st->drawFlag=ManagedSprite_GetDrawFlag(s); st->resIdx=map->unk5C[i]; ManagedSprite_GetPositionXY(s,&st->x,&st->y); st->valid=1; } Frame 0x10 holds map, &st->x, &st->y and walking map+0x3C+2i. map+0x3C is CSE'd: unk70 read as [map+0x3C+2i+0x34], unk5C as [+0x20]."
+   ],
+   "signature_guess": "static void ov80_02239740(FrontierMap *map)",
+   "signature_sources": {
+    "asm/frontier_map.s": "static void ov80_02239740(FrontierMap *map)"
+   }
+  },
+  "ov80_02239828": {
+   "callers": [
+    "asm/frontier_map.s"
+   ],
+   "confidence": "high",
+   "defined_in": "asm/frontier_map.s",
+   "mode": "thumb",
+   "notes": [
+    "[asm/frontier_map.s] save=sub_02096878(work); narc=NARC_New(0xB8,0x65); for i<8 if(save->resIds[i]!=0xFFFF){ov80_02239AF8(map->unk34,map->unk38,narc,map->paletteData,save->resIds[i]); ov80_0223962C(map,save->resIds[i]);} for i<8 (st++): if(st->valid==1){ s=ov80_0223968C(map,i,st->resIdx); ManagedSprite_SetPositionXY(s,st->x,st->y); ManagedSprite_SetDrawFlag(s,st->drawFlag); ov80_02239708(map,i,st->animActive); ManagedSprite_SetAnim(s,st->anim); ManagedSprite_SetAnimationFrame(s,st->frame);} NARC_Delete(narc); sub_02096884(map->work)."
+   ],
+   "signature_guess": "static void ov80_02239828(FrontierMap *map)",
+   "signature_sources": {
+    "asm/frontier_map.s": "static void ov80_02239828(FrontierMap *map)"
+   }
+  },
+  "ov80_022398E4": {
+   "callers": [],
+   "confidence": "high",
+   "defined_in": "asm/frontier_map.s",
+   "mode": "thumb",
+   "notes": [
+    "[asm/frontier_map.s] *y=ov42_022293A8(&map->unk1C); *x=ov42_022293B0(&map->unk1C); (A8 call and its store first). Caller in asm/overlay_80_0222BDF4.s passes (map,&sp12,&sp10)."
+   ],
+   "signature_guess": "void ov80_022398E4(FrontierMap *map, s16 *x, s16 *y)",
+   "signature_sources": {
+    "asm/frontier_map.s": "void ov80_022398E4(FrontierMap *map, s16 *x, s16 *y)"
+   }
+  },
+  "ov80_02239900": {
+   "callers": [
+    "asm/frontier_map.s"
+   ],
+   "confidence": "high",
+   "defined_in": "asm/frontier_map.s",
+   "mode": "thumb",
+   "notes": [
+    "[asm/frontier_map.s] *out=entry->tmpl; -- 0x1E-byte align-2 struct assignment compiles to the 15-iteration ldrh/strh loop."
+   ],
+   "signature_guess": "static void ov80_02239900(FrontierMapObjEntry *entry, FrontierMapObjTemplate *out)",
+   "signature_sources": {
+    "asm/frontier_map.s": "static void ov80_02239900(FrontierMapObjEntry *entry, FrontierMapObjTemplate *out)"
+   }
+  },
+  "ov80_02239914": {
+   "callers": [
+    "asm/frontier_map.s"
+   ],
+   "confidence": "high",
+   "defined_in": "asm/frontier_map.s",
+   "mode": "thumb",
+   "notes": [
+    "[asm/frontier_map.s] e=sub_0209686C(work,idx); e->obj=obj; e->unk4=b; e->tmpl=*tmpl; (5th arg on stack [sp+0x10]; same 15-halfword struct-copy loop)."
+   ],
+   "signature_guess": "static void ov80_02239914(void *frontierWork, int idx, UnkStruct_ov42_02228110 *obj, UnkStruct_ov42_0222903C *b, const FrontierMapObjTemplate *tmpl)",
+   "signature_sources": {
+    "asm/frontier_map.s": "static void ov80_02239914(void *frontierWork, int idx, UnkStruct_ov42_02228110 *obj, UnkStruct_ov42_0222903C *b, const FrontierMapObjTemplate *tmpl)"
+   }
+  },
+  "ov80_02239938": {
+   "callers": [],
+   "confidence": "high",
+   "defined_in": "asm/frontier_map.s",
+   "mode": "thumb",
+   "notes": [
+    "[asm/frontier_map.s] e=sub_02096868(work); for i<0x20 (e++ stride 0x3C): if(e->obj!=NULL && e->tmpl.id==id) return e; GF_AssertFail(); return NULL. Existing prototype in include/frontier/frontier_map.h (UnkStruct_02239938 is only 8 bytes there -> iterate with a private 0x3C struct and cast the return)."
+   ],
+   "signature_guess": "UnkStruct_02239938 *ov80_02239938(void *frontierWork, u32 id)",
+   "signature_sources": {
+    "asm/frontier_map.s": "UnkStruct_02239938 *ov80_02239938(void *frontierWork, u32 id)"
+   }
+  },
+  "ov80_02239960": {
+   "callers": [
+    "asm/frontier_map.s"
+   ],
+   "header": "none: src/frontier/overlay_80_02239960.c only (struct private there), so use a local extern with void *",
+   "known_prototype": "UnkStruct_ov80_02239960 *ov80_02239960(enum HeapID heapId)",
+   "signature_sources": {}
+  },
+  "ov80_02239980": {
+   "callers": [
+    "asm/frontier_map.s"
+   ],
+   "header": "none: src/frontier/overlay_80_02239960.c",
+   "known_prototype": "void ov80_02239980(UnkStruct_ov80_02239960 *manager)",
+   "signature_sources": {}
+  },
+  "ov80_02239A38": {
+   "callers": [
+    "asm/frontier_map.s"
+   ],
+   "header": "none: src/frontier/overlay_80_02239960.c",
+   "known_prototype": "BOOL ov80_02239A38(void)",
+   "signature_sources": {}
+  },
+  "ov80_02239AF8": {
+   "callers": [
+    "asm/frontier_map.s"
+   ],
+   "confidence": "high",
    "defined_in": "asm/overlay_80_02239AF8.s",
+   "header": "include/overlay_80_02239AF8.h",
+   "known_prototype": "void ov80_02239AF8(SpriteSystem *spriteSystem, SpriteManager *spriteManager, NARC *narc, PaletteData *plttData, u16 index)",
    "mode": "thumb",
    "notes": [
     "[asm/overlay_80_02239AF8.s] Loads 4 OBJ resources for ov80_0223DA54[index] (ManagedSpriteTemplate, size 0x34). template->resIdList[N] is used as BOTH the NARC fileId and the resId for each load. Calls: SpriteSystem_LoadCharResObjFromOpenNarc(sys, mgr, narc, tmpl->resIdList[0], TRUE, NNS_G2D_VRAM_TYPE_2DSUB(1), tmpl->resIdList[0]); SpriteSystem_LoadPaletteBufferFromOpenNarc(plttData, 2, sys, mgr, narc, tmpl->resIdList[1], FALSE, 1, 1, tmpl->resIdList[1]); SpriteSystem_LoadCellResObjFromOpenNarc(sys, mgr, narc, tmpl->resIdList[2], TRUE, tmpl->resIdList[2]); SpriteSystem_LoadAnimResObjFromOpenNarc(sys, mgr, narc, tmpl->resIdList[3], TRUE, tmpl->resIdList[3]). 5th param being u16 matters: body's ldrh at [sp+0x30] confirms u16. Return value of loads unused -> void return."
@@ -77593,9 +80411,13 @@
    ]
   },
   "ov80_02239B7C": {
-   "callers": [],
+   "callers": [
+    "asm/frontier_map.s"
+   ],
    "confidence": "high",
    "defined_in": "asm/overlay_80_02239AF8.s",
+   "header": "include/overlay_80_02239AF8.h",
+   "known_prototype": "void ov80_02239B7C(SpriteManager *spriteManager, u32 index)",
    "mode": "thumb",
    "notes": [
     "[asm/overlay_80_02239AF8.s] GF_ASSERT(index < 4); unloads char/pltt/cell/anim by ov80_0223DA54[index].resIdList[0..3]. r1 used directly in cmp/mul with no u16 narrowing -> declare param u32 or int, NOT u16. Caller ov80_022393E8 in asm/frontier_map.s passes ([struct+0x38], ldrh value)."
@@ -77606,9 +80428,13 @@
    }
   },
   "ov80_02239BB8": {
-   "callers": [],
+   "callers": [
+    "asm/frontier_map.s"
+   ],
    "confidence": "high",
    "defined_in": "asm/overlay_80_02239AF8.s",
+   "header": "include/overlay_80_02239AF8.h",
+   "known_prototype": "ManagedSprite *ov80_02239BB8(SpriteSystem *spriteSystem, SpriteManager *spriteManager, u32 index)",
    "mode": "thumb",
    "notes": [
     "[asm/overlay_80_02239AF8.s] GF_ASSERT(index < 4); sprite = SpriteSystem_NewSprite(sys, mgr, &ov80_0223DA54[index]); Sprite_TickFrame(sprite->sprite); return sprite. No u16 narrowing on r2 -> int/u32 param. Caller ov80_0223968C (asm/frontier_map.s) stores result into [struct+0x3c + i*4] array of 8."
@@ -77627,9 +80453,13 @@
    ]
   },
   "ov80_02239BE8": {
-   "callers": [],
+   "callers": [
+    "asm/frontier_map.s"
+   ],
    "confidence": "high",
    "defined_in": "asm/overlay_80_02239AF8.s",
+   "header": "include/overlay_80_02239AF8.h",
+   "known_prototype": "void ov80_02239BE8(ManagedSprite *managedSprite)",
    "mode": "thumb",
    "notes": [
     "[asm/overlay_80_02239AF8.s] Pure tail-call thunk: ldr r3,=Sprite_DeleteAndFreeResources; bx r3. In C just `Sprite_DeleteAndFreeResources(s);` \u2014 MWCC emits the bx-r3 tail call when the wrapper forwards args exactly (see thunk_ManagedSprite_DeleteAndFreeResources in include/unk_02077678.h for precedent). Do NOT change param type vs callee."
@@ -86642,6 +89472,30 @@
    "known_prototype": "void sub_02020764(UnkStruct_0202068C_entry *entry, u32 frame);",
    "signature_sources": {}
   },
+  "sub_020210BC": {
+   "callers": [
+    "asm/frontier_map.s"
+   ],
+   "header": "include/unk_020210A0.h",
+   "known_prototype": "void sub_020210BC(void)",
+   "signature_sources": {}
+  },
+  "sub_02021148": {
+   "callers": [
+    "asm/frontier_map.s"
+   ],
+   "header": "include/unk_020210A0.h",
+   "known_prototype": "BOOL sub_02021148(int)",
+   "signature_sources": {}
+  },
+  "sub_02021238": {
+   "callers": [
+    "asm/frontier_map.s"
+   ],
+   "header": "include/unk_020210A0.h",
+   "known_prototype": "BOOL sub_02021238(void)",
+   "signature_sources": {}
+  },
   "sub_02021AC8": {
    "callers": [
     "asm/overlay_14_021F4B90.s",
@@ -92408,14 +95262,20 @@
   },
   "sub_0203A880": {
    "callers": [
+    "asm/frontier_map.s",
     "asm/overlay_83_02243D7C.s"
    ],
+   "header": "include/unk_0203A3B0.h",
+   "known_prototype": "void sub_0203A880(void)",
    "signature_sources": {}
   },
   "sub_0203A914": {
    "callers": [
+    "asm/frontier_map.s",
     "asm/overlay_83_02243D7C.s"
    ],
+   "header": "include/unk_0203A3B0.h",
+   "known_prototype": "void sub_0203A914(void)",
    "signature_sources": {}
   },
   "sub_0203BB50": {
@@ -92457,6 +95317,14 @@
    "signature_sources": {
     "asm/unk_02056680.s": "fx32 sub_02054940(FieldSystem *fieldSystem, fx32 a1, fx32 a2, fx32 a3, int a4)"
    }
+  },
+  "sub_02055198": {
+   "callers": [
+    "asm/frontier_map.s"
+   ],
+   "header": "include/field_bgm.h",
+   "known_prototype": "BOOL sub_02055198(FieldSystem *fieldSystem, u16 seqNo)",
+   "signature_sources": {}
   },
   "sub_02056680": {
    "callers": [],
@@ -96107,6 +98975,46 @@
      "width": 4
     }
    ]
+  },
+  "sub_02096864": {
+   "callers": [
+    "asm/frontier_map.s"
+   ],
+   "header": "none: local decl in src/frontier.c; returns FrontierWork+0x24 (UnkStruct_ov42_02228CDC[0x18])",
+   "known_prototype": "void *sub_02096864(void *a0)",
+   "signature_sources": {}
+  },
+  "sub_02096868": {
+   "callers": [
+    "asm/frontier_map.s"
+   ],
+   "header": "none: local decl in src/frontier.c; returns FrontierWork+0x84 (0x3C-byte entries x 0x20)",
+   "known_prototype": "void *sub_02096868(void *a0)",
+   "signature_sources": {}
+  },
+  "sub_0209686C": {
+   "callers": [
+    "asm/frontier_map.s"
+   ],
+   "header": "none: local decl in src/frontier.c",
+   "known_prototype": "void *sub_0209686C(void *a0, int idx)",
+   "signature_sources": {}
+  },
+  "sub_02096878": {
+   "callers": [
+    "asm/frontier_map.s"
+   ],
+   "header": "none: local decl in src/frontier.c; returns FrontierWork+0xA04 (0x50-byte sprite save)",
+   "known_prototype": "void *sub_02096878(void *a0)",
+   "signature_sources": {}
+  },
+  "sub_02096884": {
+   "callers": [
+    "asm/frontier_map.s"
+   ],
+   "header": "none: local decl in src/frontier.c",
+   "known_prototype": "void sub_02096884(void *a0)",
+   "signature_sources": {}
   },
   "sub_02096910": {
    "callers": [
