@@ -64,8 +64,15 @@ jobs:
         run: |
           mkdir -p ~/download
           cd ~/download
-          wget https://github.com/pret/pokeheartgold/raw/workflows/assets/mwccarm.zip
-          wget https://github.com/pret/pokeheartgold/raw/workflows/assets/NitroSDK-3_2-060901.7z
+          # Toolchain assets from pret's workflows/assets branch, pinned to a
+          # commit and checksummed so the compiler can't change under us.
+          ASSETS=https://github.com/pret/pokeheartgold/raw/79948ad5db02cb4dc190dbaa0c4b7848279bc61c
+          wget $ASSETS/mwccarm.zip
+          wget $ASSETS/NitroSDK-3_2-060901.7z
+          sha256sum -c - <<'SHA256'
+          dc386e37b2176e960954a733de928337d9b7e7620b9e94228008c31774339ace  mwccarm.zip
+          0ee935e34237cb1954e657083cd80a31ec9de1aeddd9468cceef684cac75b491  NitroSDK-3_2-060901.7z
+          SHA256
           unzip mwccarm.zip
           mv mwccarm $GITHUB_WORKSPACE/tools
           7z x NitroSDK-3_2-060901.7z
