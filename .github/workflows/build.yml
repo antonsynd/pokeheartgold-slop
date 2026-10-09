@@ -2,9 +2,35 @@ name: build
 
 on:
   push:
-    branches: [master]
+    # mainline is this fork's working branch; master tracks upstream.
+    # Only build when something that feeds the ROM changes.
+    branches: [master, mainline]
+    paths:
+      - 'Makefile'
+      - '*.mk'
+      - 'main.lsf'
+      - 'global.inc'
+      - 'charmap.txt'
+      - 'rom.rsf'
+      - 'asm/**'
+      - 'src/**'
+      - 'include/**'
+      - 'lib/**'
+      - 'sub/**'
+      - 'files/**'
+      - 'heartgold.us/**'
+      - 'soulsilver.us/**'
+      - 'tools/**'
+      - '!tools/decomp_harness/**'
+      - '.github/workflows/build.yml'
+      - '.github/actions/**'
   pull_request:
   workflow_dispatch:
+
+# A newer push to the same branch supersedes an in-flight build.
+concurrency:
+  group: build-${{ github.ref }}
+  cancel-in-progress: true
 
 env:
   LM_LICENSE_FILE: "$GITHUB_WORKSPACE/tools/mwccarm/license.dat"
@@ -70,13 +96,13 @@ jobs:
 
       - name: Calcrom
         id: calcrom
-        if: ${{ github.event_name == 'push' }}
+        if: ${{ github.event_name == 'push' && github.repository == 'pret/pokeheartgold' }}
         uses: ./.github/actions/calcrom/
         with:
           romnames: heartgold.us soulsilver.us
 
       - name: Webhook
-        if: ${{ github.event_name == 'push' }}
+        if: ${{ github.event_name == 'push' && github.repository == 'pret/pokeheartgold' }}
         uses: tsickert/discord-webhook@b217a69502f52803de774ded2b1ab7c282e99645 # v7.0.0
         with:
           webhook-url: ${{ secrets.WEBHOOKURL }}
