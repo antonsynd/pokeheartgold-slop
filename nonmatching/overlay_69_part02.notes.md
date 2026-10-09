@@ -1,0 +1,3 @@
+- overlay_69 part 2: no header describes the overlay's state struct, so UnkStruct_ov69_part02 is local to this file (offsets are the asm's: pos at 0xC2C4, camera at 0xC2DC, mode at 0xC2E8, count at 0x0C).
+- math_util.h declares GF_DegreeToSinCosIdxNoWrap as u16, but the asm compares the whole return register; this file declares it s32 locally and does not include math_util.h.
+- FX_Sqrt has no prototype in the fork; the implicit declaration gave the wrong result, so this file declares s32 FX_Sqrt(s32).

@@ -1,0 +1,3 @@
+- overlay_37 part 3: the state table ov37_021E7D20 holds function pointers. Its entries are written as the ROM values (address | 1) because the gate does not resolve these overlay-37 function names by symbol (symbols.json has address 0 for some of them).
+- UnkStruct_ov37p3 is local to this file. Offsets are the asm's: sprite at 0x268, state at 0x304/0x308, 0x314-0x31C, YesNo prompt at 0x93F0, flags at 0x93F4/0x93F8, 0x9400, 0x9404, 0x9408.
+- ov37_021E78E0 touches the struct byte at +8 with bit masks rather than bitfields.

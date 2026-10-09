@@ -1,0 +1,5 @@
+# overlay_07 part 25
+
+- This part is the Poke Ball throw animation state machine (UnkBallData in include/battle/battle.h, Platinum's ov12_02235E94) and the ball capsule seal particle emitter callbacks. UnkBallData already has the fields used: +0 current animation, +4 first-frame flag, +8 and +0xC substeps, +0x14 next animation, +0x30 sprite, +0x90 the UnkStruct_134 (heap id at +4, ball at +0x10, palette data at +0x20, battle system at +0x24), +0xD0 and +0xD8 the particle effect handles.
+- The twin tool's pairing is only approximate here. HeartGold differs from Platinum in these places (the asm decides): ov07_02232C64 reads the seal's x and y with offsets 190 and 100 and calls sub_0209109C on the seal id but ignores the result; ov07_02232CD8 uses x - 129 and 100 - y; the SPLEmitter position is set inline as the sum of the vector and the resource's base position; ov07_0223308C writes the lerp block at +0xB8 (x, y, two s16, then words at +0xC0 and +0xC8), which the header only declares as bytes, so a local struct is overlaid on it.
+- ov07_02232F60 calls through the table ov07_022371B8 (declared only; the ROM holds the contents).
