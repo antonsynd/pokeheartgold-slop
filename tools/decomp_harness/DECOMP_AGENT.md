@@ -18,6 +18,7 @@ All in `tools/decomp_harness/`:
 | `patterns.json` → `insights.md` | matching knowledge (insights.md is GENERATED — never edit it) | `patterns.py query --grep <word>`; add via `patterns.py add --json '...'` |
 | `attempts_log.jsonl` | per-function attempts, especially dead ends | `attempts_log.py query --file <target>` before starting; `attempts_log.py add` after each distinct failed approach |
 | `knowledge.json` | sweep pre-analysis: signature/struct hypotheses, risks per file | look up the target's symbols; verify against asm |
+| `platinum_twins.tsv` + `nonmatching/` | Platinum counterpart per asm function (issue #1) + behaviour-verified non-matching C drafts (PR #2) | `twins.py file <target> [--show]` before starting; `twins.py prune <target>` after a match |
 | `triage_report.json` | ranked queue + per-file risk features (`triage.py --file <target>`) | unknown callees = signatures you must derive; `gated_by` = known blocker ahead |
 | `blockers.json` | systemic blockers with fix plans, gating counts in `COVERAGE.md` | if the target is gated, plan around it; add new systemic blockers here |
 | `coverage_ledger.json` / `COVERAGE.md` | function-level coverage (generated) | regenerate after finishing: `triage.py --rebuild --top 0` |

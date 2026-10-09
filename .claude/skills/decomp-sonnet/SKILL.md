@@ -18,6 +18,8 @@ prepares context, reviews the draft, and owns the full build-compare judgment lo
 3. Check prior knowledge:
    - `python3 tools/decomp_harness/attempts_log.py query --file asm/<basename>.s` — dead ends to avoid
    - `knowledge.json` entry for this file (sweep hypotheses, risks)
+   - `python3 tools/decomp_harness/twins.py file asm/<basename>.s [--show]` — Platinum twins and verified
+     non-matching drafts per function (see `/decomp` step 4 for how to weigh them)
    - `blockers.json` if the triage entry shows `gated_by`
 
 ### Phase 2 — Context Assembly
@@ -28,6 +30,7 @@ access and will read the asm files itself, but needs this guidance up front:
 1. Query dead ends: `python3 tools/decomp_harness/attempts_log.py query --file asm/<basename>.s`
 2. Query relevant patterns: `python3 tools/decomp_harness/patterns.py query --grep <keyword>` (2-4 keywords from function names and key callees)
 3. Extract the `knowledge.json` entry for this file (if it exists)
+3b. Run `twins.py file asm/<basename>.s --show` — Platinum twin C + `nonmatching/` drafts
 4. Note any blockers from `blockers.json`
 
 ### Phase 3 — Delegate to Sonnet
@@ -44,6 +47,10 @@ Project root: /Users/anton/Documents/github/pokeheartgold-slop
 
 === KNOWN SIGNATURES (from knowledge.json) ===
 <paste the symbols/risks block for this file, or "No pre-analysis available">
+
+=== PLATINUM TWINS / VERIFIED DRAFTS (starting points, not matching) ===
+<paste twins.py file --show output; name any nonmatching/<file>.c + .notes.md
+ for the drafter to read; or "None">
 
 === MATCHING PATTERNS TO APPLY ===
 <paste patterns.py query output for relevant keywords>
@@ -110,7 +117,8 @@ judgment is what matters here.
    "
    ```
 3. Add new insights: `python3 tools/decomp_harness/patterns.py add --json '...'`
-4. Regenerate ledger + triage: `python3 tools/decomp_harness/triage.py --rebuild --top 5`
+4. Drop obsolete drafts, then regenerate ledger + triage:
+   `python3 tools/decomp_harness/twins.py prune asm/<basename>.s && python3 tools/decomp_harness/triage.py --rebuild --top 5`
 5. Sweep top-up: `python3 tools/decomp_harness/sweep_gap.py --check` — on a gap,
    run the /decomp-sweep workflow for the printed files (read-only)
 6. Report: file name, match result, attempts, whether the Sonnet draft needed major surgery

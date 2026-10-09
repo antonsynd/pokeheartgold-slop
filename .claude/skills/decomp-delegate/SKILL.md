@@ -18,6 +18,8 @@ integrates it, and owns the full build-compare judgment loop.
 3. Check prior knowledge:
    - `python3 tools/decomp_harness/attempts_log.py query --file asm/<basename>.s` — dead ends to avoid
    - `knowledge.json` entry for this file (sweep hypotheses, risks)
+   - `python3 tools/decomp_harness/twins.py file asm/<basename>.s [--show]` — Platinum twins and verified
+     non-matching drafts per function (see `/decomp` step 4 for how to weigh them)
    - `blockers.json` if the triage entry shows `gated_by`
 
 ### Phase 2 — Context Assembly (Claude prepares the Qwen prompt)
@@ -48,6 +50,10 @@ USER:
 
 === KNOWN SIGNATURES (from knowledge.json) ===
 <paste the "symbols" block for this file from knowledge.json, if present>
+
+=== PLATINUM TWINS / VERIFIED DRAFTS (starting points; rename to HG names) ===
+<output of: python3 tools/decomp_harness/twins.py file asm/<basename>.s --high --show
+ plus the matching functions from nonmatching/<file>.c if present; omit if none>
 
 === RELEVANT HEADERS (include/ files for called functions) ===
 <paste the include content for each header you found for external callees>
@@ -127,7 +133,8 @@ Same as `/decomp`:
    "
    ```
 3. Add new insights: `python3 tools/decomp_harness/patterns.py add --json '...'`
-4. Regenerate ledger + triage: `python3 tools/decomp_harness/triage.py --rebuild --top 5`
+4. Drop obsolete drafts, then regenerate ledger + triage:
+   `python3 tools/decomp_harness/twins.py prune asm/<basename>.s && python3 tools/decomp_harness/triage.py --rebuild --top 5`
 5. Sweep top-up: `python3 tools/decomp_harness/sweep_gap.py --check` — on a gap,
    run the /decomp-sweep workflow for the printed files (read-only)
 6. Report: file name, match result, attempts, whether the Qwen draft needed major surgery

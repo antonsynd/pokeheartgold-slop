@@ -17,7 +17,7 @@ Run every check below and report each as PASS / FAIL / SKIP (with one-line evide
 
 4. **main.lsf discipline** — `git diff main.lsf` must show exactly one change: `Object asm/<name>.o` → `Object src/<name>.o` at the same position. Any other lsf change is FAIL.
 
-5. **Scope discipline** — `git status --short`: changed files should be limited to `src/<name>.c`, `include/<name>.h` (or an existing header it extends), `main.lsf`, `src/save_arrays.c` (only if a `DECL_CHUNK_EX` swap applies), and harness state files (`progress.json`, `attempts_log.jsonl`, `patterns.json`, generated ledger/triage outputs). The original `asm/<name>.s` must be UNCHANGED. Anything else is FAIL with the file listed.
+5. **Scope discipline** — `git status --short`: changed files should be limited to `src/<name>.c`, `include/<name>.h` (or an existing header it extends), `main.lsf`, `src/save_arrays.c` (only if a `DECL_CHUNK_EX` swap applies), and harness state files (`progress.json`, `attempts_log.jsonl`, `patterns.json`, generated ledger/triage outputs), plus deletions/edits under `nonmatching/` from `twins.py prune` (only drafts of this file's functions). The original `asm/<name>.s` must be UNCHANGED. Anything else is FAIL with the file listed.
 
 6. **Save-chunk swap** — if `src/save_arrays.c` contains a `DECL_CHUNK_EX` naming any of this file's functions, it must have been replaced with an `#include` of the new header. SKIP if not applicable.
 
