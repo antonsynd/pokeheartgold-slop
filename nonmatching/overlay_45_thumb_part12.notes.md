@@ -1,0 +1,8 @@
+# overlay_45_thumb part 12
+
+- Layout recovered from the asm (the Platinum twins are ov66 code with a different layout): the work struct `UnkStruct_ov45_0222DD38` has a 0x54-byte slot table at +0x08 (20 slots of two u16, then a u16 at +0x50 and a u16 at +0x52) and a 0x1D4-byte entry list at +0x5C. The list is 8 entries of 0x34 bytes followed by a 0x34-byte sentinel at +0x1A0 whose +0x2C/+0x30 are the head and tail links (entry +0x2C next, +0x30 previous). Entry: kind u8 at +0, three ints at +4, four String pointers at +0x10, four u16 at +0x20, age u16 at +0x28, timer s16 at +0x2A.
+- `ov45_02254BE8` and `ov45_02254C0C` are tables of nine function pointers indexed by the entry kind; they are declared `extern` so the gate resolves them to the ROM tables. The targets of `ov45_02254BE8` (ov45_0222E540 ...) are declared in the file with their two-argument prototype: without it check.py compares four arguments for the indirect call, and r2 and r3 hold the leftover function pointer and index shift.
+- ov45_0222E000 stays INCONCLUSIVE in check.py (0 of 2000 trials finish): it walks the circular list until the next link equals the sentinel, which random memory never produces, so the original never returns within the budget. The C is the straight reading of the asm (save the next link, clear +0x28, decrement the s16 at +0x2A while it stays above 1 after the decrement, otherwise unlink with ov45_0222E0CC).
+- ov45_0222E04C takes its second argument as u16; the asm compares it unextended against an ldrh value, which the gate accepted.
+- ov45_0222DEA4 takes a signed int (the asm tests `ble`), the other index checks are unsigned (`blo`).
+- The message file is 757 in NARC_msgdata_msg (msg.naix is generated at build time, so the number is a local define).
