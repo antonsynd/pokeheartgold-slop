@@ -76,7 +76,7 @@ jobs:
         working-directory: ~
 
       - name: Set Swap Space
-        uses: pierotofy/set-swap-space@master
+        uses: pierotofy/set-swap-space@fc79b3f67fa8a838184ce84a674ca12238d2c761 # master as of 2025-05-08
         with:
           swap-size-gb: 19
 
@@ -94,27 +94,6 @@ jobs:
           GAME_REVISION: 0
         run: make -j4 2> >(sed -r 's/^/::error::/')
 
-      - name: Calcrom
-        id: calcrom
-        if: ${{ github.event_name == 'push' && github.repository == 'pret/pokeheartgold' }}
-        uses: ./.github/actions/calcrom/
-        with:
-          romnames: heartgold.us soulsilver.us
-
-      - name: Webhook
-        if: ${{ github.event_name == 'push' && github.repository == 'pret/pokeheartgold' }}
-        uses: tsickert/discord-webhook@b217a69502f52803de774ded2b1ab7c282e99645 # v7.0.0
-        with:
-          webhook-url: ${{ secrets.WEBHOOKURL }}
-          content: |
-            pokeheartgold progress:
-            ```
-            ${{ steps.calcrom.outputs.calcrom_output }}
-            ```
-          username: OK
-          avatar-url: https://i.imgur.com/38BQHdd.png
-        continue-on-error: true
-
       - name: Post error archive
         if: failure()
         continue-on-error: true
@@ -127,26 +106,3 @@ jobs:
           name: pokeheartgold-failure-${{ github.run_id }}
           path: failure.tar.gz
           retention-days: 1
-
-      - name: Checkout xMAP
-        if: ${{ github.event_name == 'push' && github.repository == 'pret/pokeheartgold' }}
-        uses: actions/checkout@v4
-        with:
-          path: "xmap"
-          ref: "xmap"
-
-      - name: Move xMAP
-        if: ${{ github.event_name == 'push' && github.repository == 'pret/pokeheartgold' }}
-        run: |
-          mkdir -p xmap
-          cp build/heartgold.us/*.xMAP xmap/heartgoldus.xMAP
-          cp build/soulsilver.us/*.xMAP xmap/soulsilverus.xMAP
-          echo "XMAP_COMMIT_MSG=$( git log --format=%s ${GITHUB_SHA} )" >> $GITHUB_ENV
-
-      - name: Update xMAP
-        if: ${{ github.event_name == 'push' && github.repository == 'pret/pokeheartgold' }}
-        uses: EndBug/add-and-commit@v9
-        with:
-          cwd: "./xmap"
-          add: "*.xMAP"
-          message: ${{ env.XMAP_COMMIT_MSG }}
