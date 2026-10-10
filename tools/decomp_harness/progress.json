@@ -986,6 +986,14 @@
       "attempts": 10,
       "result": "matched",
       "note": "sonnet-drafted from verified drafts + twins (pilot); 72/75 on first compile; 3 NONMATCHING asm fallbacks (sub_02032C84, sub_02032D4C, sub_02033528)"
+    },
+    {
+      "file": "asm/unk_02034B0C.s",
+      "lines": 1903,
+      "functions": 56,
+      "attempts": 3,
+      "result": "matched",
+      "note": "sonnet-drafted; drafts pilot #3 (52/56 first compile, 56/56 second); twins.py prune deferred until PR #5 merges"
     }
   ],
   "failed": [
@@ -1395,7 +1403,7 @@
   "in_progress": null,
   "stats": {
     "total_attempts": 283,
-    "total_matched": 91,
+    "total_matched": 92,
     "total_failed": 31
   },
   "matched": [
