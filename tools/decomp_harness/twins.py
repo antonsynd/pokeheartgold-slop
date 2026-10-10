@@ -233,7 +233,7 @@ def matched_in_src(asm_path, funcs):
 
 def cmd_prune(args, twins, drafts):
     """Drop drafts for functions of a just-matched asm file that are now real C
-    in src/: their VERIFIED.tsv rows, and any nonmatching/<file>.c (+ .notes.md)
+    in src/: their VERIFIED.tsv rows, and any nonmatching/<file>.c (+ .notes.md, .arities.json)
     left with no rows. Functions kept as NONMATCHING asm fallbacks keep theirs."""
     all_funcs = set(asm_functions(args.path))
     funcs = matched_in_src(args.path, all_funcs)
@@ -259,7 +259,7 @@ def cmd_prune(args, twins, drafts):
     print(f"{args.path}: dropped {len(removed)} VERIFIED.tsv rows")
     still_used = {r["file"] for r in keep}
     for c_file in sorted({r["file"] for r in removed} - still_used):
-        for name in (c_file, c_file[:-len(".c")] + ".notes.md"):
+        for name in (c_file, c_file[:-len(".c")] + ".notes.md", c_file[:-len(".c")] + ".arities.json"):
             if (NONMATCHING / name).exists():
                 (NONMATCHING / name).unlink()
                 print(f"  deleted nonmatching/{name}")
