@@ -1,14 +1,14 @@
 # Decomp Coverage Ledger
 
-*Generated 2026-10-06T23:52:03Z by `coverage_ledger.py` — do not hand-edit; regenerate after each decomp.*
+*Generated 2026-10-10T15:55:37Z by `coverage_ledger.py` — do not hand-edit; regenerate after each decomp.*
 
-Tracked functions (files with retained asm): **19294** — matched 2640, pending 15757, plus 20 matched-but-blocked inside failed files.
+Tracked functions (files with retained asm): **19294** — matched 2811, pending 15586, plus 20 matched-but-blocked inside failed files.
 
 | status | files | functions | insn lines | ~text bytes |
 |---|---|---|---|---|
-| matched | 135 | 2640 | 79846 | 179064 |
+| matched | 138 | 2811 | 85443 | 191560 |
 | blocked | 51 | 897 | 29123 | 64116 |
-| pending | 143 | 15757 | 790527 | 1769834 |
+| pending | 140 | 15586 | 784930 | 1757338 |
 | upstream | 397 | 0 | 0 | 0 |
 
 ## Blockers (value-ordered: fix what gates the most)
@@ -77,15 +77,17 @@ Tracked functions (files with retained asm): **19294** — matched 2640, pending
 | asm/middleware.s | 0 | 0 | yes |  Data-only: 7 NUL-terminated SDK middleware version strings in a custom .version section (single ordered section, each .b |
 | asm/overlay_12_battle_command.s | 0 | 0 | yes |   |
 
-## Matched files (asm retained) (135)
+## Matched files (asm retained) (138)
 
 | file | functions | insn lines | data-only | notes |
 |---|---|---|---|---|
 | asm/overlay_02_02248728.s | 364 | 14752 |  | retained_asm |
 | asm/unk_02004A44.s | 95 | 1764 |  | harness |
+| asm/unk_02032844.s | 75 | 2017 |  | harness |
 | asm/unk_02030A98.s | 71 | 1383 |  | harness |
 | asm/unk_02023694.s | 68 | 1608 |  | harness |
 | asm/unk_0202B614.s | 61 | 1125 |  | retained_asm |
+| asm/unk_02034B0C.s | 56 | 1530 |  | harness |
 | asm/unk_02005D10.s | 50 | 1584 |  | harness |
 | asm/unk_020689C8.s | 48 | 429 |  | harness |
 | asm/overlay_98.s | 47 | 1310 |  | harness |
@@ -94,6 +96,7 @@ Tracked functions (files with retained asm): **19294** — matched 2640, pending
 | asm/unk_02033AE0.s | 44 | 959 |  | harness |
 | asm/unk_02013534.s | 40 | 1211 |  | retained_asm |
 | asm/unk_0202D230.s | 40 | 807 |  | harness |
+| asm/frontier_map.s | 40 | 2050 |  | harness |
 | asm/unk_0202FBCC.s | 39 | 1695 |  | harness |
 | asm/overlay_83_02246E08.s | 39 | 1339 |  | harness |
 | asm/overlay_01_021F8D80.s | 38 | 727 |  | harness |
@@ -217,7 +220,7 @@ Tracked functions (files with retained asm): **19294** — matched 2640, pending
 | asm/battle_arcade_game_board_data.s | 0 | 0 | yes | harness |
 | asm/battle_arcade_game_board_data2.s | 0 | 0 | yes | split_tu |
 
-## Pending files (143)
+## Pending files (140)
 
 | file | functions | insn lines | data-only | notes |
 |---|---|---|---|---|
@@ -285,7 +288,6 @@ Tracked functions (files with retained asm): **19294** — matched 2640, pending
 | asm/overlay_93_thumb_1.s | 77 | 4544 |  |  |
 | asm/overlay_01_021F72DC.s | 76 | 2867 |  |  |
 | asm/overlay_106.s | 76 | 2241 |  |  |
-| asm/unk_02032844.s | 75 | 2017 |  |  |
 | asm/overlay_18_021EE35C.s | 74 | 4160 |  |  |
 | asm/overlay_01_021F4704.s | 72 | 3868 |  |  |
 | asm/overlay_49_02258800.s | 69 | 1551 |  |  |
@@ -303,7 +305,6 @@ Tracked functions (files with retained asm): **19294** — matched 2640, pending
 | asm/unk_02058AEC.s | 60 | 2722 |  |  |
 | asm/unk_020932E0.s | 60 | 4110 |  |  |
 | asm/overlay_49_0225CB50.s | 58 | 1297 |  |  |
-| asm/unk_02034B0C.s | 56 | 1530 |  |  |
 | asm/overlay_28.s | 56 | 2419 |  |  |
 | asm/overlay_47.s | 56 | 2431 |  |  |
 | asm/unk_02056D7C.s | 55 | 2153 |  |  |
@@ -329,7 +330,6 @@ Tracked functions (files with retained asm): **19294** — matched 2640, pending
 | asm/render_window.s | 40 | 2610 |  |  |
 | asm/overlay_01_022053EC.s | 40 | 1592 |  |  |
 | asm/overlay_41_0224B21C.s | 40 | 1348 |  |  |
-| asm/frontier_map.s | 40 | 2050 |  |  |
 | asm/overlay_97.s | 39 | 2560 |  |  |
 | asm/overlay_120.s | 39 | 1994 |  |  |
 | asm/overlay_14_021EE26C.s | 38 | 1321 |  |  |

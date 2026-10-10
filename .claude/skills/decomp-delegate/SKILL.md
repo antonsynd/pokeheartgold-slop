@@ -53,7 +53,8 @@ USER:
 
 === PLATINUM TWINS / VERIFIED DRAFTS (starting points; rename to HG names) ===
 <output of: python3 tools/decomp_harness/twins.py file asm/<basename>.s --high --show
- plus the matching functions from nonmatching/<file>.c if present; omit if none>
+ (high twins + every verified draft; the draft's behaviour is right, the twin's names/types
+ are better); omit if none>
 
 === RELEVANT HEADERS (include/ files for called functions) ===
 <paste the include content for each header you found for external callees>

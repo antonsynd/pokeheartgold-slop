@@ -14,9 +14,9 @@ side on 2,000 random inputs, and these were compared:
   stack are not compared);
 - the bytes of any table the C defines, against the ROM's copy.
 
-`VERIFIED.tsv` gives each function's result. It lists 16,533 functions; the other 121 asm functions are
-verified from the unlinked C already in `src/`, so every asm function has verified C. `PASS` means every
-trial that finished agreed.
+`VERIFIED.tsv` gives each function's result. Every function still in `asm/` has verified C: here, or as the
+unlinked C already in `src/`. As functions are matched, `twins.py prune` drops their rows and drafts. `PASS`
+means every trial that finished agreed.
 `PASS-BOUNDED` is weaker: no trial finished, because the function loops on a value the stubs never give
 or never returns by design (a thread), so each side ran until it was out of cycles, and the calls both
 made until then (at least eight, with their arguments) agreed; memory writes were not compared.

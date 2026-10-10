@@ -145,10 +145,10 @@ Static main
     Object asm/unk_02031B0C.o
     Object src/pokewalker.o
     Object src/save_trainer_house.o
-    Object asm/unk_02032844.o
+    Object src/unk_02032844.o
     Object src/unk_02033AE0.o
     Object asm/unk_02034354.o
-    Object asm/unk_02034B0C.o
+    Object src/unk_02034B0C.o
     Object asm/unk_02035900.o
     Object src/unk_020379A0.o
     Object src/unk_02037C94.o
@@ -1082,7 +1082,7 @@ Overlay OVY_80
     Object asm/overlay_80_02237A70.o
     Object asm/overlay_80_02238034.o
     Object src/overlay_80_022384D8.o
-    Object asm/frontier_map.o
+    Object src/frontier/frontier_map.o
     Object src/frontier/overlay_80_02239960.o
     Object src/overlay_80_02239AF8.o
     Object src/overlay_80_02239BF0.o
