@@ -38,6 +38,9 @@ concurrency:
 jobs:
   update-progress:
     runs-on: ubuntu-latest
+    # PROGRESS_DEPLOY_KEY lives in this environment, which only mainline may
+    # use, so workflows on other branches or PRs can't read the key.
+    environment: progress
 
     steps:
       # mainline is protected (PRs only). Its ruleset exempts deploy keys, so
