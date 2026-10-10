@@ -1841,6 +1841,18 @@
       "category": "tooling",
       "title": "Before linking a drafted file, check every static function against the .inc .public list and cross-file references (a drafter may make an export static)",
       "body": "unk_02034B0C: the Sonnet draft compiled and objdiffed 56/56, but the link failed with `Undefined : \"sub_0203588C\" Referenced from sub_0205A904 in unk_0205A44C.o`: the drafter had made it static because no header declares it and nothing in this file calls it from outside. compile_one/objdiff cannot catch this (statics and externs emit the same bytes). Quick check before the full build: for each `static` function in the draft, `grep -q \"\\.public NAME\" asm/include/<file>.inc` or `grep -rlw NAME asm src include`; any hit must be non-static (and needs a local prototype if not in the frozen header)."
+    },
+    {
+      "id": "callee-return-mask-means-wider-prototype-define-shim",
+      "category": "ipa",
+      "title": "Retail masks a call result (lsl/lsr #16) that the current header already declares u16: the original TU saw a wider return type; #define-rename the header prototype around the include and redeclare it locally",
+      "body": "overlay_34 ov34_0225E5EC: retail does `bl Sprite_GetAnimationNumber; lsl r0,#16; lsr r1,r0,#16` and stores the Sprite_GetAnimationFrame result to the stack unmasked. include/sprite.h declares both u16, so MWCC trusts the callee and emits no mask; no choice of local types (u16/u32/int, casts, declaration order: 6 variants) reproduces it. The original prototypes returned a full-width int/u32. Fix without touching the shared header: `#define Sprite_GetAnimationNumber Sprite_GetAnimationNumber_u16` (and Frame) BEFORE the includes, `#undef` after them, then `u32 Sprite_GetAnimationNumber(Sprite *sprite);` locally; with `u32 frame; u16 anim;` the function matched. Put the defines above every include, since other headers may pull sprite.h in. Related: [[narrow-return-type-masks-split-header]]."
+    },
+    {
+      "id": "subapp-family-rodata-check-size-order-first",
+      "category": "data-sections",
+      "title": "Before consolidating an overlay rodata into one struct, check whether retail .rodata is already size-ascending: if so it was separate consts and the Platinum-twin layout matches directly",
+      "body": "overlay_34 (ov01 sub-app row 8, Platinum twin overlay056/ov56_022561C0.c): the drafter followed the family convention (one static const struct, [[consolidated-rodata-all-ref-kinds-fold-clean]]) and ov34_0225DB20 then loaded a loop table as =sRodata + #12 where retail loads its own symbol (=ov34_0225E6A0, [r6,#0]). Retail object sizes were 12,12,20,28,28,28,28,32: exactly MWCC size-ascending emission of SEPARATE consts. Copying the Platinum layout (file-scope `static const int x[] = {...};` placed right before each user, four block-local `BgTemplate t = {...};` initializers in the BG-init function) reproduced .rodata byte-for-byte on the first try, including the equal-size tie order of the four 28-byte templates (source bg4,bg5,bg6,bg7 emitted bg6,bg7,bg5,bg4 as in retail). Rule: size-ascending retail rodata => separate consts (the original); interleaved sizes => one struct. Related: [[rodata-multi-symbol-size-sorted-use-one-struct]], [[overlay01-subapp-family-copy-overlay29-shapes]]."
     }
   ]
 }

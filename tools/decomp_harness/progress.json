@@ -994,6 +994,14 @@
       "attempts": 3,
       "result": "matched",
       "note": "sonnet-drafted; drafts pilot #3 (52/56 first compile, 56/56 second); twins.py prune deferred until PR #5 merges"
+    },
+    {
+      "file": "asm/overlay_34.s",
+      "lines": 2279,
+      "functions": 36,
+      "attempts": 7,
+      "result": "matched",
+      "note": "sonnet-drafted; drafts pilot #4 (32/36 on first successful compile, 36/36 after 5 more); twins.py prune deferred until PR #5 merges"
     }
   ],
   "failed": [
@@ -1403,7 +1411,7 @@
   "in_progress": null,
   "stats": {
     "total_attempts": 283,
-    "total_matched": 92,
+    "total_matched": 93,
     "total_failed": 31
   },
   "matched": [
