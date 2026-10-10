@@ -10,10 +10,16 @@ side on 2,000 random inputs, and these were compared:
 
 - the return value, at its declared width;
 - every memory write outside the stack frame;
-- each call's target and arguments;
+- each call's target and the arguments it passes in registers (r0 to r3; arguments passed on the
+  stack are not compared);
 - the bytes of any table the C defines, against the ROM's copy.
 
-`VERIFIED.tsv` gives each function's result. `PASS` means every trial that finished agreed. `FAIL`
+`VERIFIED.tsv` gives each function's result. `PASS` means every trial that finished agreed.
+`PASS-BOUNDED` is weaker: no trial finished, because the function loops on a value the stubs never give
+or never returns by design (a thread), so each side ran until it was out of cycles, and the calls both
+made until then (at least eight, with their arguments) agreed; memory writes were not compared.
+`PASS-RESTRICTED` means the check tried fewer inputs than the function takes (a declared type narrower
+than the real one, or a path the stubbed callees never reach); the file's `.notes.md` says which. `FAIL`
 means the check found a difference, or could not model the function; the file's `.notes.md` says
 which. The notes also record struct layouts recovered from the asm, and header declarations that
 disagree with it.
@@ -22,7 +28,8 @@ disagree with it.
 model in the loop: Ghidra decompiled the function, a script made its C compile on its own (Ghidra's
 types, prototypes for what it calls, and a link name for each address it uses), and the file was kept
 only if it passed the check above, on 500 random inputs rather than 2,000. The `.arities.json` beside a file tells the check how many
-arguments each callee takes. This C reads as Ghidra writes it, with raw offsets and casts. Ghidra was
+arguments each callee takes; for a callee HeartGold's C does not declare, that is the number of
+arguments Ghidra's call passes, so an argument Ghidra missed is not compared. This C reads as Ghidra writes it, with raw offsets and casts. Ghidra was
 given the prototypes HeartGold's own C declares, so calls pass narrow arguments as the game's compiler
 did; a few functions read a register on entry (`unaff_r6`, `in_r2`) with one line of inline asm,
 because the asm uses it without setting it.

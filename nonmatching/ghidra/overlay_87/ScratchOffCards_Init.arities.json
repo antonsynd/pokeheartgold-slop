@@ -1,0 +1,1 @@
+{"ov87_021E7334": [1, 0], "Save_PlayerData_GetOptionsAddr": [1, 6], "Sound_SetSceneAndPlayBGM": [3, 0], "ov87_021E68DC": [4, 0], "OverlayManager_CreateAndGetData": [3, 6], "OverlayManager_GetArgs": [1, 6], "Heap_Create": [3, 5], "BgConfig_Alloc": [1, 6], "memset": [3, 6], "ov87_021E68A4": [0, 0]}
