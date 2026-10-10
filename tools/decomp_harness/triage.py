@@ -6,10 +6,14 @@ and scores every pending file. Lower score = attempt sooner. The queue is
 written to triage_report.json, which next_target.sh consults.
 
 Score components (weights are heuristics — tune in WEIGHTS):
-  insn lines        — raw matching work; a function with a behaviour-verified
-                      draft in nonmatching/ (PASS in VERIFIED.tsv, see twins.py)
-                      counts at drafted_insn_line instead, since its C only
-                      needs reshaping for mwcc, not writing
+  insn lines        — raw matching work, per function: lines past
+                      big_function_insns count extra (big_insn_line), since a
+                      long function rarely matches on its first compile and
+                      each diff in it takes longer to find. The cost is scaled
+                      down for a high/low-confidence Platinum twin (twins.py),
+                      which supplied most fixes in the drafts pilot, and for a
+                      behaviour-verified draft in nonmatching/ (any PASS*
+                      verdict in VERIFIED.tsv), whose C only needs reshaping
   unknown callees   — imports defined in other *pending* asm files: their C
                       prototypes don't exist yet, so signatures must be guessed
                       (the top source of IPA trouble later)
@@ -44,7 +48,14 @@ sys.path.insert(0, str(HARNESS))
 
 WEIGHTS = {
     "insn_line": 1.0,
-    "drafted_insn_line": 0.7,
+    # per-function cost multipliers, calibrated on the 2026-10-10 drafts pilot
+    # (two files: frontier_map 29/40 first-compile matches with median 35-insn
+    # functions, unk_02032844 72/75 with median 14) — retune as pilots accrue
+    "big_function_insns": 40,
+    "big_insn_line": 0.5,
+    "high_twin": 0.6,
+    "low_twin": 0.85,
+    "drafted": 0.85,
     "unknown_callee": 40.0,
     "jumptable_word": 3.0,
     "rodata_byte": 0.05,
@@ -64,14 +75,32 @@ def load_ledger(rebuild):
 
 
 def passing_drafts():
-    """Functions with a PASS row in nonmatching/VERIFIED.tsv."""
+    """Functions with a PASS, PASS-BOUNDED or PASS-RESTRICTED row in nonmatching/VERIFIED.tsv."""
     import twins
-    return {fn for fn, row in twins.load_drafts().items() if row["verdict"] == "PASS"}
+    return {fn for fn, row in twins.load_drafts().items() if row["verdict"].startswith("PASS")}
+
+
+def twin_tiers():
+    """function -> "high" | "low" for functions with a Platinum twin."""
+    import twins
+    return {fn: twins.tier(t["found_by"]) for fn, t in twins.load_twins().items()}
+
+
+def function_cost(f, drafted, tiers):
+    insns = f["insns"]
+    cost = WEIGHTS["insn_line"] * insns + WEIGHTS["big_insn_line"] * max(0, insns - WEIGHTS["big_function_insns"])
+    tier = tiers.get(f["name"])
+    if tier:
+        cost *= WEIGHTS[f"{tier}_twin"]
+    if f["name"] in drafted:
+        cost *= WEIGHTS["drafted"]
+    return cost
 
 
 def build_report(ledger):
     files = ledger["files"]
     drafted = passing_drafts()
+    tiers = twin_tiers()
     pending = [r for r in files if r["status"] == "pending"]
 
     # symbol -> pending file that exports it (the not-yet-decompiled world)
@@ -99,6 +128,7 @@ def build_report(ledger):
         insns = sum(f["insns"] for f in r.get("functions", []))
         drafted_insns = sum(f["insns"] for f in r.get("functions", []) if f["name"] in drafted)
         undrafted = [f["name"] for f in r.get("functions", []) if f["name"] not in drafted]
+        high_twin_insns = sum(f["insns"] for f in r.get("functions", []) if tiers.get(f["name"]) == "high")
         imports = r.get("imports", [])
         unknown = sorted({s for s in imports if s in export_map and export_map[s] != r["file"]})
         arm_fns = sum(1 for f in r.get("functions", []) if f["mode"] == "arm")
@@ -112,8 +142,7 @@ def build_report(ledger):
         partners = sorted(partners.items(), key=lambda kv: -kv[1])[:5]
 
         score = (
-            WEIGHTS["insn_line"] * (insns - drafted_insns)
-            + WEIGHTS["drafted_insn_line"] * drafted_insns
+            sum(function_cost(f, drafted, tiers) for f in r.get("functions", []))
             + WEIGHTS["unknown_callee"] * len(unknown)
             + WEIGHTS["jumptable_word"] * r.get("jumptable_words", 0)
             + WEIGHTS["rodata_byte"] * rodata
@@ -130,6 +159,7 @@ def build_report(ledger):
             "insn_lines": insns,
             "drafted_insn_lines": drafted_insns,
             "undrafted_funcs": undrafted,
+            "high_twin_insn_lines": high_twin_insns,
             "data_only": r.get("data_only", False),
             "unknown_callees": unknown,
             "jumptable_words": r.get("jumptable_words", 0),
@@ -172,11 +202,12 @@ def main():
         return
 
     rank = 0
-    print(f"{'#':>3} {'score':>9} {'fns':>5} {'insns':>7} {'draft%':>6} {'unk':>4} {'gated':>6}  file")
+    print(f"{'#':>3} {'score':>9} {'fns':>5} {'insns':>7} {'twin%':>6} {'draft%':>6} {'unk':>4} {'gated':>6}  file")
     for r in report["queue"][: args.top]:
         rank += 1
         pct = 100 * r["drafted_insn_lines"] // r["insn_lines"] if r["insn_lines"] else 0
-        print(f"{rank:>3} {r['score']:>9.1f} {r['functions']:>5} {r['insn_lines']:>7} {pct:>6} "
+        twin_pct = 100 * r["high_twin_insn_lines"] // r["insn_lines"] if r["insn_lines"] else 0
+        print(f"{rank:>3} {r['score']:>9.1f} {r['functions']:>5} {r['insn_lines']:>7} {twin_pct:>6} {pct:>6} "
               f"{len(r['unknown_callees']):>4} {('YES' if r['gated_by'] else ''):>6}  "
               f"{r['file']}{' [DATA-ONLY]' if r['data_only'] else ''}"
               f"{' [SPECIAL: ' + ','.join(r['special_sections']) + ']' if r['special_sections'] else ''}")
