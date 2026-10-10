@@ -57,7 +57,7 @@ undefined4 ov73_021E926C(int *param_1,undefined4 param_2,undefined4 param_3,unde
   undefined1 auStack_28 [16];
   undefined1 auStack_18 [12];
   undefined4 uStack_c;
-  
+
   uStack_c = param_4;
   if ((uRam021d1158 & 0x40) == 0) {
     if ((uRam021d1158 & 0x80) == 0) {

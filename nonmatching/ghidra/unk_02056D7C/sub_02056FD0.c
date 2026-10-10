@@ -54,7 +54,7 @@ void sub_02056FD0(int param_1,undefined4 param_2,undefined4 param_3)
   undefined1 uStack_16;
   undefined1 uStack_15;
   byte bStack_14;
-  
+
   bStack_14 = PlayerAvatar_GetFacingDirection(*(undefined4 *)(*(int *)(iRam021d41c4 + 0x30) + 0x40))
   ;
   uStack_18 = (undefined1)param_2;

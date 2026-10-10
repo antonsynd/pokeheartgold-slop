@@ -90,7 +90,7 @@ undefined4 ov40_0223A924(int param_1)
   undefined *puVar3;
   ulonglong uVar4;
   undefined1 auStack_14 [4];
-  
+
   puVar3 = *(undefined **)(param_1 + 0x860);
   switch(*(undefined4 *)(param_1 + 8)) {
   case 0:

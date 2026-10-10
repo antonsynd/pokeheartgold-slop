@@ -49,7 +49,7 @@ undefined4 sub_0208942C(int param_1)
 
 {
   int iVar1;
-  
+
   iVar1 = Sprite_IsAnimated(*(undefined4 *)(param_1 + 0x504));
   if (iVar1 == 0) {
     sub_0208AB58(param_1,0xfffffff7);

@@ -49,7 +49,7 @@ int sub_02034780(void)
 {
   int iVar1;
   int iVar2;
-  
+
   iVar1 = 0;
   iVar2 = iRam021d4130;
   do {

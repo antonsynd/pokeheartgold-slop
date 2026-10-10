@@ -50,7 +50,7 @@ void ov96_02200950(int param_1,int param_2,uint param_3,int param_4,int param_5)
 
 {
   int iVar1;
-  
+
   if (param_3 != *(byte *)(param_1 + 0x16c + param_2)) {
     *(char *)(param_1 + 0x16c + param_2) = (char)param_3;
     ov96_022004B4();

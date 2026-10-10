@@ -61,7 +61,7 @@ undefined4 ov72_0223886C(int *param_1,undefined4 param_2,undefined4 param_3,unde
 
 {
   int iVar1;
-  
+
   ov72_02239040();
   BeginNormalPaletteFade(0,1,1,0,8,1,0x43,param_4);
   ov72_022389C8(param_1[1]);

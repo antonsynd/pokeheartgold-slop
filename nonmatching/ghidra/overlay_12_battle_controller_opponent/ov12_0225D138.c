@@ -96,7 +96,7 @@ void ov12_0225D138(undefined *param_1,undefined4 *param_2,undefined4 param_3,und
   undefined *puStack_20;
   undefined4 uStack_1c;
   undefined4 uStack_18;
-  
+
   uStack_18 = param_4;
   uVar2 = BattleSystem_GetBattleType((undefined *)*param_2);
   switch(*(undefined1 *)((int)param_2 + 10)) {

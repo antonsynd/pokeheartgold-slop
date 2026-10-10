@@ -48,7 +48,7 @@ bool BN_is_bit_set(int *param_1,int param_2)
 {
   int iVar1;
   int iVar2;
-  
+
   if (param_2 < 0) {
     return false;
   }

@@ -53,7 +53,7 @@ undefined4 FrtCmd_019(undefined4 param_1)
   undefined4 uVar2;
   undefined4 uVar3;
   undefined4 uVar4;
-  
+
   uVar1 = FrontierScriptContext_ReadHalfWord();
   uVar2 = FrontierScriptContext_ReadHalfWord(param_1);
   uVar3 = FrontierScriptContext_ReadHalfWord(param_1);

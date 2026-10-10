@@ -50,7 +50,7 @@ void ov64_021E607C(int param_1)
 
 {
   undefined4 uVar1;
-  
+
   uVar1 = NewMsgDataFromNarc(0,0x1b,0xb5,0x3b);
   *(undefined4 *)(param_1 + 0x118) = uVar1;
   uVar1 = NewMsgDataFromNarc(1,0x1b,0xed,0x3b);

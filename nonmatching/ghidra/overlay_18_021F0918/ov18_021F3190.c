@@ -72,7 +72,7 @@ void ov18_021F3190(int param_1)
   uint uVar7;
   short asStack_48 [2];
   undefined4 auStack_44 [12];
-  
+
   psVar4 = asStack_48;
   ov18_021F17FC();
   ov18_021F1CB4(param_1);

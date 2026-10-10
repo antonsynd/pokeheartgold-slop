@@ -55,7 +55,7 @@ void ov08_0221EF48(int *param_1,int param_2,undefined4 param_3,undefined4 param_
   undefined4 uVar1;
   undefined4 uVar2;
   int iVar3;
-  
+
   iVar3 = param_1[0x81c];
   uVar1 = NewMsgDataFromNarc(1,0x1b,0x2ed,*(undefined4 *)(*param_1 + 0xc));
   uVar2 = NewString_ReadMsgData(uVar1,param_3);

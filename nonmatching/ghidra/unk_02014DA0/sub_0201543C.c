@@ -50,7 +50,7 @@ int sub_0201543C(void)
   int iVar1;
   int *piVar2;
   int iVar3;
-  
+
   iVar1 = 0;
   piVar2 = (int *)0x21d10a8;
   iVar3 = 0;

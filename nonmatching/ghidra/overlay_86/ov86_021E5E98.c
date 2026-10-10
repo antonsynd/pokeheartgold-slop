@@ -47,7 +47,7 @@ undefined4 ov86_021E5E98(undefined4 param_1)
 
 {
   undefined4 uVar1;
-  
+
   uVar1 = 0;
   switch(param_1) {
   case 1:

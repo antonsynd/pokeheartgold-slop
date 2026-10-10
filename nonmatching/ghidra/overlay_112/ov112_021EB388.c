@@ -48,7 +48,7 @@ undefined4 ov112_021EB388(int param_1)
 
 {
   undefined4 uVar1;
-  
+
   ov112_021EA570();
   if (*(int *)(param_1 + 0x1ec50) == 0) {
     uVar1 = 3;

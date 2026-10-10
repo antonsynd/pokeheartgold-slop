@@ -92,7 +92,7 @@ undefined4 ov01_021E9C40(undefined4 param_1)
   undefined1 auStack_3c [4];
   char cStack_38;
   undefined1 auStack_24 [16];
-  
+
   iVar3 = TaskManager_GetFieldSystem();
   piVar4 = (int *)TaskManager_GetEnvironment(param_1);
   switch(*piVar4) {

@@ -49,7 +49,7 @@ void ov109_021E5D5C(int param_1)
 
 {
   uint uVar1;
-  
+
   uVar1 = 0;
   if (*(char *)(param_1 + 0xc5) != '\0') {
     do {

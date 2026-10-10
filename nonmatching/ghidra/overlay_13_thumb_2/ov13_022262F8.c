@@ -51,7 +51,7 @@ void ov13_022262F8(int *param_1,int param_2,uint param_3)
   uint uVar1;
   uint uVar2;
   uint uVar3;
-  
+
   uVar1 = (uint)param_1[4] >> 3 & 0x3f;
   uVar2 = param_1[4] + param_3 * 8;
   param_1[4] = uVar2;

@@ -48,7 +48,7 @@ void ov07_0221D214(int param_1)
 
 {
   int iVar1;
-  
+
   *(int *)(param_1 + 0x18) = *(int *)(param_1 + 0x18) + 4;
   iVar1 = ov07_0221BFC0();
   if (iVar1 == 1) {

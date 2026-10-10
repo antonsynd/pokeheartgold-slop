@@ -65,7 +65,7 @@ int ov12_0223A260(undefined *param_1)
   uint uVar6;
   uint uVar7;
   int iVar8;
-  
+
   puVar2 = OverlayManager_GetData(param_1);
   OverlayManager_GetArgs(param_1);
   if ((((*(uint *)(puVar2 + 0x2c) & 4) != 0) && ((*(uint *)(puVar2 + 0x240c) & 0x10) == 0)) &&

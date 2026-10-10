@@ -52,7 +52,7 @@ void ov96_021F2CD0(undefined4 param_1,int param_2,undefined4 param_3,undefined4 
   char cVar1;
   int iVar2;
   uint uVar3;
-  
+
   cVar1 = *(char *)(param_2 + 2);
   if (cVar1 == '\0') {
     *(short *)(param_2 + 0x1a) = *(short *)(param_2 + 0x1a) + 1;

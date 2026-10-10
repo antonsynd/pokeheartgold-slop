@@ -59,7 +59,7 @@ void ov80_02234390(int param_1)
   int iVar4;
   uint uVar5;
   byte *pbVar6;
-  
+
   uVar3 = ov80_02238498();
   ov80_022380A0(*(undefined1 *)(param_1 + 0x10),uVar3,param_1 + 0x78,0xe);
   bVar1 = *(byte *)(param_1 + 0x11);

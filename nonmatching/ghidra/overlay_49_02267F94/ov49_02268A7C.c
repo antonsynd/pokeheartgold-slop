@@ -56,7 +56,7 @@ void ov49_02268A7C(undefined4 *param_1)
   uint uVar1;
   undefined4 uVar2;
   uint uVar3;
-  
+
   uVar1 = func_0x0222b1dc(*param_1);
   uVar2 = func_0x0222b1ec(*param_1);
   uVar3 = func_0x0222a35c(*param_1);

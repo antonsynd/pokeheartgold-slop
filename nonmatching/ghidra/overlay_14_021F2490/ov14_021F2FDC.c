@@ -55,7 +55,7 @@ void ov14_021F2FDC(int param_1)
   uint uVar2;
   short *psVar3;
   uint uVar4;
-  
+
   uVar1 = Party_GetCount(*(undefined4 *)(param_1 + 8));
   psVar3 = (short *)&ov14_021F80BC;
   uVar2 = 0;

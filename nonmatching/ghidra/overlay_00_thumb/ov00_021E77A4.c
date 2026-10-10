@@ -49,7 +49,7 @@ undefined4 ov00_021E77A4(undefined1 param_1)
 
 {
   int iVar1;
-  
+
   if (iRam0221a688 == 0) {
     return 0;
   }

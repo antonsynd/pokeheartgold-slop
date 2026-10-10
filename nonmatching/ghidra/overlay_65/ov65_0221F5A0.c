@@ -75,7 +75,7 @@ void ov65_0221F5A0(undefined4 param_1,undefined4 param_2,undefined4 param_3,unde
   undefined1 uStack_1c;
   undefined1 auStack_1b [3];
   undefined4 uStack_18;
-  
+
   uStack_18 = param_4;
   uVar1 = AllocMonZeroed(0x1a);
   uVar2 = AllocMonZeroed(0x1a);

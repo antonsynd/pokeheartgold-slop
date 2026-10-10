@@ -48,7 +48,7 @@ void ov112_021E9C98(int param_1)
 
 {
   undefined4 uVar1;
-  
+
   uVar1 = NewString_ReadMsgData(*(undefined4 *)(param_1 + 0x1e44c),0x4c);
   *(undefined4 *)(param_1 + 0x1e458) = uVar1;
   uVar1 = NewString_ReadMsgData(*(undefined4 *)(param_1 + 0x1e44c),0x49);

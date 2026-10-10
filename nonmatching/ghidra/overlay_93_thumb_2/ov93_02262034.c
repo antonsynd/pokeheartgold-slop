@@ -51,7 +51,7 @@ void ov93_02262034(undefined4 param_1,int param_2)
 
 {
   int iVar1;
-  
+
   if ('\0' < *(char *)(param_2 + 0x19e)) {
     *(char *)(param_2 + 0x19e) = *(char *)(param_2 + 0x19e) + -1;
     return;

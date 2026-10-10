@@ -52,7 +52,7 @@ void ov01_021EB320(undefined4 param_1,undefined4 *param_2)
 
 {
   int iVar1;
-  
+
   switch(param_2[3]) {
   case 0:
     iVar1 = ov01_021EB700(*param_2,5,param_2[1]);

@@ -50,7 +50,7 @@ void sub_0205832C(void)
 
 {
   int iVar1;
-  
+
   iVar1 = sub_02034DB8();
   if (iVar1 != 0) {
     func_0x02255bec();

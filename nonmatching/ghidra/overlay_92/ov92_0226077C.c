@@ -47,7 +47,7 @@ int ov92_0226077C(int param_1,int param_2)
 
 {
   int iVar1;
-  
+
   iVar1 = 0;
   do {
     if (param_2 == *(int *)(param_1 + 0xbc)) {

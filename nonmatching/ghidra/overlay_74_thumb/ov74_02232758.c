@@ -77,7 +77,7 @@ void ov74_02232758(int param_1,uint *param_2,undefined4 param_3,undefined4 param
   short *local_2c;
   undefined *local_28;
   undefined4 uStack_18;
-  
+
   iVar7 = 4;
   ppuVar1 = local_64;
   uStack_18 = param_4;

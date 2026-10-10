@@ -53,7 +53,7 @@ undefined4 ov75_02249838(undefined4 param_1,undefined4 param_2)
   short *psVar2;
   short *psVar3;
   undefined4 uVar4;
-  
+
   uVar4 = 1;
   psVar2 = (short *)Heap_Alloc(param_2,200);
   CopyStringToU16Array(param_1,psVar2,100);

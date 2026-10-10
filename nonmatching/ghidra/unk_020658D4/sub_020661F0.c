@@ -58,7 +58,7 @@ undefined4 sub_020661F0(undefined *param_1,int param_2)
   uint uVar4;
   int iVar5;
   undefined *puVar6;
-  
+
   puVar6 = *(undefined **)(param_2 + 8);
   uVar1 = MapObject_GetXCoord(param_1);
   uVar2 = MapObject_GetZCoord(param_1);

@@ -50,7 +50,7 @@ int ov96_021F3390(undefined4 param_1,char param_2,int param_3)
 {
   int iVar1;
   undefined1 uVar2;
-  
+
   iVar1 = Heap_Alloc(param_1,0x4ec);
   func_0x020d4994(iVar1,0,0x4ec);
   *(char *)(iVar1 + 0x4e4) = param_2;

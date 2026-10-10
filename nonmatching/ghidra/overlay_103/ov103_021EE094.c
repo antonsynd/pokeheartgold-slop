@@ -48,7 +48,7 @@ void ov103_021EE094(undefined4 param_1)
 
 {
   uint uVar1;
-  
+
   uVar1 = 0;
   do {
     ov103_021EE078(param_1,uVar1);

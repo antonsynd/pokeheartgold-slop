@@ -50,7 +50,7 @@ void sub_02037668(undefined4 param_1,undefined4 param_2,undefined1 *param_3)
 
 {
   int iVar1;
-  
+
   iVar1 = sub_0203769C();
   if ((iVar1 == 0) && (*(char *)(iRam021d4148 + 0x6ab) == '\x02')) {
     sub_02035FA8(*param_3);

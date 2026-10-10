@@ -50,7 +50,7 @@ ov01_021FEEEC(undefined4 param_1,undefined4 param_2,undefined4 param_3,undefined
 
 {
   undefined4 *puVar1;
-  
+
   puVar1 = (undefined4 *)ov01_021F1430(param_1,4,0,0,param_4);
   *puVar1 = param_1;
   ov01_021FEF18();

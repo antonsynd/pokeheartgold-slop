@@ -66,7 +66,7 @@ void ov99_021E8590(int param_1,undefined4 param_2,undefined4 param_3,undefined4 
   undefined4 uStack_c4;
   undefined4 auStack_c0 [42];
   undefined4 uStack_18;
-  
+
   uStack_18 = param_4;
   uVar1 = BgConfig_Alloc(*(undefined4 *)(param_1 + 0xc));
   *(undefined4 *)(param_1 + 4) = uVar1;

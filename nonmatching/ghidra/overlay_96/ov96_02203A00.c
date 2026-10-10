@@ -52,7 +52,7 @@ ov96_02203A00(undefined4 param_1,undefined4 param_2,undefined4 param_3,undefined
 
 {
   undefined4 *puVar1;
-  
+
   puVar1 = (undefined4 *)Heap_Alloc(param_1,0x74,param_3,param_4,param_4);
   func_0x020d4994(puVar1,0,0x74);
   *puVar1 = param_1;

@@ -50,7 +50,7 @@ void ov71_0224B11C(undefined *param_1)
 
 {
   undefined4 *puVar1;
-  
+
   if (param_1 != (undefined *)0x0) {
     puVar1 = (undefined4 *)SysTask_GetData(param_1);
     *(undefined4 *)*puVar1 = 0;

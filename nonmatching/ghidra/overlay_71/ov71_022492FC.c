@@ -51,7 +51,7 @@ void ov71_022492FC(undefined4 param_1,undefined4 *param_2)
 
 {
   int iVar1;
-  
+
   ov71_0224903C(param_2);
   if (param_2[0x20] != 0) {
     iVar1 = param_2[10];

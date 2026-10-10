@@ -56,7 +56,7 @@ void ov96_022038D4(undefined4 param_1)
   undefined4 uVar2;
   uint uVar3;
   ushort uVar4;
-  
+
   iVar1 = PokeathlonCourse_GetDataCopyArea();
   iVar1 = ov96_021E8A20(iVar1 + 0xf0);
   uVar2 = PokeathlonCourse_GetHeapAllocPtr4(param_1);

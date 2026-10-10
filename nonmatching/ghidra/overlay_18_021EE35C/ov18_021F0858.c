@@ -53,7 +53,7 @@ void ov18_021F0858(int param_1,undefined4 param_2,undefined4 param_3,undefined4 
 {
   int iVar1;
   uint uVar2;
-  
+
   ov18_021EE35C(param_1,&ov18_021F9DB0,2);
   uVar2 = 0;
   iVar1 = param_1 + 0xc;

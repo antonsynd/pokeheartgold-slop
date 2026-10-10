@@ -60,7 +60,7 @@ void ov96_021ECAC4(undefined4 param_1)
   uint *puVar4;
   uint uVar5;
   undefined4 *puVar6;
-  
+
   puVar1 = (undefined4 *)PokeathlonCourse_GetHeapAllocPtr4();
   uVar5 = 0;
   puVar6 = puVar1;

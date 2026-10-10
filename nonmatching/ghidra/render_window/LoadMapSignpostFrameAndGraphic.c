@@ -56,7 +56,7 @@ void LoadMapSignpostFrameAndGraphic
 {
   undefined4 uVar1;
   int iStack_18;
-  
+
   GfGfxLoader_LoadCharData(0x24,0,param_1,param_2,param_3,0x3c0,0,param_7);
   uVar1 = AllocAndReadWholeNarcMemberByIdPair(0x24,1,param_7);
   func_0x020b7140(uVar1,&iStack_18);

@@ -58,7 +58,7 @@ undefined4 ov109_021E7748(int param_1)
 {
   int iVar1;
   int iVar2;
-  
+
   iVar1 = YesNoPrompt_HandleInput(*(undefined4 *)(param_1 + 0x8c));
   if (iVar1 == 1) {
     ov109_021E5DEC(param_1,*(undefined1 *)(param_1 + 0x1f));

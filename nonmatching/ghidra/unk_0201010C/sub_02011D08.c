@@ -55,7 +55,7 @@ void sub_02011D08(int param_1,undefined4 param_2,undefined4 param_3,undefined4 p
   int iVar4;
   int aiStack_318 [192];
   undefined4 uStack_18;
-  
+
   piVar3 = aiStack_318;
   uStack_18 = param_4;
   iVar2 = sub_02010EE0(param_1,0);

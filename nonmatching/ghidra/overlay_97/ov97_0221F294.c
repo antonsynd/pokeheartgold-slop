@@ -54,7 +54,7 @@ void ov97_0221F294(undefined4 *param_1,undefined4 param_2,undefined4 param_3,und
 
 {
   undefined4 uVar1;
-  
+
   func_0x0200c944(param_1[0x1c],0,*(ushort *)(param_1 + 0x1a) & 0xff);
   uVar1 = ReadMsgData_ExpandPlaceholders(param_1[0x1c],param_1[0x1b],0,*param_1);
   FillWindowPixelBuffer(param_1 + 2,0);

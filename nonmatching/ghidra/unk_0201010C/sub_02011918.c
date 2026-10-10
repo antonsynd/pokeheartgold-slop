@@ -57,7 +57,7 @@ void sub_02011918(undefined *param_1,short *param_2,undefined4 param_3,undefined
 {
   undefined4 uVar1;
   undefined *puVar2;
-  
+
   uVar1 = sub_02010A6C((int)*param_2,(int)param_2[1]);
   sub_02010E64(param_1,(uint)*(byte *)(param_2 + 4),param_5,param_8);
   *(int *)(param_1 + 0xc) = (int)*param_2 << 7;

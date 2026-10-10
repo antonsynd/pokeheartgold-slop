@@ -75,7 +75,7 @@ undefined4 TradeSequence_Init(undefined4 param_1)
   int iVar2;
   int *piVar3;
   undefined4 *puVar4;
-  
+
   iVar2 = IsPaletteFadeFinished();
   if (iVar2 != 0) {
     Heap_Create(3,0x38,0x18000);

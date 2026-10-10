@@ -52,7 +52,7 @@ void ov112_021F3630(undefined *param_1,int param_2)
   undefined *puVar1;
   int iVar2;
   ushort *puVar3;
-  
+
   puVar1 = Save_VarsFlags_Get(param_1);
   puVar3 = (ushort *)0x21ff4d4;
   iVar2 = 0;

@@ -52,7 +52,7 @@ void ov88_022592B8(int param_1,int param_2,int param_3)
   int iVar2;
   int iVar3;
   int iVar4;
-  
+
   iVar2 = 0;
   iVar4 = *(int *)(param_2 + 0xc);
   iVar3 = 0;

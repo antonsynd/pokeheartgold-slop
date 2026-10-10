@@ -56,7 +56,7 @@ void ov08_0221EC6C(int *param_1,int param_2)
   undefined *puVar2;
   undefined *puVar3;
   int iVar4;
-  
+
   bVar1 = *(byte *)((int)param_1 + 0x2075);
   puVar2 = NewMsgDataFromNarc(1,0x1b,0x2d2,*(int *)(*param_1 + 0xc));
   puVar3 = NewString_ReadMsgData(puVar2,(uint)*(ushort *)(param_1 + param_2 * 0x14 + 7));

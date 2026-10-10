@@ -55,7 +55,7 @@ int ov89_02259EC4(int param_1,ushort *param_2,undefined4 param_3)
   int iVar1;
   int iVar2;
   int iVar3;
-  
+
   iVar1 = ov89_0225A49C(param_1,param_1 + 0x194,(undefined4 *)param_2,
                         *(undefined **)(param_1 + 0x160),*(undefined **)(param_1 + 0x164),
                         *(int *)(param_1 + 0x19e0));

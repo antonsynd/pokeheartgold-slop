@@ -48,7 +48,7 @@ undefined4 ov70_02240D54(undefined4 *param_1)
 
 {
   int iVar1;
-  
+
   iVar1 = sub_0202DB54(*(undefined4 *)*param_1);
   if ((iVar1 == 0) && (*(short *)((int)param_1 + 0x36) != 0)) {
     return 1;

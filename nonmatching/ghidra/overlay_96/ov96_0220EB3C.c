@@ -53,7 +53,7 @@ void ov96_0220EB3C(int param_1)
 {
   int iVar1;
   int iVar2;
-  
+
   iVar1 = *(int *)(param_1 + 0xc);
   iVar2 = *(int *)(param_1 + 0x10);
   if (iVar1 == 0) {

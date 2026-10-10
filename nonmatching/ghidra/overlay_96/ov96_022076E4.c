@@ -51,7 +51,7 @@ void ov96_022076E4(int param_1)
 {
   int iVar1;
   int iVar2;
-  
+
   iVar2 = 0;
   do {
     iVar1 = ov96_021EB594(*(undefined4 *)(param_1 + 0x35c));

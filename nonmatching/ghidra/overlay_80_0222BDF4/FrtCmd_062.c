@@ -56,7 +56,7 @@ undefined4 FrtCmd_062(undefined4 *param_1)
   int iVar3;
   undefined4 uVar4;
   undefined2 *puVar5;
-  
+
   uVar1 = FrontierScriptContext_ReadHalfWord();
   puVar2 = (undefined2 *)FrontierScript_ReadVarPtr(param_1);
   iVar3 = Frontier_GetLaunchArgs(*(undefined4 *)*param_1);

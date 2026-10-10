@@ -59,7 +59,7 @@ undefined4 ov15_021FCFC8(int param_1,undefined4 param_2,undefined4 param_3,undef
 {
   undefined1 uVar1;
   undefined4 uVar2;
-  
+
   sub_0200E5D4(param_1 + 0x44,1);
   ov15_021FF834(param_1);
   FillWindowPixelBuffer(param_1 + 0x34,0xf);

@@ -53,7 +53,7 @@ uint ov57_02237FAC(int param_1,int param_2)
   int iVar2;
   undefined1 auStack_1c [4];
   undefined1 auStack_18 [4];
-  
+
   uVar1 = 0;
   iVar2 = param_1;
   do {

@@ -56,7 +56,7 @@ undefined4 ov99_021E6840(undefined4 param_1)
 
 {
   undefined4 *puVar1;
-  
+
   puVar1 = (undefined4 *)OverlayManager_GetData();
   ov99_021E7060(*puVar1);
   func_0x0221e684(puVar1[5],puVar1 + 6,0x43);

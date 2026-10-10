@@ -50,7 +50,7 @@ void ov12_0225B200(undefined4 param_1,int param_2,undefined1 *param_3)
 
 {
   undefined1 auStack_60 [80];
-  
+
   ov12_02261CA8(param_1,param_3,auStack_60,*(undefined1 *)(param_2 + 0x194));
   func_0x0223494c(auStack_60,5);
   ov12_0226430C(param_1,*(undefined1 *)(param_2 + 0x194),*param_3);

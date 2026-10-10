@@ -49,7 +49,7 @@ bool ov08_02222564(int param_1)
   uint uVar1;
   ushort uVar2;
   int iVar3;
-  
+
   uVar2 = 0;
   uVar1 = 0;
   do {

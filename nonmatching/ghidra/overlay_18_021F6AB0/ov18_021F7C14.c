@@ -57,7 +57,7 @@ int ov18_021F7C14(undefined4 *param_1,undefined4 *param_2,undefined4 param_3,und
   int iVar1;
   undefined4 uVar2;
   undefined4 uVar3;
-  
+
   iVar1 = ov18_021F7B94();
   if (iVar1 == -1) {
     iVar1 = System_GetTouchNew();

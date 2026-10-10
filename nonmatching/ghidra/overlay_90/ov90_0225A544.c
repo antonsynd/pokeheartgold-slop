@@ -53,7 +53,7 @@ undefined4 ov90_0225A544(int param_1,undefined4 *param_2)
 
 {
   int iVar1;
-  
+
   if (*(short *)(param_1 + 0x2e) == 0) {
     iVar1 = ov90_02258D4C(param_1 + 0x18,(int)*(short *)(param_1 + 0x2c));
     ov90_0225A60C(param_1,param_2,*(int *)(param_1 + 0x18) >> 0xc);

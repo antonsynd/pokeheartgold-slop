@@ -54,7 +54,7 @@ void ov07_02232A5C(undefined4 param_1,int param_2)
   int iVar2;
   int iVar3;
   int iVar4;
-  
+
   bVar1 = false;
   if (9 < *(int *)(param_2 + 0x10)) {
     GF_AssertFail();

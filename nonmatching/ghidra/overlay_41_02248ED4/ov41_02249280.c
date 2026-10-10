@@ -50,7 +50,7 @@ void ov41_02249280(int *param_1)
 
 {
   int iVar1;
-  
+
   iVar1 = *param_1;
   if ((*(int *)(iVar1 + 0x10) != 0) && (uRam021d116c != 0xffff)) {
     ov41_02249AF4(*(int *)(iVar1 + 0x10),(uint)uRam021d116c - *(int *)(iVar1 + 0x14),

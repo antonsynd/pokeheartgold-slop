@@ -54,7 +54,7 @@ void ov31_0225D710(undefined4 param_1,undefined4 param_2)
 
 {
   undefined4 uVar1;
-  
+
   uVar1 = SysTask_GetData(param_2);
   TextFlags_SetCanTouchSpeedUpPrint(0);
   ov31_0225DBA0(uVar1);

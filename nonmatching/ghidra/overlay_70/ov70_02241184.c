@@ -55,7 +55,7 @@ void ov70_02241184(int param_1,int param_2,int param_3)
   int iVar3;
   int iVar4;
   undefined4 uStack_18;
-  
+
   if ((param_2 != 0) && (param_3 == 1)) {
     PlaySE(0x64e);
   }

@@ -49,7 +49,7 @@ void ov74_0222F624(int param_1,undefined4 param_2,undefined4 param_3,undefined4 
 
 {
   undefined4 uVar1;
-  
+
   *(undefined4 *)(param_1 + 0x3cfc) = param_2;
   *(undefined4 *)(param_1 + 0x3cf0) = param_3;
   *(undefined4 *)(param_1 + 0x3cf4) = param_4;

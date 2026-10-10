@@ -54,7 +54,7 @@ void ov00_021E727C(uint param_1,undefined4 param_2,undefined4 param_3,undefined4
   undefined4 uVar1;
   int iVar2;
   bool bVar3;
-  
+
   ov00_021E7234();
   iVar2 = param_1 * 4;
   if (*(int *)(iRam0221a680 + iVar2 + 0xf80) == 0) {

@@ -58,7 +58,7 @@ void ov14_021F3E70(int param_1)
 
 {
   undefined4 uVar1;
-  
+
   uVar1 = SpriteSystem_NewSprite
                     (*(undefined4 *)(param_1 + 0x2f4),*(undefined4 *)(param_1 + 0x2f8),
                      &ov14_021F81A8);

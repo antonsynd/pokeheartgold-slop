@@ -48,7 +48,7 @@ void ov08_0221D81C(undefined4 param_1)
 
 {
   ushort uVar1;
-  
+
   uVar1 = 0;
   do {
     ov08_0221D77C(param_1,0x125,uVar1 & 0xff);

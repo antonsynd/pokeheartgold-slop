@@ -48,7 +48,7 @@ undefined4 ov14_021F2490(int param_1,int param_2,undefined4 param_3)
 
 {
   char cVar1;
-  
+
   *(byte *)(*(int *)(param_1 + 0x34) + 0x88d4) =
        *(byte *)(*(int *)(param_1 + 0x34) + 0x88d4) & 0xfe | 1;
   cVar1 = sub_02019B10(*(undefined4 *)(*(int *)(param_1 + 0x34) + 0x2f0));

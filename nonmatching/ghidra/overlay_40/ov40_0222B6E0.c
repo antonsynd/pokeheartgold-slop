@@ -95,7 +95,7 @@ void ov40_0222B6E0(undefined *param_1)
   undefined4 uStack_1c;
   int iStack_18;
   undefined4 uStack_14;
-  
+
   Main_SetVBlankIntrCB((undefined *)0x0,(undefined *)0x0);
   HBlankInterruptDisable();
   GfGfx_DisableEngineAPlanes();

@@ -49,7 +49,7 @@ void ov12_022399BC(void)
 
 {
   int iVar1;
-  
+
   iVar1 = sub_02039998();
   if (iVar1 == 0) {
     func_0x02006ff8(0x12,2);

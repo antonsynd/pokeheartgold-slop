@@ -57,7 +57,7 @@ undefined4 sub_02093CE4(int param_1)
   int iVar4;
   uint uVar5;
   uint uStack_20;
-  
+
   if (*(int *)(param_1 + 0x469c) == 1) {
     uStack_20 = 0;
     if (*(byte *)(param_1 + 0xd) != 0) {

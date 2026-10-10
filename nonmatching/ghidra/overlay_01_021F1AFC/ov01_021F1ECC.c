@@ -62,7 +62,7 @@ undefined4 ov01_021F1ECC(undefined4 param_1)
   int iVar3;
   undefined4 uVar4;
   int iVar5;
-  
+
   piVar1 = (int *)TaskManager_GetEnvironment();
   uVar2 = PlayerAvatar_GetMapObject(piVar1[3]);
   iVar3 = *piVar1;

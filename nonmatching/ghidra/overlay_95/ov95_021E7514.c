@@ -50,7 +50,7 @@ undefined4 ov95_021E7514(int param_1)
 
 {
   int iVar1;
-  
+
   iVar1 = ManagedSprite_GetActiveAnim(*(undefined4 *)(param_1 + 0x10));
   if (iVar1 != 3) {
     GF_AssertFail();

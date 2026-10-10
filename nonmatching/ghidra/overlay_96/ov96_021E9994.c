@@ -53,7 +53,7 @@ void ov96_021E9994(void)
   undefined *in_r3;
   __asm__ volatile("movs %0, r3" : "=l"(in_r3) : : "cc");
 
-  
+
   PokeathlonCourse_GetDataCopyArea(in_r3);
   ov96_021E5F24(in_r3);
   PokeathlonCourse_SetStateTransitionType(in_r3,0xd);

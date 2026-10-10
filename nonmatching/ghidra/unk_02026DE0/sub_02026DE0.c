@@ -48,7 +48,7 @@ undefined2 sub_02026DE0(int *param_1,uint param_2)
 {
   uint uVar1;
   int iVar2;
-  
+
   uVar1 = 0;
   if (param_1[3] != 1) {
     iVar2 = *param_1;

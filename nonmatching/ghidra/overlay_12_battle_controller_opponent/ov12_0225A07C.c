@@ -76,7 +76,7 @@ void ov12_0225A07C(undefined *param_1,int param_2,undefined1 *param_3,undefined4
   undefined1 uStack_20;
   undefined4 uStack_1c;
   undefined4 uStack_18;
-  
+
   uStack_18 = param_4;
   puVar3 = (undefined4 *)Heap_Alloc(5,0x24);
   *(undefined1 *)((int)puVar3 + 0x12) = 0;

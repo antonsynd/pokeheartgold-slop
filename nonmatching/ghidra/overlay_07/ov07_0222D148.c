@@ -80,7 +80,7 @@ void ov07_0222D148(undefined4 param_1)
   uint uVar12;
   uint uVar13;
   uint uVar14;
-  
+
   puVar4 = (undefined4 *)ov07_022324D8(param_1,0x4c);
   *puVar4 = param_1;
   uVar5 = ov07_0221FA78();

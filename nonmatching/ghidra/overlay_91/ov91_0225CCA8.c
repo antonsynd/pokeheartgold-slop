@@ -48,7 +48,7 @@ undefined4 ov91_0225CCA8(int param_1,undefined4 param_2,undefined4 param_3,undef
 
 {
   undefined4 uVar1;
-  
+
   if (*(int *)(param_1 + 0x80) == 0) {
     return 0;
   }

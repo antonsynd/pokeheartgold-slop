@@ -52,7 +52,7 @@ void ov93_0225C6D8(int param_1,int param_2)
   int iVar1;
   int iVar2;
   int iVar3;
-  
+
   sub_0203769C();
   iVar3 = 0;
   iVar2 = 0;

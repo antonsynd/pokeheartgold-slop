@@ -60,7 +60,7 @@ void ov74_02231F30(undefined4 param_1,undefined4 param_2,undefined4 param_3,int 
   int *piVar4;
   int iStack_1c;
   int iStack_18;
-  
+
   piVar4 = (int *)(iRam0223d338 + param_4 * 0x20c);
   if (param_5 != 0) {
     iStack_18 = param_4;

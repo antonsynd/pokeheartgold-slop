@@ -72,7 +72,7 @@ void ov18_021F4384(int param_1,undefined4 param_2,undefined4 param_3,undefined4 
   short asStack_20 [2];
   int iStack_1c;
   undefined4 uStack_18;
-  
+
   iStack_2c = 0;
   uStack_18 = param_4;
   ov18_021F12C8(param_1,2,asStack_20,&sStack_22,2);

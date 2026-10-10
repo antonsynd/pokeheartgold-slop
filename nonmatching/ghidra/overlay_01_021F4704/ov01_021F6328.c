@@ -49,7 +49,7 @@ undefined4 ov01_021F6328(uint param_1)
 {
   int iVar1;
   int iVar2;
-  
+
   iVar1 = func_0x020f2ba4();
   iVar2 = iVar1 >> 0x1f;
   iVar2 = ((uint)(iVar1 * 0x8000000 + iVar2) >> 0x1b | iVar2 << 5) - iVar2;

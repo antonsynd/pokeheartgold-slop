@@ -48,7 +48,7 @@ void ov96_021ECBFC(int param_1)
 
 {
   int iVar1;
-  
+
   iVar1 = 0;
   do {
     ov96_021ECD24(param_1);

@@ -78,7 +78,7 @@ void ov48_0225AAAC(int param_1,int param_2,undefined4 param_3,undefined4 param_4
   undefined4 uStack_40;
   undefined1 auStack_3c [36];
   undefined4 uStack_18;
-  
+
   uStack_5c = 0;
   puStack_58 = (undefined1 *)0x0;
   uStack_54 = 0;

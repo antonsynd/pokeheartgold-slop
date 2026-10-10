@@ -50,7 +50,7 @@ void ov01_021F8C88(undefined4 param_1,undefined4 param_2)
 {
   int iVar1;
   bool bVar2;
-  
+
   iVar1 = MapObject_TestFlagsBits(param_1,0x200);
   bVar2 = iVar1 != 1;
   iVar1 = MapObject_TestFlagsBits(param_1,0x1000);

@@ -59,7 +59,7 @@ int Field_PlayerMovementSavingSet(int param_1)
   undefined4 *puVar3;
   undefined4 uVar4;
   undefined4 uVar5;
-  
+
   uVar5 = *(undefined4 *)(param_1 + 0x40);
   iVar1 = PlayerAvatar_GetState(uVar5);
   if ((iVar1 != 0) && (iVar1 != 3)) {

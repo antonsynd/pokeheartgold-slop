@@ -55,7 +55,7 @@ void ov46_022592EC(undefined4 *param_1,undefined4 param_2,undefined4 param_3,und
 
 {
   undefined4 uVar1;
-  
+
   uVar1 = MessageFormat_New(param_11);
   *param_1 = uVar1;
   uVar1 = NewMsgDataFromNarc(0,0x1b,param_4,param_11);

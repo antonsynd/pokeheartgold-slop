@@ -54,7 +54,7 @@ void ov96_021E9D10(undefined4 *param_1)
   undefined4 uVar1;
   int iVar2;
   uint uVar3;
-  
+
   if ((param_1[1] & 1) != 0) {
     uVar1 = AddCharResObjFromNarc(param_1[3],0x99,3,0,0x14,1,*param_1);
     param_1[7] = uVar1;

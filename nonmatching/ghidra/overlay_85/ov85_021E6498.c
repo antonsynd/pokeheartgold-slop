@@ -64,7 +64,7 @@ undefined4 ov85_021E6498(undefined4 *param_1)
   uint uVar6;
   int iVar7;
   uint uVar8;
-  
+
   ov85_021E8454();
   if ((param_1[8] & 1 << (*(uint *)(param_1[10] + 0xc) & 0xff)) != 0) {
     iVar7 = param_1[0xc] * 8;

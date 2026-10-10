@@ -52,7 +52,7 @@ void BattleController_EmitPlayMosaicAnimation
   undefined1 uStack_13;
   undefined1 uStack_12;
   undefined4 uStack_10;
-  
+
   uStack_14 = 0x2c;
   uStack_12 = (undefined1)param_4;
   uStack_13 = param_3;

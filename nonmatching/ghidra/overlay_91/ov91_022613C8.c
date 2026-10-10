@@ -54,7 +54,7 @@ void ov91_022613C8(short *param_1,undefined4 param_2)
   int iVar3;
   uint uVar4;
   uint uVar5;
-  
+
   switch(*param_1) {
   default:
     return;

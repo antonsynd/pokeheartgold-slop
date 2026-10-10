@@ -51,7 +51,7 @@ void sub_020757AC(int param_1)
   int unaff_r4;
   __asm__ volatile("movs %0, r4" : "=l"(unaff_r4) : : "cc");
 
-  
+
   if (*(int *)(param_1 + 0xb8) == 0) {
     GF_AssertFail();
   }

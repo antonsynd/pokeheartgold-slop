@@ -56,7 +56,7 @@ void ov01_021F4D10(int param_1,undefined4 param_2,undefined4 param_3,int param_4
   undefined4 auStack_28 [3];
   undefined4 uStack_1c;
   int iStack_18;
-  
+
   param_1 = param_1 * 4;
   iStack_18 = param_4;
   iVar1 = ov01_021F4A50(auStack_28,param_6,param_3,*(undefined4 *)(param_7 + param_1),

@@ -54,7 +54,7 @@ void ov45_0222FB84(int param_1,undefined4 param_2)
   int iVar2;
   int iVar3;
   int iVar4;
-  
+
   iVar1 = ov45_0222F7B0(param_2);
   ov45_0222FA40(param_1,1);
   iVar3 = 0;

@@ -50,7 +50,7 @@ void ov45_0222C370(int param_1,undefined4 param_2,undefined4 param_3,undefined4 
   int iStack_10;
   undefined4 uStack_c;
   undefined4 uStack_8;
-  
+
   iStack_10 = param_1 + 0xd4;
   uStack_c = param_2;
   uStack_8 = param_4;

@@ -55,7 +55,7 @@ void ov41_02246B68(undefined4 *param_1,int *param_2,undefined4 param_3,undefined
   undefined4 uVar2;
   int iVar3;
   int iVar4;
-  
+
   iVar3 = 0;
   iVar4 = 0;
   do {

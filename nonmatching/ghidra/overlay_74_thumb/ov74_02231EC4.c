@@ -61,7 +61,7 @@ void ov74_02231EC4(undefined4 param_1,undefined4 param_2,undefined4 param_3,int 
   undefined4 uVar3;
   int iVar4;
   int iStack_18;
-  
+
   iStack_18 = param_4;
   uVar1 = TranslateAgbSpecies();
   uVar2 = ov74_02231E54(uVar1,param_3,param_4);

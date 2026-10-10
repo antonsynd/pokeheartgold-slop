@@ -66,7 +66,7 @@ undefined4 ov40_02233F28(int param_1,undefined4 param_2,undefined4 param_3,undef
 {
   int iVar1;
   uint *puVar2;
-  
+
   puVar2 = *(uint **)(param_1 + 0x860);
   iVar1 = *(int *)(param_1 + 8);
   switch(iVar1) {

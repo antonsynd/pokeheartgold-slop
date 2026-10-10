@@ -62,7 +62,7 @@ undefined4 TrainerCardMainApp_Exit(undefined4 param_1)
 
 {
   undefined4 *puVar1;
-  
+
   puVar1 = (undefined4 *)OverlayManager_GetData();
   ov51_021E6C00();
   ov51_021E6038(puVar1);

@@ -63,7 +63,7 @@ undefined4 BN_div_recp(int *param_1,int *param_2,int param_3,int param_4,int *pa
   int *piVar6;
   int iVar7;
   undefined4 uStack_30;
-  
+
   iVar7 = *param_5;
   *param_5 = iVar7 + 1;
   piVar6 = param_5 + *param_5 * 5 + 1;

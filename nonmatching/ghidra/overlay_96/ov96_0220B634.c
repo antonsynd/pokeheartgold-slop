@@ -58,7 +58,7 @@ void ov96_0220B634(int param_1,undefined4 param_2,undefined4 param_3)
   uint uVar2;
   int iVar3;
   int iVar4;
-  
+
   uRam0221e5a4 = 0;
   if ((*(uint *)(param_1 + 0x40) & 0x3ff) >> 2 == 2) {
     GF_AssertFail();

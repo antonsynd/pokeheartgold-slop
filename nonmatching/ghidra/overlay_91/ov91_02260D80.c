@@ -48,7 +48,7 @@ void ov91_02260D80(undefined4 param_1,int param_2)
 
 {
   int iVar1;
-  
+
   iVar1 = 0;
   do {
     Sprite_Delete(*(undefined4 *)(param_2 + 4));

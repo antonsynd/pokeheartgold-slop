@@ -50,7 +50,7 @@ void ov05_0221D5DC(int *param_1)
 
 {
   int iVar1;
-  
+
   iVar1 = func_0x02013534(8,*(undefined4 *)(*param_1 + 0x24));
   param_1[0x2d1] = iVar1;
   ov05_0221D530(param_1,0,*(undefined4 *)(*param_1 + 0x14));

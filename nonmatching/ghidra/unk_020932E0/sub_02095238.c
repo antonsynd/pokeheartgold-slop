@@ -63,7 +63,7 @@ void sub_02095238(int param_1,undefined4 param_2,undefined4 param_3,undefined4 p
   int iStack_20;
   undefined4 uStack_1c;
   undefined4 uStack_18;
-  
+
   bVar1 = false;
   uStack_18 = param_4;
   uVar2 = sub_02095DD8(*(undefined4 *)(param_1 + 0x46b8));

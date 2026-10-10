@@ -63,7 +63,7 @@ void ov01_021F7CE4(undefined *param_1)
   undefined *puVar5;
   uint uStack_20;
   uint uStack_1c;
-  
+
   puVar1 = sub_0205F40C(param_1);
   puVar5 = *(undefined **)(puVar1 + 4);
   iVar2 = ov01_021FA2D4(param_1);

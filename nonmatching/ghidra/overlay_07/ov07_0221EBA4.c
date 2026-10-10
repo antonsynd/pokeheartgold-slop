@@ -57,7 +57,7 @@ void ov07_0221EBA4(undefined4 *param_1,uint param_2,undefined1 param_3)
 {
   undefined1 uVar1;
   int iVar2;
-  
+
   uVar1 = ov07_0221FB04(param_1,2);
   func_0x0201bb68(param_2 & 0xff,uVar1);
   ToggleBgLayer(param_2 & 0xff,0);

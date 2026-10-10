@@ -49,7 +49,7 @@ int ov13_02226CD8(int param_1,int param_2)
 
 {
   int iVar1;
-  
+
   iVar1 = (*pcRam0224df34)(param_2 * param_1);
   if (iVar1 != 0) {
     func_0x020e5b44(iVar1,0,param_2 * param_1);

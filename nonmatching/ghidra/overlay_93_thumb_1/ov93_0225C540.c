@@ -53,7 +53,7 @@ undefined4 ov93_0225C540(undefined4 param_1)
 {
   undefined4 uVar1;
   undefined4 uVar2;
-  
+
   uVar1 = OverlayManager_GetArgs();
   Heap_Create(3,0x75,0x60000);
   uVar2 = OverlayManager_CreateAndGetData(param_1,0x40,0x75);

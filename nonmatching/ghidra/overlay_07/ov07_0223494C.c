@@ -59,7 +59,7 @@ void ov07_0223494C(int *param_1,undefined4 param_2)
   int iVar5;
   undefined4 uVar6;
   int iVar7;
-  
+
   Pokepic_Pop(param_1[*param_1 + 6]);
   puVar4 = (ushort *)func_0x02009414(param_1[*param_1 + 6]);
   iVar5 = *param_1;

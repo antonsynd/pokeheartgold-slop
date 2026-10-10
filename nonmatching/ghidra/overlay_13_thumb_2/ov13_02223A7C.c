@@ -55,7 +55,7 @@ undefined4 ov13_02223A7C(void)
   undefined4 in_r3;
   __asm__ volatile("movs %0, r3" : "=l"(in_r3) : : "cc");
 
-  
+
   switch(uRam0224df5c) {
   default:
     return 0;

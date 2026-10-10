@@ -47,7 +47,7 @@ undefined4 ov102_021E9464(int param_1)
 
 {
   int iVar1;
-  
+
   iVar1 = 0;
   do {
     if (*(int *)(param_1 + 8) != 0) {

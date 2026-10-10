@@ -56,7 +56,7 @@ void ov18_021F4E28(int param_1)
   undefined4 uVar1;
   short sStack_14;
   short sStack_12;
-  
+
   func_0x020ccba0(0x100000,(int)*(short *)(*(int *)(param_1 + 0x18d0) +
                                           (uint)*(ushort *)(param_1 + 0x18a2) * 2) << 0xc);
   uVar1 = func_0x020f2178();

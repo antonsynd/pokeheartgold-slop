@@ -54,7 +54,7 @@ void ov14_021F32E0(int param_1,undefined4 param_2,undefined4 param_3,undefined4 
   char cStack_1c;
   char acStack_1b [3];
   undefined4 uStack_18;
-  
+
   uStack_18 = param_4;
   sub_02019B1C(*(undefined4 *)(*(int *)(param_1 + 0x34) + 0x2f0),1,acStack_1b,&cStack_1c);
   uVar1 = 0;

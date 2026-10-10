@@ -49,7 +49,7 @@ void ov102_021EAC20(int param_1)
 
 {
   int iVar1;
-  
+
   iVar1 = ov102_021E8FB4(*(undefined4 *)(param_1 + 4));
   if (*(int *)(param_1 + 0x74) != 0) {
     Sprite_SetPositionXY(*(int *)(param_1 + 0x74),(iVar1 * 2 + 0x1c) * 0x10000 >> 0x10,0x40);

@@ -53,7 +53,7 @@ undefined4 ov85_021E636C(undefined4 *param_1)
   undefined4 uVar1;
   int *piVar2;
   int iVar3;
-  
+
   if (param_1[0x10] == 1) {
     param_1[0x44] = (uint)*(ushort *)(param_1 + 0x18) << 0xc;
     iVar3 = 0;

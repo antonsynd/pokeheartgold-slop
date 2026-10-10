@@ -51,7 +51,7 @@ undefined4 WeatherManager_ChangeWeather(int param_1,int param_2)
 {
   int iVar1;
   undefined4 uVar2;
-  
+
   if (0xd < param_2) {
     GF_AssertFail();
   }

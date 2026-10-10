@@ -54,7 +54,7 @@ undefined4 ov13_02222D78(void)
   int local_18;
   __asm__ volatile("movs %0, r3" : "=l"(in_r3) : : "cc");
 
-  
+
   uVar2 = 0xffffffff;
   local_18 = in_r3;
   iVar1 = ov13_022235A4();

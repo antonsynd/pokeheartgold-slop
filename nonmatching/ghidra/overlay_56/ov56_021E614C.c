@@ -62,7 +62,7 @@ undefined4 ov56_021E614C(undefined4 *param_1)
   undefined1 uVar2;
   undefined4 uVar3;
   int iVar4;
-  
+
   sVar1 = *(short *)(param_1 + 2);
   if (sVar1 == 0) {
     *(undefined1 *)((int)param_1 + 0x13) = 1;

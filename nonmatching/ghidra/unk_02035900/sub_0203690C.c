@@ -56,7 +56,7 @@ void sub_0203690C(int param_1,byte *param_2)
   undefined2 uVar1;
   int iVar2;
   undefined4 uVar3;
-  
+
   *(int *)(iRam021d4148 + 0x66c + param_1 * 4) = *(int *)(iRam021d4148 + 0x66c + param_1 * 4) + -1;
   if (param_2 != (byte *)0x0) {
     if ((*(char *)(iRam021d4148 + 0x69e + param_1) == '\0') || ((*param_2 & 1) == 0)) {

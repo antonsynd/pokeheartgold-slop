@@ -58,7 +58,7 @@ undefined4 ov70_022413AC(int *param_1)
   undefined *puVar1;
   uint uVar2;
   int iVar3;
-  
+
   puVar1 = ov70_0223E49C(*(undefined **)(*param_1 + 8),*(undefined **)(*param_1 + 0xc),
                          (uint)*(ushort *)(param_1 + 0x48),(uint)*(ushort *)((int)param_1 + 0x122));
   param_1[0x2f] = (int)puVar1;

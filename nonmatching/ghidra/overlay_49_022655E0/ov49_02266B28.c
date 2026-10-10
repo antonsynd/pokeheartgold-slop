@@ -60,7 +60,7 @@ void ov49_02266B28(int param_1,int param_2,int param_3)
 {
   int iVar1;
   undefined4 uVar2;
-  
+
   iVar1 = ov49_02258DAC(*(undefined4 *)(param_1 + 4));
   if (*(int *)(param_2 + 8) == iVar1) {
     ov49_0225CC44(*(undefined4 *)(param_1 + 8));

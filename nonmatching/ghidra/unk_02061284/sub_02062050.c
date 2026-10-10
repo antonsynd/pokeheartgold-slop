@@ -48,7 +48,7 @@ undefined4 sub_02062050(void)
 
 {
   int iVar1;
-  
+
   iVar1 = MapObject_GetType();
   if (iVar1 - 7U < 2) {
     return 1;

@@ -56,7 +56,7 @@ int ov96_021FF67C(undefined4 param_1,undefined4 param_2,undefined4 param_3,int p
   int iVar3;
   int iVar4;
   undefined1 auStack_20 [12];
-  
+
   func_0x020ccdac(param_2,param_1,auStack_20);
   iVar1 = func_0x020ccf80(auStack_20);
   iVar1 = iVar1 * iVar1;

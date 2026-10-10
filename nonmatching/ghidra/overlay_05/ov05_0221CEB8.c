@@ -85,7 +85,7 @@ void ov05_0221CEB8(int param_1,int param_2,int param_3,undefined4 param_4)
   undefined4 uStack_20;
   int iStack_1c;
   undefined4 uStack_18;
-  
+
   *(int *)(param_1 + 0xba8) = param_2;
   uStack_28 = 1;
   uStack_24 = 0;

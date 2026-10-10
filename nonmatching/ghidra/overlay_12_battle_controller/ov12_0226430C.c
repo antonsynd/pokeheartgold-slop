@@ -51,7 +51,7 @@ void ov12_0226430C(undefined4 param_1,undefined4 param_2,undefined1 param_3,unde
   undefined1 uStack_14;
   undefined1 uStack_13;
   undefined4 uStack_10;
-  
+
   uStack_14 = param_3;
   uStack_10 = param_4;
   uStack_13 = sub_0203769C();

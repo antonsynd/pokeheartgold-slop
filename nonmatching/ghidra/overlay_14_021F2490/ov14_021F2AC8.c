@@ -73,7 +73,7 @@ void ov14_021F2AC8(int param_1)
   undefined4 uStack_20;
   undefined4 uStack_1c;
   undefined4 uStack_18;
-  
+
   uStack_2c = 0x35;
   uStack_28 = 9;
   uStack_24 = 7;

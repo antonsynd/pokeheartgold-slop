@@ -56,7 +56,7 @@ undefined4 ov14_021E80A8(int param_1,undefined4 param_2,undefined4 param_3,undef
   char cStack_16;
   char cStack_15;
   undefined4 uStack_14;
-  
+
   uStack_14 = param_4;
   sub_02019B1C(*(undefined4 *)(*(int *)(param_1 + 0x34) + 0x2f0),1,&cStack_15,&cStack_16);
   iVar1 = sub_02019978(*(undefined4 *)(*(int *)(param_1 + 0x34) + 0x2f0),1);

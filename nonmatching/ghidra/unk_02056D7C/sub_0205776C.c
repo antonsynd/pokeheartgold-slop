@@ -52,7 +52,7 @@ void sub_0205776C(undefined4 param_1,undefined4 param_2,byte *param_3)
 {
   uint uVar1;
   uint uVar2;
-  
+
   uVar2 = (uint)*param_3;
   if ((iRam021d41c4 != 0) && (uVar1 = sub_0203769C(), uVar2 != uVar1)) {
     sub_0205724C(uVar2,0,0);

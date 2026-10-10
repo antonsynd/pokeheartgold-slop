@@ -102,7 +102,7 @@ void ov91_0225F878(undefined4 *param_1,int param_2)
   undefined4 uStack_1c;
   undefined4 uStack_18;
   undefined4 uStack_14;
-  
+
   puVar1 = BgConfig_Alloc(param_2);
   *param_1 = puVar1;
   uStack_20 = 1;

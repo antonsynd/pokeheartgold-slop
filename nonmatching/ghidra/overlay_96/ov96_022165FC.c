@@ -54,7 +54,7 @@ void ov96_022165FC(int param_1)
 {
   int iVar1;
   uint *puVar2;
-  
+
   RemoveWindow(param_1 + 0x20);
   MessageFormat_Delete(*(undefined4 *)(param_1 + 0x10));
   DestroyMsgData(*(undefined4 *)(param_1 + 0x14));

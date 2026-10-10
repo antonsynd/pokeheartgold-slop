@@ -50,7 +50,7 @@ int sub_02057BEC(int param_1)
 
 {
   int iVar1;
-  
+
   iVar1 = sub_02057B4C();
   if (iVar1 == 0xffff) {
     return 0xffff;

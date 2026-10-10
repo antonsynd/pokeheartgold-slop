@@ -73,7 +73,7 @@ void ov43_0222B944(int param_1,undefined4 param_2,undefined4 *param_3,undefined4
   int iStack_48;
   undefined4 *apuStack_44 [11];
   undefined4 uStack_18;
-  
+
   pcVar7 = (code *)0x222ed74;
   iVar8 = 0x222ee08;
   iStack_48 = 0;

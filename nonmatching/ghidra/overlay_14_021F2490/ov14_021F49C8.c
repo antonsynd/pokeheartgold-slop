@@ -48,7 +48,7 @@ void ov14_021F49C8(undefined4 param_1)
 
 {
   uint uVar1;
-  
+
   uVar1 = 0;
   do {
     ov14_021F4958(param_1,uVar1);

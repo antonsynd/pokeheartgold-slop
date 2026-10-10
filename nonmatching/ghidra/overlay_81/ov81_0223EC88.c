@@ -50,7 +50,7 @@ undefined4 ov81_0223EC88(int param_1)
 
 {
   int iVar1;
-  
+
   if ((*(char *)(param_1 + 8) == '\0') &&
      (iVar1 = OverlayManager_Run(*(undefined4 *)(param_1 + 4)), iVar1 == 1)) {
     *(uint *)(param_1 + 0x3d8) = (uint)*(byte *)(*(int *)(param_1 + 0x1c0) + 0x14);

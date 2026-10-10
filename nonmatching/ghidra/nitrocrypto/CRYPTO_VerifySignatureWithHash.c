@@ -58,7 +58,7 @@ undefined4 CRYPTO_VerifySignatureWithHash(char *param_1,undefined4 param_2)
   char *pcStack_114;
   int iStack_110;
   undefined1 auStack_10c [260];
-  
+
   uStack_118 = 0;
   iStack_110 = 0;
   uVar1 = CRYPTOi_RSA(auStack_10c,0x100,param_2);

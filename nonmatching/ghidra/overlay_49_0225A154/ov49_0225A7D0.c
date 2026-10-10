@@ -60,7 +60,7 @@ void ov49_0225A7D0(undefined4 *param_1)
   int iVar1;
   uint *puVar2;
   undefined4 *puVar3;
-  
+
   GF_DestroyVramTransferManager();
   puVar2 = (uint *)&ov49_02269734;
   iVar1 = 0;

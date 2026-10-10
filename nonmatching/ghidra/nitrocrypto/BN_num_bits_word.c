@@ -48,7 +48,7 @@ int BN_num_bits_word(uint param_1)
 
 {
   int iVar1;
-  
+
   if ((param_1 & 0xffff0000) == 0) {
     if ((param_1 & 0xff00) == 0) {
       iVar1 = 0;

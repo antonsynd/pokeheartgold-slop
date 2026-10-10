@@ -53,7 +53,7 @@ undefined4 ov74_02231584(void)
   int iVar1;
   int iVar2;
   undefined4 uVar3;
-  
+
   iVar1 = ov74_022310C4();
   iVar2 = ov74_02231154();
   *(undefined1 *)(iVar1 + 8) =

@@ -60,7 +60,7 @@ undefined4 ov01_021F1F8C(undefined4 param_1,undefined4 param_2)
   uint uVar2;
   ushort *puVar3;
   uint uVar4;
-  
+
   puVar3 = (ushort *)&ov01_02206A14;
   uVar4 = 0;
   do {

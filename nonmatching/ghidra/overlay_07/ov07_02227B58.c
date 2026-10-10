@@ -66,7 +66,7 @@ void ov07_02227B58(undefined4 param_1,byte *param_2)
   uint uVar10;
   byte *pbVar11;
   int iStack_1c;
-  
+
   bVar1 = param_2[1];
   if (bVar1 == 0) {
     iVar7 = (int)((uint)*param_2 * -0x80000000) >> 0x1f;

@@ -59,7 +59,7 @@ void ov89_02259E50(undefined4 param_1,undefined4 param_2,undefined2 *param_3)
   undefined4 uVar5;
   undefined4 uVar6;
   int iVar7;
-  
+
   func_0x020d4994(param_3,0,0x48);
   uVar3 = SaveArray_Party_Get(param_2);
   iVar4 = Party_GetCount();

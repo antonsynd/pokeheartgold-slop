@@ -55,7 +55,7 @@ void ov73_021E79F4(int param_1,int param_2,int param_3,int *param_4)
   int iVar3;
   int *piStack_20;
   int iStack_1c;
-  
+
   iStack_1c = 0;
   piStack_20 = param_4;
   if (0 < param_1) {

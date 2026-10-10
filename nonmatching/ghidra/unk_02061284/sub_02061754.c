@@ -48,7 +48,7 @@ undefined4 sub_02061754(undefined4 param_1,int param_2)
 
 {
   int iVar1;
-  
+
   iVar1 = sub_02062428();
   if (iVar1 == 0) {
     return 0;

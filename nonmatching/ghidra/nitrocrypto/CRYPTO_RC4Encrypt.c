@@ -53,7 +53,7 @@ void CRYPTO_RC4Encrypt(byte *param_1,byte *param_2,int param_3,byte *param_4)
   byte bVar5;
   uint uVar6;
   uint uVar7;
-  
+
   uVar7 = (uint)*param_1 * 0x1000000 + 0x1000000;
   uVar6 = (uint)param_1[1] << 0x18;
   bVar2 = param_1[(uVar7 >> 0x18) + 4];

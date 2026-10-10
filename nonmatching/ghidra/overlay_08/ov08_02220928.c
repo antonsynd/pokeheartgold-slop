@@ -52,7 +52,7 @@ void ov08_02220928(int *param_1,undefined4 param_2,undefined4 param_3,undefined4
 
 {
   undefined4 uVar1;
-  
+
   uVar1 = func_0x0223a8e4(*(undefined4 *)(*param_1 + 8));
   func_0x0200d644(param_1[0x7a],3,uVar1,param_1[0x7ed],0x47,0x1b,0,1,2,0xb00b,param_4);
   func_0x0200d6d4(uVar1,param_1[0x7ed],0x47,0x19,0,0xb00b);

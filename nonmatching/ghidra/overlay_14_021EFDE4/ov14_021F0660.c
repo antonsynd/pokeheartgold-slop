@@ -66,7 +66,7 @@ void ov14_021F0660(int param_1,int param_2)
   undefined4 uVar2;
   int iVar3;
   uint uVar4;
-  
+
   *(char *)(param_1 + 0x21) = (char)param_2;
   uVar4 = 0x1e;
   do {

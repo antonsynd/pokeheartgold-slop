@@ -56,7 +56,7 @@ void ov14_021E7470(int param_1,int param_2)
 {
   int iVar1;
   uint uVar2;
-  
+
   iVar1 = ov14_021F5404();
   uVar2 = 0;
   do {

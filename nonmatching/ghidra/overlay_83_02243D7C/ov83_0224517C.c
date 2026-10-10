@@ -48,7 +48,7 @@ void ov83_0224517C(int param_1,undefined2 param_2,undefined2 param_3)
 
 {
   int iVar1;
-  
+
   *(undefined2 *)(param_1 + 0x564) = param_2;
   *(undefined2 *)(param_1 + 0x566) = param_3;
   iVar1 = sub_0203769C();

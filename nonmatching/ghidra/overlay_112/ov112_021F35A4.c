@@ -50,7 +50,7 @@ int ov112_021F35A4(int param_1)
   int iVar1;
   int iVar2;
   int iVar3;
-  
+
   iVar2 = 0;
   iVar3 = 0;
   do {

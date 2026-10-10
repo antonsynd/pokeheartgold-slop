@@ -60,7 +60,7 @@ void sub_0205D978(undefined4 param_1,undefined4 param_2)
   uint uVar2;
   undefined4 uStack_20;
   undefined4 uStack_1c;
-  
+
   uStack_20 = sub_0205D6B4();
   uVar1 = PlayerAvatar_GetNextFacingDirection(param_1);
   uVar2 = sub_0205DA34(param_1,param_2,uVar1);

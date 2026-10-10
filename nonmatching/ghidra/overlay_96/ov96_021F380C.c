@@ -53,7 +53,7 @@ void ov96_021F380C(uint param_1,int param_2)
   int *piVar4;
   int iVar5;
   uint uVar6;
-  
+
   uVar6 = 0;
   if (param_1 != 0) {
     do {

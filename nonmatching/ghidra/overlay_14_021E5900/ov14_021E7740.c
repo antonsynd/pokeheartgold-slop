@@ -56,7 +56,7 @@ void ov14_021E7740(int param_1,undefined4 param_2,uint param_3,short param_4,sho
   uint uStack_28;
   short asStack_1c [2];
   int iStack_18;
-  
+
   uVar1 = GfGfxLoader_GetScrnData(0x13,0xf,1,&iStack_18,10);
   uStack_28 = 0;
   do {

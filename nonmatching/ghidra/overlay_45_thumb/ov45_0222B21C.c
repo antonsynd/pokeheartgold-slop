@@ -47,7 +47,7 @@ undefined4 ov45_0222B21C(int param_1,undefined4 *param_2)
 
 {
   undefined4 uVar1;
-  
+
   if (*(int *)(param_1 + 0x524) == 1) {
     uVar1 = *(undefined4 *)(param_1 + 0x514);
     *param_2 = *(undefined4 *)(param_1 + 0x510);

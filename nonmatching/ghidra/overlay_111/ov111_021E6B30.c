@@ -53,7 +53,7 @@ void ov111_021E6B30(undefined4 param_1,undefined4 param_2,undefined4 param_3,und
 
 {
   undefined4 uVar1;
-  
+
   FillWindowPixelBuffer(param_2,0);
   uVar1 = ReadMsgData_ExpandPlaceholders(param_3,param_4,param_5,param_10);
   AddTextPrinterParameterizedWithColor(param_2,0,uVar1,param_7,param_8,0,param_9,0);

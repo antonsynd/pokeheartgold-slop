@@ -59,7 +59,7 @@ void ov72_02237C30(char param_1,char param_2,undefined1 param_3,undefined4 param
   int iVar2;
   undefined1 *puVar3;
   undefined1 *puVar4;
-  
+
   func_0x0221be84();
   func_0x020e5ad8(0x223b834,param_4,0xe4);
   cRam0223b918 = param_1 + -1;

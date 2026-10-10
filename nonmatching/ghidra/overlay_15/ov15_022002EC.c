@@ -47,7 +47,7 @@ undefined1 ov15_022002EC(int param_1)
 
 {
   undefined1 uVar1;
-  
+
   uVar1 = param_1 < 100;
   if (param_1 < 10) {
     uVar1 = 2;

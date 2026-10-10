@@ -58,7 +58,7 @@ uint sub_020213F8(int param_1,int param_2,uint param_3)
   uint uVar4;
   uint uVar5;
   uint uVar6;
-  
+
   uVar5 = 0;
   if (uRam021d21a0 != 0) {
     do {

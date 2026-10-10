@@ -48,7 +48,7 @@ undefined4 ov74_02232398(int param_1,int param_2,undefined4 param_3,undefined4 p
 
 {
   int iVar1;
-  
+
   iVar1 = AGB_GetBoxMonData(*(int *)(param_1 + 0xe880) + 4 + *(int *)(param_1 + 0xe884) * 0x960 +
                             param_2 * 0x50,0x41,0,*(int *)(param_1 + 0xe884),param_4);
   if (iVar1 == 0x19c) {

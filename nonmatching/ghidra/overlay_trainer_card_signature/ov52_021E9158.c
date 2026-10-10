@@ -59,7 +59,7 @@ void ov52_021E9158(undefined4 param_1,int param_2,byte *param_3,int param_4)
   int iStack_20;
   int iStack_1c;
   int iStack_18;
-  
+
   bVar2 = false;
   iStack_20 = 0;
   iVar4 = param_2;

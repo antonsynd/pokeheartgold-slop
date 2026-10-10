@@ -55,7 +55,7 @@ void ov49_0225F334(undefined4 param_1,undefined4 param_2,undefined4 param_3,unde
   undefined4 uVar1;
   undefined4 uVar2;
   undefined4 uVar3;
-  
+
   uVar3 = param_4;
   uVar1 = ov49_02259FF0();
   uVar2 = ov49_0225A008(param_1);

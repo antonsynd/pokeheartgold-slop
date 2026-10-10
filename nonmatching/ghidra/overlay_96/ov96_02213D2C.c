@@ -69,7 +69,7 @@ undefined4 ov96_02213D2C(int *param_1,int *param_2,int *param_3,int *param_4,und
   int iStack_20;
   undefined4 uStack_1c;
   int *piStack_18;
-  
+
   iStack_24 = 0;
   iStack_20 = 0;
   uStack_1c = 0;

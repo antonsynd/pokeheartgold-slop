@@ -50,7 +50,7 @@ void ov47_02259DA4(int param_1,uint param_2,undefined4 param_3)
 
 {
   undefined8 uVar1;
-  
+
   if (2 < param_2) {
     GF_AssertFail();
   }

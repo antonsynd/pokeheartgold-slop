@@ -50,7 +50,7 @@ undefined4 FrtCmd_200(undefined4 *param_1)
 
 {
   int iVar1;
-  
+
   iVar1 = Frontier_GetLaunchArgs(*(undefined4 *)*param_1);
   sub_020270C4(*(undefined4 *)(iVar1 + 8));
   FrontierScript_ReadVar(param_1);

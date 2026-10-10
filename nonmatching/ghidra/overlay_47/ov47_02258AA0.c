@@ -68,7 +68,7 @@ void ov47_02258AA0(undefined4 *param_1,undefined4 param_2,undefined4 param_3)
   uint *puVar3;
   undefined *puVar4;
   int iStack_1c;
-  
+
   SetBothScreensModesAndDisable(&ov47_02259E48);
   uVar2 = BgConfig_Alloc(param_3);
   *param_1 = uVar2;

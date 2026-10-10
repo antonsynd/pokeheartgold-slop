@@ -51,7 +51,7 @@ undefined4 ov01_021F08C0(int *param_1)
   undefined4 uVar1;
   int iVar2;
   int iVar3;
-  
+
   if (*(char *)((int)param_1 + 0x2e) == '\0') {
     return 1;
   }

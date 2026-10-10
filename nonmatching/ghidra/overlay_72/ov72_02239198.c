@@ -50,7 +50,7 @@ undefined4 ov72_02239198(int *param_1)
 
 {
   int iVar1;
-  
+
   iVar1 = ov72_0223AF48(param_1 + 0x4db);
   if (iVar1 != 0) {
     if (iVar1 == 2) {

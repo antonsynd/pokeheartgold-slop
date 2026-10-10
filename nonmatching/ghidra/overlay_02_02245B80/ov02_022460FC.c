@@ -65,7 +65,7 @@ undefined4 ov02_022460FC(void)
   undefined4 uStack_14;
   undefined4 uStack_10;
   undefined4 uStack_c;
-  
+
   uStack_c = in_r3;
   puVar2 = (undefined4 *)TaskManager_GetEnvironment();
   sVar1 = *(short *)(puVar2 + 3);

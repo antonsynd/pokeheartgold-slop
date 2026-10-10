@@ -52,7 +52,7 @@ void ov14_021F3BC0(int param_1,undefined4 param_2,undefined4 param_3,undefined4 
   char cStack_10;
   undefined1 auStack_f [3];
   undefined4 uStack_c;
-  
+
   uStack_c = param_4;
   sub_02019B1C(*(undefined4 *)(param_1 + 0x2f0),0x10,auStack_f,&cStack_10);
   ManagedSprite_SetPositionXY

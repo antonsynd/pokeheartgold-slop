@@ -52,7 +52,7 @@ void ov112_021F1324(int param_1)
 {
   int iVar1;
   int iVar2;
-  
+
   iVar1 = 0;
   iVar2 = param_1 + 0x18;
   do {

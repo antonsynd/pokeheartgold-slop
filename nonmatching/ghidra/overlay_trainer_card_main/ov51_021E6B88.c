@@ -53,7 +53,7 @@ void ov51_021E6B88(undefined4 *param_1,undefined4 param_2,undefined4 param_3,und
 
 {
   int iVar1;
-  
+
   iVar1 = -(uint)*(byte *)((int)param_1 + 0x343f);
   BgSetPosTextAndCommit(*param_1,5,0,iVar1,param_4);
   BgSetPosTextAndCommit(*param_1,5,3,iVar1);

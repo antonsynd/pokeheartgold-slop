@@ -57,7 +57,7 @@ undefined4 ov00_021E6D7C(int param_1,uint param_2,int param_3)
 {
   int iVar1;
   undefined4 uVar2;
-  
+
   iVar1 = ov00_021E7314();
   if (iVar1 != 0) {
     return 0xfffffffc;

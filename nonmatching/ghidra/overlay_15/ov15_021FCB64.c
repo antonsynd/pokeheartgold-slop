@@ -72,7 +72,7 @@ undefined4 ov15_021FCB64(undefined4 *param_1)
   undefined4 uVar3;
   int iVar4;
   int *piVar5;
-  
+
   piVar5 = (int *)(param_1[0x8d] + 4 + (uint)*(byte *)(param_1[0x8d] + 100) * 0xc);
   ov15_021FD574(param_1,4,0,0);
   *(undefined2 *)(param_1 + 0x1a0) = 1;

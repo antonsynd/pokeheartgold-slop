@@ -50,7 +50,7 @@ int ov48_0225ADF8(int param_1,int param_2,undefined4 param_3)
 
 {
   int iVar1;
-  
+
   if (*(char *)(param_1 + param_2 + 0x34) == '\0') {
     return 1;
   }

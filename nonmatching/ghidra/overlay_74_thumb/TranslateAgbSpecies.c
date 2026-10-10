@@ -50,7 +50,7 @@ uint TranslateAgbSpecies(uint param_1)
 {
   uint uVar1;
   ushort *puVar2;
-  
+
   if (0x114 < (int)param_1) {
     puVar2 = (ushort *)&ov74_0223CC5C;
     uVar1 = 0;

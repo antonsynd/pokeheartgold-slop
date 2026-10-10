@@ -60,7 +60,7 @@ void ov41_02247850(undefined4 param_1,int *param_2,undefined4 param_3,undefined4
 
 {
   int iVar1;
-  
+
   switch(param_2[3]) {
   case 0:
     func_0x0200b484(8,0xfffffff0,0,10,1,param_4);

@@ -58,7 +58,7 @@ void ov96_021EE75C(undefined4 *param_1,undefined4 param_2,uint param_3,int param
   uint uVar1;
   undefined4 uVar2;
   int iVar3;
-  
+
   uVar1 = 4;
   iVar3 = param_4;
   if (param_4 == 0) {

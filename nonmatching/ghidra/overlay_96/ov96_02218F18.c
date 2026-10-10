@@ -52,7 +52,7 @@ void ov96_02218F18(int param_1)
   undefined4 uStack_1c;
   undefined4 uStack_18;
   undefined1 auStack_14 [12];
-  
+
   uStack_20 = 0;
   uStack_1c = 0;
   uStack_18 = 0;

@@ -60,7 +60,7 @@ void ov07_0222DEEC(undefined4 param_1,undefined4 *param_2)
 
 {
   int iVar1;
-  
+
   switch(param_2[3]) {
   case 0:
     iVar1 = param_2[0x1b];

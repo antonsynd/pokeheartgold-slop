@@ -48,7 +48,7 @@ void ov57_0223857C(undefined1 *param_1,int param_2)
 {
   undefined1 *puVar1;
   int iVar2;
-  
+
   iVar2 = 0;
   do {
     iVar2 = iVar2 + 1;

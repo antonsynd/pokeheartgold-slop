@@ -49,7 +49,7 @@ void sub_0208C3C0(int param_1)
 
 {
   int iVar1;
-  
+
   iVar1 = Sprite_GetDrawFlag(*(undefined4 *)(param_1 + 0x50c));
   if (iVar1 == 1) {
     Sprite_UpdateAnim(*(undefined4 *)(param_1 + 0x50c),0x1000);

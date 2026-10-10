@@ -49,7 +49,7 @@ void ov81_02242514(int param_1)
 
 {
   ushort uVar1;
-  
+
   if (((*(undefined **)(param_1 + 0x1a0) != (undefined *)0x0) && (*(int *)(param_1 + 0x478) != 0xff)
       ) && (uVar1 = PaletteData_GetSelectedBuffersBitmask(*(undefined **)(param_1 + 0x1a0)),
            uVar1 == 0)) {

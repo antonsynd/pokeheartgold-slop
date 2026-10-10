@@ -50,7 +50,7 @@ void ov81_02242C80(undefined4 param_1,undefined4 param_2,undefined4 param_3,unde
 
 {
   undefined1 auStack_20 [16];
-  
+
   GetPokemonSpriteCharAndPlttNarcIds(auStack_20,param_3,2);
   PokepicManager_CreatePokepic(param_1,auStack_20,param_4,param_5,param_6,param_2,0,0);
   return;

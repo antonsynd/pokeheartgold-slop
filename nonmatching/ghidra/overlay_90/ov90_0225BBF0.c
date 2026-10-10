@@ -49,7 +49,7 @@ bool ov90_0225BBF0(undefined4 *param_1)
 
 {
   short sVar1;
-  
+
   *(short *)(param_1 + 2) = *(short *)(param_1 + 2) + -1;
   sVar1 = *(short *)(param_1 + 2);
   if (sVar1 < 1) {

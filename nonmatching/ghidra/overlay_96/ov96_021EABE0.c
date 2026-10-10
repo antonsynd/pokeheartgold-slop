@@ -49,7 +49,7 @@ void ov96_021EABE0(undefined4 *param_1,undefined4 param_2)
 
 {
   undefined4 uVar1;
-  
+
   uVar1 = ov96_021E8BAC(*param_1);
   Sprite_SetAffineOverwriteMode(uVar1,param_2);
   return;

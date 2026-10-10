@@ -58,7 +58,7 @@ void ov102_021EB0C0(undefined4 *param_1,char param_2,undefined4 param_3,undefine
   undefined1 uStack_17;
   byte bStack_16;
   undefined4 uStack_14;
-  
+
   uStack_14 = param_4;
   uVar1 = ov102_021EA268(*param_1);
   func_0x020d4994(&uStack_28,0,0x14);

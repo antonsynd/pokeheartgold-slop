@@ -63,7 +63,7 @@ void sub_02057550(void)
   int iVar7;
   undefined4 uVar8;
   int iStack_20;
-  
+
   iVar7 = 0;
   iStack_20 = 0;
   do {

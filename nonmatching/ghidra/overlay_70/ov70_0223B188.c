@@ -48,7 +48,7 @@ undefined4 ov70_0223B188(int param_1)
 
 {
   undefined4 uVar1;
-  
+
   uVar1 = ov70_02238C2C(*(undefined4 *)(param_1 + 4),10,0x12e,3,4,1);
   *(undefined4 *)(param_1 + 0x11c8) = uVar1;
   *(undefined4 *)(param_1 + 0x2c) = 5;

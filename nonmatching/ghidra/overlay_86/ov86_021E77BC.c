@@ -51,7 +51,7 @@ void ov86_021E77BC(int param_1)
 {
   int iVar1;
   uint uVar2;
-  
+
   uVar2 = 0;
   iVar1 = param_1;
   do {

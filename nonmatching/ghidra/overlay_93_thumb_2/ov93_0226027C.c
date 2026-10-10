@@ -60,7 +60,7 @@ undefined4 * ov93_0226027C(int param_1,short *param_2,undefined4 param_3,undefin
   short sStack_46;
   uint auStack_44 [12];
   undefined4 uStack_14;
-  
+
   psVar4 = &sStack_48;
   puVar5 = (undefined4 *)0x2262dcc;
   iVar3 = 6;

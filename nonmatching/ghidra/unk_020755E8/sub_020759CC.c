@@ -50,7 +50,7 @@ undefined4 sub_020759CC(int param_1)
 
 {
   int iVar1;
-  
+
   if (*(int *)(param_1 + 0xb8) == 0) {
     GF_AssertFail();
   }

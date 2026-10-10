@@ -48,7 +48,7 @@ undefined4 sub_02096C40(int param_1,undefined2 param_2,undefined4 param_3,undefi
 
 {
   int iVar1;
-  
+
   *(undefined2 *)(param_1 + 8) = param_2;
   iVar1 = sub_02037030(0x3d,param_1 + 8,0x28,param_4,param_4);
   if (iVar1 == 1) {

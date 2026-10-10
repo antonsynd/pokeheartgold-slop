@@ -49,7 +49,7 @@ void ov88_02258D90(int param_1,undefined4 *param_2,char param_3,char param_4,cha
 
 {
   ushort *puVar1;
-  
+
   puVar1 = *(ushort **)(param_1 + 4);
   CopyToBgTilemapRect((undefined *)*param_2,3,param_4 + 5,param_5 * '\x02' + 4,1,2,
                       (undefined *)(puVar1 + 6),param_3 + 6,0,(byte)((*puVar1 & 0x7ff) >> 3),

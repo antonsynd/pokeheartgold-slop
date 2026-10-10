@@ -54,7 +54,7 @@ void sub_0205D340(undefined *param_1,undefined4 param_2,undefined4 param_3,undef
 {
   int iVar1;
   undefined *puVar2;
-  
+
   iVar1 = PlayerAvatar_GetState(param_1);
   puVar2 = PlayerAvatar_GetMapObject(param_1);
   switch(iVar1) {

@@ -52,7 +52,7 @@ undefined4 sub_020947C0(int param_1,int param_2)
   int iVar3;
   uint uVar4;
   int iVar5;
-  
+
   if ((*(int *)(param_1 + param_2 * 0x34 + 0x198) != 0) &&
      (iVar1 = Sprite_GetDrawFlag(), iVar1 == 0)) {
     return 3;

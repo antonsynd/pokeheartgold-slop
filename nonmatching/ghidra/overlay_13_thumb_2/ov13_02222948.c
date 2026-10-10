@@ -47,7 +47,7 @@ int ov13_02222948(byte *param_1,byte *param_2,int param_3)
 
 {
   int iVar1;
-  
+
   iVar1 = 0;
   for (; (0 < param_3 && (iVar1 = (uint)*param_1 - (uint)*param_2, iVar1 == 0));
       param_1 = param_1 + 1) {

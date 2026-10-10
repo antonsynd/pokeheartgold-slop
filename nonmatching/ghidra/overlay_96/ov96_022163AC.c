@@ -54,7 +54,7 @@ void ov96_022163AC(int param_1,undefined4 param_2,undefined4 param_3,undefined4 
   int iVar1;
   int iVar2;
   int iVar3;
-  
+
   iVar3 = *(int *)(param_1 + 8);
   iVar2 = *(int *)(param_1 + 0xc);
   if (iVar3 == 0) {

@@ -51,7 +51,7 @@ uint sub_02037190(void)
 
 {
   uint uVar1;
-  
+
   uVar1 = sub_02033BE4((undefined *)(iRam021d4148 + 0x498));
   return uVar1;
 }

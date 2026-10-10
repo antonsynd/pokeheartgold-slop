@@ -51,7 +51,7 @@ undefined4 sub_02058D24(void)
   int iVar1;
   int iVar2;
   int iVar3;
-  
+
   iVar1 = sub_02037454();
   iVar3 = 0;
   if (0 < iVar1) {

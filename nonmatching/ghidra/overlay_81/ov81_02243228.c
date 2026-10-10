@@ -48,7 +48,7 @@ void ov81_02243228(undefined4 param_1,undefined4 param_2,uint *param_3,uint *par
 
 {
   byte *pbVar1;
-  
+
   pbVar1 = (byte *)func_0x0201a018();
   *param_3 = (uint)*pbVar1;
   *param_4 = (uint)pbVar1[1];

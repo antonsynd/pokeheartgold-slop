@@ -52,7 +52,7 @@ void ov27_0225CCE0(int param_1,int param_2)
   int iStack_10;
   int iStack_c;
   undefined4 uStack_8;
-  
+
   iStack_10 = (uint)*(ushort *)(&ov27_0225D118 + param_2 * 4) << 0xc;
   iStack_c = (*(ushort *)(&ov27_0225D11A + param_2 * 4) + 0x100) * 0x1000;
   uStack_8 = 0;

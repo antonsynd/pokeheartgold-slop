@@ -50,7 +50,7 @@ undefined4 ov59_0223858C(undefined4 param_1)
 
 {
   int iVar1;
-  
+
   iVar1 = ov59_022385AC();
   if (iVar1 != 0) {
     ov59_02238D74(param_1);

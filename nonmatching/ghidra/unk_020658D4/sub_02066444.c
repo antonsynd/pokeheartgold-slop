@@ -49,7 +49,7 @@ undefined4 sub_02066444(int param_1,undefined4 param_2,undefined4 param_3,undefi
 {
   uint uVar1;
   int aiStack_40 [13];
-  
+
   aiStack_40[8] = 0xc;
   aiStack_40[9] = 0xd;
   aiStack_40[10] = 0xe;

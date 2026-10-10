@@ -50,7 +50,7 @@ void ov113_021E6AB0(int param_1)
 {
   int iVar1;
   int iVar2;
-  
+
   iVar2 = 0;
   iVar1 = param_1;
   do {

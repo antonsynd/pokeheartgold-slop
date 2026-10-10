@@ -53,7 +53,7 @@ undefined4 ov15_021FA4F8(int param_1,undefined4 param_2,undefined4 param_3,undef
   int iVar1;
   int iVar2;
   int iVar3;
-  
+
   iVar2 = *(int *)(param_1 + 0x234) + 4;
   iVar3 = (uint)*(byte *)(*(int *)(param_1 + 0x234) + 100) * 0xc;
   iVar1 = iVar2 + iVar3;

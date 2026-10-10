@@ -57,7 +57,7 @@ undefined4 ov43_0222D15C(short *param_1,undefined4 *param_2,undefined4 *param_3,
 {
   undefined1 uVar1;
   int iVar2;
-  
+
   switch(*(undefined1 *)(param_2 + 2)) {
   case 0:
     param_1[7] = 0;

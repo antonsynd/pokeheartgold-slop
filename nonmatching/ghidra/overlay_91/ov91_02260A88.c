@@ -55,7 +55,7 @@ undefined4 ov91_02260A88(undefined4 *param_1,undefined4 param_2,undefined4 param
   int iStack_1c;
   int iStack_18;
   undefined4 uStack_14;
-  
+
   iVar1 = param_1[0x3e];
   iStack_1c = *(int *)(iVar1 + 0x2c);
   iStack_18 = *(undefined4 *)(iVar1 + 0x30);

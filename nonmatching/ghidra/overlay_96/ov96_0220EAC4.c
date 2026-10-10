@@ -54,7 +54,7 @@ void ov96_0220EAC4(int param_1)
   undefined4 *puVar3;
   int iStack_1c;
   undefined4 *puStack_18;
-  
+
   ov96_021EB144(*(undefined4 *)(param_1 + 0x20),1);
   ov96_0221031C(*(undefined4 *)(param_1 + 0xc4));
   iVar1 = 0;

@@ -56,7 +56,7 @@ ov85_021E6224(undefined4 *param_1,undefined4 param_2,undefined4 param_3,undefine
   int iVar3;
   int iStack_18;
   undefined4 uStack_14;
-  
+
   iStack_18 = *(int *)(param_1[10] + 0x1c);
   iVar3 = 0x4000;
   iVar2 = (uint)*(ushort *)(&ov85_021EA7C4 + param_1[0xb] * 2 + param_1[0xc] * 10) * 0x1000;

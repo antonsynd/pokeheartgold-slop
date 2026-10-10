@@ -62,7 +62,7 @@ undefined4 ov37_021E6D14(int param_1,undefined4 param_2)
   int iVar1;
   int iVar2;
   undefined4 uVar3;
-  
+
   iVar1 = YesNoPrompt_HandleInput(*(undefined4 *)(param_1 + 0x93f0));
   iVar2 = ov37_021E75C4();
   if ((*(int *)(param_1 + 0x318) == iVar2) && (*(int *)(param_1 + 0x93b4) == 0)) {

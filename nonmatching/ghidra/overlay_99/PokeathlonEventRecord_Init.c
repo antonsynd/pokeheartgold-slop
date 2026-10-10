@@ -69,7 +69,7 @@ PokeathlonEventRecord_Init
   int iVar1;
   int iVar2;
   undefined4 uVar3;
-  
+
   HandleLoadOverlay(0x62,2,param_3,param_4,param_4);
   iVar1 = OverlayManager_GetArgs(param_1);
   if (iVar1 == 0) {

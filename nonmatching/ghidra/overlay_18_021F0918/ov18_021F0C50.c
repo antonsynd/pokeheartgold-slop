@@ -54,7 +54,7 @@ void ov18_021F0C50(int param_1)
 
 {
   undefined4 uVar1;
-  
+
   FillWindowPixelBuffer(param_1 + 0xc,0);
   FillWindowPixelBuffer(param_1 + 0x4c,0);
   FillWindowPixelBuffer(param_1 + 0x1c,0);

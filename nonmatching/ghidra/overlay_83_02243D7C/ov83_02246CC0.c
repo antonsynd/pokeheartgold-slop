@@ -48,7 +48,7 @@ void ov83_02246CC0(int param_1,undefined4 param_2,undefined4 param_3)
 
 {
   uint uVar1;
-  
+
   uVar1 = (uint)*(byte *)(*(int *)(param_1 + 0x5f8) + 0x24);
   if (*(uint *)(param_1 + 0x600) != uVar1) {
     uVar1 = *(uint *)(*(int *)(param_1 + 0x5fc) + uVar1 * 8 + 4);

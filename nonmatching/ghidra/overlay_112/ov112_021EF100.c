@@ -55,7 +55,7 @@ undefined4 ov112_021EF100(int param_1)
 
 {
   undefined4 uVar1;
-  
+
   *(undefined4 *)(param_1 + 0x1d764) = 0;
   Main_SetVBlankIntrCB(0,0);
   sub_02093354(*(undefined4 *)(param_1 + 0x1d768));

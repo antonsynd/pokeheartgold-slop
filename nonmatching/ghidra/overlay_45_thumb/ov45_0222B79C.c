@@ -62,7 +62,7 @@ void ov45_0222B79C(int param_1,undefined4 param_2)
   int iVar6;
   undefined1 auStack_1c [4];
   int iStack_18;
-  
+
   func_0x020e5b44(param_2,0,200);
   ov45_0222EC10(auStack_1c);
   uVar2 = ov45_0222AA84(param_1 + 0x20);

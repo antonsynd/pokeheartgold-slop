@@ -49,7 +49,7 @@ void ov48_0225B010(int param_1,int param_2)
 
 {
   undefined1 auStack_18 [12];
-  
+
   ov48_0225AEC4(param_1 + param_2 * 0x10,auStack_18);
   Sprite_SetMatrix(*(undefined4 *)(param_1 + (uint)*(byte *)(param_1 + param_2 + 0x38) * 4 + 0x3c),
                    auStack_18);

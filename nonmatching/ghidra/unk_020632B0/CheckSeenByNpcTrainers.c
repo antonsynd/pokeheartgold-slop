@@ -60,7 +60,7 @@ CheckSeenByNpcTrainers
   undefined4 uStack_20;
   undefined4 uStack_1c;
   int iStack_18;
-  
+
   uStack_1c = 0;
   iStack_24 = 0;
   iStack_18 = param_4;

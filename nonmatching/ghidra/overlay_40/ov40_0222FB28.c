@@ -49,7 +49,7 @@ void ov40_0222FB28(int param_1,undefined4 param_2)
 
 {
   undefined4 uVar1;
-  
+
   uVar1 = Save_GameStats_Get(*(undefined4 *)(param_1 + 0x830));
   GameStats_AddScore(uVar1,param_2);
   return;

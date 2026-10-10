@@ -53,7 +53,7 @@ void ov74_02232700(int param_1,int param_2)
   uint uVar2;
   int iVar3;
   short sVar4;
-  
+
   iVar1 = func_0x0201cc08(*(undefined4 *)(param_1 + 0x20),2);
   if (param_2 == 0) {
     uVar2 = 0;

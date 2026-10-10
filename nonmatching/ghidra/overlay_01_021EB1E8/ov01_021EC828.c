@@ -50,7 +50,7 @@ void ov01_021EC828(int param_1)
   int iVar2;
   int iVar3;
   int iVar4;
-  
+
   iVar3 = *(int *)(param_1 + 0x24);
   if (*(short *)(param_1 + 0x2e) < 0) {
     iVar3 = 0x7f - iVar3;

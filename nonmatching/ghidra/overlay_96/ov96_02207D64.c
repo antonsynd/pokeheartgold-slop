@@ -53,7 +53,7 @@ void ov96_02207D64(int param_1)
 {
   int iVar1;
   int iVar2;
-  
+
   iVar1 = 0;
   iVar2 = param_1;
   do {

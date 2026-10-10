@@ -49,7 +49,7 @@ void ov01_021F3084(undefined4 param_1,undefined4 param_2)
 
 {
   undefined4 uVar1;
-  
+
   uVar1 = PlayerAvatar_GetMapObject();
   ov01_021FA930(uVar1,param_2);
   return;

@@ -48,7 +48,7 @@ void ov59_0223BA44(int param_1)
 
 {
   int iVar1;
-  
+
   iVar1 = 0;
   do {
     if (*(int *)(param_1 + 0x260) != 0) {

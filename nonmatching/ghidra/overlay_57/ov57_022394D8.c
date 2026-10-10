@@ -54,7 +54,7 @@ void ov57_022394D8(int *param_1,int param_2,int param_3,undefined4 param_4)
   int iStack_34;
   undefined1 auStack_30 [24];
   undefined4 uStack_18;
-  
+
   iVar1 = param_1[param_3 * 2 + 1];
   uStack_18 = param_4;
   if (param_1[param_2 * 2 + 1] != 0xff) {

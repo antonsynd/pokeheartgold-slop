@@ -59,7 +59,7 @@ undefined4 ov115_0225F0B4(short *param_1,undefined4 param_2,undefined4 param_3,u
   undefined4 uStack_2c;
   undefined1 auStack_24 [12];
   undefined4 uStack_18;
-  
+
   uStack_2c = 1;
   if (param_1[1] < 4) {
     uStack_2c = 0;

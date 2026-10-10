@@ -53,7 +53,7 @@ void sub_020345D0(int param_1,int param_2,undefined *param_3,undefined *param_4)
 
 {
   ushort uVar1;
-  
+
   if (iRam021d4130 != 0) {
     MI_CpuCopy8(param_3,(undefined *)(iRam021d4130 + 0xc + param_1 * 0x68),0x68);
     sub_020357C4((undefined *)(iRam021d4130 + 0x68 + param_1 * 0x68),param_1);

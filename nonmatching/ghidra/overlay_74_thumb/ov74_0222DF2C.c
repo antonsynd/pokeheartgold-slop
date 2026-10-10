@@ -55,7 +55,7 @@ undefined4 ov74_0222DF2C(int param_1,undefined4 param_2,undefined4 param_3,undef
   int iVar4;
   int iVar5;
   int iVar6;
-  
+
   iVar5 = 0x54000;
   if (*(int *)(param_1 + 0x3d40) == 0) {
     return 1;

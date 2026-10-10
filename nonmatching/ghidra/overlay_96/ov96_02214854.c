@@ -52,7 +52,7 @@ void ov96_02214854(undefined4 *param_1,undefined4 param_2,undefined4 param_3,und
 
 {
   undefined4 uVar1;
-  
+
   FillWindowPixelBuffer(param_1 + 9,0);
   uVar1 = ReadMsgData_ExpandPlaceholders(param_1[0xe],param_1[0xd],0x137,*param_1);
   AddTextPrinterParameterizedWithColor(param_1 + 9,0,uVar1,0,0,0xff,0xf0e00,0,param_4);

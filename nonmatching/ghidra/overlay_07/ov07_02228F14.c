@@ -54,7 +54,7 @@ void ov07_02228F14(undefined4 param_1,char *param_2)
   int iVar1;
   short sStack_c;
   short sStack_a;
-  
+
   if (*param_2 == '\0') {
     ov07_022227A8(param_2 + 0x38,(int)*(short *)(param_2 + 0x1c),(int)*(short *)(param_2 + 0x1e),
                   (int)*(short *)(param_2 + 0x20),(int)*(short *)(param_2 + 0x22));

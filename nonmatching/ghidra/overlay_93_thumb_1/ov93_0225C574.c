@@ -64,7 +64,7 @@ undefined4 ov93_0225C574(undefined4 param_1,int *param_2)
   int iVar2;
   int iVar3;
   undefined4 uVar4;
-  
+
   iVar1 = OverlayManager_GetData();
   iVar2 = OverlayManager_GetArgs(param_1);
   iVar3 = ov93_0225C730(iVar1);

@@ -61,7 +61,7 @@ void ov31_0225E700(int param_1,undefined4 param_2,undefined4 param_3,undefined4 
   byte bStack_e;
   undefined1 uStack_d;
   undefined4 uStack_c;
-  
+
   uStack_c = param_4;
   func_0x020d4994(&uStack_20,0,0x14);
   uStack_20 = *(undefined4 *)(param_1 + 4);

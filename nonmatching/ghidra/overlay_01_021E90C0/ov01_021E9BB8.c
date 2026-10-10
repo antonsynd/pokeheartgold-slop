@@ -50,7 +50,7 @@ void ov01_021E9BB8(int param_1,undefined4 param_2,undefined4 param_3,undefined4 
 
 {
   undefined4 uVar1;
-  
+
   uVar1 = MapPropOneShotAnimationManager_GetAnimationMapPropModelID(*(undefined4 *)(param_1 + 0x58))
   ;
   uVar1 = GetDoorSE(param_1,uVar1,1);

@@ -51,7 +51,7 @@ void ov40_02241F74(int param_1,int param_2)
 
 {
   int iVar1;
-  
+
   iVar1 = *(int *)(param_1 + 0x860);
   if (param_2 == 0) {
     ManagedSprite_SetDrawFlag(*(undefined4 *)(iVar1 + 0x14),1);

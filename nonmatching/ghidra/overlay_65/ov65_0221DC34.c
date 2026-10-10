@@ -55,7 +55,7 @@ void ov65_0221DC34(int param_1)
 {
   int iVar1;
   undefined *puVar2;
-  
+
   if ((((*(int *)(param_1 + 0x94) < 6) &&
        (iVar1 = TouchscreenHitbox_FindRectAtTouchNew(&ov65_0221FE6C), iVar1 != -1)) && (iVar1 < 6))
      && ((*(short *)(param_1 + iVar1 * 0x10 + 0x69c) != 0 &&

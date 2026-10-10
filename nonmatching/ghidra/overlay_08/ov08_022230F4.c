@@ -63,7 +63,7 @@ void ov08_022230F4(int *param_1,undefined4 param_2,undefined4 param_3,undefined4
   undefined4 uVar2;
   int iStack_18;
   undefined4 uStack_14;
-  
+
   uStack_14 = param_4;
   uVar1 = NARC_New(0x4d,*(undefined4 *)(*param_1 + 0xc));
   GfGfxLoader_LoadCharDataFromOpenNarc(uVar1,2,param_1[1],6,0,0,0,*(undefined4 *)(*param_1 + 0xc));

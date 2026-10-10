@@ -48,7 +48,7 @@ void ov45_0222C8AC(int param_1)
 
 {
   int iVar1;
-  
+
   func_0x020e5b44(param_1,0,0x20);
   iVar1 = 0;
   do {

@@ -57,7 +57,7 @@ void ov28_0225DA74(int param_1)
   undefined4 uVar1;
   int iVar2;
   undefined1 auStack_30 [36];
-  
+
   uVar1 = NARC_New(0xe,8);
   ov28_0225D92C(param_1 + 0x160,param_1 + 0x150,uVar1,0x46,7,0x44,0x45,4,0x1f2,0x1f2,0x1f2,0x1f2);
   NARC_Delete(uVar1);

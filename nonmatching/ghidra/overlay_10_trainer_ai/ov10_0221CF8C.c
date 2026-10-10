@@ -62,7 +62,7 @@ void ov10_0221CF8C(int param_1,int param_2)
   uint uVar6;
   uint uStack_24;
   uint uStack_20;
-  
+
   ov10_0221EF24(param_2,1);
   uVar1 = ov10_0221EEF0(param_2);
   *(undefined4 *)(param_2 + 0x35c) = 0;

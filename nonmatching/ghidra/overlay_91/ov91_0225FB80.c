@@ -56,7 +56,7 @@ void ov91_0225FB80(int param_1,undefined4 param_2,undefined4 param_3)
 {
   undefined4 uVar1;
   int iVar2;
-  
+
   uVar1 = func_0x0200a3c8(*(undefined4 *)(param_1 + 0x148),param_2,2,0,200,1,param_3);
   *(undefined4 *)(param_1 + 0x17c) = uVar1;
   uVar1 = func_0x0200a480(*(undefined4 *)(param_1 + 0x14c),param_2,3,0,200,1,8,param_3);

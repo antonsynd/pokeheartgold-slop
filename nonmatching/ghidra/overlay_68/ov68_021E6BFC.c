@@ -49,7 +49,7 @@ ov68_021E6BFC(undefined4 *param_1,undefined4 param_2,undefined4 param_3,undefine
 
 {
   undefined2 uVar1;
-  
+
   uVar1 = GetMonData(*(undefined4 *)*param_1,*(byte *)((int)*param_1 + 0x1b) + 0x36,0,param_4,
                      param_4);
   return uVar1;

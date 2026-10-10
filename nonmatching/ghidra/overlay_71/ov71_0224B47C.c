@@ -65,7 +65,7 @@ undefined4 ov71_0224B47C(undefined4 *param_1,int *param_2,undefined4 param_3,und
   int iVar3;
   undefined1 auStack_18 [4];
   undefined4 uStack_14;
-  
+
   uStack_14 = param_4;
   switch(*param_2) {
   case 0:

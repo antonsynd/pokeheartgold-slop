@@ -50,7 +50,7 @@ undefined4 ov91_0225CCF4(int *param_1)
   uint uVar2;
   uint uVar3;
   int *piVar4;
-  
+
   if ((0 < *param_1) && (param_1[1] == 1)) {
     *param_1 = *param_1 + -1;
   }

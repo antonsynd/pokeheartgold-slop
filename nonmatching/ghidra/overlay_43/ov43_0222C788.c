@@ -50,7 +50,7 @@ void ov43_0222C788(short *param_1,undefined4 *param_2,short *param_3,undefined2 
 {
   int iVar1;
   int iVar2;
-  
+
   *param_1 = *param_3;
   param_1[1] = param_3[1];
   param_1[2] = param_3[2];

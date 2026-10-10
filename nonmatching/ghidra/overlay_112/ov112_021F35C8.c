@@ -50,7 +50,7 @@ int ov112_021F35C8(int param_1,undefined4 param_2,undefined4 *param_3)
 {
   int iVar1;
   int iVar2;
-  
+
   iVar2 = 0;
   while ((iVar1 = TrainerHouseSet_CheckHasData(param_1), iVar1 == 0 ||
          (iVar1 = TrainerHouseTrainer_Compare(param_1,param_2), iVar1 == 0))) {

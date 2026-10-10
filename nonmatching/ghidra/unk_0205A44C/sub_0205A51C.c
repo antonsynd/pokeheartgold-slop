@@ -49,7 +49,7 @@ int sub_0205A51C(int param_1)
 {
   int iVar1;
   ushort *puVar2;
-  
+
   puVar2 = (ushort *)&UNK_020fc824;
   iVar1 = 0;
   while ((param_1 < (int)(uint)*puVar2 || ((int)(*puVar2 + 4) <= param_1))) {

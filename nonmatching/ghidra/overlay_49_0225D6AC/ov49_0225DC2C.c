@@ -58,7 +58,7 @@ void ov49_0225DC2C(undefined4 *param_1,undefined4 param_2,undefined4 param_3,int
   undefined4 *puStack_24;
   int *piStack_20;
   int iStack_1c;
-  
+
   iStack_1c = 0;
   puStack_2c = param_1;
   puStack_24 = param_1;

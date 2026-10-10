@@ -54,7 +54,7 @@ void ov83_022413C4(int param_1,undefined2 param_2)
   uint uVar3;
   int iVar4;
   int iVar5;
-  
+
   puVar2 = Save_PlayerData_GetProfile(*(undefined **)(param_1 + 0x50c));
   *(undefined2 *)(param_1 + 0x7ac) = param_2;
   uVar3 = PlayerProfile_GetTrainerGender(puVar2);

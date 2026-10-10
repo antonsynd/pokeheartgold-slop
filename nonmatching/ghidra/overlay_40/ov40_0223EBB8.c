@@ -62,7 +62,7 @@ undefined4 ov40_0223EBB8(int param_1,int param_2,undefined4 param_3,undefined4 p
   undefined4 uStack_20;
   undefined1 auStack_1c [4];
   undefined4 uStack_18;
-  
+
   uStack_20 = 0;
   uVar5 = (uint)*(ushort *)(&ov40_02245E44 + (param_2 + 1) * 2);
   uVar7 = (uint)*(ushort *)(&ov40_02245E44 + param_2 * 2);

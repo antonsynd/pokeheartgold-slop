@@ -54,7 +54,7 @@ undefined4 SafariAreaCustomizer_Init(undefined4 param_1)
 {
   undefined4 uVar1;
   undefined4 *puVar2;
-  
+
   uVar1 = OverlayManager_GetArgs();
   Heap_Create(3,0x5f,0x50000);
   puVar2 = (undefined4 *)OverlayManager_CreateAndGetData(param_1,0x184ec,0x5f);

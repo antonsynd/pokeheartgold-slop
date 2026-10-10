@@ -53,7 +53,7 @@ void ov59_0223BD4C(int param_1,int param_2,int param_3)
   undefined *puVar2;
   int iVar3;
   int iVar4;
-  
+
   if (*(char *)(param_2 + 0x10 + param_3) == '\0') {
     Sprite_SetDrawFlag(*(undefined **)(param_1 + (param_3 + 3) * 4 + 0x260),0);
   }

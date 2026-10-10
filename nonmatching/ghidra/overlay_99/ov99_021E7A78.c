@@ -51,7 +51,7 @@ void ov99_021E7A78(int param_1,undefined4 param_2,undefined4 param_3,undefined4 
 
 {
   undefined4 uVar1;
-  
+
   uVar1 = GridInputHandler_Create
                     (&ov99_021EA03C,&ov99_021EA250,&ov99_021E9FA0,param_1,1,
                      (*(uint *)(param_1 + 0x3f4) & 0x7ffffff) >> 0x13,*(undefined4 *)(param_1 + 0xc)

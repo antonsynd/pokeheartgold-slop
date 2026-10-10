@@ -55,7 +55,7 @@ ov49_022611F4(undefined4 *param_1,undefined4 param_2,undefined4 param_3,undefine
   int aiStack_28 [3];
   int aiStack_1c [3];
   undefined4 uStack_10;
-  
+
   uStack_10 = param_4;
   func_0x0222ae08(*param_1,&uStack_2c,&uStack_30);
   ov49_0225E420(param_2,uStack_2c,uStack_30,aiStack_28);

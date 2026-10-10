@@ -57,7 +57,7 @@ undefined4 ov89_0225C648(undefined4 param_1,int param_2,undefined4 param_3,undef
   undefined2 uStack_1a;
   short asStack_18 [4];
   undefined4 uStack_10;
-  
+
   asStack_18[0] = 0;
   asStack_18[1] = 0;
   asStack_18[2] = 0;

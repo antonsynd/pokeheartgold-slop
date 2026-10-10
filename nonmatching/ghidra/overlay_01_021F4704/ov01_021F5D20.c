@@ -47,7 +47,7 @@ void ov01_021F5D20(int param_1)
 
 {
   uint uVar1;
-  
+
   uVar1 = 0;
   do {
     *(undefined4 *)(param_1 + uVar1 * 4 + 0x80) = 0;

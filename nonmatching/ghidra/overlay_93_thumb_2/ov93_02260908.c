@@ -53,7 +53,7 @@ undefined4 ov93_02260908(int param_1,undefined4 param_2,undefined4 param_3,undef
 {
   int iVar1;
   int *piVar2;
-  
+
   piVar2 = (int *)(param_1 + 0x339c);
   if (*piVar2 == 1) {
     return 0;

@@ -50,7 +50,7 @@ undefined4 ov27_0225C994(undefined4 *param_1)
 
 {
   int iVar1;
-  
+
   iVar1 = Sprite_IsAnimated(param_1[0xe2]);
   if (iVar1 == 0) {
     Sprite_SetDrawFlag(param_1[0xe2],0);

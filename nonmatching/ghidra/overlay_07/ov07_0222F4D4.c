@@ -58,7 +58,7 @@ undefined4 ov07_0222F4D4(int param_1)
   undefined4 uVar2;
   undefined4 uStack_14;
   undefined4 uStack_10;
-  
+
   iVar1 = *(int *)(param_1 + 0x94);
   uVar2 = 0;
   if (iVar1 == 0) {

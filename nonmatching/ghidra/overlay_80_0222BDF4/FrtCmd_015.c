@@ -53,7 +53,7 @@ undefined4 FrtCmd_015(undefined4 *param_1)
   undefined1 uStack_b;
   undefined1 uStack_a;
   undefined1 uStack_9;
-  
+
   uVar1 = FrontierScriptContext_ReadHalfWord();
   uStack_c = 0;
   uStack_b = 0;

@@ -65,7 +65,7 @@ undefined4 sub_02035900(int param_1,int param_2)
   int iVar3;
   undefined4 uVar4;
   int iVar5;
-  
+
   bVar1 = false;
   uRam021d4141 = 0;
   if (param_1 == 0) {

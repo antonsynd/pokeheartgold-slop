@@ -53,7 +53,7 @@ undefined4 ov14_021EE5E8(int param_1)
 {
   byte bVar1;
   undefined4 uVar2;
-  
+
   bVar1 = *(byte *)(param_1 + 0x1f);
   *(undefined1 *)(param_1 + 0x1f) = *(undefined1 *)(param_1 + 0x25);
   if (bVar1 == *(byte *)(param_1 + 0x25)) {

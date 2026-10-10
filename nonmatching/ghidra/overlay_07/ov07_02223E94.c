@@ -50,7 +50,7 @@ void ov07_02223E94(undefined4 param_1,undefined4 *param_2)
 
 {
   int iVar1;
-  
+
   iVar1 = PaletteData_GetSelectedBuffersBitmask(param_2[1]);
   if (iVar1 == 0) {
     Heap_Free(param_2);

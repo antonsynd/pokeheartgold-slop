@@ -51,7 +51,7 @@ undefined4 ov13_02221D58(int param_1,int param_2)
   byte bVar1;
   uint uVar2;
   byte *pbVar3;
-  
+
   pbVar3 = (byte *)(param_1 + 6);
   do {
     uVar2 = ov13_02222A84((uint)*(ushort *)(pbVar3 + 2));

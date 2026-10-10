@@ -54,7 +54,7 @@ ov01_021EB64C(undefined4 param_1,undefined4 param_2,undefined4 param_3,undefined
 {
   undefined4 *puVar1;
   undefined4 uVar2;
-  
+
   puVar1 = (undefined4 *)Heap_Alloc(4,0x10c,param_3,param_4,param_4);
   puVar1[0x41] = param_1;
   ov01_021EB4B8(puVar1 + 2);

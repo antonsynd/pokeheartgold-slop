@@ -64,7 +64,7 @@ undefined4 ov70_0223A8BC(int param_1)
 {
   undefined4 uVar1;
   int iVar2;
-  
+
   ov70_0223AE98();
   ov70_0223AB3C(*(undefined4 *)(param_1 + 4),-0x20 - *(int *)(param_1 + 0xf14));
   ov70_0223ABF4(param_1);

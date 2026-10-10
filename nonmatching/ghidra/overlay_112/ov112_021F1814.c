@@ -50,7 +50,7 @@ void ov112_021F1814(int param_1)
 {
   int iVar1;
   undefined1 *puVar2;
-  
+
   puVar2 = (undefined1 *)0x21ff4c0;
   iVar1 = 0;
   do {

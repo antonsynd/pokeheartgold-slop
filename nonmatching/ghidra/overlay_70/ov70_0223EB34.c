@@ -54,7 +54,7 @@ void ov70_0223EB34(int param_1,undefined4 param_2,undefined4 param_3,undefined4 
   int iVar2;
   short sVar3;
   int iVar4;
-  
+
   AddWindowParameterized
             (*(undefined4 *)(param_1 + 4),param_1 + 0xf18,0,2,0x15,0x1b,2,0xd,0x60,param_1,param_4);
   FillWindowPixelBuffer(param_1 + 0xf18,0);

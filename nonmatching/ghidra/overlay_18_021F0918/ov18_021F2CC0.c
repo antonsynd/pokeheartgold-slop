@@ -48,7 +48,7 @@ int ov18_021F2CC0(void)
 
 {
   uint uVar1;
-  
+
   uVar1 = ov18_021F2C98();
   return 0x83 - (uVar1 >> 1);
 }

@@ -51,7 +51,7 @@ void ov41_0224689C(int param_1,int param_2,int param_3)
   undefined4 uVar1;
   int iVar2;
   undefined4 uStack_1c;
-  
+
   uStack_1c = 0;
   if (0 < param_3) {
     iVar2 = param_2;

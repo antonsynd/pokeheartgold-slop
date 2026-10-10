@@ -52,7 +52,7 @@ undefined4 ov67_021E5C04(int param_1)
 
 {
   int iVar1;
-  
+
   iVar1 = TouchscreenHitbox_TouchNewIsIn(&UNK_021e6d4c);
   if ((iVar1 != 1) && ((uRam021d1154 & 3) == 0)) {
     return 3;

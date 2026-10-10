@@ -49,7 +49,7 @@ void sub_0203A478(int param_1,int param_2,undefined4 param_3)
 
 {
   undefined1 uVar1;
-  
+
   sub_0203A4D4(2,*(undefined1 *)(param_1 + 0x10),0x1c0,param_3);
   sub_0203A59C(2,*(undefined1 *)(param_1 + 0x10),param_3);
   if (param_2 == 0) {

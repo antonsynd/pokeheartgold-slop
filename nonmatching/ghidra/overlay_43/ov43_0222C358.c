@@ -49,7 +49,7 @@ undefined4 ov43_0222C358(undefined4 param_1,undefined4 param_2,undefined4 param_
 
 {
   int iVar1;
-  
+
   iVar1 = ov43_0222C5D8();
   if (iVar1 == 0) {
     return 0;

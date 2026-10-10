@@ -49,7 +49,7 @@ void ov96_021EB03C(int param_1,undefined4 param_2,int param_3,undefined4 *param_
   int iVar1;
   int iVar2;
   int iVar3;
-  
+
   iVar2 = *(int *)(param_1 + 0x28);
   iVar3 = *(int *)(param_1 + 0x18) * 2;
   iVar1 = *(int *)(param_1 + 0x2c);

@@ -54,7 +54,7 @@ undefined4 ov27_0225A714(int param_1)
   int iVar2;
   int iVar3;
   undefined2 *puVar4;
-  
+
   if (*(int *)(param_1 + 0xc) == 0) {
     GF_AssertFail();
   }

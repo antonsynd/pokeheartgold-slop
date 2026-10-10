@@ -57,7 +57,7 @@ void ov49_0225AA70(int param_1)
   undefined4 uVar4;
   int iVar5;
   undefined4 uVar6;
-  
+
   uVar1 = func_0x0222a394(*(undefined4 *)(param_1 + 0x34));
   iVar5 = 0;
   do {

@@ -51,7 +51,7 @@ void ov80_0223AC68(undefined *param_1,int *param_2,undefined4 param_3,undefined4
 
 {
   int iVar1;
-  
+
   switch(*param_2) {
   case 0:
     if (param_2[3] == 1) {

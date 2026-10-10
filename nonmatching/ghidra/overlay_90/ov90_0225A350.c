@@ -59,7 +59,7 @@ void ov90_0225A350(int param_1,undefined4 param_2,undefined4 param_3,undefined4 
 {
   uint uVar1;
   int iVar2;
-  
+
   *(undefined2 *)(param_1 + 0x2c) = 0;
   *(undefined2 *)(param_1 + 0x2e) = 0;
   iVar2 = *(int *)(param_1 + 0x10) * 4;

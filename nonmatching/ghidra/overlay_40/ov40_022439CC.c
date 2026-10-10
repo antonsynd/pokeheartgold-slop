@@ -48,7 +48,7 @@ int ov40_022439CC(int param_1,int param_2)
 {
   int *piVar1;
   int iVar2;
-  
+
   piVar1 = (int *)(param_1 + 0x204);
   iVar2 = 0;
   if (0 < *piVar1) {

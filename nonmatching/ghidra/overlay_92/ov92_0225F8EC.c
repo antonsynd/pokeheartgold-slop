@@ -48,7 +48,7 @@ void ov92_0225F8EC(int param_1)
 
 {
   int iVar1;
-  
+
   iVar1 = *(int *)(param_1 + 0x2b18);
   if (iVar1 < 0x10e) {
     if (iVar1 < 0x10d) {

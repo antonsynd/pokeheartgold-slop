@@ -71,7 +71,7 @@ void ov74_0222947C(undefined4 *param_1,undefined4 param_2,undefined4 param_3,und
   undefined4 *puVar9;
   undefined1 auStack_28 [16];
   undefined4 uStack_18;
-  
+
   puVar9 = param_1 + 0xc60;
   uStack_18 = param_4;
   func_0x020d4994(puVar9,0,0x358);

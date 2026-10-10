@@ -67,7 +67,7 @@ void ov51_021E757C(int param_1,int param_2)
   undefined4 uVar4;
   undefined4 uVar5;
   int iVar6;
-  
+
   if (*(int *)(param_2 + 0x18) == 0) {
     GF_AssertFail();
   }

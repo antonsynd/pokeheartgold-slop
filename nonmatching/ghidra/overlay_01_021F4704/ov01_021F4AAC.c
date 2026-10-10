@@ -48,7 +48,7 @@ void ov01_021F4AAC(int param_1,int param_2,undefined4 param_3,undefined4 param_4
 
 {
   uint uVar1;
-  
+
   NARC_ReadFile(*(undefined4 *)(param_1 + 0x100),4,param_2 + 0x86c,param_4,param_4);
   uVar1 = *(int *)(param_2 + 0x86c) >> 0x10 & 0xffff;
   if (uVar1 != 0) {

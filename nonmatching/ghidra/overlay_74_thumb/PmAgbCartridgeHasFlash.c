@@ -48,7 +48,7 @@ undefined4 PmAgbCartridgeHasFlash(void)
 
 {
   int iVar1;
-  
+
   iVar1 = func_0x020e1a3c(1);
   if (iVar1 == 0) {
     return 1;

@@ -63,7 +63,7 @@ int ov96_021ED954(undefined *param_1,int param_2,undefined4 param_3,undefined4 p
   byte bStack_29;
   byte bStack_28;
   undefined4 uStack_18;
-  
+
   iVar5 = 0x4b;
   uStack_18 = param_4;
   iVar1 = PokeathlonCourse_GetHeapID(param_1);

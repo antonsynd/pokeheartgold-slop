@@ -63,7 +63,7 @@ void ov96_0221069C(undefined4 *param_1)
   int iStack_24;
   int iStack_20;
   uint uStack_1c;
-  
+
   uStack_1c = 0;
   if (param_1 == (undefined4 *)0x0) {
     GF_AssertFail();

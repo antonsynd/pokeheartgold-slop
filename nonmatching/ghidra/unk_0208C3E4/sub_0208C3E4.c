@@ -54,7 +54,7 @@ void sub_0208C3E4(undefined4 *param_1,undefined4 param_2,undefined4 param_3,unde
 
 {
   uint uVar1;
-  
+
   uVar1 = 0;
   do {
     AddWindow(*param_1,param_1 + uVar1 * 4 + 1,&UNK_02104d94 + uVar1 * 8,uVar1 * 8,param_4);

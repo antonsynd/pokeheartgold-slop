@@ -50,7 +50,7 @@ void ov07_02231FA0(int param_1,undefined2 *param_2)
 {
   undefined2 uVar1;
   int iVar2;
-  
+
   if (param_1 == 0) {
     *param_2 = 0;
     param_2[1] = 0;

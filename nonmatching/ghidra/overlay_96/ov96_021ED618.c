@@ -52,7 +52,7 @@ uint ov96_021ED618(undefined *param_1,int param_2,int param_3)
   undefined *puVar1;
   undefined *puVar2;
   uint uVar3;
-  
+
   uVar3 = param_3 + param_2 * 3;
   puVar1 = PokeathlonCourse_GetDataCopyArea(param_1);
   puVar2 = ov96_021E8A20(puVar1 + 0xf0);

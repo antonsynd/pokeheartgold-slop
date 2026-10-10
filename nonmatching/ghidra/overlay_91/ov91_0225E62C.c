@@ -49,7 +49,7 @@ void ov91_0225E62C(int param_1)
 {
   int iVar1;
   int iVar2;
-  
+
   iVar1 = 0;
   iVar2 = param_1 + 0x4c;
   do {

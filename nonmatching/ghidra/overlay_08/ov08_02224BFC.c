@@ -52,7 +52,7 @@ ov08_02224BFC(undefined4 *param_1,undefined4 param_2,undefined4 param_3,undefine
 {
   int iVar1;
   int iVar2;
-  
+
   if (*(char *)(param_1 + 2) == '\x01') {
     return 1;
   }

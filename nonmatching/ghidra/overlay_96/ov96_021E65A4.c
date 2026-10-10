@@ -50,7 +50,7 @@ void ov96_021E65A4(int param_1)
 {
   uint uVar1;
   int iVar2;
-  
+
   uVar1 = 0;
   do {
     iVar2 = param_1 + uVar1 * 0x10;

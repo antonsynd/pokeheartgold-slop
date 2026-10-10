@@ -48,7 +48,7 @@ undefined4 sub_020547A4(int param_1,undefined4 param_2,int param_3,int param_4,i
 
 {
   int iVar1;
-  
+
   iVar1 = func_0x021f654c(*(undefined4 *)(param_1 + 0x2c),
                           (int)(param_3 + ((uint)(param_3 >> 0xf) >> 0x10)) >> 0x10,
                           (int)(param_4 + ((uint)(param_4 >> 0xf) >> 0x10)) >> 0x10,0,param_4);

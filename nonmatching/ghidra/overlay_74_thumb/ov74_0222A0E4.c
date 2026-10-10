@@ -49,7 +49,7 @@ undefined4 ov74_0222A0E4(ushort *param_1,undefined4 param_2,undefined4 param_3,u
 {
   ushort uVar1;
   int iVar2;
-  
+
   uVar1 = *param_1;
   if (uVar1 < 4) {
     if (uVar1 != 0) {

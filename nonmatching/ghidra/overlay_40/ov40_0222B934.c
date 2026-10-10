@@ -73,7 +73,7 @@ void ov40_0222B934(undefined *param_1)
 {
   undefined *puVar1;
   int iVar2;
-  
+
   GfGfx_EngineATogglePlanes(1,0);
   GfGfx_EngineATogglePlanes(2,0);
   GfGfx_EngineATogglePlanes(4,0);

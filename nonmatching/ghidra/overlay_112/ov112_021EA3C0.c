@@ -61,7 +61,7 @@ void ov112_021EA3C0(int param_1)
   uint uVar3;
   undefined *puVar4;
   int iStack_18;
-  
+
   puVar4 = &ov112_021FEC88;
   uVar3 = 0;
   iStack_18 = 0x21fed1c;

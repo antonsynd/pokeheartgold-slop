@@ -49,7 +49,7 @@ void ov49_02264D30(int param_1,undefined4 param_2,undefined4 param_3)
 
 {
   int iVar1;
-  
+
   iVar1 = ov49_0225A0AC(param_3);
   if (iVar1 != 0) {
     ov49_0225EF8C(param_2,*(undefined1 *)(param_1 + 7));

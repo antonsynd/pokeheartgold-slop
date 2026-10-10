@@ -55,7 +55,7 @@ void ov49_022686F0(int param_1,undefined4 param_2,undefined4 param_3,undefined4 
   undefined2 uStack_1c;
   undefined2 uStack_1a;
   undefined4 uStack_18;
-  
+
   iVar1 = 0;
   iVar2 = param_1;
   uStack_18 = param_4;

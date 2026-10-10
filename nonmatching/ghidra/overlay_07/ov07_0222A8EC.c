@@ -56,7 +56,7 @@ void ov07_0222A8EC(undefined4 param_1,int param_2)
   int iVar2;
   int iVar3;
   int iVar4;
-  
+
   if (*(short *)(param_2 + 0x1c) < 1) {
     ov07_0222A8D8(*(undefined4 *)(param_2 + 0x30));
     ov07_0222A8D8(*(undefined4 *)(param_2 + 0x34));

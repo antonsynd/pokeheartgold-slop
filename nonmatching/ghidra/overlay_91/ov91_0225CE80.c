@@ -52,7 +52,7 @@ void ov91_0225CE80(int param_1)
 
 {
   int iVar1;
-  
+
   iVar1 = sub_02021238();
   if (iVar1 != 1) {
     GF_AssertFail();

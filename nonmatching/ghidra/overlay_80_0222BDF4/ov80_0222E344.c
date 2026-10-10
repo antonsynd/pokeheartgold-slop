@@ -51,7 +51,7 @@ void ov80_0222E344(int param_1,undefined4 param_2,int param_3,undefined4 param_4
 
 {
   undefined1 uVar1;
-  
+
   TextFlags_SetCanABSpeedUpPrint(param_4);
   func_0x02002b50(param_5);
   if ((param_3 == 0) || (param_3 == 0xff)) {

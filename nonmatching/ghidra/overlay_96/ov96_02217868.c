@@ -48,7 +48,7 @@ void ov96_02217868(int param_1,undefined4 param_2)
 
 {
   uint uVar1;
-  
+
   if ((*(int *)(param_1 + 0x14) != 6) && (*(int *)(param_1 + 0x14) != 0xb)) {
     uVar1 = ov96_022186CC(param_2);
     *(uint *)(param_1 + 0x60) = (uVar1 & 0xf) << 0x10 | *(uint *)(param_1 + 0x60) & 0xfff0ffff;

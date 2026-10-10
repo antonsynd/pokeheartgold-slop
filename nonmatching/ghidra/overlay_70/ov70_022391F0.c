@@ -78,7 +78,7 @@ void ov70_022391F0(undefined4 param_1,undefined4 param_2,int param_3,undefined4 
   undefined4 uStack_20;
   undefined4 uStack_1c;
   undefined4 uStack_18;
-  
+
   uStack_34 = 0;
   uStack_30 = 0;
   uStack_2c = 0x800;

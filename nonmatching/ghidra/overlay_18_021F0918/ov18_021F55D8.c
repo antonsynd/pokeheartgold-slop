@@ -55,7 +55,7 @@ ov18_021F55D8(undefined4 *param_1,undefined4 param_2,undefined4 param_3,undefine
   short sStack_10;
   undefined1 auStack_e [2];
   undefined4 uStack_c;
-  
+
   uStack_c = param_4;
   ov18_021F555C();
   ov18_021F12C8(*param_1,*(undefined2 *)(param_1 + 7),auStack_e,&sStack_10,1);

@@ -53,7 +53,7 @@ void ov48_02258CE4(int param_1,int param_2,undefined4 *param_3,uint *param_4,und
   undefined4 uVar2;
   uint uVar3;
   uint uVar4;
-  
+
   uVar1 = 0;
   uVar2 = 0;
   uVar3 = 0;

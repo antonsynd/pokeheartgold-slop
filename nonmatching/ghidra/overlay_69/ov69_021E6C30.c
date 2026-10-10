@@ -64,7 +64,7 @@ bool ov69_021E6C30(int param_1,uint *param_2)
   int iStack_20;
   int iStack_1c;
   undefined4 uStack_18;
-  
+
   iStack_1c = *(int *)(param_1 + 0xc2c4);
   iVar4 = iStack_1c + -0x80;
   iVar5 = iStack_1c + 0x80;

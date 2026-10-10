@@ -49,7 +49,7 @@ void ov57_022386F0(int param_1)
 
 {
   undefined4 uVar1;
-  
+
   uVar1 = func_0x02013534(2,0x34);
   *(undefined4 *)(param_1 + 0x25c) = uVar1;
   FontID_Alloc(2,0x34);

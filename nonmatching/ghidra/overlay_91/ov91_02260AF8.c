@@ -51,7 +51,7 @@ void ov91_02260AF8(undefined4 *param_1,int param_2,undefined4 param_3,undefined4
 
 {
   undefined4 uVar1;
-  
+
   Sprite_SetDrawFlag(*param_1,0,param_3,param_4,param_4);
   param_1[0x3d] = 0;
   uVar1 = ov91_02260B48(param_1[0x3e],param_2 + 0x6fc);

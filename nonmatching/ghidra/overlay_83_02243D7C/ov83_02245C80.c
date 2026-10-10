@@ -50,7 +50,7 @@ void ov83_02245C80(int param_1)
 {
   int iVar1;
   uint uVar2;
-  
+
   iVar1 = func_0x02237b58(*(undefined1 *)(param_1 + 9),1);
   uVar2 = 0;
   if (0 < iVar1) {

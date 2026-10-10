@@ -53,7 +53,7 @@ void ov70_02240500(int *param_1,undefined4 param_2,undefined4 param_3,undefined4
 {
   int iVar1;
   undefined4 uVar2;
-  
+
   GameStats_AddScore(*(undefined4 *)(*param_1 + 0x28),0x18,param_3,param_4,param_4);
   GameStats_Inc(*(undefined4 *)(*param_1 + 0x28),0x19);
   iVar1 = GetMonData(param_2,0xc,0);

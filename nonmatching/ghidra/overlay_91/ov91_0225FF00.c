@@ -75,7 +75,7 @@ void ov91_0225FF00(int param_1,undefined4 param_2,undefined4 param_3,undefined4 
   int iStack_20;
   byte *pbStack_1c;
   undefined2 *puStack_18;
-  
+
   func_0x020e5b44(param_1,0,0x230);
   puVar7 = (undefined2 *)&ov91_02261C04;
   iVar8 = 0;

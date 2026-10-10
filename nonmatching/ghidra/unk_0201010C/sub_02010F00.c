@@ -53,7 +53,7 @@ void sub_02010F00(undefined *param_1,undefined *param_2)
 {
   undefined *puVar1;
   int iVar2;
-  
+
   iVar2 = 0;
   if (0 < *(int *)(param_2 + 4)) {
     do {

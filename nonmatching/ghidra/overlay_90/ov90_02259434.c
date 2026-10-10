@@ -53,7 +53,7 @@ void ov90_02259434(int param_1)
   int iVar1;
   int iVar2;
   int iVar3;
-  
+
   iVar1 = 0;
   iVar2 = param_1;
   iVar3 = param_1;

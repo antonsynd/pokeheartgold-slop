@@ -53,7 +53,7 @@ undefined4 ov59_022385AC(int param_1)
 {
   byte bVar1;
   int iVar2;
-  
+
   if ((*(byte *)(param_1 + 0x47) != 0xff) &&
      (bVar1 = TextPrinterCheckActive(*(byte *)(param_1 + 0x47)), bVar1 != 0)) {
     return 0;

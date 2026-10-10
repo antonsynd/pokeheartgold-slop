@@ -71,7 +71,7 @@ WirelessTradeSelectMon_Main(undefined4 param_1,int *param_2,undefined4 param_3,u
   undefined4 uVar2;
   int iVar3;
   undefined4 uVar4;
-  
+
   iVar1 = OverlayManager_GetData();
   iVar3 = *param_2;
   uVar4 = 0;

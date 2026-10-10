@@ -48,7 +48,7 @@ undefined4 ov96_021E8828(short *param_1)
 
 {
   undefined4 uVar1;
-  
+
   if (*param_1 == 1) {
     uVar1 = sub_0203769C();
     return uVar1;

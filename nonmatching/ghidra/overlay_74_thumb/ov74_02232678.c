@@ -58,7 +58,7 @@ void ov74_02232678(int param_1,int param_2,undefined4 param_3,undefined4 param_4
   undefined4 uStack_28;
   undefined1 *puStack_24;
   undefined4 uStack_10;
-  
+
   iVar3 = 4;
   piVar1 = aiStack_5c;
   uStack_10 = param_4;

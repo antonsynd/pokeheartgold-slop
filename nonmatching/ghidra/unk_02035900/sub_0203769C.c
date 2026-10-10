@@ -53,7 +53,7 @@ uint sub_0203769C(void)
 {
   int iVar1;
   uint uVar2;
-  
+
   if (iRam021d4148 != 0) {
     sub_0203993C();
     iVar1 = sub_02034044();

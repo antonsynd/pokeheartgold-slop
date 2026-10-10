@@ -64,7 +64,7 @@ int ov74_0222B0C8(int param_1,int param_2)
   undefined4 uStack_14;
   int iStack_10;
   undefined4 uStack_c;
-  
+
   uStack_38 = **(undefined4 **)(param_1 + 0xc);
   iStack_34 = param_1 + 0x10 + (uint)(param_2 != 1) * 0x24;
   uStack_28 = 0;

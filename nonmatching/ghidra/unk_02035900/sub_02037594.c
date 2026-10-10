@@ -53,7 +53,7 @@ void sub_02037594(void)
 {
   int iVar1;
   undefined4 in_r3;
-  
+
   if (iRam021d4148 != 0) {
     if (*(char *)(iRam021d4148 + 0x6ab) == '\x01') {
       iVar1 = sub_02035FF0();

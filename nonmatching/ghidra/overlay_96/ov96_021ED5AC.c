@@ -54,7 +54,7 @@ void ov96_021ED5AC(undefined4 param_1,undefined4 param_2,undefined4 param_3,unde
   int iVar1;
   undefined4 uVar2;
   undefined4 uVar3;
-  
+
   iVar1 = PokeathlonCourse_GetHeapAllocPtr4();
   uVar2 = ov96_021EE97C(*(undefined4 *)(iVar1 + 0xc));
   uVar3 = PokeathlonCourse_GetPlayerProfileFromData(param_1,param_2);

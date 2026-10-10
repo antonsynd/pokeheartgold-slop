@@ -51,7 +51,7 @@ void ov80_0223AC24(undefined4 param_1,undefined4 param_2,undefined4 param_3,unde
 
 {
   int iVar1;
-  
+
   iVar1 = Heap_Alloc(0xb,0x4c);
   func_0x020e5b44(iVar1,0,0x4c);
   SysTask_CreateOnMainQueue(0x223ac69,iVar1,5);

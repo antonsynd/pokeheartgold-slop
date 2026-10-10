@@ -54,7 +54,7 @@ void sub_0208B5A8(int param_1,undefined4 param_2,undefined4 param_3,undefined4 p
   uint uVar2;
   uint uVar3;
   int iVar4;
-  
+
   uVar3 = 0xb;
   do {
     thunk_Sprite_SetDrawFlag(*(undefined **)(param_1 + uVar3 * 4 + 0x404),0);

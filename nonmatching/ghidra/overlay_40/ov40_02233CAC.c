@@ -77,7 +77,7 @@ undefined4 ov40_02233CAC(int param_1)
   undefined4 uVar3;
   uint *puVar4;
   uint uVar5;
-  
+
   if (*(int *)(param_1 + 8) == 0) {
     puVar1 = (uint *)Heap_Alloc(0x6d,0xdc);
     func_0x020d4994(puVar1,0,0xdc);

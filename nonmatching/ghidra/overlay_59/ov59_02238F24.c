@@ -52,7 +52,7 @@ int ov59_02238F24(int param_1)
   int iVar1;
   undefined4 uVar2;
   int iVar3;
-  
+
   iVar1 = func_0x020186a4(*(undefined4 *)(param_1 + 0x298));
   iVar3 = -1;
   if (iVar1 != -1) {

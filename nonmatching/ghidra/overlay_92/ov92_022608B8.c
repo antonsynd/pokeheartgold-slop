@@ -68,7 +68,7 @@ void ov92_022608B8(undefined4 param_1,undefined4 *param_2)
   undefined4 *puStack_74;
   int iStack_6c;
   int aiStack_68 [21];
-  
+
   bVar1 = true;
   aiStack_68[7] = 0xffffb000;
   aiStack_68[8] = 0x3000;

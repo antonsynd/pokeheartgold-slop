@@ -50,7 +50,7 @@ void ov97_0221F74C(int param_1)
   uint uVar1;
   int iVar2;
   undefined4 uStack_20;
-  
+
   uVar1 = 0;
   do {
     iVar2 = param_1 + 0x78 + uVar1 * 4;

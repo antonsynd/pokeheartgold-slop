@@ -48,7 +48,7 @@ undefined4 ov70_0224089C(int *param_1)
 
 {
   int iVar1;
-  
+
   iVar1 = func_0x02027564(*(undefined4 *)(*param_1 + 0x20));
   if (iVar1 == 1) {
     param_1[0xb] = (uint)*(ushort *)(param_1 + 0x475);

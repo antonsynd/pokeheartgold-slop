@@ -70,7 +70,7 @@ undefined4 ov57_02237B20(undefined4 param_1)
 
 {
   int *piVar1;
-  
+
   piVar1 = (int *)OverlayManager_GetData();
   GfGfx_EngineATogglePlanes(1,0);
   GfGfx_EngineATogglePlanes(2,0);

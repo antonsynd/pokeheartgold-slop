@@ -54,7 +54,7 @@ int * ov96_022107F0(undefined *param_1,int param_2)
   int *piVar2;
   int iVar3;
   int *piVar4;
-  
+
   bVar1 = PokeathlonCourse_GetParticipantCount(param_1);
   piVar2 = (int *)Heap_Alloc(param_2,0xc0);
   MI_CpuFill8((undefined *)piVar2,0,0xc0);

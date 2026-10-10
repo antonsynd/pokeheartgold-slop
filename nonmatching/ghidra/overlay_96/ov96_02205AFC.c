@@ -58,7 +58,7 @@ void ov96_02205AFC(int param_1,uint *param_2)
   uint uStack_2c;
   uint uStack_28;
   uint uStack_24;
-  
+
   uStack_24 = 0;
   uStack_28 = 0;
   uStack_2c = 0;

@@ -53,7 +53,7 @@ void ov108_021E979C(int param_1)
 {
   int iVar1;
   uint uVar2;
-  
+
   if (*(char *)(param_1 + 0x434) != '\0') {
     uVar2 = (uint)(byte)(*(byte *)(param_1 + 0x431) + *(char *)(param_1 + 0x430) * '\x06');
     if ((*(byte *)(param_1 + 0x431) < 6) && (uVar2 < *(byte *)(param_1 + 0x42d))) {

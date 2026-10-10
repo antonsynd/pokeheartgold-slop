@@ -63,7 +63,7 @@ void ov07_0222D2B0(undefined4 param_1,undefined4 *param_2)
   undefined4 uVar2;
   undefined4 uStack_14;
   undefined4 uStack_10;
-  
+
   switch(param_2[3]) {
   case 0:
     iVar1 = ov07_02222558(param_2 + 5);

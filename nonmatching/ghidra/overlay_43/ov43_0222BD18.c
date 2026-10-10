@@ -58,7 +58,7 @@ undefined4 ov43_0222BD18(short *param_1,undefined4 *param_2,undefined4 param_3)
   undefined4 uVar4;
   int iVar5;
   int iStack_20;
-  
+
   if ((uRam021d1154 & 0xcf3) != 0) {
     *param_2 = 0;
   }

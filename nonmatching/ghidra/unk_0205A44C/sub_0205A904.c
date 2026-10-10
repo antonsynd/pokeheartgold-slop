@@ -52,7 +52,7 @@ void sub_0205A904(undefined4 param_1)
 {
   undefined1 auStack_28 [28];
   undefined1 uStack_c;
-  
+
   func_0x020d4994(auStack_28,0,0x20);
   switch(param_1) {
   case 1:

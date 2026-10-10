@@ -57,7 +57,7 @@ void ov18_021EE984(int param_1,undefined4 param_2,int param_3,int param_4)
   int iVar2;
   int iVar3;
   int iVar4;
-  
+
   if (*(short *)(param_1 + param_3 * 4 + 0x1032) == 2) {
     iVar4 = param_1 + 0xc;
     param_4 = param_4 * 0x10;

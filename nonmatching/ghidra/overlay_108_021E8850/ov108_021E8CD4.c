@@ -67,7 +67,7 @@ void ov108_021E8CD4(int param_1,undefined1 param_2,undefined4 param_3)
 {
   undefined4 uVar1;
   undefined4 uVar2;
-  
+
   func_0x020d4994(param_1,0,0xf4);
   func_0x020c2698();
   func_0x020cf564();

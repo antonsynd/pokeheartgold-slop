@@ -49,7 +49,7 @@ undefined4 ov56_021E5D44(int param_1)
 
 {
   int iVar1;
-  
+
   if (*(char *)(param_1 + 10) == '\x01') {
     iVar1 = System_GetTouchHeld();
     if (iVar1 != 0) {

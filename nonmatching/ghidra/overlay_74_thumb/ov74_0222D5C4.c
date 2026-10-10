@@ -51,7 +51,7 @@ undefined4 ov74_0222D5C4(int param_1,undefined4 param_2,undefined4 param_3,undef
 
 {
   undefined4 uVar1;
-  
+
   uVar1 = String_New(0xfb,0x55);
   CopyU16ArrayToStringN
             (uVar1,*(int *)(param_1 + *(int *)(param_1 + 0x2bc0) * 4 + 0x2bb4) + 0x154,0xfa);

@@ -53,7 +53,7 @@ void ov90_0225A1B8(undefined4 *param_1)
   int iVar1;
   uint uVar2;
   int iVar3;
-  
+
   uVar2 = (uint)uRam04000006;
   if ((uVar2 < 0xc0) && (iVar1 = sub_02014A60(param_1[0xc1]), (uRam04000004 & 2) != 0)) {
     iVar3 = uVar2 * 2;

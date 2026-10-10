@@ -52,7 +52,7 @@ undefined4 ov74_02233C08(undefined4 param_1,undefined4 *param_2,uint *param_3,un
   uint uStack_20;
   uint uStack_1c;
   undefined4 uStack_18;
-  
+
   uStack_18 = param_4;
   iVar1 = ov74_02233B58(0,param_1,&uStack_1c);
   iVar2 = ov74_02233B58(1,param_1,&uStack_20);

@@ -48,7 +48,7 @@ void ov43_0222DED0(int param_1,int param_2)
 
 {
   int iVar1;
-  
+
   param_2 = param_2 * 4;
   iVar1 = *(int *)(param_1 + param_2 + 0xc);
   if (iVar1 != 0) {

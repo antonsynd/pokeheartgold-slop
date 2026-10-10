@@ -66,7 +66,7 @@ void ov41_02249604(undefined4 *param_1,undefined4 param_2,undefined4 param_3,und
   int iStack_20;
   int iStack_1c;
   undefined2 *puStack_18;
-  
+
   puStack_18 = param_4;
   GetMonData(param_3,5,0);
   sub_02070130(param_4,param_3,2);

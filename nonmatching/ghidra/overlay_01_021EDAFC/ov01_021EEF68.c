@@ -49,7 +49,7 @@ undefined4 ov01_021EEF68(undefined4 param_1,undefined4 param_2)
 
 {
   undefined4 uVar1;
-  
+
   uVar1 = AllocWindows(4,1);
   func_0x02256730(param_1,uVar1,param_2);
   return uVar1;

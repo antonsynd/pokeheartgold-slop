@@ -56,7 +56,7 @@ void ov07_0221F120(int param_1)
   undefined1 *puVar1;
   undefined4 *puVar2;
   undefined4 uVar3;
-  
+
   puVar1 = (undefined1 *)ov07_0221C53C();
   func_0x020e5b44(puVar1,0,0x3c);
   *puVar1 = 1;

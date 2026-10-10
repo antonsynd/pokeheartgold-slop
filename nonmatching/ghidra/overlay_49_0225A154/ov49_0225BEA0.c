@@ -71,7 +71,7 @@ void ov49_0225BEA0(undefined4 param_1,undefined4 param_2,undefined4 *param_3,und
   undefined2 *puStack_28;
   int iStack_24;
   int iStack_18;
-  
+
   puVar7 = &ov49_0226978C;
   iStack_24 = 0;
   puStack_28 = (undefined2 *)&ov49_022696F8;

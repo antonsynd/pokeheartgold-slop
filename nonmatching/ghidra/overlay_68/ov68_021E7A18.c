@@ -49,7 +49,7 @@ void ov68_021E7A18(int param_1,uint param_2)
 {
   char cVar1;
   uint uVar2;
-  
+
   uVar2 = 0;
   cVar1 = '\x04';
   do {

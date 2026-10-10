@@ -52,7 +52,7 @@ void ov88_022593D0(int param_1)
 {
   int iVar1;
   int iVar2;
-  
+
   Heap_Free(*(undefined4 *)(param_1 + 0x94));
   String_Delete(*(undefined4 *)(param_1 + 0x90));
   iVar2 = 0;

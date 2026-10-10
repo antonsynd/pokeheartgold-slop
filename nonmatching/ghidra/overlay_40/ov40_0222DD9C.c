@@ -59,7 +59,7 @@ void ov40_0222DD9C(int param_1,undefined4 param_2,undefined4 param_3,undefined4 
 
 {
   undefined4 uVar1;
-  
+
   if (*(int *)(param_1 + 0x8a0) != 1) {
     *(undefined4 *)(param_1 + 0x8a0) = 1;
     ov40_0222C6C8(param_1,6,0);

@@ -56,7 +56,7 @@ undefined4 ov87_021E75E0(int param_1,int param_2)
   int iVar5;
   int iVar6;
   int iStack_18;
-  
+
   iVar3 = 0;
   iVar6 = (int)*(short *)(&ov87_021E82C0 + param_2 * 4);
   iStack_18 = (int)*(short *)(&ov87_021E82C2 + param_2 * 4);

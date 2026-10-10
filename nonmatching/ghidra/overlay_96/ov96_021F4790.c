@@ -48,7 +48,7 @@ void ov96_021F4790(int param_1)
 
 {
   uint uVar1;
-  
+
   uVar1 = 0;
   do {
     ov96_021EB52C(*(undefined4 *)(param_1 + uVar1 * 4 + 0xbc),1,0);

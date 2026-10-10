@@ -49,7 +49,7 @@ undefined4 ov31_0225E774(int param_1)
 
 {
   int iVar1;
-  
+
   if (*(int *)(param_1 + 0x170) == 0) {
     return 0;
   }

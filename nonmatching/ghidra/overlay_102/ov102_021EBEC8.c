@@ -49,7 +49,7 @@ undefined4 ov102_021EBEC8(int param_1)
 
 {
   int iVar1;
-  
+
   if (*(int *)(param_1 + 0x80) != 0) {
     return 1;
   }

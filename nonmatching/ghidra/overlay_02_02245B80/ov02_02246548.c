@@ -62,7 +62,7 @@ void ov02_02246548(int param_1,int param_2,int param_3,undefined4 param_4,undefi
   undefined4 uStack_1c;
   undefined4 uStack_18;
   undefined4 uStack_14;
-  
+
   uStack_14 = param_4;
   if (param_2 < 1) {
     uVar2 = func_0x020f2178(param_2 << 0xc);

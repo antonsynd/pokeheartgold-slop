@@ -73,7 +73,7 @@ int * ov108_021E8540(undefined4 *param_1,int param_2,int param_3,undefined4 para
   int iStack_20;
   undefined4 uStack_1c;
   undefined4 uStack_18;
-  
+
   uStack_18 = param_4;
   piVar1 = (int *)Heap_Alloc(*param_1,0x10);
   func_0x020d4994(piVar1,0,0x10);

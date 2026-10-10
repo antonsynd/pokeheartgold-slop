@@ -119,7 +119,7 @@ undefined4 ov93_0225C768(undefined4 param_1)
   int iVar2;
   undefined4 uVar3;
   uint uVar4;
-  
+
   Main_SetVBlankIntrCB(0,0);
   GfGfx_DisableEngineAPlanes();
   GfGfx_DisableEngineBPlanes();

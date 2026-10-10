@@ -50,7 +50,7 @@ void ov49_02267EF8(undefined2 *param_1,uint param_2,undefined4 param_3,undefined
 {
   uint uVar1;
   undefined2 *puVar2;
-  
+
   uVar1 = 0;
   puVar2 = param_1;
   if (param_2 != 0) {

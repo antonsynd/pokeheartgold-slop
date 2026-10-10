@@ -52,7 +52,7 @@ int ov74_02231E00(undefined4 param_1,undefined4 param_2,undefined4 param_3,undef
 {
   int iVar1;
   int iVar2;
-  
+
   iVar1 = Heap_AllocAtEnd(param_4,0x1000,param_3,param_4,param_4);
   if (iVar1 != 0) {
     func_0x02007508(iVar1,param_1,param_2);

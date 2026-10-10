@@ -84,7 +84,7 @@ undefined4 ov39_02228140(undefined4 param_1)
 {
   int *piVar1;
   int iVar2;
-  
+
   Main_SetVBlankIntrCB(0,0);
   HBlankInterruptDisable();
   GfGfx_DisableEngineAPlanes();

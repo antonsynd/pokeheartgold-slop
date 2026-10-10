@@ -48,7 +48,7 @@ undefined4 ov80_0222C200(void)
 
 {
   int iVar1;
-  
+
   iVar1 = IsPaletteFadeFinished();
   if (iVar1 == 1) {
     return 1;

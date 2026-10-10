@@ -48,7 +48,7 @@ char sub_02035FF0(void)
 
 {
   char cVar1;
-  
+
   cVar1 = *(char *)(iRam021d4148 + 0x6ad);
   if (cVar1 == '\x02') {
     return '\x01';

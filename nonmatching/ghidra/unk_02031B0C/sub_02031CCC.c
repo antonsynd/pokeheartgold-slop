@@ -47,7 +47,7 @@ void sub_02031CCC(int param_1,int param_2)
 
 {
   int iVar1;
-  
+
   if (*(char *)(param_1 + 9) != '\0') {
     iVar1 = (uint)*(byte *)(param_1 + 0xe) + param_2 * 10;
     if (0xff < iVar1) {

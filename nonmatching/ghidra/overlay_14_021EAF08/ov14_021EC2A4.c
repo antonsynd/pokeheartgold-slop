@@ -53,7 +53,7 @@ undefined4 ov14_021EC2A4(int param_1)
 
 {
   int iVar1;
-  
+
   iVar1 = ov14_021F33B0(*(undefined4 *)(*(int *)(param_1 + 0x34) + 0x88dc));
   if (iVar1 == 0) {
     ov14_021F33FC(*(undefined4 *)(*(int *)(param_1 + 0x34) + 0x88dc));

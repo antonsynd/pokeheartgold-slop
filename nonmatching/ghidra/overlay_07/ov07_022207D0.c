@@ -53,7 +53,7 @@ void ov07_022207D0(undefined4 param_1,undefined4 param_2,undefined4 param_3)
   undefined4 uVar1;
   undefined4 uVar2;
   undefined4 uVar3;
-  
+
   uVar1 = sub_02015504();
   uVar2 = ov07_0221C468();
   uVar3 = ov07_0221C470(uVar1);

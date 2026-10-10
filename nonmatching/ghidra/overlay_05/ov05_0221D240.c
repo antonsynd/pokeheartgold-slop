@@ -65,7 +65,7 @@ void ov05_0221D240(int param_1,undefined4 param_2,undefined4 param_3,undefined4 
   undefined4 uStack_20;
   undefined4 uStack_1c;
   undefined4 uStack_18;
-  
+
   uStack_30 = 2;
   uStack_2c = 1;
   uStack_28 = 2;

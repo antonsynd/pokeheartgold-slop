@@ -50,7 +50,7 @@ void ov01_021F7478(undefined4 param_1,undefined4 param_2,undefined4 param_3,unde
 
 {
   int *piVar1;
-  
+
   piVar1 = (int *)sub_0205F3E8(param_1,0x18,param_3,param_4,param_4);
   *(undefined1 *)(piVar1 + 4) = 0xff;
   ov01_021F9510(param_1,piVar1);

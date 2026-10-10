@@ -57,7 +57,7 @@ int ov96_021E61D8(int param_1,int param_2,undefined4 param_3,undefined4 param_4)
   undefined4 uStack_20;
   int iStack_1c;
   undefined4 uStack_18;
-  
+
   uVar1 = ov96_021EA214(param_3,param_4,0,1,*(undefined4 *)(param_1 + 0x284));
   *(undefined4 *)(param_1 + 0x708) = uVar1;
   uVar1 = ov96_021EA4D4(param_3,param_4,0,*(undefined4 *)(param_1 + 0x284));

@@ -49,7 +49,7 @@ undefined4 ov40_02240520(int param_1)
 
 {
   int iVar1;
-  
+
   iVar1 = ov40_02243538(*(int *)(param_1 + 0x860) + 0x1d4);
   if (iVar1 == 1) {
     ov40_0222BF80(param_1,4);

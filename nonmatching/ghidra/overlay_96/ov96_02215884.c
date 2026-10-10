@@ -51,7 +51,7 @@ void ov96_02215884(int *param_1,int param_2,int param_3)
 
 {
   int iVar1;
-  
+
   if (param_1[1] == 0) {
     GF_AssertFail();
   }

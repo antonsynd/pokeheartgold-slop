@@ -52,7 +52,7 @@ void ov07_022272D0(undefined4 param_1,undefined4 param_2,undefined4 param_3,unde
 {
   int iVar1;
   undefined4 uVar2;
-  
+
   iVar1 = ov07_022324D8(param_1,0x28,param_3,param_4,param_4);
   ov07_02231FE4(param_1,iVar1 + 8);
   uVar2 = ov07_0221C4A8(param_1,0);

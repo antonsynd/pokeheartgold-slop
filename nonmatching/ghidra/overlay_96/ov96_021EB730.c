@@ -93,7 +93,7 @@ undefined4 ov96_021EB730(undefined *param_1)
   undefined *puVar7;
   int iVar8;
   int local_18;
-  
+
   piVar1 = (int *)PokeathlonCourse_GetHeapAllocPtr4(param_1);
   iVar8 = 0;
   uVar2 = PokeathlonCourse_GetMode(param_1);

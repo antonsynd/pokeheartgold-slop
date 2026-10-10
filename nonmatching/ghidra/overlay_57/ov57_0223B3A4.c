@@ -50,7 +50,7 @@ undefined4 ov57_0223B3A4(int param_1,int param_2)
 
 {
   undefined4 uVar1;
-  
+
   if (param_2 == 0xc) {
     uVar1 = ov57_0223B32C(param_1,0);
     return uVar1;

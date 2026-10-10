@@ -51,7 +51,7 @@ undefined4 ov65_0221E600(int param_1,undefined4 param_2,undefined4 param_3,undef
 
 {
   undefined4 uVar1;
-  
+
   uVar1 = ov65_0221FC54(*(undefined4 *)(param_1 + 0x180),param_1 + 0x664,param_1 + 0x670,
                         param_1 + 0x36c0,1,param_4);
   switch(uVar1) {

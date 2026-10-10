@@ -50,7 +50,7 @@ void ov96_021E634C(undefined4 param_1,undefined4 param_2,undefined4 param_3,unde
 
 {
   undefined4 uVar1;
-  
+
   uVar1 = ov96_021EB5E8(param_4);
   ov96_021E62AC(param_1,param_2,param_3,uVar1,param_5,param_6,param_7,param_4);
   return;

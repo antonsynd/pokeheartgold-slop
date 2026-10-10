@@ -50,7 +50,7 @@ undefined4 ov67_021E5968(undefined4 param_1)
 
 {
   undefined4 *puVar1;
-  
+
   puVar1 = (undefined4 *)OverlayManager_GetData();
   OverlayManager_FreeData(param_1);
   Heap_Destroy(*puVar1);

@@ -56,7 +56,7 @@ void ov43_0222BBB8(int param_1,undefined4 param_2,undefined4 *param_3)
 {
   ushort *puVar1;
   int iVar2;
-  
+
   ov43_0222AA70(param_3);
   ClearWindowTilemapAndScheduleTransfer(param_1 + 0xb8);
   iVar2 = 0;

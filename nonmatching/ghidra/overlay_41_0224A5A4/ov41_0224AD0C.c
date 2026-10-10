@@ -54,7 +54,7 @@ void ov41_0224AD0C(undefined4 *param_1,undefined4 param_2,undefined1 param_3,und
 
 {
   undefined4 uVar1;
-  
+
   uVar1 = AllocWindows(0xe,1);
   *param_1 = uVar1;
   InitWindow();

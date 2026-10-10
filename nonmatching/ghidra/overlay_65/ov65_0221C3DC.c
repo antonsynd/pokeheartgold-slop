@@ -53,7 +53,7 @@ void ov65_0221C3DC(undefined4 param_1,undefined4 param_2,int param_3)
   int iVar1;
   undefined4 uVar2;
   int iVar3;
-  
+
   iVar3 = 0;
   iVar1 = Party_GetCount(param_2);
   if (0 < iVar1) {

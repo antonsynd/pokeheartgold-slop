@@ -54,7 +54,7 @@ void ov108_021E9F20(int param_1,int param_2,undefined4 param_3,undefined4 param_
 
 {
   int iVar1;
-  
+
   Sprite_SetAnimCtrlSeq(*(undefined4 *)(param_1 + 0x448),param_2 + 2);
   func_0x02024964(*(undefined4 *)(param_1 + 0x448));
   FillWindowPixelBuffer(param_1 + 0x474,0);

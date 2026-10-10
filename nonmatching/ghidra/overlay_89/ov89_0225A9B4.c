@@ -55,7 +55,7 @@ undefined4 ov89_0225A9B4(undefined *param_1)
 {
   uint uVar1;
   uint uVar2;
-  
+
   *(undefined4 *)(param_1 + 8) = 0;
   uVar1 = NNS_G3dTexGetRequiredSize(param_1);
   uVar2 = NNS_G3dPlttGetRequiredSize(param_1);

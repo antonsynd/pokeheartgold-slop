@@ -50,7 +50,7 @@ void ov96_021EF95C(int param_1,int param_2,undefined4 param_3,undefined4 param_4
 {
   short *psVar1;
   int iVar2;
-  
+
   iVar2 = 0;
   psVar1 = (short *)(&ov96_0221BA80 + param_2 * 0x10);
   do {

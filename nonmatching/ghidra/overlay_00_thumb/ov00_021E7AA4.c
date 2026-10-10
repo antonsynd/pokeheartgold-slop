@@ -52,7 +52,7 @@ undefined4 ov00_021E7AA4(void)
   undefined4 uStack_18;
   int iStack_14;
   undefined4 uStack_8;
-  
+
   if ((iRam0221a688 != 0) && (uStack_8 = in_r3, func_0x020b41a8(&uStack_18), 2 < iStack_14)) {
     return uStack_18;
   }

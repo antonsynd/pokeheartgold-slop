@@ -69,7 +69,7 @@ void sub_02093B84(int param_1,undefined4 param_2,undefined4 param_3,undefined4 p
   undefined4 uStack_40;
   int iStack_3c;
   undefined4 uStack_18;
-  
+
   uStack_18 = param_4;
   sub_02094150(auStack_48,param_1,1);
   uVar2 = Heap_Alloc(*(undefined4 *)(param_1 + 4),(uint)*(byte *)(param_1 + 0xd) << 3);

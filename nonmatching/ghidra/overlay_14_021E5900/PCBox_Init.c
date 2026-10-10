@@ -59,7 +59,7 @@ undefined4 PCBox_Init(undefined4 param_1,undefined4 param_2,undefined4 param_3,u
   undefined4 *puVar2;
   undefined4 *puVar3;
   undefined4 uVar4;
-  
+
   Heap_Create(3,9,0x10000,param_4,param_4);
   puVar2 = (undefined4 *)OverlayManager_CreateAndGetData(param_1,0x38,9);
   func_0x020d4994(puVar2,0,0x38);

@@ -67,7 +67,7 @@ undefined4 ov40_022406C8(int param_1,undefined4 param_2,undefined4 param_3,undef
   int iVar3;
   int iStack_18;
   undefined4 uStack_14;
-  
+
   iVar3 = *(int *)(param_1 + 0x860);
   uStack_14 = param_4;
   switch(*(int *)(param_1 + 8)) {

@@ -48,7 +48,7 @@ void ov96_021EAB74(int param_1,undefined4 param_2,undefined4 param_3,undefined4 
 
 {
   int iVar1;
-  
+
   iVar1 = *(int *)(param_1 + 4);
   if (iVar1 != 0) {
     if (*(int *)(param_1 + 0x40) != 0) {

@@ -50,7 +50,7 @@ void sub_0206633C(undefined4 param_1)
 {
   byte *pbVar1;
   int iVar2;
-  
+
   pbVar1 = (byte *)sub_0205F394();
   do {
     iVar2 = (**(code **)(&UNK_020fe3cc + (uint)*pbVar1 * 4))(param_1,pbVar1);

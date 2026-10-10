@@ -49,7 +49,7 @@ undefined4 ov70_02244CA8(int param_1)
 
 {
   undefined4 uVar1;
-  
+
   uVar1 = func_0x021e6a70(-*(int *)(param_1 + 0x44),*(undefined4 *)(param_1 + 0x48));
   ov70_022451A8(param_1,uVar1,-*(int *)(param_1 + 0x44));
   *(undefined4 *)(param_1 + 0x2c) = 0x18;

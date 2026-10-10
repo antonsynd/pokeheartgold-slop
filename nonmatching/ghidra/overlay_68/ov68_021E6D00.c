@@ -49,7 +49,7 @@ undefined4 ov68_021E6D00(int *param_1)
 
 {
   undefined1 uVar1;
-  
+
   ov68_021E6C14(param_1,3);
   uVar1 = ov68_021E6CD8(param_1);
   *(undefined1 *)(*param_1 + 0x1b) = uVar1;

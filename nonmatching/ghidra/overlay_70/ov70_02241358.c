@@ -48,7 +48,7 @@ void ov70_02241358(int param_1)
 
 {
   int iVar1;
-  
+
   iVar1 = 0;
   do {
     ov70_02238F9C(*(undefined4 *)(param_1 + 0xee4),(int)*(short *)(param_1 + 0x120c),

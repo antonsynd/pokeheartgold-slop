@@ -50,7 +50,7 @@ undefined4 ov56_021E5DA4(int param_1)
 
 {
   int iVar1;
-  
+
   if (iRam021d1154 == 0) {
     iVar1 = System_GetTouchHeld();
     if (iVar1 == 0) {

@@ -53,7 +53,7 @@ undefined4 * ov71_022482EC(undefined4 param_1)
   undefined4 *puVar1;
   undefined4 uVar2;
   uint uVar3;
-  
+
   puVar1 = (undefined4 *)Heap_Alloc(0x39,0x16c);
   if (puVar1 != (undefined4 *)0x0) {
     *puVar1 = param_1;

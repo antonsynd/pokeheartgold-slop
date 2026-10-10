@@ -73,7 +73,7 @@ void ov07_0221FF78(int param_1)
   int iStack_20;
   int iStack_1c;
   int iStack_18;
-  
+
   uVar1 = sub_02015504();
   ov07_0221C468();
   ov07_0221C470(uVar1);

@@ -51,7 +51,7 @@ undefined4 ov93_0225E4B0(int param_1)
   int iVar1;
   bool bVar2;
   undefined4 uVar3;
-  
+
   bVar2 = false;
   switch(*(undefined4 *)(param_1 + 0x2fd4)) {
   default:

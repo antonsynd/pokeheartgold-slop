@@ -53,7 +53,7 @@ void ov07_02231EC0(undefined4 param_1,int param_2,int param_3,undefined4 param_4
   uint uVar2;
   uint uVar3;
   uint uVar4;
-  
+
   if (param_2 == 0) {
     uVar1 = ov07_0221FAF8(param_1,1,param_3,param_4,param_4);
     uVar2 = ov07_0221FAF8(param_1,2);

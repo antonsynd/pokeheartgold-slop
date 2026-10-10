@@ -58,7 +58,7 @@ void ov90_0225C06C(undefined4 param_1,undefined4 *param_2)
 {
   undefined4 uVar1;
   int iVar2;
-  
+
   switch(*(undefined2 *)(param_2 + 1)) {
   case 1:
     ov90_0225BAD0(param_2 + 0xd,param_2[10],param_2[2],*param_2);

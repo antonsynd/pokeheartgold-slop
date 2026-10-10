@@ -53,7 +53,7 @@ void ov80_0222F210(int param_1)
 
 {
   undefined4 uVar1;
-  
+
   uVar1 = sub_02074490();
   func_0x0200d644(*(undefined4 *)(param_1 + 4),2,*(undefined4 *)(param_1 + 0x34),
                   *(undefined4 *)(param_1 + 0x38),0x14,uVar1,0,3,1,2000);

@@ -49,7 +49,7 @@ void ov41_02247828(undefined4 param_1,undefined4 param_2,undefined4 param_3,unde
 
 {
   undefined4 *puVar1;
-  
+
   CreateSysTaskAndEnvironment(0x2247851,0x10,10,0xd,param_4);
   puVar1 = (undefined4 *)SysTask_GetData();
   *puVar1 = param_1;

@@ -49,7 +49,7 @@ void sub_02012A90(int param_1,undefined4 param_2,undefined4 param_3,undefined4 p
 {
   int iVar1;
   int iVar2;
-  
+
   iVar2 = 0;
   if (0 < *(int *)(param_1 + 0x310)) {
     iVar1 = 0;

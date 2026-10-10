@@ -60,7 +60,7 @@ void ov07_0221F430(int param_1,undefined4 param_2,undefined4 param_3,undefined4 
   undefined4 uVar6;
   undefined4 auStack_30 [6];
   undefined4 uStack_18;
-  
+
   puVar4 = auStack_30;
   iVar1 = *(int *)(param_1 + 0x18);
   *(int **)(param_1 + 0x18) = (int *)(iVar1 + 4);

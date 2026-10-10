@@ -58,7 +58,7 @@ undefined4 FrtCmd_021(int *param_1)
   undefined4 uVar7;
   undefined1 *puVar8;
   int iVar9;
-  
+
   puVar8 = (undefined1 *)param_1[7];
   iVar9 = *param_1;
   param_1[7] = (int)(puVar8 + 1);

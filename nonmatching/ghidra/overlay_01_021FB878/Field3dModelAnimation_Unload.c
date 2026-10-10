@@ -49,7 +49,7 @@ void Field3dModelAnimation_Unload(int *param_1,undefined4 param_2)
 
 {
   int iVar1;
-  
+
   if ((*param_1 != 0) && (func_0x020c2ba0(param_2,param_1[2]), param_1[4] == 0)) {
     Heap_Free(*param_1);
   }

@@ -55,7 +55,7 @@ undefined4 ov14_021ED414(int param_1)
 {
   uint uVar1;
   undefined4 uVar2;
-  
+
   uVar1 = func_0x02019d18(*(undefined4 *)(*(int *)(param_1 + 0x34) + 0x2c));
   if (uVar1 < 0xfffffffd) {
     if (uVar1 < 0xfffffffc) {

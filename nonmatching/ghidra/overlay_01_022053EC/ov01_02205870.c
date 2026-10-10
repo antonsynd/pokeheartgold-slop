@@ -52,7 +52,7 @@ void ov01_02205870(int param_1,undefined4 param_2,undefined4 param_3,int param_4
 {
   int iVar1;
   undefined4 uVar2;
-  
+
   MapObject_GetManager(param_2);
   iVar1 = sub_0205F1A0();
   if (param_1 == 0) {

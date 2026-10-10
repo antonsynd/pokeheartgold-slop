@@ -51,7 +51,7 @@ void AreaDataManager_Free(int *param_1)
 {
   int iVar1;
   int iVar2;
-  
+
   NARC_Delete(*(undefined4 *)(*param_1 + 0x8c0));
   if (*(int *)(*param_1 + 0x8ac) != 0) {
     ov01_021EA7E0();

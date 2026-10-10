@@ -48,7 +48,7 @@ void ov93_022620D4(int param_1)
 {
   int iVar1;
   int iVar2;
-  
+
   iVar2 = 0;
   do {
     iVar1 = param_1 + iVar2;

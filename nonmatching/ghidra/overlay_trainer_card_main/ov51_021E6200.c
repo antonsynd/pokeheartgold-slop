@@ -54,7 +54,7 @@ void ov51_021E6200(int param_1,undefined4 param_2,undefined4 param_3,undefined4 
   int iVar2;
   int iStack_18;
   undefined4 uStack_14;
-  
+
   uStack_14 = param_4;
   uVar1 = GfGfxLoader_GetPlttData(0x31,0x3c,&iStack_18,0x19);
   iVar2 = *(int *)(iStack_18 + 0xc);

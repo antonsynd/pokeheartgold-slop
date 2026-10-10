@@ -55,7 +55,7 @@ void ov40_0222F5EC(int param_1,int param_2)
   undefined2 uVar4;
   int iVar5;
   int iVar6;
-  
+
   iVar5 = 0;
   iVar6 = 0xff;
   if (param_2 < 0) {

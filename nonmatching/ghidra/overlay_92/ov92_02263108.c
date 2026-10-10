@@ -53,7 +53,7 @@ void ov92_02263108(undefined4 *param_1,undefined4 *param_2,undefined4 *param_3)
   undefined4 uVar2;
   undefined4 uVar3;
   undefined4 uVar4;
-  
+
   uVar1 = func_0x020f22dc(*param_2,*param_3);
   uVar2 = func_0x020f22dc(param_2[1],param_3[1]);
   uVar1 = func_0x020f24c8(uVar1,uVar2);

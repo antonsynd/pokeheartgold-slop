@@ -80,7 +80,7 @@ undefined4 ov14_021E9A24(int param_1,undefined4 param_2,undefined4 param_3,undef
   uint uStack_20;
   uint uStack_1c;
   undefined4 uStack_18;
-  
+
   iVar7 = *(int *)(param_1 + 0x34);
   uStack_18 = param_4;
   if (*(ushort *)(iVar7 + 0x10) < 2) {

@@ -59,7 +59,7 @@ void ov70_02242E58(int param_1)
   undefined4 uVar1;
   int iVar2;
   int iVar3;
-  
+
   sub_02019688(*(undefined4 *)(param_1 + 0x1c),0,100,0x1f,1);
   sub_02019B08(*(undefined4 *)(param_1 + 0x1c),0);
   ov70_0224190C(param_1,1);

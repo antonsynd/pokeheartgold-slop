@@ -56,7 +56,7 @@ void ov59_0223BA64(undefined4 *param_1,undefined4 param_2,undefined4 param_3,und
   byte bVar2;
   undefined2 uVar3;
   undefined4 uVar4;
-  
+
   *param_1 = param_3;
   *(undefined1 *)(param_1 + 2) = param_4;
   uVar3 = GetMonData(param_3,5,0);

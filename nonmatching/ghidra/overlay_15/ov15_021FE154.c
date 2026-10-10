@@ -50,7 +50,7 @@ void ov15_021FE154(int param_1)
 
 {
   uint uVar1;
-  
+
   uVar1 = 0;
   do {
     RemoveWindow(param_1 + 4 + uVar1 * 0x10);

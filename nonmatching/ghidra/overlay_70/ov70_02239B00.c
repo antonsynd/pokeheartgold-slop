@@ -53,7 +53,7 @@ void ov70_02239B00(int param_1,undefined4 param_2,undefined4 param_3,undefined4 
   int iVar1;
   undefined4 *puVar2;
   int iVar3;
-  
+
   iVar1 = param_1 + 0xf58;
   iVar3 = 0;
   puVar2 = (undefined4 *)(&ov70_0224526C + (uint)*(ushort *)(param_1 + 0x36) * 0xc);

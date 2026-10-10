@@ -53,7 +53,7 @@ void ov99_021E6400(int param_1,undefined4 param_2,undefined4 param_3,undefined4 
   undefined4 uVar1;
   undefined4 uVar2;
   uint uVar3;
-  
+
   uVar1 = func_0x0221e5c0(*(undefined4 *)(param_1 + 0x14));
   uVar2 = func_0x0221e5d0(*(undefined4 *)(param_1 + 0x14));
   uVar3 = 0;

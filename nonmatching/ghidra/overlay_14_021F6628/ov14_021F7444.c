@@ -52,7 +52,7 @@ void ov14_021F7444(int param_1,int param_2,int param_3)
 
 {
   int iVar1;
-  
+
   iVar1 = ov14_021E8544(*(undefined4 *)(*(int *)(param_1 + 0x34) + 0x2f0));
   if (iVar1 == 1) {
     if ((param_2 < 7) && (6 < param_3)) {

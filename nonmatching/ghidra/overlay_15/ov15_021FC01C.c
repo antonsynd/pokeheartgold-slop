@@ -69,7 +69,7 @@ undefined8 ov15_021FC01C(int param_1)
   int iVar2;
   undefined4 uVar3;
   undefined4 extraout_r1;
-  
+
   iVar2 = YesNoPrompt_HandleInput(*(undefined4 *)(param_1 + 0x804));
   if (iVar2 == 1) {
     ov15_021FF058(param_1);

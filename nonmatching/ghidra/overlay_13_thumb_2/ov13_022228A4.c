@@ -48,7 +48,7 @@ undefined4 ov13_022228A4(undefined4 param_1,int param_2)
 
 {
   undefined4 uVar1;
-  
+
   if (0 < param_2) {
     uVar1 = (*pcRam0224dd80)(param_2);
     return uVar1;

@@ -51,7 +51,7 @@ int ov45_0222F2D4(int param_1)
 
 {
   int iVar1;
-  
+
   if (iRam022577c0 == 0) {
     GF_AssertFail();
   }

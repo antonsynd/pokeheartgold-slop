@@ -58,7 +58,7 @@ void ov92_0225E070(int param_1,undefined4 param_2,undefined4 param_3,undefined4 
 {
   undefined4 uVar1;
   undefined4 uVar2;
-  
+
   InitWindow(param_1 + 0x1fe0);
   AddWindowParameterized
             (*(undefined4 *)(*(int *)(param_1 + 0x14) + 0x10),param_1 + 0x1fe0,7,2,0x13,0x1c,4,0xe,

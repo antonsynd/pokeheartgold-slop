@@ -55,7 +55,7 @@ void ov93_0225CFC0(int param_1)
   undefined4 uStack_14;
   undefined4 uStack_10;
   undefined4 uStack_c;
-  
+
   uStack_14 = 0;
   uStack_10 = 0x1881e;
   uStack_c = 0;

@@ -58,7 +58,7 @@ undefined4 ov15_021FAB34(int param_1,undefined4 param_2,undefined4 param_3,undef
   undefined4 uVar2;
   int iVar3;
   int iVar4;
-  
+
   cVar1 = *(char *)(param_1 + 0x61b);
   if (cVar1 == '\0') {
     *(undefined1 *)(param_1 + 0x61c) = 0;

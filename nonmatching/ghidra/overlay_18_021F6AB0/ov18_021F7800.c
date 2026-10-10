@@ -53,7 +53,7 @@ void ov18_021F7800(int param_1,uint param_2,int param_3)
   uint uVar1;
   uint extraout_r1;
   uint extraout_r1_00;
-  
+
   if (param_3 == 0xf) {
     if (param_2 == 0) {
       uVar1 = *(uint *)(param_1 + 0x189c);

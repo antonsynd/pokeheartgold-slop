@@ -50,7 +50,7 @@ void sub_0200F5C4(undefined4 param_1,undefined1 param_2,undefined1 param_3,undef
 
 {
   int iVar1;
-  
+
   CreateSysTaskAndEnvironment(0x200f54d,0x170,0,param_5,param_4);
   iVar1 = SysTask_GetData();
   *(undefined1 *)(iVar1 + 0x16f) = 0;

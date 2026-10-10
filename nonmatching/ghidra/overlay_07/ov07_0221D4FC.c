@@ -51,7 +51,7 @@ void ov07_0221D4FC(undefined4 param_1,undefined4 *param_2)
   short sVar1;
   short sVar2;
   int iVar3;
-  
+
   if (*(char *)((int)param_2 + 5) != '\0') {
     *(char *)(param_2 + 1) = *(char *)(param_2 + 1) + '\x01';
     if (*(char *)(param_2 + 1) != *(char *)((int)param_2 + 5)) {

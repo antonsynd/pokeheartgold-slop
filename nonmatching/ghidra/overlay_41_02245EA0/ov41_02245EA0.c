@@ -50,7 +50,7 @@ undefined4 * ov41_02245EA0(int param_1,undefined4 param_2,undefined4 param_3,und
 {
   undefined4 *puVar1;
   undefined4 uVar2;
-  
+
   puVar1 = (undefined4 *)Heap_Alloc(param_2,8,param_3,param_4,param_4);
   uVar2 = Heap_Alloc(param_2,param_1 * 8);
   *puVar1 = uVar2;

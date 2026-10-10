@@ -50,7 +50,7 @@ void sub_0206983C(int param_1,undefined4 param_2,undefined4 param_3,undefined4 p
 
 {
   int iVar1;
-  
+
   HeapExp_FndInitAllocator(param_1 + 0x14,param_3,4,param_4,param_4);
   iVar1 = func_0x020c2b7c(param_1 + 0x14,*(undefined4 *)(param_1 + 0xc),param_2);
   *(int *)(param_1 + 0x10) = iVar1;

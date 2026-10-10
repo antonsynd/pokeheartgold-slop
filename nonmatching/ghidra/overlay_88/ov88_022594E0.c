@@ -50,7 +50,7 @@ void ov88_022594E0(char *param_1)
   char *pcVar1;
   char *pcVar2;
   int iVar3;
-  
+
   iVar3 = 0;
   pcVar1 = param_1 + 0x60;
   pcVar2 = param_1;

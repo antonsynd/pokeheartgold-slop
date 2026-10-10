@@ -48,7 +48,7 @@ int ov74_0222FE68(void)
 
 {
   short sVar1;
-  
+
   sVar1 = ov74_02231214();
   return (int)sVar1;
 }

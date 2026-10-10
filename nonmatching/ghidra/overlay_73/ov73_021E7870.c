@@ -58,7 +58,7 @@ undefined4 ov73_021E7870(int param_1,undefined4 param_2,undefined4 param_3,undef
   int iVar3;
   undefined auStack_18 [4];
   undefined4 uStack_14;
-  
+
   uStack_14 = param_4;
   iVar2 = ov73_021E746C();
   iVar3 = *(int *)(param_1 + 0x4a1c);

@@ -57,7 +57,7 @@ void ov68_021E7618(int *param_1,uint param_2,int param_3)
 
 {
   undefined4 uVar1;
-  
+
   ov68_021E7898(param_1,0);
   ov68_021E7A18(param_1,5);
   if ((int)param_2 < 4) {

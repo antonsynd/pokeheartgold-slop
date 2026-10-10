@@ -48,7 +48,7 @@ undefined4 ov89_0225AFC0(int param_1,uint param_2)
 
 {
   uint uVar1;
-  
+
   uVar1 = *(uint *)(param_1 + 0x240);
   if ((((uVar1 & 0xffff) >> 8 == 0) && ((uVar1 & 0xffffff) >> 0x10 == 0)) && ((uVar1 & 0xf) != 0)) {
     *(uint *)(param_1 + 0x240) = (param_2 & 0xff) << 0x10 | uVar1 & 0xff00ffff;

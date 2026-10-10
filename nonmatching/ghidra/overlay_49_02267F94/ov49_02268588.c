@@ -51,7 +51,7 @@ void ov49_02268588(undefined1 *param_1,int param_2)
   ushort *puVar1;
   byte *pbVar2;
   int iVar3;
-  
+
   param_1[0x18] = *param_1;
   param_1[0x19] = param_1[1];
   param_1[0x1a] = param_1[2];

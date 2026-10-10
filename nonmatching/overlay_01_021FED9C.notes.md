@@ -8,3 +8,8 @@ Same family as overlay_01_021FEC38 (identical manager and work layouts, differen
 - ov01_021FEE04 returns the result of ov01_021F1620 (`bl` then `pop {pc}` with r0 untouched), which the header include/overlay_01_021F1348.h declares as `void`. It is declared `void *` here, as in src/overlay_01_021FE590.c. The header was not included for that reason.
 - ov01_021FEE9C is the template's second slot, which other files type as a BOOL callback; it returns nothing here (sub_020698D0 is void), so the slot is typed `void` in the local template struct.
 - Layout facts: manager is 0x3C bytes (unk0 owner, 0x14-byte model set at +4, 0x24-byte animation set at +0x18); work is 0x80 bytes (0x24-byte animation instance, NNSG3dRenderObj at +0x24, owner at +0x78, manager at +0x7C).
+
+## Status
+
+With the current tools, every function these notes describe as failing or inconclusive passes the check.
+`VERIFIED.tsv` gives the verdict of each, and the file that holds its verified C.

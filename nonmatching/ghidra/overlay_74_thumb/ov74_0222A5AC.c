@@ -50,7 +50,7 @@ undefined4 ov74_0222A5AC(undefined4 param_1)
 
 {
   int iVar1;
-  
+
   iVar1 = OverlayManager_GetData();
   ov74_02229F60(iVar1 + 0x38,0);
   ov74_0222A94C(param_1,0xc4,0);

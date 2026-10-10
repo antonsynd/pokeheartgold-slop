@@ -52,7 +52,7 @@ void sub_020958C0(int param_1,char *param_2,undefined4 param_3,undefined4 param_
   int iVar2;
   int iStack_1c;
   undefined1 uStack_18;
-  
+
   iVar2 = (int)param_5;
   iStack_1c = sub_02095BF0();
   iVar1 = (int)*param_2;

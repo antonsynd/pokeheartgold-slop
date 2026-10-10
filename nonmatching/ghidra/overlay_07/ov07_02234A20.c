@@ -61,7 +61,7 @@ void ov07_02234A20(int *param_1,int param_2)
   uint uStack_20;
   uint uStack_1c;
   uint uStack_18;
-  
+
   Pokepic_Push((undefined *)param_1[*param_1 + 6]);
   uStack_20 = 0x102;
   uStack_1c = uStack_1c & 0xffffff00;

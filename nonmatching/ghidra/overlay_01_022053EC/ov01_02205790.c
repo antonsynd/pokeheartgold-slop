@@ -56,7 +56,7 @@ void ov01_02205790(int param_1,undefined4 param_2,undefined4 param_3,undefined4 
   undefined4 uVar3;
   undefined1 auStack_20 [12];
   undefined4 uStack_14;
-  
+
   uStack_14 = param_4;
   iVar1 = FollowMon_IsActive();
   if (iVar1 != 0) {

@@ -53,7 +53,7 @@ void ov56_021E696C(undefined4 *param_1)
   undefined4 uVar1;
   int iVar2;
   undefined4 *puVar3;
-  
+
   AddWindowParameterized(param_1[6],param_1 + 0x13,1,3,3,0x1a,4,1,0x397);
   AddWindowParameterized(param_1[6],param_1 + 0x17,1,3,8,0x1a,4,1,0x32f);
   AddWindowParameterized(param_1[6],param_1 + 0x1b,1,3,0xd,0x1a,4,1,0x2c7);

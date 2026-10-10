@@ -56,7 +56,7 @@ int ov49_02268490(undefined4 param_1,int param_2,int param_3)
   int iVar1;
   int iVar2;
   int iVar3;
-  
+
   iVar1 = Heap_Alloc(param_1,0x60);
   func_0x020e5b44(iVar1,0,0x60);
   ov49_022686C0(iVar1,&ov49_0226A7E0 + param_2 * 10);

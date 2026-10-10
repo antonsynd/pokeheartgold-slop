@@ -65,7 +65,7 @@ int sub_02061F5C(undefined4 param_1,undefined4 param_2,undefined4 param_3)
   int *piVar8;
   int iVar9;
   int iVar10;
-  
+
   piVar1 = (int *)sub_02061E6C(param_2);
   iVar2 = sub_02061E00(piVar1,param_3);
   if (iVar2 == 1) {

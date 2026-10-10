@@ -48,7 +48,7 @@ undefined1 ov72_0223A8DC(int param_1)
 
 {
   int iVar1;
-  
+
   iVar1 = ov72_0223A8A0();
   if (iVar1 != 0) {
     return 0xb;

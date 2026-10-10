@@ -50,7 +50,7 @@ undefined4 ov70_02243DDC(int param_1)
 
 {
   int iVar1;
-  
+
   iVar1 = ov70_022428C0();
   if (iVar1 == -2) {
     sub_020198FC(*(undefined4 *)(param_1 + 0x1c),0,4,0,4);

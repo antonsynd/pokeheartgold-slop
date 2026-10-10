@@ -50,7 +50,7 @@ void ov14_021E895C(int param_1,uint param_2,undefined4 param_3,undefined4 param_
 {
   uint uVar1;
   uint uVar2;
-  
+
   uVar2 = 0;
   do {
     if ((1 << (uVar2 & 0xff) & param_2) == 0) {

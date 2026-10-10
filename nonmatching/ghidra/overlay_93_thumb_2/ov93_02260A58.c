@@ -52,7 +52,7 @@ ov93_02260A58(undefined4 param_1,undefined4 *param_2,undefined4 param_3,undefine
 {
   undefined1 uVar1;
   undefined4 uVar2;
-  
+
   func_0x020d4994(param_2,0,0xc,param_4,param_4);
   uVar1 = ov93_02260B70(param_4);
   *(undefined1 *)(param_2 + 1) = uVar1;

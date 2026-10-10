@@ -52,7 +52,7 @@ void ov51_021E76EC(int param_1,int param_2,undefined4 param_3,undefined4 param_4
 {
   int iVar1;
   int iVar2;
-  
+
   iVar2 = param_1 + 0xc4;
   if ((param_2 == 0) && ((int)((uint)*(byte *)(param_1 + 0x343a) << 0x1e) < 0)) {
     param_2 = 1;

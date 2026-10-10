@@ -49,7 +49,7 @@ void ov08_02223E74(int *param_1,undefined4 param_2,uint param_3)
 
 {
   undefined4 uVar1;
-  
+
   uVar1 = func_0x02077c18(param_2,2);
   PaletteData_LoadNarc
             (param_1[2],0x12,uVar1,*(undefined4 *)(*param_1 + 0xc),3,0x20,(param_3 & 0xfff) << 4);

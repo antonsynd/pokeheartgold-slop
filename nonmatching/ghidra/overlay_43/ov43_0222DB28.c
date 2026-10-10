@@ -49,7 +49,7 @@ void ov43_0222DB28(int param_1,int param_2,int param_3,undefined4 param_4)
 
 {
   undefined4 uVar1;
-  
+
   if (*(int *)(param_1 + 0x10) == 1) {
     uVar1 = 2;
     Sprite_SetPositionXY

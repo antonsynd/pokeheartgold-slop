@@ -54,7 +54,7 @@ undefined4 ov70_0223E4FC(undefined4 param_1)
   int iVar3;
   undefined2 *puVar4;
   int iVar5;
-  
+
   iVar3 = 0;
   uVar1 = func_0x0206ddd8();
   puVar4 = (undefined2 *)0x2245700;

@@ -79,7 +79,7 @@ void ov88_0225967C(int param_1,undefined4 *param_2,undefined4 param_3)
   undefined4 *puStack_30;
   uint uStack_2c;
   int iStack_1c;
-  
+
   func_0x020e5b44(param_1,0,0x70);
   uVar2 = NewMsgDataFromNarc(0,0x1b,0x2f5,param_3);
   uVar3 = String_New(0x80,param_3);

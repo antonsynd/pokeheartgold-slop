@@ -51,7 +51,7 @@ void ov91_02260E88(int *param_1,int param_2,int param_3)
   int iVar1;
   int *piVar2;
   int *piVar3;
-  
+
   piVar2 = (int *)0x0;
   iVar1 = 0;
   piVar3 = param_1;

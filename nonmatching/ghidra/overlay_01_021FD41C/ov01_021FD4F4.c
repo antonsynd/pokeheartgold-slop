@@ -61,7 +61,7 @@ void ov01_021FD4F4(undefined4 param_1,int *param_2)
   int iVar4;
   int iVar5;
   int iVar6;
-  
+
   iVar1 = GF_RTC_GetTimeOfDay();
   iVar3 = *param_2;
   if (iVar3 == 0) {

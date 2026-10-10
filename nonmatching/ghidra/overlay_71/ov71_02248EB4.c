@@ -57,7 +57,7 @@ void ov71_02248EB4(int param_1,undefined4 param_2,undefined4 param_3,undefined4 
   int iVar3;
   undefined2 *puVar4;
   int iVar5;
-  
+
   iVar5 = param_1 + 0xdc;
   ov71_022476B4(*(undefined4 *)(param_1 + 0xd8),param_1 + 0xe4,param_3,param_4,param_4);
   ov71_022476D4(*(undefined4 *)(param_1 + 0xd8),param_1 + 0xfc);

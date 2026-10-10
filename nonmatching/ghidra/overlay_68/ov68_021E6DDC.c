@@ -74,7 +74,7 @@ void ov68_021E6DDC(int param_1)
   undefined4 uStack_20;
   undefined4 uStack_1c;
   undefined4 uStack_18;
-  
+
   uStack_2c = 0xb;
   uStack_28 = 3;
   uStack_24 = 3;

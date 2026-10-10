@@ -48,7 +48,7 @@ void ov05_0221EA18(int param_1)
 
 {
   undefined4 uVar1;
-  
+
   if (*(int *)(param_1 + 0xbc4) == 0) {
     uVar1 = WaitingIcon_New(param_1 + 0xb88,1);
     *(undefined4 *)(param_1 + 0xbc4) = uVar1;

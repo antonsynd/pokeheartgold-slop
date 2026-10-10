@@ -50,7 +50,7 @@ void sub_020699D0(undefined *param_1,undefined *param_2,undefined *param_3,ushor
 {
   undefined auStack_38 [36];
   ushort *puStack_14;
-  
+
   puStack_14 = param_4;
   sub_02020DA4(auStack_38,*param_4,param_4[1],param_4[2]);
   sub_020699AC(param_1,param_2,param_3,auStack_38);

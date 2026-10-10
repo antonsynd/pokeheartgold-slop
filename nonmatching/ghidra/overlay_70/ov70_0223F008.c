@@ -54,7 +54,7 @@ undefined4 ov70_0223F008(int param_1,undefined4 param_2,undefined4 param_3,undef
 {
   int iVar1;
   undefined4 uVar2;
-  
+
   iVar1 = ov70_02242144(*(undefined4 *)(param_1 + 0x11a8));
   if ((iVar1 == 0xc) || (iVar1 == -2)) {
     ClearFrameAndWindow2(param_1 + 0xf18,0);

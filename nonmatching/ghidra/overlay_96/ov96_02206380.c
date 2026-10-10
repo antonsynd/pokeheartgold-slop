@@ -102,7 +102,7 @@ void ov96_02206380(undefined4 param_1,uint param_2,undefined4 *param_3,int param
   int iStack_20;
   int iStack_1c;
   undefined4 uStack_18;
-  
+
   uVar2 = ov96_021E5F24();
   uVar2 = uVar2 & 0xff;
   puVar3 = (uint *)ov96_021E8A20(param_4 + 0xf0);

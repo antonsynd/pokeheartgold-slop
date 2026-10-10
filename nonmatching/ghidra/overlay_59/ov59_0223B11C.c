@@ -50,7 +50,7 @@ undefined4 ov59_0223B11C(int param_1)
 
 {
   int iVar1;
-  
+
   if (*(short *)(param_1 + 0x42) == 0) {
     ov59_0223BBB0();
     ov59_0223BBD4(param_1,1);

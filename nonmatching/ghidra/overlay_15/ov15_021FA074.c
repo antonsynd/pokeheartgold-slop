@@ -47,7 +47,7 @@ int ov15_021FA074(int param_1)
 
 {
   int iVar1;
-  
+
   iVar1 = *(int *)(param_1 + 0x234) + (uint)*(byte *)(*(int *)(param_1 + 0x234) + 100) * 0xc;
   iVar1 = (uint)*(byte *)(iVar1 + 0xd) - (int)*(short *)(iVar1 + 10);
   if (6 < iVar1) {

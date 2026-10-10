@@ -56,7 +56,7 @@ void ov07_0222BAF4(undefined4 param_1,int *param_2,undefined4 param_3,undefined4
 
 {
   int iVar1;
-  
+
   switch((char)param_2[8]) {
   case '\0':
     break;

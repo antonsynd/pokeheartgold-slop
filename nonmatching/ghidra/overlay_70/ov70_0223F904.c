@@ -54,7 +54,7 @@ int ov70_0223F904(undefined4 *param_1,undefined4 param_2,undefined4 param_3,unde
   int iVar3;
   int iStack_1c;
   undefined4 uStack_18;
-  
+
   uStack_18 = param_4;
   iVar1 = ov70_0223F8D0(param_3,&iStack_1c);
   uVar2 = func_0x02014918(iVar1,0x3d);

@@ -51,7 +51,7 @@ void sub_02017B54(int param_1)
   char cVar1;
   bool bVar2;
   bool bVar3;
-  
+
   sub_02017280(param_1,param_1 + 0x1ce);
   bVar2 = true;
   cVar1 = *(char *)(param_1 + 0x1ce);

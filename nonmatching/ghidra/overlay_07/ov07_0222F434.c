@@ -60,7 +60,7 @@ void ov07_0222F434(undefined4 *param_1,undefined4 param_2,undefined4 param_3,und
   undefined4 uStack_14;
   undefined4 uStack_10;
   undefined4 uStack_c;
-  
+
   uStack_c = param_4;
   ov07_02222590(param_1 + 10,10,10,10,0x14,10,8);
   ov07_02222508(param_1 + 0x13,10,10,1,4);

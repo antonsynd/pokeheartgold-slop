@@ -47,7 +47,7 @@ undefined4 ov10_0221EEF0(int param_1)
 
 {
   undefined4 uVar1;
-  
+
   uVar1 = *(undefined4 *)(*(int *)(param_1 + 0x2134) + *(int *)(param_1 + 0x2138) * 4);
   *(int *)(param_1 + 0x2138) = *(int *)(param_1 + 0x2138) + 1;
   return uVar1;

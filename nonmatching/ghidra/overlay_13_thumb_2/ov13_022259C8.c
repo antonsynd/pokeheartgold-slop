@@ -59,7 +59,7 @@ int ov13_022259C8(uint *param_1)
   uint uVar5;
   int iVar6;
   int iStack_18;
-  
+
   iVar1 = ov13_02225710();
   iVar6 = iVar1 * 4;
   iVar2 = 0;

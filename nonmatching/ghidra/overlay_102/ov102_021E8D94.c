@@ -60,7 +60,7 @@ void ov102_021E8D94(undefined4 *param_1,undefined4 *param_2)
 
 {
   int iVar1;
-  
+
   switch(*param_2) {
   case 0:
     iVar1 = ov102_021E8EF8();

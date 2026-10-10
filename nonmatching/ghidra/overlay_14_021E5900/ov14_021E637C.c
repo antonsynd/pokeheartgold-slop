@@ -64,7 +64,7 @@ void ov14_021E637C(int param_1,undefined4 param_2,undefined4 param_3,undefined4 
   uint uVar3;
   uint uVar4;
   int iVar5;
-  
+
   iVar5 = *(int *)(*(int *)(param_1 + 0x34) + 0xc);
   if (*(int *)(iVar5 + 0xe4) != 0xff) {
     uVar1 = Party_GetCount(*(undefined **)(param_1 + 8));

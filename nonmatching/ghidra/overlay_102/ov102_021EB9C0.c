@@ -59,7 +59,7 @@ void ov102_021EB9C0(int param_1,int param_2)
   int iStack_18;
   int iStack_14;
   undefined4 uStack_10;
-  
+
   iVar1 = ov102_021E8F7C(*(undefined4 *)(param_1 + 4));
   uStack_10 = 0;
   if (param_2 == 0xfe) {

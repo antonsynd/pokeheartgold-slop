@@ -64,7 +64,7 @@ void ov83_022429E4(int param_1)
   undefined2 uStack_1c;
   undefined2 uStack_1a;
   int iStack_18;
-  
+
   ClearWindowTilemapAndScheduleTransfer(param_1 + 0x3b0);
   ClearWindowTilemapAndScheduleTransfer(param_1 + 0x3c0);
   uVar2 = GfGfxLoader_GetScrnDataFromOpenNarc

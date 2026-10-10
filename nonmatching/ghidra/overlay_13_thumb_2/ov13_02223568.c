@@ -52,7 +52,7 @@ undefined4 ov13_02223568(void)
 {
   undefined4 uVar1;
   int iVar2;
-  
+
   uVar1 = func_0x020d3a38();
   if ((iRam0224def8 == 5) && (iVar2 = func_0x020adcb4(0,0,0), iVar2 == 3)) {
     iRam0224def8 = 4;

@@ -65,7 +65,7 @@ void ov51_021E7208(int param_1,int param_2,int param_3)
   int iVar4;
   uint uVar5;
   undefined4 uVar6;
-  
+
   uVar1 = *(undefined4 *)(param_1 + 0x33c4);
   uVar5 = 7;
   do {

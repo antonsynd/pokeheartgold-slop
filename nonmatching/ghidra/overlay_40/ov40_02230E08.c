@@ -51,7 +51,7 @@ void ov40_02230E08(undefined4 param_1,undefined4 param_2,undefined4 param_3,unde
 
 {
   undefined4 uVar1;
-  
+
   func_0x020263ac();
   uVar1 = NewMsgDataFromNarc(1,0x1b,0xd,param_2,param_4);
   ReadMsgDataIntoString(uVar1,0x14c,param_1);

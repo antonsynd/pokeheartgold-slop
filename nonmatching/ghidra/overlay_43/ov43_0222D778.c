@@ -61,7 +61,7 @@ void ov43_0222D778(int param_1,undefined4 *param_2)
   ushort *puVar1;
   int iVar2;
   int iVar3;
-  
+
   ov43_0222AD00(param_2,0);
   Sprite_SetPositionXY(param_2[0x7d],8,0x62);
   ov43_0222AD40(param_2,0,0);

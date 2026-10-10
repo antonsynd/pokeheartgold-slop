@@ -52,7 +52,7 @@ void ov31_0225DE24(undefined4 param_1,undefined4 param_2,undefined4 param_3,unde
 
 {
   undefined4 uVar1;
-  
+
   uVar1 = 0x12;
   if (param_5 - 3U < 2) {
     uVar1 = 0x13;

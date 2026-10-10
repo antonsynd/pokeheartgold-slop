@@ -86,7 +86,7 @@ void ov67_021E6820(undefined4 *param_1)
   undefined4 uStack_20;
   undefined4 uStack_1c;
   undefined4 uStack_18;
-  
+
   uVar1 = SpriteSystem_Alloc(*param_1);
   param_1[0x11f] = uVar1;
   uVar1 = SpriteManager_New(param_1[0x11f]);

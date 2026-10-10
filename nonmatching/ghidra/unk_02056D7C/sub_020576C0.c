@@ -59,7 +59,7 @@ void sub_020576C0(void)
   __asm__ volatile("movs %0, r0" : "=l"(in_r0) : : "cc");
   __asm__ volatile("movs %0, r2" : "=l"(in_r2) : : "cc");
 
-  
+
   if (iRam021d41c4 != 0) {
     puVar1 = (ushort *)(iRam021d41c4 + 0x34 + in_r0 * 8);
     if ((in_r2[4] & 0x80) != 0) {

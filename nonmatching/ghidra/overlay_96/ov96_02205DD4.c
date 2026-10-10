@@ -54,7 +54,7 @@ undefined4 ov96_02205DD4(int param_1,int param_2,undefined4 param_3,undefined4 p
   int iStack_1c;
   int iStack_18;
   undefined4 uStack_14;
-  
+
   iVar1 = param_1 + 0x24 + param_2 * 0xb8;
   uStack_14 = param_4;
   if (2 < *(byte *)(iVar1 + 0xb1)) {

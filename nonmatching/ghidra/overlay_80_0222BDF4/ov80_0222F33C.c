@@ -58,7 +58,7 @@ void ov80_0222F33C(int param_1,undefined4 param_2,undefined4 param_3,undefined4 
 {
   undefined4 uVar1;
   undefined4 uVar2;
-  
+
   uVar1 = NARC_New(0x15,0x65);
   uVar2 = sub_0207CAA0();
   func_0x0200d68c(*(undefined4 *)(param_1 + 4),2,*(undefined4 *)(param_1 + 0x34),

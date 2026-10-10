@@ -48,7 +48,7 @@ undefined4 MovementScriptMachineSub_LoopCheck(undefined4 *param_1)
 {
   int iVar1;
   int iVar2;
-  
+
   iVar1 = param_1[2];
   iVar2 = param_1[4];
   param_1[2] = iVar1 + 1;

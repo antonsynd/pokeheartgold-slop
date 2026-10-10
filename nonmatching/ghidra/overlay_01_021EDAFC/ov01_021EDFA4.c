@@ -50,7 +50,7 @@ void ov01_021EDFA4(int param_1)
 {
   uint uVar1;
   char cVar2;
-  
+
   uVar1 = ov01_021EE2E4();
   if ((uVar1 & 7) == 0) {
     cVar2 = (char)(uVar1 >> 3);

@@ -54,7 +54,7 @@ void EventObjectMovementMan_Delete(undefined4 param_1)
 {
   int iVar1;
   int iVar2;
-  
+
   iVar1 = SysTask_GetData();
   iVar2 = MapObject_IsMovementPaused(*(undefined4 *)(iVar1 + 0xc));
   if (iVar2 != 1) {

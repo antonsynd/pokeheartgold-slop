@@ -60,7 +60,7 @@ void ov67_021E6688(int *param_1,uint param_2)
   uint uVar2;
   int iVar3;
   int iVar4;
-  
+
   if (*(char *)((int)param_1 + 0x4a3) == '\0') {
     iVar4 = 5;
   }

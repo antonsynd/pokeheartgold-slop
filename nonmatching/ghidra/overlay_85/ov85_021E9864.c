@@ -54,7 +54,7 @@ undefined4 ov85_021E9864(int param_1,undefined4 param_2)
 
 {
   int iVar1;
-  
+
   iVar1 = sub_0203769C();
   if (iVar1 == 0) {
     sub_02037454();

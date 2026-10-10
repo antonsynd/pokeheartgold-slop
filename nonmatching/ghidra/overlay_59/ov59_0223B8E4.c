@@ -65,7 +65,7 @@ void ov59_0223B8E4(int param_1)
   int iVar7;
   int iStack_28;
   int *piStack_1c;
-  
+
   puVar6 = &ov59_0223CA90;
   iVar7 = 0;
   iVar4 = param_1;

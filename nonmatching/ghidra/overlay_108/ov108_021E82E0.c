@@ -54,7 +54,7 @@ undefined4 ov108_021E82E0(int param_1,int param_2)
   byte *pbVar3;
   int iVar4;
   byte abStack_18 [4];
-  
+
   cVar1 = (char)((int)((uint)*(byte *)(param_1 + 0x184e2) << 0x1d) >> 0x1f) * -6;
   abStack_18[2] = *(char *)(param_1 + 0x184df) + cVar1;
   abStack_18[3] = *(char *)(param_1 + 0x184e0) + cVar1;

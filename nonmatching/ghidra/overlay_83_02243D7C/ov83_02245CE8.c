@@ -49,7 +49,7 @@ void ov83_02245CE8(int param_1,undefined4 *param_2,undefined4 *param_3)
 {
   int iVar1;
   undefined4 uVar2;
-  
+
   iVar1 = func_0x02237d8c(*(undefined1 *)(param_1 + 9));
   if (iVar1 == 1) {
     uVar2 = 0x40;

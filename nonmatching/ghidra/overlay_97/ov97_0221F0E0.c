@@ -52,7 +52,7 @@ void ov97_0221F0E0(int param_1)
   int iVar2;
   int iVar3;
   undefined4 uStack_1c;
-  
+
   iVar1 = 0;
   iVar3 = param_1;
   do {

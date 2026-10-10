@@ -74,7 +74,7 @@ void ov00_021E77F4(undefined4 param_1,undefined4 param_2,int param_3,undefined4 
   undefined4 uStack_20;
   undefined4 uStack_1c;
   undefined4 uStack_18;
-  
+
   uStack_3c = 0;
   uStack_3b = 0;
   uStack_3a = 0;

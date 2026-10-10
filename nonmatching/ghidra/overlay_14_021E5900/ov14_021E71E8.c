@@ -56,7 +56,7 @@ void ov14_021E71E8(int param_1,undefined4 param_2,undefined4 param_3,undefined4 
   uint uVar4;
   uint uVar5;
   undefined4 *puVar6;
-  
+
   uVar2 = Heap_AllocAtEnd(10,0xc,param_3,param_4,param_4);
   *(undefined4 *)(*(int *)(param_1 + 0x34) + 0x88dc) = uVar2;
   iVar3 = *(int *)(param_1 + 0x34);

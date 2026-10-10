@@ -64,7 +64,7 @@ undefined4 ov89_0225C570(undefined4 param_1,int param_2,undefined4 param_3)
   undefined4 uStack_18;
   uint uStack_14;
   undefined4 uStack_10;
-  
+
   uStack_18 = 0;
   uStack_14 = 0;
   uStack_10 = 0;

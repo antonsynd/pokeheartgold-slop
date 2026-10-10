@@ -82,7 +82,7 @@ void ov75_02247450(int *param_1,undefined4 param_2,undefined4 param_3,undefined4
   int iStack_30;
   int iStack_1c;
   undefined4 uStack_18;
-  
+
   iVar4 = param_1[1];
   uStack_18 = param_4;
   uVar5 = NARC_New(0x58,0x74);

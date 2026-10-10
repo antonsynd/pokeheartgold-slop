@@ -77,7 +77,7 @@ undefined4 ov40_02236A70(int param_1,undefined4 param_2,undefined4 param_3,undef
   undefined4 *puVar3;
   int iStack_14;
   undefined4 uStack_10;
-  
+
   puVar3 = *(undefined4 **)(param_1 + 0x860);
   uStack_10 = param_4;
   iVar1 = ov40_0223D5CC();

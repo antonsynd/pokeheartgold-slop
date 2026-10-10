@@ -54,7 +54,7 @@ void ov59_0223BAE8(undefined4 *param_1)
   undefined4 *puVar1;
   int iVar2;
   int *piVar3;
-  
+
   puVar1 = param_1 + (uint)*(byte *)((int)param_1 + 0x4a) * 0xd + 0x1f;
   func_0x022379c0(param_1 + 6,param_1[4],*(undefined1 *)(puVar1 + 2));
   if (*(int *)(param_1[1] + 0x14) == 8) {

@@ -51,7 +51,7 @@ void ov83_02240D64(undefined4 param_1,undefined4 param_2,undefined4 param_3,unde
   undefined4 uVar1;
   undefined4 uVar2;
   undefined4 uVar3;
-  
+
   if (param_6 == '\0') {
     uVar1 = 0x56;
     uVar2 = 7;

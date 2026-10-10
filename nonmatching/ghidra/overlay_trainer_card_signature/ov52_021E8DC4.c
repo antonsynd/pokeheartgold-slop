@@ -55,7 +55,7 @@ undefined4 ov52_021E8DC4(int param_1,undefined4 param_2)
 
 {
   int iVar1;
-  
+
   iVar1 = YesNoPrompt_HandleInput(*(undefined4 *)(param_1 + 0x5c9c));
   if (iVar1 == 1) {
     GameStats_AddScore(*(undefined4 *)(param_1 + 8),4);

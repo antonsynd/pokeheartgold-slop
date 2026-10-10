@@ -51,7 +51,7 @@ undefined4 ov89_0225BF34(undefined4 param_1,int *param_2,undefined4 param_3,unde
 
 {
   int iVar1;
-  
+
   switch(*(undefined1 *)((int)param_2 + 6)) {
   case 0:
     iVar1 = Camera_GetDistance(param_3);

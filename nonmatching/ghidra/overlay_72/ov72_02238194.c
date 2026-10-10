@@ -63,7 +63,7 @@ void ov72_02238194(int param_1,undefined4 param_2,undefined4 param_3,undefined4 
   undefined4 uVar3;
   int iVar4;
   int iVar5;
-  
+
   uVar1 = NARC_New(0xef,0x43);
   uVar2 = NARC_New(0xee,0x43);
   func_0x020b78d4();

@@ -50,7 +50,7 @@ void BattleController_EmitPlayEncounterAnimation(undefined4 param_1,undefined4 p
 {
   undefined4 uStack_14;
   undefined4 uStack_10;
-  
+
   uStack_14 = 1;
   uStack_10 = BattleSystem_GetRandTemp();
   ov12_02262240(param_1,1,param_2,&uStack_14,8);

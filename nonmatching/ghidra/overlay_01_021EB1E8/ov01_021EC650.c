@@ -50,7 +50,7 @@ undefined4 ov01_021EC650(undefined4 param_1,undefined4 param_2,int param_3)
 {
   int iVar1;
   undefined4 uVar2;
-  
+
   uVar2 = 1;
   if (param_3 != 0) {
     if (param_3 == 1) {

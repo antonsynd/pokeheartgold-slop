@@ -56,7 +56,7 @@ void ov40_02237144(int param_1)
   undefined4 uVar1;
   undefined4 uVar2;
   int iVar3;
-  
+
   iVar3 = *(int *)(param_1 + 0x860);
   uVar1 = String_New(0xff,0x6d);
   CopyU16ArrayToString(uVar1,iVar3 + 4);

@@ -63,7 +63,7 @@ void ov47_02259488(int param_1,undefined4 param_2,undefined4 *param_3,int param_
   undefined *puVar2;
   int iVar3;
   int iVar4;
-  
+
   GfGfxLoader_GXLoadPalFromOpenNarc(param_3[0x50],199,0,0,0x80,param_5);
   GfGfxLoader_LoadCharDataFromOpenNarc(param_3[0x50],200,*param_3,0,0,0,0,param_5);
   GfGfxLoader_LoadScrnDataFromOpenNarc(param_3[0x50],0xca,*param_3,0,0,0,0,param_5);

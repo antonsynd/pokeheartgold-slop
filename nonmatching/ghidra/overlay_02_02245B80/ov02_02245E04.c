@@ -54,7 +54,7 @@ int ov02_02245E04(undefined2 *param_1,undefined4 param_2)
 
 {
   int iVar1;
-  
+
   iVar1 = Heap_Alloc(param_2,0xa4);
   func_0x020d4994(iVar1,0,0xa4);
   *(undefined4 *)(iVar1 + 0xa0) = param_2;

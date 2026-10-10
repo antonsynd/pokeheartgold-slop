@@ -50,7 +50,7 @@ void ov14_021E83F4(undefined4 param_1,undefined4 param_2,undefined4 param_3,unde
 {
   uint uVar1;
   char cVar2;
-  
+
   uVar1 = 0;
   cVar2 = '\x05';
   do {

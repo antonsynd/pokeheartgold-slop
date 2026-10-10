@@ -104,12 +104,12 @@ extern undefined4 _UNK_02225048;
 void ov38_0221BBD0(void)
 
 {
-                    
-                    
+
+
   _UNK_02225044 = 0xffffffff;
   _UNK_02225048 = 0;
-                    
-                    
+
+
   _UNK_02225040 = 1;
   _UNK_0222504c = 0;
   return;

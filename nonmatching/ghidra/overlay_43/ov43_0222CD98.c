@@ -54,7 +54,7 @@ undefined4 ov43_0222CD98(int param_1,int param_2,undefined4 param_3)
 {
   char cVar1;
   int iVar2;
-  
+
   cVar1 = *(char *)(param_2 + 8);
   if (cVar1 == '\0') {
     ov43_0222D028();

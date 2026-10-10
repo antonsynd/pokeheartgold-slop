@@ -48,7 +48,7 @@ int * sub_02016144(int param_1)
 {
   int iVar1;
   int *piVar2;
-  
+
   iVar1 = 0;
   if (0 < *(int *)(param_1 + 4)) {
     piVar2 = *(int **)(param_1 + 0x10);

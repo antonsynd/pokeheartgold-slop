@@ -53,7 +53,7 @@ undefined4 ov01_021F654C(int param_1,int param_2,int param_3,undefined1 *param_4
   int iVar1;
   undefined4 uVar2;
   uint uVar3;
-  
+
   uVar3 = ((int)(param_2 + ((uint)(param_2 >> 4) >> 0x1b)) >> 5) +
           *(int *)(param_1 + 0xc4) * ((int)(param_3 + ((uint)(param_3 >> 4) >> 0x1b)) >> 5);
   if (((uint)(*(int *)(param_1 + 0xc4) * *(int *)(param_1 + 200)) <= uVar3) &&

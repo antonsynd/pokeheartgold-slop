@@ -49,7 +49,7 @@ void ov80_0222FC08(undefined4 param_1,undefined4 *param_2)
 
 {
   int iVar1;
-  
+
   iVar1 = Bg_GetYpos(*param_2,2);
   if (0xfe < iVar1) {
     ScheduleSetBgPosText(*param_2,2,3,0);

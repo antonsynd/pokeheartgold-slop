@@ -52,7 +52,7 @@ undefined4 ov103_021EDCE0(int param_1)
 {
   byte bVar1;
   undefined4 uVar2;
-  
+
   bVar1 = *(byte *)(*(int *)(param_1 + 0x14) + 0x26);
   if (bVar1 < 6) {
     uVar2 = SaveArray_Party_Get(**(undefined4 **)(param_1 + 8));

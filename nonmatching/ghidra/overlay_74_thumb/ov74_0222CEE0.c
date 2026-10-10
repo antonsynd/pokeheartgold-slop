@@ -63,7 +63,7 @@ void ov74_0222CEE0(int param_1)
 {
   int iVar1;
   undefined4 uVar2;
-  
+
   if (iRam0223d0b8 == 0x2c) {
     ov74_0222CEC0();
     iVar1 = ov74_022368D4();

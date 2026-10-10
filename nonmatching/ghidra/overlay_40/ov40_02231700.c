@@ -50,7 +50,7 @@ undefined4 ov40_02231700(void)
 
 {
   int iVar1;
-  
+
   iVar1 = func_0x020252f4(&ov40_02245100);
   if (iVar1 != 0) {
     return 1;

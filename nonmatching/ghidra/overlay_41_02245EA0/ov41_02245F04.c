@@ -49,7 +49,7 @@ void ov41_02245F04(undefined4 param_1,undefined4 param_2,undefined4 param_3,unde
 
 {
   undefined4 auStack_8 [2];
-  
+
   auStack_8[0] = param_4;
   ov41_022460DC(param_1,auStack_8);
   TouchscreenHitbox_TouchHeldIsIn(auStack_8);

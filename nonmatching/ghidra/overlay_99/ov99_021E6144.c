@@ -52,7 +52,7 @@ void ov99_021E6144(undefined4 *param_1,int param_2)
   undefined4 uVar1;
   uint uVar2;
   undefined4 uVar3;
-  
+
   uVar3 = param_1[4];
   uVar2 = 0;
   do {

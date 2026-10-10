@@ -51,7 +51,7 @@ void sub_02060AB8(undefined4 param_1,undefined4 param_2)
 
 {
   int iVar1;
-  
+
   iVar1 = sub_0205BA24(param_2);
   if (iVar1 == 1) {
     MapObject_SetFlag28(param_1,1);

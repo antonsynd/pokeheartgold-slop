@@ -50,7 +50,7 @@ void ov49_02264F24(int param_1,undefined4 param_2,undefined4 param_3,undefined4 
 
 {
   undefined4 uVar1;
-  
+
   if ((*(char *)(param_1 + 0xd) == '\x01') && (*(short *)(param_1 + 0xe) == 0x1c2)) {
     ov49_0225A334(param_2,*(undefined1 *)(param_1 + 3),0,param_4,param_4);
     uVar1 = ov49_02264C04(param_2,*(undefined1 *)(param_1 + 3),0x2ab);

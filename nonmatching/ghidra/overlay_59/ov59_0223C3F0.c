@@ -55,7 +55,7 @@ void ov59_0223C3F0(void)
 
 {
   undefined4 in_r3;
-  
+
   func_0x020c2698();
   func_0x020cf564();
   func_0x020cf704();

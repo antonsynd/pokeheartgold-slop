@@ -62,7 +62,7 @@ undefined4 ov07_0221E9D4(int param_1,undefined4 param_2,undefined4 param_3,undef
   short *psVar7;
   char cVar8;
   undefined4 *puVar9;
-  
+
   puVar9 = *(undefined4 **)(param_1 + 0x48);
   iVar2 = Heap_Alloc(*puVar9,0x28,param_3,param_4,param_4);
   func_0x020d4994(iVar2,0,0x28);

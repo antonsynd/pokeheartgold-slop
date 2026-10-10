@@ -70,7 +70,7 @@ undefined4 Bag_Exit(undefined4 param_1)
 
 {
   undefined4 *puVar1;
-  
+
   puVar1 = (undefined4 *)OverlayManager_GetData();
   ov15_021FDC6C();
   ov15_021FF894(puVar1);

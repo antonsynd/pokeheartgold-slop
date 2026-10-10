@@ -52,7 +52,7 @@ void ov72_02237CB0(void)
 
 {
   int iVar1;
-  
+
   func_0x0221be84();
   iVar1 = ov72_02237D50(0x223b5c4,0x223b834,0,0x223b923,2);
   if (iVar1 != 0) {

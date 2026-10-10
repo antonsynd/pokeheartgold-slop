@@ -48,7 +48,7 @@ undefined4 ov08_0221DAE4(int *param_1)
 
 {
   uint uVar1;
-  
+
   uVar1 = func_0x0223a7e0(*(undefined4 *)(*param_1 + 8));
   if (((uVar1 != 0x4a) && (uVar1 != 0x4b)) && ((uVar1 & 0x12) != 0)) {
     return 1;

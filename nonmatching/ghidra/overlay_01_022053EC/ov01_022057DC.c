@@ -54,7 +54,7 @@ void ov01_022057DC(undefined *param_1)
   int *piVar2;
   int iVar3;
   int iVar4;
-  
+
   puVar1 = sub_0205F1A0(param_1);
   piVar2 = (int *)ov01_021FC5A4(*(undefined **)(puVar1 + 0xfc),0x16);
   iVar4 = *piVar2;

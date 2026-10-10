@@ -52,7 +52,7 @@ void ov43_0222DD40(undefined4 *param_1,int param_2,undefined4 param_3,undefined4
   int iVar3;
   undefined2 auStack_20 [4];
   undefined4 uStack_18;
-  
+
   uStack_18 = param_4;
   auStack_20[0] = 0xd;
   puVar2 = auStack_20;

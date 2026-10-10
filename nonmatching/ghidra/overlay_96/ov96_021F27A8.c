@@ -47,7 +47,7 @@ undefined1 ov96_021F27A8(int param_1)
 
 {
   int iVar1;
-  
+
   iVar1 = *(int *)(param_1 + 0xc) + -1;
   if (iVar1 < 0) {
     return 0xff;

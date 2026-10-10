@@ -58,7 +58,7 @@ void ov41_02249E60(undefined4 *param_1,uint *param_2,uint *param_3,undefined4 pa
   undefined4 uVar5;
   ushort *puStack_1c;
   undefined4 uStack_18;
-  
+
   iVar3 = param_1[5];
   iVar4 = param_1[6];
   uStack_18 = param_4;

@@ -50,7 +50,7 @@ void ov85_021E78A4(int param_1,undefined4 param_2)
   int iVar1;
   int iVar2;
   int iVar3;
-  
+
   iVar3 = *(int *)(param_1 + 0x30);
   iVar2 = 0;
   iVar1 = param_1 + 400;

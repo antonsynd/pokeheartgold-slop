@@ -48,7 +48,7 @@ undefined4 ov96_021E7D18(int param_1)
 
 {
   undefined4 uVar1;
-  
+
   if (param_1 == 0xffff) {
     return 1;
   }

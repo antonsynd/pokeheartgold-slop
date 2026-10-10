@@ -55,7 +55,7 @@ void ov18_021F1324(int param_1,uint param_2,undefined4 param_3,undefined4 param_
 {
   undefined4 uVar1;
   uint uVar2;
-  
+
   uVar2 = 0;
   if (param_2 != 0) {
     do {

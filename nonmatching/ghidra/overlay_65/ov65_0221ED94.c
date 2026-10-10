@@ -58,7 +58,7 @@ void ov65_0221ED94(undefined4 param_1,undefined4 param_2,undefined4 param_3,int 
   int iStack_24;
   int iStack_20;
   int iStack_18;
-  
+
   iVar2 = *param_5;
   iStack_18 = param_4;
   iVar1 = func_0x020f2998(param_5[3] - iVar2,0x14);

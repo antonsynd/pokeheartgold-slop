@@ -48,7 +48,7 @@ undefined4 ov14_021EB170(int param_1)
 
 {
   int iVar1;
-  
+
   iVar1 = IsPaletteFadeFinished();
   if (iVar1 == 1) {
     return *(undefined4 *)(*(int *)(param_1 + 0x34) + 0x440);

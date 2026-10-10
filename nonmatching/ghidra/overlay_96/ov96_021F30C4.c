@@ -52,7 +52,7 @@ void ov96_021F30C4(int param_1,undefined4 param_2)
 {
   undefined4 uVar1;
   int iVar2;
-  
+
   iVar2 = 0;
   do {
     uVar1 = ov96_021EB4F4(param_2,0x65,2);

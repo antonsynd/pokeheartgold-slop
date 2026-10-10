@@ -50,7 +50,7 @@ void ov112_021E7DC0(int param_1)
 
 {
   undefined4 uVar1;
-  
+
   ov112_021F3244(*(undefined4 *)(param_1 + 0x20),param_1 + 0xf200);
   *(undefined4 *)(param_1 + 0xf1d0) = 1;
   *(undefined2 *)(param_1 + 0xf1d4) = 7;

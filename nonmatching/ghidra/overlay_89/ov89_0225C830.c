@@ -49,7 +49,7 @@ undefined2 ov89_0225C830(int param_1,uint param_2)
 
 {
   int extraout_r1;
-  
+
   { uint nug_a = (uint)(param_2), nug_b = (uint)(9); extraout_r1 = nug_a % nug_b; _u32_div_f(nug_a, nug_b); }
   return *(undefined2 *)(&ov89_0225CE70 + param_1 * 2 + extraout_r1 * 4);
 }

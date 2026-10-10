@@ -53,7 +53,7 @@ void ov71_0224A7D0(undefined *param_1,undefined4 *param_2)
 
 {
   int iVar1;
-  
+
   if ((int)param_2[0x1d] < 0x46) {
     param_2[0x1d] = param_2[0x1d] + 1;
   }

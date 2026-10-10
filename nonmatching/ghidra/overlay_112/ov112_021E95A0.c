@@ -58,7 +58,7 @@ void ov112_021E95A0(int param_1,undefined4 param_2,undefined4 param_3,undefined4
   uint uStack_20;
   undefined1 auStack_1c [4];
   undefined4 uStack_18;
-  
+
   uStack_18 = param_4;
   sub_02032674(*(undefined4 *)(param_1 + 0x1e440),auStack_1c,&uStack_20);
   func_0x0202a634(*(undefined4 *)(param_1 + 0x20));

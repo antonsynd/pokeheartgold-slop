@@ -49,7 +49,7 @@ void ov08_0221DD40(int param_1,undefined4 param_2,undefined4 param_3,undefined4 
 
 {
   uint uVar1;
-  
+
   WindowArray_Delete(*(undefined4 *)(param_1 + 0x2070),*(undefined1 *)(param_1 + 0x2074),param_3,
                      param_4,param_4);
   uVar1 = 0;

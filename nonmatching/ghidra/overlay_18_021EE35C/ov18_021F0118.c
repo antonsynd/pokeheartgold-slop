@@ -49,7 +49,7 @@ void ov18_021F0118(int param_1,int param_2)
 
 {
   uint uVar1;
-  
+
   if (param_2 == 1) {
     uVar1 = 0;
     param_1 = param_1 + 0xc;

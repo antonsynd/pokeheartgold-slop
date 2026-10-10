@@ -54,7 +54,7 @@ void ov99_021E7794(undefined4 param_1)
 {
   undefined1 uVar1;
   uint uVar2;
-  
+
   uVar2 = ov99_021E71B0();
   if (0x1ed < uVar2) {
     uVar2 = 0;

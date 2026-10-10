@@ -49,7 +49,7 @@ void ov14_021F3D70(int param_1,int param_2)
 
 {
   uint uVar1;
-  
+
   if ((int)((uint)*(byte *)(param_2 + 0x12) << 0x18) < 0) {
     ManagedSprite_SetDrawFlag(*(undefined **)(param_1 + 0x330),0);
     ManagedSprite_SetDrawFlag(*(undefined **)(param_1 + 0x334),0);

@@ -54,7 +54,7 @@ int sub_020348F0(void)
   int iVar2;
   int iVar3;
   int iVar4;
-  
+
   iVar3 = 0;
   iVar4 = 0;
   do {

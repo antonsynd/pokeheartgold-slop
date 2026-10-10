@@ -53,7 +53,7 @@ void ov108_021E7C5C(int param_1)
   int iVar1;
   int iVar2;
   int iVar3;
-  
+
   if (*(char *)(param_1 + 0x184e3) != '\0') {
     iVar2 = 0;
     iVar3 = 5;

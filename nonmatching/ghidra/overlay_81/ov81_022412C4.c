@@ -60,7 +60,7 @@ void ov81_022412C4(int param_1,int param_2,undefined4 param_3,undefined4 param_4
   int iVar1;
   undefined2 uVar2;
   undefined2 uVar3;
-  
+
   iVar1 = ov81_02240F08(param_1,0,param_3,param_4,param_4);
   if (iVar1 == 1) {
     uVar2 = *(undefined2 *)(&ov81_02243490 + param_2 * 4);

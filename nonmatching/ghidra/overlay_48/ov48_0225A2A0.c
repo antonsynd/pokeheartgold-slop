@@ -49,7 +49,7 @@ void ov48_0225A2A0(int param_1,undefined4 *param_2)
 {
   int iVar1;
   undefined4 uVar2;
-  
+
   if ((*(short *)(param_1 + 0x36) + 1U & 3) == *(ushort *)(param_1 + 0x34)) {
     ov48_0225A2EC();
   }

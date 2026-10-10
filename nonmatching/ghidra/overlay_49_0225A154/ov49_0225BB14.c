@@ -57,7 +57,7 @@ void ov49_0225BB14(undefined4 *param_1,undefined4 param_2,undefined4 param_3,uin
   ushort *puVar4;
   ushort *puStack_1c;
   uint uStack_18;
-  
+
   uStack_18 = param_4;
   uVar1 = GfGfxLoader_GetScrnDataFromOpenNarc(param_2,param_3,0,&puStack_1c,param_6);
   uVar2 = *(uint *)(puStack_1c + 4);

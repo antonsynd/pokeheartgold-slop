@@ -60,7 +60,7 @@ void ov70_0223E170(undefined4 param_1,undefined4 param_2,undefined4 param_3,unde
   undefined4 uVar4;
   int iVar5;
   uint uVar6;
-  
+
   func_0x0206ddd8();
   iVar3 = GetBoxMonData(param_1,0xac,0);
   uVar2 = GetBoxMonData(param_1,5,0);

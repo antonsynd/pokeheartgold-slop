@@ -50,7 +50,7 @@ undefined4 ov82_0223E7E8(int param_1)
 
 {
   int iVar1;
-  
+
   if (*(char *)(param_1 + 8) == '\0') {
     func_0x02037bec();
     sub_02037AC0(0x68);

@@ -52,7 +52,7 @@ void ov109_021E7810(undefined4 param_1,int *param_2)
 
 {
   int iVar1;
-  
+
   iVar1 = Sprite_IsAnimated(*(undefined4 *)(*param_2 + 0xa8));
   if (iVar1 == 0) {
     ov109_021E7388(*param_2,0);

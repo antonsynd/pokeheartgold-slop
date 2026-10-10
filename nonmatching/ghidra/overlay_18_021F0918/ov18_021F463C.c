@@ -61,7 +61,7 @@ void ov18_021F463C(undefined *param_1)
   uint uVar3;
   undefined4 uStack_1c;
   undefined4 uStack_18;
-  
+
   uStack_18 = 0;
   uStack_1c = 0;
   if (param_1[0x18ca] != '\0') {

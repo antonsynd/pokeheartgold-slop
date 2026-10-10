@@ -55,7 +55,7 @@ void ov83_022408E0(int param_1,uint param_2)
 {
   undefined4 uVar1;
   uint uVar2;
-  
+
   FillWindowPixelBuffer(param_1 + 0x420,0);
   uVar2 = param_2 + *(short *)(param_1 + 0x862) * 6 & 0xffff;
   ov83_0224755C(*(undefined4 *)(param_1 + 0x79c),0);

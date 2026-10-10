@@ -61,7 +61,7 @@ undefined4 ov15_021FD058(int param_1,undefined4 param_2,undefined4 param_3,undef
 {
   undefined4 uVar1;
   int iVar2;
-  
+
   *(undefined4 *)(param_1 + 0x684) = 0;
   sub_0200E5D4(param_1 + 0x214,1,param_3,param_4,param_4);
   sub_0200E5D4(param_1 + 0x44,1);

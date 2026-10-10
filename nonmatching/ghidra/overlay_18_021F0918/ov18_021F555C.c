@@ -51,7 +51,7 @@ void ov18_021F555C(undefined4 *param_1,undefined4 param_2,undefined4 param_3,und
   short sStack_14;
   short sStack_12;
   undefined4 uStack_10;
-  
+
   uStack_10 = param_4;
   ov18_021F12C8(*param_1,*(undefined2 *)(param_1 + 7),&sStack_12,&sStack_14,1);
   sStack_14 = sStack_14 + *(short *)(param_1 + 6);

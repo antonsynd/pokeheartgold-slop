@@ -49,7 +49,7 @@ int BN_CTX_new(void)
 
 {
   int iVar1;
-  
+
   iVar1 = CRYPTOi_MyAlloc(0x110);
   if (iVar1 != 0) {
     BN_CTX_init(iVar1);

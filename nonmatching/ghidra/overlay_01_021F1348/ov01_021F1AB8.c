@@ -51,7 +51,7 @@ void ov01_021F1AB8(undefined4 param_1,undefined4 param_2,undefined4 param_3,unde
 {
   undefined4 uVar1;
   undefined4 uVar2;
-  
+
   uVar2 = param_4;
   uVar1 = ov01_021F14B4();
   *param_6 = uVar1;

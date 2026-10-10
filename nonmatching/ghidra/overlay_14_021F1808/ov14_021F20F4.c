@@ -63,7 +63,7 @@ undefined4 ov14_021F20F4(undefined4 *param_1,undefined4 param_2,undefined4 param
   undefined4 uVar1;
   int iVar2;
   uint uStack_10;
-  
+
   uStack_10 = param_4;
   uVar1 = Save_Bag_Get(*(undefined4 *)*param_1);
   iVar2 = func_0x02078398(uVar1,*(undefined2 *)(param_1[0xd] + 0x88c8),1,10);

@@ -56,7 +56,7 @@ void ov18_021F299C(int param_1,undefined4 param_2,undefined4 param_3,undefined4 
   int iVar2;
   undefined1 *puVar3;
   uint uVar4;
-  
+
   puVar3 = &ov18_021FA984;
   uVar4 = 0;
   iVar2 = param_1;

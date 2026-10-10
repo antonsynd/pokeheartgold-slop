@@ -70,7 +70,7 @@ MapObjectMovementCmd092_Step1
   undefined4 uStack_18;
   undefined4 uStack_14;
   undefined4 uStack_10;
-  
+
   uStack_10 = param_4;
   piVar1 = (int *)sub_0205F3E4(param_1);
   if (*piVar1 != 0) {

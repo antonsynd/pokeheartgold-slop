@@ -52,7 +52,7 @@ void ov00_021E6388(void)
 {
   int iVar1;
   int iVar2;
-  
+
   *(undefined4 *)(iRam0221a680 + 0x1070) = 7;
   iVar2 = 0;
   if (0 < *(int *)(iRam0221a680 + 0x107c)) {

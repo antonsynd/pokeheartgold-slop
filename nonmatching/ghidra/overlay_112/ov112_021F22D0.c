@@ -54,7 +54,7 @@ void ov112_021F22D0(int param_1,int param_2,int param_3,undefined4 param_4)
   undefined2 uStack_1c;
   short sStack_1a;
   undefined4 uStack_18;
-  
+
   param_3 = param_3 * 4;
   iVar1 = param_1 + 0x70;
   uStack_18 = param_4;

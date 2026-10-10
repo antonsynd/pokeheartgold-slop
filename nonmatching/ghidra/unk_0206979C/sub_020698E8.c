@@ -50,7 +50,7 @@ int sub_020698E8(uint *param_1,int param_2,int param_3)
   uint uVar2;
   uint uVar3;
   int iVar4;
-  
+
   uVar2 = (uint)*(ushort *)(*(int *)(param_1[4] + 8) + 4);
   iVar4 = 0;
   param_1[1] = param_1[1] + param_2;

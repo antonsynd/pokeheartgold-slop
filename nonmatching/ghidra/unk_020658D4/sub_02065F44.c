@@ -63,7 +63,7 @@ undefined4 sub_02065F44(undefined4 param_1)
   int iVar4;
   int iVar5;
   int iVar6;
-  
+
   MapObject_GetFieldSystem();
   uVar1 = FieldSystem_GetPlayerAvatar();
   iVar2 = MapObject_GetXCoord(param_1);

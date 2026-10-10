@@ -49,7 +49,7 @@ void ov96_021F2B68(undefined1 *param_1,undefined2 param_2,undefined2 param_3,und
 
 {
   undefined4 uVar1;
-  
+
   *(undefined2 *)(param_1 + 0x1c) = param_2;
   *(undefined2 *)(param_1 + 0x1e) = param_3;
   *param_1 = 0;

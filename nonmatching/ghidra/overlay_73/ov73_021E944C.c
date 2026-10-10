@@ -58,7 +58,7 @@ undefined4 ov73_021E944C(int *param_1,undefined4 param_2,undefined4 param_3,unde
   undefined1 auStack_28 [16];
   undefined1 auStack_18 [12];
   undefined4 uStack_c;
-  
+
   uStack_c = param_4;
   iVar1 = func_0x02237b54();
   if (iVar1 == 0) {

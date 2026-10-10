@@ -52,7 +52,7 @@ void ov111_021E5FD4(int param_1)
 {
   int iVar1;
   undefined *puVar2;
-  
+
   NARC_Delete(*(undefined4 *)(param_1 + 0x1c));
   puVar2 = &UNK_021e6b74;
   iVar1 = 0;

@@ -57,7 +57,7 @@ int ov96_021F7684(undefined4 param_1,char param_2,undefined4 param_3,undefined4 
   int iVar5;
   int iVar6;
   undefined4 uStack_1c;
-  
+
   iVar1 = Heap_Alloc(param_1,0x24);
   func_0x020d4994(iVar1,0,0x24);
   *(char *)(iVar1 + 0x1c) = param_2;

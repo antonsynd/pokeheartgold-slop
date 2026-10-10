@@ -52,7 +52,7 @@ undefined4 ov73_021E7CD8(int param_1,int param_2,undefined4 *param_3,undefined4 
   int iVar3;
   undefined4 uVar4;
   undefined4 *puVar5;
-  
+
   if (*(char *)(param_3 + 6) == '\0') {
     return 0;
   }

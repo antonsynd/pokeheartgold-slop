@@ -57,7 +57,7 @@ void ov72_0223B1C8(undefined4 *param_1)
   undefined4 uVar1;
   undefined4 uVar2;
   undefined4 uVar3;
-  
+
   uVar1 = NewMsgDataFromNarc(1,0x1b,0xbf,param_1[10]);
   AddWindowParameterized
             (*param_1,param_1 + 2,*(undefined1 *)((int)param_1 + 0x32),0xc,8,8,2,

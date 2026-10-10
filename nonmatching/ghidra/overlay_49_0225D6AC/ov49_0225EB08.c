@@ -51,7 +51,7 @@ void ov49_0225EB08(int param_1,undefined4 param_2)
 
 {
   int iVar1;
-  
+
   switch(*(undefined2 *)(param_1 + 4)) {
   case 1:
     ov49_0225EBA8();

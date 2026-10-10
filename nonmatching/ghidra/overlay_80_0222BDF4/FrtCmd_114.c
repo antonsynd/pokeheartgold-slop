@@ -50,7 +50,7 @@ undefined4 FrtCmd_114(undefined4 *param_1)
 
 {
   int iVar1;
-  
+
   iVar1 = Frontier_GetLaunchArgs(*(undefined4 *)*param_1);
   FrontierScript_ReadVarPtr(param_1);
   SaveGameNormal(*(undefined4 *)(iVar1 + 8));

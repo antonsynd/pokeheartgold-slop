@@ -48,7 +48,7 @@ undefined4 FrtCmd_207(int *param_1,undefined4 param_2,undefined4 param_3,undefin
 
 {
   undefined1 *puVar1;
-  
+
   puVar1 = (undefined1 *)param_1[7];
   param_1[7] = (int)(puVar1 + 1);
   ov80_0222F5EC(*(undefined4 *)(*param_1 + 0x60),*puVar1,puVar1,*param_1,param_4);

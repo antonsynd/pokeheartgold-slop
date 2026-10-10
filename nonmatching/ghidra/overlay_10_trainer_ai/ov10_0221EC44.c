@@ -49,7 +49,7 @@ void ov10_0221EC44(undefined4 param_1,int param_2,undefined4 param_3,undefined4 
 
 {
   int iVar1;
-  
+
   ov10_0221EF24(param_2,1,param_3,param_4,param_4);
   iVar1 = ov10_0221EE60(param_1,param_2);
   if (iVar1 != 1) {

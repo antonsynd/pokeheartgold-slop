@@ -56,7 +56,7 @@ void sub_0206207C(undefined4 param_1,undefined1 *param_2)
   int iVar2;
   int iVar3;
   undefined4 uVar4;
-  
+
   iVar1 = MapObject_GetFacingDirection();
   iVar3 = 0;
   for (iVar2 = 0;

@@ -64,7 +64,7 @@ void ov103_021EE210(int param_1,undefined4 param_2,undefined4 param_3,undefined4
   undefined4 uVar6;
   int iStack_1c;
   undefined4 uStack_18;
-  
+
   uVar4 = 0;
   uVar6 = *(undefined4 *)(*(int *)(param_1 + 0xc) + (uint)*(byte *)(param_1 + 0x1f) * 4 + 0x27c);
   iVar5 = 0;

@@ -54,7 +54,7 @@ void ov96_02219BDC(undefined4 param_1,undefined4 param_2,undefined4 param_3,unde
 {
   undefined4 uVar1;
   undefined4 uVar2;
-  
+
   uVar2 = param_4;
   FillWindowPixelBuffer(param_1,0);
   uVar1 = ReadMsgData_ExpandPlaceholders(param_2,param_3,param_4,param_5);

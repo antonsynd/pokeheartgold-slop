@@ -52,7 +52,7 @@ void ov12_02260614(undefined4 param_1,undefined4 *param_2,undefined4 param_3,und
 
 {
   int iVar1;
-  
+
   if (*(char *)((int)param_2 + 7) == '\0') {
     iVar1 = TextPrinterCheckActive(*(undefined1 *)((int)param_2 + 6));
     if (iVar1 == 0) {

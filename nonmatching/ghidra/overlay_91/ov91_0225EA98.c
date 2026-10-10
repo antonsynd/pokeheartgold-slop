@@ -75,7 +75,7 @@ void ov91_0225EA98(int param_1)
   undefined1 auStack_24 [4];
   undefined4 uStack_20;
   uint uStack_14;
-  
+
   bVar1 = false;
   if (*(int *)(param_1 + 0x20) == 0) {
     *(int *)(param_1 + 0x48) = *(int *)(param_1 + 0x48) + 1;

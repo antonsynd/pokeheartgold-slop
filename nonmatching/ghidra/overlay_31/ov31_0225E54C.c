@@ -58,7 +58,7 @@ void ov31_0225E54C(int param_1)
 {
   undefined1 uVar1;
   undefined4 uVar2;
-  
+
   FillWindowPixelBuffer(param_1 + 0x144,0xf);
   ov31_0225E4BC(*(undefined1 *)(*(int *)(param_1 + 0x14) + 0x283),*(undefined4 *)(param_1 + 0x154),
                 *(undefined2 *)(*(int *)(param_1 + 0x14) + 0x284),0);

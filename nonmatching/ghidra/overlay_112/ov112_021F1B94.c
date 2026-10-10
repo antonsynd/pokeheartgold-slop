@@ -52,7 +52,7 @@ void ov112_021F1B94(int param_1)
 
 {
   undefined4 uVar1;
-  
+
   uVar1 = ov112_021F1AF4(*(undefined4 *)(param_1 + 0x68),*(undefined4 *)(param_1 + 0x6c),0x20,0xb0,8
                          ,0);
   *(undefined4 *)(param_1 + 0x70) = uVar1;

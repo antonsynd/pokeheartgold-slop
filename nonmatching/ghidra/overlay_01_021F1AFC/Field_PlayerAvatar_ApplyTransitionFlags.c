@@ -54,7 +54,7 @@ void Field_PlayerAvatar_ApplyTransitionFlags(undefined *param_1)
   uint uVar1;
   undefined4 *puVar2;
   uint uVar3;
-  
+
   uVar3 = 0;
   uVar1 = PlayerAvatar_GetTransitionFlags(param_1);
   puVar2 = (undefined4 *)&sPlayerAvatarBitUpdateFuncs;

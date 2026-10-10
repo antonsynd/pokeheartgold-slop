@@ -48,7 +48,7 @@ uint ov74_02233F68(void)
 
 {
   int iVar1;
-  
+
   iVar1 = ov74_02233F5C();
   return (uint)*(byte *)(iVar1 + 0xc) << 0x10 | (uint)*(byte *)(iVar1 + 0xd) << 0x18 |
          (uint)*(byte *)(iVar1 + 0xb) << 8 | (uint)*(byte *)(iVar1 + 10);

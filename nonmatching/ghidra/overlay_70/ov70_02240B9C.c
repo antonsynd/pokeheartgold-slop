@@ -66,7 +66,7 @@ void ov70_02240B9C(int *param_1,undefined *param_2,uint param_3,undefined4 param
   int local_24;
   uint local_8;
   undefined4 uStack_4;
-  
+
   local_8 = param_3;
   uStack_4 = param_4;
   UpdatePokedexWithReceivedSpecies(*(undefined **)(*param_1 + 0x20),param_2);

@@ -64,7 +64,7 @@ bool ov99_021E6638(int param_1)
   char cVar3;
   char *pcVar4;
   int iVar5;
-  
+
   bVar1 = false;
   pcVar4 = (char *)(param_1 + 0x80);
   iVar5 = (int)*(char *)(param_1 + 0x80);

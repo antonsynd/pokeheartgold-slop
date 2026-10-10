@@ -52,7 +52,7 @@ undefined4 ov96_021E8084(int param_1)
   undefined4 uVar2;
   int iVar3;
   uint uVar4;
-  
+
   uVar2 = func_0x02031968(**(undefined4 **)(param_1 + 0x1f8));
   uVar4 = 0;
   do {

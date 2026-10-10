@@ -51,7 +51,7 @@ int sub_02021148(uint param_1)
 
 {
   int iVar1;
-  
+
   if (sRam021d21f2 != 0) {
     sub_020211AC(2,1,0,0,0,param_1 << 1);
     return 1;

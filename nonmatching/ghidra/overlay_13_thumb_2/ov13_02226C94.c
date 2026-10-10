@@ -50,7 +50,7 @@ void ov13_02226C94(undefined4 param_1,undefined4 param_2,undefined4 param_3)
 
 {
   undefined1 auStack_68 [88];
-  
+
   ov13_022262D0(auStack_68);
   ov13_022262F8(auStack_68,param_2,param_3);
   ov13_02226370(param_1,auStack_68);

@@ -52,7 +52,7 @@ void ov108_021E72CC(undefined4 *param_1)
 
 {
   undefined4 uVar1;
-  
+
   ov108_021E838C();
   uVar1 = ov108_021E84A4(*param_1,0xc,1,2);
   param_1[0xd2] = uVar1;

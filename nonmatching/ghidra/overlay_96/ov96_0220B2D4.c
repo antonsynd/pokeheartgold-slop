@@ -49,7 +49,7 @@ undefined4 ov96_0220B2D4(undefined4 *param_1)
 
 {
   undefined4 uVar1;
-  
+
   *(short *)(param_1 + 4) = *(short *)(param_1 + 4) + (short)((int)param_1[2] >> 0xc);
   uVar1 = func_0x020f2998(param_1[2] << 2,3);
   param_1[2] = uVar1;

@@ -79,7 +79,7 @@ void ov56_021E6650(int *param_1)
   uint uVar6;
   int iStack_1c;
   int iStack_18;
-  
+
   uVar6 = (uint)*(byte *)(param_1[7] + 0x13);
   puVar1 = NARC_New(0x4f,*param_1);
   LoadUserFrameGfx1((undefined *)param_1[6],0,1,4,0,*param_1);

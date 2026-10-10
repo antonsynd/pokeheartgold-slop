@@ -49,7 +49,7 @@ undefined4 ov08_02221404(int param_1,undefined4 param_2,undefined4 param_3,undef
 {
   undefined4 uVar1;
   uint uVar2;
-  
+
   if (*(short *)(param_1 + 0x10) == 0) {
     return 0;
   }

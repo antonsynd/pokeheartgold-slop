@@ -48,7 +48,7 @@ undefined1 ov96_021EF2A0(void)
 
 {
   undefined1 uVar1;
-  
+
   uVar1 = PokeathlonCourse_GetField3D8_ForCurrentParticipant();
   return uVar1;
 }

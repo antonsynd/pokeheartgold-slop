@@ -56,7 +56,7 @@ int ov80_02234894(int param_1,undefined4 param_2,undefined4 param_3,int param_4)
   uint uVar3;
   uint uVar4;
   int iVar5;
-  
+
   uVar3 = 0;
   uVar4 = 0;
   iVar5 = 0;

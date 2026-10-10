@@ -54,7 +54,7 @@ void sub_02089F50(undefined4 *param_1,undefined4 param_2,undefined4 param_3,uint
   undefined4 uVar1;
   int iStack_1c;
   uint uStack_18;
-  
+
   uStack_18 = param_4;
   uVar1 = AllocAndReadWholeNarcMemberByIdPair(0xa2,param_3,0x13);
   func_0x020b71d8(uVar1,&iStack_1c);

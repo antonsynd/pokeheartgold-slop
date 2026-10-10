@@ -52,7 +52,7 @@ void ov71_02249358(undefined4 param_1,undefined4 *param_2)
 
 {
   undefined4 uVar1;
-  
+
   ov71_0224903C(param_2);
   param_2[0x20] = param_2[0x20] + 1;
   if (0x6e < (int)param_2[0x20]) {

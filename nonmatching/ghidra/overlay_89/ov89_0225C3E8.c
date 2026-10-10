@@ -52,7 +52,7 @@ undefined4 ov89_0225C3E8(undefined4 param_1,int param_2,undefined4 param_3,undef
 {
   int iVar1;
   int *piVar2;
-  
+
   piVar2 = (int *)(param_2 + 0x58);
   switch(*(undefined1 *)(param_2 + 0x5e)) {
   case 0:

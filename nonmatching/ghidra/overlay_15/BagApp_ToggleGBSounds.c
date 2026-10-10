@@ -50,7 +50,7 @@ void BagApp_ToggleGBSounds(int param_1)
 
 {
   int iVar1;
-  
+
   iVar1 = SoundSys_GetGBSoundsState();
   if (iVar1 == 1) {
     SoundSys_ToggleGBSounds();

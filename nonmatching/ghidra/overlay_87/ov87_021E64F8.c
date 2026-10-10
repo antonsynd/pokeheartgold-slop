@@ -58,7 +58,7 @@ undefined4 ov87_021E64F8(int param_1,undefined4 param_2,undefined4 param_3,undef
   short *psVar3;
   int iVar4;
   int iVar5;
-  
+
   cVar1 = *(char *)(param_1 + 8);
   if (cVar1 == '\0') {
     GfGfx_EngineATogglePlanes(4,0,param_3,param_4,param_4);

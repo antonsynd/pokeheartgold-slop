@@ -52,7 +52,7 @@ void ov70_0223E120(int param_1)
 {
   int iVar1;
   undefined4 *puVar2;
-  
+
   puVar2 = *(undefined4 **)(param_1 + 0x1200);
   iVar1 = 0;
   do {

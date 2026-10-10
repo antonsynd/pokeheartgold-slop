@@ -68,7 +68,7 @@ void ov65_0221C08C(int param_1)
 {
   undefined1 uVar1;
   undefined4 uVar2;
-  
+
   uVar2 = NARC_New(0x34,0x1a);
   ov65_0221CE98();
   ov65_0221CEB8(*(undefined4 *)(param_1 + 0x180));

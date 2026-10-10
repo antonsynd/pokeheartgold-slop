@@ -48,7 +48,7 @@ undefined4 ov74_02231424(int param_1)
 
 {
   uint uVar1;
-  
+
   uVar1 = SVC_GetCRC16(0,param_1 + (*(uint *)(param_1 + 0xc) & 0xff),*(uint *)(param_1 + 0xc) >> 8);
   if (*(uint *)(param_1 + 8) >> 0x10 == uVar1) {
     return 1;

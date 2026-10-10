@@ -55,7 +55,7 @@ undefined1 ov12_02238358(void)
   undefined4 in_r3;
   int iVar3;
   int iVar4;
-  
+
   iVar2 = OverlayManager_GetData();
   if (((*(uint *)(iVar2 + 0x2c) & 4) == 0) || ((*(uint *)(iVar2 + 0x240c) & 0x10) != 0)) {
     if (*(char *)(iVar2 + 0x23fc) != '\0') {

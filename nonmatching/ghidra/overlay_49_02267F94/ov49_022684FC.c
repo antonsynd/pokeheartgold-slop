@@ -55,7 +55,7 @@ void ov49_022684FC(int param_1)
   int iVar5;
   int iVar6;
   undefined4 uStack_18;
-  
+
   bVar1 = false;
   iVar6 = 0;
   iVar5 = param_1 + 0x30;

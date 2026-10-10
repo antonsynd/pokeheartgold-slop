@@ -61,7 +61,7 @@ undefined4 BN_uadd(int *param_1,int *param_2,int *param_3)
   int iVar11;
   int iVar12;
   int *piVar13;
-  
+
   piVar13 = param_3;
   if (param_2[1] < param_3[1]) {
     piVar13 = param_2;

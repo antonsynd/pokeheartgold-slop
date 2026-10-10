@@ -55,7 +55,7 @@ void ov49_02267C8C(undefined4 param_1,int param_2)
   int iStack_20;
   int iStack_1c;
   int iStack_18;
-  
+
   ov49_02259154(*(undefined4 *)(param_2 + 8),&iStack_20);
   iVar1 = 0;
   iStack_18 = iStack_18 + -0xa000;

@@ -53,7 +53,7 @@ undefined4 ov80_0222B1DC(int param_1)
   undefined2 *puVar4;
   int iVar5;
   int iVar6;
-  
+
   puVar3 = (undefined2 *)(param_1 + 0x504);
   iVar5 = 0;
   iVar6 = param_1;

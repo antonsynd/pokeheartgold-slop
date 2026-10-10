@@ -63,7 +63,7 @@ undefined4 ov15_021FD2FC(int param_1)
 {
   int iVar1;
   undefined4 uVar2;
-  
+
   iVar1 = TextPrinterCheckActive(*(undefined1 *)(param_1 + 0x616));
   if ((iVar1 == 0) && (((uRam021d1154 & 3) != 0 || (sRam021d1170 != 0)))) {
     *(undefined4 *)(param_1 + 0x684) = 0;

@@ -55,7 +55,7 @@ void ov96_0220CF50(int param_1,undefined4 param_2,undefined4 param_3)
   uint uVar5;
   uint uVar6;
   uint uVar7;
-  
+
   iVar1 = PokeathlonCourse_GetDataCopyArea(param_3);
   puVar2 = (uint *)ov96_021E8A20(iVar1 + 0x50 + (*(uint *)(param_1 + 0x18) >> 0x1e) * 0x28);
   uVar7 = *(uint *)(param_1 + 0x14);

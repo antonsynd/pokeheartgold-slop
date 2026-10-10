@@ -50,7 +50,7 @@ void ov96_02207870(int param_1)
 {
   int iVar1;
   int iVar2;
-  
+
   iVar1 = 0;
   iVar2 = 5 - (uint)*(ushort *)(param_1 + 0x61a);
   if (0 < iVar2) {

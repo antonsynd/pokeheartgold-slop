@@ -54,7 +54,7 @@ void sub_0208A1A0(undefined4 *param_1,undefined4 param_2,undefined4 param_3,unde
   int iVar3;
   uint uVar4;
   byte bVar5;
-  
+
   if ((*(byte *)((int)param_1 + 0x242) & 0x7f) < 100) {
     iVar3 = param_1[0x94] - param_1[0x93];
     iVar1 = param_1[0x92] - param_1[0x93];

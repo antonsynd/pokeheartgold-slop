@@ -59,7 +59,7 @@ void ov85_021E7660(int param_1)
   undefined4 *puStack_20;
   undefined4 *puStack_1c;
   int iStack_18;
-  
+
   sub_020696C4(param_1 + 400,0,*(undefined4 *)(param_1 + 0xd80),0,0x66,0);
   sub_02069714(param_1 + 400);
   sub_020696C4(param_1 + 0x1a4,0,*(undefined4 *)(param_1 + 0xd80),5,0x66,0);

@@ -56,7 +56,7 @@ uint ov74_02235230(void)
   __asm__ volatile("movs %0, r3" : "=l"(in_r3) : : "cc");
 
   uint auStack_8 [2];
-  
+
   auStack_8[0] = in_r3;
   iVar1 = ov74_022351FC();
   if (iVar1 == 0) {

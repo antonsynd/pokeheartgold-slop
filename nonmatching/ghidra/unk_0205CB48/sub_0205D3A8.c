@@ -53,7 +53,7 @@ void sub_0205D3A8(undefined4 param_1,undefined4 param_2,undefined4 param_3,undef
 {
   int iVar1;
   undefined4 uVar2;
-  
+
   uVar2 = param_4;
   iVar1 = sub_0205D40C(param_1,param_4);
   if (iVar1 == 0) {

@@ -53,7 +53,7 @@ void ov18_021F14FC(undefined4 param_1,undefined4 param_2,undefined4 param_3,unde
   undefined4 uVar1;
   undefined4 uVar2;
   undefined4 uStack_1c;
-  
+
   uVar1 = ov18_021F148C();
   uVar2 = GetBattleMonIconPaletteEx(param_2,param_3,0);
   ov18_021F14B4(param_1,*(undefined4 *)(uStack_1c + 0x14),param_4,uVar2);

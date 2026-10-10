@@ -57,7 +57,7 @@ undefined4 FrtCmd_078(undefined4 *param_1)
   int iVar3;
   undefined4 uVar4;
   undefined4 *puVar5;
-  
+
   iVar3 = sub_0209680C(*(undefined4 *)*param_1);
   puVar5 = (undefined4 *)(iVar3 + 0xb0);
   if (*(int *)(iVar3 + 0xb0) != 0) {

@@ -62,7 +62,7 @@ void ov102_021E9694(undefined4 param_1,int *param_2)
   int iVar1;
   int iVar2;
   int iVar3;
-  
+
   iVar3 = *param_2;
   if (param_2[5] == 0) {
     BeginNormalPaletteFade(0,0,0,0,5,1,0x23);

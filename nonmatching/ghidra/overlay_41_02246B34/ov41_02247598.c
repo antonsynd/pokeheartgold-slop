@@ -48,7 +48,7 @@ void ov41_02247598(undefined4 param_1,int param_2)
 
 {
   int iVar1;
-  
+
   iVar1 = ov41_02248998(param_2 + 0x368);
   if (iVar1 != 0) {
     *(undefined4 *)(param_2 + 0x6b0) = 3;

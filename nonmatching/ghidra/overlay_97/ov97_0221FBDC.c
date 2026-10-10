@@ -59,7 +59,7 @@ void ov97_0221FBDC(undefined4 *param_1,undefined4 *param_2)
   undefined2 uStack_1c;
   undefined2 uStack_1a;
   undefined2 uStack_18;
-  
+
   GetMonSpriteCharAndPlttNarcIdsEx
             (&uStack_1c,*(undefined2 *)(param_2 + 1),*(undefined1 *)(param_2 + 2),2,
              *(undefined1 *)((int)param_2 + 6),*(undefined1 *)((int)param_2 + 7),*param_2);

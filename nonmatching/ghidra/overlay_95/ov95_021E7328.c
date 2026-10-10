@@ -55,7 +55,7 @@ void ov95_021E7328(undefined4 *param_1,undefined4 param_2,undefined4 param_3,und
 {
   undefined4 uVar1;
   undefined4 uVar2;
-  
+
   uVar1 = NewMsgDataFromNarc(0,0x1b,0xbb,*param_1);
   uVar2 = ReadMsgData_ExpandPlaceholders(param_1[5],uVar1,param_3,*param_1);
   FillWindowPixelBuffer(param_2,0);

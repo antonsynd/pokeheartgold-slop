@@ -52,7 +52,7 @@ void ov41_02246B34(int param_1)
 
 {
   int iVar1;
-  
+
   SpriteList_Delete(*(undefined4 *)(param_1 + 0x44));
   iVar1 = 0;
   do {

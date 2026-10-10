@@ -52,7 +52,7 @@ int sub_0208AE08(void)
 
 {
   int iVar1;
-  
+
   iVar1 = TouchscreenHitbox_FindRectAtTouchNew(&UNK_021038d4);
   if (iVar1 == -1) {
     iVar1 = TouchscreenHitbox_TouchNewIsIn(&UNK_021038b0);

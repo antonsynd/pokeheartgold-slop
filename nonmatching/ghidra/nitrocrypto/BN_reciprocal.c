@@ -55,7 +55,7 @@ BN_reciprocal(undefined4 param_1,undefined4 param_2,undefined4 param_3,undefined
   int iVar1;
   undefined4 uVar2;
   undefined1 auStack_2c [20];
-  
+
   BN_init(auStack_2c);
   BN_set_word(auStack_2c,0);
   iVar1 = BN_set_bit(auStack_2c,param_3);

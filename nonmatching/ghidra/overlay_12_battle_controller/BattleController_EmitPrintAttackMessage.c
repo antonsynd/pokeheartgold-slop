@@ -50,7 +50,7 @@ void BattleController_EmitPrintAttackMessage(undefined4 param_1,int param_2)
   undefined1 uStack_c;
   undefined1 uStack_b;
   undefined2 uStack_a;
-  
+
   uStack_c = 0x14;
   uStack_b = *(undefined1 *)(param_2 + *(int *)(param_2 + 100) + 0x219c);
   uStack_a = (undefined2)*(undefined4 *)(param_2 + 0x3044);

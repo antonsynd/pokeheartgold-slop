@@ -49,7 +49,7 @@ undefined4 sub_02095D88(byte *param_1,undefined4 param_2,undefined4 param_3)
   char cVar1;
   int iVar2;
   uint uVar3;
-  
+
   uVar3 = (uint)*param_1;
   iVar2 = *(int *)(param_1 + 0xc) + uVar3 * 4;
   cVar1 = *(char *)(iVar2 + 2);

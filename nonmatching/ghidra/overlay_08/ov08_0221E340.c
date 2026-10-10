@@ -53,7 +53,7 @@ void ov08_0221E340(int param_1,undefined4 param_2,undefined4 param_3,undefined4 
 
 {
   undefined4 uVar1;
-  
+
   DrawFrameAndWindow2(param_1 + 0x2050,1,1,0xe);
   FillWindowPixelBuffer(param_1 + 0x2050,0xf);
   uVar1 = NewString_ReadMsgData(*(undefined4 *)(param_1 + 0x1fa8),param_2);

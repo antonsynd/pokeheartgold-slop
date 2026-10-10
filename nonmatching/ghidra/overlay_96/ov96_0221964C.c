@@ -48,7 +48,7 @@ void ov96_0221964C(int param_1)
 
 {
   int iVar1;
-  
+
   iVar1 = 0;
   do {
     ManagedSprite_SetAnimateFlag(*(undefined4 *)(param_1 + 0xa0),0);

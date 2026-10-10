@@ -68,7 +68,7 @@ undefined4 ov96_021EF19C(undefined4 param_1)
   int iVar2;
   undefined *puVar3;
   int iVar4;
-  
+
   iVar1 = PokeathlonCourse_GetHeapAllocPtr4();
   NARC_Delete(*(undefined4 *)(iVar1 + 8));
   sub_0203A914();

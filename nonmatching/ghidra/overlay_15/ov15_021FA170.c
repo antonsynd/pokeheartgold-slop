@@ -51,7 +51,7 @@ void ov15_021FA170(int param_1)
 
 {
   int iVar1;
-  
+
   iVar1 = *(int *)(param_1 + 0x644);
   if ((7 < iVar1) && (iVar1 < 0xe)) {
     iVar1 = ov15_021FA12C();

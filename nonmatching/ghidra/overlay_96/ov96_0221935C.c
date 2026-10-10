@@ -49,7 +49,7 @@ int ov96_0221935C(undefined4 param_1,uint param_2,uint param_3)
 
 {
   int iVar1;
-  
+
   iVar1 = PokeathlonCourse_GetHeapAllocPtr4();
   if (iVar1 == 0) {
     GF_AssertFail();

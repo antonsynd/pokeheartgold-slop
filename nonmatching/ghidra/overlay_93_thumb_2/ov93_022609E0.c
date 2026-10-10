@@ -51,7 +51,7 @@ void ov93_022609E0(int param_1,undefined4 param_2,undefined4 param_3,undefined4 
   int iVar1;
   undefined4 *puVar2;
   int iVar3;
-  
+
   iVar1 = 0;
   puVar2 = (undefined4 *)(param_1 + 0x380c);
   iVar3 = 0;

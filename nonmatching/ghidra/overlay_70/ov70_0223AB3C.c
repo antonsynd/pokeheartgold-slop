@@ -67,7 +67,7 @@ void ov70_0223AB3C(undefined4 param_1,undefined4 param_2)
   undefined4 uStack_1c;
   undefined4 uStack_18;
   undefined4 uStack_14;
-  
+
   uStack_2c = 0;
   uStack_28 = 0;
   uStack_24 = 0x800;

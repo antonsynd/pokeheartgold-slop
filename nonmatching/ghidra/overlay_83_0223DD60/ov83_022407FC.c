@@ -53,7 +53,7 @@ void ov83_022407FC(int param_1)
 
 {
   int iVar1;
-  
+
   FillWindowPixelBuffer(param_1 + 0x3d0,0);
   ov83_02240C48(param_1,0,*(short *)(param_1 + 0x862) + 1,1,0);
   iVar1 = func_0x020f2998(*(byte *)(param_1 + 0x861) - 1,6);

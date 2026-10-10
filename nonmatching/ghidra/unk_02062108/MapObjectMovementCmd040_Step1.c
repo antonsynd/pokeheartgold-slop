@@ -51,7 +51,7 @@ undefined4 MapObjectMovementCmd040_Step1(undefined4 param_1)
 
 {
   int iVar1;
-  
+
   iVar1 = sub_0205F3E4();
   *(short *)(iVar1 + 2) = *(short *)(iVar1 + 2) + -1;
   if (0 < *(short *)(iVar1 + 2)) {

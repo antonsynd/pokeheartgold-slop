@@ -60,7 +60,7 @@ undefined4 ov74_0222ADBC(undefined4 param_1,int param_2,int param_3,undefined4 p
   undefined4 uVar3;
   undefined4 uVar4;
   int iVar5;
-  
+
   iVar1 = OverlayManager_GetData();
   if ((param_2 == 0) || (param_3 == 0)) {
     iVar5 = TextPrinterCheckActive(*(uint *)(iVar1 + 0x6c) & 0xff);

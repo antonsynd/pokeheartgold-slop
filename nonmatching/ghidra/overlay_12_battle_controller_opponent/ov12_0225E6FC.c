@@ -55,7 +55,7 @@ void ov12_0225E6FC(undefined4 param_1,undefined4 *param_2)
 {
   undefined4 uVar1;
   int iVar2;
-  
+
   uVar1 = BattleSystem_GetBattleContext(*param_2);
   iVar2 = ov12_022581D4(*param_2,uVar1,0xb,*(undefined1 *)((int)param_2 + 0xd));
   if (4 < iVar2 + 1) {

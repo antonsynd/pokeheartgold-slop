@@ -62,7 +62,7 @@ undefined4 ov75_022488BC(int *param_1)
   int iVar2;
   undefined4 uStack_10;
   int iStack_c;
-  
+
   uVar1 = func_0x021ecdc8();
   switch(uVar1) {
   case 0:

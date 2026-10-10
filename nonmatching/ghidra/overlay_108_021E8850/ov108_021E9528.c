@@ -51,7 +51,7 @@ undefined4 ov108_021E9528(int param_1,uint param_2)
 
 {
   uint uVar1;
-  
+
   if (5 < param_2) {
     PlaySE(0x5dc);
     ov108_021E9F20(param_1,1);

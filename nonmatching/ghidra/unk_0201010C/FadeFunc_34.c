@@ -53,7 +53,7 @@ void FadeFunc_34(int param_1)
   undefined2 uStack_e;
   undefined2 uStack_c;
   undefined2 uStack_a;
-  
+
   if (*(int *)(param_1 + 0xc) == 0) {
     uStack_10 = 0;
     uStack_e = 0x1fff;

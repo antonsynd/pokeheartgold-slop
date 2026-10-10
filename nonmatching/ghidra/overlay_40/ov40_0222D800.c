@@ -67,7 +67,7 @@ undefined4 ov40_0222D800(int param_1,int param_2,undefined4 param_3,undefined4 p
   undefined4 uStack_14;
   undefined4 uStack_10;
   undefined4 uStack_c;
-  
+
   uStack_40 = 0x80;
   uStack_3e = 0x60;
   uStack_3c = 0;

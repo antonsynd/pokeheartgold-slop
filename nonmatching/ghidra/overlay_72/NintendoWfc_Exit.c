@@ -63,7 +63,7 @@ undefined4 NintendoWfc_Exit(undefined4 param_1)
 {
   int iVar1;
   int iVar2;
-  
+
   iVar1 = OverlayManager_GetData();
   iVar2 = IsPaletteFadeFinished();
   if (iVar2 == 0) {

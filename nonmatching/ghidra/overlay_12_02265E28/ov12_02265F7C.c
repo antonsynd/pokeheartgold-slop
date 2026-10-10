@@ -53,7 +53,7 @@ void ov12_02265F7C(int param_1)
 {
   undefined4 uVar1;
   int iVar2;
-  
+
   uVar1 = BattleSystem_GetSpriteManager(*(undefined4 *)(param_1 + 4));
   if (*(char *)(param_1 + 8) == '\0') {
     iVar2 = 0x4e2d;

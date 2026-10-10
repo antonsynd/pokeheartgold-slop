@@ -51,7 +51,7 @@ void ov12_0225A018(undefined4 param_1,int param_2,undefined1 *param_3,undefined4
 
 {
   undefined4 *puVar1;
-  
+
   puVar1 = (undefined4 *)Heap_Alloc(5,0x10,param_3,param_4,param_4);
   *puVar1 = param_1;
   puVar1[1] = *(undefined4 *)(param_2 + 0x20);

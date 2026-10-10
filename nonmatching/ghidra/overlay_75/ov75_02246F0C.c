@@ -86,7 +86,7 @@ undefined4 ov75_02246F0C(undefined4 param_1)
 {
   int *piVar1;
   int iVar2;
-  
+
   Main_SetVBlankIntrCB(0,0);
   HBlankInterruptDisable();
   GfGfx_DisableEngineAPlanes();

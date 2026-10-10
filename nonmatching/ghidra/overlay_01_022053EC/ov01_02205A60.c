@@ -58,7 +58,7 @@ undefined4 ov01_02205A60(undefined4 param_1)
   int *piVar2;
   int iVar3;
   undefined4 uVar4;
-  
+
   iVar1 = TaskManager_GetFieldSystem();
   piVar2 = (int *)TaskManager_GetStatePtr(param_1);
   iVar3 = FollowMon_IsActive(iVar1);

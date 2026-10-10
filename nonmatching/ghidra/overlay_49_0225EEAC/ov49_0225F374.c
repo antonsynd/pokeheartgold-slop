@@ -48,7 +48,7 @@ void ov49_0225F374(undefined4 *param_1)
 
 {
   byte bVar1;
-  
+
   *param_1 = 0;
   *(undefined1 *)(param_1 + 1) = 0;
   *(undefined1 *)((int)param_1 + 5) = 1;

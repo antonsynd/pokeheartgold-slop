@@ -49,7 +49,7 @@ undefined4 ov56_021E5C9C(void)
 
 {
   int iVar1;
-  
+
   OverlayManager_GetData();
   iVar1 = ov56_021E6228();
   if (iVar1 != 0) {

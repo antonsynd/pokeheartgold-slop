@@ -53,7 +53,7 @@ undefined4 ov01_021EEC00(int param_1,undefined4 param_2,undefined4 param_3,undef
 {
   undefined4 uVar1;
   undefined4 uVar2;
-  
+
   uVar2 = param_4;
   uVar1 = AllocWindows(4,1);
   AddWindowParameterized

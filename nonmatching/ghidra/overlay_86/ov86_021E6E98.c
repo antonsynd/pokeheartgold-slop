@@ -87,7 +87,7 @@ void ov86_021E6E98(int param_1)
   undefined4 uStack_20;
   undefined4 uStack_1c;
   undefined4 uStack_18;
-  
+
   GfGfx_EngineATogglePlanes(0x10,1);
   GfGfx_EngineBTogglePlanes(0x10,1);
   uVar1 = SpriteSystem_Alloc(0x79);

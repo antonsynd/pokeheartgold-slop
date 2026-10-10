@@ -58,7 +58,7 @@ undefined4 ov81_02240564(int param_1)
   int iVar4;
   int iVar5;
   undefined1 auStack_20 [12];
-  
+
   uVar3 = 0;
   func_0x0201bc8c(*(undefined4 *)(param_1 + 0x4c),6,1,8);
   uVar1 = Bg_GetXpos(*(undefined4 *)(param_1 + 0x4c),6);

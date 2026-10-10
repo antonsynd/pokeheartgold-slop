@@ -54,7 +54,7 @@ int ov45_0222C408(int param_1,undefined4 param_2,undefined4 param_3)
   int iVar2;
   int iVar3;
   undefined4 uStack_1c;
-  
+
   iVar1 = ov45_0222C5B4();
   if (iVar1 == -1) {
     iVar1 = 0;

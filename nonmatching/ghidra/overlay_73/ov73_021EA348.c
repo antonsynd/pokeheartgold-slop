@@ -50,7 +50,7 @@ undefined4 ov73_021EA348(undefined4 param_1,undefined4 param_2,undefined4 param_
 
 {
   undefined4 uVar1;
-  
+
   uVar1 = Heap_AllocAtEnd(param_2,param_3);
   func_0x020d4994(uVar1,0,param_3);
   sub_02069528(param_1,0,uVar1);

@@ -49,7 +49,7 @@ void ov01_021FA798(int param_1,int param_2)
   int iVar1;
   int iVar2;
   int iVar3;
-  
+
   iVar2 = 0;
   iVar3 = (int)**(short **)(param_1 + 0x100);
   iVar1 = *(int *)(*(short **)(param_1 + 0x100) + 4);

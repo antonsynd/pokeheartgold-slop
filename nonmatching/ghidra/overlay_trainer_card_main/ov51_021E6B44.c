@@ -51,7 +51,7 @@ void ov51_021E6B44(int param_1,undefined4 param_2,undefined4 param_3,undefined4 
   int iVar1;
   int iStack_10;
   undefined4 uStack_c;
-  
+
   iStack_10 = 0;
   *(undefined4 *)(param_1 + 0x3108) = 0xffffffff;
   uStack_c = param_4;

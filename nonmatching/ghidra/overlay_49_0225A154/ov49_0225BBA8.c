@@ -49,7 +49,7 @@ void ov49_0225BBA8(int param_1)
 
 {
   int iVar1;
-  
+
   if (*(int *)(param_1 + 0x54) != 0) {
     ov49_0225BF80();
   }

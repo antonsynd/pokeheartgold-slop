@@ -52,7 +52,7 @@ void AreaLightManager_UpdateActiveTemplate(uint *param_1)
   int iVar1;
   uint uVar2;
   int iVar3;
-  
+
   if (param_1 == (uint *)0x0) {
     GF_AssertFail();
   }

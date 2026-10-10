@@ -49,7 +49,7 @@ void sub_02037618(undefined4 param_1,undefined4 param_2,undefined1 *param_3)
 
 {
   int iVar1;
-  
+
   iVar1 = sub_0203769C();
   if (iVar1 == 0) {
     *(undefined1 *)(iRam021d4148 + 0x6ab) = 1;

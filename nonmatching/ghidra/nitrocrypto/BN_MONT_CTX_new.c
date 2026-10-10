@@ -49,7 +49,7 @@ int BN_MONT_CTX_new(void)
 
 {
   int iVar1;
-  
+
   iVar1 = CRYPTOi_MyAlloc(0x50);
   if (iVar1 != 0) {
     BN_MONT_CTX_init(iVar1);

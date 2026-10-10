@@ -49,7 +49,7 @@ ov99_021E8544(undefined4 *param_1,undefined4 param_2,undefined4 param_3,undefine
 
 {
   int iVar1;
-  
+
   iVar1 = ov99_021E94CC(*param_1,(int)*(char *)(param_1 + 0x2b),param_2,param_1[0x2c],param_4);
   if (iVar1 == 0xffff) {
     return 1;

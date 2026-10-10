@@ -53,7 +53,7 @@ void ov96_02214278(undefined4 param_1,char *param_2,undefined4 param_3,undefined
   undefined1 uVar2;
   undefined1 auStack_14 [4];
   undefined4 uStack_10;
-  
+
   uStack_10 = param_4;
   cVar1 = *param_2;
   if (cVar1 != '\0') {

@@ -51,7 +51,7 @@ undefined4 ov96_0220FCB0(short *param_1,int param_2)
   bool bVar3;
   undefined4 uVar4;
   int iVar5;
-  
+
   iVar5 = (int)param_1[1];
   uVar4 = 1;
   bVar3 = true;

@@ -67,7 +67,7 @@ void ov40_02237474(int param_1)
   byte bVar12;
   undefined auStack_24 [16];
   ushort uVar3;
-  
+
   iVar9 = *(int *)(param_1 + 0x860);
   uVar7 = *(uint *)(iVar9 + 0x1b0);
   iVar6 = iVar9 + uVar7 * 4;

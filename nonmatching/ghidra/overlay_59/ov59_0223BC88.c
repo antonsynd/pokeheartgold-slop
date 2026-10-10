@@ -57,7 +57,7 @@ void ov59_0223BC88(int param_1,int param_2,undefined4 param_3,undefined4 param_4
 {
   int iVar1;
   int iVar2;
-  
+
   iVar2 = param_1 + 0x7c + param_2 * 0x34;
   FillWindowPixelBuffer(param_1 + 500,0);
   AddTextPrinterParameterizedWithColor

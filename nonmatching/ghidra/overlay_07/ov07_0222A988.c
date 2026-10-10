@@ -59,7 +59,7 @@ void ov07_0222A988(undefined4 param_1,undefined4 param_2,undefined4 param_3,unde
   undefined4 uVar4;
   int iVar5;
   undefined1 auStack_48 [52];
-  
+
   iVar3 = ov07_022324D8(param_1,0x38);
   *(undefined2 *)(iVar3 + 0x1c) = 10;
   ov07_02231FE4(param_1,iVar3);

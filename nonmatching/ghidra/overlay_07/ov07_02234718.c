@@ -55,7 +55,7 @@ undefined4 ov07_02234718(int param_1,undefined4 param_2,undefined4 param_3,undef
   undefined4 *puVar5;
   undefined4 auStack_68 [22];
   undefined4 uStack_10;
-  
+
   puVar4 = auStack_68;
   puVar5 = (undefined4 *)&ov07_02237784;
   iVar3 = 0xb;

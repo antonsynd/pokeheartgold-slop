@@ -56,7 +56,7 @@ void ov01_021EE01C(undefined *param_1,ushort param_2)
 
 {
   undefined *puVar1;
-  
+
   if ((byte)param_1[0x9b] < 9) {
     AddWindowParameterized
               (*(undefined **)(*(int *)param_1 + 8),param_1 + 8,3,param_1[0x98],param_1[0x99],

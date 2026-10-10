@@ -50,7 +50,7 @@ void ov15_021FE020(undefined4 *param_1,undefined4 param_2,undefined4 param_3,und
 {
   undefined4 *puVar1;
   int iVar2;
-  
+
   AddWindowParameterized(*param_1,param_1 + 1,1,0,0x12,0x20,6,4,1,param_4);
   AddWindowParameterized(*param_1,param_1 + 5,1,0,0xd,0x20,4,4,0xc1);
   AddWindowParameterized(*param_1,param_1 + 9,4,2,1,0x1b,2,0xb,1);

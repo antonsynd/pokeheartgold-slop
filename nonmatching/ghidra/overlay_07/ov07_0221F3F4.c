@@ -50,7 +50,7 @@ void ov07_0221F3F4(int param_1)
   int iVar1;
   uint uVar2;
   uint uVar3;
-  
+
   iVar1 = *(int *)(param_1 + 0x18);
   *(uint **)(param_1 + 0x18) = (uint *)(iVar1 + 4);
   uVar3 = *(uint *)(iVar1 + 4);

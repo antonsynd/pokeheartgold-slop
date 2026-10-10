@@ -51,7 +51,7 @@ void ov43_0222D0F8(undefined4 param_1,undefined4 *param_2,int param_3,undefined4
 {
   undefined1 auStack_14 [4];
   undefined4 uStack_10;
-  
+
   uStack_10 = param_4;
   auStack_14[0] = 2;
   auStack_14[1] = ov43_0222ED5F;

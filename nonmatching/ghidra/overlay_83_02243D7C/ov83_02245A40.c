@@ -62,7 +62,7 @@ undefined4 ov83_02245A40(int param_1,uint param_2,undefined4 param_3)
   undefined4 uVar3;
   uint uVar4;
   int iVar5;
-  
+
   uVar2 = func_0x0205c1f0(*(undefined1 *)(param_1 + 9));
   func_0x0205c1f0(*(undefined1 *)(param_1 + 9));
   uVar3 = sub_0205C268();

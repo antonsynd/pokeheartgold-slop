@@ -55,7 +55,7 @@ void ov05_0221D140(int *param_1)
 {
   undefined1 uVar1;
   int iVar2;
-  
+
   if ((((param_1[0x2ea] != 0) || ((int *)*param_1 == (int *)0x0)) ||
       (iVar2 = *(int *)*param_1, iVar2 == 0)) || (*(int *)(iVar2 + 0x130) == 0)) {
     GF_AssertFail();

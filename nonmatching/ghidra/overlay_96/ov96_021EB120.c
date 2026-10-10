@@ -49,7 +49,7 @@ undefined4 ov96_021EB120(undefined4 *param_1)
 
 {
   int iVar1;
-  
+
   ov96_021E8BAC(*param_1);
   iVar1 = Sprite_GetDrawFlag();
   if (iVar1 != 0) {

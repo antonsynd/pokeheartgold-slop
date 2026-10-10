@@ -57,7 +57,7 @@ undefined4 sub_0208931C(int param_1,undefined4 param_2,undefined4 param_3,undefi
   undefined4 uVar1;
   uint uVar2;
   int iVar3;
-  
+
   if ((uRam021d1158 & 0x20) != 0) {
     sub_0208AB58(param_1,0xffffffff,uRam021d1158,0x21d110c,param_4);
     return 0xc;

@@ -50,7 +50,7 @@ void ov96_021E87B4(undefined4 param_1,undefined4 param_2,int param_3,short *para
 
 {
   short *psVar1;
-  
+
   psVar1 = param_4;
   if ((param_4[1] != 0) && (0x26 < param_3)) {
     GF_AssertFail();

@@ -52,7 +52,7 @@ void BattleController_EmitThrowPokeball(int param_1,undefined4 param_2,undefined
   undefined1 uStack_14;
   undefined1 uStack_13;
   ushort uStack_12;
-  
+
   uStack_14 = 9;
   uStack_13 = param_3;
   iVar1 = BattleSystem_GetBattlerIdPartner();

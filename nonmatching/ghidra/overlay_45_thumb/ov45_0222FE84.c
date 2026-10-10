@@ -52,7 +52,7 @@ void ov45_0222FE84(undefined4 param_1,undefined4 param_2,undefined4 param_3,unde
 
 {
   int iVar1;
-  
+
   iVar1 = func_0x020e9734(param_5,&ov45_02254EF4,param_3,param_4,param_4);
   if (iVar1 == 0) {
     func_0x020e5ad8(iRam022577c0 + 0x134,param_6,0x50);

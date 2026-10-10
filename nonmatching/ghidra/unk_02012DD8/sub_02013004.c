@@ -55,7 +55,7 @@ void sub_02013004(undefined4 param_1,int param_2,int param_3,int param_4,int par
   int iVar4;
   int iVar5;
   int iVar6;
-  
+
   iVar1 = param_2 + (*(short *)(&FX_SinCosTable_ + ((param_5 >> 4) * 2 + 1) * 2) * 0xffff >> 0xc);
   iVar5 = param_3 + (*(short *)(&FX_SinCosTable_ + (param_5 >> 4) * 4) * 0xffff >> 0xc);
   iVar2 = param_2 + (*(short *)(&FX_SinCosTable_ + ((param_6 >> 4) * 2 + 1) * 2) * 0xffff >> 0xc);

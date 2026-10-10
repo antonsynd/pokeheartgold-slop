@@ -50,7 +50,7 @@ undefined4 ov40_02231868(int param_1)
 
 {
   int iVar1;
-  
+
   iVar1 = ov40_0223142C();
   if (iVar1 != 0) {
     if (*(int *)(param_1 + 0x44) == 1) {

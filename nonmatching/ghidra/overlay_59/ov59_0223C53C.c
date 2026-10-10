@@ -52,7 +52,7 @@ undefined4 ov59_0223C53C(undefined4 param_1)
 {
   undefined4 uVar1;
   int iVar2;
-  
+
   uVar1 = Heap_Alloc(param_1,0x4800);
   uVar1 = sub_02014DB4(0x223c4b5,0x223c4d1,uVar1,0x4800,1,param_1);
   iVar2 = sub_02015524();

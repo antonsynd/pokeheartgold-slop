@@ -53,7 +53,7 @@ undefined4 ov13_022235DC(void)
 {
   undefined4 uVar1;
   int iVar2;
-  
+
   uVar1 = func_0x020d3a38();
   if (iRam0224def8 != 3) {
     iVar2 = ov13_022233CC();

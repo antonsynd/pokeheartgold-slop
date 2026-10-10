@@ -51,7 +51,7 @@ void ov102_021EADF8(undefined4 *param_1,int param_2,undefined4 param_3,undefined
 
 {
   undefined4 uVar1;
-  
+
   uVar1 = ov102_021EA268(*param_1);
   FillBgTilemapRect(uVar1,0,0,0,0x14,0x18,4,0x11,param_4);
   ClearWindowTilemapAndCopyToVram(param_1[0x17]);

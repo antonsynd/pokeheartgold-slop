@@ -54,7 +54,7 @@ void ov81_02241F50(int param_1)
   int iVar4;
   undefined4 uStack_1c;
   undefined4 uStack_18;
-  
+
   if (*(int *)(param_1 + 0x47c) == 3) {
     uStack_18 = 0x30;
     uStack_1c = 0x50;

@@ -58,7 +58,7 @@ void ov86_021E62F4(int param_1)
 
 {
   undefined4 uVar1;
-  
+
   FillWindowPixelBuffer(param_1 + 0x50,0);
   FillWindowPixelBuffer(param_1 + 0x60,0);
   FillWindowPixelBuffer(param_1 + 0x70,0);

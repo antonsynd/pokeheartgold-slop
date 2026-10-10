@@ -60,7 +60,7 @@ void ov90_0225938C(int param_1,undefined4 *param_2,undefined4 param_3,undefined4
   int iVar4;
   int iVar5;
   int iVar6;
-  
+
   Save_PlayerData_GetOptionsAddr(param_3);
   uVar1 = Options_GetFrame();
   TextFlags_BeginAutoScroll(1);

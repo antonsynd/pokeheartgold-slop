@@ -49,7 +49,7 @@ undefined4 ov01_021EBEB8(short *param_1)
 
 {
   int iVar1;
-  
+
   if (*param_1 != -1) {
     if (*(int *)(param_1 + 6) != 0) {
       return 1;

@@ -57,7 +57,7 @@ void ov02_02246398(undefined4 *param_1,undefined4 param_2,undefined4 param_3,und
 {
   undefined1 uVar1;
   undefined4 uVar2;
-  
+
   *(undefined1 *)((int)param_1 + 0xd) = 0;
   func_0x020cf15c(0x4000050,2,5,(uint)*(byte *)((int)param_1 + 0xd),
                   0x1f - (uint)*(byte *)((int)param_1 + 0xd));

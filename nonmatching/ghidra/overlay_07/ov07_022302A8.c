@@ -67,7 +67,7 @@ void ov07_022302A8(undefined4 param_1,undefined4 *param_2)
   undefined1 uVar2;
   int iVar3;
   undefined4 uVar4;
-  
+
   iVar3 = param_2[2];
   if (iVar3 == 0) {
     ov07_02230170(param_2);

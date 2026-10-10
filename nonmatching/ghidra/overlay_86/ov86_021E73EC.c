@@ -50,7 +50,7 @@ void ov86_021E73EC(int param_1,uint *param_2)
 {
   undefined4 uVar1;
   uint uStack_10;
-  
+
   uVar1 = GetPokedexDataNarcID();
   func_0x02007ac4(uVar1,param_1 + 0x12,0,0x79,1,&uStack_10);
   *param_2 = uStack_10 >> 1;

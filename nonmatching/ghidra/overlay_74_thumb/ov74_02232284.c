@@ -58,7 +58,7 @@ undefined4 ov74_02232284(int param_1,int param_2,int param_3,undefined4 param_4,
   int iStack_3c;
   undefined4 uStack_24;
   undefined4 uStack_18;
-  
+
   uStack_18 = param_4;
   ov74_02231D48(auStack_48,param_1,param_1 + 0x184,1);
   iStack_40 = param_2 << 0xc;

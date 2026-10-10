@@ -53,7 +53,7 @@ int ov112_021E9610(int param_1,uint param_2)
   int iVar2;
   uint uVar3;
   int iVar4;
-  
+
   func_0x0202a634(*(undefined4 *)(param_1 + 0x20));
   iVar1 = func_0x0202a55c();
   if (iVar1 == 0) {

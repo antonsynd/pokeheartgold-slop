@@ -54,7 +54,7 @@ undefined4 ov73_021E7C50(undefined4 param_1,undefined4 param_2,int param_3,undef
   undefined4 uVar1;
   int iVar2;
   int iVar3;
-  
+
   uVar1 = Heap_AllocAtEnd(param_2,param_3);
   iVar2 = func_0x020270c4(param_1);
   iVar3 = ov73_021E7A7C(param_1);

@@ -51,7 +51,7 @@ void sub_020176CC(int param_1,undefined4 param_2,undefined4 param_3,undefined4 p
   undefined4 uVar1;
   byte abStack_10 [4];
   undefined4 uStack_c;
-  
+
   uStack_c = param_4;
   sub_02017294(param_1,abStack_10);
   *(int *)(param_1 + 0xc) = *(int *)(param_1 + 0xc) + 4;

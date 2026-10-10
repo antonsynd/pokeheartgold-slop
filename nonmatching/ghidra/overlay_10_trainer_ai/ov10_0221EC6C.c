@@ -52,7 +52,7 @@ void ov10_0221EC6C(undefined4 param_1,int param_2,undefined4 param_3,undefined4 
   char cVar2;
   int iVar3;
   undefined4 uVar4;
-  
+
   ov10_0221EF24(param_2,1,param_3,param_4,param_4);
   iVar3 = ov10_0221EEF0(param_2);
   uVar4 = ov10_0221EEF0(param_2);

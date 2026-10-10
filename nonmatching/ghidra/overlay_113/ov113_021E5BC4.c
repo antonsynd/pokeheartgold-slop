@@ -50,7 +50,7 @@ ov113_021E5BC4(undefined4 *param_1,undefined4 param_2,undefined4 param_3,undefin
 
 {
   int iVar1;
-  
+
   if (*(short *)(param_1 + 4) == 0) {
     BeginNormalPaletteFade(0,1,1,0,6,1,*param_1,param_4);
     *(short *)(param_1 + 4) = *(short *)(param_1 + 4) + 1;

@@ -51,7 +51,7 @@ undefined4 FrtCmd_152(undefined4 *param_1)
 {
   undefined4 uVar1;
   undefined4 uVar2;
-  
+
   uVar1 = FrontierScript_ReadVar();
   uVar2 = Frontier_GetData(*(undefined4 *)*param_1);
   ov80_02232824(uVar2,uVar1);

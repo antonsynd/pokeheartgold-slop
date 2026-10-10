@@ -50,7 +50,7 @@ void ov96_021E8884(undefined4 param_1,int *param_2)
   int iVar1;
   int *piVar2;
   int iStack_20;
-  
+
   iStack_20 = 0;
   piVar2 = param_2;
   do {

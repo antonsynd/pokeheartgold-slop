@@ -53,7 +53,7 @@ void ov14_021F4A20(int param_1,uint param_2)
   uint uVar2;
   int extraout_r1;
   int iVar3;
-  
+
   uVar1 = (uint)*(byte *)(param_1 + 0x25);
   _s32_div_f();
   uVar2 = _u32_div_f(param_2,6);

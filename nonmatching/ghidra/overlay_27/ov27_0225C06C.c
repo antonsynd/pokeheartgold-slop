@@ -49,7 +49,7 @@ void ov27_0225C06C(int param_1)
 
 {
   undefined2 uVar1;
-  
+
   uVar1 = FieldSystem_GetParkBallCount(*(undefined4 *)(param_1 + 0x10));
   ov27_0225BF84(param_1,0xe,0xe,uVar1);
   return;

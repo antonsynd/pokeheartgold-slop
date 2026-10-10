@@ -59,7 +59,7 @@ undefined4 ov14_021F1B4C(int param_1,undefined2 param_2)
   undefined2 uVar1;
   int iVar2;
   undefined4 uVar3;
-  
+
   *(char *)(param_1 + 0x21) = (char)param_2;
   *(undefined2 *)(*(int *)(param_1 + 0x34) + 0x88ca) = param_2;
   uVar1 = ov14_021E6070(param_1,*(undefined1 *)(param_1 + 0x21),6,0);

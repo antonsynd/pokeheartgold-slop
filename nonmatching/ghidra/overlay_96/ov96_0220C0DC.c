@@ -52,7 +52,7 @@ void ov96_0220C0DC(int param_1,uint *param_2)
 
 {
   uint extraout_r1;
-  
+
   if ((*(uint *)(param_1 + 0x38) & 0x7fffff) >> 0xf != (*param_2 & 0xff)) {
     { uint nug_a = (uint)(*param_2 & 0xff), nug_b = (uint)(10); extraout_r1 = nug_a % nug_b; _u32_div_f(nug_a, nug_b); }
     if (extraout_r1 == 0) {

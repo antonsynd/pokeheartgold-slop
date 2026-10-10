@@ -54,7 +54,7 @@ void ov01_02206028(undefined4 param_1,undefined4 param_2)
   int iVar2;
   int iVar3;
   int iVar4;
-  
+
   iVar1 = MapObject_GetXCoord();
   iVar2 = MapObject_GetZCoord(param_1);
   iVar3 = MapObject_GetXCoord(param_2);

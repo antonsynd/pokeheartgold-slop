@@ -57,7 +57,7 @@ undefined4 ov46_02258C38(void)
 
 {
   int iVar1;
-  
+
   iVar1 = OverlayManager_GetData();
   Main_SetVBlankIntrCB(0,0);
   HBlankInterruptDisable();

@@ -51,7 +51,7 @@ undefined4 ov96_021EEDCC(int param_1)
 {
   int iVar1;
   int *piVar2;
-  
+
   piVar2 = (int *)&ov96_0221B1D4;
   iVar1 = 0;
   while( true ) {

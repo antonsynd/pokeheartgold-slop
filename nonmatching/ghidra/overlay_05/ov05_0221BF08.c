@@ -65,7 +65,7 @@ undefined4 ov05_0221BF08(int *param_1,undefined4 param_2,undefined4 param_3,int 
   int iVar2;
   int iVar3;
   int iStack_10;
-  
+
   cVar1 = *(char *)((int)param_1 + 0xb82);
   iStack_10 = param_4;
   if (cVar1 == '\0') {

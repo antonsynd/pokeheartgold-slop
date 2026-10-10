@@ -50,7 +50,7 @@ undefined4 ov39_02227A5C(int param_1)
 
 {
   undefined4 uVar1;
-  
+
   if (*(int *)(param_1 + 0x3ec) == 0x59dc) {
     return 1;
   }

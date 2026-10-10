@@ -60,7 +60,7 @@ void ov49_0225DAFC(char *param_1,int param_2)
   char *pcVar3;
   int iVar4;
   int iStack_1c;
-  
+
   if ((*param_1 != '\0') &&
      (iVar1 = ov49_022588A0(param_2 + (uint)(byte)param_1[2] * 0x10,param_1 + 4), iVar1 != 0)) {
     if (2 < (byte)param_1[1]) {

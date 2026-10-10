@@ -57,7 +57,7 @@ void ov83_02240DE0(int param_1,uint param_2,int param_3,undefined4 param_4)
   uint uStack_20;
   uint uStack_1c;
   undefined4 uStack_18;
-  
+
   if (param_3 == 0) {
     uVar3 = *(undefined4 *)(param_1 + 0x760);
     uVar2 = 1;

@@ -63,7 +63,7 @@ ov07_02221AE4(undefined4 param_1,undefined4 *param_2,undefined4 param_3,undefine
   int iStack_20;
   int iStack_1c;
   undefined4 uStack_18;
-  
+
   iStack_38 = 0;
   iStack_34 = 0;
   iStack_30 = 0;

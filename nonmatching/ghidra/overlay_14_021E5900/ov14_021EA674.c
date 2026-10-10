@@ -57,7 +57,7 @@ undefined4 ov14_021EA674(int param_1,undefined4 param_2,undefined4 param_3,undef
   int iVar3;
   int iVar4;
   int iVar5;
-  
+
   iVar5 = *(int *)(param_1 + 0x34);
   sVar1 = *(short *)(iVar5 + 0x10);
   if (sVar1 == 0) {

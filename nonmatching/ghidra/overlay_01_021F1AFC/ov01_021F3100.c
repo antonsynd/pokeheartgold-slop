@@ -49,7 +49,7 @@ void ov01_021F3100(int param_1,undefined4 param_2)
 
 {
   undefined4 uVar1;
-  
+
   uVar1 = SaveArray_Party_Get(*(undefined4 *)(param_1 + 0xc));
   Party_GetMonByIndex(uVar1,param_2);
   return;

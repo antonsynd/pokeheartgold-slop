@@ -53,7 +53,7 @@ undefined4 EasyChat_Main(void)
 {
   int iVar1;
   undefined4 uVar2;
-  
+
   iVar1 = OverlayManager_GetData();
   *(short *)(iVar1 + 0x30) = (short)uRam021d1154;
   *(short *)(iVar1 + 0x32) = (short)uRam021d1150;

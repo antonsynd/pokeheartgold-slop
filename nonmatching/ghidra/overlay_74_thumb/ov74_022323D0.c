@@ -54,7 +54,7 @@ undefined4 ov74_022323D0(int param_1,int param_2,undefined4 param_3,undefined4 p
   int iVar4;
   int *piVar5;
   int iVar6;
-  
+
   iVar6 = 0;
   iVar4 = *(int *)(param_1 + 0xe880);
   piVar5 = *(int **)(param_1 + 0xe884);

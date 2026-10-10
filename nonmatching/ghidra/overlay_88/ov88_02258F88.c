@@ -61,7 +61,7 @@ void ov88_02258F88(byte *param_1,undefined4 param_2,undefined4 *param_3)
   int iVar7;
   uint uVar8;
   int iStack_1c;
-  
+
   uVar3 = func_0x020f2ba4((uint)param_1[2] + (uint)param_1[1] * 0x3c + (uint)*param_1 * 0xe10,
                           *(undefined4 *)(param_1 + 8));
   if (param_1[5] != 0) {

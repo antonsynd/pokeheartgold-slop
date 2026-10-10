@@ -50,7 +50,7 @@ void ov96_021EE644(undefined4 *param_1,undefined4 param_2,undefined4 param_3,und
 
 {
   uint uVar1;
-  
+
   uVar1 = param_1[2];
   GfGfxLoader_GXLoadPalFromOpenNarc(param_1[3],0xb,6,0x6000,0,*param_1);
   GfGfxLoader_LoadCharDataFromOpenNarc

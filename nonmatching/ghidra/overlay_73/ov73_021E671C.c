@@ -52,7 +52,7 @@ undefined4 ov73_021E671C(undefined4 *param_1,undefined4 param_2)
 
 {
   int iVar1;
-  
+
   iVar1 = ov73_021E75FC(param_1[0x13]);
   if (iVar1 != 0) {
     param_1[0xc6] = param_1[199];

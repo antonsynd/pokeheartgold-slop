@@ -49,7 +49,7 @@ void ov12_02262FE0(undefined *param_1,int param_2,undefined4 param_3,undefined4 
 {
   undefined4 uStack_8;
   undefined4 uStack_4;
-  
+
   uStack_8 = param_3;
   uStack_4 = param_4;
   ov12_02262240(param_1,0,param_2,(byte *)&uStack_8,4);

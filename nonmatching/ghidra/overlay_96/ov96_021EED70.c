@@ -56,7 +56,7 @@ void ov96_021EED70(undefined4 *param_1,undefined4 param_2,undefined4 param_3,int
   int iVar3;
   undefined4 uVar4;
   undefined4 uVar5;
-  
+
   if (param_4 == 0) {
     uVar4 = 2;
     uVar5 = 5;

@@ -56,7 +56,7 @@ undefined4 ov18_021F57B4(int *param_1)
 {
   ushort uVar1;
   int iVar2;
-  
+
   switch(*(undefined1 *)((int)param_1 + 0xb)) {
   case 0:
     PlaySE(0x8ec);

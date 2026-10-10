@@ -58,7 +58,7 @@ void ov41_02247C7C(int param_1,undefined4 param_2)
   undefined4 uVar1;
   undefined4 uVar2;
   undefined4 uVar3;
-  
+
   FillWindowPixelBuffer(*(undefined4 *)(param_1 + 0x6bc),0xf);
   uVar1 = NewMsgDataFromNarc(0,0x1b,0xd7,0xd);
   uVar2 = NewString_ReadMsgData(uVar1,param_2);

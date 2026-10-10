@@ -55,7 +55,7 @@ void ov28_0225E730(int param_1,undefined4 param_2,undefined4 param_3,uint param_
   uint uVar4;
   int iVar5;
   undefined4 uStack_18;
-  
+
   uStack_18 = param_4;
   ov28_0225E374(param_1,(int)&uStack_18 + 2,&uStack_18);
   iVar5 = (int)((((uStack_18 >> 0x10) + (uStack_18 & 0xffff) * 2) * 0x40 + -0x3c0) * 0x10000) >>

@@ -71,7 +71,7 @@ undefined4 ov97_0221E700(undefined4 param_1)
   int iVar4;
   undefined4 uVar5;
   undefined4 *puVar6;
-  
+
   piVar1 = (int *)OverlayManager_GetArgs();
   puVar6 = (undefined4 *)*piVar1;
   puVar2 = (undefined4 *)OverlayManager_CreateAndGetData(param_1,0x34,0x5c);

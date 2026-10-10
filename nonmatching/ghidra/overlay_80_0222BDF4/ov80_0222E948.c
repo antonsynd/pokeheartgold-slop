@@ -58,7 +58,7 @@ void ov80_0222E948(int *param_1)
   uint uVar2;
   undefined *puVar3;
   byte bVar4;
-  
+
   puVar1 = (undefined4 *)FrontierSystem_GetFrontierMap((undefined *)*param_1);
   uVar2 = ov80_0222EB14(param_1);
   if ((uVar2 & 7) == 0) {

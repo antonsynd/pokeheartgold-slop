@@ -49,7 +49,7 @@ undefined4 ov106_021E5D08(int param_1)
 {
   int iVar1;
   uint uVar2;
-  
+
   uVar2 = 0;
   if (*(int *)(param_1 + 0x3fc) != 0) {
     do {

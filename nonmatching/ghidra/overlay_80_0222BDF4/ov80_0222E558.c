@@ -52,7 +52,7 @@ int ov80_0222E558(int param_1,undefined4 param_2,undefined4 param_3,undefined4 p
 {
   int iVar1;
   undefined4 uVar2;
-  
+
   uVar2 = param_4;
   iVar1 = Heap_Alloc(*(undefined4 *)(param_1 + 0x34),0x2d8);
   if (iVar1 == 0) {

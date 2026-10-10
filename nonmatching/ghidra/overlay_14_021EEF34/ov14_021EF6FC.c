@@ -71,7 +71,7 @@ undefined4 ov14_021EF6FC(int param_1,undefined4 param_2,undefined4 param_3,undef
   int iVar3;
   undefined4 uVar4;
   ushort *puVar5;
-  
+
   puVar5 = *(ushort **)(*(int *)(param_1 + 0x34) + 0xc);
   iVar3 = sub_020199E4(*(undefined4 *)(*(int *)(param_1 + 0x34) + 0x2f0),0x10,param_3,param_4,
                        param_4);

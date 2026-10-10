@@ -49,7 +49,7 @@ void ov83_02242DAC(int param_1,undefined4 param_2,undefined4 param_3,undefined4 
 
 {
   uint uVar1;
-  
+
   uVar1 = (uint)*(byte *)(*(int *)(param_1 + 0x840) + 0x24);
   if (*(uint *)(param_1 + 0x848) != uVar1) {
     ov83_0223FC48(param_1,param_1 + 0xb0,*(undefined2 *)(&ov83_02247D1E + uVar1 * 2),1,1,0xff,1,2,

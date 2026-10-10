@@ -55,7 +55,7 @@ undefined4 ov112_021F2CD4(int param_1,undefined4 param_2,undefined4 param_3,unde
 {
   uint uVar1;
   int iVar2;
-  
+
   if (-1 < (int)(*(uint *)(param_1 + 0x144) << 0x15)) {
     return 1;
   }

@@ -60,7 +60,7 @@ void ov96_021E786C(int param_1,int param_2)
   uint uVar10;
   uint uVar11;
   uint uVar12;
-  
+
   puVar7 = (ushort *)(param_2 + (uint)*(byte *)(*(int *)(param_1 + 0x1f8) + 0xc) * 0x2c);
   if (puVar7[3] < *(ushort *)(param_1 + 0x8fe)) {
     puVar7[3] = *(ushort *)(param_1 + 0x8fe);

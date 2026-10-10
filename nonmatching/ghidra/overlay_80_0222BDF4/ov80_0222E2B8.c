@@ -51,7 +51,7 @@ void ov80_0222E2B8(int param_1,undefined4 param_2,undefined4 param_3,undefined4 
 
 {
   undefined4 *puVar1;
-  
+
   puVar1 = (undefined4 *)FrontierSystem_GetFrontierMap();
   if (*(char *)(param_1 + 0x5a) == '\0') {
     AddWindowParameterized(*puVar1,param_1 + 100,1,2,0x13,0x1b,4,0xd,0x36d,param_4);

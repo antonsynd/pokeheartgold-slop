@@ -59,7 +59,7 @@ void ov12_022643C8(undefined4 param_1,int param_2,undefined1 *param_3,undefined4
   undefined1 *puVar7;
   byte *pbVar8;
   byte *pbVar9;
-  
+
   *param_3 = 0x16;
   *(ushort *)(param_3 + 2) = param_8;
   *(short *)(param_3 + 0x14) = (short)param_6;

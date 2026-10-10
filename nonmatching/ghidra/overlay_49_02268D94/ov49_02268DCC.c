@@ -80,7 +80,7 @@ undefined4 ov49_02268DCC(undefined4 param_1,undefined4 param_2)
   undefined4 uVar5;
   undefined4 uVar6;
   int iVar7;
-  
+
   puVar1 = (undefined4 *)ov49_0225EF84();
   uVar2 = ov49_02259FE8(param_2);
   uVar3 = ov49_02259FF0(param_2);

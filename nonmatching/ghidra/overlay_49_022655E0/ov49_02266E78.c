@@ -59,7 +59,7 @@ undefined4 ov49_02266E78(undefined4 param_1,int param_2,undefined4 param_3,undef
   undefined1 auStack_20 [4];
   undefined1 auStack_1c [4];
   undefined4 uStack_18;
-  
+
   uStack_18 = param_4;
   uVar1 = ov49_02265434(param_2 + 0xa04,(int)*(short *)(param_2 + 0x956));
   ov49_02265628(param_2 + 0xa2c);

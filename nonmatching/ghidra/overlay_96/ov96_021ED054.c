@@ -52,7 +52,7 @@ undefined4 * ov96_021ED054(undefined4 param_1,int param_2,int param_3)
 {
   undefined4 *puVar1;
   undefined4 uVar2;
-  
+
   if (param_2 == 0) {
     GF_AssertFail();
   }

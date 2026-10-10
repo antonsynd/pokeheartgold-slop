@@ -63,7 +63,7 @@ undefined4 ov15_021FBBB0(int param_1,undefined4 param_2,undefined4 param_3,undef
   undefined1 uVar1;
   int iVar2;
   undefined4 uVar3;
-  
+
   if (*(char *)(param_1 + 0x67b) == '\0') {
     uVar1 = ov15_021FEF48(param_1,0,0,param_4,param_4);
     *(undefined1 *)(param_1 + 0x616) = uVar1;

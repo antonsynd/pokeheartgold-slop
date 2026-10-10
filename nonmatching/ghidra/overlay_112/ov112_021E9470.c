@@ -48,7 +48,7 @@ int ov112_021E9470(undefined4 param_1,undefined4 param_2,undefined4 param_3,unde
 
 {
   int iVar1;
-  
+
   iVar1 = GetMonIconNaixEx(param_1,0,0,param_4,param_4);
   return iVar1 + -7;
 }

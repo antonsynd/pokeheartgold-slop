@@ -57,7 +57,7 @@ undefined4 ov112_021EE628(int param_1)
   undefined4 uVar2;
   undefined4 uVar3;
   undefined4 uVar4;
-  
+
   uVar1 = func_0x020270d8(*(undefined4 *)(param_1 + 0x20));
   uVar3 = *(undefined4 *)(param_1 + 0x1d770);
   uVar4 = *(undefined4 *)(param_1 + 0x1d774);

@@ -54,7 +54,7 @@ int ov14_021F74B0(int param_1)
   undefined4 uVar1;
   int iVar2;
   int iVar3;
-  
+
   uVar1 = func_0x02019f74(*(undefined4 *)(*(int *)(param_1 + 0x34) + 0x2c));
   iVar2 = func_0x02019d18(*(undefined4 *)(*(int *)(param_1 + 0x34) + 0x2c));
   iVar3 = ov14_021E8544(*(undefined4 *)(*(int *)(param_1 + 0x34) + 0x2f0));

@@ -51,7 +51,7 @@ void ov102_021EAD70(undefined4 param_1,undefined4 param_2,undefined4 param_3,und
   undefined2 uStack_10;
   undefined2 uStack_e;
   undefined4 uStack_c;
-  
+
   uStack_c = param_4;
   ov102_021EAD48(param_2,&uStack_10);
   FillWindowPixelRect(param_1,0xe,uStack_10,uStack_e,0x60,0x10);

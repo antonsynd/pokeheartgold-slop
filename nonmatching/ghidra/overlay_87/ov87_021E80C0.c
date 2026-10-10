@@ -49,7 +49,7 @@ void ov87_021E80C0(undefined4 param_1,int param_2,undefined4 param_3,undefined4 
 
 {
   uint uVar1;
-  
+
   uVar1 = 0;
   do {
     AddWindow(param_1,param_2 + uVar1 * 0x10,uVar1 * 8 + 0x21e842c,uVar1 * 8,param_4);

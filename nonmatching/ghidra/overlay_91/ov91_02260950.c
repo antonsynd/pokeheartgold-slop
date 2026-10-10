@@ -54,7 +54,7 @@ void ov91_02260950(int param_1)
 {
   int iVar1;
   uint uVar2;
-  
+
   iVar1 = ov91_0225E9AC(*(undefined4 *)(param_1 + 0xf8));
   if (iVar1 == 1) {
     iVar1 = -0x12c000;

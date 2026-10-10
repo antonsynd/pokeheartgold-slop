@@ -58,7 +58,7 @@ undefined4 ov49_02266820(int param_1,int param_2)
   int iVar3;
   int iVar4;
   undefined4 uStack_18;
-  
+
   if (*(char *)(*(int *)(param_2 + 0x87c) + 2) == '\x11') {
     GF_AssertFail();
   }

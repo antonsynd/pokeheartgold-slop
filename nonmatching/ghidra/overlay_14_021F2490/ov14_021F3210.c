@@ -60,7 +60,7 @@ void ov14_021F3210(int *param_1,int param_2,undefined4 param_3,undefined4 param_
   short sStack_1c;
   short sStack_1a;
   undefined4 uStack_18;
-  
+
   if (param_2 < 0) {
     sVar1 = -8;
     sStack_24 = 0xb0;

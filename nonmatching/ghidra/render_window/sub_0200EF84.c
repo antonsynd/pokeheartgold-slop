@@ -55,7 +55,7 @@ void sub_0200EF84(undefined4 *param_1,short param_2,byte param_3)
   byte bVar3;
   ushort uVar4;
   ushort uVar5;
-  
+
   bVar1 = GetWindowBgId((undefined *)param_1);
   bVar2 = GetWindowX((undefined *)param_1);
   bVar3 = GetWindowY((undefined *)param_1);

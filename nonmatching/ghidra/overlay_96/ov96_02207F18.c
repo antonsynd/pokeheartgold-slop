@@ -72,7 +72,7 @@ void ov96_02207F18(undefined4 *param_1,undefined4 param_2,undefined4 param_3)
   undefined4 uStack_28;
   undefined4 uStack_24;
   int aiStack_20 [3];
-  
+
   iStack_30 = 0;
   puVar3 = param_1 + 0x4f;
   puStack_38 = param_1 + 0x5f;

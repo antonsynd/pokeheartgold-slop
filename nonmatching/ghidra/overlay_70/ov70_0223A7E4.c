@@ -60,7 +60,7 @@ void ov70_0223A7E4(undefined4 param_1)
   undefined2 uStack_20;
   undefined2 uStack_1e;
   undefined2 uStack_1c;
-  
+
   uVar1 = Heap_Alloc(0x3d,0xc80);
   GetPokemonSpriteCharAndPlttNarcIds(&uStack_20,param_1,2);
   uVar2 = GetMonData(param_1,0,0);

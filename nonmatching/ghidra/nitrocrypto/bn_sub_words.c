@@ -49,7 +49,7 @@ int bn_sub_words(int *param_1,uint *param_2,uint *param_3,int param_4)
   int iVar1;
   uint uVar2;
   uint uVar3;
-  
+
   if (param_4 < 1) {
     return 0;
   }

@@ -54,7 +54,7 @@ void ov08_02223F34(undefined4 *param_1)
   undefined4 uVar1;
   uint uVar2;
   undefined4 *puVar3;
-  
+
   uVar1 = func_0x0223a8e4(*(undefined4 *)*param_1);
   uVar2 = 0;
   puVar3 = param_1;

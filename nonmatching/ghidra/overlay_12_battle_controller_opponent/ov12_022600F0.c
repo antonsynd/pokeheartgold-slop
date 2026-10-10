@@ -73,7 +73,7 @@ void ov12_022600F0(undefined4 param_1,undefined4 *param_2,undefined4 param_3,und
   undefined1 auStack_bc [80];
   undefined1 auStack_6c [88];
   undefined4 uStack_14;
-  
+
   uStack_14 = param_4;
   uVar1 = ov12_0223A8DC(*param_2);
   switch(*(undefined1 *)((int)param_2 + 0x66)) {

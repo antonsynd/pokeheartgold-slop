@@ -72,7 +72,7 @@ void ov43_0222A690(int param_1,int param_2)
   undefined4 uStack_20;
   undefined4 uStack_1c;
   int iStack_18;
-  
+
   NNS_G2dInitOamManagerModule();
   GF_CreateVramTransferManager(0x10,param_2);
   OamManager_Create(0,0x7e,0,0x1e,0,0x7e,0,0x1e,param_2);

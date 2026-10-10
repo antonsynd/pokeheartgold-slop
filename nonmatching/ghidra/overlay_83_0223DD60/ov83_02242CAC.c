@@ -60,7 +60,7 @@ void ov83_02242CAC(int param_1)
   int iVar4;
   uint uVar5;
   uint uVar6;
-  
+
   puVar2 = ListMenuItems_New(4,0x6b);
   *(undefined **)(param_1 + 0x844) = puVar2;
   bVar1 = ov83_0224777C(*(undefined **)(param_1 + 0x50c),*(byte *)(param_1 + 9),1);

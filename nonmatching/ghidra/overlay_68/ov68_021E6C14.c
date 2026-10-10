@@ -54,7 +54,7 @@ void ov68_021E6C14(int *param_1,undefined4 param_2)
 {
   undefined1 uVar1;
   undefined4 uVar2;
-  
+
   FillWindowPixelBuffer(param_1 + 0x1a,0xf);
   DrawFrameAndWindow2(param_1 + 0x1a,0,0x3d,0xd);
   ov68_021E6A2C(param_1,param_2);

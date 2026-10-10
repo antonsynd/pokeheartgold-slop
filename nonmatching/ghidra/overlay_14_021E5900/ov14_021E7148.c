@@ -53,7 +53,7 @@ void ov14_021E7148(int param_1,int param_2,undefined4 param_3,undefined4 param_4
   undefined1 *puVar4;
   undefined1 auStack_20 [8];
   undefined4 uStack_18;
-  
+
   uStack_18 = param_4;
   puVar3 = auStack_20;
   puVar4 = auStack_20;

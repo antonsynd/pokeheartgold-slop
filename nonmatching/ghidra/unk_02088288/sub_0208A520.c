@@ -52,7 +52,7 @@ int sub_0208A520(int param_1)
   char cVar1;
   int iVar2;
   int *piVar3;
-  
+
   piVar3 = *(int **)(param_1 + 0x22c);
   cVar1 = *(char *)((int)piVar3 + 0x11);
   if (cVar1 == '\0') {

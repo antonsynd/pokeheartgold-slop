@@ -50,7 +50,7 @@ void ov43_0222B408(undefined4 param_1,undefined4 *param_2)
 {
   char cVar1;
   int iVar2;
-  
+
   iVar2 = 0;
   cVar1 = '\x04';
   do {

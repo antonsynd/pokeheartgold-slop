@@ -69,7 +69,7 @@ byte sub_0205DAA8(undefined4 param_1,undefined4 param_2,undefined4 param_3,undef
   char acStack_28 [4];
   undefined1 auStack_24 [12];
   undefined4 uStack_18;
-  
+
   uStack_18 = param_4;
   iVar1 = MapObject_GetXCoord(param_2);
   iVar2 = GetDeltaXByFacingDirection(param_3);

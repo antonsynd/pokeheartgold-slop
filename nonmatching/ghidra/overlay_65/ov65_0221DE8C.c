@@ -49,7 +49,7 @@ void ov65_0221DE8C(void)
 
 {
   undefined4 uVar1;
-  
+
   uVar1 = Save_SpecialRibbons_Get();
   sub_02037030(0x20,uVar1,0xe);
   return;

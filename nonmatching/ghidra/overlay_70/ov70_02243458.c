@@ -61,7 +61,7 @@ int ov70_02243458(undefined4 *param_1,undefined4 param_2,undefined4 param_3,unde
   undefined2 *puVar6;
   int iStack_1c;
   undefined4 uStack_18;
-  
+
   uStack_18 = param_4;
   puVar1 = (undefined2 *)ov70_0223F658(0x3d,param_5,&iStack_1c);
   iVar2 = ov70_0224342C(param_4,param_6,iStack_1c,puVar1);

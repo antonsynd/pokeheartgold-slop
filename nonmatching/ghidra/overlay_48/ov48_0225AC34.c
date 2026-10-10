@@ -56,7 +56,7 @@ void ov48_0225AC34(int param_1,int param_2)
   int iVar3;
   undefined4 uStack_20;
   undefined4 uStack_18;
-  
+
   func_0x02006154(0x5d8,0);
   uStack_18 = 0;
   uStack_20 = param_1;

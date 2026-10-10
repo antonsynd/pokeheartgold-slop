@@ -53,7 +53,7 @@ void ov14_021EE684(int param_1)
 
 {
   int iVar1;
-  
+
   iVar1 = *(int *)(*(int *)(param_1 + 0x34) + 0xc);
   PlaySE(0x5ea);
   ov14_021E637C(param_1);

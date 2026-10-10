@@ -56,7 +56,7 @@ void ov01_021F1930(int param_1,undefined4 param_2,undefined4 param_3,undefined4 
   int iVar3;
   int iVar4;
   undefined4 uVar5;
-  
+
   iVar4 = *(int *)(param_1 + 0x20);
   uVar5 = param_4;
   uVar1 = ov01_021F14B4(param_1,param_3,1);

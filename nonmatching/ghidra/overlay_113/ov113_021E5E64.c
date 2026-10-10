@@ -53,7 +53,7 @@ void ov113_021E5E64(int param_1,int param_2)
 
 {
   uint uVar1;
-  
+
   Sprite_SetAnimCtrlSeq(*(undefined **)(param_1 + 0xb8),param_2);
   Sprite_ResetAnimCtrlState(*(undefined **)(param_1 + 0xb8));
   FillWindowPixelBuffer((undefined *)(param_1 + 0x68),0);

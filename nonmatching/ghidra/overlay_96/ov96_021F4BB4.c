@@ -67,7 +67,7 @@ void ov96_021F4BB4(int param_1,undefined4 param_2,undefined4 param_3,undefined4 
   undefined4 uStack_18;
   undefined4 uStack_14;
   undefined4 uStack_10;
-  
+
   *(short *)(param_1 + 0x82) = *(short *)(param_1 + 0x82) + 1;
   uVar1 = *(ushort *)(param_1 + 0x82);
   uStack_10 = param_4;

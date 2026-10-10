@@ -75,7 +75,7 @@ void ov57_02238E48(undefined4 *param_1)
   undefined4 uStack_20;
   undefined4 uStack_1c;
   undefined4 uStack_18;
-  
+
   piVar3 = (int *)*param_1;
   iVar5 = 0;
   if (0 < *piVar3) {

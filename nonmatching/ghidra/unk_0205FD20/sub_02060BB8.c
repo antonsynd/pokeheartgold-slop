@@ -57,7 +57,7 @@ void sub_02060BB8(undefined4 param_1,undefined4 param_2)
   undefined4 uVar3;
   int iVar4;
   int iVar5;
-  
+
   iVar1 = MapObject_GetXCoord();
   iVar2 = GetDeltaXByFacingDirection(param_2);
   uVar3 = MapObject_GetYCoord(param_1);

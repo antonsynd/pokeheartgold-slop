@@ -49,7 +49,7 @@ void sub_0205975C(int param_1)
 
 {
   int iVar1;
-  
+
   if (*(short *)(param_1 + 0x86) == 0) {
     iVar1 = sub_02037108(0x6b,param_1 + 0x84,1);
   }

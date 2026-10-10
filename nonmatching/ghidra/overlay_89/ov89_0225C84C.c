@@ -51,7 +51,7 @@ int ov89_0225C84C(int param_1,int param_2)
   ushort uVar1;
   int iVar2;
   int iVar3;
-  
+
   iVar3 = 0xff;
   iVar2 = TouchscreenHitbox_FindRectAtTouchNew(&ov89_0225CE50);
   if (iVar2 < 6) {

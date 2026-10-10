@@ -53,7 +53,7 @@ undefined4 sub_0205FD98(undefined4 param_1)
 {
   int iVar1;
   uint uVar2;
-  
+
   iVar1 = MapObject_CheckSingleMovement();
   if (iVar1 == 1) {
     return 1;

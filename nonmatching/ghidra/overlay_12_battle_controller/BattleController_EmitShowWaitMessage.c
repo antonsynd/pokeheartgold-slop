@@ -56,7 +56,7 @@ void BattleController_EmitShowWaitMessage(int param_1,undefined4 param_2)
   undefined1 auStack_2c [2];
   ushort uStack_2a;
   undefined1 auStack_28 [28];
-  
+
   uVar1 = BattleSystem_GetBattleType();
   auStack_2c[0] = 0x37;
   uStack_2a = 0;

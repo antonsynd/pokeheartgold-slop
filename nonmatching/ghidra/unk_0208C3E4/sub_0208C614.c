@@ -55,7 +55,7 @@ void sub_0208C614(int param_1)
 
 {
   undefined4 uVar1;
-  
+
   FillWindowPixelBuffer(param_1 + 0x204,0);
   if (-1 < *(int *)(param_1 + 0x280) << 3) {
     sub_0200CDAC(*(undefined4 *)(param_1 + 0x79c),1,param_1 + 0x204,0,5);

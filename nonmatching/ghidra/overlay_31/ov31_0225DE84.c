@@ -61,7 +61,7 @@ void ov31_0225DE84(int param_1,undefined4 param_2,undefined4 param_3,undefined4 
   undefined4 uVar2;
   undefined4 uVar3;
   int iVar4;
-  
+
   FillWindowPixelBuffer(param_1 + 0x74,0);
   if ((byte)(*(char *)(*(int *)(param_1 + 0x14) + 0x283) - 3U) < 2) {
     uVar1 = NewString_ReadMsgData(*(undefined4 *)(param_1 + 0x158),0x21);

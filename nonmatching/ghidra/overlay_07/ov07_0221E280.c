@@ -53,7 +53,7 @@ undefined4 ov07_0221E280(undefined4 param_1,int param_2,undefined4 param_3,undef
 
 {
   int iVar1;
-  
+
   if (*(char *)(param_2 + 5) == '\0') {
     iVar1 = *(int *)(param_2 + 0x48);
     if (*(char *)(param_2 + 0xd) == '\0') {

@@ -52,7 +52,7 @@ void ov70_02241004(int param_1,undefined4 param_2,undefined4 param_3,undefined4 
 {
   undefined4 uVar1;
   undefined4 *puVar2;
-  
+
   uVar1 = CreateSysTaskAndEnvironment(0x2241049,0x10,5,0x3d,param_4);
   *(undefined4 *)(param_1 + 0x11d8) = uVar1;
   puVar2 = (undefined4 *)SysTask_GetData(*(undefined4 *)(param_1 + 0x11d8));

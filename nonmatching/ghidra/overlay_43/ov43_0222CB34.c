@@ -53,7 +53,7 @@ void ov43_0222CB34(short *param_1,undefined4 *param_2,int param_3,int param_4)
   ushort *puVar1;
   int iVar2;
   int iVar3;
-  
+
   iVar2 = (int)param_1[1];
   if (iVar2 < 0) {
     iVar2 = -iVar2;

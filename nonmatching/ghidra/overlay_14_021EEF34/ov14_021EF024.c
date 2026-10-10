@@ -70,7 +70,7 @@ undefined4 ov14_021EF024(int param_1,undefined4 param_2,undefined4 param_3,undef
   int iVar2;
   undefined4 uVar3;
   ushort *puVar4;
-  
+
   iVar2 = ov14_021F2A04(*(undefined4 *)(param_1 + 0x34),0xb,param_3,param_4,param_4);
   if (iVar2 == 1) {
     return 0x7f;

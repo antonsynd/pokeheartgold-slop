@@ -47,7 +47,7 @@ undefined4 ov93_02262108(int param_1)
 
 {
   int iVar1;
-  
+
   iVar1 = 0;
   do {
     if (*(char *)(param_1 + iVar1 + 0x180) != *(char *)(param_1 + iVar1 + 0x186)) {

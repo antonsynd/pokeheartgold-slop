@@ -58,7 +58,7 @@ void sub_020955EC(int param_1)
   undefined4 uVar2;
   uint extraout_r1;
   int aiStack_18 [3];
-  
+
   *(char *)(param_1 + 0xf) = *(char *)(param_1 + 0xf) + '\x01';
   if (*(char *)(param_1 + 0xf) == *(char *)(param_1 + 0x10)) {
     *(undefined1 *)(param_1 + 0xf) = 0;

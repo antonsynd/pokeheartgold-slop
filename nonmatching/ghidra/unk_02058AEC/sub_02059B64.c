@@ -82,7 +82,7 @@ undefined4 sub_02059B64(undefined4 param_1)
   undefined1 *puVar3;
   undefined4 uVar4;
   int iVar5;
-  
+
   iVar1 = TaskManager_GetFieldSystem();
   puVar2 = (undefined4 *)TaskManager_GetEnvironment(param_1);
   puVar3 = (undefined1 *)sub_020588DC(puVar2[9],0,0);

@@ -49,7 +49,7 @@ undefined4 sub_02060EEC(undefined *param_1,byte param_2)
 
 {
   int iVar1;
-  
+
   iVar1 = MapObject_CheckFlag28(param_1);
   if ((iVar1 == 1) && (iVar1 = sub_0205BA30(param_2), iVar1 == 1)) {
     return 1;

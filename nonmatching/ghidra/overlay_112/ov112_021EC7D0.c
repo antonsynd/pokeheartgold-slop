@@ -56,7 +56,7 @@ void ov112_021EC7D0(int param_1)
   undefined4 uVar1;
   int iVar2;
   int iVar3;
-  
+
   iVar3 = 0;
   do {
     iVar2 = (int)*(char *)(*(int *)(param_1 + 0x1ec54) * 5 + param_1 + iVar3 + 0x1ec58);

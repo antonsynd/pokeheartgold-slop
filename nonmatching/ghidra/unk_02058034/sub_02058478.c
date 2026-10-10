@@ -52,7 +52,7 @@ void sub_02058478(void)
 
 {
   int iVar1;
-  
+
   if (*(short *)(iRam021d41c8 + 0x38) != 0) {
     *(short *)(iRam021d41c8 + 0x38) = *(short *)(iRam021d41c8 + 0x38) + -1;
     return;

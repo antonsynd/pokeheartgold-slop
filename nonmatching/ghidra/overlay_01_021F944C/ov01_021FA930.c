@@ -57,7 +57,7 @@ void ov01_021FA930(undefined4 param_1,undefined4 param_2)
   int iVar1;
   undefined4 uVar2;
   undefined4 uVar3;
-  
+
   iVar1 = ov01_021FA2D4();
   if ((iVar1 != 1) && (iVar1 = ov01_021F72DC(param_1), iVar1 != 0)) {
     ov01_021FA97C(param_1,param_2);

@@ -67,7 +67,7 @@ void ov83_02243E30(int param_1)
   int iVar2;
   int iVar3;
   undefined4 uStack_1c;
-  
+
   ov83_02247858(param_1 + 0x604);
   ov83_02247CC4(*(undefined4 *)(param_1 + 0x5f4));
   ov83_02247A18(*(undefined4 *)(param_1 + 0x5f0));

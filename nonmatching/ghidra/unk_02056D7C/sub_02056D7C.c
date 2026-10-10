@@ -55,7 +55,7 @@ undefined4 sub_02056D7C(int param_1,undefined4 param_2,undefined4 param_3,undefi
   int iVar2;
   int iVar3;
   int iVar4;
-  
+
   if (iRam021d41c4 == 0) {
     iRam021d41c4 = param_1;
     func_0x020d4994(param_1,0,0xf4,param_4,param_4);

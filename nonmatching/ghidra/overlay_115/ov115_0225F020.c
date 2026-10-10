@@ -56,7 +56,7 @@ void ov115_0225F020(undefined2 *param_1,undefined4 param_2,undefined4 param_3,un
   undefined4 uVar1;
   undefined2 *puVar2;
   int iVar3;
-  
+
   iVar3 = 0;
   *param_1 = 0;
   param_1[1] = 0;

@@ -48,7 +48,7 @@ void ov14_021F3B3C(int param_1)
 
 {
   uint uVar1;
-  
+
   uVar1 = 0;
   do {
     ManagedSprite_SetDrawFlag(*(undefined4 *)(param_1 + 0x3f0),1);

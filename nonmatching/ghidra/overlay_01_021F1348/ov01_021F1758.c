@@ -58,7 +58,7 @@ int ov01_021F1758(int param_1,undefined4 param_2,undefined4 param_3,undefined4 p
   int iVar3;
   int iVar4;
   undefined1 auStack_24 [16];
-  
+
   iVar4 = *(int *)(param_1 + 0x20);
   uVar1 = ov01_021FC5A4(*(undefined4 *)(iVar4 + 0x10),param_3);
   uVar2 = ov01_021FC5A4(*(undefined4 *)(iVar4 + 0x14),param_4);

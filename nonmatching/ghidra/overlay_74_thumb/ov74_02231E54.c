@@ -49,7 +49,7 @@ uint ov74_02231E54(int param_1,uint param_2,undefined4 param_3)
 {
   uint extraout_r1;
   uint uVar1;
-  
+
   uVar1 = 0;
   if (param_1 == 0xc9) {
     func_0x020f2ba4((param_2 & 0x3000000) >> 0x12 | (param_2 & 0x30000) >> 0xc |

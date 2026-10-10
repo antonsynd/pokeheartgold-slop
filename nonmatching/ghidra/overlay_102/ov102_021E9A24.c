@@ -54,7 +54,7 @@ void ov102_021E9A24(undefined4 param_1,int *param_2)
 {
   int iVar1;
   int iVar2;
-  
+
   iVar1 = param_2[5];
   iVar2 = *param_2;
   if (iVar1 == 0) {

@@ -66,7 +66,7 @@ ov96_0220B7F4(undefined4 param_1,undefined4 param_2,undefined4 param_3,undefined
   undefined1 auStack_54 [20];
   undefined4 auStack_40 [10];
   undefined4 uStack_18;
-  
+
   uStack_18 = param_4;
   uVar1 = ov96_021E5F24(param_4);
   ReadWholeNarcMemberByIdPair(auStack_54,0xaa,5);

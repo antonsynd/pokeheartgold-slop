@@ -53,7 +53,7 @@ ov96_021E8770(undefined4 param_1,undefined4 param_2,undefined4 param_3,int param
 {
   undefined2 *puVar1;
   undefined4 uVar2;
-  
+
   puVar1 = (undefined2 *)Heap_Alloc(param_5,8);
   *puVar1 = (short)param_4;
   puVar1[1] = 0;

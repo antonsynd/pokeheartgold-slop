@@ -51,7 +51,7 @@ undefined4 ov59_0223A48C(int param_1,int param_2)
 
 {
   undefined1 uVar1;
-  
+
   if (param_2 == 0) {
     PlaySE(0x5dc);
     ov59_02238834(param_1,0,1);

@@ -77,7 +77,7 @@ void ov40_02244920(int param_1,int param_2,undefined4 param_3)
   int iStack_20;
   undefined1 auStack_1c [4];
   int iStack_18;
-  
+
   sub_0202FEB8(*(undefined1 *)(param_1 + 0xaa),&iStack_18,auStack_1c);
   uVar1 = String_New(0x40,param_3);
   uVar2 = String_New(0x40,param_3);

@@ -49,7 +49,7 @@ void ov01_021EBB68(int *param_1,int param_2)
 {
   int iVar1;
   int iVar2;
-  
+
   iVar2 = *param_1 + param_2 * 0x1c;
   iVar1 = ov01_021EB804();
   if (iVar1 == 3) {

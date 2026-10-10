@@ -60,7 +60,7 @@ void ov59_02239A24(int param_1)
   short *psVar5;
   int iVar6;
   int iStack_18;
-  
+
   iVar4 = 0x223c7f0;
   iVar6 = 0;
   iVar2 = param_1;

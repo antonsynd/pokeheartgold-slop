@@ -57,7 +57,7 @@ void ov07_02229D40(undefined4 param_1,char *param_2,undefined4 param_3,undefined
   int iVar2;
   char *pcVar3;
   undefined4 uStack_18;
-  
+
   uStack_18 = param_4;
   if (*param_2 == '\0') {
     if ((byte)param_2[6] < 0xf) {

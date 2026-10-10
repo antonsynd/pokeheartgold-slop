@@ -52,7 +52,7 @@ void sub_020941CC(int param_1,undefined4 param_2,undefined4 param_3)
 
 {
   undefined4 uVar1;
-  
+
   GfGfxLoader_LoadScrnData(0x97,1,param_2,2,0,0x600,1,param_3);
   BgTilemapRectChangePalette(param_2,2,0,0,0x20,0x18,1);
   BgCommitTilemapBufferToVram(param_2,2);

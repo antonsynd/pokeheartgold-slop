@@ -48,7 +48,7 @@ void ov00_021E7300(void)
 
 {
   int iVar1;
-  
+
   iVar1 = 0;
   do {
     ov00_021E7234(iVar1);

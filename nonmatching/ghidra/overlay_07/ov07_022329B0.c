@@ -51,7 +51,7 @@ void ov07_022329B0(undefined4 *param_1)
 
 {
   undefined4 uVar1;
-  
+
   if (param_1[0x25] == 0) {
     uVar1 = ov07_022325F4(param_1[0x26]);
     param_1[4] = 1;

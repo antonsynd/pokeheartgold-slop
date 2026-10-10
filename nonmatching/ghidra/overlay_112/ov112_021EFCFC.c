@@ -49,7 +49,7 @@ undefined4 ov112_021EFCFC(undefined4 param_1)
 
 {
   int iVar1;
-  
+
   iVar1 = IsPaletteFadeFinished();
   if (iVar1 == 1) {
     iVar1 = 0;

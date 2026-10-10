@@ -49,7 +49,7 @@ undefined4 ov14_021E70B0(int param_1,int param_2)
   int iVar1;
   uint uVar2;
   int iVar3;
-  
+
   uVar2 = 0;
   iVar1 = *(int *)(*(int *)(param_1 + 0x34) + 0xc);
   iVar3 = iVar1;

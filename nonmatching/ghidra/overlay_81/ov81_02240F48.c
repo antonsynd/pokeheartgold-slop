@@ -56,7 +56,7 @@ void ov81_02240F48(int param_1,int param_2,undefined4 param_3,undefined4 param_4
   undefined4 uVar2;
   int iVar3;
   int iVar4;
-  
+
   param_2 = param_2 * 4;
   iVar4 = param_1 + 0x1ac;
   uVar1 = ov81_02242C80(*(undefined4 *)(param_1 + 0x1a8),0,param_3,param_4,param_5,0,param_4);

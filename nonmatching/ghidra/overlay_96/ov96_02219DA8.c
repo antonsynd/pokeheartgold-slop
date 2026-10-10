@@ -50,7 +50,7 @@ void ov96_02219DA8(undefined4 param_1,undefined4 param_2,undefined4 param_3,unde
 
 {
   undefined1 auStack_1c [16];
-  
+
   ov96_021E6168(param_1,param_4,param_5,auStack_1c);
   ov96_021EEBE4(param_3,auStack_1c,0,0,param_2);
   return;

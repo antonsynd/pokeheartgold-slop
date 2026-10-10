@@ -50,7 +50,7 @@ void sub_0205724C(int param_1,int param_2,int param_3)
 
 {
   undefined *puVar1;
-  
+
   if (iRam021d41c4 != 0) {
     puVar1 = *(undefined **)(iRam021d41c4 + param_1 * 4 + 4);
     if (puVar1 != (undefined *)0x0) {

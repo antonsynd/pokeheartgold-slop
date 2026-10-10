@@ -58,7 +58,7 @@ undefined4 ov96_0220CC38(int param_1)
   uint extraout_r1;
   uint *puVar3;
   int iVar4;
-  
+
   iVar4 = 0;
   uVar1 = MTRandom();
   { uint nug_a = (uint)(uVar1), nug_b = (uint)(100); extraout_r1 = nug_a % nug_b; _u32_div_f(nug_a, nug_b); }

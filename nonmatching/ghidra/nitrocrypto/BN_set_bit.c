@@ -51,7 +51,7 @@ undefined4 BN_set_bit(int *param_1,int param_2)
   int iVar2;
   int *piVar3;
   int iVar4;
-  
+
   iVar2 = param_2 >> 0x1f;
   iVar1 = (int)(param_2 + ((uint)(param_2 >> 4) >> 0x1b)) >> 5;
   if (param_1[1] <= iVar1) {

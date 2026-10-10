@@ -63,7 +63,7 @@ undefined4 ov46_02258DA8(undefined4 param_1,int *param_2,undefined4 param_3,unde
   int iVar1;
   int iVar2;
   int iVar3;
-  
+
   iVar1 = OverlayManager_GetData();
   iVar2 = OverlayManager_GetArgs(param_1);
   switch(*param_2) {

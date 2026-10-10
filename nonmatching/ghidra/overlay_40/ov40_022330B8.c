@@ -50,7 +50,7 @@ void ov40_022330B8(int param_1)
 
 {
   int iVar1;
-  
+
   iVar1 = *(int *)(param_1 + 0x860);
   ov40_0222D6D0(iVar1 + 0x158);
   Sprite_DeleteAndFreeResources(*(undefined4 *)(iVar1 + 0x15c));

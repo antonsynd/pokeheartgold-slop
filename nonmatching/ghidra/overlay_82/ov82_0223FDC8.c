@@ -57,7 +57,7 @@ void ov82_0223FDC8(undefined4 param_1,undefined4 param_2,byte param_3,undefined4
   byte bStack_16;
   undefined1 uStack_15;
   undefined4 uStack_14;
-  
+
   uStack_14 = param_4;
   func_0x020d4994(&uStack_28,0,0x14);
   uStack_20 = 0x6d;

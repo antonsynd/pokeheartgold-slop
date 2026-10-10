@@ -50,7 +50,7 @@ undefined4 FrtCmd_113(void)
 {
   undefined2 uVar1;
   undefined2 *puVar2;
-  
+
   puVar2 = (undefined2 *)FrontierScript_ReadVarPtr();
   uVar1 = sub_020304B4();
   *puVar2 = uVar1;

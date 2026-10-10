@@ -48,7 +48,7 @@ undefined4 ov71_0224B6F0(int param_1,int param_2)
 
 {
   undefined4 uVar1;
-  
+
   if (*(int *)(param_1 + 0xc) != 0) {
     uVar1 = IsFanfarePlaying();
     *(undefined4 *)(param_1 + 0xc) = uVar1;

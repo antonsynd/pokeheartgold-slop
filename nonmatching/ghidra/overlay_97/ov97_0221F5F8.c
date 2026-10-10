@@ -55,7 +55,7 @@ void ov97_0221F5F8(int param_1,int param_2)
   int iVar4;
   int iVar5;
   uint uStack_18;
-  
+
   uStack_18 = 0;
   do {
     iVar5 = param_2 + uStack_18 * 8;

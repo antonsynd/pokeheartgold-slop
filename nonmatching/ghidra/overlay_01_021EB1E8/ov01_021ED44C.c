@@ -51,7 +51,7 @@ void ov01_021ED44C(int param_1)
   int iVar1;
   int *piVar2;
   undefined1 auStack_18 [12];
-  
+
   piVar2 = *(int **)(param_1 + 8);
   ov01_021EC304(auStack_18,param_1);
   iVar1 = *piVar2;

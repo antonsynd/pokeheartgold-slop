@@ -49,7 +49,7 @@ undefined4 ov102_021E839C(int param_1)
 
 {
   int iVar1;
-  
+
   iVar1 = TouchscreenHitbox_FindRectAtTouchNew(&ov102_021EC600);
   if (iVar1 == -1) {
     return 0;

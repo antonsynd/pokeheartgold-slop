@@ -61,7 +61,7 @@ void sub_02058B84(int param_1,undefined4 param_2,undefined4 param_3,undefined4 p
   int iVar5;
   int iVar6;
   byte bVar7;
-  
+
   puVar3 = (undefined4 *)Heap_Alloc(param_2,0x44,param_3,param_4,param_4);
   func_0x020d4994(puVar3,0,0x44);
   uVar4 = Save_PlayerData_GetOptionsAddr(*(undefined4 *)(*(int *)(param_1 + 0x24) + 0xc));

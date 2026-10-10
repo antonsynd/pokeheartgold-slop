@@ -54,7 +54,7 @@ void sub_02017AEC(undefined4 *param_1,undefined4 param_2,undefined4 param_3,unde
   undefined1 auStack_12 [2];
   undefined4 uStack_10;
   undefined4 uStack_c;
-  
+
   uStack_c = param_4;
   sub_02017280(param_1,auStack_12);
   sub_02017280(param_1,&uStack_13);

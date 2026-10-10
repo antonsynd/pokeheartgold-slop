@@ -54,7 +54,7 @@ void ov68_021E5D24(int *param_1,undefined4 param_2)
 {
   undefined1 uVar1;
   int iVar2;
-  
+
   BgConfig_LoadAssetFromOpenNarc(param_1[1],0x42,param_2,0x6e,1,3,0,0,0);
   BgConfig_LoadAssetFromOpenNarc(param_1[1],0x42,param_2,0x6e,4,3,1,0x800,0);
   BgConfig_LoadAssetFromOpenNarc(param_1[1],0x42,param_2,0x6e,0,3,2,0,0);

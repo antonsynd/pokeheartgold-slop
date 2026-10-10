@@ -60,7 +60,7 @@ void ov07_02227824(undefined4 param_1)
   short sVar2;
   undefined4 uVar3;
   undefined1 *puVar4;
-  
+
   uVar3 = ov07_0221BFD0();
   puVar4 = (undefined1 *)Heap_Alloc(uVar3,0x5c);
   puVar4[8] = 0;

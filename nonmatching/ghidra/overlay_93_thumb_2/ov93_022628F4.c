@@ -51,7 +51,7 @@ void ov93_022628F4(undefined4 param_1,undefined1 param_2)
   undefined4 uStack_20;
   undefined1 uStack_1c;
   undefined1 uStack_1b;
-  
+
   func_0x020d4994(&uStack_20,0,0x14);
   uStack_20 = 4;
   uStack_1c = 2;

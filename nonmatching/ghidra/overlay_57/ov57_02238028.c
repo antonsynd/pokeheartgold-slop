@@ -47,7 +47,7 @@ undefined4 ov57_02238028(int param_1)
 
 {
   int iVar1;
-  
+
   iVar1 = 0;
   do {
     if (*(int *)(param_1 + 0x34c) != 1) {

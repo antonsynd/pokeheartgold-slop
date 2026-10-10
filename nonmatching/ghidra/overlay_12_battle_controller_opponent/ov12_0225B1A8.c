@@ -56,7 +56,7 @@ void ov12_0225B1A8(undefined4 param_1,int param_2)
   undefined1 uStack_30;
   undefined1 uStack_2f;
   undefined2 uStack_2e;
-  
+
   if (*(char *)(param_2 + 0x196) == '\0') {
     uVar1 = BattleSystem_GetMessageLoader();
     uStack_2e = 0x39b;

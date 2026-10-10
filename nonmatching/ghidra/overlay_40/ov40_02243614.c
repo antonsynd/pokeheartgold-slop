@@ -54,7 +54,7 @@ void ov40_02243614(int param_1)
   int iVar3;
   int iVar4;
   int iVar5;
-  
+
   if (*(int *)(param_1 + 0x208) == 0) {
     *(int *)(param_1 + 0x188) = *(int *)(param_1 + 0x204) + -1;
     uVar2 = *(undefined4 *)(param_1 + *(int *)(param_1 + 0x188) * 0x1c + 4);

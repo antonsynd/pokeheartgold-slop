@@ -52,7 +52,7 @@ void ov40_022371A0(int param_1)
   int iVar1;
   uint *puVar2;
   int iVar3;
-  
+
   puVar2 = (uint *)&ov40_02245290;
   iVar3 = 0;
   iVar1 = *(int *)(param_1 + 0x860) + 0x1b4;

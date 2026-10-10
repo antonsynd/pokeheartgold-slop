@@ -50,7 +50,7 @@ undefined4 ov65_0221D648(short *param_1,undefined4 param_2,undefined4 param_3,un
 {
   undefined4 uVar1;
   int iVar2;
-  
+
   if ((*param_1 == 0x1d) || (*param_1 == 0x20)) {
     uVar1 = Party_GetMonByIndex(param_2,param_3);
     iVar2 = GetMonData(uVar1,0x4d,0);

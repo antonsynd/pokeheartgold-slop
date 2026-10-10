@@ -49,7 +49,7 @@ void ov01_021EC2E4(int param_1,code *param_2)
   int iVar1;
   int iVar2;
   int iVar3;
-  
+
   iVar3 = *(int *)(*(int *)(param_1 + 0x34) + 0x34);
   iVar2 = *(int *)(param_1 + 0x34);
   while (iVar1 = iVar3, iVar2 != param_1) {

@@ -48,7 +48,7 @@ undefined4 ov07_0221C394(int param_1)
 
 {
   int iVar1;
-  
+
   iVar1 = ov07_0221C3DC();
   if (iVar1 == 0) {
     return 0;

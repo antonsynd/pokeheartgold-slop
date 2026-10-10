@@ -60,7 +60,7 @@ undefined4 ov18_021F2D24(int param_1,int param_2,undefined4 param_3,uint param_4
   uint uVar6;
   undefined1 auStack_18 [2];
   short sStack_16;
-  
+
   func_0x0200de44(*(undefined4 *)(param_1 + 0x670 + param_2 * 4),&sStack_16,auStack_18);
   uVar1 = ov18_021F2CB4(param_1,param_2);
   if (param_4 < uVar1) {

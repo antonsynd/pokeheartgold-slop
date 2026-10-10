@@ -63,7 +63,7 @@ undefined4 ov74_02230478(void)
   int iVar2;
   int iVar3;
   uint uVar4;
-  
+
   iVar1 = ov74_02231100();
   iVar2 = ov74_02231154();
   ov74_02231054();

@@ -54,7 +54,7 @@ void ov43_0222E0E8(undefined4 param_1,int param_2,int param_3,undefined4 param_4
   undefined4 uVar1;
   int iVar2;
   undefined4 uVar3;
-  
+
   uVar1 = Save_Frontier_GetStatic(*(undefined4 *)(param_2 + 4));
   ov43_0222EC58(param_1,2,0,param_2,param_3,0x1d,0,0,0x10200,*(undefined4 *)(param_3 + 0x7c),
                 *(undefined4 *)(param_3 + 0x80),0,param_4);

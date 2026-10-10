@@ -55,7 +55,7 @@ undefined4 ov83_0223DFBC(undefined4 param_1)
 
 {
   int iVar1;
-  
+
   iVar1 = OverlayManager_GetData();
   **(ushort **)(iVar1 + 0x7a0) = (ushort)*(byte *)(iVar1 + 0xd);
   uRam04000050 = 0;

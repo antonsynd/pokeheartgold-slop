@@ -48,7 +48,7 @@ uint ov80_022358E8(int param_1)
 {
   uint uVar1;
   uint uVar2;
-  
+
   uVar2 = (uint)*(ushort *)(param_1 + 0x1a) + (uint)*(byte *)(param_1 + 0xd);
   uVar1 = 0xffff;
   if (uVar2 < 0x10000) {

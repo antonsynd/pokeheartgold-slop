@@ -52,7 +52,7 @@ ov14_021E64D0(undefined4 param_1,undefined4 param_2,undefined4 param_3,undefined
 {
   short sVar1;
   short sVar2;
-  
+
   sVar1 = GetBoxMonData(param_1,5,0,param_4,param_4);
   if (sVar1 == 0x1ed) {
     sVar1 = GetBoxMonData(param_1,0x70,0);

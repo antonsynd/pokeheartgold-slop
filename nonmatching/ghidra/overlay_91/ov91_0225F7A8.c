@@ -63,7 +63,7 @@ void ov91_0225F7A8(int param_1,int param_2)
   undefined4 uStack_18;
   undefined4 uStack_14;
   undefined4 uStack_10;
-  
+
   ov91_02260D98(param_2 + 0x6a98);
   ov91_0225D6A0(param_2 + 900);
   Thunk_G3X_Reset();

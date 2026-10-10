@@ -56,7 +56,7 @@ void ov109_021E6B5C(undefined4 *param_1,undefined4 param_2,undefined4 param_3,un
 {
   undefined4 uVar1;
   undefined4 uVar2;
-  
+
   uVar1 = NARC_New(0xab,*param_1);
   GfGfxLoader_GXLoadPalFromOpenNarc(uVar1,4,0,0,0,*param_1);
   GfGfxLoader_GXLoadPalFromOpenNarc(uVar1,4,4,0,0,*param_1);

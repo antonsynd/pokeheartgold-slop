@@ -48,7 +48,7 @@ void ov87_021E80F0(int param_1)
 
 {
   uint uVar1;
-  
+
   uVar1 = 0;
   do {
     RemoveWindow(param_1 + uVar1 * 0x10);

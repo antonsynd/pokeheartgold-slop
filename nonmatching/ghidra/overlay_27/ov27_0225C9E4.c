@@ -47,7 +47,7 @@ undefined4 ov27_0225C9E4(int param_1)
 
 {
   int iVar1;
-  
+
   iVar1 = *(int *)(param_1 + 0x10) + 1;
   *(int *)(param_1 + 0x10) = iVar1;
   if (0x14 < iVar1) {

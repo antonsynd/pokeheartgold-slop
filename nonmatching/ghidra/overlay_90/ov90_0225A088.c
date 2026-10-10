@@ -55,7 +55,7 @@ void ov90_0225A088(undefined4 *param_1,undefined4 *param_2,undefined4 param_3)
   undefined4 uVar1;
   int iVar2;
   undefined4 *puVar3;
-  
+
   if (param_1[0xc1] != 0) {
     GF_AssertFail();
   }

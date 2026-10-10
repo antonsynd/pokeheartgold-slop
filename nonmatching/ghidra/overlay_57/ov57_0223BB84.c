@@ -55,7 +55,7 @@ void ov57_0223BB84(int param_1)
   int iVar5;
   int iVar6;
   int iVar7;
-  
+
   iVar2 = 0;
   puVar4 = &ov57_0223BEF4;
   iVar5 = param_1;

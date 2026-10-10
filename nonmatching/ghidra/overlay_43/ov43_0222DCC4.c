@@ -55,7 +55,7 @@ undefined4 ov43_0222DCC4(int param_1,int param_2)
   int iVar3;
   uint uVar4;
   uint uVar5;
-  
+
   puVar1 = sub_0202C6F4(*(undefined **)(param_1 + 4));
   iVar3 = (int)*(char *)(param_1 + 0xb);
   if (param_2 == 0) {

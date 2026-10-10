@@ -58,7 +58,7 @@ undefined4 BN_rshift(int *param_1,int *param_2,int param_3)
   uint uVar7;
   uint uVar8;
   int iVar9;
-  
+
   iVar9 = param_3 >> 0x1f;
   uVar8 = ((uint)(param_3 * 0x8000000 + iVar9) >> 0x1b | iVar9 << 5) - iVar9;
   iVar9 = (int)(param_3 + ((uint)(param_3 >> 4) >> 0x1b)) >> 5;

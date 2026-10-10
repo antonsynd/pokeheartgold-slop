@@ -60,7 +60,7 @@ void ov85_021E8F88(int param_1,undefined4 param_2,undefined4 param_3,undefined4 
   int iVar1;
   undefined4 uVar2;
   int iVar3;
-  
+
   func_0x020b78d4();
   func_0x0200b150(0,0x7e,0,0x20,0,0x7e,0,0x20,0x66,param_2,param_4);
   iVar1 = G2dRenderer_Init(0x1e,param_1 + 100,0x66);

@@ -54,7 +54,7 @@ int * ov95_021E7020(int param_1,int param_2,int param_3,int param_4)
 {
   int *piVar1;
   undefined *puVar2;
-  
+
   if (param_1 == 0) {
     GF_AssertFail();
   }

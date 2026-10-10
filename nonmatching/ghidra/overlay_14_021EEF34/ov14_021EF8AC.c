@@ -57,7 +57,7 @@ undefined4 ov14_021EF8AC(int param_1,undefined4 param_2,undefined4 param_3,undef
   undefined2 uVar3;
   int iVar4;
   undefined2 *puVar5;
-  
+
   puVar5 = *(undefined2 **)(*(int *)(param_1 + 0x34) + 0xc);
   ov14_021F34C8(*(int *)(param_1 + 0x34),*puVar5,0,param_4,param_4);
   bVar1 = *(byte *)(param_1 + 0x21);

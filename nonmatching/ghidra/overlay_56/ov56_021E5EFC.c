@@ -57,7 +57,7 @@ undefined4 ov56_021E5EFC(int param_1,undefined4 param_2,undefined4 param_3,undef
   int iVar2;
   undefined2 auStack_14 [2];
   undefined4 uStack_10;
-  
+
   uStack_10 = param_4;
   iVar1 = TouchscreenHitbox_FindRectAtTouchNew(&ov56_021E6E20);
   if (iVar1 == -1) {

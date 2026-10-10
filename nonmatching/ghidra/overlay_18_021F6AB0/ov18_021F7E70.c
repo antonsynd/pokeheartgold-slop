@@ -55,7 +55,7 @@ uint ov18_021F7E70(undefined *param_1,undefined *param_2)
 {
   uint uVar1;
   int iVar2;
-  
+
   uVar1 = ov18_021F7B94(param_1);
   if (uVar1 == 0xffffffff) {
     iVar2 = System_GetTouchNew();

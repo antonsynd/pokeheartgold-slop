@@ -50,7 +50,7 @@ undefined4 ov74_0222A504(undefined4 param_1)
 
 {
   int iVar1;
-  
+
   iVar1 = OverlayManager_GetData();
   if (*(int *)(iVar1 + 0x80) - 2U < 3) {
     return 0x31;

@@ -53,7 +53,7 @@ undefined4 ov27_0225BD50(int param_1)
 {
   undefined4 uVar1;
   int iVar2;
-  
+
   uVar1 = Save_VarsFlags_Get(*(undefined4 *)(param_1 + 0xc));
   iVar2 = FieldSystem_MapIsBattleTowerMultiPartnerSelectRoom(param_1);
   if (iVar2 != 0) {

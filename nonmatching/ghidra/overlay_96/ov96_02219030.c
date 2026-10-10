@@ -50,7 +50,7 @@ void ov96_02219030(undefined4 *param_1,undefined4 param_2,undefined4 param_3,und
 {
   undefined4 *puVar1;
   uint uVar2;
-  
+
   *(undefined1 *)((int)param_1 + 0x5b) = 0x3c;
   *(undefined1 *)(param_1 + 0x16) = 0;
   puVar1 = (undefined4 *)param_1[4];

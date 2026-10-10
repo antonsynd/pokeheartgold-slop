@@ -52,7 +52,7 @@ undefined4 ov70_02244E44(int param_1,undefined4 param_2,undefined4 param_3,undef
 
 {
   int iVar1;
-  
+
   switch(*(undefined2 *)(param_1 + 0x1600)) {
   case 0:
     ov70_02244FA4(param_1,*(undefined4 *)(param_1 + 0xba0),0xba,1,0xf0f,param_4);

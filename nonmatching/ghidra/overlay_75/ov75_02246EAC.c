@@ -49,7 +49,7 @@ undefined4 ov75_02246EAC(int param_1,undefined4 param_2,undefined4 param_3,undef
 
 {
   undefined4 *puVar1;
-  
+
   puVar1 = (undefined4 *)Heap_Alloc(0x73,0xc,param_3,param_4,param_4);
   func_0x020d4994(puVar1,0,0xc);
   *puVar1 = *(undefined4 *)(param_1 + 4);

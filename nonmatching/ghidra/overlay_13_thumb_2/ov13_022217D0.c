@@ -51,15 +51,15 @@ undefined4 ov13_022217D0(int param_1)
 
 {
   undefined4 uVar1;
-  
+
   if (param_1 == -1) {
-                    
+
     _UNK_022459b8 = param_1;
     return 0;
   }
   if (param_1 != -1) {
     _UNK_022459b8 = param_1;
-                    
+
     uVar1 = ov13_02223100();
     return uVar1;
   }

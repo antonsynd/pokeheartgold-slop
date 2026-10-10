@@ -49,7 +49,7 @@ void BN_bn2bin(int *param_1,undefined1 *param_2)
 {
   int iVar1;
   int iVar2;
-  
+
   iVar2 = BN_num_bits();
   iVar2 = (int)(iVar2 + 7 + ((uint)(iVar2 + 7 >> 2) >> 0x1d)) >> 3;
   if (0 < iVar2) {

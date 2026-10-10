@@ -53,7 +53,7 @@ void ov97_0221EB38(undefined4 param_1,byte *param_2)
   byte bStack_c;
   byte bStack_b;
   byte bStack_a;
-  
+
   CalcBoxmonPokeathlonStars(&uStack_10,param_1,0,0x5c);
   *param_2 = (byte)uStack_10 & 7;
   param_2[1] = (byte)((uStack_10 & 0x7fff) >> 0xc);

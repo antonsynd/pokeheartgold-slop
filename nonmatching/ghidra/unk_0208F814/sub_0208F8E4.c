@@ -51,7 +51,7 @@ void sub_0208F8E4(int param_1,undefined4 param_2,undefined1 *param_3,int param_4
   undefined1 *puVar3;
   undefined1 *puVar4;
   int iVar5;
-  
+
   if ((param_4 != 0) && (param_1 == 0)) {
     iVar5 = 0;
     do {

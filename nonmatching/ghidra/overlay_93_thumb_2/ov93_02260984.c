@@ -57,7 +57,7 @@ undefined4 * ov93_02260984(int param_1,undefined4 param_2,int param_3)
   int iVar4;
   undefined4 *puVar5;
   undefined4 auStack_48 [13];
-  
+
   puVar2 = auStack_48;
   puVar5 = (undefined4 *)0x2262e34;
   iVar4 = 6;

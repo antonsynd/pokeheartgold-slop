@@ -51,7 +51,7 @@ void ov07_02225904(undefined4 param_1,char *param_2,undefined4 param_3,undefined
 
 {
   int iVar1;
-  
+
   if (*param_2 == '\0') {
     iVar1 = *(int *)(param_2 + 0x4c);
     *(int *)(param_2 + 0x4c) = iVar1 + 1;

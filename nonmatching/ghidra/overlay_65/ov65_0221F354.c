@@ -48,7 +48,7 @@ undefined4 ov65_0221F354(int param_1)
 
 {
   int iVar1;
-  
+
   if ((*(int *)(param_1 + 0x6c) != 0) && (*(int *)(param_1 + 0x70) != 0)) {
     if ((*(int *)(param_1 + 0x6c) == 3) && (*(int *)(param_1 + 0x70) == 3)) {
       *(int *)(param_1 + 0x36a4) = *(int *)(param_1 + 0x36a4) + 1;

@@ -58,7 +58,7 @@ void ov07_02232AFC(undefined4 *param_1,undefined4 param_2,undefined4 param_3,und
   int iVar3;
   undefined4 *puVar4;
   undefined4 *puVar5;
-  
+
   if (param_1[0x25] == 0) {
     iVar1 = ov07_02232608(param_1[0x26]);
     iVar3 = 0;

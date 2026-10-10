@@ -55,7 +55,7 @@ void ov14_021F2C84(int param_1,undefined4 param_2,undefined4 param_3,undefined4 
 {
   undefined4 uVar1;
   uint uVar2;
-  
+
   uVar2 = 0;
   do {
     func_0x0200d4a4(*(undefined4 *)(param_1 + 0x2f4),*(undefined4 *)(param_1 + 0x2f8),0x13,0x4e,1,1,

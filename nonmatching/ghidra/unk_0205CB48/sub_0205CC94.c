@@ -67,7 +67,7 @@ void sub_0205CC94(undefined4 param_1)
   int iVar3;
   undefined4 uVar4;
   undefined4 uVar5;
-  
+
   iVar3 = PlayerAvatar_GetMoveState();
   if (iVar3 == 1) {
     uVar4 = PlayerAvatar_GetMapObject(param_1);

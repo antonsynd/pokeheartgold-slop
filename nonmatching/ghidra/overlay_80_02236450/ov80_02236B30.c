@@ -53,7 +53,7 @@ undefined4 ov80_02236B30(int param_1)
   byte bVar2;
   undefined *puVar3;
   undefined *puVar4;
-  
+
   if ((param_1 != 3) && (param_1 != 6)) {
     return 1;
   }

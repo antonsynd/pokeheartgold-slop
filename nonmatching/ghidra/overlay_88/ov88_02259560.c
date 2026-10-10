@@ -54,7 +54,7 @@ void ov88_02259560(undefined1 *param_1,undefined *param_2,undefined2 param_3,und
 
 {
   uint uVar1;
-  
+
   String_Copy(*(undefined **)(param_1 + 8),param_2);
   *param_1 = 1;
   *(undefined2 *)(param_1 + 2) = 0;

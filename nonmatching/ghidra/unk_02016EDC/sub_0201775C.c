@@ -51,7 +51,7 @@ void sub_0201775C(undefined4 *param_1)
 {
   byte abStack_10 [4];
   undefined4 uStack_c;
-  
+
   sub_0201726C(param_1,&uStack_c);
   sub_02017294(param_1,abStack_10);
   Pokepic_AddAttr(*param_1,uStack_c,param_1[abStack_10[0] + 9]);

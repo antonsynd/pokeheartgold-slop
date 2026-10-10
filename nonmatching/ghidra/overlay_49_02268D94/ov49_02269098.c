@@ -66,7 +66,7 @@ void ov49_02269098(int param_1)
   bool bVar6;
   undefined4 uStack_1c;
   int iStack_18;
-  
+
   uVar2 = func_0x0222a53c(*(undefined4 *)(param_1 + 4));
   iStack_18 = func_0x0222ada8(*(undefined4 *)(param_1 + 4),uVar2);
   bVar6 = iStack_18 != -1;

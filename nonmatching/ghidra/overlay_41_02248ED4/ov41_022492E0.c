@@ -62,7 +62,7 @@ void ov41_022492E0(int *param_1,undefined4 param_2,undefined4 param_3,undefined4
   int iStack_20;
   int iStack_1c;
   undefined4 uStack_18;
-  
+
   iVar1 = *param_1;
   if ((*(int *)(iVar1 + 0x10) != 0) && (uRam021d116c != 0xffff)) {
     uStack_18 = param_4;

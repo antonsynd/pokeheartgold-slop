@@ -48,7 +48,7 @@ undefined4 ov49_0225E9D0(undefined4 param_1,int param_2,int param_3)
 
 {
   undefined4 uVar1;
-  
+
   uVar1 = ov49_0225D1EC();
   if (((int)(short)uVar1 == (param_2 << 0x14) >> 0x10) &&
      ((int)(short)((uint)uVar1 >> 0x10) == (param_3 << 0x14) >> 0x10)) {

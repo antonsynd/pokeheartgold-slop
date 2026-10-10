@@ -59,7 +59,7 @@ undefined4 ov87_021E5C38(int param_1,undefined4 param_2,undefined4 param_3,undef
   undefined1 auStack_18 [4];
   undefined1 auStack_14 [4];
   undefined4 uStack_10;
-  
+
   cVar1 = *(char *)(param_1 + 8);
   uStack_10 = param_4;
   if (cVar1 == '\0') {

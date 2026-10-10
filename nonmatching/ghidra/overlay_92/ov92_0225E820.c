@@ -61,7 +61,7 @@ void ov92_0225E820(int param_1,undefined4 param_2,undefined4 param_3,undefined4 
   undefined4 uStack_44;
   undefined4 uStack_20;
   undefined4 uStack_18;
-  
+
   uVar3 = *(undefined4 *)(*(int *)(param_1 + 0x14) + 8);
   uVar2 = *(undefined4 *)(*(int *)(param_1 + 0x14) + 0xc);
   iStack_50 = 0;

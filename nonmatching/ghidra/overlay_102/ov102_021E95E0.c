@@ -60,7 +60,7 @@ void ov102_021E95E0(int *param_1,undefined4 param_2)
   undefined4 uStack_24;
   undefined4 uStack_20;
   undefined4 uStack_1c;
-  
+
   iVar2 = *param_1;
   uStack_1c = iVar2 + 0x198;
   iVar4 = iVar2 + 0x150;

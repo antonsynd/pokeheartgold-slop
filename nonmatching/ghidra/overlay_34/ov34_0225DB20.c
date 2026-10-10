@@ -71,7 +71,7 @@ void ov34_0225DB20(int param_1)
   undefined4 uStack_20;
   undefined4 uStack_1c;
   undefined4 uStack_18;
-  
+
   CreateSpriteResourcesHeader
             (param_1 + 0x174,999,999,999,999,0xffffffff,0xffffffff,0,0,
              *(undefined4 *)(param_1 + 0x154),*(undefined4 *)(param_1 + 0x158),

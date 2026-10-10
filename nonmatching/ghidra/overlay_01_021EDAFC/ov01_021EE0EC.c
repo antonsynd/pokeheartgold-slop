@@ -59,7 +59,7 @@ void ov01_021EE0EC(undefined *param_1,undefined *param_2,undefined *param_3)
   uint uVar1;
   undefined *puVar2;
   byte bVar3;
-  
+
   uVar1 = ov01_021EE2E4();
   if ((uVar1 & 7) == 0) {
     bVar3 = (byte)(uVar1 >> 3);

@@ -58,7 +58,7 @@ undefined4 ov48_02258F64(short *param_1)
 
 {
   int iVar1;
-  
+
   switch(*param_1) {
   case 0:
     iVar1 = ov48_0225909C();

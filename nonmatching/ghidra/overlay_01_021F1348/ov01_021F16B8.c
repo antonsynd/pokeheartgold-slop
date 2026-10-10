@@ -52,7 +52,7 @@ void ov01_021F16B8(int param_1)
 
 {
   int iVar1;
-  
+
   iVar1 = *(int *)(param_1 + 0x20);
   if (iVar1 != 0) {
     FUN_02023874(*(undefined4 *)(iVar1 + 0xc));

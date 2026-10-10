@@ -48,7 +48,7 @@ undefined4 FrtCmd_204(int *param_1)
 
 {
   ushort *puVar1;
-  
+
   puVar1 = (ushort *)FrontierScript_ReadVarPtr();
   *puVar1 = (ushort)*(byte *)(*param_1 + 0x39);
   return 1;

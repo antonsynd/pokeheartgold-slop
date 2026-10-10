@@ -55,7 +55,7 @@ void ov48_0225A894(int param_1,int param_2,undefined2 *param_3,undefined2 param_
   int iVar3;
   int iVar4;
   int iStack_1c;
-  
+
   func_0x020e5b44(param_1,0,0x28);
   *(undefined2 *)(param_1 + 2) = param_4;
   if (param_3[2] != 0) {

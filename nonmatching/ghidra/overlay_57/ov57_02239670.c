@@ -52,7 +52,7 @@ void ov57_02239670(undefined4 param_1,undefined4 param_2,uint param_3,undefined4
 
 {
   undefined4 uVar1;
-  
+
   LoadUserFrameGfx2(param_1,4,1,0xf,param_3 & 0xff,0x34);
   uVar1 = sub_0200E640(param_3);
   PaletteData_LoadNarc(param_2,0x26,uVar1,0x34,1,0x20,0xc0,param_4);

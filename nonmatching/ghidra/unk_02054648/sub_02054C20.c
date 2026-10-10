@@ -56,7 +56,7 @@ undefined4 sub_02054C20(int param_1,int param_2,undefined4 *param_3,undefined4 *
   int iVar4;
   int iStack_1c;
   undefined4 *puStack_18;
-  
+
   bVar2 = 0;
   puStack_18 = param_4;
   do {

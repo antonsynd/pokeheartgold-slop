@@ -48,7 +48,7 @@ void ov74_02231790(undefined4 *param_1)
 
 {
   undefined4 uVar1;
-  
+
   uVar1 = PmAgbCartridge_GetVersionInternal();
   switch(uVar1) {
   case 0:

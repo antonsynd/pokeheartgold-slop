@@ -50,7 +50,7 @@ int ov70_02238398(undefined4 param_1)
 {
   int iVar1;
   int iVar2;
-  
+
   switch(param_1) {
   case 0:
   case 1:

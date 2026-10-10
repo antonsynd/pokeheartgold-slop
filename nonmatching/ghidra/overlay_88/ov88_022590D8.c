@@ -49,7 +49,7 @@ undefined4 ov88_022590D8(int param_1,undefined4 param_2)
 {
   int iVar1;
   undefined4 uVar2;
-  
+
   uVar2 = 0;
   iVar1 = func_0x0222dd38(param_2);
   if (iVar1 != 0) {

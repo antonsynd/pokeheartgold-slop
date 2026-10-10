@@ -52,7 +52,7 @@ void sub_020378E4(int param_1)
   int iVar1;
   int iVar2;
   int iVar3;
-  
+
   sub_0203993C();
   iVar1 = sub_02034044();
   if (((iVar1 != 0) && (*(int *)(iRam021d4148 + 0x664) != param_1)) &&

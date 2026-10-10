@@ -49,7 +49,7 @@ undefined4 ov99_021E71E4(undefined4 param_1,uint param_2)
 
 {
   undefined4 uVar1;
-  
+
   if ((param_2 != 0) && (param_2 < 0x1ee)) {
     uVar1 = ov99_021E71DC();
     uVar1 = Pokedex_GetSeenFormByIdx(uVar1,param_2,0);

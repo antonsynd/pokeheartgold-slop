@@ -52,7 +52,7 @@ void ov96_021ED17C(int *param_1,int param_2)
   int *piVar2;
   int iVar3;
   int iStack_1c;
-  
+
   iVar3 = 0;
   if (param_1 == (int *)0x0) {
     GF_AssertFail();

@@ -59,7 +59,7 @@ void ov96_021FC6EC(int param_1,uint param_2,int param_3,undefined4 param_4)
   int iStack_20;
   undefined4 uStack_1c;
   undefined4 uStack_18;
-  
+
   uStack_18 = param_4;
   if (2 < param_2) {
     GF_AssertFail();

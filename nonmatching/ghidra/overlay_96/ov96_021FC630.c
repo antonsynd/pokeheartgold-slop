@@ -53,7 +53,7 @@ void ov96_021FC630(int param_1,undefined4 param_2,undefined4 param_3)
   uint uVar2;
   int iVar3;
   undefined4 uStack_1c;
-  
+
   uStack_1c = 0;
   do {
     uVar2 = 0;

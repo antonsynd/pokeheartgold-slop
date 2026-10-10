@@ -85,7 +85,7 @@ void ov119_0225FF9C(undefined4 param_1,int *param_2,undefined4 param_3,undefined
   undefined4 uStack_28;
   undefined1 auStack_24 [12];
   undefined4 uStack_18;
-  
+
   piVar2 = (int *)param_2[3];
   uStack_18 = param_4;
   switch(*param_2) {

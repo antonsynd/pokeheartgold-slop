@@ -51,7 +51,7 @@ void ov83_0224140C(int param_1,undefined4 param_2,int param_3,int param_4)
   int iVar2;
   int iVar3;
   undefined2 *puVar4;
-  
+
   *(char *)(param_4 + 0xf) = *(char *)(param_4 + 0xf) + '\x01';
   iVar2 = sub_0203769C();
   if (param_1 != iVar2) {

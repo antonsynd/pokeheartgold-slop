@@ -58,7 +58,7 @@ int ov45_0222EAD4(int param_1,undefined4 param_2,undefined4 param_3,undefined4 p
   uint uStack_20;
   int iStack_1c;
   undefined4 uStack_18;
-  
+
   uVar1 = 0xffffffff;
   iStack_24 = -1;
   iVar4 = 0xfffffff;

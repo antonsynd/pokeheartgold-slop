@@ -56,7 +56,7 @@ void ov91_0225E2E4(int param_1,undefined4 *param_2,int param_3)
   int iVar4;
   undefined4 *puVar5;
   undefined4 *puVar6;
-  
+
   iVar2 = 0;
   iVar4 = param_1;
   do {

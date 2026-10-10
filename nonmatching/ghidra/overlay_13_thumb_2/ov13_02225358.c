@@ -71,7 +71,7 @@ undefined4 ov13_02225358(byte *param_1,undefined1 *param_2,uint param_3,byte *pa
   byte local_160 [8];
   uint auStack_158 [80];
   byte *pbStack_18;
-  
+
   local_178[0] = 0xa6;
   local_178[1] = 0xa6;
   local_178[2] = 0xa6;

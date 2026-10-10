@@ -61,7 +61,7 @@ MapObjectMovementCmd101_Step0
   undefined4 uStack_14;
   undefined4 uStack_10;
   undefined4 uStack_c;
-  
+
   uStack_c = param_4;
   sub_0205F3C0(param_1,4);
   iVar1 = sub_0206642C(param_1);

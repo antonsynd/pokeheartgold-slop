@@ -59,7 +59,7 @@ void ov82_0223F134(int param_1,undefined4 param_2)
   int iStack_20;
   int iStack_1c;
   int iStack_18;
-  
+
   iStack_18 = 0;
   iStack_1c = 0;
   iStack_20 = 4;

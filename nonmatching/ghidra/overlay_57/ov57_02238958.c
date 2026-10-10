@@ -56,7 +56,7 @@ void ov57_02238958(int param_1)
   int iVar3;
   undefined4 uVar4;
   undefined4 uVar5;
-  
+
   uVar5 = *(undefined4 *)(param_1 + 0xdc);
   uVar4 = *(undefined4 *)(param_1 + 0xe0);
   uVar1 = *(undefined4 *)(param_1 + 0xe8);

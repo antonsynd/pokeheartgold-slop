@@ -53,7 +53,7 @@ void ov91_0225E40C(int param_1)
   int iVar2;
   int iVar3;
   int iVar4;
-  
+
   iVar4 = 0;
   iVar2 = param_1 + 0x4c;
   iVar3 = param_1;

@@ -53,7 +53,7 @@ void ov103_021EDC00(int param_1,undefined4 param_2,undefined4 param_3,undefined4
   undefined2 uVar1;
   undefined4 uVar2;
   int iVar3;
-  
+
   uVar2 = Save_Bag_Get(**(undefined4 **)(param_1 + 8));
   Mail_GetType(*(undefined4 *)
                 (*(int *)(param_1 + 0xc) + (uint)*(byte *)(param_1 + 0x1f) * 4 + 0x27c));

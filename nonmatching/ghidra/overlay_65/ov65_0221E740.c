@@ -63,7 +63,7 @@ undefined4 ov65_0221E740(int param_1,undefined4 param_2,undefined4 param_3,undef
   undefined4 uVar2;
   int iVar3;
   int iVar4;
-  
+
   *(undefined4 *)(param_1 + 0x3678) = 0xffffffff;
   iVar4 = 0;
   iVar1 = sub_02037454();

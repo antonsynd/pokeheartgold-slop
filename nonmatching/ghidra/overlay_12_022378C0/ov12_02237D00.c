@@ -78,7 +78,7 @@ void ov12_02237D00(int param_1)
   undefined4 auStack_64 [7];
   undefined1 auStack_48 [28];
   undefined1 auStack_2c [28];
-  
+
   puVar6 = (undefined4 *)&ov12_0226C120;
   *(byte *)(param_1 + 0x23ff) = *(byte *)(param_1 + 0x23ff) & 0xfe | 1;
   puVar5 = auStack_64;

@@ -58,7 +58,7 @@ void ov75_02248034(int param_1)
   undefined4 uVar2;
   int iVar3;
   int iVar4;
-  
+
   FillWindowPixelBuffer(param_1 + 0xc4,0xf);
   uVar1 = NewString_ReadMsgData(*(undefined4 *)(param_1 + 0x34),0x2c);
   uVar2 = func_0x02026800();

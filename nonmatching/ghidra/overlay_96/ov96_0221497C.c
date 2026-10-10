@@ -57,7 +57,7 @@ void ov96_0221497C(int param_1,undefined4 param_2,undefined4 param_3,undefined4 
   uint uVar3;
   char acStack_1c [4];
   undefined4 uStack_18;
-  
+
   uStack_18 = param_4;
   uVar1 = func_0x020f2998(param_2,10);
   func_0x020f2998(uVar1,5);

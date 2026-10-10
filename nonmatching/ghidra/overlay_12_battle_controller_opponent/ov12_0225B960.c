@@ -93,7 +93,7 @@ void ov12_0225B960(undefined4 param_1,undefined4 *param_2,undefined4 param_3,und
   uint auStack_74 [3];
   undefined1 auStack_68 [88];
   undefined4 uStack_10;
-  
+
   uStack_10 = param_4;
   switch(*(undefined1 *)((int)param_2 + 0x83)) {
   case 0:

@@ -50,7 +50,7 @@ void ov13_02226CBC(void)
 {
   undefined4 in_r3;
   longlong lVar1;
-  
+
   lVar1 = func_0x020d34b0();
   func_0x020f2900((int)(lVar1 << 6),(int)((ulonglong)(lVar1 << 6) >> 0x20),0x82ea,0,in_r3);
   return;

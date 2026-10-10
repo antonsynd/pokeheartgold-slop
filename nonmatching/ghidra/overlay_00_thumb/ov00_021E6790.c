@@ -54,7 +54,7 @@ undefined4 ov00_021E6790(void)
   int iVar2;
   uint uVar3;
   undefined4 uVar4;
-  
+
   uVar4 = 0;
   uVar3 = 0;
   if (0 < *(int *)(iRam0221a680 + 0x107c)) {

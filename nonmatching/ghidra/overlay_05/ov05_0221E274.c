@@ -61,7 +61,7 @@ void ov05_0221E274(int param_1,undefined4 param_2,undefined4 param_3,undefined4 
   undefined4 uStack_18;
   undefined4 uStack_14;
   undefined4 uStack_10;
-  
+
   uStack_28 = 9;
   uStack_24 = 4;
   uStack_20 = 4;

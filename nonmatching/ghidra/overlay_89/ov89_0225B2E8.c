@@ -60,7 +60,7 @@ undefined4 ov89_0225B2E8(undefined4 param_1,int param_2)
   undefined4 uStack_20;
   int iStack_1c;
   int iStack_18;
-  
+
   piVar4 = (int *)(param_2 + 0x94);
   switch(*(undefined4 *)(param_2 + 0x94)) {
   case 0:

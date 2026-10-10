@@ -52,7 +52,7 @@ void ov01_021FF35C(undefined4 param_1,int param_2)
 {
   int iVar1;
   undefined1 auStack_18 [12];
-  
+
   iVar1 = sub_0205F0F8(*(undefined4 *)(param_2 + 0x30),*(undefined4 *)(param_2 + 4),
                        *(undefined4 *)(param_2 + 8),*(undefined4 *)(param_2 + 0xc));
   if (iVar1 == 0) {

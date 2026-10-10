@@ -54,7 +54,7 @@ void sub_02035F4C(void)
 {
   bool bVar1;
   bool bVar2;
-  
+
   sub_0203769C();
   bVar1 = *(char *)(iRam021d4148 + 0x6ad) == '\x02';
   if (bVar1) {

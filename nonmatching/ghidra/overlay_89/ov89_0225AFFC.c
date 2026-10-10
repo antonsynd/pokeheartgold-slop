@@ -49,7 +49,7 @@ undefined1 ov89_0225AFFC(int param_1)
 
 {
   int iVar1;
-  
+
   iVar1 = GetNatureFromPersonality(*(undefined4 *)(param_1 + 4));
   return (&ov89_0225CE34)[iVar1];
 }

@@ -50,7 +50,7 @@ void ov01_021F06EC(int param_1,undefined4 *param_2)
 
 {
   int iVar1;
-  
+
   SpriteTransfer_DeleteCharTransferTask(*param_2);
   SpriteTransfer_DeletePlttTransferTask(param_2[1]);
   iVar1 = 0;

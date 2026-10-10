@@ -49,7 +49,7 @@ void ov18_021EE388(int param_1)
 {
   int iVar1;
   uint uVar2;
-  
+
   uVar2 = 0;
   iVar1 = param_1 + 0xc;
   do {

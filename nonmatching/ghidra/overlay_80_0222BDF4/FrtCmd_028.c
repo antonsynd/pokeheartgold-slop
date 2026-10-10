@@ -52,7 +52,7 @@ undefined4 FrtCmd_028(int *param_1,undefined4 param_2,undefined4 param_3,undefin
   ushort uVar2;
   ushort uVar3;
   int iVar4;
-  
+
   iVar4 = *param_1;
   uVar1 = FrontierScriptContext_ReadHalfWord((undefined *)param_1);
   uVar2 = FrontierScriptContext_ReadHalfWord((undefined *)param_1);

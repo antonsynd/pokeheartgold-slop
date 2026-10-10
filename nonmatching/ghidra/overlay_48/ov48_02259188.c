@@ -54,7 +54,7 @@ undefined4 ov48_02259188(int param_1,undefined4 *param_2)
   uint uVar1;
   uint uVar2;
   undefined4 uVar3;
-  
+
   uVar1 = ov48_022591D8();
   uVar2 = ov48_02259BBC(param_1 + 0x224);
   if (uVar2 <= uVar1) {

@@ -52,7 +52,7 @@ void ov49_0225C480(undefined4 param_1,undefined4 param_2,undefined4 param_3)
 {
   undefined4 uVar1;
   undefined4 uVar2;
-  
+
   uVar1 = func_0x0222aa84(param_3);
   uVar2 = func_0x0222aaa8(param_3);
   ov49_0225B408(param_2,uVar1,0);

@@ -50,7 +50,7 @@ undefined4 ov96_02215CD0(void)
 
 {
   int iVar1;
-  
+
   iVar1 = PokeathlonCourse_GetHeapAllocPtr4();
   if (iVar1 == 0) {
     GF_AssertFail();

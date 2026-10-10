@@ -68,7 +68,7 @@ void ov80_02234588(int param_1,int param_2)
   uint uVar6;
   undefined2 auStack_20 [4];
   undefined1 auStack_18 [4];
-  
+
   uVar1 = func_0x02030fa0(*(undefined4 *)(param_1 + 4));
   BattleArcade_GetOpponentMonCount(*(undefined1 *)(param_1 + 0x10),1);
   auStack_18[0] = *(undefined1 *)(param_1 + 0x10);

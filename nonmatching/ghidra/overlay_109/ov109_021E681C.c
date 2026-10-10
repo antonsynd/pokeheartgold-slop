@@ -48,7 +48,7 @@ int ov109_021E681C(void)
 
 {
   int iVar1;
-  
+
   iVar1 = ov109_021E7640();
   if (iVar1 < 0) {
     iVar1 = 4;

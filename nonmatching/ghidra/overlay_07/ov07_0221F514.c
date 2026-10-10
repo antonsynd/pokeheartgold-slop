@@ -51,7 +51,7 @@ void ov07_0221F514(int param_1)
   undefined4 uVar2;
   int iVar3;
   int iVar4;
-  
+
   iVar1 = *(int *)(param_1 + 0x18);
   *(int **)(param_1 + 0x18) = (int *)(iVar1 + 4);
   iVar4 = *(int *)(iVar1 + 4);

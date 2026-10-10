@@ -55,7 +55,7 @@ void sub_020596A8(int param_1,undefined4 param_2)
   undefined4 uVar3;
   int iVar4;
   int iVar5;
-  
+
   uVar1 = SaveArray_Party_Get(*(undefined4 *)(*(int *)(param_1 + 0x24) + 0xc));
   iVar4 = *(int *)(param_1 + 0x4c);
   iVar2 = sub_02070D90();

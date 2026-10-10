@@ -58,7 +58,7 @@ void ov28_0225D7E0(int param_1)
   int iVar2;
   undefined *puVar3;
   uint uStack_18;
-  
+
   FontID_Alloc(4,8);
   uStack_18 = 0;
   puVar3 = &ov28_0225EB52;

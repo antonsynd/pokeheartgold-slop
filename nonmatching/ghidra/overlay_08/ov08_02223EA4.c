@@ -67,7 +67,7 @@ void ov08_02223EA4(undefined4 *param_1,int param_2)
   undefined4 uStack_20;
   undefined4 uStack_14;
   undefined4 uStack_10;
-  
+
   uVar1 = func_0x0223a8e4(*(undefined4 *)*param_1);
   uStack_40 = 0;
   uStack_3e = 0;

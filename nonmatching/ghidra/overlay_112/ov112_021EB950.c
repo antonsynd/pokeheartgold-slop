@@ -54,7 +54,7 @@ undefined4 ov112_021EB950(int param_1,undefined4 param_2)
 {
   undefined1 auStack_10 [2];
   short sStack_e;
-  
+
   sub_02032688(*(undefined4 *)(param_1 + 0x1e440),&sStack_e,auStack_10);
   if (sStack_e != 2) {
     return 0;

@@ -64,7 +64,7 @@ undefined4 ov56_021E6228(int param_1)
 
 {
   int iVar1;
-  
+
   switch(*(undefined4 *)(param_1 + 4)) {
   case 0:
     Main_SetVBlankIntrCB(0,0);

@@ -48,7 +48,7 @@ int ov112_021E9464(void)
 
 {
   int iVar1;
-  
+
   iVar1 = Boxmon_GetIconNaix();
   return iVar1 + -7;
 }

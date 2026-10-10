@@ -48,7 +48,7 @@ int ov07_0221DD8C(int param_1,int param_2)
 {
   int iVar1;
   uint uVar2;
-  
+
   uVar2 = 0;
   do {
     iVar1 = *(int *)(param_1 + uVar2 * 4);

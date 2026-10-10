@@ -52,7 +52,7 @@ void ov92_0225EBE0(int param_1)
   int iVar2;
   int iVar3;
   undefined4 uStack_1c;
-  
+
   *(undefined4 *)(param_1 + 0x1fc8) = 0;
   *(undefined4 *)(param_1 + 0x1fcc) = 0x64000;
   *(undefined4 *)(param_1 + 0x1fd0) = 0;

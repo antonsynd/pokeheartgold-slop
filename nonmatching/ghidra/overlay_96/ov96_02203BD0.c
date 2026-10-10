@@ -58,7 +58,7 @@ void ov96_02203BD0(int param_1,int param_2)
   uint extraout_r1_01;
   int extraout_r1_02;
   char acStack_1c [8];
-  
+
   uVar3 = func_0x020f2998(param_2,100);
   uVar3 = uVar3 & 0xffff;
   func_0x020f2998(uVar3,5);

@@ -60,7 +60,7 @@ undefined4 ov70_0223C008(int param_1,undefined4 param_2,undefined4 param_3,undef
   char cStack_12;
   undefined1 uStack_11;
   undefined4 uStack_10;
-  
+
   cVar2 = '\x03';
   uStack_10 = param_4;
   iVar1 = ov70_0223BFA8(param_1,1);

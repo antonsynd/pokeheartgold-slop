@@ -51,7 +51,7 @@ void ov108_021E8C64(int param_1,undefined4 param_2,undefined4 param_3,uint param
   int iVar1;
   int iVar2;
   uint uStack_10;
-  
+
   uStack_10 = param_4;
   func_0x020d4994(&uStack_10,0,4);
   iVar1 = (uint)*(byte *)(param_1 + 0x432) * 5;

@@ -51,7 +51,7 @@ void ov07_0221F880(int param_1)
   int iVar1;
   undefined4 uVar2;
   undefined4 *puVar3;
-  
+
   iVar1 = IsCryFinished();
   if (iVar1 == 0) {
     iVar1 = *(int *)(param_1 + 0x18);

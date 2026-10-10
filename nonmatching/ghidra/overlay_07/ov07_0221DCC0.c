@@ -50,7 +50,7 @@ void ov07_0221DCC0(int param_1)
   int iVar1;
   undefined4 uVar2;
   undefined4 *puVar3;
-  
+
   iVar1 = *(int *)(param_1 + 0x18);
   puVar3 = (undefined4 *)(iVar1 + 4);
   *(undefined4 **)(param_1 + 0x18) = puVar3;

@@ -52,7 +52,7 @@ undefined4 ov65_0221DF1C(int param_1)
 
 {
   int iVar1;
-  
+
   if ((uRam021d1154 & 2) == 0) {
     ov65_0221DBF4(param_1 + 0x158);
     if (((uRam021d1154 & 1) != 0) && (*(int *)(param_1 + 0x158) == 0)) {

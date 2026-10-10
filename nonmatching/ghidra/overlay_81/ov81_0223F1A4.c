@@ -64,7 +64,7 @@ undefined4 ov81_0223F1A4(int param_1)
   undefined1 uVar2;
   undefined4 uVar3;
   int iVar4;
-  
+
   uVar3 = func_0x02236dd4(*(undefined1 *)(param_1 + 9));
   bVar1 = *(byte *)(param_1 + 8);
   if (bVar1 < 8) {

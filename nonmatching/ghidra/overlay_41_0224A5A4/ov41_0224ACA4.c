@@ -60,7 +60,7 @@ void ov41_0224ACA4(undefined4 param_1,undefined4 param_2,undefined4 param_3,unde
   undefined4 uStack_10;
   undefined4 uStack_c;
   undefined4 uStack_8;
-  
+
   uStack_34 = 0x1a;
   uStack_30 = 0xe0;
   uStack_2c = 0xe1;

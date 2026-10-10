@@ -57,7 +57,7 @@ void ov85_021E7798(int param_1)
   undefined4 uStack_24;
   undefined4 uStack_20;
   undefined4 uStack_18;
-  
+
   uStack_18 = 0;
   iVar1 = *(int *)(param_1 + 0x30);
   iVar2 = param_1 + 400;

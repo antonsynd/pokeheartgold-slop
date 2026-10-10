@@ -64,7 +64,7 @@ void sub_020161CC(int param_1,undefined4 param_2,undefined4 param_3,undefined4 p
   int iVar4;
   int iVar5;
   int iVar6;
-  
+
   uRam04000444 = 0;
   uRam040004c0 = *(ushort *)(param_1 + 0x3c) | 0x7fff8000;
   uRam040004c4 = 0x4210;

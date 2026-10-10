@@ -49,7 +49,7 @@ undefined4 ov112_021EF9D4(int param_1)
 
 {
   undefined4 uVar1;
-  
+
   if (*(uint *)(param_1 + 0x1ec78) != 0) {
     BufferPokewalkerCourseName
               (*(undefined4 *)(param_1 + 0x1e448),4,*(uint *)(param_1 + 0x1ec78) & 0xff);

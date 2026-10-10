@@ -51,7 +51,7 @@ undefined4 ov49_02266AF0(undefined4 param_1,int param_2)
 {
   int iVar1;
   int iVar2;
-  
+
   iVar1 = ov49_02258F70(*(undefined4 *)(param_2 + 8));
   if (iVar1 == 1) {
     return 0;

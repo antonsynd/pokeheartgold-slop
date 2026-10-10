@@ -58,7 +58,7 @@ undefined4 ov14_021E690C(int param_1,uint param_2,uint param_3,undefined4 param_
   int iVar3;
   int iVar4;
   undefined4 uVar5;
-  
+
   ov14_021E6070(param_1,param_3,0xac,0,param_4);
   if ((param_3 & 0x80) == 0) {
     uVar2 = (uint)*(byte *)(param_1 + 0x1f);

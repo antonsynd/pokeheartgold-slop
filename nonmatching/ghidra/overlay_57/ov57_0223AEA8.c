@@ -70,7 +70,7 @@ void ov57_0223AEA8(uint param_1,int param_2,int *param_3)
   undefined4 uVar2;
   int extraout_r1;
   uint uVar3;
-  
+
   if (param_3[0x36] != 0) {
     switch(param_1) {
     case 0:

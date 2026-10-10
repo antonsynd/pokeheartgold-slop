@@ -57,7 +57,7 @@ void ov80_022357B4(int param_1,undefined4 param_2)
   int iVar7;
   ushort *puVar8;
   ushort auStack_18 [4];
-  
+
   switch(*(undefined1 *)(param_1 + 0xf)) {
   default:
     ov80_02236450(param_1,param_1 + 0x78,

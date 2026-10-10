@@ -63,7 +63,7 @@ sub_02054B74(int param_1,int param_2,uint param_3,undefined4 param_4,undefined4 
   uint uVar6;
   int iStack_24;
   undefined1 auStack_20 [12];
-  
+
   bVar2 = 0;
   do {
     func_0x021f630c(bVar2,*(undefined4 *)(param_1 + 0x2c),&iStack_24);

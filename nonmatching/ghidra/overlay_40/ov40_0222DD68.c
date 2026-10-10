@@ -49,7 +49,7 @@ void ov40_0222DD68(undefined4 param_1,undefined4 param_2,uint *param_3,undefined
 {
   uint uStack_10;
   undefined4 uStack_c;
-  
+
   uStack_c = param_4;
   func_0x02007ac4(0x4a,0xd,0,param_1,0,&uStack_10);
   *param_3 = uStack_10 >> 1;

@@ -53,7 +53,7 @@ void ov71_0224A5C4(int param_1,int *param_2,undefined4 param_3,undefined4 param_
 
 {
   int iVar1;
-  
+
   *param_2 = param_1;
   param_2[3] = *(int *)(param_1 + 0x2c);
   param_2[2] = *(int *)(param_1 + 0x28);

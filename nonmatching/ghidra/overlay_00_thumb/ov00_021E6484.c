@@ -57,7 +57,7 @@ void ov00_021E6484(undefined4 param_1,byte *param_2,int param_3)
   int iVar2;
   int iVar3;
   uint uVar4;
-  
+
   bVar1 = *param_2;
   uVar4 = (uint)param_2[2] << 0x10 | (uint)param_2[3] << 0x18 | (uint)param_2[1] << 8 | (uint)bVar1;
   *(undefined4 *)(iRam0221a680 + 0x10a8) = 1;

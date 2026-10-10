@@ -50,7 +50,7 @@ void ov96_021E98D0(undefined4 param_1,undefined4 param_2,undefined4 param_3,unde
 
 {
   int iVar1;
-  
+
   iVar1 = PokeathlonCourse_GetDataCopyArea(param_4);
   func_0x020e5ad8(iVar1 + 0xf0,param_3,param_2);
   PokeathlonCourse_SetStateField07(param_4,0x16);

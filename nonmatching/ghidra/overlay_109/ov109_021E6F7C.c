@@ -50,7 +50,7 @@ void ov109_021E6F7C(int param_1,int param_2,int param_3,undefined4 param_4)
 {
   ushort *puVar1;
   int iVar2;
-  
+
   BgClearTilemapBufferAndCommit(*(undefined4 *)(param_1 + 0x14),2);
   if (param_3 != 0) {
     puVar1 = *(ushort **)(param_1 + 0xbc);

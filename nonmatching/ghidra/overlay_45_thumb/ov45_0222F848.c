@@ -50,7 +50,7 @@ void ov45_0222F848(undefined4 param_1,int param_2,undefined4 param_3,undefined4 
 
 {
   undefined4 uVar1;
-  
+
   uVar1 = Heap_Alloc(param_3,param_2 * 0x14,param_3,param_4,param_4);
   *(undefined4 *)(iRam022577c0 + 0x24) = uVar1;
   func_0x020e5b44(*(undefined4 *)(iRam022577c0 + 0x24),0,param_2 * 0x14);

@@ -61,7 +61,7 @@ void ov12_0225E4EC(undefined4 param_1,undefined4 *param_2,undefined4 param_3,und
   uint uVar4;
   byte abStack_18 [4];
   undefined4 uStack_14;
-  
+
   uStack_14 = param_4;
   iVar2 = ov12_0223BE0C(*param_2,*(undefined1 *)((int)param_2 + 0x1d),abStack_18);
   if (iVar2 == 1) {

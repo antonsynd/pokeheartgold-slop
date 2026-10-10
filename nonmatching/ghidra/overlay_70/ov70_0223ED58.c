@@ -51,7 +51,7 @@ ov70_0223ED58(undefined4 param_1,undefined4 param_2,undefined4 param_3,undefined
 
 {
   int iVar1;
-  
+
   iVar1 = IsPaletteFadeFinished();
   if (iVar1 != 0) {
     ov70_0223E8E8(param_1,9,1,0,0xf0f,param_4);

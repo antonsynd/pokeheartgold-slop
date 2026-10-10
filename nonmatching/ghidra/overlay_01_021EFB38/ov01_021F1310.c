@@ -52,7 +52,7 @@ void ov01_021F1310(undefined4 *param_1,uint param_2)
   uint uVar2;
   uint uVar3;
   uint uVar4;
-  
+
   puVar1 = (uint *)sub_02014BF8((undefined *)*param_1);
   uVar4 = 0;
   do {

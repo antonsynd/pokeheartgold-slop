@@ -78,7 +78,7 @@ void ov40_0222E690(undefined4 *param_1,int param_2)
   undefined4 uStack_20;
   undefined4 uStack_1c;
   undefined4 uStack_18;
-  
+
   uStack_50 = 0xe;
   uVar5 = 0xd;
   iVar1 = sub_020315D0(*param_1);

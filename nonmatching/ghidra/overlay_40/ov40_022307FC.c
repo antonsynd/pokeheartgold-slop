@@ -52,7 +52,7 @@ void ov40_022307FC(undefined *param_1,int param_2)
 
 {
   int iVar1;
-  
+
   *(int *)(param_2 + 0x4160) = *(int *)(param_2 + 0x4160) + 1;
   if (6 < *(int *)(param_2 + 0x4160)) {
     SysTask_Destroy(param_1);

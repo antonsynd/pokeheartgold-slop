@@ -50,7 +50,7 @@ uint bn_add_words(uint *param_1,int *param_2,int *param_3,int param_4)
   uint uVar2;
   uint uVar3;
   bool bVar4;
-  
+
   if (param_4 < 1) {
     return 0;
   }

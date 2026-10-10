@@ -55,7 +55,7 @@ void ov01_021F80C4(undefined4 param_1,undefined4 param_2,char *param_3,int param
   undefined4 uVar1;
   int iVar2;
   int aiStack_30 [8];
-  
+
   aiStack_30[7] = param_4;
   if (param_4 == *param_3) {
     if (param_3[2] == '\t') {

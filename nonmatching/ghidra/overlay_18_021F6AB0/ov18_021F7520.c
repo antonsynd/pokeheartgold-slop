@@ -57,7 +57,7 @@ int ov18_021F7520(int *param_1)
 {
   int iVar1;
   uint uVar2;
-  
+
   iVar1 = func_0x02019f74(param_1[0x619]);
   MenuInputStateMgr_SetState(*(undefined4 *)(*param_1 + 0xc),0);
   if ((uRam021d1154 & 8) != 0) {

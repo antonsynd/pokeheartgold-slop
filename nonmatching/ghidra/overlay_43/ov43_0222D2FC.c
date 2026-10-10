@@ -52,7 +52,7 @@ undefined4 ov43_0222D2FC(undefined4 param_1,undefined4 *param_2,undefined4 param
 
 {
   undefined4 uVar1;
-  
+
   if ((uRam021d1154 & 0xcf3) != 0) {
     *param_2 = 0;
   }

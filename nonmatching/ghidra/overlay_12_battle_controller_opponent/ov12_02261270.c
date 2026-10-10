@@ -47,7 +47,7 @@ int ov12_02261270(int param_1)
 
 {
   int iVar1;
-  
+
   iVar1 = *(int *)(param_1 + 0x20);
   if (iVar1 == 0) {
     iVar1 = *(int *)(param_1 + 0x1c);

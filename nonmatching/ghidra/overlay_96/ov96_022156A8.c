@@ -49,7 +49,7 @@ undefined4 ov96_022156A8(int param_1,int param_2,int param_3)
   int iVar1;
   int iVar2;
   uint uVar3;
-  
+
   uVar3 = 0;
   while( true ) {
     iVar1 = param_1 - (uint)*(ushort *)(param_3 + uVar3 * 4);

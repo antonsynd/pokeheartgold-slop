@@ -53,7 +53,7 @@ int ov92_0225DFA4(int param_1,int param_2)
   uint *puVar3;
   int iVar4;
   uint auStack_30 [8];
-  
+
   puVar3 = auStack_30;
   auStack_30[0] = 0;
   auStack_30[1] = 2;

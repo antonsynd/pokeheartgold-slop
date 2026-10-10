@@ -57,7 +57,7 @@ undefined4 ov93_0225DF38(int param_1,int param_2)
   int iVar2;
   int iVar3;
   int iVar4;
-  
+
   if (param_2 < 0x4b1) {
     if (param_2 < 3) {
       if (param_2 < 2) {

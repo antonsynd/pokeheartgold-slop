@@ -50,7 +50,7 @@ int ov45_0222E804(int param_1)
 
 {
   int iVar1;
-  
+
   iVar1 = ov45_0222E810(param_1,0);
   return iVar1;
 }

@@ -54,7 +54,7 @@ void ov41_02249FFC(undefined4 param_1,undefined4 param_2,undefined4 param_3,unde
   undefined4 uVar2;
   int iVar3;
   undefined4 *puVar4;
-  
+
   uVar2 = param_4;
   puVar1 = (undefined4 *)Heap_Alloc(param_6,0x14);
   iVar3 = 0x14;

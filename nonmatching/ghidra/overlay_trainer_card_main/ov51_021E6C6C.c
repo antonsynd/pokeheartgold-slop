@@ -50,7 +50,7 @@ void ov51_021E6C6C(undefined4 *param_1,undefined4 param_2,undefined4 param_3,und
 
 {
   ushort *puVar1;
-  
+
   BG_LoadCharTilesData
             (*param_1,7,*(undefined4 *)(param_1[0xc3c] + 0x14),
              *(undefined4 *)(param_1[0xc3c] + 0x10),0);

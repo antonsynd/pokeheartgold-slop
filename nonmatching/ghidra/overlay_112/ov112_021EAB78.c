@@ -53,7 +53,7 @@ void ov112_021EAB78(int param_1,int param_2,undefined4 param_3,undefined4 param_
 {
   undefined4 uVar1;
   undefined4 uVar2;
-  
+
   uVar2 = param_4;
   uVar1 = GetMonIconNaixEx(param_3,0,param_4);
   uVar1 = GfGfxLoader_GetCharData(0x14,uVar1,0,param_1 + 0x1ea64,0x9a);

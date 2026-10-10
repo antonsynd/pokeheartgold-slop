@@ -52,7 +52,7 @@ undefined4 ov89_0225B010(undefined4 param_1,int param_2)
 
 {
   undefined4 uVar1;
-  
+
   *(int *)(param_2 + 0x94) = *(int *)(param_2 + 0x94) + 1;
   if (*(int *)(param_2 + 0x94) == 2) {
     ov89_0225ADA4(param_2 + 0x1c,param_2,param_2 + 0x98,0);

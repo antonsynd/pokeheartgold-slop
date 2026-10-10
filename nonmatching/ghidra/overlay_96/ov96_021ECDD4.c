@@ -47,7 +47,7 @@ void ov96_021ECDD4(int param_1,int param_2)
 
 {
   uint uVar1;
-  
+
   uVar1 = *(int *)(param_1 + 0x10) + param_2;
   if (999 < uVar1) {
     uVar1 = 999;

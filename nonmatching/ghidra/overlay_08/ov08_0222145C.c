@@ -53,7 +53,7 @@ void ov08_0222145C(undefined4 *param_1)
   undefined1 uVar1;
   int iVar2;
   uint uVar3;
-  
+
   uVar3 = 0;
   iVar2 = Party_GetCount(*(undefined4 *)*param_1);
   if (0 < iVar2) {

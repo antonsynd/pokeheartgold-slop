@@ -49,7 +49,7 @@ void sub_0205A498(undefined4 param_1,undefined4 param_2,int param_3)
 
 {
   uint uVar1;
-  
+
   uVar1 = sub_0203769C();
   sub_02034818(uVar1 ^ 1);
   *(undefined2 *)(param_3 + 0x66a) = 1;

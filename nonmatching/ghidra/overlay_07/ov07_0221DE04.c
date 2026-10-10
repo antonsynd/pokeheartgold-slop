@@ -55,7 +55,7 @@ void ov07_0221DE04(undefined4 param_1,undefined4 *param_2,uint param_3,undefined
 {
   undefined4 uVar1;
   int iVar2;
-  
+
   uVar1 = ov07_0221FB7C(param_4,0);
   GfGfxLoader_LoadCharData(7,uVar1,param_2[0x31],param_3,0,0,1,*param_2);
   uVar1 = ov07_0221FB7C(param_4,1);

@@ -52,7 +52,7 @@ void ov96_0220A660(undefined4 param_1,int param_2)
 {
   undefined4 uVar1;
   int iVar2;
-  
+
   if (*(char *)(param_2 + 0x26e) == '\0') {
     iVar2 = -1;
   }

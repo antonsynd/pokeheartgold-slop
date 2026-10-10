@@ -53,7 +53,7 @@ undefined4 ov00_021E67E0(int param_1)
   int iVar1;
   uint uVar2;
   undefined4 uVar3;
-  
+
   if (((puRam0221a680[0x41e] == 0) && (iVar1 = ov00_021E6790(), iVar1 != 0)) &&
      (uVar2 = func_0x021ee4fc(), (uVar2 & 0xfffe) != 0)) {
     puRam0221a680[0x41e] = 1;

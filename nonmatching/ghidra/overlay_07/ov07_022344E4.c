@@ -48,7 +48,7 @@ int ov07_022344E4(int param_1,short param_2,int param_3,short param_4)
 
 {
   int iVar1;
-  
+
   iVar1 = (param_1 - param_3) * 0x10000 >> 0x10;
   iVar1 = func_0x020ccbec(((int)(short)-(param_2 - param_4) * (int)(short)-(param_2 - param_4) +
                           iVar1 * iVar1) * 0x1000);

@@ -51,7 +51,7 @@ void sub_0208B48C(int param_1)
 {
   byte bVar1;
   char cVar2;
-  
+
   bVar1 = *(byte *)(param_1 + 0x243) >> 2;
   if (bVar1 == 0) {
     cVar2 = '\x19';

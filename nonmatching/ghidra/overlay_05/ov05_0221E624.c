@@ -59,7 +59,7 @@ void ov05_0221E624(int *param_1,undefined4 param_2,undefined4 param_3,undefined4
   undefined4 uVar2;
   undefined4 uVar3;
   undefined4 uStack_20;
-  
+
   if (param_6 < 3) {
     uStack_20 = Party_GetMonByIndex(*(undefined4 *)(*param_1 + 4),param_6);
   }

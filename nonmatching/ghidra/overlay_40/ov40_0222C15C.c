@@ -56,7 +56,7 @@ int ov40_0222C15C(undefined4 *param_1)
   int iVar2;
   uint uVar3;
   int iVar4;
-  
+
   uVar3 = *(uint *)(param_1[0x206] + param_1[0x1b9] * 0x24 + 0x18);
   iVar4 = 1;
   switch(*param_1) {

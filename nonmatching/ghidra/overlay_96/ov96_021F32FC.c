@@ -56,7 +56,7 @@ undefined4 ov96_021F32FC(int param_1,int param_2,int param_3,int param_4,ushort 
   int iStack_10;
   undefined4 uStack_c;
   int iStack_8;
-  
+
   iStack_14 = param_1 << 0xc;
   iStack_10 = param_2 << 0xc;
   iStack_20 = param_3 << 0xc;

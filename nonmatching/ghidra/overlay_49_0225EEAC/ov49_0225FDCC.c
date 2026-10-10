@@ -114,7 +114,7 @@ undefined4 ov49_0225FDCC(undefined4 param_1,undefined4 param_2,uint param_3)
   int iVar16;
   uint uVar17;
   int iVar18;
-  
+
   puVar1 = (undefined4 *)ov49_0225EF84();
   iVar2 = ov49_0225EF88(param_1);
   if (iVar2 == 0) {

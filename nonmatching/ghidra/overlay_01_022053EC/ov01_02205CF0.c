@@ -55,7 +55,7 @@ undefined4 ov01_02205CF0(int param_1,int param_2)
   int iVar2;
   int iVar3;
   int iVar4;
-  
+
   PlayerAvatar_GetMapObject(*(undefined4 *)(param_1 + 0x40));
   iVar1 = MapObject_GetXCoord();
   PlayerAvatar_GetMapObject(*(undefined4 *)(param_1 + 0x40));

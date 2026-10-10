@@ -56,7 +56,7 @@ undefined4 ov14_021EC7D4(int param_1)
 {
   int iVar1;
   int iVar2;
-  
+
   iVar1 = *(int *)(*(int *)(param_1 + 0x34) + 0xc);
   iVar2 = *(int *)(iVar1 + 0xe4);
   ov14_021F6654(*(int *)(param_1 + 0x34),0x28);

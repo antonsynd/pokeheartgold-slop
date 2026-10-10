@@ -54,7 +54,7 @@ void ov01_021EB68C(int *param_1,undefined4 param_2,undefined4 param_3,undefined4
 
 {
   int iVar1;
-  
+
   if (*param_1 != 0) {
     iVar1 = 0;
     do {

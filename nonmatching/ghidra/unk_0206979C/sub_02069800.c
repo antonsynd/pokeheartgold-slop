@@ -49,7 +49,7 @@ void sub_02069800(int param_1,undefined4 param_2)
 
 {
   undefined4 uVar1;
-  
+
   sub_0206979C();
   *(undefined4 *)(param_1 + 8) = param_2;
   uVar1 = func_0x020c3b90(param_2,0);

@@ -68,7 +68,7 @@ void ov93_0225D78C(int param_1,undefined4 param_2)
   undefined4 uVar4;
   int iVar5;
   undefined4 uStack_1c;
-  
+
   SpriteSystem_LoadPaletteBufferFromOpenNarc
             (*(undefined4 *)(param_1 + 0x8c),2,*(undefined4 *)(param_1 + 0x24),
              *(undefined4 *)(param_1 + 0x28),param_2,0x1b,0,1,1,0x2713);

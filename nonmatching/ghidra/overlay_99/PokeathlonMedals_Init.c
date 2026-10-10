@@ -73,7 +73,7 @@ PokeathlonMedals_Init(undefined4 param_1,undefined4 param_2,undefined4 param_3,u
   int iVar1;
   undefined4 *puVar2;
   undefined4 uVar3;
-  
+
   HandleLoadOverlay(0x62,2,param_3,param_4,param_4);
   iVar1 = OverlayManager_GetArgs(param_1);
   GfGfx_DisableEngineBPlanes();

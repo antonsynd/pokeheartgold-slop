@@ -59,7 +59,7 @@ void ov93_0226249C(undefined4 param_1,undefined4 *param_2,undefined4 *param_3,un
   short sStack_1c;
   short sStack_1a;
   undefined4 uStack_18;
-  
+
   uStack_18 = param_4;
   func_0x0200de94(*param_2,&sStack_1a,&sStack_1c,0x160000);
   uVar3 = 0;

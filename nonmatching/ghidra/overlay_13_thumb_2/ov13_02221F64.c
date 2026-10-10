@@ -49,7 +49,7 @@ undefined4 ov13_02221F64(int param_1,undefined4 param_2)
 
 {
   int iVar1;
-  
+
   iVar1 = ov13_02222A84(*(undefined2 *)(param_1 + 8));
   if (iVar1 < 1) {
     return 0xffffffff;

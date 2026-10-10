@@ -56,7 +56,7 @@ undefined4 ov01_021FF394(undefined4 param_1,int param_2)
   int iStack_18;
   int iStack_14;
   int iStack_10;
-  
+
   puVar1 = (undefined4 *)sub_02068D98();
   uVar2 = puVar1[1];
   *(undefined4 *)(param_2 + 0x10) = *puVar1;

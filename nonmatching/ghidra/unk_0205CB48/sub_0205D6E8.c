@@ -54,7 +54,7 @@ void sub_0205D6E8(undefined4 param_1,undefined4 param_2,undefined4 param_3,undef
 {
   undefined4 uVar1;
   undefined4 uVar2;
-  
+
   uVar2 = param_4;
   uVar1 = sub_0205D75C(param_1,param_4);
   switch(uVar1) {

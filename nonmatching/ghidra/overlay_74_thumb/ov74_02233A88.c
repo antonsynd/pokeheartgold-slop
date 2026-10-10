@@ -49,7 +49,7 @@ uint ov74_02233A88(int *param_1,uint param_2)
   int iVar1;
   uint uVar2;
   uint uVar3;
-  
+
   uVar2 = 0;
   uVar3 = 0;
   if (param_2 >> 2 != 0) {

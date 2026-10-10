@@ -50,7 +50,7 @@ undefined4 ov08_0221C58C(int *param_1)
 
 {
   uint uVar1;
-  
+
   uVar1 = ov08_0221D588();
   switch(uVar1) {
   case 0:

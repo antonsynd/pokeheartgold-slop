@@ -51,7 +51,7 @@ MapObjectMovementCmd082_Step1
 
 {
   int iVar1;
-  
+
   iVar1 = sub_02062FEC(param_1,&UNK_020fda1c,param_3,param_4,param_4);
   if (iVar1 == 1) {
     return 1;

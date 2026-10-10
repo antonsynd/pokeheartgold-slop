@@ -50,7 +50,7 @@ void ov47_02259404(int param_1,undefined4 *param_2,undefined4 param_3,undefined4
 
 {
   undefined4 uVar1;
-  
+
   if (*(int *)(param_1 + 0x20) != 0) {
     GF_AssertFail();
   }

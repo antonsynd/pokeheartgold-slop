@@ -47,7 +47,7 @@ void ov07_0221D2E4(int param_1)
 
 {
   int *piVar1;
-  
+
   piVar1 = (int *)(*(int *)(param_1 + 0x18) + 4);
   *(int **)(param_1 + 0x18) = piVar1;
   *(int **)(param_1 + 0x18) = piVar1 + *piVar1;

@@ -57,7 +57,7 @@ undefined4 ov96_021E667C(int param_1,undefined4 param_2,undefined4 param_3,undef
   int iStack_14;
   undefined4 uStack_10;
   undefined4 uStack_c;
-  
+
   uStack_c = param_4;
   switch(*(undefined1 *)(param_1 + 0x70d)) {
   case 0:

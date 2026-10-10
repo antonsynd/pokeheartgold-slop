@@ -50,7 +50,7 @@ undefined4 ov96_02203924(ushort *param_1,int param_2)
   byte bVar1;
   byte bVar2;
   undefined4 uVar3;
-  
+
   if (*(int *)(param_2 + 4) < *(int *)(param_1 + 2)) {
     uVar3 = 0xffffffff;
   }

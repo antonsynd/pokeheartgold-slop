@@ -50,7 +50,7 @@ void ov70_0223A1E4(int param_1,undefined4 param_2,undefined4 param_3,undefined4 
 {
   undefined4 uVar1;
   int iVar2;
-  
+
   uVar1 = String_New(0xb4,0x3d,param_3,param_4,param_4);
   *(undefined4 *)(param_1 + 0xbbc) = uVar1;
   uVar1 = NewString_ReadMsgData(*(undefined4 *)(param_1 + 0xba0),0x27);

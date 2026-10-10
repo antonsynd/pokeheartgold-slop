@@ -50,7 +50,7 @@ void ov70_0223D3BC(int param_1)
 
 {
   undefined4 uVar1;
-  
+
   uVar1 = String_New(0x12,0x3d);
   *(undefined4 *)(param_1 + 0xbb4) = uVar1;
   uVar1 = String_New(0xb4,0x3d);

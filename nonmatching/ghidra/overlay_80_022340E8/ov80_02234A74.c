@@ -58,7 +58,7 @@ void ov80_02234A74(int param_1,undefined4 param_2,int param_3)
   short *psVar5;
   int iVar6;
   int iVar7;
-  
+
   iVar1 = BattleArcade_GetMonCount(*(undefined1 *)(param_1 + 0x10),1);
   iVar2 = BattleArcade_GetOpponentMonCount(*(undefined1 *)(param_1 + 0x10),1);
   if (param_3 == 0) {

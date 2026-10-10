@@ -53,7 +53,7 @@ void ov59_02238CFC(int param_1,undefined4 param_2,int param_3)
 
 {
   undefined1 uVar1;
-  
+
   FillWindowPixelBuffer(param_1 + 0x128,0xf);
   DrawFrameAndWindow2(param_1 + 0x128,1,1,0xd);
   ov59_02239D08(param_1,param_2);

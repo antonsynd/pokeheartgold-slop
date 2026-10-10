@@ -48,7 +48,7 @@ void ov91_0226023C(int param_1)
 
 {
   int iVar1;
-  
+
   iVar1 = 0;
   do {
     func_0x020181ec(param_1);

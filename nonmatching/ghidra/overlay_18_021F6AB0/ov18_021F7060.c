@@ -53,7 +53,7 @@ void ov18_021F7060(int param_1,uint param_2,uint param_3)
 {
   uint uVar1;
   char *pcVar2;
-  
+
   if (param_3 - 0x1b < 2) {
     if ((param_2 == 0) || (param_2 == 6)) {
       pcVar2 = ((char *)0x21fbb94);

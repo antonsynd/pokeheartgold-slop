@@ -54,7 +54,7 @@ void ov70_0223E8E8(int param_1,int param_2,uint param_3)
 {
   byte bVar1;
   undefined *puVar2;
-  
+
   puVar2 = NewString_ReadMsgData(*(undefined **)(param_1 + 0xba0),param_2);
   StringExpandPlaceholders(*(undefined **)(param_1 + 0xb9c),*(undefined **)(param_1 + 0xbbc),puVar2)
   ;

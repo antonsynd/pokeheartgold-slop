@@ -53,7 +53,7 @@ void ov14_021F2ED0(int param_1,undefined4 param_2,undefined4 param_3,int param_4
   int iVar1;
   undefined4 uVar2;
   int iVar3;
-  
+
   iVar3 = *(int *)(param_1 + 0x34) + 0x2fc;
   iVar1 = param_4;
   ManagedSprite_SetDrawFlag(*(undefined4 *)(iVar3 + param_4 * 4),0);

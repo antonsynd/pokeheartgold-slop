@@ -68,7 +68,7 @@ void ov40_02235FFC(int param_1)
   uint uVar10;
   uint uVar11;
   uint uStack_20;
-  
+
   uStack_20 = 1;
   pbVar9 = &ov40_02245708;
   uVar11 = 0;

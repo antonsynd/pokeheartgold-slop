@@ -58,7 +58,7 @@ void ov57_02239A8C(int param_1,int param_2)
   int iVar3;
   int iVar4;
   uint uVar5;
-  
+
   iVar3 = (param_2 + 5) * 0x10;
   uVar5 = (uint)*(byte *)(param_1 + param_2 + 0x450);
   iVar4 = param_1 + 0xec;

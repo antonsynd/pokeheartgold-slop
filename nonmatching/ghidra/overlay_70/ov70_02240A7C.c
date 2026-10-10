@@ -67,7 +67,7 @@ void ov70_02240A7C(int *param_1,undefined *param_2,uint param_3,int param_4)
   int local_24;
   uint local_8;
   int iStack_4;
-  
+
   local_8 = param_3;
   iStack_4 = param_4;
   GetMonData(param_2,6,(undefined *)0x0);

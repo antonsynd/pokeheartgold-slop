@@ -51,7 +51,7 @@ void ov12_022645C8(undefined4 param_1,undefined4 param_2,undefined1 param_3,unde
   undefined1 uStack_14;
   undefined1 uStack_13;
   undefined4 uStack_10;
-  
+
   uStack_10 = param_4;
   func_0x020d4994(&uStack_14,0,4);
   uStack_14 = 0x43;

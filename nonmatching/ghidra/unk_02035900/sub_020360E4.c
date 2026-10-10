@@ -50,7 +50,7 @@ int sub_020360E4(int param_1)
 
 {
   int iVar1;
-  
+
   iVar1 = sub_02035218(param_1);
   return iVar1;
 }

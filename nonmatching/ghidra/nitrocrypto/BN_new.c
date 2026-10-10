@@ -48,7 +48,7 @@ void BN_new(void)
 
 {
   undefined4 *puVar1;
-  
+
   puVar1 = (undefined4 *)CRYPTOi_MyAlloc(0x14);
   if (puVar1 != (undefined4 *)0x0) {
     puVar1[4] = 1;

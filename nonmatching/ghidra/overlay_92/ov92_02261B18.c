@@ -52,7 +52,7 @@ void ov92_02261B18(int param_1)
   int iVar3;
   int iVar4;
   undefined4 *puVar5;
-  
+
   *(int *)(param_1 + 0x2188) = param_1 + 0x2af4;
   *(int *)(param_1 + 0x218c) = param_1 + 0x108;
   *(int *)(param_1 + 0x2190) = param_1 + 0x10c;

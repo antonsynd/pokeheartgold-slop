@@ -54,7 +54,7 @@ undefined4 ov14_021F00BC(int param_1,undefined4 param_2,undefined4 param_3,undef
 
 {
   undefined2 *puVar1;
-  
+
   puVar1 = *(undefined2 **)(*(int *)(param_1 + 0x34) + 0xc);
   ov14_021F34C8(*(int *)(param_1 + 0x34),*puVar1,0,param_4,param_4);
   PlaySE(0x5ea);

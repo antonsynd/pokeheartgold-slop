@@ -55,7 +55,7 @@ void ov96_02216934(int param_1,short *param_2,undefined4 param_3,undefined4 para
   short sStack_10;
   short sStack_e;
   undefined4 uStack_c;
-  
+
   uStack_c = param_4;
   switch((*(uint *)(param_1 + 0xe4) & 0xfff) >> 8) {
   case 0:

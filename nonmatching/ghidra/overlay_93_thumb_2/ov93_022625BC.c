@@ -62,7 +62,7 @@ undefined4 ov93_022625BC(undefined4 param_1,int *param_2)
   int *piVar1;
   int iVar2;
   undefined4 uVar3;
-  
+
   piVar1 = (int *)OverlayManager_GetData();
   iVar2 = *piVar1;
   if (*(char *)(iVar2 + 0x3d) != '\x01') {

@@ -51,7 +51,7 @@ void ov93_02262540(undefined4 param_1,undefined4 param_2,undefined4 *param_3)
 {
   int iVar1;
   undefined4 *puVar2;
-  
+
   if ((*(char *)(param_3 + 6) != '\0') && (*(char *)(param_3 + 6) == '\x01')) {
     iVar1 = 0;
     puVar2 = param_3;

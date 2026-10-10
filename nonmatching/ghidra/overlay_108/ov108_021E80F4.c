@@ -50,7 +50,7 @@ undefined4 ov108_021E80F4(int param_1)
 {
   int iVar1;
   short sVar2;
-  
+
   if (*(byte *)(param_1 + 0x184e2) >> 3 == 0) {
     sVar2 = -0x18;
     *(short *)(param_1 + 0x184e4) = *(short *)(param_1 + 0x184e4) + 0x18;

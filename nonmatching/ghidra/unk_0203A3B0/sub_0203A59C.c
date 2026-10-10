@@ -62,7 +62,7 @@ void sub_0203A59C(int param_1,undefined4 param_2,undefined4 param_3,undefined4 p
   int iVar4;
   uint uVar5;
   undefined4 uVar6;
-  
+
   uVar5 = uRam04001000;
   uVar1 = uRam04000000;
   if (param_1 == 1) {

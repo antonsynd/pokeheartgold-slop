@@ -57,7 +57,7 @@ void ov99_021E9038(int param_1)
   int iStack_20;
   uint uStack_1c;
   uint uStack_18;
-  
+
   uStack_18 = 0;
   iStack_20 = 0;
   sVar1 = 6;

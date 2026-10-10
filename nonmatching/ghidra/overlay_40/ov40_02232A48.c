@@ -59,7 +59,7 @@ undefined4 ov40_02232A48(int param_1)
 {
   int iVar1;
   undefined1 auStack_c [4];
-  
+
   iVar1 = *(int *)(param_1 + 8);
   if (iVar1 == 0) {
     ov40_0222DED0(param_1,299);

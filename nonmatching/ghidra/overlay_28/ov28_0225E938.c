@@ -58,7 +58,7 @@ void ov28_0225E938(int param_1)
   int iVar1;
   undefined4 uVar2;
   uint uVar3;
-  
+
   iVar1 = PlayerAvatar_GetState(*(undefined4 *)(*(int *)(param_1 + 0x18) + 0x40));
   if ((iVar1 != 1) && (iVar1 = ov28_0225EA58(param_1), iVar1 != 1)) {
     Sprite_SetDrawFlag(*(undefined4 *)(param_1 + 0x184),1);

@@ -68,7 +68,7 @@ void ov96_021EC790(undefined *param_1,int param_2,undefined4 param_3,undefined4 
   byte bStack_21;
   uint uStack_1c;
   undefined4 uStack_18;
-  
+
   uStack_18 = param_4;
   piVar1 = (int *)PokeathlonCourse_GetHeapAllocPtr4(param_1);
   PokeathlonCourse_GetParticipantUnk04(param_1,param_2);

@@ -51,7 +51,7 @@ void sub_02012204(int param_1)
 {
   int iVar1;
   int iVar2;
-  
+
   iVar1 = sub_02010EE0(param_1,0);
   func_0x020e5b44(iVar1 + 0x300,0);
   iVar1 = *(int *)(param_1 + 0x10) + -1;

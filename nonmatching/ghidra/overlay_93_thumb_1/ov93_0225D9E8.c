@@ -53,7 +53,7 @@ void ov93_0225D9E8(int param_1)
   int iVar1;
   int iVar2;
   int iVar3;
-  
+
   iVar3 = 0;
   iVar1 = param_1 + 0x15ac;
   iVar2 = param_1 + 0x15c0;

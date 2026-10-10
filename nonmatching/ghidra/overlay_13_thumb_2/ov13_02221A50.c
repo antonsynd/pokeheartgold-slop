@@ -51,7 +51,7 @@ int ov13_02221A50(int param_1,int param_2,int *param_3,int param_4)
 
 {
   int iVar1;
-  
+
   if (param_1 != 2) {
     *param_3 = *param_3 + 1;
     return param_1;

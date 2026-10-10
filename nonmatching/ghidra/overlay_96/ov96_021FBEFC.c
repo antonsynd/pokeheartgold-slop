@@ -57,7 +57,7 @@ void ov96_021FBEFC(int *param_1,int param_2,undefined4 param_3,undefined4 param_
   int iStack_20;
   undefined4 uStack_1c;
   undefined4 uStack_18;
-  
+
   if (*param_1 != 0) {
     uStack_18 = param_4;
     uVar1 = ov96_021EB5B8(param_1[1]);

@@ -56,7 +56,7 @@ void ov14_021EB2EC(int *param_1)
   undefined4 unaff_r5;
   __asm__ volatile("movs %0, r5" : "=l"(unaff_r5) : : "cc");
 
-  
+
   PlaySE(0x60c);
   switch(*(undefined4 *)(*param_1 + 8)) {
   case 0:

@@ -51,7 +51,7 @@ void ov12_0225FFDC(int *param_1,char *param_2,undefined4 param_3,undefined4 para
 
 {
   int iVar1;
-  
+
   if (*param_2 == '\0') {
     ov12_02264DCC(param_2,*(int *)(param_2 + 0x30));
     *param_2 = *param_2 + '\x01';

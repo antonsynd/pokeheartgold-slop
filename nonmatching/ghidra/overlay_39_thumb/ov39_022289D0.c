@@ -54,7 +54,7 @@ void ov39_022289D0(int param_1,undefined4 param_2)
 
 {
   undefined4 uVar1;
-  
+
   uVar1 = String_New(0x100,0x7c);
   ReadMsgDataIntoString(*(undefined4 *)(param_1 + 0x2c),param_2,uVar1);
   StringExpandPlaceholders(*(undefined4 *)(param_1 + 0x20),*(undefined4 *)(param_1 + 0x3c),uVar1);

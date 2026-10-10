@@ -49,7 +49,7 @@ undefined4 ov70_0223E4DC(undefined4 param_1,undefined4 param_2,undefined4 param_
 
 {
   int iVar1;
-  
+
   iVar1 = ov70_0223E490(param_3);
   if ((iVar1 != 0) && (iVar1 = Party_GetCount(param_1), iVar1 < 2)) {
     return 0;

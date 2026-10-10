@@ -58,7 +58,7 @@ undefined4 ov96_021E7190(int param_1,undefined4 param_2,undefined4 param_3,undef
   undefined1 *puVar4;
   code *pcVar5;
   int iVar6;
-  
+
   if (*(int *)(param_1 + 0x3cc) != 0) {
     if (*(int *)(param_1 + 0x3b4) == param_1 + 0x3c4) {
       *(int **)(param_1 + 0x3b4) = (int *)(param_1 + 0x3cc);

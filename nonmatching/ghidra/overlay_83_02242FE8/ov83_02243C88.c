@@ -58,7 +58,7 @@ undefined4 ov83_02243C88(int param_1)
 {
   undefined4 uVar1;
   int iVar2;
-  
+
   switch(*(undefined1 *)(param_1 + 8)) {
   case 0:
     *(byte *)(param_1 + 0xf) = *(byte *)(param_1 + 0xf) & 7 | 8;

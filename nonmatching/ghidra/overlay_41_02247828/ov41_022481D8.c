@@ -48,7 +48,7 @@ void ov41_022481D8(void)
 
 {
   undefined4 auStack_8 [2];
-  
+
   auStack_8[0] = 0xf68a8f12;
   func_0x020253f0(auStack_8);
   return;

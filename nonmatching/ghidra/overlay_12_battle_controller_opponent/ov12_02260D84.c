@@ -61,7 +61,7 @@ void ov12_02260D84(undefined4 param_1,undefined4 *param_2,undefined4 param_3,und
   undefined4 uVar2;
   undefined4 uVar3;
   undefined4 uVar4;
-  
+
   uVar2 = BattleSystem_GetPaletteData(*param_2);
   uVar3 = BattleSystem_GetPokepicManager(*param_2);
   cVar1 = *(char *)((int)param_2 + 6);

@@ -49,7 +49,7 @@ void ov18_021F2C5C(undefined4 param_1,undefined4 param_2,undefined4 param_3,unde
 
 {
   undefined4 uVar1;
-  
+
   uVar1 = ov18_021F2C74(param_1,param_3,param_3,param_4,param_4);
   ov18_021F118C(param_1,param_2,uVar1);
   return;

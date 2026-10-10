@@ -75,7 +75,7 @@ undefined4 ov15_021FB830(int param_1)
   undefined1 uVar1;
   int iVar2;
   undefined4 uVar3;
-  
+
   switch(*(undefined1 *)(param_1 + 0x67b)) {
   case 0:
     uVar3 = TMHMGetMove(*(undefined2 *)(*(int *)(param_1 + 0x234) + 0x66));

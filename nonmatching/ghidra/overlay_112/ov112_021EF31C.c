@@ -64,7 +64,7 @@ void ov112_021EF31C(int param_1,int param_2)
   undefined1 uStack_30;
   undefined1 uStack_2e;
   undefined1 auStack_28 [24];
-  
+
   if (*(int *)(param_1 + 0x14) == 0) {
     iVar4 = *(int *)(param_1 + 0xc);
     if (iVar4 == 0x12) {

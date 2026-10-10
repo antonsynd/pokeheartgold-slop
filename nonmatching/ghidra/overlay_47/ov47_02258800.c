@@ -59,7 +59,7 @@ undefined4 ov47_02258800(undefined4 param_1)
 {
   undefined4 *puVar1;
   int iVar2;
-  
+
   puVar1 = (undefined4 *)OverlayManager_GetArgs();
   Heap_Create(3,0x81,0x50000);
   iVar2 = OverlayManager_CreateAndGetData(param_1,0x28c,0x81);

@@ -64,7 +64,7 @@ undefined4 ov12_0223A3F0(void)
   uint uVar6;
   int iVar7;
   uint *puVar8;
-  
+
   puVar1 = (uint *)OverlayManager_GetArgs();
   if ((((*puVar1 & 4) != 0) && ((puVar1[99] & 0x10) == 0)) && ((*puVar1 & 0x80) == 0)) {
     uVar2 = sub_0203769C();

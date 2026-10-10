@@ -56,7 +56,7 @@ void ov12_0225E1FC(undefined4 param_1,undefined4 *param_2,undefined4 param_3,uin
   int iVar1;
   uint uVar2;
   uint uStack_10;
-  
+
   uStack_10 = param_4;
   iVar1 = ov12_0223BE0C(*param_2,*(undefined1 *)((int)param_2 + 9),&uStack_10);
   if (iVar1 == 1) {

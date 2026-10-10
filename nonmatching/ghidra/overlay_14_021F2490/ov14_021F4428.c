@@ -52,7 +52,7 @@ void ov14_021F4428(int param_1,undefined4 param_2,undefined4 param_3,undefined4 
 
 {
   int iVar1;
-  
+
   iVar1 = *(int *)(param_1 + 0x34);
   ManagedSprite_SetPositionXY(*(undefined4 *)(iVar1 + 0x30c),0xc,0xffffffeb,param_4,param_4);
   ManagedSprite_SetPositionXY(*(undefined4 *)(iVar1 + 0x310),0xf4,0xffffffeb);

@@ -50,7 +50,7 @@ void ov40_0222CA8C(int param_1)
   int iVar1;
   int iVar2;
   undefined4 uStack_18;
-  
+
   uStack_18 = 0;
   do {
     iVar1 = 0;

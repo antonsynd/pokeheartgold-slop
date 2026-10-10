@@ -52,7 +52,7 @@ undefined4 ov102_021EAC7C(int param_1,undefined4 param_2)
   int iVar2;
   int iVar3;
   undefined4 uVar4;
-  
+
   iVar2 = *(int *)(param_1 + 4);
   iVar3 = *(int *)(param_1 + 8);
   switch(iVar3) {

@@ -25,3 +25,8 @@ Still FAIL in the gate:
   3,988,714 of the sandbox's 4,000,000 cycle budget on that trial, and clang -O0 code costs about 1.13x, so the
   C side runs out of budget and the gate reports "only one side returned" for trial 30. With the budget raised
   tenfold in a private copy of the checker the function passes (PASS 500 trials agree, 0 inconclusive).
+
+## Status
+
+With the current tools, every function these notes describe as failing or inconclusive passes the check.
+`VERIFIED.tsv` gives the verdict of each, and the file that holds its verified C.

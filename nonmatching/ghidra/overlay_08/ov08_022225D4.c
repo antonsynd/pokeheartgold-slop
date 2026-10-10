@@ -63,7 +63,7 @@ void ov08_022225D4(undefined4 *param_1)
   int iVar4;
   undefined4 uVar5;
   uint uVar6;
-  
+
   CreateSysTaskAndEnvironment(0x2222671,0x115c,100,param_1[3]);
   piVar3 = (int *)SysTask_GetData();
   func_0x020e5b44(piVar3,0,0x115c);

@@ -56,7 +56,7 @@ void ov80_0222E400(undefined4 param_1,undefined4 param_2,undefined4 param_3,unde
   undefined4 uVar1;
   undefined1 auStack_20 [8];
   undefined4 uStack_18;
-  
+
   uStack_18 = param_4;
   MailMsg_Init(auStack_20);
   MailMsg_SetMsgBankAndNum(auStack_20,param_2,param_3);

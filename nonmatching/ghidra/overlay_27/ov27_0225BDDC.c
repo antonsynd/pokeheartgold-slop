@@ -48,7 +48,7 @@ void ov27_0225BDDC(undefined4 *param_1,int param_2)
 
 {
   undefined4 uVar1;
-  
+
   uVar1 = FieldSystem_GetGearPhoneRingManager(*(undefined4 *)(param_2 + 0x10));
   param_1[1] = uVar1;
   param_1[2] = *(undefined4 *)(param_2 + 0x39c);

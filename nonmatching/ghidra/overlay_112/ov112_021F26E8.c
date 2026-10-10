@@ -52,7 +52,7 @@ void ov112_021F26E8(int param_1,undefined4 param_2,undefined4 param_3,undefined4
   ushort uVar1;
   undefined4 uVar2;
   int iVar3;
-  
+
   iVar3 = *(int *)(param_1 + (uint)*(byte *)(param_1 + 0x13d) * 4 + 0xc0);
   ov112_021F2204(param_1,0,1,param_4,param_4);
   ov112_021F2204(param_1,1,0);

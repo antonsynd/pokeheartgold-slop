@@ -51,7 +51,7 @@ undefined4 ov109_021E5F10(int param_1,undefined4 param_2,undefined4 param_3,unde
   undefined4 uVar1;
   int iStack_10;
   undefined4 uStack_c;
-  
+
   iStack_10 = 0;
   if ((int)((uint)*(byte *)(param_1 + 0x18) << 0x1f) < 0) {
     return 1;

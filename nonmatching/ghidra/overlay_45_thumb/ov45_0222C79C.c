@@ -50,7 +50,7 @@ void ov45_0222C79C(undefined4 param_1,undefined2 *param_2,undefined4 param_3,int
 
 {
   uint uVar1;
-  
+
   if (*(char *)(param_4 + 0x1ca) != '\0') {
     uVar1 = ov45_0222EC68();
     if (*(ushort *)(param_4 + 0x1c4) == uVar1) {

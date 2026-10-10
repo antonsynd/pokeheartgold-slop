@@ -54,7 +54,7 @@ void ov91_02261928(int param_1,undefined4 param_2,undefined4 param_3,undefined4 
   undefined4 uStack_18;
   undefined4 uStack_14;
   undefined4 uStack_c;
-  
+
   uStack_c = param_4;
   switch(*(undefined2 *)(param_1 + 0x98)) {
   case 1:

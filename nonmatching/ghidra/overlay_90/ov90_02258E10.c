@@ -52,7 +52,7 @@ void ov90_02258E10(undefined4 *param_1)
   int iVar1;
   undefined4 *puVar2;
   uint uVar3;
-  
+
   uVar3 = 0;
   if (param_1[5] != 0) {
     iVar1 = 0;

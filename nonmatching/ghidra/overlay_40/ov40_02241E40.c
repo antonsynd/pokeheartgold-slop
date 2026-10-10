@@ -51,7 +51,7 @@ void ov40_02241E40(undefined4 param_1,int param_2,int param_3)
 {
   int iVar1;
   int iVar2;
-  
+
   iVar2 = *(int *)(param_3 + 0x860);
   if (param_2 == 0) {
     switch(param_1) {

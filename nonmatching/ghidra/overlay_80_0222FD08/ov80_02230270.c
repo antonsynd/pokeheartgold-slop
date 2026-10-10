@@ -70,7 +70,7 @@ void ov80_02230270(int param_1)
   undefined4 auStack_188 [6];
   undefined2 auStack_170 [6];
   undefined1 auStack_164 [336];
-  
+
   func_0x02236dd4(*(undefined1 *)(param_1 + 4));
   uVar5 = 0;
   iVar6 = param_1;

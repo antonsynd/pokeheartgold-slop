@@ -59,7 +59,7 @@ void sub_02093A50(int param_1)
   undefined4 uVar1;
   int iVar2;
   int iVar3;
-  
+
   uVar1 = G2dRenderer_Init(0x2b,param_1 + 0x1c,*(undefined4 *)(param_1 + 4));
   *(undefined4 *)(param_1 + 0x18) = uVar1;
   G2dRenderer_SetSubSurfaceCoords(param_1 + 0x1c,0,0x100000);

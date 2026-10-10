@@ -60,7 +60,7 @@ void ov96_021F3EC0(undefined4 param_1,int param_2,undefined4 param_3,undefined4 
   int iVar5;
   int iStack_3c;
   uint auStack_34 [8];
-  
+
   auStack_34[7] = param_4;
   auStack_34[2] = 0x66;
   auStack_34[3] = 0x67;

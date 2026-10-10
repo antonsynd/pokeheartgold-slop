@@ -54,7 +54,7 @@ void ov41_0224A7F8(int param_1,undefined4 param_2,undefined4 param_3,undefined4 
   int iVar2;
   int iVar3;
   int iVar4;
-  
+
   iVar1 = 0;
   iVar4 = 0x6b;
   iVar3 = 0x6a;

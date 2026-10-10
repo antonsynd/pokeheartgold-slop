@@ -56,7 +56,7 @@ undefined4 ov75_02248584(int *param_1,undefined4 param_2,undefined4 param_3,unde
 
 {
   int iVar1;
-  
+
   iVar1 = ov75_02249534(param_1[0x11]);
   if (iVar1 == 1) {
     return 0;

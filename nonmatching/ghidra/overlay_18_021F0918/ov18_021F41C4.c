@@ -54,7 +54,7 @@ void ov18_021F41C4(int param_1,int param_2,short *param_3,short *param_4,undefin
   ushort uVar3;
   uint uVar4;
   uint uVar5;
-  
+
   iVar2 = ov18_021E8B24(param_2);
   if (iVar2 == 1) {
     uVar1 = 0x20;

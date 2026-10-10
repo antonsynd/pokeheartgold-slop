@@ -70,7 +70,7 @@ undefined4 ov112_021ED918(int param_1)
   undefined4 uVar2;
   undefined1 auStack_28 [12];
   undefined1 auStack_1c [16];
-  
+
   ov112_021E7670();
   iVar1 = ov112_021E768C();
   if (iVar1 != 0) {

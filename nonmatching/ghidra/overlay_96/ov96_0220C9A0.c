@@ -51,7 +51,7 @@ void ov96_0220C9A0(int param_1)
   undefined4 uVar1;
   int iVar2;
   uint uVar3;
-  
+
   uVar3 = 0;
   if (*(int *)(param_1 + 0x74) != 0) {
     iVar2 = param_1 + 8;

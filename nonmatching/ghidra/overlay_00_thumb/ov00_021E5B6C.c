@@ -66,7 +66,7 @@ int ov00_021E5B6C(void)
   undefined1 auStack_5c [4];
   undefined1 auStack_58 [80];
   undefined4 uStack_8;
-  
+
   uStack_8 = in_r3;
   switch(*(undefined4 *)(iRam0221a680 + 0x1070)) {
   case 0:

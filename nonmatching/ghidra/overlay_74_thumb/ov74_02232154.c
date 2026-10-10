@@ -65,7 +65,7 @@ void ov74_02232154(int param_1)
   undefined1 auStack_44 [8];
   int iStack_3c;
   int iStack_38;
-  
+
   ov74_02231D48(auStack_44,param_1,param_1 + 0x184,1);
   iStack_50 = 0x28;
   iVar3 = 0;

@@ -56,7 +56,7 @@ void ov40_022440A0(int param_1,int param_2,undefined4 param_3,undefined4 param_4
   short sStack_1c;
   short sStack_1a;
   undefined4 uStack_18;
-  
+
   iVar1 = 0;
   iStack_20 = 0;
   iVar2 = (int)*(short *)(param_1 + *(int *)(param_1 + 0x208) * 2 + 0x1dc);

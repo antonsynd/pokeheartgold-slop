@@ -53,7 +53,7 @@ void ov86_021E7DF8(undefined4 param_1,int param_2,int param_3)
   int iVar1;
   uint uVar2;
   uint uVar3;
-  
+
   iVar1 = *(int *)(&ov86_021E8230 + param_3 * 8);
   uVar2 = 0;
   uVar3 = *(uint *)(&UNK_021e8234 + param_3 * 8);

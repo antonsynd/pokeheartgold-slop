@@ -48,7 +48,7 @@ void ov88_02258D64(undefined4 *param_1,int param_2,undefined4 param_3,undefined4
 
 {
   undefined4 uVar1;
-  
+
   uVar1 = GfGfxLoader_GetScrnDataFromOpenNarc
                     (*(undefined4 *)(param_2 + 0x140),5,0,param_1 + 1,param_3,param_4);
   *param_1 = uVar1;

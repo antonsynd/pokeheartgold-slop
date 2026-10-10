@@ -51,7 +51,7 @@ ov70_02238360(undefined4 param_1,undefined4 param_2,undefined4 param_3,undefined
 
 {
   int iVar1;
-  
+
   iVar1 = func_0x0221bea8(param_1,uRam02246808,param_2,param_3,param_4,param_5,param_4);
   if (iVar1 != 0) {
     return 0;

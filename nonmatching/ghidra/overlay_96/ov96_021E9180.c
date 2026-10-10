@@ -51,7 +51,7 @@ byte ov96_021E9180(int param_1,int param_2)
   byte bVar3;
   byte bVar4;
   byte bVar5;
-  
+
   bVar3 = 0;
   pcVar1 = (char *)(param_1 + param_2);
   bVar4 = 0xff;

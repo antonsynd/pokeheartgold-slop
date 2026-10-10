@@ -49,7 +49,7 @@ undefined2 ov74_02228C84(uint param_1)
 {
   uint uVar1;
   undefined *puVar2;
-  
+
   puVar2 = &ov74_0223BD68;
   uVar1 = 0;
   do {

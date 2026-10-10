@@ -49,7 +49,7 @@ void ov92_0225EE04(int param_1,int param_2,undefined4 param_3,undefined4 param_4
 {
   undefined4 *puVar1;
   undefined4 *puVar2;
-  
+
   puVar1 = (undefined4 *)(param_1 + 0x29d0 + param_2 * 0x44);
   if (puVar1[0xc] != 1) {
     puVar1[0x10] = *(undefined4 *)(param_1 + 0x2bb4);

@@ -48,7 +48,7 @@ undefined4 sub_02059748(int param_1)
 
 {
   int iVar1;
-  
+
   iVar1 = sub_02070D90();
   return *(undefined4 *)(*(int *)(param_1 + 0x48) + iVar1 * 3);
 }

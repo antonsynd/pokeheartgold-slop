@@ -50,7 +50,7 @@ void ov34_0225E4A8(int param_1,undefined4 param_2,undefined4 param_3,undefined4 
 {
   ushort uVar1;
   ushort uVar2;
-  
+
   uVar1 = *(ushort *)(param_1 + 0x288);
   uVar2 = *(ushort *)(param_1 + 0x284);
   ov34_0225E348(param_1,param_4,param_3,param_2);

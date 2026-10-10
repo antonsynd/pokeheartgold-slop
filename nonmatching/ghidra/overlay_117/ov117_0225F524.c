@@ -100,7 +100,7 @@ void ov117_0225F524(undefined4 param_1,int *param_2,undefined1 *param_3)
   undefined4 uVar3;
   int iVar4;
   undefined4 *puVar5;
-  
+
   puVar5 = (undefined4 *)param_2[3];
   switch(*param_2) {
   case 0:

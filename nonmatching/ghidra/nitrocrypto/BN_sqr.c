@@ -57,7 +57,7 @@ undefined4 BN_sqr(int *param_1,int *param_2,int *param_3)
   int *piVar5;
   undefined1 auStack_80 [32];
   undefined1 auStack_60 [68];
-  
+
   piVar2 = param_1;
   piVar5 = param_1;
   if (param_2 == param_1) {

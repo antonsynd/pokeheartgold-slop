@@ -56,7 +56,7 @@ ov51_021E6888(undefined4 *param_1,undefined4 param_2,undefined4 param_3,undefine
 {
   byte bVar1;
   undefined4 uVar2;
-  
+
   bVar1 = *(byte *)((int)param_1 + 0x3436);
   uVar2 = 0;
   if (bVar1 < 6) {

@@ -49,7 +49,7 @@ void ov64_021E64F8(int param_1)
 
 {
   uint uVar1;
-  
+
   uVar1 = 2;
   do {
     ov64_021E6010(param_1,uVar1);

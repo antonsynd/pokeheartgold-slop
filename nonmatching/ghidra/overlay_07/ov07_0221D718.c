@@ -50,7 +50,7 @@ void ov07_0221D718(int param_1)
 
 {
   undefined4 uVar1;
-  
+
   *(int *)(param_1 + 0x18) = *(int *)(param_1 + 0x18) + 8;
   uVar1 = BgGetCharPtr(2);
   func_0x020d4994(uVar1,0,0x1900);

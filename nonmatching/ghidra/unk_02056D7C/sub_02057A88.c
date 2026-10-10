@@ -50,7 +50,7 @@ undefined2 sub_02057A88(int param_1)
 
 {
   int iVar1;
-  
+
   if (iRam021d41c4 == 0) {
     return 0xffff;
   }

@@ -51,7 +51,7 @@ void ov89_0225C988(undefined4 param_1,undefined4 param_2,undefined4 param_3,unde
 {
   undefined4 uVar1;
   int iVar2;
-  
+
   uVar1 = ov89_02259E48(param_4);
   iVar2 = ov89_0225C8F0(param_1,uVar1);
   if (iVar2 != 0) {

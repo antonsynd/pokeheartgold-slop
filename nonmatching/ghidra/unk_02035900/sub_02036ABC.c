@@ -49,7 +49,7 @@ void sub_02036ABC(int param_1)
 
 {
   if (param_1 != 0) {
-                    
+
     UNK_0210f900 = 5;
     return;
   }

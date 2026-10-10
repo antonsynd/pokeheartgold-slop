@@ -59,7 +59,7 @@ void ov93_0225FCA4(undefined4 param_1,int *param_2,undefined4 param_3)
   int iVar6;
   int iStack_1c;
   int iStack_18;
-  
+
   if (*param_2 != 0) {
     ov93_0225FD8C(param_3,param_2[1],param_2[2],&iStack_18,&iStack_1c);
     if (iStack_18 == 0x1000) {

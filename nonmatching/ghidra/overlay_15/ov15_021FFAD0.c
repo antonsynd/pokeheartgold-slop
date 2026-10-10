@@ -60,7 +60,7 @@ void ov15_021FFAD0(int param_1)
 {
   undefined4 uVar1;
   int iVar2;
-  
+
   func_0x0200d4a4(*(undefined4 *)(param_1 + 0x248),*(undefined4 *)(param_1 + 0x24c),0xf,0x1a,0,1,
                   0xc0f9);
   func_0x0200d4a4(*(undefined4 *)(param_1 + 0x248),*(undefined4 *)(param_1 + 0x24c),0xf,6,0,1,0xc0fa

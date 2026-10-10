@@ -51,7 +51,7 @@ void ov90_02259084(undefined4 *param_1)
 {
   int iVar1;
   uint uVar2;
-  
+
   func_0x0201bc8c(*param_1,3,3,0);
   uVar2 = 0;
   if (param_1[2] != 0) {

@@ -51,7 +51,7 @@ ushort ov80_0222AF3C(void)
   int in_r3;
   __asm__ volatile("movs %0, r3" : "=l"(in_r3) : : "cc");
 
-  
+
   *(char *)(in_r3 + 0xd90) = *(char *)(in_r3 + 0xd90) + '\x01';
   uVar1 = sub_0203769C();
   return uVar1;

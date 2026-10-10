@@ -56,7 +56,7 @@ undefined4 sub_0205ABD8(undefined4 *param_1)
   undefined4 uVar2;
   undefined4 uVar3;
   uint uVar4;
-  
+
   uVar2 = sub_020691A8(0);
   param_1[0x61] = uVar2;
   uVar2 = sub_020691A8(0);

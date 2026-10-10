@@ -53,7 +53,7 @@ undefined4 ov01_021F232C(undefined4 param_1,undefined4 param_2,undefined4 param_
   int iVar1;
   undefined4 uVar2;
   uint uVar3;
-  
+
   if ((param_4 != 1) || (iVar1 = PlayerAvatar_GetState(param_2), iVar1 != 2)) {
     return 0;
   }

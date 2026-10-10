@@ -52,7 +52,7 @@ void ov27_0225C8D0(undefined4 param_1,undefined4 param_2,undefined4 param_3,unde
 
 {
   undefined4 uVar1;
-  
+
   uVar1 = NewString_ReadMsgData(param_2,param_3);
   FillWindowPixelBuffer(param_1,0);
   AddTextPrinterParameterizedWithColor(param_1,4,uVar1,0,0,0xff,0x20100,0,param_4);

@@ -58,7 +58,7 @@ void ov96_021E99B8(void)
   undefined *in_r3;
   __asm__ volatile("movs %0, r3" : "=l"(in_r3) : : "cc");
 
-  
+
   PokeathlonCourse_GetDataCopyArea(in_r3);
   PokeathlonCourse_IncrementField1EF(in_r3);
   bVar1 = PokeathlonCourse_GetParticipantCount(in_r3);

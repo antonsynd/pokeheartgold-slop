@@ -57,7 +57,7 @@ void ov14_021F0910(int param_1,undefined4 param_2,undefined4 param_3,undefined4 
 {
   int iVar1;
   uint uVar2;
-  
+
   iVar1 = ov14_021E6070(param_1,*(undefined1 *)(param_1 + 0x21),0x4c,0,param_4);
   if (iVar1 != 0) {
     ov14_021F2A18(*(undefined4 *)(param_1 + 0x34),9,0);

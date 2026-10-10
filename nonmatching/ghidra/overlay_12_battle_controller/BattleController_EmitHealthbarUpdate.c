@@ -65,7 +65,7 @@ void BattleController_EmitHealthbarUpdate
   int iStack_20;
   int iStack_1c;
   undefined4 uStack_18;
-  
+
   uStack_18 = param_4;
   uVar1 = BattleSystem_GetPartyMon(param_1,param_3,*(undefined1 *)(param_2 + param_3 + 0x219c));
   uVar2 = GetMonData(uVar1,5,0);

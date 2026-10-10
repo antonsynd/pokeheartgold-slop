@@ -49,7 +49,7 @@ void ov113_021E6AE8(int param_1,int param_2,undefined4 param_3,undefined4 param_
 
 {
   undefined4 uVar1;
-  
+
   uVar1 = GetMonIconNaixEx(0xc9,0);
   sub_0200E2B8(*(undefined4 *)(param_1 + 0xac),*(undefined4 *)(param_1 + 0xb4),
                *(undefined4 *)(param_1 + 0xfc),uVar1,0,param_2 + 1,param_4);

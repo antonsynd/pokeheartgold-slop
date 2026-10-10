@@ -52,7 +52,7 @@ void sub_0205701C(undefined4 param_1)
 {
   undefined4 uVar1;
   undefined4 uVar2;
-  
+
   uVar1 = PlayerAvatar_GetXCoord(*(undefined4 *)(*(int *)(iRam021d41c4 + 0x30) + 0x40));
   uVar2 = PlayerAvatar_GetZCoord(*(undefined4 *)(*(int *)(iRam021d41c4 + 0x30) + 0x40));
   sub_02056FD0(param_1,uVar1,uVar2);

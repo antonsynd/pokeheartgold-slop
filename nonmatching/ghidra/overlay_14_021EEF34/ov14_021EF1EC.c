@@ -55,7 +55,7 @@ undefined4 ov14_021EF1EC(int param_1)
 {
   int iVar1;
   undefined4 uVar2;
-  
+
   iVar1 = ov14_021F2A04(*(undefined4 *)(param_1 + 0x34),0xb);
   if (iVar1 == 1) {
     return 0x81;

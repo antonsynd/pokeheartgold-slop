@@ -51,7 +51,7 @@ undefined4 * ov41_02245EE0(undefined4 *param_1)
 {
   undefined4 *puVar1;
   undefined4 uVar2;
-  
+
   puVar1 = (undefined4 *)ov41_0224607C(*param_1);
   if (puVar1 == (undefined4 *)0x0) {
     GF_AssertFail();

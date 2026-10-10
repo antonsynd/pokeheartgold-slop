@@ -50,7 +50,7 @@ undefined4 FrtCmd_053(int param_1)
 
 {
   ushort uVar1;
-  
+
   uVar1 = FrontierScript_ReadVar();
   *(ushort *)(param_1 + 0x78) = uVar1;
   sub_02037AC0(uVar1 & 0xff);

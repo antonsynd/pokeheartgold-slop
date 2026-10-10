@@ -58,7 +58,7 @@ void ov07_02232730(undefined4 param_1,undefined4 *param_2)
   uint uVar2;
   undefined4 uVar3;
   int iVar4;
-  
+
   switch(param_2[0x24]) {
   case 0:
     uVar3 = NARC_New(0x5f,*param_2);

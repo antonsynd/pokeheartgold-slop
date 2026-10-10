@@ -50,7 +50,7 @@ undefined4 ov112_021E76A8(void)
 {
   undefined4 uVar1;
   int iVar2;
-  
+
   uVar1 = uRam021ffab8;
   iVar2 = ov112_021E59A8();
   uRam021ffab8 = (uint)(iVar2 == 0);

@@ -55,7 +55,7 @@ void ov68_021E7178(int param_1,undefined4 param_2)
   undefined *puVar2;
   int iVar3;
   uint uVar4;
-  
+
   ov68_021E6DDC();
   ov68_021E6EB8(param_1,param_2);
   puVar2 = &ov68_021E7E74;

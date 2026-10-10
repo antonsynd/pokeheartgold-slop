@@ -49,7 +49,7 @@ undefined4 ov87_021E71B4(int param_1,undefined4 param_2,undefined4 param_3,undef
 
 {
   undefined4 uVar1;
-  
+
   uVar1 = ov87_021E6F98(param_1,param_1 + 0x13c,5,0x18,1,0,1,1,0,2,param_4);
   ScheduleWindowCopyToVram(param_1 + 0x13c);
   return uVar1;

@@ -74,7 +74,7 @@ ov10_0221F084(undefined4 param_1,int param_2,int param_3,undefined4 param_4,byte
   uint uVar12;
   uint uStack_40;
   uint uStack_18;
-  
+
   iVar7 = func_0x0223ab1c(param_1,*(undefined1 *)(param_2 + 0x3d0));
   uVar11 = 0;
   uVar12 = 0;

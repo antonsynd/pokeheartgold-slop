@@ -52,7 +52,7 @@ void ov85_021E7194(int param_1,undefined4 param_2,undefined4 param_3,undefined4 
 
 {
   int iVar1;
-  
+
   iVar1 = param_1 + 0xca8;
   FillWindowPixelBuffer(iVar1,0xf);
   DrawFrameAndWindow2(iVar1,1,10,0xe);

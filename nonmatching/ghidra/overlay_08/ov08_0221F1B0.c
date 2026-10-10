@@ -54,7 +54,7 @@ void ov08_0221F1B0(int *param_1,int param_2,undefined4 param_3,undefined4 param_
   undefined4 uVar1;
   int iVar2;
   int iVar3;
-  
+
   iVar3 = param_1[0x81c];
   if (*(char *)(*param_1 + 0x34) == '\x04') {
     uVar1 = NewString_ReadMsgData(param_1[0x7ea],0x3b);

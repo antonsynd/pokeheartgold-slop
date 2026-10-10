@@ -49,7 +49,7 @@ void bn_sqr_words(uint *param_1,uint *param_2,int param_3)
   uint uVar1;
   uint uVar2;
   uint uVar3;
-  
+
   if (param_3 < 1) {
     return;
   }

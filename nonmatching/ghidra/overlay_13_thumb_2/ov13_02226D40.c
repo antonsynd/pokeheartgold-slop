@@ -52,7 +52,7 @@ int ov13_02226D40(undefined1 *param_1,char *param_2)
   undefined1 *puVar3;
   undefined1 *puVar4;
   int iVar5;
-  
+
   iVar5 = 0;
   puVar4 = param_1;
   do {

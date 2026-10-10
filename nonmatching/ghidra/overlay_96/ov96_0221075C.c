@@ -54,7 +54,7 @@ void ov96_0221075C(int param_1)
   int iVar4;
   int iVar5;
   undefined4 uStack_20;
-  
+
   uStack_20 = 0;
   iVar5 = 7;
   sVar1 = 8;

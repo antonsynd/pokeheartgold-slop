@@ -54,7 +54,7 @@ undefined4 ov102_021E87B4(int param_1,uint *param_2,undefined4 param_3,undefined
 {
   int iVar1;
   uint uVar2;
-  
+
   uVar2 = *param_2;
   if (uVar2 < 4) {
     switch(uVar2) {

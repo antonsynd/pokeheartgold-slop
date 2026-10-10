@@ -60,7 +60,7 @@ undefined4 ov82_0223F488(int param_1)
   int iVar4;
   int iVar5;
   int iVar6;
-  
+
   if (sRam021d1170 != 0) {
     iVar6 = 0;
     iVar4 = 3;

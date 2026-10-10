@@ -49,7 +49,7 @@ void ov96_0220C9CC(int param_1)
 {
   int iVar1;
   uint uVar2;
-  
+
   uVar2 = 0;
   if (*(int *)(param_1 + 0x74) != 0) {
     iVar1 = param_1 + 8;

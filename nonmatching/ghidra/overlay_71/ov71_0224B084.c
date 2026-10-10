@@ -54,7 +54,7 @@ void ov71_0224B084(undefined4 param_1,int param_2,int param_3,undefined4 param_4
   undefined4 *puVar1;
   undefined4 uVar2;
   int iVar3;
-  
+
   puVar1 = (undefined4 *)Heap_Alloc(0x39,0x18);
   if (puVar1 == (undefined4 *)0x0) {
     *param_5 = 0;

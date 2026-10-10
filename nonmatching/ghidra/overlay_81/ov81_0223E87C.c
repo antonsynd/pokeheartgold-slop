@@ -51,7 +51,7 @@ void ov81_0223E87C(int param_1)
   undefined4 uVar1;
   int iVar2;
   int iVar3;
-  
+
   iVar2 = 0;
   iVar3 = param_1;
   if (*(char *)(param_1 + 0x12) != '\0') {

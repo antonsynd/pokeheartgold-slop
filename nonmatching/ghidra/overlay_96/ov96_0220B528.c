@@ -65,7 +65,7 @@ void ov96_0220B528(int param_1,int param_2,undefined4 param_3,undefined4 param_4
   short sStack_18;
   short sStack_16;
   undefined4 uStack_14;
-  
+
   uStack_14 = param_4;
   if (param_1 == 0) {
     GF_AssertFail();

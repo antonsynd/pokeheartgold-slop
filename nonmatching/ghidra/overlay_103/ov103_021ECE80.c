@@ -48,7 +48,7 @@ void ov103_021ECE80(int param_1)
 
 {
   undefined4 uVar1;
-  
+
   uVar1 = YesNoPrompt_Create(0x9d);
   *(undefined4 *)(*(int *)(param_1 + 0xc) + 0x238) = uVar1;
   return;

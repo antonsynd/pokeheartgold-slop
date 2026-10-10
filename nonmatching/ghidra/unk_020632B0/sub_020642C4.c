@@ -59,7 +59,7 @@ int sub_020642C4(undefined4 param_1,undefined4 param_2,int *param_3)
   undefined4 uVar4;
   int iVar5;
   int iVar6;
-  
+
   iVar1 = sub_02064298();
   if (iVar1 != 1) {
     if (iVar1 != 2) {

@@ -49,7 +49,7 @@ void ov96_0220B95C(int param_1,undefined4 param_2,undefined4 param_3,undefined4 
 {
   uint uVar1;
   uint uVar2;
-  
+
   uVar1 = ((*(uint *)(param_1 + 0x44) & 0xffffff) >> 0x10) + 1 & 0xff;
   uVar2 = uVar1 << 0x10;
   *(uint *)(param_1 + 0x44) = *(uint *)(param_1 + 0x44) & 0xff00ffff | uVar2;

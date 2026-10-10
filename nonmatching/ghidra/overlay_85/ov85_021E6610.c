@@ -50,7 +50,7 @@ undefined4 ov85_021E6610(undefined4 *param_1)
 
 {
   int iVar1;
-  
+
   iVar1 = sub_02039EB4(*(undefined4 *)(param_1[0x33] + 0x1c),2,param_1 + 1);
   if (iVar1 != 0) {
     uRam021d1178 = 0;

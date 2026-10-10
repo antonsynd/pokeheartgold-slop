@@ -52,7 +52,7 @@ void ov117_0225F420(int param_1,undefined4 param_2,undefined4 param_3)
 {
   undefined4 uVar1;
   ushort *puStack_14;
-  
+
   uVar1 = GfGfxLoader_GetScrnDataFromOpenNarc
                     (*(undefined4 *)(param_1 + 0x20),param_3,0,&puStack_14,4);
   LoadRectToBgTilemapRect

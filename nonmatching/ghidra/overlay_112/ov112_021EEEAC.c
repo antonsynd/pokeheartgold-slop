@@ -47,7 +47,7 @@ undefined4 ov112_021EEEAC(int param_1)
 
 {
   undefined4 uVar1;
-  
+
   if (*(int *)(param_1 + 0x10) == 4) {
     uVar1 = 0;
   }

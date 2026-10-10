@@ -52,7 +52,7 @@ undefined4 ov70_02243F54(int param_1,undefined4 param_2,undefined4 param_3,undef
   undefined4 uVar1;
   undefined4 uVar2;
   undefined4 uStack_10;
-  
+
   uStack_10 = param_4;
   uVar1 = ov70_0223F658(0x3d,param_2,&uStack_10);
   uVar2 = ov70_0224342C(*(undefined4 *)(param_1 + 0x30),*(undefined4 *)(param_1 + 0x20),uStack_10,

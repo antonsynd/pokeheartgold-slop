@@ -50,7 +50,7 @@ void ov70_02238D38(void)
   undefined4 in_r3;
   __asm__ volatile("movs %0, r3" : "=l"(in_r3) : : "cc");
 
-  
+
   switch(in_r3) {
   case 1:
   case 2:

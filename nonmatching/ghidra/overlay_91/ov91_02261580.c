@@ -88,7 +88,7 @@ void ov91_02261580(undefined4 *param_1,undefined4 *param_2,undefined4 param_3,un
   undefined4 uStack_20;
   undefined4 uStack_1c;
   undefined4 uStack_18;
-  
+
   param_1[0x27] = param_4;
   uVar1 = func_0x0200a3c8(param_2[0x52],param_3,10,0,0x8c,1,param_4);
   *param_1 = uVar1;

@@ -55,7 +55,7 @@ void ov40_0222CAD8(undefined4 *param_1)
   undefined4 uVar4;
   undefined4 uVar5;
   undefined4 uVar6;
-  
+
   uVar1 = param_1[5];
   uVar6 = param_1[7];
   uVar2 = param_1[6];

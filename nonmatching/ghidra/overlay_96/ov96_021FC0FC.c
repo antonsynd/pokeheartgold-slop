@@ -49,7 +49,7 @@ void ov96_021FC0FC(int param_1,int param_2,int param_3)
 {
   int iVar1;
   int iVar2;
-  
+
   iVar2 = (int)(param_2 + ((uint)(param_2 >> 2) >> 0x1d)) >> 3;
   if (iVar2 != 0) {
     iVar1 = iVar2 + -1;

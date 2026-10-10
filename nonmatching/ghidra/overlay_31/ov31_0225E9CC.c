@@ -48,7 +48,7 @@ void ov31_0225E9CC(int param_1,undefined4 param_2,undefined4 param_3,undefined4 
 
 {
   char cVar1;
-  
+
   cVar1 = *(char *)(param_1 + 0x283);
   if (cVar1 == '\0') {
     param_4 = 0x10;

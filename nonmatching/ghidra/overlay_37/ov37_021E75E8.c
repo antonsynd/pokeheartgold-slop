@@ -51,7 +51,7 @@ undefined4 ov37_021E75E8(int param_1)
   int iVar2;
   int iVar3;
   undefined4 uVar4;
-  
+
   uVar4 = 0;
   iVar3 = 0;
   iVar2 = param_1;

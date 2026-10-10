@@ -52,7 +52,7 @@ void ov40_0222C39C(int param_1)
   int iStack_1c;
   undefined1 auStack_18 [2];
   undefined1 auStack_16 [2];
-  
+
   if (*(int *)(param_1 + 0x818) != 0) {
     iVar1 = 0;
     iStack_1c = 0;

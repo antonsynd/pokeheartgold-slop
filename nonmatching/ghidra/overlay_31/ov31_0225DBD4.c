@@ -50,7 +50,7 @@ void ov31_0225DBD4(int param_1,undefined4 param_2,undefined4 param_3,undefined4 
 {
   undefined4 *puVar1;
   int iVar2;
-  
+
   AddWindowParameterized(*(undefined4 *)(param_1 + 4),param_1 + 0x34,4,2,1,0x1b,2,0xb,1,param_4);
   AddWindowParameterized(*(undefined4 *)(param_1 + 4),param_1 + 0x44,4,2,1,0x1b,4,0xb,0x1d);
   AddWindowParameterized(*(undefined4 *)(param_1 + 4),param_1 + 0x74,4,1,0,9,4,0xb,0x89);

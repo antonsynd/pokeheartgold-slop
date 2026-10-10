@@ -55,7 +55,7 @@ void ov41_02246BEC(undefined4 *param_1,int *param_2)
   int iVar2;
   int iVar3;
   int iStack_20;
-  
+
   iVar2 = 0;
   iStack_20 = 0x87;
   do {

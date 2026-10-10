@@ -69,7 +69,7 @@ ov27_0225C250(undefined4 param_1,undefined4 param_2,undefined4 param_3,undefined
 {
   undefined4 uVar1;
   undefined4 *puVar2;
-  
+
   uVar1 = param_4;
   Heap_Create(3,8,0x18000);
   func_0x020cda64(0);

@@ -48,7 +48,7 @@ void sub_0201576C(undefined4 param_1,undefined2 *param_2)
 
 {
   int iVar1;
-  
+
   iVar1 = sub_02015550(param_1,5);
   if (iVar1 == 0) {
     *param_2 = 0;

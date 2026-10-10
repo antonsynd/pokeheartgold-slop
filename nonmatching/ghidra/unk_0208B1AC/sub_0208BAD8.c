@@ -49,7 +49,7 @@ void sub_0208BAD8(int param_1,byte *param_2,undefined4 param_3,short *param_4)
 {
   byte bVar1;
   int iVar2;
-  
+
   bVar1 = *param_2;
   iVar2 = 0;
   do {

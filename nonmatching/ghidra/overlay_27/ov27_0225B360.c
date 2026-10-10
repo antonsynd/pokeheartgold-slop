@@ -49,7 +49,7 @@ uint ov27_0225B360(int param_1,int param_2,int param_3)
 {
   int iVar1;
   byte *pbVar2;
-  
+
   iVar1 = 0;
   pbVar2 = &ov27_0225D0B4 + param_2 * 3 + param_1 * 0xc;
   do {

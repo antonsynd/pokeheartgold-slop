@@ -55,7 +55,7 @@ void ov07_02221734(undefined4 *param_1,int *param_2,undefined4 param_3,undefined
   int iStack_18;
   int iStack_14;
   int iStack_10;
-  
+
   ov07_0221F9A8(*param_1,&iStack_1c,4,param_4,0,0,0);
   uVar3 = ov07_02221664(param_1);
   *(undefined1 *)(param_1 + 2) = uVar3;

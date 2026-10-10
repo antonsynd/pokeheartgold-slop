@@ -67,7 +67,7 @@ void ov74_02231A1C(int param_1,undefined4 *param_2,uint param_3)
   undefined4 uVar3;
   int iVar4;
   int iStack_24;
-  
+
   iVar4 = param_2[0x11];
   if (iVar4 == 0) {
     iVar4 = 0xff;

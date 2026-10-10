@@ -51,7 +51,7 @@ uint ov07_0223197C(undefined4 param_1)
   uint uVar1;
   int iVar2;
   uint uVar3;
-  
+
   uVar1 = ov07_0221FA04();
   if (1 < uVar1) {
     uVar3 = 0;

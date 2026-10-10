@@ -51,7 +51,7 @@ void sub_02021540(ushort *param_1,int param_2)
   ushort uVar1;
   int iVar2;
   uint uVar3;
-  
+
   sub_02021528();
   uVar3 = 0;
   if (uRam021d21a0 != 0) {

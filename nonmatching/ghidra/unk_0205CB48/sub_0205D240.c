@@ -60,7 +60,7 @@ undefined4 sub_0205D240(undefined4 param_1,undefined4 param_2)
   undefined4 uStack_1c;
   int iStack_18;
   undefined4 uStack_14;
-  
+
   uVar1 = PlayerAvatar_GetMapObject();
   uVar2 = MapObject_GetFieldSystem();
   MapObject_CopyPositionVector(uVar1,&uStack_1c);

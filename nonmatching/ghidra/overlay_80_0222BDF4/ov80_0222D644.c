@@ -69,7 +69,7 @@ void ov80_0222D644(undefined4 param_1,undefined4 *param_2)
   int iStack_44;
   int iStack_28;
   undefined1 auStack_24 [16];
-  
+
   psVar13 = (short *)param_2[9];
   iVar1 = GetBgHOffset(*(undefined4 *)*param_2,2);
   iVar2 = GetBgHOffset(*(undefined4 *)*param_2,2);

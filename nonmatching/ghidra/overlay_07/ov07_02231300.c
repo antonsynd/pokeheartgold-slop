@@ -55,7 +55,7 @@ void ov07_02231300(undefined4 *param_1)
   undefined4 *puVar3;
   undefined4 *puVar4;
   int iStack_18;
-  
+
   iStack_18 = 0;
   puVar4 = param_1 + 0xc;
   puVar2 = param_1;

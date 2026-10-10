@@ -60,7 +60,7 @@ void ov99_021E607C(undefined4 *param_1,undefined4 param_2)
   undefined4 uVar4;
   undefined4 *puVar5;
   uint uVar6;
-  
+
   uVar2 = func_0x0221eefc(param_1[4]);
   puVar5 = (undefined4 *)&ov99_021E958C;
   uVar6 = 0;

@@ -52,7 +52,7 @@ void sub_020606CC(undefined4 param_1,undefined4 param_2)
 {
   int iVar1;
   int iVar2;
-  
+
   iVar1 = MapObject_GetID();
   iVar2 = MetatileBehavior_IsVeryTallGrass(param_2);
   if ((iVar2 == 1) &&

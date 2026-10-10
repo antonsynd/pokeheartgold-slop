@@ -57,7 +57,7 @@ void ov112_021E9998(undefined4 param_1,undefined4 param_2,uint param_3,int param
   uint uStack_30;
   undefined4 *puStack_24;
   int iStack_1c;
-  
+
   iStack_1c = 0;
   puStack_24 = (undefined4 *)0x21ff504;
   uStack_30 = param_3;

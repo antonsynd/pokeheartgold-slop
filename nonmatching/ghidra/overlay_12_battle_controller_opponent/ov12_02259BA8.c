@@ -62,7 +62,7 @@ void ov12_02259BA8(undefined4 param_1,int param_2,undefined1 *param_3)
   undefined4 *puVar2;
   uint uVar3;
   int iVar4;
-  
+
   BattleSystem_GetBattleType();
   puVar2 = (undefined4 *)Heap_Alloc(5,0x9c);
   if ((*(byte *)(param_2 + 0x195) & 1) == 0) {

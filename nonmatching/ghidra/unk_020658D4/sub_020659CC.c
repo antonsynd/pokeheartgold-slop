@@ -64,7 +64,7 @@ void sub_020659CC(undefined4 param_1)
   undefined4 uVar4;
   undefined4 uVar5;
   undefined4 uVar6;
-  
+
   iVar1 = MapObject_GetFieldSystem();
   puVar2 = (undefined1 *)sub_0205F394(param_1);
   MapObject_ClearSingleMovement(param_1);

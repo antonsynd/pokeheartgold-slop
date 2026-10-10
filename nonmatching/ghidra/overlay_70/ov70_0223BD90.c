@@ -54,7 +54,7 @@ void ov70_0223BD90(int param_1,undefined4 param_2,undefined4 param_3,undefined4 
 {
   undefined4 uVar1;
   int iVar2;
-  
+
   switch(param_2) {
   case 0:
     *(undefined4 *)(param_1 + 0x2c) = 3;

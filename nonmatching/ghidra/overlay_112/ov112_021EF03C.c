@@ -54,7 +54,7 @@ undefined4 ov112_021EF03C(int param_1)
 {
   int iVar1;
   undefined4 *puVar2;
-  
+
   puVar2 = (undefined4 *)(param_1 + 0x1d764);
   switch(*puVar2) {
   case 0:

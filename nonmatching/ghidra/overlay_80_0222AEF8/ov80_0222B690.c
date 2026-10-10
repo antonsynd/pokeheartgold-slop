@@ -49,7 +49,7 @@ void ov80_0222B690(int param_1,undefined4 param_2,undefined2 *param_3,int param_
 {
   undefined2 uVar1;
   int iVar2;
-  
+
   *(char *)(param_4 + 0xa1a) = *(char *)(param_4 + 0xa1a) + '\x01';
   iVar2 = sub_0203769C();
   if ((param_1 != iVar2) && (iVar2 = sub_0203769C(), iVar2 != 0)) {

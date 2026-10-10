@@ -48,7 +48,7 @@ void ov92_022613F0(int *param_1)
 
 {
   int iVar1;
-  
+
   if (param_1[1] != 0) {
     if (*param_1 == 0) {
       ov92_022610E8(param_1[2],param_1 + 0x15);

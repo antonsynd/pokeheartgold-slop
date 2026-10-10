@@ -48,7 +48,7 @@ void ov96_0220C3E0(int param_1)
 
 {
   undefined4 uVar1;
-  
+
   *(uint *)(param_1 + 0x38) = *(uint *)(param_1 + 0x38) & 0xffffc003 | 0x4000;
   uVar1 = SysTask_CreateOnMainQueue(0x220c15d,param_1,1);
   *(undefined4 *)(param_1 + 0x34) = uVar1;

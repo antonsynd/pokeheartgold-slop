@@ -51,7 +51,7 @@ short ov99_021E6FA0(int param_1)
   short sVar1;
   short sVar2;
   int iVar3;
-  
+
   sVar2 = 0;
   if (param_1 == 0) {
     GF_AssertFail();

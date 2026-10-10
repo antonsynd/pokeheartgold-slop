@@ -51,7 +51,7 @@ void ov103_021EE430(int param_1,undefined4 param_2,int param_3,undefined4 param_
 
 {
   undefined4 uVar1;
-  
+
   uVar1 = NewString_ReadMsgData(param_2,param_4);
   ov103_021EE3E4(param_1 + 0x48 + param_3 * 0x10,uVar1,param_5,param_6,param_7,param_8,param_9,
                  param_4);

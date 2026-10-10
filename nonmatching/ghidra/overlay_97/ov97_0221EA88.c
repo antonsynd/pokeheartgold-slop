@@ -57,7 +57,7 @@ void ov97_0221EA88(undefined4 param_1,undefined4 param_2,byte *param_3)
   byte bStack_1b;
   byte bStack_1a;
   undefined1 auStack_18 [8];
-  
+
   Party_GetMonAprijuiceModifiers(param_1,auStack_18,param_2);
   uVar1 = Party_GetMonByIndex(param_1,param_2);
   CalcMonPokeathlonStars(&uStack_20,uVar1,auStack_18,0x5c);

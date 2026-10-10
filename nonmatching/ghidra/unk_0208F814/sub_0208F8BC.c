@@ -49,7 +49,7 @@ void sub_0208F8BC(int param_1,undefined4 param_2,undefined1 *param_3,int param_4
   undefined1 uVar1;
   int iVar2;
   undefined1 *puVar3;
-  
+
   if (param_1 != 0) {
     iVar2 = 10;
     puVar3 = (undefined1 *)(param_4 + param_1 * 10 + 0x93bd);

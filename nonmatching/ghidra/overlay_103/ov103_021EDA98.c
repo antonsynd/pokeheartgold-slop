@@ -54,7 +54,7 @@ undefined4 ov103_021EDA98(int param_1,undefined4 param_2,undefined4 param_3)
   undefined1 uStack_17;
   undefined1 auStack_16 [2];
   undefined1 auStack_14 [4];
-  
+
   sub_02019B1C(*(undefined4 *)(*(int *)(param_1 + 0xc) + 4),param_2,&uStack_17,&uStack_18);
   sub_02019B44(*(undefined4 *)(*(int *)(param_1 + 0xc) + 4),param_2,auStack_14,auStack_16);
   iVar1 = *(int *)(param_1 + 0xc);

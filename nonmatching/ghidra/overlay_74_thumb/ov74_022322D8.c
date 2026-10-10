@@ -52,7 +52,7 @@ void ov74_022322D8(int param_1)
   int iVar2;
   int iVar3;
   int iVar4;
-  
+
   ov74_02231DDC(param_1 + 0x388,0xe4,0xb0,0x32,0x20);
   uVar1 = ov74_02232284(param_1,0xe4,0xb0,6,1);
   *(undefined4 *)(param_1 + 0x398) = uVar1;

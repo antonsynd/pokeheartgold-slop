@@ -51,7 +51,7 @@ undefined4 ov07_02225AE0(undefined4 param_1,int param_2)
 
 {
   undefined4 uVar1;
-  
+
   if (param_2 < 9) {
     if (1 < param_2) {
       if (param_2 == 2) {

@@ -52,7 +52,7 @@ void sub_02057314(void)
 {
   int iVar1;
   int iVar2;
-  
+
   iVar2 = 0;
   do {
     iVar1 = sub_020373B4((ushort)iVar2);

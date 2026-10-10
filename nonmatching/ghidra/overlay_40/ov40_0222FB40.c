@@ -50,7 +50,7 @@ void ov40_0222FB40(int param_1)
 {
   int iVar1;
   undefined1 auStack_c [4];
-  
+
   func_0x0202fbf0(*(undefined4 *)(param_1 + 0x830),0x7e,auStack_c);
   iVar1 = *(int *)(param_1 + 0x8b4);
   sub_02030814(iVar1,iVar1 + 0x80,iVar1 + 0xe4,0,*(undefined4 *)(param_1 + 0x830));

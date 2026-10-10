@@ -49,7 +49,7 @@ void ov40_0223A83C(int param_1)
 
 {
   int iVar1;
-  
+
   iVar1 = *(int *)(param_1 + 0x860);
   sub_02030938(*(undefined4 *)(iVar1 + 0x224));
   sub_020314BC(*(undefined4 *)(iVar1 + 0x194));

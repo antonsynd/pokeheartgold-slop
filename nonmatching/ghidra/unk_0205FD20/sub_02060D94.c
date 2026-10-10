@@ -52,7 +52,7 @@ undefined4 sub_02060D94(undefined4 param_1,int param_2,undefined4 param_3,int pa
 {
   int iVar1;
   int iVar2;
-  
+
   iVar1 = MapObject_GetInitialX();
   iVar2 = MapObject_GetXRange(param_1);
   if ((iVar2 != -1) && ((param_2 < iVar1 - iVar2 || (iVar1 + iVar2 < param_2)))) {

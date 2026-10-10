@@ -57,7 +57,7 @@ int BN_gen_exp_bits(undefined4 *param_1,undefined4 *param_2,undefined4 param_3,i
   undefined *puVar4;
   int iVar5;
   undefined1 uVar6;
-  
+
   param_4 = param_4 + *param_4 * 5 + 1;
   iVar1 = param_1[1];
   puVar4 = (undefined *)0x0;

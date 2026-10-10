@@ -51,7 +51,7 @@ int ov14_021E79D8(undefined4 param_1,undefined4 param_2)
   int iVar1;
   uint uVar2;
   undefined *puVar3;
-  
+
   puVar3 = &ov14_021F7BD8;
   uVar2 = 0;
   do {

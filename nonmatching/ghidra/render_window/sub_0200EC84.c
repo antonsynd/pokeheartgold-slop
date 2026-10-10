@@ -48,7 +48,7 @@ void sub_0200EC84(undefined *param_1,int param_2,uint param_3,int param_4,int pa
 
 {
   uint uVar1;
-  
+
   if (param_4 == 0) {
     uVar1 = param_5 + 0x21;
   }

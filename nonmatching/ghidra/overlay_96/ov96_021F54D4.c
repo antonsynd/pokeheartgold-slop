@@ -58,7 +58,7 @@ undefined4 ov96_021F54D4(undefined4 param_1)
   undefined4 uVar1;
   undefined4 uVar2;
   uint uVar3;
-  
+
   PokeathlonCourse_GetHeapAllocPtr4();
   uVar1 = PokeathlonCourse_GetGraphicsSystem(param_1);
   ov96_021E9510();

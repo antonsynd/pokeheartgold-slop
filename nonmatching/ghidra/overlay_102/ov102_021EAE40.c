@@ -60,7 +60,7 @@ void ov102_021EAE40(int param_1,undefined4 param_2)
   undefined4 uVar1;
   undefined4 uVar2;
   undefined4 uVar3;
-  
+
   FillWindowPixelBuffer(*(undefined4 *)(param_1 + 0x5c),9);
   switch(param_2) {
   case 0:

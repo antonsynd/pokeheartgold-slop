@@ -50,7 +50,7 @@ void ov112_021EA010(int param_1,int param_2,undefined4 param_3,undefined4 param_
 
 {
   undefined4 uVar1;
-  
+
   uVar1 = param_4;
   FillWindowPixelBuffer(param_1 + 0x1eba8 + param_2 * 0x10,0);
   AddTextPrinterParameterizedWithColor

@@ -63,7 +63,7 @@ int ov102_021EA2B4(int param_1,undefined4 param_2,int param_3,int param_4,undefi
   int iStack_18;
   undefined4 uStack_14;
   int iStack_10;
-  
+
   uStack_30 = *(undefined4 *)(param_1 + 0x24);
   iStack_28 = param_3 << 0xc;
   uStack_20 = 0;

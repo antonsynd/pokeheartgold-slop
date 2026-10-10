@@ -56,7 +56,7 @@ void ov01_021F4C6C(int param_1,int param_2,int param_3,undefined4 param_4,undefi
 {
   undefined4 uVar1;
   int iVar2;
-  
+
   uVar1 = AreaDataManager_GetMapTexture(param_4);
   ov01_021F67B4(*(undefined4 *)(param_1 + 0x100),*(undefined4 *)(param_3 + 4),param_2 + 0x800,
                 param_2 + 0x854,uVar1,param_4);

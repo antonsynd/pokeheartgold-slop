@@ -49,7 +49,7 @@ void ov01_021F28EC(undefined4 param_1,undefined4 param_2)
 
 {
   undefined4 uVar1;
-  
+
   uVar1 = ov01_021F28B8(param_1,param_2,0);
   FieldSystem_CreateTask(param_1,0x21f2945,uVar1);
   return;

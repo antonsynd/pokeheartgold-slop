@@ -68,7 +68,7 @@ void ov91_0225F508(int param_1,undefined4 param_2)
 
 {
   undefined4 uVar1;
-  
+
   HeapExp_FndInitAllocator(param_1 + 0x86cc,param_2,0x20);
   ov91_0225F414();
   ov91_0225F4C0(param_1 + 0x1ab4,*(undefined4 *)(param_1 + 0x10),*(undefined4 *)(param_1 + 0x14),

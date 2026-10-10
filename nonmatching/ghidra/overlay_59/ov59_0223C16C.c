@@ -59,7 +59,7 @@ void ov59_0223C16C(undefined4 param_1,undefined4 *param_2,undefined4 param_3,und
   char cVar1;
   int iVar2;
   undefined4 *puVar3;
-  
+
   puVar3 = (undefined4 *)*param_2;
   switch(*(undefined1 *)((int)param_2 + 5)) {
   case 0:

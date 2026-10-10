@@ -52,7 +52,7 @@ undefined4 sub_02062428(undefined4 param_1)
 
 {
   int iVar1;
-  
+
   sub_02062400();
   iVar1 = MapObject_TestFlagsBits(param_1,0x20);
   if (iVar1 == 0) {

@@ -54,7 +54,7 @@ void ov108_021E9230(undefined4 *param_1,undefined4 param_2,undefined4 param_3,un
 
 {
   undefined4 uVar1;
-  
+
   uVar1 = Camera_New(param_2);
   *param_1 = uVar1;
   param_1[0x37] = 0;

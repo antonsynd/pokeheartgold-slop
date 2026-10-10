@@ -58,7 +58,7 @@ void ov112_021E7CC8(int param_1)
 {
   undefined4 uVar1;
   undefined4 uVar2;
-  
+
   uVar1 = Save_PlayerData_GetProfile(*(undefined4 *)(param_1 + 0x20));
   uVar1 = func_0x02028f68(uVar1,0x9a);
   *(undefined4 *)(param_1 + 0x1024) = 1;

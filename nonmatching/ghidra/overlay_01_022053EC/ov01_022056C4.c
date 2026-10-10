@@ -53,7 +53,7 @@ void ov01_022056C4(undefined4 param_1,undefined4 param_2)
   undefined4 uVar1;
   int iVar2;
   int iVar3;
-  
+
   uVar1 = MapObject_GetFieldSystem();
   iVar2 = MapObject_GetXCoord(param_1);
   iVar3 = MapObject_GetZCoord(param_1);

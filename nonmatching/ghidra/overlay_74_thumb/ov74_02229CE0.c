@@ -51,7 +51,7 @@ void ov74_02229CE0(undefined4 param_1,undefined4 param_2,undefined4 param_3)
 
 {
   int iVar1;
-  
+
   iVar1 = sub_02037474();
   if (iVar1 == 0) {
     sub_02038114(param_2,param_3);

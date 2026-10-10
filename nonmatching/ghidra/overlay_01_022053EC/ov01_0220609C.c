@@ -49,7 +49,7 @@ void ov01_0220609C(int param_1,undefined4 param_2)
 
 {
   int iVar1;
-  
+
   iVar1 = FollowMon_IsActive();
   if (iVar1 != 0) {
     MapObject_SetFacingDirection(*(undefined4 *)(param_1 + 0xe4),param_2);

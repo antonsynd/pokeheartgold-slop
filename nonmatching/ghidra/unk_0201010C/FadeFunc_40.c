@@ -55,7 +55,7 @@ void FadeFunc_40(int param_1)
 
 {
   if (*(int *)(param_1 + 0xc) == 0) {
-                    
+
     _UNK_0210f6a8 = &UNK_020f5d98;
     sub_0200FCDC(*(undefined2 *)(param_1 + 0x24));
     sub_02012B1C(param_1,&UNK_0210f69c);

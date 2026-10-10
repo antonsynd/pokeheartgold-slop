@@ -60,7 +60,7 @@ void ov08_0221F7C0(int *param_1)
   int iVar5;
   uint uVar6;
   uint uVar7;
-  
+
   uVar7 = (uint)*(byte *)((int)param_1 + 0x2075) * 0x60000 >> 0x10;
   FillWindowPixelBuffer((undefined *)(param_1[0x81c] + uVar7 * 0x10),0);
   iVar2 = (uVar7 + 1) * 0x10;

@@ -51,7 +51,7 @@ undefined4 ov01_021EBA08(int *param_1,int param_2)
   int iVar1;
   undefined4 uVar2;
   int iVar3;
-  
+
   iVar3 = *param_1 + param_2 * 0x1c;
   if (*(int *)(iVar3 + 8) != 0) {
     return 1;

@@ -51,7 +51,7 @@ void ov07_02225504(undefined4 param_1,char *param_2)
 
 {
   int iVar1;
-  
+
   if (*param_2 == '\0') {
     iVar1 = ov07_022222B4(param_2 + 0x30);
     if (iVar1 == 0) {

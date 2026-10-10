@@ -52,7 +52,7 @@ undefined4 ov13_02225710(uint *param_1,byte *param_2,int param_3)
   uint uVar2;
   uint *puVar3;
   int iStack_30;
-  
+
   iStack_30 = 0;
   *param_1 = (uint)*param_2 << 0x18 ^ (uint)param_2[1] << 0x10 ^ (uint)param_2[2] << 8 ^
              (uint)param_2[3];

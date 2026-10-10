@@ -50,7 +50,7 @@ void ov70_022450B8(undefined4 param_1,undefined4 param_2,undefined4 param_3,unde
 
 {
   undefined4 uVar1;
-  
+
   uVar1 = ov70_02245018();
   AddTextPrinterParameterizedWithColor(param_1,4,param_2,uVar1,param_4,0,param_6,0);
   return;

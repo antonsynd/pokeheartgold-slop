@@ -84,7 +84,7 @@ void ov49_0225B518(char *param_1,int param_2,int param_3,undefined4 param_4)
   char acStack_20 [4];
   undefined2 auStack_1c [2];
   undefined4 uStack_18;
-  
+
   iVar2 = param_2 + 0x3c;
   uVar7 = *(undefined4 *)(param_2 + 0x34);
   uStack_18 = param_4;

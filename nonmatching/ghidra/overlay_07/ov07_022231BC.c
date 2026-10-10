@@ -57,7 +57,7 @@ void ov07_022231BC(undefined4 param_1,undefined4 param_2,undefined4 param_3,unde
   int iVar4;
   undefined1 auStack_4c [52];
   undefined4 uStack_18;
-  
+
   uStack_18 = param_4;
   puVar2 = (undefined1 *)Heap_Alloc(5,0x1cc);
   if (puVar2 == (undefined1 *)0x0) {

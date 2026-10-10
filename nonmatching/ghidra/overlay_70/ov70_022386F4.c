@@ -63,7 +63,7 @@ undefined4 ov70_022386F4(undefined4 param_1)
 
 {
   undefined4 *puVar1;
-  
+
   puVar1 = (undefined4 *)OverlayManager_GetData();
   Heap_Free(puVar1[0x13]);
   func_0x02091624();

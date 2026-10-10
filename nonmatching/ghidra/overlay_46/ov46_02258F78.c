@@ -95,7 +95,7 @@ void ov46_02258F78(undefined4 *param_1,undefined4 param_2)
   int iStack_2c;
   int iStack_28;
   int iStack_18;
-  
+
   uRam04000050 = 0;
   uRam04001050 = 0;
   GfGfx_SetBanks(&ov46_022595B4);

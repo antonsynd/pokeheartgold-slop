@@ -47,7 +47,7 @@ void ov07_02230170(int param_1)
 
 {
   int iVar1;
-  
+
   iVar1 = *(int *)(param_1 + 0x2c);
   if (iVar1 == 0) {
     *(undefined4 *)(param_1 + 0x18) = 0x7fff;

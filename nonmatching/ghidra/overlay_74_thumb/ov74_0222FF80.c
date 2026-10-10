@@ -54,7 +54,7 @@ void ov74_0222FF80(void)
   undefined4 *puVar2;
   undefined4 uVar3;
   int iVar4;
-  
+
   puVar2 = (undefined4 *)ov74_022310C4();
   uVar3 = ov74_02231100();
   *puVar2 = uVar3;

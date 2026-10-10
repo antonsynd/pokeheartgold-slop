@@ -60,7 +60,7 @@ void ov07_02220030(int param_1,undefined4 param_2,undefined4 param_3,undefined4 
   int iStack_20;
   int iStack_1c;
   undefined4 uStack_18;
-  
+
   uStack_18 = param_4;
   uVar1 = sub_02015504();
   uVar2 = ov07_0221C470();

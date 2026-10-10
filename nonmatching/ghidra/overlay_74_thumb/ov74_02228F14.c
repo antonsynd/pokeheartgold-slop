@@ -56,7 +56,7 @@ undefined4 ov74_02228F14(int param_1,undefined4 param_2,undefined4 param_3,undef
   int iVar1;
   undefined1 auStack_60 [84];
   undefined4 uStack_c;
-  
+
   uStack_c = param_4;
   iVar1 = WindowIsInUse(param_1 + 0x18);
   if (iVar1 == 0) {

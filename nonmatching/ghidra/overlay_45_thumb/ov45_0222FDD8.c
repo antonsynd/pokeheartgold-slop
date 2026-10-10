@@ -55,7 +55,7 @@ void ov45_0222FDD8(undefined4 param_1,undefined4 param_2,uint param_3,undefined4
   uint uVar2;
   int iVar3;
   int iVar4;
-  
+
   iVar1 = ov45_0222FB24(iRam022577c0,param_1,0);
   if (iVar1 != -1) {
     switch(param_2) {

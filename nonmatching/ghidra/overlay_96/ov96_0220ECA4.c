@@ -63,7 +63,7 @@ ov96_0220ECA4(int param_1,int param_2,undefined2 param_3,undefined2 param_4,unde
   undefined4 *puVar6;
   undefined4 auStack_7c [13];
   undefined4 auStack_48 [13];
-  
+
   puVar5 = (undefined4 *)&ov96_0221CFEC;
   puVar4 = auStack_48;
   iVar3 = 6;

@@ -57,7 +57,7 @@ void ov90_022596C8(int param_1,undefined4 param_2)
 {
   undefined4 uVar1;
   undefined4 uVar2;
-  
+
   uVar1 = NARC_New(200);
   GfGfxLoader_GXLoadPalFromOpenNarc(uVar1,4,0,0,0x120,param_2);
   GfGfxLoader_LoadCharDataFromOpenNarc(uVar1,6,*(undefined4 *)(param_1 + 0x30),1,0,0,0,param_2);

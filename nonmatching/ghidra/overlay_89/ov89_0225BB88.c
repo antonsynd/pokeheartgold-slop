@@ -49,7 +49,7 @@ undefined4 ov89_0225BB88(undefined4 param_1,int param_2,int param_3)
 {
   int iVar1;
   int iVar2;
-  
+
   iVar2 = 0;
   param_2 = param_2 + 0x18c;
   do {

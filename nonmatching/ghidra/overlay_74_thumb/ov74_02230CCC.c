@@ -50,7 +50,7 @@ void ov74_02230CCC(void)
 
 {
   int iVar1;
-  
+
   iVar1 = ov74_02231184();
   if (*(char *)(iVar1 + 0x18) == '\x01') {
     ov74_02230BB4();

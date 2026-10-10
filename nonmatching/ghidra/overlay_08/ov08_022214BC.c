@@ -48,7 +48,7 @@ int ov08_022214BC(int param_1,int param_2,int param_3)
 
 {
   int iVar1;
-  
+
   if (param_2 < param_3) {
     iVar1 = func_0x020f2ba4((param_1 + 0x2c) * (param_3 - param_2) * 0x10000,300);
     return (param_3 - (iVar1 >> 0x10)) * 0x10000 >> 0x10;

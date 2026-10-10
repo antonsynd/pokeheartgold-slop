@@ -77,7 +77,7 @@ void ov49_0225BBD0(undefined4 param_1,undefined4 param_2,undefined4 *param_3,und
   undefined4 uVar2;
   undefined4 uVar3;
   undefined4 uVar4;
-  
+
   ov49_0225B438(param_5);
   iVar1 = func_0x0222a9cc(param_9);
   if (iVar1 == 0) {

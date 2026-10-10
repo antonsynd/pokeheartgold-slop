@@ -57,7 +57,7 @@ void ov40_0222D55C(undefined *param_1)
   undefined *puVar4;
   int iStack_20;
   undefined *apuStack_1c [2];
-  
+
   iStack_20 = 0;
   puVar4 = param_1 + 0x5fc;
   puVar3 = param_1 + 0x534;

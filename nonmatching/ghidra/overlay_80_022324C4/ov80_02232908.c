@@ -65,7 +65,7 @@ void ov80_02232908(int param_1)
   undefined1 auStack_188 [24];
   undefined2 auStack_170 [6];
   undefined1 auStack_164 [336];
-  
+
   ov80_022329B4();
   uVar4 = 0;
   iVar7 = param_1;

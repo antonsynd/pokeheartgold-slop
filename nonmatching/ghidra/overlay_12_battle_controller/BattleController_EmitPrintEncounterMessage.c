@@ -50,7 +50,7 @@ void BattleController_EmitPrintEncounterMessage
 {
   undefined4 uStack_c;
   undefined4 uStack_8;
-  
+
   uStack_c = 0x22;
   uStack_8 = param_4;
   ov12_02262240(param_1,1,param_3,&uStack_c,4);

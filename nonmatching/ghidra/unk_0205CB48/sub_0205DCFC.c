@@ -63,7 +63,7 @@ undefined4 sub_0205DCFC(undefined *param_1,undefined *param_2,int param_3)
   uint uVar4;
   uint uVar5;
   int iVar6;
-  
+
   if ((param_3 != -1) && (iVar2 = PlayerAvatar_GetState(param_1), iVar2 == 1)) {
     puVar3 = MapObject_GetFieldSystem(param_2);
     uVar4 = MapObject_GetXCoord(param_2);

@@ -52,7 +52,7 @@ void ov15_021FE9B0(undefined4 param_1,undefined4 param_2,undefined2 param_3,unde
   undefined4 uVar1;
   int iStack_18;
   undefined4 uStack_14;
-  
+
   uStack_14 = param_4;
   uVar1 = ov15_021FE990(param_1,&iStack_18);
   func_0x0201d9d8(param_2,*(undefined4 *)(iStack_18 + 0x14),0,0,0x68,0x10,0,param_3,0x18,0x10);

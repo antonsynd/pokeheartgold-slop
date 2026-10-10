@@ -52,7 +52,7 @@ void sub_0200F6D4(int param_1,undefined4 param_2,undefined4 param_3)
 {
   undefined4 uVar1;
   undefined1 auStack_24 [16];
-  
+
   uVar1 = PokepicManager_Create(*(undefined2 *)(param_1 + 0x162));
   GetMonSpriteCharAndPlttNarcIdsEx(auStack_24,param_2,param_3,2,0,0,0);
   sub_0200F748(param_1,auStack_24);

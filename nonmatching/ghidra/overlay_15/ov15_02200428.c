@@ -49,7 +49,7 @@ void ov15_02200428(int param_1)
 {
   int iVar1;
   int iVar2;
-  
+
   iVar1 = 0;
   iVar2 = param_1;
   do {

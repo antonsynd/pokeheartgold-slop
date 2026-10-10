@@ -53,7 +53,7 @@ void ov07_02225DC4(undefined4 param_1,char *param_2,undefined4 param_3,undefined
 {
   char cVar1;
   int iVar2;
-  
+
   if (*param_2 == '\0') {
     ov07_022227A8(param_2 + 0xd4,(int)(short)*(undefined4 *)(param_2 + 4),
                   (int)(short)*(undefined4 *)(param_2 + 8),*(undefined4 *)(param_2 + 0xc),

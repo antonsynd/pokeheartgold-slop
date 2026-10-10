@@ -77,7 +77,7 @@ void ov40_02243C54(int *param_1)
   undefined4 local_20;
   undefined4 local_1c;
   undefined4 local_18;
-  
+
   local_4c = 0;
   puVar3 = (undefined *)param_1[0x89];
   iVar8 = 0;

@@ -70,7 +70,7 @@ void MapLoadManager_Tick(int param_1)
   int iVar8;
   undefined4 uStack_1c;
   undefined4 uStack_18;
-  
+
   piVar7 = (int *)(param_1 + 0xd0);
   iVar8 = param_1 + 4 + (uint)*(byte *)(param_1 + 0xa2) * 0x30;
   if ((*(int *)(param_1 + 0xf0) == 1) && (piVar6 = *(int **)(param_1 + 0xdc), piVar6 != (int *)0x0))

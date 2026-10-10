@@ -65,7 +65,7 @@ undefined4 ov81_0223E234(undefined4 param_1)
   int iVar4;
   int iVar5;
   int iVar6;
-  
+
   iVar2 = OverlayManager_GetData();
   iVar3 = PaletteData_GetSelectedBuffersBitmask(*(undefined4 *)(iVar2 + 0x1a0));
   if (iVar3 == 0) {

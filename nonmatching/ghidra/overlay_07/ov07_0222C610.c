@@ -56,7 +56,7 @@ void ov07_0222C610(int param_1)
   undefined4 uVar1;
   undefined4 uStack_10;
   undefined4 uStack_c;
-  
+
   Pokepic_SetAttr(*(undefined4 *)(param_1 + 0x5c),0,
                   (int)*(short *)(param_1 + 0x60) + (int)*(short *)(param_1 + 0x10));
   Pokepic_SetAttr(*(undefined4 *)(param_1 + 0x5c),1,

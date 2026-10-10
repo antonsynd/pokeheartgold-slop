@@ -53,7 +53,7 @@ void ov73_021E7964(int param_1,undefined4 *param_2)
   undefined4 *puVar5;
   int iVar6;
   undefined4 *puVar7;
-  
+
   iVar6 = 5;
   puVar7 = (undefined4 *)(param_1 + 0xdc);
   do {

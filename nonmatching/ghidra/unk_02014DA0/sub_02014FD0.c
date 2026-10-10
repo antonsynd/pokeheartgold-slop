@@ -51,7 +51,7 @@ int sub_02014FD0(int param_1)
   int iVar1;
   uint uVar2;
   int iVar3;
-  
+
   iVar1 = iRam021d10ac;
   iVar3 = *(int *)(iRam021d10ac + 0x10);
   uVar2 = iVar3 + param_1;

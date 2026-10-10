@@ -48,7 +48,7 @@ undefined4 ov47_02259D58(undefined4 *param_1,undefined4 param_2,int param_3,unde
 
 {
   undefined4 uVar1;
-  
+
   if (param_1[3] == 0) {
     uVar1 = ov47_02258D44(param_2,*param_1,param_3,param_1,param_4);
     return uVar1;

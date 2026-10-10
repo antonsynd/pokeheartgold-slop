@@ -48,7 +48,7 @@ void ov91_0225D6A0(int param_1)
 
 {
   int iVar1;
-  
+
   iVar1 = 0;
   do {
     ov91_0225D84C(param_1);

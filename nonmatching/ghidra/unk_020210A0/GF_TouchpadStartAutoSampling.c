@@ -53,7 +53,7 @@ GF_TouchpadStartAutoSampling
 {
   int iVar1;
   int iVar2;
-  
+
   iVar2 = 0;
   do {
     func_0x020da208(0,param_1,0x21d21a4,9,param_4);

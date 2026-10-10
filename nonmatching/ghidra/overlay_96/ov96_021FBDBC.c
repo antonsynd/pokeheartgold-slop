@@ -48,7 +48,7 @@ void ov96_021FBDBC(int param_1)
 {
   int iVar1;
   int iVar2;
-  
+
   *(int *)(param_1 + 0x230) = *(int *)(param_1 + 0x230) + 1;
   iVar1 = 0;
   iVar2 = param_1;

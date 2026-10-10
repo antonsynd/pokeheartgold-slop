@@ -65,7 +65,7 @@ undefined4 ov96_021F81CC(undefined4 *param_1,undefined *param_2)
   int iVar4;
   undefined4 *puVar5;
   int iVar6;
-  
+
   switch(*(undefined1 *)(param_1 + 0x16)) {
   case 0:
     ov96_021F8128(param_1 + 0x11,-0x50,0);

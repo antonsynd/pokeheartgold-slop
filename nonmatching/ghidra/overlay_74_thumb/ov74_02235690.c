@@ -57,7 +57,7 @@ void ov74_02235690(void)
   undefined4 uVar1;
   int iVar2;
   int iVar3;
-  
+
   func_0x020b78d4();
   func_0x0200b150(0,0x7e,0,0x20,0,0x7e,0,0x20,uRam0223d45c);
   uRam0223d488 = G2dRenderer_Init(0x80,0x223d48c,uRam0223d45c);

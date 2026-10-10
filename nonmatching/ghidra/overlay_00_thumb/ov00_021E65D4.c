@@ -53,7 +53,7 @@ int ov00_021E65D4(undefined4 param_1,undefined4 param_2,undefined4 param_3)
 {
   undefined4 uVar1;
   int iVar2;
-  
+
   uVar1 = func_0x020d3a38();
   iVar2 = func_0x020b53a0(*(undefined4 *)(iRam0221a680 + 0xf94),param_2,param_3);
   if (iVar2 == 0) {

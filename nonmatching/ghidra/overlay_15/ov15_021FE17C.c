@@ -50,7 +50,7 @@ void ov15_021FE17C(undefined4 *param_1)
   uint *puVar1;
   undefined4 *puVar2;
   int iVar3;
-  
+
   if (param_1[0x2d] == 0) {
     puVar1 = (uint *)0x2200908;
     iVar3 = 0;

@@ -50,7 +50,7 @@ void ov96_021FAB24(undefined *param_1,ushort *param_2)
 {
   int iVar1;
   int iVar2;
-  
+
   iVar1 = *(int *)(param_2 + 0xe);
   if (iVar1 == 0) {
     if (0x6f < *param_2) {

@@ -70,7 +70,7 @@ void ov96_022002F8(undefined4 *param_1,undefined2 *param_2)
   undefined4 uStack_20;
   undefined4 uStack_1c;
   undefined4 uStack_18;
-  
+
   uVar4 = NARC_New(0x14,*param_1);
   uVar5 = sub_02074490();
   GfGfxLoader_GXLoadPal(0x14,uVar5,5,0x20,0x60,*param_1);

@@ -92,7 +92,7 @@ void ov102_021E91C4(int param_1,undefined4 param_2,undefined4 param_3,undefined4
   undefined4 uStack_20;
   undefined4 uStack_1c;
   undefined4 uStack_18;
-  
+
   uStack_18 = param_4;
   puVar1 = FontSystem_NewInit(2,0x23);
   *(undefined **)(param_1 + 0x1fc) = puVar1;

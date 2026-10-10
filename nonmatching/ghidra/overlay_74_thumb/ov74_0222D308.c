@@ -53,7 +53,7 @@ undefined4 ov74_0222D308(void)
 {
   int iVar1;
   int iVar2;
-  
+
   iVar1 = OverlayManager_GetData();
   ov74_0222D448();
   iVar2 = SaveMysteryGift_HasAnyGift

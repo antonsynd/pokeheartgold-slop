@@ -59,7 +59,7 @@ void ov65_0221DEA0(undefined4 param_1,int param_2,int param_3)
   int iVar4;
   int iVar5;
   int iVar6;
-  
+
   uVar3 = PlayerProfile_GetNamePtr();
   CopyU16StringArray(param_3,uVar3);
   uVar3 = PlayerProfile_GetTrainerID(param_1);

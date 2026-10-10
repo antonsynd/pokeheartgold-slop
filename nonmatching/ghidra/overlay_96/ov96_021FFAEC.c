@@ -52,7 +52,7 @@ void ov96_021FFAEC(int param_1,undefined4 *param_2,undefined4 param_3)
   undefined4 uStack_18;
   int iStack_14;
   undefined4 uStack_10;
-  
+
   uStack_18 = *param_2;
   iStack_14 = param_2[1];
   uStack_10 = param_2[2];

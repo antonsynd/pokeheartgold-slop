@@ -49,7 +49,7 @@ undefined4 ov39_02228F54(int param_1,undefined4 param_2,undefined4 param_3,undef
 
 {
   undefined4 uVar1;
-  
+
   uVar1 = 0;
   switch(*(undefined4 *)(param_1 + 0x10)) {
   case 1:

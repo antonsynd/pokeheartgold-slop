@@ -60,7 +60,7 @@ void ov27_0225C398(undefined4 param_1,undefined4 param_2)
   int iVar1;
   int iVar2;
   int iVar3;
-  
+
   iVar1 = SysTask_GetData(param_2);
   SpriteTransfer_DeleteCharTransferTask(*(undefined4 *)(iVar1 + 0x354));
   SpriteTransfer_DeletePlttTransferTask(*(undefined4 *)(iVar1 + 0x358));

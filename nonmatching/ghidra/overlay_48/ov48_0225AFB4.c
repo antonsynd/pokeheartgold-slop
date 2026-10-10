@@ -48,7 +48,7 @@ void ov48_0225AFB4(int param_1,undefined2 *param_2)
 
 {
   int iVar1;
-  
+
   ov48_0225A650(param_2,0,0);
   if ((*(short *)(param_1 + 8) == 0) &&
      (iVar1 = (int)*(short *)(*(int *)(param_1 + 0xc) + 2),

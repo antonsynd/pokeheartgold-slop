@@ -50,7 +50,7 @@ void ov52_021E9260(int param_1)
   int iVar2;
   undefined1 *puVar3;
   undefined1 *puVar4;
-  
+
   puVar4 = (undefined1 *)(param_1 + 0x431c);
   puVar3 = (undefined1 *)(param_1 + 0x432d);
   iVar2 = 0x11;

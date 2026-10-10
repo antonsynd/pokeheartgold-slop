@@ -53,7 +53,7 @@ void sub_0208B55C(int param_1,undefined4 param_2,undefined4 param_3,undefined4 p
   ushort uVar1;
   uint uVar2;
   uint uVar3;
-  
+
   sub_0208BA60();
   uVar3 = 0;
   do {

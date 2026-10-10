@@ -56,7 +56,7 @@ void ov14_021F0F0C(int param_1,undefined4 param_2)
   byte bVar1;
   undefined4 uVar2;
   int iVar3;
-  
+
   bVar1 = *(byte *)(param_1 + 0x1f);
   *(undefined1 *)(param_1 + 0x1f) = *(undefined1 *)(param_1 + 0x25);
   if (*(byte *)(param_1 + 0x25) < bVar1) {

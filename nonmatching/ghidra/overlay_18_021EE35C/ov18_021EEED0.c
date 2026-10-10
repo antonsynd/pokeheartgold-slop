@@ -52,7 +52,7 @@ void ov18_021EEED0(int param_1,undefined4 param_2,undefined4 param_3,undefined4 
 
 {
   int iVar1;
-  
+
   iVar1 = param_1 + 0xc;
   FillWindowPixelBuffer(iVar1,0);
   switch(param_2) {

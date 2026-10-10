@@ -54,7 +54,7 @@ void ov49_02264D9C(undefined4 param_1,undefined4 param_2,undefined4 param_3,unde
 
 {
   undefined4 uVar1;
-  
+
   uVar1 = func_0x0222aa10(param_4);
   switch(uVar1) {
   default:

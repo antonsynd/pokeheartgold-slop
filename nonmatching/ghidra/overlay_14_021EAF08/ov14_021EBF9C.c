@@ -63,7 +63,7 @@ undefined4 ov14_021EBF9C(int param_1,undefined4 param_2,undefined4 param_3,undef
   int iVar2;
   undefined4 uVar3;
   int iVar4;
-  
+
   if (*(byte *)(param_1 + 0x21) < 0x1e) {
     ov14_021F43F4(*(undefined4 *)(param_1 + 0x34),0,param_3,param_4,param_4);
     ov14_021F3488(param_1,1,1);

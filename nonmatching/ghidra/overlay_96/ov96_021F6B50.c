@@ -52,7 +52,7 @@ void ov96_021F6B50(int param_1,int param_2,int *param_3)
   int iVar3;
   int *piVar4;
   int iVar5;
-  
+
   iVar3 = -param_1 + 0x7f;
   iVar5 = 0;
   piVar4 = param_3;

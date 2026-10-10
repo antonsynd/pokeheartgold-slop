@@ -48,7 +48,7 @@ void ov40_02232F50(int param_1)
 {
   int iVar1;
   undefined4 uVar2;
-  
+
   iVar1 = *(int *)(param_1 + 0x860);
   uVar2 = *(undefined4 *)(param_1 + *(int *)(param_1 + 0x86c) * 4 + 0x88c);
   *(undefined4 *)(iVar1 + 0x10) = uVar2;

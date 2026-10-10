@@ -53,7 +53,7 @@ void ov75_02246E78(int param_1,undefined4 param_2,undefined4 param_3,int param_4
   undefined4 uVar1;
   int iVar2;
   int iStack_10;
-  
+
   iVar2 = *(int *)(param_1 + 0x94);
   iStack_10 = param_4;
   uVar1 = String_atoi(*(undefined4 *)(iVar2 + 0x1c),&iStack_10);

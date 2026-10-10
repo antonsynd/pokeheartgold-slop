@@ -61,7 +61,7 @@ void ov73_021E82D4(int param_1)
   undefined1 auStack_44 [8];
   int iStack_3c;
   int iStack_38;
-  
+
   CreateSpriteResourcesHeader
             (param_1 + 0xd64,0,0,0,0,0xffffffff,0xffffffff,0,0,*(undefined4 *)(param_1 + 0xd24),
              *(undefined4 *)(param_1 + 0xd28),*(undefined4 *)(param_1 + 0xd2c),

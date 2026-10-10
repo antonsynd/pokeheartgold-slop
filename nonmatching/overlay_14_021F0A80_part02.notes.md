@@ -4,3 +4,10 @@
 - ov14_021F15C8 fails only on the first ManagedSprite_SetPositionXY call. The function reads two s16 out-parameters of ManagedSprite_GetPositionXY from its own stack. The sandbox does not run that callee, so what it reads is whatever the stack held: in the original it is the r3 that `push {r3, ...}` saved at sp+0 (junk from the caller), which clang never stores. The locals are packed in `s16 pos[2]` and ordered so they sit at the same addresses as in the original (sp+0 is y, sp+2 is x), but the stored r3 cannot be reproduced without a fake parameter. A scratch copy that took r3 as a fourth parameter and wrote it into pos passed all 500 trials, so every other call, branch and write of the function agrees.
 - ov14_021F0234 returns the constant 5 and ov14_021F2270 returns its next-state argument, so ov14_021F1580, ov14_021F15C8, ov14_021F1534 and ov14_021F1540 return the callee's result; this is needed for the return value comparison.
 - The box app and box system structs are local (UnkStruct_ov14_boxapp, UnkStruct_ov14_boxsys) with only the fields used here. `sys + 0x4094` is a byte table indexed by the cursor slot (app +0x21) that selects an entry of the sprite array at sys +0x2FC.
+
+## Status
+
+With the current tools, every function these notes describe as failing or inconclusive passes the check.
+`VERIFIED.tsv` gives the verdict of each, and the file that holds its verified C. These now have their verified C in another file, so their C here was not checked again:
+
+- `ov14_021F15C8`: `written/overlay_14_021F0A80/ov14_021F15C8.c`

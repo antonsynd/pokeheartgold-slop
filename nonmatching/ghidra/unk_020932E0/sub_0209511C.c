@@ -49,7 +49,7 @@ void sub_0209511C(int param_1)
   int iVar1;
   int iVar2;
   int iVar3;
-  
+
   iVar1 = 0;
   if (*(char *)(param_1 + 0xd) != '\0') {
     iVar3 = 0;

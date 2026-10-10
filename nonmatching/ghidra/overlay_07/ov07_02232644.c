@@ -49,7 +49,7 @@ undefined4 ov07_02232644(void)
 
 {
   int iVar1;
-  
+
   iVar1 = ov07_0223251C();
   return *(undefined4 *)(&ov07_02237470 + iVar1 * 0xc);
 }

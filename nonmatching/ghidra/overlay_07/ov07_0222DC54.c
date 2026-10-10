@@ -54,7 +54,7 @@ undefined4 ov07_0222DC54(int param_1)
 {
   int iVar1;
   undefined4 uVar2;
-  
+
   iVar1 = *(int *)(param_1 + 0x40);
   uVar2 = 0;
   if (iVar1 == 0) {

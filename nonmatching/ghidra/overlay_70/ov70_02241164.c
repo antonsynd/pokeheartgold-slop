@@ -48,7 +48,7 @@ int ov70_02241164(int param_1)
 
 {
   int iVar1;
-  
+
   iVar1 = TouchscreenHitbox_FindRectAtTouchNew(0x2245d26);
   if ((iVar1 == -1) || (param_1 <= iVar1)) {
     iVar1 = -1;

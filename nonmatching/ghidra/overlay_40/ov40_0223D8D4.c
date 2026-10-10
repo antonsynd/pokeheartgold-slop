@@ -73,7 +73,7 @@ void ov40_0223D8D4(int param_1)
   int iStack_98;
   uint auStack_8c [24];
   int aiStack_2c [6];
-  
+
   iStack_98 = 0;
   aiStack_2c[0] = 0;
   aiStack_2c[1] = 0;

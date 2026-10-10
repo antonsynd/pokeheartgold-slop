@@ -50,7 +50,7 @@ undefined4 ov96_021E6814(int param_1)
 
 {
   int iVar1;
-  
+
   iVar1 = OverlayManager_Run(*(undefined4 *)(param_1 + 0x280));
   if (iVar1 != 0) {
     OverlayManager_Delete(*(undefined4 *)(param_1 + 0x280));

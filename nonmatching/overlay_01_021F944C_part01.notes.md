@@ -24,3 +24,11 @@ Gate results (default symbols.json): everything passes except
   INCONCLUSIVE or times out: the harness answers calls with random 32-bit values, so the loop bound is huge and the original never finishes within its budget.
   In a scratch copy that declares `MapObjectManager_GetObjectCount` as returning `u8` (the real return is `u32`) it passes 228 of 300 trials (72 inconclusive).
 - `ov01_021F9698`, `ov01_021F9704`, `ov01_021F9744`, `ov01_021F9778`, `ov01_021F98B4` and `ov01_021F9980` pass with many inconclusive trials (large random counts).
+
+## Status
+
+With the current tools, every function these notes describe as failing or inconclusive passes the check.
+`VERIFIED.tsv` gives the verdict of each, and the file that holds its verified C. These now have their verified C in another file, so their C here was not checked again:
+
+- `ov01_021F9798`: `ghidra/overlay_01_021F944C/ov01_021F9798.c`
+- `ov01_021F97BC`: `ghidra/overlay_01_021F944C/ov01_021F97BC.c`

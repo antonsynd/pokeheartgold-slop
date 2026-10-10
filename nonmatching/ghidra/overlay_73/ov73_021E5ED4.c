@@ -51,7 +51,7 @@ void ov73_021E5ED4(int param_1)
 {
   int iVar1;
   int iVar2;
-  
+
   ov73_021E77E8();
   Heap_Free(*(undefined4 *)(param_1 + 0x18));
   Heap_Free(*(undefined4 *)(param_1 + 0x37c));

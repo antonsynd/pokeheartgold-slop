@@ -55,7 +55,7 @@ void ov73_021EA374(undefined4 param_1,int param_2)
   uint uVar4;
   int iStack_1c;
   int iStack_18;
-  
+
   uVar4 = 3000;
   puVar3 = (undefined4 *)0x21ea744;
   iStack_18 = 0;

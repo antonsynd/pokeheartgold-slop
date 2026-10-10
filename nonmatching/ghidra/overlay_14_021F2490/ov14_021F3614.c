@@ -68,7 +68,7 @@ void ov14_021F3614(int param_1,undefined4 *param_2,int param_3)
   undefined2 uStack_24;
   undefined2 uStack_22;
   undefined2 uStack_20;
-  
+
   uStack_34 = 0;
   uStack_30 = 0;
   uStack_2c = 10;

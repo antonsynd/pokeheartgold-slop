@@ -48,7 +48,7 @@ undefined4 sub_0206642C(void)
 
 {
   int iVar1;
-  
+
   iVar1 = sub_0205F394();
   return *(undefined4 *)(iVar1 + 4);
 }

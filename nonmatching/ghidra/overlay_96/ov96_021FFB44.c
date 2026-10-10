@@ -48,7 +48,7 @@ void ov96_021FFB44(int param_1,undefined4 param_2,undefined4 param_3,undefined4 
 
 {
   int iVar1;
-  
+
   if (*(char *)(param_1 + 0xb) == '\x03') {
     ov96_021EB630(*(undefined4 *)(param_1 + 4),600,param_3,param_4,param_4);
     return;

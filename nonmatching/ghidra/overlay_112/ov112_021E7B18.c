@@ -56,7 +56,7 @@ void ov112_021E7B18(int param_1,undefined4 param_2,undefined4 param_3,undefined4
 {
   undefined1 uVar1;
   undefined4 uVar2;
-  
+
   uVar2 = NARC_New(0xf9,0x9a);
   GfGfxLoader_LoadCharDataFromOpenNarc(uVar2,4,*(undefined4 *)(param_1 + 0x18),3,0,0,1,0x9a,param_4)
   ;

@@ -49,7 +49,7 @@ void ov40_0222F6D0(int param_1,short param_2)
 
 {
   short sVar1;
-  
+
   sVar1 = *(short *)(param_1 + 8);
   *(short *)(param_1 + 8) = sVar1 + param_2;
   if (*(short *)(param_1 + 8) < 0) {

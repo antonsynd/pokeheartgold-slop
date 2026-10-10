@@ -54,7 +54,7 @@ void ov81_022420B4(int param_1,undefined4 param_2,undefined4 param_3,undefined4 
   uint uVar3;
   int iVar4;
   int iVar5;
-  
+
   if (*(int *)(param_1 + 0x47c) == 3) {
     iVar4 = 0x10;
     iVar5 = 0x50;

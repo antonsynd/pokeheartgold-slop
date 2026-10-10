@@ -50,7 +50,7 @@ void ov07_02222A7C(undefined4 param_1,ushort *param_2)
 
 {
   int iVar1;
-  
+
   iVar1 = ov07_022222B4(param_2);
   if (iVar1 == 0) {
     param_2[0x12] = 1;

@@ -50,7 +50,7 @@ int ov27_0225C1AC(int param_1,int param_2)
   int iVar2;
   int iVar3;
   int iVar4;
-  
+
   iVar3 = 0;
   iVar1 = 0;
   iVar4 = param_1;

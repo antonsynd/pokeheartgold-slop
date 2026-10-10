@@ -49,7 +49,7 @@ void ov18_021EE35C(int param_1,int param_2,uint param_3)
 {
   int iVar1;
   uint uVar2;
-  
+
   uVar2 = 0;
   if (param_3 != 0) {
     iVar1 = param_1 + 0xc;

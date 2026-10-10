@@ -59,7 +59,7 @@ undefined4 ov112_021F2EF4(undefined4 param_1,int *param_2,undefined4 param_3,und
 {
   int iVar1;
   int iVar2;
-  
+
   iVar1 = OverlayManager_GetData();
   switch(*param_2) {
   case 0:

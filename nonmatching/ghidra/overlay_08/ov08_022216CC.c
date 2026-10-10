@@ -48,7 +48,7 @@ void ov08_022216CC(int param_1,undefined4 param_2,undefined4 param_3,undefined4 
 
 {
   byte bVar1;
-  
+
   bVar1 = *(byte *)(param_1 + 0x2077) >> 4;
   if (bVar1 == 0) {
     ov08_02224BF8(*(undefined4 *)(param_1 + 0x2088),0x5f,0,param_4,param_4);

@@ -89,7 +89,7 @@ ov96_022091B4(undefined *param_1,undefined4 param_2,undefined4 param_3,undefined
   undefined4 uVar9;
   int iStack_1c;
   undefined4 uStack_18;
-  
+
   uStack_18 = param_4;
   puVar1 = PokeathlonCourse_GetHeapAllocPtr4(param_1);
   puVar2 = PokeathlonCourse_GetDataCopyArea(param_1);

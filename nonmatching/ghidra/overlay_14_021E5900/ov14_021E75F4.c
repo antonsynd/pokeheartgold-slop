@@ -58,7 +58,7 @@ void ov14_021E75F4(int param_1,undefined4 param_2,undefined4 param_3,undefined4 
   undefined4 uVar1;
   undefined4 uVar2;
   undefined4 uVar3;
-  
+
   uVar1 = ov14_021E60C0(param_1,*(undefined1 *)(param_1 + 0x1f),param_2,param_4,param_4);
   uVar2 = func_0x0206ddd8();
   uVar3 = ov14_021E7358(uVar1);

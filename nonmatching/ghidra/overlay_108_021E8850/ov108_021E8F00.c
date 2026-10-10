@@ -75,7 +75,7 @@ void ov108_021E8F00(undefined4 *param_1,int param_2,undefined1 *param_3,undefine
   char cStack_2f;
   int aiStack_28 [4];
   undefined4 uStack_18;
-  
+
   puVar5 = param_1 + 9;
   uStack_18 = param_4;
   uVar1 = GfGfxLoader_LoadFromOpenNarc(param_1[6],*param_3,0,param_1[5],0);

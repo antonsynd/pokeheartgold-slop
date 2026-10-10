@@ -53,7 +53,7 @@ BN_mod_mul_reciprocal(undefined4 param_1,int *param_2,int *param_3,undefined4 pa
   int iVar1;
   undefined4 uVar2;
   int *piVar3;
-  
+
   piVar3 = param_5 + *param_5 * 5 + 1;
   *param_5 = *param_5 + 1;
   uVar2 = 0;

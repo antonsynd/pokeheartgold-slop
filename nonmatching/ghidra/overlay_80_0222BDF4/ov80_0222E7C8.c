@@ -56,7 +56,7 @@ void ov80_0222E7C8(undefined4 param_1,int param_2)
   int iVar1;
   int iVar2;
   short *psVar3;
-  
+
   if (*(char *)(param_2 + 0x94) != '\0') {
     *(char *)(param_2 + 0x94) = *(char *)(param_2 + 0x94) + -1;
     return;

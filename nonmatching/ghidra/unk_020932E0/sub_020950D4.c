@@ -49,7 +49,7 @@ void sub_020950D4(int param_1)
 
 {
   int iVar1;
-  
+
   if ((*(char *)(param_1 + 0xd) == '\x01') &&
      (iVar1 = GetWindowBgConfig(param_1 + 0x4660), iVar1 != 0)) {
     RemoveWindow(param_1 + 0x4660);

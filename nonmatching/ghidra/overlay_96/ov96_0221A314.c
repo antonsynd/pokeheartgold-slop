@@ -58,7 +58,7 @@ void ov96_0221A314(undefined4 *param_1)
   undefined4 uStack_1c;
   undefined4 uStack_18;
   undefined4 uStack_14;
-  
+
   uVar1 = param_1[2];
   uStack_1c = 0;
   iStack_28 = 0;

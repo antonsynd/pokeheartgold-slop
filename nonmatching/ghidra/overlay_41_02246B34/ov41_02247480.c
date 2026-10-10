@@ -60,7 +60,7 @@ void ov41_02247480(int param_1,int param_2,undefined4 param_3,undefined4 param_4
   undefined4 uStack_10;
   undefined4 uStack_c;
   undefined4 uStack_8;
-  
+
   uStack_38 = *(undefined4 *)(param_1 + 0x40);
   uStack_34 = 0x1a;
   iStack_30 = param_2 * 2 + 0x79;

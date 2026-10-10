@@ -51,7 +51,7 @@ void ov05_0221D904(int *param_1)
 
 {
   int iVar1;
-  
+
   ManagedSprite_SetDrawFlag(param_1[0x72],0);
   ManagedSprite_SetDrawFlag(param_1[0x73],0);
   if (*(char *)(*param_1 + 0x2a) == '\x03') {

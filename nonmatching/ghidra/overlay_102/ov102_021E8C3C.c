@@ -47,7 +47,7 @@ undefined4 ov102_021E8C3C(ushort *param_1)
 
 {
   uint uVar1;
-  
+
   uVar1 = (uint)*param_1;
   if (uVar1 != 0) {
     if (uVar1 < 5) {

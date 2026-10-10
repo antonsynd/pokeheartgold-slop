@@ -49,7 +49,7 @@ undefined4 ov14_021E8B80(int param_1,undefined4 param_2,undefined4 param_3,undef
 
 {
   int iVar1;
-  
+
   iVar1 = *(int *)(param_1 + 0x18);
   PCStorage_SetBoxName
             (*(undefined4 *)(param_1 + 4),*(undefined1 *)(param_1 + 0x25),

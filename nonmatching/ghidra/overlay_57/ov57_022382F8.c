@@ -55,7 +55,7 @@ undefined4 ov57_022382F8(int param_1,undefined4 param_2,int param_3,undefined4 p
 {
   int iVar1;
   int iVar2;
-  
+
   iVar2 = param_1 + param_3 * 0x10;
   if (*(int *)(iVar2 + 0x34c) != 0) {
     switch(param_2) {

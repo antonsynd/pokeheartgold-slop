@@ -88,7 +88,7 @@ void ov96_02200F84(undefined4 param_1,uint *param_2,uint param_3,int param_4)
   int aiStack_2bc [4];
   uint auStack_2ac [16];
   uint auStack_26c [150];
-  
+
   uVar2 = param_2[param_3 * 4];
   if (((*(char *)(uVar2 + 0x9d) == '\0') &&
       (*(char *)(uVar2 + (uint)*(byte *)(uVar2 + 0x8b) * 0x1c + 0x30) != '\x02')) &&

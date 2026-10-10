@@ -50,7 +50,7 @@ void ov41_0224ACDC(undefined4 param_1,undefined4 param_2)
 
 {
   undefined1 uVar1;
-  
+
   uVar1 = Options_GetFrame(param_2);
   LoadUserFrameGfx2(param_1,5,1,1,uVar1,0xe);
   LoadFontPal1(4,0x40,0xe);

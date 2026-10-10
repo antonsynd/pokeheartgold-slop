@@ -75,7 +75,7 @@ void ov57_02238C30(undefined4 param_1,undefined4 param_2,undefined4 param_3,int 
   undefined4 uStack_20;
   undefined1 uStack_1c;
   int iStack_18;
-  
+
   iStack_18 = param_4;
   uVar1 = ov57_0223A0A8(param_4,param_5);
   switch(uVar1) {

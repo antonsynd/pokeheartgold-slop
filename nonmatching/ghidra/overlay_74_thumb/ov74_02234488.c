@@ -50,7 +50,7 @@ void ov74_02234488(uint *param_1)
   uint uVar2;
   uint uVar3;
   uint *puVar4;
-  
+
   uVar3 = 0;
   puVar4 = param_1 + 8;
   do {

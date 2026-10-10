@@ -56,7 +56,7 @@ void ov40_0223757C(int param_1,undefined4 param_2,undefined4 param_3,undefined4 
 
 {
   int iVar1;
-  
+
   iVar1 = *(int *)(param_1 + 0x860);
   func_0x020270d8(*(undefined4 *)(param_1 + 0x830));
   if ((0xf < *(byte *)(iVar1 + 0x17a)) && (*(byte *)(iVar1 + 0x17a) < 0x18)) {

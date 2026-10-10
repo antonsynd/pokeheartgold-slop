@@ -49,7 +49,7 @@ undefined4 ov112_021EAAE4(undefined4 param_1,int param_2)
 
 {
   char cVar1;
-  
+
   cVar1 = *(char *)(param_2 + 2);
   if (cVar1 < '\0') {
     *(short *)(param_2 + 6) = *(short *)(param_2 + 6) + (short)cVar1;

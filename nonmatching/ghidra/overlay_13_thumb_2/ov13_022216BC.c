@@ -48,7 +48,7 @@ undefined4 ov13_022216BC(byte *param_1,int param_2)
 {
   byte bVar1;
   int iVar2;
-  
+
   iVar2 = 0;
   if (0 < param_2) {
     do {

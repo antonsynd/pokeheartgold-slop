@@ -49,7 +49,7 @@ undefined4 MapObjectMovementCmd064_Step1(undefined4 param_1)
 
 {
   int *piVar1;
-  
+
   piVar1 = (int *)sub_0205F3E4();
   if (*piVar1 != 0) {
     *piVar1 = *piVar1 + -1;

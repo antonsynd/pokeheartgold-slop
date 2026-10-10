@@ -50,7 +50,7 @@ void ov40_02235B10(int param_1)
 
 {
   int iVar1;
-  
+
   iVar1 = *(int *)(param_1 + 0x860);
   ov40_0222D6D0(iVar1 + 0x198);
   ov40_0222D6D0(iVar1 + 0x1b4);

@@ -49,7 +49,7 @@ int ov70_02238C8C(int param_1)
 
 {
   int iVar1;
-  
+
   iVar1 = YesNoPrompt_HandleInput(*(undefined4 *)(param_1 + 0x11c8));
   if (iVar1 - 1U < 2) {
     ov70_02238FE0();

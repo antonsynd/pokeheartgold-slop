@@ -48,7 +48,7 @@ void ov86_021E78B8(int param_1,int param_2)
 
 {
   byte bVar1;
-  
+
   *(byte *)(param_1 + 0x24c) = *(byte *)(param_1 + 0x24c) & 0xfe | 1;
   *(byte *)(param_1 + 0x24c) = *(byte *)(param_1 + 0x24c) & 1 | 4;
   *(byte *)(param_1 + 0x24d) = *(byte *)(param_1 + 0x24d) & 0xf0 | 2;

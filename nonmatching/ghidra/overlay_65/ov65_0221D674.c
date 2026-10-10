@@ -72,7 +72,7 @@ void ov65_0221D674(int param_1,int param_2,undefined4 param_3,int param_4,int pa
   int iVar4;
   undefined4 uVar5;
   undefined4 *puVar6;
-  
+
   uVar2 = Party_GetMonByIndex(param_3,param_4);
   iVar3 = func_0x0207083c(uVar2,2);
   puVar6 = (undefined4 *)(param_5 + 0x40c);

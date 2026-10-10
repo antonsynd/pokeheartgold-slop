@@ -50,7 +50,7 @@ void ov96_022141B0(void)
 {
   int iVar1;
   uint uVar2;
-  
+
   iVar1 = PokeathlonCourse_GetHeapAllocPtr4();
   String_Delete(*(undefined4 *)(iVar1 + 0x7b8));
   String_Delete(*(undefined4 *)(iVar1 + 0x7bc));

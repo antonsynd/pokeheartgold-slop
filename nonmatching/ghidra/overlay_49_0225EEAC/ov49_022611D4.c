@@ -52,7 +52,7 @@ void ov49_022611D4(int param_1,undefined4 param_2,undefined4 param_3,undefined4 
   undefined4 uStack_14;
   undefined4 uStack_10;
   undefined4 uStack_c;
-  
+
   uStack_c = param_4;
   ov49_02259154(*(undefined4 *)(param_1 + 0xc),&uStack_18);
   ov49_0225CC20(param_2,uStack_18,uStack_14,uStack_10);

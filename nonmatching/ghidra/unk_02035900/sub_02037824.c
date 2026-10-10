@@ -51,7 +51,7 @@ int sub_02037824(int param_1)
 
 {
   int iVar1;
-  
+
   iVar1 = sub_02033F9C((undefined *)(iRam021d4148 + 0x5a0),param_1);
   return iVar1;
 }

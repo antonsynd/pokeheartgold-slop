@@ -60,7 +60,7 @@ int ov12_02258BB4(undefined4 param_1,int param_2,undefined4 param_3,int param_4)
   int iVar8;
   uint uVar9;
   int unaff_r5;
-  
+
   if (param_4 < 0x138) {
     if (0x136 < param_4) {
       iVar8 = CheckAbilityActive(param_1,param_2,8,0,0xd);

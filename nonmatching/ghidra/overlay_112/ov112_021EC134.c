@@ -58,7 +58,7 @@ void ov112_021EC134(int param_1,undefined4 param_2,undefined4 param_3,undefined4
   undefined4 uStack_1c;
   uint uStack_18;
   undefined4 uStack_14;
-  
+
   uStack_18 = 0xffffffff;
   uStack_1c = 0;
   uStack_14 = param_4;

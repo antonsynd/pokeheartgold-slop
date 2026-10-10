@@ -53,7 +53,7 @@ void ov27_0225B398(int param_1,int param_2)
   int iVar1;
   int iVar2;
   int iVar3;
-  
+
   if (6 < param_2) {
     GF_AssertFail();
   }

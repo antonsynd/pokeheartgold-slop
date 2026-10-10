@@ -48,7 +48,7 @@ int ov93_02260F84(int param_1)
 {
   int iVar1;
   int iVar2;
-  
+
   iVar2 = *(int *)(param_1 + 0x2fac);
   if (*(int *)(param_1 + 0x2fb0) <= iVar2) {
     return 0;

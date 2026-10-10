@@ -49,7 +49,7 @@ uint ov112_021E5900(byte *param_1,uint param_2)
   uint uVar1;
   uint uVar2;
   uint uVar3;
-  
+
   uVar2 = 2;
   uVar3 = 0;
   if (param_2 != 0) {

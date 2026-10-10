@@ -55,7 +55,7 @@ undefined4 sub_02036630(void)
   int iVar3;
   uint uVar4;
   int iVar5;
-  
+
   uVar1 = sub_0203993C();
   iVar2 = sub_02033FC4(uVar1);
   uVar4 = 1;

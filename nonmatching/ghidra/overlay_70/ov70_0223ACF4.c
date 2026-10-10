@@ -53,7 +53,7 @@ void ov70_0223ACF4(int param_1)
   uint uVar3;
   uint uStack_1c;
   int iStack_18;
-  
+
   AddWindowParameterized(*(undefined4 *)(param_1 + 4),param_1 + 0xf18,4,2,0x13,0x1b,4,1,0x28);
   FillWindowPixelBuffer(param_1 + 0xf18,0);
   AddWindowParameterized(*(undefined4 *)(param_1 + 4),param_1 + 0xf58,4,1,0x15,0xd,2,1,0x94);

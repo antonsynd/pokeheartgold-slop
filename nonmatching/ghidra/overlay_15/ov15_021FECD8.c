@@ -52,7 +52,7 @@ void ov15_021FECD8(int param_1,undefined4 param_2,int param_3,undefined4 param_4
 
 {
   undefined4 uVar1;
-  
+
   uVar1 = NewString_ReadMsgData(*(undefined4 *)(param_1 + 0x2f0),param_3 + 0x78);
   FillWindowPixelBuffer(param_2,0);
   AddTextPrinterParameterizedWithColor(param_2,0,uVar1,0x14,0,0xff,0xf0e00,0,param_4);

@@ -49,7 +49,7 @@ undefined4 ov01_021EC728(undefined4 *param_1)
 
 {
   undefined4 uVar1;
-  
+
   uVar1 = ov01_021EB840(param_1 + 1);
   ov01_021EB840(param_1 + 6);
   ov01_021EB840(param_1 + 0xb);

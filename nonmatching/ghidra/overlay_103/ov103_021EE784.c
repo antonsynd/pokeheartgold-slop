@@ -55,7 +55,7 @@ void ov103_021EE784(int param_1)
   undefined4 uVar1;
   undefined4 uVar2;
   undefined4 uVar3;
-  
+
   uVar3 = *(undefined4 *)(*(int *)(param_1 + 0xc) + (uint)*(byte *)(param_1 + 0x1f) * 4 + 0x27c);
   uVar1 = String_New(8,0x9d);
   uVar2 = Mail_GetAuthorNamePtr(uVar3);

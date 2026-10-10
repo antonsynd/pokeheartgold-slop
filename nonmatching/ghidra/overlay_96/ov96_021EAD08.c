@@ -51,7 +51,7 @@ void ov96_021EAD08(undefined4 *param_1,int param_2)
 {
   undefined4 uVar1;
   uint uVar2;
-  
+
   uVar1 = ov96_021E8BAC(*param_1);
   if (param_2 == 0) {
     param_1[0xe] = 0;

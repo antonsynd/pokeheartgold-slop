@@ -68,7 +68,7 @@ void sub_020942B0(int param_1,undefined4 param_2,undefined4 param_3,undefined4 p
   int iStack_40;
   int iStack_3c;
   undefined4 uStack_18;
-  
+
   uStack_18 = param_4;
   sub_02094150(auStack_48,param_1,1);
   iVar4 = 0;

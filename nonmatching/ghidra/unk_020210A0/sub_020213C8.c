@@ -49,7 +49,7 @@ undefined4 sub_020213C8(undefined4 param_1)
 
 {
   undefined4 uVar1;
-  
+
   switch(param_1) {
   default:
     return 1;

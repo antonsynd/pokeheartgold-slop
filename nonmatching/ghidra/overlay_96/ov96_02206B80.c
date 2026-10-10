@@ -59,7 +59,7 @@ void ov96_02206B80(int param_1,int param_2,int param_3,int param_4)
   int iStack_20;
   undefined4 uStack_1c;
   int iStack_18;
-  
+
   uVar3 = 0;
   iStack_18 = param_4;
   do {

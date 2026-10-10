@@ -52,7 +52,7 @@ void ov01_021EC028(int param_1)
   undefined4 uVar1;
   int iVar2;
   int iVar3;
-  
+
   iVar2 = 0;
   iVar3 = param_1;
   do {

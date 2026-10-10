@@ -71,7 +71,7 @@ void ov01_021EEC7C(int param_1,undefined4 param_2,int param_3)
   undefined4 uVar4;
   undefined4 uVar5;
   int iVar6;
-  
+
   FillWindowPixelBuffer(param_2,0xf);
   uVar1 = NewMsgDataFromNarc(0,0x1b,0xbf,4);
   uVar2 = MessageFormat_New(4);

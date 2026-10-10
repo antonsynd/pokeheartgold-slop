@@ -51,7 +51,7 @@ void ov08_02221F98(int *param_1,int param_2,int param_3)
 {
   short sVar1;
   int iVar2;
-  
+
   switch(param_2) {
   case 0:
   case 1:

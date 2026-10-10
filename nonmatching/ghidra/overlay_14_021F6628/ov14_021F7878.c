@@ -55,7 +55,7 @@ void ov14_021F7878(int param_1,uint param_2,undefined4 param_3,undefined4 param_
   undefined1 uStack_18;
   undefined1 auStack_17 [3];
   undefined4 uStack_14;
-  
+
   if (param_2 - 4 < 2) {
     param_2 = *(byte *)(*(int *)(param_1 + 0x34) + 0x44d) & 3;
     *(uint *)(*(int *)(param_1 + 0x34) + 0x43c) = param_2;

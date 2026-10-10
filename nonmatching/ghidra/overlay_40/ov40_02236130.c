@@ -51,7 +51,7 @@ void ov40_02236130(int param_1)
 {
   int iVar1;
   int iVar2;
-  
+
   iVar2 = *(int *)(param_1 + 0x860);
   iVar1 = WindowIsInUse(iVar2 + 0x10);
   if (iVar1 == 1) {

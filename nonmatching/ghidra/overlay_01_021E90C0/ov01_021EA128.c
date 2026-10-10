@@ -61,7 +61,7 @@ undefined4 ov01_021EA128(undefined4 param_1)
   int iVar2;
   char *pcVar3;
   undefined4 uVar4;
-  
+
   iVar2 = TaskManager_GetFieldSystem();
   pcVar3 = (char *)TaskManager_GetEnvironment(param_1);
   switch(*pcVar3) {

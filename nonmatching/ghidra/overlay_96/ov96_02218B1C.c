@@ -59,7 +59,7 @@ void ov96_02218B1C(undefined4 *param_1,undefined *param_2,undefined4 param_3,und
 
 {
   int iVar1;
-  
+
   if (0 < *(char *)((int)param_1 + 0x5d)) {
     param_4 = (undefined4 *)(*(char *)((int)param_1 + 0x5d) + -1);
     *(char *)((int)param_1 + 0x5d) = (char)param_4;

@@ -75,7 +75,7 @@ undefined4 ov73_021E5BAC(undefined4 param_1)
   undefined4 *puVar1;
   int iVar2;
   undefined4 *puVar3;
-  
+
   puVar1 = (undefined4 *)OverlayManager_GetData();
   SysTask_Destroy(puVar1[8]);
   SpriteTransfer_DeleteCharTransferTask(puVar1[0x6b]);

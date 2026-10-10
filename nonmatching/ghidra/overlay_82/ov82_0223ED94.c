@@ -53,7 +53,7 @@ void ov82_0223ED94(int param_1)
 
 {
   int iVar1;
-  
+
   iVar1 = func_0x0223792c(*(undefined1 *)(param_1 + 9));
   if (iVar1 != 0) {
     uRam04000048 = uRam04000048 & 0xffc0 | 0x1f;

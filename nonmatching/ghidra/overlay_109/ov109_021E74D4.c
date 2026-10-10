@@ -50,7 +50,7 @@ void ov109_021E74D4(int param_1,undefined4 param_2,undefined4 param_3,undefined4
 
 {
   char cVar1;
-  
+
   cVar1 = func_0x020f2998(*(undefined1 *)(param_1 + 0x1f),0xc,param_3,param_4,param_4);
   if (*(char *)(param_1 + 0x19) != cVar1) {
     param_2 = 0;

@@ -50,7 +50,7 @@ void ov80_0223B504(int param_1,undefined4 param_2,undefined4 param_3,undefined4 
 
 {
   undefined4 uVar1;
-  
+
   uVar1 = func_0x02014a60(*(undefined4 *)(param_1 + 0x1c));
   sub_02014AA0();
   sub_02014AB0(uVar1,*(undefined4 *)(param_1 + 0x3020),0x20,1,param_4);

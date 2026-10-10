@@ -56,7 +56,7 @@ undefined4 ov112_021E7910(undefined4 param_1)
 
 {
   undefined4 uVar1;
-  
+
   uVar1 = OverlayManager_GetData();
   TextFlags_SetCanABSpeedUpPrint(0);
   TextFlags_SetCanTouchSpeedUpPrint(0);

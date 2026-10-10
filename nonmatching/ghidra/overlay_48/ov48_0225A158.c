@@ -55,7 +55,7 @@ void ov48_0225A158(uint *param_1,undefined4 param_2,undefined4 param_3,undefined
 {
   int iVar1;
   uint uVar2;
-  
+
   uVar2 = *param_1;
   if (uVar2 < 5) {
     switch(uVar2) {

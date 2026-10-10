@@ -57,7 +57,7 @@ void ov43_0222A290(undefined4 *param_1,undefined4 *param_2,undefined4 param_3)
   undefined1 uVar1;
   undefined4 uVar2;
   int iVar3;
-  
+
   param_1[1] = *param_2;
   uVar2 = String_New(0x80,param_3);
   param_1[0x16] = uVar2;

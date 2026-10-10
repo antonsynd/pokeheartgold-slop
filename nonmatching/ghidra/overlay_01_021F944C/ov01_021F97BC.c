@@ -54,7 +54,7 @@ undefined4 ov01_021F97BC(undefined4 param_1,int param_2,int param_3,int param_4)
   int iVar1;
   int iVar2;
   int iStack_18;
-  
+
   iStack_18 = param_4;
   iVar1 = MapObjectManager_GetObjectCount();
   iStack_18 = MapObjectManager_GetObjects2(param_1);

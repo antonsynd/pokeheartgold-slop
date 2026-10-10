@@ -66,7 +66,7 @@ undefined4 ov40_02238A50(int param_1)
 {
   int iVar1;
   int iVar2;
-  
+
   iVar2 = *(int *)(param_1 + 0x860);
   iVar1 = *(int *)(param_1 + 8);
   if (iVar1 == 0) {

@@ -50,7 +50,7 @@ void ov85_021E7734(int param_1)
 {
   int iVar1;
   int iVar2;
-  
+
   sub_02069784(param_1 + 400);
   sub_02069784(param_1 + 0x1a4);
   iVar2 = 0;

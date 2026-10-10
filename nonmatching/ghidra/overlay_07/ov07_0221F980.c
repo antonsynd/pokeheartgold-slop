@@ -48,7 +48,7 @@ int ov07_0221F980(int param_1,int param_2,undefined4 param_3)
 
 {
   char cVar1;
-  
+
   if (param_1 < param_2) {
     cVar1 = func_0x020e4a90(param_3);
     return (int)cVar1;

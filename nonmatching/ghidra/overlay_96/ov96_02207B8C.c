@@ -47,7 +47,7 @@ undefined4 ov96_02207B8C(int param_1)
 
 {
   bool bVar1;
-  
+
   bVar1 = false;
   if (((0x198000 < *(int *)(param_1 + 0x5c)) && (0xcffff < *(int *)(param_1 + 0x58))) &&
      (*(int *)(param_1 + 0x58) < 0x130001)) {

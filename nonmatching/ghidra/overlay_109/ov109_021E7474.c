@@ -51,7 +51,7 @@ void ov109_021E7474(int param_1,uint param_2,int param_3,undefined4 param_4)
 {
   int iVar1;
   int iVar2;
-  
+
   Sprite_SetDrawFlag(*(undefined4 *)(param_1 + 0x98),param_4,param_3,param_4,param_4);
   if (param_3 == 3) {
     iVar2 = 0xc0;

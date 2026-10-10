@@ -48,7 +48,7 @@ uint ov99_021E7100(int param_1)
 
 {
   uint uVar1;
-  
+
   uVar1 = 0;
   do {
     if (*(int *)(&ov99_021E9E04 + uVar1 * 4) <= param_1) break;

@@ -50,7 +50,7 @@ void ov96_021EB334(undefined4 *param_1,undefined4 param_2,undefined4 param_3,und
 {
   undefined4 *puVar1;
   undefined4 uVar2;
-  
+
   uVar2 = param_4;
   puVar1 = (undefined4 *)ov96_021EB5EC(param_1,param_4,2);
   uVar2 = AddCellOrAnimResObjFromNarc

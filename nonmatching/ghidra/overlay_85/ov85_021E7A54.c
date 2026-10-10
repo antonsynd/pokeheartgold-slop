@@ -49,7 +49,7 @@ void ov85_021E7A54(undefined4 param_1,int param_2)
   undefined4 uVar1;
   int *piVar2;
   int iVar3;
-  
+
   *(undefined2 *)(param_2 + 4) = 0;
   *(undefined2 *)(param_2 + 6) = 0;
   *(undefined2 *)(param_2 + 8) = 0;

@@ -51,7 +51,7 @@ void ov70_0223F244(undefined4 param_1,undefined4 param_2,undefined4 param_3,int 
 
 {
   undefined4 uVar1;
-  
+
   if (param_4 != 0) {
     uVar1 = NewString_ReadMsgData(param_2,param_4);
     ov70_02245084(param_1,uVar1,0,param_6,param_5,param_7,param_4);

@@ -50,7 +50,7 @@ void sub_020697DC(undefined4 param_1,undefined4 param_2,undefined4 param_3,undef
 
 {
   undefined4 uVar1;
-  
+
   uVar1 = GfGfxLoader_LoadFromOpenNarc(param_3,param_4,0,param_5,param_6);
   sub_020697A8(param_1,uVar1,param_2);
   return;

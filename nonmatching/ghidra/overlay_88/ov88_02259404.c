@@ -64,7 +64,7 @@ undefined4 ov88_02259404(char *param_1,undefined4 param_2,undefined4 param_3,und
   undefined1 auStack_30 [4];
   undefined1 auStack_2c [20];
   undefined4 uStack_18;
-  
+
   uStack_18 = param_4;
   func_0x0222ab38(param_3,auStack_2c);
   puVar4 = &ov88_02259910;

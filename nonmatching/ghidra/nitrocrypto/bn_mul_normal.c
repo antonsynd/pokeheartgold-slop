@@ -52,7 +52,7 @@ void bn_mul_normal(int param_1,undefined4 *param_2,int param_3,undefined4 *param
   int iVar2;
   int iVar3;
   undefined4 *puVar4;
-  
+
   iVar3 = param_5;
   puVar4 = param_4;
   if (param_3 < param_5) {

@@ -51,7 +51,7 @@ void ov80_02234A38(undefined4 param_1,undefined4 *param_2,undefined4 param_3,und
 
 {
   undefined4 uVar1;
-  
+
   uVar1 = NARC_New(0xb7,0x65);
   GfGfxLoader_LoadScrnDataFromOpenNarc(uVar1,0x39,*param_2,3,0,0,1,0x65,param_4);
   ScheduleBgTilemapBufferTransfer(*param_2,3);

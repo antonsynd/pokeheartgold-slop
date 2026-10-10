@@ -58,7 +58,7 @@ undefined4 sub_02032C84(void)
   undefined4 uVar3;
   int iVar4;
   undefined4 in_r3;
-  
+
   uVar2 = func_0x020def24();
   if (uVar2 == 0x8000) {
     sub_02032858(3);

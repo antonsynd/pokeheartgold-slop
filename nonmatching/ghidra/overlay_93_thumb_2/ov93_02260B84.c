@@ -49,7 +49,7 @@ void ov93_02260B84(int param_1,undefined4 param_2,undefined4 param_3,undefined4 
 {
   undefined4 *puVar1;
   int iVar2;
-  
+
   iVar2 = 0;
   puVar1 = (undefined4 *)(param_1 + 0x380c);
   do {

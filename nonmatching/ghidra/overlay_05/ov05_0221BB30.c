@@ -60,7 +60,7 @@ void ov05_0221BB30(int *param_1,undefined4 param_2,undefined4 param_3,undefined4
 
 {
   int iVar1;
-  
+
   iVar1 = ov05_0221E9F8();
   if (iVar1 != 0) {
     switch(param_1[0x2ef]) {

@@ -59,7 +59,7 @@ void ov83_02240984(int param_1)
   undefined4 uVar2;
   int iVar3;
   uint uVar4;
-  
+
   uVar4 = 0x3e;
   iVar3 = param_1 + 0x430;
   do {

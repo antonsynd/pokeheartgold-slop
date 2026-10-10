@@ -55,7 +55,7 @@ void ov14_021F2F3C(int param_1,undefined4 param_2,undefined4 param_3,undefined4 
   undefined4 uVar2;
   int iVar3;
   uint uVar4;
-  
+
   uVar1 = Party_GetCount(*(undefined4 *)(param_1 + 8));
   uVar4 = 0;
   if (uVar1 != 0) {

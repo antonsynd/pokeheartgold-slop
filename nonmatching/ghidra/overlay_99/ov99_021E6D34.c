@@ -84,7 +84,7 @@ void ov99_021E6D34(undefined4 *param_1)
   undefined4 uVar10;
   undefined4 uVar11;
   uint uVar12;
-  
+
   uVar1 = ov99_021E70C8(*param_1);
   uVar2 = ov99_021E70B8(*param_1);
   uVar3 = ov99_021E70A8(*param_1);

@@ -53,7 +53,7 @@ undefined4 ov28_0225E8B8(undefined4 param_1,undefined4 param_2,undefined4 param_
   int iVar1;
   int iVar2;
   int iVar3;
-  
+
   iVar1 = func_0x020252f4();
   iVar2 = func_0x020249a8(param_2);
   if ((iVar1 == 1) && (iVar3 = System_GetTouchNew(), iVar3 != 0)) {

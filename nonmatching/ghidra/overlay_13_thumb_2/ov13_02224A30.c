@@ -67,7 +67,7 @@ undefined4 ov13_02224A30(byte *param_1,undefined4 param_2,undefined4 param_3,und
   undefined1 auStack_4c [32];
   undefined1 auStack_2c [32];
   undefined4 uStack_c;
-  
+
   pbVar2 = abStack_58;
   param_1[0xc] = 0x57;
   param_1[0xd] = 0x41;

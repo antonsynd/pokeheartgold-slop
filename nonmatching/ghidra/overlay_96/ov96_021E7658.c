@@ -56,7 +56,7 @@ void ov96_021E7658(int param_1,int param_2)
   uint *puVar4;
   int iVar5;
   uint uVar6;
-  
+
   uVar2 = ov96_021E5F24();
   uVar6 = 0;
   do {

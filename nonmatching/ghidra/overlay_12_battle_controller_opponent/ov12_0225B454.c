@@ -50,7 +50,7 @@ void ov12_0225B454(undefined4 param_1,int param_2,undefined1 *param_3,undefined4
 
 {
   undefined4 *puVar1;
-  
+
   puVar1 = (undefined4 *)Heap_Alloc(5,0xc,param_3,param_4,param_4);
   func_0x020d4994(puVar1,0,0xc);
   *(undefined1 *)((int)puVar1 + 6) = 0;

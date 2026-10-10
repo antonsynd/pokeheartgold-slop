@@ -51,7 +51,7 @@ undefined4 ov15_021FAA18(int param_1)
 {
   char cVar1;
   byte *pbVar2;
-  
+
   pbVar2 = (byte *)(param_1 + 0x619);
   if ((uRam021d1154 & 0x20) != 0) {
     if (*(char *)(param_1 + 0x614) == '\x01') {

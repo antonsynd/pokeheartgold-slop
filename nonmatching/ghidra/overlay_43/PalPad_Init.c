@@ -62,7 +62,7 @@ undefined4 PalPad_Init(undefined4 param_1,undefined4 param_2,undefined4 param_3,
 {
   int iVar1;
   undefined4 uVar2;
-  
+
   func_0x02006ff8(0x2a,2,param_3,param_4,param_4);
   Heap_Create(3,0x33,0x70000);
   iVar1 = OverlayManager_CreateAndGetData(param_1,0x5a4,0x33);

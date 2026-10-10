@@ -49,7 +49,7 @@ void BattleController_EmitHealthbarStatus(undefined4 param_1,undefined4 param_2,
 {
   undefined1 uStack_c;
   undefined1 uStack_b;
-  
+
   uStack_c = 0x1e;
   uStack_b = param_3;
   ov12_02262240(param_1,1,param_2,&uStack_c,4);

@@ -49,7 +49,7 @@ int ov38_0221BB44(uint param_1)
 {
   uint uVar1;
   int extraout_r1;
-  
+
   _u32_div_f(param_1,3);
   { uint nug_a = (uint)(param_1), nug_b = (uint)(3); extraout_r1 = nug_a % nug_b; uVar1 = _u32_div_f(nug_a, nug_b); }
   return (uVar1 + (extraout_r1 != 0)) * 4;

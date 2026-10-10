@@ -58,7 +58,7 @@ void ov14_021F0314(int *param_1,undefined4 param_2,undefined4 param_3,undefined4
   char cVar1;
   undefined4 uVar2;
   int iVar3;
-  
+
   if (*(char *)((int)param_1 + 0x1f) == '\x11') {
     cVar1 = '\0';
   }

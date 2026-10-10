@@ -54,10 +54,10 @@ void ov38_0221BFEC(void)
 {
   _UNK_02225064 = 0;
   _UNK_02225040 = 1;
-                    
-                    
+
+
   func_0x021fa0d8();
-                    
+
   _UNK_02225040 = 1;
   return;
 }

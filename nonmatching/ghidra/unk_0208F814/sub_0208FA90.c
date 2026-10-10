@@ -52,7 +52,7 @@ void sub_0208FA90(void)
   undefined4 in_r3;
   __asm__ volatile("movs %0, r3" : "=l"(in_r3) : : "cc");
 
-  
+
   uVar1 = sub_0203769C();
   if (uVar1 != 0) {
     func_0x021e6fc8(in_r3,0xf,0);

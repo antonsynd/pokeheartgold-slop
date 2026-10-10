@@ -54,7 +54,7 @@ void ov14_021F1C04(int param_1)
 {
   uint uVar1;
   int iVar2;
-  
+
   uVar1 = func_0x02019f74(*(undefined4 *)(*(int *)(param_1 + 0x34) + 0x2c));
   if (uVar1 < 0x24) {
     iVar2 = ov14_021E7588(param_1);

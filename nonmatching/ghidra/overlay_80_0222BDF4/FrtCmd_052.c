@@ -52,7 +52,7 @@ undefined4 FrtCmd_052(undefined4 *param_1)
 {
   int iVar1;
   undefined4 uVar2;
-  
+
   iVar1 = Frontier_GetLaunchArgs(*(undefined4 *)*param_1);
   uVar2 = NamingScreen_CreateArgs(0xb,0,0,8,*(undefined4 *)(iVar1 + 4),0);
   Frontier_LaunchApplication

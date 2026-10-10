@@ -50,7 +50,7 @@ undefined4 ov96_021ECC14(int param_1)
   int iVar1;
   int iVar2;
   undefined4 uVar3;
-  
+
   iVar2 = 0;
   uVar3 = 1;
   do {

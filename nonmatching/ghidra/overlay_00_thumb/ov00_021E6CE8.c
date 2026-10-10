@@ -54,7 +54,7 @@ void ov00_021E6CE8(void)
   undefined4 in_r3;
   uint uVar3;
   undefined4 uStack_10;
-  
+
   if (*(int *)(iRam0221a680 + 0x1064) != 0) {
     uVar3 = *(uint *)(iRam0221a680 + 0x106c) & 0x1f;
     uStack_10 = in_r3;

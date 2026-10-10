@@ -63,7 +63,7 @@ void ov18_021F006C(int param_1,int param_2)
   int iVar8;
   ushort *puVar9;
   uint uVar10;
-  
+
   iVar2 = sub_02019B08(*(undefined4 *)(param_1 + 8),0xf);
   param_1 = param_1 + 0xc;
   param_2 = param_2 * 0x10;

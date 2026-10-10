@@ -48,7 +48,7 @@ void ov28_0225DE98(int *param_1)
 
 {
   int iVar1;
-  
+
   iVar1 = func_0x020f2ba4(param_1[1] + *param_1 * 5,6);
   param_1[2] = iVar1;
   return;

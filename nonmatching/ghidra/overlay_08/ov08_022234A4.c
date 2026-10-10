@@ -57,7 +57,7 @@ void ov08_022234A4(int param_1,int param_2,undefined4 param_3,undefined4 param_4
   int iVar2;
   int iVar3;
   int iVar4;
-  
+
   iVar4 = *(int *)(param_1 + 0x2c);
   param_2 = param_2 * 0x10;
   uVar1 = NewString_ReadMsgData(*(undefined4 *)(param_1 + 0x10),param_3);

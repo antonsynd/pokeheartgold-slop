@@ -50,7 +50,7 @@ undefined4 ov85_021E96D0(int param_1,undefined4 param_2)
 
 {
   undefined4 uVar1;
-  
+
   uVar1 = Std_CreateYesNoMenu(*(undefined4 *)(param_1 + 0x14),&ov85_021EA8D8,0x1f,0xb,0x66);
   *(undefined4 *)(param_1 + 0x330) = uVar1;
   *(undefined4 *)(param_1 + 0x354) = 0x17;

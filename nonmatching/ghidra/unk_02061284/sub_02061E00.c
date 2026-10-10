@@ -49,7 +49,7 @@ int sub_02061E00(int *param_1,int param_2)
 {
   int iVar1;
   int iVar2;
-  
+
   iVar2 = 0;
   iVar1 = *param_1;
   while (param_2 != iVar1) {

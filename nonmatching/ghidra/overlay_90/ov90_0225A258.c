@@ -49,7 +49,7 @@ undefined4 ov90_0225A258(int param_1,int param_2)
   char cVar1;
   int iVar2;
   undefined4 uVar3;
-  
+
   uVar3 = 0;
   iVar2 = 0;
   if (0 < (int)(*(byte *)(param_1 + 8) - 1)) {

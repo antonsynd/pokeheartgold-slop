@@ -57,7 +57,7 @@ void ov102_021EB29C(undefined4 *param_1)
   undefined4 *puVar2;
   undefined4 *puVar3;
   int iVar4;
-  
+
   uVar1 = ov102_021EA268(*param_1);
   if (param_1[3] != 0) {
     Sprite_Delete();

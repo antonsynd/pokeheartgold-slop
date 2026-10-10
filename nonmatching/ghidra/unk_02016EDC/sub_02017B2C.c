@@ -48,7 +48,7 @@ void sub_02017B2C(undefined4 *param_1)
 
 {
   int iVar1;
-  
+
   iVar1 = Pokepic_ResumePaletteFade(*param_1);
   if (iVar1 != 0) {
     *(undefined1 *)((int)param_1 + 0x1cf) = 1;

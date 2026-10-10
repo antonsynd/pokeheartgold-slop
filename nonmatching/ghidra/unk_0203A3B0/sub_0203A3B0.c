@@ -54,7 +54,7 @@ sub_0203A3B0(undefined4 param_1,undefined4 param_2,undefined2 param_3,undefined2
 {
   undefined4 *puVar1;
   undefined4 uVar2;
-  
+
   sub_0203A4D4(param_7,param_5,param_8,param_2);
   sub_0203A59C(param_7,param_5,param_2);
   puVar1 = (undefined4 *)Heap_AllocAtEnd(param_2,0x24);

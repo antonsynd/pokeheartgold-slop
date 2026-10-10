@@ -54,7 +54,7 @@ void ov52_021E84CC(int param_1)
   int iVar2;
   byte *pbVar3;
   int iVar4;
-  
+
   iVar4 = 0;
   pbVar3 = (byte *)(param_1 + 0x433d);
   iVar2 = param_1;

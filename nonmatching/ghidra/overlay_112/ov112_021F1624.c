@@ -62,7 +62,7 @@ void ov112_021F1624(int param_1,undefined4 param_2,undefined4 param_3)
   int iVar4;
   int iVar5;
   undefined4 uVar6;
-  
+
   iVar5 = *(int *)(param_1 + (uint)*(byte *)(param_1 + 0x13d) * 4 + 0xc0);
   uVar2 = *(undefined4 *)(param_1 + 0x124);
   uVar3 = *(undefined4 *)(param_1 + 0x128);

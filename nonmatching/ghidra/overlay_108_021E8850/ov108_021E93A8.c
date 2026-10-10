@@ -53,7 +53,7 @@ undefined4 ov108_021E93A8(int param_1)
 {
   bool bVar1;
   int iVar2;
-  
+
   bVar1 = false;
   iVar2 = System_GetTouchNew();
   if (iVar2 == 0) {

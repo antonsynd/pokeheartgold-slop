@@ -49,7 +49,7 @@ void ov13_0222269C(undefined4 param_1,int param_2,int param_3,uint param_4)
 {
   byte bVar1;
   uint uVar2;
-  
+
   uVar2 = 0;
   if (param_4 != 0) {
     do {

@@ -55,7 +55,7 @@ void sub_020939B8(int param_1)
 
 {
   int iVar1;
-  
+
   iVar1 = YesNoPrompt_HandleInput(*(undefined4 *)(param_1 + 8));
   if (iVar1 == 1) {
     sub_020950F8(param_1 + 0x4660,1);

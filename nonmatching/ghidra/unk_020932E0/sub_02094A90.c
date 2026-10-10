@@ -55,7 +55,7 @@ void sub_02094A90(int param_1,int param_2)
   undefined4 uStack_18;
   int iStack_14;
   undefined4 uStack_10;
-  
+
   if (param_2 == 0) {
     uStack_18 = *(undefined4 *)(param_1 + 0x4688);
     iStack_14 = *(int *)(param_1 + 0x468c);

@@ -53,7 +53,7 @@ void ov102_021E8E84(int param_1,int *param_2,undefined4 param_3,undefined4 param
 
 {
   int iVar1;
-  
+
   iVar1 = *param_2;
   if (iVar1 == 0) {
     ov102_021E8F5C(param_1 + 0x70,1,1,param_4,param_4);

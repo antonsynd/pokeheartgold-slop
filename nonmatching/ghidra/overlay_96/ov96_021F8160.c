@@ -48,7 +48,7 @@ void ov96_021F8160(int param_1,undefined4 param_2,undefined4 param_3)
 
 {
   int iVar1;
-  
+
   iVar1 = 0;
   param_1 = param_1 + 4;
   do {

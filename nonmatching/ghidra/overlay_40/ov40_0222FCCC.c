@@ -59,7 +59,7 @@ void ov40_0222FCCC(int param_1,undefined4 param_2,undefined4 param_3,undefined4 
   int iVar4;
   undefined4 uStack_1c;
   undefined4 uStack_18;
-  
+
   iVar4 = 0;
   iVar3 = param_1;
   uStack_18 = param_4;

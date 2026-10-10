@@ -49,7 +49,7 @@ void ov07_0221DD38(int param_1,undefined4 param_2,int param_3)
 {
   int iVar1;
   uint uVar2;
-  
+
   uVar2 = 0;
   do {
     iVar1 = *(int *)(param_1 + uVar2 * 4);

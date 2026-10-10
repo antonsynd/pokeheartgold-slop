@@ -65,7 +65,7 @@ void ov96_02203E30(undefined4 param_1,int param_2,undefined2 *param_3)
   int iStack_20;
   int iStack_1c;
   undefined4 uStack_18;
-  
+
   iVar3 = 0;
   do {
     ov96_021EB408(param_1,3,2,0x65,2);

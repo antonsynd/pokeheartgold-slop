@@ -59,7 +59,7 @@ void ov115_02260254(undefined4 param_1,undefined4 param_2,undefined4 param_3,und
   undefined4 uVar2;
   undefined4 uVar3;
   int iStack_18;
-  
+
   uVar1 = Heap_Alloc(param_2,0x20);
   uVar2 = func_0x020079f4(0x6d,param_3,&iStack_18,param_2);
   func_0x02003de8(*(undefined4 *)(iStack_18 + 0xc),uVar1,0x10,param_4,param_5);

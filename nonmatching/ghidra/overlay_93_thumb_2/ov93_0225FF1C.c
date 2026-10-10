@@ -59,7 +59,7 @@ void ov93_0225FF1C(int *param_1,byte *param_2,int *param_3,undefined4 param_4)
   int iVar2;
   int iVar3;
   undefined4 uStack_18;
-  
+
   uStack_18 = param_4;
   if (*param_3 != 0) {
     GF_AssertFail();

@@ -52,7 +52,7 @@ void ov01_021F497C(undefined4 *param_1,undefined4 param_2,undefined4 param_3,und
 {
   undefined4 uVar1;
   uint uVar2;
-  
+
   uVar2 = 0;
   do {
     uVar1 = Heap_Alloc(4,0xa74);

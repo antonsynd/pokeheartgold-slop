@@ -56,7 +56,7 @@ void ov18_021EE3FC(undefined4 param_1)
 {
   undefined4 uVar1;
   undefined4 uVar2;
-  
+
   ov18_021EE35C(param_1,&ov18_021F9F3C,0x14);
   ov18_021EE508(param_1,0,0);
   ov18_021EE508(param_1,1,1);

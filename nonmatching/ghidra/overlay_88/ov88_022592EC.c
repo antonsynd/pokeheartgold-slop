@@ -60,7 +60,7 @@ void ov88_022592EC(int param_1,undefined4 *param_2,undefined4 param_3)
   undefined *puVar4;
   short sVar5;
   int iStack_18;
-  
+
   puVar4 = &UNK_02259904;
   iVar2 = 0;
   sVar5 = 0x300;

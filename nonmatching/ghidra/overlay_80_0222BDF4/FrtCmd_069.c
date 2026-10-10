@@ -60,7 +60,7 @@ undefined4 FrtCmd_069(undefined4 *param_1)
   undefined4 uVar5;
   int iVar6;
   undefined4 uVar7;
-  
+
   uVar1 = FrontierSystem_GetFrontierMap(*param_1);
   uVar2 = FrontierScript_ReadVar(param_1);
   uVar3 = FrontierScript_ReadVar(param_1);

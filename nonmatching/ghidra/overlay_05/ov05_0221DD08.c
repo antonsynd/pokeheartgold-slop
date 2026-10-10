@@ -55,7 +55,7 @@ void ov05_0221DD08(int *param_1)
   uint uVar2;
   undefined *puVar3;
   int *piVar4;
-  
+
   puVar3 = &ov05_0221EA60;
   uVar2 = 0;
   piVar4 = param_1;

@@ -47,7 +47,7 @@ undefined2 ov99_021E71B0(int param_1)
 
 {
   uint uVar1;
-  
+
   uVar1 = ((*(uint *)(param_1 + 0x3f4) & 0x7ffffff) >> 0x13) +
           ((*(uint *)(param_1 + 0x3f4) & 0x7ffff) >> 0xe) * 0x1e;
   if (0x1ec < uVar1) {

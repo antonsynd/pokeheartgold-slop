@@ -51,7 +51,7 @@ undefined4 ov74_0222EF18(int param_1,undefined4 param_2,undefined4 param_3,undef
 
 {
   undefined4 uVar1;
-  
+
   uVar1 = String_New(0xfb,0x55);
   CopyU16ArrayToStringN(uVar1,*(int *)(param_1 + 0x2bb4) + 0x154,0xfa);
   AddTextPrinterParameterizedWithColor(param_2,1,uVar1,0,0,0xff,param_3,0,param_4);

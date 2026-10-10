@@ -59,7 +59,7 @@ void ov01_021ECC70(int param_1)
   int *piVar4;
   int iStack_20;
   int iStack_1c;
-  
+
   piVar4 = *(int **)(param_1 + 8);
   ov01_021EC304(&iStack_20,param_1);
   iVar1 = piVar4[3];

@@ -47,7 +47,7 @@ undefined4 ov43_0222D230(int param_1,int param_2)
 
 {
   int iVar1;
-  
+
   if (*(int *)(param_1 + 0x10) == 1) {
     iVar1 = 8;
   }

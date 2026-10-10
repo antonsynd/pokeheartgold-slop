@@ -51,7 +51,7 @@ void ov18_021F1598(undefined4 *param_1,int param_2,int param_3)
 
 {
   uint uVar1;
-  
+
   ManagedSprite_SetDrawFlag((undefined *)param_1[param_3 + 0x19c],0);
   if (*(ushort *)(param_1 + param_2 + 0x40c) != 0) {
     uVar1 = Pokedex_GetSeenFormByIdx

@@ -50,7 +50,7 @@ void ov112_021EE970(undefined4 param_1,int param_2,undefined4 param_3,undefined4
 {
   char acStack_10 [4];
   undefined4 uStack_c;
-  
+
   if (4999 < param_2) {
     uStack_c = param_4;
     acStack_10[0] = GetBoxMonData(param_1,9,0);

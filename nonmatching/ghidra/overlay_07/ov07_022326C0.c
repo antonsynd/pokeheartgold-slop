@@ -50,7 +50,7 @@ void ov07_022326C0(int param_1,undefined4 *param_2)
 {
   uint uVar1;
   undefined4 uVar2;
-  
+
   uVar2 = param_2[1];
   *(undefined4 *)(param_1 + 4) = *param_2;
   *(undefined4 *)(param_1 + 8) = uVar2;

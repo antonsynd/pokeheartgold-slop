@@ -49,7 +49,7 @@ void ov92_02263824(undefined4 param_1,undefined4 param_2)
 
 {
   undefined1 auStack_48 [64];
-  
+
   ov92_022634F8(param_1,auStack_48);
   func_0x020cc070(auStack_48,param_2);
   return;

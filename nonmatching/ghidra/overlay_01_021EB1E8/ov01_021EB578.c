@@ -52,7 +52,7 @@ void ov01_021EB578(undefined4 param_1,undefined4 param_2,undefined4 param_3)
 {
   undefined4 uVar1;
   undefined4 uVar2;
-  
+
   uVar1 = GF2DGfxResHeader_GetByIndex();
   uVar2 = func_0x02007a44(0x3f,param_3,0,4,1);
   GF2DGfxResHeader_Init(uVar2,uVar1,4);

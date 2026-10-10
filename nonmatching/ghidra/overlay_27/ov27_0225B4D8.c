@@ -72,7 +72,7 @@ undefined4 ov27_0225B4D8(int param_1)
   int iVar4;
   undefined *puVar5;
   int iVar6;
-  
+
   uVar3 = PlayerAvatar_GetPlayerMoveState(*(undefined **)(*(int *)(param_1 + 0x10) + 0x40));
   if ((uVar3 != 0) || ((_DAT_021d1154 & 0xf0) != 0)) {
     return 1;

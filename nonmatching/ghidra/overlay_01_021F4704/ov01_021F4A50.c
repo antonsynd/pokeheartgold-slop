@@ -51,7 +51,7 @@ int ov01_021F4A50(undefined4 param_1,int param_2,undefined4 param_3,int param_4,
 
 {
   int iVar1;
-  
+
   if (param_7 != 0) {
     if (*(int *)(param_4 + 0x808) != 0) {
       GF_AssertFail();

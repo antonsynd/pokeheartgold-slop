@@ -56,7 +56,7 @@ void ov65_0221D0EC(int param_1,undefined4 param_2)
 {
   int iVar1;
   undefined4 uVar2;
-  
+
   iVar1 = OverlayManager_GetArgs(param_2);
   *(int *)(param_1 + 8) = iVar1;
   *(undefined4 *)(param_1 + 0x674) = 4;

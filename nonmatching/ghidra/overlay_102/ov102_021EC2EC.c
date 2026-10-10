@@ -50,7 +50,7 @@ undefined4 ov102_021EC2EC(int param_1)
 {
   short sVar1;
   undefined4 uVar2;
-  
+
   sVar1 = *(short *)(param_1 + 0x1a);
   if (sVar1 == 0) {
     uVar2 = ov102_021E93D4(0x21ec339,param_1,0);

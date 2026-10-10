@@ -54,7 +54,7 @@ undefined4 FrtCmd_115(undefined4 *param_1)
 {
   int iVar1;
   undefined4 *puVar2;
-  
+
   puVar2 = (undefined4 *)*param_1;
   iVar1 = Frontier_GetLaunchArgs(*puVar2);
   FrontierScript_ReadVarPtr(param_1);

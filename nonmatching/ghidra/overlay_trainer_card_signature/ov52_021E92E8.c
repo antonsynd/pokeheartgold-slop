@@ -48,7 +48,7 @@ undefined4 ov52_021E92E8(undefined1 param_1)
 
 {
   int iVar1;
-  
+
   iVar1 = TextPrinterCheckActive(param_1);
   if (iVar1 == 0) {
     return 1;

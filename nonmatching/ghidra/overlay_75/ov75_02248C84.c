@@ -54,7 +54,7 @@ undefined4 ov75_02248C84(int param_1,undefined4 param_2,undefined4 param_3,undef
 {
   int iVar1;
   undefined4 uVar2;
-  
+
   iVar1 = ov75_02249534(*(undefined4 *)(param_1 + 0x44));
   if (iVar1 != 1) {
     iVar1 = *(int *)(param_1 + 0x94);

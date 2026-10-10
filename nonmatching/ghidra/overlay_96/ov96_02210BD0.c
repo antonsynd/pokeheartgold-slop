@@ -57,7 +57,7 @@ ov96_02210BD0(undefined4 *param_1,undefined1 param_2,undefined4 param_3,undefine
   short sStack_1c;
   short sStack_1a;
   undefined4 uStack_18;
-  
+
   uStack_18 = param_4;
   uVar1 = PokeathlonCourse_GetHeapAllocPtr4(*param_1);
   psVar2 = (short *)ov96_0220E74C(uVar1,param_2);

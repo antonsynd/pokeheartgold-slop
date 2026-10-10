@@ -48,7 +48,7 @@ undefined4 ov08_02222DAC(int param_1)
 
 {
   int iVar1;
-  
+
   iVar1 = TextPrinterCheckActive(*(undefined1 *)(param_1 + 0x32));
   if (iVar1 == 0) {
     return 10;

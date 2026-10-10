@@ -52,7 +52,7 @@ void ov96_021EB63C(int param_1,int param_2)
   int iVar2;
   int iVar3;
   undefined4 uVar4;
-  
+
   iVar3 = 0;
   if (0 < *(int *)(param_1 + 8)) {
     iVar2 = 0;

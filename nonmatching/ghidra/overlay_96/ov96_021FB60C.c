@@ -47,7 +47,7 @@ bool ov96_021FB60C(int param_1)
 
 {
   int iVar1;
-  
+
   iVar1 = 0;
   do {
     if (*(int *)(param_1 + 0x108) != 4) break;

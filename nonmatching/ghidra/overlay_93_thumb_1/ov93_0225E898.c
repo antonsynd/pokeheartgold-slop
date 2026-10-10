@@ -71,7 +71,7 @@ void ov93_0225E898(int param_1,int param_2,undefined4 param_3,undefined4 param_4
   int iVar3;
   undefined1 auStack_28 [16];
   undefined4 uStack_18;
-  
+
   *(undefined4 *)(param_2 + 0x244) = 0;
   if (*(int *)(param_1 + 0x20) == 2) {
     *(undefined4 *)(param_2 + 0x20c) = *(undefined4 *)(param_1 + 0x1758);

@@ -54,7 +54,7 @@ void ov83_0223FA74(void)
   undefined4 in_r3;
   int iStack_10;
   undefined4 uStack_c;
-  
+
   uStack_c = in_r3;
   uVar1 = func_0x020079f4(0xb7,0x9c,&iStack_10,0x6b);
   func_0x020d2894(*(undefined4 *)(iStack_10 + 0xc),0xe0);

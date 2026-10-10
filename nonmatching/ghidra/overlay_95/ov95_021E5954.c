@@ -48,7 +48,7 @@ void ov95_021E5954(void)
 
 {
   undefined4 in_r3;
-  
+
   GF_3DVramMan_Create(0x46,0,2,0,2,0x21e5975,in_r3);
   return;
 }

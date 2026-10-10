@@ -61,7 +61,7 @@ void ov89_022597FC(int param_1)
   int *piVar5;
   undefined4 *puVar6;
   int aiStack_48 [13];
-  
+
   piVar5 = aiStack_48;
   uVar1 = SpriteSystem_NewSprite
                     (*(undefined4 *)(param_1 + 0x1c),*(undefined4 *)(param_1 + 0x20),&ov89_0225CAA0)

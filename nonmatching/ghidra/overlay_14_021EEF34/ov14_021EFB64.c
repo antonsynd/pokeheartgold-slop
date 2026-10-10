@@ -74,7 +74,7 @@ undefined4 ov14_021EFB64(int param_1,undefined4 param_2,undefined4 param_3,undef
   uint uVar1;
   int iVar2;
   undefined4 uVar3;
-  
+
   uVar1 = ov14_021F6A24();
   if (uVar1 != 0xffffffff) {
     iVar2 = ov14_021E6070(param_1,uVar1 + 0x1e,0xac,0,param_4);

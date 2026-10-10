@@ -63,7 +63,7 @@ void ov48_0225A00C(undefined4 *param_1,undefined4 *param_2,undefined4 param_3,un
   undefined4 *puVar3;
   int iVar4;
   int iVar5;
-  
+
   *param_1 = 0;
   ov48_0225A288();
   puVar2 = &UNK_0225b164;

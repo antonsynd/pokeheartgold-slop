@@ -48,7 +48,7 @@ int ov14_021E6464(int param_1,uint param_2)
 
 {
   int iVar1;
-  
+
   iVar1 = func_0x020f2998(*(undefined1 *)(param_1 + 0x25),6);
   return (param_2 & 0x7f) + iVar1 * 6;
 }

@@ -50,7 +50,7 @@ void ov45_0222FF40(undefined4 param_1,undefined4 param_2,undefined4 param_3,unde
 
 {
   int iVar1;
-  
+
   iVar1 = ov45_0222FB24(iRam022577c0,param_1,0,param_4,param_4);
   if (iVar1 != -1) {
     ov45_0222F88C(iRam022577c0,param_1,param_2);

@@ -47,7 +47,7 @@ undefined4 ov74_02236F30(int param_1)
 
 {
   undefined4 uVar1;
-  
+
   if (param_1 == 1) {
     uVar1 = 1;
   }

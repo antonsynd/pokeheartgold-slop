@@ -48,7 +48,7 @@ void sub_0208ADB8(int param_1,int param_2)
 
 {
   undefined *puVar1;
-  
+
   puVar1 = *(undefined **)(*(int *)(param_1 + 0x22c) + 0x30);
   if (puVar1 != (undefined *)0x0) {
     MenuInputStateMgr_SetState(puVar1,param_2);

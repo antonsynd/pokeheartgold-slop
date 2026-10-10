@@ -81,7 +81,7 @@ void ov12_02260668(undefined *param_1,undefined4 *param_2,undefined4 param_3,und
   uint uVar11;
   ushort uVar12;
   uint auStack_20 [3];
-  
+
   auStack_20[2] = param_4;
   BattleSystem_GetBgConfig((undefined *)*param_2);
   puVar2 = BattleSystem_GetPaletteData((undefined *)*param_2);

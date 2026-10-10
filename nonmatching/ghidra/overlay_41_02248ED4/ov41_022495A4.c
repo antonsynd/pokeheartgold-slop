@@ -49,7 +49,7 @@ void ov41_022495A4(int *param_1,int param_2,int param_3)
 
 {
   int iVar1;
-  
+
   iVar1 = *param_1;
   ov41_02249AF4(*(undefined4 *)(iVar1 + 0x10));
   ov41_02248114(*(undefined4 *)(iVar1 + 4),param_2 - *(int *)(iVar1 + 0x24),

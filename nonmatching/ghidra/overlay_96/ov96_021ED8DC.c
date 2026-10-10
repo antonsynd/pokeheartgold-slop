@@ -58,7 +58,7 @@ void ov96_021ED8DC(undefined4 param_1)
   int iVar2;
   uint uVar3;
   uint uVar4;
-  
+
   iVar1 = PokeathlonCourse_GetDataCopyArea();
   iVar1 = ov96_021E8A20(iVar1 + 0x28);
   iVar2 = PokeathlonCourse_GetMode(param_1);

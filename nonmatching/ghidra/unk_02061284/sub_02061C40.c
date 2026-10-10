@@ -65,7 +65,7 @@ void sub_02061C40(undefined *param_1,undefined1 *param_2)
   uint uVar4;
   int iVar5;
   int iVar6;
-  
+
   if (param_2[1] == param_2[2]) {
     if (param_2[3] == '\0') {
       uVar1 = MapObject_GetInitialX(param_1);

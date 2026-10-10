@@ -51,7 +51,7 @@ void sub_0206039C(undefined4 param_1,undefined4 param_2)
 
 {
   int iVar1;
-  
+
   iVar1 = MetatileBehavior_IsShallowWater(param_2);
   if (iVar1 == 1) {
     iVar1 = MapObject_CheckFlag26(param_1);

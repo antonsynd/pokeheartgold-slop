@@ -47,7 +47,7 @@ undefined4 ov27_0225CA68(int *param_1,int param_2,int param_3)
 
 {
   int iVar1;
-  
+
   iVar1 = (int)*(char *)(param_3 + *(int *)((param_2 + -2) * 4 + 0x225d480) + *param_1 * 4);
   if ((iVar1 != -1) && (*param_1 != iVar1)) {
     *param_1 = iVar1;

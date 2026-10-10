@@ -62,7 +62,7 @@ void ov70_022409C0(int *param_1,int param_2)
   undefined *puVar1;
   undefined *puVar2;
   int iVar3;
-  
+
   if ((short)param_1[0x48] == 0x12) {
     puVar1 = Party_GetMonByIndex(*(undefined **)(*param_1 + 8),
                                  (uint)*(ushort *)((int)param_1 + 0x122));

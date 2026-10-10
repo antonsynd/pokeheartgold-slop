@@ -56,7 +56,7 @@ void sub_0208F918(void)
   int in_r3;
   __asm__ volatile("movs %0, r3" : "=l"(in_r3) : : "cc");
 
-  
+
   func_0x021e6fc8(in_r3,3,0);
   MIi_CpuClearFast(0,(undefined *)(in_r3 + 0x43d0),0x3840);
   uVar1 = sub_0203769C();

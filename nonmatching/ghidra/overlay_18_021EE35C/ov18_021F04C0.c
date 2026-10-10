@@ -50,7 +50,7 @@ undefined4 ov18_021F04C0(undefined *param_1,uint param_2)
 
 {
   uint uVar1;
-  
+
   if (*(int *)(*(int *)(param_1 + 0x18fc) + param_2 * 4) != -2) {
     uVar1 = ov18_021E8AE0(param_1,param_2);
     uVar1 = MapHeader_GetMapSec(uVar1);

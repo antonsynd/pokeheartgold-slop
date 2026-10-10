@@ -47,7 +47,7 @@ undefined4 ov45_0222B28C(short *param_1,uint param_2)
 
 {
   uint uVar1;
-  
+
   uVar1 = 0;
   if (param_2 != 0) {
     do {

@@ -54,7 +54,7 @@ void ov96_021F87E0(int param_1)
 {
   uint uVar1;
   int iVar2;
-  
+
   ov96_021F8980();
   ov96_021F8A50(param_1);
   uVar1 = 0;

@@ -70,7 +70,7 @@ undefined4 ov96_021F9D58(undefined4 param_1)
 {
   int iVar1;
   undefined4 uVar2;
-  
+
   iVar1 = PokeathlonCourse_GetHeapAllocPtr4();
   sub_0203A914();
   uVar2 = PokeathlonCourse_GetSystem(param_1);

@@ -49,7 +49,7 @@ undefined4 ov40_02230D94(int param_1,undefined4 param_2,undefined4 param_3)
 {
   int iVar1;
   ulonglong uVar2;
-  
+
   iVar1 = 1;
   while( true ) {
     if ((*(undefined **)(param_1 + 0x880) != (undefined *)0x0) &&

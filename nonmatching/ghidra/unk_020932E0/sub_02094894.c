@@ -48,7 +48,7 @@ undefined4 sub_02094894(int param_1,int param_2)
 
 {
   int iVar1;
-  
+
   if ((int)(uint)*(byte *)(param_1 + 0xd) <= param_2) {
     return 3;
   }

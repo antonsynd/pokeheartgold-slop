@@ -50,7 +50,7 @@ void ov96_02207818(int *param_1)
 {
   int iVar1;
   int *piVar2;
-  
+
   iVar1 = 0;
   piVar2 = param_1;
   do {

@@ -74,7 +74,7 @@ ov08_02222B8C(undefined4 *param_1,undefined4 param_2,undefined4 param_3,undefine
   undefined4 uVar4;
   int iVar5;
   undefined4 *puVar6;
-  
+
   puVar6 = (undefined4 *)*param_1;
   if (*(char *)((int)param_1 + 0x114d) == '\x03') {
     uVar3 = ov08_02223374();

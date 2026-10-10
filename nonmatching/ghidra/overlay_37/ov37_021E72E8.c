@@ -60,7 +60,7 @@ void ov37_021E72E8(undefined4 param_1,int param_2,byte *param_3,int param_4)
   int iStack_20;
   int iStack_1c;
   int iStack_18;
-  
+
   bVar1 = false;
   iStack_24 = 0;
   iVar4 = param_2;

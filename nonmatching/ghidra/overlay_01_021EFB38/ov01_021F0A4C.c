@@ -54,7 +54,7 @@ undefined4 ov01_021F0A4C(undefined4 *param_1)
   uint uVar3;
   undefined4 *puVar4;
   int iStack_18;
-  
+
   if (*(char *)((int)param_1 + 0xca) == '\0') {
     return 1;
   }

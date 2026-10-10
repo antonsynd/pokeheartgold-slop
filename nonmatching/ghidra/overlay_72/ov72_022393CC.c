@@ -52,7 +52,7 @@ undefined4 ov72_022393CC(int *param_1)
 
 {
   int iVar1;
-  
+
   iVar1 = ov72_02237B54();
   if (iVar1 == 0) {
     param_1[0x3f5] = param_1[0x3f5] + 1;

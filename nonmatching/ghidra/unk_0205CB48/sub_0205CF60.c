@@ -55,7 +55,7 @@ undefined4 sub_0205CF60(undefined4 param_1)
   int iVar1;
   int iVar2;
   undefined4 uVar3;
-  
+
   iVar1 = PlayerAvatar_GetMoveState();
   iVar2 = PlayerAvatar_GetPlayerMoveState(param_1);
   if (iVar1 == 0) {

@@ -96,7 +96,7 @@ undefined4 ov115_0225F220(int *param_1,undefined4 param_2,undefined4 *param_3,un
   undefined4 uStack_2c;
   undefined1 auStack_24 [12];
   undefined4 uStack_18;
-  
+
   piVar2 = (int *)param_1[3];
   uStack_18 = param_4;
   switch(*param_1) {

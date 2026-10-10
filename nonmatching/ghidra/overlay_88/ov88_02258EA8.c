@@ -53,7 +53,7 @@ void ov88_02258EA8(undefined1 *param_1,undefined4 param_2,undefined4 param_3,und
 {
   char cVar1;
   undefined4 uVar2;
-  
+
   uVar2 = func_0x0222ad4c(param_6);
   *param_1 = 0;
   cVar1 = func_0x020f2ba4(uVar2,0x3c);

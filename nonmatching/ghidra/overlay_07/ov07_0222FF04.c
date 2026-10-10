@@ -60,7 +60,7 @@ undefined4 ov07_0222FF04(undefined4 param_1,undefined4 param_2)
   longlong lVar3;
   short sStack_18;
   short sStack_16;
-  
+
   iVar1 = ov07_022222F0(param_2,param_1);
   if (iVar1 != 0) {
     func_0x0200de44(param_1,&sStack_16,&sStack_18);

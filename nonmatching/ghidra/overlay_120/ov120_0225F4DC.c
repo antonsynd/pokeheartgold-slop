@@ -59,7 +59,7 @@ undefined4 ov120_0225F4DC(undefined4 *param_1)
   byte *pbVar6;
   uint uStack_28;
   uint uStack_24;
-  
+
   if (param_1 == (undefined4 *)0x0) {
     GF_AssertFail();
   }

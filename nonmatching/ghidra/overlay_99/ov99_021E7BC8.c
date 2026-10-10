@@ -56,7 +56,7 @@ undefined4 ov99_021E7BC8(int param_1)
   int iVar1;
   uint uVar2;
   int iVar3;
-  
+
   iVar1 = GridInputHandler_HandleInput_AllowHold(*(undefined4 *)(param_1 + 0x3fc));
   uVar2 = GridInputHandler_GetNextInput(*(undefined4 *)(param_1 + 0x3fc));
   iVar3 = TouchscreenHitbox_FindHitboxAtTouchNew(&ov99_021E9F54);

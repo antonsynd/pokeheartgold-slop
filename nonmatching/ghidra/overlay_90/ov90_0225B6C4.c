@@ -59,7 +59,7 @@ undefined4 ov90_0225B6C4(int param_1,undefined4 *param_2)
   int extraout_r1_00;
   int iVar2;
   int iVar3;
-  
+
   switch(*(undefined1 *)(param_1 + 0x48)) {
   case 0:
     ov90_02258DB0(*(undefined4 *)(param_1 + 4),0x8b);

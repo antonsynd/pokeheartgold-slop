@@ -60,7 +60,7 @@ void ov14_021F4278(int param_1)
   undefined4 auStack_7c [13];
   short asStack_48 [2];
   int aiStack_44 [12];
-  
+
   uVar9 = 0;
   puVar5 = (undefined4 *)&ov14_021F8140;
   sVar7 = 0;

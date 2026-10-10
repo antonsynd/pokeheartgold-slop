@@ -49,7 +49,7 @@ undefined4 ov14_021E8A7C(int param_1)
 
 {
   char cVar1;
-  
+
   if (*(char *)(param_1 + 0x27) == '\0') {
     cVar1 = *(char *)(*(int *)(param_1 + 0x18) + 0x14);
     if (*(byte *)(param_1 + 0x21) < 0x1e) {

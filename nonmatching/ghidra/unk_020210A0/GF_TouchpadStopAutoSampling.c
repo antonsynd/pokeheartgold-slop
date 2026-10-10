@@ -52,7 +52,7 @@ undefined4 GF_TouchpadStopAutoSampling(void)
 {
   int iVar1;
   uint uVar2;
-  
+
   uVar2 = 0;
   if (sRam021d21f0 == 0) {
     return 1;

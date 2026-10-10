@@ -53,7 +53,7 @@ undefined4 ov96_021FDE08(int param_1,int param_2,undefined4 param_3,undefined4 p
   undefined4 uVar2;
   int iStack_1c;
   int iStack_18;
-  
+
   iVar1 = param_1 + 0x30 + param_2 * 0xd4;
   if (2 < *(byte *)(iVar1 + 0x8b)) {
     GF_AssertFail();

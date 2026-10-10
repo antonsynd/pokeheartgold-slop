@@ -61,7 +61,7 @@ undefined4 TradeSequence_Exit(undefined4 param_1)
 {
   undefined4 uVar1;
   int iVar2;
-  
+
   uVar1 = func_0x020d3a38();
   iVar2 = OverlayManager_GetData(param_1);
   SysTask_Destroy(*(undefined4 *)(iVar2 + 0x144));

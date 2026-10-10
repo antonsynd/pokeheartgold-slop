@@ -52,7 +52,7 @@ void ov14_021F131C(int param_1)
 {
   int iVar1;
   uint uVar2;
-  
+
   uVar2 = (uint)*(byte *)(*(int *)(param_1 + 0x34) + 0x44d);
   if ((0xf < uVar2) &&
      (iVar1 = func_0x020740b4(*(undefined4 *)(param_1 + 4),uVar2 - 0x10), iVar1 == 0)) {

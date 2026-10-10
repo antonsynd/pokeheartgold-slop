@@ -55,7 +55,7 @@ undefined4 sub_02062FEC(undefined4 param_1,int param_2)
 
 {
   short *psVar1;
-  
+
   psVar1 = (short *)sub_0205F3E4();
   sub_0206101C(param_1,(int)*psVar1,*(undefined4 *)(param_2 + psVar1[3] * 4));
   sub_02061070(param_1);

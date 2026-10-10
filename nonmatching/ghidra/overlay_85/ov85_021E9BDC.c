@@ -51,7 +51,7 @@ undefined4 ov85_021E9BDC(int param_1,undefined4 param_2)
 
 {
   int iVar1;
-  
+
   if (*(int *)(param_1 + 0x4a58) != 0) {
     iVar1 = sub_02037454();
     if (*(int *)(param_1 + 0x4a58) != iVar1) {

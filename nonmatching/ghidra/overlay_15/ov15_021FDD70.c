@@ -68,7 +68,7 @@ void ov15_021FDD70(int param_1)
   undefined4 uStack_30;
   undefined4 uStack_2c;
   undefined4 uStack_28;
-  
+
   uVar1 = NARC_New(0xf,6);
   HeapExp_FndInitAllocator(param_1 + 0x808,6,4);
   iVar5 = param_1 + 0x81c;

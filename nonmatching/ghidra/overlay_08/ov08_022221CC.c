@@ -52,7 +52,7 @@ void ov08_022221CC(int *param_1,undefined4 param_2,undefined4 param_3,undefined4
   ushort uVar1;
   int iVar2;
   uint uVar3;
-  
+
   switch(param_2) {
   case 0:
     uVar1 = 0;

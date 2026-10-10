@@ -62,7 +62,7 @@ int ov34_0225DE94(undefined4 *param_1,undefined4 param_2,undefined4 param_3,unde
   int iVar3;
   int iVar4;
   int iVar5;
-  
+
   iVar1 = func_0x02025204(&ov34_0225E730);
   iVar2 = ov34_0225E5D4(param_1);
   if (iVar1 != -1) {

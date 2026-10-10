@@ -52,7 +52,7 @@ int sub_02054954(undefined4 param_1,int param_2,int param_3,int param_4,undefine
   int iVar2;
   int iVar3;
   int iVar4;
-  
+
   iVar1 = sub_02054940(param_1,*(undefined4 *)(param_2 + 4),param_3 * 0x10000 + 0x8000,
                        param_4 * 0x10000 + 0x8000,param_5);
   iVar3 = *(int *)(param_2 + 4);

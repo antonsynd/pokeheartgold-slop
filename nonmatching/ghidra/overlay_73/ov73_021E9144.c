@@ -51,7 +51,7 @@ undefined4 ov73_021E9144(int param_1)
 
 {
   int iVar1;
-  
+
   iVar1 = func_0x02237b54();
   if (iVar1 == 0) {
     *(int *)(param_1 + 0xf94) = *(int *)(param_1 + 0xf94) + 1;

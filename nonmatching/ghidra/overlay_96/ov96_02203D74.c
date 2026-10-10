@@ -53,7 +53,7 @@ void ov96_02203D74(int param_1,undefined4 param_2,undefined4 param_3)
   undefined2 *puVar3;
   int iVar4;
   undefined2 auStack_20 [6];
-  
+
   iVar4 = 0;
   iVar2 = param_1;
   puVar3 = auStack_20;

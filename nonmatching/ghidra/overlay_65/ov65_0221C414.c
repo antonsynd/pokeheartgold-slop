@@ -53,7 +53,7 @@ void ov65_0221C414(int param_1,undefined4 param_2,undefined4 param_3,undefined4 
   int iVar1;
   undefined4 uVar2;
   int iVar3;
-  
+
   iVar3 = 0;
   iVar1 = Party_GetCount(param_4);
   if (0 < iVar1) {

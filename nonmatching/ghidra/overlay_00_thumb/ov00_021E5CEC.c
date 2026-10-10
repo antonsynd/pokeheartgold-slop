@@ -66,7 +66,7 @@ undefined4 ov00_021E5CEC(undefined4 param_1,uint param_2,int param_3,int param_4
   undefined4 uStack_20;
   int iStack_1c;
   int iStack_18;
-  
+
   iStack_18 = param_4;
   if (iRam0221a680 == 0) {
     GF_AssertFail();

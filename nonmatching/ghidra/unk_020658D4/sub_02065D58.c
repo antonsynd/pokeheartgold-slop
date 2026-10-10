@@ -52,7 +52,7 @@ void sub_02065D58(undefined4 param_1,int param_2)
 {
   undefined2 uVar1;
   undefined4 uVar2;
-  
+
   MapObject_GetFieldSystem();
   uVar2 = FieldSystem_GetPlayerAvatar();
   uVar1 = PlayerAvatar_GetXCoord();

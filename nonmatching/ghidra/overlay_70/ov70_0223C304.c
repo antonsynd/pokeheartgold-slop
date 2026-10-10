@@ -53,7 +53,7 @@ void ov70_0223C304(int param_1)
 {
   int iVar1;
   int iVar2;
-  
+
   if ((uRam021d1154 & 0x40) == 0) {
     if ((uRam021d1154 & 0x80) == 0) {
       if ((uRam021d1154 & 0x10) == 0) {

@@ -48,7 +48,7 @@ undefined4 ov01_021EB840(int *param_1)
 
 {
   int iVar1;
-  
+
   iVar1 = func_0x020f2998(param_1[2] * param_1[3],param_1[4]);
   *param_1 = iVar1 + param_1[1];
   if (param_1[3] + 1 <= param_1[4]) {

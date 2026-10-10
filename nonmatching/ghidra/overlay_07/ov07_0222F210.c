@@ -65,7 +65,7 @@ void ov07_0222F210(undefined4 param_1,undefined4 *param_2)
   short sVar1;
   short sVar2;
   int iVar3;
-  
+
   switch(param_2[3]) {
   case 0:
     ManagedSprite_SetAnimateFlag(param_2[0x17],1);

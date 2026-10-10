@@ -56,7 +56,7 @@ ov74_02235568(undefined4 param_1,int *param_2,uint param_3,uint param_4,undefine
 {
   undefined4 uVar1;
   int *piVar2;
-  
+
   piVar2 = (int *)param_2[4];
   if (*piVar2 == 0) {
     AddWindowParameterized

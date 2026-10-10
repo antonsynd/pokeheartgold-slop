@@ -50,7 +50,7 @@ void ov92_0225EDB4(int param_1,int param_2)
 
 {
   undefined4 *puVar1;
-  
+
   puVar1 = (undefined4 *)Heap_Alloc(0x71,0x30);
   func_0x020e5b44(puVar1,0,0x30);
   puVar1[3] = *(undefined4 *)(param_1 + (uint)*(ushort *)(param_1 + 0xf4 + param_2 * 2) * 4 + 0x1c);

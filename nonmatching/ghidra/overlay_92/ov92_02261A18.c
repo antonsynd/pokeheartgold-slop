@@ -61,7 +61,7 @@ void ov92_02261A18(undefined4 param_1,undefined4 *param_2)
   undefined *puVar3;
   undefined4 *puVar4;
   int iVar5;
-  
+
   iVar2 = *(int *)param_2[0x56];
   iVar1 = IsPaletteFadeFinished();
   if ((iVar1 != 0) && (*(char *)(param_2[0x5f] + 0x34) != '\x01')) {

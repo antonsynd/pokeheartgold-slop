@@ -50,7 +50,7 @@ void ov74_0222A130(int param_1)
 
 {
   int iVar1;
-  
+
   if (*(int *)(param_1 + 0x29ec) == 1) {
     *(undefined4 *)(param_1 + 0x29e8) = 0;
   }

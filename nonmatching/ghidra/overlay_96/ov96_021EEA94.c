@@ -69,7 +69,7 @@ void ov96_021EEA94(undefined4 param_1,undefined4 param_2,uint param_3,undefined4
   uint uVar6;
   undefined4 uVar7;
   int iVar8;
-  
+
   thunk_Sprite_SetDrawFlag(param_1,0);
   uVar1 = NARC_New(0x51,param_4);
   uVar2 = func_0x0200771c(uVar1,param_2,param_4);

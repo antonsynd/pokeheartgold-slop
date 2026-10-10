@@ -51,7 +51,7 @@ undefined4 sub_02094860(int param_1,int param_2)
 {
   undefined4 uVar1;
   undefined4 uVar2;
-  
+
   uVar1 = sub_02094894();
   if (param_2 < (int)(uint)*(byte *)(param_1 + 0xd)) {
     uVar2 = Sprite_GetMatrixPtr(*(undefined4 *)(param_1 + param_2 * 0x34 + 0x7e8));

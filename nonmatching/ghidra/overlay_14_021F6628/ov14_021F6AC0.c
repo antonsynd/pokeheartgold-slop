@@ -53,7 +53,7 @@ void ov14_021F6AC0(int param_1,int param_2,uint param_3,undefined4 param_4)
 
 {
   undefined4 uVar1;
-  
+
   ov14_021F6B10();
   param_2 = param_2 * 0xc;
   uVar1 = func_0x02019ba4(*(undefined4 *)(&ov14_021F8B10 + param_2),

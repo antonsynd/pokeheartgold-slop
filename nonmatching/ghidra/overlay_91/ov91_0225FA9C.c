@@ -65,7 +65,7 @@ void ov91_0225FA9C(int param_1,int param_2)
   undefined4 uStack_20;
   undefined4 uStack_1c;
   int iStack_18;
-  
+
   NNS_G2dInitOamManagerModule();
   OamManager_Create(0,0x7e,0,0x1f,0,0x7e,0,0x1f,param_2);
   uStack_24 = 0x10;

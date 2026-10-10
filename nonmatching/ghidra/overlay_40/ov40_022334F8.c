@@ -50,7 +50,7 @@ void ov40_022334F8(ushort *param_1,int param_2,int param_3)
   int iVar2;
   int iVar3;
   uint uVar4;
-  
+
   iVar1 = 0;
   if (0 < param_2) {
     do {

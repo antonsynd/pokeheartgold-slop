@@ -68,7 +68,7 @@ void ov90_02259BCC(int param_1,int param_2,int param_3,ushort *param_4,undefined
   undefined4 uVar3;
   uint uVar4;
   int iVar5;
-  
+
   if (param_3 != 0) {
     uVar2 = param_6;
     if (param_3 == 1) {

@@ -48,7 +48,7 @@ undefined4 Field3dModelAnimation_FrameAdvanceAndCheck(int param_1,int param_2)
 {
   undefined4 uVar1;
   int iVar2;
-  
+
   iVar2 = (uint)*(ushort *)(*(int *)(*(int *)(param_1 + 8) + 8) + 4) * 0x1000;
   uVar1 = 0;
   if (param_2 < 1) {

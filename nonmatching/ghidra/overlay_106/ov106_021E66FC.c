@@ -73,7 +73,7 @@ void ov106_021E66FC(undefined4 *param_1)
   int iVar8;
   uint uVar9;
   int iStack_1c;
-  
+
   iVar7 = param_1[0x106];
   uVar3 = SaveArray_Party_Get(*(undefined4 *)*param_1);
   iVar4 = Party_GetCount();

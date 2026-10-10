@@ -55,7 +55,7 @@ void ov07_0222BD90(undefined4 param_1,undefined4 *param_2)
   int iVar1;
   int *piVar2;
   int aiStack_18 [3];
-  
+
   piVar2 = aiStack_18;
   aiStack_18[0] =
        ov07_02222240(param_2 + 3,(int)*(short *)(param_2 + 0x3a),

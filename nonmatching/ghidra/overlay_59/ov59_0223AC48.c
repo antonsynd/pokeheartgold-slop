@@ -49,7 +49,7 @@ undefined4 ov59_0223AC48(int param_1)
 {
   uint uVar1;
   int iVar2;
-  
+
   if (*(short *)(param_1 + 0x40) == 0) {
     uVar1 = (uint)*(byte *)(param_1 + 0x36);
     if (uVar1 < 5) {

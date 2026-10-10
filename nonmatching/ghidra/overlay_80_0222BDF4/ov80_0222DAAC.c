@@ -62,7 +62,7 @@ undefined4 ov80_0222DAAC(undefined4 *param_1)
   int iVar4;
   short sVar5;
   undefined1 auStack_34 [32];
-  
+
   iVar2 = param_1[1];
   if (iVar2 == 0) {
     ov80_0223AC24(1,0x10,0xfffffff0,param_1 + 3,2);

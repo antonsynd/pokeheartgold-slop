@@ -51,7 +51,7 @@ undefined4 ov96_021E6CE4(undefined *param_1)
 {
   uint uVar1;
   int iVar2;
-  
+
   uVar1 = *(uint *)(param_1 + *(int *)(param_1 + 0x1f0) * 4 + 0x3d8);
   param_1[0x728] = 0;
   *(undefined2 *)(param_1 + 0xd2a) = 0xffff;

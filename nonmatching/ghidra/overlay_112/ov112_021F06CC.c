@@ -64,7 +64,7 @@ void ov112_021F06CC(undefined4 *param_1,int param_2)
   undefined4 uVar3;
   int iVar4;
   int iVar5;
-  
+
   uVar1 = *(undefined1 *)(param_2 + 0x28);
   uVar2 = *(undefined2 *)(param_2 + 0x26);
   CopyU16ArrayToString(param_1[0x1c],param_2 + 10);

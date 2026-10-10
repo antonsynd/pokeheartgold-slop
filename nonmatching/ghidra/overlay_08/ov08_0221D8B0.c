@@ -57,7 +57,7 @@ void ov08_0221D8B0(int *param_1,int param_2,undefined4 param_3,undefined4 param_
   undefined4 *puVar3;
   int iStack_1c;
   undefined4 uStack_18;
-  
+
   uVar2 = 0;
   puVar3 = (undefined4 *)(&ov08_02224F80 + param_2 * 8);
   uStack_18 = param_4;

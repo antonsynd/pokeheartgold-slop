@@ -55,7 +55,7 @@ void ov112_021F3244(undefined4 param_1,int param_2)
 {
   undefined2 uVar1;
   undefined4 uVar2;
-  
+
   Save_PlayerData_GetProfile();
   uVar2 = SaveArray_Party_Get(param_1);
   func_0x020d4858(0,param_2,500);

@@ -49,7 +49,7 @@ undefined4 ov85_021E62B4(undefined4 *param_1)
 
 {
   int iVar1;
-  
+
   iVar1 = sub_02037B38(0xca);
   if (iVar1 != 0) {
     iVar1 = sub_0203769C();

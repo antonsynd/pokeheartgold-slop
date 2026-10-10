@@ -54,9 +54,9 @@ void sub_02035DA4(void)
   *(undefined1 *)(iRam021d4148 + 0x6b0) = 0;
   *(undefined4 *)(iRam021d4148 + 0x664) = 1;
   sub_02035AE0();
-                    
+
   UNK_0210f900 = 4;
-                    
+
   UNK_0210f901 = 4;
   return;
 }

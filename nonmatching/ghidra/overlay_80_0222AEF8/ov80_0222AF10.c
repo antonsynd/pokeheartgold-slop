@@ -49,7 +49,7 @@ undefined4 ov80_0222AF10(int param_1)
 
 {
   int iVar1;
-  
+
   Save_PlayerData_GetProfile(*(undefined4 *)(param_1 + 0x6fc));
   iVar1 = sub_02037030(0x22,param_1 + 0x72c,0x2c);
   if (iVar1 == 1) {

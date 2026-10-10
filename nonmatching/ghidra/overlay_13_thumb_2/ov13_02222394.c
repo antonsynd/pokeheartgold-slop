@@ -57,7 +57,7 @@ int ov13_02222394(undefined1 *param_1,undefined4 param_2,undefined4 param_3,unde
   int iVar3;
   uint uVar4;
   undefined4 uStack_18;
-  
+
   *param_1 = uRam0224cfd5;
   param_1[1] = 1;
   uVar4 = uRam0224cfc0;

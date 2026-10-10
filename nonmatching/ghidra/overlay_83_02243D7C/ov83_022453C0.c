@@ -49,7 +49,7 @@ void ov83_022453C0(int param_1)
 
 {
   undefined4 uVar1;
-  
+
   uVar1 = Options_GetFrame(*(undefined4 *)(param_1 + 0x2b8));
   ov83_02247944(param_1 + 0xc0,uVar1);
   return;

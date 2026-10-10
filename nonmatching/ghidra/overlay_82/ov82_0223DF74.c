@@ -54,7 +54,7 @@ undefined4 ov82_0223DF74(undefined4 param_1)
 
 {
   int iVar1;
-  
+
   iVar1 = OverlayManager_GetData();
   **(ushort **)(iVar1 + 0x210) = (ushort)*(byte *)(iVar1 + 0xd);
   ov82_0223E8C4();

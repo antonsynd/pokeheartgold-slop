@@ -58,7 +58,7 @@ undefined4 FrtCmd_151(undefined4 *param_1)
   undefined4 uVar5;
   undefined4 uVar6;
   int iVar7;
-  
+
   uVar2 = FrontierScript_ReadVar();
   uVar1 = FrontierScript_ReadVar(param_1);
   uVar3 = FrontierScript_ReadVar(param_1);

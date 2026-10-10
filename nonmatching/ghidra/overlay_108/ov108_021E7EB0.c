@@ -52,7 +52,7 @@ void ov108_021E7EB0(int param_1)
 
 {
   int iVar1;
-  
+
   FillWindowPixelBuffer(param_1 + 0x3f4,0xc);
   ReadMsgDataIntoString
             (*(undefined4 *)(param_1 + 0x304),

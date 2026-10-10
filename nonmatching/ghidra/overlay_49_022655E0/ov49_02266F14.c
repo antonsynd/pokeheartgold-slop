@@ -70,7 +70,7 @@ void ov49_02266F14(undefined4 param_1,int param_2,undefined4 param_3,undefined4 
   int iStack_20;
   int iStack_1c;
   undefined4 uStack_18;
-  
+
   uStack_18 = param_4;
   ov49_02259154(*(undefined4 *)(param_2 + 8),&iStack_24);
   if ((byte)(&UNK_0226a44f)[*(char *)(param_2 + 0x955)] == 0) {

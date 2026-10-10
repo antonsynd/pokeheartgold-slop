@@ -56,7 +56,7 @@ undefined4 ov02_02246330(void)
   char cVar1;
   int iVar2;
   int iVar3;
-  
+
   iVar2 = TaskManager_GetEnvironment();
   cVar1 = *(char *)(iVar2 + 8);
   if (cVar1 == '\0') {

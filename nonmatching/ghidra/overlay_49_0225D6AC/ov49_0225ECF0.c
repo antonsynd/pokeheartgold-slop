@@ -55,7 +55,7 @@ void ov49_0225ECF0(undefined4 *param_1,undefined4 param_2)
 
 {
   int iVar1;
-  
+
   switch(*(undefined2 *)(param_1 + 1)) {
   case 0:
     break;

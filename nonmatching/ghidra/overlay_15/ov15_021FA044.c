@@ -48,7 +48,7 @@ void ov15_021FA044(short *param_1,ushort *param_2,int param_3)
 
 {
   short sVar1;
-  
+
   if (param_3 < (int)((int)*param_1 + (uint)*param_2)) {
     sVar1 = func_0x020f2998(param_3 + -1,6);
     *param_1 = sVar1 * 6;

@@ -69,7 +69,7 @@ undefined4 ov112_021ED66C(int param_1)
 {
   int iVar1;
   undefined4 uVar2;
-  
+
   ov112_021E7670();
   iVar1 = ov112_021E768C();
   if (iVar1 != 0) {

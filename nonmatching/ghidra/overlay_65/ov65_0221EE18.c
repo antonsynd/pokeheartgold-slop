@@ -51,7 +51,7 @@ undefined4 ov65_0221EE18(int param_1,undefined4 param_2,undefined4 param_3,undef
 
 {
   int iVar1;
-  
+
   *(int *)(param_1 + 0x22c8) = *(int *)(param_1 + 0x22c8) + 1;
   iVar1 = param_1 + *(int *)(param_1 + 0x94) * 4;
   ov65_0221ED94(*(undefined4 *)(iVar1 + 0x37c),*(undefined4 *)(iVar1 + 0x3ac),

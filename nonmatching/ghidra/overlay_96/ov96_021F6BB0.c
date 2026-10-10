@@ -49,7 +49,7 @@ void ov96_021F6BB0(int param_1)
   int iVar1;
   int iVar2;
   int iVar3;
-  
+
   iVar1 = param_1 + 0xfac;
   iVar2 = 0;
   iVar3 = param_1 + 0x1a0;

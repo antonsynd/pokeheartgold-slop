@@ -86,7 +86,7 @@ void ov12_0225FA44(undefined4 param_1,undefined4 *param_2,undefined4 param_3,und
   undefined2 uStack_3a;
   undefined4 uStack_38;
   undefined4 uStack_18;
-  
+
   uStack_18 = param_4;
   BattleSystem_GetBgConfig(*param_2);
   uVar2 = BattleSystem_GetBattleInput(*param_2);

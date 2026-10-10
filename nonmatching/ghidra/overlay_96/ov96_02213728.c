@@ -98,7 +98,7 @@ int ov96_02213728(int *param_1,int *param_2,int param_3,int param_4,int *param_5
   int iStack_20;
   undefined4 uStack_1c;
   int iStack_18;
-  
+
   uVar5 = 0;
   iStack_24 = 0;
   iStack_20 = 0;

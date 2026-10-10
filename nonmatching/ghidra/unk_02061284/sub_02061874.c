@@ -50,7 +50,7 @@ void sub_02061874(undefined4 param_1,int param_2)
 
 {
   undefined4 uVar1;
-  
+
   uVar1 = MapObject_GetFacingDirection();
   uVar1 = sub_0206234C(uVar1,0);
   MapObject_ForceSetHeldMovement(param_1,uVar1);

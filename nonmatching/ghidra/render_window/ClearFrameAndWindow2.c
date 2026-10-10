@@ -60,7 +60,7 @@ void ClearFrameAndWindow2(undefined *param_1,int param_2)
   byte bVar3;
   byte bVar4;
   byte bVar5;
-  
+
   bVar1 = GetWindowBgId(param_1);
   bVar2 = GetWindowX(param_1);
   bVar3 = GetWindowY(param_1);

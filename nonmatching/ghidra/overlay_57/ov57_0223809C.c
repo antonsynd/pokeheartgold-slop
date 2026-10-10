@@ -54,7 +54,7 @@ void ov57_0223809C(int param_1,undefined4 param_2,int param_3,undefined4 param_4
   undefined4 uVar1;
   undefined4 uVar2;
   undefined4 uVar3;
-  
+
   uVar2 = *(undefined4 *)(param_1 + 0xdc);
   uVar3 = *(undefined4 *)(param_1 + 0xe0);
   func_0x0200d644(*(undefined4 *)(param_1 + 0xe8),3,uVar2,uVar3,0x57,6,0,1,2,0x520e,param_4);

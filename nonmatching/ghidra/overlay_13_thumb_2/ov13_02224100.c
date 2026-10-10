@@ -54,7 +54,7 @@ void ov13_02224100(void)
 {
   bool bVar1;
   int iVar2;
-  
+
   if (iRam0224df50 != 0) {
     iVar2 = ov13_02223C10();
     if (iVar2 != 0) {

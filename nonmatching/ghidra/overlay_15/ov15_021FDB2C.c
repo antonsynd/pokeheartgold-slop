@@ -58,7 +58,7 @@ void ov15_021FDB2C(int param_1,int param_2)
   int iVar9;
   int iVar10;
   int iVar11;
-  
+
   iVar11 = param_2 * 0x90 + 0x2200790;
   if (*(short *)(param_1 + 0x128) != *(short *)(param_1 + 0x12a)) {
     *(short *)(param_1 + 0x128) = *(short *)(param_1 + 0x128) + 1;

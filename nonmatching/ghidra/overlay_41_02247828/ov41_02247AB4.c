@@ -62,7 +62,7 @@ void ov41_02247AB4(int param_1)
   undefined1 uStack_10;
   undefined1 uStack_f;
   byte bStack_e;
-  
+
   BgClearTilemapBufferAndCommit(*(undefined4 *)(param_1 + 0x40),3);
   func_0x0201bc8c(*(undefined4 *)(param_1 + 0x40),3,0,0);
   func_0x0201bc8c(*(undefined4 *)(param_1 + 0x40),3,3,0);

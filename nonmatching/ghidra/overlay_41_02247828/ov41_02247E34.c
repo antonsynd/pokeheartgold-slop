@@ -52,7 +52,7 @@ void ov41_02247E34(int param_1,int param_2,int param_3,int param_4,undefined4 pa
   int iVar2;
   int iVar3;
   int iVar4;
-  
+
   iVar1 = func_0x020f2ba4(param_4 - param_3,3);
   iVar3 = param_3 + iVar1;
   iVar1 = param_3 + iVar1 * 2;

@@ -52,7 +52,7 @@ void ov27_0225A86C(int param_1)
 
 {
   undefined4 uVar1;
-  
+
   uVar1 = ov27_0225A594();
   ov27_0225A61C(param_1,uVar1);
   ov27_0225B398(param_1,0xffffffff);

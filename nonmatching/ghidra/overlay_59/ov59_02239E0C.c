@@ -49,7 +49,7 @@ int ov59_02239E0C(undefined4 param_1,ushort *param_2,int param_3)
   uint uVar1;
   uint uVar2;
   uint uVar3;
-  
+
   uVar3 = (uint)*param_2;
   uVar1 = (uVar3 & 0xff) >> 4;
   uVar2 = uVar1 - 1 & 0xff;

@@ -67,7 +67,7 @@ void ov120_0225FBC4(undefined4 param_1,undefined4 *param_2,int param_3)
   undefined4 uVar3;
   undefined4 *puVar4;
   undefined2 auStack_14 [2];
-  
+
   puVar4 = (undefined4 *)param_2[3];
   switch(*param_2) {
   case 0:

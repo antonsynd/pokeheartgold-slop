@@ -51,7 +51,7 @@ void ov13_022217A0(int param_1,int param_2,undefined4 param_3)
 {
   undefined2 uVar1;
   int iVar2;
-  
+
   iVar2 = 0;
   if (0 < param_1) {
     do {

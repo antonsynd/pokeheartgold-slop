@@ -50,7 +50,7 @@ undefined * sub_02034818(uint param_1)
 
 {
   char cVar1;
-  
+
   if (iRam021d4130 == 0) {
     return (undefined *)0x0;
   }

@@ -51,7 +51,7 @@ void ov81_02241804(int param_1)
 
 {
   int iVar1;
-  
+
   iVar1 = func_0x02019f74(*(undefined4 *)(param_1 + 0x464));
   ov81_02243140(*(undefined4 *)(param_1 + 0x4c),*(undefined4 *)(param_1 + 0x3dc),3);
   ScheduleWindowCopyToVram(param_1 + 0xf0);

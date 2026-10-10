@@ -49,7 +49,7 @@ void ov01_021F12B4(undefined4 *param_1,undefined4 param_2)
 
 {
   undefined4 uVar1;
-  
+
   uVar1 = func_0x02014ad8(param_2);
   *param_1 = uVar1;
   param_1[2] = 0;

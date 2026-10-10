@@ -52,7 +52,7 @@ int ov01_022062CC(undefined *param_1)
 {
   byte bVar1;
   undefined *puVar2;
-  
+
   puVar2 = SaveArray_Party_Get(*(undefined **)(param_1 + 0xc));
   bVar1 = GetIdxOfFirstAliveMonInParty_CrashIfNone(puVar2);
   return (uint)bVar1;

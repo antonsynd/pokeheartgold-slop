@@ -54,7 +54,7 @@ undefined4 ov15_021FCD80(int param_1)
 
 {
   int iVar1;
-  
+
   iVar1 = TextPrinterCheckActive(*(undefined1 *)(param_1 + 0x616));
   if (iVar1 == 0) {
     if (99 < *(ushort *)(param_1 + 0x682)) {

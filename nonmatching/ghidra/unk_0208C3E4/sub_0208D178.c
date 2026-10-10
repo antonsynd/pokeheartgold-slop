@@ -63,7 +63,7 @@ void sub_0208D178(int param_1)
 {
   uint uVar1;
   undefined4 uVar2;
-  
+
   sub_0208C7F8(param_1,0x10,0x6f,0,0);
   sub_0208C7F8(param_1,0x11,0x70,1,0);
   sub_0208C7F8(param_1,0x12,0x71,3,0);

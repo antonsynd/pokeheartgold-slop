@@ -53,7 +53,7 @@ void ov102_021EAD98(int param_1,undefined4 param_2,undefined4 param_3,int param_
   short sStack_18;
   short sStack_16;
   int iStack_14;
-  
+
   if (param_4 != 0xffff) {
     iStack_14 = param_4;
     ov102_021EAD48(param_3,&sStack_18);

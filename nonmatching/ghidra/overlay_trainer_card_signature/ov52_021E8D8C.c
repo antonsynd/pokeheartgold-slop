@@ -51,7 +51,7 @@ undefined4 ov52_021E8D8C(undefined4 *param_1,undefined4 param_2)
 
 {
   int iVar1;
-  
+
   iVar1 = ov52_021E92E8(param_1[0xe]);
   if (iVar1 != 0) {
     ov52_021E8D64(*param_1,param_1[0x1727]);

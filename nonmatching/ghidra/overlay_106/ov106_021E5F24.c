@@ -50,7 +50,7 @@ void ov106_021E5F24(undefined4 param_1,int param_2)
 
 {
   int iVar1;
-  
+
   iVar1 = *(int *)(param_2 + 4);
   if (iVar1 < 0xb) {
     if (9 < iVar1) {

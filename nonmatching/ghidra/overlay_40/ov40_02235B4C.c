@@ -76,7 +76,7 @@ void ov40_02235B4C(int param_1)
   int iVar8;
   uint uVar9;
   int iVar10;
-  
+
   iVar10 = *(int *)(param_1 + 0x860);
   iVar1 = WindowIsInUse(iVar10 + 0x10);
   if (iVar1 != 1) {

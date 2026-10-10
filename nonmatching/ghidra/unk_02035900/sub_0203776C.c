@@ -53,7 +53,7 @@ void sub_0203776C(void)
   int iVar1;
   undefined4 in_r3;
   undefined4 auStack_8 [2];
-  
+
   auStack_8[0] = in_r3;
   iVar1 = sub_020357FC();
   if ((iVar1 == 0) && (iVar1 = sub_0203769C(), iVar1 == 0)) {

@@ -51,7 +51,7 @@ void ov108_021E7B74(undefined4 *param_1,undefined4 param_2,int param_3,int param
 {
   undefined4 uVar1;
   int iStack_14;
-  
+
   uVar1 = func_0x02007c10(param_2,param_4 + 0x12,0,&iStack_14,*param_1);
   BG_LoadCharTilesData(param_1[0xd0],5,*(undefined4 *)(iStack_14 + 0x14),0x1000,param_3 * 0x40 + 1);
   Heap_Free(uVar1);

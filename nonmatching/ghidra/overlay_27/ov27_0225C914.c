@@ -49,7 +49,7 @@ void ov27_0225C914(int param_1)
 
 {
   undefined4 uVar1;
-  
+
   uVar1 = MessageFormat_New(8);
   *(undefined4 *)(param_1 + 0x50) = uVar1;
   uVar1 = NewMsgDataFromNarc(0,0x1b,0xbf,8);

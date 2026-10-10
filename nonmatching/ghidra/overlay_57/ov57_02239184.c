@@ -72,7 +72,7 @@ void ov57_02239184(int param_1)
   undefined4 uStack_20;
   undefined4 uStack_1c;
   undefined4 uStack_18;
-  
+
   puVar4 = auStack_78;
   puVar6 = auStack_78;
   puVar5 = (undefined4 *)&ov57_0223BE18;

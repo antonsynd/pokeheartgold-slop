@@ -55,7 +55,7 @@ undefined4 ov81_0223E520(int param_1)
 
 {
   int iVar1;
-  
+
   if (*(char *)(param_1 + 8) == '\0') {
     iVar1 = ov81_02240F08(param_1,0);
     if (iVar1 == 1) {

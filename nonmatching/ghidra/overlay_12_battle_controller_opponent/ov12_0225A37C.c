@@ -55,7 +55,7 @@ void ov12_0225A37C(undefined4 param_1,int param_2,undefined1 *param_3)
   int iVar3;
   undefined4 uVar4;
   uint uVar5;
-  
+
   BattleSystem_GetPokepicManager();
   puVar2 = (undefined4 *)Heap_Alloc(5,0x10);
   uVar1 = 0;

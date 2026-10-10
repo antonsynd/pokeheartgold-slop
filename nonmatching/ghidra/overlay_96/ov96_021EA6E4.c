@@ -74,7 +74,7 @@ int ov96_021EA6E4(undefined4 param_1,undefined4 param_2,int param_3,undefined4 p
   undefined4 uStack_40;
   undefined1 auStack_3c [36];
   undefined4 uStack_18;
-  
+
   if (param_3 == 1) {
     uVar6 = 0x17;
   }

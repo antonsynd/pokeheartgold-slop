@@ -49,7 +49,7 @@ undefined4 ov41_02247A48(int *param_1,undefined4 param_2,undefined4 param_3,int 
 
 {
   int iVar1;
-  
+
   iVar1 = param_4;
   if (param_1[2] < 8) {
     ov41_022480F8(*param_1 + 0x3f4);

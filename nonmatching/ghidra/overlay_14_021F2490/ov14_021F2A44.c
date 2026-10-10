@@ -48,7 +48,7 @@ undefined4 ov14_021F2A44(int param_1,int param_2)
 
 {
   int iVar1;
-  
+
   iVar1 = func_0x0200dcfc(*(undefined4 *)(param_1 + param_2 * 4 + 0x2fc));
   if (iVar1 == 1) {
     return 1;

@@ -51,7 +51,7 @@ void ov96_021F8C88(int param_1,int param_2,undefined4 *param_3)
   int iStack_20;
   int iStack_1c;
   undefined4 uStack_18;
-  
+
   uStack_18 = 0;
   iStack_1c = param_2 * 0x1000 + 0x10000;
   iStack_20 = (param_1 + 0x80) * 0x1000;

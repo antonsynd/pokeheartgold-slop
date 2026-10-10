@@ -53,7 +53,7 @@ void ov14_021E6184(int param_1,undefined4 *param_2,undefined4 param_3,undefined4
 
 {
   undefined4 uVar1;
-  
+
   uVar1 = ov14_021E60C0(param_1,*(undefined1 *)(param_1 + 0x1f),param_2[1],param_4,param_4);
   CopyBoxPokemonToPokemon(uVar1,*param_2);
   Party_AddMon(*(undefined4 *)(param_1 + 8),*param_2);

@@ -53,7 +53,7 @@ void ov96_021F4390(int param_1,int param_2,undefined4 param_3)
   undefined4 uVar1;
   undefined4 uVar2;
   int iVar3;
-  
+
   switch(param_3) {
   default:
     GF_AssertFail();

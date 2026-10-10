@@ -49,7 +49,7 @@ void ov51_021E6EF0(int param_1)
 
 {
   uint uVar1;
-  
+
   YesNoPrompt_Destroy(*(undefined4 *)(param_1 + 0x33c0));
   uVar1 = 0;
   do {

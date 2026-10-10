@@ -47,7 +47,7 @@ void ov07_02221EEC(int param_1,undefined4 param_2,undefined4 param_3,undefined4 
 
 {
   code *pcVar1;
-  
+
   pcVar1 = *(code **)(param_1 * 4 + 0x2236444);
   (*pcVar1)(param_2,param_3,pcVar1,param_1 * 4,param_4);
   return;

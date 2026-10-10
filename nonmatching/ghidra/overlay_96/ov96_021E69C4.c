@@ -54,7 +54,7 @@ ov96_021E69C4(undefined *param_1,undefined4 param_2,undefined4 param_3,undefined
   int iVar1;
   undefined4 uVar2;
   int iVar3;
-  
+
   iVar3 = 1;
   iVar1 = ov96_021E5F24(param_1);
   if (iVar1 == 0) {

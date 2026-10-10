@@ -70,7 +70,7 @@ undefined4 ov81_0223E318(int param_1)
   int iVar1;
   int iVar2;
   uint uVar3;
-  
+
   switch(*(undefined1 *)(param_1 + 8)) {
   case 0:
     iVar1 = func_0x02237254(*(undefined1 *)(param_1 + 9));

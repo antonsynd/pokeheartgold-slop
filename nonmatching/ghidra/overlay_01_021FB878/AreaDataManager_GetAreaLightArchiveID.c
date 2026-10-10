@@ -47,7 +47,7 @@ undefined4 AreaDataManager_GetAreaLightArchiveID(int param_1)
 
 {
   char cVar1;
-  
+
   cVar1 = *(char *)(param_1 + 0x8b7);
   if (cVar1 == '\0') {
     return 1;

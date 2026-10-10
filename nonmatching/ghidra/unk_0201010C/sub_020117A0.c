@@ -50,7 +50,7 @@ void sub_020117A0(int param_1,undefined1 *param_2,undefined4 param_3,undefined4 
 
 {
   undefined4 uVar1;
-  
+
   uVar1 = param_4;
   sub_02010AB0(param_1,param_1 + 0x20,param_1 + 0x10,param_2,param_2 + 4,param_3);
   *(undefined4 *)(param_1 + 0x30) = param_5;

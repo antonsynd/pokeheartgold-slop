@@ -51,7 +51,7 @@ void sub_02061648(undefined4 param_1,undefined4 param_2,undefined4 param_3,undef
 
 {
   undefined4 *puVar1;
-  
+
   puVar1 = (undefined4 *)sub_0205F370(param_1,8,param_3,param_4,param_4);
   *puVar1 = param_2;
   sub_0205F328(param_1,0);

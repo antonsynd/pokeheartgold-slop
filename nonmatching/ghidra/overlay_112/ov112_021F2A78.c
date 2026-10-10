@@ -54,7 +54,7 @@ void ov112_021F2A78(int param_1,uint param_2)
 {
   ushort uVar1;
   undefined4 uVar2;
-  
+
   uVar1 = *(ushort *)(*(int *)(param_1 + (uint)*(byte *)(param_1 + 0x13d) * 4 + 0xc0) + 0x78);
   if (uVar1 < 300) {
     ov112_021F2204(param_1,0,1);

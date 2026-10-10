@@ -53,7 +53,7 @@ void ov91_0225FB48(int param_1)
 
 {
   int iVar1;
-  
+
   func_0x020135ac(*(undefined4 *)(param_1 + 0x18c));
   SpriteList_Delete(*(undefined4 *)(param_1 + 0x1c));
   iVar1 = 0;

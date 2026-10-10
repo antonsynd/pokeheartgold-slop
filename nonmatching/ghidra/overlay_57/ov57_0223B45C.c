@@ -50,7 +50,7 @@ undefined4 ov57_0223B45C(undefined4 param_1)
 {
   uint uVar1;
   undefined4 uVar2;
-  
+
   uVar1 = ov57_0223B578();
   if ((int)uVar1 < 0) {
     return 1;

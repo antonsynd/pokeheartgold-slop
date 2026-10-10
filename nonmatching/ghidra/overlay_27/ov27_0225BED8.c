@@ -58,7 +58,7 @@ void ov27_0225BED8(int param_1,undefined4 param_2,undefined4 param_3,undefined4 
   undefined4 uVar1;
   int iVar2;
   undefined1 auStack_24 [16];
-  
+
   AddWindowParameterized
             (*(undefined4 *)(param_1 + 4),auStack_24,5,param_3,param_4,param_5,param_6,4,param_7);
   FillWindowPixelBuffer(auStack_24,0);

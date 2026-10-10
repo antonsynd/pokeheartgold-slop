@@ -72,7 +72,7 @@ void ov71_02247124(int *param_1,int param_2,uint param_3,int param_4,int param_5
   undefined2 uStack_26;
   undefined2 uStack_24;
   int iStack_18;
-  
+
   if (param_5 == 0) {
     uVar7 = 0xc80;
   }

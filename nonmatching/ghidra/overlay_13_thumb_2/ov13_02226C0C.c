@@ -49,7 +49,7 @@ void ov13_02226C0C(int param_1,undefined4 *param_2,uint param_3)
   int iVar1;
   uint uVar2;
   undefined4 uVar3;
-  
+
   uVar2 = 0;
   if (param_3 != 0) {
     do {

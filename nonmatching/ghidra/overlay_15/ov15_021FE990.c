@@ -49,7 +49,7 @@ undefined4 ov15_021FE990(int param_1,undefined4 param_2,undefined4 param_3,undef
 
 {
   undefined4 uVar1;
-  
+
   uVar1 = func_0x0200771c(*(undefined4 *)(param_1 + 0x244),0x25,6,param_4,param_4);
   func_0x020b70f4(uVar1,param_2);
   return uVar1;

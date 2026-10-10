@@ -52,7 +52,7 @@ void ov12_02260B30(undefined4 param_1,undefined4 *param_2,undefined4 param_3,und
 
 {
   uint uVar1;
-  
+
   if (*(char *)((int)param_2 + 10) == '\0') {
     if (*(char *)(param_2 + 3) != *(char *)((int)param_2 + 0xd)) {
       *(char *)(param_2 + 3) = *(char *)(param_2 + 3) + '\x01';

@@ -76,7 +76,7 @@ void ov01_021F1148(int param_1)
   undefined4 uStack_3c;
   undefined4 uStack_38;
   undefined4 auStack_34 [10];
-  
+
   puVar5 = (undefined4 *)&ov01_0220689C;
   puVar4 = auStack_34;
   iVar3 = 5;

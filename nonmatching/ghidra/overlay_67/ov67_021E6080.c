@@ -51,7 +51,7 @@ void ov67_021E6080(int param_1)
 {
   int iVar1;
   int iVar2;
-  
+
   FontID_Release(4);
   if (*(short *)(param_1 + 8) == 0) {
     iVar2 = 10;

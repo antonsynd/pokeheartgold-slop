@@ -57,7 +57,7 @@ ov82_0223FC48(undefined4 param_1,undefined4 param_2,undefined4 param_3,int param
   undefined1 *puVar4;
   int iStack_20;
   int iStack_1c;
-  
+
   puVar1 = (undefined1 *)Heap_Alloc(0x69,0x14);
   iVar3 = 0x14;
   puVar4 = puVar1;

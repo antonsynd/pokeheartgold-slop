@@ -70,7 +70,7 @@ ov28_0225D520(undefined4 param_1,undefined4 param_2,undefined4 param_3,undefined
   undefined4 uVar3;
   int iVar4;
   undefined4 uStack_18;
-  
+
   Heap_Create(3,8,0x18000);
   uRam04001050 = 0;
   uVar1 = CreateSysTaskAndEnvironment(0x225dc2d,0x340,10,8);

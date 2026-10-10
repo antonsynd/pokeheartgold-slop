@@ -48,7 +48,7 @@ uint ov102_021EC5A0(uint param_1,uint param_2)
 {
   uint uVar1;
   int iVar2;
-  
+
   iVar2 = 0x21ec820;
   uVar1 = 0;
   while ((((param_1 < *(byte *)(iVar2 + 2) || (*(byte *)(iVar2 + 2) + 0x10 <= param_1)) ||

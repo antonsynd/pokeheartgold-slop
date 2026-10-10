@@ -58,7 +58,7 @@ void sub_0200F684(undefined4 *param_1,short param_2,short param_3)
   short sStack_48;
   short sStack_46;
   undefined4 auStack_44 [12];
-  
+
   psVar4 = &sStack_48;
   puVar5 = (undefined4 *)&UNK_020f5c78;
   iVar3 = 6;

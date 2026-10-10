@@ -50,7 +50,7 @@ void sub_02094F14(int param_1,int param_2,uint *param_3)
 {
   undefined *puVar1;
   uint uVar2;
-  
+
   puVar1 = Party_GetMonByIndex(*(undefined **)(param_1 + 0x4640),param_2);
   uVar2 = GetMonData(puVar1,5,(undefined *)0x0);
   *param_3 = uVar2;

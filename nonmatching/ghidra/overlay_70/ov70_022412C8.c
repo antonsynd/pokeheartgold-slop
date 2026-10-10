@@ -51,7 +51,7 @@ void ov70_022412C8(int param_1,int param_2,int param_3,undefined4 param_4,undefi
 {
   int iVar1;
   int iVar2;
-  
+
   iVar1 = func_0x0205b464(param_5,param_4,param_3,param_4,param_4);
   iVar2 = *(int *)(param_2 + 0xc);
   func_0x020cfecc(*(int *)(param_1 + 0x14) + iVar1 * 0x600,*(undefined2 *)(param_3 * 2 + 0x2245cfc),

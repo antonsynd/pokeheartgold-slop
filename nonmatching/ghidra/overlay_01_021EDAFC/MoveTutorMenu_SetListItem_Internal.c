@@ -52,7 +52,7 @@ void MoveTutorMenu_SetListItem_Internal
 
 {
   undefined4 uVar1;
-  
+
   uVar1 = String_New(0x50,4);
   ReadMsgDataIntoString(*(undefined4 *)(param_1 + 0x8c),param_2,uVar1);
   StringExpandPlaceholders

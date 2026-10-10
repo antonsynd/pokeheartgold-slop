@@ -57,7 +57,7 @@ void ov85_021E7274(int param_1,undefined4 param_2)
 {
   undefined4 uVar1;
   int iVar2;
-  
+
   iVar2 = param_1 + 0xca8;
   BufferItemName(*(undefined4 *)(param_1 + 0xca4),0);
   uVar1 = String_New(0x100,0x66);

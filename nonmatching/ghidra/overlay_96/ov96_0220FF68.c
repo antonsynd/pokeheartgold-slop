@@ -49,7 +49,7 @@ int ov96_0220FF68(uint param_1)
 {
   int iVar1;
   uint *puVar2;
-  
+
   puVar2 = (uint *)&ov96_0221CF1C;
   iVar1 = 0;
   do {

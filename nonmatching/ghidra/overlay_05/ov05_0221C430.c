@@ -53,7 +53,7 @@ undefined4 ov05_0221C430(int *param_1,undefined4 param_2,undefined4 param_3,unde
 
 {
   int iVar1;
-  
+
   if (*(char *)((int)param_1 + 0xb82) == '\b') {
     BeginNormalPaletteFade(0,0,0,0x7fff,6,1,*(undefined4 *)(*param_1 + 0x24),param_4);
   }

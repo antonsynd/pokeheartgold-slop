@@ -58,7 +58,7 @@ undefined4 ov49_02264E20(int param_1,undefined4 param_2,undefined4 param_3)
   undefined4 unaff_r4;
   __asm__ volatile("movs %0, r4" : "=l"(unaff_r4) : : "cc");
 
-  
+
   uVar2 = func_0x0222a5c0(param_2);
   uVar3 = func_0x0222a578(param_2,*(undefined1 *)(param_1 + 3));
   iVar4 = func_0x0222aa28(uVar2);

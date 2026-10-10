@@ -58,7 +58,7 @@ void ov71_0224A510(undefined4 *param_1)
   undefined1 auStack_64 [36];
   undefined1 auStack_40 [36];
   undefined1 auStack_1c [20];
-  
+
   ov71_022472C4(param_1 + 4,0x59,7,8);
   func_0x020b804c(auStack_1c);
   func_0x020b8008(auStack_40);

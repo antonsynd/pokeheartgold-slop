@@ -52,7 +52,7 @@ void ov67_021E6C60(int param_1,int param_2,int param_3)
 {
   short sVar1;
   int iVar2;
-  
+
   *(undefined4 *)(param_1 + 0x4a8) = 0;
   if (((((param_2 == 2) && (param_3 == 0)) || ((param_2 == 5 && (param_3 == 3)))) ||
       ((param_2 == 8 && (param_3 == 6)))) || ((param_2 == 0xb && (param_3 == 9)))) {

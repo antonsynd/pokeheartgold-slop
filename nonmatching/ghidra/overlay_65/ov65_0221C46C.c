@@ -60,7 +60,7 @@ void ov65_0221C46C(undefined *param_1,int param_2,int param_3)
   int iVar5;
   int iVar6;
   int iVar7;
-  
+
   iVar7 = 0;
   iVar1 = Party_GetCount(param_1);
   if (0 < iVar1) {

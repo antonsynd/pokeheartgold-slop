@@ -49,7 +49,7 @@ void ov13_02222850(int param_1,int param_2,int param_3)
   byte *pbVar1;
   int iVar2;
   byte *pbVar3;
-  
+
   param_3 = param_3 / 2;
   iVar2 = 0;
   if (0 < param_3) {

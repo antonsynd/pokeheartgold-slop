@@ -77,7 +77,7 @@ void ov12_0225BE38(undefined4 param_1,undefined4 *param_2)
   undefined1 auStack_e4 [40];
   undefined1 auStack_bc [88];
   undefined1 auStack_64 [88];
-  
+
   switch(*(undefined1 *)((int)param_2 + 0x83)) {
   case 0:
     *(undefined1 *)((int)param_2 + 0x96) = 0;

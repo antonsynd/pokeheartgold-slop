@@ -52,7 +52,7 @@ undefined4 ov01_021F1DF4(undefined4 param_1,undefined4 param_2,undefined4 param_
 {
   undefined4 uVar1;
   int iVar2;
-  
+
   uVar1 = sub_0205DEC0(param_2,param_3,param_3,param_4,param_4);
   if (((param_4 & 1) != 0) && (iVar2 = ov01_021F1E54(param_1,param_2,param_3,uVar1), iVar2 == 1)) {
     return 1;

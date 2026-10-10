@@ -63,7 +63,7 @@ void ov85_021E6F6C(int param_1)
   undefined4 uVar3;
   undefined4 uVar4;
   int iStack_18;
-  
+
   uVar3 = *(undefined4 *)(param_1 + 0xd94);
   uVar2 = *(undefined4 *)(param_1 + 0xd98);
   uVar4 = *(undefined4 *)(param_1 + 0xd9c);

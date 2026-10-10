@@ -48,7 +48,7 @@ void ov71_0224BAA0(int param_1,int param_2,int param_3,undefined4 param_4)
 
 {
   undefined2 uVar1;
-  
+
   if (param_3 != 0) {
     uVar1 = func_0x020f2998(param_2 - *(short *)(param_1 + 0x3a),param_3,param_3,param_4,param_4);
     *(undefined2 *)(param_1 + 0x3c) = uVar1;

@@ -63,7 +63,7 @@ void sub_020371C4(undefined *param_1,int param_2,undefined *param_3,int *param_4
   uint uVar6;
   uint uVar7;
   uint uVar8;
-  
+
   iVar4 = sub_02033BC4(param_1);
   do {
     if (iVar4 == 0) {

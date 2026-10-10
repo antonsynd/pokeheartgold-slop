@@ -52,7 +52,7 @@ void ov12_0225E104(undefined4 param_1,undefined4 *param_2,undefined4 param_3,und
 
 {
   undefined4 uVar1;
-  
+
   uVar1 = func_0x022205bc(*param_2,*(undefined1 *)((int)param_2 + 9),param_3,param_4,param_4);
   ov12_02262F24(*param_2,*(undefined1 *)((int)param_2 + 9),uVar1);
   ov12_0226430C(*param_2,*(undefined1 *)((int)param_2 + 9),*(undefined1 *)(param_2 + 2));

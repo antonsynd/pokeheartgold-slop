@@ -51,7 +51,7 @@ void ov07_02234510(undefined4 param_1,undefined4 param_2,undefined4 param_3,unde
 {
   undefined4 uVar1;
   undefined4 uVar2;
-  
+
   uVar1 = SealOnCapsuleGetX();
   uVar2 = SealOnCapsuleGetY(param_1);
   ov07_022344E4(uVar1,uVar2,0xbe,0x46,param_4);

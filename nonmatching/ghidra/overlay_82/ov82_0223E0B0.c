@@ -60,7 +60,7 @@ void ov82_0223E0B0(int param_1)
   byte bVar3;
   byte bVar4;
   byte bVar5;
-  
+
   bVar1 = GetWindowX((undefined *)(param_1 + 0x7c));
   bVar2 = GetWindowY((undefined *)(param_1 + 0x7c));
   bVar3 = GetWindowWidth((undefined *)(param_1 + 0x7c));

@@ -50,7 +50,7 @@ undefined4 ov71_02247C34(int param_1,int *param_2)
 
 {
   int iVar1;
-  
+
   if ((*param_2 == 0) && (iVar1 = IsPaletteFadeFinished(), iVar1 != 0)) {
     Sprite_SetAnimCtrlSeq(*(undefined4 *)(param_1 + 0x3c),1);
     Sprite_SetDrawFlag(*(undefined4 *)(param_1 + 0x3c),1);

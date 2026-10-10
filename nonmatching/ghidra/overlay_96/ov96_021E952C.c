@@ -50,7 +50,7 @@ void ov96_021E952C(int *param_1)
   int iVar1;
   int iVar2;
   int *piVar3;
-  
+
   if (param_1[4] != 0) {
     GF_AssertFail();
   }

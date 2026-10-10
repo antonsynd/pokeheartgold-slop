@@ -55,7 +55,7 @@ void sub_020956B8(int param_1,undefined4 param_2,undefined4 param_3,undefined4 p
   int iVar3;
   uint uVar4;
   int iVar5;
-  
+
   if (*(int *)(param_1 + 0x46d8) != 0) {
     iVar5 = -1;
     uVar4 = 0xffffffff;

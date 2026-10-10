@@ -73,7 +73,7 @@ undefined4 ov112_021EDB24(int param_1)
   uint uVar2;
   undefined4 uVar3;
   int iVar4;
-  
+
   ov112_021E7670();
   uVar1 = ov112_021E768C();
   uVar2 = ov112_021ED330(param_1,uVar1);

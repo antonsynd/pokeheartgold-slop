@@ -53,7 +53,7 @@ void ov14_021EA1F0(int param_1,undefined4 param_2,undefined4 param_3,undefined4 
   short sStack_10;
   short sStack_e;
   undefined4 uStack_c;
-  
+
   uStack_c = param_4;
   ov14_021F29E4(*(undefined4 *)(param_1 + 0x34),9,10);
   func_0x0200de44(*(undefined4 *)(*(int *)(param_1 + 0x34) + 800),&sStack_e,&sStack_10);

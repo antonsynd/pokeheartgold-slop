@@ -56,7 +56,7 @@ undefined4 ov05_0221BE80(int *param_1)
 
 {
   char cVar1;
-  
+
   cVar1 = *(char *)((int)param_1 + 0xb82);
   if (cVar1 == '\0') {
     ov05_0221CEB8(param_1,1,0);

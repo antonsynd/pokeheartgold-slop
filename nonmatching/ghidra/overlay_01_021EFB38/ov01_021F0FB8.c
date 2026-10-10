@@ -53,7 +53,7 @@ void ov01_021F0FB8(uint param_1)
   undefined4 uStack_20;
   undefined4 uStack_1c;
   undefined4 uStack_18;
-  
+
   uStack_20 = 0;
   uStack_1c = 0;
   uStack_18 = 0;

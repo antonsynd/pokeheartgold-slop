@@ -48,7 +48,7 @@ void ov27_0225C41C(undefined4 param_1,undefined4 param_2,undefined4 param_3)
 
 {
   int iVar1;
-  
+
   iVar1 = SysTask_GetData();
   *(undefined4 *)(iVar1 + 0x39c) = param_2;
   *(undefined4 *)(iVar1 + 0x3a0) = param_3;

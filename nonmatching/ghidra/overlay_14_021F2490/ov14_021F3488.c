@@ -48,7 +48,7 @@ void ov14_021F3488(undefined4 param_1,uint param_2,undefined4 param_3)
 
 {
   bool bVar1;
-  
+
   bVar1 = (param_2 & 0x80) != 0;
   if ((param_2 & 1) != 0) {
     ov14_021F3420(param_1,param_3,0,0x1e,bVar1);

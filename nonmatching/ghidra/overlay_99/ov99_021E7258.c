@@ -50,7 +50,7 @@ void ov99_021E7258(int param_1)
 {
   uint uVar1;
   uint uVar2;
-  
+
   uVar1 = ov99_021E7180();
   uVar2 = 0;
   do {

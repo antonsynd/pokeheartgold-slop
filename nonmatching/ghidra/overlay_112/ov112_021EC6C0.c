@@ -48,7 +48,7 @@ undefined4 ov112_021EC6C0(int param_1)
 
 {
   int iVar1;
-  
+
   iVar1 = IsPaletteFadeFinished();
   if (iVar1 == 1) {
     *(undefined4 *)(param_1 + 4) = 7;

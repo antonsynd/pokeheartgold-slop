@@ -50,7 +50,7 @@ void ov96_02218784(undefined4 param_1,int param_2)
   int iVar1;
   undefined1 *puVar2;
   int iVar3;
-  
+
   iVar1 = PokeathlonCourse_GetHeapAllocPtr4();
   iVar3 = 0;
   puVar2 = (undefined1 *)(iVar1 + 0x188 + param_2 * 4);

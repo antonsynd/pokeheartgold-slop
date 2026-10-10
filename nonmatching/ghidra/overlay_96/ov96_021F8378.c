@@ -52,7 +52,7 @@ void ov96_021F8378(undefined4 *param_1,undefined *param_2,int param_3,int param_
 {
   int *piVar1;
   int iVar2;
-  
+
   piVar1 = (int *)PokeathlonCourse_GetGraphicsSystem(param_2);
   iVar2 = ov96_021E9524(piVar1);
   piVar1 = (int *)ov96_021E94EC(piVar1,(iVar2 + -1) - (uint)*(byte *)(param_1 + 0x17) & 0xff);

@@ -50,7 +50,7 @@ undefined4 ov113_021E5C0C(undefined4 *param_1)
 
 {
   int iVar1;
-  
+
   if (*(short *)(param_1 + 4) == 0) {
     iVar1 = ov113_021E5EC4();
     if (iVar1 == 0) {

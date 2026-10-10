@@ -77,7 +77,7 @@ undefined4 sub_02065DF4(undefined *param_1,undefined1 *param_2)
   int iVar10;
   undefined4 uVar11;
   undefined1 uStack_24;
-  
+
   puVar3 = MapObject_GetFieldSystem(param_1);
   puVar3 = FieldSystem_GetPlayerAvatar(puVar3);
   uVar4 = MapObject_GetXCoord(param_1);

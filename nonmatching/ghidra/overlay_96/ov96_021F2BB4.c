@@ -52,7 +52,7 @@ void ov96_021F2BB4(undefined4 param_1,char *param_2,undefined4 param_3,undefined
 {
   undefined4 uVar1;
   int iVar2;
-  
+
   if (*param_2 == '\0') {
     if (*(int *)(param_2 + 8) == 0) {
       uVar1 = SysTask_CreateOnMainQueue(0x21f2d69,param_2,3,param_4,param_4);

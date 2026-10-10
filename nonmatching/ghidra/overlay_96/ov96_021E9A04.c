@@ -48,7 +48,7 @@ int ov96_021E9A04(void)
 
 {
   int iVar1;
-  
+
   iVar1 = PlayerProfile_sizeof();
   return iVar1 << 2;
 }

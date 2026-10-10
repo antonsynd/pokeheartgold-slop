@@ -57,7 +57,7 @@ void ov05_0221D414(int param_1,undefined4 param_2,int param_3,int param_4)
   int iVar4;
   uint uVar5;
   uint uVar6;
-  
+
   uVar2 = Party_GetCount(param_2);
   uVar6 = 0;
   uVar5 = 0;

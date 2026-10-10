@@ -48,7 +48,7 @@ void ov96_0220D07C(int param_1)
 
 {
   uint uVar1;
-  
+
   if (*(int *)(param_1 + 0x1c) << 0x16 < 0) {
     uVar1 = ((*(uint *)(param_1 + 0x18) & 0x3fffff) >> 0xb) + 1 & 0x7ff;
     *(uint *)(param_1 + 0x18) = *(uint *)(param_1 + 0x18) & 0xffc007ff | uVar1 << 0xb;

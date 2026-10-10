@@ -53,7 +53,7 @@ undefined4 FrtCmd_072(undefined4 *param_1)
   undefined4 uVar1;
   int iVar2;
   undefined4 uVar3;
-  
+
   uVar1 = FrontierScriptContext_ReadHalfWord();
   iVar2 = Frontier_GetLaunchArgs(*(undefined4 *)*param_1);
   uVar3 = Save_GameStats_Get(*(undefined4 *)(iVar2 + 8));

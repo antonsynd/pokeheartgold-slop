@@ -73,7 +73,7 @@ void ov81_02240D64(int param_1,undefined4 param_2,undefined4 param_3,undefined4 
   undefined4 uVar1;
   int iVar2;
   int iVar3;
-  
+
   uVar1 = NARC_New(0xb7,100,param_3,param_4,param_4);
   *(undefined4 *)(param_1 + 0x3dc) = uVar1;
   ov81_022403C0(param_1);

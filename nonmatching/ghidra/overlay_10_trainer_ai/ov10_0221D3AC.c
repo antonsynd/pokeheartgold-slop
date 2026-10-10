@@ -65,7 +65,7 @@ void ov10_0221D3AC(int param_1,int param_2)
   uint uVar9;
   uint uStack_2c;
   uint uStack_28;
-  
+
   ov10_0221EF24(param_2,1);
   uVar1 = ov10_0221EEF0(param_2);
   uVar2 = ov10_0221EEF0(param_2);

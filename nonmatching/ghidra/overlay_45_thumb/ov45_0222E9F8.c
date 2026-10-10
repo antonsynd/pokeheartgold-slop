@@ -52,7 +52,7 @@ void ov45_0222E9F8(undefined4 param_1)
 
 {
   undefined4 uVar1;
-  
+
   if (iRam022577c0 == 0) {
     GF_AssertFail();
   }

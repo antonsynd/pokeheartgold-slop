@@ -50,7 +50,7 @@ void ov08_022213E4(undefined4 param_1,int param_2)
 
 {
   int iVar1;
-  
+
   iVar1 = ManagedSprite_GetActiveAnim();
   if (param_2 != iVar1) {
     func_0x0200dcc0(param_1,0);

@@ -58,7 +58,7 @@ void ov15_021FB518(int param_1,undefined4 param_2,undefined4 param_3,undefined4 
 {
   undefined4 uVar1;
   int iVar2;
-  
+
   ov15_021F9F08();
   iVar2 = *(int *)(param_1 + 0x234) + 4 + (uint)*(byte *)(*(int *)(param_1 + 0x234) + 100) * 0xc;
   uVar1 = ov15_021FA074(param_1);

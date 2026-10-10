@@ -63,7 +63,7 @@ void ov102_021E9978(undefined4 param_1,int *param_2)
   int iVar2;
   undefined4 uVar3;
   int iVar4;
-  
+
   iVar4 = *param_2;
   if (param_2[5] == 0) {
     ov102_021EAF44(*(undefined4 *)(iVar4 + 0x1e0));

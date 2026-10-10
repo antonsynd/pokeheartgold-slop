@@ -56,7 +56,7 @@ void ov73_021E5E0C(int param_1,undefined4 param_2)
   int iVar3;
   int iVar4;
   int iVar5;
-  
+
   iVar5 = 0;
   iVar2 = param_1;
   iVar3 = param_1;

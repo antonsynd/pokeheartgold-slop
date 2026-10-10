@@ -54,7 +54,7 @@ void ov15_021FD43C(undefined4 param_1,uint param_2,int param_3,undefined4 param_
   uint uVar2;
   char *pcVar3;
   int iVar4;
-  
+
   iVar1 = func_0x0201cc08(param_1,param_2 & 0xff);
   if (param_3 != 6) {
     pcVar3 = &ov15_022013A8 + param_3 * 0x20;

@@ -55,7 +55,7 @@ void ov87_021E7698(int param_1)
   int iVar1;
   int iVar2;
   int iVar3;
-  
+
   *(char *)(param_1 + 0x39e) = *(char *)(param_1 + 0x39e) + '\x01';
   if (*(char *)(param_1 + 0x39e) != '\0') {
     *(undefined1 *)(param_1 + 0x39e) = 0;

@@ -54,7 +54,7 @@ void ov10_0221E9A4(undefined4 param_1,int param_2)
   byte bVar1;
   uint uVar2;
   undefined4 uVar3;
-  
+
   ov10_0221EF24(param_2,1);
   uVar2 = ov10_0221EEF0(param_2);
   uVar3 = ov10_0221EEF0(param_2);

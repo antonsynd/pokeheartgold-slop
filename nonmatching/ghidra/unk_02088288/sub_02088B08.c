@@ -51,7 +51,7 @@ undefined4 sub_02088B08(int param_1)
 {
   char cVar1;
   int iVar2;
-  
+
   iVar2 = IsPaletteFadeFinished();
   if (iVar2 != 1) {
     return 1;

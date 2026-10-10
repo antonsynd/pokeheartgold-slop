@@ -62,7 +62,7 @@ void ov08_02220084(int *param_1)
   undefined *puVar2;
   int iVar3;
   uint uVar4;
-  
+
   FillWindowPixelBuffer((undefined *)param_1[0x81c],0);
   FillWindowPixelBuffer((undefined *)(param_1[0x81c] + 0x20),0);
   FillWindowPixelBuffer((undefined *)(param_1[0x81c] + 0x30),0);

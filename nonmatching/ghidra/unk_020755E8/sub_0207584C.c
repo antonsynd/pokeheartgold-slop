@@ -54,7 +54,7 @@ void sub_0207584C(int param_1,int param_2,undefined4 param_3,undefined4 param_4)
 {
   undefined4 uVar1;
   undefined4 uVar2;
-  
+
   uVar2 = 0x49d;
   uVar1 = 0x49e;
   if (*(int *)(param_1 + 0xb8) == 0) {

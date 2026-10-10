@@ -48,7 +48,7 @@ undefined4 ov70_02244F34(int param_1)
 
 {
   int iVar1;
-  
+
   iVar1 = TextPrinterCheckActive(*(uint *)(param_1 + 0xbf0) & 0xff);
   if (iVar1 == 0) {
     if (0x1e < *(int *)(param_1 + 0x11c0)) {

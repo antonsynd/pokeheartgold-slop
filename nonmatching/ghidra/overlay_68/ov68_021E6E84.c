@@ -51,7 +51,7 @@ void ov68_021E6E84(int param_1)
 {
   uint uVar1;
   int iVar2;
-  
+
   uVar1 = 0;
   iVar2 = param_1;
   do {

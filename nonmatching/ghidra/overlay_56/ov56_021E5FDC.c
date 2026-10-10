@@ -60,7 +60,7 @@ undefined4 ov56_021E5FDC(undefined4 *param_1)
   bool bVar1;
   undefined4 uVar2;
   int iVar3;
-  
+
   bVar1 = false;
   if (*(short *)(param_1 + 2) == 0) {
     DrawFrameAndWindow2(param_1 + 0x27,1,10,6);

@@ -59,7 +59,7 @@ undefined4 ov59_0223AF9C(undefined4 *param_1)
 
 {
   int iVar1;
-  
+
   switch(*(undefined2 *)((int)param_1 + 0x42)) {
   case 0:
     iVar1 = Sprite_IsAnimated(param_1[0x98]);

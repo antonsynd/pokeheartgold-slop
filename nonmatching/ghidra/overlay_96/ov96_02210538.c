@@ -52,7 +52,7 @@ void ov96_02210538(int param_1)
 
 {
   uint uVar1;
-  
+
   if (param_1 == 0) {
     GF_AssertFail();
   }

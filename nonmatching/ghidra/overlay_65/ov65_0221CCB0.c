@@ -55,7 +55,7 @@ void ov65_0221CCB0(int param_1)
 {
   int iVar1;
   int iVar2;
-  
+
   SpriteTransfer_DeleteCharTransferTask(*(undefined4 *)(param_1 + 0x2dc));
   SpriteTransfer_DeleteCharTransferTask(*(undefined4 *)(param_1 + 0x2ec));
   SpriteTransfer_DeletePlttTransferTask(*(undefined4 *)(param_1 + 0x2e0));

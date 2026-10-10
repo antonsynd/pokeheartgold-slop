@@ -48,7 +48,7 @@ undefined4 ov68_021E61B8(int *param_1)
 
 {
   undefined1 uVar1;
-  
+
   if (*(byte *)(*param_1 + 0x1b) < 4) {
     ov68_021E6C14(param_1,10);
     uVar1 = 4;

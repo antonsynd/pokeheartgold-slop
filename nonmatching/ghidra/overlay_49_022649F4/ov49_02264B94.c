@@ -49,7 +49,7 @@ undefined4 ov49_02264B94(void)
 
 {
   undefined1 uVar1;
-  
+
   uVar1 = func_0x0222a9c8();
   switch(uVar1) {
   case 0:

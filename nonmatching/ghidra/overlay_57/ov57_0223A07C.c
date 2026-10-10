@@ -51,7 +51,7 @@ bool ov57_0223A07C(undefined4 param_1)
   int iVar1;
   int iVar2;
   int iVar3;
-  
+
   iVar3 = 0;
   iVar2 = 0;
   do {

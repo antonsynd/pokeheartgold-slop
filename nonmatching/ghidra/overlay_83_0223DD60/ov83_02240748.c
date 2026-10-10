@@ -61,7 +61,7 @@ void ov83_02240748(int param_1,undefined4 param_2,undefined4 param_3,undefined4 
   undefined2 uStack_1c;
   undefined2 uStack_1a;
   undefined4 uStack_18;
-  
+
   uVar3 = 0;
   iStack_24 = 0;
   uVar5 = (uint)(*(short *)(param_1 + 0x862) * 0x60000) >> 0x10;

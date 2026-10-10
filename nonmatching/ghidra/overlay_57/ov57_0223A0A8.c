@@ -48,7 +48,7 @@ undefined4 ov57_0223A0A8(int param_1,int param_2)
 {
   int iVar1;
   int iVar2;
-  
+
   param_1 = param_1 + param_2 * 0xc;
   iVar2 = *(int *)(param_1 + 0x28c);
   iVar1 = *(int *)(param_1 + 0x290);

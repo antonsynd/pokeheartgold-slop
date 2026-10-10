@@ -51,7 +51,7 @@ ov80_02232368(undefined4 *param_1,undefined4 param_2,undefined4 param_3,undefine
 {
   ushort *puVar1;
   int iVar2;
-  
+
   puVar1 = (ushort *)ov80_0222BE24(param_1,*(undefined2 *)(param_1 + 0x1e),param_3,param_4,param_4);
   iVar2 = Frontier_GetData(*(undefined4 *)*param_1);
   if (*(char *)(iVar2 + 0xa1b) == '\0') {

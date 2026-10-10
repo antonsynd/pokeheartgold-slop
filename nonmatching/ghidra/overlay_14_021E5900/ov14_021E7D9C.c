@@ -50,7 +50,7 @@ void ov14_021E7D9C(int param_1,uint param_2,undefined4 param_3,undefined4 param_
   int iVar1;
   int iVar2;
   short sVar3;
-  
+
   iVar1 = sub_02019B08(*(undefined4 *)(*(int *)(param_1 + 0x34) + 0x2f0),2,param_3,param_4,param_4);
   iVar1 = iVar1 + ((param_2 >> 1) * 3 + 2 & 0xff) * 0x16;
   iVar2 = ((param_2 & 1) * 4 + 3) * 2;

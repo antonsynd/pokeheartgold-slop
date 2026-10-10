@@ -48,7 +48,7 @@ undefined4 ov39_0222908C(int param_1)
 
 {
   int iVar1;
-  
+
   iVar1 = ov39_02228A70(*(undefined4 *)(param_1 + 0x40));
   if (iVar1 == 0) {
     *(undefined4 *)(param_1 + 8) = *(undefined4 *)(param_1 + 0xc);

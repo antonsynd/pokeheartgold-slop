@@ -52,7 +52,7 @@ void ov07_02222508(short *param_1,int param_2,undefined4 param_3,int param_4,und
   int iVar1;
   int iVar2;
   undefined4 uVar3;
-  
+
   if (param_1 == (short *)0x0) {
     GF_AssertFail();
   }

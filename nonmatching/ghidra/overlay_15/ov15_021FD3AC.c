@@ -48,7 +48,7 @@ undefined4 ov15_021FD3AC(void)
 
 {
   int iVar1;
-  
+
   iVar1 = ov15_021FA650();
   if (iVar1 == 1) {
     return 2;

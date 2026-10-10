@@ -52,7 +52,7 @@ void ov08_02223390(undefined4 param_1,undefined4 param_2,undefined4 param_3,unde
 {
   undefined4 uVar1;
   undefined4 uVar2;
-  
+
   uVar2 = param_4;
   uVar1 = func_0x0223aa80();
   Bag_TakeItem(uVar1,param_2,1,param_4,uVar2);

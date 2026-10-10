@@ -58,7 +58,7 @@ void ov92_02261850(int param_1,undefined4 param_2,undefined4 param_3,undefined4 
   int iVar6;
   int aiStack_2c [5];
   undefined4 uStack_18;
-  
+
   piVar1 = *(int **)(param_1 + 0x15c);
   piVar2 = *(int **)(param_1 + 0x160);
   iVar3 = *(int *)(param_1 + 0x170);

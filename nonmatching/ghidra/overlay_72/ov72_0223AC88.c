@@ -48,7 +48,7 @@ undefined4 ov72_0223AC88(int param_1)
 
 {
   int iVar1;
-  
+
   iVar1 = IsPaletteFadeFinished();
   if (iVar1 == 1) {
     *(undefined1 *)(param_1 + 0x1312) = 0xb;

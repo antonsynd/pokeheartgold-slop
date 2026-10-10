@@ -48,7 +48,7 @@ undefined4 ov85_021E97B8(int param_1,undefined4 param_2,undefined4 param_3,undef
 
 {
   int iVar1;
-  
+
   if ((*(char *)(param_1 + 0x4a53) == '\0') &&
      (iVar1 = sub_02096D4C(*(undefined4 *)(param_1 + 0x10),5,0,0,param_4), iVar1 == 1)) {
     *(undefined4 *)(param_1 + 0x354) = 0x1f;

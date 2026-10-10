@@ -48,7 +48,7 @@ undefined4 ov05_0221E9F8(undefined4 *param_1)
 
 {
   int iVar1;
-  
+
   if ((*(int *)(*(int *)*param_1 + 0x1c0) != 0) && (iVar1 = func_0x0202fc48(), iVar1 != 0)) {
     return 1;
   }

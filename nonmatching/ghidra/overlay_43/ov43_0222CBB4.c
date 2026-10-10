@@ -69,7 +69,7 @@ ov43_0222CBB4(undefined4 *param_1,undefined4 param_2,int param_3,undefined4 para
   undefined4 uStack_20;
   undefined4 uStack_1c;
   undefined4 uStack_18;
-  
+
   uStack_18 = param_4;
   switch(*(undefined1 *)(param_3 + 8)) {
   case 0:

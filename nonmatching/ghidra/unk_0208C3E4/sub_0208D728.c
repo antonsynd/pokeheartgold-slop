@@ -52,7 +52,7 @@ void sub_0208D728(int param_1)
 
 {
   char cVar1;
-  
+
   cVar1 = *(char *)(*(int *)(param_1 + 0x22c) + 0x12);
   if ((cVar1 == '\x03') || (cVar1 == '\x04')) {
     FillWindowPixelBuffer(*(int *)(param_1 + 0x224) + 0x10,0);

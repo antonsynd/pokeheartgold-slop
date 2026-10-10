@@ -53,7 +53,7 @@ void ov14_021ED1E8(int *param_1)
 
 {
   int iVar1;
-  
+
   ov14_021F63B8(param_1[0xd]);
   if (*(int *)(*param_1 + 8) == 3) {
     ov14_021F3488(param_1,0x81,1);

@@ -52,7 +52,7 @@ int ov96_021F39F0(int *param_1,int *param_2,int param_3)
   int iVar3;
   int iVar4;
   int iVar5;
-  
+
   if (*param_2 == -1) {
     return 0;
   }

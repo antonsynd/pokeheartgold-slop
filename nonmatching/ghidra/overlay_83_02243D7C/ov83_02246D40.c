@@ -58,7 +58,7 @@ void ov83_02246D40(int param_1,undefined4 param_2,undefined4 param_3,undefined4 
   uint unaff_r4;
   __asm__ volatile("movs %0, r4" : "=l"(unaff_r4) : : "cc");
 
-  
+
   if (*(uint *)(param_1 + 0x600) != (uint)*(byte *)(*(int *)(param_1 + 0x5f8) + 0x24)) {
     bVar1 = ov83_0224777C(*(undefined **)(param_1 + 700),*(byte *)(param_1 + 9),2);
     uVar2 = (uint)(bVar1 != 1);

@@ -56,7 +56,7 @@ int ov93_0225E7B0(int *param_1,undefined4 param_2,undefined4 param_3,undefined4 
 {
   int iVar1;
   undefined4 uVar2;
-  
+
   iVar1 = Heap_Alloc(0x75,0x278,param_3,param_4,param_4);
   func_0x020d4994(iVar1,0,0x278);
   *(undefined4 *)(iVar1 + 0x270) = *(undefined4 *)(*param_1 + 0x34);

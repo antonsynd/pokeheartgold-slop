@@ -53,7 +53,7 @@ void ov07_02226A68(undefined4 param_1,int param_2)
 
 {
   int iVar1;
-  
+
   iVar1 = ManagedSprite_IsAnimated(*(undefined4 *)(param_2 + 0x1c));
   if (iVar1 == 0) {
     Sprite_DeleteAndFreeResources();

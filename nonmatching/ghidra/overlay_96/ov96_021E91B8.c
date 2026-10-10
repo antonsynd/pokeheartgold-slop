@@ -52,7 +52,7 @@ int ov96_021E91B8(int param_1,int param_2,int param_3)
   int iVar1;
   int iVar2;
   int iVar3;
-  
+
   if ((param_1 < 1) || (0x1ed < param_1)) {
     iVar3 = 1;
   }

@@ -57,7 +57,7 @@ void ov41_022460A8(int param_1,undefined4 param_2,undefined4 param_3,undefined4 
   undefined4 uStack_10;
   undefined2 uStack_c;
   undefined4 uStack_8;
-  
+
   uStack_28 = *(undefined4 *)(param_1 + 4);
   uStack_24 = *(undefined4 *)(param_1 + 8);
   uStack_20 = *(undefined4 *)(param_1 + 0xc);

@@ -53,7 +53,7 @@ undefined4 ov80_0223AFC4(undefined4 *param_1)
   uint uVar2;
   undefined4 *puVar3;
   int iStack_18;
-  
+
   if (*(char *)((int)param_1 + 0x18d) == '\0') {
     return 1;
   }

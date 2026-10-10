@@ -51,7 +51,7 @@ undefined4 ov74_022351FC(void)
 
 {
   int iVar1;
-  
+
   func_0x020e16e4();
   iVar1 = func_0x020e0ff0();
   if (iVar1 == 0) {

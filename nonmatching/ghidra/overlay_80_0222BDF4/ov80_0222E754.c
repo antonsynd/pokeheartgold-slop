@@ -47,7 +47,7 @@ void ov80_0222E754(int param_1)
 
 {
   byte *pbVar1;
-  
+
   *(int *)(param_1 + 0xa4) = param_1 + 0xb4;
   *(int *)(param_1 + 0xa8) = param_1 + 8;
   *(undefined1 *)(param_1 + 0xac) = 0;

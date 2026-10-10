@@ -48,7 +48,7 @@ undefined4 ov07_02222468(int *param_1)
 
 {
   int iVar1;
-  
+
   if (param_1 == (int *)0x0) {
     GF_AssertFail();
   }

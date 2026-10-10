@@ -48,7 +48,7 @@ void ov70_02238F24(int *param_1)
 
 {
   short sVar1;
-  
+
   if (*(ushort *)((int)param_1 + 0x11fa) != 0) {
     sVar1 = PCStorage_CountMonsAndEggsInBox
                       (*(undefined4 *)(*param_1 + 0xc),*(ushort *)((int)param_1 + 0x11fa) - 1);

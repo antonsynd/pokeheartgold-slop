@@ -55,7 +55,7 @@ undefined4 ov72_0223A5E0(int param_1)
 
 {
   int iVar1;
-  
+
   iVar1 = IsPaletteFadeFinished();
   if (iVar1 == 1) {
     ov72_0223A680(param_1);

@@ -51,7 +51,7 @@ undefined4 ov13_02223E6C(void)
 
 {
   undefined4 uVar1;
-  
+
   func_0x020d3a38();
   if (iRam0224df98 == iRam0224df9c) {
     uVar1 = 0;

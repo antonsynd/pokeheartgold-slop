@@ -48,7 +48,7 @@ undefined4 ov01_021F2E20(int *param_1)
 
 {
   int iVar1;
-  
+
   iVar1 = ov01_021F3068(param_1 + 0x10);
   if (iVar1 == 1) {
     *param_1 = *param_1 + 1;

@@ -52,7 +52,7 @@ undefined4 BN_add_word(int *param_1,uint param_2)
   int *piVar2;
   uint uVar3;
   int iVar4;
-  
+
   if (param_2 == 0) {
     return 1;
   }

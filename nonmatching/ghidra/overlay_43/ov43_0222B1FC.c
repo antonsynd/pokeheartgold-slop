@@ -55,7 +55,7 @@ void ov43_0222B1FC(int param_1,undefined4 param_2,undefined4 *param_3)
 
 {
   ushort *puVar1;
-  
+
   ov43_0222A9F4(param_3,param_3 + 0x19,0);
   ScheduleWindowCopyToVram(param_1 + 8);
   puVar1 = *(ushort **)(param_1 + 0x1c);

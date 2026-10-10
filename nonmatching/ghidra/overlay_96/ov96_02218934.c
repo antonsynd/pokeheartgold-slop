@@ -72,7 +72,7 @@ undefined4 ov96_02218934(int param_1)
   int iStack_28;
   int iStack_20;
   int iStack_1c;
-  
+
   if ((*(int *)(param_1 + 0x2c) < 1) || (*(int *)(param_1 + 0x30) < 1)) {
     return 1;
   }

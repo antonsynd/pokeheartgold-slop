@@ -51,7 +51,7 @@ void ov07_022318A0(undefined4 param_1)
 
 {
   undefined1 auStack_20 [24];
-  
+
   ov07_0223172C(param_1,auStack_20);
   ov07_02231514(auStack_20,0,0xfffffffd);
   ov07_0223151C(auStack_20,0xc,4);

@@ -54,7 +54,7 @@ void ov18_021F3E24(int param_1)
 
 {
   undefined4 uVar1;
-  
+
   SpriteSystem_LoadCharResObjFromOpenNarc
             (*(undefined4 *)(param_1 + 0x668),*(undefined4 *)(param_1 + 0x66c),
              *(undefined4 *)(param_1 + 0x854),0x4c,1,2,0xc550);

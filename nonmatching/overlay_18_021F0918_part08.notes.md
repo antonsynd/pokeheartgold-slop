@@ -28,3 +28,10 @@ Still FAIL in the gate, and why:
 - ov18_021F69E8 reads `template.narcID` / `charDataID` after the stubbed GetMonSpriteCharAndPlttNarcIdsEx fills it, so it also
   reads uninitialised stack words; clang puts `template` 16 bytes lower than the original (the original has no spilled arguments).
   In a private copy of the checker with uninitialised stack reads fixed at zero: PASS 500 trials agree.
+
+## Status
+
+With the current tools, every function these notes describe as failing or inconclusive passes the check.
+`VERIFIED.tsv` gives the verdict of each, and the file that holds its verified C. These now have their verified C in another file, so their C here was not checked again:
+
+- `ov18_021F684C`: `written/overlay_18_021F0918/ov18_021F684C.c`

@@ -52,7 +52,7 @@ void ov08_02223F94(int param_1,int param_2)
 {
   uint uVar1;
   int iVar2;
-  
+
   uVar1 = 0;
   iVar2 = param_1;
   do {

@@ -54,7 +54,7 @@ void ov27_0225CD18(int param_1,int param_2,int param_3,undefined4 param_4)
   int iStack_14;
   undefined4 uStack_10;
   undefined4 uStack_c;
-  
+
   param_3 = param_3 * 3;
   iVar1 = (param_2 + -2) * 0x18;
   iStack_18 = (uint)(byte)ov27_0225D3C5[param_3 + iVar1] << 0xc;

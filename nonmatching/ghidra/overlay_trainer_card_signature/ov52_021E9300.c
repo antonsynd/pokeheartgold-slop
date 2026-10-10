@@ -50,7 +50,7 @@ void ov52_021E9300(byte *param_1,int param_2)
   uint uVar1;
   int iVar2;
   int iVar3;
-  
+
   iVar3 = 0;
   uVar1 = 0;
   *param_1 = 0;

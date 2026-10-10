@@ -48,7 +48,7 @@ void sub_02066058(void)
 
 {
   int iVar1;
-  
+
   iVar1 = sub_0205F394();
   *(undefined1 *)(iVar1 + 1) = 0;
   return;

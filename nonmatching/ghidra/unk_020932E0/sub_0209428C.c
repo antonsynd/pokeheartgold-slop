@@ -48,7 +48,7 @@ void sub_0209428C(char *param_1,char param_2,char param_3,int param_4,int param_
 {
   char cVar1;
   char cVar2;
-  
+
   cVar1 = (char)(param_5 / 2);
   *param_1 = param_3 - cVar1;
   cVar2 = (char)(param_4 / 2);

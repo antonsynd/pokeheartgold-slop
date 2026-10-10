@@ -49,7 +49,7 @@ void ov41_02249E40(int param_1,short param_2)
   short *psVar1;
   int iVar2;
   uint uVar3;
-  
+
   psVar1 = (short *)(param_1 + 0xc);
   uVar3 = *(uint *)(param_1 + 8) >> 1;
   iVar2 = 0;

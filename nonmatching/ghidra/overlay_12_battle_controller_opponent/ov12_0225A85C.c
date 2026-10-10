@@ -60,7 +60,7 @@ void ov12_0225A85C(undefined4 param_1,int param_2,undefined1 *param_3,undefined4
   short sStack_3a;
   uint uStack_38;
   undefined4 uStack_18;
-  
+
   uStack_18 = param_4;
   uVar2 = ov12_0223A934();
   puVar3 = (undefined4 *)Heap_Alloc(5,8);

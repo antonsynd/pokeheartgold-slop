@@ -60,7 +60,7 @@ void ov08_02220878(int *param_1)
   undefined4 uVar1;
   undefined4 uVar2;
   undefined4 uVar3;
-  
+
   uVar1 = NARC_New(0x15,*(undefined4 *)(*param_1 + 0xc));
   uVar2 = func_0x0223a8e4(*(undefined4 *)(*param_1 + 8));
   uVar3 = func_0x0207caa0();

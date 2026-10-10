@@ -58,7 +58,7 @@ undefined4 ov112_021EDF4C(int param_1,undefined4 param_2,undefined4 param_3,unde
   undefined4 uVar1;
   int iVar2;
   undefined4 uVar3;
-  
+
   uVar1 = String_New(0xc,0x9a);
   FillBgTilemapRect(*(undefined4 *)(param_1 + 0x18),2,0,0,0,0x20,0x18,0x10,param_4);
   BgCommitTilemapBufferToVram(*(undefined4 *)(param_1 + 0x18),2);

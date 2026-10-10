@@ -48,7 +48,7 @@ void ov90_0225A65C(undefined4 param_1,int param_2,undefined4 param_3,undefined4 
 
 {
   int iVar1;
-  
+
   if (param_2 == 0) {
     iVar1 = 1;
   }

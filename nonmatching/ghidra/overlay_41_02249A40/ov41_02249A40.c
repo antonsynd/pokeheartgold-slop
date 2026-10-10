@@ -47,7 +47,7 @@ void ov41_02249A40(undefined1 *param_1)
 
 {
   int iVar1;
-  
+
   iVar1 = 0x10;
   do {
     *param_1 = 0;

@@ -65,7 +65,7 @@ void ov108_021EA040(int param_1)
   int iVar5;
   int iVar6;
   int iVar7;
-  
+
   FillBgTilemapRect(*(undefined4 *)(param_1 + 0x438),6,0,0,5,0x20,0xe,0x11);
   iVar6 = 0;
   iVar7 = param_1 + 0x454;

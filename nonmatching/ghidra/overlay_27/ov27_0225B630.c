@@ -59,7 +59,7 @@ void ov27_0225B630(undefined4 *param_1,int param_2)
   byte bVar4;
   byte bVar5;
   undefined *puVar6;
-  
+
   puVar6 = (undefined *)*param_1;
   bVar2 = GetWindowX((undefined *)param_1);
   bVar3 = GetWindowY((undefined *)param_1);

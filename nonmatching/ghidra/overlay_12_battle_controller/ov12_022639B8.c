@@ -60,7 +60,7 @@ void ov12_022639B8(undefined *param_1,int param_2,undefined4 param_3,undefined4 
   undefined4 uStack_24;
   undefined4 local_8;
   undefined4 uStack_4;
-  
+
   uStack_24 = param_4;
   local_8 = param_3;
   uStack_4 = param_4;

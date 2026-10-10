@@ -52,7 +52,7 @@ void ov70_02243EB8(undefined4 param_1,undefined4 param_2,undefined4 param_3,unde
 
 {
   undefined4 uVar1;
-  
+
   uVar1 = NewString_ReadMsgData(param_2,param_4);
   AddTextPrinterParameterizedWithColor(param_3,4,uVar1,0,0,0xff,0xf0e02,0);
   CopyWindowPixelsToVram_TextMode(param_3);

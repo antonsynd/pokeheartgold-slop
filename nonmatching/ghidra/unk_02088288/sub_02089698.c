@@ -50,7 +50,7 @@ sub_02089698(undefined4 *param_1,undefined4 param_2,undefined4 param_3,undefined
 
 {
   char cVar1;
-  
+
   cVar1 = *(char *)((int)param_1 + 0x7be);
   if (cVar1 == '\0') {
     BgTilemapRectChangePalette

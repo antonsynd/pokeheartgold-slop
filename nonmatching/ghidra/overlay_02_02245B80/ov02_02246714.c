@@ -51,7 +51,7 @@ void ov02_02246714(undefined4 param_1,undefined4 param_2,undefined4 param_3,unde
 
 {
   undefined4 uVar1;
-  
+
   uVar1 = TaskManager_GetFieldSystem();
   uVar1 = ov02_02246744(uVar1,param_2,param_3,param_4,param_5);
   TaskManager_Call(param_1,0x2246799,uVar1);

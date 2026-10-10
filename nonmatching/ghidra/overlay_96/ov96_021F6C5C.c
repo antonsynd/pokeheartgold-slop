@@ -65,7 +65,7 @@ void ov96_021F6C5C(int param_1,undefined4 param_2,undefined4 param_3,undefined4 
   byte *pbVar5;
   int iStack_28;
   int aiStack_24 [4];
-  
+
   aiStack_24[3] = param_4;
   ov96_021F74D0(*(undefined4 *)(param_1 + 0x8c),param_2,2);
   uVar1 = ov96_021EB3E4(param_2,1,3,0x65,3);

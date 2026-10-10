@@ -64,7 +64,7 @@ undefined4 sub_02061108(undefined4 param_1)
   undefined4 uVar3;
   undefined4 uVar4;
   undefined4 uVar5;
-  
+
   uVar1 = GetMetatileBehavior_None();
   iVar2 = sub_0205F8D0(param_1);
   uVar3 = uVar1;

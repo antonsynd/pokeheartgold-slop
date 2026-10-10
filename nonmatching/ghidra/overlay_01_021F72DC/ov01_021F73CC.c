@@ -50,7 +50,7 @@ void ov01_021F73CC(undefined4 param_1,undefined4 param_2,undefined4 param_3,unde
 
 {
   int iVar1;
-  
+
   iVar1 = sub_0205F3E8(param_1,0x14,param_3,param_4,param_4);
   *(undefined1 *)(iVar1 + 2) = 0xff;
   ov01_021F9510(param_1,iVar1 + 4);

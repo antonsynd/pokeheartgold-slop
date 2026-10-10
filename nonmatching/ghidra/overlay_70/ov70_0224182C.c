@@ -52,7 +52,7 @@ undefined4 ov70_0224182C(int param_1)
 
 {
   undefined4 uVar1;
-  
+
   uVar1 = func_0x02028ed0(0x3d);
   PlayerProfile_Init();
   func_0x02028f24(uVar1,param_1 + 0x10c);

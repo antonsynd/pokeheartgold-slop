@@ -50,7 +50,7 @@ void sub_020176F0(int param_1)
 {
   int iVar1;
   undefined4 uVar2;
-  
+
   if (*(int *)(param_1 + 0x50) != 0) {
     GF_AssertFail();
   }

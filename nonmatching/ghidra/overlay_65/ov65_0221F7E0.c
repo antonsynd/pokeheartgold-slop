@@ -53,7 +53,7 @@ undefined4 ov65_0221F7E0(int param_1)
   undefined4 uVar2;
   int iVar3;
   int iVar4;
-  
+
   iVar1 = Party_GetCount(*(undefined4 *)(param_1 + 0x2224));
   iVar4 = 0;
   if (0 < iVar1) {

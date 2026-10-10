@@ -48,7 +48,7 @@ undefined4 ov28_0225EA58(int param_1)
 
 {
   int iVar1;
-  
+
   iVar1 = FieldSystem_TaskIsRunning(*(undefined4 *)(param_1 + 0x18));
   if ((iVar1 == 1) && (-1 < (int)((uint)*(byte *)(*(int *)(param_1 + 0x18) + 0xd2) << 0x18))) {
     return 1;

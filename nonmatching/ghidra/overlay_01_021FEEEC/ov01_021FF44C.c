@@ -50,7 +50,7 @@ void ov01_021FF44C(undefined *param_1,int param_2,undefined4 param_3,undefined4 
 {
   undefined auStack_18 [12];
   undefined4 uStack_c;
-  
+
   uStack_c = param_4;
   sub_02068DB8(param_1,auStack_18);
   sub_02023E50(*(undefined **)(param_2 + 0x24),auStack_18);

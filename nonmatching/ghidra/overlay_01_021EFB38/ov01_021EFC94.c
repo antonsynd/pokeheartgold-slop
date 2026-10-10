@@ -53,7 +53,7 @@ void ov01_021EFC94(undefined4 param_1,undefined4 param_2,undefined4 param_3)
 {
   int iVar1;
   undefined4 uVar2;
-  
+
   uRam02209b6c = 0;
   uRam02209b68 = param_1;
   CreateSysTaskAndEnvironment(0x21efb39,0x24,5,4);

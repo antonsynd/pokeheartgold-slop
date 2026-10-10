@@ -60,7 +60,7 @@ void ov83_02241B30(int param_1)
   int iVar5;
   int iVar6;
   int iVar7;
-  
+
   iVar3 = func_0x02237b24(*(undefined1 *)(param_1 + 9),1);
   iVar6 = 0;
   iVar7 = param_1;

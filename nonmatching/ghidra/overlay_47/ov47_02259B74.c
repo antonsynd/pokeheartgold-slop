@@ -57,7 +57,7 @@ undefined4 ov47_02259B74(int param_1)
   undefined4 uStack_28;
   undefined4 uStack_24;
   undefined4 uStack_20;
-  
+
   if (0x13 < *(int *)(param_1 + 100)) {
     return 1;
   }

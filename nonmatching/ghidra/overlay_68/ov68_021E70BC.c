@@ -52,7 +52,7 @@ void ov68_021E70BC(int *param_1)
   uint uVar1;
   int *piVar2;
   short sVar3;
-  
+
   uVar1 = 0;
   sVar3 = 0x28;
   piVar2 = param_1;

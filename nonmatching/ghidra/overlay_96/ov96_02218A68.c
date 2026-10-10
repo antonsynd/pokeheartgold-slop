@@ -50,7 +50,7 @@ void ov96_02218A68(int param_1)
   int iVar1;
   int iStack_1c;
   int aiStack_18 [4];
-  
+
   iVar1 = ((*(uint *)(param_1 + 0x60) & 0x3fffff) >> 0x14) * 4;
   ov96_021EB0A4(**(undefined4 **)(param_1 + 4),(int)*(short *)(iVar1 + 0x221d6e4),
                 (int)*(short *)(iVar1 + 0x221d6e6),aiStack_18,&iStack_1c);

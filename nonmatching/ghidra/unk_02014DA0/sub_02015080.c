@@ -51,7 +51,7 @@ int sub_02015080(int param_1)
   int iVar1;
   uint uVar2;
   int iVar3;
-  
+
   iVar1 = iRam021d10bc;
   iVar3 = *(int *)(iRam021d10bc + 0x10);
   uVar2 = iVar3 + param_1;

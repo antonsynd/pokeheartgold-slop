@@ -54,7 +54,7 @@ undefined4 ov108_021E5DB8(int param_1)
 {
   int iVar1;
   uint uVar2;
-  
+
   iVar1 = func_0x020186a4(*(undefined4 *)(param_1 + 0x4bc));
   if (iVar1 == -1) {
     return 1;

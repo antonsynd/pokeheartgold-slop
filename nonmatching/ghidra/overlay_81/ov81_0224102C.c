@@ -54,7 +54,7 @@ void ov81_0224102C(int param_1)
   int iVar4;
   int iVar5;
   int iVar6;
-  
+
   iVar4 = 0;
   iVar6 = 0;
   iVar5 = param_1;

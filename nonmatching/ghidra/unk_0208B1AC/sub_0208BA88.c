@@ -54,7 +54,7 @@ void sub_0208BA88(int param_1,int param_2,undefined4 param_3,undefined4 param_4)
   undefined4 uVar1;
   undefined4 uVar2;
   int iVar3;
-  
+
   uVar1 = sub_020776B4();
   uVar2 = sub_02077678(param_4);
   SpriteSystem_ReplaceCharResObj

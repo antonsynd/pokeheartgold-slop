@@ -53,7 +53,7 @@ void ov112_021E5D8C(int param_1,int param_2,uint param_3,char *param_4)
   uint uVar3;
   uint uStack_20;
   int iStack_18;
-  
+
   iStack_18 = 0;
   uVar2 = (param_3 + 0x7f + ((uint)((int)(param_3 + 0x7f) >> 6) >> 0x19) & 0x7fffff) >> 7;
   uStack_20 = param_3;

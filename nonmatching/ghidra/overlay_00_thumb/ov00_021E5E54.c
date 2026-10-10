@@ -57,7 +57,7 @@ undefined4 ov00_021E5E54(int param_1)
 {
   int iVar1;
   undefined4 uVar2;
-  
+
   switch(*(undefined4 *)(iRam0221a680 + 0x1070)) {
   case 5:
     if (param_1 != 0) {

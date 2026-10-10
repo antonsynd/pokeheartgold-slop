@@ -52,7 +52,7 @@ undefined1 * sub_02095CE0(undefined4 param_1,undefined4 param_2)
   undefined4 uVar2;
   int iVar3;
   undefined1 *puVar4;
-  
+
   puVar1 = (undefined1 *)Heap_Alloc(param_1,0x10);
   iVar3 = 0x10;
   puVar4 = puVar1;

@@ -58,7 +58,7 @@ void ov70_0223D588(int *param_1)
   int iVar1;
   undefined *puVar2;
   uint uVar3;
-  
+
   uVar3 = (uint)*(ushort *)((int)param_1 + 0x122);
   if (uVar3 == 0x1e) {
     ov70_0223D690((int)param_1,6);

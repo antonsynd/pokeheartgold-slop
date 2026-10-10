@@ -52,7 +52,7 @@ undefined4 ov103_021ED144(int param_1)
   char cVar1;
   undefined4 *puVar2;
   byte *pbVar3;
-  
+
   puVar2 = *(undefined4 **)(param_1 + 0xc);
   pbVar3 = (byte *)(puVar2 + 0xb9);
   cVar1 = *(char *)((int)puVar2 + 0x2e6);

@@ -58,7 +58,7 @@ undefined4 ov15_021FB680(int param_1)
   code *pcVar3;
   int iVar4;
   undefined4 uVar5;
-  
+
   ov15_021FD788(param_1,0);
   ov15_021FFF24(param_1);
   uVar2 = func_0x02077d88(*(undefined2 *)(*(int *)(param_1 + 0x234) + 0x66),6,6);

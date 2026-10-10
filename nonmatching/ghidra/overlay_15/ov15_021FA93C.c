@@ -56,7 +56,7 @@ undefined4 ov15_021FA93C(int param_1)
   int iVar1;
   uint uVar2;
   byte *pbVar3;
-  
+
   pbVar3 = (byte *)(param_1 + 0x619);
   iVar1 = System_GetTouchHeld();
   if (iVar1 == 0) {

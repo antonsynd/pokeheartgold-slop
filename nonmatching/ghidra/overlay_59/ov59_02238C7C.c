@@ -52,7 +52,7 @@ void ov59_02238C7C(int param_1)
 
 {
   uint uVar1;
-  
+
   FillWindowPixelBuffer(param_1 + 0x168,0xf);
   uVar1 = ov59_02239EA8(param_1);
   if (uVar1 == 8) {

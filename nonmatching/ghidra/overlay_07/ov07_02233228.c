@@ -57,7 +57,7 @@ undefined4 ov07_02233228(int param_1,undefined4 param_2,undefined4 param_3,undef
   int iVar1;
   int iVar2;
   int *piVar3;
-  
+
   if (*(int *)(param_1 + 8) == 0) {
     ManagedSprite_SetAnim(*(undefined4 *)(param_1 + 0x30),1,param_3,param_4,param_4);
     func_0x0200dcc0(*(undefined4 *)(param_1 + 0x30),0);

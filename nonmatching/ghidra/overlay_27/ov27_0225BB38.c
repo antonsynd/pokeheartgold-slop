@@ -50,7 +50,7 @@ void ov27_0225BB38(undefined4 param_1,undefined4 param_2,int param_3)
 
 {
   uint uVar1;
-  
+
   uVar1 = *(uint *)(&ov27_0225CEC4 + param_3 * 4);
   FillWindowPixelBuffer(param_1,uVar1 & 0xff);
   AddTextPrinterParameterizedWithColor(param_1,0,param_2,3,0,0,uVar1,0);

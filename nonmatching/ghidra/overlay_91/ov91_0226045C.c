@@ -52,7 +52,7 @@ void ov91_0226045C(undefined4 param_1,undefined4 param_2,int param_3,int param_4
 
 {
   undefined1 auStack_38 [36];
-  
+
   func_0x020cafec(auStack_38);
   MTX_RotY33_(auStack_38,
               (int)*(short *)(&FX_SinCosTable_ +

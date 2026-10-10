@@ -51,7 +51,7 @@ void sub_02093F84(int param_1,int param_2,int param_3,undefined4 param_4)
 {
   int iVar1;
   int iVar2;
-  
+
   PlaySE(0x5ea);
   *(undefined4 *)(param_1 + param_2 * 0x10 + 0x890) = 0;
   Sprite_SetDrawFlag(*(undefined **)(param_1 + param_2 * 0x34 + 0x7e8),0);

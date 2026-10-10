@@ -52,7 +52,7 @@ void sub_020597D4(int param_1)
 {
   int iVar1;
   int iVar2;
-  
+
   iVar1 = sub_02070D90();
   func_0x020d4a50(*(int *)(param_1 + 0x48) + iVar1 * (uint)*(byte *)(param_1 + 0x84),
                   *(int *)(param_1 + 0x4c) + iVar1 * (uint)*(byte *)(param_1 + 0x85),iVar1);

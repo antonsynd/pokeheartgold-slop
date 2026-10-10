@@ -69,7 +69,7 @@ void ov112_021EADD0(int param_1,int param_2)
   undefined4 uVar3;
   undefined4 uStack_18;
   undefined4 uStack_14;
-  
+
   sub_02032674(*(undefined4 *)(param_1 + 0x1e440),&uStack_14,&uStack_18);
   BufferIntegerAsString(*(undefined4 *)(param_1 + 0x1e448),7,uStack_18,7,0,1);
   BufferIntegerAsString(*(undefined4 *)(param_1 + 0x1e448),6,uStack_14,7,0,1);

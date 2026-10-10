@@ -50,7 +50,7 @@ void ov48_022593F4(int param_1,int *param_2)
 {
   int iVar1;
   int iVar2;
-  
+
   *(uint *)(param_1 + 4) = *(uint *)(param_1 + 4) & 0xfffffffc;
   *(uint *)(param_1 + 4) = *(uint *)(param_1 + 4) & 0xfffffffd;
   if ((*(uint *)(param_1 + 4) & 3) >> 1 != 1) {

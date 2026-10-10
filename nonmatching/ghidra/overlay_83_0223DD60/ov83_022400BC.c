@@ -58,7 +58,7 @@ void ov83_022400BC(int param_1,undefined4 param_2,int param_3,int param_4)
   uint uVar5;
   undefined4 uStack_20;
   undefined4 uStack_1c;
-  
+
   uVar2 = Party_GetMonByIndex(*(undefined4 *)(param_1 + 0x7a4),param_3);
   iVar3 = func_0x02237d8c(*(undefined1 *)(param_1 + 9));
   if (iVar3 == 0) {

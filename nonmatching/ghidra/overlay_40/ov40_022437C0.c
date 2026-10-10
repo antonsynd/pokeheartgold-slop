@@ -60,7 +60,7 @@ void ov40_022437C0(uint param_1,int param_2,int *param_3)
   undefined2 extraout_r1;
   int iVar3;
   int iVar4;
-  
+
   if (param_3[0x7d] == 1) {
     if (param_3[0xa6] != 1) {
       param_3[0xa6] = 1;

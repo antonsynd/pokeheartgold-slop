@@ -61,7 +61,7 @@ void ov81_0223EF5C(int param_1)
 {
   undefined1 uVar1;
   undefined4 uVar2;
-  
+
   Pokepic_SetAttr(*(undefined4 *)(param_1 + (uint)*(byte *)(param_1 + 0x11) * 4 + 0x1ac),6,1);
   FillWindowPixelBuffer(param_1 + 0x50 + (*(byte *)(param_1 + 0x11) + 2) * 0x10,0);
   ScheduleWindowCopyToVram(param_1 + 0x50 + (*(byte *)(param_1 + 0x11) + 2) * 0x10);

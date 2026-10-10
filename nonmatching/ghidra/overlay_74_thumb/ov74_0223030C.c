@@ -50,7 +50,7 @@ void ov74_0223030C(void)
 
 {
   int iVar1;
-  
+
   ov74_0222FFAC();
   iVar1 = ov74_02231560();
   if (iVar1 == 0) {

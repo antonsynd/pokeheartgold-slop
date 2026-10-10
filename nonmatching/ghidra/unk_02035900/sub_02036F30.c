@@ -53,7 +53,7 @@ void sub_02036F30(undefined1 *param_1)
   int iVar2;
   undefined1 *puStack_10;
   undefined4 uStack_c;
-  
+
   *param_1 = 0xb;
   param_1[1] = *(char *)(iRam021d4148 + 0x6b5) != '\0';
   uVar1 = sub_02033250();

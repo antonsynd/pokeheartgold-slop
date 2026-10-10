@@ -49,7 +49,7 @@ undefined4 ov48_0225AE60(int param_1,undefined4 param_2)
 
 {
   int iVar1;
-  
+
   if (*(short *)(*(int *)(param_1 + 0xc) + 8) < *(short *)(param_1 + 4)) {
     return 1;
   }

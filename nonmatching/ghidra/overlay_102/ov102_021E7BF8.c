@@ -51,7 +51,7 @@ undefined4 ov102_021E7BF8(int param_1)
 
 {
   undefined4 uVar1;
-  
+
   if (*(int *)(param_1 + 4) == 0) {
     uVar1 = ov102_021E7BD8();
   }

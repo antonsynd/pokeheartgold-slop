@@ -49,7 +49,7 @@ void ov99_021E8788(int param_1,undefined4 param_2,undefined4 param_3,undefined4 
 
 {
   undefined4 uVar1;
-  
+
   if (*(int *)(param_1 + 0xb0) == 0) {
     if (*(int *)(param_1 + *(char *)(param_1 + 0xac) * 4 + 0xbc) == 0) {
       uVar1 = 1;

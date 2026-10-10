@@ -49,7 +49,7 @@ undefined4 sub_02033528(undefined4 *param_1,undefined4 param_2)
 
 {
   int iVar1;
-  
+
   if (((uint)param_1 & 0x1f) != 0) {
     param_1 = (undefined4 *)((int)param_1 + (0x20 - ((uint)param_1 & 0x1f)));
   }

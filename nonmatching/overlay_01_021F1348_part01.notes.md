@@ -5,3 +5,8 @@
 - `include/overlay_01_021F1348.h` is not included. It declares `FieldEffectManager` as `u8 unk0[0x24]`, `ov01_021F1450` as taking a `FieldSystem *` (the asm passes the manager: it calls `ov01_021F1588(manager, id)` on the same register) and `ov01_021F146C` as returning `FieldSystem *` (it returns the `FieldEffectManager *` at FieldSystem+0x44). Any definition here would conflict with those prototypes, so the file defines `UnkStruct_Ov01_021F1348` (the manager: heap id at 0x00, renderer count at 0x04, anim manager count at 0x08, field system at 0x10, renderer array at 0x14, NARC at 0x18, anim manager at 0x1C, an unknown pointer at 0x20) and a renderer slot of 8 bytes (id, data; id 0x17 marks a free slot).
 - ov01_021F1468 takes the FieldSystem and returns its task manager (+0x10); the header agrees. A local view of FieldSystem with `taskman` at 0x10 and `fieldEffectManager` at 0x44 is used because `field_system.h` pulls in the header above.
 - The NARC opened by ov01_021F147C is `NARC_a_1_0_3` (0x67). `ov01_02208C5C` (defined in src/overlay_01_data_02208BFC.c) is a table of 12-byte entries (id, constructor, destructor) ended by id 0x17.
+
+## Status
+
+With the current tools, every function these notes describe as failing or inconclusive passes the check.
+`VERIFIED.tsv` gives the verdict of each, and the file that holds its verified C.

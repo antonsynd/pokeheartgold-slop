@@ -49,7 +49,7 @@ void ov41_02247D44(int param_1)
 
 {
   undefined4 uVar1;
-  
+
   uVar1 = ov41_022482B4(param_1 + 0x3f4);
   ov41_0224AC98(param_1 + 0x568,uVar1);
   return;

@@ -48,7 +48,7 @@ void ov96_0220B8D8(int param_1)
 
 {
   int iVar1;
-  
+
   iVar1 = 0;
   param_1 = param_1 + 0x14;
   do {

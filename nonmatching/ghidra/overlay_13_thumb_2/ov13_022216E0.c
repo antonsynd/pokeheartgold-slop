@@ -57,7 +57,7 @@ undefined4 ov13_022216E0(uint *param_1)
   int iVar6;
   uint uStack_20;
   undefined4 uStack_1c;
-  
+
   uStack_20 = *param_1;
   iVar4 = 0;
   uStack_1c = 0;

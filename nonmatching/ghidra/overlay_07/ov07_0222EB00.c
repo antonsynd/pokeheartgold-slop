@@ -52,7 +52,7 @@ void ov07_0222EB00(undefined4 param_1,int *param_2)
 
 {
   int iVar1;
-  
+
   iVar1 = *param_2;
   if (iVar1 == 0) {
     ov07_0222EAB4(param_2);

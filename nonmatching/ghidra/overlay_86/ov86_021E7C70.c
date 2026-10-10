@@ -49,7 +49,7 @@ void ov86_021E7C70(int param_1)
 {
   uint uVar1;
   int iVar2;
-  
+
   uVar1 = 5;
   iVar2 = param_1 + 0x60;
   do {

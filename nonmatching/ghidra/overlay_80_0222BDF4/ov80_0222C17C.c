@@ -49,7 +49,7 @@ undefined4 ov80_0222C17C(int *param_1)
 
 {
   int iVar1;
-  
+
   iVar1 = TextPrinterCheckActive(*(undefined1 *)(*param_1 + 0x50));
   if (iVar1 == 0) {
     TextFlags_SetCanTouchSpeedUpPrint(0);

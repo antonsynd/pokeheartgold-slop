@@ -48,7 +48,7 @@ undefined4 ov72_0223AC6C(int param_1)
 
 {
   int iVar1;
-  
+
   iVar1 = ov72_0223AE6C();
   if (iVar1 == 0) {
     *(undefined1 *)(param_1 + 0x1312) = *(undefined1 *)(param_1 + 0x1313);

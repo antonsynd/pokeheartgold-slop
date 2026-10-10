@@ -56,7 +56,7 @@ undefined4 ov08_02222840(int *param_1)
 {
   int iVar1;
   uint uVar2;
-  
+
   iVar1 = PaletteData_GetSelectedBuffersBitmask(param_1[2]);
   if (iVar1 != 0) {
     return 1;

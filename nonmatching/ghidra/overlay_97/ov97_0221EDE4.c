@@ -48,7 +48,7 @@ void ov97_0221EDE4(undefined1 *param_1,undefined1 *param_2,char *param_3,int par
 
 {
   undefined1 uVar1;
-  
+
   uVar1 = sub_0208B85C(param_4 + 0x29,*param_1,*param_2,*(ushort *)(param_2 + 6) & 7,(int)*param_3);
   *(undefined1 *)(param_4 + 0x28) = uVar1;
   uVar1 = sub_0208B85C(param_4 + 0x31,param_1[3],param_2[3],(*(ushort *)(param_2 + 6) & 0xfff) >> 9,

@@ -56,7 +56,7 @@ void ov07_02222864(undefined2 *param_1,undefined4 *param_2,undefined4 param_3,un
   undefined4 *puVar5;
   undefined2 *puVar6;
   int iVar7;
-  
+
   *param_1 = param_4;
   iVar7 = 0;
   param_1[1] = param_5;

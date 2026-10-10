@@ -48,7 +48,7 @@ undefined4 ov80_02236AF0(void)
 
 {
   int iVar1;
-  
+
   iVar1 = ov80_02236B30();
   if (iVar1 == 0) {
     return 0x81;

@@ -53,7 +53,7 @@ void ov89_0225A1D8(int param_1,int param_2,undefined4 param_3,undefined4 param_4
   int iVar1;
   int iVar2;
   int iVar3;
-  
+
   iVar1 = func_0x0200335c(*(undefined4 *)(param_1 + 0xc),2);
   iVar2 = func_0x02003364(*(undefined4 *)(param_1 + 0xc),2);
   func_0x020d47b8(iVar1 + 0x22,iVar2 + 0x22,0xc);

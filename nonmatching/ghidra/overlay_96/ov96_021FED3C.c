@@ -60,7 +60,7 @@ void ov96_021FED3C(int param_1,int *param_2,undefined4 param_3,int param_4,int p
   int iStack_20;
   int iStack_1c;
   int iStack_18;
-  
+
   iStack_18 = param_4;
   switch(*(undefined1 *)(param_1 + 0xa0)) {
   case 0:

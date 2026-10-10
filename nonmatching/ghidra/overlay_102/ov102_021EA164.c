@@ -52,7 +52,7 @@ void ov102_021EA164(undefined4 param_1,int *param_2,undefined4 param_3,undefined
 
 {
   int iVar1;
-  
+
   iVar1 = *param_2;
   ov102_021EAE40(*(undefined4 *)(iVar1 + 0x1e0),0,param_3,param_4,param_4);
   if (*(char *)(iVar1 + 500) == '\x01') {

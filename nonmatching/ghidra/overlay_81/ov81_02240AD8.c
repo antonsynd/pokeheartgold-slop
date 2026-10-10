@@ -60,7 +60,7 @@ void ov81_02240AD8(int param_1,undefined4 param_2,undefined4 param_3,undefined4 
   undefined4 uVar2;
   int iVar3;
   undefined4 uStack_20;
-  
+
   FillWindowPixelBuffer(param_2,param_7);
   uVar1 = NewMsgDataFromNarc(1,0x1b,0xed,100);
   uVar2 = NewString_ReadMsgData(uVar1,param_9);

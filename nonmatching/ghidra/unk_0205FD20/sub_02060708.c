@@ -55,7 +55,7 @@ void sub_02060708(undefined4 param_1,undefined4 param_2,undefined4 param_3)
   undefined4 uVar2;
   undefined4 uVar3;
   undefined4 uVar4;
-  
+
   iVar1 = MetatileBehavior_IsPuddle(param_3);
   if (iVar1 == 1) {
     uVar2 = MapObject_GetPreviousXCoord(param_1);

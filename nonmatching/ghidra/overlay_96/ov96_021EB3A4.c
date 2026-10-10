@@ -50,7 +50,7 @@ void ov96_021EB3A4(int param_1)
 {
   int iVar1;
   int iVar2;
-  
+
   iVar2 = 0;
   if (0 < *(int *)(param_1 + 0xc)) {
     iVar1 = 0;

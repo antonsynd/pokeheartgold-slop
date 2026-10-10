@@ -69,7 +69,7 @@ void ov49_02267908(undefined4 param_1,int param_2,uint param_3)
   undefined4 uStack_28;
   undefined4 uStack_24;
   undefined1 auStack_20 [12];
-  
+
   ov49_02259154(*(undefined4 *)(param_2 + 8),auStack_20);
   uStack_50 = 0;
   if (param_3 != 0) {

@@ -55,7 +55,7 @@ void ov28_0225D92C(undefined4 *param_1,undefined4 *param_2,undefined4 param_3,un
 
 {
   undefined4 uVar1;
-  
+
   uVar1 = func_0x0200a3c8(*param_2,param_3,param_4,1,param_9,2,8);
   *param_1 = uVar1;
   SpriteTransfer_CreateCharTransferTask_AllocAtEnd();

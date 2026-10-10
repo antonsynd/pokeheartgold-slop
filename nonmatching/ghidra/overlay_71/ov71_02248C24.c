@@ -57,7 +57,7 @@ void ov71_02248C24(undefined4 param_1,int param_2)
   undefined4 uStack_20;
   int iStack_1c;
   undefined4 uStack_18;
-  
+
   *(int *)(param_2 + 0x148) = *(int *)(param_2 + 0x148) + 1;
   if (0xc < *(int *)(param_2 + 0x148)) {
     *(undefined4 *)(param_2 + 0x148) = 0;

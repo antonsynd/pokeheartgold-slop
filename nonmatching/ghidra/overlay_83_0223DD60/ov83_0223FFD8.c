@@ -55,7 +55,7 @@ void ov83_0223FFD8(int param_1,undefined4 param_2,int param_3,undefined4 param_4
   undefined4 uVar2;
   undefined4 uVar3;
   uint uVar4;
-  
+
   uVar3 = param_4;
   uVar2 = GetMonData(param_6,param_7,0);
   BufferMoveName(*(undefined4 *)(param_1 + 0x24),param_3,uVar2);

@@ -51,7 +51,7 @@ void WeatherManager_Delete(undefined1 *param_1)
 {
   int iVar1;
   undefined1 *puVar2;
-  
+
   if (*(int *)(param_1 + 0x14) != 0) {
     SysTask_Destroy();
   }

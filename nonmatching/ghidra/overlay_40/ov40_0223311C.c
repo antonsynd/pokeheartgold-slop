@@ -52,7 +52,7 @@ void ov40_0223311C(int param_1,undefined4 param_2,undefined4 param_3,undefined4 
   undefined4 uVar1;
   undefined4 uVar2;
   undefined4 uVar3;
-  
+
   uVar3 = *(undefined4 *)(param_1 + 0x14);
   uVar1 = *(undefined4 *)(param_1 + 0x18);
   uVar2 = *(undefined4 *)(param_1 + 0x1c);

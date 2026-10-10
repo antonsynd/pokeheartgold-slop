@@ -48,7 +48,7 @@ int ov102_021E8798(ushort *param_1)
 
 {
   int iVar1;
-  
+
   iVar1 = ov102_021E878C();
   return (uint)*param_1 * 2 + iVar1;
 }

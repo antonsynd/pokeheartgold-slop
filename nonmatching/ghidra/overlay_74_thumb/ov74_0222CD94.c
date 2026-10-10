@@ -56,7 +56,7 @@ undefined4 ov74_0222CD94(undefined4 param_1)
 {
   int iVar1;
   int iVar2;
-  
+
   iVar1 = OverlayManager_GetData();
   iVar2 = *(int *)(iVar1 + 0x440);
   if (iVar2 == 0) {

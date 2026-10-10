@@ -60,7 +60,7 @@ undefined * sub_020660C0(undefined *param_1)
   int iVar5;
   undefined *puStack_1c;
   undefined4 uStack_18;
-  
+
   uStack_18 = 0;
   uVar1 = MapObject_GetType(param_1);
   uVar2 = MapObject_GetMapID(param_1);

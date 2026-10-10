@@ -58,7 +58,7 @@ void ov07_0221D740(int param_1)
   undefined4 uStack_14;
   undefined4 uStack_10;
   undefined4 uStack_c;
-  
+
   uStack_20 = 5;
   uStack_1c = 5;
   uStack_18 = 5;

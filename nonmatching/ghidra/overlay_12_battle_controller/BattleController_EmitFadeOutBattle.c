@@ -50,7 +50,7 @@ void BattleController_EmitFadeOutBattle
 {
   undefined4 uStack_c;
   undefined4 uStack_8;
-  
+
   uStack_c = 0x1c;
   uStack_8 = param_4;
   ov12_02262240(param_1,1,0,&uStack_c,4);

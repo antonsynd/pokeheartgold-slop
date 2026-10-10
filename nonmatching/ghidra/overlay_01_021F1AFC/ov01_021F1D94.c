@@ -52,7 +52,7 @@ undefined4 ov01_021F1D94(undefined4 param_1,undefined4 param_2,int param_3,undef
 {
   int iVar1;
   undefined4 uVar2;
-  
+
   uVar2 = param_4;
   iVar1 = PlayerAvatar_CheckForcedMovement(param_2);
   if (iVar1 == 1) {

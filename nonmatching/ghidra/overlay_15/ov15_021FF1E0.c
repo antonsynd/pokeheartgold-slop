@@ -58,7 +58,7 @@ void ov15_021FF1E0(int param_1,undefined4 param_2,undefined4 param_3,undefined4 
   undefined4 uVar1;
   int iVar2;
   int iVar3;
-  
+
   iVar3 = param_1 + 0x54;
   FillWindowPixelBuffer(iVar3,0xf);
   DrawFrameAndWindow1(iVar3,1,0x3f7,0xe);

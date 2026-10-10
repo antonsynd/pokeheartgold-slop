@@ -53,7 +53,7 @@ void ov12_0225AF74(undefined4 param_1,int param_2,undefined1 *param_3,undefined4
 {
   undefined1 uVar1;
   undefined4 uVar2;
-  
+
   func_0x020d4858(0,param_2 + 0x28,1,param_4,param_4);
   *(undefined4 *)(param_2 + 0x34) = param_1;
   *(undefined1 *)(param_2 + 0x4c) = *(undefined1 *)(param_2 + 0x194);

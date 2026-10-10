@@ -65,7 +65,7 @@ undefined4 ov40_022432AC(int param_1,undefined4 param_2,undefined4 param_3,undef
   undefined4 *puVar2;
   int iVar3;
   int iVar4;
-  
+
   if (*(int *)(param_1 + 0x1fc) == 0) {
     ov40_02243E80(param_1,0,0,param_4,param_4);
     iVar3 = 0;

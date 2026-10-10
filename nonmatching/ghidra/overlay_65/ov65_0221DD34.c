@@ -57,7 +57,7 @@ void ov65_0221DD34(int param_1,undefined4 param_2,int param_3,undefined4 param_4
   int iStack_20;
   int iStack_1c;
   undefined4 uStack_14;
-  
+
   uStack_14 = param_4;
   if (0xc < param_1) {
     GF_AssertFail();

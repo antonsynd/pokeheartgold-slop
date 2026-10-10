@@ -56,7 +56,7 @@ undefined4 ov14_021F13B0(int param_1)
 {
   int iVar1;
   undefined4 uVar2;
-  
+
   ov14_021F2A18(*(undefined4 *)(param_1 + 0x34),9,0);
   iVar1 = Party_GetCount(*(undefined4 *)(param_1 + 8));
   if (iVar1 != 6) {

@@ -48,7 +48,7 @@ void ov45_0222BAC4(int param_1,undefined4 param_2)
 
 {
   undefined4 uVar1;
-  
+
   uVar1 = SaveArray_CalcCRC16(param_2,param_1 + 0x20,0x94);
   *(undefined4 *)(param_1 + 0xb4) = uVar1;
   return;

@@ -52,7 +52,7 @@ void ov96_021EB21C(int param_1)
 
 {
   uint uVar1;
-  
+
   uVar1 = 0;
   if (0 < *(int *)(param_1 + 0xc)) {
     do {

@@ -49,7 +49,7 @@ undefined4 sub_02089608(int param_1)
 
 {
   uint uVar1;
-  
+
   if ((uRam021d1154 & 3) != 0) {
     uVar1 = 0;
     do {

@@ -52,7 +52,7 @@ undefined4 ov07_0223349C(int param_1)
 {
   uint uVar1;
   int iVar2;
-  
+
   if (*(int *)(param_1 + 8) == 0) {
     uVar1 = func_0x0200dd30(*(undefined4 *)(param_1 + 0x30));
     PaletteData_BeginPaletteFade

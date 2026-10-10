@@ -55,7 +55,7 @@ void AGB_GetBoxMonAbility(undefined4 param_1,undefined *param_2)
   int iVar3;
   ushort *puVar4;
   uint uVar5;
-  
+
   uVar1 = GetBoxMonData(param_2,5,(undefined *)0x0);
   uVar1 = uVar1 & 0xffff;
   uVar2 = AGB_GetBoxMonData(param_1,0x2e,0);

@@ -7,3 +7,8 @@ No earlier C existed for this file.
 - ov01_02206464 has a single 0x14-byte entry in the asm .rodata, but the functions index it with `type - 1` for larger types as well, so it is probably an array of several entries whose later members are not in this dump. Left as an unsized extern array.
 - FieldSystem offsets used: 0x24 is `camera`, 0x28 is `unk28`, a 0x34-byte FieldCameraState allocated here (defined locally as FieldCameraState).
 - The u8 on ov01_021EAE50's fifth parameter comes from `ldrb` on the stack argument; its numerator (r3) is used as a full word.
+
+## Status
+
+With the current tools, every function these notes describe as failing or inconclusive passes the check.
+`VERIFIED.tsv` gives the verdict of each, and the file that holds its verified C.

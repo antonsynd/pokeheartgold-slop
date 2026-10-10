@@ -49,7 +49,7 @@ void sub_0201726C(int param_1,undefined4 *param_2)
 {
   undefined4 uVar1;
   int iVar2;
-  
+
   iVar2 = *(int *)(param_1 + 0xc) + 4;
   *(int *)(param_1 + 0xc) = iVar2;
   uVar1 = sub_02017214(iVar2);

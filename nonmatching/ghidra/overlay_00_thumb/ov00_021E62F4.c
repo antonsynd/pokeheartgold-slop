@@ -55,7 +55,7 @@ void ov00_021E62F4(void)
   int iVar1;
   uint uVar2;
   uint uVar3;
-  
+
   uVar3 = 0;
   do {
     func_0x021f9988(uVar3 & 0xff,0);

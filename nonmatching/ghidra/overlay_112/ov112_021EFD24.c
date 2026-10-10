@@ -49,7 +49,7 @@ void ov112_021EFD24(short *param_1,short param_2)
 {
   short *psVar1;
   int iVar2;
-  
+
   iVar2 = 0;
   psVar1 = param_1;
   do {

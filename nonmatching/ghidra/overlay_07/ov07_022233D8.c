@@ -54,7 +54,7 @@ void ov07_022233D8(undefined4 param_1,int param_2,undefined4 param_3,undefined4 
 {
   char cVar1;
   short sVar2;
-  
+
   switch(*(char *)(param_2 + 0x1c)) {
   case '\0':
     func_0x020cf15c(0x4000050,4,0x39,*(undefined2 *)(param_2 + 0x16),*(undefined2 *)(param_2 + 0x18)

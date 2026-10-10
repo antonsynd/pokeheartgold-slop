@@ -49,7 +49,7 @@ undefined4 ov07_0222EF58(undefined4 param_1,int *param_2)
 {
   int iVar1;
   undefined4 uVar2;
-  
+
   uVar2 = 0;
   if (*param_2 == 0) {
     iVar1 = ManagedSprite_IsAnimated();

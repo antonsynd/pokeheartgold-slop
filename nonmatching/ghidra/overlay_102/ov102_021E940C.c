@@ -53,7 +53,7 @@ void ov102_021E940C(int param_1,uint param_2)
   undefined4 uVar2;
   int iVar3;
   int iVar4;
-  
+
   if (param_2 < 0x20) {
     piVar1 = (int *)Heap_Alloc(0x23,0x18);
     if (piVar1 != (int *)0x0) {

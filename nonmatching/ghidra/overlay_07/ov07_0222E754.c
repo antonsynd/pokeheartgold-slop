@@ -54,7 +54,7 @@ void ov07_0222E754(undefined4 *param_1)
   short sVar2;
   undefined4 uVar3;
   int iVar4;
-  
+
   sVar1 = func_0x020f2998(param_1[0x1d],100);
   sVar2 = func_0x020f2998(param_1[0x1e],100);
   uVar3 = func_0x020f2998(param_1[0x1c],100);

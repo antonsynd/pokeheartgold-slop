@@ -51,7 +51,7 @@ void ov18_021F37D4(int param_1,uint param_2,int param_3,int param_4)
   short sStack_1c;
   short sStack_1a;
   int iStack_18;
-  
+
   param_3 = param_3 * 4;
   iStack_18 = param_4;
   func_0x0200de44(*(undefined4 *)(param_1 + param_3 + 0x670),&sStack_1a,&sStack_1c);

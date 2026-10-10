@@ -53,7 +53,7 @@ void ov70_022380EC(void)
 
 {
   int iVar1;
-  
+
   func_0x0221be84();
   iVar1 = ov70_02238360(&ov70_0224621C,0x2246814,0,0x224693c,2);
   if (iVar1 != 0) {

@@ -52,7 +52,7 @@ void sub_020596F0(int param_1)
   undefined4 uVar1;
   int iVar2;
   undefined4 uVar3;
-  
+
   if ((*(byte *)(param_1 + 0x89) & 1) == 0) {
     uVar3 = *(undefined4 *)(param_1 + 0x4c);
     uVar1 = sub_02059B08();

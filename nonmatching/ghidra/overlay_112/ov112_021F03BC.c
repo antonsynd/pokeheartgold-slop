@@ -55,7 +55,7 @@ void ov112_021F03BC(undefined4 *param_1,undefined4 param_2,undefined4 param_3,un
 
 {
   undefined4 uVar1;
-  
+
   param_1[1] = param_2;
   ov112_021F05FC(param_2,*param_1);
   AddWindowParameterized(param_1[1],param_1 + 2,5,0xe,9,10,2,0xf,0x1d,param_4);

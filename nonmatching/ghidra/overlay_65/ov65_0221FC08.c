@@ -59,7 +59,7 @@ ov65_0221FC08(undefined4 param_1,undefined4 param_2,undefined4 param_3,undefined
   undefined1 uStack_f;
   undefined1 uStack_e;
   undefined4 uStack_c;
-  
+
   uStack_c = param_4;
   MI_CpuFill8((undefined *)&uStack_20,0,0x14);
   uStack_1c = 0;

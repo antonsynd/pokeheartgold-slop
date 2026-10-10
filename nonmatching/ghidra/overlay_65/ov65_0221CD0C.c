@@ -51,7 +51,7 @@ void ov65_0221CD0C(int param_1)
   int iVar1;
   int iVar2;
   int iVar3;
-  
+
   iVar3 = 0;
   iVar1 = Party_GetCount(*(undefined4 *)(param_1 + 0x2224));
   iVar2 = param_1;

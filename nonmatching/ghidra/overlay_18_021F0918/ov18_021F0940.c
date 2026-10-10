@@ -60,7 +60,7 @@ void ov18_021F0940(int param_1)
   uint uVar5;
   int iVar6;
   int iVar7;
-  
+
   uVar5 = 0;
   iVar6 = param_1 + 0xc;
   do {

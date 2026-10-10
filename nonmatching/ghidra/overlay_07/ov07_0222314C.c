@@ -53,7 +53,7 @@ void ov07_0222314C(undefined4 param_1,char *param_2)
 
 {
   undefined4 uVar1;
-  
+
   if (*param_2 == '\0') {
     func_0x0200dc0c(**(undefined4 **)(param_2 + 0x14));
     func_0x0200dc0c(**(undefined4 **)(param_2 + 0x18));

@@ -52,7 +52,7 @@ void ov83_02240238(int param_1,undefined4 param_2,int param_3,undefined4 param_4
 {
   int iVar1;
   uint uVar2;
-  
+
   iVar1 = func_0x02237d8c(*(undefined1 *)(param_1 + 9));
   if (iVar1 == 0) {
     iVar1 = 0x24;

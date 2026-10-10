@@ -51,7 +51,7 @@ void ov43_0222D47C(int param_1,undefined4 *param_2,undefined4 param_3,undefined4
 {
   int iStack_18;
   undefined4 uStack_14;
-  
+
   iStack_18 = 0;
   if ((uRam021d1150 & 0xc0) == 0) {
     *(undefined2 *)(param_1 + 0xe) = 0;

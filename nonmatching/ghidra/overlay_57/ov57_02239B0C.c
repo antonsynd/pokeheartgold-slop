@@ -49,7 +49,7 @@ void ov57_02239B0C(int param_1)
 
 {
   int iVar1;
-  
+
   iVar1 = 5;
   param_1 = param_1 + 0x13c;
   do {

@@ -51,7 +51,7 @@ undefined4 ov56_021E5FB4(int param_1)
 {
   int iVar1;
   undefined4 uVar2;
-  
+
   iVar1 = ov56_021E5D44();
   if (iVar1 != 0) {
     return 0;

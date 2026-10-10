@@ -53,7 +53,7 @@ undefined4 sub_02011744(int param_1)
   int iVar2;
   int iVar3;
   undefined4 uVar4;
-  
+
   iVar1 = *(int *)(param_1 + 0xc);
   uVar4 = 0;
   iVar3 = *(int *)(param_1 + 0x14);

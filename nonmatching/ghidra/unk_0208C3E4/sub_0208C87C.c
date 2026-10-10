@@ -51,7 +51,7 @@ void sub_0208C87C(int param_1,int param_2,int param_3,uint param_4,byte param_5)
 
 {
   undefined *puVar1;
-  
+
   puVar1 = NewString_ReadMsgData(*(undefined **)(param_1 + 0x7a0),param_2);
   BufferIntegerAsString(*(undefined **)(param_1 + 0x7a8),0,param_3,param_4,(uint)param_5,1);
   StringExpandPlaceholders(*(undefined **)(param_1 + 0x7a8),*(undefined **)(param_1 + 0x7ac),puVar1)

@@ -48,7 +48,7 @@ void ov18_021F0168(int param_1)
 
 {
   uint uVar1;
-  
+
   uVar1 = 0;
   do {
     sub_020195F4(*(undefined4 *)(param_1 + 8),uVar1 + 0x11,2,0x12,2);

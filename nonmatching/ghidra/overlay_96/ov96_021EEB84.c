@@ -54,7 +54,7 @@ void ov96_021EEB84(undefined4 param_1,undefined4 param_2,undefined4 param_3,uint
   undefined4 uVar1;
   undefined4 uVar2;
   int iVar3;
-  
+
   uVar1 = PokeathlonCourse_GetPlayerProfileFromData(param_2,param_3,param_3,param_4,param_4);
   uVar2 = PokeathlonCourse_GetHeapID(param_2);
   iVar3 = PlayerProfile_GetTrainerGender(uVar1);

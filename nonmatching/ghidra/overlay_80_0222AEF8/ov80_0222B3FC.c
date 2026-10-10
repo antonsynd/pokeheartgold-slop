@@ -48,7 +48,7 @@ undefined4 ov80_0222B3FC(int param_1,undefined2 param_2,undefined4 param_3,undef
 
 {
   int iVar1;
-  
+
   *(undefined2 *)(param_1 + 0x504) = param_2;
   iVar1 = sub_02037030(0x1b,param_1 + 0x504,0x3c,param_1,param_4);
   if (iVar1 == 1) {

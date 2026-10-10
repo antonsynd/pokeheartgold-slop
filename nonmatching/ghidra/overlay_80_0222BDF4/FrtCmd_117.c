@@ -52,7 +52,7 @@ undefined4 FrtCmd_117(undefined4 *param_1)
   undefined2 uVar1;
   int iVar2;
   undefined2 *puVar3;
-  
+
   iVar2 = Frontier_GetLaunchArgs(*(undefined4 *)*param_1);
   puVar3 = (undefined2 *)FrontierScript_ReadVarPtr(param_1);
   uVar1 = Save_CheckExtraChunksExist(*(undefined4 *)(iVar2 + 8));

@@ -53,7 +53,7 @@ void ov75_02249884(int param_1,int *param_2)
   char *pcVar4;
   int iStack_20;
   int iStack_1c;
-  
+
   iVar3 = 0;
   iStack_1c = 0;
   do {

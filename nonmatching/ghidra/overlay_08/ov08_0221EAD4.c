@@ -63,7 +63,7 @@ void ov08_0221EAD4(int *param_1,int param_2)
   uint uVar6;
   int iVar7;
   uint uVar8;
-  
+
   bVar1 = *(byte *)((int)param_1 + 0x2075);
   puVar3 = NewString_ReadMsgData((undefined *)param_1[0x7ea],0x1c);
   AddTextPrinterParameterizedWithColor

@@ -59,7 +59,7 @@ void ov15_021FEDEC(int param_1,uint param_2)
   int iVar3;
   uint uVar4;
   int iVar5;
-  
+
   if (999 < *(short *)(param_1 + 0x680)) {
     GF_AssertFail();
   }

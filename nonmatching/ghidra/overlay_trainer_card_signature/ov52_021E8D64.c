@@ -53,7 +53,7 @@ void ov52_021E8D64(undefined4 param_1,undefined4 param_2)
   undefined4 uStack_c;
   undefined1 uStack_8;
   undefined1 uStack_7;
-  
+
   uStack_14 = 0;
   uStack_10 = 0xb4;
   uStack_c = 8;

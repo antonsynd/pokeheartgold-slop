@@ -49,7 +49,7 @@ uint ov112_021ED330(int param_1,uint param_2)
 {
   int iVar1;
   uint uVar2;
-  
+
   iVar1 = ov112_021E7668();
   if (iVar1 == 0) {
     *(undefined2 *)(param_1 + 0x1d760) = 0;

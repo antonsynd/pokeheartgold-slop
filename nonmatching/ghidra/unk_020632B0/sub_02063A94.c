@@ -52,7 +52,7 @@ undefined4 sub_02063A94(undefined4 param_1)
 {
   int iVar1;
   int iVar2;
-  
+
   iVar1 = MapObject_GetXCoord();
   iVar2 = MapObject_GetPreviousXCoord(param_1);
   if (iVar1 != iVar2) {

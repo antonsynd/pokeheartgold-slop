@@ -52,7 +52,7 @@ ov59_02237FA4(undefined4 *param_1,undefined4 param_2,undefined4 param_3,undefine
 {
   char cVar1;
   int iVar2;
-  
+
   if (*(short *)(param_1 + 0xf) == 0) {
     BeginNormalPaletteFade(0,1,1,0,6,1,*param_1,param_4);
     *(short *)(param_1 + 0xf) = *(short *)(param_1 + 0xf) + 1;

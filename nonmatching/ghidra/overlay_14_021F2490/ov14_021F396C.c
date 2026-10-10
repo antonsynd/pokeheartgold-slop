@@ -51,7 +51,7 @@ void ov14_021F396C(undefined4 param_1,undefined4 param_2,undefined4 param_3,unde
   short sStack_10;
   short sStack_e;
   undefined4 uStack_c;
-  
+
   uStack_c = param_4;
   ov14_021F2F88(param_2,&sStack_e,&sStack_10,param_3);
   ov14_021F395C(param_1,(sStack_e + 8) * 0x10000 >> 0x10,(sStack_10 + 8) * 0x10000 >> 0x10);

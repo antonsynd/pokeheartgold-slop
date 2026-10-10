@@ -51,7 +51,7 @@ void ov08_0221D0F4(int *param_1)
 
 {
   int iVar1;
-  
+
   iVar1 = NewMsgDataFromNarc(0,0x1b,6,*(undefined4 *)(*param_1 + 0xc));
   param_1[0x7ea] = iVar1;
   iVar1 = MessagePrinter_New(0xf,0xe,0,*(undefined4 *)(*param_1 + 0xc));

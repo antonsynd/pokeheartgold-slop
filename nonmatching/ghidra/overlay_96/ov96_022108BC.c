@@ -50,7 +50,7 @@ void ov96_022108BC(undefined4 *param_1,int param_2,undefined4 param_3)
 {
   uint uVar1;
   int iVar2;
-  
+
   MI_CpuFill8((undefined *)param_1,0,0x3c);
   iVar2 = 0;
   uVar1 = param_2 * 3;

@@ -52,7 +52,7 @@ void sub_020572AC(int param_1)
 {
   int iVar1;
   undefined4 uVar2;
-  
+
   uVar2 = 2;
   if ((uRam021d1150 & 2) == 0) {
     if (param_1 != 0) {

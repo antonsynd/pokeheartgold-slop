@@ -50,7 +50,7 @@ void ov81_02243314(undefined *param_1,int param_2,undefined4 param_3)
 
 {
   int iVar1;
-  
+
   if (param_2 == 1) {
     GridInputHandler_SetAllEnabled(param_1);
     GridInputHandler_ClearEnabledFlag(param_1,3);

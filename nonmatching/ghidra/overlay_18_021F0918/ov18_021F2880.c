@@ -70,7 +70,7 @@ void ov18_021F2880(int param_1)
 {
   undefined4 uVar1;
   undefined4 uVar2;
-  
+
   ov18_021F2964();
   ov18_021F1424(param_1,0x18);
   ov18_021F1620(param_1,0x18);

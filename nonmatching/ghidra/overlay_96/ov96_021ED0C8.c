@@ -57,7 +57,7 @@ void ov96_021ED0C8(uint *param_1)
   uint *puVar3;
   uint *puVar4;
   int iVar5;
-  
+
   if (param_1 == (uint *)0x0) {
     GF_AssertFail();
   }

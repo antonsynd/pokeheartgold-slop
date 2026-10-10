@@ -55,7 +55,7 @@ undefined4 ov07_02221D4C(undefined4 param_1,int param_2)
   undefined2 uStack_1c;
   undefined2 uStack_1a;
   undefined1 auStack_18 [16];
-  
+
   uStack_20 = 0;
   uStack_1e = 0;
   uStack_1c = 0;

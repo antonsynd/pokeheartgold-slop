@@ -50,7 +50,7 @@ void ov90_0225B690(undefined4 *param_1)
 {
   int iVar1;
   undefined4 *puVar2;
-  
+
   iVar1 = 0;
   puVar2 = param_1;
   do {

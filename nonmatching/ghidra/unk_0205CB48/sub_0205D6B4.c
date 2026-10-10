@@ -53,7 +53,7 @@ bool sub_0205D6B4(undefined4 param_1)
   int iVar1;
   int iVar2;
   bool bVar3;
-  
+
   iVar1 = PlayerAvatar_GetUnk24();
   iVar1 = iVar1 + -1;
   bVar3 = -1 < iVar1;

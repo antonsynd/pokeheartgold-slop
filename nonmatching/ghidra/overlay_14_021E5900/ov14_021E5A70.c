@@ -105,7 +105,7 @@ void ov14_021E5A70(int param_1)
   undefined4 uStack_18;
   undefined4 uStack_14;
   undefined4 uStack_10;
-  
+
   puVar1 = BgConfig_Alloc(10);
   *(undefined **)(*(int *)(param_1 + 0x34) + 0x14) = puVar1;
   uStack_1c = 1;

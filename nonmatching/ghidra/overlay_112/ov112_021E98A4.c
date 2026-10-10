@@ -51,7 +51,7 @@ void ov112_021E98A4(int param_1,undefined4 param_2,undefined4 param_3,undefined4
 
 {
   undefined4 uVar1;
-  
+
   uVar1 = NARC_New(0xf9,0x9a);
   ToggleBgLayer(5,0);
   GfGfxLoader_LoadScrnDataFromOpenNarc

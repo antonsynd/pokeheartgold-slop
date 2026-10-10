@@ -50,7 +50,7 @@ undefined4 ov96_021E6DE8(undefined *param_1)
 
 {
   int iVar1;
-  
+
   if (*(int *)(param_1 + 0x3b0) == 0) {
     PokeathlonCourse_SetStateField07(param_1,0x12);
   }

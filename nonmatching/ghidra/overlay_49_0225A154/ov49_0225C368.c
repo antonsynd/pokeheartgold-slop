@@ -52,7 +52,7 @@ void ov49_0225C368(int param_1)
   ushort *puVar4;
   uint uVar5;
   int iVar6;
-  
+
   puVar4 = *(ushort **)(param_1 + 0xc);
   uVar3 = *(uint *)(param_1 + 8) >> 1;
   iVar2 = 0;

@@ -49,7 +49,7 @@ undefined4 ov07_022325BC(int param_1,undefined4 param_2,undefined4 param_3,undef
   int *piVar1;
   uint uVar2;
   int aiStack_18 [4];
-  
+
   aiStack_18[3] = param_4;
   piVar1 = aiStack_18;
   aiStack_18[0] = 3;

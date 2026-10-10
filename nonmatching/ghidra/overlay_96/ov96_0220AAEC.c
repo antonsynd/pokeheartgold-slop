@@ -70,7 +70,7 @@ uint ov96_0220AAEC(undefined4 *param_1,undefined4 param_2,int param_3,int param_
   short sStack_1e;
   short asStack_1c [2];
   short asStack_18 [2];
-  
+
   uStack_30 = 0;
   if (param_1 == (undefined4 *)0x0) {
     GF_AssertFail();

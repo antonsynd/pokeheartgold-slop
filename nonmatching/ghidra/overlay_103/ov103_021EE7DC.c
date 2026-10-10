@@ -52,7 +52,7 @@ void ov103_021EE7DC(undefined4 *param_1)
   undefined1 uVar1;
   undefined4 uVar2;
   int iVar3;
-  
+
   iVar3 = param_1[3];
   FillWindowPixelBuffer(iVar3 + 0x1c8,0xf);
   uVar2 = Options_GetTextFrameDelay(*param_1);

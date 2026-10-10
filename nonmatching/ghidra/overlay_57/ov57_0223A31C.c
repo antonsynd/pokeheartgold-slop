@@ -84,7 +84,7 @@ undefined4 ov57_0223A31C(int *param_1,undefined4 param_2,undefined4 param_3,unde
   short asStack_20 [2];
   short asStack_1c [2];
   undefined4 uStack_18;
-  
+
   uStack_18 = param_4;
   switch(param_1[0xff]) {
   case 0:

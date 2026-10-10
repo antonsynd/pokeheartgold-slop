@@ -49,7 +49,7 @@ void ov13_022246E4(ushort *param_1,undefined4 param_2,undefined4 param_3,undefin
 {
   ushort *puStack_18;
   undefined4 uStack_14;
-  
+
   puStack_18 = param_1 + 4;
   uStack_14 = param_4;
   ov13_02224694(&puStack_18,(int)puStack_18 + ((int)(uint)*param_1 >> 8 | (*param_1 & 0xff) << 8),

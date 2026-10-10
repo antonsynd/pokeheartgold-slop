@@ -60,7 +60,7 @@ undefined4 ov96_02218598(int param_1,int param_2)
   undefined1 auStack_20 [4];
   undefined4 uStack_1c;
   undefined1 auStack_18 [12];
-  
+
   iVar2 = *(int *)(param_1 + 0x50) - *(int *)(param_2 + 0x50);
   if (iVar2 < 0) {
     iVar2 = -iVar2;

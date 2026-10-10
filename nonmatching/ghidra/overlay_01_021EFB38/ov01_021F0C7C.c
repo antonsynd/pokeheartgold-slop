@@ -49,7 +49,7 @@ void ov01_021F0C7C(undefined4 param_1,int param_2)
 
 {
   int iVar1;
-  
+
   if (*(int *)(param_2 + 0x14) == 0) {
     iVar1 = ov01_021EFE44(param_2);
     if (iVar1 == 1) {

@@ -52,7 +52,7 @@ undefined4 sub_02054874(int param_1,undefined4 param_2,undefined4 param_3,undefi
   undefined4 uVar2;
   undefined1 auStack_10 [4];
   undefined4 uStack_c;
-  
+
   uVar2 = *(undefined4 *)(param_1 + 0x2c);
   uStack_c = param_4;
   iVar1 = func_0x021f654c(uVar2,param_2,param_3,auStack_10);

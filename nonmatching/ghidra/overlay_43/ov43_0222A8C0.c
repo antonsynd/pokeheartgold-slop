@@ -54,7 +54,7 @@ void ov43_0222A8C0(undefined4 *param_1,int param_2,undefined4 param_3,undefined4
 
 {
   undefined4 uVar1;
-  
+
   LoadFontPal1(0,0x160);
   LoadFontPal1(4,0x1c0,param_3);
   LoadUserFrameGfx2(*param_1,1,0x46,0xc,*(undefined1 *)(param_2 + 0xd),param_3);

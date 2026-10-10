@@ -84,7 +84,7 @@ undefined4 ov85_021E88AC(undefined4 param_1,int *param_2)
   int iVar2;
   int iVar3;
   undefined4 uVar4;
-  
+
   iVar1 = OverlayManager_GetArgs();
   if (*param_2 == 0) {
     Main_SetVBlankIntrCB(0,0);

@@ -55,7 +55,7 @@ uint sub_020214B0(int param_1,int param_2)
   int iVar2;
   uint extraout_r1;
   uint uVar3;
-  
+
   uVar3 = 0;
   if (uRam021d21a0 != 0) {
     do {

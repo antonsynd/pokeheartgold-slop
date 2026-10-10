@@ -54,7 +54,7 @@ void ov41_022493BC(int param_1,undefined4 param_2,int param_3,undefined4 param_4
   undefined2 auStack_20 [2];
   undefined2 auStack_1c [2];
   undefined4 uStack_18;
-  
+
   uStack_18 = param_4;
   ov41_02249B44(param_2,auStack_1c,auStack_20);
   *(undefined4 *)(param_1 + 0x10) = param_2;

@@ -73,7 +73,7 @@ void ov89_0225C724(undefined4 param_1,undefined4 param_2,int param_3,undefined4 
   undefined4 uVar6;
   undefined4 uVar7;
   undefined4 uVar8;
-  
+
   uVar1 = func_0x0222ec7c(param_5);
   if (uVar1 != 0xffffffff) {
     iVar2 = func_0x0222ec68(param_5);

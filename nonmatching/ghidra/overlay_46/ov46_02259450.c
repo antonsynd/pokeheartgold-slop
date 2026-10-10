@@ -49,7 +49,7 @@ void ov46_02259450(int param_1)
 
 {
   undefined4 uVar1;
-  
+
   if (*(int *)(param_1 + 0x20) == 1) {
     if (*(int *)(param_1 + 0x24) != 0) {
       GF_AssertFail();

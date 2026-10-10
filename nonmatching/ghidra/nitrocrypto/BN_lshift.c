@@ -57,7 +57,7 @@ undefined4 BN_lshift(int *param_1,int *param_2,int param_3)
   int iVar6;
   uint uVar7;
   uint uVar8;
-  
+
   iVar1 = (int)(param_3 + ((uint)(param_3 >> 4) >> 0x1b)) >> 5;
   piVar2 = param_1;
   if (param_1[2] < param_2[1] + iVar1 + 1) {

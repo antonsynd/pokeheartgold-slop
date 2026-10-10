@@ -48,7 +48,7 @@ void ov13_02222874(int param_1,int param_2,int param_3,undefined4 param_4)
 
 {
   int iVar1;
-  
+
   iVar1 = param_2 / 2;
   ov13_02222968(param_3,param_1 + iVar1,iVar1,param_4,param_4);
   ov13_02222968(param_3 + iVar1,param_1,iVar1);

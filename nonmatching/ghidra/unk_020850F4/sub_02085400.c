@@ -48,7 +48,7 @@ void sub_02085400(void)
 
 {
   int iVar1;
-  
+
   iVar1 = sub_020853B4();
   *(undefined4 *)(iVar1 + 0x24) = 0;
   *(undefined4 *)(iVar1 + 0x28) = 0;

@@ -48,7 +48,7 @@ void ov40_0222FDC4(int param_1)
 
 {
   int iVar1;
-  
+
   iVar1 = 0;
   do {
     if (*(int *)(param_1 + 0x87c) != 0) {

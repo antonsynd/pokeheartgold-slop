@@ -57,7 +57,7 @@ ov07_0222D590(undefined4 *param_1,undefined4 param_2,undefined4 param_3,undefine
   undefined1 auStack_14 [4];
   undefined4 uStack_10;
   undefined4 uStack_c;
-  
+
   uStack_c = param_4;
   iVar1 = ov07_02222558(param_1 + 1);
   if (iVar1 == 1) {

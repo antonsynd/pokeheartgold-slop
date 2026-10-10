@@ -82,7 +82,7 @@ void ov51_021E78F8(undefined4 *param_1)
   int iVar10;
   undefined1 auStack_64 [8];
   undefined4 auStack_5c [18];
-  
+
   uRam04000000 = uRam04000000 & 0xffcfffef | 0x200010;
   uRam04001000 = uRam04001000 & 0xffcfffef | 0x10;
   ov51_021E7D68();

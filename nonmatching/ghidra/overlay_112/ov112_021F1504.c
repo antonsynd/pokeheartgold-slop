@@ -54,7 +54,7 @@ void ov112_021F1504(int param_1,uint param_2)
   ushort uVar1;
   undefined *puVar2;
   undefined auStack_38 [40];
-  
+
   if (0x218 < param_2) {
     param_2 = 0x218;
   }

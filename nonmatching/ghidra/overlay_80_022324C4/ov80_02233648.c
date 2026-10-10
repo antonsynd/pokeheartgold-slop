@@ -50,7 +50,7 @@ undefined1 ov80_02233648(int param_1)
 {
   undefined1 uVar1;
   uint uVar2;
-  
+
   uVar2 = (uint)*(ushort *)(param_1 + 0x16);
   if (*(byte *)(param_1 + 0x10) < 2) {
     if (uVar2 < 8) {

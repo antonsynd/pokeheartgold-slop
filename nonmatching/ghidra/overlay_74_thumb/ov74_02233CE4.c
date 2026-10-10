@@ -65,7 +65,7 @@ undefined4 ov74_02233CE4(void)
   uint uVar6;
   __asm__ volatile("movs %0, r3" : "=l"(in_r3) : : "cc");
 
-  
+
   iVar2 = ov74_02233C08(puRam0223d344,0x223d33c,0x223d34c,in_r3,in_r3);
   puVar1 = puRam0223d344;
   if (iVar2 != 1) {

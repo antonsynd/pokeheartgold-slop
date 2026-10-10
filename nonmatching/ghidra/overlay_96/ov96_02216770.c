@@ -62,7 +62,7 @@ void ov96_02216770(undefined4 *param_1,short *param_2,undefined4 param_3,undefin
   short sStack_18;
   short sStack_16;
   undefined4 uStack_14;
-  
+
   uVar3 = param_1[0x39];
   uVar1 = (uVar3 & 0xfff) >> 8;
   uStack_14 = param_4;

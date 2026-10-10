@@ -54,7 +54,7 @@ undefined4 ov08_02222A78(int *param_1)
   uint uVar2;
   int iVar3;
   int iVar4;
-  
+
   iVar4 = *param_1 + (uint)*(byte *)((int)param_1 + 0x114d);
   *(undefined1 *)(iVar4 + 0x27) = 0;
   iVar4 = ((int)*(char *)(iVar4 + 0x2c) + (int)*(char *)((int)param_1 + 0x114e)) * 0x1000000;

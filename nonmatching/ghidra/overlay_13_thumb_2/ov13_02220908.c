@@ -59,7 +59,7 @@ undefined4 ov13_02220908(int param_1)
   undefined4 uVar1;
   uint uVar2;
   int iVar3;
-  
+
   if ((((((*(short *)(param_1 + 0x106) == 0) || (*(short *)(param_1 + 0x106) < -1)) ||
         (*(short *)(param_1 + 0x108) < -1)) ||
        ((*(short *)(param_1 + 0x10a) == 0 || (*(short *)(param_1 + 0x10a) < -1)))) ||

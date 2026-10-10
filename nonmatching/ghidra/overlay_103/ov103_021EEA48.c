@@ -54,7 +54,7 @@ void ov103_021EEA48(int param_1)
   ushort uVar1;
   undefined4 uVar2;
   undefined1 uVar3;
-  
+
   uVar1 = *(ushort *)(*(int *)(param_1 + 0xc) + 0x2e2);
   if (uVar1 < *(ushort *)(param_1 + 0x1c)) {
     *(ushort *)(param_1 + 0x1c) = uVar1;

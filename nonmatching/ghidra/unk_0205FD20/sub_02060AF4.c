@@ -61,7 +61,7 @@ byte sub_02060AF4(undefined4 param_1,undefined4 param_2,undefined4 param_3,undef
   bool bVar4;
   char acStack_1c [4];
   undefined4 uStack_18;
-  
+
   uStack_18 = param_4;
   iVar1 = sub_02060D94(param_1,param_3,param_4,param_5);
   bVar4 = iVar1 == 1;

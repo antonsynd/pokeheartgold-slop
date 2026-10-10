@@ -48,7 +48,7 @@ void ov96_02214490(int param_1)
 
 {
   uint uVar1;
-  
+
   uVar1 = 0;
   do {
     if (*(char *)(param_1 + uVar1 * 0x10 + 0x7d4) == '\0') {

@@ -50,7 +50,7 @@ undefined4 ov00_021E6A70(int param_1,undefined4 param_2)
 {
   int iVar1;
   int iVar2;
-  
+
   iVar1 = func_0x020f2998(param_1,100);
   iVar2 = func_0x020f2998(param_1,1000);
   if (param_1 == 0x4e85) {

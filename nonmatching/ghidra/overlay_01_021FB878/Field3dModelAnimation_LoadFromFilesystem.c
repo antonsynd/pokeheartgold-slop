@@ -51,7 +51,7 @@ void Field3dModelAnimation_LoadFromFilesystem
 
 {
   undefined4 uVar1;
-  
+
   uVar1 = func_0x02007a44(param_3,param_4,0,param_5,0,param_4);
   ov01_021FC030(param_1,param_2,uVar1,param_6);
   *(undefined4 *)(param_1 + 0x10) = 0;

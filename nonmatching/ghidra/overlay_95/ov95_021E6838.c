@@ -51,7 +51,7 @@ undefined4 ov95_021E6838(int param_1)
 
 {
   int iVar1;
-  
+
   if (*(int *)(param_1 + 0x68) == 0) {
     iVar1 = ov95_021E5EDC(*(undefined4 *)(param_1 + 0x44));
     if (iVar1 != 1) {

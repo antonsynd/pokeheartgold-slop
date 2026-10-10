@@ -59,7 +59,7 @@ void ov81_0224093C(undefined4 param_1,undefined4 param_2,undefined4 param_3,unde
   int iVar1;
   undefined4 uVar2;
   undefined4 uVar3;
-  
+
   iVar1 = sub_0203769C();
   uVar2 = sub_02034818(1 - iVar1);
   uVar3 = String_New(8,100);

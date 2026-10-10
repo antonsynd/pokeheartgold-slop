@@ -63,7 +63,7 @@ void ov70_02242D44(int param_1,int param_2,char param_3)
   undefined4 uVar3;
   int iVar4;
   int iVar5;
-  
+
   if (param_2 == 6) {
     uVar3 = 0x21;
   }

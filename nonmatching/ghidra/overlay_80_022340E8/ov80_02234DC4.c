@@ -62,7 +62,7 @@ void ov80_02234DC4(undefined4 param_1,int param_2)
   undefined4 uVar3;
   undefined4 uVar4;
   int iStack_18;
-  
+
   if (param_2 == 0) {
     uVar4 = 0xa2;
     uVar3 = 0x1e0;

@@ -51,7 +51,7 @@ void ov43_0222B5A8(int param_1,int param_2,undefined4 param_3,undefined4 param_4
 {
   undefined4 uVar1;
   undefined4 uVar2;
-  
+
   uVar2 = param_4;
   Save_PlayerData_GetOptionsAddr(*(undefined4 *)(param_2 + 4));
   uVar1 = Options_GetTextFrameDelay();

@@ -53,7 +53,7 @@ void ov96_021EB144(int param_1,int param_2)
   undefined4 uVar1;
   uint uVar2;
   undefined4 uVar3;
-  
+
   uVar2 = 0;
   if (0 < *(int *)(param_1 + 4)) {
     if (param_2 == 0) {

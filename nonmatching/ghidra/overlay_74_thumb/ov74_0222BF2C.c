@@ -49,7 +49,7 @@ undefined4 ov74_0222BF2C(int param_1,int param_2,int param_3)
 {
   int iVar1;
   undefined4 uVar2;
-  
+
   uVar2 = 1;
   if (param_2 == 0) {
     iVar1 = (int)*(char *)(param_1 + 8);

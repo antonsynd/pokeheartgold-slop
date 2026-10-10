@@ -60,7 +60,7 @@ void ov08_0222061C(int *param_1,undefined4 param_2,undefined4 param_3,undefined4
   undefined4 uStack_18;
   undefined4 uStack_14;
   undefined4 uStack_10;
-  
+
   uStack_28 = 0x12;
   uStack_24 = 6;
   uStack_20 = 6;

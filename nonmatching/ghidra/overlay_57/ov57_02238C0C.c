@@ -52,7 +52,7 @@ void ov57_02238C0C(void)
 
 {
   int iVar1;
-  
+
   func_0x02026e48();
   iVar1 = sub_0201543C();
   if (0 < iVar1) {

@@ -57,7 +57,7 @@ void sub_0200E948(undefined4 *param_1,undefined2 param_2,undefined1 param_3)
   undefined4 uVar3;
   undefined4 uVar4;
   undefined4 uVar5;
-  
+
   uVar1 = GetWindowBgId();
   uVar2 = GetWindowX(param_1);
   uVar3 = GetWindowY(param_1);

@@ -60,7 +60,7 @@ void ov49_02265044(undefined4 *param_1,undefined4 param_2,uint param_3,uint para
   int iVar3;
   uint extraout_r1;
   uint uVar4;
-  
+
   ov49_0225A120(param_2,param_4);
   uVar4 = 0;
   param_1[8] = param_4;

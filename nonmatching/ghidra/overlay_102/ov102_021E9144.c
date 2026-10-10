@@ -55,7 +55,7 @@ void ov102_021E9144(undefined4 *param_1)
 {
   int iVar1;
   undefined4 *puVar2;
-  
+
   if (param_1 != (undefined4 *)0x0) {
     Main_SetVBlankIntrCB(0,0);
     FontID_Release(4);

@@ -57,7 +57,7 @@ void ov106_021E5D70(int *param_1)
 
 {
   int iVar1;
-  
+
   iVar1 = Camera_New(0x99);
   param_1[6] = iVar1;
   func_0x0201f590(0x99);

@@ -51,7 +51,7 @@ void ov68_021E5EBC(int param_1)
 
 {
   undefined4 uVar1;
-  
+
   uVar1 = NewMsgDataFromNarc(0,0x1b,0x2eb,0x42);
   *(undefined4 *)(param_1 + 0xf8) = uVar1;
   uVar1 = MessageFormat_New(0x42);

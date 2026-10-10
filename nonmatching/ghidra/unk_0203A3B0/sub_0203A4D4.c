@@ -57,7 +57,7 @@ void sub_0203A4D4(int param_1,undefined4 param_2,undefined4 param_3,undefined4 p
   int iStack_18;
   int iStack_14;
   undefined4 uStack_10;
-  
+
   uStack_10 = param_4;
   iStack_14 = Heap_AllocAtEnd(param_4,600);
   if (iStack_14 != 0) {

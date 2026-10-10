@@ -55,7 +55,7 @@ void ov39_02229224(undefined4 *param_1,undefined4 *param_2)
   undefined4 *puVar5;
   undefined4 *puVar6;
   undefined1 *puVar7;
-  
+
   uVar3 = sub_0202B994();
   MI_CpuFill8((undefined *)param_2,0,uVar3);
   iVar4 = 0;

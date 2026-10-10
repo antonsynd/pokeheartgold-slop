@@ -57,7 +57,7 @@ MoveRelearner_Init(undefined4 param_1,undefined4 param_2,undefined4 param_3,unde
 {
   int *piVar1;
   int iVar2;
-  
+
   Heap_Create(3,0x42,0x24000,param_4,param_4);
   piVar1 = (int *)OverlayManager_CreateAndGetData(param_1,0x1dc,0x42);
   func_0x020e5b44(piVar1,0,0x1dc);

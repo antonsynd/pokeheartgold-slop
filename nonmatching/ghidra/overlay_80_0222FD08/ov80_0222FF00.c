@@ -77,7 +77,7 @@ void ov80_0222FF00(int param_1)
   undefined2 auStack_2cc [6];
   ushort auStack_2c0 [6];
   undefined4 auStack_2b4 [168];
-  
+
   uVar3 = ov80_022372B4();
   ov80_02236BE4(*(undefined1 *)(param_1 + 4),uVar3,param_1 + 0x18,0xe);
   uVar3 = ov80_022372B4(param_1);

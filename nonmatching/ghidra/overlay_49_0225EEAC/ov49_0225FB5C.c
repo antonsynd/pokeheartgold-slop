@@ -81,7 +81,7 @@ undefined4 ov49_0225FB5C(undefined4 param_1,undefined4 param_2,undefined4 param_
   undefined4 uVar6;
   int iVar7;
   int iVar8;
-  
+
   uVar1 = ov49_0225A010(param_2);
   uVar2 = ov49_02259FF0(param_2);
   uVar3 = ov49_02258DAC();

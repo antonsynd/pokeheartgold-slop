@@ -52,7 +52,7 @@ undefined4 ov96_0221A05C(undefined4 param_1,undefined4 param_2,int param_3,undef
   int iVar1;
   undefined1 auStack_18 [12];
   undefined4 uStack_c;
-  
+
   uStack_c = param_4;
   func_0x020ccdac(param_2,param_1,auStack_18);
   func_0x020ccfe0(auStack_18,auStack_18);

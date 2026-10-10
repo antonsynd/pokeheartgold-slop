@@ -54,7 +54,7 @@ undefined4 sub_02065C90(undefined4 param_1,undefined1 *param_2)
   undefined4 uVar1;
   undefined4 uVar2;
   int iVar3;
-  
+
   MapObject_GetFieldSystem();
   uVar1 = FieldSystem_GetPlayerAvatar();
   uVar2 = PlayerAvatar_GetMapObject();

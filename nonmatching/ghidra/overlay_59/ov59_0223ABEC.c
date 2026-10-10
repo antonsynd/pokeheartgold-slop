@@ -49,7 +49,7 @@ undefined4 ov59_0223ABEC(int param_1)
 
 {
   int iVar1;
-  
+
   if (*(short *)(param_1 + 0x40) == 0) {
     iVar1 = ov59_0223AF9C();
     if (iVar1 != 0) {

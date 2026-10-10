@@ -55,7 +55,7 @@ void ov43_0222BAB8(int param_1,undefined4 param_2,undefined4 param_3)
 {
   int iVar1;
   int iVar2;
-  
+
   Sprite_Delete(*(undefined4 *)(param_1 + 0xf8));
   RemoveWindow(param_1 + 200);
   String_Delete(*(undefined4 *)(param_1 + 0xd8));

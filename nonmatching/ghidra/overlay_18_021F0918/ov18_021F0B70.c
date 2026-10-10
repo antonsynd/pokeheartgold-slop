@@ -57,7 +57,7 @@ void ov18_021F0B70(int param_1,int param_2)
   int iVar3;
   char cStack_18;
   undefined1 auStack_17 [3];
-  
+
   uVar2 = 0;
   do {
     sub_02019B1C(*(undefined4 *)(param_1 + 8),uVar2 + 0x11,auStack_17,&cStack_18);

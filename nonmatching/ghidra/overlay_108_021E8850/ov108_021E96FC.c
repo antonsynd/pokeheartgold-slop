@@ -54,7 +54,7 @@ undefined4 ov108_021E96FC(int param_1,undefined4 *param_2,undefined4 param_3,und
 {
   uint uVar1;
   undefined4 uVar2;
-  
+
   uVar1 = TouchscreenHitbox_FindRectAtTouchNew(&ov108_021EABF0);
   if (uVar1 == 0xffffffff) {
     *param_2 = 0;

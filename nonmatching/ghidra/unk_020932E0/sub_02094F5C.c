@@ -55,7 +55,7 @@ void sub_02094F5C(int param_1,int param_2)
   uint uVar2;
   int iVar3;
   int iVar4;
-  
+
   iVar4 = *(int *)(param_1 + param_2 * 0x10 + 0x88c) * 0xc;
   iVar3 = *(int *)(param_1 + 0x8d0) + iVar4;
   uVar2 = *(uint *)(iVar3 + 8);

@@ -52,7 +52,7 @@ void ov14_021E84A4(undefined4 param_1,undefined4 param_2,undefined4 param_3,unde
   char cStack_1c;
   char acStack_1b [3];
   undefined4 uStack_18;
-  
+
   uStack_18 = param_4;
   sub_02019B1C(param_1,3,acStack_1b,&cStack_1c);
   if (acStack_1b[0] != ' ') {

@@ -71,7 +71,7 @@ void sub_0205CD70(undefined4 param_1,undefined4 param_2)
   uint uVar3;
   int iVar4;
   undefined2 uVar5;
-  
+
   MapObject_GetMovementCommand();
   iVar2 = sub_02062390();
   uVar3 = sub_0205F504(param_1);

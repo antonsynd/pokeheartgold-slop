@@ -53,7 +53,7 @@ void ov96_021E8BB4(undefined2 *param_1,undefined4 param_2,undefined4 param_3)
 {
   undefined4 uVar1;
   int iVar2;
-  
+
   uVar1 = ov96_021E91B8(*param_1,param_1[1],*(undefined1 *)((int)param_1 + 7));
   uVar1 = AllocAndReadWholeNarcMemberByIdPair(0x51,uVar1,param_2);
   iVar2 = func_0x020c3b50();

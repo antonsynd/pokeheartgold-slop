@@ -62,7 +62,7 @@ int ov27_0225A594(int param_1,undefined4 param_2,undefined4 param_3,undefined4 p
   int iVar3;
   undefined4 uVar4;
   undefined4 uStack_18;
-  
+
   uVar4 = *(undefined4 *)(param_1 + 0x10);
   uStack_18 = param_4;
   iVar1 = ov27_0225BD44(uVar4);

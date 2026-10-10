@@ -64,7 +64,7 @@ void ov07_02230D74(undefined4 param_1,undefined4 param_2,undefined4 param_3,unde
   undefined4 *puVar5;
   short sStack_48;
   short sStack_46;
-  
+
   puVar1 = (undefined4 *)ov07_022324D8(param_1,0xac);
   *puVar1 = param_1;
   puVar1[3] = param_3;

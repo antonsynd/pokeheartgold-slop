@@ -52,7 +52,7 @@ void ov70_0223F38C(undefined4 param_1,undefined4 param_2,int param_3,undefined4 
 {
   undefined4 uVar1;
   int iVar2;
-  
+
   if (param_3 != -1) {
     if (param_8 == 0) {
       iVar2 = 0x2245a4c;

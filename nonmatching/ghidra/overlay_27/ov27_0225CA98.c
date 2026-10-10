@@ -54,7 +54,7 @@ undefined4 ov27_0225CA98(undefined4 *param_1)
 
 {
   int iVar1;
-  
+
   iVar1 = TouchscreenHitbox_FindRectAtTouchNew
                     (*(undefined4 *)((param_1[0x85] + -2) * 4 + 0x225d49c));
   if (iVar1 == -1) {

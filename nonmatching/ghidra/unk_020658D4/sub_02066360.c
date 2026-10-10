@@ -49,7 +49,7 @@ void sub_02066360(void)
 
 {
   int iVar1;
-  
+
   iVar1 = sub_0206642C();
   if (iVar1 != 0) {
     func_0x021f1640();

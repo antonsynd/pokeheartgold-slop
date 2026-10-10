@@ -53,7 +53,7 @@ void sub_0200F600(undefined4 param_1,undefined4 param_2)
   undefined4 uStack_1c;
   undefined4 uStack_18;
   undefined4 uStack_14;
-  
+
   uStack_28 = 1;
   uStack_24 = 1;
   uStack_20 = 1;

@@ -71,7 +71,7 @@ void sub_0200F748(int param_1,undefined2 *param_2,undefined4 param_3,undefined4 
   undefined4 uStack_20;
   undefined4 uStack_1c;
   undefined4 uStack_18;
-  
+
   uStack_18 = param_4;
   iVar1 = Heap_Alloc(*(undefined2 *)(param_1 + 0x162),0x1900);
   uStack_28 = 0;

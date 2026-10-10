@@ -55,7 +55,7 @@ void ov96_02203310(undefined4 *param_1,undefined4 param_2,undefined4 param_3,und
   undefined *puVar1;
   undefined4 *puVar2;
   int iVar3;
-  
+
   AddWindow(*param_1,param_1 + 1,&ov96_0221C7B0,param_4,param_4);
   BG_FillCharDataRange(*param_1,3,0,1,0);
   FillWindowPixelBuffer(param_1 + 1,0);

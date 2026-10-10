@@ -72,7 +72,7 @@ void ov74_0222DCD4(int *param_1)
   int iStack_24;
   uint uStack_20;
   int iStack_18;
-  
+
   if (((param_1[0xb73] == 0) && (param_1[0xb74] == 0)) && (param_1[0xb75] == 0)) {
     iVar2 = ov74_0223567C();
     if (iVar2 == 1) {

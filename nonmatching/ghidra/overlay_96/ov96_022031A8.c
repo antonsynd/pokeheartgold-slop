@@ -71,7 +71,7 @@ uint ov96_022031A8(undefined4 param_1,int param_2,undefined4 param_3,int param_4
   int iStack_20;
   int iStack_1c;
   int iStack_18;
-  
+
   iStack_18 = param_4;
   ov96_0220404C(param_3,param_4 + 0x120,&uStack_7c,&uStack_80);
   func_0x020f22dc(0x45800000,uStack_7c);

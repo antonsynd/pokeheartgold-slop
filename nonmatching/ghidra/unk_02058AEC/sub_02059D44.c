@@ -63,7 +63,7 @@ void sub_02059D44(undefined *param_1)
   int iVar4;
   undefined *puVar5;
   uint uVar6;
-  
+
   uVar1 = sub_0203769C();
   iVar2 = sub_02057ADC();
   iVar3 = sub_02057B14((uint)uVar1);

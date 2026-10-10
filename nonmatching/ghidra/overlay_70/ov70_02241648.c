@@ -68,7 +68,7 @@ undefined4 ov70_02241648(int *param_1)
   undefined4 uVar6;
   undefined4 uStack_1c;
   undefined4 uStack_18;
-  
+
   uVar6 = 3;
   if (param_1[0xb] != 0) {
     if (param_1[0xb] != 1) {

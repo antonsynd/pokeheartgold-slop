@@ -60,7 +60,7 @@ void ov96_021E7938(int param_1,int param_2,undefined4 param_3,undefined4 param_4
   short asStack_d6 [15];
   undefined2 auStack_b8 [80];
   undefined4 uStack_18;
-  
+
   uStack_e0 = 0;
   uStack_18 = param_4;
   do {

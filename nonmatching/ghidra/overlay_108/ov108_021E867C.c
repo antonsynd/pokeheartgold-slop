@@ -58,7 +58,7 @@ void ov108_021E867C(undefined4 *param_1)
   undefined1 *puVar6;
   uint uStack_1c;
   undefined1 auStack_18 [4];
-  
+
   auStack_18[0] = 0xc;
   auStack_18[1] = 1;
   auStack_18[2] = 1;

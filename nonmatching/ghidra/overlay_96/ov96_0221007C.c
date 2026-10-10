@@ -53,7 +53,7 @@ void ov96_0221007C(undefined4 *param_1,undefined4 param_2,undefined4 param_3,und
   int iVar3;
   int iStack_1c;
   undefined4 *puStack_18;
-  
+
   *param_1 = param_4;
   iVar3 = 0;
   puVar2 = param_1;

@@ -52,7 +52,7 @@ void sub_02065CFC(undefined *param_1,int param_2)
 {
   undefined *puVar1;
   uint uVar2;
-  
+
   puVar1 = MapObject_GetFieldSystem(param_1);
   puVar1 = FieldSystem_GetPlayerAvatar(puVar1);
   *(undefined1 *)(param_2 + 1) = 1;

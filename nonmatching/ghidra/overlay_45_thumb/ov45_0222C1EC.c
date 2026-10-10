@@ -66,7 +66,7 @@ void ov45_0222C1EC(int param_1,undefined4 *param_2)
   undefined2 uStack_28;
   undefined2 uStack_26;
   undefined4 auStack_24 [4];
-  
+
   if ((*(byte *)(param_2 + 4) < 5) && (*(byte *)(param_2 + 4) != 0)) {
     iVar6 = 0;
     puVar4 = auStack_24;

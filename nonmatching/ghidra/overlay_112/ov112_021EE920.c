@@ -50,7 +50,7 @@ void ov112_021EE920(int param_1)
 
 {
   int iVar1;
-  
+
   *(undefined2 *)(param_1 + 0x1f376) = 0;
   if (((int)((uint)*(byte *)(param_1 + 0x9d78) << 0x1f) < 0) &&
      (iVar1 = sub_02032764(*(undefined4 *)(param_1 + 0x1e440)), iVar1 == 0)) {

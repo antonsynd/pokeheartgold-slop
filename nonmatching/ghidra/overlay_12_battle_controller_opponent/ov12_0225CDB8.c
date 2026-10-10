@@ -53,7 +53,7 @@ void ov12_0225CDB8(undefined4 param_1,undefined4 *param_2,undefined4 param_3,und
 
 {
   int iVar1;
-  
+
   if (*(char *)((int)param_2 + 0xb) == '\0') {
     Pokepic_AddAttr(param_2[1],0xc,0xffffffe0,param_4,param_4);
     Pokepic_AddAttr(param_2[1],0xd,0xffffffe0);

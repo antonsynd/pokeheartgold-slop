@@ -57,7 +57,7 @@ undefined1 ov96_021EE040(int param_1,char *param_2)
   uint uVar5;
   undefined1 *puVar6;
   undefined1 auStack_30 [32];
-  
+
   puVar4 = auStack_30;
   puVar6 = auStack_30;
   iVar2 = 0x1d;

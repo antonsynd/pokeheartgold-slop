@@ -55,7 +55,7 @@ ov75_02248684(undefined4 *param_1,undefined4 param_2,undefined4 param_3,undefine
 
 {
   int iVar1;
-  
+
   iVar1 = YesNoPrompt_HandleInput(param_1[0x22]);
   if (iVar1 == 1) {
     YesNoPrompt_Destroy(param_1[0x22]);

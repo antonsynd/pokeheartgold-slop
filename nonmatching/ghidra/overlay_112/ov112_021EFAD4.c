@@ -48,7 +48,7 @@ int ov112_021EFAD4(int param_1,byte *param_2)
 {
   int iVar1;
   int iVar2;
-  
+
   iVar1 = 0;
   iVar2 = 0;
   do {

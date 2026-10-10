@@ -52,7 +52,7 @@ void ov67_021E5EB0(undefined4 *param_1,undefined4 param_2,undefined4 param_3,und
 
 {
   undefined4 uVar1;
-  
+
   if (*(short *)(param_1 + 2) == 0) {
     uVar1 = NARC_New(0x76,*param_1);
     GfGfxLoader_LoadCharDataFromOpenNarc(uVar1,4,param_1[4],1,0,0,1,*param_1,param_4);

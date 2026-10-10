@@ -51,7 +51,7 @@ undefined4 ov74_022361D4(void)
 
 {
   int iVar1;
-  
+
   if (*(int *)(iRam0223e2fc + 0x1150) == 4) {
     func_0x020d3f48();
   }

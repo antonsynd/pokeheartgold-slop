@@ -75,7 +75,7 @@ void ov104_021E5CC8(int param_1)
   int iVar7;
   undefined1 *puStack_20;
   uint uStack_1c;
-  
+
   uVar1 = NARC_New(0xeb,0x95);
   HeapExp_FndInitAllocator(param_1 + 0x148,0x95,4);
   if (*(char *)(param_1 + 0x164) == '\0') {

@@ -61,7 +61,7 @@ void ov56_021E6AA4(undefined4 *param_1)
   int iVar3;
   undefined4 *puVar4;
   int iVar5;
-  
+
   iVar5 = 0;
   iVar3 = 0;
   puVar4 = param_1 + 0x13;

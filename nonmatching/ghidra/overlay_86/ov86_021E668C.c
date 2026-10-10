@@ -53,7 +53,7 @@ void ov86_021E668C(int param_1,undefined4 param_2)
 {
   undefined4 uVar1;
   undefined4 uVar2;
-  
+
   uVar1 = NewMsgDataFromNarc(1,0x1b,0xed,0x79);
   uVar2 = NewString_ReadMsgData(uVar1,param_2);
   DestroyMsgData(uVar1);

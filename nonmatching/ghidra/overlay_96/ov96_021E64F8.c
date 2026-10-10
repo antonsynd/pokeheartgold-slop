@@ -53,7 +53,7 @@ ov96_021E64F8(int param_1,undefined4 param_2,undefined4 param_3,undefined4 param
 {
   undefined4 uVar1;
   int iVar2;
-  
+
   if (2 < *(uint *)(param_1 + 0xd30)) {
     GF_AssertFail();
     return 0;

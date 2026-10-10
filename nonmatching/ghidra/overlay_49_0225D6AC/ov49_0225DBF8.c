@@ -49,7 +49,7 @@ short * ov49_0225DBF8(int param_1)
 {
   int iVar1;
   short *psVar2;
-  
+
   iVar1 = 0;
   if (*(byte *)(param_1 + 0x125) != 0) {
     psVar2 = *(short **)(param_1 + 0x120);

@@ -49,7 +49,7 @@ void ov95_021E7308(int param_1)
 
 {
   int iVar1;
-  
+
   if (param_1 == 0) {
     GF_AssertFail();
   }

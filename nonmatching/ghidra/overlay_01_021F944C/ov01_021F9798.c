@@ -48,7 +48,7 @@ void ov01_021F9798(int param_1)
 {
   int iVar1;
   int *piVar2;
-  
+
   piVar2 = *(int **)(param_1 + 0xf4);
   iVar1 = *(int *)(param_1 + 4);
   do {

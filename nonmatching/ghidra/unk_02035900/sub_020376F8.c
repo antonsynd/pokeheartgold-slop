@@ -50,7 +50,7 @@ int sub_020376F8(void)
 
 {
   int iVar1;
-  
+
   iVar1 = sub_0203567C();
   return iVar1;
 }

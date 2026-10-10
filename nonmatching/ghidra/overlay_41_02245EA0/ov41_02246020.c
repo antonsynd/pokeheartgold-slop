@@ -50,7 +50,7 @@ void ov41_02246020(undefined4 param_1,undefined4 *param_2,undefined4 *param_3,un
   int iStack_18;
   int iStack_14;
   undefined4 uStack_10;
-  
+
   uStack_10 = param_4;
   ov41_02245FD8(param_1,&iStack_14,&iStack_18);
   if (iStack_14 == 0x10) {

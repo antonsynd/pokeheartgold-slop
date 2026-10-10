@@ -49,7 +49,7 @@ void ov88_02259508(undefined1 *param_1,undefined4 *param_2,char param_3,undefine
 
 {
   undefined4 uVar1;
-  
+
   *param_1 = 0;
   *(undefined2 *)(param_1 + 2) = 0;
   uVar1 = String_New(0x100,param_4);

@@ -56,7 +56,7 @@ void ov40_0222FA88(int *param_1)
   int iVar2;
   int iStack_18;
   int iStack_14;
-  
+
   bVar1 = false;
   iVar2 = System_GetTouchHeldCoords(&iStack_14,&iStack_18);
   if (param_1[5] != 0) {

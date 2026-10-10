@@ -53,7 +53,7 @@ undefined4 ov18_021F50C0(undefined4 *param_1)
   short sStack_12;
   short sStack_10;
   short sStack_e;
-  
+
   ov18_021F12C8(*param_1,2,&sStack_e,&sStack_10,1);
   ov18_021F12C8(*param_1,4,&sStack_12,&sStack_14,1);
   iVar1 = param_1[1];

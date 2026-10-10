@@ -54,7 +54,7 @@ void ov05_0221E564(int *param_1,int param_2)
   byte *pbStack_24;
   int iStack_20;
   int iStack_1c;
-  
+
   if (*(char *)(*param_1 + 0x29) == '\0') {
     iStack_20 = 3;
     param_2 = param_2 << 0x13;

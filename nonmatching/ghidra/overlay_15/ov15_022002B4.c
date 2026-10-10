@@ -49,7 +49,7 @@ void ov15_022002B4(int param_1,int param_2,undefined4 param_3,undefined4 param_4
 
 {
   int iVar1;
-  
+
   iVar1 = 0;
   do {
     if (param_2 == iVar1) {

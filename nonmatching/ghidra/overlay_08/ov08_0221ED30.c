@@ -60,7 +60,7 @@ void ov08_0221ED30(int *param_1,int param_2,int param_3)
   uint uVar3;
   undefined *puVar4;
   int iVar5;
-  
+
   param_2 = param_2 * 0x10;
   iVar5 = param_1[0x81c];
   if (param_3 == 0) {

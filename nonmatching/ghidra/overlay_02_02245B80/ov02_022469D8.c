@@ -55,7 +55,7 @@ ov02_022469D8(undefined4 param_1,undefined4 param_2,undefined4 param_3,undefined
 {
   undefined4 *puVar1;
   undefined4 uVar2;
-  
+
   puVar1 = (undefined4 *)Heap_Alloc(4,0x1c);
   if (puVar1 == (undefined4 *)0x0) {
     GF_AssertFail();

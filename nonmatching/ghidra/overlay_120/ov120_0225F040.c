@@ -51,7 +51,7 @@ void ov120_0225F040(int param_1,undefined2 param_2,undefined2 param_3,undefined4
 
 {
   undefined4 uVar1;
-  
+
   uVar1 = param_4;
   if (*(char *)(param_1 + 0x30) != '\0') {
     GF_AssertFail();

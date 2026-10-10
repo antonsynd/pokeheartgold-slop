@@ -53,7 +53,7 @@ undefined4 ov40_0223169C(int *param_1)
 
 {
   int iVar1;
-  
+
   iVar1 = System_GetTouchNew();
   if ((iVar1 != 0) && (param_1[0x227] == 0)) {
     ov40_0222DE40(param_1);

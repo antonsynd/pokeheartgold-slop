@@ -50,7 +50,7 @@ void sub_0205779C(undefined4 param_1,undefined4 param_2,byte *param_3)
 {
   byte bVar1;
   short *psVar2;
-  
+
   bVar1 = *param_3;
   if (iRam021d41c4 != 0) {
     psVar2 = (short *)(iRam021d41c4 + 0x74 + (bVar1 & 0xf) * 8);

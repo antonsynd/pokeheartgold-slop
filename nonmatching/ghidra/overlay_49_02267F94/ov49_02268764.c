@@ -79,7 +79,7 @@ undefined4 * ov49_02268764(undefined4 param_1,undefined4 param_2)
   int iVar7;
   int iVar8;
   undefined4 *puVar9;
-  
+
   puVar1 = (undefined4 *)Heap_Alloc(param_1,0x1c);
   iVar8 = 0x1c;
   puVar9 = puVar1;

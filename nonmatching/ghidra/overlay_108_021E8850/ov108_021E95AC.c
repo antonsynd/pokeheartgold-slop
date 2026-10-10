@@ -57,7 +57,7 @@ undefined4 ov108_021E95AC(int param_1,undefined4 param_2,undefined4 param_3,unde
   char cVar3;
   char cVar4;
   byte bVar5;
-  
+
   cVar3 = '\0';
   if ((uRam021d1154 & 0xcf3) != 0) {
     *(undefined4 *)(param_1 + 0x10) = 0;

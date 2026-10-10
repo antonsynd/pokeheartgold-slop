@@ -50,7 +50,7 @@ void ov40_0222C710(int param_1,undefined4 param_2)
 {
   undefined4 uVar1;
   undefined4 uVar2;
-  
+
   uVar2 = *(undefined4 *)(param_1 + 0x24);
   uVar1 = *(undefined4 *)(param_1 + 0x14);
   GfGfxLoader_LoadCharDataFromOpenNarc(uVar1,0x2d,uVar2,param_2,0,0,0,0x6d);

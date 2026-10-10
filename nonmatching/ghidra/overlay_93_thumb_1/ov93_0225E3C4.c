@@ -57,7 +57,7 @@ int ov93_0225E3C4(int *param_1,uint param_2)
   uint uVar6;
   int iStack_20;
   int iStack_1c;
-  
+
   uVar2 = sub_0203769C();
   uVar6 = 0xff;
   uVar5 = 0xff;

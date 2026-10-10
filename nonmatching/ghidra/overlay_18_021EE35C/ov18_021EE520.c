@@ -59,7 +59,7 @@ void ov18_021EE520(int param_1,int param_2,undefined4 param_3,undefined4 param_4
   int iVar5;
   int iStack_1c;
   undefined4 uStack_18;
-  
+
   uStack_18 = param_4;
   uVar1 = func_0x02007c10(*(undefined4 *)(param_1 + 0x854),1,1,&iStack_1c,0x25);
   uVar4 = 0;

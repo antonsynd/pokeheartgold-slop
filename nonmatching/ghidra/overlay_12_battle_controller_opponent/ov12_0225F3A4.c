@@ -52,7 +52,7 @@ void ov12_0225F3A4(undefined4 param_1,undefined4 *param_2,undefined4 param_3,und
 {
   undefined4 uStackY_1c;
   undefined2 uStack_16;
-  
+
   uStackY_1c = CONCAT22(uStack_16,1);
   ov12_022632C0(*param_2,*(undefined1 *)((int)param_2 + 0xd),uStackY_1c,uStack_16,1,param_4);
   ov12_0226430C(*param_2,*(undefined1 *)((int)param_2 + 0xd),*(undefined1 *)(param_2 + 3));

@@ -57,7 +57,7 @@ void ov01_021ED474(int *param_1,undefined4 *param_2,undefined4 param_3,undefined
 {
   undefined4 uVar1;
   int iVar2;
-  
+
   switch(*(undefined2 *)((int)param_1 + 0xf62)) {
   case 0:
     ov01_021EC5FC(param_2 + 0xc,param_2,*(undefined4 *)(*(int *)(*param_1 + 0x104) + 0x4c),param_3,

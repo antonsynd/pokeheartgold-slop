@@ -47,7 +47,7 @@ void ov96_021E67AC(int param_1,undefined4 param_2,undefined4 param_3,undefined4 
 
 {
   code *pcVar1;
-  
+
   if (*(int *)(param_1 + 500) != 0) {
     pcVar1 = *(code **)(*(int *)(param_1 + 0x1e0) + 4);
     (*pcVar1)(param_1,0,pcVar1,param_4,param_4);

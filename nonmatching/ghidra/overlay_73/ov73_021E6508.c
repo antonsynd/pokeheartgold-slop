@@ -70,7 +70,7 @@ void ov73_021E6508(undefined4 *param_1,undefined4 param_2,undefined4 param_3,und
   undefined1 auStack_1a [2];
   undefined2 auStack_18 [2];
   undefined4 uStack_14;
-  
+
   uVar3 = 0;
   uStack_14 = param_4;
   ov73_021E64B0();

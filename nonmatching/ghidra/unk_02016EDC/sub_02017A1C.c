@@ -50,7 +50,7 @@ void sub_02017A1C(undefined4 *param_1)
 
 {
   char cVar1;
-  
+
   Pokepic_SetAttr(*param_1,0xc,param_1[0x1c] + 0x100);
   Pokepic_SetAttr(*param_1,0xd,param_1[0x1d] + 0x100);
   Pokepic_SetAttr(*param_1,9,param_1[0x1e] & 0xffff);

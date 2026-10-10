@@ -50,7 +50,7 @@ void ov18_021F2E14(int param_1,int param_2,uint param_3,undefined4 param_4)
 {
   uint uVar1;
   undefined4 uStack_10;
-  
+
   uStack_10 = param_4;
   func_0x0200de44(*(undefined4 *)(param_1 + param_2 * 4 + 0x670),(int)&uStack_10 + 2,&uStack_10);
   uVar1 = (uint)(short)uStack_10;

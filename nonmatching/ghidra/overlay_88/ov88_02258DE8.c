@@ -56,7 +56,7 @@ void ov88_02258DE8(int param_1,undefined4 *param_2,char param_3,char param_4,uin
   uint extraout_r1;
   ushort *puVar3;
   byte bVar4;
-  
+
   _u32_div_f(param_5,3);
   uVar2 = _u32_div_f(param_5,3);
   if (param_8 != 0) {

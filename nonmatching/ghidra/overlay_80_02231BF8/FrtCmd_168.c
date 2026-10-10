@@ -52,7 +52,7 @@ undefined4 FrtCmd_168(undefined4 *param_1)
   undefined1 uVar1;
   undefined4 uVar2;
   int iVar3;
-  
+
   uVar1 = FrontierScript_ReadVar();
   uVar2 = FrontierScript_ReadVar(param_1);
   iVar3 = Frontier_GetLaunchArgs(*(undefined4 *)*param_1);

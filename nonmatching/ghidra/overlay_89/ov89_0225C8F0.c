@@ -48,7 +48,7 @@ undefined4 ov89_0225C8F0(int param_1,int *param_2)
 
 {
   int iVar1;
-  
+
   if (param_2[1] == param_1) {
     return 0;
   }

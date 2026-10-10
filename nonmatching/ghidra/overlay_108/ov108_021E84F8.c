@@ -49,7 +49,7 @@ void ov108_021E84F8(undefined4 *param_1,int param_2,int param_3)
 
 {
   undefined4 uVar1;
-  
+
   uVar1 = *(undefined4 *)(*(int *)param_1[0x55] + param_2 * 4);
   ReplaceCharResObjFromNarc(param_1[0x51],uVar1,0xa6,param_3 + 0x12,0,*param_1);
   SpriteTransfer_ReplaceCharData(uVar1);

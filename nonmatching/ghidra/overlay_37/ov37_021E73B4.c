@@ -53,7 +53,7 @@ void ov37_021E73B4(int param_1)
   int iVar1;
   int iVar2;
   int iVar3;
-  
+
   iVar3 = 0;
   iVar2 = param_1 + 0x4382;
   do {

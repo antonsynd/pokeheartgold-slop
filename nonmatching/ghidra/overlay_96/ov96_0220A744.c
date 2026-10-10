@@ -57,7 +57,7 @@ ov96_0220A744(undefined4 param_1,undefined4 param_2,undefined4 param_3,undefined
   undefined4 uVar2;
   uint uVar3;
   undefined4 *puVar4;
-  
+
   uVar2 = param_4;
   puVar1 = (undefined4 *)Heap_Alloc(param_1,0x184);
   func_0x020d4994(puVar1,0,0x184);

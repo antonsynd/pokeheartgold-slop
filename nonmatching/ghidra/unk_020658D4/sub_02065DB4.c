@@ -51,7 +51,7 @@ undefined4 sub_02065DB4(void)
 
 {
   undefined4 uVar1;
-  
+
   MapObject_GetFieldSystem();
   FieldSystem_GetPlayerAvatar();
   PlayerAvatar_GetMapObject();

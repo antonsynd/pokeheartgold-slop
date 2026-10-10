@@ -60,7 +60,7 @@ undefined4 ov07_0222C870(int param_1)
   int iVar7;
   int iVar8;
   int *piStack_28;
-  
+
   iVar1 = ov07_02222D60(*(undefined4 *)(param_1 + 0x18));
   ov07_0222C850(param_1,iVar1);
   uVar2 = ov07_022222B4(param_1 + 0x1c);

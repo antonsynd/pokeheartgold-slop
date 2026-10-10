@@ -53,7 +53,7 @@ void ov49_0225E2B4(int param_1)
 {
   int iVar1;
   int iVar2;
-  
+
   iVar2 = 0;
   iVar1 = param_1;
   if (*(char *)(param_1 + 0x613) != '\0') {

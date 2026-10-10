@@ -56,7 +56,7 @@ undefined4 ov39_02228C78(int *param_1)
 
 {
   int iVar1;
-  
+
   iVar1 = param_1[0x25];
   if (iVar1 == 0) {
     func_0x02039418(*(undefined4 *)(*(int *)*param_1 + 4));

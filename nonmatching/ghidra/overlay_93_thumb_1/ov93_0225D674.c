@@ -54,7 +54,7 @@ void ov93_0225D674(int param_1)
 
 {
   undefined4 uVar1;
-  
+
   sub_02014DA0();
   uVar1 = Heap_Alloc(0x75,0x4800);
   uVar1 = sub_02014DB4(0x225d745,0x225d769,uVar1,0x4800,1,0x75);

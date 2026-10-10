@@ -53,7 +53,7 @@ int ov51_021E786C(undefined4 *param_1,int param_2)
 {
   int iVar1;
   undefined4 uVar2;
-  
+
   iVar1 = YesNoPrompt_HandleInput(param_1[0xcf0]);
   if (iVar1 == 1) {
     iVar1 = 1;

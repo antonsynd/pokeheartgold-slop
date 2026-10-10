@@ -58,7 +58,7 @@ void ov81_022403C0(int param_1)
 
 {
   undefined4 uVar1;
-  
+
   ov81_02240210();
   ov81_02240230(*(undefined4 *)(param_1 + 0x4c));
   uVar1 = PaletteData_Init(100);

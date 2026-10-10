@@ -53,7 +53,7 @@ undefined4 ov27_0225CD94(undefined4 *param_1)
 
 {
   int iVar1;
-  
+
   iVar1 = TouchscreenHitbox_FindRectAtTouchNew(&ov27_0225D120);
   if (iVar1 == -1) {
     if ((uRam021d1154 & 0x40) == 0) {

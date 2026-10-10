@@ -49,7 +49,7 @@ void ov91_022601F4(int param_1,int param_2)
 {
   undefined2 uVar1;
   int iVar2;
-  
+
   uVar1 = *(undefined2 *)(param_2 + 2);
   iVar2 = 0;
   do {

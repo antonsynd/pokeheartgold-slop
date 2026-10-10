@@ -62,7 +62,7 @@ undefined4 ov40_0223F028(int param_1)
   int iVar3;
   char cVar4;
   int iStack_14;
-  
+
   iVar3 = *(int *)(param_1 + 0x860);
   iVar1 = ov40_0223D5CC();
   if (iVar1 != 0) {

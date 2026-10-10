@@ -50,7 +50,7 @@ void ov96_0220FB98(undefined2 *param_1,undefined1 param_2,undefined1 param_3)
 {
   uint uVar1;
   undefined1 extraout_r1;
-  
+
   *(uint *)(param_1 + 2) = *(uint *)(param_1 + 2) | 0x20;
   *param_1 = 0x80;
   param_1[1] = 0;

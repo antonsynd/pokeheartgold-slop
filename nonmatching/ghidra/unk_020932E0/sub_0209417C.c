@@ -59,7 +59,7 @@ sub_0209417C(undefined4 param_1,int param_2,int param_3,undefined4 param_4,undef
   int iStack_3c;
   undefined4 uStack_24;
   undefined4 uStack_18;
-  
+
   uStack_18 = param_4;
   sub_02094150(auStack_48,param_1,1);
   iStack_40 = param_2 << 0xc;

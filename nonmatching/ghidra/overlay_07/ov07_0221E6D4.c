@@ -52,7 +52,7 @@ undefined4 ov07_0221E6D4(int param_1,undefined4 param_2,undefined4 param_3,undef
 {
   undefined4 *puVar1;
   int iVar2;
-  
+
   puVar1 = (undefined4 *)Heap_Alloc(**(undefined4 **)(param_1 + 0x48),0x28,param_3,param_4,param_4);
   *puVar1 = *(undefined4 *)(*(int *)(param_1 + 0x48) + 0xc4);
   *(short *)(puVar1 + 1) = (short)*(undefined4 *)(*(int *)(param_1 + 0x48) + 0x9c);

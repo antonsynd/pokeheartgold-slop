@@ -92,7 +92,7 @@ void ov64_021E5CD0(int param_1)
   undefined4 uStack_20;
   undefined4 uStack_1c;
   undefined4 uStack_18;
-  
+
   uVar1 = SpriteSystem_Alloc(0x3b);
   *(undefined4 *)(param_1 + 0x130) = uVar1;
   uVar1 = SpriteManager_New(*(undefined4 *)(param_1 + 0x130));

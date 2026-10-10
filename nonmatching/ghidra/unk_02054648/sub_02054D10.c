@@ -68,7 +68,7 @@ sub_02054D10(int param_1,undefined4 param_2,uint param_3,undefined4 param_4,unde
   int iStack_28;
   undefined1 auStack_24 [12];
   undefined4 uStack_18;
-  
+
   uStack_18 = param_4;
   puVar3 = (undefined4 *)Heap_AllocAtEnd(param_2,param_3 << 2);
   iVar4 = 0;

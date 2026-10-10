@@ -53,7 +53,7 @@ undefined4 sub_020663E4(undefined4 param_1,int param_2)
 {
   int iVar1;
   undefined4 uVar2;
-  
+
   if (*(char *)(param_2 + 2) == '\0') {
     iVar1 = sub_0206642C();
     if ((iVar1 == 0) && (iVar1 = sub_0205F73C(param_1), iVar1 == 1)) {

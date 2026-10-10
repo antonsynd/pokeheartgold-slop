@@ -60,7 +60,7 @@ void ov01_021ED584(undefined4 param_1,int *param_2,undefined4 param_3,undefined4
   int iVar1;
   int iVar2;
   int *piVar3;
-  
+
   piVar3 = (int *)param_2[0x3d6];
   switch(*(undefined2 *)((int)param_2 + 0xf62)) {
   case 0:

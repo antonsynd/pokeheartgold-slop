@@ -51,7 +51,7 @@ void ov96_0220B500(int param_1)
 {
   int iVar1;
   int iVar2;
-  
+
   if (param_1 == 0) {
     GF_AssertFail();
   }

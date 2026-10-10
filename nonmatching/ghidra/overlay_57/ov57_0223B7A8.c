@@ -48,7 +48,7 @@ void ov57_0223B7A8(int param_1)
 
 {
   int iVar1;
-  
+
   iVar1 = 0;
   do {
     SealCaseInventory_SetSealQuantity

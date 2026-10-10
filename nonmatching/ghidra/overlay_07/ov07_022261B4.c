@@ -68,7 +68,7 @@ void ov07_022261B4(undefined4 param_1)
   undefined4 uStack_28;
   undefined4 uStack_20;
   undefined4 uStack_1c;
-  
+
   iVar3 = ov07_022324D8(param_1,0x104);
   ov07_02231FE4(param_1,iVar3 + 0x3c);
   ov07_0222600C(param_1,iVar3);

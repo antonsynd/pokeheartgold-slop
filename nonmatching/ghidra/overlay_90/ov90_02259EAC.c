@@ -50,7 +50,7 @@ void ov90_02259EAC(int param_1)
 
 {
   int iVar1;
-  
+
   if (*(int *)(param_1 + 0x10) != 0) {
     Sprite_Delete();
     *(undefined4 *)(param_1 + 0x10) = 0;

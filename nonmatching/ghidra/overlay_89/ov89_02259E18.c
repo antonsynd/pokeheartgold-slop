@@ -48,7 +48,7 @@ void ov89_02259E18(int param_1)
 
 {
   undefined4 uVar1;
-  
+
   uVar1 = func_0x0222e9e0();
   *(undefined4 *)(param_1 + 0x16c) = uVar1;
   return;

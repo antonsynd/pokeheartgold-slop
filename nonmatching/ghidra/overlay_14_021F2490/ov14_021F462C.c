@@ -60,7 +60,7 @@ void ov14_021F462C(int param_1,undefined4 param_2,undefined4 param_3,undefined4 
   uint uStack_24;
   int iStack_1c;
   undefined4 uStack_18;
-  
+
   iVar4 = 0x15;
   iVar3 = (uint)(*(byte *)(*(int *)(param_1 + 0x34) + 0x44d) >> 2) << 2;
   uStack_18 = param_4;

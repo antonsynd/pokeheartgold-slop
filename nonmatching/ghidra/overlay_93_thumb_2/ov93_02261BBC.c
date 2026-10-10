@@ -57,7 +57,7 @@ void ov93_02261BBC(int param_1,undefined4 *param_2)
   undefined4 *puVar4;
   undefined4 *puVar5;
   undefined4 auStack_48 [13];
-  
+
   puVar4 = auStack_48;
   puVar5 = (undefined4 *)0x2262e9c;
   iVar3 = 6;

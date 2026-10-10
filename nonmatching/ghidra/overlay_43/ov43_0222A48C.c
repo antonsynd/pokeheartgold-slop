@@ -61,7 +61,7 @@ void ov43_0222A48C(int param_1,undefined4 param_2,undefined4 param_3)
 
 {
   undefined4 uVar1;
-  
+
   uRam021d1175 = 1;
   GfGfx_SwapDisplay();
   uVar1 = NARC_New(0x55,param_3);

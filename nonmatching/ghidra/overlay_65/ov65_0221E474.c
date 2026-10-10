@@ -62,7 +62,7 @@ undefined4 ov65_0221E474(int param_1)
   int iVar1;
   undefined4 uVar2;
   undefined4 uVar3;
-  
+
   iVar1 = func_0x02001338(*(undefined4 *)(param_1 + 0x368c));
   if (iVar1 == -2) {
     PlaySE(0x5dc);

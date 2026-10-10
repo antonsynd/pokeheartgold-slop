@@ -51,7 +51,7 @@ undefined4 ov07_0222DBD8(int param_1)
 {
   int iVar1;
   undefined4 uVar2;
-  
+
   iVar1 = *(int *)(param_1 + 0x38);
   uVar2 = 0;
   if (iVar1 == 0) {

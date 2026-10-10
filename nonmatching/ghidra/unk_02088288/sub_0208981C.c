@@ -74,7 +74,7 @@ void sub_0208981C(int param_1,undefined4 param_2,int param_3)
   undefined4 uVar7;
   uint uVar8;
   int iVar9;
-  
+
   uVar6 = AcquireMonLock(param_2);
   uVar4 = GetMonData(param_2,5,0);
   *(undefined2 *)(param_3 + 0xc) = uVar4;

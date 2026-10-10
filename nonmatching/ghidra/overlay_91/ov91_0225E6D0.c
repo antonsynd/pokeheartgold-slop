@@ -48,7 +48,7 @@ undefined4 ov91_0225E6D0(int param_1)
 {
   char cVar1;
   int iVar2;
-  
+
   iVar2 = 0;
   while ((((cVar1 = *(char *)(param_1 + 0x4c), cVar1 != '\x01' && (cVar1 != '\x02')) &&
           (cVar1 != '\x05')) && (cVar1 != '\x03'))) {

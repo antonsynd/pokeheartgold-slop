@@ -51,7 +51,7 @@ void ov81_02242694(int param_1,int param_2)
 {
   int iVar1;
   uint uVar2;
-  
+
   if (param_2 == 1) {
     func_0x020cf15c(0x4001050,0,0xf,6,10);
     uVar2 = 0;

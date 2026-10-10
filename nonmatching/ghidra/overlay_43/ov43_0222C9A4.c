@@ -52,7 +52,7 @@ void ov43_0222C9A4(short *param_1,undefined4 *param_2,undefined4 param_3,undefin
 {
   uint uVar1;
   uint uVar2;
-  
+
   ov43_0222CA30();
   ClearWindowTilemapAndScheduleTransfer(param_1 + 4);
   uVar1 = (uint)param_1[1];

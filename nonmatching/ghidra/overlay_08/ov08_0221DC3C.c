@@ -62,7 +62,7 @@ void ov08_0221DC3C(int *param_1,undefined4 param_2)
   undefined *unaff_r6;
   __asm__ volatile("movs %0, r6" : "=l"(unaff_r6) : : "cc");
 
-  
+
   switch(param_2) {
   case 0:
     unaff_r6 = &ov08_02225084;

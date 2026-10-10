@@ -67,7 +67,7 @@ void ov69_021E6138(undefined4 *param_1,undefined4 param_2,undefined4 param_3,und
   uint uStack_20;
   undefined4 uStack_1c;
   undefined4 uStack_18;
-  
+
   uStack_18 = param_4;
   uVar2 = NARC_New(0x62,*param_1);
   param_1[3] = 0;

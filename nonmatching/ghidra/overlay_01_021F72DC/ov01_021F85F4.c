@@ -54,7 +54,7 @@ void ov01_021F85F4(undefined4 param_1,undefined *param_2,char *param_3,int param
   byte bVar1;
   byte bVar2;
   int iVar3;
-  
+
   if ((param_4 != *param_3) || (param_3[2] != '\x02')) {
     sub_02023EE0(param_2,*(int *)(&ov01_022089F8 + param_4 * 4));
     sub_02023F40(param_2,0xf000);

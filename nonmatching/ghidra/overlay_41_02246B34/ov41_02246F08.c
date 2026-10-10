@@ -74,7 +74,7 @@ undefined4 ov41_02246F08(undefined4 param_1,int *param_2)
   int iVar2;
   undefined4 uVar3;
   undefined4 uVar4;
-  
+
   iVar1 = OverlayManager_GetData();
   uVar4 = 0;
   iVar2 = OverlayManager_GetArgs(param_1);

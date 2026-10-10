@@ -49,7 +49,7 @@ undefined4 FrtCmd_082(undefined4 *param_1)
 
 {
   undefined4 uVar1;
-  
+
   uVar1 = Frontier_GetData(*(undefined4 *)*param_1);
   ov80_02233490(*param_1,uVar1);
   return 0;

@@ -54,7 +54,7 @@ undefined4 ov83_02244F60(int param_1,undefined4 param_2,undefined4 param_3)
   byte bVar1;
   undefined4 uVar2;
   int iVar3;
-  
+
   bVar1 = *(byte *)(param_1 + 0x15);
   uVar2 = ov83_02247768(*(undefined1 *)(param_1 + 0x14));
   Party_GetMonByIndex(*(undefined4 *)(param_1 + 0x55c),uVar2);

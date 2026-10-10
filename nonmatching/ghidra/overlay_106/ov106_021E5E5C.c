@@ -51,7 +51,7 @@ void ov106_021E5E5C(undefined4 *param_1,undefined4 param_2,undefined4 param_3,un
 
 {
   int iVar1;
-  
+
   func_0x020cd9fc(param_2,param_3,param_4);
   func_0x020ce630(*param_1);
   iVar1 = param_1[1];

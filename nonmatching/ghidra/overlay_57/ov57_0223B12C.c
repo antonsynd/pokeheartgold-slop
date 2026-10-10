@@ -49,7 +49,7 @@ undefined4 ov57_0223B12C(int param_1)
 
 {
   int iVar1;
-  
+
   if (*(int *)(param_1 + 0x40c) == 1) {
     iVar1 = System_GetTouchHeld();
     if (iVar1 != 0) {

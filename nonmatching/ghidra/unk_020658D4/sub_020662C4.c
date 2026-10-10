@@ -55,7 +55,7 @@ void sub_020662C4(undefined4 param_1,undefined1 param_2)
   undefined4 uStack_18;
   undefined4 uStack_14;
   undefined4 uStack_10;
-  
+
   iVar1 = sub_0205F370(param_1,8);
   *(undefined1 *)(iVar1 + 1) = param_2;
   sub_0205F328(param_1,0);

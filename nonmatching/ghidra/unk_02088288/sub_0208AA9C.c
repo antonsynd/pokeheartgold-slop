@@ -55,7 +55,7 @@ undefined4 sub_0208AA9C(undefined4 *param_1)
 {
   char cVar1;
   int iVar2;
-  
+
   cVar1 = *(char *)((int)param_1 + 0x7be);
   if (cVar1 == '\0') {
     *(undefined1 *)(param_1 + 0x1f1) = 0;

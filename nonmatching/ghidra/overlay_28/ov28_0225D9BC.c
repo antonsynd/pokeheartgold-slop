@@ -52,7 +52,7 @@ void ov28_0225D9BC(undefined4 *param_1,undefined4 *param_2,undefined4 param_3,un
   undefined4 uVar2;
   undefined4 uVar3;
   undefined4 uVar4;
-  
+
   uVar1 = func_0x0200a7fc(*param_1);
   uVar2 = func_0x0200a7fc(param_1[1]);
   uVar3 = func_0x0200a7fc(param_1[2]);

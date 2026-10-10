@@ -58,7 +58,7 @@ undefined4 ov13_02223D24(undefined4 param_1,int param_2,int param_3)
 {
   int iVar1;
   int iVar2;
-  
+
   iVar1 = OS_DisableInterrupts();
   puRam0224df38 = (undefined4 *)(param_2 + 99U & 0xfffffffc);
   uRam0224df6c = (int)puRam0224df38 + 0x2fU & 0xffffffe0;

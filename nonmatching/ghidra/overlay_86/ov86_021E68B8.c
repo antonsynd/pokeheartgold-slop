@@ -55,7 +55,7 @@ undefined4 ov86_021E68B8(int param_1)
   ushort uVar2;
   undefined *puVar3;
   uint uVar4;
-  
+
   bVar1 = *(byte *)(param_1 + 6);
   if (bVar1 == 3) {
     puVar3 = Save_Frontier_GetStatic(*(undefined **)(param_1 + 0x224));

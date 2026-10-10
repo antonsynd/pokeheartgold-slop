@@ -52,7 +52,7 @@ void ov80_0222EFD0(undefined2 *param_1,undefined4 param_2,undefined1 param_3,int
 {
   short sVar1;
   undefined4 uVar2;
-  
+
   *(undefined1 *)((int)param_1 + 7) = param_3;
   *(char *)(param_1 + 3) = (char)*(undefined2 *)(&ov80_0223DC22 + param_4 * 4);
   sVar1 = *(short *)(&UNK_0223dc20 + param_4 * 4);

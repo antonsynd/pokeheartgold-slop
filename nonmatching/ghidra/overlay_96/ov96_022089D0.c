@@ -58,7 +58,7 @@ void ov96_022089D0(undefined4 param_1,int param_2)
   int iVar5;
   undefined4 uVar6;
   undefined4 auStack_1c [2];
-  
+
   auStack_1c[0] = 0x66;
   auStack_1c[1] = 0x67;
   uVar2 = 0;

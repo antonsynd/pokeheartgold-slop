@@ -51,7 +51,7 @@ undefined4 ov108_021E5D90(int param_1)
 {
   int iVar1;
   undefined4 uVar2;
-  
+
   iVar1 = ov108_021E6240();
   if (iVar1 != 0) {
     return 0;

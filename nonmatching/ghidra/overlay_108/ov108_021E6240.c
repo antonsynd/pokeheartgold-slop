@@ -51,7 +51,7 @@ undefined4 ov108_021E6240(int param_1)
 
 {
   int iVar1;
-  
+
   if (*(int *)(param_1 + 0x10) == 1) {
     iVar1 = System_GetTouchHeld();
     if (iVar1 != 0) {

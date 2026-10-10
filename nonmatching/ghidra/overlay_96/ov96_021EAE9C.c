@@ -50,7 +50,7 @@ void ov96_021EAE9C(undefined4 param_1,int *param_2,int *param_3)
 
 {
   int *piVar1;
-  
+
   ov96_021EAA20();
   ov96_021E8BAC();
   piVar1 = (int *)Sprite_GetMatrixPtr();

@@ -49,7 +49,7 @@ undefined4 ov74_022364F0(void)
 
 {
   int iVar1;
-  
+
   *(undefined4 *)(iRam0223e2fc + 0x1154) = 0;
   iVar1 = ov74_0223653C();
   if (iVar1 != 0) {

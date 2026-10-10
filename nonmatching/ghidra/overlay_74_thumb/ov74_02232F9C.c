@@ -63,7 +63,7 @@ void ov74_02232F9C(int *param_1)
   undefined4 uVar2;
   int iVar3;
   undefined1 auStack_20 [16];
-  
+
   uVar1 = ov74_02233F84();
   uVar2 = PmAgbCartridge_GetLanguage();
   ConvertRSStringToDPStringInternational(uVar1,auStack_20,8,uVar2);

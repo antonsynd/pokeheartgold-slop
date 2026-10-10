@@ -48,7 +48,7 @@ void ov109_021E6F60(int param_1)
 
 {
   int iVar1;
-  
+
   iVar1 = 0;
   do {
     thunk_Sprite_Delete(*(undefined4 *)(param_1 + 0x98));

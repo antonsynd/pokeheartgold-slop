@@ -55,7 +55,7 @@ void ov85_021EA0EC(int param_1,undefined4 param_2,int param_3)
 
 {
   undefined4 uVar1;
-  
+
   uVar1 = String_New(0xb4,0x66);
   ReadMsgDataIntoString(*(undefined4 *)(param_1 + 0x38),param_2,uVar1);
   StringExpandPlaceholders(*(undefined4 *)(param_1 + 0x34),*(undefined4 *)(param_1 + 0x54),uVar1);

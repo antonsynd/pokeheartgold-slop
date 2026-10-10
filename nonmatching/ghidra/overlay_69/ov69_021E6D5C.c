@@ -57,7 +57,7 @@ void ov69_021E6D5C(undefined4 *param_1)
   int iVar2;
   undefined4 uVar3;
   int iStack_14;
-  
+
   if (param_1[0x30ce] == 0) {
     uVar1 = String_New(0x400,*param_1);
     FillWindowPixelRect(param_1 + 0x3005,0xf,0,0,0xd8,0x30);

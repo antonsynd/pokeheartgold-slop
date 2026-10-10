@@ -71,7 +71,7 @@ void ov49_0225BFF0(int param_1,int param_2,undefined *param_3,int param_4,uint p
   undefined4 uStack_40;
   int iStack_3c;
   undefined auStack_38 [36];
-  
+
   if (0x1a < param_5) {
     GF_AssertFail();
   }

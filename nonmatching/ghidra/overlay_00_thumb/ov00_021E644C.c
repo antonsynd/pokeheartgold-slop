@@ -50,7 +50,7 @@ void ov00_021E644C(uint param_1)
 
 {
   int iVar1;
-  
+
   sub_0203993C();
   iVar1 = sub_02034084();
   if (iVar1 == 0) {

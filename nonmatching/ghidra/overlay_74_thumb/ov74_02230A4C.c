@@ -50,7 +50,7 @@ void ov74_02230A4C(undefined4 param_1,uint param_2,undefined4 param_3)
 
 {
   int iVar1;
-  
+
   iVar1 = ov74_02231054();
   if (param_2 <= *(ushort *)(iVar1 + 0x34)) {
     func_0x020d2894(param_1,param_2);

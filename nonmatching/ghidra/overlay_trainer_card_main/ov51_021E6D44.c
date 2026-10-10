@@ -54,7 +54,7 @@ void ov51_021E6D44(undefined4 param_1,undefined1 param_2,undefined4 param_3,unde
   uint uVar3;
   short sVar4;
   int iVar5;
-  
+
   BG_LoadCharTilesData(param_1,param_2,param_3,0x3000,1,param_1,param_4);
   iVar1 = GetBgTilemapBuffer(param_1,param_2);
   sVar4 = 0;

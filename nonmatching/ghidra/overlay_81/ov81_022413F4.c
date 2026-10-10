@@ -50,7 +50,7 @@ void ov81_022413F4(int param_1,undefined4 param_2)
 {
   undefined4 uStack_10;
   undefined4 uStack_c;
-  
+
   ov81_02243228(*(undefined4 *)(param_1 + 0x464),param_2,&uStack_c,&uStack_10);
   ov81_02242DAC(*(undefined4 *)(param_1 + 0x388),uStack_c,uStack_10);
   return;

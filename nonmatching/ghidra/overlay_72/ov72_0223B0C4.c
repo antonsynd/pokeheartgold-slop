@@ -62,7 +62,7 @@ void ov72_0223B0C4(undefined4 *param_1)
   int iVar4;
   ushort *puVar5;
   int iStack_18;
-  
+
   uVar1 = NARC_New(0xef,param_1[10]);
   if (*(byte *)((int)param_1 + 0x2f) < 4) {
     GfGfxLoader_GXLoadPalFromOpenNarc

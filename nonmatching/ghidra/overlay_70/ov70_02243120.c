@@ -51,7 +51,7 @@ undefined4 ov70_02243120(int param_1)
 
 {
   undefined4 uVar1;
-  
+
   ov70_02241DB4(param_1,4);
   Sprite_SetDrawFlag(*(undefined4 *)(param_1 + 0xc),0);
   if (-1 < *(short *)(param_1 + 0x3c)) {

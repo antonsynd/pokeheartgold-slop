@@ -62,7 +62,7 @@ ov102_021E7888(undefined4 param_1,undefined4 param_2,undefined4 param_3,undefine
 {
   undefined4 *puVar1;
   undefined4 uVar2;
-  
+
   puVar1 = (undefined4 *)OverlayManager_CreateAndGetData(param_1,0x7c,0x22,param_4,param_4);
   func_0x020d4994(puVar1,0,0x7c);
   uVar2 = OverlayManager_GetArgs(param_1);

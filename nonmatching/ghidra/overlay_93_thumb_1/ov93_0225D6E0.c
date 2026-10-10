@@ -50,7 +50,7 @@ void ov93_0225D6E0(int param_1)
 
 {
   undefined4 uVar1;
-  
+
   uVar1 = sub_020154D0(*(undefined4 *)(param_1 + 0xa4));
   sub_02014EBC(*(undefined4 *)(param_1 + 0xa4));
   Heap_Free(uVar1);

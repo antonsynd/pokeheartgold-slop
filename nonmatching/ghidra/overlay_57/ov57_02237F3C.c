@@ -51,7 +51,7 @@ void ov57_02237F3C(int param_1)
   char *pcVar1;
   int iVar2;
   uint uVar3;
-  
+
   uVar3 = 0;
   pcVar1 = *(char **)(param_1 + *(int *)(param_1 + 0x3ec) * 8 + 8);
   iVar2 = param_1;

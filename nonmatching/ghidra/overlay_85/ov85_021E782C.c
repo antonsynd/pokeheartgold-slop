@@ -52,7 +52,7 @@ void ov85_021E782C(int param_1)
   int *piVar2;
   int *piVar3;
   int iVar4;
-  
+
   iVar1 = *(int *)(param_1 + 0x30);
   iVar4 = 0;
   piVar2 = (int *)(param_1 + 0x640);

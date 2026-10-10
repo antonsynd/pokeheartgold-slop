@@ -55,7 +55,7 @@ undefined4 ov112_021E9290(undefined4 param_1,undefined4 param_2,undefined2 *para
 {
   undefined4 uVar1;
   undefined4 uVar2;
-  
+
   func_0x0207013c(param_3,param_1,2,0);
   uVar1 = GetBoxMonData(param_1,0,0);
   uVar2 = GetBoxMonData(param_1,5,0);

@@ -48,7 +48,7 @@ undefined4 ov91_0225DBF4(int param_1,undefined4 param_2,undefined4 param_3,undef
 
 {
   int iVar1;
-  
+
   iVar1 = *(int *)(param_1 + 0x4a4) + 1;
   *(int *)(param_1 + 0x4a4) = iVar1;
   if ((0x3b < *(uint *)(param_1 + 0x4a4)) &&

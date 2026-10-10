@@ -52,7 +52,7 @@ void ov01_021F7EE4(undefined4 param_1,undefined4 param_2,char *param_3,int param
 
 {
   undefined4 uVar1;
-  
+
   if (param_4 != *param_3) {
     uVar1 = ov01_021FA44C(param_4);
     sub_02023EE0(param_2,uVar1);

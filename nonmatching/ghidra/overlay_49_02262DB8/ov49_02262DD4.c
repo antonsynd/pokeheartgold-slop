@@ -48,7 +48,7 @@ void ov49_02262DD4(int param_1,undefined4 param_2)
 
 {
   short sVar1;
-  
+
   sVar1 = func_0x020f2998(param_2,0x1e);
   if (sVar1 != *(short *)(param_1 + 4)) {
     *(short *)(param_1 + 4) = sVar1;

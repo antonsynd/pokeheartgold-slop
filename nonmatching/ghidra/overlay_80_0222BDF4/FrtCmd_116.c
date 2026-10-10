@@ -49,7 +49,7 @@ undefined4 FrtCmd_116(undefined4 *param_1)
 
 {
   int iVar1;
-  
+
   iVar1 = Frontier_GetLaunchArgs(*(undefined4 *)*param_1);
   Save_WipeExtraChunks(*(undefined4 *)(iVar1 + 8));
   return 0;

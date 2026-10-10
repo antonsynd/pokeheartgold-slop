@@ -59,7 +59,7 @@ void ov96_021EDE64(undefined4 param_1,undefined4 param_2)
   int iVar5;
   uint uVar6;
   int iVar7;
-  
+
   uVar2 = ov96_021E5F24();
   iVar3 = PokeathlonCourse_GetHeapAllocPtr4(param_1);
   iVar4 = PokeathlonCourse_GetFieldData(param_1);

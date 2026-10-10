@@ -64,7 +64,7 @@ void ov08_0221D184(undefined4 *param_1)
   int iVar8;
   undefined4 *puVar9;
   uint uStack_20;
-  
+
   uStack_20 = 0;
   iVar5 = Party_GetCount(*(undefined4 *)*param_1);
   if (0 < iVar5) {

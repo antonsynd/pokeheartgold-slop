@@ -50,7 +50,7 @@ void sub_0205FE48(undefined4 param_1)
 
 {
   int iVar1;
-  
+
   iVar1 = MapObject_GetFlagsBitsMask(param_1,4);
   if (iVar1 != 0) {
     sub_0205FEDC(param_1);

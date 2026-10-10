@@ -50,7 +50,7 @@ void ov10_0221C278(undefined4 param_1,int param_2,undefined4 param_3,undefined4 
   char cVar1;
   undefined2 uVar2;
   int iVar3;
-  
+
   cVar1 = *(char *)(param_2 + 0x354);
   while (cVar1 != '\x02') {
     if (cVar1 == '\0') {

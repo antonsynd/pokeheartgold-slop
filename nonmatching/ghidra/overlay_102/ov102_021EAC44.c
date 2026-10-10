@@ -50,7 +50,7 @@ void ov102_021EAC44(undefined4 *param_1,int param_2)
 {
   undefined4 uVar1;
   short *psVar2;
-  
+
   uVar1 = ov102_021E8FA8(*(undefined4 *)(param_2 + 4),0x23);
   *param_1 = uVar1;
   psVar2 = (short *)func_0x02026aa4();

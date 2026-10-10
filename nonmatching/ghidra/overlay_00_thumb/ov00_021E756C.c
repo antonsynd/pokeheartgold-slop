@@ -53,7 +53,7 @@ void ov00_021E756C(undefined4 param_1,undefined4 param_2,int *param_3)
 
 {
   int iVar1;
-  
+
   switch(param_2) {
   case 1:
     if (*(int *)(iRam0221a688 + 0x1a54) != 0) {

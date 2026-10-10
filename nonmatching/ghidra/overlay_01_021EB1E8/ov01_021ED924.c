@@ -60,7 +60,7 @@ void ov01_021ED924(undefined4 param_1,int *param_2)
   int iVar5;
   undefined1 auStack_50 [32];
   undefined1 auStack_30 [32];
-  
+
   iVar4 = *(int *)(*param_2 + 0x104);
   iVar5 = param_2[0x3d6];
   switch(*(undefined2 *)((int)param_2 + 0xf62)) {

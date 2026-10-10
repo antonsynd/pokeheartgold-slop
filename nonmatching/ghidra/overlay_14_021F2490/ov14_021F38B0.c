@@ -57,7 +57,7 @@ void ov14_021F38B0(int param_1,undefined4 param_2,undefined4 param_3,undefined4 
   undefined4 uVar2;
   int iStack_18;
   undefined4 uStack_14;
-  
+
   uStack_14 = param_4;
   uVar1 = func_0x02077c18(param_2,1);
   uVar1 = GfGfxLoader_GetCharData(0x12,uVar1,0,&iStack_18,10);

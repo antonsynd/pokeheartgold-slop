@@ -54,7 +54,7 @@ short ov74_022344A8(undefined4 *param_1)
   short *psVar5;
   int iVar6;
   short sVar7;
-  
+
   sVar7 = 0;
   psVar2 = (short *)ov74_02233F8C(param_1,*param_1,0);
   psVar3 = (short *)ov74_02233F8C(param_1,*param_1,1);

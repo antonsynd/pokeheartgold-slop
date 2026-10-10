@@ -52,7 +52,7 @@ undefined4 ov74_0222D614(int param_1,undefined *param_2,uint param_3)
 {
   undefined *puVar1;
   uint uVar2;
-  
+
   uVar2 = (uint)*(byte *)(*(int *)(param_1 + *(int *)(param_1 + 0x2bc0) * 4 + 0x2bb4) + 0x348);
   if (uVar2 == 0xff) {
     puVar1 = ReadMsgData_ExpandPlaceholders

@@ -53,7 +53,7 @@ void ov96_021F4724(undefined4 *param_1)
 {
   int iVar1;
   undefined4 *puVar2;
-  
+
   iVar1 = 0;
   *param_1 = 0;
   *(undefined2 *)((int)param_1 + 0x1a) = 0;

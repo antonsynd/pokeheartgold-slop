@@ -53,7 +53,7 @@ undefined4 ov05_0221C80C(int param_1)
 
 {
   byte bVar1;
-  
+
   if (*(char *)(param_1 + 0xb82) == '\0') {
     GfGfx_EngineATogglePlanes(2,1);
     uRam04000000 = uRam04000000 & 0xffff1fff | 0x2000;

@@ -65,7 +65,7 @@ void ov08_0221DDCC(int *param_1,int param_2,int param_3,int param_4,undefined1 p
   int iVar5;
   int iVar6;
   int iVar7;
-  
+
   iVar7 = param_1[0x81c];
   param_2 = param_2 * 0x10;
   uVar2 = String_New(0xc,*(undefined4 *)(*param_1 + 0xc));

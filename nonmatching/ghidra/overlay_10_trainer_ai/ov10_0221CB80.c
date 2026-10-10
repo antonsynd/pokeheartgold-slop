@@ -52,7 +52,7 @@ void ov10_0221CB80(undefined4 param_1,int param_2,undefined4 param_3,undefined4 
 
 {
   undefined4 uVar1;
-  
+
   ov10_0221EF24(param_2,1,param_3,param_4,param_4);
   uVar1 = ov10_0221EEF0(param_2);
   switch(uVar1) {

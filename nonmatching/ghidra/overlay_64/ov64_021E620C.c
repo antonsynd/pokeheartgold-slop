@@ -49,7 +49,7 @@ void ov64_021E620C(int param_1)
 
 {
   uint uVar1;
-  
+
   uVar1 = 0;
   param_1 = param_1 + 8;
   do {

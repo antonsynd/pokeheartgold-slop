@@ -49,7 +49,7 @@ undefined4 ov02_02246490(int param_1,undefined4 param_2,undefined4 param_3,undef
 {
   char cVar1;
   byte bVar2;
-  
+
   if (*(char *)(param_1 + 9) == '\0') {
     *(undefined1 *)(param_1 + 0xb) = 0;
     *(undefined1 *)(param_1 + 10) = 0;

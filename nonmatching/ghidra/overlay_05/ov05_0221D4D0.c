@@ -48,7 +48,7 @@ void ov05_0221D4D0(int *param_1)
 
 {
   undefined4 uVar1;
-  
+
   uVar1 = *(undefined4 *)(*param_1 + 4);
   if (*(char *)(*param_1 + 0x29) == '\0') {
     ov05_0221D414(param_1,uVar1,6,0);

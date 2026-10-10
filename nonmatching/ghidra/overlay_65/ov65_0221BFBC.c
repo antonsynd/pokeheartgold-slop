@@ -51,7 +51,7 @@ void ov65_0221BFBC(int param_1,undefined4 param_2,undefined4 param_3,undefined4 
 
 {
   int iVar1;
-  
+
   func_0x020cfe74(*(undefined4 *)(param_1 + 0x14),(param_5 * 0x10 + 0x92) * 0x20,0x200);
   iVar1 = GetMonIconPaletteEx(param_2,param_3,param_4);
   func_0x02024a74(param_6,iVar1 + 10);

@@ -49,7 +49,7 @@ void ov96_021EFB20(undefined4 param_1,undefined4 param_2)
 
 {
   int iVar1;
-  
+
   iVar1 = PokeathlonCourse_GetHeapAllocPtr4();
   BeginNormalPaletteFade(0,0,0,0x7fff,4,1,*(undefined4 *)(iVar1 + 0xc));
   *(undefined4 *)(iVar1 + 0x18) = param_2;

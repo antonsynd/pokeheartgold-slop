@@ -57,7 +57,7 @@ void sub_0208D9A0(int param_1,undefined4 param_2)
   uint uVar1;
   int iVar2;
   undefined4 uVar3;
-  
+
   ScheduleWindowCopyToVram(param_1 + 0x184);
   ScheduleWindowCopyToVram(param_1 + 0x194);
   ScheduleWindowCopyToVram(param_1 + 0x1a4);

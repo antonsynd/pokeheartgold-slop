@@ -102,7 +102,7 @@ undefined4 ov49_02260428(undefined4 param_1,undefined4 param_2,undefined4 param_
   undefined4 uStack_44;
   undefined4 uStack_40;
   undefined1 auStack_18 [4];
-  
+
   uVar3 = ov49_02259FF0(param_2);
   uVar4 = ov49_02258D70(uVar3,param_3);
   uVar5 = ov49_0225A040(param_2);

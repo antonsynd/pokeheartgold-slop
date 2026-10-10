@@ -49,7 +49,7 @@ void ov27_0225A66C(int param_1)
 
 {
   int iVar1;
-  
+
   iVar1 = ov27_0225A594();
   if (*(int *)(param_1 + 0x510) != iVar1) {
     ov27_0225A61C(param_1,iVar1);

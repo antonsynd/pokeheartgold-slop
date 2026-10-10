@@ -65,7 +65,7 @@ void ov40_0223D544(int param_1)
   undefined4 uStack_14;
   undefined4 uStack_10;
   int iStack_c;
-  
+
   func_0x02028d30(*(undefined4 *)(param_1 + 0x830));
   uStack_48 = func_0x02028dd8();
   uStack_44 = 0x6d;

@@ -95,7 +95,7 @@ undefined4 ov40_02237D94(int param_1,undefined4 param_2,undefined4 param_3,undef
   int iVar6;
   int iStack_18;
   undefined4 uStack_14;
-  
+
   iVar6 = *(int *)(param_1 + 0x860);
   uStack_14 = param_4;
   iVar1 = ov40_0223D5CC();

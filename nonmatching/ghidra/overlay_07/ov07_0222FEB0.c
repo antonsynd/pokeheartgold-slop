@@ -51,7 +51,7 @@ void ov07_0222FEB0(undefined4 param_1,undefined4 param_2,int param_3,int param_4
 {
   short sStack_18;
   short sStack_16;
-  
+
   func_0x0200de44(param_1,&sStack_16,&sStack_18);
   ov07_02222268(param_2,(int)sStack_16,((int)sStack_16 + param_3 * 0x100) * 0x10000 >> 0x10,
                 (int)sStack_18,((int)sStack_18 + param_4 * -0x80) * 0x10000 >> 0x10,0x3b);

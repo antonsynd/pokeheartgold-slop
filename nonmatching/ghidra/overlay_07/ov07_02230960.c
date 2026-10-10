@@ -52,7 +52,7 @@ void ov07_02230960(undefined4 param_1,undefined4 *param_2,undefined4 param_3,und
 
 {
   int iVar1;
-  
+
   iVar1 = ov07_022222F0(param_2 + 2,param_2[0xb],param_3,param_4,param_4);
   if (iVar1 == 0) {
     Sprite_DeleteAndFreeResources(param_2[0xb]);

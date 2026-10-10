@@ -54,7 +54,7 @@ undefined4 ov102_021EA754(undefined4 *param_1)
 {
   undefined4 uVar1;
   short sVar2;
-  
+
   if (5 < *(byte *)(param_1 + 0x79)) {
     if (*(char *)((int)param_1 + 0x1e5) == '\0') {
       ov102_021EA678(param_1,1);

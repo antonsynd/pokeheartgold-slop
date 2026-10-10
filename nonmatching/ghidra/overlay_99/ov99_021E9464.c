@@ -51,7 +51,7 @@ void ov99_021E9464(int param_1,uint *param_2,undefined1 param_3,int param_4,int 
 {
   int iVar1;
   uint uVar2;
-  
+
   if (param_1 == 0) {
     GF_AssertFail();
   }

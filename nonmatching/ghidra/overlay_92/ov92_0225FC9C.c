@@ -70,7 +70,7 @@ void ov92_0225FC9C(int param_1,undefined4 param_2,undefined4 param_3,undefined4 
   undefined8 uVar4;
   undefined4 uStack_34;
   int aiStack_30 [8];
-  
+
   aiStack_30[7] = param_4;
   System_GetTouchHeldCoords(aiStack_30,&uStack_34);
   *(undefined4 *)(param_1 + 0x2b84) = 0;

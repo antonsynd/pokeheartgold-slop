@@ -57,7 +57,7 @@ undefined4 sub_0208A564(undefined4 *param_1)
 {
   char cVar1;
   int iVar2;
-  
+
   cVar1 = *(char *)((int)param_1 + 0x7be);
   if (cVar1 == '\0') {
     Sprite_SetDrawFlag(param_1[0x10a],0);

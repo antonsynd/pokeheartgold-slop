@@ -59,7 +59,7 @@ undefined4 ov91_0225C9EC(undefined4 param_1,int *param_2)
 {
   int iVar1;
   int iVar2;
-  
+
   iVar1 = OverlayManager_GetData();
   OverlayManager_GetArgs(param_1);
   if (*param_2 == 0) {

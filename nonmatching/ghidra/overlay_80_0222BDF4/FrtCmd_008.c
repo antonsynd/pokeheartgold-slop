@@ -50,7 +50,7 @@ undefined4 FrtCmd_008(undefined4 param_1)
 {
   short sVar1;
   short *psVar2;
-  
+
   psVar2 = (short *)FrontierScript_ReadVarPtr();
   sVar1 = FrontierScript_ReadVar(param_1);
   *psVar2 = *psVar2 + sVar1;

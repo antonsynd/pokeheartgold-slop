@@ -59,7 +59,7 @@ undefined4 ov74_0222AB70(undefined4 param_1,undefined4 *param_2)
 {
   undefined1 uVar1;
   int iVar2;
-  
+
   func_0x02020080();
   LoadFontPal0(0,0,0x54);
   LoadFontPal0(0,0x20,0x54);

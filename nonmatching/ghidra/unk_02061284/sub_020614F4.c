@@ -57,7 +57,7 @@ void sub_020614F4(undefined4 param_1,int *param_2)
   int iVar3;
   int iVar4;
   undefined4 uVar5;
-  
+
   iVar1 = MapObject_GetInitialX();
   iVar2 = MapObject_GetInitialZ(param_1);
   iVar3 = MapObject_GetXRange(param_1);

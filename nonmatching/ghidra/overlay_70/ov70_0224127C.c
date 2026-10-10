@@ -50,7 +50,7 @@ void ov70_0224127C(int param_1,undefined4 param_2,undefined4 param_3,undefined4 
 
 {
   undefined4 uVar1;
-  
+
   uVar1 = func_0x020079f4(0x54,0xb,param_1 + 0x11ec,0x3d);
   *(undefined4 *)(param_1 + 0x11e8) = uVar1;
   uVar1 = GfGfxLoader_GetCharData(0x54,0xc,1,param_1 + 0x11e4,0x3d,param_4);

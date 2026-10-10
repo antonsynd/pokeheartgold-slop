@@ -65,7 +65,7 @@ void ov12_022645F8(undefined *param_1,int param_2,undefined *param_3,undefined1 
   undefined *puVar7;
   int iVar8;
   int iVar9;
-  
+
   MIi_CpuClearFast(0,param_3,8);
   uVar2 = BattleSystem_GetBattleType(param_1);
   *param_3 = param_4;

@@ -55,7 +55,7 @@ void ov14_021E59AC(undefined4 param_1,int param_2)
 {
   int iVar1;
   code *pcVar2;
-  
+
   pcVar2 = *(code **)(*(int *)(param_2 + 0x34) + 4);
   if ((pcVar2 != (code *)0x0) && (iVar1 = (*pcVar2)(param_2), iVar1 == 0)) {
     *(undefined4 *)(*(int *)(param_2 + 0x34) + 4) = 0;

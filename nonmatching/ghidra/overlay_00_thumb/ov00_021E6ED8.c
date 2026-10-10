@@ -57,7 +57,7 @@ void ov00_021E6ED8(int param_1,int param_2,int param_3,uint param_4,int param_5)
   uint uVar3;
   undefined4 uVar4;
   uint uStack_18;
-  
+
   bVar1 = false;
   *(undefined4 *)(iRam0221a680 + 0x10a0) = 0;
   if (param_1 == 0) {

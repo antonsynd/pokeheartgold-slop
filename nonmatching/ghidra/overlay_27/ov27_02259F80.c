@@ -84,7 +84,7 @@ undefined4 ov27_02259F80(undefined4 param_1,undefined4 param_2,int param_3)
   uint uVar3;
   undefined4 uVar4;
   int iVar5;
-  
+
   Heap_Create(3,8,0x18d00);
   func_0x020cda64(0);
   func_0x020ce650(0x80);

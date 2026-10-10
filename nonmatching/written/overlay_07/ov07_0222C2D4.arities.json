@@ -1,0 +1,1 @@
+{"ov07_0222C214": [1, 0], "ov07_0222C208": [2, 0], "ManagedSprite_SetDrawFlag": [2, 0], "ManagedSprite_SetOamMode": [2, 0], "ov07_0221C448": [2, 0], "Sprite_IsAnimated": [1, 0], "ManagedSprite_TickFrame": [1, 0], "Sprite_DeleteAndFreeResources": [1, 0], "Heap_Free": [1, 0], "SpriteSystem_DrawSprites": [1, 0], "ov07_0222C1FC": [1, 0], "_s32_div_f": [0, 0]}

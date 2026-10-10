@@ -53,7 +53,7 @@ void ov27_0225A530(int param_1,int param_2)
 {
   int iVar1;
   int iVar2;
-  
+
   iVar1 = func_0x020249a8(*(undefined4 *)(param_1 + 0x3c0));
   iVar2 = Sprite_GetDrawFlag(*(undefined4 *)(param_1 + 0x3c0));
   if (iVar2 != 0) {

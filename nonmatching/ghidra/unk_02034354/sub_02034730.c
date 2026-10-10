@@ -51,7 +51,7 @@ int sub_02034730(int param_1)
 {
   char cVar1;
   int iVar2;
-  
+
   iVar2 = 1;
   cVar1 = *(char *)(iRam021d4130 + param_1 + 0x39c);
   if ((cVar1 != '\x02') && (cVar1 != '\x01')) {

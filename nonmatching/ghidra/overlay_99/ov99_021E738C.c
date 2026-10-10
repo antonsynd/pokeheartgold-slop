@@ -51,7 +51,7 @@ void ov99_021E738C(undefined4 *param_1,int param_2,char param_3)
   short sVar2;
   int iStack_1c;
   short asStack_18 [2];
-  
+
   sVar2 = 0;
   iStack_1c = 0;
   do {

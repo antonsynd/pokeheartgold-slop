@@ -49,7 +49,7 @@ undefined4 ov70_0223DFF0(int param_1)
 
 {
   int iVar1;
-  
+
   iVar1 = TextPrinterCheckActive(*(uint *)(param_1 + 0xbf0) & 0xff);
   if (iVar1 == 0) {
     ClearFrameAndWindow2(param_1 + 0x1158,0);

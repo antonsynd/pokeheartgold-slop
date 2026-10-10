@@ -61,7 +61,7 @@ void ov40_0223DDE8(int param_1,int param_2,int param_3,undefined4 param_4)
   undefined4 uVar2;
   undefined4 uVar3;
   int iVar4;
-  
+
   iVar4 = *(int *)(param_1 + 0x860);
   FillWindowPixelBuffer(iVar4 + 0x664,0);
   if ((param_2 == 0xff) && (param_3 == 0xff)) {

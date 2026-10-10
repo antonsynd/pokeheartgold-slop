@@ -47,7 +47,7 @@ undefined2 ov15_021F9D60(int param_1,int param_2,int param_3)
 
 {
   int iVar1;
-  
+
   iVar1 = *(int *)(*(int *)(param_1 + 0x234) + 4 +
                   (uint)*(byte *)(*(int *)(param_1 + 0x234) + 100) * 0xc);
   if (param_3 == 0) {

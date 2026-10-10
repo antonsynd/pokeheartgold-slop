@@ -56,7 +56,7 @@ void ov96_02203DCC(undefined4 *param_1,undefined2 *param_2,undefined4 param_3,un
   undefined2 uStack_26;
   undefined2 uStack_24;
   undefined4 uStack_18;
-  
+
   iStack_2c = 0;
   puVar2 = param_1;
   uStack_18 = param_4;

@@ -60,7 +60,7 @@ undefined4 ov88_02258800(undefined4 param_1)
 {
   undefined4 *puVar1;
   undefined4 *puVar2;
-  
+
   puVar1 = (undefined4 *)OverlayManager_GetArgs();
   Heap_Create(3,0x72,0x50000);
   puVar2 = (undefined4 *)OverlayManager_CreateAndGetData(param_1,0x270,0x72);

@@ -51,7 +51,7 @@ void ov57_0223B9C8(int param_1)
 
 {
   undefined2 uVar1;
-  
+
   uVar1 = GetMonData(*(undefined4 *)(param_1 + 0x458),5,0);
   GetMonNature(*(undefined4 *)(param_1 + 0x458));
   Pokepic_StartAnim(*(undefined4 *)(param_1 + 0x1c8),1);

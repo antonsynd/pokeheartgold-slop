@@ -57,7 +57,7 @@ ov74_0222A5CC(undefined4 param_1,undefined4 param_2,undefined4 param_3,undefined
 {
   undefined4 *puVar1;
   undefined4 *puVar2;
-  
+
   puVar1 = (undefined4 *)OverlayManager_GetData();
   Save_MysteryGift_Get(puVar1[1]);
   if (puVar1[0x172] == 0x1e) {

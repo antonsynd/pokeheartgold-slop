@@ -50,7 +50,7 @@ void CRYPTO_VerifySignature
 
 {
   undefined1 auStack_20 [20];
-  
+
   func_0x020e3798(auStack_20,param_1,param_2);
   CRYPTO_VerifySignatureWithHash(auStack_20,param_3,param_4);
   return;

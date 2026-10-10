@@ -49,7 +49,7 @@ undefined1 ov96_021F7E64(void)
 
 {
   int iVar1;
-  
+
   iVar1 = PokeathlonCourse_GetDataCopyArea();
   iVar1 = ov96_021E8A20(iVar1 + 0xf0);
   return *(undefined1 *)(iVar1 + 2);

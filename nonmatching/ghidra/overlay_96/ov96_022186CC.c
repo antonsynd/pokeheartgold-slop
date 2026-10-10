@@ -53,7 +53,7 @@ undefined4 ov96_022186CC(void)
   undefined4 uStack_18;
   undefined4 uStack_14;
   undefined4 uStack_10;
-  
+
   uStack_1c = 0;
   uStack_18 = 0;
   uStack_14 = 0x1000;

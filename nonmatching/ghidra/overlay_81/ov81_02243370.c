@@ -51,7 +51,7 @@ void ov81_02243370(undefined4 param_1,undefined4 param_2)
 
 {
   int iVar1;
-  
+
   ov81_02243220(param_2);
   iVar1 = ov81_02242710(param_1);
   if (iVar1 == 1) {

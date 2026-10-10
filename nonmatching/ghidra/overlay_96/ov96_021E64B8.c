@@ -49,7 +49,7 @@ void ov96_021E64B8(int param_1)
 {
   uint uVar1;
   int iVar2;
-  
+
   uVar1 = 0;
   *(undefined4 *)(param_1 + 0xd30) = 0;
   do {

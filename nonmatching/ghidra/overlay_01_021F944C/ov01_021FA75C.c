@@ -51,7 +51,7 @@ void ov01_021FA75C(int param_1,undefined4 param_2,undefined4 param_3,undefined4 
   undefined4 *puVar1;
   int iVar2;
   int iVar3;
-  
+
   iVar2 = 0;
   iVar3 = (int)**(short **)(param_1 + 0x100);
   puVar1 = *(undefined4 **)(*(short **)(param_1 + 0x100) + 4);

@@ -66,7 +66,7 @@ void sub_020664D8(undefined *param_1,undefined4 param_2,undefined4 param_3,undef
   uint uStack_1c;
   uint uStack_18;
   undefined4 uStack_14;
-  
+
   uStack_14 = param_4;
   puVar2 = MapObject_GetFieldSystem(param_1);
   uStack_18 = MapObject_GetXCoord(param_1);

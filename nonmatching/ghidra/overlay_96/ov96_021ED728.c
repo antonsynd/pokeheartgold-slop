@@ -51,7 +51,7 @@ void ov96_021ED728(undefined4 param_1,undefined4 param_2,undefined4 param_3)
 {
   undefined1 uVar1;
   undefined4 uVar2;
-  
+
   uVar1 = PokeathlonCourse_GetField3D8_AtIndex(param_1,param_3);
   uVar2 = PokeathlonCourse_GetGraphicsSystem(param_1);
   ov96_021E95D8(uVar2,uVar1,param_2);

@@ -57,7 +57,7 @@ void ov96_021EAD88(undefined4 *param_1,int param_2,int param_3,int param_4)
   int iStack_20;
   int iStack_1c;
   undefined4 uStack_18;
-  
+
   iStack_2c = 0;
   iStack_28 = 0;
   uStack_24 = 0;

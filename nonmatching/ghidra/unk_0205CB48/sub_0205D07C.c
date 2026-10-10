@@ -48,7 +48,7 @@ undefined4 sub_0205D07C(undefined4 param_1,int param_2,undefined4 param_3,undefi
 
 {
   int iVar1;
-  
+
   iVar1 = (**(code **)(&UNK_020fcb7c + param_2 * 4))
                     (param_1,param_3,*(code **)(&UNK_020fcb7c + param_2 * 4),param_2 * 4,param_4);
   if (iVar1 == 1) {

@@ -55,7 +55,7 @@ void ov74_022300A8(int param_1)
 {
   int iVar1;
   int iVar2;
-  
+
   if (*(short *)(param_1 + 2) == 0) {
     iVar1 = ov74_0223115C();
     if (*(ushort *)(param_1 + 10) < (ushort)*(byte *)(iVar1 + 0x61)) {

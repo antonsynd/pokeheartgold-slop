@@ -67,7 +67,7 @@ undefined4 ov74_022317D8(int param_1,undefined4 param_2,undefined4 param_3,undef
   ulonglong uVar5;
   undefined1 auStack_20 [16];
   undefined4 uStack_10;
-  
+
   piVar4 = (int *)(param_1 + 0xe890);
   uStack_10 = param_4;
   switch(*piVar4) {

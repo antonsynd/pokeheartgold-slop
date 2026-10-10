@@ -50,7 +50,7 @@ void ov96_0220E770(int param_1,uint param_2,uint param_3,undefined2 *param_4,und
 {
   undefined4 uVar1;
   int iVar2;
-  
+
   if (param_1 == 0) {
     GF_AssertFail();
   }

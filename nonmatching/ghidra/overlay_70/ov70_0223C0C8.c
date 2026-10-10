@@ -53,7 +53,7 @@ undefined4 ov70_0223C0C8(int param_1,undefined4 param_2,undefined4 param_3,undef
 
 {
   int iVar1;
-  
+
   iVar1 = ov70_02237F38();
   if (iVar1 == 0) {
     *(int *)(param_1 + 0x1604) = *(int *)(param_1 + 0x1604) + 1;

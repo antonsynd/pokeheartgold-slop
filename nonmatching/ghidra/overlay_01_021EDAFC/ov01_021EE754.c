@@ -53,7 +53,7 @@ void ov01_021EE754(int param_1,undefined4 param_2,undefined4 param_3,undefined4 
 {
   undefined4 uVar1;
   undefined4 uVar2;
-  
+
   uVar1 = String_New(0x5a,4);
   uVar2 = String_New(0x5a,4);
   ReadMsgDataIntoString(*(undefined4 *)(param_1 + 0x8c),param_2,uVar1);

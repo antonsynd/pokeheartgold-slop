@@ -52,7 +52,7 @@ void ov82_0223F770(int param_1,undefined2 param_2,undefined2 param_3)
   undefined2 uVar1;
   int iVar2;
   undefined4 uVar3;
-  
+
   *(undefined2 *)(param_1 + 0x224) = param_2;
   *(undefined2 *)(param_1 + 0x226) = param_3;
   iVar2 = sub_0203769C();

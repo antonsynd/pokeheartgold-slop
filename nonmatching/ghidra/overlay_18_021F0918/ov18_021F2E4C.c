@@ -51,7 +51,7 @@ void ov18_021F2E4C(int param_1,int param_2,int param_3,undefined4 param_4)
   short sStack_18;
   short sStack_16;
   undefined4 uStack_14;
-  
+
   uStack_14 = param_4;
   func_0x0200de44(*(undefined4 *)(param_1 + 0x670 + param_2 * 4),&sStack_16,&sStack_18);
   ManagedSprite_SetPositionXY

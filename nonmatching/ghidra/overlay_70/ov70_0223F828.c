@@ -48,7 +48,7 @@ void ov70_0223F828(int param_1,int param_2,int param_3)
 
 {
   int iVar1;
-  
+
   if (param_3 == 0) {
     iVar1 = 0x2245a4c;
     if (0xb < param_2) {

@@ -51,7 +51,7 @@ void sub_0208C320(int param_1)
 {
   undefined4 uVar1;
   uint uVar2;
-  
+
   uVar2 = 0;
   do {
     if (uVar2 + (uint)*(byte *)(param_1 + 0x7c5) * 9 < (uint)*(byte *)(param_1 + 0x7c6)) {

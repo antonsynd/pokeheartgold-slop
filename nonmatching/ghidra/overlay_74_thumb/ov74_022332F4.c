@@ -99,7 +99,7 @@ undefined4 ov74_022332F4(undefined4 param_1,int *param_2)
   int *piVar1;
   int iVar2;
   int iVar3;
-  
+
   piVar1 = (int *)OverlayManager_GetData();
   func_0x020e1134();
   func_0x020e10e8();

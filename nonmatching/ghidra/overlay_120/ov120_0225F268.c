@@ -53,7 +53,7 @@ int ov120_0225F268(undefined4 param_1,undefined4 param_2,undefined4 param_3,unde
   undefined4 uVar2;
   int iVar3;
   int iVar4;
-  
+
   iVar1 = Heap_Alloc(param_1,0xcc,param_3,param_4,param_4);
   func_0x020e5b44(iVar1,0,0xcc);
   iVar3 = 0;

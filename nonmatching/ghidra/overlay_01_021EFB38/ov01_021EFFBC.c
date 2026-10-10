@@ -49,7 +49,7 @@ undefined4 ov01_021EFFBC(undefined4 param_1)
 
 {
   undefined4 uVar1;
-  
+
   uVar1 = ov01_021EFE44();
   SysTask_CreateOnVWaitQueue(0x21effd9,param_1,10);
   return uVar1;

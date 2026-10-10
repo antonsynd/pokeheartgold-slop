@@ -56,7 +56,7 @@ void ov28_0225DB8C(int param_1,undefined4 param_2,undefined4 param_3,undefined4 
   undefined1 uStack_3d;
   undefined1 auStack_3c [36];
   undefined4 uStack_18;
-  
+
   uStack_40 = 0;
   uStack_3f = 0;
   uStack_3e = 0;

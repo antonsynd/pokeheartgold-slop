@@ -50,7 +50,7 @@ void sub_020897C0(int param_1)
 
 {
   undefined4 uVar1;
-  
+
   uVar1 = sub_0208A520();
   if (*(char *)(*(int *)(param_1 + 0x22c) + 0x11) == '\x02') {
     sub_020897F0(param_1,uVar1,param_1 + 0x230);

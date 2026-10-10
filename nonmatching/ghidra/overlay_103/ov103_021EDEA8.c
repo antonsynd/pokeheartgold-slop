@@ -59,7 +59,7 @@ void ov103_021EDEA8(int param_1,undefined4 param_2,undefined4 param_3,undefined4
   int iVar2;
   undefined *puVar3;
   uint uVar4;
-  
+
   GfGfx_EngineATogglePlanes(0x10,1,param_3,param_4,param_4);
   GfGfx_EngineBTogglePlanes(0x10,1);
   ov103_021EE13C(*(undefined4 *)(param_1 + 0xc));

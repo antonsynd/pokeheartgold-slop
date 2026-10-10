@@ -50,7 +50,7 @@ int ov74_0222E898(void)
   int iVar1;
   int iVar2;
   int iVar3;
-  
+
   iVar3 = 0;
   iVar2 = 1;
   do {

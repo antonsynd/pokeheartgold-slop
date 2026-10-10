@@ -53,7 +53,7 @@ uint bn_mul_add_words(uint *param_1,uint *param_2,int param_3,uint param_4)
   uint uVar5;
   uint uVar6;
   uint uVar7;
-  
+
   uVar7 = 0;
   if (param_3 < 1) {
     return 0;

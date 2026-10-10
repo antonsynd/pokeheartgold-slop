@@ -50,7 +50,7 @@ undefined4 ov93_0225E764(int param_1,undefined4 param_2,undefined4 param_3,undef
 {
   int iVar1;
   int *piVar2;
-  
+
   iVar1 = ov93_0225E0F4();
   if (iVar1 == 0) {
     return 0;

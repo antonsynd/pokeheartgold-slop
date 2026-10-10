@@ -49,7 +49,7 @@ undefined4 ov28_0225E7D4(int param_1)
 {
   int iStack_10;
   int iStack_c;
-  
+
   System_GetTouchHeldCoords(&iStack_c,&iStack_10);
   if ((*(int *)(param_1 + 0x214) == iStack_c) && (*(int *)(param_1 + 0x218) == iStack_10)) {
     return 1;

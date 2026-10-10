@@ -78,7 +78,7 @@ undefined4 ov57_0223A8FC(int param_1)
   undefined1 uStack_10;
   undefined1 uStack_f;
   byte bStack_e;
-  
+
   switch(*(undefined4 *)(param_1 + 0x404)) {
   case 0:
     iVar1 = ov57_022384C0();

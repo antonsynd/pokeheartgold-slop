@@ -51,7 +51,7 @@ undefined4 ov82_0223E820(int param_1)
 {
   char cVar1;
   int iVar2;
-  
+
   cVar1 = *(char *)(param_1 + 8);
   if (cVar1 == '\0') {
     *(undefined1 *)(param_1 + 0x1b) = 10;

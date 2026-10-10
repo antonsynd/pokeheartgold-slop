@@ -56,7 +56,7 @@ void sub_02060328(undefined4 param_1,undefined4 param_2,undefined4 param_3,ushor
 {
   int iVar1;
   uint uVar2;
-  
+
   if ((*param_4 & 0x7ff) >> 7 != 0) {
     iVar1 = sub_0205BA94(param_3);
     if (iVar1 == 1) {

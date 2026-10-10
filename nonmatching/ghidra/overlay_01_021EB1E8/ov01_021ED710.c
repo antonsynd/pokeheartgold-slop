@@ -72,7 +72,7 @@ void ov01_021ED710(undefined4 param_1,int *param_2,undefined4 param_3,undefined4
   undefined1 auStack_54 [32];
   undefined1 auStack_34 [32];
   undefined4 uStack_14;
-  
+
   iVar5 = *(int *)(*param_2 + 0x104);
   iVar4 = param_2[0x3d6];
   uStack_14 = param_4;

@@ -51,7 +51,7 @@ undefined4 ov75_02248A20(int *param_1)
 
 {
   int iVar1;
-  
+
   iVar1 = func_0x02237f38();
   if (iVar1 == 0) {
     param_1[0x3a] = param_1[0x3a] + 1;

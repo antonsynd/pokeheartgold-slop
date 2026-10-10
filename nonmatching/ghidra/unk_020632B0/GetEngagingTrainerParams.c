@@ -52,7 +52,7 @@ void GetEngagingTrainerParams
 {
   uint uVar1;
   undefined4 uVar2;
-  
+
   *param_1 = param_3;
   param_1[1] = param_4;
   uVar1 = MapObject_GetScriptID(param_2);

@@ -50,7 +50,7 @@ void ov49_0225EA40(undefined4 param_1,undefined4 param_2)
 
 {
   int iVar1;
-  
+
   iVar1 = ov49_0225D1C0(param_2);
   if ((iVar1 != 0xb) && (iVar1 != 0xc)) {
     GF_AssertFail();

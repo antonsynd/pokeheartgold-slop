@@ -61,7 +61,7 @@ void sub_0203A700(int param_1)
   uint *puVar8;
   uint uVar9;
   char cVar10;
-  
+
   uVar9 = uRam04001000;
   uVar3 = uRam04000000;
   if (*(char *)(param_1 + 0x11) == '\x01') {

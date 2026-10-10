@@ -52,7 +52,7 @@ void ov59_0223C09C(undefined4 param_1,int *param_2)
 {
   byte bVar1;
   int iVar2;
-  
+
   iVar2 = *param_2;
   if ((int)((uint)*(byte *)((int)param_2 + 5) * -0x80000000) < 0) {
     Pokepic_AddAttr(*(undefined4 *)(*(int *)(iVar2 + 0x78) + 0x20),0xc,

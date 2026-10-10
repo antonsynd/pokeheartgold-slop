@@ -50,7 +50,7 @@ undefined4 ov31_0225E12C(int param_1,int param_2,int param_3)
 
 {
   int iVar1;
-  
+
   if (*(char *)(param_1 + 0x283) == '\x03') {
     iVar1 = PokeathlonSave_GetUnkB7C_AtIndex(*(undefined **)(param_1 + 0x254),param_2);
     if (iVar1 == 0) {

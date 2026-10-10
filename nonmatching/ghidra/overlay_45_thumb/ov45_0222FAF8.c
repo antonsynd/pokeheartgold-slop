@@ -48,7 +48,7 @@ void ov45_0222FAF8(int param_1,undefined4 param_2,int param_3)
 
 {
   int iVar1;
-  
+
   iVar1 = ov45_0222FB24();
   if (iVar1 != -1) {
     param_3 = param_3 * 8;

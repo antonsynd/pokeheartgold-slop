@@ -60,7 +60,7 @@ void ov14_021EDE88(int param_1,undefined4 param_2,undefined4 param_3,undefined4 
   undefined1 uStack_10;
   undefined1 auStack_f [3];
   undefined4 uStack_c;
-  
+
   uStack_c = param_4;
   PlaySE(0x5ea);
   func_0x02019f7c(*(undefined4 *)(*(int *)(param_1 + 0x34) + 0x2c),*(undefined1 *)(param_1 + 0x21));

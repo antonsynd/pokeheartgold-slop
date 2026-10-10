@@ -51,7 +51,7 @@ void sub_0205D948(undefined4 param_1,undefined4 param_2,undefined4 param_3)
 
 {
   undefined4 uVar1;
-  
+
   PlayerAvatar_ClearUnk24ClearFlag2();
   uVar1 = sub_0206234C(param_3,0x28);
   sub_0205DA1C(param_1,param_2,uVar1);

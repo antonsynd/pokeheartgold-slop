@@ -54,7 +54,7 @@ void ov07_02228E70(undefined4 param_1,char *param_2,undefined4 param_3,undefined
   uint uVar1;
   int iVar2;
   int iVar3;
-  
+
   if (*param_2 == '\0') {
     uVar1 = (uint)(byte)param_2[2];
     if (param_2[1] == '\0') {

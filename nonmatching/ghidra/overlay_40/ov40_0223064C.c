@@ -54,7 +54,7 @@ void ov40_0223064C(int param_1,int param_2)
 {
   int iVar1;
   int iVar2;
-  
+
   func_0x0200d968(*(undefined4 *)(param_2 + 0x1c),100000);
   func_0x0200d978(*(undefined4 *)(param_2 + 0x1c),100000);
   func_0x0200d988(*(undefined4 *)(param_2 + 0x1c),100000);

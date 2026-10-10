@@ -54,7 +54,7 @@ void ov27_0225C088(int param_1,undefined4 param_2,undefined4 param_3,undefined4 
 {
   int iVar1;
   undefined2 *puVar2;
-  
+
   iVar1 = FieldSystem_BugContest_Get(*(undefined4 *)(param_1 + 0x10));
   if (iVar1 == 0) {
     GF_AssertFail();

@@ -48,7 +48,7 @@ undefined4 ov40_022309DC(int param_1,undefined4 param_2,int param_3,int param_4)
 
 {
   undefined4 uVar1;
-  
+
   *(undefined4 *)(param_1 + 0x504) = *(undefined4 *)(param_1 + 4);
   *(undefined4 *)(param_1 + 0x508) = *(undefined4 *)(param_1 + 8);
   *(undefined4 *)(param_1 + 0x50c) = **(undefined4 **)(param_1 + 0x10);

@@ -53,7 +53,7 @@ uint ov49_0225F394(uint *param_1)
   byte bVar2;
   int iVar3;
   longlong lVar4;
-  
+
   cVar1 = *(char *)((int)param_1 + 5);
   if (cVar1 == '\0') {
     *param_1 = 0;

@@ -56,7 +56,7 @@ void ov112_021EA1AC(int param_1)
 
 {
   undefined4 uVar1;
-  
+
   GfGfx_EngineATogglePlanes(0x10,1);
   GfGfx_EngineBTogglePlanes(0x10,1);
   GF_CreateVramTransferManager(0x40,0x9a);

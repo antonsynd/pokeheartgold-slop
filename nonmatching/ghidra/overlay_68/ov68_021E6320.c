@@ -70,7 +70,7 @@ void ov68_021E6320(undefined4 *param_1)
   uint uVar6;
   uint uVar7;
   undefined4 *puVar8;
-  
+
   ReadMsgDataIntoString((undefined *)param_1[0x3e],0x24,(undefined *)param_1[0x40]);
   ov68_021E6234(param_1,7,0,0x10200,0,4);
   ScheduleWindowCopyToVram((undefined *)(param_1 + 0x1e));

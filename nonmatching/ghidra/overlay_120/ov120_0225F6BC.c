@@ -49,7 +49,7 @@ void ov120_0225F6BC(short *param_1)
 
 {
   short sVar1;
-  
+
   *param_1 = param_1[1] +
              (short)((int)param_1[2] *
                      (int)*(short *)(&FX_SinCosTable_ + ((int)(uint)(ushort)param_1[4] >> 4) * 4) >>

@@ -56,7 +56,7 @@ void ov82_0223EB3C(int param_1)
 
 {
   undefined4 uVar1;
-  
+
   ov82_0223EC48();
   ov82_0223EC68(*(undefined4 *)(param_1 + 0x48));
   ov82_0223ED94(param_1);

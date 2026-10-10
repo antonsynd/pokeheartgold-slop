@@ -57,7 +57,7 @@ undefined4 ov75_02247890(undefined4 param_1,undefined4 param_2,char param_3)
   undefined1 uStack_17;
   char cStack_16;
   undefined1 uStack_15;
-  
+
   uVar1 = YesNoPrompt_Create(0x74);
   uStack_1c = 0xe;
   uStack_24 = 0;

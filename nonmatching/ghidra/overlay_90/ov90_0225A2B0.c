@@ -56,7 +56,7 @@ void ov90_0225A2B0(int param_1,undefined4 *param_2,undefined4 param_3,undefined4
 
 {
   undefined4 uVar1;
-  
+
   AddWindowParameterized(*param_2,param_1,1,6,0xb,0x14,10,8,0x201);
   FillWindowPixelBuffer(param_1,0);
   uVar1 = String_New(0x80,param_6);

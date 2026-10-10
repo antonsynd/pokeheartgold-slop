@@ -50,7 +50,7 @@ void ov01_021F4AE4(int param_1,undefined2 *param_2,undefined4 param_3)
   undefined2 uVar1;
   int iVar2;
   undefined2 *puVar3;
-  
+
   NARC_ReadFile(*(undefined4 *)(param_1 + 0x100),param_3,param_2);
   if (*(int *)(param_2 + 0x538) != 0) {
     iVar2 = 0;

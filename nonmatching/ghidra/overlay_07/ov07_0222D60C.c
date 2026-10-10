@@ -57,7 +57,7 @@ void ov07_0222D60C(undefined4 param_1,undefined4 *param_2,undefined4 param_3,und
   int iVar1;
   undefined4 *puVar2;
   int iVar3;
-  
+
   switch(param_2[3]) {
   case 0:
     if (3 < (int)param_2[4]) {

@@ -48,7 +48,7 @@ void ov12_02239644(void)
 
 {
   undefined4 in_r3;
-  
+
   func_0x02026eb4(5,0,2,0,2,0x2239665,in_r3);
   return;
 }

@@ -70,7 +70,7 @@ void ov89_02259C0C(int param_1)
   undefined4 uStack_14;
   undefined4 uStack_10;
   undefined4 uStack_c;
-  
+
   uStack_14 = 0x1000;
   uStack_10 = 0x1000;
   uStack_c = 0x1000;

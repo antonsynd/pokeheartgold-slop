@@ -49,7 +49,7 @@ void ov96_02214418(int param_1)
   uint uVar1;
   uint uVar2;
   uint uVar3;
-  
+
   uVar3 = 0;
   if (300 < *(int *)(param_1 + 0x738)) {
     uVar2 = 0;

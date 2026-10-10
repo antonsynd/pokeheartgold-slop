@@ -50,7 +50,7 @@ void ov96_0220D428(int *param_1,undefined1 param_2,undefined1 param_3)
 
 {
   int iVar1;
-  
+
   if (param_1[1] == 0) {
     GF_AssertFail();
   }

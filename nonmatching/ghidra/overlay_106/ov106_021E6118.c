@@ -48,7 +48,7 @@ undefined4 ov106_021E6118(int param_1)
 
 {
   int iVar1;
-  
+
   iVar1 = IsPaletteFadeFinished();
   if (iVar1 == 1) {
     return *(undefined4 *)(param_1 + 0x410);

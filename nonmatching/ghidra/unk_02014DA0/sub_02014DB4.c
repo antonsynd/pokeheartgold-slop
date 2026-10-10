@@ -64,7 +64,7 @@ sub_02014DB4(undefined4 param_1,undefined4 param_2,int param_3,int param_4,int p
   undefined4 uVar2;
   int *piVar3;
   int iVar4;
-  
+
   piVar3 = (int *)0x21d10a8;
   iVar4 = 0;
   do {

@@ -56,7 +56,7 @@ undefined4 ov41_02245F14(undefined4 param_1,int *param_2,int *param_3,undefined4
   int iVar3;
   int iStack_1c;
   int iStack_18;
-  
+
   iVar1 = ov41_02245F04();
   if (iVar1 == 0) {
     return 0;

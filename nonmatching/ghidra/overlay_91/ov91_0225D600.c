@@ -48,7 +48,7 @@ int ov91_0225D600(int *param_1)
 {
   uint uVar1;
   int iVar2;
-  
+
   if (param_1[7] < 3) {
     uVar1 = param_1[7] & 0xff;
   }

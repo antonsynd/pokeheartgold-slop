@@ -57,7 +57,7 @@ void ov70_022381A4(undefined1 *param_1,undefined4 param_2)
   int iVar2;
   undefined1 *puVar3;
   undefined1 *puVar4;
-  
+
   uRam02246940 = param_2;
   func_0x0221be84();
   puVar4 = (undefined1 *)0x2246814;

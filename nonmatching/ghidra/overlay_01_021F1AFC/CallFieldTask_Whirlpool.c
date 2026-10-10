@@ -53,7 +53,7 @@ void CallFieldTask_Whirlpool(undefined4 param_1,undefined4 param_2,undefined4 pa
   undefined4 uVar1;
   undefined4 uVar2;
   undefined1 auStack_20 [16];
-  
+
   uVar1 = TaskManager_GetFieldSystem();
   uVar2 = ov01_021F3100(uVar1,param_3);
   ov01_021F3040(uVar1,uVar2,auStack_20);

@@ -52,7 +52,7 @@ void ov86_021E7630(int param_1,undefined4 param_2,undefined4 param_3,undefined4 
 
 {
   undefined4 uVar1;
-  
+
   uVar1 = func_0x02019ba4(&ov86_021E8094,&ov86_021E8104,&ov86_021E7EB8,param_1,1,
                           *(ushort *)(param_1 + 600) & 0xff,0x79,param_4);
   *(undefined4 *)(param_1 + 0x254) = uVar1;

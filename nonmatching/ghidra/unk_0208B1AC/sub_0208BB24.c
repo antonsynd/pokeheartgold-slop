@@ -55,7 +55,7 @@ void sub_0208BB24(int param_1,uint param_2,uint param_3,undefined4 param_4)
   uint local_c;
   uint local_8;
   undefined4 uStack_4;
-  
+
   local_c = param_2;
   local_8 = param_3;
   uStack_4 = param_4;

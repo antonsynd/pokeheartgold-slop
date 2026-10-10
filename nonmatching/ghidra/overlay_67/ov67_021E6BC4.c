@@ -52,7 +52,7 @@ void ov67_021E6BC4(undefined4 *param_1,undefined4 param_2,undefined4 param_3,und
 
 {
   undefined4 uVar1;
-  
+
   uVar1 = func_0x02019ba4(&ov67_021E6E60,&ov67_021E6EE8,&ov67_021E6D6C,param_1,1,0,*param_1,param_4)
   ;
   param_1[0x129] = uVar1;

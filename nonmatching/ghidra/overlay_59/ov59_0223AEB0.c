@@ -59,7 +59,7 @@ void ov59_0223AEB0(int param_1,int param_2)
   undefined4 *puVar2;
   int iVar3;
   int iStack_18;
-  
+
   switch(param_2) {
   case 0:
   case 1:

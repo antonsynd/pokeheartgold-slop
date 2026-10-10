@@ -51,7 +51,7 @@ undefined4 FrtCmd_070(undefined4 *param_1)
 {
   undefined4 uVar1;
   undefined4 uVar2;
-  
+
   uVar1 = FrontierSystem_GetFrontierMap(*param_1);
   uVar2 = FrontierScriptContext_ReadHalfWord(param_1);
   ov80_0222F1D0(uVar1,uVar2);

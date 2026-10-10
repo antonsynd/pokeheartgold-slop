@@ -56,7 +56,7 @@ undefined4 ov74_022368D4(void)
   ushort uVar3;
   ushort *puVar4;
   ushort auStack_10 [4];
-  
+
   puVar4 = auStack_10;
   auStack_10[0] = *(ushort *)(iRam0223e2fc + 0x1170);
   auStack_10[3] = *(undefined2 *)(iRam0223e2fc + 0x1172);

@@ -51,7 +51,7 @@ void ov28_0225E0F4(int param_1)
   undefined4 uVar1;
   int iVar2;
   int iVar3;
-  
+
   iVar3 = *(short *)(param_1 + 0x208) * 8;
   iVar2 = *(short *)(param_1 + 0x20a) * 8;
   ov28_0225DE78((iVar3 + 0x54) - *(int *)(param_1 + 0x214),(iVar2 + 100) - *(int *)(param_1 + 0x218)

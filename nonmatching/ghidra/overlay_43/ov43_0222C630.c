@@ -50,7 +50,7 @@ void ov43_0222C630(void)
   int in_r3;
   __asm__ volatile("movs %0, r3" : "=l"(in_r3) : : "cc");
 
-  
+
   if (in_r3 == 1) {
     PlaySE(0x5dc);
     return;

@@ -51,7 +51,7 @@ undefined4 ov01_021F0250(void)
 
 {
   undefined4 uVar1;
-  
+
   uVar1 = Heap_Alloc(4,0x48);
   func_0x020e5b44(uVar1,0,0x48);
   uRam04000048 = uRam04000048 & 0xc0c0 | 0x3f3f;

@@ -59,7 +59,7 @@ void ov49_02261460(undefined4 *param_1,undefined4 param_2,undefined4 param_3)
   undefined4 uStack_1c;
   undefined1 auStack_18 [4];
   int iStack_14;
-  
+
   func_0x0222ae08(*param_1,&uStack_1c,auStack_20);
   iVar1 = ov49_0225A520(param_3,uStack_1c);
   if (iVar1 == 1) {

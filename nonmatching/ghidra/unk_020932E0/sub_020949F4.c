@@ -57,7 +57,7 @@ void sub_020949F4(int param_1,undefined4 param_2,undefined4 param_3,undefined4 p
   int iStack_18;
   undefined4 uStack_14;
   undefined4 uStack_10;
-  
+
   if (*(int *)(param_1 + 0x4680) != 0) {
     uStack_10 = param_4;
     System_GetTouchHeldCoords(&iStack_2c,&iStack_30);

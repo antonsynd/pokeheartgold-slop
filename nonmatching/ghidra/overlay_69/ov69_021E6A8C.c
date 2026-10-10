@@ -60,7 +60,7 @@ void ov69_021E6A8C(undefined4 *param_1)
 {
   undefined4 uVar1;
   undefined4 uVar2;
-  
+
   uVar1 = String_New(0x400,*param_1);
   uVar2 = String_New(0x400,*param_1);
   AddWindow(param_1[0x3004],param_1 + 0x3015,&ov69_021E764C);

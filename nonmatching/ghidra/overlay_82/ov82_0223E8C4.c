@@ -61,7 +61,7 @@ void ov82_0223E8C4(int param_1)
 {
   int iVar1;
   int iVar2;
-  
+
   if (*(int *)(param_1 + 0x204) != 0) {
     ov82_0223FC9C();
   }

@@ -53,7 +53,7 @@ void ov83_02241A60(int param_1,undefined4 param_2,undefined4 param_3,undefined4 
 
 {
   undefined4 uVar1;
-  
+
   ov83_0223FAA8(param_1,2,param_3,param_4,param_4);
   ClearWindowTilemapAndScheduleTransfer(param_1 + 0xb0);
   ClearWindowTilemapAndScheduleTransfer(param_1 + 0xa0);

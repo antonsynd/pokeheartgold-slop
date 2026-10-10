@@ -60,7 +60,7 @@ undefined4 ov86_021E7984(int param_1)
   uint uVar1;
   undefined4 uVar2;
   int iVar3;
-  
+
   uVar1 = GridInputHandler_HandleInput_NoHold(*(undefined4 *)(param_1 + 0x254));
   if (uVar1 < 9) {
     if (uVar1 == 8) {

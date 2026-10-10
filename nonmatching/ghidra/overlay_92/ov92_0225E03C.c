@@ -49,7 +49,7 @@ void ov92_0225E03C(int *param_1)
 {
   int iVar1;
   int *piVar2;
-  
+
   iVar1 = 0;
   piVar2 = param_1;
   if (0 < param_1[1]) {

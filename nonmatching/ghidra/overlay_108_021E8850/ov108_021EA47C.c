@@ -52,7 +52,7 @@ void ov108_021EA47C(int param_1,undefined4 param_2,undefined4 param_3,undefined4
 
 {
   uint uVar1;
-  
+
   ov108_021EA624();
   FillWindowPixelBuffer(param_1 + 0x4a4,0);
   uVar1 = (uint)(byte)(*(byte *)(param_1 + 0x431) + *(char *)(param_1 + 0x430) * '\x06');

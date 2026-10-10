@@ -57,7 +57,7 @@ void ov83_02246B6C(int param_1,undefined4 param_2,undefined4 param_3,undefined4 
   int iVar3;
   uint uVar4;
   bool bVar5;
-  
+
   uVar1 = ListMenuItems_New(4,0x6b,param_3,param_4,param_4);
   *(undefined4 *)(param_1 + 0x5fc) = uVar1;
   iVar2 = ov83_0224777C(*(undefined4 *)(param_1 + 700),*(undefined1 *)(param_1 + 9),2);

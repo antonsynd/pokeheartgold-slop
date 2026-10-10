@@ -51,7 +51,7 @@ void ov43_0222D4C4(short *param_1,undefined4 param_2,undefined4 param_3,undefine
 {
   undefined4 uVar1;
   undefined4 uVar2;
-  
+
   param_1[2] = 0;
   param_1[3] = 0;
   uVar2 = param_4;

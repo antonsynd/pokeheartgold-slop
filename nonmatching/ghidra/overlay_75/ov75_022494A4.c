@@ -50,7 +50,7 @@ undefined4 ov75_022494A4(int param_1)
 {
   int iVar1;
   undefined4 uVar2;
-  
+
   iVar1 = ov75_02249534(*(undefined4 *)(param_1 + 0x44));
   if (iVar1 == 0) {
     uVar2 = ov75_02247890(*(undefined4 *)(param_1 + 4),0x234,0);

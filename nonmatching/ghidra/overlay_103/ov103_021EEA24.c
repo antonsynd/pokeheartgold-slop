@@ -49,7 +49,7 @@ undefined4 ov103_021EEA24(int param_1)
 
 {
   undefined4 uVar1;
-  
+
   if (*(short *)(*(int *)(param_1 + 0xc) + 0x2e2) == 0) {
     return 0xffffffff;
   }

@@ -53,7 +53,7 @@ undefined4 ov103_021ED8F8(int param_1)
 
 {
   undefined4 uVar1;
-  
+
   ov103_021EDBC8();
   uVar1 = func_0x02019f74(*(undefined4 *)(*(int *)(param_1 + 0xc) + 0x278));
   ov103_021EEAC8(param_1,uVar1);

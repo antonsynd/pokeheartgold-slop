@@ -60,7 +60,7 @@ void ov102_021E9B30(undefined4 param_1,int *param_2)
   int iVar1;
   int iVar2;
   int iVar3;
-  
+
   iVar3 = *param_2;
   if (param_2[5] == 0) {
     ov102_021EB67C(*(undefined4 *)(iVar3 + 0x1e4));

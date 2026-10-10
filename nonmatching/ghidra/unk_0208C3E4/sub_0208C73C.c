@@ -48,7 +48,7 @@ undefined4 sub_0208C73C(int param_1)
 
 {
   int iVar1;
-  
+
   if (((*(int *)(param_1 + 0x244) == *(int *)(*(int *)(param_1 + 0x22c) + 0xc)) &&
       (*(char *)(param_1 + 0x274) == *(char *)(*(int *)(param_1 + 0x22c) + 0x10))) &&
      (iVar1 = String_Compare(*(undefined4 *)(param_1 + 0x238),*(undefined4 *)(param_1 + 0x7b0)),

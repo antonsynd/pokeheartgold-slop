@@ -50,7 +50,7 @@ void ov112_021EAB58(void)
 {
   undefined4 uVar1;
   undefined4 in_r3;
-  
+
   uVar1 = sub_02074490();
   GfGfxLoader_GXLoadPal(0x14,uVar1,1,0xa0,0x60,0x9a,in_r3);
   return;

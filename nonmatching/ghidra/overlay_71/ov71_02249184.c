@@ -53,7 +53,7 @@ void ov71_02249184(undefined4 param_1,undefined4 *param_2,undefined4 param_3,und
 
 {
   int iVar1;
-  
+
   if (param_2[0x20] != 0) {
     iVar1 = param_2[10];
     param_2[10] = iVar1 + param_2[0xb];

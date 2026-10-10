@@ -52,7 +52,7 @@ void ov102_021EB530(int param_1,int param_2,undefined4 param_3,undefined4 param_
   undefined4 uStack_14;
   undefined4 uStack_10;
   undefined4 uStack_c;
-  
+
   uStack_10 = 0;
   if ((param_2 == 1) || (param_2 != 2)) {
     uStack_14 = 0x78000;

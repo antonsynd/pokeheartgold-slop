@@ -121,7 +121,7 @@ void ov12_02237F18(undefined4 param_1)
   undefined4 *puVar6;
   int iVar7;
   int iVar8;
-  
+
   puVar1 = (undefined4 *)OverlayManager_GetData();
   iVar2 = OverlayManager_GetArgs(param_1);
   uVar3 = sub_02026E8C();

@@ -83,7 +83,7 @@ ov71_0224B280(undefined4 *param_1,undefined4 param_2,undefined4 param_3,undefine
   undefined2 uStack_12;
   undefined2 uStack_10;
   undefined4 uStack_c;
-  
+
   uStack_c = param_4;
   GfGfx_SetBanks(&ov71_0224BFDC);
   uRam04000304 = uRam04000304 | 0x8000;

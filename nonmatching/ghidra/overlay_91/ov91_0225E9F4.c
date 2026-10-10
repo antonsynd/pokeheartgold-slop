@@ -53,7 +53,7 @@ void ov91_0225E9F4(int param_1,int param_2)
   int iVar1;
   undefined1 auStack_28 [12];
   undefined1 auStack_1c [12];
-  
+
   ov91_0225E728(param_1,auStack_1c);
   iVar1 = ov91_0225DE8C(param_2 + 0x19cc,param_1 + 0x2c,auStack_1c,auStack_28);
   ov91_0225EA54(param_1,auStack_1c);

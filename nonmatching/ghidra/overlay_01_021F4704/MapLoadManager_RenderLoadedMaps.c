@@ -48,7 +48,7 @@ void MapLoadManager_RenderLoadedMaps(int param_1,undefined4 param_2)
 
 {
   uint uVar1;
-  
+
   uVar1 = 0;
   do {
     if (*(int *)(*(int *)(param_1 + uVar1 * 4 + 0x90) + 0x860) != -1) {

@@ -69,7 +69,7 @@ ov31_0225D520(undefined4 param_1,undefined4 param_2,undefined4 param_3,undefined
   undefined4 uVar1;
   undefined4 *puVar2;
   undefined4 uVar3;
-  
+
   uVar1 = param_4;
   Heap_Create(3,8,0x18000);
   uVar1 = CreateSysTaskAndEnvironment(0x225d7a1,400,10,8,param_3,param_4,uVar1);

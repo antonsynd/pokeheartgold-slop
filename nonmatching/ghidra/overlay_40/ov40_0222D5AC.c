@@ -75,7 +75,7 @@ void ov40_0222D5AC(int param_1,int param_2,int param_3)
   undefined4 uStack_20;
   int iStack_1c;
   undefined4 uStack_18;
-  
+
   uVar2 = 9999;
   if (param_3 == 2) {
     uVar2 = 10000;

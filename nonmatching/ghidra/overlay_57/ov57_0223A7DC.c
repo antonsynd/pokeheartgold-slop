@@ -67,7 +67,7 @@ undefined4 ov57_0223A7DC(int param_1)
 
 {
   int iVar1;
-  
+
   iVar1 = *(int *)(param_1 + 0x404);
   if (iVar1 == 0) {
     if (0 < *(int *)(param_1 + 0x410)) {

@@ -56,7 +56,7 @@ void ov74_02228D20(int param_1)
   undefined4 uVar3;
   undefined2 *puVar4;
   int iVar5;
-  
+
   puVar2 = (undefined2 *)PlayerProfile_GetNamePtr(*(undefined4 *)(param_1 + 0x10));
   puVar4 = (undefined2 *)0x223d080;
   iVar5 = 0;

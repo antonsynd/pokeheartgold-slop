@@ -60,7 +60,7 @@ void ov99_021E6438(undefined4 *param_1)
   undefined *puVar4;
   undefined4 *puVar5;
   int iVar6;
-  
+
   puVar4 = &ov99_021E9840;
   iVar6 = 0;
   puVar5 = param_1;

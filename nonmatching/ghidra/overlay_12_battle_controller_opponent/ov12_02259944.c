@@ -49,7 +49,7 @@ void ov12_02259944(undefined4 param_1)
 
 {
   undefined4 *puVar1;
-  
+
   puVar1 = (undefined4 *)Heap_Alloc(5,0x18);
   *puVar1 = param_1;
   *(undefined1 *)(puVar1 + 5) = 0;

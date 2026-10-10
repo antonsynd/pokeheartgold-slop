@@ -54,7 +54,7 @@ void ov00_021E6638(undefined4 param_1,int param_2)
 {
   undefined4 uVar1;
   int iVar2;
-  
+
   if (param_2 != 0) {
     uVar1 = func_0x020d3a38();
     iVar2 = func_0x020b55ac(param_2);

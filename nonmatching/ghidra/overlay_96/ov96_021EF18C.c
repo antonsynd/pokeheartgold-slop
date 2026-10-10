@@ -49,7 +49,7 @@ undefined4 ov96_021EF18C(void)
 
 {
   int iVar1;
-  
+
   iVar1 = PokeathlonCourse_GetHeapAllocPtr4();
   SpriteSystem_DrawSprites(*(undefined4 *)(iVar1 + 0x14));
   return 1;

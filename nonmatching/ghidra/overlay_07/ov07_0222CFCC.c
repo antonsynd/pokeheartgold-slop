@@ -51,7 +51,7 @@ undefined4 ov07_0222CFCC(int param_1,undefined4 param_2,undefined4 param_3,undef
 {
   int iVar1;
   undefined4 uVar2;
-  
+
   uVar2 = 0;
   switch(*(undefined4 *)(param_1 + 8)) {
   case 0:

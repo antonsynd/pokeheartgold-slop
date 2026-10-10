@@ -50,7 +50,7 @@ void ov109_021E70C4(int param_1,uint param_2,uint param_3,undefined4 param_4)
 
 {
   undefined4 uVar1;
-  
+
   uVar1 = param_4;
   if ((param_3 & 1) != 0) {
     ov109_021E7030(param_1,param_2,param_4,0,param_4);

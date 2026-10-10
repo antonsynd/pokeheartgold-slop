@@ -61,7 +61,7 @@ ov111_021E6A74(int param_1,int *param_2,undefined4 *param_3,undefined4 param_4,u
   undefined1 uVar1;
   undefined4 uVar2;
   undefined4 uVar3;
-  
+
   uVar2 = param_4;
   if (param_1 == 0) {
     GF_AssertFail();

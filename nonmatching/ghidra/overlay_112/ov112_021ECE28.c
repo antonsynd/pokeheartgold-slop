@@ -54,7 +54,7 @@ undefined4 ov112_021ECE28(int param_1)
 
 {
   undefined4 uVar1;
-  
+
   FillBgTilemapRect(*(undefined4 *)(param_1 + 0x18),1,0,0,0,0x20,0x18,0x10);
   FillBgTilemapRect(*(undefined4 *)(param_1 + 0x18),2,0,0,0,0x20,0x18,0x10);
   BgCommitTilemapBufferToVram(*(undefined4 *)(param_1 + 0x18),2);

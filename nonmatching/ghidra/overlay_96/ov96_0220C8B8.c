@@ -53,7 +53,7 @@ void ov96_0220C8B8(undefined4 param_1,int param_2,int param_3,undefined4 param_4
 
 {
   int iVar1;
-  
+
   iVar1 = 0;
   if (param_2 + -0x32 != 0) {
     iVar1 = func_0x020f2998((param_2 + -0x32) * 0x1000,10,0,param_4,param_4);

@@ -50,7 +50,7 @@ void ov96_021F4FD8(short param_1,int param_2)
   int iVar2;
   ushort *puVar3;
   uint uVar4;
-  
+
   uVar4 = (*(uint *)(param_2 + 8) & 0x1ffff) >> 1;
   puVar3 = (ushort *)(param_2 + 0xc);
   iVar2 = 0;

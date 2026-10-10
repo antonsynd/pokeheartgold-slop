@@ -49,7 +49,7 @@ void sub_0205FE0C(undefined4 param_1)
 
 {
   int iVar1;
-  
+
   iVar1 = MapObject_GetFlagsBitsMask(param_1,0x1000);
   if (iVar1 != 0) {
     sub_02061070(param_1);

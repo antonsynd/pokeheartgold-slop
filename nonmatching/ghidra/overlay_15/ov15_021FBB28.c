@@ -52,7 +52,7 @@ void ov15_021FBB28(int param_1,undefined4 param_2,undefined4 param_3,undefined4 
 {
   int iVar1;
   int iVar2;
-  
+
   iVar2 = *(int *)(param_1 + 0x234);
   iVar1 = iVar2 + (uint)*(byte *)(iVar2 + 100) * 0xc;
   Pocket_TakeItem(*(undefined4 *)(iVar1 + 4),*(undefined1 *)(iVar1 + 0xd),

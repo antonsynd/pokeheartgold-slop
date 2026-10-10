@@ -48,7 +48,7 @@ void ov57_0223A05C(int param_1)
 
 {
   int iVar1;
-  
+
   iVar1 = 8;
   param_1 = param_1 + 0x20;
   do {

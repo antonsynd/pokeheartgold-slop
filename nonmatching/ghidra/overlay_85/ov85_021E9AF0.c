@@ -50,7 +50,7 @@ undefined4 ov85_021E9AF0(int param_1,undefined4 param_2)
 
 {
   int iVar1;
-  
+
   iVar1 = ov85_021EA17C(*(undefined4 *)(param_1 + 0x5c));
   if (iVar1 != 0) {
     ov85_021EA0EC(param_1,9,0);

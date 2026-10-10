@@ -50,7 +50,7 @@ undefined4 MapObjectMovementCmd068_Step0(undefined4 param_1)
 
 {
   undefined4 *puVar1;
-  
+
   puVar1 = (undefined4 *)sub_0205F3C0(param_1,8);
   *puVar1 = 0x140000;
   puVar1[1] = 0xffff0000;

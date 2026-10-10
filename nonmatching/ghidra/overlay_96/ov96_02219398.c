@@ -48,7 +48,7 @@ void ov96_02219398(int param_1)
 
 {
   uint extraout_r1;
-  
+
   { uint nug_a = (uint)(((*(uint *)(param_1 + 0x60) & 0xffffff) >> 0x16) + 1), nug_b = (uint)(3); extraout_r1 = nug_a % nug_b; _u32_div_f(nug_a, nug_b); }
   *(uint *)(param_1 + 0x60) = (extraout_r1 & 3) << 0x16 | *(uint *)(param_1 + 0x60) & 0xff3fffff;
   *(uint *)(param_1 + 4) = *(int *)(param_1 + 8) + 0x74 + (extraout_r1 & 3) * 0x10;

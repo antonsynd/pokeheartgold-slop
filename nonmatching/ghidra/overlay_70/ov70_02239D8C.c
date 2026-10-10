@@ -59,7 +59,7 @@ undefined4 ov70_02239D8C(int param_1)
 
 {
   undefined4 uVar1;
-  
+
   ov70_0223A1E4();
   ov70_02239EAC(*(undefined4 *)(param_1 + 4));
   ov70_02239FA4(param_1);

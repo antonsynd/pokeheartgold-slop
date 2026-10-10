@@ -50,7 +50,7 @@ void ov72_0223AD64(int param_1)
 {
   int iVar1;
   int iVar2;
-  
+
   iVar1 = 0;
   iVar2 = param_1 + 0x1328;
   do {

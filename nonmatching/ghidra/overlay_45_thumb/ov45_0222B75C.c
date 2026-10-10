@@ -50,7 +50,7 @@ void ov45_0222B75C(undefined4 param_1,undefined4 param_2,undefined4 *param_3)
 
 {
   int iVar1;
-  
+
   iVar1 = ov45_0222BADC(param_3 + 0x42,*param_3);
   if (iVar1 == 0) {
     param_3[0x14b] = 1;

@@ -51,7 +51,7 @@ void GF_TouchpadPauseOnLidClose(void)
 
 {
   int iVar1;
-  
+
   if ((sRam021d21f2 != 1) && (sRam021d21f0 != 0)) {
     iVar1 = GF_TouchpadStopAutoSampling();
     if (iVar1 != 1) {

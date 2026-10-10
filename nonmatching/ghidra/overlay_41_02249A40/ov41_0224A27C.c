@@ -59,7 +59,7 @@ void ov41_0224A27C(int param_1,undefined4 param_2,undefined4 param_3)
 
 {
   undefined4 uVar1;
-  
+
   *(undefined4 *)(param_1 + 0x80) = param_3;
   uVar1 = func_0x02013534(1,0xd);
   *(undefined4 *)(param_1 + 100) = uVar1;

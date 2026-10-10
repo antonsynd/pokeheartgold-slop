@@ -68,7 +68,7 @@ void ov91_02260F50(int param_1,undefined4 param_2,undefined4 param_3,int param_4
   int iVar6;
   undefined2 *puVar7;
   int iStack_28;
-  
+
   iVar6 = param_1 + 0x168;
   uVar3 = 0;
   iVar5 = param_1;

@@ -72,7 +72,7 @@ void sub_02034434(void)
   undefined *puVar6;
   undefined *puVar7;
   uint uVar3;
-  
+
   uVar2 = sub_0203769C();
   uVar3 = (uint)uVar2;
   puVar4 = Save_FriendGroup_Get((undefined *)piRam021d4130[2]);

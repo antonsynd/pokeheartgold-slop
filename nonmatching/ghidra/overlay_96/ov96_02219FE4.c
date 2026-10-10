@@ -49,7 +49,7 @@ void ov96_02219FE4(int param_1)
 {
   int iVar1;
   int iVar2;
-  
+
   iVar1 = 0;
   if (*(char *)(param_1 + 0x2c) != '\0') {
     iVar2 = param_1 + 8;

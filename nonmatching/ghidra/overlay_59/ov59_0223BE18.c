@@ -49,7 +49,7 @@ void ov59_0223BE18(undefined4 *param_1,undefined4 *param_2)
 
 {
   uint uVar1;
-  
+
   func_0x020732e4((int)param_2 + 0x16,*param_2,param_2 + 4,*param_1);
   uVar1 = 0;
   do {

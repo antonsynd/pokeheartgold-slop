@@ -71,7 +71,7 @@ void ov15_021FFA40(int param_1)
   undefined4 uStack_20;
   undefined4 uStack_1c;
   undefined4 uStack_18;
-  
+
   uStack_2c = 0xc;
   uStack_28 = 10;
   uStack_24 = 6;

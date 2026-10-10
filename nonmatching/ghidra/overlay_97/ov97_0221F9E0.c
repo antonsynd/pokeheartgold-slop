@@ -54,7 +54,7 @@ void ov97_0221F9E0(undefined4 *param_1)
   uint uVar2;
   int iVar3;
   uint uStack_18;
-  
+
   uVar2 = 0;
   do {
     iVar3 = uVar2 * 0x20 + 0x68;

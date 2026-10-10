@@ -49,7 +49,7 @@ int ov70_0223F8D0(uint param_1,uint *param_2)
   uint uVar1;
   int iVar2;
   uint uVar3;
-  
+
   iVar2 = 0x22459c8;
   uVar3 = 0;
   do {

@@ -52,7 +52,7 @@ void ov49_0225A490(int param_1,undefined4 param_2,undefined4 param_3,undefined4 
 {
   int iVar1;
   undefined4 uVar2;
-  
+
   iVar1 = ov49_0225B8FC(param_1 + 0x184);
   if (iVar1 != 0) {
     uVar2 = ov49_0225B8F8(param_1 + 0x184);

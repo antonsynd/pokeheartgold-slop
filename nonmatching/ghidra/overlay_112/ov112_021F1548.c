@@ -56,7 +56,7 @@ void ov112_021F1548(int param_1,undefined4 param_2,int param_3,undefined4 param_
   uint uVar3;
   undefined auStack_30 [24];
   undefined4 uStack_18;
-  
+
   uStack_18 = param_4;
   puVar2 = NewString_ReadMsgData(*(undefined **)(param_1 + 0x60),param_3);
   uVar1 = String_GetLength(puVar2);

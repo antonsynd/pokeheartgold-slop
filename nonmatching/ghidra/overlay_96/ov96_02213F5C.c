@@ -51,7 +51,7 @@ int ov96_02213F5C(int param_1)
   int iVar1;
   uint uVar2;
   int iVar3;
-  
+
   if (param_1 < 0xc0) {
     return param_1 << 0xc;
   }

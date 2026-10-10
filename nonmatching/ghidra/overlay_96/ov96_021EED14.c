@@ -56,7 +56,7 @@ void ov96_021EED14(undefined4 param_1,undefined4 param_2,undefined4 param_3,int 
   int iVar1;
   undefined4 uVar2;
   int iVar3;
-  
+
   iVar1 = Sprite_GetVramType();
   uVar2 = Sprite_GetImageProxy(param_1);
   iVar3 = func_0x020b802c(uVar2,iVar1);

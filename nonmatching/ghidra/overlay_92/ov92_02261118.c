@@ -52,7 +52,7 @@ void ov92_02261118(int *param_1)
   int *piVar2;
   undefined4 *puVar3;
   undefined *puVar4;
-  
+
   piVar2 = (int *)param_1[3];
   puVar3 = (undefined4 *)param_1[5];
   puVar4 = (undefined *)param_1[4];

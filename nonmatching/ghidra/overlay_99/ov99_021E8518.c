@@ -49,7 +49,7 @@ undefined4 ov99_021E8518(undefined4 *param_1,uint param_2,undefined4 param_3)
 
 {
   undefined4 uVar1;
-  
+
   uVar1 = ov99_021E94CC(*param_1,param_2,0,0);
   if (param_1[0x2c] != 0) {
     return 0;

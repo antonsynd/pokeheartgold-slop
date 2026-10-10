@@ -50,7 +50,7 @@ void ov14_021F6654(int param_1,int param_2)
 
 {
   undefined4 uVar1;
-  
+
   ClearFrameAndWindow2(param_1 + 0x30 + param_2 * 0x10,1);
   uVar1 = GetWindowBgId(param_1 + 0x30 + param_2 * 0x10);
   ScheduleBgTilemapBufferTransfer(*(undefined4 *)(param_1 + 0x14),uVar1);

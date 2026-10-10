@@ -48,7 +48,7 @@ void ov14_021F1F24(int param_1)
 
 {
   undefined4 uVar1;
-  
+
   uVar1 = Heap_Alloc(10,0x1c);
   *(undefined4 *)(*(int *)(param_1 + 0x34) + 0xc) = uVar1;
   return;

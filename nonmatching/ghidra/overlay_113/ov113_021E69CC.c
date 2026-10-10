@@ -74,7 +74,7 @@ void ov113_021E69CC(int param_1,undefined4 param_2,undefined4 param_3,undefined4
   undefined4 uStack_20;
   undefined4 uStack_1c;
   undefined4 uStack_18;
-  
+
   puVar4 = &ov113_021E6CF8;
   iVar6 = 0;
   iVar3 = param_1;

@@ -49,7 +49,7 @@ void ov96_02218FFC(int param_1)
 
 {
   int iVar1;
-  
+
   iVar1 = func_0x020ccba0(*(undefined4 *)(*(int *)(param_1 + 4) + 8),
                           *(undefined4 *)(*(int *)(*(int *)(param_1 + 4) + 4) + 8));
   iVar1 = (0x1000 - iVar1) * 10 + -3;

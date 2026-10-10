@@ -49,7 +49,7 @@ void ov07_022230DC(undefined4 param_1)
 
 {
   undefined1 *puVar1;
-  
+
   puVar1 = (undefined1 *)Heap_Alloc(5,8);
   *puVar1 = 0;
   *(undefined4 *)(puVar1 + 4) = param_1;

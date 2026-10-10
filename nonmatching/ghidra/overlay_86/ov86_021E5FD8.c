@@ -52,7 +52,7 @@ void ov86_021E5FD8(undefined4 param_1,undefined4 param_2,int param_3,undefined4 
   int iVar1;
   uint uVar2;
   undefined4 uVar3;
-  
+
   uVar3 = param_4;
   if (param_7 == 1) {
     iVar1 = FontID_String_GetWidth(param_5,param_2,0);

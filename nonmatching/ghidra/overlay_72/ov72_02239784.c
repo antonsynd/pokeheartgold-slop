@@ -53,7 +53,7 @@ undefined4 ov72_02239784(int *param_1)
   int iVar1;
   undefined1 auStack_28 [16];
   undefined1 auStack_18 [12];
-  
+
   iVar1 = ov72_0223A588();
   if (iVar1 != 0) {
     if (iVar1 < 1) {

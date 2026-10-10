@@ -55,7 +55,7 @@ void ov31_0225D9D4(int param_1,int param_2,undefined4 param_3,undefined4 param_4
   undefined4 uVar1;
   int iStack_14;
   undefined4 uStack_10;
-  
+
   uStack_10 = param_4;
   if (param_2 == 0) {
     uVar1 = GfGfxLoader_GetScrnData(0x3c,0x11,0,&iStack_14,8);

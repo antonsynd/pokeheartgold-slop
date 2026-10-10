@@ -51,7 +51,7 @@ void ov48_02259F48(undefined4 *param_1,undefined4 param_2,undefined4 param_3,und
 
 {
   undefined4 uVar1;
-  
+
   FillWindowPixelBuffer(param_1 + 4,0xf);
   DrawFrameAndWindow2(param_1 + 4,1,1,2);
   ScheduleWindowCopyToVram(param_1 + 4);

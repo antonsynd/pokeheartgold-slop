@@ -49,7 +49,7 @@ undefined4 ov01_021EC7E8(int param_1)
 {
   int iVar1;
   undefined4 uVar2;
-  
+
   uVar2 = 0;
   if (*(short *)(param_1 + 0x2e) == 0) {
     uVar2 = 1;

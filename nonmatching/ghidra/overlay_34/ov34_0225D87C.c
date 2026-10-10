@@ -61,7 +61,7 @@ void ov34_0225D87C(int *param_1)
   int iVar1;
   int iVar2;
   int *piVar3;
-  
+
   if (*param_1 - 2U < 3) {
     iVar1 = param_1[5];
     *param_1 = 5;

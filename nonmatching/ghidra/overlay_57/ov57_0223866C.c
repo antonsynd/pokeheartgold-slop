@@ -58,7 +58,7 @@ void ov57_0223866C(int param_1,int param_2)
   undefined4 uVar1;
   undefined4 uVar2;
   int iVar3;
-  
+
   if (param_2 != 0) {
     uVar1 = NewMsgDataFromNarc(0,0x1b,0xb,0x34);
     uVar2 = NewString_ReadMsgData(uVar1,0x11);

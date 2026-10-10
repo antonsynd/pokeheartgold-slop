@@ -52,7 +52,7 @@ void BattleController_EmitCopyStatus2Effect
 {
   undefined1 auStack_68 [88];
   undefined4 uStack_10;
-  
+
   uStack_10 = param_4;
   ov12_022643C8(param_1,param_2,auStack_68,1,param_5,param_3,param_4,0);
   ov12_02262240(param_1,1,param_3,auStack_68,0x58);

@@ -51,7 +51,7 @@ void ov27_0225C6F8(int param_1)
 {
   int iVar1;
   int iVar2;
-  
+
   iVar1 = func_0x021eef60(*(undefined4 *)(param_1 + 0xc));
   BgClearTilemapBufferAndCommit(*(undefined4 *)(param_1 + 0x18),4);
   BgClearTilemapBufferAndCommit(*(undefined4 *)(param_1 + 0x18),5);

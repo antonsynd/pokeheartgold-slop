@@ -48,7 +48,7 @@ undefined4 ov48_0225A30C(int param_1,undefined4 *param_2,uint param_3)
 {
   undefined4 uVar1;
   int iVar2;
-  
+
   if (*(uint *)(param_1 + 0x38) <= param_3) {
     return 0;
   }

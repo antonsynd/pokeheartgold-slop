@@ -50,7 +50,7 @@ void ov92_0225EB40(undefined4 param_1,undefined4 param_2,undefined4 param_3,unde
   undefined1 *puVar1;
   int iVar2;
   undefined1 *puVar3;
-  
+
   puVar1 = (undefined1 *)Heap_Alloc(0x71,0x10,param_3,param_4,param_4);
   iVar2 = 0x10;
   puVar3 = puVar1;

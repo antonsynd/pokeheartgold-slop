@@ -52,7 +52,7 @@ void ov14_021F08BC(int param_1,undefined4 param_2,undefined4 param_3,undefined4 
   undefined4 uVar2;
   uint uVar3;
   undefined4 *puVar4;
-  
+
   puVar1 = (undefined4 *)Heap_Alloc(10,0xf0,param_3,param_4,param_4);
   uVar3 = 0;
   puVar4 = puVar1;

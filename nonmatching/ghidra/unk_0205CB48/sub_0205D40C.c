@@ -51,7 +51,7 @@ undefined4 sub_0205D40C(undefined4 param_1)
 {
   undefined4 uVar1;
   undefined4 uVar2;
-  
+
   uVar1 = sub_0205D450();
   uVar2 = sub_0205D428();
   PlayerAvatar_SetMoveState(param_1,uVar2);

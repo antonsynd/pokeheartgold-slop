@@ -62,7 +62,7 @@ undefined4 ov49_02267AF0(undefined4 param_1,int param_2,int param_3)
   undefined4 uVar3;
   uint uVar4;
   uint uVar5;
-  
+
   iVar2 = func_0x020f2998(*(short *)(param_2 + 2) * 0xc,0x30);
   if (iVar2 != *(int *)(param_2 + 0x954)) {
     *(int *)(param_2 + 0x954) = iVar2;

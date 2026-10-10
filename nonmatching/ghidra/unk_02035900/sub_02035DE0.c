@@ -55,7 +55,7 @@ void sub_02035DE0(int param_1)
   undefined2 uVar2;
   int iVar3;
   int iVar4;
-  
+
   *(undefined1 *)(iRam021d4148 + param_1 + 0x696) = 0;
   *(undefined1 *)(iRam021d4148 + param_1 + 0x69e) = 1;
   *(undefined4 *)(iRam021d4148 + param_1 * 4 + 0x66c) = 0;

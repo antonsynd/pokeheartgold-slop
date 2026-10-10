@@ -56,7 +56,7 @@ undefined4 ov86_021E6484(int param_1,int param_2)
   undefined4 uVar3;
   undefined4 uVar4;
   undefined4 uVar5;
-  
+
   if (param_2 == 0) {
     uVar5 = 0x66;
   }

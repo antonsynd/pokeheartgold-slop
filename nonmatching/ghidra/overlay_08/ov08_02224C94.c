@@ -63,7 +63,7 @@ uint ov08_02224C94(undefined4 *param_1)
   undefined1 uStack_17;
   undefined1 uStack_16;
   undefined1 uStack_15;
-  
+
   iVar2 = ov08_02224BFC();
   if (iVar2 == 0) {
     return 0xffffffff;

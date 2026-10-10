@@ -58,7 +58,7 @@ void ov12_0225AE48(undefined4 param_1,int param_2,undefined1 *param_3,undefined4
   undefined4 uVar4;
   undefined1 auStack_3c [36];
   undefined4 uStack_18;
-  
+
   uStack_18 = param_4;
   ov12_022615F0();
   uVar2 = BattleSystem_GetMessageLoader(param_1);

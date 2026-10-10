@@ -54,7 +54,7 @@ undefined4 ov49_02262AC4(undefined4 param_1,undefined4 param_2)
 
 {
   int iVar1;
-  
+
   iVar1 = ov49_0225EF88();
   if (iVar1 == 0) {
     sub_020398D4(0,0);

@@ -70,7 +70,7 @@ void ov91_0225E45C(undefined4 *param_1,char *param_2,undefined4 param_3,undefine
   undefined1 auStack_30 [12];
   undefined1 auStack_24 [12];
   undefined4 uStack_18;
-  
+
   cVar1 = *param_2;
   if ((cVar1 == '\x01') || (cVar1 == '\x02')) {
     iVar3 = *(int *)(param_2 + 0x30);

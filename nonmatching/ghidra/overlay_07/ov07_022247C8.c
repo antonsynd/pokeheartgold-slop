@@ -51,7 +51,7 @@ void ov07_022247C8(undefined4 param_1,undefined4 *param_2)
 
 {
   int iVar1;
-  
+
   iVar1 = ov07_02222AF4(param_2 + 2);
   if (iVar1 != 0) {
     Heap_Free(param_2);

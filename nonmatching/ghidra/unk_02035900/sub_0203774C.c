@@ -48,7 +48,7 @@ int sub_0203774C(undefined2 param_1)
 
 {
   int iVar1;
-  
+
   iVar1 = sub_02033FC4(param_1);
   return iVar1 + 1;
 }

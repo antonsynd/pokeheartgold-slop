@@ -54,7 +54,7 @@ void ov13_02226370(undefined4 param_1,int param_2,undefined4 param_3,undefined4 
   uint uVar2;
   undefined1 auStack_18 [8];
   undefined4 uStack_10;
-  
+
   uStack_10 = param_4;
   ov13_02226C0C(auStack_18,param_2 + 0x10,8);
   uVar2 = *(uint *)(param_2 + 0x10) >> 3 & 0x3f;

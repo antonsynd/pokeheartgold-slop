@@ -56,7 +56,7 @@ void ov81_0224218C(int param_1)
   int iStack_20;
   int iStack_1c;
   int iStack_18;
-  
+
   uVar3 = 3;
   do {
     uVar2 = uVar3 - 3 & 0xff;

@@ -50,7 +50,7 @@ void ov108_021EA2EC(int param_1,uint param_2,undefined4 param_3,undefined4 param
 {
   int iVar1;
   int iVar2;
-  
+
   if (param_2 < 6) {
     iVar1 = (int)param_2 >> 0x1f;
     iVar2 = (int)(((param_2 * -0x80000000 + iVar1 >> 0x1f | iVar1 << 1) - iVar1) * 0x800000) >> 0x10

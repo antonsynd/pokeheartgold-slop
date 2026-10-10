@@ -52,7 +52,7 @@ void ov18_021F3D34(int param_1)
 
 {
   undefined4 uVar1;
-  
+
   ov18_021F2648();
   uVar1 = SpriteSystem_NewSprite
                     (*(undefined4 *)(param_1 + 0x668),*(undefined4 *)(param_1 + 0x66c),

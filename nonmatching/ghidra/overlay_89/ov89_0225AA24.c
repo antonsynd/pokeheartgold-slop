@@ -64,7 +64,7 @@ void ov89_0225AA24(int param_1,undefined4 param_2,undefined4 param_3,undefined2 
   int iStack_28;
   undefined4 uStack_20;
   int iStack_18;
-  
+
   iVar1 = ov89_0225C88C(param_4[1],*(undefined1 *)(param_4 + 4),param_5);
   puVar2 = (ushort *)(param_1 + *(int *)(param_1 + 0x14));
   if (iVar1 == 1) {

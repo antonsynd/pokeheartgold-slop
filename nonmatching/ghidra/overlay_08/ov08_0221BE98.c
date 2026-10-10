@@ -78,7 +78,7 @@ void ov08_0221BE98(undefined4 param_1,int param_2)
 {
   undefined1 uVar1;
   int iVar2;
-  
+
   switch(*(undefined1 *)(param_2 + 0x2078)) {
   case 0:
     uVar1 = ov08_0221C048(param_2);

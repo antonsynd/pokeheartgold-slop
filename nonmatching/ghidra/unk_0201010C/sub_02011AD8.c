@@ -55,7 +55,7 @@ void sub_02011AD8(int param_1,undefined4 param_2,undefined4 param_3,undefined4 p
   int iStack_20;
   int iStack_1c;
   undefined4 uStack_18;
-  
+
   uStack_18 = param_4;
   iVar1 = sub_02010EE0(param_1,0);
   iVar3 = 0;

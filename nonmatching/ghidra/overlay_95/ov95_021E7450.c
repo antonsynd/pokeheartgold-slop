@@ -55,7 +55,7 @@ int ov95_021E7450(int param_1)
 {
   int iVar1;
   int iVar2;
-  
+
   iVar2 = 0;
   iVar1 = TouchscreenHitbox_FindRectAtTouchNew(&ov95_021E7820);
   if (iVar1 == -1) {

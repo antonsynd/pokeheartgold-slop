@@ -69,7 +69,7 @@ undefined4 ov96_021FCE10(undefined4 param_1)
 
 {
   undefined4 *puVar1;
-  
+
   puVar1 = (undefined4 *)PokeathlonCourse_GetHeapAllocPtr4();
   sub_0203A914();
   PokeathlonCourse_ResetField3A4(param_1);

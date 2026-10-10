@@ -55,7 +55,7 @@ ov74_0222A35C(undefined4 param_1,undefined4 param_2,undefined4 param_3,undefined
 {
   undefined4 *puVar1;
   undefined4 *puVar2;
-  
+
   puVar1 = (undefined4 *)OverlayManager_GetData();
   puVar1[0x575] = 4;
   ov74_02229F60(puVar1 + 0xe,0);

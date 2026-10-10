@@ -58,7 +58,7 @@ undefined4 ov92_0225CAB4(undefined4 param_1)
   int iVar4;
   int iVar5;
   int iVar6;
-  
+
   Heap_Create(3,0x71,0x65000);
   iVar1 = OverlayManager_CreateAndGetData(param_1,0xd0,0x71);
   func_0x020e5b44(iVar1,0,0xd0);

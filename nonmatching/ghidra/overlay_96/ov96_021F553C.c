@@ -74,7 +74,7 @@ undefined4 ov96_021F553C(undefined4 param_1)
   undefined4 *puVar1;
   undefined4 *puVar2;
   int iVar3;
-  
+
   puVar1 = (undefined4 *)PokeathlonCourse_GetHeapAllocPtr4();
   sub_0203A914();
   Camera_Delete(puVar1[100]);

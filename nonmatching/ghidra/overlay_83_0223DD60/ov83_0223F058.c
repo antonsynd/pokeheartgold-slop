@@ -66,7 +66,7 @@ void ov83_0223F058(int param_1)
   int iVar1;
   int iVar2;
   int iVar3;
-  
+
   ov83_02247858(param_1 + 0x84c);
   ov83_02247CC4(*(undefined4 *)(param_1 + 0x83c));
   ov83_02247A18(*(undefined4 *)(param_1 + 0x838));

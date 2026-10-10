@@ -52,7 +52,7 @@ int ov96_021F3930(undefined4 param_1,undefined4 param_2,uint param_3,uint *param
 {
   int iVar1;
   int iVar2;
-  
+
   iVar2 = 0;
   if ((int)param_3 < 0) {
     return 0;

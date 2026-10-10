@@ -56,7 +56,7 @@ void ov96_021EAA24(undefined4 param_1,int param_2)
   uint uVar3;
   int iVar4;
   int iVar5;
-  
+
   iVar1 = ov96_021E8B88(*(undefined4 *)(param_2 + 0x14));
   if (iVar1 != 0) {
     uVar3 = 0;

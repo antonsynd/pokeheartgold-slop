@@ -52,7 +52,7 @@ undefined4 ov48_0225A244(undefined4 param_1,int param_2)
   undefined1 auStack_20 [4];
   int iStack_1c;
   int iStack_18;
-  
+
   iVar2 = 0;
   while( true ) {
     iVar1 = ov48_0225A30C(param_1,auStack_20,iVar2);

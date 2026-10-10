@@ -48,7 +48,7 @@ undefined4 ov81_02240008(int param_1)
 
 {
   int iVar1;
-  
+
   if (*(char *)(param_1 + 8) == '\0') {
     iVar1 = ov81_02240FA4(param_1,10,(*(byte *)(param_1 + 0x13) & 0xf) >> 3);
     if (iVar1 == 1) {

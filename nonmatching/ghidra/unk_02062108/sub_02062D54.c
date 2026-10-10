@@ -49,7 +49,7 @@ void sub_02062D54(undefined4 param_1,undefined4 param_2,undefined4 param_3,undef
 
 {
   undefined4 *puVar1;
-  
+
   puVar1 = (undefined4 *)sub_0205F3C0(param_1,4,param_3,param_4,param_4);
   *puVar1 = param_2;
   MapObject_IncrementMovementStep(param_1);

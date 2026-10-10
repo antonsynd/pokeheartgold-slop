@@ -54,7 +54,7 @@ void ov96_0220AFF8(int param_1)
   uint uVar1;
   short extraout_r1;
   uint extraout_r1_00;
-  
+
   if (param_1 == 0) {
     GF_AssertFail();
   }

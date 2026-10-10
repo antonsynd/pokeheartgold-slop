@@ -53,7 +53,7 @@ undefined4 ov70_0223F9D4(int param_1)
 
 {
   int iVar1;
-  
+
   iVar1 = func_0x020cdaa8(0x400106c);
   if (iVar1 != 0) {
     ov70_02241380(param_1);

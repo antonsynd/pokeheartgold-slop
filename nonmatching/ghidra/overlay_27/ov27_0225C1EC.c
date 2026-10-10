@@ -51,7 +51,7 @@ void ov27_0225C1EC(int param_1)
   undefined4 uVar1;
   int iVar2;
   int iVar3;
-  
+
   if (*(int *)(param_1 + 0x10) == 0) {
     GF_AssertFail();
   }

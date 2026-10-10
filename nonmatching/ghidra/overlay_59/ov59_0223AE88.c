@@ -49,7 +49,7 @@ void ov59_0223AE88(int param_1)
 {
   int iVar1;
   int iVar2;
-  
+
   iVar1 = 0;
   if (*(char *)(param_1 + 0x49) != '\0') {
     iVar2 = param_1 + 0x7c;

@@ -59,7 +59,7 @@ void ov74_02235ED0(int param_1,undefined4 param_2,undefined4 param_3)
   int iVar4;
   ushort *puVar5;
   ushort auStack_1c [4];
-  
+
   uVar2 = Heap_Alloc(param_3,0x200);
   func_0x020e389c(uVar2,0xa001);
   uVar1 = func_0x020e3a04(uVar2,param_1,0x50);

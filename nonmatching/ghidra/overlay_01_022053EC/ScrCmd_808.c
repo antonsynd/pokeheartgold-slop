@@ -52,7 +52,7 @@ undefined4 ScrCmd_808(int param_1)
 
 {
   undefined4 uVar1;
-  
+
   uVar1 = ScriptReadHalfword();
   uVar1 = FieldSystem_VarGet(*(undefined4 *)(param_1 + 0x80),uVar1);
   func_0x02006ff8(0x19,2);

@@ -52,7 +52,7 @@ void ov112_021EE9E4(undefined4 param_1,undefined4 param_2,undefined2 *param_3,by
 {
   undefined4 uVar1;
   byte abStack_18 [4];
-  
+
   uVar1 = 0;
   abStack_18[0] = *(byte *)((int)param_3 + 0xd) & 0x1f;
   if ((*(byte *)((int)param_3 + 0xd) & 0x7f) >> 5 == 1) {

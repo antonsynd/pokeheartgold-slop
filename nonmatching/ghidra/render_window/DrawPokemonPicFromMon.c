@@ -56,7 +56,7 @@ int DrawPokemonPicFromMon
 
 {
   int iVar1;
-  
+
   iVar1 = sub_0200F5C4();
   sub_0200F600(iVar1,param_8);
   sub_0200F62C(iVar1);

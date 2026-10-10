@@ -49,7 +49,7 @@ void sub_0205D004(undefined4 param_1,undefined4 param_2)
 
 {
   undefined4 uVar1;
-  
+
   uVar1 = sub_0205D01C();
   sub_0205D07C(param_1,uVar1,param_2);
   return;

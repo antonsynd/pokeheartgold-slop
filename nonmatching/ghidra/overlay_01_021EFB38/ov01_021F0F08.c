@@ -56,7 +56,7 @@ void ov01_021F0F08(undefined4 param_1,undefined4 param_2,undefined4 param_3,unde
 
 {
   undefined4 uVar1;
-  
+
   if (iRam02209b64 == 0) {
     GF_AssertFail();
   }

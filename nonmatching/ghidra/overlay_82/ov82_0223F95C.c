@@ -72,7 +72,7 @@ void ov82_0223F95C(undefined4 *param_1,undefined4 param_2)
   undefined *puVar3;
   undefined4 *puVar4;
   int iVar5;
-  
+
   ov82_0223FC14();
   func_0x020b78d4();
   func_0x0200b150(0,0x80,0,0x20,0,0x80,0,0x20,0x69);

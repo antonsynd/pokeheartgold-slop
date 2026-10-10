@@ -70,7 +70,7 @@ void ov92_022621A4(int *param_1,undefined4 *param_2)
   int local_20;
   int local_1c;
   int local_18;
-  
+
   local_24 = 1;
   local_20 = 1;
   local_1c = 1;

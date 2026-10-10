@@ -68,7 +68,7 @@ void ov05_0221D530(int *param_1,int param_2,undefined4 param_3,undefined4 param_
   undefined4 uStack_20;
   undefined4 uStack_1c;
   undefined4 uStack_18;
-  
+
   piVar2 = param_1 + 4;
   uStack_18 = param_4;
   func_0x0201d494(param_1[3],piVar2,8,2,0,0);

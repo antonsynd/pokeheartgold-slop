@@ -59,7 +59,7 @@ undefined4 ov01_021EA578(undefined4 param_1,ushort *param_2,short *param_3)
   undefined4 auStack_220 [3];
   undefined1 auStack_214 [256];
   undefined1 auStack_114 [256];
-  
+
   uVar2 = Ascii_GetDelim(param_1,auStack_114,0xd);
   uVar3 = Ascii_GetDelim(auStack_114,auStack_214,0x2c);
   iVar4 = Ascii_StrToL(auStack_214);

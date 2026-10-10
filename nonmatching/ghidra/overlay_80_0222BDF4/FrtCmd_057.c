@@ -50,7 +50,7 @@ undefined4 FrtCmd_057(undefined4 *param_1)
 
 {
   int iVar1;
-  
+
   iVar1 = Frontier_GetLaunchArgs(*(undefined4 *)*param_1);
   SaveArray_Party_Get(*(undefined4 *)(iVar1 + 8));
   HealParty();

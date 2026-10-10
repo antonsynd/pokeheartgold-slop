@@ -49,7 +49,7 @@ undefined4 ov13_0222175C(uint *param_1)
 
 {
   uint uVar1;
-  
+
   uVar1 = ov13_02222A9C(((char *)0x2245a14));
   *param_1 = uVar1;
   ov13_02222968((ushort *)(param_1 + 1),(ushort *)((char *)0x2245a14),*param_1);

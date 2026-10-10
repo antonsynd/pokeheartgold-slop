@@ -49,7 +49,7 @@ int ov01_02206088(void)
 
 {
   int iVar1;
-  
+
   iVar1 = GetMoveModelNoBySpriteId();
   if (iVar1 < 0) {
     GF_AssertFail();

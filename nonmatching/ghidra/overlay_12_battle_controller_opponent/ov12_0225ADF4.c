@@ -57,7 +57,7 @@ void ov12_0225ADF4(undefined4 param_1,int param_2)
   undefined4 *puVar3;
   undefined4 uVar4;
   undefined1 auStack_38 [36];
-  
+
   ov12_02261544(param_1,param_2,auStack_38);
   uVar2 = BattleSystem_GetMessageLoader(param_1);
   puVar3 = (undefined4 *)Heap_Alloc(5,8);

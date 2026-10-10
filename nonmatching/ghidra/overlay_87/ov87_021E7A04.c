@@ -49,7 +49,7 @@ void ov87_021E7A04(int param_1)
 
 {
   undefined4 uVar1;
-  
+
   uVar1 = Heap_Alloc(0x7a,*(undefined4 *)(*(int *)(param_1 + 0x388) + 0x10));
   *(undefined4 *)(param_1 + 0x38c) = uVar1;
   if (*(int *)(param_1 + 0x38c) == 0) {

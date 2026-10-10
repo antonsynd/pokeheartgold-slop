@@ -61,7 +61,7 @@ undefined4 sub_02088B40(int param_1)
 {
   undefined4 uVar1;
   int iVar2;
-  
+
   if (*(byte *)(param_1 + 0x7bf) >> 4 == 1) {
     *(undefined1 *)(*(int *)(param_1 + 0x22c) + 0x17) = 1;
     return 0x15;

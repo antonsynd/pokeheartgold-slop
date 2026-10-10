@@ -66,7 +66,7 @@ undefined8 ov103_021ED7E4(int param_1)
   undefined4 extraout_r1;
   undefined4 extraout_r1_00;
   undefined8 uVar3;
-  
+
   uVar1 = func_0x020186a4(*(undefined4 *)(*(int *)(param_1 + 0xc) + 0x244));
   uVar2 = 0xfffffffe;
   if (uVar1 == 0xffffffff) {

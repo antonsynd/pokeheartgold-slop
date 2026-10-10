@@ -53,7 +53,7 @@ void ov112_021E90FC(undefined4 param_1,int param_2,undefined4 param_3,undefined4
 
 {
   undefined4 uVar1;
-  
+
   uVar1 = Save_PlayerData_GetProfile(*(undefined4 *)(param_2 + 0x20));
   uVar1 = func_0x02028f68(uVar1,0x9a);
   FontID_Alloc(5,0x9a);

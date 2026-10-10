@@ -51,7 +51,7 @@ undefined4 ov37_021E6F14(int param_1,undefined4 param_2)
 
 {
   int iVar1;
-  
+
   if (*(int *)(param_1 + 0x93b0) != 0) {
     iVar1 = sub_02037454();
     if (*(int *)(param_1 + 0x93b0) != iVar1) {

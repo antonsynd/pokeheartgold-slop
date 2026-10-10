@@ -48,7 +48,7 @@ undefined4 ov93_0225C730(int param_1)
 
 {
   int iVar1;
-  
+
   if ((*(char *)(param_1 + 0x3d) == '\0') && (iVar1 = func_0x02258b54(), iVar1 == 1)) {
     *(undefined1 *)(param_1 + 0x3d) = 1;
   }

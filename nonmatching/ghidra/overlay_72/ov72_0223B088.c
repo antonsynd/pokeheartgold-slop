@@ -51,7 +51,7 @@ undefined4 ov72_0223B088(int param_1)
 
 {
   int iVar1;
-  
+
   iVar1 = Sprite_IsAnimated(*(undefined4 *)(param_1 + 4));
   if (iVar1 != 0) {
     return 0;

@@ -53,7 +53,7 @@ void ov18_021EF9B4(int param_1,undefined4 param_2,undefined4 param_3,undefined4 
 
 {
   uint uVar1;
-  
+
   ov18_021E613C(param_1,0);
   FillWindowPixelBuffer(param_1 + 0x47c,0);
   ov18_021F9648(param_1 + 0x47c,*(undefined4 *)(param_1 + 0x65c),0x1e,0x18,0,0,0x20100,2,param_4);

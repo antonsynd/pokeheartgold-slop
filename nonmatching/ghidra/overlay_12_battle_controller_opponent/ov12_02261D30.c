@@ -49,7 +49,7 @@ void ov12_02261D30(undefined1 *param_1,undefined1 *param_2,int param_3,undefined
 
 {
   uint uVar1;
-  
+
   if (param_3 != 0) {
     switch(param_4) {
     case 0x12:

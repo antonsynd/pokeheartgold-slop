@@ -54,7 +54,7 @@ void ov74_022358C8(int param_1)
 
 {
   int iVar1;
-  
+
   if (iRam0223d65c != 0) {
     if (iRam0223d660 == 0) {
       iVar1 = Sprite_GetDrawFlag(iRam0223d65c);

@@ -48,7 +48,7 @@ undefined4 ov39_0222774C(int param_1,undefined4 param_2,undefined4 param_3)
 
 {
   int iVar1;
-  
+
   iVar1 = ov39_02227DB8();
   if (iVar1 == 0) {
     return 0;

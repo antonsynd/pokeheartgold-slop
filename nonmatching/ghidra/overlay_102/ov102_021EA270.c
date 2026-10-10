@@ -47,7 +47,7 @@ void ov102_021EA270(int param_1,int *param_2,int param_3,undefined1 param_4)
 
 {
   int iVar1;
-  
+
   *param_2 = param_1 + 0x150 + param_3 * 0x24;
   iVar1 = param_1 + param_3 * 4;
   param_2[2] = param_1 + 0x198 + param_3 * 0x14;

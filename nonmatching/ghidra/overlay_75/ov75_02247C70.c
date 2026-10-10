@@ -56,7 +56,7 @@ void ov75_02247C70(int param_1)
 {
   undefined4 uVar1;
   int iVar2;
-  
+
   FillWindowPixelBuffer(param_1 + 0xd4,0xf);
   uVar1 = NewString_ReadMsgData(*(undefined4 *)(param_1 + 0x34),0x2a);
   AddTextPrinterParameterized(param_1 + 0xd4,0,uVar1,0x10,8,0xff,0);

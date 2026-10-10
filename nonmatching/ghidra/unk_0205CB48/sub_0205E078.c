@@ -52,7 +52,7 @@ undefined4 sub_0205E078(undefined *param_1,undefined4 param_2,int param_3)
 {
   int iVar1;
   undefined *puVar2;
-  
+
   if (param_3 != -1) {
     return 0;
   }

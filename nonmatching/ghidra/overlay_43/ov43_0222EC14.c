@@ -50,7 +50,7 @@ void ov43_0222EC14(undefined4 *param_1,short *param_2)
 {
   uint uVar1;
   uint uVar2;
-  
+
   uVar1 = (uint)param_2[1];
   if ((int)uVar1 < 0) {
     uVar1 = -uVar1;

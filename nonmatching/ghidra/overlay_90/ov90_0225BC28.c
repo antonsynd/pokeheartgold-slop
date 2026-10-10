@@ -63,7 +63,7 @@ void ov90_0225BC28(undefined4 *param_1,int param_2)
   undefined4 uStack_20;
   int iStack_1c;
   undefined4 uStack_18;
-  
+
   *(short *)((int)param_1 + 10) =
        (short)((int)(*(short *)(param_1 + 2) * 0x17 +
                     ((uint)(*(short *)(param_1 + 2) * 0x17 >> 2) >> 0x1d)) >> 3);

@@ -53,7 +53,7 @@ undefined4 MapObjectMovementCmd067_Step1(undefined *param_1)
   undefined4 uStack_18;
   int iStack_14;
   undefined4 uStack_10;
-  
+
   piVar1 = (int *)sub_0205F3E4(param_1);
   *piVar1 = *piVar1 + piVar1[1];
   uStack_18 = 0;

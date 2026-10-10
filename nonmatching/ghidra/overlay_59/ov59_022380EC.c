@@ -49,7 +49,7 @@ int ov59_022380EC(int param_1)
 
 {
   int iVar1;
-  
+
   if (*(short *)(param_1 + 0x3c) == 0) {
     ov59_02238FF4(param_1,0);
     *(short *)(param_1 + 0x3c) = *(short *)(param_1 + 0x3c) + 1;

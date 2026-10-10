@@ -57,7 +57,7 @@ undefined4 ov02_02245FD0(int param_1)
   int iVar3;
   int iVar4;
   uint uVar5;
-  
+
   uVar5 = 0;
   iVar4 = 0;
   if (*(char *)(param_1 + 0x9c) != '\0') {

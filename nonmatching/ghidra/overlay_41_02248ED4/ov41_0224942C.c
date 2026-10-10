@@ -54,7 +54,7 @@ void ov41_0224942C(int *param_1,int *param_2,int *param_3,int *param_4,int *para
   int iStack_20;
   int iStack_1c;
   int *piStack_18;
-  
+
   iVar1 = *param_1;
   piStack_18 = param_4;
   ov41_02249B94(*(undefined4 *)(iVar1 + 0x10),&iStack_1c,&iStack_20);

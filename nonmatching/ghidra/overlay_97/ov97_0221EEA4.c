@@ -56,7 +56,7 @@ void ov97_0221EEA4(undefined4 *param_1,undefined4 param_2,undefined2 param_3,und
 
 {
   undefined4 uVar1;
-  
+
   param_1[1] = param_2;
   uVar1 = param_4;
   ov97_0221F14C(param_2,*param_1);

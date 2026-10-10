@@ -53,7 +53,7 @@ void ov86_021E5E0C(int param_1)
 
 {
   undefined4 uVar1;
-  
+
   ov86_021E5D10();
   ov86_021E5D30(*(undefined4 *)(param_1 + 0xc));
   uVar1 = PaletteData_Init(0x79);

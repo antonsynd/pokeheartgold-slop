@@ -57,7 +57,7 @@ void ov74_0223563C(void)
   undefined4 uStack_14;
   undefined4 uStack_10;
   int iStack_c;
-  
+
   uStack_18 = 0x28;
   uStack_14 = 0x1000;
   uStack_10 = 0x1000;

@@ -50,7 +50,7 @@ void ov85_021E7350(int param_1)
 {
   int iVar1;
   int iVar2;
-  
+
   iVar1 = 0;
   if (0 < *(int *)(param_1 + 0xc9c)) {
     iVar2 = param_1 + 0xcb8;

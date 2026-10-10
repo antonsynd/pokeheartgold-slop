@@ -64,7 +64,7 @@ undefined4 ov74_02230320(int param_1)
   uint uVar4;
   bool bVar5;
   int *piVar6;
-  
+
   iVar1 = ov74_02231100();
   piVar2 = (int *)ov74_02231154();
   iVar3 = ov74_0222FE78();

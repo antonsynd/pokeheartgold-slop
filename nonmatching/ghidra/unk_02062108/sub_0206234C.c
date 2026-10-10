@@ -53,7 +53,7 @@ int sub_0206234C(int param_1,int param_2)
   undefined4 *puVar2;
   int *piVar3;
   int *piVar4;
-  
+
   if (3 < param_1) {
     GF_AssertFail();
   }

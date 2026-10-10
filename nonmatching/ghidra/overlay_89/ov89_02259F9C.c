@@ -72,7 +72,7 @@ undefined4 ov89_02259F9C(undefined4 *param_1)
   int iStack_28;
   undefined1 auStack_1c [4];
   int iStack_18;
-  
+
   iStack_28 = 0;
   iStack_2c = 0;
   func_0x0222ec3c(auStack_1c);

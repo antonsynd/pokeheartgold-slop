@@ -52,7 +52,7 @@ undefined4 ov103_021ED4D4(int param_1)
 {
   int iVar1;
   undefined4 uVar2;
-  
+
   iVar1 = YesNoPrompt_HandleInput(*(undefined4 *)(*(int *)(param_1 + 0xc) + 0x238));
   if (iVar1 == 1) {
     YesNoPrompt_Reset(*(undefined4 *)(*(int *)(param_1 + 0xc) + 0x238));

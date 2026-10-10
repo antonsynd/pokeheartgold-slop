@@ -57,7 +57,7 @@ void ov07_02227AEC(undefined4 param_1)
   undefined2 uVar1;
   undefined4 uVar2;
   undefined1 *puVar3;
-  
+
   uVar2 = ov07_0221BFD0();
   puVar3 = (undefined1 *)Heap_Alloc(uVar2,0x58);
   *puVar3 = 0;

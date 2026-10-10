@@ -55,7 +55,7 @@ undefined4 ov14_021F2270(int param_1,undefined4 param_2,undefined4 param_3,undef
   undefined1 auStack_1e [2];
   undefined1 auStack_1c [4];
   undefined4 uStack_18;
-  
+
   uStack_18 = param_4;
   sub_02019B1C(*(undefined4 *)(*(int *)(param_1 + 0x34) + 0x2f0),param_2,&uStack_1f,&uStack_20);
   sub_02019B44(*(undefined4 *)(*(int *)(param_1 + 0x34) + 0x2f0),param_2,auStack_1c,auStack_1e);

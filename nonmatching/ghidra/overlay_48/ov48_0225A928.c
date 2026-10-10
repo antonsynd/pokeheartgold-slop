@@ -49,7 +49,7 @@ void ov48_0225A928(int param_1)
 {
   int iVar1;
   int iVar2;
-  
+
   if ((*(short *)(param_1 + 0x18) != 0) &&
      (iVar1 = 0, iVar2 = param_1, *(short *)(param_1 + 0x18) != 0)) {
     do {

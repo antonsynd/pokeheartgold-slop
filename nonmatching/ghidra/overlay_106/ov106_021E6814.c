@@ -62,7 +62,7 @@ undefined4 ov106_021E6814(int param_1,undefined4 param_2,undefined4 param_3,unde
 {
   undefined4 uVar1;
   int iVar2;
-  
+
   Main_SetVBlankIntrCB(0,0,param_3,param_4,param_4);
   HBlankInterruptDisable();
   func_0x02022c9c(0);

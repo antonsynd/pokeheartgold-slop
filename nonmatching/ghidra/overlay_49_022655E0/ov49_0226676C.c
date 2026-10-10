@@ -55,7 +55,7 @@ undefined4 ov49_0226676C(undefined4 param_1,int param_2)
   int iVar3;
   undefined *puVar4;
   undefined4 uStack_18;
-  
+
   iVar3 = *(short *)(param_2 + 2) * 3;
   uVar2 = (int)(iVar3 + ((uint)(iVar3 >> 4) >> 0x1b)) >> 5;
   if ((uVar2 != (int)*(short *)(param_2 + 0x954)) &&

@@ -53,7 +53,7 @@ int ov74_0222A078(void)
   int iVar1;
   undefined4 uVar2;
   int iVar3;
-  
+
   iVar1 = OverlayManager_GetData();
   iVar3 = iVar1 + 0xdc;
   if (*(int *)(iVar1 + 0x15d4) == 1) {

@@ -58,7 +58,7 @@ void ov99_021E7450(undefined4 *param_1)
   uint uVar3;
   uint uVar4;
   uint auStack_20 [3];
-  
+
   iVar1 = ov99_021E7158();
   auStack_20[0] = 0;
   auStack_20[1] = 0;

@@ -50,7 +50,7 @@ void ov27_0225A4B8(int param_1)
 
 {
   undefined4 uVar1;
-  
+
   FieldSystem_GetPlayerAvatar(*(undefined4 *)(param_1 + 0x10));
   uVar1 = PlayerAvatar_CheckRunningShoesLock();
   ov27_0225A468(param_1,uVar1);

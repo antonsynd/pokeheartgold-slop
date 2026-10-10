@@ -51,7 +51,7 @@ void ov85_021E8E00(int param_1)
 {
   int iVar1;
   int iVar2;
-  
+
   ov85_021EA368();
   Heap_Free(*(undefined4 *)(param_1 + 0x28));
   Heap_Free(*(undefined4 *)(param_1 + 0x3b8));

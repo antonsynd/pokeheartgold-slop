@@ -51,7 +51,7 @@ void ov96_02215DEC(undefined4 param_1,int param_2,int *param_3)
   int iVar1;
   int iStack_14;
   int iStack_10;
-  
+
   iVar1 = PokeathlonCourse_GetHeapAllocPtr4();
   iVar1 = iVar1 + 0x1a4 + param_2 * 0xa8;
   ov96_021EB06C(**(undefined4 **)(iVar1 + 4),*(int *)(iVar1 + 0x2c) >> 0xc,

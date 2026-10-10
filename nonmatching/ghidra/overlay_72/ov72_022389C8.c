@@ -86,7 +86,7 @@ void ov72_022389C8(undefined4 param_1)
   undefined4 uStack_18;
   undefined4 uStack_14;
   undefined4 uStack_10;
-  
+
   uStack_28 = 0;
   uStack_24 = 0;
   uStack_20 = 0x800;

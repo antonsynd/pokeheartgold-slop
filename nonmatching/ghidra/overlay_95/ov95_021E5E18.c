@@ -52,7 +52,7 @@ ov95_021E5E18(undefined4 param_1,undefined4 param_2,undefined4 param_3,undefined
 {
   undefined4 uVar1;
   undefined4 uVar2;
-  
+
   uVar1 = ov95_021E5DD0();
   uVar2 = sub_02015264(param_2,param_3,param_1);
   sub_0201526C(uVar1,uVar2,10,1,param_4);

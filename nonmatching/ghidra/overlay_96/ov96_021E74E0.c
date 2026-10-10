@@ -55,7 +55,7 @@ undefined4 ov96_021E74E0(undefined4 param_1)
   undefined4 uVar2;
   undefined4 uVar3;
   int iVar4;
-  
+
   uVar1 = PokeathlonCourse_GetFieldData_AtIndex(param_1,0);
   uVar2 = ov96_021E9A1C();
   uVar3 = PokeathlonCourse_GetSystem(param_1);

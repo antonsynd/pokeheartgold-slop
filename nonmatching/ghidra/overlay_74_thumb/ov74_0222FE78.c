@@ -50,7 +50,7 @@ undefined4 ov74_0222FE78(void)
 
 {
   int iVar1;
-  
+
   iVar1 = ov74_0223107C();
   if (iVar1 == 0xc) {
     iVar1 = ov74_0223105C();

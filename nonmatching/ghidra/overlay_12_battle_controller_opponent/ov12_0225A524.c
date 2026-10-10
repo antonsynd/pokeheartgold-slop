@@ -56,7 +56,7 @@ void ov12_0225A524(undefined4 param_1,undefined4 *param_2,undefined1 *param_3)
   int iVar5;
   undefined1 *puVar6;
   undefined4 *puVar7;
-  
+
   puVar2 = (undefined4 *)Heap_Alloc(5,0x3c);
   func_0x020d4858(0,puVar2,0x3c);
   iVar3 = 0;

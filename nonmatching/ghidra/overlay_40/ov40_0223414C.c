@@ -56,7 +56,7 @@ undefined4 ov40_0223414C(int param_1,undefined4 param_2,undefined4 param_3,undef
 {
   int iVar1;
   undefined4 uVar2;
-  
+
   iVar1 = Heap_Alloc(0x6d,0x2e8,param_3,param_4,param_4);
   func_0x020e5b44(iVar1,0,0x2e8);
   *(int *)(param_1 + 0x860) = iVar1;

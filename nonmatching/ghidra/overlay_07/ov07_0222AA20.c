@@ -62,7 +62,7 @@ void ov07_0222AA20(undefined4 param_1,int param_2)
   int iVar3;
   int iVar4;
   int iVar5;
-  
+
   iVar3 = 0;
   bVar1 = false;
   iVar4 = param_2;

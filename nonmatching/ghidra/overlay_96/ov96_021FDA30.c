@@ -64,7 +64,7 @@ void ov96_021FDA30(int param_1,undefined2 *param_2)
   undefined2 *puStack_24;
   uint uStack_20;
   uint uStack_1c;
-  
+
   iVar9 = 0;
   uVar15 = 0;
   uStack_1c = 0;

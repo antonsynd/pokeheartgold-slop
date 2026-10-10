@@ -52,7 +52,7 @@ undefined4 ov14_021E96C8(int param_1,undefined4 param_2,undefined4 param_3,undef
 {
   undefined4 uVar1;
   int iVar2;
-  
+
   iVar2 = *(int *)(param_1 + 0x34);
   uVar1 = sub_02019B08(*(undefined4 *)(iVar2 + 0x2f0),0);
   switch(*(undefined2 *)(iVar2 + 0x10)) {

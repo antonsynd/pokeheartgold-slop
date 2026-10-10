@@ -60,7 +60,7 @@ undefined4 ov14_021EE26C(int param_1,undefined4 param_2,undefined4 param_3,undef
   int iVar2;
   undefined4 uVar3;
   int iVar4;
-  
+
   iVar4 = *(byte *)(param_1 + 0x21) - 0x1e;
   iVar2 = ov14_021E6480(param_1,iVar4,param_3,param_4,param_4);
   if (iVar2 == 0) {

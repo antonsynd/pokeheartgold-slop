@@ -59,7 +59,7 @@ void ov43_0222EA40(undefined4 param_1,int param_2,undefined4 param_3,int param_4
   undefined *puVar2;
   undefined *puVar3;
   int iVar4;
-  
+
   iVar4 = param_4;
   Save_Frontier_GetStatic(*(undefined **)(param_2 + 4));
   puVar1 = sub_0202C6F4(*(undefined **)(param_2 + 4));

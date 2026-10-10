@@ -51,7 +51,7 @@ void ov96_021FBEA4(int param_1)
 
 {
   undefined4 uVar1;
-  
+
   *(undefined4 *)(param_1 + 0xc) = 0;
   uVar1 = ov96_021EB5B8(*(undefined4 *)(param_1 + 8));
   ov96_021EB52C(*(undefined4 *)(param_1 + 4),1,0);

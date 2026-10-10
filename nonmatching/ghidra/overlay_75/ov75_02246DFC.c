@@ -55,7 +55,7 @@ void ov75_02246DFC(int param_1,undefined4 param_2,undefined4 param_3,int param_4
   int iVar2;
   longlong lVar3;
   int iStack_10;
-  
+
   iVar2 = *(int *)(param_1 + 0x94);
   iStack_10 = param_4;
   lVar3 = String_atoi(*(undefined **)(iVar2 + 0x1c),(undefined *)&iStack_10);

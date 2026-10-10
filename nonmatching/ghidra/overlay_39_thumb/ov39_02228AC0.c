@@ -59,7 +59,7 @@ ov39_02228AC0(undefined4 param_1,undefined4 param_2,undefined4 param_3,undefined
   undefined1 uStack_16;
   undefined1 uStack_15;
   undefined4 uStack_14;
-  
+
   uStack_14 = param_4;
   uVar1 = YesNoPrompt_Create(0x7c);
   uStack_1c = 0xe;

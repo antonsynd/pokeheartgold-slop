@@ -57,7 +57,7 @@ undefined4 sub_02060DEC(undefined4 param_1,undefined4 param_2,undefined4 param_3
   int iVar2;
   undefined4 uVar3;
   int iVar4;
-  
+
   iVar2 = sub_0205F8D0();
   if (iVar2 == 0) {
     uVar3 = MapObject_GetFieldSystem(param_1);

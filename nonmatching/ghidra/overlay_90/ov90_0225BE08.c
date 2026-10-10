@@ -52,7 +52,7 @@ void ov90_0225BE08(int param_1)
 {
   uint uVar1;
   uint uVar2;
-  
+
   uVar1 = uRam04000006 + 1 & 0xff;
   if ((uVar1 < 0xc0) && (uVar2 = (uRam04000000 & 0xe000) >> 0xd, (uRam04000004 & 2) != 0)) {
     if ((uVar1 < 0x49) || (0x79 < uVar1)) {

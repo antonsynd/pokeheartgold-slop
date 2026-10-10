@@ -53,7 +53,7 @@ void ov01_021F8CFC(undefined4 param_1)
   undefined4 *puVar1;
   undefined4 uVar2;
   undefined1 auStack_18 [12];
-  
+
   puVar1 = (undefined4 *)sub_0205F3E8(param_1,4);
   uVar2 = MapObject_GetSpriteID(param_1);
   ov01_021F8CC8(uVar2,auStack_18);

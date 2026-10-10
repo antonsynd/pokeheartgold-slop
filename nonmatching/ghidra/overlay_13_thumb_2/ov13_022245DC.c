@@ -55,7 +55,7 @@ void ov13_022245DC(undefined4 param_1,undefined4 param_2,undefined4 param_3)
   undefined1 uStack_17;
   undefined2 uStack_16;
   undefined4 uStack_14;
-  
+
   uStack_18 = 8;
   uStack_17 = 2;
   uStack_14 = 0xffffffff;

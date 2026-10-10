@@ -57,7 +57,7 @@ void ov34_0225DD04(int param_1,undefined4 param_2,undefined4 param_3,undefined4 
   undefined4 uVar2;
   int iVar3;
   int iVar4;
-  
+
   iVar1 = ov34_0225DC0C(*(undefined4 *)(*(int *)(param_1 + 0x270) + 0x34c),
                         *(undefined2 *)(param_1 + 0x288),*(int *)(param_1 + 0x270),param_4,param_4);
   iVar4 = *(int *)(*(int *)(param_1 + 0x270) + 0x348);

@@ -62,7 +62,7 @@ void ov27_0225C618(int param_1)
   int iVar4;
   int iVar5;
   int iStack_1c;
-  
+
   puVar1 = (undefined4 *)func_0x021eef58(*(undefined4 *)(param_1 + 0xc));
   iVar2 = func_0x021eef60(*(undefined4 *)(param_1 + 0xc));
   uVar3 = NARC_New(0xef,8);

@@ -48,7 +48,7 @@ undefined4 ov64_021E6B84(int param_1)
 
 {
   int iVar1;
-  
+
   iVar1 = *(int *)(param_1 + 0x1c0);
   if (iVar1 == 0) {
     func_0x0200dd10(*(undefined4 *)(param_1 + *(int *)(param_1 + 0x1bc) * 4 + 0x138),1);

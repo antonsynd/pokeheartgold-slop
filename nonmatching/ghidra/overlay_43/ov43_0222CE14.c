@@ -50,7 +50,7 @@ undefined4 ov43_0222CE14(undefined4 param_1,undefined4 *param_2)
 
 {
   int iVar1;
-  
+
   iVar1 = func_0x0202529c(0x222ed7a);
   if (iVar1 == 0) {
     *param_2 = 1;

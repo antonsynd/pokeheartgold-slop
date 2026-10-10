@@ -50,7 +50,7 @@ undefined4 ov07_02223CE4(int param_1,undefined4 param_2,undefined4 param_3,undef
 
 {
   int iVar1;
-  
+
   iVar1 = ov07_02222748(param_1 + 0x18,*(undefined4 *)(param_1 + 0x14));
   if (iVar1 == 0) {
     if (*(int *)(param_1 + 0x40) != 0) {

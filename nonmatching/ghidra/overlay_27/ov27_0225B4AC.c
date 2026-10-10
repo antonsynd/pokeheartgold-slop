@@ -49,7 +49,7 @@ void ov27_0225B4AC(int *param_1,int param_2)
 {
   int iVar1;
   int iVar2;
-  
+
   iVar2 = 0;
   do {
     iVar1 = *param_1;

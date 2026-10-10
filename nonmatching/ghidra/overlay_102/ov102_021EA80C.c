@@ -53,7 +53,7 @@ void ov102_021EA80C(int param_1,undefined4 param_2)
 {
   undefined4 uVar1;
   int iStack_10;
-  
+
   GfGfxLoader_GXLoadPalFromOpenNarc(param_2,6,0,0,0x1c0,0x23);
   GfGfxLoader_GXLoadPalFromOpenNarc(param_2,0xd,4,0,0x60,0x23);
   uVar1 = func_0x02007c48(param_2,0x10,&iStack_10,0x23);

@@ -54,7 +54,7 @@ void ov96_021FA7BC(undefined4 param_1,undefined4 param_2,int param_3,undefined4 
 
 {
   undefined1 uVar1;
-  
+
   if (param_4[1] == 0) {
     if (*(char *)(param_4 + 0xd) == '\0') {
       sub_0200606C(0x8aa,(&ov96_0221DC2C)[param_3],param_3,param_4,param_4);

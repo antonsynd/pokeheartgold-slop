@@ -51,7 +51,7 @@ void ov41_022495C8(undefined4 param_1,undefined2 *param_2)
 {
   undefined4 uVar1;
   int iVar2;
-  
+
   uVar1 = func_0x02007a44(*param_2,param_2[1],0,0xe,0);
   iVar2 = ov41_022463DC(param_1,uVar1,0x76);
   UnscanPokepic(*(undefined4 *)(iVar2 + 0x14),*param_2);

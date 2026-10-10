@@ -60,7 +60,7 @@ void sub_02089CB4(int param_1)
 
 {
   char cVar1;
-  
+
   cVar1 = *(char *)(*(int *)(param_1 + 0x22c) + 0x12);
   if ((cVar1 == '\0') || (cVar1 == '\x01')) {
     *(undefined1 *)(param_1 + 0x7bc) = 0;

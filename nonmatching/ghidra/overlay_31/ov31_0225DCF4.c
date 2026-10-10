@@ -49,7 +49,7 @@ void ov31_0225DCF4(int param_1)
 
 {
   int iVar1;
-  
+
   iVar1 = 0;
   param_1 = param_1 + 0x84;
   do {

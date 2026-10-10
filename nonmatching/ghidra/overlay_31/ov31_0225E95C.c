@@ -52,7 +52,7 @@ void ov31_0225E95C(int param_1,undefined4 param_2)
 {
   undefined4 uVar1;
   int iVar2;
-  
+
   if ((byte)(*(char *)(param_1 + 0x283) - 3U) < 2) {
     uVar1 = PokeathlonSave_GetAthletePoints(*(undefined4 *)(param_1 + 0x254));
   }

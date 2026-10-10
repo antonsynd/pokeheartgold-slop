@@ -55,7 +55,7 @@ uint ov45_0222A9CC(int param_1)
   uint uVar4;
   __asm__ volatile("movs %0, r4" : "=l"(unaff_r4) : : "cc");
 
-  
+
   uVar4 = (uint)*(byte *)(param_1 + 0x38);
   if (1 < *(byte *)(param_1 + 0x38)) {
     sVar1 = ov45_0222CD04((uint)*(ushort *)(param_1 + 0x3a));

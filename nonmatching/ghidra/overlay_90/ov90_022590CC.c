@@ -65,7 +65,7 @@ void ov90_022590CC(undefined4 *param_1,undefined4 param_2,undefined4 param_3,und
   undefined4 uStack_20;
   undefined4 uStack_1c;
   undefined4 uStack_18;
-  
+
   func_0x020b78d4();
   func_0x0200b150(0,0x7e,0,0x1f,0,0x7e,0,0x1f,param_5);
   uStack_20 = 0x4000;

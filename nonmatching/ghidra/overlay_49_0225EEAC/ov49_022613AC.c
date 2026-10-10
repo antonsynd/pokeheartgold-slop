@@ -56,7 +56,7 @@ bool ov49_022613AC(int param_1,undefined4 param_2,undefined4 param_3,undefined4 
   undefined1 auStack_20 [4];
   int iStack_1c;
   undefined4 uStack_14;
-  
+
   *(short *)(param_1 + 8) = *(short *)(param_1 + 8) + 1;
   bVar1 = 0xf < *(short *)(param_1 + 8);
   if (bVar1) {

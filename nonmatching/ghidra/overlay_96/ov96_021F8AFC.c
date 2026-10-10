@@ -66,7 +66,7 @@ void ov96_021F8AFC(int param_1,int param_2,undefined4 *param_3)
   undefined4 uVar4;
   int iVar5;
   undefined1 auStack_44 [48];
-  
+
   ov96_021F8A98(auStack_44,param_1,param_1 + 0x2d8,1);
   uVar1 = ov96_021F8ACC(auStack_44,0x11,4);
   *param_3 = uVar1;

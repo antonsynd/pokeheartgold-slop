@@ -48,7 +48,7 @@ void ov96_021E8340(undefined4 param_1,int param_2,uint *param_3)
 
 {
   uint uVar1;
-  
+
   switch(param_1) {
   default:
     GF_AssertFail();

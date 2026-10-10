@@ -59,7 +59,7 @@ ov13_02222534(undefined4 param_1,undefined4 param_2,undefined4 param_3,undefined
   undefined2 auStack_28 [2];
   undefined1 auStack_24 [8];
   int iStack_1c;
-  
+
   uVar1 = ov13_02222708(param_1,param_3);
   *param_4 = uVar1;
   iStack_1c = ov13_022208E8(param_3);

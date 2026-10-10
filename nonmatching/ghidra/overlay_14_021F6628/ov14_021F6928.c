@@ -56,7 +56,7 @@ void ov14_021F6928(int param_1,int param_2,undefined4 param_3)
 {
   undefined4 uVar1;
   undefined4 uVar2;
-  
+
   uVar1 = ov14_021F6628();
   switch(param_3) {
   case 0:

@@ -49,7 +49,7 @@ void ov01_021F74B4(undefined4 param_1)
 
 {
   undefined4 uVar1;
-  
+
   uVar1 = sub_0205F40C();
   ov01_021F95A8(param_1,uVar1);
   return;

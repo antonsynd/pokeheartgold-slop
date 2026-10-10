@@ -70,7 +70,7 @@ void ov07_0221D5B0(undefined4 *param_1)
   undefined4 *puVar8;
   int iVar9;
   undefined4 uVar10;
-  
+
   iVar6 = param_1[6];
   param_1[6] = (undefined4 *)(iVar6 + 4);
   uVar7 = *(undefined4 *)(iVar6 + 4);

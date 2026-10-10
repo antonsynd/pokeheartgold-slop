@@ -53,7 +53,7 @@ void ov34_0225D5A0(undefined4 param_1,undefined4 *param_2,undefined4 param_3,und
   undefined *puVar1;
   int iVar2;
   undefined4 uVar3;
-  
+
   puVar1 = (undefined *)param_2[3];
   uVar3 = param_2[5];
   if (*(int *)(puVar1 + 0x84) != 0) {

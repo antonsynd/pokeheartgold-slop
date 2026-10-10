@@ -48,7 +48,7 @@ undefined4 ov85_021E750C(int param_1)
 
 {
   int iVar1;
-  
+
   if ((*(int *)(param_1 + 0xd34) != 0) && (iVar1 = ov85_021E74F0(), iVar1 == 1)) {
     return 1;
   }

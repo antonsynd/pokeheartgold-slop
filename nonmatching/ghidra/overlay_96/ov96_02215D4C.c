@@ -61,7 +61,7 @@ undefined4 ov96_02215D4C(undefined4 param_1)
 
 {
   int iVar1;
-  
+
   iVar1 = PokeathlonCourse_GetHeapAllocPtr4();
   ov96_02219FDC(*(undefined4 *)(iVar1 + 0x184));
   ov96_022195E8(*(undefined4 *)(iVar1 + 0x180));

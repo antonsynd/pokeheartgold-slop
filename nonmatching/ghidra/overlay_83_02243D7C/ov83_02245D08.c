@@ -53,7 +53,7 @@ void ov83_02245D08(int param_1,undefined4 param_2,undefined4 param_3,undefined4 
 
 {
   undefined4 uVar1;
-  
+
   uVar1 = NewString_ReadMsgData(param_3,param_4);
   StringExpandPlaceholders(*(undefined4 *)(param_1 + 0x24),*(undefined4 *)(param_1 + 0x28),uVar1);
   ov83_02247998(param_2,*(undefined4 *)(param_1 + 0x28),param_5,param_6,param_7,param_8,param_9,

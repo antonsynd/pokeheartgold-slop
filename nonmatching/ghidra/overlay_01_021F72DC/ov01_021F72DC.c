@@ -52,7 +52,7 @@ undefined4 ov01_021F72DC(undefined4 param_1)
   int iVar1;
   undefined4 *puVar2;
   undefined4 uVar3;
-  
+
   iVar1 = MapObject_GetSpriteID();
   if (iVar1 < 0xf9) {
     if (0xf7 < iVar1) goto LAB_021f737e;

@@ -61,7 +61,7 @@ void ov91_0225EED0(int *param_1,undefined4 param_2,undefined4 param_3,undefined4
   int iStack_1c;
   int iStack_18;
   int iStack_14;
-  
+
   ov91_0225F05C(param_2,param_3,param_4,&iStack_28);
   ov91_0225F05C(param_2,param_3,param_5,&iStack_40);
   param_1[6] = iStack_28;

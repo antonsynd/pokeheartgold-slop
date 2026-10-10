@@ -49,7 +49,7 @@ undefined4 ov106_021E6C5C(int param_1,int *param_2)
 
 {
   int iVar1;
-  
+
   iVar1 = *(int *)(param_1 + 0x418);
   if (*param_2 != 0xb) {
     GF_AssertFail();

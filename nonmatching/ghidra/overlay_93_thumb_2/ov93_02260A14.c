@@ -48,7 +48,7 @@ void ov93_02260A14(int param_1)
 
 {
   int iVar1;
-  
+
   iVar1 = 0;
   do {
     Sprite_DeleteAndFreeResources(*(undefined4 *)(param_1 + 0x380c));

@@ -57,7 +57,7 @@ undefined4 ov109_021E7640(int param_1)
   int iVar1;
   undefined4 uVar2;
   int iVar3;
-  
+
   iVar1 = func_0x020186a4(*(undefined4 *)(param_1 + 0x84));
   uVar2 = 0xffffffff;
   if (iVar1 != -1) {

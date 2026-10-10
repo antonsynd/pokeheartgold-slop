@@ -49,7 +49,7 @@ void ov102_021E874C(undefined2 *param_1,undefined4 param_2)
 {
   ushort uVar1;
   undefined2 uVar2;
-  
+
   *param_1 = 0;
   *(undefined1 *)(param_1 + 3) = 0;
   *(undefined1 *)((int)param_1 + 7) = 0;

@@ -50,7 +50,7 @@ void ov01_021FA7C8(int param_1)
   int iVar1;
   int iVar2;
   short *psVar3;
-  
+
   psVar3 = *(short **)(param_1 + 0x100);
   iVar1 = 0;
   iVar2 = *(int *)(psVar3 + 4);

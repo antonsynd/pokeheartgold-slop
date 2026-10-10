@@ -62,7 +62,7 @@ undefined4 ov59_022383B4(int param_1)
 
 {
   int iVar1;
-  
+
   switch(*(undefined2 *)(param_1 + 0x3c)) {
   case 0:
     if (*(byte *)(param_1 + 0x18) < 5) {

@@ -49,7 +49,7 @@ void sub_0203A8A8(undefined4 param_1)
 
 {
   int iVar1;
-  
+
   iVar1 = sub_02039998();
   sub_0203A8CC(0xf0,0,iVar1 != 0,param_1,0x1e0);
   return;

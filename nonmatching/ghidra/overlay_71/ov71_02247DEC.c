@@ -60,7 +60,7 @@ undefined4 ov71_02247DEC(int param_1,int *param_2)
 
 {
   int iVar1;
-  
+
   switch(*param_2) {
   case 0:
     PlaySE(0x6a7);

@@ -51,7 +51,7 @@ void ov41_022460DC(int param_1,char *param_2)
   char cVar1;
   undefined4 uVar2;
   undefined4 uVar3;
-  
+
   uVar2 = sub_02015FCC(*(undefined4 *)(param_1 + 4));
   uVar3 = sub_02015FE8(*(undefined4 *)(param_1 + 4));
   cVar1 = (char)((uint)uVar2 >> 0x10);

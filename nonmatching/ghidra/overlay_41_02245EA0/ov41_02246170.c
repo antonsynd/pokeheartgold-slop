@@ -59,7 +59,7 @@ void ov41_02246170(int param_1)
   undefined4 uStack_14;
   undefined4 uStack_10;
   undefined4 uStack_c;
-  
+
   uStack_18 = 0x2ce;
   uStack_14 = 0x76;
   uStack_10 = 0x13;

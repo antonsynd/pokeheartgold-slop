@@ -54,7 +54,7 @@ void sub_0208F828(undefined4 param_1,undefined4 param_2,int param_3,int param_4)
   int iVar1;
   uint uVar2;
   int iVar3;
-  
+
   iVar3 = param_4;
   iVar1 = sub_0203769C();
   if (iVar1 != 0) {

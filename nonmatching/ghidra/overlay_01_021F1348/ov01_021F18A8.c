@@ -49,7 +49,7 @@ int ov01_021F18A8(int param_1,int param_2)
 {
   uint uVar1;
   int *piVar2;
-  
+
   uVar1 = (uint)*(ushort *)(param_1 + 4);
   piVar2 = *(int **)(param_1 + 0x1c);
   do {

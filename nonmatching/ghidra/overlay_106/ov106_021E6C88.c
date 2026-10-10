@@ -50,7 +50,7 @@ undefined4 ov106_021E6C88(int param_1,int *param_2)
 {
   undefined2 uVar1;
   int iVar2;
-  
+
   iVar2 = *(int *)(param_1 + 0x418);
   if (*param_2 != 0xc) {
     GF_AssertFail();

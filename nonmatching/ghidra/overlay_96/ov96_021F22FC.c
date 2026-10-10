@@ -52,7 +52,7 @@ undefined4 ov96_021F22FC(undefined4 param_1,int param_2,int param_3,undefined4 p
   uint uVar2;
   int iVar3;
   undefined1 auStack_20 [12];
-  
+
   uVar2 = 0;
   iVar3 = param_3 * 0xc0 + 0x221dca0;
   do {

@@ -56,7 +56,7 @@ void ov81_02241DDC(int param_1,undefined4 param_2)
   undefined4 uStack_20;
   undefined4 uStack_1c;
   undefined4 uStack_18;
-  
+
   if (*(int *)(param_1 + 0x47c) == 3) {
     uStack_20 = 0x30;
     uStack_24 = 0x50;

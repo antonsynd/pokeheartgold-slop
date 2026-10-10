@@ -54,7 +54,7 @@ void ov91_02260298(int param_1,uint param_2,undefined4 param_3,undefined4 param_
 {
   int iVar1;
   uint uVar2;
-  
+
   if (5 < param_2) {
     GF_AssertFail();
   }

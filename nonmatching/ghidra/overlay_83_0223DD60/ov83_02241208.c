@@ -52,7 +52,7 @@ void ov83_02241208(int param_1,int param_2)
 {
   undefined4 uVar1;
   int iVar2;
-  
+
   iVar2 = (*(char *)(param_1 + 0xd) + param_2) * 0x1000000 >> 0x18;
   if (iVar2 < 0) {
     iVar2 = (int)((*(byte *)(param_1 + 0x14) - 1) * 0x1000000) >> 0x18;

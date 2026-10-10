@@ -53,7 +53,7 @@ void ov47_02259B30(int param_1,undefined4 param_2,undefined4 param_3,undefined1 
   int iVar2;
   int iVar3;
   int iVar4;
-  
+
   iVar2 = 0;
   *(undefined4 *)(param_1 + 100) = 0;
   iVar3 = param_1;

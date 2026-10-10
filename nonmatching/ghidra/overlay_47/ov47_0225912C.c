@@ -53,7 +53,7 @@ void ov47_0225912C(int param_1,undefined4 param_2,int param_3)
 
 {
   int iVar1;
-  
+
   ov47_02259D24(param_1 + 0x2c);
   RemoveWindow(param_1);
   Sprite_Delete(*(undefined4 *)(param_1 + 0x14));

@@ -49,7 +49,7 @@ undefined4 ov112_021EBBB0(int param_1)
 
 {
   int iVar1;
-  
+
   iVar1 = TextPrinterCheckActive(*(uint *)(param_1 + 0x1e524) & 0xff);
   if (iVar1 == 0) {
     ov112_021E966C(param_1,1);

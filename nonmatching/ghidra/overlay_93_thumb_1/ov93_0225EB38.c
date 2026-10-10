@@ -48,7 +48,7 @@ void ov93_0225EB38(int param_1)
 
 {
   int iVar1;
-  
+
   if (*(int *)(param_1 + 0x238) != 0) {
     *(undefined4 *)(param_1 + 0x238) = 0;
     *(undefined4 *)(param_1 + 0x23c) = 0xffffffff;

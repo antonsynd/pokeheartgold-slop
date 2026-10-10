@@ -51,7 +51,7 @@ ov70_0223E76C(undefined4 param_1,undefined4 param_2,undefined4 param_3,undefined
 {
   undefined2 uVar1;
   int iVar2;
-  
+
   uVar1 = GetMonData(param_1,6,0,param_4,param_4);
   iVar2 = ItemIdIsMail(uVar1);
   if (iVar2 != 0) {

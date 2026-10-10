@@ -61,7 +61,7 @@ void ov86_021E7B68(int param_1)
   uint uVar5;
   int iVar6;
   int iStack_28;
-  
+
   if (*(short *)(param_1 + 0x25e) == 0) {
     iStack_28 = 5;
   }

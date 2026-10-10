@@ -53,7 +53,7 @@ void ov96_02210030(undefined4 *param_1,int param_2,undefined4 param_3)
   uint uVar2;
   undefined4 *puVar3;
   int iVar4;
-  
+
   iVar1 = ov96_021E8A20(param_2 + 0x28);
   uVar2 = param_1[7] & 0xff;
   if (uVar2 == 0) {

@@ -48,7 +48,7 @@ void ov96_02207C38(int param_1,int param_2,undefined2 param_3,int param_4)
 
 {
   undefined4 uVar1;
-  
+
   if ((((-1 < param_1) && (param_1 < 0x100)) && (-1 < param_2)) && (param_2 < 0xc0)) {
     if (param_4 == 0) {
       uVar1 = 4;

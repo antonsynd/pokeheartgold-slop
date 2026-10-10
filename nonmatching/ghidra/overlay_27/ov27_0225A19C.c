@@ -69,7 +69,7 @@ void ov27_0225A19C(undefined4 param_1,undefined4 param_2)
   int iVar1;
   int iVar2;
   int iVar3;
-  
+
   iVar1 = SysTask_GetData(param_2);
   func_0x020d8d60(0,0x7b);
   iVar2 = func_0x0225f430(0x225c239);

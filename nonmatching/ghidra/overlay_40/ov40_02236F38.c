@@ -61,7 +61,7 @@ void ov40_02236F38(int param_1)
   undefined *puVar4;
   short sVar5;
   uint uVar6;
-  
+
   puVar4 = &ov40_022452DC;
   sVar5 = 1;
   uVar6 = 0;

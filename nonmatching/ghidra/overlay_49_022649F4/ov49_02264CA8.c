@@ -55,7 +55,7 @@ undefined4 ov49_02264CA8(int param_1,undefined4 param_2,int param_3)
   undefined2 uVar2;
   undefined4 uVar3;
   int iVar4;
-  
+
   if (param_3 == -1) {
     GF_AssertFail();
   }

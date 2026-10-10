@@ -49,7 +49,7 @@ void ov73_021EA2E0(int param_1)
 
 {
   undefined4 uVar1;
-  
+
   uVar1 = Save_FashionData_Get(*(undefined4 *)(param_1 + 4));
   sub_0202BF80(*(uint *)(param_1 + 8) & 0xff,*(undefined4 *)(param_1 + 0xc),uVar1,
                *(undefined4 *)(param_1 + 0x10));

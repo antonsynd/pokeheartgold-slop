@@ -56,7 +56,7 @@ void ov59_0223AE20(undefined4 *param_1)
   int iVar3;
   uint uVar4;
   int iVar5;
-  
+
   uVar1 = SaveArray_Party_Get(param_1[2]);
   param_1[4] = uVar1;
   iVar2 = Party_GetCount();

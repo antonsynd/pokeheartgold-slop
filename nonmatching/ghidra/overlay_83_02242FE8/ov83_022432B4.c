@@ -55,7 +55,7 @@ undefined4 ov83_022432B4(int param_1)
 
 {
   int iVar1;
-  
+
   switch(*(undefined1 *)(param_1 + 8)) {
   case 0:
     iVar1 = func_0x02237d8c(*(undefined1 *)(param_1 + 9));

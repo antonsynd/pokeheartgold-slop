@@ -47,7 +47,7 @@ int ov40_02244054(int param_1,int param_2)
 
 {
   int iVar1;
-  
+
   iVar1 = 0;
   if (param_2 == 0) {
     iVar1 = 0xb;

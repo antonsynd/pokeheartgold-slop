@@ -53,7 +53,7 @@ void ov57_0223B504(int param_1,int param_2,int param_3,undefined4 param_4)
   short sStack_1c;
   short sStack_1a;
   undefined4 uStack_18;
-  
+
   iVar2 = param_2 * 4;
   uStack_18 = param_4;
   ov57_02238DAC(*(undefined4 *)(param_1 + 0x3ec + iVar2),&sStack_1a,&sStack_1c);

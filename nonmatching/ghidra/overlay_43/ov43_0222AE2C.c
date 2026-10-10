@@ -52,7 +52,7 @@ int ov43_0222AE2C(undefined4 *param_1,int param_2)
 {
   int iVar1;
   undefined4 uVar2;
-  
+
   iVar1 = YesNoPrompt_HandleInput(*(undefined4 *)(param_2 + 0x60));
   if (iVar1 - 1U < 2) {
     uVar2 = func_0x020169c0(*(undefined4 *)(param_2 + 0x60));

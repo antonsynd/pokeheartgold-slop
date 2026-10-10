@@ -95,7 +95,7 @@ sub_02075A7C(undefined4 param_1,undefined4 param_2,undefined2 param_3,undefined4
   undefined4 *puVar3;
   undefined4 uVar4;
   undefined4 uVar5;
-  
+
   uRam021d1175 = 0;
   GfGfx_SwapDisplay();
   FontID_Alloc(4,param_11);

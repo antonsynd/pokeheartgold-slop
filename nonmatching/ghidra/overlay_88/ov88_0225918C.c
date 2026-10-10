@@ -64,7 +64,7 @@ void ov88_0225918C(undefined4 param_1,undefined4 *param_2,undefined4 param_3,und
   uint uVar7;
   int iVar8;
   uint uStack_24;
-  
+
   FillBgTilemapRect(*param_2,3,0,0x15,4,10,8,0);
   iVar8 = 0;
   uStack_24 = 0;

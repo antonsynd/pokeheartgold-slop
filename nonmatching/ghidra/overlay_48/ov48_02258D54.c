@@ -61,7 +61,7 @@ bool ov48_02258D54(int param_1,uint param_2,uint param_3,undefined4 param_4)
   int iStack_24;
   int iStack_20;
   undefined4 uStack_18;
-  
+
   uStack_18 = param_4;
   ov48_022598CC(param_1 + 0x178,&iStack_24);
   uVar1 = ov48_02259E5C(param_1 + 0xc3e0,0);

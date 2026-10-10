@@ -54,7 +54,7 @@ void ov70_02242BBC(int param_1,int param_2)
 {
   int iVar1;
   undefined4 uVar2;
-  
+
   iVar1 = ov70_02242508(*(undefined4 *)(param_1 + 0x5c),5);
   iVar1 = iVar1 + -1;
   if (iVar1 != 0) {

@@ -48,7 +48,7 @@ void ov57_02238B28(void)
 
 {
   undefined4 in_r3;
-  
+
   func_0x02026eb4(0x34,0,2,0,2,0x2238b49,in_r3);
   return;
 }

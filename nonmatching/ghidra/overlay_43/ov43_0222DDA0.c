@@ -51,7 +51,7 @@ void ov43_0222DDA0(int param_1,undefined4 *param_2)
 {
   undefined *puVar1;
   int iVar2;
-  
+
   puVar1 = &ov43_0222EF20;
   iVar2 = 0;
   param_1 = param_1 + 0x118;

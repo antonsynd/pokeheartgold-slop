@@ -59,7 +59,7 @@ undefined4 ov88_022589FC(undefined4 param_1)
 
 {
   int iVar1;
-  
+
   iVar1 = OverlayManager_GetData();
   OverlayManager_GetArgs(param_1);
   ov88_022597DC(iVar1 + 0x200);

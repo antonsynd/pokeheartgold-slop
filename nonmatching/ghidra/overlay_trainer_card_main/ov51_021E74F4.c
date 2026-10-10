@@ -52,7 +52,7 @@ void ov51_021E74F4(undefined4 param_1,int param_2,int param_3,undefined4 param_4
 {
   int iVar1;
   undefined4 uVar2;
-  
+
   uVar2 = param_4;
   String16_FormatInteger(param_5,param_6,param_7,param_8,1);
   iVar1 = FontID_String_GetWidth(0,param_5,0);

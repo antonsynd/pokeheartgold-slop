@@ -50,7 +50,7 @@ void ov96_021EB06C(int param_1,undefined4 param_2,int param_3,undefined4 *param_
   int iVar1;
   int iVar2;
   int iVar3;
-  
+
   if (*(int *)(param_1 + 4) == 0) {
     GF_AssertFail();
     return;

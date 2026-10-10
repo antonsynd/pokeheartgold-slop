@@ -49,7 +49,7 @@ void ov96_0220B940(int param_1,int param_2)
 
 {
   int iVar1;
-  
+
   if ((param_2 == 0) &&
      (iVar1 = ManagedSprite_IsAnimated(*(undefined4 *)(param_1 + 0x10)), iVar1 == 0)) {
     ManagedSprite_SetAnim(*(undefined4 *)(param_1 + 0x10),1);

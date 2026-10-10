@@ -49,7 +49,7 @@ undefined4 ov40_0223D5CC(int param_1)
 
 {
   undefined4 uVar1;
-  
+
   if (*(int *)(param_1 + 0x420) == 0) {
     return 0;
   }

@@ -78,7 +78,7 @@ void ov57_022387E0(int param_1,int param_2,int param_3,int param_4,int param_5)
   undefined4 uStack_20;
   undefined4 uStack_1c;
   undefined4 uStack_18;
-  
+
   puVar1 = NewMsgDataFromNarc(0,0x1b,0xb,0x34);
   puVar2 = NewString_ReadMsgData(puVar1,param_2 + 5);
   InitWindow(auStack_54);

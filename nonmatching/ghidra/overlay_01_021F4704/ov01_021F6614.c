@@ -48,7 +48,7 @@ void ov01_021F6614(void)
 
 {
   int iVar1;
-  
+
   iVar1 = SysTask_GetData();
   *(undefined4 *)(iVar1 + 0x20) = 1;
   return;

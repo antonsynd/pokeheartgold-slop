@@ -92,7 +92,7 @@ void ov40_0222E09C(undefined4 *param_1,int param_2,undefined4 param_3,undefined4
   undefined4 auStack_98 [12];
   ushort auStack_68 [40];
   undefined4 uStack_18;
-  
+
   puVar12 = (ushort *)&ov40_02244F40;
   puVar11 = auStack_68;
   iVar9 = 0x28;

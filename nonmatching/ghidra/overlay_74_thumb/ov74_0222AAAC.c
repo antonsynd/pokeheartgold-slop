@@ -56,7 +56,7 @@ void ov74_0222AAAC(undefined4 param_1,undefined4 param_2,undefined4 param_3)
 {
   undefined4 uVar1;
   undefined4 uVar2;
-  
+
   OverlayManager_GetData();
   uVar1 = String_New(0x25,0x54);
   CopyU16ArrayToStringN(uVar1,param_3,0x24);

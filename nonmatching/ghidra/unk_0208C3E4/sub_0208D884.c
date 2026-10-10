@@ -58,7 +58,7 @@ uint sub_0208D884(int param_1,int param_2)
   int iVar5;
   int iVar6;
   undefined4 uStack_18;
-  
+
   iVar6 = (param_2 + 8) * 0x10;
   iVar5 = *(int *)(param_1 + 0x224);
   if (param_2 == 4) {

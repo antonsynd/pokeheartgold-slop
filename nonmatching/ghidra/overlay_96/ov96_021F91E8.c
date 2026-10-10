@@ -52,7 +52,7 @@ void ov96_021F91E8(int param_1,int param_2,undefined4 param_3,undefined4 param_4
   int iVar1;
   int iVar2;
   undefined4 uVar3;
-  
+
   iVar1 = func_0x020f2998(param_2,100,param_3,param_4,param_4);
   param_2 = param_2 + iVar1 * -100;
   iVar2 = func_0x020f2998(param_2,10);

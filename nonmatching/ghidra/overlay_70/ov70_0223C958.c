@@ -48,7 +48,7 @@ undefined4 ov70_0223C958(int param_1)
 
 {
   int iVar1;
-  
+
   iVar1 = TextPrinterCheckActive(*(uint *)(param_1 + 0xbf0) & 0xff);
   if (iVar1 == 0) {
     *(undefined4 *)(param_1 + 0x2c) = *(undefined4 *)(param_1 + 0x30);

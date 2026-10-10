@@ -53,7 +53,7 @@ void ov96_021E8228(undefined *param_1,uint param_2,uint param_3,int param_4,uint
   byte bVar1;
   uint uVar2;
   int iVar3;
-  
+
   if (param_4 == 0) {
     uVar2 = ov96_021E5F24(param_1);
     if (param_2 != uVar2) {

@@ -57,7 +57,7 @@ void ov00_021E714C(int param_1,undefined4 param_2)
   int iVar1;
   undefined4 uVar2;
   int iVar3;
-  
+
   if (param_1 == 0) {
     *(undefined4 *)(iRam0221a680 + 0x1088) = *(undefined4 *)(iRam0221a680 + 0x1084);
     iVar1 = iRam0221a680;

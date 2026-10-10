@@ -59,7 +59,7 @@ void ov92_0226156C(int param_1)
   short sStack_16;
   undefined1 auStack_14 [2];
   short sStack_12;
-  
+
   iVar6 = 0;
   *(undefined4 *)(param_1 + 0x248c) = *(undefined4 *)(param_1 + 0x14);
   *(int *)(param_1 + 0x222c) = param_1 + 0x2ae8;

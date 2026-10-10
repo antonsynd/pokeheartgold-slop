@@ -55,7 +55,7 @@ undefined4 ov86_021E5A40(undefined4 param_1,int *param_2)
 {
   int iVar1;
   int iVar2;
-  
+
   iVar1 = OverlayManager_GetData();
   iVar2 = *param_2;
   if (iVar2 == 0) {

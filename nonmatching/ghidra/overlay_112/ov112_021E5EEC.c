@@ -64,7 +64,7 @@ void ov112_021E5EEC(void)
   uint uVar5;
   undefined1 uStack_90;
   undefined1 auStack_8f [127];
-  
+
   uVar2 = uRam021ffb4c;
   uVar5 = (uint)uRam021ffb54;
   if (0x80 < uVar5) {

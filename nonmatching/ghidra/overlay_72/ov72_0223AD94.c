@@ -50,7 +50,7 @@ void ov72_0223AD94(int param_1)
 
 {
   int iVar1;
-  
+
   ov72_0223AD64();
   Sprite_SetDrawFlag(*(undefined4 *)(param_1 + 0xdf4),0);
   Sprite_SetDrawFlag(*(undefined4 *)(param_1 + 0xdf8),0);

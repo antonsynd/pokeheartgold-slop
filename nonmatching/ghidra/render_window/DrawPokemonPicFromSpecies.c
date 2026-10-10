@@ -57,7 +57,7 @@ int DrawPokemonPicFromSpecies
 
 {
   int iVar1;
-  
+
   iVar1 = sub_0200F5C4();
   sub_0200F600(iVar1,param_9);
   sub_0200F62C(iVar1);

@@ -57,7 +57,7 @@ void ov59_0223B740(undefined4 *param_1)
   undefined4 *puVar4;
   short sVar5;
   int iVar6;
-  
+
   iVar6 = 0;
   puVar3 = &ov59_0223CA40;
   puVar4 = param_1 + 0x6d;

@@ -49,7 +49,7 @@ undefined4 ov112_021EAC18(void)
 
 {
   undefined4 in_r3;
-  
+
   Sound_SetSceneAndPlayBGM(0x49,0x497,0,in_r3,in_r3);
   func_0x02005d48(0x497);
   return 2;

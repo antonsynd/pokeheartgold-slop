@@ -70,7 +70,7 @@ void ov92_0225F338(undefined4 param_1,int *param_2,undefined4 param_3,undefined4
   undefined4 uStack_18;
   undefined1 auStack_14 [4];
   undefined4 uStack_10;
-  
+
   uStack_10 = param_4;
   iVar1 = IsPaletteFadeFinished();
   if ((iVar1 == 0) || (*(char *)(param_2[0xf] + 0x34) == '\x01')) {

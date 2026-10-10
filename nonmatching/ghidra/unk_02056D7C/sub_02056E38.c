@@ -49,7 +49,7 @@ void sub_02056E38(void)
 
 {
   uint uVar1;
-  
+
   if (iRam021d41c4 != 0) {
     uVar1 = 0;
     do {

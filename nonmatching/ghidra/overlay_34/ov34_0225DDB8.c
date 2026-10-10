@@ -56,7 +56,7 @@ void ov34_0225DDB8(undefined4 param_1,int param_2,undefined4 param_3,undefined4 
   int iStack_14;
   undefined4 uStack_10;
   undefined4 uStack_c;
-  
+
   uStack_18 = 0xe8000;
   uStack_c = param_4;
   if (param_2 < 1) {

@@ -62,7 +62,7 @@ undefined4 ov08_02222E2C(undefined4 param_1,int *param_2)
   int iVar2;
   undefined4 uVar3;
   uint uVar4;
-  
+
   iVar2 = PaletteData_GetSelectedBuffersBitmask(param_2[2]);
   if (iVar2 != 0) {
     return 0;

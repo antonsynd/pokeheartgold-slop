@@ -59,7 +59,7 @@ void ov67_021E6220(int param_1,undefined4 param_2,undefined4 param_3,undefined4 
   undefined4 uVar1;
   int iVar2;
   uint uVar3;
-  
+
   uVar3 = 0;
   iVar2 = param_1 + 0x6c;
   do {

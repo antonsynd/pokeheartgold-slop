@@ -58,7 +58,7 @@ void ov07_02226B2C(undefined4 param_1,char *param_2,undefined4 param_3,undefined
 
 {
   int iVar1;
-  
+
   switch(*param_2) {
   case '\0':
     ov07_02222338(param_2 + 0x24,param_2 + 0x48,0xffffffe2,0x70,0xa0,0x70,0x15,0x40000,param_4);

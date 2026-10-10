@@ -51,7 +51,7 @@ undefined4 ov56_021E5DDC(int param_1)
 {
   int iVar1;
   bool bVar2;
-  
+
   bVar2 = false;
   if ((uRam021d1154 & 1) == 0) {
     if ((uRam021d1154 & 2) != 0) {

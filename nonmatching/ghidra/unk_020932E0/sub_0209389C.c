@@ -58,7 +58,7 @@ void sub_0209389C(undefined4 *param_1,undefined4 param_2,undefined4 param_3,unde
   undefined1 uStack_10;
   undefined1 uStack_f;
   undefined4 uStack_c;
-  
+
   uStack_c = param_4;
   func_0x020d4994(&uStack_20,0,0x14);
   uStack_20 = *param_1;

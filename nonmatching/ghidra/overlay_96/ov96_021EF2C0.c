@@ -71,7 +71,7 @@ void ov96_021EF2C0(undefined4 param_1)
   undefined4 *puVar2;
   undefined4 uVar3;
   int iVar4;
-  
+
   PokeathlonCourse_GetHeapAllocPtr4();
   Heap_Create(0x5c,0x88,0x40000);
   func_0x02006ff8(0x62,2);

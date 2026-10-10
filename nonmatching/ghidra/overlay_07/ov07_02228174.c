@@ -55,7 +55,7 @@ void ov07_02228174(undefined4 param_1,undefined4 param_2,undefined4 param_3,unde
   undefined2 uVar1;
   undefined1 *puVar2;
   undefined4 uVar3;
-  
+
   puVar2 = (undefined1 *)ov07_022324D8(param_1,0x34,param_3,param_4,param_4);
   *puVar2 = 0;
   puVar2[1] = 0;

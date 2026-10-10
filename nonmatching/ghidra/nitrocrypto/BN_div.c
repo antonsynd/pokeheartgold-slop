@@ -91,7 +91,7 @@ undefined4 BN_div(uint *param_1,int param_2,int param_3,undefined4 *param_4,uint
   uint uStack_34;
   int iStack_30;
   int iStack_2c;
-  
+
   if ((param_4[1] == 0) || ((param_4[1] == 1 && (*(int *)*param_4 == 0)))) {
     return 0;
   }

@@ -55,7 +55,7 @@ void ov96_02208658(int param_1,int param_2,uint param_3,int param_4,int param_5)
   int aiStack_2c [4];
   undefined4 uStack_1c;
   undefined4 uStack_18;
-  
+
   if (param_3 != *(byte *)(param_1 + 0x1a4 + param_2)) {
     *(char *)(param_1 + 0x1a4 + param_2) = (char)param_3;
     ov96_0220831C();

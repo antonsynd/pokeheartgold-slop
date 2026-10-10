@@ -49,7 +49,7 @@ void ov10_0221ED10(undefined4 param_1,int param_2)
 
 {
   undefined4 uVar1;
-  
+
   ov10_0221EF24(param_2,1);
   uVar1 = ov10_0221EEF0(param_2);
   if ((*(uint *)(param_2 + (uint)*(byte *)(param_2 + 0x3d0) * 0xc0 + 0x2dc8) & 0x7ff) >> 8 != 0) {

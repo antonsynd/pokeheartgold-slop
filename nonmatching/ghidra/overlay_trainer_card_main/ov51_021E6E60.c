@@ -55,7 +55,7 @@ void ov51_021E6E60(undefined4 *param_1,undefined4 param_2,undefined4 param_3,und
 {
   undefined4 uVar1;
   uint uVar2;
-  
+
   uVar2 = 0;
   do {
     AddWindow(*param_1,param_1 + uVar2 * 4 + 1,&ov51_021E7F48 + uVar2 * 8);

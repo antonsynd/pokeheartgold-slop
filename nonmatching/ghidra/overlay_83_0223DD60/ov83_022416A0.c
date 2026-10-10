@@ -62,7 +62,7 @@ void ov83_022416A0(int param_1,uint param_2,uint param_3,undefined4 param_4)
   undefined *puVar3;
   uint local_8;
   undefined4 uStack_4;
-  
+
   local_8 = param_3;
   uStack_4 = param_4;
   iVar2 = ov83_02247768((uint)*(byte *)(param_1 + 0x14),param_2);

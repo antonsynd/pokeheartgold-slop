@@ -58,7 +58,7 @@ void ov70_0223D808(int param_1)
   undefined2 uVar3;
   int iVar4;
   uint uVar5;
-  
+
   bVar2 = false;
   iVar4 = 0;
   if ((uRam021d1154 & 0x40) == 0) {

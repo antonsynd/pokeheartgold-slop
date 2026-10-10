@@ -61,7 +61,7 @@ int ov01_021F16EC(int param_1,undefined4 param_2,undefined4 *param_3)
   undefined4 uStack_14;
   undefined4 uStack_10;
   undefined4 uStack_c;
-  
+
   uStack_28 = *(undefined4 *)(*(int *)(param_1 + 0x20) + 0xc);
   uStack_20 = *param_3;
   uStack_1c = param_3[1];

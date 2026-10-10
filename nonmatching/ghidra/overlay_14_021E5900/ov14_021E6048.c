@@ -49,7 +49,7 @@ void ov14_021E6048(int *param_1)
 
 {
   int iVar1;
-  
+
   iVar1 = GridInputHandler_IsButtonInputMode(*(undefined4 *)(param_1[0xd] + 0x2c));
   if (iVar1 == 1) {
     MenuInputStateMgr_SetState(*(undefined4 *)(*param_1 + 4),0);

@@ -48,7 +48,7 @@ undefined4 ov80_0222CF6C(undefined4 param_1)
 
 {
   int iVar1;
-  
+
   iVar1 = func_0x020f2ba4(param_1,10);
   if (iVar1 == 0) {
     return 1;

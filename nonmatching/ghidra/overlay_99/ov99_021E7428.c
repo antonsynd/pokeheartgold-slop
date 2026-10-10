@@ -48,7 +48,7 @@ void ov99_021E7428(int param_1,undefined4 param_2)
 
 {
   int iVar1;
-  
+
   iVar1 = 0;
   do {
     ManagedSprite_SetDrawFlag(*(undefined4 *)(param_1 + (iVar1 + 0x14) * 4 + 0x408),param_2);

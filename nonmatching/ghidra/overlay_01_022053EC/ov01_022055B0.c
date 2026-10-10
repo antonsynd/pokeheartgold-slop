@@ -50,7 +50,7 @@ uint ov01_022055B0(undefined4 param_1,undefined4 param_2,undefined4 param_3,unde
 {
   uint uVar1;
   int iVar2;
-  
+
   uVar1 = MapObject_GetParam(param_1,1,param_3,param_4,param_4);
   iVar2 = MapObject_GetID(param_1);
   if (iVar2 != 0xfd) {

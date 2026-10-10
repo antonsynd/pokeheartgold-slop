@@ -47,7 +47,7 @@ undefined4 sub_0205DDB8(uint param_1)
 
 {
   undefined4 uVar1;
-  
+
   if ((param_1 & 0x40) != 0) {
     return 0;
   }

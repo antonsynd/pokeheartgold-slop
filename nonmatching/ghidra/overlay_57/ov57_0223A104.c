@@ -95,7 +95,7 @@ undefined4 ov57_0223A104(int param_1,undefined4 param_2,undefined4 param_3,undef
   undefined4 uVar1;
   code *pcVar2;
   int iVar3;
-  
+
   switch(*(undefined4 *)(param_1 + 0x3fc)) {
   case 0:
     uVar1 = NARC_New(0x57,0x34,param_3,param_4,param_4);

@@ -77,7 +77,7 @@ void ov89_0225905C(undefined4 param_1,undefined4 param_2,undefined4 param_3,unde
   undefined1 auStack_48 [28];
   undefined1 auStack_2c [28];
   undefined4 uStack_10;
-  
+
   uStack_10 = param_4;
   GfGfx_DisableEngineAPlanes();
   GfGfx_DisableEngineBPlanes();

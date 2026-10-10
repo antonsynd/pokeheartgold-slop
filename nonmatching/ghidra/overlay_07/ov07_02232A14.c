@@ -50,7 +50,7 @@ void ov07_02232A14(int param_1,undefined4 param_2)
 
 {
   undefined4 uVar1;
-  
+
   *(undefined4 *)(param_1 + 0x88) = 1;
   ov07_0221C69C();
   ov07_02232AFC(param_1,param_2);

@@ -52,7 +52,7 @@ void ov01_02205664(undefined4 param_1,int *param_2,int *param_3)
 {
   undefined1 uVar1;
   int iVar2;
-  
+
   uVar1 = MapObject_GetFacingDirection();
   iVar2 = MapObject_GetPreviousXCoord(param_1);
   *param_2 = iVar2;

@@ -49,7 +49,7 @@ undefined4 ov85_021E6550(undefined4 *param_1)
 
 {
   int iVar1;
-  
+
   if ((int)param_1[3] < 0x78) {
     param_1[3] = param_1[3] + 1;
   }

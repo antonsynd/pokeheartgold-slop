@@ -63,7 +63,7 @@ undefined4 sub_0206623C(undefined4 param_1,int param_2)
   undefined4 uVar6;
   int iVar7;
   int iVar8;
-  
+
   iVar1 = MapObject_GetXCoord();
   iVar2 = MapObject_GetZCoord(param_1);
   iVar3 = MapObject_GetXCoord(*(undefined4 *)(param_2 + 8));

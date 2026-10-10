@@ -57,7 +57,7 @@ void ov99_021E7F90(int param_1)
 {
   undefined4 uVar1;
   undefined4 uVar2;
-  
+
   uVar1 = func_0x0221e5c0(*(undefined4 *)(param_1 + 0x404));
   uVar2 = func_0x0221e5d0(*(undefined4 *)(param_1 + 0x404));
   SpriteSystem_LoadCharResObjFromOpenNarc(uVar1,uVar2,*(undefined4 *)(param_1 + 4),1,1,1,1);

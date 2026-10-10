@@ -48,7 +48,7 @@ void ov07_0221C74C(int param_1)
 {
   undefined4 *puVar1;
   int iVar2;
-  
+
   iVar2 = 0;
   *(int *)(param_1 + 0x18) = *(int *)(param_1 + 0x18) + 4;
   do {

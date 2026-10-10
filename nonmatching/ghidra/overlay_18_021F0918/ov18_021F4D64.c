@@ -52,7 +52,7 @@ void ov18_021F4D64(int param_1,undefined4 param_2,undefined4 param_3,undefined4 
 
 {
   byte bVar1;
-  
+
   if ((*(byte *)(param_1 + 0x18a4) & 0x80) == 0) {
     bVar1 = 0;
   }

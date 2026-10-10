@@ -52,7 +52,7 @@ undefined4 ov106_021E68A8(int param_1,undefined4 param_2,undefined4 param_3,unde
 
 {
   int iVar1;
-  
+
   iVar1 = *(int *)(param_1 + 0x418);
   Main_SetVBlankIntrCB(0,0,param_3,param_4,param_4);
   ov106_021E664C(iVar1);

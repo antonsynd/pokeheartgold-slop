@@ -81,7 +81,7 @@ void ov71_02248604(undefined4 *param_1)
   undefined2 uVar1;
   undefined4 uVar2;
   int iVar3;
-  
+
   GfGfx_SetBanks(&ov71_0224BD54);
   uRam04000304 = uRam04000304 & 0x7fff;
   SetBothScreensModesAndDisable(&ov71_0224BCEC);

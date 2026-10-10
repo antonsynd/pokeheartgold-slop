@@ -57,7 +57,7 @@ void ov70_0223F3D8(undefined4 param_1,undefined4 param_2,undefined4 param_3,int 
   undefined4 uVar1;
   int iVar2;
   int iVar3;
-  
+
   uVar1 = NewString_ReadMsgData(param_1,0x65);
   ov70_02245084(param_4,uVar1,0,0,0,0xf0200);
   iVar2 = 1;

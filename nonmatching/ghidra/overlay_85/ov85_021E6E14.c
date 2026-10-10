@@ -50,7 +50,7 @@ void ov85_021E6E14(int param_1)
 
 {
   undefined4 uVar1;
-  
+
   uVar1 = PaletteData_Init(0x66);
   *(undefined4 *)(param_1 + 0xd9c) = uVar1;
   PaletteData_SetAutoTransparent(*(undefined4 *)(param_1 + 0xd9c),1);

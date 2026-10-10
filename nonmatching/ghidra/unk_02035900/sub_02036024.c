@@ -60,7 +60,7 @@ void sub_02036024(void)
 {
   bool bVar1;
   int iVar2;
-  
+
   bVar1 = false;
   if (iRam021d4148 != 0) {
     sub_0203993C();

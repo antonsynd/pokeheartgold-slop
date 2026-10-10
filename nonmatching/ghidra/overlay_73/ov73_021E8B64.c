@@ -49,7 +49,7 @@ void ov73_021E8B64(int param_1)
 
 {
   undefined4 uVar1;
-  
+
   uVar1 = String_New(0xb4,0x96);
   *(undefined4 *)(param_1 + 0xbe0) = uVar1;
   uVar1 = String_New(4,0x96);

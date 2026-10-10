@@ -55,7 +55,7 @@ void MapLoadManager_End(int param_1)
 {
   uint uVar1;
   int iVar2;
-  
+
   sub_0201A430();
   func_0x020b6918();
   func_0x020b6c80();

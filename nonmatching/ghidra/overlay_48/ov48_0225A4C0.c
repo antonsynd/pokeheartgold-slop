@@ -60,7 +60,7 @@ undefined4 ov48_0225A4C0(int param_1,int param_2,undefined4 param_3)
   int iVar4;
   char *pcVar5;
   uint uVar6;
-  
+
   iVar4 = param_2 * 4;
   if (*(char *)(param_1 + iVar4 + 0x40) == '\0') {
     return 0;

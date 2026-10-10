@@ -52,7 +52,7 @@ undefined4 ov08_0221C3C8(int *param_1)
 {
   undefined4 uVar1;
   int iVar2;
-  
+
   uVar1 = ov08_0221D4F8();
   switch(uVar1) {
   case 0:

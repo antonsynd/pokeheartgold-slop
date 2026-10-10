@@ -57,7 +57,7 @@ undefined4 ov14_021EBE68(int param_1,undefined4 param_2,undefined4 param_3,undef
   undefined4 uVar2;
   undefined1 auStack_10 [4];
   undefined4 uStack_c;
-  
+
   uStack_c = param_4;
   uVar1 = func_0x02019d18(*(undefined4 *)(*(int *)(param_1 + 0x34) + 0x2c));
   if (uVar1 < 0xfffffffd) {

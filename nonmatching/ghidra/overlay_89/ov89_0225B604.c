@@ -48,7 +48,7 @@ undefined4 ov89_0225B604(undefined4 param_1,int param_2,int param_3,undefined4 p
 
 {
   int iVar1;
-  
+
   iVar1 = ov89_0225AEA8(param_2 + 0xa4,param_3 + 0x98,param_3 + 0x98,param_4,param_4);
   if (iVar1 == 1) {
     return 1;

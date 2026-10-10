@@ -54,7 +54,7 @@ void BagApp_TryUseRepel(int param_1,undefined4 param_2)
 {
   undefined1 uVar1;
   int iVar2;
-  
+
   BagApp_GetSaveRoamers();
   iVar2 = RoamerSave_RepelNotInUse();
   if (iVar2 == 0) {

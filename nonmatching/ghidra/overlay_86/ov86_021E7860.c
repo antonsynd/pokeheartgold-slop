@@ -53,7 +53,7 @@ void ov86_021E7860(int param_1)
 {
   ushort uVar1;
   undefined4 uVar2;
-  
+
   uVar1 = *(ushort *)(param_1 + 0x25a);
   uVar2 = func_0x02019ba4(&ov86_021E7F94,&ov86_021E7FE4,&ov86_021E7EA8,param_1,1,uVar1 & 0xff,0x79);
   *(undefined4 *)(param_1 + 0x254) = uVar2;

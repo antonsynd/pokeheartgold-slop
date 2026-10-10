@@ -54,7 +54,7 @@ void ov43_0222A420(int param_1,undefined4 param_2,undefined4 param_3,undefined4 
   undefined4 uVar2;
   int iVar3;
   int iVar4;
-  
+
   func_0x020e5b44(param_1 + 0x10,0,0x48,param_4,param_4);
   uVar2 = sub_0202C6F4(*(undefined4 *)(param_1 + 4));
   iVar4 = 0;

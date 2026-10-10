@@ -53,7 +53,7 @@ int ov13_02223434(int param_1,int param_2)
   int iVar1;
   undefined4 uVar2;
   uint uVar3;
-  
+
   func_0x020afa68(1);
   iVar1 = func_0x020afa10();
   if ((0 < iVar1) && (uVar3 = 0, 0 < iVar1)) {

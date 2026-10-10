@@ -51,7 +51,7 @@ void ov93_0225ED60(int param_1,int param_2,undefined4 param_3,undefined4 param_4
 {
   int iVar1;
   uint uVar2;
-  
+
   iVar1 = func_0x020f2998(param_2 * 0xc00,800);
   uVar2 = iVar1 + 0x80 >> 8;
   if (0x10 < (int)uVar2) {

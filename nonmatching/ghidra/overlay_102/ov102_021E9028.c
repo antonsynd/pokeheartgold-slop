@@ -48,7 +48,7 @@ undefined4 ov102_021E9028(int param_1)
 
 {
   undefined4 uVar1;
-  
+
   if (*(short *)(param_1 + 0x60) != 0) {
     return 0xffffffff;
   }

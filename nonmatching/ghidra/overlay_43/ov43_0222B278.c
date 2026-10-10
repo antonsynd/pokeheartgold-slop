@@ -53,7 +53,7 @@ undefined4 ov43_0222B278(uint *param_1,undefined4 *param_2,undefined4 *param_3)
 
 {
   bool bVar1;
-  
+
   bVar1 = false;
   if ((uRam021d1154 & 0xcf3) != 0) {
     *param_2 = 0;

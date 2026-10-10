@@ -63,7 +63,7 @@ void ov83_02245D48(int param_1)
   undefined4 uVar6;
   int iVar7;
   uint uVar8;
-  
+
   uVar4 = ov83_02247768(*(undefined1 *)(param_1 + 0x14),*(undefined1 *)(param_1 + 0xd));
   uVar4 = Party_GetMonByIndex(*(undefined4 *)(param_1 + 0x55c),uVar4);
   uVar5 = AcquireMonLock();

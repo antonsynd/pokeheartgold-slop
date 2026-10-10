@@ -55,7 +55,7 @@ void ov07_02224948(int param_1,undefined4 param_2,undefined4 param_3,undefined4 
   int *piVar1;
   int iVar2;
   undefined4 uVar3;
-  
+
   piVar1 = (int *)ov07_022324D8(param_1,0x40,param_3,param_4,param_4);
   piVar1[0xf] = param_1;
   iVar2 = ov07_0221C4A8(param_1,0);

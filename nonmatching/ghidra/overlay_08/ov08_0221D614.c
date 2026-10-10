@@ -54,7 +54,7 @@ uint ov08_0221D614(int param_1,uint param_2,int param_3,undefined4 param_4)
   uint uVar4;
   byte abStack_20 [8];
   undefined4 uStack_18;
-  
+
   pbVar2 = abStack_20;
   uStack_18 = param_4;
   iVar1 = ov08_0221DB04();

@@ -51,7 +51,7 @@ void ov07_0221D1B8(int param_1)
   uint uVar3;
   uint *puVar4;
   uint auStack_18 [4];
-  
+
   puVar4 = auStack_18;
   auStack_18[0] = 3;
   auStack_18[1] = 0xc;

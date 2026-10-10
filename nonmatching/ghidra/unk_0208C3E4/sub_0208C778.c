@@ -52,7 +52,7 @@ void sub_0208C778(int param_1,undefined4 param_2,undefined4 param_3,uint param_4
   uint uVar1;
   uint uVar2;
   int iVar3;
-  
+
   if (param_4 == 0) {
     uVar1 = 0;
   }

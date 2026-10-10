@@ -50,7 +50,7 @@ void ov120_0225FDA0(undefined4 param_1,int *param_2,undefined4 param_3,undefined
 
 {
   short sVar1;
-  
+
   sVar1 = *(short *)((int)param_2 + 0x1e);
   if (sVar1 == 0) {
     BG_LoadCharTilesData

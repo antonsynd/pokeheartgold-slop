@@ -51,7 +51,7 @@ void ov108_021E9198(int param_1,int param_2,undefined4 *param_3,undefined4 param
 
 {
   undefined4 uVar1;
-  
+
   uVar1 = GfGfxLoader_LoadFromOpenNarc
                     (*(undefined4 *)(param_1 + 0x20),param_4,0,*(undefined4 *)(param_1 + 0x14),0,
                      param_4);

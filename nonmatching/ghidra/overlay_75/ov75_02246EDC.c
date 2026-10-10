@@ -52,7 +52,7 @@ void ov75_02246EDC(int param_1)
 
 {
   int iVar1;
-  
+
   iVar1 = sub_0203A05C(*(undefined4 *)(param_1 + 4));
   if (iVar1 != 0) {
     Save_VarsFlags_Get(*(undefined4 *)(param_1 + 4));

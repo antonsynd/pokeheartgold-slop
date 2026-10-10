@@ -101,7 +101,7 @@ void ov113_021E6300(undefined4 *param_1,undefined4 param_2,undefined4 param_3,un
   undefined4 uStack_18;
   undefined4 uStack_14;
   undefined4 uStack_10;
-  
+
   uStack_10 = param_4;
   ov113_021E62E0();
   uVar1 = BgConfig_Alloc(*param_1);

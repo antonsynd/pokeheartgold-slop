@@ -65,7 +65,7 @@ void ov07_0222D050(undefined4 param_1,undefined4 *param_2)
   undefined1 uVar2;
   int iVar3;
   undefined4 uVar4;
-  
+
   iVar3 = param_2[1];
   if (iVar3 == 0) {
     ov07_0222CFCC(param_2);

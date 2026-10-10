@@ -82,7 +82,7 @@ void ov96_021EC2E8(undefined *param_1)
   undefined4 uStack_18;
   undefined4 uStack_14;
   undefined4 uStack_10;
-  
+
   uStack_1c = 1;
   uStack_18 = 0;
   uStack_14 = 0;

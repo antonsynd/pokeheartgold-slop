@@ -50,7 +50,7 @@ void ov37_021E76D0(undefined4 param_1,int param_2)
 
 {
   int iVar1;
-  
+
   iVar1 = sub_0203769C();
   if (iVar1 == 0) {
     iVar1 = sub_02037454();

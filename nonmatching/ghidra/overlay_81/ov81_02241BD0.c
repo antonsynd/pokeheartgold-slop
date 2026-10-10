@@ -55,7 +55,7 @@ void ov81_02241BD0(undefined4 param_1,undefined4 param_2)
   undefined1 uStack_7;
   undefined1 uStack_6;
   undefined1 uStack_5;
-  
+
   uStack_14 = 4;
   uStack_10 = 0x380;
   uStack_c = 0xe;

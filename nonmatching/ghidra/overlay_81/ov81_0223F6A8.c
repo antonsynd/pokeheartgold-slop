@@ -57,7 +57,7 @@ undefined4 ov81_0223F6A8(int param_1)
   char cVar1;
   undefined1 uVar2;
   int iVar3;
-  
+
   cVar1 = *(char *)(param_1 + 8);
   if (cVar1 == '\0') {
     uVar2 = ov81_0224086C(param_1,10);

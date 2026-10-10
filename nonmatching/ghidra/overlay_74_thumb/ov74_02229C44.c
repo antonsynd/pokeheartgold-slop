@@ -49,7 +49,7 @@ void ov74_02229C44(void)
 
 {
   int iVar1;
-  
+
   iVar1 = sub_02034DB8();
   if (iVar1 != 0) {
     ov74_02229BC0(0x2229c5d,0);

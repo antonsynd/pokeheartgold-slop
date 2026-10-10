@@ -50,7 +50,7 @@ int ov93_0225D768(undefined4 param_1,undefined4 param_2)
 
 {
   uint uVar1;
-  
+
   uVar1 = (*(code *)&UNK_020b59cc)(param_1,param_2,1);
   if (uVar1 == 0) {
     GF_AssertFail();

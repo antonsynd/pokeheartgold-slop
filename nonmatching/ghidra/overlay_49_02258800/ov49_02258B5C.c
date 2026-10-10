@@ -58,7 +58,7 @@ void ov49_02258B5C(undefined4 *param_1)
   int iVar4;
   undefined1 auStack_20 [8];
   undefined1 auStack_18 [4];
-  
+
   iVar4 = 0;
   if (*(short *)(param_1 + 3) != 0) {
     iVar3 = 0;

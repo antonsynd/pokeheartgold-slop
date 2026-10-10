@@ -66,7 +66,7 @@ void ov92_0225E6A4(undefined4 param_1,int *param_2,undefined4 param_3,undefined4
   undefined1 auStack_4c [8];
   undefined4 uStack_44;
   undefined4 uStack_18;
-  
+
   uVar2 = *(undefined4 *)(param_2[5] + 8);
   iVar6 = 0;
   uVar3 = *(undefined4 *)(param_2[5] + 0xc);

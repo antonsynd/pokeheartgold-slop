@@ -62,7 +62,7 @@ void ov49_02269240(int param_1,uint param_2,undefined4 param_3,int param_4,int p
   int extraout_r1;
   int iVar4;
   undefined4 uVar5;
-  
+
   iVar2 = func_0x0222ad3c(*(undefined4 *)(param_1 + 4));
   func_0x0222ad2c(*(undefined4 *)(param_1 + 4));
   iVar4 = 0;

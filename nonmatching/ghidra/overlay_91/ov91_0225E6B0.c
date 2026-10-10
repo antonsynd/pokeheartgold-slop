@@ -47,7 +47,7 @@ void ov91_0225E6B0(int param_1)
 
 {
   int iVar1;
-  
+
   iVar1 = 0;
   do {
     if (*(char *)(param_1 + 0x4c) == '\x01') {

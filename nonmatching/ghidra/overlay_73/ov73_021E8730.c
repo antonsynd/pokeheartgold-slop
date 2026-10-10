@@ -78,7 +78,7 @@ void ov73_021E8730(int *param_1)
   int iStack_2c;
   int iStack_28;
   int iStack_18;
-  
+
   iVar6 = param_1[1];
   uVar4 = NARC_New(0x58,0x96);
   GfGfxLoader_GXLoadPalFromOpenNarc(uVar4,3,0,0,0,0x96);

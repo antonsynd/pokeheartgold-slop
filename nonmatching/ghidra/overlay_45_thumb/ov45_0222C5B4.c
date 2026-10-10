@@ -49,7 +49,7 @@ int ov45_0222C5B4(int param_1,int param_2)
   int iVar1;
   int iVar2;
   int iVar3;
-  
+
   iVar1 = 0;
   do {
     iVar2 = 0;

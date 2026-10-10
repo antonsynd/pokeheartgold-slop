@@ -53,7 +53,7 @@ void ov99_021E7508(int param_1,undefined4 param_2,undefined4 param_3,undefined4 
   undefined4 uVar2;
   uint uVar3;
   undefined4 uVar4;
-  
+
   uVar3 = *(uint *)(param_1 + 0x3f4);
   uVar2 = 0;
   uVar1 = uVar3 & 0x1f;

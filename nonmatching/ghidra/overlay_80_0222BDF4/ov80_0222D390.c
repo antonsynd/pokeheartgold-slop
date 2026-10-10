@@ -51,7 +51,7 @@ undefined4 ov80_0222D390(int param_1)
 
 {
   int iVar1;
-  
+
   if (*(int *)(param_1 + 4) == 0) {
     ov80_0223AC24(1,0x10,0xfffffff0,param_1 + 0xc,2);
     *(int *)(param_1 + 4) = *(int *)(param_1 + 4) + 1;

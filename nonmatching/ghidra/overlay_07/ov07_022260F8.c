@@ -56,7 +56,7 @@ void ov07_022260F8(undefined4 param_1,int param_2)
   int iVar1;
   int iVar2;
   uint uVar3;
-  
+
   iVar1 = ov07_022260DC(*(undefined4 *)(param_2 + 0x38));
   if (*(int *)(param_2 + 0x28) < (int)*(short *)(param_2 + 4)) {
     *(int *)(param_2 + 0x28) = *(int *)(param_2 + 0x28) + 1;

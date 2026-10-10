@@ -57,7 +57,7 @@ undefined4 ov85_021E60F0(undefined4 *param_1)
 
 {
   int iVar1;
-  
+
   if (param_1[0xf] == 1) {
     param_1[0x44] = (uint)*(ushort *)((int)param_1 + 0x5e) << 0xc;
     param_1[0x47] = (int)*(short *)(param_1 + 0x17) << 0xc;

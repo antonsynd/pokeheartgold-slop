@@ -51,7 +51,7 @@ undefined4 ov70_02243C8C(int param_1)
 
 {
   undefined4 uVar1;
-  
+
   ov70_02241DB4(param_1,3);
   func_0x02014950(*(undefined4 *)(param_1 + 0x34));
   if (8 < *(short *)(param_1 + 0x3c)) {

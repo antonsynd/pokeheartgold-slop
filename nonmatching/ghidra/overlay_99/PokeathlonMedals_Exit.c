@@ -57,7 +57,7 @@ undefined4 PokeathlonMedals_Exit(undefined4 param_1)
 
 {
   int iVar1;
-  
+
   iVar1 = OverlayManager_GetData();
   Heap_Free(*(undefined4 *)(iVar1 + 0x3f0));
   ov99_021E7AB8(iVar1);

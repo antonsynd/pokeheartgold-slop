@@ -59,7 +59,7 @@ undefined4 GeonetGlobe_Exit(undefined4 param_1)
 {
   undefined4 *puVar1;
   undefined4 uVar2;
-  
+
   puVar1 = (undefined4 *)OverlayManager_GetData();
   uVar2 = *puVar1;
   GfGfx_EngineATogglePlanes(4,0);

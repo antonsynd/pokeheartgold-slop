@@ -56,7 +56,7 @@ undefined4 ov59_0223A948(undefined4 param_1,undefined4 *param_2)
 {
   int iVar1;
   undefined4 uVar2;
-  
+
   iVar1 = OverlayManager_GetData();
   switch(*param_2) {
   case 0:

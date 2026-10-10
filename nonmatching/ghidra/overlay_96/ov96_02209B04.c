@@ -51,7 +51,7 @@ void ov96_02209B04(undefined4 param_1,undefined4 param_2,undefined4 param_3,unde
 
 {
   int iVar1;
-  
+
   SpriteSystem_LoadCharResObj(param_1,param_2,0xea,0x10,1,1,0x2712);
   SpriteSystem_LoadPlttResObj(param_1,param_2,0xea,0xf,0,1,1,0x2713,param_4);
   iVar1 = 0;

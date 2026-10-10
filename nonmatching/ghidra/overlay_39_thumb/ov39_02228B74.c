@@ -48,7 +48,7 @@ undefined4 ov39_02228B74(void)
 
 {
   undefined4 uVar1;
-  
+
   uVar1 = func_0x021e6a70();
   switch(uVar1) {
   default:

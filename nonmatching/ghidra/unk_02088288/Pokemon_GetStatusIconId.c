@@ -51,7 +51,7 @@ Pokemon_GetStatusIconId(undefined4 param_1,undefined4 param_2,undefined4 param_3
   uint uVar1;
   int iVar2;
   undefined4 uVar3;
-  
+
   uVar1 = GetMonData(param_1,0xa0,0,param_4,param_4);
   iVar2 = GetMonData(param_1,0xa3,0);
   if (iVar2 == 0) {

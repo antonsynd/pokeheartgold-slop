@@ -52,7 +52,7 @@ void ov96_021E8AAC(int param_1)
 
 {
   uint uVar1;
-  
+
   uVar1 = 0;
   if (*(short *)(param_1 + 4) != 0) {
     do {

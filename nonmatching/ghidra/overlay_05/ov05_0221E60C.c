@@ -48,7 +48,7 @@ void ov05_0221E60C(int param_1)
 
 {
   uint uVar1;
-  
+
   uVar1 = 0;
   do {
     param_1 = param_1 + 0x10;

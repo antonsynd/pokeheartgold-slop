@@ -59,7 +59,7 @@ ov111_021E63D0(undefined4 *param_1,uint param_2,uint param_3,uint param_4,undefi
   short *psVar4;
   undefined4 *puVar5;
   int iVar6;
-  
+
   if (param_4 == 0) {
     uVar1 = 2;
   }

@@ -58,7 +58,7 @@ void ov14_021E7A08(int param_1,undefined2 param_2,undefined4 param_3,undefined4 
   short sStack_1c;
   short sStack_1a;
   undefined4 uStack_18;
-  
+
   puVar5 = *(undefined2 **)(*(int *)(param_1 + 0x34) + 0xc);
   uStack_18 = param_4;
   func_0x0200de44(*(undefined4 *)(*(int *)(param_1 + 0x34) + 0x328),&sStack_1a,&sStack_1c);

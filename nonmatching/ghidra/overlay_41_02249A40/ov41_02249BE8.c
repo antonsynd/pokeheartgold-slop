@@ -52,7 +52,7 @@ void ov41_02249BE8(int param_1,int param_2,int param_3,undefined4 param_4)
   int iStack_20;
   int iStack_1c;
   undefined4 uStack_18;
-  
+
   uStack_18 = param_4;
   for (iVar1 = *(int *)(param_1 + 8); iVar1 != param_1; iVar1 = *(int *)(iVar1 + 8)) {
     ov41_02249B44(iVar1,&iStack_1c,&iStack_20);

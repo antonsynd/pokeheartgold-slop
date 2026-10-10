@@ -53,7 +53,7 @@ ov71_02247000(undefined4 param_1,int param_2,int param_3,undefined4 param_4,unde
 {
   undefined4 *puVar1;
   undefined *puVar2;
-  
+
   puVar1 = (undefined4 *)Heap_Alloc(0x38,0x24);
   *param_7 = 1;
   if (puVar1 != (undefined4 *)0x0) {

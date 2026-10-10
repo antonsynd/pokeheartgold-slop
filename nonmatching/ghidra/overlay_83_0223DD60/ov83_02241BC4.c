@@ -72,7 +72,7 @@ void ov83_02241BC4(int param_1,uint param_2,int param_3)
   undefined4 uVar5;
   undefined4 uVar6;
   uint uVar7;
-  
+
   func_0x02237b24(*(undefined1 *)(param_1 + 9),0);
   uVar2 = (uint)(param_3 != 4);
   uVar7 = (uint)*(byte *)(param_1 + 0x15);

@@ -53,7 +53,7 @@ void ov18_021F1DE4(undefined4 *param_1,int param_2,int param_3,int param_4)
 {
   int iVar1;
   undefined4 uVar2;
-  
+
   if ((((*(char *)(param_1 + 0x617) == '\x02') && (param_2 != 0)) &&
       (*(short *)((int)param_1 + param_3 * 4 + 0x1032) != 1)) &&
      ((param_2 != 0x1e7 || (iVar1 = func_0x0202a640(*(undefined4 *)*param_1,0x1e7,0), iVar1 != 1))))

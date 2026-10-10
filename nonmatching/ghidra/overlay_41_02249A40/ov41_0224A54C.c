@@ -51,7 +51,7 @@ void ov41_0224A54C(int param_1)
 
 {
   int iVar1;
-  
+
   if (*(int *)(param_1 + 0x68) == 0) {
     GF_AssertFail();
   }

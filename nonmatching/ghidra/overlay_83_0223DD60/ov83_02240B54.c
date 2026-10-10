@@ -70,7 +70,7 @@ void ov83_02240B54(int param_1,int param_2)
   undefined4 uVar3;
   uint uVar4;
   undefined *puVar5;
-  
+
   uVar1 = NewMsgDataFromNarc(1,0x1b,0xde,0x6b);
   iVar2 = ov83_0224777C(*(undefined4 *)(param_1 + 0x50c),*(undefined1 *)(param_1 + 9),1);
   if (param_2 == 6) {

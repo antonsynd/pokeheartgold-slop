@@ -47,7 +47,7 @@ void ov07_0221C6EC(int param_1)
 
 {
   undefined4 *puVar1;
-  
+
   puVar1 = (undefined4 *)(*(int *)(param_1 + 0x18) + 4);
   *(undefined4 **)(param_1 + 0x18) = puVar1;
   *(char *)(param_1 + 0x8d) = (char)*puVar1;

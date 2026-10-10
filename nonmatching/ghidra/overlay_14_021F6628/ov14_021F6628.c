@@ -48,7 +48,7 @@ void ov14_021F6628(void)
 
 {
   undefined4 in_r3;
-  
+
   NewMsgDataFromNarc(1,0x1b,0x19,10,in_r3);
   return;
 }

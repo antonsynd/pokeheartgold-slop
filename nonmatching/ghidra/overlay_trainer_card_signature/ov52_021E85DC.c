@@ -56,7 +56,7 @@ void ov52_021E85DC(undefined4 *param_1,undefined4 param_2)
 {
   undefined1 uVar1;
   undefined4 uVar2;
-  
+
   uVar2 = *param_1;
   GfGfxLoader_GXLoadPalFromOpenNarc(param_2,0,0,0,0x60,0x27);
   GfGfxLoader_GXLoadPalFromOpenNarc(param_2,2,4,0,0x40,0x27);

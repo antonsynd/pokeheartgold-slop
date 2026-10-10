@@ -50,7 +50,7 @@ void ov96_021F84E4(int param_1)
 
 {
   uint uVar1;
-  
+
   uVar1 = 0;
   do {
     if (*(int *)(param_1 + uVar1 * 4 + 0x9c) != 0) {

@@ -71,7 +71,7 @@ HallOfFameShowcase_Init(undefined4 param_1,undefined4 param_2,undefined4 param_3
 {
   undefined4 *puVar1;
   undefined4 uVar2;
-  
+
   Main_SetVBlankIntrCB(0,0,param_3,param_4,param_4);
   HBlankInterruptDisable();
   GfGfx_EngineASetPlanes(0);

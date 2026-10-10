@@ -49,7 +49,7 @@ undefined4 ov01_021EC7AC(undefined4 *param_1)
 
 {
   undefined4 uVar1;
-  
+
   uVar1 = ov01_021EC7E8();
   if (param_1[10] == 0) {
     ov01_021EA8C4(*param_1,param_1 + 1);

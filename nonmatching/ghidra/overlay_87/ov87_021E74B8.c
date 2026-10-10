@@ -47,7 +47,7 @@ void ov87_021E74B8(int param_1)
 
 {
   uint uVar1;
-  
+
   uVar1 = 0;
   do {
     *(undefined1 *)(param_1 + uVar1 + 0x394) = 0;

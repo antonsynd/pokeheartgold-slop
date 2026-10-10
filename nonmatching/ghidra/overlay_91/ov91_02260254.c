@@ -52,7 +52,7 @@ void ov91_02260254(int param_1,int param_2)
 {
   undefined4 uVar1;
   int iVar2;
-  
+
   uVar1 = GF_DegreeToSinCosIdx(0xf222);
   iVar2 = func_0x020f2ba4((param_2 + -0xe38) * 0x5a,uVar1);
   iVar2 = func_0x020f2998(iVar2 * 0xb4000,0x5a);

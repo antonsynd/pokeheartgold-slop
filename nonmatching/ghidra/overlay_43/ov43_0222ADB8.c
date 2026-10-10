@@ -57,7 +57,7 @@ void ov43_0222ADB8(undefined4 *param_1,undefined4 *param_2,char param_3)
   undefined1 uStack_13;
   byte bStack_12;
   undefined1 uStack_11;
-  
+
   func_0x020d4994(&uStack_24,0,0x14);
   uStack_24 = *param_2;
   uStack_20 = 1;

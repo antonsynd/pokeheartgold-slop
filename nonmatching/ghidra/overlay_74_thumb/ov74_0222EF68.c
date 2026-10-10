@@ -56,7 +56,7 @@ undefined4 ov74_0222EF68(int param_1,undefined4 param_2,undefined4 param_3,undef
   undefined4 uStack_1c;
   undefined4 uStack_18;
   undefined4 uStack_14;
-  
+
   uStack_20 = 6;
   uStack_24 = 0x2b;
   uStack_18 = 0xb;

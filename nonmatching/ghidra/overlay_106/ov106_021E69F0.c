@@ -53,7 +53,7 @@ void ov106_021E69F0(int param_1,int param_2,int param_3,undefined4 param_4)
   int iVar2;
   int iStack_18;
   undefined4 uStack_14;
-  
+
   uStack_14 = param_4;
   uVar1 = func_0x02007c48(*(undefined4 *)(param_1 + 4),param_3 + 0x88,&iStack_18,0x99);
   iVar2 = param_1 + 0x34 + param_2 * 0x2004;

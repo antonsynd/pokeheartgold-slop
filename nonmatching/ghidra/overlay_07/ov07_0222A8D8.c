@@ -49,7 +49,7 @@ void ov07_0222A8D8(undefined4 param_1)
 
 {
   int iVar1;
-  
+
   iVar1 = func_0x0200dcfc();
   if (iVar1 == 1) {
     func_0x0200dc18(param_1);

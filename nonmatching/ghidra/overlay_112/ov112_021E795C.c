@@ -52,7 +52,7 @@ void ov112_021E795C(int param_1)
 
 {
   undefined4 uVar1;
-  
+
   uVar1 = Save_Bag_Get(*(undefined4 *)(param_1 + 0x20));
   *(undefined4 *)(param_1 + 0x1e434) = uVar1;
   uVar1 = Save_PlayerData_GetProfile(*(undefined4 *)(param_1 + 0x20));

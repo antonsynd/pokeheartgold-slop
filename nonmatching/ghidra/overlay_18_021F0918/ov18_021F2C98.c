@@ -48,7 +48,7 @@ undefined1 ov18_021F2C98(int param_1,int param_2)
 
 {
   int iVar1;
-  
+
   iVar1 = ManagedSprite_GetActiveAnim(*(undefined4 *)(param_1 + param_2 * 4 + 0x670));
   return *(undefined1 *)(iVar1 + 0x21fa311);
 }

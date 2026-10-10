@@ -52,7 +52,7 @@ void ov96_02214ABC(int param_1)
   uint uVar4;
   uint uVar5;
   byte abStack_18 [12];
-  
+
   uVar4 = 0;
   do {
     iVar3 = *(int *)(param_1 + uVar4 * 4 + 0x18);

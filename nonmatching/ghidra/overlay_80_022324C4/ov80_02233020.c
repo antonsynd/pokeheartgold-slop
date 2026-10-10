@@ -72,7 +72,7 @@ int ov80_02233020(int param_1)
   byte bStack_22;
   byte bStack_21;
   byte bStack_20;
-  
+
   iVar2 = 0;
   pbVar12 = abStack_28;
   iVar13 = 0;

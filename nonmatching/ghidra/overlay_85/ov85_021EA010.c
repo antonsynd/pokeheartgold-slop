@@ -55,7 +55,7 @@ undefined4 ov85_021EA010(int param_1)
   int iVar5;
   int iVar6;
   undefined4 uStack_18;
-  
+
   uVar3 = 0;
   uStack_18 = 0;
   iVar5 = param_1;

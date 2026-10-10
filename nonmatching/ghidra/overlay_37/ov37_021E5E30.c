@@ -58,7 +58,7 @@ void ov37_021E5E30(int param_1)
   int iVar3;
   int iVar4;
   int iStack_20;
-  
+
   iStack_20 = 0;
   pbVar2 = (byte *)(param_1 + 0x438a);
   iVar3 = param_1;

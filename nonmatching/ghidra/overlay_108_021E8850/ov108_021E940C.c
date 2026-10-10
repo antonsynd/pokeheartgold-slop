@@ -54,7 +54,7 @@ void ov108_021E940C(int param_1,int param_2,undefined4 param_3,undefined4 param_
 
 {
   bool bVar1;
-  
+
   bVar1 = param_2 != 1;
   if (bVar1) {
     ov108_021E9F94(param_1,0,param_3,param_4,param_4);

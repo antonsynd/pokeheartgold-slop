@@ -47,7 +47,7 @@ void sub_02089D40(int param_1,int param_2)
 
 {
   uint uVar1;
-  
+
   uVar1 = 0;
   *(undefined1 *)(param_1 + 0x15) = 0;
   do {

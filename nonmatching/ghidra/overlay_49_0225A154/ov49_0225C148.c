@@ -51,7 +51,7 @@ void ov49_0225C148(int param_1,int param_2)
 
 {
   int iVar1;
-  
+
   Sprite_Delete(*(undefined4 *)(param_1 + 0x54));
   *(undefined4 *)(param_1 + 0x54) = 0;
   SpriteTransfer_DeleteCharTransferTask(*(undefined4 *)(param_1 + 0x58));

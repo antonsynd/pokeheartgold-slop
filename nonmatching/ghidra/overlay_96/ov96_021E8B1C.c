@@ -55,7 +55,7 @@ void ov96_021E8B1C(undefined4 *param_1,int param_2,undefined4 *param_3,undefined
   undefined4 *puVar4;
   int iVar5;
   undefined2 *puVar6;
-  
+
   puVar1 = (undefined2 *)Heap_AllocAtEnd(*param_1,0x154,param_3,param_4,param_4);
   *puVar1 = (short)param_2;
   *(undefined4 **)(puVar1 + 6) = param_1;

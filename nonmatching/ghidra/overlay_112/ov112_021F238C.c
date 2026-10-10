@@ -52,7 +52,7 @@ void ov112_021F238C(int param_1,undefined4 param_2,undefined4 param_3,undefined4
 {
   uint uVar1;
   uint uVar2;
-  
+
   uVar2 = *(uint *)(param_1 + 0x148);
   if ((int)(uVar2 << 0x1f) < 0) {
     uVar1 = (uVar2 & 0x1ff) >> 1;

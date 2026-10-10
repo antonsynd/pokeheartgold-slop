@@ -48,7 +48,7 @@ void ov96_0220C7FC(int param_1)
 
 {
   int iVar1;
-  
+
   *(uint *)(param_1 + 0x44) = *(uint *)(param_1 + 0x44) & 0xfffffeff;
   *(uint *)(param_1 + 0x40) = *(uint *)(param_1 + 0x40) & 0x1fffff;
   *(uint *)(param_1 + 0x44) = *(uint *)(param_1 + 0x44) & 0xffffff00;

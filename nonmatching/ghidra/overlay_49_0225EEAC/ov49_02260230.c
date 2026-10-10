@@ -52,7 +52,7 @@ undefined4 ov49_02260230(undefined4 param_1,undefined4 param_2)
 {
   undefined4 uVar1;
   int iVar2;
-  
+
   ov49_02259FF0(param_2);
   uVar1 = ov49_02258DAC();
   iVar2 = ov49_02258E60(uVar1,5);

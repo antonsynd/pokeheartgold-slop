@@ -50,7 +50,7 @@ int ov70_0224342C(undefined4 param_1,undefined4 param_2,int param_3,undefined2 *
   int iVar1;
   int iVar2;
   int iVar3;
-  
+
   iVar3 = 0;
   iVar2 = 0;
   if (0 < param_3) {

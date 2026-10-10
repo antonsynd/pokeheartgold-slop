@@ -63,7 +63,7 @@ ov90_0225B38C(char *param_1,undefined4 param_2,undefined4 param_3,undefined4 par
 
 {
   int iVar1;
-  
+
   switch(*param_1) {
   case '\0':
     BeginNormalPaletteFade(0,0,1,0,6,1,param_5,param_4);

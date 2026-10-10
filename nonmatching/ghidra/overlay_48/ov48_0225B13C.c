@@ -49,7 +49,7 @@ uint ov48_0225B13C(undefined4 param_1)
 {
   char cVar1;
   uint uVar2;
-  
+
   uVar2 = 0;
   do {
     cVar1 = func_0x0222d724(param_1,uVar2 & 0xff);

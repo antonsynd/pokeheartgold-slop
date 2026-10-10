@@ -49,7 +49,7 @@ void ov88_02259244(int param_1,undefined4 *param_2,undefined4 param_3,undefined4
 
 {
   uint uVar1;
-  
+
   if ((param_5 & 7) == 0) {
     if ((param_5 >> 3 & 1) == 0) {
       uVar1 = 2;

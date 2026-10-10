@@ -50,7 +50,7 @@ void ov91_0225CB64(int param_1)
 {
   int iVar1;
   undefined1 auStack_28 [20];
-  
+
   iVar1 = ov91_0225D32C(*(undefined4 *)(param_1 + 0x34),auStack_28);
   while (iVar1 == 1) {
     ov91_0225CCA8(param_1,0x18,auStack_28,0x14);

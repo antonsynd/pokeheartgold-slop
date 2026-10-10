@@ -49,7 +49,7 @@ undefined4 sub_02065C2C(undefined4 param_1,undefined1 *param_2)
 
 {
   int iVar1;
-  
+
   iVar1 = sub_02062428();
   if (iVar1 == 1) {
     MapObject_ClearSingleMovement(param_1);

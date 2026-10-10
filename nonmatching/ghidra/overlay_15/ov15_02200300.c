@@ -56,7 +56,7 @@ void ov15_02200300(int param_1,int param_2,int param_3)
   undefined4 *puVar4;
   int iVar5;
   int iStack_1c;
-  
+
   iStack_1c = param_3;
   if ((param_2 == 2) && (99 < param_3)) {
     iStack_1c = 99;

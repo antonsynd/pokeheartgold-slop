@@ -63,7 +63,7 @@ undefined4 ov85_021E94EC(int param_1,undefined4 param_2)
   undefined1 auStack_18 [2];
   undefined1 uStack_16;
   undefined4 uStack_14;
-  
+
   iVar1 = sub_0203769C();
   if (iVar1 == 0) {
     if (*(int *)(*(int *)(param_1 + 0x10) + 0x30) != 0) {

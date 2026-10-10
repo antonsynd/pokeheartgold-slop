@@ -53,7 +53,7 @@ void ov96_021EE60C(int param_1,undefined4 param_2)
   undefined *puVar1;
   int iVar2;
   int iVar3;
-  
+
   puVar1 = &ov96_0221B19A;
   *(undefined4 *)(param_1 + 4) = param_2;
   iVar3 = 0;

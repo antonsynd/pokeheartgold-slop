@@ -53,7 +53,7 @@ void ov92_0225EEBC(int param_1,undefined4 param_2,undefined4 param_3,undefined4 
 {
   int iVar1;
   undefined4 uVar2;
-  
+
   iVar1 = Heap_Alloc(0x71,0x7c,param_3,param_4,param_4);
   func_0x020e5b44(iVar1,0,0x7c);
   *(int *)(iVar1 + 0xc) = param_1 + 0x110;

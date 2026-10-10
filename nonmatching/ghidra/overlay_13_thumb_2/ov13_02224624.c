@@ -50,7 +50,7 @@ ushort * ov13_02224624(ushort *param_1,uint *param_2,uint *param_3)
   ushort *puVar2;
   uint uVar3;
   ushort *puVar4;
-  
+
   uVar3 = 0;
   *param_2 = (*param_1 & 0xff) << 8 | (int)(uint)*param_1 >> 8;
   uVar1 = (param_1[1] & 0xff) << 8 | (int)(uint)param_1[1] >> 8;

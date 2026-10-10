@@ -53,7 +53,7 @@ void ov70_02241048(undefined *param_1,undefined4 *param_2)
 {
   int iVar1;
   int iVar2;
-  
+
   iVar2 = param_2[3];
   switch(*param_2) {
   case 0:

@@ -49,7 +49,7 @@ void ov01_021F5CB4(int param_1)
 
 {
   int iVar1;
-  
+
   if (1 < *(byte *)(param_1 + 0xa0)) {
     GF_AssertFail();
   }

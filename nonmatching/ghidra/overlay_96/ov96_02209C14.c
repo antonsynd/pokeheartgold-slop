@@ -66,7 +66,7 @@ void ov96_02209C14(undefined4 param_1,undefined4 param_2)
   undefined4 uStack_c4;
   undefined4 uStack_c0;
   undefined4 auStack_bc [42];
-  
+
   uStack_cc = 1;
   uStack_c8 = 0;
   uStack_c4 = 0;

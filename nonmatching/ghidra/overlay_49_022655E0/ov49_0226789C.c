@@ -53,7 +53,7 @@ void ov49_0226789C(undefined4 param_1,int param_2,int param_3)
   int iVar2;
   uint uVar3;
   undefined4 uStack_18;
-  
+
   uVar3 = (uint)*(byte *)(param_2 + param_3 + 0x960);
   iVar2 = param_2 + 0x95c;
   if (*(char *)(iVar2 + param_3) == '\0') {

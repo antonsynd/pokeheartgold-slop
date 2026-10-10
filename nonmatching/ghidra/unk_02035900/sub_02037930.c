@@ -51,7 +51,7 @@ void sub_02037930(int param_1)
 
 {
   int iVar1;
-  
+
   sub_020378E4();
   sub_0203993C();
   iVar1 = sub_02034044();

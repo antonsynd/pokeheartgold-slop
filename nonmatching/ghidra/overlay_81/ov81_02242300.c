@@ -53,7 +53,7 @@ void ov81_02242300(int param_1,uint param_2,uint param_3)
   uint uVar2;
   uint uVar3;
   int iVar4;
-  
+
   if (param_2 < param_3) {
     uVar3 = 0;
     bVar1 = false;

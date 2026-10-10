@@ -54,7 +54,7 @@ void ov96_021F3888(undefined4 param_1,uint param_2,undefined4 param_3,undefined4
   uint uVar3;
   int iVar4;
   int iStack_18;
-  
+
   uVar3 = 0;
   if (param_2 != 0) {
     do {

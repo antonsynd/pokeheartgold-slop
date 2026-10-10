@@ -64,7 +64,7 @@ void ov112_021E8B74(undefined2 *param_1,undefined2 *param_2,int param_3,int para
   int iVar10;
   undefined2 *puStack_30;
   int iStack_28;
-  
+
   GF_RTC_TimeToSec();
   func_0x0201fd38();
   iVar10 = 0;

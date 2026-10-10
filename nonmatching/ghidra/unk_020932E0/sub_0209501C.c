@@ -58,7 +58,7 @@ void sub_0209501C(undefined4 *param_1,undefined4 param_2,undefined4 param_3)
 {
   undefined4 uVar1;
   undefined4 uVar2;
-  
+
   LoadUserFrameGfx2(*param_1,0,0x3d2,0xb,0,param_1[1]);
   AddWindowParameterized(*param_1,param_1 + 0x1198,3,2,0x15,0x15,2,0xd,0xc6);
   uVar1 = NewMsgDataFromNarc(1,0x1b,0x12a,param_1[1]);

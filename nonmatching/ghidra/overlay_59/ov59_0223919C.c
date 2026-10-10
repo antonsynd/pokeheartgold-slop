@@ -67,7 +67,7 @@ void ov59_0223919C(undefined4 *param_1,int param_2,int param_3)
   undefined4 uStack_1c;
   short sStack_18;
   short sStack_16;
-  
+
   piVar2 = (int *)Heap_Alloc(*param_1,0x20);
   func_0x020d4994(piVar2,0,0x20);
   *piVar2 = (int)param_1;

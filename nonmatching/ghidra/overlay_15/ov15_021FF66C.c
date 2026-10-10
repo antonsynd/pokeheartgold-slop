@@ -51,7 +51,7 @@ void ov15_021FF66C(undefined4 param_1,undefined4 param_2,undefined4 param_3,unde
 
 {
   undefined4 uVar1;
-  
+
   BufferIntegerAsString(param_1,0,param_4,3,0,1);
   uVar1 = ReadMsgData_ExpandPlaceholders(param_1,param_2,0x57,6);
   AddTextPrinterParameterizedWithColor(param_3,0,uVar1,0x30,0x10,0xff,0x10200,0);

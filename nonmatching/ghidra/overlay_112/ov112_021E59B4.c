@@ -58,7 +58,7 @@ void ov112_021E59B4(byte *param_1,int param_2,uint param_3,undefined4 param_4,un
   int iVar3;
   byte *pbVar4;
   uint uVar5;
-  
+
   uRam021ffa18 = (undefined1)param_3;
   uRam021ffa19 = (undefined1)param_4;
   pbVar4 = (byte *)0x21ffa20;

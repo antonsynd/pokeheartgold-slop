@@ -55,7 +55,7 @@ void ov103_021ECD68(int param_1,undefined4 param_2,undefined4 param_3,undefined4
   undefined4 uVar1;
   undefined4 uVar2;
   uint uVar3;
-  
+
   uVar1 = sub_0201956C(**(undefined4 **)(param_1 + 0xc),2,0xb,0x9d,param_4);
   uVar3 = 0;
   *(undefined4 *)(*(int *)(param_1 + 0xc) + 4) = uVar1;

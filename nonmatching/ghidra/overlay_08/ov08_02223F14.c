@@ -50,7 +50,7 @@ void ov08_02223F14(int param_1)
   undefined4 uVar1;
   uint uVar2;
   int iVar3;
-  
+
   uVar2 = 0;
   iVar3 = param_1;
   do {

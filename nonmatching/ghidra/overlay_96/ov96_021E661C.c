@@ -50,7 +50,7 @@ undefined4 ov96_021E661C(int param_1)
 {
   int iVar1;
   uint uVar2;
-  
+
   if (*(char *)(param_1 + 0x728) == '\0') {
     return 1;
   }

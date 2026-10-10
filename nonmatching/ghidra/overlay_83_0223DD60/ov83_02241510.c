@@ -48,7 +48,7 @@ void ov83_02241510(int param_1,undefined4 param_2,undefined2 *param_3,int param_
 
 {
   int iVar1;
-  
+
   iVar1 = sub_0203769C();
   if (param_1 != iVar1) {
     *(char *)(param_4 + 0x7fe) = (char)*param_3;

@@ -51,7 +51,7 @@ undefined4 ov80_0222CE80(undefined4 *param_1)
 
 {
   int iVar1;
-  
+
   iVar1 = Frontier_GetLaunchArgs(*(undefined4 *)*param_1);
   iVar1 = Save_WriteFileAsync(*(undefined4 *)(iVar1 + 8));
   if (iVar1 == 2) {

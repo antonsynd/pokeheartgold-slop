@@ -50,7 +50,7 @@ undefined4 ov07_02233D24(int param_1,undefined4 param_2,undefined4 param_3,undef
   undefined2 uStack_10;
   undefined2 uStack_e;
   undefined4 uStack_c;
-  
+
   if (*(int *)(param_1 + 8) == 0xff) {
     return 0;
   }

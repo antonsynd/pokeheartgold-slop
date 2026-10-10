@@ -50,7 +50,7 @@ undefined4 ov01_021F2700(short *param_1,undefined4 param_2,undefined4 param_3,un
 {
   undefined1 uVar1;
   undefined2 uVar2;
-  
+
   uVar2 = GetMonData(*(undefined4 *)(param_1 + 0x12),5,0,param_4,param_4);
   uVar1 = GetMonData(*(undefined4 *)(param_1 + 0x12),0x70,0);
   PlayCry(uVar2,uVar1);

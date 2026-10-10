@@ -52,7 +52,7 @@ undefined4 ov81_02240048(int param_1)
 {
   undefined1 uVar1;
   int iVar2;
-  
+
   if (*(char *)(param_1 + 8) == '\0') {
     uVar1 = ov81_0224086C(param_1,0xf);
     *(undefined1 *)(param_1 + 0x10) = uVar1;

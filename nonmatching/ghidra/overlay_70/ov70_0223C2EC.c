@@ -47,7 +47,7 @@ int ov70_0223C2EC(int param_1)
 
 {
   int iVar1;
-  
+
   iVar1 = *(int *)(param_1 + 0x11c4);
   if (*(int *)(iVar1 + 0x24) == 0) {
     return *(int *)(iVar1 + 0x28);

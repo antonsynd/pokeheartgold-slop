@@ -63,7 +63,7 @@ undefined4 ov88_022588C4(undefined4 param_1,int *param_2,undefined4 param_3,unde
   undefined4 *puVar1;
   int iVar2;
   int iVar3;
-  
+
   puVar1 = (undefined4 *)OverlayManager_GetData();
   iVar2 = OverlayManager_GetArgs(param_1);
   switch(*param_2) {

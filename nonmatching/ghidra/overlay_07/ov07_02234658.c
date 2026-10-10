@@ -52,7 +52,7 @@ int ov07_02234658(undefined4 param_1,undefined4 *param_2)
 {
   int iVar1;
   undefined4 uVar2;
-  
+
   iVar1 = Heap_Alloc(param_1,0x24);
   if (iVar1 == 0) {
     GF_AssertFail();

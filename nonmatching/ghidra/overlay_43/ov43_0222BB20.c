@@ -55,7 +55,7 @@ void ov43_0222BB20(short *param_1,undefined4 param_2,undefined4 *param_3,undefin
 
 {
   ushort *puVar1;
-  
+
   ov43_0222A9F4(param_3,param_3 + 0x19,5);
   puVar1 = (ushort *)param_3[0x83];
   CopyToBgTilemapRect(*param_3,0,0x11,0x14,0xe,4,puVar1 + 6,3,0,(*puVar1 & 0x7ff) >> 3,

@@ -51,7 +51,7 @@ undefined4 ov65_0221F79C(int param_1)
   int *piVar2;
   int iVar3;
   int iVar4;
-  
+
   iVar4 = 0;
   iVar1 = Party_GetCount(*(undefined4 *)(param_1 + 0x2224));
   iVar3 = 0;

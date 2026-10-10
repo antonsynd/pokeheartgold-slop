@@ -51,7 +51,7 @@ void ov83_02244BEC(int param_1)
 {
   undefined1 uVar1;
   undefined4 uVar2;
-  
+
   uVar1 = ov83_022447E0(param_1,param_1 + 0x60,5,0,5,0xff,1,2,0,0);
   *(undefined1 *)(param_1 + 10) = uVar1;
   uVar2 = Options_GetFrame(*(undefined4 *)(param_1 + 0x2b8));

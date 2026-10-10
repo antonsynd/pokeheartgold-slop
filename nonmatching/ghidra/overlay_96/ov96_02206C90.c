@@ -51,7 +51,7 @@ void ov96_02206C90(undefined4 param_1,int param_2,undefined4 param_3,int param_4
 
 {
   int iVar1;
-  
+
   switch(*(undefined1 *)(param_2 + 0x9f)) {
   case 0:
     *(undefined1 *)(param_2 + 0xa0) = 0;

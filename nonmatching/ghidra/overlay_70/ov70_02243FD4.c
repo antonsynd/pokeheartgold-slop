@@ -48,7 +48,7 @@ void ov70_02243FD4(undefined4 param_1,undefined4 param_2,undefined4 param_3,unde
 
 {
   undefined4 auStack_8 [2];
-  
+
   auStack_8[0] = param_4;
   ov70_0223F8D0(param_2,auStack_8);
   return;

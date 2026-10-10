@@ -52,7 +52,7 @@ undefined4 ov72_0223AF7C(int param_1)
 
 {
   int iVar1;
-  
+
   iVar1 = TouchscreenHitbox_FindRectAtTouchNew(0x223b4c8);
   if (iVar1 == -1) {
     if ((uRam021d1154 & 0x40) == 0) {

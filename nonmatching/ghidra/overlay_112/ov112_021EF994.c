@@ -49,7 +49,7 @@ undefined4 ov112_021EF994(int param_1)
 
 {
   undefined4 uVar1;
-  
+
   if (*(short *)(param_1 + 0x9d7a) == 0) {
     uVar1 = ov112_021EA08C(param_1,0,0x2e);
   }

@@ -52,7 +52,7 @@ void ov74_0222E060(int param_1)
 {
   char cVar1;
   int iVar2;
-  
+
   if (2 < *(int *)(param_1 + 0x2bc0)) {
     GF_AssertFail();
   }

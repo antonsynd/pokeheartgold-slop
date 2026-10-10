@@ -51,7 +51,7 @@ void ov71_02248E04(int param_1)
 
 {
   int iVar1;
-  
+
   if (param_1 != 0) {
     iVar1 = SysTask_GetData();
     **(undefined4 **)(iVar1 + 0x168) = 0;

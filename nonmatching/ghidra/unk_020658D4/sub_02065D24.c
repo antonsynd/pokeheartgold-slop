@@ -52,7 +52,7 @@ undefined4 sub_02065D24(undefined4 param_1,int param_2)
 {
   int iVar1;
   int iVar2;
-  
+
   MapObject_GetFieldSystem();
   iVar1 = FieldSystem_GetPlayerAvatar();
   if (iVar1 != 0) {

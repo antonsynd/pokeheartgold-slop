@@ -53,7 +53,7 @@ void ov95_021E7410(int param_1)
   int unaff_r4;
   __asm__ volatile("movs %0, r4" : "=l"(unaff_r4) : : "cc");
 
-  
+
   if (*(int *)(param_1 + 0x10) == 0) {
     GF_AssertFail();
   }

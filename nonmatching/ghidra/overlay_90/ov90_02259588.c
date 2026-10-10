@@ -77,7 +77,7 @@ int ov90_02259588(undefined1 *param_1,undefined2 param_2,undefined4 param_3,unde
   undefined4 uVar3;
   int iVar4;
   undefined1 *puVar5;
-  
+
   Sound_SetSceneAndPlayBGM(0x13,0x480,0,param_4,param_4);
   iVar2 = Heap_Alloc(param_3,0x5f4);
   func_0x020e5b44(iVar2,0,0x5f4);

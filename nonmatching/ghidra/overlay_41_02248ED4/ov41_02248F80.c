@@ -69,7 +69,7 @@ void ov41_02248F80(undefined4 *param_1,undefined4 param_2,undefined4 param_3,und
   undefined4 uStack_20;
   undefined4 uStack_1c;
   undefined4 uStack_18;
-  
+
   piVar3 = (int *)*param_1;
   uStack_18 = param_4;
   iVar1 = ov41_022481BC(piVar3[1]);

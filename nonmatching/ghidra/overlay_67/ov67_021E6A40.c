@@ -50,7 +50,7 @@ undefined4 ov67_021E6A40(int param_1,undefined4 param_2,undefined4 param_3,undef
 
 {
   char cVar1;
-  
+
   cVar1 = *(char *)(param_1 + 0x496);
   if (cVar1 == '\0') {
     if ((int)((uint)*(byte *)(param_1 + 0x494) << 0x1f) < 0) {

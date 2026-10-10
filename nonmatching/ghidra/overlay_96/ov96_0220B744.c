@@ -48,7 +48,7 @@ undefined4 ov96_0220B744(int param_1)
 {
   uint uVar1;
   undefined4 uVar2;
-  
+
   uVar2 = 1;
   uVar1 = (*(uint *)(param_1 + 0x40) & 0x3ff) >> 2;
   if ((uVar1 != 0) && (uVar1 != 1)) {

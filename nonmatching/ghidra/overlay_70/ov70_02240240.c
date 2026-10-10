@@ -67,7 +67,7 @@ undefined4 ov70_02240240(undefined4 *param_1)
   int iVar1;
   undefined4 uVar2;
   undefined4 uVar3;
-  
+
   iVar1 = ov70_02237F38();
   if (iVar1 == 0) {
     param_1[0x581] = param_1[0x581] + 1;
@@ -110,7 +110,7 @@ undefined4 ov70_02240240(undefined4 *param_1)
     case 0xfffffff3:
       ShowCommunicationError(3,1);
       do {
-                    
+
       } while( true );
     case 0xfffffffc:
       *(undefined2 *)((int)param_1 + 0x36) = 0;

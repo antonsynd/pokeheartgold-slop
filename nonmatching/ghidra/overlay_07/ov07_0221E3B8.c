@@ -62,7 +62,7 @@ undefined4 ov07_0221E3B8(undefined4 param_1,int param_2)
 {
   int iVar1;
   undefined4 *puVar2;
-  
+
   switch(*(undefined1 *)(param_2 + 5)) {
   case 0:
     ov07_0221DEC0(param_2);

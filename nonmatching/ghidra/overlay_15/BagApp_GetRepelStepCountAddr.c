@@ -49,7 +49,7 @@ void BagApp_GetRepelStepCountAddr(undefined4 param_1,undefined1 param_2)
 
 {
   undefined1 *puVar1;
-  
+
   BagApp_GetSaveRoamers();
   puVar1 = (undefined1 *)RoamerSave_GetRepelAddr();
   *puVar1 = param_2;

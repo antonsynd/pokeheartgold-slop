@@ -65,7 +65,7 @@ void ov43_0222CA50(short *param_1,undefined4 param_2,undefined4 param_3,undefine
   undefined2 uStack_1c;
   undefined2 uStack_1a;
   undefined4 uStack_18;
-  
+
   uStack_18 = param_4;
   uVar1 = sub_0202C090(param_6,param_7,7);
   iVar2 = sub_0202C090(param_6,param_7,8);

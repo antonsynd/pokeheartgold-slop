@@ -56,7 +56,7 @@ void ov97_0221F428(undefined4 *param_1,int param_2)
 
 {
   undefined4 uVar1;
-  
+
   CopyU16ArrayToString(param_1[0x1d],param_2 + 10);
   FillWindowPixelBuffer(param_1 + 10,0);
   AddTextPrinterParameterizedWithColor(param_1 + 10,0,param_1[0x1d],0,0,0xff,0x10200,0);

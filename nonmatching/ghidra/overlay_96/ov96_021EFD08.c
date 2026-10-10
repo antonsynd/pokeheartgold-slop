@@ -57,7 +57,7 @@ void ov96_021EFD08(undefined4 param_1)
 {
   int iVar1;
   int iVar2;
-  
+
   iVar1 = PokeathlonCourse_GetHeapAllocPtr4();
   BgClearTilemapBufferAndCommit(*(undefined4 *)(iVar1 + 4),0);
   BgClearTilemapBufferAndCommit(*(undefined4 *)(iVar1 + 4),2);

@@ -61,7 +61,7 @@ int ov18_021F7974(int param_1,undefined4 param_2)
   uint uVar4;
   int iStack_18;
   int iStack_14;
-  
+
   iVar3 = func_0x02025380(&iStack_14,&iStack_18);
   if (iVar3 == 1) {
     iVar3 = TouchscreenHitbox_FindRectAtTouchNew(&ov18_021FB8A4);

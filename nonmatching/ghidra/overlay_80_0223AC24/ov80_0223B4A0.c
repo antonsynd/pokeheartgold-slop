@@ -50,7 +50,7 @@ void ov80_0223B4A0(undefined4 *param_1,undefined4 param_2,undefined4 param_3,und
 
 {
   undefined *puVar1;
-  
+
   if (param_1 == (undefined4 *)0x0) {
     GF_AssertFail();
   }

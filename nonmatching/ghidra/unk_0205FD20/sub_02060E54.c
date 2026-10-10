@@ -52,7 +52,7 @@ undefined4 sub_02060E54(undefined4 param_1,undefined1 param_2)
 
 {
   int iVar1;
-  
+
   iVar1 = sub_0205BA54(param_2);
   if (iVar1 == 0) {
     iVar1 = MetatileBehavior_IsSurfableWater(param_2);

@@ -47,7 +47,7 @@ void ov40_0222C4B8(int param_1)
 
 {
   int iVar1;
-  
+
   iVar1 = 0;
   *(undefined4 *)(param_1 + 0x838) = 0;
   *(undefined4 *)(param_1 + 0x83c) = 0xff;

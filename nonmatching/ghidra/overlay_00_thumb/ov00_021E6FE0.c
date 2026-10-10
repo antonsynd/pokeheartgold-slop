@@ -48,7 +48,7 @@ void ov00_021E6FE0(uint param_1,undefined4 param_2,undefined4 param_3,undefined4
 
 {
   code *pcVar1;
-  
+
   *(uint *)(iRam0221a680 + 0x1098) = param_1;
   pcVar1 = *(code **)(iRam0221a680 + 0xfb4);
   if (pcVar1 != (code *)0x0) {

@@ -67,7 +67,7 @@ undefined4 sub_02036144(void)
 
 {
   int iVar1;
-  
+
   sub_0203817C();
   if (iRam021d4148 == 0) {
     sub_020355C8(0);

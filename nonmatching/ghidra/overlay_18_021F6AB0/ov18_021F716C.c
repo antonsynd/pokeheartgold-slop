@@ -50,7 +50,7 @@ undefined4 ov18_021F716C(int *param_1)
 
 {
   undefined4 uVar1;
-  
+
   MenuInputStateMgr_SetState(*(undefined4 *)(*param_1 + 0xc),0);
   if ((uRam021d1154 & 8) != 0) {
     return 0x12;

@@ -56,7 +56,7 @@ void ov18_021F1534(int param_1,undefined4 param_2,undefined4 param_3,int param_4
   int iVar2;
   int iVar3;
   undefined4 uStack_1c;
-  
+
   uVar1 = ov18_021F148C();
   ov18_021F111C(param_1,param_4,*(undefined4 *)(uStack_1c + 0x14),0x200,2);
   iVar2 = func_0x0200d944(*(undefined4 *)(param_1 + 0x66c),0xc551,2);

@@ -62,7 +62,7 @@ void sub_02012090(undefined *param_1,int *param_2,undefined4 param_3,undefined4 
   int iVar3;
   int iVar4;
   int iStack_18;
-  
+
   puVar1 = Heap_Alloc(param_8,(uint)*(ushort *)(param_2 + 2) * 0x30);
   *(undefined **)(param_1 + 0xc) = puVar1;
   if (puVar1 == (undefined *)0x0) {

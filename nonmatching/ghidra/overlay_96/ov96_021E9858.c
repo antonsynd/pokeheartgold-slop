@@ -51,7 +51,7 @@ void ov96_021E9858(void)
   undefined *in_r3;
   __asm__ volatile("movs %0, r3" : "=l"(in_r3) : : "cc");
 
-  
+
   PokeathlonCourse_SetStateTransitionType(in_r3,10);
   PokeathlonCourse_SetStateField07(in_r3,0x12);
   return;

@@ -63,7 +63,7 @@ void ov15_021FEB84(int param_1)
   undefined4 uVar2;
   int iVar3;
   int iVar4;
-  
+
   if (*(char *)(*(int *)(param_1 + 0x234) + (uint)*(byte *)(*(int *)(param_1 + 0x234) + 100) * 0xc +
                0xc) == '\x03') {
     FillWindowPixelBuffer(param_1 + 0x14,0);

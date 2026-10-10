@@ -58,7 +58,7 @@ void ov43_0222D584(int param_1,undefined4 param_2,undefined4 param_3,undefined4 
   int iStack_20;
   undefined4 *puStack_1c;
   int iStack_18;
-  
+
   ov43_0222DD40(param_1 + 0xf8,param_3,param_4);
   ov43_0222DDA0(param_1,param_3);
   iStack_18 = 0;

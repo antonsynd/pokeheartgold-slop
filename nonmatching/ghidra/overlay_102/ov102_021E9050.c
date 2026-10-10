@@ -48,7 +48,7 @@ undefined4 ov102_021E9050(int param_1)
 
 {
   int iVar1;
-  
+
   iVar1 = ov102_021E87AC(param_1 + 0x54);
   if (iVar1 != 0) {
     return 1;

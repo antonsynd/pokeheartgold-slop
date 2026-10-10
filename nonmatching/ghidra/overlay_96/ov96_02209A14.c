@@ -55,7 +55,7 @@ void ov96_02209A14(int param_1,undefined4 param_2,undefined4 param_3,undefined4 
   undefined4 uVar2;
   undefined4 uVar3;
   undefined4 uVar4;
-  
+
   uVar4 = *(undefined4 *)(param_1 + 0xc);
   uVar3 = *(undefined4 *)(param_1 + 8);
   SpriteSystem_LoadCharResObj(uVar3,uVar4,0xea,8,1,1,10000);

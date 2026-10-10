@@ -60,7 +60,7 @@ ov14_021E7358(undefined4 param_1,undefined4 param_2,undefined4 param_3,undefined
   undefined4 uVar7;
   uint uVar8;
   undefined4 *puVar9;
-  
+
   iVar5 = GetBoxMonData(param_1,0xac,0,param_4,param_4);
   if (iVar5 == 0) {
     puVar6 = (undefined4 *)0x0;

@@ -55,7 +55,7 @@ void ov90_02259FC8(int param_1,int param_2,undefined4 param_3,undefined4 param_4
   int iStack_20;
   int iStack_1c;
   undefined4 uStack_14;
-  
+
   iVar1 = (*(ushort *)(param_1 + 0x18) - 1) * 0xc;
   iStack_1c = ((int)*(short *)(&ov90_0225C276 +
                               (uint)(byte)(&ov90_0225C324)[(uint)*(byte *)(param_1 + 0x1b) + iVar1]

@@ -50,7 +50,7 @@ void ov01_021F7DA8(undefined4 param_1,undefined4 param_2,undefined4 param_3,unde
 
 {
   undefined1 *puVar1;
-  
+
   puVar1 = (undefined1 *)sub_0205F3E8(param_1,0x14,param_3,param_4,param_4);
   *puVar1 = 0xff;
   ov01_021F9510(param_1,puVar1 + 4);

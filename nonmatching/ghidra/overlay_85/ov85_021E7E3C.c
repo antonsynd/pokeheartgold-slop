@@ -50,7 +50,7 @@ void ov85_021E7E3C(int param_1)
 
 {
   undefined4 uVar1;
-  
+
   func_0x020e5b44(param_1 + 0xb54,0,100);
   uVar1 = SysTask_CreateOnMainQueue(0x21e7e19,param_1,0x101);
   *(undefined4 *)(param_1 + 0xdb4) = uVar1;

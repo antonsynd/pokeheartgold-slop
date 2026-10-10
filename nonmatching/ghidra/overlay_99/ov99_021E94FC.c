@@ -48,7 +48,7 @@ undefined4 ov99_021E94FC(void)
 
 {
   int iVar1;
-  
+
   iVar1 = ov99_021E9430();
   return *(undefined4 *)(iVar1 + 0x28);
 }

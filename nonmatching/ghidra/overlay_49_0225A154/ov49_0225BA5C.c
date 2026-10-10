@@ -54,7 +54,7 @@ void ov49_0225BA5C(undefined4 param_1,int param_2)
 {
   undefined4 uVar1;
   undefined4 uVar2;
-  
+
   GfGfxLoader_GXLoadPalFromOpenNarc
             (*(undefined4 *)(param_2 + 0x14c),*(undefined2 *)(param_2 + 0x154),4,0,0,
              *(undefined2 *)(param_2 + 0x156));

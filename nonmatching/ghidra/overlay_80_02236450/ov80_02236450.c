@@ -55,7 +55,7 @@ ov80_02236450(int param_1,int param_2,undefined4 param_3,uint param_4,undefined4
   undefined4 uVar1;
   undefined4 uVar2;
   uint uVar3;
-  
+
   uVar3 = param_4;
   uVar1 = ov80_02236B04(*(undefined1 *)(param_1 + 0xf));
   uVar1 = ov80_02229F04(param_2,param_3,param_8,uVar1);

@@ -49,7 +49,7 @@ void BattleController_EmitDeleteStartBallGauge(int param_1,undefined4 param_2)
 
 {
   undefined1 auStack_14 [8];
-  
+
   ov12_022645F8(param_1,*(undefined4 *)(param_1 + 0x30),auStack_14,0x31,param_2);
   ov12_02262240(param_1,1,param_2,auStack_14,8);
   return;

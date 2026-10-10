@@ -62,7 +62,7 @@ void ov96_021F31F0(int param_1,int param_2,undefined4 param_3,undefined4 param_4
   int iStack_20;
   undefined4 uStack_1c;
   undefined4 uStack_18;
-  
+
   iVar6 = 0;
   piVar4 = *(int **)(&ov96_0221DBC8 + param_2 * 4);
   uStack_18 = param_4;

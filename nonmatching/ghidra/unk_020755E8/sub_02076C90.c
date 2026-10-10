@@ -69,7 +69,7 @@ void sub_02076C90(int param_1)
   undefined4 uStack_30;
   int iStack_2c;
   undefined1 auStack_28 [24];
-  
+
   iVar1 = *(int *)(param_1 + 0x78);
   if (iVar1 < 7) {
     if (iVar1 != 6) {

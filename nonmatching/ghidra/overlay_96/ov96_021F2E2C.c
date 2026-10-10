@@ -48,7 +48,7 @@ void ov96_021F2E2C(int param_1,undefined4 param_2)
 
 {
   undefined4 uVar1;
-  
+
   if (*(int *)(param_1 + 0x14) == 0) {
     *(undefined4 *)(param_1 + 0x28) = param_2;
     uVar1 = SysTask_CreateOnMainQueue(0x21f2e4d,param_1,0);

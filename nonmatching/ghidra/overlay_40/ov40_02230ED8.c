@@ -64,7 +64,7 @@ undefined4 ov40_02230ED8(int param_1)
 {
   undefined2 uVar1;
   int iVar2;
-  
+
   iVar2 = *(int *)(param_1 + 8);
   switch(iVar2) {
   case 0:

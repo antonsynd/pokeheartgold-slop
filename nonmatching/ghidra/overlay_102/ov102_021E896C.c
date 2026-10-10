@@ -67,7 +67,7 @@ undefined4 ov102_021E896C(int param_1,undefined4 param_2,undefined4 param_3,unde
   char cStack_1a;
   char cStack_19;
   undefined4 uStack_18;
-  
+
   uStack_18 = param_4;
   iVar3 = System_GetTouchNew();
   if (iVar3 == 0) {

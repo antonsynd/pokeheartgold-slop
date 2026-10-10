@@ -53,7 +53,7 @@ undefined4 BugContestSwapMon_Exit(undefined4 param_1,int *param_2)
 {
   undefined4 *puVar1;
   int iVar2;
-  
+
   puVar1 = (undefined4 *)OverlayManager_GetData();
   if (*param_2 == 0) {
     BeginNormalPaletteFade(0,0,0,0,6,1,*puVar1);

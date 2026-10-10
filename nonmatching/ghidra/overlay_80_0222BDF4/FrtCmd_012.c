@@ -49,7 +49,7 @@ undefined4 FrtCmd_012(int param_1)
 
 {
   int iVar1;
-  
+
   iVar1 = FrontierScriptContext_ReadWord();
   FrontierScriptContext_Call(param_1,*(int *)(param_1 + 0x1c) + iVar1);
   return 0;

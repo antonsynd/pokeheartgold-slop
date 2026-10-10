@@ -51,7 +51,7 @@ undefined4 ov57_0223BA40(int param_1)
 
 {
   int iVar1;
-  
+
   iVar1 = Pokepic_GetAttr(*(undefined **)(param_1 + 0x1c8),0xc);
   if (iVar1 == 0x100) {
     return 0;

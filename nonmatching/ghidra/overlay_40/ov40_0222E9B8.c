@@ -67,7 +67,7 @@ void ov40_0222E9B8(undefined4 *param_1,int param_2,int param_3,int *param_4)
   int iVar6;
   int iStack_30;
   int iStack_2c;
-  
+
   puVar1 = param_1 + 6;
   param_1[1] = param_4[1];
   *param_1 = 0;

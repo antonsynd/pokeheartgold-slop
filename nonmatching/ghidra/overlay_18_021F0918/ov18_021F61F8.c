@@ -47,7 +47,7 @@ int ov18_021F61F8(undefined4 param_1,int param_2,ushort *param_3,uint param_4)
 
 {
   uint uVar1;
-  
+
   uVar1 = 0;
   if (param_4 != 0) {
     do {

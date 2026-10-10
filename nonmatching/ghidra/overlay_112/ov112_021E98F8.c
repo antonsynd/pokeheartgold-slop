@@ -48,7 +48,7 @@ uint ov112_021E98F8(int param_1,int param_2,int param_3)
 {
   uint uVar1;
   int iVar2;
-  
+
   iVar2 = param_3 >> 0x1f;
   uVar1 = ((uint)(param_3 * 0x20000000 + iVar2) >> 0x1d | iVar2 << 3) - iVar2;
   iVar2 = param_2 * 2 + ((int)(param_3 + ((uint)(param_3 >> 2) >> 0x1d)) >> 3) * 0x80;

@@ -48,7 +48,7 @@ void ov87_021E6AE0(int param_1)
 
 {
   undefined4 uVar1;
-  
+
   uVar1 = YesNoPrompt_Create(0x7a);
   *(undefined4 *)(param_1 + 0x390) = uVar1;
   return;

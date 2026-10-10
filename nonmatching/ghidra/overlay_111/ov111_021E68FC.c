@@ -48,7 +48,7 @@ void ov111_021E68FC(undefined4 *param_1,undefined4 param_2,undefined4 param_3,un
 
 {
   undefined4 uVar1;
-  
+
   uVar1 = ov111_021E6A74(*param_1,param_1 + 7,param_1 + 4,param_1[2],param_1[3],param_2,
                          (param_1[0xc] & 0x7ffff) >> 0x10,param_1[6],param_1[5],param_4);
   param_1[0xb] = uVar1;

@@ -59,7 +59,7 @@ void sub_020367B0(undefined4 param_1,byte *param_2)
   ushort uVar5;
   uint uVar6;
   int iVar7;
-  
+
   *(int *)(iRam021d4148 + 0x668) = *(int *)(iRam021d4148 + 0x668) + -1;
   if (param_2 != (byte *)0x0) {
     if (*param_2 == 0xb) {

@@ -52,7 +52,7 @@ void ov59_022388C4(int param_1)
 {
   int iVar1;
   int iVar2;
-  
+
   iVar1 = ov59_02239EA8();
   if (iVar1 == 7) {
     iVar2 = 200;

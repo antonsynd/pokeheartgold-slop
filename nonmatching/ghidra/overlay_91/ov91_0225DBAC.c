@@ -47,7 +47,7 @@ undefined4 ov91_0225DBAC(int param_1)
 
 {
   int iVar1;
-  
+
   iVar1 = *(int *)(param_1 + 4) + 1;
   *(int *)(param_1 + 4) = iVar1;
   if (iVar1 < 8) {

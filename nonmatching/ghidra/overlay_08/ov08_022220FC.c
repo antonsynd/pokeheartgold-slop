@@ -51,7 +51,7 @@ void ov08_022220FC(int param_1)
 {
   char cVar1;
   uint uVar2;
-  
+
   uVar2 = (uint)*(byte *)(param_1 + 0x1fa3);
   if ((int)(uVar2 << 0x18) < 0) {
     cVar1 = *(char *)(param_1 + 0x1fa0);

@@ -53,7 +53,7 @@ void ov74_02235C10(int param_1,int param_2,int param_3)
 {
   undefined4 uVar1;
   undefined4 uVar2;
-  
+
   ov74_02235728(0x34,10,0,0xb,0xc,1);
   ov74_0223589C(0,0x100000);
   uVar1 = ov74_02235930(1,*(undefined4 *)(param_1 + 0x208),0x80,0,1);

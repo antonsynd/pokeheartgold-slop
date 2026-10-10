@@ -48,7 +48,7 @@ void ov47_02259430(int param_1)
 
 {
   int iVar1;
-  
+
   iVar1 = func_0x02001fdc(*(undefined4 *)(param_1 + 0x20));
   if (iVar1 != -1) {
     *(undefined4 *)(param_1 + 0x20) = 0;

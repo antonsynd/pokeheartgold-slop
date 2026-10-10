@@ -60,7 +60,7 @@ void ov00_021E733C(void)
   int iVar1;
   int iVar2;
   int iVar3;
-  
+
   func_0x020da830();
   func_0x020dade8();
   func_0x020db358(1);

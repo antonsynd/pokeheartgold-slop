@@ -50,7 +50,7 @@ undefined4 ov93_0225E300(int param_1,undefined4 param_2,undefined4 param_3,undef
 {
   int iVar1;
   undefined4 *puVar2;
-  
+
   if (0 < *(int *)(param_1 + 0x2fc4)) {
     *(int *)(param_1 + 0x2fc4) = *(int *)(param_1 + 0x2fc4) + -1;
     return 0;

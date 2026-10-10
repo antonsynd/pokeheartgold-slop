@@ -53,7 +53,7 @@ void ov01_021F7B14(undefined *param_1,undefined *param_2,short *param_3,uint par
 {
   int iVar1;
   int aiStack_20 [4];
-  
+
   if (param_4 != (int)(char)param_3[1]) {
     iVar1 = ov01_021FA44C(param_4);
     sub_02023EE0(param_2,iVar1);

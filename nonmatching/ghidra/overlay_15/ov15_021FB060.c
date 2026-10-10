@@ -59,7 +59,7 @@ undefined4 ov15_021FB060(int param_1,undefined4 param_2,undefined4 param_3,undef
 {
   undefined4 uVar1;
   int iVar2;
-  
+
   *(undefined4 *)(param_1 + 0x348) = 0;
   *(undefined1 *)(param_1 + 0x671) = 0;
   *(undefined1 *)(param_1 + 0x672) = 0;

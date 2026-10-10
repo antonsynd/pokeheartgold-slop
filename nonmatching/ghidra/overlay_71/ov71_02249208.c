@@ -52,7 +52,7 @@ void ov71_02249208(undefined4 param_1,undefined4 *param_2)
 
 {
   int iVar1;
-  
+
   if (param_2[0x1e] == 0) {
     iVar1 = param_2[0xb];
     param_2[0xb] = iVar1 + param_2[0xc];

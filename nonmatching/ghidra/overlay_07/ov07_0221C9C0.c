@@ -68,7 +68,7 @@ void ov07_0221C9C0(int param_1)
   int iVar5;
   int iVar6;
   int iVar7;
-  
+
   iVar6 = 0;
   if (*(char *)(param_1 + 0x17e) == '\0') {
     *(undefined1 *)(param_1 + 0x8d) = 1;

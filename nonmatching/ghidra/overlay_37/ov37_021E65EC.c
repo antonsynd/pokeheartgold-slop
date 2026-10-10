@@ -73,7 +73,7 @@ void ov37_021E65EC(int param_1)
   int iVar5;
   int iVar6;
   undefined1 auStack_58 [68];
-  
+
   bVar1 = false;
   uVar2 = TouchscreenHitbox_FindRectAtTouchNew(&ov37_021E7A4C);
   switch(uVar2) {

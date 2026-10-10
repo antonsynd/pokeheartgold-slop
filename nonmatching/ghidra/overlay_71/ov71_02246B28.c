@@ -52,7 +52,7 @@ ov71_02246B28(undefined4 param_1,undefined4 param_2,undefined4 param_3,undefined
   undefined4 uVar1;
   undefined4 uVar2;
   int iVar3;
-  
+
   uVar1 = GetBoxMonData(param_1,5,0,param_4,param_4);
   uVar2 = GetBoxMonData(param_1,0x70,0);
   iVar3 = GetMonBaseStat_HandleAlternateForm(uVar1,uVar2,0x1c);

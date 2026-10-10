@@ -56,7 +56,7 @@ undefined4 ov71_0224A1C4(int param_1,int *param_2)
 
 {
   int iVar1;
-  
+
   switch(*param_2) {
   case 0:
     iVar1 = IsPaletteFadeFinished();

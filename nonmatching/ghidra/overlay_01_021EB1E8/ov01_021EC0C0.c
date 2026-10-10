@@ -53,7 +53,7 @@ void ov01_021EC0C0(int param_1,int param_2,undefined4 param_3,undefined4 param_4
   undefined4 uVar1;
   int aiStack_14 [2];
   undefined4 uStack_c;
-  
+
   if (param_2 != 0xffff) {
     uStack_c = param_4;
     uVar1 = func_0x0200771c(*(undefined4 *)(param_1 + 0x108),

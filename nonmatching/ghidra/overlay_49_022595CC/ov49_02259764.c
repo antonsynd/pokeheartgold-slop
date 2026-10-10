@@ -66,7 +66,7 @@ void ov49_02259764(undefined4 *param_1,undefined4 param_2,undefined4 param_3)
   int iStack_20;
   undefined4 auStack_1c [2];
   undefined4 uStack_14;
-  
+
   switch(*(undefined2 *)(param_1 + 2)) {
   case 0:
     func_0x0223089c(param_1[1],0);

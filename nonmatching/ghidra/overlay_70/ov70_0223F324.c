@@ -53,7 +53,7 @@ void ov70_0223F324(undefined4 param_1,undefined4 param_2,int param_3,int param_4
 {
   undefined4 uVar1;
   undefined4 uVar2;
-  
+
   if ((param_4 != 0) || (param_3 != 3)) {
     uVar1 = NewString_ReadMsgData(param_2,*(undefined4 *)(param_3 * 4 + 0x2245910));
     uVar2 = ov70_0223F2A0(param_3,param_7);

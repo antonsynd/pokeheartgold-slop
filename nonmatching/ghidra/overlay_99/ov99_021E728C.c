@@ -51,7 +51,7 @@ void ov99_021E728C(int param_1,uint *param_2)
 {
   int iVar1;
   uint uStack_10;
-  
+
   iVar1 = ov99_021E714C();
   GfGfxLoader_LoadFromOpenNarc_GetSizeOut
             (*(undefined4 *)(param_1 + 8),*(undefined4 *)(&ov99_021E9F4C + iVar1 * 4),0,

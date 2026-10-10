@@ -53,7 +53,7 @@ undefined4 ov18_021F5454(int *param_1)
 {
   undefined4 uVar1;
   int iVar2;
-  
+
   if (*(char *)((int)param_1 + 0xb) == '\0') {
     PlaySE(0x8eb);
     ov18_021F5198(param_1,0x200,0xffffffc0,0xfffffe80);

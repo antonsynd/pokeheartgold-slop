@@ -58,7 +58,7 @@ undefined4 ov92_022620D0(undefined4 *param_1,undefined4 param_2,int param_3,int 
   int iVar4;
   undefined1 auStack_18 [4];
   undefined1 auStack_14 [4];
-  
+
   if (param_1[1] == 0) {
     param_1[4] = 0;
     *(undefined2 *)(param_1 + 2) = 0;

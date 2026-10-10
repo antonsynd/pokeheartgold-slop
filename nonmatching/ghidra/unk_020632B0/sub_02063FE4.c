@@ -49,7 +49,7 @@ void sub_02063FE4(undefined4 param_1)
 
 {
   undefined4 *puVar1;
-  
+
   puVar1 = (undefined4 *)sub_0205F40C();
   func_0x021f95cc(param_1,puVar1 + 2,*puVar1);
   return;

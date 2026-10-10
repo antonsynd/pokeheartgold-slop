@@ -54,7 +54,7 @@ void Field_PlayerMovementSavingClear(int param_1)
 {
   int iVar1;
   undefined4 uVar2;
-  
+
   if (param_1 != 0) {
     iVar1 = SysTask_GetData();
     uVar2 = *(undefined4 *)(iVar1 + 0xc);

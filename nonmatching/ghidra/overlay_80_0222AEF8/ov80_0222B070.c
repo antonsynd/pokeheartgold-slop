@@ -54,7 +54,7 @@ undefined4 ov80_0222B070(int param_1)
   undefined4 uVar1;
   undefined4 uVar2;
   int iVar3;
-  
+
   uVar1 = SizeOfStructPokemon();
   uVar2 = SaveArray_Party_Get(*(undefined4 *)(param_1 + 0x6fc));
   uVar2 = Party_GetMonByIndex(uVar2,*(undefined1 *)(param_1 + 0x260));

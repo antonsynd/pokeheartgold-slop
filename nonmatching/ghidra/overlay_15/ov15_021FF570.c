@@ -54,7 +54,7 @@ void ov15_021FF570(int param_1,undefined *param_2,undefined *param_3,int *param_
 {
   ushort uVar1;
   int iVar2;
-  
+
   if ((char)param_4[2] == '\x03') {
     AddTextPrinterParameterizedWithColor(param_2,0,param_3,0,0,0xff,0x10200,(undefined *)0x0);
     iVar2 = param_5 * 4;

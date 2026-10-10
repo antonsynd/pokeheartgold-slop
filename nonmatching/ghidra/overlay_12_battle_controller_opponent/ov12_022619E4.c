@@ -58,7 +58,7 @@ void ov12_022619E4(undefined *param_1,undefined4 param_2,int param_3,int param_4
   int iVar4;
   int iVar5;
   undefined4 uStack_1c;
-  
+
   iVar5 = 0;
   uStack_1c = 0;
   iVar4 = 0;

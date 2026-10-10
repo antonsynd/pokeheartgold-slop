@@ -49,7 +49,7 @@ undefined1 ov45_0222E9BC(void)
 
 {
   undefined1 uVar1;
-  
+
   if (iRam022577c0 == 0) {
     GF_AssertFail();
   }

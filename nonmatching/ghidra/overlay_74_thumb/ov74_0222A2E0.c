@@ -58,7 +58,7 @@ ov74_0222A2E0(undefined4 param_1,undefined4 param_2,undefined4 param_3,undefined
   int iVar2;
   undefined4 uVar3;
   undefined4 *puVar4;
-  
+
   puVar1 = (undefined4 *)OverlayManager_GetData();
   iVar2 = ov74_02235230();
   if (iVar2 == 0) {

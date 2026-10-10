@@ -49,7 +49,7 @@ void sub_020611DC(undefined4 param_1)
 
 {
   int iVar1;
-  
+
   iVar1 = MapObject_GetMovement();
   if (iVar1 - 0x33U < 4) {
     sub_0205F430(param_1);

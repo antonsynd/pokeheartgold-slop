@@ -50,7 +50,7 @@ void ov01_021FC030(undefined4 *param_1,int param_2,undefined *param_3,undefined 
 
 {
   undefined *puVar1;
-  
+
   *param_1 = param_3;
   puVar1 = NNS_G3dGetAnmByIdx(param_3,0);
   param_1[1] = puVar1;

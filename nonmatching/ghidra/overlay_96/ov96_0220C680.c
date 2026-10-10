@@ -51,7 +51,7 @@ void ov96_0220C680(int param_1)
 {
   uint uVar1;
   uint uVar2;
-  
+
   uVar2 = *(uint *)(param_1 + 0x40);
   if ((uVar2 & 0x3ff) >> 2 != 3) {
     if ((int)(*(uint *)(param_1 + 0x44) << 0x17) < 0) {

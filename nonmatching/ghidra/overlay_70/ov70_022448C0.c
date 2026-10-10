@@ -61,7 +61,7 @@ undefined4 ov70_022448C0(int param_1)
   undefined4 uStack_4c;
   undefined4 uStack_48;
   undefined1 auStack_44 [60];
-  
+
   func_0x021ec60c();
   iVar1 = func_0x021ec5b4();
   if (iVar1 != 0) {

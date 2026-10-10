@@ -50,7 +50,7 @@ undefined4 ov13_02224D00(int param_1,int param_2,int param_3)
   int iVar2;
   int iVar3;
   int iVar4;
-  
+
   iVar3 = 0;
   iVar4 = 0;
   if (0 < param_3) {

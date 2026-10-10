@@ -79,7 +79,7 @@ void ov87_021E68DC(int param_1)
   short *psVar4;
   short sVar5;
   int iVar6;
-  
+
   uVar1 = NARC_New(0xcf,0x7a);
   *(undefined4 *)(param_1 + 0x380) = uVar1;
   ov87_021E6B38(param_1);

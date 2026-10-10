@@ -53,7 +53,7 @@ void ov81_02241C0C(int param_1,undefined4 param_2,undefined4 param_3,undefined4 
   uint uVar1;
   uint uVar2;
   uint uVar3;
-  
+
   uVar1 = func_0x02019f74(*(undefined4 *)(param_1 + 0x464));
   if (uVar1 < 6) {
     uVar3 = (uint)*(byte *)(param_1 + 0x11);

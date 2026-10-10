@@ -50,7 +50,7 @@ void ov07_02231E74(undefined4 param_1,int param_2,int param_3)
 {
   uint uVar1;
   uint uVar2;
-  
+
   if (param_2 == -1) {
     param_2 = 0x1a;
   }

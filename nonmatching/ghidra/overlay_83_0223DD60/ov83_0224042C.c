@@ -54,7 +54,7 @@ void ov83_0224042C(int param_1)
 {
   uint uVar1;
   int iVar2;
-  
+
   if ((*(byte *)(param_1 + 0xe) & 0xf) >> 3 == 1) {
     uVar1 = 0;
     do {

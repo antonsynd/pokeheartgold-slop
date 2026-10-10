@@ -67,7 +67,7 @@ void ov83_02245838(int param_1,uint param_2,int param_3,undefined4 param_4)
   undefined4 uVar3;
   int iVar4;
   undefined4 uStack_18;
-  
+
   uStack_18 = param_4;
   uVar2 = Options_GetFrame(*(undefined4 *)(param_1 + 0x2b8));
   ov83_02247944(param_1 + 0xc0,uVar2);

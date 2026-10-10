@@ -51,7 +51,7 @@ void ov49_0225D7B8(int param_1,int param_2)
   int iVar1;
   int iVar2;
   undefined4 uStack_18;
-  
+
   uStack_18 = 0;
   param_2 = param_2 + 0x20;
   iVar1 = param_1 + 0x108;

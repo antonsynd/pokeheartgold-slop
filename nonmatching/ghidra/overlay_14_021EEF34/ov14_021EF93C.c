@@ -54,7 +54,7 @@ undefined4 ov14_021EF93C(int param_1)
   uint uVar1;
   int iVar2;
   undefined4 uVar3;
-  
+
   uVar1 = ov14_021F7A50();
   iVar2 = GridInputHandler_IsButtonInputMode(*(undefined4 *)(*(int *)(param_1 + 0x34) + 0x2c));
   if (iVar2 == 0) {

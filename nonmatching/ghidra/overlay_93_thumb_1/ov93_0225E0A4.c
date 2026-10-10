@@ -52,7 +52,7 @@ void ov93_0225E0A4(int param_1)
   int iVar3;
   undefined4 uStack_20;
   undefined4 uStack_1c;
-  
+
   uStack_20 = param_1 + 0xd8;
   uStack_1c = 0;
   param_1 = param_1 + 0x1a4;

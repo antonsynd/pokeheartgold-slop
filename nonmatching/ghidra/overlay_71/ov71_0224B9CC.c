@@ -55,7 +55,7 @@ void ov71_0224B9CC(int param_1,int *param_2)
 {
   undefined4 *puVar1;
   int iVar2;
-  
+
   puVar1 = (undefined4 *)Heap_Alloc(0x39,0x44);
   if (puVar1 == (undefined4 *)0x0) {
     *param_2 = 0;

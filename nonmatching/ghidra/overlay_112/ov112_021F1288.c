@@ -57,7 +57,7 @@ void ov112_021F1288(int param_1,undefined4 param_2,undefined4 param_3,undefined4
   int iVar2;
   int iVar3;
   int iVar4;
-  
+
   if (param_1 == 0) {
     GF_AssertFail();
   }

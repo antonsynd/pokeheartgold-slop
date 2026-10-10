@@ -62,7 +62,7 @@ void ov83_022448E4(int param_1,undefined4 param_2)
   int iVar5;
   undefined4 uStack_20;
   undefined4 uStack_1c;
-  
+
   FillWindowPixelBuffer(param_2,0);
   iVar1 = func_0x02237d8c(*(undefined1 *)(param_1 + 9));
   if (iVar1 == 0) {

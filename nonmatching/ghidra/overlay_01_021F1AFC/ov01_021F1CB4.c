@@ -50,7 +50,7 @@ void ov01_021F1CB4(undefined4 param_1)
 
 {
   undefined4 uVar1;
-  
+
   uVar1 = PlayerAvatar_GetGender();
   uVar1 = PlayerAvatar_GetSpriteByStateAndGender(8,uVar1);
   ov01_021F3084(param_1,uVar1);

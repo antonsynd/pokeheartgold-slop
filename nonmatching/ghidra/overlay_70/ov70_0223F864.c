@@ -49,7 +49,7 @@ int ov70_0223F864(int param_1,int param_2,int param_3)
   int iVar1;
   int iVar2;
   int iVar3;
-  
+
   if (param_3 == 0) {
     iVar3 = 0x2245a4c;
     iVar2 = 0xc;

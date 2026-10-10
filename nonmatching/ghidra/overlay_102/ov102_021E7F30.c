@@ -49,7 +49,7 @@ undefined4 ov102_021E7F30(undefined4 param_1,int param_2,int param_3)
 
 {
   int iVar1;
-  
+
   iVar1 = System_GetTouchHeld();
   if (iVar1 == 0) {
     return 0;

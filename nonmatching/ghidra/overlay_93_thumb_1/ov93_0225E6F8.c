@@ -50,7 +50,7 @@ undefined4 ov93_0225E6F8(int param_1,int param_2)
 
 {
   int iVar1;
-  
+
   switch(*(int *)(param_2 + 0xc)) {
   case 0:
     ov93_02262934(param_1,*(undefined1 *)(param_2 + 0x18));

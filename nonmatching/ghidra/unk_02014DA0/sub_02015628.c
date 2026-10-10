@@ -49,7 +49,7 @@ void sub_02015628(undefined4 param_1,undefined4 *param_2)
 {
   undefined4 *puVar1;
   undefined4 uVar2;
-  
+
   puVar1 = (undefined4 *)sub_02015550(param_1,2);
   if (puVar1 != (undefined4 *)0x0) {
     uVar2 = param_2[1];

@@ -49,7 +49,7 @@ void ov40_02235FA0(int param_1)
 
 {
   int iVar1;
-  
+
   iVar1 = *(int *)(param_1 + 0x860);
   DestroyMsgData(*(undefined4 *)(iVar1 + 0x1e0));
   Heap_Free(*(undefined4 *)(iVar1 + 0x1e8));

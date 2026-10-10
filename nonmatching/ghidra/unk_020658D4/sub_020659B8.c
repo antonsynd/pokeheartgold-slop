@@ -48,7 +48,7 @@ void sub_020659B8(void)
 
 {
   int iVar1;
-  
+
   iVar1 = sub_0205F394();
   *(ushort *)(iVar1 + 10) = *(ushort *)(iVar1 + 10) & 0xfffe | 1;
   return;

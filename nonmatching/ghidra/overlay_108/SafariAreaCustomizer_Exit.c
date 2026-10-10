@@ -53,7 +53,7 @@ undefined4 SafariAreaCustomizer_Exit(undefined4 param_1)
 {
   undefined4 *puVar1;
   undefined4 uVar2;
-  
+
   puVar1 = (undefined4 *)OverlayManager_GetData();
   ov108_021E5A48();
   uVar2 = *puVar1;

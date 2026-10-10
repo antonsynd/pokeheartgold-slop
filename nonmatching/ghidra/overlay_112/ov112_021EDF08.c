@@ -51,7 +51,7 @@ undefined4 ov112_021EDF08(int param_1)
 
 {
   int iVar1;
-  
+
   ov112_021EAAE4(param_1,param_1 + 0x1f2c0);
   iVar1 = TextPrinterCheckActive(*(uint *)(param_1 + 0x1e524) & 0xff);
   if (((iVar1 == 0) && (iVar1 = ov112_021EA838(param_1), iVar1 == 0)) &&

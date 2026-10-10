@@ -56,7 +56,7 @@ void sub_0208BB8C(int param_1,undefined4 param_2)
   undefined4 uVar2;
   undefined4 uVar3;
   int iVar4;
-  
+
   uVar1 = GetMoveAttr(param_2,1);
   uVar2 = sub_02077830();
   uVar3 = sub_02077800(uVar1);

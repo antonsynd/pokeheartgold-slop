@@ -60,7 +60,7 @@ void ov05_0221CDC4(int param_1,undefined4 *param_2)
   undefined4 uStack_18;
   undefined4 uStack_c;
   undefined4 uStack_8;
-  
+
   uStack_38 = 0;
   uStack_36 = 0;
   uStack_34 = 0;

@@ -50,7 +50,7 @@ void ov93_0225E370(int *param_1)
 {
   int iVar1;
   int *piVar2;
-  
+
   iVar1 = ov93_022627C0(param_1,param_1 + 0xbbc);
   if ((iVar1 != 1) && (iVar1 = 0, *(char *)(*param_1 + 0x30) != '\0')) {
     do {

@@ -48,7 +48,7 @@ void ov18_021F42E4(int param_1,int param_2,short *param_3,short *param_4,undefin
 
 {
   int iVar1;
-  
+
   *param_3 = ((ushort)*(byte *)(*(int *)(param_1 + 0x1908) + param_2 * 4) +
              *(char *)(param_1 + 0x18c8) * -0x16) * 8 + 0x44;
   *param_4 = (ushort)*(byte *)(*(int *)(param_1 + 0x1908) + param_2 * 4 + 1) * 8 + 0x2c;

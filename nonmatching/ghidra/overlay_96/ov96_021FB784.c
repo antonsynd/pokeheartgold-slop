@@ -48,7 +48,7 @@ uint ov96_021FB784(undefined4 param_1,int param_2,int param_3)
 {
   uint uVar1;
   int aiStack_18 [3];
-  
+
   aiStack_18[0] = 0x30;
   aiStack_18[1] = 0x80;
   aiStack_18[2] = 0xd0;

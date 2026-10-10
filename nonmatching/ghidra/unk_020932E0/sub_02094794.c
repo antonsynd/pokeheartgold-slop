@@ -50,7 +50,7 @@ void sub_02094794(int param_1,int param_2)
 
 {
   undefined4 uVar1;
-  
+
   uVar1 = Sprite_GetMatrixPtr(*(undefined4 *)(param_1 + param_2 * 0x34 + 0x198));
   Sprite_SetMatrix(*(undefined4 *)(param_1 + 0x8c0),uVar1);
   sub_020947C0(param_1,param_2);

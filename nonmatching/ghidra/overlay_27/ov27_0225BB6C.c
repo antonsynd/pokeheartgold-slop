@@ -57,7 +57,7 @@ void ov27_0225BB6C(int param_1,undefined4 param_2,undefined4 param_3,undefined4 
   int iVar2;
   undefined4 *puVar3;
   int iVar4;
-  
+
   uVar1 = Save_PlayerData_GetProfile(*(undefined4 *)(*(int *)(param_1 + 0x10) + 0xc));
   BufferPlayersName(*(undefined4 *)(param_1 + 0x4ac),0,uVar1);
   iVar2 = 0;

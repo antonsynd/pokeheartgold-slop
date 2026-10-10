@@ -51,7 +51,7 @@ void ov69_021E6118(void)
   undefined4 uStack_14;
   undefined4 uStack_10;
   undefined4 uStack_c;
-  
+
   uStack_18 = 1;
   uStack_14 = 0;
   uStack_10 = 0;

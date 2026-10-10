@@ -58,7 +58,7 @@ int ov112_021E93BC(undefined4 param_1,undefined4 param_2,undefined4 param_3,int 
   int iVar7;
   int iStack_20;
   int iStack_1c;
-  
+
   iStack_20 = 0;
   func_0x020d4858(0,param_4,
                   ((int)(param_7 * param_8 + ((uint)(param_7 * param_8 >> 2) >> 0x1d)) >> 3) << 1);

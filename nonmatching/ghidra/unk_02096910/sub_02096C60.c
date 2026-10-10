@@ -48,7 +48,7 @@ void sub_02096C60(uint param_1,undefined4 param_2,undefined2 *param_3,int param_
 
 {
   ushort uVar1;
-  
+
   *(char *)(param_4 + 0x6f) = *(char *)(param_4 + 0x6f) + '\x01';
   uVar1 = sub_0203769C();
   if (param_1 != uVar1) {

@@ -53,7 +53,7 @@ void ov96_021F480C(undefined4 *param_1,undefined4 param_2)
 
 {
   uint uVar1;
-  
+
   GfGfx_EngineBTogglePlanes(1,1);
   uVar1 = 0;
   do {

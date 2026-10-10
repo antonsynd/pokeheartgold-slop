@@ -52,7 +52,7 @@ void ov97_0221FBA0(int param_1)
 {
   undefined4 uVar1;
   undefined4 uVar2;
-  
+
   uVar2 = *(undefined4 *)(param_1 + 0x17c);
   uVar1 = SpriteTransfer_GetCharProxy(*(undefined4 *)(param_1 + 0x178));
   uVar2 = SpriteTransfer_GetPaletteProxy(uVar2,uVar1);

@@ -54,7 +54,7 @@ void ov15_021FFDD8(int param_1,undefined4 param_2,undefined4 param_3,undefined4 
   int iVar2;
   int iVar3;
   uint uVar4;
-  
+
   iVar2 = 0x2200b0c;
   uVar4 = 0;
   iVar3 = param_1;

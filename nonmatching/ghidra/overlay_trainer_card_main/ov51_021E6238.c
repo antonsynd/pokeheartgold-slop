@@ -91,7 +91,7 @@ void ov51_021E6238(undefined4 param_1,undefined4 param_2,undefined4 param_3,unde
   undefined4 uStack_18;
   undefined4 uStack_14;
   undefined4 uStack_10;
-  
+
   uRam04000304 = uRam04000304 | 0x8000;
   uStack_20 = 1;
   uStack_1c = 0;

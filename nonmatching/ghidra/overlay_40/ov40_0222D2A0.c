@@ -85,7 +85,7 @@ void ov40_0222D2A0(int param_1)
   int iStack_20;
   int iStack_1c;
   undefined4 uStack_18;
-  
+
   aiStack_6c[2] = 1;
   aiStack_6c[3] = 2;
   aiStack_6c[0] = 9999;

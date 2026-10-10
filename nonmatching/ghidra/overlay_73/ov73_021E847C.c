@@ -55,7 +55,7 @@ void ov73_021E847C(int param_1)
 {
   int iVar1;
   int iVar2;
-  
+
   SpriteTransfer_DeleteCharTransferTask(*(undefined4 *)(param_1 + 0xd34));
   SpriteTransfer_DeletePlttTransferTask(*(undefined4 *)(param_1 + 0xd38));
   iVar1 = 0;

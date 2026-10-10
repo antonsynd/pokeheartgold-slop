@@ -61,7 +61,7 @@ void ov92_0225D3CC(int param_1)
 
 {
   undefined4 uVar1;
-  
+
   uVar1 = NARC_New(0xc1,0x71);
   *(undefined4 *)(param_1 + 0x48) = uVar1;
   uVar1 = NARC_New(0xbd,0x71);

@@ -52,7 +52,7 @@ void sub_02061720(undefined4 param_1,int param_2,undefined4 param_3,undefined4 p
 {
   int iVar1;
   undefined4 uVar2;
-  
+
   iVar1 = sub_02061F5C(param_1,0x26,0xffffffff,param_4,param_4);
   if (iVar1 == -1) {
     iVar1 = MapObject_GetFacingDirection(param_1);

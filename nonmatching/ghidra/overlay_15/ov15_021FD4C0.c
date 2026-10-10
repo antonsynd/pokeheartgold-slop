@@ -52,7 +52,7 @@ void ov15_021FD4C0(undefined4 param_1,undefined1 param_2,int param_3,uint param_
   int iVar1;
   int iVar2;
   undefined1 *puVar3;
-  
+
   iVar1 = func_0x0201cc08(param_1,param_2);
   puVar3 = (undefined1 *)((param_3 + -1) * 8 + 0x2201340);
   iVar2 = 0;

@@ -51,7 +51,7 @@ void ov70_022450EC(undefined4 param_1,undefined4 param_2,int param_3,undefined4 
 
 {
   undefined4 uVar1;
-  
+
   uVar1 = NewString_ReadMsgData(param_2,*(undefined4 *)(&ov70_0224600C + param_3 * 4));
   ov70_02245084(param_1,uVar1,0,0,0,0x10200,param_4);
   String_Delete(uVar1);

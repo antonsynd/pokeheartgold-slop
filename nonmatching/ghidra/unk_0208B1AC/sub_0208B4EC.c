@@ -49,7 +49,7 @@ void sub_0208B4EC(int param_1)
 
 {
   uint uVar1;
-  
+
   uVar1 = *(uint *)(param_1 + 0x280) & 0xfffffff;
   if (uVar1 == 7) {
     Sprite_SetDrawFlag(*(undefined4 *)(param_1 + 0x454),0);

@@ -54,7 +54,7 @@ void ov81_02241D38(int param_1,undefined4 param_2,undefined4 param_3,undefined4 
   undefined4 uStack_18;
   undefined4 uStack_14;
   undefined4 uStack_10;
-  
+
   uStack_10 = param_4;
   uVar1 = func_0x02019f74(*(undefined4 *)(param_1 + 0x464));
   if (uVar1 < 4) {

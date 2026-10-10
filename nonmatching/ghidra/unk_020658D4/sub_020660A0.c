@@ -49,7 +49,7 @@ undefined4 sub_020660A0(undefined4 param_1,undefined1 *param_2)
 
 {
   int iVar1;
-  
+
   iVar1 = sub_02062428();
   if (iVar1 == 0) {
     return 0;

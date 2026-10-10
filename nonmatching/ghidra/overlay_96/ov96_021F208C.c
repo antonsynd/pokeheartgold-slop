@@ -52,7 +52,7 @@ void ov96_021F208C(int param_1,int param_2,undefined4 param_3,int param_4,int *p
   int iStack_20;
   int iStack_1c;
   undefined4 uStack_18;
-  
+
   uStack_18 = 0;
   iStack_20 = param_1 << 0xc;
   iStack_1c = param_2 << 0xc;

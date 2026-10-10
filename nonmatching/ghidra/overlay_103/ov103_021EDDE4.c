@@ -57,7 +57,7 @@ void ov103_021EDDE4(int param_1)
 
 {
   ushort uVar1;
-  
+
   ov103_021EDC00();
   ov103_021EDC58(param_1);
   ov103_021ED0A0(param_1);

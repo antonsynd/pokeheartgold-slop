@@ -52,7 +52,7 @@ void ov08_02220AAC(int param_1)
   byte *pbVar2;
   int iVar3;
   int iVar4;
-  
+
   iVar4 = 0;
   pbVar2 = (byte *)(param_1 + 0x1b);
   iVar3 = param_1;

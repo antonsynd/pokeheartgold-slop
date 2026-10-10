@@ -53,7 +53,7 @@ undefined4 ov15_021FB784(int param_1)
   byte bVar1;
   undefined1 uVar2;
   int iVar3;
-  
+
   bVar1 = *(byte *)(*(int *)(param_1 + 0x234) + 100);
   *(undefined1 *)(param_1 + 0x67b) = 0;
   if (*(char *)(*(int *)(param_1 + 0x234) + (uint)bVar1 * 0xc + 0xc) == '\x03') {

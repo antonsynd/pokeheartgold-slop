@@ -65,7 +65,7 @@ void sub_02057184(uint param_1)
   uint uVar6;
   int iVar7;
   uint uVar8;
-  
+
   if ((*(int *)(iRam021d41c4 + param_1 * 4 + 4) == 0) && (*(char *)(iRam021d41c4 + 0xee) == '\0')) {
     puVar4 = sub_02034818(param_1);
     if (puVar4 != (undefined *)0x0) {

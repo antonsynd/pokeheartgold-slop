@@ -55,7 +55,7 @@ void ov40_02243F88(int param_1)
   ushort uVar2;
   int iVar3;
   int iVar4;
-  
+
   ManagedSprite_TickFrame(*(undefined **)(param_1 + 0x194));
   ManagedSprite_TickFrame(*(undefined **)(param_1 + 0x1b0));
   ManagedSprite_TickFrame(*(undefined **)(param_1 + 0x1cc));

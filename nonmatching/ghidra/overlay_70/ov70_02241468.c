@@ -51,7 +51,7 @@ undefined4 ov70_02241468(int param_1)
 {
   int iVar1;
   undefined4 uVar2;
-  
+
   uVar2 = 3;
   iVar1 = OverlayManager_Run(*(undefined4 *)(param_1 + 0xb8));
   if (iVar1 != 0) {

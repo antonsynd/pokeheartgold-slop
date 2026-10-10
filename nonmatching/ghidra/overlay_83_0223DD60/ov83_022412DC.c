@@ -55,7 +55,7 @@ bool ov83_022412DC(undefined4 param_1)
   int iVar6;
   int iVar7;
   int iVar8;
-  
+
   iVar1 = GetMonData(param_1,0x3a,0);
   iVar2 = GetMonData(param_1,0x42,0);
   iVar3 = GetMonData(param_1,0x3b,0);

@@ -50,7 +50,7 @@ undefined4 ov00_021E70F4(void)
 {
   int iVar1;
   undefined4 in_r3;
-  
+
   iVar1 = iRam0221a680;
   if (*(char *)(iRam0221a680 + 0x10e0) == '\0') {
     *(undefined1 *)(iRam0221a680 + 0x10e0) = 1;

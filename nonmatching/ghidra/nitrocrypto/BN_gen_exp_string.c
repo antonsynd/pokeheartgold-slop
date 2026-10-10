@@ -60,7 +60,7 @@ int BN_gen_exp_string(char *param_1,int *param_2,uint param_3)
   uint uVar10;
   uint uVar11;
   uint *puVar12;
-  
+
   if (6 < (int)param_3) {
     param_3 = 6;
   }

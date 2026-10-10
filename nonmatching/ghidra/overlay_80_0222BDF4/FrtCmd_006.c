@@ -50,7 +50,7 @@ undefined4 FrtCmd_006(undefined4 param_1)
 {
   undefined2 uVar1;
   undefined2 *puVar2;
-  
+
   puVar2 = (undefined2 *)FrontierScript_ReadVarPtr();
   uVar1 = FrontierScriptContext_ReadHalfWord(param_1);
   *puVar2 = uVar1;

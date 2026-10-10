@@ -68,7 +68,7 @@ ov96_02215184(undefined4 param_1,uint param_2,undefined4 param_3,undefined4 *par
   int iVar7;
   byte abStack_28 [16];
   undefined4 *puStack_18;
-  
+
   if (param_4[0x1e] != 0) {
     return 0;
   }

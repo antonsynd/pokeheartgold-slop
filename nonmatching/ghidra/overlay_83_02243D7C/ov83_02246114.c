@@ -74,7 +74,7 @@ void ov83_02246114(int param_1,int param_2)
   uint uVar6;
   uint uVar7;
   uint uStack_18;
-  
+
   iVar2 = ov83_0224777C(*(undefined4 *)(param_1 + 700),*(undefined1 *)(param_1 + 9),2);
   iVar3 = ov83_02247768(*(undefined1 *)(param_1 + 0x14),*(undefined1 *)(param_1 + 0xd));
   FillWindowPixelBuffer(param_1 + 0x110,0);

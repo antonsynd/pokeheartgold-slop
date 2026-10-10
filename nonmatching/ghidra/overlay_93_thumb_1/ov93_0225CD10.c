@@ -85,7 +85,7 @@ undefined4 ov93_0225CD10(undefined4 param_1)
   int *piVar1;
   int *piVar2;
   int iVar3;
-  
+
   piVar1 = (int *)OverlayManager_GetData();
   *(int *)(*piVar1 + 0x24) = piVar1[0xbf4];
   func_0x02258c38(piVar1[7]);

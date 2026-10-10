@@ -60,7 +60,7 @@ void ov99_021E8C04(int param_1,undefined4 param_2,undefined4 param_3,undefined4 
   undefined4 uStack_18;
   undefined4 uStack_14;
   undefined4 uStack_10;
-  
+
   uStack_28 = 0x11;
   uStack_24 = 3;
   uStack_20 = 3;

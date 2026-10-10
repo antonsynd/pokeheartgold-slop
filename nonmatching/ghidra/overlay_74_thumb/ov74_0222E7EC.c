@@ -49,7 +49,7 @@ undefined4 ov74_0222E7EC(int param_1,undefined4 param_2,undefined4 param_3,undef
 
 {
   int iVar1;
-  
+
   iVar1 = *(int *)(param_1 + *(int *)(param_1 + 0x2bc0) * 4 + 0x2bb4);
   func_0x020e5ad8(param_1 + 0xe0,iVar1,0x358,param_4,param_4);
   func_0x020e5ad8(param_1 + 0x90,iVar1 + 0x104,0x50);

@@ -49,7 +49,7 @@ void ov96_0220A87C(int param_1)
 
 {
   int iVar1;
-  
+
   ManagedSprite_SetAnimateFlag(*(undefined4 *)(param_1 + 0x10),0);
   ManagedSprite_SetAnimateFlag(*(undefined4 *)(param_1 + 0xc),0);
   iVar1 = 0;

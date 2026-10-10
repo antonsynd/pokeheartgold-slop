@@ -53,7 +53,7 @@ void ov80_02236698(undefined4 param_1,undefined4 param_2,undefined4 param_3)
 {
   undefined4 uVar1;
   int iVar2;
-  
+
   func_0x020d4994(param_2,0,0x110);
   uVar1 = sub_0202D928(param_1);
   iVar2 = sub_0202D7B0();

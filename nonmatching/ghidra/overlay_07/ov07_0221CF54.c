@@ -52,7 +52,7 @@ void ov07_0221CF54(undefined4 *param_1)
   int *piVar2;
   int iVar3;
   undefined4 uVar4;
-  
+
   iVar1 = param_1[6];
   piVar2 = (int *)(iVar1 + 4);
   param_1[6] = piVar2;

@@ -88,7 +88,7 @@ uint ov12_02258800(undefined *param_1,uint param_2)
   uint uStack_58;
   int iStack_44;
   uint uStack_18;
-  
+
   puVar2 = BattleSystem_GetBattleContext(param_1);
   uVar12 = param_2 & 0xff;
   uVar3 = BattleSystem_GetBattleType(param_1);

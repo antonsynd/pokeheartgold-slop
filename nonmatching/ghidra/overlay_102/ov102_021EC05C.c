@@ -52,7 +52,7 @@ undefined4 ov102_021EC05C(int param_1)
 {
   int iVar1;
   undefined4 uVar2;
-  
+
   iVar1 = ov102_021EC2EC(param_1 + 0x60);
   if (iVar1 != 0) {
     uVar2 = ov102_021E9050(*(undefined4 *)(param_1 + 4));

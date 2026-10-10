@@ -68,7 +68,7 @@ undefined4 ov96_021EE324(undefined4 param_1)
   int iVar14;
   int iVar15;
   byte bStack_2c;
-  
+
   iVar6 = PokeathlonCourse_GetHeapAllocPtr4();
   iVar7 = PokeathlonCourse_GetDataCopyArea(param_1);
   iVar8 = ov96_021E8A20(iVar7 + 0x28);

@@ -53,7 +53,7 @@ void ov10_0221C384(undefined4 param_1,undefined4 param_2,undefined4 param_3,unde
   int iVar2;
   undefined4 uVar3;
   int iVar4;
-  
+
   ov10_0221EF24(param_2,1,param_3,param_4,param_4);
   iVar2 = ov10_0221EEF0(param_2);
   uVar3 = ov10_0221EEF0(param_2);

@@ -53,7 +53,7 @@ undefined4 ov102_021E8458(void)
 {
   int iVar1;
   undefined4 uVar2;
-  
+
   iVar1 = TouchscreenHitbox_FindRectAtTouchNew(&ov102_021EC5E0);
   uVar2 = 0xffffffff;
   if (iVar1 != -1) {

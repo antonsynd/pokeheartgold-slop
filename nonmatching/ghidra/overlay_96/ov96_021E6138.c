@@ -48,7 +48,7 @@ undefined4 ov96_021E6138(int param_1)
 
 {
   char cVar1;
-  
+
   if (param_1 == 0) {
     return 0;
   }

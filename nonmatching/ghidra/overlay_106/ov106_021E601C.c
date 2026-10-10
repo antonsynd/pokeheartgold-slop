@@ -59,7 +59,7 @@ void ov106_021E601C(undefined4 param_1,undefined4 param_2,undefined4 param_3,und
   undefined4 uStack_20;
   undefined4 uStack_1c;
   undefined4 uStack_14;
-  
+
   puVar4 = auStack_40;
   uStack_14 = param_4;
   GfGfx_EngineATogglePlanes(2,0);

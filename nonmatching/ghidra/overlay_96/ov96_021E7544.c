@@ -57,7 +57,7 @@ undefined4 ov96_021E7544(int param_1)
   undefined4 uVar2;
   undefined4 uVar3;
   int iVar4;
-  
+
   uVar1 = Save_ApricornBox_Get(**(undefined4 **)(param_1 + 0x1f8));
   uVar2 = PokeathlonCourse_GetParticipantCount(param_1);
   uVar3 = sub_0203769C();

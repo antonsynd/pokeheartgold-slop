@@ -50,7 +50,7 @@ undefined4 ov103_021EC988(undefined4 param_1,undefined4 param_2)
 {
   undefined4 uVar1;
   int iVar2;
-  
+
   uVar1 = OverlayManager_GetData();
   iVar2 = ov103_021ED2D4(uVar1,param_2);
   if (iVar2 == 0) {

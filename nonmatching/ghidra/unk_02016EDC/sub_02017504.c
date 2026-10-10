@@ -50,7 +50,7 @@ void sub_02017504(int param_1,undefined4 param_2,undefined4 param_3,undefined4 p
   byte bStack_10;
   byte abStack_f [3];
   undefined4 uStack_c;
-  
+
   uStack_c = param_4;
   sub_020172B4(param_1,abStack_f,&bStack_10);
   *(undefined4 *)(param_1 + (uint)abStack_f[0] * 4 + 0x24) =

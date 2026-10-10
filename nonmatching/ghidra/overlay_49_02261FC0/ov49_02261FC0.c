@@ -53,7 +53,7 @@ ov49_02261FC0(undefined4 param_1,undefined4 param_2,undefined4 *param_3,uint par
   uint uVar2;
   short sStack_18;
   short sStack_16;
-  
+
   uVar2 = 0;
   if (param_4 != 0) {
     do {

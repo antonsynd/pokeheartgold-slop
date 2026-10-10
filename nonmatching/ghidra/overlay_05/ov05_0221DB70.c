@@ -50,7 +50,7 @@ int ov05_0221DB70(undefined4 param_1,undefined4 param_2)
 
 {
   uint uVar1;
-  
+
   uVar1 = (*(code *)&UNK_020b59cc)(param_1,param_2,1);
   sub_02015394();
   if (uVar1 == 0) {

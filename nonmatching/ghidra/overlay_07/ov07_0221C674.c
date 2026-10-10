@@ -49,7 +49,7 @@ bool ov07_0221C674(int param_1)
 
 {
   char cVar1;
-  
+
   cVar1 = *(char *)(param_1 + 3);
   *(char *)(param_1 + 3) = cVar1 + -1;
   if (cVar1 == '\0') {

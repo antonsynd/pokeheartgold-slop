@@ -67,7 +67,7 @@ MapLoadManager_New(undefined *param_1,undefined *param_2,undefined *param_3,unde
   int unaff_r6;
   __asm__ volatile("movs %0, r6" : "=l"(unaff_r6) : : "cc");
 
-  
+
   puVar2 = (undefined4 *)Heap_Alloc(4,0x110);
   MI_CpuFill8((undefined *)puVar2,0,0x110);
   if (param_6 == 0) {

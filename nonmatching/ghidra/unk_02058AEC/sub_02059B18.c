@@ -48,7 +48,7 @@ undefined4 sub_02059B18(uint param_1,undefined4 param_2)
 
 {
   int iVar1;
-  
+
   iVar1 = sub_0205969C(param_2);
   if (*(ushort *)(iVar1 + 0x86) != param_1) {
     return *(undefined4 *)(iVar1 + 0x48);

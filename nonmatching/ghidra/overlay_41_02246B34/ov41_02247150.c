@@ -71,7 +71,7 @@ undefined4 ov41_02247150(undefined4 param_1)
   int iVar1;
   int iVar2;
   undefined4 *puVar3;
-  
+
   iVar1 = OverlayManager_GetData();
   iVar2 = OverlayManager_GetArgs(param_1);
   if (*(int *)(iVar1 + 0x6c0) == 1) {

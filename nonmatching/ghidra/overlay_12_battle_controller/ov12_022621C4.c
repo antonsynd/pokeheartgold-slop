@@ -61,7 +61,7 @@ void ov12_022621C4(undefined4 param_1,int param_2)
   ushort *puVar4;
   ushort *puVar5;
   int iVar6;
-  
+
   if (param_2 == 1) {
     iVar2 = BattleSystem_GetRecvBufferPtr();
     puVar3 = (ushort *)ov12_0223A978(param_1);

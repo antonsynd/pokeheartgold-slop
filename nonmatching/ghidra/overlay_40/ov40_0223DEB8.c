@@ -53,7 +53,7 @@ void ov40_0223DEB8(int param_1)
 {
   undefined4 uVar1;
   int iVar2;
-  
+
   iVar2 = *(int *)(param_1 + 0x860);
   if (*(char *)(iVar2 + 0x4c3) == -1) {
     uVar1 = 0x32;
