@@ -1829,6 +1829,12 @@
       "category": "tooling",
       "title": "A function with no Platinum twin (twin=-) often still has one in the SAME Platinum file under a descriptive name the pairing missed",
       "body": "In asm/frontier_map.s, FrontierMap_SetVramBank and ov80_022393E8 had twin=- but their siblings were paired to src/overlay104/frontier_graphics.c. Reading that file found InitBackgrounds (SetVramBank: local declaration order banks/modes/templates/subTemplate fixed the stack layout, and G2_SetBG0Priority(0) fixed a register swap that `reg_G2_BG0CNT &= ~3` caused) and FreeSpriteSystem. Pairing keys on call sequences, so functions whose callees were renamed in Platinum (GXLayers_SetBanks, Bg_InitFromTemplate) drop out. When a twin=- function sits among paired siblings, grep the sibling twin file for its callees before writing C from the draft alone."
+    },
+    {
+      "id": "matching-twin-file-gives-near-complete-first-draft",
+      "category": "tooling",
+      "title": "When a file twins a MATCHING pret/pokeplatinum source (e.g. wireless_manager.c for unk_02032844), a drafter given twins.py --show plus the sweep risks produces a near-matching first draft",
+      "body": "unk_02032844 (NitroSDK wh.c wireless helper, 75 functions): 74 functions twin src/wireless_manager.c in pokeplatinum. The Sonnet drafter, given the twins.py --show dump (twin + Ghidra drafts) and knowledge.json risks, produced C that was 72/75 byte-identical on the first successful compile; the only fix before that was adding local prototypes for the exports (MWCC -W error requires a prototype before a non-static definition when the public header is not included). Compare frontier_map (twin overlay104/frontier_graphics.c, many low-confidence twins): 29/40 on first compile. Prefer files whose twin coverage is mostly high and in one Platinum file when picking targets."
     }
   ]
 }

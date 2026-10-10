@@ -978,6 +978,14 @@
       "attempts": 12,
       "result": "matched",
       "note": "sonnet-drafted from verified drafts + twins (pilot); 1 NONMATCHING asm fallback (ov80_022393E8)"
+    },
+    {
+      "file": "asm/unk_02032844.s",
+      "lines": 2526,
+      "functions": 75,
+      "attempts": 10,
+      "result": "matched",
+      "note": "sonnet-drafted from verified drafts + twins (pilot); 72/75 on first compile; 3 NONMATCHING asm fallbacks (sub_02032C84, sub_02032D4C, sub_02033528)"
     }
   ],
   "failed": [
@@ -1387,7 +1395,7 @@
   "in_progress": null,
   "stats": {
     "total_attempts": 283,
-    "total_matched": 90,
+    "total_matched": 91,
     "total_failed": 31
   },
   "matched": [
