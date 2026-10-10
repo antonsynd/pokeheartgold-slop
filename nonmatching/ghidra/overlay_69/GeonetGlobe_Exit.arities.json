@@ -1,0 +1,1 @@
+{"OverlayManager_GetData": [1, 6], "GfGfx_EngineATogglePlanes": [2, 0], "GF3dRender_DeleteSimpleManager": [0, 0], "Camera_Delete": [1, 0], "Heap_Destroy": [1, 0], "MessageFormat_Delete": [1, 0], "Heap_Free": [1, 0], "OverlayManager_FreeData": [1, 0], "Main_SetVBlankIntrCB": [2, 0], "GfGfx_EngineBTogglePlanes": [2, 0]}

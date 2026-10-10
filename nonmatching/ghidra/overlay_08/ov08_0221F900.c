@@ -1,0 +1,106 @@
+typedef unsigned char undefined;
+typedef unsigned char undefined1;
+typedef unsigned short undefined2;
+typedef unsigned int undefined3;
+typedef unsigned int undefined4;
+typedef unsigned long long undefined8;
+typedef unsigned char byte;
+typedef signed char sbyte;
+typedef unsigned short ushort;
+typedef unsigned short word;
+typedef unsigned int uint;
+typedef unsigned int dword;
+typedef unsigned int ulong;
+typedef unsigned long long ulonglong;
+typedef unsigned long long qword;
+typedef long long longlong;
+typedef unsigned char bool;
+typedef void code(void);
+typedef void *pointer;
+typedef unsigned short wchar16;
+#define true 1
+#define false 0
+#define CONCAT11(a, b) ((unsigned short)(((unsigned)(a) << 8) | (unsigned char)(b)))
+#define CONCAT12(a, b) (((unsigned)(unsigned char)(a) << 16) | (unsigned short)(b))
+#define CONCAT13(a, b) (((unsigned)(unsigned char)(a) << 24) | ((unsigned)(b) & 0xffffff))
+#define CONCAT21(a, b) (((unsigned)(unsigned short)(a) << 8) | (unsigned char)(b))
+#define CONCAT22(a, b) (((unsigned)(unsigned short)(a) << 16) | (unsigned short)(b))
+#define CONCAT31(a, b) (((unsigned)(a) << 8) | (unsigned char)(b))
+#define CONCAT44(a, b) (((unsigned long long)(unsigned)(a) << 32) | (unsigned)(b))
+#define SUB41(x, n) ((unsigned char)((unsigned)(x) >> ((n) * 8)))
+#define SUB42(x, n) ((unsigned short)((unsigned)(x) >> ((n) * 8)))
+#define SUB81(x, n) ((unsigned char)((unsigned long long)(x) >> ((n) * 8)))
+#define SUB84(x, n) ((unsigned)((unsigned long long)(x) >> ((n) * 8)))
+#define ZEXT14(x) ((unsigned)(unsigned char)(x))
+#define ZEXT24(x) ((unsigned)(unsigned short)(x))
+#define ZEXT48(x) ((unsigned long long)(unsigned)(x))
+#define SEXT14(x) ((int)(signed char)(x))
+#define SEXT24(x) ((int)(short)(x))
+#define SEXT48(x) ((long long)(int)(x))
+#define CARRY4(a, b) ((unsigned)(a) + (unsigned)(b) < (unsigned)(a))
+#define SCARRY4(a, b) ((((int)(a) + (int)(b)) < (int)(a)) != ((int)(b) < 0))
+#define SBORROW4(a, b) ((((int)(a) - (int)(b)) > (int)(a)) != ((int)(b) < 0))
+#define POPCOUNT(x) __builtin_popcount(x)
+#define LZCOUNT(x) ((x) ? __builtin_clz(x) : 32)
+undefined4 ov08_0221E6D8(undefined4, undefined4);
+undefined4 ov08_0221E3A4(undefined4, undefined4, undefined4);
+undefined4 ov08_0221E9D4(undefined4, undefined4);
+undefined4 ov08_0221EAD4(undefined4, undefined4);
+undefined4 ov08_0221E408(undefined4, undefined4);
+undefined4 FillWindowPixelBuffer(undefined4, undefined4);
+undefined4 ov08_0221E7D4(undefined4, undefined4);
+undefined4 ov08_0221E1A8(undefined4, undefined4, undefined4);
+undefined4 ov08_0221DDCC(undefined4, undefined4, undefined4, undefined4, undefined4, undefined4);
+undefined4 ov08_0221EC6C(undefined4, undefined4);
+undefined4 ov08_0221E5DC(undefined4, undefined4);
+undefined4 ov08_0221E8D4(undefined4, undefined4);
+undefined4 ov08_0221E120(undefined4, undefined4, undefined4);
+undefined4 ov08_0221E048(undefined4, undefined4, undefined4, undefined4, undefined4);
+
+void ov08_0221F900(int *param_1)
+
+{
+  byte bVar1;
+  int iVar2;
+  
+  bVar1 = *(byte *)((int)param_1 + 0x2075);
+  iVar2 = (uint)bVar1 * 0x16;
+  FillWindowPixelBuffer(param_1[0x81c] + 0x130,0);
+  FillWindowPixelBuffer(param_1[0x81c] + 0x140,0);
+  FillWindowPixelBuffer(param_1[0x81c] + 0xe0,0);
+  FillWindowPixelBuffer(param_1[0x81c] + 0xf0,0);
+  FillWindowPixelBuffer(param_1[0x81c] + 0x100,0);
+  FillWindowPixelBuffer(param_1[0x81c] + 0x110,0);
+  FillWindowPixelBuffer(param_1[0x81c] + 0x120,0);
+  FillWindowPixelBuffer(param_1[0x81c] + 0xd0,0);
+  FillWindowPixelBuffer(param_1[0x81c] + 0x150,0);
+  FillWindowPixelBuffer(param_1[0x81c] + (uint)bVar1 * 0x160,0);
+  FillWindowPixelBuffer(param_1[0x81c] + (iVar2 + 10) * 0x10,0);
+  FillWindowPixelBuffer(param_1[0x81c] + (iVar2 + 0xb) * 0x10,0);
+  FillWindowPixelBuffer(param_1[0x81c] + (iVar2 + 0xc) * 0x10,0);
+  FillWindowPixelBuffer(param_1[0x81c] + (iVar2 + 5) * 0x10,0);
+  FillWindowPixelBuffer(param_1[0x81c] + (iVar2 + 6) * 0x10,0);
+  FillWindowPixelBuffer(param_1[0x81c] + (iVar2 + 7) * 0x10,0);
+  FillWindowPixelBuffer(param_1[0x81c] + (iVar2 + 8) * 0x10,0);
+  FillWindowPixelBuffer(param_1[0x81c] + (iVar2 + 9) * 0x10,0);
+  FillWindowPixelBuffer(param_1[0x81c] + (iVar2 + 4) * 0x10,0);
+  FillWindowPixelBuffer(param_1[0x81c] + (iVar2 + 1) * 0x10,0);
+  FillWindowPixelBuffer(param_1[0x81c] + (iVar2 + 2) * 0x10,0);
+  FillWindowPixelBuffer(param_1[0x81c] + (iVar2 + 3) * 0x10,0);
+  ov08_0221DDCC(param_1,iVar2,0,*(undefined1 *)(*param_1 + 0x11),0,0);
+  ov08_0221EAD4(param_1,*(undefined1 *)(*param_1 + 0x11));
+  ov08_0221E048(param_1,iVar2 + 10,*(undefined1 *)(*param_1 + 0x11),0,0);
+  ov08_0221E408(param_1,*(undefined1 *)(*param_1 + 0x11));
+  ov08_0221E5DC(param_1,*(undefined1 *)(*param_1 + 0x11));
+  ov08_0221E6D8(param_1,*(undefined1 *)(*param_1 + 0x11));
+  ov08_0221E7D4(param_1,*(undefined1 *)(*param_1 + 0x11));
+  ov08_0221E8D4(param_1,*(undefined1 *)(*param_1 + 0x11));
+  ov08_0221E9D4(param_1,*(undefined1 *)(*param_1 + 0x11));
+  ov08_0221E120(param_1,iVar2 + 1,*(undefined1 *)(*param_1 + 0x11));
+  ov08_0221E1A8(param_1,iVar2 + 3,*(undefined1 *)(*param_1 + 0x11));
+  ov08_0221EC6C(param_1,*(undefined1 *)(*param_1 + 0x11));
+  ov08_0221E3A4(param_1,0x15,0x13);
+  *(byte *)((int)param_1 + 0x2075) = *(byte *)((int)param_1 + 0x2075) ^ 1;
+  return;
+}
+

@@ -1,0 +1,1 @@
+{"G2dRenderer_SetSubSurfaceCoords": [3, 0], "SpriteSystem_InitSprites": [3, 5], "SpriteSystem_Alloc": [1, 6], "SpriteSystem_Init": [4, 5], "SpriteManager_New": [1, 6], "SpriteSystem_InitManagerWithCapacities": [3, 5], "SpriteSystem_GetRenderer": [1, 6]}

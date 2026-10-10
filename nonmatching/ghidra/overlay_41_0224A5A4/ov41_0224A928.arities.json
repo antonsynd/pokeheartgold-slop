@@ -1,0 +1,1 @@
+{"func_0x0201d494": [4, 0, 33674388], "NewString_ReadMsgData": [2, 6], "FontID_String_GetCenterAlignmentX": [4, 0], "AddTextPrinterParameterizedWithColor": [4, 1], "String_Delete": [1, 0], "DestroyMsgData": [1, 0], "GF_AssertFail": [0, 0], "AllocWindows": [2, 6], "NewMsgDataFromNarc": [4, 6], "InitWindow": [1, 0]}

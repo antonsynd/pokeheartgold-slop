@@ -1,0 +1,1 @@
+{"bn_fix_top": [1, 0], "BN_usub": [3, 0], "BN_set_word": [2, 0], "BN_init": [1, 0], "BN_sub": [3, 0], "BN_ucmp": [2, 0], "BN_add": [3, 0], "BN_num_bits": [1, 0], "BN_rshift": [3, 0], "BN_copy": [2, 0], "BN_lshift": [3, 0], "bn_expand2": [1, 0], "bn_mul_words": [4, 0], "bn_div_words": [3, 0]}

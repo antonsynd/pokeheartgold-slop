@@ -1,0 +1,1 @@
+{"NewString_ReadMsgData": [2, 6], "GetSpeciesName": [2, 6], "BufferString": [4, 0], "String_Delete": [1, 0], "AddTextPrinterParameterizedWithColor": [4, 1], "ReadMsgData_ExpandPlaceholders": [4, 6], "FillWindowPixelBuffer": [2, 0], "CopyU16ArrayToString": [2, 0], "CopyWindowToVram": [1, 0]}

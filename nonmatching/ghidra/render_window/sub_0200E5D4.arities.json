@@ -1,0 +1,1 @@
+{"GetWindowX": [1, 1], "ClearWindowTilemapAndCopyToVram": [1, 0], "GetWindowY": [1, 1], "FillBgTilemapRect": [4, 0], "GetWindowBgId": [1, 1], "GetWindowWidth": [1, 1], "GetWindowHeight": [1, 1]}

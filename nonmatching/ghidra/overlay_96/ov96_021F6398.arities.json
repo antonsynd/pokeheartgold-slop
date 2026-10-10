@@ -1,0 +1,1 @@
+{"Camera_SetStaticPtr": [1, 0], "Camera_SetPerspectiveClippingPlane": [3, 0], "Camera_SetLookAtCamUp": [2, 0], "Camera_Init_FromTargetDistanceAndAngle": [4, 0], "Camera_OffsetLookAtPosAndTarget": [2, 0]}

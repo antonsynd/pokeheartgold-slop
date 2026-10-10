@@ -1,0 +1,1 @@
+{"OverlayManager_GetData": [1, 6], "ClearWindowTilemapAndCopyToVram": [1, 0], "OverlayManager_FreeData": [1, 0], "func_0x02000ef4": [2, 0, 33558260], "FreeBgTilemapBuffer": [2, 0], "Heap_Destroy": [1, 0], "RemoveWindow": [1, 0], "Heap_Free": [1, 0]}

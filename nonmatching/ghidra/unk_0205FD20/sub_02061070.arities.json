@@ -1,0 +1,1 @@
+{"MapObject_SetPreviousY": [2, 0], "MapObject_SetCurrentY": [2, 0], "MapObject_ClearFlagsBits": [2, 0], "MapObject_CopyPositionVector": [2, 0], "sub_02061248": [3, 0], "MapObject_SetFlagsBits": [2, 0], "MapObject_GetYCoord": [1, 0], "MapObject_CheckIgnoreHeights": [1, 5], "MapObject_CheckFlag29": [1, 5], "MapObject_SetPositionVector": [2, 0], "MapObject_GetFieldSystem": [1, 6]}

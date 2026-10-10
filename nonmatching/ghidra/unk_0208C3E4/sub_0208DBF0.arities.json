@@ -1,0 +1,1 @@
+{"ScheduleWindowCopyToVram": [1, 0], "FillWindowPixelBuffer": [2, 0], "sub_0208C778": [4, 0], "ClearWindowTilemapAndScheduleTransfer": [1, 0], "ReadMsgDataIntoString": [3, 0]}

@@ -1,0 +1,1 @@
+{"NewString_ReadMsgData": [2, 6], "AddWindowParameterized": [4, 0], "InitWindow": [1, 0], "DestroyMsgData": [1, 0], "DrawFrameAndWindow1": [4, 0], "AddTextPrinterParameterized": [4, 1], "CopyWindowToVram": [1, 0], "FillWindowPixelBuffer": [2, 0], "String_Delete": [1, 0], "NewMsgDataFromNarc": [4, 6]}

@@ -1,0 +1,1 @@
+{"CalculateHpBarPixelsLength": [3, 1], "ScheduleBgTilemapBufferTransfer": [2, 0], "GetWindowY": [1, 1], "GetWindowBgId": [1, 1], "CalculateHpBarColor": [3, 1], "GetWindowBgConfig": [1, 6], "GetWindowX": [1, 1], "FillBgTilemapRect": [4, 0], "GF_AssertFail": [0, 0]}

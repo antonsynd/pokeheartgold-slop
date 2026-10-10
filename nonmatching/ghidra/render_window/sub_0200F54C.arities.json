@@ -1,0 +1,1 @@
+{"DestroySysTaskAndEnvironment": [1, 0], "sub_0200F9DC": [1, 0], "func_0x021e86f4": [1, 0, 35555060], "Sprite_UpdateAnim": [2, 0], "Sprite_DeleteAndFreeResources": [1, 0], "Sprite_SetAnimCtrlSeq": [2, 0], "Sprite_GetAnimationFrame": [1, 3], "SpriteList_RenderAndAnimateSprites": [1, 0]}

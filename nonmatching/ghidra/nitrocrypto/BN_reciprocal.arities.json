@@ -1,0 +1,1 @@
+{"BN_set_bit": [2, 0], "BN_set_word": [2, 0], "BN_init": [1, 0], "BN_div": [4, 0], "BN_free": [1, 0]}

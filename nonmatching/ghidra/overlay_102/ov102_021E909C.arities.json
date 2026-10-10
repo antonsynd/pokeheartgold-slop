@@ -1,0 +1,1 @@
+{"ov102_021E93D4": [3, 0], "HBlankInterruptDisable": [0, 0], "FontID_Alloc": [2, 0], "ov102_021E8F68": [1, 0], "ov102_021E9198": [1, 0], "BgConfig_Alloc": [1, 6], "Main_SetVBlankIntrCB": [2, 0], "SysTask_CreateOnMainQueue": [3, 6], "func_0x0200b150": [1, 0, 33599824], "Heap_Alloc": [2, 6], "G2dRenderer_Init": [3, 6], "func_0x020b78d4": [0, 0, 34306260]}

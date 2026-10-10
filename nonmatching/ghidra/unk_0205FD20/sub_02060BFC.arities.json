@@ -1,0 +1,1 @@
+{"MapObjectManager_GetObjectCount": [1, 0], "MapObject_GetXCoord": [1, 0], "MapObject_GetManager": [1, 6], "MapObject_GetFlagsBitsMask": [2, 0], "MapObject_GetPreviousZCoord": [1, 0], "MapObject_GetPreviousXCoord": [1, 0], "MapObject_GetZCoord": [1, 0], "MapObjectArray_NextObject": [1, 0], "MapObjectManager_GetObjects2": [1, 6], "MapObject_GetYCoord": [1, 0]}

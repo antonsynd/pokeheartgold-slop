@@ -1,0 +1,1 @@
+{"CopyWindowToVram": [1, 0], "MessageFormat_Delete": [1, 0], "BufferIntegerAsString": [4, 0], "NewMsgDataFromNarc": [4, 6], "DestroyMsgData": [1, 0], "MessageFormat_New": [1, 6], "FillWindowPixelBuffer": [2, 0], "AddTextPrinterParameterizedWithColor": [4, 1], "ReadMsgData_ExpandPlaceholders": [4, 6], "String_Delete": [1, 0]}

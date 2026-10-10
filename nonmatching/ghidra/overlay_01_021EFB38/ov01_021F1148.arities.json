@@ -1,0 +1,1 @@
+{"func_0x020caf70": [1, 0, 34385776], "BgClearTilemapBufferAndCommit": [2, 0], "GfGfx_EngineATogglePlanes": [2, 0], "func_0x0201bb68": [2, 0, 33667944], "BG_ClearCharDataRange": [4, 0], "func_0x020cf0ac": [4, 0, 34402476], "GfGfx_SetBanks": [1, 0], "InitBgFromTemplate": [4, 0], "Thunk_ov01_021E6138": [1, 0], "SetBothScreensModesAndDisable": [1, 0]}

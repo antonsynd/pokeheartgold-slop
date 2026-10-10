@@ -1,0 +1,1 @@
+{"GfGfxLoader_GetCharData": [4, 6], "Heap_Alloc": [2, 6], "sub_0200EA24": [1, 0], "GetWindowBgId": [1, 1], "Heap_Free": [1, 0], "func_0x020e5ad8": [3, 0, 34495192], "BG_LoadCharTilesData": [4, 0], "BgConfig_GetHeapId": [1, 0], "BgGetCharPtr": [1, 6]}

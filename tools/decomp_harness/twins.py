@@ -113,23 +113,89 @@ def platinum_root(arg):
     return root
 
 
+def strip_code(text):
+    """C text with comments and string/char literals blanked; line breaks and line lengths are kept."""
+    out, i, n = [], 0, len(text)
+    while i < n:
+        if text.startswith("//", i):
+            j = text.find("\n", i)
+            j = n if j < 0 else j
+        elif text.startswith("/*", i):
+            j = text.find("*/", i + 2)
+            j = n if j < 0 else j + 2
+        elif text[i] in "\"'":
+            j = i + 1
+            while j < n and text[j] not in (text[i], "\n"):
+                j += 2 if text[j] == "\\" else 1
+            j = min(j + 1, n)
+        else:
+            out.append(text[i])
+            i += 1
+            continue
+        out.append(re.sub(r"[^\n]", " ", text[i:j]))
+        i = j
+    return "".join(out)
+
+
+def counted_lines(code_lines):
+    """Whether each line's braces count: not a preprocessor line, and not in an #else/#elif branch,
+    so that branches which each open a brace are counted once."""
+    counted, skipping, continued = [], [], False
+    for line in code_lines:
+        directive = re.match(r"\s*#\s*(\w+)", line)
+        if continued or directive:
+            if directive and not continued:
+                word = directive.group(1)
+                if word in ("if", "ifdef", "ifndef"):
+                    skipping.append(False)
+                elif word.startswith(("else", "elif")) and skipping:
+                    skipping[-1] = True
+                elif word == "endif" and skipping:
+                    skipping.pop()
+            continued = line.rstrip().endswith("\\")
+            counted.append(False)
+            continue
+        counted.append(not any(skipping))
+    return counted
+
+
 def platinum_source(root, rel_file, func):
-    """Extract one function definition from a Platinum C file, or None."""
+    """Extract one function definition from a Platinum C file, or None.
+
+    Braces are counted with comments and literals removed and only in the first branch of #if/#else,
+    and a match counts only where the name is declared (nothing but specifiers before it) and its
+    parameter list is followed by a body."""
     path = root / rel_file
     if not path.exists():
         return None
     lines = path.read_text(errors="replace").splitlines()
-    head = re.compile(r"^[A-Za-z_].*\b" + re.escape(func) + r"\s*\(")
-    for i, line in enumerate(lines):
-        if not head.match(line) or line.rstrip().endswith(";"):
+    code = strip_code("\n".join(lines)).splitlines()
+    counted = counted_lines(code)
+    head = re.compile(r"^[A-Za-z_][^=(),;]*?\b" + re.escape(func) + r"\s*\(")
+    for i, line in enumerate(code):
+        match = head.match(line)
+        if not counted[i] or not match:
             continue
-        depth, seen_open = 0, False
-        for j in range(i, len(lines)):
-            depth += lines[j].count("{") - lines[j].count("}")
-            seen_open = seen_open or "{" in lines[j]
-            if lines[j].rstrip().endswith(";") and not seen_open:
-                break  # multi-line prototype, not a definition
-            if seen_open and depth == 0:
+        # Walk the parameter list to its close, then to the first character after it.
+        depth, j, at, after = 1, i, match.end(), None
+        while j < len(code) and after is None:
+            text = code[j] if counted[j] else ""
+            for k in range(at, len(text)):
+                if depth:
+                    depth += {"(": 1, ")": -1}.get(text[k], 0)
+                elif not text[k].isspace():
+                    after = (j, k, text[k])
+                    break
+            j, at = (j + 1, 0) if after is None else (j, at)
+        if after is None or after[2] != "{":
+            continue  # a prototype, a call or a macro invocation, not a definition
+        depth = 0
+        for j in range(after[0], len(code)):
+            if not counted[j]:
+                continue
+            text = code[j][after[1]:] if j == after[0] else code[j]
+            depth += text.count("{") - text.count("}")
+            if depth == 0:
                 return "\n".join(lines[i:j + 1])
     return None
 
@@ -233,7 +299,7 @@ def matched_in_src(asm_path, funcs):
 
 def cmd_prune(args, twins, drafts):
     """Drop drafts for functions of a just-matched asm file that are now real C
-    in src/: their VERIFIED.tsv rows, and any nonmatching/<file>.c (+ .notes.md)
+    in src/: their VERIFIED.tsv rows, and any nonmatching/<file>.c (+ .notes.md, .arities.json)
     left with no rows. Functions kept as NONMATCHING asm fallbacks keep theirs."""
     all_funcs = set(asm_functions(args.path))
     funcs = matched_in_src(args.path, all_funcs)
@@ -259,7 +325,7 @@ def cmd_prune(args, twins, drafts):
     print(f"{args.path}: dropped {len(removed)} VERIFIED.tsv rows")
     still_used = {r["file"] for r in keep}
     for c_file in sorted({r["file"] for r in removed} - still_used):
-        for name in (c_file, c_file[:-len(".c")] + ".notes.md"):
+        for name in (c_file, c_file[:-len(".c")] + ".notes.md", c_file[:-len(".c")] + ".arities.json"):
             if (NONMATCHING / name).exists():
                 (NONMATCHING / name).unlink()
                 print(f"  deleted nonmatching/{name}")

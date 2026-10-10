@@ -1,0 +1,1 @@
+{"ReadMsgDataIntoString": [3, 0], "func_0x02237920": [1, 0, 35879200], "AddTextPrinterParameterizedWithColor": [4, 1], "String_New": [2, 6], "String_Delete": [1, 0], "CopyWindowToVram": [1, 0], "DestroyMsgData": [1, 0], "NewMsgDataFromNarc": [4, 6], "FillWindowPixelBuffer": [2, 0], "String_SetEmpty": [1, 0]}

@@ -1,0 +1,1 @@
+{"PaletteData_Init": [1, 6], "GfGfx_DisableEngineBPlanes": [0, 0], "GfGfx_DisableEngineAPlanes": [0, 0], "BgConfig_Alloc": [1, 6], "PaletteData_AllocBuffers": [4, 0], "ov05_0221BB00": [0, 0], "func_0x0201c2d8": [2, 0, 33669848], "Main_SetVBlankIntrCB": [2, 0], "HBlankInterruptDisable": [0, 0]}

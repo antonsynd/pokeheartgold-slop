@@ -1,0 +1,1 @@
+{"func_0x0200cf6c": [1, 0, 33607532], "SpriteManager_New": [1, 6], "SpriteSystem_InitManagerWithCapacities": [3, 5], "G2dRenderer_SetSubSurfaceCoords": [3, 0], "SpriteSystem_InitSprites": [3, 5], "SpriteSystem_Alloc": [1, 6], "SpriteSystem_Init": [4, 5], "GF_AssertFail": [0, 0]}
