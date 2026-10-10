@@ -22,6 +22,14 @@ disagree with it.
 model in the loop: Ghidra decompiled the function, a script made its C compile on its own (Ghidra's
 types, prototypes for what it calls, and a link name for each address it uses), and the file was kept
 only if it passed the check above, on 500 random inputs rather than 2,000. The `.arities.json` beside a file tells the check how many
-arguments each callee takes. This C reads as Ghidra writes it, with raw offsets and casts.
+arguments each callee takes. This C reads as Ghidra writes it, with raw offsets and casts. Ghidra was
+given the prototypes HeartGold's own C declares, so calls pass narrow arguments as the game's compiler
+did; a few functions read a register on entry (`unaff_r6`, `in_r2`) with one line of inline asm,
+because the asm uses it without setting it.
+
+`written/` holds one file per function, in a folder per asm file, for functions Ghidra's C got wrong.
+A model wrote each one, starting from the function's Platinum twin, Ghidra's draft or the asm, and each
+passed the check on 2,000 random inputs. Where the asm reads a register or stack slot it never set,
+the C reads that register on entry rather than guessing a value.
 
 Many functions started from their twins in pret/pokeplatinum (see issue #1).

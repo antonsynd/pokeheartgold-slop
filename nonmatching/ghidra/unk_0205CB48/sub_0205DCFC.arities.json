@@ -1,0 +1,1 @@
+{"GetDeltaYByFacingDirection": [1, 0], "MapObject_GetXCoord": [1, 0], "MapObject_GetZCoord": [1, 0], "sub_02060E54": [2, 5], "sub_02060EBC": [2, 5], "MetatileBehavior_IsVeryTallGrass": [1, 5], "GetMetatileBehavior": [3, 1], "MapObject_GetFieldSystem": [1, 6], "GetDeltaXByFacingDirection": [1, 0], "PlayerAvatar_GetState": [1, 0], "MetatileBehavior_IsMud": [1, 5]}

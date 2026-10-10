@@ -1,0 +1,1 @@
+{"DC_FlushRange": [2, 0], "AllocAndReadWholeNarcMemberByIdPair": [3, 6], "GF3dRender_AllocAndLoadTexResources": [1, 5], "NNS_G3dGetTex": [1, 6], "GF_AssertFail": [0, 0], "Heap_Realloc": [2, 0], "MI_CpuCopy8": [3, 0], "Heap_Alloc": [2, 6]}

@@ -1,0 +1,1 @@
+{"PlayerProfile_GetVersion": [1, 1], "MapObject_SetID": [2, 0], "sub_02034818": [1, 6], "PlayerProfile_GetTrainerGender": [1, 0], "PlayerAvatar_GetMapObject": [1, 6], "MapObjectManager_GetFirstActiveObjectByID": [2, 6], "sub_0203769C": [0, 3], "GF_AssertFail": [0, 0], "MapObject_Remove": [1, 0], "PlayerAvatar_CreateWithParams": [4, 6]}

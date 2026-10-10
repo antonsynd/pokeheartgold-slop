@@ -1,0 +1,1 @@
+{"CARD_SpiWaitInit": [0, 0], "CARD_SetSpiWriteWaitCycles": [1, 0], "CARD_SetSpiReadWaitCycles": [1, 0], "CARD_SpiWaitReadRange": [1, 0], "ov112_021E594C": [0, 0], "OS_GetTick": [0, 0]}
