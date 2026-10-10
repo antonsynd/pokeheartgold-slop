@@ -41,8 +41,8 @@ Decompile one assembly file from `asm/` into byte-matching C code.
      `high` twins (callee sequence matched) are usually right; `low` twins (link-order guess)
      are often shifted — confirm the callees against the asm first. Either way, rename to HG
      names/types, then match with mwcc. Never apply a notes header fix to a shared header
-     directly (IPA rule) — use the split-header pattern. Functions with no draft are listed
-     with the reason in `nonmatching/REMAINING.tsv`
+     directly (IPA rule) — use the split-header pattern. Every function has a draft; trust
+     `PASS-BOUNDED` and `PASS-RESTRICTED` drafts less (see `nonmatching/README.md`)
 
 ### Workflow
 

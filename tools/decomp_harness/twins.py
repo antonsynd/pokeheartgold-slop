@@ -47,6 +47,7 @@ import os
 import re
 import subprocess
 import sys
+from collections import Counter
 from pathlib import Path
 
 from asmscan import FUNC_START_RE, parse_lsf
@@ -348,8 +349,9 @@ def cmd_stats(args, twins, drafts):
     counts = {"high": 0, "low": 0}
     for t in twins.values():
         counts[tier(t["found_by"])] += 1
+    verdicts = Counter(d["verdict"] for d in drafts.values())
     print(f"twins: {len(twins)} ({counts['high']} high, {counts['low']} low); drafts: {len(drafts)}"
-          f" ({sum(1 for d in drafts.values() if d['verdict'] == 'PASS')} PASS)")
+          f" ({', '.join(f'{n} {v}' for v, n in sorted(verdicts.items()))})")
     rows = []
     for path in pending_asm_files():
         funcs = asm_functions(path)
