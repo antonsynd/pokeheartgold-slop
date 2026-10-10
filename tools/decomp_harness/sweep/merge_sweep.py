@@ -10,6 +10,13 @@ of every /decomp run:
   structs:  hypothesized shared struct layouts, merged by name
   files:    per-file risk notes and analysis timestamps
 
+Platinum twins (platinum_twins.tsv, see twins.py) are folded in on every
+merge, for functions still pending in asm/ only:
+symbols[<hg fn>]["platinum_twin"] = {function, file, found_by, confidence},
+and platinum_twin_files[<asm>] = {high, low} counts. They are kept out of
+`files` so a files[] entry still means "this file was swept". Skipped with a
+warning if the TSV is missing.
+
 Signature conflicts between sweep files are NOT resolved — all guesses are
 kept under signature_sources so the decompiler can weigh the evidence.
 
@@ -17,12 +24,16 @@ Usage:  python3 tools/decomp_harness/sweep/merge_sweep.py
 """
 
 import json
+import sys
 from datetime import datetime, timezone
 from pathlib import Path
 
 SWEEP = Path(__file__).resolve().parent
 OUT = SWEEP / "out"
 KNOWLEDGE = SWEEP.parent / "knowledge.json"
+
+sys.path.insert(0, str(SWEEP.parent))
+import twins as twins_db  # noqa: E402
 
 
 def conf_rank(c):
@@ -118,6 +129,32 @@ def main():
     for fname, oracle in prev_oracle.items():
         files.setdefault(fname, {})["oracle"] = oracle
 
+    n_swept = len(files)
+
+    # Platinum twins: per-symbol pair + per-file counts, pending asm files only
+    twin_files, n_twin_syms = {}, 0
+    if twins_db.TWINS_TSV.exists():
+        twins = twins_db.load_twins()
+        for path in twins_db.pending_asm_files():
+            tiers = []
+            for name in twins_db.asm_functions(path):
+                row = twins.get(name)
+                if not row:
+                    continue
+                sym = symbols.setdefault(name, {"signature_sources": {}, "callers": []})
+                sym["platinum_twin"] = {
+                    "function": row["platinum_function"],
+                    "file": row["platinum_file"],
+                    "found_by": row["found_by"],
+                    "confidence": twins_db.tier(row["found_by"]),
+                }
+                tiers.append(sym["platinum_twin"]["confidence"])
+            if tiers:
+                twin_files[path] = {"high": tiers.count("high"), "low": tiers.count("low")}
+                n_twin_syms += len(tiers)
+    else:
+        print(f"WARNING: {twins_db.TWINS_TSV} missing; skipping Platinum twins")
+
     # conflict report: symbols with >1 distinct signature guess
     conflicts = sorted(
         name for name, s in symbols.items()
@@ -130,13 +167,15 @@ def main():
         "symbols": symbols,
         "structs": structs,
         "signature_conflicts": conflicts,
+        "platinum_twin_files": twin_files,
     }
     with open(KNOWLEDGE, "w") as f:
         json.dump(knowledge, f, indent=1, sort_keys=True)
 
-    print(f"merged {len(files)} sweep files -> {KNOWLEDGE}")
+    print(f"merged {n_swept} sweep files -> {KNOWLEDGE}")
     print(f"  symbols: {len(symbols)}  structs: {len(structs)}  "
           f"signature conflicts: {len(conflicts)}")
+    print(f"  platinum twins: {n_twin_syms} symbols across {len(twin_files)} pending files")
     for name in conflicts[:10]:
         print(f"  CONFLICT {name}: {symbols[name]['signature_sources']}")
 

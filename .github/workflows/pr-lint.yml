@@ -25,7 +25,7 @@ jobs:
           tidy-checks: '-*' # Disable clang-tidy checks
           version: '19'
           files-changed-only: false # Github returns error code 406 if more than 300 files are changed in a PR
-          ignore: '.github|lib|subprojects|tools'
+          ignore: '.github|lib|subprojects|tools|nonmatching'
           file-annotations: false
 
       - name: fail fast

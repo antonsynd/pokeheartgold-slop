@@ -16,10 +16,10 @@ completely using the `/decomp-delegate` workflow — Qwen drafts, Claude judges.
 
    **Phase 1 — Setup**
    - Read `tools/decomp_harness/DECOMP_AGENT.md` and `tools/decomp_harness/insights.md`
-   - Check `attempts_log.py query --file <target>` (dead ends), `knowledge.json` entry, `blockers.json` if gated
+   - Check `attempts_log.py query --file <target>` (dead ends), `knowledge.json` entry, `blockers.json` if gated, `twins.py file <target>` (Platinum twins + `nonmatching/` drafts)
 
    **Phase 2 — Context assembly + Qwen draft**
-   - Collect: full .s file, .inc file, relevant headers for called functions, knowledge.json symbols block, patterns.py hits (2-4 keywords from function names / key callees)
+   - Collect: full .s file, .inc file, relevant headers for called functions, knowledge.json symbols block, `twins.py file <target> --high --show` output, patterns.py hits (2-4 keywords from function names / key callees)
    - Write to `/tmp/<basename>_delegate_prompt.txt` using the system/user prompt structure from the `/decomp-delegate` skill
    - Run: `cat /tmp/<basename>_delegate_prompt.txt | tools/decomp_harness/delegate.sh`
    - If delegate.sh fails (Ollama unreachable) — **stop the loop** and report the error; do not fall back silently (a dead Ollama will fail every subsequent iteration)
@@ -39,6 +39,7 @@ completely using the `/decomp-delegate` workflow — Qwen drafts, Claude judges.
    - Spawn `decomp-verifier` agent; fix any FAIL findings
    - Update `progress.json` (include `"note": "delegate-drafted"` in the entry)
    - Add new insights via `patterns.py add` if any
+   - `python3 tools/decomp_harness/twins.py prune <target>`
    - `python3 tools/decomp_harness/triage.py --rebuild --top 0`
    - `python3 tools/decomp_harness/sweep_gap.py --check` — if it reports
      un-swept upcoming targets, run the /decomp-sweep workflow for the printed

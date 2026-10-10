@@ -25,6 +25,16 @@ Decompile one assembly file from `asm/` into byte-matching C code.
      they are hypotheses, not ground truth
    - If the triage entry shows `gated_by`, read the matching entry in
      `tools/decomp_harness/blockers.json` and plan around that blocker
+   - `python3 tools/decomp_harness/twins.py file asm/<basename>.s [--show]` — per function: its
+     **Platinum twin** (pret/pokeplatinum C; `--show` prints it from a sibling
+     `../pokeplatinum` checkout) and any **behaviour-verified draft** in
+     `nonmatching/` (clang-compiled, does NOT match bytes; its `.notes.md` records
+     struct layouts and header declarations that disagree with the asm). Start
+     from the twin/draft C instead of the raw asm: rename to HG names/types, then
+     match with mwcc. `high` twins (callee sequence matched) are usually right;
+     `low` twins (link-order guess) are often shifted — confirm the callees against
+     the asm first. Never apply a notes header fix to a shared header directly
+     (IPA rule) — use the split-header pattern
 
 ### Workflow
 
@@ -100,8 +110,10 @@ Iterate on step 5 until objdiff is green, then:
    python3 tools/decomp_harness/patterns.py add --json '{"id":"...","category":"...","title":"...","body":"..."}'
    ```
 3. Log matched functions that took real effort to the attempts log with outcome `matched`
-4. Regenerate the ledger and triage queue:
+4. Drop this file's now-obsolete drafts from `nonmatching/`, then regenerate the
+   ledger and triage queue:
    ```bash
+   python3 tools/decomp_harness/twins.py prune asm/<basename>.s
    python3 tools/decomp_harness/triage.py --rebuild --top 5
    ```
 5. **Sweep top-up** (keeps pre-analysis ahead of the queue): check for un-swept

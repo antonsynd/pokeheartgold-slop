@@ -17,7 +17,8 @@ This skill is designed to be used with `/loop /decomp-loop` for continuous auton
 
    a. Read `tools/decomp_harness/DECOMP_AGENT.md` and `tools/decomp_harness/insights.md`
    b. Check prior knowledge: `attempts_log.py query --file <target>` (dead ends),
-      `knowledge.json` (sweep pre-analysis hypotheses), `blockers.json` if gated
+      `knowledge.json` (sweep pre-analysis hypotheses), `blockers.json` if gated,
+      `twins.py file <target>` (Platinum twins + `nonmatching/` drafts; see `/decomp` step 4)
    c. Read the target asm file and its .inc file
    d. Search for relevant headers and similar decompiled files
    e. Write the C file, update main.lsf
@@ -29,7 +30,7 @@ This skill is designed to be used with `/loop /decomp-loop` for continuous auton
       with `attempts_log.py add`
    i. On success: update progress.json, add new insights via `patterns.py add`
       (insights.md is generated — never edit it directly), run
-      `triage.py --rebuild --top 0` to refresh ledger + queue; then run
+      `twins.py prune <target>` and `triage.py --rebuild --top 0` to refresh ledger + queue; then run
       `python3 tools/decomp_harness/sweep_gap.py --check` and, if it reports
       un-swept upcoming targets, run the /decomp-sweep workflow for the printed
       files (read-only — safe to overlap with the compare build); then **commit

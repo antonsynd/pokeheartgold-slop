@@ -1,0 +1,292 @@
+#!/usr/bin/env python3
+"""Platinum twins and verified non-matching drafts for asm functions.
+
+HeartGold is built on Platinum's engine and pret/pokeplatinum is fully
+decompiled, so most asm functions here have a Platinum counterpart ("twin")
+whose C is a far better starting point than the raw asm. Two inputs:
+
+  platinum_twins.tsv   — 10,601 HG -> Platinum pairs (issue #1, arvindfroi).
+                         Columns: heartgold_function, platinum_function,
+                         platinum_file, found_by.
+  nonmatching/         — clang-compiled, behaviour-verified (NOT byte-matching)
+                         C for ~1,800 asm functions (PR #2). VERIFIED.tsv gives
+                         PASS/FAIL per function; <file>.notes.md records struct
+                         layouts and header declarations that disagree with asm.
+
+Twin confidence, from found_by:
+  high — calls (callee sequence matched), called (callee of a matched pair),
+         same (identical name)
+  low  — between, order (filled in by link order between matched pairs; often
+         shifted inside a file — about half were wrong in parts of overlay 7).
+         Confirm a low twin against the asm's callees before trusting it.
+
+Twins are candidates, not proofs: HG's version can add a call or move a field.
+Drafts are untrusted starting points; matching still needs mwcc + objdiff.
+
+Platinum source is read from a pokeplatinum checkout: --platinum, else
+$POKEPLATINUM, else ../pokeplatinum next to this repo. The TSV names Platinum
+functions/files as of a specific revision; every twin was verified to extract
+at PLATINUM_REV below, and --show warns when the checkout is elsewhere:
+  git clone https://github.com/pret/pokeplatinum.git ../pokeplatinum
+  git -C ../pokeplatinum checkout c248fb3f8cc9934ded800e489567c5c0eeee92eb
+
+Usage:
+  python3 tools/decomp_harness/twins.py file asm/<name>.s [--show] [--high]
+  python3 tools/decomp_harness/twins.py func <hg_function> [--show]
+  python3 tools/decomp_harness/twins.py stats [--top N]
+  python3 tools/decomp_harness/twins.py prune asm/<name>.s   # after a match
+"""
+
+import argparse
+import csv
+import os
+import re
+import subprocess
+import sys
+from pathlib import Path
+
+from asmscan import FUNC_START_RE, parse_lsf
+
+HARNESS = Path(__file__).resolve().parent
+ROOT = HARNESS.parent.parent
+TWINS_TSV = HARNESS / "platinum_twins.tsv"
+NONMATCHING = ROOT / "nonmatching"
+PLATINUM_REV = "c248fb3f8cc9934ded800e489567c5c0eeee92eb"
+
+HIGH = {"calls", "called", "same"}
+
+
+def tier(found_by):
+    return "high" if found_by in HIGH else "low"
+
+
+def load_twins():
+    with open(TWINS_TSV, newline="") as f:
+        return {row["heartgold_function"]: row for row in csv.DictReader(f, delimiter="\t")}
+
+
+def load_drafts():
+    """function -> {file, verdict} from nonmatching/VERIFIED.tsv (empty if absent)."""
+    path = NONMATCHING / "VERIFIED.tsv"
+    if not path.exists():
+        return {}
+    with open(path, newline="") as f:
+        return {row["function"]: row for row in csv.DictReader(f, delimiter="\t")}
+
+
+def asm_functions(asm_path):
+    path = ROOT / asm_path
+    if not path.exists():
+        sys.exit(f"{asm_path}: no such file")
+    out = []
+    for line in path.read_text(errors="replace").splitlines():
+        m = FUNC_START_RE.match(line)
+        if m:
+            out.append(m.group(2))
+    return out
+
+
+def pending_asm_files():
+    """asm files still linked as asm in main.lsf, in link order."""
+    out = []
+    for obj in parse_lsf(ROOT):
+        path = f"asm/{obj['name']}.s"
+        if obj["kind"] == "asm" and (ROOT / path).exists() and path not in out:
+            out.append(path)
+    return out
+
+
+def platinum_root(arg):
+    if arg:
+        if not (Path(arg) / "src").is_dir():
+            sys.exit(f"--platinum {arg}: not a pokeplatinum checkout (no src/)")
+        root = Path(arg)
+    else:
+        root = next((Path(c) for c in (os.environ.get("POKEPLATINUM"), ROOT.parent / "pokeplatinum")
+                     if c and (Path(c) / "src").is_dir()), None)
+    if root is not None:
+        head = subprocess.run(["git", "-C", str(root), "rev-parse", "HEAD"],
+                              capture_output=True, text=True).stdout.strip()
+        if head != PLATINUM_REV:
+            print(f"warning: {root} is at {head[:9] or '?'}, twins were verified at {PLATINUM_REV[:9]};"
+                  " renamed/moved functions may not be found", file=sys.stderr)
+    return root
+
+
+def platinum_source(root, rel_file, func):
+    """Extract one function definition from a Platinum C file, or None."""
+    path = root / rel_file
+    if not path.exists():
+        return None
+    lines = path.read_text(errors="replace").splitlines()
+    head = re.compile(r"^[A-Za-z_].*\b" + re.escape(func) + r"\s*\(")
+    for i, line in enumerate(lines):
+        if not head.match(line) or line.rstrip().endswith(";"):
+            continue
+        depth, seen_open = 0, False
+        for j in range(i, len(lines)):
+            depth += lines[j].count("{") - lines[j].count("}")
+            seen_open = seen_open or "{" in lines[j]
+            if lines[j].rstrip().endswith(";") and not seen_open:
+                break  # multi-line prototype, not a definition
+            if seen_open and depth == 0:
+                return "\n".join(lines[i:j + 1])
+    return None
+
+
+def describe(fn, twins, drafts):
+    t = twins.get(fn)
+    d = drafts.get(fn)
+    twin = f"{t['platinum_function']} ({t['platinum_file']}) [{tier(t['found_by'])}:{t['found_by']}]" if t else "-"
+    draft = f"nonmatching/{d['file']} {d['verdict']}" if d else "-"
+    return twin, draft
+
+
+def print_show(fn, twins, root, high_only=False):
+    t = twins.get(fn)
+    if not t or (high_only and tier(t["found_by"]) != "high"):
+        return
+    if root is None:
+        print(f"    (no pokeplatinum checkout; set $POKEPLATINUM or clone to {ROOT.parent / 'pokeplatinum'})")
+        return
+    src = platinum_source(root, t["platinum_file"], t["platinum_function"])
+    print(f"    --- {t['platinum_file']}: {t['platinum_function']}")
+    print("\n".join("    " + l for l in (src or "(definition not found)").splitlines()))
+
+
+def cmd_file(args, twins, drafts):
+    funcs = asm_functions(args.path)
+    root = platinum_root(args.platinum) if args.show else None
+    n_high = sum(1 for f in funcs if f in twins and tier(twins[f]["found_by"]) == "high")
+    n_low = sum(1 for f in funcs if f in twins and tier(twins[f]["found_by"]) == "low")
+    n_draft = sum(1 for f in funcs if f in drafts)
+    print(f"{args.path}: {len(funcs)} functions, twins {n_high} high / {n_low} low, drafts {n_draft}")
+    for fn in funcs:
+        t = twins.get(fn)
+        # --high filters twins only; a function with a verified draft is always listed
+        if args.high and not (t and tier(t["found_by"]) == "high") and fn not in drafts:
+            continue
+        twin, draft = describe(fn, twins, drafts)
+        print(f"  {fn:<40} twin={twin}  draft={draft}")
+        if args.show:
+            print_show(fn, twins, root, high_only=args.high)
+    draft_files = sorted({drafts[f]["file"] for f in funcs if f in drafts})
+    for c_file in draft_files:
+        notes = c_file[:-len(".c")] + ".notes.md"
+        if (NONMATCHING / notes).exists():
+            print(f"  notes: nonmatching/{notes}")
+
+
+def cmd_func(args, twins, drafts):
+    twin, draft = describe(args.name, twins, drafts)
+    print(f"{args.name}: twin={twin}  draft={draft}")
+    if args.show:
+        print_show(args.name, twins, platinum_root(args.platinum))
+
+
+def cmd_stats(args, twins, drafts):
+    counts = {"high": 0, "low": 0}
+    for t in twins.values():
+        counts[tier(t["found_by"])] += 1
+    print(f"twins: {len(twins)} ({counts['high']} high, {counts['low']} low); drafts: {len(drafts)}"
+          f" ({sum(1 for d in drafts.values() if d['verdict'] == 'PASS')} PASS)")
+    rows = []
+    for path in pending_asm_files():
+        funcs = asm_functions(path)
+        if not funcs:
+            continue
+        high = sum(1 for f in funcs if f in twins and tier(twins[f]["found_by"]) == "high")
+        low = sum(1 for f in funcs if f in twins and tier(twins[f]["found_by"]) == "low")
+        draft = sum(1 for f in funcs if f in drafts)
+        rows.append((high / len(funcs), path, len(funcs), high, low, draft))
+    rows.sort(key=lambda r: (-r[0], r[2]))
+    print(f"\npending asm files by high-confidence twin coverage (top {args.top}):")
+    print(f"  {'file':<48} {'funcs':>5} {'high':>5} {'low':>5} {'draft':>5}")
+    for _, path, n, high, low, draft in rows[:args.top]:
+        print(f"  {path:<48} {n:>5} {high:>5} {low:>5} {draft:>5}")
+
+
+def matched_in_src(asm_path, funcs):
+    """Functions of asm_path defined as real C in src/<name>.c. A function
+    defined inside an #ifdef NONMATCHING ... #else ... #endif block (either
+    branch) or as an `asm` function is a fallback, still unmatched."""
+    src = ROOT / "src" / (Path(asm_path).stem + ".c")
+    if not src.exists():
+        return set()
+    matched, fallback, stack = set(), set(), []  # stack: is each open #if a NONMATCHING block?
+    defn = re.compile(r"^[A-Za-z_][^;]*?\b(\w+)\s*\(")
+    for line in src.read_text(errors="replace").splitlines():
+        d = line.strip()
+        if d.startswith("#if"):
+            stack.append("NONMATCHING" in d)
+        elif d.startswith("#endif") and stack:
+            stack.pop()
+        elif not line.rstrip().endswith(";"):
+            m = defn.match(line)
+            if m and m.group(1) in funcs:
+                if any(stack) or re.search(r"\basm\b", line):
+                    fallback.add(m.group(1))
+                else:
+                    matched.add(m.group(1))
+    return matched - fallback
+
+
+def cmd_prune(args, twins, drafts):
+    """Drop drafts for functions of a just-matched asm file that are now real C
+    in src/: their VERIFIED.tsv rows, and any nonmatching/<file>.c (+ .notes.md)
+    left with no rows. Functions kept as NONMATCHING asm fallbacks keep theirs."""
+    all_funcs = set(asm_functions(args.path))
+    funcs = matched_in_src(args.path, all_funcs)
+    kept = sorted((all_funcs - funcs) & set(drafts))
+    if not funcs:
+        print(f"{args.path}: no functions defined as C in src/ yet; nothing to prune")
+        return
+    if kept:
+        print(f"{args.path}: keeping drafts for {len(kept)} function(s) not matched in src/: {', '.join(kept)}")
+    verified = NONMATCHING / "VERIFIED.tsv"
+    if not verified.exists() or not funcs & set(drafts):
+        print(f"{args.path}: no drafts to prune")
+        return
+    with open(verified, newline="") as f:
+        reader = csv.DictReader(f, delimiter="\t")
+        fields, rows = reader.fieldnames or ["function", "file", "asm", "verdict"], list(reader)
+    keep = [r for r in rows if r["function"] not in funcs]
+    removed = [r for r in rows if r["function"] in funcs]
+    with open(verified, "w", newline="") as f:
+        w = csv.DictWriter(f, fieldnames=fields, delimiter="\t", lineterminator="\n")
+        w.writeheader()
+        w.writerows(keep)
+    print(f"{args.path}: dropped {len(removed)} VERIFIED.tsv rows")
+    still_used = {r["file"] for r in keep}
+    for c_file in sorted({r["file"] for r in removed} - still_used):
+        for name in (c_file, c_file[:-len(".c")] + ".notes.md"):
+            if (NONMATCHING / name).exists():
+                (NONMATCHING / name).unlink()
+                print(f"  deleted nonmatching/{name}")
+    for c_file in sorted({r["file"] for r in removed} & still_used):
+        print(f"  nonmatching/{c_file} still holds unmatched functions; remove the matched ones by hand")
+
+
+def main():
+    ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
+    ap.add_argument("--platinum", help="pokeplatinum checkout (default: $POKEPLATINUM or ../pokeplatinum)")
+    sub = ap.add_subparsers(dest="cmd", required=True)
+    p = sub.add_parser("file", help="twins + drafts for every function in an asm file")
+    p.add_argument("path")
+    p.add_argument("--show", action="store_true", help="print each twin's Platinum C")
+    p.add_argument("--high", action="store_true", help="only high-confidence twins (functions with drafts still listed)")
+    p = sub.add_parser("func", help="twin + draft for one function")
+    p.add_argument("name")
+    p.add_argument("--show", action="store_true", help="print the twin's Platinum C")
+    p = sub.add_parser("stats", help="totals + pending files ranked by twin coverage")
+    p.add_argument("--top", type=int, default=25)
+    p = sub.add_parser("prune", help="remove nonmatching/ drafts for a matched asm file")
+    p.add_argument("path")
+    args = ap.parse_args()
+
+    twins, drafts = load_twins(), load_drafts()
+    {"file": cmd_file, "func": cmd_func, "stats": cmd_stats, "prune": cmd_prune}[args.cmd](args, twins, drafts)
+
+
+if __name__ == "__main__":
+    sys.exit(main())

@@ -4,3 +4,4 @@
 lib/
 tools/nitrogfx/*.c
 tools/nitrogfx/*.h
+nonmatching/

@@ -16,10 +16,10 @@ completely using the `/decomp-sonnet` workflow — Sonnet drafts, Opus judges.
 
    **Phase 1 — Setup**
    - Read `tools/decomp_harness/DECOMP_AGENT.md` and `tools/decomp_harness/insights.md`
-   - Check `attempts_log.py query --file <target>` (dead ends), `knowledge.json` entry, `blockers.json` if gated
+   - Check `attempts_log.py query --file <target>` (dead ends), `knowledge.json` entry, `blockers.json` if gated, `twins.py file <target>` (Platinum twins + `nonmatching/` drafts)
 
    **Phase 2 — Context assembly + Sonnet draft**
-   - Gather: dead ends from attempts log, knowledge.json entry, patterns.py hits (2-4 keywords), blocker notes
+   - Gather: dead ends from attempts log, knowledge.json entry, `twins.py file <target> --show` output, patterns.py hits (2-4 keywords), blocker notes
    - Spawn a `decomp-drafter` agent (runs on Sonnet) with the target file path and assembled context
    - The drafter reads the asm, inc, and headers itself and returns raw C file contents
 
@@ -38,6 +38,7 @@ completely using the `/decomp-sonnet` workflow — Sonnet drafts, Opus judges.
    - Spawn `decomp-verifier` agent; fix any FAIL findings
    - Update `progress.json` (include `"note": "sonnet-drafted"` in the entry)
    - Add new insights via `patterns.py add` if any
+   - `python3 tools/decomp_harness/twins.py prune <target>`
    - `python3 tools/decomp_harness/triage.py --rebuild --top 0`
    - `python3 tools/decomp_harness/sweep_gap.py --check` — if it reports
      un-swept upcoming targets, run the /decomp-sweep workflow for the printed
