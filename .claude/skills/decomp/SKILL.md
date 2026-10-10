@@ -26,15 +26,23 @@ Decompile one assembly file from `asm/` into byte-matching C code.
    - If the triage entry shows `gated_by`, read the matching entry in
      `tools/decomp_harness/blockers.json` and plan around that blocker
    - `python3 tools/decomp_harness/twins.py file asm/<basename>.s [--show]` — per function: its
-     **Platinum twin** (pret/pokeplatinum C; `--show` prints it from a sibling
-     `../pokeplatinum` checkout) and any **behaviour-verified draft** in
-     `nonmatching/` (clang-compiled, does NOT match bytes; its `.notes.md` records
-     struct layouts and header declarations that disagree with the asm). Start
-     from the twin/draft C instead of the raw asm: rename to HG names/types, then
-     match with mwcc. `high` twins (callee sequence matched) are usually right;
-     `low` twins (link-order guess) are often shifted — confirm the callees against
-     the asm first. Never apply a notes header fix to a shared header directly
-     (IPA rule) — use the split-header pattern
+     **Platinum twin** (pret/pokeplatinum C, from a sibling `../pokeplatinum` checkout) and
+     its **behaviour-verified draft** in `nonmatching/` (~95% of pending functions have one).
+     `--show` prints both. Drafts are clang-compiled and checked against the ROM on random
+     inputs — the behaviour (control flow, offsets, constants, callee arguments) is right, but
+     they do NOT match bytes. Three kinds, by readability:
+     - `<asm>_partNN.c` (PR #2): proper C with recovered structs; read its `.notes.md` too
+       (struct layouts and header declarations that disagree with the asm).
+     - `written/<asm>/<fn>.c`: model-written C for functions Ghidra got wrong, shown whole.
+     - `ghidra/<asm>/<fn>.c`: raw Ghidra C (`param_1 + 0x24`, `undefined4`); `--show` renames
+       Ghidra's address-only callees (`func_0x020d4994`) to HG symbols via the link map.
+     Use the twin for names, types and struct shape and the draft for what the HG function
+     actually does — where they disagree (an added call, a moved field), the draft is right.
+     `high` twins (callee sequence matched) are usually right; `low` twins (link-order guess)
+     are often shifted — confirm the callees against the asm first. Either way, rename to HG
+     names/types, then match with mwcc. Never apply a notes header fix to a shared header
+     directly (IPA rule) — use the split-header pattern. Functions with no draft are listed
+     with the reason in `nonmatching/REMAINING.tsv`
 
 ### Workflow
 

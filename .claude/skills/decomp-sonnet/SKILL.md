@@ -30,7 +30,7 @@ access and will read the asm files itself, but needs this guidance up front:
 1. Query dead ends: `python3 tools/decomp_harness/attempts_log.py query --file asm/<basename>.s`
 2. Query relevant patterns: `python3 tools/decomp_harness/patterns.py query --grep <keyword>` (2-4 keywords from function names and key callees)
 3. Extract the `knowledge.json` entry for this file (if it exists)
-3b. Run `twins.py file asm/<basename>.s --show` — Platinum twin C + `nonmatching/` drafts
+3b. Run `twins.py file asm/<basename>.s --show` — Platinum twin C + verified draft C per function
 4. Note any blockers from `blockers.json`
 
 ### Phase 3 — Delegate to Sonnet
@@ -49,8 +49,9 @@ Project root: /Users/anton/Documents/github/pokeheartgold-slop
 <paste the symbols/risks block for this file, or "No pre-analysis available">
 
 === PLATINUM TWINS / VERIFIED DRAFTS (starting points, not matching) ===
-<paste twins.py file --show output; name any nonmatching/<file>.c + .notes.md
- for the drafter to read; or "None">
+<paste twins.py file --show output (twin + verified draft per function; the draft's
+ behaviour is right, the twin's names/types are better — see /decomp step 4); name any
+ nonmatching/*.notes.md for the drafter to read; or "None">
 
 === MATCHING PATTERNS TO APPLY ===
 <paste patterns.py query output for relevant keywords>

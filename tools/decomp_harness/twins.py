@@ -56,6 +56,10 @@ ROOT = HARNESS.parent.parent
 TWINS_TSV = HARNESS / "platinum_twins.tsv"
 NONMATCHING = ROOT / "nonmatching"
 PLATINUM_REV = "c248fb3f8cc9934ded800e489567c5c0eeee92eb"
+XMAP = ROOT / "build" / "heartgold.us" / "main.elf.xMAP"
+XMAP_RE = re.compile(r"^\s+([0-9A-F]{8}) [0-9A-F]{8} \S+\s+([A-Za-z_]\w*)\t")
+# Ghidra's declaration of a callee or global it knows only by address
+GHIDRA_ALIAS_RE = re.compile(r"\b(\w+)\s*(?:\([^)]*\))?\s*__asm__\(\"sub_([0-9A-Fa-f]{8})\"\)")
 
 HIGH = {"calls", "called", "same"}
 
@@ -175,17 +179,26 @@ def platinum_source(root, rel_file, func):
     lines = path.read_text(errors="replace").splitlines()
     code = strip_code("\n".join(lines)).splitlines()
     counted = counted_lines(code)
-    head = re.compile(r"^[A-Za-z_][^=(),;]*?\b" + re.escape(func) + r"\s*\(")
+    # Specifiers then the name; Ghidra may put the return type on the line above and the
+    # parameter list on the line below.
+    head = re.compile(r"^((?:[A-Za-z_][^=(),;]*?\b)?)" + re.escape(func) + r"\s*(\(|$)")
     for i, line in enumerate(code):
         match = head.match(line)
         if not counted[i] or not match:
             continue
         # Walk the parameter list to its close, then to the first character after it.
-        depth, j, at, after = 1, i, match.end(), None
+        opened = match.group(2) == "("
+        depth, j, at, after = int(opened), i, match.end(), None
         while j < len(code) and after is None:
             text = code[j] if counted[j] else ""
             for k in range(at, len(text)):
-                if depth:
+                if not opened:
+                    if text[k] == "(":
+                        opened, depth = True, 1
+                    elif not text[k].isspace():
+                        after = (j, k, text[k])
+                        break
+                elif depth:
                     depth += {"(": 1, ")": -1}.get(text[k], 0)
                 elif not text[k].isspace():
                     after = (j, k, text[k])
@@ -200,7 +213,10 @@ def platinum_source(root, rel_file, func):
             text = code[j][after[1]:] if j == after[0] else code[j]
             depth += text.count("{") - text.count("}")
             if depth == 0:
-                return "\n".join(lines[i:j + 1])
+                start = i
+                if not match.group(1) and i and counted[i - 1] and re.fullmatch(r"[A-Za-z_][\w \t*]*", code[i - 1].strip()):
+                    start = i - 1  # return type on its own line
+                return "\n".join(lines[start:j + 1])
     return None
 
 
@@ -212,7 +228,57 @@ def describe(fn, twins, drafts):
     return twin, draft
 
 
-def print_show(fn, twins, root, high_only=False):
+_xmap = None
+
+
+def xmap_names():
+    """address -> symbol names from the last HeartGold link map (empty if never built)."""
+    global _xmap
+    if _xmap is None:
+        _xmap = {}
+        if XMAP.exists():
+            for line in XMAP.read_text(errors="replace").splitlines():
+                m = XMAP_RE.match(line)
+                if m:
+                    _xmap.setdefault(int(m.group(1), 16), set()).add(m.group(2))
+    return _xmap
+
+
+def asm_body_names(asm_path, fn):
+    """Identifiers between fn's func_start and func_end (its callees and literal-pool words)."""
+    path = ROOT / asm_path
+    if not path.exists():
+        return set()
+    names, inside = set(), False
+    for line in path.read_text(errors="replace").splitlines():
+        m = FUNC_START_RE.match(line)
+        if m:
+            inside = m.group(2) == fn
+        elif inside and re.match(r"\s*(?:arm|thumb|non_word_aligned_thumb)_func_end\b", line):
+            break
+        elif inside:
+            names.update(re.findall(r"[A-Za-z_]\w*", line.split(";")[0]))
+    return names
+
+
+def resolve_ghidra_aliases(text, declarations, asm_names):
+    """Rename Ghidra's address-named callees and globals (`func_0x020d4994() __asm__("sub_020D4994")`)
+    to the HeartGold symbol at that address in the link map. Overlays share addresses, so a name
+    the asm itself references wins; an address with several candidates and none referenced is
+    left alone."""
+    renames = {}
+    for ident, addr in GHIDRA_ALIAS_RE.findall(declarations):
+        names = xmap_names().get(int(addr, 16), set())
+        named = names & asm_names
+        pick = named if named else names
+        if len(pick) == 1:
+            renames[ident] = next(iter(pick))
+    for ident, name in renames.items():
+        text = re.sub(r"\b" + re.escape(ident) + r"\b", name, text)
+    return text
+
+
+def print_twin(fn, twins, root, high_only=False):
     t = twins.get(fn)
     if not t or (high_only and tier(t["found_by"]) != "high"):
         return
@@ -220,8 +286,32 @@ def print_show(fn, twins, root, high_only=False):
         print(f"    (no pokeplatinum checkout; set $POKEPLATINUM or clone to {ROOT.parent / 'pokeplatinum'})")
         return
     src = platinum_source(root, t["platinum_file"], t["platinum_function"])
-    print(f"    --- {t['platinum_file']}: {t['platinum_function']}")
+    print(f"    --- twin {t['platinum_file']}: {t['platinum_function']}")
     print("\n".join("    " + l for l in (src or "(definition not found)").splitlines()))
+
+
+def print_draft(fn, drafts):
+    """A function's verified draft: a written/ file whole (its typedefs and externs are part of
+    the draft), otherwise just the definition, with Ghidra's address names resolved."""
+    d = drafts.get(fn)
+    if not d or not (NONMATCHING / d["file"]).exists():
+        return
+    kind = d["file"].split("/")[0] if "/" in d["file"] else "part"
+    if kind == "written":
+        src = (NONMATCHING / d["file"]).read_text(errors="replace").rstrip()
+    else:
+        src = platinum_source(NONMATCHING, d["file"], fn)
+        if src and kind == "ghidra":
+            whole = (NONMATCHING / d["file"]).read_text(errors="replace")
+            src = resolve_ghidra_aliases(src, whole, asm_body_names(d["asm"] + ".s", fn))
+    label = {"written": "model-written", "ghidra": "raw Ghidra C", "part": "see the whole file and notes"}[kind]
+    print(f"    --- draft nonmatching/{d['file']} [{d['verdict']}; {label}; behaviour only, not matching]")
+    print("\n".join("    " + l for l in (src or "(definition not found)").splitlines()))
+
+
+def print_show(fn, twins, drafts, root, high_only=False):
+    print_twin(fn, twins, root, high_only)
+    print_draft(fn, drafts)
 
 
 def cmd_file(args, twins, drafts):
@@ -239,7 +329,7 @@ def cmd_file(args, twins, drafts):
         twin, draft = describe(fn, twins, drafts)
         print(f"  {fn:<40} twin={twin}  draft={draft}")
         if args.show:
-            print_show(fn, twins, root, high_only=args.high)
+            print_show(fn, twins, drafts, root, high_only=args.high)
     draft_files = sorted({drafts[f]["file"] for f in funcs if f in drafts})
     for c_file in draft_files:
         notes = c_file[:-len(".c")] + ".notes.md"
@@ -251,7 +341,7 @@ def cmd_func(args, twins, drafts):
     twin, draft = describe(args.name, twins, drafts)
     print(f"{args.name}: twin={twin}  draft={draft}")
     if args.show:
-        print_show(args.name, twins, platinum_root(args.platinum))
+        print_show(args.name, twins, drafts, platinum_root(args.platinum))
 
 
 def cmd_stats(args, twins, drafts):
@@ -347,11 +437,11 @@ def main():
     sub = ap.add_subparsers(dest="cmd", required=True)
     p = sub.add_parser("file", help="twins + drafts for every function in an asm file")
     p.add_argument("path")
-    p.add_argument("--show", action="store_true", help="print each twin's Platinum C")
+    p.add_argument("--show", action="store_true", help="print each twin's Platinum C and each draft's C")
     p.add_argument("--high", action="store_true", help="only high-confidence twins (functions with drafts still listed)")
     p = sub.add_parser("func", help="twin + draft for one function")
     p.add_argument("name")
-    p.add_argument("--show", action="store_true", help="print the twin's Platinum C")
+    p.add_argument("--show", action="store_true", help="print the twin's Platinum C and the draft's C")
     p = sub.add_parser("stats", help="totals + pending files ranked by twin coverage")
     p.add_argument("--top", type=int, default=25)
     p = sub.add_parser("prune", help="remove nonmatching/ drafts for a matched asm file")

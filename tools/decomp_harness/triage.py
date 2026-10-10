@@ -6,7 +6,10 @@ and scores every pending file. Lower score = attempt sooner. The queue is
 written to triage_report.json, which next_target.sh consults.
 
 Score components (weights are heuristics — tune in WEIGHTS):
-  insn lines        — raw matching work
+  insn lines        — raw matching work; a function with a behaviour-verified
+                      draft in nonmatching/ (PASS in VERIFIED.tsv, see twins.py)
+                      counts at drafted_insn_line instead, since its C only
+                      needs reshaping for mwcc, not writing
   unknown callees   — imports defined in other *pending* asm files: their C
                       prototypes don't exist yet, so signatures must be guessed
                       (the top source of IPA trouble later)
@@ -41,6 +44,7 @@ sys.path.insert(0, str(HARNESS))
 
 WEIGHTS = {
     "insn_line": 1.0,
+    "drafted_insn_line": 0.7,
     "unknown_callee": 40.0,
     "jumptable_word": 3.0,
     "rodata_byte": 0.05,
@@ -59,8 +63,15 @@ def load_ledger(rebuild):
         return json.load(f)
 
 
+def passing_drafts():
+    """Functions with a PASS row in nonmatching/VERIFIED.tsv."""
+    import twins
+    return {fn for fn, row in twins.load_drafts().items() if row["verdict"] == "PASS"}
+
+
 def build_report(ledger):
     files = ledger["files"]
+    drafted = passing_drafts()
     pending = [r for r in files if r["status"] == "pending"]
 
     # symbol -> pending file that exports it (the not-yet-decompiled world)
@@ -86,6 +97,8 @@ def build_report(ledger):
     rows = []
     for r in pending:
         insns = sum(f["insns"] for f in r.get("functions", []))
+        drafted_insns = sum(f["insns"] for f in r.get("functions", []) if f["name"] in drafted)
+        undrafted = [f["name"] for f in r.get("functions", []) if f["name"] not in drafted]
         imports = r.get("imports", [])
         unknown = sorted({s for s in imports if s in export_map and export_map[s] != r["file"]})
         arm_fns = sum(1 for f in r.get("functions", []) if f["mode"] == "arm")
@@ -99,7 +112,8 @@ def build_report(ledger):
         partners = sorted(partners.items(), key=lambda kv: -kv[1])[:5]
 
         score = (
-            WEIGHTS["insn_line"] * insns
+            WEIGHTS["insn_line"] * (insns - drafted_insns)
+            + WEIGHTS["drafted_insn_line"] * drafted_insns
             + WEIGHTS["unknown_callee"] * len(unknown)
             + WEIGHTS["jumptable_word"] * r.get("jumptable_words", 0)
             + WEIGHTS["rodata_byte"] * rodata
@@ -114,6 +128,8 @@ def build_report(ledger):
             "special_sections": special,
             "functions": r.get("function_count", 0),
             "insn_lines": insns,
+            "drafted_insn_lines": drafted_insns,
+            "undrafted_funcs": undrafted,
             "data_only": r.get("data_only", False),
             "unknown_callees": unknown,
             "jumptable_words": r.get("jumptable_words", 0),
@@ -156,10 +172,11 @@ def main():
         return
 
     rank = 0
-    print(f"{'#':>3} {'score':>9} {'fns':>5} {'insns':>7} {'unk':>4} {'gated':>6}  file")
+    print(f"{'#':>3} {'score':>9} {'fns':>5} {'insns':>7} {'draft%':>6} {'unk':>4} {'gated':>6}  file")
     for r in report["queue"][: args.top]:
         rank += 1
-        print(f"{rank:>3} {r['score']:>9.1f} {r['functions']:>5} {r['insn_lines']:>7} "
+        pct = 100 * r["drafted_insn_lines"] // r["insn_lines"] if r["insn_lines"] else 0
+        print(f"{rank:>3} {r['score']:>9.1f} {r['functions']:>5} {r['insn_lines']:>7} {pct:>6} "
               f"{len(r['unknown_callees']):>4} {('YES' if r['gated_by'] else ''):>6}  "
               f"{r['file']}{' [DATA-ONLY]' if r['data_only'] else ''}"
               f"{' [SPECIAL: ' + ','.join(r['special_sections']) + ']' if r['special_sections'] else ''}")

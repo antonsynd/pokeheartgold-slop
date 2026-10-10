@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
-"""Fixtures for twins.platinum_source, one per way a raw brace count goes wrong (issue #3).
+"""Fixtures for twins.platinum_source, one per way a raw brace count goes wrong (issue #3), plus
+the layouts Ghidra writes that Platinum never does.
 
 Run: python3 tools/decomp_harness/test_twins.py
 """
@@ -94,6 +95,37 @@ class PlatinumSource(unittest.TestCase):
 
     def test_missing(self):
         self.assertIsNone(extract("void Other(void) {}\n", "Func"))
+
+    def test_ghidra_return_type_on_the_line_above(self):
+        body = extract("""
+            undefined4 Other();
+
+            undefined4
+            Func(undefined4 param_1)
+
+            {
+              return param_1;
+            }
+        """, "Func")
+        self.assertEqual(body, "undefined4\nFunc(undefined4 param_1)\n\n{\n  return param_1;\n}")
+
+    def test_ghidra_parameters_on_the_line_below(self):
+        body = extract("""
+            int Func
+                      (undefined4 param_1,undefined4 param_2)
+
+            {
+              return 0;
+            }
+        """, "Func")
+        self.assertTrue(body.startswith("int Func\n          (undefined4 param_1"), body)
+        self.assertTrue(body.endswith("return 0;\n}"), body)
+
+    def test_name_alone_on_a_line_is_not_a_definition(self):
+        self.assertIsNone(extract("""
+            Func
+            ;
+        """, "Func"))
 
 
 if __name__ == "__main__":
