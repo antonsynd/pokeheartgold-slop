@@ -21,7 +21,7 @@ disagree with it.
 `ghidra/` holds one file per function, in a folder per asm file. These were made without a person or a
 model in the loop: Ghidra decompiled the function, a script made its C compile on its own (Ghidra's
 types, prototypes for what it calls, and a link name for each address it uses), and the file was kept
-only if it passed the check above. The `.arities.json` beside a file tells the check how many
+only if it passed the check above, on 500 random inputs rather than 2,000. The `.arities.json` beside a file tells the check how many
 arguments each callee takes. This C reads as Ghidra writes it, with raw offsets and casts.
 
 Many functions started from their twins in pret/pokeplatinum (see issue #1).
