@@ -1,12 +1,12 @@
 {
  "summary": {
-  "generated": "2026-10-06T23:52:03Z",
+  "generated": "2026-10-10T06:17:06Z",
   "by_status": {
    "matched": {
-    "files": 135,
-    "functions": 2640,
-    "insn_lines": 79846,
-    "text_bytes_est": 179064
+    "files": 136,
+    "functions": 2680,
+    "insn_lines": 81896,
+    "text_bytes_est": 183810
    },
    "blocked": {
     "files": 51,
@@ -15,10 +15,10 @@
     "text_bytes_est": 64116
    },
    "pending": {
-    "files": 143,
-    "functions": 15757,
-    "insn_lines": 790527,
-    "text_bytes_est": 1769834
+    "files": 142,
+    "functions": 15717,
+    "insn_lines": 788477,
+    "text_bytes_est": 1765088
    },
    "upstream": {
     "files": 397,
@@ -29,9 +29,9 @@
   },
   "function_totals": {
    "tracked": 19294,
-   "matched": 2640,
+   "matched": 2680,
    "partial_in_blocked": 20,
-   "pending": 15757
+   "pending": 15717
   },
   "blockers": [
    {
@@ -129905,8 +129905,8 @@
   },
   {
    "file": "asm/frontier_map.s",
-   "lsf_kind": "asm",
-   "status": "pending",
+   "lsf_kind": "src",
+   "status": "matched",
    "lines": 2421,
    "function_count": 40,
    "text_bytes_est": 4746,
@@ -129927,282 +129927,283 @@
      "mode": "thumb",
      "insns": 209,
      "size_est": 506,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "FrontierMap_Free",
      "mode": "thumb",
      "insns": 135,
      "size_est": 344,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ov80_022389C4",
      "mode": "thumb",
      "insns": 35,
      "size_est": 84,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ov80_02238A18",
      "mode": "thumb",
      "insns": 43,
      "size_est": 98,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "FrontierMap_VBlank",
      "mode": "thumb",
      "insns": 18,
      "size_est": 44,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ov80_02238AAC",
      "mode": "thumb",
      "insns": 1,
      "size_est": 2,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ov80_02238AB0",
      "mode": "thumb",
      "insns": 5,
      "size_est": 10,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ov80_02238ABC",
      "mode": "thumb",
      "insns": 5,
      "size_est": 10,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "FrontierMap_Update",
      "mode": "thumb",
      "insns": 38,
      "size_est": 94,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "FrontierMap_Scroll",
      "mode": "thumb",
      "insns": 36,
      "size_est": 84,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ov80_02238B7C",
      "mode": "thumb",
      "insns": 104,
      "size_est": 250,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ov80_02238C78",
      "mode": "thumb",
      "insns": 41,
      "size_est": 96,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "FrontierMap_SetVramBank",
      "mode": "thumb",
      "insns": 239,
      "size_est": 556,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "FrontierMap_LoadPaletteData",
      "mode": "thumb",
      "insns": 62,
      "size_est": 140,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ov80_02238FA0",
      "mode": "thumb",
      "insns": 45,
      "size_est": 100,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ov80_02239004",
      "mode": "thumb",
      "insns": 264,
      "size_est": 626,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ov80_0223927C",
      "mode": "thumb",
      "insns": 37,
      "size_est": 94,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ov80_022392DC",
      "mode": "thumb",
      "insns": 12,
      "size_est": 26,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ov80_022392F8",
      "mode": "thumb",
      "insns": 57,
      "size_est": 120,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ov80_0223937C",
      "mode": "thumb",
      "insns": 3,
      "size_est": 6,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ov80_02239384",
      "mode": "thumb",
      "insns": 37,
      "size_est": 92,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ov80_022393E8",
      "mode": "thumb",
      "insns": 63,
      "size_est": 144,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ov80_0223947C",
      "mode": "thumb",
      "insns": 42,
      "size_est": 90,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ov80_022394D8",
      "mode": "thumb",
      "insns": 25,
      "size_est": 54,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ov80_02239510",
      "mode": "thumb",
      "insns": 58,
      "size_est": 128,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ov80_02239590",
      "mode": "thumb",
      "insns": 38,
      "size_est": 86,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ov80_022395E8",
      "mode": "thumb",
      "insns": 31,
      "size_est": 66,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ov80_0223962C",
      "mode": "thumb",
      "insns": 22,
      "size_est": 46,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ov80_0223965C",
      "mode": "thumb",
      "insns": 23,
      "size_est": 46,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ov80_0223968C",
      "mode": "thumb",
      "insns": 34,
      "size_est": 76,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ov80_022396D8",
      "mode": "thumb",
      "insns": 17,
      "size_est": 40,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ov80_02239700",
      "mode": "thumb",
      "insns": 4,
      "size_est": 8,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ov80_02239708",
      "mode": "thumb",
      "insns": 21,
      "size_est": 42,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ov80_02239734",
      "mode": "thumb",
      "insns": 6,
      "size_est": 12,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ov80_02239740",
      "mode": "thumb",
      "insns": 105,
      "size_est": 222,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ov80_02239828",
      "mode": "thumb",
      "insns": 81,
      "size_est": 186,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ov80_022398E4",
      "mode": "thumb",
      "insns": 12,
      "size_est": 28,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ov80_02239900",
      "mode": "thumb",
      "insns": 9,
      "size_est": 18,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ov80_02239914",
      "mode": "thumb",
      "insns": 16,
      "size_est": 34,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ov80_02239938",
      "mode": "thumb",
      "insns": 17,
      "size_est": 38,
-     "status": "pending"
+     "status": "matched"
     }
-   ]
+   ],
+   "source": "harness"
   },
   {
    "file": "asm/overlay_80_02239960.s",

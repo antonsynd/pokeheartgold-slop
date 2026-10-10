@@ -366,12 +366,27 @@ def cmd_stats(args, twins, drafts):
         print(f"  {path:<48} {n:>5} {high:>5} {low:>5} {draft:>5}")
 
 
+def c_file_for(asm_path):
+    """The C file that replaced asm_path: src/<name>.c, or src/<dir>/<name>.c when main.lsf links
+    src/<dir>/<name>.o (e.g. src/frontier/frontier_map.c for asm/frontier_map.s)."""
+    stem = Path(asm_path).stem
+    flat = ROOT / "src" / (stem + ".c")
+    if flat.exists():
+        return flat
+    lsf = (ROOT / "main.lsf").read_text(errors="replace") if (ROOT / "main.lsf").exists() else ""
+    for c in sorted((ROOT / "src").rglob(stem + ".c")):
+        obj = c.relative_to(ROOT).with_suffix(".o").as_posix()
+        if re.search(r"^\s*Object\s+" + re.escape(obj) + r"\s*$", lsf, re.M):
+            return c
+    return None
+
+
 def matched_in_src(asm_path, funcs):
-    """Functions of asm_path defined as real C in src/<name>.c. A function
+    """Functions of asm_path defined as real C in its C file (c_file_for). A function
     defined inside an #ifdef NONMATCHING ... #else ... #endif block (either
     branch) or as an `asm` function is a fallback, still unmatched."""
-    src = ROOT / "src" / (Path(asm_path).stem + ".c")
-    if not src.exists():
+    src = c_file_for(asm_path)
+    if src is None:
         return set()
     matched, fallback, stack = set(), set(), []  # stack: is each open #if a NONMATCHING block?
     defn = re.compile(r"^[A-Za-z_][^;]*?\b(\w+)\s*\(")

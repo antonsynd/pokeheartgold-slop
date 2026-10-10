@@ -1811,6 +1811,24 @@
       "category": "codegen",
       "title": "When a function builds a stack template first, the ORDER of the template field stores (not local decl order) decides which callee-saved reg each parameter copy gets",
       "body": "In ov41_022485DC (overlay_41_02248400) the params board/type/idx were assigned r5/r4/r6 instead of retail r5/r6/r4, and 120 declaration orders of the locals changed nothing. Sweeping the order of the first five `tmpl.field = ...` statements fixed every register: retail is `tmpl.unk_00 = board->unk_58; tmpl.unk_18 = idx; tmpl.unk_04 = ...;` (the first statement must load through `board`, so board is copied first, and idx is used second). Its store order in the asm (unk_18 first) is the scheduler, not the source order. Afterwards only stack slots differed; swap the address-taken locals declaration order (`int x, y;` before `int w, h;`; first declared = higher sp offset). Recipe: when params land in rotated callee-saved regs and decl order has no effect, sweep the order of the opening statements (5! = 120 compiles, ~7 min with compile_one.sh)."
+    },
+    {
+      "id": "inline-asm-bare-bracket-operand-gets-offset",
+      "category": "nonmatching",
+      "title": "MWCC inline asm: write [rN, #0], not bare [rN] -- a bare bracket operand can assemble with a bogus immediate",
+      "body": "In the NONMATCHING fallback for ov80_022393E8 (src/frontier/frontier_map.c), `add r0, #0x80; ldr r0, [r0]` copied verbatim from asm/frontier_map.s assembled as `ldr r0, [r0, #8]` (objdiff --classify: 1 substitution, imm). Writing `ldr r0, [r0, #0]` (and `ldrh r1, [r0, #0]`) fixed it. When transcribing asm into an `asm` function body, give every load/store an explicit offset."
+    },
+    {
+      "id": "twin-struct-copy-explains-halfword-copy-plus-ldrb",
+      "category": "codegen",
+      "title": "Halfword stores copying a 4-byte entry followed by an ldrb of byte 2 = struct {u16 a; u8 b;} copied whole (dst[i] = *src), not two field assignments",
+      "body": "ov80_0223947C: retail copies the entry with strh +0 / strh +2 and then passes entry->val with `ldrb [r5, #2]`. Two field assignments with a u16 val emitted ldrh + lsl/lsr #24 truncation instead (4 bytes larger). The Platinum twin (ov104_0223D0EC) has `v0[v2] = *param1;` over `struct { u16 unk_00; u8 unk_02; }` (sizeof 4, align 2: MWCC copies it as two halfwords). Changing the struct and using the struct copy fixed this function and the sibling ov80_02238A18 that reads the same table."
+    },
+    {
+      "id": "twin-file-has-unpaired-counterparts",
+      "category": "tooling",
+      "title": "A function with no Platinum twin (twin=-) often still has one in the SAME Platinum file under a descriptive name the pairing missed",
+      "body": "In asm/frontier_map.s, FrontierMap_SetVramBank and ov80_022393E8 had twin=- but their siblings were paired to src/overlay104/frontier_graphics.c. Reading that file found InitBackgrounds (SetVramBank: local declaration order banks/modes/templates/subTemplate fixed the stack layout, and G2_SetBG0Priority(0) fixed a register swap that `reg_G2_BG0CNT &= ~3` caused) and FreeSpriteSystem. Pairing keys on call sequences, so functions whose callees were renamed in Platinum (GXLayers_SetBanks, Bg_InitFromTemplate) drop out. When a twin=- function sits among paired siblings, grep the sibling twin file for its callees before writing C from the draft alone."
     }
   ]
 }
