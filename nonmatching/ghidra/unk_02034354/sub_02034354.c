@@ -56,7 +56,7 @@ void sub_02034354(undefined4 param_1,undefined4 param_2)
   int iVar2;
   int iVar3;
   int iVar4;
-  
+
   uVar1 = Save_PlayerData_GetProfile();
   if (iRam021d4130 == 0) {
     iRam021d4130 = Heap_Alloc(0xf,0x3a8);

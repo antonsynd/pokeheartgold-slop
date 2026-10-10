@@ -48,7 +48,7 @@ void ov112_021F1904(int param_1,uint param_2,int param_3)
 
 {
   int iVar1;
-  
+
   if ((param_2 < 6) || (0xf < param_2)) {
     if ((param_2 < 0x10) || (0x12 < param_2)) {
       iVar1 = 2;

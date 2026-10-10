@@ -49,7 +49,7 @@ undefined4 ov40_02241404(undefined4 param_1)
 
 {
   int iVar1;
-  
+
   iVar1 = ov40_02242AEC();
   if (iVar1 != 0) {
     ov40_0222BF80(param_1,8);

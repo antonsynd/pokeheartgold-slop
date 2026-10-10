@@ -53,7 +53,7 @@ undefined4 ov102_021E7C84(int param_1,undefined4 *param_2,undefined4 param_3,und
 {
   undefined4 uVar1;
   int iVar2;
-  
+
   switch(*param_2) {
   case 0:
     iVar2 = ov102_021E9464(*(undefined4 *)(param_1 + 0x14));

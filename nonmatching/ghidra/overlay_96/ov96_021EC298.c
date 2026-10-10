@@ -52,7 +52,7 @@ void ov96_021EC298(int *param_1,undefined4 param_2)
 {
   undefined *puVar1;
   undefined4 uVar2;
-  
+
   puVar1 = Heap_AllocAtEnd(*param_1,0x10);
   MI_CpuFill8(puVar1,0,0x10);
   param_1[0x22] = (int)puVar1;

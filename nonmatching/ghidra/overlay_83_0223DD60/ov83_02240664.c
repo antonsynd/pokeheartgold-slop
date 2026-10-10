@@ -61,7 +61,7 @@ void ov83_02240664(int param_1)
   int iVar6;
   int iVar7;
   uint uVar8;
-  
+
   uVar8 = 0;
   uVar1 = (uint)(*(short *)(param_1 + 0x862) * 0x60000) >> 0x10;
   iVar2 = uVar1 * 8;

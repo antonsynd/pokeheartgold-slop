@@ -51,7 +51,7 @@ undefined4 ov75_02249278(int param_1,undefined4 param_2,undefined4 param_3,undef
   bool bVar1;
   uint uVar2;
   undefined4 uVar3;
-  
+
   bVar1 = false;
   uVar2 = *(uint *)(param_1 + 0x10);
   if ((int)uVar2 < -4) {

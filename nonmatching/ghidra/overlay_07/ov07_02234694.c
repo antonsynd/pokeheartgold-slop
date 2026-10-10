@@ -49,7 +49,7 @@ void ov07_02234694(int param_1)
 
 {
   undefined4 uVar1;
-  
+
   *(undefined4 *)(param_1 + 0x20) = 1;
   ov07_022346E4(param_1,0x2234711);
   uVar1 = SysTask_CreateOnMainQueue(0x22346c1,param_1,1000);

@@ -57,7 +57,7 @@ void ov41_0224A3E4(int param_1,undefined4 param_2)
 {
   int iVar1;
   int iVar2;
-  
+
   iVar1 = 0;
   do {
     ov41_02246388(param_2,iVar1);

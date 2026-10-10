@@ -47,7 +47,7 @@ void sub_02017714(int param_1)
 
 {
   int iVar1;
-  
+
   iVar1 = *(int *)(param_1 + 0x4c) + 1;
   *(int *)(param_1 + 0x4c) = iVar1;
   if (*(int *)(param_1 + 0x48) <= iVar1) {

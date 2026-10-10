@@ -50,7 +50,7 @@ void ov15_021FE1D0(int param_1)
 {
   int iVar1;
   int iVar2;
-  
+
   if (*(int *)(param_1 + 0xb4) != 0) {
     iVar2 = 0;
     iVar1 = param_1 + 0xb4;

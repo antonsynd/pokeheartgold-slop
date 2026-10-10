@@ -52,7 +52,7 @@ void ov96_02207BE4(int param_1)
   undefined1 extraout_r1;
   int iVar1;
   int iVar2;
-  
+
   if (3 < *(byte *)(param_1 + 0x512)) {
     iVar1 = *(int *)(*(int *)(param_1 + 0x1c) + 0x14);
     iVar2 = (uint)*(byte *)(param_1 + 0x511) * 0x800;

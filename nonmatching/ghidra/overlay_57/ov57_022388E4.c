@@ -53,7 +53,7 @@ void ov57_022388E4(int param_1,int param_2)
   int iVar4;
   int iStack_20;
   int iStack_1c;
-  
+
   iStack_1c = 0;
   iStack_20 = 0;
   iVar3 = 0;

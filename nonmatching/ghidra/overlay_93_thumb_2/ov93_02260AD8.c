@@ -54,7 +54,7 @@ void ov93_02260AD8(int param_1,undefined4 *param_2,undefined4 param_3,undefined4
 {
   undefined1 uVar1;
   int iVar2;
-  
+
   if (*(char *)((int)param_2 + 6) == '\0') {
     if (*(char *)((int)param_2 + 5) == '\x01') {
       iVar2 = ov93_0225FEAC();

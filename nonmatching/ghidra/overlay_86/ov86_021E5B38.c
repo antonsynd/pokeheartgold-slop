@@ -53,7 +53,7 @@ undefined4 ov86_021E5B38(int param_1,undefined4 param_2,undefined4 param_3,undef
 {
   char cVar1;
   int iVar2;
-  
+
   cVar1 = *(char *)(param_1 + 4);
   if (cVar1 == '\0') {
     iVar2 = ov86_021E71FC();

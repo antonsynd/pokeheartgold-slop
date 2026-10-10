@@ -51,7 +51,7 @@ void ov31_0225DCA8(int param_1)
   uint *puVar1;
   int iVar2;
   int iVar3;
-  
+
   puVar1 = (uint *)&ov31_0225EE88;
   iVar3 = 0;
   iVar2 = param_1 + 0x84;

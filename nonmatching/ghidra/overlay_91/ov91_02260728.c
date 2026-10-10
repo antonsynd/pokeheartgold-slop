@@ -51,7 +51,7 @@ void ov91_02260728(undefined4 param_1,int param_2,undefined4 param_3,uint param_
 {
   undefined4 uVar1;
   uint uVar2;
-  
+
   uVar2 = param_4;
   uVar1 = ov91_02260A50();
   if (*(ushort *)(param_2 + 4) == param_4) {

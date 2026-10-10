@@ -58,7 +58,7 @@ void ov07_022241D8(undefined4 param_1,undefined4 *param_2)
   int iVar1;
   undefined4 uStack_14;
   undefined4 uStack_10;
-  
+
   switch(param_2[2]) {
   case 0:
     ov07_02222508(param_2 + 5,(int)(short)param_2[0xf],(int)(short)param_2[0x11],

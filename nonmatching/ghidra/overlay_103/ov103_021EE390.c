@@ -52,7 +52,7 @@ void ov103_021EE390(int param_1,undefined4 param_2,undefined4 param_3,undefined4
   undefined *puVar1;
   int iVar2;
   uint uVar3;
-  
+
   FontID_Alloc(4,0x9d,param_3,param_4,param_4);
   uVar3 = 0;
   puVar1 = &ov103_021EEEC4;

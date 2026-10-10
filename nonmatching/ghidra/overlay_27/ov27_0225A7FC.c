@@ -53,7 +53,7 @@ void ov27_0225A7FC(int param_1)
 
 {
   int iVar1;
-  
+
   switch(*(byte *)(*(int *)(param_1 + 0x10) + 0xd2) & 0x3f) {
   case 0:
     ov27_0225A7B0();

@@ -64,7 +64,7 @@ int ov13_02221AF4(int param_1)
   uint uVar4;
   int iVar5;
   undefined1 auStack_1c [8];
-  
+
   ov13_02222968(auStack_1c,param_1 + 0x10,8);
   uVar2 = ov13_02222A9C(&ov13_02245A20);
   iVar3 = ov13_022227A0(auStack_1c,8,&ov13_02245A20,uVar2);

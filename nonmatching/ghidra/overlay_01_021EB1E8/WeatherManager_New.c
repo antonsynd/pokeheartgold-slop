@@ -54,7 +54,7 @@ WeatherManager_New(undefined4 param_1,undefined4 param_2,undefined4 param_3,unde
   undefined4 uVar2;
   int iVar3;
   undefined4 *puVar4;
-  
+
   puVar1 = (undefined4 *)Heap_Alloc(4,0x18,param_3,param_4,param_4);
   iVar3 = 0x18;
   puVar4 = puVar1;

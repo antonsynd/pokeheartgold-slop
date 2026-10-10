@@ -67,7 +67,7 @@ undefined4 sub_0205D0A8(undefined4 param_1)
   undefined4 uVar2;
   undefined4 uVar3;
   int iVar4;
-  
+
   uVar1 = PlayerAvatar_GetMapObject();
   uVar2 = MapObject_GetNextFacingDirection();
   uVar3 = sub_0205D240(param_1,uVar2);

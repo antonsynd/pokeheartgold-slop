@@ -61,7 +61,7 @@ void ov96_021E9204(undefined4 param_1,undefined4 param_2,undefined4 param_3,unde
   undefined4 uStack_1c;
   undefined4 uStack_18;
   undefined4 uStack_14;
-  
+
   uStack_20 = 0;
   uStack_1c = 0;
   uStack_18 = 0;

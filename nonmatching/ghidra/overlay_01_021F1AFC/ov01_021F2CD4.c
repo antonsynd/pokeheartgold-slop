@@ -59,7 +59,7 @@ undefined4 ov01_021F2CD4(int param_1,undefined4 param_2,undefined4 param_3,undef
   int iStack_14;
   int iStack_10;
   undefined4 uStack_c;
-  
+
   uStack_c = param_4;
   MapObject_CopyPositionVector(*(undefined4 *)(param_1 + 0x3c),auStack_18);
   iStack_14 = iStack_14 + *(int *)(param_1 + 0x20);

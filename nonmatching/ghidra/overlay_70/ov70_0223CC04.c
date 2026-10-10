@@ -53,7 +53,7 @@ void ov70_0223CC04(undefined4 param_1,undefined4 param_2,undefined4 param_3,int 
 {
   undefined4 uVar1;
   undefined4 uVar2;
-  
+
   uVar2 = 0x10200;
   if (param_4 == 0) {
     uVar1 = 2;

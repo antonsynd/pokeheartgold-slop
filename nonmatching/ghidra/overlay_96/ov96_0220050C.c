@@ -60,7 +60,7 @@ void ov96_0220050C(int param_1,int param_2,int param_3)
   undefined4 uStack_24;
   undefined4 uStack_20;
   undefined1 auStack_1c [12];
-  
+
   iVar1 = param_3 >> 0x1f;
   iVar1 = (((uint)(param_3 * 0x400000 + iVar1) >> 0x16 | iVar1 << 10) - iVar1) * 0x10000;
   uStack_28 = 0;

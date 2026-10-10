@@ -56,7 +56,7 @@ void BattleController_EmitChangeForm(int param_1,int param_2,undefined4 param_3,
   undefined1 uStack_1f;
   undefined4 uStack_1c;
   undefined4 uStack_18;
-  
+
   uStack_24 = 0x2d;
   iVar2 = param_2 * 0xc0;
   uStack_22 = *(undefined2 *)(*(int *)(param_1 + 0x30) + iVar2 + 0x2d40);

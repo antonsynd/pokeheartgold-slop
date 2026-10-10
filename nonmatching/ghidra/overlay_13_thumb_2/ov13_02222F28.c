@@ -71,7 +71,7 @@ int ov13_02222F28(undefined4 *param_1,undefined4 param_2,undefined4 param_3,unde
   undefined4 uStack_48;
   undefined1 auStack_44 [44];
   undefined4 uStack_18;
-  
+
   bVar2 = true;
   iStack_4c = -1;
   bVar1 = false;

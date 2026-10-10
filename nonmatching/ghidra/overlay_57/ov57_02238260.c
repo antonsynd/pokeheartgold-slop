@@ -69,7 +69,7 @@ undefined4 ov57_02238260(int param_1,int param_2)
   undefined4 uStack_20;
   undefined4 uStack_1c;
   undefined4 uStack_18;
-  
+
   uVar3 = *(undefined4 *)(param_1 + 0xdc);
   uVar2 = *(undefined4 *)(param_1 + 0xe0);
   iVar1 = param_1 + 0x34c + param_2 * 0x10;

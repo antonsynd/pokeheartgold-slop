@@ -58,7 +58,7 @@ void ov90_0225B9A8(int param_1,undefined4 param_2,undefined4 param_3,undefined4 
   int iVar4;
   int iVar5;
   undefined4 uStack_18;
-  
+
   uStack_18 = param_4;
   uVar2 = sub_0202C6F4(*(undefined4 *)(param_1 + 0xc));
   iVar5 = 0;

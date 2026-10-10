@@ -52,7 +52,7 @@ void ov71_022499A4(int param_1,int *param_2)
 
 {
   int iVar1;
-  
+
   *param_2 = param_1;
   param_2[3] = *(int *)(param_1 + 0x2c);
   param_2[2] = *(int *)(param_1 + 0x28);

@@ -93,7 +93,7 @@ undefined4 PokemonSummary_Init(undefined *param_1)
   undefined4 *puVar3;
   undefined *puVar4;
   undefined4 uVar5;
-  
+
   Main_SetVBlankIntrCB((undefined *)0x0,(undefined *)0x0);
   HBlankInterruptDisable();
   GfGfx_DisableEngineAPlanes();

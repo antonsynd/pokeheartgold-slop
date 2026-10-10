@@ -49,7 +49,7 @@ void ov01_021FA8F8(int param_1)
 
 {
   int iVar1;
-  
+
   iVar1 = *(int *)(param_1 + 0x100);
   *(undefined2 *)(iVar1 + 6) = 1;
   SysTask_Destroy(*(undefined4 *)(iVar1 + 0x18));

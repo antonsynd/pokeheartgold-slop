@@ -54,7 +54,7 @@ void ov49_0225DA70(int param_1,int param_2)
   int iVar3;
   int iVar4;
   int iVar5;
-  
+
   iVar5 = 0;
   iVar4 = 0;
   iVar3 = param_1 + 0x8c;

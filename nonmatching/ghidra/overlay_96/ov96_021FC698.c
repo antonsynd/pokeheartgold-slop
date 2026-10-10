@@ -54,7 +54,7 @@ void ov96_021FC698(int param_1,uint param_2,undefined4 param_3)
   int iVar1;
   undefined4 extraout_r1;
   undefined4 *puVar2;
-  
+
   if (2 < param_2) {
     GF_AssertFail();
   }

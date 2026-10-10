@@ -49,7 +49,7 @@ undefined4 ov80_0222D244(void)
 
 {
   int iVar1;
-  
+
   iVar1 = sub_02037D78();
   if ((iVar1 != 1) && (iVar1 = sub_02035650(), iVar1 != 1)) {
     return 1;

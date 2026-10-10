@@ -51,7 +51,7 @@ void ov08_02224064(int *param_1,undefined4 param_2,undefined4 param_3,undefined4
 
 {
   undefined4 uVar1;
-  
+
   uVar1 = ov08_02223CD4(param_1,*(undefined1 *)
                                  (*param_1 + (uint)*(byte *)((int)param_1 + 0x114d) + 0x27),*param_1
                         ,param_4,param_4);

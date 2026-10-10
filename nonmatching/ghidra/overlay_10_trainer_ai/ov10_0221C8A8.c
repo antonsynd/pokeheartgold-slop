@@ -50,7 +50,7 @@ void ov10_0221C8A8(undefined4 param_1,int param_2)
 {
   int iVar1;
   int iVar2;
-  
+
   ov10_0221EF24(param_2,1);
   iVar1 = ov10_0221EEF0(param_2);
   iVar2 = ov10_0221EEF0(param_2);

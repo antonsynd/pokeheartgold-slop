@@ -66,7 +66,7 @@ void ov80_02238B7C(undefined4 *param_1)
   int iVar7;
   undefined4 uStack_28;
   undefined4 uStack_24;
-  
+
   iVar1 = Frontier_GetLaunchArgs(param_1[2]);
   iVar2 = func_0x022293a8(param_1 + 7);
   iVar7 = (*(short *)((int)param_1 + 0xaa) + iVar2) * 0x10000 >> 0x10;

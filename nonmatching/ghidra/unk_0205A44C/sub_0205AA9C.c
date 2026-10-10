@@ -65,7 +65,7 @@ void sub_0205AA9C(undefined *param_1,int param_2,int param_3,undefined *param_4,
   uint uVar6;
   int iVar7;
   uint uVar5;
-  
+
   puVar3 = NewMsgDataFromNarc(1,0x1b,0x2e2,4);
   if (param_2 == 0) {
     puVar4 = (undefined *)sub_02035798(param_3 + -1);

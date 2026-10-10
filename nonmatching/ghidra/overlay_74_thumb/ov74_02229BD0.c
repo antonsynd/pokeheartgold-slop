@@ -53,7 +53,7 @@ void ov74_02229BD0(void)
 {
   int iVar1;
   int iVar2;
-  
+
   sub_0203769C();
   iVar1 = sub_020373B4();
   if (iVar1 != 0) {

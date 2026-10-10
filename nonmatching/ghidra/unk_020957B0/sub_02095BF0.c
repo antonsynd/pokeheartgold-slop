@@ -53,7 +53,7 @@ int sub_02095BF0(undefined4 param_1,char *param_2,byte *param_3,int param_4,char
   uint uVar5;
   int iVar6;
   int iVar7;
-  
+
   bVar1 = param_3[1];
   iVar4 = 0;
   bVar2 = *param_3;

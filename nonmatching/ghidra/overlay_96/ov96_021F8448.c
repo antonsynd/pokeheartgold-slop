@@ -72,7 +72,7 @@ void ov96_021F8448(undefined4 *param_1,undefined4 param_2,undefined4 param_3,und
   undefined4 uStack_14;
   undefined4 uStack_10;
   undefined4 uStack_c;
-  
+
   uStack_24 = 0x3e9;
   uStack_20 = 0x3e9;
   uStack_1c = 0x3e9;

@@ -51,7 +51,7 @@ void sub_02035E9C(void)
 {
   int iVar1;
   uint uVar2;
-  
+
   uVar2 = 1;
   do {
     iVar1 = sub_020373B4(uVar2 & 0xffff);

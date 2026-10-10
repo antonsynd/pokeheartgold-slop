@@ -48,7 +48,7 @@ void ov96_02207800(int param_1)
 
 {
   undefined2 extraout_r1;
-  
+
   func_0x020f2998(*(ushort *)(param_1 + 0xb4) + 1,0x14); __asm__ volatile("movs %0, r1" : "=l"(extraout_r1) : : "cc");
   *(undefined2 *)(param_1 + 0xb4) = extraout_r1;
   return;

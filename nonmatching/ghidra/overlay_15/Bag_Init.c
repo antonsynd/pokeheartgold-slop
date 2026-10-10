@@ -104,7 +104,7 @@ undefined4 Bag_Init(undefined4 param_1)
   undefined4 uVar3;
   int iVar4;
   int iVar5;
-  
+
   Main_SetVBlankIntrCB(0,0);
   HBlankInterruptDisable();
   GfGfx_DisableEngineAPlanes();

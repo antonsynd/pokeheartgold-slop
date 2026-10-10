@@ -48,7 +48,7 @@ undefined4 ov73_021E6B6C(int param_1,undefined4 param_2,undefined4 param_3,undef
 
 {
   int iVar1;
-  
+
   if ((*(char *)(param_1 + 0x4a2b) == '\0') &&
      (iVar1 = sub_02037030(0x73,0,0,param_4,param_4), iVar1 == 1)) {
     *(undefined1 *)(param_1 + 0x4a2b) = 1;

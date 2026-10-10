@@ -50,7 +50,7 @@ void ov52_021E921C(ushort *param_1,undefined4 param_2,undefined4 param_3,undefin
 {
   int iVar1;
   undefined4 uStack_8;
-  
+
   *param_1 = *param_1 + 0x14;
   if (0x168 < *param_1) {
     *param_1 = 0;

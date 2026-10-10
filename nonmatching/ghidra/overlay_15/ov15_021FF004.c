@@ -58,7 +58,7 @@ void ov15_021FF004(undefined4 *param_1,undefined4 param_2,undefined4 param_3,und
   undefined1 uStack_e;
   undefined1 uStack_d;
   undefined4 uStack_c;
-  
+
   uStack_20 = *param_1;
   uStack_1c = 5;
   uStack_18 = 0x81;

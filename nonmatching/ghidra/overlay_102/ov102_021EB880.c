@@ -68,7 +68,7 @@ void ov102_021EB880(int param_1,undefined4 param_2,uint param_3,undefined4 param
   int iStack_2c;
   undefined1 auStack_28 [16];
   undefined4 uStack_18;
-  
+
   uStack_18 = param_4;
   if (0x337 < param_3) {
     GF_AssertFail();

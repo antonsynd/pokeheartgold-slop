@@ -58,7 +58,7 @@ uint ov96_02207300(undefined4 param_1,uint param_2,undefined4 param_3,undefined4
   undefined4 uStack_cc;
   undefined1 auStack_c4 [96];
   undefined4 auStack_64 [20];
-  
+
   ov96_02206F1C(param_1,*param_4,param_4[1],auStack_64,abStack_d4);
   iVar2 = 0;
   if (abStack_d4[0] != 0) {

@@ -60,7 +60,7 @@ undefined4 ov37_021E6980(undefined4 *param_1,undefined4 param_2)
   undefined1 uStack_10;
   undefined1 uStack_f;
   undefined1 uStack_d;
-  
+
   iVar1 = ov37_021E76A0(param_1[0xc]);
   if (iVar1 != 0) {
     func_0x020d4994(&uStack_20,0,0x14);

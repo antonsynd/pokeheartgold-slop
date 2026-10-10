@@ -49,7 +49,7 @@ void ov103_021ED0A0(int param_1)
 {
   uint uVar1;
   int iVar2;
-  
+
   uVar1 = 0;
   iVar2 = 0;
   do {

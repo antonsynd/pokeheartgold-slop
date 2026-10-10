@@ -53,7 +53,7 @@ void ov70_02239C6C(int param_1)
 
 {
   undefined4 uVar1;
-  
+
   uVar1 = *(undefined4 *)(param_1 + 4);
   GfGfxLoader_GXLoadPal(100,5,4,0,0x200,0x3d);
   GfGfxLoader_LoadCharData(100,0x11,uVar1,5,0,0xa800,1,0x3d);

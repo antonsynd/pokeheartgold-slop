@@ -76,7 +76,7 @@ void ov96_021FF0BC(int param_1,int param_2,undefined4 *param_3,undefined4 *param
   bool bVar13;
   byte in_Q;
   ulonglong uVar14;
-  
+
   iVar3 = 0;
   iVar11 = 0;
   puVar7 = param_3;

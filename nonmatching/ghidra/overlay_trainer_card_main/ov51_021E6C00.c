@@ -54,7 +54,7 @@ void ov51_021E6C00(void)
   undefined4 uStack_14;
   undefined4 uStack_10;
   undefined4 uStack_c;
-  
+
   uVar1 = func_0x020ccbb0(0x1000);
   uStack_c = func_0x020ccbb0(0x1000);
   uStack_14 = 0;

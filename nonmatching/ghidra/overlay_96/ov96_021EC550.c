@@ -65,7 +65,7 @@ void ov96_021EC550(int param_1)
   undefined4 uStack_20;
   undefined4 uStack_1c;
   undefined4 uStack_18;
-  
+
   iVar2 = 0;
   uStack_44 = 0;
   uStack_3c = 0;

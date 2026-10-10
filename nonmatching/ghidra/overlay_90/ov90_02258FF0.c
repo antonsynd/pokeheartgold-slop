@@ -58,7 +58,7 @@ void ov90_02258FF0(undefined4 *param_1,undefined4 param_2,uint *param_3,uint par
   undefined4 uVar1;
   uint *puVar2;
   uint uVar3;
-  
+
   SetBothScreensModesAndDisable(param_2);
   uVar1 = BgConfig_Alloc(param_5);
   *param_1 = uVar1;

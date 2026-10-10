@@ -49,7 +49,7 @@ int ov80_0222BE24(undefined4 *param_1,uint param_2,undefined4 param_3,undefined4
 
 {
   int iVar1;
-  
+
   if (param_2 < 0x8000) {
     return 0;
   }

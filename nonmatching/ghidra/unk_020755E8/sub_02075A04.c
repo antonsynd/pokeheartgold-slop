@@ -52,7 +52,7 @@ undefined1 sub_02075A04(int param_1)
 
 {
   int iVar1;
-  
+
   if (*(char *)(param_1 + 0x8a) == '\0') {
     iVar1 = sub_020758D0();
     if (iVar1 != 0) {

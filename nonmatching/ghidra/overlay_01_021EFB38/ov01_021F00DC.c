@@ -50,7 +50,7 @@ void ov01_021F00DC(undefined4 param_1,int param_2,undefined4 param_3,undefined4 
 
 {
   undefined4 uVar1;
-  
+
   uVar1 = SysTask_CreateOnVWaitQueue(0x21f010d,param_2,0x400,param_4,param_4);
   *(undefined4 *)(param_2 + 0x28) = uVar1;
   uVar1 = ov01_021FB530(*(undefined4 *)(param_2 + 0x20),0x21f01d1,param_2);

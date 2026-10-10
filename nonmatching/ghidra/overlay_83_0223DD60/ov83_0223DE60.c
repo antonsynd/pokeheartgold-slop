@@ -66,7 +66,7 @@ undefined4 ov83_0223DE60(undefined4 param_1,int *param_2)
   int iVar2;
   undefined4 uVar3;
   int iVar4;
-  
+
   iVar2 = OverlayManager_GetData();
   if (*(char *)(iVar2 + 0x7fe) == '\x01') {
     if (*param_2 == 1) {

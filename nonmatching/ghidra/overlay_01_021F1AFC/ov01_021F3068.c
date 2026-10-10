@@ -49,7 +49,7 @@ undefined4 ov01_021F3068(int param_1)
 
 {
   int iVar1;
-  
+
   iVar1 = func_0x0224953c(*(undefined4 *)(param_1 + 0xc));
   if (iVar1 == 1) {
     func_0x02249548(*(undefined4 *)(param_1 + 0xc));

@@ -55,7 +55,7 @@ uint ov96_021F342C(int param_1,undefined4 param_2,undefined4 param_3,undefined4 
   int iVar3;
   undefined4 uVar4;
   uint uVar5;
-  
+
   uVar5 = 0xc;
   if (*(char *)(param_1 + 0x4ea) == '\x04') {
     return 0xc;

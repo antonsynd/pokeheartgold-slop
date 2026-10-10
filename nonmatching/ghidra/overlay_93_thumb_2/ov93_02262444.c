@@ -53,7 +53,7 @@ void ov93_02262444(int param_1,undefined4 *param_2)
 {
   undefined4 *puVar1;
   int iVar2;
-  
+
   iVar2 = 0;
   do {
     puVar1 = (undefined4 *)

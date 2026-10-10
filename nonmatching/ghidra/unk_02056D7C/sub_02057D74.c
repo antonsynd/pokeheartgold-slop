@@ -62,7 +62,7 @@ void sub_02057D74(void)
   ushort *puStack_20;
   byte abStack_1c [4];
   undefined4 uStack_18;
-  
+
   uStack_18 = in_r3;
   sub_0203993C();
   iVar1 = sub_0203774C();

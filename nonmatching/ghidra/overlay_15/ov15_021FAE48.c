@@ -64,7 +64,7 @@ undefined4 ov15_021FAE48(int param_1)
   undefined4 uVar4;
   uint uVar5;
   int iVar6;
-  
+
   uVar5 = 0xffffffff;
   iVar6 = *(int *)(param_1 + 0x234) + 4 + (uint)*(byte *)(*(int *)(param_1 + 0x234) + 100) * 0xc;
   uVar2 = ov15_021FAD28(*(int *)(param_1 + 0x66c));

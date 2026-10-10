@@ -54,7 +54,7 @@ void ov13_02222638(undefined4 *param_1,int param_2,uint param_3,uint param_4)
   int extraout_r1;
   int iVar5;
   uint uVar6;
-  
+
   iVar5 = param_1[2];
   uVar3 = 0;
   param_1[1] = 0;

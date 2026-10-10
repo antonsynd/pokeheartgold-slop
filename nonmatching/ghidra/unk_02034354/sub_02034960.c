@@ -61,7 +61,7 @@ void sub_02034960(int param_1,int param_2)
   uint in_r3;
   int iVar6;
   undefined4 uStack_18;
-  
+
   if (iRam021d4130 != 0) {
     uStack_18 = in_r3;
     if (param_1 != 2) {

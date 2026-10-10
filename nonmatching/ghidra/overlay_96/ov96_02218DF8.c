@@ -57,7 +57,7 @@ void ov96_02218DF8(int param_1,short *param_2)
   int iStack_18;
   int iStack_14;
   undefined4 uStack_10;
-  
+
   iStack_18 = 0;
   iStack_14 = 0;
   uStack_10 = 0;

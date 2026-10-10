@@ -51,7 +51,7 @@ void ov99_021E875C(int param_1)
 
 {
   uint uVar1;
-  
+
   NARC_Delete(*(undefined4 *)(param_1 + 8));
   uVar1 = 0;
   do {

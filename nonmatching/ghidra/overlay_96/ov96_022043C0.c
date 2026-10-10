@@ -53,7 +53,7 @@ uint ov96_022043C0(int param_1,undefined4 param_2,undefined4 param_3,undefined4 
   int iVar1;
   uint uVar2;
   uint uVar3;
-  
+
   uVar2 = 0xc;
   if (*(char *)(param_1 + 0xc9) == '\x04') {
     return 0;

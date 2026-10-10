@@ -49,7 +49,7 @@ uint ov13_02222730(uint param_1,int param_2,int param_3,int param_4,int param_5)
 {
   byte *pbVar1;
   int iVar2;
-  
+
   if (param_4 == 0) {
     ov13_02222768(0,param_5,param_3,0,0);
   }

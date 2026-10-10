@@ -48,7 +48,7 @@ void ov41_022496E8(undefined4 *param_1)
 
 {
   int iVar1;
-  
+
   func_0x02008780(*param_1);
   iVar1 = 0x10;
   do {

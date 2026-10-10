@@ -52,7 +52,7 @@ void ov96_0220B8F0(int param_1)
   int iVar1;
   int iVar2;
   undefined4 uStack_18;
-  
+
   uStack_18 = 0;
   param_1 = param_1 + 0x14;
   do {

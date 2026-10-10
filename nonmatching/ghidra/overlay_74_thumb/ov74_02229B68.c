@@ -53,7 +53,7 @@ void ov74_02229B68(undefined4 param_1)
 
 {
   undefined *puVar1;
-  
+
   if (puRam0223d0a4 == (undefined4 *)0x0) {
     ov74_02229E14();
     puRam0223d0a4 = (undefined4 *)Heap_Alloc(0xf,0x3d4);

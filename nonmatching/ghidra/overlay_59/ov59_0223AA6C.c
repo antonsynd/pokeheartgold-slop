@@ -50,7 +50,7 @@ void ov59_0223AA6C(int param_1)
 {
   undefined1 uVar1;
   ushort *puVar2;
-  
+
   ov59_0223AE88();
   MenuInputStateMgr_SetState
             (*(undefined4 *)(*(int *)(*(int *)(param_1 + 4) + 4) + 0x14),

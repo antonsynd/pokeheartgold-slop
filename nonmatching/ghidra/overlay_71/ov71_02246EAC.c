@@ -52,7 +52,7 @@ void ov71_02246EAC(int param_1,undefined4 param_2,undefined4 param_3,undefined4 
   int *piVar1;
   int iVar2;
   undefined4 uVar3;
-  
+
   if ((*(int *)(param_1 + *(int *)(param_1 + 0xf8) * 4 + 0xc4) == 0) &&
      (piVar1 = (int *)Heap_Alloc(0x38,0x18,param_3,param_4,param_4), piVar1 != (int *)0x0)) {
     *piVar1 = param_1;

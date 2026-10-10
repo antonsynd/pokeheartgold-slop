@@ -48,7 +48,7 @@ undefined4 ov103_021ED460(int param_1)
 
 {
   int iVar1;
-  
+
   iVar1 = IsPaletteFadeFinished();
   if (iVar1 == 1) {
     return *(undefined4 *)(*(int *)(param_1 + 0xc) + 0x2ec);

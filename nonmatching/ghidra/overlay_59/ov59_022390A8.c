@@ -50,7 +50,7 @@ undefined4 ov59_022390A8(int param_1,int param_2)
 {
   byte bVar1;
   short sVar2;
-  
+
   sVar2 = *(short *)(param_1 + 0x3e);
   if (param_2 == 0) {
     if (sVar2 == 0) {

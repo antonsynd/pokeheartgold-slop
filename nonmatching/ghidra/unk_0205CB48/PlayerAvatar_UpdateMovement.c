@@ -59,7 +59,7 @@ void PlayerAvatar_UpdateMovement(undefined4 param_1)
   int iVar2;
   undefined4 uVar3;
   int iVar4;
-  
+
   iVar1 = PlayerAvatar_GetMoveState();
   iVar2 = PlayerAvatar_GetPlayerMoveState(param_1);
   uVar3 = PlayerAvatar_GetMapObject(param_1);

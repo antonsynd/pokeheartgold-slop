@@ -49,7 +49,7 @@ void ov08_0222377C(int param_1,undefined4 param_2,undefined4 param_3,undefined4 
 
 {
   ushort uVar1;
-  
+
   FillBgTilemapRect(*(undefined4 *)(param_1 + 4),5,0,0,0,0x20,0x13,0x11,param_4);
   uVar1 = 0;
   do {

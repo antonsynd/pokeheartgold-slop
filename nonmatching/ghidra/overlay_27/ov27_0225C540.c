@@ -53,7 +53,7 @@ void ov27_0225C540(int param_1)
 
 {
   undefined4 uVar1;
-  
+
   uVar1 = NARC_New(0xef,8);
   GfGfxLoader_LoadCharDataFromOpenNarc(uVar1,1,*(undefined4 *)(param_1 + 0x18),4,0,0,0,8);
   GfGfxLoader_LoadScrnDataFromOpenNarc(uVar1,10,*(undefined4 *)(param_1 + 0x18),4,0,0,0,8);

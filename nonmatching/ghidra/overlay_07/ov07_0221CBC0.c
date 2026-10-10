@@ -57,7 +57,7 @@ void ov07_0221CBC0(int param_1,undefined4 param_2,undefined4 param_3,undefined4 
   undefined1 auStack_24 [4];
   int iStack_20;
   undefined4 uStack_18;
-  
+
   iVar1 = *(int *)(param_1 + 0x18);
   *(int **)(param_1 + 0x18) = (int *)(iVar1 + 4);
   iVar3 = *(int *)(iVar1 + 4);

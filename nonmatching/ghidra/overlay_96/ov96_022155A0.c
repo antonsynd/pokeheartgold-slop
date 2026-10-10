@@ -53,7 +53,7 @@ void ov96_022155A0(undefined *param_1,int param_2,undefined4 *param_3)
   char cVar1;
   undefined4 uVar2;
   uint uVar3;
-  
+
   uVar3 = (uint)*(byte *)(param_2 + 0x9d) + (uint)*(byte *)(param_2 + 0x99) & 0xff;
   cVar1 = *(char *)(param_2 + 0x9c);
   if (cVar1 == '\0') {

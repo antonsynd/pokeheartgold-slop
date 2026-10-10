@@ -49,7 +49,7 @@ undefined4 ov08_0221C9A4(int *param_1)
 
 {
   int iVar1;
-  
+
   ov08_0221D840(param_1,5);
   iVar1 = func_0x02077d88(*(undefined2 *)(*param_1 + 0x22),0x25,*(undefined4 *)(*param_1 + 0xc));
   if (iVar1 != 0) {

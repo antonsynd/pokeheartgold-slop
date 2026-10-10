@@ -55,7 +55,7 @@ void ov41_022482B8(int param_1,int *param_2,int *param_3,undefined4 param_4)
   int iStack_20;
   int iStack_1c;
   undefined4 uStack_18;
-  
+
   iVar3 = 0;
   iVar4 = 0;
   uStack_18 = param_4;

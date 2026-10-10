@@ -49,7 +49,7 @@ void ov15_021FA008(int param_1)
 {
   undefined4 uVar1;
   uint uVar2;
-  
+
   uVar2 = 0;
   do {
     uVar1 = String_New(0x12,6);

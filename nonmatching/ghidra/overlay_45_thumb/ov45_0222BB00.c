@@ -52,7 +52,7 @@ void ov45_0222BB00(int param_1,undefined4 *param_2,uint param_3,undefined4 param
   int iVar3;
   undefined4 *puVar4;
   undefined4 *puVar5;
-  
+
   puVar4 = (undefined4 *)(param_1 + 0x20);
   iVar3 = 0x12;
   puVar5 = param_2;

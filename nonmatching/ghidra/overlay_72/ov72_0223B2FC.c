@@ -50,7 +50,7 @@ void ov72_0223B2FC(int param_1,int param_2)
   int iStack_10;
   int iStack_c;
   undefined4 uStack_8;
-  
+
   iStack_10 = (uint)*(ushort *)(param_2 * 4 + 0x223b4c0) << 0xc;
   iStack_c = (*(int *)(param_1 + 0x34) + (uint)*(ushort *)(param_2 * 4 + 0x223b4c2)) * 0x1000;
   uStack_8 = 0;

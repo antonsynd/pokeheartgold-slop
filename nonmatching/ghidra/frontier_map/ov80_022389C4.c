@@ -54,7 +54,7 @@ void ov80_022389C4(int param_1)
   undefined2 uVar2;
   int *piVar3;
   int iVar4;
-  
+
   iVar4 = 0;
   do {
     piVar3 = (int *)sub_0209686C(*(undefined4 *)(param_1 + 8),iVar4);

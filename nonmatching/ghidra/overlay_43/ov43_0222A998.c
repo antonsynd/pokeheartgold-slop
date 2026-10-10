@@ -53,7 +53,7 @@ void ov43_0222A998(int param_1,undefined4 param_2)
   int iVar3;
   int iVar4;
   int iVar5;
-  
+
   puVar2 = &ov43_0222F0C0;
   iVar5 = 0;
   iVar4 = param_1 + 0x208;

@@ -52,7 +52,7 @@ void ov18_021F7124(int param_1,undefined4 param_2,undefined4 param_3,undefined4 
 
 {
   undefined4 uVar1;
-  
+
   uVar1 = func_0x02019ba4(&ov18_021FBA40,&ov18_021FBB94,0x21fb638,param_1,1,0,0x25,param_4);
   *(undefined4 *)(param_1 + 0x1864) = uVar1;
   ov18_021F11C0(param_1,0,1);

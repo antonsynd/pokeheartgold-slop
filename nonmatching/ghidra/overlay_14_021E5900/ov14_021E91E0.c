@@ -53,7 +53,7 @@ undefined4 ov14_021E91E0(int param_1)
 {
   int iVar1;
   int iVar2;
-  
+
   iVar2 = *(int *)(param_1 + 0x34);
   if (*(short *)(iVar2 + 0x10) == 0) {
     iVar1 = Party_GetCount(*(undefined4 *)(param_1 + 8));

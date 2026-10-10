@@ -54,7 +54,7 @@ undefined4 ScratchOffCards_Exit(undefined4 param_1)
 
 {
   int iVar1;
-  
+
   iVar1 = OverlayManager_GetData();
   sub_02021238();
   **(ushort **)(iVar1 + 0x374) = (ushort)*(byte *)(iVar1 + 0xc);

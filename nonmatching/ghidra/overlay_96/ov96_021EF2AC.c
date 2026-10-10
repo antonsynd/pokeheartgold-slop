@@ -50,7 +50,7 @@ void ov96_021EF2AC(void)
 
 {
   undefined4 uVar1;
-  
+
   PokeathlonCourse_GetSaveData();
   uVar1 = Save_VarsFlags_Get();
   Save_VarsFlags_CheckFlagInArray(uVar1,0xef);

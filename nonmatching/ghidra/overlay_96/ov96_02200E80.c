@@ -49,7 +49,7 @@ void ov96_02200E80(int param_1,uint *param_2)
   uint uVar1;
   uint uVar2;
   int iVar3;
-  
+
   iVar3 = 0;
   do {
     uVar1 = *param_2;

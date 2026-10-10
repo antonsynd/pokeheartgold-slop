@@ -51,7 +51,7 @@ void ov45_0222C858(int param_1,undefined4 param_2,undefined4 param_3,int param_4
   int iVar1;
   int iVar2;
   uint uVar3;
-  
+
   iVar1 = ov45_0222EC68(param_1);
   if (iVar1 != -1) {
     uVar3 = 0;

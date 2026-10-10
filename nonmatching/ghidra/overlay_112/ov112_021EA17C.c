@@ -48,7 +48,7 @@ void ov112_021EA17C(int param_1)
 
 {
   undefined4 uVar1;
-  
+
   uVar1 = WaitingIcon_New(param_1 + 0x1ea88,0x3e2);
   *(undefined4 *)(param_1 + 0x1ec4c) = uVar1;
   return;

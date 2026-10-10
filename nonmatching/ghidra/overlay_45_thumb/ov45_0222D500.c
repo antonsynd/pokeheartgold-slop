@@ -52,7 +52,7 @@ void ov45_0222D500(undefined1 *param_1,undefined4 *param_2,undefined4 param_3,un
   undefined1 uStack_20;
   undefined1 auStack_1c [16];
   undefined4 uStack_c;
-  
+
   uStack_c = param_4;
   func_0x020dc514(auStack_1c,auStack_28,*param_2,param_2[1]);
   *param_1 = auStack_28[0];

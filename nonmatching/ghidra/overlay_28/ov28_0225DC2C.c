@@ -64,7 +64,7 @@ void ov28_0225DC2C(undefined4 param_1,int param_2)
 
 {
   int iVar1;
-  
+
   if (((int)((uint)(byte)(*(undefined **)(param_2 + 0x18))[0xd2] << 0x18) < 0) &&
      (iVar1 = FieldSystem_IsPlayerMovementAllowed(*(undefined **)(param_2 + 0x18)), iVar1 != 0)) {
     *(byte *)(*(int *)(param_2 + 0x18) + 0xd2) = *(byte *)(*(int *)(param_2 + 0x18) + 0xd2) & 0x7f;

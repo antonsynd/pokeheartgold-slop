@@ -59,7 +59,7 @@ void ov96_02208784(int param_1,int param_2,undefined4 param_3,undefined4 param_4
   int iStack_20;
   byte abStack_1c [4];
   undefined4 uStack_18;
-  
+
   iVar7 = 0;
   iVar5 = param_1;
   uStack_18 = param_4;

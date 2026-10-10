@@ -52,7 +52,7 @@ void ov15_021FA6F4(undefined4 param_1,int param_2,undefined4 param_3,undefined4 
 
 {
   undefined4 uVar1;
-  
+
   uVar1 = ov15_021FA074();
   ov15_021FD574(param_1,0,uVar1,0,param_4);
   ov15_021FF364(param_1,(int)*(short *)(param_2 + 6),0xffffffff,0);

@@ -54,7 +54,7 @@ void sub_0200ECBC(undefined4 param_1,undefined4 param_2,char param_3,int param_4
   char cVar4;
   char cVar5;
   uint uVar6;
-  
+
   uVar6 = param_4 - 1;
   cVar5 = param_3 + -9;
   FillBgTilemapRect(param_1,param_2,param_8,cVar5,uVar6 & 0xff,1,1,param_7);

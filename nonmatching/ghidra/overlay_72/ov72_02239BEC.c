@@ -49,7 +49,7 @@ undefined4 ov72_02239BEC(int param_1)
 
 {
   int iVar1;
-  
+
   iVar1 = ov72_0223A588();
   if (iVar1 != 0) {
     if (iVar1 < 1) {

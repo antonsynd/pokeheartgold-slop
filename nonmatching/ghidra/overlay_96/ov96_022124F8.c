@@ -90,7 +90,7 @@ void ov96_022124F8(void)
   undefined4 uStack_ac;
   undefined4 uStack_a8;
   int aiStack_a4 [36];
-  
+
   iVar1 = PokeathlonCourse_GetHeapAllocPtr4();
   iVar5 = 0;
   uStack_b0 = 0;

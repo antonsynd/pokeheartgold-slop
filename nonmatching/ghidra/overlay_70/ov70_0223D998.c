@@ -64,7 +64,7 @@ undefined4 ov70_0223D998(int *param_1)
   uint uVar2;
   undefined *puVar3;
   int iVar4;
-  
+
   uVar2 = TouchscreenListMenu_HandleInput((undefined *)param_1[0x474]);
   if (uVar2 < 4) {
     if (uVar2 == 0) {

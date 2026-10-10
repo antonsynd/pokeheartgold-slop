@@ -50,7 +50,7 @@ int * bn_expand2(int *param_1,int param_2)
 
 {
   int iVar1;
-  
+
   if (param_1[2] < param_2) {
     if ((param_1[4] & 2U) != 0) {
       return (int *)0x0;

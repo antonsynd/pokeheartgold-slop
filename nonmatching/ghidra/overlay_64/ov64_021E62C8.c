@@ -63,7 +63,7 @@ undefined4 ov64_021E62C8(int param_1,undefined4 param_2,undefined4 param_3,undef
   uint uVar1;
   undefined4 uVar2;
   int iVar3;
-  
+
   switch(*(undefined4 *)(param_1 + 0x1c8)) {
   case 0:
     iVar3 = TouchscreenHitbox_FindRectAtTouchNew(&UNK_021e6e7c);

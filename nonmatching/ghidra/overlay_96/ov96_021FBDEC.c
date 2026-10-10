@@ -49,7 +49,7 @@ int ov96_021FBDEC(int param_1)
 {
   ulonglong uVar1;
   ulonglong uVar2;
-  
+
   uVar1 = _s32_div_f(param_1,0x1e);
   uVar2 = _s32_div_f(param_1,0x1e);
   uVar2 = _s32_div_f((int)(uVar2 >> 0x20) * 10,0x1e);

@@ -48,7 +48,7 @@ undefined4 BN_set_word(undefined4 *param_1,undefined4 param_2)
 
 {
   undefined4 *puVar1;
-  
+
   puVar1 = param_1;
   if ((int)param_1[2] < 1) {
     puVar1 = (undefined4 *)bn_expand2(param_1,2);

@@ -53,7 +53,7 @@ undefined4 ov18_021F6258(int param_1,uint param_2,uint param_3,undefined4 param_
   short sStack_18;
   short sStack_16;
   undefined4 uStack_14;
-  
+
   uStack_14 = param_4;
   func_0x0200de44(*(undefined4 *)(param_1 + 0x684),&sStack_16,&sStack_18);
   uVar1 = ov18_021F6214(param_1,5,&ov18_021FA310);

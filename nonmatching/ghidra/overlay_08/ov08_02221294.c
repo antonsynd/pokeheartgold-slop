@@ -53,7 +53,7 @@ void ov08_02221294(int *param_1)
 {
   byte bVar1;
   uint uVar2;
-  
+
   bVar1 = *(byte *)(*param_1 + 0x11);
   uVar2 = 0;
   do {

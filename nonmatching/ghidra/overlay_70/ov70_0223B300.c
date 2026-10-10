@@ -50,7 +50,7 @@ undefined4 ov70_0223B300(int param_1)
 
 {
   int iVar1;
-  
+
   *(int *)(param_1 + 0xf14) = *(int *)(param_1 + 0xf14) + -1;
   iVar1 = IsPaletteFadeFinished();
   if (iVar1 != 0) {

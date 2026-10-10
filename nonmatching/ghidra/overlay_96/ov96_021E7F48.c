@@ -53,7 +53,7 @@ void ov96_021E7F48(int param_1)
   int iVar3;
   int iVar4;
   int iVar5;
-  
+
   iVar1 = Save_Pokeathlon_FriendshipRecords_Get(**(undefined4 **)(param_1 + 0x1f8));
   uVar2 = ov96_021E5F24(param_1);
   iVar5 = param_1 + 0x3f0 + (uVar2 & 0xff) * 0x7c;

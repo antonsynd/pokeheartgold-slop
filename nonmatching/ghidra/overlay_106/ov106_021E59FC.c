@@ -50,7 +50,7 @@ void ov106_021E59FC(int param_1,undefined4 *param_2,undefined4 param_3,undefined
 
 {
   undefined4 uVar1;
-  
+
   uVar1 = param_2[6];
   *(undefined4 *)(param_1 + 0x400) = param_2[5];
   *(undefined4 *)(param_1 + 0x404) = uVar1;

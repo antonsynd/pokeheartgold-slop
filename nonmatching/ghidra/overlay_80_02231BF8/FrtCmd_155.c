@@ -56,7 +56,7 @@ undefined4 FrtCmd_155(undefined4 *param_1)
   undefined4 uVar2;
   int iVar3;
   int iVar4;
-  
+
   iVar1 = Frontier_GetData(*(undefined4 *)*param_1);
   iVar4 = *(int *)(iVar1 + 0xc);
   uVar2 = Party_GetMonByIndex(*(undefined4 *)(iVar4 + 4),0);

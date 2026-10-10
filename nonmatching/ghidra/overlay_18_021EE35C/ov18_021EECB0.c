@@ -53,7 +53,7 @@ void ov18_021EECB0(int param_1,undefined4 param_2,int param_3)
 {
   undefined4 uVar1;
   int iVar2;
-  
+
   iVar2 = param_1 + 0xc;
   param_3 = param_3 * 0x10;
   FillWindowPixelBuffer(iVar2 + param_3,0);

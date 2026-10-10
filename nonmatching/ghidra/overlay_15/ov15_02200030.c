@@ -48,7 +48,7 @@ void ov15_02200030(int param_1,int param_2,undefined4 param_3,undefined4 param_4
 
 {
   int iVar1;
-  
+
   if (param_2 < 8) {
     iVar1 = *(int *)(*(int *)(param_1 + 0x6a0) + 0xc);
     func_0x020cfd70(iVar1 + 0x100,0,0x100,param_4,param_4);

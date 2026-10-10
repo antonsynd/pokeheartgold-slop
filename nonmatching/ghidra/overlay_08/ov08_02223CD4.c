@@ -48,7 +48,7 @@ short ov08_02223CD4(int *param_1,int param_2)
 {
   short sVar1;
   uint uVar2;
-  
+
   uVar2 = (uint)*(byte *)((int)param_1 + 0x114d);
   param_2 = param_2 + (uint)*(byte *)(*param_1 + uVar2 + 0x2c) * 6;
   sVar1 = (short)param_1[uVar2 * 0x24 + param_2 + 0xf];

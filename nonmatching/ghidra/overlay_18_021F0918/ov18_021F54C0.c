@@ -54,7 +54,7 @@ void ov18_021F54C0(undefined4 *param_1,undefined2 param_2,undefined2 param_3,und
   short sStack_10;
   short sStack_e;
   undefined4 uStack_c;
-  
+
   *(undefined2 *)(param_1 + 6) = param_2;
   *(undefined2 *)((int)param_1 + 0x1a) = param_3;
   uStack_c = param_4;

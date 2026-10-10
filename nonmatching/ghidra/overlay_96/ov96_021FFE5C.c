@@ -51,7 +51,7 @@ void ov96_021FFE5C(int param_1,int param_2,int param_3)
   int iVar2;
   int iVar3;
   byte bVar4;
-  
+
   iVar3 = param_1 + 0x644;
   iVar2 = param_1 + param_2 * 0xd4;
   bVar4 = 0;

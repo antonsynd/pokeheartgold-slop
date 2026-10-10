@@ -55,7 +55,7 @@ void ov01_021F9BD4(undefined4 param_1,int param_2)
   int iVar1;
   int iVar2;
   int *piVar3;
-  
+
   ov01_021FA1DC(param_2);
   iVar1 = ov01_021FA200(param_2);
   iVar2 = ov01_021FA20C(param_2);

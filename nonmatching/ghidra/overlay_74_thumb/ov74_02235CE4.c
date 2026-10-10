@@ -60,7 +60,7 @@ void ov74_02235CE4(int param_1,undefined4 param_2,int param_3)
   ushort unaff_r4;
   __asm__ volatile("movs %0, r4" : "=l"(unaff_r4) : : "cc");
 
-  
+
   switch(param_2) {
   case 3:
     unaff_r4 = (ushort)*(undefined4 *)(param_3 + 4);

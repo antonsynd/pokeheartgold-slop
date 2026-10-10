@@ -50,7 +50,7 @@ undefined4 ov70_0223E5C8(void)
 {
   int iVar1;
   int iVar2;
-  
+
   iVar1 = ov70_0223E49C();
   if (iVar1 == 0) {
     return 0;

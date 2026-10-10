@@ -56,7 +56,7 @@ void ov45_0222BA3C(undefined4 *param_1,undefined4 param_2,undefined4 param_3,und
   int iVar2;
   undefined4 uVar3;
   undefined4 *puVar4;
-  
+
   iVar2 = ov45_0222BADC(param_1 + 0x42,*param_1,param_3,param_4,param_4);
   if (iVar2 == 0) {
     param_1[0x14b] = 1;

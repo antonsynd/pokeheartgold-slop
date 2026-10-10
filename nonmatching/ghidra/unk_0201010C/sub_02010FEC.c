@@ -54,7 +54,7 @@ void sub_02010FEC(undefined4 param_1,undefined4 param_2,undefined4 param_3,int p
 {
   byte bVar1;
   byte bVar2;
-  
+
   bVar1 = sub_020132E8(param_2,param_3);
   bVar2 = sub_0201333C(param_3);
   if (param_4 == 0) {

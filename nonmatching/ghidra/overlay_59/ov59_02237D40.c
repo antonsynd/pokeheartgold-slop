@@ -59,7 +59,7 @@ int ov59_02237D40(undefined *param_1,undefined *param_2)
   undefined4 *puVar1;
   undefined *puVar2;
   int iVar3;
-  
+
   if (*(int *)param_2 == 0) {
     ov59_02238624();
     Heap_Create(3,0x86,0x20000);

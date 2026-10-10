@@ -47,7 +47,7 @@ undefined4 ov96_022090D8(int param_1)
 
 {
   int iVar1;
-  
+
   if (*(int *)(param_1 + 0xc) < 0x68) {
     return 0;
   }

@@ -51,7 +51,7 @@ void ov14_021F3420(int param_1,undefined4 param_2,uint param_3,uint param_4,int 
   int iVar1;
   int iVar2;
   uint uVar3;
-  
+
   if (param_5 == 1) {
     uVar3 = param_4;
     if (param_3 < param_4) {

@@ -51,7 +51,7 @@ void ov45_0222BB60(byte *param_1,int param_2,undefined4 param_3,undefined4 param
 
 {
   int iVar1;
-  
+
   iVar1 = (int)*(short *)(param_1 + 4);
   if (iVar1 + -1 < 0) {
     if (iVar1 == 0) {

@@ -57,7 +57,7 @@ void ov43_0222B4BC(int param_1,int param_2,undefined4 param_3,undefined4 param_4
 {
   undefined4 uVar1;
   undefined4 uVar2;
-  
+
   uVar1 = String_New(0x80,param_4);
   FillWindowPixelBuffer(param_1 + 0x20,0xf);
   ReadMsgDataIntoString(*(undefined4 *)(param_2 + 0x54),param_3,uVar1);

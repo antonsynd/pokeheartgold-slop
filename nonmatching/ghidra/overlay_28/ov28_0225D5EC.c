@@ -55,7 +55,7 @@ void ov28_0225D5EC(undefined4 param_1,undefined4 param_2)
 
 {
   int iVar1;
-  
+
   iVar1 = SysTask_GetData(param_2);
   DowsingMchn_FreeHiddenItemLocs();
   ov28_0225D8D0(iVar1);

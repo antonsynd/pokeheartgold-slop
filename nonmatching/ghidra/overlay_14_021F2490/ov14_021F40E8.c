@@ -56,7 +56,7 @@ void ov14_021F40E8(int param_1,int param_2)
   int iVar3;
   int iVar4;
   uint uVar5;
-  
+
   uVar5 = 0;
   iVar4 = 0;
   do {

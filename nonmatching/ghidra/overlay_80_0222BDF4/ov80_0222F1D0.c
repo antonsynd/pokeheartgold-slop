@@ -52,7 +52,7 @@ void ov80_0222F1D0(int param_1,int param_2)
 
 {
   int iVar1;
-  
+
   iVar1 = (param_2 + -50000) * 4;
   Sprite_DeleteAndFreeResources(*(undefined4 *)(param_1 + 0x80 + iVar1));
   *(undefined4 *)(param_1 + 0x80 + iVar1) = 0;

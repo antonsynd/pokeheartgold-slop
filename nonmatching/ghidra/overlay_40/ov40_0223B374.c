@@ -64,7 +64,7 @@ void ov40_0223B374(int param_1,undefined4 param_2,undefined4 param_3,undefined4 
   undefined4 *puVar6;
   undefined4 *puStack_40;
   undefined4 auStack_38 [9];
-  
+
   iVar3 = *(int *)(param_1 + 0x860);
   auStack_38[4] = 8;
   auStack_38[5] = 8;

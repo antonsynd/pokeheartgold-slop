@@ -51,7 +51,7 @@ void sub_02057F28(undefined4 param_1)
 
 {
   int iVar1;
-  
+
   PlayerAvatar_SetFacingDirection(*(undefined4 *)(*(int *)(iRam021d41c4 + 0x30) + 0x40),param_1);
   iVar1 = sub_0203769C();
   *(char *)(iRam021d41c4 + iVar1 * 8 + 0x78) = (char)param_1;

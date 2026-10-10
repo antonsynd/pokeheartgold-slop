@@ -48,7 +48,7 @@ void sub_02017E98(undefined4 *param_1,undefined4 param_2,undefined4 param_3,unde
 
 {
   int iVar1;
-  
+
   *(int *)param_1[9] = *(int *)param_1[9] + param_1[2] + param_1[3] * param_1[5];
   sub_02017BC8(*(undefined1 *)(param_1 + 0xb),param_1 + 0xc,param_1[9],param_1[10],param_4);
   iVar1 = param_1[5];

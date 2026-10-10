@@ -61,7 +61,7 @@ undefined4 ov80_02239510(int param_1,undefined2 *param_2,int param_3)
   undefined2 uStack_1a;
   ushort uStack_18;
   undefined2 uStack_16;
-  
+
   piVar1 = (int *)sub_02096868(*(undefined4 *)(param_1 + 8));
   if (param_3 == -1) {
     param_3 = 0;

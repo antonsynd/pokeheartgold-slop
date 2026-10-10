@@ -72,7 +72,7 @@ void ov108_021E756C(undefined4 *param_1)
   undefined4 uStack_1c;
   undefined4 uStack_18;
   undefined4 uStack_14;
-  
+
   uVar1 = func_0x02013910(param_1 + 0x129,*param_1);
   param_1[0xe8] = uVar1;
   uVar1 = func_0x02013948(param_1[0xe8],1);

@@ -53,7 +53,7 @@ undefined4 sub_020547D8(int param_1,int param_2,int param_3,undefined2 *param_4)
   int iVar3;
   undefined4 uVar4;
   undefined2 *puStack_18;
-  
+
   uVar4 = *(undefined4 *)(param_1 + 0x2c);
   puStack_18 = param_4;
   iVar2 = func_0x021f654c(uVar4,param_2,param_3,&puStack_18);

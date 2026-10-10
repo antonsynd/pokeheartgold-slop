@@ -52,7 +52,7 @@ void LoadUserFrameGfx2(undefined4 param_1,uint param_2,undefined4 param_3,int pa
 
 {
   undefined4 uVar1;
-  
+
   uVar1 = sub_0200E63C(param_5);
   GfGfxLoader_LoadCharData(0x26,uVar1,param_1,param_2,param_3,0,0,param_6);
   if (param_2 < 4) {

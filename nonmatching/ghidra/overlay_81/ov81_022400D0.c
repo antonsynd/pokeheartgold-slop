@@ -63,7 +63,7 @@ undefined4 ov81_022400D0(int param_1)
   undefined1 uVar1;
   undefined4 uVar2;
   int iVar3;
-  
+
   if (*(char *)(param_1 + 8) == '\0') {
     if (*(int *)(param_1 + 0x37c) != 0) {
       Delete2dMenu(*(undefined4 *)(param_1 + 0x17c),0);

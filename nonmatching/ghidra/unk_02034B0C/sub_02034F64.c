@@ -59,7 +59,7 @@ undefined4 sub_02034F64(undefined4 param_1,int param_2)
   undefined1 uStack_d;
   undefined1 uStack_c;
   undefined1 uStack_b;
-  
+
   sub_02034E8C();
   if (param_2 != 0) {
     sub_02034E2C();

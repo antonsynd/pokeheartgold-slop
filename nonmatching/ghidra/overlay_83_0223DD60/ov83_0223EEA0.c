@@ -60,7 +60,7 @@ undefined4 ov83_0223EEA0(int param_1)
 {
   undefined4 uVar1;
   int iVar2;
-  
+
   switch(*(undefined1 *)(param_1 + 8)) {
   case 0:
     *(byte *)(param_1 + 0xe) = *(byte *)(param_1 + 0xe) & 0x9f;

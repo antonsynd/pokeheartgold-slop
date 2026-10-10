@@ -50,7 +50,7 @@ undefined4 ov102_021E7D30(int param_1,undefined4 param_2)
 
 {
   int iVar1;
-  
+
   switch(param_2) {
   case 0:
     break;

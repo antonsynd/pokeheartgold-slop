@@ -47,7 +47,7 @@ undefined4 ov01_021E9700(int param_1)
 
 {
   undefined4 uVar1;
-  
+
   uVar1 = 0xffff;
   if (param_1 == 0x3d) {
     uVar1 = 0;

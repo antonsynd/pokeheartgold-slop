@@ -61,7 +61,7 @@ void ov05_0221E944(int *param_1)
   undefined4 uVar4;
   uint uVar5;
   int *piVar6;
-  
+
   uVar1 = NewMsgDataFromNarc(0,0x1b,300,*(undefined4 *)(*param_1 + 0x24));
   uVar2 = MessagePrinter_New(0xf,0xe,0,*(undefined4 *)(*param_1 + 0x24));
   uVar3 = MessageFormat_New(*(undefined4 *)(*param_1 + 0x24));

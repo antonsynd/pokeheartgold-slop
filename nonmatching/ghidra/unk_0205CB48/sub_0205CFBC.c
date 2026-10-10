@@ -57,7 +57,7 @@ void sub_0205CFBC(undefined4 param_1,undefined4 param_2,undefined4 param_3,undef
 {
   undefined4 uVar1;
   undefined4 uVar2;
-  
+
   PlayerAvatar_SetMoveState(param_1,0,param_3,param_4,param_4);
   PlayerAvatar_SetPlayerMoveState(param_1,0);
   uVar1 = PlayerAvatar_GetMapObject(param_1);

@@ -61,7 +61,7 @@ void ov18_021F1424(int param_1,int param_2,undefined4 param_3,undefined4 param_4
   int aiStack_80 [13];
   int aiStack_4c [13];
   undefined4 uStack_18;
-  
+
   uStack_18 = param_4;
   piVar5 = aiStack_80;
   puVar6 = (undefined4 *)&ov18_021FA3E8;

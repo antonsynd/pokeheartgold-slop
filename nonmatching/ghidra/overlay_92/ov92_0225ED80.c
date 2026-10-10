@@ -48,7 +48,7 @@ void ov92_0225ED80(int param_1,undefined4 param_2,undefined4 param_3,undefined4 
 
 {
   int iVar1;
-  
+
   iVar1 = *(int *)(param_1 + 0x1fcc) >> 0xc;
   if ((iVar1 < 0x4b) && (0x3d < iVar1)) {
     ov92_0225DD48(param_1,1,param_3,param_4,param_4);

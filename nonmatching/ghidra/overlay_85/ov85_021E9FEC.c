@@ -50,7 +50,7 @@ uint ov85_021E9FEC(void)
   int iVar1;
   uint uVar2;
   uint uVar3;
-  
+
   uVar3 = 0;
   uVar2 = 0;
   do {

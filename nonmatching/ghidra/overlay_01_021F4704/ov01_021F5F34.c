@@ -48,7 +48,7 @@ void ov01_021F5F34(int param_1)
 
 {
   int iVar1;
-  
+
   iVar1 = 0;
   *(undefined1 *)(param_1 + 0xa2) = 0;
   *(undefined1 *)(param_1 + 0xa1) = 0;

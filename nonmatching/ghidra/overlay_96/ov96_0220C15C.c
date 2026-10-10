@@ -68,7 +68,7 @@ void ov96_0220C15C(undefined *param_1,int param_2,undefined4 param_3,undefined4 
   short sStack_14;
   short sStack_12;
   undefined4 uStack_10;
-  
+
   uVar4 = *(uint *)(param_2 + 0x38);
   uStack_10 = param_4;
   switch((uVar4 & 0x3f) >> 2) {

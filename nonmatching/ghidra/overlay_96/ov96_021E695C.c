@@ -51,7 +51,7 @@ undefined4 ov96_021E695C(int param_1)
 {
   undefined4 uVar1;
   int iVar2;
-  
+
   *(undefined4 *)(param_1 + 0x200) = 0;
   uVar1 = ov96_021E99F8();
   iVar2 = ov96_021E87EC(0x17,param_1 + 0x200,uVar1,*(undefined4 *)(param_1 + 0x288));

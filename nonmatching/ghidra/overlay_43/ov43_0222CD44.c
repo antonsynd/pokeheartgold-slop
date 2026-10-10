@@ -54,7 +54,7 @@ int ov43_0222CD44(undefined4 param_1,int param_2,undefined4 param_3,undefined4 p
   undefined4 uVar1;
   int iVar2;
   int iVar3;
-  
+
   uVar1 = Save_PlayerData_GetOptionsAddr(*(undefined4 *)(param_2 + 4));
   iVar2 = func_0x020830d8(param_3,7,0,7,uVar1,0,param_4);
   if (*(int *)(param_2 + 100) == 1) {

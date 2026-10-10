@@ -56,7 +56,7 @@ void ov113_021E5DA4(int param_1)
 
 {
   uint uVar1;
-  
+
   FillWindowPixelBuffer(param_1 + 0x78,0);
   FillWindowPixelBuffer(param_1 + 0x88,0);
   FillWindowPixelBuffer(param_1 + 0x98,0);

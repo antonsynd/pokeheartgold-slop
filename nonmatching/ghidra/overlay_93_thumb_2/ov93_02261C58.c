@@ -59,7 +59,7 @@ void ov93_02261C58(int *param_1,int param_2,int param_3,int param_4,short param_
   int iVar2;
   int iVar3;
   undefined4 *puVar4;
-  
+
   puVar4 = (undefined4 *)0x0;
   if ((param_3 != 0) && (iVar2 = sub_0203769C(), param_4 != iVar2)) {
     iVar3 = 0;

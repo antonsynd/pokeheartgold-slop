@@ -49,7 +49,7 @@ undefined4 ov74_0222FEC8(void)
 {
   ushort uVar1;
   int iVar2;
-  
+
   iVar2 = ov74_0223115C();
   uVar1 = *(ushort *)(iVar2 + 0x62);
   if ((uVar1 & 1) != 0) {

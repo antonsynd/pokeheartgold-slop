@@ -50,7 +50,7 @@ void ov40_02242E14(int param_1,int *param_2)
 
 {
   undefined4 uVar1;
-  
+
   if (*param_2 != 1) {
     uVar1 = ov40_0223D540();
     func_0x022280d4(uVar1,param_1 + 0x8b4);

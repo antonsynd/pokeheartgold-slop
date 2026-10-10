@@ -77,7 +77,7 @@ u32 ov49_02263B74(void *param_1, void *param_2)
   void *puVar9;
   int iStack_38;
   u32 uStack_34;
-  
+
   uVar3 = ov49_02259FE8(param_2);
   pbVar4 = (u8 *)ov49_0225EF84(param_1);
   uVar5 = ov45_0222B034(uVar3);

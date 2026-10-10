@@ -53,7 +53,7 @@ void sub_020351DC(int param_1,undefined4 param_2)
   int iVar2;
   int iVar3;
   int iVar4;
-  
+
   iVar3 = 0;
   iVar2 = 0;
   iVar4 = iRam021d413c;

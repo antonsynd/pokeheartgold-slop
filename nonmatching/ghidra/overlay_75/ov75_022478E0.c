@@ -82,7 +82,7 @@ undefined4 ov75_022478E0(int *param_1)
   int iStack_20;
   int iStack_1c;
   int iStack_18;
-  
+
   if (param_1[0x25] == 0) {
     iVar2 = sub_02031744(*(undefined4 *)(*param_1 + 4));
     if (iVar2 == 1) {

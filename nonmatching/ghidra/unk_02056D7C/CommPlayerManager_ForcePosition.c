@@ -60,7 +60,7 @@ void CommPlayerManager_ForcePosition(void)
   int iVar6;
   int iVar7;
   int iVar8;
-  
+
   if (iRam021d41c4 != 0) {
     iVar8 = 0;
     iVar6 = 0;

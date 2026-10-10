@@ -58,7 +58,7 @@ undefined4 sub_0205DCA0(undefined4 param_1,undefined4 param_2,int param_3)
   int iVar3;
   int iVar4;
   int iVar5;
-  
+
   if (param_3 != -1) {
     uVar1 = MapObject_GetFieldSystem(param_2);
     iVar2 = MapObject_GetXCoord(param_2);

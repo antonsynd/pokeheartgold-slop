@@ -52,7 +52,7 @@ undefined4 ov01_021E9ABC(undefined4 param_1)
 {
   int iVar1;
   undefined1 *puVar2;
-  
+
   iVar1 = TaskManager_GetFieldSystem();
   puVar2 = (undefined1 *)TaskManager_GetEnvironment(param_1);
   iVar1 = MapPropOneShotAnimationManager_IsAnimationLoopFinished

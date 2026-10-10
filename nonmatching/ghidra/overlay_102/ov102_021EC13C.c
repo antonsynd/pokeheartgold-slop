@@ -52,7 +52,7 @@ void ov102_021EC13C(int param_1,uint param_2,uint param_3,undefined4 param_4)
 {
   uint uVar1;
   int iVar2;
-  
+
   ov102_021E8FFC(*(undefined4 *)(param_1 + 4),param_2,*(undefined4 *)(param_1 + 0x3c));
   if (param_3 < 0xf1) {
     AddTextPrinterParameterizedWithColor

@@ -50,7 +50,7 @@ void ov96_0220B324(undefined4 *param_1)
 {
   int iVar1;
   int iVar2;
-  
+
   iVar2 = 0;
   do {
     if ((param_1[1] == 1) && (iVar1 = ov96_0220B2D4(param_1), iVar1 != 0)) {

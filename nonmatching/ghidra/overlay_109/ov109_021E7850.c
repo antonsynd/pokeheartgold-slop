@@ -49,7 +49,7 @@ char ov109_021E7850(int param_1)
   ushort uVar1;
   char cVar2;
   uint uVar3;
-  
+
   cVar2 = '\0';
   uVar3 = 0;
   do {

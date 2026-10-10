@@ -54,7 +54,7 @@ void ov59_02237E94(int param_1)
 {
   undefined1 uVar1;
   undefined4 uVar2;
-  
+
   uVar2 = func_0x020183f0(*(undefined4 *)(*(int *)(*(int *)(param_1 + 4) + 4) + 0x14));
   *(undefined4 *)(param_1 + 0x40) = uVar2;
   uVar2 = Save_PlayerData_GetOptionsAddr

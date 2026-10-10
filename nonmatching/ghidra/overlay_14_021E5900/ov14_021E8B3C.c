@@ -51,7 +51,7 @@ undefined4 ov14_021E8B3C(int *param_1)
 
 {
   int iVar1;
-  
+
   iVar1 = func_0x020830d8(9,2,0,8,param_1[4],*(undefined4 *)(*param_1 + 4));
   param_1[6] = iVar1;
   func_0x02073f00(param_1[1],*(undefined1 *)((int)param_1 + 0x25),*(undefined4 *)(param_1[6] + 0x18)

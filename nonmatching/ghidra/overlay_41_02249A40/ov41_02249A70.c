@@ -50,7 +50,7 @@ void ov41_02249A70(int param_1)
 {
   int iVar1;
   int iVar2;
-  
+
   iVar1 = *(int *)(param_1 + 8);
   while (iVar1 != param_1) {
     iVar2 = *(int *)(iVar1 + 8);

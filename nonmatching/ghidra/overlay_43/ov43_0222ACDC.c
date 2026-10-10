@@ -48,7 +48,7 @@ void ov43_0222ACDC(int param_1)
 
 {
   int iVar1;
-  
+
   Sprite_Delete(*(undefined4 *)(param_1 + 0x1fc));
   iVar1 = 0;
   do {

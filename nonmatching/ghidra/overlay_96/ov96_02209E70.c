@@ -57,7 +57,7 @@ void ov96_02209E70(undefined4 *param_1)
   uint extraout_r1;
   uint extraout_r1_00;
   uint extraout_r1_01;
-  
+
   if (param_1 == (undefined4 *)0x0) {
     GF_AssertFail();
   }

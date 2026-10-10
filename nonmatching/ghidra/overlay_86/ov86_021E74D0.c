@@ -48,7 +48,7 @@ void ov86_021E74D0(int param_1)
 
 {
   uint uVar1;
-  
+
   uVar1 = 0;
   do {
     if (*(int *)(param_1 + 0x260) != 0) {

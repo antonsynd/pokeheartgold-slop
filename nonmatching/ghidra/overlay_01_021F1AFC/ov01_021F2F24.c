@@ -55,7 +55,7 @@ void ov01_021F2F24(undefined4 param_1)
 {
   undefined4 uVar1;
   int iVar2;
-  
+
   uVar1 = PlayerAvatar_GetMapObject();
   iVar2 = sub_0205F73C();
   if (((iVar2 != 0) && (iVar2 = PlayerAvatar_GetState(param_1), iVar2 == 0)) &&

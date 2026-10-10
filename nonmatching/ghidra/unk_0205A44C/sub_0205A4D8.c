@@ -48,7 +48,7 @@ undefined4 sub_0205A4D8(int param_1)
 
 {
   uint uVar1;
-  
+
   uVar1 = sub_0203769C();
   if (*(char *)(param_1 + uVar1 + 0x176) == '\x02') {
     return 1;

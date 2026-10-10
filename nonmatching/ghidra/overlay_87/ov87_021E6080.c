@@ -95,7 +95,7 @@ undefined4 ov87_021E6080(int param_1,undefined4 param_2,undefined4 param_3,undef
   int iVar4;
   undefined2 uVar5;
   int iVar6;
-  
+
   switch(*(undefined1 *)(param_1 + 8)) {
   case 0:
     if (*(char *)(param_1 + 0xe) == '\x02') {

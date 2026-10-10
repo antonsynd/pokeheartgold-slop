@@ -53,7 +53,7 @@ void ov80_02234774(int param_1)
   uint uVar1;
   undefined1 auStack_38 [4];
   ushort uStack_34;
-  
+
   uVar1 = ov80_022347A8();
   ov80_02229F04(auStack_38,*(undefined2 *)(param_1 + (uVar1 & 0xff) * 2 + 0x78),0xb,0xcc);
   Heap_Free();

@@ -49,7 +49,7 @@ void ov109_021E5DB8(int param_1,int param_2,int param_3,undefined4 param_4)
 {
   undefined1 auStack_20 [8];
   undefined4 uStack_18;
-  
+
   uStack_18 = param_4;
   func_0x020d4a50(param_1 + 0xcc + param_2 * 8,auStack_20,8);
   func_0x020d4a50(param_1 + 0xcc + param_3 * 8,param_1 + 0xcc + param_2 * 8,8);

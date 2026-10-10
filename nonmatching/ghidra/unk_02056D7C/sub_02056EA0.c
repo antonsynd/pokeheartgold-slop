@@ -51,7 +51,7 @@ void sub_02056EA0(undefined4 param_1)
 
 {
   uint uVar1;
-  
+
   if (iRam021d41c4 != 0) {
     uVar1 = 0;
     do {

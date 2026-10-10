@@ -62,7 +62,7 @@ void ov41_0224A15C(undefined4 *param_1,int *param_2,undefined4 param_3,undefined
   undefined4 uStack_18;
   undefined4 uStack_14;
   undefined4 uStack_10;
-  
+
   uStack_10 = param_4;
   ov41_0224A118();
   iStack_40 = param_2[5];

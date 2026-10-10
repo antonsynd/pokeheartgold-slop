@@ -57,7 +57,7 @@ undefined4 ov73_021E8390(undefined4 param_1,undefined1 param_2,undefined4 param_
   undefined1 uStack_17;
   undefined1 uStack_16;
   undefined1 uStack_15;
-  
+
   uVar1 = YesNoPrompt_Create(0x96);
   uStack_1c = 8;
   uStack_24 = 0;

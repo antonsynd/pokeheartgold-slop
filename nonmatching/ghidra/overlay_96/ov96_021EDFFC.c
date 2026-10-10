@@ -54,7 +54,7 @@ void ov96_021EDFFC(int param_1,uint *param_2)
   undefined1 extraout_r1;
   int iVar2;
   uint *puVar3;
-  
+
   puVar3 = (uint *)&ov96_0221B124;
   iVar2 = 0;
   do {

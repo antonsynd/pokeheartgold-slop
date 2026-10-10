@@ -71,7 +71,7 @@ void ov13_022263C4(int *param_1,undefined4 param_2)
   int iStack_20;
   int iStack_1c;
   int iStack_18;
-  
+
   iVar1 = *param_1;
   uVar5 = param_1[1];
   uVar6 = param_1[2];

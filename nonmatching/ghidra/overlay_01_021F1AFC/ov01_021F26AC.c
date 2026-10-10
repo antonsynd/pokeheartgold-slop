@@ -49,7 +49,7 @@ undefined4 ov01_021F26AC(short *param_1)
 
 {
   int iVar1;
-  
+
   iVar1 = ov01_021F3068(param_1 + 0xe);
   if (iVar1 == 1) {
     ov01_02205D68(*(undefined4 *)(param_1 + 6));

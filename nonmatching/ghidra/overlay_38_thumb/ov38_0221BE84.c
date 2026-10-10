@@ -52,14 +52,14 @@ void ov38_0221BE84(void)
 
 {
   int iVar1;
-  
-                    
+
+
   _UNK_02225040 = 2;
-                    
+
   _UNK_02225044 = 0xffffffff;
   iVar1 = func_0x021fa0b4(0);
   if (iVar1 == 0) {
-                    
+
     _UNK_02225040 = 1;
   }
   return;

@@ -48,7 +48,7 @@ void ov91_0226042C(int *param_1,short *param_2,undefined4 param_3,undefined4 par
 
 {
   short sVar1;
-  
+
   sVar1 = func_0x020f2998(*param_1 + 0x4b000,0x960,param_3,param_4,param_4);
   *param_2 = 0xff - sVar1;
   sVar1 = func_0x020f2998(-0xe1000 - param_1[2],0x960);

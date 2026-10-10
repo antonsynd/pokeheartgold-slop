@@ -50,7 +50,7 @@ int ov74_02229D6C(int param_1)
 {
   int iVar1;
   int iVar2;
-  
+
   iVar2 = 0;
   while ((iVar1 = sub_020358D0(iVar2), iVar1 == 0 || (*(short *)(iVar1 + 0x4c) == 0))) {
     iVar2 = iVar2 + 1;

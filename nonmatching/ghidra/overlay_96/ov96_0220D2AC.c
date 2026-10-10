@@ -53,7 +53,7 @@ void ov96_0220D2AC(uint *param_1,int param_2,int param_3)
   uint uVar2;
   uint uVar3;
   int iVar4;
-  
+
   iVar4 = 0;
   func_0x020f2ba4(param_2,0x3c);
   func_0x020f2ba4(param_2,0x1e); __asm__ volatile("movs %0, r1" : "=l"(extraout_r1) : : "cc"); __asm__ volatile("movs %0, r1" : "=l"(extraout_r1_00) : : "cc");

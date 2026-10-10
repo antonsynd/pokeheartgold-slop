@@ -49,7 +49,7 @@ int ov13_02222924(void)
 
 {
   int iVar1;
-  
+
   iVar1 = func_0x020a3570();
   if (iVar1 < 0) {
     return -1;

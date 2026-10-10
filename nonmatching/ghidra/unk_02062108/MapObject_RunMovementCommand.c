@@ -50,7 +50,7 @@ uint MapObject_RunMovementCommand(uint param_1,uint param_2,uint param_3)
 
 {
   uint uVar1;
-  
+
   uVar1 = (**(code **)(*(int *)(&gMovementCmdTable + param_2 * 4) + param_3 * 4))(param_1);
   return uVar1;
 }

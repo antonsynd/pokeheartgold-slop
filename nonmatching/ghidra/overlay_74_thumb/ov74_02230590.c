@@ -54,7 +54,7 @@ void ov74_02230590(int param_1)
 
 {
   int iVar1;
-  
+
   if (*(short *)(param_1 + 2) == 0) {
     ov74_02231070(7);
     iVar1 = ov74_0222FE78();

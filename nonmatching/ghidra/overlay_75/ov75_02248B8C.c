@@ -55,7 +55,7 @@ undefined4 ov75_02248B8C(int param_1,undefined4 param_2,undefined4 param_3,undef
 {
   int iVar1;
   undefined4 uVar2;
-  
+
   iVar1 = ov75_02249534(*(undefined4 *)(param_1 + 0x44));
   if (iVar1 != 1) {
     switch(*(undefined4 *)(param_1 + 0x94)) {

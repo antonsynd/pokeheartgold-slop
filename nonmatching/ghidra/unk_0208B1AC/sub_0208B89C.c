@@ -72,7 +72,7 @@ void sub_0208B89C(int param_1,undefined4 param_2,undefined4 param_3,undefined4 p
   ushort uStack_1a;
   ushort uStack_16;
   undefined4 uStack_10;
-  
+
   uStack_10 = param_4;
   if ((*(char *)(param_1 + 0x7bc) == '\x02') && (*(int *)(*(int *)(param_1 + 0x22c) + 0x34) != 0)) {
     uVar1 = sub_0208A520();

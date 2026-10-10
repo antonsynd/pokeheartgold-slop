@@ -52,7 +52,7 @@ void sub_0208DBF0(int param_1,undefined4 param_2,undefined4 param_3,undefined4 p
 
 {
   int iVar1;
-  
+
   if (*(char *)(param_1 + 0x7bc) == '\x01') {
     ClearWindowTilemapAndScheduleTransfer(*(int *)(param_1 + 0x224) + 0xd0);
     ClearWindowTilemapAndScheduleTransfer(*(int *)(param_1 + 0x224) + 0xe0);

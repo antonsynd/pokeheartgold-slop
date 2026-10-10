@@ -51,7 +51,7 @@ void ov96_021EAC0C(undefined4 *param_1,int param_2)
 {
   undefined4 uVar1;
   undefined4 uVar2;
-  
+
   param_1[0xd] = param_2;
   if (param_2 != 0) {
     uVar1 = ov96_021E8BAC(*param_1);

@@ -52,7 +52,7 @@ void ov14_021F3714(int param_1)
 
 {
   undefined4 uVar1;
-  
+
   func_0x0200d4a4(*(undefined4 *)(param_1 + 0x2f4),*(undefined4 *)(param_1 + 0x2f8),0x13,0x4f,1,1,
                   0xc11f);
   uVar1 = func_0x02077c18(0,2);

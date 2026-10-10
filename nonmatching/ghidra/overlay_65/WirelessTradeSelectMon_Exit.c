@@ -63,7 +63,7 @@ undefined4 WirelessTradeSelectMon_Exit(undefined4 param_1)
 {
   int iVar1;
   int iVar2;
-  
+
   iVar1 = OverlayManager_GetData();
   iVar2 = OverlayManager_GetArgs(param_1);
   *(undefined4 *)(iVar2 + 0x24) = *(undefined4 *)(iVar1 + 0x68);

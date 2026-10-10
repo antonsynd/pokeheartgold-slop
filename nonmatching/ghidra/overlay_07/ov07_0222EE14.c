@@ -52,7 +52,7 @@ undefined4 ov07_0222EE14(int param_1)
 {
   int iVar1;
   undefined4 uVar2;
-  
+
   uVar2 = 0;
   switch(*(undefined4 *)(param_1 + 0x40)) {
   case 0:

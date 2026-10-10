@@ -76,7 +76,7 @@ undefined4 ov75_022480B8(int param_1)
   undefined4 uVar2;
   int iVar3;
   int iVar4;
-  
+
   iVar3 = *(int *)(param_1 + 0xa8);
   if (iVar3 == 0) {
     uVar1 = NewString_ReadMsgData(*(undefined4 *)(param_1 + 0x34),0x2c);

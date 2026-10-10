@@ -60,7 +60,7 @@ void ov96_02218330(int param_1,undefined4 param_2)
   uint uVar8;
   int iVar9;
   int iStack_34;
-  
+
   iStack_34 = 0;
   iVar1 = PokeathlonCourse_GetDataCopyArea(param_2);
   puVar2 = (undefined1 *)ov96_021E8A20(iVar1 + 0x28);

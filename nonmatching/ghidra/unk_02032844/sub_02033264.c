@@ -50,7 +50,7 @@ short sub_02033264(void)
   short sVar1;
   int iVar2;
   uint uVar3;
-  
+
   sVar1 = 0;
   iVar2 = 0;
   uVar3 = (uint)*(ushort *)(iRam021d4128 + 0x132e);

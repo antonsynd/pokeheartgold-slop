@@ -57,7 +57,7 @@ void ov08_02220AEC(int *param_1,undefined4 param_2,undefined4 param_3,undefined4
   undefined4 uVar3;
   int iVar4;
   undefined4 uVar5;
-  
+
   uVar5 = param_4;
   uVar1 = func_0x0223a8e4(*(undefined4 *)(*param_1 + 8));
   uVar2 = sub_020776B4();

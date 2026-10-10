@@ -57,7 +57,7 @@ uint bn_div_words(uint param_1,uint param_2,uint param_3)
   uint uVar7;
   int iVar8;
   bool bVar9;
-  
+
   uVar7 = 0;
   iVar5 = 2;
   if (param_3 == 0) {

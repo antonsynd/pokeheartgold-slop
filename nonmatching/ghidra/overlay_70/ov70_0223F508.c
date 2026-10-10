@@ -68,7 +68,7 @@ void ov70_0223F508(undefined4 param_1,undefined4 param_2,int param_3,undefined4 
   int iVar8;
   int iVar9;
   int iVar10;
-  
+
   uVar2 = String_New(0xb,0x3d);
   uVar3 = String_New(0xb,0x3d);
   GetBoxMonData(param_4,0x77,uVar2);

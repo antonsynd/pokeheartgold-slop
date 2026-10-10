@@ -49,7 +49,7 @@ int ov45_0222F8D8(int param_1,undefined4 param_2,undefined4 param_3,undefined4 p
 
 {
   int iVar1;
-  
+
   iVar1 = ov45_0222FB24(param_1,param_2,0,param_4,param_4);
   if (iVar1 == -1) {
     GF_AssertFail();

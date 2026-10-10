@@ -61,7 +61,7 @@ void ov07_0223049C(undefined4 param_1,undefined4 *param_2)
   undefined2 uVar1;
   undefined4 uVar2;
   int iVar3;
-  
+
   switch(param_2[1]) {
   case 0:
     ov07_02222268(param_2 + 3,0x7f,0,0,0,8);

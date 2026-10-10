@@ -74,7 +74,7 @@ ov40_0222FEA0(int param_1,undefined4 param_2,int param_3,int param_4,undefined4 
   undefined4 uStack_20;
   undefined4 uStack_1c;
   undefined4 uStack_18;
-  
+
   uVar4 = *(undefined4 *)(param_1 + 0x18);
   uVar3 = *(undefined4 *)(param_1 + 0x1c);
   if (param_4 == 0) {

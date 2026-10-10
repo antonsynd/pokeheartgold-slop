@@ -61,7 +61,7 @@ void ov01_021F6620(undefined4 param_1,undefined4 *param_2)
   int iVar2;
   int *piVar3;
   int iVar4;
-  
+
   if (param_2[8] == 1) {
     *(undefined1 *)(param_2 + 6) = 5;
   }

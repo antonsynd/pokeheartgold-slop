@@ -51,7 +51,7 @@ void ov14_021F49E0(int param_1,undefined4 param_2,undefined4 param_3,undefined4 
   int iVar1;
   int iVar2;
   uint uVar3;
-  
+
   iVar1 = func_0x020f2998(*(undefined1 *)(param_1 + 0x25),6,param_3,param_4,param_4);
   iVar2 = 0xf;
   uVar3 = 0;

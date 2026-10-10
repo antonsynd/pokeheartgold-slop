@@ -50,7 +50,7 @@ void ov109_021E7584(int param_1,int param_2)
 
 {
   int iVar1;
-  
+
   param_1 = param_1 + 0x98;
   iVar1 = param_2 * 4;
   func_0x02024964(*(undefined4 *)(param_1 + iVar1));

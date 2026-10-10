@@ -63,7 +63,7 @@ undefined4 sub_0205A544(int param_1,int param_2)
   int iVar3;
   undefined *puVar4;
   uint uVar5;
-  
+
   iVar3 = param_2;
   if ((9 < param_2) && (iVar3 = sub_0205A51C(param_2), param_2 == -1)) {
     GF_AssertFail();

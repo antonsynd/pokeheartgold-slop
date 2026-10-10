@@ -50,7 +50,7 @@ void ov96_022038A0(int param_1,undefined1 param_2,undefined4 param_3,undefined4 
 {
   uint uVar1;
   uint extraout_r1;
-  
+
   uVar1 = func_0x020f2998(param_2,10,param_3,param_4,param_4);
   Sprite_SetAnimCtrlSeq(*(undefined4 *)(param_1 + 0x50),(uVar1 & 0xff) + 1);
   func_0x020f2998(param_2,10); __asm__ volatile("movs %0, r1" : "=l"(extraout_r1) : : "cc");

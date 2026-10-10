@@ -59,7 +59,7 @@ undefined4 ov91_0225DFB0(char *param_1,undefined4 *param_2,undefined4 param_3,un
   undefined4 uStack_24;
   undefined1 auStack_20 [12];
   undefined4 uStack_14;
-  
+
   if (*param_1 == '\0') {
     return 0;
   }

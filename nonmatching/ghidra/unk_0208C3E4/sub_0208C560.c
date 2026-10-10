@@ -49,7 +49,7 @@ void sub_0208C560(int param_1)
 
 {
   uint uVar1;
-  
+
   sub_0208C4E0();
   uVar1 = 0;
   param_1 = param_1 + 4;

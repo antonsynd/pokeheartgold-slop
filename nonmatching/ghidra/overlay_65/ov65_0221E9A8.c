@@ -55,7 +55,7 @@ undefined4 ov65_0221E9A8(int param_1)
 
 {
   undefined4 uVar1;
-  
+
   Party_GetMonByIndex(*(undefined4 *)(param_1 + 0x2224),*(undefined4 *)(param_1 + 0x94));
   uVar1 = Mon_GetBoxMon();
   BufferBoxMonNickname(*(undefined4 *)(param_1 + 0x188),0,uVar1);

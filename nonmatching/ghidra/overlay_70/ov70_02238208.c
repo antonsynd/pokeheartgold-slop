@@ -56,7 +56,7 @@ void ov70_02238208(undefined4 param_1,undefined4 param_2,undefined4 param_3,unde
 
 {
   int iVar1;
-  
+
   uRam02246940 = param_3;
   func_0x0221be84();
   func_0x020e5ad8(0x2246814,param_2,0x124);

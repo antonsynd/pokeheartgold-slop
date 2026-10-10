@@ -53,7 +53,7 @@ void ov93_022627E8(int param_1,undefined4 *param_2)
   undefined4 uStack_18;
   undefined4 local_14;
   undefined4 uStack_10;
-  
+
   MI_CpuFill8((undefined *)&local_20,0,0x14);
   local_20 = 1;
   local_1c = *param_2;

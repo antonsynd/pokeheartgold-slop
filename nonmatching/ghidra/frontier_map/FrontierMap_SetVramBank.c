@@ -86,7 +86,7 @@ void FrontierMap_SetVramBank
   undefined1 uStack_23;
   undefined1 uStack_20;
   undefined4 uStack_18;
-  
+
   uStack_18 = param_4;
   iVar2 = ov80_0222ACA0(param_2,0);
   GfGfx_DisableEngineAPlanes();

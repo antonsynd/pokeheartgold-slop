@@ -59,7 +59,7 @@ sub_020755E8(undefined *param_1,undefined *param_2,undefined2 param_3,undefined2
   undefined4 uStack_48;
   undefined4 uStack_44;
   undefined4 auStack_40 [11];
-  
+
   puVar5 = &uStack_48;
   puVar6 = (undefined4 *)0x20fff5c;
   iVar4 = 6;

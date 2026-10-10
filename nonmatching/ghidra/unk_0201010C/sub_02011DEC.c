@@ -57,7 +57,7 @@ void sub_02011DEC(int param_1,ushort *param_2,undefined4 param_3,undefined4 para
 {
   undefined4 uVar1;
   int iVar2;
-  
+
   uVar1 = func_0x020f2998((uint)param_2[1] - (uint)*param_2,param_3);
   sub_02010E64(param_1,(char)param_2[2],param_5,param_8);
   *(undefined4 *)(param_1 + 0xc) = 0x80000;

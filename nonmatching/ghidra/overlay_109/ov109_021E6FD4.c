@@ -50,7 +50,7 @@ void ov109_021E6FD4(int param_1,undefined1 param_2,int param_3,char param_4)
   char cVar1;
   ushort *puVar2;
   undefined4 uVar3;
-  
+
   if (param_3 == 1) {
     uVar3 = 3;
     cVar1 = param_4 * '\x02' + '\x01';

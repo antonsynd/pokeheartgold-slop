@@ -48,7 +48,7 @@ undefined4 ov01_02205564(void)
 
 {
   int iVar1;
-  
+
   iVar1 = MapObject_GetSpriteID();
   if ((0x19e < iVar1) && (iVar1 < 0x1a5)) {
     return 1;

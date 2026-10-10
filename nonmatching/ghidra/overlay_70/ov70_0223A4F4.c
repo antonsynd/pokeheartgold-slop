@@ -57,7 +57,7 @@ void ov70_0223A4F4(int param_1,undefined4 param_2,undefined4 param_3,undefined4 
 {
   undefined4 uVar1;
   undefined4 uVar2;
-  
+
   uVar1 = Mon_GetBoxMon(param_6);
   BufferBoxMonSpeciesName(*(undefined4 *)(param_1 + 0xb9c),0,uVar1);
   uVar1 = NewString_ReadMsgData(*(undefined4 *)(param_1 + 0xba0),param_2);

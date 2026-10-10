@@ -51,7 +51,7 @@ void ov96_021EB2F4(undefined4 *param_1,undefined4 param_2,undefined4 param_3,und
 {
   undefined4 *puVar1;
   undefined4 uVar2;
-  
+
   puVar1 = (undefined4 *)ov96_021EB5EC(param_1,param_4,1);
   uVar2 = AddPlttResObjFromNarc(param_1[0x51],param_2,param_3,0,param_4,param_5,param_6,*param_1);
   *puVar1 = uVar2;

@@ -57,7 +57,7 @@ void ov40_0223D618(int param_1)
   int iStack_94;
   int iStack_90;
   short asStack_8c [60];
-  
+
   psVar4 = (short *)&ov40_02245948;
   psVar3 = asStack_8c;
   iVar2 = 0x3c;

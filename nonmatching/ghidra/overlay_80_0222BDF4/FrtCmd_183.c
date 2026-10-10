@@ -53,7 +53,7 @@ undefined4 FrtCmd_183(undefined4 *param_1)
   int iVar1;
   undefined4 uVar2;
   undefined4 uVar3;
-  
+
   iVar1 = Frontier_GetLaunchArgs(*(undefined4 *)*param_1);
   uVar2 = sub_0202C6F4(*(undefined4 *)(iVar1 + 8));
   uVar3 = func_0x021e6ebc();

@@ -49,7 +49,7 @@ void ov52_021E9424(char *param_1)
 
 {
   int iVar1;
-  
+
   if (((*param_1 == '\0') && (param_1[1] == '\0')) && (iVar1 = IsSEPlaying(0x699), iVar1 == 0)) {
     PlaySE(0x699);
   }

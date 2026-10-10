@@ -49,7 +49,7 @@ short * ov96_021EB4F4(int param_1,uint param_2,uint param_3)
 {
   short *psVar1;
   int iVar2;
-  
+
   iVar2 = 0;
   if (0 < *(int *)(param_1 + 8)) {
     psVar1 = *(short **)(param_1 + 0x154);

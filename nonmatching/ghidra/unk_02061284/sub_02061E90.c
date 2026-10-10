@@ -66,7 +66,7 @@ undefined4 sub_02061E90(undefined4 param_1)
   int iVar4;
   int iVar5;
   int iVar6;
-  
+
   iVar1 = MapObject_GetType();
   if ((iVar1 != 1) && (iVar1 != 2)) {
     return 0xffffffff;

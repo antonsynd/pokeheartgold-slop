@@ -51,7 +51,7 @@ undefined4 ov96_021F8180(int param_1,int param_2)
   undefined4 uVar1;
   int iStack_18;
   int iStack_14;
-  
+
   uVar1 = 0;
   ov96_021F893C(*(undefined4 *)(param_1 + 4),&iStack_14,&iStack_18);
   if (param_2 == 0) {

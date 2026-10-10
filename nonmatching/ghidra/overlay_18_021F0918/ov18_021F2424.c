@@ -49,7 +49,7 @@ void ov18_021F2424(int param_1,int param_2,undefined *param_3)
 
 {
   undefined *puVar1;
-  
+
   if (*(int *)(param_3 + 0x30) == 1) {
     puVar1 = SpriteSystem_NewSprite
                        (*(undefined **)(param_1 + 0x668),*(undefined **)(param_1 + 0x66c),param_3);

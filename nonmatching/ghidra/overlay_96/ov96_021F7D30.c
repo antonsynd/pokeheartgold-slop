@@ -67,7 +67,7 @@ void ov96_021F7D30(undefined4 param_1,undefined4 param_2,undefined4 param_3,unde
   undefined4 uStack_c4;
   undefined4 auStack_c0 [42];
   undefined4 uStack_18;
-  
+
   uStack_d0 = 1;
   uStack_cc = 0;
   uStack_c8 = 5;

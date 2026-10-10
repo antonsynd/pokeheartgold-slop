@@ -60,7 +60,7 @@ undefined4 ov67_021E5C44(int param_1)
   uint uVar1;
   int iVar2;
   short sVar3;
-  
+
   uVar1 = func_0x02019be4(*(undefined4 *)(param_1 + 0x4a4));
   if (uVar1 < 0xd) {
     if (uVar1 == 0xc) {

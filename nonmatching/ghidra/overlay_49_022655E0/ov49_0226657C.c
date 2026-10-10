@@ -54,7 +54,7 @@ void ov49_0226657C(undefined4 param_1,int param_2)
 {
   int iVar1;
   byte *pbVar2;
-  
+
   pbVar2 = &ov49_0226A7A8;
   iVar1 = 0;
   do {

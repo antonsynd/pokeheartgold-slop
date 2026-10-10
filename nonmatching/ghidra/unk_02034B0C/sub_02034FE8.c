@@ -55,7 +55,7 @@ undefined4 sub_02034FE8(void)
 {
   char cVar1;
   int iVar2;
-  
+
   if (iRam021d413c == 0) {
     return 1;
   }

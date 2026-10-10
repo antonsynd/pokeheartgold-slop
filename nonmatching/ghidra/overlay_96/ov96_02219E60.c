@@ -57,7 +57,7 @@ void ov96_02219E60(int param_1)
   int iVar3;
   int iVar4;
   int aiStack_20 [3];
-  
+
   uVar1 = ov96_02219E00(*(undefined4 *)(param_1 + 8),*(undefined4 *)(param_1 + 0xc),0x72,0xb4,0x14,1
                        );
   *(undefined4 *)(param_1 + 100) = uVar1;

@@ -51,7 +51,7 @@ void ov40_0223CD14(int param_1,undefined4 param_2,undefined4 param_3,undefined4 
 {
   int iVar1;
   int iVar2;
-  
+
   iVar1 = *(int *)(param_1 + 0x860);
   iVar2 = iVar1 + 0x94;
   InitWindow(iVar2);

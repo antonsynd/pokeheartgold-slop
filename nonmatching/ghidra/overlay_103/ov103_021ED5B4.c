@@ -58,7 +58,7 @@ undefined4 ov103_021ED5B4(int param_1)
   int iVar1;
   uint uVar2;
   undefined4 uVar3;
-  
+
   iVar1 = ov103_021EEA24();
   if (iVar1 == 0) {
     if (*(short *)(param_1 + 0x1c) != 0) {

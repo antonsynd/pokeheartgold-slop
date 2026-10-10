@@ -53,7 +53,7 @@ void ov108_021EA584(undefined4 *param_1,int param_2,undefined4 param_3,undefined
 {
   undefined4 *puVar1;
   int *piVar2;
-  
+
   puVar1 = (undefined4 *)Heap_Alloc(*param_1,0x14);
   func_0x020d4994(puVar1,0,0x14);
   puVar1[1] = param_1;

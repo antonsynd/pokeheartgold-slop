@@ -52,7 +52,7 @@ void ov43_0222DB94(int param_1,undefined4 *param_2,int param_3,undefined4 param_
   undefined1 uVar1;
   ushort *puVar2;
   int iVar3;
-  
+
   if (*(int *)(param_1 + 0x10) == 1) {
     puVar2 = (ushort *)param_2[0x83];
     CopyToBgTilemapRect(*param_2,2,0,0x14,0x20,4,puVar2 + 6,0,0xc,(*puVar2 & 0x7ff) >> 3,

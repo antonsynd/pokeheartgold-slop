@@ -73,7 +73,7 @@ void ov49_0225D854(undefined4 *param_1,undefined4 param_2,undefined4 param_3,int
   undefined4 *puStack_20;
   int iStack_1c;
   int iStack_18;
-  
+
   iStack_18 = 0;
   puStack_38 = param_1 + 8;
   iStack_34 = param_4;

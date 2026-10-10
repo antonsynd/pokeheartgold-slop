@@ -65,7 +65,7 @@ void ov87_021E7AF8(undefined4 *param_1)
   undefined1 *puVar2;
   undefined4 *puVar3;
   int iVar4;
-  
+
   GF_CreateVramTransferManager(0x20,0x7a);
   ov87_021E7EF0();
   func_0x020b78d4();

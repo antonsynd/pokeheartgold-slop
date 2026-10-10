@@ -163,7 +163,7 @@ undefined4 ov96_02201558(undefined *param_1)
   undefined4 auStack_104 [12];
   ushort auStack_d4 [96]; /* 12 records of 16 bytes: sp+0x13c up to the saved registers */
   undefined1 auStack_44 [48];
-  
+
   puVar2 = (undefined4 *)PokeathlonCourse_GetHeapAllocPtr4(param_1);
   bVar1 = PokeathlonCourse_GetField1ED(param_1);
   switch(bVar1) {

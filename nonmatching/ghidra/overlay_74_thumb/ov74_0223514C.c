@@ -61,7 +61,7 @@ undefined4 ov74_0223514C(void)
   undefined1 auStack_540 [128];
   undefined1 auStack_4c0 [1192];
   undefined4 uStack_18;
-  
+
   uStack_18 = in_r3;
   uVar1 = func_0x020e1058();
   uVar3 = 0;

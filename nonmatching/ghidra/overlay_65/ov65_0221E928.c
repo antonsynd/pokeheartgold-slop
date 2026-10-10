@@ -61,7 +61,7 @@ undefined4 ov65_0221E928(int param_1,undefined1 param_2,undefined1 param_3,undef
   undefined4 uStack_1c;
   undefined1 uStack_18;
   undefined4 uStack_14;
-  
+
   uStack_14 = param_4;
   uVar1 = func_0x02018424(0x1a,0);
   *(undefined4 *)(param_1 + 0x36c4) = uVar1;

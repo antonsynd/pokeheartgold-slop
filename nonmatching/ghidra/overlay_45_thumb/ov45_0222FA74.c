@@ -54,7 +54,7 @@ void ov45_0222FA74(int param_1,undefined4 param_2,int param_3)
   int *piVar4;
   uint uVar5;
   int iStack_18;
-  
+
   iVar2 = ov45_0222FB24();
   if (iVar2 == -1) {
     param_3 = param_3 * 8;

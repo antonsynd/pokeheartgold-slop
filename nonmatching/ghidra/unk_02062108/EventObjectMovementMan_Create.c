@@ -55,7 +55,7 @@ int EventObjectMovementMan_Create
   undefined1 *puVar1;
   int iVar2;
   undefined1 *puVar3;
-  
+
   puVar1 = (undefined1 *)Heap_AllocAtEnd(4,0x14,param_3,param_4,param_4);
   if (puVar1 == (undefined1 *)0x0) {
     GF_AssertFail();

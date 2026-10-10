@@ -58,7 +58,7 @@ undefined4 sub_0208A310(int param_1,int param_2)
   int iVar4;
   undefined4 *puVar5;
   int iVar6;
-  
+
   puVar5 = *(undefined4 **)(param_1 + 0x22c);
   cVar1 = *(char *)((int)puVar5 + 0x11);
   if (cVar1 == '\0') {

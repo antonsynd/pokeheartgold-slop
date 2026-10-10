@@ -104,7 +104,7 @@ void ov96_021FE550(undefined *param_1,uint param_2,undefined4 *param_3,undefined
   undefined4 uStack_1c;
   undefined *puStack_18;
 
-  
+
   puStack_18 = param_4;
   puVar3 = (ushort *)ov96_021E8A20(param_4 + 0xf0);
   puVar4 = PokeathlonCourse_GetHeapAllocPtr4(param_1);

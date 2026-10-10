@@ -67,7 +67,7 @@ void ov81_022409B0(int param_1,undefined *param_2,int param_3,uint param_4,uint 
   undefined *puVar5;
   undefined *puVar6;
   uint uVar7;
-  
+
   FillWindowPixelBuffer(param_2,param_8);
   puVar3 = Party_GetMonByIndex(param_10,param_3);
   puVar4 = String_New(0xb,100);

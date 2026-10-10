@@ -49,7 +49,7 @@ undefined4 ov96_02217E08(int param_1)
 {
   int iVar1;
   undefined4 uVar2;
-  
+
   iVar1 = *(int *)(param_1 + 0x18);
   uVar2 = 0;
   if (*(int *)(param_1 + 0x60) << 4 < 0) {

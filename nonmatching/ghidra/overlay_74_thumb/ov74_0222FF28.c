@@ -50,7 +50,7 @@ undefined4 ov74_0222FF28(void)
 {
   undefined2 uVar1;
   int iVar2;
-  
+
   iVar2 = ov74_0223115C();
   *(undefined1 *)(iVar2 + 0x60) = 1;
   uVar1 = func_0x020def24();

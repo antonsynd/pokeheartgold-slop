@@ -58,7 +58,7 @@ int ov80_0222E198(int *param_1)
   int iVar3;
   uint uVar4;
   int iVar5;
-  
+
   iVar2 = sub_02037454();
   if (iVar2 < 2) {
     iVar2 = 1;

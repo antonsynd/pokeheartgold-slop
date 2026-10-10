@@ -93,7 +93,7 @@ void sub_02076E64(undefined4 *param_1,undefined4 param_2)
   undefined4 auStack_64 [7];
   undefined1 auStack_48 [28];
   undefined1 auStack_2c [28];
-  
+
   GfGfx_DisableEngineAPlanes();
   puVar6 = (undefined4 *)0x20fff34;
   puVar5 = auStack_e0;

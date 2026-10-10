@@ -49,7 +49,7 @@ void ov45_0222EEB8(void)
 
 {
   int iVar1;
-  
+
   if (iRam022577c0 == 0) {
     GF_AssertFail();
   }

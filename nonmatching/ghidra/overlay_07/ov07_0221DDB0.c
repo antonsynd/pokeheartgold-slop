@@ -50,7 +50,7 @@ undefined4 ov07_0221DDB0(int param_1,int param_2,int param_3,undefined4 param_4)
   int iVar1;
   int iVar2;
   int iVar3;
-  
+
   iVar1 = ov07_0223192C(param_2,*(undefined2 *)(*(int *)(param_2 + 0xc0) + 0x14),param_3,param_4,
                         param_4);
   iVar2 = ov07_0223192C(param_2,*(undefined2 *)(*(int *)(param_2 + 0xc0) + 0x16));

@@ -55,7 +55,7 @@ undefined4 sub_02015550(int param_1,undefined4 param_2)
   int iVar1;
   uint uVar2;
   undefined4 *puVar3;
-  
+
   uVar2 = (uint)*(ushort *)(*(int *)(param_1 + 0x20) + 0x1c);
   if (uVar2 == 0) {
     return 0;

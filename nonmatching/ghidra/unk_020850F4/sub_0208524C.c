@@ -52,7 +52,7 @@ undefined4 sub_0208524C(void)
 {
   int iVar1;
   int iVar2;
-  
+
   iVar1 = OverlayManager_GetData();
   iVar2 = sub_02085BEC();
   if (*(int *)(iVar1 + 1000) != 0) {

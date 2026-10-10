@@ -62,7 +62,7 @@ undefined4 ov89_0225C498(undefined4 param_1,int param_2,undefined4 param_3)
   undefined4 uStack_20;
   undefined4 uStack_1c;
   uint auStack_18 [3];
-  
+
   auStack_18[0] = 0;
   auStack_18[1] = 0;
   auStack_18[2] = 0;

@@ -79,7 +79,7 @@ ov49_02260254(undefined4 param_1,undefined4 param_2,undefined4 param_3,undefined
   undefined4 uVar3;
   undefined4 uVar4;
   int iVar5;
-  
+
   uVar2 = ov49_0225EF88();
   switch(uVar2) {
   case 0:

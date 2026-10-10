@@ -48,7 +48,7 @@ void ov70_0223E114(undefined4 param_1,int param_2)
 
 {
   undefined1 uVar1;
-  
+
   uVar1 = CalcBoxMonLevel();
   *(undefined1 *)(param_2 + 3) = uVar1;
   return;

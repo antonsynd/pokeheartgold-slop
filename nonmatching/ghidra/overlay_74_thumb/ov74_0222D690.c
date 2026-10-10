@@ -54,7 +54,7 @@ undefined4 ov74_0222D690(int param_1,undefined4 param_2)
   int iVar2;
   int iVar3;
   undefined4 auStack_34 [8];
-  
+
   iVar2 = 1;
   auStack_34[0] = 0x2b;
   auStack_34[1] = 6;

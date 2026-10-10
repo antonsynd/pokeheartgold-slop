@@ -60,7 +60,7 @@ undefined4 ov85_021E996C(int param_1,undefined4 param_2,undefined4 param_3,undef
   int iVar3;
   undefined4 uStack_18;
   undefined4 uStack_14;
-  
+
   iVar3 = *(int *)(param_1 + 0x10);
   uStack_14 = param_4;
   iVar1 = ov85_021E9FD0();

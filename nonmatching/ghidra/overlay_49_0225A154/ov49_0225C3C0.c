@@ -48,7 +48,7 @@ void ov49_0225C3C0(int param_1)
 
 {
   int iVar1;
-  
+
   iVar1 = 0;
   param_1 = param_1 + 4;
   do {

@@ -52,7 +52,7 @@ void ov49_022599F8(int param_1,undefined4 param_2,undefined4 param_3,undefined4 
   undefined1 auStack_18 [4];
   undefined4 uStack_14;
   undefined4 uStack_c;
-  
+
   uStack_c = param_4;
   func_0x0223089c(*(undefined4 *)(param_1 + 4),1);
   func_0x02230908(*(undefined4 *)(param_1 + 4),auStack_18);

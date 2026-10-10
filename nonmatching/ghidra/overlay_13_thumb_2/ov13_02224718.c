@@ -52,7 +52,7 @@ byte * ov13_02224718(ushort *param_1,uint param_2,ushort *param_3,uint param_4,i
   ushort *puVar2;
   ushort *puVar3;
   uint uVar4;
-  
+
   uVar4 = 0;
   *(undefined1 *)param_3 = 0;
   uVar1 = param_4 - 8 & 0xffff;

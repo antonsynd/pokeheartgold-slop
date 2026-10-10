@@ -63,7 +63,7 @@ void ov74_02235728(int param_1,int param_2,int param_3,int param_4,int param_5,i
   undefined4 uVar1;
   undefined4 uVar2;
   bool bVar3;
-  
+
   if (param_6 == 0) {
     uVar2 = 1;
   }

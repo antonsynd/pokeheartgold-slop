@@ -70,8 +70,8 @@ void sub_02094528(undefined4 *param_1)
   undefined4 *puVar9;
   int iVar10;
   undefined4 auStack_48 [12];
-  
-  
+
+
   puVar1 = NARC_New(0x14,param_1[1]);
   puVar2 = Heap_AllocAtEnd(param_1[1],0x1000);
   uVar3 = Party_GetCount((undefined *)param_1[0x1190]);

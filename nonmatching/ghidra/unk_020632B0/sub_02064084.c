@@ -50,7 +50,7 @@ undefined4 sub_02064084(undefined4 param_1)
 
 {
   int iVar1;
-  
+
   iVar1 = func_0x021fa2d4();
   if (iVar1 == 1) {
     GF_AssertFail();

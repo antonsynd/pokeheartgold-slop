@@ -71,7 +71,7 @@ void ov112_021EA230(int param_1)
   undefined4 uStack_20;
   undefined4 uStack_1c;
   undefined4 uStack_18;
-  
+
   uStack_2c = 10;
   uStack_28 = 2;
   uStack_24 = 2;

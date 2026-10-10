@@ -51,7 +51,7 @@ void ov08_022211B8(int *param_1,undefined4 param_2,undefined4 param_3,undefined4
 
 {
   int iVar1;
-  
+
   iVar1 = (uint)*(byte *)(*param_1 + 0x11) * 0x50;
   ov08_02220A8C(param_1[*(byte *)(*param_1 + 0x11) + 0x7f5],0x18,0xc,param_4,param_4);
   ov08_02220A8C(param_1[*(byte *)(*param_1 + 0x34) + 0x803],0x88,0x48);

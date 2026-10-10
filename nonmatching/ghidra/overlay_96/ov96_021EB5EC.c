@@ -49,7 +49,7 @@ int * ov96_021EB5EC(int param_1,int param_2,uint param_3)
 {
   int iVar1;
   int *piVar2;
-  
+
   if (3 < param_3) {
     GF_AssertFail();
   }

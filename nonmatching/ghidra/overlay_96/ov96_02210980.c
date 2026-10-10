@@ -51,7 +51,7 @@ void ov96_02210980(undefined4 *param_1,undefined4 param_2,undefined4 param_3,und
   uint uVar1;
   uint uVar2;
   uint extraout_r1;
-  
+
   uVar1 = func_0x020f2998(param_3,3,param_3,param_4,param_4);
   func_0x020f2998(param_3,3); __asm__ volatile("movs %0, r1" : "=l"(extraout_r1) : : "cc");
   *param_1 = param_2;

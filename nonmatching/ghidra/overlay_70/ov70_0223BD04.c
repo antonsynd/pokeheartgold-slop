@@ -52,7 +52,7 @@ undefined4 ov70_0223BD04(int param_1,undefined4 param_2,undefined4 param_3,undef
 
 {
   int iVar1;
-  
+
   if (*(int *)(param_1 + 0x24) == 0xf) {
     ov70_0223CAC4(param_1,0x20,0,0,0xf0f);
     iVar1 = func_0x020cdaa8(0x400006c);

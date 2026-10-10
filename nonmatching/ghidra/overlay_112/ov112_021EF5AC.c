@@ -54,7 +54,7 @@ undefined4 ov112_021EF5AC(int param_1)
 {
   undefined4 uVar1;
   int iVar2;
-  
+
   switch(*(undefined4 *)(param_1 + 8)) {
   case 0:
     iVar2 = IsPaletteFadeFinished();

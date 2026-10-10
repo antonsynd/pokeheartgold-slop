@@ -52,7 +52,7 @@ void ov91_0225D84C(undefined4 *param_1)
   int iVar1;
   int iVar2;
   undefined4 *puVar3;
-  
+
   iVar2 = 0;
   puVar3 = param_1;
   do {

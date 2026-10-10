@@ -52,7 +52,7 @@ void ov112_021F24F8(int param_1)
 {
   uint uVar1;
   uint uVar2;
-  
+
   uVar2 = *(uint *)(param_1 + 0x14c);
   if ((int)(uVar2 << 0x1f) < 0) {
     uVar1 = (uVar2 & 0xff) >> 1;

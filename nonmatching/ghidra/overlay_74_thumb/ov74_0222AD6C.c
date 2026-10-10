@@ -53,7 +53,7 @@ void ov74_0222AD6C(undefined *param_1,undefined4 param_2,undefined4 param_3,unde
   undefined4 unaff_r4;
   __asm__ volatile("movs %0, r4" : "=l"(unaff_r4) : : "cc");
 
-  
+
   puVar1 = OverlayManager_GetData(param_1);
   iVar2 = *(int *)(puVar1 + 0x80);
   if (iVar2 == 3) {

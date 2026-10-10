@@ -49,7 +49,7 @@ bool sub_02010BF4(int *param_1)
 {
   int iVar1;
   bool bVar2;
-  
+
   iVar1 = param_1[2];
   bVar2 = false;
   param_1[2] = iVar1 + 1;

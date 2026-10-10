@@ -66,7 +66,7 @@ ov96_022194C4(int param_1,int param_2,int param_3,int param_4,int param_5,int pa
   int iVar4;
   undefined4 *puVar5;
   int iVar6;
-  
+
   if (param_1 == 0) {
     GF_AssertFail();
   }

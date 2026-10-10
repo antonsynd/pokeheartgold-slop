@@ -55,7 +55,7 @@ void ov96_0220AF64(undefined4 *param_1,undefined4 param_2,undefined4 param_3,und
   uint uVar3;
   uint uVar4;
   undefined4 uStack_10;
-  
+
   uVar3 = param_1[4];
   if ((uVar3 & 0xfffff) >> 0xc == 1) {
     uVar4 = ((uVar3 & 0x7ffffff) >> 0x14) * -4 + 0xa8;

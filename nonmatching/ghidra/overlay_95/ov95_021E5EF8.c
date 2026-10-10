@@ -53,7 +53,7 @@ void ov95_021E5EF8(int param_1)
   undefined4 uVar1;
   undefined4 uVar2;
   undefined4 uVar3;
-  
+
   uVar2 = *(undefined4 *)(param_1 + 0x50);
   uVar1 = *(undefined4 *)(param_1 + 0x54);
   uVar3 = *(undefined4 *)(param_1 + 8);

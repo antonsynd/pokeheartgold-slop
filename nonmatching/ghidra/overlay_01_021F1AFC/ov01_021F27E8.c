@@ -49,7 +49,7 @@ undefined4 ov01_021F27E8(short *param_1)
 
 {
   int iVar1;
-  
+
   iVar1 = MapObject_IsMovementPaused(*(undefined4 *)(param_1 + 10));
   if (iVar1 == 1) {
     *param_1 = *param_1 + 1;

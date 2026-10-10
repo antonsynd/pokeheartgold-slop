@@ -47,7 +47,7 @@ void sub_02021528(undefined2 *param_1)
 
 {
   int iVar1;
-  
+
   iVar1 = 0;
   *param_1 = 0;
   do {

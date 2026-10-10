@@ -48,7 +48,7 @@ undefined4 ov57_022384C0(int param_1)
 {
   int iVar1;
   char *pcVar2;
-  
+
   pcVar2 = *(char **)(param_1 + *(int *)(param_1 + 0x3ec) * 8 + 8);
   iVar1 = 0;
   while (((*(char *)(param_1 + 0x350) == *pcVar2 && (*(char *)(param_1 + 0x351) == pcVar2[1])) &&

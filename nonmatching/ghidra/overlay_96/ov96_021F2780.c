@@ -48,7 +48,7 @@ uint ov96_021F2780(int param_1,undefined1 param_2)
 
 {
   uint uVar1;
-  
+
   if (0xb < *(int *)(param_1 + 0xc)) {
     GF_AssertFail();
   }

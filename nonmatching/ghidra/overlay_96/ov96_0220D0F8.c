@@ -48,7 +48,7 @@ void ov96_0220D0F8(int param_1)
 {
   uint uVar1;
   int iVar2;
-  
+
   uVar1 = *(uint *)(param_1 + 0x14);
   *(uint *)(param_1 + 0x1c) = *(uint *)(param_1 + 0x1c) & 0xfffffdff;
   *(uint *)(param_1 + 0x18) = *(uint *)(param_1 + 0x18) & 0xffc007ff;

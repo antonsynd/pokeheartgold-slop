@@ -56,7 +56,7 @@ void ov08_022233DC(int *param_1,int param_2)
   undefined *unaff_r6;
   __asm__ volatile("movs %0, r6" : "=l"(unaff_r6) : : "cc");
 
-  
+
   if (param_2 == 0) {
     unaff_r6 = &ov08_02225BB8;
     *(undefined1 *)(param_1 + 0xc) = 5;

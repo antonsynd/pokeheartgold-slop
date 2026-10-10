@@ -49,7 +49,7 @@ void ov14_021F2DC4(int param_1,undefined4 param_2,undefined4 param_3)
 
 {
   undefined4 uVar1;
-  
+
   uVar1 = Boxmon_GetIconNaix(param_2);
   func_0x02007c10(*(undefined4 *)(param_1 + 0x454),uVar1,0,param_3,10);
   return;

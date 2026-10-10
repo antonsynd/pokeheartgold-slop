@@ -56,7 +56,7 @@ undefined1 ov96_021E8448(undefined *param_1,uint param_2,undefined4 param_3,unde
   undefined auStack_18 [7];
   undefined1 uStack_11;
   undefined4 uStack_10;
-  
+
   uStack_10 = param_4;
   if ((param_2 != 0) && (param_2 < 0x65)) {
     iVar1 = PokeathlonCourse_GetHeapID(param_1);

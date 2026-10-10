@@ -49,7 +49,7 @@ void ov83_02244ABC(int param_1,undefined4 param_2)
 
 {
   undefined4 uVar1;
-  
+
   uVar1 = Save_PlayerData_GetProfile(*(undefined4 *)(param_1 + 700));
   BufferPlayersName(*(undefined4 *)(param_1 + 0x24),param_2,uVar1);
   return;

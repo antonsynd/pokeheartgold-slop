@@ -51,7 +51,7 @@ void ov83_02244CDC(int param_1)
 
 {
   int iVar1;
-  
+
   PlaySE(0x5dc);
   iVar1 = func_0x02237d8c(*(undefined1 *)(param_1 + 9));
   if (iVar1 == 1) {

@@ -50,10 +50,10 @@ void sub_02033830(void)
 
 {
   int iVar1;
-  
+
   if (*(int *)(iRam021d4128 + 0x1310) == 2) {
     do {
-                    
+
     } while( true );
   }
   iVar1 = sub_02033108();

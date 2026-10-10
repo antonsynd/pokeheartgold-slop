@@ -51,7 +51,7 @@ void sub_02034D8C(void)
 
 {
   int iVar1;
-  
+
   Sys_SetSleepDisableFlag(4);
   uRam021d4138 = 1;
   iVar1 = func_0x0209e00c(8,0x2034d61,0);

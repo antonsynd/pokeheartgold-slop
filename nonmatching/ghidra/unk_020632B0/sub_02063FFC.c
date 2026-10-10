@@ -51,7 +51,7 @@ void sub_02063FFC(undefined4 param_1)
 
 {
   undefined4 *puVar1;
-  
+
   puVar1 = (undefined4 *)sub_0205F40C();
   if (puVar1[2] != 0) {
     func_0x021f9610(puVar1[2],puVar1 + 3);

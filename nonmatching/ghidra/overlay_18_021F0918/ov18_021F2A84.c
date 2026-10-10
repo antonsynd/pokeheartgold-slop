@@ -49,7 +49,7 @@ void ov18_021F2A84(undefined4 *param_1,int param_2,int param_3)
 
 {
   int iVar1;
-  
+
   if ((param_3 == 1) &&
      (iVar1 = Pokedex_GetInternationalViewFlag(*(undefined4 *)*param_1), iVar1 == 1)) {
     ManagedSprite_SetDrawFlag(param_1[param_2 + 0x19c],1);

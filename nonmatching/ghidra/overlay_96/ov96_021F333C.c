@@ -53,7 +53,7 @@ char ov96_021F333C(int param_1,uint *param_2)
   int iVar3;
   int iVar4;
   int iVar5;
-  
+
   cVar1 = '\0';
   iVar3 = 0;
   iVar4 = 0;

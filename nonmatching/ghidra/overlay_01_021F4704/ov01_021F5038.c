@@ -51,7 +51,7 @@ ov01_021F5038(int param_1,undefined4 param_2,undefined4 param_3,int param_4,byte
 {
   int iVar1;
   int iVar2;
-  
+
   iVar1 = (uint)param_6 * 0x30;
   if (*(int *)(param_1 + 0x2c + iVar1) != 0) {
     GF_AssertFail();

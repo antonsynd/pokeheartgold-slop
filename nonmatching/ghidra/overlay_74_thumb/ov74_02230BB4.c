@@ -53,7 +53,7 @@ void ov74_02230BB4(void)
   int iVar1;
   int iVar2;
   int iVar3;
-  
+
   iVar1 = ov74_02231184();
   if (*(char *)(iVar1 + 0x19) == '\x01') {
     *(char *)(iVar1 + 0x1a) = *(char *)(iVar1 + 0x1a) + -1;

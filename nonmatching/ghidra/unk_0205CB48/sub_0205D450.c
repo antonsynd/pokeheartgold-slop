@@ -50,7 +50,7 @@ undefined4 sub_0205D450(undefined *param_1,uint param_2)
 
 {
   uint uVar1;
-  
+
   if (param_2 == 0xffffffff) {
     PlayerAvatar_SetMoveState(param_1,0);
     return 0;

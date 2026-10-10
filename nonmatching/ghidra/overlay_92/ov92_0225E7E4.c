@@ -54,7 +54,7 @@ undefined4 ov92_0225E7E4(int param_1,undefined4 param_2,undefined4 param_3)
   undefined1 auStack_40 [8];
   undefined4 uStack_38;
   undefined4 uStack_14;
-  
+
   uVar1 = *(undefined4 *)(*(int *)(param_1 + 0x14) + 8);
   uVar2 = *(undefined4 *)(*(int *)(param_1 + 0x14) + 0xc);
   ov92_0225DDD8(auStack_40,param_2,param_3,1,0,0x232b);

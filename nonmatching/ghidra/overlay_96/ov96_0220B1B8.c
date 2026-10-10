@@ -49,7 +49,7 @@ void ov96_0220B1B8(int *param_1)
 
 {
   int iVar1;
-  
+
   iVar1 = 0;
   do {
     if (*param_1 == 0) {

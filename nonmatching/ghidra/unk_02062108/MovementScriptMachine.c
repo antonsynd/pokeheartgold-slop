@@ -48,7 +48,7 @@ void MovementScriptMachine(undefined4 param_1,int *param_2)
 
 {
   int iVar1;
-  
+
   do {
     iVar1 = (**(code **)(&sMovementScriptMachineStateFuncs + *param_2 * 4))(param_2);
   } while (iVar1 == 1);

@@ -64,7 +64,7 @@ undefined4 ov73_021E68AC(int param_1,undefined4 param_2)
   undefined1 auStack_18 [2];
   undefined1 uStack_16;
   undefined4 uStack_14;
-  
+
   iVar1 = sub_0203769C();
   if (iVar1 == 0) {
     if (*(int *)(param_1 + 0x4a24) != 0) {

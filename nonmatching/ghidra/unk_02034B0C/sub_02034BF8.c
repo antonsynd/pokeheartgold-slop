@@ -47,7 +47,7 @@ undefined4 sub_02034BF8(char *param_1,char *param_2,int param_3)
 
 {
   int iVar1;
-  
+
   iVar1 = 0;
   if (0 < param_3) {
     do {

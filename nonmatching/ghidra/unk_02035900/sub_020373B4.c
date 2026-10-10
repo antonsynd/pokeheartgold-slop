@@ -56,7 +56,7 @@ undefined4 sub_020373B4(uint param_1)
 {
   int iVar1;
   uint uVar2;
-  
+
   if (iRam021d4148 == 0) {
     return 0;
   }

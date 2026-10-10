@@ -76,7 +76,7 @@ undefined4 ov01_021F23B8(void)
   short *psVar2;
   undefined4 uVar3;
   int iVar4;
-  
+
   psVar2 = (short *)TaskManager_GetEnvironment();
   sVar1 = *psVar2;
   if (sVar1 == 0) {

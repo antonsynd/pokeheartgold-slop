@@ -51,7 +51,7 @@ void ov83_02242DFC(int param_1)
   int iVar1;
   uint uVar2;
   undefined4 uVar3;
-  
+
   uVar2 = (uint)*(byte *)(*(int *)(param_1 + 0x840) + 0x24);
   if (*(uint *)(param_1 + 0x848) != uVar2) {
     iVar1 = *(int *)(*(int *)(param_1 + 0x844) + uVar2 * 8 + 4);

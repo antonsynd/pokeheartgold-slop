@@ -89,7 +89,7 @@ void ov96_0221A08C(undefined4 *param_1)
   undefined1 uStack_1a;
   undefined1 uStack_19;
   byte abStack_18 [4];
-  
+
   cVar3 = '\0';
   uStack_34 = 0;
   abStack_18[0] = 0;

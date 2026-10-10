@@ -50,7 +50,7 @@ ushort ov80_02235898(undefined *param_1,uint param_2)
 
 {
   ushort uVar1;
-  
+
   uVar1 = ov80_0222A30C(*(ushort *)(param_1 + param_2 * 0x110 + 0x7c) & 0xff);
   return uVar1;
 }

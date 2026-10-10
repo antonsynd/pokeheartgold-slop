@@ -48,7 +48,7 @@ void ov91_02260A10(void)
 
 {
   undefined4 in_r3;
-  
+
   func_0x020bf0cc(0,0,0,0,0x1f,0,in_r3);
   return;
 }

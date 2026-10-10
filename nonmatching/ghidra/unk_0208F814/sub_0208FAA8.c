@@ -52,7 +52,7 @@ void sub_0208FAA8(undefined1 param_1,undefined4 param_2,undefined4 param_3,int p
 {
   ushort uVar1;
   int iStack_10;
-  
+
   iStack_10 = param_4;
   uVar1 = sub_0203769C();
   if (uVar1 != 0) {

@@ -49,7 +49,7 @@ void ov87_021E7AB0(int param_1,uint param_2,uint param_3)
   int iVar1;
   byte bVar2;
   uint uVar3;
-  
+
   if ((param_2 & 1) == 0) {
     bVar2 = 0xf;
   }

@@ -57,7 +57,7 @@ void ov41_02249C20(undefined4 param_1,int *param_2,int *param_3,int *param_4,int
   int iStack_20;
   int iStack_1c;
   int iStack_18;
-  
+
   ov41_02249B94(param_1,&iStack_18,&iStack_1c);
   ov41_02249B44(param_1,&iStack_20,&iStack_24);
   ov41_02249BAC(param_1,&iStack_28,&iStack_30,&iStack_2c,&iStack_34);

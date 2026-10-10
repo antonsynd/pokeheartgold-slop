@@ -59,7 +59,7 @@ undefined4 ov38_0221BA38(uint param_1,int param_2,int param_3,int param_4,int pa
   uint uVar5;
   int iVar6;
   uint local_1c;
-  
+
   uVar2 = param_3 + 8;
   iVar3 = ov38_0221BB44(uVar2);
   if (param_5 < iVar3 + 1) {

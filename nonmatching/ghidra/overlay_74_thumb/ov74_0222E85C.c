@@ -49,7 +49,7 @@ char ov74_0222E85C(int *param_1)
   int *piVar1;
   int iVar2;
   char cVar3;
-  
+
   cVar3 = param_1[1] < *param_1;
   piVar1 = param_1;
   iVar2 = *param_1;

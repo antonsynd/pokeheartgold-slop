@@ -48,7 +48,7 @@ bool ov90_0225BBD0(int param_1)
 
 {
   bool bVar1;
-  
+
   *(short *)(param_1 + 8) = *(short *)(param_1 + 8) + 1;
   bVar1 = 7 < *(short *)(param_1 + 8);
   if (bVar1) {

@@ -52,7 +52,7 @@ void ov96_021F459C(undefined4 *param_1,undefined4 param_2,undefined4 param_3,und
 
 {
   undefined4 uVar1;
-  
+
   FillWindowPixelBuffer(param_1 + 0x13,0);
   BufferIntegerAsString(param_1[0x18],0,param_2,2,0,1);
   uVar1 = ReadMsgData_ExpandPlaceholders(param_1[0x18],param_1[0x17],0x98,*param_1);

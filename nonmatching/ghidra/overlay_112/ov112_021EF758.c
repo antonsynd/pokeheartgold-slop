@@ -60,7 +60,7 @@ undefined4 ov112_021EF758(int param_1)
   int iVar2;
   undefined4 uStack_14;
   undefined4 uStack_10;
-  
+
   iVar2 = 0;
   uVar1 = sub_02032718(*(undefined4 *)(param_1 + 0x1e440));
   BufferPokewalkerCourseName(*(undefined4 *)(param_1 + 0x1e448),2,uVar1);

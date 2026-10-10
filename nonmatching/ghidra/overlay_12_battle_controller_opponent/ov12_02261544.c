@@ -51,7 +51,7 @@ void ov12_02261544(undefined4 param_1,undefined4 param_2,int param_3)
   uint uVar1;
   undefined4 uVar2;
   undefined4 uVar3;
-  
+
   uVar1 = BattleSystem_GetBattleType();
   if ((uVar1 & 2) == 0) {
     uVar3 = BattleSystem_GetBattlerFromBattlerType(param_1,1);

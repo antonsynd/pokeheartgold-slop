@@ -61,7 +61,7 @@ void ov96_0220BD38(int param_1)
   uint *puStack_20;
   undefined4 uStack_1c;
   undefined4 uStack_18;
-  
+
   if ((*(uint *)(param_1 + 0x40) & 0x3ff) >> 2 != 3) {
     puStack_20 = (uint *)(param_1 + 0x34);
     uVar4 = 0;

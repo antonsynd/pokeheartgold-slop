@@ -52,7 +52,7 @@ void ov102_021EBF38(int param_1,uint param_2,undefined4 param_3,undefined4 param
   int iStack_14;
   undefined4 uStack_10;
   undefined4 uStack_c;
-  
+
   uStack_c = param_4;
   if (param_2 == 0xffffffff) {
     iStack_18 = 0xe0000;

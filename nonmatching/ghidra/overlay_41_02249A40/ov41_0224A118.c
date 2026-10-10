@@ -49,7 +49,7 @@ void ov41_0224A118(int *param_1,undefined4 *param_2)
 
 {
   int iVar1;
-  
+
   if (param_1 == (int *)0x0) {
     GF_AssertFail();
   }

@@ -53,7 +53,7 @@ void ov14_021F4530(int param_1,undefined4 param_2,undefined4 param_3,undefined4 
   uint uVar1;
   int iVar2;
   undefined4 uStack_10;
-  
+
   uStack_10 = param_4;
   uVar1 = ov14_021E7930(param_1,*(undefined1 *)(param_1 + 0x25));
   iVar2 = *(int *)(param_1 + 0x34);

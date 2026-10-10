@@ -50,7 +50,7 @@ int ov15_021FF320(undefined4 *param_1,int param_2,int param_3)
   int iVar2;
   int iVar3;
   int iVar4;
-  
+
   iVar3 = 0;
   iVar2 = 0;
   if (*(char *)(param_2 + 0x22008c8) != '\0') {

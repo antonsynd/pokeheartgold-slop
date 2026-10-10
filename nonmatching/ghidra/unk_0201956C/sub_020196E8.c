@@ -66,7 +66,7 @@ void sub_020196E8(undefined *param_1,int param_2,int param_3,int param_4)
   int iVar14;
   byte bStack_20;
   byte bStack_1c;
-  
+
   puVar10 = (undefined4 *)(*(int *)(param_1 + 4) + param_2 * 0x10);
   *(byte *)((int)puVar10 + 6) = (byte)param_3;
   *(byte *)((int)puVar10 + 7) = (byte)param_4;

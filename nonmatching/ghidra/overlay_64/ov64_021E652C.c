@@ -74,7 +74,7 @@ void ov64_021E652C(undefined4 *param_1,int param_2,undefined4 param_3,undefined4
   undefined4 uStack_24;
   undefined4 uStack_20;
   undefined4 uStack_18;
-  
+
   param_1[0x6d] = param_1[0x6d] + param_2;
   if ((int)param_1[0x6d] < 0) {
     param_1[0x6d] = 0;

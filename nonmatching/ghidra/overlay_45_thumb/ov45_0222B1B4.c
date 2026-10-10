@@ -52,7 +52,7 @@ int ov45_0222B1B4(int param_1)
   int iVar1;
   undefined4 uVar2;
   int iVar3;
-  
+
   iVar1 = ov45_0222C900(param_1 + 0x3ac);
   uVar2 = ov45_0222A53C(param_1);
   iVar3 = ov45_0222AB28(param_1,uVar2);

@@ -57,7 +57,7 @@ undefined4 ov43_0222BEEC(short *param_1,undefined4 param_2,undefined4 param_3,un
   int iVar4;
   int iVar5;
   undefined4 *puVar6;
-  
+
   puVar6 = param_4;
   uVar2 = func_0x0202529c(&ov43_0222EF60);
   iVar5 = -1;

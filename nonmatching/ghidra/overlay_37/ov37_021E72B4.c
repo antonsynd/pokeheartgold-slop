@@ -48,7 +48,7 @@ void ov37_021E72B4(int param_1,undefined1 *param_2)
 {
   int iVar1;
   uint uVar2;
-  
+
   iVar1 = 0;
   do {
     *(short *)(param_2 + 2) = (short)((*(byte *)(param_1 + 8) & 0x3f) >> 3);

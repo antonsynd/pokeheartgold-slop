@@ -60,7 +60,7 @@ void ov40_0222C23C(uint param_1,int param_2,int param_3,undefined4 param_4)
   short sStack_18;
   short sStack_16;
   undefined4 uStack_14;
-  
+
   if (param_2 == 0) {
     *(uint *)(param_3 + 0x6e4) = param_1;
     uStack_14 = param_4;

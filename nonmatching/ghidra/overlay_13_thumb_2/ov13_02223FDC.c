@@ -68,7 +68,7 @@ int ov13_02223FDC(void)
   int iVar5;
   undefined1 auStack_44 [44];
   undefined4 uStack_18;
-  
+
   bVar1 = true;
   iVar4 = -2;
   iVar5 = iRam0224df8c + iRam0224df48 * 0xc0;

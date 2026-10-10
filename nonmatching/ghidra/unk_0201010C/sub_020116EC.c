@@ -50,7 +50,7 @@ void sub_020116EC(int param_1,undefined4 param_2,undefined4 param_3,undefined4 p
 
 {
   int iVar1;
-  
+
   iVar1 = Heap_Alloc(*(undefined4 *)(param_1 + 0x20),0x98);
   *(int *)(param_1 + 0x14) = iVar1;
   sub_020117A0(iVar1,param_2,*(undefined4 *)(param_1 + 4),*(undefined4 *)(param_1 + 8),

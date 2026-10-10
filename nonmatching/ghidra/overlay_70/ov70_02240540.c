@@ -53,7 +53,7 @@ undefined4 ov70_02240540(int *param_1)
 
 {
   undefined4 uVar1;
-  
+
   uVar1 = sub_0202DBA0(*(undefined4 *)*param_1);
   ov70_02240A7C(param_1,param_1 + 0x4f,uVar1,(int)*(char *)((int)param_1 + 0x25d));
   ov70_02240CE4(*(undefined4 *)(*param_1 + 0x18),param_1 + 0x4f);

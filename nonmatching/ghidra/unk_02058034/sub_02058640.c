@@ -53,7 +53,7 @@ void sub_02058640(int param_1,undefined *param_2,undefined4 param_3,undefined4 p
 {
   undefined *puVar1;
   undefined4 uStack_10;
-  
+
   uStack_10 = param_4;
   if (param_2 != (undefined *)0x0) {
     puVar1 = SaveArray_Party_Alloc(0xb);

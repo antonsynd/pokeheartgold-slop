@@ -53,7 +53,7 @@ void ov96_021F2E80(undefined4 param_1,int param_2,undefined4 param_3,int param_4
   int iVar2;
   undefined4 extraout_r1;
   int iVar3;
-  
+
   if (*(int *)(param_2 + 0x28) == param_4) {
     iVar3 = param_4;
     uVar1 = func_0x020f2998(param_4,3);

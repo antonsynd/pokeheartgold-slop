@@ -53,7 +53,7 @@ void ov75_022494CC(int param_1,undefined4 param_2,undefined4 param_3,int param_4
 
 {
   undefined4 uVar1;
-  
+
   uVar1 = NewString_ReadMsgData(param_2,param_3);
   StringExpandPlaceholders(*(undefined4 *)(param_1 + 0x20),*(undefined4 *)(param_1 + 0x38),uVar1);
   String_Delete(uVar1);

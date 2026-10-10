@@ -51,7 +51,7 @@ int ov14_021E7960(int param_1,int param_2,undefined4 param_3,undefined4 param_4)
 {
   short sVar1;
   int iVar2;
-  
+
   iVar2 = ov14_021E7940(param_1,param_2,&UNK_021f7bbc,param_4,param_4);
   if (iVar2 == 1) {
     if (param_1 < 0xc) {

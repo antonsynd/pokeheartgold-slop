@@ -61,7 +61,7 @@ void ov91_0225D768(undefined4 *param_1,int param_2,uint param_3,int param_4)
   int iVar5;
   uint uStack_28;
   int iStack_1c;
-  
+
   uVar3 = 0;
   bVar1 = false;
   iStack_1c = -1;

@@ -60,7 +60,7 @@ ov74_02229200(undefined4 param_1,undefined4 param_2,undefined4 param_3,undefined
   undefined4 *puVar1;
   undefined4 uVar2;
   int iVar3;
-  
+
   puVar1 = (undefined4 *)ov74_022352D0(param_1,0x53,0x34dc,0x20000,param_4);
   *puVar1 = 0x53;
   uVar2 = BgConfig_Alloc();

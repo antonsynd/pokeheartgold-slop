@@ -63,7 +63,7 @@ void ov07_02229480(undefined4 param_1,int param_2)
   undefined4 uStack_18;
   undefined4 uStack_14;
   undefined4 uStack_10;
-  
+
   switch(*(undefined1 *)(param_2 + 0x18)) {
   case 0:
     ov07_02222590(param_2 + 0x9c,*(short *)(param_2 + 0x12) * 0x640000 >> 0x10,

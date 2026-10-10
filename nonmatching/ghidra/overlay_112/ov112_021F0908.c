@@ -53,7 +53,7 @@ void ov112_021F0908(int param_1,int param_2)
   uint uVar1;
   int iVar2;
   int iVar3;
-  
+
   iVar2 = param_1 + 0x74;
   ov112_021F0C8C(iVar2);
   ov112_021F0D04(param_1 + 0x74);

@@ -64,7 +64,7 @@ undefined4 ov07_0221E788(int param_1)
   int iVar7;
   undefined2 *puVar8;
   int iStack_1c;
-  
+
   puVar6 = *(undefined4 **)(param_1 + 0x48);
   iVar1 = Heap_Alloc(*puVar6,0x28);
   uVar2 = Heap_Alloc(*puVar6,0xc4);

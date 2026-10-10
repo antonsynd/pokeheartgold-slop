@@ -64,7 +64,7 @@ void ov112_021F2DE4(undefined4 param_1)
 {
   int iVar1;
   int *piVar2;
-  
+
   iVar1 = OverlayManager_GetArgs();
   if (iVar1 == 0) {
     GF_AssertFail();

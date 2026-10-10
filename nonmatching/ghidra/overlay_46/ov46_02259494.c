@@ -54,7 +54,7 @@ void ov46_02259494(undefined4 *param_1)
 
 {
   int iVar1;
-  
+
   iVar1 = TextPrinterCheckActive(param_1[0xb] & 0xff);
   if (iVar1 != 0) {
     func_0x020200a0(param_1[0xb] & 0xff);

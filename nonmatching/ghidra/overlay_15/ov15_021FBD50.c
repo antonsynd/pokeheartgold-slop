@@ -61,7 +61,7 @@ undefined4 ov15_021FBD50(int param_1,undefined4 param_2,undefined4 param_3,undef
   int iVar3;
   undefined4 uVar4;
   int iVar5;
-  
+
   iVar5 = 0;
   iVar2 = ov15_021FAC2C(param_1,3);
   if (iVar2 == -1) {

@@ -52,7 +52,7 @@ void ov01_021F5B24(undefined4 param_1,int param_2,char *param_3)
   char unaff_r6;
   __asm__ volatile("movs %0, r6" : "=l"(unaff_r6) : : "cc");
 
-  
+
   iVar1 = ov01_021F5AE8();
   if (param_2 < iVar1) {
     if (iVar1 - param_2 == 1) {

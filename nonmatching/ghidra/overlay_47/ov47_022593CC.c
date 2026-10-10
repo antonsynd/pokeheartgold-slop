@@ -52,7 +52,7 @@ void ov47_022593CC(uint *param_1)
 
 {
   int iVar1;
-  
+
   iVar1 = TextPrinterCheckActive(*param_1 & 0xff);
   if (iVar1 != 0) {
     func_0x020200a0(*param_1 & 0xff);

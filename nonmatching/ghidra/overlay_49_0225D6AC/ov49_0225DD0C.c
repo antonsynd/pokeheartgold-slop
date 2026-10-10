@@ -50,7 +50,7 @@ void ov49_0225DD0C(int param_1,short *param_2,undefined4 param_3,undefined4 para
 
 {
   int iVar1;
-  
+
   if ((*param_2 != 0) &&
      (iVar1 = ov49_022588A0(param_1 + (uint)(ushort)param_2[1] * 0x10,param_2 + 2,param_3,param_4,
                             param_4), iVar1 != 0)) {

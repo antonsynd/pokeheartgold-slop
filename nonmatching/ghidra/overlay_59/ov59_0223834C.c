@@ -52,7 +52,7 @@ undefined4 ov59_0223834C(int param_1)
 {
   short sVar1;
   int iVar2;
-  
+
   sVar1 = *(short *)(param_1 + 0x3c);
   if (sVar1 == 0) {
     ov59_0223919C(param_1,0,1);

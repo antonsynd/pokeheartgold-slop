@@ -94,7 +94,7 @@ void ov49_0225A5EC(undefined4 *param_1,undefined4 param_2,undefined4 param_3)
   undefined *puVar5;
   int iVar6;
   int iStack_18;
-  
+
   uRam04000050 = 0;
   uRam04001050 = 0;
   GF_CreateVramTransferManager(0x20,param_3);

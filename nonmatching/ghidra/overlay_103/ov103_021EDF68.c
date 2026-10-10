@@ -48,7 +48,7 @@ void ov103_021EDF68(int param_1)
 
 {
   uint uVar1;
-  
+
   uVar1 = 0;
   do {
     if (*(int *)(param_1 + 600) != 0) {

@@ -53,7 +53,7 @@ void ov88_02258C60(undefined4 *param_1)
 {
   int iVar1;
   uint *puVar2;
-  
+
   puVar2 = (uint *)&ov88_02259944;
   iVar1 = 0;
   do {

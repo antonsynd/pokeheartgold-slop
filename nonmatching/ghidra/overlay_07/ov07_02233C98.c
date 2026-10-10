@@ -50,7 +50,7 @@ undefined4 ov07_02233C98(int param_1)
 
 {
   int iVar1;
-  
+
   if (*(int *)(param_1 + 8) == 0) {
     if (*(int *)(param_1 + 0x10) == 0) {
       ov07_022223F0(param_1 + 0x34,0xffffe001,0x1fff,10);

@@ -58,7 +58,7 @@ void ov57_022399F8(int param_1)
   undefined4 uVar3;
   int iVar4;
   int iVar5;
-  
+
   iVar5 = 5;
   iVar4 = param_1 + 0x13c;
   do {

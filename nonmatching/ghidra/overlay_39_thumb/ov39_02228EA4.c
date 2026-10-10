@@ -49,7 +49,7 @@ undefined4 ov39_02228EA4(int param_1)
 
 {
   undefined4 uVar1;
-  
+
   uVar1 = func_0x021e6a70(-*(int *)(param_1 + 0x18),*(undefined4 *)(param_1 + 0x1c));
   ov39_02228A34(param_1,uVar1,-*(int *)(param_1 + 0x18));
   *(undefined4 *)(param_1 + 8) = 7;

@@ -57,7 +57,7 @@ undefined4 ov37_021E6EB4(int param_1,undefined4 param_2)
 {
   int iVar1;
   undefined4 uVar2;
-  
+
   if ((*(int *)(param_1 + 0x30) != 0xff) && (iVar1 = ov37_021E76A0(), iVar1 == 0)) {
     func_0x020200a0(*(uint *)(param_1 + 0x30) & 0xff);
   }

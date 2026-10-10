@@ -50,7 +50,7 @@ void sub_020616FC(undefined4 param_1)
 {
   int iVar1;
   int iVar2;
-  
+
   iVar1 = sub_0205F394();
   do {
     iVar2 = (**(code **)(&UNK_020fd5d0 + *(char *)(iVar1 + 2) * 4))(param_1,iVar1);

@@ -70,7 +70,7 @@ undefined4 ov85_021E8B08(undefined4 param_1)
   undefined4 uVar2;
   int iVar3;
   int iVar4;
-  
+
   iVar1 = OverlayManager_GetData();
   SysTask_Destroy(*(undefined4 *)(iVar1 + 0x30));
   SpriteTransfer_DeleteCharTransferTask(*(undefined4 *)(iVar1 + 0x1bc));

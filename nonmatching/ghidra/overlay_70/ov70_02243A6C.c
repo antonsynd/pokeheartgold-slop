@@ -49,7 +49,7 @@ undefined4 ov70_02243A6C(int param_1,undefined4 param_2,undefined4 param_3,undef
 
 {
   int iVar1;
-  
+
   iVar1 = ov70_02242390(param_1,param_1 + 100,param_3,param_4,param_4);
   switch(iVar1) {
   case 0:

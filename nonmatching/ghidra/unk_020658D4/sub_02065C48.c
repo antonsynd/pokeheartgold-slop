@@ -52,7 +52,7 @@ undefined4 sub_02065C48(undefined4 param_1,undefined1 *param_2)
 {
   int iVar1;
   undefined4 uVar2;
-  
+
   iVar1 = sub_02062428();
   if (iVar1 == 1) {
     param_2[2] = param_2[2] + '\x01';

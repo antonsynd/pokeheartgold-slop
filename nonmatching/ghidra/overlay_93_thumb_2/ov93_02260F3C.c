@@ -49,7 +49,7 @@ undefined4 ov93_02260F3C(int param_1,undefined4 *param_2)
   int iVar1;
   int iVar2;
   undefined4 uVar3;
-  
+
   iVar2 = *(int *)(param_1 + 0x2fb0);
   if (7 < iVar2 - *(int *)(param_1 + 0x2fac)) {
     return 0;

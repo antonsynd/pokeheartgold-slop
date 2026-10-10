@@ -49,7 +49,7 @@ undefined4 ov74_0222A538(void)
 
 {
   int iVar1;
-  
+
   if ((((iRam0223d0b8 == 0x28) || (iRam0223d0b8 == 0x29)) || (iRam0223d0b8 == 0x30)) &&
      (iVar1 = ov74_022365FC(), iVar1 != 0)) {
     iRam0223d0b8 = 0x2b;

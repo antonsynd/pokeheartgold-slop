@@ -70,7 +70,7 @@ undefined4 ov14_021ECF58(int param_1)
   undefined4 uVar3;
   int iVar4;
   uint uVar5;
-  
+
   iVar4 = *(int *)(*(int *)(param_1 + 0x34) + 0xc);
   uVar5 = *(uint *)(iVar4 + 0xe8);
   PlaySE(0x5ea);

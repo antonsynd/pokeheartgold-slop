@@ -51,7 +51,7 @@ void ov96_021E6454(int param_1,int param_2,undefined4 param_3,undefined4 param_4
 
 {
   uint uVar1;
-  
+
   uVar1 = func_0x020f2998(param_2 + 0x1d,0x1e,param_3,param_4,param_4);
   if ((int)uVar1 < 1) {
     Sprite_SetDrawFlag(*(undefined4 *)(param_1 + 0x714),0);

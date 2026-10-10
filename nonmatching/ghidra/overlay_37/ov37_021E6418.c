@@ -56,7 +56,7 @@ void ov37_021E6418(undefined4 *param_1)
   undefined4 *puVar3;
   short sVar4;
   int iStack_1c;
-  
+
   AddWindowParameterized(*param_1,param_1 + 0xb6,0,2,1,0x1b,4,0xd,0x28);
   FillWindowPixelBuffer(param_1 + 0xb6,0xf);
   AddWindowParameterized(*param_1,param_1 + 0xb2,1,1,2,0x1e,0xf,0,1);

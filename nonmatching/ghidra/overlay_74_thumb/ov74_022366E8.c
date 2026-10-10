@@ -50,7 +50,7 @@ void ov74_022366E8(undefined2 *param_1)
 {
   short sVar1;
   int iVar2;
-  
+
   *(undefined4 *)(iRam0223e2fc + 0x1048) = 0;
   *(undefined2 *)(iRam0223e2fc + 0x1158) = 3;
   *(undefined2 *)(iRam0223e2fc + 0x115a) = *param_1;

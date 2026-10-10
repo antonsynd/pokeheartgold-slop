@@ -55,7 +55,7 @@ void ov07_0223061C(undefined4 param_1,undefined4 *param_2)
 
 {
   int iVar1;
-  
+
   switch(param_2[3]) {
   case 0:
     ov07_02231E08(*param_2,0,0x10);

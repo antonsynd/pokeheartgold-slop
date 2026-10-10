@@ -63,7 +63,7 @@ void ov91_022604F4(int param_1,undefined4 param_2,undefined4 param_3)
   int iVar3;
   int iVar4;
   int iStack_18;
-  
+
   iStack_18 = 0;
   puVar2 = &ov91_02261BF0;
   iVar3 = param_1 + 0x6fc;

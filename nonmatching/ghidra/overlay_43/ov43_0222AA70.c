@@ -51,7 +51,7 @@ void ov43_0222AA70(int param_1)
 
 {
   int iVar1;
-  
+
   iVar1 = TextPrinterCheckActive(*(uint *)(param_1 + 0x84) & 0xff);
   if (iVar1 == 1) {
     TextFlags_SetCanTouchSpeedUpPrint(0);

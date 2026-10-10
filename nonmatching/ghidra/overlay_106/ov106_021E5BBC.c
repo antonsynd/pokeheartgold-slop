@@ -52,7 +52,7 @@ void ov106_021E5BBC(int param_1)
   int iVar2;
   int iVar3;
   undefined4 uStack_1c;
-  
+
   uStack_1c = 0;
   if (*(int *)(param_1 + 0x3fc) != 0) {
     do {

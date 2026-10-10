@@ -54,7 +54,7 @@ undefined4 ov07_02221CEC(undefined4 param_1,int param_2,undefined4 param_3,undef
   undefined2 uStack_c;
   undefined2 uStack_a;
   undefined4 uStack_8;
-  
+
   uStack_10 = 0;
   uStack_e = 0;
   uStack_c = 0;

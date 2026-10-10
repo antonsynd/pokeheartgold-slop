@@ -60,7 +60,7 @@ undefined4 ov74_02231670(void)
   int iVar4;
   undefined4 uVar5;
   undefined4 uVar6;
-  
+
   iVar4 = func_0x020debec(4,0x22308e1,0);
   if (iVar4 != 0) {
     ov74_02231448();

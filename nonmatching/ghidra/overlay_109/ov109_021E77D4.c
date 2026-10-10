@@ -51,7 +51,7 @@ void ov109_021E77D4(undefined4 *param_1,undefined4 param_2,undefined4 param_3,un
 
 {
   int *piVar1;
-  
+
   piVar1 = (int *)Heap_AllocAtEnd(*param_1,8,param_3,param_4,param_4);
   func_0x020d4994(piVar1,0,8);
   *piVar1 = (int)param_1;

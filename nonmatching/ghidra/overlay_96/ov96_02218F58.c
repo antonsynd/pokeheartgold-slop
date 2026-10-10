@@ -50,7 +50,7 @@ void ov96_02218F58(undefined4 *param_1,undefined4 param_2,undefined4 param_3,und
 
 {
   bool bVar1;
-  
+
   bVar1 = true;
   if ((param_1[5] != 1) && (param_1[5] != 4)) {
     bVar1 = false;

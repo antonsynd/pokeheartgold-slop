@@ -50,7 +50,7 @@ undefined4 MapObjectMovementCmd067_Step0(undefined4 param_1)
 
 {
   int iVar1;
-  
+
   iVar1 = sub_0205F3C0(param_1,8);
   *(undefined4 *)(iVar1 + 4) = 0x10000;
   sub_0205F328(param_1,0);

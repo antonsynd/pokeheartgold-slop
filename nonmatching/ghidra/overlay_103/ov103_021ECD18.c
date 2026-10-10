@@ -52,7 +52,7 @@ void ov103_021ECD18(undefined4 *param_1)
 {
   undefined1 uVar1;
   undefined4 *puVar2;
-  
+
   puVar2 = (undefined4 *)param_1[3];
   uVar1 = Options_GetFrame(*param_1);
   LoadUserFrameGfx2(*puVar2,0,0x3e2,0xd,uVar1,0x9d);

@@ -54,7 +54,7 @@ undefined4 ov74_0222F598(undefined *param_1)
 {
   undefined4 *puVar1;
   undefined *puVar2;
-  
+
   Heap_Create(3,0x55,0x30000);
   puVar1 = (undefined4 *)OverlayManager_CreateAndGetData(param_1,0x3d0c,0x55);
   memset((undefined *)puVar1,0,0x3d0c);

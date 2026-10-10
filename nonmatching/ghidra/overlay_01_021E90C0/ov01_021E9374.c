@@ -90,7 +90,7 @@ undefined4 ov01_021E9374(int param_1,int *param_2,undefined4 param_3,undefined4 
   char cStack_3c;
   undefined1 auStack_28 [16];
   undefined4 uStack_18;
-  
+
   uStack_18 = param_4;
   switch(*param_2) {
   case 0:

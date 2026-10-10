@@ -52,7 +52,7 @@ void ov49_0225E3B8(int param_1,uint param_2,undefined4 param_3,undefined4 param_
   undefined4 uStack_1c;
   undefined4 uStack_18;
   undefined4 uStack_14;
-  
+
   uStack_14 = param_4;
   if (*(byte *)(param_1 + 0x613) <= param_2) {
     GF_AssertFail();

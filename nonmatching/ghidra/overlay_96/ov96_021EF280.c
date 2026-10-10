@@ -50,7 +50,7 @@ bool ov96_021EF280(undefined4 param_1,int param_2,undefined4 param_3,undefined4 
 {
   undefined4 uVar1;
   undefined4 uStack_10;
-  
+
   uStack_10 = param_4;
   uVar1 = GF_GetCurrentPlayingBGM();
   sub_02005B78(uVar1,param_1,&uStack_10);

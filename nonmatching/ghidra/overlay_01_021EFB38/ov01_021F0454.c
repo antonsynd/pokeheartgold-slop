@@ -57,7 +57,7 @@ void ov01_021F0454(undefined4 param_1,undefined4 param_2,undefined4 param_3,unde
   undefined4 uVar1;
   ushort *puStack_1c;
   undefined4 uStack_18;
-  
+
   uStack_18 = param_4;
   GfGfxLoader_GXLoadPalFromOpenNarc(param_1,param_4,0,param_5 << 5,param_6 << 5,4);
   GfGfxLoader_LoadCharDataFromOpenNarc(param_1,param_3,param_7,param_8,0,0,0,4);

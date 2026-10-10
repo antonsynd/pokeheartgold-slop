@@ -61,7 +61,7 @@ void ov07_0222B898(undefined4 param_1,char *param_2,undefined4 param_3,undefined
   undefined4 uVar3;
   undefined1 auStack_60 [80];
   undefined4 uStack_10;
-  
+
   uStack_10 = param_4;
   if (*param_2 == '\0') {
     ov07_02222268(param_2 + 0x30,(int)*(short *)(param_2 + 0x20),

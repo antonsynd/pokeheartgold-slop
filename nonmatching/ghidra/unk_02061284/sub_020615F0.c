@@ -59,7 +59,7 @@ undefined4 sub_020615F0(undefined4 param_1,undefined4 param_2)
   int iStack_1c;
   int iStack_18;
   int iStack_14;
-  
+
   sub_020614F4(param_1,&iStack_20);
   iVar1 = MapObject_GetXCoord(param_1);
   iVar2 = GetDeltaXByFacingDirection(param_2);

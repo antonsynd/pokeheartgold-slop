@@ -67,7 +67,7 @@ undefined4 ov37_021E69DC(int param_1,undefined4 param_2,undefined4 param_3,undef
   undefined1 auStack_18 [2];
   undefined1 uStack_16;
   undefined4 uStack_14;
-  
+
   *(byte *)(param_1 + 0x4380) = *(byte *)(param_1 + 0x4380) & 199;
   uStack_14 = param_4;
   if ((*(char *)(param_1 + 0x438b) == '\x02') && (iVar1 = sub_0203769C(), iVar1 != 0)) {

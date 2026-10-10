@@ -48,7 +48,7 @@ void ov08_022220AC(int param_1,uint param_2)
 
 {
   int iVar1;
-  
+
   *(byte *)(param_1 + 0x1fa3) = *(byte *)(param_1 + 0x1fa3) & 0x8f;
   if ((param_2 < 6) && (iVar1 = ov08_0221D5DC(), iVar1 == 2)) {
     *(byte *)(param_1 + 0x1fa3) = *(byte *)(param_1 + 0x1fa3) & 0x8f | 0x10;

@@ -52,7 +52,7 @@ void sub_0203301C(int param_1)
 
 {
   uint uVar1;
-  
+
   uVar1 = (uint)*(ushort *)(param_1 + 2);
   if (uVar1 == 0) {
     switch(*(undefined2 *)(param_1 + 4)) {

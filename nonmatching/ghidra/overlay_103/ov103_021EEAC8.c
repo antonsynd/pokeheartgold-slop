@@ -50,7 +50,7 @@ void ov103_021EEAC8(int param_1,int param_2,undefined4 param_3,undefined4 param_
 
 {
   undefined1 *puVar1;
-  
+
   puVar1 = (undefined1 *)func_0x0201a018(*(undefined4 *)(*(int *)(param_1 + 0xc) + 0x278));
   ov103_021EE0F8(*(undefined4 *)(param_1 + 0xc),2,*puVar1,puVar1[1],param_4);
   if (param_2 == 10) {

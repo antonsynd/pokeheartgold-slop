@@ -51,7 +51,7 @@ int ov18_021F2C74(void)
   uint uVar1;
   uint uVar2;
   ushort *puVar3;
-  
+
   uVar1 = ov18_021F891C();
   puVar3 = (ushort *)&ov18_021FA398;
   uVar2 = 0;

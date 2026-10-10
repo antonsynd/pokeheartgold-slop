@@ -58,7 +58,7 @@ void ov47_02259DCC(undefined1 *param_1,undefined4 param_2,undefined4 param_3,und
   undefined1 auStack_20 [4];
   uint uStack_1c;
   undefined4 uStack_18;
-  
+
   iVar4 = 0x14;
   puVar5 = param_1;
   do {

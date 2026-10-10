@@ -50,7 +50,7 @@ undefined4 sub_02057A0C(void)
 
 {
   int iVar1;
-  
+
   if (iRam021d41c4 == 0) {
     return 0;
   }

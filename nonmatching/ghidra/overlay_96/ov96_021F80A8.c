@@ -57,7 +57,7 @@ void ov96_021F80A8(undefined4 *param_1,undefined4 param_2,uint param_3,undefined
   int iVar4;
   int iVar5;
   int iStack_1c;
-  
+
   *(char *)((int)param_1 + 0x59) = (char)param_3;
   ov96_021F87E0(*param_1,param_4);
   iVar4 = 0;

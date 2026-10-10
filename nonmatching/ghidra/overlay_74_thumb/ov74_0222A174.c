@@ -64,7 +64,7 @@ void ov74_0222A174(undefined *param_1,undefined4 param_2,undefined4 param_3,unde
   short *psVar6;
   undefined auStack_28 [16];
   undefined4 uStack_18;
-  
+
   uStack_18 = param_4;
   puVar2 = OverlayManager_GetData(param_1);
   psVar6 = (short *)(puVar2 + 0xdc);

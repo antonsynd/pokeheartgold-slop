@@ -50,7 +50,7 @@ void ov52_021E8568(int param_1)
 {
   int iVar1;
   int iVar2;
-  
+
   YesNoPrompt_Destroy(*(undefined4 *)(param_1 + 0x5c9c));
   iVar1 = 0;
   iVar2 = param_1;

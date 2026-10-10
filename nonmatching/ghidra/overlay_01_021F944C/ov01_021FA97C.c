@@ -111,7 +111,7 @@ void ov01_021FA97C(undefined4 param_1,undefined4 param_2,undefined4 param_3,unde
   undefined4 uStack_20;
   undefined4 uStack_1c;
   undefined4 uStack_18;
-  
+
   uStack_18 = param_4;
   iVar2 = ov01_021FA3DC();
   uVar3 = ov01_021FA1D0();

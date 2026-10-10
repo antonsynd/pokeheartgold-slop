@@ -64,7 +64,7 @@ void ov07_0222CCBC(int *param_1,int *param_2)
   int iVar2;
   uint uVar3;
   undefined *puVar4;
-  
+
   iVar2 = param_2[1];
   if (iVar2 == 0) {
     ov07_022227D8((short *)(param_2 + 5));

@@ -117,7 +117,7 @@ void ov12_0225DAD4(undefined4 param_1,undefined4 *param_2,undefined4 param_3,und
   ushort auStack_28 [4];
   ushort auStack_20 [4];
   undefined4 uStack_18;
-  
+
   uStack_18 = param_4;
   BattleSystem_GetBgConfig(*param_2);
   uVar3 = BattleSystem_GetBattleInput(*param_2);

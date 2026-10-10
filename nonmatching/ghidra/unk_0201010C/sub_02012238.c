@@ -52,7 +52,7 @@ void sub_02012238(undefined4 param_1,int *param_2)
   int iVar3;
   int iVar4;
   int iVar5;
-  
+
   iVar1 = sub_02010EE0(param_1,0);
   iVar2 = *param_2;
   iVar3 = param_2[2];

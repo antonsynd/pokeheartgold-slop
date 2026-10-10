@@ -48,7 +48,7 @@ void ov99_021E87D0(int param_1)
 
 {
   int iVar1;
-  
+
   if (*(int *)(param_1 + 0xb0) == 0) {
     iVar1 = 1;
   }

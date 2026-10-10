@@ -51,7 +51,7 @@ void ov70_02239B84(int param_1,undefined4 param_2,undefined4 param_3)
 
 {
   undefined4 uVar1;
-  
+
   ReadMsgDataIntoString(*(undefined4 *)(param_1 + 0xba0),param_2,*(undefined4 *)(param_1 + 0xbbc));
   FillWindowPixelBuffer(param_1 + 0xf18,0xf);
   DrawFrameAndWindow2(param_1 + 0xf18,0,1,0xe);

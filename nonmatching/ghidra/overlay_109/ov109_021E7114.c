@@ -52,7 +52,7 @@ void ov109_021E7114(int param_1,undefined4 param_2,undefined4 param_3,undefined4
   int iVar1;
   int extraout_r1;
   ushort *puVar2;
-  
+
   puVar2 = *(ushort **)(param_1 + 0xb4);
   func_0x020f2998(param_2,6);
   iVar1 = func_0x020f2998(param_2,6);

@@ -67,7 +67,7 @@ undefined4 ov57_0223A6B8(int param_1)
 
 {
   int iVar1;
-  
+
   iVar1 = *(int *)(param_1 + 0x404);
   if (iVar1 == 0) {
     ov57_0223B948(param_1,0);

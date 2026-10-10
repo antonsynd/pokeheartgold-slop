@@ -55,7 +55,7 @@ undefined4 ov14_021EA254(int param_1,undefined4 param_2,undefined4 param_3,undef
   short sStack_18;
   short sStack_16;
   undefined4 uStack_14;
-  
+
   iVar1 = *(int *)(param_1 + 0x34);
   uStack_14 = param_4;
   sub_02019978(*(undefined4 *)(iVar1 + 0x2f0),0xf);

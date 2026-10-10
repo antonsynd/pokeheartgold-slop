@@ -55,7 +55,7 @@ undefined4 ov96_022078B0(int *param_1,int param_2,undefined1 *param_3)
   int iStack_20;
   int iStack_1c;
   undefined4 uStack_18;
-  
+
   iVar3 = 0;
   *param_3 = 0;
   piVar2 = param_1;

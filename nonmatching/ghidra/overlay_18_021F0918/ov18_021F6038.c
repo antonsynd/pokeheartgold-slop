@@ -52,7 +52,7 @@ void ov18_021F6038(int param_1)
   uint uVar1;
   short sVar2;
   uint uVar3;
-  
+
   uVar1 = 0;
   sVar2 = 0xe;
   do {

@@ -51,7 +51,7 @@ void ov120_0225F294(int param_1)
 {
   int iVar1;
   int iVar2;
-  
+
   if (param_1 == 0) {
     GF_AssertFail();
   }

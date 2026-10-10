@@ -58,7 +58,7 @@ void ov41_0224AA08(int param_1,undefined4 *param_2,uint param_3)
 
 {
   undefined4 uVar1;
-  
+
   if ((param_3 & 1) != 0) {
     func_0x020e5b44(param_1,0,0x148);
   }

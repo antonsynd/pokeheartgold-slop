@@ -72,7 +72,7 @@ bool ov13_02225510(int param_1,undefined1 *param_2,uint param_3,undefined4 param
   undefined1 auStack_160 [8];
   undefined1 auStack_158 [320];
   undefined4 uStack_18;
-  
+
   uStack_178 = 0xa6a6a6a6;
   uStack_174 = 0xa6a6a6a6;
   if (((param_3 & 7) == 0) && ((param_5 & 7) == 0)) {

@@ -51,7 +51,7 @@ void sub_0208C0E8(int param_1,undefined4 param_2,undefined4 param_3,undefined4 p
 {
   undefined4 uVar1;
   undefined4 uVar2;
-  
+
   uVar1 = sub_0208C0A4(*(undefined1 *)(param_1 + 0x275),0x58,0x58,param_4,param_4);
   uVar2 = sub_0208C0A4(*(undefined1 *)(param_1 + 0x275),0x31,0x49);
   Sprite_SetPositionXY(*(undefined4 *)(param_1 + 0x4c0),uVar1,uVar2);

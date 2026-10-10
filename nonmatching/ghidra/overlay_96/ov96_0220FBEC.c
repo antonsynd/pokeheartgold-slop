@@ -61,7 +61,7 @@ undefined4 ov96_0220FBEC(short *param_1,int param_2,undefined2 *param_3)
   int iStack_20;
   int iStack_1c;
   undefined4 uStack_18;
-  
+
   sVar1 = param_1[1];
   if (sVar1 < 0x120) {
     return 0;

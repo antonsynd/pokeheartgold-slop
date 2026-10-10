@@ -48,7 +48,7 @@ undefined4 ov05_0221C568(int *param_1)
 
 {
   int iVar1;
-  
+
   iVar1 = ov05_0221CCF4();
   if (iVar1 == 1) {
     if (*(char *)(*param_1 + 0x2a) == '\x01') {

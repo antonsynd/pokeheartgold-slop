@@ -68,7 +68,7 @@ undefined4 FrtCmd_036(undefined4 *param_1)
   undefined1 uStack_2a;
   undefined1 uStack_29;
   undefined1 uStack_28;
-  
+
   puVar1 = (undefined4 *)*param_1;
   uVar2 = sub_0209680C(*puVar1);
   iVar3 = FrontierScriptContext_ReadWord(param_1);

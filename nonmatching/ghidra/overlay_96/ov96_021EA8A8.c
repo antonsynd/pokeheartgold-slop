@@ -61,7 +61,7 @@ void ov96_021EA8A8(int param_1,undefined4 param_2,short *param_3,int param_4,int
   int iStack_20;
   int iStack_1c;
   int iStack_18;
-  
+
   iStack_1c = param_5;
   iStack_18 = 0;
   psVar3 = param_3;

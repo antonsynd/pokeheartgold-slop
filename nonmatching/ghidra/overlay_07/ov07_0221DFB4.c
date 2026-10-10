@@ -59,7 +59,7 @@ undefined4 ov07_0221DFB4(undefined4 param_1,int param_2,undefined4 param_3,undef
   undefined1 uVar1;
   int iVar2;
   char cVar3;
-  
+
   cVar3 = *(char *)(param_2 + 5);
   if (cVar3 == '\0') {
     ov07_0221EB98(*(undefined4 *)(param_2 + 0x48),2,param_3,param_4,param_4);

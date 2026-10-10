@@ -55,7 +55,7 @@ void ov01_021FA804(undefined4 param_1,undefined4 *param_2)
 {
   int iVar1;
   undefined4 uVar2;
-  
+
   iVar1 = ov01_021F9EC4(param_1,*param_2);
   if (iVar1 != 2) {
     uVar2 = ov01_021F9528(param_2[1],*param_2);

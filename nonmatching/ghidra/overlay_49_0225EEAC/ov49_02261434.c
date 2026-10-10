@@ -52,7 +52,7 @@ void ov49_02261434(undefined4 *param_1,undefined4 param_2)
   undefined4 uStack_20;
   undefined4 uStack_1c;
   undefined1 auStack_18 [12];
-  
+
   func_0x0222ae08(*param_1,&uStack_20,&uStack_1c);
   ov49_0225E420(param_2,uStack_20,uStack_1c,auStack_18);
   ov49_02259148(param_1[3],auStack_18);

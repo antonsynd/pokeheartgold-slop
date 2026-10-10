@@ -52,7 +52,7 @@ void ov103_021EDC68(undefined4 *param_1,undefined1 param_2,undefined2 param_3,un
 {
   undefined4 *puVar1;
   undefined4 uVar2;
-  
+
   puVar1 = (undefined4 *)Heap_Alloc(0x9c,0x44);
   func_0x020d4994(puVar1,0,0x44);
   uVar2 = SaveArray_Party_Get(*(undefined4 *)param_1[2]);

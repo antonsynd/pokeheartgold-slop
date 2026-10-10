@@ -55,7 +55,7 @@ undefined4 ov07_0222F6C0(int param_1)
   undefined4 uVar2;
   undefined4 uStack_18;
   undefined4 uStack_14;
-  
+
   iVar1 = *(int *)(param_1 + 0x94);
   uVar2 = 0;
   if (iVar1 == 0) {

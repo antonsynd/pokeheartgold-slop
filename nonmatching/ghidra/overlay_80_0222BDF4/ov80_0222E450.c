@@ -56,7 +56,7 @@ void ov80_0222E450(int param_1,int *param_2,undefined1 param_3,undefined1 param_
   int *piVar5;
   int iVar6;
   int *piVar7;
-  
+
   if (param_9 == 0) {
     puVar1 = NewMsgDataFromNarc(1,0x1b,0xbf,*(int *)(param_1 + 0x34));
     param_2[0x23] = (int)puVar1;

@@ -60,7 +60,7 @@ void ov96_021FB808(int *param_1,int param_2)
   undefined *puVar2;
   undefined *puVar3;
   ulonglong uVar4;
-  
+
   puVar1 = NewMsgDataFromNarc(1,0x1b,0x135,*param_1);
   puVar2 = MessageFormat_New(*param_1);
   uVar4 = _s32_div_f(param_2,0x1e);

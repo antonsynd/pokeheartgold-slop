@@ -62,7 +62,7 @@ undefined4 ov96_02219794(undefined4 *param_1,undefined4 param_2,int param_3)
   short sStack_1a;
   short sStack_18;
   short sStack_16;
-  
+
   uVar2 = ov96_021E5F24(*param_1);
   func_0x020f2998(param_3 + 1,3);
   cVar1 = *(char *)(param_1 + 0x30);

@@ -57,7 +57,7 @@ void sub_0208B780(int param_1,int param_2,undefined4 param_3,undefined4 param_4,
   int iVar5;
   char acStack_20 [8];
   undefined4 uStack_18;
-  
+
   uStack_18 = param_4;
   iVar2 = sub_0208B85C(acStack_20,param_3,param_4,param_5,param_6);
   iVar5 = 0;

@@ -58,7 +58,7 @@ void ov90_0225A850(int param_1,undefined4 param_2)
 {
   undefined4 uVar1;
   undefined4 uVar2;
-  
+
   uVar1 = NARC_New(200);
   GfGfxLoader_GXLoadPalFromOpenNarc(uVar1,4,0,0,0x120,param_2);
   GfGfxLoader_GXLoadPalFromOpenNarc(uVar1,4,4,0,0x120,param_2);

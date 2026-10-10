@@ -53,7 +53,7 @@ void ov85_021E78D8(int param_1,int *param_2,undefined4 param_3,undefined4 param_
   uint uVar2;
   int iStack_18;
   undefined4 uStack_14;
-  
+
   iStack_18 = *(int *)(param_1 + 0x1c);
   uStack_14 = param_4;
   ov85_021E8530(&iStack_18,*(undefined4 *)(param_1 + 0x20));

@@ -48,7 +48,7 @@ ushort * ov13_02224694(int *param_1,ushort *param_2,uint *param_3,uint *param_4)
 {
   ushort *puVar1;
   uint uVar2;
-  
+
   puVar1 = (ushort *)*param_1;
   if (param_2 <= puVar1) {
     return (ushort *)0x0;

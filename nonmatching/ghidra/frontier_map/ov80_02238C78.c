@@ -54,7 +54,7 @@ void ov80_02238C78(int param_1,undefined4 param_2,undefined4 param_3,undefined4 
   undefined1 auStack_20 [8];
   undefined1 auStack_18 [4];
   undefined4 uStack_14;
-  
+
   uStack_14 = param_4;
   iVar1 = func_0x02229a08(*(undefined4 *)(param_1 + 0x30),auStack_20);
   while (iVar1 == 1) {

@@ -57,7 +57,7 @@ undefined4 ov74_0222FD98(undefined *param_1,int param_2)
   int iVar2;
   uint uVar3;
   uint uVar4;
-  
+
   puVar1 = Save_MysteryGift_Get(param_1);
   uVar4 = *(uint *)(param_2 + 0x48);
   if ((uVar4 == 0xffffffff) && (*(short *)(param_2 + 0x4c) == -1)) {

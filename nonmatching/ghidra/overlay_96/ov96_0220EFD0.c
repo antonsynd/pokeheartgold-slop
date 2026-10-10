@@ -50,7 +50,7 @@ void ov96_0220EFD0(byte *param_1,int param_2,undefined4 param_3)
 
 {
   byte extraout_r1;
-  
+
   if (param_1 == (byte *)0x0) {
     GF_AssertFail();
   }

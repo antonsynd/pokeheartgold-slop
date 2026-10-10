@@ -60,7 +60,7 @@ void ov96_02203754(int param_1)
   int iStack_38;
   undefined1 auStack_2c [12];
   char acStack_20 [12];
-  
+
   iVar2 = 0;
   pcVar3 = acStack_20;
   iStack_44 = 0;

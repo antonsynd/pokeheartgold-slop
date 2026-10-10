@@ -51,7 +51,7 @@ void ov86_021E7CA0(int param_1,undefined4 param_2,undefined4 param_3,undefined4 
 
 {
   int iVar1;
-  
+
   FillWindowPixelBuffer(param_1 + 0x160,0);
   iVar1 = GetWindowWidth(param_1 + 0x160);
   ov86_021E6024(param_1,0x15,*(ushort *)(param_1 + 600) + 0x38,(iVar1 * 8) / 2,0,4,0xf0100,2,param_4

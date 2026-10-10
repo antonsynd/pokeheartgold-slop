@@ -50,7 +50,7 @@ uint ov112_021E935C(int param_1,int param_2,int param_3,int param_4)
   int iVar2;
   uint uVar3;
   int iVar4;
-  
+
   iVar4 = ((int)(param_3 + ((uint)(param_3 >> 2) >> 0x1d)) >> 3) +
           ((int)(param_4 + ((uint)(param_4 >> 2) >> 0x1d)) >> 3) * param_2;
   iVar1 = param_3 >> 0x1f;

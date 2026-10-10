@@ -56,7 +56,7 @@ void ov37_021E713C(undefined4 param_1,undefined4 param_2,int param_3,int param_4
   int iStack_20;
   int iStack_1c;
   int iStack_18;
-  
+
   iStack_18 = *param_5;
   iStack_20 = *param_6;
   if ((param_7 == 0) && (param_8 == 0)) {

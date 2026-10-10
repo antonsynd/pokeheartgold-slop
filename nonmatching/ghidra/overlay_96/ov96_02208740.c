@@ -51,7 +51,7 @@ void ov96_02208740(int param_1,undefined4 param_2,undefined4 param_3,undefined4 
   undefined1 uVar1;
   uint uVar2;
   uint extraout_r1;
-  
+
   uVar1 = func_0x020f2998(param_2,0x1e,param_3,param_4,param_4);
   uVar2 = func_0x020f2998(uVar1,10);
   Sprite_SetAnimCtrlSeq(*(undefined4 *)(param_1 + 0x1b4),(uVar2 & 0xff) + 1);

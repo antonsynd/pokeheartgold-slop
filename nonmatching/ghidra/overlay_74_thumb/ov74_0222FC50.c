@@ -53,7 +53,7 @@ void ov74_0222FC50(undefined *param_1,int param_2,int param_3,undefined4 param_4
 
 {
   int *piVar1;
-  
+
   ov74_0222FCC4(param_1,param_2,param_3,param_4);
   piVar1 = (int *)Heap_AllocAtEnd(param_3,0x3d0c);
   memset((undefined *)piVar1,0,0x3d0c);

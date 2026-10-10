@@ -49,7 +49,7 @@ void ov01_021F7704(undefined4 param_1)
 
 {
   int iVar1;
-  
+
   iVar1 = sub_0205F40C();
   *(undefined1 *)(iVar1 + 0x15) = 0;
   iVar1 = MapObject_GetFacingVector(param_1);

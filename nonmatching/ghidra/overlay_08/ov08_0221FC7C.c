@@ -61,7 +61,7 @@ void ov08_0221FC7C(int *param_1)
   undefined1 auStack_1c [2];
   undefined1 local_1a;
   undefined1 local_19;
-  
+
   FillWindowPixelBuffer((undefined *)param_1[0x81c],0);
   FillWindowPixelBuffer((undefined *)(param_1[0x81c] + 0x10),0);
   FillWindowPixelBuffer((undefined *)(param_1[0x81c] + 0x20),0);

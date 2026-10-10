@@ -52,7 +52,7 @@ void ov01_021F796C(undefined4 param_1,undefined4 param_2,int param_3,int param_4
 
 {
   undefined4 uVar1;
-  
+
   if (param_4 == *(char *)(param_3 + 2)) {
     ov01_021F8C30(param_2);
   }

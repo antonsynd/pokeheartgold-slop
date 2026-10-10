@@ -58,7 +58,7 @@ void ov74_02228F8C(int param_1)
 {
   int iVar1;
   undefined4 uVar2;
-  
+
   ov74_02235414(param_1 + 0x48,param_1 + 0x28,0,0xf7,10,2);
   ov74_02235464(param_1 + 0x48,0x1b,4,*(undefined4 *)(param_1 + 0x144));
   ov74_0223546C(param_1 + 0x48,1,1);

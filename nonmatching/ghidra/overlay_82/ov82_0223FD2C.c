@@ -50,7 +50,7 @@ void ov82_0223FD2C(undefined4 param_1,int param_2,undefined4 param_3,undefined4 
 
 {
   uint uVar1;
-  
+
   uVar1 = 0;
   do {
     AddWindow(param_1,param_2 + uVar1 * 0x10,&ov82_0223FF00 + uVar1 * 8,uVar1 * 8,param_4);

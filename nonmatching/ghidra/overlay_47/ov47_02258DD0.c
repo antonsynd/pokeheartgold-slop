@@ -73,7 +73,7 @@ void ov47_02258DD0(int param_1,undefined4 param_2,undefined4 *param_3,undefined4
   undefined4 uStack_3c;
   undefined4 uStack_38;
   undefined1 auStack_34 [36];
-  
+
   GfGfxLoader_GXLoadPalFromOpenNarc(param_3[0x50],199,0,0,0x80,param_4);
   GfGfxLoader_LoadCharDataFromOpenNarc(param_3[0x50],200,*param_3,0,0,0,0,param_4);
   GfGfxLoader_LoadScrnDataFromOpenNarc(param_3[0x50],0xc9,*param_3,0,0,0,0,param_4);

@@ -50,7 +50,7 @@ undefined4 ov40_0223F860(int param_1)
 {
   int iVar1;
   undefined4 uVar2;
-  
+
   uVar2 = *(undefined4 *)(param_1 + 0x860);
   iVar1 = ov40_02242CFC();
   if (iVar1 != 0) {

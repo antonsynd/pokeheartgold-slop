@@ -61,7 +61,7 @@ void ov96_02211DE4(int param_1,int param_2)
   undefined4 uStack_2c;
   undefined4 uStack_28;
   undefined4 uStack_24;
-  
+
   uStack_24 = 0;
   uStack_28 = 0;
   uStack_2c = 0;

@@ -54,7 +54,7 @@ undefined4 ov109_021E61DC(int param_1)
 {
   ushort uVar1;
   int iVar2;
-  
+
   if (*(short *)(param_1 + 8) == 0) {
     uVar1 = *(ushort *)(param_1 + 10);
     *(ushort *)(param_1 + 10) = uVar1 + 1;

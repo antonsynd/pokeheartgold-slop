@@ -91,7 +91,7 @@ undefined4 ov13_02224B2C(ushort *param_1,undefined4 param_2,undefined4 param_3,u
   int iStack_20;
   ushort *puStack_1c;
   undefined4 uStack_18;
-  
+
   puVar5 = param_1 + 4;
   uStack_30 = 0;
   uVar2 = (*param_1 & 0xff) << 8 | (int)(uint)*param_1 >> 8;

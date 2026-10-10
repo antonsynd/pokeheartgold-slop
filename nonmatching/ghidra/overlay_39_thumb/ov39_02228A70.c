@@ -48,7 +48,7 @@ undefined4 ov39_02228A70(uint param_1)
 
 {
   int iVar1;
-  
+
   if ((param_1 != 0xff) && (iVar1 = TextPrinterCheckActive(param_1 & 0xff), iVar1 != 0)) {
     return 1;
   }

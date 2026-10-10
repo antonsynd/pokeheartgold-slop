@@ -49,7 +49,7 @@ void ov15_021FDF88(int param_1,undefined4 param_2,undefined4 param_3,undefined4 
 
 {
   int iVar1;
-  
+
   iVar1 = param_1 + 0x81c;
   func_0x020be388(iVar1,*(undefined4 *)(iVar1 + *(int *)(param_1 + 0x900) * 4 + 0xc0),param_3,
                   param_4,param_4);

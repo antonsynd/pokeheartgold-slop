@@ -56,7 +56,7 @@ undefined4 ov07_022219EC(undefined4 param_1,int param_2,undefined4 param_3,undef
   int iStack_20;
   short sStack_1c;
   undefined4 uStack_10;
-  
+
   asStack_28[0] = 0;
   uStack_10 = param_4;
   ov07_022217A4(param_2,&iStack_24);

@@ -48,7 +48,7 @@ int * ov96_021E9344(int *param_1)
 
 {
   int iVar1;
-  
+
   if (3 < param_1[2]) {
     GF_AssertFail();
   }

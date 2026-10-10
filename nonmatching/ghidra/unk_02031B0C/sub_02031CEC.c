@@ -54,7 +54,7 @@ undefined4 sub_02031CEC(int param_1,int param_2,undefined2 *param_3)
 {
   int iVar1;
   undefined2 *puVar2;
-  
+
   if (8 < param_2) {
     param_2 = 0;
   }

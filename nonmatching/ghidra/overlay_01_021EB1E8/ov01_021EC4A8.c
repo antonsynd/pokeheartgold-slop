@@ -55,7 +55,7 @@ void ov01_021EC4A8(int param_1,int *param_2,int *param_3,undefined4 param_4)
   int iStack_24;
   int iStack_20;
   undefined4 uStack_18;
-  
+
   uStack_18 = param_4;
   ov01_021EC31C(&iStack_28,&iStack_2c,param_1);
   iVar1 = *(int *)(param_1 + 0x40);

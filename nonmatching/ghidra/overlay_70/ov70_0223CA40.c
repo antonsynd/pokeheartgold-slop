@@ -53,7 +53,7 @@ undefined4 ov70_0223CA40(int param_1)
 
 {
   int iVar1;
-  
+
   if ((uRam021d1154 & 1) == 0) {
     iVar1 = ov70_02241164(*(undefined4 *)(param_1 + 0x128));
     if ((*(short *)(param_1 + 0x11de) != 0) && (-1 < iVar1)) {

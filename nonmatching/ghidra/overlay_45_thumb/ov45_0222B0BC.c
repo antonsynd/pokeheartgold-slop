@@ -49,7 +49,7 @@ void ov45_0222B0BC(int param_1)
 
 {
   int iVar1;
-  
+
   iVar1 = ov45_0222AFF8();
   if (iVar1 == 1) {
     ov45_0222BDCC(param_1 + 0x1c0,*(undefined2 *)(param_1 + 0x1c4));

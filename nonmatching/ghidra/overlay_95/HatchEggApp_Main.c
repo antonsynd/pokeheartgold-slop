@@ -56,7 +56,7 @@ undefined4 HatchEggApp_Main(undefined4 param_1,int *param_2,undefined4 param_3,u
   int *piVar1;
   uint uVar2;
   int iVar3;
-  
+
   piVar1 = (int *)OverlayManager_GetData();
   if (*param_2 == 0) {
     iVar3 = IsPaletteFadeFinished();

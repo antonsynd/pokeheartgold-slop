@@ -58,7 +58,7 @@ int sub_0205A6AC(undefined *param_1)
   uint uVar3;
   uint uVar4;
   uint uVar5;
-  
+
   uVar1 = sub_0203769C();
   uVar2 = sub_020348A8((uint)uVar1);
   uVar1 = sub_0203769C();

@@ -49,7 +49,7 @@ void ov93_02260F14(undefined4 param_1,undefined2 param_2,undefined4 param_3,unde
 
 {
   undefined1 uVar1;
-  
+
   func_0x020d4994(param_4,0,0x10);
   uVar1 = sub_0203769C();
   *param_4 = uVar1;

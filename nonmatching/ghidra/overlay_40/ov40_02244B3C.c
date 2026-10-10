@@ -51,7 +51,7 @@ void ov40_02244B3C(void)
 {
   undefined4 in_r3;
   uint uVar1;
-  
+
   if (iRam021d2af8 == 0) {
     GF_AssertFail();
   }

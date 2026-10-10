@@ -68,7 +68,7 @@ ov96_021EB408(undefined4 *param_1,undefined4 param_2,undefined4 param_3,undefine
   undefined4 uStack_40;
   undefined4 uStack_3c;
   undefined1 auStack_38 [36];
-  
+
   if ((int)param_1[2] <= (int)param_1[1]) {
     GF_AssertFail();
   }

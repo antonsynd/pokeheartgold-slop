@@ -56,7 +56,7 @@ void ov80_02239384(int param_1)
 
 {
   undefined4 uVar1;
-  
+
   uVar1 = SpriteSystem_Alloc(0x65);
   *(undefined4 *)(param_1 + 0x34) = uVar1;
   SpriteSystem_Init(uVar1,0x223d5b8,0x223d570,0x20);

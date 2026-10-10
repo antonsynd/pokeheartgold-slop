@@ -53,7 +53,7 @@ undefined4 ov59_0223A418(int param_1,undefined4 *param_2)
   undefined1 *puVar2;
   undefined4 uVar3;
   undefined1 uVar4;
-  
+
   iVar1 = func_0x0202529c(&ov59_0223C924);
   if ((iVar1 != -1) && (iVar1 != 7)) {
     *param_2 = 1;

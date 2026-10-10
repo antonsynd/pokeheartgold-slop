@@ -50,7 +50,7 @@ undefined4 ov80_0223968C(int param_1,uint param_2,undefined4 param_3)
 
 {
   undefined4 uVar1;
-  
+
   if (7 < param_2) {
     GF_AssertFail();
   }

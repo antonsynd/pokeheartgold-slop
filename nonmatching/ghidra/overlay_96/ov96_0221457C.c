@@ -55,7 +55,7 @@ void ov96_0221457C(int param_1,int param_2,int param_3)
   uint uVar3;
   uint uVar4;
   ushort auStack_38 [18];
-  
+
   uVar4 = 0;
   uVar3 = 0;
   do {

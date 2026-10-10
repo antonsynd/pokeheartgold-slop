@@ -56,7 +56,7 @@ undefined4 FrtCmd_110(undefined4 *param_1)
   int iVar1;
   undefined4 uVar2;
   undefined1 auStack_14 [4];
-  
+
   iVar1 = Frontier_GetLaunchArgs(*(undefined4 *)*param_1);
   uVar2 = Heap_Alloc(0xb,0x1d4);
   func_0x020d4994(uVar2,0,0x1d4);

@@ -54,7 +54,7 @@ void ov96_0221A6D0(void)
 {
   undefined4 in_r3;
   undefined8 uVar1;
-  
+
   func_0x020f21c0();
   uVar1 = func_0x020f2080();
   uVar1 = func_0x020f2da0((int)uVar1,(int)((ulonglong)uVar1 >> 0x20),0,0x40900000,in_r3);

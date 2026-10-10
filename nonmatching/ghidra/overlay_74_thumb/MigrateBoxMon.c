@@ -70,7 +70,7 @@ void MigrateBoxMon(undefined4 param_1,undefined4 param_2,undefined4 param_3,unde
   undefined1 auStack_3c [24];
   undefined1 auStack_24 [12];
   undefined4 uStack_18;
-  
+
   uStack_18 = param_4;
   ZeroBoxMonData(param_2);
   uVar1 = AcquireBoxMonLock(param_2);

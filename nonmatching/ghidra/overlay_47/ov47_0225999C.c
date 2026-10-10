@@ -54,7 +54,7 @@ void ov47_0225999C(undefined4 param_1,undefined4 param_2,undefined4 param_3,unde
   undefined4 uVar1;
   int iVar2;
   undefined4 uVar3;
-  
+
   uVar3 = param_4;
   FillWindowPixelBuffer(param_1,0);
   uVar1 = ov47_02258CEC(param_2,0,param_3);

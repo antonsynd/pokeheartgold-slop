@@ -51,7 +51,7 @@ void ov96_021F4364(int param_1,int param_2)
 
 {
   undefined4 uVar1;
-  
+
   if (*(int *)(param_1 + 100) != param_2) {
     *(int *)(param_1 + 100) = param_2;
     ov96_021F459C();

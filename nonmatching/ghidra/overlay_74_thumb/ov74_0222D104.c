@@ -49,7 +49,7 @@ void ov74_0222D104(undefined4 param_1,undefined4 param_2)
 
 {
   int iVar1;
-  
+
   iVar1 = WindowIsInUse();
   if (iVar1 == 1) {
     ClearFrameAndWindow2(param_1,param_2);

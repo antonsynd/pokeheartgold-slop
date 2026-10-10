@@ -50,7 +50,7 @@ void ov90_0225C1C8(void)
   undefined4 in_r3;
   __asm__ volatile("movs %0, r3" : "=l"(in_r3) : : "cc");
 
-  
+
   ov90_02258B44(in_r3,1);
   return;
 }

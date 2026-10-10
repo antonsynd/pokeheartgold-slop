@@ -63,7 +63,7 @@ void ov96_022140F4(undefined4 param_1)
   undefined4 uVar4;
   undefined4 uVar5;
   uint uVar6;
-  
+
   iVar1 = PokeathlonCourse_GetHeapAllocPtr4();
   uVar2 = NewMsgDataFromNarc(1,0x1b,0x135,*(undefined4 *)(iVar1 + 0x58));
   uVar3 = MessageFormat_New(*(undefined4 *)(iVar1 + 0x58));

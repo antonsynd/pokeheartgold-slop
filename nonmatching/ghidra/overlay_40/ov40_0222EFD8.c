@@ -53,7 +53,7 @@ undefined4 ov40_0222EFD8(int param_1,undefined4 param_2,int param_3,undefined4 p
   int iVar2;
   int *piVar3;
   int iVar4;
-  
+
   if (*(int *)(param_1 + 0x38) == *(int *)(param_1 + 0xc)) {
     return 0;
   }

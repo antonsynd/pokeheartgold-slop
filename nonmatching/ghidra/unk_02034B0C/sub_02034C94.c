@@ -56,7 +56,7 @@ void sub_02034C94(void)
   int iVar4;
   int iVar5;
   int iVar6;
-  
+
   iVar3 = iRam021d413c;
   iVar6 = iRam021d413c + 0x54;
   if ((int)((uint)*(byte *)(iRam021d413c + 0xd95) << 0x19) < 0) {

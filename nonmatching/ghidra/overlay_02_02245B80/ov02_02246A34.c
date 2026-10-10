@@ -54,7 +54,7 @@ undefined4 ov02_02246A34(void)
   int iVar1;
   undefined4 uVar2;
   int iVar3;
-  
+
   iVar1 = TaskManager_GetEnvironment();
   if (*(int *)(iVar1 + 4) == 0) {
     uVar2 = ov02_022494C4(*(undefined4 *)(iVar1 + 8),*(undefined4 *)(iVar1 + 0xc),

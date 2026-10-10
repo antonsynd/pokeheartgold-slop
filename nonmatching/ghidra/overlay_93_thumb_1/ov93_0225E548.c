@@ -48,7 +48,7 @@ undefined4 ov93_0225E548(int param_1,uint param_2)
 
 {
   int iVar1;
-  
+
   if (*(int *)(param_1 + 0x2fd4) != 7) {
     return 0;
   }

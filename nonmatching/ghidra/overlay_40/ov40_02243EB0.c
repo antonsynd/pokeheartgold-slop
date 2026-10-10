@@ -52,7 +52,7 @@ void ov40_02243EB0(int param_1,int param_2,undefined4 param_3,undefined4 param_4
   short sStack_10;
   short sStack_e;
   undefined4 uStack_c;
-  
+
   uVar1 = *(undefined4 *)(param_1 + param_2 * 0x1c + 0xc);
   *(int *)(param_1 + 0x188) = param_2;
   uStack_c = param_4;

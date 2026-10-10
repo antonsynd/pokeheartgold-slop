@@ -62,7 +62,7 @@ void ov108_021E6A58(int param_1)
   undefined4 uStack_18;
   undefined4 uStack_14;
   undefined1 uStack_10;
-  
+
   func_0x020d4994(&uStack_24,0,0x18);
   uStack_24 = 3;
   uStack_22 = 0xf00;

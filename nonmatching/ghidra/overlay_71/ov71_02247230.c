@@ -55,7 +55,7 @@ void ov71_02247230(int param_1,int param_2,undefined1 param_3,uint param_4,undef
   undefined4 uVar2;
   int iStack_1c;
   uint uStack_18;
-  
+
   if (param_2 == 0) {
     uVar2 = 0x10a;
   }

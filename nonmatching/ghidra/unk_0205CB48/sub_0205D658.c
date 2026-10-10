@@ -50,7 +50,7 @@ void sub_0205D658(undefined *param_1,int param_2)
 {
   int iVar1;
   int iVar2;
-  
+
   iVar2 = 0x4c;
   iVar1 = PlayerAvatar_GetUnk24(param_1);
   if (iVar1 == 1) {

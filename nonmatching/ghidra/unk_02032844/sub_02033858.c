@@ -52,7 +52,7 @@ void sub_02033858(void)
 
 {
   int iVar1;
-  
+
   iVar1 = *(int *)(iRam021d4128 + 0x1310);
   if (iVar1 != 1) {
     if (((iVar1 != 6) && (iVar1 != 5)) && (iVar1 != 4)) {

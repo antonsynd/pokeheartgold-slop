@@ -53,7 +53,7 @@ undefined4 sub_02035ED8(undefined4 param_1,undefined4 param_2,undefined4 param_3
 {
   int iVar1;
   undefined4 uVar2;
-  
+
   uVar2 = 1;
   sub_0203993C();
   iVar1 = sub_02034044();

@@ -52,7 +52,7 @@ undefined4 ov15_021FD850(int param_1,undefined4 param_2,undefined4 param_3,undef
   int iVar2;
   byte bVar3;
   byte *pbVar4;
-  
+
   pbVar4 = (byte *)(param_1 + 0x940);
   if (*(char *)(param_1 + 0x942) == '\x01') {
     iVar2 = ManagedSprite_IsAnimated(*(undefined4 *)(param_1 + (uint)*pbVar4 * 4 + 0x250));

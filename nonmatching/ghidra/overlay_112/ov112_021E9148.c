@@ -60,7 +60,7 @@ void ov112_021E9148(int param_1,int param_2,int param_3,int param_4)
   int iVar3;
   int iVar4;
   int iVar5;
-  
+
   uVar1 = NewMsgDataFromNarc(1,0x1b,0xed,0x9a);
   FontID_Alloc(5,0x9a);
   iVar4 = 0;

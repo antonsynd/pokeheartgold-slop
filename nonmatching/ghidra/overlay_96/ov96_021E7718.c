@@ -74,7 +74,7 @@ void ov96_021E7718(undefined *param_1)
   undefined *puVar5;
   undefined *puVar6;
   ushort uVar7;
-  
+
   puVar1 = Save_Pokeathlon_Get((undefined *)**(undefined4 **)(param_1 + 0x1f8));
   puVar2 = PokeathlonCourse_GetFieldData(param_1);
   puVar3 = Save_VarsFlags_Get((undefined *)**(undefined4 **)(param_1 + 0x1f8));

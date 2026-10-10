@@ -49,7 +49,7 @@ void ov91_0225CA74(int param_1,undefined4 param_2,undefined4 param_3,undefined4 
 
 {
   undefined4 uVar1;
-  
+
   uVar1 = func_0x0225886c(param_1 + 8,param_3,param_3,param_4,param_4);
   ov91_0225CD74(*(undefined4 *)(param_1 + 0x30),param_2,uVar1);
   return;

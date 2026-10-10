@@ -50,7 +50,7 @@ void sub_02063B08(undefined4 param_1,undefined4 param_2,undefined4 param_3,undef
 {
   undefined1 uVar1;
   int iVar2;
-  
+
   iVar2 = sub_0205F398(param_1,9,param_3,param_4,param_4);
   uVar1 = MapObject_GetParam(param_1,1);
   *(undefined1 *)(iVar2 + 3) = uVar1;

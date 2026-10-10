@@ -49,7 +49,7 @@ void ov59_0223A7FC(int param_1,int param_2)
   byte bVar1;
   char cVar2;
   uint uVar3;
-  
+
   if (param_2 == 0) {
     *(undefined1 *)(param_1 + 0x4b) = *(undefined1 *)(param_1 + 0x4a);
     *(undefined1 *)(param_1 + 0x49) = 1;

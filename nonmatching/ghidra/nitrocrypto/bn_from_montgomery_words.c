@@ -56,7 +56,7 @@ void bn_from_montgomery_words(int param_1,int *param_2,int param_3,int param_4,i
   bool bVar6;
   uint uStack_30;
   uint uStack_2c;
-  
+
   uVar5 = 0;
   iVar3 = 0;
   puVar4 = (uint *)(param_2 + param_4);

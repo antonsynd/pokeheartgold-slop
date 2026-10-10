@@ -54,7 +54,7 @@ void ov97_0221E834(void)
   undefined4 uStack_14;
   undefined4 uStack_10;
   undefined4 uStack_c;
-  
+
   uStack_18 = 0x28;
   uStack_14 = 0x10000;
   uStack_10 = 0x4000;

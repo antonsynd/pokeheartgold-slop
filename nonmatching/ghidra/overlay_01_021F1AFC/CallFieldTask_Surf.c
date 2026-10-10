@@ -57,7 +57,7 @@ void CallFieldTask_Surf(undefined4 param_1,undefined4 param_2,int param_3)
   undefined4 uVar2;
   int iVar3;
   undefined4 auStack_20 [4];
-  
+
   iVar1 = TaskManager_GetFieldSystem();
   uVar2 = ov01_021F3100(iVar1,param_3);
   ov01_021F3040(iVar1,uVar2,auStack_20);

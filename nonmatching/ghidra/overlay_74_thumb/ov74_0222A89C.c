@@ -67,7 +67,7 @@ void ov74_0222A89C(undefined *param_1,int *param_2,uint param_3,undefined4 param
   undefined4 uStack_20;
   undefined4 uStack_1c;
   undefined4 uStack_18;
-  
+
   uStack_18 = param_4;
   puVar1 = OverlayManager_GetData(param_1);
   if (*(undefined **)(puVar1 + 0x7c) != (undefined *)0x0) {

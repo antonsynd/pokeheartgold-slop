@@ -57,7 +57,7 @@ void ov34_0225E348(int param_1,undefined4 param_2,undefined2 *param_3,undefined4
   int iVar3;
   int iVar4;
   int *piVar5;
-  
+
   uVar1 = *(undefined4 *)(*(int *)(param_1 + 4) + 0x4d8);
   iVar4 = *(int *)(param_1 + 0x270);
   if (*(int *)(iVar4 + 0x348) == 0x1e) {

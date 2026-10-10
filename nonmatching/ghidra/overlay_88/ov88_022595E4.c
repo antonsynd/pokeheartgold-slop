@@ -48,7 +48,7 @@ bool ov88_022595E4(int param_1)
 {
   bool bVar1;
   uint uVar2;
-  
+
   uVar2 = *(ushort *)(param_1 + 2) + 1;
   bVar1 = *(ushort *)(param_1 + 4) < uVar2;
   if (!bVar1) {

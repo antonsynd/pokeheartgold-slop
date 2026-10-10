@@ -72,7 +72,7 @@ void ov43_0222D8B8(int param_1,int param_2,undefined4 *param_3,undefined4 param_
   undefined4 uStack_28;
   undefined4 uStack_1c;
   undefined4 uStack_18;
-  
+
   uStack_18 = param_4;
   uVar1 = sub_0202C6F4(*(undefined4 *)(param_2 + 4));
   iVar2 = sub_0202C090(uVar1,*(undefined1 *)(param_2 + *(char *)(param_2 + 0xb) + 0x18),8);

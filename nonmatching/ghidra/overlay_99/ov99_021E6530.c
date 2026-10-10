@@ -59,7 +59,7 @@ void ov99_021E6530(undefined4 *param_1,undefined4 param_2)
   int iVar2;
   uint uVar3;
   uint uVar4;
-  
+
   uVar1 = ov99_021E5B90(*param_1);
   uVar4 = 0;
   do {

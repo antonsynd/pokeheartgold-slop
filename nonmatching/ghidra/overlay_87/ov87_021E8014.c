@@ -48,7 +48,7 @@ void ov87_021E8014(int param_1,int *param_2,int *param_3)
 
 {
   int *piVar1;
-  
+
   piVar1 = (int *)Sprite_GetMatrixPtr(*(undefined4 *)(param_1 + 0xc));
   *param_2 = (int)(*piVar1 + ((uint)(*piVar1 >> 0xb) >> 0x14)) >> 0xc;
   *param_3 = (int)(piVar1[1] + ((uint)(piVar1[1] >> 0xb) >> 0x14)) >> 0xc;

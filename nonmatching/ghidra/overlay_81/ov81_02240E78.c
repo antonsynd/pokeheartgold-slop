@@ -54,7 +54,7 @@ void ov81_02240E78(int param_1)
 
 {
   undefined4 uVar1;
-  
+
   uVar1 = Heap_Alloc(100,0x3c);
   *(undefined4 *)(param_1 + 0x1c0) = uVar1;
   func_0x020e5b44(*(undefined4 *)(param_1 + 0x1c0),0,0x3c);

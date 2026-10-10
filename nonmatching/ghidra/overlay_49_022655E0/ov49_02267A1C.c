@@ -56,7 +56,7 @@ undefined4 ov49_02267A1C(undefined4 param_1,int param_2,int param_3,undefined4 p
   undefined4 uStack_20;
   undefined4 uStack_1c;
   undefined4 uStack_18;
-  
+
   iVar2 = param_2 + 0x958;
   *(char *)(iVar2 + param_3) = *(char *)(iVar2 + param_3) + '\x01';
   uStack_18 = param_4;

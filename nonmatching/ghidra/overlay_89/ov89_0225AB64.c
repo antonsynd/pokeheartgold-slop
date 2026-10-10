@@ -58,7 +58,7 @@ void ov89_0225AB64(int param_1,int param_2)
   uint *puVar6;
   uint uVar7;
   int iVar8;
-  
+
   iVar2 = *(int *)(param_1 + 0x14);
   puVar3 = (uint *)Heap_Alloc(0x7d,0x40);
   func_0x020d47b8(param_1 + iVar2,puVar3,0x40);

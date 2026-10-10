@@ -53,7 +53,7 @@ void BattleArcade_SetPartyAfterBattle(int param_1)
   byte bVar1;
   undefined1 uVar2;
   undefined4 uVar3;
-  
+
   bVar1 = *(byte *)(param_1 + 0x11);
   uVar3 = BattleArcade_GetOpponentMonCount(*(undefined1 *)(param_1 + 0x10),1);
   uVar2 = BattleArcade_MultiplayerCheck(*(undefined1 *)(param_1 + 0x10));

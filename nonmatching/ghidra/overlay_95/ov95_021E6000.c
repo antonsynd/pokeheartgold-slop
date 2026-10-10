@@ -66,7 +66,7 @@ void ov95_021E6000(int param_1,undefined4 param_2,undefined4 param_3,undefined4 
   undefined4 uStack_14;
   undefined4 uStack_10;
   undefined4 uStack_c;
-  
+
   uStack_40 = 0x80;
   uStack_3e = 0x78;
   uStack_3c = 0;

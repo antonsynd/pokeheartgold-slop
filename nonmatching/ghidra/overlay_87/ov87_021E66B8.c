@@ -53,7 +53,7 @@ void ov87_021E66B8(int param_1,undefined4 param_2,undefined4 param_3,undefined4 
   undefined2 *puVar2;
   int iVar3;
   int iVar4;
-  
+
   puVar2 = (undefined2 *)&ov87_021E8194;
   iVar3 = 0;
   iVar4 = param_1 + 0x16c;

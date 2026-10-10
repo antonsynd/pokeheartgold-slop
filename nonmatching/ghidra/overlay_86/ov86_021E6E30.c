@@ -54,7 +54,7 @@ void ov86_021E6E30(int param_1)
 {
   undefined4 uVar1;
   int iVar2;
-  
+
   uVar1 = NewString_ReadMsgData(*(undefined4 *)(param_1 + 0x210),0x27);
   FillWindowPixelBuffer(param_1 + 0x23c,0);
   iVar2 = GetWindowWidth(param_1 + 0x23c);

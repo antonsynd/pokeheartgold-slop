@@ -54,7 +54,7 @@ void ov97_0221E7F4(void)
   undefined4 *puVar4;
   undefined4 *puVar5;
   undefined4 auStack_30 [10];
-  
+
   puVar4 = auStack_30;
   puVar5 = (undefined4 *)&ov97_0221FCCC;
   iVar3 = 5;

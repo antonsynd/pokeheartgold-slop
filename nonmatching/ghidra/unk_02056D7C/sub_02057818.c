@@ -69,7 +69,7 @@ void sub_02057818(int param_1)
   uint uVar9;
   ushort *puVar10;
   undefined4 uStack_28;
-  
+
   puVar10 = (ushort *)(iRam021d41c4 + 0x74 + param_1 * 8);
   cVar1 = *(char *)(iRam021d41c4 + 0xdc + param_1);
   if (cVar1 == '\0') {

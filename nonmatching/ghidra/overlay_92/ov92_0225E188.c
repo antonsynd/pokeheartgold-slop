@@ -50,7 +50,7 @@ int ov92_0225E188(undefined4 param_1,undefined4 param_2,undefined4 param_3,undef
 {
   int iVar1;
   int iVar2;
-  
+
   iVar1 = FontID_String_GetWidth(0,param_2,0,param_4,param_4);
   iVar2 = GetWindowWidth(param_1);
   return (iVar2 * 8 - iVar1) / 2;

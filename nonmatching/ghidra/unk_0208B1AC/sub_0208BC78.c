@@ -52,7 +52,7 @@ void sub_0208BC78(int param_1,undefined4 param_2,undefined4 param_3,undefined4 p
   short sStack_10;
   short sStack_e;
   undefined4 uStack_c;
-  
+
   uStack_c = param_4;
   Sprite_GetPositionXY(*(undefined4 *)(param_1 + 0x428),&sStack_e,&sStack_10);
   Sprite_SetPositionXY(*(undefined4 *)(param_1 + 0x42c),(int)sStack_e,(int)sStack_10);

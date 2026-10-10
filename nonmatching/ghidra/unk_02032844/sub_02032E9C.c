@@ -56,7 +56,7 @@ undefined4 sub_02032E9C(void)
   int iVar1;
   undefined1 uStack_24;
   undefined1 auStack_23 [35];
-  
+
   if (*(int *)(iRam021d4128 + 0x1310) - 4U < 3) {
     return 1;
   }

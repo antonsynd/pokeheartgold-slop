@@ -52,7 +52,7 @@ void ov14_021E7EE0(undefined4 param_1,undefined4 param_2,undefined4 param_3,unde
   char cStack_14;
   char acStack_13 [3];
   undefined4 uStack_10;
-  
+
   uStack_10 = param_4;
   sub_02019B1C(param_1,1,acStack_13,&cStack_14);
   if (cStack_14 != 6) {

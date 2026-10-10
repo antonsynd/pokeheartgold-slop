@@ -61,7 +61,7 @@ void ov112_021E79F0(undefined4 param_1,undefined4 param_2,undefined4 param_3,und
   undefined4 uStack_18;
   undefined4 uStack_14;
   undefined4 uStack_10;
-  
+
   uStack_20 = 1;
   uStack_1c = 0;
   uStack_18 = 0;

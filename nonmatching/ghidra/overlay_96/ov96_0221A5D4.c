@@ -55,7 +55,7 @@ void ov96_0221A5D4(undefined4 param_1,undefined4 param_2)
 {
   undefined4 uVar1;
   undefined8 uVar2;
-  
+
   uVar1 = func_0x020f21c0();
   func_0x020f22dc(uVar1,param_2);
   uVar2 = func_0x020f2080();

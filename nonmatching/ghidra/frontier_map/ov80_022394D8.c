@@ -51,7 +51,7 @@ void ov80_022394D8(int param_1,uint param_2)
   ushort *puVar1;
   ushort *puVar2;
   int iVar3;
-  
+
   puVar1 = (ushort *)sub_02096864(*(undefined4 *)(param_1 + 8));
   iVar3 = 0;
   puVar2 = puVar1;

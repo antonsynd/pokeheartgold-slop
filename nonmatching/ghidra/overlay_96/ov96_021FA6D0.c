@@ -66,7 +66,7 @@ bool ov96_021FA6D0(undefined4 param_1,int param_2,undefined4 param_3,undefined4 
   int iVar5;
   int iStack_28;
   int aiStack_20 [3];
-  
+
   iStack_28 = -1;
   aiStack_20[0] = -1;
   aiStack_20[1] = 0;

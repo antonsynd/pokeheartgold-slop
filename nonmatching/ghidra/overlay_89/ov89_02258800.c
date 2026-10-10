@@ -117,7 +117,7 @@ undefined4 ov89_02258800(undefined4 param_1)
   undefined4 *puVar2;
   int iVar3;
   undefined4 uVar4;
-  
+
   Main_SetVBlankIntrCB(0,0);
   HBlankInterruptDisable();
   GfGfx_DisableEngineAPlanes();

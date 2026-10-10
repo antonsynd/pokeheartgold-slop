@@ -50,7 +50,7 @@ undefined4 sub_0208A71C(int param_1,int param_2)
   uint uVar2;
   uint uVar3;
   uint uVar4;
-  
+
   uVar4 = *(byte *)(param_1 + 0x7bd) & 0xf;
   uVar1 = (uint)(char)uVar4;
   if (*(char *)(*(int *)(param_1 + 0x22c) + 0x12) == '\x02') {

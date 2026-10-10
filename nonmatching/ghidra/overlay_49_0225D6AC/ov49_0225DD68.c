@@ -63,7 +63,7 @@ void ov49_0225DD68(undefined4 param_1,int param_2)
   int iVar6;
   int iStack_28;
   int iStack_24;
-  
+
   iStack_28 = param_2 + 0x7c;
   iVar4 = 0;
   iVar6 = param_2 + 0xc0;

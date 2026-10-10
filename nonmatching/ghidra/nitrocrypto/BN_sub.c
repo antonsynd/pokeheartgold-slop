@@ -56,7 +56,7 @@ bool BN_sub(int param_1,int param_2,int param_3)
   undefined4 uVar4;
   int iVar5;
   bool bVar6;
-  
+
   bVar6 = false;
   uVar4 = 0;
   iVar1 = param_3;

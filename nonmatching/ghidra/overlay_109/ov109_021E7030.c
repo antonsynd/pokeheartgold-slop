@@ -53,7 +53,7 @@ void ov109_021E7030(int param_1,undefined4 param_2,int param_3,uint param_4)
   byte *pbVar3;
   int iStack_1c;
   uint uStack_18;
-  
+
   uStack_18 = 0;
   iStack_1c = 0;
   do {

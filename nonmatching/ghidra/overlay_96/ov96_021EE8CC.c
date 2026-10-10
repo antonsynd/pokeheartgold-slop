@@ -48,7 +48,7 @@ void ov96_021EE8CC(undefined4 *param_1,undefined4 param_2,undefined4 param_3,und
 
 {
   undefined4 uVar1;
-  
+
   uVar1 = ov96_021EEA08(*param_1,param_1 + 6,param_1 + 4,(param_1[0xd] & 0xffffff) >> 0x10,
                         param_1[1],param_1[2],param_2,(param_1[0xd] & 0x7000000) >> 0x18,param_1[5],
                         param_4);

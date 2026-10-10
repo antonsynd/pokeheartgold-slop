@@ -52,7 +52,7 @@ void ov96_0221065C(int param_1,undefined4 param_2,undefined4 param_3,undefined4 
   short sVar2;
   int iVar3;
   int iVar4;
-  
+
   iVar4 = 0;
   sVar2 = 0xe6;
   iVar3 = param_1;

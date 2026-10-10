@@ -50,7 +50,7 @@ undefined4 ov80_0222D200(int param_1)
 {
   int iVar1;
   undefined4 uVar2;
-  
+
   iVar1 = sub_02037454();
   if (iVar1 < 2) {
     return 1;

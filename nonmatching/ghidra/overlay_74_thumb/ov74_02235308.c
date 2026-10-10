@@ -56,7 +56,7 @@ void ov74_02235308(undefined4 param_1,undefined1 param_2,undefined4 param_3,uint
   uint uStack_20;
   undefined4 uStack_1c;
   undefined4 uStack_18;
-  
+
   uStack_30 = 0;
   uStack_2c = 0;
   uStack_28 = 0x800;

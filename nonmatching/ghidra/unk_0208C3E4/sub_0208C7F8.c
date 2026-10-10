@@ -50,7 +50,7 @@ void sub_0208C7F8(int param_1,int param_2,undefined4 param_3,int param_4,undefin
 {
   char cVar1;
   undefined4 uVar2;
-  
+
   uVar2 = 0xe0f00;
   cVar1 = *(char *)(param_4 + (uint)*(byte *)(param_1 + 0x263) * 5 + 0x20ff639);
   if (cVar1 < '\0') {

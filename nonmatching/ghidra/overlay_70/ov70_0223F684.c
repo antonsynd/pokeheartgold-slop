@@ -55,7 +55,7 @@ int ov70_0223F684(undefined4 param_1)
   uint uVar3;
   ushort *puVar4;
   uint uStack_18;
-  
+
   iVar1 = Heap_Alloc(0x3d,0x1ee);
   func_0x020d4858(0,iVar1,0x1ee);
   puVar2 = (ushort *)func_0x02007ac4(0x4a,0xc,0,param_1,0,&uStack_18);

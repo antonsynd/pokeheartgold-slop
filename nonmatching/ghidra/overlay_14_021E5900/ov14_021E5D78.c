@@ -51,7 +51,7 @@ void ov14_021E5D78(int param_1)
 
 {
   undefined4 uVar1;
-  
+
   uVar1 = NewMsgDataFromNarc(0,0x1b,0x18,10);
   *(undefined4 *)(*(int *)(param_1 + 0x34) + 0x20) = uVar1;
   uVar1 = MessagePrinter_New(1,2,0,10);

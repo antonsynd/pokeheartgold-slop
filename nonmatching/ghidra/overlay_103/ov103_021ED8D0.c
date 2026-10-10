@@ -51,7 +51,7 @@ undefined4 ov103_021ED8D0(undefined4 param_1)
 {
   int iVar1;
   undefined4 uVar2;
-  
+
   iVar1 = ov103_021EEB04();
   if (iVar1 == 1) {
     PlaySE(0x5dd);

@@ -62,7 +62,7 @@ void ov49_02262E10(byte *param_1,undefined4 param_2,int param_3,int param_4)
   uint uVar4;
   undefined4 uVar5;
   int iVar6;
-  
+
   if (param_3 != 0) {
     param_1[7] = 0xff;
   }

@@ -48,7 +48,7 @@ undefined4 ov93_0225E27C(int param_1,int *param_2)
 
 {
   int iVar1;
-  
+
   switch(*param_2) {
   default:
     return 0;

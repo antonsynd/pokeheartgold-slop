@@ -63,7 +63,7 @@ void sub_02010C38(int param_1)
   int iVar3;
   int iVar4;
   uint uVar5;
-  
+
   if (param_1 == 0) {
     GF_AssertFail();
   }

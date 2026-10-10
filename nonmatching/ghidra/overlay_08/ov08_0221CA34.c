@@ -48,7 +48,7 @@ undefined4 ov08_0221CA34(int param_1)
 
 {
   int iVar1;
-  
+
   iVar1 = TextPrinterCheckActive(*(undefined1 *)(param_1 + 0x207b));
   if (iVar1 == 0) {
     return 0x12;

@@ -57,7 +57,7 @@ undefined4 BN_mul(int *param_1,int *param_2,int *param_3,int *param_4)
   int *piVar4;
   int iVar5;
   int iVar6;
-  
+
   iVar5 = param_2[1];
   if ((iVar5 == 0) || (param_3[1] == 0)) {
     BN_set_word(param_1,0);

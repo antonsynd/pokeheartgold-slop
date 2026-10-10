@@ -54,7 +54,7 @@ undefined4 ov93_0225E61C(int param_1,int param_2,undefined4 param_3,undefined4 p
   undefined4 uVar1;
   int iVar2;
   uint uVar3;
-  
+
   uVar3 = *(uint *)(param_1 + 0x2fb4);
   if ((((0x516 < uVar3) && (*(int *)(param_1 + 0x2fd4) == 0)) && (*(int *)(param_1 + 0x2edc) == 0))
      && (*(int *)(param_1 + 0x2ef0) == 0)) {

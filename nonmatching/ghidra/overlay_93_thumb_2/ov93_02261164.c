@@ -69,7 +69,7 @@ void ov93_02261164(int param_1,undefined4 *param_2,undefined4 param_3,undefined4
   int iStack_50;
   undefined4 auStack_4c [13];
   undefined4 uStack_18;
-  
+
   puVar5 = (undefined4 *)0x2262e9c;
   puVar4 = auStack_4c;
   iVar3 = 6;

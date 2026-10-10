@@ -54,7 +54,7 @@ int sub_020758D0(int param_1)
 {
   int iVar1;
   int iVar2;
-  
+
   iVar2 = 0;
   iVar1 = TouchscreenHitbox_FindRectAtTouchNew(0x20ffecc);
   if (*(int *)(param_1 + 0xb8) == 0) {

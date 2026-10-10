@@ -49,7 +49,7 @@ void ov08_0221DB54(int *param_1)
 {
   undefined2 uVar1;
   int iVar2;
-  
+
   iVar2 = *param_1;
   if (*(byte *)(iVar2 + 0x34) == 4) {
     uVar1 = *(undefined2 *)(iVar2 + 0x24);

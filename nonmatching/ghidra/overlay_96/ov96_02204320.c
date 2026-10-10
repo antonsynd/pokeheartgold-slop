@@ -56,7 +56,7 @@ void ov96_02204320(int param_1,undefined4 param_2,undefined4 param_3,undefined4 
   int extraout_r1;
   undefined1 auStack_40 [48];
   undefined4 uStack_10;
-  
+
   uStack_10 = param_4;
   uVar1 = LCRandom();
   func_0x020f2998(uVar1,param_1 << 1); __asm__ volatile("movs %0, r1" : "=l"(extraout_r1) : : "cc");

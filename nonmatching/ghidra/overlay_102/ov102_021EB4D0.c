@@ -53,7 +53,7 @@ void ov102_021EB4D0(undefined4 *param_1,undefined4 param_2,undefined4 param_3,un
   undefined4 uVar1;
   undefined1 auStack_30 [36];
   undefined4 uStack_c;
-  
+
   uStack_c = param_4;
   ov102_021EA270(*param_1,auStack_30,0,0);
   uVar1 = ov102_021EA2B4(*param_1,auStack_30,0xdc,0x78,5,1);

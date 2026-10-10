@@ -50,7 +50,7 @@ void sub_02094758(undefined4 *param_1)
 
 {
   int iVar1;
-  
+
   iVar1 = 0;
   do {
     if (param_1[2] != 0) {

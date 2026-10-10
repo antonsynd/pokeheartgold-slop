@@ -61,7 +61,7 @@ void ov83_022415F4(int param_1,undefined4 param_2,int param_3)
   undefined1 uVar1;
   undefined4 uVar2;
   undefined4 uVar3;
-  
+
   uVar2 = ov83_02247768(*(undefined1 *)(param_1 + 0x14));
   uVar2 = Party_GetMonByIndex(*(undefined4 *)(param_1 + 0x7a4),uVar2);
   ov83_0224777C(*(undefined4 *)(param_1 + 0x50c),*(undefined1 *)(param_1 + 9),0);

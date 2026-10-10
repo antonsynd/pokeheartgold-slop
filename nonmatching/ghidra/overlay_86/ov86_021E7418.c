@@ -61,7 +61,7 @@ void ov86_021E7418(int param_1)
   uint uStack_24;
   uint uStack_1c;
   int iStack_18;
-  
+
   iVar1 = sub_020312C4(*(undefined4 *)(param_1 + 0x224),0xb,&iStack_18);
   if (iStack_18 == 1) {
     uStack_24 = 0;

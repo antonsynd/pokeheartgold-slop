@@ -51,7 +51,7 @@ void ov73_021E7740(int param_1,undefined4 param_2,undefined4 param_3,undefined4 
 
 {
   undefined4 uVar1;
-  
+
   uVar1 = func_0x020079f4(100,9,param_1 + 0x304,0x32,param_4);
   *(undefined4 *)(param_1 + 0x2fc) = uVar1;
   uVar1 = func_0x02007c48(param_2,0xb,param_1 + 0x308,0x32);

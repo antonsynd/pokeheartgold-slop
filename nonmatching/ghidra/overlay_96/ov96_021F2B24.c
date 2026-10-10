@@ -48,7 +48,7 @@ void ov96_021F2B24(undefined4 param_1,int param_2,undefined4 param_3,undefined4 
 
 {
   byte *pbVar1;
-  
+
   pbVar1 = (byte *)ov96_021E60D8(param_1,param_3,param_4,param_4,param_4);
   *(short *)(param_5 + 0x8a) = (short)*(undefined4 *)(param_2 + (uint)*pbVar1 * 4);
   *(short *)(param_5 + 0x8c) = (short)*(undefined4 *)(param_2 + (uint)pbVar1[3] * 4 + 0x14);

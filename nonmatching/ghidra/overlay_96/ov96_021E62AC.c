@@ -55,7 +55,7 @@ void ov96_021E62AC(int param_1,int param_2,undefined4 param_3,undefined4 param_4
   int iStack_20;
   int iStack_1c;
   undefined4 uStack_18;
-  
+
   *(char *)(param_1 + 0x728) = (char)param_6;
   uVar2 = 0;
   if (param_6 != 0) {

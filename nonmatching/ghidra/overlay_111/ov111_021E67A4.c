@@ -49,7 +49,7 @@ undefined4 ov111_021E67A4(int param_1)
 {
   int iVar1;
   int iVar2;
-  
+
   iVar2 = 0;
   do {
     iVar1 = ov111_021E6684(*(undefined4 *)(param_1 + 0x18));

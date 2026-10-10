@@ -50,7 +50,7 @@ void ov31_0225D60C(int param_1)
 
 {
   undefined4 uVar1;
-  
+
   uVar1 = func_0x0200bd18(8,0x40,8);
   *(undefined4 *)(param_1 + 0x154) = uVar1;
   uVar1 = NewMsgDataFromNarc(0,0x1b,0x1b3,8);

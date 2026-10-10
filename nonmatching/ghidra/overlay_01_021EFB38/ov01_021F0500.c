@@ -59,7 +59,7 @@ void ov01_021F0500(undefined4 param_1,undefined4 param_2,undefined4 param_3,unde
   int iVar6;
   int iVar7;
   undefined4 uStack_1c;
-  
+
   ov01_021F0454();
   ov01_021F0454(param_1,param_2,param_3,param_4,param_5,param_6,param_7,param_9);
   iVar2 = func_0x0201cc08(param_7,param_9 & 0xff);

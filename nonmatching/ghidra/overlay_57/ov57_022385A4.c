@@ -50,7 +50,7 @@ void ov57_022385A4(char *param_1,undefined4 param_2,char param_3,undefined4 para
   char acStack_18 [2];
   char acStack_16 [2];
   undefined4 uStack_14;
-  
+
   uStack_14 = param_4;
   func_0x0200de44(param_2,acStack_16,acStack_18);
   *param_1 = acStack_18[0] - (char)param_4;

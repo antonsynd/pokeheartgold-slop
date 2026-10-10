@@ -50,7 +50,7 @@ void ov40_02236184(int param_1,int param_2)
 {
   undefined4 uVar1;
   int iVar2;
-  
+
   iVar2 = *(int *)(param_1 + 0x860);
   uVar1 = sub_020314A4(0x6d);
   *(undefined4 *)(iVar2 + 0x2ed8) = uVar1;

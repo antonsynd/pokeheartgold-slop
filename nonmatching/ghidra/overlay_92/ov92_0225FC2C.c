@@ -54,7 +54,7 @@ void ov92_0225FC2C(undefined4 *param_1)
 
 {
   int iVar1;
-  
+
   if ((int)param_1[0xab9] < 0x4b0) {
     ov92_0225FAB8();
     ov92_0225F9C4(param_1);

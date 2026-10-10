@@ -49,7 +49,7 @@ void ov18_021F3B60(undefined4 param_1,int param_2)
 
 {
   uint uVar1;
-  
+
   if (param_2 == 1) {
     uVar1 = 0x2c;
     do {

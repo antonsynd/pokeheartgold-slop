@@ -57,7 +57,7 @@ void ov31_0225EBC4(int param_1)
 {
   undefined1 uVar1;
   undefined4 uVar2;
-  
+
   uVar2 = NewString_ReadMsgData(*(undefined4 *)(param_1 + 0x158),0x14);
   StringExpandPlaceholders(*(undefined4 *)(param_1 + 0x154),*(undefined4 *)(param_1 + 0x188),uVar2);
   String_Delete(uVar2);

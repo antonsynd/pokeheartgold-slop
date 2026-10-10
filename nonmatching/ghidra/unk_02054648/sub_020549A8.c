@@ -52,7 +52,7 @@ int sub_020549A8(undefined4 param_1,undefined4 param_2,undefined4 param_3,undefi
 {
   int iVar1;
   undefined1 uStack_1c;
-  
+
   iVar1 = sub_02054954();
   if (param_5 != (undefined1 *)0x0) {
     *param_5 = (char)iVar1;

@@ -50,7 +50,7 @@ void ov81_0224271C(int param_1,undefined4 param_2,undefined4 param_3,undefined4 
 
 {
   undefined4 uVar1;
-  
+
   uVar1 = sub_0201956C(*(undefined4 *)(param_1 + 0x4c),2,1,100);
   *(undefined4 *)(param_1 + 0x474) = uVar1;
   sub_020195F4(*(undefined4 *)(param_1 + 0x474),0,4,0x12,4,param_4);

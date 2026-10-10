@@ -59,7 +59,7 @@ void ov91_0225D6B8(undefined4 *param_1,int param_2,undefined4 param_3,undefined4
   int iVar4;
   int iStack_1c;
   int iStack_18;
-  
+
   iVar4 = 0;
   puVar2 = param_1;
   puVar3 = param_1;

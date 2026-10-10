@@ -50,7 +50,7 @@ int sub_02037454(void)
   int iVar1;
   int iVar2;
   uint uVar3;
-  
+
   iVar2 = 0;
   uVar3 = 0;
   do {

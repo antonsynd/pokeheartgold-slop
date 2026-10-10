@@ -55,7 +55,7 @@ void ov31_0225D684(int param_1,int param_2)
 {
   undefined4 uVar1;
   int iVar2;
-  
+
   uVar1 = NewString_ReadMsgData(*(undefined4 *)(param_1 + 0x158),0x11);
   ClearWindowTilemapAndCopyToVram(param_1 + 100);
   FillWindowPixelBuffer(param_1 + 100,0);

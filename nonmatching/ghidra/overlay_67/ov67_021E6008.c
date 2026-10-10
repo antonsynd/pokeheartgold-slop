@@ -56,7 +56,7 @@ void ov67_021E6008(undefined4 *param_1)
   undefined1 *puVar2;
   undefined4 *puVar3;
   int iVar4;
-  
+
   if (*(short *)(param_1 + 2) == 0) {
     puVar1 = &ov67_021E6E98;
     iVar4 = 0;

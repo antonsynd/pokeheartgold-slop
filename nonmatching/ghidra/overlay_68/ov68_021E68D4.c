@@ -60,7 +60,7 @@ void ov68_021E68D4(int param_1,uint param_2)
   uint uVar1;
   int iVar2;
   undefined4 uVar3;
-  
+
   FillWindowPixelBuffer(param_1 + 0x58,0);
   FillWindowPixelBuffer(param_1 + 0x38,0);
   FillWindowPixelBuffer(param_1 + 0x48,0);

@@ -49,7 +49,7 @@ undefined4 * BN_copy(undefined4 *param_1,undefined4 *param_2)
 
 {
   undefined4 *puVar1;
-  
+
   if (param_1 == param_2) {
     return param_1;
   }

@@ -75,7 +75,7 @@ undefined4 HatchEggApp_Init(undefined4 param_1)
 {
   int *piVar1;
   int iVar2;
-  
+
   Main_SetVBlankIntrCB(0,0);
   HBlankInterruptDisable();
   Heap_Create(3,0x46,0x40000);

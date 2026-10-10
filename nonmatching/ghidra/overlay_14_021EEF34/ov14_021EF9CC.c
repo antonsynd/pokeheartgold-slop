@@ -65,7 +65,7 @@ void ov14_021EF9CC(int param_1)
   undefined2 uVar1;
   int iVar2;
   uint uVar3;
-  
+
   ov14_021F34C8(*(int *)(param_1 + 0x34),*(undefined1 *)(*(int *)(param_1 + 0x34) + 0x44c),0);
   iVar2 = *(int *)(param_1 + 0x34);
   if ((ushort)*(byte *)(iVar2 + 0x44c) == *(ushort *)(iVar2 + 0x88ca)) {

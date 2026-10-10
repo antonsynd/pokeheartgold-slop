@@ -49,7 +49,7 @@ void ov92_0225C540(undefined4 param_1,undefined4 param_2,undefined4 *param_3,int
 
 {
   undefined4 uVar1;
-  
+
   uVar1 = param_3[1];
   *(undefined4 *)(param_4 + 0x14) = *param_3;
   *(undefined4 *)(param_4 + 0x18) = uVar1;

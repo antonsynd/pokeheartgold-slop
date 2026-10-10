@@ -49,7 +49,7 @@ void ov90_0225B53C(int param_1,uint param_2,int param_3,int param_4)
 {
   int iVar1;
   uint uVar2;
-  
+
   uVar2 = 1 << (param_2 & 0xff);
   if ((*(byte *)(param_1 + 0x1c) & uVar2) == 0) {
     if (param_3 == 0) {

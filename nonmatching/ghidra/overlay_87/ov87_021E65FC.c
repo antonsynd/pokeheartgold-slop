@@ -51,7 +51,7 @@ undefined4 ov87_021E65FC(int param_1)
 {
   char cVar1;
   int iVar2;
-  
+
   cVar1 = *(char *)(param_1 + 8);
   if (cVar1 == '\0') {
     *(undefined1 *)(param_1 + 0xd) = 10;

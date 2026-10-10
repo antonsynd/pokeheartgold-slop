@@ -54,7 +54,7 @@ void ov05_0221D094(int *param_1,undefined4 param_2,undefined4 param_3,undefined4
 
 {
   undefined4 uVar1;
-  
+
   uVar1 = NARC_New(0x68,*(undefined4 *)(*param_1 + 0x24));
   GfGfxLoader_LoadCharDataFromOpenNarc
             (uVar1,0,param_1[3],1,0,0,0,*(undefined4 *)(*param_1 + 0x24),param_4);

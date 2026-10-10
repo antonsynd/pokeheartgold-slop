@@ -49,7 +49,7 @@ undefined4 ov08_0221D5DC(int param_1,int param_2)
 
 {
   int iVar1;
-  
+
   if (*(short *)(param_1 + param_2 * 0x50 + 8) == 0) {
     return 0;
   }

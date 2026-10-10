@@ -50,7 +50,7 @@ void ov47_02259968(int param_1)
 
 {
   int iVar1;
-  
+
   ov47_02259D24(param_1 + 0x88);
   ov47_02259D24(param_1 + 0xa8);
   Heap_Free(*(undefined4 *)(param_1 + 0x80));

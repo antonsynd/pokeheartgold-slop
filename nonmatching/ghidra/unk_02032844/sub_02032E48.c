@@ -49,7 +49,7 @@ undefined4 sub_02032E48(void)
 
 {
   int iVar1;
-  
+
   iVar1 = func_0x020df90c(0x2032e65);
   if (iVar1 != 2) {
     sub_02032858();

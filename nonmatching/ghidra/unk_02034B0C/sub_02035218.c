@@ -58,7 +58,7 @@ int sub_02035218(int param_1)
   byte bVar1;
   int iVar2;
   int iVar3;
-  
+
   iVar2 = sub_02033298();
   if (iVar2 == 2) {
     sub_02032E24();

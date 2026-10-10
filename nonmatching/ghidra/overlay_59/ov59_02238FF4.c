@@ -53,7 +53,7 @@ void ov59_02238FF4(int param_1,int param_2)
   uint uVar1;
   int iVar2;
   int iVar3;
-  
+
   if (param_2 - 1U < 2) {
     uVar1 = 0;
     iVar2 = param_1;

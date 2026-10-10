@@ -50,7 +50,7 @@ void sub_0203A880(void)
 {
   int iVar1;
   undefined4 in_r3;
-  
+
   iVar1 = sub_02039998();
   sub_0203A8CC(0xf0,0,iVar1 != 0,1,0x1c0,in_r3);
   return;

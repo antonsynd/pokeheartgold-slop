@@ -52,7 +52,7 @@ void ov112_021ED0D0(int param_1,undefined4 param_2,undefined4 param_3,undefined4
 
 {
   undefined4 uVar1;
-  
+
   ov112_021E9290(*(undefined4 *)(param_1 + 0x1e430),param_1 + 0x1d7ac,param_1 + 0x1d79c,0);
   func_0x0200e0fc(*(undefined4 *)(param_1 + 0x1e550),1);
   ov112_021EA670(param_1,8);

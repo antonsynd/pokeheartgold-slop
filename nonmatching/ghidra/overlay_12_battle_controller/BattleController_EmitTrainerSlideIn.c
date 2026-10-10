@@ -53,7 +53,7 @@ void BattleController_EmitTrainerSlideIn
   ushort uStack_12;
   undefined4 uStack_10;
   undefined4 uStack_c;
-  
+
   uStack_14 = 0xb;
   uStack_12 = (ushort)*(byte *)(param_1 + param_2 * 0x34 + 0xad);
   uStack_13 = *(undefined1 *)(param_1 + param_2 + 0xa8);

@@ -51,7 +51,7 @@ void ov90_02258FB8(undefined4 *param_1,int *param_2)
 
 {
   int iVar1;
-  
+
   if (*param_2 != 1) {
     GF_AssertFail();
   }

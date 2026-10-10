@@ -56,7 +56,7 @@ void ov96_021EC218(undefined4 param_1,short *param_2)
   short sVar1;
   int iVar2;
   undefined4 uVar3;
-  
+
   sVar1 = *param_2;
   uVar3 = *(undefined4 *)(param_2 + 4);
   if (sVar1 == 0) {

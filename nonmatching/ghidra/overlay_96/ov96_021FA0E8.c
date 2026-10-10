@@ -87,7 +87,7 @@ void ov96_021FA0E8(undefined4 param_1,int param_2,int param_3,undefined4 param_4
   undefined4 uStack_24;
   undefined4 uStack_20;
   undefined4 uStack_1c;
-  
+
   *param_8 = 0;
   param_8[1] = 0;
   param_8[2] = 0x30;

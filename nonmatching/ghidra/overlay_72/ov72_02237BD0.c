@@ -55,7 +55,7 @@ void ov72_02237BD0(char param_1,char param_2,undefined4 param_3,undefined4 param
 
 {
   int iVar1;
-  
+
   uRam0223b928 = param_3;
   func_0x0221be84();
   cRam0223b834 = param_1 + -1;

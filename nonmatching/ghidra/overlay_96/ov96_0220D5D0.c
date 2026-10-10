@@ -60,7 +60,7 @@ undefined4 ov96_0220D5D0(int param_1,int param_2,undefined4 param_3,undefined4 p
   undefined4 uStack_1c;
   undefined1 auStack_18 [12];
   undefined4 uStack_c;
-  
+
   uStack_c = param_4;
   ov96_021EAF78(*(undefined4 *)(param_1 + 4),*(undefined4 *)(param_1 + 0x1c),
                 *(undefined4 *)(param_1 + 0x20),auStack_24,auStack_20,&iStack_34);

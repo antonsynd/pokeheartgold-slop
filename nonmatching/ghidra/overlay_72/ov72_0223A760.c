@@ -51,7 +51,7 @@ char ov72_0223A760(int param_1,int param_2,ushort *param_3)
 
 {
   char cVar1;
-  
+
   cVar1 = *(char *)(param_2 + param_1 * 4 + 0x223b48c);
   if (cVar1 == '\r') {
     cVar1 = (&ov72_0223B464)[*param_3];

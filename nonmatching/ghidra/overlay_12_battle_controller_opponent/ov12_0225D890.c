@@ -61,7 +61,7 @@ void ov12_0225D890(undefined4 param_1,undefined4 *param_2,undefined4 param_3,und
   undefined1 auStack_18 [2];
   short sStack_16;
   undefined4 uStack_14;
-  
+
   uStack_14 = param_4;
   if (*(char *)((int)param_2 + 10) == '\0') {
     if (*(char *)((int)param_2 + 0xb) == '\x02') {

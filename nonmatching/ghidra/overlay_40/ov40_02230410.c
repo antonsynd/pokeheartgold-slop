@@ -48,7 +48,7 @@ undefined4 ov40_02230410(void)
 
 {
   int iVar1;
-  
+
   iVar1 = ov40_02230404();
   if (iVar1 == 1) {
     return 0x51;

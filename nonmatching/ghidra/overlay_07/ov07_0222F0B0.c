@@ -73,7 +73,7 @@ void ov07_0222F0B0(undefined4 param_1,undefined4 param_2,undefined4 param_3,unde
   longlong lVar11;
   undefined1 auStack_4c [52];
   undefined4 uStack_18;
-  
+
   uStack_18 = param_4;
   puVar5 = (undefined4 *)ov07_022324D8(param_1,0x90);
   *puVar5 = param_1;

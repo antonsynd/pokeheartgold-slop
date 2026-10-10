@@ -55,7 +55,7 @@ void sub_0206402C(undefined4 param_1)
 {
   int *piVar1;
   int iVar2;
-  
+
   piVar1 = (int *)sub_0205F40C();
   iVar2 = func_0x021fa2d4(param_1);
   if (iVar2 != 1) {

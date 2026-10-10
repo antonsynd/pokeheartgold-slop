@@ -54,7 +54,7 @@ void ov96_021FEE60(int param_1,undefined4 param_2,int param_3,int param_4,int pa
 {
   int *piVar1;
   int iVar2;
-  
+
   ov96_021EAB38(*(undefined4 *)(param_1 + param_3 * 4),1);
   *(undefined4 *)(param_1 + 200) = 0;
   ov96_021EB52C(*(undefined4 *)(param_1 + 0x70),1,1);

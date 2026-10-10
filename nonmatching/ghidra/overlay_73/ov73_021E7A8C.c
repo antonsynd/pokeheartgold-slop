@@ -50,7 +50,7 @@ undefined4 ov73_021E7A8C(int param_1,uint param_2)
   byte *pbVar2;
   byte *pbVar3;
   int iVar4;
-  
+
   pbVar2 = *(byte **)(param_1 * 4 + 0x21ea664);
   iVar4 = 0;
   bVar1 = *pbVar2;

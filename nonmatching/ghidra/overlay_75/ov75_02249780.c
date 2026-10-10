@@ -62,7 +62,7 @@ void ov75_02249780(undefined4 param_1,int param_2,undefined4 param_3)
   char *pcVar6;
   int iVar7;
   short *psVar8;
-  
+
   iVar7 = 0;
   pcVar6 = ((char *)0x2249acc);
   iVar4 = 0;

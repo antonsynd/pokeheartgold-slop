@@ -56,7 +56,7 @@ undefined4 sub_02096A34(undefined4 *param_1)
   undefined4 uVar3;
   undefined4 uVar4;
   int iVar5;
-  
+
   *(ushort *)(param_1 + 2) = (ushort)*(byte *)(param_1 + 0x28);
   uVar2 = func_0x022385d8(*(undefined1 *)(param_1 + 0x28));
   uVar3 = Save_Frontier_GetStatic(*param_1);

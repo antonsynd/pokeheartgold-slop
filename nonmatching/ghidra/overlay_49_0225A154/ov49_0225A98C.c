@@ -56,7 +56,7 @@ void ov49_0225A98C(char *param_1)
 
 {
   undefined4 uVar1;
-  
+
   ov49_02258B44(*(undefined4 *)(param_1 + 0x3e0));
   if (((byte)param_1[4] >> 4 == 0) && (param_1[6] == '\0')) {
     ov49_0225EF24(*(undefined4 *)(param_1 + 0x3f0));

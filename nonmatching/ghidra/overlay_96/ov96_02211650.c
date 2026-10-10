@@ -49,7 +49,7 @@ undefined4 ov96_02211650(void)
 
 {
   undefined4 *puVar1;
-  
+
   puVar1 = (undefined4 *)PokeathlonCourse_GetHeapAllocPtr4();
   ov96_021EB5BC(*puVar1);
   return 1;

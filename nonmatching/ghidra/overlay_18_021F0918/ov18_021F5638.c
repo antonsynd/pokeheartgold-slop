@@ -53,7 +53,7 @@ undefined4 ov18_021F5638(int *param_1)
 
 {
   ushort uVar1;
-  
+
   if (*(char *)((int)param_1 + 0xb) == '\0') {
     PlaySE(0x8eb);
     ov18_021F5180(param_1,0x300,0);

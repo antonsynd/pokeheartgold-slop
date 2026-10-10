@@ -49,7 +49,7 @@ undefined4 ov103_021EDCC8(int param_1)
 
 {
   undefined4 uVar1;
-  
+
   uVar1 = OverlayManager_New(&gOverlayTemplate_PartyMenu,*(undefined4 *)(param_1 + 0x14),0x9c);
   *(undefined4 *)(param_1 + 0x10) = uVar1;
   return 0;

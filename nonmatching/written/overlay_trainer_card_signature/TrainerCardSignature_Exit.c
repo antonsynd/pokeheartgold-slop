@@ -73,7 +73,7 @@ int TrainerCardSignature_Exit(undefined *param_1,undefined *param_2)
   undefined4 *puVar1;
   int iVar2;
   undefined4 *puVar3;
-  
+
   puVar1 = (undefined4 *)OverlayManager_GetData(param_1);
   ov52_021E9300(puVar1[0x16e6],puVar1[0xb4]);
   Main_SetVBlankIntrCB((undefined *)0x0,(undefined *)0x0);

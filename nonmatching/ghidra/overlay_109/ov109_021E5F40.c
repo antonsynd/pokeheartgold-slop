@@ -54,7 +54,7 @@ undefined4 ov109_021E5F40(int param_1,int param_2,undefined4 param_3,undefined4 
 
 {
   byte bVar1;
-  
+
   if (param_2 == 0xc) {
     *(undefined1 *)(*(int *)(param_1 + 0x10) + 1) = 0;
     PlaySE(0x5dc);

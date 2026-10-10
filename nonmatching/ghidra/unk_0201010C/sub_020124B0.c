@@ -55,7 +55,7 @@ void sub_020124B0(undefined *param_1)
   uint extraout_r1;
   undefined *puVar4;
   int iVar5;
-  
+
   { int nug_a = (int)(*(int *)(param_1 + 0xc)), nug_b = (int)(0x3fff); extraout_r1 = nug_a % nug_b; _s32_div_f(nug_a, nug_b); }
   puVar1 = sub_02010EE0(param_1,0);
   puVar2 = sub_02010EE0(param_1,1);

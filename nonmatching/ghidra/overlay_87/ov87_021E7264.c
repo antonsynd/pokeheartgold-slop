@@ -52,7 +52,7 @@ void ov87_021E7264(int param_1)
   uint extraout_r1;
   int iVar2;
   int iVar3;
-  
+
   iVar3 = 0;
   do {
     do {

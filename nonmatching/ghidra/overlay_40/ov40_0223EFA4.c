@@ -55,7 +55,7 @@ undefined4 ov40_0223EFA4(int param_1,undefined4 param_2,undefined4 param_3,undef
 {
   int iVar1;
   int iVar2;
-  
+
   iVar2 = *(int *)(param_1 + 0x860);
   if (*(int *)(param_1 + 8) == 0) {
     ov40_022307DC(param_1,0x38,3,param_4,param_4);

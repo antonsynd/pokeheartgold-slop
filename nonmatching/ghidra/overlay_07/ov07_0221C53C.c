@@ -50,7 +50,7 @@ int ov07_0221C53C(undefined4 *param_1,undefined4 param_2,undefined4 param_3,unde
 
 {
   int iVar1;
-  
+
   iVar1 = Heap_Alloc(*param_1,0x3c,param_3,param_4,param_4);
   if (iVar1 == 0) {
     GF_AssertFail();

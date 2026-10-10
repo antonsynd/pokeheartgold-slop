@@ -63,7 +63,7 @@ void ov96_0220A14C(int param_1)
   byte *pbVar6;
   uint *puStack_1c;
   uint uStack_18;
-  
+
   if (param_1 == 0) {
     GF_AssertFail();
   }

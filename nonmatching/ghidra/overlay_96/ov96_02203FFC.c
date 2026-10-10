@@ -54,7 +54,7 @@ void ov96_02203FFC(undefined4 *param_1,undefined4 param_2,undefined4 param_3,und
 {
   undefined1 uVar1;
   undefined4 uVar2;
-  
+
   uVar1 = ov96_021E5F24(param_1[1]);
   uVar2 = PokeathlonCourse_GetPlayerProfileFromData(param_1[1],uVar1);
   uVar2 = PlayerProfile_GetPlayerName_NewString(uVar2,*param_1);

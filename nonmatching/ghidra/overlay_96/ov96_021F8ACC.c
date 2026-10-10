@@ -52,7 +52,7 @@ undefined4 ov96_021F8ACC(undefined4 param_1,undefined4 param_2,undefined4 param_
 
 {
   undefined4 uVar1;
-  
+
   uVar1 = Sprite_CreateAffine();
   Sprite_SetAnimActiveFlag(uVar1,1);
   Sprite_SetAnimCtrlSeq(uVar1,param_2);

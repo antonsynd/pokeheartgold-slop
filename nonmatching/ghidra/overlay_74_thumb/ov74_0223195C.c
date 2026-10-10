@@ -57,7 +57,7 @@ void ov74_0223195C(int param_1)
   int iVar4;
   undefined2 auStack_104 [2];
   undefined1 auStack_100 [236];
-  
+
   uVar1 = Save_MigratedPokemon_Get(*(undefined4 *)(param_1 + 0x10));
   uVar2 = Mon_GetBoxMon(auStack_100);
   iVar3 = 0;

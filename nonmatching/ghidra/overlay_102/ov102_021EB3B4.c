@@ -57,7 +57,7 @@ void ov102_021EB3B4(undefined4 *param_1,int param_2,undefined4 param_3,undefined
   undefined4 uVar1;
   int iVar2;
   ushort *puVar3;
-  
+
   uVar1 = ov102_021EA268(*param_1);
   if (param_2 == 0) {
     FillBgTilemapRect(uVar1,0,0,0x18,0x14,8,4,0x11);

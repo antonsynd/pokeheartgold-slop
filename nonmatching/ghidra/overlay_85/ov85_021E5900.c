@@ -77,7 +77,7 @@ undefined4 ov85_021E5900(undefined4 param_1)
   undefined4 uVar3;
   uint uVar4;
   uint uVar5;
-  
+
   iVar1 = OverlayManager_GetArgs();
   sub_020398D4(1,1);
   Main_SetVBlankIntrCB(0,0);

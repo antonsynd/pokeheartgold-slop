@@ -50,7 +50,7 @@ void ov87_021E79C4(int param_1,undefined4 param_2,undefined4 param_3,undefined4 
 
 {
   undefined4 uVar1;
-  
+
   uVar1 = GfGfxLoader_GetCharData(0xcf,7,0,param_1 + 0x388,0x7a,param_4);
   *(undefined4 *)(param_1 + 900) = uVar1;
   BG_LoadCharTilesData

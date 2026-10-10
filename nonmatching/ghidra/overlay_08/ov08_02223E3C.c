@@ -51,7 +51,7 @@ void ov08_02223E3C(undefined4 *param_1,undefined4 param_2,undefined4 param_3,und
 {
   undefined4 uVar1;
   undefined4 uVar2;
-  
+
   uVar1 = func_0x0223a8e4(*(undefined4 *)*param_1);
   uVar2 = func_0x02077c18(param_2,1);
   SpriteSystem_ReplaceCharResObj(uVar1,param_1[0xc3],0x12,uVar2,0,param_3,param_4);

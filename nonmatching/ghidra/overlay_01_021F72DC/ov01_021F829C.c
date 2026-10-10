@@ -54,7 +54,7 @@ void ov01_021F829C(undefined4 param_1,undefined4 param_2,char *param_3,int param
 {
   undefined4 uVar1;
   int iVar2;
-  
+
   if (param_4 == *param_3) {
     if (param_3[2] != '\t') {
       uVar1 = ov01_021FA458(param_4);

@@ -57,7 +57,7 @@ void ov108_021E77D4(int param_1)
 {
   int iVar1;
   int iVar2;
-  
+
   FillWindowPixelBuffer(param_1 + 0x3e4,2);
   BufferIntegerAsString(*(undefined4 *)(param_1 + 0x308),0,*(byte *)(param_1 + 0x184de) + 1,1,1,1);
   StringExpandPlaceholders

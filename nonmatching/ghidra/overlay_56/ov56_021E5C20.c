@@ -58,7 +58,7 @@ ov56_021E5C20(undefined4 param_1,undefined4 param_2,undefined4 param_3,undefined
   undefined1 uVar1;
   undefined4 *puVar2;
   undefined2 *puVar3;
-  
+
   Heap_Create(3,0x29,0x20000,param_4,param_4);
   puVar2 = (undefined4 *)OverlayManager_CreateAndGetData(param_1,0xc4,0x29);
   func_0x020e5b44(puVar2,0,0xc4);

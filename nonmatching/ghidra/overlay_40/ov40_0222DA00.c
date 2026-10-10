@@ -50,7 +50,7 @@ bool ov40_0222DA00(int *param_1,int *param_2,int param_3,int param_4)
 {
   int iVar1;
   bool bVar2;
-  
+
   iVar1 = *param_1;
   if (param_3 == 0) {
     bVar2 = 7 < iVar1;

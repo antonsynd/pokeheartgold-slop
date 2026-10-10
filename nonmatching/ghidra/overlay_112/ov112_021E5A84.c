@@ -49,7 +49,7 @@ undefined4 ov112_021E5A84(uint param_1)
 
 {
   uint uVar1;
-  
+
   if (param_1 != 1) {
     if ((param_1 != 2) && (param_1 != 3)) {
       return 0;

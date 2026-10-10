@@ -49,7 +49,7 @@ undefined4 ov112_021EC2A8(int param_1)
 
 {
   undefined4 uVar1;
-  
+
   if (-1 < *(short *)(param_1 + 0x1f370)) {
     BufferBoxMonNickname(*(undefined4 *)(param_1 + 0x1e448),1,param_1 + 0x1f2e8);
     uVar1 = ov112_021EA08C(param_1,2,0x1a);

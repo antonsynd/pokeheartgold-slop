@@ -59,7 +59,7 @@ void ov80_02233594(int param_1,undefined4 param_2,undefined4 param_3,undefined4 
   undefined4 uVar1;
   undefined4 uVar2;
   undefined4 uVar3;
-  
+
   uVar1 = String_New(0x14,*(undefined4 *)(param_1 + 0x34));
   uVar2 = String_New(0x14,*(undefined4 *)(param_1 + 0x34));
   uVar3 = NewMsgDataFromNarc(0,0x1b,0x1f,0xb);

@@ -51,7 +51,7 @@ undefined4 ov85_021E61FC(undefined4 *param_1)
 {
   undefined4 uVar1;
   int iVar2;
-  
+
   ov85_021E8558(param_1,0x4000);
   uVar1 = ov85_021E7958(param_1);
   param_1[10] = uVar1;

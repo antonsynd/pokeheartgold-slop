@@ -50,7 +50,7 @@ void ov102_021EA644(undefined4 *param_1)
 
 {
   undefined4 uVar1;
-  
+
   uVar1 = ov102_021EA268(*param_1);
   if (uRam04000006 < 0x30) {
     func_0x0201bc8c(uVar1,0,3,(int)*(short *)(param_1 + 0x78));

@@ -49,7 +49,7 @@ int ov15_021FA68C(int param_1,uint param_2)
   int iVar1;
   int iVar2;
   int iVar3;
-  
+
   iVar2 = 0;
   iVar3 = 0;
   iVar1 = *(int *)(param_1 + 0x234);

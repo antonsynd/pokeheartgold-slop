@@ -49,7 +49,7 @@ void ov80_02234BB4(int param_1,undefined4 param_2,int param_3,int param_4)
 
 {
   int iVar1;
-  
+
   iVar1 = BattleArcade_GetOpponentMonCount(*(undefined1 *)(param_1 + 0x10),1);
   if (param_4 < iVar1) {
     if (param_3 == 1) {

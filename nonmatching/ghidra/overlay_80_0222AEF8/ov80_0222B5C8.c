@@ -57,7 +57,7 @@ undefined4 ov80_0222B5C8(int param_1)
   undefined4 uVar3;
   undefined4 uVar4;
   int iVar5;
-  
+
   func_0x02030e08(*(undefined4 *)(param_1 + 4));
   *(undefined2 *)(param_1 + 0x3c2) = *(undefined2 *)(param_1 + 0x14);
   *(undefined2 *)(param_1 + 0x3c4) = *(undefined2 *)(param_1 + 0x16);

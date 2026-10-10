@@ -55,7 +55,7 @@ void ov45_02230164(int param_1,int param_2,int param_3,undefined4 *param_4)
   undefined4 uVar4;
   undefined4 *puVar5;
   int iVar6;
-  
+
   if (2 < param_2) {
     GF_AssertFail();
   }

@@ -56,7 +56,7 @@ void ov01_021EE568(int param_1)
 {
   int iVar1;
   int iVar2;
-  
+
   PlaySE(0x5dc);
   func_0x02001434(*(undefined4 *)(param_1 + 0x1bc),0,0);
   sub_0200E5D4(*(undefined4 *)(param_1 + 0x1a8),0);

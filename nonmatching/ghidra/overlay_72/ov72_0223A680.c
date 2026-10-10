@@ -50,7 +50,7 @@ void ov72_0223A680(int param_1,undefined4 param_2,undefined4 param_3,undefined4 
 {
   int iVar1;
   int iVar2;
-  
+
   if (*(char *)(param_1 + 0x130d) == 'd') {
     Sprite_SetDrawFlag(*(undefined4 *)(param_1 + 0xdf4),1,param_3,param_4,param_4);
   }

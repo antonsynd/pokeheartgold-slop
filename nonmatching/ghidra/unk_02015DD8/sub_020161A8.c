@@ -48,7 +48,7 @@ void sub_020161A8(int param_1,uint param_2,undefined4 param_3,undefined4 param_4
 
 {
   undefined4 uVar1;
-  
+
   uVar1 = *(undefined4 *)(param_1 + 8);
   *(uint *)(param_1 + 8) = (param_2 >> 0x10) << 3;
   func_0x020b86cc(param_1,(param_2 & 0xffff) << 3,0,param_3,param_4);

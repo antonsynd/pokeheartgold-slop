@@ -52,7 +52,7 @@ undefined4 ov00_021E74A8(void)
 {
   int iVar1;
   int iVar2;
-  
+
   iVar2 = *(int *)(iRam0221a688 + 0x1a54);
   if (iVar2 == 0) {
     iVar2 = func_0x020b304c();

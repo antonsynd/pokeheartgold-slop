@@ -57,7 +57,7 @@ void ov15_021F9AE4(undefined4 *param_1)
 {
   undefined1 uVar1;
   undefined4 uVar2;
-  
+
   uVar2 = NARC_New(0xf,6);
   param_1[0x91] = uVar2;
   GfGfxLoader_LoadCharData(0xf,7,*param_1,2,0,0,0,6);

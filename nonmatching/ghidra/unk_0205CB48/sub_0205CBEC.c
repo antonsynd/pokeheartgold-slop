@@ -54,7 +54,7 @@ undefined4 sub_0205CBEC(undefined4 param_1,int param_2)
 {
   undefined4 uVar1;
   int iVar2;
-  
+
   uVar1 = PlayerAvatar_GetMapObject();
   iVar2 = MapObject_AreBitsSetForMovementScriptInit();
   if (iVar2 == 1) {

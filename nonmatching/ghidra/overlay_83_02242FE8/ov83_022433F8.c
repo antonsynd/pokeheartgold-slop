@@ -103,7 +103,7 @@ undefined4 ov83_022433F8(int param_1,undefined4 param_2,undefined4 param_3,undef
   undefined4 uVar5;
   uint uVar6;
   int iVar7;
-  
+
   switch(*(undefined1 *)(param_1 + 8)) {
   case 0:
     *(undefined1 *)(param_1 + 0xb) = 0;

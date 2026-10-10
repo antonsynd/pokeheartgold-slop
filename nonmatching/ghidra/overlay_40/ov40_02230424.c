@@ -101,7 +101,7 @@ void ov40_02230424(int param_1,int param_2,undefined4 param_3,undefined4 param_4
   undefined4 uStack_7c;
   short asStack_78 [48];
   undefined4 uStack_18;
-  
+
   psVar9 = (short *)&ov40_02244F90;
   iStack_114 = 0;
   psVar8 = asStack_78;

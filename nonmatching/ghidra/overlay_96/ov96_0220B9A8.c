@@ -72,7 +72,7 @@ void ov96_0220B9A8(int param_1)
   short sStack_16;
   short sStack_14;
   short sStack_12;
-  
+
   uVar5 = *(uint *)(param_1 + 0x44);
   switch((uVar5 & 0xffff) >> 10) {
   case 0:

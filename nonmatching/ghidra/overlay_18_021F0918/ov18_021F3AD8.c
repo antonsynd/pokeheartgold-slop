@@ -53,7 +53,7 @@ void ov18_021F3AD8(int param_1,undefined4 param_2,undefined4 param_3,undefined4 
   short sStack_10;
   short sStack_e;
   undefined4 uStack_c;
-  
+
   if (*(int *)(param_1 + 0x1860) == 1) {
     uStack_c = param_4;
     ov18_021F11C0(param_1,0x11,1);

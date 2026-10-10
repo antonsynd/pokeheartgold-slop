@@ -53,7 +53,7 @@ void sub_020772F8(int param_1)
 
 {
   undefined4 uVar1;
-  
+
   uVar1 = NewString_ReadMsgData(*(undefined4 *)(param_1 + 8));
   StringExpandPlaceholders(*(undefined4 *)(param_1 + 0xc),*(undefined4 *)(param_1 + 0x10),uVar1);
   Heap_Free(uVar1);

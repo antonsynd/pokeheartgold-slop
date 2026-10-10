@@ -49,7 +49,7 @@ undefined4 ov80_0222D2AC(void)
 
 {
   int iVar1;
-  
+
   if (((uRam021d1154 & 3) == 0) && (iVar1 = System_GetTouchNew(), iVar1 == 0)) {
     return 0;
   }

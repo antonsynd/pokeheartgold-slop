@@ -53,7 +53,7 @@ void sub_02058124(int param_1,undefined4 param_2,undefined4 param_3,undefined4 p
 {
   int iVar1;
   undefined4 uVar2;
-  
+
   iVar1 = sub_02037474();
   if (iVar1 == 0) {
     uVar2 = FieldSystem_GetSaveData(param_1);

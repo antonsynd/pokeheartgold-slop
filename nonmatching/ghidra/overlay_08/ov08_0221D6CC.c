@@ -54,7 +54,7 @@ void ov08_0221D6CC(int *param_1,int param_2,undefined4 param_3,undefined4 param_
   int iVar3;
   uint uVar4;
   uint uVar5;
-  
+
   if (param_2 == 2) {
     uVar2 = (uint)*(byte *)(*param_1 + 0x11);
     if ((*(byte *)((int)param_1 + uVar2 * 0x50 + 0x1a) & 0x7f) < 100) {

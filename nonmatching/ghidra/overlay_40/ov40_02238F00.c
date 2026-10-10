@@ -61,7 +61,7 @@ void ov40_02238F00(int param_1,undefined4 param_2,undefined4 param_3,undefined4 
   undefined4 *puVar4;
   int iVar5;
   int iVar6;
-  
+
   iVar5 = *(int *)(param_1 + 0x860);
   if (*(int *)(iVar5 + 0x1c) == 0) {
     puVar4 = (undefined4 *)&ov40_02245418;

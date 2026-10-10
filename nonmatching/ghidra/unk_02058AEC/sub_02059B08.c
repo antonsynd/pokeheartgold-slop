@@ -48,7 +48,7 @@ int sub_02059B08(void)
 
 {
   int iVar1;
-  
+
   iVar1 = sub_02070D90();
   return iVar1 * 3 + 4;
 }

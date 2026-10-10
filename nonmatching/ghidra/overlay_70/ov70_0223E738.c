@@ -49,7 +49,7 @@ void ov70_0223E738(short *param_1,undefined4 param_2,undefined4 param_3,int para
 {
   int iVar1;
   int iVar2;
-  
+
   iVar2 = 0;
   do {
     if ((*param_1 != 0) && (iVar1 = ov70_0223E5FC(param_1,param_3), iVar1 == 0)) {

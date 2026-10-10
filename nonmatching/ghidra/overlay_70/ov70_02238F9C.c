@@ -49,7 +49,7 @@ void ov70_02238F9C(undefined4 param_1,int param_2,int param_3)
 {
   int iStack_10;
   int iStack_c;
-  
+
   iStack_10 = param_2 << 0xc;
   iStack_c = param_3 << 0xc;
   Sprite_SetMatrix(param_1,&iStack_10);

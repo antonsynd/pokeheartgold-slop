@@ -49,7 +49,7 @@ bool ov07_0221C634(int param_1)
 
 {
   byte bVar1;
-  
+
   bVar1 = *(byte *)(param_1 + 4);
   *(byte *)(param_1 + 4) = bVar1 + 1;
   if (bVar1 < *(byte *)(param_1 + 3)) {

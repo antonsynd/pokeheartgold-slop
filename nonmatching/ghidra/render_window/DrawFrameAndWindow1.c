@@ -58,7 +58,7 @@ void DrawFrameAndWindow1(undefined4 *param_1,int param_2,undefined4 param_3,unde
   undefined4 uVar3;
   undefined4 uVar4;
   undefined4 uVar5;
-  
+
   uVar1 = GetWindowBgId();
   uVar2 = GetWindowX(param_1);
   uVar3 = GetWindowY(param_1);

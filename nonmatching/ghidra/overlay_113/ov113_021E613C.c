@@ -56,7 +56,7 @@ void ov113_021E613C(int param_1,int param_2)
   int iVar1;
   ushort *puVar2;
   int iVar3;
-  
+
   if (param_2 == 0) {
     ov113_021E6238(param_1,param_1 + 0x150,6);
     ov113_021E6238(param_1,param_1 + 0x120,2);

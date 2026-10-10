@@ -53,7 +53,7 @@ void ov96_0221362C(int param_1)
   int iVar1;
   int iVar2;
   int iVar3;
-  
+
   AddWindow(*(undefined4 *)(param_1 + 4),param_1 + 8,0x221d1f8);
   iVar1 = 0x221d360;
   iVar3 = 0;

@@ -51,7 +51,7 @@ void ov01_021F8C3C(undefined4 param_1,undefined4 param_2,undefined4 param_3)
 
 {
   undefined4 uVar1;
-  
+
   ov01_021F8C00(param_1,param_3);
   uVar1 = func_0x02023f70(param_1);
   sub_02023EE0(param_1,param_2);

@@ -56,7 +56,7 @@ void sub_0208C8C8(int param_1,int param_2,undefined4 param_3,undefined4 param_4,
   int iVar2;
   uint uVar3;
   int iVar4;
-  
+
   param_2 = param_2 * 0x10;
   iVar4 = *(int *)(param_1 + 0x224);
   ReadMsgDataIntoString(*(undefined4 *)(param_1 + 0x7a0),param_3,*(undefined4 *)(param_1 + 0x7ac));

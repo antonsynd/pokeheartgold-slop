@@ -51,7 +51,7 @@ undefined4 ov05_0221DAE0(int *param_1)
 
 {
   int iVar1;
-  
+
   if (*(char *)(*param_1 + 0x28) != '\x01') {
     return 0;
   }

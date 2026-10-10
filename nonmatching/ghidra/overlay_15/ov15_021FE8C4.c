@@ -52,7 +52,7 @@ void ov15_021FE8C4(int param_1,undefined4 param_2)
 
 {
   undefined4 uVar1;
-  
+
   uVar1 = String_New(10,6);
   BufferIntegerAsString(*(undefined4 *)(param_1 + 0x2f4),0,param_2,3,0,1);
   StringExpandPlaceholders(*(undefined4 *)(param_1 + 0x2f4),uVar1,*(undefined4 *)(param_1 + 0x5ec));

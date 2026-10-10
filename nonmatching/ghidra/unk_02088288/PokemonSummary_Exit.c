@@ -63,7 +63,7 @@ undefined4 PokemonSummary_Exit(undefined4 param_1)
 
 {
   undefined4 *puVar1;
-  
+
   puVar1 = (undefined4 *)OverlayManager_GetData();
   Main_SetVBlankIntrCB(0,0);
   sub_0208DEFC(puVar1);

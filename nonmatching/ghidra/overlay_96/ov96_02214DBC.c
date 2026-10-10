@@ -53,7 +53,7 @@ undefined4 ov96_02214DBC(int param_1,int param_2,undefined4 param_3,int param_4)
   uint uVar2;
   uint extraout_r1;
   int iVar3;
-  
+
   uVar1 = LCRandom();
   func_0x020f2998(uVar1,100); __asm__ volatile("movs %0, r1" : "=l"(extraout_r1) : : "cc");
   uVar2 = extraout_r1 & 0xff;

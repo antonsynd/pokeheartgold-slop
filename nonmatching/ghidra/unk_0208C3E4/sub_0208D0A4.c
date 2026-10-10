@@ -62,7 +62,7 @@ void sub_0208D0A4(int param_1)
   undefined4 uVar2;
   undefined4 uVar3;
   int iVar4;
-  
+
   ScheduleWindowCopyToVram(param_1 + 0x14);
   FillWindowPixelBuffer(*(int *)(param_1 + 0x224) + 0x60,0);
   uVar1 = sub_0208A520(param_1);

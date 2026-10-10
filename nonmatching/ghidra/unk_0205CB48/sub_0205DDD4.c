@@ -56,7 +56,7 @@ int sub_0205DDD4(undefined4 param_1,undefined4 param_2,undefined4 param_3)
   int iVar3;
   int iVar4;
   int iVar5;
-  
+
   iVar1 = sub_0205DD9C(param_3);
   iVar2 = sub_0205DDB8(param_3);
   if (iVar1 != -1) {

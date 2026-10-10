@@ -50,7 +50,7 @@ void ov71_02246F60(int param_1,int param_2)
 
 {
   int iVar1;
-  
+
   param_2 = param_2 * 4;
   iVar1 = param_1 + 0xc4;
   if (*(int *)(iVar1 + param_2) != 0) {

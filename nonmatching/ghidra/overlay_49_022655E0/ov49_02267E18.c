@@ -58,7 +58,7 @@ undefined4 ov49_02267E18(int param_1,uint param_2)
   undefined4 uStack_1c;
   undefined1 uStack_16;
   undefined1 uStack_15;
-  
+
   uStack_20 = 0;
   uStack_1c = 0;
   if (*(short *)(param_1 + 0x3b4) != 0) {

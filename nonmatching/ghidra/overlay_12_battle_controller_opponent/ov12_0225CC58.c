@@ -64,7 +64,7 @@ void ov12_0225CC58(undefined4 param_1,undefined4 *param_2)
   undefined1 auStack_110 [88];
   undefined1 auStack_b8 [80];
   undefined1 auStack_68 [88];
-  
+
   uVar1 = ov12_0223A8DC(*param_2);
   switch(*(undefined1 *)((int)param_2 + 0x6b)) {
   case 0:

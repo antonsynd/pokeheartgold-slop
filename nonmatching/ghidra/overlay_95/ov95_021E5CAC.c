@@ -64,7 +64,7 @@ ov95_021E5CAC(undefined4 param_1,undefined4 param_2,undefined4 param_3,undefined
   undefined4 uVar3;
   undefined4 uVar4;
   undefined4 uVar5;
-  
+
   FillWindowPixelBuffer(param_1,0xf);
   uVar1 = NewMsgDataFromNarc(0,0x1b,0xbb,0x46);
   uVar2 = MessageFormat_New(0x46);

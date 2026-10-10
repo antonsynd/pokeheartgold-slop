@@ -61,7 +61,7 @@ void ov96_021F6398(int param_1,undefined4 param_2,undefined4 param_3,undefined4 
   undefined4 uStack_14;
   undefined4 uStack_10;
   undefined4 uStack_c;
-  
+
   uStack_24 = 0;
   uStack_20 = 0;
   uStack_1c = 0x1000;

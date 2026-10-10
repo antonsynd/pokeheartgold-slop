@@ -59,7 +59,7 @@ void sub_020573AC(void)
   __asm__ volatile("movs %0, r1" : "=l"(in_r1) : : "cc");
   __asm__ volatile("movs %0, r2" : "=l"(in_r2) : : "cc");
 
-  
+
   if (iRam021d41c4 != 0) {
     if (in_r1 != 1) {
       GF_AssertFail();

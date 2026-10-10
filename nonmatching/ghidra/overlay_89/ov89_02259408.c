@@ -56,7 +56,7 @@ void ov89_02259408(int *param_1,undefined4 param_2,undefined4 param_3,undefined4
   uint uVar2;
   undefined4 uVar3;
   int iVar4;
-  
+
   func_0x0200d68c(param_1[3],2,param_1[7],param_1[8],param_2,3,0,3,1,0x2711,param_4);
   SpriteSystem_LoadCharResObjFromOpenNarc(param_1[7],param_1[8],param_2,4,0,1,0x2717);
   SpriteSystem_LoadCellResObjFromOpenNarc(param_1[7],param_1[8],param_2,5,0,0x2712);

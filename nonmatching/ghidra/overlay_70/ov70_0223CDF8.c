@@ -56,7 +56,7 @@ undefined4 ov70_0223CDF8(int param_1)
 
 {
   int iVar1;
-  
+
   sub_0203A914();
   iVar1 = func_0x020cdaa8(0x400106c);
   if (iVar1 != 0) {

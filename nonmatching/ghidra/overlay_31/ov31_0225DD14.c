@@ -62,7 +62,7 @@ void ov31_0225DD14(int param_1)
   int iVar5;
   uint uVar6;
   int iStack_24;
-  
+
   iVar4 = 0;
   puVar3 = (undefined *)(param_1 + 0x84);
   do {

@@ -48,7 +48,7 @@ void ov65_0221FAE0(int param_1)
 
 {
   int iVar1;
-  
+
   iVar1 = 0;
   do {
     RemoveWindow(param_1 + (iVar1 + 7) * 0x10);

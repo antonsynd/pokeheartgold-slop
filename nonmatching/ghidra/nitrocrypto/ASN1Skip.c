@@ -53,7 +53,7 @@ undefined4 ASN1Skip(undefined4 *param_1,int *param_2,uint param_3,uint *param_4)
   byte *pbVar5;
   byte *pbVar6;
   uint uVar7;
-  
+
   pbVar5 = (byte *)*param_1;
   uVar7 = 0;
   iVar2 = *param_2;

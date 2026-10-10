@@ -76,7 +76,7 @@ undefined4 sub_020850F4(undefined4 param_1,undefined4 param_2,undefined4 param_3
   undefined4 uVar4;
   int iVar5;
   undefined4 *puVar6;
-  
+
   Heap_Create(3,0x6c,0x40000,param_4,param_4);
   iVar1 = OverlayManager_CreateAndGetData(param_1,0x3f4,0x6c);
   func_0x020e5b44(iVar1,0,0x3f4);

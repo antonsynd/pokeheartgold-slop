@@ -52,7 +52,7 @@ void sub_020594C8(int param_1,int param_2)
 
 {
   int iVar1;
-  
+
   iVar1 = WindowIsInUse(param_1 + 0x14);
   if (iVar1 != 0) {
     if (param_2 != 0) {

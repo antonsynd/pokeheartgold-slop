@@ -50,7 +50,7 @@ undefined4 ov15_021FB5AC(int param_1,undefined4 param_2,undefined4 param_3,undef
 {
   int iVar1;
   undefined4 uVar2;
-  
+
   iVar1 = ov15_021FB3F0();
   if (iVar1 == -2) {
     uVar2 = ov15_021FD7D0(param_1,0x13,9,8,0x1c,param_4);

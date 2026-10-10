@@ -47,7 +47,7 @@ undefined4 ov73_021E6CC0(int param_1,undefined4 param_2)
 
 {
   int iVar1;
-  
+
   iVar1 = *(int *)(param_1 + 0x324);
   *(int *)(param_1 + 0x324) = iVar1 + 1;
   if (0x3c < iVar1) {

@@ -69,7 +69,7 @@ ov13_02222108(undefined4 param_1,undefined4 param_2,undefined4 param_3,undefined
   short sStack_24;
   undefined1 auStack_22 [10];
   undefined4 uStack_18;
-  
+
   iVar1 = iRam0224cfac;
   acStack_28[0] = '\0';
   sStack_24 = 0;

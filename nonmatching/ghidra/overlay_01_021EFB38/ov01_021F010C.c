@@ -54,7 +54,7 @@ void ov01_021F010C(undefined4 param_1,int *param_2)
 {
   short sVar1;
   int iVar2;
-  
+
   if (param_2[7] != 0) {
     if (param_2[7] != 1) {
       return;

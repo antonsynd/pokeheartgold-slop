@@ -54,7 +54,7 @@ void ov12_02265F34(undefined4 *param_1,undefined4 param_2,undefined4 param_3,und
   undefined4 uVar1;
   undefined4 uVar2;
   undefined4 *puVar3;
-  
+
   uVar1 = BattleSystem_GetSpriteSystem(param_1[1]);
   uVar2 = BattleSystem_GetSpriteManager(param_1[1]);
   puVar3 = (undefined4 *)

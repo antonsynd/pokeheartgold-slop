@@ -51,7 +51,7 @@ void sub_02094EB4(int param_1)
   undefined4 *puVar1;
   int iVar2;
   int iVar3;
-  
+
   iVar3 = 0;
   if (*(char *)(param_1 + 0xd) != '\0') {
     iVar2 = 0;

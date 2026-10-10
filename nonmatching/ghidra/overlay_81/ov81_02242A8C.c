@@ -66,7 +66,7 @@ ov81_02242A8C(undefined4 *param_1,undefined4 param_2,undefined4 param_3,undefine
   undefined4 uStack_3c;
   undefined4 uStack_38;
   undefined1 auStack_34 [36];
-  
+
   CreateSpriteResourcesHeader
             (auStack_34,param_2,param_2,param_2,param_2,0xffffffff,0xffffffff,0,param_5,
              param_1[0x4b],param_1[0x4c],param_1[0x4d],param_1[0x4e],0,0);

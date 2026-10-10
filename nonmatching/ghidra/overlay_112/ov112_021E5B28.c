@@ -56,7 +56,7 @@ undefined4 ov112_021E5B28(uint param_1)
   int iVar1;
   int iVar2;
   uint uVar3;
-  
+
   if (param_1 == 1) {
     if (cRam021ffa18 == -4) {
       return 1;

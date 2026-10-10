@@ -56,7 +56,7 @@ void ov96_0220CE04(undefined4 *param_1,int param_2)
   uint uVar2;
   uint uVar3;
   ulonglong uVar4;
-  
+
   uVar2 = 0;
   if (param_1 == (undefined4 *)0x0) {
     GF_AssertFail();

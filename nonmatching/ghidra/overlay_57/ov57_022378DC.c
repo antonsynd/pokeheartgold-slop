@@ -87,7 +87,7 @@ ov57_022378DC(undefined4 param_1,undefined4 param_2,undefined4 param_3,undefined
   int iVar5;
   undefined4 uVar6;
   int *piVar7;
-  
+
   Heap_Create(3,0x34,0x80000,param_4,param_4);
   piVar2 = (int *)OverlayManager_CreateAndGetData(param_1,0x460,0x34);
   func_0x020e5b44(piVar2,0,0x460);

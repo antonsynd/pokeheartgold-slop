@@ -59,7 +59,7 @@ void ov08_02220C5C(int param_1,undefined4 param_2)
 {
   int iVar1;
   uint uVar2;
-  
+
   uVar2 = 0;
   iVar1 = param_1;
   do {

@@ -59,7 +59,7 @@ ov49_02268A0C(undefined4 param_1,undefined4 param_2,undefined4 param_3,undefined
   undefined4 uVar3;
   int iVar4;
   undefined4 *puVar5;
-  
+
   puVar2 = (undefined4 *)Heap_Alloc(param_3,0x10,param_3,param_4,param_4);
   iVar4 = 0x10;
   puVar5 = puVar2;

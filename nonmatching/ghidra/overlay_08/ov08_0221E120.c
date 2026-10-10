@@ -55,7 +55,7 @@ void ov08_0221E120(int *param_1,int param_2,int param_3)
 {
   undefined *puVar1;
   undefined *puVar2;
-  
+
   puVar1 = String_New(0x10,*(int *)(*param_1 + 0xc));
   puVar2 = NewString_ReadMsgData((undefined *)param_1[0x7ea],8);
   BufferAbilityName((undefined *)param_1[0x7eb],0,(uint)*(ushort *)(param_1 + param_3 * 0x14 + 7));

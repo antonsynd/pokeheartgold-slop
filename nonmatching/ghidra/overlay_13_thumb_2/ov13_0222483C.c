@@ -48,7 +48,7 @@ void ov13_0222483C(short *param_1)
 
 {
   short sVar1;
-  
+
   *(undefined1 *)param_1 = 0;
   *(undefined1 *)((int)param_1 + 1) = 0;
   *(undefined1 *)(param_1 + 1) = 0;

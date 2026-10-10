@@ -50,7 +50,7 @@ undefined4 ov73_021E9D6C(int param_1)
 
 {
   undefined4 uVar1;
-  
+
   uVar1 = 0;
   switch(*(undefined4 *)(param_1 + 0xf1c)) {
   case 1:

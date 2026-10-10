@@ -50,7 +50,7 @@ void ov14_021F46B0(int param_1,int param_2,uint param_3,uint param_4,uint param_
   int iVar1;
   uint uVar2;
   char cVar3;
-  
+
   if (param_3 < 0x10) {
     cVar3 = (char)param_3 + '\x10';
   }

@@ -55,7 +55,7 @@ undefined4 ov96_0220C768(undefined4 param_1,undefined4 param_2,undefined4 param_
 {
   int iVar1;
   undefined4 uVar2;
-  
+
   iVar1 = func_0x020ccba0(param_2,param_3);
   iVar1 = iVar1 * 100 >> 0xc;
   if (iVar1 < 0x29) {

@@ -68,7 +68,7 @@ void ov01_0220589C(undefined4 param_1,undefined4 param_2,undefined4 param_3,unde
   undefined4 uVar3;
   undefined4 uVar4;
   uint uVar5;
-  
+
   puVar1 = (undefined4 *)Heap_AllocAtEnd(0xb,0x28,param_3,param_4,param_4);
   func_0x020d4994(puVar1,0,4);
   uVar2 = MapObject_GetParam(param_2,2);

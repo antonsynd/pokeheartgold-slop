@@ -52,7 +52,7 @@ ov80_0222D0D4(undefined4 param_1,undefined4 param_2,undefined4 param_3,undefined
 {
   undefined4 uVar1;
   undefined4 uVar2;
-  
+
   uVar1 = NewMsgDataFromNarc(1,0x1b,0xed,param_2,param_4);
   uVar2 = NewString_ReadMsgData(uVar1,param_1);
   DestroyMsgData(uVar1);

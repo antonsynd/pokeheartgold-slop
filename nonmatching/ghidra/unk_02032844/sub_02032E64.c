@@ -51,7 +51,7 @@ void sub_02032E64(int param_1)
 
 {
   int iVar1;
-  
+
   if (*(short *)(param_1 + 2) != 0) {
     sub_02032858();
     return;

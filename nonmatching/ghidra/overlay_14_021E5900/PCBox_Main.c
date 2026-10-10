@@ -50,7 +50,7 @@ undefined4 PCBox_Main(undefined4 param_1,undefined4 param_2)
 {
   undefined4 uVar1;
   int iVar2;
-  
+
   uVar1 = OverlayManager_GetData();
   iVar2 = ov14_021EAF8C(uVar1,param_2);
   if (iVar2 == 0) {

@@ -69,7 +69,7 @@ void ov81_02240BB0(int param_1)
   undefined4 uVar1;
   int iVar2;
   int iVar3;
-  
+
   ov81_0224275C();
   iVar3 = 0;
   iVar2 = param_1;

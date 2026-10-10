@@ -56,7 +56,7 @@ void sub_02034B0C(undefined4 param_1,undefined4 param_2,undefined4 param_3,undef
 
 {
   undefined4 uVar1;
-  
+
   if (iRam021d413c == 0) {
     iRam021d413c = Heap_Alloc(0xf,0xd98,param_3,param_4,param_4);
     func_0x020d4994(iRam021d413c,0,0xd98);

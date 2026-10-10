@@ -51,7 +51,7 @@ void ov37_021E5F20(int param_1)
 {
   int iVar1;
   int iVar2;
-  
+
   Heap_Free(*(undefined4 *)(param_1 + 0x43c8));
   YesNoPrompt_Destroy(*(undefined4 *)(param_1 + 0x93f0));
   iVar1 = 0;

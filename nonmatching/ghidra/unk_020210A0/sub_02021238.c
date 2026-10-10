@@ -50,7 +50,7 @@ int sub_02021238(void)
 
 {
   int iVar1;
-  
+
   if (sRam021d21f2 != 0) {
     sub_020211AC(0,0,0,0,0,0);
     return 1;

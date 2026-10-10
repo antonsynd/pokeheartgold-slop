@@ -69,7 +69,7 @@ void ov91_0225F0C0(undefined4 *param_1,int param_2,undefined4 param_3)
   undefined4 uStack_20;
   undefined4 uStack_1c;
   undefined4 uStack_18;
-  
+
   func_0x020e5b44(param_1,0,0x40);
   uVar1 = NARC_New(200,param_3);
   uVar2 = func_0x0200a3c8(*(undefined4 *)(param_2 + 0x148),uVar1,0x15,0,0x78,2,param_3);

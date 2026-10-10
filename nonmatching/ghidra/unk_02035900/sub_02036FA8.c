@@ -49,7 +49,7 @@ undefined4 sub_02036FA8(void)
 
 {
   int extraout_r1;
-  
+
   if (*(byte *)(iRam021d4148 + 0x6bb) == 0) {
     return 0;
   }

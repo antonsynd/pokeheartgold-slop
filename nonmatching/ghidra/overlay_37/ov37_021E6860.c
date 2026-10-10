@@ -53,7 +53,7 @@ undefined4 ov37_021E6860(int param_1,undefined4 param_2)
 
 {
   int iVar1;
-  
+
   ov37_021E65EC();
   iVar1 = sub_0203769C();
   if (iVar1 == 0) {

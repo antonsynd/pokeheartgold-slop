@@ -51,7 +51,7 @@ undefined4 ov87_021E71EC(int param_1,int param_2,undefined4 param_3,undefined4 p
 {
   undefined4 uVar1;
   int iVar2;
-  
+
   BufferItemName(*(undefined4 *)(param_1 + 0x3c),0,*(undefined2 *)(param_1 + param_2 * 2 + 0x36a));
   iVar2 = (param_2 + 2) * 0x10;
   uVar1 = ov87_021E6F98(param_1,param_1 + 0x5c + iVar2,1,0x2c,*(undefined1 *)(param_2 + 0x21e8388),0

@@ -50,7 +50,7 @@ void ov93_02262098(int param_1,int param_2,undefined4 param_3,undefined4 param_4
   int iVar1;
   int iVar2;
   int iVar3;
-  
+
   iVar3 = 100000;
   iVar2 = 0;
   do {

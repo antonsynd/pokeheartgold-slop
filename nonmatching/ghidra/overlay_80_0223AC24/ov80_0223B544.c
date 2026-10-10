@@ -56,7 +56,7 @@ undefined4 * ov80_0223B544(undefined4 param_1,undefined4 *param_2,int param_3)
   undefined4 uVar3;
   int iVar4;
   undefined4 *puVar5;
-  
+
   puVar1 = (undefined4 *)Heap_Alloc(param_3,0x3024);
   memset((undefined *)puVar1,0,0x3024);
   if (puVar1 == (undefined4 *)0x0) {

@@ -53,7 +53,7 @@ void sub_020619C0(undefined4 param_1,undefined2 *param_2)
 {
   undefined4 uVar1;
   int iVar2;
-  
+
   uVar1 = MapObject_GetInitialFacingDirection();
   if (param_2[1] == 1) {
     uVar1 = sub_020611F4();

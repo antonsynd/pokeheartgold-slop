@@ -50,7 +50,7 @@ void ov57_0223B90C(undefined4 param_1,undefined4 param_2)
 
 {
   undefined4 *puVar1;
-  
+
   puVar1 = (undefined4 *)Heap_Alloc(0x34,0xc);
   *puVar1 = 1;
   puVar1[1] = param_1;

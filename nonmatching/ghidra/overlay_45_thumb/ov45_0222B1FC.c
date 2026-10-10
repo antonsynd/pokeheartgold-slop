@@ -47,7 +47,7 @@ void ov45_0222B1FC(int param_1,undefined4 *param_2)
 
 {
   undefined4 uVar1;
-  
+
   *(undefined4 *)(param_1 + 0x524) = 1;
   uVar1 = param_2[1];
   *(undefined4 *)(param_1 + 0x510) = *param_2;

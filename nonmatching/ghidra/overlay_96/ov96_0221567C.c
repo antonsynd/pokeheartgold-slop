@@ -48,7 +48,7 @@ undefined4 ov96_0221567C(int param_1,int param_2,int param_3,int param_4,byte pa
 
 {
   int iVar1;
-  
+
   iVar1 = ov96_02215614(param_1,param_2,param_3,param_4);
   if ((uint)param_6 != (uint)param_5) {
     return 0;

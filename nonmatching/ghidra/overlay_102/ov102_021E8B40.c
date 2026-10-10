@@ -51,7 +51,7 @@ undefined4 ov102_021E8B40(ushort *param_1,uint param_2)
 {
   uint uVar1;
   undefined4 uVar2;
-  
+
   if ((param_2 & 0x80) == 0) {
     if ((param_2 & 0x40) == 0) {
       if ((param_2 & 0x30) != 0) {

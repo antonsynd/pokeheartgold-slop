@@ -61,7 +61,7 @@ undefined4 ov65_0221E558(int param_1)
   int iVar3;
   undefined4 uVar4;
   int iVar5;
-  
+
   iVar1 = sub_0202C2F8(*(undefined4 *)(param_1 + 0x36a0));
   uVar2 = func_0x02014918(iVar1 + 1,0x1a);
   *(undefined4 *)(param_1 + 0x3688) = uVar2;

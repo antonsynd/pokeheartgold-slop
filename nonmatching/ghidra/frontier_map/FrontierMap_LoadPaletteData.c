@@ -55,7 +55,7 @@ void FrontierMap_LoadPaletteData
 {
   undefined1 uVar1;
   int iVar2;
-  
+
   PaletteData_LoadNarc(param_1[1],0x10,7,0x65,0,0x20,0xe0,param_4);
   PaletteData_LoadNarc(param_1[1],0x10,8,0x65,0,0x20,0xd0);
   iVar2 = Frontier_GetLaunchArgs(param_1[2]);

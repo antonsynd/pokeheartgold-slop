@@ -48,7 +48,7 @@ void sub_0208BDC8(int param_1)
 
 {
   uint uVar1;
-  
+
   uVar1 = 0;
   do {
     if ((1 << uVar1 & (uint)*(byte *)(param_1 + 0x7be)) != 0) {

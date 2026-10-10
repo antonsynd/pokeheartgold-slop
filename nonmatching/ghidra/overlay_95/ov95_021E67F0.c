@@ -49,7 +49,7 @@ undefined4 ov95_021E67F0(int param_1)
 
 {
   int iVar1;
-  
+
   if (*(int *)(param_1 + 0x68) == 0) {
     ManagedSprite_SetAnimationFrame(*(undefined4 *)(param_1 + 0x74),0);
     *(int *)(param_1 + 0x68) = *(int *)(param_1 + 0x68) + 1;

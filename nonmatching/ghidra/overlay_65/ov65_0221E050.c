@@ -50,7 +50,7 @@ undefined4 ov65_0221E050(undefined4 param_1)
 
 {
   int iVar1;
-  
+
   iVar1 = ov65_0221DFB8();
   if (iVar1 == 0) {
     ov65_0221DF1C(param_1);

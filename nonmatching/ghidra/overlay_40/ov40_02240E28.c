@@ -67,7 +67,7 @@ void ov40_02240E28(int param_1,int param_2)
   undefined4 uVar3;
   undefined4 uVar4;
   int iVar5;
-  
+
   iVar5 = *(int *)(param_1 + 0x860);
   ov40_0222C6C8(param_1,2);
   GfGfx_EngineATogglePlanes(4,1);

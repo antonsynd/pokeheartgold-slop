@@ -60,7 +60,7 @@ void ov87_021E734C(int param_1,undefined4 param_2,undefined4 param_3,undefined4 
   int iStack_28;
   ushort auStack_20 [4];
   undefined4 uStack_18;
-  
+
   iVar3 = 0;
   puVar5 = auStack_20;
   uStack_18 = param_4;

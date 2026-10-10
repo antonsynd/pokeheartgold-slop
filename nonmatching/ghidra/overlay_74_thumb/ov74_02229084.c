@@ -67,7 +67,7 @@ void ov74_02229084(undefined4 *param_1,undefined4 param_2,undefined4 param_3,und
   undefined4 uStack_18;
   undefined4 uStack_14;
   undefined4 uStack_10;
-  
+
   uStack_10 = param_4;
   uVar1 = MessageFormat_New(*param_1);
   ov74_02235414(param_1 + 0x3c,param_1 + 0xe,0,0xf7,1,1);

@@ -55,7 +55,7 @@ undefined4 ov68_021E60D8(int param_1)
   int iVar1;
   undefined4 uVar2;
   undefined4 uVar3;
-  
+
   iVar1 = YesNoPrompt_HandleInput(*(undefined4 *)(param_1 + 0x118));
   if (iVar1 == 1) {
     uVar2 = (**(code **)(&ov68_021E7D3C + (uint)*(byte *)(param_1 + 0x1ba) * 8))(param_1);

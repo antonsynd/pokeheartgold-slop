@@ -56,7 +56,7 @@ ov45_0222E200(int param_1,undefined4 param_2,undefined4 param_3,undefined4 param
 {
   int iVar1;
   undefined4 uVar2;
-  
+
   uVar2 = param_4;
   func_0x0200c74c(param_3,0,*(undefined4 *)(param_1 + 4));
   if (*(int *)(param_1 + 0xc) == 1) {

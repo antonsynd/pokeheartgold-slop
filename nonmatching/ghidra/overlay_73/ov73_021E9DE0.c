@@ -52,7 +52,7 @@ undefined4 ov73_021E9DE0(int param_1,undefined4 param_2,undefined4 param_3,undef
 
 {
   int iVar1;
-  
+
   switch(*(undefined2 *)(param_1 + 0xf90)) {
   case 0:
     ov73_021E9FF8(param_1,*(undefined4 *)(param_1 + 0xbd4),0x10,1,0xf0f,param_4);

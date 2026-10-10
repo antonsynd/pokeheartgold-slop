@@ -48,7 +48,7 @@ void ov96_022148E8(int param_1,int param_2,int param_3)
 
 {
   int iVar1;
-  
+
   iVar1 = ov96_021E5F24(*(undefined4 *)(param_1 + 4));
   if ((param_3 == iVar1) && (*(int *)(param_1 + 0x44) != param_2)) {
     *(int *)(param_1 + 0x44) = param_2;

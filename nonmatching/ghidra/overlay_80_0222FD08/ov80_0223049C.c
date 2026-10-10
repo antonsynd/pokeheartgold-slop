@@ -76,7 +76,7 @@ void ov80_0223049C(undefined *param_1,int param_2)
   undefined2 auStack_34 [4];
   undefined1 auStack_2c [4];
   uint auStack_28 [5];
-  
+
   uVar3 = sub_02030AE8(*(undefined **)(param_1 + 0x4f8));
   puVar4 = Save_Frontier_GetStatic(*(undefined **)(param_1 + 0x4f8));
   func_0x02236dd4(param_1[4]);

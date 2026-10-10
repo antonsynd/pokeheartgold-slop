@@ -62,7 +62,7 @@ undefined4 ov74_022324A0(int param_1,int param_2)
   int iStack_20;
   int iStack_1c;
   int iStack_18;
-  
+
   if ((*(int *)(param_1 + 0x1a8 + param_2 * 0xc) != 0) && (iVar1 = Sprite_GetDrawFlag(), iVar1 == 0)
      ) {
     return 3;

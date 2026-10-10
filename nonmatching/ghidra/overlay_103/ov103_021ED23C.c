@@ -54,7 +54,7 @@ void ov103_021ED23C(int param_1)
 {
   undefined4 uVar1;
   int iVar2;
-  
+
   uVar1 = NARC_New(0x4f,0x9d);
   iVar2 = Mail_GetType(*(undefined4 *)
                         (*(int *)(param_1 + 0xc) + (uint)*(byte *)(param_1 + 0x1f) * 4 + 0x27c));

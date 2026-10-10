@@ -58,7 +58,7 @@ void ov08_0221F284(int *param_1,int param_2,int param_3)
   undefined4 uVar2;
   int iVar3;
   int iVar4;
-  
+
   iVar4 = param_1[0x81c];
   param_3 = param_3 * 0x10;
   uVar1 = String_New(6,*(undefined4 *)(*param_1 + 0xc));

@@ -49,7 +49,7 @@ undefined4 FrtCmd_119(int *param_1)
 {
   undefined4 uVar1;
   int iVar2;
-  
+
   iVar2 = *param_1;
   uVar1 = WaitingIcon_New(iVar2 + 100,0x3e2);
   *(undefined4 *)(iVar2 + 0x7c) = uVar1;

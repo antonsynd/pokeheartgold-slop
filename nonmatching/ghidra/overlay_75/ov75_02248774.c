@@ -56,7 +56,7 @@ undefined4 ov75_02248774(int *param_1)
 
 {
   int iVar1;
-  
+
   iVar1 = param_1[0x25];
   if (iVar1 == 0) {
     sub_02039528(*(undefined4 *)(*param_1 + 4));

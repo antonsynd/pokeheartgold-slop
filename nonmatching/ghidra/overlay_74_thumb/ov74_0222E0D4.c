@@ -57,7 +57,7 @@ void ov74_0222E0D4(int param_1,int param_2,undefined4 *param_3,undefined4 param_
   undefined4 uVar2;
   uint uVar3;
   uint uVar4;
-  
+
   uVar3 = uRam021d1154;
   iVar1 = *(int *)(param_1 + 0x3d4c);
   if (((uRam021d1154 & 0x10) != 0) && (iVar1 != 1)) {

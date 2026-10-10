@@ -64,7 +64,7 @@ void ov18_021F05E8(int *param_1,undefined4 param_2,undefined4 param_3,undefined4
   int *piVar3;
   undefined4 uVar4;
   uint uVar5;
-  
+
   ov18_021EE35C(param_1,&ov18_021F9DE4,0xd);
   uVar5 = 0;
   piVar3 = param_1 + 3;

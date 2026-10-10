@@ -55,7 +55,7 @@ undefined4 ov90_0225A428(int param_1,undefined4 param_2,undefined4 param_3,undef
 
 {
   int iVar1;
-  
+
   switch(*(undefined2 *)(param_1 + 0x2e)) {
   case 0:
     iVar1 = ov90_02258D4C(param_1 + 0x18,(int)*(short *)(param_1 + 0x2c));

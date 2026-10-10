@@ -55,7 +55,7 @@ void ov15_021FF6BC(int param_1,int param_2,int param_3,int param_4)
 {
   int iVar1;
   undefined4 uVar2;
-  
+
   iVar1 = func_0x020f2998(param_3 + param_4,6);
   if (param_2 == 0) {
     uVar2 = 1;

@@ -56,7 +56,7 @@ undefined4 ov112_021EA08C(int param_1,int param_2,undefined4 param_3)
   undefined4 uVar1;
   undefined4 uVar2;
   int iVar3;
-  
+
   uVar1 = NewString_ReadMsgData(*(undefined4 *)(param_1 + 0x1e44c),param_3);
   param_2 = param_2 * 0x10;
   iVar3 = param_1 + 0x1ea68;

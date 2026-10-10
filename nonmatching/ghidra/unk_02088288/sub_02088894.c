@@ -52,7 +52,7 @@ void sub_02088894(int param_1)
 
 {
   undefined *puVar1;
-  
+
   puVar1 = NewMsgDataFromNarc(0,0x1b,0x12e,0x13);
   *(undefined **)(param_1 + 0x7a0) = puVar1;
   puVar1 = NewMsgDataFromNarc(1,0x1b,0x1a8,0x13);

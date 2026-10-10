@@ -53,7 +53,7 @@ void ov96_021E7D6C(undefined *param_1,int param_2)
   int iVar2;
   uint uVar3;
   uint uVar4;
-  
+
   uVar3 = ov96_021E5F24(param_1);
   if (*(int *)(*(int *)(param_1 + 0x1f8) + 4) == 1) {
     ov96_021E7F98(1,9999999,(undefined *)(param_2 + 0x38));

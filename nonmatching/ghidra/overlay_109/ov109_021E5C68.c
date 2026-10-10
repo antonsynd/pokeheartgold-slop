@@ -48,7 +48,7 @@ undefined4 ov109_021E5C68(int param_1)
 
 {
   int iVar1;
-  
+
   iVar1 = ov109_021E66C4();
   if (iVar1 == 0) {
     return 3;

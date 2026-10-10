@@ -66,7 +66,7 @@ void ov05_0221E110(int param_1,int param_2)
   int iVar8;
   int iStack_1c;
   uint uStack_18;
-  
+
   uStack_18 = 0;
   iVar8 = param_2 * 5;
   iStack_1c = param_1 + param_2 * 0x14;

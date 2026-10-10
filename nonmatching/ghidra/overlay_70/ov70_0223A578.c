@@ -72,7 +72,7 @@ void ov70_0223A578(undefined *param_1,undefined *param_2,undefined *param_3,unde
   undefined *puVar13;
   int iVar14;
   undefined *puVar15;
-  
+
   puVar4 = String_New(0x16,0x3d);
   puVar5 = String_New(0x12,0x3d);
   GetBoxMonData(param_5,0x77,puVar4);

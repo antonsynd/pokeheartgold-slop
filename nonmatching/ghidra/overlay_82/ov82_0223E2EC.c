@@ -91,7 +91,7 @@ undefined4 ov82_0223E2EC(int param_1)
   undefined4 uVar3;
   int iVar4;
   undefined4 uVar5;
-  
+
   switch(*(undefined1 *)(param_1 + 8)) {
   case 0:
     *(undefined1 *)(param_1 + 0xb) = 0;

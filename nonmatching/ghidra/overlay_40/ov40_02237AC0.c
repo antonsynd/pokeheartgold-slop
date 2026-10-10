@@ -63,7 +63,7 @@ void ov40_02237AC0(int param_1,undefined4 param_2,undefined4 param_3,undefined4 
   short sVar6;
   int iStack_28;
   undefined4 auStack_20 [3];
-  
+
   puVar4 = &ov40_02245274;
   sVar6 = 1;
   auStack_20[1] = 0x3b;

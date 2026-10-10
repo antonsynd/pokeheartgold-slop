@@ -56,7 +56,7 @@ void ov102_021EBD00(undefined4 *param_1,undefined4 param_2,undefined4 param_3,un
 
 {
   undefined4 uVar1;
-  
+
   uVar1 = ov102_021EA268(*param_1);
   BG_ClearCharDataRange(2,0x20,0,0x23);
   FillBgTilemapRect(uVar1,2,0,0,0,0x20,0x20,0xc,param_4);

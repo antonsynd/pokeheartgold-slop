@@ -48,7 +48,7 @@ void ov112_021EA984(int param_1)
 {
   undefined1 *puVar1;
   int iVar2;
-  
+
   iVar2 = 0;
   puVar1 = (undefined1 *)(param_1 + 0x1ec80);
   do {

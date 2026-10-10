@@ -53,7 +53,7 @@ undefined2 sub_0203335C(uint param_1)
 {
   undefined2 uVar1;
   uint uVar2;
-  
+
   uVar2 = func_0x020def24();
   if (uVar2 == 0x8000) {
     sub_02032858(3);

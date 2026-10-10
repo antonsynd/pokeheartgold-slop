@@ -54,7 +54,7 @@ void ov59_0223BFC8(undefined *param_1,int *param_2)
 {
   ushort uVar1;
   int iVar2;
-  
+
   iVar2 = *param_2;
   *(short *)(param_2 + 3) = (short)param_2[3] + *(short *)((int)param_2 + 0xe);
   param_2[4] = param_2[4] + param_2[2];

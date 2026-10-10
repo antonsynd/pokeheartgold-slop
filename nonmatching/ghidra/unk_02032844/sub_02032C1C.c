@@ -50,7 +50,7 @@ undefined4 sub_02032C1C(undefined4 param_1,undefined2 *param_2,undefined2 param_
 
 {
   int iVar1;
-  
+
   sub_02032844(2);
   *(undefined4 *)(iRam021d4128 + 0x1300) = param_1;
   *(undefined2 *)(iRam021d4128 + 0x130c) = param_3;

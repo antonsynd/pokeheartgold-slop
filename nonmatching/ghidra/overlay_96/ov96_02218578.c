@@ -47,7 +47,7 @@ void ov96_02218578(int param_1,int param_2)
 
 {
   undefined1 uVar1;
-  
+
   if (param_2 == 4) {
     uVar1 = 0x3c;
   }

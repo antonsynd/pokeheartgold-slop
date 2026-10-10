@@ -56,7 +56,7 @@ undefined4 ov104_021E5B14(undefined4 param_1)
   undefined4 *puVar1;
   uint uVar2;
   uint uStack_1c;
-  
+
   puVar1 = (undefined4 *)OverlayManager_GetData();
   uStack_1c = 0;
   do {

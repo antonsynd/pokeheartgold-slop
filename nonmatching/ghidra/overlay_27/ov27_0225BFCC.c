@@ -50,7 +50,7 @@ void ov27_0225BFCC(int param_1,int param_2,undefined4 param_3,undefined4 param_4
 
 {
   undefined4 uVar1;
-  
+
   uVar1 = GetMonData(*(undefined4 *)(param_2 + 0x10),0xa1,0);
   BufferIntegerAsString(*(undefined4 *)(param_1 + 0x4ac),0,uVar1,3,0,1);
   ov27_0225BED8(param_1,0x21,0xc,0x15,6,2,0x192,4,0,param_4);

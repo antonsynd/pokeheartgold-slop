@@ -52,7 +52,7 @@ void ov80_02232AEC(int param_1,int param_2)
   int iVar3;
   uint uVar4;
   int iVar5;
-  
+
   uVar4 = 0;
   iVar5 = param_1;
   do {

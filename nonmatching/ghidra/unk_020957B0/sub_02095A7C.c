@@ -50,7 +50,7 @@ void sub_02095A7C(byte *param_1,char *param_2,byte *param_3,int param_4,char par
 {
   int local_1c;
   char local_18;
-  
+
   local_1c = sub_02095BF0(param_1,param_2,param_3,param_4,param_5);
   local_18 = *param_2;
   switch(local_1c) {

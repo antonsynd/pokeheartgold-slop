@@ -56,7 +56,7 @@ void ov96_02215710(undefined4 param_1,undefined4 *param_2,undefined4 param_3,und
   int iVar2;
   int extraout_r1;
   int iVar3;
-  
+
   if (param_2[6] == 0) {
     iVar2 = 1;
   }

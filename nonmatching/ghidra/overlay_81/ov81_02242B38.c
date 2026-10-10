@@ -54,7 +54,7 @@ void ov81_02242B38(undefined4 *param_1)
 
 {
   uint uVar1;
-  
+
   uVar1 = 0;
   do {
     SpriteTransfer_DeleteCharTransferTask(param_1[uVar1 * 4 + 0x4f]);

@@ -53,7 +53,7 @@ void sub_02062FAC(undefined4 param_1,undefined4 param_2,undefined4 param_3,undef
 
 {
   undefined2 *puVar1;
-  
+
   puVar1 = (undefined2 *)sub_0205F3C0(param_1,8,param_3,param_4,param_4);
   *puVar1 = (short)param_2;
   puVar1[1] = (short)param_4;

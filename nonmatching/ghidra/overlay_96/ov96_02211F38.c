@@ -112,7 +112,7 @@ void ov96_02211F38(undefined4 param_1)
   int iStack_20;
   int iStack_1c;
   undefined4 uStack_18;
-  
+
   iVar6 = PokeathlonCourse_GetHeapAllocPtr4();
   uVar7 = ov96_021E5F24(param_1);
   uVar7 = uVar7 & 0xff;

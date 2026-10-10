@@ -49,7 +49,7 @@ void ov70_0223D8E8(undefined4 param_1,int param_2,undefined4 param_3,undefined4 
 
 {
   int iVar1;
-  
+
   iVar1 = param_2 * 4;
   ov70_02238D8C(param_1,*(undefined2 *)(iVar1 + 0x2245784),*(undefined2 *)(iVar1 + 0x2245786),iVar1,
                 param_4);

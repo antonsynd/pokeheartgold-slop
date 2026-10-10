@@ -52,7 +52,7 @@ void sub_020178BC(int param_1,undefined4 param_2,undefined4 param_3,undefined4 p
   char cStack_10;
   byte abStack_f [3];
   undefined4 uStack_c;
-  
+
   uStack_c = param_4;
   sub_02017294(param_1,abStack_f);
   sub_02017280(param_1,&cStack_10);

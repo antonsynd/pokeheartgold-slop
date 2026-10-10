@@ -60,7 +60,7 @@ undefined4 ov01_021EED60(int param_1,undefined4 param_2,undefined4 param_3)
   undefined4 uVar1;
   undefined4 uVar2;
   undefined4 uVar3;
-  
+
   uVar1 = AllocWindows(4,1);
   AddWindowParameterized(*(undefined4 *)(param_1 + 8),uVar1,3,param_2,param_3,0x10,8,0xd,1);
   LoadUserFrameGfx1(*(undefined4 *)(param_1 + 8),3,0x3d9,0xb,0,4);

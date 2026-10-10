@@ -56,7 +56,7 @@ void ov96_0220FE38(undefined2 *param_1,ushort *param_2,undefined4 param_3)
   int iVar3;
   uint uVar4;
   undefined1 auStack_18 [8];
-  
+
   uVar4 = *(uint *)(param_1 + 2);
   if ((int)(uVar4 << 0x1a) < 0) {
     switch((uVar4 & 0x1f) >> 2) {

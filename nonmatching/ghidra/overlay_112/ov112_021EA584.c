@@ -49,7 +49,7 @@ void ov112_021EA584(int param_1)
 
 {
   int iVar1;
-  
+
   iVar1 = ManagedSprite_GetActiveAnim(*(undefined4 *)(param_1 + 0x1e530));
   ManagedSprite_SetAnim(*(undefined4 *)(param_1 + 0x1e530),iVar1 + 3);
   return;

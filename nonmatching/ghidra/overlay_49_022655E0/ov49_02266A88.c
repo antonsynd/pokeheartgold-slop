@@ -48,7 +48,7 @@ undefined4 ov49_02266A88(undefined4 param_1,int param_2)
 
 {
   int iVar1;
-  
+
   iVar1 = ov49_02267E18(param_2 + 0x954,(int)*(short *)(param_2 + 2));
   *(short *)(param_2 + 2) = *(short *)(param_2 + 2) + 1;
   if (iVar1 == 2) {

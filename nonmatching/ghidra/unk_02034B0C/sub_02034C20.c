@@ -54,7 +54,7 @@ void sub_02034C20(int param_1)
   uint uVar1;
   uint uVar2;
   int iVar3;
-  
+
   uVar1 = sub_0203993C();
   uVar2 = sub_02039954();
   if ((((uVar1 == 0xe) ||

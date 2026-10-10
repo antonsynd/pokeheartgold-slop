@@ -55,7 +55,7 @@ undefined4 ov96_021E637C(int param_1)
   char cVar1;
   int iVar2;
   undefined4 uVar3;
-  
+
   cVar1 = *(char *)(param_1 + 0x729);
   uVar3 = 0;
   if (cVar1 == '\0') {

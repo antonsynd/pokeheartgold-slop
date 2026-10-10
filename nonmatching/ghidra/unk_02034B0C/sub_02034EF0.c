@@ -54,7 +54,7 @@ undefined4 sub_02034EF0(undefined4 param_1,undefined4 param_2,byte param_3)
 
 {
   int iVar1;
-  
+
   sub_02034E8C();
   sub_02034E64(param_2);
   sub_02033A68();

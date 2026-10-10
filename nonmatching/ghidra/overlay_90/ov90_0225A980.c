@@ -79,7 +79,7 @@ void ov90_0225A980(undefined4 param_1,short *param_2)
   short *psVar5;
   undefined4 uVar6;
   int iVar7;
-  
+
   switch((char)param_2[2]) {
   case '\0':
     *(undefined4 *)(param_2 + 0x326) = **(undefined4 **)(param_2 + 0xc);

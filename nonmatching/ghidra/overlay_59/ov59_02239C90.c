@@ -56,7 +56,7 @@ void ov59_02239C90(undefined4 param_1,int *param_2,undefined4 param_3,undefined4
   int iStack_1c;
   undefined4 uStack_18;
   undefined4 uStack_14;
-  
+
   iVar2 = *param_2;
   uStack_14 = param_4;
   if ((char)param_2[1] == '\0') {

@@ -48,7 +48,7 @@ void ov96_02214A9C(int param_1)
 
 {
   uint uVar1;
-  
+
   uVar1 = 0;
   do {
     ov96_02214ABC(param_1 + uVar1 * 0x24);

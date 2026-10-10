@@ -53,7 +53,7 @@ void ov00_021E61A8(int param_1,undefined4 param_2,undefined4 param_3)
 
 {
   int iVar1;
-  
+
   iVar1 = func_0x020a01f0(*(undefined4 *)(iRam0221a680 + 0xf10));
   if (iVar1 != 0) {
     func_0x020a0214(*(undefined4 *)(iRam0221a680 + 0xf10));

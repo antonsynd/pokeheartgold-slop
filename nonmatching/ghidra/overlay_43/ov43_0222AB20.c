@@ -54,7 +54,7 @@ void ov43_0222AB20(int param_1,undefined4 param_2,undefined4 param_3,undefined4 
 {
   undefined4 uVar1;
   undefined4 uVar2;
-  
+
   uVar1 = sub_0202C6F4(param_2);
   uVar2 = func_0x02028ed0(param_4);
   uVar1 = func_0x0202c254(uVar1,param_3);

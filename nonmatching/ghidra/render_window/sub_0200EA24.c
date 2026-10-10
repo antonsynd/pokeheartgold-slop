@@ -55,7 +55,7 @@ void sub_0200EA24(undefined4 param_1,undefined4 param_2,undefined4 param_3,undef
   undefined4 uStack_14;
   undefined2 uStack_10;
   undefined2 uStack_e;
-  
+
   uStack_e = param_5;
   uStack_1c = param_6;
   uStack_18 = param_7;

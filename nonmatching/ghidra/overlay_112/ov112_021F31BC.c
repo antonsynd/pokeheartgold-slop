@@ -47,7 +47,7 @@ undefined4 ov112_021F31BC(int param_1)
 
 {
   int iVar1;
-  
+
   iVar1 = 0;
   do {
     if (*(char *)(param_1 + 0x84) == '\x1d') {

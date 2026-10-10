@@ -57,7 +57,7 @@ void ov01_021F4E88(undefined4 param_1,int param_2,undefined4 param_3,undefined4 
   undefined4 auStack_28 [3];
   undefined4 uStack_1c;
   undefined4 uStack_18;
-  
+
   param_2 = param_2 * 4;
   iVar2 = param_8 + 0x90;
   uStack_18 = param_4;

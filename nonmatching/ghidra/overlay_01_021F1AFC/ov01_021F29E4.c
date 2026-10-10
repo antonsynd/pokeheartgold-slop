@@ -66,7 +66,7 @@ undefined4 ov01_021F29E4(int *param_1,undefined4 param_2,undefined4 param_3,unde
   int iStack_1c;
   int iStack_18;
   undefined4 uStack_14;
-  
+
   uStack_14 = param_4;
   iVar1 = MapObject_GetXCoord(param_1[0xf]);
   iVar2 = GetDeltaXByFacingDirection(0);

@@ -49,7 +49,7 @@ void ov70_022395C4(int param_1)
 {
   int iVar1;
   int iVar2;
-  
+
   RemoveWindow(param_1 + 0x1198);
   RemoveWindow(param_1 + 0x1158);
   RemoveWindow(param_1 + 0xf18);

@@ -57,7 +57,7 @@ void ov83_02245584(int param_1,undefined4 param_2)
   undefined2 uStack_12;
   short sStack_10;
   short sStack_e;
-  
+
   ov83_02244DF4(param_1,&sStack_e,&sStack_10,&uStack_12,&sStack_14);
   iVar1 = func_0x02237d8c(*(undefined1 *)(param_1 + 9));
   if (iVar1 == 0) {

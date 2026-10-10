@@ -63,7 +63,7 @@ ov96_021E73F8(undefined *param_1,undefined4 param_2,undefined4 param_3,undefined
   undefined *puVar3;
   uint uVar4;
   undefined *puVar5;
-  
+
   (**(code **)(*(int *)(param_1 + 0x1e0) + 0xc))
             (param_1,0,*(code **)(*(int *)(param_1 + 0x1e0) + 0xc),param_4,param_4);
   if (*(int *)(param_1 + 0x1e4) != 0) {

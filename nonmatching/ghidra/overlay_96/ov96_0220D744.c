@@ -79,7 +79,7 @@ void ov96_0220D744(int param_1)
   undefined4 uStack_1c;
   undefined4 uStack_18;
   undefined4 uStack_14;
-  
+
   if (*(int *)(param_1 + 0xc) != 0) {
     VEC_Subtract((undefined *)(param_1 + 0x10),(undefined *)(param_1 + 0x1c),(undefined *)&uStack_1c
                 );

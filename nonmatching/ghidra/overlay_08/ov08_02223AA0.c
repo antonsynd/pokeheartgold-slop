@@ -53,7 +53,7 @@ void ov08_02223AA0(int *param_1)
 {
   int iVar1;
   uint uVar2;
-  
+
   uVar2 = 0;
   iVar1 = 0;
   do {

@@ -61,7 +61,7 @@ void ov28_0225DA1C(int param_1,int param_2,undefined4 param_3,byte *param_4)
   uint uStack_1c;
   undefined4 uStack_18;
   undefined4 uStack_14;
-  
+
   uStack_40 = *(undefined4 *)(param_1 + 0x24);
   iStack_38 = (uint)*param_4 << 0xc;
   iStack_34 = (uint)param_4[1] * 0x1000 + 0x100000;

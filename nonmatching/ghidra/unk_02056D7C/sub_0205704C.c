@@ -56,7 +56,7 @@ void sub_0205704C(byte param_1,ushort *param_2,undefined4 param_3,undefined4 par
   byte bStack_16;
   undefined1 uStack_15;
   undefined4 uStack_10;
-  
+
   uVar3 = *param_2;
   uVar4 = (uint)param_2[1];
   if (0xefff < uVar3) {

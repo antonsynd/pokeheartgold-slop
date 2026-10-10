@@ -53,7 +53,7 @@ int ov18_021F09D8(int param_1,int param_2,undefined4 param_3,undefined4 param_4)
   ushort uVar2;
   byte bVar3;
   undefined4 uVar4;
-  
+
   uVar2 = *(ushort *)(param_1 + 0x18a2);
   if (uVar2 < 0x19e) {
     if (uVar2 < 0x19c) {

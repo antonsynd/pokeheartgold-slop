@@ -56,7 +56,7 @@ void sub_0203453C(int param_1,int param_2,undefined *param_3,undefined *param_4)
   byte bVar1;
   ushort uVar2;
   int iVar3;
-  
+
   if ((iRam021d4130 != 0) && (iVar3 = sub_020373B4((ushort)param_1), iVar3 != 0)) {
     MI_CpuCopy8(param_3,(undefined *)(iRam021d4130 + 0xc + (uint)(byte)param_3[0x62] * 0x68),0x68);
     *(undefined *)(iRam021d4130 + 0x3a6) = param_3[0x62];

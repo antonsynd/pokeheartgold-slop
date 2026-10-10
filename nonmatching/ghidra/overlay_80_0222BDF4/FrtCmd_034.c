@@ -65,7 +65,7 @@ undefined4 FrtCmd_034(undefined4 *param_1,undefined4 param_2,undefined4 param_3,
   short sStack_1c;
   undefined1 uStack_1a;
   undefined4 uStack_18;
-  
+
   puVar1 = (undefined4 *)*param_1;
   uStack_18 = param_4;
   uVar2 = sub_0209680C(*puVar1);

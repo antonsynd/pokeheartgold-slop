@@ -61,7 +61,7 @@ ov45_0222E4A8(int param_1,undefined4 param_2,undefined4 param_3,undefined4 param
   undefined4 uVar3;
   uint uVar4;
   uint uVar5;
-  
+
   uVar3 = param_4;
   iVar1 = ov45_0222E5B4(*(undefined4 *)(param_1 + 4),*(undefined4 *)(param_1 + 8));
   if (iVar1 == 0) {

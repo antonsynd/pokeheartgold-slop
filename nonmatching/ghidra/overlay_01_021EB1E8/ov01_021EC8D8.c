@@ -48,7 +48,7 @@ int ov01_021EC8D8(int param_1)
 {
   int iVar1;
   int iVar2;
-  
+
   iVar1 = 0;
   iVar2 = param_1;
   do {

@@ -51,7 +51,7 @@ void ov96_021FC144(int param_1)
 {
   undefined4 uVar1;
   uint extraout_r1;
-  
+
   uVar1 = LCRandom();
   func_0x020f2998(uVar1,3); __asm__ volatile("movs %0, r1" : "=l"(extraout_r1) : : "cc");
   ReadWholeNarcMemberByIdPair(param_1 + 0x18,0xe4,extraout_r1 & 0xff);

@@ -51,7 +51,7 @@ void ov87_021E8084(int param_1)
 
 {
   undefined4 uVar1;
-  
+
   Sprite_SetAnimActiveFlag(*(undefined4 *)(param_1 + 0xc));
   func_0x02024868(*(undefined4 *)(param_1 + 0xc),0x1000);
   uVar1 = Sprite_GetAnimationNumber(*(undefined4 *)(param_1 + 0xc));

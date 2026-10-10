@@ -71,7 +71,7 @@ ov45_02230E78(undefined *param_1,undefined4 param_2,undefined4 param_3,undefined
   int iStack_1c;
   int iStack_18;
   undefined4 uStack_14;
-  
+
   uStack_14 = param_4;
   puVar1 = sub_02023F90(param_1);
   if (puVar1 == (undefined *)0x0) {

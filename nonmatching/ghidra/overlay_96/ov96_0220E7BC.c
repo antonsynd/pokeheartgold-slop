@@ -52,7 +52,7 @@ char ov96_0220E7BC(int param_1,int param_2)
   int iVar2;
   uint *puVar3;
   char cVar4;
-  
+
   cVar4 = '\0';
   if (param_1 == 0) {
     GF_AssertFail();

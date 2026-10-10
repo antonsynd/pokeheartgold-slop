@@ -76,7 +76,7 @@ void ov96_02201EF0(int param_1,undefined4 param_2,int param_3)
   undefined4 uStack_28;
   undefined4 uStack_24;
   int aiStack_20 [3];
-  
+
   iStack_60 = 0;
   iVar7 = 0;
   iVar5 = param_1;

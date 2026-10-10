@@ -54,7 +54,7 @@ void ov80_02239590(int param_1,int param_2)
   int *piVar1;
   int iVar2;
   int *piVar3;
-  
+
   piVar1 = (int *)sub_02096868(*(undefined4 *)(param_1 + 8));
   iVar2 = 0;
   piVar3 = piVar1;

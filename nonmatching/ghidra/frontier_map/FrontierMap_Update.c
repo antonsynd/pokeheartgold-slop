@@ -59,7 +59,7 @@ void FrontierMap_Update(undefined4 param_1,int param_2,undefined4 param_3,undefi
   uint uVar2;
   int iVar3;
   int iVar4;
-  
+
   piVar1 = (int *)sub_0209686C(*(undefined4 *)(param_2 + 8),0x1f,param_3,param_4,param_4);
   if (*piVar1 != 0) {
     func_0x02229358(param_2 + 0x1c);

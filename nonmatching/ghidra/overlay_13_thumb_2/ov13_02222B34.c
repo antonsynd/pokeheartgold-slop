@@ -52,7 +52,7 @@ void ov13_02222B34(int param_1,uint *param_2,undefined4 param_3,undefined4 param
   int iVar2;
   uint uVar3;
   ushort *puVar4;
-  
+
   *param_2 = (uint)*(ushort *)(param_1 + 10);
   func_0x020d47b8(param_1 + 0xc,param_2 + 1,0x20,param_4,param_4);
   param_2[9] = (uint)*(ushort *)(param_1 + 0x36);

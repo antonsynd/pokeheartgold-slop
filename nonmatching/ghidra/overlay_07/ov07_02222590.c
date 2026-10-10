@@ -54,7 +54,7 @@ void ov07_02222590(short *param_1,int param_2,int param_3,int param_4,short para
   int iVar2;
   undefined4 uVar3;
   int iVar4;
-  
+
   if (param_1 == (short *)0x0) {
     GF_AssertFail();
   }

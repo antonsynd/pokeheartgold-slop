@@ -52,7 +52,7 @@ undefined4 ov01_021F24F4(undefined4 param_1,undefined4 param_2,int param_3,int p
 {
   undefined1 uVar1;
   int iVar2;
-  
+
   if (((param_3 == 1) && (param_4 == 1)) && (iVar2 = PlayerAvatar_GetState(param_2), iVar2 == 2)) {
     uVar1 = sub_0205DFEC(param_2,1);
     iVar2 = MetatileBehavior_IsWaterfall(uVar1);

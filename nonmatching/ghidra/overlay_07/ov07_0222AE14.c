@@ -58,7 +58,7 @@ void ov07_0222AE14(undefined4 param_1,char *param_2)
   int iVar1;
   undefined4 uStack_14;
   undefined4 uStack_10;
-  
+
   if (*param_2 == '\0') {
     iVar1 = ov07_0222260C(param_2 + 0x60);
     if (iVar1 == 0) {

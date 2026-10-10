@@ -60,7 +60,7 @@ void sub_020321A0(undefined *param_1,undefined *param_2,int param_3,int param_4)
   uint uVar8;
   int iStack_24;
   uint uStack_20;
-  
+
   iVar4 = 0;
   uStack_20 = 0;
   puVar6 = param_1 + 0x38;

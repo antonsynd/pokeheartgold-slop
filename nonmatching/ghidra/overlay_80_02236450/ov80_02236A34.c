@@ -53,7 +53,7 @@ void ov80_02236A34(int param_1,int param_2,int param_3,int param_4,undefined4 pa
 {
   undefined4 uVar1;
   int iVar2;
-  
+
   ov80_0222A480();
   uVar1 = AllocMonZeroed(param_5);
   iVar2 = 0;

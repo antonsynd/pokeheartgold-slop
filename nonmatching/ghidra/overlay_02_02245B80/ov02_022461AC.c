@@ -50,7 +50,7 @@ undefined4 * ov02_022461AC(undefined4 param_1,undefined1 param_2)
 
 {
   undefined4 *puVar1;
-  
+
   puVar1 = (undefined4 *)Heap_Alloc(4,0x18);
   if (puVar1 == (undefined4 *)0x0) {
     GF_AssertFail();

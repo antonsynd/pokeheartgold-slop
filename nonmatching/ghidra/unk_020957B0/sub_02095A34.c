@@ -51,7 +51,7 @@ void sub_02095A34(undefined4 param_1,undefined4 param_2,undefined4 param_3,undef
   int iStack_1c;
   undefined1 uStack_18;
   undefined4 uStack_14;
-  
+
   uStack_14 = param_4;
   iStack_1c = sub_02095BF0();
   uStack_18 = 0;

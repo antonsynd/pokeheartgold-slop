@@ -57,7 +57,7 @@ void ov59_02239938(undefined4 *param_1)
 
 {
   undefined4 uVar1;
-  
+
   GF_CreateVramTransferManager(0x20,*param_1);
   uVar1 = SpriteSystem_Alloc(*param_1);
   param_1[0x93] = uVar1;

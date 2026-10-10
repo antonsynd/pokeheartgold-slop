@@ -54,7 +54,7 @@ undefined4 ov15_021FD24C(int param_1,undefined4 param_2,undefined4 param_3,undef
 {
   int iVar1;
   int iVar2;
-  
+
   iVar1 = TextPrinterCheckActive(*(undefined1 *)(param_1 + 0x616));
   if (iVar1 != 0) {
     return 0x17;

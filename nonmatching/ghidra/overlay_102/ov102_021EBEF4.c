@@ -50,7 +50,7 @@ void ov102_021EBEF4(int param_1,int param_2)
 
 {
   undefined4 uVar1;
-  
+
   if (param_2 != 0) {
     Sprite_SetDrawFlag(*(undefined4 *)(param_1 + 0x30),1);
     uVar1 = ov102_021E9050(*(undefined4 *)(param_1 + 4));

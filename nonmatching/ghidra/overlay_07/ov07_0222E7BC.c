@@ -55,7 +55,7 @@ undefined4 ov07_0222E7BC(int param_1,undefined4 param_2,undefined4 param_3,undef
   undefined4 uVar3;
   int iVar4;
   undefined4 uVar5;
-  
+
   uVar5 = 0;
   switch(*(undefined4 *)(param_1 + 100)) {
   case 0:

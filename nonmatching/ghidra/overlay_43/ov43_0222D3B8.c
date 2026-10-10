@@ -55,7 +55,7 @@ undefined4 ov43_0222D3B8(short *param_1,undefined4 param_2,undefined4 *param_3,u
   int iVar1;
   undefined4 uVar2;
   int iVar3;
-  
+
   if (*(int *)(param_1 + 8) == 0) {
     iVar1 = TouchscreenHitbox_FindHitboxAtTouchNew(&ov43_0222EE42);
   }

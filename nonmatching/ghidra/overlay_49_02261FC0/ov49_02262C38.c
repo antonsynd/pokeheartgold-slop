@@ -53,7 +53,7 @@ void ov49_02262C38(int param_1,undefined4 param_2,uint param_3,int param_4)
 {
   undefined4 uVar1;
   uint uVar2;
-  
+
   ov49_0225A10C(param_2,param_3);
   uVar2 = 0;
   *(uint *)(param_1 + 0x38) = param_3;

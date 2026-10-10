@@ -49,7 +49,7 @@ undefined4 sub_02096998(int param_1)
 
 {
   int iVar1;
-  
+
   func_0x020d4a50(param_1 + 0x3e,param_1 + 0x83e,0x1c);
   iVar1 = sub_02037030(0x3f,param_1 + 0x83e,0x1c);
   if (iVar1 == 1) {

@@ -51,7 +51,7 @@ void ov108_021E9F94(int param_1,int param_2)
 {
   int iVar1;
   ushort *puVar2;
-  
+
   if (param_2 == 0) {
     iVar1 = 0x524;
   }

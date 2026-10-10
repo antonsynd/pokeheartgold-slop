@@ -64,7 +64,7 @@ undefined4 * ov80_02239DD0(undefined4 param_1)
   int iVar6;
   int iStack_1c;
   int iStack_18;
-  
+
   puVar1 = (undefined4 *)Heap_Alloc(0x65,0x2200c);
   func_0x020d4994(puVar1,0,0x2200c);
   puVar1[1] = param_1;

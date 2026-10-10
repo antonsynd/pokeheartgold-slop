@@ -49,7 +49,7 @@ void sub_02096924(int param_1,undefined4 param_2,undefined2 *param_3,int param_4
 {
   int iVar1;
   short sVar2;
-  
+
   sVar2 = 0;
   *(char *)(param_4 + 0x8d4) = *(char *)(param_4 + 0x8d4) + '\x01';
   iVar1 = sub_0203769C();

@@ -49,7 +49,7 @@ undefined4 ov80_0222C33C(int *param_1)
 {
   short *psVar1;
   int iVar2;
-  
+
   iVar2 = *param_1;
   psVar1 = (short *)ov80_0222BE24((undefined *)param_1,*(ushort *)(param_1 + 0x1e));
   if (*(int *)(iVar2 + 0x60) != 0) {

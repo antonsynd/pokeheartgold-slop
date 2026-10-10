@@ -54,7 +54,7 @@ undefined4 ov48_022593B4(int param_1,undefined4 param_2,undefined4 param_3)
   undefined4 uStack_18;
   undefined1 auStack_14 [8];
   undefined4 uStack_c;
-  
+
   iVar1 = ov48_02259AD0(param_1 + 0x224,param_2,param_3,auStack_14);
   if (iVar1 != 3) {
     ov48_022598CC(param_1 + 0x178,auStack_20);

@@ -52,7 +52,7 @@ int ov45_0222B134(int param_1)
   bool bVar1;
   int iVar2;
   int iVar3;
-  
+
   iVar3 = 0;
   do {
     if (*(char *)(param_1 + iVar3 + 0x3a4) == '\0') {

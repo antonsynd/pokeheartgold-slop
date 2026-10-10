@@ -70,7 +70,7 @@ void ov01_021E9AE8(int param_1,undefined4 param_2,undefined4 param_3,undefined4 
   undefined1 auStack_3c [4];
   char cStack_38;
   undefined1 auStack_24 [16];
-  
+
   sub_02054A60(param_2,param_3,0xffffffff,0,3,1,auStack_24);
   uVar2 = ov01_021FB904(*(undefined4 *)(param_1 + 0x34));
   piVar3 = (int *)sub_02054D10(param_1,4,4,auStack_24,0);

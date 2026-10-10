@@ -54,7 +54,7 @@ undefined4 ov74_0223319C(int param_1,int param_2)
 
 {
   int iVar1;
-  
+
   if (*(int *)(param_1 + 8) == -1) {
     if (param_2 == 0) {
       if ((sRam021d1170 != 0) || (iRam021d1154 != 0)) {

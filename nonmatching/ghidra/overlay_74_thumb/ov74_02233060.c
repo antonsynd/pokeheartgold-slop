@@ -56,7 +56,7 @@ undefined4 ov74_02233060(int param_1)
   int iVar5;
   int iVar6;
   undefined4 uStack_1c;
-  
+
   uVar1 = Save_MigratedPokemon_Get(*(undefined4 *)(param_1 + 0x10));
   iVar5 = 0;
   uStack_1c = 0;

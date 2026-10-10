@@ -50,7 +50,7 @@ void ov43_0222A87C(int param_1,undefined4 param_2,undefined4 param_3,undefined4 
 
 {
   undefined4 uVar1;
-  
+
   uVar1 = MessageFormat_New(param_2);
   *(undefined4 *)(param_1 + 0x50) = uVar1;
   uVar1 = NewMsgDataFromNarc(0,0x1b,0x30b,param_2,param_4);

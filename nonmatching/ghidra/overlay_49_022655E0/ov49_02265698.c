@@ -53,7 +53,7 @@ void ov49_02265698(int param_1,undefined4 param_2,undefined4 param_3)
   int *piVar2;
   int iVar3;
   int iVar4;
-  
+
   iVar4 = 0;
   do {
     uVar1 = GfGfxLoader_LoadFromOpenNarc(param_2,iVar4 + 0x81,0,param_3,0);

@@ -49,7 +49,7 @@ void GF_TouchpadInit(void)
   undefined4 *puVar1;
   int iVar2;
   undefined4 *puVar3;
-  
+
   iVar2 = 5;
   puVar1 = (undefined4 *)0x21d2198;
   do {

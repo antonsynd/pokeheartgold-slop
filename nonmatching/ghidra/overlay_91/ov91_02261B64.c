@@ -50,7 +50,7 @@ void ov91_02261B64(undefined4 param_1,undefined4 param_2,undefined4 param_3,unde
 
 {
   int iVar1;
-  
+
   ov91_0225CA90(param_4,param_3,param_1);
   iVar1 = sub_0203769C();
   if (iVar1 == 0) {

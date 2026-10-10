@@ -58,7 +58,7 @@ void ov96_021EECB8(undefined4 *param_1,undefined2 *param_2,int param_3,undefined
   int iVar2;
   int iStack_1c;
   undefined4 uStack_18;
-  
+
   uStack_18 = param_4;
   uVar1 = GetMonIconNaixEx(*param_2,0,param_2[1]);
   iVar2 = GfGfxLoader_GetCharDataFromOpenNarc(param_4,uVar1,0,&iStack_1c,param_6);

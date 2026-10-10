@@ -58,7 +58,7 @@ void ov80_0222EC90(undefined4 param_1,int param_2)
   short sVar1;
   int iVar2;
   int iVar3;
-  
+
   if (*(char *)(param_2 + 0x94) != '\0') {
     *(char *)(param_2 + 0x94) = *(char *)(param_2 + 0x94) + -1;
     return;

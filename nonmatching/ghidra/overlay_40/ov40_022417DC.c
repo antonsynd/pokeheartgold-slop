@@ -71,7 +71,7 @@ undefined4 ov40_022417DC(int param_1)
   int iVar3;
   undefined1 auStack_14 [4];
   int iStack_10;
-  
+
   iVar3 = *(int *)(param_1 + 0x860);
   switch(*(undefined4 *)(param_1 + 8)) {
   case 0:

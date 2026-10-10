@@ -52,7 +52,7 @@ void ov96_0220D360(undefined4 param_1,undefined4 *param_2)
 {
   undefined4 uVar1;
   int iVar2;
-  
+
   if (param_2[4] == 0) {
     iVar2 = 1;
   }

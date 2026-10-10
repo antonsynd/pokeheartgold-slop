@@ -54,7 +54,7 @@ void ov31_0225D7A0(undefined4 param_1,int param_2,undefined4 param_3,undefined4 
   char cVar1;
   int iVar2;
   int iVar3;
-  
+
   if (*(int *)(param_2 + 0xc) == 0) {
     iVar3 = IsPaletteFadeFinished();
     if (iVar3 == 1) {

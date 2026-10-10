@@ -75,7 +75,7 @@ void ov96_021F8F94(undefined4 *param_1,undefined4 param_2,int param_3)
   int iStack_20;
   int iStack_1c;
   undefined4 uStack_18;
-  
+
   iStack_24 = 0;
   iStack_30 = 0;
   iStack_34 = 8;

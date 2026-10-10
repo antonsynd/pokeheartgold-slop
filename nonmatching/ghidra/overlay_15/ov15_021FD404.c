@@ -48,7 +48,7 @@ void ov15_021FD404(int param_1,int param_2,int param_3,undefined4 param_4)
 
 {
   int iVar1;
-  
+
   iVar1 = *(int *)(*(int *)(param_1 + param_2 * 4 + 0x694) + 0xc);
   if (param_3 < 8) {
     param_3 = param_3 * 0x20;

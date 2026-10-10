@@ -56,7 +56,7 @@ void sub_02094C08(undefined4 *param_1,int param_2,int param_3,int param_4,undefi
   int iVar2;
   int *piVar3;
   int iStack_18;
-  
+
   piVar3 = (int *)(param_2 + param_3 * 0x20c);
   if (param_4 != 0) {
     iStack_18 = param_4;

@@ -55,7 +55,7 @@ void ov70_0223AC98(int param_1)
   undefined1 auStack_38 [8];
   undefined4 uStack_30;
   undefined4 uStack_2c;
-  
+
   ov70_02238B54(auStack_38,param_1,param_1 + 0xd60,1);
   uStack_30 = 0xd0000;
   uStack_2c = 0x3a000;

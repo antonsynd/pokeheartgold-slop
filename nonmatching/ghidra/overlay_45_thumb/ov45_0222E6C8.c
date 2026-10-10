@@ -53,7 +53,7 @@ undefined4 ov45_0222E6C8(void)
 
 {
   undefined4 uVar1;
-  
+
   if (iRam022577c0 != 0) {
     uVar1 = func_0x02231514();
     switch(uVar1) {

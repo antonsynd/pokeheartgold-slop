@@ -51,7 +51,7 @@ void ov08_0221E2E8(int param_1,int param_2,undefined4 param_3,undefined4 param_4
 
 {
   undefined4 uVar1;
-  
+
   uVar1 = NewString_ReadMsgData(*(undefined4 *)(param_1 + 0x1fa8),0xe);
   AddTextPrinterParameterizedWithColor
             (*(int *)(param_1 + 0x2070) + param_2 * 0x10,0,uVar1,param_3,param_4,0xff,0xf0e00,0);

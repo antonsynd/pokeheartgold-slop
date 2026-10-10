@@ -51,7 +51,7 @@ undefined4 ov43_0222B574(int *param_1,int param_2)
   undefined4 uVar1;
   int iVar2;
   int iVar3;
-  
+
   if (*param_1 != 1) {
     return 1;
   }

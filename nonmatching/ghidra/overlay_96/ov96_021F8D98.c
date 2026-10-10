@@ -51,7 +51,7 @@ void ov96_021F8D98(undefined4 *param_1,int param_2,undefined1 param_3)
 
 {
   undefined4 uVar1;
-  
+
   InitWindow(param_2);
   AddTextWindowTopLeftCorner(param_1[2],param_2,param_3,2,0,0);
   uVar1 = sub_02013910(param_2,*param_1);

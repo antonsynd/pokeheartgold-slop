@@ -52,7 +52,7 @@ void ov99_021E93DC(int *param_1,undefined4 *param_2)
 {
   undefined4 *puVar1;
   undefined4 uVar2;
-  
+
   puVar1 = (undefined4 *)Heap_Alloc(param_1[3],0x1c0);
   func_0x020d4994(puVar1,0,0x1c0);
   *puVar1 = param_2;

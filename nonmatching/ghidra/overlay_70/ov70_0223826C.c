@@ -57,7 +57,7 @@ void ov70_0223826C(void)
 
 {
   int iVar1;
-  
+
   uRam02246814 = uRam0224680c;
   uRam02246818 = uRam02246810;
   func_0x0221be84();

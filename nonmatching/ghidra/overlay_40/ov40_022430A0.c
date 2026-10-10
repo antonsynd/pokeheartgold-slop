@@ -56,7 +56,7 @@ void ov40_022430A0(int param_1,undefined4 param_2,undefined4 param_3,undefined4 
   undefined4 *puVar7;
   int iStack_34;
   undefined4 auStack_30 [7];
-  
+
   *(undefined4 *)(param_1 + 0x298) = 1;
   *(undefined2 *)(param_1 + 0x1e4) = 0;
   *(short *)(param_1 + 0x1e6) = (short)*(undefined4 *)(param_1 + 0x2ac);

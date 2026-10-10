@@ -50,7 +50,7 @@ undefined4 ov45_0222C61C(int param_1,uint param_2,uint param_3)
 {
   uint uVar1;
   int extraout_r1;
-  
+
   if (0x1a < param_2) {
     GF_AssertFail();
   }

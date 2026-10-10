@@ -50,7 +50,7 @@ undefined4 sub_0203314C(undefined4 param_1,undefined4 param_2,undefined2 param_3
 
 {
   int iVar1;
-  
+
   func_0x020d2894(iRam021d4128 + 0xf40,*(undefined4 *)(iRam021d4128 + 0x1304));
   iVar1 = func_0x020dfd7c(0x20331a5,param_4,param_1,param_2,0xffff,param_3,2);
   if (iVar1 == 2) {

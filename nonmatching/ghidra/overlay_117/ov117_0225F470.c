@@ -59,7 +59,7 @@ undefined4 ov117_0225F470(undefined4 param_1,undefined4 param_2)
   undefined4 uVar2;
   undefined4 uVar3;
   undefined4 uVar4;
-  
+
   uVar1 = NewMsgDataFromNarc(1,0x1b,0xbd,param_2);
   uVar2 = MessageFormat_New(param_2);
   uVar3 = String_New(0x80,param_2);

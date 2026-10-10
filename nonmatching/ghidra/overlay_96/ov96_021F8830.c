@@ -63,7 +63,7 @@ ov96_021F8830(undefined4 *param_1,undefined4 param_2,undefined4 param_3,undefine
   undefined4 uVar3;
   undefined4 extraout_r1;
   undefined4 *puVar4;
-  
+
   puVar4 = param_1 + param_1[0xcc] * 0x12 + 5;
   if (puVar4[0xc] != 0) {
     GF_AssertFail();

@@ -49,7 +49,7 @@ void ov18_021F148C(int param_1,undefined4 param_2,undefined4 param_3,undefined4 
 
 {
   undefined4 uVar1;
-  
+
   uVar1 = GetBattleMonIconNaixEx(param_2,0,param_3,param_4,param_4);
   func_0x02007c10(*(undefined4 *)(param_1 + 0x858),uVar1,0,param_4,0x25);
   return;

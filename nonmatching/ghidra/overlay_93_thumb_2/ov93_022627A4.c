@@ -49,7 +49,7 @@ undefined4 ov93_022627A4(void)
 {
   int iVar1;
   undefined4 auStack_8 [2];
-  
+
   auStack_8[0] = 100;
   iVar1 = sub_02037030(0x17,auStack_8,4);
   if (iVar1 == 1) {

@@ -58,7 +58,7 @@ void ov65_0221F8D0(undefined *param_1,undefined *param_2,undefined *param_3)
   undefined2 *puVar3;
   ushort uVar4;
   int iVar5;
-  
+
   AddWindowParameterized(param_1,param_2,1,2,1,10,2,8,1);
   FillWindowPixelBuffer(param_2,0);
   AddWindowParameterized(param_1,param_2 + 0x10,1,0x14,1,10,2,8,0x15);

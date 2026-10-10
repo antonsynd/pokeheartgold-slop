@@ -84,7 +84,7 @@ int ov14_021EAFAC(int *param_1)
 {
   int iVar1;
   undefined4 uVar2;
-  
+
   Main_SetVBlankIntrCB(0,0);
   HBlankInterruptDisable();
   func_0x02022c9c(0);

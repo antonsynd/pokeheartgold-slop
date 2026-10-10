@@ -47,7 +47,7 @@ void ov96_021F64A0(int param_1,uint param_2,int *param_3)
 
 {
   int iVar1;
-  
+
   iVar1 = 0;
   do {
     *param_3 = 0;

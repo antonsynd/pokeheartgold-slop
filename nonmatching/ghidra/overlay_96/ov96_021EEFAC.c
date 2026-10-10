@@ -67,7 +67,7 @@ void ov96_021EEFAC(undefined4 param_1)
   undefined4 *puVar1;
   undefined4 uVar2;
   undefined4 uVar3;
-  
+
   Heap_Create(0x5c,0x9f,0x40000);
   Main_SetVBlankIntrCB(0,0);
   Main_SetHBlankIntrCB(0,0);

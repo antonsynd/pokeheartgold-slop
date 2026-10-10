@@ -54,7 +54,7 @@ void ov70_0223ABF4(int *param_1,undefined4 param_2,undefined4 param_3,undefined4
 {
   undefined1 uVar1;
   int iVar2;
-  
+
   iVar2 = param_1[1];
   LoadFontPal1(0,0x1a0,0x3d);
   uVar1 = Options_GetFrame(*(undefined4 *)(*param_1 + 0x24));

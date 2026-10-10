@@ -85,7 +85,7 @@ undefined4 ov40_0223F984(int param_1)
   int iVar4;
   int iVar5;
   ulonglong uVar6;
-  
+
   iVar4 = *(int *)(param_1 + 0x860);
   puVar1 = sub_020307F8();
   uVar6 = sub_0203088C(puVar1,4,0);

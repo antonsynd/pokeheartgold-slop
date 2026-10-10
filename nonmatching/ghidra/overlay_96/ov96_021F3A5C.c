@@ -57,7 +57,7 @@ undefined4 ov96_021F3A5C(int *param_1,undefined4 param_2,undefined4 param_3,unde
   undefined4 uStack_20;
   undefined4 uStack_1c;
   undefined4 uStack_18;
-  
+
   iVar2 = 0;
   uStack_1c = 0;
   uStack_24 = param_2;

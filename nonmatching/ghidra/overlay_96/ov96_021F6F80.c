@@ -57,7 +57,7 @@ void ov96_021F6F80(undefined4 param_1,int param_2)
   undefined4 uVar2;
   uint uVar3;
   byte bVar4;
-  
+
   uVar3 = 0;
   do {
     FillWindowPixelBuffer(param_2 + 4 + uVar3 * 0x10,0);

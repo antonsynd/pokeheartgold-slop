@@ -53,7 +53,7 @@ ov81_022432DC(undefined4 param_1,undefined1 param_2,undefined4 param_3,undefined
 
 {
   undefined4 uVar1;
-  
+
   uVar1 = func_0x02019ba4(&ov81_02243688,&ov81_02243718,&ov81_02243648,param_1,1,param_2,100,param_4
                          );
   GridInputHandler_ClearEnabledFlag(uVar1,2);

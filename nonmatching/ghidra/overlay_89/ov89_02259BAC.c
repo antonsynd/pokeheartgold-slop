@@ -52,7 +52,7 @@ void ov89_02259BAC(int *param_1,undefined4 param_2)
 
 {
   undefined4 uVar1;
-  
+
   if (*(char *)(*param_1 + 4) == '\0') {
     uVar1 = 0x1c;
   }

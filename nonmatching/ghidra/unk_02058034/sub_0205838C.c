@@ -57,7 +57,7 @@ void sub_0205838C(void)
 {
   int iVar1;
   undefined4 uVar2;
-  
+
   iVar1 = sub_02037B38(0x62);
   if (iVar1 != 0) {
     uVar2 = sub_02057180();

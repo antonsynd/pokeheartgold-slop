@@ -53,7 +53,7 @@ int ov13_02224938(undefined4 param_1,int param_2,undefined4 param_3,int param_4)
   int iStack_1c;
   int iStack_18;
   int iStack_14;
-  
+
   iStack_14 = param_4;
   iVar1 = ov13_02224624(param_1,&iStack_18,&iStack_1c);
   if (iVar1 == 0) {

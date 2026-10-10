@@ -64,7 +64,7 @@ void sub_0203778C(int *param_1,undefined4 param_2,undefined4 param_3,undefined4 
   uint uStack_24;
   uint uStack_20;
   undefined4 uStack_18;
-  
+
   uStack_18 = param_4;
   GF_RTC_CopyDateTime(&uStack_28,&uStack_34);
   uVar4 = iStack_2c + iRam021d1138;

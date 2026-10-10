@@ -48,7 +48,7 @@ bool sub_02089680(void)
 
 {
   int iVar1;
-  
+
   iVar1 = IsPaletteFadeFinished();
   return iVar1 == 1;
 }

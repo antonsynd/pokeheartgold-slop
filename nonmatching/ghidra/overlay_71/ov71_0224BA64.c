@@ -48,7 +48,7 @@ void ov71_0224BA64(int param_1)
 
 {
   int iVar1;
-  
+
   if (*(int *)(param_1 + 0x40) != 0) {
     *(short *)(param_1 + 0x3a) = *(short *)(param_1 + 0x3a) + *(short *)(param_1 + 0x3c);
     iVar1 = *(int *)(param_1 + 0x40) + -1;

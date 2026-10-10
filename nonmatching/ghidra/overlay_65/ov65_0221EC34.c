@@ -54,7 +54,7 @@ void ov65_0221EC34(int param_1)
   int iVar1;
   int iVar2;
   int iVar3;
-  
+
   iVar3 = 0;
   iVar1 = param_1;
   iVar2 = param_1;

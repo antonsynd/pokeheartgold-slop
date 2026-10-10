@@ -48,7 +48,7 @@ void ov40_0222CED8(int param_1)
 
 {
   int iVar1;
-  
+
   iVar1 = 0;
   do {
     sub_02013FD0(*(undefined4 *)(param_1 + 0x610),**(undefined4 **)(param_1 + 0x5fc));

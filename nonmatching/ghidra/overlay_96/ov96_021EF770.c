@@ -50,7 +50,7 @@ void ov96_021EF770(int param_1,undefined4 param_2,undefined4 param_3,undefined4 
 
 {
   byte bVar1;
-  
+
   bVar1 = *(byte *)(param_1 + 0x20);
   func_0x0221ebd8(*(undefined4 *)(param_1 + 0x30),8,0xf4,0);
   func_0x0221ebec(*(undefined4 *)(param_1 + 0x30),9,0xf2,0,0,4,param_4);

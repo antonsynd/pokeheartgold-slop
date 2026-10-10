@@ -53,7 +53,7 @@ void ov112_021F2810(int param_1)
   byte bVar1;
   undefined4 uVar2;
   int iVar3;
-  
+
   uVar2 = 0;
   iVar3 = *(int *)(param_1 + (uint)*(byte *)(param_1 + 0x13d) * 4 + 0xc0);
   ov112_021F2204(param_1,0,1);

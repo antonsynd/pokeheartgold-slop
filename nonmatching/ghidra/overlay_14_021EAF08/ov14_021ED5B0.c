@@ -52,7 +52,7 @@ void ov14_021ED5B0(int *param_1)
 
 {
   int iVar1;
-  
+
   if (*(int *)(*param_1 + 8) == 1) {
     iVar1 = ov14_021E834C(*(undefined4 *)(param_1[0xd] + 0x2f0));
     if (iVar1 == 0) {

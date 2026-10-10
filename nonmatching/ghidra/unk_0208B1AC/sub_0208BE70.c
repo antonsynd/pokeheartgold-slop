@@ -55,7 +55,7 @@ void sub_0208BE70(int param_1)
   undefined4 uVar1;
   int iVar2;
   uint uVar3;
-  
+
   uVar1 = sub_0208A520();
   sub_0208BE00(param_1,uVar1,0x13);
   iVar2 = GetMonIconPaletteEx(*(undefined2 *)(param_1 + 0x23c),*(undefined2 *)(param_1 + 0x27e),

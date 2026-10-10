@@ -63,7 +63,7 @@ undefined4 ov40_022365A0(undefined *param_1)
 {
   undefined4 *puVar1;
   undefined *puVar2;
-  
+
   puVar1 = (undefined4 *)Heap_Alloc(0x6d,0x2f70);
   memset((undefined *)puVar1,0,0x2f70);
   *(undefined4 **)(param_1 + 0x860) = puVar1;

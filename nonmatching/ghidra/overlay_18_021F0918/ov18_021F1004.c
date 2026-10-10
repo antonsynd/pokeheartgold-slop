@@ -48,7 +48,7 @@ void ov18_021F1004(int param_1)
 
 {
   uint uVar1;
-  
+
   uVar1 = 0;
   do {
     if (*(int *)(param_1 + 0x670) != 0) {

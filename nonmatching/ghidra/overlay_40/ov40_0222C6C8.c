@@ -51,7 +51,7 @@ void ov40_0222C6C8(int param_1,undefined4 param_2,int param_3,undefined4 param_4
   undefined4 uVar1;
   undefined4 uVar2;
   undefined4 uVar3;
-  
+
   uVar2 = 2;
   uVar3 = *(undefined4 *)(param_1 + 0x14);
   uVar1 = *(undefined4 *)(param_1 + 0x24);

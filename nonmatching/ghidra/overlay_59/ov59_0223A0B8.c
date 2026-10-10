@@ -54,7 +54,7 @@ undefined4 ov59_0223A0B8(int param_1)
 {
   undefined4 uVar1;
   int iVar2;
-  
+
   if ((uRam021d1154 & 0xcf3) != 0) {
     *(undefined4 *)(param_1 + 0x40) = 0;
   }

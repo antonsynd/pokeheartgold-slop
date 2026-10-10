@@ -59,7 +59,7 @@ void ov96_02217FD0(int param_1)
   undefined4 uStack_2c;
   undefined4 uStack_28;
   undefined4 uStack_20;
-  
+
   uStack_20 = 0;
   uStack_2c = param_1;
   do {

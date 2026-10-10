@@ -57,7 +57,7 @@ void sub_0208CC88(int param_1)
 {
   int iVar1;
   undefined4 uVar2;
-  
+
   ScheduleWindowCopyToVram(param_1 + 0x174);
   if (*(int *)(param_1 + 0x280) << 3 < 0) {
     ClearWindowTilemapAndScheduleTransfer(param_1 + 4);

@@ -51,7 +51,7 @@ void ov28_0225D764(int param_1,undefined4 param_2,undefined4 param_3,undefined4 
 {
   undefined4 uVar1;
   undefined4 uVar2;
-  
+
   uVar1 = NewMsgDataFromNarc(0,0x1b,0xc4,8,param_4);
   uVar2 = NewString_ReadMsgData(uVar1,0x11);
   *(undefined4 *)(param_1 + 0x1a4) = uVar2;

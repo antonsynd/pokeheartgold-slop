@@ -48,7 +48,7 @@ int ov74_022319F8(int param_1,undefined4 param_2,uint param_3)
 
 {
   int iVar1;
-  
+
   if ((param_3 & 1) != 0) {
     iVar1 = FontID_String_GetWidth(1,param_2,0);
     return (*(int *)(param_1 + 0x10) * 8 - iVar1) / 2;

@@ -54,7 +54,7 @@ void ov07_02225F18(undefined4 param_1,int param_2)
   int iVar1;
   int iVar2;
   int iVar3;
-  
+
   iVar1 = *(int *)(param_2 + 0x2c);
   iVar3 = *(int *)(param_2 + 0x24);
   if ((iVar3 != iVar1) && (*(int *)(param_2 + 0x28) != iVar1)) {

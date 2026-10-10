@@ -52,7 +52,7 @@ void ov86_021E6064(int param_1,int param_2,undefined4 param_3,undefined4 param_4
 
 {
   undefined4 uVar1;
-  
+
   uVar1 = NewString_ReadMsgData(*(undefined4 *)(param_1 + 0x210),param_3);
   StringExpandPlaceholders(*(undefined4 *)(param_1 + 0x214),*(undefined4 *)(param_1 + 0x218),uVar1);
   ov86_021E5FD8(param_1 + 0x10 + param_2 * 0x10,*(undefined4 *)(param_1 + 0x218),param_4,param_5,

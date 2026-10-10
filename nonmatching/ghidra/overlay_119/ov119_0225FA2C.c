@@ -103,7 +103,7 @@ void ov119_0225FA2C(undefined4 param_1,int *param_2)
   int iStack_28;
   undefined4 uStack_24;
   undefined1 auStack_20 [12];
-  
+
   puVar4 = (undefined4 *)param_2[3];
   switch(*param_2) {
   case 0:

@@ -50,7 +50,7 @@ void ov34_0225D5F8(int param_1,undefined4 param_2,undefined4 param_3,undefined4 
 
 {
   undefined4 uVar1;
-  
+
   *(undefined4 *)(param_1 + 0x294) = 0;
   *(undefined2 *)(param_1 + 0x284) = 0;
   *(undefined2 *)(param_1 + 0x286) = 0;

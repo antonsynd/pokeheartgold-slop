@@ -58,7 +58,7 @@ undefined4 ov96_02215058(int param_1,int param_2,undefined4 param_3,int param_4)
   ulonglong uVar6;
   short sStack_18;
   short sStack_16;
-  
+
   switch(param_3) {
   default:
     GF_AssertFail();

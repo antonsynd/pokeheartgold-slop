@@ -53,7 +53,7 @@ void ov65_0221C9D8(undefined *param_1,ushort *param_2)
 {
   int iVar1;
   uint uVar2;
-  
+
   iVar1 = AcquireMonLock(param_1);
   uVar2 = GetMonData(param_1,0x9b,(undefined *)0x0);
   *(char *)(param_2 + 2) = (char)uVar2;

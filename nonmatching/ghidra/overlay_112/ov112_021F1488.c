@@ -56,7 +56,7 @@ void ov112_021F1488(int param_1,short *param_2,undefined4 param_3,int param_4)
   short *psVar3;
   int iVar4;
   int iVar5;
-  
+
   iVar4 = 1;
   iVar5 = param_4;
   uVar1 = String_New(param_4,*(undefined4 *)(param_1 + 4));

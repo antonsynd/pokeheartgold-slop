@@ -176,7 +176,7 @@ ov96_021F94A8(undefined *param_1,undefined4 param_2,undefined4 param_3,undefined
     for (nug_k = 0; nug_k < (int)sizeof(uStack_18) && 0 + nug_k < 4; nug_k++) ((unsigned char *)&uStack_18)[nug_k] = (unsigned char)(nug_r3 >> (8 * (0 + nug_k)));
   }
 
-  
+
   uStack_18 = param_4;
   piVar3 = (int *)PokeathlonCourse_GetHeapAllocPtr4(param_1);
   bVar2 = PokeathlonCourse_GetField1ED(param_1);

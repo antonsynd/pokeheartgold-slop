@@ -57,7 +57,7 @@ uint ov96_021E9104(undefined4 *param_1)
   int iVar6;
   int iStack_1c;
   uint uStack_18;
-  
+
   iVar1 = GF2DGfxResObj_GetCharDataPtr(*param_1);
   if (*(short *)(param_1 + 6) == 0) {
     iVar6 = 4;

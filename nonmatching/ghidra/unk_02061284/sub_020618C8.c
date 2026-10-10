@@ -58,7 +58,7 @@ undefined4 sub_020618C8(undefined4 param_1,char *param_2,undefined4 param_3,unde
   int iVar5;
   int *piVar6;
   int aiStack_40 [11];
-  
+
   aiStack_40[5] = 0;
   aiStack_40[6] = 2;
   aiStack_40[7] = 1;

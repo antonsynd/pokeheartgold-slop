@@ -50,7 +50,7 @@ void ov15_021FF8F0(int param_1,int param_2,undefined4 param_3)
 
 {
   undefined4 uVar1;
-  
+
   uVar1 = func_0x02077c18(param_3,1);
   SpriteSystem_ReplaceCharResObj
             (*(undefined4 *)(param_1 + 0x248),*(undefined4 *)(param_1 + 0x24c),0x12,uVar1,0,

@@ -51,7 +51,7 @@ undefined4 ov73_021E6FE8(int param_1,undefined4 param_2)
 
 {
   int iVar1;
-  
+
   if (*(int *)(param_1 + 0x4a2c) != 0) {
     iVar1 = sub_02037454();
     if (*(int *)(param_1 + 0x4a2c) != iVar1) {

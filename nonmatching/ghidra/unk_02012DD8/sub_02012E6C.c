@@ -57,7 +57,7 @@ void sub_02012E6C(int param_1,short *param_2,undefined4 param_3,undefined4 param
 {
   undefined4 uVar1;
   int iVar2;
-  
+
   sub_02010E64(param_1,(char)param_2[4],param_5,param_8);
   *(undefined4 *)(param_1 + 0x14) = 0x7fff80;
   *(int *)(param_1 + 0xc) = (int)*param_2;

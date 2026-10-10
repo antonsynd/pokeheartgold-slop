@@ -49,7 +49,7 @@ void ov40_022361E0(int param_1)
   int iVar1;
   int iVar2;
   int iVar3;
-  
+
   iVar3 = *(int *)(param_1 + 0x1b0);
   if (iVar3 < 0x1e) {
     iVar2 = param_1 + iVar3 * 2;

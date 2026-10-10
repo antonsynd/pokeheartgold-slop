@@ -52,7 +52,7 @@ void BattleController_EmitTrainerEncounter
   undefined1 uStack_b;
   ushort uStack_a;
   undefined4 uStack_8;
-  
+
   uStack_c = 8;
   uStack_a = (ushort)*(byte *)(param_1 + param_2 * 0x34 + 0xad);
   uStack_b = *(undefined1 *)(param_1 + param_2 + 0xa8);

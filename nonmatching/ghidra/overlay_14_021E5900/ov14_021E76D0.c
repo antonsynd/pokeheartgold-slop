@@ -52,7 +52,7 @@ void ov14_021E76D0(int param_1,int param_2,undefined4 param_3,int param_4)
 {
   undefined4 uVar1;
   int iStack_14;
-  
+
   uVar1 = GfGfxLoader_GetCharData(0x13,param_2 + 0x10,1,&iStack_14,10);
   BG_LoadCharTilesData
             (*(undefined4 *)(*(int *)(param_1 + 0x34) + 0x14),3,*(undefined4 *)(iStack_14 + 0x14),

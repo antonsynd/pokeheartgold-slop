@@ -66,7 +66,7 @@ void ov108_021E7080(undefined4 *param_1)
   int iVar9;
   uint uStack_28;
   int iStack_24;
-  
+
   puVar5 = &ov108_021EA7A8;
   iVar9 = 0;
   puVar7 = param_1 + 0xed;

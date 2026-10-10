@@ -51,7 +51,7 @@ void ov111_021E6738(undefined4 *param_1,int param_2,undefined4 param_3,undefined
 
 {
   undefined4 *puVar1;
-  
+
   puVar1 = (undefined4 *)ov111_021E63D0(param_1,param_3,param_4,param_2,param_5,param_4);
   ov111_021E6268(puVar1[2],*puVar1,(int)*(char *)(param_1 + 5),*param_1);
   ov111_021E64C8(puVar1,param_1[2]);

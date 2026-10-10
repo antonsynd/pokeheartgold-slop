@@ -55,7 +55,7 @@ undefined4 ov96_021F0B58(undefined *param_1,char *param_2)
   ushort uVar3;
   undefined *puStack_1c;
   uint uStack_18;
-  
+
   puStack_1c = PokeathlonCourse_GetHeapAllocPtr4(param_1);
   if (*param_2 == '\0') {
     iVar1 = IsPaletteFadeFinished();

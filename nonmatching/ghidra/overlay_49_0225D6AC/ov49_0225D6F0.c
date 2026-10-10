@@ -54,7 +54,7 @@ void ov49_0225D6F0(undefined4 *param_1,int param_2)
   undefined4 *puVar3;
   int iVar4;
   int iStack_20;
-  
+
   *param_1 = 1;
   iStack_20 = 0;
   puVar3 = param_1 + 1;

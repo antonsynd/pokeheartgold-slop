@@ -53,7 +53,7 @@ void ov18_021F4DDC(int param_1,undefined4 param_2,undefined4 param_3,undefined4 
   undefined1 uStack_14;
   undefined1 auStack_13 [3];
   undefined4 uStack_10;
-  
+
   uStack_10 = param_4;
   ov18_021F3CA8(param_1,0,auStack_13,&uStack_14);
   ov18_021F69E8(param_1,*(undefined2 *)(param_1 + 0x18a2),auStack_13[0],uStack_14,2);

@@ -54,7 +54,7 @@ undefined4 ov65_0221E858(int param_1,undefined4 param_2,undefined4 param_3,undef
 {
   int iVar1;
   undefined4 uVar2;
-  
+
   iVar1 = sub_0203A1C4(*(undefined4 *)(param_1 + 4),param_1 + 0x35f8,0x1a);
   if (iVar1 == 0) {
     sub_02037AC0(0x13);

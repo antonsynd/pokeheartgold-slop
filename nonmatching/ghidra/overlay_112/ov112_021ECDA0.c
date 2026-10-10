@@ -52,7 +52,7 @@ void ov112_021ECDA0(int param_1,int param_2)
 {
   int iVar1;
   undefined4 uVar2;
-  
+
   if (param_2 < 0) {
     if ((*(int *)(param_1 + 0x1ec50) != 5) && ('\0' < (char)*(undefined4 *)(param_1 + 0x1ec54))) {
       *(int *)(param_1 + 0x1ec54) = *(int *)(param_1 + 0x1ec54) + -1;

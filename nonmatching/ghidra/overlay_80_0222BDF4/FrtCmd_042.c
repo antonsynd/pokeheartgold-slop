@@ -58,7 +58,7 @@ undefined4 FrtCmd_042(undefined4 *param_1)
   undefined4 uVar3;
   int iVar4;
   undefined4 *puVar5;
-  
+
   puVar5 = (undefined4 *)*param_1;
   iVar1 = sub_0209680C(*puVar5);
   iVar2 = FrontierScriptContext_ReadWord(param_1);

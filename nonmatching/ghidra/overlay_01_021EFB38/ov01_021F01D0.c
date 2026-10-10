@@ -56,7 +56,7 @@ void ov01_021F01D0(undefined4 param_1,int *param_2)
 {
   uint uVar1;
   int iVar2;
-  
+
   uVar1 = func_0x020f2ba4(uRam04000006,param_2[6]);
   iVar2 = *param_2;
   if ((uVar1 & 1) != 0) {

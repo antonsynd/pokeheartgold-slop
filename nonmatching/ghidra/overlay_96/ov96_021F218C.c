@@ -61,7 +61,7 @@ ov96_021F218C(undefined4 *param_1,undefined4 *param_2,undefined4 param_3,undefin
   undefined4 uStack_1c;
   undefined1 auStack_18 [12];
   undefined4 uStack_c;
-  
+
   uStack_c = param_4;
   ov96_021EAF78(*param_1,param_1[10],param_1[0xb],auStack_24,auStack_20,&iStack_34);
   ov96_021EAF78(*param_2,param_2[10],param_2[0xb],auStack_30,auStack_2c,&iStack_38);

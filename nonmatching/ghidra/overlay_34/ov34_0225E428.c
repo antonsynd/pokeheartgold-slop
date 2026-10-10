@@ -51,7 +51,7 @@ undefined4 ov34_0225E428(int param_1,undefined4 param_2,int param_3)
   int iVar1;
   int iVar2;
   int iVar3;
-  
+
   iVar1 = MailMsg_IsInit(param_2);
   if (iVar1 == 0) {
     return 0;

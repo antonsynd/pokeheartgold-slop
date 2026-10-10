@@ -50,7 +50,7 @@ void ov45_0222ED7C(void)
 
 {
   int iVar1;
-  
+
   if (iRam022577c0 == 0) {
     GF_AssertFail();
   }

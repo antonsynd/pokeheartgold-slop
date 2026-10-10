@@ -79,7 +79,7 @@ void ov91_0225D8F0(undefined1 *param_1,undefined4 *param_2,int param_3,uint para
   undefined auStack_28 [10];
   ushort uStack_1e;
   uint uStack_18;
-  
+
   iVar5 = 0x1c;
   puVar6 = param_1;
   do {

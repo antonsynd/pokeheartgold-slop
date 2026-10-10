@@ -49,7 +49,7 @@ uint ov68_021E6CD8(undefined4 *param_1)
 {
   int iVar1;
   uint uVar2;
-  
+
   uVar2 = 0;
   do {
     iVar1 = GetMonData(*(undefined4 *)*param_1,uVar2 + 0x36,0);

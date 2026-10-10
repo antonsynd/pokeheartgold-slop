@@ -57,7 +57,7 @@ void ov96_02213E60(int param_1,int param_2,undefined4 param_3,undefined4 param_4
   uint uVar6;
   byte abStack_28 [16];
   undefined4 uStack_18;
-  
+
   bVar1 = *(byte *)(param_1 + 0x66e);
   uVar4 = 0;
   uVar5 = 0;

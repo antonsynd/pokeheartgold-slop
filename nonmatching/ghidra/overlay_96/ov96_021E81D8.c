@@ -57,7 +57,7 @@ void ov96_021E81D8(undefined4 param_1,int param_2,undefined4 param_3,undefined4 
   int iStack_14;
   undefined4 uStack_10;
   undefined4 uStack_c;
-  
+
   uStack_c = param_4;
   ov96_021EAEC8(*(undefined4 *)(param_2 + 4),&iStack_1c,&iStack_20);
   Sprite_SetDrawFlag(*(undefined4 *)(param_2 + 8),1);

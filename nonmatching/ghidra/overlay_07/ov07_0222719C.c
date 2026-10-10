@@ -52,7 +52,7 @@ void ov07_0222719C(undefined4 param_1,int param_2)
 {
   int iVar1;
   int iVar2;
-  
+
   if (*(int *)(param_2 + 0x2c) == 0) {
     ov07_0221C448(*(undefined4 *)(param_2 + 4),param_1);
     Heap_Free(param_2);

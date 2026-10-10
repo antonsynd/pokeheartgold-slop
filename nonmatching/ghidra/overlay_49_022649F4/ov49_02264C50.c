@@ -52,7 +52,7 @@ void ov49_02264C50(undefined4 param_1,undefined4 param_2,undefined4 param_3)
   undefined4 uVar1;
   int iVar2;
   int iVar3;
-  
+
   uVar1 = ov49_02259FE8();
   iVar2 = func_0x0222ab28(uVar1,param_2);
   iVar3 = func_0x0222ab28(uVar1,param_3);

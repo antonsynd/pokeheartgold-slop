@@ -50,7 +50,7 @@ undefined4 ov14_021EB1E0(int param_1)
 
 {
   int iVar1;
-  
+
   iVar1 = System_GetTouchNew();
   if (iVar1 == 1) {
     PlaySE(0x5dd);

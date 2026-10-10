@@ -52,7 +52,7 @@ void BattleController_EmitIncrementGameStat
   undefined1 uStack_13;
   undefined2 uStack_12;
   undefined4 uStack_10;
-  
+
   uStack_14 = 0x36;
   uStack_12 = (undefined2)param_4;
   uStack_13 = param_3;

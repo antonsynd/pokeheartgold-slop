@@ -49,7 +49,7 @@ void ov93_0225EE4C(int param_1,int param_2)
 {
   uint uStack_10;
   uint uStack_c;
-  
+
   uStack_c = (uint)(param_1 != 0) << 0xf | 0x21085ef7;
   NNS_G3dGeBufferOP_N(0x30,(undefined *)&uStack_c,1);
   uStack_10 = (uint)(param_2 != 0) << 0xf | 0x7fff;

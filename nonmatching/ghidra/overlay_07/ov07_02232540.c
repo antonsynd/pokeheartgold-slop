@@ -56,7 +56,7 @@ undefined4 ov07_02232540(int param_1,undefined4 param_2,undefined4 param_3,undef
   undefined4 *puVar7;
   int aiStack_38 [11];
   undefined4 uStack_c;
-  
+
   uStack_c = param_4;
   piVar5 = aiStack_38;
   piVar6 = aiStack_38;

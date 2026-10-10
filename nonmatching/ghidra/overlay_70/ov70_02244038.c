@@ -62,7 +62,7 @@ undefined4 ov70_02244038(int *param_1,undefined4 param_2,undefined4 param_3,unde
 
 {
   int iVar1;
-  
+
   ov70_02244670();
   uRam04000304 = uRam04000304 & 0x7fff;
   BeginNormalPaletteFade(0,1,1,0,6,1,0x3d,param_4);

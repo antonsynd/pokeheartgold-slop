@@ -52,7 +52,7 @@ undefined4 ov00_021E5F84(undefined *param_1,uint param_2)
 
 {
   int iVar1;
-  
+
   if (0xff < (int)param_2) {
     return 0;
   }

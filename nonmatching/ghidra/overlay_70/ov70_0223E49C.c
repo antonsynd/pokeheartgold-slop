@@ -53,7 +53,7 @@ undefined4 ov70_0223E49C(undefined4 param_1,undefined4 param_2,undefined4 param_
 {
   int iVar1;
   undefined4 uVar2;
-  
+
   iVar1 = ov70_0223E490(param_3);
   if (iVar1 == 0) {
     uVar2 = func_0x02074058(param_2,param_3,param_4);

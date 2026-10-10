@@ -52,7 +52,7 @@ undefined4 ov51_021E67A4(int param_1)
 
 {
   int iVar1;
-  
+
   switch(*(undefined1 *)(param_1 + 0x3436)) {
   case 0:
     ov51_021E77A0(param_1,0);

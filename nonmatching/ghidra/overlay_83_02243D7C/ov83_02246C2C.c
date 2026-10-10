@@ -51,7 +51,7 @@ void ov83_02246C2C(int param_1,undefined4 param_2,undefined4 param_3,undefined4 
 {
   undefined4 uVar1;
   uint uVar2;
-  
+
   uVar1 = ListMenuItems_New(3,0x6b);
   uVar2 = 0;
   *(undefined4 *)(param_1 + 0x5fc) = uVar1;

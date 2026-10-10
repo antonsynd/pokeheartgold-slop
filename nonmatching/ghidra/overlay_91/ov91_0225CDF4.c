@@ -58,7 +58,7 @@ ov91_0225CDF4(int param_1,undefined4 param_2,undefined4 param_3,undefined4 param
 {
   undefined *puVar1;
   int iVar2;
-  
+
   puVar1 = Heap_Alloc(param_1,0x87e8);
   memset(puVar1,0,0x87e8);
   *(undefined4 *)(puVar1 + 4) = 1;

@@ -52,7 +52,7 @@ void ov28_0225E900(int param_1)
 
 {
   int iVar1;
-  
+
   iVar1 = sub_0203DF8C(*(undefined4 *)(param_1 + 0x18));
   if (iVar1 == 1) {
     ov28_0225E810(param_1);

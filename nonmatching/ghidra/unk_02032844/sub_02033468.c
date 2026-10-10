@@ -50,7 +50,7 @@ undefined2 sub_02033468(void)
 
 {
   undefined2 uVar1;
-  
+
   sub_02032844(1);
   uVar1 = sub_02033494(*(undefined2 *)(iRam021d4128 + 0x1340));
   *(undefined2 *)(iRam021d4128 + 0x133c) = uVar1;

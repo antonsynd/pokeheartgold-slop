@@ -55,7 +55,7 @@ void ov96_022196E4(int param_1,int param_2)
   undefined4 uVar2;
   int iVar3;
   int iVar4;
-  
+
   _s32_div_f(param_2,100); __asm__ volatile("movs %0, r1" : "=l"(extraout_r1) : : "cc");
   uVar1 = _s32_div_f(extraout_r1 & 0xff,10);
   { int nug_a = (int)(extraout_r1 & 0xff), nug_b = (int)(10); extraout_r1_00 = nug_a % nug_b; _s32_div_f(nug_a, nug_b); }

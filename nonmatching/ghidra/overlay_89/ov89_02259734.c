@@ -51,7 +51,7 @@ void ov89_02259734(int param_1,undefined4 param_2,undefined4 param_3,undefined4 
 
 {
   int iVar1;
-  
+
   func_0x0200d68c(*(undefined4 *)(param_1 + 0xc),3,*(undefined4 *)(param_1 + 0x1c),
                   *(undefined4 *)(param_1 + 0x20),param_2,10,0,1,2,0x2714,param_4);
   SpriteSystem_LoadCharResObjFromOpenNarc

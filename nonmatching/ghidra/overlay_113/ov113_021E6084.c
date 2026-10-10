@@ -55,7 +55,7 @@ void ov113_021E6084(int param_1,int param_2)
   short sVar2;
   int iVar3;
   undefined4 uStack_28;
-  
+
   ov113_021E6238(param_1,param_1 + 0x140,6);
   ov113_021E6238(param_1,param_1 + 0x110,2);
   iVar1 = 0;

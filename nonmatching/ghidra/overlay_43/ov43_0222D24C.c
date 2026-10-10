@@ -52,7 +52,7 @@ undefined4 ov43_0222D24C(short *param_1,undefined4 param_2,undefined4 param_3,un
 
 {
   int iVar1;
-  
+
   switch(param_4) {
   case 0:
     iVar1 = ov43_0222D230(param_1,(int)*param_1);

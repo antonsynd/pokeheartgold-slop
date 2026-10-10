@@ -48,7 +48,7 @@ undefined4 ov08_02223B78(int *param_1)
 
 {
   int iVar1;
-  
+
   iVar1 = *param_1;
   if (*(ushort *)(iVar1 + 0x20) == 0) {
     return 0;

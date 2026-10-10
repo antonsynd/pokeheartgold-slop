@@ -54,7 +54,7 @@ undefined4 ov96_021E6FFC(undefined4 param_1)
   int iVar1;
   undefined4 uVar2;
   undefined4 uVar3;
-  
+
   iVar1 = PokeathlonCourse_GetDataCopyArea();
   uVar2 = ov96_021E9A14();
   uVar3 = PokeathlonCourse_GetSystem(param_1);

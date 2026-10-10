@@ -65,7 +65,7 @@ int ov96_021FF5A8(undefined4 param_1,uint param_2,undefined4 param_3,undefined4 
   undefined1 auStack_168 [100];
   undefined4 auStack_104 [30];
   undefined4 auStack_8c [30];
-  
+
   ov96_021FF0BC(param_1,*param_4,auStack_8c,auStack_104,abStack_1db,&bStack_1dc);
   iVar3 = 0;
   iStack_1e0 = 0;

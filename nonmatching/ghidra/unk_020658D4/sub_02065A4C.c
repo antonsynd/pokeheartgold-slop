@@ -68,7 +68,7 @@ undefined4 sub_02065A4C(undefined4 param_1,undefined1 *param_2)
   undefined1 uVar1;
   int iVar2;
   int iVar3;
-  
+
   iVar2 = MapObject_GetFieldSystem();
   MapObject_ClearSingleMovement(param_1);
   MapObject_ClearEndMovement(param_1);

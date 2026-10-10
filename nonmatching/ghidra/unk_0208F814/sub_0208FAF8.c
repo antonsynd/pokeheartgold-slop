@@ -51,7 +51,7 @@ void sub_0208FAF8(int param_1,int param_2,undefined4 param_3,undefined4 param_4)
   int iVar1;
   uint uVar2;
   uint *puVar3;
-  
+
   func_0x020d48b4(*(int *)(param_1 + 0x2d4) + param_2 * 1000,param_1 + 0x7c10,1000,param_4,param_4);
   uVar2 = 0;
   iVar1 = 0;

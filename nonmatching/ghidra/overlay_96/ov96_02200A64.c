@@ -51,7 +51,7 @@ void ov96_02200A64(int param_1,int param_2)
   uint uVar1;
   ulonglong uVar2;
   ulonglong uVar3;
-  
+
   uVar2 = _s32_div_f(param_2,0x1e);
   uVar1 = (uint)uVar2 & 0xff;
   uVar2 = _s32_div_f(param_2,0x1e);

@@ -105,7 +105,7 @@ undefined4 ov49_02260E2C(undefined4 param_1,undefined4 param_2,undefined4 param_
   int iVar7;
   int iVar8;
   int aiStack_20 [3];
-  
+
   uVar1 = ov49_02259FF0(param_2);
   uVar2 = ov49_02259FF8(param_2);
   uVar3 = ov49_0225A008(param_2);

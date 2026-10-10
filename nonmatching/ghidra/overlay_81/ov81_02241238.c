@@ -48,7 +48,7 @@ void ov81_02241238(int param_1,undefined4 param_2,int param_3,int param_4)
 
 {
   int iVar1;
-  
+
   *(char *)(param_4 + 0x462) = *(char *)(param_4 + 0x462) + '\x01';
   iVar1 = sub_0203769C();
   if (param_1 != iVar1) {

@@ -52,7 +52,7 @@ void ov80_02238FA0(undefined4 *param_1,undefined4 param_2,undefined4 param_3,und
 
 {
   undefined4 uVar1;
-  
+
   uVar1 = NARC_New(0xb7,0x65);
   GfGfxLoader_LoadCharDataFromOpenNarc(uVar1,0x81,*param_1,4,0,0,1,0x65,param_4);
   GfGfxLoader_LoadScrnDataFromOpenNarc(uVar1,0x82,*param_1,4,0,0,1,0x65);

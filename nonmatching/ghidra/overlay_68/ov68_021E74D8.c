@@ -56,7 +56,7 @@ undefined4 ov68_021E74D8(int *param_1,undefined4 param_2,undefined4 param_3,unde
   undefined1 uStack_10;
   undefined1 uStack_f;
   undefined4 uStack_c;
-  
+
   uStack_10 = 1;
   uStack_f = 4;
   uStack_c = param_4;

@@ -49,7 +49,7 @@ void sub_02011130(int param_1)
 {
   uint uVar1;
   uint uVar2;
-  
+
   if (param_1 == 0) {
     GF_AssertFail();
   }

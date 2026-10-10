@@ -49,7 +49,7 @@ uint ov89_0225AD00(int param_1)
   uint uVar1;
   uint uVar2;
   uint uVar3;
-  
+
   uVar1 = 1;
   do {
     uVar2 = 1 << (uVar1 & 0xff);

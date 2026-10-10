@@ -54,7 +54,7 @@ undefined4 PhotoAlbum_Exit(undefined4 param_1)
 {
   undefined4 uVar1;
   int iVar2;
-  
+
   uVar1 = OverlayManager_GetData();
   iVar2 = ov109_021E5B98();
   if (iVar2 == 0) {

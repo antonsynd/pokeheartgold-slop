@@ -48,7 +48,7 @@ undefined4 ov75_02249258(int param_1)
 
 {
   undefined4 uVar1;
-  
+
   uVar1 = ov75_02247890(*(undefined4 *)(param_1 + 4),0x234,0);
   *(undefined4 *)(param_1 + 0x88) = uVar1;
   *(undefined4 *)(param_1 + 8) = *(undefined4 *)(param_1 + 0xc);

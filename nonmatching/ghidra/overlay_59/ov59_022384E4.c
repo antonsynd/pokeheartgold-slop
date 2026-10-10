@@ -53,7 +53,7 @@ undefined4 ov59_022384E4(int param_1)
 
 {
   uint uVar1;
-  
+
   if (*(short *)(param_1 + 0x3c) == 0) {
     ov59_02238E98();
     ov59_02238C40(param_1,8);

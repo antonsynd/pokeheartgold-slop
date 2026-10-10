@@ -70,7 +70,7 @@ int ov01_021EA3E0(undefined *param_1,int *param_2)
   char cStack_114;
   char cStack_113;
   char cStack_112;
-  
+
   puVar1 = Sys_AllocAndReadFile(4,param_1);
   iStack_228 = 0;
   puVar2 = puVar1;

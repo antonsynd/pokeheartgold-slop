@@ -51,7 +51,7 @@ void ov65_0221DE64(undefined2 param_1,undefined4 param_2,undefined4 param_3)
 {
   int iVar1;
   undefined4 uVar2;
-  
+
   iVar1 = sub_020373B4(param_1);
   if (iVar1 != 0) {
     uVar2 = ov65_0221DE58(param_2,param_3);

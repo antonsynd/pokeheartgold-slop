@@ -77,7 +77,7 @@ undefined4 ov81_0223DEA8(undefined4 param_1,undefined4 *param_2)
   int iVar1;
   uint uVar2;
   int iVar3;
-  
+
   iVar1 = OverlayManager_GetData();
   if (*(short *)(iVar1 + 0x458) == 1) {
     switch(*param_2) {

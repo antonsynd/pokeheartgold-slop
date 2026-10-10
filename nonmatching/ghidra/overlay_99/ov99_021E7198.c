@@ -49,7 +49,7 @@ undefined4 ov99_021E7198(void)
 
 {
   int iVar1;
-  
+
   ov99_021E7180();
   iVar1 = func_0x020e3714();
   if (iVar1 == 5) {

@@ -53,7 +53,7 @@ undefined4 ov59_0223A9B8(undefined4 param_1)
 {
   undefined4 uVar1;
   int iVar2;
-  
+
   uVar1 = OverlayManager_GetData();
   iVar2 = ov59_0223AB00();
   if (iVar2 == 0) {

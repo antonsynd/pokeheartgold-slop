@@ -65,7 +65,7 @@ undefined4 ov49_02267328(int param_1,int param_2)
   undefined1 auStack_20 [4];
   undefined4 uStack_1c;
   undefined1 auStack_18 [4];
-  
+
   iVar3 = 0;
   if ('\0' < *(char *)(param_2 + 0x955)) {
     do {

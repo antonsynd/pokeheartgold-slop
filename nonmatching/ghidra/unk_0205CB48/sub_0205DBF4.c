@@ -63,7 +63,7 @@ undefined4 sub_0205DBF4(undefined4 param_1,undefined *param_2,int param_3)
   uint uVar4;
   int iVar5;
   int iVar6;
-  
+
   if (param_3 != -1) {
     puVar2 = MapObject_GetFieldSystem(param_2);
     uVar3 = MapObject_GetXCoord(param_2);

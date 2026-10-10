@@ -53,7 +53,7 @@ void ov49_0225DCBC(int param_1)
   undefined4 uStack_20;
   undefined4 uStack_1c;
   undefined4 uStack_18;
-  
+
   uStack_18 = 0;
   uStack_20 = param_1;
   uStack_1c = param_1;

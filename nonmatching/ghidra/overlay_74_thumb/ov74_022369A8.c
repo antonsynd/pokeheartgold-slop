@@ -49,7 +49,7 @@ uint ov74_022369A8(undefined4 param_1,int param_2,undefined4 param_3,undefined4 
 {
   int iVar1;
   uint uVar2;
-  
+
   iVar1 = Heap_Alloc(0x54,(param_2 + 0x24U & 0xffffffe0) + 0x20,param_3,param_4,param_4);
   uVar2 = iVar1 + 0x20U & 0xffffffe0;
   *(int *)(uVar2 - 4) = iVar1;

@@ -79,7 +79,7 @@ int ov90_0225A6B4(undefined1 *param_1,undefined1 *param_2,undefined1 param_3,und
   undefined4 uVar4;
   int iVar5;
   undefined1 *puVar6;
-  
+
   iVar3 = Heap_Alloc(param_4,0x664);
   func_0x020e5b44(iVar3,0,0x664);
   puVar6 = (undefined1 *)(iVar3 + 0x1c);

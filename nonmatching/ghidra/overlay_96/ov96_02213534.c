@@ -49,7 +49,7 @@ undefined4 ov96_02213534(undefined4 param_1,undefined4 param_2,int param_3)
 
 {
   int iVar1;
-  
+
   iVar1 = ov96_02213514();
   if (*(short *)(&FX_SinCosTable_ + ((param_3 >> 4) * 2 + 1) * 2) <= iVar1) {
     return 1;

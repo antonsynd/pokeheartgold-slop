@@ -50,7 +50,7 @@ undefined4 sub_02032FCC(void)
 
 {
   int iVar1;
-  
+
   iVar1 = func_0x020dfd14(0x203301d,iRam021d4128 + 0x1020,*(uint *)(iRam021d4128 + 0x1308) & 0xffff,
                           iRam021d4128 + 0xf40,*(uint *)(iRam021d4128 + 0x1304) & 0xffff,1);
   if (iVar1 != 2) {

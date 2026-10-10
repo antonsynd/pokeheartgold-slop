@@ -50,7 +50,7 @@ undefined4 ov87_021E7048(int param_1,undefined4 param_2,undefined4 param_3,undef
 
 {
   undefined4 uVar1;
-  
+
   ov87_021E7244(param_1,0,*(byte *)(param_1 + 0xe) + 1);
   uVar1 = ov87_021E6F38(param_1,param_1 + 0x14c,0xc,1,1,0,1,2,0xf,1,param_4);
   ScheduleWindowCopyToVram(param_1 + 0x14c);

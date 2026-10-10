@@ -64,7 +64,7 @@ void sub_020613F8(undefined4 param_1)
   short *psVar2;
   undefined4 uVar3;
   int iVar4;
-  
+
   psVar2 = (short *)sub_0205F394();
   switch(*psVar2) {
   case 0:

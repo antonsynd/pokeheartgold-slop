@@ -53,7 +53,7 @@ void ov68_021E6234(int param_1,int param_2,undefined4 param_3,uint param_4,int p
   uint uVar1;
   uint uVar2;
   int iVar3;
-  
+
   if (param_5 == 0) {
     uVar1 = 0;
   }

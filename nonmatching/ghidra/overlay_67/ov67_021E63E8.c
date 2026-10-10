@@ -58,7 +58,7 @@ void ov67_021E63E8(undefined4 *param_1)
   int iVar4;
   int iVar5;
   int iStack_20;
-  
+
   iVar1 = sub_0202D8E4(param_1[9],*param_1);
   iStack_20 = 0;
   puVar3 = param_1 + 0xa7;

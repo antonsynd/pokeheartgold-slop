@@ -51,7 +51,7 @@ undefined4 ov102_021EBAD0(int param_1)
 {
   int iVar1;
   undefined4 uVar2;
-  
+
   if (*(int *)(param_1 + 0x14) == 0) {
     iVar1 = ov102_021EC2EC(param_1 + 0x3c);
     if (iVar1 != 0) {

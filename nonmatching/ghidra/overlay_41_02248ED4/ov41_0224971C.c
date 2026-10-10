@@ -52,7 +52,7 @@ void ov41_0224971C(undefined4 *param_1,undefined4 param_2,undefined4 param_3,und
   int iStack_1c;
   int iStack_18;
   undefined4 uStack_14;
-  
+
   uStack_14 = param_4;
   ov41_022497A0(param_1,&iStack_18,&iStack_1c);
   Pokepic_SetAttr(*param_1,0,param_2);

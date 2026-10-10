@@ -51,7 +51,7 @@ int sub_0203511C(void)
   int iVar1;
   int iVar2;
   int iVar3;
-  
+
   iVar1 = sub_02037474();
   if (iVar1 == 0) {
     return 0;

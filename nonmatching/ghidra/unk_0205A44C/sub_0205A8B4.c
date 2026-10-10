@@ -58,7 +58,7 @@ void sub_0205A8B4(int param_1)
   undefined4 uVar5;
   int iVar6;
   int iVar7;
-  
+
   iVar7 = 1;
   do {
     iVar6 = iVar7 + -1;

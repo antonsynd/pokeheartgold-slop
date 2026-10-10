@@ -53,7 +53,7 @@ uint ov96_02210324(undefined4 *param_1,int param_2,uint param_3)
   uint unaff_r6;
   __asm__ volatile("movs %0, r6" : "=l"(unaff_r6) : : "cc");
 
-  
+
   iVar1 = ov96_021E5F24((undefined *)*param_1);
   if ((param_2 == iVar1) && (param_3 != *(ushort *)((int)param_1 + 0xe6))) {
     if (param_3 < *(ushort *)((int)param_1 + 0xe6)) {

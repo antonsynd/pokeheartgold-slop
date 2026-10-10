@@ -54,7 +54,7 @@ void sub_02066370(undefined *param_1)
   undefined4 uStack_18;
   undefined4 uStack_14;
   undefined4 uStack_10;
-  
+
   puVar1 = sub_0205F394(param_1);
   *puVar1 = 0;
   sub_02066420(param_1,0);

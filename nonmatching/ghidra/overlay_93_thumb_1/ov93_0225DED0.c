@@ -52,7 +52,7 @@ void ov93_0225DED0(int param_1)
   int iVar2;
   int iVar3;
   undefined4 uStack_1c;
-  
+
   sub_02018068(param_1 + 0xd8);
   iVar1 = 0;
   iVar3 = param_1 + 0x160;

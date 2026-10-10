@@ -59,7 +59,7 @@ void ov108_021E9144(int param_1,undefined4 param_2,undefined4 param_3,undefined4
   undefined4 uStack_3c;
   undefined1 auStack_38 [36];
   undefined4 uStack_14;
-  
+
   iVar1 = 0;
   uStack_14 = param_4;
   if (*(short *)(param_1 + 0xb6) != 0) {

@@ -57,7 +57,7 @@ void ov96_0221040C(int param_1,int param_2)
   uint uVar3;
   int iVar4;
   int iVar5;
-  
+
   { int nug_a = (int)(param_2), nug_b = (int)(100); extraout_r1 = nug_a % nug_b; _s32_div_f(nug_a, nug_b); }
   uVar3 = extraout_r1 & 0xff;
   uVar2 = _s32_div_f(uVar3,10);

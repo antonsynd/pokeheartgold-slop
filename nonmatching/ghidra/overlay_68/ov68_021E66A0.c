@@ -50,7 +50,7 @@ void ov68_021E66A0(int param_1,undefined4 param_2,undefined4 param_3,undefined4 
 
 {
   ushort *puVar1;
-  
+
   puVar1 = *(ushort **)(param_1 + 0x1c4);
   CopyToBgTilemapRect(*(undefined4 *)(param_1 + 4),7,param_2,param_3,param_4,param_5,puVar1 + 6,
                       param_6,param_7,(*puVar1 & 0x7ff) >> 3,(puVar1[1] & 0x7ff) >> 3,param_4);

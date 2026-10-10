@@ -50,7 +50,7 @@ void ov01_021EB968(int param_1,int param_2,int *param_3)
 
 {
   int iVar1;
-  
+
   if (param_2 != 0xffff) {
     if (*param_3 != 0) {
       SpriteTransfer_DeleteCharTransferTask();

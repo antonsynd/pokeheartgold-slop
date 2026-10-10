@@ -47,7 +47,7 @@ undefined4 ov10_0221F5F4(int param_1,int param_2)
 
 {
   int iVar1;
-  
+
   iVar1 = param_1 + param_2 * 0xc0;
   if (((*(uint *)(iVar1 + 0x2dc0) & 0x20) != 0) &&
      ((*(uint *)(iVar1 + 0x2dc8) & 0x7fff) >> 0xd == 0)) {

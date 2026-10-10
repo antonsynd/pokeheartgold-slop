@@ -48,7 +48,7 @@ undefined4 sub_02060EBC(undefined4 param_1,undefined1 param_2)
 
 {
   int iVar1;
-  
+
   iVar1 = MetatileBehavior_IsSnow(param_2);
   if (iVar1 != 0) {
     return 1;

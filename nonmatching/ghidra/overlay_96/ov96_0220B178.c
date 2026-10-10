@@ -52,7 +52,7 @@ void ov96_0220B178(undefined4 *param_1,undefined4 param_2,undefined4 param_3,und
   undefined4 uVar1;
   int extraout_r1;
   int iVar2;
-  
+
   iVar2 = 0;
   do {
     func_0x020f2998(iVar2,3);

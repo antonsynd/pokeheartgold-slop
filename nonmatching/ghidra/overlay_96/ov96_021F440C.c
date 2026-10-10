@@ -56,7 +56,7 @@ void ov96_021F440C(undefined4 param_1,int param_2,undefined4 param_3,undefined4 
   uint uVar3;
   undefined4 uVar4;
   undefined4 auStack_20 [3];
-  
+
   auStack_20[0] = 0x66;
   auStack_20[1] = 0x67;
   uVar3 = 0;

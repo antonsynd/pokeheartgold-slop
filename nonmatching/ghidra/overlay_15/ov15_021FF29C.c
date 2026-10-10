@@ -54,7 +54,7 @@ void ov15_021FF29C(int param_1,int param_2)
 {
   undefined4 uVar1;
   int iVar2;
-  
+
   uVar1 = NewString_ReadMsgData(*(undefined4 *)(param_1 + 0x2f0),8);
   FillWindowPixelBuffer(param_1 + 0x74,0);
   if (param_2 == 0) {

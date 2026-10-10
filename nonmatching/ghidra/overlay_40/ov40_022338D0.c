@@ -54,7 +54,7 @@ void ov40_022338D0(int param_1)
   int iVar1;
   int iVar2;
   int iVar3;
-  
+
   iVar3 = *(int *)(param_1 + 0x860);
   iVar1 = 0;
   iVar2 = iVar3;

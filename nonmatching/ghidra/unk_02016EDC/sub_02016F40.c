@@ -57,7 +57,7 @@ void sub_02016F40(int *param_1,undefined *param_2,ushort *param_3,uint param_4)
   int iVar4;
   uint uVar5;
   uint local_18;
-  
+
   uVar5 = (uint)*param_3;
   local_18 = (uint)param_3[1];
   if (*(byte *)((int)param_1 + 9) <= param_4) {

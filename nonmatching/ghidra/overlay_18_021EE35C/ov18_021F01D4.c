@@ -51,7 +51,7 @@ void ov18_021F01D4(int param_1,undefined4 param_2,int param_3,uint param_4)
   short sVar1;
   uint uVar2;
   uint uVar3;
-  
+
   uVar2 = 0;
   uVar3 = param_4;
   do {

@@ -50,7 +50,7 @@ undefined4 ov74_02231704(void)
 
 {
   int iVar1;
-  
+
   iVar1 = func_0x020df3b8(0x2230989);
   if (iVar1 != 2) {
     ov74_02231448();

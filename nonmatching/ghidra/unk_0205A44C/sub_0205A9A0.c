@@ -64,7 +64,7 @@ int sub_0205A9A0(undefined *param_1,undefined *param_2)
   int iVar4;
   int iVar5;
   undefined *puVar6;
-  
+
   iVar5 = 0;
   iVar4 = 0;
   puVar6 = param_1;

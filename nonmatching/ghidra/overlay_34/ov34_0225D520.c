@@ -50,7 +50,7 @@ void ov34_0225D520(int param_1,undefined4 param_2,undefined4 param_3,undefined4 
 
 {
   undefined4 uVar1;
-  
+
   uVar1 = NewString_ReadMsgData(*(undefined4 *)(param_1 + 0x1c),0xdb);
   AddTextPrinterParameterizedWithColor(param_1 + 0x274,0,uVar1,0,0,0,0xf0200,0,param_4);
   String_Delete(uVar1);

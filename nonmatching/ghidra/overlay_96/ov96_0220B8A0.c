@@ -53,7 +53,7 @@ void ov96_0220B8A0(int param_1)
   int iVar2;
   int iVar3;
   int iVar4;
-  
+
   if (param_1 == 0) {
     GF_AssertFail();
   }

@@ -59,7 +59,7 @@ undefined4 ov96_021FBF90(int param_1,int param_2,int param_3,undefined4 param_4)
   int iStack_20;
   undefined4 uStack_1c;
   undefined4 uStack_18;
-  
+
   iVar4 = param_2 * 8;
   uStack_18 = param_4;
   uVar1 = ov96_021FBE44(*(undefined4 *)(param_1 + iVar4),*(uint *)(param_1 + iVar4 + 4) & 0xff,

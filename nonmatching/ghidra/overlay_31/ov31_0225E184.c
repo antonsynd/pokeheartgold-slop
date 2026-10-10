@@ -57,7 +57,7 @@ void ov31_0225E184(int param_1,undefined4 param_2,undefined4 param_3,undefined4 
   int iVar2;
   int iVar3;
   int iVar4;
-  
+
   iVar2 = *(int *)(param_1 + 0x14);
   iVar4 = *(int *)(iVar2 + 0x290) + (uint)*(byte *)(iVar2 + 0x271);
   iVar3 = iVar4 * 2;

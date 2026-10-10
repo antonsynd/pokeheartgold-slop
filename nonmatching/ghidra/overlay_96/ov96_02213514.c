@@ -50,7 +50,7 @@ void ov96_02213514(undefined4 param_1,undefined4 param_2)
 {
   undefined1 auStack_20 [12];
   undefined1 auStack_14 [12];
-  
+
   func_0x020ccfe0(param_1,auStack_14);
   func_0x020ccfe0(param_2,auStack_20);
   func_0x020cce14(auStack_14,auStack_20);

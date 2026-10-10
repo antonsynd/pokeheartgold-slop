@@ -54,7 +54,7 @@ void ov18_021F209C(undefined *param_1,uint param_2,int param_3,int param_4)
   int iVar2;
   uint uVar3;
   int iVar4;
-  
+
   if (((param_1[0x185c] != '\x02') || (param_2 == 0)) ||
      (*(short *)(param_1 + param_3 * 4 + 0x1032) == 1)) {
     iVar4 = param_4 * 4;

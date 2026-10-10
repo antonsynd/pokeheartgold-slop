@@ -52,7 +52,7 @@ void sub_0205DFFC(undefined4 param_1,undefined4 param_2,int *param_3,int *param_
 {
   int iVar1;
   int iVar2;
-  
+
   iVar1 = PlayerAvatar_GetXCoord();
   iVar2 = GetDeltaXByFacingDirection(param_2);
   *param_3 = iVar1 + iVar2;

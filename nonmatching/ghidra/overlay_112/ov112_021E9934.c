@@ -50,7 +50,7 @@ void ov112_021E9934(int param_1,int param_2,int param_3,uint param_4)
   uint uVar2;
   byte bVar3;
   int iVar4;
-  
+
   iVar4 = param_3 >> 0x1f;
   uVar2 = ((uint)(param_3 * 0x20000000 + iVar4) >> 0x1d | iVar4 << 3) - iVar4;
   iVar4 = (int)(param_3 + ((uint)(param_3 >> 2) >> 0x1d)) >> 3;

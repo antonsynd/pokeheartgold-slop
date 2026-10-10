@@ -60,7 +60,7 @@ void ov70_0223EA6C(int *param_1)
   undefined1 uVar1;
   undefined4 uVar2;
   int iVar3;
-  
+
   iVar3 = param_1[1];
   uVar2 = NARC_New(100,0x3d);
   GfGfxLoader_GXLoadPal(100,1,0,0,0x40,0x3d);

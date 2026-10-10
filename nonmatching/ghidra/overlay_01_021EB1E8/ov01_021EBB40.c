@@ -47,7 +47,7 @@ void ov01_021EBB40(int *param_1,int param_2,undefined2 param_3)
 
 {
   int iVar1;
-  
+
   iVar1 = *param_1 + param_2 * 0x1c;
   if (*(short *)(iVar1 + 0x10) == 3) {
     *(undefined2 *)(*(int *)(iVar1 + 8) + 0xf66) = 5;

@@ -49,7 +49,7 @@ void sub_0208A79C(int param_1)
 
 {
   uint uVar1;
-  
+
   sub_0208BBDC(param_1);
   uVar1 = *(byte *)(param_1 + 0x7bd) & 0xf;
   if (uVar1 != 4) {

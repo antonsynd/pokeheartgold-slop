@@ -49,7 +49,7 @@ void ov01_021F05F4(undefined4 *param_1)
 
 {
   int iVar1;
-  
+
   SpriteList_Delete(*param_1);
   iVar1 = 0;
   do {

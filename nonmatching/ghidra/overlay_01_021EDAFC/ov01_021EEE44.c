@@ -69,7 +69,7 @@ void ov01_021EEE44(int param_1,undefined4 param_2)
   undefined4 uVar4;
   undefined4 uVar5;
   int iVar6;
-  
+
   FillWindowPixelRect(param_2,0xf,0,0x80,0x80,0x10);
   FillWindowPixelRect(param_2,0xf,0,0x180,0x80,0x10);
   uVar1 = NewMsgDataFromNarc(0,0x1b,0xbf,4);

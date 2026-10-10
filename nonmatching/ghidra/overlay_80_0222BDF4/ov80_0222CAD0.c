@@ -57,7 +57,7 @@ void ov80_0222CAD0(undefined4 *param_1,undefined4 param_2,int param_3)
   int iVar4;
   undefined2 *puVar5;
   undefined4 *puVar6;
-  
+
   puVar6 = (undefined4 *)*param_1;
   if (7 < param_3) {
     GF_AssertFail();

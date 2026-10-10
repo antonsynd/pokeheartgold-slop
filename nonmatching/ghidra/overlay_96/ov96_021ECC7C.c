@@ -55,7 +55,7 @@ void ov96_021ECC7C(undefined4 param_1,uint *param_2,int param_3)
   int iVar5;
   uint uVar6;
   uint uVar7;
-  
+
   uVar7 = 0;
   uVar6 = 0;
   puVar3 = param_2;

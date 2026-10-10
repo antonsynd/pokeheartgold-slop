@@ -52,7 +52,7 @@ void ov07_02221550(int param_1,int *param_2)
   int unaff_r5;
   __asm__ volatile("movs %0, r5" : "=l"(unaff_r5) : : "cc");
 
-  
+
   ov07_02231924(*param_2,param_2[9]);
   cVar1 = ov07_02231924(*param_2,param_2[10]);
   switch(param_2[3]) {

@@ -55,7 +55,7 @@ void ov96_0220D910(int param_1)
   int extraout_r1;
   int iStack_24;
   int aiStack_20 [4];
-  
+
   uVar1 = (*(uint *)(param_1 + 0x40) & 0xfffff) >> 0x10;
   func_0x020f2998(uVar1,3);
   { __auto_type nug_result = func_0x020f2998(uVar1,3); __asm__ volatile("movs %0, r1" : "=l"(extraout_r1) : : "cc"); iVar2 = nug_result; }

@@ -53,7 +53,7 @@ undefined4 FrtCmd_064(undefined4 *param_1)
   undefined2 uVar1;
   undefined2 *puVar2;
   int iVar3;
-  
+
   puVar2 = (undefined2 *)FrontierScript_ReadVarPtr();
   iVar3 = Frontier_GetLaunchArgs(*(undefined4 *)*param_1);
   Save_PlayerData_GetProfile(*(undefined4 *)(iVar3 + 8));

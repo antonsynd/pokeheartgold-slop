@@ -62,7 +62,7 @@ undefined4 ov96_022178A0(int param_1,undefined4 *param_2,undefined4 param_3,unde
   uint uVar3;
   undefined4 uVar4;
   undefined4 uVar5;
-  
+
   uVar5 = **(undefined4 **)(param_2[1] + 4);
   uVar4 = (*(undefined4 **)(param_2[1] + 4))[1];
   iVar1 = ov96_0221785C(*(undefined4 *)(param_1 + 0x14),param_2[5]);

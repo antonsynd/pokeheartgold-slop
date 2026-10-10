@@ -55,7 +55,7 @@ undefined4 ov39_02228E54(int *param_1)
   undefined4 uVar1;
   undefined4 uVar2;
   int iVar3;
-  
+
   uVar1 = sub_0202C6F4(*(undefined4 *)(*(int *)*param_1 + 4));
   uVar2 = func_0x02028d30(*(undefined4 *)(*(int *)*param_1 + 4));
   sub_0202C08C(uVar1);

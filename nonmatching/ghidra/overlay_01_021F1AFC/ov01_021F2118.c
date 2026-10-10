@@ -92,7 +92,7 @@ undefined4 ov01_021F2118(undefined4 param_1)
   int iVar6;
   int iVar7;
   undefined4 uVar8;
-  
+
   piVar3 = (int *)TaskManager_GetEnvironment();
   switch(*piVar3) {
   case 0:

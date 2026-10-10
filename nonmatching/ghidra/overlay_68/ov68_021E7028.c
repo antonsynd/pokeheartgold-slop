@@ -55,7 +55,7 @@ void ov68_021E7028(int *param_1,undefined4 param_2,uint param_3,undefined4 param
   int iVar1;
   undefined4 uVar2;
   undefined4 uVar3;
-  
+
   if (*(char *)(*param_1 + 0x18) == '\0') {
     iVar1 = GetMoveAttr(param_2,3);
   }

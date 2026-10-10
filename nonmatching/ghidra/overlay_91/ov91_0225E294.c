@@ -48,7 +48,7 @@ void ov91_0225E294(undefined2 *param_1,undefined2 *param_2,undefined4 param_3,un
 
 {
   undefined4 uVar1;
-  
+
   *param_2 = *param_1;
   param_2[1] = param_1[1];
   *(int *)(param_2 + 2) = (int)(short)param_1[2];

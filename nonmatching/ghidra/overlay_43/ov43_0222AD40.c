@@ -51,7 +51,7 @@ void ov43_0222AD40(int param_1,uint param_2,int param_3,undefined4 param_4)
 {
   uint uVar1;
   int iVar2;
-  
+
   uVar1 = param_2 & 0x7f;
   if (1 < param_2) {
     param_2 = param_2 - 2 & 0xff;

@@ -50,7 +50,7 @@ int ov41_02247DF8(int param_1)
 {
   int iVar1;
   undefined4 uVar2;
-  
+
   iVar1 = YesNoPrompt_HandleInput(*(undefined4 *)(param_1 + 0x6b8));
   if (iVar1 == 0) {
     return 5;

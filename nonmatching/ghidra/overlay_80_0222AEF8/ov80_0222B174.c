@@ -51,7 +51,7 @@ undefined4 ov80_0222B174(int param_1)
   undefined2 *puVar2;
   int iVar3;
   undefined2 *puVar4;
-  
+
   iVar3 = 0;
   puVar2 = (undefined2 *)(param_1 + 0x504);
   puVar4 = puVar2;

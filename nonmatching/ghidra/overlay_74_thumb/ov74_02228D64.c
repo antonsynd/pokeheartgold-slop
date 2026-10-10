@@ -73,7 +73,7 @@ void ov74_02228D64(undefined4 *param_1,undefined4 param_2,undefined4 param_3,und
   undefined4 uStack_3c;
   undefined4 auStack_38 [10];
   undefined4 uStack_10;
-  
+
   puVar6 = (undefined4 *)&UNK_0223b340;
   puVar5 = auStack_38;
   iVar4 = 5;

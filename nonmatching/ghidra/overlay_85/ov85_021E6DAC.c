@@ -52,7 +52,7 @@ void ov85_021E6DAC(int param_1,undefined4 param_2,undefined4 param_3,undefined4 
 
 {
   undefined4 uVar1;
-  
+
   uVar1 = ov85_021E8588(param_1,param_2,0,param_4,param_4);
   func_0x020b71d8(uVar1,param_1 + 0xd88);
   func_0x0201c0a8(*(undefined4 *)(param_1 + 0xd84),6,*(int *)(param_1 + 0xd88) + 0xc,

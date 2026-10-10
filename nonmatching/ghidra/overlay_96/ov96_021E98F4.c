@@ -58,7 +58,7 @@ void ov96_021E98F4(undefined1 param_1,undefined4 param_2,int param_3,undefined4 
   int iVar2;
   int iVar3;
   uint uVar4;
-  
+
   PokeathlonCourse_GetDataCopyArea(param_4);
   iVar1 = ov96_021E5F24(param_4);
   if (iVar1 == 0) {

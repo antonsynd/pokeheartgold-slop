@@ -57,7 +57,7 @@ void ov80_0222EDA0(int *param_1,int param_2)
   int iVar1;
   int *piVar2;
   int iVar3;
-  
+
   iVar3 = *param_1;
   if (param_2 == 1) {
     PlaySE(0x5dc);

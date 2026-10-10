@@ -57,7 +57,7 @@ void ov00_021E700C(void)
   undefined1 auStack_30 [12];
   undefined1 auStack_24 [12];
   undefined4 uStack_18;
-  
+
   uStack_18 = in_r3;
   iVar1 = func_0x020a0100(*(undefined4 *)(iRam0221a680 + 0xf10));
   if (iVar1 == 0) {

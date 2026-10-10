@@ -69,7 +69,7 @@ void ov51_021E6F18(int param_1,int param_2,int param_3)
   undefined4 uVar5;
   int iVar6;
   uint uVar7;
-  
+
   uVar1 = *(undefined4 *)(param_1 + 0x33c4);
   uVar7 = 0;
   do {

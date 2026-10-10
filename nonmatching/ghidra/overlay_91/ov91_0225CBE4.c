@@ -54,7 +54,7 @@ void ov91_0225CBE4(int param_1,undefined4 param_2)
   int iVar2;
   int iVar3;
   undefined4 uStack_18;
-  
+
   uVar1 = GfGfxLoader_LoadFromNarc_GetSizeOut(0xd4,0,0,param_2,0,&uStack_18);
   *(undefined4 *)(param_1 + 0x4c) = uVar1;
   uVar1 = func_0x020f2ba4(uStack_18,0x18);

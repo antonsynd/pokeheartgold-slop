@@ -51,7 +51,7 @@ undefined4 ov14_021ED258(int *param_1)
 
 {
   int iVar1;
-  
+
   ov14_021F63A8(param_1[0xd]);
   if (*(int *)(*param_1 + 8) == 3) {
     ov14_021F6AC0(param_1,7,0);

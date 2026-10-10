@@ -56,7 +56,7 @@ void ov14_021F7700(int param_1,uint param_2,int param_3)
 
 {
   char cVar1;
-  
+
   if (((int)param_2 < 0) || (5 < (int)param_2)) {
     ov14_021F29E4(*(undefined4 *)(param_1 + 0x34),9,8);
   }

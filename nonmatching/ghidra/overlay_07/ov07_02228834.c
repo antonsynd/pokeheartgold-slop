@@ -76,7 +76,7 @@ void ov07_02228834(undefined4 param_1,char *param_2)
   undefined4 uStack_20;
   undefined4 uStack_1c;
   undefined4 uStack_18;
-  
+
   switch(*param_2) {
   case '\0':
     Pokepic_SetAttr(*(undefined4 *)(param_2 + 0xc),0xe,1);

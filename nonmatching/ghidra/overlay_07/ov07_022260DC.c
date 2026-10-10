@@ -47,7 +47,7 @@ bool ov07_022260DC(int param_1,undefined4 param_2,uint param_3,uint param_4)
 
 {
   int *piVar1;
-  
+
   for (piVar1 = *(int **)(param_1 + 8); piVar1 != (int *)0x0; piVar1 = (int *)*piVar1) {
     param_3 = (uint)*(ushort *)((int)piVar1 + 0x26);
     param_4 = (uint)*(ushort *)(piVar1 + 9);

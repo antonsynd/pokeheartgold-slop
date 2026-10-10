@@ -63,7 +63,7 @@ undefined4 ov10_022205BC(int param_1,uint param_2)
   int iVar6;
   int iVar7;
   uint uStack_20;
-  
+
   iVar7 = *(int *)(param_1 + 0x30);
   uVar1 = func_0x0223a7e0();
   if (((uVar1 & 1) != 0) || (iVar2 = func_0x0223ab1c(param_1,param_2), iVar2 == 0)) {

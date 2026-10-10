@@ -53,7 +53,7 @@ void ov45_0222EFAC(uint param_1,undefined4 param_2,int param_3)
 {
   undefined4 uVar1;
   int iVar2;
-  
+
   if (iRam022577c0 == 0) {
     GF_AssertFail();
   }

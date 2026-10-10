@@ -52,7 +52,7 @@ ov74_02231460(undefined4 param_1,undefined2 param_2,undefined4 param_3,undefined
 {
   undefined2 uVar1;
   int iVar2;
-  
+
   uVar1 = ov74_022310AC();
   iVar2 = func_0x020dfd7c(0x2230019,0,param_1,param_2,param_3,uVar1,2,param_4);
   if (iVar2 != 2) {

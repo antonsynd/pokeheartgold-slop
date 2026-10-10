@@ -53,7 +53,7 @@ void ov48_0225A6DC(int param_1,undefined4 *param_2)
   int iVar2;
   short sVar3;
   int iVar4;
-  
+
   sVar3 = 0x94;
   iVar4 = 0;
   cVar1 = '\0';

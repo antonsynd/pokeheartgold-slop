@@ -57,7 +57,7 @@ bool ov49_02262CB4(short *param_1,undefined4 param_2,undefined1 *param_3,undefin
   undefined4 uVar2;
   int iVar3;
   uint uVar4;
-  
+
   uVar2 = ov49_02259FE8(param_2);
   iVar3 = sub_0203988C();
   uVar4 = func_0x0222f314(param_3[1]);

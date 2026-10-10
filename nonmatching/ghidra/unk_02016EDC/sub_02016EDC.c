@@ -51,7 +51,7 @@ int * sub_02016EDC(int param_1,int param_2,undefined4 param_3,undefined4 param_4
   int *piVar1;
   int iVar2;
   int iVar3;
-  
+
   piVar1 = (int *)Heap_Alloc(param_1,0xc,param_3,param_4,param_4);
   *(char *)(piVar1 + 2) = (char)param_3;
   *(char *)((int)piVar1 + 9) = (char)param_2;

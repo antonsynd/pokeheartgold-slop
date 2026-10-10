@@ -59,7 +59,7 @@ void DrawFrameAndWindow3(uint *param_1,int param_2,int param_3,uint param_4,byte
   byte bVar1;
   byte bVar2;
   byte bVar3;
-  
+
   bVar1 = GetWindowBgId((undefined *)param_1);
   if (param_5 < 2) {
     bVar2 = GetWindowX((undefined *)param_1);

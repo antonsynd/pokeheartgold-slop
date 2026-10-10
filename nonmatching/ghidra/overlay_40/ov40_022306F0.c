@@ -54,7 +54,7 @@ undefined4 ov40_022306F0(int param_1,undefined4 param_2,undefined4 param_3,undef
   undefined1 auStack_18 [4];
   undefined1 auStack_14 [4];
   undefined4 uStack_10;
-  
+
   uStack_10 = param_4;
   uVar1 = Save_Misc_Get(*(undefined4 *)(param_1 + 0x830));
   sub_0202AC38(uVar1,*(int *)(param_1 + 0x86c) + 2,auStack_14,auStack_18,auStack_1c);

@@ -51,7 +51,7 @@ void ov96_021EC51C(int param_1)
 {
   uint uVar1;
   int iVar2;
-  
+
   uVar1 = 0;
   do {
     iVar2 = param_1 + uVar1 * 4;

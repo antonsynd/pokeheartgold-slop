@@ -53,7 +53,7 @@ void ov39_0222915C(undefined4 *param_1,undefined4 *param_2)
   undefined4 *puVar4;
   undefined4 *puVar5;
   undefined1 *puVar6;
-  
+
   func_0x020d4994(param_2,0,0x60);
   iVar3 = 0;
   *param_2 = *param_1;

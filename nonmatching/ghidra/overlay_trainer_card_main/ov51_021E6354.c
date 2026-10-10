@@ -70,7 +70,7 @@ void ov51_021E6354(undefined4 *param_1)
   undefined1 *puVar4;
   int iStack_14;
   int iStack_10;
-  
+
   uVar1 = GfGfxLoader_GetPlttData(0x31,0,&iStack_10,0x19);
   func_0x020d2894(*(undefined4 *)(iStack_10 + 0xc),0x200);
   func_0x020cfcc0(*(undefined4 *)(iStack_10 + 0xc),0,0x200);

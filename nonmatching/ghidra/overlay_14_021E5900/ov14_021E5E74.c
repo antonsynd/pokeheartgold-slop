@@ -49,7 +49,7 @@ void ov14_021E5E74(int param_1)
 
 {
   undefined4 uVar1;
-  
+
   uVar1 = PaletteData_Init(10);
   *(undefined4 *)(*(int *)(param_1 + 0x34) + 0x18) = uVar1;
   PaletteData_AllocBuffers(*(undefined4 *)(*(int *)(param_1 + 0x34) + 0x18),0,0x200,10);

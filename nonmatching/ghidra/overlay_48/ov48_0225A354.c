@@ -60,7 +60,7 @@ void ov48_0225A354(int param_1,undefined4 param_2,undefined4 param_3,undefined4 
   uint uVar4;
   uint auStack_24 [3];
   undefined4 uStack_18;
-  
+
   uStack_18 = param_4;
   func_0x020e5b44(param_1 + 0x40,0,0x48);
   iVar3 = 0;

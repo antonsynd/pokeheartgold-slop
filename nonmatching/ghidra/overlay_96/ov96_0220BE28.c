@@ -64,7 +64,7 @@ void ov96_0220BE28(undefined4 *param_1,undefined4 param_2,undefined4 param_3,und
   uint uVar6;
   undefined4 *puVar7;
   int iVar8;
-  
+
   MI_CpuFill8((undefined *)param_1,0,0x3c);
   uVar1 = (uint)param_5;
   param_1[0xe] = (uVar1 & 3) << 0x19 | param_1[0xe] & 0xf9ffffff;

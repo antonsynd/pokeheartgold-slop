@@ -57,7 +57,7 @@ ov01_021F67B4(undefined *param_1,uint param_2,undefined *param_3,undefined4 *par
   int iVar1;
   undefined *puVar2;
   int *piVar3;
-  
+
   NARC_ReadFile(param_1,param_2,(undefined *)*param_4);
   if (((param_5 != (undefined *)0x0) && (iVar1 = GF3dRender_ResTexIsLoaded(param_5), iVar1 == 1)) &&
      (iVar1 = GF3dRender_BindModelSet((undefined *)*param_4,param_5), iVar1 == 0)) {

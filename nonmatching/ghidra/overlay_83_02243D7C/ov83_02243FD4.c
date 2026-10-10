@@ -97,7 +97,7 @@ void ov83_02243FD4(int param_1,undefined4 param_2,undefined4 param_3,undefined4 
   int iStack_20;
   int iStack_1c;
   undefined4 uStack_18;
-  
+
   uStack_18 = param_4;
   uVar2 = NARC_New(0xb7,0x6b);
   *(undefined4 *)(param_1 + 0x560) = uVar2;

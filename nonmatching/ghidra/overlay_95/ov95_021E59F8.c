@@ -53,7 +53,7 @@ void ov95_021E59F8(void)
   int iVar1;
   int iVar2;
   undefined4 in_r3;
-  
+
   iVar1 = (*(code *)&UNK_020b59bc)(0x8000,0,0,&UNK_020b59bc,in_r3);
   iVar2 = (*(code *)&UNK_020b59cc)(0x80,0,0);
   if (iVar1 == 0) {

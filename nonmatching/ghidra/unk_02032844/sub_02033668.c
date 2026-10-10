@@ -56,7 +56,7 @@ sub_02033668(int param_1,undefined2 param_2,undefined2 param_3,uint param_4,unde
 {
   int iVar1;
   undefined4 uVar2;
-  
+
   sub_0203993C();
   iVar1 = sub_020340C4();
   if (iVar1 != 0) {

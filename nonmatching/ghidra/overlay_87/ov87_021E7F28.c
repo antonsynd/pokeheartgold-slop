@@ -51,7 +51,7 @@ void ov87_021E7F28(int param_1,int param_2)
 
 {
   undefined4 uVar1;
-  
+
   if (7 < param_2) {
     GF_AssertFail();
   }

@@ -92,7 +92,7 @@ void ov85_021E6A2C(int param_1)
   undefined4 uStack_18;
   undefined4 uStack_14;
   undefined4 uStack_10;
-  
+
   puVar1 = BgConfig_Alloc(0x66);
   *(undefined **)(param_1 + 0xd84) = puVar1;
   uRam04000304 = uRam04000304 | 0x8000;

@@ -53,7 +53,7 @@ void ov14_021E78AC(int param_1,int param_2)
   int iVar1;
   int iVar2;
   undefined4 uVar3;
-  
+
   iVar1 = *(int *)(param_1 + 0x34);
   if (*(char *)(iVar1 + 0x449) == '\0') {
     uVar3 = 0x25c;

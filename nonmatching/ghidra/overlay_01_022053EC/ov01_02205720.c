@@ -51,7 +51,7 @@ void ov01_02205720(undefined4 param_1,undefined4 param_2,undefined4 param_3,unde
   int aiStack_20 [2];
   int iStack_18;
   undefined4 uStack_14;
-  
+
   uStack_14 = param_4;
   MapObject_CopyPositionVector(param_1,aiStack_20);
   switch(param_3) {

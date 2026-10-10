@@ -57,7 +57,7 @@ void ov34_0225E1C4(undefined4 param_1,int param_2,int param_3,int param_4,int pa
   undefined4 uVar3;
   int iVar4;
   char cVar5;
-  
+
   iVar4 = 0;
   if (3 < param_5) {
     param_5 = 3;

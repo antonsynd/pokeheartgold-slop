@@ -53,7 +53,7 @@ void ov34_0225E164(int param_1)
 {
   int iVar1;
   int iVar2;
-  
+
   iVar2 = -1;
   iVar1 = FieldSystem_TaskIsRunning(*(undefined4 *)(param_1 + 0xc));
   if (iVar1 == 0) {

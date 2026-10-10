@@ -53,7 +53,7 @@ undefined * sub_020932E0(int param_1,int param_2,undefined1 param_3)
   undefined *puVar1;
   undefined *puVar2;
   undefined4 uVar3;
-  
+
   puVar1 = Heap_Alloc(param_1,0x46e8);
   memset(puVar1,0,0x46e8);
   if (param_2 == 0) {

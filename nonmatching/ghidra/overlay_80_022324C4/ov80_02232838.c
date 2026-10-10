@@ -61,7 +61,7 @@ void ov80_02232838(int param_1)
   undefined4 uVar5;
   int iVar6;
   int iVar7;
-  
+
   uVar4 = Party_GetCount(*(undefined4 *)(param_1 + 0x28));
   iVar7 = 0;
   iVar6 = param_1;

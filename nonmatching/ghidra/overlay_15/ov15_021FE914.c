@@ -51,7 +51,7 @@ void ov15_021FE914(int param_1,undefined *param_2,ushort *param_3,uint param_4)
 
 {
   ushort uVar1;
-  
+
   uVar1 = *param_3;
   if (uVar1 < 0x1a4) {
     sub_0200CE7C(*(undefined **)(param_1 + 0x2ec),2,(uint)(ushort)(uVar1 - 0x147),2,2,param_2,0,

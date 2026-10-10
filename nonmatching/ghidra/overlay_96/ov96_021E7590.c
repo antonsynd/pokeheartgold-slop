@@ -50,7 +50,7 @@ undefined4 ov96_021E7590(int param_1)
 
 {
   int iVar1;
-  
+
   iVar1 = GF_heap_c_dummy_return_true(0x5c);
   if (iVar1 == 0) {
     GF_AssertFail();

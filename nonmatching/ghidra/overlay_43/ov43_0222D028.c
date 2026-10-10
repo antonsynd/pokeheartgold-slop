@@ -54,7 +54,7 @@ void ov43_0222D028(int param_1,int param_2,undefined4 *param_3)
 {
   undefined4 uVar1;
   ushort *puVar2;
-  
+
   uVar1 = Save_PlayerData_GetProfile(*(undefined4 *)(param_2 + 4));
   BufferPlayersName(param_3[0x14],0,uVar1);
   ov43_0222A9F4(param_3,param_3 + 0x19,0x32);

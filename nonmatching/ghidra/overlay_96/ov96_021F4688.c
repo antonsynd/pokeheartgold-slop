@@ -49,7 +49,7 @@ void ov96_021F4688(int param_1,uint param_2,int param_3)
 
 {
   int iVar1;
-  
+
   iVar1 = ov96_021E5F24(*(undefined4 *)(param_1 + 4));
   if ((param_3 == iVar1) && (*(byte *)(param_1 + 0x150) != param_2)) {
     if (param_2 <= *(byte *)(param_1 + 0x150)) {

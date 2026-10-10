@@ -52,7 +52,7 @@ undefined4 sub_020335D4(int param_1)
 
 {
   int iVar1;
-  
+
   sub_02032844(3);
   if (param_1 == 1) {
     iVar1 = func_0x020df3f8(iRam021d4128 + 0x40,0x2033621,2);

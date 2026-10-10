@@ -60,7 +60,7 @@ void ov74_0223078C(int param_1)
   int iVar4;
   int iVar5;
   uint *puVar6;
-  
+
   iVar1 = ov74_02231184();
   iVar2 = ov74_02231094();
   if ((iVar2 == 2) && (*(char *)(iVar1 + 0x19) != '\x02')) {

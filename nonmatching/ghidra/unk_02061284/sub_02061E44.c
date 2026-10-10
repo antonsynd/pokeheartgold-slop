@@ -54,7 +54,7 @@ undefined4 sub_02061E44(undefined4 param_1,undefined4 param_2)
   undefined4 uVar2;
   undefined4 uVar3;
   int extraout_r1;
-  
+
   iVar1 = sub_02061E6C();
   uVar2 = LCRandom();
   uVar3 = sub_02061E00(iVar1,param_2);

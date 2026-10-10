@@ -56,7 +56,7 @@ uint AGB_GetBoxMonData(uint *param_1,int param_2,int param_3)
   byte *pbStack_24;
   int iStack_20;
   ushort *puStack_1c;
-  
+
   uVar2 = 0;
   puVar3 = (uint *)0x0;
   puStack_1c = (ushort *)0x0;

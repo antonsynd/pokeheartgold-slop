@@ -53,7 +53,7 @@ void ov74_0222FFAC(void)
   uint uVar3;
   int iVar4;
   uint uVar5;
-  
+
   iVar2 = ov74_022310C4();
   uVar3 = func_0x020def24();
   if (uVar3 != 0) {

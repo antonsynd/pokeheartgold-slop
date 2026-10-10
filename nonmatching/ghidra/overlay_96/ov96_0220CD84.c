@@ -48,7 +48,7 @@ void ov96_0220CD84(int param_1,uint param_2)
 {
   uint uVar1;
   uint uVar2;
-  
+
   if (param_2 == 1) {
     uVar2 = ((*(uint *)(param_1 + 0x14) & 0xffffff) >> 0x10) - 10;
     if ((int)uVar2 < 0x65) {

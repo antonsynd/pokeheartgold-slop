@@ -47,7 +47,7 @@ undefined4 ov96_02218688(int param_1)
 
 {
   int iVar1;
-  
+
   iVar1 = *(int *)(param_1 + 0x60);
   if (iVar1 << 4 < 0) {
     return 0;

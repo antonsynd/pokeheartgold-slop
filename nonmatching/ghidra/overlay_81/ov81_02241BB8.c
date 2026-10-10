@@ -48,7 +48,7 @@ void ov81_02241BB8(undefined4 *param_1)
 
 {
   undefined4 uVar1;
-  
+
   uVar1 = YesNoPrompt_Create(100);
   *param_1 = uVar1;
   return;

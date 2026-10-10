@@ -67,7 +67,7 @@ undefined4 ov08_0221C048(int *param_1)
 {
   int iVar1;
   undefined4 uVar2;
-  
+
   uRam04001050 = 0;
   if (*(char *)(*param_1 + 0x35) == '\x03') {
     *(undefined1 *)((int)param_1 + 0x207a) = 6;

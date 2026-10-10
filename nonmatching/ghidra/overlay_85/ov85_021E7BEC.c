@@ -48,7 +48,7 @@ undefined4 ov85_021E7BEC(undefined4 *param_1)
 
 {
   int iVar1;
-  
+
   iVar1 = param_1[4];
   *(int *)(iVar1 + 0x54) = *(int *)(iVar1 + 0x54) - param_1[3];
   if ((param_1[2] == 0) && (*(int *)(iVar1 + 0x54) < 0x68001)) {

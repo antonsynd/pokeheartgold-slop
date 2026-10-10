@@ -51,7 +51,7 @@ undefined4 ov113_021E5F94(int param_1,undefined4 *param_2)
 {
   int iVar1;
   undefined4 uVar2;
-  
+
   iVar1 = func_0x0202529c(&ov113_021E6B82);
   if (iVar1 == -1) {
     return 2;

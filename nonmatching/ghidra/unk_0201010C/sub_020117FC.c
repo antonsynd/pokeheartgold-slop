@@ -49,7 +49,7 @@ undefined4 sub_020117FC(int *param_1,undefined4 param_2,undefined4 param_3,undef
 
 {
   int iVar1;
-  
+
   iVar1 = param_1[0x10];
   param_1[0x10] = iVar1 + 1;
   if (param_1[0xf] <= iVar1 + 1) {

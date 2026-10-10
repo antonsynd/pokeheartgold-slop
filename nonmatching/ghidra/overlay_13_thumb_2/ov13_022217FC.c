@@ -52,7 +52,7 @@ undefined4 ov13_022217FC(undefined4 param_1,int param_2,int *param_3,undefined4 
 
 {
   int iVar1;
-  
+
   iVar1 = ov13_02222A84(*(undefined2 *)(param_2 + 0xc));
   if (iVar1 == 0) {
     *param_3 = *param_3 + 1;

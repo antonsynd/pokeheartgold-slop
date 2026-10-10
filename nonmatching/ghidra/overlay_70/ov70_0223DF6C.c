@@ -53,7 +53,7 @@ undefined4 ov70_0223DF6C(int *param_1)
 {
   int iVar1;
   undefined *puVar2;
-  
+
   iVar1 = ov70_02238C8C((int)param_1);
   if (iVar1 == 1) {
     YesNoPrompt_Destroy((undefined *)param_1[0x472]);

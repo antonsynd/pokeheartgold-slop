@@ -61,7 +61,7 @@ undefined4 ov40_022322E0(int param_1)
   int iVar2;
   int iVar3;
   longlong lVar4;
-  
+
   iVar3 = *(int *)(param_1 + 0x860);
   if (*(int *)(param_1 + 8) == 0) {
     iVar2 = ov40_0222DA84(iVar3 + 8,1);

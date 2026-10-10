@@ -57,7 +57,7 @@ void ov92_0225F9C4(int *param_1)
   int *piVar4;
   int *piVar5;
   int *piStack_20;
-  
+
   iVar1 = param_1[1];
   iVar3 = 0;
   if (0 < iVar1) {

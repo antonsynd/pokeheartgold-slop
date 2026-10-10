@@ -81,7 +81,7 @@ void ov07_0222B320(undefined4 param_1,undefined4 param_2,undefined4 param_3,unde
   int iStack_64;
   undefined1 auStack_4c [52];
   undefined4 uStack_18;
-  
+
   uStack_18 = param_4;
   iVar6 = ov07_022324D8(param_1,0x74);
   *(undefined2 *)(iVar6 + 0x1c) = 10;

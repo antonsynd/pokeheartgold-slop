@@ -66,7 +66,7 @@ ov74_02233230(undefined4 param_1,undefined4 param_2,undefined4 param_3,undefined
   int iVar1;
   undefined4 uVar2;
   int iVar3;
-  
+
   Heap_Create(3,0x4c,0x38000,param_4,param_4);
   iVar1 = OverlayManager_CreateAndGetData(param_1,0x12610,0x4c);
   func_0x020e5b44(iVar1,0,0x12610);

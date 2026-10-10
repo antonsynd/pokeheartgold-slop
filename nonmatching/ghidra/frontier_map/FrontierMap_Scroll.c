@@ -52,7 +52,7 @@ void FrontierMap_Scroll(int param_1)
 {
   int iVar1;
   int iVar2;
-  
+
   iVar1 = Frontier_GetLaunchArgs(*(undefined4 *)(param_1 + 8));
   iVar2 = ov80_0222ACA0(*(undefined1 *)(iVar1 + 0x20),0xc);
   if ((iVar2 == 0) || (iVar2 != 1)) {

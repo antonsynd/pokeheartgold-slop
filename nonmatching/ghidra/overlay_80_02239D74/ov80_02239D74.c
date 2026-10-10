@@ -54,7 +54,7 @@ ov80_02239D74(undefined4 param_1,undefined4 param_2,undefined4 param_3,undefined
 {
   undefined4 *puVar1;
   undefined4 uVar2;
-  
+
   puVar1 = (undefined4 *)Heap_Alloc(0x65,0xc);
   func_0x020d4994(puVar1,0,0xc);
   uVar2 = ov80_02239DD0(param_1);

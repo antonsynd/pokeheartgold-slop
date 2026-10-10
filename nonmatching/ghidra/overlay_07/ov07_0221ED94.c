@@ -58,7 +58,7 @@ void ov07_0221ED94(int param_1)
   uint uVar6;
   uint *puVar7;
   undefined4 uVar8;
-  
+
   iVar3 = ov07_0221DF1C();
   uVar2 = ov07_0221C4A8(param_1,4);
   *(undefined1 *)(iVar3 + 0xd) = uVar2;

@@ -51,7 +51,7 @@ void ov40_0223A324(int param_1,int *param_2)
 {
   undefined4 uVar1;
   int iVar2;
-  
+
   iVar2 = *(int *)(param_1 + 0x860);
   if (*param_2 == 1) {
     *(int *)(iVar2 + 0x71c) = iVar2 + 0x710;

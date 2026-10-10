@@ -53,7 +53,7 @@ ov40_02244B70(undefined4 param_1,undefined4 param_2,undefined4 param_3,short *pa
 {
   int iVar1;
   undefined4 uVar2;
-  
+
   if (*param_4 == 0) {
     if (iRam021d2af8 == 0) {
       GF_AssertFail();

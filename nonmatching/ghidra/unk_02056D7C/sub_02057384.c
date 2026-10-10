@@ -49,7 +49,7 @@ void sub_02057384(uint param_1,undefined4 param_2,undefined4 param_3,undefined4 
 
 {
   undefined1 *puVar1;
-  
+
   if ((iRam021d41c4 != 0) && (*(byte *)(iRam021d41c4 + 0xed) != param_1)) {
     puVar1 = (undefined1 *)(iRam021d41c4 + 0xed);
     *puVar1 = (char)param_1;

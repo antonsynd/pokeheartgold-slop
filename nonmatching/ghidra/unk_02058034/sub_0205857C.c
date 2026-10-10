@@ -56,7 +56,7 @@ void sub_0205857C(void)
   int iVar1;
   int iVar2;
   int iStack_18;
-  
+
   iStack_18 = 0;
   iVar1 = sub_02037454();
   if (0 < iVar1) {

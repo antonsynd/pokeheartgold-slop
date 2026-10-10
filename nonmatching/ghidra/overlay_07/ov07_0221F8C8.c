@@ -54,7 +54,7 @@ int ov07_0221F8C8(undefined4 param_1,int param_2)
   undefined4 uVar2;
   int iVar3;
   char cVar4;
-  
+
   uVar1 = ov07_0221C468();
   uVar2 = ov07_0221C470(param_1);
   ov07_0223192C(param_1,uVar1);

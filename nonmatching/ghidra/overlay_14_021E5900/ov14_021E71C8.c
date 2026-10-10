@@ -49,7 +49,7 @@ uint ov14_021E71C8(uint param_1)
 {
   uint uVar1;
   ushort *puVar2;
-  
+
   puVar2 = (ushort *)&ov14_021F7BC0;
   uVar1 = 0;
   do {

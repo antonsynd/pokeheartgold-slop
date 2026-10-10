@@ -58,7 +58,7 @@ ov45_0222E39C(char *param_1,undefined4 param_2,undefined4 param_3,undefined4 par
   uint uVar3;
   uint uVar4;
   char *pcVar5;
-  
+
   uVar4 = 0;
   uVar3 = 0;
   if (*(int *)(param_1 + 4) != 0) {

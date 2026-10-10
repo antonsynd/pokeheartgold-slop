@@ -72,7 +72,7 @@ void ov96_0221768C(undefined4 *param_1,undefined *param_2)
   __asm__ volatile("movs %0, r5" : "=l"(unaff_r5) : : "cc");
 
   undefined1 auStack_1c [8];
-  
+
   puVar2 = PokeathlonCourse_GetDataCopyArea(param_2);
   puVar2 = ov96_021E8A20(puVar2 + 0xf0);
   puVar3 = PokeathlonCourse_GetHeapAllocPtr4(param_2);

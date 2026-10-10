@@ -56,7 +56,7 @@ bool ov112_021EE8BC(undefined4 param_1,undefined4 param_2,int param_3,int param_
   int iVar2;
   bool bVar3;
   int iStack_18;
-  
+
   bVar3 = false;
   iStack_18 = param_4;
   uVar1 = GetBoxMonData(param_1,0xa1,0);

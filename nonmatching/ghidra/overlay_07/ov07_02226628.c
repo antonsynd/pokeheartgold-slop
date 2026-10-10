@@ -54,7 +54,7 @@ void ov07_02226628(undefined4 param_1,int param_2)
   short sVar1;
   int iVar2;
   int iVar3;
-  
+
   iVar2 = ov07_022260DC(*(undefined4 *)(param_2 + 0x38));
   iVar3 = ov07_02222180(param_2 + 0x58);
   if ((iVar3 == 0) && (iVar2 == 0)) {

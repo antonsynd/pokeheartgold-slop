@@ -56,7 +56,7 @@ void sub_0200F54C(undefined4 param_1,undefined4 *param_2,undefined4 param_3,unde
 {
   char cVar1;
   int iVar2;
-  
+
   cVar1 = *(char *)((int)param_2 + 0x16f);
   if (cVar1 == '\x01') {
     sub_0200F9DC(param_2);

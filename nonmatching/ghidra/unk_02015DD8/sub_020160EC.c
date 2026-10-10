@@ -48,7 +48,7 @@ int sub_020160EC(int *param_1)
 {
   int iVar1;
   int iVar2;
-  
+
   iVar1 = 0;
   if (0 < param_1[1]) {
     iVar2 = *param_1;

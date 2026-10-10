@@ -58,7 +58,7 @@ ov49_022652E8(undefined4 param_1,undefined4 param_2,undefined4 param_3,undefined
 {
   undefined4 *puVar1;
   undefined *puVar2;
-  
+
   puVar1 = (undefined4 *)Heap_Alloc(param_5,0x1082c);
   memset((undefined *)puVar1,0,0x1082c);
   *puVar1 = param_1;

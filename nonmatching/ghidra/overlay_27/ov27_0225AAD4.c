@@ -62,7 +62,7 @@ void ov27_0225AAD4(int param_1)
   int iVar5;
   int iVar6;
   int iStack_20;
-  
+
   iVar1 = ov27_0225AA60(param_1 + 0x514,7);
   puVar4 = (ushort *)&ov27_0225CF10;
   iVar5 = 0;

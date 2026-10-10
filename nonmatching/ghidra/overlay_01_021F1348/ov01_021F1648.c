@@ -57,7 +57,7 @@ void ov01_021F1648(int param_1,undefined4 param_2,undefined4 param_3,undefined4 
   undefined4 uVar2;
   undefined4 uStack_1c;
   undefined4 uStack_18;
-  
+
   puVar1 = (undefined4 *)ov01_021F1430(param_1,0x24,0,0);
   *(undefined4 **)(param_1 + 0x20) = puVar1;
   *puVar1 = param_2;

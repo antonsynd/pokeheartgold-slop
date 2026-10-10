@@ -48,7 +48,7 @@ undefined4 sub_02064298(void)
 
 {
   undefined4 uVar1;
-  
+
   uVar1 = MapObject_GetType();
   switch(uVar1) {
   case 4:

@@ -56,7 +56,7 @@ undefined4 ov71_0224AA28(int param_1,uint *param_2,undefined4 param_3,undefined4
   undefined4 uVar1;
   int iVar2;
   uint uVar3;
-  
+
   uVar3 = *param_2;
   if (uVar3 < 7) {
     switch(uVar3) {

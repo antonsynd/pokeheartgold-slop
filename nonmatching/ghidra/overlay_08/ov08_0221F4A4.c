@@ -58,7 +58,7 @@ void ov08_0221F4A4(int *param_1)
   int *piVar3;
   byte *pbVar4;
   int iStack_18;
-  
+
   uVar2 = 0;
   iVar1 = Party_GetCount(*(undefined4 *)*param_1);
   if (0 < iVar1) {

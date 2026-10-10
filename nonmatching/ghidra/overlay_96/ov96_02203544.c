@@ -73,7 +73,7 @@ void ov96_02203544(undefined4 param_1,int param_2,undefined4 param_3,undefined4 
   int iStack_30;
   undefined1 auStack_24 [12];
   undefined4 uStack_18;
-  
+
   iStack_30 = 0;
   puStack_38 = &ov96_0221C98C;
   iVar6 = param_2;

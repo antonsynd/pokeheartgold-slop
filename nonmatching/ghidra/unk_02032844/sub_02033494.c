@@ -50,7 +50,7 @@ int sub_02033494(uint param_1)
   int iVar1;
   uint uVar2;
   uint uVar3;
-  
+
   iVar1 = 0;
   uVar3 = 0;
   uVar2 = 0;

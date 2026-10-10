@@ -48,7 +48,7 @@ undefined4 ov103_021EDB18(int param_1,char param_2,undefined4 param_3)
 {
   int iVar1;
   byte *pbVar2;
-  
+
   iVar1 = *(int *)(param_1 + 0xc);
   pbVar2 = (byte *)(iVar1 + 0x2e4);
   *pbVar2 = *pbVar2 & 0xfe;

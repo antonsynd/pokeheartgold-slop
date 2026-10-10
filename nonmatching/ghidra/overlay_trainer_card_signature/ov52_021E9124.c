@@ -48,7 +48,7 @@ void ov52_021E9124(int param_1,undefined1 *param_2)
 {
   int iVar1;
   uint uVar2;
-  
+
   iVar1 = 0;
   do {
     *(ushort *)(param_2 + 2) = (ushort)(*(byte *)(param_1 + 0x10) >> 4);

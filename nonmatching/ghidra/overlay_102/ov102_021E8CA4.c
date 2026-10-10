@@ -54,7 +54,7 @@ void ov102_021E8CA4(int param_1)
   undefined2 uVar1;
   int iVar2;
   uint uVar3;
-  
+
   uVar3 = (uint)*(ushort *)(param_1 + 0x62);
   if (uVar3 == 0xffff) {
     uVar3 = ov102_021E8798(param_1 + 0x54);

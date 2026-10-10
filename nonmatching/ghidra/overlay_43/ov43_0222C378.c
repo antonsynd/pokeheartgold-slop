@@ -53,7 +53,7 @@ void ov43_0222C378(undefined2 *param_1,int param_2,int param_3,undefined4 param_
 {
   int iVar1;
   undefined4 uVar2;
-  
+
   uVar2 = param_4;
   if (param_6 == 0) {
     *param_1 = (short)param_4;

@@ -51,7 +51,7 @@ void ov27_0225C044(int param_1)
 
 {
   undefined2 *puVar1;
-  
+
   Save_LocalFieldData_Get(*(undefined4 *)(*(int *)(param_1 + 0x10) + 0xc));
   puVar1 = (undefined2 *)LocalFieldData_GetSafariBallsCounter();
   ov27_0225BF84(param_1,0xe,0x13,*puVar1);

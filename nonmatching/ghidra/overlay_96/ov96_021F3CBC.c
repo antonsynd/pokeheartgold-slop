@@ -57,7 +57,7 @@ void ov96_021F3CBC(undefined4 *param_1,undefined4 param_2,undefined4 param_3,und
   undefined4 uVar1;
   int iStack_14;
   undefined4 uStack_10;
-  
+
   uStack_10 = param_4;
   uVar1 = GfGfxLoader_GetScrnData(0xa7,0xd,0,&iStack_14,*param_1);
   BG_LoadScreenTilemapData(param_1[2],5,iStack_14 + 0xc,*(undefined4 *)(iStack_14 + 8));

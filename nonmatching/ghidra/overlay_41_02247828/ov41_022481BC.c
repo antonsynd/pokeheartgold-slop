@@ -48,7 +48,7 @@ void ov41_022481BC(void)
 
 {
   undefined4 auStack_8 [2];
-  
+
   auStack_8[0] = 0xf68a8f12;
   TouchscreenHitbox_TouchHeldIsIn(auStack_8);
   return;

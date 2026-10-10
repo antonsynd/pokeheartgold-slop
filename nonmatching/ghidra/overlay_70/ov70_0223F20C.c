@@ -51,7 +51,7 @@ void ov70_0223F20C(undefined4 param_1,undefined4 param_2,int param_3,undefined4 
 
 {
   undefined4 uVar1;
-  
+
   if (param_3 != 0) {
     uVar1 = NewString_ReadMsgData(param_2,param_3);
     AddTextPrinterParameterizedWithColor(param_1,0,uVar1,0,param_4,0xff,param_5,0);

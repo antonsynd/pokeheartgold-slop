@@ -51,7 +51,7 @@ void ov40_02238EBC(int param_1,int *param_2)
 {
   undefined4 uVar1;
   int iVar2;
-  
+
   iVar2 = *(int *)(param_1 + 0x860);
   if (*param_2 == 1) {
     *(undefined4 *)(iVar2 + 0x388) = 0;

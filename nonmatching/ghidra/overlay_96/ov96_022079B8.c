@@ -62,7 +62,7 @@ ov96_022079B8(undefined4 param_1,undefined4 param_2,undefined4 param_3,undefined
   undefined4 uStack_18;
   undefined4 uStack_14;
   undefined4 uStack_c;
-  
+
   uVar3 = 1;
   uStack_c = param_4;
   func_0x020ccfe0(param_1,&uStack_18);

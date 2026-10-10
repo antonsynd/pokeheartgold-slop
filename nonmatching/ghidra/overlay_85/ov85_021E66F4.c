@@ -48,7 +48,7 @@ undefined4 ov85_021E66F4(undefined4 *param_1)
 
 {
   int iVar1;
-  
+
   iVar1 = sub_02037454();
   if (iVar1 < 2) {
     *param_1 = 0x33;

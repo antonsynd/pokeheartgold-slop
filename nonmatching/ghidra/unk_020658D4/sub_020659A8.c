@@ -48,7 +48,7 @@ uint sub_020659A8(void)
 
 {
   int iVar1;
-  
+
   iVar1 = sub_0205F394();
   return (*(ushort *)(iVar1 + 10) & 7) >> 1;
 }

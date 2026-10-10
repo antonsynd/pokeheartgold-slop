@@ -57,7 +57,7 @@ undefined4 ov15_021FC37C(int param_1,undefined4 param_2,undefined4 param_3,undef
 {
   undefined4 uVar1;
   int iVar2;
-  
+
   Bag_UnregisterItem(*(undefined4 *)(param_1 + 0x238),
                      *(undefined2 *)(*(int *)(param_1 + 0x234) + 0x66),param_3,param_4,param_4);
   ov15_02200294(param_1);

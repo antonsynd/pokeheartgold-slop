@@ -49,7 +49,7 @@ void ov57_02238FC4(undefined4 *param_1)
 {
   int iVar1;
   undefined4 *puVar2;
-  
+
   iVar1 = 0;
   puVar2 = param_1;
   if (0 < *(int *)*param_1) {

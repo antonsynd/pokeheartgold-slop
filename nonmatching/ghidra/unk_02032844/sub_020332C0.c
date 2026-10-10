@@ -59,7 +59,7 @@ undefined4 sub_020332C0(void)
   ushort uStack_16;
   ushort uStack_14;
   undefined4 uStack_10;
-  
+
   uStack_10 = in_r3;
   func_0x020d3c40(&uStack_18);
   *(uint *)(iRam021d4128 + 0x1338) =

@@ -55,7 +55,7 @@ void ov80_02232E9C(int param_1)
   undefined4 uVar2;
   undefined4 uVar3;
   uint uVar4;
-  
+
   uVar4 = 0;
   do {
     uVar1 = Save_Frontier_GetStatic(*(undefined4 *)(param_1 + 4));

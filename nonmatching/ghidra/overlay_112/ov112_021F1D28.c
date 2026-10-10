@@ -52,7 +52,7 @@ void ov112_021F1D28(int param_1,int param_2)
 {
   ushort uVar1;
   int iVar2;
-  
+
   param_2 = param_2 * 4;
   param_1 = param_1 + 0x70;
   iVar2 = ManagedSprite_GetDrawFlag(*(undefined **)(param_1 + param_2));

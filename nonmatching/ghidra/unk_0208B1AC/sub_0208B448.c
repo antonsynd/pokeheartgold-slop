@@ -48,7 +48,7 @@ void sub_0208B448(int param_1)
 
 {
   uint uVar1;
-  
+
   uVar1 = 0;
   do {
     Sprite_SetDrawFlag(*(undefined4 *)(param_1 + 0x404 + uVar1 * 4),0);

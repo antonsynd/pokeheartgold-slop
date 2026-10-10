@@ -83,7 +83,7 @@ undefined4 ov14_021EF248(int param_1,undefined4 param_2,undefined4 param_3,undef
   int extraout_r1_00;
   int extraout_r1_01;
   int extraout_r1_02;
-  
+
   iVar1 = ov14_021F6A34();
   if (iVar1 != -1) {
     iVar2 = ov14_021E6070(param_1,iVar1 + 0x1e,0xac,0,param_4);

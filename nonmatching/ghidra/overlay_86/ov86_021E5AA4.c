@@ -63,7 +63,7 @@ undefined4 ov86_021E5AA4(undefined4 param_1)
 {
   int iVar1;
   undefined4 uVar2;
-  
+
   iVar1 = OverlayManager_GetData();
   ov86_021E6FF4();
   PaletteData_FreeBuffers(*(undefined4 *)(iVar1 + 0x21c),2);

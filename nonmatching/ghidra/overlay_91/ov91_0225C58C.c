@@ -109,7 +109,7 @@ undefined4 ov91_0225C58C(undefined4 param_1,int *param_2)
   undefined1 uStack_24;
   undefined1 uStack_23;
   undefined1 auStack_20 [16];
-  
+
   puVar2 = (undefined4 *)OverlayManager_GetData();
   iVar3 = OverlayManager_GetArgs(param_1);
   iVar4 = func_0x02258b54(puVar2 + 2);

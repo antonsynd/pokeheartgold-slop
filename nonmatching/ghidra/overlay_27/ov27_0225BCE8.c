@@ -51,7 +51,7 @@ void ov27_0225BCE8(int param_1,undefined4 param_2,undefined4 param_3,undefined4 
   int iVar1;
   int iVar2;
   int iVar3;
-  
+
   iVar3 = 0;
   iVar2 = param_1 + 0x3f0;
   do {

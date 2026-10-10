@@ -56,7 +56,7 @@ undefined4 ov14_021EAF08(int param_1)
   int iVar2;
   int iVar3;
   int iVar4;
-  
+
   iVar4 = *(int *)(param_1 + 0x34);
   iVar2 = ov14_021E80A8();
   if (*(short *)(iVar4 + 0x10) == 0) {

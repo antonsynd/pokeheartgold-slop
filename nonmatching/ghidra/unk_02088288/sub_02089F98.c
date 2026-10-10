@@ -58,7 +58,7 @@ void sub_02089F98(undefined4 *param_1,undefined4 param_2,undefined4 param_3,unde
 
 {
   int iVar1;
-  
+
   if ((*(int *)(param_1[0x8b] + 0x34) == 0) && (*(char *)(param_1 + 0x1ef) == '\x02')) {
     sub_02089F50(param_1,*param_1,0xb,3,param_4);
   }

@@ -64,7 +64,7 @@ int ov57_0223B578(int param_1,undefined4 param_2,undefined4 param_3,undefined4 p
   char cStack_1c;
   undefined1 uStack_1b;
   undefined4 uStack_18;
-  
+
   uStack_18 = param_4;
   iVar2 = System_GetTouchNew();
   if (iVar2 == 0) {

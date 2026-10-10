@@ -88,7 +88,7 @@ int TrainerCardSignature_Init(undefined *param_1,undefined *param_2)
   undefined4 *puVar1;
   undefined *puVar2;
   undefined *puVar3;
-  
+
   if (*(int *)param_2 == 0) {
     sub_0200FBF4(0,0);
     sub_0200FBF4(1,0);

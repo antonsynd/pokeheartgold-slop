@@ -63,7 +63,7 @@ void ov96_021E966C(undefined *param_1,undefined4 param_2,undefined4 param_3,unde
   undefined4 *puVar3;
   undefined *puVar4;
   undefined *puVar5;
-  
+
   iVar1 = PokeathlonCourse_GetHeapID(param_1);
   puVar2 = NewMsgDataFromNarc(1,0x1b,0x135,iVar1);
   puVar3 = (undefined4 *)ov96_021E9344(param_2);

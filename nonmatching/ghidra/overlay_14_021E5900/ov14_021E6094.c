@@ -50,7 +50,7 @@ void ov14_021E6094(int param_1,uint param_2,undefined4 param_3,undefined4 param_
 
 {
   int iVar1;
-  
+
   iVar1 = ov14_021E60C0(param_1,*(undefined1 *)(param_1 + 0x1f),param_2,param_4,param_4);
   if ((iVar1 != 0) && (func_0x0206ed70(iVar1,param_3,param_4), param_2 < 0x1e)) {
     PCStorage_SetBoxModified(*(undefined4 *)(param_1 + 4),*(undefined1 *)(param_1 + 0x1f));

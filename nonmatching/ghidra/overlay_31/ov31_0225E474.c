@@ -51,7 +51,7 @@ void ov31_0225E474(int param_1,undefined4 param_2,undefined4 param_3,undefined4 
 
 {
   undefined4 uVar1;
-  
+
   uVar1 = NewString_ReadMsgData(*(undefined4 *)(param_1 + 0x158),0x2a);
   AddTextPrinterParameterizedWithColor(param_1 + 0x114,0,uVar1,4,0,0xff,0xf0e00,0,param_4);
   ScheduleWindowCopyToVram(param_1 + 0x114);

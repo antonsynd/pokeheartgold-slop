@@ -50,7 +50,7 @@ undefined4 ov70_02244D44(int param_1)
 
 {
   int iVar1;
-  
+
   iVar1 = ov70_02238C8C();
   if (iVar1 == 1) {
     YesNoPrompt_Destroy(*(undefined4 *)(param_1 + 0x11c8));

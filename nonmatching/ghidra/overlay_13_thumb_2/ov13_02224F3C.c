@@ -95,7 +95,7 @@ int ov13_02224F3C(void)
   undefined1 auStack_24 [8];
   undefined4 uStack_1c;
   undefined4 uStack_18;
-  
+
   iVar8 = 0;
   iStack_38 = -5;
   iStack_34 = 0;
@@ -153,7 +153,7 @@ int ov13_02224F3C(void)
         if ((0 < iVar5) && (iVar5 = ov13_02224864(0x224ec64,0x224df80), iVar5 != 0)) {
           _UNK_02245a64 = ov13_02226CBC();
           _UNK_02245a64 = _UNK_02245a64 + 30000;
-                    
+
           uRam0224df4c = 5;
           uRam0224df68 = 4;
           ov13_02226F3C();
@@ -198,7 +198,7 @@ int ov13_02224F3C(void)
             iStack_3c = 0;
             uRam0224df4c = 7;
             uRam0224df68 = 5;
-                    
+
             _UNK_02245a64 = -1;
             ov13_02226F3C();
           }

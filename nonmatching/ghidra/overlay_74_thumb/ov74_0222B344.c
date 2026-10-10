@@ -49,7 +49,7 @@ void ov74_0222B344(int param_1)
 
 {
   int iVar1;
-  
+
   iVar1 = 0;
   do {
     if (*(int *)(param_1 + 0x94) != 0) {

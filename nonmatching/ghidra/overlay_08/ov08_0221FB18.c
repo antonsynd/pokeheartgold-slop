@@ -63,7 +63,7 @@ void ov08_0221FB18(int *param_1)
   uint uVar2;
   int iVar3;
   ushort *puVar4;
-  
+
   bVar1 = *(byte *)((int)param_1 + 0x2075);
   iVar3 = (uint)bVar1 * 0xb;
   FillWindowPixelBuffer((undefined *)(param_1[0x81c] + 0x60),0);

@@ -54,7 +54,7 @@ uint ov18_021F3AB0(undefined *param_1,int param_2)
 
   undefined auStack_8 [2];
   short asStack_6 [3];
-  
+
   asStack_6[0] = (short)((uint)in_r3 >> 0x10);
   ManagedSprite_GetPositionXY
             (*(undefined **)(param_1 + param_2 * 4 + 0x670),(undefined *)asStack_6,auStack_8);

@@ -49,7 +49,7 @@ void ov65_0221D25C(undefined4 param_1,undefined4 param_2,undefined4 param_3,unde
 
 {
   undefined4 uVar1;
-  
+
   uVar1 = func_0x0201cc08(param_1,2);
   func_0x0201bf94(param_1,2,uVar1,0x600,0,param_4);
   return;

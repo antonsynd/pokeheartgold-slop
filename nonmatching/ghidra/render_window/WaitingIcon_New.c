@@ -65,7 +65,7 @@ undefined4 * WaitingIcon_New(undefined4 *param_1,int param_2)
   uint uVar7;
   int iVar8;
   int local_18;
-  
+
   iVar2 = BgConfig_GetHeapId((undefined *)*param_1);
   bVar1 = GetWindowBgId((undefined *)param_1);
   puVar3 = BgGetCharPtr(bVar1);

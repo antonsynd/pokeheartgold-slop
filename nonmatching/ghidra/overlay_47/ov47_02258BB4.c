@@ -62,7 +62,7 @@ void ov47_02258BB4(int param_1,undefined4 param_2)
 {
   undefined4 uVar1;
   int iVar2;
-  
+
   func_0x020b78d4();
   func_0x0200b150(0,0x7e,0,0x1f,0,0x7e,0,0x1f,param_2);
   func_0x020215c0(&ov47_02259E58,0x10,0x10);

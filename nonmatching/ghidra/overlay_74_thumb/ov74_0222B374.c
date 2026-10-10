@@ -49,7 +49,7 @@ void ov74_0222B374(int param_1)
 
 {
   int iVar1;
-  
+
   iVar1 = 0;
   do {
     Sprite_Delete(*(undefined4 *)(param_1 + 0x1854));

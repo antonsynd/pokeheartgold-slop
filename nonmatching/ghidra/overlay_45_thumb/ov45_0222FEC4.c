@@ -56,7 +56,7 @@ void ov45_0222FEC4(undefined4 param_1,int param_2,undefined4 param_3,undefined4 
   int iVar1;
   int iVar2;
   int iVar3;
-  
+
   iVar1 = ov45_0222FB24(iRam022577c0,param_1,0,param_4,param_4);
   if (iVar1 != -1) {
     if (*(char *)(iRam022577c0 + 0x12d) != '\x04') {

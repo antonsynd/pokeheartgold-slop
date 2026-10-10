@@ -55,7 +55,7 @@ void ov15_021FAD80(int param_1,int param_2)
   undefined4 uVar1;
   undefined4 uVar2;
   int iVar3;
-  
+
   uVar1 = ov15_021FA074();
   uVar2 = ov15_021FA098(param_1);
   ov15_021FD574(param_1,1,uVar1,uVar2);

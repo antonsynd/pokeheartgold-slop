@@ -48,7 +48,7 @@ void ov15_021FF8D4(int param_1)
 
 {
   uint uVar1;
-  
+
   uVar1 = 0;
   do {
     func_0x0200dc18(*(undefined4 *)(param_1 + 0x250));

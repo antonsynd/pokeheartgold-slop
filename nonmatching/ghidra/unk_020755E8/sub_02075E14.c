@@ -119,7 +119,7 @@ void sub_02075E14(undefined4 *param_1)
   undefined1 auStack_80 [40];
   undefined1 auStack_58 [40];
   undefined1 auStack_30 [40];
-  
+
   if (*(byte *)(param_1 + 0x1c) != 0) {
     if ((*(byte *)(param_1 + 0x1c) & 1) == 0) {
       Pokepic_AddAttr(param_1[7],0xc,-(uint)*(byte *)((int)param_1 + 0x71));

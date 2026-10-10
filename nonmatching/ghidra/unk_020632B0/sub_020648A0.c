@@ -51,7 +51,7 @@ undefined4 sub_020648A0(undefined4 *param_1)
 {
   undefined4 uVar1;
   int iVar2;
-  
+
   uVar1 = PlayerAvatar_GetMapObject(param_1[10]);
   iVar2 = MapObject_IsMovementPaused();
   if (iVar2 == 0) {

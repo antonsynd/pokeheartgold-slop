@@ -52,7 +52,7 @@ undefined4 ov120_0225F14C(undefined4 *param_1)
   uint uVar1;
   int iVar2;
   int iVar3;
-  
+
   if (param_1 == (undefined4 *)0x0) {
     GF_AssertFail();
   }

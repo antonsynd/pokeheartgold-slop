@@ -49,7 +49,7 @@ void ov45_0222E000(int param_1)
 {
   int iVar1;
   int iVar2;
-  
+
   iVar1 = *(int *)(param_1 + 0x1cc);
   while (iVar1 != param_1 + 0x1a0) {
     iVar2 = *(int *)(iVar1 + 0x2c);

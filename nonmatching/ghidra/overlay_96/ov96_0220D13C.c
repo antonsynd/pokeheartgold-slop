@@ -63,7 +63,7 @@ ov96_0220D13C(undefined *param_1,undefined *param_2,undefined2 param_3,undefined
   uint auStack_44 [9];
   undefined4 uStack_20;
   undefined4 uStack_18;
-  
+
   puVar6 = (undefined4 *)&ov96_0221CE84;
   puVar5 = &uStack_4c;
   iVar4 = 6;

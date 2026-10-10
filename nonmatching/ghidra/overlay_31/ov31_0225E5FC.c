@@ -60,7 +60,7 @@ void ov31_0225E5FC(int param_1)
   undefined1 uVar1;
   undefined4 uVar2;
   int iVar3;
-  
+
   FillWindowPixelBuffer(param_1 + 0x144,0xf);
   iVar3 = *(int *)(param_1 + 0x14);
   if ((byte)(*(char *)(iVar3 + 0x283) - 3U) < 2) {

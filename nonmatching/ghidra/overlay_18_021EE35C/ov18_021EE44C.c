@@ -57,7 +57,7 @@ void ov18_021EE44C(int param_1,int param_2,undefined4 param_3,undefined4 param_4
   uint uStack_24;
   int iStack_1c;
   undefined4 uStack_18;
-  
+
   uStack_18 = param_4;
   uVar1 = func_0x02007c10(*(undefined4 *)(param_1 + 0x854),1,1,&iStack_1c,0x25);
   param_2 = param_2 * 0x10;

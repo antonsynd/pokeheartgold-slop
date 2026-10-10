@@ -48,7 +48,7 @@ undefined4 ov112_021EE718(int param_1)
 
 {
   int iVar1;
-  
+
   iVar1 = sub_0203263C(*(undefined4 *)(param_1 + 0x1e440));
   if (iVar1 == 1) {
     return 5;

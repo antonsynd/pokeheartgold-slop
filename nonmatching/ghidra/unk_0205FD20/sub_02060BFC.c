@@ -61,7 +61,7 @@ undefined4 sub_02060BFC(int param_1,int param_2,int param_3,int param_4)
   int iVar3;
   int iStack_1c;
   int iStack_18;
-  
+
   uVar1 = MapObject_GetManager();
   iStack_18 = MapObjectManager_GetObjects2();
   iStack_1c = MapObjectManager_GetObjectCount(uVar1);

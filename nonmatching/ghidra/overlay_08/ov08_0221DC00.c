@@ -52,7 +52,7 @@ void ov08_0221DC00(int param_1)
   undefined *puVar1;
   int iVar2;
   uint uVar3;
-  
+
   puVar1 = &ov08_02224FD0;
   uVar3 = 0;
   iVar2 = param_1 + 0x2050;

@@ -49,7 +49,7 @@ undefined4 ov80_0223ADF4(undefined4 param_1)
 
 {
   undefined4 uVar1;
-  
+
   uVar1 = Heap_Alloc(param_1,0x30);
   func_0x020e5b44(uVar1,0,0x30);
   return uVar1;

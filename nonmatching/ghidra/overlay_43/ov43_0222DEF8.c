@@ -49,7 +49,7 @@ void ov43_0222DEF8(int param_1,int param_2)
 {
   int iVar1;
   uint uVar2;
-  
+
   param_1 = param_1 + param_2 * 4;
   uVar2 = 0;
   if (*(int *)(param_1 + 0x2c) != 0) {

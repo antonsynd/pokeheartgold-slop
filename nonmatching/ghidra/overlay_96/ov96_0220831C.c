@@ -52,7 +52,7 @@ void ov96_0220831C(int param_1,int param_2,int param_3)
 {
   undefined4 uVar1;
   int iVar2;
-  
+
   uVar1 = ov96_021EB5B8(*(undefined4 *)(param_1 + param_2 * 0x1c + 0x38));
   param_3 = param_3 + param_2 * 3;
   iVar2 = param_3 * 4;

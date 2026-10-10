@@ -49,7 +49,7 @@ undefined4 ov96_02208608(int param_1,uint param_2)
 {
   int iVar1;
   int iVar2;
-  
+
   if ((param_2 == 0) || (3 < param_2)) {
     GF_AssertFail();
   }

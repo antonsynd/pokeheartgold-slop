@@ -53,7 +53,7 @@ void sub_0208D7C4(int param_1)
 
 {
   undefined4 uVar1;
-  
+
   FillWindowPixelBuffer(*(int *)(param_1 + 0x224) + 0x10,0);
   FillWindowPixelBuffer(*(int *)(param_1 + 0x224) + 0x20,0);
   if ((uint)*(byte *)(param_1 + 0x7c4) + (uint)*(byte *)(param_1 + 0x7c5) * 9 <

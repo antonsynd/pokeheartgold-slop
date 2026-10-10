@@ -49,7 +49,7 @@ undefined4 ov73_021E9F9C(int param_1)
 
 {
   undefined4 uVar1;
-  
+
   uVar1 = ov73_021E6A70(-*(int *)(param_1 + 0xf14),*(undefined4 *)(param_1 + 0xf18));
   ov73_021EA218(param_1,uVar1,-*(int *)(param_1 + 0xf14));
   *(undefined4 *)(param_1 + 0x1c) = 0x38;

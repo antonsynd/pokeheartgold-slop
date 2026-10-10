@@ -52,7 +52,7 @@ undefined4 sub_02059A08(int param_1)
 
 {
   char cVar1;
-  
+
   if ((uRam021d1154 & 0x40) == 0) {
     if ((uRam021d1154 & 0x80) == 0) {
       if ((uRam021d1154 & 1) == 0) {

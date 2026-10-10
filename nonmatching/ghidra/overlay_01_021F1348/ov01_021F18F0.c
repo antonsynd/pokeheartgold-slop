@@ -50,7 +50,7 @@ undefined * ov01_021F18F0(undefined *param_1,int param_2)
 
 {
   undefined *puVar1;
-  
+
   puVar1 = ov01_021FC5A4(*(undefined **)(*(int *)(param_1 + 0x20) + 0x10),param_2);
   return puVar1;
 }

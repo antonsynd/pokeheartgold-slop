@@ -60,7 +60,7 @@ void sub_020127B8(int param_1)
   int iVar10;
   int iVar11;
   int iVar12;
-  
+
   uVar7 = *(uint *)(param_1 + 0xc) & 0xffff;
   iVar3 = sub_02010EE0(param_1,0);
   iVar4 = sub_02010EE0(param_1,1);

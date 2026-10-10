@@ -47,7 +47,7 @@ undefined2 ov68_021E6BEC(int *param_1)
 
 {
   int iVar1;
-  
+
   iVar1 = *param_1;
   return *(undefined2 *)
           (*(int *)(iVar1 + 0x10) +

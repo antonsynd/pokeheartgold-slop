@@ -52,7 +52,7 @@ void ov96_021E9784(undefined4 param_1,undefined4 param_2,undefined4 param_3,unde
 
 {
   undefined4 uVar1;
-  
+
   uVar1 = PokeathlonCourse_GetParticipantData(param_4,param_1,param_3,param_4,param_4);
   func_0x020e5ad8(uVar1,param_3,param_2);
   ov96_021E604C(param_4);

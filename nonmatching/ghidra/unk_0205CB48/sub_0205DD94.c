@@ -48,7 +48,7 @@ uint sub_0205DD94(undefined *param_1,undefined4 param_2,uint param_3)
 
 {
   uint uVar1;
-  
+
   uVar1 = sub_0205DDD4(param_1,param_2,param_3);
   return uVar1;
 }

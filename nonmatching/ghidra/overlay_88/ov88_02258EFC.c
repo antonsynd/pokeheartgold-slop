@@ -56,7 +56,7 @@ bool ov88_02258EFC(undefined4 *param_1,undefined4 param_2,undefined4 param_3,und
   undefined4 uStack_1c;
   undefined1 auStack_18 [4];
   undefined4 uStack_14;
-  
+
   uStack_14 = param_4;
   iVar1 = func_0x0222dcf4(param_2,auStack_18);
   if (iVar1 == 0) {

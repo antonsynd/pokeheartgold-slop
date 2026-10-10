@@ -56,7 +56,7 @@ void ov01_021F5D8C(int param_1,undefined4 param_2,undefined4 param_3,undefined4 
   uint uVar2;
   undefined4 auStack_28 [4];
   undefined4 uStack_18;
-  
+
   uStack_18 = param_4;
   ov01_021F488C(param_1,0);
   ov01_021F47A0(param_2,param_3,*(undefined4 *)(param_1 + 0xc4),*(undefined4 *)(param_1 + 200),

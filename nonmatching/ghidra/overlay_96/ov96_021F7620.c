@@ -57,7 +57,7 @@ void ov96_021F7620(int *param_1)
   int *piVar5;
   int iVar6;
   int aiStack_88 [29];
-  
+
   iVar3 = 0;
   iVar6 = 0;
   do {

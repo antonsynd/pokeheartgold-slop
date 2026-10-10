@@ -58,7 +58,7 @@ int ov45_0222FF7C(int param_1,uint *param_2,undefined4 param_3,undefined4 param_
   uint uStack_18;
   int iStack_14;
   undefined4 uStack_10;
-  
+
   uStack_10 = param_4;
   iVar1 = ov45_0222FB24(iRam022577c0,param_1,0);
   if (iVar1 != -1) {

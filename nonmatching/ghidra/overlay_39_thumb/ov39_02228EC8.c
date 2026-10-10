@@ -51,7 +51,7 @@ undefined4 ov39_02228EC8(int param_1)
 
 {
   int iVar1;
-  
+
   if ((((uRam021d1154 & 1) != 0) || ((uRam021d1154 & 2) != 0)) ||
      (iVar1 = System_GetTouchNew(), iVar1 == 1)) {
     sub_0200E5D4(param_1 + 100,0);

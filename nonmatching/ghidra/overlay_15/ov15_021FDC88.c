@@ -63,7 +63,7 @@ void ov15_021FDC88(int param_1)
   undefined4 uStack_38;
   undefined4 uStack_34;
   undefined4 auStack_30 [9];
-  
+
   puVar5 = (undefined4 *)&ov15_022005CC;
   puVar4 = auStack_30;
   iVar3 = 4;

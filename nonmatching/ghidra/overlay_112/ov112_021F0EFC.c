@@ -50,7 +50,7 @@ undefined4 ov112_021F0EFC(int param_1)
 {
   int iVar1;
   undefined4 auStack_8 [2];
-  
+
   if ((int)(uint)*(byte *)(param_1 + 0x13d) < (int)(*(byte *)(param_1 + 0x13e) - 1)) {
     auStack_8[0] = 0x6040c0a0;
     iVar1 = TouchscreenHitbox_TouchNewIsIn(auStack_8);

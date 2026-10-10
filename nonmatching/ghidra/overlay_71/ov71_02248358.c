@@ -56,7 +56,7 @@ void ov71_02248358(int param_1)
 
 {
   undefined4 uVar1;
-  
+
   uVar1 = func_0x020d3a38();
   if (param_1 != 0) {
     ov71_0224889C(param_1);

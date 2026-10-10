@@ -54,7 +54,7 @@ undefined4 ov57_0223B3F8(int param_1,undefined4 param_2,undefined4 param_3,undef
   int iVar2;
   uint uStack_10;
   undefined4 uStack_c;
-  
+
   uStack_c = param_4;
   if ((uRam021d1154 & 2) != 0) {
     uVar1 = ov57_0223B3A4(param_1,0xc);

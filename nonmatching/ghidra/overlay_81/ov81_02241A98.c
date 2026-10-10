@@ -51,7 +51,7 @@ void ov81_02241A98(int param_1)
 
 {
   int iVar1;
-  
+
   FillWindowPixelBuffer(param_1 + 0x150,2);
   FillWindowPixelBuffer(param_1 + 0x160,2);
   FillWindowPixelBuffer(param_1 + 0xe0,2);

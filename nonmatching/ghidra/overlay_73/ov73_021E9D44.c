@@ -48,7 +48,7 @@ undefined4 ov73_021E9D44(int param_1)
 
 {
   int iVar1;
-  
+
   iVar1 = ov73_021E83D4(*(undefined4 *)(param_1 + 0x12c8));
   if (iVar1 != 0) {
     if (iVar1 == 2) {

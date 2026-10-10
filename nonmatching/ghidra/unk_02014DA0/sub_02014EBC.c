@@ -56,7 +56,7 @@ void sub_02014EBC(int param_1)
   int iVar1;
   int *piVar2;
   int iVar3;
-  
+
   sub_020154B8();
   if ((*(byte *)(param_1 + 0xd8) & 1) == 0) {
     if ((*(byte *)(param_1 + 0xd8) & 2) != 0) {

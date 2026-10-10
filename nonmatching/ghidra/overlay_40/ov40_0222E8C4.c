@@ -59,7 +59,7 @@ void ov40_0222E8C4(undefined4 *param_1,int param_2,int *param_3)
   int iVar2;
   undefined4 uVar3;
   int iVar4;
-  
+
   puVar1 = param_1 + 6;
   param_1[1] = param_3[1];
   *param_1 = 0;

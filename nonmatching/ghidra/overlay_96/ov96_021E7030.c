@@ -54,7 +54,7 @@ undefined4 ov96_021E7030(int param_1)
   int iVar3;
   code *pcVar4;
   undefined2 *puVar5;
-  
+
   puVar2 = (undefined2 *)ov96_021E8A20(param_1 + 0x37c);
   puVar5 = (undefined2 *)(param_1 + 0x5f0);
   iVar3 = 0x12;

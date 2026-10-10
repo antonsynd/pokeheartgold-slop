@@ -60,7 +60,7 @@ void ov74_0222ACD8(undefined4 *param_1,undefined4 param_2,undefined4 param_3,und
   undefined1 auStack_68 [20];
   undefined4 uStack_54;
   undefined4 uStack_14;
-  
+
   iVar2 = param_1[0x99b];
   if (iVar2 == -1) {
     iVar2 = 0xb;

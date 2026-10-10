@@ -62,7 +62,7 @@ void ov31_0225E7D4(int param_1)
   undefined4 uVar3;
   undefined4 uVar4;
   int iVar5;
-  
+
   iVar5 = *(int *)(param_1 + 0x14);
   if (*(short *)(iVar5 + 0x286) < 2) {
     ov31_0225E4BC(*(undefined1 *)(iVar5 + 0x283),*(undefined4 *)(param_1 + 0x154),

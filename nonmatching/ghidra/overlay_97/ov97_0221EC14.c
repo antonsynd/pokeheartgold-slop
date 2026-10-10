@@ -86,7 +86,7 @@ void ov97_0221EC14(int param_1,uint param_2,int param_3,undefined4 param_4)
   undefined1 auStack_5e [22];
   undefined1 auStack_48 [48];
   undefined4 uStack_18;
-  
+
   auStack_7c[0] = 0;
   auStack_7c[1] = 1;
   auStack_7c[2] = 2;

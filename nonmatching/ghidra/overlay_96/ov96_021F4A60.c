@@ -52,7 +52,7 @@ void ov96_021F4A60(int param_1,undefined4 param_2)
 
 {
   undefined2 extraout_r1;
-  
+
   ov96_021F4724();
   if (*(int *)(&ov96_0221DC04 + (uint)*(ushort *)(param_1 + 0x18) * 4) == 3) {
     ov96_021F48FC(param_1,param_2);

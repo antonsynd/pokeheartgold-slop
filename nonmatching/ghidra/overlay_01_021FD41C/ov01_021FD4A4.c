@@ -52,7 +52,7 @@ void ov01_021FD4A4(int param_1)
 {
   undefined4 uVar1;
   int iVar2;
-  
+
   *(undefined4 *)(param_1 + 0x10) = *(undefined4 *)(&ov01_02208EB4 + *(int *)(param_1 + 4) * 4);
   iVar2 = *(int *)(param_1 + 4) * 0xc;
   uVar1 = *(undefined4 *)(&UNK_02208f3c + iVar2);

@@ -60,7 +60,7 @@ int ov12_02264334(undefined *param_1,undefined *param_2)
   uint uVar8;
   int iVar9;
   int iStack_18;
-  
+
   iStack_18 = 1;
   cVar1 = *param_2;
   uVar6 = (uint)*(ushort *)(param_2 + 2);

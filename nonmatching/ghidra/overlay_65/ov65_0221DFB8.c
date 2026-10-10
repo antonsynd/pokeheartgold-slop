@@ -52,7 +52,7 @@ undefined4 ov65_0221DFB8(int param_1)
 
 {
   int iVar1;
-  
+
   iVar1 = TouchscreenHitbox_FindRectAtTouchNew(&ov65_0221FE6C);
   if (iVar1 != -1) {
     if (iVar1 == 0xc) {

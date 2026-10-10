@@ -78,7 +78,7 @@ void ov96_02211B94(undefined *param_1)
   uint uVar11;
   undefined *puStack_20;
   undefined *puStack_1c;
-  
+
   puStack_1c = PokeathlonCourse_GetDataCopyArea(param_1);
   puVar1 = PokeathlonCourse_GetHeapAllocPtr4(param_1);
   if (0 < *(int *)(puVar1 + 0x738)) {

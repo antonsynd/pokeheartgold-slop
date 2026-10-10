@@ -47,7 +47,7 @@ undefined4 ov96_021FAAE0(int param_1,int param_2,int param_3)
 
 {
   undefined4 uVar1;
-  
+
   uVar1 = 0;
   if ((param_1 - param_2 <= (int)*(short *)(param_3 + 2) + (int)*(short *)(param_3 + 6)) &&
      ((int)*(short *)(param_3 + 2) <= param_1 + param_2)) {

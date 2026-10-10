@@ -53,7 +53,7 @@ undefined4 ov72_02239108(int param_1,undefined4 param_2,undefined4 param_3,undef
 
 {
   int iVar1;
-  
+
   iVar1 = ov72_0223AF48(param_1 + 0x136c);
   if (iVar1 != 0) {
     if (iVar1 == 2) {

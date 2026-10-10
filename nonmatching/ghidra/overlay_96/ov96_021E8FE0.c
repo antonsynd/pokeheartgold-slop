@@ -54,7 +54,7 @@ undefined4 ov96_021E8FE0(ushort *param_1,undefined4 param_2,undefined4 param_3,u
   undefined4 uVar2;
   int iVar3;
   int iVar4;
-  
+
   if (*(int *)(param_1 + 4) == 0) {
     uVar1 = *(int *)(param_1 + 2) + (uint)param_1[1] & 0xff;
     iVar4 = uVar1 * 0x2c;

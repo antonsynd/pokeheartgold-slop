@@ -52,7 +52,7 @@ undefined4 ov112_021EBCD8(int param_1)
 
 {
   int iVar1;
-  
+
   iVar1 = ov112_021E9888(1);
   if (iVar1 != -1) {
     ov112_021EC440(param_1,iVar1,iVar1 + 2,6);

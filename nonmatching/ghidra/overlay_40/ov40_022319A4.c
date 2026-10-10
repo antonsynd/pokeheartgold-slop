@@ -68,7 +68,7 @@ undefined4 ov40_022319A4(int param_1)
   int iVar5;
   int iVar6;
   int iVar7;
-  
+
   iVar6 = *(int *)(param_1 + 8);
   if (iVar6 == 0) {
     puVar1 = (undefined4 *)Heap_Alloc(0x6d,0x10);

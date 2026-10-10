@@ -57,7 +57,7 @@ void ov08_02220CF4(int param_1,undefined4 param_2,undefined4 param_3,undefined4 
   int iVar3;
   undefined4 *puVar4;
   int iVar5;
-  
+
   iVar5 = 0;
   pbVar1 = (byte *)(param_1 + 0x1b);
   piVar2 = (int *)&ov08_02225534;

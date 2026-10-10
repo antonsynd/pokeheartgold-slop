@@ -59,7 +59,7 @@ undefined4 ov75_02248D2C(int *param_1)
 
 {
   int iVar1;
-  
+
   iVar1 = ov75_02246CE0(*param_1);
   if (iVar1 != -1) {
     switch(param_1[0x25]) {

@@ -57,7 +57,7 @@ void ov01_021FA564(undefined4 param_1,int param_2)
   undefined4 *puVar6;
   int iVar7;
   undefined4 *puVar8;
-  
+
   psVar5 = *(short **)(param_2 + 0x100);
   iVar7 = 0;
   puVar6 = *(undefined4 **)(psVar5 + 6);

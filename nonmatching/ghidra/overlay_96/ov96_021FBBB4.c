@@ -62,7 +62,7 @@ void ov96_021FBBB4(undefined4 param_1,int param_2)
   undefined4 extraout_r1;
   int iVar6;
   uint uVar7;
-  
+
   iVar1 = PokeathlonCourse_GetHeapAllocPtr4();
   uVar2 = PokeathlonCourse_GetParticipantCount(param_1);
   for (uVar5 = uVar2; uVar5 < 4; uVar5 = uVar5 + 1 & 0xff) {

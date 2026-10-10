@@ -51,7 +51,7 @@ void sub_020372E4(void)
 
 {
   int iVar1;
-  
+
   if ((iRam021d4148 != 0) && (*(char *)(iRam021d4148 + 0x6ba) == '\0')) {
     sub_02033C28(iRam021d4148 + 0x4a4);
     iVar1 = sub_02033BC4(iRam021d4148 + 0x4a4);

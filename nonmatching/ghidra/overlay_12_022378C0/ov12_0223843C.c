@@ -98,7 +98,7 @@ void ov12_0223843C(undefined4 param_1)
   undefined4 *puVar7;
   uint *puVar8;
   int iStack_18;
-  
+
   puVar1 = (undefined4 *)OverlayManager_GetData();
   puVar2 = (uint *)OverlayManager_GetArgs(param_1);
   puVar2[0x67] = puVar1[0x913];

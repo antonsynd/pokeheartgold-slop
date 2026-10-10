@@ -57,7 +57,7 @@ void ov71_0224B7EC(undefined4 *param_1,undefined4 param_2,undefined4 param_3,und
   int iVar3;
   undefined1 auStack_20 [16];
   undefined4 uStack_10;
-  
+
   uStack_10 = param_4;
   uVar1 = ov71_02247398(*param_1);
   GetBoxmonSpriteCharAndPlttNarcIds(auStack_20,uVar1,2,0);

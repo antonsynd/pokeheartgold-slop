@@ -49,7 +49,7 @@ int ov96_021EDF5C(int param_1)
 {
   int iVar1;
   int *piVar2;
-  
+
   piVar2 = (int *)&ov96_0221B058;
   iVar1 = 0;
   do {

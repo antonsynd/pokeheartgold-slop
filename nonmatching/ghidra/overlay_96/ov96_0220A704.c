@@ -49,7 +49,7 @@ void ov96_0220A704(int param_1,undefined1 param_2,undefined1 param_3)
 
 {
   undefined4 uVar1;
-  
+
   if (*(int *)(param_1 + 0x268) != 0) {
     SysTask_Destroy();
   }

@@ -55,7 +55,7 @@ void ov43_0222DFB0(undefined4 param_1,int param_2,int param_3)
   undefined4 uVar2;
   undefined4 uVar3;
   uint uVar4;
-  
+
   uVar2 = sub_0202C6F4(*(undefined4 *)(param_2 + 4));
   ov43_0222EC58(param_1,0,0,param_2,param_3,0x13,0,0,0x10200,*(undefined4 *)(param_3 + 0x7c),
                 *(undefined4 *)(param_3 + 0x80),0);

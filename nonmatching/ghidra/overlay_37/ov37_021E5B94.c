@@ -75,7 +75,7 @@ undefined4 ov37_021E5B94(undefined4 param_1,int *param_2)
   undefined4 *puVar1;
   undefined4 *puVar2;
   int iVar3;
-  
+
   puVar1 = (undefined4 *)OverlayManager_GetData();
   puVar2 = (undefined4 *)OverlayManager_GetArgs(param_1);
   switch(*param_2) {

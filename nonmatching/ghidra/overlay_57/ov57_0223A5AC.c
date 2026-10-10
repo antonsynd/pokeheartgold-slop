@@ -62,7 +62,7 @@ undefined4 ov57_0223A5AC(int param_1)
 {
   undefined4 uVar1;
   int iVar2;
-  
+
   switch(*(undefined4 *)(param_1 + 0x3fc)) {
   case 0:
     func_0x0200dd68(*(undefined4 *)(param_1 + 0x31c),0x19);

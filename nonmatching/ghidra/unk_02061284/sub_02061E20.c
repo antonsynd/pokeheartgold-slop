@@ -52,7 +52,7 @@ undefined4 sub_02061E20(int param_1,undefined4 param_2)
   undefined4 uVar1;
   undefined4 uVar2;
   int extraout_r1;
-  
+
   uVar1 = LCRandom();
   uVar2 = sub_02061E00(param_1,param_2);
   func_0x020f2998(uVar1,uVar2); __asm__ volatile("movs %0, r1" : "=l"(extraout_r1) : : "cc");

@@ -55,7 +55,7 @@ void ov70_02238D8C(undefined4 param_1,int param_2,int param_3)
   undefined4 uStack_18;
   undefined4 uStack_14;
   undefined4 uStack_10;
-  
+
   if (param_2 < 1) {
     uVar1 = func_0x020f2178(param_2 << 0xc);
     func_0x020f24c8(uVar1,0x3f000000);

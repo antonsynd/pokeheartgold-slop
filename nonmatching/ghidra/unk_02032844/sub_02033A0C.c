@@ -49,7 +49,7 @@ undefined4 sub_02033A0C(undefined4 param_1)
 
 {
   int iVar1;
-  
+
   *(undefined1 *)(iRam021d4128 + 0x1344) = 0;
   if ((*(int *)(iRam021d4128 + 0x1310) == 4) &&
      (iVar1 = func_0x020e0f6c(0x20339f1,param_1), iVar1 == 2)) {

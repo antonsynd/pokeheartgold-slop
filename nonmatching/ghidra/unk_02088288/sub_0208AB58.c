@@ -61,7 +61,7 @@ void sub_0208AB58(int param_1,int param_2,undefined4 param_3,undefined4 param_4)
   int extraout_r1_02;
   int iVar3;
   uint uVar4;
-  
+
   bVar1 = *(byte *)(param_1 + 0x7c4);
   uVar4 = (uint)*(byte *)(param_1 + 0x7c5);
   if (param_2 == 1) {

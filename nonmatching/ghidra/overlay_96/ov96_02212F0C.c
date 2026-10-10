@@ -64,7 +64,7 @@ void ov96_02212F0C(int param_1,undefined4 param_2)
   undefined1 uStack_1a;
   undefined1 uStack_18;
   undefined1 uStack_17;
-  
+
   uStack_44 = *(undefined4 *)(param_1 + 0x14);
   uStack_40 = *(undefined4 *)(param_1 + 0x18);
   uStack_3c = *(undefined4 *)(param_1 + 0x1c);

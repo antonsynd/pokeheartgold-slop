@@ -50,7 +50,7 @@ undefined4 ov74_02236A2C(void)
 {
   int iVar1;
   undefined1 auStack_40 [64];
-  
+
   iVar1 = func_0x021ec724();
   if (iVar1 != 4) {
     return 0;

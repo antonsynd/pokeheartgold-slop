@@ -55,7 +55,7 @@ void ov13_02225320(void)
 
 {
   int iVar1;
-  
+
   iVar1 = ov13_02224F3C();
   iRam0224dfa8 = iVar1;
   ov13_02224100();
@@ -65,7 +65,7 @@ void ov13_02225320(void)
   else {
     uRam0224df68 = 7;
   }
-                    
+
   _UNK_02245a64 = 0xffffffff;
   ov13_02226F3C();
   return;

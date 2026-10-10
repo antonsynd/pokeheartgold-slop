@@ -47,7 +47,7 @@ undefined4 ov70_0223E5FC(short *param_1,short *param_2)
 
 {
   char cVar1;
-  
+
   if (*param_1 != *param_2) {
     return 0;
   }

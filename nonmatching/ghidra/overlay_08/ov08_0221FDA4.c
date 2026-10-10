@@ -64,7 +64,7 @@ void ov08_0221FDA4(int *param_1)
   int iVar1;
   uint uVar2;
   uint uVar3;
-  
+
   FillWindowPixelBuffer((undefined *)param_1[0x81c],0);
   FillWindowPixelBuffer((undefined *)(param_1[0x81c] + 0x20),0);
   FillWindowPixelBuffer((undefined *)(param_1[0x81c] + 0x30),0);

@@ -51,7 +51,7 @@ void ov96_0220D630(undefined4 *param_1,undefined4 param_2,undefined4 param_3,und
 {
   int iVar1;
   uint uVar2;
-  
+
   iVar1 = ov96_0220F378(*param_1,*(undefined1 *)((int)param_1 + 0x45),
                         *(undefined1 *)((int)param_1 + 0x46));
   if (*(char *)(iVar1 + 2) != '\0') {

@@ -65,7 +65,7 @@ void ov96_021F4484(undefined4 *param_1,undefined4 param_2,undefined4 param_3,und
   undefined2 uStack_26;
   undefined2 uStack_24;
   undefined4 uStack_18;
-  
+
   iVar3 = 0;
   puVar4 = param_1;
   uStack_18 = param_4;

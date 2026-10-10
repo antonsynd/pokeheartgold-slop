@@ -66,7 +66,7 @@ void sub_0205FF6C(undefined4 param_1)
   undefined1 uVar2;
   int iVar3;
   undefined4 uVar4;
-  
+
   sub_02061108();
   iVar3 = sub_0205F73C(param_1);
   if (iVar3 == 1) {

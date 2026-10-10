@@ -53,7 +53,7 @@ void ov27_0225C10C(int param_1)
   uint uVar2;
   int iVar3;
   int iVar4;
-  
+
   iVar3 = 0;
   iVar4 = param_1;
   do {

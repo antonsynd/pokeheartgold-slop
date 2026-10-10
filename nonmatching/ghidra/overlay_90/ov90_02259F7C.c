@@ -50,7 +50,7 @@ undefined4 ov90_02259F7C(int param_1)
 
 {
   undefined4 uVar1;
-  
+
   if (*(short *)(param_1 + 0x32) < 1) {
     if (*(short *)(param_1 + 0x30) == 0) {
       PlaySE(*(uint *)(param_1 + 0x34) & 0xffff);

@@ -49,7 +49,7 @@ void ov28_0225D878(int param_1)
 
 {
   uint uVar1;
-  
+
   uVar1 = 0;
   param_1 = param_1 + 0x1b4;
   do {

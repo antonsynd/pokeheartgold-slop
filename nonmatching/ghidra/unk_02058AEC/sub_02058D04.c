@@ -50,7 +50,7 @@ undefined4 sub_02058D04(int param_1)
 
 {
   int iVar1;
-  
+
   iVar1 = sub_020505C8(*(undefined4 *)(param_1 + 0x24));
   if (iVar1 != 0) {
     func_0x021e636c(1);

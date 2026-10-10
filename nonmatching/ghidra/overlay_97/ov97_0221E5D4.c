@@ -57,7 +57,7 @@ undefined4 ov97_0221E5D4(undefined4 param_1)
   int iVar1;
   int iVar2;
   undefined4 uVar3;
-  
+
   iVar1 = OverlayManager_GetData();
   switch(*(undefined4 *)(iVar1 + 4)) {
   case 0:

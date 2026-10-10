@@ -53,7 +53,7 @@ void ov103_021ECEEC(int param_1,undefined4 param_2,undefined4 param_3,undefined4
   undefined4 uVar1;
   int iVar2;
   uint uVar3;
-  
+
   uVar1 = func_0x02018424(0x9d,0,param_3,param_4,param_4);
   *(undefined4 *)(*(int *)(param_1 + 0xc) + 0x240) = uVar1;
   iVar2 = ov103_021ED2B8(param_1);

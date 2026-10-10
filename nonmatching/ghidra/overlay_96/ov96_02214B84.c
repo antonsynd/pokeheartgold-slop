@@ -51,7 +51,7 @@ void ov96_02214B84(undefined4 param_1,int param_2)
   undefined1 extraout_r1;
   int iVar1;
   int iVar2;
-  
+
   if (*(char *)(param_2 + 0x9e) != '\x04') {
     *(char *)(param_2 + 0x9a) = *(char *)(param_2 + 0x9a) + '\x01';
     if (*(byte *)(param_2 + 0x9b) <= *(byte *)(param_2 + 0x9a)) {

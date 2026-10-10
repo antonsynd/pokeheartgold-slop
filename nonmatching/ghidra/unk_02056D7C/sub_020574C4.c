@@ -54,7 +54,7 @@ undefined4 sub_020574C4(int param_1,int param_2,int param_3)
   int iVar1;
   undefined4 uVar2;
   int iVar3;
-  
+
   if ((param_1 != 0xffff) && (param_2 != 0xffff)) {
     iVar3 = 0;
     do {

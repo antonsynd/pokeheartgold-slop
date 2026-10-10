@@ -51,7 +51,7 @@ void ov96_02207718(undefined4 *param_1,undefined4 param_2)
 {
   int iVar1;
   int iVar2;
-  
+
   iVar1 = ov96_02207BD8(param_2);
   ov96_021EB630(param_1[0x12],iVar1 + 3);
   iVar2 = 0;

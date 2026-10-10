@@ -50,7 +50,7 @@ undefined4 ov70_02242FFC(int param_1)
 
 {
   int iVar1;
-  
+
   iVar1 = sub_020199E4(*(undefined4 *)(param_1 + 0x1c),0);
   if (iVar1 == 0) {
     Sprite_SetDrawFlag(*(undefined4 *)(param_1 + 0xc),1);

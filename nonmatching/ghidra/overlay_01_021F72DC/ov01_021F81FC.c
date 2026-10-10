@@ -54,7 +54,7 @@ void ov01_021F81FC(undefined *param_1,undefined *param_2,char *param_3,uint para
 {
   int iVar1;
   int aiStack_30 [8];
-  
+
   if (param_4 == (int)*param_3) {
     if (param_3[2] == '\t') {
       iVar1 = ov01_021FA44C(param_4);

@@ -53,7 +53,7 @@ void ov81_022410C8(int param_1,undefined4 param_2,undefined2 *param_3,int param_
   int iVar3;
   int iVar4;
   uint uVar5;
-  
+
   func_0x02236dd4(*(undefined1 *)(param_4 + 9));
   iVar3 = sub_0203769C();
   if (param_1 != iVar3) {

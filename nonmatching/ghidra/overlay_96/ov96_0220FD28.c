@@ -56,7 +56,7 @@ void ov96_0220FD28(int param_1,int param_2,short *param_3,undefined4 param_4)
   short local_1c;
   short local_1a;
   undefined4 uStack_18;
-  
+
   local_1c = (short)((int)((int)*param_3 + ((uint)((int)*param_3 >> 2) >> 0x1d)) >> 3);
   local_1a = (short)((int)((int)param_3[1] + ((uint)((int)param_3[1] >> 2) >> 0x1d)) >> 3);
   uStack_18 = param_4;

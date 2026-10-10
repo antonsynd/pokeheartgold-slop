@@ -49,7 +49,7 @@ void sub_02063E50(undefined4 param_1)
 
 {
   undefined4 *puVar1;
-  
+
   puVar1 = (undefined4 *)sub_0205F3E8(param_1,0x18);
   *puVar1 = 0x106;
   puVar1[1] = 0;

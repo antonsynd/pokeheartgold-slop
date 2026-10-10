@@ -54,7 +54,7 @@ undefined4 ov96_021E80C4(int param_1)
   undefined *puVar1;
   int iVar2;
   uint uVar3;
-  
+
   puVar1 = Save_Pokeathlon_Get((undefined *)**(undefined4 **)(param_1 + 0x1f8));
   puVar1 = PokeathlonSave_GetRecordsSolo2(puVar1);
   uVar3 = 0;

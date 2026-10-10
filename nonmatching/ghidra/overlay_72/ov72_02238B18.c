@@ -53,7 +53,7 @@ void ov72_02238B18(int param_1,int param_2)
 {
   undefined4 uVar1;
   undefined4 uVar2;
-  
+
   uVar2 = *(undefined4 *)(param_1 + 4);
   if (param_2 == 0) {
     uVar1 = NARC_New(0x58,0x43);

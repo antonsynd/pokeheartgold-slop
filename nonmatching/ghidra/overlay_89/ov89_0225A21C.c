@@ -51,7 +51,7 @@ void ov89_0225A21C(int param_1)
 {
   int iVar1;
   int iVar2;
-  
+
   iVar2 = 0;
   do {
     if (*(int *)(param_1 + 0x990) != 0) {

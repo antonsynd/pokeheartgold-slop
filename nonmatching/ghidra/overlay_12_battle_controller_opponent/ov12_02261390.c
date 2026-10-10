@@ -49,7 +49,7 @@ void ov12_02261390(undefined *param_1,int param_2,int param_3,int param_4)
 {
   ushort uVar1;
   uint uVar2;
-  
+
   if ((*(byte *)(param_2 + 0x195) & 1) == 0) {
     uVar2 = BattleSystem_GetBattleType(param_1);
     if (((uVar2 & 2) == 0) && (uVar2 = BattleSystem_GetBattleType(param_1), (uVar2 & 4) == 0)) {

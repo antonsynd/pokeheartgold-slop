@@ -50,7 +50,7 @@ void sub_0203624C(void)
 
 {
   undefined1 uVar1;
-  
+
   uVar1 = uRam021d4141;
   uRam021d4141 = 0;
   if (iRam021d4148 != 0) {

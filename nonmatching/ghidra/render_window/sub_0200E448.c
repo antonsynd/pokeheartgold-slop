@@ -51,7 +51,7 @@ void sub_0200E448(undefined4 param_1,undefined4 param_2,int param_3,int param_4,
   uint uVar1;
   uint uVar2;
   uint uVar3;
-  
+
   uVar3 = param_4 - 1;
   uVar2 = param_3 - 1;
   FillBgTilemapRect(param_1,param_2,param_8,uVar2 & 0xff,uVar3 & 0xff,1,1,param_7);

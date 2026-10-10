@@ -66,7 +66,7 @@ undefined4 sub_0205A750(int param_1,int param_2,int param_3,undefined4 param_4)
 {
   undefined4 uVar1;
   int iVar2;
-  
+
   if (param_3 == 0) {
     uVar1 = sub_0205A544(param_1,param_2 + -1);
     return uVar1;

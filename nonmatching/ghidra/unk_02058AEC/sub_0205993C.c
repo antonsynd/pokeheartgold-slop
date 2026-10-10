@@ -58,7 +58,7 @@ void sub_0205993C(int param_1,int param_2,undefined4 param_3,undefined4 param_4)
   int iVar1;
   int iVar2;
   int iVar3;
-  
+
   iVar3 = param_1 + 100;
   iVar1 = WindowIsInUse(iVar3);
   if (iVar1 == 0) {

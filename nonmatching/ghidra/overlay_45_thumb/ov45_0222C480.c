@@ -51,7 +51,7 @@ void ov45_0222C480(int param_1,int param_2)
   uint uVar1;
   uint uVar2;
   int extraout_r1;
-  
+
   uVar1 = ov45_0222C5B4(param_1,param_2);
   if (uVar1 != 0xffffffff) {
     uVar2 = _u32_div_f(uVar1,3);

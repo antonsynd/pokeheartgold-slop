@@ -49,7 +49,7 @@ undefined4 ov14_021E9590(int param_1,undefined4 param_2,undefined4 param_3,undef
 
 {
   undefined4 uVar1;
-  
+
   uVar1 = sub_02019978(*(undefined4 *)(*(int *)(param_1 + 0x34) + 0x2f0),0,param_3,param_4,param_4);
   ov14_021F47B8(param_1,0xfffffff8);
   return uVar1;

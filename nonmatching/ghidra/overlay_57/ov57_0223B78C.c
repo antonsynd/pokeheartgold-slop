@@ -50,7 +50,7 @@ void ov57_0223B78C(int param_1)
   undefined1 uVar1;
   int iVar2;
   int iVar3;
-  
+
   iVar3 = 0;
   do {
     uVar1 = SealCaseInventory_GetSealQuantity(*(undefined4 *)(param_1 + 100),iVar3);

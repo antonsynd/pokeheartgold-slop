@@ -79,7 +79,7 @@ undefined4 ov89_02258F00(undefined4 param_1)
 
 {
   int iVar1;
-  
+
   iVar1 = OverlayManager_GetData();
   SysTask_Destroy(*(undefined4 *)(iVar1 + 0x18));
   ov89_022596DC(iVar1);

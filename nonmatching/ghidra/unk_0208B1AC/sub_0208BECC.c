@@ -59,7 +59,7 @@ void sub_0208BECC(int param_1,undefined4 param_2,undefined4 param_3,uint param_4
   int iVar4;
   int iVar5;
   undefined4 uStack_18;
-  
+
   uVar2 = sub_0208A520();
   cVar1 = *(char *)(*(int *)(param_1 + 0x22c) + 0x11);
   if (cVar1 == '\0') {

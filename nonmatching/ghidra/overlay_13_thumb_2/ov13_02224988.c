@@ -57,7 +57,7 @@ void ov13_02224988(undefined4 param_1)
   undefined *puVar5;
   undefined2 uStack_14;
   undefined1 auStack_12 [10];
-  
+
   uStack_14 = 0x100;
   puVar5 = &ov13_02242680;
   puVar4 = auStack_12;

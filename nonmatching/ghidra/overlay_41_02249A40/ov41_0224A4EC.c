@@ -49,7 +49,7 @@ undefined4 ov41_0224A4EC(int param_1)
 
 {
   int iVar1;
-  
+
   if (*(short *)(param_1 + 0x84) != 0) {
     return 0;
   }

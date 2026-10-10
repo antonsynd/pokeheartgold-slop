@@ -50,7 +50,7 @@ void sub_020889D0(undefined4 *param_1,undefined4 param_2,undefined4 param_3,unde
 
 {
   undefined4 uVar1;
-  
+
   uVar1 = sub_0201956C(*param_1,2,7,0x13,param_4);
   param_1[500] = uVar1;
   sub_020195F4(param_1[500],0,6,0x11,6);

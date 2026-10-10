@@ -130,7 +130,7 @@ void ov96_02216C38(undefined4 *param_1,byte *param_2,undefined *param_3)
   uint uStack_40;
   uint uStack_3c;
   undefined4 sortArr [8];
-  
+
   sortArr[0] = 0;
   sortArr[1] = 0;
   sortArr[2] = 0;

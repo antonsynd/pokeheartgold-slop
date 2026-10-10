@@ -57,7 +57,7 @@ int ov96_0220DAA0(int param_1,int param_2,int param_3,undefined4 param_4)
   int iStack_2c;
   undefined4 uStack_28;
   int aiStack_24 [4];
-  
+
   iStack_34 = 0xc;
   piVar2 = aiStack_24;
   aiStack_24[0] = 0x100000;

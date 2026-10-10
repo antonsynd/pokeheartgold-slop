@@ -63,7 +63,7 @@ undefined4 sub_02088E98(undefined *param_1)
   undefined4 uVar2;
   uint uVar3;
   uint uVar4;
-  
+
   if ((_DAT_021d1154 & 0x40) != 0) {
     iVar1 = sub_0208A71C((int)param_1,-1);
     if (iVar1 == 1) {

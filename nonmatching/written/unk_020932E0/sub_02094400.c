@@ -67,7 +67,7 @@ void sub_02094400(undefined4 *param_1)
   undefined4 *puVar8;
   int iVar9;
   undefined4 auStack_44 [12];
-  
+
   puVar1 = NARC_New(0x14,param_1[1]);
   puVar2 = Heap_AllocAtEnd(param_1[1],0x1000);
   iVar9 = 0;

@@ -48,7 +48,7 @@ void ov28_0225D910(int param_1)
 
 {
   uint uVar1;
-  
+
   uVar1 = 0;
   do {
     Destroy2DGfxResObjMan(*(undefined4 *)(param_1 + 0x150));

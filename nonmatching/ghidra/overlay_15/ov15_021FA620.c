@@ -48,7 +48,7 @@ void ov15_021FA620(int param_1)
 
 {
   char cVar1;
-  
+
   cVar1 = func_0x020f2998((uint)*(byte *)(param_1 + 0x614) * -10 + 0x5a,
                           *(byte *)(param_1 + 0x614) + 1);
   *(char *)(param_1 + 0x617) = cVar1 + '\x06';

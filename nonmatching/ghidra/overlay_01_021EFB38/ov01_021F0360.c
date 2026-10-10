@@ -54,7 +54,7 @@ void ov01_021F0360(undefined4 param_1,int *param_2)
 {
   short sVar1;
   int iVar2;
-  
+
   if (param_2[0xd] == 0) {
     ov01_021EFF28(param_2 + 6);
     iVar2 = ov01_021EFF28(param_2);

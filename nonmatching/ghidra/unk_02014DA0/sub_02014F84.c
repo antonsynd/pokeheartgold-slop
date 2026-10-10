@@ -49,7 +49,7 @@ void sub_02014F84(void)
 {
   int iVar1;
   int *piVar2;
-  
+
   piVar2 = (int *)0x21d10a8;
   iVar1 = 0;
   do {

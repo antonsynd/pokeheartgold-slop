@@ -48,7 +48,7 @@ void ov90_02259554(int param_1,int param_2,undefined4 param_3,undefined4 param_4
 
 {
   undefined4 uVar1;
-  
+
   if (*(int *)(param_1 + 0x2c + param_2 * 4) == 0) {
     uVar1 = WaitingIcon_New(param_1 + param_2 * 0x10,1,0,param_4,param_4);
     *(undefined4 *)(param_1 + 0x2c + param_2 * 4) = uVar1;

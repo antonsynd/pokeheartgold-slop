@@ -57,7 +57,7 @@ void ov70_0223FB60(int *param_1,undefined4 param_2,undefined4 param_3,undefined4
 {
   undefined1 uVar1;
   int iVar2;
-  
+
   iVar2 = param_1[1];
   GfGfxLoader_GXLoadPal(100,0,0,0,0x60,0x3d,param_4);
   LoadFontPal1(0,0x1a0,0x3d);

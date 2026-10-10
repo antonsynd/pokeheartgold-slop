@@ -52,7 +52,7 @@ undefined4 ov43_0222D508(short *param_1,undefined4 param_2,undefined4 *param_3,u
 {
   int iVar1;
   undefined4 uVar2;
-  
+
   if (4 < *(int *)(param_1 + 2)) {
     uVar2 = param_4;
     ScheduleSetBgPosText(*param_3,2,0,0);

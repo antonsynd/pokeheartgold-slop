@@ -64,7 +64,7 @@ undefined4 ov112_021EFDA8(int param_1)
   int iVar3;
   short *psVar4;
   short asStack_30 [14];
-  
+
   ov112_021E9C10(param_1,5);
   ov112_021E9A78(param_1,6);
   iVar1 = ov112_021EFD4C(param_1);

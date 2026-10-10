@@ -54,7 +54,7 @@ void ov71_02248BBC(int param_1,undefined4 param_2,undefined4 *param_3)
   undefined4 *puVar3;
   undefined4 *puVar4;
   int iVar5;
-  
+
   param_3[1] = param_1;
   *param_3 = param_2;
   iVar5 = 0;

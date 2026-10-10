@@ -48,7 +48,7 @@ void ov120_0225FECC(undefined4 *param_1,undefined4 param_2)
 
 {
   undefined4 uVar1;
-  
+
   *param_1 = param_2;
   *(undefined2 *)(param_1 + 7) = 0;
   uVar1 = SysTask_CreateOnMainQueue(0x225fe09,param_1,1);

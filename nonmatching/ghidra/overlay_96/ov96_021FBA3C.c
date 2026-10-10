@@ -70,7 +70,7 @@ void ov96_021FBA3C(undefined4 param_1,int param_2,int param_3,undefined4 param_4
   char *pcVar7;
   bool bVar8;
   byte bVar9;
-  
+
   pcVar7 = (char *)(param_2 + 0x238 + (uint)param_6 * 0x28);
   if (((*(int *)(pcVar7 + 0x18) != 1) && (*pcVar7 != '\x02')) && (pcVar7[2] == '\0')) {
     uVar2 = *(uint *)(pcVar7 + 8);

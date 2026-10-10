@@ -48,7 +48,7 @@ void ov15_021FE504(int param_1)
 
 {
   uint uVar1;
-  
+
   uVar1 = 0;
   do {
     String_Delete(*(undefined4 *)(param_1 + uVar1 * 4 + 0x5f4));

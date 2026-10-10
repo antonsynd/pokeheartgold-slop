@@ -56,7 +56,7 @@ undefined4 ov71_022495A0(int param_1,int *param_2)
 
 {
   int iVar1;
-  
+
   switch(*param_2) {
   case 0:
     *(undefined4 *)(param_1 + 8) = 0;

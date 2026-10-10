@@ -63,7 +63,7 @@ undefined4 ov70_02238FF4(int *param_1)
 {
   undefined4 uVar1;
   int iVar2;
-  
+
   ov70_02239614();
   uRam04000304 = uRam04000304 & 0x7fff;
   ov70_02239134(param_1[1]);

@@ -52,7 +52,7 @@ undefined4 FrtCmd_169(undefined4 *param_1)
   byte bVar1;
   int iVar2;
   byte *pbVar3;
-  
+
   Frontier_GetLaunchArgs(*(undefined4 *)*param_1);
   pbVar3 = (byte *)param_1[7];
   param_1[7] = pbVar3 + 1;

@@ -52,7 +52,7 @@ void ov96_021FB994(int param_1)
   uint uVar2;
   ulonglong uVar3;
   ulonglong uVar4;
-  
+
   uVar2 = *(uint *)(param_1 + 0x22c) & 0xffff;
   uVar3 = _s32_div_f(uVar2,0x1e);
   uVar1 = (uint)uVar3 & 0xff;

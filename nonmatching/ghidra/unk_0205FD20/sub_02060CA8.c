@@ -68,7 +68,7 @@ undefined4 sub_02060CA8(undefined *param_1,uint param_2,int param_3,uint param_4
   uint uStack_20;
   uint uStack_1c;
   uint uStack_18;
-  
+
   uStack_18 = param_4;
   puVar1 = MapObject_GetManager(param_1);
   puStack_24 = MapObjectManager_GetObjects2(puVar1);

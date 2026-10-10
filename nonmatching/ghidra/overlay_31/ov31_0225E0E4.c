@@ -53,7 +53,7 @@ void ov31_0225E0E4(int param_1,undefined4 param_2)
 {
   undefined4 uVar1;
   int iStack_14;
-  
+
   uVar1 = GfGfxLoader_GetScrnData(0x3c,0x12,0,&iStack_14,8);
   func_0x0201c0a8(*(undefined4 *)(param_1 + 4),5,iStack_14 + 0xc,*(undefined4 *)(iStack_14 + 8));
   ov31_0225E060(*(undefined4 *)(param_1 + 4),5,param_2);

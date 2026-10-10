@@ -56,7 +56,7 @@ void ov65_0221EF0C(int param_1)
   int iVar2;
   int iVar3;
   int iVar4;
-  
+
   ClearWindowTilemapAndScheduleTransfer(param_1 + 0x574);
   ClearWindowTilemapAndScheduleTransfer(param_1 + 0x584);
   piVar1 = (int *)&ov65_0221FF4C;

@@ -96,7 +96,7 @@ undefined4 * FrontierMap_Init(undefined4 param_1)
   undefined4 *puVar6;
   undefined4 uVar7;
   undefined4 *puVar8;
-  
+
   iVar3 = Frontier_GetLaunchArgs();
   uVar4 = Save_PlayerData_GetProfile(*(undefined4 *)(iVar3 + 8));
   uVar1 = *(undefined1 *)(iVar3 + 0x20);

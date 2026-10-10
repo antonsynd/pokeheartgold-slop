@@ -83,7 +83,7 @@ undefined4 ov96_021F7194(undefined4 param_1,int param_2,undefined4 param_3,undef
   undefined1 auStack_20 [4];
   undefined4 uStack_1c;
   undefined4 uStack_18;
-  
+
   uStack_68 = 0;
   puVar7 = (undefined4 *)(param_2 + 0x90);
   piStack_64 = (int *)(param_2 + 0xfac);

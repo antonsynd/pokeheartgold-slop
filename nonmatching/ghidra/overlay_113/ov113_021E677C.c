@@ -79,7 +79,7 @@ void ov113_021E677C(undefined4 *param_1,undefined4 param_2,undefined4 param_3,un
   undefined4 uStack_20;
   undefined4 uStack_1c;
   undefined4 uStack_18;
-  
+
   uStack_18 = param_4;
   GF_CreateVramTransferManager(0x20,*param_1);
   uVar1 = SpriteSystem_Alloc(*param_1);

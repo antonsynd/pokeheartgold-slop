@@ -51,7 +51,7 @@ int FrontierScript_ReadVarPtr(undefined4 param_1)
 {
   undefined4 uVar1;
   int iVar2;
-  
+
   uVar1 = FrontierScriptContext_ReadHalfWord();
   iVar2 = ov80_0222BE24(param_1,uVar1);
   if (iVar2 == 0) {

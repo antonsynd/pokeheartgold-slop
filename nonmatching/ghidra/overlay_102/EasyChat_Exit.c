@@ -50,7 +50,7 @@ undefined4 EasyChat_Exit(undefined4 param_1)
 
 {
   undefined4 uVar1;
-  
+
   uVar1 = OverlayManager_GetData();
   ov102_021E7A24(uVar1,param_1);
   Heap_Destroy(0x22);

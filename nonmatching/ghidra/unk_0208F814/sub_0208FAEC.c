@@ -49,7 +49,7 @@ void sub_0208FAEC(void)
   int in_r3;
   __asm__ volatile("movs %0, r3" : "=l"(in_r3) : : "cc");
 
-  
+
   *(undefined4 *)(in_r3 + 0x93f4) = 1;
   return;
 }

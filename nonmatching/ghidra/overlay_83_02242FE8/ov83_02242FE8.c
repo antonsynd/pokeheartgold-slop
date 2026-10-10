@@ -67,7 +67,7 @@ ov83_02242FE8(undefined4 param_1,undefined4 param_2,undefined4 param_3,undefined
   undefined4 *puVar4;
   int iVar5;
   int iVar6;
-  
+
   func_0x02006ff8(0x50,2,param_3,param_4,param_4);
   ov83_02243F9C();
   Heap_Create(3,0x6b,0x30000);

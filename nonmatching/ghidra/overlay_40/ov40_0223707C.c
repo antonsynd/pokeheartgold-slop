@@ -63,7 +63,7 @@ void ov40_0223707C(int param_1)
   undefined4 uVar3;
   undefined4 uVar4;
   int iVar5;
-  
+
   iVar5 = *(int *)(param_1 + 0x860);
   uVar1 = NewString_ReadMsgData(*(undefined4 *)(param_1 + 0x48),*(int *)(iVar5 + 0x380) + 0x1c);
   uVar2 = String_New(0xff,0x6d);

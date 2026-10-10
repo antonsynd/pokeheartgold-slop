@@ -51,7 +51,7 @@ undefined4 ov05_0221C050(int param_1,undefined4 param_2,undefined4 param_3,undef
 
 {
   int iVar1;
-  
+
   iVar1 = Bg_GetXpos(*(undefined4 *)(param_1 + 0xc),3,param_3,param_4,param_4);
   if (iVar1 < 0x19) {
     *(undefined1 *)(param_1 + 0xb82) = 0;

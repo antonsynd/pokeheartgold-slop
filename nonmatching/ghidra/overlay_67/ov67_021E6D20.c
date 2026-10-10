@@ -49,7 +49,7 @@ void ov67_021E6D20(int param_1,int param_2,undefined4 param_3,undefined4 param_4
 
 {
   int iVar1;
-  
+
   if (param_2 == 0xc) {
     iVar1 = 0x1e;
   }

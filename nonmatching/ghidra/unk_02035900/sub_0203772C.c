@@ -50,7 +50,7 @@ undefined4 sub_0203772C(void)
 {
   uint uVar1;
   int iVar2;
-  
+
   uVar1 = sub_02033FC4();
   if (4 < uVar1) {
     return 0xc;

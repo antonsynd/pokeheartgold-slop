@@ -49,7 +49,7 @@ void ov41_0224B270(int param_1,undefined4 param_2,undefined4 param_3,undefined4 
 
 {
   int iVar1;
-  
+
   iVar1 = **(int **)(param_1 + 0x2c);
   if ((*(int *)(param_1 + 0x1c) != iVar1) && (*(int *)(param_1 + 0x1c) = iVar1, iVar1 < 0xb)) {
     ov41_0224B374(param_1,param_1 + 0x30,iVar1,param_4,param_4);

@@ -55,7 +55,7 @@ undefined4 ov39_02227534(undefined4 *param_1,undefined4 param_2)
 {
   int iVar1;
   undefined4 uVar2;
-  
+
   iVar1 = ov39_02227DB8();
   if (iVar1 == 0) {
     return 0;

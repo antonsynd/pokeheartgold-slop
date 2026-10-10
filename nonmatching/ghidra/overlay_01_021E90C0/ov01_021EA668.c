@@ -57,7 +57,7 @@ undefined4 ov01_021EA668(undefined4 param_1,ushort *param_2,undefined4 param_3,u
   undefined1 auStack_21a [256];
   undefined1 auStack_11a [258];
   undefined4 uStack_18;
-  
+
   uStack_18 = param_4;
   uVar2 = Ascii_GetDelim(param_1,auStack_11a,0xd);
   puVar3 = auStack_11a;

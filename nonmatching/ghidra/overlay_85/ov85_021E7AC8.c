@@ -48,7 +48,7 @@ void ov85_021E7AC8(int param_1,int param_2,undefined4 param_3,undefined4 param_4
 
 {
   int iVar1;
-  
+
   iVar1 = *(int *)(param_2 + 0x10) * 0x68;
   *(undefined4 *)(param_1 + 0x8ac + iVar1) = 1;
   iVar1 = param_1 + 0x8ac + iVar1;

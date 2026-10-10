@@ -50,7 +50,7 @@ void ov07_02233D60(undefined4 param_1,int param_2)
 
 {
   int iVar1;
-  
+
   if (*(int *)(param_2 + 0x1c) != 0) {
     if (0 < *(int *)(param_2 + 0xdc)) {
       *(int *)(param_2 + 0xdc) = *(int *)(param_2 + 0xdc) + -1;

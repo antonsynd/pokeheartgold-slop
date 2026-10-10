@@ -53,7 +53,7 @@ bool ov43_0222AB94(int param_1,undefined4 param_2,undefined4 param_3,undefined4 
   undefined4 uVar1;
   int iVar2;
   undefined4 uVar3;
-  
+
   uVar1 = sub_0202C6F4(param_2);
   iVar2 = sub_0202C090(uVar1,param_3,6);
   BufferIntegerAsString(*(undefined4 *)(param_1 + 0x50),2,iVar2,2,0,1,param_4);

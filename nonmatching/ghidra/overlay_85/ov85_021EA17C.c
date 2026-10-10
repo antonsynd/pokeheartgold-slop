@@ -48,7 +48,7 @@ undefined4 ov85_021EA17C(uint param_1)
 
 {
   int iVar1;
-  
+
   if (param_1 == 0xff) {
     return 1;
   }

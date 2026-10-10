@@ -50,7 +50,7 @@ void ov08_02223374(undefined4 *param_1,undefined4 param_2,undefined4 param_3,und
 {
   undefined4 uVar1;
   undefined4 *puVar2;
-  
+
   puVar2 = (undefined4 *)*param_1;
   uVar1 = func_0x0223a7e4(*puVar2);
   func_0x022581d4(*(undefined4 *)*param_1,uVar1,2,puVar2[4],param_4);

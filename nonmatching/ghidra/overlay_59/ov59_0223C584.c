@@ -51,7 +51,7 @@ void ov59_0223C584(undefined4 *param_1)
 
 {
   undefined4 uVar1;
-  
+
   uVar1 = ov59_0223C53C(*param_1);
   param_1[9] = uVar1;
   sub_02015528(uVar1,1);

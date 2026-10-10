@@ -50,7 +50,7 @@ uint ov01_0220553C(undefined4 param_1)
 {
   int iVar1;
   uint uVar2;
-  
+
   iVar1 = MapObject_GetID();
   if (((iVar1 != 0xfd) && (iVar1 != 0xfa)) && (iVar1 != 0xfb)) {
     return 0;

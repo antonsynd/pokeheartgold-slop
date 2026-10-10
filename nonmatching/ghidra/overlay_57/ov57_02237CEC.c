@@ -75,7 +75,7 @@ void ov57_02237CEC(undefined4 param_1)
   undefined4 auStack_60 [7];
   undefined1 auStack_44 [28];
   undefined1 auStack_28 [28];
-  
+
   GfGfx_DisableEngineAPlanes();
   puVar5 = (undefined4 *)&ov57_0223BC90;
   puVar4 = auStack_f8;

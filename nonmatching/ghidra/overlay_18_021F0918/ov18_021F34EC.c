@@ -50,7 +50,7 @@ void ov18_021F34EC(int param_1,int param_2)
 
 {
   uint uVar1;
-  
+
   ov18_021F3494();
   if (param_2 == 1) {
     ManagedSprite_SetPositionXY(*(undefined4 *)(param_1 + 0x6e0),0xe0,0x48);

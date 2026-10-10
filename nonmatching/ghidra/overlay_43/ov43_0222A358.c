@@ -69,7 +69,7 @@ undefined4 ov43_0222A358(int param_1,undefined4 param_2,undefined4 param_3,undef
   undefined1 auStack_20 [4];
   int iStack_1c;
   undefined4 uStack_18;
-  
+
   uStack_18 = param_4;
   uVar1 = sub_0202C6F4(*(undefined4 *)(param_1 + 4));
   sub_0202C08C();

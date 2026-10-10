@@ -53,7 +53,7 @@ void ov40_02237030(int param_1,int param_2)
 {
   undefined *puVar1;
   int iVar2;
-  
+
   iVar2 = *(int *)(param_1 + 0x860);
   puVar1 = NewString_ReadMsgData(*(undefined **)(param_1 + 0x48),param_2);
   FillWindowPixelBuffer((undefined *)(iVar2 + 0x1d4),0xcc);

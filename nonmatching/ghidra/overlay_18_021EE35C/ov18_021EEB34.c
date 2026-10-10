@@ -56,7 +56,7 @@ void ov18_021EEB34(int param_1,undefined4 param_2,int param_3,int param_4,undefi
   undefined4 uVar1;
   undefined4 uVar2;
   int iVar3;
-  
+
   iVar3 = param_4;
   uVar1 = GetDexWeightMsgBank();
   uVar1 = NewMsgDataFromNarc(0,0x1b,uVar1,0x25);

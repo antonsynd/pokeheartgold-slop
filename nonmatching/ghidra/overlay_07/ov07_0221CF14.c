@@ -51,7 +51,7 @@ void ov07_0221CF14(int param_1)
   int iVar2;
   int iVar3;
   int iVar4;
-  
+
   iVar3 = 0;
   iVar4 = 0;
   iVar2 = 0;

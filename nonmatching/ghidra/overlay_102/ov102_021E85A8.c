@@ -50,7 +50,7 @@ undefined4 ov102_021E85A8(undefined4 param_1,int param_2,int param_3,undefined4 
 {
   int iVar1;
   uint uVar2;
-  
+
   uVar2 = param_3 + 0xff02U & 0xffff;
   if (uVar2 < 2) {
     return 0;

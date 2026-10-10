@@ -48,7 +48,7 @@ undefined4 ov08_0221DB24(int param_1,uint param_2)
 
 {
   int iVar1;
-  
+
   iVar1 = ov08_0221DB04();
   if (iVar1 == 1) {
     if (*(char *)(param_1 + 0x208f) == '\x02') {

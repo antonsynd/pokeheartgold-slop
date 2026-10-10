@@ -54,7 +54,7 @@ ushort ov96_021F3180(int param_1,undefined4 param_2,undefined4 param_3,undefined
   undefined2 *puVar3;
   int iVar4;
   uint uVar5;
-  
+
   if (param_1 == 0xf) {
     return 0;
   }

@@ -55,7 +55,7 @@ undefined4 ov85_021E9B40(int param_1,undefined4 param_2)
 {
   int iVar1;
   undefined4 uVar2;
-  
+
   if ((*(int *)(param_1 + 0x5c) != 0xff) && (iVar1 = ov85_021EA17C(), iVar1 == 0)) {
     func_0x020200a0(*(uint *)(param_1 + 0x5c) & 0xff);
   }

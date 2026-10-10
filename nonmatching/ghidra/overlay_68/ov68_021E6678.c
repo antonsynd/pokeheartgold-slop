@@ -48,7 +48,7 @@ uint ov68_021E6678(int *param_1)
 {
   uint uVar1;
   short *psVar2;
-  
+
   psVar2 = *(short **)(*param_1 + 0x10);
   uVar1 = 0;
   do {

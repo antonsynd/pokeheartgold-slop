@@ -54,7 +54,7 @@ void ov43_0222C890(short *param_1,undefined4 *param_2,int param_3,int param_4)
   int iVar3;
   int iVar4;
   short *psVar5;
-  
+
   psVar5 = (short *)&ov43_0222EFA0;
   iVar4 = 0;
   do {

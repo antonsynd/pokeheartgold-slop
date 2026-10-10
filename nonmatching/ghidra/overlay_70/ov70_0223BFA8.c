@@ -59,7 +59,7 @@ undefined4 ov70_0223BFA8(undefined4 *param_1,int param_2,undefined4 param_3,unde
   uint uStack_14;
   uint uStack_10;
   undefined4 uStack_c;
-  
+
   uStack_c = param_4;
   if (param_2 == 1) {
     uStack_10 = sub_0202DB90(*(undefined4 *)*param_1);

@@ -58,7 +58,7 @@ void ov14_021EB7E4(int *param_1,undefined4 param_2,undefined4 param_3,undefined4
 {
   byte bVar1;
   undefined4 uVar2;
-  
+
   ov14_021F6688(param_1[0xd],0x25,param_3,param_4,param_4);
   if (*(int *)(*param_1 + 8) == 0) {
     ov14_021F5EE4(param_1,&ov14_021F7D1C,4);

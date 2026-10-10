@@ -50,7 +50,7 @@ uint ov01_021EC538(undefined4 *param_1,undefined4 param_2,undefined4 param_3,und
   short sVar2;
   int iVar3;
   uint uVar4;
-  
+
   sVar1 = *(short *)(param_1 + 4);
   uVar4 = 0;
   if (sVar1 == 0) {

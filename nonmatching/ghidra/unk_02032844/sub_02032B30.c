@@ -50,7 +50,7 @@ void sub_02032B30(int param_1)
 
 {
   int iVar1;
-  
+
   if (*(short *)(param_1 + 2) != 0) {
     sub_02032858();
     sub_02033830();

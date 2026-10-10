@@ -51,7 +51,7 @@ ov71_0224A920(undefined4 param_1,undefined4 param_2,undefined4 param_3,undefined
 {
   undefined4 *puVar1;
   undefined4 uVar2;
-  
+
   puVar1 = (undefined4 *)Heap_Alloc(0x39,0x3c,param_3,param_4,param_4);
   if (puVar1 != (undefined4 *)0x0) {
     *puVar1 = param_1;

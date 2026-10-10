@@ -49,7 +49,7 @@ undefined4 ov96_021FC618(undefined4 param_1)
 
 {
   undefined4 uVar1;
-  
+
   uVar1 = Heap_Alloc(param_1,0x84);
   func_0x020d4994(uVar1,0,0x84);
   return uVar1;

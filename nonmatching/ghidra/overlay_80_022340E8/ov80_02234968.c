@@ -62,7 +62,7 @@ void ov80_02234968(int param_1,undefined4 *param_2,undefined4 param_3,undefined4
   undefined4 uVar2;
   int iStack_18;
   undefined4 uStack_14;
-  
+
   uStack_14 = param_4;
   if (*(char *)(param_1 + 0x13) != ' ') {
     uVar1 = NARC_New(0xb7,0x65);

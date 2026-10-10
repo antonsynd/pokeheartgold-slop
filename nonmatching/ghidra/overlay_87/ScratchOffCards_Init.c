@@ -61,7 +61,7 @@ int ScratchOffCards_Init(undefined *param_1,undefined *param_2)
   undefined4 *puVar3;
   int iVar4;
   int iVar5;
-  
+
   ov87_021E68A4();
   Heap_Create(3,0x7a,0x48000);
   puVar1 = (undefined4 *)OverlayManager_CreateAndGetData(param_1,0x99fc,0x7a);

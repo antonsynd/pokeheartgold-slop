@@ -50,7 +50,7 @@ void ov108_021E7510(int param_1)
 
 {
   int iVar1;
-  
+
   ov108_021E7650();
   func_0x0200d018(*(undefined4 *)(param_1 + 0x354));
   func_0x0200d018(*(undefined4 *)(param_1 + 0x358));

@@ -49,7 +49,7 @@ void ov00_021E77CC(int *param_1,uint *param_2,int param_3,undefined4 param_4)
 
 {
   int iVar1;
-  
+
   iVar1 = Heap_Alloc(param_4,param_3 + 0x20);
   *param_1 = iVar1;
   func_0x020d4994(iVar1,0,param_3 + 0x20);

@@ -66,7 +66,7 @@ void ov96_021F2834(int param_1,undefined4 param_2,undefined4 param_3,undefined4 
   undefined1 auStack_4c [4];
   undefined1 auStack_48 [48];
   undefined4 uStack_18;
-  
+
   if (*(char *)(param_1 + 0x72b) != '\0') {
     iVar3 = 0;
     pbVar4 = abStack_50;

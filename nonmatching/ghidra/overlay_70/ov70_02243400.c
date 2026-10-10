@@ -48,7 +48,7 @@ undefined4 ov70_02243400(int param_1)
 
 {
   undefined4 uVar1;
-  
+
   ov70_02241DB4(param_1,5);
   if (*(short *)(param_1 + 0x3e) < 0) {
     uVar1 = 7;

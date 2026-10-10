@@ -60,7 +60,7 @@ int SafariDecoration_Init(undefined *param_1,undefined *param_2)
   undefined *puVar1;
   undefined4 *puVar2;
   int iVar3;
-  
+
   if (*(int *)param_2 == 0) {
     ov108_021E8AD4();
     Heap_Create(3,0x5f,0x48000);

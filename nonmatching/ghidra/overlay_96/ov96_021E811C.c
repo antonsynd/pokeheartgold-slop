@@ -56,7 +56,7 @@ void ov96_021E811C(int param_1,uint param_2,undefined1 *param_3)
   uint extraout_r1;
   uint uVar3;
   uint uVar4;
-  
+
   *param_3 = 10;
   uVar4 = (uint)*(byte *)(param_1 + 0xc);
   bVar1 = false;

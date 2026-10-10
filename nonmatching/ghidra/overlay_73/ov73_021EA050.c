@@ -49,7 +49,7 @@ int ov73_021EA050(int param_1,undefined4 param_2,int param_3,int param_4,undefin
 
 {
   int iVar1;
-  
+
   if (param_4 == 1) {
     iVar1 = FontID_String_GetWidth(param_6,param_2,0);
     param_3 = (int)((uint)*(byte *)(param_1 + 7) * 8 - iVar1) / 2;

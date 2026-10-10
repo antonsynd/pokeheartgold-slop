@@ -52,7 +52,7 @@ undefined4 ov14_021E5F4C(int param_1)
   char cVar1;
   int iVar2;
   byte *pbVar3;
-  
+
   iVar2 = *(int *)(param_1 + 0x34);
   pbVar3 = (byte *)(iVar2 + 0x88d4);
   cVar1 = *(char *)(iVar2 + 0x88d6);

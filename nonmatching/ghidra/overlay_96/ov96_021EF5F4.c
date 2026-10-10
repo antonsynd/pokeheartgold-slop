@@ -50,7 +50,7 @@ undefined2 ov96_021EF5F4(undefined4 *param_1,int param_2)
 
 {
   int iVar1;
-  
+
   PokeathlonCourse_GetSaveData(*param_1);
   func_0x02031968();
   iVar1 = PokeathlonSave_GetRecordsSolo2();

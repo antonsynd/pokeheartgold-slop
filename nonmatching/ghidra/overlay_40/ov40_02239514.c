@@ -50,7 +50,7 @@ void ov40_02239514(int param_1)
 {
   int iVar1;
   int iVar2;
-  
+
   iVar1 = 0;
   iVar2 = *(int *)(param_1 + 0x860) + 0x24;
   do {

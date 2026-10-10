@@ -54,7 +54,7 @@ undefined4 FrtCmd_124(int *param_1)
   uint uVar2;
   undefined4 uVar3;
   undefined1 *puVar4;
-  
+
   Frontier_GetLaunchArgs(*(undefined4 *)*param_1);
   puVar4 = (undefined1 *)param_1[7];
   param_1[7] = (int)(puVar4 + 1);

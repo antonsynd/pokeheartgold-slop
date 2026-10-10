@@ -58,7 +58,7 @@ undefined4 ov13_02224864(undefined4 param_1,uint *param_2)
   int iStack_20;
   int iStack_1c;
   int iStack_18;
-  
+
   iVar1 = ov13_02224624(param_1,&iStack_18,&iStack_1c);
   uVar3 = 0;
   uVar4 = 0;

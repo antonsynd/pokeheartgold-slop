@@ -52,7 +52,7 @@ void sub_020360EC(void)
 
 {
   int iVar1;
-  
+
   if (cRam021d4141 != '\0') {
     sub_02036AD8();
     iVar1 = sub_0203769C();

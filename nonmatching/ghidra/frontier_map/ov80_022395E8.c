@@ -51,7 +51,7 @@ void ov80_022395E8(int param_1,uint param_2,undefined4 *param_3,undefined4 *para
   int iVar1;
   int iVar2;
   int iVar3;
-  
+
   iVar1 = sub_02096868(*(undefined4 *)(param_1 + 8));
   iVar2 = 0;
   iVar3 = iVar1;

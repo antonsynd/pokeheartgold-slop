@@ -53,7 +53,7 @@ undefined4 ov96_021EBA98(undefined *param_1,char *param_2)
 
 {
   int iVar1;
-  
+
   if (*param_2 == '\0') {
     iVar1 = PokeathlonCourse_GetHeapID(param_1);
     BeginNormalPaletteFade(0,0,0,0x7fff,0x5a,1,iVar1);

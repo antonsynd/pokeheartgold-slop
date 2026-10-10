@@ -58,7 +58,7 @@ undefined4 ov08_0221C1C8(int *param_1,undefined4 param_2,undefined4 param_3,unde
   undefined2 uVar1;
   int iVar2;
   int iVar3;
-  
+
   iVar3 = *param_1;
   if (((*(char *)(iVar3 + 0x11) != '\0') || (*(int *)(iVar3 + 0x18) == 0)) &&
      ((*(char *)(iVar3 + 0x11) != '\x01' || (*(int *)(iVar3 + 0x1c) == 0)))) {

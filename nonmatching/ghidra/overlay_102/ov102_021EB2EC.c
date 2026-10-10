@@ -59,7 +59,7 @@ void ov102_021EB2EC(undefined4 *param_1,int param_2,undefined4 param_3,undefined
   int iVar3;
   undefined4 *puVar4;
   int iVar5;
-  
+
   uVar1 = ov102_021EA268(*param_1);
   FillBgTilemapRect(uVar1,0,0,0x17,0xd,9,7,0x11);
   ov102_021EB524(param_1,param_3);

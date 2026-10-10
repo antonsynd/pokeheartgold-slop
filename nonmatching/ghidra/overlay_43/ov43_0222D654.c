@@ -59,7 +59,7 @@ void ov43_0222D654(short *param_1,int param_2,undefined4 *param_3,undefined4 par
 
 {
   ushort *puVar1;
-  
+
   ov43_0222AB20(param_3,*(undefined4 *)(param_2 + 4),
                 *(undefined1 *)(param_2 + *(char *)(param_2 + 0xb) + 0x18));
   ov43_0222A9F4(param_3,param_1 + 0x94,0xd);

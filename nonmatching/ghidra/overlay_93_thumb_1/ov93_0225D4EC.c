@@ -62,7 +62,7 @@ void ov93_0225D4EC(int *param_1)
   uint uVar5;
   int iVar6;
   undefined4 uVar7;
-  
+
   uVar1 = sub_0203769C();
   for (iVar6 = 0; iVar6 < (int)(uint)*(byte *)(*param_1 + 0x30); iVar6 = iVar6 + 1) {
     if (uVar1 != *(byte *)(*param_1 + iVar6 + 0x2c)) {

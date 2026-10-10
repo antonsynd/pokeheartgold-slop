@@ -52,7 +52,7 @@ undefined4 sub_02033800(undefined4 param_1,undefined4 param_2,undefined4 param_3
   int iVar1;
   uint uVar2;
   undefined4 uVar3;
-  
+
   uVar3 = param_4;
   iVar1 = sub_020338F4();
   if ((iVar1 == 0) && (uVar2 = sub_02033250(), (uVar2 & 0xfe) == 0)) {

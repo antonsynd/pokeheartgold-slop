@@ -56,7 +56,7 @@ void ov15_021FEEA4(int param_1,undefined4 param_2,undefined4 param_3,undefined4 
   undefined1 uVar1;
   undefined4 uVar2;
   int iVar3;
-  
+
   uVar2 = NewString_ReadMsgData(*(undefined4 *)(param_1 + 0x2f0),0x37);
   iVar3 = *(int *)(param_1 + 0x234) + 4 + (uint)*(byte *)(*(int *)(param_1 + 0x234) + 100) * 0xc;
   if (*(short *)(param_1 + 0x680) < 2) {

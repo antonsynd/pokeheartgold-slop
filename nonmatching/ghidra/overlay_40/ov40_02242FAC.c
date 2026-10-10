@@ -54,7 +54,7 @@ int * ov40_02242FAC(undefined4 param_1,int param_2,int *param_3,int param_4)
   int *piVar3;
   int iVar4;
   int *piVar5;
-  
+
   piVar1 = (int *)Heap_Alloc(param_1,0x20);
   func_0x020d4994(piVar1,0,0x20);
   *piVar1 = param_2;

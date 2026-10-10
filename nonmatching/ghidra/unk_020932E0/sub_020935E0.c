@@ -53,7 +53,7 @@ int sub_020935E0(int param_1)
 
 {
   int iVar1;
-  
+
   switch(*(undefined4 *)(param_1 + 0x14)) {
   case 0:
     iVar1 = sub_02093630();

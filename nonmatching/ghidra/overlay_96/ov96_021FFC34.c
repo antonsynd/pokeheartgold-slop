@@ -69,7 +69,7 @@ void ov96_021FFC34(undefined4 *param_1,int param_2,undefined4 param_3,undefined4
     for (nug_k = 0; nug_k < (int)sizeof(uStack_14) && 0 + nug_k < 4; nug_k++) ((unsigned char *)&uStack_14)[nug_k] = (unsigned char)(nug_r3 >> (8 * (0 + nug_k)));
   }
 
-  
+
   local_20 = 0;
   uStack_1c = 0x60000;
   local_18 = 0;

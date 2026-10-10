@@ -60,7 +60,7 @@ void ov85_021E705C(int param_1)
   undefined4 *puVar2;
   int iVar3;
   int iVar4;
-  
+
   LoadUserFrameGfx1(*(undefined4 *)(param_1 + 0xd84),1,1,0xf,0,0x66);
   LoadUserFrameGfx2(*(undefined4 *)(param_1 + 0xd84),1,10,0xe,
                     *(uint *)(*(int *)(param_1 + 0xcc) + 0x18) & 0xff,0x66);

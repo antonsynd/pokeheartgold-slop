@@ -57,7 +57,7 @@ void ov96_02203F50(undefined4 param_1,int param_2,undefined4 param_3,undefined4 
   uint uVar4;
   undefined4 uVar5;
   int iVar6;
-  
+
   puVar1 = (undefined4 *)ov96_021EB5EC(param_1,0x65,0,param_4,param_4);
   uVar3 = *puVar1;
   puVar1 = (undefined4 *)ov96_021EB5EC(param_1,0x65,1);

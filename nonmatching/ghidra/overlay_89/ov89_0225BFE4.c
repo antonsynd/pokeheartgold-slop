@@ -52,7 +52,7 @@ undefined4 ov89_0225BFE4(undefined4 param_1,int param_2,undefined4 param_3)
   uint uVar2;
   int iVar3;
   uint *puVar4;
-  
+
   puVar4 = (uint *)(param_2 + 8);
   if (*(char *)(param_2 + 0x14) == '\0') {
     PlaySE(0x5d5);

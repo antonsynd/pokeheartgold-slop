@@ -52,7 +52,7 @@ undefined4 ov65_0221F4D4(int param_1)
 
 {
   int iVar1;
-  
+
   iVar1 = func_0x020186a4(*(undefined4 *)(param_1 + 0x36c8));
   if (iVar1 == 0) {
     FillBgTilemapRect(*(undefined4 *)(param_1 + 0x180),0,0,0,0,0x20,0x18,0);

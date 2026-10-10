@@ -49,7 +49,7 @@ void ov96_02214A6C(int param_1,undefined4 param_2,undefined4 param_3,undefined4 
 {
   uint uVar1;
   uint extraout_r1;
-  
+
   uVar1 = func_0x020f2998(param_2,3,param_3,param_4,param_4);
   func_0x020f2998(param_2,3); __asm__ volatile("movs %0, r1" : "=l"(extraout_r1) : : "cc");
   *(undefined4 *)(param_1 + (uVar1 & 0xff) * 0x24 + (extraout_r1 & 0xff) * 4 + 0x18) = param_3;

@@ -66,7 +66,7 @@ void sub_0201980C(undefined *param_1,int param_2)
   int iVar14;
   int iVar15;
   byte bStack_20;
-  
+
   iVar13 = *(int *)(param_1 + 4) + param_2 * 0x10;
   *(ushort *)(iVar13 + 4) = *(ushort *)(iVar13 + 4) | 0x1000;
   iVar14 = (int)*(char *)(iVar13 + 0xd);

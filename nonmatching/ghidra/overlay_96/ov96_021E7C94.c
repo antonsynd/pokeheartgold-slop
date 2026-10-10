@@ -52,7 +52,7 @@ void ov96_021E7C94(undefined4 param_1,undefined2 *param_2,undefined2 *param_3)
   int iVar3;
   undefined2 *puVar4;
   undefined2 *puVar5;
-  
+
   ov96_021E5F24();
   iVar2 = 0;
   do {

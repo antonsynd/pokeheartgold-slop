@@ -52,7 +52,7 @@ undefined4 ov14_021ED1AC(int param_1)
 
 {
   undefined4 uVar1;
-  
+
   ov14_021F6688(*(undefined4 *)(param_1 + 0x34),0x25);
   if (*(char *)(param_1 + 0x2a) != '\0') {
     ov14_021F29E4(*(int *)(param_1 + 0x34),9,8);

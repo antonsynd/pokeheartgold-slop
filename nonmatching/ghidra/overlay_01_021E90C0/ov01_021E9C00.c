@@ -49,7 +49,7 @@ void ov01_021E9C00(int param_1,undefined1 param_2,undefined4 param_3,undefined4 
 
 {
   undefined1 *puVar1;
-  
+
   puVar1 = (undefined1 *)Heap_AllocAtEnd(4,1,param_3,param_4,param_4);
   *puVar1 = param_2;
   func_0x02050530(*(undefined4 *)(param_1 + 0x10),0x21e9abd);

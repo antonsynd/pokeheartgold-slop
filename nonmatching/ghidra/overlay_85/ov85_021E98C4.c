@@ -47,7 +47,7 @@ undefined4 ov85_021E98C4(int param_1,undefined4 param_2)
 
 {
   int iVar1;
-  
+
   iVar1 = *(int *)(param_1 + 0x360);
   *(int *)(param_1 + 0x360) = iVar1 + 1;
   if (0x3c < iVar1) {

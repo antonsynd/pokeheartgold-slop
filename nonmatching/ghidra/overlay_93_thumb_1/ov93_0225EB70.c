@@ -68,7 +68,7 @@ void ov93_0225EB70(undefined *param_1)
   undefined4 uStack_1c;
   undefined4 uStack_18;
   undefined4 uStack_14;
-  
+
   auStack_3c[4] = 0x2d8b6127;
   NNS_G3dGeBufferOP_N(0x32,(undefined *)(auStack_3c + 4),1);
   auStack_3c[3] = 0x7fff;

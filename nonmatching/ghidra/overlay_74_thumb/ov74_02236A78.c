@@ -51,7 +51,7 @@ void ov74_02236A78(int param_1,undefined4 param_2,undefined4 *param_3,undefined4
 
 {
   int iVar1;
-  
+
   uRam0223e308 = 0;
   uRam0223e30c = param_2;
   *(undefined4 *)(param_1 + 0x1650) = param_4;

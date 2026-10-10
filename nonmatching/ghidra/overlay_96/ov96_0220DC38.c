@@ -51,7 +51,7 @@ void ov96_0220DC38(undefined4 param_1)
   int unaff_r4;
   __asm__ volatile("movs %0, r4" : "=l"(unaff_r4) : : "cc");
 
-  
+
   switch(param_1) {
   default:
     GF_AssertFail();

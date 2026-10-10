@@ -68,7 +68,7 @@ void ov05_0221CD24(int *param_1,undefined4 param_2,undefined4 param_3,undefined4
   undefined4 uStack_20;
   undefined4 uStack_1c;
   undefined4 uStack_18;
-  
+
   uStack_18 = param_4;
   GF_CreateVramTransferManager(0x40,*(undefined4 *)(*param_1 + 0x24));
   iVar1 = SpriteSystem_Alloc(*(undefined4 *)(*param_1 + 0x24));

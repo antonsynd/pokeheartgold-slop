@@ -55,7 +55,7 @@ void sub_02032058(undefined *param_1,uint param_2)
   uint uVar1;
   int extraout_r1;
   uint uVar2;
-  
+
   if (((int)((uint)*(ushort *)(param_1 + 10) << 0x10) < 0) || (param_1[9] != '\0')) {
     uVar2 = param_2 - *(int *)(param_1 + 0x18);
     if (99 < uVar2) {

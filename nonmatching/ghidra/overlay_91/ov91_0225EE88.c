@@ -48,7 +48,7 @@ int ov91_0225EE88(int param_1)
 {
   uint uVar1;
   uint uVar2;
-  
+
   uVar2 = (uint)*(ushort *)(param_1 + 0x26);
   uVar1 = (uint)*(ushort *)(param_1 + 0x24);
   if (uVar2 < uVar1) {

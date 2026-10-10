@@ -49,7 +49,7 @@ void sub_02010E64(int *param_1,int param_2,int param_3,undefined4 param_4)
 {
   int iVar1;
   int iVar2;
-  
+
   if ((param_2 != 0) && (param_2 != 1)) {
     if (param_2 != 2) {
       return;

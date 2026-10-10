@@ -60,7 +60,7 @@ undefined4 ov91_0225F25C(int param_1,int param_2)
 
 {
   int iVar1;
-  
+
   switch(*(undefined1 *)(param_1 + 0x3a)) {
   case 0:
     Sprite_SetAnimationFrame(*(undefined4 *)(param_1 + 0x34),0);

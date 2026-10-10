@@ -49,7 +49,7 @@ uint ov96_02208B34(int param_1)
 
 {
   uint uVar1;
-  
+
   uVar1 = 4;
   if (*(char *)(param_1 + 0x559) == '\x04') {
     return 0;

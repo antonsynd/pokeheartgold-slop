@@ -66,7 +66,7 @@ void ov41_02247334(undefined4 *param_1)
   undefined4 uStack_20;
   undefined4 uStack_1c;
   undefined4 *puStack_18;
-  
+
   uStack_40 = *param_1;
   uStack_3c = param_1[1];
   uStack_38 = param_1[4];

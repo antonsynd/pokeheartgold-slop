@@ -53,7 +53,7 @@ ov39_02227420(undefined4 *param_1,undefined4 param_2,undefined4 param_3,undefine
 
 {
   int iVar1;
-  
+
   iVar1 = ov39_02227DB8();
   if (iVar1 == 0) {
     return 0;

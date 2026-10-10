@@ -51,7 +51,7 @@ int ov07_02232694(undefined4 param_1,undefined4 param_2)
   int iVar1;
   int iVar2;
   int iVar3;
-  
+
   iVar1 = ov07_02232670();
   ov07_022326C0(iVar1,param_2);
   iVar2 = 0;

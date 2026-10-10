@@ -54,7 +54,7 @@ int ov65_0221D57C(int param_1,undefined4 param_2,undefined4 param_3,undefined2 *
   int iVar2;
   int iVar3;
   undefined2 *puVar4;
-  
+
   puVar4 = param_4;
   GetPokemonSpriteCharAndPlttNarcIds(param_4,param_2,2);
   uVar1 = GetMonData(param_2,0,0);

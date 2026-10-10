@@ -52,7 +52,7 @@ void ov106_021E6A34(int param_1)
   int iVar1;
   int iVar2;
   uint uVar3;
-  
+
   uVar3 = 0;
   iVar2 = 0;
   iVar1 = param_1 + 0x34;

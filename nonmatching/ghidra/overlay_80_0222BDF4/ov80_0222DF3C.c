@@ -48,7 +48,7 @@ undefined4 ov80_0222DF3C(undefined4 *param_1)
 
 {
   int iVar1;
-  
+
   iVar1 = sub_0209680C(*(undefined4 *)*param_1);
   if (*(int *)(iVar1 + 0xb0) == 0) {
     return 1;

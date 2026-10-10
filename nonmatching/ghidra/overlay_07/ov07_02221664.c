@@ -49,7 +49,7 @@ undefined4 ov07_02221664(undefined4 *param_1)
 {
   undefined4 uVar1;
   undefined4 uVar2;
-  
+
   uVar2 = 1;
   uVar1 = ov07_02231924(*param_1,param_1[9]);
   ov07_02231924(*param_1,param_1[10]);

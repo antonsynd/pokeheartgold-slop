@@ -56,7 +56,7 @@ void ov01_021F0050(int param_1,int param_2,undefined4 param_3,undefined4 param_4
 {
   short sVar1;
   undefined4 uVar2;
-  
+
   uVar2 = param_4;
   if (*(int *)(param_2 + 0x24) != 0) {
     GF_AssertFail();

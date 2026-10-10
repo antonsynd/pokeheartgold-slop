@@ -56,7 +56,7 @@ undefined4 ov68_021E6078(int param_1)
   undefined1 uStack_10;
   undefined1 uStack_f;
   byte bStack_e;
-  
+
   func_0x020d4994(&uStack_20,0,0x14);
   uStack_20 = *(undefined4 *)(param_1 + 4);
   uStack_1c = 4;

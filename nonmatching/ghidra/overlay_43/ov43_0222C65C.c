@@ -59,7 +59,7 @@ void ov43_0222C65C(int param_1,undefined4 param_2)
   int iVar1;
   int iStack_18;
   int iStack_14;
-  
+
   Sprite_SetDrawFlag(*(undefined4 *)(param_1 + 0xf8),1);
   ov43_0222AD74(param_2,0,0xff);
   Sprite_SetAnimCtrlSeq(*(undefined4 *)(param_1 + 0xf8),4);

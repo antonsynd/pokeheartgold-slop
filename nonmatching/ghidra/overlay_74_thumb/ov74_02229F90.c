@@ -53,7 +53,7 @@ undefined4 ov74_02229F90(undefined4 param_1)
 
 {
   int iVar1;
-  
+
   iVar1 = OverlayManager_GetData();
   if (*(int *)(iVar1 + 0x15d4) != 2) {
     ov74_0222AA18(param_1,iVar1 + 0x18,3);

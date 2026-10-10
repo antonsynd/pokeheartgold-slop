@@ -51,7 +51,7 @@ void ov14_021F2F88(uint param_1,short *param_2,short *param_3,int param_4)
 {
   uint uVar1;
   short extraout_r1;
-  
+
   if (param_1 < 0x1e) {
     { uint nug_a = (uint)(param_1), nug_b = (uint)(6); extraout_r1 = nug_a % nug_b; _u32_div_f(nug_a, nug_b); }
     *param_2 = (extraout_r1 + 1) * 0x18;

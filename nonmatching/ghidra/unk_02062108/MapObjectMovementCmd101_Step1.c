@@ -57,7 +57,7 @@ undefined4 MapObjectMovementCmd101_Step1(undefined *param_1)
   undefined4 uStack_18;
   undefined4 uStack_14;
   undefined4 uStack_10;
-  
+
   puVar1 = (uint *)sub_0205F3E4(param_1);
   uStack_18 = 0;
   uStack_10 = 0;

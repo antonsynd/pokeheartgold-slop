@@ -59,7 +59,7 @@ undefined4 ov68_021E5F68(int *param_1)
   uint uVar2;
   int iVar3;
   undefined4 uVar4;
-  
+
   uVar1 = func_0x02019f74(param_1[0x72]);
   *(undefined2 *)(param_1 + 0x73) = uVar1;
   uVar2 = func_0x02019d18(param_1[0x72]);

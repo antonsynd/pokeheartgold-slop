@@ -49,7 +49,7 @@ void ov93_02262814(undefined4 param_1,int param_2)
 
 {
   uint uVar1;
-  
+
   uVar1 = sub_0203769C();
   if (*(byte *)(param_2 + 4) != uVar1) {
     ov93_0225FEC4(param_1,param_2 + 4);

@@ -50,7 +50,7 @@ void ov81_022424AC(int param_1,uint param_2)
 
 {
   int iVar1;
-  
+
   iVar1 = *(ushort *)(param_1 + 0x3c8) + 2;
   if (3 < param_2) {
     ClearWindowTilemapAndScheduleTransfer(param_1 + 0x50 + iVar1 * 0x10);

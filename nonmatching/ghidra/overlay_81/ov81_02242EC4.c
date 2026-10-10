@@ -54,7 +54,7 @@ void ov81_02242EC4(undefined4 *param_1,int param_2,int param_3,int param_4)
   int iStack_20;
   int iStack_1c;
   int iStack_18;
-  
+
   piVar1 = (int *)Sprite_GetMatrixPtr(*(undefined4 *)(param_2 + 0xc));
   iStack_18 = piVar1[2];
   iStack_20 = *piVar1 + param_3 * 0x1000;

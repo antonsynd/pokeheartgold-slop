@@ -49,7 +49,7 @@ void ov01_02205AEC(int param_1)
 
 {
   undefined1 *puVar1;
-  
+
   puVar1 = (undefined1 *)Heap_AllocAtEnd(0xb,0x48);
   *puVar1 = 0;
   puVar1[1] = 0;

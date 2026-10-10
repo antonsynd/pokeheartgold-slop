@@ -56,7 +56,7 @@ undefined4 ov00_021E60E8(undefined *param_1,uint param_2)
   uint uVar2;
   uint uVar3;
   undefined4 uVar4;
-  
+
   if (0xff < (int)param_2) {
     return 0;
   }

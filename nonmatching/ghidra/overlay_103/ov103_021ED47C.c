@@ -51,7 +51,7 @@ undefined4 ov103_021ED47C(int param_1)
 
 {
   int iVar1;
-  
+
   iVar1 = TextPrinterCheckActive(*(undefined1 *)(*(int *)(param_1 + 0xc) + 0x234));
   if (iVar1 == 0) {
     if (*(char *)(*(int *)(param_1 + 0xc) + 0x235) == '\0') {

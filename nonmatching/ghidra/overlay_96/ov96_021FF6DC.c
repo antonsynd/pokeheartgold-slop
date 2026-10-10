@@ -52,7 +52,7 @@ void ov96_021FF6DC(uint param_1,int param_2)
   uint uVar1;
   bool bVar2;
   undefined1 uVar3;
-  
+
   if (*(char *)(param_1 + 0xa5) != '\0') {
     func_0x020f21c0(*(undefined1 *)(param_1 + param_2 * 0x1c + 0x2c));
     return;

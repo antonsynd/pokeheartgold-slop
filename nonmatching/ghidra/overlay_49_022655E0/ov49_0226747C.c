@@ -59,7 +59,7 @@ void ov49_0226747C(int param_1,undefined4 param_2,undefined4 param_3,undefined4 
   int iStack_1c;
   int iStack_18;
   undefined4 uStack_14;
-  
+
   uStack_14 = param_4;
   ov49_02259154(*(undefined4 *)(param_1 + 8),&iStack_20);
   if (*(char *)(param_1 + 0x955) == '\x01') {

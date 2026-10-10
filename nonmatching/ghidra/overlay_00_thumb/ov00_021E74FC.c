@@ -51,7 +51,7 @@ ov00_021E74FC(undefined4 param_1,undefined4 param_2,undefined4 param_3,undefined
 
 {
   int iVar1;
-  
+
   iVar1 = *(int *)(iRam0221a688 + 0x1a54);
   if ((iVar1 == 0) || (*(int *)(iVar1 + 0xc) != 4)) {
     return 0;

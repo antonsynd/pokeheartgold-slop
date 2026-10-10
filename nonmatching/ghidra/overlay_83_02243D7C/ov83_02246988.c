@@ -49,7 +49,7 @@ void ov83_02246988(int param_1)
 
 {
   int iVar1;
-  
+
   iVar1 = ov83_02247768(*(undefined1 *)(param_1 + 0x14),*(undefined1 *)(param_1 + 0xd));
   if (*(char *)(*(int *)(param_1 + 0x54c) + iVar1) == '\0') {
     ov83_02247668(*(undefined4 *)(param_1 + 0x544),*(undefined4 *)(param_1 + 0x5c0),0,

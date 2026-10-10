@@ -60,7 +60,7 @@ void ov108_021E8758(undefined4 *param_1)
   int *piVar4;
   int iVar5;
   undefined4 *puVar6;
-  
+
   iVar5 = 0;
   piVar4 = (int *)param_1[0x55];
   iVar2 = 0;

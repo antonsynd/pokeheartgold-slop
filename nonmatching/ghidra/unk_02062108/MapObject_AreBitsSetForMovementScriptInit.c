@@ -48,7 +48,7 @@ undefined4 MapObject_AreBitsSetForMovementScriptInit(undefined4 param_1)
 
 {
   int iVar1;
-  
+
   iVar1 = MapObject_TestFlagsBits(param_1,1);
   if (iVar1 == 0) {
     return 0;

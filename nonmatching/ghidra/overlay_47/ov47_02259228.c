@@ -52,7 +52,7 @@ void ov47_02259228(int param_1,undefined4 *param_2,undefined4 param_3,undefined4
 
 {
   undefined4 uVar1;
-  
+
   AddWindowParameterized(*param_2,param_1 + 8,1,2,0x13,0x1b,4,4,0x28,param_4);
   FillWindowPixelBuffer(param_1 + 8,0xf);
   uVar1 = String_New(0x100,param_4);

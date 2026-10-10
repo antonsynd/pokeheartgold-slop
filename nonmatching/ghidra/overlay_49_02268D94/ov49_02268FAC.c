@@ -68,7 +68,7 @@ ov49_02268FAC(undefined4 param_1,undefined4 param_2,undefined4 param_3,undefined
   short sStack_1c;
   short sStack_1a;
   undefined4 uStack_18;
-  
+
   uStack_18 = param_4;
   puVar1 = (undefined4 *)Heap_Alloc(param_2,0xc4);
   func_0x020e5b44(puVar1,0,0xc4);

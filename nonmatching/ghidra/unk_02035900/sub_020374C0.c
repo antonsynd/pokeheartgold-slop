@@ -48,7 +48,7 @@ undefined2 sub_020374C0(int param_1)
 
 {
   undefined2 uVar1;
-  
+
   if (iRam021d4148 == 0) {
     return 0;
   }

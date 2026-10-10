@@ -51,7 +51,7 @@ void sub_0203528C(void)
   int iVar1;
   int iVar2;
   int iVar3;
-  
+
   sub_02034C94();
   iVar2 = 0;
   iVar3 = 0;

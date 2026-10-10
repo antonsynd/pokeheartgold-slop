@@ -53,7 +53,7 @@ undefined4 FrtCmd_122(int *param_1)
   uint uVar2;
   uint uVar3;
   byte *pbVar4;
-  
+
   pbVar4 = (byte *)param_1[7];
   param_1[7] = (int)(pbVar4 + 1);
   bVar1 = *pbVar4;

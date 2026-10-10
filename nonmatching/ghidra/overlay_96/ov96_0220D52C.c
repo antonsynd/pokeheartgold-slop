@@ -49,7 +49,7 @@ void ov96_0220D52C(undefined4 *param_1,undefined4 param_2)
 
 {
   undefined *puVar1;
-  
+
   if ((undefined *)param_1[1] != (undefined *)0x0) {
     SysTask_Destroy((undefined *)param_1[1]);
   }

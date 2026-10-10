@@ -55,7 +55,7 @@ undefined4 ov45_0222FBD8(int param_1,int param_2)
   int iVar3;
   int iVar4;
   int iVar5;
-  
+
   if (3 < param_2) {
     GF_AssertFail();
   }

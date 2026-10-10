@@ -52,7 +52,7 @@ undefined4 ov73_021EA268(undefined4 param_1,undefined4 param_2,undefined4 param_
 {
   undefined4 uVar1;
   undefined4 uVar2;
-  
+
   uVar1 = Save_FriendGroup_Get();
   uVar2 = Heap_AllocAtEnd(param_2,param_3);
   uVar1 = ov73_021E7960(uVar1);

@@ -60,7 +60,7 @@ void ov57_022395B8(undefined4 param_1,undefined4 param_2)
   int *piVar3;
   int iVar4;
   int iStack_18;
-  
+
   uVar1 = GfGfxLoader_GetCharData(0x57,8,1,&iStack_18,0x34);
   iVar4 = *(int *)(iStack_18 + 0x14);
   func_0x020d2894(iVar4,*(undefined4 *)(iStack_18 + 0x10));

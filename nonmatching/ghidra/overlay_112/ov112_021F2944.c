@@ -50,7 +50,7 @@ void ov112_021F2944(int param_1,undefined4 param_2,undefined4 param_3,undefined4
 
 {
   undefined4 uVar1;
-  
+
   if (*(short *)(*(int *)(param_1 + (uint)*(byte *)(param_1 + 0x13d) * 4 + 0xc0) + 10) == 0) {
     uVar1 = 0x46;
   }

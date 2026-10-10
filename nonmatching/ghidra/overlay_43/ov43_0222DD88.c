@@ -48,7 +48,7 @@ void ov43_0222DD88(undefined4 *param_1)
 
 {
   int iVar1;
-  
+
   iVar1 = 0;
   do {
     Heap_Free(*param_1);

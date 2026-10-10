@@ -55,7 +55,7 @@ void ov07_02231524(undefined4 *param_1,uint param_2)
 {
   undefined1 uVar1;
   undefined4 uVar2;
-  
+
   uVar2 = ov07_0221BFD0(param_1[7]);
   uVar1 = ov07_0221FB04(param_1[7],3);
   func_0x0201bb68(param_2 & 0xff,uVar1);

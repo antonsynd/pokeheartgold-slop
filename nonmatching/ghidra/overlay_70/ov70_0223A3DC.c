@@ -57,7 +57,7 @@ undefined4 ov70_0223A3DC(int *param_1)
 {
   int iVar1;
   int *piVar2;
-  
+
   iVar1 = func_0x020186a4(param_1[0x474]);
   if (iVar1 == 1) {
     ov70_02238D60(param_1);

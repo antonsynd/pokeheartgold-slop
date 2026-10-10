@@ -54,7 +54,7 @@ void ov70_022394B8(int param_1,undefined4 param_2,undefined4 param_3,undefined4 
   int iVar2;
   short sVar3;
   int iVar4;
-  
+
   AddWindowParameterized(*(undefined4 *)(param_1 + 4),param_1 + 0xf38,1,2,1,0x1c,2,0xd,0x28);
   FillWindowPixelBuffer(param_1 + 0xf38,0);
   AddTextPrinterParameterizedWithColor

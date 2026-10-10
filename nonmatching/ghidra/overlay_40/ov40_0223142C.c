@@ -78,7 +78,7 @@ undefined4 ov40_0223142C(int param_1)
   short sStack_1c;
   undefined1 auStack_1a [2];
   undefined1 auStack_18 [4];
-  
+
   if (*(int *)(param_1 + 8) == 0) {
     piVar4 = (int *)Heap_Alloc(0x6d,0x54);
     func_0x020d4994(piVar4,0,0x54);

@@ -52,7 +52,7 @@ undefined4 ov93_0225FE08(int param_1,int param_2,int param_3,int param_4)
 {
   int iVar1;
   undefined4 uVar2;
-  
+
   iVar1 = *(int *)(param_2 + 0x10) + param_3;
   *(int *)(param_2 + 0x10) = iVar1;
   uVar2 = func_0x020f2998(iVar1,6,param_3,param_4,param_4);

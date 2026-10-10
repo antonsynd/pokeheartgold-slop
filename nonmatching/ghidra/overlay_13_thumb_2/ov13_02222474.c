@@ -50,7 +50,7 @@ void ov13_02222474(undefined2 *param_1,undefined2 param_2,undefined2 param_3,und
 
 {
   undefined2 uVar1;
-  
+
   uVar1 = ov13_02222A44(1);
   *param_1 = uVar1;
   param_1[1] = 0;

@@ -52,7 +52,7 @@ void sub_0205AB88(undefined4 param_1)
 {
   undefined1 auStack_28 [28];
   undefined1 uStack_c;
-  
+
   sub_0205AA4C(auStack_28);
   uStack_c = 0;
   sub_02035838(param_1);

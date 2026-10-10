@@ -56,7 +56,7 @@ void ov99_021E5EB4(int param_1,int param_2,int param_3,undefined4 param_4)
 {
   uint uVar1;
   undefined4 uVar2;
-  
+
   if (param_3 == 0) {
     uVar2 = 0x100;
   }

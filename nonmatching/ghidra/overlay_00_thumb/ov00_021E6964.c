@@ -50,7 +50,7 @@ undefined4 ov00_021E6964(void)
 {
   int iVar1;
   undefined4 uVar2;
-  
+
   if ((iRam0221a680 != 0) &&
      (((iVar1 = *(int *)(iRam0221a680 + 0x1070), iVar1 == 7 || (iVar1 == 8)) || (iVar1 == 0x10)))) {
     uVar2 = func_0x021ee490();

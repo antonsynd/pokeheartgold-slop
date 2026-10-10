@@ -48,7 +48,7 @@ void ov01_021E90C0(undefined4 param_1,undefined4 param_2,undefined4 param_3,unde
 
 {
   undefined4 *puVar1;
-  
+
   puVar1 = (undefined4 *)Heap_AllocAtEnd(4,0x20,param_3,param_4,param_4);
   *puVar1 = 0;
   *(undefined2 *)(puVar1 + 7) = 0;

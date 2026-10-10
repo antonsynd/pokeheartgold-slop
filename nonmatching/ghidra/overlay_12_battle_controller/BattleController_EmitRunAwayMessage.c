@@ -64,7 +64,7 @@ void BattleController_EmitRunAwayMessage(undefined *param_1,undefined *param_2)
   byte bStack_37;
   ushort uStack_36;
   undefined auStack_34 [32];
-  
+
   uVar2 = BattleSystem_GetBattleType(param_1);
   uStack_38 = 0x3c;
   iVar5 = 0;

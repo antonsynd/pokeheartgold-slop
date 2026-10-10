@@ -49,7 +49,7 @@ void ov45_0222FA10(int param_1)
 
 {
   int iVar1;
-  
+
   iVar1 = 0;
   do {
     if (*(int *)(param_1 + 0x120) == 0) {

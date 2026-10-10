@@ -50,7 +50,7 @@ undefined4 ov70_022430CC(int param_1,undefined4 param_2,undefined4 param_3,undef
 
 {
   uint uVar1;
-  
+
   uVar1 = ov70_022421D0(param_1,param_1 + 100,param_3,param_4,param_4);
   if (uVar1 == 0xfffffffe) {
     Sprite_SetDrawFlag(*(undefined4 *)(param_1 + 0xc),0);

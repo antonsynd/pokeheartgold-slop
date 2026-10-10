@@ -61,7 +61,7 @@ int ov96_0220E8C0(byte *param_1,int param_2,undefined4 *param_3)
   int iVar5;
   int iVar6;
   undefined4 uVar7;
-  
+
   iVar6 = 0;
   uVar7 = 0x3f800000;
   if (param_1 == (byte *)0x0) {

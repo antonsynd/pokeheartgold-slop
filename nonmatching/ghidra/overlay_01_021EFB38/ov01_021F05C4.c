@@ -50,7 +50,7 @@ void ov01_021F05C4(undefined4 *param_1,undefined4 param_2,undefined4 param_3,und
 {
   undefined4 uVar1;
   int iVar2;
-  
+
   uVar1 = G2dRenderer_Init(param_2,param_1 + 1,4,param_4,param_4);
   *param_1 = uVar1;
   iVar2 = 0;

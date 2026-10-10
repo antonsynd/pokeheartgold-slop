@@ -55,7 +55,7 @@ void ov40_0222EED0(undefined4 *param_1,int param_2,int param_3,undefined4 *param
   int iVar1;
   undefined4 *puVar2;
   undefined4 *puVar3;
-  
+
   puVar2 = param_1 + 6;
   param_1[1] = *(undefined4 *)(param_3 + 4);
   *param_1 = 0;

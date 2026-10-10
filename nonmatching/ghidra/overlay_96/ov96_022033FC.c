@@ -49,7 +49,7 @@ void ov96_022033FC(void)
 {
   int iVar1;
   int iVar2;
-  
+
   iVar1 = PokeathlonCourse_GetHeapAllocPtr4();
   iVar2 = 0;
   do {

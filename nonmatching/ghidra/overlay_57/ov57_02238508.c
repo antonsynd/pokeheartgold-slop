@@ -48,7 +48,7 @@ void ov57_02238508(int param_1,int param_2,undefined4 param_3,undefined4 param_4
 
 {
   undefined4 uStack_10;
-  
+
   uStack_10 = param_4;
   func_0x0200de44(*(undefined4 *)(param_1 + param_2 * 0x10 + 0x354),(int)&uStack_10 + 2,&uStack_10);
   param_1 = param_1 + param_2 * 0x10;

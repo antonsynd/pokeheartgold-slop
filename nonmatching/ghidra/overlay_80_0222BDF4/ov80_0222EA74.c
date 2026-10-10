@@ -51,7 +51,7 @@ void ov80_0222EA74(int *param_1,undefined4 param_2,undefined2 param_3,int param_
 
 {
   undefined4 uVar1;
-  
+
   uVar1 = String_New(0x50,*(undefined4 *)(*param_1 + 0x34));
   ReadMsgDataIntoString(param_1[0x23],param_2,uVar1);
   StringExpandPlaceholders(param_1[0x24],param_1[*(byte *)((int)param_1 + 0x9b) + 7],uVar1);

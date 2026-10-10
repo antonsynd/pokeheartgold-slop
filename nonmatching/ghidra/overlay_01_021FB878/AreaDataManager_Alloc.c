@@ -53,7 +53,7 @@ int AreaDataManager_Alloc
 {
   int iVar1;
   undefined4 uVar2;
-  
+
   iVar1 = Heap_Alloc(4,0x8c4,param_3,param_4,param_4);
   uVar2 = Heap_AllocAtEnd(4,0x10);
   *(undefined4 *)(iVar1 + 0x8b8) = uVar2;

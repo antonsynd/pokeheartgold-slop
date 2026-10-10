@@ -65,7 +65,7 @@ void ov89_02259588(int param_1)
   int iVar7;
   short asStack_48 [2];
   int aiStack_44 [12];
-  
+
   puVar6 = (undefined4 *)&ov89_0225CB08;
   psVar4 = asStack_48;
   iVar3 = 6;

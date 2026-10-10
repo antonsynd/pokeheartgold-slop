@@ -52,7 +52,7 @@ void ov112_021E7398(void)
 
 {
   int iVar1;
-  
+
   do {
     OS_LockMutex((undefined *)0x21ffb08);
     iVar1 = ov112_021E5B98();

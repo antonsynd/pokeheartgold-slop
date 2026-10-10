@@ -52,7 +52,7 @@ void ov91_022610A8(int param_1,undefined4 param_2,undefined4 param_3,undefined4 
 {
   char cVar1;
   int iVar2;
-  
+
   func_0x02018124(param_1 + 0x198,*(undefined4 *)(param_1 + 0x1d4),param_3,param_4,param_4);
   if (*(char *)(param_1 + 0x1d8) != '\0') {
     cVar1 = *(char *)(param_1 + 0x1d9);

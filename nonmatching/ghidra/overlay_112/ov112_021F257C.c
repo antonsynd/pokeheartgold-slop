@@ -51,7 +51,7 @@ void ov112_021F257C(int param_1)
   int iVar1;
   int iVar2;
   int iVar3;
-  
+
   iVar3 = *(int *)(param_1 + (uint)*(byte *)(param_1 + 0x13d) * 4 + 0xc0);
   iVar1 = ((int)(*(byte *)(iVar3 + 0x84) - 1) / 2) * 5;
   ov112_021F2204(param_1,0,1);

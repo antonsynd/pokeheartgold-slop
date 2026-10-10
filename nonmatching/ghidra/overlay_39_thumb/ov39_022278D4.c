@@ -61,7 +61,7 @@ int ov39_022278D4(int param_1,undefined4 param_2,undefined4 param_3,undefined4 p
 {
   int iVar1;
   int iVar2;
-  
+
   iVar1 = *(int *)(param_1 + 1000);
   iVar2 = 0;
   if (iVar1 < 0x55f1) {

@@ -50,7 +50,7 @@ void ov96_02219EE0(int param_1,int param_2)
 
 {
   uint extraout_r1;
-  
+
   func_0x020f2998(param_2 + 1,3); __asm__ volatile("movs %0, r1" : "=l"(extraout_r1) : : "cc");
   BufferString(*(undefined4 *)(param_1 + 0x1c),0,
                *(undefined4 *)(param_1 + (extraout_r1 & 0xff) * 4 + 0xb0),2,1,2);

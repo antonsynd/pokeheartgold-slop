@@ -54,7 +54,7 @@ undefined4 ov14_021E8ACC(int *param_1,undefined4 param_2,undefined4 param_3,unde
 {
   undefined4 uVar1;
   int iVar2;
-  
+
   uVar1 = Save_Bag_Get(*(undefined4 *)*param_1);
   iVar2 = Bag_CreateView(uVar1,&ov14_021F7D14,9);
   param_1[6] = iVar2;

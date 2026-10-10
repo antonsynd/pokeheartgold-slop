@@ -48,7 +48,7 @@ void ov91_0225F388(undefined1 *param_1)
 {
   int iVar1;
   undefined1 *puVar2;
-  
+
   iVar1 = 0x18;
   puVar2 = param_1;
   do {

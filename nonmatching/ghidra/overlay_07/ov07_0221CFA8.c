@@ -52,7 +52,7 @@ void ov07_0221CFA8(undefined4 *param_1,undefined4 param_2,undefined4 param_3,und
   int *piVar2;
   int iVar3;
   undefined4 uVar4;
-  
+
   iVar1 = param_1[6];
   piVar2 = (int *)(iVar1 + 4);
   param_1[6] = piVar2;

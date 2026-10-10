@@ -60,7 +60,7 @@ void ov109_021E75C8(int param_1,undefined4 param_2,undefined4 param_3,undefined4
   undefined4 uStack_14;
   undefined1 uStack_10;
   undefined4 uStack_c;
-  
+
   uStack_c = param_4;
   func_0x020d4994(&uStack_24,0,0x18);
   uStack_24 = 3;

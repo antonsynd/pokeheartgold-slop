@@ -78,7 +78,7 @@ void ov96_021FC450(undefined4 *param_1,short *param_2)
   int iStack_60;
   int iStack_48;
   undefined1 auStack_44 [48];
-  
+
   uVar4 = NARC_New(0x14,*param_1);
   uVar5 = Heap_AllocAtEnd(*param_1,0x1000);
   ov96_021FC5E0(auStack_44,param_1,param_1 + 0x58,2);

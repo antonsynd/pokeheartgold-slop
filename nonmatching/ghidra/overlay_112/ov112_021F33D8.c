@@ -68,7 +68,7 @@ void ov112_021F33D8(ushort *param_1,undefined4 param_2,undefined4 param_3,undefi
   int iStack_34;
   undefined1 auStack_30 [24];
   undefined4 uStack_18;
-  
+
   uStack_18 = param_4;
   iVar5 = Party_GetCount(param_2);
   iStack_3c = 0;

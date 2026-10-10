@@ -50,7 +50,7 @@ undefined4 sub_02054E20(uint param_1)
 {
   int iVar1;
   ushort *puVar2;
-  
+
   iVar1 = sub_02054E00();
   if (iVar1 == 0) {
     return 0;

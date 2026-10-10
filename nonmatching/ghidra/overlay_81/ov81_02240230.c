@@ -107,7 +107,7 @@ void ov81_02240230(undefined *param_1)
   undefined4 uStack_18;
   undefined4 local_14;
   undefined4 uStack_10;
-  
+
   local_1c = 1;
   uStack_18 = 0;
   local_14 = 0;

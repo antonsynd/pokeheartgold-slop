@@ -62,7 +62,7 @@ void ov14_021E7BA4(int *param_1,undefined4 param_2,undefined4 param_3,undefined4
 
 {
   undefined4 uVar1;
-  
+
   uVar1 = sub_0201956C(*(undefined4 *)(param_1[0xd] + 0x14),2,0x11,10);
   *(undefined4 *)(param_1[0xd] + 0x2f0) = uVar1;
   sub_020195F4(*(undefined4 *)(param_1[0xd] + 0x2f0),0xd,1,0x20,7,param_4);

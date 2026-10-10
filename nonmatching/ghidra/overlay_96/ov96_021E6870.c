@@ -53,7 +53,7 @@ undefined4 ov96_021E6870(undefined *param_1,char *param_2,undefined4 param_3,und
 
 {
   int iVar1;
-  
+
   switch(*param_2) {
   case '\0':
     *(undefined **)(param_1 + 0x1e0) = &ov96_0221A8BC;

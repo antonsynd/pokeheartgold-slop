@@ -56,7 +56,7 @@ undefined4 sub_02088D48(int param_1)
 {
   int iVar1;
   undefined4 uVar2;
-  
+
   if ((uRam021d1154 & 0x40) != 0) {
     iVar1 = sub_0208A71C(param_1,0xffffffff);
     if (iVar1 == 1) {

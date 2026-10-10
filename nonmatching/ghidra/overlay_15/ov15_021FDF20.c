@@ -50,7 +50,7 @@ void ov15_021FDF20(int param_1)
 {
   int iVar1;
   uint uVar2;
-  
+
   iVar1 = param_1 + 0x81c;
   uVar2 = 0;
   do {

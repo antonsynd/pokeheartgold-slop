@@ -49,7 +49,7 @@ void ov39_02227060(undefined4 param_1,undefined4 param_2,int param_3,undefined4 
 
 {
   undefined2 uVar1;
-  
+
   ov39_0222915C(param_2,param_3,param_3,param_4,param_4);
   uVar1 = func_0x020275c4(param_1,param_3,0x5c);
   *(undefined2 *)(param_3 + 0x5c) = uVar1;

@@ -55,7 +55,7 @@ void sub_020583EC(void)
 
 {
   int iVar1;
-  
+
   iVar1 = sub_0203769C();
   if (iVar1 == 0) {
     sub_02034638();

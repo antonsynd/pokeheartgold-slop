@@ -48,7 +48,7 @@ undefined4 MovementScriptMachineSub_WaitReady(undefined4 *param_1)
 
 {
   int iVar1;
-  
+
   iVar1 = MapObject_AreBitsSetForMovementScriptInit(param_1[3]);
   if (iVar1 == 0) {
     return 0;

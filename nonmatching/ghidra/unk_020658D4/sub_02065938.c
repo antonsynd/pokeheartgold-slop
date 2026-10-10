@@ -51,7 +51,7 @@ void sub_02065938(undefined4 param_1)
 {
   byte *pbVar1;
   int iVar2;
-  
+
   pbVar1 = (byte *)sub_0205F394();
   iVar2 = sub_02065CD0(param_1,pbVar1);
   if (iVar2 != 0) {

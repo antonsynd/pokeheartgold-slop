@@ -60,7 +60,7 @@ uint ov45_02230F94(int param_1,int param_2,undefined4 param_3,int param_4)
   int iStack_28;
   undefined4 uStack_8;
   int iStack_4;
-  
+
   iStack_28 = param_4;
   uStack_8 = param_3;
   iStack_4 = param_4;

@@ -50,7 +50,7 @@ void sub_02017294(int param_1,byte *param_2)
 {
   byte bVar1;
   int iVar2;
-  
+
   iVar2 = *(int *)(param_1 + 0xc) + 4;
   *(int *)(param_1 + 0xc) = iVar2;
   bVar1 = sub_02017214(iVar2);

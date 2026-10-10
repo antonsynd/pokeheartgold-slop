@@ -56,7 +56,7 @@ uint sub_02032F0C(uint param_1)
   short sVar1;
   uint uVar2;
   int iVar3;
-  
+
   if (*(ushort *)(param_1 + 2) == 0) {
     uVar2 = (uint)*(ushort *)(param_1 + 8);
     if (uVar2 != 8) {

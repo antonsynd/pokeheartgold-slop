@@ -61,7 +61,7 @@ undefined4 ov14_021EFDF4(int param_1,undefined4 param_2,undefined4 param_3,undef
   ushort uVar1;
   int iVar2;
   ushort *puVar3;
-  
+
   iVar2 = *(int *)(param_1 + 0x34);
   puVar3 = *(ushort **)(iVar2 + 0xc);
   if ((*puVar3 != (ushort)*(byte *)(param_1 + 0x21)) && (*(short *)(iVar2 + 0x88c8) != 0)) {

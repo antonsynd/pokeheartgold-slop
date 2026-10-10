@@ -49,7 +49,7 @@ void ov40_022330E0(int param_1,int param_2)
 
 {
   int iVar1;
-  
+
   iVar1 = *(int *)(param_1 + 0x860);
   if (param_2 == 0) {
     ManagedSprite_SetPositionXY(*(undefined4 *)(iVar1 + 0xbc),0x80,0xe8);

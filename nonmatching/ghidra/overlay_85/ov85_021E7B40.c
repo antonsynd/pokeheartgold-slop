@@ -52,7 +52,7 @@ void ov85_021E7B40(undefined4 param_1,undefined4 param_2,undefined4 param_3,unde
   undefined1 *puVar1;
   int iVar2;
   undefined1 *puVar3;
-  
+
   param_7[3] = param_2;
   param_7[4] = param_3;
   param_7[5] = param_4;

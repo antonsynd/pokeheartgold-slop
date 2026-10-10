@@ -56,7 +56,7 @@ void ov01_021F0614(undefined4 param_1,int param_2,undefined4 *param_3,undefined4
 
 {
   undefined4 uVar1;
-  
+
   uVar1 = AddCharResObjFromOpenNarcWithAtEndFlag
                     (*(undefined4 *)(param_2 + 300),param_1,param_6,0,param_9,1,4,1);
   *param_3 = uVar1;

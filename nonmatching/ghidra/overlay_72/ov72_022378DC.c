@@ -56,7 +56,7 @@ void ov72_022378DC(void)
 
 {
   int iVar1;
-  
+
   switch(uRam0223b820) {
   default:
     return;

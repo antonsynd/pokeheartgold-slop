@@ -56,7 +56,7 @@ undefined4 ov15_021FB604(int param_1,undefined4 param_2,undefined4 param_3,undef
 {
   undefined4 uVar1;
   int iVar2;
-  
+
   ov15_02200294();
   ov15_021FF560(param_1);
   ov15_021FF7AC(param_1 + 0x184);

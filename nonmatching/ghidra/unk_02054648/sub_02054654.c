@@ -67,7 +67,7 @@ int sub_02054654(int param_1,undefined4 param_2,undefined4 param_3,int param_4,i
   int iStack_20;
   int iStack_1c;
   int iStack_18;
-  
+
   iVar7 = 0;
   iStack_1c = 0;
   iStack_18 = param_5;

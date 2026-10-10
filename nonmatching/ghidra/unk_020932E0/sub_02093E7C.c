@@ -57,7 +57,7 @@ void sub_02093E7C(int param_1,int param_2,undefined4 param_3,undefined4 param_4)
   int iStack_20;
   undefined4 uStack_1c;
   undefined4 uStack_18;
-  
+
   uStack_18 = param_4;
   PlaySE(0x5ea);
   *(undefined4 *)(*(int *)(param_1 + 0x46a4) + param_2 * 8 + 4) = 1;

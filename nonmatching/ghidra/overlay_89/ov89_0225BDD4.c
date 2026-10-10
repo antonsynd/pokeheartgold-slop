@@ -56,7 +56,7 @@ undefined4 ov89_0225BDD4(undefined4 param_1,int param_2,undefined4 param_3,undef
   int iStack_1c;
   undefined4 uStack_18;
   undefined4 uStack_14;
-  
+
   piVar2 = (int *)(param_2 + 0x94);
   uStack_14 = param_4;
   if (*(char *)(param_2 + 0x9a) == '\0') {

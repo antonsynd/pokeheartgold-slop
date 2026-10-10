@@ -51,7 +51,7 @@ bool SkipPadding(char *param_1,uint param_2,undefined4 *param_3,int *param_4)
   char *pcVar3;
   char *pcVar5;
   char *pcVar4;
-  
+
   if (param_2 < 10) {
     return false;
   }

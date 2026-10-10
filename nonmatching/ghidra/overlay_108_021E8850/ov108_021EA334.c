@@ -54,7 +54,7 @@ void ov108_021EA334(int param_1,int param_2)
 
 {
   bool bVar1;
-  
+
   bVar1 = false;
   FillWindowPixelBuffer(param_1 + 0x454,0);
   if (param_2 == 0) {

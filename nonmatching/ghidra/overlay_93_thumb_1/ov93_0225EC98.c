@@ -59,7 +59,7 @@ void ov93_0225EC98(undefined4 *param_1)
   uint uVar3;
   int iVar4;
   int iVar5;
-  
+
   puVar1 = AllocAndReadWholeNarcMemberByIdPair(0xc9,0x1d,0x75);
   *param_1 = puVar1;
   puVar1 = NNS_G3dGetTex(puVar1);

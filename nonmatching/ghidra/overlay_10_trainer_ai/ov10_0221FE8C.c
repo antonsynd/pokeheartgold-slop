@@ -65,7 +65,7 @@ undefined4 ov10_0221FE8C(undefined4 param_1,int param_2,uint param_3)
   int extraout_r1;
   uint uVar8;
   uint uStack_18;
-  
+
   iVar2 = ov10_0221FD34();
   if (iVar2 != 0) {
     uVar3 = func_0x0223bd98(param_1);

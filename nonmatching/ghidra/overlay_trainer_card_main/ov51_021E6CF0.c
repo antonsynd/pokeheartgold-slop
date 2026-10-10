@@ -50,7 +50,7 @@ void ov51_021E6CF0(int param_1,int param_2)
   int iVar2;
   int iVar3;
   int iVar4;
-  
+
   iVar4 = 0;
   do {
     iVar3 = iVar4 + ((uint)(iVar4 >> 2) >> 0x1d);

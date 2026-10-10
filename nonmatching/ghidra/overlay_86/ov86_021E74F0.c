@@ -50,7 +50,7 @@ void ov86_021E74F0(int param_1)
 
 {
   undefined1 uVar1;
-  
+
   uVar1 = Options_GetFrame(*(undefined4 *)(param_1 + 0x220));
   LoadUserFrameGfx2(*(undefined4 *)(param_1 + 0xc),4,0x3e2,0xe,uVar1,0x79);
   LoadFontPal1(4,0x1a0,0x79);

@@ -52,7 +52,7 @@ int * ov07_022345C8(undefined4 *param_1)
   undefined4 *puVar2;
   int *piVar3;
   int iVar4;
-  
+
   piVar3 = (int *)0x0;
   iVar4 = 0;
   puVar2 = param_1;

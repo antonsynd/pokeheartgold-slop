@@ -51,7 +51,7 @@ void ov18_021F71DC(int param_1,uint param_2,int param_3)
 {
   int iVar1;
   uint uVar2;
-  
+
   if (param_3 == 0x12) {
     if (param_2 == 0) {
       uVar2 = *(uint *)(param_1 + 0x189c);

@@ -51,7 +51,7 @@ void ov46_022592B8(int param_1)
 {
   int iVar1;
   uint *puVar2;
-  
+
   puVar2 = (uint *)&UNK_02259598;
   iVar1 = 0;
   do {

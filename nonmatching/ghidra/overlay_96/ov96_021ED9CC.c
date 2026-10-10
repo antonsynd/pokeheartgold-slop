@@ -54,7 +54,7 @@ uint ov96_021ED9CC(undefined4 param_1)
   undefined4 uStack_28;
   undefined4 uStack_20;
   undefined4 uStack_1c;
-  
+
   bVar1 = false;
   uStack_28 = MTRandom();
   uStack_28 = uStack_28 & 3;

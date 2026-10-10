@@ -53,7 +53,7 @@ void ov112_021E8C5C(int param_1,undefined4 param_2,ushort *param_3,undefined4 pa
   uint uVar3;
   uint uVar4;
   int iVar5;
-  
+
   uVar3 = GetBoxMonData(param_2,0xb1,0,param_4,param_4);
   uVar4 = GetBoxMonData(param_2,0xb2,0);
   bVar1 = false;

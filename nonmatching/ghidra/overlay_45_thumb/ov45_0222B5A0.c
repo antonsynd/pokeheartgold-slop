@@ -61,7 +61,7 @@ uint ov45_0222B5A0(undefined4 param_1,int param_2,undefined4 param_3,undefined4 
   undefined4 uStack_30;
   undefined4 uStack_2c;
   undefined4 uStack_18;
-  
+
   bVar2 = false;
   uStack_18 = param_4;
   func_0x022320c4(&uStack_30);

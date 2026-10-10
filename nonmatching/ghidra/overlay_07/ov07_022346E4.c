@@ -49,7 +49,7 @@ void ov07_022346E4(int param_1,undefined4 param_2)
 
 {
   int iVar1;
-  
+
   iVar1 = 0;
   if (0 < *(int *)(param_1 + 0x1c)) {
     do {

@@ -51,7 +51,7 @@ void ov43_0222C7F8(short *param_1,undefined4 *param_2,int param_3)
   ushort *puVar1;
   uint uVar2;
   uint uVar3;
-  
+
   uVar3 = (uint)param_1[1];
   if ((int)uVar3 < 0) {
     uVar3 = -uVar3;

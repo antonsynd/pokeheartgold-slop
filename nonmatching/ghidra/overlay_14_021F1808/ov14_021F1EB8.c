@@ -54,7 +54,7 @@ void ov14_021F1EB8(int param_1,undefined4 param_2,undefined4 param_3,undefined4 
 {
   int iVar1;
   undefined4 uVar2;
-  
+
   iVar1 = *(int *)(param_1 + 0x34);
   if (*(short *)(iVar1 + 0x88c8) == 0) {
     ov14_021F2A18(iVar1,9,0,param_4,param_4);

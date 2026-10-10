@@ -53,7 +53,7 @@ void ov88_02258ABC(int param_1,undefined4 param_2)
 
 {
   undefined4 uVar1;
-  
+
   uVar1 = NARC_New(0xc6);
   *(undefined4 *)(param_1 + 0x140) = uVar1;
   GF_CreateVramTransferManager(0x30,param_2);

@@ -51,7 +51,7 @@ void sub_0205FEA4(undefined4 param_1)
 
 {
   int iVar1;
-  
+
   iVar1 = MapObject_GetFlagsBitsMask(param_1,0x20000);
   if (iVar1 == 0) {
     iVar1 = MapObject_GetFlagsBitsMask(param_1,8);

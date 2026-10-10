@@ -49,7 +49,7 @@ void ov96_021F295C(int param_1,undefined4 param_2)
 
 {
   uint uVar1;
-  
+
   uVar1 = 1;
   if (0 < param_1) {
     do {

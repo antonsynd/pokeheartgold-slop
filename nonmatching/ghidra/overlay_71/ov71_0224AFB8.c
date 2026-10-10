@@ -50,7 +50,7 @@ void ov71_0224AFB8(int param_1)
 
 {
   int iVar1;
-  
+
   if (param_1 != 0) {
     iVar1 = SysTask_GetData();
     **(undefined4 **)(iVar1 + 0x1c) = 0;

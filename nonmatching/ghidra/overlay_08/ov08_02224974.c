@@ -50,7 +50,7 @@ void ov08_02224974(int param_1)
 
 {
   char cVar1;
-  
+
   if ((*(byte *)(param_1 + 0x1141) & 0xf) != 0) {
     cVar1 = *(char *)(param_1 + 0x113e);
     if (cVar1 == '\0') {

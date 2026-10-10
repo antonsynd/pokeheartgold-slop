@@ -50,7 +50,7 @@ void ov99_021E6C14(int param_1)
 
 {
   undefined4 uVar1;
-  
+
   uVar1 = func_0x0221e6e0(*(undefined4 *)(param_1 + 0x14),&ov99_021E9E2C);
   *(undefined4 *)(param_1 + 0x18) = uVar1;
   ManagedSprite_SetAnimateFlag(uVar1,1);

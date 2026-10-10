@@ -60,7 +60,7 @@ void ov112_021F336C(undefined4 *param_1,undefined4 param_2)
   undefined4 uVar2;
   undefined4 uVar3;
   int iVar4;
-  
+
   uVar2 = Save_PlayerData_GetProfile(param_2);
   uVar3 = PlayerProfile_GetTrainerID();
   *param_1 = uVar3;

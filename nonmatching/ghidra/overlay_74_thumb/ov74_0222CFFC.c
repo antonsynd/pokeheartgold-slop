@@ -51,7 +51,7 @@ void ov74_0222CFFC(void)
 
 {
   undefined4 in_r3;
-  
+
   ov74_0222D024();
   ov74_0223563C();
   ov74_02235690();

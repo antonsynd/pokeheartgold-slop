@@ -50,7 +50,7 @@ void sub_020331CC(int param_1,undefined4 param_2,undefined4 param_3,undefined4 p
 {
   short sVar1;
   code *pcVar2;
-  
+
   if (*(short *)(param_1 + 2) != 0) {
     sub_02032858();
     return;

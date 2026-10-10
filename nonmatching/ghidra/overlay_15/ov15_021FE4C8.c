@@ -52,7 +52,7 @@ void ov15_021FE4C8(int param_1,undefined4 param_2,undefined4 param_3,undefined4 
   undefined4 uVar1;
   undefined4 uVar2;
   uint uVar3;
-  
+
   uVar1 = NewMsgDataFromNarc(1,0x1b,0xe1,6,param_4);
   uVar3 = 0;
   do {

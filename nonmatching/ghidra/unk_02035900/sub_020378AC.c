@@ -48,7 +48,7 @@ uint sub_020378AC(uint param_1)
 
 {
   uint uVar1;
-  
+
   if ((iRam021d4148 != 0) &&
      (uVar1 = (uint)*(byte *)(iRam021d4148 + param_1 + 0x6a6), uVar1 != 0xff)) {
     param_1 = uVar1;

@@ -57,7 +57,7 @@ void ov80_022393E8(int param_1)
 {
   int iVar1;
   int iVar2;
-  
+
   iVar2 = 0;
   iVar1 = param_1;
   do {

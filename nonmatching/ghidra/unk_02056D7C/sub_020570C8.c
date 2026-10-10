@@ -55,7 +55,7 @@ void sub_020570C8(void)
   int iVar1;
   int iVar2;
   int iVar3;
-  
+
   iVar1 = PlayerAvatar_GetMoveState(*(undefined4 *)(*(int *)(iRam021d41c4 + 0x30) + 0x40));
   iVar2 = PlayerAvatar_GetPlayerMoveState(*(undefined4 *)(*(int *)(iRam021d41c4 + 0x30) + 0x40));
   if (iVar1 == 0) {

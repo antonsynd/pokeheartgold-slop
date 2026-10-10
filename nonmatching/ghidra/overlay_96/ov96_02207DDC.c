@@ -52,7 +52,7 @@ void ov96_02207DDC(undefined4 *param_1)
 
 {
   undefined4 uVar1;
-  
+
   GfGfxLoader_LoadCharData(0xe2,5,param_1[2],5,0,0,0,*param_1);
   GfGfxLoader_LoadCharData(0xe2,6,param_1[2],6,0,0x2000,0,*param_1);
   GfGfxLoader_LoadScrnData(0xe2,7,param_1[2],5,0,0,0,*param_1);

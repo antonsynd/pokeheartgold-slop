@@ -50,7 +50,7 @@ void ov51_021E6DA8(int param_1,int param_2)
 
 {
   undefined1 extraout_r1;
-  
+
   if (param_2 != 0) {
     if (*(int *)(param_1 + 0x30f4) == 0) {
       if (*(char *)(param_1 + 0x3439) == '\0') {

@@ -48,7 +48,7 @@ undefined4 ov91_0225F3E8(int param_1,uint param_2)
 {
   uint uVar1;
   uint uVar2;
-  
+
   uVar2 = 0;
   uVar1 = 0;
   do {

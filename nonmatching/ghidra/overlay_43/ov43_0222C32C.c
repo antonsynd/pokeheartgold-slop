@@ -51,7 +51,7 @@ void ov43_0222C32C(undefined4 param_1,int param_2,undefined4 param_3,undefined4 
 {
   int iVar1;
   undefined4 uVar2;
-  
+
   uVar2 = param_4;
   iVar1 = ov43_0222C620();
   ov43_0222AB20(param_3,*(undefined4 *)(param_2 + 4),*(undefined1 *)(param_2 + iVar1 + 0x18),param_4

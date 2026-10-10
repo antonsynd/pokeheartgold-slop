@@ -47,7 +47,7 @@ void ov96_021F7130(int param_1)
 
 {
   int iVar1;
-  
+
   iVar1 = *(int *)(param_1 + 0x18);
   if (iVar1 != 0) {
     if (iVar1 < 1) {

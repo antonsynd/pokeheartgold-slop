@@ -51,7 +51,7 @@ int sub_02062390(int param_1)
   int iVar1;
   undefined4 *puVar2;
   int *piVar3;
-  
+
   puVar2 = (undefined4 *)&UNK_020fd198;
   piVar3 = (int *)&UNK_020fccf8;
   do {

@@ -49,7 +49,7 @@ void ov13_02226F3C(void)
 
 {
   undefined1 auStack_10 [16];
-  
+
   ov13_02226EF0(auStack_10);
   (*pcRam0224dfac)(auStack_10);
   return;

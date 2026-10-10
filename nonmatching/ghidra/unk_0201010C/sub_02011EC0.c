@@ -50,7 +50,7 @@ undefined4 sub_02011EC0(int param_1)
 
 {
   int iVar1;
-  
+
   iVar1 = *(int *)(param_1 + 0x20) + 1;
   *(int *)(param_1 + 0x20) = iVar1;
   if (*(int *)(param_1 + 0x1c) <= iVar1) {

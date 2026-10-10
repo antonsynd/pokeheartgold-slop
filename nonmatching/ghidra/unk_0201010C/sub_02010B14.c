@@ -56,7 +56,7 @@ void sub_02010B14(int param_1,int param_2,undefined4 param_3,undefined4 param_4)
   int iVar4;
   undefined4 *puVar5;
   int iVar6;
-  
+
   puVar2 = (undefined1 *)Heap_Alloc(*(undefined4 *)(param_1 + 0x20),0x1c,param_3,param_4,param_4);
   *(undefined1 **)(param_1 + 0x14) = puVar2;
   iVar4 = 0x1c;

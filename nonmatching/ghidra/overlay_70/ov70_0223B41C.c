@@ -53,7 +53,7 @@ void ov70_0223B41C(undefined4 param_1,undefined4 param_2,undefined4 param_3,shor
 {
   undefined4 uVar1;
   short *psVar2;
-  
+
   psVar2 = param_4;
   FillWindowPixelBuffer(param_1,0);
   ov70_0223F20C(param_1,param_3,(int)*param_4,0,0x10200);

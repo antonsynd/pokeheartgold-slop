@@ -56,7 +56,7 @@ void sub_02061338(undefined *param_1)
   short sVar1;
   short *psVar2;
   uint uVar3;
-  
+
   psVar2 = (short *)sub_0205F394(param_1);
   uVar3 = sub_02061F5C(param_1,*(undefined4 *)(psVar2 + 2),0xffffffff);
   if (uVar3 == 0xffffffff) {

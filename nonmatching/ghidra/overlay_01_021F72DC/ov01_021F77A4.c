@@ -52,7 +52,7 @@ void ov01_021F77A4(undefined4 param_1)
 {
   int iVar1;
   int iVar2;
-  
+
   iVar1 = sub_0205F40C();
   iVar2 = ov01_021FA2D4(param_1);
   if ((iVar2 != 1) && (iVar1 = *(int *)(iVar1 + 4), iVar1 != 0)) {

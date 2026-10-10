@@ -70,7 +70,7 @@ void ov12_0225CE28(undefined4 param_1,undefined4 *param_2)
   short sStack_16;
   undefined1 auStack_14 [2];
   short sStack_12;
-  
+
   iVar1 = BattleSystem_GetBattleType(*param_2);
   if ((((int)param_2[8] < 0x21) && (1 < *(byte *)((int)param_2 + 0x12))) &&
      ((param_2[6] == 0 || (param_2[6] == 2)))) {

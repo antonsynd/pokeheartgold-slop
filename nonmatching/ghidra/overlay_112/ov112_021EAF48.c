@@ -48,7 +48,7 @@ undefined4 ov112_021EAF48(void)
 
 {
   int iVar1;
-  
+
   iVar1 = IsPaletteFadeFinished();
   if (iVar1 == 1) {
     return 4;

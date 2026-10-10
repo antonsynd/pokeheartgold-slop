@@ -53,7 +53,7 @@ undefined4 sub_020328C8(void)
 
 {
   int iVar1;
-  
+
   if (*(int *)(iRam021d4128 + 0x1310) - 4U < 3) {
     return 1;
   }

@@ -53,7 +53,7 @@ undefined4 ov56_021E5CB4(undefined4 param_1)
 {
   undefined4 *puVar1;
   undefined4 uVar2;
-  
+
   puVar1 = (undefined4 *)OverlayManager_GetData();
   TextFlags_SetCanABSpeedUpPrint(0);
   uVar2 = *puVar1;

@@ -56,7 +56,7 @@ void ov96_021E8BF4(int param_1,int param_2,int param_3,undefined4 param_4)
   bool bVar2;
   undefined4 uVar3;
   undefined4 uVar4;
-  
+
   bVar1 = false;
   bVar2 = false;
   if (param_3 == 3) {

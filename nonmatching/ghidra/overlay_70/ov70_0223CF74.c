@@ -60,7 +60,7 @@ void ov70_0223CF74(int *param_1)
   undefined1 uVar1;
   undefined4 uVar2;
   int iVar3;
-  
+
   iVar3 = param_1[1];
   uVar2 = NARC_New(100,0x3d);
   GfGfxLoader_GXLoadPalFromOpenNarc(uVar2,2,0,0,0x60,0x3d);

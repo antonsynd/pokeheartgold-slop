@@ -53,7 +53,7 @@ void ov18_021F4188(int param_1)
   undefined4 uVar1;
   uint uVar2;
   int iVar3;
-  
+
   uVar2 = 9;
   iVar3 = param_1 + 0x24;
   do {

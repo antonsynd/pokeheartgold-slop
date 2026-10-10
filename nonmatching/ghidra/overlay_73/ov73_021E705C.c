@@ -59,7 +59,7 @@ void ov73_021E705C(undefined *param_1,int param_2,int param_3)
   ushort uVar1;
   int iVar2;
   undefined *puVar3;
-  
+
   if (param_2 < 0xe) {
     if (param_2 < 0xd) {
       if (8 < param_2) {

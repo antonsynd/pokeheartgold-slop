@@ -53,7 +53,7 @@ void ov48_02258C6C(undefined4 param_1,uint *param_2)
 {
   int iVar1;
   undefined1 auStack_30 [36];
-  
+
   iVar1 = (int)(*param_2 & 0xffff) >> 4;
   MTX_RotY33_(param_1,(int)*(short *)(&FX_SinCosTable_ + iVar1 * 4),
               (int)*(short *)(&FX_SinCosTable_ + (iVar1 * 2 + 1) * 2));

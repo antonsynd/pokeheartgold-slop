@@ -55,7 +55,7 @@ void ov34_0225D558(undefined4 *param_1)
 
 {
   int iVar1;
-  
+
   if (((uRam021d1154 & 0x400) != 0) && (iVar1 = func_0x021f6b10(param_1[3]), iVar1 == 1)) {
     *param_1 = 3;
   }

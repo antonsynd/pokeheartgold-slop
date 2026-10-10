@@ -59,7 +59,7 @@ uint ov13_02222AB0(void)
   int iStack_14;
   int iStack_10;
   undefined4 uStack_c;
-  
+
   if (iRam0224cfa0 == 0) {
     iVar2 = 0;
     uStack_c = in_r3;

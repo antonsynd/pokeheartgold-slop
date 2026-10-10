@@ -56,7 +56,7 @@ void ov68_021E7224(int param_1,undefined4 param_2,undefined4 param_3)
   undefined4 uVar2;
   uint uVar3;
   undefined1 auStack_20 [16];
-  
+
   uVar1 = PokepicManager_Create(param_3);
   *(undefined4 *)(param_1 + 4) = uVar1;
   GetPokemonSpriteCharAndPlttNarcIds(auStack_20,param_2,2);

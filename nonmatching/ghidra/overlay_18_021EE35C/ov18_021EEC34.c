@@ -52,7 +52,7 @@ void ov18_021EEC34(int param_1,undefined4 param_2,int param_3,int param_4)
 
 {
   undefined4 uVar1;
-  
+
   FillWindowPixelBuffer(param_1 + 0xc + param_3 * 0x10,0);
   uVar1 = Pokedex_ConvertToCurrentDexNo(*(undefined1 *)(param_1 + 0x1858),param_2);
   BufferIntegerAsString(*(undefined4 *)(param_1 + 0x660),0,uVar1,3,2,param_4 != 1);

@@ -65,7 +65,7 @@ undefined4 sub_020619FC(undefined *param_1,undefined2 *param_2)
   uint uVar3;
   uint uVar4;
   int iVar5;
-  
+
   if (param_2[1] != 0) {
     uVar1 = MapObject_GetInitialX(param_1);
     uVar2 = MapObject_GetInitialZ(param_1);

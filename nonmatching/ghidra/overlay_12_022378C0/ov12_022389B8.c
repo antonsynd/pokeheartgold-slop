@@ -59,7 +59,7 @@ void ov12_022389B8(int param_1,undefined4 param_2,undefined4 param_3,undefined4 
   undefined4 uVar3;
   int iVar4;
   int iVar5;
-  
+
   uVar1 = BattleSystem_GetTerrainId();
   ov12_02265FD4(param_1 + 0x17c,param_1,0,uVar1,param_4);
   ov12_02265FD4(param_1 + 0x18c,param_1,1,uVar1);

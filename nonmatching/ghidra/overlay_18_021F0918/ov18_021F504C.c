@@ -55,7 +55,7 @@ void ov18_021F504C(int *param_1,int *param_2)
   uint uVar4;
   ushort *puVar5;
   bool bVar6;
-  
+
   *param_2 = (int)param_1;
   param_2[1] = 0;
   *(undefined1 *)((int)param_2 + 0xb) = 0;

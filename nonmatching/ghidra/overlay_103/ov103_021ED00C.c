@@ -54,7 +54,7 @@ void ov103_021ED00C(int param_1,undefined4 param_2,undefined4 param_3,undefined4
   int iVar3;
   uint uVar4;
   int iVar5;
-  
+
   uVar4 = 0;
   *(undefined2 *)(*(int *)(param_1 + 0xc) + 0x2e0) = 0;
   iVar5 = 0;

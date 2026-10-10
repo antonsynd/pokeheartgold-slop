@@ -53,7 +53,7 @@ void ov103_021ED0C0(int param_1)
   int iVar2;
   uint uVar3;
   uint uVar4;
-  
+
   sVar1 = 0;
   uVar3 = (uint)*(ushort *)(param_1 + 0x1c) * 0xa0000 >> 0x10;
   iVar2 = *(int *)(param_1 + 0xc) + 0x2cc + uVar3;

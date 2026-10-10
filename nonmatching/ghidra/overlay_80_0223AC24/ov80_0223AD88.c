@@ -49,7 +49,7 @@ undefined4 ov80_0223AD88(undefined4 param_1)
 
 {
   undefined4 uVar1;
-  
+
   uVar1 = ov80_0223ADC8();
   SysTask_CreateOnVWaitQueue(0x223ada5,param_1,10);
   return uVar1;

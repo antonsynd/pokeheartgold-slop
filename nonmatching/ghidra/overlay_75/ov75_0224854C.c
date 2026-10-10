@@ -48,7 +48,7 @@ undefined4 ov75_0224854C(undefined4 *param_1)
 
 {
   int iVar1;
-  
+
   iVar1 = ov75_02246CF8(*param_1);
   if (iVar1 == 1) {
     param_1[2] = 0;

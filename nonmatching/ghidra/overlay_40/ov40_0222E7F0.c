@@ -63,7 +63,7 @@ void ov40_0222E7F0(int param_1,int param_2,undefined4 param_3,undefined4 param_4
   undefined4 uVar3;
   undefined4 uVar4;
   undefined4 uVar5;
-  
+
   iVar1 = sub_02031620(*(undefined4 *)(param_2 + 0x88c));
   iVar2 = sub_0203162C(*(undefined4 *)(param_2 + 0x88c));
   if ((iVar1 == 0) && (iVar2 == 0)) {

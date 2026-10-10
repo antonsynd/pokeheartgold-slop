@@ -57,7 +57,7 @@ undefined4 ov67_021E5984(undefined4 param_1,int *param_2)
 {
   undefined4 *puVar1;
   int iVar2;
-  
+
   puVar1 = (undefined4 *)OverlayManager_GetData();
   switch(*param_2) {
   case 0:

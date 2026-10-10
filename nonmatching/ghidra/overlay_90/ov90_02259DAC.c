@@ -52,7 +52,7 @@ void ov90_02259DAC(undefined4 param_1,undefined4 param_2,int param_3,int param_4
 
 {
   int iVar1;
-  
+
   if (param_3 == 0) {
     if (param_4 != 0) {
       ov90_022591F4(param_2);

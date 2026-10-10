@@ -51,7 +51,7 @@ void ov91_0225D2EC(undefined4 *param_1,ushort *param_2,undefined4 param_3,undefi
 {
   undefined1 auStack_38 [40];
   undefined4 uStack_10;
-  
+
   if (param_1[5] != (uint)*param_2) {
     uStack_10 = param_4;
     ov91_0225E294(param_2,auStack_38);

@@ -51,7 +51,7 @@ void sub_0208C250(int param_1,undefined4 param_2,int param_3)
 {
   undefined4 uVar1;
   int iVar2;
-  
+
   uVar1 = GetRibbonAttr(param_2,1);
   SpriteSystem_ReplaceCharResObj
             (*(undefined4 *)(param_1 + 0x3fc),*(undefined4 *)(param_1 + 0x400),0x27,uVar1,0,

@@ -50,7 +50,7 @@ void sub_02060B90(undefined4 param_1,undefined4 param_2,undefined4 param_3,undef
 
 {
   undefined1 auStack_20 [12];
-  
+
   MapObject_CopyPositionVector(param_1,auStack_20);
   sub_02060AF4(param_1,auStack_20,param_2,param_3,param_4,param_5);
   return;

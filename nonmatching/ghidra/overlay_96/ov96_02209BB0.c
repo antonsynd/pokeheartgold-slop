@@ -53,7 +53,7 @@ void ov96_02209BB0(int param_1)
   uint uVar1;
   uint extraout_r1;
   int iVar2;
-  
+
   if (param_1 == 0) {
     GF_AssertFail();
   }

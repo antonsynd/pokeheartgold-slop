@@ -54,7 +54,7 @@ undefined4 ov01_02205D68(int param_1)
 {
   int iVar1;
   undefined4 *puVar2;
-  
+
   iVar1 = FollowMon_IsActive();
   if (iVar1 == 0) {
     return 0;

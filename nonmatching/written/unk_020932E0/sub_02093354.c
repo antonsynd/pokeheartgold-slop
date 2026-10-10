@@ -64,7 +64,7 @@ void sub_02093354(undefined4 *param_1)
 {
   undefined4 *puVar1;
   int iVar2;
-  
+
   sub_02095D2C(param_1[0x11ae]);
   sub_0209515C(param_1);
   sub_020950F8(param_1 + 0x1194,1);

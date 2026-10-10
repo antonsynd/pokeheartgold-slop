@@ -49,7 +49,7 @@ undefined4 ov05_0221CCF4(void)
 
 {
   undefined4 uVar1;
-  
+
   sub_0203769C();
   uVar1 = sub_020378AC();
   switch(uVar1) {

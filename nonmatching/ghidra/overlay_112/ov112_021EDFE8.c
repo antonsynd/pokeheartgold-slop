@@ -55,7 +55,7 @@ bool ov112_021EDFE8(int param_1)
   uint uVar3;
   uint uVar4;
   bool bVar5;
-  
+
   uVar1 = AllocMonZeroed(0x9a);
   iVar2 = Pokewalker_TryGetBoxMon(*(undefined4 *)(param_1 + 0x1e440),uVar1);
   bVar5 = iVar2 != 0;

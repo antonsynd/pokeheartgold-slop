@@ -50,7 +50,7 @@ void ov87_021E7CE0(int param_1)
 
 {
   undefined4 uVar1;
-  
+
   uVar1 = AddCharResObjFromNarc(*(undefined4 *)(param_1 + 300),0xcf,0x10,0,3,1,0x7a);
   *(undefined4 *)(param_1 + 0x16c) = uVar1;
   uVar1 = AddPlttResObjFromNarc(*(undefined4 *)(param_1 + 0x130),0xcf,0x11,0,3,1,4,0x7a);

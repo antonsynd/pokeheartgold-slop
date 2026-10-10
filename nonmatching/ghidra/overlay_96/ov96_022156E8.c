@@ -50,7 +50,7 @@ undefined4 ov96_022156E8(undefined4 param_1,int param_2,undefined4 param_3,int p
 {
   int iVar1;
   undefined1 auStack_18 [12];
-  
+
   func_0x020ccdac(param_1,param_3,auStack_18);
   iVar1 = func_0x020ccf80(auStack_18);
   if (iVar1 < param_2 + param_4) {

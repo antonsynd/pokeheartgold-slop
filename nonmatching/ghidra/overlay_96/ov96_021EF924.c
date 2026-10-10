@@ -49,7 +49,7 @@ void ov96_021EF924(int param_1)
 
 {
   int iVar1;
-  
+
   iVar1 = ManagedSprite_IsAnimated(*(undefined4 *)(param_1 + 0x40));
   if (iVar1 == 0) {
     *(char *)(param_1 + 0x21) = *(char *)(param_1 + 0x21) + '\x01';

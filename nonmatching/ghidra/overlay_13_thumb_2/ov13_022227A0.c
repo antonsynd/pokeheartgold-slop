@@ -54,7 +54,7 @@ undefined4 ov13_022227A0(undefined4 param_1,int param_2,undefined4 param_3,undef
   int iVar1;
   int iVar2;
   int iVar3;
-  
+
   iVar1 = ov13_022208E8(param_2 / 2);
   if (iVar1 == 0) {
     return 0xffffffff;

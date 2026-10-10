@@ -64,7 +64,7 @@ ov85_021E5FE0(undefined4 *param_1,undefined4 param_2,undefined4 param_3,undefine
   undefined2 uStack_14;
   undefined2 uStack_12;
   undefined4 uStack_10;
-  
+
   uStack_10 = param_4;
   iVar1 = ov85_021E8570();
   if ((iVar1 == 1) && (iVar1 = ov85_021E8150(param_1), iVar1 == 0)) {

@@ -67,7 +67,7 @@ int ov74_02235930(int param_1,int param_2,int param_3,int param_4,undefined4 par
   int iStack_18;
   undefined4 uStack_14;
   int iStack_10;
-  
+
   iStack_10 = param_4;
   if (param_2 == 0) {
     iStack_38 = param_3 << 0xc;

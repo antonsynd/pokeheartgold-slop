@@ -48,7 +48,7 @@ char sub_020351AC(int param_1)
 
 {
   char cVar1;
-  
+
   if (*(short *)(iRam021d413c + param_1 * 2 + 0xd44) == 0) {
     cVar1 = '\0';
   }

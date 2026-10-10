@@ -49,7 +49,7 @@ void sub_02010AB0(int *param_1,uint *param_2,undefined4 *param_3,byte *param_4,b
 
 {
   undefined4 uVar1;
-  
+
   *param_1 = (uint)*param_4 << 7;
   param_1[1] = (uint)param_4[1] << 7;
   param_1[2] = (uint)param_4[2] << 7;

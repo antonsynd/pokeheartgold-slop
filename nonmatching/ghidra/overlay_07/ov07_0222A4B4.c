@@ -53,7 +53,7 @@ void ov07_0222A4B4(undefined4 param_1,char *param_2)
   bool bVar1;
   char *pcVar2;
   int iVar3;
-  
+
   switch(*param_2) {
   case '\0':
     bVar1 = true;

@@ -52,7 +52,7 @@ undefined4 ov40_02233EE8(undefined4 param_1)
   int iVar1;
   uint uStack_10;
   uint uStack_c;
-  
+
   iVar1 = func_0x02025380(&uStack_c,&uStack_10);
   if ((((iVar1 != 0) && (0x50 < uStack_c)) && (uStack_c < 0xb0)) &&
      ((0x98 < uStack_10 && (uStack_10 < 0xb0)))) {

@@ -91,7 +91,7 @@ undefined4 ov92_0225CDF4(undefined4 param_1,int *param_2,undefined4 param_3,unde
   undefined4 uVar4;
   int iVar5;
   undefined4 *puVar6;
-  
+
   puVar2 = (undefined4 *)OverlayManager_GetData();
   iVar3 = ov92_0225D8E4();
   if (iVar3 != 0) {

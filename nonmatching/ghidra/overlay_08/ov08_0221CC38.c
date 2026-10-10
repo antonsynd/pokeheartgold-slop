@@ -61,7 +61,7 @@ undefined4 ov08_0221CC38(int *param_1)
   int iVar6;
   int *piVar7;
   int iStack_20;
-  
+
   iVar3 = *param_1;
   cVar1 = (char)param_1[0x81f];
   if (cVar1 == '\0') {

@@ -62,7 +62,7 @@ undefined4 * ov102_021E909C(undefined4 param_1,undefined4 param_2)
   undefined4 uVar2;
   int iVar3;
   undefined4 *puVar4;
-  
+
   puVar1 = (undefined4 *)Heap_Alloc(0x23,0x234);
   Main_SetVBlankIntrCB(0,0);
   HBlankInterruptDisable();

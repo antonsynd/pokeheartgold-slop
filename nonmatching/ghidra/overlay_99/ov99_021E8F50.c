@@ -56,7 +56,7 @@ void ov99_021E8F50(undefined4 *param_1,undefined4 param_2,undefined4 param_3,und
   uint uVar3;
   int iStack_28;
   uint auStack_24 [4];
-  
+
   uVar3 = 0;
   iStack_28 = 0;
   auStack_24[3] = param_4;

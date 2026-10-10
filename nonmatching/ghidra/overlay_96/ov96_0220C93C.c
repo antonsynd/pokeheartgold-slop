@@ -55,7 +55,7 @@ undefined4 * ov96_0220C93C(undefined4 param_1,undefined4 param_2)
   undefined4 *puVar2;
   undefined4 *puVar3;
   uint uVar4;
-  
+
   uVar1 = PokeathlonCourse_GetParticipantCount();
   puVar2 = (undefined4 *)Heap_Alloc(param_2,0x78);
   func_0x020d4994(puVar2,0,0x78);

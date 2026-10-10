@@ -55,7 +55,7 @@ undefined * sub_0203A534(int param_1,int param_2,undefined4 param_3,undefined *p
   int iStack_c;
   undefined4 uStack_8;
   undefined *local_4;
-  
+
   local_18[0] = param_4;
   iStack_10 = param_1;
   iStack_c = param_2;

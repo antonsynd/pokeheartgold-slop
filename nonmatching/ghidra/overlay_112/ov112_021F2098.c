@@ -82,7 +82,7 @@ void ov112_021F2098(undefined4 *param_1,undefined4 param_2,undefined4 param_3,un
   short sStack_1a;
   undefined1 uStack_18;
   char cStack_17;
-  
+
   uVar1 = func_0x0206a304(param_2);
   func_0x02007508(&uStack_18,0x8d,uVar1);
   if (cStack_17 == '\0') {

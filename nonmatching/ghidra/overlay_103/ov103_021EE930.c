@@ -55,7 +55,7 @@ void ov103_021EE930(int param_1)
   undefined4 uVar1;
   uint uVar2;
   int iVar3;
-  
+
   uVar2 = 0;
   do {
     iVar3 = (uVar2 + 0x1a) * 0x10;

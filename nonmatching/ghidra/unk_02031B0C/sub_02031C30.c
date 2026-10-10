@@ -50,7 +50,7 @@ undefined4 sub_02031C30(int param_1,int param_2,undefined4 param_3)
 {
   int iVar1;
   uint uVar2;
-  
+
   uVar2 = (uint)*(ushort *)(param_1 + 10);
   if (6 < param_2) {
     GF_AssertFail();

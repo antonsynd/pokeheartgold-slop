@@ -55,7 +55,7 @@ undefined1 ov13_022226C8(uint *param_1)
   int extraout_r1_01;
   uint uVar4;
   uint uVar5;
-  
+
   uVar3 = param_1[3];
   uVar4 = param_1[2];
   { uint nug_a = (uint)(*param_1 + 1), nug_b = (uint)(uVar3); extraout_r1 = nug_a % nug_b; _u32_div_f(nug_a, nug_b); }

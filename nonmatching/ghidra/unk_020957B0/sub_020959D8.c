@@ -50,7 +50,7 @@ void sub_020959D8(undefined4 param_1,undefined1 *param_2,byte *param_3,int *para
   byte bVar1;
   int iVar2;
   undefined1 extraout_r1;
-  
+
   iVar2 = *param_4;
   if ((iVar2 == 1) || (iVar2 == 2)) {
     if (*(byte *)(param_4 + 1) < 2) {

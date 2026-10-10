@@ -66,7 +66,7 @@ void ov96_02202738(int param_1,short *param_2,undefined4 param_3,undefined4 para
   ushort auStack_24 [4];
   byte abStack_1c [4];
   undefined4 uStack_18;
-  
+
   abStack_1c[0] = 0;
   abStack_1c[1] = 0;
   abStack_1c[2] = 0;

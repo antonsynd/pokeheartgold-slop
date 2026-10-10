@@ -49,7 +49,7 @@ uint ov112_021E9480(uint param_1,int param_2,uint param_3,undefined4 param_4)
 
 {
   int iVar1;
-  
+
   iVar1 = sub_02070438(param_1 & 0xffff,param_3 & 0xff,param_3,param_4,param_4);
   if ((int)param_1 < 0x1a6) {
     if (0x1a4 < (int)param_1) {

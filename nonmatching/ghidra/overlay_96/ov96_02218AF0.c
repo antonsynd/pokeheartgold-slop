@@ -47,7 +47,7 @@ void ov96_02218AF0(int param_1)
 
 {
   int iVar1;
-  
+
   if (2 < *(int *)(param_1 + 0x14) - 9U) {
     if (*(int *)(param_1 + 0x50) < 1) {
       *(undefined4 *)(param_1 + 0x54) = 0;

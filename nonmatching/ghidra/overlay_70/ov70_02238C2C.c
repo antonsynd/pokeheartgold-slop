@@ -61,7 +61,7 @@ ov70_02238C2C(undefined4 param_1,undefined1 param_2,undefined4 param_3,undefined
   undefined1 uStack_1a;
   undefined1 uStack_19;
   undefined4 uStack_18;
-  
+
   uStack_18 = param_4;
   uVar1 = YesNoPrompt_Create(0x3d);
   if (param_6 != '\0') {

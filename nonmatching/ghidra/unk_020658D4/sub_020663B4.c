@@ -51,7 +51,7 @@ undefined4 sub_020663B4(undefined4 param_1,char *param_2,undefined4 param_3,unde
 
 {
   undefined4 uVar1;
-  
+
   if (param_2[2] == '\0') {
     uVar1 = func_0x021fff5c(param_1,param_2[1],param_3,param_4,param_4);
     sub_02066420(param_1,uVar1);

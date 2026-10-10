@@ -72,7 +72,7 @@ int ov80_0223690C(int param_1,int param_2,undefined4 param_3,undefined4 param_4)
   int iVar8;
   undefined4 uStack_1c;
   undefined4 uStack_18;
-  
+
   uStack_18 = param_4;
   uVar2 = ov80_02236A88(*(undefined1 *)(param_1 + 0xf));
   iVar3 = BattleSetup_New(*(undefined4 *)(param_1 + 4),uVar2);

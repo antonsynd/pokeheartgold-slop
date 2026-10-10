@@ -52,7 +52,7 @@ int ov18_021F6B00(int param_1)
 
 {
   int iVar1;
-  
+
   *(undefined4 *)(param_1 + 0x864) = 0;
   iVar1 = System_GetTouchNew();
   if (iVar1 == 1) {

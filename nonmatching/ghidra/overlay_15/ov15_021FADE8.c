@@ -50,7 +50,7 @@ undefined4 ov15_021FADE8(int param_1,int param_2)
 {
   int iVar1;
   undefined4 uVar2;
-  
+
   uVar2 = 0xffffffff;
   switch(param_2) {
   case 0:

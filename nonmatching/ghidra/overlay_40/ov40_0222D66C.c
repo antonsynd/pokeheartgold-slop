@@ -55,7 +55,7 @@ void ov40_0222D66C(int param_1,int param_2,undefined4 param_3)
 {
   undefined4 uVar1;
   undefined1 auStack_20 [16];
-  
+
   uVar1 = NewString_ReadMsgData(*(undefined4 *)(param_2 + 0x34),param_3);
   InitWindow(auStack_20);
   func_0x0201d494(*(undefined4 *)(param_2 + 0x10),auStack_20,0x14,2,0,0);

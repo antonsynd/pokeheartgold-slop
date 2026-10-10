@@ -63,7 +63,7 @@ void ov83_02245748(int param_1,uint param_2)
   undefined4 uVar2;
   undefined4 uVar3;
   int iVar4;
-  
+
   uVar2 = ov83_02247768(*(undefined1 *)(param_1 + 0x14));
   uVar2 = Party_GetMonByIndex(*(undefined4 *)(param_1 + 0x55c),uVar2);
   uVar3 = Options_GetFrame(*(undefined4 *)(param_1 + 0x2b8));

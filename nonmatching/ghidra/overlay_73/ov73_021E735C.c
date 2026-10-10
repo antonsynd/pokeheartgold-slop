@@ -62,7 +62,7 @@ undefined4 ov73_021E735C(undefined4 param_1,undefined4 param_2,undefined4 param_
   int iVar4;
   int iVar5;
   undefined4 uStack_20;
-  
+
   iVar1 = sub_0203769C();
   iVar2 = ov73_021E7490(param_4);
   if (iVar2 == 0) {

@@ -51,7 +51,7 @@ void ov18_021F14B4(int param_1,undefined4 param_2,int param_3,int param_4)
 {
   int iVar1;
   int iVar2;
-  
+
   iVar2 = param_4;
   iVar1 = func_0x0200d944(*(undefined4 *)(param_1 + 0x66c),0xc550,1);
   ov18_021F111C(param_1,param_3,param_2,0x200,1,param_2,iVar2);

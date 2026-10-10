@@ -51,7 +51,7 @@ int ov27_0225A4D0(int param_1)
 {
   int iVar1;
   int iVar2;
-  
+
   iVar1 = ov27_0225BDC8();
   iVar2 = PlayerAvatar_GetState(*(undefined4 *)(*(int *)(param_1 + 0x10) + 0x40));
   if ((iVar2 == 1) || ((*(byte *)(*(int *)(param_1 + 0x10) + 0xd2) & 0x3f) != 0)) {

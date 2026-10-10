@@ -49,7 +49,7 @@ void sub_02063A40(undefined *param_1)
 
 {
   uint uVar1;
-  
+
   uVar1 = MapObject_GetType(param_1);
   (**(code **)(&UNK_020fe104 + uVar1 * 4))(param_1);
   return;

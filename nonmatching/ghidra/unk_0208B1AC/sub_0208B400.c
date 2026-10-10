@@ -52,7 +52,7 @@ void sub_0208B400(int param_1)
 
 {
   int iVar1;
-  
+
   if (*(char *)(*(int *)(param_1 + 0x22c) + 0x11) != '\x02') {
     iVar1 = (uint)*(byte *)(*(int *)(param_1 + 0x22c) + 0x14) * 2;
     Sprite_SetPositionXY

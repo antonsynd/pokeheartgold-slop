@@ -57,7 +57,7 @@ void ov01_021FA854(int param_1,int param_2,undefined2 param_3)
   undefined2 *puVar2;
   undefined2 *puVar3;
   undefined4 uVar4;
-  
+
   iVar1 = param_2 * 0x28 + 0x28;
   puVar2 = (undefined2 *)Heap_Alloc(4,iVar1);
   if (puVar2 == (undefined2 *)0x0) {

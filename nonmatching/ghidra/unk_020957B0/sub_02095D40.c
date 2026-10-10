@@ -53,7 +53,7 @@ void sub_02095D40(byte *param_1,undefined4 param_2,uint param_3)
   undefined1 extraout_r1;
   undefined1 *puVar2;
   undefined1 *puVar3;
-  
+
   sub_02095C90();
   puVar2 = (undefined1 *)(*(int *)(param_1 + 0xc) + (uint)*param_1 * 4);
   puVar3 = *(undefined1 **)(*(int *)(param_1 + 8) + (uint)*param_1 * 0xc);

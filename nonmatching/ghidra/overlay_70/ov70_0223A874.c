@@ -49,7 +49,7 @@ void ov70_0223A874(int param_1,undefined4 param_2,undefined4 param_3,undefined4 
 
 {
   undefined4 uVar1;
-  
+
   uVar1 = ov70_0223F864((int)*(char *)(param_1 + 0x22f),(int)*(char *)(param_1 + 0x230),0);
   ov70_0223F470(*(undefined4 *)(param_1 + 0xba0),*(undefined4 *)(param_1 + 0xba4),
                 *(undefined4 *)(param_1 + 0xb9c),param_1 + 0x10e8,(int)*(short *)(param_1 + 0x22c),

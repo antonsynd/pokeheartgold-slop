@@ -50,7 +50,7 @@ void ov05_0221E74C(int param_1,undefined4 param_2,undefined4 param_3,undefined4 
 
 {
   int iVar1;
-  
+
   iVar1 = param_1 + 0x10 + (param_6 * 4 + 2) * 0x10;
   func_0x0200cdf0(param_3,*(undefined2 *)(param_1 + param_6 * 0x18 + 0x21a),3,1,iVar1,0,2);
   sub_0200CDAC(param_3,0,iVar1,0x18,2);

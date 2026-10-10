@@ -61,7 +61,7 @@ undefined4 sub_02089028(int param_1,undefined4 param_2,undefined4 param_3,undefi
   uint uVar2;
   undefined4 uVar3;
   int iVar4;
-  
+
   if ((uRam021d1154 & 0x40) != 0) {
     iVar1 = sub_0208A71C(param_1,0xffffffff,uRam021d1154,uRam021d1154,param_4);
     if (iVar1 == 1) {

@@ -66,7 +66,7 @@ void ov12_02239730(int param_1,undefined4 param_2,undefined4 param_3,undefined4 
   undefined4 auStack_60 [10];
   undefined4 auStack_38 [10];
   undefined4 uStack_10;
-  
+
   puVar4 = auStack_60;
   if ((int)((uint)*(byte *)(param_1 + 0x23ff) << 0x1f) < 0) {
     *(byte *)(param_1 + 0x23ff) = *(byte *)(param_1 + 0x23ff) & 0xfe;

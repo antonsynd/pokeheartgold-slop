@@ -50,7 +50,7 @@ void ov08_022246F4(int param_1,int param_2,int param_3,int param_4)
   uint uVar2;
   uint uVar3;
   int iVar4;
-  
+
   if (param_3 == 0) {
     iVar1 = param_1 + 0xfbe + param_4 * 0x20;
   }

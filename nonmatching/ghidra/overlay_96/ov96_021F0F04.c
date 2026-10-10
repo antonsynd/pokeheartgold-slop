@@ -57,7 +57,7 @@ void ov96_021F0F04(int param_1,int param_2)
   undefined4 uStack_24;
   undefined4 uStack_20;
   undefined4 uStack_1c;
-  
+
   uStack_1c = 0;
   uStack_20 = 0;
   uStack_24 = 0;

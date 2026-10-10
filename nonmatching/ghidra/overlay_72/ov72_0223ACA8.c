@@ -52,7 +52,7 @@ void ov72_0223ACA8(int param_1,undefined4 param_2,undefined4 param_3,undefined4 
   uint *puVar2;
   int iVar3;
   int iVar4;
-  
+
   puVar2 = (uint *)&ov72_0223B46C;
   iVar4 = 0;
   sVar1 = 0x1f;

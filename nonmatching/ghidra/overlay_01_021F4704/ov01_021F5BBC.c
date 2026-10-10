@@ -49,7 +49,7 @@ undefined4 ov01_021F5BBC(undefined4 param_1,int param_2,undefined1 *param_3)
 {
   uint uVar1;
   int iVar2;
-  
+
   iVar2 = 0;
   do {
     if (*(int *)(param_2 + 0x2c) == 1) {

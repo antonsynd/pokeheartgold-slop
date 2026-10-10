@@ -59,7 +59,7 @@ undefined4 ov13_022214C4(ushort *param_1)
   undefined4 uVar1;
   int iVar2;
   int iVar3;
-  
+
   iVar3 = (int)param_1 + 0x117;
   if (iVar3 == 0) {
     return 0xffffffff;

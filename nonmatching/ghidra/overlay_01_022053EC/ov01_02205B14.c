@@ -79,7 +79,7 @@ undefined4 ov01_02205B14(undefined *param_1)
   uint auStack_30 [6];
   int iStack_18;
   int iStack_14;
-  
+
   pcVar9 = acStack_40;
   puVar4 = TaskManager_GetFieldSystem(param_1);
   pcVar5 = TaskManager_GetEnvironment(param_1);

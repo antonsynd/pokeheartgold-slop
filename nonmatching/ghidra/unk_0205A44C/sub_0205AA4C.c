@@ -49,7 +49,7 @@ void sub_0205AA4C(undefined4 *param_1)
   int iVar1;
   int iVar2;
   undefined4 *puVar3;
-  
+
   *(undefined1 *)(param_1 + 7) = 0;
   iVar1 = 0;
   puVar3 = param_1;

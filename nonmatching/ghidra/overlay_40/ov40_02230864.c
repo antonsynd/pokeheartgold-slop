@@ -61,7 +61,7 @@ void ov40_02230864(undefined *param_1)
   undefined *puVar2;
   short asStack_10 [2];
   short asStack_c [2];
-  
+
   if (*(int *)(param_1 + 0x415c) == 1) {
     if (*(undefined **)(param_1 + 0x4168) != (undefined *)0x0) {
       SysTask_Destroy(*(undefined **)(param_1 + 0x4168));

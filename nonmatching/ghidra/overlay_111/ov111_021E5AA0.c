@@ -64,7 +64,7 @@ undefined4 ov111_021E5AA0(int param_1)
 {
   int iVar1;
   int iVar2;
-  
+
   iVar2 = -1;
   ov111_021E6A2C(*(undefined4 *)(param_1 + 0x24));
   iVar1 = ov111_021E6888(*(undefined4 *)(param_1 + 0x24));

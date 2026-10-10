@@ -66,7 +66,7 @@ void ov96_0220C490(undefined4 *param_1,int param_2,int param_3,undefined4 param_
   undefined4 uStack_20;
   undefined4 uStack_1c;
   undefined4 uStack_18;
-  
+
   uStack_4c = 0;
   uStack_48 = 0;
   iStack_44 = 0;

@@ -69,7 +69,7 @@ void ov96_0220ED9C(undefined4 *param_1)
   undefined4 uStack_e0;
   undefined4 uStack_dc;
   undefined4 auStack_d8 [49];
-  
+
   uVar8 = param_1[2];
   uVar1 = *param_1;
   uStack_e8 = 1;

@@ -97,7 +97,7 @@ undefined4 sub_02058D4C(undefined *param_1,undefined4 param_2,undefined4 param_3
   undefined *puVar4;
   undefined4 uVar5;
   int iVar6;
-  
+
   puVar3 = TaskManager_GetEnvironment(param_1);
   puVar4 = TaskManager_GetFieldSystem(param_1);
   switch(*(undefined4 *)(puVar3 + 0x34)) {

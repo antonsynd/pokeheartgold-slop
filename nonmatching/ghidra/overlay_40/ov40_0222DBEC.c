@@ -56,7 +56,7 @@ void ov40_0222DBEC(int param_1)
   undefined4 uVar3;
   undefined4 uVar4;
   undefined4 uVar5;
-  
+
   uVar2 = *(undefined4 *)(param_1 + 0x18);
   uVar3 = *(undefined4 *)(param_1 + 0x28);
   uVar5 = *(undefined4 *)(param_1 + 0x1c);

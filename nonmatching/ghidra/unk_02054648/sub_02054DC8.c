@@ -51,7 +51,7 @@ void sub_02054DC8(int param_1,int param_2,undefined *param_3)
 {
   int iVar1;
   int extraout_r1;
-  
+
   *(undefined4 *)param_3 = 0x100000;
   *(undefined4 *)(param_3 + 8) = 0x100000;
   { int nug_a = (int)(param_1), nug_b = (int)(param_2); extraout_r1 = nug_a % nug_b; _s32_div_f(nug_a, nug_b); }

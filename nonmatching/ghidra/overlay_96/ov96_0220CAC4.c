@@ -60,7 +60,7 @@ undefined4 ov96_0220CAC4(undefined4 *param_1)
   int extraout_r1;
   uint uVar3;
   undefined4 uVar4;
-  
+
   uVar4 = 0;
   uVar2 = ((param_1[5] & 0xffff) >> 8) + 1 & 0xff;
   param_1[5] = param_1[5] & 0xffff00ff | uVar2 << 8;

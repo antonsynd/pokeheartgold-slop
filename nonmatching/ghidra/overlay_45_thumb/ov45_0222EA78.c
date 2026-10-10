@@ -57,7 +57,7 @@ int ov45_0222EA78(void)
   int iStack_20;
   uint uStack_1c;
   int iStack_18;
-  
+
   uVar1 = 0xffffffff;
   iStack_20 = -1;
   iVar4 = 0xfffffff;

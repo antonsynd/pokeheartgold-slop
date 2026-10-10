@@ -53,7 +53,7 @@ undefined4 FrtCmd_156(undefined4 *param_1,undefined4 param_2,undefined4 param_3,
 {
   undefined4 uVar1;
   int iVar2;
-  
+
   uVar1 = Frontier_GetLaunchArgs(*(undefined4 *)*param_1);
   iVar2 = Frontier_GetData(*(undefined4 *)*param_1);
   uVar1 = ov80_02237B8C(iVar2,uVar1);

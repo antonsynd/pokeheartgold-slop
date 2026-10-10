@@ -51,7 +51,7 @@ void ov07_02223F5C(undefined4 param_1,undefined4 *param_2)
 
 {
   int iVar1;
-  
+
   switch(param_2[2]) {
   case 0:
     Pokepic_StartPaletteFade(param_2[1],0,param_2[6],param_2[4],param_2[5]);

@@ -64,7 +64,7 @@ void ov01_021EB4B8(undefined4 *param_1)
   undefined4 uStack_20;
   undefined4 uStack_1c;
   undefined4 uStack_18;
-  
+
   GF_InitG2dRenderer(param_1 + 5,0xfffff000);
   uStack_24 = 0;
   uStack_20 = 0;

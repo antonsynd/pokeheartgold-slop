@@ -62,7 +62,7 @@ void ov39_02227088(undefined4 param_1,undefined4 param_2,undefined4 param_3,int 
   uint uVar5;
   undefined4 uStack_20;
   undefined4 uStack_1c;
-  
+
   func_0x020d4994(param_4,0,0x19c);
   uVar3 = String_New(0x3c,param_5);
   func_0x02073f00(param_2,param_3,uVar3);

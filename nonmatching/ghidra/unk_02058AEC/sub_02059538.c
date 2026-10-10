@@ -65,7 +65,7 @@ void sub_02059538(int param_1,undefined4 param_2)
   int iVar3;
   undefined4 uVar4;
   undefined4 uVar5;
-  
+
   if (*(int *)(param_1 + 0x10) == 0) {
     iVar3 = Heap_AllocAtEnd(0xb,0x8c);
     func_0x020d4994(iVar3,0,0x8c);

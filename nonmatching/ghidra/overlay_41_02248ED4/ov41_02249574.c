@@ -48,7 +48,7 @@ void ov41_02249574(int param_1,undefined4 param_2,undefined4 param_3,undefined4 
 
 {
   undefined4 *puVar1;
-  
+
   puVar1 = *(undefined4 **)(param_1 + 0x10);
   if (puVar1[1] == 0) {
     ov41_0224AC08(*(undefined4 *)(param_1 + 0xc),0x1b,0xd8,*(undefined4 *)*puVar1,param_4);
