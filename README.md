@@ -28,10 +28,10 @@ Most of the decompiled code here is the work of the [pret/pokeheartgold](https:/
 
 ```
 Functions in C (of ~29k total ROM functions)
-  █████████████████▓▓▓▓▓░░░░░░░░░░░░░░░░░░░░░░░░░░░░  ~44.0%  (~12,981)
+  █████████████████▓▓▓▓▓░░░░░░░░░░░░░░░░░░░░░░░░░░░░  ~44.2%  (~13,037)
 
 Functions fully matching (byte-identical to retail)
-  █████████████████▓▓▓▓▓░░░░░░░░░░░░░░░░░░░░░░░░░░░░  ~43.7%  (~12,894)
+  █████████████████▓▓▓▓▓░░░░░░░░░░░░░░░░░░░░░░░░░░░░  ~43.9%  (~12,950)
 
   █ pret/pokeheartgold   ▓ added in this fork   ░ not yet in C
 ```
@@ -39,12 +39,12 @@ Functions fully matching (byte-identical to retail)
 | | Functions in C | Fully matching | NONMATCHING blocks |
 |---|---:|---:|---:|
 | █ From pret/pokeheartgold | ~10,209 | ~10,205 | 4 |
-| ▓ Added in this fork (LLM-assisted) | 2,772 | 2,689 | 83 |
-| Total | ~12,981 | ~12,894 | 87 |
+| ▓ Added in this fork (LLM-assisted) | 2,828 | 2,745 | 83 |
+| Total | ~13,037 | ~12,950 | 87 |
 
 The fork's additions are counted from the files it decompiled. pret's figures (~) are derived from an estimated ~29,500 total ROM functions, because upstream doesn't keep the asm for decompiled files. A NONMATCHING block is a function with a C version kept for reference that is still linked from handwritten asm. It counts toward *Functions in C* but not *Fully matching*.
 
-534 of 726 linked objects are C (73.6%). Object counts aren't comparable with upstream's, because this fork splits some overlays into smaller chunks.
+535 of 726 linked objects are C (73.7%). Object counts aren't comparable with upstream's, because this fork splits some overlays into smaller chunks.
 
 Detailed function-level coverage, active blockers, and the triage queue are tracked in **[`COVERAGE.md`](tools/decomp_harness/COVERAGE.md)**, regenerated from the build by `coverage_ledger.py`.
 <!-- PROGRESS_END -->
