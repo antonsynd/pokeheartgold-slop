@@ -1,0 +1,1 @@
+{"PlayerProfile_GetNamePtr": [1, 6], "AddTextPrinterParameterizedWithColor": [4, 1], "ScheduleWindowCopyToVram": [1, 0], "FillWindowPixelBuffer": [2, 0], "String_New": [2, 6], "CopyU16ArrayToString": [2, 0], "String_Delete": [1, 0], "PlayerProfile_GetTrainerGender": [1, 0], "Save_PlayerData_GetProfile": [1, 6]}

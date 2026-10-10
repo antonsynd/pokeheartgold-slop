@@ -1,0 +1,1 @@
+{"GfGfxLoader_LoadScrnDataFromOpenNarc": [4, 0], "GfGfxLoader_LoadCharDataFromOpenNarc": [4, 0], "SetBothScreensModesAndDisable": [1, 0], "BG_ClearCharDataRange": [4, 0], "NARC_Delete": [1, 0], "NARC_New": [2, 6], "BgClearTilemapBufferAndCommit": [2, 0], "InitBgFromTemplate": [4, 0], "BgConfig_Alloc": [1, 6], "GfGfxLoader_GXLoadPalFromOpenNarc": [4, 0], "LoadFontPal0": [3, 0]}

@@ -1,0 +1,1 @@
+{"ScheduleWindowCopyToVram": [1, 0], "CopyU16ArrayToString": [2, 0], "String_Delete": [1, 0], "NewString_ReadMsgData": [2, 6], "AddTextPrinterParameterizedWithColor": [4, 1], "String_New": [2, 6], "func_0x0200bc28": [3, 0, 33602600], "FillWindowPixelBuffer": [2, 0]}

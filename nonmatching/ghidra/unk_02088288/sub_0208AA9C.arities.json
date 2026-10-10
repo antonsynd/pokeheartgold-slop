@@ -1,0 +1,1 @@
+{"Bg_GetYpos": [2, 0], "thunk_Sprite_SetPaletteOverride": [2, 0], "ScheduleWindowCopyToVram": [1, 0], "ScheduleSetBgPosText": [4, 0], "sub_0208C2A0": [1, 0], "Sprite_SetPriority": [2, 0], "ClearWindowTilemapAndScheduleTransfer": [1, 0]}

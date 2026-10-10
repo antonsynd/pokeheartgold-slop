@@ -1,0 +1,1 @@
+{"ClearWindowTilemapAndCopyToVram": [1, 0], "String_Delete": [1, 0], "ReadMsgDataIntoString": [3, 0], "ClearFrameAndWindow2": [2, 0], "AddTextPrinterParameterizedWithColor": [4, 1], "FillWindowPixelBuffer": [2, 0], "DrawFrameAndWindow2": [4, 0], "System_GetTouchNew": [0, 5], "ov56_021E5D08": [1, 0], "String_New": [2, 6]}

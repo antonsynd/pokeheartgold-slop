@@ -1,0 +1,1 @@
+{"String_Delete": [1, 0], "CopyU16ArrayToString": [2, 0], "PalPad_GetNthEntry": [2, 6], "String_New": [2, 6], "PalPad_PlayerIdIsFriendOrMutual": [2, 0], "PalPadEntry_GetFromUnk68Array": [2, 1], "ReadMsgData_ExpandPlaceholders": [4, 6], "PlayerProfile_GetTrainerID": [1, 0], "BufferPlayersName": [3, 0], "BufferString": [4, 0]}

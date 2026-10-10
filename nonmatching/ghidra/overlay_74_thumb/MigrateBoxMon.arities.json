@@ -1,0 +1,1 @@
+{"AGB_GetBoxMonAbility": [2, 0], "ReleaseBoxMonLock": [2, 5], "ConvertRSStringToDPStringInternational": [4, 0], "AcquireBoxMonLock": [1, 5], "GetBoxMonData": [3, 0], "UpConvertItemId_Gen3to4": [1, 3], "SetBoxMonData": [3, 0], "ZeroBoxMonData": [1, 0], "func_0x020f2ba4": [2, 0, 34548644], "TranslateAgbSpecies": [0, 0], "AGB_GetBoxMonData": [3, 0], "GetBoxMonGender": [1, 1]}

@@ -1,0 +1,1 @@
+{"TextFlags_SetCanABSpeedUpPrint": [1, 0], "func_0x02000ef4": [2, 0, 33558260], "TextFlags_SetCanTouchSpeedUpPrint": [1, 0], "OverlayManager_GetData": [1, 6], "OverlayManager_FreeData": [1, 0], "Heap_Destroy": [1, 0], "func_0x0201a738": [1, 0, 33662776], "ov112_021E77E4": [1, 0], "Main_SetVBlankIntrCB": [2, 0]}

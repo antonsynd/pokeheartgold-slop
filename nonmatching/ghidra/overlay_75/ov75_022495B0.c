@@ -1,0 +1,97 @@
+typedef unsigned char undefined;
+typedef unsigned char undefined1;
+typedef unsigned short undefined2;
+typedef unsigned int undefined3;
+typedef unsigned int undefined4;
+typedef unsigned long long undefined8;
+typedef unsigned char byte;
+typedef signed char sbyte;
+typedef unsigned short ushort;
+typedef unsigned short word;
+typedef unsigned int uint;
+typedef unsigned int dword;
+typedef unsigned int ulong;
+typedef unsigned long long ulonglong;
+typedef unsigned long long qword;
+typedef long long longlong;
+typedef unsigned char bool;
+typedef int code();
+typedef void *pointer;
+typedef unsigned short wchar16;
+#define true 1
+#define false 0
+#define CONCAT11(a, b) ((unsigned short)(((unsigned)(a) << 8) | (unsigned char)(b)))
+#define CONCAT12(a, b) (((unsigned)(unsigned char)(a) << 16) | (unsigned short)(b))
+#define CONCAT13(a, b) (((unsigned)(unsigned char)(a) << 24) | ((unsigned)(b) & 0xffffff))
+#define CONCAT21(a, b) (((unsigned)(unsigned short)(a) << 8) | (unsigned char)(b))
+#define CONCAT22(a, b) (((unsigned)(unsigned short)(a) << 16) | (unsigned short)(b))
+#define CONCAT31(a, b) (((unsigned)(a) << 8) | (unsigned char)(b))
+#define CONCAT44(a, b) (((unsigned long long)(unsigned)(a) << 32) | (unsigned)(b))
+#define SUB41(x, n) ((unsigned char)((unsigned)(x) >> ((n) * 8)))
+#define SUB42(x, n) ((unsigned short)((unsigned)(x) >> ((n) * 8)))
+#define SUB81(x, n) ((unsigned char)((unsigned long long)(x) >> ((n) * 8)))
+#define SUB84(x, n) ((unsigned)((unsigned long long)(x) >> ((n) * 8)))
+#define ZEXT14(x) ((unsigned)(unsigned char)(x))
+#define ZEXT24(x) ((unsigned)(unsigned short)(x))
+#define ZEXT48(x) ((unsigned long long)(unsigned)(x))
+#define SEXT14(x) ((int)(signed char)(x))
+#define SEXT24(x) ((int)(short)(x))
+#define SEXT48(x) ((long long)(int)(x))
+#define CARRY4(a, b) ((unsigned)(a) + (unsigned)(b) < (unsigned)(a))
+#define SCARRY4(a, b) ((((int)(a) + (int)(b)) < (int)(a)) != ((int)(b) < 0))
+#define SBORROW4(a, b) ((((int)(a) - (int)(b)) > (int)(a)) != ((int)(b) < 0))
+#define POPCOUNT(x) __builtin_popcount(x)
+#define LZCOUNT(x) ((x) ? __builtin_clz(x) : 32)
+undefined4 ov75_02246CE8();
+undefined4 ov75_02249884();
+undefined4 ov75_02249534();
+undefined4 ov75_022494CC();
+undefined4 sub_020317BC();
+undefined4 sub_02031774();
+undefined4 BufferIntegerAsString();
+
+undefined4 ov75_022495B0(int *param_1,undefined4 param_2,undefined4 param_3,undefined4 param_4)
+
+{
+  int iVar1;
+  int iVar2;
+  undefined4 uVar3;
+  int iVar4;
+  uint uVar5;
+  undefined4 *puVar6;
+  undefined4 auStack_28 [4];
+  undefined4 uStack_18;
+  
+  iVar4 = *param_1;
+  uStack_18 = param_4;
+  iVar1 = ov75_02249534(param_1[0x11]);
+  if (iVar1 != 1) {
+    if (param_1[0x25] == 0) {
+      iVar1 = ov75_02246CE8(iVar4);
+      iVar2 = sub_020317BC(*(undefined4 *)(iVar4 + 4),3);
+      if (iVar1 == iVar2) {
+        uVar3 = sub_02031774(*(undefined4 *)(iVar4 + 4));
+        ov75_02249884(uVar3,auStack_28,0x73);
+        uVar5 = 0;
+        puVar6 = auStack_28;
+        do {
+          BufferIntegerAsString(param_1[8],uVar5,*puVar6,4,2,1);
+          uVar5 = uVar5 + 1;
+          puVar6 = puVar6 + 1;
+        } while (uVar5 < 4);
+        uVar3 = 0x29;
+      }
+      else {
+        uVar3 = 0x28;
+      }
+      ov75_022494CC(param_1,param_1[0xd],uVar3,1,0xf0f);
+      param_1[0x25] = param_1[0x25] + 1;
+    }
+    else if (param_1[0x25] == 1) {
+      param_1[2] = 0;
+    }
+    return 0;
+  }
+  return 0;
+}
+

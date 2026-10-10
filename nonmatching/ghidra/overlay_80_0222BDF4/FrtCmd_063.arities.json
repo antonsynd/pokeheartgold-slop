@@ -1,0 +1,1 @@
+{"FrontierScriptContext_Pause": [2, 0], "func_0x02003d5c": [4, 0, 33570140], "Frontier_SetData": [2, 0], "Heap_Alloc": [2, 6], "FrontierSystem_GetFrontierMap": [1, 6], "FrontierScript_ReadVar": [1, 0], "Sound_SetSceneAndPlayBGM": [3, 0], "Frontier_GetLaunchArgs": [1, 6], "Frontier_GetData": [1, 6]}

@@ -1,0 +1,1 @@
+{"DestroyMsgData": [1, 0], "AddTextPrinterParameterizedWithColor": [4, 1], "GetBoxMonData": [3, 0], "NewMsgDataFromNarc": [4, 6], "NewString_ReadMsgData": [2, 6], "String_Delete": [1, 0], "String_New": [2, 6], "FontID_Alloc": [2, 0], "FontID_Release": [1, 0]}

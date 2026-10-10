@@ -1,0 +1,140 @@
+typedef unsigned char undefined;
+typedef unsigned char undefined1;
+typedef unsigned short undefined2;
+typedef unsigned int undefined3;
+typedef unsigned int undefined4;
+typedef unsigned long long undefined8;
+typedef unsigned char byte;
+typedef signed char sbyte;
+typedef unsigned short ushort;
+typedef unsigned short word;
+typedef unsigned int uint;
+typedef unsigned int dword;
+typedef unsigned int ulong;
+typedef unsigned long long ulonglong;
+typedef unsigned long long qword;
+typedef long long longlong;
+typedef unsigned char bool;
+typedef int code();
+typedef void *pointer;
+typedef unsigned short wchar16;
+#define true 1
+#define false 0
+#define CONCAT11(a, b) ((unsigned short)(((unsigned)(a) << 8) | (unsigned char)(b)))
+#define CONCAT12(a, b) (((unsigned)(unsigned char)(a) << 16) | (unsigned short)(b))
+#define CONCAT13(a, b) (((unsigned)(unsigned char)(a) << 24) | ((unsigned)(b) & 0xffffff))
+#define CONCAT21(a, b) (((unsigned)(unsigned short)(a) << 8) | (unsigned char)(b))
+#define CONCAT22(a, b) (((unsigned)(unsigned short)(a) << 16) | (unsigned short)(b))
+#define CONCAT31(a, b) (((unsigned)(a) << 8) | (unsigned char)(b))
+#define CONCAT44(a, b) (((unsigned long long)(unsigned)(a) << 32) | (unsigned)(b))
+#define SUB41(x, n) ((unsigned char)((unsigned)(x) >> ((n) * 8)))
+#define SUB42(x, n) ((unsigned short)((unsigned)(x) >> ((n) * 8)))
+#define SUB81(x, n) ((unsigned char)((unsigned long long)(x) >> ((n) * 8)))
+#define SUB84(x, n) ((unsigned)((unsigned long long)(x) >> ((n) * 8)))
+#define ZEXT14(x) ((unsigned)(unsigned char)(x))
+#define ZEXT24(x) ((unsigned)(unsigned short)(x))
+#define ZEXT48(x) ((unsigned long long)(unsigned)(x))
+#define SEXT14(x) ((int)(signed char)(x))
+#define SEXT24(x) ((int)(short)(x))
+#define SEXT48(x) ((long long)(int)(x))
+#define CARRY4(a, b) ((unsigned)(a) + (unsigned)(b) < (unsigned)(a))
+#define SCARRY4(a, b) ((((int)(a) + (int)(b)) < (int)(a)) != ((int)(b) < 0))
+#define SBORROW4(a, b) ((((int)(a) - (int)(b)) > (int)(a)) != ((int)(b) < 0))
+#define POPCOUNT(x) __builtin_popcount(x)
+#define LZCOUNT(x) ((x) ? __builtin_clz(x) : 32)
+undefined4 BgConfig_Alloc();
+undefined4 OverlayManager_CreateAndGetData();
+undefined4 func_0x020e5b44() __asm__("sub_020E5B44");
+undefined4 func_0x02039fd8() __asm__("sub_02039FD8");
+undefined4 ov70_02238880();
+undefined4 Main_SetVBlankIntrCB();
+undefined4 GfGfx_DisableEngineBPlanes();
+undefined4 SetBothScreensModesAndDisable();
+undefined4 Heap_Create();
+undefined4 func_0x020915b0() __asm__("sub_020915B0");
+undefined4 func_0x02091614() __asm__("sub_02091614");
+undefined4 GfGfx_DisableEngineAPlanes();
+undefined4 HBlankInterruptDisable();
+extern uint uRam04000000 __asm__("sub_04000000");
+extern undefined ov70_02245208;
+extern int iRam02246948 __asm__("sub_02246948");
+extern uint uRam04001000 __asm__("sub_04001000");
+undefined4 ov70_02238818();
+undefined4 Sound_SetSceneAndPlayBGM();
+undefined4 TextFlags_SetCanTouchSpeedUpPrint();
+undefined4 SetKeyRepeatTimers();
+undefined4 NewMsgDataFromNarc();
+undefined4 FontID_Alloc();
+undefined4 ov70_02238E70();
+undefined4 func_0x0200bd18() __asm__("sub_0200BD18");
+undefined4 Heap_Alloc();
+undefined4 func_0x020b535c() __asm__("sub_020B535C");
+undefined4 sub_02034D8C();
+
+undefined4 ov70_02238430(undefined4 param_1,int *param_2,undefined4 param_3,undefined4 param_4)
+
+{
+  int iVar1;
+  undefined4 uVar2;
+  int iVar3;
+  undefined4 uStack_28;
+  undefined4 uStack_24;
+  undefined4 uStack_20;
+  undefined4 uStack_1c;
+  undefined4 uStack_18;
+  
+  uStack_18 = param_4;
+  if (*param_2 == 0) {
+    Main_SetVBlankIntrCB(0,0);
+    HBlankInterruptDisable();
+    GfGfx_DisableEngineAPlanes();
+    GfGfx_DisableEngineBPlanes();
+    uRam04000000 = uRam04000000 & 0xffffe0ff;
+    uRam04001000 = uRam04001000 & 0xffffe0ff;
+    ov70_02238880();
+    Heap_Create(3,0x3d,0x70000);
+    func_0x020915b0();
+    func_0x02091614();
+    func_0x02039fd8(0x3d);
+    iVar1 = OverlayManager_CreateAndGetData(param_1,0x1608,0x3d);
+    func_0x020e5b44(iVar1,0,0x1608);
+    uVar2 = BgConfig_Alloc(0x3d);
+    *(undefined4 *)(iVar1 + 4) = uVar2;
+    uStack_28 = 1;
+    uStack_24 = 0;
+    uStack_20 = 0;
+    uStack_1c = 0;
+    iRam02246948 = iVar1;
+    SetBothScreensModesAndDisable(&uStack_28,0,&uStack_18,&ov70_02245208);
+    FontID_Alloc(4,0x3d);
+    uVar2 = func_0x0200bd18(0xb,0x40,0x3d);
+    *(undefined4 *)(iVar1 + 0xb9c) = uVar2;
+    uVar2 = NewMsgDataFromNarc(0,0x1b,0x307,0x3d);
+    *(undefined4 *)(iVar1 + 0xba0) = uVar2;
+    uVar2 = NewMsgDataFromNarc(0,0x1b,0x30a,0x3d);
+    *(undefined4 *)(iVar1 + 0xba8) = uVar2;
+    uVar2 = NewMsgDataFromNarc(0,0x1b,800,0x3d);
+    *(undefined4 *)(iVar1 + 0xbac) = uVar2;
+    uVar2 = NewMsgDataFromNarc(0,0x1b,0xed,0x3d);
+    *(undefined4 *)(iVar1 + 0xba4) = uVar2;
+    uVar2 = NewMsgDataFromNarc(0,0x1b,0x31e,0x3d);
+    *(undefined4 *)(iVar1 + 0xbb0) = uVar2;
+    SetKeyRepeatTimers(4,8);
+    ov70_02238818(iVar1,param_1);
+    ov70_02238E70(iVar1);
+    Sound_SetSceneAndPlayBGM(0xb,0x47d,1);
+    iVar3 = Heap_Alloc(0x3d,0x20020);
+    *(int *)(iVar1 + 0x4c) = iVar3;
+    uVar2 = func_0x020b535c(iVar3 + 0x1fU & 0xffffffe0,0x20000,0);
+    *(undefined4 *)(iVar1 + 0x50) = uVar2;
+    *param_2 = 1;
+  }
+  else if (*param_2 == 1) {
+    sub_02034D8C();
+    TextFlags_SetCanTouchSpeedUpPrint(1);
+    *param_2 = 0;
+    return 1;
+  }
+  return 0;
+}
+

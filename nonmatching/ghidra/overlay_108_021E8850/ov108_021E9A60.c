@@ -1,0 +1,86 @@
+typedef unsigned char undefined;
+typedef unsigned char undefined1;
+typedef unsigned short undefined2;
+typedef unsigned int undefined3;
+typedef unsigned int undefined4;
+typedef unsigned long long undefined8;
+typedef unsigned char byte;
+typedef signed char sbyte;
+typedef unsigned short ushort;
+typedef unsigned short word;
+typedef unsigned int uint;
+typedef unsigned int dword;
+typedef unsigned int ulong;
+typedef unsigned long long ulonglong;
+typedef unsigned long long qword;
+typedef long long longlong;
+typedef unsigned char bool;
+typedef int code();
+typedef void *pointer;
+typedef unsigned short wchar16;
+#define true 1
+#define false 0
+#define CONCAT11(a, b) ((unsigned short)(((unsigned)(a) << 8) | (unsigned char)(b)))
+#define CONCAT12(a, b) (((unsigned)(unsigned char)(a) << 16) | (unsigned short)(b))
+#define CONCAT13(a, b) (((unsigned)(unsigned char)(a) << 24) | ((unsigned)(b) & 0xffffff))
+#define CONCAT21(a, b) (((unsigned)(unsigned short)(a) << 8) | (unsigned char)(b))
+#define CONCAT22(a, b) (((unsigned)(unsigned short)(a) << 16) | (unsigned short)(b))
+#define CONCAT31(a, b) (((unsigned)(a) << 8) | (unsigned char)(b))
+#define CONCAT44(a, b) (((unsigned long long)(unsigned)(a) << 32) | (unsigned)(b))
+#define SUB41(x, n) ((unsigned char)((unsigned)(x) >> ((n) * 8)))
+#define SUB42(x, n) ((unsigned short)((unsigned)(x) >> ((n) * 8)))
+#define SUB81(x, n) ((unsigned char)((unsigned long long)(x) >> ((n) * 8)))
+#define SUB84(x, n) ((unsigned)((unsigned long long)(x) >> ((n) * 8)))
+#define ZEXT14(x) ((unsigned)(unsigned char)(x))
+#define ZEXT24(x) ((unsigned)(unsigned short)(x))
+#define ZEXT48(x) ((unsigned long long)(unsigned)(x))
+#define SEXT14(x) ((int)(signed char)(x))
+#define SEXT24(x) ((int)(short)(x))
+#define SEXT48(x) ((long long)(int)(x))
+#define CARRY4(a, b) ((unsigned)(a) + (unsigned)(b) < (unsigned)(a))
+#define SCARRY4(a, b) ((((int)(a) + (int)(b)) < (int)(a)) != ((int)(b) < 0))
+#define SBORROW4(a, b) ((((int)(a) - (int)(b)) > (int)(a)) != ((int)(b) < 0))
+#define POPCOUNT(x) __builtin_popcount(x)
+#define LZCOUNT(x) ((x) ? __builtin_clz(x) : 32)
+undefined4 NARC_New();
+undefined4 LoadFontPal1();
+undefined4 GfGfxLoader_LoadCharDataFromOpenNarc();
+undefined4 func_0x020cf15c() __asm__("sub_020CF15C");
+undefined4 ScheduleBgTilemapBufferTransfer();
+undefined4 GfGfxLoader_GXLoadPalFromOpenNarc();
+undefined4 GfGfxLoader_LoadScrnDataFromOpenNarc();
+undefined4 LoadUserFrameGfx2();
+undefined4 GfGfxLoader_GetScrnDataFromOpenNarc();
+undefined4 NARC_Delete();
+
+void ov108_021E9A60(undefined4 *param_1,undefined4 param_2,undefined4 param_3,undefined4 param_4)
+
+{
+  undefined4 uVar1;
+  undefined4 uVar2;
+  
+  uVar1 = NARC_New(0xe1,*param_1);
+  GfGfxLoader_LoadCharDataFromOpenNarc(uVar1,1,param_1[0x10e],3,0,0,0,*param_1,param_4);
+  GfGfxLoader_LoadCharDataFromOpenNarc(uVar1,5,param_1[0x10e],7,0,0,0,*param_1);
+  GfGfxLoader_GXLoadPalFromOpenNarc(uVar1,0,0,0,0,*param_1);
+  GfGfxLoader_GXLoadPalFromOpenNarc(uVar1,4,4,0,0,*param_1);
+  LoadFontPal1(0,0x1a0,*param_1);
+  LoadFontPal1(4,0x1a0,*param_1);
+  GfGfxLoader_LoadScrnDataFromOpenNarc(uVar1,2,param_1[0x10e],3,0,0,0,*param_1);
+  GfGfxLoader_LoadScrnDataFromOpenNarc(uVar1,3,param_1[0x10e],2,0,0,0,*param_1);
+  GfGfxLoader_LoadScrnDataFromOpenNarc(uVar1,6,param_1[0x10e],7,0,0,0,*param_1);
+  uVar2 = GfGfxLoader_GetScrnDataFromOpenNarc(uVar1,8,0,param_1 + 0x147,*param_1);
+  param_1[0x146] = uVar2;
+  uVar2 = GfGfxLoader_GetScrnDataFromOpenNarc(uVar1,6,0,param_1 + 0x149,*param_1);
+  param_1[0x148] = uVar2;
+  uVar2 = GfGfxLoader_GetScrnDataFromOpenNarc(uVar1,7,0,param_1 + 0x14b,*param_1);
+  param_1[0x14a] = uVar2;
+  NARC_Delete(uVar1);
+  LoadUserFrameGfx2(param_1[0x10e],4,0x3e2,0xc,*(undefined1 *)((int)param_1 + 0x19),*param_1);
+  LoadFontPal1(0,0x1a0,*param_1);
+  ScheduleBgTilemapBufferTransfer(param_1[0x10e],7);
+  ScheduleBgTilemapBufferTransfer(param_1[0x10e],3);
+  func_0x020cf15c(0x4000050,1,0x1e,0x1c,4);
+  return;
+}
+

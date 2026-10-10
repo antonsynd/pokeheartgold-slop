@@ -1,0 +1,1 @@
+{"BN_CTX_free": [1, 0], "BN_set_word": [2, 0], "BN_init": [1, 0], "BN_free": [1, 0], "BN_num_bits": [1, 0], "BN_mod_exp": [4, 0], "BN_bin2bn": [3, 0], "BN_CTX_new": [0, 0], "BN_bn2bin": [2, 0]}

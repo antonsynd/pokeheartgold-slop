@@ -1,0 +1,1 @@
+{"BG_LoadScreenTilemapData": [4, 0], "GfGfxLoader_GXLoadPal": [4, 0], "ScheduleBgTilemapBufferTransfer": [2, 0], "GfGfxLoader_LoadCharData": [4, 0], "GfGfxLoader_GetScrnData": [4, 6], "Heap_Free": [1, 0], "GfGfxLoader_LoadScrnData": [4, 0], "BgCopyOrUncompressTilemapBufferRangeToVram": [4, 0], "ov96_021F3CBC": [1, 0], "BgTilemapRectChangePalette": [4, 0]}
