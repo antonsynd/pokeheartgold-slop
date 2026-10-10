@@ -6,3 +6,10 @@
 - ov45_0222E04C takes its second argument as u16; the asm compares it unextended against an ldrh value, which the gate accepted.
 - ov45_0222DEA4 takes a signed int (the asm tests `ble`), the other index checks are unsigned (`blo`).
 - The message file is 757 in NARC_msgdata_msg (msg.naix is generated at build time, so the number is a local define).
+
+## Status
+
+With the current tools, every function these notes describe as failing or inconclusive passes the check.
+`VERIFIED.tsv` gives the verdict of each, and the file that holds its verified C. These now have their verified C in another file, so their C here was not checked again:
+
+- `ov45_0222E000`: `ghidra/overlay_45_thumb/ov45_0222E000.c`

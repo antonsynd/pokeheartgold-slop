@@ -14,15 +14,17 @@ side on 2,000 random inputs, and these were compared:
   stack are not compared);
 - the bytes of any table the C defines, against the ROM's copy.
 
-`VERIFIED.tsv` gives each function's result. `PASS` means every trial that finished agreed.
+`VERIFIED.tsv` gives each function's result. It lists 16,533 functions; the other 121 asm functions are
+verified from the unlinked C already in `src/`, so every asm function has verified C. `PASS` means every
+trial that finished agreed.
 `PASS-BOUNDED` is weaker: no trial finished, because the function loops on a value the stubs never give
 or never returns by design (a thread), so each side ran until it was out of cycles, and the calls both
 made until then (at least eight, with their arguments) agreed; memory writes were not compared.
 `PASS-RESTRICTED` means the check tried fewer inputs than the function takes (a declared type narrower
-than the real one, or a path the stubbed callees never reach); the file's `.notes.md` says which. `FAIL`
-means the check found a difference, or could not model the function; the file's `.notes.md` says
-which. The notes also record struct layouts recovered from the asm, and header declarations that
-disagree with it.
+than the real one, or a path the stubbed callees never reach); the file's `.notes.md` says which. No
+function is left at `FAIL`. Notes written while a function still failed keep the reason it did; a
+`Status` section at their end says where its verified C is now. The notes also record struct layouts
+recovered from the asm, and header declarations that disagree with it.
 
 `ghidra/` holds one file per function, in a folder per asm file. These were made without a person or a
 model in the loop: Ghidra decompiled the function, a script made its C compile on its own (Ghidra's

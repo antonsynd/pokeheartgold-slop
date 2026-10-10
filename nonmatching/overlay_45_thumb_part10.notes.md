@@ -15,3 +15,10 @@ The original does `ldmia r3!, {r2, r3}` (load the s64 `*seconds` into r2:r3, wit
 - The 4-byte time struct (hour, minute, second, one more byte) is copied as a whole word by D524/D594, so it is declared 4 bytes wide with an unknown fourth byte. D524 is a time-of-day addition (seconds/minutes/hours with carries, hours mod 24) and D594 a subtraction with borrows (hours wrap by 24 only); both use signed division by 60 or 24 on the byte values, as in the twin.
 - ov45_0222D638 inserts (country, region, flag) into a 50-entry table of 4-byte records {u16 country; u8 region; u8 flag:4, valid:4}, rejecting country 0 and regions above LocationGmmDatRegionCountGetByCountryMsgNo(country) (unsigned compare, so the count is held in a u32); an existing identical record is overwritten only when the flag is not 1. D6B0/D6D4/D6FC read the country, region and flag of an entry, asserting index < 50 and valid == 1.
 - The functions that clear a work struct with a run of `strb` (D354, D3D8, D44C, D484) are written with `memset(..., 0, sizeof)`: the gate does not count memset as a call, so it agrees with the inlined byte stores.
+
+## Status
+
+With the current tools, every function these notes describe as failing or inconclusive passes the check.
+`VERIFIED.tsv` gives the verdict of each, and the file that holds its verified C. These now have their verified C in another file, so their C here was not checked again:
+
+- `ov45_0222D500`: `ghidra/overlay_45_thumb/ov45_0222D500.c`

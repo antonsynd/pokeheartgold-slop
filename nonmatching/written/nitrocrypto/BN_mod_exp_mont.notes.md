@@ -7,3 +7,5 @@ counts, (0,0)/(1,0) terminators) at a fixed address; with that, this C agrees on
 mutations of the table stride and the b0 >> 1 index are caught. Escaped long counts are exercised but
 counts that large only change the number of bn_sqr_normal calls beyond the check's 512-call record.
 The ARM asm stores locals on the stack at sp+0x34 (wp), +0x1c (callback), +0x20 (callback count).
+
+PASS-RESTRICTED: The stubbed BN_gen_exp_bits never writes its out-pointer, so the check never reaches the exponentiation loops.

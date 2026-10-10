@@ -44,6 +44,11 @@ extern void ov07_02222644(void *transform, int *x, int *y);
 BOOL ov07_02222914(UnkStruct_ov07_02222914 *ctx) {
     u32 callerR3;
     __asm__ volatile("movs %0, r3" : "=l"(callerR3) : : "cc");
+    u32 callerR4;
+    u32 callerR5;
+    u32 callerR6;
+    // Clobbering r4-r6 keeps them out of the outputs and saves them in the prologue, unchanged.
+    __asm__ volatile("movs %0, r4\n\tmovs %1, r5\n\tmovs %2, r6" : "=l"(callerR4), "=l"(callerR5), "=l"(callerR6) : : "r4", "r5", "r6", "cc");
     u32 callerLr;
     __asm__ volatile("mov %0, lr" : "=r"(callerLr));
     u32 frameAddress = (u32)__builtin_frame_address(0);
@@ -60,9 +65,9 @@ BOOL ov07_02222914(UnkStruct_ov07_02222914 *ctx) {
     active[2] = 1;
     active[3] = 1;
     active[4] = callerR3;
-    active[5] = 0x40000004;
-    active[6] = 0x40000005;
-    active[7] = 0x40000006;
+    active[5] = callerR4;
+    active[6] = callerR5;
+    active[7] = callerR6;
     active[8] = callerR7;
     active[9] = callerLr;
 
