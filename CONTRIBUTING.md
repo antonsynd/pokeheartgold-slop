@@ -3,10 +3,11 @@
 <!--toc:start-->
 - [Relationship to pret/pokeheartgold](#relationship-to-pretpokeheartgold)
 - [AI Policy (this fork only)](#ai-policy-this-fork-only)
+- [Submitting changes](#submitting-changes)
 - [Code Formatting](#code-formatting)
 <!--toc:end-->
 
-These guidelines cover contributions to **this fork only**. The first two sections below are specific to this fork and replace upstream's introduction and AI policy. [Code Formatting](#code-formatting) is unchanged from upstream.
+These guidelines cover contributions to **this fork only**. The first three sections below are specific to this fork and replace upstream's introduction and AI policy. [Code Formatting](#code-formatting) is unchanged from upstream.
 
 ## Relationship to pret/pokeheartgold
 
@@ -18,6 +19,16 @@ This is an unofficial fork that pret doesn't endorse or review. The canonical pr
 ## AI Policy (this fork only)
 
 AI-assisted contributions to *this fork* are welcome. The only thing that matters is the result: the code must compile and produce a byte-for-byte matching ROM. How you got there — by hand, with a script, or with an AI tool — is up to you.
+
+## Submitting changes
+
+`mainline` is this fork's working branch. `master` only tracks upstream. `mainline` is protected, so every change goes through a pull request against it, and the `build` check must pass before it merges.
+
+1. **Claim the file first.** Before you start converting `asm/<name>.s`, check the open pull requests and issues to see whether someone else is already working on it. If nobody is, open an issue titled `Claim asm/<name>.s`, or open a draft PR. Close the claim if you give up, so the file goes back into the pool. `tools/decomp_harness/next_target.sh --info` suggests the next file to take.
+2. **Send one asm file per pull request.** Splitting an overlay into chunks (see [CLAUDE.md](CLAUDE.md#decompilation-workflow)) is its own PR.
+3. **Both ROMs must match.** Before you open the PR, `make compare` (HeartGold) and `make soulsilver` must both pass. Then run `./tools/build_attestation.sh`, and commit `build_attestation.json` and `tools/decomp_harness/matched_manifest.json` with your change. The [pre-commit hook](#usage) checks that the attestation is current.
+4. **Prune the drafts.** After a file matches, run `python3 tools/decomp_harness/twins.py prune asm/<name>.s` and commit the result. This drops the `nonmatching/` drafts for the functions that are now real C.
+5. **Don't edit the progress bars in `README.md`.** CI regenerates them after every merge.
 
 ## Code Formatting
 

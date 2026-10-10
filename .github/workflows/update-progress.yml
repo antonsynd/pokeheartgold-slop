@@ -40,9 +40,12 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      # mainline is protected (PRs only). Its ruleset exempts deploy keys, so
+      # checking out with this one lets the bot commit below push directly.
       - uses: actions/checkout@v4
         with:
           ref: mainline
+          ssh-key: ${{ secrets.PROGRESS_DEPLOY_KEY }}
 
       - uses: actions/setup-python@v5
         with:
@@ -80,7 +83,9 @@ jobs:
               echo "Progress views already up to date"
               exit 0
             fi
-            git commit -m "docs: auto-update progress bars"
+            # Deploy-key pushes, unlike GITHUB_TOKEN ones, trigger workflows;
+            # [skip ci] keeps this commit from re-running this job and build.
+            git commit -m "docs: auto-update progress bars [skip ci]"
             if git push origin HEAD:mainline; then
               exit 0
             fi
