@@ -15,6 +15,11 @@ integrates it, and owns the full build-compare judgment loop.
 2. Determine target:
    - If the user specified a file (e.g., `/decomp-delegate asm/unk_02004A44.s`), use that
    - Otherwise run `./tools/decomp_harness/next_target.sh --info`
+   - **Claim it:** `python3 tools/decomp_harness/claim.py open asm/<basename>.s` opens a
+     `Claim asm/<basename>.s` issue (or reuses your own) and prints its number; the commit
+     that lands the file says `Closes #<N>`. If it warns that someone else claimed the file
+     or has a PR touching it, say so in your report and carry on: claims are advisory and
+     can go stale.
 3. Check prior knowledge:
    - `python3 tools/decomp_harness/attempts_log.py query --file asm/<basename>.s` — dead ends to avoid
    - `knowledge.json` entry for this file (sweep hypotheses, risks)
@@ -138,12 +143,14 @@ Same as `/decomp`:
    `python3 tools/decomp_harness/twins.py prune asm/<basename>.s && python3 tools/decomp_harness/triage.py --rebuild --top 5`
 5. Sweep top-up: `python3 tools/decomp_harness/sweep_gap.py --check` — on a gap,
    run the /decomp-sweep workflow for the printed files (read-only)
-6. Report: file name, match result, attempts, whether the Qwen draft needed major surgery
+6. Report: file name, match result, attempts, whether the Qwen draft needed major surgery.
+   Whoever commits the file puts `Closes #<N>` (the claim) in the message
 
 ### Phase 7 — On Failure (after max retries)
 
 Same as `/decomp`: NONMATCHING fallback, revert if that fails, mark in `progress.json`
-with `reason` and `blocker_id`, ensure all dead ends are logged.
+with `reason` and `blocker_id`, ensure all dead ends are logged. If nothing lands (reverted), release the claim:
+`python3 tools/decomp_harness/claim.py close asm/<basename>.s --note "<why>"`.
 
 ### Delegation Notes
 

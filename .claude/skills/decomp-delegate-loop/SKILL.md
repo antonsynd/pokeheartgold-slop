@@ -11,10 +11,13 @@ completely using the `/decomp-delegate` workflow — Qwen drafts, Claude judges.
 ### Each Iteration
 
 1. Run `./tools/decomp_harness/next_target.sh --info` to find the next file
+   If it prints a claim WARNING (someone else claimed the file or has a PR touching it),
+   carry on anyway (claims can go stale) and mention it in this iteration's report.
 2. If output is `ALL_DONE` — report completion and **stop the loop** (do not schedule another wakeup)
 3. Otherwise execute the full `/decomp-delegate` workflow for that file:
 
    **Phase 1 — Setup**
+   - Claim it: `python3 tools/decomp_harness/claim.py open <target>` prints the claim issue number `<N>`
    - Read `tools/decomp_harness/DECOMP_AGENT.md` and `tools/decomp_harness/insights.md`
    - Check `attempts_log.py query --file <target>` (dead ends), `knowledge.json` entry, `blockers.json` if gated, `twins.py file <target>` (Platinum twins + `nonmatching/` drafts)
 
@@ -44,7 +47,7 @@ completely using the `/decomp-delegate` workflow — Qwen drafts, Claude judges.
    - `python3 tools/decomp_harness/sweep_gap.py --check` — if it reports
      un-swept upcoming targets, run the /decomp-sweep workflow for the printed
      files (read-only; safe during the compare build)
-   - **Commit this file's work incrementally** — one commit per matched file (the
+   - **Commit this file's work incrementally** (message ends with `Closes #<N>`) — one commit per matched file (the
      new C/H, the `main.lsf` flip, and the refreshed harness state together),
      only after `chiri pkg -- compare` confirmed the match, before moving to the
      next target. Commit as you go; only bundle multiple files into one commit
@@ -53,7 +56,8 @@ completely using the `/decomp-delegate` workflow — Qwen drafts, Claude judges.
      unverified or in-progress work.
 
    **Phase 6 — On failure (after max retries)**
-   - NONMATCHING fallback; revert if that also fails
+   - NONMATCHING fallback; revert if that also fails. If reverted, release the claim:
+     `claim.py close <target> --note "<why>"` (a NONMATCHING commit still says `Closes #<N>`)
    - Record in `progress.json` with `reason` + `blocker_id`; ensure all dead ends are logged
    - **Continue the loop** to the next file (a single failure is not a stop condition)
 

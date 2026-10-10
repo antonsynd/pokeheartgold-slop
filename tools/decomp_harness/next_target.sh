@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 #
 # Prints the next asm file to decompile (skipping completed/failed).
+# Warns on stderr if someone else has claimed it (claim.py check).
 # Order: triage_report.json queue (easiest first) when present;
 # falls back to main.lsf order. Regenerate the queue with:
 #   python3 tools/decomp_harness/triage.py --rebuild
@@ -68,6 +69,8 @@ for asmfile in $targets; do
     else
         echo "$asmfile"
     fi
+    # Claims are advisory (they go stale): warn on stderr, never skip.
+    python3 "$SCRIPT_DIR/claim.py" check "$asmfile" || true
     exit 0
 done
 

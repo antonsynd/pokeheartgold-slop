@@ -17,6 +17,11 @@ Decompile one assembly file from `asm/` into byte-matching C code.
    - If the user specified a file (e.g., `/decomp asm/unk_02004A44.s`), use that
    - Otherwise, run `./tools/decomp_harness/next_target.sh --info` — it serves the
      triage queue easiest-first (refresh with `python3 tools/decomp_harness/triage.py --rebuild`)
+   - **Claim it:** `python3 tools/decomp_harness/claim.py open asm/<basename>.s` opens a
+     `Claim asm/<basename>.s` issue (or reuses your own) and prints its number; the commit
+     that lands the file says `Closes #<N>`. If it warns that someone else claimed the file
+     or has a PR touching it, say so in your report and carry on: claims are advisory and
+     can go stale.
 4. Check prior knowledge for this file:
    - `python3 tools/decomp_harness/attempts_log.py query --file asm/<basename>.s`
      — past approaches and dead ends; never re-try a logged dead end
@@ -131,7 +136,7 @@ Iterate on step 5 until objdiff is green, then:
    python3 tools/decomp_harness/sweep_gap.py --check   # exit 1 = gap
    ```
    If it reports a gap, invoke `/decomp-sweep` with the printed file list.
-6. Report the result
+6. Report the result. Whoever commits the file puts `Closes #<N>` (the claim) in the message
 
 ### On Failure (after max retries)
 
@@ -157,7 +162,9 @@ Iterate on step 5 until objdiff is green, then:
    to `tools/decomp_harness/blockers.json` with `files_blocked` and a `fix_plan`.
 4. Make sure every dead end is in the attempts log — that's what stops the next
    session from repeating this failure
-5. Regenerate ledger + triage (step 4 above), then report what went wrong
+5. Regenerate ledger + triage (step 4 above), then report what went wrong. If nothing lands
+   (reverted), release the claim:
+   `python3 tools/decomp_harness/claim.py close asm/<basename>.s --note "<why>"`.
 
 ### Important Rules
 

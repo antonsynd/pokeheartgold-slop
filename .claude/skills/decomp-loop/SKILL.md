@@ -12,9 +12,13 @@ This skill is designed to be used with `/loop /decomp-loop` for continuous auton
 1. Run `./tools/decomp_harness/next_target.sh --info` to find the next file
    (triage-queue order, easiest first; the `--info` output includes the triage
    detail — unknown callees, risks, `gated_by`)
+   If it prints a claim WARNING (someone else claimed the file or has a PR touching it),
+   carry on anyway (claims can go stale) and mention it in this iteration's report.
 2. If output is `ALL_DONE`, report completion and stop the loop
 3. Otherwise, invoke the decomp skill workflow for that file:
 
+   a0. Claim it: `python3 tools/decomp_harness/claim.py open <target>` prints the claim
+      issue number `<N>`
    a. Read `tools/decomp_harness/DECOMP_AGENT.md` and `tools/decomp_harness/insights.md`
    b. Check prior knowledge: `attempts_log.py query --file <target>` (dead ends),
       `knowledge.json` (sweep pre-analysis hypotheses), `blockers.json` if gated,
@@ -34,7 +38,7 @@ This skill is designed to be used with `/loop /decomp-loop` for continuous auton
       `python3 tools/decomp_harness/sweep_gap.py --check` and, if it reports
       un-swept upcoming targets, run the /decomp-sweep workflow for the printed
       files (read-only — safe to overlap with the compare build); then **commit
-      this file's work incrementally** — one commit per matched file (the new
+      this file's work incrementally** (message ends with `Closes #<N>`) — one commit per matched file (the new
       C/H, the `main.lsf` flip, and the refreshed harness state together) once
       `chiri pkg -- compare` confirms the match, before moving to the next
       target. Commit as you go; only bundle multiple files into one commit when
@@ -43,7 +47,8 @@ This skill is designed to be used with `/loop /decomp-loop` for continuous auton
       or in-progress work — wait for the SHA1 match first.
    j. On failure after 50 attempts: use NONMATCHING fallback, then revert if that
       also fails; record the reason (and blocker_id) in progress.json and make
-      sure the dead ends are in the attempts log
+      sure the dead ends are in the attempts log. If reverted, release the claim:
+      `claim.py close <target> --note "<why>"`
 
 4. After completing (or failing) one file, report status:
    - File name, result (matched/NONMATCHING/failed), attempts taken
