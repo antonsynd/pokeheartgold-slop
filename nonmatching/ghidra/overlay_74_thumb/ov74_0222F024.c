@@ -74,7 +74,7 @@ void ov74_0222F024(undefined4 *param_1,undefined4 param_2,int param_3)
   undefined4 *puStack_28;
   undefined4 *puStack_24;
   uint uStack_1c;
-  
+
   piVar4 = (int *)&ov74_0223C700;
   uVar1 = NewMsgDataFromNarc(1,0x1b,0xf7,*param_1);
   param_1[0xa81] = uVar1;

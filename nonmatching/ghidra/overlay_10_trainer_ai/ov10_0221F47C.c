@@ -54,7 +54,7 @@ int ov10_0221F47C(undefined4 param_1,int param_2,int param_3,int param_4)
   int iVar2;
   uint uVar3;
   int unaff_r5;
-  
+
   if (param_4 < 0x138) {
     if (0x136 < param_4) {
       iVar2 = func_0x02252324(param_1,param_2,8,0,0xd);

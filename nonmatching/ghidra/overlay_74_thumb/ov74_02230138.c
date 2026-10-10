@@ -68,7 +68,7 @@ void ov74_02230138(int param_1)
   uint uVar5;
   int *piVar6;
   int *piVar7;
-  
+
   ov74_0223144C(*(undefined2 *)(param_1 + 8));
   if (*(short *)(param_1 + 2) == 0) {
     iVar3 = ov74_0223115C();

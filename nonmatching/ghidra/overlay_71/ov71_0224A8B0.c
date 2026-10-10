@@ -55,7 +55,7 @@ void ov71_0224A8B0(int param_1)
   undefined2 uStack_10;
   undefined2 uStack_e;
   undefined2 uStack_c;
-  
+
   if (*(int *)(param_1 + 0x28) != 0) {
     func_0x020cf670();
     ov71_022474CC(*(undefined4 *)(param_1 + 0x28));

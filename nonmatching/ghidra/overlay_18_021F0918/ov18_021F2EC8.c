@@ -48,7 +48,7 @@ void ov18_021F2EC8(int param_1,int param_2,int param_3,undefined4 param_4)
 
 {
   int iVar1;
-  
+
   iVar1 = param_1 + param_2 * 4;
   if (*(short *)(iVar1 + 0x1032) == 2) {
     ManagedSprite_SetDrawFlag

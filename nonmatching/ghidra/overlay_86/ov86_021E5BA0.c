@@ -59,7 +59,7 @@ undefined4 ov86_021E5BA0(int param_1)
 {
   undefined1 uVar1;
   int iVar2;
-  
+
   switch(*(undefined1 *)(param_1 + 4)) {
   case 0:
     iVar2 = ov86_021E71FC();

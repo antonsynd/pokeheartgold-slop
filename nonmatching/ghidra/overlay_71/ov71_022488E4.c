@@ -66,7 +66,7 @@ void ov71_022488E4(int param_1)
 
 {
   undefined4 uVar1;
-  
+
   func_0x020c2698();
   func_0x020cf704();
   uRam04000060 = uRam04000060 & 0xcff9 | 0x38;

@@ -67,7 +67,7 @@ void ov48_02258A80(int *param_1,undefined4 param_2,undefined4 param_3,undefined4
   uint uStack_20;
   undefined4 uStack_1c;
   undefined4 uStack_18;
-  
+
   uStack_18 = param_4;
   uVar3 = NARC_New(0x62,param_3);
   *param_1 = 0;

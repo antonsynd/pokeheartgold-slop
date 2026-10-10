@@ -51,7 +51,7 @@ void BattleController_EmitPlayMoveSE
   undefined1 uStack_14;
   undefined1 uStack_13;
   undefined4 uStack_10;
-  
+
   uStack_14 = 0x3f;
   if ((*(uint *)(param_2 + 0x216c) & 2) == 0) {
     if ((*(uint *)(param_2 + 0x216c) & 4) == 0) {

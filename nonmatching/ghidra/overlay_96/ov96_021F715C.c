@@ -50,7 +50,7 @@ void ov96_021F715C(undefined4 param_1,int param_2,undefined4 param_3,int param_4
 {
   undefined1 uVar1;
   int iVar2;
-  
+
   uVar1 = ov96_021E5F24();
   iVar2 = ov96_021E60D8(param_1,uVar1,param_3);
   *(undefined4 *)(param_4 + 0x2c) = *(undefined4 *)(param_2 + (uint)*(byte *)(iVar2 + 2) * 4);

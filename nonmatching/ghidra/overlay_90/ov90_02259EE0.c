@@ -53,7 +53,7 @@ void ov90_02259EE0(int param_1,int param_2,undefined2 param_3)
 
 {
   undefined4 uVar1;
-  
+
   if (param_2 < 1) {
     uVar1 = func_0x020f2178(param_2 << 0xc);
     func_0x020f24c8(uVar1,0x3f000000);

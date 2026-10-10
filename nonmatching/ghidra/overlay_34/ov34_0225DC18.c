@@ -53,7 +53,7 @@ void ov34_0225DC18(int param_1,int param_2,undefined4 *param_3)
   int iVar1;
   int iVar2;
   int iVar3;
-  
+
   iVar2 = param_2 * 0x38;
   *(undefined4 *)(param_1 + 0x1f8 + iVar2) = param_3[4];
   CopyToBgTilemapRect(*(undefined **)(param_1 + 0x14),7,0,(char)param_2 * '\a' + 2,0x20,7,

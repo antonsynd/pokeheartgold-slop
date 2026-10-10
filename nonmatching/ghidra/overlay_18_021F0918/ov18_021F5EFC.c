@@ -57,7 +57,7 @@ void ov18_021F5EFC(int param_1,undefined4 param_2,undefined4 param_3,undefined4 
   undefined1 uStack_1c;
   undefined1 auStack_1b [3];
   undefined4 uStack_18;
-  
+
   uStack_18 = param_4;
   ov18_021F3CA8(param_1,param_2,&uStack_1c,auStack_1b);
   if ((int)((uint)*(byte *)(param_1 + 0x18c7) << 0x1a) < 0) {

@@ -49,7 +49,7 @@ void ov07_0221C72C(int param_1)
   int iVar1;
   undefined4 uVar2;
   uint uVar3;
-  
+
   iVar1 = *(int *)(param_1 + 0x18);
   *(uint **)(param_1 + 0x18) = (uint *)(iVar1 + 4);
   uVar3 = *(uint *)(iVar1 + 4);

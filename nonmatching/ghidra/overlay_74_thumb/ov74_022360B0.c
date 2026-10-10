@@ -53,7 +53,7 @@ int ov74_022360B0(void)
 
 {
   int iVar1;
-  
+
   switch(iRam0223d468) {
   case 0:
     func_0x0201a728(4);

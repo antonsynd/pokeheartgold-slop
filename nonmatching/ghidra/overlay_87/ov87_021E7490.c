@@ -48,7 +48,7 @@ char ov87_021E7490(int param_1)
 {
   char cVar1;
   uint uVar2;
-  
+
   cVar1 = '\0';
   uVar2 = 0;
   do {

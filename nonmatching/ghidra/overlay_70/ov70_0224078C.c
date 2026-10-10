@@ -48,7 +48,7 @@ void ov70_0224078C(int param_1)
 
 {
   undefined4 uVar1;
-  
+
   uVar1 = 0x9a;
   switch(*(undefined4 *)(param_1 + 0x3c)) {
   case 0xfffffff2:

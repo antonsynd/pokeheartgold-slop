@@ -60,7 +60,7 @@ void ov73_021E7AC0(undefined4 param_1,undefined4 *param_2,undefined4 *param_3,in
   undefined4 *puVar6;
   undefined4 *puVar7;
   int iStack_1c;
-  
+
   uVar2 = Save_PlayerData_GetProfile();
   iStack_1c = 0;
   if (0 < param_4) {

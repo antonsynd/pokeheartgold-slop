@@ -55,7 +55,7 @@ void ov74_02229190(void)
 {
   int iVar1;
   int iVar2;
-  
+
   iVar1 = OverlayManager_GetData();
   ov74_022359BC();
   iVar2 = WindowIsInUse(iVar1 + 0x18);

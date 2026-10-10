@@ -64,7 +64,7 @@ void ov85_021EA1AC(int param_1)
   int iVar8;
   int iVar9;
   int iStack_2c;
-  
+
   iStack_2c = 0x1b;
   iVar2 = param_1 + 0x33c;
   iVar7 = 0;

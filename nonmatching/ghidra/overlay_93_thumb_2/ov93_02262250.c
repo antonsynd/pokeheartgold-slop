@@ -62,7 +62,7 @@ void ov93_02262250(int param_1,undefined4 param_2,undefined4 param_3,undefined4 
   undefined auStack_20 [4];
   undefined4 uStack_1c;
   undefined4 uStack_18;
-  
+
   uStack_2c = *(uint *)(param_1 + 0x3848);
   iStack_28 = 5;
   iVar4 = param_1 + 100;

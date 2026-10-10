@@ -51,7 +51,7 @@ void ov49_02262BF8(int param_1,undefined4 param_2,undefined4 param_3,undefined4 
 
 {
   undefined4 uVar1;
-  
+
   uVar1 = ov49_0225A30C(param_3,0,param_4);
   ov49_0225A08C(param_3,uVar1);
   *(undefined1 *)(param_1 + 4) = param_5;

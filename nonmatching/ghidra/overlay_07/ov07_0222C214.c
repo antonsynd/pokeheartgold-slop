@@ -52,7 +52,7 @@ undefined4 ov07_0222C214(undefined4 *param_1)
 
 {
   int iVar1;
-  
+
   if (param_1[0x12] == 0) {
     return 1;
   }

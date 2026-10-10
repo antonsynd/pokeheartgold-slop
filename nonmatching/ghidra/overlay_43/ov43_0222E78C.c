@@ -60,7 +60,7 @@ void ov43_0222E78C(int param_1,int param_2,undefined4 param_3,undefined4 param_4
   undefined4 uVar3;
   undefined4 uVar4;
   int iVar5;
-  
+
   uVar1 = Save_Frontier_GetStatic(*(undefined4 *)(param_2 + 4));
   uVar2 = String_New(0x80,param_4);
   uVar3 = String_New(0x80,param_4);

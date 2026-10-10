@@ -48,7 +48,7 @@ undefined4 ov96_0220D694(int param_1)
 
 {
   undefined4 uVar1;
-  
+
   if (param_1 == 0) {
     GF_AssertFail();
   }

@@ -56,7 +56,7 @@ void ov82_0223F1AC(undefined4 param_1,undefined4 param_2,undefined4 param_3,unde
 {
   undefined4 uVar1;
   undefined4 uVar2;
-  
+
   FillWindowPixelBuffer(param_2,param_7);
   uVar1 = NewMsgDataFromNarc(1,0x1b,0x1b9,0x69);
   uVar2 = NewString_ReadMsgData(uVar1,0x25);

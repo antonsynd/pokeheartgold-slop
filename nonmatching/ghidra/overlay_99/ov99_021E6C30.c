@@ -76,7 +76,7 @@ void ov99_021E6C30(int param_1,undefined4 param_2,int param_3,uint param_4,short
   undefined4 uStack_20;
   undefined4 uStack_1c;
   uint uStack_18;
-  
+
   uStack_4c = 0;
   uStack_48 = 0;
   uStack_44 = 0;

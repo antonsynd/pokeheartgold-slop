@@ -55,7 +55,7 @@ undefined4 ov51_021E6AAC(int param_1,undefined4 *param_2)
 
 {
   int iVar1;
-  
+
   iVar1 = System_GetTouchNew();
   if (iVar1 == 0) {
     return 0;

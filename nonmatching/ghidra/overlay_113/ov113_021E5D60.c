@@ -50,7 +50,7 @@ void ov113_021E5D60(undefined4 param_1,undefined4 param_2,undefined4 param_3,und
 {
   int iStack_10;
   undefined4 uStack_c;
-  
+
   iStack_10 = 0;
   uStack_c = param_4;
   ov113_021E5F94(param_1,&iStack_10);

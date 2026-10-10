@@ -55,7 +55,7 @@ void ov102_021EB46C(int param_1,undefined4 param_2)
   int iVar3;
   int iVar4;
   uint uVar5;
-  
+
   iVar4 = 0x21ec808;
   uVar5 = 0;
   iVar2 = param_1 + 0x24;

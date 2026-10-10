@@ -50,7 +50,7 @@ void ov18_021F4FC8(undefined4 param_1,undefined4 param_2,undefined4 param_3)
 {
   short sStack_14;
   short sStack_12;
-  
+
   ov18_021F12C8(param_1,param_3,&sStack_12,&sStack_14,1);
   sStack_14 = sStack_14 + -0x10;
   ov18_021F1294(param_1,param_2,(int)sStack_12,(int)sStack_14,1);

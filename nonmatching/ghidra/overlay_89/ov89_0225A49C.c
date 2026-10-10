@@ -50,7 +50,7 @@ undefined4 ov89_0225A49C(undefined4 param_1,int param_2)
   undefined4 uVar1;
   int iVar2;
   int iVar3;
-  
+
   if (*(char *)(param_2 + 0x73c) != '\0') {
     return 0;
   }

@@ -53,7 +53,7 @@ void ov97_0221EBD8(undefined4 param_1,undefined1 *param_2,undefined4 param_3,und
   ushort uStack_14;
   ushort uStack_10;
   undefined4 uStack_c;
-  
+
   uStack_c = param_4;
   CalcBoxMonPokeathlonPerformance(param_1,auStack_20);
   *param_2 = (char)((auStack_20[0] & 0x3f) >> 3);

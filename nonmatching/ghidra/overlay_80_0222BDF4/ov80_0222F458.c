@@ -58,7 +58,7 @@ void ov80_0222F458(undefined *param_1,undefined *param_2,uint param_3)
 {
   byte bVar1;
   undefined *puVar2;
-  
+
   puVar2 = Frontier_GetLaunchArgs((undefined *)**(undefined4 **)param_1);
   if (*(short *)param_2 == -1) {
     puVar2 = NewMsgDataFromNarc(1,0x1b,param_3,0x20);

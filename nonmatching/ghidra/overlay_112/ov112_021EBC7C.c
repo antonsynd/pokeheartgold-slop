@@ -52,7 +52,7 @@ undefined4 ov112_021EBC7C(int param_1,undefined4 param_2,undefined4 param_3,unde
 
 {
   int iVar1;
-  
+
   iVar1 = TextPrinterCheckActive(*(uint *)(param_1 + 0x1e524) & 0xff);
   if (iVar1 == 0) {
     ov112_021E9FA4(param_1,5,*(undefined4 *)(param_1 + 0x1e458),4,0xf0100,param_4);

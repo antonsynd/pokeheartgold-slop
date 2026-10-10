@@ -60,7 +60,7 @@ void ov80_0222EEC8(undefined4 param_1,char *param_2,undefined4 param_3,undefined
   uint uVar4;
   undefined1 auStack_20 [8];
   undefined4 uStack_18;
-  
+
   uVar4 = (uint)**(ushort **)(param_2 + 0xc);
   uVar2 = (*(ushort **)(param_2 + 0xc))[1];
   cVar1 = *param_2;

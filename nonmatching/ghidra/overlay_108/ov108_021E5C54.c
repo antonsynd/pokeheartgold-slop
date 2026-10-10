@@ -65,7 +65,7 @@ undefined4 ov108_021E5C54(int param_1)
 
 {
   int iVar1;
-  
+
   iVar1 = *(int *)(param_1 + 8);
   if (iVar1 == 0) {
     Main_SetVBlankIntrCB(0,0);

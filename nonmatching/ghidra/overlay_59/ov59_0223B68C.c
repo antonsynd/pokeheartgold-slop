@@ -56,7 +56,7 @@ void ov59_0223B68C(undefined4 *param_1)
   undefined4 uVar1;
   int iVar2;
   undefined4 *puVar3;
-  
+
   FontID_Alloc(4,*param_1);
   TextFlags_SetCanABSpeedUpPrint(1);
   TextFlags_SetCanTouchSpeedUpPrint(1);

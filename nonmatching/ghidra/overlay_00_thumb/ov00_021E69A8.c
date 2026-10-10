@@ -55,7 +55,7 @@ void ov00_021E69A8(undefined4 param_1)
   int iVar1;
   undefined4 uVar2;
   int iVar3;
-  
+
   iVar3 = 1;
   sub_0203993C();
   iVar1 = sub_02034084();

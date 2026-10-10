@@ -50,7 +50,7 @@ void LoadUserFrameGfx1(undefined4 param_1,uint param_2,undefined4 param_3,int pa
 
 {
   undefined4 uVar1;
-  
+
   GfGfxLoader_LoadCharData(0x26,param_5 != '\0',param_1,param_2,param_3,0,0,param_6);
   if (param_5 == '\x02') {
     uVar1 = 0x2e;

@@ -54,7 +54,7 @@ void ov102_021EA00C(undefined4 param_1,int *param_2)
   undefined4 uVar1;
   int iVar2;
   int iVar3;
-  
+
   iVar3 = *param_2;
   if (param_2[5] == 0) {
     uVar1 = ov102_021E9044(*(undefined4 *)(iVar3 + 0x18));

@@ -50,7 +50,7 @@ void ov74_02229F04(void)
 
 {
   undefined4 in_r3;
-  
+
   ov74_0223563C();
   ov74_02235690();
   ov74_02235728(0x71,0xe,0xb,0xd,0xc,0,in_r3);

@@ -62,7 +62,7 @@ void ov40_0223A510(int param_1,int param_2,int param_3)
   undefined4 uVar2;
   undefined4 uVar3;
   undefined4 uVar4;
-  
+
   if (param_2 == 100) {
     uVar1 = *(undefined4 *)(*(int *)(param_1 + 0x860) + 0x194);
     uVar2 = ov40_0222DAB0(0x6d);

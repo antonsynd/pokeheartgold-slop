@@ -48,7 +48,7 @@ undefined4 ov93_0225E0F4(int param_1)
 
 {
   int iVar1;
-  
+
   iVar1 = sub_0203769C();
   if (*(int *)(param_1 + 4) == iVar1) {
     return 1;

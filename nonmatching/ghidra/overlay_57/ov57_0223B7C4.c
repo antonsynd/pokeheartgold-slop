@@ -53,7 +53,7 @@ void ov57_0223B7C4(int *param_1,undefined4 param_2,undefined4 param_3,undefined4
   int iVar3;
   int iVar4;
   undefined4 uVar5;
-  
+
   if (param_1[param_1[0xfb] * 2 + 1] != 0xff) {
     CopyPokemonToPokemon
               (*(undefined4 *)(*param_1 + param_1[param_1[0xfb] * 2 + 1] * 4 + 4),param_1[0x116],

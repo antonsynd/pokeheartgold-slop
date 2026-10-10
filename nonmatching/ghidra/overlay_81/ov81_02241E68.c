@@ -51,7 +51,7 @@ void ov81_02241E68(int param_1,uint param_2,undefined4 param_3,undefined4 param_
 {
   undefined4 uVar1;
   undefined4 uVar2;
-  
+
   uVar2 = param_4;
   func_0x02008780(*(undefined4 *)(param_1 + param_2 * 4 + 0x1ac));
   if (*(int *)(param_1 + 0x47c) == 3) {

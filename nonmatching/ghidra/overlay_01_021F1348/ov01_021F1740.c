@@ -49,7 +49,7 @@ void ov01_021F1740(int param_1,undefined4 param_2,undefined4 param_3)
 
 {
   undefined4 uVar1;
-  
+
   uVar1 = ov01_021F18A8(*(undefined4 *)(param_1 + 0x20));
   ov01_021F16EC(param_1,uVar1,param_3);
   return;

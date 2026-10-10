@@ -60,7 +60,7 @@ void ov89_02259264(int *param_1,undefined4 param_2,undefined4 param_3,undefined4
 {
   undefined1 uVar1;
   undefined4 uVar2;
-  
+
   PaletteData_LoadNarc(param_1[3],0xd2,0x13,0x7d,0,0x1c0,0);
   GfGfxLoader_LoadCharDataFromOpenNarc(param_2,0x12,param_1[2],2,0,0,0,0x7d,param_4);
   GfGfxLoader_LoadScrnDataFromOpenNarc(param_2,0x11,param_1[2],2,0,0,0,0x7d);

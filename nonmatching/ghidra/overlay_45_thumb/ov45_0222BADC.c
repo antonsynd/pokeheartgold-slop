@@ -49,7 +49,7 @@ undefined4 ov45_0222BADC(int param_1,undefined4 param_2)
 
 {
   int iVar1;
-  
+
   iVar1 = SaveArray_CalcCRC16(param_2,param_1 + 0x20,0x94);
   if (iVar1 != *(int *)(param_1 + 0xb4)) {
     GF_AssertFail();

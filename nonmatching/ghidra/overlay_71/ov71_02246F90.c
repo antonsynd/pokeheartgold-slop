@@ -50,7 +50,7 @@ void ov71_02246F90(undefined4 param_1,int *param_2)
 {
   int iVar1;
   int iVar2;
-  
+
   iVar1 = param_2[3];
   param_2[3] = iVar1 + 1;
   if (param_2[2] <= iVar1 + 1) {

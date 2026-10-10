@@ -48,7 +48,7 @@ void ov07_02222494(int param_1,int param_2,int param_3,undefined4 param_4,undefi
 
 {
   undefined4 uVar1;
-  
+
   *(undefined4 *)(param_1 + 4) = param_5;
   *(int *)(param_1 + 8) = param_2;
   *(undefined4 *)(param_1 + 0xc) = param_4;

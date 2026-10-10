@@ -49,7 +49,7 @@ void sub_02011D60(int param_1,undefined4 param_2,undefined4 param_3,undefined4 p
 
 {
   undefined4 uVar1;
-  
+
   uVar1 = Heap_Alloc(*(undefined4 *)(param_1 + 0x20),0x34);
   *(undefined4 *)(param_1 + 0x14) = uVar1;
   sub_02011DEC(*(undefined4 *)(param_1 + 0x14),param_2,*(undefined4 *)(param_1 + 4),

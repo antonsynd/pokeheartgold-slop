@@ -50,7 +50,7 @@ void ov90_0225BD84(int param_1,undefined4 param_2,undefined4 param_3,undefined4 
 {
   undefined4 uVar1;
   int iVar2;
-  
+
   func_0x020e5b44(param_1 + 0xcc,0,0xc0,param_4,param_4);
   iVar2 = 0;
   if (0 < 0x17 - *(short *)(param_1 + 10)) {

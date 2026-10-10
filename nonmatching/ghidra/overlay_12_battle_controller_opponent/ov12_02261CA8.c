@@ -55,7 +55,7 @@ void ov12_02261CA8(undefined4 param_1,int param_2,undefined4 *param_3,undefined4
   int iStack_24;
   undefined4 *puStack_20;
   int iStack_1c;
-  
+
   *param_3 = param_4;
   param_3[1] = param_4;
   iVar2 = 0;

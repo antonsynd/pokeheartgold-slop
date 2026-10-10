@@ -50,7 +50,7 @@ int ov45_0222ECB8(undefined4 *param_1)
 {
   undefined4 uVar1;
   int iVar2;
-  
+
   if (iRam022577c0 == 0) {
     GF_AssertFail();
   }

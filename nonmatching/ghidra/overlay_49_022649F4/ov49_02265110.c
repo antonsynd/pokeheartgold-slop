@@ -55,7 +55,7 @@ void ov49_02265110(undefined4 *param_1,undefined4 param_2,undefined4 param_3,und
   undefined4 uVar1;
   int iVar2;
   undefined *puVar3;
-  
+
   ov49_0225A10C(param_2,8,param_3,param_4,param_4);
   puVar3 = &ov49_02269E1C;
   param_1[8] = 8;

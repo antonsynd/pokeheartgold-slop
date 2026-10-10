@@ -66,7 +66,7 @@ void ov40_02240D50(int param_1,int param_2,int param_3,undefined4 param_4)
   undefined4 uVar4;
   undefined1 auStack_28 [16];
   undefined4 uStack_18;
-  
+
   uStack_18 = param_4;
   if (*(int *)(param_2 + 0x88c + param_3 * 4) == 0) {
     uVar1 = NewString_ReadMsgData(*(undefined4 *)(param_2 + 0x48),8);

@@ -60,7 +60,7 @@ void ov92_0225DE70(int param_1,undefined4 param_2,undefined4 param_3,undefined4 
   undefined4 uStack_44;
   undefined4 uStack_20;
   undefined4 uStack_18;
-  
+
   uStack_18 = param_4;
   psVar3 = asStack_54;
   uVar1 = *(undefined4 *)(*(int *)(param_1 + 0x14) + 8);

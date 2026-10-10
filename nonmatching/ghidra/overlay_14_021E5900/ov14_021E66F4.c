@@ -57,7 +57,7 @@ undefined4 ov14_021E66F4(int param_1,undefined4 param_2,undefined4 param_3,undef
   short sStack_1c;
   short sStack_1a;
   undefined4 uStack_18;
-  
+
   iVar3 = *(int *)(*(int *)(param_1 + 0x34) + 0xc);
   uStack_18 = param_4;
   if (*(int *)(iVar3 + 0xe0) == 8) {

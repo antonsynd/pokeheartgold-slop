@@ -52,7 +52,7 @@ void ov18_021EFC3C(int param_1,int param_2,undefined4 param_3,undefined4 param_4
   int iVar1;
   int iVar2;
   int iVar3;
-  
+
   param_2 = param_2 * 0x10;
   iVar3 = param_1 + 0xc;
   FillWindowPixelBuffer(iVar3 + param_2,0);

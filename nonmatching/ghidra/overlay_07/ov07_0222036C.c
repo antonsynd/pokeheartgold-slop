@@ -60,7 +60,7 @@ void ov07_0222036C(undefined4 param_1,undefined4 param_2,undefined4 param_3,unde
   int iStack_20;
   int iStack_1c;
   int iStack_18;
-  
+
   iStack_20 = 0;
   iStack_1c = 0;
   iStack_18 = 0;

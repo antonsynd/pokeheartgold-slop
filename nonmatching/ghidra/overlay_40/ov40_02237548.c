@@ -48,7 +48,7 @@ void ov40_02237548(int param_1,undefined4 param_2,undefined4 param_3,undefined4 
 
 {
   int iVar1;
-  
+
   iVar1 = *(int *)(*(int *)(param_1 + 0x860) + 0x32c);
   if (iVar1 != 0) {
     Pokepic_SetAttr(iVar1,6,param_2,param_4,param_4);

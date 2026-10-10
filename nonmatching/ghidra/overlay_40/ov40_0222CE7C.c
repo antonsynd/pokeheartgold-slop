@@ -53,7 +53,7 @@ void ov40_0222CE7C(int param_1)
   int iVar2;
   int iVar3;
   undefined4 uStack_18;
-  
+
   iVar1 = 0;
   uStack_18 = 0;
   iVar3 = param_1 + 0x5fc;

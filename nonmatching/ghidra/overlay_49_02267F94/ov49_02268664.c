@@ -53,7 +53,7 @@ void ov49_02268664(char *param_1,char *param_2,char *param_3,int param_4,undefin
   char cVar4;
   char cVar5;
   char cVar6;
-  
+
   cVar6 = param_2[1];
   cVar1 = param_1[1];
   cVar2 = param_2[2];

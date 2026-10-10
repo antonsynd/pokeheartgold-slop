@@ -49,7 +49,7 @@ int BN_ucmp(int *param_1,int *param_2)
   uint uVar1;
   uint uVar2;
   int iVar3;
-  
+
   iVar3 = param_1[1];
   if (iVar3 - param_2[1] != 0) {
     return iVar3 - param_2[1];

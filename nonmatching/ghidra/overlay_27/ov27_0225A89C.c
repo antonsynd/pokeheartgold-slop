@@ -52,7 +52,7 @@ undefined4 ov27_0225A89C(int param_1)
 
 {
   int iVar1;
-  
+
   iVar1 = IsPaletteFadeFinished();
   if ((((iVar1 != 0) && (*(int *)(param_1 + 0x6c) != 0)) &&
       ((*(byte *)(param_1 + 0xd2) & 0x3f) == 0)) &&

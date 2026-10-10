@@ -50,7 +50,7 @@ undefined4 ov74_0222A688(void)
 
 {
   int iVar1;
-  
+
   iVar1 = OverlayManager_GetData();
   if (*(int *)(iVar1 + 0x5c8) == 0x1e) {
     *(undefined4 *)(iVar1 + 0x5cc) = 1;

@@ -69,7 +69,7 @@ undefined4 ov83_02240FAC(int param_1,undefined4 param_2,undefined4 param_3)
   undefined4 uVar6;
   undefined4 uVar7;
   int iVar8;
-  
+
   uVar4 = ov83_02247768(*(undefined1 *)(param_1 + 0x14));
   uVar5 = Party_GetMonByIndex(*(undefined4 *)(param_1 + 0x7a4),uVar4);
   uVar2 = GetMonData(uVar5,0xa3,0);

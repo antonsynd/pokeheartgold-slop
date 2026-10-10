@@ -51,7 +51,7 @@ void ov112_021F0B28(undefined4 *param_1,undefined4 param_2,undefined4 param_3,un
 {
   undefined4 uVar1;
   uint uVar2;
-  
+
   uVar2 = 0;
   do {
     uVar1 = ov112_021F0B9C(param_1,1,1,0,uVar2 * 8 + 0x18,0x90,uVar2 << 1,0,param_4);

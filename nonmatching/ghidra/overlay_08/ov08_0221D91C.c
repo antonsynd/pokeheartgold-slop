@@ -63,7 +63,7 @@ undefined4 ov08_0221D91C(int *param_1)
   undefined4 uVar4;
   undefined4 uVar5;
   int *piVar6;
-  
+
   piVar6 = param_1 + (uint)*(byte *)(*param_1 + 0x11) * 0x14 + 1;
   iVar3 = ov08_0221DB24();
   if (iVar3 == 1) {

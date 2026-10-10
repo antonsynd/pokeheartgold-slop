@@ -57,7 +57,7 @@ ov65_0221FB90(undefined4 param_1,undefined4 param_2,int param_3,undefined4 param
 {
   undefined4 uVar1;
   undefined4 uVar2;
-  
+
   uVar1 = ReadMsgData_ExpandPlaceholders(param_5,param_4,param_2,0x1a);
   if (param_3 == 1) {
     DrawFrameAndWindow2(param_1,1,0x3d9,10);

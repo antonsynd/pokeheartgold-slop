@@ -51,7 +51,7 @@ void ov41_0224A1EC(int param_1,int param_2,int param_3)
 
 {
   int iVar1;
-  
+
   iVar1 = 2;
   param_1 = param_1 + 0x20;
   do {

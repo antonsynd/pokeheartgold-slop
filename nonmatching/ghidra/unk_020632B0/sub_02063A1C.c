@@ -49,7 +49,7 @@ undefined4 sub_02063A1C(undefined4 param_1)
 
 {
   int iVar1;
-  
+
   iVar1 = sub_02063A5C();
   if (iVar1 == 0) {
     return 0;

@@ -53,7 +53,7 @@ undefined4 ov87_021E78D8(int param_1,int param_2)
   char cVar1;
   int iVar2;
   int iVar3;
-  
+
   iVar2 = 0;
   do {
     if (*(char *)(param_1 + (uint)*(byte *)(param_1 + iVar2 + 0x3a2) + 0x360) == '\x04') break;

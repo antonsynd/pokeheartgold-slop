@@ -71,7 +71,7 @@ void ov07_0222CEC0(undefined4 param_1)
   int iVar5;
   int iVar6;
   uint uVar7;
-  
+
   uVar3 = ov07_0221BFD0();
   puVar4 = (undefined4 *)Heap_Alloc(uVar3,0x40);
   func_0x020e5b44(puVar4,0,0x40);

@@ -59,7 +59,7 @@ void BattleController_EmitForefitMessage(undefined *param_1)
   undefined1 auStack_2c [2];
   ushort uStack_2a;
   undefined auStack_28 [32];
-  
+
   uVar2 = BattleSystem_GetBattleType(param_1);
   auStack_2c[0] = 0x3d;
   uStack_2a = 0;

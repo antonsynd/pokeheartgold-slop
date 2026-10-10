@@ -56,7 +56,7 @@ undefined4 ov49_022669B0(undefined4 param_1,int param_2)
   int iVar5;
   int iVar6;
   undefined4 uStack_1c;
-  
+
   if ((int)*(char *)(param_2 + 0x955) < (int)(uint)*(byte *)(param_2 + 0x956)) {
     *(char *)(param_2 + 0x954) = *(char *)(param_2 + 0x954) + '\x01';
     if ('\a' < *(char *)(param_2 + 0x954)) {

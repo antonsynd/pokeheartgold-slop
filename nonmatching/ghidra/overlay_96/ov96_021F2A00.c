@@ -57,7 +57,7 @@ void ov96_021F2A00(int param_1,undefined4 param_2,undefined4 param_3,undefined4 
   int iStack_20;
   int iStack_1c;
   undefined4 uStack_18;
-  
+
   puStack_28 = (undefined4 *)(param_1 + 0x20);
   iStack_24 = 0;
   puStack_2c = (undefined2 *)&ov96_0221BDD4;

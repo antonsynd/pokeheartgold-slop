@@ -58,7 +58,7 @@ void ov74_02230714(int param_1)
   uint uVar2;
   int iVar3;
   uint *puVar4;
-  
+
   iVar1 = ov74_02231184();
   if (*(char *)(iVar1 + 0x19) == '\x01') {
     puVar4 = *(uint **)(iVar1 + 0xc);

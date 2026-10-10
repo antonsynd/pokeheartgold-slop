@@ -57,7 +57,7 @@ undefined4 ov69_021E6810(undefined4 *param_1,undefined4 param_2,int param_3)
   undefined4 uVar1;
   int iVar2;
   undefined4 uVar3;
-  
+
   iVar2 = param_1[0x301d];
   uVar3 = 0;
   if (iVar2 == 0) {

@@ -71,7 +71,7 @@ void sub_02063E70(undefined4 param_1)
   undefined4 uVar3;
   int iVar4;
   int iVar5;
-  
+
   iVar1 = sub_0205F394();
   piVar2 = (int *)sub_0205F40C(param_1);
   uVar3 = MapObject_GetFieldSystem(param_1);

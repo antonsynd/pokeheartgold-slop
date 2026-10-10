@@ -49,7 +49,7 @@ undefined4 ov80_0222DE00(undefined4 *param_1)
 
 {
   int iVar1;
-  
+
   iVar1 = sub_0209680C(*(undefined4 *)*param_1);
   iVar1 = ov80_02239A74(*(undefined4 *)(iVar1 + 0x10));
   if (iVar1 == 1) {

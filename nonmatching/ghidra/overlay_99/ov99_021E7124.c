@@ -51,7 +51,7 @@ char ov99_021E7124(undefined4 *param_1)
   char cVar1;
   char cVar2;
   uint uVar3;
-  
+
   cVar2 = '\0';
   uVar3 = 0;
   do {

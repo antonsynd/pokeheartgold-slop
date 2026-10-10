@@ -53,7 +53,7 @@ void ov90_0225B2A8(int param_1,undefined4 param_2,undefined4 param_3,undefined4 
   uint uVar2;
   byte *pbVar3;
   int iVar4;
-  
+
   if (*(short *)(param_1 + 0x65e) != 0) {
     if (((*(short *)(param_1 + 0x65c) == 0) || (*(short *)(param_1 + 0x65c) == 8)) &&
        (iVar4 = 0, *(char *)(param_1 + 0x14) != '\0')) {

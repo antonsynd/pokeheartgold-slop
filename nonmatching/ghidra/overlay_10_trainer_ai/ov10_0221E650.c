@@ -56,7 +56,7 @@ void ov10_0221E650(undefined4 param_1,undefined4 param_2)
   undefined4 uVar4;
   int iStack_1c;
   int iStack_18;
-  
+
   ov10_0221EF24(param_2,1);
   uVar1 = ov10_0221EEF0(param_2);
   uVar2 = ov10_0221EEF0(param_2);

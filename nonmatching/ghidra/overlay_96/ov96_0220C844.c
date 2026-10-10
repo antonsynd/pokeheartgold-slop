@@ -57,7 +57,7 @@ void ov96_0220C844(undefined4 param_1,int param_2)
   int iVar3;
   int iVar4;
   int iStack_18;
-  
+
   iVar2 = 0;
   iStack_18 = 0;
   iVar4 = 0x48;

@@ -50,7 +50,7 @@ void ov74_02236010(void)
 
 {
   int iVar1;
-  
+
   if (((int)(uRam027fffa8 & 0x8000) >> 0xf == 0) && (iVar1 = func_0x020e0ff0(), iVar1 == 0)) {
     func_0x020e1a14();
   }

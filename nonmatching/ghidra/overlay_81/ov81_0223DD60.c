@@ -68,7 +68,7 @@ undefined4 ov81_0223DD60(undefined4 param_1,undefined4 *param_2)
   undefined4 uVar2;
   undefined4 *puVar3;
   int iVar4;
-  
+
   func_0x02006ff8(0x50,2);
   ov81_02240D2C();
   Heap_Create(3,100,0x30000);

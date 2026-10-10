@@ -49,7 +49,7 @@ undefined4 sub_02054E00(uint param_1)
 {
   int iVar1;
   ushort *puVar2;
-  
+
   puVar2 = (ushort *)&UNK_020fc60c;
   iVar1 = 0;
   do {

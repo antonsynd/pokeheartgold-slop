@@ -54,7 +54,7 @@ void ov14_021E6F3C(int param_1,int param_2,uint param_3)
   uint uVar2;
   int iVar3;
   uint uVar4;
-  
+
   iVar1 = *(int *)(*(int *)(param_1 + 0x34) + 0xc);
   *(undefined4 *)(*(int *)(param_1 + 0x34) + 0x40c4) = 1;
   uVar2 = 0;

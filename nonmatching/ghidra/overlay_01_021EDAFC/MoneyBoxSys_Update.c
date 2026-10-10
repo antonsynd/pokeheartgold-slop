@@ -67,7 +67,7 @@ void MoneyBoxSys_Update(int param_1,undefined4 param_2)
   undefined4 uVar4;
   undefined4 uVar5;
   int iVar6;
-  
+
   FillWindowPixelRect(param_2,0xf,0,0x10,0x50,0x10);
   uVar1 = NewMsgDataFromNarc(0,0x1b,0x1b3,4);
   uVar2 = MessageFormat_New(4);

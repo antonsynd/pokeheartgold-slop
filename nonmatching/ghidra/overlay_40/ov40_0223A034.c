@@ -51,7 +51,7 @@ undefined4 ov40_0223A034(int param_1)
 
 {
   int iVar1;
-  
+
   iVar1 = *(int *)(param_1 + 0x860);
   ov40_0222FA88(param_1 + 0x47c);
   ov40_0222F6D0(param_1 + 0x49c,(int)*(short *)(param_1 + 0x48c));

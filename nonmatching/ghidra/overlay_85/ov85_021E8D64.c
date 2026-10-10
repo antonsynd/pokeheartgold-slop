@@ -55,7 +55,7 @@ void ov85_021E8D64(int param_1,undefined4 param_2)
   int iVar2;
   int iVar3;
   int iVar4;
-  
+
   iVar4 = 0;
   iVar2 = param_1;
   iVar3 = param_1;

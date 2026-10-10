@@ -49,7 +49,7 @@ int BN_num_bits(int *param_1)
 {
   int iVar1;
   int iVar2;
-  
+
   if (param_1[1] != 0) {
     iVar2 = param_1[1] + -1;
     iVar1 = BN_num_bits_word(*(undefined4 *)(*param_1 + iVar2 * 4));

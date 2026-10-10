@@ -50,7 +50,7 @@ void ov80_0222E8FC(int *param_1)
 {
   byte bVar1;
   uint uVar2;
-  
+
   bVar1 = Get2dMenuSelection((undefined *)param_1[0x2c]);
   uVar2 = (uint)*(ushort *)((int)param_1 + (uint)bVar1 * 2 + 0x29c);
   if (uVar2 != 0xff) {

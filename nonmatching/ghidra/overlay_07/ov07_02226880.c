@@ -66,7 +66,7 @@ void ov07_02226880(undefined4 param_1,char *param_2)
   int iVar2;
   undefined4 uVar3;
   int iVar4;
-  
+
   if (*param_2 == '\0') {
     iVar4 = (int)*(short *)(&ov07_02236670 + *(int *)(param_2 + 0x34) * 2);
     *(int *)(param_2 + 0x34) = *(int *)(param_2 + 0x34) + 1;

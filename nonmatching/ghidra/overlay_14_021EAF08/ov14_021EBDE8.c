@@ -52,7 +52,7 @@ void ov14_021EBDE8(int param_1)
 
 {
   undefined4 uVar1;
-  
+
   uVar1 = ov14_021E6070(param_1,*(undefined1 *)(param_1 + 0x21),0xb,0);
   *(undefined4 *)(*(int *)(param_1 + 0x34) + 0x40c0) = uVar1;
   ov14_021E7DF8(param_1);

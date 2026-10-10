@@ -51,7 +51,7 @@ void ov89_0225AC68(undefined4 param_1,int param_2,int param_3,int *param_4,int *
   int iVar1;
   uint uVar2;
   int iVar3;
-  
+
   uVar2 = (int)(param_2 + ((uint)(param_2 >> 3) >> 0x1c)) >> 4;
   if (0x10 < uVar2) {
     uVar2 = 0x10;

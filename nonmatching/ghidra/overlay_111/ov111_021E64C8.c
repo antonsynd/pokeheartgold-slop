@@ -63,7 +63,7 @@ void ov111_021E64C8(undefined4 *param_1,int param_2)
   int iVar5;
   undefined4 uVar6;
   undefined4 uStack_20;
-  
+
   uVar1 = ov111_021E6A2C(param_2);
   uVar6 = *param_1;
   if (param_1 == (undefined4 *)0x0) {

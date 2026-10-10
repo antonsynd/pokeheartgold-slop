@@ -67,7 +67,7 @@ void ov07_02225768(undefined4 param_1,undefined4 param_2,undefined4 param_3,unde
   undefined1 auStack_28 [8];
   undefined *puStack_20;
   undefined4 uStack_14;
-  
+
   uStack_14 = param_4;
   iVar2 = ov07_0221C4A8(param_1,0);
   if (iVar2 < 9) {

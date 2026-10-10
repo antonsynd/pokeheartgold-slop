@@ -49,7 +49,7 @@ ov93_02262724(undefined4 param_1,undefined4 param_2,undefined4 param_3,undefined
 
 {
   int iVar1;
-  
+
   iVar1 = sub_02037030(0x18,param_2,0x14,param_4,param_4);
   if (iVar1 == 1) {
     return 1;

@@ -50,7 +50,7 @@ void ov00_021E7234(int param_1)
 
 {
   int iVar1;
-  
+
   iVar1 = *(int *)(iRam0221a680 + param_1 * 4 + 0xf80);
   if (iVar1 != 0) {
     if (*(char *)(iRam0221a680 + param_1 + 0x10e1) == '\x01') {

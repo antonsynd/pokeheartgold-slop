@@ -50,7 +50,7 @@ void ov90_02259E38(undefined4 param_1,undefined4 param_2,undefined4 param_3,uint
 
 {
   uint uVar1;
-  
+
   uVar1 = param_4;
   ov90_02259234(param_2,param_3,param_6);
   if (param_6 == 5) {

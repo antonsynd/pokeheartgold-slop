@@ -53,7 +53,7 @@ void ov91_0225FDE0(undefined4 *param_1,undefined4 param_2,int param_3,undefined4
 
 {
   uint uVar1;
-  
+
   GfGfxLoader_LoadCharDataFromOpenNarc(param_2,0xc,*param_1,4,0,0,0,param_4,param_4);
   GfGfxLoader_LoadScrnDataFromOpenNarc(param_2,0xe,*param_1,7,0,0,0,param_4);
   GfGfxLoader_LoadScrnDataFromOpenNarc(param_2,0xf,*param_1,6,0,0,0,param_4);

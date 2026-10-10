@@ -56,7 +56,7 @@ int ov18_021F7B94(undefined4 *param_1,undefined4 *param_2)
   int iVar2;
   undefined1 auStack_18 [4];
   undefined1 auStack_14 [4];
-  
+
   iVar1 = System_GetTouchNew();
   if (iVar1 == 1) {
     iVar1 = TouchscreenHitbox_FindRectAtTouchNew(&ov18_021FB704);

@@ -56,7 +56,7 @@ void ov34_0225DA50(int param_1,undefined4 param_2,undefined4 param_3,undefined4 
   undefined4 uVar1;
   int iVar2;
   int iVar3;
-  
+
   uVar1 = G2dRenderer_Init(10,param_1 + 0x2c,4);
   *(undefined4 *)(param_1 + 0x28) = uVar1;
   iVar2 = 0;

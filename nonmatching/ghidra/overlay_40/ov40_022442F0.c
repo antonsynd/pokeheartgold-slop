@@ -62,7 +62,7 @@ void ov40_022442F0(int param_1,int param_2,int param_3)
   undefined *puVar2;
   undefined *puVar3;
   undefined *puVar4;
-  
+
   if (param_2 == 0x11a) {
     puVar4 = *(undefined **)(param_1 + param_3 * 4 + 0x88c);
     puVar1 = (undefined *)ov40_0222DAB0(0x6d);

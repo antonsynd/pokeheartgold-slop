@@ -60,7 +60,7 @@ void sub_0200EB80(undefined4 param_1,undefined4 param_2,undefined4 param_3,byte 
   uint uVar5;
   byte bVar6;
   int iStack_18;
-  
+
   uVar2 = sub_0200E63C(param_5);
   uVar2 = GfGfxLoader_GetCharData(0x26,uVar2,0,&iStack_18,param_6);
   iVar3 = Heap_Alloc(param_6,0x240);

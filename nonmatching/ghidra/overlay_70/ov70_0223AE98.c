@@ -53,7 +53,7 @@ void ov70_0223AE98(int param_1)
 {
   undefined *puVar1;
   int iVar2;
-  
+
   iVar2 = param_1 + 0x260 + *(int *)(param_1 + 300) * 0x124;
   puVar1 = String_New(0xb4,0x3d);
   *(undefined **)(param_1 + 0xbbc) = puVar1;

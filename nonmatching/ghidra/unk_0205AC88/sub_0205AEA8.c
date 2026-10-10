@@ -60,7 +60,7 @@ void sub_0205AEA8(int param_1,undefined4 param_2,undefined4 param_3,undefined4 p
   int iVar6;
   int *piVar7;
   int iStack_1c;
-  
+
   iVar5 = 0;
   iVar6 = param_1;
   do {

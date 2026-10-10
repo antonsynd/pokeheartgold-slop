@@ -66,7 +66,7 @@ undefined4 ov13_02222DB0(int *param_1)
   undefined4 uStack_48;
   undefined4 uStack_44;
   undefined1 auStack_40 [44];
-  
+
   uStack_48 = 0xffffffff;
   bVar2 = true;
   bVar1 = false;

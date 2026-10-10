@@ -53,7 +53,7 @@ void ov15_021FAFFC(int param_1)
   uint uVar1;
   uint uVar2;
   undefined4 *puVar3;
-  
+
   uVar2 = (uint)*(byte *)(*(int *)(param_1 + 0x234) + 100);
   puVar3 = (undefined4 *)(*(int *)(param_1 + 0x234) + 4 + uVar2 * 0xc);
   uVar1 = (int)*(short *)((int)puVar3 + 6) + *(int *)(param_1 + 0x66c) & 0xffff;

@@ -50,7 +50,7 @@ void ov95_021E5E40(undefined4 param_1)
 
 {
   undefined4 uVar1;
-  
+
   uVar1 = sub_020154D0();
   sub_02014EBC(param_1);
   Heap_Free(uVar1);

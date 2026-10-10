@@ -52,7 +52,7 @@ void ov83_02240080(int param_1,undefined4 param_2,undefined4 param_3,undefined4 
 {
   int iVar1;
   uint uVar2;
-  
+
   FillWindowPixelBuffer(param_2,0,param_3,param_4,param_4);
   iVar1 = func_0x02237b24(*(undefined1 *)(param_1 + 9),1);
   uVar2 = 0;

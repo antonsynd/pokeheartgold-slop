@@ -60,7 +60,7 @@ void ov67_021E65C0(int param_1)
   int iVar2;
   undefined1 uStack_18;
   undefined1 uStack_17;
-  
+
   uVar1 = 0;
   iVar2 = param_1 + 0x6c;
   do {

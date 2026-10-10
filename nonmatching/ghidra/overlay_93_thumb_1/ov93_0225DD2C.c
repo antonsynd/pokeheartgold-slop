@@ -70,7 +70,7 @@ void ov93_0225DD2C(int param_1,undefined4 param_2)
   int iStack_2c;
   int iStack_28;
   int iStack_24;
-  
+
   iStack_30 = param_1 + 0xd8;
   iVar5 = 0;
   uVar1 = sub_0203769C();

@@ -59,7 +59,7 @@ undefined4 ov49_02268334(short *param_1)
   undefined4 uStack_20;
   undefined4 uStack_1c;
   undefined4 uStack_18;
-  
+
   iVar3 = 0;
   if (param_1[2] != 0) {
     psVar2 = param_1 + 4;

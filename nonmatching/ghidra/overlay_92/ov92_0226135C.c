@@ -53,7 +53,7 @@ void ov92_0226135C(int *param_1)
   int iVar2;
   int iVar3;
   int iVar4;
-  
+
   if (param_1[1] != 0) {
     if (*param_1 == 0) {
       iVar4 = 0;

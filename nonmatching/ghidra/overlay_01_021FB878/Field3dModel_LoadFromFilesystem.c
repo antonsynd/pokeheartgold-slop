@@ -54,7 +54,7 @@ void Field3dModel_LoadFromFilesystem
   undefined4 uVar1;
   int iVar2;
   int *piVar3;
-  
+
   uVar1 = func_0x02007a44(param_2,param_3,0,param_4,0);
   *param_1 = uVar1;
   iVar2 = func_0x020c3b40();

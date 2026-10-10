@@ -50,7 +50,7 @@ void ov112_021E7C18(int param_1)
 
 {
   undefined4 uVar1;
-  
+
   uVar1 = NewMsgDataFromNarc(0,0x1b,0x112,0x9a);
   *(undefined4 *)(param_1 + 0x1e44c) = uVar1;
   uVar1 = NewMsgDataFromNarc(1,0x1b,0xde,0x9a);

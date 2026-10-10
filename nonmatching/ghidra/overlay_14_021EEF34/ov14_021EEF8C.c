@@ -55,7 +55,7 @@ undefined4 ov14_021EEF8C(int param_1)
 
 {
   ushort *puVar1;
-  
+
   puVar1 = *(ushort **)(*(int *)(param_1 + 0x34) + 0xc);
   if ((*puVar1 != (ushort)*(byte *)(param_1 + 0x21)) &&
      (*(short *)(*(int *)(param_1 + 0x34) + 0x88c8) != 0)) {

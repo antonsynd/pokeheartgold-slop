@@ -59,7 +59,7 @@ void ov96_0221A400(undefined4 *param_1,undefined4 param_2,undefined4 param_3,und
   int *piVar2;
   uint uVar3;
   undefined4 uStack_10;
-  
+
   uStack_10 = param_4;
   iVar1 = ov96_02215E94(*param_1,param_1[2] & 3);
   if (iVar1 == 0) {

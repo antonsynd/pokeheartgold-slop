@@ -57,7 +57,7 @@ undefined4 ov01_021F2830(short *param_1)
   undefined1 uVar1;
   int iVar2;
   undefined4 uVar3;
-  
+
   iVar2 = MapObject_IsMovementPaused(*(undefined4 *)(param_1 + 10));
   if (iVar2 == 0) {
     return 0;

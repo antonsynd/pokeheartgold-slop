@@ -51,7 +51,7 @@ undefined4 ov85_021E8834(int param_1)
 {
   int iVar1;
   int iVar2;
-  
+
   iVar1 = ov85_021E87F0(*(undefined4 *)(param_1 + 0x24));
   if (iVar1 == 1) {
     return 1;

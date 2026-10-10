@@ -63,7 +63,7 @@ void ov07_0221DAF4(int param_1)
   int iVar5;
   int iVar6;
   int iVar7;
-  
+
   iVar1 = *(int *)(param_1 + 0x18);
   *(undefined4 **)(param_1 + 0x18) = (undefined4 *)(iVar1 + 4);
   uVar2 = *(undefined4 *)(iVar1 + 4);

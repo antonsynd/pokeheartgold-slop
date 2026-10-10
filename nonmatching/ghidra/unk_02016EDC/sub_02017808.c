@@ -52,7 +52,7 @@ void sub_02017808(int param_1,undefined4 param_2,undefined4 param_3,undefined4 p
   int iStack_14;
   int iStack_10;
   undefined4 uStack_c;
-  
+
   uStack_c = param_4;
   sub_020173C8(param_1,abStack_18,&iStack_10,&iStack_14);
   *(int *)(param_1 + (uint)abStack_18[0] * 4 + 0x24) =

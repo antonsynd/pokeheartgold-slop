@@ -69,7 +69,7 @@ ov47_02258F48(int param_1,undefined4 param_2,undefined4 param_3,undefined4 param
 {
   int iVar1;
   undefined4 uVar2;
-  
+
   switch(*(undefined2 *)(param_1 + 0x28)) {
   case 0:
     uVar2 = ov47_02258CEC(param_2,0,0x5e);

@@ -51,7 +51,7 @@ undefined4 ov85_021E670C(undefined4 *param_1)
 {
   uint uVar1;
   uint uVar2;
-  
+
   BeginNormalPaletteFade(2,0,0,0,8,1,0x66);
   uVar2 = param_1[7];
   uVar1 = func_0x02004a90();

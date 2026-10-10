@@ -52,7 +52,7 @@ void ov96_021ECA18(int param_1)
   int iVar1;
   undefined4 uVar2;
   undefined4 uVar3;
-  
+
   uVar3 = *(undefined4 *)(param_1 + 0x18);
   uVar2 = *(undefined4 *)(param_1 + 0x1c);
   iVar1 = 0;

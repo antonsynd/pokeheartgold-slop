@@ -53,7 +53,7 @@ void BattleController_EmitPrintReturnMessage
   undefined1 uStack_13;
   undefined2 uStack_12;
   undefined4 uStack_10;
-  
+
   uStack_14 = 0x20;
   uStack_13 = (undefined1)param_4;
   uStack_10 = param_4;

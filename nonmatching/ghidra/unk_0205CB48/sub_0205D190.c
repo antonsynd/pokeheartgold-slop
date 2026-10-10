@@ -57,7 +57,7 @@ undefined4 sub_0205D190(undefined4 param_1)
   undefined4 uVar1;
   int iVar2;
   undefined4 uVar3;
-  
+
   uVar1 = PlayerAvatar_GetMapObject();
   iVar2 = sub_0205DA34(param_1,uVar1,1);
   if (iVar2 == 0) {

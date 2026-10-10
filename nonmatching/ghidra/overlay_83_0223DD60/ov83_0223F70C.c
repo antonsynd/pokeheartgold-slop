@@ -49,7 +49,7 @@ void ov83_0223F70C(int param_1)
 
 {
   undefined1 uVar1;
-  
+
   uVar1 = func_0x02237d8c(*(undefined1 *)(param_1 + 9));
   ov83_02246E08(param_1 + 0x518,*(undefined4 *)(param_1 + 0x7a4),uVar1);
   return;

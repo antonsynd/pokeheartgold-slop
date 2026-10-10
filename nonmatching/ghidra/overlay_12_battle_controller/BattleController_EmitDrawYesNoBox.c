@@ -55,7 +55,7 @@ void BattleController_EmitDrawYesNoBox
   undefined2 uStack_1a;
   undefined4 uStack_18;
   undefined4 uStack_14;
-  
+
   BattleBuffer_Clear(param_2,param_3);
   uStack_1c = 0x13;
   uStack_1b = param_5;

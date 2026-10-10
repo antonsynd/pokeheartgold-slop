@@ -49,7 +49,7 @@ void BattleController_SetMoveAnimation(undefined4 param_1,int param_2,undefined4
 
 {
   undefined1 auStack_68 [88];
-  
+
   ov12_022643C8(param_1,param_2,auStack_68,0,0,*(undefined4 *)(param_2 + 100),
                 *(undefined4 *)(param_2 + 0x6c),param_3);
   ov12_02262240(param_1,1,*(undefined4 *)(param_2 + 100),auStack_68,0x58);

@@ -55,7 +55,7 @@ void ov99_021E76D8(int param_1,uint param_2,undefined4 param_3,undefined4 param_
   undefined4 uStack_18;
   undefined4 uStack_14;
   undefined4 uStack_10;
-  
+
   uStack_18 = 0;
   uStack_14 = 0;
   uStack_1c = param_2 & 0x1ff;

@@ -60,7 +60,7 @@ void ov96_021E9718(undefined4 param_1,undefined4 param_2,undefined4 param_3,unde
   undefined4 uVar3;
   int iVar4;
   uint uVar5;
-  
+
   iVar2 = ov96_021E5F24(param_4);
   if (iVar2 == 0) {
     uVar3 = PokeathlonCourse_GetParticipantData(param_4,param_1);

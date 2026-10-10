@@ -51,7 +51,7 @@ uint ov08_0221D4B0(int param_1,undefined4 param_2,undefined4 param_3,undefined4 
 
 {
   uint uVar1;
-  
+
   uVar1 = ov08_0221D5D0(param_1,&ov08_02224E54,param_3,param_4,param_4);
   if (uVar1 == 0xffffffff) {
     uVar1 = ov08_02224C94(*(undefined4 *)(param_1 + 0x2088));

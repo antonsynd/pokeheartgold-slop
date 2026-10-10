@@ -47,7 +47,7 @@ int ov96_021FC164(int param_1,int param_2,int param_3)
 
 {
   int iVar1;
-  
+
   iVar1 = (int)(param_3 + ((uint)(param_3 >> 2) >> 0x1d)) >> 3;
   if (*(char *)(param_1 + param_2 * 0x200 + iVar1 + 0x618) == '\0') {
     iVar1 = -1;

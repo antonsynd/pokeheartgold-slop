@@ -80,7 +80,7 @@ bool ov49_02261234(undefined4 *param_1,undefined4 param_2,undefined4 param_3)
   undefined1 auStack_20 [4];
   int iStack_1c;
   int iStack_18;
-  
+
   *(short *)(param_1 + 2) = *(short *)(param_1 + 2) + 1;
   sVar1 = *(short *)(param_1 + 2);
   if (0x17 < sVar1) {

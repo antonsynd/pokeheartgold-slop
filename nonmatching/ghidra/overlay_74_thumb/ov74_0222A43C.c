@@ -53,7 +53,7 @@ void ov74_0222A43C(undefined4 param_1)
 {
   undefined4 *puVar1;
   undefined4 *puVar2;
-  
+
   puVar1 = (undefined4 *)OverlayManager_GetData();
   puVar2 = puVar1 + 0x12;
   if (puVar1[0x12] == 0) {

@@ -48,7 +48,7 @@ void ov89_02259D50(int param_1)
 
 {
   int iVar1;
-  
+
   RemoveWindow(param_1 + 0xb4);
   iVar1 = 0;
   param_1 = param_1 + 0x34;

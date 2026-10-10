@@ -52,7 +52,7 @@ void ov93_0226297C(undefined4 param_1,undefined1 param_2,undefined1 param_3,unde
   undefined1 uStack_24;
   undefined1 uStack_23;
   undefined4 uStack_14;
-  
+
   uStack_14 = param_4;
   func_0x020d4994(&uStack_28,0,0x14);
   uStack_28 = 6;

@@ -57,7 +57,7 @@ undefined4 ov01_021EB700(int *param_1,undefined4 param_2,int param_3)
 {
   int iVar1;
   undefined4 uVar2;
-  
+
   uVar2 = 1;
   if (param_3 < 0xf) {
     switch(param_2) {

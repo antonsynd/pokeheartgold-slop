@@ -59,7 +59,7 @@ void ov96_021F2EFC(int param_1,undefined4 param_2)
   undefined4 uVar1;
   undefined4 uVar2;
   undefined4 uVar3;
-  
+
   FillWindowPixelBuffer(param_1 + 4,0);
   uVar1 = NewMsgDataFromNarc(1,0x1b,0x135,*(undefined4 *)(param_1 + 0x14));
   uVar2 = MessageFormat_New(*(undefined4 *)(param_1 + 0x14));

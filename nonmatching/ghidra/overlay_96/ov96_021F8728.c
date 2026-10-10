@@ -60,7 +60,7 @@ void ov96_021F8728(int param_1)
   int iVar2;
   int iVar3;
   int iVar4;
-  
+
   iVar4 = 0;
   iVar3 = param_1 + 0x24;
   iVar1 = param_1 + 0x34;

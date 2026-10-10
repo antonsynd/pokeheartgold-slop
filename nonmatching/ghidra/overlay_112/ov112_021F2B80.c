@@ -70,7 +70,7 @@ void ov112_021F2B80(int param_1)
   undefined4 uVar2;
   int iVar3;
   undefined4 uVar4;
-  
+
   iVar3 = *(int *)(param_1 + (uint)*(byte *)(param_1 + 0x13d) * 4 + 0xc0);
   ov112_021F15E4();
   uVar4 = *(undefined4 *)(param_1 + 0x130);

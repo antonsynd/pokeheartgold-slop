@@ -49,7 +49,7 @@ int ov72_02238668(undefined4 param_1)
 
 {
   int iVar1;
-  
+
   iVar1 = YesNoPrompt_HandleInput();
   if (iVar1 != 0) {
     YesNoPrompt_Destroy(param_1);

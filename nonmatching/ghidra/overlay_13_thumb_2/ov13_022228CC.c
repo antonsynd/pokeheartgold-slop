@@ -57,13 +57,13 @@ undefined4 ov13_022228CC(undefined4 param_1,undefined4 param_2,undefined4 param_
 
 {
   int iVar1;
-  
+
   _UNK_022459cc = ov13_02222A1C();
-                    
+
   _UNK_022459d0 = ov13_02222A1C(param_2);
-                    
+
   _UNK_022459d4 = ov13_02222A1C(param_3);
-                    
+
   iVar1 = func_0x020a33fc(&ov13_022459BC);
   if (-1 < iVar1) {
     while (iRam021d4670 == 0) {

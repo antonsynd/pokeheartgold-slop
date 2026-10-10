@@ -60,7 +60,7 @@ void ov96_021F424C(undefined4 *param_1)
   uint uVar2;
   uint uVar3;
   uint uVar4;
-  
+
   uVar2 = 0;
   do {
     FillWindowPixelBuffer(param_1 + uVar2 * 4 + 3,0);

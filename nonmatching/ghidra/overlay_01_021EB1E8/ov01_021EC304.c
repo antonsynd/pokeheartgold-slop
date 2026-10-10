@@ -49,7 +49,7 @@ void ov01_021EC304(undefined4 *param_1,int param_2)
 {
   undefined4 *puVar1;
   undefined4 uVar2;
-  
+
   puVar1 = (undefined4 *)Sprite_GetMatrixPtr(*(undefined4 *)(param_2 + 4));
   uVar2 = puVar1[1];
   *param_1 = *puVar1;

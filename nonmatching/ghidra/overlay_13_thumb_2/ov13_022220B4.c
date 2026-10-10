@@ -51,7 +51,7 @@ undefined4 ov13_022220B4(int param_1,undefined4 param_2,undefined4 param_3,undef
 
 {
   undefined4 uVar1;
-  
+
   if (param_1 == 0) {
     ov13_022217D0(2);
     uVar1 = ov13_02222108(param_2,param_3,param_4);

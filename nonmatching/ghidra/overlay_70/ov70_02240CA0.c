@@ -54,7 +54,7 @@ void ov70_02240CA0(undefined *param_1,int param_2)
   uint uStack_18;
   uint uStack_14;
   uint uStack_10;
-  
+
   func_0x021ecb94(&iStack_1c,auStack_28);
   uStack_10 = uStack_10 | iStack_1c << 0x18 | (uStack_18 & 0xff) << 0x10 | (uStack_14 & 0xff) << 8;
   if (param_2 == 1) {

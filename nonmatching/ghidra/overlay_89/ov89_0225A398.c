@@ -50,7 +50,7 @@ void ov89_0225A398(int param_1,undefined4 param_2,undefined4 param_3,undefined4 
   int iVar1;
   short sVar2;
   int iVar3;
-  
+
   if (*(int *)(param_1 + 0x19d4) == *(int *)(param_1 + 0x19d8)) {
     *(int *)(param_1 + 0x19d4) = *(int *)(param_1 + 0x19d4) + 0x88;
     if (0x2000 < *(int *)(param_1 + 0x19d4)) {

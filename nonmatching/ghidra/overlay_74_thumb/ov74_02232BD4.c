@@ -78,7 +78,7 @@ void ov74_02232BD4(int *param_1)
   undefined1 auStack_44 [8];
   int iStack_3c;
   undefined4 uStack_38;
-  
+
   iVar6 = 0;
   piVar5 = param_1;
   do {

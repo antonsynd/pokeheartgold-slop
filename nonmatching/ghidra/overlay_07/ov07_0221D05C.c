@@ -48,7 +48,7 @@ void ov07_0221D05C(int param_1)
 {
   int iVar1;
   int iVar2;
-  
+
   *(int *)(param_1 + 0x18) = *(int *)(param_1 + 0x18) + 4;
   iVar1 = 2;
   iVar2 = param_1 + 8;

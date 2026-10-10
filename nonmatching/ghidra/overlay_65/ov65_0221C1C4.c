@@ -52,7 +52,7 @@ void ov65_0221C1C4(int param_1,undefined4 param_2,undefined4 param_3,undefined4 
 {
   undefined4 uVar1;
   undefined4 uVar2;
-  
+
   ov65_0221C3DC(*(undefined4 *)(param_1 + 0x184),*(undefined4 *)(param_1 + 0x2224),0,param_4,param_4
                );
   ov65_0221C3DC(*(undefined4 *)(param_1 + 0x184),*(undefined4 *)(param_1 + 0x2228),6);

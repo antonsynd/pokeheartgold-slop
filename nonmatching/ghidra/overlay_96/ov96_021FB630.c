@@ -60,7 +60,7 @@ void ov96_021FB630(undefined4 param_1)
   uint uVar6;
   undefined4 uStack_24;
   undefined4 uStack_20;
-  
+
   iVar1 = ov96_021E5F24();
   if (iVar1 == 0) {
     iVar1 = PokeathlonCourse_GetDataCopyArea(param_1);

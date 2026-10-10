@@ -62,7 +62,7 @@ void ov49_02267F94(int param_1,undefined4 param_2,undefined4 param_3,undefined4 
   int iStack_20;
   int iStack_1c;
   undefined4 uStack_18;
-  
+
   uStack_18 = param_4;
   ov49_02259154(param_2,&iStack_24);
   iStack_24 = iStack_24 + 0x8000;

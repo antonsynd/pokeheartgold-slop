@@ -55,7 +55,7 @@ void ov40_0222CF10(int param_1)
   int iVar2;
   int iVar3;
   undefined4 uStack_18;
-  
+
   if ((*(int *)(param_1 + 0x6d8) != 0) && (uStack_18 = 0, 0 < *(int *)(param_1 + 0x6d8))) {
     iVar3 = param_1 + 0x534;
     iVar1 = param_1;

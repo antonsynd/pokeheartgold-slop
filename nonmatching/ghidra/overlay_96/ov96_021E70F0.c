@@ -48,7 +48,7 @@ undefined4 ov96_021E70F0(int param_1,undefined4 param_2,undefined4 param_3,undef
 
 {
   int iVar1;
-  
+
   *(int *)(param_1 + 0x1f0) = *(int *)(param_1 + 0x1f0) + 1;
   iVar1 = *(int *)(param_1 + 0x1f0);
   if (iVar1 < (int)(uint)*(byte *)(param_1 + 0x72a)) {

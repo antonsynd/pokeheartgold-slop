@@ -52,7 +52,7 @@ void ov96_02219460(int param_1,int *param_2,int param_3)
   int iVar2;
   int iVar3;
   byte *pbVar4;
-  
+
   iVar3 = *(int *)(*(int *)(param_1 + 4) + 8);
   pbVar4 = (byte *)(param_1 + 0x5f);
   iVar2 = ov96_0221862C();

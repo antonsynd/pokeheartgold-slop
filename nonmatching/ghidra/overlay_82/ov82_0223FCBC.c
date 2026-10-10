@@ -53,7 +53,7 @@ void ov82_0223FCBC(int param_1,int param_2,int param_3)
   int iStack_20;
   int iStack_1c;
   undefined4 uStack_18;
-  
+
   if (*(undefined1 **)(param_1 + 0xc) != (undefined1 *)0x0) {
     func_0x02024950(*(undefined4 *)(param_1 + 0x10),**(undefined1 **)(param_1 + 0xc));
   }

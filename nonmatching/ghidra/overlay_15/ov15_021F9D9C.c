@@ -49,7 +49,7 @@ void ov15_021F9D9C(undefined4 param_1,undefined4 param_2,undefined4 param_3)
 
 {
   undefined4 uVar1;
-  
+
   uVar1 = TMHMGetMove(param_3);
   ReadMsgDataIntoString(param_1,uVar1,param_2);
   return;

@@ -62,7 +62,7 @@ void ov49_0225A854(void)
   short sStack_12;
   short sStack_10;
   undefined4 uStack_c;
-  
+
   uStack_c = in_r3;
   GfGfx_EngineATogglePlanes(1,1);
   uRam04000008 = uRam04000008 & 0xfffc | 1;

@@ -60,7 +60,7 @@ void ov49_02266C6C(undefined4 param_1,int param_2)
   undefined4 uStack_20;
   int iStack_1c;
   undefined4 uStack_18;
-  
+
   ov49_02259154(*(undefined4 *)(param_2 + 8),&uStack_20);
   if ((byte)(&UNK_0226a44f)[*(char *)(param_2 + 0x955)] == 0) {
     uVar1 = func_0x020f2178(0);

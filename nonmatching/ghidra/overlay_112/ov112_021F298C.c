@@ -56,7 +56,7 @@ void ov112_021F298C(int param_1)
   undefined4 uVar4;
   undefined4 uVar5;
   int iVar6;
-  
+
   iVar6 = *(int *)(param_1 + (uint)*(byte *)(param_1 + 0x13d) * 4 + 0xc0);
   ov112_021F2204(param_1,0,1);
   ov112_021F22B0(*(undefined4 *)(param_1 + 0x84),*(uint *)(param_1 + 0xc) & 0xff,3);

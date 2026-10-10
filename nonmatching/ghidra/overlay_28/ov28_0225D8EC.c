@@ -49,7 +49,7 @@ void ov28_0225D8EC(int param_1)
 {
   undefined4 uVar1;
   uint uVar2;
-  
+
   uVar2 = 0;
   do {
     uVar1 = Create2DGfxResObjMan(2,uVar2,8);

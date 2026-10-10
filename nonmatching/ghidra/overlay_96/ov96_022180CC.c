@@ -72,7 +72,7 @@ void ov96_022180CC(short *param_1,undefined4 param_2)
   undefined4 uStack_20;
   undefined4 uStack_1c;
   undefined4 uStack_18;
-  
+
   iStack_30 = 0;
   psVar5 = param_1;
   do {

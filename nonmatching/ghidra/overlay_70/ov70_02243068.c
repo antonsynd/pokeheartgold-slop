@@ -49,7 +49,7 @@ undefined4 ov70_02243068(int param_1)
 
 {
   int iVar1;
-  
+
   iVar1 = sub_020199E4(*(undefined4 *)(param_1 + 0x1c),0);
   if (iVar1 == 0) {
     sub_0201980C(*(undefined4 *)(param_1 + 0x1c),0);

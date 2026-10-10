@@ -52,7 +52,7 @@ undefined4 sub_02057480(uint param_1,uint param_2)
   int iVar1;
   int iVar2;
   int iVar3;
-  
+
   iVar1 = Field_GetNumObjectEvents(*(undefined4 *)(iRam021d41c4 + 0x30));
   iVar2 = Field_GetObjectEvents(*(undefined4 *)(iRam021d41c4 + 0x30));
   iVar3 = 0;

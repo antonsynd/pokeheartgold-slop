@@ -48,7 +48,7 @@ undefined4 ov45_0222F74C(undefined4 param_1)
 
 {
   undefined4 uVar1;
-  
+
   uVar1 = 1;
   switch(param_1) {
   case 0:

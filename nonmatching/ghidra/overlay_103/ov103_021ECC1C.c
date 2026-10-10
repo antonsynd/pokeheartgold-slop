@@ -58,7 +58,7 @@ void ov103_021ECC1C(int param_1)
   undefined4 uVar2;
   int iVar3;
   int iStack_18;
-  
+
   uVar1 = NARC_New(0xfc,0x9d);
   GfGfxLoader_LoadCharDataFromOpenNarc(uVar1,5,**(undefined4 **)(param_1 + 0xc),7,0,0,1,0x9d);
   GfGfxLoader_LoadScrnDataFromOpenNarc(uVar1,4,**(undefined4 **)(param_1 + 0xc),7,0,0,1,0x9d);

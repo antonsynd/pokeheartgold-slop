@@ -56,7 +56,7 @@ int ov40_02244BBC(undefined4 param_1,undefined4 param_2,undefined4 param_3,undef
 {
   undefined2 uVar1;
   int iVar2;
-  
+
   if (iRam021d2af8 == 0) {
     GF_AssertFail();
   }

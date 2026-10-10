@@ -53,7 +53,7 @@ void ov18_021F65AC(int param_1,undefined4 param_2,undefined4 param_3,undefined4 
   undefined1 auStack_10 [2];
   short sStack_e;
   undefined4 uStack_c;
-  
+
   uStack_c = param_4;
   func_0x0200de44(*(undefined4 *)(param_1 + 0x684),&sStack_e,auStack_10);
   sVar1 = ov18_021F64A4(param_1,(int)*(char *)(param_1 + 0x18c5));

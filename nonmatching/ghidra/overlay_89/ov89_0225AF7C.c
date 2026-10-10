@@ -48,7 +48,7 @@ void ov89_0225AF7C(int param_1,int param_2)
 
 {
   int iVar1;
-  
+
   if (param_2 != 0xff) {
     iVar1 = *(byte *)(param_1 + 0x53d + param_2 * 4) - 1;
     if (iVar1 < 0) {

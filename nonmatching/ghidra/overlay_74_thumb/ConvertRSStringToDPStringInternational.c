@@ -56,7 +56,7 @@ ConvertRSStringToDPStringInternational(int param_1,short *param_2,int param_3,in
   int iVar3;
   short *psVar4;
   uint uVar5;
-  
+
   uVar5 = 0;
   if (param_3 != 1) {
     psVar4 = param_2;

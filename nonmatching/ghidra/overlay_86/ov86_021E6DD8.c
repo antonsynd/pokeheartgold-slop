@@ -51,7 +51,7 @@ undefined4 ov86_021E6DD8(int param_1,undefined4 param_2)
   undefined4 uVar1;
   int iVar2;
   undefined4 uVar3;
-  
+
   uVar1 = Save_FrontierData_Get(*(undefined4 *)(param_1 + 0x224));
   switch(param_2) {
   case 0:

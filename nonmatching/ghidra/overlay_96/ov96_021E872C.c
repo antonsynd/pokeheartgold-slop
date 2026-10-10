@@ -56,7 +56,7 @@ undefined4 ov96_021E872C(int param_1,int param_2,int param_3,int param_4,int par
   int iStack_10;
   int iStack_c;
   undefined4 uStack_8;
-  
+
   iStack_10 = param_1 << 0xc;
   iStack_c = param_2 << 0xc;
   iStack_1c = param_3 << 0xc;

@@ -51,7 +51,7 @@ undefined4 FrtCmd_033(int param_1)
   undefined1 uVar1;
   undefined2 *puVar2;
   undefined2 *puVar3;
-  
+
   puVar2 = (undefined2 *)FrontierScript_ReadVarPtr();
   puVar3 = (undefined2 *)FrontierScript_ReadVarPtr(param_1);
   uVar1 = ov80_0222BFE4(*puVar2,*puVar3);

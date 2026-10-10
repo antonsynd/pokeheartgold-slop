@@ -49,7 +49,7 @@ void ov28_0225DEB0(int param_1)
 
 {
   int iVar1;
-  
+
   ov28_0225DE64(*(undefined4 *)(param_1 + 0x214),*(undefined4 *)(param_1 + 0x218));
   iVar1 = ov28_0225DE88();
   *(int *)(param_1 + 0x220) = iVar1;

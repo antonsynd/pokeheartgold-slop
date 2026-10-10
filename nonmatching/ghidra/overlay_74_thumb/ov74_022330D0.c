@@ -52,7 +52,7 @@ undefined4 ov74_022330D0(int param_1,int param_2)
 
 {
   int iVar1;
-  
+
   if (*(int *)(param_1 + 4) == 0) {
     iVar1 = TextPrinterCheckActive(*(uint *)(param_1 + 0x474) & 0xff);
     if (iVar1 == 0) {

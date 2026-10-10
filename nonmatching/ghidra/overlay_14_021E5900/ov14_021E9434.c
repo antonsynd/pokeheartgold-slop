@@ -48,7 +48,7 @@ undefined4 ov14_021E9434(int param_1)
 
 {
   int iVar1;
-  
+
   iVar1 = ov14_021E8514(*(undefined4 *)(*(int *)(param_1 + 0x34) + 0x2f0));
   if (iVar1 != 0) {
     return 1;

@@ -50,7 +50,7 @@ void ov83_0223FA00(int param_1,undefined4 param_2,undefined4 param_3,undefined4 
 
 {
   int iVar1;
-  
+
   GfGfxLoader_LoadCharDataFromOpenNarc
             (*(undefined4 *)(param_1 + 0x7a8),0x22,*(undefined4 *)(param_1 + 0x4c),param_2,0,0,1,
              0x6b,param_4);

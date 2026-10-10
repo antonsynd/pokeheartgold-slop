@@ -59,7 +59,7 @@ void ov83_02240C8C(int param_1,undefined4 param_2,undefined4 param_3,undefined4 
   undefined4 uVar2;
   undefined4 uVar3;
   int iVar4;
-  
+
   uVar1 = Save_PlayerData_GetProfile(*(undefined4 *)(param_1 + 0x50c));
   uVar2 = String_New(8,0x6b);
   uVar3 = PlayerProfile_GetNamePtr(uVar1);

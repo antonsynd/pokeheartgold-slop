@@ -48,7 +48,7 @@ void ov96_021F6424(int *param_1,undefined4 param_2,undefined4 param_3,undefined4
 
 {
   int iVar1;
-  
+
   ov96_021F6524(param_1,0,0,1,param_4);
   ov96_021F6524(param_1,1,1,2);
   ov96_021F6524(param_1,2,2,0);

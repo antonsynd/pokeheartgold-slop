@@ -74,7 +74,7 @@ void ov96_021EC490(undefined4 *param_1,undefined4 param_2,undefined4 param_3,und
   undefined4 uStack_14;
   undefined4 uStack_10;
   undefined4 uStack_c;
-  
+
   uStack_24 = 0x70;
   uStack_20 = 0x6e;
   uStack_1c = 0x69;

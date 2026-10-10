@@ -79,7 +79,7 @@ undefined4 ov12_02239C28(void)
   int iVar3;
   undefined4 *puVar4;
   undefined4 uVar5;
-  
+
   puVar1 = (undefined4 *)OverlayManager_GetData();
   sub_020399FC(5,puVar1[1]);
   uVar5 = 0;

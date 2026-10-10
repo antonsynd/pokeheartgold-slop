@@ -52,7 +52,7 @@ void ov85_021EA324(int param_1,int param_2,int param_3,undefined4 param_4,undefi
 {
   int iVar1;
   int iVar2;
-  
+
   iVar1 = SpriteToUnionRoomAvatarIdx(param_5,param_4,param_3,param_4,param_4);
   iVar2 = *(int *)(*(int *)(param_2 + 4) + 0xc);
   func_0x020cfe74(*(int *)(*(int *)(param_1 + 4) + 0x14) + iVar1 * 0x600,

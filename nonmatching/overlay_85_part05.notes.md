@@ -26,3 +26,13 @@ Layout notes (main object, offsets from the asm):
 - Where the asm zeroes memory with an inline loop (no call), the C uses a byte loop; where it calls memset, the C calls memset.
 - ov85_021E7044, ov85_021E6DF0, ov85_021E6DFC and ov85_021E6E08 are declared locally from the asm (ov85_021E7044 returns ManagedSprite*).
 - SysTask creators are SysTask_CreateOnMainQueue in every case; the twin's SaveData_Pokegear_Get renames are wrong here.
+
+## Status
+
+With the current tools, every function these notes describe as failing or inconclusive passes the check.
+`VERIFIED.tsv` gives the verdict of each, and the file that holds its verified C. These now have their verified C in another file, so their C here was not checked again:
+
+- `ov85_021E7E3C`: `ghidra/overlay_85/ov85_021E7E3C.c`
+- `ov85_021E7F74`: `ghidra/overlay_85/ov85_021E7F74.c`
+- `ov85_021E815C`: `written/overlay_85/ov85_021E815C.c`
+- `ov85_021E82F8`: `ghidra/overlay_85/ov85_021E82F8.c`

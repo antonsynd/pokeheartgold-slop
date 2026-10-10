@@ -49,7 +49,7 @@ undefined4 ov80_0222CC20(undefined4 *param_1)
 
 {
   int iVar1;
-  
+
   param_1 = (undefined4 *)*param_1;
   iVar1 = Frontier_GetLaunchArgs(*param_1);
   iVar1 = sub_0202FE14(*(undefined4 *)(iVar1 + 8),*(undefined2 *)(param_1 + 0x2d),

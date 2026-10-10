@@ -60,7 +60,7 @@ void ov40_02239340(int param_1)
   uint *puVar4;
   uint uVar5;
   int iStack_18;
-  
+
   iStack_18 = 0;
   puVar4 = (uint *)&ov40_022453B8;
   uVar5 = 1;

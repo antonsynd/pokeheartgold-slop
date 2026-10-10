@@ -63,7 +63,7 @@ undefined4 sub_0208527C(undefined4 param_1)
 
 {
   int iVar1;
-  
+
   iVar1 = OverlayManager_GetData();
   if (*(int *)(iVar1 + 1000) != 0) {
     sub_0203A914();

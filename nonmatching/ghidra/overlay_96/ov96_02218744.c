@@ -51,7 +51,7 @@ undefined4 ov96_02218744(int param_1)
   bool bVar2;
   undefined4 uVar3;
   int iVar4;
-  
+
   if (param_1 == 0) {
     GF_AssertFail();
   }

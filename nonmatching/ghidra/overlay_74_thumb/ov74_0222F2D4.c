@@ -53,7 +53,7 @@ void ov74_0222F2D4(undefined4 *param_1,undefined4 param_2,undefined1 param_3,und
   undefined4 uVar1;
   int iStack_1c;
   undefined4 uStack_18;
-  
+
   uStack_18 = param_4;
   uVar1 = func_0x02007a44(0x71,param_2,1,*param_1,1);
   func_0x020b71d8(uVar1,&iStack_1c);

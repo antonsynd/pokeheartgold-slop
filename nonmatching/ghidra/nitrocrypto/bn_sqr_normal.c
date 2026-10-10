@@ -56,7 +56,7 @@ void bn_sqr_normal(undefined4 *param_1,undefined4 *param_2,int param_3,undefined
   undefined4 *puVar4;
   int iVar5;
   int iVar6;
-  
+
   iVar1 = param_3 * 2;
   iVar5 = param_3 + -1;
   param_1[iVar1 + -1] = 0;

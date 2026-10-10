@@ -54,7 +54,7 @@ void ov07_02229024(undefined4 param_1,char *param_2,undefined4 param_3,undefined
 {
   int iVar1;
   char *pcVar2;
-  
+
   if (*param_2 == '\0') {
     ov07_022227A8(param_2 + 0x4c,(*(int *)(param_2 + 0x48) + 2) * 0x10000 >> 0x10,
                   (int)(short)*(int *)(param_2 + 0x48),0,10);

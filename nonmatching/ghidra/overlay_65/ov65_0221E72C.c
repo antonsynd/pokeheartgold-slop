@@ -48,7 +48,7 @@ undefined4 ov65_0221E72C(void)
 
 {
   int iVar1;
-  
+
   iVar1 = sub_02037B38(0x13);
   if (iVar1 != 0) {
     return 2;

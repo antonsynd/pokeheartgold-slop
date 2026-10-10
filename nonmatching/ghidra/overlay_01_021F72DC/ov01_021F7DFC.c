@@ -51,7 +51,7 @@ void ov01_021F7DFC(undefined4 param_1)
 
 {
   int iVar1;
-  
+
   iVar1 = sub_0205F40C();
   if (*(int *)(iVar1 + 4) != 0) {
     ov01_021F9610(*(int *)(iVar1 + 4),iVar1 + 8);

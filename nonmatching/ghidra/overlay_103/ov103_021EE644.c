@@ -58,7 +58,7 @@ void ov103_021EE644(int param_1,undefined4 param_2,undefined4 param_3,undefined4
   uint uVar1;
   undefined4 uVar2;
   uint uVar3;
-  
+
   FillWindowPixelBuffer(*(int *)(param_1 + 0xc) + 0x1b8,0);
   ReadMsgDataIntoString
             (*(undefined4 *)(*(int *)(param_1 + 0xc) + 0x228),2,

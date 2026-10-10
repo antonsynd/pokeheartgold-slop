@@ -51,7 +51,7 @@ undefined4 ov01_021F2E6C(int *param_1)
 {
   int iVar1;
   undefined4 uVar2;
-  
+
   iVar1 = MapObject_AreBitsSetForMovementScriptInit(param_1[0xf]);
   if (iVar1 == 1) {
     uVar2 = sub_0206234C(param_1[1],4);

@@ -54,7 +54,7 @@ void sub_020573F0(int param_1,undefined4 param_2)
 {
   int iVar1;
   int iVar2;
-  
+
   if (iRam021d41c4 != 0) {
     sub_02057384(param_2);
     *(char *)(iRam021d41c4 + 0xf1) = (char)param_2;

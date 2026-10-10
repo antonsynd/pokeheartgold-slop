@@ -83,7 +83,7 @@ void ov96_021E8C70(undefined4 *param_1,undefined4 *param_2,undefined2 *param_3,i
   int iStack_24;
   undefined4 uStack_20;
   undefined4 uStack_1c;
-  
+
   if (param_6 == 0) {
     if (param_3[2] == 0) {
       uStack_1c = 1;

@@ -51,7 +51,7 @@ void ov87_021E8134(undefined4 *param_1,byte param_2)
 
 {
   byte bVar1;
-  
+
   bVar1 = GetWindowBgId((undefined *)param_1);
   LoadUserFrameGfx2((undefined *)*param_1,(uint)bVar1,0x3d9,10,param_2,0x7a);
   FillWindowPixelBuffer((undefined *)param_1,0xf);

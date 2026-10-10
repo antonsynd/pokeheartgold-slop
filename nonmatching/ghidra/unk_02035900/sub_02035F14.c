@@ -53,7 +53,7 @@ undefined4 sub_02035F14(undefined4 param_1,undefined4 param_2,undefined4 param_3
 {
   int iVar1;
   undefined4 uVar2;
-  
+
   uVar2 = 1;
   sub_0203993C();
   iVar1 = sub_02034044();
@@ -61,7 +61,7 @@ undefined4 sub_02035F14(undefined4 param_1,undefined4 param_2,undefined4 param_3
     uVar2 = sub_02034F64(param_1,param_2);
   }
   sub_02035900(param_1,param_3);
-                    
+
   UNK_0210f901 = 4;
   return uVar2;
 }

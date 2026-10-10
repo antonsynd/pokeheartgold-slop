@@ -51,7 +51,7 @@ undefined4 sub_02012454(int param_1)
 
 {
   int iVar1;
-  
+
   iVar1 = *(int *)(param_1 + 0x24) + 1;
   *(int *)(param_1 + 0x24) = iVar1;
   if (*(int *)(param_1 + 0x20) <= iVar1) {

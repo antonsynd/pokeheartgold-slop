@@ -55,7 +55,7 @@ ov96_021EEA08(undefined4 param_1,int *param_2,undefined4 *param_3,undefined4 par
 
 {
   undefined4 uVar1;
-  
+
   if (*param_2 == 0) {
     AddWindowParameterized(param_1,param_2,param_8,2,0x13,0x1b,4,0xf,1,param_4);
   }

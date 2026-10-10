@@ -52,7 +52,7 @@ void ov96_0220DBE8(int param_1,int param_2,undefined4 param_3,undefined4 param_4
 
 {
   undefined4 uVar1;
-  
+
   uVar1 = param_4;
   if (3 < param_2 + -3) {
     GF_AssertFail();

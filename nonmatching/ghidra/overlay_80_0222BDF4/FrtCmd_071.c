@@ -57,7 +57,7 @@ undefined4 FrtCmd_071(undefined4 *param_1,undefined4 param_2,undefined4 param_3,
   short sStack_18;
   short sStack_16;
   undefined4 uStack_14;
-  
+
   uStack_14 = param_4;
   puVar1 = (undefined4 *)FrontierSystem_GetFrontierMap(*param_1);
   uVar2 = FrontierScriptContext_ReadHalfWord(param_1);

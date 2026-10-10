@@ -50,7 +50,7 @@ int ov90_0225A28C(uint param_1)
   uint uVar1;
   uint extraout_r1;
   uint uVar2;
-  
+
   _u32_div_f(param_1,3);
   { uint nug_a = (uint)(param_1), nug_b = (uint)(3); extraout_r1 = nug_a % nug_b; uVar1 = _u32_div_f(nug_a, nug_b); }
   uVar2 = extraout_r1;

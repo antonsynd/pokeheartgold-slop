@@ -50,7 +50,7 @@ void ov56_021E63FC(undefined *param_1,int param_2)
 
 {
   char cVar1;
-  
+
   if (*(int *)(param_2 + 0x30) == 0) {
     SysTask_Destroy(param_1);
     return;

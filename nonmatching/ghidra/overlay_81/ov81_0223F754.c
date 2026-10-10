@@ -50,7 +50,7 @@ void ov81_0223F754(int param_1)
 
 {
   undefined1 uVar1;
-  
+
   ov81_02241804();
   ov81_02240F38(param_1,1);
   uVar1 = ov81_0224086C(param_1,9);

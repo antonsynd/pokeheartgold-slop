@@ -55,7 +55,7 @@ void ov65_0221D204(undefined4 param_1,undefined4 param_2,undefined4 param_3,unde
   int iVar1;
   int iVar2;
   int iStack_14;
-  
+
   iVar1 = GfGfxLoader_LoadFromOpenNarc(param_1,param_2,param_7,param_8,1);
   if (iVar1 != 0) {
     iVar2 = func_0x020b71d8(iVar1,&iStack_14);

@@ -57,7 +57,7 @@ void ov102_021EB1F8(undefined4 *param_1,undefined4 param_2)
 {
   undefined4 uVar1;
   undefined4 uVar2;
-  
+
   uVar1 = ov102_021EA268(*param_1);
   GfGfxLoader_LoadScrnDataFromOpenNarc(param_2,4,uVar1,3,0,0,1,0x23);
   GfGfxLoader_LoadCharDataFromOpenNarc(param_2,5,uVar1,3,0,0,1,0x23);

@@ -57,7 +57,7 @@ void ov13_022224CC(undefined4 param_1,undefined4 param_2,int param_3,undefined4 
   undefined2 uStack_1e;
   undefined4 uStack_1c;
   undefined4 uStack_18;
-  
+
   uStack_18 = param_4;
   ov13_02222978(&uStack_20,0,8);
   uStack_1f = 2;

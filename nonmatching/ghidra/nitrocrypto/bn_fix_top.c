@@ -48,7 +48,7 @@ void bn_fix_top(int *param_1)
 {
   int iVar1;
   int *piVar2;
-  
+
   iVar1 = param_1[1];
   if (iVar1 < 1) {
     return;

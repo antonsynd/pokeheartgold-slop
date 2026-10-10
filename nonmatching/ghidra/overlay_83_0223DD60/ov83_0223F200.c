@@ -103,7 +103,7 @@ void ov83_0223F200(int param_1,undefined4 param_2,undefined4 param_3,undefined4 
   short asStack_20 [2];
   short asStack_1c [2];
   undefined4 uStack_18;
-  
+
   uStack_18 = param_4;
   uVar4 = NARC_New(0xb7,0x6b);
   *(undefined4 *)(param_1 + 0x7a8) = uVar4;

@@ -61,7 +61,7 @@ void ov70_0224190C(undefined4 *param_1,undefined4 param_2)
   int iStack_20;
   int iStack_1c;
   int iStack_18;
-  
+
   switch(param_2) {
   case 0:
     puVar3 = (undefined1 *)0x2245da2;

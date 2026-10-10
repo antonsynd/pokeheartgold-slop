@@ -50,7 +50,7 @@ undefined4 ov07_0221F9A8(int param_1,undefined4 *param_2,int param_3)
   int iVar1;
   int *piVar2;
   int iVar3;
-  
+
   iVar1 = *(int *)(param_1 + 0x18);
   piVar2 = (int *)(iVar1 + 4);
   *(int **)(param_1 + 0x18) = piVar2;

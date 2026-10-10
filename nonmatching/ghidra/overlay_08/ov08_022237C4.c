@@ -60,7 +60,7 @@ void ov08_022237C4(int *param_1)
   int iVar3;
   int iVar4;
   uint uVar5;
-  
+
   FillWindowPixelBuffer(param_1[0xb] + 400,0);
   iVar4 = param_1[0xb];
   uVar1 = NewString_ReadMsgData(param_1[4],0x1c);

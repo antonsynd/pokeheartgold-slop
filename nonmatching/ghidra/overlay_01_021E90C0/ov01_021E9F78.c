@@ -56,7 +56,7 @@ undefined4 ov01_021E9F78(undefined4 param_1)
   int iVar1;
   char *pcVar2;
   int iVar3;
-  
+
   iVar1 = TaskManager_GetFieldSystem();
   pcVar2 = (char *)TaskManager_GetEnvironment(param_1);
   if (*pcVar2 == '\0') {

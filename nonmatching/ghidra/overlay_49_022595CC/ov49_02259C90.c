@@ -74,7 +74,7 @@ undefined4 ov49_02259C90(undefined4 param_1,int *param_2,undefined4 param_3,unde
   char *pcVar1;
   undefined4 uVar2;
   int iVar3;
-  
+
   pcVar1 = (char *)OverlayManager_GetData();
   OverlayManager_GetArgs(param_1);
   switch(*param_2) {

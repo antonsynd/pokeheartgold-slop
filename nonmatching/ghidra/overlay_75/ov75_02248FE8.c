@@ -57,7 +57,7 @@ undefined4 ov75_02248FE8(int *param_1,undefined4 param_2,undefined4 param_3,unde
 {
   undefined4 uVar1;
   int iVar2;
-  
+
   switch(param_1[0x25]) {
   case 0:
     ov75_022494CC(param_1,param_1[0xd],0x20,0,0xf0f,param_4);

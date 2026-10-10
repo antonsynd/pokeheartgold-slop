@@ -52,7 +52,7 @@ void ov05_0221D890(int *param_1)
 
 {
   undefined4 uVar1;
-  
+
   uVar1 = NARC_New(0x68,*(undefined4 *)(*param_1 + 0x24));
   SpriteSystem_LoadCharResObjFromOpenNarc(param_1[100],param_1[0x65],uVar1,5,0,1,0xb808);
   SpriteSystem_LoadCellResObjFromOpenNarc(param_1[100],param_1[0x65],uVar1,6,0,0xb808);

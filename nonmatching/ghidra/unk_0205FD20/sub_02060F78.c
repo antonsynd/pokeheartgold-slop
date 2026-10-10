@@ -53,7 +53,7 @@ void sub_02060F78(undefined4 param_1)
 
 {
   undefined4 uVar1;
-  
+
   uVar1 = MapObject_GetXCoord();
   MapObject_SetPreviousX(param_1,uVar1);
   uVar1 = MapObject_GetYCoord(param_1);

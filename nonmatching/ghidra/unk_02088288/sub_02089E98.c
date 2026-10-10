@@ -58,7 +58,7 @@ undefined4 sub_02089E98(int param_1)
   int iVar2;
   undefined4 uVar3;
   uint uVar4;
-  
+
   iVar1 = sub_0208E544();
   if (iVar1 == 0xff) {
     return 2;

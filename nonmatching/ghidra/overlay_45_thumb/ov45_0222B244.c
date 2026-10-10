@@ -50,7 +50,7 @@ void ov45_0222B244(undefined4 *param_1)
 
 {
   undefined4 uVar1;
-  
+
   if (param_1[0x12e] != 0) {
     GF_AssertFail();
   }

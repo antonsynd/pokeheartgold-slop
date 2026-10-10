@@ -74,7 +74,7 @@ void ov82_0223E9E8(int param_1)
   undefined4 uVar2;
   int iVar3;
   int iVar4;
-  
+
   uVar1 = NARC_New(0xb7,0x69);
   *(undefined4 *)(param_1 + 0x220) = uVar1;
   ov82_0223EB3C(param_1);

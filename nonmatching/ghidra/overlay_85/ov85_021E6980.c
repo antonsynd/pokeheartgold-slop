@@ -57,7 +57,7 @@ void ov85_021E6980(int param_1,undefined4 param_2,undefined4 param_3,undefined4 
 {
   int iVar1;
   int iVar2;
-  
+
   func_0x020c2698();
   func_0x020cf704();
   uRam04000060 = uRam04000060 & 0xcff9 | 0x38;

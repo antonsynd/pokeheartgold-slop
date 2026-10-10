@@ -50,7 +50,7 @@ undefined4 ov37_021E6BFC(int param_1,undefined4 param_2,undefined4 param_3,undef
 
 {
   byte bVar1;
-  
+
   bVar1 = *(byte *)(param_1 + 0x4380) & 199;
   *(byte *)(param_1 + 0x4380) = bVar1;
   *(undefined1 *)(param_1 + 0x93bc) = 0;

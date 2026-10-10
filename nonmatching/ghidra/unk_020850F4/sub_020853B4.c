@@ -53,7 +53,7 @@ int * sub_020853B4(undefined4 param_1,int param_2,int *param_3,int param_4,int p
   int *piVar3;
   int iVar4;
   int *piVar5;
-  
+
   piVar1 = (int *)Heap_Alloc(param_1,0x34);
   *piVar1 = param_2;
   iVar2 = String_New(param_2 + 1,param_1);

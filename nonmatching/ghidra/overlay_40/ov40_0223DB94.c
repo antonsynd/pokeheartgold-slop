@@ -47,7 +47,7 @@ undefined4 ov40_0223DB94(int param_1)
 
 {
   int iVar1;
-  
+
   iVar1 = *(int *)(param_1 + 0x860);
   if (*(short *)(iVar1 + 0x4c0) != -1) {
     return 1;

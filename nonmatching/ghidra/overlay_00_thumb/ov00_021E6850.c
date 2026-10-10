@@ -64,7 +64,7 @@ int ov00_021E6850(void)
   int iVar4;
   int iVar5;
   int iVar6;
-  
+
   func_0x021edb1c();
   ov00_021E6CE8();
   if (*(int *)(iRam0221a680 + 0x1090) == 0) goto LAB_021e68d8;

@@ -49,7 +49,7 @@ undefined4 ov14_021E98AC(int param_1,undefined4 param_2,undefined4 param_3,undef
 
 {
   int iVar1;
-  
+
   iVar1 = *(int *)(param_1 + 0x34);
   FillBgTilemapRect(*(undefined4 *)(iVar1 + 0x14),0,0,0,*(short *)(iVar1 + 0x10) + 6U & 0xff,0x20,1,
                     0x10,param_4);

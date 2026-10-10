@@ -62,7 +62,7 @@ undefined4 ov73_021E6AAC(int param_1,undefined4 param_2,undefined4 param_3,undef
   int iVar2;
   undefined4 uStack_18;
   undefined4 uStack_14;
-  
+
   uStack_14 = param_4;
   iVar2 = ov73_021E746C();
   if ((*(int *)(param_1 + 0x4a1c) == iVar2) && (*(int *)(param_1 + 0x4a24) == 0)) {

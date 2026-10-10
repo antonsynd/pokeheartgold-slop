@@ -61,7 +61,7 @@ void ov96_02209F8C(undefined4 param_1)
   undefined *puStack_28;
   int iStack_20;
   uint uStack_1c;
-  
+
   iVar2 = PokeathlonCourse_GetHeapAllocPtr4();
   if (iVar2 == 0) {
     GF_AssertFail();

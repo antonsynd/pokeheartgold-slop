@@ -76,7 +76,7 @@ undefined4 ov93_02260080(undefined4 param_1,int param_2,undefined4 param_3,undef
   __asm__ volatile("movs %0, r5" : "=l"(unaff_r5) : : "cc");
   __asm__ volatile("movs %0, r6" : "=l"(unaff_r6) : : "cc");
 
-  
+
   bVar2 = false;
   uStack_18 = param_4;
   ManagedSprite_GetPositionXYWithSubscreenOffset

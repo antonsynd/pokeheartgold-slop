@@ -97,7 +97,7 @@ undefined4 ov01_021E90E4(int param_1,int *param_2,undefined4 param_3,undefined4 
   char cStack_3c;
   undefined1 auStack_28 [16];
   undefined4 uStack_18;
-  
+
   iVar3 = *param_2;
   uStack_18 = param_4;
   if (iVar3 < 0x65) {

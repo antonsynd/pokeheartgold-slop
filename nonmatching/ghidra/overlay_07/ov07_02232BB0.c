@@ -49,7 +49,7 @@ void ov07_02232BB0(undefined4 param_1,int *param_2,undefined4 param_3,undefined4
 {
   int iVar1;
   int iVar2;
-  
+
   ov07_02231DE0(param_1,param_2,0,1,param_4);
   switch(param_1) {
   case 0:

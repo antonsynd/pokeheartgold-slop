@@ -62,7 +62,7 @@ void ov109_021E7248(undefined4 *param_1,int param_2)
 {
   undefined4 uVar1;
   uint uVar2;
-  
+
   ScheduleBgTilemapBufferTransfer(param_1[5],6);
   ScheduleBgTilemapBufferTransfer(param_1[5],7);
   FillWindowPixelBuffer(param_1 + 0x1c,0);

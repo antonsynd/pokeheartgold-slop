@@ -54,7 +54,7 @@ void sub_02017F10(undefined4 *param_1)
   int iVar4;
   int iVar5;
   int iVar6;
-  
+
   iVar3 = param_1[2] + param_1[3] * param_1[5];
   *(int *)param_1[9] = *(int *)param_1[9] + iVar3;
   cVar1 = *(char *)(param_1 + 0xb);

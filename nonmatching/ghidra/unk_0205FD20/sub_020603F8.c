@@ -62,7 +62,7 @@ void sub_020603F8(undefined4 param_1,undefined4 param_2,undefined4 param_3,ushor
 {
   int iVar1;
   uint uVar2;
-  
+
   MapObject_GetManager();
   iVar1 = MapObjectManager_NotEndMovement();
   if ((iVar1 != 0) && (uVar2 = (*param_4 & 0x7f) >> 4, uVar2 != 0)) {

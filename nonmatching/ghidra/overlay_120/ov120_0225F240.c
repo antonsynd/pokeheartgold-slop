@@ -49,7 +49,7 @@ undefined2 ov120_0225F240(int param_1)
   undefined2 uVar1;
   int iVar2;
   uint uVar3;
-  
+
   iVar2 = *(int *)(param_1 + 0x100);
   *(int *)(param_1 + 0x100) = iVar2 + 1;
   uVar1 = *(undefined2 *)(param_1 + iVar2 * 2);

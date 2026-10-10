@@ -57,7 +57,7 @@ void ov07_02223240(undefined4 param_1,int *param_2,undefined4 param_3,undefined4
 {
   int iVar1;
   int *piVar2;
-  
+
   if ((char)param_2[1] == '\0') {
     ov07_022227A8(param_2 + 0x1f,(int)(short)param_2[8],(int)*(short *)((int)param_2 + 0x22),
                   (int)(short)param_2[9],(int)*(short *)((int)param_2 + 0x26));

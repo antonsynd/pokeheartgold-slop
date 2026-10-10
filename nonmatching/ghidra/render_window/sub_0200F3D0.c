@@ -49,7 +49,7 @@ void sub_0200F3D0(undefined4 param_1,int param_2,undefined4 param_3,undefined4 p
 
 {
   byte bVar1;
-  
+
   if ((*(byte *)(param_2 + 0x488) & 3) != 0) {
     if ((*(byte *)(param_2 + 0x488) & 3) == 1) {
       sub_0200F1D4(param_2,2,1,param_4,param_4);

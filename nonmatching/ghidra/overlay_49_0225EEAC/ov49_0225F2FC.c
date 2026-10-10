@@ -56,7 +56,7 @@ undefined4 ov49_0225F2FC(undefined4 param_1,undefined4 param_2)
   undefined4 uStack_18;
   undefined4 uStack_14;
   undefined4 uStack_10;
-  
+
   uVar1 = ov49_02259FF0();
   uVar1 = ov49_02258C28(uVar1,param_2);
   uVar2 = ov49_0225A008(param_1);

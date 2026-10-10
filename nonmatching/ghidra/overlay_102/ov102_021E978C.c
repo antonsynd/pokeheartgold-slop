@@ -55,7 +55,7 @@ void ov102_021E978C(int *param_1,undefined4 param_2,undefined4 param_3,undefined
 {
   uint uVar1;
   int iVar2;
-  
+
   iVar2 = *param_1;
   uRam04000304 = uRam04000304 & 0x7fff;
   func_0x020cd9fc(1,0,1,param_4,param_4);

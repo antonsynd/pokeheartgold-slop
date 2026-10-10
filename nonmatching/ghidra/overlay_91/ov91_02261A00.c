@@ -55,7 +55,7 @@ void ov91_02261A00(short *param_1,undefined4 param_2,undefined4 param_3,undefine
 
 {
   int iVar1;
-  
+
   if ((char)param_1[1] != '\0') {
     switch(*param_1) {
     case 0:

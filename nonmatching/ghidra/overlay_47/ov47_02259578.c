@@ -78,7 +78,7 @@ ov47_02259578(int param_1,undefined4 param_2,undefined4 param_3,undefined4 param
   undefined4 uStack_24;
   undefined1 auStack_20 [8];
   undefined4 uStack_18;
-  
+
   uStack_18 = param_4;
   switch(*(undefined2 *)(param_1 + 0x60)) {
   case 0:

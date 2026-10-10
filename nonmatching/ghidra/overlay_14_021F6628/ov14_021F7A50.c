@@ -50,7 +50,7 @@ undefined4 ov14_021F7A50(int param_1,undefined4 param_2,undefined4 param_3,undef
 
 {
   undefined4 uVar1;
-  
+
   func_0x02019fd0(*(undefined4 *)(*(int *)(param_1 + 0x34) + 0x2c),0x2b,param_3,param_4,param_4);
   func_0x02019fd0(*(undefined4 *)(*(int *)(param_1 + 0x34) + 0x2c),0x2c);
   func_0x02019fd0(*(undefined4 *)(*(int *)(param_1 + 0x34) + 0x2c),0x2d);

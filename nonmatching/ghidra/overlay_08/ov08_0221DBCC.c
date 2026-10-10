@@ -51,7 +51,7 @@ void ov08_0221DBCC(undefined4 param_1,int param_2,undefined4 param_3,undefined4 
 
 {
   undefined4 uVar1;
-  
+
   if (((param_2 != 0x41) && (param_2 != 0x43)) && (param_2 != 0x42)) {
     uVar1 = func_0x0223aa80();
     Bag_TakeItem(uVar1,param_2,1,param_4);

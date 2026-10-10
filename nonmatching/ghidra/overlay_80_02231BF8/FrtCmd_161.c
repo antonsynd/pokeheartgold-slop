@@ -50,7 +50,7 @@ undefined4 FrtCmd_161(undefined4 *param_1)
 {
   undefined2 *puVar1;
   int iVar2;
-  
+
   puVar1 = (undefined2 *)FrontierScript_ReadVarPtr();
   iVar2 = Frontier_GetData(*(undefined4 *)*param_1);
   *puVar1 = (short)*(undefined4 *)(iVar2 + 0x1c);

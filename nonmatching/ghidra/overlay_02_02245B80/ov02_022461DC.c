@@ -67,7 +67,7 @@ undefined4 ov02_022461DC(undefined4 param_1)
   undefined4 uStack_18;
   undefined4 uStack_14;
   undefined4 uStack_10;
-  
+
   puVar1 = (undefined4 *)TaskManager_GetEnvironment();
   switch(*(undefined2 *)((int)puVar1 + 0x12)) {
   case 0:

@@ -51,7 +51,7 @@ void ov18_021F40E4(int *param_1,undefined4 param_2,undefined4 param_3,undefined4
   int iVar1;
   int iVar2;
   uint uVar3;
-  
+
   iVar1 = *(int *)(*param_1 + 0x10);
   iVar2 = *(int *)(*param_1 + 0x14);
   uVar3 = (iVar1 + ((uint)(iVar1 >> 4) >> 0x1b) & 0x1fffff) >> 5;

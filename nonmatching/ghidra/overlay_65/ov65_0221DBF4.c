@@ -49,7 +49,7 @@ void ov65_0221DBF4(uint *param_1)
 {
   uint uVar1;
   char cVar2;
-  
+
   cVar2 = (uRam021d1158 & 0x40) != 0;
   uVar1 = (uint)(byte)cVar2;
   if ((uRam021d1158 & 0x80) != 0) {

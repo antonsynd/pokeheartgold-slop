@@ -70,7 +70,7 @@ undefined4 ov14_021F19F0(int param_1,undefined1 param_2,undefined4 param_3,undef
   short sStack_10;
   short sStack_e;
   undefined4 uStack_c;
-  
+
   *(undefined1 *)(param_1 + 0x21) = param_2;
   uStack_c = param_4;
   uVar1 = ov14_021E6070(param_1,*(undefined1 *)(param_1 + 0x21),6,0);

@@ -53,7 +53,7 @@ void ov08_02220A50(int *param_1)
   undefined4 uVar1;
   uint uVar2;
   int *piVar3;
-  
+
   uVar1 = func_0x0223a8e4(*(undefined4 *)(*param_1 + 8));
   uVar2 = 0;
   piVar3 = param_1;

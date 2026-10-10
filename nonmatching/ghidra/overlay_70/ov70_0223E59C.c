@@ -51,7 +51,7 @@ undefined4 ov70_0223E59C(undefined4 param_1)
 {
   undefined4 uVar1;
   int iVar2;
-  
+
   uVar1 = func_0x0206ddd8();
   iVar2 = GetBoxMonData(param_1,6,0);
   func_0x0206de00(param_1,uVar1);

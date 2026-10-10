@@ -52,7 +52,7 @@ ov14_021E6AA0(undefined4 param_1,undefined4 param_2,undefined4 param_3,undefined
   ushort uVar1;
   int iVar2;
   uint uVar3;
-  
+
   iVar2 = ov14_021E6070(param_1,param_3,0xac,0,param_4);
   if (iVar2 == 0) {
     return 0;

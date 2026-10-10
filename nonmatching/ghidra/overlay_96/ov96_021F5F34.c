@@ -51,7 +51,7 @@ void ov96_021F5F34(int param_1,int param_2,undefined4 param_3,int param_4)
   int iStack_14;
   undefined4 uStack_10;
   int iStack_c;
-  
+
   iStack_18 = param_1 << 0xc;
   iStack_14 = param_2 * 0x1000 + 0xc0000;
   uStack_10 = 0;

@@ -58,7 +58,7 @@ void ov01_022059AC(int param_1,undefined4 param_2,undefined4 param_3,undefined4 
   undefined4 uVar2;
   undefined4 uVar3;
   int iVar4;
-  
+
   if (*(char *)(param_1 + 0xf9) != '\0') {
     if (*(char *)(param_1 + 0xfa) == '\0') {
       uVar1 = PlayerAvatar_GetXCoord(*(undefined4 *)(param_1 + 0x40));

@@ -55,7 +55,7 @@ void ov37_021E755C(int param_1)
   int iVar2;
   undefined1 *puVar3;
   undefined1 *puVar4;
-  
+
   iVar2 = sub_0203769C();
   if (iVar2 == 0) {
     iVar2 = sub_0203783C();

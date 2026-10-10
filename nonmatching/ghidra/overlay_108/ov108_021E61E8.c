@@ -48,7 +48,7 @@ void ov108_021E61E8(int param_1)
 
 {
   byte bVar1;
-  
+
   bVar1 = *(byte *)(param_1 + 0x184e2) >> 3;
   if (bVar1 == 0) {
     ov108_021E78F4(param_1,0,*(undefined1 *)(param_1 + 0x184df));

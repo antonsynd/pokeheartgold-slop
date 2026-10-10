@@ -50,7 +50,7 @@ undefined4 ov89_0225B91C(undefined4 param_1,int param_2,undefined4 param_3,undef
 {
   int iVar1;
   int *piVar2;
-  
+
   piVar2 = (int *)(param_2 + 0x94);
   if (*(char *)(param_2 + 0x9a) == '\0') {
     *piVar2 = 0x1000;

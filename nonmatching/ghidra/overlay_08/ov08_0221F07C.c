@@ -61,7 +61,7 @@ void ov08_0221F07C(int *param_1,int param_2,undefined4 param_3,undefined4 param_
   undefined4 uVar4;
   int iVar5;
   uint uVar6;
-  
+
   param_2 = param_2 * 0x10;
   iVar5 = param_1[0x81c];
   uVar1 = NewString_ReadMsgData(param_1[0x7ea],0x2e);

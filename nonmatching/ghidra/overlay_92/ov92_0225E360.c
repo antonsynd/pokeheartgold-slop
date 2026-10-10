@@ -54,7 +54,7 @@ void ov92_0225E360(int *param_1,undefined4 param_2,undefined4 param_3,undefined4
   int iVar1;
   int iVar2;
   int *piVar3;
-  
+
   iVar2 = 0;
   if (0 < param_1[1]) {
     piVar3 = param_1 + 0x7fc;

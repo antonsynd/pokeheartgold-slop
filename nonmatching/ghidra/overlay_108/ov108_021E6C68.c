@@ -66,7 +66,7 @@ void ov108_021E6C68(undefined4 *param_1)
   undefined4 uStack_fc;
   undefined4 uStack_f8;
   undefined4 auStack_f4 [56];
-  
+
   ov108_021E6C48();
   uRam04000304 = uRam04000304 & 0x7fff;
   uVar1 = BgConfig_Alloc(*param_1);

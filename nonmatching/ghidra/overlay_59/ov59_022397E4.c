@@ -56,7 +56,7 @@ void ov59_022397E4(undefined4 *param_1)
   char cVar4;
   int iVar5;
   short sVar6;
-  
+
   iVar5 = 0;
   iVar2 = 0x223c798;
   puVar3 = param_1 + 0x4a;

@@ -53,7 +53,7 @@ undefined4 ov40_0223131C(int param_1,undefined4 param_2,undefined4 param_3,undef
 
 {
   int iVar1;
-  
+
   iVar1 = *(int *)(param_1 + 8);
   if (iVar1 == 0) {
     sub_02087948(*(undefined4 *)(param_1 + 0x6f0),0x80,0x60,param_4,param_4);

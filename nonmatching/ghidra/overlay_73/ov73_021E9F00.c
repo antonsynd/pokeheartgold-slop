@@ -50,7 +50,7 @@ undefined4 ov73_021E9F00(int param_1)
 {
   int iVar1;
   undefined4 uVar2;
-  
+
   iVar1 = TextPrinterCheckActive(*(uint *)(param_1 + 0xbf4) & 0xff);
   if (iVar1 == 0) {
     uVar2 = ov73_021E8390(*(undefined4 *)(param_1 + 4),10,0x244);

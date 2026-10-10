@@ -79,7 +79,7 @@ void ov92_0225D594(undefined4 param_1)
   undefined1 auStack_60 [28];
   undefined1 auStack_44 [28];
   undefined1 auStack_28 [28];
-  
+
   GfGfx_DisableEngineAPlanes();
   uStack_fc = 1;
   uStack_f8 = 0;

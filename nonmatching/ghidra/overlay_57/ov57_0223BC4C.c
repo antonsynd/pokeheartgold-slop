@@ -50,7 +50,7 @@ void ov57_0223BC4C(int *param_1,int param_2,undefined4 param_3,undefined4 param_
 {
   undefined4 uStack_18;
   undefined4 uStack_14;
-  
+
   uStack_18 = 0;
   uStack_14 = param_4;
   if (param_1[param_2 * 2 + 1] != 0xff) {

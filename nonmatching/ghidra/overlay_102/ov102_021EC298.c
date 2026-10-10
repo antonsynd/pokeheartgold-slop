@@ -51,7 +51,7 @@ void ov102_021EC298(undefined4 *param_1,undefined4 param_2,undefined4 param_3,in
 
 {
   undefined4 uVar1;
-  
+
   *param_1 = param_2;
   param_1[1] = param_3;
   if (param_4 == 0) {

@@ -54,7 +54,7 @@ undefined4 ov96_0220CA28(int param_1)
 
 {
   undefined4 uVar1;
-  
+
   uVar1 = 0;
   if (param_1 == 0) {
     GF_AssertFail();

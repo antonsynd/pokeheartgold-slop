@@ -52,7 +52,7 @@ void ov86_021E720C(int param_1)
 
 {
   undefined4 uVar1;
-  
+
   ov86_021E74F0();
   ov86_021E7418(param_1);
   ov86_021E7598(param_1);

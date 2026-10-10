@@ -48,7 +48,7 @@ undefined4 EventObjectMovementMan_IsFinish(void)
 
 {
   int iVar1;
-  
+
   iVar1 = SysTask_GetData();
   return *(undefined4 *)(iVar1 + 4);
 }

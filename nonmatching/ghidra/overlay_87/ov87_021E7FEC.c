@@ -49,7 +49,7 @@ void ov87_021E7FEC(int param_1,int param_2,int param_3)
 {
   int iStack_10;
   int iStack_c;
-  
+
   iStack_c = param_3 * 0x1000;
   iStack_10 = param_2 << 0xc;
   if (*(char *)(param_1 + 2) == '\x01') {

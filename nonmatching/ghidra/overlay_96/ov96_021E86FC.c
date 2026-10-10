@@ -49,7 +49,7 @@ int ov96_021E86FC(int param_1,uint param_2)
 
 {
   int iVar1;
-  
+
   if (3 < param_2) {
     GF_AssertFail();
   }

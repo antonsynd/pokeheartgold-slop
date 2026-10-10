@@ -65,7 +65,7 @@ void ov92_02261BA0(undefined4 param_1,undefined4 *param_2)
   int iVar3;
   undefined1 auStack_18 [4];
   undefined1 auStack_14 [4];
-  
+
   iVar1 = IsPaletteFadeFinished();
   if ((iVar1 == 0) || (*(char *)(param_2[0x5f] + 0x34) == '\x01')) {
     SysTask_Destroy(param_1);

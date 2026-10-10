@@ -51,7 +51,7 @@ void ov99_021E8FEC(int param_1,undefined4 param_2)
   int iVar2;
   int iVar3;
   undefined4 uStack_1c;
-  
+
   iVar1 = 0;
   uStack_1c = 0;
   do {

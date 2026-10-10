@@ -53,7 +53,7 @@ undefined4 ov39_02228BAC(int param_1,undefined4 param_2,undefined4 param_3,undef
 {
   int iVar1;
   undefined4 uVar2;
-  
+
   iVar1 = ov39_02228A70(*(undefined4 *)(param_1 + 0x40));
   if (iVar1 != 1) {
     switch(*(undefined4 *)(param_1 + 0x94)) {

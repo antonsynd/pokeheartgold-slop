@@ -61,7 +61,7 @@ undefined4 ov01_021F2758(short *param_1)
   int iVar3;
   int iVar4;
   undefined4 uVar5;
-  
+
   iVar1 = PlayerAvatar_GetXCoord(*(undefined4 *)(param_1 + 8));
   iVar2 = GetDeltaXByFacingDirection(*(undefined4 *)(param_1 + 2));
   iVar3 = PlayerAvatar_GetZCoord(*(undefined4 *)(param_1 + 8));

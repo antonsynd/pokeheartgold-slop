@@ -54,7 +54,7 @@ undefined4 ov14_021EE578(int param_1)
 {
   int iVar1;
   undefined4 uVar2;
-  
+
   iVar1 = func_0x02073f64(*(undefined4 *)(param_1 + 4),*(undefined1 *)(param_1 + 0x25));
   if (iVar1 == 0x1e) {
     ov14_021F685C(param_1,0,4,0x25);

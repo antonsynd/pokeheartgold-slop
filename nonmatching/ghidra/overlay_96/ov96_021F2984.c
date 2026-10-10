@@ -49,7 +49,7 @@ void ov96_021F2984(uint param_1,undefined4 param_2,undefined4 param_3,undefined4
 {
   uint uVar1;
   uint uVar2;
-  
+
   if ((param_1 == 0) || (6 < param_1)) {
     if ((param_1 < 0x10) || (0x1c < param_1)) {
       if ((param_1 < 0x26) || (0x2a < param_1)) {

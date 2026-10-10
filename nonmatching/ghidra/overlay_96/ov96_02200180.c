@@ -69,7 +69,7 @@ void ov96_02200180(undefined4 *param_1,undefined4 param_2,undefined4 param_3,und
   undefined4 uStack_2c;
   undefined4 uStack_28;
   int aiStack_24 [4];
-  
+
   iVar2 = 0;
   aiStack_24[3] = param_4;
   do {

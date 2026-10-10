@@ -52,7 +52,7 @@ undefined4 MapObjectMovementCmd075_Step1(undefined4 param_1)
 {
   int iVar1;
   int iVar2;
-  
+
   iVar1 = sub_0205F3E4();
   iVar2 = func_0x022003f4(*(undefined4 *)(iVar1 + 4));
   if (iVar2 == 1) {

@@ -49,7 +49,7 @@ int ov13_022245C4(undefined4 param_1,undefined4 param_2,undefined4 param_3,undef
 
 {
   int iVar1;
-  
+
   iVar1 = func_0x020a3038(param_1,param_4,param_5,0,param_2);
   if (iVar1 < 0) {
     iVar1 = -4;

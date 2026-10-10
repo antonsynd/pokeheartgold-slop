@@ -56,7 +56,7 @@ void ov109_021E6EE4(int param_1)
   undefined *puVar2;
   int iVar3;
   int iVar4;
-  
+
   puVar2 = &ov109_021E7A58;
   iVar4 = 0;
   iVar3 = param_1;

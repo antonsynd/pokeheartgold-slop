@@ -49,7 +49,7 @@ undefined4 ov01_021F2734(short *param_1,undefined4 param_2)
 
 {
   int iVar1;
-  
+
   iVar1 = IsCryFinished();
   if (iVar1 != 0) {
     return 0;

@@ -57,7 +57,7 @@ undefined4 * ov106_021E5E0C(undefined4 *param_1)
   undefined4 uVar4;
   undefined4 *puVar5;
   int iVar6;
-  
+
   uVar1 = CreateSysTaskAndEnvironment(0x21e5ee5,0x38,5,param_1[10]);
   puVar2 = (undefined4 *)SysTask_GetData();
   puVar5 = puVar2 + 1;

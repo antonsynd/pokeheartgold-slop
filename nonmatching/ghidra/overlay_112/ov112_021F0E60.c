@@ -56,7 +56,7 @@ undefined4 ov112_021F0E60(int param_1,undefined4 param_2,undefined4 param_3,unde
   undefined1 uStack_e;
   undefined1 uStack_d;
   undefined4 uStack_c;
-  
+
   uStack_10 = 0xa0;
   uStack_f = 0xc0;
   uStack_e = 0xb8;

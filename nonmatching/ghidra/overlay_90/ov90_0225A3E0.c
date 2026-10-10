@@ -52,7 +52,7 @@ void ov90_0225A3E0(int param_1,undefined4 param_2,undefined4 param_3,undefined4 
 
 {
   int iVar1;
-  
+
   *(undefined2 *)(param_1 + 0x2c) = 0;
   *(undefined2 *)(param_1 + 0x2e) = 0;
   iVar1 = *(int *)(param_1 + 0x10) * 4;

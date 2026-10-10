@@ -48,7 +48,7 @@ undefined4 ov07_022332C8(int param_1,undefined4 param_2,undefined4 param_3,undef
 
 {
   int iVar1;
-  
+
   iVar1 = *(int *)(param_1 + 0xc) + 1;
   *(int *)(param_1 + 0xc) = iVar1;
   if (0xd < iVar1) {

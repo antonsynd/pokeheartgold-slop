@@ -57,7 +57,7 @@ void ov69_021E6308(int param_1,undefined4 param_2,undefined4 param_3,undefined4 
   undefined4 uStack_18;
   uint uStack_14;
   undefined4 uStack_10;
-  
+
   iVar1 = 0;
   *(undefined4 *)(param_1 + 0xc308) = 0;
   if ((((uRam021d116c < 0xc0) || (0x100 < uRam021d116c)) || (uRam021d116e < 0xa0)) ||

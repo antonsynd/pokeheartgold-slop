@@ -54,7 +54,7 @@ undefined4 ov59_02238218(int param_1)
 
 {
   int iVar1;
-  
+
   switch(*(undefined2 *)(param_1 + 0x3c)) {
   case 0:
     ov59_02238FF4(param_1,2);

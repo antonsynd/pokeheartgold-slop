@@ -56,7 +56,7 @@ undefined4 ov14_021E9234(int param_1)
   int iVar2;
   uint uStack_18;
   undefined4 uStack_14;
-  
+
   iVar2 = *(int *)(param_1 + 0x34);
   if (*(short *)(iVar2 + 0x10) == 0) {
     uStack_18 = (uint)*(byte *)(param_1 + 0x1f);

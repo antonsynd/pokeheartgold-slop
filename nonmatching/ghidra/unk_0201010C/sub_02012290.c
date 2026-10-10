@@ -49,7 +49,7 @@ void sub_02012290(int param_1)
 {
   int iVar1;
   int iVar2;
-  
+
   iVar2 = 0;
   if (0 < *(int *)(param_1 + 0x10)) {
     iVar1 = 0;

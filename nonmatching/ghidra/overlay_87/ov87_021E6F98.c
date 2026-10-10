@@ -54,7 +54,7 @@ void ov87_021E6F98(int param_1,undefined4 param_2,undefined4 param_3,int param_4
 {
   int iVar1;
   int iVar2;
-  
+
   iVar2 = param_4;
   FillWindowPixelBuffer(param_2,param_9);
   ReadMsgDataIntoString(*(undefined4 *)(param_1 + 0x38),param_3,*(undefined4 *)(param_1 + 0x44));

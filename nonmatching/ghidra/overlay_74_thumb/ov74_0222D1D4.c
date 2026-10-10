@@ -59,7 +59,7 @@ void ov74_0222D1D4(undefined4 param_1,undefined4 param_2)
   undefined4 uVar1;
   undefined4 uVar2;
   undefined4 uVar3;
-  
+
   uVar1 = NewMsgDataFromNarc(1,0x1b,0xf7,0x55);
   uVar2 = MessageFormat_New(0x55);
   uVar3 = GetFontAttribute(1,6);

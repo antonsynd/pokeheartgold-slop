@@ -49,7 +49,7 @@ undefined4 ov01_021F0B44(void)
 
 {
   undefined4 uVar1;
-  
+
   uVar1 = Heap_Alloc(4,0xe8);
   func_0x020e5b44(uVar1,0,0xe8);
   return uVar1;

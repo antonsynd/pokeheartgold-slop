@@ -53,7 +53,7 @@ void ov48_02259650(undefined4 *param_1)
 {
   int iVar1;
   uint *puVar2;
-  
+
   puVar2 = (uint *)&ov48_0225B1B0;
   iVar1 = 0;
   do {

@@ -48,7 +48,7 @@ int ov96_021E9A54(int param_1,undefined4 param_2,int param_3)
 
 {
   int iVar1;
-  
+
   iVar1 = PokeathlonCourse_GetFieldBA4(param_2);
   return iVar1 + param_3 * param_1;
 }

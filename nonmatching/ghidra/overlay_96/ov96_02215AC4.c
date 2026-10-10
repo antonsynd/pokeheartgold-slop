@@ -94,7 +94,7 @@ ov96_02215AC4(undefined4 param_1,undefined4 param_2,undefined4 param_3,undefined
   undefined4 *puVar2;
   undefined4 uVar3;
   int iVar4;
-  
+
   puVar2 = (undefined4 *)PokeathlonCourse_GetHeapAllocPtr4();
   uVar3 = PokeathlonCourse_GetField1ED(param_1);
   switch(uVar3) {

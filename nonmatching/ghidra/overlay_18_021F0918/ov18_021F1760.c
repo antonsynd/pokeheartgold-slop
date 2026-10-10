@@ -56,7 +56,7 @@ void ov18_021F1760(int param_1,int param_2,short param_3,int param_4)
   short sStack_1c;
   short sStack_1a;
   int iStack_18;
-  
+
   uVar3 = 0;
   uVar4 = 0;
   iStack_18 = param_4;

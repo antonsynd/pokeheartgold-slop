@@ -61,7 +61,7 @@ void sub_02034A20(undefined *param_1)
   int iVar4;
   int iVar5;
   int iStack_18;
-  
+
   puVar1 = sub_0202C6F4(param_1);
   iVar5 = 0;
   iVar2 = sub_02037454();

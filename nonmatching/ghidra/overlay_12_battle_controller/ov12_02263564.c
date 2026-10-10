@@ -58,7 +58,7 @@ void ov12_02263564(undefined4 param_1,int param_2,int param_3,undefined4 param_4
   undefined4 uStack_20;
   int iStack_1c;
   int iStack_18;
-  
+
   uVar1 = BattleSystem_GetPartyMon(param_1,param_3,*(undefined1 *)(param_2 + param_3 + 0x219c));
   uVar2 = GetMonData(uVar1,5,0);
   iVar3 = GetMonData(uVar1,0xa1,0);

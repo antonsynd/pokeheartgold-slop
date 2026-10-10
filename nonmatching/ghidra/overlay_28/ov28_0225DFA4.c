@@ -48,7 +48,7 @@ void ov28_0225DFA4(int *param_1)
 
 {
   int iVar1;
-  
+
   iVar1 = func_0x020f2ba4(param_1[1] + *param_1 * 2,3);
   param_1[2] = iVar1;
   return;

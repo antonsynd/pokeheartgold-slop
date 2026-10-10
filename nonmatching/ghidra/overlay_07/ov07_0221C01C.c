@@ -62,7 +62,7 @@ undefined4 ov07_0221C01C(undefined4 *param_1,undefined1 *param_2,int param_3,int
   int iVar8;
   int iStack_80;
   int aiStack_78 [25];
-  
+
   ov07_0221C69C();
   iVar2 = ov07_0221C3DC(param_1);
   if (iVar2 == 0) {

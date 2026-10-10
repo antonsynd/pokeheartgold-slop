@@ -48,7 +48,7 @@ uint ov102_021E8F90(int param_1,int param_2)
 
 {
   uint uVar1;
-  
+
   if (*(int *)(param_1 + 4) == 2) {
     uVar1 = MailMsg_GetFieldI(param_1 + 8);
     return uVar1;

@@ -56,7 +56,7 @@ void ov96_021F6138(int param_1)
 
 {
   undefined4 uVar1;
-  
+
   func_0x020c2698();
   func_0x020cf704();
   uRam04000540 = 2;

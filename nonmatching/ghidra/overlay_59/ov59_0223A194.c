@@ -52,7 +52,7 @@ undefined4 ov59_0223A194(int param_1,uint param_2)
 
 {
   char cVar1;
-  
+
   if (param_2 < 7) {
     ov59_022388C4(param_1);
     if (*(char *)(param_1 + param_2 + 0x1a) == '\0') {

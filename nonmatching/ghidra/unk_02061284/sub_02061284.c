@@ -53,7 +53,7 @@ void sub_02061284(undefined4 param_1,undefined4 param_2)
 {
   undefined2 uVar1;
   int iVar2;
-  
+
   iVar2 = sub_0205F370(param_1,8);
   uVar1 = sub_02061E20(&UNK_020fd7b8,0xffffffff);
   *(undefined2 *)(iVar2 + 2) = uVar1;

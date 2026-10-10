@@ -52,7 +52,7 @@ undefined4 ov70_0223BF00(int param_1,undefined4 param_2,undefined4 param_3,undef
 
 {
   int iVar1;
-  
+
   if (*(short *)(param_1 + 0xb8a) == 0) {
     ov70_0223CAC4(param_1,0xc,1,0,0xf0f,param_4);
     ov70_02238D84(param_1,0x15,1);

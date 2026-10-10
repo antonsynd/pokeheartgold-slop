@@ -49,7 +49,7 @@ undefined4 ov73_021E7D54(undefined4 param_1,undefined4 param_2,undefined4 param_
 
 {
   int iVar1;
-  
+
   iVar1 = sub_02034818();
   if (iVar1 == 0) {
     return 0;

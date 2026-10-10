@@ -48,7 +48,7 @@ int ov91_0225E070(int param_1,int param_2)
 
 {
   int iVar1;
-  
+
   iVar1 = func_0x020f2998(param_2 * 0x168,0xffff);
   iVar1 = func_0x020f2998(iVar1 * *(int *)(param_1 + 0xc4),0x5a);
   return iVar1 + *(int *)(param_1 + 0xc0);

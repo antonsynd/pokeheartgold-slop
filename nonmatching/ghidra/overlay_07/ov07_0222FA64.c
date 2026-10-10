@@ -58,7 +58,7 @@ void ov07_0222FA64(undefined4 param_1,undefined4 *param_2,undefined4 param_3,und
 {
   undefined4 *puVar1;
   int iVar2;
-  
+
   switch(param_2[3]) {
   case 0:
     ov07_0222F9B8(param_2);

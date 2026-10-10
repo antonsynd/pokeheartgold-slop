@@ -55,7 +55,7 @@ void ov12_02260EA4(undefined4 param_1,undefined4 *param_2)
   uint uVar2;
   int iVar3;
   undefined4 uVar4;
-  
+
   uVar1 = BattleSystem_GetBattleType();
   uVar2 = BattleSystem_GetBattleSpecial(param_1);
   if ((uVar1 & 0x40) != 0) {

@@ -52,7 +52,7 @@ undefined4 ov14_021E9450(int param_1)
   int iVar2;
   int iVar3;
   int iVar4;
-  
+
   iVar1 = ov14_021E8514(*(undefined4 *)(*(int *)(param_1 + 0x34) + 0x2f0));
   iVar2 = sub_02019978(*(undefined4 *)(*(int *)(param_1 + 0x34) + 0x2f0),8);
   iVar3 = sub_02019978(*(undefined4 *)(*(int *)(param_1 + 0x34) + 0x2f0),9);

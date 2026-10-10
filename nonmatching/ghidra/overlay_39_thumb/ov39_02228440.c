@@ -74,7 +74,7 @@ void ov39_02228440(undefined4 param_1,undefined4 param_2,undefined4 param_3,unde
   undefined4 uStack_3c;
   undefined4 auStack_38 [10];
   undefined4 uStack_10;
-  
+
   puVar4 = auStack_b8;
   uStack_10 = param_4;
   GfGfx_DisableEngineAPlanes();

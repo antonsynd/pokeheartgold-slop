@@ -51,7 +51,7 @@ void ov74_02234A0C(undefined4 param_1,undefined4 param_2,undefined4 param_3,unde
 {
   undefined2 uVar1;
   undefined4 uVar2;
-  
+
   AGB_GetBoxMonData(param_1,0xb,0,param_4,param_4);
   uVar1 = TranslateAgbSpecies();
   uVar2 = AGB_GetBoxMonData(param_1,0x19,0);

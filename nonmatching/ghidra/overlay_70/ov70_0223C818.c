@@ -53,7 +53,7 @@ undefined4 ov70_0223C818(int param_1)
 
 {
   int iVar1;
-  
+
   iVar1 = ov70_02242144(*(undefined4 *)(param_1 + 0x11a8));
   if (iVar1 != -1) {
     if ((iVar1 == -2) || (iVar1 == 0x83)) {

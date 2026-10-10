@@ -52,7 +52,7 @@ void sub_020658D4(undefined4 param_1)
 
 {
   undefined4 uVar1;
-  
+
   uVar1 = sub_0205F370(param_1,0xc);
   sub_02065CD0(param_1,uVar1);
   sub_0205F328(param_1,0);

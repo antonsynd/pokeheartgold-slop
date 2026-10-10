@@ -56,7 +56,7 @@ undefined4 ov40_02234470(int param_1)
 {
   int iVar1;
   int iVar2;
-  
+
   iVar2 = *(int *)(param_1 + 0x860);
   iVar1 = TouchscreenHitbox_TouchNewIsIn(&ov40_022451C8);
   if (iVar1 != 0) {

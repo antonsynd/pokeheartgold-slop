@@ -53,7 +53,7 @@ void ov81_022416CC(int param_1,int param_2,undefined4 param_3,undefined4 param_4
   undefined4 uStack_18;
   undefined4 uStack_14;
   undefined4 uStack_10;
-  
+
   uStack_10 = param_4;
   ov81_02243228(*(undefined4 *)(param_1 + 0x464),param_2,&uStack_14,&uStack_18);
   if (param_2 - 4U < 2) {

@@ -59,7 +59,7 @@ undefined4 ov07_022332F4(int param_1,undefined4 param_2,undefined4 param_3,undef
   int iVar3;
   int iVar4;
   int iVar5;
-  
+
   if (*(int *)(param_1 + 8) == 0) {
     if (2 < *(int *)(param_1 + 0x18)) {
       GF_AssertFail();

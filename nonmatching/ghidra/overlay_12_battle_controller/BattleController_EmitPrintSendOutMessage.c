@@ -52,7 +52,7 @@ void BattleController_EmitPrintSendOutMessage
   undefined1 uStack_14;
   undefined1 uStack_13;
   undefined2 uStack_12;
-  
+
   uStack_14 = 0x21;
   uStack_13 = param_4;
   if (*(int *)(param_2 + 0x2e4c) == 0) {

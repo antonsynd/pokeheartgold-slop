@@ -51,7 +51,7 @@ undefined4 sub_02054824(int param_1,int param_2,int param_3,undefined2 *param_4)
   int iVar1;
   int iVar2;
   int iVar3;
-  
+
   iVar2 = MapMatrix_GetWidth(*(undefined4 *)(param_1 + 0x30));
   iVar3 = TerrainAttributes_Get
                     (((int)(param_2 + ((uint)(param_2 >> 4) >> 0x1b)) >> 5) +

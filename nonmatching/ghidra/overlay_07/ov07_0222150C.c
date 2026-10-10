@@ -52,7 +52,7 @@ void ov07_0222150C(undefined4 param_1,int param_2)
   int iVar1;
   uint uVar2;
   int iVar3;
-  
+
   iVar1 = ov07_02221CB4();
   iVar3 = 0;
   if (0 < iVar1) {

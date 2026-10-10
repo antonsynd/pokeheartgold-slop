@@ -52,7 +52,7 @@ void ov96_02203F0C(int param_1)
   uint uVar1;
   int iVar2;
   int iVar3;
-  
+
   uVar1 = 0;
   do {
     iVar2 = param_1 + uVar1 * 8;

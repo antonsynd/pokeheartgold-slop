@@ -67,7 +67,7 @@ void ov99_021E6FD0(int *param_1,undefined4 *param_2)
   int iVar9;
   undefined4 *puVar10;
   undefined4 uVar11;
-  
+
   puVar4 = (undefined4 *)Heap_Alloc(param_1[3],0x1c);
   func_0x020d4994(puVar4,0,0x1c);
   uVar5 = param_2[1];

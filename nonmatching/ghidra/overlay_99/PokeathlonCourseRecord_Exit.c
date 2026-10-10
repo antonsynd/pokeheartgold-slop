@@ -53,7 +53,7 @@ undefined4 PokeathlonCourseRecord_Exit(undefined4 param_1)
 
 {
   undefined4 *puVar1;
-  
+
   puVar1 = (undefined4 *)OverlayManager_GetData();
   SetKeyRepeatTimers(4,8);
   ov99_021E5B74(*puVar1);

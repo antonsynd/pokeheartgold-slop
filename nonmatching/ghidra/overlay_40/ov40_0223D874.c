@@ -52,7 +52,7 @@ void ov40_0223D874(int param_1)
   int iVar2;
   undefined4 uStack_20;
   undefined4 uStack_1c;
-  
+
   uStack_20 = *(int *)(param_1 + 0x860);
   ov40_02230964(param_1,1);
   uStack_1c = 0;

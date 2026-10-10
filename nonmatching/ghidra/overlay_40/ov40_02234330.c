@@ -68,7 +68,7 @@ undefined4 ov40_02234330(int param_1,undefined4 param_2,undefined4 param_3,undef
   undefined4 uVar1;
   int iVar2;
   int iVar3;
-  
+
   iVar3 = *(int *)(param_1 + 0x860);
   iVar2 = *(int *)(param_1 + 8);
   if (iVar2 == 0) {

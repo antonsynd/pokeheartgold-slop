@@ -59,7 +59,7 @@ void ov05_0221E2D8(int *param_1,undefined4 param_2,undefined4 param_3,undefined4
   undefined4 uVar2;
   uint uVar3;
   int *piVar4;
-  
+
   uVar1 = NARC_New(0x14,*(undefined4 *)(*param_1 + 0x24));
   uVar2 = sub_02074490();
   SpriteSystem_LoadPlttResObjFromOpenNarc

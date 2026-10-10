@@ -54,7 +54,7 @@ void ov96_0220C004(int param_1,uint *param_2,undefined4 param_3,undefined4 param
 {
   int iVar1;
   uint uVar2;
-  
+
   if ((int)(*param_2 << 5) < 0) {
     ManagedSprite_SetAnimNoRestart(*(undefined4 *)(param_1 + 0x28),0x10);
     ManagedSprite_SetDrawFlag(*(undefined4 *)(param_1 + 0x28),1);

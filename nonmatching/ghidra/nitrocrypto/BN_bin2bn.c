@@ -55,7 +55,7 @@ int * BN_bin2bn(byte *param_1,int param_2,int *param_3)
   byte *pbVar4;
   int iVar5;
   bool bVar6;
-  
+
   if (param_3 == (int *)0x0) {
     param_3 = (int *)BN_new();
   }

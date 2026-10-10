@@ -57,7 +57,7 @@ void ov27_0225C72C(int param_1)
   undefined4 uVar1;
   int iVar2;
   int iVar3;
-  
+
   uVar1 = G2dRenderer_Init(0x15,param_1 + 0x21c,8);
   *(undefined4 *)(param_1 + 0x218) = uVar1;
   G2dRenderer_SetSubSurfaceCoords(param_1 + 0x21c,0,0x100000);

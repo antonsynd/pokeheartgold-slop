@@ -52,7 +52,7 @@ undefined4 sub_02063CB4(undefined4 param_1)
 {
   char *pcVar1;
   int iVar2;
-  
+
   pcVar1 = (char *)sub_0205F3BC();
   switch(*pcVar1) {
   case '\0':

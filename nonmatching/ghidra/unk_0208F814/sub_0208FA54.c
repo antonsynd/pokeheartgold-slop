@@ -50,7 +50,7 @@ void sub_0208FA54(undefined4 param_1,undefined4 param_2,undefined1 *param_3,int 
 
 {
   int iVar1;
-  
+
   func_0x021e6fc8(param_4,1,*param_3);
   iVar1 = sub_0203769C();
   if ((iVar1 == 0) && (*(int *)(param_4 + 0x300) == 1)) {

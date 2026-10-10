@@ -51,7 +51,7 @@ undefined4 ov74_02236768(short *param_1,undefined4 param_2,undefined4 param_3,un
 
 {
   uint uVar1;
-  
+
   if ((*(short *)(iRam0223e2fc + 0x115a) != *param_1) ||
      (*(int *)(iRam0223e2fc + 0x1160) != *(int *)(param_1 + 2))) {
     uVar1 = *(uint *)(iRam0223e2fc + 0x1164);

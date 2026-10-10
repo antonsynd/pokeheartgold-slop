@@ -48,7 +48,7 @@ undefined4 ov37_021E76A0(uint param_1)
 
 {
   int iVar1;
-  
+
   if (param_1 == 0xff) {
     return 1;
   }

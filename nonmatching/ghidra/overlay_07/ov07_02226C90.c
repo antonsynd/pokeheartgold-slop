@@ -50,7 +50,7 @@ void ov07_02226C90(undefined4 param_1)
 
 {
   int iVar1;
-  
+
   iVar1 = ov07_0221C4A8(param_1,0);
   if (iVar1 != 0) {
     ov07_02222FC4(param_1);

@@ -50,7 +50,7 @@ void ov10_0221EE28(undefined4 param_1,int param_2,undefined4 param_3,undefined4 
 {
   byte bVar1;
   undefined4 uVar2;
-  
+
   bVar1 = *(byte *)(param_2 + 0x3cc);
   *(byte *)(param_2 + 0x3cc) = bVar1 + 1;
   uVar2 = *(undefined4 *)(param_2 + 0x2138);

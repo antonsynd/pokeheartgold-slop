@@ -47,7 +47,7 @@ int sub_0208B85C(int param_1,int param_2,int param_3,char param_4,int param_5)
 
 {
   int iVar1;
-  
+
   iVar1 = 0;
   do {
     if (param_2 < iVar1) {

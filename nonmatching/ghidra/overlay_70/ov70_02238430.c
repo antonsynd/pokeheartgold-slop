@@ -82,7 +82,7 @@ undefined4 ov70_02238430(undefined4 param_1,int *param_2,undefined4 param_3,unde
   undefined4 uStack_20;
   undefined4 uStack_1c;
   undefined4 uStack_18;
-  
+
   uStack_18 = param_4;
   if (*param_2 == 0) {
     Main_SetVBlankIntrCB(0,0);

@@ -51,7 +51,7 @@ int ov112_021EC950(int param_1,undefined4 param_2,undefined4 param_3,undefined4 
   int iVar1;
   int iVar2;
   int iVar3;
-  
+
   *(undefined4 *)(param_1 + 0x1ec54) = 0;
   *(undefined4 *)(param_1 + 0x1ec50) = 0;
   func_0x020d4994(param_1 + 0x1ec58,0xff,0x1e,param_4,param_4);

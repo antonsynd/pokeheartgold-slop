@@ -52,7 +52,7 @@ int ov01_021EDC28(undefined4 param_1,undefined4 param_2,undefined4 param_3,undef
 
 {
   int iVar1;
-  
+
   iVar1 = Heap_Alloc(4,0x2e0);
   if (iVar1 == 0) {
     return 0;

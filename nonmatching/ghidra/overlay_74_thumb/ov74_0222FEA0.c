@@ -49,7 +49,7 @@ void ov74_0222FEA0(uint param_1)
 {
   int *piVar1;
   int iVar2;
-  
+
   piVar1 = (int *)ov74_0223115C();
   iVar2 = 0;
   do {

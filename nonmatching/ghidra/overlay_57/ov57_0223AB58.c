@@ -99,7 +99,7 @@ undefined4 ov57_0223AB58(int *param_1)
   undefined4 local_1c;
   int local_18;
   int local_14;
-  
+
   switch(param_1[0x101]) {
   case 0:
     GfGfx_EngineATogglePlanes(0x10,1);

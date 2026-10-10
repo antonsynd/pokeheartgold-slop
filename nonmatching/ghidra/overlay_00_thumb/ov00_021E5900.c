@@ -60,7 +60,7 @@ undefined4 ov00_021E5900(int param_1,undefined4 param_2,int param_3,undefined4 p
   int iVar1;
   undefined4 uVar2;
   int iVar3;
-  
+
   if (uRam0221a680 != 0) {
     GF_AssertFail();
   }

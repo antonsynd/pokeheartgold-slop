@@ -55,7 +55,7 @@ undefined4 ov82_0223DFBC(int param_1)
 
 {
   int iVar1;
-  
+
   switch(*(undefined1 *)(param_1 + 8)) {
   case 0:
     if ((*(short *)(param_1 + 0x12) == 0) &&

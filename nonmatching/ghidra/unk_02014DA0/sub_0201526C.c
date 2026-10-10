@@ -54,7 +54,7 @@ void sub_0201526C(int *param_1,int param_2,byte param_3,int param_4)
   int *piVar1;
   int *piVar2;
   int iVar3;
-  
+
   if (*param_1 == 0) {
     GF_AssertFail();
   }

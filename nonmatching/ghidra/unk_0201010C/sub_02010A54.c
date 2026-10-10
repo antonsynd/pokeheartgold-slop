@@ -49,7 +49,7 @@ void sub_02010A54(undefined4 param_1,int param_2)
 
 {
   undefined4 uVar1;
-  
+
   uVar1 = sub_020109BC();
   func_0x020ccba0(param_2 / 2 << 0xc,uVar1);
   return;

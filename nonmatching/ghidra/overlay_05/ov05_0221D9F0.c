@@ -58,7 +58,7 @@ void ov05_0221D9F0(int *param_1)
 {
   int iVar1;
   undefined4 uVar2;
-  
+
   iVar1 = func_0x02026eb4(*(undefined4 *)(*param_1 + 0x24),0,4,0,2,0);
   param_1[0x2d6] = iVar1;
   uRam04000060 = uRam04000060 & 0xcfff | 8;

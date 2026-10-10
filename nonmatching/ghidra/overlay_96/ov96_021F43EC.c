@@ -48,7 +48,7 @@ void ov96_021F43EC(int param_1)
 
 {
   uint uVar1;
-  
+
   uVar1 = 0;
   do {
     *(undefined1 *)(param_1 + uVar1 + 0x70) = 0;

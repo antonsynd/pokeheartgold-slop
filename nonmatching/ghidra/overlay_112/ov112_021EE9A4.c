@@ -55,7 +55,7 @@ void ov112_021EE9A4(undefined4 param_1,undefined4 param_2,undefined4 param_3,und
   undefined4 uVar1;
   undefined4 uVar2;
   undefined4 uVar3;
-  
+
   uVar3 = param_4;
   uVar1 = func_0x02028f68(param_2,0x9a);
   uVar2 = PlayerProfile_GetTrainerID(param_2);

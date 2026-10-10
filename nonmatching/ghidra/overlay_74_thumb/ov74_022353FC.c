@@ -49,7 +49,7 @@ void ov74_022353FC(undefined4 *param_1)
 
 {
   int iVar1;
-  
+
   iVar1 = IsPaletteFadeFinished();
   if (iVar1 != 0) {
     *param_1 = uRam0223d460;

@@ -54,7 +54,7 @@ void ov96_021EAE4C(undefined4 *param_1,int param_2,int param_3)
   int iStack_20;
   int iStack_1c;
   undefined4 uStack_18;
-  
+
   iStack_20 = 0;
   iStack_1c = 0;
   uStack_18 = 0;

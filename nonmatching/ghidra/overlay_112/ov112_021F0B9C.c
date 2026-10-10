@@ -62,7 +62,7 @@ ov112_021F0B9C(undefined4 *param_1,undefined4 param_2,undefined4 param_3,undefin
   int iStack_34;
   undefined4 uStack_1c;
   undefined4 uStack_10;
-  
+
   uStack_10 = param_4;
   CreateSpriteResourcesHeader
             (auStack_64,param_2,param_2,param_2,param_2,0xffffffff,0xffffffff,0,param_4,

@@ -55,7 +55,7 @@ void ov80_022333F0(int param_1,int param_2)
   undefined4 *puVar2;
   undefined4 uVar3;
   undefined4 uVar4;
-  
+
   iVar1 = ov80_02237D8C(*(undefined1 *)(param_2 + 0x10));
   if (iVar1 == 0) {
     if (*(int *)(param_1 + 0xa8) == 0) {

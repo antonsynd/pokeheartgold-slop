@@ -51,7 +51,7 @@ void ov112_021F1584(undefined4 param_1,short *param_2,undefined4 param_3,undefin
   bool bVar1;
   int iVar2;
   short *psVar3;
-  
+
   bVar1 = true;
   if (*param_2 != 0) {
     iVar2 = 0;

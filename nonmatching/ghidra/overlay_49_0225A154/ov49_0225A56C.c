@@ -54,7 +54,7 @@ void ov49_0225A56C(int param_1,uint param_2)
 {
   undefined4 uVar1;
   uint uVar2;
-  
+
   if (0x13 < param_2) {
     GF_AssertFail();
   }

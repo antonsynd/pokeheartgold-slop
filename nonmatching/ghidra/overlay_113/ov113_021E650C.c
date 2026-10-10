@@ -55,7 +55,7 @@ void ov113_021E650C(undefined4 *param_1,undefined4 param_2,undefined4 param_3,un
 
 {
   undefined4 uVar1;
-  
+
   uVar1 = NARC_New(0xf1,*param_1);
   GfGfxLoader_GXLoadPalFromOpenNarc(uVar1,5,0,0,0,*param_1);
   GfGfxLoader_LoadCharDataFromOpenNarc(uVar1,7,param_1[0x10],3,0,0,1,*param_1,param_4);

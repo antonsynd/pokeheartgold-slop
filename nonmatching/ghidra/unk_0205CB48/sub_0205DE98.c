@@ -48,7 +48,7 @@ undefined4 sub_0205DE98(void)
 
 {
   undefined4 uVar1;
-  
+
   uVar1 = PlayerAvatar_GetUnk8();
   switch(uVar1) {
   case 0x58:

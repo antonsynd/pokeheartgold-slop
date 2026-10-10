@@ -25,3 +25,11 @@ Shared data and types:
 - ov07_02222644, ov07_02231D70, ov07_0223192C, ov07_02231924, ov07_0221BFC0, ov07_0221FAB0 are declared with the prototypes the asm implies.
 - `_s32_div_f` and `FX_Modf` are declared locally; the fork's headers do not declare them.
 - The 0x3FFF and 0xBFFF arguments in ov07_02222338 are the literal values in the asm (the Platinum twin's DEG_TO_IDX constants are not used).
+
+## Status
+
+With the current tools, every function these notes describe as failing or inconclusive passes the check.
+`VERIFIED.tsv` gives the verdict of each, and the file that holds its verified C. These now have their verified C in another file, so their C here was not checked again:
+
+- `ov07_02221EEC`: `ghidra/overlay_07/ov07_02221EEC.c`
+- `ov07_0222212C`: `written/overlay_07/ov07_0222212C.c`

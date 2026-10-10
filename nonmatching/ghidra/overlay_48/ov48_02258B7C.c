@@ -61,7 +61,7 @@ void ov48_02258B7C(int param_1,int param_2,undefined4 param_3,undefined4 param_4
   undefined4 uStack_40;
   undefined4 auStack_3c [9];
   undefined4 uStack_18;
-  
+
   puVar6 = (undefined4 *)&ov48_0225B1EC;
   puVar5 = auStack_3c;
   iVar4 = 4;

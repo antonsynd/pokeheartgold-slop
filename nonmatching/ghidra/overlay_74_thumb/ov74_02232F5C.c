@@ -55,7 +55,7 @@ void ov74_02232F5C(int param_1)
   undefined1 uStack_7;
   byte bStack_6;
   undefined1 uStack_5;
-  
+
   uStack_18 = *(undefined4 *)(param_1 + 0x20);
   uStack_10 = 0x200;
   uStack_c = 8;

@@ -49,7 +49,7 @@ void ov74_02229F28(int param_1,int param_2,undefined4 param_3,undefined4 param_4
 
 {
   undefined4 uVar1;
-  
+
   if (param_2 != -1) {
     uVar1 = ov74_02235930(0,*(undefined4 *)(param_1 + 0x5c4),0x80,100,param_2,param_4);
     *(undefined4 *)(param_1 + 0x5c4) = uVar1;

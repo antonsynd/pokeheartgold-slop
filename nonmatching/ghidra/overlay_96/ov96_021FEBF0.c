@@ -60,7 +60,7 @@ void ov96_021FEBF0(undefined4 param_1,int param_2,int *param_3,undefined4 param_
   int iStack_1c;
   undefined4 uStack_18;
   undefined4 uStack_14;
-  
+
   uStack_14 = param_4;
   switch(*(undefined1 *)(param_2 + 0xa0)) {
   case 0:

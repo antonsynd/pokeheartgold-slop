@@ -52,7 +52,7 @@ undefined4 ov103_021EDD54(int param_1,undefined4 param_2,undefined4 param_3,unde
 {
   undefined4 uVar1;
   int iVar2;
-  
+
   uVar1 = ItemToMailId(*(undefined2 *)(param_1 + 0x22));
   iVar2 = sub_02090E68(**(undefined4 **)(param_1 + 8),2,*(byte *)(param_1 + 0x21) & 0x7f,uVar1,0x9c,
                        param_4);

@@ -54,7 +54,7 @@ uint ov96_02213EC4(int param_1)
   uint uVar2;
   undefined4 uVar3;
   int iVar4;
-  
+
   if (*(char *)(param_1 + 0x39) == '\x03') {
     iVar4 = *(int *)(param_1 + 0xc);
     if (iVar4 == 0x58000) {

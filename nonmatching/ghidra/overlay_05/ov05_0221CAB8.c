@@ -57,7 +57,7 @@ undefined4 ov05_0221CAB8(undefined4 *param_1)
 {
   byte bVar1;
   int iVar2;
-  
+
   if (*(char *)((int)param_1 + 0xb82) == '\0') {
     iVar2 = ov05_0221E9F8(param_1);
     if (iVar2 == 0) {

@@ -52,7 +52,7 @@ void ov102_021EB624(int param_1)
   undefined2 uVar1;
   int *piVar2;
   undefined4 uVar3;
-  
+
   uVar1 = ov102_021E8F7C(*(undefined4 *)(param_1 + 4));
   piVar2 = (int *)Heap_Alloc(0x23,0x1c);
   *piVar2 = param_1;

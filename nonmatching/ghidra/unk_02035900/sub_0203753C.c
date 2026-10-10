@@ -50,7 +50,7 @@ void sub_0203753C(undefined4 param_1,undefined4 param_2,undefined4 param_3)
 
 {
   int iVar1;
-  
+
   iVar1 = sub_02035FF0();
   if (iVar1 == 1) {
     sub_02033DF0(iRam021d4148 + 0x580,param_1,param_2,param_3,1,0);

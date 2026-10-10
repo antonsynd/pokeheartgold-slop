@@ -53,7 +53,7 @@ void ov12_02261928(undefined4 param_1,undefined4 param_2,int param_3)
   int iVar2;
   undefined4 uVar3;
   undefined4 uVar4;
-  
+
   uVar1 = BattleSystem_GetBattleType();
   iVar2 = BattleSystem_GetBattleOutcomeFlags(param_1);
   if ((uVar1 & 2) == 0) {

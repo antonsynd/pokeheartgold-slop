@@ -59,7 +59,7 @@ undefined4 ov87_021E5CEC(int param_1,undefined4 param_2,undefined4 param_3,undef
   undefined4 uStack_20;
   int iStack_1c;
   undefined4 uStack_18;
-  
+
   uVar3 = (uint)*(byte *)(param_1 + (uint)*(byte *)(param_1 + 0xe) + 0x14);
   uStack_18 = param_4;
   switch(*(undefined1 *)(param_1 + 8)) {

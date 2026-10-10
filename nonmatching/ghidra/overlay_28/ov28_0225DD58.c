@@ -56,7 +56,7 @@ void ov28_0225DD58(int param_1)
   int iVar5;
   short *psVar6;
   uint unaff_r7;
-  
+
   DowsingMchn_GetHiddenItemLocs();
   iVar5 = 0;
   *(undefined4 *)(param_1 + 0x20c) = 0;

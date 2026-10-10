@@ -54,7 +54,7 @@ void ov70_022434C0(int param_1,int param_2,int param_3)
   int iVar2;
   int iVar3;
   undefined4 uStack_1c;
-  
+
   iVar3 = param_2 << 2;
   iVar1 = 0;
   uStack_1c = 0;

@@ -65,7 +65,7 @@ undefined4 ov71_0224B57C(undefined4 *param_1,int *param_2)
   undefined4 uVar2;
   int iVar3;
   undefined4 uVar4;
-  
+
   switch(*param_2) {
   case 0:
     param_1[2] = 0;

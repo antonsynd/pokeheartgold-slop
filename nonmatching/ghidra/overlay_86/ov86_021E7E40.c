@@ -50,7 +50,7 @@ void ov86_021E7E40(int param_1,int param_2)
 {
   uint uVar1;
   uint uVar2;
-  
+
   uVar2 = *(uint *)(&UNK_021e8234 + param_2 * 8);
   uVar1 = 0;
   if (uVar2 != 0) {

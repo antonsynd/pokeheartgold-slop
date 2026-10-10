@@ -52,7 +52,7 @@ void sub_02075804(int param_1,undefined4 param_2,undefined4 param_3,undefined4 p
 
 {
   undefined4 uVar1;
-  
+
   uVar1 = ReadMsgData_ExpandPlaceholders
                     (*(undefined4 *)(param_1 + 0xc),*(undefined4 *)(param_1 + 8),param_4,
                      *(undefined4 *)(param_1 + 0x5c));

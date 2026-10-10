@@ -49,7 +49,7 @@ void ov41_0224639C(int param_1)
 
 {
   undefined4 uVar1;
-  
+
   uVar1 = SpriteResourceCollection_Find(*(undefined4 *)(param_1 + 0x54));
   func_0x0200a75c(*(undefined4 *)(param_1 + 0x54),uVar1);
   return;

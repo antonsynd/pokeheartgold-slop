@@ -53,7 +53,7 @@ undefined4 ov70_0223D44C(int param_1,undefined4 param_2,undefined4 param_3,undef
   undefined4 unaff_r4;
   __asm__ volatile("movs %0, r4" : "=l"(unaff_r4) : : "cc");
 
-  
+
   iVar1 = IsPaletteFadeFinished();
   if (iVar1 != 0) {
     if (*(int *)(param_1 + 0x24) == 5) {

@@ -54,7 +54,7 @@ undefined4 ov72_02239A88(undefined4 *param_1)
 {
   int iVar1;
   undefined4 uVar2;
-  
+
   iVar1 = ov72_02237B54();
   if (iVar1 == 0) {
     param_1[0x3f5] = param_1[0x3f5] + 1;

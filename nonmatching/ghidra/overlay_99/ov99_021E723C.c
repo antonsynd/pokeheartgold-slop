@@ -49,7 +49,7 @@ void ov99_021E723C(void)
 
 {
   undefined4 uVar1;
-  
+
   uVar1 = ov99_021E71DC();
   Pokedex_GetSeenSpindaPersonality(uVar1,0);
   return;

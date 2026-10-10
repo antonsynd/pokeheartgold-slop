@@ -62,7 +62,7 @@ undefined4 ov91_0225DE8C(char *param_1,undefined4 param_2,undefined4 param_3,uin
   int iStack_30;
   undefined1 auStack_2c [12];
   undefined1 auStack_20 [12];
-  
+
   uVar3 = 0;
   if (*param_1 == '\0') {
     return 0;

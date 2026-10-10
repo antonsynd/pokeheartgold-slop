@@ -63,7 +63,7 @@ void ov96_02216AA4(byte *param_1,int param_2,undefined4 param_3,undefined4 param
   ushort uStack_1c;
   ushort uStack_1a;
   undefined4 uStack_18;
-  
+
   uStack_18 = param_4;
   iVar2 = PokeathlonCourse_GetDataCopyArea(param_4);
   uStack_1c = (ushort)*param_1;

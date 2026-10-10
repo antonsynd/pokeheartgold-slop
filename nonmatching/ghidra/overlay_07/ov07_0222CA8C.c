@@ -76,7 +76,7 @@ void ov07_0222CA8C(undefined4 param_1)
   uint uVar9;
   undefined4 uVar10;
   undefined4 uVar11;
-  
+
   iVar4 = ov07_0221BFD0();
   puVar5 = (undefined4 *)Heap_Alloc(iVar4,0x68);
   memset((undefined *)puVar5,0,0x68);

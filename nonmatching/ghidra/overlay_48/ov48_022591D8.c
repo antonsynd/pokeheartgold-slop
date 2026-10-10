@@ -66,7 +66,7 @@ uint ov48_022591D8(int param_1)
   int iStack_28;
   int iStack_20;
   int iStack_1c;
-  
+
   uVar1 = ov48_02259BBC(param_1 + 0x224);
   ov48_022598CC(param_1 + 0x178,&iStack_20);
   iVar5 = (iStack_1c + -0x80) * 0x10000 >> 0x10;

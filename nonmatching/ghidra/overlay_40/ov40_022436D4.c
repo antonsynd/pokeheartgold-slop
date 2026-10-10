@@ -57,7 +57,7 @@ void ov40_022436D4(int param_1)
   int iVar7;
   undefined2 *puVar8;
   undefined2 auStack_74 [48];
-  
+
   iVar3 = 0;
   iVar5 = param_1 + 0x238;
   iVar7 = param_1;

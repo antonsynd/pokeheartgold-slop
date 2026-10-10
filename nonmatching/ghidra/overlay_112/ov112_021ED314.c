@@ -49,7 +49,7 @@ void ov112_021ED314(int param_1)
 
 {
   int iVar1;
-  
+
   if ((param_1 != 0) && (iVar1 = func_0x02006184(0x934), iVar1 == 0)) {
     PlaySE(0x934);
   }

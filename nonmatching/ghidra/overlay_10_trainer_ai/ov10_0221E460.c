@@ -51,7 +51,7 @@ void ov10_0221E460(undefined4 param_1,int param_2)
 {
   undefined4 uVar1;
   int iVar2;
-  
+
   ov10_0221EF24(param_2,1);
   uVar1 = ov10_0221EEF0(param_2);
   iVar2 = ov10_0221FD34(param_1,param_2,*(undefined1 *)(param_2 + 0x3cf),1);

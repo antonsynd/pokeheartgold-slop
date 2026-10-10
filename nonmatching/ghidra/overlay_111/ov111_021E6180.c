@@ -61,7 +61,7 @@ void ov111_021E6180(undefined4 *param_1)
   int iVar4;
   undefined4 uVar5;
   undefined4 uVar6;
-  
+
   uVar6 = param_1[3];
   uVar5 = param_1[4];
   SpriteSystem_LoadPlttResObjFromOpenNarc(uVar6,uVar5,param_1[7],5,0,2,1,0);

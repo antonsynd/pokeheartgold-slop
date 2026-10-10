@@ -51,7 +51,7 @@ void ov83_0224088C(int param_1,undefined4 param_2,undefined4 param_3,undefined4 
 
 {
   int iVar1;
-  
+
   FillWindowPixelBuffer(param_1 + 0x3e0,0);
   iVar1 = GetWindowWidth(param_1 + 0x3e0);
   ov83_022479E4(param_1 + 0x3e0,*(undefined4 *)(param_1 + 0x20),0x69,(iVar1 * 8) / 2,0,0,0x10200,2,

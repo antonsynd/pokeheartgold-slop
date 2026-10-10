@@ -53,7 +53,7 @@ void ov49_0225C328(int param_1,int param_2)
 
 {
   int iVar1;
-  
+
   Sprite_GetImageProxy(*(undefined4 *)(param_1 + 0x68));
   ObjCharTransfer_DeleteTaskCopyByProxyPtr();
   Sprite_Delete(*(undefined4 *)(param_1 + 0x68));

@@ -48,7 +48,7 @@ undefined4 ov05_0221C018(int param_1)
 
 {
   int iVar1;
-  
+
   iVar1 = IsPaletteFadeFinished();
   if (iVar1 == 0) {
     return 0;

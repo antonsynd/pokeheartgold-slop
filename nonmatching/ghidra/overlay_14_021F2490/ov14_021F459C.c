@@ -52,7 +52,7 @@ void ov14_021F459C(int param_1)
   short sStack_10;
   short sStack_e;
   undefined1 auStack_c [4];
-  
+
   func_0x0200de44(*(undefined4 *)
                    (*(int *)(param_1 + 0x34) +
                     ((*(byte *)(*(int *)(param_1 + 0x34) + 0x44d) & 3) + 0x15) * 4 + 0x2fc),

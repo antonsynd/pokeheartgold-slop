@@ -50,7 +50,7 @@ undefined4 ov05_0221E0A8(int param_1,int param_2)
   ushort uVar1;
   byte bVar2;
   int iVar3;
-  
+
   iVar3 = param_1 + param_2 * 0x18;
   uVar1 = *(ushort *)(iVar3 + 0x21a);
   if (uVar1 == 0) {

@@ -51,7 +51,7 @@ void ov91_02261B2C(undefined4 param_1)
 {
   undefined4 uVar1;
   undefined4 uVar2;
-  
+
   uVar1 = ov91_02261B20();
   uVar2 = ov91_02261B28();
   sub_0203410C(uVar1,uVar2,param_1);

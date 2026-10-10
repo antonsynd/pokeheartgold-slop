@@ -62,7 +62,7 @@ void ov52_021E8BDC(int param_1)
   ushort *puVar4;
   ushort uStack_58;
   undefined2 auStack_56 [33];
-  
+
   puVar4 = &uStack_58;
   iVar2 = TouchscreenHitbox_FindRectAtTouchNew(&ov52_021E94BA);
   if (iVar2 != -1) {

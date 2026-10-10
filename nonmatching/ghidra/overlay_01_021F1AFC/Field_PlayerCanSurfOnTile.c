@@ -54,7 +54,7 @@ undefined4 Field_PlayerCanSurfOnTile(undefined4 param_1,undefined1 param_2,undef
 {
   undefined4 uVar1;
   int iVar2;
-  
+
   uVar1 = PlayerAvatar_GetMapObject();
   iVar2 = MetatileBehavior_IsSurfableWater(param_3);
   if (iVar2 != 1) {

@@ -57,7 +57,7 @@ undefined4 ov59_0223B164(int param_1,undefined4 param_2,undefined4 param_3,undef
   short sVar2;
   int iVar3;
   uint uVar4;
-  
+
   uVar4 = *(uint *)(&ov59_0223C99C + (uint)*(byte *)(param_1 + 0x36) * 4);
   sVar2 = *(short *)(param_1 + 0x42);
   if (sVar2 == 0) {

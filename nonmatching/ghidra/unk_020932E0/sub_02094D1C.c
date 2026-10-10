@@ -59,7 +59,7 @@ void sub_02094D1C(int param_1)
   undefined4 uVar2;
   int iVar3;
   undefined4 uVar4;
-  
+
   uVar1 = NewMsgDataFromNarc(1,0x1b,0x12a,*(undefined4 *)(param_1 + 4));
   uVar2 = NewString_ReadMsgData(uVar1,0);
   FillWindowPixelBuffer(param_1 + 0x4670,0);

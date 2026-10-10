@@ -52,7 +52,7 @@ void sub_0205CC4C(undefined4 param_1,undefined4 param_2,undefined4 param_3,undef
 {
   undefined4 uVar1;
   undefined4 uVar2;
-  
+
   uVar1 = sub_0205DD9C(param_4);
   uVar2 = sub_0205DDB8(param_4);
   PlayerAvatar_SetUnk28Unk2C(param_1,uVar1,uVar2);

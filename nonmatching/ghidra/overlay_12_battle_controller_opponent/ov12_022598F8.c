@@ -52,7 +52,7 @@ void ov12_022598F8(undefined4 param_1,int param_2)
 
 {
   undefined4 uVar1;
-  
+
   uVar1 = BattleSystem_GetWindow(param_1,0);
   FillWindowPixelBuffer(uVar1,0xff);
   CopyWindowPixelsToVram_TextMode(uVar1);

@@ -53,7 +53,7 @@ undefined4 sub_02065BE8(undefined4 param_1,char *param_2)
 
 {
   int iVar1;
-  
+
   MapObject_ClearSingleMovement();
   MapObject_ClearEndMovement(param_1);
   iVar1 = sub_02065D24(param_1,param_2);

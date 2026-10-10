@@ -50,7 +50,7 @@ undefined4 ov91_0225ED6C(int param_1)
 
 {
   int iVar1;
-  
+
   if (*(uint *)(param_1 + 0x48) < 2) {
     return 0;
   }

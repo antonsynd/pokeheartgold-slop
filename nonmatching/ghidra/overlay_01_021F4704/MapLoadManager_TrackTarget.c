@@ -47,7 +47,7 @@ void MapLoadManager_TrackTarget(undefined4 *param_1,int param_2)
 
 {
   undefined4 uVar1;
-  
+
   uVar1 = param_1[1];
   *(undefined4 *)(param_2 + 0xd0) = *param_1;
   *(undefined4 *)(param_2 + 0xd4) = uVar1;

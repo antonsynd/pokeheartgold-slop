@@ -48,7 +48,7 @@ undefined4 ov91_0225CDAC(int param_1)
 
 {
   uint uVar1;
-  
+
   uVar1 = ov91_0225CDD4();
   if (*(uint *)(param_1 + 8) <= uVar1) {
     return 1;

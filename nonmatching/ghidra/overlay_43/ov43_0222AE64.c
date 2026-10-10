@@ -75,7 +75,7 @@ undefined4 ov43_0222AE64(int *param_1,int param_2,int param_3,undefined4 param_4
   int iVar3;
   undefined8 uVar4;
   int iStack_18;
-  
+
   switch(*(undefined1 *)(param_2 + 8)) {
   case 0:
     ov43_0222B1FC();

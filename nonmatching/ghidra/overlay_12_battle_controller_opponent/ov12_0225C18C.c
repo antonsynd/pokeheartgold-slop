@@ -106,7 +106,7 @@ void ov12_0225C18C(undefined *param_1,undefined4 *param_2)
   undefined1 auStack_110 [80];
   undefined1 auStack_c0 [88];
   undefined1 auStack_68 [88];
-  
+
   puVar1 = ov12_0223A8DC((undefined *)*param_2);
   switch(*(undefined1 *)((int)param_2 + 0x83)) {
   case 0:

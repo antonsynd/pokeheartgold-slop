@@ -55,7 +55,7 @@ void ov96_021F4E9C(uint param_1,int *param_2,undefined4 param_3)
   undefined4 uStack_18;
   int iStack_14;
   undefined4 uStack_10;
-  
+
   if (param_1 < 0x10) {
     iVar3 = *param_2;
     iVar1 = func_0x020f2998((param_2[1] - iVar3) * param_1,0xf);

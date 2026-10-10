@@ -72,7 +72,7 @@ undefined4 TryGetSeenByNpcTrainers(int param_1,int param_2,undefined4 param_3,un
   int iStack_20;
   undefined4 uStack_1c;
   undefined4 uStack_18;
-  
+
   uVar3 = *(undefined4 *)(param_1 + 0x40);
   uVar2 = *(undefined4 *)(param_1 + 0x3c);
   uStack_18 = param_4;

@@ -56,7 +56,7 @@ void ov96_021F48FC(undefined4 *param_1,undefined4 param_2)
   undefined4 uStack_18;
   undefined4 uStack_14;
   undefined4 uStack_10;
-  
+
   ov96_021F4CAC();
   uStack_1c = 0x1000;
   uStack_18 = 0;

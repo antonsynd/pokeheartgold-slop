@@ -52,7 +52,7 @@ void ov07_02224998(undefined4 param_1,int param_2)
 
 {
   int iVar1;
-  
+
   if (*(char *)(param_2 + 0x24) == '\0') {
     ov07_02222268(param_2 + 0x40,(int)*(short *)(param_2 + 0x14),
                   ((int)*(short *)(param_2 + 0x14) + (int)*(short *)(param_2 + 0xc)) * 0x10000 >>

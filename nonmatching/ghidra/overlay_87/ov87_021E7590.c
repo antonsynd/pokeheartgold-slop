@@ -50,7 +50,7 @@ void ov87_021E7590(int param_1,int param_2,int param_3)
   int iVar2;
   int iVar3;
   int iVar4;
-  
+
   iVar4 = -3;
   do {
     iVar2 = param_3 + iVar4;

@@ -52,7 +52,7 @@ void ov96_02206F1C(int param_1,int param_2,int param_3,undefined4 *param_4,byte 
   int iVar4;
   int iVar5;
   undefined4 *puVar6;
-  
+
   iVar4 = 0;
   iVar5 = 0;
   puVar6 = param_4;

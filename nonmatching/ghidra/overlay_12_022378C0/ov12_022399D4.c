@@ -101,7 +101,7 @@ void ov12_022399D4(undefined4 param_1,int param_2)
   undefined4 uStack_40;
   undefined4 uStack_3c;
   undefined4 auStack_38 [10];
-  
+
   piVar1 = (int *)OverlayManager_CreateAndGetData(param_1,0x1028,5);
   *piVar1 = param_2;
   *(undefined1 *)(piVar1 + 0x408) = 0;

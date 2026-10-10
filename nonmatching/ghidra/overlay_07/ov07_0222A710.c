@@ -66,7 +66,7 @@ void ov07_0222A710(undefined4 param_1,int *param_2)
   undefined4 uVar2;
   int iVar3;
   undefined4 uVar4;
-  
+
   switch((char)param_2[1]) {
   case '\0':
     uVar4 = ov07_0221C468(param_2[2]);

@@ -50,7 +50,7 @@ void ov08_02220C08(int param_1,undefined4 param_2,undefined4 param_3,undefined4 
 
 {
   int iVar1;
-  
+
   if (param_1 != 0) {
     iVar1 = func_0x02078068();
     if (iVar1 == 1) {

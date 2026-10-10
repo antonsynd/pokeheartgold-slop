@@ -48,7 +48,7 @@ int ov96_021ED6E8(void)
 
 {
   uint uVar1;
-  
+
   uVar1 = MTRandom();
   return (uVar1 & 7) + 4;
 }

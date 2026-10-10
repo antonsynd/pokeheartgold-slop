@@ -58,7 +58,7 @@ undefined4 sub_02066150(undefined *param_1,int param_2)
   uint uVar5;
   undefined *puStack_1c;
   undefined4 uStack_18;
-  
+
   puVar1 = MapObject_GetManager(param_1);
   uStack_18 = 0;
   uVar2 = MapObject_GetMapID(param_1);

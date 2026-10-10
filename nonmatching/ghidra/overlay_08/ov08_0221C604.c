@@ -55,7 +55,7 @@ undefined4 ov08_0221C604(int *param_1,undefined4 param_2,undefined4 param_3,unde
   byte bVar1;
   undefined1 uVar2;
   int iVar3;
-  
+
   iVar3 = ov08_0221D5D0(param_1,&ov08_02224F3C,param_3,param_4,param_4);
   if (iVar3 == -1) {
     iVar3 = ov08_02224C94(param_1[0x822]);

@@ -69,7 +69,7 @@ void ov12_02265E28(int param_1)
   undefined4 uVar7;
   undefined4 uStack_28;
   undefined4 uStack_24;
-  
+
   uVar2 = NARC_New(8,5);
   uVar3 = BattleSystem_GetSpriteSystem(*(undefined4 *)(param_1 + 4));
   uVar4 = BattleSystem_GetSpriteManager(*(undefined4 *)(param_1 + 4));

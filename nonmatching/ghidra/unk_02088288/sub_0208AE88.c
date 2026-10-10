@@ -50,7 +50,7 @@ undefined4 sub_0208AE88(void)
 
 {
   int iVar1;
-  
+
   iVar1 = TouchscreenHitbox_TouchNewIsIn(&UNK_021038b4);
   if (iVar1 == 1) {
     return 0;

@@ -62,7 +62,7 @@ ov41_02248044(undefined4 *param_1,int param_2,undefined4 param_3,undefined4 para
   int iStack_18;
   uint uStack_14;
   undefined4 uStack_10;
-  
+
   if ((int)param_1[9] < (int)param_1[10]) {
     uStack_30 = param_1[0x11];
     uStack_2c = param_1[0xb];

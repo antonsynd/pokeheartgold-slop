@@ -53,7 +53,7 @@ void ov96_02200BD8(undefined4 *param_1,int param_2,undefined4 param_3,undefined4
 
 {
   undefined4 uVar1;
-  
+
   FillWindowPixelBuffer(param_1 + 3,0);
   BufferString(param_1[0xc],0,param_1[param_2 + 0x5c],2,1,2);
   uVar1 = ReadMsgData_ExpandPlaceholders(param_1[0xc],param_1[0xb],0x9a,*param_1);

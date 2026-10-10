@@ -67,7 +67,7 @@ void ov40_0223D68C(int param_1,undefined4 param_2,undefined4 param_3,undefined4 
   int iStack_80;
   uint auStack_78 [24];
   undefined4 uStack_18;
-  
+
   iVar1 = *(int *)(param_1 + 0x860);
   puVar10 = (uint *)&ov40_02245808;
   puVar4 = auStack_78 + 0xc;

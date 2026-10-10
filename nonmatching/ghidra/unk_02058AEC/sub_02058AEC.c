@@ -65,7 +65,7 @@ void sub_02058AEC(int *param_1,int param_2,undefined4 param_3,undefined1 param_4
   undefined4 *puVar2;
   undefined4 uVar3;
   undefined4 uVar4;
-  
+
   uVar4 = *(undefined4 *)(param_2 + 0xc);
   puVar2 = (undefined4 *)Heap_AllocAtEnd(param_6,0x3c);
   func_0x020d4994(puVar2,0,0x3c);

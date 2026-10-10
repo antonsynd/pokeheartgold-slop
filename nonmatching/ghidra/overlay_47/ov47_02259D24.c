@@ -48,7 +48,7 @@ void ov47_02259D24(int param_1)
 
 {
   int iVar1;
-  
+
   String_Delete(*(undefined4 *)(param_1 + 0x10));
   iVar1 = 0;
   do {

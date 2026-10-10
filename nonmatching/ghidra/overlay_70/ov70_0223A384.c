@@ -51,7 +51,7 @@ undefined4 ov70_0223A384(int param_1)
 
 {
   undefined4 uVar1;
-  
+
   uVar1 = func_0x02014918(2,0x3d);
   *(undefined4 *)(param_1 + 0x11ac) = uVar1;
   func_0x02014960(*(undefined4 *)(param_1 + 0x11ac),*(undefined4 *)(param_1 + 0xba0),0x37,1);

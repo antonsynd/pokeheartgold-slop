@@ -52,7 +52,7 @@ void ov57_02238438(int param_1,int param_2,undefined4 param_3,undefined4 param_4
 {
   int iVar1;
   int iVar2;
-  
+
   iVar2 = param_2 * 0x10;
   sub_02091054(*(undefined1 *)(param_1 + 0x350 + iVar2));
   func_0x0200d958(*(undefined4 *)(param_1 + 0xe0),param_2 + 20000);

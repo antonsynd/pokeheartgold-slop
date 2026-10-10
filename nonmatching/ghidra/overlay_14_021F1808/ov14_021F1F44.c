@@ -60,7 +60,7 @@ undefined4 ov14_021F1F44(int param_1)
   int iVar2;
   undefined4 uVar3;
   uint uVar4;
-  
+
   iVar2 = ov14_021F7B7C();
   if (iVar2 == 1) {
     PlaySE(0x5dd);

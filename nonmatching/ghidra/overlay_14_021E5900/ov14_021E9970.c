@@ -48,7 +48,7 @@ undefined4 ov14_021E9970(int param_1)
 
 {
   int iVar1;
-  
+
   iVar1 = sub_02019978(*(undefined4 *)(*(int *)(param_1 + 0x34) + 0x2f0),0xf);
   if ((iVar1 == 0) &&
      (iVar1 = sub_02019978(*(undefined4 *)(*(int *)(param_1 + 0x34) + 0x2f0),0xe), iVar1 == 0)) {

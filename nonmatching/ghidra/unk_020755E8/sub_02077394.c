@@ -49,7 +49,7 @@ void sub_02077394(int param_1)
 
 {
   undefined *puVar1;
-  
+
   puVar1 = OverlayManager_New(&gOverlayTemplate_PokemonSummary,*(undefined **)(param_1 + 0x3c),
                               *(int *)(param_1 + 0x5c));
   *(undefined **)(param_1 + 0x38) = puVar1;

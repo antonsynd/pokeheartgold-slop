@@ -48,7 +48,7 @@ undefined4 ov71_02249254(void)
 
 {
   int iVar1;
-  
+
   iVar1 = SysTask_GetData();
   return *(undefined4 *)(iVar1 + 0x78);
 }

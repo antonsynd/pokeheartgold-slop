@@ -72,7 +72,7 @@ void sub_0200EA68(undefined4 *param_1,undefined4 param_2,int param_3,int param_4
   uint uVar14;
   int iStack_1c;
   int iStack_18;
-  
+
   iStack_18 = param_4;
   uVar1 = BgConfig_GetHeapId(*param_1);
   uVar2 = GetWindowBgId(param_1);

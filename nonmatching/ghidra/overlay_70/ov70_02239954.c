@@ -49,7 +49,7 @@ undefined4 ov70_02239954(int *param_1)
 
 {
   undefined4 uVar1;
-  
+
   uVar1 = PlayerProfile_GetTrainerGender(*(undefined4 *)(*param_1 + 0x1c));
   ov70_02241004(param_1,uVar1);
   param_1[0xb] = 8;

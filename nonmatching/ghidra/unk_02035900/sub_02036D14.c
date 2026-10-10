@@ -50,7 +50,7 @@ undefined4 sub_02036D14(byte *param_1,int param_2)
   byte bVar1;
   byte bVar2;
   int iVar3;
-  
+
   iVar3 = param_2 * 2;
   *(undefined2 *)(iRam021d4148 + iVar3 + 0x644) = 0;
   bVar1 = *param_1;

@@ -49,7 +49,7 @@ int ov112_021EA838(int param_1)
   int iVar1;
   int iVar2;
   char *pcVar3;
-  
+
   iVar2 = 0;
   pcVar3 = (char *)(param_1 + 0x1ec80);
   iVar1 = 0;

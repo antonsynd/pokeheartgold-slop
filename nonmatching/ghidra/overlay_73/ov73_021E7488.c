@@ -50,7 +50,7 @@ int ov73_021E7488(void)
 
 {
   int iVar1;
-  
+
   iVar1 = ov73_021E746C();
   return iVar1;
 }

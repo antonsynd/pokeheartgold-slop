@@ -51,7 +51,7 @@ void ov85_021E730C(int param_1,int param_2)
   int iVar1;
   int iVar2;
   int iVar3;
-  
+
   iVar3 = 0;
   iVar1 = *(int *)(&ov85_021EA5AC + param_2 * 4);
   *(int *)(param_1 + 0xc9c) = param_2;

@@ -62,7 +62,7 @@ void ov112_021F13CC(int param_1,undefined4 param_2,int param_3)
   int iVar4;
   int iVar5;
   undefined4 uVar6;
-  
+
   iVar1 = param_1 + 0x38;
   FillWindowPixelBuffer(iVar1,0);
   uVar2 = ReadMsgData_ExpandPlaceholders

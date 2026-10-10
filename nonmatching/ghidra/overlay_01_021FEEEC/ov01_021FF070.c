@@ -69,7 +69,7 @@ void ov01_021FF070(undefined4 param_1,undefined4 param_2)
   undefined2 uStack_22;
   undefined1 uStack_20;
   undefined1 auStack_1c [12];
-  
+
   uVar1 = ov01_021F146C();
   uStack_40 = MapObject_GetXCoord(param_1);
   uStack_3c = MapObject_GetYCoord(param_1);

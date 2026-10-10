@@ -50,7 +50,7 @@ void BattleController_EmitHealthbarSlideOut
 {
   undefined4 uStack_c;
   undefined4 uStack_8;
-  
+
   uStack_c = 0xd;
   uStack_8 = param_4;
   ov12_02262240(param_1,1,param_2,&uStack_c,4);

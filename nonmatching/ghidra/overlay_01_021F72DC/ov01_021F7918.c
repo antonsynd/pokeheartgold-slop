@@ -55,7 +55,7 @@ void ov01_021F7918(undefined4 param_1)
   int *piVar1;
   int iVar2;
   int iVar3;
-  
+
   piVar1 = (int *)sub_0205F40C();
   iVar2 = ov01_021FA2D4(param_1);
   if ((iVar2 != 1) && (iVar2 = *piVar1, iVar2 != 0)) {

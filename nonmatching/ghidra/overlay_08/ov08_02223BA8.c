@@ -52,7 +52,7 @@ void ov08_02223BA8(int *param_1)
   int *piVar2;
   uint uVar3;
   int iVar4;
-  
+
   iVar4 = *param_1;
   bVar1 = *(byte *)((int)param_1 + 0x114d);
   uVar3 = 0;

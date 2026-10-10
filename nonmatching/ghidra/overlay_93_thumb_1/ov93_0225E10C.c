@@ -51,7 +51,7 @@ uint ov93_0225E10C(int *param_1)
   int iVar3;
   uint uVar4;
   int iVar5;
-  
+
   iVar5 = *param_1;
   uVar4 = param_1[3];
   iVar3 = 1;

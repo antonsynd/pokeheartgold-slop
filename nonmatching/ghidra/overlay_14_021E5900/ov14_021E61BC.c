@@ -56,7 +56,7 @@ void ov14_021E61BC(int param_1,int param_2,undefined4 param_3,undefined4 param_4
   undefined4 uVar1;
   undefined1 auStack_18 [4];
   undefined4 uStack_14;
-  
+
   uStack_14 = param_4;
   uVar1 = Party_GetMonByIndex(*(undefined4 *)(param_1 + 8),*(int *)(param_2 + 4) + -0x1e);
   auStack_18[0] = 0;

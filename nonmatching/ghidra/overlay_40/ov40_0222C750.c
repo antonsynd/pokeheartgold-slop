@@ -56,7 +56,7 @@ void ov40_0222C750(int *param_1)
   int iVar3;
   int iVar4;
   int iVar5;
-  
+
   iVar4 = param_1[6];
   iVar3 = param_1[7];
   iVar5 = param_1[10];

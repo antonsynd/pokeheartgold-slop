@@ -55,7 +55,7 @@ void ov27_0225B404(int param_1,undefined4 param_2,undefined4 param_3,undefined4 
   undefined1 uVar1;
   int iVar2;
   uint uVar3;
-  
+
   uVar3 = 0xffffffff;
   iVar2 = *(int *)(param_1 + 0x14);
   if ((uRam021d1154 & 0x40) == 0) {

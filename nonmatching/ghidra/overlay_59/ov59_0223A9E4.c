@@ -58,7 +58,7 @@ void ov59_0223A9E4(int param_1)
   undefined4 uVar2;
   int iVar3;
   int iVar4;
-  
+
   uVar2 = func_0x020183f0(*(undefined4 *)(*(int *)(*(int *)(param_1 + 4) + 4) + 0x14));
   *(undefined4 *)(param_1 + 0x44) = uVar2;
   *(undefined4 *)(param_1 + 8) = *(undefined4 *)(*(int *)(*(int *)(param_1 + 4) + 4) + 0x18);

@@ -49,7 +49,7 @@ undefined4 ov85_021E7C2C(int param_1,undefined4 param_2,undefined4 param_3,undef
 {
   int iVar1;
   int iVar2;
-  
+
   iVar1 = *(int *)(param_1 + 0x10);
   if ((0x1000 < *(int *)(param_1 + 0xc)) &&
      (iVar2 = *(int *)(param_1 + 0xc) + -0x1000, *(int *)(param_1 + 0xc) = iVar2, iVar2 < 0x1000)) {

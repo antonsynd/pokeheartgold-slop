@@ -53,7 +53,7 @@ void ov85_021E7380(int param_1,undefined4 param_2,int param_3,undefined4 param_4
 {
   undefined4 uVar1;
   undefined4 uVar2;
-  
+
   param_3 = param_3 * 0x10;
   param_1 = param_1 + 0xcb8;
   uVar2 = param_4;

@@ -52,7 +52,7 @@ void ov40_022408AC(int param_1)
 {
   undefined4 uVar1;
   int iVar2;
-  
+
   iVar2 = *(int *)(param_1 + 0x860);
   uVar1 = sub_020314A4(0x6d);
   *(undefined4 *)(iVar2 + 0x80) = uVar1;

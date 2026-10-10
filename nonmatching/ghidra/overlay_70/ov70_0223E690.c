@@ -57,7 +57,7 @@ void ov70_0223E690(int param_1,int param_2)
   undefined2 uStack_16;
   undefined2 uStack_14;
   undefined2 uStack_10;
-  
+
   uVar3 = GetBoxMonData(*(undefined4 *)(param_2 + 0x124),5,0);
   cVar1 = GetBoxMonData(*(undefined4 *)(param_2 + 0x124),0x6f,0);
   uVar2 = CalcBoxMonLevel(*(undefined4 *)(param_2 + 0x124));

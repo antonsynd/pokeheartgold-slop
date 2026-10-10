@@ -67,7 +67,7 @@ undefined4 ov75_02247180(undefined4 param_1)
 
 {
   int iVar1;
-  
+
   iVar1 = OverlayManager_GetData();
   if (*(int *)(iVar1 + 0xec) != 0) {
     SysTask_Destroy();

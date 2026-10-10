@@ -65,7 +65,7 @@ undefined4 ov95_021E6B74(int param_1)
   char cVar4;
   short sStack_14;
   undefined1 auStack_12 [2];
-  
+
   switch(*(undefined4 *)(param_1 + 0x68)) {
   case 0:
     ov95_021E5EC0(*(undefined4 *)(param_1 + 0x44),0);

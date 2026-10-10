@@ -59,7 +59,7 @@ uint ov96_02213364(int param_1,int param_2,undefined4 param_3,undefined4 param_4
   int iStack_28;
   char acStack_24 [4];
   int aiStack_20 [3];
-  
+
   iVar2 = ov96_021E6104();
   cVar1 = '\0';
   iVar7 = iVar2 << 0xc;

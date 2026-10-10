@@ -55,7 +55,7 @@ void sub_0208C42C(undefined4 *param_1,undefined4 param_2,undefined4 param_3,unde
   uint uVar2;
   int iVar3;
   undefined *unaff_r7;
-  
+
   switch(*(undefined1 *)(param_1 + 0x1ef)) {
   case 0:
     unaff_r7 = &UNK_02104cc4;

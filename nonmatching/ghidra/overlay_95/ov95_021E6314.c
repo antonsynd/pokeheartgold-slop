@@ -90,7 +90,7 @@ undefined4 ov95_021E6314(int *param_1,undefined4 param_2,undefined4 param_3,unde
   undefined4 uStack_1c;
   undefined4 uStack_18;
   undefined4 uStack_14;
-  
+
   iVar3 = param_1[0x18];
   uVar4 = 1;
   uStack_14 = param_4;

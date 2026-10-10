@@ -57,7 +57,7 @@ void ov14_021F4958(int param_1,int param_2,undefined4 param_3,undefined4 param_4
   int iVar2;
   int iStack_1c;
   undefined4 uStack_18;
-  
+
   uStack_18 = param_4;
   uVar1 = AllocAtEndAndReadWholeNarcMemberByIdPair(0x13,0x46,10);
   func_0x020b70a8(uVar1,&iStack_1c);

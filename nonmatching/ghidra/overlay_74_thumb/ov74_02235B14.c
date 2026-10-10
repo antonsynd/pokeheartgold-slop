@@ -65,7 +65,7 @@ void ov74_02235B14(undefined4 param_1,undefined4 param_2,uint param_3,uint param
   undefined4 uVar3;
   int iVar4;
   uint uVar5;
-  
+
   uVar5 = param_4;
   uVar2 = GetMonGender(param_2);
   uVar1 = MonIsShiny(param_2);

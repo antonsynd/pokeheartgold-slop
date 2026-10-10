@@ -53,7 +53,7 @@ ov45_0222E414(int param_1,undefined4 param_2,undefined4 param_3,undefined4 param
 
 {
   undefined4 uVar1;
-  
+
   switch(*(undefined4 *)(param_1 + 8)) {
   case 0:
     func_0x0200c784(param_3,0,0,param_4,param_4);

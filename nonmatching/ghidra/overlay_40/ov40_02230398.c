@@ -49,7 +49,7 @@ void ov40_02230398(int param_1)
 
 {
   int iVar1;
-  
+
   iVar1 = 0;
   param_1 = param_1 + 0x3c;
   do {

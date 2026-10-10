@@ -48,7 +48,7 @@ undefined4 ov80_0222CC70(undefined4 param_1,undefined4 param_2)
 
 {
   undefined4 uVar1;
-  
+
   uVar1 = 0xf;
   switch(param_1) {
   case 0:

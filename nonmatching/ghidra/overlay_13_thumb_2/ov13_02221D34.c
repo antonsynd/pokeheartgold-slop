@@ -50,7 +50,7 @@ int ov13_02221D34(int param_1,int param_2)
   int iVar2;
   int iVar3;
   byte *pbVar4;
-  
+
   iVar2 = 0;
   pbVar4 = (byte *)(param_1 + param_2 + -1);
   iVar3 = 0;

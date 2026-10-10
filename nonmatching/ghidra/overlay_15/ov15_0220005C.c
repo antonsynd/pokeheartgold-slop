@@ -49,7 +49,7 @@ void ov15_0220005C(int param_1,int param_2,int param_3,int param_4)
 {
   int iVar1;
   int iVar2;
-  
+
   if (param_2 == 0) {
     iVar1 = 0;
     iVar2 = param_1;

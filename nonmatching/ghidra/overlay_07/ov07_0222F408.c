@@ -49,7 +49,7 @@ void ov07_0222F408(int param_1,undefined4 param_2,undefined4 param_3,undefined4 
 
 {
   uint uVar1;
-  
+
   uVar1 = ov07_02221FF0(param_2);
   func_0x02003ea4(*(undefined4 *)(param_1 + 0xc4),2,1 << (uVar1 & 0xff) & 0xffff,8,0,param_4);
   return;

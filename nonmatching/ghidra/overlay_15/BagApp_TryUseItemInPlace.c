@@ -55,7 +55,7 @@ undefined4 BagApp_TryUseItemInPlace(int param_1,int param_2,undefined4 param_3,u
 
 {
   undefined4 uVar1;
-  
+
   BufferPlayersName(*(undefined4 *)(param_1 + 0x2f4),0,*(undefined4 *)(param_1 + 0x23c),param_4,
                     param_4);
   BufferItemName(*(undefined4 *)(param_1 + 0x2f4),1,param_2);

@@ -50,7 +50,7 @@ void ov96_0221359C(undefined4 param_1,int param_2,undefined4 param_3,undefined4 
 {
   byte *pbVar1;
   undefined4 uVar2;
-  
+
   pbVar1 = (byte *)ov96_021E60D8(param_1,param_3,param_4);
   *(short *)(param_5 + 0x6c) = (short)*(undefined4 *)(param_2 + (uint)pbVar1[4] * 4);
   *(short *)(param_5 + 0x6e) = (short)*(undefined4 *)(param_2 + (uint)pbVar1[4] * 4 + 0x14);

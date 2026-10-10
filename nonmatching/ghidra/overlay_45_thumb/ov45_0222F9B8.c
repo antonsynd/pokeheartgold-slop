@@ -53,7 +53,7 @@ void ov45_0222F9B8(int param_1,int param_2,int param_3,undefined4 param_4)
   int iVar2;
   int iVar3;
   int iVar4;
-  
+
   iVar2 = 0;
   iVar3 = param_1;
   do {

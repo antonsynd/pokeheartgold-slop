@@ -61,7 +61,7 @@ void ov99_021E92EC(int param_1,undefined2 *param_2,undefined2 *param_3)
   undefined2 uStack_1a;
   undefined2 uStack_18;
   undefined2 uStack_16;
-  
+
   func_0x020d4a50(param_2,param_3,0x1b8);
   uStack_34 = 0;
   iStack_40 = param_1;

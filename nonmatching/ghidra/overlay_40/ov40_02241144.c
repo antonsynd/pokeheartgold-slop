@@ -82,7 +82,7 @@ undefined4 ov40_02241144(int param_1,undefined4 param_2,undefined4 param_3,undef
   int iVar2;
   undefined *puVar3;
   ulonglong uVar4;
-  
+
   puVar3 = *(undefined **)(param_1 + 0x860);
   puVar1 = sub_020307F8();
   uVar4 = sub_0203088C(puVar1,4,0);

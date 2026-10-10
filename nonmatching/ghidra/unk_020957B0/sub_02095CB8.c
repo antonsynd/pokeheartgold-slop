@@ -48,7 +48,7 @@ void sub_02095CB8(byte *param_1,undefined4 param_2,undefined4 param_3,undefined4
 
 {
   int iVar1;
-  
+
   sub_02095C90();
   iVar1 = (uint)*param_1 * 0xc;
   (**(code **)(*(int *)(param_1 + 8) + iVar1 + 8))

@@ -50,7 +50,7 @@ int sub_02061E6C(int param_1)
 {
   int *piVar1;
   int iVar2;
-  
+
   piVar1 = (int *)&UNK_020fd838;
   iVar2 = 0;
   do {

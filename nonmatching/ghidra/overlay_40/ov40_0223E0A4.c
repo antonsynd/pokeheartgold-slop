@@ -57,7 +57,7 @@ void ov40_0223E0A4(int param_1)
   undefined4 uVar1;
   int iVar2;
   int iVar3;
-  
+
   iVar3 = *(int *)(param_1 + 0x860);
   InitWindow(iVar3 + 0x614);
   AddWindowParameterized(*(undefined4 *)(param_1 + 0x24),iVar3 + 0x614,2,3,3,0x14,4,0xe,0x20);

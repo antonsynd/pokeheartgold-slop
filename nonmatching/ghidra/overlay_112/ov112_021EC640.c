@@ -52,7 +52,7 @@ undefined4 ov112_021EC640(int param_1)
 
 {
   undefined4 uVar1;
-  
+
   BgClearTilemapBufferAndCommit(*(undefined4 *)(param_1 + 0x18),1);
   ov112_021E7CA4(param_1,2,0xe);
   ov112_021E9F40(param_1,1);

@@ -54,7 +54,7 @@ void ov49_022614CC(int param_1,undefined4 param_2)
 {
   undefined4 uVar1;
   int iVar2;
-  
+
   ov49_0225A10C(param_2,0x12);
   iVar2 = 1;
   do {

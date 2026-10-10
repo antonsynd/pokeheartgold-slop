@@ -49,7 +49,7 @@ void ov74_0222E03C(int param_1)
 
 {
   int iVar1;
-  
+
   iVar1 = ov74_022360B0();
   if (iVar1 - 2U < 2) {
     PlaySE(0x61a);

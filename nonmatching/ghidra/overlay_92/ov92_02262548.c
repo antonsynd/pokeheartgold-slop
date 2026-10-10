@@ -70,7 +70,7 @@ void ov92_02262548(undefined *param_1,undefined4 *param_2)
   int iStack_20;
   int iStack_1c;
   int iStack_18;
-  
+
   iStack_24 = 1;
   iStack_20 = 1;
   iStack_1c = 1;

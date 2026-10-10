@@ -49,7 +49,7 @@ undefined4 ov96_0220CBC0(int param_1,undefined4 param_2,undefined4 param_3,undef
 {
   uint uVar1;
   uint uVar2;
-  
+
   uVar1 = ((*(uint *)(param_1 + 0x14) & 0xffff) >> 8) + 1 & 0xff;
   uVar2 = uVar1 << 8;
   *(uint *)(param_1 + 0x14) = *(uint *)(param_1 + 0x14) & 0xffff00ff | uVar2;

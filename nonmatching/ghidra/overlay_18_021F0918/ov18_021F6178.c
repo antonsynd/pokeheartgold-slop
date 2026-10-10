@@ -48,7 +48,7 @@ void ov18_021F6178(undefined4 param_1,undefined4 param_2)
 
 {
   uint uVar1;
-  
+
   uVar1 = 0;
   do {
     ov18_021F121C(param_1,uVar1 + 0xe,0,param_2,0);

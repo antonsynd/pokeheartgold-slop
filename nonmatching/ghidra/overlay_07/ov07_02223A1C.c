@@ -53,7 +53,7 @@ void ov07_02223A1C(undefined4 param_1,char *param_2,undefined4 param_3,undefined
 {
   char cVar1;
   int iVar2;
-  
+
   cVar1 = *param_2;
   if ((cVar1 != '\0') && (cVar1 != '\x01')) {
     if (cVar1 != '\x02') {

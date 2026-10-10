@@ -52,7 +52,7 @@ void ov00_021E63CC(int param_1,int param_2)
 {
   int iVar1;
   undefined4 uVar2;
-  
+
   if (param_1 == 0) {
     if (param_2 == 0) {
       iVar1 = func_0x021ee490();

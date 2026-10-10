@@ -58,7 +58,7 @@ void ov95_021E623C(int *param_1)
   undefined4 uStack_50;
   undefined1 auStack_4c [40];
   undefined1 auStack_24 [16];
-  
+
   uVar3 = *(undefined4 *)(*param_1 + 0xc);
   uVar1 = GetMonData(uVar3,5,0);
   iVar2 = sub_0207083C(uVar3,2);

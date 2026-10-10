@@ -57,7 +57,7 @@ void ov51_021E7CA4(undefined4 *param_1)
 
 {
   uint uVar1;
-  
+
   uVar1 = 0;
   do {
     Heap_Free(param_1[uVar1 + 0x7e]);

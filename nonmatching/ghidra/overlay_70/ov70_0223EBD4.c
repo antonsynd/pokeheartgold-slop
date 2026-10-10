@@ -49,7 +49,7 @@ void ov70_0223EBD4(int param_1)
 {
   int iVar1;
   int iVar2;
-  
+
   RemoveWindow(param_1 + 0x1198);
   iVar1 = 0;
   iVar2 = param_1 + 0x1058;

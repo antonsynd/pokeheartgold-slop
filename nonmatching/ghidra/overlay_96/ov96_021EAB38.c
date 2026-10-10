@@ -50,7 +50,7 @@ void ov96_021EAB38(undefined4 *param_1,undefined4 param_2)
 {
   undefined4 uVar1;
   int iVar2;
-  
+
   uVar1 = ov96_021E8BAC(*param_1);
   Sprite_SetDrawFlag(uVar1,param_2);
   iVar2 = param_1[1];

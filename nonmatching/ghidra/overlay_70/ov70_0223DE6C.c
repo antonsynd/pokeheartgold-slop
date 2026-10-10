@@ -55,7 +55,7 @@ undefined4 ov70_0223DE6C(int *param_1)
 {
   int iVar1;
   undefined *puVar2;
-  
+
   iVar1 = ov70_0223E76C((undefined *)(param_1 + param_1[0x4b] * 0x49 + 0x98));
   if (((iVar1 != 0) && ((short)param_1[0x48] != 0x12)) &&
      (iVar1 = Party_GetCount(*(undefined **)(*param_1 + 8)), iVar1 == 6)) {

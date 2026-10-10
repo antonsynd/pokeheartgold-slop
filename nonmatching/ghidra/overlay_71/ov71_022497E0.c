@@ -69,7 +69,7 @@ void ov71_022497E0(int param_1,undefined4 param_2,undefined4 param_3,undefined4 
   undefined2 uStack_1c;
   undefined1 auStack_18 [12];
   undefined4 uStack_c;
-  
+
   uStack_c = param_4;
   func_0x020c2698();
   func_0x020cf704();

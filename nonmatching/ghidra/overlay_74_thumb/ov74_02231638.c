@@ -54,7 +54,7 @@ undefined4 ov74_02231638(void)
   undefined4 uVar2;
   int iVar3;
   undefined4 in_r3;
-  
+
   uVar1 = ov74_022311E8();
   uVar2 = ov74_02231100();
   iVar3 = func_0x020df94c(0x22305e5,uVar2,uVar1,1,0,in_r3);

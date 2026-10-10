@@ -64,7 +64,7 @@ void sub_0203667C(void)
   int iVar3;
   int iVar4;
   uint uVar5;
-  
+
   uVar1 = sub_0203993C();
   iVar2 = sub_02033FC4(uVar1);
   sub_0203993C();
@@ -77,7 +77,7 @@ void sub_0203667C(void)
         sub_02036F30(iRam021d4148 + 0x80 + (uint)*(byte *)(iRam021d4148 + 0x6b0) * 0xc0);
         sub_02036F30(iRam021d4148 + 0x80 + (1 - (uint)*(byte *)(iRam021d4148 + 0x6b0)) * 0xc0);
       }
-                    
+
       UNK_0210f900 = 0;
       sub_02036508();
     }
@@ -105,7 +105,7 @@ void sub_0203667C(void)
       iVar3 = func_0x021e602c(iRam021d4148 + 0x80,0xc0);
       if (iVar3 != 0) {
         uVar5 = 0;
-                    
+
         UNK_0210f900 = 4;
         if (0 < iVar2 + 1) {
           iVar3 = 0;
@@ -122,7 +122,7 @@ void sub_0203667C(void)
       }
     }
   }
-                    
+
   return;
 }
 

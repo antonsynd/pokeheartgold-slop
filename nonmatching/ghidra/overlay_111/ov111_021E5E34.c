@@ -70,7 +70,7 @@ void ov111_021E5E34(undefined4 param_1)
   int iVar1;
   undefined4 *puVar2;
   undefined4 uVar3;
-  
+
   iVar1 = OverlayManager_GetArgs();
   if (iVar1 == 0) {
     GF_AssertFail();

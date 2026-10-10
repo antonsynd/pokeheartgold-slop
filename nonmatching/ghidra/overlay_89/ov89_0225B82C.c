@@ -55,7 +55,7 @@ undefined4 ov89_0225B82C(undefined4 param_1,int param_2)
   undefined4 uStack_20;
   int iStack_1c;
   int iStack_18;
-  
+
   if (*(int *)(param_2 + 0x94) == 0) {
     sub_020182B0(param_2 + 0x1c,&iStack_18,&iStack_1c,&uStack_20);
     *(int *)(param_2 + 0x9c) = iStack_18;

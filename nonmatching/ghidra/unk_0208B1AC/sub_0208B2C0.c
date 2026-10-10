@@ -54,7 +54,7 @@ void sub_0208B2C0(int param_1)
 {
   undefined4 uVar1;
   uint uVar2;
-  
+
   uVar2 = 0;
   do {
     uVar1 = SpriteSystem_CreateSpriteFromResourceHeader

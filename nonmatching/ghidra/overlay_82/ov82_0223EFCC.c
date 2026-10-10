@@ -58,7 +58,7 @@ void ov82_0223EFCC(int param_1,undefined4 param_2,undefined4 param_3,undefined4 
   undefined4 uVar1;
   undefined1 auStack_30 [24];
   undefined4 uStack_18;
-  
+
   uStack_18 = param_4;
   uVar1 = Party_GetMonByIndex(*(undefined4 *)(param_1 + 0x214),0);
   GetMonData(uVar1,0xb3,auStack_30);

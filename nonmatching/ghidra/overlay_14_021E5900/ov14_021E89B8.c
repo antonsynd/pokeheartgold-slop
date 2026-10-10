@@ -64,7 +64,7 @@ undefined4 ov14_021E89B8(int *param_1,undefined4 param_2,undefined4 param_3,unde
   int *piVar3;
   int iVar4;
   undefined4 uVar5;
-  
+
   piVar3 = (int *)Heap_Alloc(9,0x3c,param_3,param_4,param_4);
   param_1[6] = (int)piVar3;
   if (*(byte *)((int)param_1 + 0x21) < 0x1e) {

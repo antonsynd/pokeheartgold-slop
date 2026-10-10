@@ -51,7 +51,7 @@ void ov41_02249F0C(undefined4 param_1,undefined4 *param_2,undefined4 param_3,und
 {
   int iVar1;
   undefined4 *puVar2;
-  
+
   iVar1 = param_2[0xe];
   param_2[0xe] = iVar1 + -1;
   puVar2 = (undefined4 *)*param_2;

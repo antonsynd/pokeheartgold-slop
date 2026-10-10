@@ -56,7 +56,7 @@ void ov02_02245ED8(int param_1,undefined4 param_2,undefined2 *param_3,undefined1
   undefined4 uVar1;
   int iVar2;
   int iVar3;
-  
+
   if (*(char *)(param_1 + 0x9c) != '\0') {
     iVar3 = 0;
     if (*(char *)(param_1 + 0x9c) != '\0') {

@@ -51,7 +51,7 @@ undefined1 ov112_021E768C(void)
 {
   undefined1 uVar1;
   undefined4 in_r3;
-  
+
   uVar1 = func_0x020f2998((uint)uRam021ffb5e * 0xff,uRam021ffb5c,(uint)uRam021ffb5e,in_r3,in_r3);
   return uVar1;
 }

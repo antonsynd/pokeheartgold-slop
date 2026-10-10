@@ -47,7 +47,7 @@ void ov51_021E7DA4(undefined1 *param_1)
 
 {
   int iVar1;
-  
+
   iVar1 = 0;
   do {
     *param_1 = (char)iVar1;

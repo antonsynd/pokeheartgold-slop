@@ -52,7 +52,7 @@ void ov99_021E7F64(int param_1,undefined4 param_2,undefined4 param_3,undefined4 
 {
   undefined4 uVar1;
   undefined4 uVar2;
-  
+
   uVar1 = func_0x0221e5c0(*(undefined4 *)(param_1 + 0x404));
   uVar2 = func_0x0221e5d0(*(undefined4 *)(param_1 + 0x404));
   func_0x0221e784(uVar1,uVar2,&ov99_021E9F70,2,param_4);

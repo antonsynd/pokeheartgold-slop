@@ -52,7 +52,7 @@ void ov12_0225FF80(undefined4 param_1,undefined4 *param_2,undefined4 param_3,und
 
 {
   uint uVar1;
-  
+
   if (5 < *(byte *)((int)param_2 + 9)) {
     Pokepic_SetAttr(param_2[1],6,0,param_4,param_4);
     ov12_0226430C(*param_2,*(undefined1 *)(param_2 + 2),0x17);

@@ -53,7 +53,7 @@ void ov14_021E6548(int param_1,uint param_2,uint param_3)
 {
   int iVar1;
   undefined4 uVar2;
-  
+
   if (((0x1d < param_2) || (0x1d < param_3)) && ((param_2 < 0x1e || (param_3 < 0x1e)))) {
     if (0x1d < param_2) {
       param_2 = param_3;

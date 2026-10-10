@@ -63,7 +63,7 @@ void ov41_02247288(undefined4 *param_1,undefined4 param_2,undefined4 param_3,int
   undefined4 *puStack_1c;
   undefined4 uStack_18;
   int iStack_14;
-  
+
   uStack_38 = *param_1;
   uStack_34 = param_1[1];
   uStack_30 = param_1[4];

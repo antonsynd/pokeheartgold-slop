@@ -50,7 +50,7 @@ ov112_021F039C(undefined4 param_1,undefined4 param_2,undefined4 param_3,undefine
 
 {
   undefined4 *puVar1;
-  
+
   puVar1 = (undefined4 *)Heap_Alloc(param_1,600,param_3,param_4,param_4);
   func_0x020d4994(puVar1,0,600);
   *puVar1 = param_1;

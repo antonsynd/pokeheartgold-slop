@@ -54,7 +54,7 @@ undefined4 ov120_0225F8B0(undefined4 *param_1,int *param_2)
 {
   int iVar1;
   undefined4 uVar2;
-  
+
   iVar1 = *param_2;
   if (iVar1 == 0) {
     uVar2 = ov120_0225F0FC(4);

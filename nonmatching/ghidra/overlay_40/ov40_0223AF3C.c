@@ -71,7 +71,7 @@ undefined4 ov40_0223AF3C(int param_1)
   int iVar2;
   int iVar3;
   int iVar4;
-  
+
   iVar2 = *(int *)(param_1 + 0x860);
   switch(*(undefined4 *)(param_1 + 8)) {
   case 0:

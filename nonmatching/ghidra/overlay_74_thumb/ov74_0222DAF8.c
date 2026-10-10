@@ -49,7 +49,7 @@ int ov74_0222DAF8(int param_1,int param_2,int param_3)
 {
   int iVar1;
   int iVar2;
-  
+
   iVar2 = param_2;
   do {
     iVar2 = iVar2 + param_3;

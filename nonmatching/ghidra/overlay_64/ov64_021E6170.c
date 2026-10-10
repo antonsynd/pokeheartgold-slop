@@ -58,7 +58,7 @@ void ov64_021E6170(int param_1)
   undefined1 *puVar1;
   int iVar2;
   uint uVar3;
-  
+
   FontID_Alloc(4,0x3b);
   puVar1 = &ov64_021E7040;
   uVar3 = 0;

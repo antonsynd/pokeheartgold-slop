@@ -68,7 +68,7 @@ undefined4 ov49_02262B14(undefined4 param_1,undefined4 param_2)
   int iVar2;
   undefined4 uVar3;
   undefined4 uVar4;
-  
+
   uVar1 = ov49_0225EF84();
   iVar2 = ov49_0225EF88(param_1);
   if (iVar2 == 0) {

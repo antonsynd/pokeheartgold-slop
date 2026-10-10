@@ -72,7 +72,7 @@ undefined4 ov49_02259EF8(undefined4 param_1)
 {
   int iVar1;
   int iVar2;
-  
+
   iVar1 = OverlayManager_GetData();
   iVar2 = OverlayManager_GetArgs(param_1);
   *(uint *)(iVar2 + 0x18) = (uint)*(byte *)(iVar1 + 1);

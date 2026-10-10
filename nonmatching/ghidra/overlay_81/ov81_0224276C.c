@@ -65,7 +65,7 @@ void ov81_0224276C(undefined4 *param_1)
   undefined *puVar2;
   undefined4 *puVar3;
   int iVar4;
-  
+
   ov81_02242B90();
   func_0x020b78d4();
   func_0x0200b150(0,0x80,0,0x20,0,0x80,0,0x20,100);

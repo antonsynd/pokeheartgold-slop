@@ -49,7 +49,7 @@ undefined4 ov80_02232318(undefined4 *param_1)
 
 {
   int iVar1;
-  
+
   ov80_0222BE9C(param_1,*(undefined2 *)(param_1 + 0x1e));
   iVar1 = Frontier_GetData(*(undefined4 *)*param_1);
   if (1 < *(byte *)(iVar1 + 0xa1a)) {

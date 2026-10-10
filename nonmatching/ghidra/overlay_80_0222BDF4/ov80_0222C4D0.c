@@ -57,7 +57,7 @@ undefined4 ov80_0222C4D0(int *param_1)
   uint uVar3;
   int iVar4;
   int iVar5;
-  
+
   iVar5 = *param_1;
   puVar2 = (ushort *)ov80_0222BE24((undefined *)param_1,*(ushort *)(param_1 + 0x1e));
   uVar3 = Handle2dMenuInput_DeleteOnFinish(*(undefined **)(iVar5 + 0x74),*(int *)(iVar5 + 0x34));

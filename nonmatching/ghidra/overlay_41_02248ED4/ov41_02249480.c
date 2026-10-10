@@ -55,7 +55,7 @@ void ov41_02249480(int param_1,undefined4 param_2,undefined4 param_3,undefined4 
   undefined4 uVar2;
   int iStack_1c;
   int iStack_18;
-  
+
   CreateSysTaskAndEnvironment(0x22494f5,0x2c,0,0xd);
   puVar1 = (undefined4 *)SysTask_GetData();
   *puVar1 = *(undefined4 *)(param_1 + 8);

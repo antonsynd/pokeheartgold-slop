@@ -60,7 +60,7 @@ undefined4 sub_02036E60(byte *param_1,undefined4 param_2,undefined4 param_3,unde
   byte *pbStack_18;
   int iStack_14;
   undefined4 uStack_10;
-  
+
   uStack_10 = param_4;
   uVar1 = sub_0203993C();
   iVar2 = sub_0203772C(uVar1);

@@ -57,7 +57,7 @@ void ov51_021E7804(undefined4 *param_1,undefined4 param_2,undefined4 param_3,und
   undefined1 uStack_f;
   byte bStack_e;
   undefined4 uStack_c;
-  
+
   uStack_c = param_4;
   func_0x020d4994(&uStack_20,0,0x14);
   uStack_20 = *param_1;

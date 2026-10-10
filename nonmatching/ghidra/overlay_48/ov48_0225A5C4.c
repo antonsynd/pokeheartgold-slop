@@ -53,7 +53,7 @@ void ov48_0225A5C4(int param_1)
 
 {
   undefined4 uVar1;
-  
+
   uRam04001000 = uRam04001000 & 0xffff1fff | 0x6000;
   uRam0400104a = uRam0400104a & 0xffc0 | 0x1f;
   uRam04001048 = uRam04001048 & 0xc0c0 | 0xf0f;

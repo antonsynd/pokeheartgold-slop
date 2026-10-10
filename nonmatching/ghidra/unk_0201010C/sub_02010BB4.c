@@ -50,7 +50,7 @@ undefined4 sub_02010BB4(int param_1)
 {
   int iVar1;
   undefined4 uVar2;
-  
+
   iVar1 = *(int *)(param_1 + 0xc);
   uVar2 = 0;
   if (iVar1 == 1) {

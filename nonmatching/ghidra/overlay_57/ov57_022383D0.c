@@ -48,7 +48,7 @@ void ov57_022383D0(int param_1,undefined4 param_2)
 
 {
   int iVar1;
-  
+
   iVar1 = 0;
   do {
     if (*(int *)(param_1 + 0x34c) == 1) {

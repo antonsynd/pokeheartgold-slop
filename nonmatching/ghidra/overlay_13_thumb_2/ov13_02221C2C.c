@@ -55,7 +55,7 @@ undefined4 ov13_02221C2C(int param_1,int param_2)
   int iVar2;
   int iVar3;
   undefined4 uVar4;
-  
+
   uVar4 = 0;
   uVar1 = ov13_02222A9C(&ov13_02245A20);
   ov13_022227A0(param_2,8,&ov13_02245A20,uVar1);

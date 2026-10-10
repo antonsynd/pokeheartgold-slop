@@ -88,7 +88,7 @@ undefined4 ov46_0225892C(undefined *param_1,int *param_2)
   int iVar7;
   longlong lVar8;
   undefined4 uStack_1c;
-  
+
   puVar2 = (undefined4 *)OverlayManager_GetData(param_1);
   puVar3 = OverlayManager_GetArgs(param_1);
   switch(*param_2) {

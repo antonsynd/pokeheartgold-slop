@@ -49,7 +49,7 @@ void ov49_02265274(short *param_1,undefined4 param_2,short param_3,short param_4
 
 {
   short sVar1;
-  
+
   if (*param_1 != 0) {
     GF_AssertFail();
   }

@@ -49,7 +49,7 @@ void PlayerAvatar_GetCoordsInFront(undefined4 param_1,undefined4 param_2,undefin
 
 {
   undefined4 uVar1;
-  
+
   uVar1 = PlayerAvatar_GetFacingDirection();
   sub_0205DFFC(param_1,uVar1,param_2,param_3);
   return;

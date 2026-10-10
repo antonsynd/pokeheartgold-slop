@@ -67,7 +67,7 @@ void ov15_021FB14C(int param_1,undefined4 param_2,undefined4 param_3,undefined4 
   int iVar7;
   byte abStack_20 [8];
   undefined4 uStack_18;
-  
+
   pbVar5 = abStack_20;
   abStack_20[0] = 0xff;
   abStack_20[1] = 0xff;

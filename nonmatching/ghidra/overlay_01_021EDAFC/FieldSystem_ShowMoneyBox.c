@@ -60,7 +60,7 @@ undefined4 FieldSystem_ShowMoneyBox(int param_1,undefined4 param_2,undefined4 pa
   undefined4 uVar1;
   undefined4 uVar2;
   undefined4 uVar3;
-  
+
   uVar1 = AllocWindows(4,1);
   AddWindowParameterized(*(undefined4 *)(param_1 + 8),uVar1,3,param_2,param_3,10,4,0xd,1);
   LoadUserFrameGfx1(*(undefined4 *)(param_1 + 8),3,0x3d9,0xb,0,4);

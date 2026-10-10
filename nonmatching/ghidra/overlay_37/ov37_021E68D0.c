@@ -53,7 +53,7 @@ undefined4 ov37_021E68D0(int param_1,undefined4 param_2)
 
 {
   int iVar1;
-  
+
   iVar1 = sub_0203769C();
   if (*(int *)(param_1 + 800) == iVar1) {
     ov37_021E762C(param_1,0xd,0);

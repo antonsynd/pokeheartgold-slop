@@ -55,7 +55,7 @@ int BugContestSwapMon_Init(undefined *param_1,undefined *param_2)
 {
   int *piVar1;
   int iVar2;
-  
+
   iVar2 = *(int *)param_2;
   if (iVar2 == 0) {
     ov111_021E5E34();

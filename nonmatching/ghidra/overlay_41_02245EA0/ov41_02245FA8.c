@@ -48,7 +48,7 @@ void ov41_02245FA8(int param_1,int *param_2,int *param_3)
 
 {
   undefined4 uVar1;
-  
+
   uVar1 = sub_02015FCC(*(undefined4 *)(param_1 + 4));
   *param_2 = (int)(short)uVar1;
   *param_3 = (int)(short)((uint)uVar1 >> 0x10);

@@ -64,7 +64,7 @@ undefined4 ov80_0222D404(int *param_1)
 
 {
   int iVar1;
-  
+
   switch(param_1[1]) {
   case 0:
     ov80_0223AC24(1,0x10,0xfffffff0,param_1 + 3,2);

@@ -56,7 +56,7 @@ void ov12_0223A088(void)
 
 {
   int iVar1;
-  
+
   iVar1 = OverlayManager_GetData();
   Main_SetVBlankIntrCB(0,0);
   sub_0200FBF4(0,0);

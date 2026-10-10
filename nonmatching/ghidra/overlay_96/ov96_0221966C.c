@@ -53,7 +53,7 @@ void ov96_0221966C(undefined4 *param_1,uint param_2,uint param_3,char *param_4)
   uint uVar1;
   int iVar2;
   int iVar3;
-  
+
   if (param_1 == (undefined4 *)0x0) {
     GF_AssertFail();
   }

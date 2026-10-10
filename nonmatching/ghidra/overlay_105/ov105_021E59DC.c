@@ -73,7 +73,7 @@ undefined4 ov105_021E59DC(undefined4 param_1,int *param_2)
   undefined4 uStack_40;
   undefined4 uStack_3c;
   undefined4 auStack_38 [9];
-  
+
   iVar1 = OverlayManager_GetData();
   iVar8 = iVar1 + 4 + (uint)*(byte *)(iVar1 + 0x9f) * 0x7c;
   uVar10 = 0;

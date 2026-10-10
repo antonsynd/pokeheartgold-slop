@@ -54,7 +54,7 @@ void ov112_021F1A08(int param_1)
   int iVar1;
   undefined4 uVar2;
   undefined4 uVar3;
-  
+
   uVar2 = *(undefined4 *)(param_1 + 0x68);
   uVar3 = *(undefined4 *)(param_1 + 0x6c);
   ov112_021F1FD0();

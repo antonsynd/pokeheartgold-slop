@@ -50,7 +50,7 @@ undefined4 MapObjectMovementCmd102_Step1(undefined4 param_1)
 {
   uint *puVar1;
   uint uVar2;
-  
+
   puVar1 = (uint *)sub_0205F3E4();
   uVar2 = *puVar1;
   *puVar1 = uVar2 + 1;

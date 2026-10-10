@@ -49,7 +49,7 @@ undefined4 ov14_021E952C(int param_1)
 
 {
   int iVar1;
-  
+
   iVar1 = ov14_021E80A8();
   if (iVar1 == 0) {
     return 0;

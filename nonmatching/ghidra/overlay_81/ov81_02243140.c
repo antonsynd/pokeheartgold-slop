@@ -56,7 +56,7 @@ void ov81_02243140(undefined4 param_1,undefined4 param_2,int param_3,undefined4 
   uint uStack_28;
   int iStack_1c;
   undefined4 uStack_18;
-  
+
   uStack_18 = param_4;
   uVar1 = GfGfxLoader_GetScrnDataFromOpenNarc(param_2,param_3 + 0x87,1,&iStack_1c,100);
   if (param_3 == 0) {

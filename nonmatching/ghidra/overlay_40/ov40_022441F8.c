@@ -54,7 +54,7 @@ void ov40_022441F8(int param_1,undefined4 param_2,undefined4 param_3,undefined4 
   undefined1 auStack_1c [2];
   undefined1 auStack_1a [2];
   undefined4 uStack_18;
-  
+
   iVar1 = 0;
   iVar2 = param_1;
   uStack_18 = param_4;

@@ -53,7 +53,7 @@ void ov07_02230F0C(undefined4 param_1,undefined4 param_2,undefined4 param_3,int 
 {
   short sStack_18;
   short sStack_16;
-  
+
   func_0x0200df98(param_1,2);
   ManagedSprite_SetDrawFlag(param_1,1);
   func_0x0200de44(param_1,&sStack_16,&sStack_18);

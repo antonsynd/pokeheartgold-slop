@@ -53,7 +53,7 @@ undefined4 ov59_02238068(int param_1)
 
 {
   int iVar1;
-  
+
   if (*(short *)(param_1 + 0x3c) == 0) {
     ov59_02238FF4(param_1,1);
     iVar1 = sub_02031C00(*(undefined4 *)(param_1 + 0x10));

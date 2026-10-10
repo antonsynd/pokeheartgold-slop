@@ -51,7 +51,7 @@ void ov96_0220A254(undefined4 param_1,int param_2,undefined4 param_3)
 {
   undefined4 *puVar1;
   undefined1 auStack_24 [16];
-  
+
   puVar1 = (undefined4 *)PokeathlonCourse_GetHeapAllocPtr4();
   ov96_021E6168(param_1,param_2,param_3,auStack_24);
   ov96_021EECB8(puVar1[param_2 * 0x1c + 0x16],auStack_24,*(undefined2 *)(puVar1 + 0x85),puVar1[0x14]

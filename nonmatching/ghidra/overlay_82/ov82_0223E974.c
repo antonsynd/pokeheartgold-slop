@@ -54,7 +54,7 @@ void ov82_0223E974(int param_1)
 {
   undefined4 uVar1;
   int iVar2;
-  
+
   ov82_0223E9B0();
   uVar1 = BgConfig_Alloc(0x69);
   *(undefined4 *)(param_1 + 0x48) = uVar1;

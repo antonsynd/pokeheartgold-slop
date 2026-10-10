@@ -59,7 +59,7 @@ void ov111_021E65D4(int param_1)
   int iVar4;
   short sStack_18;
   short sStack_16;
-  
+
   if (param_1 == 0) {
     GF_AssertFail();
   }

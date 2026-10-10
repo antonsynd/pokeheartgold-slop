@@ -59,7 +59,7 @@ void ov85_021E71EC(int param_1,undefined4 param_2,undefined4 param_3)
 {
   undefined4 uVar1;
   int iVar2;
-  
+
   iVar2 = param_1 + 0xca8;
   sub_0203769C();
   uVar1 = sub_02034818();

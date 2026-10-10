@@ -54,7 +54,7 @@ void ov14_021E5DE0(int param_1,undefined4 param_2,undefined4 param_3,undefined4 
 {
   undefined1 uVar1;
   int iVar2;
-  
+
   iVar2 = *(int *)(param_1 + 0x34);
   GfGfxLoader_LoadCharData(0x13,0x40,*(undefined4 *)(iVar2 + 0x14),0,1000,0x300,1,10,param_4);
   GfGfxLoader_LoadCharData(0x13,0x40,*(undefined4 *)(iVar2 + 0x14),1,1000,0x300,1,10);

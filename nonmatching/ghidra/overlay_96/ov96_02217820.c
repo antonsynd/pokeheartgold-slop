@@ -51,7 +51,7 @@ void ov96_02217820(int param_1)
   int iVar2;
   int iVar3;
   undefined4 uStack_1c;
-  
+
   uStack_1c = 0;
   iVar3 = param_1;
   do {

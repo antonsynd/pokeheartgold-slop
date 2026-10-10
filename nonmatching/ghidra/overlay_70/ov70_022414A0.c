@@ -53,7 +53,7 @@ undefined4 ov70_022414A0(int *param_1)
 
 {
   int iVar1;
-  
+
   iVar1 = AllocMonZeroed(0x3d);
   param_1[0x47c] = iVar1;
   switch(param_1[9]) {

@@ -49,7 +49,7 @@ void ov96_021F82E4(int param_1,undefined4 param_2,undefined4 param_3)
 {
   int iVar1;
   undefined4 *puVar2;
-  
+
   iVar1 = (uint)*(byte *)(param_1 + 0x5b) * 0x10;
   puVar2 = (undefined4 *)(param_1 + 4 + iVar1);
   if (*(int *)(param_1 + 4 + iVar1) != 0) {

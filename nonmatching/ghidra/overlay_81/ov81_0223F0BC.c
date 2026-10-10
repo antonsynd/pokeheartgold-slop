@@ -62,7 +62,7 @@ void ov81_0223F0BC(int param_1,undefined4 param_2,undefined4 param_3,undefined4 
   undefined1 uVar1;
   int iVar2;
   int iVar3;
-  
+
   ov81_02242F54(*(undefined4 *)(param_1 + *(int *)(param_1 + 0x468) * 4 + 0x360));
   ov81_02242FB0(*(undefined4 *)(param_1 + *(int *)(param_1 + 0x468) * 4 + 0x360),1);
   ov81_02242F94(*(undefined4 *)(param_1 + *(int *)(param_1 + 0x468) * 4 + 0x360),0);

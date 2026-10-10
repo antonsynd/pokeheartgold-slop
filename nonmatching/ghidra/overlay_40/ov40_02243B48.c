@@ -49,7 +49,7 @@ void ov40_02243B48(int param_1)
 {
   int iVar1;
   int iVar2;
-  
+
   iVar2 = 0;
   iVar1 = param_1;
   if (0 < *(int *)(param_1 + 0x204)) {

@@ -48,7 +48,7 @@ uint ov96_021EE264(uint *param_1,uint param_2)
 {
   int iVar1;
   uint *puVar2;
-  
+
   iVar1 = 0;
   puVar2 = param_1;
   do {

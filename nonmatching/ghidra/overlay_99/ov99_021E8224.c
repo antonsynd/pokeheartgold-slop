@@ -60,7 +60,7 @@ void ov99_021E8224(int param_1,undefined4 param_2,undefined4 param_3,undefined4 
   undefined4 uVar2;
   int iVar3;
   uint uVar4;
-  
+
   uVar1 = func_0x0221eefc(*(undefined4 *)(param_1 + 0x400));
   func_0x0221ec24(*(undefined4 *)(param_1 + 0x400),0xb,0x7e,3);
   func_0x0221ec08(*(undefined4 *)(param_1 + 0x400),0,0x7f,1,0);

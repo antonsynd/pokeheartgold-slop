@@ -61,7 +61,7 @@ void ov81_02242218(int param_1,undefined4 param_2,uint param_3,uint param_4)
   undefined4 uVar3;
   int iStack_1c;
   uint uStack_18;
-  
+
   if (param_3 < param_4) {
     uStack_18 = param_4;
     uVar3 = Party_GetMonByIndex(param_2,param_3);

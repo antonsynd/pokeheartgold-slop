@@ -58,7 +58,7 @@ undefined4 HallOfFameShowcase_Exit(undefined4 param_1)
 
 {
   int iVar1;
-  
+
   iVar1 = OverlayManager_GetData();
   Main_SetVBlankIntrCB(0,iVar1);
   ov64_021E6260(iVar1);

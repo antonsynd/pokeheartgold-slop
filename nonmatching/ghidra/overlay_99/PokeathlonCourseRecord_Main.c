@@ -63,7 +63,7 @@ undefined4 PokeathlonCourseRecord_Main(undefined4 param_1,undefined4 *param_2)
 {
   int iVar1;
   int iVar2;
-  
+
   iVar1 = OverlayManager_GetData();
   ov99_021E5F74();
   if (*(int *)(iVar1 + 0x90) == 1) {

@@ -56,7 +56,7 @@ void CallFieldTask_Waterfall
   undefined4 uVar2;
   undefined1 auStack_28 [16];
   undefined4 uStack_18;
-  
+
   uStack_18 = param_4;
   uVar1 = TaskManager_GetFieldSystem();
   uVar2 = ov01_021F3100(uVar1,param_3);

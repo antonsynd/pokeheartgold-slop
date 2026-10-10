@@ -48,7 +48,7 @@ undefined1 ov80_022358C4(int param_1)
 
 {
   undefined4 uVar1;
-  
+
   *(char *)(param_1 + 0xd) = *(char *)(param_1 + 0xd) + '\x01';
   if (*(char *)(param_1 + 0xf) != '\x06') {
     uVar1 = sub_020674A4(*(undefined4 *)(param_1 + 8));

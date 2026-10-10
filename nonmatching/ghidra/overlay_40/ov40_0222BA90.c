@@ -75,7 +75,7 @@ void ov40_0222BA90(undefined *param_1)
   undefined4 uStack_18;
   undefined4 uStack_14;
   undefined4 uStack_10;
-  
+
   GfGfx_DisableEngineAPlanes();
   uStack_1c = 1;
   uStack_18 = 0;

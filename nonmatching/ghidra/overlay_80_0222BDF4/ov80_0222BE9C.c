@@ -48,7 +48,7 @@ uint ov80_0222BE9C(undefined4 param_1,uint param_2)
 
 {
   ushort *puVar1;
-  
+
   puVar1 = (ushort *)ov80_0222BE24();
   if (puVar1 != (ushort *)0x0) {
     param_2 = (uint)*puVar1;

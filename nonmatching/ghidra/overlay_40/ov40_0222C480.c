@@ -48,7 +48,7 @@ void ov40_0222C480(int param_1)
 
 {
   int iVar1;
-  
+
   iVar1 = *(int *)(param_1 + 0x6d8);
   if (iVar1 < 1) {
     if (iVar1 != 0) {

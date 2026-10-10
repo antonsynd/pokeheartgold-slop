@@ -60,7 +60,7 @@ int ov00_021E6690(void)
   int iStack_18;
   int iStack_14;
   undefined4 uStack_10;
-  
+
   iVar3 = 0;
   uStack_10 = in_r3;
   iVar1 = func_0x021ec11c(&iStack_14,&iStack_18);

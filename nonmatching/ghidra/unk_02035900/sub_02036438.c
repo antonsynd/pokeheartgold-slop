@@ -61,7 +61,7 @@ undefined4 sub_02036438(int param_1)
   int iVar6;
   int iVar7;
   uint uStack_24;
-  
+
   iVar7 = 0;
   uVar1 = sub_0203993C();
   iVar2 = sub_0203772C(uVar1);

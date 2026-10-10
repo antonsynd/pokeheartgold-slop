@@ -50,7 +50,7 @@ void ov99_021E7CE4(int param_1,uint param_2,uint param_3,int param_4)
 
 {
   int iVar1;
-  
+
   if ((param_2 != param_3) && (param_2 < 0x20)) {
     ov99_021E7C58();
     if ((int)param_2 < 0x1e) {

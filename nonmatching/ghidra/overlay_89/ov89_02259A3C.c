@@ -62,7 +62,7 @@ ov89_02259A3C(int param_1,undefined4 param_2,undefined4 *param_3,undefined4 para
   undefined4 uStack_20;
   int iStack_1c;
   undefined4 uStack_18;
-  
+
   if ((param_1 != 0) && (param_1 < 0x1ee)) {
     uStack_18 = param_4;
     iVar1 = ov89_0225C88C(param_1,param_2,param_7);

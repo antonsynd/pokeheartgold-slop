@@ -49,7 +49,7 @@ void sub_02094A70(int param_1)
 
 {
   undefined4 uVar1;
-  
+
   if (*(int *)(param_1 + 0x4680) != 0) {
     uVar1 = sub_02093CE4();
     sub_02094A90(param_1,uVar1);

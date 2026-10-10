@@ -54,7 +54,7 @@ uint sub_0205DA34(undefined4 param_1,undefined4 param_2,undefined4 param_3)
   uint uVar1;
   int iVar2;
   uint uVar3;
-  
+
   uVar3 = 0;
   uVar1 = sub_0205DAA8();
   if ((uVar1 & 10) != 0) {

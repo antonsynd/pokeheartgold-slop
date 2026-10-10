@@ -52,7 +52,7 @@ void BattleControl_EmitPartyStatusHeal
   undefined1 uStack_13;
   undefined2 uStack_12;
   undefined4 uStack_10;
-  
+
   uStack_14 = 0x2a;
   uStack_12 = (undefined2)param_4;
   uStack_13 = *(undefined1 *)(param_2 + param_3 * 0xc0 + 0x2d67);

@@ -52,7 +52,7 @@ void ov41_02248F18(int *param_1,undefined4 param_2,undefined4 param_3,undefined4
 {
   int iVar1;
   undefined4 *puVar2;
-  
+
   ov41_02248E28();
   iVar1 = Heap_Alloc(0xd,0x34);
   *param_1 = iVar1;

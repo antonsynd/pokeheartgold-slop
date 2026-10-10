@@ -52,7 +52,7 @@ void ov112_021ED530(int param_1)
   int *piVar1;
   int iVar2;
   int iVar3;
-  
+
   func_0x0203b9c4(*(undefined4 *)(param_1 + 0x20));
   piVar1 = (int *)LocalFieldData_GetCurrentPosition();
   if (*piVar1 != 499) {

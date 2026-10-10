@@ -57,7 +57,7 @@ int ov01_021F2628(undefined4 param_1,undefined4 param_2,undefined4 param_3,undef
   ushort *puVar1;
   int iVar2;
   undefined4 uVar3;
-  
+
   puVar1 = (ushort *)TaskManager_GetEnvironment();
   do {
     if (*(int *)(puVar1 + 0xe) == 1) {

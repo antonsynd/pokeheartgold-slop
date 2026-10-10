@@ -63,7 +63,7 @@ void sub_02036AD8(void)
 {
   undefined2 uVar1;
   int iVar2;
-  
+
   if (iRam021d4148 != 0) {
     sub_0203993C();
     iVar2 = sub_02034044();

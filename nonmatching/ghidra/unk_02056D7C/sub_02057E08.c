@@ -56,7 +56,7 @@ void sub_02057E08(void)
   int iVar1;
   int iVar2;
   undefined4 uVar3;
-  
+
   iVar1 = sub_0203769C();
   iVar2 = sub_02057A34();
   if (iVar2 < 9) {

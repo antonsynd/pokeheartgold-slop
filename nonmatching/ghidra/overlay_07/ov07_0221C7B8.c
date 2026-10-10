@@ -53,7 +53,7 @@ void ov07_0221C7B8(int param_1,uint *param_2,undefined4 param_3)
   int iVar4;
   uint *puVar5;
   int iVar6;
-  
+
   iVar1 = 0;
   iVar4 = 0;
   iVar6 = 0;

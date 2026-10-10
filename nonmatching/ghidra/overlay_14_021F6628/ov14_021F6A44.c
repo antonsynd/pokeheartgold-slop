@@ -57,7 +57,7 @@ void ov14_021F6A44(int *param_1)
   int unaff_r5;
   __asm__ volatile("movs %0, r5" : "=l"(unaff_r5) : : "cc");
 
-  
+
   switch(*(undefined4 *)(*param_1 + 8)) {
   case 0:
     unaff_r5 = 0;

@@ -54,7 +54,7 @@ undefined4 ov18_021F4974(int param_1,uint param_2,int param_3,int param_4)
   short sStack_1c;
   short sStack_1a;
   int iStack_18;
-  
+
   uVar1 = param_2 + 4;
   if (param_2 < uVar1) {
     iVar3 = param_1 + param_2 * 4;

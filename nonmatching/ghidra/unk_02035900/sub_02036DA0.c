@@ -50,7 +50,7 @@ undefined4 sub_02036DA0(byte *param_1)
 {
   ushort uVar1;
   int iVar2;
-  
+
   if (*(char *)(iRam021d4148 + 0x65e) != '\0') {
     return 0;
   }

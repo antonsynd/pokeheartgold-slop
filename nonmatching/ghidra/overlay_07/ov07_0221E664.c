@@ -49,7 +49,7 @@ void ov07_0221E664(int param_1)
 
 {
   uint uVar1;
-  
+
   if (param_1 == 0) {
     GF_AssertFail();
   }

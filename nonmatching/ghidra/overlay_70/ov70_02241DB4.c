@@ -56,7 +56,7 @@ void ov70_02241DB4(undefined4 *param_1,undefined4 param_2)
   int iVar2;
   undefined1 uStack_18;
   char acStack_17 [3];
-  
+
   sub_02019B1C(param_1[7],0,acStack_17,&uStack_18);
   switch(param_2) {
   case 0:

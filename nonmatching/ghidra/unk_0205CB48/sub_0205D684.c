@@ -51,7 +51,7 @@ undefined4 sub_0205D684(undefined4 param_1,undefined4 param_2,undefined4 param_3
 {
   int iVar1;
   int iVar2;
-  
+
   iVar1 = PlayerAvatar_Unk24AddWithCeiling(param_1,1,3,param_4,param_4);
   iVar2 = PlayerAvatar_CheckFlag2(param_1);
   if ((iVar2 == 0) && (1 < iVar1)) {

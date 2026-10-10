@@ -51,7 +51,7 @@ void ov43_0222BFD4(short *param_1,undefined4 param_2,undefined4 param_3,undefine
 
 {
   undefined4 uVar1;
-  
+
   if (param_1[0x59] == 2) {
     uVar1 = 2;
   }

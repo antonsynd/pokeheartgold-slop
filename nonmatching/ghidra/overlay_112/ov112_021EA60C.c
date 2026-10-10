@@ -51,7 +51,7 @@ void ov112_021EA60C(int param_1)
 {
   int iVar1;
   undefined4 uVar2;
-  
+
   uVar2 = *(undefined4 *)(param_1 + 0x1e538);
   iVar1 = ov112_021E7668();
   if (iVar1 == 0) {

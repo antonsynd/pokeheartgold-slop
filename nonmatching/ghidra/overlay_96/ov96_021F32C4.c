@@ -48,7 +48,7 @@ undefined4 ov96_021F32C4(undefined4 param_1)
 
 {
   undefined4 uVar1;
-  
+
   uVar1 = 0;
   switch(param_1) {
   default:

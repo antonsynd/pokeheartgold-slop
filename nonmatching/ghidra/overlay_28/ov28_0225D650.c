@@ -71,7 +71,7 @@ void ov28_0225D650(undefined4 param_1)
   undefined4 uStack_18;
   undefined4 uStack_14;
   undefined4 uStack_10;
-  
+
   func_0x020cda64(0);
   uStack_28 = 0;
   uStack_24 = 0;

@@ -71,7 +71,7 @@ int ov96_021EA424(undefined4 param_1,undefined4 param_2,undefined4 param_3,undef
   undefined4 uStack_40;
   undefined4 uStack_3c;
   undefined1 auStack_38 [36];
-  
+
   uVar1 = ov96_021E9D08(param_1,0);
   uVar2 = ov96_021E9D08(param_1,1);
   uVar3 = ov96_021E9D08(param_1,2);

@@ -49,7 +49,7 @@ undefined4 ov71_0224A98C(int param_1,uint *param_2,undefined4 param_3,undefined4
 
 {
   int iVar1;
-  
+
   if (*param_2 < 3) {
     iVar1 = *param_2 * 4;
     iVar1 = (**(code **)(&ov71_0224BEF0 + iVar1))

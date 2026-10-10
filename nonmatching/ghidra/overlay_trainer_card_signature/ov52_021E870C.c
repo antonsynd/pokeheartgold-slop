@@ -59,7 +59,7 @@ void ov52_021E870C(int param_1,undefined4 param_2)
   undefined4 uVar1;
   int iVar2;
   int iVar3;
-  
+
   func_0x020b78d4();
   OamManager_Create(0,0x7e,0,0x20,0,0x7e,0,0x20,0x27);
   uVar1 = G2dRenderer_Init(0x32,param_1 + 0x40,0x27);

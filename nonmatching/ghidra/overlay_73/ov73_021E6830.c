@@ -53,7 +53,7 @@ void ov73_021E6830(undefined4 *param_1)
 {
   undefined4 uVar1;
   int iVar2;
-  
+
   if (*(char *)((int)param_1 + 0x4a15) != '\0') {
     uVar1 = func_0x020169c0(param_1[0xba]);
     param_1[0xc5] = uVar1;

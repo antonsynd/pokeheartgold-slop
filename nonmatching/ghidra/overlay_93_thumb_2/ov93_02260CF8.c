@@ -69,7 +69,7 @@ void ov93_02260CF8(int *param_1)
   ushort *puStack_a8;
   int iStack_98;
   undefined2 auStack_94 [64];
-  
+
   iVar2 = SpriteManager_FindPlttResourceOffset(param_1[10],0x2716,2);
   iStack_98 = 0;
   if (*(char *)(*param_1 + 0x30) != '\0') {

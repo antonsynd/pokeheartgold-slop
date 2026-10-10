@@ -47,7 +47,7 @@ undefined4 ov96_021EDC38(undefined4 param_1,int param_2)
 
 {
   undefined4 uVar1;
-  
+
   switch(param_1) {
   case 5:
     if (param_2 == 0) {

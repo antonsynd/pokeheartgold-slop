@@ -61,7 +61,7 @@ ov12_022612A4(undefined4 param_1,undefined4 param_2,undefined2 *param_3,undefine
   undefined4 uVar1;
   uint uVar2;
   undefined4 uVar3;
-  
+
   uVar1 = ov12_0223A99C();
   uVar1 = ov12_0223BB94(uVar1,param_11);
   uVar2 = ov12_0223AB0C(param_1,param_11);

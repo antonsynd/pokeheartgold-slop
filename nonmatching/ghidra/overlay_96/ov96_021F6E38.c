@@ -51,7 +51,7 @@ void ov96_021F6E38(int param_1)
   int iVar2;
   int iVar3;
   short *psVar4;
-  
+
   uVar1 = 0;
   iVar2 = 0;
   iVar3 = param_1;

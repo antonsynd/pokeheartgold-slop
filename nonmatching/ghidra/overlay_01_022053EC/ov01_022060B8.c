@@ -52,7 +52,7 @@ undefined4 ov01_022060B8(int param_1,int param_2,undefined1 param_3)
 
 {
   int iVar1;
-  
+
   iVar1 = FollowMon_IsActive();
   if (iVar1 == 0) {
     return 0;

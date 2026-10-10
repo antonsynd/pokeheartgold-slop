@@ -54,7 +54,7 @@ void ov87_021E6AF4(int param_1)
   undefined1 uStack_8;
   undefined1 uStack_7;
   undefined1 uStack_5;
-  
+
   uStack_18 = *(undefined4 *)(param_1 + 0x58);
   uStack_14 = 2;
   uStack_10 = 0x380;

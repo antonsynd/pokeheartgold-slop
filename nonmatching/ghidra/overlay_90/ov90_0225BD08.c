@@ -53,7 +53,7 @@ void ov90_0225BD08(int *param_1)
 {
   int iVar1;
   int *piVar2;
-  
+
   if (param_1[99] != 0) {
     SysTask_Destroy();
     param_1[99] = 0;

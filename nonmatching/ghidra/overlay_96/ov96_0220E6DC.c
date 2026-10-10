@@ -50,7 +50,7 @@ int ov96_0220E6DC(uint param_1,int param_2,undefined4 param_3,undefined4 param_4
 {
   int iVar1;
   int iVar2;
-  
+
   iVar1 = func_0x020f2998((param_2 + -7) * param_1 * 0x26,1000,param_3,param_4,param_4);
   iVar2 = func_0x0201fcac((param_1 & 0x7fff) << 1);
   return (((iVar1 + 0x80) * 0x10000 >> 0x10) + ((iVar2 << 6) >> 0x10)) * 0x10000 >> 0x10;

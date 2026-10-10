@@ -54,7 +54,7 @@ void ov80_0222B24C(int param_1,undefined4 param_2,undefined2 *param_3,int param_
   int iVar5;
   undefined2 *puVar6;
   ushort *puVar7;
-  
+
   *(char *)(param_4 + 0x702) = *(char *)(param_4 + 0x702) + '\x01';
   iVar4 = sub_0203769C();
   if ((param_1 != iVar4) && (iVar4 = sub_0203769C(), iVar4 != 0)) {

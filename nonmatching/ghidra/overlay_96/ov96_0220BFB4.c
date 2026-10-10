@@ -55,7 +55,7 @@ void ov96_0220BFB4(int param_1,undefined4 param_2)
   uint uVar2;
   undefined4 uVar3;
   undefined4 uVar4;
-  
+
   uVar2 = *(uint *)(param_1 + 0x38);
   uVar4 = *(undefined4 *)(param_1 + 0x24);
   uVar3 = 0x28;

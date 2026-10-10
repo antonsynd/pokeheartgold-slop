@@ -54,7 +54,7 @@ void ov08_02221328(int *param_1)
   byte bVar1;
   uint uVar2;
   uint uVar3;
-  
+
   bVar1 = *(byte *)(*param_1 + 0x11);
   uVar3 = 0;
   do {

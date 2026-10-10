@@ -49,7 +49,7 @@ void ov96_021FF1E0(int param_1,uint *param_2,uint *param_3)
   uint uVar1;
   uint uVar2;
   uint uVar3;
-  
+
   uVar2 = *param_2;
   uVar3 = uVar2 & 0xff;
   uVar1 = (int)uVar2 >> 8 & 0xff;

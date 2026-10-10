@@ -50,7 +50,7 @@ undefined4 * ov93_02262344(int param_1)
 
 {
   undefined4 *puVar1;
-  
+
   puVar1 = (undefined4 *)
            SpriteSystem_NewSprite
                      (*(undefined4 *)(param_1 + 0x24),*(undefined4 *)(param_1 + 0x28),0x2262fa0);

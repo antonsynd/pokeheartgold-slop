@@ -63,7 +63,7 @@ void ov15_021FF364(undefined4 *param_1,int param_2,undefined4 param_3,int param_
   int local_28;
   int local_20;
   int local_1c;
-  
+
   piVar1 = (int *)(param_1[0x8d] + 4 + (uint)*(byte *)(param_1[0x8d] + 100) * 0xc);
   local_28 = (uint)*(byte *)((int)piVar1 + 9) - (int)*(short *)((int)piVar1 + 6);
   if (6 < local_28) {

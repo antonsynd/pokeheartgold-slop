@@ -49,7 +49,7 @@ undefined4 ov75_022491CC(int param_1)
 
 {
   undefined4 uVar1;
-  
+
   uVar1 = func_0x021e6a70(-*(int *)(param_1 + 0x18),*(undefined4 *)(param_1 + 0x1c));
   ov75_0224971C(param_1,uVar1,-*(int *)(param_1 + 0x18));
   *(undefined4 *)(param_1 + 8) = 0x1c;

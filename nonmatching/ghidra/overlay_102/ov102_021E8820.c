@@ -53,7 +53,7 @@ void ov102_021E8820(int param_1,undefined4 *param_2,undefined4 param_3,undefined
 
 {
   int iVar1;
-  
+
   iVar1 = *(int *)(param_1 + 0x38);
   if (((iVar1 != 0) || (*(char *)(param_1 + 0x6b) == '\0')) &&
      ((iVar1 != 1 || (*(char *)(param_1 + 0x6b) == '\x01')))) {

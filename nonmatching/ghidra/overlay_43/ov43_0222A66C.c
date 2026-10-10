@@ -49,7 +49,7 @@ void ov43_0222A66C(undefined4 *param_1)
 
 {
   uint uVar1;
-  
+
   uVar1 = 0;
   do {
     FreeBgTilemapBuffer(*param_1,uVar1 & 0xff);

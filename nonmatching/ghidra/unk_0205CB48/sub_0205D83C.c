@@ -64,7 +64,7 @@ void sub_0205D83C(undefined4 param_1,undefined4 param_2,undefined4 param_3)
   int iVar2;
   undefined4 uVar3;
   undefined4 uStack_18;
-  
+
   uVar1 = sub_0205DA34();
   if ((uVar1 & 4) == 0) {
     if ((uVar1 & 0x10) == 0) {

@@ -47,7 +47,7 @@ void ov01_021EDE18(int param_1)
 
 {
   byte *pbVar1;
-  
+
   *(int *)(param_1 + 0xac) = param_1 + 0xbc;
   *(int *)(param_1 + 0xb0) = param_1 + 8;
   *(undefined1 *)(param_1 + 0xb4) = 0;

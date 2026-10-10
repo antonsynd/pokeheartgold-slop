@@ -51,7 +51,7 @@ void sub_0206197C(undefined4 param_1,undefined4 param_2,undefined4 param_3,undef
 {
   int iVar1;
   int iVar2;
-  
+
   iVar1 = sub_0205F370(param_1,8,param_3,param_4,param_4);
   iVar2 = sub_02062050(param_1);
   if (iVar2 == 1) {

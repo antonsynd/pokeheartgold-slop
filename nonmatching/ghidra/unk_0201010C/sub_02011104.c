@@ -49,7 +49,7 @@ void sub_02011104(undefined4 param_1,int param_2)
 
 {
   int iVar1;
-  
+
   iVar1 = 0;
   do {
     func_0x020e5ad8(param_2 + 0xc0,param_2,0xc0);

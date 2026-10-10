@@ -54,7 +54,7 @@ void ov82_0223FC14(void)
   undefined4 uStack_14;
   undefined4 uStack_10;
   undefined4 uStack_c;
-  
+
   uStack_18 = 3;
   uStack_14 = 0x800;
   uStack_10 = 0x800;

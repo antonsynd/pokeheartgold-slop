@@ -51,7 +51,7 @@ void ov96_021E8028(int param_1,undefined4 param_2,undefined4 param_3,undefined4 
   undefined4 uVar1;
   int iVar2;
   uint uVar3;
-  
+
   uVar1 = func_0x02031968(**(undefined4 **)(param_1 + 0x1f8));
   uVar3 = 0;
   do {

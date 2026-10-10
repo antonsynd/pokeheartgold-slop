@@ -53,7 +53,7 @@ undefined4 ov73_021E9A6C(int *param_1)
 
 {
   int iVar1;
-  
+
   iVar1 = func_0x02237b54();
   if (iVar1 == 0) {
     param_1[0x3e5] = param_1[0x3e5] + 1;

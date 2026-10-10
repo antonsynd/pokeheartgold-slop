@@ -52,7 +52,7 @@ undefined4 ov59_02238FB4(int param_1)
   int iVar1;
   undefined4 uVar2;
   undefined4 uVar3;
-  
+
   iVar1 = YesNoPrompt_HandleInput(*(undefined4 *)(param_1 + 0x248));
   if (iVar1 == 1) {
     uVar3 = 1;

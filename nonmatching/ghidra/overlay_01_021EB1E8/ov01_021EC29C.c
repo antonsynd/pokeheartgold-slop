@@ -50,7 +50,7 @@ void ov01_021EC29C(int param_1,undefined4 param_2,undefined4 param_3,undefined4 
 
 {
   undefined4 uVar1;
-  
+
   *(undefined4 *)(*(int *)(param_1 + 0x38) + 0x34) = *(undefined4 *)(param_1 + 0x34);
   *(undefined4 *)(*(int *)(param_1 + 0x34) + 0x38) = *(undefined4 *)(param_1 + 0x38);
   Sprite_SetDrawFlag(*(undefined4 *)(param_1 + 4),0,param_3,param_4,param_4);

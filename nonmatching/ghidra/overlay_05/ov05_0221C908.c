@@ -59,7 +59,7 @@ undefined4 ov05_0221C908(int *param_1,undefined4 param_2,undefined4 param_3,unde
 {
   char cVar1;
   int iVar2;
-  
+
   iVar2 = ov05_0221E9F8();
   if (iVar2 == 0) {
     *(undefined1 *)((int)param_1 + 0xb81) = 1;

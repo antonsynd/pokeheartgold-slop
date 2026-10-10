@@ -65,7 +65,7 @@ undefined4 ov40_0222F488(int param_1,int param_2)
   undefined4 uStack_28;
   undefined4 uStack_24;
   undefined4 uStack_20;
-  
+
   if (*(int *)(param_1 + 0x38) == *(int *)(param_1 + 0xc)) {
     return 0;
   }

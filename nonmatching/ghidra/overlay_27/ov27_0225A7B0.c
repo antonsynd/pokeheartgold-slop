@@ -50,7 +50,7 @@ void ov27_0225A7B0(int param_1)
 
 {
   int iVar1;
-  
+
   iVar1 = func_0x0203df8c(*(undefined4 *)(param_1 + 0x10));
   if (iVar1 == 1) {
     ov27_0225A66C(param_1);

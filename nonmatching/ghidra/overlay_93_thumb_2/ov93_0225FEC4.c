@@ -52,7 +52,7 @@ undefined4 ov93_0225FEC4(int param_1,undefined1 *param_2,undefined4 param_3,unde
   undefined4 uVar1;
   int iVar2;
   int iVar3;
-  
+
   iVar3 = 0;
   iVar2 = param_1;
   do {

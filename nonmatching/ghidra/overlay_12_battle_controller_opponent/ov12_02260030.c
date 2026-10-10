@@ -54,7 +54,7 @@ void ov12_02260030(int *param_1,char *param_2,undefined4 param_3,undefined4 para
 {
   char cVar1;
   int iVar2;
-  
+
   cVar1 = *param_2;
   if (cVar1 == '\0') {
     param_2[0x4e] = '\0';

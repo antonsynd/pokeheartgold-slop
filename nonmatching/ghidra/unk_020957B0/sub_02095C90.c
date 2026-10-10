@@ -48,7 +48,7 @@ void sub_02095C90(undefined1 *param_1,uint param_2)
 {
   int iVar1;
   int *piVar2;
-  
+
   iVar1 = 0;
   if ((byte)param_1[1] != 0) {
     piVar2 = *(int **)(param_1 + 8);

@@ -50,7 +50,7 @@ undefined4 ov14_021E8514(undefined4 param_1)
   int iVar1;
   uint uVar2;
   undefined4 uVar3;
-  
+
   uVar3 = 0;
   uVar2 = 0;
   do {

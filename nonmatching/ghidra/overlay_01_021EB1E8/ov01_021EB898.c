@@ -63,7 +63,7 @@ ov01_021EB898(undefined4 param_1,undefined4 param_2,undefined4 param_3,undefined
   undefined4 uVar4;
   undefined4 uVar5;
   undefined4 uStack_2c;
-  
+
   uVar1 = GF2DGfxResHeader_GetByIndex();
   uVar2 = GF2DGfxResHeader_GetNarcMemberIdByIndex(uVar1,param_3);
   uVar3 = GF2DGfxResHeader_GetCompressFlagByIndex(uVar1,param_3);

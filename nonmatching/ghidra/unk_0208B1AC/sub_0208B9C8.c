@@ -49,7 +49,7 @@ void sub_0208B9C8(int param_1,undefined4 param_2,undefined4 param_3,undefined4 p
 {
   int iVar1;
   int iVar2;
-  
+
   if (*(char *)(param_1 + 0x7bc) != '\0') {
     iVar1 = 0;
     do {

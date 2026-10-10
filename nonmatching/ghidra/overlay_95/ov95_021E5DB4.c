@@ -49,7 +49,7 @@ int ov95_021E5DB4(undefined4 param_1,undefined4 param_2)
 
 {
   uint uVar1;
-  
+
   uVar1 = (*(code *)&UNK_020b59cc)(param_1,param_2,0);
   sub_02015394();
   return (uVar1 & 0xffff) << 3;

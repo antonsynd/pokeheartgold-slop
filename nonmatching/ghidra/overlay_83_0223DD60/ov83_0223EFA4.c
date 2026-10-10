@@ -53,7 +53,7 @@ undefined4 ov83_0223EFA4(int param_1)
 {
   char cVar1;
   int iVar2;
-  
+
   cVar1 = *(char *)(param_1 + 8);
   if (cVar1 == '\0') {
     iVar2 = ov83_02241368(param_1,0xd,0);

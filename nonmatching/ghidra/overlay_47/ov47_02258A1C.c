@@ -55,7 +55,7 @@ void ov47_02258A1C(int param_1,undefined4 param_2,undefined4 param_3)
 {
   undefined4 uVar1;
   undefined4 uVar2;
-  
+
   uVar1 = Save_PlayerData_GetOptionsAddr(param_2);
   uVar2 = NARC_New(0xd1,param_3);
   *(undefined4 *)(param_1 + 0x140) = uVar2;

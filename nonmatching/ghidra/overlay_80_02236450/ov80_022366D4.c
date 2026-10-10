@@ -49,7 +49,7 @@ void ov80_022366D4(undefined *param_1,int param_2)
 
 {
   int iVar1;
-  
+
   MI_CpuFill8(param_1,0,0x110);
   MI_CpuCopy8((undefined *)(param_2 * 0x30 + 0x223c07c),param_1,0x30);
   iVar1 = 0;

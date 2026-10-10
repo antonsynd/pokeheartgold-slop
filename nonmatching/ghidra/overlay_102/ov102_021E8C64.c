@@ -50,7 +50,7 @@ undefined4 ov102_021E8C64(ushort *param_1)
   ushort uVar1;
   uint uVar2;
   uint uVar3;
-  
+
   uVar3 = (uint)param_1[1];
   uVar2 = (uint)*param_1;
   if (uVar3 <= uVar2) {

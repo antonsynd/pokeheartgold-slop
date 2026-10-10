@@ -55,7 +55,7 @@ undefined4 FrtCmd_095(undefined4 *param_1)
   int iVar1;
   int iVar2;
   undefined4 *puVar3;
-  
+
   iVar1 = Frontier_GetLaunchArgs(*(undefined4 *)*param_1);
   iVar2 = Frontier_GetData(*(undefined4 *)*param_1);
   puVar3 = (undefined4 *)Heap_Alloc(0xb,0x24);

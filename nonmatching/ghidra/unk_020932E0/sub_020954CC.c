@@ -57,7 +57,7 @@ undefined4 sub_020954CC(int param_1)
   undefined4 uStack_18;
   undefined4 uStack_14;
   undefined4 uStack_10;
-  
+
   uVar2 = 0;
   iVar1 = sub_02095DD8(*(undefined4 *)(param_1 + 0x46b8));
   if (iVar1 == 1) {

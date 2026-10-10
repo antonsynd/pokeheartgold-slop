@@ -57,7 +57,7 @@ undefined4 ov15_021FBCAC(int param_1)
 {
   int iVar1;
   int iVar2;
-  
+
   *(undefined2 *)(param_1 + 0x680) = 1;
   ov15_021FFF24();
   iVar2 = *(int *)(param_1 + 0x234);

@@ -56,7 +56,7 @@ undefined4 ov92_02261E88(undefined4 *param_1,undefined4 param_2,int param_3,int 
   int iStack_20;
   int iStack_1c;
   int iStack_18;
-  
+
   iStack_18 = param_4;
   if (param_1[1] == 0) {
     ManagedSprite_GetPositionFxXYWithSubscreenOffset(*param_1,&iStack_1c,&iStack_20,0x100000);

@@ -60,7 +60,7 @@ void ov08_0221F3D0(int *param_1,int param_2,int param_3)
   undefined *puVar3;
   uint uVar4;
   int iVar5;
-  
+
   iVar5 = param_1[0x81c];
   param_3 = param_3 * 0x10;
   puVar2 = String_New(6,*(int *)(*param_1 + 0xc));

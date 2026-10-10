@@ -51,7 +51,7 @@ undefined4 sub_02058C80(int param_1,undefined4 param_2)
 {
   char cVar1;
   int iVar2;
-  
+
   iVar2 = FieldSystem_ApplicationIsRunning(param_2);
   if (iVar2 != 0) {
     return 0;

@@ -50,7 +50,7 @@ void ov40_0223CF00(int param_1,int param_2,int param_3)
 
 {
   int iVar1;
-  
+
   iVar1 = *(int *)(param_3 + 0x860);
   if (param_2 == 0) {
     switch(param_1) {

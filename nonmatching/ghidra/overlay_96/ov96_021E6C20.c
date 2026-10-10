@@ -50,7 +50,7 @@ undefined4 ov96_021E6C20(undefined4 param_1)
 
 {
   int iVar1;
-  
+
   iVar1 = PokeathlonCourse_RunSubStateLoop();
   if (iVar1 != 0) {
     PokeathlonCourse_SetStateTransitionType(param_1,7);

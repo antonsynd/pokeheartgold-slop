@@ -55,7 +55,7 @@ void ov49_02264D4C(undefined4 param_1,undefined4 param_2,undefined4 param_3,unde
   int iVar1;
   int iVar2;
   undefined4 uVar3;
-  
+
   ov49_02264D9C(param_3,0,param_4,param_5,param_4);
   ov49_02264D9C(param_3,1,param_4,param_6);
   iVar1 = func_0x0222aa10(param_5);

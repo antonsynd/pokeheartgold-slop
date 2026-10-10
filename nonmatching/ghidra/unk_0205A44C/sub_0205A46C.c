@@ -51,7 +51,7 @@ void sub_0205A46C(void)
   int in_r3;
   __asm__ volatile("movs %0, r3" : "=l"(in_r3) : : "cc");
 
-  
+
   *(undefined4 *)(*(int *)(in_r3 + 0x80) + 0x44) = 1;
   return;
 }

@@ -52,7 +52,7 @@ void ov96_0220C578(int param_1,uint param_2,undefined4 param_3,undefined4 param_
   undefined1 uVar1;
   uint uVar2;
   int iVar3;
-  
+
   if (param_2 == 2) {
     uVar1 = ov96_021E5F24(*(undefined4 *)(param_1 + 0xc));
     ov96_021E8228(*(undefined4 *)(param_1 + 0xc),uVar1,*(uint *)(param_1 + 0x40) & 3,1,1);

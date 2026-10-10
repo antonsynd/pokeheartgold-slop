@@ -55,7 +55,7 @@ int ov18_021F64A4(undefined *param_1,int param_2)
   int iVar1;
   int iVar2;
   uint uVar3;
-  
+
   iVar1 = ov18_021F6230(param_1,5,&ov18_021FA310,0x40,0x56);
   iVar2 = ov18_021F6244(param_1,5,&ov18_021FA310,0x40,0x56);
   if (param_2 != (int)(char)param_1[0x18c4] - 1U) {

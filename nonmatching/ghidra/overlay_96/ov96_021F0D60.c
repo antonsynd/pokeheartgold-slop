@@ -59,7 +59,7 @@ void ov96_021F0D60(undefined4 *param_1)
 {
   undefined4 uVar1;
   int iStack_10;
-  
+
   GfGfxLoader_LoadCharData(0xa7,5,*param_1,0,0,0,0,param_1[5]);
   GfGfxLoader_LoadCharData(0xa7,9,*param_1,2,0,0,0,param_1[5]);
   GfGfxLoader_LoadCharData(0xa7,0xc,*param_1,5,0,0x1000,0,param_1[5]);

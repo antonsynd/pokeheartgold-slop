@@ -54,7 +54,7 @@ void ov40_02230DCC(undefined4 param_1,undefined4 param_2)
   int iVar1;
   undefined4 uVar2;
   int iVar3;
-  
+
   iVar1 = ov40_0223D540();
   uVar2 = String_New(0x40,*(undefined4 *)(iVar1 + 0x144));
   iVar3 = func_0x02002f68(0,param_2,uVar2);

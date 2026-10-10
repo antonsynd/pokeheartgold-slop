@@ -48,7 +48,7 @@ byte ov13_02222708(undefined4 param_1,undefined4 param_2)
 
 {
   byte bVar1;
-  
+
   bVar1 = ov13_02222730(0xffffffff,param_1,param_2,0,0x224d258);
   return bVar1 ^ 0xff;
 }

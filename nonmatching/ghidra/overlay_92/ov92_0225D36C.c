@@ -59,7 +59,7 @@ int ov92_0225D36C(undefined *param_1,undefined *param_2)
 {
   int iVar1;
   int iVar2;
-  
+
   if (*(int *)param_2 == 0) {
     OverlayManager_GetData(param_1);
     iVar1 = ov92_0225D8E4();

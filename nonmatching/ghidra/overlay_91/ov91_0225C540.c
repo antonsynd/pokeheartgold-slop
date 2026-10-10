@@ -54,7 +54,7 @@ undefined4 ov91_0225C540(undefined4 param_1)
 {
   int iVar1;
   int iVar2;
-  
+
   iVar1 = OverlayManager_GetArgs();
   Heap_Create(3,0x6a,0x60000);
   iVar2 = OverlayManager_CreateAndGetData(param_1,0x88,0x6a);

@@ -49,7 +49,7 @@ undefined4 ov103_021ED2B8(int param_1)
 
 {
   int iVar1;
-  
+
   SaveArray_Party_Get(**(undefined4 **)(param_1 + 8));
   iVar1 = Party_GetCount();
   if (0 < iVar1) {

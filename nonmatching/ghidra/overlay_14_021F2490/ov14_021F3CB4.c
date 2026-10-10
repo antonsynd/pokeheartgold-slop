@@ -51,7 +51,7 @@ void ov14_021F3CB4(int param_1)
 
 {
   undefined4 uVar1;
-  
+
   uVar1 = func_0x0200d740(*(undefined4 *)(param_1 + 0x2f4),*(undefined4 *)(param_1 + 0x2f8),
                           &ov14_021F844C,0x200000);
   *(undefined4 *)(param_1 + 0x330) = uVar1;

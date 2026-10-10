@@ -57,7 +57,7 @@ undefined4 ov108_021E63B8(int param_1)
 {
   int iVar1;
   undefined2 auStack_c [2];
-  
+
   iVar1 = TouchscreenHitbox_FindRectAtTouchNew(&ov108_021EA760);
   if (iVar1 == -1) {
     return 0;

@@ -50,7 +50,7 @@ void ov41_02246D54(undefined4 *param_1,int param_2,int param_3,undefined4 param_
 
 {
   undefined4 uVar1;
-  
+
   uVar1 = Heap_Alloc(param_4,param_2 << 3);
   *param_1 = uVar1;
   func_0x020e5b44(uVar1,0,param_2 << 3);

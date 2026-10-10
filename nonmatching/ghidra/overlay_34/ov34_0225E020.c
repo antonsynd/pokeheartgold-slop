@@ -60,7 +60,7 @@ int ov34_0225E020(int param_1)
   int iVar6;
   uint uStack_1c;
   undefined1 auStack_18 [4];
-  
+
   iVar1 = func_0x02025204(&ov34_0225E6AC);
   if (iVar1 == -1) {
     ov34_0225E5DC(param_1,1);

@@ -58,7 +58,7 @@ void ov01_021F82F0(undefined4 param_1)
   int iVar2;
   int iVar3;
   undefined4 uVar4;
-  
+
   puVar1 = (undefined1 *)sub_0205F40C();
   iVar2 = *(int *)(puVar1 + 4);
   iVar3 = ov01_021FA2D4(param_1);

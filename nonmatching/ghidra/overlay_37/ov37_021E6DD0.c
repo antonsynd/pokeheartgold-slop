@@ -52,7 +52,7 @@ undefined4 ov37_021E6DD0(int param_1,undefined4 param_2)
 
 {
   undefined4 uVar1;
-  
+
   uVar1 = sub_02034818(0);
   BufferPlayersName(*(undefined4 *)(param_1 + 0xc),0,uVar1);
   ov37_021E762C(param_1,3,1);

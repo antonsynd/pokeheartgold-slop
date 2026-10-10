@@ -62,7 +62,7 @@ ov12_0223A0D4(undefined4 param_1,undefined4 param_2,undefined4 param_3,undefined
   undefined4 uVar2;
   uint uVar3;
   int iVar4;
-  
+
   iVar1 = OverlayManager_CreateAndGetData(param_1,0x2490,5,param_4,param_4);
   uVar2 = OverlayManager_GetArgs(param_1);
   func_0x020d4858(0,iVar1,0x2490);

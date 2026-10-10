@@ -53,7 +53,7 @@ undefined4 ov07_0222FFD0(int param_1,undefined4 param_2,undefined4 param_3,int p
   int iVar3;
   int iVar4;
   undefined4 uStack_18;
-  
+
   if ((*(int *)(param_1 + 0x274) < 0xf) &&
      (*(int *)(param_1 + 0x270) = *(int *)(param_1 + 0x270) + 1, 6 < *(int *)(param_1 + 0x270))) {
     *(undefined4 *)(param_1 + 0x270) = 0;

@@ -63,7 +63,7 @@ void ov52_021E89D4(undefined4 *param_1)
   int iVar6;
   int iStack_1c;
   int iStack_18;
-  
+
   AddWindowParameterized(*param_1,param_1 + 0xb5,0,2,1,0x1b,4,0xd,0x28);
   FillWindowPixelBuffer(param_1 + 0xb5,0xf);
   AddWindowParameterized(*param_1,param_1 + 0xb1,1,4,9,0x18,8,1,1);

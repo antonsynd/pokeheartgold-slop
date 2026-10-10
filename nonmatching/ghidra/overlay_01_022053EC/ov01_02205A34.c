@@ -54,7 +54,7 @@ void ov01_02205A34(undefined4 param_1,undefined4 param_2)
   undefined4 uVar2;
   undefined1 auStack_18 [4];
   undefined4 uStack_14;
-  
+
   iVar1 = FollowMon_IsActive();
   if (iVar1 != 0) {
     uVar2 = FollowMon_GetMapObject(param_1);

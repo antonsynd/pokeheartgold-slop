@@ -67,7 +67,7 @@ void ov83_022469E4(int param_1,undefined1 param_2,undefined4 param_3,undefined4 
   short sStack_1a;
   short sStack_18;
   short sStack_16;
-  
+
   ov83_02247988(asStack_3a,&sStack_3c);
   uStack_20 = 3;
   uStack_1e = 0xb00;

@@ -52,7 +52,7 @@ undefined4 * ov01_021EC1F4(undefined4 *param_1,undefined4 param_2)
 {
   undefined4 *puVar1;
   undefined4 uVar2;
-  
+
   uVar2 = *param_1;
   puVar1 = (undefined4 *)ov01_021EC8D8();
   if (puVar1 == (undefined4 *)0x0) {

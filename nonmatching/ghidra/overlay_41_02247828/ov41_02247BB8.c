@@ -62,7 +62,7 @@ void ov41_02247BB8(int param_1,undefined4 param_2,undefined4 param_3,undefined4 
   undefined1 uVar1;
   undefined4 uVar2;
   undefined4 uVar3;
-  
+
   uVar2 = param_4;
   uVar1 = Options_GetFrame(*(undefined4 *)(param_1 + 0x6dc));
   LoadFontPal1(0,0xe0,0xe);

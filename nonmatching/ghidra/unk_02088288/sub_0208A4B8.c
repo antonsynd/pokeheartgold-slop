@@ -53,7 +53,7 @@ int sub_0208A4B8(int param_1,int param_2)
   int iVar2;
   int iVar3;
   int iVar4;
-  
+
   iVar3 = (int)*(char *)(*(int *)(param_1 + 0x22c) + 0x14);
   do {
     iVar3 = (iVar3 + param_2) * 0x1000000 >> 0x18;

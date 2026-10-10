@@ -60,7 +60,7 @@ void ov102_021EAFF0(int param_1,int param_2)
   int iStack_14;
   int iStack_10;
   undefined4 uStack_c;
-  
+
   if (*(int *)(param_1 + 0x8c) == 0) {
     iStack_14 = 0x80000;
     iStack_10 = 0x18000;

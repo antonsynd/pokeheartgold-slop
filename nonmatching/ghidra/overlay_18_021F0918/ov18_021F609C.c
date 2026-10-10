@@ -53,7 +53,7 @@ void ov18_021F609C(int param_1,int param_2)
   uint uVar1;
   short sStack_18;
   undefined1 auStack_16 [2];
-  
+
   uVar1 = 0;
   do {
     ov18_021F12C8(param_1,uVar1 + 0xe,auStack_16,&sStack_18,0);

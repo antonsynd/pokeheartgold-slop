@@ -53,7 +53,7 @@ void ov108_021E83F0(int param_1,undefined4 param_2,undefined4 param_3,undefined4
 
 {
   undefined4 uVar1;
-  
+
   if (*(int *)(param_1 + 0x34c) != 0) {
     uVar1 = SpriteManager_New();
     *(undefined4 *)(param_1 + 0x350) = uVar1;

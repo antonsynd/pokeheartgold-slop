@@ -47,7 +47,7 @@ undefined4 ov91_0225EE18(int param_1,undefined2 *param_2)
 
 {
   int iVar1;
-  
+
   if ((uint)*(ushort *)(param_1 + 0x26) == (uint)*(ushort *)(param_1 + 0x24)) {
     return 0;
   }

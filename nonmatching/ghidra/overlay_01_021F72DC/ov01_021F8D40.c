@@ -49,7 +49,7 @@ void ov01_021F8D40(void)
 
 {
   int *piVar1;
-  
+
   piVar1 = (int *)sub_0205F40C();
   if (*piVar1 != 0) {
     ov01_021F1640();

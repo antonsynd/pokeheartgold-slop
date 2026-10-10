@@ -58,7 +58,7 @@ void sub_0205DF0C(undefined4 param_1,undefined4 param_2,undefined4 param_3,undef
   undefined4 uVar1;
   int iVar2;
   undefined4 uVar3;
-  
+
   uVar1 = sub_0205DDD4();
   iVar2 = sub_0205DEC0(param_1,uVar1);
   PlayerAvatar_SetMoveState(param_1,iVar2);

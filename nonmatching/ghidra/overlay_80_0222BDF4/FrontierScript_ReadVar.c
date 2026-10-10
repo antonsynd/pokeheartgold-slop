@@ -49,7 +49,7 @@ void FrontierScript_ReadVar(undefined4 param_1)
 
 {
   undefined4 uVar1;
-  
+
   uVar1 = FrontierScriptContext_ReadHalfWord();
   ov80_0222BE9C(param_1,uVar1);
   return;

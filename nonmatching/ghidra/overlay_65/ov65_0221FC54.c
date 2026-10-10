@@ -54,7 +54,7 @@ int ov65_0221FC54(undefined4 param_1,undefined4 param_2,int *param_3,undefined4 
 {
   undefined4 uVar1;
   int iVar2;
-  
+
   iVar2 = -1;
   if (*param_3 == 0) {
     uVar1 = ov65_0221FC08();

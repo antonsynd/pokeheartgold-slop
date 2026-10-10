@@ -48,7 +48,7 @@ bool ov93_0225EDB8(int param_1,int param_2)
 
 {
   bool bVar1;
-  
+
   *(int *)(param_1 + 0x25c) = *(int *)(param_1 + 0x25c) + param_2;
   bVar1 = 799 < *(int *)(param_1 + 0x25c);
   if (bVar1) {

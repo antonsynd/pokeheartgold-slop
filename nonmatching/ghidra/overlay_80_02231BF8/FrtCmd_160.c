@@ -98,7 +98,7 @@ undefined4 FrtCmd_160(undefined4 *param_1)
   undefined1 *puVar14;
   uint uVar15;
   undefined auStack_18 [4];
-  
+
   puVar14 = (undefined1 *)param_1[7];
   param_1[7] = puVar14 + 1;
   uVar1 = *puVar14;

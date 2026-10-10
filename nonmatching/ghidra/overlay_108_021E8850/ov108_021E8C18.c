@@ -50,7 +50,7 @@ ov108_021E8C18(undefined4 *param_1,undefined4 param_2,undefined4 param_3,undefin
 
 {
   int iVar1;
-  
+
   if (param_1[1] == 0) {
     BeginNormalPaletteFade(0,0,0,0,6,1,*param_1,param_4);
     param_1[1] = param_1[1] + 1;

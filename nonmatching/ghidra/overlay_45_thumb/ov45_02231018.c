@@ -58,7 +58,7 @@ void ov45_02231018(undefined *param_1,int param_2,int param_3,int param_4,int *p
   int iVar4;
   uint uStack_1c;
   uint uStack_18;
-  
+
   puVar2 = GfGfxLoader_LoadFromOpenNarc_GetSizeOut(param_1,0x12,0,param_2,0,(undefined *)&uStack_18)
   ;
   uVar3 = _u32_div_f(uStack_18,6);

@@ -57,7 +57,7 @@ void ov59_02238834(int param_1,int param_2,int param_3)
   int iVar1;
   int iVar2;
   int iVar3;
-  
+
   iVar3 = param_1 + 0x128;
   iVar1 = (param_2 + 6) * 0x10;
   FillWindowPixelBuffer(iVar3 + iVar1,0);

@@ -62,7 +62,7 @@ void ov18_021EFEC4(int param_1,undefined4 param_2,undefined4 param_3,undefined4 
 
 {
   uint uVar1;
-  
+
   FillWindowPixelBuffer(param_1 + 0x1c,0,param_3,param_4,param_4);
   FillWindowPixelBuffer(param_1 + 0x2c,0);
   FillWindowPixelBuffer(param_1 + 0x3c,0);

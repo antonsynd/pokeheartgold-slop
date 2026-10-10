@@ -55,7 +55,7 @@ void ov48_02259130(int param_1,undefined4 *param_2,undefined4 param_3,undefined4
   undefined1 uVar2;
   int iVar3;
   uint uVar4;
-  
+
   iVar3 = ov48_022593B4(param_1,*(uint *)(param_1 + 0x14) & 0xff,*(uint *)(param_1 + 0x18) & 0xff,
                         param_4,param_4);
   if ((iVar3 == 0) && (uVar4 = ov48_0225B13C(*param_2), uVar4 != 0x32)) {

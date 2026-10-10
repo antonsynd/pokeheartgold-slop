@@ -55,7 +55,7 @@ void ov49_02264EC8(int param_1,undefined4 param_2)
 {
   int iVar1;
   undefined4 uVar2;
-  
+
   ov49_02259FE8(param_2);
   iVar1 = func_0x0222b094();
   if (iVar1 == 0x1c2) {

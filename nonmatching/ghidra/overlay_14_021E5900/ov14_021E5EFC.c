@@ -56,7 +56,7 @@ void ov14_021E5EFC(int param_1,char param_2,undefined4 param_3,undefined4 param_
   char cStack_16;
   undefined1 uStack_15;
   undefined4 uStack_14;
-  
+
   uStack_28 = *(undefined4 *)(*(int *)(param_1 + 0x34) + 0x14);
   uStack_20 = 0x3ac;
   uStack_1c = 8;

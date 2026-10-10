@@ -55,7 +55,7 @@ void ov99_021E5F74(int param_1,undefined4 param_2,undefined4 param_3,undefined4 
   int iVar1;
   uint uVar2;
   int iVar3;
-  
+
   if (*(int *)(param_1 + 0x8c) != 0) {
     iVar1 = Bg_GetXpos(*(undefined4 *)(param_1 + 4),2,param_3,param_4,param_4);
     iVar3 = iVar1 >> 2;

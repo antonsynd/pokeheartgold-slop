@@ -49,7 +49,7 @@ undefined4 ov108_021E6010(int param_1)
 
 {
   int iVar1;
-  
+
   if (*(int *)(param_1 + 8) == 0) {
     ov108_021E81A8();
     *(int *)(param_1 + 8) = *(int *)(param_1 + 8) + 1;

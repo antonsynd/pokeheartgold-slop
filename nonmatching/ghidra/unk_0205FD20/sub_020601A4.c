@@ -50,7 +50,7 @@ void sub_020601A4(undefined *param_1)
   undefined4 uStack_10;
   undefined4 uStack_c;
   undefined4 uStack_8;
-  
+
   uStack_10 = 0;
   uStack_c = 0;
   uStack_8 = 0;

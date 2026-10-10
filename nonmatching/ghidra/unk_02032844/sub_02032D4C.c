@@ -54,7 +54,7 @@ void sub_02032D4C(int param_1)
 {
   short sVar1;
   int iVar2;
-  
+
   if (*(short *)(param_1 + 2) != 0) {
     sub_02032858();
     sub_02032844(9);

@@ -49,7 +49,7 @@ void ov74_02230A34(void)
 
 {
   int iVar1;
-  
+
   iVar1 = ov74_02231064();
   if (((iVar1 == 0) || (iVar1 == 1)) || (iVar1 == 2)) {
     ov74_022314A0();

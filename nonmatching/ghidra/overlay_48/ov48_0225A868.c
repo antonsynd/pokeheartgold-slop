@@ -50,7 +50,7 @@ void ov48_0225A868(int param_1,int param_2,int param_3,undefined4 param_4)
 {
   int iVar1;
   undefined4 uVar2;
-  
+
   uVar2 = param_4;
   iVar1 = GetWindowBaseTile(param_1 + 0x168 + param_2 * 0x10);
   func_0x020205d8(0x15,(iVar1 + param_3 * 0x1b & 0xffffU) << 5,param_4,0x360,uVar2);

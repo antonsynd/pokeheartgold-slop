@@ -55,7 +55,7 @@ undefined4 ov112_021ED1A0(int param_1)
 
 {
   undefined4 uVar1;
-  
+
   BgClearTilemapBufferAndCommit(*(undefined4 *)(param_1 + 0x18),4);
   BgClearTilemapBufferAndCommit(*(undefined4 *)(param_1 + 0x18),5);
   BgClearTilemapBufferAndCommit(*(undefined4 *)(param_1 + 0x18),1);

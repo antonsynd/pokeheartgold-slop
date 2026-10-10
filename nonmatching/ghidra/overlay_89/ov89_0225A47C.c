@@ -48,7 +48,7 @@ void ov89_0225A47C(int param_1)
 
 {
   int iVar1;
-  
+
   iVar1 = 0;
   do {
     if (*(int *)(param_1 + 0xb4) != 0) {

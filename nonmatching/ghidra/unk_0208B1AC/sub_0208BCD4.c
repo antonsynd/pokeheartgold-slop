@@ -49,7 +49,7 @@ void sub_0208BCD4(int param_1)
 
 {
   uint uVar1;
-  
+
   *(undefined1 *)(param_1 + 0x7c0) = 0;
   *(undefined1 *)(param_1 + 0x7c3) = 0;
   *(undefined1 *)(param_1 + 0x7c2) = 0;

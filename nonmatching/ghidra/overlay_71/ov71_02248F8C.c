@@ -48,7 +48,7 @@ void ov71_02248F8C(int param_1,int param_2,int param_3)
 
 {
   undefined2 uVar1;
-  
+
   if (param_3 == 0) {
     *(short *)(param_1 + 0x56) = (short)param_2;
   }

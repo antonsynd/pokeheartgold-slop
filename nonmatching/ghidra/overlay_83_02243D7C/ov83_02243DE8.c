@@ -49,7 +49,7 @@ undefined4 ov83_02243DE8(int param_1,undefined4 param_2,undefined4 param_3,undef
 
 {
   int iVar1;
-  
+
   if (*(char *)(param_1 + 8) == '\0') {
     BeginNormalPaletteFade(0,0,0,0,6,1,0x6b,param_4);
     *(char *)(param_1 + 8) = *(char *)(param_1 + 8) + '\x01';

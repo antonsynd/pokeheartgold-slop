@@ -49,7 +49,7 @@ undefined4 ov96_021EDCEC(undefined4 param_1,undefined4 param_2,uint param_3,uint
 
 {
   int iVar1;
-  
+
   iVar1 = PokeathlonCourse_GetFieldData();
   if (3 < param_3) {
     GF_AssertFail();

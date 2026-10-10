@@ -63,7 +63,7 @@ void ov91_0225D500(int param_1,int param_2,int param_3,int param_4,ushort param_
   undefined4 uStack_20;
   undefined4 uStack_14;
   int iStack_10;
-  
+
   uStack_38 = (undefined2)*(undefined4 *)(param_1 + 0x14);
   uStack_36 = 0;
   auStack_34[0] = ((param_2 - param_4) / 2 << 0x10) >> 4;

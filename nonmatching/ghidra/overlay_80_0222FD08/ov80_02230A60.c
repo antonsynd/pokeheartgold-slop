@@ -60,7 +60,7 @@ void ov80_02230A60(int param_1)
   undefined4 uVar3;
   int iVar4;
   undefined4 uStack_18;
-  
+
   func_0x02236dd4(*(undefined1 *)(param_1 + 4));
   iVar1 = ov80_02236DF8(*(undefined1 *)(param_1 + 4),1);
   SaveArray_Party_Init(*(undefined4 *)(param_1 + 0x4d8));

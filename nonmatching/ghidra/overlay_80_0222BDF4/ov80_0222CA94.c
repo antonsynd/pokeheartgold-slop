@@ -53,7 +53,7 @@ undefined4 ov80_0222CA94(undefined4 *param_1)
   undefined4 uVar1;
   undefined4 uVar2;
   int iVar3;
-  
+
   uVar1 = sub_0209680C(*(undefined4 *)*param_1);
   uVar2 = ov80_02239700(uVar1,*(undefined2 *)(param_1 + 0x1e));
   iVar3 = ov80_02239734(uVar1,*(undefined2 *)(param_1 + 0x1e));

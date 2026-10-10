@@ -55,7 +55,7 @@ void ov08_022234FC(int *param_1)
   undefined4 uVar1;
   int iVar2;
   uint uVar3;
-  
+
   uVar3 = 0;
   iVar2 = 0;
   do {

@@ -64,7 +64,7 @@ void ov70_0223F6E4(undefined *param_1,int *param_2)
   int iVar3;
   uint uVar4;
   undefined *puVar5;
-  
+
   iVar3 = ov70_0223E490((uint)*(ushort *)(param_2 + 0x48));
   if (iVar3 == 0) {
     BoxMon_UpdateShayminForm((undefined *)param_2[0x49],0);

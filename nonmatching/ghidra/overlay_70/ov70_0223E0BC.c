@@ -55,7 +55,7 @@ void ov70_0223E0BC(undefined4 param_1,undefined4 param_2,undefined4 param_3,int 
   undefined4 uVar1;
   int iVar2;
   int iStack_18;
-  
+
   uVar1 = GetMonIconNaixEx(param_1,param_3,param_2);
   uVar1 = ov70_0223E094(param_6,uVar1,&iStack_18,0x3d);
   func_0x020d48b4(*(undefined4 *)(iStack_18 + 0x14),param_7 + 3,0x200);

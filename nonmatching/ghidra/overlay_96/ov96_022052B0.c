@@ -78,7 +78,7 @@ undefined4 ov96_022052B0(undefined4 param_1,char *param_2)
   byte abStack_78 [20];
   byte abStack_64 [40];
   byte abStack_3c [40];
-  
+
   iVar5 = PokeathlonCourse_GetHeapAllocPtr4();
   cVar1 = *param_2;
   if (cVar1 == '\0') {

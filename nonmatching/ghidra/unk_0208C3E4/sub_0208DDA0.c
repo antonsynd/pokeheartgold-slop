@@ -53,7 +53,7 @@ void sub_0208DDA0(int param_1,int param_2)
 {
   int iVar1;
   undefined *puVar2;
-  
+
   if (param_2 < 5) {
     switch(param_2) {
     case 0:

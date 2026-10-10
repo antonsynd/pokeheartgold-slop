@@ -57,7 +57,7 @@ int BattleController_RecvData(undefined *param_1,char *param_2)
   uint uVar7;
   uint uVar8;
   int iVar9;
-  
+
   cVar1 = *param_2;
   iVar6 = 0;
   uVar8 = (uint)*(ushort *)(param_2 + 2);

@@ -60,7 +60,7 @@ undefined4 ov82_0223DE20(undefined4 param_1,int *param_2)
 {
   int iVar1;
   int iVar2;
-  
+
   iVar1 = OverlayManager_GetData();
   if (((*(char *)(iVar1 + 0x18) != -1) && (*param_2 == 2)) && (*(short *)(iVar1 + 0x10) == 0)) {
     ov82_0223F834();

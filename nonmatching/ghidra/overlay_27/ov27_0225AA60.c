@@ -49,7 +49,7 @@ char ov27_0225AA60(int param_1,int param_2)
   char *pcVar1;
   int iVar2;
   char cVar3;
-  
+
   cVar3 = '\0';
   iVar2 = 0;
   if (0 < param_2) {

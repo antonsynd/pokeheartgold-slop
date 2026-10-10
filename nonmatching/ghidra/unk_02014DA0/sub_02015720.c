@@ -51,7 +51,7 @@ void sub_02015720(undefined *param_1,undefined *param_2)
 {
   undefined4 *puVar1;
   undefined4 uVar2;
-  
+
   puVar1 = (undefined4 *)sub_02015550(param_1,5);
   if (puVar1 == (undefined4 *)0x0) {
     *(undefined4 *)param_2 = 0;

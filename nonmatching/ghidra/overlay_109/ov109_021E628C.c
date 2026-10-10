@@ -57,7 +57,7 @@ undefined4 ov109_021E628C(int param_1,int param_2,undefined4 param_3,undefined4 
 
 {
   byte bVar1;
-  
+
   if (param_2 == 0xc) {
     PlaySE(0x5dc);
     ov109_021E7248(param_1,0);

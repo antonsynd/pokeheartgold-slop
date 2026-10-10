@@ -63,7 +63,7 @@ void ov05_0221DF38(int param_1,undefined4 param_2,int param_3)
   int iVar8;
   uint uVar9;
   int iVar10;
-  
+
   uVar3 = Party_GetCount(param_2);
   param_1 = param_1 + param_3 * 0x18;
   uVar9 = 0;

@@ -49,7 +49,7 @@ undefined4 ov93_02262748(void)
 {
   int iVar1;
   undefined4 in_r3;
-  
+
   iVar1 = sub_02037030(0x19,0,0,in_r3,in_r3);
   if (iVar1 == 1) {
     return 1;

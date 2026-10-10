@@ -51,7 +51,7 @@ undefined4 ov70_022437C8(int param_1,undefined4 param_2,undefined4 param_3,undef
 
 {
   uint uVar1;
-  
+
   uVar1 = ov70_022429B8(param_1,param_1 + 100,param_3,param_4,param_4);
   if (uVar1 == 10) {
     sub_020198FC(*(undefined4 *)(param_1 + 0x1c),0,4,0,4);

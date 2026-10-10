@@ -57,7 +57,7 @@ void ov112_021F2E70(undefined4 param_1)
 
 {
   int iVar1;
-  
+
   iVar1 = OverlayManager_GetData();
   ov112_021F1324();
   ov112_021F1814(iVar1);

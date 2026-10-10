@@ -61,7 +61,7 @@ void PlayerAvatar_MoveControl
 
 {
   int iVar1;
-  
+
   if (param_3 == -1) {
     param_3 = sub_0205DDD4(param_1,param_4,param_5,param_4,param_4);
   }

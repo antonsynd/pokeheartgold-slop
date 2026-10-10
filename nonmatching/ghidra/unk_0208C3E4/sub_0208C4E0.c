@@ -51,7 +51,7 @@ void sub_0208C4E0(int param_1)
   char cVar1;
   int iVar2;
   uint uVar3;
-  
+
   switch(*(undefined1 *)(param_1 + 0x7bc)) {
   case 0:
   case 1:

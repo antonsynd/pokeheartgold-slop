@@ -49,7 +49,7 @@ void IncrementGameStat47(undefined4 *param_1)
 
 {
   undefined4 uVar1;
-  
+
   uVar1 = Save_GameStats_Get(*param_1);
   GameStats_Inc(uVar1,0x2f);
   return;

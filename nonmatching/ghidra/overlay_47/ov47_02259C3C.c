@@ -52,7 +52,7 @@ void ov47_02259C3C(int param_1,undefined4 param_2,undefined4 *param_3,undefined4
 {
   int iVar1;
   int iVar2;
-  
+
   iVar1 = 0;
   GfGfxLoader_LoadScrnDataFromOpenNarc(param_3[0x50],0xcb,*param_3,0,0,0,0,param_4);
   iVar2 = param_1;

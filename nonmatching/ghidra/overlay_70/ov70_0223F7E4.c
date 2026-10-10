@@ -52,7 +52,7 @@ int ov70_0223F7E4(undefined4 *param_1,undefined4 param_2,int param_3)
   int iVar2;
   undefined4 *puVar3;
   int iVar4;
-  
+
   if (param_3 == 0) {
     puVar3 = (undefined4 *)0x2245a4c;
     iVar4 = 0xc;

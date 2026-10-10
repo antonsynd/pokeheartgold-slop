@@ -49,7 +49,7 @@ void ov81_02241FC0(int param_1)
 {
   uint uVar1;
   int iVar2;
-  
+
   uVar1 = 0;
   iVar2 = param_1;
   if (*(int *)(param_1 + 0x47c) != 0) {

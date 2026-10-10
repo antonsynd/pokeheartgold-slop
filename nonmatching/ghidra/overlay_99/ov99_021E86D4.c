@@ -55,7 +55,7 @@ void ov99_021E86D4(int param_1,short param_2,int param_3,uint param_4,short para
   int iStack_20;
   short asStack_1c [2];
   uint uStack_18;
-  
+
   if (param_6 == 0) {
     uVar1 = 2;
   }

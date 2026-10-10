@@ -50,7 +50,7 @@ undefined4 ov14_021E8B1C(int param_1)
 
 {
   undefined2 uVar1;
-  
+
   func_0x02006f7c(0xf);
   uVar1 = BagView_GetItemId(*(undefined4 *)(param_1 + 0x18));
   *(undefined2 *)(param_1 + 0x1c) = uVar1;

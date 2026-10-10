@@ -57,7 +57,7 @@ void ov85_021E9C84(int param_1,int param_2,uint param_3)
   undefined4 uVar1;
   uint uVar2;
   int iVar3;
-  
+
   if (param_2 < 0x14) {
     if (param_2 < 0x13) {
       if (param_2 < 9) {

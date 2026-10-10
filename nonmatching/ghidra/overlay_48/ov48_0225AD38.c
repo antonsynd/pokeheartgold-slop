@@ -48,7 +48,7 @@ void ov48_0225AD38(int param_1)
 
 {
   int iVar1;
-  
+
   iVar1 = 0;
   do {
     Sprite_SetDrawFlag(*(undefined4 *)(param_1 + 0x3c),0);

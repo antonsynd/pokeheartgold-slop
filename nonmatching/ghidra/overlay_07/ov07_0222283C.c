@@ -51,7 +51,7 @@ ov07_0222283C(undefined4 param_1,undefined4 param_2,undefined4 param_3,undefined
 {
   int iVar1;
   undefined4 uVar2;
-  
+
   uVar2 = param_4;
   iVar1 = ov07_022227D8();
   if (iVar1 != 0) {

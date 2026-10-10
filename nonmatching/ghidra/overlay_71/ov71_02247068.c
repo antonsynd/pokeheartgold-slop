@@ -51,7 +51,7 @@ void ov71_02247068(undefined4 param_1,int param_2)
 {
   int iVar1;
   int iVar2;
-  
+
   iVar1 = *(int *)(param_2 + 8);
   iVar2 = iVar1 * *(int *)(param_2 + 0x10);
   iVar2 = (int)((iVar2 >> 0xc) + ((uint)(iVar2 >> 0x10) >> 0x1b)) >> 5;

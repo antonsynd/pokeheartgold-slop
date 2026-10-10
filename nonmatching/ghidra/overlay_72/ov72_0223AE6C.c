@@ -48,7 +48,7 @@ undefined4 ov72_0223AE6C(int param_1)
 
 {
   char cVar1;
-  
+
   cVar1 = *(char *)(param_1 + 0x1359);
   if (cVar1 == '\0') {
     ov72_0223AE20(param_1,*(ushort *)(param_1 + 0x1360) & 0xff);

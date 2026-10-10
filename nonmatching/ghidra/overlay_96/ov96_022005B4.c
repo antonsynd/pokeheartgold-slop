@@ -63,7 +63,7 @@ void ov96_022005B4(int param_1,undefined4 param_2,undefined4 param_3)
   uint uVar4;
   undefined8 uVar5;
   char acStack_18 [4];
-  
+
   func_0x020f21c0(param_3);
   uVar5 = func_0x020f2080();
   func_0x020f2da0((int)uVar5,(int)((ulonglong)uVar5 >> 0x20),0x9999999a,0x40599999);

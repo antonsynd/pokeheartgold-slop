@@ -51,7 +51,7 @@ void ov14_021E783C(int param_1,undefined4 param_2,int param_3)
   undefined4 uVar2;
   undefined4 uVar3;
   int iVar4;
-  
+
   if (param_3 == 0) {
     *(char *)(*(int *)(param_1 + 0x34) + 0x448) =
          *(char *)(*(int *)(param_1 + 0x34) + 0x448) + -0x17;

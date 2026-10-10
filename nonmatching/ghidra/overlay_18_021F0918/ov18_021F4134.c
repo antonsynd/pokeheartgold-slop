@@ -48,7 +48,7 @@ void ov18_021F4134(int *param_1,undefined4 param_2,undefined4 param_3,undefined4
 
 {
   int iVar1;
-  
+
   if ((char)param_1[0x632] != '\0') {
     iVar1 = *(int *)(*param_1 + 0x10);
     if (0x16 < (int)(iVar1 + ((uint)(iVar1 >> 4) >> 0x1b)) >> 5) {

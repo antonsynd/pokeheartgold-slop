@@ -53,7 +53,7 @@ void ov18_021EE7DC(int param_1,int param_2,int param_3,undefined4 param_4)
 
 {
   undefined4 uVar1;
-  
+
   param_3 = param_3 * 0x10;
   param_1 = param_1 + 0xc;
   FillWindowPixelBuffer(param_1 + param_3,0);

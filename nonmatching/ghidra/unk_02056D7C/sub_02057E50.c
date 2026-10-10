@@ -60,7 +60,7 @@ undefined4 sub_02057E50(void)
   int iVar5;
   int iVar6;
   int iVar7;
-  
+
   sub_0203993C();
   iVar2 = sub_0203774C();
   iVar3 = 0;

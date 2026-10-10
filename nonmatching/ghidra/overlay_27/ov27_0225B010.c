@@ -89,7 +89,7 @@ void ov27_0225B010(int param_1)
   undefined4 uStack_20;
   undefined4 uStack_1c;
   undefined4 uStack_18;
-  
+
   puVar3 = (undefined4 *)&ov27_0225CF3C;
   iVar6 = 0;
   iVar4 = param_1 + 0x204;

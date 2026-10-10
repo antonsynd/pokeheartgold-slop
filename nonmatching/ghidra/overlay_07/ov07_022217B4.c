@@ -58,7 +58,7 @@ undefined4 ov07_022217B4(undefined4 param_1,int param_2)
   short sStack_18;
   short sStack_14;
   short sStack_10;
-  
+
   sStack_28 = 0;
   sStack_26 = 0;
   sStack_24 = 0;

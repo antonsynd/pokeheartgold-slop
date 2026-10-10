@@ -54,7 +54,7 @@ int * ov90_02258E54(int param_1,undefined4 param_2,undefined4 param_3,undefined4
   int *piVar2;
   int *piVar3;
   undefined4 uVar4;
-  
+
   piVar3 = (int *)0x0;
   uVar1 = 0;
   if (*(uint *)(param_1 + 0x14) != 0) {

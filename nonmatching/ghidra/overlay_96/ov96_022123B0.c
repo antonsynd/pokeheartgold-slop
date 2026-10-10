@@ -58,7 +58,7 @@ void ov96_022123B0(int param_1,int param_2,int param_3,undefined4 param_4,byte p
   int iVar3;
   uint uVar4;
   undefined4 uVar5;
-  
+
   uVar1 = (uint)param_5;
   if (0xd7 < uVar1) {
     if (*(char *)(param_1 + 0x62c + param_2 * 0x4c + 0x3f) == '\0') {

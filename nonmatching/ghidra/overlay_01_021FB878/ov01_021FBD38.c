@@ -51,7 +51,7 @@ void ov01_021FBD38(undefined4 *param_1,undefined4 param_2)
 {
   int iVar1;
   int *piVar2;
-  
+
   *param_1 = param_2;
   iVar1 = func_0x020c3b40(param_2);
   param_1[1] = iVar1;

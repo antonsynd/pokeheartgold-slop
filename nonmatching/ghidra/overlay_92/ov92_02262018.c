@@ -52,7 +52,7 @@ undefined4 ov92_02262018(undefined4 *param_1,undefined4 param_2,int param_3,int 
 {
   undefined4 uVar1;
   int iVar2;
-  
+
   if (param_1[1] == 0) {
     if (param_3 == 0) {
       uVar1 = ov92_022619C4(param_2);

@@ -51,7 +51,7 @@ undefined4 ov40_0223FCB8(int param_1)
   int iVar1;
   int iVar2;
   int iVar3;
-  
+
   iVar1 = ov40_02242AEC();
   if (iVar1 != 0) {
     iVar1 = 0;

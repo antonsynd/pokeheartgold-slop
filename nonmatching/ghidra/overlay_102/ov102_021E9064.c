@@ -50,7 +50,7 @@ undefined4 ov102_021E9064(int param_1)
 {
   int iVar1;
   int iVar2;
-  
+
   iVar1 = ov102_021E87AC(param_1 + 0x54);
   iVar2 = ov102_021E87B0(param_1 + 0x54);
   if (iVar1 < iVar2) {

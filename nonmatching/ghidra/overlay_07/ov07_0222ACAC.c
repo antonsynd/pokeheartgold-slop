@@ -70,7 +70,7 @@ void ov07_0222ACAC(undefined4 param_1,undefined4 param_2,undefined4 param_3,unde
   int iStack_50;
   undefined1 auStack_4c [52];
   undefined4 uStack_18;
-  
+
   uStack_18 = param_4;
   iVar2 = ov07_022324D8(param_1,0x5c);
   *(undefined2 *)(iVar2 + 0x20) = 10;

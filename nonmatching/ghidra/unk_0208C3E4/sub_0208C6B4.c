@@ -55,7 +55,7 @@ void sub_0208C6B4(int param_1,undefined4 param_2,undefined4 param_3,undefined4 p
 
 {
   undefined *puVar1;
-  
+
   FillWindowPixelBuffer((undefined *)(param_1 + 500),0);
   if (*(ushort *)(param_1 + 0x23e) == 0) {
     ReadMsgDataIntoString(*(undefined **)(param_1 + 0x7a0),6,*(undefined **)(param_1 + 0x7ac));

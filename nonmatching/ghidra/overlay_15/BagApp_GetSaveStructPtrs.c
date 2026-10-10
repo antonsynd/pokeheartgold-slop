@@ -50,7 +50,7 @@ void BagApp_GetSaveStructPtrs(int param_1)
 
 {
   undefined4 uVar1;
-  
+
   uVar1 = Save_Bag_Get(**(undefined4 **)(param_1 + 0x234));
   *(undefined4 *)(param_1 + 0x238) = uVar1;
   uVar1 = Save_PlayerData_GetProfile(**(undefined4 **)(param_1 + 0x234));

@@ -51,7 +51,7 @@ void sub_02061AEC(undefined4 param_1,undefined1 param_2,undefined1 param_3,undef
 {
   int iVar1;
   int iVar2;
-  
+
   iVar1 = sub_0205F370(param_1,0xc);
   *(undefined1 *)(iVar1 + 2) = param_2;
   *(undefined1 *)(iVar1 + 3) = param_3;

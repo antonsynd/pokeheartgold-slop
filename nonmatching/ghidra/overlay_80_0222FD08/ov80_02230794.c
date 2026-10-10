@@ -51,7 +51,7 @@ void ov80_02230794(int param_1,int param_2)
 {
   undefined1 auStack_38 [4];
   ushort uStack_34;
-  
+
   ov80_02229F04(auStack_38,
                 *(undefined2 *)
                  (param_1 + ((uint)*(byte *)(param_1 + 6) + param_2 * 7 & 0xff) * 2 + 0x18),0xb,0xcc

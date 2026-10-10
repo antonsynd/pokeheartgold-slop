@@ -56,7 +56,7 @@ void ov103_021ECEA4(int param_1,undefined4 param_2,undefined4 param_3,undefined4
   undefined1 uStack_e;
   undefined1 uStack_d;
   undefined4 uStack_c;
-  
+
   uStack_20 = **(undefined4 **)(param_1 + 0xc);
   uStack_18 = 0x3a6;
   uStack_1c = 0;

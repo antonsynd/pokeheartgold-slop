@@ -49,7 +49,7 @@ void ov112_021E9C10(int param_1,int param_2)
 
 {
   uint uVar1;
-  
+
   if ((&ov112_021FEC80)[param_2] == '\0') {
     uVar1 = 0;
     if (*(char *)(param_1 + 0x1ec48) != '\0') {

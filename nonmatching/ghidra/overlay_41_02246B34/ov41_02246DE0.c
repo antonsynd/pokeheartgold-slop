@@ -71,7 +71,7 @@ undefined4 ov41_02246DE0(undefined4 param_1)
   int iVar1;
   undefined4 *puVar2;
   undefined4 uVar3;
-  
+
   Heap_Create(3,0xd,0x20000);
   Heap_Create(3,0xe,0x40000);
   iVar1 = OverlayManager_CreateAndGetData(param_1,0x6f0,0xd);

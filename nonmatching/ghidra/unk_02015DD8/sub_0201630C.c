@@ -63,7 +63,7 @@ void sub_0201630C(int param_1,int param_2,undefined4 param_3,undefined4 param_4)
   undefined4 uVar2;
   int iVar3;
   int iVar4;
-  
+
   iVar4 = 8;
   iVar1 = 0;
   if (0 < *(int *)(*(int *)(param_2 + 4) + 0x10)) {

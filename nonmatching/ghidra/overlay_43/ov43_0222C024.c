@@ -56,7 +56,7 @@ undefined4 ov43_0222C024(short *param_1,undefined4 param_2,undefined4 *param_3,u
   uint uVar1;
   int iVar2;
   int aiStack_28 [5];
-  
+
   aiStack_28[4] = param_4;
   if (7 < param_1[0x58]) {
     ScheduleSetBgPosText(*param_3,2,0,0);

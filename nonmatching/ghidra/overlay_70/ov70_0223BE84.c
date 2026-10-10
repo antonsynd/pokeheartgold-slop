@@ -57,7 +57,7 @@ undefined4 ov70_0223BE84(undefined4 param_1)
 {
   int iVar1;
   undefined4 uVar2;
-  
+
   iVar1 = ov70_0223BD80();
   if (iVar1 == -1) {
     ov70_0223C304(param_1);

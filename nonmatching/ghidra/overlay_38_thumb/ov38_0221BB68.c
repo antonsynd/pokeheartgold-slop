@@ -51,36 +51,36 @@ void ov38_0221BB68(undefined4 param_1)
 {
   switch(param_1) {
   case 0xfffffff8:
-                    
+
     _UNK_02225048 = 0;
     return;
   default:
-                    
-                    
+
+
     _UNK_02225048 = 0;
     return;
   case 0xfffffffa:
-                    
+
     _UNK_02225048 = 1;
     return;
   case 0xfffffffb:
-                    
+
     _UNK_02225048 = 2;
     return;
   case 0xfffffffc:
-                    
+
     _UNK_02225048 = 3;
     return;
   case 0xfffffffd:
-                    
+
     _UNK_02225048 = 4;
     return;
   case 0xfffffffe:
-                    
+
     _UNK_02225048 = 5;
     return;
   case 0xffffffff:
-                    
+
     _UNK_02225048 = 6;
     return;
   }

@@ -52,7 +52,7 @@ void ov73_021E629C(undefined4 *param_1,undefined4 param_2,undefined4 param_3,und
 
 {
   undefined4 uVar1;
-  
+
   AddWindowParameterized(*param_1,param_1 + 0xaa,0,2,1,0x1b,4,0xc,0x5b,param_4);
   FillWindowPixelBuffer(param_1 + 0xaa,0xf);
   AddWindowParameterized(*param_1,param_1 + 0xae,0,0x10,0x15,8,2,9,199);

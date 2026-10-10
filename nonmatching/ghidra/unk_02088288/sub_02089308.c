@@ -48,7 +48,7 @@ undefined4 sub_02089308(void)
 
 {
   int iVar1;
-  
+
   iVar1 = sub_0208AA9C();
   if (iVar1 == 1) {
     return 2;

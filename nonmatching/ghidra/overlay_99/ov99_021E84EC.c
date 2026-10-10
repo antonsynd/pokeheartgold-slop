@@ -51,7 +51,7 @@ void ov99_021E84EC(undefined4 *param_1,uint param_2)
 {
   undefined4 uVar1;
   undefined4 uVar2;
-  
+
   uVar1 = ov99_021E94CC(*param_1,param_2,0,param_1[0x2c]);
   uVar2 = ov99_021E945C(*param_1);
   func_0x0221efe8(param_2 & 0xff,uVar2,uVar1);

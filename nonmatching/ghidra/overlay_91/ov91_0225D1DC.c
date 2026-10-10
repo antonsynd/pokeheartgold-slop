@@ -62,7 +62,7 @@ undefined4 ov91_0225D1DC(uint *param_1)
 {
   int iVar1;
   uint uVar2;
-  
+
   uVar2 = *param_1;
   if (((uVar2 < 2) && (*(uint *)(uVar2 * 4 + 0x2261c44) <= param_1[2])) &&
      (*param_1 = uVar2 + 1, uVar2 + 1 == 1)) {

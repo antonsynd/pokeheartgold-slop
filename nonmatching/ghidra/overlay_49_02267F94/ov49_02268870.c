@@ -72,7 +72,7 @@ void ov49_02268870(int param_1,undefined4 param_2,undefined4 param_3,undefined4 
 {
   int iVar1;
   undefined4 uVar2;
-  
+
   iVar1 = func_0x0222a288(*(undefined4 *)(param_1 + 4),1,param_3,param_4,param_4);
   if (iVar1 != 0) {
     func_0x0222a3bc(*(undefined4 *)(param_1 + 4));

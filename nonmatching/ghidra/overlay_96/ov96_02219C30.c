@@ -73,7 +73,7 @@ void ov96_02219C30(undefined4 *param_1,undefined4 param_2,undefined4 param_3,und
   undefined4 uStack_20;
   undefined4 uStack_1c;
   undefined4 uStack_18;
-  
+
   uStack_4c = 0;
   uStack_48 = 0;
   iStack_44 = 0;

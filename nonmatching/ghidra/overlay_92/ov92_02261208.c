@@ -59,7 +59,7 @@ void ov92_02261208(int *param_1,undefined4 param_2,undefined4 param_3,undefined4
   short sStack_34;
   short asStack_32 [5];
   int aiStack_28 [5];
-  
+
   piVar2 = aiStack_28;
   asStack_32[1] = 0xbc;
   psVar3 = asStack_32;

@@ -53,7 +53,7 @@ void ov15_021FF758(undefined4 param_1,int param_2,int param_3,undefined4 param_4
 {
   int iVar1;
   int iVar2;
-  
+
   FillWindowPixelBuffer(param_1,0);
   if (param_3 != 0xff) {
     iVar1 = GetWindowWidth(param_1);

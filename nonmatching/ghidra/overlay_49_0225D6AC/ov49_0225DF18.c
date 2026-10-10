@@ -83,7 +83,7 @@ ov49_0225DF18(undefined4 param_1,undefined4 param_2,undefined4 param_3,undefined
   undefined4 uStack_20;
   undefined4 uStack_1c;
   undefined4 uStack_18;
-  
+
   puVar1 = (undefined4 *)Heap_Alloc(param_4,0x614);
   func_0x020e5b44(puVar1,0,0x614);
   *puVar1 = param_3;

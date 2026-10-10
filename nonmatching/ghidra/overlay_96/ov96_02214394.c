@@ -48,7 +48,7 @@ uint ov96_02214394(undefined4 param_1,uint param_2)
 
 {
   int iVar1;
-  
+
   switch(param_1) {
   case 0:
     iVar1 = 0xd8;

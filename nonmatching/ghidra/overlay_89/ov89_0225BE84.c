@@ -47,7 +47,7 @@ undefined4 ov89_0225BE84(int param_1,char *param_2,int param_3,int param_4)
 
 {
   short sVar1;
-  
+
   if (param_3 == 3) {
     return 0;
   }

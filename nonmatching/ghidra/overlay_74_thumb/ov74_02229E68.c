@@ -59,7 +59,7 @@ void ov74_02229E68(void)
   int iVar2;
   undefined4 *puVar3;
   undefined4 *puVar4;
-  
+
   puVar1 = (undefined4 *)OverlayManager_GetData();
   ov74_022359BC();
   if (puVar1[0x1f] != 0) {

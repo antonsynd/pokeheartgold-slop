@@ -58,7 +58,7 @@ void ov27_0225BDFC(undefined4 *param_1)
   int iVar1;
   undefined4 uVar2;
   uint uVar3;
-  
+
   iVar1 = GearPhoneRingManager_IsRinging(param_1[1]);
   if (param_1[7] == 0) {
     if (iVar1 == 1) {

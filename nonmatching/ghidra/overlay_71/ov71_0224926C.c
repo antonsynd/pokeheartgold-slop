@@ -59,7 +59,7 @@ void ov71_0224926C(undefined *param_1,undefined4 param_2,undefined4 param_3,unde
   undefined2 uStack_16;
   undefined2 uStack_14;
   undefined4 uStack_10;
-  
+
   uStack_10 = param_4;
   puVar1 = (undefined4 *)SysTask_GetData(param_1);
   puVar1[0x1e] = 0;

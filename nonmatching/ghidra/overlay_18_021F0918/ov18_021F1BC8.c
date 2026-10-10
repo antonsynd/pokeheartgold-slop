@@ -52,7 +52,7 @@ void ov18_021F1BC8(undefined4 *param_1,int param_2,int param_3,int param_4)
 {
   undefined1 uVar1;
   uint uVar2;
-  
+
   ManagedSprite_SetDrawFlag(param_1[param_3 + (*(byte *)((int)param_1 + 0x185f) & 0xf) + 0x19c],0);
   *(byte *)((int)param_1 + 0x185f) =
        *(byte *)((int)param_1 + 0x185f) & 0xf0 | *(byte *)((int)param_1 + 0x185f) & 0xf ^ 1;

@@ -59,7 +59,7 @@ undefined4 ov73_021E808C(undefined4 param_1)
 
 {
   int iVar1;
-  
+
   iVar1 = OverlayManager_GetData();
   Heap_Free(*(undefined4 *)(iVar1 + 0x24));
   func_0x02091624();

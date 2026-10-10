@@ -52,7 +52,7 @@ undefined4 ov74_0222D55C(int param_1)
   int iStack_18;
   undefined4 uStack_14;
   undefined4 uStack_10;
-  
+
   func_0x020dc394(&iStack_18,
                   *(undefined4 *)
                    (*(int *)(param_1 + *(int *)(param_1 + 0x2bc0) * 4 + 0x2bb4) + 0x354));

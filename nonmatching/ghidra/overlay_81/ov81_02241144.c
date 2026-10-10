@@ -58,7 +58,7 @@ void ov81_02241144(int param_1,undefined4 param_2,undefined4 param_3,undefined4 
   int iVar3;
   int iVar4;
   int iVar5;
-  
+
   iVar1 = func_0x02236dd4(*(undefined1 *)(param_1 + 9));
   if ((*(byte *)(param_1 + 0x13) & 0x3f) >> 5 == 1) {
     ClearWindowTilemapAndScheduleTransfer(param_1 + 0x60);

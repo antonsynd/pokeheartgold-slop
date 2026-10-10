@@ -66,7 +66,7 @@ undefined4 ov08_0221CA90(int *param_1,undefined4 param_2,undefined4 param_3,unde
   int iVar6;
   int *piVar7;
   int iVar8;
-  
+
   iVar8 = *param_1;
   switch((char)param_1[0x81f]) {
   case '\0':

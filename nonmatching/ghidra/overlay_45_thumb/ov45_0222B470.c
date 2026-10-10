@@ -64,7 +64,7 @@ void ov45_0222B470(int param_1,int param_2)
   int iVar2;
   undefined4 uVar3;
   uint uVar4;
-  
+
   iVar1 = ov45_0222E9E0();
   if (param_1 != iVar1) {
     iVar1 = ov45_0222EC68(param_1);

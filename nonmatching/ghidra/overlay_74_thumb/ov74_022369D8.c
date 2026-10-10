@@ -53,7 +53,7 @@ undefined4 ov74_022369D8(int param_1)
   undefined4 uVar1;
   int iStack_10;
   undefined4 uStack_c;
-  
+
   func_0x021ec11c(&iStack_10,&uStack_c);
   uVar1 = func_0x021e6a70(-iStack_10,uStack_c);
   *(undefined4 *)(param_1 + 0x266c) = uVar1;

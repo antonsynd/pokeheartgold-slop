@@ -56,7 +56,7 @@ void ov08_02220B3C(int *param_1,undefined4 param_2,undefined4 param_3)
   undefined4 uVar2;
   undefined4 uVar3;
   int iVar4;
-  
+
   uVar1 = func_0x0223a8e4(*(undefined4 *)(*param_1 + 8));
   uVar2 = sub_02077830();
   uVar3 = sub_02077800(param_3);

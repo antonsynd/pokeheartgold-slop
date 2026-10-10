@@ -69,7 +69,7 @@ void ov07_0222C4C0(undefined4 param_1,undefined4 param_2,undefined4 param_3,unde
   undefined2 uStack_4c;
   undefined2 uStack_4a;
   undefined4 uStack_18;
-  
+
   uStack_18 = param_4;
   uVar2 = ov07_0221BFD0();
   puVar3 = (undefined4 *)Heap_Alloc(uVar2,0x100);

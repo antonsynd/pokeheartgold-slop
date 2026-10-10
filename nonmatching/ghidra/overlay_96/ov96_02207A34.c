@@ -63,7 +63,7 @@ undefined4 ov96_02207A34(undefined4 param_1,int param_2,int param_3,undefined4 p
   undefined4 uStack_20;
   undefined4 uStack_1c;
   undefined4 uStack_18;
-  
+
   uStack_18 = param_4;
   iVar2 = func_0x020ccf80(param_2 + 100);
   iVar3 = func_0x020ccf80(param_3 + 100);

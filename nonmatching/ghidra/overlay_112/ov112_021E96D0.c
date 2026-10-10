@@ -53,7 +53,7 @@ void ov112_021E96D0(int param_1,undefined4 param_2,undefined4 param_3,undefined4
 {
   undefined4 uVar1;
   undefined4 uVar2;
-  
+
   uVar1 = NewString_ReadMsgData(*(undefined4 *)(param_1 + 0x1e44c),0x96,param_3,param_4,param_4);
   uVar2 = NewString_ReadMsgData(*(undefined4 *)(param_1 + 0x1e44c),0x97);
   ov112_021E7CA4(param_1,2,0xd);

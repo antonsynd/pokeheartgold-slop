@@ -49,7 +49,7 @@ void ov70_02239614(int param_1)
 
 {
   undefined4 uVar1;
-  
+
   uVar1 = String_New(0xb4,0x3d);
   *(undefined4 *)(param_1 + 0xbbc) = uVar1;
   uVar1 = NewString_ReadMsgData(*(undefined4 *)(param_1 + 0xba0),0x27);

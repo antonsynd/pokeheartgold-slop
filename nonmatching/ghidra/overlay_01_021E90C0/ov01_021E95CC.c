@@ -50,7 +50,7 @@ void ov01_021E95CC(undefined *param_1,byte *param_2)
 {
   ushort uVar1;
   ushort uVar2;
-  
+
   uVar2 = 0xc;
   uVar1 = (ushort)*param_2 * 0xc;
   if (uVar1 < 0x61) {

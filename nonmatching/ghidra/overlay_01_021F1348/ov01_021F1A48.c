@@ -55,7 +55,7 @@ void ov01_021F1A48(undefined4 param_1,undefined4 param_2,int *param_3,int *param
 {
   int iVar1;
   int *piVar2;
-  
+
   iVar1 = func_0x020c3b50(*param_4);
   if ((iVar1 != 0) && (iVar1 = GF3dRender_ResTexIsLoaded(), iVar1 == 0)) {
     func_0x020d2894(*param_4,*(undefined4 *)(*param_4 + 8));

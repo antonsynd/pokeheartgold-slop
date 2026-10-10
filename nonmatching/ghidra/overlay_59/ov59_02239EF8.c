@@ -50,7 +50,7 @@ void ov59_02239EF8(undefined4 param_1,undefined4 param_2,undefined4 param_3,unde
 {
   int iStack_10;
   undefined4 uStack_c;
-  
+
   iStack_10 = 0;
   uStack_c = param_4;
   ov59_0223A120(param_1,&iStack_10);

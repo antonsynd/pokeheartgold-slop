@@ -48,7 +48,7 @@ void ov96_021F8094(undefined4 *param_1,undefined4 param_2,undefined4 param_3,und
 
 {
   undefined4 uVar1;
-  
+
   uVar1 = ov96_021F86E8(param_2,param_3,param_4);
   *param_1 = uVar1;
   return;

@@ -53,7 +53,7 @@ void sub_020572DC(undefined4 param_1,undefined4 param_2)
 
 {
   int iVar1;
-  
+
   iVar1 = sub_02037474();
   if (iVar1 != 0) {
     sub_020572AC(param_2);

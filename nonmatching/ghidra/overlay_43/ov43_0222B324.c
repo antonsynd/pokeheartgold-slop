@@ -52,7 +52,7 @@ undefined4 ov43_0222B324(int *param_1,undefined4 *param_2,undefined4 *param_3,un
 
 {
   int iVar1;
-  
+
   iVar1 = func_0x0202529c(0x222ee1a);
   if (iVar1 == -1) {
     return 0;

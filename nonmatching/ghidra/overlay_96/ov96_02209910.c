@@ -62,7 +62,7 @@ void ov96_02209910(undefined4 *param_1,undefined4 param_2,undefined4 param_3,und
   undefined4 uStack_20;
   undefined4 uStack_1c;
   undefined4 uStack_18;
-  
+
   iVar4 = 0;
   uStack_1c = 0;
   iVar3 = 0x8000;

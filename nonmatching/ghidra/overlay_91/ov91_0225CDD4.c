@@ -48,7 +48,7 @@ int ov91_0225CDD4(int param_1)
 {
   uint uVar1;
   int iVar2;
-  
+
   iVar2 = 0;
   uVar1 = 0;
   do {

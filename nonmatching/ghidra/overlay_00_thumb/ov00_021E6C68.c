@@ -49,7 +49,7 @@ undefined4 ov00_021E6C68(void)
 
 {
   int iVar1;
-  
+
   iVar1 = *(int *)(iRam0221a680 + 0x1070);
   if (((iVar1 != 0x11) && (iVar1 != 0x12)) && (iVar1 != 4)) {
     return 0;

@@ -75,7 +75,7 @@ void ov96_0220EA08(undefined4 *param_1,undefined4 param_2,undefined4 param_3,und
   undefined4 uStack_14;
   undefined4 uStack_10;
   undefined4 uStack_c;
-  
+
   uStack_24 = 6;
   uStack_20 = 6;
   uStack_1c = 5;

@@ -18,3 +18,14 @@ model and sprite slot arrays is 0xFF here (0xFFFF in the twin; only the third ar
   In a scratch copy of the file with those three getters declared `u8` (so the stub value is masked to 8 bits; the getters really return `int`) they PASS
   (218, 234 and 225 of 300 trials, the rest inconclusive).
 - ov01_021F9AB4 and ov01_021F9AE4 have inconclusive trials for the same reason (a random count that is too large for the budget); the ones that finish agree.
+
+## Status
+
+With the current tools, every function these notes describe as failing or inconclusive passes the check.
+`VERIFIED.tsv` gives the verdict of each, and the file that holds its verified C. These now have their verified C in another file, so their C here was not checked again:
+
+- `ov01_021F9AAC`: `ghidra/overlay_01_021F944C/ov01_021F9AAC.c`
+- `ov01_021F9AD0`: `ghidra/overlay_01_021F944C/ov01_021F9AD0.c`
+- `ov01_021F9BD4`: `ghidra/overlay_01_021F944C/ov01_021F9BD4.c`
+- `ov01_021F9CF8`: `ghidra/overlay_01_021F944C/ov01_021F9CF8.c`
+- `ov01_021F9E30`: `ghidra/overlay_01_021F944C/ov01_021F9E30.c`

@@ -52,7 +52,7 @@ void ov96_021E7BA8(int param_1,int param_2,int param_3)
   uint uVar2;
   uint uVar3;
   int iVar4;
-  
+
   uVar2 = 0;
   do {
     uVar3 = *(uint *)(param_1 + uVar2 * 4 + 0x3d8) & 0xff;

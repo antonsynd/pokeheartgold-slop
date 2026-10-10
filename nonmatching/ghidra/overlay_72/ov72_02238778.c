@@ -52,7 +52,7 @@ undefined4 ov72_02238778(undefined4 param_1,undefined4 param_2,undefined4 param_
 {
   undefined4 uVar1;
   undefined4 uVar2;
-  
+
   uVar1 = func_0x020d3a38();
   uVar2 = func_0x020b53a0(uRam0223b92c,param_2,param_3);
   func_0x020d3a4c(uVar1);

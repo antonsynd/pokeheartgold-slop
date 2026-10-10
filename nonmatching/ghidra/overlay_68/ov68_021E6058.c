@@ -48,7 +48,7 @@ undefined4 ov68_021E6058(int param_1)
 
 {
   int iVar1;
-  
+
   iVar1 = TextPrinterCheckActive(*(undefined1 *)(param_1 + 0x1b9));
   if (iVar1 == 0) {
     return *(undefined4 *)(param_1 + 0x1b0);

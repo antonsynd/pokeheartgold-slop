@@ -63,7 +63,7 @@ undefined4 IdentifyPmAgbCartridge(int *param_1,int param_2,undefined4 param_3,un
   char acStack_30 [29];
   char local_13;
   undefined4 uStack_10;
-  
+
   sPmAgbCartridgeSpec = (int *)0x0;
   uStack_10 = param_4;
   iVar2 = CTRDG_IsAgbCartridge();

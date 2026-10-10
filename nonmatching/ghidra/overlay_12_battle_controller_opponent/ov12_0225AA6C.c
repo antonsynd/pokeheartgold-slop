@@ -51,7 +51,7 @@ void ov12_0225AA6C(undefined4 param_1,int param_2,undefined1 *param_3)
 
 {
   undefined4 uVar1;
-  
+
   if (*(int *)(param_2 + 0x2c) == 0) {
     GF_AssertFail();
   }

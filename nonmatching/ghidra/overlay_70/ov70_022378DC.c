@@ -60,7 +60,7 @@ void ov70_022378DC(void)
   uint uVar2;
   undefined4 uVar3;
   int iVar4;
-  
+
   switch(uRam02246800) {
   default:
     return;

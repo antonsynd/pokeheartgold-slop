@@ -58,7 +58,7 @@ undefined4 ov40_02236968(int param_1)
 {
   int iVar1;
   int iVar2;
-  
+
   iVar2 = *(int *)(param_1 + 0x860);
   if (*(int *)(param_1 + 8) == 0) {
     sub_020879E0(*(undefined4 *)(param_1 + 0x6f4),0);

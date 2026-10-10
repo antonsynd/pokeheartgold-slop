@@ -58,7 +58,7 @@ void ov83_02244394(int param_1)
 
 {
   undefined4 uVar1;
-  
+
   uRam04000304 = uRam04000304 & 0x7fff;
   ov83_022444C0();
   ov83_022444E0(*(undefined4 *)(param_1 + 0x4c));

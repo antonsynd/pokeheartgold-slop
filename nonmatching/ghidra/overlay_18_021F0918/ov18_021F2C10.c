@@ -49,7 +49,7 @@ void ov18_021F2C10(int param_1,int param_2,undefined4 param_3)
 
 {
   uint uVar1;
-  
+
   if (*(char *)(param_1 + 0x1859) == '\0') {
     ov18_021F118C(param_1,param_2,7);
   }

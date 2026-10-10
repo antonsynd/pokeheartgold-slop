@@ -48,7 +48,7 @@ bool ov14_021E85E4(undefined4 param_1,undefined4 param_2,undefined4 param_3,unde
 
 {
   undefined4 uStack_8;
-  
+
   uStack_8 = param_4;
   sub_02019B1C(param_1,0xe,(int)&uStack_8 + 1,&uStack_8);
   return (char)uStack_8 == '\x15';

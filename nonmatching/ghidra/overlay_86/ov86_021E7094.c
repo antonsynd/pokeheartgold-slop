@@ -50,7 +50,7 @@ undefined4 ov86_021E7094(int param_1,undefined4 param_2,undefined4 param_3,undef
 
 {
   char cVar1;
-  
+
   cVar1 = *(char *)(param_1 + 0x24e);
   if (cVar1 == '\0') {
     if ((int)((uint)*(byte *)(param_1 + 0x24c) << 0x1f) < 0) {

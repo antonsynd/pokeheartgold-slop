@@ -48,7 +48,7 @@ undefined4 ov112_021EC414(int param_1)
 
 {
   int iVar1;
-  
+
   iVar1 = ManagedSprite_IsAnimated(*(undefined4 *)(param_1 + 0x1e530));
   if (iVar1 == 0) {
     *(undefined4 *)(param_1 + 8) = *(undefined4 *)(param_1 + 0xc);

@@ -54,7 +54,7 @@ void ov96_021EE6A0(undefined4 *param_1,undefined4 param_2,undefined4 param_3,und
   uint uVar1;
   undefined4 uVar2;
   undefined4 uVar3;
-  
+
   uVar1 = param_1[2];
   uVar2 = NewMsgDataFromNarc(1,0x1b,0x135,*param_1,param_4);
   uVar3 = String_New(0x100,*param_1);

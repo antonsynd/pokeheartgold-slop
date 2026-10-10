@@ -51,7 +51,7 @@ void ov08_022201E8(int *param_1,undefined4 param_2,undefined4 param_3,undefined4
 {
   undefined1 uVar1;
   undefined4 uVar2;
-  
+
   TextFlags_SetCanABSpeedUpPrint(1);
   uVar2 = func_0x0223b718(*(undefined4 *)(*param_1 + 8));
   uVar1 = AddTextPrinterParameterized(param_1 + 0x818,1,param_1[0x7ec],0,0,uVar2,0,param_4);

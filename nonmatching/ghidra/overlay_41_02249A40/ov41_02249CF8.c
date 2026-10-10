@@ -54,7 +54,7 @@ void ov41_02249CF8(int *param_1,int param_2,undefined4 param_3,undefined4 param_
   undefined4 *puVar3;
   undefined4 uStack_14;
   undefined4 uStack_10;
-  
+
   iVar1 = param_1[3];
   param_1[3] = iVar1 + param_2;
   if (param_1[2] < iVar1 + param_2) {

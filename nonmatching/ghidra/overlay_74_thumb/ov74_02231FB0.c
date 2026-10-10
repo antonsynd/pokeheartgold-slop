@@ -52,7 +52,7 @@ void ov74_02231FB0(void)
 {
   int iVar1;
   undefined4 *puVar2;
-  
+
   iVar1 = 0;
   puVar2 = puRam0223d338;
   do {

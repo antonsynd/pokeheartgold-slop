@@ -49,7 +49,7 @@ char * ov49_0225D820(int param_1)
 {
   char *pcVar1;
   int iVar2;
-  
+
   iVar2 = 0;
   if (*(byte *)(param_1 + 0x124) != 0) {
     pcVar1 = *(char **)(param_1 + 0x11c);

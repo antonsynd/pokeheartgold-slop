@@ -57,7 +57,7 @@ undefined4 ov96_02215CE8(undefined4 param_1)
   undefined4 uVar1;
   undefined4 uVar2;
   uint uVar3;
-  
+
   uVar1 = PokeathlonCourse_GetGraphicsSystem();
   ov96_021E9510();
   uVar3 = 0;

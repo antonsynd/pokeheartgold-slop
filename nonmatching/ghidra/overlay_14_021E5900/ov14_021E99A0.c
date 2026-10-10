@@ -50,7 +50,7 @@ undefined4 ov14_021E99A0(int param_1,undefined4 param_2,undefined4 param_3,undef
 {
   int iVar1;
   int iVar2;
-  
+
   iVar2 = *(int *)(param_1 + 0x34);
   if (*(short *)(iVar2 + 0x10) == 0) {
     iVar1 = sub_02019978(*(undefined4 *)(iVar2 + 0x2f0),0xe,param_3,param_4,param_4);

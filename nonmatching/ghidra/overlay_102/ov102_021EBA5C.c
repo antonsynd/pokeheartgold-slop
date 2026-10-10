@@ -51,7 +51,7 @@ undefined4 ov102_021EBA5C(int param_1)
 {
   int iVar1;
   undefined4 uVar2;
-  
+
   if (*(int *)(param_1 + 0x14) == 0) {
     iVar1 = ov102_021EC450(param_1 + 0x1c);
     if (iVar1 != 0) {

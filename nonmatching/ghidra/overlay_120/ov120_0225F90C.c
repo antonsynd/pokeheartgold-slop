@@ -52,7 +52,7 @@ undefined4 ov120_0225F90C(int param_1,int *param_2)
 
 {
   int iVar1;
-  
+
   iVar1 = *param_2;
   if (iVar1 == 0) {
     func_0x021fb514(*(undefined4 *)(param_1 + 8));

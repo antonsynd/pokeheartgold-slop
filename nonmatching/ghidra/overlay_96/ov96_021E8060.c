@@ -47,7 +47,7 @@ undefined4 ov96_021E8060(int param_1)
 
 {
   uint uVar1;
-  
+
   uVar1 = 0;
   do {
     if (*(short *)(param_1 + uVar1 * 0x2c + 6) == 0) {

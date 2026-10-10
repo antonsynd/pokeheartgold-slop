@@ -49,7 +49,7 @@ undefined4 ov96_0220A8CC(int param_1,undefined4 param_2)
 
 {
   int iVar1;
-  
+
   if (param_1 == 0) {
     GF_AssertFail();
   }

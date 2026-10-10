@@ -48,7 +48,7 @@ void ov34_0225D77C(int param_1,undefined4 param_2)
 
 {
   int iVar1;
-  
+
   RemoveWindow(param_2);
   iVar1 = 0;
   do {

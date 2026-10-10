@@ -58,7 +58,7 @@ void sub_0200F1D4(undefined4 *param_1,int param_2)
   byte bVar3;
   byte bVar4;
   byte bVar5;
-  
+
   bVar2 = GetWindowBgId((undefined *)*param_1);
   bVar3 = GetWindowX((undefined *)*param_1);
   bVar4 = GetWindowY((undefined *)*param_1);

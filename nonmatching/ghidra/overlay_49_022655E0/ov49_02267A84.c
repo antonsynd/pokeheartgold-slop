@@ -57,7 +57,7 @@ void ov49_02267A84(undefined4 param_1,int param_2,uint param_3)
   undefined4 uStack_20;
   int iStack_1c;
   int iStack_18;
-  
+
   uVar3 = 0;
   if (param_3 != 0) {
     puVar1 = &ov49_0226A70C;

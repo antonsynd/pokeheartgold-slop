@@ -48,7 +48,7 @@ void ov48_0225A338(int param_1,undefined4 param_2)
 
 {
   int iVar1;
-  
+
   iVar1 = 0;
   param_1 = param_1 + 0xa0;
   do {

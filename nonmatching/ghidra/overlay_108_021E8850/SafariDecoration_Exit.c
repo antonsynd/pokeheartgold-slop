@@ -56,7 +56,7 @@ undefined4 SafariDecoration_Exit(undefined4 param_1)
   undefined4 *puVar1;
   int iVar2;
   undefined4 uVar3;
-  
+
   puVar1 = (undefined4 *)OverlayManager_GetData();
   iVar2 = ov108_021E9304();
   if (iVar2 == 0) {

@@ -49,7 +49,7 @@ undefined4 FrtCmd_007(undefined4 param_1)
 {
   undefined2 *puVar1;
   undefined2 *puVar2;
-  
+
   puVar1 = (undefined2 *)FrontierScript_ReadVarPtr();
   puVar2 = (undefined2 *)FrontierScript_ReadVarPtr(param_1);
   *puVar1 = *puVar2;

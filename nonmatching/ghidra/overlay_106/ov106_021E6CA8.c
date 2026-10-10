@@ -50,7 +50,7 @@ undefined4 ov106_021E6CA8(undefined4 param_1,int *param_2)
 
 {
   undefined4 uVar1;
-  
+
   if (*param_2 != 0xd) {
     GF_AssertFail();
   }

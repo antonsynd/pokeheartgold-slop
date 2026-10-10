@@ -56,7 +56,7 @@ void ov112_021F1D70(undefined4 param_1,undefined4 param_2,undefined4 param_3,int
   int iVar1;
   undefined4 uVar2;
   int iVar3;
-  
+
   iVar1 = func_0x02024b60();
   uVar2 = Sprite_GetImageProxy(param_1);
   iVar3 = func_0x020b802c(uVar2,iVar1);

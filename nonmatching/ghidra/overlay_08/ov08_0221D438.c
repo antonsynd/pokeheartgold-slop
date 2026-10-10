@@ -53,7 +53,7 @@ undefined4 ov08_0221D438(int *param_1,undefined4 param_2,undefined4 param_3,unde
 {
   int iVar1;
   int iVar2;
-  
+
   iVar1 = ov08_0221D5D0(param_1,&ov08_02224F1C,param_3,param_4,param_4);
   if (iVar1 == -1) {
     iVar1 = ov08_02224C94(param_1[0x822]);

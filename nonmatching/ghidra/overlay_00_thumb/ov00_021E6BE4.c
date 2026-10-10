@@ -49,7 +49,7 @@ undefined4 ov00_021E6BE4(int param_1)
 
 {
   int iVar1;
-  
+
   if (param_1 == 0) {
     switch(*(undefined4 *)(iRam0221a680 + 0x1070)) {
     case 4:

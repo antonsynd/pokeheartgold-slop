@@ -56,7 +56,7 @@ void ov18_021F1FDC(int param_1,int param_2,undefined4 param_3,undefined4 param_4
   short asStack_48 [2];
   undefined4 auStack_44 [12];
   undefined4 uStack_14;
-  
+
   psVar4 = asStack_48;
   puVar5 = (undefined4 *)&ov18_021FA41C;
   iVar3 = 6;

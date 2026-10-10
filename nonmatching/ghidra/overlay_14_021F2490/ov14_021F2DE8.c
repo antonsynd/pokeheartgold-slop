@@ -61,7 +61,7 @@ void ov14_021F2DE8(int param_1,undefined4 param_2,undefined4 param_3,undefined4 
   int iVar7;
   int iStack_1c;
   undefined4 uStack_18;
-  
+
   uVar6 = 0;
   iVar7 = 0;
   uStack_18 = param_4;

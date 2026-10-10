@@ -50,7 +50,7 @@ void ov73_021E63BC(undefined4 param_1,undefined4 param_2,undefined4 param_3,unde
 
 {
   int iVar1;
-  
+
   iVar1 = FontID_String_GetWidth(1,param_2,0);
   FillWindowPixelBuffer(param_1,0);
   AddTextPrinterParameterizedWithColor

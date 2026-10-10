@@ -56,7 +56,7 @@ void Field3dObject_Draw(int param_1)
   int iVar1;
   undefined1 auStack_50 [36];
   undefined1 auStack_2c [36];
-  
+
   if (*(int *)(param_1 + 0x6c) != 0) {
     func_0x020cafec(auStack_2c);
     iVar1 = (int)(uint)*(ushort *)(param_1 + 0x70) >> 4;

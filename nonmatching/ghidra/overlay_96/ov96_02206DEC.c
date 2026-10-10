@@ -52,7 +52,7 @@ void ov96_02206DEC(undefined4 param_1,int param_2,int param_3,uint param_4,undef
   char cVar1;
   uint uVar2;
   undefined4 uVar3;
-  
+
   uVar2 = (int)(*(uint *)(param_3 + 0x10) >> 0x17 & 0xff) >> ((param_4 & 0x7f) << 1) & 3;
   if (*(byte *)(param_2 + 0x9e) != uVar2) {
     *(char *)(param_2 + 0x9e) = (char)uVar2;

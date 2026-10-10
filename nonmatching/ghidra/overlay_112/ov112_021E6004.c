@@ -70,7 +70,7 @@ void ov112_021E6004(void)
   undefined4 in_r3;
   uint uVar2;
   longlong lVar3;
-  
+
   lVar3 = func_0x020d34b0();
   lVar3 = lVar3 - CONCAT44(uRam021ffae4,uRam021ffae0);
   uVar2 = (uint)lVar3;

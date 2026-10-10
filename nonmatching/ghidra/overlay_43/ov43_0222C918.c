@@ -57,7 +57,7 @@ void ov43_0222C918(int param_1,int param_2,undefined4 *param_3,undefined4 param_
   undefined4 uVar1;
   int iVar2;
   uint *puVar3;
-  
+
   uVar1 = sub_0202C6F4(*(undefined4 *)(param_2 + 4));
   FillWindowPixelBuffer(param_1 + 8,0);
   ov43_0222CA30(param_1,param_3);

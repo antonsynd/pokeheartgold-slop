@@ -50,7 +50,7 @@ undefined2 ov15_021FA12C(int param_1)
   int *piVar1;
   uint uVar2;
   uint uVar3;
-  
+
   uVar2 = (uint)*(byte *)(*(int *)(param_1 + 0x234) + 100);
   piVar1 = (int *)(*(int *)(param_1 + 0x234) + 4 + uVar2 * 0xc);
   uVar3 = ((int)*(short *)((int)piVar1 + 6) + *(int *)(param_1 + 0x644)) - 8;

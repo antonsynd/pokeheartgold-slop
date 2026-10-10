@@ -52,7 +52,7 @@ undefined4 ov87_021E70D0(int param_1)
 {
   uint uVar1;
   int iVar2;
-  
+
   uVar1 = 0;
   do {
     iVar2 = param_1 + uVar1 * 4;

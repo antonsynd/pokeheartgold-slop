@@ -65,7 +65,7 @@ void ov08_02220224(int *param_1)
   int iVar5;
   undefined4 uVar6;
   byte bVar7;
-  
+
   iVar1 = *param_1;
   uVar2 = func_0x02077ce8(*(undefined2 *)(iVar1 + 0x22),0,*(undefined4 *)(iVar1 + 0xc));
   uVar3 = func_0x0223a880(*(undefined4 *)(iVar1 + 8),*(undefined4 *)(iVar1 + 0x28),

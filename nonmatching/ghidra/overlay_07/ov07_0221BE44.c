@@ -48,7 +48,7 @@ void ov07_0221BE44(int param_1)
 
 {
   code *pcVar1;
-  
+
   do {
     pcVar1 = (code *)ov07_0221F8B0(**(undefined4 **)(param_1 + 0x18));
     (*pcVar1)(param_1);

@@ -51,7 +51,7 @@ int ov80_0222EB14(int param_1)
   int iVar2;
   int iVar3;
   uint uVar4;
-  
+
   uVar4 = 0;
   iVar2 = 0;
   iVar3 = param_1;

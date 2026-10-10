@@ -49,7 +49,7 @@ void ov07_0221C974(int param_1)
   int iVar1;
   int iVar2;
   int iVar3;
-  
+
   iVar3 = param_1 + 0x18;
   *(int *)(param_1 + 0x18) = *(int *)(param_1 + 0x18) + 4;
   iVar1 = 2;

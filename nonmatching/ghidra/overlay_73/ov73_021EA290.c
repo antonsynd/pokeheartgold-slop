@@ -49,7 +49,7 @@ void ov73_021EA290(int param_1)
 
 {
   undefined4 uVar1;
-  
+
   uVar1 = Save_FriendGroup_Get(*(undefined4 *)(param_1 + 4));
   ov73_021E79F4(*(undefined4 *)(param_1 + 8),*(undefined4 *)(param_1 + 0xc),uVar1,
                 *(undefined4 *)(param_1 + 0x10));

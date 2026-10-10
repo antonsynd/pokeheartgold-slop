@@ -68,7 +68,7 @@ int ov74_0222D9E0(int param_1,int *param_2,int param_3,uint param_4)
 
 {
   undefined4 uVar1;
-  
+
   param_3 = param_3 * 0x30;
   if (*param_2 == 0) {
     AddWindowParameterized

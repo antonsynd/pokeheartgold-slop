@@ -52,7 +52,7 @@ void ov41_02249B44(undefined4 *param_1,int *param_2,int *param_3)
   undefined4 uVar1;
   int iStack_18;
   int iStack_14;
-  
+
   if ((int)param_1[1] < 3) {
     ov41_02245FA8(*param_1);
     return;

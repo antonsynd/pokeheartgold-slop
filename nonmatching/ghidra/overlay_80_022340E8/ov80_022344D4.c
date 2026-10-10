@@ -55,7 +55,7 @@ void ov80_022344D4(int param_1,undefined4 param_2,undefined4 param_3,undefined4 
   uint uVar3;
   undefined2 auStack_1c [2];
   undefined4 uStack_18;
-  
+
   uStack_18 = param_4;
   uVar1 = Party_GetCount(*(undefined4 *)(param_1 + 0x70));
   uVar3 = 0;

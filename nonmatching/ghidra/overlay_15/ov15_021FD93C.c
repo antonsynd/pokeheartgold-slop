@@ -72,7 +72,7 @@ void ov15_021FD93C(int param_1)
 {
   undefined4 uVar1;
   uint uVar2;
-  
+
   func_0x0201f590(6);
   uRam04000060 = uRam04000060 & 0xcfff | 0x10;
   func_0x020cf82c(0,0,0,0);

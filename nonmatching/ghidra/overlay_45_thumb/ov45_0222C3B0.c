@@ -50,7 +50,7 @@ void ov45_0222C3B0(int *param_1)
   int iVar1;
   int *piVar2;
   int *piVar3;
-  
+
   if (*param_1 != 0) {
     piVar2 = (int *)&ov45_02254A3C;
     iVar1 = 0;

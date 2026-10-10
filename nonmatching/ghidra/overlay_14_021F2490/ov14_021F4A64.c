@@ -62,7 +62,7 @@ void ov14_021F4A64(int param_1,uint param_2,int param_3)
   uint uStack_28;
   uint uStack_24;
   uint uStack_20;
-  
+
   uStack_30 = 0xb;
   uStack_20 = 0;
   do {

@@ -72,7 +72,7 @@ void ov27_0225AEA8(undefined4 param_1,undefined4 *param_2,undefined4 *param_3,in
   undefined4 uStack_20;
   undefined4 uStack_1c;
   undefined4 uStack_18;
-  
+
   uVar4 = (uint)(byte)(&ov27_0225CFC8)[param_4 + param_8 * 8];
   uVar5 = 0xe;
   uVar6 = CONCAT44(uVar4,0x12);

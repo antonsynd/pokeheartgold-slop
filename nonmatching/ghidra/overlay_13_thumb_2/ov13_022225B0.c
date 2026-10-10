@@ -59,7 +59,7 @@ ov13_022225B0(undefined4 param_1,undefined4 param_2,undefined4 param_3,int param
   undefined1 auStack_28 [8];
   int iStack_20;
   int iStack_18;
-  
+
   iStack_18 = param_4;
   iStack_20 = ov13_022208E8(param_3);
   if (iStack_20 == 0) {

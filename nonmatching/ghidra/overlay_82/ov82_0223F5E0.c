@@ -53,7 +53,7 @@ void ov82_0223F5E0(undefined4 param_1,uint param_2,int param_3,undefined4 param_
   undefined4 uVar4;
   undefined4 uVar5;
   int iVar6;
-  
+
   if (param_3 == 0) {
     uVar3 = 0;
   }

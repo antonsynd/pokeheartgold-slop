@@ -57,7 +57,7 @@ void ov74_0222EA88(int param_1,undefined4 param_2,undefined4 param_3)
 
 {
   undefined4 uVar1;
-  
+
   *(undefined4 *)(param_1 + 0x2bf4) = param_3;
   uVar1 = NewMsgDataFromNarc(1,0x1b,0xf7,0x55);
   *(undefined4 *)(param_1 + 0x2a04) = uVar1;

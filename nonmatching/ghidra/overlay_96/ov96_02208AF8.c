@@ -49,7 +49,7 @@ void ov96_02208AF8(int param_1,byte *param_2)
   byte bVar1;
   byte bVar2;
   int iVar3;
-  
+
   iVar3 = 0;
   do {
     bVar1 = *param_2;

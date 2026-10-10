@@ -50,7 +50,7 @@ undefined4 ov74_02232424(int param_1,int param_2,undefined4 param_3,undefined4 p
 {
   uint uVar1;
   ushort *puVar2;
-  
+
   uVar1 = AGB_GetBoxMonData(*(int *)(param_1 + 0xe880) + 4 + *(int *)(param_1 + 0xe884) * 0x960 +
                             param_2 * 0x50,0xc,0,*(int *)(param_1 + 0xe884),param_4);
   puVar2 = (ushort *)&ov74_0223C9D8;

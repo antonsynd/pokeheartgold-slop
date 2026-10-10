@@ -49,7 +49,7 @@ undefined4 ov73_021E9BB4(int *param_1)
 
 {
   int iVar1;
-  
+
   iVar1 = func_0x02027564(*(undefined4 *)(*param_1 + 0xc));
   if (iVar1 == 2) {
     param_1[7] = param_1[8];

@@ -85,7 +85,7 @@ undefined4 ov10_0221F7F0(undefined4 param_1,int param_2,uint param_3)
   int iStack_60;
   int iStack_5c;
   uint uStack_18;
-  
+
   uVar2 = func_0x0223a7e0();
   iVar14 = 2;
   if ((uVar2 & 2) == 0) {

@@ -50,7 +50,7 @@ undefined4 FrtCmd_017(undefined4 *param_1,undefined4 param_2,undefined4 param_3,
 
 {
   undefined4 uVar1;
-  
+
   uVar1 = FrontierScriptContext_ReadHalfWord();
   ov80_0222E268(*param_1,param_1[0x20],uVar1,1,0,param_4);
   FrontierScriptContext_Pause(param_1,0x222c17d);

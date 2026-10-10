@@ -50,7 +50,7 @@ void ov102_021E983C(undefined4 param_1,int param_2,undefined4 param_3,undefined4
 
 {
   int iVar1;
-  
+
   if (*(int *)(param_2 + 0x14) == 0) {
     BeginNormalPaletteFade(0,1,1,0,5,1,0x23,param_4);
     *(int *)(param_2 + 0x14) = *(int *)(param_2 + 0x14) + 1;

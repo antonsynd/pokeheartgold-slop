@@ -74,7 +74,7 @@ void sub_0208B1AC(int param_1)
   undefined4 uStack_20;
   undefined4 uStack_1c;
   undefined4 uStack_18;
-  
+
   puVar4 = auStack_58;
   GfGfx_EngineATogglePlanes(0x10,1);
   GfGfx_EngineBTogglePlanes(0x10,1);

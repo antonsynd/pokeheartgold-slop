@@ -56,7 +56,7 @@ void ov68_021E5E48(int param_1,undefined4 param_2,undefined4 param_3,undefined4 
   undefined *puVar2;
   int iVar3;
   uint uVar4;
-  
+
   FontID_Alloc(4,0x42,param_3,param_4,param_4);
   puVar2 = &ov68_021E7DFC;
   uVar4 = 0;

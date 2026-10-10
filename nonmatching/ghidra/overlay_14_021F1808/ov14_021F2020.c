@@ -59,7 +59,7 @@ undefined4 ov14_021F2020(int param_1,undefined4 param_2,undefined4 param_3,uint 
   int iVar1;
   undefined4 uVar2;
   uint uStack_10;
-  
+
   uStack_10 = param_4;
   uStack_10 = ov14_021E6070(param_1,*(undefined1 *)(param_1 + 0x21),6,0);
   iVar1 = func_0x02078398(*(undefined4 *)(param_1 + 0xc),uStack_10 & 0xffff,1,10);

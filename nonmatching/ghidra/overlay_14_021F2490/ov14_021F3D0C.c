@@ -60,7 +60,7 @@ void ov14_021F3D0C(int param_1,undefined4 param_2,int param_3,undefined4 param_4
   int iVar4;
   int iStack_1c;
   undefined4 uStack_18;
-  
+
   uStack_18 = param_4;
   uVar1 = sub_020776B4();
   uVar2 = sub_02077678(param_2);

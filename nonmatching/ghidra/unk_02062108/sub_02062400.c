@@ -51,7 +51,7 @@ void sub_02062400(undefined4 param_1)
 {
   int iVar1;
   undefined4 uVar2;
-  
+
   do {
     iVar1 = MapObject_GetMovementCommand(param_1);
     if (iVar1 == 0xff) {

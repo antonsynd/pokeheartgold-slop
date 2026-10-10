@@ -48,7 +48,7 @@ void ov103_021EE13C(int param_1)
 
 {
   undefined4 uVar1;
-  
+
   uVar1 = NARC_New(0x14,0x9d);
   *(undefined4 *)(param_1 + 0x274) = uVar1;
   return;

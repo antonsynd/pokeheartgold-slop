@@ -48,7 +48,7 @@ void ov90_0225B254(int param_1,undefined4 param_2,undefined4 param_3)
 
 {
   undefined4 uVar1;
-  
+
   uVar1 = GfGfxLoader_GetPlttDataFromOpenNarc(param_2,5,param_1 + 0x658,param_3);
   *(undefined4 *)(param_1 + 0x654) = uVar1;
   return;

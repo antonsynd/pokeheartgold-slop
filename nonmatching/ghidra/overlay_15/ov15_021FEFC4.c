@@ -51,7 +51,7 @@ undefined4 ov15_021FEFC4(undefined4 param_1,undefined4 param_2)
 
 {
   undefined4 uVar1;
-  
+
   switch(param_2) {
   case 1:
     uVar1 = GF_IsAnySEPlaying();

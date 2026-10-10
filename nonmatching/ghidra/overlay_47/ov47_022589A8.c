@@ -59,7 +59,7 @@ undefined4 ov47_022589A8(undefined4 param_1)
 {
   int iVar1;
   int iVar2;
-  
+
   iVar1 = OverlayManager_GetData();
   iVar2 = OverlayManager_GetArgs(param_1);
   Main_SetVBlankIntrCB(0,0);

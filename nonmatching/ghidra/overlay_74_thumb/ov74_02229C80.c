@@ -52,7 +52,7 @@ void ov74_02229C80(void)
 
 {
   int iVar1;
-  
+
   iVar1 = sub_02037EC8();
   if (iVar1 != 0) {
     *(undefined1 *)(iRam0223d0a4 + 0x3c0) = 0;

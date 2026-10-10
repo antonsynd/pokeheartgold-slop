@@ -53,7 +53,7 @@ void sub_0205E048(void)
 {
   int iVar1;
   undefined4 uVar2;
-  
+
   PlayerAvatar_GetMapObject();
   iVar1 = MapObject_GetFieldSystem();
   uVar2 = Save_GameStats_Get(*(undefined4 *)(iVar1 + 0xc));

@@ -55,7 +55,7 @@ void ov28_0225E9E0(int param_1)
 
 {
   int iVar1;
-  
+
   iVar1 = ov28_0225EA58();
   if (iVar1 == 1) {
     ClearWindowTilemapAndScheduleTransfer(param_1 + 500);

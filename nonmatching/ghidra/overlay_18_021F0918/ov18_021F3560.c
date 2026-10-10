@@ -53,7 +53,7 @@ void ov18_021F3560(int param_1,int param_2,int param_3,int param_4)
 
 {
   undefined4 uVar1;
-  
+
   if (param_4 == 0) {
     uVar1 = ov18_021F3AD0(param_1,param_3);
     ov18_021F36D4(param_1,uVar1,5,1);

@@ -79,7 +79,7 @@ undefined4 ov96_0220A910(int param_1)
   int iStack_28;
   int iStack_20;
   int iStack_1c;
-  
+
   if (param_1 == 0) {
     GF_AssertFail();
   }

@@ -53,7 +53,7 @@ void ov85_021E7148(int param_1)
 
 {
   int iVar1;
-  
+
   ClearWindowTilemapAndCopyToVram(param_1 + 0xca8);
   RemoveWindow(param_1 + 0xca8);
   ov85_021E7350(param_1);

@@ -63,7 +63,7 @@ void ov74_022359BC(void)
 {
   int iVar1;
   int iVar2;
-  
+
   if (iRam0223d65c != 0) {
     Sprite_Delete(iRam0223d65c);
     iRam0223d65c = 0;

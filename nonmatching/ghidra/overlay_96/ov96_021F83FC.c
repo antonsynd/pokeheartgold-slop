@@ -54,7 +54,7 @@ int ov96_021F83FC(undefined4 param_1)
   int iVar1;
   int iVar2;
   byte *pbVar3;
-  
+
   iVar1 = PokeathlonCourse_GetCurrentParticipantIndex();
   iVar2 = PokeathlonCourse_GetDataCopyArea(param_1);
   pbVar3 = (byte *)ov96_021E8A20(iVar2 + 0xf0);

@@ -55,7 +55,7 @@ int sub_020347CC(void)
   int iVar1;
   int iVar2;
   int iVar3;
-  
+
   iVar3 = 0;
   if (iRam021d4130 != 0) {
     iVar1 = sub_02037454();

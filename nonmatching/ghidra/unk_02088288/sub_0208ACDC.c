@@ -48,7 +48,7 @@ uint sub_0208ACDC(int param_1,char param_2)
 {
   uint uVar1;
   char cVar2;
-  
+
   cVar2 = '\0';
   uVar1 = 0;
   do {

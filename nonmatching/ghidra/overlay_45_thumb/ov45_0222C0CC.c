@@ -57,7 +57,7 @@ void ov45_0222C0CC(int param_1,undefined4 *param_2,undefined4 param_3,undefined4
   undefined4 uStack_18;
   undefined2 uStack_14;
   undefined4 uStack_10;
-  
+
   if (((*(byte *)(param_2 + 4) < 9) && (*(byte *)(param_2 + 4) != 0)) &&
      (uStack_10 = param_4, iVar1 = ov45_0222EC68(*param_2), iVar1 != -1)) {
     uVar2 = ov45_0222A578(param_1);

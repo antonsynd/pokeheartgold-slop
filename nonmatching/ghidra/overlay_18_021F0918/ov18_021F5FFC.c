@@ -48,7 +48,7 @@ void ov18_021F5FFC(int param_1,undefined4 param_2,int param_3,undefined4 param_4
 
 {
   byte bVar1;
-  
+
   bVar1 = *(byte *)(param_1 + param_3 + 0x18a4);
   if ((bVar1 & 0x80) == 0) {
     bVar1 = 0;

@@ -50,7 +50,7 @@ void ov07_0221F4CC(int param_1,undefined4 param_2,undefined4 param_3,undefined4 
   int iVar1;
   int iVar2;
   int iVar3;
-  
+
   iVar1 = *(int *)(param_1 + 0x18);
   *(int **)(param_1 + 0x18) = (int *)(iVar1 + 4);
   iVar2 = *(int *)(iVar1 + 4);

@@ -52,7 +52,7 @@ void ov74_02230070(int param_1)
 
 {
   int iVar1;
-  
+
   if (*(short *)(param_1 + 2) != 0) {
     ov74_02231448();
     ov74_02231070(4);

@@ -48,7 +48,7 @@ void sub_02059AE4(uint param_1,undefined4 param_2,undefined4 param_3,undefined4 
 
 {
   int iVar1;
-  
+
   iVar1 = sub_0205969C(param_4);
   if (*(ushort *)(iVar1 + 0x86) != param_1) {
     *(byte *)(iVar1 + 0x89) = *(byte *)(iVar1 + 0x89) | 2;

@@ -51,7 +51,7 @@ int ov90_0225A050(uint param_1,uint param_2,uint param_3,uint param_4)
   int iVar2;
   uint uVar3;
   undefined *puVar4;
-  
+
   uVar3 = 0;
   uVar1 = param_1;
   if (param_1 != 0) {

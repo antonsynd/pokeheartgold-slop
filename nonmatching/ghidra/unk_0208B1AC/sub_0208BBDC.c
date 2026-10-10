@@ -49,7 +49,7 @@ void sub_0208BBDC(int param_1)
 
 {
   uint uVar1;
-  
+
   uVar1 = *(byte *)(param_1 + 0x7bd) & 0xf;
   if (uVar1 == 4) {
     if (*(char *)(*(int *)(param_1 + 0x22c) + 0x12) == '\x02') {

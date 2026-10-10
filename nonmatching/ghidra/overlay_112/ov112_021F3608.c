@@ -52,7 +52,7 @@ void ov112_021F3608(undefined4 param_1,int param_2)
   undefined4 uVar2;
   int iVar3;
   undefined2 *puVar4;
-  
+
   uVar2 = Save_VarsFlags_Get();
   puVar4 = (undefined2 *)0x21ff4d4;
   iVar3 = 0;

@@ -55,7 +55,7 @@ void ov67_021E6490(int param_1,undefined4 param_2,undefined4 param_3,undefined4 
   undefined4 uVar4;
   uint uVar5;
   int iVar6;
-  
+
   if (*(char *)(param_1 + 0x4a2) == '\0') {
     iVar2 = 0x11c;
   }

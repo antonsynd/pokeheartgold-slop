@@ -50,7 +50,7 @@ void ov01_021F8CC8(int param_1,int *param_2)
 {
   int *piVar1;
   int iVar2;
-  
+
   piVar1 = (int *)&ov01_022073D8;
   iVar2 = 0xb7;
   do {

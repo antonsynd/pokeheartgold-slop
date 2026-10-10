@@ -58,7 +58,7 @@ void ov01_021F3094(undefined4 param_1,undefined4 param_2)
   int iVar3;
   int iVar4;
   undefined4 uVar5;
-  
+
   iVar1 = PlayerAvatar_GetXCoord();
   iVar2 = GetDeltaXByFacingDirection(param_2);
   iVar3 = PlayerAvatar_GetZCoord(param_1);

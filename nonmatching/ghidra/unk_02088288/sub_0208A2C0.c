@@ -49,7 +49,7 @@ void sub_0208A2C0(undefined4 param_1)
 
 {
   uint uVar1;
-  
+
   uVar1 = sub_0208A2E0();
   if (uVar1 != 0xffffffff) {
     sub_0208A234(param_1,uVar1 & 0xff);

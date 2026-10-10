@@ -57,7 +57,7 @@ void ov47_022599F0(int param_1,int param_2,undefined4 param_3,undefined4 param_4
   undefined4 uVar1;
   int iVar2;
   undefined4 uStack_24;
-  
+
   FillWindowPixelBuffer(param_1 + 0x10,0);
   FillWindowPixelBuffer(param_1 + 0x50,0);
   uVar1 = ov47_02259D58(param_2,param_3,0);

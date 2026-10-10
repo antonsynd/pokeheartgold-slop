@@ -59,7 +59,7 @@ void ov102_021EA920(undefined4 *param_1)
   short sStack_56;
   undefined1 auStack_54 [36];
   undefined1 auStack_30 [36];
-  
+
   if (param_1[0x23] == 0) {
     sStack_58 = 0x80;
     sStack_56 = 0x18;

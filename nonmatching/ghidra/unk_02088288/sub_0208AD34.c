@@ -51,7 +51,7 @@ void sub_0208AD34(int param_1,undefined4 param_2)
 {
   undefined1 uVar1;
   undefined4 uVar2;
-  
+
   uVar2 = PlayerProfile_GetNamePtr(param_2);
   *(undefined4 *)(param_1 + 8) = uVar2;
   uVar2 = PlayerProfile_GetTrainerID(param_2);

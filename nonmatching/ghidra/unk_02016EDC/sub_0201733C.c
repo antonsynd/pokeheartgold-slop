@@ -55,7 +55,7 @@ void sub_0201733C(int param_1,byte *param_2,undefined4 *param_3,undefined4 *para
   byte local_16;
   byte local_15;
   undefined4 *puStack_14;
-  
+
   puStack_14 = param_4;
   sub_02017294(param_1,param_2);
   sub_02017280(param_1,&local_17);

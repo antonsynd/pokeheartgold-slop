@@ -57,7 +57,7 @@ void ov31_0225EA9C(int param_1)
 {
   undefined1 uVar1;
   undefined4 uVar2;
-  
+
   uVar2 = ov31_0225E9CC(*(undefined4 *)(param_1 + 0x14),*(undefined4 *)(param_1 + 0x158));
   StringExpandPlaceholders(*(undefined4 *)(param_1 + 0x154),*(undefined4 *)(param_1 + 0x188),uVar2);
   String_Delete(uVar2);

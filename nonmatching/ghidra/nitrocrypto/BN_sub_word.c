@@ -54,7 +54,7 @@ undefined4 BN_sub_word(int *param_1,uint param_2)
   int iVar4;
   uint uVar5;
   int iVar6;
-  
+
   if (param_2 == 0) {
     return 1;
   }

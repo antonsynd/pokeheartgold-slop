@@ -51,7 +51,7 @@ void ov47_02259D74(uint *param_1)
   uint uVar2;
   uint *puVar3;
   int iVar4;
-  
+
   iVar4 = 0;
   param_1[3] = 0;
   param_1[4] = 0;

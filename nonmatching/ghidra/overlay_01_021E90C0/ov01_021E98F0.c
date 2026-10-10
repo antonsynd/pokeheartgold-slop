@@ -79,7 +79,7 @@ undefined4 ov01_021E98F0(int param_1,int *param_2,int param_3)
   undefined4 uStack_2c;
   undefined4 uStack_28;
   undefined1 auStack_24 [16];
-  
+
   switch(*param_2) {
   case 0:
     uStack_34 = 0xb;

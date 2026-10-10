@@ -50,7 +50,7 @@ undefined4 ov74_0222EE58(undefined4 *param_1,undefined4 param_2,undefined4 param
 
 {
   undefined4 uVar1;
-  
+
   if (*(char *)(param_1[0xaed] + 0x350) == '\0') {
     uVar1 = 0x51;
   }

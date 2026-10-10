@@ -52,7 +52,7 @@ void ov71_02248E30(int param_1,int param_2,int param_3,int param_4)
 {
   int *piVar1;
   int iVar2;
-  
+
   piVar1 = (int *)Heap_Alloc(0x39,0x14);
   if (piVar1 != (int *)0x0) {
     *piVar1 = param_2 << 0xc;

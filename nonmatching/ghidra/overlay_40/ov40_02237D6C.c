@@ -49,7 +49,7 @@ void ov40_02237D6C(int param_1)
 
 {
   int iVar1;
-  
+
   iVar1 = *(int *)(param_1 + 0x860) + 0x1b4;
   ClearWindowTilemapAndCopyToVram(iVar1);
   RemoveWindow(iVar1);

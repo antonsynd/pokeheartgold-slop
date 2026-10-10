@@ -56,7 +56,7 @@ void ov40_0222FE00(int param_1)
   undefined4 uVar2;
   undefined4 uVar3;
   undefined4 uVar4;
-  
+
   uVar2 = *(undefined4 *)(param_1 + 0x18);
   uVar3 = *(undefined4 *)(param_1 + 0x1c);
   uVar4 = *(undefined4 *)(param_1 + 0x28);

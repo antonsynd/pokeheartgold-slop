@@ -64,7 +64,7 @@ void ov12_0225F8AC(undefined4 param_1,undefined4 *param_2)
   undefined4 uVar4;
   uint uVar5;
   uint uStack_1c;
-  
+
   uVar1 = BattleSystem_GetBattleType(*param_2);
   uVar5 = (uint)*(byte *)((int)param_2 + 9);
   uStack_1c = uVar5;

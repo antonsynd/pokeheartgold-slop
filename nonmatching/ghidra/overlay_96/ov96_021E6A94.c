@@ -56,7 +56,7 @@ undefined4 ov96_021E6A94(undefined4 param_1)
 {
   int iVar1;
   undefined4 uVar2;
-  
+
   iVar1 = PokeathlonCourse_RunSubStateLoop();
   if (iVar1 != 0) {
     iVar1 = PokeathlonCourse_GetDataCopyArea(param_1);

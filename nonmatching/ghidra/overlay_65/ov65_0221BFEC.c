@@ -56,7 +56,7 @@ void ov65_0221BFEC(int param_1)
   uint uVar2;
   undefined4 uVar3;
   undefined4 uVar4;
-  
+
   sub_0203769C();
   uVar1 = sub_02034818();
   uVar2 = sub_0203769C();

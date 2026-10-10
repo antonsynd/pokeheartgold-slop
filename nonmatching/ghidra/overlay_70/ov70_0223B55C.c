@@ -75,7 +75,7 @@ undefined4 ov70_0223B55C(int *param_1,undefined4 param_2,undefined4 param_3,unde
   undefined4 uStack_14;
   undefined4 uStack_10;
   undefined4 uStack_c;
-  
+
   uStack_c = param_4;
   ov70_0223BC7C();
   ov70_0223B7CC(param_1[1]);

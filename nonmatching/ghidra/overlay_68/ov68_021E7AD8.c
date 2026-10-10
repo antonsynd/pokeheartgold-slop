@@ -49,7 +49,7 @@ undefined4 ov68_021E7AD8(int param_1)
 
 {
   short sVar1;
-  
+
   sVar1 = *(short *)(param_1 + 0x1d6);
   if (sVar1 == 0) {
     BgTilemapRectChangePalette

@@ -73,7 +73,7 @@ void ov83_022421E0(int param_1,int param_2)
   uint uVar7;
   int iVar8;
   int iStack_2c;
-  
+
   FillWindowPixelBuffer(param_1 + 0x170,0);
   FillWindowPixelBuffer(param_1 + 0x180,0);
   FillWindowPixelBuffer(param_1 + 0x1a0,0);

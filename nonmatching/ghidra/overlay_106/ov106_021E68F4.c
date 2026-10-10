@@ -57,7 +57,7 @@ undefined4 ov106_021E68F4(int param_1)
   int iVar6;
   int iVar7;
   int iVar8;
-  
+
   iVar6 = *(int *)(param_1 + 0x418);
   iVar1 = *(int *)(param_1 + 0x414);
   iVar8 = *(int *)(iVar6 + 0x30);

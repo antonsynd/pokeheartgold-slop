@@ -69,7 +69,7 @@ void ov12_02239854(undefined4 param_1,undefined4 param_2)
   int iVar5;
   int iVar6;
   uint uVar7;
-  
+
   iVar1 = BattleSystem_GetMaxBattlers(param_2);
   uVar7 = 0;
   uVar2 = BattleSystem_GetCriticalHpMusicFlag(param_2);

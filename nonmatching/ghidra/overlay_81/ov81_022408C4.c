@@ -60,7 +60,7 @@ void ov81_022408C4(int param_1,undefined4 param_2,undefined4 param_3,undefined4 
   undefined4 uVar2;
   undefined4 uVar3;
   int iVar4;
-  
+
   uVar1 = Save_PlayerData_GetProfile(*(undefined4 *)(param_1 + 0x1bc));
   uVar2 = String_New(8,100);
   FillWindowPixelBuffer(param_2,0);

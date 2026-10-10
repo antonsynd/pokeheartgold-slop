@@ -50,7 +50,7 @@ void ov14_021E7FEC(undefined4 param_1)
 {
   char cStack_c;
   undefined1 auStack_b [3];
-  
+
   sub_02019B1C(param_1,1,auStack_b,&cStack_c);
   if (cStack_c != 6) {
     sub_020198FC(param_1,1,0,0xffffffff,(int)cStack_c - 6U & 0xff);

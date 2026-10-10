@@ -51,7 +51,7 @@ void sub_02058098(void)
 {
   int iVar1;
   int iVar2;
-  
+
   if (iRam021d41c8 != 0) {
     SysTask_Destroy(*(undefined4 *)(iRam021d41c8 + 0x34));
     iVar1 = 0;

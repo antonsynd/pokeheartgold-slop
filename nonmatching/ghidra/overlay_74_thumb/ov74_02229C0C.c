@@ -53,7 +53,7 @@ void ov74_02229C0C(void)
   undefined4 uVar2;
   uint uVar3;
   int iVar4;
-  
+
   uVar3 = 0;
   iVar4 = 0;
   do {

@@ -49,7 +49,7 @@ void ov13_02223EA4(undefined4 param_1)
 
 {
   int iVar1;
-  
+
   iVar1 = iRam0224df98 + 1;
   if ((iVar1 != iRam0224df9c) && (iRam0224df98 != iRam0224df9c + 3)) {
     *(undefined4 *)(iRam0224df98 * 4 + 0x224dfb4) = param_1;

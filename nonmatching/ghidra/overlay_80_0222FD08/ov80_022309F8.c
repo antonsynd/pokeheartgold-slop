@@ -52,7 +52,7 @@ void ov80_022309F8(int param_1)
 
 {
   undefined4 uVar1;
-  
+
   if (*(short *)(param_1 + 0x4dc) != 0xff) {
     uVar1 = Party_GetMonByIndex(*(undefined4 *)(param_1 + 0x4d8),*(undefined2 *)(param_1 + 0x4de));
     Party_SafeCopyMonToSlot_ResetAprijuiceModifiers

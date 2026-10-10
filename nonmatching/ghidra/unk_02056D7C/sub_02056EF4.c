@@ -54,7 +54,7 @@ void sub_02056EF4(void)
   undefined1 uVar1;
   undefined2 uVar2;
   int iVar3;
-  
+
   iVar3 = sub_0203769C();
   *(undefined4 *)(iRam021d41c4 + iVar3 * 4 + 4) =
        *(undefined4 *)(*(int *)(iRam021d41c4 + 0x30) + 0x40);

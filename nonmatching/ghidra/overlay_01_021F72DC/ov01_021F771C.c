@@ -50,7 +50,7 @@ ov01_021F771C(undefined4 param_1,undefined4 param_2,undefined4 param_3,undefined
 
 {
   undefined4 *puVar1;
-  
+
   MapObjectManager_GetFirstActiveObjectByID(param_1,0xfd,param_3,param_4,param_4);
   puVar1 = (undefined4 *)sub_0205F40C();
   return *puVar1;

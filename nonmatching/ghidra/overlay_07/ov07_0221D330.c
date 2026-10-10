@@ -53,7 +53,7 @@ void ov07_0221D330(undefined4 param_1,int param_2)
 
 {
   int iVar1;
-  
+
   DoAllScreenBrightnessTransitionStep();
   iVar1 = func_0x0200b5c0(1);
   if (iVar1 != 0) {

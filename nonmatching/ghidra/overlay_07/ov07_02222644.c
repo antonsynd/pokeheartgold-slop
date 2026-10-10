@@ -49,7 +49,7 @@ void ov07_02222644(short *param_1,undefined4 *param_2,undefined4 *param_3)
 
 {
   undefined4 uVar1;
-  
+
   uVar1 = func_0x020f2178((int)*param_1);
   uVar1 = func_0x020f1cc8(uVar1,0x43800000);
   *param_2 = uVar1;

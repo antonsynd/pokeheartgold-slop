@@ -54,7 +54,7 @@ void ov01_021F54AC(undefined4 param_1,undefined4 param_2,int param_3,int param_4
   int iVar1;
   undefined1 auStack_1c [4];
   int iStack_18;
-  
+
   iStack_18 = param_4;
   if (*(int *)(param_6 + 0x6c) == 1) {
     GF_AssertFail();

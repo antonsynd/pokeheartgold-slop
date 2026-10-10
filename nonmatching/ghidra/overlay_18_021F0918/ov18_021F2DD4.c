@@ -55,7 +55,7 @@ int ov18_021F2DD4(undefined *param_1,int param_2,int param_3,int param_4)
   int iVar1;
   int iVar2;
   uint uVar3;
-  
+
   iVar1 = ov18_021F2CB4(param_1,param_3);
   iVar2 = ov18_021F2CC0(param_1,param_3);
   uVar3 = ov18_021F8950(param_1,param_4);

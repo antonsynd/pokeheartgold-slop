@@ -52,7 +52,7 @@ void ov13_02223E44(void)
 {
   int iVar1;
   undefined4 *puVar2;
-  
+
   func_0x020d3a38();
   iVar1 = 0;
   uRam0224df98 = 0;

@@ -70,7 +70,7 @@ undefined4 ov40_0223E190(int param_1)
   undefined4 uVar1;
   int iVar2;
   int iVar3;
-  
+
   iVar3 = *(int *)(param_1 + 0x860);
   if (*(int *)(param_1 + 8) == 0) {
     ov40_02230738();

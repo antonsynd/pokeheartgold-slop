@@ -57,7 +57,7 @@ void ov111_021E5F04(undefined4 param_1)
 
 {
   int iVar1;
-  
+
   iVar1 = OverlayManager_GetData();
   YesNoPrompt_Destroy(*(undefined4 *)(iVar1 + 0x18));
   ov111_021E6710(*(undefined4 *)(iVar1 + 0x20));

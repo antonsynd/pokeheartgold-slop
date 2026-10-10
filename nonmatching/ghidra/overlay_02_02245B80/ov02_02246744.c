@@ -55,7 +55,7 @@ ov02_02246744(undefined4 param_1,short param_2,short param_3,undefined4 param_4,
   undefined4 *puVar1;
   undefined4 uVar2;
   undefined4 uVar3;
-  
+
   uVar3 = param_4;
   puVar1 = (undefined4 *)Heap_Alloc(4,0xc);
   if (puVar1 == (undefined4 *)0x0) {

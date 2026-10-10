@@ -64,7 +64,7 @@ void ov73_021E762C(int param_1)
   int iVar8;
   int iVar9;
   int iStack_2c;
-  
+
   iStack_2c = 0x1b;
   iVar2 = param_1 + 0x2f4;
   iVar7 = 0;

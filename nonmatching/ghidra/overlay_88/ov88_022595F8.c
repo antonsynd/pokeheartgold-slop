@@ -54,7 +54,7 @@ void ov88_022595F8(int param_1,undefined4 param_2)
   uint uVar2;
   uint uVar3;
   uint uVar4;
-  
+
   uVar1 = *(ushort *)(param_1 + 6);
   uVar2 = func_0x020f2998((uint)*(ushort *)(param_1 + 2) * (uint)uVar1,*(undefined2 *)(param_1 + 4))
   ;

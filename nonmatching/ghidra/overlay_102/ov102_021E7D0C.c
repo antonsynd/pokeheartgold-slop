@@ -50,7 +50,7 @@ undefined4 ov102_021E7D0C(undefined4 param_1,int *param_2)
 {
   int iVar1;
   undefined4 uVar2;
-  
+
   if ((*param_2 == 0) && (iVar1 = ov102_021E7A58(), iVar1 != 0)) {
     return 0;
   }

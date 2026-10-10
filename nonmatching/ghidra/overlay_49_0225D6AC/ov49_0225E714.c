@@ -51,7 +51,7 @@ void ov49_0225E714(int param_1)
   undefined4 uVar1;
   int iVar2;
   int iVar3;
-  
+
   iVar3 = 0;
   iVar2 = param_1;
   if (*(char *)(param_1 + 0x612) != '\0') {

@@ -53,7 +53,7 @@ void ov80_0222C7B0(undefined2 param_1,int param_2,undefined4 param_3,undefined4 
 {
   int iVar1;
   undefined4 uVar2;
-  
+
   iVar1 = Heap_Alloc(param_6,0x18);
   func_0x020d4994(iVar1,0,0x18);
   *(int *)(iVar1 + 0x14) = param_2;

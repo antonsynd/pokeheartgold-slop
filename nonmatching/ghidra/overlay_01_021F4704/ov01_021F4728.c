@@ -49,7 +49,7 @@ undefined4 ov01_021F4728(undefined4 param_1,undefined4 param_2,undefined4 param_
 {
   int iVar1;
   int iVar2;
-  
+
   iVar1 = func_0x020f2998(param_1,param_3);
   iVar2 = func_0x020f2998(param_2,param_3);
   if (iVar1 == iVar2) {

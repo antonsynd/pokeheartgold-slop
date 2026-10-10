@@ -52,7 +52,7 @@ void ov49_0225EA70(int param_1,undefined4 param_2)
 {
   bool bVar1;
   int iVar2;
-  
+
   bVar1 = false;
   iVar2 = ov49_0225D3BC(*(undefined4 *)(param_1 + 4),param_2,0);
   if (iVar2 == 0) {

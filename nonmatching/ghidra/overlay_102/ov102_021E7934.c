@@ -51,7 +51,7 @@ void ov102_021E7934(undefined2 *param_1,undefined4 param_2)
   undefined1 uVar1;
   undefined2 uVar2;
   int iVar3;
-  
+
   uVar2 = MailMsg_GetMsgBank(param_2);
   *param_1 = uVar2;
   *(undefined1 *)((int)param_1 + 3) = 0x14;

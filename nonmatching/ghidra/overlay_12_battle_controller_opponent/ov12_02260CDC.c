@@ -52,7 +52,7 @@ void ov12_02260CDC(undefined4 param_1,undefined4 *param_2,undefined4 param_3,und
 
 {
   undefined4 uVar1;
-  
+
   if (*(char *)((int)param_2 + 0xe) == '\0') {
     if (*(int *)(param_2[1] + 0x8c) != 0) {
       GF_AssertFail();

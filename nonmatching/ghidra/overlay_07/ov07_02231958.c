@@ -49,7 +49,7 @@ int ov07_02231958(undefined4 param_1,int param_2)
 {
   int iVar1;
   int iVar2;
-  
+
   iVar2 = 0;
   do {
     iVar1 = ov07_0221FA04(param_1,iVar2);

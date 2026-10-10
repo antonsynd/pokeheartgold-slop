@@ -60,7 +60,7 @@ void ov112_021F0D48(undefined2 *param_1)
   uint uVar11;
   byte *pbStack_20;
   int iStack_1c;
-  
+
   uVar11 = 0;
   pbStack_20 = (byte *)0x21ff2cc;
   puVar9 = (undefined4 *)0x21ff244;

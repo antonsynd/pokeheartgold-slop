@@ -50,7 +50,7 @@ void ov08_0221DFC8(int param_1,int param_2,int param_3,int param_4,undefined1 pa
 
 {
   int iVar1;
-  
+
   iVar1 = param_1 + 4 + param_3 * 0x50;
   param_2 = param_2 * 0x10;
   func_0x0200cdf0(*(undefined4 *)(param_1 + 0x1fa4),*(undefined2 *)(iVar1 + 0x10),3,1,

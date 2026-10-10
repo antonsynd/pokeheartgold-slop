@@ -48,7 +48,7 @@ void ov96_021FC248(int param_1,int param_2,int param_3)
 
 {
   int aiStack_18 [3];
-  
+
   aiStack_18[2] = 0;
   aiStack_18[0] = param_3 << 0xc;
   aiStack_18[1] = 0xe000;

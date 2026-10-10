@@ -51,7 +51,7 @@ int ov12_02258D74(undefined4 param_1,undefined1 *param_2,undefined4 param_3,unde
 {
   int iVar1;
   undefined4 uVar2;
-  
+
   iVar1 = Heap_Alloc(5,0x1ac,param_3,param_4,param_4);
   func_0x020d4858(0,iVar1,0x1ac);
   *(undefined1 *)(iVar1 + 0x194) = *param_2;

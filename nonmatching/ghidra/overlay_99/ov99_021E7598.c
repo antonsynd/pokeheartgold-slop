@@ -64,7 +64,7 @@ ov99_021E7598(undefined4 *param_1,undefined4 param_2,undefined4 param_3,undefine
   short sStack_1c;
   short sStack_1a;
   undefined4 uStack_18;
-  
+
   if ((int)(param_1[0xfd] << 4) < 0) {
     iVar1 = 1;
   }

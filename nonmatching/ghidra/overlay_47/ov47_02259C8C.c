@@ -56,7 +56,7 @@ void ov47_02259C8C(undefined4 *param_1,int param_2,undefined4 param_3)
   int iVar3;
   undefined4 *puVar4;
   int iVar5;
-  
+
   uVar1 = String_New(0x100,param_3);
   param_1[4] = uVar1;
   iVar5 = 0;

@@ -76,7 +76,7 @@ void ov96_021F6600(undefined4 param_1,int param_2)
   undefined1 auStack_20 [4];
   undefined1 auStack_1c [4];
   undefined4 uStack_18;
-  
+
   uVar1 = ov96_021E5F24();
   uVar3 = 0;
   do {

@@ -49,7 +49,7 @@ undefined4 ov07_02232580(int param_1)
   uint uVar1;
   int *piVar2;
   int aiStack_20 [6];
-  
+
   piVar2 = aiStack_20;
   aiStack_20[0] = 6;
   aiStack_20[1] = 7;

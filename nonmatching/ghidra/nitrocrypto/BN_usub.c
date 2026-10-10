@@ -60,7 +60,7 @@ undefined4 BN_usub(int *param_1,int *param_2,undefined4 *param_3)
   uint *puVar10;
   uint uVar11;
   bool bVar12;
-  
+
   iVar7 = param_3[1];
   iVar8 = param_2[1];
   if (iVar8 < iVar7) {

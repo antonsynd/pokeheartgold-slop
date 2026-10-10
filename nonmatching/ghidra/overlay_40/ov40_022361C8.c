@@ -47,7 +47,7 @@ undefined4 ov40_022361C8(int param_1)
 
 {
   int iVar1;
-  
+
   iVar1 = 0;
   do {
     if (*(short *)(param_1 + 0x28) != 0) {

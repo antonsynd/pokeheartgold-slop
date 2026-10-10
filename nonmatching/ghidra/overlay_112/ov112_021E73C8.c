@@ -63,7 +63,7 @@ void ov112_021E73C8(int param_1,int param_2,undefined4 param_3)
 
 {
   int iVar1;
-  
+
   uRam021ffabc = 1;
   uRam021ffab8 = 1;
   uRam021ffae8 = 0;

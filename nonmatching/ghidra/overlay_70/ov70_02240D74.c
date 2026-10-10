@@ -66,7 +66,7 @@ void ov70_02240D74(int param_1,int param_2)
   undefined4 uStack_3c;
   undefined4 uStack_38;
   undefined4 uStack_1c;
-  
+
   ov70_0224127C();
   ov70_02238B54(auStack_44,param_1,param_1 + 0xd84,2);
   uStack_1c = 2;

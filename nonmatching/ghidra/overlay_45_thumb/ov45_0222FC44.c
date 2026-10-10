@@ -60,7 +60,7 @@ void ov45_0222FC44(int param_1,int param_2,undefined4 param_3,undefined4 param_4
   int iVar1;
   uint uVar2;
   undefined4 uVar3;
-  
+
   iVar1 = iRam022577c0;
   if (param_2 == 0) {
     *(undefined4 *)(iRam022577c0 + 0x5b4) = 0x400;

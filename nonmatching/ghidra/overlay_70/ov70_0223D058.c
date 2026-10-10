@@ -62,7 +62,7 @@ void ov70_0223D058(int param_1,undefined4 param_2,undefined4 param_3,undefined4 
   int iStack_3c;
   undefined4 uStack_24;
   undefined4 uStack_18;
-  
+
   uStack_18 = param_4;
   ov70_02238B54(auStack_48,param_1,param_1 + 0xd60,1);
   iStack_40 = (uint)*(ushort *)((uint)*(ushort *)(param_1 + 0x122) * 4 + 0x2245784) << 0xc;

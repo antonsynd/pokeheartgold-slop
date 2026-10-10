@@ -69,7 +69,7 @@ void ov40_02233238(int param_1,undefined4 param_2,undefined4 param_3,undefined4 
   int *piStack_4c;
   int *piStack_48;
   int aiStack_40 [11];
-  
+
   puVar5 = *(undefined **)(param_1 + 0x24);
   puVar7 = *(undefined **)(param_1 + 0x14);
   puVar6 = *(undefined **)(param_1 + 0x18);

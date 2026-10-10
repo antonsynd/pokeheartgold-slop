@@ -65,7 +65,7 @@ void ov96_021F4990(undefined4 *param_1,undefined4 param_2,undefined4 param_3,und
   undefined4 uStack_18;
   undefined4 uStack_14;
   undefined4 uStack_10;
-  
+
   uStack_14 = 0;
   uStack_1c = 0x38000;
   uStack_18 = 0x290000;

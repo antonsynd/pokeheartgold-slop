@@ -52,7 +52,7 @@ undefined4 ov65_0221F028(int param_1)
 
 {
   undefined4 uVar1;
-  
+
   FillBgTilemapRect(*(undefined4 *)(param_1 + 0x180),0,0,0,0,0x20,0x18,0);
   Party_GetMonByIndex(*(undefined4 *)(param_1 + 0x2224),*(undefined4 *)(param_1 + 0x94));
   uVar1 = Mon_GetBoxMon();

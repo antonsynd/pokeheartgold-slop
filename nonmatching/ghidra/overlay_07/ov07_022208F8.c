@@ -56,7 +56,7 @@ void ov07_022208F8(undefined4 param_1,undefined4 *param_2,undefined4 param_3)
   undefined4 uVar2;
   int iVar3;
   undefined4 uVar4;
-  
+
   uVar4 = *param_2;
   ov07_0221C478(uVar4);
   uVar1 = sub_02015530();

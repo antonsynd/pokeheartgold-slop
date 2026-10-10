@@ -49,7 +49,7 @@ undefined4 ov86_021E5C94(int param_1,undefined4 param_2,undefined4 param_3,undef
 
 {
   int iVar1;
-  
+
   if (*(char *)(param_1 + 4) == '\0') {
     BeginNormalPaletteFade(0,0,0,0,6,1,0x79,param_4);
     *(char *)(param_1 + 4) = *(char *)(param_1 + 4) + '\x01';

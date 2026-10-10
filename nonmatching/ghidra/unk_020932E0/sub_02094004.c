@@ -55,7 +55,7 @@ void sub_02094004(int param_1)
   int iVar2;
   int iVar3;
   int iVar4;
-  
+
   sub_0209428C(*(int *)(param_1 + 0x7e4) + 0x78,0xe0,0xb0,0x32,0x20);
   uVar1 = sub_0209417C(param_1,0xe0,0xb0,4,1);
   *(undefined4 *)(param_1 + 0x8b4) = uVar1;

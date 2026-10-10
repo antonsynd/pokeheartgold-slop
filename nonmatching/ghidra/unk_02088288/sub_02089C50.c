@@ -50,7 +50,7 @@ void sub_02089C50(int param_1)
 
 {
   byte abStack_c [4];
-  
+
   if (-1 < *(int *)(param_1 + 0x280) << 3) {
     sub_020729A4(*(undefined **)(param_1 + 0x7b8),abStack_c,*(ushort *)(param_1 + 0x23c),1);
     if (*(ushort *)(param_1 + 0x23c) == 0x1b9) {

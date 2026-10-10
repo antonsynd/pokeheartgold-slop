@@ -49,7 +49,7 @@ void ov15_021FE584(int param_1,undefined2 param_2,undefined4 param_3,undefined4 
 
 {
   undefined4 uVar1;
-  
+
   uVar1 = ov15_021F9D60(param_1,param_2,0,param_4,param_4);
   BufferItemName(*(undefined4 *)(param_1 + 0x2f4),param_3,uVar1);
   return;

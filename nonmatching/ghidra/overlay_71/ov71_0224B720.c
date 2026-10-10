@@ -60,7 +60,7 @@ void ov71_0224B720(int param_1,undefined4 param_2,undefined4 param_3,undefined4 
 {
   uint uVar1;
   uint uVar2;
-  
+
   func_0x020c2698();
   func_0x020cf704();
   uRam04000060 = uRam04000060 & 0xcff9 | 0x18;

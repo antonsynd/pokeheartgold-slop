@@ -55,7 +55,7 @@ void ov51_021E60F4(uint param_1,int param_2,int param_3)
   int iVar2;
   int iStack_70;
   undefined4 auStack_6c [24];
-  
+
   if ((param_3 + 0xf9U & 0xff) < 2) {
     if (param_2 == 0) {
       uVar1 = 6;

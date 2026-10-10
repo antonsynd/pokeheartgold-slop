@@ -48,7 +48,7 @@ undefined4 ov59_0223C3DC(int param_1)
 
 {
   int iVar1;
-  
+
   iVar1 = sub_020154B0(*(undefined4 *)(param_1 + 0x24));
   if (iVar1 != 0) {
     return 1;

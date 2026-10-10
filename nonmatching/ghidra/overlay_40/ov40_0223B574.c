@@ -51,7 +51,7 @@ void ov40_0223B574(int param_1)
   int iVar1;
   int iVar2;
   int iVar3;
-  
+
   iVar3 = *(int *)(param_1 + 0x860);
   iVar1 = 0;
   if (0 < *(int *)(iVar3 + 0x202c)) {

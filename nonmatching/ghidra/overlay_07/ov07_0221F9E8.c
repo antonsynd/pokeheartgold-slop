@@ -50,7 +50,7 @@ void ov07_0221F9E8(undefined4 *param_1,int param_2)
   undefined4 uVar2;
   int iVar3;
   undefined4 *puVar4;
-  
+
   puVar4 = (undefined4 *)(param_2 + 0x104);
   iVar3 = 6;
   do {

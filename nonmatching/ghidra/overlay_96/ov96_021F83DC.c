@@ -50,7 +50,7 @@ int ov96_021F83DC(undefined4 param_1)
 {
   int iVar1;
   int iVar2;
-  
+
   iVar1 = PokeathlonCourse_GetCurrentParticipantIndex();
   iVar2 = PokeathlonCourse_GetMode(param_1);
   if (iVar2 == 0) {

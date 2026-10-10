@@ -55,7 +55,7 @@ void ov05_0221BA00(int param_1,undefined4 param_2,undefined4 param_3,undefined4 
   int *piVar1;
   int iVar2;
   undefined4 uVar3;
-  
+
   CreateSysTaskAndEnvironment(0x221ba71,0xbd4,100,*(undefined4 *)(param_1 + 0x24),param_4);
   piVar1 = (int *)SysTask_GetData();
   func_0x020e5b44(piVar1,0,0xbd4);

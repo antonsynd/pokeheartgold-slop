@@ -49,7 +49,7 @@ void ov93_0225EAE0(undefined4 param_1,int param_2,undefined4 param_3,int param_4
 
 {
   int iVar1;
-  
+
   if ((param_4 == 1) && (0x61 < *(int *)(param_2 + 0x244))) {
     ov93_0225D700(param_1,0,*(int *)(param_2 + 0x244),1,1);
     PlaySE(0x592);

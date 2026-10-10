@@ -50,7 +50,7 @@ void ov74_0222DE68(undefined4 param_1,int param_2)
 
 {
   undefined4 uVar1;
-  
+
   func_0x02014aa0();
   uVar1 = func_0x02014a60(*(undefined4 *)(param_2 + 0xc00));
   func_0x02014ab0(uVar1,0x4000010,8,1);

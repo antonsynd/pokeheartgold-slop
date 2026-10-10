@@ -50,7 +50,7 @@ void ov102_021EBBD0(int param_1)
 {
   int iVar1;
   undefined4 uVar2;
-  
+
   iVar1 = ov102_021E8F7C(*(undefined4 *)(param_1 + 4));
   if (iVar1 == 0) {
     uVar2 = 0xfffffffc;

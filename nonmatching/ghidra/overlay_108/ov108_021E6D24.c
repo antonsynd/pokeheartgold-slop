@@ -51,7 +51,7 @@ void ov108_021E6D24(int param_1,undefined4 param_2,undefined4 param_3,undefined4
 
 {
   uint uVar1;
-  
+
   func_0x020cf15c(0x4000050,0,0,0x1f,0,param_4);
   func_0x020cf15c(0x4001050,0,0,0x1f,0);
   uVar1 = 0;

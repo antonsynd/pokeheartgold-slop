@@ -50,7 +50,7 @@ void sub_0206199C(undefined4 param_1)
 {
   short *psVar1;
   int iVar2;
-  
+
   psVar1 = (short *)sub_0205F394();
   do {
     iVar2 = (**(code **)(&UNK_020fd548 + *psVar1 * 4))(param_1,psVar1);

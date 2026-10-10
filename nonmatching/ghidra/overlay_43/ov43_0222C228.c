@@ -56,7 +56,7 @@ int ov43_0222C228(int param_1,undefined4 *param_2,undefined4 param_3)
 {
   int iVar1;
   undefined4 uVar2;
-  
+
   iVar1 = ov43_0222C5D8();
   if (iVar1 == 0) {
     return 6;

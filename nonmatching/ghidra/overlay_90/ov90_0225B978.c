@@ -48,7 +48,7 @@ undefined4 ov90_0225B978(int param_1)
 
 {
   int iVar1;
-  
+
   if ((*(int *)(param_1 + 0x660) == 1) && (iVar1 = IsFanfarePlaying(), iVar1 == 0)) {
     *(undefined4 *)(param_1 + 0x660) = 0;
   }

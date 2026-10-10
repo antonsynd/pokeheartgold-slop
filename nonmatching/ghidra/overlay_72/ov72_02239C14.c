@@ -50,7 +50,7 @@ undefined4 ov72_02239C14(int param_1)
 
 {
   int iVar1;
-  
+
   iVar1 = *(int *)(param_1 + 0x98);
   if (iVar1 < 100) {
     BufferIntegerAsString(*(undefined4 *)(param_1 + 0xbd0),0,iVar1,2,2,1);

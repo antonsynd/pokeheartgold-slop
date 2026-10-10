@@ -49,7 +49,7 @@ void ov93_02260608(int param_1)
 {
   int iVar1;
   int *piVar2;
-  
+
   iVar1 = 0;
   piVar2 = (int *)(param_1 + 0x33a0);
   do {

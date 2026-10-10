@@ -51,7 +51,7 @@ void ov13_02222420(int param_1,undefined2 *param_2,undefined4 param_3,short *par
 
 {
   undefined2 uVar1;
-  
+
   if (param_1 == 1) {
     *param_5 = 1;
     ov13_02222534(param_3,param_2 + 2,(int)*param_4,param_6,param_2 + 1,0x224dcf8,8);

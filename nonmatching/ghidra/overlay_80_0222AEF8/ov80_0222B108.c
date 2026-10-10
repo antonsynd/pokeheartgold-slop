@@ -49,7 +49,7 @@ undefined4 ov80_0222B108(int param_1)
 
 {
   int iVar1;
-  
+
   Save_PlayerData_GetProfile(*(undefined4 *)(param_1 + 0x4f8));
   *(undefined2 *)(param_1 + 0x506) = *(undefined2 *)(param_1 + 8);
   *(undefined2 *)(param_1 + 0x508) = *(undefined2 *)(param_1 + 0xc);

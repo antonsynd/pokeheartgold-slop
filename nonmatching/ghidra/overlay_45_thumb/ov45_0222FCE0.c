@@ -56,7 +56,7 @@ void ov45_0222FCE0(int param_1,undefined4 param_2,undefined4 param_3,undefined4 
   int iVar1;
   int iVar2;
   undefined4 uVar3;
-  
+
   iVar2 = func_0x02232580();
   if (param_1 == iVar2) {
     func_0x022320c4(iRam022577c0 + 0x19c);

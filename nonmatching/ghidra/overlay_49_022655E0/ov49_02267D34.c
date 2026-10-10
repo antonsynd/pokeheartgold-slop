@@ -49,7 +49,7 @@ void ov49_02267D34(undefined4 param_1,int param_2,undefined4 param_3,undefined4 
 
 {
   int iVar1;
-  
+
   if (*(short *)(param_2 + 0xd0c) != 0) {
     if (*(ushort *)(param_2 + 0xd0e) < 0xd) {
       *(short *)(param_2 + 0xd0e) = *(short *)(param_2 + 0xd0e) + 1;

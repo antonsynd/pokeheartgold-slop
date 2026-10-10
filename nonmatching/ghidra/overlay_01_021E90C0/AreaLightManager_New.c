@@ -57,7 +57,7 @@ uint * AreaLightManager_New(uint param_1,uint param_2)
   uint uVar3;
   int iVar4;
   uint *puVar5;
-  
+
   if (4 < param_2) {
     GF_AssertFail();
   }

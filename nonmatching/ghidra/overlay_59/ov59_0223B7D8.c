@@ -51,7 +51,7 @@ void ov59_0223B7D8(int param_1)
 {
   int iVar1;
   int iVar2;
-  
+
   iVar1 = 0;
   iVar2 = param_1 + 0x1b4;
   do {

@@ -63,7 +63,7 @@ void ov01_021F10C8(undefined4 param_1,short *param_2)
   undefined4 uStack_18;
   undefined4 uStack_14;
   undefined4 uStack_10;
-  
+
   if (*param_2 == 2) {
     sub_02014DA0();
     uStack_18 = 0;

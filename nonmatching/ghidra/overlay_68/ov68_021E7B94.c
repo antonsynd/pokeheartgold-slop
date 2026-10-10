@@ -50,7 +50,7 @@ undefined4 ov68_021E7B94(int param_1)
 {
   uint uVar1;
   undefined1 uVar2;
-  
+
   uVar1 = ov68_021E6CD8();
   if (uVar1 < 4) {
     ov68_021E6C14(param_1,1);

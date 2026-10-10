@@ -61,7 +61,7 @@ void ov01_02205808(undefined4 param_1,undefined4 param_2,undefined4 param_3,unde
   int iVar3;
   undefined1 auStack_40 [40];
   undefined4 uStack_18;
-  
+
   uStack_18 = param_4;
   uVar1 = MapObject_GetManager(param_2);
   uVar2 = MapObject_GetSpriteID(param_2);

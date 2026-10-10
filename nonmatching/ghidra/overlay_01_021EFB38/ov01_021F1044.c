@@ -49,7 +49,7 @@ undefined4 ov01_021F1044(void)
 
 {
   int iVar1;
-  
+
   iVar1 = sub_020154B0(*(undefined4 *)(iRam02209b64 + 8));
   if (iVar1 == 0) {
     return 1;

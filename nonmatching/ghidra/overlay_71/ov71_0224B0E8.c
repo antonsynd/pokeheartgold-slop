@@ -49,7 +49,7 @@ void ov71_0224B0E8(undefined4 param_1,int param_2)
 
 {
   int iVar1;
-  
+
   iVar1 = *(int *)(param_2 + 0x10) + -1;
   *(int *)(param_2 + 0x10) = iVar1;
   if (0 < iVar1) {

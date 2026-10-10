@@ -56,7 +56,7 @@ void ov83_0223FD4C(int param_1,undefined4 param_2,undefined4 param_3,undefined4 
 
 {
   undefined4 uVar1;
-  
+
   FillWindowPixelBuffer(param_2,0);
   uVar1 = GetMonData(param_3,6,0);
   BufferItemName(*(undefined4 *)(param_1 + 0x24),0,uVar1);

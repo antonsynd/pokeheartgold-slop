@@ -59,7 +59,7 @@ undefined4 ov96_022093D0(undefined4 param_1)
   uint uVar3;
   undefined4 uVar4;
   uint *puVar5;
-  
+
   iVar1 = PokeathlonCourse_GetHeapAllocPtr4();
   iVar2 = IsPaletteFadeFinished();
   if (iVar2 != 0) {

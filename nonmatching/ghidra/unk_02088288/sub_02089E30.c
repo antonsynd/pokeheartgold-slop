@@ -48,7 +48,7 @@ void sub_02089E30(int param_1,int param_2)
 
 {
   uint uVar1;
-  
+
   if (-1 < *(int *)(param_1 + 0x280) << 3) {
     uVar1 = (int)*(char *)(param_1 + 0x7bc);
     do {

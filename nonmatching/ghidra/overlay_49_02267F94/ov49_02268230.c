@@ -62,7 +62,7 @@ bool ov49_02268230(short *param_1)
   undefined4 uStack_20;
   int iStack_1c;
   undefined4 uStack_18;
-  
+
   iStack_28 = 0;
   if (param_1[2] != 0) {
     psVar1 = param_1 + 0x54;

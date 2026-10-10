@@ -49,7 +49,7 @@ void sub_0205DFD4(undefined4 param_1,undefined4 param_2)
 
 {
   undefined4 uVar1;
-  
+
   uVar1 = PlayerAvatar_GetMapObject();
   sub_0205DA1C(param_1,uVar1,param_2);
   return;

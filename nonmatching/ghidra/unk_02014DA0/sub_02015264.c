@@ -50,7 +50,7 @@ undefined * sub_02015264(int param_1,int param_2,int param_3)
 
 {
   undefined *puVar1;
-  
+
   puVar1 = AllocAndReadWholeNarcMemberByIdPair(param_1,param_2,param_3);
   return puVar1;
 }

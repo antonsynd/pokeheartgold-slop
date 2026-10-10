@@ -62,7 +62,7 @@ int ov18_021F6BBC(int param_1,undefined4 param_2,undefined4 param_3,undefined4 p
   int iStack_20;
   int iStack_1c;
   undefined4 uStack_18;
-  
+
   *(undefined4 *)(param_1 + 0x864) = 0;
   uStack_18 = param_4;
   iVar3 = func_0x02025380(&iStack_1c,&iStack_20);

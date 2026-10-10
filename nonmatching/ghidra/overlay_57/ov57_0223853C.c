@@ -53,7 +53,7 @@ void ov57_0223853C(int *param_1,undefined4 param_2,undefined4 param_3,undefined4
   undefined1 *puVar4;
   undefined1 auStack_30 [24];
   undefined4 uStack_18;
-  
+
   puVar4 = auStack_30;
   iVar2 = 0;
   piVar3 = param_1;

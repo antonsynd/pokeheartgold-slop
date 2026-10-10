@@ -47,7 +47,7 @@ undefined4 ov91_0225EF70(int *param_1)
 
 {
   int iVar1;
-  
+
   if (0xf < param_1[0x12]) {
     return 1;
   }

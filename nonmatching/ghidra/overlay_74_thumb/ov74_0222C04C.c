@@ -74,7 +74,7 @@ void ov74_0222C04C(undefined *param_1,undefined4 *param_2,undefined4 param_3,und
   int iVar4;
   undefined4 *puVar5;
   int iVar6;
-  
+
   switch(*param_2) {
   case 0:
     ov74_0222C014(param_2);

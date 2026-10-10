@@ -59,7 +59,7 @@ void ov14_021F7184(int param_1,uint param_2,uint param_3)
   char cVar1;
   int iVar2;
   undefined4 uVar3;
-  
+
   iVar2 = *(int *)(param_1 + 0x34);
   if (*(char *)(iVar2 + 1099) == '\0') {
     if (((int)param_2 < 0x25) || (0x2a < (int)param_2)) {

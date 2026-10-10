@@ -48,7 +48,7 @@ undefined4 ov70_02242508(int param_1,int param_2)
 
 {
   undefined4 uVar1;
-  
+
   if (param_1 == 0) {
     return 1;
   }

@@ -49,7 +49,7 @@ void ov08_02224B98(undefined4 *param_1,undefined1 param_2,undefined4 param_3,und
 {
   int iVar1;
   int iVar2;
-  
+
   *(undefined1 *)((int)param_1 + 9) = param_2;
   if (*(char *)(param_1 + 2) == '\x01') {
     iVar2 = (uint)*(byte *)((int)param_1 + 9) * 8;

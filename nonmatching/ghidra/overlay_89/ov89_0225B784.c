@@ -51,7 +51,7 @@ void ov89_0225B784(undefined4 param_1,int param_2)
 {
   int iVar1;
   undefined *puVar2;
-  
+
   puVar2 = (undefined *)(param_2 + 0x94);
   if (*(byte *)(param_2 + 0x200) != 0xff) {
     NNS_G3dGlbPolygonAttr(0,0,0,(uint)*(byte *)(param_2 + 0x200),8,0);

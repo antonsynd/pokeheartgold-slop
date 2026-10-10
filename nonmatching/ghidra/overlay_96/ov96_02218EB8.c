@@ -52,7 +52,7 @@ void ov96_02218EB8(int param_1)
 {
   int iVar1;
   bool bVar2;
-  
+
   bVar2 = true;
   if ((*(int *)(param_1 + 0x14) != 7) && (*(int *)(param_1 + 0x14) != 6)) {
     bVar2 = false;

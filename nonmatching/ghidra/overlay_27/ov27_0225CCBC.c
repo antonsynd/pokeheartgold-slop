@@ -48,7 +48,7 @@ undefined4 ov27_0225CCBC(undefined4 *param_1)
 
 {
   int iVar1;
-  
+
   iVar1 = func_0x021eef58(param_1[3]);
   *(short *)param_1[1] = (short)*(undefined4 *)(iVar1 + param_1[0xe5] * 8 + 4);
   *param_1 = 1;

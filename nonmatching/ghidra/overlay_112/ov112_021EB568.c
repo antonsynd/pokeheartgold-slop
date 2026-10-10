@@ -49,7 +49,7 @@ undefined4 ov112_021EB568(int param_1)
 
 {
   int iVar1;
-  
+
   ov112_021EA570();
   iVar1 = *(int *)(param_1 + 0x1ec50);
   if (iVar1 == 0) {

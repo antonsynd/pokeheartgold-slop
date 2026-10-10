@@ -56,7 +56,7 @@ ParseSignHash(int param_1,uint param_2,int *param_3,uint *param_4,int *param_5,u
   uint uStack_c;
   int *piStack_8;
   uint *puStack_4;
-  
+
   iStack_10 = param_1;
   uStack_c = param_2;
   piStack_8 = param_3;

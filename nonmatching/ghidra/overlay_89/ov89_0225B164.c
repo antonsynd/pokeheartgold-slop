@@ -57,7 +57,7 @@ undefined4 ov89_0225B164(undefined4 param_1,int param_2,undefined4 param_3,undef
   int iStack_20;
   int iStack_1c;
   undefined4 uStack_18;
-  
+
   iVar1 = param_2 + 0x94;
   uStack_18 = param_4;
   if (*(char *)(param_2 + 0x1fe) == '\0') {

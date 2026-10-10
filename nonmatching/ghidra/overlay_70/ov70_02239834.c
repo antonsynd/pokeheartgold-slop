@@ -60,7 +60,7 @@ undefined4 ov70_02239834(int param_1,undefined4 param_2,undefined4 param_3,undef
   int iVar1;
   undefined4 uVar2;
   int iVar3;
-  
+
   iVar1 = ov70_02239730();
   if (iVar1 != -1) {
     *(short *)(param_1 + 0x11c) = (short)iVar1;

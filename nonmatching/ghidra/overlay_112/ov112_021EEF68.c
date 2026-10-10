@@ -61,7 +61,7 @@ undefined4 ov112_021EEF68(int param_1)
 {
   undefined4 uVar1;
   undefined4 uVar2;
-  
+
   if (*(int *)(param_1 + 0x1d764) == 0) {
     ov112_021E77E4();
     *(undefined4 *)(param_1 + 0x1d764) = 1;

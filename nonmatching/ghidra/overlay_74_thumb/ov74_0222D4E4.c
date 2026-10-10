@@ -53,7 +53,7 @@ undefined4 ov74_0222D4E4(int *param_1,undefined *param_2,uint param_3)
   int iVar1;
   undefined *puVar2;
   uint uVar3;
-  
+
   if ((int)((uint)*(byte *)(param_1[param_1[0xaf0] + 0xaed] + 0x152) << 0x1c) < 0) {
     if (((undefined *)param_1[0xae8] == (undefined *)0x0) ||
        (iVar1 = SaveMysteryGift_HasAnyGift((undefined *)param_1[0xae8],param_1[0xaf0]), iVar1 == 1))

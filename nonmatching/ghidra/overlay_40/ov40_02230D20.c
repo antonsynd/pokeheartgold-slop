@@ -50,7 +50,7 @@ void ov40_02230D20(int param_1)
 
 {
   int iVar1;
-  
+
   if (*(int *)(param_1 + 0x514) == 0) {
     if (*(int *)(param_1 + 0x518) < 8) {
       *(int *)(param_1 + 0x518) = *(int *)(param_1 + 0x518) + 1;

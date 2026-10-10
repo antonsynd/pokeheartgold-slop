@@ -55,7 +55,7 @@ void ov91_0225CB98(int param_1,undefined4 param_2,undefined4 param_3,undefined4 
   int extraout_r1;
   undefined4 uStack_10;
   undefined4 uStack_c;
-  
+
   uStack_c = param_4;
   iVar1 = ov91_0225D2E8(*(undefined4 *)(param_1 + 0x34));
   if (((iVar1 != 0) && (func_0x020f2998(iVar1,0x1e), extraout_r1 == 0)) &&

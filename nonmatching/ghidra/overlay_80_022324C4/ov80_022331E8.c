@@ -58,7 +58,7 @@ void ov80_022331E8(undefined4 param_1,undefined4 param_2,int param_3)
   undefined4 uVar2;
   undefined4 uVar3;
   int iVar4;
-  
+
   uVar1 = Save_Frontier_GetStatic();
   uVar2 = func_0x0205c1f0(param_2);
   func_0x0205c1f0(param_2);

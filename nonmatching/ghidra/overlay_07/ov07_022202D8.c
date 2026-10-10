@@ -47,7 +47,7 @@ void ov07_022202D8(undefined4 param_1,int param_2,int *param_3)
 
 {
   int *piVar1;
-  
+
   piVar1 = param_3 + 2;
   switch(param_1) {
   case 1:

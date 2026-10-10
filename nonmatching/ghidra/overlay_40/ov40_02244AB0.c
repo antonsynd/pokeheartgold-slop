@@ -56,7 +56,7 @@ ov40_02244AB0(undefined4 param_1,undefined4 param_2,int param_3,short *param_4,u
   undefined4 uVar2;
   uint uVar3;
   short *psVar4;
-  
+
   if (*param_4 == 0) {
     psVar4 = param_4;
     if (iRam021d2af8 == 0) {

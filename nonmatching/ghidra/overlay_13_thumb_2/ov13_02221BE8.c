@@ -51,7 +51,7 @@ undefined4 ov13_02221BE8(int param_1,undefined4 param_2)
   int iVar2;
   undefined4 uVar3;
   char *pcVar4;
-  
+
   uVar3 = 0;
   pcVar4 = (char *)0x224dcf8;
   bVar1 = false;

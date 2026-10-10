@@ -79,7 +79,7 @@ void ov69_021E64CC(int *param_1,undefined *param_2,undefined4 param_3,undefined4
   undefined2 uStack_14;
   undefined2 uStack_12;
   undefined4 uStack_10;
-  
+
   uStack_10 = param_4;
   InitBgFromTemplate((undefined *)param_1[0x3004],6,&ov69_021E76B0,0);
   BgClearTilemapBufferAndCommit((undefined *)param_1[0x3004],6);

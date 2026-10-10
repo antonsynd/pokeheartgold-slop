@@ -60,7 +60,7 @@ void ov91_0225E8BC(char *param_1,int param_2,undefined4 param_3,undefined4 param
   int iVar3;
   undefined1 auStack_24 [12];
   undefined4 uStack_18;
-  
+
   bVar1 = false;
   if (*param_1 == '\x05') {
     iVar3 = *(int *)(param_1 + 0x30);

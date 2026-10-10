@@ -49,7 +49,7 @@ undefined4 ov49_022693F8(short *param_1,uint param_2,undefined4 param_3,undefine
 {
   code *pcVar1;
   undefined4 uVar2;
-  
+
   uVar2 = param_4;
   if (1 < param_2) {
     GF_AssertFail();

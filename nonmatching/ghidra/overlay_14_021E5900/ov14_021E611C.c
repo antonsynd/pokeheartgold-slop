@@ -59,7 +59,7 @@ void ov14_021E611C(int param_1,undefined4 *param_2,undefined4 *param_3,uint para
   undefined4 uVar1;
   int iVar2;
   uint uStack_18;
-  
+
   uStack_18 = param_4;
   uVar1 = ov14_021E60C0(param_1,*(undefined1 *)(param_1 + 0x1f),param_2[1]);
   CopyBoxPokemonToPokemon(uVar1,*param_2);

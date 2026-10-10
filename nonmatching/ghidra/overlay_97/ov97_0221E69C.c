@@ -56,7 +56,7 @@ undefined4 ov97_0221E69C(void)
 
 {
   undefined4 *puVar1;
-  
+
   puVar1 = (undefined4 *)OverlayManager_GetData();
   Main_SetVBlankIntrCB(0,0);
   ov97_0221F020(puVar1[3]);

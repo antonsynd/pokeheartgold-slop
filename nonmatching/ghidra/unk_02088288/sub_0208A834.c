@@ -54,7 +54,7 @@ void sub_0208A834(int param_1)
   undefined4 uVar3;
   int iVar4;
   uint uVar5;
-  
+
   uVar3 = sub_0208A520();
   if (*(char *)(*(int *)(param_1 + 0x22c) + 0x11) == '\x02') {
     BoxMonSwapMoves(uVar3,*(byte *)(param_1 + 0x7bd) & 0xf,*(byte *)(param_1 + 0x7bd) >> 4);

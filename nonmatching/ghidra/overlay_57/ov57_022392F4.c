@@ -73,7 +73,7 @@ void ov57_022392F4(int param_1,undefined4 param_2,undefined4 param_3,undefined4 
   undefined4 uStack_20;
   undefined4 uStack_1c;
   undefined4 uStack_18;
-  
+
   uStack_18 = param_4;
   ov57_0223927C(*(undefined4 *)(param_1 + 0xdc),*(undefined4 *)(param_1 + 0xe0),
                 *(undefined4 *)(param_1 + 0xe8),0x11,3,0x13,0x12,1,2,1,param_2);

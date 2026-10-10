@@ -51,7 +51,7 @@ undefined4 ov01_021F26CC(short *param_1)
 {
   int iVar1;
   undefined4 uVar2;
-  
+
   iVar1 = func_0x02250780(*(undefined4 *)(param_1 + 6),0);
   if (iVar1 == 0) {
     uVar2 = 1;

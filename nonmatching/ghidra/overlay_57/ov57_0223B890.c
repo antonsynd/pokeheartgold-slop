@@ -50,7 +50,7 @@ void ov57_0223B890(int param_1,int param_2,int param_3)
 {
   int iStack_18;
   int iStack_14;
-  
+
   if (param_1 != 0) {
     func_0x02013794(param_1,&iStack_14,&iStack_18);
     func_0x020136b4(param_1,iStack_14 + param_2,iStack_18 + param_3);

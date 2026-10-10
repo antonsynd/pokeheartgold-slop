@@ -56,7 +56,7 @@ undefined4 ov96_021E6A00(int param_1,undefined4 param_2,undefined4 param_3,undef
   undefined4 uVar3;
   int iVar4;
   undefined4 *puVar5;
-  
+
   func_0x02031968(**(undefined4 **)(param_1 + 0x1f8));
   puVar1 = (undefined4 *)PokeathlonSave_GetAgainUnkB00();
   puVar5 = (undefined4 *)(param_1 + 0x900);

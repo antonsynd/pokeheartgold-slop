@@ -55,7 +55,7 @@ undefined4 ov103_021EDD98(int param_1)
 {
   int iVar1;
   undefined4 uVar2;
-  
+
   iVar1 = sub_02090F6C(*(undefined4 *)(param_1 + 0x14));
   *(int *)(param_1 + 0x24) = iVar1;
   if (iVar1 == 1) {

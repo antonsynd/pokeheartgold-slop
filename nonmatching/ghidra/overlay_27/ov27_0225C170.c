@@ -49,7 +49,7 @@ int ov27_0225C170(int param_1,int param_2)
 {
   int iVar1;
   int iVar2;
-  
+
   iVar1 = -1;
   if (1 < param_2 - 7U) {
     iVar2 = 0;

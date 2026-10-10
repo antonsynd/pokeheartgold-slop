@@ -48,7 +48,7 @@ void ov96_02203CE4(int param_1,undefined4 param_2,undefined4 param_3,undefined4 
 
 {
   int iVar1;
-  
+
   if (*(char *)(param_1 + 0x70) != '\0') {
     *(char *)(param_1 + 0x71) = *(char *)(param_1 + 0x71) + '\x01';
     iVar1 = ((int)((uint)*(byte *)(param_1 + 0x71) * -0x80000000) >> 0x1f) * 8;

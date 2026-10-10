@@ -48,7 +48,7 @@ int ov96_021F38FC(int param_1,int param_2)
 {
   int iVar1;
   int iVar2;
-  
+
   iVar2 = (int)(param_1 + -0x10 + ((uint)(param_1 + -0x10 >> 4) >> 0x1b)) >> 5;
   iVar1 = (int)(param_2 + -0x10 + ((uint)(param_2 + -0x10 >> 4) >> 0x1b)) >> 5;
   if ((-1 < iVar2) && (-1 < iVar1)) {

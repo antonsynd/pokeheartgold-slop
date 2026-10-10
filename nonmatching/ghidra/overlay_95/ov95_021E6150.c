@@ -48,7 +48,7 @@ undefined4 ov95_021E6150(int param_1,int param_2)
 
 {
   int iVar1;
-  
+
   iVar1 = ov95_021E60A4();
   if (iVar1 == 0) {
     return 2;

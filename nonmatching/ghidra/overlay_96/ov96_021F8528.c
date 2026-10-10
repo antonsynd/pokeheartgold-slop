@@ -52,7 +52,7 @@ void ov96_021F8528(int param_1,undefined4 param_2,undefined4 param_3,undefined4 
 {
   undefined4 uVar1;
   undefined4 uVar2;
-  
+
   uVar2 = *(undefined4 *)(param_1 + 0x98);
   uVar1 = *(undefined4 *)(param_1 + 0x94);
   SpriteSystem_LoadCharResObj(uVar1,uVar2,0x9a,9,1,2,1000);

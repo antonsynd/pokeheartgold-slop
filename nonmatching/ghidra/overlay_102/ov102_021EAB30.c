@@ -65,7 +65,7 @@ int ov102_021EAB30(int param_1,undefined4 param_2)
   int iVar7;
   int iVar8;
   int iStack_24;
-  
+
   uVar2 = ov102_021E8FA8(*(undefined4 *)(param_1 + 4),0x23);
   iVar5 = 0;
   bVar1 = true;

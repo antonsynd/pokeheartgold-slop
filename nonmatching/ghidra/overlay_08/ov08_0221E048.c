@@ -55,7 +55,7 @@ void ov08_0221E048(int param_1,int param_2,int param_3,undefined4 param_4,byte p
   int iVar3;
   uint uVar4;
   int iVar5;
-  
+
   iVar3 = param_1 + 4 + param_3 * 0x50;
   iVar5 = 1;
   uVar1 = CalculateHpBarPixelsLength

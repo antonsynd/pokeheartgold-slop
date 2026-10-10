@@ -49,7 +49,7 @@ void ov14_021F3190(int param_1,uint param_2,int param_3)
 
 {
   undefined1 uVar1;
-  
+
   uVar1 = *(undefined1 *)(param_1 + param_2 + 0x4094);
   if (param_3 == 0) {
     ov14_021F2A60(param_1,uVar1,0);

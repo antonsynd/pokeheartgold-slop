@@ -53,7 +53,7 @@ void ov14_021F2EA0(int param_1,undefined4 param_2,undefined4 param_3,int param_4
   undefined4 uVar1;
   undefined4 uVar2;
   int iStack_18;
-  
+
   iStack_18 = param_4;
   uVar1 = ov14_021F2DC4(*(undefined4 *)(param_1 + 0x34),param_2,&iStack_18);
   uVar2 = Boxmon_GetIconPalette(param_2);

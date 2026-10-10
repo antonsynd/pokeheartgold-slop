@@ -55,7 +55,7 @@ void ov45_0222B530(undefined4 param_1,undefined4 param_2,int param_3)
   uint uVar1;
   undefined4 uVar2;
   int iVar3;
-  
+
   uVar1 = ov45_0222EC68();
   *(uint *)(param_3 + 0x104) = *(uint *)(param_3 + 0x104) | 1 << (uVar1 & 0xff);
   uVar2 = ov45_0222A920(param_2);

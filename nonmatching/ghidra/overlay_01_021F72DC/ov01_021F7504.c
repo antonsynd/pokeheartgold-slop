@@ -103,7 +103,7 @@ void ov01_021F7504(undefined4 param_1)
   undefined4 uStack_24;
   int aiStack_20 [2];
   int iStack_18;
-  
+
   piVar1 = (int *)sub_0205F40C();
   if ((-1 < (int)((uint)*(byte *)((int)piVar1 + 0x17) << 0x1e)) &&
      (iVar2 = MapObject_GetID(param_1), iVar2 == 0xfd)) {

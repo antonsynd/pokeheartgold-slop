@@ -53,7 +53,7 @@ void ov102_021E8A34(int param_1,undefined4 *param_2)
 {
   int iVar1;
   undefined4 uVar2;
-  
+
   iVar1 = ov102_021E839C();
   if (iVar1 == 1) {
     PlaySE(0x5dc);

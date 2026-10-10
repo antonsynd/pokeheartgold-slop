@@ -52,7 +52,7 @@ void ov96_0220C54C(undefined4 *param_1,int param_2,undefined4 param_3,undefined4
   undefined4 uVar1;
   undefined4 uVar2;
   undefined1 auStack_1c [16];
-  
+
   uVar1 = *param_1;
   uVar2 = param_1[param_2 + 4];
   ov96_021E6168(param_1[3],param_3,param_4,auStack_1c);

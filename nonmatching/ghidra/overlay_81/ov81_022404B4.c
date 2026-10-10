@@ -63,7 +63,7 @@ undefined4 ov81_022404B4(int param_1,undefined4 param_2,undefined4 param_3,undef
   int iVar7;
   undefined1 auStack_24 [12];
   undefined4 uStack_18;
-  
+
   bVar1 = false;
   uStack_18 = param_4;
   func_0x0201bc8c(*(undefined4 *)(param_1 + 0x4c),6,1,8);

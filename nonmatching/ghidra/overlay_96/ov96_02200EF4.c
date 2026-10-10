@@ -49,7 +49,7 @@ uint ov96_02200EF4(undefined4 param_1,int param_2,undefined4 param_3,undefined4 
 
 {
   uint uVar1;
-  
+
   uVar1 = 4;
   if (*(char *)(param_2 + 0x3e5) == '\x04') {
     return 0;

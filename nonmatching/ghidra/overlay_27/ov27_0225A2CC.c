@@ -49,7 +49,7 @@ void ov27_0225A2CC(void)
 
 {
   int iVar1;
-  
+
   iVar1 = SysTask_GetData();
   if (iVar1 == 0) {
     GF_AssertFail();

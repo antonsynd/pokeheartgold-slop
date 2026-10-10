@@ -49,7 +49,7 @@ void ov41_02249AA8(int param_1)
 
 {
   int iVar1;
-  
+
   iVar1 = *(int *)(param_1 + 4);
   if (iVar1 == 0) {
     ov41_02245F14();

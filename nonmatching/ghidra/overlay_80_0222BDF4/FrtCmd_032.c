@@ -52,7 +52,7 @@ undefined4 FrtCmd_032(int param_1)
   undefined1 uVar1;
   undefined4 uVar2;
   undefined4 uVar3;
-  
+
   uVar2 = FrontierScript_ReadVar();
   uVar3 = FrontierScriptContext_ReadHalfWord(param_1);
   uVar1 = ov80_0222BFE4(uVar2,uVar3);

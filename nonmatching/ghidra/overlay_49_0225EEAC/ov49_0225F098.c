@@ -52,7 +52,7 @@ void ov49_0225F098(int param_1,int param_2,int param_3,undefined4 param_4)
   code *unaff_r4;
   __asm__ volatile("movs %0, r4" : "=l"(unaff_r4) : : "cc");
 
-  
+
   if (*(char *)(param_1 + 2) != '\0') {
     if (param_3 == 0) {
       unaff_r4 = (code *)**(undefined4 **)(param_1 + 4);

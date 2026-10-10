@@ -51,7 +51,7 @@ undefined4 ov01_021F1008(void)
 
 {
   int iVar1;
-  
+
   if (iRam02209b64 == 0) {
     GF_AssertFail();
   }

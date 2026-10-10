@@ -49,8 +49,8 @@ int ov18_021F2AF8(undefined *param_1,uint param_2,uint param_3)
 {
   undefined auStack_10 [2];
   undefined auStack_e [2];
-  
-                    
+
+
   ManagedSprite_GetPositionXY(*(undefined **)(param_1 + 0x670),auStack_e,auStack_10);
 }
 

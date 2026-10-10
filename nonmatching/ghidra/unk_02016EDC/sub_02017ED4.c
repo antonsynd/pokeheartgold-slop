@@ -50,7 +50,7 @@ void sub_02017ED4(undefined4 *param_1)
 {
   undefined4 uVar1;
   int iVar2;
-  
+
   uVar1 = func_0x020f2998((param_1[4] + 1) * param_1[2],param_1[3]);
   *(undefined4 *)param_1[9] = uVar1;
   sub_02017BC8(*(undefined1 *)(param_1 + 0xb),param_1 + 0xc,param_1[9],param_1[10]);

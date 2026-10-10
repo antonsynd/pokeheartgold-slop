@@ -54,7 +54,7 @@ undefined4 ov87_021E73E0(int param_1,int param_2,undefined4 param_3,undefined4 p
   int iStack_20;
   int iStack_1c;
   undefined4 uStack_18;
-  
+
   if (7 < *(byte *)(param_1 + 0x3a0) >> 1) {
     return 1;
   }

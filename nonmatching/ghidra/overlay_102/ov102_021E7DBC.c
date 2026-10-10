@@ -52,7 +52,7 @@ undefined4 ov102_021E7DBC(int param_1)
 {
   ushort uVar1;
   undefined4 uVar2;
-  
+
   uVar1 = *(ushort *)(param_1 + 0x30);
   if ((uVar1 & 2) != 0) {
     *(undefined2 *)(param_1 + 0x4c) = 2;

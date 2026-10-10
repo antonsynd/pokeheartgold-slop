@@ -61,7 +61,7 @@ void ov13_02225F14(uint *param_1,int param_2,byte *param_3,undefined1 *param_4)
   uint uStack_58;
   uint uStack_54;
   uint uStack_20;
-  
+
   uStack_54 = (uint)*param_3 << 0x18 ^ (uint)param_3[1] << 0x10 ^ (uint)param_3[2] << 8 ^
               (uint)param_3[3] ^ *param_1;
   uStack_58 = (uint)param_3[4] << 0x18 ^ (uint)param_3[5] << 0x10 ^ (uint)param_3[6] << 8 ^

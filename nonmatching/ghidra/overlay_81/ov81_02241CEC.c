@@ -50,7 +50,7 @@ void ov81_02241CEC(int param_1)
 {
   undefined4 uStack_10;
   undefined4 uStack_c;
-  
+
   ov81_02241CA0(param_1,&uStack_c,&uStack_10);
   ov81_02242D94(*(undefined4 *)(param_1 + 0x390),uStack_c,uStack_10);
   return;

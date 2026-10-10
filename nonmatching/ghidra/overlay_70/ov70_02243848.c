@@ -53,7 +53,7 @@ undefined4 ov70_02243848(int param_1,undefined4 param_2,undefined4 param_3,undef
 
 {
   short sVar1;
-  
+
   ov70_02241DB4(param_1,6);
   Sprite_SetDrawFlag(*(undefined4 *)(param_1 + 0xc),0);
   sVar1 = *(short *)(param_1 + 0x3c);

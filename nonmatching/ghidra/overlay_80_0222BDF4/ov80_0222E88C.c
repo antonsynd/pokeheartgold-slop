@@ -57,7 +57,7 @@ void ov80_0222E88C(int *param_1)
   int iVar1;
   int *piVar2;
   int iVar3;
-  
+
   iVar3 = *param_1;
   PlaySE(0x5dc);
   func_0x02001bc4(param_1[0x2c],0);

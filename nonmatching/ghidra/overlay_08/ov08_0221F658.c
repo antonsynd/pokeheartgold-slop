@@ -68,7 +68,7 @@ void ov08_0221F658(int *param_1,int param_2)
   int iVar9;
   int iVar10;
   uint uVar11;
-  
+
   iVar2 = param_1[0x81c];
   iVar10 = param_2 * 0x50;
   uVar3 = String_New(0xc,*(undefined4 *)(*param_1 + 0xc));

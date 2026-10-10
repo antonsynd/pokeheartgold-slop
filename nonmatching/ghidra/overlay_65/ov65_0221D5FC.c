@@ -55,7 +55,7 @@ void ov65_0221D5FC(undefined4 param_1,undefined4 param_2,undefined4 param_3,unde
 {
   undefined4 uVar1;
   undefined4 uVar2;
-  
+
   uVar1 = String_New(0x14,0x1a);
   uVar2 = Party_GetMonByIndex(param_2,param_3);
   GetMonData(uVar2,0x77,uVar1);

@@ -53,7 +53,7 @@ void ov01_021F47A0(int param_1,int param_2,int param_3,int param_4,undefined4 pa
   int iVar2;
   int iVar3;
   int iVar4;
-  
+
   iVar4 = (int)(param_1 + ((uint)(param_1 >> 4) >> 0x1b)) >> 5;
   iVar3 = (int)(param_2 + ((uint)(param_2 >> 4) >> 0x1b)) >> 5;
   uVar1 = ov01_021F5A28(param_1,param_2,param_5);

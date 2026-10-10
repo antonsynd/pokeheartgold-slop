@@ -60,7 +60,7 @@ void sub_0205D2D0(undefined4 param_1,undefined4 param_2)
   int iVar3;
   undefined4 uVar4;
   undefined4 uVar5;
-  
+
   uVar1 = PlayerAvatar_GetMapObject();
   uVar5 = 0x10;
   iVar2 = PlayerAvatar_GetUnk24(param_1);

@@ -57,7 +57,7 @@ void ov83_022401A4(int param_1,undefined4 param_2,int param_3,int param_4)
   undefined4 uVar4;
   undefined4 uVar5;
   int iVar6;
-  
+
   iVar3 = func_0x02237d8c(*(undefined1 *)(param_1 + 9));
   if (iVar3 == 0) {
     iVar3 = 0x28;

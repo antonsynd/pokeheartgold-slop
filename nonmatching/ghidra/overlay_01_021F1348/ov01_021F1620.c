@@ -49,7 +49,7 @@ int ov01_021F1620(int param_1)
 
 {
   int iVar1;
-  
+
   iVar1 = sub_02068B0C(*(undefined4 *)(param_1 + 0x1c));
   if (iVar1 == 0) {
     GF_AssertFail();

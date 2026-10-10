@@ -74,7 +74,7 @@ void ov96_02212B94(undefined *param_1,undefined4 param_2,undefined4 param_3,unde
   undefined4 uStack_20;
   undefined4 uStack_1c;
   undefined4 uStack_18;
-  
+
   uStack_18 = param_4;
   puVar2 = PokeathlonCourse_GetHeapAllocPtr4(param_1);
   if ((puVar2[0x6b0] == '\0') && (*(int *)(puVar2 + 0x738) < 0x385)) {

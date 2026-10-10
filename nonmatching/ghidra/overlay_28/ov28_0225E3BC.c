@@ -52,7 +52,7 @@ void ov28_0225E3BC(int param_1,undefined4 param_2,undefined4 param_3,uint param_
 {
   uint uVar1;
   undefined4 uStack_18;
-  
+
   uStack_18 = param_4;
   if (*(short *)(param_1 + 0x24e) == 0) {
     uVar1 = 0;

@@ -59,7 +59,7 @@ int ov102_021E83E4(void)
   char cStack_17;
   char cStack_16;
   char cStack_15;
-  
+
   iVar2 = System_GetTouchNew();
   if (iVar2 == 0) {
     return -1;

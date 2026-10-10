@@ -62,7 +62,7 @@ void sub_0208F960(uint param_1,undefined4 param_2,byte *param_3,int param_4)
   byte bStack_16;
   byte bStack_15;
   int iStack_14;
-  
+
   iStack_14 = param_4;
   if (param_1 == 0) {
     if (param_3[2] == 0) {

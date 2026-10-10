@@ -81,7 +81,7 @@ void sub_0205D4B4(undefined4 param_1,undefined4 param_2,undefined4 param_3,undef
   undefined4 uVar9;
   undefined4 uVar10;
   undefined4 uStack_28;
-  
+
   bVar1 = false;
   uVar3 = sub_0205DA34();
   iVar4 = PlayerAvatar_GetState(param_1);

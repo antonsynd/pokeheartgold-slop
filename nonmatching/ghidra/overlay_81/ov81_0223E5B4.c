@@ -88,7 +88,7 @@ void ov81_0223E5B4(int param_1)
   int iVar7;
   undefined4 uStack_1c;
   undefined4 uStack_18;
-  
+
   iVar2 = func_0x02236dd4(*(undefined1 *)(param_1 + 9));
   ov81_02240F38(param_1,0);
   ov81_02241524(param_1);

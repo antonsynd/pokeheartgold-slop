@@ -53,7 +53,7 @@ undefined4 ov72_0223AA9C(int param_1)
 
 {
   undefined1 uVar1;
-  
+
   if ((uRam021d1158 & 0x40) == 0) {
     if ((uRam021d1158 & 0x80) == 0) {
       if ((uRam021d1158 & 0x20) == 0) {

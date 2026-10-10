@@ -57,7 +57,7 @@ void ov12_0225AC1C(undefined4 param_1,int param_2,undefined1 *param_3)
   undefined4 *puVar7;
   undefined1 *puVar8;
   undefined4 *puVar9;
-  
+
   puVar4 = (undefined4 *)Heap_Alloc(5,0x68);
   *puVar4 = param_1;
   puVar4[1] = param_2;

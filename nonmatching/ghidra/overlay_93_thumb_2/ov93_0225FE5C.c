@@ -48,7 +48,7 @@ undefined4 ov93_0225FE5C(int param_1)
 {
   int iVar1;
   int iVar2;
-  
+
   iVar1 = *(int *)(param_1 + 0x10);
   if (iVar1 == 0) {
     return 0;

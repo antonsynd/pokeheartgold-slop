@@ -66,7 +66,7 @@ void sub_02059820(int param_1,int param_2)
   int iVar5;
   int iVar6;
   int iVar7;
-  
+
   iVar1 = param_1 + 0x54;
   iVar2 = WindowIsInUse();
   if (iVar2 == 0) {

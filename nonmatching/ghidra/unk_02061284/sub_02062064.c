@@ -48,7 +48,7 @@ void sub_02062064(undefined4 param_1,int param_2)
 
 {
   int iVar1;
-  
+
   iVar1 = MapObject_GetType();
   if (iVar1 == 7) {
     *(undefined1 *)(param_2 + 1) = 0;

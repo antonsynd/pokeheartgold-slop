@@ -56,7 +56,7 @@ void ov103_021EE160(int param_1,undefined4 param_2,undefined4 param_3,undefined4
 {
   undefined4 uVar1;
   uint uVar2;
-  
+
   uVar2 = 0x37f0;
   do {
     uVar1 = GetMonIconNaixEx(0,0,0);

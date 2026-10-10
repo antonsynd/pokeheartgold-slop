@@ -49,7 +49,7 @@ void ov96_022076C0(int param_1,undefined4 param_2)
 
 {
   int iVar1;
-  
+
   iVar1 = ov96_02207BD8(param_2);
   ov96_021EB630(*(undefined4 *)(param_1 + 4),iVar1 + 9);
   ov96_021EB630(*(undefined4 *)(param_1 + 8),iVar1 + 8);

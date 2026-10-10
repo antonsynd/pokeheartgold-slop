@@ -63,7 +63,7 @@ void sub_02058190(undefined4 param_1)
   undefined4 uVar3;
   int iVar4;
   int iVar5;
-  
+
   sub_0200FC60(0,0);
   sub_0200FC60(1,0);
   sub_020398D4(1,1);

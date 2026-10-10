@@ -50,7 +50,7 @@ void ov112_021ECA18(int param_1,int param_2)
 
 {
   int iVar1;
-  
+
   iVar1 = ov112_021EC7B8();
   if (*(ushort *)(param_1 + 0x1ec76) < 6) {
     ov112_021EA688(param_1,3);

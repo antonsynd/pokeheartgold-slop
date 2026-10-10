@@ -59,7 +59,7 @@ void ov40_02236EB4(int param_1)
   short sVar5;
   uint *puVar6;
   int iStack_18;
-  
+
   iStack_18 = 0;
   sVar5 = 0x101;
   puVar4 = &ov40_022452B4;

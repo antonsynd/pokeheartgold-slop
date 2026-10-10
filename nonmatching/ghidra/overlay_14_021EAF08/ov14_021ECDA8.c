@@ -69,7 +69,7 @@ undefined4 ov14_021ECDA8(int param_1)
   uint uVar4;
   uint uVar5;
   int iVar6;
-  
+
   iVar6 = *(int *)(*(int *)(param_1 + 0x34) + 0xc);
   uVar5 = *(uint *)(iVar6 + 0xe8);
   uVar4 = *(uint *)(iVar6 + 0xec);

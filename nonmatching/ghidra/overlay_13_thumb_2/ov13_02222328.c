@@ -58,7 +58,7 @@ undefined4 ov13_02222328(undefined4 param_1,int param_2,undefined4 param_3,undef
   undefined4 uVar2;
   undefined1 auStack_1c [8];
   undefined4 uStack_14;
-  
+
   uVar1 = uRam0224cfac;
   uStack_14 = param_4;
   ov13_02222978(uRam0224cfac,0,0x5dc);

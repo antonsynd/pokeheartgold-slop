@@ -59,7 +59,7 @@ int ov01_02206268(undefined *param_1)
   uint uVar5;
   uint uVar6;
   undefined *puVar7;
-  
+
   iVar1 = FollowMon_IsVisible(param_1);
   if (iVar1 == 0) {
     return 0;

@@ -49,7 +49,7 @@ void BattleController_EmitPlaySong(undefined4 param_1,undefined4 param_2,undefin
 {
   undefined1 auStack_c [2];
   undefined2 uStack_a;
-  
+
   auStack_c[0] = 0x40;
   uStack_a = param_3;
   ov12_02262240(param_1,1,param_2,auStack_c,4);

@@ -54,7 +54,7 @@ void ov70_02237F64(undefined4 param_1,undefined4 param_2,undefined4 param_3,unde
 
 {
   int iVar1;
-  
+
   func_0x020e5ad8(0x2246814,param_1,0x124,param_4,param_4);
   func_0x0221be84();
   iVar1 = ov70_02238360(&ov70_022460A0,0x2246814,0x124,0x224693c,2);

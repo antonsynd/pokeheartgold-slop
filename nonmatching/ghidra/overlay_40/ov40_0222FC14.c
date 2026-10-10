@@ -48,7 +48,7 @@ undefined4 ov40_0222FC14(int param_1,undefined4 param_2,undefined4 param_3,undef
 
 {
   uint uVar1;
-  
+
   uVar1 = ov40_02244AB0(*(undefined4 *)(param_1 + 0x830),param_2,param_3,param_1 + 0x834,
                         param_1 + 0x836,param_4);
   if (1 < uVar1) {

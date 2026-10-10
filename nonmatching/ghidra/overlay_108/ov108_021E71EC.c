@@ -50,7 +50,7 @@ void ov108_021E71EC(int param_1)
 
 {
   int iVar1;
-  
+
   YesNoPrompt_Destroy(*(undefined4 *)(param_1 + 0x4c0));
   RemoveWindow(param_1 + 0x4a4);
   iVar1 = 0;

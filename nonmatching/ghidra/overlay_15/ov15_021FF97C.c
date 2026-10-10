@@ -62,7 +62,7 @@ void ov15_021FF97C(int param_1,undefined4 param_2,int param_3)
   undefined4 uVar3;
   undefined4 uVar4;
   int iVar5;
-  
+
   ManagedSprite_SetDrawFlag(*(undefined4 *)(param_1 + 0x26c),param_3);
   ManagedSprite_SetDrawFlag(*(undefined4 *)(param_1 + 0x270),param_3);
   if (param_3 != 0) {

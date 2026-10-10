@@ -54,7 +54,7 @@ void ov51_021E5F64(int param_1,undefined4 param_2,undefined4 param_3,undefined4 
   undefined4 uVar1;
   int iVar2;
   int iVar3;
-  
+
   FontID_Alloc(4,0x19,param_3,param_4,param_4);
   uVar1 = NewMsgDataFromNarc(0,0x1b,0x2d7,0x19);
   *(undefined4 *)(param_1 + 0x33c4) = uVar1;

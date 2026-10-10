@@ -59,7 +59,7 @@ void ov14_021E6318(int param_1,undefined4 *param_2)
   undefined4 uVar1;
   undefined4 uVar2;
   int iVar3;
-  
+
   uVar1 = ov14_021E6464(param_1,param_2[2]);
   uVar2 = Party_GetMonByIndex(*(undefined4 *)(param_1 + 8),param_2[1] + -0x1e);
   CopyPokemonToPokemon(uVar2,*param_2);

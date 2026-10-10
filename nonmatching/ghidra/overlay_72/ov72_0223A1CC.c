@@ -48,7 +48,7 @@ undefined4 ov72_0223A1CC(int param_1)
 
 {
   int iVar1;
-  
+
   iVar1 = TextPrinterCheckActive(*(uint *)(param_1 + 0xbf4) & 0xff);
   if (iVar1 == 0) {
     if (0x1e < *(int *)(param_1 + 0xf60)) {

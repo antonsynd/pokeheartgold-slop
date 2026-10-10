@@ -77,7 +77,7 @@ void ov40_02239574(int param_1)
   int iStack_230;
   undefined4 uStack_224;
   undefined1 auStack_214 [512];
-  
+
   iVar7 = *(int *)(param_1 + 0x860);
   uVar1 = String_New(0xff,0x6d);
   uVar2 = ov40_0222DAB0(0x6d);

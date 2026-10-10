@@ -48,7 +48,7 @@ void ov109_021E5D08(int param_1)
 
 {
   uint uVar1;
-  
+
   *(undefined1 *)(param_1 + 0xc5) = *(undefined1 *)(param_1 + 0xc4);
   func_0x020d4994(param_1 + 0xcc,0,0x120);
   uVar1 = 0;

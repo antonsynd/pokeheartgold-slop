@@ -54,7 +54,7 @@ void ov08_0221F00C(int param_1,int param_2,int param_3)
   undefined *unaff_r6;
   __asm__ volatile("movs %0, r6" : "=l"(unaff_r6) : : "cc");
 
-  
+
   iVar1 = *(int *)(param_1 + 0x2070);
   if (param_3 == 0) {
     unaff_r6 = NewString_ReadMsgData(*(undefined **)(param_1 + 0x1fa8),0x36);

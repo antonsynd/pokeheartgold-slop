@@ -51,7 +51,7 @@ void sub_02017DD8(undefined4 *param_1)
 
 {
   int iVar1;
-  
+
   iVar1 = func_0x020f2998(param_1[4] * (param_1[7] + 1),param_1[6]);
   if (param_1[1] - 0x1e < 4) {
     iVar1 = (int)(param_1[5] + iVar1 & 0xffffU) >> 4;

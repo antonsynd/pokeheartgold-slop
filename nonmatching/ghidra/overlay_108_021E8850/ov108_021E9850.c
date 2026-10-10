@@ -107,7 +107,7 @@ void ov108_021E9850(int *param_1)
   undefined4 uStack_18;
   undefined4 uStack_14;
   undefined4 uStack_10;
-  
+
   ov108_021E9830();
   uRam04000304 = uRam04000304 | 0x8000;
   puVar1 = BgConfig_Alloc(*param_1);

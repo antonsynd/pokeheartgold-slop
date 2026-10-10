@@ -52,7 +52,7 @@ void ov00_021E629C(undefined4 param_1,undefined4 param_2)
 
 {
   undefined4 uVar1;
-  
+
   uVar1 = sub_0202C6F4(*(undefined4 *)(iRam0221a680 + 0xf78));
   sub_0202C5E4(uVar1,param_1,param_2);
   uVar1 = Save_Frontier_GetStatic(*(undefined4 *)(iRam0221a680 + 0xf78));

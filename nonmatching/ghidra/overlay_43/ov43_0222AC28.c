@@ -63,7 +63,7 @@ void ov43_0222AC28(int param_1,undefined4 param_2)
   int iVar4;
   undefined *puVar5;
   int iStack_20;
-  
+
   iStack_20 = 0;
   puVar2 = (undefined4 *)&ov43_0222F14C;
   puVar5 = &ov43_0222F14C;
@@ -85,11 +85,11 @@ void ov43_0222AC28(int param_1,undefined4 param_2)
     iVar4 = iVar4 + 2;
   } while (iStack_20 < 2);
   _ov43_0222F1AC = *(undefined4 *)(param_1 + 4);
-                    
+
   _UNK_0222f1b0 = param_1 + 0x88;
   _UNK_0222f1d8 = param_2;
-                    
-                    
+
+
   uVar1 = Sprite_CreateAffine(&ov43_0222F1AC);
   *(undefined4 *)(param_1 + 0x1fc) = uVar1;
   Sprite_SetDrawFlag(*(undefined4 *)(param_1 + 0x1fc),0);

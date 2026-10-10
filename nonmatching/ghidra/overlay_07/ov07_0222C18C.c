@@ -56,7 +56,7 @@ void ov07_0222C18C(undefined4 *param_1,undefined4 param_2,undefined4 param_3,und
   int iVar3;
   undefined4 *puVar4;
   undefined4 *puVar5;
-  
+
   uVar1 = SpriteSystem_NewSprite(param_2,param_3,param_4);
   *param_1 = uVar1;
   puVar5 = (undefined4 *)(param_5 + 4);

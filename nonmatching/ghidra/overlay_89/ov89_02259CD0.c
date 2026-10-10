@@ -51,7 +51,7 @@ void ov89_02259CD0(int param_1)
 
 {
   int iVar1;
-  
+
   AddWindowParameterized(*(undefined4 *)(param_1 + 8),param_1 + 0xb4,1,2,1,0x1b,4,0xd,0x5b);
   FillWindowPixelBuffer(param_1 + 0xb4,0xf);
   for (iVar1 = 0; iVar1 < 8; iVar1 = iVar1 + 1) {

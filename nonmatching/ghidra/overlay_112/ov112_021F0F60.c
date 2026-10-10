@@ -47,7 +47,7 @@ byte ov112_021F0F60(int param_1)
 
 {
   byte bVar1;
-  
+
   bVar1 = *(byte *)(param_1 + 0x76);
   if (7 < bVar1) {
     bVar1 = 0;

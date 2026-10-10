@@ -58,7 +58,7 @@ void ov96_021F4DAC(uint param_1,int *param_2,undefined4 param_3,undefined4 param
   int iStack_20;
   undefined4 uStack_1c;
   undefined4 uStack_18;
-  
+
   uStack_18 = param_4;
   if (param_1 < 6) {
     iVar5 = *param_2;

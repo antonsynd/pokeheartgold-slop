@@ -48,7 +48,7 @@ void ov108_021E9F04(int param_1)
 
 {
   int iVar1;
-  
+
   iVar1 = 0;
   do {
     func_0x0200d018(*(undefined4 *)(param_1 + 0x444));

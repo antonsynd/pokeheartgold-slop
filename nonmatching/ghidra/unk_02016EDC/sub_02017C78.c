@@ -55,7 +55,7 @@ void sub_02017C78(undefined4 param_1,uint param_2)
   int iVar1;
   int iVar2;
   uint uVar3;
-  
+
   iVar1 = sub_02017220(param_1,param_2 & 0xff);
   sub_02017280(param_1,iVar1 + 0x2c);
   sub_02017280(param_1,iVar1 + 0x2d);

@@ -108,7 +108,7 @@ int GeonetGlobe_Main(undefined *param_1,undefined *param_2)
   uint uVar5;
   int iStack_24;
   undefined1 auStack_1c [8];
-  
+
   piVar1 = (int *)OverlayManager_GetData(param_1);
   iStack_24 = 0;
   iVar2 = *(int *)param_2;

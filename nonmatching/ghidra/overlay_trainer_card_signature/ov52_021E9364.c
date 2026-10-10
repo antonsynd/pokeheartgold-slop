@@ -52,7 +52,7 @@ void ov52_021E9364(int param_1)
   uint uVar1;
   undefined1 uVar2;
   int iVar3;
-  
+
   uVar1 = (uint)uRam021d116c;
   if ((((uVar1 != 0xffff) && (uRam021d116e != 0xffff)) &&
       (iVar3 = *(int *)(param_1 + 0x5ca8), iVar3 != 0xffff)) &&

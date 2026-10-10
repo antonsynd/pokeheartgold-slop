@@ -68,7 +68,7 @@ undefined4 ov01_0220610C(undefined4 param_1)
   undefined4 uVar5;
   uint uVar6;
   uint uVar7;
-  
+
   iVar1 = TaskManager_GetFieldSystem();
   pcVar2 = (char *)TaskManager_GetEnvironment(param_1);
   piVar3 = (int *)TaskManager_GetStatePtr(param_1);

@@ -51,7 +51,7 @@ void ov34_0225DE04(int param_1)
 
 {
   int iVar1;
-  
+
   *(short *)(param_1 + 0x284) = (short)*(undefined4 *)(*(int *)(param_1 + 0x270) + 0x348);
   if ((3 < *(ushort *)(param_1 + 0x284)) && (*(ushort *)(param_1 + 0x286) < 4)) {
     *(undefined2 *)(param_1 + 0x28a) = 1;

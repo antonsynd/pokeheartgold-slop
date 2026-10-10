@@ -70,7 +70,7 @@ uint sub_02095354(int param_1)
   int iStack_20;
   int iStack_1c;
   undefined4 uStack_18;
-  
+
   uVar5 = 0;
   uVar1 = sub_02095DD8(*(undefined4 *)(param_1 + 0x46b8));
   uVar2 = sub_02095DE8(*(undefined4 *)(param_1 + 0x46b8));

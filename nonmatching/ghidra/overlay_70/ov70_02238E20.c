@@ -51,7 +51,7 @@ void ov70_02238E20(undefined4 param_1,int param_2)
 
 {
   undefined4 uVar1;
-  
+
   if (param_2 != 0) {
     uVar1 = func_0x020d3a38();
     func_0x020b5530(uRam02246944,param_2);

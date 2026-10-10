@@ -50,7 +50,7 @@ int ov13_02226D0C(char *param_1,uint param_2)
   int iVar2;
   char cVar3;
   uint uVar4;
-  
+
   iVar2 = 0;
   pcVar1 = param_1;
   uVar4 = (int)(param_2 & 0xf0) >> 4;

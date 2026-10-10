@@ -64,7 +64,7 @@ undefined4 BN_MONT_CTX_set_word(undefined4 *param_1,undefined4 *param_2,undefine
   undefined4 uVar4;
   int *piStack_28;
   int iStack_24;
-  
+
   if (param_2[1] == 0) {
     return 0;
   }

@@ -52,7 +52,7 @@ void ov96_021E9C0C(int param_1)
 {
   int iVar1;
   int iVar2;
-  
+
   if ((*(uint *)(param_1 + 4) & 1) != 0) {
     SpriteTransfer_DeleteCharTransferTask(*(undefined4 *)(param_1 + 0x1c));
   }

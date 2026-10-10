@@ -50,7 +50,7 @@ void ov40_02235FD0(undefined4 param_1,int param_2,undefined4 param_3,undefined4 
 
 {
   int iVar1;
-  
+
   if (param_2 == 0) {
     iVar1 = ov40_02235DAC(param_3,param_1,param_3,param_4,param_4);
     if (iVar1 == 0) {

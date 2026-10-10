@@ -91,7 +91,7 @@ undefined4 ov13_02224330(void)
   undefined1 auStack_64 [44];
   undefined1 auStack_38 [32];
   undefined4 uStack_18;
-  
+
   iStack_80 = 0;
   iStack_68 = 0;
   iVar3 = iRam0224dfa0 * 0x30 + 0x34;

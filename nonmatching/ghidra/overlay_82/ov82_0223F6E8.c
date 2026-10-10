@@ -55,7 +55,7 @@ undefined4 ov82_0223F6E8(int param_1,int param_2,undefined4 param_3)
   int unaff_r6;
   __asm__ volatile("movs %0, r6" : "=l"(unaff_r6) : : "cc");
 
-  
+
   iVar1 = func_0x0223792c(*(undefined1 *)(param_1 + 9));
   if (iVar1 == 0) {
     return 0;

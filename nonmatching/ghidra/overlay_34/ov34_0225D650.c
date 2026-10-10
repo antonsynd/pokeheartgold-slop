@@ -55,7 +55,7 @@ void ov34_0225D650(undefined4 param_1,int param_2,undefined4 param_3,undefined4 
   uint uVar4;
   uint uVar5;
   uint uVar6;
-  
+
   uVar6 = 0xa0;
   uVar5 = 0xd0;
   uVar4 = 5;

@@ -49,7 +49,7 @@ int ov40_022439F4(int param_1,int param_2)
   bool bVar1;
   int iVar2;
   int iVar3;
-  
+
   iVar3 = *(int *)(param_1 + 0x204);
   bVar1 = false;
   iVar2 = 0;

@@ -51,7 +51,7 @@ void ov07_022248F4(undefined4 param_1,int *param_2,undefined4 param_3,undefined4
 
 {
   uint uVar1;
-  
+
   if (param_2[1] < param_2[2]) {
     param_2[1] = param_2[1] + 1;
     return;

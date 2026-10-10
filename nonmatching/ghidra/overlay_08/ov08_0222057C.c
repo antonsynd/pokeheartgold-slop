@@ -56,7 +56,7 @@ void ov08_0222057C(int *param_1)
   undefined4 uVar1;
   undefined4 uVar2;
   int iVar3;
-  
+
   iVar3 = *param_1;
   uVar1 = func_0x0223a880(*(undefined4 *)(iVar3 + 8),*(undefined4 *)(iVar3 + 0x28),
                           *(undefined1 *)(iVar3 + (uint)*(byte *)(iVar3 + 0x11) + 0x2c));

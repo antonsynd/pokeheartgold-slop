@@ -58,7 +58,7 @@ void ov40_0223DD68(int param_1,int param_2,undefined4 param_3,undefined4 param_4
   int iVar2;
   undefined1 auStack_218 [512];
   undefined4 uStack_18;
-  
+
   iVar2 = *(int *)(param_1 + 0x860);
   uStack_18 = param_4;
   FillWindowPixelBuffer(iVar2 + 0x654,0);

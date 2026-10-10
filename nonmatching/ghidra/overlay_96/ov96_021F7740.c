@@ -53,7 +53,7 @@ uint ov96_021F7740(undefined4 param_1,int *param_2)
   int iVar2;
   uint uVar3;
   uint uStack_1c;
-  
+
   uStack_1c = 4;
   if (*(char *)((int)param_2 + 0x21) == '\x04') {
     return 0;

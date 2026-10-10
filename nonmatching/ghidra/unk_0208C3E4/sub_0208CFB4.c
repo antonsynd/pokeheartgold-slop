@@ -51,7 +51,7 @@ void sub_0208CFB4(undefined4 *param_1,undefined4 param_2,undefined4 param_3,unde
 
 {
   int iVar1;
-  
+
   iVar1 = sub_0208E600(param_2,param_3,0x13);
   if (*(int *)(iVar1 + 0x18) != 0) {
     AddTextPrinterParameterizedWithColor

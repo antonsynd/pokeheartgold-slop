@@ -63,7 +63,7 @@ void ov90_0225B59C(undefined4 *param_1,undefined4 *param_2,undefined4 *param_3,u
   int iVar5;
   int iStack_28;
   int iStack_24;
-  
+
   func_0x020e5b44(param_1,0,0x4c);
   GfGfxLoader_GXLoadPalFromOpenNarc(param_5,0x18,0,0x1c0,0x20,param_6);
   GfGfxLoader_LoadCharDataFromOpenNarc(param_5,0x19,*param_2,2,0x8b,0,0,param_6);

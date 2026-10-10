@@ -52,7 +52,7 @@ void ov49_0225C414(int param_1,undefined4 param_2,int param_3,undefined4 param_4
 {
   undefined4 uVar1;
   int iVar2;
-  
+
   uVar1 = ov49_0225B388(param_2,1,param_4);
   iVar2 = FontID_String_GetWidth(0,uVar1,0);
   iVar2 = (uint)param_5 - iVar2;

@@ -52,7 +52,7 @@ void ov99_021E6218(undefined4 *param_1,undefined4 param_2,undefined4 param_3,und
 {
   int iVar1;
   int iVar2;
-  
+
   iVar2 = param_1[4];
   iVar1 = ov99_021E5BB4(*param_1,param_1[0x22],param_3,param_4,param_4);
   if (iVar1 != 0) {

@@ -57,7 +57,7 @@ void sub_0208BE00(int param_1,undefined4 param_2,int param_3)
   undefined4 uVar1;
   undefined4 uVar2;
   int iStack_14;
-  
+
   uVar1 = Sprite_GetImageProxy(*(undefined4 *)(param_1 + param_3 * 4 + 0x404));
   uVar1 = func_0x020b802c(uVar1,2);
   if (*(char *)(*(int *)(param_1 + 0x22c) + 0x11) == '\x02') {

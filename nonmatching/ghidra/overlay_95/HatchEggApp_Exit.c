@@ -67,7 +67,7 @@ undefined4 HatchEggApp_Exit(undefined4 param_1)
 
 {
   int iVar1;
-  
+
   iVar1 = OverlayManager_GetData();
   ov95_021E7078(*(undefined4 *)(iVar1 + 0x88));
   GF_3DVramMan_Delete(*(undefined4 *)(iVar1 + 0x38));

@@ -48,7 +48,7 @@ void ov15_021FE528(undefined4 *param_1,undefined4 param_2,undefined4 param_3,und
 
 {
   ushort uVar1;
-  
+
   uVar1 = 0;
   do {
     FillBgTilemapRect(*param_1,3,uVar1 + 0xcd,uVar1 & 0xff,0xd,1,1,4,param_4);

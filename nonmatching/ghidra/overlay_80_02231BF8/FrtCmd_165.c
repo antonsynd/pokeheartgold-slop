@@ -49,7 +49,7 @@ undefined4 FrtCmd_165(int param_1)
 
 {
   undefined2 uVar1;
-  
+
   uVar1 = FrontierScriptContext_ReadHalfWord();
   *(undefined2 *)(param_1 + 0x78) = uVar1;
   FrontierScriptContext_Pause(param_1,0x2232369);

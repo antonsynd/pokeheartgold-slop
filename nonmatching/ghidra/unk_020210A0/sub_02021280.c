@@ -54,7 +54,7 @@ undefined4 sub_02021280(int param_1,int param_2,undefined4 param_3)
 
 {
   undefined4 uVar1;
-  
+
   uVar1 = 3;
   if (sRam021d21f2 == 0) {
     if (sRam021d21f0 != 0) {

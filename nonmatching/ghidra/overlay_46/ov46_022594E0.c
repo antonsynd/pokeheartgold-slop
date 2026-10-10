@@ -52,7 +52,7 @@ void ov46_022594E0(undefined4 *param_1,undefined4 param_2,undefined4 param_3,und
 
 {
   undefined4 uVar1;
-  
+
   FillWindowPixelBuffer(param_1 + 2,0);
   ReadMsgDataIntoString(param_1[1],param_2,param_1[7]);
   StringExpandPlaceholders(*param_1,param_1[6],param_1[7]);

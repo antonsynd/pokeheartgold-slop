@@ -61,7 +61,7 @@ void BattleController_EmitSetBattleResults(undefined *param_1)
   ushort uStack_32;
   uint uStack_30;
   undefined auStack_2c [32];
-  
+
   uVar2 = BattleSystem_GetBattleType(param_1);
   auStack_34[0] = 0x41;
   bVar1 = BattleSystem_GetBattleOutcomeFlags(param_1);

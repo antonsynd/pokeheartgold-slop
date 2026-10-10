@@ -50,7 +50,7 @@ void ov96_02219DD0(undefined4 *param_1,int param_2,undefined4 param_3)
 {
   undefined4 uVar1;
   undefined1 auStack_20 [16];
-  
+
   uVar1 = param_1[param_2 + 0x1a];
   ov96_021E6168(*param_1,param_2,param_3,auStack_20);
   ov96_021EECB8(uVar1,auStack_20,*(undefined2 *)(param_1 + 8),param_1[9],param_2 << 9,param_1[1]);

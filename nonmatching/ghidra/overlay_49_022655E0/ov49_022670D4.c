@@ -85,7 +85,7 @@ undefined4 ov49_022670D4(int param_1,int param_2)
   undefined1 auStack_20 [4];
   undefined4 uStack_1c;
   undefined1 auStack_18 [4];
-  
+
   switch(*(undefined1 *)(param_2 + 0x954)) {
   case 0:
     *(short *)(param_2 + 0x956) = *(short *)(param_2 + 0x956) + 1;

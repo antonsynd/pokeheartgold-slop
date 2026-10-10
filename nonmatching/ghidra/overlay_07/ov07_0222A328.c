@@ -62,7 +62,7 @@ void ov07_0222A328(undefined4 param_1,undefined4 *param_2)
   int extraout_r1;
   short sStack_10;
   short sStack_e;
-  
+
   switch(*(undefined1 *)(param_2 + 3)) {
   case 0:
     *(char *)((int)param_2 + 0xe) = *(char *)((int)param_2 + 0xe) + -1;

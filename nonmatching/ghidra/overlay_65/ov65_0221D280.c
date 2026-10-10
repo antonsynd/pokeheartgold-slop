@@ -55,7 +55,7 @@ void ov65_0221D280(int param_1,undefined4 param_2)
 
 {
   undefined4 uVar1;
-  
+
   uVar1 = *(undefined4 *)(param_1 + 0x180);
   GfGfxLoader_GXLoadPalFromOpenNarc(param_2,0,4,0,0x120,0x1a);
   GfGfxLoader_GXLoadPalFromOpenNarc(param_2,0,0,0,0x120,0x1a);

@@ -53,7 +53,7 @@ void ov96_021F7544(int param_1)
   int iStack_20;
   int iStack_1c;
   undefined4 uStack_18;
-  
+
   puVar1 = (ushort *)&ov96_0221C21C;
   iVar2 = 0;
   do {

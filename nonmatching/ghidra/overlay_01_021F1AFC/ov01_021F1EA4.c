@@ -49,7 +49,7 @@ void ov01_021F1EA4(undefined4 param_1,undefined4 param_2,undefined4 param_3,unde
 
 {
   int iVar1;
-  
+
   iVar1 = ov01_021F30D0(0x14);
   *(undefined4 *)(iVar1 + 4) = param_1;
   *(undefined4 *)(iVar1 + 8) = param_2;

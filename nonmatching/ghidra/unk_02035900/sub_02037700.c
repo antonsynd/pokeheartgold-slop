@@ -50,7 +50,7 @@ undefined4 sub_02037700(undefined4 param_1,undefined4 param_2,undefined4 param_3
 
 {
   undefined4 uVar1;
-  
+
   if ((iRam021d4148 != 0) && (*(char *)(iRam021d4148 + 0x6b8) != '\0')) {
     sub_020398D4(1,1,param_3,param_4,param_4);
     return 1;

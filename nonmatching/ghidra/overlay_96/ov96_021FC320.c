@@ -58,7 +58,7 @@ void ov96_021FC320(undefined4 *param_1,undefined4 param_2,undefined4 param_3,und
   undefined4 uVar1;
   undefined4 *puVar2;
   int iVar3;
-  
+
   uVar1 = G2dRenderer_Init(0x24,param_1 + 2,*param_1);
   param_1[1] = uVar1;
   iVar3 = 0;

@@ -60,7 +60,7 @@ undefined4 ov70_02238CAC(int param_1,undefined1 param_2,undefined1 param_3)
   undefined4 uStack_1c;
   undefined4 uStack_18;
   undefined1 uStack_14;
-  
+
   uVar1 = TouchscreenListMenuSpawner_Create(0x3d,0);
   *(undefined4 *)(param_1 + 0x11cc) = uVar1;
   func_0x020d4994(&uStack_28,0,0x18);

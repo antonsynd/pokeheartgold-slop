@@ -53,7 +53,7 @@ void ov96_02207E7C(undefined4 param_1,undefined4 param_2,undefined4 param_3,unde
   undefined4 *puVar1;
   int iVar2;
   undefined4 auStack_20 [3];
-  
+
   auStack_20[2] = param_4;
   puVar1 = auStack_20;
   auStack_20[0] = 0x66;

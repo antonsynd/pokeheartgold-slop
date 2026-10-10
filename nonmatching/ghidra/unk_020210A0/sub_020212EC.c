@@ -53,7 +53,7 @@ void sub_020212EC(undefined2 *param_1,uint param_2)
   undefined2 uStack_1a;
   undefined2 uStack_18;
   undefined2 uStack_16;
-  
+
   uVar2 = 0;
   puVar1 = param_1;
   if (param_2 != 0) {

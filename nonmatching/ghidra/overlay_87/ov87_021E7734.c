@@ -50,7 +50,7 @@ undefined4 ov87_021E7734(int param_1)
   char cVar2;
   bool bVar3;
   int iVar4;
-  
+
   bVar3 = false;
   if (*(byte *)(param_1 + 0x3a1) < 2) {
     return 0;

@@ -49,7 +49,7 @@ void ov67_021E61E8(int param_1)
 
 {
   int iVar1;
-  
+
   iVar1 = GetWindowWidth(param_1 + 0x6c);
   ov67_021E6164(param_1,0,0x18,(iVar1 * 8) / 2,0,4,0xf0100,2);
   return;

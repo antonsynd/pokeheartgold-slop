@@ -48,7 +48,7 @@ void ov96_021FC2B4(int param_1,undefined4 param_2)
 
 {
   int iVar1;
-  
+
   iVar1 = 0;
   do {
     Sprite_SetDrawFlag(*(undefined4 *)(param_1 + 0x184),param_2);

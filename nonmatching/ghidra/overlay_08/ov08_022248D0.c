@@ -51,7 +51,7 @@ void ov08_022248D0(int param_1,uint param_2,int param_3)
   int iVar1;
   uint uVar2;
   undefined4 uVar3;
-  
+
   if ((param_2 < 6) || (0xb < param_2)) {
     if (param_2 != 4) {
       return;

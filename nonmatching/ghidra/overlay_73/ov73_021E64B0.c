@@ -49,7 +49,7 @@ undefined4 ov73_021E64B0(int param_1)
 
 {
   int iVar1;
-  
+
   if (*(int *)(param_1 + 0x314) == 1) {
     iVar1 = System_GetTouchHeld();
     if (iVar1 != 0) {

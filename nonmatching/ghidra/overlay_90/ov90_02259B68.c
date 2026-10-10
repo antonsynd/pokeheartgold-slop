@@ -54,7 +54,7 @@ undefined4 ov90_02259B68(int param_1)
   int iVar4;
   undefined4 uStack_20;
   undefined4 uStack_1c;
-  
+
   uStack_20 = 1;
   uStack_1c = 0;
   if (*(char *)(param_1 + 0x10) != '\0') {

@@ -72,7 +72,7 @@ void ov27_0225A320(undefined4 param_1,int param_2)
   uint uVar4;
   undefined4 uVar5;
   undefined4 uVar6;
-  
+
   iVar1 = ov27_0225A89C(*(undefined4 *)(param_2 + 0x10));
   iVar2 = func_0x0203e13c(*(undefined4 *)(param_2 + 0x10));
   if ((int)((uint)*(byte *)(*(int *)(param_2 + 0x10) + 0xd2) << 0x18) < 0) {

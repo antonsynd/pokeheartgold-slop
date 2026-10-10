@@ -52,7 +52,7 @@ undefined4 ov65_0221EA74(int param_1)
 
 {
   uint uVar1;
-  
+
   uVar1 = func_0x020186a4(*(undefined4 *)(param_1 + 0x36c8));
   if (uVar1 < 3) {
     if (uVar1 == 0) {

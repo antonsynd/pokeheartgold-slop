@@ -70,7 +70,7 @@ ov15_021FA73C(int param_1,int param_2,undefined1 *param_3,undefined4 param_4,und
   int iVar4;
   int *piVar5;
   undefined4 uVar6;
-  
+
   uVar6 = 1;
   switch(param_2) {
   case 0:

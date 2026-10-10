@@ -63,7 +63,7 @@ ov34_0225E2BC(undefined4 param_1,int param_2,undefined4 param_3,undefined4 param
   undefined4 uVar3;
   int iVar4;
   undefined4 uStack_1c;
-  
+
   iVar4 = 0;
   uStack_1c = 0;
   iVar1 = PlayerProfile_GetTrainerID(param_5);

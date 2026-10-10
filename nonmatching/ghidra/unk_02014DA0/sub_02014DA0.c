@@ -48,7 +48,7 @@ void sub_02014DA0(void)
 {
   int iVar1;
   undefined4 *puVar2;
-  
+
   iVar1 = 0;
   puVar2 = (undefined4 *)0x21d10a8;
   do {

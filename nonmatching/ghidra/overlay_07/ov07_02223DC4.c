@@ -52,7 +52,7 @@ void ov07_02223DC4(undefined4 param_1,undefined4 *param_2)
 
 {
   int iVar1;
-  
+
   if (param_2[3] == 0) {
     iVar1 = ov07_02223D28(param_2);
     if (iVar1 != 0) {

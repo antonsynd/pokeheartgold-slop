@@ -57,7 +57,7 @@ void ov108_021E9D30(undefined4 *param_1)
   undefined4 *puVar4;
   short sVar5;
   int iVar6;
-  
+
   puVar3 = &ov108_021EAC18;
   iVar6 = 0;
   puVar4 = param_1 + 0x115;

@@ -50,7 +50,7 @@ void ov18_021F3CA8(undefined4 *param_1,int param_2,byte *param_3,undefined1 *par
   char cVar1;
   undefined1 uVar2;
   byte bVar3;
-  
+
   bVar3 = *(byte *)((int)param_1 + param_2 + 0x18a4);
   if ((bVar3 & 0x80) == 0) {
     *param_3 = 0;

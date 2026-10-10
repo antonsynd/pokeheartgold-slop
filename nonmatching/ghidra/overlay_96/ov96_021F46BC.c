@@ -51,7 +51,7 @@ int ov96_021F46BC(int param_1,int param_2,undefined4 param_3,undefined4 param_4)
   char *pcVar3;
   char acStack_20 [12];
   undefined4 uStack_14;
-  
+
   uStack_14 = param_4;
   pcVar3 = acStack_20;
   pcVar2 = acStack_20;

@@ -57,7 +57,7 @@ void ov81_0223F038(int param_1)
   byte bVar1;
   undefined1 uVar2;
   uint uVar3;
-  
+
   ov81_02242F48(*(undefined4 *)(param_1 + *(int *)(param_1 + 0x468) * 4 + 0x360));
   ov81_02242FB0(*(undefined4 *)(param_1 + *(int *)(param_1 + 0x468) * 4 + 0x360),0);
   ov81_02242F94(*(undefined4 *)(param_1 + *(int *)(param_1 + 0x468) * 4 + 0x360),1);

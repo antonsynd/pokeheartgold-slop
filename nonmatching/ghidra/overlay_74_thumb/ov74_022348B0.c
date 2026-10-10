@@ -55,7 +55,7 @@ void ov74_022348B0(undefined4 *param_1,int param_2,byte *param_3,undefined4 para
   uint uVar3;
   int iVar4;
   short *psVar5;
-  
+
   psVar5 = (short *)0x0;
   if (10 < param_2) {
     psVar5 = (short *)ov74_02233F8C(param_1,*param_1,0,param_4,param_4);

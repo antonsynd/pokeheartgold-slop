@@ -77,7 +77,7 @@ undefined4 ov40_0223F200(int param_1,undefined4 param_2,undefined4 param_3,undef
   undefined4 *puVar4;
   undefined4 *puVar5;
   int iVar6;
-  
+
   iVar6 = *(int *)(param_1 + 0x860);
   if (*(int *)(param_1 + 8) == 0) {
     iVar2 = sub_0202FC48();

@@ -59,7 +59,7 @@ void ov12_02260C58(undefined4 param_1,undefined4 *param_2,undefined4 param_3,und
   undefined4 uVar2;
   int iVar3;
   bool bVar4;
-  
+
   iVar1 = BattleSystem_GetFieldSide
                     (*param_2,*(undefined1 *)((int)param_2 + 5),param_3,param_4,param_4);
   uVar2 = ov12_0223A908(*param_2,iVar1 != 0);

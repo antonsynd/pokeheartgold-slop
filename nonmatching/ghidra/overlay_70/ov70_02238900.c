@@ -73,7 +73,7 @@ void ov70_02238900(int param_1,undefined4 param_2,undefined4 param_3,undefined4 
   int iVar6;
   int iStack_1c;
   undefined4 uStack_18;
-  
+
   uStack_18 = param_4;
   uVar1 = NARC_New(100,0x3d);
   func_0x020b78d4();

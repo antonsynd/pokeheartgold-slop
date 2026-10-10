@@ -49,7 +49,7 @@ void ov90_0225B340(int param_1,undefined4 *param_2,undefined1 param_3,undefined4
 
 {
   undefined4 uVar1;
-  
+
   func_0x020e5b44(param_1,0,0x20,param_4,param_4);
   *(undefined4 *)(param_1 + 8) = *param_2;
   *(undefined4 *)(param_1 + 0xc) = 4;

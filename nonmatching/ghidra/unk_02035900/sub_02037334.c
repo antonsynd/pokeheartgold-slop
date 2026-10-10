@@ -57,7 +57,7 @@ void sub_02037334(void)
   int iVar3;
   int iVar4;
   int iVar5;
-  
+
   if ((iRam021d4148 != 0) && (*(char *)(iRam021d4148 + 0x6ba) == '\0')) {
     uVar1 = sub_0203993C();
     iVar2 = sub_02033FC4(uVar1);

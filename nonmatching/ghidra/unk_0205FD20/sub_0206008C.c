@@ -62,7 +62,7 @@ void sub_0206008C(undefined4 param_1)
   undefined1 uVar2;
   int iVar3;
   undefined4 uVar4;
-  
+
   uVar1 = sub_0205F514();
   sub_0205F51C(param_1,uVar1);
   sub_02061108(param_1);

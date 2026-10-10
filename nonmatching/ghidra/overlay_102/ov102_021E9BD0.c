@@ -60,7 +60,7 @@ void ov102_021E9BD0(undefined4 param_1,int *param_2)
   int iVar1;
   undefined4 uVar2;
   int iVar3;
-  
+
   iVar1 = param_2[5];
   iVar3 = *param_2;
   if (iVar1 == 0) {

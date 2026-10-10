@@ -51,7 +51,7 @@ undefined4 ov37_021E6E2C(undefined4 param_1,undefined4 param_2)
 
 {
   int iVar1;
-  
+
   iVar1 = sub_02037B38(200);
   if ((iVar1 != 0) || (iVar1 = sub_02037454(), iVar1 == 1)) {
     BeginNormalPaletteFade(0,0x10,0x10,0,0x10,1,0x27);

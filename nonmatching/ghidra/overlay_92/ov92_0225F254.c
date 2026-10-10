@@ -60,7 +60,7 @@ void ov92_0225F254(undefined4 param_1,int *param_2,undefined4 param_3,undefined4
   int iStack_18;
   undefined1 auStack_14 [4];
   undefined4 uStack_10;
-  
+
   uStack_10 = param_4;
   ManagedSprite_GetAnimationFrame(param_2[3]);
   iVar1 = IsPaletteFadeFinished();

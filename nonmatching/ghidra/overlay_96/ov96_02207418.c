@@ -85,7 +85,7 @@ int ov96_02207418(undefined4 param_1,int param_2,undefined4 *param_3)
   undefined1 auStack_20 [4];
   undefined1 auStack_1c [4];
   undefined4 uStack_18;
-  
+
   iStack_80 = 0;
   uStack_18 = 0;
   uStack_24 = 0;

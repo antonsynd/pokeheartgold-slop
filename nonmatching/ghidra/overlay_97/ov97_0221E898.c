@@ -52,7 +52,7 @@ undefined4 ov97_0221E898(undefined *param_1,uint param_2,uint param_3,uint *para
   byte bVar1;
   undefined *puVar2;
   uint uVar3;
-  
+
   puVar2 = PCStorage_GetMonByIndexPair(param_1,param_2,param_3);
   uVar3 = GetBoxMonData(puVar2,0xac,(undefined *)0x0);
   if (uVar3 != 0) {

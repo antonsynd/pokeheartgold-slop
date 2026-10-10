@@ -50,7 +50,7 @@ void ov12_0226343C(undefined4 param_1,undefined4 param_2,undefined4 param_3,unde
 
 {
   undefined1 auStack_68 [88];
-  
+
   ov12_022643C8(param_1,param_2,auStack_68,0,0,param_4,param_5,param_3);
   ov12_02262240(param_1,1,param_4,auStack_68,0x58);
   return;

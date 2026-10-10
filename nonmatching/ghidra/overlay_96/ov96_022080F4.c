@@ -75,7 +75,7 @@ void ov96_022080F4(undefined4 *param_1,undefined2 *param_2,undefined4 param_3,un
   int iStack_20;
   undefined4 uStack_1c;
   undefined4 uStack_18;
-  
+
   uStack_18 = param_4;
   uVar5 = NARC_New(0x14,*param_1);
   uVar6 = sub_02074490();

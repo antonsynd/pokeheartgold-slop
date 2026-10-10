@@ -51,7 +51,7 @@ void ov05_0221CE0C(int param_1)
 {
   uint uVar1;
   int iVar2;
-  
+
   uVar1 = 0;
   iVar2 = param_1;
   if (*(int *)(param_1 + 0x210) != 0) {

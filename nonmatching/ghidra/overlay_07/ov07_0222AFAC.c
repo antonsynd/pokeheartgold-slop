@@ -55,7 +55,7 @@ void ov07_0222AFAC(undefined4 param_1,char *param_2,undefined4 param_3,undefined
 {
   int iVar1;
   byte bVar2;
-  
+
   if (*param_2 == '\0') {
     if (param_2[0xa0] == '\0') {
       ov07_02222268(param_2 + 0x34,(int)*(short *)(param_2 + 0x20),

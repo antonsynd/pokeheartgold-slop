@@ -50,7 +50,7 @@ void ov93_02262760(uint param_1,undefined4 param_2,int *param_3,int *param_4)
   int iVar1;
   int iVar2;
   byte *pbVar3;
-  
+
   iVar2 = *param_4;
   pbVar3 = (byte *)(iVar2 + 0x30);
   iVar1 = 0;

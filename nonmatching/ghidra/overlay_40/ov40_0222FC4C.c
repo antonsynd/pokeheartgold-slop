@@ -55,7 +55,7 @@ void ov40_0222FC4C(int param_1,int *param_2)
   int iVar3;
   int iVar4;
   int iVar5;
-  
+
   if (*param_2 != 1) {
     uVar1 = ov40_0223D540();
     uVar1 = func_0x0222801c(uVar1,param_1 + 0x2608,0x1e);

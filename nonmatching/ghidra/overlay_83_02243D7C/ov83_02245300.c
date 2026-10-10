@@ -48,7 +48,7 @@ void ov83_02245300(int param_1)
 
 {
   int iVar1;
-  
+
   iVar1 = ov83_02247768(*(undefined1 *)(param_1 + 0x14));
   *(undefined1 *)(*(int *)(param_1 + 0x558) + iVar1) = 1;
   return;

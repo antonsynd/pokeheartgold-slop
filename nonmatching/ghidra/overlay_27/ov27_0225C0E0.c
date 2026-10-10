@@ -50,7 +50,7 @@ void ov27_0225C0E0(int param_1)
 
 {
   uint uVar1;
-  
+
   uVar1 = (*(uint *)(param_1 + 0x51c) & 0x1f) >> 1;
   if (uVar1 == 1) {
     ov27_0225C044();

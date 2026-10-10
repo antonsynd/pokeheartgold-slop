@@ -66,7 +66,7 @@ undefined4 ov10_0221FD34(undefined4 param_1,int param_2,int param_3,int param_4)
   int local_20;
   uint local_1c;
   int iStack_18;
-  
+
   iStack_18 = param_4;
   bVar1 = func_0x0223ab0c(param_1,param_3);
   uVar2 = func_0x0223aad8(param_1,bVar1 ^ 1);

@@ -58,7 +58,7 @@ void ov96_021ECD24(undefined4 *param_1)
   uint uVar4;
   int extraout_r1;
   undefined4 *puVar5;
-  
+
   if (param_1[6] != 0) {
     uVar4 = param_1[5] + 1;
     if (999 < uVar4) {

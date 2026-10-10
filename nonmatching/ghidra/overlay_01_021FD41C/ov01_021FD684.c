@@ -59,7 +59,7 @@ void ov01_021FD684(undefined4 param_1,undefined4 param_2,undefined4 param_3,unde
   undefined4 uStack_18;
   undefined4 uStack_14;
   undefined4 uStack_10;
-  
+
   uStack_10 = param_4;
   uVar1 = ov01_021F146C();
   uStack_1c = uVar1;

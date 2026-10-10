@@ -61,7 +61,7 @@ void sub_020609D4(undefined *param_1,undefined4 param_2,undefined4 param_3,ushor
   byte bVar6;
   int iVar7;
   uint uVar8;
-  
+
   if (((*param_4 & 0x1fff) >> 0xb != 0) && (iVar7 = MapObject_CheckFlag24(param_1), iVar7 != 0)) {
     uVar8 = MapObject_GetID(param_1);
     if ((uVar8 == 0xfd) && (iVar7 = func_0x022055dc(param_1), iVar7 != 0)) {

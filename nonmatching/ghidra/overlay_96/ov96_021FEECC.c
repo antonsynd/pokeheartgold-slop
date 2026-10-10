@@ -61,7 +61,7 @@ void ov96_021FEECC(undefined4 param_1,int param_2,int *param_3,int param_4,uint 
   int iStack_20;
   int iStack_1c;
   undefined4 uStack_18;
-  
+
   uVar2 = (int)(uint)*(byte *)(param_4 + 0x1d) >> ((param_5 & 0x7f) << 1) & 3;
   bVar4 = *(byte *)(param_2 + 0x9f) != uVar2;
   if (bVar4) {

@@ -60,7 +60,7 @@ void ov12_02263138(undefined *param_1,undefined *param_2,int param_3)
   int iVar8;
   byte local_38 [32];
   byte local_18 [4];
-  
+
   BattleBuffer_Clear(param_2,param_3);
   pbVar5 = local_38;
   local_38[0] = 0x11;

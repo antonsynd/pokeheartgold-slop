@@ -54,7 +54,7 @@ void ov70_02239740(int param_1,int param_2,undefined4 param_3,undefined4 param_4
 
 {
   undefined4 uVar1;
-  
+
   if (param_2 == 0) {
     if (*(short *)(param_1 + 0x36) == 0) {
       ov70_02238E50(param_1,5,5);

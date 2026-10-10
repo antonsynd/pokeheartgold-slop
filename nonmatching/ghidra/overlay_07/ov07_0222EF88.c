@@ -59,7 +59,7 @@ void ov07_0222EF88(undefined4 param_1,undefined4 *param_2)
   undefined4 *puVar2;
   undefined4 *puVar3;
   int iVar4;
-  
+
   switch(param_2[3]) {
   case 0:
     ov07_0222EDF0(param_2);

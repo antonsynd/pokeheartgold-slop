@@ -64,7 +64,7 @@ undefined4 ov05_0221BD28(int *param_1,undefined4 param_2,undefined4 param_3,unde
 {
   char cVar1;
   int iVar2;
-  
+
   uRam04000050 = 0;
   Main_SetVBlankIntrCB(0,0,param_3,param_4,param_4);
   HBlankInterruptDisable();

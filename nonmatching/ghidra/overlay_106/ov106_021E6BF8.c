@@ -48,7 +48,7 @@ undefined4 ov106_021E6BF8(int param_1,int *param_2)
 
 {
   int iVar1;
-  
+
   iVar1 = *(int *)(param_1 + 0x418);
   if (*param_2 != 9) {
     GF_AssertFail();

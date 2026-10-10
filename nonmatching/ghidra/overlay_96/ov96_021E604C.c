@@ -58,7 +58,7 @@ void ov96_021E604C(int param_1)
   undefined4 uStack_20;
   undefined4 uStack_1c;
   undefined4 uStack_18;
-  
+
   uVar1 = NARC_New(0xa9,*(undefined4 *)(param_1 + 0x284));
   uStack_18 = 0;
   uStack_1c = param_1 + 0x618;

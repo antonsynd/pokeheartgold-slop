@@ -72,7 +72,7 @@ void ov92_0225DA40(int param_1)
   undefined4 uStack_20;
   undefined4 uStack_1c;
   undefined4 uStack_18;
-  
+
   Thunk_G3X_Reset();
   Camera_PushLookAtToNNSGlb();
   uStack_20 = 0;

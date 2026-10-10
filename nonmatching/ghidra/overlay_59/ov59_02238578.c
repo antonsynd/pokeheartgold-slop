@@ -48,7 +48,7 @@ undefined4 ov59_02238578(void)
 
 {
   int iVar1;
-  
+
   iVar1 = ov59_022385AC();
   if (iVar1 != 0) {
     return 4;

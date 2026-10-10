@@ -59,7 +59,7 @@ void sub_020173C8(int param_1,undefined4 param_2,int *param_3,undefined4 *param_
   byte bStack_1d;
   int iStack_1c;
   undefined4 *puStack_18;
-  
+
   puStack_18 = param_4;
   sub_020172B4(param_1,param_2,&bStack_1d);
   iVar2 = *(int *)(param_1 + (uint)bStack_1d * 4 + 0x24);

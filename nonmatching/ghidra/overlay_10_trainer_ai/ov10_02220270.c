@@ -52,7 +52,7 @@ undefined4 ov10_02220270(undefined4 param_1,int param_2,int param_3,undefined4 p
   int iVar1;
   uint uVar2;
   int iVar3;
-  
+
   if (((*(uint *)(param_2 + param_3 * 0xc0 + 0x2dac) & 7) != 0) &&
      (iVar1 = func_0x022527cc(param_2,param_3), iVar1 == 0x1e)) {
     iVar1 = param_2 + param_3 * 0xc0;

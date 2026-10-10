@@ -52,7 +52,7 @@ void ov91_0225CAEC(int param_1,undefined4 param_2,undefined4 param_3)
   bool bVar1;
   int iVar2;
   uint uVar3;
-  
+
   iVar2 = func_0x0225886c(param_1 + 8,param_3);
   ov91_0225D3B4(*(undefined4 *)(param_1 + 0x34),param_2,iVar2);
   *(char *)(param_1 + 0x84 + iVar2) = *(char *)(param_1 + 0x84 + iVar2) + '\x01';

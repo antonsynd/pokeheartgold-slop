@@ -61,7 +61,7 @@ undefined4 ov13_02223B28(undefined1 *param_1,undefined1 *param_2,int param_3,und
   undefined4 uVar2;
   undefined1 *puVar3;
   int iVar4;
-  
+
   uVar2 = func_0x020d3a38();
   puVar3 = (undefined1 *)0x224e3e8;
   puRam0224df74 = (undefined *)0x224e3e8;

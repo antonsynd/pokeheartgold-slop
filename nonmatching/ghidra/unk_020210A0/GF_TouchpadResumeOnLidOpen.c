@@ -52,7 +52,7 @@ void GF_TouchpadResumeOnLidOpen(void)
 
 {
   int iVar1;
-  
+
   if ((sRam021d21f2 != 0) && (sRam021d21f0 != 0)) {
     iVar1 = GF_TouchpadStartAutoSampling(uRam021d21a0 >> 1);
     if (iVar1 != 1) {

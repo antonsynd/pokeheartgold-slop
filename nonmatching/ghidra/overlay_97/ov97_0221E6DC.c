@@ -50,7 +50,7 @@ undefined4 ov97_0221E6DC(undefined4 param_1)
 {
   int *piVar1;
   int iVar2;
-  
+
   piVar1 = (int *)OverlayManager_GetArgs();
   do {
     iVar2 = ov97_0221E700(param_1);

@@ -54,7 +54,7 @@ void ov12_02263D14(undefined4 param_1,undefined4 param_2,undefined2 param_3,unde
   undefined1 uStack_1b;
   undefined2 uStack_1a;
   undefined4 uStack_18;
-  
+
   uStack_18 = param_4;
   uVar1 = BattleSystem_GetBattleContext();
   BattleBuffer_Clear(uVar1,param_2);

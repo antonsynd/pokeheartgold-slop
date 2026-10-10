@@ -49,7 +49,7 @@ undefined4 ov102_021EBB6C(int param_1)
 
 {
   int iVar1;
-  
+
   iVar1 = ov102_021EC3AC(param_1 + 0x1c);
   if (iVar1 != 0) {
     ToggleBgLayer(1,0);

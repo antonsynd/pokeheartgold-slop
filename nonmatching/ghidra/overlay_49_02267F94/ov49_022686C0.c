@@ -48,7 +48,7 @@ void ov49_022686C0(int param_1,int param_2)
 
 {
   int iVar1;
-  
+
   ov49_02268640();
   iVar1 = 0;
   param_1 = param_1 + 8;

@@ -52,7 +52,7 @@ undefined4 ov112_021EE12C(int param_1)
 
 {
   undefined4 uVar1;
-  
+
   uVar1 = ov112_021EA08C(param_1,2,0x1d);
   *(undefined4 *)(param_1 + 0x1e524) = uVar1;
   FillBgTilemapRect(*(undefined4 *)(param_1 + 0x18),2,0,0,0,0x20,0x18,0x10);

@@ -85,7 +85,7 @@ undefined4 ov49_02259AA4(undefined4 param_1)
   int iVar3;
   int iVar4;
   undefined4 uVar5;
-  
+
   puVar2 = (undefined4 *)OverlayManager_GetArgs();
   Heap_Create(3,0x77,0x3a000);
   Heap_Create(3,0x78,0x3d000);

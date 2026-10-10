@@ -60,7 +60,7 @@ void ov96_0220B1D8(undefined4 *param_1,int param_2,undefined4 param_3,undefined4
   int iVar4;
   int iVar5;
   int iStack_18;
-  
+
   iVar4 = 0;
   iVar5 = 0;
   while( true ) {

@@ -62,7 +62,7 @@ void ov07_022247F4(undefined4 param_1)
   undefined4 uVar6;
   undefined4 uVar7;
   uint uVar8;
-  
+
   puVar3 = (undefined4 *)ov07_022324D8(param_1,0x30);
   *puVar3 = param_1;
   uVar4 = ov07_0221C514(param_1);

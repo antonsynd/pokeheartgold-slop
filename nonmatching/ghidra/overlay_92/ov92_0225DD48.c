@@ -49,7 +49,7 @@ void ov92_0225DD48(int param_1,int param_2,undefined4 param_3,undefined4 param_4
 
 {
   int iVar1;
-  
+
   if (param_2 != *(int *)(param_1 + 0x514)) {
     iVar1 = *(int *)(param_1 + 0x514) * 0x14;
     func_0x020181e0(param_1 + 800,param_1 + 0x3a8 + iVar1,iVar1,param_1 + 0x3a8,param_4);

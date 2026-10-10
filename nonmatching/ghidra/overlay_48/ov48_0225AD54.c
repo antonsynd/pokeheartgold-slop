@@ -51,7 +51,7 @@ void ov48_0225AD54(int param_1,undefined4 param_2,undefined4 param_3,undefined4 
 
 {
   int iVar1;
-  
+
   if (*(short *)(param_1 + 0x32) < 1) {
     iVar1 = ov48_0225ADF8(param_1,(int)*(short *)(param_1 + 0x30),param_2,param_4,param_4);
     if (iVar1 == 1) {

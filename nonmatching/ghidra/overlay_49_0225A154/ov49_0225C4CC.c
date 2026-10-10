@@ -95,7 +95,7 @@ void ov49_0225C4CC(int param_1,int param_2,undefined4 param_3,undefined4 param_4
   undefined4 uStack_20;
   undefined4 uStack_1c;
   undefined4 uStack_18;
-  
+
   uStack_18 = param_4;
   uVar1 = NARC_New(0xd7,param_4);
   uVar2 = func_0x0222a99c(param_6);

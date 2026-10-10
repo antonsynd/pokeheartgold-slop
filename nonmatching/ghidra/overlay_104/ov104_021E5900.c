@@ -65,7 +65,7 @@ undefined4 ov104_021E5900(undefined4 param_1)
   undefined4 uVar3;
   int iVar4;
   uint uVar5;
-  
+
   Heap_Create(3,0x95,0x31000);
   puVar1 = (undefined4 *)OverlayManager_CreateAndGetData(param_1,0x170,0x95);
   func_0x020e5b44(puVar1,0,0x170);

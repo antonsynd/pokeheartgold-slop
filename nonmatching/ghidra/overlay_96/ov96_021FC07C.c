@@ -55,7 +55,7 @@ void ov96_021FC07C(undefined4 *param_1,undefined4 param_2)
   int iVar4;
   undefined4 *puStack_20;
   int iStack_1c;
-  
+
   iStack_1c = 0;
   puStack_20 = param_1;
   do {

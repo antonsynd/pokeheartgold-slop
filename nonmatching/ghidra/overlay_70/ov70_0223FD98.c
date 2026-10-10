@@ -52,7 +52,7 @@ undefined4 ov70_0223FD98(int *param_1)
 
 {
   int iVar1;
-  
+
   iVar1 = ov70_02237F38();
   if (iVar1 == 0) {
     param_1[0x581] = param_1[0x581] + 1;

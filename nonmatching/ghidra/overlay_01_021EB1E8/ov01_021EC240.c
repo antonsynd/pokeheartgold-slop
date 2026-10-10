@@ -53,7 +53,7 @@ void ov01_021EC240(undefined4 param_1,int param_2,undefined4 *param_3,undefined4
   undefined4 *puVar2;
   int iVar3;
   undefined4 auStack_24 [4];
-  
+
   iVar3 = 0;
   puVar2 = auStack_24;
   do {

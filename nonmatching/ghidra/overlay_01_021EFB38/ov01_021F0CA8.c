@@ -50,7 +50,7 @@ void ov01_021F0CA8(undefined4 param_1,int *param_2)
 
 {
   int iVar1;
-  
+
   if (uRam04000006 < 0xc0) {
     iVar1 = *param_2 - (uint)*(byte *)((int)param_2 + uRam04000006 + 0x18);
     if (iVar1 < 0) {

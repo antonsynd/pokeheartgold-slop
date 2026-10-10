@@ -57,7 +57,7 @@ undefined4 ov92_0225D8E4(int param_1)
 
 {
   int iVar1;
-  
+
   iVar1 = func_0x02258b54(param_1 + 0x8c);
   if (iVar1 != 1) {
     return 0;

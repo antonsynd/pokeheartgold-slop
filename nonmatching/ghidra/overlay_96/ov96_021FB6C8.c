@@ -54,7 +54,7 @@ void ov96_021FB6C8(int param_1,int param_2,undefined4 param_3,undefined4 param_4
   undefined4 uVar2;
   int extraout_r1;
   int aiStack_28 [7];
-  
+
   aiStack_28[3] = 0x30;
   aiStack_28[4] = 0x80;
   aiStack_28[5] = 0xd0;

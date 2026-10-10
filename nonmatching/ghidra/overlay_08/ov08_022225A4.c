@@ -49,7 +49,7 @@ void ov08_022225A4(int *param_1)
 
 {
   int iVar1;
-  
+
   iVar1 = ov08_0221D5DC(param_1,*(undefined1 *)(*param_1 + 0x11));
   if (iVar1 == 2) {
     ov08_02221E6C(param_1,*(undefined1 *)(*param_1 + 0x11),0,1);

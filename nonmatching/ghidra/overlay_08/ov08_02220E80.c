@@ -58,7 +58,7 @@ void ov08_02220E80(int *param_1)
   int *piVar2;
   undefined4 *puVar3;
   uint uVar4;
-  
+
   piVar1 = param_1 + (uint)*(byte *)(*param_1 + 0x11) * 0x14 + 1;
   ov08_02220A8C((undefined *)param_1[*(byte *)(*param_1 + 0x11) + 0x7f5],0x18,0xc);
   ov08_02220B90((*(byte *)((int)piVar1 + 0x17) & 0x7f) >> 3,

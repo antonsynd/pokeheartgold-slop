@@ -51,7 +51,7 @@ void ov74_02230CEC(void)
 {
   int iVar1;
   int iVar2;
-  
+
   iVar1 = ov74_02231154();
   iVar2 = ov74_02231064();
   if (iVar2 == 6) {

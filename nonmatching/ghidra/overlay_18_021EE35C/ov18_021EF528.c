@@ -54,7 +54,7 @@ void ov18_021EF528(int param_1,undefined4 param_2,undefined4 param_3,undefined4 
 
 {
   uint uVar1;
-  
+
   ov18_021EFBE8(param_1,0x1b,param_3,param_4,param_4);
   ov18_021EFC3C(param_1,0x1c);
   ov18_021EFC9C(param_1,*(undefined4 *)(param_1 + 0x1870),0x1d,0x1d);

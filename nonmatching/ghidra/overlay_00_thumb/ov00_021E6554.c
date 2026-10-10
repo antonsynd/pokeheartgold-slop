@@ -50,7 +50,7 @@ void ov00_021E6554(int param_1,undefined4 param_2,undefined4 param_3,undefined4 
 
 {
   int iVar1;
-  
+
   *(undefined4 *)(iRam0221a680 + 0x1078) = 0;
   *(undefined4 *)(iRam0221a680 + 0x10cc) = 0;
   *(undefined4 *)(iRam0221a680 + 0x10a0) = 0;

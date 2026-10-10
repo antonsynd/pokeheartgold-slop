@@ -56,7 +56,7 @@ void ov92_0225E3C4(int param_1,undefined4 param_2,undefined4 param_3,undefined4 
   undefined4 uVar2;
   undefined4 uVar3;
   undefined4 uVar4;
-  
+
   uVar1 = *(undefined4 *)(param_1 + 0x48);
   uVar2 = *(undefined4 *)(param_1 + 0x54);
   uVar3 = *(undefined4 *)(param_1 + 0x50);

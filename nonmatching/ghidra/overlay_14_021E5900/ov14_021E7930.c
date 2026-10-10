@@ -48,7 +48,7 @@ uint ov14_021E7930(int param_1)
 
 {
   uint uVar1;
-  
+
   uVar1 = func_0x02073e98(*(undefined4 *)(param_1 + 4));
   if (0xf < uVar1) {
     uVar1 = uVar1 - 0x10;

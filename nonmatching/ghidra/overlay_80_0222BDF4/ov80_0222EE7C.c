@@ -49,7 +49,7 @@ void ov80_0222EE7C(int *param_1)
 
 {
   uint uVar1;
-  
+
   ListMenuGetCurrentItemArrayId((undefined *)param_1[0x6d],(undefined *)((int)param_1 + 0x1ba));
   uVar1 = (uint)*(ushort *)((int)param_1 + (uint)*(ushort *)((int)param_1 + 0x1ba) * 2 + 0x29c);
   if (uVar1 != 0xff) {

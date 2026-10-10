@@ -57,7 +57,7 @@ void ov96_02209CA8(int param_1)
   int iVar1;
   uint *puVar2;
   int iVar3;
-  
+
   iVar1 = 0;
   iVar3 = param_1;
   do {

@@ -50,7 +50,7 @@ undefined4 ov111_021E6888(int param_1)
 {
   int iVar1;
   uint uVar2;
-  
+
   if (*(uint *)(param_1 + 0x2c) != 0xffffffff) {
     iVar1 = TextPrinterCheckActive(*(uint *)(param_1 + 0x2c) & 0xff);
     if (iVar1 == 0) {

@@ -59,7 +59,7 @@ undefined4 ov96_02214EB4(undefined4 param_1,int param_2,undefined4 param_3,int p
   byte abStack_28 [4];
   undefined1 auStack_24 [12];
   int iStack_18;
-  
+
   if (*(int *)(param_4 + 0x78) != 0) {
     return 0;
   }

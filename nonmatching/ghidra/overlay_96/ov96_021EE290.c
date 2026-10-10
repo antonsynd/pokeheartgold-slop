@@ -54,7 +54,7 @@ void ov96_021EE290(uint *param_1)
   uint *puVar4;
   __asm__ volatile("movs %0, r5" : "=l"(unaff_r5) : : "cc");
 
-  
+
   uVar3 = 0;
   iVar2 = 0;
   puVar4 = param_1;

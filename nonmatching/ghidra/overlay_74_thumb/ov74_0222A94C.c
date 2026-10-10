@@ -60,7 +60,7 @@ void ov74_0222A94C(undefined *param_1,ushort param_2,undefined4 param_3)
   int *piVar5;
   int iVar6;
   undefined4 auStack_34 [8];
-  
+
   puVar1 = (undefined4 *)OverlayManager_GetData(param_1);
   puVar2 = Save_MysteryGift_Get((undefined *)puVar1[1]);
   piVar5 = puVar1 + 10;

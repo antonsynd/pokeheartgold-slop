@@ -50,7 +50,7 @@ void ov40_0222C434(int param_1,undefined4 param_2,undefined4 param_3,undefined4 
   int *piVar1;
   int iVar2;
   undefined4 uStack_18;
-  
+
   iVar2 = 0;
   uStack_18 = param_4;
   do {

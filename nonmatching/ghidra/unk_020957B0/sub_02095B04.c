@@ -53,7 +53,7 @@ void sub_02095B04(undefined4 param_1,char *param_2,undefined4 param_3,undefined4
   int iVar2;
   undefined4 uStack_1c;
   char cStack_18;
-  
+
   iVar2 = (int)param_5;
   uStack_1c = sub_02095BF0();
   iVar1 = (int)*param_2;

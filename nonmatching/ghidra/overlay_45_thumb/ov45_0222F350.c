@@ -56,7 +56,7 @@ undefined4 ov45_0222F350(int param_1)
   int iVar1;
   int iVar2;
   undefined4 uVar3;
-  
+
   if (iRam022577c0 == 0) {
     GF_AssertFail();
   }

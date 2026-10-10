@@ -48,7 +48,7 @@ void ov45_0222C83C(int param_1,undefined4 param_2,undefined4 param_3,int param_4
 
 {
   int iVar1;
-  
+
   iVar1 = ov45_0222EC68(param_1);
   if (iVar1 != -1) {
     *(undefined1 *)(param_4 + iVar1 + 0x1e8) = 1;

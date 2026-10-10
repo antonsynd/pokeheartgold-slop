@@ -53,7 +53,7 @@ void ov103_021EE2E0(int param_1,undefined4 param_2,undefined4 param_3,undefined4
 
 {
   undefined4 uVar1;
-  
+
   uVar1 = NARC_New(0xfc,0x9d);
   SpriteSystem_LoadCharResObjFromOpenNarc
             (*(undefined4 *)(param_1 + 0x250),*(undefined4 *)(param_1 + 0x254),uVar1,7,1,1,0x37f3);

@@ -51,7 +51,7 @@ void ov71_02246D54(int param_1)
 {
   int iVar1;
   int iVar2;
-  
+
   if (**(int **)(param_1 + 0xe4) == 1) {
     iVar1 = 0;
     iVar2 = param_1;

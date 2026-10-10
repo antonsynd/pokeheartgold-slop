@@ -66,7 +66,7 @@ ov96_0220B374(undefined4 param_1,undefined4 param_2,undefined4 param_3,undefined
   short sStack_1c;
   short sStack_1a;
   undefined4 uStack_18;
-  
+
   uStack_18 = param_4;
   uVar1 = ov96_021E5F24(param_4);
   puVar2 = (undefined4 *)Heap_Alloc(param_1,0x48);

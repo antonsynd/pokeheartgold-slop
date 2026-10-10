@@ -48,7 +48,7 @@ undefined4 ov14_021EB18C(int param_1)
 
 {
   int iVar1;
-  
+
   iVar1 = PaletteData_GetSelectedBuffersBitmask(*(undefined4 *)(*(int *)(param_1 + 0x34) + 0x18));
   if (iVar1 == 0) {
     return *(undefined4 *)(param_1 + 0x30);

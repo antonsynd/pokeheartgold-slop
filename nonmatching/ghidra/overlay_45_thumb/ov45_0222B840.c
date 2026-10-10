@@ -53,7 +53,7 @@ uint ov45_0222B840(int param_1)
   int iVar3;
   uint uVar4;
   uint uVar5;
-  
+
   uVar1 = (uint)*(byte *)(param_1 + 0x1fc);
   if ((((uVar1 & 1) == 1) && (uVar1 = -((int)(uVar1 << 0x18) >> 0x1f), uVar1 == 0)) &&
      (uVar1 = ov45_0222E96C(), uVar1 == 2)) {

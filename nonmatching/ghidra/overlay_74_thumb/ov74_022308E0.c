@@ -57,7 +57,7 @@ void ov74_022308E0(int param_1)
 {
   short sVar1;
   int iVar2;
-  
+
   ov74_0223144C(*(undefined2 *)(param_1 + 4));
   if (*(short *)(param_1 + 2) == 0) {
     sVar1 = *(short *)(param_1 + 4);

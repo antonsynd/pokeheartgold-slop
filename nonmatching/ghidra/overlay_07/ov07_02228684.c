@@ -55,7 +55,7 @@ void ov07_02228684(undefined4 param_1,char *param_2)
 
 {
   char cVar1;
-  
+
   cVar1 = *param_2;
   if (cVar1 == '\0') {
     param_2[1] = param_2[1] + '\x01';

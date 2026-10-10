@@ -48,7 +48,7 @@ void ov91_0225CABC(int param_1,undefined4 *param_2)
 
 {
   int iVar1;
-  
+
   ov91_0225D368(*(undefined4 *)(param_1 + 0x34));
   *(undefined4 *)(param_1 + 0x40) = 1;
   iVar1 = 0;

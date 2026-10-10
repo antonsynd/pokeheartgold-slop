@@ -9,13 +9,13 @@ whose C is a far better starting point than the raw asm. Two inputs:
                          Columns: heartgold_function, platinum_function,
                          platinum_file, found_by.
   nonmatching/         — clang-compiled, behaviour-verified (NOT byte-matching)
-                         C for 15,756 of 16,654 asm functions (PRs #2, #4).
-                         VERIFIED.tsv gives PASS/FAIL per function and its file:
-                         <asm>_partNN.c (PR #2), written/<asm>/<fn>.c
-                         (model-written) or ghidra/<asm>/<fn>.c (raw Ghidra C);
-                         <file>.notes.md records struct layouts and header
-                         declarations that disagree with asm. REMAINING.tsv lists
-                         the functions with no verified C.
+                         C for every function still in asm/, here or as the
+                         unlinked C already in src/. VERIFIED.tsv gives each
+                         function's verdict and its file: <asm>_partNN.c
+                         (PR #2), written/<asm>/<fn>.c (model-written) or
+                         ghidra/<asm>/<fn>.c (raw Ghidra C); <file>.notes.md
+                         records struct layouts and header declarations that
+                         disagree with asm.
 
 Twin confidence, from found_by:
   high — calls (callee sequence matched), called (callee of a matched pair),

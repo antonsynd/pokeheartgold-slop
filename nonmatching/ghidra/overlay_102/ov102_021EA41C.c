@@ -70,7 +70,7 @@ void ov102_021EA41C(undefined4 *param_1,undefined4 param_2)
   uint uVar3;
   undefined4 uVar4;
   int iVar5;
-  
+
   uVar2 = ov102_021EA268(*param_1);
   ov102_021EA80C(param_1,param_2);
   GfGfxLoader_LoadScrnDataFromOpenNarc(param_2,0,uVar2,0,0,0,1,0x23);

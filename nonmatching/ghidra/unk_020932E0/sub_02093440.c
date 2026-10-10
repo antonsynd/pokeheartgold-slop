@@ -68,7 +68,7 @@ void sub_02093440(undefined4 *param_1,undefined4 param_2,undefined4 param_3,unde
 
 {
   undefined4 uVar1;
-  
+
   uVar1 = YesNoPrompt_Create(param_1[1]);
   param_1[2] = uVar1;
   param_1[0x118f] = param_3;

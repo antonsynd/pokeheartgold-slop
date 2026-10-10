@@ -52,7 +52,7 @@ ov52_021E8994(int param_1,undefined4 param_2,undefined4 param_3,undefined4 param
 {
   int iVar1;
   undefined4 uVar2;
-  
+
   uVar2 = param_4;
   iVar1 = FontID_String_GetWidth(2,param_2,0);
   AddTextPrinterParameterizedWithColor

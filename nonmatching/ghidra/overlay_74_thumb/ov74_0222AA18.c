@@ -60,7 +60,7 @@ void ov74_0222AA18(undefined4 param_1,undefined4 param_2,undefined4 param_3)
   int iVar1;
   undefined4 uVar2;
   int iVar3;
-  
+
   iVar1 = OverlayManager_GetData();
   uVar2 = NewMsgDataFromNarc(1,0x1b,0xf7,0x54);
   *(undefined4 *)(iVar1 + 0x10) = uVar2;

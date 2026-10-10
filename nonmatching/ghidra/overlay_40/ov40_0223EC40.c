@@ -65,7 +65,7 @@ void ov40_0223EC40(int param_1,int param_2)
   uint uVar9;
   uint uVar10;
   uint uStack_20;
-  
+
   iVar7 = *(int *)(param_1 + 0x860);
   uVar9 = (uint)*(ushort *)(&ov40_02245E44 + (param_2 + 1) * 2);
   uStack_20 = (uint)*(ushort *)(&ov40_02245E44 + param_2 * 2);

@@ -52,7 +52,7 @@ void ov96_0220764C(int param_1)
   int iVar1;
   int iVar2;
   int iVar3;
-  
+
   iVar3 = 0;
   iVar2 = param_1;
   do {

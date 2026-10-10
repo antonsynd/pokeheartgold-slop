@@ -55,7 +55,7 @@ int ov18_021F7D30(undefined4 *param_1,undefined4 *param_2)
 
 {
   int iVar1;
-  
+
   iVar1 = ov18_021F7B94();
   if (iVar1 == -1) {
     iVar1 = System_GetTouchNew();

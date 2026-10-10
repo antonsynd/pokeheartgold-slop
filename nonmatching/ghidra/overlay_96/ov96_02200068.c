@@ -51,7 +51,7 @@ void ov96_02200068(undefined4 *param_1)
 
 {
   undefined4 uVar1;
-  
+
   GfGfxLoader_LoadCharData(0xb2,6,param_1[2],6,0,0,0,*param_1);
   GfGfxLoader_LoadScrnData(0xb2,7,param_1[2],6,0,0,0,*param_1);
   GfGfxLoader_LoadScrnData(0xb2,8,param_1[2],5,0,0,0,*param_1);

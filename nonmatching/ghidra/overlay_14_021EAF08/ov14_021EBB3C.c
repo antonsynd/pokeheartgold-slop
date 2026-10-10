@@ -84,7 +84,7 @@ void ov14_021EBB3C(int *param_1,undefined4 param_2,undefined4 param_3,undefined4
   byte bStack_18;
   byte abStack_17 [3];
   undefined4 uStack_14;
-  
+
   uStack_14 = param_4;
   if (0x1d < *(byte *)((int)param_1 + 0x21)) {
     ov14_021F0B70();

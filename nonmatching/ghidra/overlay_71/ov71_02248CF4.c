@@ -49,7 +49,7 @@ void ov71_02248CF4(int param_1)
 
 {
   undefined4 *puVar1;
-  
+
   if (param_1 != 0) {
     puVar1 = (undefined4 *)SysTask_GetData();
     *(undefined4 *)*puVar1 = 0;

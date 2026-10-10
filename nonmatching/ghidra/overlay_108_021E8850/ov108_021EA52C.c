@@ -48,7 +48,7 @@ undefined4 ov108_021EA52C(int param_1,int param_2)
 {
   byte bVar1;
   int iVar2;
-  
+
   if (*(char *)(param_1 + 0x435) == '\0') {
     return 4;
   }

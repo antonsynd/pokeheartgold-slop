@@ -52,7 +52,7 @@ void ov59_0223BBD4(int param_1,int param_2,undefined4 param_3,undefined4 param_4
   undefined1 uVar1;
   uint uVar2;
   char cVar3;
-  
+
   switch(param_2) {
   case 0:
     uVar2 = *(ushort *)(param_1 + 0x20) & 0xf;

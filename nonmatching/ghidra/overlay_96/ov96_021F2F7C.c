@@ -49,7 +49,7 @@ undefined4 ov96_021F2F7C(undefined4 param_1,int param_2,int param_3)
 {
   int iStack_c;
   int aiStack_8 [2];
-  
+
   ov96_021EB06C(param_1,(int)(param_2 + ((uint)(param_2 >> 0xb) >> 0x14)) >> 0xc,
                 (int)(param_3 + ((uint)(param_3 >> 0xb) >> 0x14)) >> 0xc,aiStack_8,&iStack_c);
   if ((((0xf < aiStack_8[0]) && (aiStack_8[0] < 0xf0)) && (0xf < iStack_c)) && (iStack_c < 0xb0)) {

@@ -49,7 +49,7 @@ undefined4 sub_02058CD8(int *param_1,undefined4 param_2)
 
 {
   int iVar1;
-  
+
   iVar1 = FieldSystem_ApplicationIsRunning(param_2);
   if (iVar1 != 0) {
     return 0;

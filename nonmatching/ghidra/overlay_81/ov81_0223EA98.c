@@ -64,7 +64,7 @@ void ov81_0223EA98(int param_1,undefined4 param_2,undefined4 param_3,undefined4 
   undefined4 uStack_14;
   undefined4 uStack_10;
   undefined4 uStack_c;
-  
+
   uStack_c = param_4;
   uVar1 = ov81_02243398(param_1,*(undefined4 *)(param_1 + 0x464));
   *(undefined4 *)(param_1 + 0x464) = uVar1;

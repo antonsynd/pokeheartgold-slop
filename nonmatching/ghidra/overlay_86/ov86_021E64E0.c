@@ -68,7 +68,7 @@ void ov86_021E64E0(int param_1,undefined4 param_2,undefined4 param_3,undefined4 
   undefined4 uVar5;
   int iStack_18;
   undefined4 uStack_14;
-  
+
   uStack_14 = param_4;
   FillWindowPixelBuffer(param_1 + 0x10,0);
   FillWindowPixelBuffer(param_1 + 0x20,0);

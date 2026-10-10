@@ -53,7 +53,7 @@ void ov72_02237B80(char param_1,undefined4 param_2,undefined4 param_3,undefined4
 
 {
   int iVar1;
-  
+
   func_0x0221be84();
   cRam0223b834 = param_1 + -1;
   iVar1 = ov72_02237D50(0x223b4e0,0x223b834,1,0x223b923,2,param_4);

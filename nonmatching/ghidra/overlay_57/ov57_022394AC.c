@@ -50,7 +50,7 @@ void ov57_022394AC(int param_1)
 
 {
   int iVar1;
-  
+
   ov57_02239014();
   ov57_02238F48(param_1);
   iVar1 = 0;

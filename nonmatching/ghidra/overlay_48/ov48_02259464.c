@@ -54,7 +54,7 @@ void ov48_02259464(int param_1,undefined4 param_2,undefined4 param_3)
 
 {
   undefined4 uVar1;
-  
+
   uVar1 = NARC_New(0xc0,param_3);
   *(undefined4 *)(param_1 + 0x144) = uVar1;
   GF_CreateVramTransferManager(0x40,param_3);

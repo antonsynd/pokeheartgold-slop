@@ -50,7 +50,7 @@ void sub_0205CC74(undefined4 param_1)
 
 {
   int iVar1;
-  
+
   iVar1 = PlayerAvatar_CheckFlag6();
   if ((iVar1 == 1) && (iVar1 = PlayerAvatar_GetMoveState(param_1), iVar1 == 1)) {
     PlayerAvatar_SetFlag1(param_1,0);

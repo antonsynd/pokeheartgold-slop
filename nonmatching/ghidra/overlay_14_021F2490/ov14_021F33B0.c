@@ -49,7 +49,7 @@ undefined4 ov14_021F33B0(undefined4 *param_1)
 
 {
   undefined4 uVar1;
-  
+
   *(char *)((int)param_1 + 7) = *(char *)((int)param_1 + 7) + -2;
   uVar1 = func_0x020f1520(param_1[2],0x3ccccccd);
   param_1[2] = uVar1;

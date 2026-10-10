@@ -53,7 +53,7 @@ void ov80_02232F08(int param_1)
   byte bVar1;
   undefined1 uVar2;
   undefined4 uVar3;
-  
+
   bVar1 = *(byte *)(param_1 + 0x11);
   uVar3 = ov80_02237B58(*(undefined1 *)(param_1 + 0x10),1);
   uVar2 = ov80_02237D8C(*(undefined1 *)(param_1 + 0x10));

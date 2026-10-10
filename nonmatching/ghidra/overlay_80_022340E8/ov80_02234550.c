@@ -49,7 +49,7 @@ void ov80_02234550(int param_1,undefined4 param_2)
 {
   undefined2 uVar1;
   uint uVar2;
-  
+
   uVar2 = 0;
   do {
     uVar1 = ov80_02234574(param_2,uVar2 & 0xff);

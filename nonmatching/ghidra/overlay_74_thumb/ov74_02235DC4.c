@@ -68,7 +68,7 @@ void ov74_02235DC4(undefined4 param_1,undefined2 *param_2,undefined4 param_3,und
   undefined4 uVar3;
   int iStack_1c;
   undefined4 uStack_18;
-  
+
   uVar1 = *param_2;
   uStack_18 = param_4;
   cVar2 = ov74_02235AC4(uVar1);

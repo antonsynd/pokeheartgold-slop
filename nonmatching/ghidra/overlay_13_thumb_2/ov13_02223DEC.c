@@ -50,7 +50,7 @@ undefined4 ov13_02223DEC(undefined4 param_1,int param_2)
 
 {
   undefined4 uVar1;
-  
+
   if (0 < param_2) {
     func_0x020d2618(0x224dfc4);
     uVar1 = (*pcRam0224df34)(param_2);

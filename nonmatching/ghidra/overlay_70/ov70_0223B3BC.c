@@ -50,7 +50,7 @@ void ov70_0223B3BC(undefined4 param_1,undefined4 param_2,undefined4 param_3,unde
 
 {
   undefined4 uVar1;
-  
+
   uVar1 = NewString_ReadMsgData(param_1,param_3);
   ov70_02245084(param_2,uVar1,0,0,0,0xf0200,param_4);
   String_Delete(uVar1);

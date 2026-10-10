@@ -57,7 +57,7 @@ undefined4 ov45_0222F7B4(int param_1,undefined4 param_2,undefined4 param_3,undef
   undefined4 uVar3;
   int iVar4;
   int iVar5;
-  
+
   uVar1 = WifiHistory_GetPlayerCountry(*(undefined4 *)(param_1 + 8));
   uVar2 = WiFiHistory_GetPlayerRegion(*(undefined4 *)(param_1 + 8));
   if (uVar1 == 0) {

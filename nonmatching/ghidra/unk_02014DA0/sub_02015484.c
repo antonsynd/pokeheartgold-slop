@@ -48,7 +48,7 @@ void sub_02015484(undefined4 *param_1)
 
 {
   undefined4 uVar1;
-  
+
   uVar1 = func_0x02098160(*param_1);
   param_1[2] = uVar1;
   return;

@@ -58,7 +58,7 @@ int ov01_021F0718(undefined4 *param_1,int param_2,undefined4 param_3,undefined4 
   undefined4 uStack_14;
   undefined4 uStack_10;
   undefined4 uStack_c;
-  
+
   uStack_28 = *param_1;
   iStack_24 = param_2 + 0x10;
   uStack_18 = param_5;

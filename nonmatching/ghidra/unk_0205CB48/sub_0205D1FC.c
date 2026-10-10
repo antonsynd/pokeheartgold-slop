@@ -56,7 +56,7 @@ void sub_0205D1FC(undefined4 param_1)
 {
   int iVar1;
   undefined4 uVar2;
-  
+
   iVar1 = PlayerAvatar_CheckForcedMovement();
   if (iVar1 == 1) {
     uVar2 = PlayerAvatar_GetMapObject(param_1);

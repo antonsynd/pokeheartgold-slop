@@ -55,7 +55,7 @@ void ov07_0222928C(undefined4 param_1,int param_2,undefined4 param_3,undefined4 
 
 {
   int iVar1;
-  
+
   iVar1 = ov07_022223CC(param_2 + 0x8c,param_2 + 0xb0,*(undefined4 *)(param_2 + 0x38),param_4,
                         param_4);
   if (iVar1 == 0) {

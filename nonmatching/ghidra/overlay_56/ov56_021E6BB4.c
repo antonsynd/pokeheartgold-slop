@@ -100,7 +100,7 @@ void ov56_021E6BB4(undefined4 *param_1)
   undefined4 uStack_20;
   undefined4 uStack_1c;
   undefined4 uStack_18;
-  
+
   sub_0203A964();
   if (*(char *)(param_1 + 3) != '\x01') {
     GF_CreateVramTransferManager(0x20,*param_1);

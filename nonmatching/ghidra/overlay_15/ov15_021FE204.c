@@ -59,7 +59,7 @@ void ov15_021FE204(undefined4 *param_1)
   uint uVar2;
   uint *puVar3;
   int iVar4;
-  
+
   if (param_1[0x5d] == 0) {
     AddWindowParameterized(*param_1,param_1 + 0x5d,4,0xc,7,0xb,4,0xb,0x2cf);
     FillWindowPixelBuffer(param_1 + 0x5d,0);

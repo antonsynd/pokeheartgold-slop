@@ -48,7 +48,7 @@ void ov96_0220B354(undefined4 *param_1)
 
 {
   int iVar1;
-  
+
   iVar1 = 0;
   do {
     if (param_1[1] == 1) {

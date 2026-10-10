@@ -62,7 +62,7 @@ void ov15_021FD574(undefined4 *param_1,undefined4 param_2,undefined4 param_3,und
   undefined4 uVar2;
   int iStack_1c;
   undefined4 uStack_18;
-  
+
   uStack_18 = param_4;
   switch(param_2) {
   case 0:

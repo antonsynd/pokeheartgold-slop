@@ -49,7 +49,7 @@ int ov41_022481F4(int param_1,undefined4 param_2,undefined4 param_3,undefined4 p
 {
   int iVar1;
   int iVar2;
-  
+
   for (iVar2 = *(int *)(param_1 + 0x1c); iVar2 != param_1 + 0x14; iVar2 = *(int *)(iVar2 + 8)) {
     iVar1 = ov41_02249AA8(iVar2,param_2,param_3,param_4);
     if (iVar1 == 1) {

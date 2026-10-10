@@ -61,7 +61,7 @@ undefined4 ov75_022495B0(int *param_1,undefined4 param_2,undefined4 param_3,unde
   undefined4 *puVar6;
   undefined4 auStack_28 [4];
   undefined4 uStack_18;
-  
+
   iVar4 = *param_1;
   uStack_18 = param_4;
   iVar1 = ov75_02249534(param_1[0x11]);

@@ -56,7 +56,7 @@ void ov57_0223B950(int param_1)
   undefined4 uVar3;
   undefined1 auStack_48 [40];
   undefined1 auStack_20 [16];
-  
+
   GetPokemonSpriteCharAndPlttNarcIds(auStack_20,*(undefined4 *)(param_1 + 0x458),2);
   uVar1 = GetMonData(*(undefined4 *)(param_1 + 0x458),5,0);
   iVar2 = func_0x0207083c(*(undefined4 *)(param_1 + 0x458),2);

@@ -58,7 +58,7 @@ void ov92_0225EF4C(undefined4 param_1,int *param_2)
   int iVar2;
   undefined4 uVar3;
   int iVar4;
-  
+
   iVar4 = (param_2[10] << 4) >> 0x10;
   iVar1 = IsPaletteFadeFinished();
   if ((iVar1 == 0) || (*(char *)(param_2[0x1e] + 0x34) == '\x01')) {

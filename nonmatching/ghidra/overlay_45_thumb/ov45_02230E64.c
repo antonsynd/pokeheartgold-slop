@@ -49,7 +49,7 @@ void ov45_02230E64(undefined4 param_1,int param_2)
 
 {
   undefined4 uVar1;
-  
+
   uVar1 = sub_02023FDC();
   func_0x020c3598(uVar1,*(undefined4 *)(param_2 + 0x8c));
   return;

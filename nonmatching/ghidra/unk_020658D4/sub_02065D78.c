@@ -50,7 +50,7 @@ undefined4 sub_02065D78(void)
 {
   int iVar1;
   undefined4 uVar2;
-  
+
   iVar1 = MapObject_GetFieldSystem();
   FieldSystem_GetPlayerAvatar();
   uVar2 = *(undefined4 *)(iVar1 + 0xe8);

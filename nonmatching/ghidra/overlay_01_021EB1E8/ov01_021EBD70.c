@@ -60,7 +60,7 @@ void ov01_021EBD70(undefined4 param_1,short *param_2,undefined4 param_3,undefine
 {
   undefined4 uVar1;
   int iVar2;
-  
+
   uVar1 = **(undefined4 **)(param_2 + 4);
   switch(param_2[9]) {
   case 0:

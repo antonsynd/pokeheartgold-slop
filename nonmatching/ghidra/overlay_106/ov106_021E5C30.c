@@ -68,7 +68,7 @@ void ov106_021E5C30(int param_1,undefined4 param_2,undefined4 param_3,undefined4
   undefined4 uStack_40;
   undefined4 auStack_3c [9];
   undefined4 uStack_18;
-  
+
   puVar8 = (undefined4 *)&ov106_021E6D8C;
   puVar6 = auStack_3c;
   iVar4 = 4;

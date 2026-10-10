@@ -56,7 +56,7 @@ undefined4 sub_02089208(int param_1)
 {
   undefined4 uVar1;
   int iVar2;
-  
+
   if ((uRam021d1154 & 1) != 0) {
     PlaySE(0x5dd);
     *(byte *)(*(int *)(param_1 + 0x22c) + 0x16) = *(byte *)(param_1 + 0x7bd) & 0xf;

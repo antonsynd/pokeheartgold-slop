@@ -55,7 +55,7 @@ void ov93_02261FC8(int param_1)
   int iVar5;
   undefined1 auStack_1c [4];
   undefined4 uStack_18;
-  
+
   iVar5 = 0;
   iVar3 = param_1;
   do {

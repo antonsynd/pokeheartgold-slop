@@ -52,7 +52,7 @@ void ov14_021E6C0C(int param_1,int param_2,undefined4 param_3,undefined4 param_4
   short sStack_18;
   short sStack_16;
   undefined4 uStack_14;
-  
+
   iVar2 = *(int *)(param_1 + 0x34);
   bVar1 = *(byte *)(iVar2 + *(int *)(param_2 + 8) + 0x4094);
   uStack_14 = param_4;

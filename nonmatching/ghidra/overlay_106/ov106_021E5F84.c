@@ -49,7 +49,7 @@ void ov106_021E5F84(int *param_1)
 
 {
   int iVar1;
-  
+
   iVar1 = *param_1;
   if (iVar1 < 0xb) {
     if (iVar1 < 10) {

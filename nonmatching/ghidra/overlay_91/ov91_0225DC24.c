@@ -48,7 +48,7 @@ undefined4 ov91_0225DC24(int param_1)
 
 {
   int iVar1;
-  
+
   iVar1 = func_0x02258ce0(*(undefined4 *)(param_1 + 0x6f0));
   if (iVar1 == 1) {
     return 1;

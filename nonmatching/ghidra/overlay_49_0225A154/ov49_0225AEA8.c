@@ -51,7 +51,7 @@ void ov49_0225AEA8(int param_1,uint param_2,undefined4 param_3,undefined4 param_
   undefined4 uVar1;
   uint uVar2;
   int iVar3;
-  
+
   if (*(int *)(param_1 + 0x34) != 0) {
     GF_AssertFail();
   }

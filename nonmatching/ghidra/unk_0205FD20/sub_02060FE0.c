@@ -58,7 +58,7 @@ undefined1 sub_02060FE0(undefined4 param_1,undefined4 param_2)
   int iVar4;
   int iVar5;
   undefined4 uVar6;
-  
+
   iVar2 = MapObject_GetXCoord();
   iVar3 = GetDeltaXByFacingDirection(param_2);
   iVar4 = MapObject_GetZCoord(param_1);

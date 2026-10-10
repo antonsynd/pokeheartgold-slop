@@ -47,7 +47,7 @@ undefined4 ov96_021F3AB0(int param_1,int param_2)
 
 {
   int iVar1;
-  
+
   iVar1 = 0;
   while( true ) {
     if (*(int *)(param_1 + 0x4a0) == -1) {

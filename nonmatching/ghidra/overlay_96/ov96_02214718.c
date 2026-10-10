@@ -60,7 +60,7 @@ void ov96_02214718(undefined4 param_1,undefined4 *param_2,undefined4 param_3)
   int iVar2;
   uint uVar3;
   int aiStack_38 [9];
-  
+
   aiStack_38[6] = 0x36000;
   aiStack_38[7] = 0x298000;
   aiStack_38[8] = 0;

@@ -55,7 +55,7 @@ void ov07_0221C8CC(undefined4 *param_1,undefined4 param_2,undefined4 param_3,und
   int iVar3;
   undefined1 auStack_60 [80];
   undefined4 uStack_10;
-  
+
   iVar1 = param_1[6];
   piVar2 = (int *)(iVar1 + 4);
   param_1[6] = piVar2;

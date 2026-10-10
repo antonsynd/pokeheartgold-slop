@@ -49,7 +49,7 @@ void ov85_021E82F8(int param_1)
 
 {
   undefined4 uVar1;
-  
+
   *(undefined1 *)(param_1 + 0xc44) = 0;
   *(undefined1 *)(param_1 + 0xc45) = 0;
   *(undefined1 *)(param_1 + 0xc46) = 0;

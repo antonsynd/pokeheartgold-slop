@@ -55,7 +55,7 @@ undefined4 ov102_021E86B8(int param_1)
   ushort uVar1;
   undefined2 uVar2;
   int iVar3;
-  
+
   if (*(short *)(param_1 + 0x50) == 0xfe) {
     if ((*(ushort *)(param_1 + 0x34) & 0x40) != 0) {
       uVar2 = ov102_021EC584(*(undefined2 *)(param_1 + 0x52));

@@ -79,7 +79,7 @@ void ov45_0222B8A0(int param_1,undefined4 param_2,undefined4 param_3)
   undefined2 *puVar10;
   int iVar11;
   int iVar12;
-  
+
   uVar3 = Save_PlayerData_GetProfile(param_2);
   uVar4 = SaveArray_Party_Get(param_2);
   uVar5 = func_0x0202a634(param_2);

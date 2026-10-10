@@ -53,7 +53,7 @@ void ov18_021F6AB0(int param_1,int param_2,int param_3)
   undefined4 uStack_18;
   undefined4 uStack_14;
   undefined4 uStack_10;
-  
+
   func_0x020ccba0(0x100000,param_3 << 0xc);
   uStack_1c = func_0x020ccbb0();
   uStack_18 = 0;

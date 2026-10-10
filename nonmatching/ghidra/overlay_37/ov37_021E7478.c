@@ -57,7 +57,7 @@ void ov37_021E7478(int param_1,undefined4 param_2,undefined4 param_3,int param_4
   int iVar2;
   int iVar3;
   undefined4 uStack_18;
-  
+
   iVar1 = sub_0203769C();
   iVar2 = ov37_021E75E8(param_4);
   if (iVar2 != 0) {

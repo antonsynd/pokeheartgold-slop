@@ -51,7 +51,7 @@ void ov90_02259184(undefined4 *param_1,undefined4 param_2,undefined4 param_3,und
 
 {
   undefined4 uVar1;
-  
+
   uVar1 = NewMsgDataFromNarc(0,0x1b,0xec,param_2,param_4);
   *param_1 = uVar1;
   uVar1 = func_0x0200bd18(8,0x40,param_2);

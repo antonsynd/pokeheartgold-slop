@@ -53,7 +53,7 @@ undefined4 sub_0205DEC0(undefined4 param_1,undefined4 param_2)
 
 {
   undefined4 uVar1;
-  
+
   uVar1 = PlayerAvatar_GetState();
   switch(uVar1) {
   case 0:

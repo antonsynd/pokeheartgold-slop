@@ -77,7 +77,7 @@ void ov92_0225D7CC(int param_1,undefined4 param_2,undefined4 param_3,undefined4 
   undefined4 uStack_1c;
   undefined4 uStack_18;
   undefined4 uStack_14;
-  
+
   uStack_14 = param_4;
   uVar1 = SpriteSystem_Alloc(0x71);
   *(undefined4 *)(param_1 + 0x50) = uVar1;

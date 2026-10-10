@@ -49,7 +49,7 @@ void ov96_022099EC(int param_1)
 
 {
   int iVar1;
-  
+
   if (param_1 == 0) {
     GF_AssertFail();
   }

@@ -49,7 +49,7 @@ int ov74_02233F8C(int param_1,uint param_2,undefined4 param_3)
 {
   undefined4 extraout_r1;
   int iVar1;
-  
+
   iVar1 = 0;
   { uint nug_a = (uint)(param_2), nug_b = (uint)(0x18); extraout_r1 = nug_a % nug_b; _u32_div_f(nug_a, nug_b); }
   switch(extraout_r1) {

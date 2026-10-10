@@ -50,7 +50,7 @@ void ov96_022141F8(int param_1)
   undefined4 uVar1;
   uint uVar2;
   int iVar3;
-  
+
   uVar2 = 0;
   do {
     iVar3 = param_1 + 0x7d4 + uVar2 * 0x10;

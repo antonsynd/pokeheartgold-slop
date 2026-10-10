@@ -49,7 +49,7 @@ void ov96_02203B8C(undefined4 param_1,undefined4 param_2,undefined4 param_3)
 
 {
   int iVar1;
-  
+
   iVar1 = 0;
   do {
     ov96_021EB408(param_2,3,2,0x65,5);

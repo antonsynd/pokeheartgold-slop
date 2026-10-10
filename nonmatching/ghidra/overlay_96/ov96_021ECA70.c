@@ -56,7 +56,7 @@ void ov96_021ECA70(undefined4 param_1,undefined4 param_2)
   char cVar4;
   char cVar5;
   int iVar6;
-  
+
   iVar1 = PokeathlonCourse_GetHeapAllocPtr4();
   iVar6 = 0;
   cVar4 = '\x01';

@@ -49,7 +49,7 @@ undefined4 ov89_0225C91C(undefined4 param_1)
 
 {
   int iVar1;
-  
+
   iVar1 = func_0x0222d844();
   if (iVar1 == 1) {
     return 0;

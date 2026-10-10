@@ -51,7 +51,7 @@ undefined4 ov37_021E6E04(int param_1,undefined4 param_2)
 
 {
   int iVar1;
-  
+
   iVar1 = ov37_021E76A0(*(undefined4 *)(param_1 + 0x30));
   if (iVar1 != 0) {
     ov37_021E7844(param_1,0x11);

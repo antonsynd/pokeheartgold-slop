@@ -52,7 +52,7 @@ void ov108_021E7BB4(undefined4 *param_1,uint param_2,undefined4 param_3,undefine
   undefined4 uVar1;
   uint uVar2;
   undefined4 *puVar3;
-  
+
   uVar1 = NARC_New(0xa6,*param_1,param_3,param_4,param_4);
   if (param_2 < 6) {
     ov108_021E7B74(param_1,uVar1,param_2,param_3);

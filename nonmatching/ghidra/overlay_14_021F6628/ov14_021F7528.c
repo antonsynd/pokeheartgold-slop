@@ -50,7 +50,7 @@ void ov14_021F7528(int param_1,uint param_2,int param_3)
 
 {
   int iVar1;
-  
+
   if (param_3 != -1) {
     iVar1 = ov14_021E8544(*(undefined4 *)(*(int *)(param_1 + 0x34) + 0x2f0));
     if (iVar1 == 0) {

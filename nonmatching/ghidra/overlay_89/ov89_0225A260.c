@@ -82,7 +82,7 @@ void ov89_0225A260(int param_1,int *param_2,undefined4 param_3,undefined4 param_
   undefined4 uStack_20;
   undefined4 uStack_1c;
   undefined4 uStack_18;
-  
+
   uStack_18 = param_4;
   if (*param_2 != 0) {
     GF_AssertFail();

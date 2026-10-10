@@ -52,7 +52,7 @@ void ov18_021EE3AC(int param_1,undefined4 param_2,int param_3,undefined4 param_4
 
 {
   undefined4 uVar1;
-  
+
   uVar1 = NewString_ReadMsgData(param_2,param_4);
   StringExpandPlaceholders(*(undefined4 *)(param_1 + 0x660),*(undefined4 *)(param_1 + 0x664),uVar1);
   ov18_021F95FC(param_1 + 0xc + param_3 * 0x10,*(undefined4 *)(param_1 + 0x664),param_5,param_6,

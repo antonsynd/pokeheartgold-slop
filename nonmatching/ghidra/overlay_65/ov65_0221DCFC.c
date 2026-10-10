@@ -49,7 +49,7 @@ byte ov65_0221DCFC(int param_1,int param_2,int param_3)
 {
   byte *pbVar1;
   int iVar2;
-  
+
   iVar2 = 0;
   pbVar1 = &ov65_0221FFB4 + param_2 * 6 + param_1 * 0x18;
   do {

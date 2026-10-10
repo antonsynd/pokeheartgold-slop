@@ -60,7 +60,7 @@ int sub_02034638(void)
   uint uVar4;
   int iVar5;
   int iVar6;
-  
+
   if (*(char *)(iRam021d4130 + 0x3a5) == '\0') {
     return 0;
   }

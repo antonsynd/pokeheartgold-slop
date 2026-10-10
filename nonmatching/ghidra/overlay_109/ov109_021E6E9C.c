@@ -51,7 +51,7 @@ void ov109_021E6E9C(undefined4 *param_1)
 
 {
   undefined4 uVar1;
-  
+
   ov109_021E6DE4();
   ov109_021E6EE4(param_1);
   uVar1 = func_0x02018424(*param_1,0);

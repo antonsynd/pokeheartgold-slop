@@ -57,7 +57,7 @@ void ov57_02239728(undefined4 param_1,int param_2,int param_3,int param_4)
 {
   undefined4 uVar1;
   undefined4 uVar2;
-  
+
   if (param_4 != 0) {
     if (param_2 == 0) {
       DrawFrameAndWindow1(param_1,1,1,0xc);

@@ -54,7 +54,7 @@ void sub_0203A8CC(undefined4 param_1,undefined4 param_2,undefined4 param_3,undef
 {
   int iVar1;
   undefined4 uVar2;
-  
+
   uVar2 = param_4;
   iVar1 = sub_02034DCC();
   if (iVar1 != 0) {

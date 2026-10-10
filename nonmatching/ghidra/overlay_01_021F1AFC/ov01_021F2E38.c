@@ -52,7 +52,7 @@ undefined4 ov01_021F2E38(int *param_1)
 
 {
   int iVar1;
-  
+
   iVar1 = FollowMon_IsActive(param_1[0xd]);
   if (iVar1 != 0) {
     FollowMon_GetMapObject(param_1[0xd]);

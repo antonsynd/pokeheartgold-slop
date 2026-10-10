@@ -55,7 +55,7 @@ void ov97_0221F56C(int param_1,int param_2,undefined4 param_3,undefined4 param_4
   int iVar3;
   byte abStack_20 [8];
   undefined4 uStack_18;
-  
+
   iVar3 = param_1 + 0x78;
   uStack_18 = param_4;
   ov97_0221FBDC(iVar3);

@@ -48,7 +48,7 @@ void ov49_0225E82C(int param_1,undefined4 param_2,undefined4 param_3,undefined4 
 
 {
   int iVar1;
-  
+
   iVar1 = 0;
   if (*(char *)(param_1 + 0x608) != '\0') {
     do {

@@ -62,7 +62,7 @@ ov41_0224A928(int param_1,undefined4 param_2,undefined4 param_3,undefined4 param
   undefined4 uVar2;
   undefined4 uVar3;
   undefined4 uVar4;
-  
+
   iVar1 = NewMsgDataFromNarc(0,param_2,param_3,0xd);
   if (iVar1 == 0) {
     GF_AssertFail();

@@ -86,7 +86,7 @@ void ov12_022387AC(int param_1,undefined4 param_2)
   undefined4 auStack_68 [7];
   undefined1 auStack_4c [28];
   undefined1 auStack_30 [28];
-  
+
   GfGfx_DisableEngineAPlanes();
   puVar6 = (undefined4 *)&ov12_0226C0A8;
   puVar5 = auStack_90;

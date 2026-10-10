@@ -63,7 +63,7 @@ undefined4 sub_02089478(undefined4 *param_1)
   undefined *puVar2;
   undefined *puVar3;
   uint uVar4;
-  
+
   if ((uRam021d1154 & 3) == 0) {
     return 0x10;
   }

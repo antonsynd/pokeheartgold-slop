@@ -48,7 +48,7 @@ int ov73_021E8440(void)
 
 {
   int iVar1;
-  
+
   iVar1 = func_0x021ec9d4();
   return 3 - iVar1;
 }
