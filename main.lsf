@@ -2908,7 +2908,63 @@ Overlay OVY_83
     Object src/overlay_83_0223DD60_60.o
     Object asm/overlay_83_0223DD60_data.o
     Object asm/overlay_83_02242FE8.o
-    Object asm/overlay_83_02243D7C.o
+    Object src/overlay_83_02243D7C_00.o
+    Object src/overlay_83_02243D7C_01.o
+    Object asm/overlay_83_02243D7C_02.o
+    Object asm/overlay_83_02243D7C_03.o
+    Object asm/overlay_83_02243D7C_04.o
+    Object src/overlay_83_02243D7C_05.o
+    Object asm/overlay_83_02243D7C_06.o
+    Object src/overlay_83_02243D7C_07.o
+    Object asm/overlay_83_02243D7C_08.o
+    Object src/overlay_83_02243D7C_09.o
+    Object asm/overlay_83_02243D7C_10.o
+    Object asm/overlay_83_02243D7C_11.o
+    Object asm/overlay_83_02243D7C_12.o
+    Object src/overlay_83_02243D7C_13.o
+    Object src/overlay_83_02243D7C_14.o
+    Object src/overlay_83_02243D7C_15.o
+    Object asm/overlay_83_02243D7C_16.o
+    Object asm/overlay_83_02243D7C_17.o
+    Object src/overlay_83_02243D7C_18.o
+    Object asm/overlay_83_02243D7C_19.o
+    Object src/overlay_83_02243D7C_20.o
+    Object src/overlay_83_02243D7C_21.o
+    Object asm/overlay_83_02243D7C_22.o
+    Object src/overlay_83_02243D7C_23.o
+    Object asm/overlay_83_02243D7C_24.o
+    Object asm/overlay_83_02243D7C_25.o
+    Object asm/overlay_83_02243D7C_26.o
+    Object asm/overlay_83_02243D7C_27.o
+    Object src/overlay_83_02243D7C_28.o
+    Object asm/overlay_83_02243D7C_29.o
+    Object src/overlay_83_02243D7C_30.o
+    Object src/overlay_83_02243D7C_31.o
+    Object src/overlay_83_02243D7C_32.o
+    Object src/overlay_83_02243D7C_33.o
+    Object src/overlay_83_02243D7C_34.o
+    Object src/overlay_83_02243D7C_35.o
+    Object asm/overlay_83_02243D7C_36.o
+    Object src/overlay_83_02243D7C_37.o
+    Object asm/overlay_83_02243D7C_38.o
+    Object asm/overlay_83_02243D7C_39.o
+    Object asm/overlay_83_02243D7C_40.o
+    Object src/overlay_83_02243D7C_41.o
+    Object asm/overlay_83_02243D7C_42.o
+    Object src/overlay_83_02243D7C_43.o
+    Object asm/overlay_83_02243D7C_44.o
+    Object src/overlay_83_02243D7C_45.o
+    Object asm/overlay_83_02243D7C_46.o
+    Object src/overlay_83_02243D7C_47.o
+    Object asm/overlay_83_02243D7C_48.o
+    Object src/overlay_83_02243D7C_49.o
+    Object asm/overlay_83_02243D7C_50.o
+    Object asm/overlay_83_02243D7C_51.o
+    Object asm/overlay_83_02243D7C_52.o
+    Object src/overlay_83_02243D7C_53.o
+    Object asm/overlay_83_02243D7C_54.o
+    Object asm/overlay_83_02243D7C_55.o
+    Object asm/overlay_83_02243D7C_data.o
     Object src/overlay_83_02246E08.o
     Object src/overlay_83_022479E4.o
 }
