@@ -4,62 +4,20 @@
 #include "bg_window.h"
 #include "font.h"
 #include "gf_gfx_loader.h"
+#include "ghidra_compat.h"
 #include "message_format.h"
 #include "msgdata.h"
-#include "sprite.h"
-#include "sprite_system.h"
-#define true           1
-#define false          0
-#define CONCAT11(a, b) ((unsigned short)(((unsigned)(a) << 8) | (unsigned char)(b)))
-#define CONCAT12(a, b) (((unsigned)(unsigned char)(a) << 16) | (unsigned short)(b))
-#define CONCAT13(a, b) (((unsigned)(unsigned char)(a) << 24) | ((unsigned)(b) & 0xffffff))
-#define CONCAT21(a, b) (((unsigned)(unsigned short)(a) << 8) | (unsigned char)(b))
-#define CONCAT22(a, b) (((unsigned)(unsigned short)(a) << 16) | (unsigned short)(b))
-#define CONCAT31(a, b) (((unsigned)(a) << 8) | (unsigned char)(b))
-#define CONCAT44(a, b) (((unsigned long long)(unsigned)(a) << 32) | (unsigned)(b))
-#define SUB41(x, n)    ((unsigned char)((unsigned)(x) >> ((n) * 8)))
-#define SUB42(x, n)    ((unsigned short)((unsigned)(x) >> ((n) * 8)))
-#define SUB81(x, n)    ((unsigned char)((unsigned long long)(x) >> ((n) * 8)))
-#define SUB84(x, n)    ((unsigned)((unsigned long long)(x) >> ((n) * 8)))
-#define ZEXT14(x)      ((unsigned)(unsigned char)(x))
-#define ZEXT24(x)      ((unsigned)(unsigned short)(x))
-#define ZEXT48(x)      ((unsigned long long)(unsigned)(x))
-#define SEXT14(x)      ((int)(signed char)(x))
-#define SEXT24(x)      ((int)(short)(x))
-#define SEXT48(x)      ((long long)(int)(x))
-#define CARRY4(a, b)   ((unsigned)(a) + (unsigned)(b) < (unsigned)(a))
-#define SCARRY4(a, b)  ((((int)(a) + (int)(b)) < (int)(a)) != ((int)(b) < 0))
-#define SBORROW4(a, b) ((((int)(a) - (int)(b)) > (int)(a)) != ((int)(b) < 0))
-#define POPCOUNT(x)    __builtin_popcount(x)
-#define LZCOUNT(x)     ((x) ? __builtin_clz(x) : 32)
 #include "render_text.h"
 #include "render_window.h"
+#include "sprite.h"
+#include "sprite_system.h"
 #include "text.h"
 
 void ov59_0223C6C4();                        /* ov59_0223892C */
 void ov59_0223C6C6();                        /* ov59_0223892C */
 extern int _s32_div_f(int numer, int denom); /* ov59_02238A04 */
 void ov59_0223C624();                        /* ov59_02238A04 */
-typedef unsigned char undefined;             /* ov59_02238C24 */
-typedef unsigned char undefined1;            /* ov59_02238C24 */
-typedef unsigned short undefined2;           /* ov59_02238C24 */
-typedef unsigned int undefined3;             /* ov59_02238C24 */
-typedef unsigned int undefined4;             /* ov59_02238C24 */
-typedef unsigned long long undefined8;       /* ov59_02238C24 */
-typedef unsigned char byte;                  /* ov59_02238C24 */
-typedef signed char sbyte;                   /* ov59_02238C24 */
-typedef unsigned short ushort;               /* ov59_02238C24 */
-typedef unsigned short word;                 /* ov59_02238C24 */
-typedef unsigned int uint;                   /* ov59_02238C24 */
-typedef unsigned int dword;                  /* ov59_02238C24 */
-typedef unsigned int ulong;                  /* ov59_02238C24 */
-typedef unsigned long long ulonglong;        /* ov59_02238C24 */
-typedef unsigned long long qword;            /* ov59_02238C24 */
-typedef long long longlong;                  /* ov59_02238C24 */
-typedef unsigned char bool;                  /* ov59_02238C24 */
 typedef int code();                          /* ov59_02238C24 */
-typedef void *pointer;                       /* ov59_02238C24 */
-typedef unsigned short wchar16;              /* ov59_02238C24 */
 
 void ov59_02238834(int param_1, int param_2, int param_3);
 void ov59_0223892C(int param_1, int param_2);

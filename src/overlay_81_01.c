@@ -5,6 +5,7 @@
 
 #include "bg_window.h"
 #include "gf_gfx_planes.h"
+#include "ghidra_compat.h"
 #include "heap.h"
 #include "options.h"
 #include "overlay_manager.h"
@@ -16,53 +17,10 @@
 #include "system.h"
 #include "unk_02005D10.h"
 #include "unk_0201956C.h"
-#include "unk_020379A0.h"
-#define true           1
-#define false          0
-#define CONCAT11(a, b) ((unsigned short)(((unsigned)(a) << 8) | (unsigned char)(b)))
-#define CONCAT12(a, b) (((unsigned)(unsigned char)(a) << 16) | (unsigned short)(b))
-#define CONCAT13(a, b) (((unsigned)(unsigned char)(a) << 24) | ((unsigned)(b) & 0xffffff))
-#define CONCAT21(a, b) (((unsigned)(unsigned short)(a) << 8) | (unsigned char)(b))
-#define CONCAT22(a, b) (((unsigned)(unsigned short)(a) << 16) | (unsigned short)(b))
-#define CONCAT31(a, b) (((unsigned)(a) << 8) | (unsigned char)(b))
-#define CONCAT44(a, b) (((unsigned long long)(unsigned)(a) << 32) | (unsigned)(b))
-#define SUB41(x, n)    ((unsigned char)((unsigned)(x) >> ((n) * 8)))
-#define SUB42(x, n)    ((unsigned short)((unsigned)(x) >> ((n) * 8)))
-#define SUB81(x, n)    ((unsigned char)((unsigned long long)(x) >> ((n) * 8)))
-#define SUB84(x, n)    ((unsigned)((unsigned long long)(x) >> ((n) * 8)))
-#define ZEXT14(x)      ((unsigned)(unsigned char)(x))
-#define ZEXT24(x)      ((unsigned)(unsigned short)(x))
-#define ZEXT48(x)      ((unsigned long long)(unsigned)(x))
-#define SEXT14(x)      ((int)(signed char)(x))
-#define SEXT24(x)      ((int)(short)(x))
-#define SEXT48(x)      ((long long)(int)(x))
-#define CARRY4(a, b)   ((unsigned)(a) + (unsigned)(b) < (unsigned)(a))
-#define SCARRY4(a, b)  ((((int)(a) + (int)(b)) < (int)(a)) != ((int)(b) < 0))
-#define SBORROW4(a, b) ((((int)(a) - (int)(b)) > (int)(a)) != ((int)(b) < 0))
-#define POPCOUNT(x)    __builtin_popcount(x)
-#define LZCOUNT(x)     ((x) ? __builtin_clz(x) : 32)
 #include "unk_02019BA4.h"
+#include "unk_020379A0.h"
 
-typedef unsigned char undefined;             /* ov81_0223E8B0 */
-typedef unsigned char undefined1;            /* ov81_0223E8B0 */
-typedef unsigned short undefined2;           /* ov81_0223E8B0 */
-typedef unsigned int undefined3;             /* ov81_0223E8B0 */
-typedef unsigned int undefined4;             /* ov81_0223E8B0 */
-typedef unsigned long long undefined8;       /* ov81_0223E8B0 */
-typedef unsigned char byte;                  /* ov81_0223E8B0 */
-typedef signed char sbyte;                   /* ov81_0223E8B0 */
-typedef unsigned short ushort;               /* ov81_0223E8B0 */
-typedef unsigned short word;                 /* ov81_0223E8B0 */
-typedef unsigned int uint;                   /* ov81_0223E8B0 */
-typedef unsigned int dword;                  /* ov81_0223E8B0 */
-typedef unsigned int ulong;                  /* ov81_0223E8B0 */
-typedef unsigned long long ulonglong;        /* ov81_0223E8B0 */
-typedef unsigned long long qword;            /* ov81_0223E8B0 */
-typedef long long longlong;                  /* ov81_0223E8B0 */
-typedef unsigned char bool;                  /* ov81_0223E8B0 */
 typedef int code();                          /* ov81_0223E8B0 */
-typedef void *pointer;                       /* ov81_0223E8B0 */
-typedef unsigned short wchar16;              /* ov81_0223E8B0 */
 void gOverlayTemplate_PokemonSummary();      /* ov81_0223ECE4 */
 extern unsigned int SDK_OVERLAY_OVY_80_ID[]; /* ov81_0223E234 */
 
