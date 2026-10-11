@@ -1,0 +1,120 @@
+	.include "asm/macros.inc"
+	.include "overlay_85.inc"
+	.include "global.inc"
+	.public ov85_021E7658
+	.public ov85_021E7660
+	.extern ov85_021E7734
+	.extern ov85_021EA558
+	.extern ov85_021EA580
+
+	.text
+
+	.text
+	thumb_func_start ov85_021E7658
+ov85_021E7658: ; 0x021E7658
+	ldr r3, _021E765C ; =ov85_021E7734
+	bx r3
+	.balign 4, 0
+_021E765C: .word ov85_021E7734
+	thumb_func_end ov85_021E7658
+
+	thumb_func_start ov85_021E7660
+ov85_021E7660: ; 0x021E7660
+	push {r4, r5, r6, r7, lr}
+	sub sp, #0x14
+	add r7, r0, #0
+	mov r0, #0x66
+	mov r1, #0
+	str r0, [sp]
+	mov r2, #0x36
+	mov r5, #0x19
+	lsl r5, r5, #4
+	str r1, [sp, #4]
+	lsl r2, r2, #6
+	ldr r2, [r7, r2]
+	add r0, r7, r5
+	add r3, r1, #0
+	bl sub_020696C4
+	add r0, r7, r5
+	bl sub_02069714
+	mov r0, #0x66
+	str r0, [sp]
+	mov r1, #0
+	mov r2, #0x36
+	add r0, r7, r5
+	str r1, [sp, #4]
+	lsl r2, r2, #6
+	ldr r2, [r7, r2]
+	add r0, #0x14
+	mov r3, #5
+	bl sub_020696C4
+	add r0, r7, r5
+	add r0, #0x14
+	bl sub_02069714
+	add r4, r7, r5
+	ldr r0, _021E772C ; =ov85_021EA558
+	add r4, #0x28
+	str r0, [sp, #0xc]
+	ldr r0, _021E7730 ; =ov85_021EA580
+	add r5, r7, r5
+	str r0, [sp, #8]
+	mov r0, #0
+	str r0, [sp, #0x10]
+	add r5, #0x8c
+	add r6, r4, #0
+_021E76BC:
+	mov r0, #0x66
+	str r0, [sp]
+	mov r0, #0
+	mov r2, #0x36
+	str r0, [sp, #4]
+	ldr r3, [sp, #0xc]
+	lsl r2, r2, #6
+	ldr r2, [r7, r2]
+	ldr r3, [r3]
+	add r0, r4, #0
+	mov r1, #0
+	bl sub_020696C4
+	add r0, r4, #0
+	bl sub_02069714
+	mov r0, #0x66
+	str r0, [sp]
+	mov r0, #0
+	mov r2, #0x36
+	str r0, [sp, #4]
+	ldr r3, [sp, #8]
+	lsl r2, r2, #6
+	ldr r2, [r7, r2]
+	ldr r3, [r3]
+	add r0, r5, #0
+	mov r1, #0
+	bl sub_020697DC
+	add r0, r5, #0
+	add r1, r6, #0
+	mov r2, #0x66
+	bl sub_02069864
+	add r0, r5, #0
+	add r1, r6, #0
+	bl sub_02069884
+	ldr r0, [sp, #0x10]
+	add r4, #0x14
+	add r0, r0, #1
+	str r0, [sp, #0x10]
+	ldr r0, [sp, #0xc]
+	add r5, #0x24
+	add r0, r0, #4
+	str r0, [sp, #0xc]
+	ldr r0, [sp, #8]
+	add r6, #0x14
+	add r0, r0, #4
+	str r0, [sp, #8]
+	ldr r0, [sp, #0x10]
+	cmp r0, #5
+	blt _021E76BC
+	add sp, #0x14
+	pop {r4, r5, r6, r7, pc}
+	nop
+_021E772C: .word ov85_021EA558
+_021E7730: .word ov85_021EA580
+	thumb_func_end ov85_021E7660
+
