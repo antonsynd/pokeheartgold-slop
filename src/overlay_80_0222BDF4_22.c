@@ -2,52 +2,11 @@
 #pragma warning_errors off
 #pragma thumb on
 #include "frontier/frontier_script_context.h"
-#define true           1
-#define false          0
-#define CONCAT11(a, b) ((unsigned short)(((unsigned)(a) << 8) | (unsigned char)(b)))
-#define CONCAT12(a, b) (((unsigned)(unsigned char)(a) << 16) | (unsigned short)(b))
-#define CONCAT13(a, b) (((unsigned)(unsigned char)(a) << 24) | ((unsigned)(b) & 0xffffff))
-#define CONCAT21(a, b) (((unsigned)(unsigned short)(a) << 8) | (unsigned char)(b))
-#define CONCAT22(a, b) (((unsigned)(unsigned short)(a) << 16) | (unsigned short)(b))
-#define CONCAT31(a, b) (((unsigned)(a) << 8) | (unsigned char)(b))
-#define CONCAT44(a, b) (((unsigned long long)(unsigned)(a) << 32) | (unsigned)(b))
-#define SUB41(x, n)    ((unsigned char)((unsigned)(x) >> ((n) * 8)))
-#define SUB42(x, n)    ((unsigned short)((unsigned)(x) >> ((n) * 8)))
-#define SUB81(x, n)    ((unsigned char)((unsigned long long)(x) >> ((n) * 8)))
-#define SUB84(x, n)    ((unsigned)((unsigned long long)(x) >> ((n) * 8)))
-#define ZEXT14(x)      ((unsigned)(unsigned char)(x))
-#define ZEXT24(x)      ((unsigned)(unsigned short)(x))
-#define ZEXT48(x)      ((unsigned long long)(unsigned)(x))
-#define SEXT14(x)      ((int)(signed char)(x))
-#define SEXT24(x)      ((int)(short)(x))
-#define SEXT48(x)      ((long long)(int)(x))
-#define CARRY4(a, b)   ((unsigned)(a) + (unsigned)(b) < (unsigned)(a))
-#define SCARRY4(a, b)  ((((int)(a) + (int)(b)) < (int)(a)) != ((int)(b) < 0))
-#define SBORROW4(a, b) ((((int)(a) - (int)(b)) > (int)(a)) != ((int)(b) < 0))
-#define POPCOUNT(x)    __builtin_popcount(x)
-#define LZCOUNT(x)     ((x) ? __builtin_clz(x) : 32)
+
+#include "ghidra_compat.h"
 
 void ov80_0223B9D8();                           /* FrtCmd_014 */
-typedef unsigned char undefined;                /* ov80_0222C17C */
-typedef unsigned char undefined1;               /* ov80_0222C17C */
-typedef unsigned short undefined2;              /* ov80_0222C17C */
-typedef unsigned int undefined3;                /* ov80_0222C17C */
-typedef unsigned int undefined4;                /* ov80_0222C17C */
-typedef unsigned long long undefined8;          /* ov80_0222C17C */
-typedef unsigned char byte;                     /* ov80_0222C17C */
-typedef signed char sbyte;                      /* ov80_0222C17C */
-typedef unsigned short ushort;                  /* ov80_0222C17C */
-typedef unsigned short word;                    /* ov80_0222C17C */
-typedef unsigned int uint;                      /* ov80_0222C17C */
-typedef unsigned int dword;                     /* ov80_0222C17C */
-typedef unsigned int ulong;                     /* ov80_0222C17C */
-typedef unsigned long long ulonglong;           /* ov80_0222C17C */
-typedef unsigned long long qword;               /* ov80_0222C17C */
-typedef long long longlong;                     /* ov80_0222C17C */
-typedef unsigned char bool;                     /* ov80_0222C17C */
 typedef int code();                             /* ov80_0222C17C */
-typedef void *pointer;                          /* ov80_0222C17C */
-typedef unsigned short wchar16;                 /* ov80_0222C17C */
 undefined4 TextPrinterCheckActive();            /* ov80_0222C17C */
 undefined4 TextFlags_SetCanTouchSpeedUpPrint(); /* ov80_0222C17C */
 
