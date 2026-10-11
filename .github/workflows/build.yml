@@ -99,13 +99,7 @@ jobs:
           GAME_VERSION: ${{ matrix.game }}
           GAME_LANGUAGE: ENGLISH
           GAME_REVISION: 0
-        run: |
-          # Create the Wine prefix, then keep one wineserver up for the whole
-          # build rather than letting it exit and restart whenever no compile
-          # happens to be running. (wineserver -p needs the prefix to exist.)
-          wineboot --init
-          wineserver -p
-          make -j"$(nproc)" 2> >(sed -r 's/^/::error::/')
+        run: make -j"$(nproc)" 2> >(sed -r 's/^/::error::/')
 
       - name: Post error archive
         if: failure()
