@@ -518,7 +518,59 @@ Overlay field
     Object asm/overlay_01_sprite_data.o
     Object asm/overlay_01_021F72DC.o
     Object src/field/overlay_01_021F8D80.o
-    Object asm/overlay_01_021F944C.o
+    Object asm/overlay_01_021F944C_00.o
+    Object asm/overlay_01_021F944C_01.o
+    Object src/overlay_01_021F944C_02.o
+    Object src/overlay_01_021F944C_03.o
+    Object src/overlay_01_021F944C_04.o
+    Object src/overlay_01_021F944C_05.o
+    Object src/overlay_01_021F944C_06.o
+    Object src/overlay_01_021F944C_07.o
+    Object src/overlay_01_021F944C_08.o
+    Object src/overlay_01_021F944C_09.o
+    Object src/overlay_01_021F944C_10.o
+    Object src/overlay_01_021F944C_11.o
+    Object src/overlay_01_021F944C_12.o
+    Object src/overlay_01_021F944C_13.o
+    Object src/overlay_01_021F944C_14.o
+    Object src/overlay_01_021F944C_15.o
+    Object src/overlay_01_021F944C_16.o
+    Object asm/overlay_01_021F944C_17.o
+    Object asm/overlay_01_021F944C_18.o
+    Object src/overlay_01_021F944C_19.o
+    Object asm/overlay_01_021F944C_20.o
+    Object asm/overlay_01_021F944C_21.o
+    Object src/overlay_01_021F944C_22.o
+    Object src/overlay_01_021F944C_23.o
+    Object src/overlay_01_021F944C_24.o
+    Object src/overlay_01_021F944C_25.o
+    Object src/overlay_01_021F944C_26.o
+    Object src/overlay_01_021F944C_27.o
+    Object asm/overlay_01_021F944C_28.o
+    Object src/overlay_01_021F944C_29.o
+    Object src/overlay_01_021F944C_30.o
+    Object src/overlay_01_021F944C_31.o
+    Object asm/overlay_01_021F944C_32.o
+    Object src/overlay_01_021F944C_33.o
+    Object src/overlay_01_021F944C_34.o
+    Object asm/overlay_01_021F944C_35.o
+    Object src/overlay_01_021F944C_36.o
+    Object asm/overlay_01_021F944C_37.o
+    Object asm/overlay_01_021F944C_38.o
+    Object src/overlay_01_021F944C_39.o
+    Object src/overlay_01_021F944C_40.o
+    Object src/overlay_01_021F944C_41.o
+    Object src/overlay_01_021F944C_42.o
+    Object src/overlay_01_021F944C_43.o
+    Object src/overlay_01_021F944C_44.o
+    Object src/overlay_01_021F944C_45.o
+    Object src/overlay_01_021F944C_46.o
+    Object src/overlay_01_021F944C_47.o
+    Object src/overlay_01_021F944C_48.o
+    Object src/overlay_01_021F944C_49.o
+    Object src/overlay_01_021F944C_50.o
+    Object asm/overlay_01_021F944C_51.o
+    Object asm/overlay_01_021F944C_data.o
     Object src/overlay_01_021FAC44.o
     Object src/overlay_01_021FAD1C.o
     Object src/overlay_01_021FB04C.o

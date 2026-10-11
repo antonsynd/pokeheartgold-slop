@@ -1,0 +1,164 @@
+#include "constants/sndseq.h"
+#include "constants/moves.h"
+#include "constants/std_script.h"
+#include "constants/species.h"
+#include "constants/sprites.h"
+#include "constants/maps.h"
+#include "constants/mmodel.h"
+#include "constants/items.h"
+#include "msgdata/msg/msg_0096_D31R0201.h"
+#include "msgdata/msg/msg_0066_D23R0102.h"
+	.include "asm/macros.inc"
+	.include "overlay_01_021F944C.inc"
+	.include "global.inc"
+	.public ov01_02208B64
+	.public ov01_02208B70
+	.public ov01_02208B80
+	.public ov01_02208B90
+
+	.text
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	.rodata
+
+ov01_02208B64: ; 0x02208B64
+	.byte 0x00, 0x10, 0x00, 0x00, 0x00, 0x10, 0x00, 0x00, 0x00, 0x10, 0x00, 0x00
+
+ov01_02208B70: ; 0x02208B70
+	.byte 0x00, 0x00, 0x00, 0x00, 0x01, 0x00, 0x00, 0x00, 0x02, 0x00, 0x00, 0x00, 0x03, 0x00, 0x00, 0x00
+
+ov01_02208B80: ; 0x02208B80
+	.byte 0x04, 0x00, 0x00, 0x00, 0x05, 0x00, 0x00, 0x00, 0x06, 0x00, 0x00, 0x00, 0x07, 0x00, 0x00, 0x00
+
+ov01_02208B90: ; 0x02208B90
+	.byte 0x04, 0x00, 0x00, 0x00, 0x05, 0x00, 0x00, 0x00, 0x04, 0x00, 0x00, 0x00, 0x05, 0x00, 0x00, 0x00
