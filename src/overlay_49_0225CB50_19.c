@@ -2,6 +2,7 @@
 #pragma warning_errors off
 #pragma thumb on
 #include "global.h"
+
 #include "assert.h"
 #include "filesystem.h"
 #include "gf_3d_render.h"
@@ -51,19 +52,18 @@ typedef struct UnkStruct_ov49_0225D5FC {
     UnkStruct_02018030 unk00[2];
     UnkStruct_020180BC unk20[5];
     u32 unk84[5];
-} UnkStruct_ov49_0225D5FC; /* ov49_0225D5FC */
-extern UnkStruct_ov49_0225D098 *ov49_0225DBF8(void *a0); /* ov49_0225D5FC */
+} UnkStruct_ov49_0225D5FC;                                                 /* ov49_0225D5FC */
+extern UnkStruct_ov49_0225D098 *ov49_0225DBF8(void *a0);                   /* ov49_0225D5FC */
 extern void ov49_02258800(const UnkStruct_ov49_0225D1EC *a0, VecFx32 *a1); /* ov49_0225D5FC */
 extern void ov49_02258814(const VecFx32 *a0, UnkStruct_ov49_0225D1EC *a1); /* ov49_0225D5FC */
-extern void ov49_02258830(void *a0, NARC *a1, u32 a2, u32 a3); /* ov49_0225D5FC */
-extern void ov45_0222D740(void *a0); /* ov49_0225D5FC */
+extern void ov49_02258830(void *a0, NARC *a1, u32 a2, u32 a3);             /* ov49_0225D5FC */
+extern void ov45_0222D740(void *a0);                                       /* ov49_0225D5FC */
 
 void ov49_0225D528(int param_1, int param_2, int param_3, int param_4);
 void ov49_0225D5FC(UnkStruct_ov49_0225D5FC *param0, NARC *param1, const UnkStruct_ov49_0225D4FC *param2, u32 heapID, NNSFndAllocator *param4);
 
 // FUNCTION ov49_0225D5FC: matching C (r2)
-void ov49_0225D5FC(UnkStruct_ov49_0225D5FC *param0, NARC *param1, const UnkStruct_ov49_0225D4FC *param2, u32 heapID, NNSFndAllocator *param4)
-{
+void ov49_0225D5FC(UnkStruct_ov49_0225D5FC *param0, NARC *param1, const UnkStruct_ov49_0225D4FC *param2, u32 heapID, NNSFndAllocator *param4) {
     int v0, v1;
 
     for (v0 = 0; v0 < 2; v0++) {

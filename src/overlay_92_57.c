@@ -3,7 +3,7 @@
 #pragma thumb on
 #include "global.h"
 
-void _fgr(void); /* ov92_022634F8 */
+void _fgr(void);  /* ov92_022634F8 */
 void _fadd(void); /* ov92_022634F8 */
 void _fsub(void); /* ov92_022634F8 */
 void _ffix(void); /* ov92_022634F8 */

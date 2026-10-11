@@ -2,6 +2,7 @@
 #pragma warning_errors off
 #pragma thumb on
 #include "global.h"
+
 #include "gf_gfx_loader.h"
 #include "palette.h"
 #include "screen_fade.h"
@@ -25,11 +26,11 @@ typedef struct UnkStruct_ov40_02231100 {
     int unk_724;
     u8 filler_728[0x83C - 0x728];
     int unk_83C;
-} UnkStruct_ov40_02231100; /* ov40_02231100 */
+} UnkStruct_ov40_02231100;                   /* ov40_02231100 */
 void sub_02087948(void *a0, s16 a1, s16 a2); /* ov40_02231100 */
 BOOL sub_020878B8(void *a0, s16 a1, s16 a2); /* ov40_02231100 */
-void sub_020879E0(void *a0, int a1); /* ov40_02231100 */
-void sub_020878B0(void *a0, int a1); /* ov40_02231100 */
+void sub_020879E0(void *a0, int a1);         /* ov40_02231100 */
+void sub_020878B0(void *a0, int a1);         /* ov40_02231100 */
 
 int ov40_0222BF64(int param_1, int param_2, int param_3, int param_4);
 int ov40_0222BF80(int param_1, int param_2);

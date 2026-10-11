@@ -2,10 +2,11 @@
 #pragma warning_errors off
 #pragma thumb on
 #include "global.h"
+
 #include "unk_02005D10.h"
 
 typedef void (*UnkFunc_ov102_021E7AA4)(void *a0, void *a1, void *a2, u32 a3); /* ov102_021E7AA4 */
-extern UnkFunc_ov102_021E7AA4 ov102_021EC5E8[]; /* ov102_021E7AA4 */
+extern UnkFunc_ov102_021E7AA4 ov102_021EC5E8[];                               /* ov102_021E7AA4 */
 
 void ov102_021E7AA4(u8 *a0, void *a1);
 int ov102_021E7AB8(int param_1, int param_2);

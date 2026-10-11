@@ -2,6 +2,7 @@
 #pragma warning_errors off
 #pragma thumb on
 #include "global.h"
+
 #include "assert.h"
 #include "camera.h"
 #include "filesystem.h"
@@ -50,23 +51,23 @@ typedef struct UnkStruct_ov49_0225CC4C {
     UnkStruct_ov49_0225D854 unk1C4;
     u8 unk29C[0x1F8];
     NNSFndAllocator unk494;
-} UnkStruct_ov49_0225CC4C; /* ov49_0225CB50 */
-extern const CameraAngle ov49_02269A6C; /* ov49_0225CB50 */
-extern void ov49_02259154(void *a0, VecFx32 *a1); /* ov49_0225CB50 */
-extern void ov49_0225D7B8(void *a0, UnkStruct_ov49_0225D5FC *a1); /* ov49_0225CB50 */
-extern void ov49_0225DA70(void *a0, UnkStruct_ov49_0225D854 *a1); /* ov49_0225CB50 */
-extern void ov49_0225DD68(void *a0, void *a1); /* ov49_0225CB50 */
-extern void ov49_0225D804(void *a0, UnkStruct_ov49_0225D5FC *a1); /* ov49_0225CB50 */
-extern void ov49_0225DD0C(void *a0, void *a1); /* ov49_0225CB50 */
-extern void ov49_0225DAFC(void *a0, UnkStruct_ov49_0225D854 *a1); /* ov49_0225CB50 */
-extern void ov49_0225DC2C(void *a0, NARC *a1, NNSFndAllocator *a2, void *a3, enum HeapID heapId); /* ov49_0225CB50 */
+} UnkStruct_ov49_0225CC4C;                                                                                           /* ov49_0225CB50 */
+extern const CameraAngle ov49_02269A6C;                                                                              /* ov49_0225CB50 */
+extern void ov49_02259154(void *a0, VecFx32 *a1);                                                                    /* ov49_0225CB50 */
+extern void ov49_0225D7B8(void *a0, UnkStruct_ov49_0225D5FC *a1);                                                    /* ov49_0225CB50 */
+extern void ov49_0225DA70(void *a0, UnkStruct_ov49_0225D854 *a1);                                                    /* ov49_0225CB50 */
+extern void ov49_0225DD68(void *a0, void *a1);                                                                       /* ov49_0225CB50 */
+extern void ov49_0225D804(void *a0, UnkStruct_ov49_0225D5FC *a1);                                                    /* ov49_0225CB50 */
+extern void ov49_0225DD0C(void *a0, void *a1);                                                                       /* ov49_0225CB50 */
+extern void ov49_0225DAFC(void *a0, UnkStruct_ov49_0225D854 *a1);                                                    /* ov49_0225CB50 */
+extern void ov49_0225DC2C(void *a0, NARC *a1, NNSFndAllocator *a2, void *a3, enum HeapID heapId);                    /* ov49_0225CB50 */
 extern void ov49_0225D854(UnkStruct_ov49_0225D854 *a0, NARC *a1, NNSFndAllocator *a2, void *a3, enum HeapID heapId); /* ov49_0225CB50 */
-extern void ov49_0225D6F0(void *a0, UnkStruct_ov49_0225D5FC *a1); /* ov49_0225CB50 */
-extern void ov49_0225D76C(void *a0, UnkStruct_ov49_0225D5FC *a1); /* ov49_0225CB50 */
-extern void ov49_0225D6AC(UnkStruct_ov49_0225D5FC *a0, NNSFndAllocator *a1); /* ov49_0225CB50 */
-extern void ov49_0225DCBC(void *a0, NNSFndAllocator *a1); /* ov49_0225CB50 */
-extern void ov49_0225D9D0(UnkStruct_ov49_0225D854 *a0, NNSFndAllocator *a1); /* ov49_0225CB50 */
-extern UnkStruct_ov49_0225CF28 *ov49_0225D820(void *a0); /* ov49_0225CB50 */
+extern void ov49_0225D6F0(void *a0, UnkStruct_ov49_0225D5FC *a1);                                                    /* ov49_0225CB50 */
+extern void ov49_0225D76C(void *a0, UnkStruct_ov49_0225D5FC *a1);                                                    /* ov49_0225CB50 */
+extern void ov49_0225D6AC(UnkStruct_ov49_0225D5FC *a0, NNSFndAllocator *a1);                                         /* ov49_0225CB50 */
+extern void ov49_0225DCBC(void *a0, NNSFndAllocator *a1);                                                            /* ov49_0225CB50 */
+extern void ov49_0225D9D0(UnkStruct_ov49_0225D854 *a0, NNSFndAllocator *a1);                                         /* ov49_0225CB50 */
+extern UnkStruct_ov49_0225CF28 *ov49_0225D820(void *a0);                                                             /* ov49_0225CB50 */
 typedef struct UnkStruct_ov49_0225CB50 {
     u8 unk0[3];
     u8 unk3;

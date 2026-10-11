@@ -9,9 +9,9 @@ typedef struct UnkStruct_ov91_02260378 {
     fx32 unk_228;
     u16 unk_22C;
     u16 unk_22E;
-} UnkStruct_ov91_02260378; /* ov91_02260378 */
-extern const u8 ov91_02261C12[]; /* ov91_02260378 */
-extern const u8 ov91_02261C13[]; /* ov91_02260378 */
+} UnkStruct_ov91_02260378;                      /* ov91_02260378 */
+extern const u8 ov91_02261C12[];                /* ov91_02260378 */
+extern const u8 ov91_02261C13[];                /* ov91_02260378 */
 extern void sub_02018198(void *a0, fx32 frame); /* ov91_02260378 */
 
 void ov91_02260378(UnkStruct_ov91_02260378 *param0);

@@ -2,6 +2,7 @@
 #pragma warning_errors off
 #pragma thumb on
 #include "global.h"
+
 #include "assert.h"
 #include "filesystem.h"
 #include "heap.h"
@@ -10,10 +11,10 @@
 #include "sprite_transfer.h"
 #include "sys_task_api.h"
 #include "unk_02005D10.h"
+#include "unk_0200A090.h"
 #include "unk_02034354.h"
 #include "unk_02035900.h"
 #include "unk_02037C94.h"
-#include "unk_0200A090.h"
 #include "vram_transfer_manager.h"
 
 typedef struct UnkStruct_ov90_02258800_C {

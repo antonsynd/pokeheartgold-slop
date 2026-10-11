@@ -2,9 +2,8 @@
 #pragma warning_errors off
 #pragma thumb on
 #include "global.h"
+
 #include "heap.h"
-
-
 
 int ov102_021EA268(int param_1);
 int ov102_021EA26C(int param_1);

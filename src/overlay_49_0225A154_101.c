@@ -2,6 +2,7 @@
 #pragma warning_errors off
 #pragma thumb on
 #include "global.h"
+
 #include "assert.h"
 #include "bg_window.h"
 #include "filesystem.h"
@@ -48,15 +49,15 @@ typedef struct UnkStruct_ov49_Entry {
     u16 unk2;
     s16 unk4;
     s16 unk6;
-} UnkStruct_ov49_Entry; /* ov49_0225CAA8 */
+} UnkStruct_ov49_Entry;                                     /* ov49_0225CAA8 */
 extern void ov49_0225CB50(u32 index, u32 event, void *arg); /* ov49_0225CAA8 */
-extern u32 ov45_0222AAC8(const void *a0); /* ov49_0225CAA8 */
-extern const u8 ov49_022696EC[3]; /* ov49_0225CAA8 */
-extern const s8 ov49_022696F0[3]; /* ov49_0225CAA8 */
-extern const TouchscreenHitbox ov49_022696F4; /* ov49_0225CAA8 */
-extern const WindowTemplate ov49_0226970C; /* ov49_0225CAA8 */
-extern const UnkStruct_ov49_Entry ov49_02269764[2]; /* ov49_0225CAA8 */
-extern const UnkStruct_ov49_Entry ov49_022699AC[24]; /* ov49_0225CAA8 */
+extern u32 ov45_0222AAC8(const void *a0);                   /* ov49_0225CAA8 */
+extern const u8 ov49_022696EC[3];                           /* ov49_0225CAA8 */
+extern const s8 ov49_022696F0[3];                           /* ov49_0225CAA8 */
+extern const TouchscreenHitbox ov49_022696F4;               /* ov49_0225CAA8 */
+extern const WindowTemplate ov49_0226970C;                  /* ov49_0225CAA8 */
+extern const UnkStruct_ov49_Entry ov49_02269764[2];         /* ov49_0225CAA8 */
+extern const UnkStruct_ov49_Entry ov49_022699AC[24];        /* ov49_0225CAA8 */
 
 void ov49_0225CAA8(UnkStruct_ov49_Touch *touch, UnkStruct_ov49_Gfx *gfx);
 

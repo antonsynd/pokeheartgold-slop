@@ -4,8 +4,8 @@
 
 typedef unsigned char u8; /* ov14_021EB8C0 */
 typedef unsigned int u32; /* ov14_021EB8C0 */
-typedef int s32; /* ov14_021EB8C0 */
-typedef int BOOL; /* ov14_021EB8C0 */
+typedef int s32;          /* ov14_021EB8C0 */
+typedef int BOOL;         /* ov14_021EB8C0 */
 typedef struct {
     u8 pad0[0x8];
     s32 unk8;
@@ -31,37 +31,37 @@ typedef struct {
     u8 unk29;
     u8 pad2A[0xa];
     UnkStruct_ov14_021EB8C0_34 *unk34;
-} UnkStruct_ov14_021EB8C0; /* ov14_021EB8C0 */
-extern u8 ov14_021F7D2C[]; /* ov14_021EB8C0 */
-extern u8 ov14_021F7D1C[]; /* ov14_021EB8C0 */
-extern u8 ov14_021F7D3C[]; /* ov14_021EB8C0 */
-BOOL ov14_021E7588(UnkStruct_ov14_021EB8C0 *a0, u32 a1); /* ov14_021EB8C0 */
-void ov14_021F5EE4(UnkStruct_ov14_021EB8C0 *a0, void *a1, u32 a2); /* ov14_021EB8C0 */
-void ov14_021F43F4(UnkStruct_ov14_021EB8C0_34 *a0, u32 a1); /* ov14_021EB8C0 */
-void ov14_021F3488(UnkStruct_ov14_021EB8C0 *a0, u32 a1, u32 a2); /* ov14_021EB8C0 */
-void ov14_021E8664(UnkStruct_ov14_021EB8C0 *a0); /* ov14_021EB8C0 */
-void ov14_021E87F4(UnkStruct_ov14_021EB8C0 *a0); /* ov14_021EB8C0 */
-void ov14_021E83C4(void *a0); /* ov14_021EB8C0 */
+} UnkStruct_ov14_021EB8C0;                                               /* ov14_021EB8C0 */
+extern u8 ov14_021F7D2C[];                                               /* ov14_021EB8C0 */
+extern u8 ov14_021F7D1C[];                                               /* ov14_021EB8C0 */
+extern u8 ov14_021F7D3C[];                                               /* ov14_021EB8C0 */
+BOOL ov14_021E7588(UnkStruct_ov14_021EB8C0 *a0, u32 a1);                 /* ov14_021EB8C0 */
+void ov14_021F5EE4(UnkStruct_ov14_021EB8C0 *a0, void *a1, u32 a2);       /* ov14_021EB8C0 */
+void ov14_021F43F4(UnkStruct_ov14_021EB8C0_34 *a0, u32 a1);              /* ov14_021EB8C0 */
+void ov14_021F3488(UnkStruct_ov14_021EB8C0 *a0, u32 a1, u32 a2);         /* ov14_021EB8C0 */
+void ov14_021E8664(UnkStruct_ov14_021EB8C0 *a0);                         /* ov14_021EB8C0 */
+void ov14_021E87F4(UnkStruct_ov14_021EB8C0 *a0);                         /* ov14_021EB8C0 */
+void ov14_021E83C4(void *a0);                                            /* ov14_021EB8C0 */
 void ov14_021F685C(UnkStruct_ov14_021EB8C0 *a0, u32 a1, u32 a2, u32 a3); /* ov14_021EB8C0 */
-void ov14_021F0BF4(UnkStruct_ov14_021EB8C0 *a0); /* ov14_021EB8C0 */
-void ov14_021F0B70(UnkStruct_ov14_021EB8C0 *a0); /* ov14_021EB8C0 */
-void ov14_021F6AC0(UnkStruct_ov14_021EB8C0 *a0, u32 a1, u32 a2); /* ov14_021EB8C0 */
-void ov14_021F3F6C(UnkStruct_ov14_021EB8C0 *a0); /* ov14_021EB8C0 */
-void ov14_021E8874(UnkStruct_ov14_021EB8C0_34 *a0); /* ov14_021EB8C0 */
-void ov14_021F0BB4(UnkStruct_ov14_021EB8C0 *a0); /* ov14_021EB8C0 */
-void ov14_021E8610(void *a0); /* ov14_021EB8C0 */
-void ov14_021F4720(UnkStruct_ov14_021EB8C0 *a0); /* ov14_021EB8C0 */
-void ov14_021F4848(UnkStruct_ov14_021EB8C0 *a0); /* ov14_021EB8C0 */
-void ov14_021F48B4(UnkStruct_ov14_021EB8C0 *a0); /* ov14_021EB8C0 */
-void ov14_021F57B8(UnkStruct_ov14_021EB8C0 *a0); /* ov14_021EB8C0 */
-void ov14_021E86E0(void *a0); /* ov14_021EB8C0 */
-BOOL ov14_021E9554(UnkStruct_ov14_021EB8C0 *a0); /* ov14_021EB8C0 */
-void ov14_021EA1F0(UnkStruct_ov14_021EB8C0 *a0); /* ov14_021EB8C0 */
-void ov14_021F01D8(UnkStruct_ov14_021EB8C0 *a0, u32 a1); /* ov14_021EB8C0 */
-void ov14_021E8434(); /* ov14_021EB7E4 */
-void ov14_021E9434(); /* ov14_021EB7E4 */
-void ov14_021F0234(); /* ov14_021EB7E4 */
-void ov14_021F6688(); /* ov14_021EB7E4 */
+void ov14_021F0BF4(UnkStruct_ov14_021EB8C0 *a0);                         /* ov14_021EB8C0 */
+void ov14_021F0B70(UnkStruct_ov14_021EB8C0 *a0);                         /* ov14_021EB8C0 */
+void ov14_021F6AC0(UnkStruct_ov14_021EB8C0 *a0, u32 a1, u32 a2);         /* ov14_021EB8C0 */
+void ov14_021F3F6C(UnkStruct_ov14_021EB8C0 *a0);                         /* ov14_021EB8C0 */
+void ov14_021E8874(UnkStruct_ov14_021EB8C0_34 *a0);                      /* ov14_021EB8C0 */
+void ov14_021F0BB4(UnkStruct_ov14_021EB8C0 *a0);                         /* ov14_021EB8C0 */
+void ov14_021E8610(void *a0);                                            /* ov14_021EB8C0 */
+void ov14_021F4720(UnkStruct_ov14_021EB8C0 *a0);                         /* ov14_021EB8C0 */
+void ov14_021F4848(UnkStruct_ov14_021EB8C0 *a0);                         /* ov14_021EB8C0 */
+void ov14_021F48B4(UnkStruct_ov14_021EB8C0 *a0);                         /* ov14_021EB8C0 */
+void ov14_021F57B8(UnkStruct_ov14_021EB8C0 *a0);                         /* ov14_021EB8C0 */
+void ov14_021E86E0(void *a0);                                            /* ov14_021EB8C0 */
+BOOL ov14_021E9554(UnkStruct_ov14_021EB8C0 *a0);                         /* ov14_021EB8C0 */
+void ov14_021EA1F0(UnkStruct_ov14_021EB8C0 *a0);                         /* ov14_021EB8C0 */
+void ov14_021F01D8(UnkStruct_ov14_021EB8C0 *a0, u32 a1);                 /* ov14_021EB8C0 */
+void ov14_021E8434();                                                    /* ov14_021EB7E4 */
+void ov14_021E9434();                                                    /* ov14_021EB7E4 */
+void ov14_021F0234();                                                    /* ov14_021EB7E4 */
+void ov14_021F6688();                                                    /* ov14_021EB7E4 */
 
 void ov14_021EB7E4(int param_1, int param_2, int param_3);
 void ov14_021EB8C0(UnkStruct_ov14_021EB8C0 *a0);
@@ -168,8 +168,7 @@ _021EB892:
 // clang-format on
 
 // FUNCTION ov14_021EB8C0: matching C (r2)
-void ov14_021EB8C0(UnkStruct_ov14_021EB8C0 *a0)
-{
+void ov14_021EB8C0(UnkStruct_ov14_021EB8C0 *a0) {
     u32 r4;
 
     ov14_021E7588(a0, a0->unk21);

@@ -2,8 +2,10 @@
 #pragma warning_errors off
 #pragma thumb on
 #include "global.h"
+
 #include "assert.h"
 #include "bg_window.h"
+#include "error_handling.h"
 #include "filesystem.h"
 #include "list_menu.h"
 #include "list_menu_items.h"
@@ -13,10 +15,9 @@
 #include "sprite_transfer.h"
 #include "text.h"
 #include "unk_02005D10.h"
-#include "unk_02037C94.h"
-#include "unk_0200A090.h"
 #include "unk_02009D48.h"
-#include "error_handling.h"
+#include "unk_0200A090.h"
+#include "unk_02037C94.h"
 
 typedef struct UnkStruct_ov49_0225AC_Gfx {
     BgConfig *bgConfig;
@@ -47,10 +48,10 @@ typedef struct UnkStruct_ov49_0225AC_List {
 typedef struct UnkStruct_ov49_0225AC_Menu {
     ListMenuItem *items;
     ListMenuTemplate menuTemplate;
-} UnkStruct_ov49_0225AC_Menu; /* ov49_0225ACC4 */
-extern const u8 ov49_022696E8[4]; /* ov49_0225ACC4 */
+} UnkStruct_ov49_0225AC_Menu;                /* ov49_0225ACC4 */
+extern const u8 ov49_022696E8[4];            /* ov49_0225ACC4 */
 extern const ListMenuTemplate ov49_022697AC; /* ov49_0225ACC4 */
-extern u32 ov45_0222D7CC(u32 a0, u32 a1); /* ov49_0225ACC4 */
+extern u32 ov45_0222D7CC(u32 a0, u32 a1);    /* ov49_0225ACC4 */
 
 void ov49_0225ACC4(UnkStruct_ov49_0225AC_Text *param0, const String *param1);
 void ov49_0225AD20(int param_1, int param_2, int param_3);

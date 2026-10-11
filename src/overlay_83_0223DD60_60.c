@@ -2,6 +2,7 @@
 #pragma warning_errors off
 #pragma thumb on
 #include "global.h"
+
 #include "bg_window.h"
 #include "list_menu_items.h"
 
@@ -18,20 +19,20 @@ typedef struct UnkStruct_Ov83_02247E64 {
     u8 y;
     u8 width;
     u8 height;
-} UnkStruct_Ov83_02247E64; /* ov83_02242F18 */
+} UnkStruct_Ov83_02247E64;                            /* ov83_02242F18 */
 extern const UnkStruct_Ov83_02247E64 ov83_02247E64[]; /* ov83_02242F18 */
-void _02247D0C(); /* ov83_02242AEC */
-void ov80_02237B24(); /* ov83_02242AEC */
-void ov83_0224773C(); /* ov83_02242AEC */
-void ov83_02247988(); /* ov83_02242AEC */
-void ov83_02247CCC(); /* ov83_02242AEC */
-void ov83_02247D6C(); /* ov83_02242BAC */
-void ov83_0224777C(); /* ov83_02242BF0 */
-void ov83_02247F4C(); /* ov83_02242BF0 */
-void ov83_02248008(); /* ov83_02242BF0 */
-void ov83_02247EB0(); /* ov83_02242CAC */
-void ov83_02247CE8(); /* ov83_02242D5C */
-void ov83_02247D1E(); /* ov83_02242DAC */
+void _02247D0C();                                     /* ov83_02242AEC */
+void ov80_02237B24();                                 /* ov83_02242AEC */
+void ov83_0224773C();                                 /* ov83_02242AEC */
+void ov83_02247988();                                 /* ov83_02242AEC */
+void ov83_02247CCC();                                 /* ov83_02242AEC */
+void ov83_02247D6C();                                 /* ov83_02242BAC */
+void ov83_0224777C();                                 /* ov83_02242BF0 */
+void ov83_02247F4C();                                 /* ov83_02242BF0 */
+void ov83_02248008();                                 /* ov83_02242BF0 */
+void ov83_02247EB0();                                 /* ov83_02242CAC */
+void ov83_02247CE8();                                 /* ov83_02242D5C */
+void ov83_02247D1E();                                 /* ov83_02242DAC */
 
 int ov83_0223FC48(int param_1, int param_2, int param_3, int param_4);
 int ov83_02242AEC(int param_1, int param_2, int param_3, int param_4);

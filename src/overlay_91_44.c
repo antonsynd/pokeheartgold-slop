@@ -2,12 +2,13 @@
 #pragma warning_errors off
 #pragma thumb on
 #include "global.h"
-#include "unk_0200A090.h"
-#include "unk_02009D48.h"
-#include "filesystem.h"
-#include "sprite_transfer.h"
-#include "sprite.h"
+
 #include "error_handling.h"
+#include "filesystem.h"
+#include "sprite.h"
+#include "sprite_transfer.h"
+#include "unk_02009D48.h"
+#include "unk_0200A090.h"
 
 typedef struct UnkStruct_ov91_0225F05C_Entry {
     u32 unk_00;

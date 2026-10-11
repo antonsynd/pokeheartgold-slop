@@ -2,8 +2,8 @@
 #pragma warning_errors off
 #pragma thumb on
 #include "global.h"
-#define true 1
-#define false 0
+#define true           1
+#define false          0
 #define CONCAT11(a, b) ((unsigned short)(((unsigned)(a) << 8) | (unsigned char)(b)))
 #define CONCAT12(a, b) (((unsigned)(unsigned char)(a) << 16) | (unsigned short)(b))
 #define CONCAT13(a, b) (((unsigned)(unsigned char)(a) << 24) | ((unsigned)(b) & 0xffffff))
@@ -11,30 +11,30 @@
 #define CONCAT22(a, b) (((unsigned)(unsigned short)(a) << 16) | (unsigned short)(b))
 #define CONCAT31(a, b) (((unsigned)(a) << 8) | (unsigned char)(b))
 #define CONCAT44(a, b) (((unsigned long long)(unsigned)(a) << 32) | (unsigned)(b))
-#define SUB41(x, n) ((unsigned char)((unsigned)(x) >> ((n) * 8)))
-#define SUB42(x, n) ((unsigned short)((unsigned)(x) >> ((n) * 8)))
-#define SUB81(x, n) ((unsigned char)((unsigned long long)(x) >> ((n) * 8)))
-#define SUB84(x, n) ((unsigned)((unsigned long long)(x) >> ((n) * 8)))
-#define ZEXT14(x) ((unsigned)(unsigned char)(x))
-#define ZEXT24(x) ((unsigned)(unsigned short)(x))
-#define ZEXT48(x) ((unsigned long long)(unsigned)(x))
-#define SEXT14(x) ((int)(signed char)(x))
-#define SEXT24(x) ((int)(short)(x))
-#define SEXT48(x) ((long long)(int)(x))
-#define CARRY4(a, b) ((unsigned)(a) + (unsigned)(b) < (unsigned)(a))
-#define SCARRY4(a, b) ((((int)(a) + (int)(b)) < (int)(a)) != ((int)(b) < 0))
+#define SUB41(x, n)    ((unsigned char)((unsigned)(x) >> ((n) * 8)))
+#define SUB42(x, n)    ((unsigned short)((unsigned)(x) >> ((n) * 8)))
+#define SUB81(x, n)    ((unsigned char)((unsigned long long)(x) >> ((n) * 8)))
+#define SUB84(x, n)    ((unsigned)((unsigned long long)(x) >> ((n) * 8)))
+#define ZEXT14(x)      ((unsigned)(unsigned char)(x))
+#define ZEXT24(x)      ((unsigned)(unsigned short)(x))
+#define ZEXT48(x)      ((unsigned long long)(unsigned)(x))
+#define SEXT14(x)      ((int)(signed char)(x))
+#define SEXT24(x)      ((int)(short)(x))
+#define SEXT48(x)      ((long long)(int)(x))
+#define CARRY4(a, b)   ((unsigned)(a) + (unsigned)(b) < (unsigned)(a))
+#define SCARRY4(a, b)  ((((int)(a) + (int)(b)) < (int)(a)) != ((int)(b) < 0))
 #define SBORROW4(a, b) ((((int)(a) - (int)(b)) > (int)(a)) != ((int)(b) < 0))
-#define POPCOUNT(x) __builtin_popcount(x)
-#define LZCOUNT(x) ((x) ? __builtin_clz(x) : 32)
+#define POPCOUNT(x)    __builtin_popcount(x)
+#define LZCOUNT(x)     ((x) ? __builtin_clz(x) : 32)
 #include "bg_window.h"
-#include "unk_02005D10.h"
+#include "error_handling.h"
 #include "sprite.h"
+#include "sys_task_api.h"
+#include "system.h"
+#include "unk_02005D10.h"
 #include "unk_0202C034.h"
 #include "unk_02034354.h"
 #include "unk_02037C94.h"
-#include "system.h"
-#include "sys_task_api.h"
-#include "error_handling.h"
 
 typedef struct UnkStruct_ov90_0225BAA0_Inner {
     u8 unk_00[4];
@@ -51,38 +51,38 @@ typedef struct UnkStruct_ov90_0225BAA0 {
     UnkStruct_ov90_0225BAA0_Inner *unk_18;
     u8 unk_1C[0x14];
     u32 unk_30;
-} UnkStruct_ov90_0225BAA0; /* ov90_0225BAA0 */
+} UnkStruct_ov90_0225BAA0;                                                                                       /* ov90_0225BAA0 */
 extern void ov45_0222ACB8(void *param0, u32 param1, u32 param2, u32 param3, u32 param4, u32 param5, u32 param6); /* ov90_0225BAA0 */
-typedef unsigned char undefined; /* ov90_0225B6B0 */
-typedef unsigned char undefined1; /* ov90_0225B6B0 */
-typedef unsigned short undefined2; /* ov90_0225B6B0 */
-typedef unsigned int undefined3; /* ov90_0225B6B0 */
-typedef unsigned int undefined4; /* ov90_0225B6B0 */
-typedef unsigned long long undefined8; /* ov90_0225B6B0 */
-typedef unsigned char byte; /* ov90_0225B6B0 */
-typedef signed char sbyte; /* ov90_0225B6B0 */
-typedef unsigned short ushort; /* ov90_0225B6B0 */
-typedef unsigned short word; /* ov90_0225B6B0 */
-typedef unsigned int uint; /* ov90_0225B6B0 */
-typedef unsigned int dword; /* ov90_0225B6B0 */
-typedef unsigned int ulong; /* ov90_0225B6B0 */
-typedef unsigned long long ulonglong; /* ov90_0225B6B0 */
-typedef unsigned long long qword; /* ov90_0225B6B0 */
-typedef long long longlong; /* ov90_0225B6B0 */
-typedef unsigned char bool; /* ov90_0225B6B0 */
-typedef void code(void); /* ov90_0225B6B0 */
-typedef void *pointer; /* ov90_0225B6B0 */
-typedef unsigned short wchar16; /* ov90_0225B6B0 */
-extern int _s32_div_f(int numer, int denom); /* ov90_0225B6C4 */
-void ov90_0225C1F0(); /* ov90_0225B7FC */
-void sub_0202C554(); /* ov90_0225B9A8 */
-void sub_0202C584(); /* ov90_0225B9A8 */
-void sub_0202C5B4(); /* ov90_0225B9A8 */
-void ov90_0225C2B4(); /* ov90_0225BAD0 */
-void _fflt(void); /* ov90_0225BC28 */
-void _fadd(void); /* ov90_0225BC28 */
-void _fsub(void); /* ov90_0225BC28 */
-void _ffix(void); /* ov90_0225BC28 */
+typedef unsigned char undefined;                                                                                 /* ov90_0225B6B0 */
+typedef unsigned char undefined1;                                                                                /* ov90_0225B6B0 */
+typedef unsigned short undefined2;                                                                               /* ov90_0225B6B0 */
+typedef unsigned int undefined3;                                                                                 /* ov90_0225B6B0 */
+typedef unsigned int undefined4;                                                                                 /* ov90_0225B6B0 */
+typedef unsigned long long undefined8;                                                                           /* ov90_0225B6B0 */
+typedef unsigned char byte;                                                                                      /* ov90_0225B6B0 */
+typedef signed char sbyte;                                                                                       /* ov90_0225B6B0 */
+typedef unsigned short ushort;                                                                                   /* ov90_0225B6B0 */
+typedef unsigned short word;                                                                                     /* ov90_0225B6B0 */
+typedef unsigned int uint;                                                                                       /* ov90_0225B6B0 */
+typedef unsigned int dword;                                                                                      /* ov90_0225B6B0 */
+typedef unsigned int ulong;                                                                                      /* ov90_0225B6B0 */
+typedef unsigned long long ulonglong;                                                                            /* ov90_0225B6B0 */
+typedef unsigned long long qword;                                                                                /* ov90_0225B6B0 */
+typedef long long longlong;                                                                                      /* ov90_0225B6B0 */
+typedef unsigned char bool;                                                                                      /* ov90_0225B6B0 */
+typedef void code(void);                                                                                         /* ov90_0225B6B0 */
+typedef void *pointer;                                                                                           /* ov90_0225B6B0 */
+typedef unsigned short wchar16;                                                                                  /* ov90_0225B6B0 */
+extern int _s32_div_f(int numer, int denom);                                                                     /* ov90_0225B6C4 */
+void ov90_0225C1F0();                                                                                            /* ov90_0225B7FC */
+void sub_0202C554();                                                                                             /* ov90_0225B9A8 */
+void sub_0202C584();                                                                                             /* ov90_0225B9A8 */
+void sub_0202C5B4();                                                                                             /* ov90_0225B9A8 */
+void ov90_0225C2B4();                                                                                            /* ov90_0225BAD0 */
+void _fflt(void);                                                                                                /* ov90_0225BC28 */
+void _fadd(void);                                                                                                /* ov90_0225BC28 */
+void _fsub(void);                                                                                                /* ov90_0225BC28 */
+void _ffix(void);                                                                                                /* ov90_0225BC28 */
 
 int ov90_0225888C(int param_1, int param_2);
 int ov90_022588A4(int param_1, int param_2);
@@ -97,7 +97,7 @@ void ov90_02259E8C(int param_1, int param_2);
 int ov90_02259EE0(int param_1, int param_2, int param_3);
 int ov90_02259F7C(int param_1);
 void ov90_0225A134(int param_1, int param_2);
-void ov90_0225B6B0(int param_1,undefined1 param_2);
+void ov90_0225B6B0(int param_1, undefined1 param_2);
 int ov90_0225B6C4(int param_1, int param_2);
 void ov90_0225B7FC(int param_1, int param_2, int param_3);
 int ov90_0225B8F0(int param_1);
@@ -117,13 +117,13 @@ void ov90_0225BDE4(int param_1, int param_2);
 void ov90_0225BE08(int param_1);
 
 // FUNCTION ov90_0225B6B0: matching C (r2)
-void ov90_0225B6B0(int param_1,undefined1 param_2)
+void ov90_0225B6B0(int param_1, undefined1 param_2)
 
 {
-  *(undefined1 *)(param_1 + 0x4b) = param_2;
-  *(undefined1 *)(param_1 + 0x48) = 0;
-  *(undefined1 *)(param_1 + 0x4a) = 0;
-  return;
+    *(undefined1 *)(param_1 + 0x4b) = param_2;
+    *(undefined1 *)(param_1 + 0x48) = 0;
+    *(undefined1 *)(param_1 + 0x4a) = 0;
+    return;
 }
 
 // FUNCTION ov90_0225B6C4: no matching C yet, the original asm
@@ -466,26 +466,26 @@ _0225B94E:
 void ov90_0225B954(int param_1)
 
 {
-  if (*(int *)(param_1 + 0x660) == 0) {
-    PlayFanfare(0x4bf);
-    *(undefined4 *)(param_1 + 0x660) = 1;
-  }
-  return;
+    if (*(int *)(param_1 + 0x660) == 0) {
+        PlayFanfare(0x4bf);
+        *(undefined4 *)(param_1 + 0x660) = 1;
+    }
+    return;
 }
 
 // FUNCTION ov90_0225B978: matching C (r2)
 undefined4 ov90_0225B978(int param_1)
 
 {
-  int iVar1;
+    int iVar1;
 
-  if ((*(int *)(param_1 + 0x660) == 1) && (iVar1 = IsFanfarePlaying(), iVar1 == 0)) {
-    *(undefined4 *)(param_1 + 0x660) = 0;
-  }
-  if (*(int *)(param_1 + 0x660) != 1) {
-    return 1;
-  }
-  return 0;
+    if ((*(int *)(param_1 + 0x660) == 1) && (iVar1 = IsFanfarePlaying(), iVar1 == 0)) {
+        *(undefined4 *)(param_1 + 0x660) = 0;
+    }
+    if (*(int *)(param_1 + 0x660) != 1) {
+        return 1;
+    }
+    return 0;
 }
 
 // FUNCTION ov90_0225B9A8: no matching C yet, the original asm

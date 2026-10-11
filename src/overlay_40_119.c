@@ -3,12 +3,12 @@
 #pragma thumb on
 #include "bg_window.h"
 #include "heap.h"
-#include "system.h"
 #include "palette.h"
-#include "unk_02005D10.h"
 #include "poke_overlay.h"
-#define true 1
-#define false 0
+#include "system.h"
+#include "unk_02005D10.h"
+#define true           1
+#define false          0
 #define CONCAT11(a, b) ((unsigned short)(((unsigned)(a) << 8) | (unsigned char)(b)))
 #define CONCAT12(a, b) (((unsigned)(unsigned char)(a) << 16) | (unsigned short)(b))
 #define CONCAT13(a, b) (((unsigned)(unsigned char)(a) << 24) | ((unsigned)(b) & 0xffffff))
@@ -16,67 +16,67 @@
 #define CONCAT22(a, b) (((unsigned)(unsigned short)(a) << 16) | (unsigned short)(b))
 #define CONCAT31(a, b) (((unsigned)(a) << 8) | (unsigned char)(b))
 #define CONCAT44(a, b) (((unsigned long long)(unsigned)(a) << 32) | (unsigned)(b))
-#define SUB41(x, n) ((unsigned char)((unsigned)(x) >> ((n) * 8)))
-#define SUB42(x, n) ((unsigned short)((unsigned)(x) >> ((n) * 8)))
-#define SUB81(x, n) ((unsigned char)((unsigned long long)(x) >> ((n) * 8)))
-#define SUB84(x, n) ((unsigned)((unsigned long long)(x) >> ((n) * 8)))
-#define ZEXT14(x) ((unsigned)(unsigned char)(x))
-#define ZEXT24(x) ((unsigned)(unsigned short)(x))
-#define ZEXT48(x) ((unsigned long long)(unsigned)(x))
-#define SEXT14(x) ((int)(signed char)(x))
-#define SEXT24(x) ((int)(short)(x))
-#define SEXT48(x) ((long long)(int)(x))
-#define CARRY4(a, b) ((unsigned)(a) + (unsigned)(b) < (unsigned)(a))
-#define SCARRY4(a, b) ((((int)(a) + (int)(b)) < (int)(a)) != ((int)(b) < 0))
+#define SUB41(x, n)    ((unsigned char)((unsigned)(x) >> ((n) * 8)))
+#define SUB42(x, n)    ((unsigned short)((unsigned)(x) >> ((n) * 8)))
+#define SUB81(x, n)    ((unsigned char)((unsigned long long)(x) >> ((n) * 8)))
+#define SUB84(x, n)    ((unsigned)((unsigned long long)(x) >> ((n) * 8)))
+#define ZEXT14(x)      ((unsigned)(unsigned char)(x))
+#define ZEXT24(x)      ((unsigned)(unsigned short)(x))
+#define ZEXT48(x)      ((unsigned long long)(unsigned)(x))
+#define SEXT14(x)      ((int)(signed char)(x))
+#define SEXT24(x)      ((int)(short)(x))
+#define SEXT48(x)      ((long long)(int)(x))
+#define CARRY4(a, b)   ((unsigned)(a) + (unsigned)(b) < (unsigned)(a))
+#define SCARRY4(a, b)  ((((int)(a) + (int)(b)) < (int)(a)) != ((int)(b) < 0))
 #define SBORROW4(a, b) ((((int)(a) - (int)(b)) > (int)(a)) != ((int)(b) < 0))
-#define POPCOUNT(x) __builtin_popcount(x)
-#define LZCOUNT(x) ((x) ? __builtin_clz(x) : 32)
+#define POPCOUNT(x)    __builtin_popcount(x)
+#define LZCOUNT(x)     ((x) ? __builtin_clz(x) : 32)
 #include "gf_gfx_planes.h"
 #include "touch_hitbox_controller.h"
 #include "touchscreen.h"
 #include "unk_02026E30.h"
 
-void ov39_022273B0(); /* ov40_022344D8 */
-void ov39_02227D44(); /* ov40_022344D8 */
-void ov41_0224B57C(); /* ov40_022344D8 */
-void sub_020314A4(); /* ov40_022344D8 */
-void sub_020314BC(); /* ov40_022344D8 */
-void sub_020314C4(); /* ov40_022344D8 */
-void sub_020879E0(); /* ov40_022344D8 */
-void sub_02087A08(); /* ov40_022344D8 */
-typedef unsigned char undefined; /* ov40_02234A14 */
-typedef unsigned char undefined1; /* ov40_02234A14 */
-typedef unsigned short undefined2; /* ov40_02234A14 */
-typedef unsigned int undefined3; /* ov40_02234A14 */
-typedef unsigned int undefined4; /* ov40_02234A14 */
-typedef unsigned long long undefined8; /* ov40_02234A14 */
-typedef unsigned char byte; /* ov40_02234A14 */
-typedef signed char sbyte; /* ov40_02234A14 */
-typedef unsigned short ushort; /* ov40_02234A14 */
-typedef unsigned short word; /* ov40_02234A14 */
-typedef unsigned int uint; /* ov40_02234A14 */
-typedef unsigned int dword; /* ov40_02234A14 */
-typedef unsigned int ulong; /* ov40_02234A14 */
-typedef unsigned long long ulonglong; /* ov40_02234A14 */
-typedef unsigned long long qword; /* ov40_02234A14 */
-typedef long long longlong; /* ov40_02234A14 */
-typedef unsigned char bool; /* ov40_02234A14 */
-typedef int code(); /* ov40_02234A14 */
-typedef void *pointer; /* ov40_02234A14 */
-typedef unsigned short wchar16; /* ov40_02234A14 */
-void ov40_022451C4(); /* ov40_02234A38 */
-void ov40_02245708(); /* ov40_02234A38 */
-void ov40_022451F4(); /* ov40_02234BBC */
-void ov39_022273F8(); /* ov40_02234F98 */
-void ov39_02227080(); /* ov40_0223512C */
-void ov41_0224B530(); /* ov40_0223512C */
-void ov41_0224B554(); /* ov40_0223512C */
-void ov41_0224B5D0(); /* ov40_0223512C */
+void ov39_022273B0();                        /* ov40_022344D8 */
+void ov39_02227D44();                        /* ov40_022344D8 */
+void ov41_0224B57C();                        /* ov40_022344D8 */
+void sub_020314A4();                         /* ov40_022344D8 */
+void sub_020314BC();                         /* ov40_022344D8 */
+void sub_020314C4();                         /* ov40_022344D8 */
+void sub_020879E0();                         /* ov40_022344D8 */
+void sub_02087A08();                         /* ov40_022344D8 */
+typedef unsigned char undefined;             /* ov40_02234A14 */
+typedef unsigned char undefined1;            /* ov40_02234A14 */
+typedef unsigned short undefined2;           /* ov40_02234A14 */
+typedef unsigned int undefined3;             /* ov40_02234A14 */
+typedef unsigned int undefined4;             /* ov40_02234A14 */
+typedef unsigned long long undefined8;       /* ov40_02234A14 */
+typedef unsigned char byte;                  /* ov40_02234A14 */
+typedef signed char sbyte;                   /* ov40_02234A14 */
+typedef unsigned short ushort;               /* ov40_02234A14 */
+typedef unsigned short word;                 /* ov40_02234A14 */
+typedef unsigned int uint;                   /* ov40_02234A14 */
+typedef unsigned int dword;                  /* ov40_02234A14 */
+typedef unsigned int ulong;                  /* ov40_02234A14 */
+typedef unsigned long long ulonglong;        /* ov40_02234A14 */
+typedef unsigned long long qword;            /* ov40_02234A14 */
+typedef long long longlong;                  /* ov40_02234A14 */
+typedef unsigned char bool;                  /* ov40_02234A14 */
+typedef int code();                          /* ov40_02234A14 */
+typedef void *pointer;                       /* ov40_02234A14 */
+typedef unsigned short wchar16;              /* ov40_02234A14 */
+void ov40_022451C4();                        /* ov40_02234A38 */
+void ov40_02245708();                        /* ov40_02234A38 */
+void ov40_022451F4();                        /* ov40_02234BBC */
+void ov39_022273F8();                        /* ov40_02234F98 */
+void ov39_02227080();                        /* ov40_0223512C */
+void ov41_0224B530();                        /* ov40_0223512C */
+void ov41_0224B554();                        /* ov40_0223512C */
+void ov41_0224B5D0();                        /* ov40_0223512C */
 extern int _s32_div_f(int numer, int denom); /* ov40_0223527C */
-void ov40_022451D0(); /* ov40_0223527C */
-void ov40_022451D4(); /* ov40_0223527C */
-void ov40_022451D8(); /* ov40_0223527C */
-void ov39_022271C0(); /* ov40_02235434 */
+void ov40_022451D0();                        /* ov40_0223527C */
+void ov40_022451D4();                        /* ov40_0223527C */
+void ov40_022451D8();                        /* ov40_0223527C */
+void ov39_022271C0();                        /* ov40_02235434 */
 extern unsigned int SDK_OVERLAY_OVY_41_ID[]; /* ov40_022344D8 */
 
 void ov40_0222BC54(int param_1);
@@ -721,14 +721,13 @@ _02234A08:
 undefined4 ov40_02234A14(int param_1)
 
 {
-  if (*(int *)(param_1 + 8) == 0) {
-    ov40_022359B4(param_1,1);
-    *(int *)(param_1 + 8) = *(int *)(param_1 + 8) + 1;
-  }
-  else {
-    ov40_0222BF80(param_1,3);
-  }
-  return 0;
+    if (*(int *)(param_1 + 8) == 0) {
+        ov40_022359B4(param_1, 1);
+        *(int *)(param_1 + 8) = *(int *)(param_1 + 8) + 1;
+    } else {
+        ov40_0222BF80(param_1, 3);
+    }
+    return 0;
 }
 
 // FUNCTION ov40_02234A38: no matching C yet, the original asm

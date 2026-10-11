@@ -2,9 +2,10 @@
 #pragma warning_errors off
 #pragma thumb on
 #include "frontier/frontier_script_context.h"
+
 #include "unk_020379A0.h"
-#define true 1
-#define false 0
+#define true           1
+#define false          0
 #define CONCAT11(a, b) ((unsigned short)(((unsigned)(a) << 8) | (unsigned char)(b)))
 #define CONCAT12(a, b) (((unsigned)(unsigned char)(a) << 16) | (unsigned short)(b))
 #define CONCAT13(a, b) (((unsigned)(unsigned char)(a) << 24) | ((unsigned)(b) & 0xffffff))
@@ -12,43 +13,43 @@
 #define CONCAT22(a, b) (((unsigned)(unsigned short)(a) << 16) | (unsigned short)(b))
 #define CONCAT31(a, b) (((unsigned)(a) << 8) | (unsigned char)(b))
 #define CONCAT44(a, b) (((unsigned long long)(unsigned)(a) << 32) | (unsigned)(b))
-#define SUB41(x, n) ((unsigned char)((unsigned)(x) >> ((n) * 8)))
-#define SUB42(x, n) ((unsigned short)((unsigned)(x) >> ((n) * 8)))
-#define SUB81(x, n) ((unsigned char)((unsigned long long)(x) >> ((n) * 8)))
-#define SUB84(x, n) ((unsigned)((unsigned long long)(x) >> ((n) * 8)))
-#define ZEXT14(x) ((unsigned)(unsigned char)(x))
-#define ZEXT24(x) ((unsigned)(unsigned short)(x))
-#define ZEXT48(x) ((unsigned long long)(unsigned)(x))
-#define SEXT14(x) ((int)(signed char)(x))
-#define SEXT24(x) ((int)(short)(x))
-#define SEXT48(x) ((long long)(int)(x))
-#define CARRY4(a, b) ((unsigned)(a) + (unsigned)(b) < (unsigned)(a))
-#define SCARRY4(a, b) ((((int)(a) + (int)(b)) < (int)(a)) != ((int)(b) < 0))
+#define SUB41(x, n)    ((unsigned char)((unsigned)(x) >> ((n) * 8)))
+#define SUB42(x, n)    ((unsigned short)((unsigned)(x) >> ((n) * 8)))
+#define SUB81(x, n)    ((unsigned char)((unsigned long long)(x) >> ((n) * 8)))
+#define SUB84(x, n)    ((unsigned)((unsigned long long)(x) >> ((n) * 8)))
+#define ZEXT14(x)      ((unsigned)(unsigned char)(x))
+#define ZEXT24(x)      ((unsigned)(unsigned short)(x))
+#define ZEXT48(x)      ((unsigned long long)(unsigned)(x))
+#define SEXT14(x)      ((int)(signed char)(x))
+#define SEXT24(x)      ((int)(short)(x))
+#define SEXT48(x)      ((long long)(int)(x))
+#define CARRY4(a, b)   ((unsigned)(a) + (unsigned)(b) < (unsigned)(a))
+#define SCARRY4(a, b)  ((((int)(a) + (int)(b)) < (int)(a)) != ((int)(b) < 0))
 #define SBORROW4(a, b) ((((int)(a) - (int)(b)) > (int)(a)) != ((int)(b) < 0))
-#define POPCOUNT(x) __builtin_popcount(x)
-#define LZCOUNT(x) ((x) ? __builtin_clz(x) : 32)
+#define POPCOUNT(x)    __builtin_popcount(x)
+#define LZCOUNT(x)     ((x) ? __builtin_clz(x) : 32)
 
-typedef unsigned char undefined; /* ov80_0222D200 */
-typedef unsigned char undefined1; /* ov80_0222D200 */
-typedef unsigned short undefined2; /* ov80_0222D200 */
-typedef unsigned int undefined3; /* ov80_0222D200 */
-typedef unsigned int undefined4; /* ov80_0222D200 */
+typedef unsigned char undefined;       /* ov80_0222D200 */
+typedef unsigned char undefined1;      /* ov80_0222D200 */
+typedef unsigned short undefined2;     /* ov80_0222D200 */
+typedef unsigned int undefined3;       /* ov80_0222D200 */
+typedef unsigned int undefined4;       /* ov80_0222D200 */
 typedef unsigned long long undefined8; /* ov80_0222D200 */
-typedef unsigned char byte; /* ov80_0222D200 */
-typedef signed char sbyte; /* ov80_0222D200 */
-typedef unsigned short ushort; /* ov80_0222D200 */
-typedef unsigned short word; /* ov80_0222D200 */
-typedef unsigned int uint; /* ov80_0222D200 */
-typedef unsigned int dword; /* ov80_0222D200 */
-typedef unsigned int ulong; /* ov80_0222D200 */
-typedef unsigned long long ulonglong; /* ov80_0222D200 */
-typedef unsigned long long qword; /* ov80_0222D200 */
-typedef long long longlong; /* ov80_0222D200 */
-typedef unsigned char bool; /* ov80_0222D200 */
-typedef int code(); /* ov80_0222D200 */
-typedef void *pointer; /* ov80_0222D200 */
-typedef unsigned short wchar16; /* ov80_0222D200 */
-undefined4 sub_02037454(); /* ov80_0222D200 */
+typedef unsigned char byte;            /* ov80_0222D200 */
+typedef signed char sbyte;             /* ov80_0222D200 */
+typedef unsigned short ushort;         /* ov80_0222D200 */
+typedef unsigned short word;           /* ov80_0222D200 */
+typedef unsigned int uint;             /* ov80_0222D200 */
+typedef unsigned int dword;            /* ov80_0222D200 */
+typedef unsigned int ulong;            /* ov80_0222D200 */
+typedef unsigned long long ulonglong;  /* ov80_0222D200 */
+typedef unsigned long long qword;      /* ov80_0222D200 */
+typedef long long longlong;            /* ov80_0222D200 */
+typedef unsigned char bool;            /* ov80_0222D200 */
+typedef int code();                    /* ov80_0222D200 */
+typedef void *pointer;                 /* ov80_0222D200 */
+typedef unsigned short wchar16;        /* ov80_0222D200 */
+undefined4 sub_02037454();             /* ov80_0222D200 */
 
 int FrontierScript_ReadVar(int param_1);
 void FrtCmd_053(int param_1);
@@ -79,21 +80,21 @@ asm void FrtCmd_053(int param_1) {
 undefined4 ov80_0222D200(int param_1)
 
 {
-  int iVar1;
-  undefined4 uVar2;
+    int iVar1;
+    undefined4 uVar2;
 
-  iVar1 = sub_02037454();
-  if (iVar1 < 2) {
-    return 1;
-  }
-  uVar2 = sub_02037B38(*(ushort *)(param_1 + 0x78) & 0xff);
-  return uVar2;
+    iVar1 = sub_02037454();
+    if (iVar1 < 2) {
+        return 1;
+    }
+    uVar2 = sub_02037B38(*(ushort *)(param_1 + 0x78) & 0xff);
+    return uVar2;
 }
 
 // FUNCTION FrtCmd_054: matching C (r2)
 undefined4 FrtCmd_054(void)
 
 {
-  sub_02037BEC();
-  return 0;
+    sub_02037BEC();
+    return 0;
 }

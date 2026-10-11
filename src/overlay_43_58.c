@@ -2,8 +2,8 @@
 #pragma warning_errors off
 #pragma thumb on
 #include "bg_window.h"
-#define true 1
-#define false 0
+#define true           1
+#define false          0
 #define CONCAT11(a, b) ((unsigned short)(((unsigned)(a) << 8) | (unsigned char)(b)))
 #define CONCAT12(a, b) (((unsigned)(unsigned char)(a) << 16) | (unsigned short)(b))
 #define CONCAT13(a, b) (((unsigned)(unsigned char)(a) << 24) | ((unsigned)(b) & 0xffffff))
@@ -11,48 +11,48 @@
 #define CONCAT22(a, b) (((unsigned)(unsigned short)(a) << 16) | (unsigned short)(b))
 #define CONCAT31(a, b) (((unsigned)(a) << 8) | (unsigned char)(b))
 #define CONCAT44(a, b) (((unsigned long long)(unsigned)(a) << 32) | (unsigned)(b))
-#define SUB41(x, n) ((unsigned char)((unsigned)(x) >> ((n) * 8)))
-#define SUB42(x, n) ((unsigned short)((unsigned)(x) >> ((n) * 8)))
-#define SUB81(x, n) ((unsigned char)((unsigned long long)(x) >> ((n) * 8)))
-#define SUB84(x, n) ((unsigned)((unsigned long long)(x) >> ((n) * 8)))
-#define ZEXT14(x) ((unsigned)(unsigned char)(x))
-#define ZEXT24(x) ((unsigned)(unsigned short)(x))
-#define ZEXT48(x) ((unsigned long long)(unsigned)(x))
-#define SEXT14(x) ((int)(signed char)(x))
-#define SEXT24(x) ((int)(short)(x))
-#define SEXT48(x) ((long long)(int)(x))
-#define CARRY4(a, b) ((unsigned)(a) + (unsigned)(b) < (unsigned)(a))
-#define SCARRY4(a, b) ((((int)(a) + (int)(b)) < (int)(a)) != ((int)(b) < 0))
+#define SUB41(x, n)    ((unsigned char)((unsigned)(x) >> ((n) * 8)))
+#define SUB42(x, n)    ((unsigned short)((unsigned)(x) >> ((n) * 8)))
+#define SUB81(x, n)    ((unsigned char)((unsigned long long)(x) >> ((n) * 8)))
+#define SUB84(x, n)    ((unsigned)((unsigned long long)(x) >> ((n) * 8)))
+#define ZEXT14(x)      ((unsigned)(unsigned char)(x))
+#define ZEXT24(x)      ((unsigned)(unsigned short)(x))
+#define ZEXT48(x)      ((unsigned long long)(unsigned)(x))
+#define SEXT14(x)      ((int)(signed char)(x))
+#define SEXT24(x)      ((int)(short)(x))
+#define SEXT48(x)      ((long long)(int)(x))
+#define CARRY4(a, b)   ((unsigned)(a) + (unsigned)(b) < (unsigned)(a))
+#define SCARRY4(a, b)  ((((int)(a) + (int)(b)) < (int)(a)) != ((int)(b) < 0))
 #define SBORROW4(a, b) ((((int)(a) - (int)(b)) > (int)(a)) != ((int)(b) < 0))
-#define POPCOUNT(x) __builtin_popcount(x)
-#define LZCOUNT(x) ((x) ? __builtin_clz(x) : 32)
+#define POPCOUNT(x)    __builtin_popcount(x)
+#define LZCOUNT(x)     ((x) ? __builtin_clz(x) : 32)
 
-typedef unsigned char undefined; /* ov43_0222C53C */
-typedef unsigned char undefined1; /* ov43_0222C53C */
-typedef unsigned short undefined2; /* ov43_0222C53C */
-typedef unsigned int undefined3; /* ov43_0222C53C */
-typedef unsigned int undefined4; /* ov43_0222C53C */
+typedef unsigned char undefined;       /* ov43_0222C53C */
+typedef unsigned char undefined1;      /* ov43_0222C53C */
+typedef unsigned short undefined2;     /* ov43_0222C53C */
+typedef unsigned int undefined3;       /* ov43_0222C53C */
+typedef unsigned int undefined4;       /* ov43_0222C53C */
 typedef unsigned long long undefined8; /* ov43_0222C53C */
-typedef unsigned char byte; /* ov43_0222C53C */
-typedef signed char sbyte; /* ov43_0222C53C */
-typedef unsigned short ushort; /* ov43_0222C53C */
-typedef unsigned short word; /* ov43_0222C53C */
-typedef unsigned int uint; /* ov43_0222C53C */
-typedef unsigned int dword; /* ov43_0222C53C */
-typedef unsigned int ulong; /* ov43_0222C53C */
-typedef unsigned long long ulonglong; /* ov43_0222C53C */
-typedef unsigned long long qword; /* ov43_0222C53C */
-typedef long long longlong; /* ov43_0222C53C */
-typedef unsigned char bool; /* ov43_0222C53C */
-typedef int code(); /* ov43_0222C53C */
-typedef void *pointer; /* ov43_0222C53C */
-typedef unsigned short wchar16; /* ov43_0222C53C */
+typedef unsigned char byte;            /* ov43_0222C53C */
+typedef signed char sbyte;             /* ov43_0222C53C */
+typedef unsigned short ushort;         /* ov43_0222C53C */
+typedef unsigned short word;           /* ov43_0222C53C */
+typedef unsigned int uint;             /* ov43_0222C53C */
+typedef unsigned int dword;            /* ov43_0222C53C */
+typedef unsigned int ulong;            /* ov43_0222C53C */
+typedef unsigned long long ulonglong;  /* ov43_0222C53C */
+typedef unsigned long long qword;      /* ov43_0222C53C */
+typedef long long longlong;            /* ov43_0222C53C */
+typedef unsigned char bool;            /* ov43_0222C53C */
+typedef int code();                    /* ov43_0222C53C */
+typedef void *pointer;                 /* ov43_0222C53C */
+typedef unsigned short wchar16;        /* ov43_0222C53C */
 
 void ov43_0222C378(int param_1, int param_2, int param_3, int param_4);
 void ov43_0222C3E8(int param_1, int param_2, int param_3);
 void ov43_0222C46C(int param_1, int param_2, int param_3, int param_4);
 void ov43_0222C4B8(int param_1, int param_2, int param_3);
-void ov43_0222C53C(int param_1,int param_2,undefined2 param_3);
+void ov43_0222C53C(int param_1, int param_2, undefined2 param_3);
 void ov43_0222C7F8(int param_1, int param_2, int param_3);
 int ov43_0222C844(int param_1, int param_2, int param_3);
 void ov43_0222C918(int param_1, int param_2, int param_3, int param_4);
@@ -296,11 +296,11 @@ asm void ov43_0222C4B8(int param_1, int param_2, int param_3) {
 // clang-format on
 
 // FUNCTION ov43_0222C53C: matching C (r2)
-void ov43_0222C53C(int param_1,int param_2,undefined2 param_3)
+void ov43_0222C53C(int param_1, int param_2, undefined2 param_3)
 
 {
-  *(undefined1 *)(param_2 + 8) = 3;
-  *(undefined2 *)(param_1 + 0xb2) = param_3;
-  *(undefined2 *)(param_1 + 0xb0) = 0;
-  return;
+    *(undefined1 *)(param_2 + 8) = 3;
+    *(undefined2 *)(param_1 + 0xb2) = param_3;
+    *(undefined2 *)(param_1 + 0xb0) = 0;
+    return;
 }

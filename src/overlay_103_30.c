@@ -2,9 +2,10 @@
 #pragma warning_errors off
 #pragma thumb on
 #include "global.h"
+
 #include "overlay_manager.h"
-#define true 1
-#define false 0
+#define true           1
+#define false          0
 #define CONCAT11(a, b) ((unsigned short)(((unsigned)(a) << 8) | (unsigned char)(b)))
 #define CONCAT12(a, b) (((unsigned)(unsigned char)(a) << 16) | (unsigned short)(b))
 #define CONCAT13(a, b) (((unsigned)(unsigned char)(a) << 24) | ((unsigned)(b) & 0xffffff))
@@ -12,52 +13,52 @@
 #define CONCAT22(a, b) (((unsigned)(unsigned short)(a) << 16) | (unsigned short)(b))
 #define CONCAT31(a, b) (((unsigned)(a) << 8) | (unsigned char)(b))
 #define CONCAT44(a, b) (((unsigned long long)(unsigned)(a) << 32) | (unsigned)(b))
-#define SUB41(x, n) ((unsigned char)((unsigned)(x) >> ((n) * 8)))
-#define SUB42(x, n) ((unsigned short)((unsigned)(x) >> ((n) * 8)))
-#define SUB81(x, n) ((unsigned char)((unsigned long long)(x) >> ((n) * 8)))
-#define SUB84(x, n) ((unsigned)((unsigned long long)(x) >> ((n) * 8)))
-#define ZEXT14(x) ((unsigned)(unsigned char)(x))
-#define ZEXT24(x) ((unsigned)(unsigned short)(x))
-#define ZEXT48(x) ((unsigned long long)(unsigned)(x))
-#define SEXT14(x) ((int)(signed char)(x))
-#define SEXT24(x) ((int)(short)(x))
-#define SEXT48(x) ((long long)(int)(x))
-#define CARRY4(a, b) ((unsigned)(a) + (unsigned)(b) < (unsigned)(a))
-#define SCARRY4(a, b) ((((int)(a) + (int)(b)) < (int)(a)) != ((int)(b) < 0))
+#define SUB41(x, n)    ((unsigned char)((unsigned)(x) >> ((n) * 8)))
+#define SUB42(x, n)    ((unsigned short)((unsigned)(x) >> ((n) * 8)))
+#define SUB81(x, n)    ((unsigned char)((unsigned long long)(x) >> ((n) * 8)))
+#define SUB84(x, n)    ((unsigned)((unsigned long long)(x) >> ((n) * 8)))
+#define ZEXT14(x)      ((unsigned)(unsigned char)(x))
+#define ZEXT24(x)      ((unsigned)(unsigned short)(x))
+#define ZEXT48(x)      ((unsigned long long)(unsigned)(x))
+#define SEXT14(x)      ((int)(signed char)(x))
+#define SEXT24(x)      ((int)(short)(x))
+#define SEXT48(x)      ((long long)(int)(x))
+#define CARRY4(a, b)   ((unsigned)(a) + (unsigned)(b) < (unsigned)(a))
+#define SCARRY4(a, b)  ((((int)(a) + (int)(b)) < (int)(a)) != ((int)(b) < 0))
 #define SBORROW4(a, b) ((((int)(a) - (int)(b)) > (int)(a)) != ((int)(b) < 0))
-#define POPCOUNT(x) __builtin_popcount(x)
-#define LZCOUNT(x) ((x) ? __builtin_clz(x) : 32)
-#include "unk_02019BA4.h"
+#define POPCOUNT(x)    __builtin_popcount(x)
+#define LZCOUNT(x)     ((x) ? __builtin_clz(x) : 32)
 #include "unk_02005D10.h"
+#include "unk_02019BA4.h"
 
 typedef void (*UnkFunc_ov103_021ED550)(u8 *data, void *fn, s32 state, u32 offset); /* ov103_021ED550 */
 typedef struct UnkStruct_ov103_021ED550 {
     UnkFunc_ov103_021ED550 func0;
     void *func4;
     s32 value8;
-} UnkStruct_ov103_021ED550; /* ov103_021ED550 */
+} UnkStruct_ov103_021ED550;                             /* ov103_021ED550 */
 extern const UnkStruct_ov103_021ED550 ov103_021EEC78[]; /* ov103_021ED550 */
-typedef unsigned char undefined; /* ov103_021ED5A8 */
-typedef unsigned char undefined1; /* ov103_021ED5A8 */
-typedef unsigned short undefined2; /* ov103_021ED5A8 */
-typedef unsigned int undefined3; /* ov103_021ED5A8 */
-typedef unsigned int undefined4; /* ov103_021ED5A8 */
-typedef unsigned long long undefined8; /* ov103_021ED5A8 */
-typedef unsigned char byte; /* ov103_021ED5A8 */
-typedef signed char sbyte; /* ov103_021ED5A8 */
-typedef unsigned short ushort; /* ov103_021ED5A8 */
-typedef unsigned short word; /* ov103_021ED5A8 */
-typedef unsigned int uint; /* ov103_021ED5A8 */
-typedef unsigned int dword; /* ov103_021ED5A8 */
-typedef unsigned int ulong; /* ov103_021ED5A8 */
-typedef unsigned long long ulonglong; /* ov103_021ED5A8 */
-typedef unsigned long long qword; /* ov103_021ED5A8 */
-typedef long long longlong; /* ov103_021ED5A8 */
-typedef unsigned char bool; /* ov103_021ED5A8 */
-typedef int code(); /* ov103_021ED5A8 */
-typedef void *pointer; /* ov103_021ED5A8 */
-typedef unsigned short wchar16; /* ov103_021ED5A8 */
-void gSystem(); /* ov103_021ED5B4 */
+typedef unsigned char undefined;                        /* ov103_021ED5A8 */
+typedef unsigned char undefined1;                       /* ov103_021ED5A8 */
+typedef unsigned short undefined2;                      /* ov103_021ED5A8 */
+typedef unsigned int undefined3;                        /* ov103_021ED5A8 */
+typedef unsigned int undefined4;                        /* ov103_021ED5A8 */
+typedef unsigned long long undefined8;                  /* ov103_021ED5A8 */
+typedef unsigned char byte;                             /* ov103_021ED5A8 */
+typedef signed char sbyte;                              /* ov103_021ED5A8 */
+typedef unsigned short ushort;                          /* ov103_021ED5A8 */
+typedef unsigned short word;                            /* ov103_021ED5A8 */
+typedef unsigned int uint;                              /* ov103_021ED5A8 */
+typedef unsigned int dword;                             /* ov103_021ED5A8 */
+typedef unsigned int ulong;                             /* ov103_021ED5A8 */
+typedef unsigned long long ulonglong;                   /* ov103_021ED5A8 */
+typedef unsigned long long qword;                       /* ov103_021ED5A8 */
+typedef long long longlong;                             /* ov103_021ED5A8 */
+typedef unsigned char bool;                             /* ov103_021ED5A8 */
+typedef int code();                                     /* ov103_021ED5A8 */
+typedef void *pointer;                                  /* ov103_021ED5A8 */
+typedef unsigned short wchar16;                         /* ov103_021ED5A8 */
+void gSystem();                                         /* ov103_021ED5B4 */
 
 void ov103_021ED0C0(int param_1);
 s32 ov103_021ED550(u8 *data);
@@ -120,8 +121,8 @@ _021ED57A:
 void ov103_021ED5A8(undefined4 param_1)
 
 {
-  ov103_021EDA14(param_1,9);
-  return;
+    ov103_021EDA14(param_1, 9);
+    return;
 }
 
 // FUNCTION ov103_021ED5B4: no matching C yet, the original asm
@@ -333,9 +334,9 @@ _021ED73A:
 void ov103_021ED750(int param_1)
 
 {
-  *(undefined4 *)(param_1 + 0x28) = 0x19;
-  ov103_021EDA40(param_1,1);
-  return;
+    *(undefined4 *)(param_1 + 0x28) = 0x19;
+    ov103_021EDA40(param_1, 1);
+    return;
 }
 
 // FUNCTION ov103_021ED760: no matching C yet, the original asm

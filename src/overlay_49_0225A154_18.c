@@ -2,6 +2,7 @@
 #pragma warning_errors off
 #pragma thumb on
 #include "global.h"
+
 #include "heap.h"
 #include "message_format.h"
 #include "player_data.h"
@@ -21,12 +22,12 @@ typedef struct UnkStruct_Ov49_0225A154 {
     u8 unk338[0x6C];
     u8 unk3A4[0x20];
     u8 unk3C4[0x20];
-} UnkStruct_Ov49_0225A154; /* ov49_0225A37C */
-extern int ov45_0222A53C(void *a0); /* ov49_0225A37C */
-extern void *ov45_0222A578(void *a0, int a1); /* ov49_0225A37C */
-extern void *ov45_0222A5C0(void *a0); /* ov49_0225A37C */
+} UnkStruct_Ov49_0225A154;                                      /* ov49_0225A37C */
+extern int ov45_0222A53C(void *a0);                             /* ov49_0225A37C */
+extern void *ov45_0222A578(void *a0, int a1);                   /* ov49_0225A37C */
+extern void *ov45_0222A5C0(void *a0);                           /* ov49_0225A37C */
 extern void ov45_0222A844(void *a0, PlayerProfile *a1, int a2); /* ov49_0225A37C */
-extern u8 ov45_0222D7C0(int a0); /* ov49_0225A37C */
+extern u8 ov45_0222D7C0(int a0);                                /* ov49_0225A37C */
 
 void ov49_0225A37C(UnkStruct_Ov49_0225A154 *a0, int a1, int a2);
 void ov49_0225B3D8(int param_1, int param_2, int param_3);

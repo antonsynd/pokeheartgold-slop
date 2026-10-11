@@ -2,13 +2,13 @@
 #pragma warning_errors off
 #pragma thumb on
 
-typedef unsigned char u8; /* ov14_021EC854 */
+typedef unsigned char u8;   /* ov14_021EC854 */
 typedef unsigned short u16; /* ov14_021EC854 */
-typedef unsigned int u32; /* ov14_021EC854 */
-typedef signed char s8; /* ov14_021EC854 */
-typedef signed short s16; /* ov14_021EC854 */
-typedef int s32; /* ov14_021EC854 */
-typedef int BOOL; /* ov14_021EC854 */
+typedef unsigned int u32;   /* ov14_021EC854 */
+typedef signed char s8;     /* ov14_021EC854 */
+typedef signed short s16;   /* ov14_021EC854 */
+typedef int s32;            /* ov14_021EC854 */
+typedef int BOOL;           /* ov14_021EC854 */
 typedef struct {
     u8 pad0[0x8];
     s32 unk8;
@@ -28,16 +28,15 @@ typedef struct {
     u8 unk2B;
     u8 pad2C[0x8];
     UnkStruct_ov14_021EC854_34 *unk34;
-} UnkStruct_ov14_021EC854; /* ov14_021EC854 */
+} UnkStruct_ov14_021EC854;                                       /* ov14_021EC854 */
 void ov14_021F6AC0(UnkStruct_ov14_021EC854 *a0, u32 a1, u32 a2); /* ov14_021EC854 */
-s32 ov14_021F1580(UnkStruct_ov14_021EC854 *a0, u32 a1); /* ov14_021EC854 */
-BOOL ov14_021E7588(UnkStruct_ov14_021EC854 *a0, u32 a1); /* ov14_021EC854 */
+s32 ov14_021F1580(UnkStruct_ov14_021EC854 *a0, u32 a1);          /* ov14_021EC854 */
+BOOL ov14_021E7588(UnkStruct_ov14_021EC854 *a0, u32 a1);         /* ov14_021EC854 */
 
 s32 ov14_021EC854(UnkStruct_ov14_021EC854 *a0);
 
 // FUNCTION ov14_021EC854: matching C (r2)
-s32 ov14_021EC854(UnkStruct_ov14_021EC854 *a0)
-{
+s32 ov14_021EC854(UnkStruct_ov14_021EC854 *a0) {
     s32 ret;
 
     a0->unk34->unk43C = (s32)a0->unk25 % 6 + 0x25;

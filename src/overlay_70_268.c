@@ -2,6 +2,7 @@
 #pragma warning_errors off
 #pragma thumb on
 #include "global.h"
+
 #include "sprite.h"
 
 extern u8 ov70_02245D80[]; /* ov70_02243DA0 */

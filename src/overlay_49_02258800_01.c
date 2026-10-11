@@ -2,6 +2,7 @@
 #pragma warning_errors off
 #pragma thumb on
 #include "global.h"
+
 #include "assert.h"
 #include "gf_3d_loader.h"
 #include "gf_3d_render.h"
@@ -12,10 +13,10 @@
 #include "unk_0201F990.h"
 
 typedef struct UnkOv49Entity UnkOv49Entity; /* ov49_02258830 */
-typedef struct UnkOv49Ctx UnkOv49Ctx; /* ov49_02258830 */
+typedef struct UnkOv49Ctx UnkOv49Ctx;       /* ov49_02258830 */
 typedef struct UnkOv49Map {
     UnkStruct_ov42_02227F68 *unk0;
-} UnkOv49Map; /* ov49_02258830 */
+} UnkOv49Map;                                                              /* ov49_02258830 */
 typedef void (*UnkOv49EntityFunc)(UnkOv49Entity *entity, UnkOv49Ctx *ctx); /* ov49_02258830 */
 struct UnkOv49Entity {
     UnkStruct_ov42_02228110 *unk0;
@@ -38,21 +39,21 @@ struct UnkOv49Ctx {
     UnkOv49Entity *unk20;
     UnkOv49Entity *unk24;
 }; /* ov49_02258830 */
-extern void ov49_02259A20(void *a0, void *a1, u32 a2); /* ov49_02258830 */
-extern void ov49_02259A3C(void *a0, u32 a1); /* ov49_02258830 */
-extern void ov49_02259A54(void *a0, void *a1); /* ov49_02258830 */
-extern void *ov45_02230498(u32 a0, u32 a1, u32 heapID, u32 heapID2); /* ov49_02258830 */
-extern void ov45_02230638(void *a0); /* ov49_02258830 */
-extern void ov45_02230680(void *a0); /* ov49_02258830 */
-extern void ov45_022306B4(void *a0); /* ov49_02258830 */
-extern void ov45_022306F4(void *a0); /* ov49_02258830 */
+extern void ov49_02259A20(void *a0, void *a1, u32 a2);                   /* ov49_02258830 */
+extern void ov49_02259A3C(void *a0, u32 a1);                             /* ov49_02258830 */
+extern void ov49_02259A54(void *a0, void *a1);                           /* ov49_02258830 */
+extern void *ov45_02230498(u32 a0, u32 a1, u32 heapID, u32 heapID2);     /* ov49_02258830 */
+extern void ov45_02230638(void *a0);                                     /* ov49_02258830 */
+extern void ov45_02230680(void *a0);                                     /* ov49_02258830 */
+extern void ov45_022306B4(void *a0);                                     /* ov49_02258830 */
+extern void ov45_022306F4(void *a0);                                     /* ov49_02258830 */
 extern void *ov45_0223070C(void *manager, UnkStruct_ov42_02228110 *obj); /* ov49_02258830 */
-extern void ov45_02230884(void *a0); /* ov49_02258830 */
-extern const u32 ov49_02269660[]; /* ov49_02258830 */
-extern const u8 ov49_02269634[32]; /* ov49_02258830 */
-extern const u8 _02269624[3]; /* ov49_02258830 */
-extern const u8 ov49_0226962C[7]; /* ov49_02258830 */
-extern const u8 ov49_02269628[4]; /* ov49_02258830 */
+extern void ov45_02230884(void *a0);                                     /* ov49_02258830 */
+extern const u32 ov49_02269660[];                                        /* ov49_02258830 */
+extern const u8 ov49_02269634[32];                                       /* ov49_02258830 */
+extern const u8 _02269624[3];                                            /* ov49_02258830 */
+extern const u8 ov49_0226962C[7];                                        /* ov49_02258830 */
+extern const u8 ov49_02269628[4];                                        /* ov49_02258830 */
 
 void ov49_02258830(void **dst, NARC *narc, u32 fileId, u32 heapID);
 

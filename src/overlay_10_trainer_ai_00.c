@@ -2,11 +2,12 @@
 #pragma warning_errors off
 #pragma thumb on
 #include "global.h"
+
 #include "battle/battle_system.h"
 #include "battle/overlay_12_0224E4FC.h"
 #include "battle/trainer_ai.h"
-#define true 1
-#define false 0
+#define true           1
+#define false          0
 #define CONCAT11(a, b) ((unsigned short)(((unsigned)(a) << 8) | (unsigned char)(b)))
 #define CONCAT12(a, b) (((unsigned)(unsigned char)(a) << 16) | (unsigned short)(b))
 #define CONCAT13(a, b) (((unsigned)(unsigned char)(a) << 24) | ((unsigned)(b) & 0xffffff))
@@ -14,47 +15,47 @@
 #define CONCAT22(a, b) (((unsigned)(unsigned short)(a) << 16) | (unsigned short)(b))
 #define CONCAT31(a, b) (((unsigned)(a) << 8) | (unsigned char)(b))
 #define CONCAT44(a, b) (((unsigned long long)(unsigned)(a) << 32) | (unsigned)(b))
-#define SUB41(x, n) ((unsigned char)((unsigned)(x) >> ((n) * 8)))
-#define SUB42(x, n) ((unsigned short)((unsigned)(x) >> ((n) * 8)))
-#define SUB81(x, n) ((unsigned char)((unsigned long long)(x) >> ((n) * 8)))
-#define SUB84(x, n) ((unsigned)((unsigned long long)(x) >> ((n) * 8)))
-#define ZEXT14(x) ((unsigned)(unsigned char)(x))
-#define ZEXT24(x) ((unsigned)(unsigned short)(x))
-#define ZEXT48(x) ((unsigned long long)(unsigned)(x))
-#define SEXT14(x) ((int)(signed char)(x))
-#define SEXT24(x) ((int)(short)(x))
-#define SEXT48(x) ((long long)(int)(x))
-#define CARRY4(a, b) ((unsigned)(a) + (unsigned)(b) < (unsigned)(a))
-#define SCARRY4(a, b) ((((int)(a) + (int)(b)) < (int)(a)) != ((int)(b) < 0))
+#define SUB41(x, n)    ((unsigned char)((unsigned)(x) >> ((n) * 8)))
+#define SUB42(x, n)    ((unsigned short)((unsigned)(x) >> ((n) * 8)))
+#define SUB81(x, n)    ((unsigned char)((unsigned long long)(x) >> ((n) * 8)))
+#define SUB84(x, n)    ((unsigned)((unsigned long long)(x) >> ((n) * 8)))
+#define ZEXT14(x)      ((unsigned)(unsigned char)(x))
+#define ZEXT24(x)      ((unsigned)(unsigned short)(x))
+#define ZEXT48(x)      ((unsigned long long)(unsigned)(x))
+#define SEXT14(x)      ((int)(signed char)(x))
+#define SEXT24(x)      ((int)(short)(x))
+#define SEXT48(x)      ((long long)(int)(x))
+#define CARRY4(a, b)   ((unsigned)(a) + (unsigned)(b) < (unsigned)(a))
+#define SCARRY4(a, b)  ((((int)(a) + (int)(b)) < (int)(a)) != ((int)(b) < 0))
 #define SBORROW4(a, b) ((((int)(a) - (int)(b)) > (int)(a)) != ((int)(b) < 0))
-#define POPCOUNT(x) __builtin_popcount(x)
-#define LZCOUNT(x) ((x) ? __builtin_clz(x) : 32)
+#define POPCOUNT(x)    __builtin_popcount(x)
+#define LZCOUNT(x)     ((x) ? __builtin_clz(x) : 32)
 #include "error_handling.h"
 
 extern int _s32_div_f(int numer, int denom); /* ov10_0221BF44 */
-void ov10_0222B0B4(); /* ov10_0221C278 */
-typedef unsigned char undefined; /* ov10_0221C878 */
-typedef unsigned char undefined1; /* ov10_0221C878 */
-typedef unsigned short undefined2; /* ov10_0221C878 */
-typedef unsigned int undefined3; /* ov10_0221C878 */
-typedef unsigned int undefined4; /* ov10_0221C878 */
-typedef unsigned long long undefined8; /* ov10_0221C878 */
-typedef unsigned char byte; /* ov10_0221C878 */
-typedef signed char sbyte; /* ov10_0221C878 */
-typedef unsigned short ushort; /* ov10_0221C878 */
-typedef unsigned short word; /* ov10_0221C878 */
-typedef unsigned int uint; /* ov10_0221C878 */
-typedef unsigned int dword; /* ov10_0221C878 */
-typedef unsigned int ulong; /* ov10_0221C878 */
-typedef unsigned long long ulonglong; /* ov10_0221C878 */
-typedef unsigned long long qword; /* ov10_0221C878 */
-typedef long long longlong; /* ov10_0221C878 */
-typedef unsigned char bool; /* ov10_0221C878 */
-typedef int code(); /* ov10_0221C878 */
-typedef void *pointer; /* ov10_0221C878 */
-typedef unsigned short wchar16; /* ov10_0221C878 */
-void ov10_0222B080(); /* ov10_0221CD34 */
-void ov10_0222B098(); /* ov10_0221CD34 */
+void ov10_0222B0B4();                        /* ov10_0221C278 */
+typedef unsigned char undefined;             /* ov10_0221C878 */
+typedef unsigned char undefined1;            /* ov10_0221C878 */
+typedef unsigned short undefined2;           /* ov10_0221C878 */
+typedef unsigned int undefined3;             /* ov10_0221C878 */
+typedef unsigned int undefined4;             /* ov10_0221C878 */
+typedef unsigned long long undefined8;       /* ov10_0221C878 */
+typedef unsigned char byte;                  /* ov10_0221C878 */
+typedef signed char sbyte;                   /* ov10_0221C878 */
+typedef unsigned short ushort;               /* ov10_0221C878 */
+typedef unsigned short word;                 /* ov10_0221C878 */
+typedef unsigned int uint;                   /* ov10_0221C878 */
+typedef unsigned int dword;                  /* ov10_0221C878 */
+typedef unsigned int ulong;                  /* ov10_0221C878 */
+typedef unsigned long long ulonglong;        /* ov10_0221C878 */
+typedef unsigned long long qword;            /* ov10_0221C878 */
+typedef long long longlong;                  /* ov10_0221C878 */
+typedef unsigned char bool;                  /* ov10_0221C878 */
+typedef int code();                          /* ov10_0221C878 */
+typedef void *pointer;                       /* ov10_0221C878 */
+typedef unsigned short wchar16;              /* ov10_0221C878 */
+void ov10_0222B080();                        /* ov10_0221CD34 */
+void ov10_0222B098();                        /* ov10_0221CD34 */
 
 u8 ov10_0221BF44(BattleSystem *battleSystem, BattleContext *ctx);
 u8 ov10_0221C038(BattleSystem *battleSystem, BattleContext *ctx);
@@ -76,26 +77,26 @@ void ov10_0221C748(void *battleSys, u8 *battleCtx);
 void ov10_0221C790(void *battleSys, u8 *battleCtx);
 void ov10_0221C7D8(int param_1, int param_2);
 void ov10_0221C828(int param_1, int param_2);
-void ov10_0221C878(undefined4 param_1,int param_2,undefined4 param_3,undefined4 param_4);
+void ov10_0221C878(undefined4 param_1, int param_2, undefined4 param_3, undefined4 param_4);
 void ov10_0221C8A8(int param_1, int param_2);
-void ov10_0221C8D8(undefined4 param_1,int param_2,undefined4 param_3,undefined4 param_4);
-void ov10_0221C908(undefined4 param_1,int param_2,undefined4 param_3,undefined4 param_4);
-void ov10_0221C938(undefined4 param_1,int param_2,undefined4 param_3,undefined4 param_4);
-void ov10_0221C968(undefined4 param_1,int param_2,undefined4 param_3,undefined4 param_4);
-void ov10_0221C998(undefined4 param_1,int param_2,undefined4 param_3,undefined4 param_4);
-void ov10_0221C9C8(undefined4 param_1,int param_2,undefined4 param_3,undefined4 param_4);
+void ov10_0221C8D8(undefined4 param_1, int param_2, undefined4 param_3, undefined4 param_4);
+void ov10_0221C908(undefined4 param_1, int param_2, undefined4 param_3, undefined4 param_4);
+void ov10_0221C938(undefined4 param_1, int param_2, undefined4 param_3, undefined4 param_4);
+void ov10_0221C968(undefined4 param_1, int param_2, undefined4 param_3, undefined4 param_4);
+void ov10_0221C998(undefined4 param_1, int param_2, undefined4 param_3, undefined4 param_4);
+void ov10_0221C9C8(undefined4 param_1, int param_2, undefined4 param_3, undefined4 param_4);
 void ov10_0221C9F8(int param_1, int param_2);
 void ov10_0221CA4C(int param_1, int param_2);
 void ov10_0221CA9C(int param_1, int param_2);
 void ov10_0221CB00(int param_1, int param_2);
-void ov10_0221CB64(undefined4 param_1,int param_2);
+void ov10_0221CB64(undefined4 param_1, int param_2);
 void ov10_0221CB80(int param_1, int param_2);
 void ov10_0221CCB4(int param_1, int param_2);
-void ov10_0221CD10(undefined4 param_1,int param_2);
+void ov10_0221CD10(undefined4 param_1, int param_2);
 void ov10_0221CD34(int param_1, int param_2);
 void ov10_0221CE70(int param_1, int param_2);
-void ov10_0221CEA4(undefined4 param_1,int param_2);
-void ov10_0221CED4(undefined4 param_1,int param_2);
+void ov10_0221CEA4(undefined4 param_1, int param_2);
+void ov10_0221CED4(undefined4 param_1, int param_2);
 void ov10_0221EE88(int param_1, int param_2);
 int ov10_0221EEF0(int param_1);
 int ov10_0221EF10(int param_1, int param_2);
@@ -1102,19 +1103,19 @@ _0221C876:
 // clang-format on
 
 // FUNCTION ov10_0221C878: matching C (r4)
-void ov10_0221C878(undefined4 param_1,int param_2,undefined4 param_3,undefined4 param_4)
+void ov10_0221C878(undefined4 param_1, int param_2, undefined4 param_3, undefined4 param_4)
 
 {
-  int iVar1;
-  undefined4 uVar2;
+    int iVar1;
+    undefined4 uVar2;
 
-  ov10_0221EF24(param_2,1);
-  iVar1 = ov10_0221EEF0(param_2);
-  uVar2 = ov10_0221EEF0(param_2);
-  if (*(int *)(param_2 + 0x35c) < iVar1) {
-    ov10_0221EF24(param_2,uVar2);
-  }
-  return;
+    ov10_0221EF24(param_2, 1);
+    iVar1 = ov10_0221EEF0(param_2);
+    uVar2 = ov10_0221EEF0(param_2);
+    if (*(int *)(param_2 + 0x35c) < iVar1) {
+        ov10_0221EF24(param_2, uVar2);
+    }
+    return;
 }
 
 // FUNCTION ov10_0221C8A8: no matching C yet, the original asm
@@ -1144,99 +1145,99 @@ _0221C8D4:
 // clang-format on
 
 // FUNCTION ov10_0221C8D8: matching C (r4)
-void ov10_0221C8D8(undefined4 param_1,int param_2,undefined4 param_3,undefined4 param_4)
+void ov10_0221C8D8(undefined4 param_1, int param_2, undefined4 param_3, undefined4 param_4)
 
 {
-  int iVar1;
-  undefined4 uVar2;
+    int iVar1;
+    undefined4 uVar2;
 
-  ov10_0221EF24(param_2,1);
-  iVar1 = ov10_0221EEF0(param_2);
-  uVar2 = ov10_0221EEF0(param_2);
-  if (*(int *)(param_2 + 0x35c) == iVar1) {
-    ov10_0221EF24(param_2,uVar2);
-  }
-  return;
+    ov10_0221EF24(param_2, 1);
+    iVar1 = ov10_0221EEF0(param_2);
+    uVar2 = ov10_0221EEF0(param_2);
+    if (*(int *)(param_2 + 0x35c) == iVar1) {
+        ov10_0221EF24(param_2, uVar2);
+    }
+    return;
 }
 
 // FUNCTION ov10_0221C908: matching C (r4)
-void ov10_0221C908(undefined4 param_1,int param_2,undefined4 param_3,undefined4 param_4)
+void ov10_0221C908(undefined4 param_1, int param_2, undefined4 param_3, undefined4 param_4)
 
 {
-  int iVar1;
-  undefined4 uVar2;
+    int iVar1;
+    undefined4 uVar2;
 
-  ov10_0221EF24(param_2,1);
-  iVar1 = ov10_0221EEF0(param_2);
-  uVar2 = ov10_0221EEF0(param_2);
-  if (*(int *)(param_2 + 0x35c) != iVar1) {
-    ov10_0221EF24(param_2,uVar2);
-  }
-  return;
+    ov10_0221EF24(param_2, 1);
+    iVar1 = ov10_0221EEF0(param_2);
+    uVar2 = ov10_0221EEF0(param_2);
+    if (*(int *)(param_2 + 0x35c) != iVar1) {
+        ov10_0221EF24(param_2, uVar2);
+    }
+    return;
 }
 
 // FUNCTION ov10_0221C938: matching C (r4)
-void ov10_0221C938(undefined4 param_1,int param_2,undefined4 param_3,undefined4 param_4)
+void ov10_0221C938(undefined4 param_1, int param_2, undefined4 param_3, undefined4 param_4)
 
 {
-  uint uVar1;
-  undefined4 uVar2;
+    uint uVar1;
+    undefined4 uVar2;
 
-  ov10_0221EF24(param_2,1);
-  uVar1 = ov10_0221EEF0(param_2);
-  uVar2 = ov10_0221EEF0(param_2);
-  if ((*(uint *)(param_2 + 0x35c) & uVar1) != 0) {
-    ov10_0221EF24(param_2,uVar2);
-  }
-  return;
+    ov10_0221EF24(param_2, 1);
+    uVar1 = ov10_0221EEF0(param_2);
+    uVar2 = ov10_0221EEF0(param_2);
+    if ((*(uint *)(param_2 + 0x35c) & uVar1) != 0) {
+        ov10_0221EF24(param_2, uVar2);
+    }
+    return;
 }
 
 // FUNCTION ov10_0221C968: matching C (r4)
-void ov10_0221C968(undefined4 param_1,int param_2,undefined4 param_3,undefined4 param_4)
+void ov10_0221C968(undefined4 param_1, int param_2, undefined4 param_3, undefined4 param_4)
 
 {
-  uint uVar1;
-  undefined4 uVar2;
+    uint uVar1;
+    undefined4 uVar2;
 
-  ov10_0221EF24(param_2,1);
-  uVar1 = ov10_0221EEF0(param_2);
-  uVar2 = ov10_0221EEF0(param_2);
-  if ((*(uint *)(param_2 + 0x35c) & uVar1) == 0) {
-    ov10_0221EF24(param_2,uVar2);
-  }
-  return;
+    ov10_0221EF24(param_2, 1);
+    uVar1 = ov10_0221EEF0(param_2);
+    uVar2 = ov10_0221EEF0(param_2);
+    if ((*(uint *)(param_2 + 0x35c) & uVar1) == 0) {
+        ov10_0221EF24(param_2, uVar2);
+    }
+    return;
 }
 
 // FUNCTION ov10_0221C998: matching C (r4)
-void ov10_0221C998(undefined4 param_1,int param_2,undefined4 param_3,undefined4 param_4)
+void ov10_0221C998(undefined4 param_1, int param_2, undefined4 param_3, undefined4 param_4)
 
 {
-  uint uVar1;
-  undefined4 uVar2;
+    uint uVar1;
+    undefined4 uVar2;
 
-  ov10_0221EF24(param_2,1);
-  uVar1 = ov10_0221EEF0(param_2);
-  uVar2 = ov10_0221EEF0(param_2);
-  if (*(ushort *)(param_2 + 0x356) == uVar1) {
-    ov10_0221EF24(param_2,uVar2);
-  }
-  return;
+    ov10_0221EF24(param_2, 1);
+    uVar1 = ov10_0221EEF0(param_2);
+    uVar2 = ov10_0221EEF0(param_2);
+    if (*(ushort *)(param_2 + 0x356) == uVar1) {
+        ov10_0221EF24(param_2, uVar2);
+    }
+    return;
 }
 
 // FUNCTION ov10_0221C9C8: matching C (r4)
-void ov10_0221C9C8(undefined4 param_1,int param_2,undefined4 param_3,undefined4 param_4)
+void ov10_0221C9C8(undefined4 param_1, int param_2, undefined4 param_3, undefined4 param_4)
 
 {
-  uint uVar1;
-  undefined4 uVar2;
+    uint uVar1;
+    undefined4 uVar2;
 
-  ov10_0221EF24(param_2,1);
-  uVar1 = ov10_0221EEF0(param_2);
-  uVar2 = ov10_0221EEF0(param_2);
-  if (*(ushort *)(param_2 + 0x356) != uVar1) {
-    ov10_0221EF24(param_2,uVar2);
-  }
-  return;
+    ov10_0221EF24(param_2, 1);
+    uVar1 = ov10_0221EEF0(param_2);
+    uVar2 = ov10_0221EEF0(param_2);
+    if (*(ushort *)(param_2 + 0x356) != uVar1) {
+        ov10_0221EF24(param_2, uVar2);
+    }
+    return;
 }
 
 // FUNCTION ov10_0221C9F8: no matching C yet, the original asm
@@ -1427,12 +1428,12 @@ _0221CB54:
 // clang-format on
 
 // FUNCTION ov10_0221CB64: matching C (r2)
-void ov10_0221CB64(undefined4 param_1,int param_2)
+void ov10_0221CB64(undefined4 param_1, int param_2)
 
 {
-  ov10_0221EF24(param_2,1);
-  *(undefined4 *)(param_2 + 0x35c) = *(undefined4 *)(param_2 + 0x150);
-  return;
+    ov10_0221EF24(param_2, 1);
+    *(undefined4 *)(param_2 + 0x35c) = *(undefined4 *)(param_2 + 0x150);
+    return;
 }
 
 // FUNCTION ov10_0221CB80: no matching C yet, the original asm
@@ -1636,13 +1637,12 @@ _0221CD06:
 // clang-format on
 
 // FUNCTION ov10_0221CD10: matching C (r2)
-void ov10_0221CD10(undefined4 param_1,int param_2)
+void ov10_0221CD10(undefined4 param_1, int param_2)
 
 {
-  ov10_0221EF24(param_2,1);
-  *(uint *)(param_2 + 0x35c) =
-       (uint)*(byte *)(param_2 + (uint)*(ushort *)(param_2 + 0x356) * 0x10 + 0x3e1);
-  return;
+    ov10_0221EF24(param_2, 1);
+    *(uint *)(param_2 + 0x35c) = (uint) * (byte *)(param_2 + (uint) * (ushort *)(param_2 + 0x356) * 0x10 + 0x3e1);
+    return;
 }
 
 // FUNCTION ov10_0221CD34: no matching C yet, the original asm
@@ -1824,33 +1824,33 @@ asm void ov10_0221CE70(int param_1, int param_2) {
 // clang-format on
 
 // FUNCTION ov10_0221CEA4: matching C (r2)
-void ov10_0221CEA4(undefined4 param_1,int param_2)
+void ov10_0221CEA4(undefined4 param_1, int param_2)
 
 {
-  int iVar1;
-  int iVar2;
+    int iVar1;
+    int iVar2;
 
-  ov10_0221EF24(param_2,1);
-  iVar1 = ov10_0221EEF0(param_2);
-  iVar2 = ov10_0221EEF0(param_2);
-  if (iVar1 == *(int *)(param_2 + 0x35c)) {
-    ov10_0221EF24(param_2,iVar2);
-  }
-  return;
+    ov10_0221EF24(param_2, 1);
+    iVar1 = ov10_0221EEF0(param_2);
+    iVar2 = ov10_0221EEF0(param_2);
+    if (iVar1 == *(int *)(param_2 + 0x35c)) {
+        ov10_0221EF24(param_2, iVar2);
+    }
+    return;
 }
 
 // FUNCTION ov10_0221CED4: matching C (r2)
-void ov10_0221CED4(undefined4 param_1,int param_2)
+void ov10_0221CED4(undefined4 param_1, int param_2)
 
 {
-  int iVar1;
-  int iVar2;
+    int iVar1;
+    int iVar2;
 
-  ov10_0221EF24(param_2,1);
-  iVar1 = ov10_0221EEF0(param_2);
-  iVar2 = ov10_0221EEF0(param_2);
-  if (iVar1 != *(int *)(param_2 + 0x35c)) {
-    ov10_0221EF24(param_2,iVar2);
-  }
-  return;
+    ov10_0221EF24(param_2, 1);
+    iVar1 = ov10_0221EEF0(param_2);
+    iVar2 = ov10_0221EEF0(param_2);
+    if (iVar1 != *(int *)(param_2 + 0x35c)) {
+        ov10_0221EF24(param_2, iVar2);
+    }
+    return;
 }

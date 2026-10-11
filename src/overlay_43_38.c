@@ -2,22 +2,21 @@
 #pragma warning_errors off
 #pragma thumb on
 
-typedef unsigned char u8; /* ov43_0222AD98 */
+typedef unsigned char u8;   /* ov43_0222AD98 */
 typedef unsigned short u16; /* ov43_0222AD98 */
-typedef unsigned int u32; /* ov43_0222AD98 */
-typedef int s32; /* ov43_0222AD98 */
+typedef unsigned int u32;   /* ov43_0222AD98 */
+typedef int s32;            /* ov43_0222AD98 */
 typedef struct UnkStruct_ov43_0222AD98 {
     u8 filler_000[0x1FC];
-    void *sprite;       // 0x1FC
-} UnkStruct_ov43_0222AD98; /* ov43_0222AD98 */
-void Sprite_SetPriority(void *sprite, u32 priority); /* ov43_0222AD98 */
+    void *sprite;                                        // 0x1FC
+} UnkStruct_ov43_0222AD98;                               /* ov43_0222AD98 */
+void Sprite_SetPriority(void *sprite, u32 priority);     /* ov43_0222AD98 */
 void Sprite_SetDrawPriority(void *sprite, u32 priority); /* ov43_0222AD98 */
 
 void ov43_0222AD98(UnkStruct_ov43_0222AD98 *param0, u32 param1, u32 param2);
 
 // FUNCTION ov43_0222AD98: matching C (r2)
-void ov43_0222AD98(UnkStruct_ov43_0222AD98 *param0, u32 param1, u32 param2)
-{
+void ov43_0222AD98(UnkStruct_ov43_0222AD98 *param0, u32 param1, u32 param2) {
     Sprite_SetPriority(param0->sprite, param1);
     Sprite_SetDrawPriority(param0->sprite, param2);
 }

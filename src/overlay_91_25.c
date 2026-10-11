@@ -2,8 +2,9 @@
 #pragma warning_errors off
 #pragma thumb on
 #include "global.h"
-#include "sprite.h"
+
 #include "error_handling.h"
+#include "sprite.h"
 
 typedef struct UnkStruct_ov91_0225D884 {
     Sprite *unk_00[3];

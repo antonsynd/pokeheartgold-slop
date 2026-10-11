@@ -2,13 +2,13 @@
 #pragma warning_errors off
 #pragma thumb on
 
-typedef unsigned char u8; /* ov14_021F2778 */
+typedef unsigned char u8;   /* ov14_021F2778 */
 typedef unsigned short u16; /* ov14_021F2778 */
-typedef unsigned int u32; /* ov14_021F2778 */
-typedef signed char s8; /* ov14_021F2778 */
-typedef signed short s16; /* ov14_021F2778 */
-typedef int s32; /* ov14_021F2778 */
-typedef int BOOL; /* ov14_021F2778 */
+typedef unsigned int u32;   /* ov14_021F2778 */
+typedef signed char s8;     /* ov14_021F2778 */
+typedef signed short s16;   /* ov14_021F2778 */
+typedef int s32;            /* ov14_021F2778 */
+typedef int BOOL;           /* ov14_021F2778 */
 typedef struct {
     u8 pad0[0x8];
     s32 unk8;
@@ -25,7 +25,7 @@ typedef struct {
     s32 unk2C;
     u8 pad30[0x4];
     UnkStruct_ov14_021F2778_34 *unk34;
-} UnkStruct_ov14_021F2778; /* ov14_021F2778 */
+} UnkStruct_ov14_021F2778;                                  /* ov14_021F2778 */
 void ov14_021F6654(UnkStruct_ov14_021F2778_34 *a0, u32 a1); /* ov14_021F2778 */
 
 s32 ov14_021F2778(UnkStruct_ov14_021F2778 *a0);
@@ -33,8 +33,7 @@ int ov14_021F2A18(int param_1, int param_2, int param_3);
 int ov14_021F3488(int param_1, int param_2, int param_3);
 
 // FUNCTION ov14_021F2778: matching C (r2)
-s32 ov14_021F2778(UnkStruct_ov14_021F2778 *a0)
-{
+s32 ov14_021F2778(UnkStruct_ov14_021F2778 *a0) {
     ov14_021F6654(a0->unk34, 0x27);
     ov14_021F2A18(a0->unk34, 9, 0);
     if (a0->unk0->unk8 == 3) {

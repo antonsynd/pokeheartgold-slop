@@ -2,10 +2,12 @@
 #pragma warning_errors off
 #pragma thumb on
 #include "global.h"
+
+#include "constants/sndseq.h"
+
 #include "assert.h"
 #include "bg_window.h"
 #include "camera.h"
-#include "constants/sndseq.h"
 #include "filesystem.h"
 #include "font.h"
 #include "gf_3d_vramman.h"
@@ -66,14 +68,14 @@ typedef struct UnkStruct_ov48_Touch {
 } UnkStruct_ov48_Touch; /* ov48_02259AD0 */
 typedef struct UnkStruct_ov48_Flags {
     u32 unk_00_0 : 1;
-} UnkStruct_ov48_Flags; /* ov48_02259AD0 */
-extern const VecFx32 ov48_0225B16C; /* ov48_02259AD0 */
-extern const u32 ov48_0225B178[3]; /* ov48_02259AD0 */
-extern const VecFx32 ov48_0225B184; /* ov48_02259AD0 */
+} UnkStruct_ov48_Flags;                            /* ov48_02259AD0 */
+extern const VecFx32 ov48_0225B16C;                /* ov48_02259AD0 */
+extern const u32 ov48_0225B178[3];                 /* ov48_02259AD0 */
+extern const VecFx32 ov48_0225B184;                /* ov48_02259AD0 */
 BOOL ov45_0222D724(const void *param0, u8 param1); /* ov48_02259AD0 */
-u32 ov45_0222D6FC(const void *param0, u8 param1); /* ov48_02259AD0 */
-u8 ov45_0222D6B0(const void *param0, u8 param1); /* ov48_02259AD0 */
-u32 ov45_0222D6D4(const void *param0, u8 param1); /* ov48_02259AD0 */
+u32 ov45_0222D6FC(const void *param0, u8 param1);  /* ov48_02259AD0 */
+u8 ov45_0222D6B0(const void *param0, u8 param1);   /* ov48_02259AD0 */
+u32 ov45_0222D6D4(const void *param0, u8 param1);  /* ov48_02259AD0 */
 
 int ov48_02259A68(int param_1, int param_2, int param_3);
 u32 ov48_02259AD0(const UnkStruct_ov48_Scene *param0, u32 param1, u32 param2, VecFx32 *param3);
@@ -147,8 +149,7 @@ _02259AC2:
 // clang-format on
 
 // FUNCTION ov48_02259AD0: matching C (r2)
-u32 ov48_02259AD0(const UnkStruct_ov48_Scene *param0, u32 param1, u32 param2, VecFx32 *param3)
-{
+u32 ov48_02259AD0(const UnkStruct_ov48_Scene *param0, u32 param1, u32 param2, VecFx32 *param3) {
     u32 v0 = 3;
     int v1;
     int v2 = ov48_02259BBC(param0);
@@ -164,8 +165,7 @@ u32 ov48_02259AD0(const UnkStruct_ov48_Scene *param0, u32 param1, u32 param2, Ve
 }
 
 // FUNCTION ov48_02259B10: matching C (r2)
-u32 ov48_02259B10(const UnkStruct_ov48_Scene *param0, u32 param1, u32 param2)
-{
+u32 ov48_02259B10(const UnkStruct_ov48_Scene *param0, u32 param1, u32 param2) {
     int v0;
 
     for (v0 = 0; v0 < param0->unk_00.unk_00; v0++) {
@@ -178,8 +178,7 @@ u32 ov48_02259B10(const UnkStruct_ov48_Scene *param0, u32 param1, u32 param2)
 }
 
 // FUNCTION ov48_02259B3C: matching C (r2)
-void ov48_02259B3C(const UnkStruct_ov48_Scene *param0, VecFx32 *param1, int param2)
-{
+void ov48_02259B3C(const UnkStruct_ov48_Scene *param0, VecFx32 *param1, int param2) {
     GF_ASSERT(param2 < param0->unk_00.unk_00);
 
     param1->x = param0->unk_00.unk_04[param2].unk_00;
@@ -188,35 +187,30 @@ void ov48_02259B3C(const UnkStruct_ov48_Scene *param0, VecFx32 *param1, int para
 }
 
 // FUNCTION ov48_02259B68: matching C (r2)
-u32 ov48_02259B68(const UnkStruct_ov48_Scene *param0, int param1)
-{
+u32 ov48_02259B68(const UnkStruct_ov48_Scene *param0, int param1) {
     GF_ASSERT(param1 < param0->unk_00.unk_00);
     return param0->unk_00.unk_04[param1].unk_28;
 }
 
 // FUNCTION ov48_02259B84: matching C (r2)
-u32 ov48_02259B84(const UnkStruct_ov48_Scene *param0, int param1)
-{
+u32 ov48_02259B84(const UnkStruct_ov48_Scene *param0, int param1) {
     GF_ASSERT(param1 < param0->unk_00.unk_00);
     return param0->unk_00.unk_04[param1].unk_2A;
 }
 
 // FUNCTION ov48_02259BA0: matching C (r2)
-u32 ov48_02259BA0(const UnkStruct_ov48_Scene *param0, int param1)
-{
+u32 ov48_02259BA0(const UnkStruct_ov48_Scene *param0, int param1) {
     GF_ASSERT(param1 < param0->unk_00.unk_00);
     return param0->unk_00.unk_04[param1].unk_2C;
 }
 
 // FUNCTION ov48_02259BBC: matching C (r2)
-u32 ov48_02259BBC(const UnkStruct_ov48_Scene *param0)
-{
+u32 ov48_02259BBC(const UnkStruct_ov48_Scene *param0) {
     return param0->unk_00.unk_00;
 }
 
 // FUNCTION ov48_02259BC0: matching C (r2)
-void ov48_02259BC0(UnkStruct_ov48_Cam *param0, UnkStruct_ov48_Flags param1, u32 unused, enum HeapID heapID)
-{
+void ov48_02259BC0(UnkStruct_ov48_Cam *param0, UnkStruct_ov48_Flags param1, u32 unused, enum HeapID heapID) {
     param0->camera = Camera_New(heapID);
 
     Camera_Init_FromTargetAndPos(&ov48_0225B184, &ov48_0225B16C, 0x5C1, 0, 0, param0->camera);
@@ -236,20 +230,17 @@ void ov48_02259BC0(UnkStruct_ov48_Cam *param0, UnkStruct_ov48_Flags param1, u32 
 }
 
 // FUNCTION ov48_02259C38: matching C (r2)
-void ov48_02259C38(UnkStruct_ov48_Cam *param0)
-{
+void ov48_02259C38(UnkStruct_ov48_Cam *param0) {
     Camera_Delete(param0->camera);
 }
 
 // FUNCTION ov48_02259C44: matching C (r2)
-void ov48_02259C44(const UnkStruct_ov48_Cam *param0)
-{
+void ov48_02259C44(const UnkStruct_ov48_Cam *param0) {
     Camera_PushLookAtToNNSGlb();
 }
 
 // FUNCTION ov48_02259C4C: matching C (r2)
-void ov48_02259C4C(UnkStruct_ov48_Cam *param0)
-{
+void ov48_02259C4C(UnkStruct_ov48_Cam *param0) {
     if (param0->unk_10 == 0) {
         param0->unk_10 = 1;
         PlaySE(SEQ_SE_PL_TIMER03);
@@ -262,8 +253,7 @@ void ov48_02259C4C(UnkStruct_ov48_Cam *param0)
 }
 
 // FUNCTION ov48_02259C78: matching C (r2)
-BOOL ov48_02259C78(UnkStruct_ov48_Cam *param0, UnkStruct_ov48_Scene *param1)
-{
+BOOL ov48_02259C78(UnkStruct_ov48_Cam *param0, UnkStruct_ov48_Scene *param1) {
     if (param0->unk_12 == 0) {
         return 1;
     }
@@ -297,7 +287,6 @@ BOOL ov48_02259C78(UnkStruct_ov48_Cam *param0, UnkStruct_ov48_Scene *param1)
 }
 
 // FUNCTION ov48_02259CFC: matching C (r2)
-u32 ov48_02259CFC(const UnkStruct_ov48_Cam *param0)
-{
+u32 ov48_02259CFC(const UnkStruct_ov48_Cam *param0) {
     return param0->unk_10;
 }

@@ -2,6 +2,7 @@
 #pragma warning_errors off
 #pragma thumb on
 #include "global.h"
+
 #include "overlay_manager.h"
 #include "party.h"
 #include "unk_02034354.h"
@@ -31,7 +32,7 @@ typedef struct UnkStruct_ov65_0221E06C {
     /* 0x2228 */ Party *partnerParty;
     /* 0x222C */ u8 filler_222C[0x2E20 - 0x222C];
     /* 0x2E20 */ u8 chatotCry[2][0x3EC];
-} UnkStruct_ov65_0221E06C; /* ov65_0221E06C */
+} UnkStruct_ov65_0221E06C;   /* ov65_0221E06C */
 extern const u8 _0221FD34[]; /* ov65_0221E06C */
 
 void ov65_0221E06C(UnkStruct_ov65_0221E06C *tr, int side);

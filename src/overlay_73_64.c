@@ -2,18 +2,17 @@
 #pragma warning_errors off
 #pragma thumb on
 
-typedef unsigned int u32; /* ov73_021E83F4 */
-typedef int s32; /* ov73_021E83F4 */
-extern void *_021EA940[]; /* ov73_021E83F4 */
-u32 OS_DisableInterrupts(void); /* ov73_021E83F4 */
-u32 OS_RestoreInterrupts(u32 state); /* ov73_021E83F4 */
+typedef unsigned int u32;                                         /* ov73_021E83F4 */
+typedef int s32;                                                  /* ov73_021E83F4 */
+extern void *_021EA940[];                                         /* ov73_021E83F4 */
+u32 OS_DisableInterrupts(void);                                   /* ov73_021E83F4 */
+u32 OS_RestoreInterrupts(u32 state);                              /* ov73_021E83F4 */
 void *NNS_FndAllocFromExpHeapEx(void *heap, u32 size, s32 align); /* ov73_021E83F4 */
 
 void *ov73_021E83F4(u32 unused, u32 size, s32 align);
 
 // FUNCTION ov73_021E83F4: matching C (r2)
-void *ov73_021E83F4(u32 unused, u32 size, s32 align)
-{
+void *ov73_021E83F4(u32 unused, u32 size, s32 align) {
     u32 state = OS_DisableInterrupts();
     void *p = NNS_FndAllocFromExpHeapEx(_021EA940[1], size, align);
     OS_RestoreInterrupts(state);

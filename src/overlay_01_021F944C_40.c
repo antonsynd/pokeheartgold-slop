@@ -2,6 +2,7 @@
 #pragma warning_errors off
 #pragma thumb on
 #include "global.h"
+
 #include "gf_3d_loader.h"
 #include "map_object.h"
 #include "unk_02023694.h"
@@ -64,25 +65,25 @@ typedef struct UnkStruct_ov01_021FA370 {
     NNSG3dTexKey unk_1C;
     NNSG3dTexKey unk_20;
     NNSG3dPlttKey unk_24;
-} UnkStruct_ov01_021FA370; /* ov01_021FA2EC */
-extern const ObjectEventGraphicsInfo ov01_022074A8[]; /* ov01_021FA2EC */
-extern const UnkStruct_ov01_02207318 ov01_02207318[]; /* ov01_021FA2EC */
+} UnkStruct_ov01_021FA370;                                          /* ov01_021FA2EC */
+extern const ObjectEventGraphicsInfo ov01_022074A8[];               /* ov01_021FA2EC */
+extern const UnkStruct_ov01_02207318 ov01_02207318[];               /* ov01_021FA2EC */
 void *ReadMModelFromNarcInternal(void *narc, u32 fileId, int arg2); /* ov01_021FA2EC */
-void *sub_020237EC(UnkStruct_ov01_021FA2EC *params); /* ov01_021FA2EC */
-void sub_02023874(void *list); /* ov01_021FA2EC */
-Sprite *sub_02023D44(UnkStruct_ov01_021FA31C *template); /* ov01_021FA2EC */
-void sub_02023E50(Sprite *sprite, VecFx32 *pos); /* ov01_021FA2EC */
-void sub_02023EE0(Sprite *sprite, int arg1); /* ov01_021FA2EC */
-void sub_02023F40(Sprite *sprite, int arg1); /* ov01_021FA2EC */
-int sub_020238F8(void *list); /* ov01_021FA2EC */
-void sub_02026E18(void *resource, void *dest); /* ov01_021FA2EC */
-void ov01_021EA3B0(NNSG3dResMdl *model); /* ov01_021FA2EC */
-void *ov01_021FC5A4(void *heap, int id); /* ov01_021FA2EC */
-void ov01_021F93AC(LocalMapObject *object, VecFx32 *pos); /* ov01_021FA2EC */
-extern const VecFx32 ov01_02208B64; /* ov01_021FA2EC */
-extern const int ov01_02208B70[4]; /* ov01_021FA2EC */
-extern const int ov01_02208B80[4]; /* ov01_021FA2EC */
-extern const int ov01_02208B90[4]; /* ov01_021FA2EC */
+void *sub_020237EC(UnkStruct_ov01_021FA2EC *params);                /* ov01_021FA2EC */
+void sub_02023874(void *list);                                      /* ov01_021FA2EC */
+Sprite *sub_02023D44(UnkStruct_ov01_021FA31C *template);            /* ov01_021FA2EC */
+void sub_02023E50(Sprite *sprite, VecFx32 *pos);                    /* ov01_021FA2EC */
+void sub_02023EE0(Sprite *sprite, int arg1);                        /* ov01_021FA2EC */
+void sub_02023F40(Sprite *sprite, int arg1);                        /* ov01_021FA2EC */
+int sub_020238F8(void *list);                                       /* ov01_021FA2EC */
+void sub_02026E18(void *resource, void *dest);                      /* ov01_021FA2EC */
+void ov01_021EA3B0(NNSG3dResMdl *model);                            /* ov01_021FA2EC */
+void *ov01_021FC5A4(void *heap, int id);                            /* ov01_021FA2EC */
+void ov01_021F93AC(LocalMapObject *object, VecFx32 *pos);           /* ov01_021FA2EC */
+extern const VecFx32 ov01_02208B64;                                 /* ov01_021FA2EC */
+extern const int ov01_02208B70[4];                                  /* ov01_021FA2EC */
+extern const int ov01_02208B80[4];                                  /* ov01_021FA2EC */
+extern const int ov01_02208B90[4];                                  /* ov01_021FA2EC */
 
 void ov01_021FA1C8(int param_1, int param_2);
 int ov01_021FA1D8(int param_1, int param_2);

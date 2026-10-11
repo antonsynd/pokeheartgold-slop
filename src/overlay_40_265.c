@@ -2,27 +2,26 @@
 #pragma warning_errors off
 #pragma thumb on
 
-typedef unsigned char u8; /* ov40_02242DF0 */
-typedef unsigned int u32; /* ov40_02242DF0 */
-typedef int s32; /* ov40_02242DF0 */
+typedef unsigned char u8;       /* ov40_02242DF0 */
+typedef unsigned int u32;       /* ov40_02242DF0 */
+typedef int s32;                /* ov40_02242DF0 */
 typedef unsigned long long u64; /* ov40_02242DF0 */
 typedef struct UnkStruct_ov40_02242DF0_860 {
     u8 filler_000[0x4B0];
-    u32 lo;             // 0x4B0
-    u32 hi;             // 0x4B4
+    u32 lo;                    // 0x4B0
+    u32 hi;                    // 0x4B4
 } UnkStruct_ov40_02242DF0_860; /* ov40_02242DF0 */
 typedef struct UnkStruct_ov40_02242DF0 {
     u8 filler_00[0x860];
     UnkStruct_ov40_02242DF0_860 *work; // 0x860
-} UnkStruct_ov40_02242DF0; /* ov40_02242DF0 */
-u64 ov39_02227FEC(void *a); /* ov40_02242DF0 */
+} UnkStruct_ov40_02242DF0;             /* ov40_02242DF0 */
+u64 ov39_02227FEC(void *a);            /* ov40_02242DF0 */
 
 int ov40_0223D540(int param_1);
 void ov40_02242DF0(UnkStruct_ov40_02242DF0 *p, const s32 *param1);
 
 // FUNCTION ov40_02242DF0: matching C (r2)
-void ov40_02242DF0(UnkStruct_ov40_02242DF0 *p, const s32 *param1)
-{
+void ov40_02242DF0(UnkStruct_ov40_02242DF0 *p, const s32 *param1) {
     UnkStruct_ov40_02242DF0_860 *w = p->work;
 
     if (*param1 != 1) {

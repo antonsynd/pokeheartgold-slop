@@ -2,16 +2,17 @@
 #pragma warning_errors off
 #pragma thumb on
 #include "global.h"
+
+#include "bg_window.h"
+#include "error_handling.h"
+#include "font.h"
 #include "math_util.h"
 #include "message_format.h"
-#include "text.h"
-#include "bg_window.h"
-#include "unk_02034354.h"
-#include "unk_02035900.h"
-#include "font.h"
 #include "msgdata.h"
 #include "pm_string.h"
-#include "error_handling.h"
+#include "text.h"
+#include "unk_02034354.h"
+#include "unk_02035900.h"
 
 void _021EA51C(); /* ov73_021E71E4 */
 

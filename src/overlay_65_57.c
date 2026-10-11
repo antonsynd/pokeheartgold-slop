@@ -2,11 +2,10 @@
 #pragma warning_errors off
 #pragma thumb on
 #include "global.h"
+
 #include "bg_window.h"
 #include "font.h"
 #include "text.h"
-
-
 
 u8 ov65_0221FB4C(Window *window, String *str, int unused, u32 textSpeed, int xOrCenter, int yOffset);
 

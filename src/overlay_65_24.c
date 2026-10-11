@@ -2,17 +2,18 @@
 #pragma warning_errors off
 #pragma thumb on
 #include "global.h"
-#include "math_util.h"
-#include "unk_02009D48.h"
-#include "sprite.h"
-#include "sound_chatot.h"
-#include "sav_chatot.h"
-#include "touchscreen.h"
+
 #include "error_handling.h"
+#include "math_util.h"
+#include "sav_chatot.h"
+#include "sound_chatot.h"
+#include "sprite.h"
+#include "touchscreen.h"
+#include "unk_02009D48.h"
 
 void ov65_0221FEA4(); /* ov65_0221D930 */
 void ov65_0221FF4C(); /* ov65_0221D930 */
-void gSystem(); /* ov65_0221DBF4 */
+void gSystem();       /* ov65_0221DBF4 */
 void ov65_0221FE6C(); /* ov65_0221DC34 */
 void ov65_0221FFB4(); /* ov65_0221DCFC */
 void ov65_0221FD68(); /* ov65_0221DD34 */

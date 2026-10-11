@@ -2,6 +2,7 @@
 #pragma warning_errors off
 #pragma thumb on
 #include "global.h"
+
 #include "bg_window.h"
 #include "render_window.h"
 
@@ -10,9 +11,9 @@ typedef struct UnkStruct_ov90_022594FC {
     u16 unk_20[2];
     u32 unk_24[4];
     int unk_34;
-} UnkStruct_ov90_022594FC; /* ov90_022594FC */
+} UnkStruct_ov90_022594FC;                       /* ov90_022594FC */
 extern u32 TextPrinterCheckActive(u8 printerId); /* ov90_022594FC */
-extern void RemoveTextPrinter(u8 printerId); /* ov90_022594FC */
+extern void RemoveTextPrinter(u8 printerId);     /* ov90_022594FC */
 
 void ov90_022594FC(UnkStruct_ov90_022594FC *param0, u32 param1);
 void ov90_02259570(int param_1, int param_2);

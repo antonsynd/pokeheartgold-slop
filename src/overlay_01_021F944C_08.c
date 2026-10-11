@@ -2,6 +2,7 @@
 #pragma warning_errors off
 #pragma thumb on
 #include "global.h"
+
 #include "gf_3d_loader.h"
 #include "heap.h"
 #include "map_object.h"
@@ -48,23 +49,23 @@ typedef struct UnkOv01_SpriteState {
     u8 unk4[2];
     u16 unk6;
     u32 unk8;
-} UnkOv01_SpriteState; /* ov01_021F9630 */
-extern const int ov01_02206CF0[]; /* ov01_021F9630 */
-extern const int ov01_02207260[]; /* ov01_021F9630 */
-extern const UnkOv01_GfxEntry ov01_02207294[]; /* ov01_021F9630 */
-extern void sub_02023DA4(Sprite *sprite); /* ov01_021F9630 */
-extern u32 sub_02023EB8(Sprite *sprite); /* ov01_021F9630 */
-extern u16 sub_02023EF4(Sprite *sprite); /* ov01_021F9630 */
-extern u32 sub_02023F30(Sprite *sprite); /* ov01_021F9630 */
-extern void sub_02023EA4(Sprite *sprite, u8 arg1); /* ov01_021F9630 */
-extern void sub_02023EE0(Sprite *sprite, u16 arg1); /* ov01_021F9630 */
-extern void sub_02023F1C(Sprite *sprite, u32 arg1); /* ov01_021F9630 */
-extern void GF3dGfxRawResMan_Destroy(GF_3DGfxRawResMan *man); /* ov01_021F9630 */
-extern s32 GetMoveModelNoBySpriteId(u32 spriteId); /* ov01_021F9630 */
-extern void ov01_021F93AC(LocalMapObject *object, VecFx32 *pos); /* ov01_021F9630 */
-extern void *ov01_021FC4C4(int heapId, int heapId2, u32 size, int count); /* ov01_021F9630 */
-extern void ov01_021FC520(void *heap); /* ov01_021F9630 */
-extern BOOL ov01_021FC5B8(void *heap, int id); /* ov01_021F9630 */
+} UnkOv01_SpriteState;                                                            /* ov01_021F9630 */
+extern const int ov01_02206CF0[];                                                 /* ov01_021F9630 */
+extern const int ov01_02207260[];                                                 /* ov01_021F9630 */
+extern const UnkOv01_GfxEntry ov01_02207294[];                                    /* ov01_021F9630 */
+extern void sub_02023DA4(Sprite *sprite);                                         /* ov01_021F9630 */
+extern u32 sub_02023EB8(Sprite *sprite);                                          /* ov01_021F9630 */
+extern u16 sub_02023EF4(Sprite *sprite);                                          /* ov01_021F9630 */
+extern u32 sub_02023F30(Sprite *sprite);                                          /* ov01_021F9630 */
+extern void sub_02023EA4(Sprite *sprite, u8 arg1);                                /* ov01_021F9630 */
+extern void sub_02023EE0(Sprite *sprite, u16 arg1);                               /* ov01_021F9630 */
+extern void sub_02023F1C(Sprite *sprite, u32 arg1);                               /* ov01_021F9630 */
+extern void GF3dGfxRawResMan_Destroy(GF_3DGfxRawResMan *man);                     /* ov01_021F9630 */
+extern s32 GetMoveModelNoBySpriteId(u32 spriteId);                                /* ov01_021F9630 */
+extern void ov01_021F93AC(LocalMapObject *object, VecFx32 *pos);                  /* ov01_021F9630 */
+extern void *ov01_021FC4C4(int heapId, int heapId2, u32 size, int count);         /* ov01_021F9630 */
+extern void ov01_021FC520(void *heap);                                            /* ov01_021F9630 */
+extern BOOL ov01_021FC5B8(void *heap, int id);                                    /* ov01_021F9630 */
 extern void ov01_021FC5CC(void *heap, int id, NARC *narc, int narcIdx, int arg4); /* ov01_021F9630 */
 
 void ov01_021F9630(Sprite *sprite, UnkOv01_SpriteState *state);

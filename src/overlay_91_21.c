@@ -18,12 +18,12 @@ typedef struct UnkStruct_ov91_0225D46C {
     fx32 unk_0C;
     int unk_10;
     int unk_14;
-} UnkStruct_ov91_0225D46C; /* ov91_0225D46C */
-void ov91_02261F8C(); /* ov91_0225D4D4 */
-void ov91_02261F90(); /* ov91_0225D4D4 */
+} UnkStruct_ov91_0225D46C;                          /* ov91_0225D46C */
+void ov91_02261F8C();                               /* ov91_0225D4D4 */
+void ov91_02261F90();                               /* ov91_0225D4D4 */
 extern long long _ll_mul(long long a, long long b); /* ov91_0225D500 */
-void VEC_Normalize(); /* ov91_0225D500 */
-void ov91_02261C34(); /* ov91_0225D600 */
+void VEC_Normalize();                               /* ov91_0225D500 */
+void ov91_02261C34();                               /* ov91_0225D600 */
 
 void ov91_0225D40C(UnkStruct_ov91_0225D40C *param0, fx32 param1, fx32 param2, fx32 param3, int param4);
 BOOL ov91_0225D46C(UnkStruct_ov91_0225D46C *param0);

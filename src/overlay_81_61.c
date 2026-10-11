@@ -4,7 +4,7 @@
 #include "global.h"
 
 extern int ov80_02237254(u8 challengeType); /* ov81_02242710 */
-void G2_SetBlendAlpha(); /* ov81_02242694 */
+void G2_SetBlendAlpha();                    /* ov81_02242694 */
 
 void ov81_02242694(int param_1, int param_2, int param_3);
 int ov81_02242704(int param_1, int param_2, int param_3);

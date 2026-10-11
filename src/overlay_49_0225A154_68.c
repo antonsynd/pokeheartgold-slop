@@ -2,14 +2,15 @@
 #pragma warning_errors off
 #pragma thumb on
 #include "global.h"
+
 #include "assert.h"
 #include "bg_window.h"
 #include "filesystem.h"
 #include "gf_gfx_planes.h"
 #include "message_format.h"
 #include "msgdata.h"
-#include "pm_string.h"
 #include "player_data.h"
+#include "pm_string.h"
 #include "render_window.h"
 #include "unk_02005D10.h"
 
@@ -53,21 +54,21 @@ typedef struct UnkStruct_ov49_0225B_Hdr {
 } UnkStruct_ov49_0225B_Hdr; /* ov49_0225B3C8 */
 typedef struct UnkStruct_ov49_0225B_Win {
     Window window;
-} UnkStruct_ov49_0225B_Win; /* ov49_0225B3C8 */
-extern const u32 ov49_02269714[4]; /* ov49_0225B3C8 */
-extern void ov49_0225CB68(void *param0); /* ov49_0225B3C8 */
+} UnkStruct_ov49_0225B_Win;                                    /* ov49_0225B3C8 */
+extern const u32 ov49_02269714[4];                             /* ov49_0225B3C8 */
+extern void ov49_0225CB68(void *param0);                       /* ov49_0225B3C8 */
 extern int ov49_02268968(void *param0, u16 param1, u8 param2); /* ov49_0225B3C8 */
-extern u32 ov45_0222A53C(void *a0); /* ov49_0225B3C8 */
-extern void *ov45_0222A578(void *a0, int a1); /* ov49_0225B3C8 */
-extern void *ov45_0222A5C0(void *a0); /* ov49_0225B3C8 */
-extern void *ov45_0222AB58(void *a0, int a1); /* ov49_0225B3C8 */
-extern int ov45_0222AB28(void *a0, int a1); /* ov49_0225B3C8 */
-extern int ov45_0222AB48(void *a0, int a1); /* ov49_0225B3C8 */
-extern void ov45_0222ADD8(void *a0, u32 a1); /* ov49_0225B3C8 */
-extern void ov45_0222AE54(void *a0); /* ov49_0225B3C8 */
-extern u32 ov45_0222ADA8(void *a0, u32 a1); /* ov49_0225B3C8 */
-extern void ov45_0222AE08(u32 a0, u32 *a1, u32 *a2); /* ov49_0225B3C8 */
-extern s32 ov45_0222E7FC(int a0); /* ov49_0225B3C8 */
+extern u32 ov45_0222A53C(void *a0);                            /* ov49_0225B3C8 */
+extern void *ov45_0222A578(void *a0, int a1);                  /* ov49_0225B3C8 */
+extern void *ov45_0222A5C0(void *a0);                          /* ov49_0225B3C8 */
+extern void *ov45_0222AB58(void *a0, int a1);                  /* ov49_0225B3C8 */
+extern int ov45_0222AB28(void *a0, int a1);                    /* ov49_0225B3C8 */
+extern int ov45_0222AB48(void *a0, int a1);                    /* ov49_0225B3C8 */
+extern void ov45_0222ADD8(void *a0, u32 a1);                   /* ov49_0225B3C8 */
+extern void ov45_0222AE54(void *a0);                           /* ov49_0225B3C8 */
+extern u32 ov45_0222ADA8(void *a0, u32 a1);                    /* ov49_0225B3C8 */
+extern void ov45_0222AE08(u32 a0, u32 *a1, u32 *a2);           /* ov49_0225B3C8 */
+extern s32 ov45_0222E7FC(int a0);                              /* ov49_0225B3C8 */
 
 void ov49_0225B3C8(UnkStruct_ov49_0225B_Msg *param0, const PlayerProfile *param1, u32 param2);
 

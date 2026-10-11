@@ -2,10 +2,11 @@
 #pragma warning_errors off
 #pragma thumb on
 #include "global.h"
-#include "unk_02035900.h"
+
 #include "player_data.h"
-#define true 1
-#define false 0
+#include "unk_02035900.h"
+#define true           1
+#define false          0
 #define CONCAT11(a, b) ((unsigned short)(((unsigned)(a) << 8) | (unsigned char)(b)))
 #define CONCAT12(a, b) (((unsigned)(unsigned char)(a) << 16) | (unsigned short)(b))
 #define CONCAT13(a, b) (((unsigned)(unsigned char)(a) << 24) | ((unsigned)(b) & 0xffffff))
@@ -13,67 +14,68 @@
 #define CONCAT22(a, b) (((unsigned)(unsigned short)(a) << 16) | (unsigned short)(b))
 #define CONCAT31(a, b) (((unsigned)(a) << 8) | (unsigned char)(b))
 #define CONCAT44(a, b) (((unsigned long long)(unsigned)(a) << 32) | (unsigned)(b))
-#define SUB41(x, n) ((unsigned char)((unsigned)(x) >> ((n) * 8)))
-#define SUB42(x, n) ((unsigned short)((unsigned)(x) >> ((n) * 8)))
-#define SUB81(x, n) ((unsigned char)((unsigned long long)(x) >> ((n) * 8)))
-#define SUB84(x, n) ((unsigned)((unsigned long long)(x) >> ((n) * 8)))
-#define ZEXT14(x) ((unsigned)(unsigned char)(x))
-#define ZEXT24(x) ((unsigned)(unsigned short)(x))
-#define ZEXT48(x) ((unsigned long long)(unsigned)(x))
-#define SEXT14(x) ((int)(signed char)(x))
-#define SEXT24(x) ((int)(short)(x))
-#define SEXT48(x) ((long long)(int)(x))
-#define CARRY4(a, b) ((unsigned)(a) + (unsigned)(b) < (unsigned)(a))
-#define SCARRY4(a, b) ((((int)(a) + (int)(b)) < (int)(a)) != ((int)(b) < 0))
+#define SUB41(x, n)    ((unsigned char)((unsigned)(x) >> ((n) * 8)))
+#define SUB42(x, n)    ((unsigned short)((unsigned)(x) >> ((n) * 8)))
+#define SUB81(x, n)    ((unsigned char)((unsigned long long)(x) >> ((n) * 8)))
+#define SUB84(x, n)    ((unsigned)((unsigned long long)(x) >> ((n) * 8)))
+#define ZEXT14(x)      ((unsigned)(unsigned char)(x))
+#define ZEXT24(x)      ((unsigned)(unsigned short)(x))
+#define ZEXT48(x)      ((unsigned long long)(unsigned)(x))
+#define SEXT14(x)      ((int)(signed char)(x))
+#define SEXT24(x)      ((int)(short)(x))
+#define SEXT48(x)      ((long long)(int)(x))
+#define CARRY4(a, b)   ((unsigned)(a) + (unsigned)(b) < (unsigned)(a))
+#define SCARRY4(a, b)  ((((int)(a) + (int)(b)) < (int)(a)) != ((int)(b) < 0))
 #define SBORROW4(a, b) ((((int)(a) - (int)(b)) > (int)(a)) != ((int)(b) < 0))
-#define POPCOUNT(x) __builtin_popcount(x)
-#define LZCOUNT(x) ((x) ? __builtin_clz(x) : 32)
-#include "bg_window.h"
+#define POPCOUNT(x)    __builtin_popcount(x)
+#define LZCOUNT(x)     ((x) ? __builtin_clz(x) : 32)
 #include "frontier/overlay_80_022340E8.h"
-#include "pokemon.h"
+
+#include "bg_window.h"
+#include "error_handling.h"
+#include "message_format.h"
 #include "options.h"
 #include "party.h"
-#include "unk_02005D10.h"
-#include "message_format.h"
+#include "player_avatar.h"
+#include "pokemon.h"
 #include "touchscreen_list_menu.h"
+#include "unk_02005D10.h"
 #include "unk_02030A98.h"
 #include "unk_0205BFF0.h"
-#include "player_avatar.h"
-#include "error_handling.h"
 
-extern u16 sub_0203769C(void); /* ov83_02241474 */
+extern u16 sub_0203769C(void);                                                 /* ov83_02241474 */
 extern void UseItemOnPokemon(void *mon, u32 itemId, u32 a, u32 b, u32 heapId); /* ov83_0224152C */
-void ov83_0224777C(); /* ov83_022413C4 */
-typedef unsigned char undefined; /* ov83_022414CC */
-typedef unsigned char undefined1; /* ov83_022414CC */
-typedef unsigned short undefined2; /* ov83_022414CC */
-typedef unsigned int undefined3; /* ov83_022414CC */
-typedef unsigned int undefined4; /* ov83_022414CC */
-typedef unsigned long long undefined8; /* ov83_022414CC */
-typedef unsigned char byte; /* ov83_022414CC */
-typedef signed char sbyte; /* ov83_022414CC */
-typedef unsigned short ushort; /* ov83_022414CC */
-typedef unsigned short word; /* ov83_022414CC */
-typedef unsigned int uint; /* ov83_022414CC */
-typedef unsigned int dword; /* ov83_022414CC */
-typedef unsigned int ulong; /* ov83_022414CC */
-typedef unsigned long long ulonglong; /* ov83_022414CC */
-typedef unsigned long long qword; /* ov83_022414CC */
-typedef long long longlong; /* ov83_022414CC */
-typedef unsigned char bool; /* ov83_022414CC */
-typedef int code(); /* ov83_022414CC */
-typedef void *pointer; /* ov83_022414CC */
-typedef unsigned short wchar16; /* ov83_022414CC */
-void _02247D0C(); /* ov83_022415F4 */
-void ov83_02247768(); /* ov83_022415F4 */
-void ov83_02247944(); /* ov83_022415F4 */
-void ov83_0224755C(); /* ov83_022416A0 */
-void ov83_022478B4(); /* ov83_02241730 */
-void ov80_02237FA4(); /* ov83_022418E8 */
-void ov83_0224776C(); /* ov83_022418E8 */
-void ov83_022477C4(); /* ov83_022418E8 */
-void ov83_022477EC(); /* ov83_022418E8 */
-void ov83_02247D18(); /* ov83_022418E8 */
+void ov83_0224777C();                                                          /* ov83_022413C4 */
+typedef unsigned char undefined;                                               /* ov83_022414CC */
+typedef unsigned char undefined1;                                              /* ov83_022414CC */
+typedef unsigned short undefined2;                                             /* ov83_022414CC */
+typedef unsigned int undefined3;                                               /* ov83_022414CC */
+typedef unsigned int undefined4;                                               /* ov83_022414CC */
+typedef unsigned long long undefined8;                                         /* ov83_022414CC */
+typedef unsigned char byte;                                                    /* ov83_022414CC */
+typedef signed char sbyte;                                                     /* ov83_022414CC */
+typedef unsigned short ushort;                                                 /* ov83_022414CC */
+typedef unsigned short word;                                                   /* ov83_022414CC */
+typedef unsigned int uint;                                                     /* ov83_022414CC */
+typedef unsigned int dword;                                                    /* ov83_022414CC */
+typedef unsigned int ulong;                                                    /* ov83_022414CC */
+typedef unsigned long long ulonglong;                                          /* ov83_022414CC */
+typedef unsigned long long qword;                                              /* ov83_022414CC */
+typedef long long longlong;                                                    /* ov83_022414CC */
+typedef unsigned char bool;                                                    /* ov83_022414CC */
+typedef int code();                                                            /* ov83_022414CC */
+typedef void *pointer;                                                         /* ov83_022414CC */
+typedef unsigned short wchar16;                                                /* ov83_022414CC */
+void _02247D0C();                                                              /* ov83_022415F4 */
+void ov83_02247768();                                                          /* ov83_022415F4 */
+void ov83_02247944();                                                          /* ov83_022415F4 */
+void ov83_0224755C();                                                          /* ov83_022416A0 */
+void ov83_022478B4();                                                          /* ov83_02241730 */
+void ov80_02237FA4();                                                          /* ov83_022418E8 */
+void ov83_0224776C();                                                          /* ov83_022418E8 */
+void ov83_022477C4();                                                          /* ov83_022418E8 */
+void ov83_022477EC();                                                          /* ov83_022418E8 */
+void ov83_02247D18();                                                          /* ov83_022418E8 */
 
 int ov83_0223FCB4(int param_1, int param_2, int param_3, int param_4);
 int ov83_0223FD14(int param_1, int param_2, int param_3);
@@ -92,10 +94,10 @@ void ov83_022413C4(int param_1, int param_2);
 void ov83_0224140C(int param_1, int param_2, int param_3, int param_4);
 void ov83_0224143C(int param_1, int param_2, int param_3);
 void ov83_02241474(int netID, int unused, u8 *data, u8 *app);
-void ov83_022414CC(int param_1,undefined2 param_2);
-void ov83_022414DC(int param_1,undefined4 param_2,int param_3,int param_4);
+void ov83_022414CC(int param_1, undefined2 param_2);
+void ov83_022414DC(int param_1, undefined4 param_2, int param_3, int param_4);
 void ov83_02241504(int param_1);
-void ov83_02241510(int param_1,undefined4 param_2,undefined2 *param_3,int param_4);
+void ov83_02241510(int param_1, undefined4 param_2, undefined2 *param_3, int param_4);
 void ov83_0224152C(void *mon, u32 itemId);
 void ov83_0224153C(int param_1, int param_2);
 int ov83_022415F4(int param_1, int param_2, int param_3);
@@ -293,47 +295,47 @@ void ov83_02241474(int netID, int unused, u8 *data, u8 *app) {
 }
 
 // FUNCTION ov83_022414CC: matching C (r2)
-void ov83_022414CC(int param_1,undefined2 param_2)
+void ov83_022414CC(int param_1, undefined2 param_2)
 
 {
-  *(undefined2 *)(param_1 + 0x7ac) = param_2;
-  *(ushort *)(param_1 + 0x7ae) = (ushort)*(byte *)(param_1 + 0xd);
-  return;
+    *(undefined2 *)(param_1 + 0x7ac) = param_2;
+    *(ushort *)(param_1 + 0x7ae) = (ushort) * (byte *)(param_1 + 0xd);
+    return;
 }
 
 // FUNCTION ov83_022414DC: matching C (r2)
-void ov83_022414DC(int param_1,undefined4 param_2,int param_3,int param_4)
+void ov83_022414DC(int param_1, undefined4 param_2, int param_3, int param_4)
 
 {
-  int iVar1;
+    int iVar1;
 
-  iVar1 = sub_0203769C();
-  if (param_1 != iVar1) {
-    *(char *)(param_4 + 0x7fc) = (char)*(undefined2 *)(param_3 + 2);
-    ov83_02240DE0(param_4,*(undefined1 *)(param_4 + 0x7fc),1);
-  }
-  return;
+    iVar1 = sub_0203769C();
+    if (param_1 != iVar1) {
+        *(char *)(param_4 + 0x7fc) = (char)*(undefined2 *)(param_3 + 2);
+        ov83_02240DE0(param_4, *(undefined1 *)(param_4 + 0x7fc), 1);
+    }
+    return;
 }
 
 // FUNCTION ov83_02241504: matching C (r2)
 void ov83_02241504(int param_1)
 
 {
-  *(undefined2 *)(param_1 + 0x7ac) = 1;
-  return;
+    *(undefined2 *)(param_1 + 0x7ac) = 1;
+    return;
 }
 
 // FUNCTION ov83_02241510: matching C (r2)
-void ov83_02241510(int param_1,undefined4 param_2,undefined2 *param_3,int param_4)
+void ov83_02241510(int param_1, undefined4 param_2, undefined2 *param_3, int param_4)
 
 {
-  int iVar1;
+    int iVar1;
 
-  iVar1 = sub_0203769C();
-  if (param_1 != iVar1) {
-    *(char *)(param_4 + 0x7fe) = (char)*param_3;
-  }
-  return;
+    iVar1 = sub_0203769C();
+    if (param_1 != iVar1) {
+        *(char *)(param_4 + 0x7fe) = (char)*param_3;
+    }
+    return;
 }
 
 // FUNCTION ov83_0224152C: matching C (r0)
@@ -593,9 +595,9 @@ _0224174E:
 void ov83_0224175C(int param_1)
 
 {
-  ov83_02241354(param_1 + 0xb0);
-  ov83_022429E4(param_1);
-  return;
+    ov83_02241354(param_1 + 0xb0);
+    ov83_022429E4(param_1);
+    return;
 }
 
 // FUNCTION ov83_02241770: no matching C yet, the original asm

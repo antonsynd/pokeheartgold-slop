@@ -2,13 +2,13 @@
 #pragma warning_errors off
 #pragma thumb on
 
-typedef unsigned char u8; /* ov14_021EDF28 */
+typedef unsigned char u8;   /* ov14_021EDF28 */
 typedef unsigned short u16; /* ov14_021EDF28 */
-typedef unsigned int u32; /* ov14_021EDF28 */
-typedef signed char s8; /* ov14_021EDF28 */
-typedef signed short s16; /* ov14_021EDF28 */
-typedef int s32; /* ov14_021EDF28 */
-typedef int BOOL; /* ov14_021EDF28 */
+typedef unsigned int u32;   /* ov14_021EDF28 */
+typedef signed char s8;     /* ov14_021EDF28 */
+typedef signed short s16;   /* ov14_021EDF28 */
+typedef int s32;            /* ov14_021EDF28 */
+typedef int BOOL;           /* ov14_021EDF28 */
 typedef struct {
     u8 pad0[0xe4];
     u32 unkE4;
@@ -24,20 +24,19 @@ typedef struct {
     u8 unk21;
     u8 pad22[0x12];
     UnkStruct_ov14_021EDF28_34 *unk34;
-} UnkStruct_ov14_021EDF28; /* ov14_021EDF28 */
-void PlaySE(u32 a0); /* ov14_021EDF28 */
-void ov14_021E637C(UnkStruct_ov14_021EDF28 *a0); /* ov14_021EDF28 */
-void ov14_021F08F0(UnkStruct_ov14_021EDF28 *a0); /* ov14_021EDF28 */
-void ov14_021F6678(UnkStruct_ov14_021EDF28_34 *a0, u32 a1); /* ov14_021EDF28 */
+} UnkStruct_ov14_021EDF28;                                               /* ov14_021EDF28 */
+void PlaySE(u32 a0);                                                     /* ov14_021EDF28 */
+void ov14_021E637C(UnkStruct_ov14_021EDF28 *a0);                         /* ov14_021EDF28 */
+void ov14_021F08F0(UnkStruct_ov14_021EDF28 *a0);                         /* ov14_021EDF28 */
+void ov14_021F6678(UnkStruct_ov14_021EDF28_34 *a0, u32 a1);              /* ov14_021EDF28 */
 void ov14_021F685C(UnkStruct_ov14_021EDF28 *a0, u32 a1, u32 a2, u32 a3); /* ov14_021EDF28 */
-void GridInputHandler_SetNextInput(void *a0, u8 a1); /* ov14_021EDF28 */
-void GridInputHandler_SetButtonInputMode(void *a0, u32 a1); /* ov14_021EDF28 */
+void GridInputHandler_SetNextInput(void *a0, u8 a1);                     /* ov14_021EDF28 */
+void GridInputHandler_SetButtonInputMode(void *a0, u32 a1);              /* ov14_021EDF28 */
 
 s32 ov14_021EDF28(UnkStruct_ov14_021EDF28 *a0);
 
 // FUNCTION ov14_021EDF28: matching C (r2)
-s32 ov14_021EDF28(UnkStruct_ov14_021EDF28 *a0)
-{
+s32 ov14_021EDF28(UnkStruct_ov14_021EDF28 *a0) {
     u32 val = a0->unk34->unkC->unkE4;
 
     PlaySE(0x5ea);

@@ -2,10 +2,9 @@
 #pragma warning_errors off
 #pragma thumb on
 #include "global.h"
-#include "unk_02005D10.h"
+
 #include "sprite.h"
-
-
+#include "unk_02005D10.h"
 
 int ov65_0221DCFC(int param_1, int param_2, int param_3);
 void ov65_0221DD34(int param_1, int param_2, int param_3);

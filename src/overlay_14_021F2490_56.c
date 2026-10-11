@@ -3,13 +3,13 @@
 #pragma thumb on
 #define Sprite(base, idx) (*(void **)((u8 *)(base) + 0x2fc + (idx) * 4))
 
-typedef unsigned char u8; /* ov14_021F3F6C */
+typedef unsigned char u8;   /* ov14_021F3F6C */
 typedef unsigned short u16; /* ov14_021F3F6C */
-typedef unsigned int u32; /* ov14_021F3F6C */
-typedef signed char s8; /* ov14_021F3F6C */
-typedef signed short s16; /* ov14_021F3F6C */
-typedef int s32; /* ov14_021F3F6C */
-typedef int BOOL; /* ov14_021F3F6C */
+typedef unsigned int u32;   /* ov14_021F3F6C */
+typedef signed char s8;     /* ov14_021F3F6C */
+typedef signed short s16;   /* ov14_021F3F6C */
+typedef int s32;            /* ov14_021F3F6C */
+typedef int BOOL;           /* ov14_021F3F6C */
 typedef struct {
     s16 x;
     s16 y;
@@ -42,27 +42,26 @@ typedef struct {
     u8 unk21;
     u8 pad22[0x12];
     UnkStruct_ov14_021F3F6C_34 *unk34;
-} UnkStruct_ov14_021F3F6C; /* ov14_021F3F6C */
-extern UnkStruct_ov14_021F3F6C_Template ov14_021F810C; /* ov14_021F3F6C */
-extern s8 ov14_021F8070[]; /* ov14_021F3F6C */
-extern s8 ov14_021F8078[]; /* ov14_021F3F6C */
-void ManagedSprite_GetPositionXY(void *a0, s16 *a1, s16 *a2); /* ov14_021F3F6C */
-u32 ManagedSprite_GetDrawPriority(void *a0); /* ov14_021F3F6C */
-s32 ManagedSprite_GetPriority(void *a0); /* ov14_021F3F6C */
+} UnkStruct_ov14_021F3F6C;                                                              /* ov14_021F3F6C */
+extern UnkStruct_ov14_021F3F6C_Template ov14_021F810C;                                  /* ov14_021F3F6C */
+extern s8 ov14_021F8070[];                                                              /* ov14_021F3F6C */
+extern s8 ov14_021F8078[];                                                              /* ov14_021F3F6C */
+void ManagedSprite_GetPositionXY(void *a0, s16 *a1, s16 *a2);                           /* ov14_021F3F6C */
+u32 ManagedSprite_GetDrawPriority(void *a0);                                            /* ov14_021F3F6C */
+s32 ManagedSprite_GetPriority(void *a0);                                                /* ov14_021F3F6C */
 void *SpriteSystem_NewSprite(void *a0, void *a1, UnkStruct_ov14_021F3F6C_Template *a2); /* ov14_021F3F6C */
-void ManagedSprite_SetPaletteOverride(void *a0, u32 a1); /* ov14_021F3F6C */
-void ManagedSprite_SetDrawFlag(void *a0, u32 a1); /* ov14_021F3F6C */
-void ManagedSprite_SetPositionXY(void *a0, s16 a1, s16 a2); /* ov14_021F3F6C */
-void ManagedSprite_SetPriority(void *a0, s32 a1); /* ov14_021F3F6C */
-void *Sprite_GetImageProxy(void *a0); /* ov14_021F3F6C */
-void Sprite_SetImageProxy(void *a0, void *a1); /* ov14_021F3F6C */
+void ManagedSprite_SetPaletteOverride(void *a0, u32 a1);                                /* ov14_021F3F6C */
+void ManagedSprite_SetDrawFlag(void *a0, u32 a1);                                       /* ov14_021F3F6C */
+void ManagedSprite_SetPositionXY(void *a0, s16 a1, s16 a2);                             /* ov14_021F3F6C */
+void ManagedSprite_SetPriority(void *a0, s32 a1);                                       /* ov14_021F3F6C */
+void *Sprite_GetImageProxy(void *a0);                                                   /* ov14_021F3F6C */
+void Sprite_SetImageProxy(void *a0, void *a1);                                          /* ov14_021F3F6C */
 
 int ov14_021F2A74(int param_1, int param_2, int param_3);
 void ov14_021F3F6C(UnkStruct_ov14_021F3F6C *a0);
 
 // FUNCTION ov14_021F3F6C: matching C (r2)
-void ov14_021F3F6C(UnkStruct_ov14_021F3F6C *a0)
-{
+void ov14_021F3F6C(UnkStruct_ov14_021F3F6C *a0) {
     s16 pos[2];
     UnkStruct_ov14_021F3F6C_Template tpl;
     UnkStruct_ov14_021F3F6C_34 *r4;

@@ -4,13 +4,13 @@
 #include "overlay_00_thumb.h"
 #include "unk_02037C94.h"
 
-s32 Save_SysInfo_GetDwcProfileId(void *sysInfo); /* ov70_02244A04 */
+s32 Save_SysInfo_GetDwcProfileId(void *sysInfo);          /* ov70_02244A04 */
 void Save_SysInfo_SetDwcProfileId(void *sysInfo, s32 id); /* ov70_02244A04 */
-u64 DWC_CreateFriendKey(void *userData); /* ov70_02244A04 */
-void ov00_021EC8D8(); /* ov70_02244954 */
-void ov00_021ECDC8(); /* ov70_02244954 */
-void ov00_021ED9B4(); /* ov70_02244954 */
-void ov00_021FA0D8(); /* ov70_02244954 */
+u64 DWC_CreateFriendKey(void *userData);                  /* ov70_02244A04 */
+void ov00_021EC8D8();                                     /* ov70_02244954 */
+void ov00_021ECDC8();                                     /* ov70_02244954 */
+void ov00_021ED9B4();                                     /* ov70_02244954 */
+void ov00_021FA0D8();                                     /* ov70_02244954 */
 
 void ov70_022378C0(int param_1, int param_2, int param_3);
 void ov70_02238F80(int param_1);
@@ -110,8 +110,7 @@ _022449F4:
 // clang-format on
 
 // FUNCTION ov70_02244A04: matching C (r2)
-s32 ov70_02244A04(u8 **work)
-{
+s32 ov70_02244A04(u8 **work) {
     void *userData = sub_0202C08C(*(void **)(*work + 0x14));
     s32 id = Save_SysInfo_GetDwcProfileId(*(void **)(*work + 4));
     if (id == 0) {

@@ -2,21 +2,20 @@
 #pragma warning_errors off
 #pragma thumb on
 
-typedef unsigned int u32; /* ov70_02243FE0 */
-typedef int s32; /* ov70_02243FE0 */
+typedef unsigned int u32;   /* ov70_02243FE0 */
+typedef int s32;            /* ov70_02243FE0 */
 extern s32 ov70_02245E84[]; /* ov70_02243FE0 */
 typedef struct {
     s32 unk0;
     s32 count;
-} UnkStruct_ov70_02245F58; /* ov70_02243FE0 */
+} UnkStruct_ov70_02245F58;                      /* ov70_02243FE0 */
 extern UnkStruct_ov70_02245F58 ov70_02245F58[]; /* ov70_02243FE0 */
 
 int ov70_02243FD4(int param_1, int param_2);
 u32 ov70_02243FE0(void *a, s32 idx);
 
 // FUNCTION ov70_02243FE0: matching C (r2)
-u32 ov70_02243FE0(void *a, s32 idx)
-{
+u32 ov70_02243FE0(void *a, s32 idx) {
     s32 base = ov70_02245E84[idx];
     s32 count = ov70_02245F58[idx].count;
     s32 i;

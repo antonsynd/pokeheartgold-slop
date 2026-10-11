@@ -4,13 +4,13 @@
 #include "overlay_00_thumb.h"
 #include "unk_02037C94.h"
 
-s32 Save_SysInfo_GetDwcProfileId(void *sysInfo); /* ov72_02239370 */
+s32 Save_SysInfo_GetDwcProfileId(void *sysInfo);          /* ov72_02239370 */
 void Save_SysInfo_SetDwcProfileId(void *sysInfo, s32 id); /* ov72_02239370 */
-u64 DWC_CreateFriendKey(void *userData); /* ov72_02239370 */
-void ov00_021EC8D8(); /* ov72_022392BC */
-void ov00_021ECDC8(); /* ov72_022392BC */
-void ov00_021ED9B4(); /* ov72_022392BC */
-void ov00_021FA0D8(); /* ov72_022392BC */
+u64 DWC_CreateFriendKey(void *userData);                  /* ov72_02239370 */
+void ov00_021EC8D8();                                     /* ov72_022392BC */
+void ov00_021ECDC8();                                     /* ov72_022392BC */
+void ov00_021ED9B4();                                     /* ov72_022392BC */
+void ov00_021FA0D8();                                     /* ov72_022392BC */
 
 void ov72_022378C0(int param_1, int param_2, int param_3);
 void ov72_022392BC(int param_1, int param_2, int param_3, int param_4);
@@ -113,8 +113,7 @@ _02239362:
 // clang-format on
 
 // FUNCTION ov72_02239370: matching C (r2)
-s32 ov72_02239370(u8 **work)
-{
+s32 ov72_02239370(u8 **work) {
     s32 id = Save_SysInfo_GetDwcProfileId(*(void **)(*work + 8));
     if (id == 0) {
         Save_SysInfo_SetDwcProfileId(*(void **)(*work + 8), *(s32 *)(*work + 0x1c));

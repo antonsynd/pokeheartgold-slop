@@ -2,22 +2,23 @@
 #pragma warning_errors off
 #pragma thumb on
 #include "global.h"
+
 #include "assert.h"
+#include "error_handling.h"
 #include "gf_3d_loader.h"
 #include "gf_3d_render.h"
 #include "gf_gfx_loader.h"
 #include "heap.h"
+#include "math_util.h"
 #include "overlay_42.h"
 #include "unk_02018000.h"
 #include "unk_0201F990.h"
-#include "math_util.h"
-#include "error_handling.h"
 
 typedef struct UnkOv49Entity UnkOv49Entity; /* ov49_02258D54 */
-typedef struct UnkOv49Ctx UnkOv49Ctx; /* ov49_02258D54 */
+typedef struct UnkOv49Ctx UnkOv49Ctx;       /* ov49_02258D54 */
 typedef struct UnkOv49Map {
     UnkStruct_ov42_02227F68 *unk0;
-} UnkOv49Map; /* ov49_02258D54 */
+} UnkOv49Map;                                                              /* ov49_02258D54 */
 typedef void (*UnkOv49EntityFunc)(UnkOv49Entity *entity, UnkOv49Ctx *ctx); /* ov49_02258D54 */
 struct UnkOv49Entity {
     UnkStruct_ov42_02228110 *unk0;
@@ -40,21 +41,21 @@ struct UnkOv49Ctx {
     UnkOv49Entity *unk20;
     UnkOv49Entity *unk24;
 }; /* ov49_02258D54 */
-extern void ov49_02259A20(void *a0, void *a1, u32 a2); /* ov49_02258D54 */
-extern void ov49_02259A3C(void *a0, u32 a1); /* ov49_02258D54 */
-extern void ov49_02259A54(void *a0, void *a1); /* ov49_02258D54 */
-extern void *ov45_02230498(u32 a0, u32 a1, u32 heapID, u32 heapID2); /* ov49_02258D54 */
-extern void ov45_02230638(void *a0); /* ov49_02258D54 */
-extern void ov45_02230680(void *a0); /* ov49_02258D54 */
-extern void ov45_022306B4(void *a0); /* ov49_02258D54 */
-extern void ov45_022306F4(void *a0); /* ov49_02258D54 */
+extern void ov49_02259A20(void *a0, void *a1, u32 a2);                   /* ov49_02258D54 */
+extern void ov49_02259A3C(void *a0, u32 a1);                             /* ov49_02258D54 */
+extern void ov49_02259A54(void *a0, void *a1);                           /* ov49_02258D54 */
+extern void *ov45_02230498(u32 a0, u32 a1, u32 heapID, u32 heapID2);     /* ov49_02258D54 */
+extern void ov45_02230638(void *a0);                                     /* ov49_02258D54 */
+extern void ov45_02230680(void *a0);                                     /* ov49_02258D54 */
+extern void ov45_022306B4(void *a0);                                     /* ov49_02258D54 */
+extern void ov45_022306F4(void *a0);                                     /* ov49_02258D54 */
 extern void *ov45_0223070C(void *manager, UnkStruct_ov42_02228110 *obj); /* ov49_02258D54 */
-extern void ov45_02230884(void *a0); /* ov49_02258D54 */
-extern const u32 ov49_02269660[]; /* ov49_02258D54 */
-extern const u8 ov49_02269634[32]; /* ov49_02258D54 */
-extern const u8 _02269624[3]; /* ov49_02258D54 */
-extern const u8 ov49_0226962C[7]; /* ov49_02258D54 */
-extern const u8 ov49_02269628[4]; /* ov49_02258D54 */
+extern void ov45_02230884(void *a0);                                     /* ov49_02258D54 */
+extern const u32 ov49_02269660[];                                        /* ov49_02258D54 */
+extern const u8 ov49_02269634[32];                                       /* ov49_02258D54 */
+extern const u8 _02269624[3];                                            /* ov49_02258D54 */
+extern const u8 ov49_0226962C[7];                                        /* ov49_02258D54 */
+extern const u8 ov49_02269628[4];                                        /* ov49_02258D54 */
 typedef struct UnkOv49SpawnEntry {
     u8 unk0;
     u8 unk1;
@@ -66,30 +67,30 @@ typedef struct UnkOv49Move {
     s16 unk0;
     u8 unk2;
     u8 unk3;
-} UnkOv49Move; /* ov49_02258DAC */
-extern void ov49_022595CC(UnkOv49Entity *entity, UnkOv49Ctx *ctx); /* ov49_02258DAC */
-extern void ov49_0225967C(UnkOv49Entity *entity, UnkOv49Ctx *ctx); /* ov49_02258DAC */
-extern void ov49_0225974C(UnkOv49Entity *entity, UnkOv49Ctx *ctx); /* ov49_02258DAC */
-extern void ov49_02259758(UnkOv49Entity *entity, UnkOv49Ctx *ctx); /* ov49_02258DAC */
-extern void ov49_02259734(UnkOv49Entity *entity, UnkOv49Ctx *ctx); /* ov49_02258DAC */
-extern void ov49_02259740(UnkOv49Entity *entity, UnkOv49Ctx *ctx); /* ov49_02258DAC */
-extern void ov49_0225991C(UnkOv49Entity *entity, UnkOv49Ctx *ctx); /* ov49_02258DAC */
-extern void ov49_022599F8(UnkOv49Entity *entity, UnkOv49Ctx *ctx); /* ov49_02258DAC */
-extern BOOL ov45_022308B8(void *obj); /* ov49_02258DAC */
-extern void ov45_0223089C(void *obj, BOOL flag); /* ov49_02258DAC */
+} UnkOv49Move;                                                            /* ov49_02258DAC */
+extern void ov49_022595CC(UnkOv49Entity *entity, UnkOv49Ctx *ctx);        /* ov49_02258DAC */
+extern void ov49_0225967C(UnkOv49Entity *entity, UnkOv49Ctx *ctx);        /* ov49_02258DAC */
+extern void ov49_0225974C(UnkOv49Entity *entity, UnkOv49Ctx *ctx);        /* ov49_02258DAC */
+extern void ov49_02259758(UnkOv49Entity *entity, UnkOv49Ctx *ctx);        /* ov49_02258DAC */
+extern void ov49_02259734(UnkOv49Entity *entity, UnkOv49Ctx *ctx);        /* ov49_02258DAC */
+extern void ov49_02259740(UnkOv49Entity *entity, UnkOv49Ctx *ctx);        /* ov49_02258DAC */
+extern void ov49_0225991C(UnkOv49Entity *entity, UnkOv49Ctx *ctx);        /* ov49_02258DAC */
+extern void ov49_022599F8(UnkOv49Entity *entity, UnkOv49Ctx *ctx);        /* ov49_02258DAC */
+extern BOOL ov45_022308B8(void *obj);                                     /* ov49_02258DAC */
+extern void ov45_0223089C(void *obj, BOOL flag);                          /* ov49_02258DAC */
 extern void ov45_022308C0(void *obj, const UnkStruct_ov44_02232914 *pos); /* ov49_02258DAC */
-extern void ov45_022308E4(void *obj, const VecFx32 *vec); /* ov49_02258DAC */
-extern void ov45_02230908(void *obj, VecFx32 *vec); /* ov49_02258DAC */
-extern void ov45_02230920(void *obj, int value); /* ov49_02258DAC */
-extern void ov45_0223093C(void *obj, int value); /* ov49_02258DAC */
-extern void ov45_02230968(void *obj); /* ov49_02258DAC */
-extern void ov45_022308B0(void *obj, u32 value); /* ov49_02258DAC */
-extern void ov45_02230978(void *obj, BOOL flag); /* ov49_02258DAC */
-extern BOOL ov45_02230994(void *obj); /* ov49_02258DAC */
-extern const u8 ov49_02269654[4]; /* ov49_02258DAC */
-extern const UnkOv49SpawnEntry ov49_02269678[4]; /* ov49_02258DAC */
-extern const UnkOv49EntityFunc ov49_02269698[10]; /* ov49_02258DAC */
-extern const UnkOv49EntityFunc ov49_022696C0[10]; /* ov49_02258DAC */
+extern void ov45_022308E4(void *obj, const VecFx32 *vec);                 /* ov49_02258DAC */
+extern void ov45_02230908(void *obj, VecFx32 *vec);                       /* ov49_02258DAC */
+extern void ov45_02230920(void *obj, int value);                          /* ov49_02258DAC */
+extern void ov45_0223093C(void *obj, int value);                          /* ov49_02258DAC */
+extern void ov45_02230968(void *obj);                                     /* ov49_02258DAC */
+extern void ov45_022308B0(void *obj, u32 value);                          /* ov49_02258DAC */
+extern void ov45_02230978(void *obj, BOOL flag);                          /* ov49_02258DAC */
+extern BOOL ov45_02230994(void *obj);                                     /* ov49_02258DAC */
+extern const u8 ov49_02269654[4];                                         /* ov49_02258DAC */
+extern const UnkOv49SpawnEntry ov49_02269678[4];                          /* ov49_02258DAC */
+extern const UnkOv49EntityFunc ov49_02269698[10];                         /* ov49_02258DAC */
+extern const UnkOv49EntityFunc ov49_022696C0[10];                         /* ov49_02258DAC */
 
 void ov49_02258D54(UnkOv49Entity *entity);
 int ov49_02258D70(int param_1, int param_2);

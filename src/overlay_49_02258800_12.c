@@ -2,6 +2,7 @@
 #pragma warning_errors off
 #pragma thumb on
 #include "global.h"
+
 #include "overlay_42.h"
 #include "system.h"
 
@@ -31,12 +32,12 @@ typedef struct UnkStruct_Ov49_02258800_Pool {
     u8 filler0[8];
     UnkStruct_Ov49_02258800_PoolEntry *entries;
     u16 count;
-} UnkStruct_Ov49_02258800_Pool; /* ov49_02259410 */
-extern const u8 ov49_02269658[]; /* ov49_02259410 */
-extern const u8 ov49_0226965C[]; /* ov49_02259410 */
-extern s32 ov42_02228188(UnkStruct_ov42_02228110 *obj, s32 index); /* ov49_02259410 */
+} UnkStruct_Ov49_02258800_Pool;                                                           /* ov49_02259410 */
+extern const u8 ov49_02269658[];                                                          /* ov49_02259410 */
+extern const u8 ov49_0226965C[];                                                          /* ov49_02259410 */
+extern s32 ov42_02228188(UnkStruct_ov42_02228110 *obj, s32 index);                        /* ov49_02259410 */
 extern UnkStruct_ov44_02232914 ov42_02228270(UnkStruct_ov44_02232914 pos, s32 direction); /* ov49_02259410 */
-extern UnkStruct_ov44_02232914 ov42_022282DC(UnkStruct_ov42_02228110 *obj); /* ov49_02259410 */
+extern UnkStruct_ov44_02232914 ov42_022282DC(UnkStruct_ov42_02228110 *obj);               /* ov49_02259410 */
 
 int ov49_0225927C(int param_1, int param_2, int param_3, int param_4);
 void ov49_02259410(UnkStruct_Ov49_02258800_Entity *entity, UnkStruct_Ov49_02258800_Ctx *ctx);

@@ -2,10 +2,11 @@
 #pragma warning_errors off
 #pragma thumb on
 #include "global.h"
+
 #include "sprite.h"
 
-extern u8 ov70_02245DF8[]; /* ov70_02243768 */
-extern u8 ov70_02245DF9[]; /* ov70_02243768 */
+extern u8 ov70_02245DF8[];                                          /* ov70_02243768 */
+extern u8 ov70_02245DF9[];                                          /* ov70_02243768 */
 extern void sub_020198FC(void *a0, int a1, int a2, int a3, int a4); /* ov70_02243768 */
 
 int ov70_02238F9C(int param_1, int param_2, int param_3);

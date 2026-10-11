@@ -2,6 +2,7 @@
 #pragma warning_errors off
 #pragma thumb on
 #include "global.h"
+
 #include "unk_02005D10.h"
 
 typedef struct UnkStruct_ov59_0223B2B4 {

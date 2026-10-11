@@ -2,6 +2,7 @@
 #pragma warning_errors off
 #pragma thumb on
 #include "global.h"
+
 #include "gf_3d_loader.h"
 #include "map_object.h"
 #include "overlay_01_021F944C.h"
@@ -28,8 +29,8 @@ typedef struct UnkStruct_Ov01_021F944C {
     void *unkF4;
     void *unkF8;
     void *unkFC;
-} UnkStruct_Ov01_021F944C; /* ov01_021F9DD0 */
-extern u8 ov01_022072CC[]; /* ov01_021F9DD0 */
+} UnkStruct_Ov01_021F944C;                       /* ov01_021F9DD0 */
+extern u8 ov01_022072CC[];                       /* ov01_021F9DD0 */
 extern void ov01_021FC588(void *arg0, int arg1); /* ov01_021F9DD0 */
 
 int ov01_021F9AB4(int param_1, int param_2, int param_3, int param_4);

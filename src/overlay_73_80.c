@@ -2,11 +2,12 @@
 #pragma warning_errors off
 #pragma thumb on
 #include "global.h"
-#include "sav_system_info.h"
+
 #include "overlay_00_thumb.h"
+#include "sav_system_info.h"
 #include "unk_02037C94.h"
 
-u64 DWC_CreateFriendKey(void *userData); /* ov73_021E8E7C */
+u64 DWC_CreateFriendKey(void *userData);                 /* ov73_021E8E7C */
 void ov72_022378C0(s32 profileId, u32 keyLo, u32 keyHi); /* ov73_021E8E7C */
 typedef struct UnkStruct_ov73_021E8E7C_Env {
     u8 filler_00[8];
@@ -21,10 +22,10 @@ typedef struct UnkStruct_ov73_021E8E7C {
     u8 filler_04[0x1c - 4];
     s32 state;
 } UnkStruct_ov73_021E8E7C; /* ov73_021E8E7C */
-void ov00_021EC8D8(); /* ov73_021E8DC8 */
-void ov00_021ECDC8(); /* ov73_021E8DC8 */
-void ov00_021ED9B4(); /* ov73_021E8DC8 */
-void ov00_021FA0D8(); /* ov73_021E8DC8 */
+void ov00_021EC8D8();      /* ov73_021E8DC8 */
+void ov00_021ECDC8();      /* ov73_021E8DC8 */
+void ov00_021ED9B4();      /* ov73_021E8DC8 */
+void ov00_021FA0D8();      /* ov73_021E8DC8 */
 
 void ov73_021E8DC8(int param_1, int param_2, int param_3, int param_4);
 int ov73_021E8E7C(UnkStruct_ov73_021E8E7C *work);

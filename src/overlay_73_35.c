@@ -2,8 +2,6 @@
 #pragma warning_errors off
 #pragma thumb on
 
-
-
 void ov73_021E66F0(int param_1);
 void ov73_021E6E48(int param_1, int param_2);
 

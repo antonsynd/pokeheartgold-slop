@@ -2,6 +2,7 @@
 #pragma warning_errors off
 #pragma thumb on
 #include "global.h"
+
 #include "pokemon.h"
 
 typedef struct UnkStruct_ov70_0223E658 {

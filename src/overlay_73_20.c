@@ -2,9 +2,8 @@
 #pragma warning_errors off
 #pragma thumb on
 #include "unk_02005D10.h"
-#include "yes_no_prompt.h"
 #include "unk_02035900.h"
-
+#include "yes_no_prompt.h"
 
 void ov73_021E66F0(int param_1);
 void ov73_021E670C(int param_1, int param_2);

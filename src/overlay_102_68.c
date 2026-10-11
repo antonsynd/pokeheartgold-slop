@@ -2,14 +2,15 @@
 #pragma warning_errors off
 #pragma thumb on
 #include "global.h"
-#include "sprite.h"
+
 #include "bg_window.h"
 #include "font.h"
 #include "pm_string.h"
+#include "sprite.h"
 #include "text.h"
 
 void GXS_LoadBGPltt(); /* ov102_021EA874 */
-void GX_LoadBGPltt(); /* ov102_021EA874 */
+void GX_LoadBGPltt();  /* ov102_021EA874 */
 
 int ov102_021E8F6C(int param_1);
 int ov102_021E8F84(int param_1, int param_2, int param_3);

@@ -3,8 +3,6 @@
 #pragma thumb on
 #include "global.h"
 
-
-
 int ov40_022307B0(u64 param0);
 
 // FUNCTION ov40_022307B0: matching C (r0)

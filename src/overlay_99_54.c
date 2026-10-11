@@ -2,12 +2,13 @@
 #pragma warning_errors off
 #pragma thumb on
 #include "global.h"
+
 #include "bg_window.h"
-#include "sprite_system.h"
 #include "overlay_98.h"
+#include "sprite_system.h"
 
 extern void GF_AssertFail(void); /* ov99_021E88EC */
-void ov99_021EA35A(); /* ov99_021E8828 */
+void ov99_021EA35A();            /* ov99_021E8828 */
 
 void ov99_021E87D0(int param_1);
 void ov99_021E8828(int param_1);

@@ -2,10 +2,12 @@
 #pragma warning_errors off
 #pragma thumb on
 #include "global.h"
+
+#include "constants/sndseq.h"
+
 #include "assert.h"
 #include "bg_window.h"
 #include "camera.h"
-#include "constants/sndseq.h"
 #include "filesystem.h"
 #include "font.h"
 #include "gf_3d_vramman.h"
@@ -66,14 +68,14 @@ typedef struct UnkStruct_ov48_Touch {
 } UnkStruct_ov48_Touch; /* ov48_022598CC */
 typedef struct UnkStruct_ov48_Flags {
     u32 unk_00_0 : 1;
-} UnkStruct_ov48_Flags; /* ov48_022598CC */
-extern const VecFx32 ov48_0225B16C; /* ov48_022598CC */
-extern const u32 ov48_0225B178[3]; /* ov48_022598CC */
-extern const VecFx32 ov48_0225B184; /* ov48_022598CC */
+} UnkStruct_ov48_Flags;                            /* ov48_022598CC */
+extern const VecFx32 ov48_0225B16C;                /* ov48_022598CC */
+extern const u32 ov48_0225B178[3];                 /* ov48_022598CC */
+extern const VecFx32 ov48_0225B184;                /* ov48_022598CC */
 BOOL ov45_0222D724(const void *param0, u8 param1); /* ov48_022598CC */
-u32 ov45_0222D6FC(const void *param0, u8 param1); /* ov48_022598CC */
-u8 ov45_0222D6B0(const void *param0, u8 param1); /* ov48_022598CC */
-u32 ov45_0222D6D4(const void *param0, u8 param1); /* ov48_022598CC */
+u32 ov45_0222D6FC(const void *param0, u8 param1);  /* ov48_022598CC */
+u8 ov45_0222D6B0(const void *param0, u8 param1);   /* ov48_022598CC */
+u32 ov45_0222D6D4(const void *param0, u8 param1);  /* ov48_022598CC */
 
 void ov48_02258A80(int param_1, int param_2, int param_3);
 void ov48_022598CC(const UnkStruct_ov48_Obj *param0, VecFx32 *param1);
@@ -82,14 +84,12 @@ void ov48_022598EC(int param_1, int param_2, int param_3);
 void ov48_02259984(UnkStruct_ov48_Scene *param0);
 
 // FUNCTION ov48_022598CC: matching C (r2)
-void ov48_022598CC(const UnkStruct_ov48_Obj *param0, VecFx32 *param1)
-{
+void ov48_022598CC(const UnkStruct_ov48_Obj *param0, VecFx32 *param1) {
     *param1 = param0->unk_18;
 }
 
 // FUNCTION ov48_022598DC: matching C (r2)
-void ov48_022598DC(UnkStruct_ov48_Obj *param0, const VecFx32 *param1)
-{
+void ov48_022598DC(UnkStruct_ov48_Obj *param0, const VecFx32 *param1) {
     param0->unk_18 = *param1;
 }
 
@@ -167,8 +167,7 @@ _0225995A:
 // clang-format on
 
 // FUNCTION ov48_02259984: matching C (r2)
-void ov48_02259984(UnkStruct_ov48_Scene *param0)
-{
+void ov48_02259984(UnkStruct_ov48_Scene *param0) {
     int v0;
 
     for (v0 = 0; v0 < 3; v0++) {

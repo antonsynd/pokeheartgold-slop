@@ -2,13 +2,13 @@
 #pragma warning_errors off
 #pragma thumb on
 
-typedef unsigned char u8; /* ov14_021EC150 */
+typedef unsigned char u8;   /* ov14_021EC150 */
 typedef unsigned short u16; /* ov14_021EC150 */
-typedef unsigned int u32; /* ov14_021EC150 */
-typedef signed char s8; /* ov14_021EC150 */
-typedef signed short s16; /* ov14_021EC150 */
-typedef int s32; /* ov14_021EC150 */
-typedef int BOOL; /* ov14_021EC150 */
+typedef unsigned int u32;   /* ov14_021EC150 */
+typedef signed char s8;     /* ov14_021EC150 */
+typedef signed short s16;   /* ov14_021EC150 */
+typedef int s32;            /* ov14_021EC150 */
+typedef int BOOL;           /* ov14_021EC150 */
 typedef struct {
     u8 pad0[0x8];
     s32 unk8;
@@ -29,30 +29,29 @@ typedef struct {
     u8 pad23[0xd];
     s32 unk30;
     UnkStruct_ov14_021EC150_34 *unk34;
-} UnkStruct_ov14_021EC150; /* ov14_021EC150 */
-void ov14_021E6100(UnkStruct_ov14_021EC150 *a0, u32 a1, u32 a2); /* ov14_021EC150 */
-void ov14_021F6654(UnkStruct_ov14_021EC150_34 *a0, u32 a1); /* ov14_021EC150 */
-void ov14_021E765C(UnkStruct_ov14_021EC150 *a0); /* ov14_021EC150 */
-void ov14_021F4958(UnkStruct_ov14_021EC150 *a0, u32 a1); /* ov14_021EC150 */
-void ov14_021F4A20(UnkStruct_ov14_021EC150 *a0, u32 a1); /* ov14_021EC150 */
+} UnkStruct_ov14_021EC150;                                               /* ov14_021EC150 */
+void ov14_021E6100(UnkStruct_ov14_021EC150 *a0, u32 a1, u32 a2);         /* ov14_021EC150 */
+void ov14_021F6654(UnkStruct_ov14_021EC150_34 *a0, u32 a1);              /* ov14_021EC150 */
+void ov14_021E765C(UnkStruct_ov14_021EC150 *a0);                         /* ov14_021EC150 */
+void ov14_021F4958(UnkStruct_ov14_021EC150 *a0, u32 a1);                 /* ov14_021EC150 */
+void ov14_021F4A20(UnkStruct_ov14_021EC150 *a0, u32 a1);                 /* ov14_021EC150 */
 void ov14_021F685C(UnkStruct_ov14_021EC150 *a0, u32 a1, u32 a2, u32 a3); /* ov14_021EC150 */
-void ov14_021E8248(void *a0); /* ov14_021EC150 */
-void ov14_021E82A8(void *a0); /* ov14_021EC150 */
-void ov14_021E8328(void *a0); /* ov14_021EC150 */
-void GridInputHandler_SetNextInput(void *a0, u32 a1); /* ov14_021EC150 */
-void GridInputHandler_SetButtonInputMode(void *a0, u32 a1); /* ov14_021EC150 */
-void ov14_021F43F4(UnkStruct_ov14_021EC150_34 *a0, u32 a1); /* ov14_021EC150 */
-void ov14_021F3488(UnkStruct_ov14_021EC150 *a0, u32 a1, u32 a2); /* ov14_021EC150 */
-void ov14_021F08BC(UnkStruct_ov14_021EC150 *a0); /* ov14_021EC150 */
-void ov14_021F0234(UnkStruct_ov14_021EC150 *a0, void *a1, s32 a2); /* ov14_021EC150 */
-void ov14_021E9450(void); /* ov14_021EC150 */
-void ov14_021E9194(void); /* ov14_021EC150 */
+void ov14_021E8248(void *a0);                                            /* ov14_021EC150 */
+void ov14_021E82A8(void *a0);                                            /* ov14_021EC150 */
+void ov14_021E8328(void *a0);                                            /* ov14_021EC150 */
+void GridInputHandler_SetNextInput(void *a0, u32 a1);                    /* ov14_021EC150 */
+void GridInputHandler_SetButtonInputMode(void *a0, u32 a1);              /* ov14_021EC150 */
+void ov14_021F43F4(UnkStruct_ov14_021EC150_34 *a0, u32 a1);              /* ov14_021EC150 */
+void ov14_021F3488(UnkStruct_ov14_021EC150 *a0, u32 a1, u32 a2);         /* ov14_021EC150 */
+void ov14_021F08BC(UnkStruct_ov14_021EC150 *a0);                         /* ov14_021EC150 */
+void ov14_021F0234(UnkStruct_ov14_021EC150 *a0, void *a1, s32 a2);       /* ov14_021EC150 */
+void ov14_021E9450(void);                                                /* ov14_021EC150 */
+void ov14_021E9194(void);                                                /* ov14_021EC150 */
 
 void ov14_021EC150(UnkStruct_ov14_021EC150 *a0);
 
 // FUNCTION ov14_021EC150: matching C (r2)
-void ov14_021EC150(UnkStruct_ov14_021EC150 *a0)
-{
+void ov14_021EC150(UnkStruct_ov14_021EC150 *a0) {
     void *fn;
 
     ov14_021E6100(a0, a0->unk1F, a0->unk21);

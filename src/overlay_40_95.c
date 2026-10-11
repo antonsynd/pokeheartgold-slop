@@ -2,6 +2,7 @@
 #pragma warning_errors off
 #pragma thumb on
 #include "global.h"
+
 #include "palette.h"
 #include "screen_fade.h"
 
@@ -16,7 +17,7 @@ typedef struct UnkStruct_ov40_02231748 {
     u8 filler_058[0x6F0 - 0x58];
     void *unk_6F0;
     void *unk_6F4;
-} UnkStruct_ov40_02231748; /* ov40_02231748 */
+} UnkStruct_ov40_02231748;           /* ov40_02231748 */
 void sub_020879E0(void *a0, int a1); /* ov40_02231748 */
 
 int ov40_0222DAF0(int param_1);

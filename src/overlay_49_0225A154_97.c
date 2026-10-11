@@ -2,8 +2,10 @@
 #pragma warning_errors off
 #pragma thumb on
 #include "global.h"
+
 #include "assert.h"
 #include "bg_window.h"
+#include "error_handling.h"
 #include "filesystem.h"
 #include "gf_gfx_loader.h"
 #include "gf_gfx_planes.h"
@@ -14,9 +16,8 @@
 #include "text.h"
 #include "touch_hitbox_controller.h"
 #include "touchscreen.h"
-#include "unk_0200A090.h"
 #include "unk_02009D48.h"
-#include "error_handling.h"
+#include "unk_0200A090.h"
 
 typedef struct UnkStruct_ov49_Gfx {
     BgConfig *bgConfig;
@@ -50,27 +51,27 @@ typedef struct UnkStruct_ov49_Entry {
     u16 unk2;
     s16 unk4;
     s16 unk6;
-} UnkStruct_ov49_Entry; /* ov49_0225C78C */
+} UnkStruct_ov49_Entry;                                     /* ov49_0225C78C */
 extern void ov49_0225CB50(u32 index, u32 event, void *arg); /* ov49_0225C78C */
-extern u32 ov45_0222AAC8(const void *a0); /* ov49_0225C78C */
-extern const u8 ov49_022696EC[3]; /* ov49_0225C78C */
-extern const s8 ov49_022696F0[3]; /* ov49_0225C78C */
-extern const TouchscreenHitbox ov49_022696F4; /* ov49_0225C78C */
-extern const WindowTemplate ov49_0226970C; /* ov49_0225C78C */
-extern const UnkStruct_ov49_Entry ov49_02269764[2]; /* ov49_0225C78C */
-extern const UnkStruct_ov49_Entry ov49_022699AC[24]; /* ov49_0225C78C */
-void ov45_0222A92C(); /* ov49_0225C4CC */
-void ov45_0222A964(); /* ov49_0225C4CC */
-void ov45_0222A99C(); /* ov49_0225C4CC */
-void ov45_0222A9CC(); /* ov49_0225C4CC */
-void ov49_022696FC(); /* ov49_0225C4CC */
-void ov49_02269704(); /* ov49_0225C4CC */
-void ov49_02269774(); /* ov49_0225C4CC */
-void ov49_0226991C(); /* ov49_0225C4CC */
-void _fsub(void); /* ov49_0225C4CC */
-void _fflt(void); /* ov49_0225C4CC */
-void _fadd(void); /* ov49_0225C4CC */
-void _ffix(void); /* ov49_0225C4CC */
+extern u32 ov45_0222AAC8(const void *a0);                   /* ov49_0225C78C */
+extern const u8 ov49_022696EC[3];                           /* ov49_0225C78C */
+extern const s8 ov49_022696F0[3];                           /* ov49_0225C78C */
+extern const TouchscreenHitbox ov49_022696F4;               /* ov49_0225C78C */
+extern const WindowTemplate ov49_0226970C;                  /* ov49_0225C78C */
+extern const UnkStruct_ov49_Entry ov49_02269764[2];         /* ov49_0225C78C */
+extern const UnkStruct_ov49_Entry ov49_022699AC[24];        /* ov49_0225C78C */
+void ov45_0222A92C();                                       /* ov49_0225C4CC */
+void ov45_0222A964();                                       /* ov49_0225C4CC */
+void ov45_0222A99C();                                       /* ov49_0225C4CC */
+void ov45_0222A9CC();                                       /* ov49_0225C4CC */
+void ov49_022696FC();                                       /* ov49_0225C4CC */
+void ov49_02269704();                                       /* ov49_0225C4CC */
+void ov49_02269774();                                       /* ov49_0225C4CC */
+void ov49_0226991C();                                       /* ov49_0225C4CC */
+void _fsub(void);                                           /* ov49_0225C4CC */
+void _fflt(void);                                           /* ov49_0225C4CC */
+void _fadd(void);                                           /* ov49_0225C4CC */
+void _ffix(void);                                           /* ov49_0225C4CC */
 
 void ov49_0225C4CC(int param_1, int param_2, int param_3, int param_4);
 void ov49_0225C78C(UnkStruct_ov49_Sprites *sprites, UnkStruct_ov49_Gfx *gfx);

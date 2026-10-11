@@ -2,6 +2,7 @@
 #pragma warning_errors off
 #pragma thumb on
 #include "global.h"
+
 #include "bg_window.h"
 #include "unk_0201956C.h"
 #include "unk_02088288.h"

@@ -2,6 +2,7 @@
 #pragma warning_errors off
 #pragma thumb on
 #include "global.h"
+
 #include "assert.h"
 #include "filesystem.h"
 #include "gf_3d_render.h"
@@ -51,35 +52,32 @@ typedef struct UnkStruct_ov49_0225D5FC {
     UnkStruct_02018030 unk00[2];
     UnkStruct_020180BC unk20[5];
     u32 unk84[5];
-} UnkStruct_ov49_0225D5FC; /* ov49_0225D450 */
-extern UnkStruct_ov49_0225D098 *ov49_0225DBF8(void *a0); /* ov49_0225D450 */
+} UnkStruct_ov49_0225D5FC;                                                 /* ov49_0225D450 */
+extern UnkStruct_ov49_0225D098 *ov49_0225DBF8(void *a0);                   /* ov49_0225D450 */
 extern void ov49_02258800(const UnkStruct_ov49_0225D1EC *a0, VecFx32 *a1); /* ov49_0225D450 */
 extern void ov49_02258814(const VecFx32 *a0, UnkStruct_ov49_0225D1EC *a1); /* ov49_0225D450 */
-extern void ov49_02258830(void *a0, NARC *a1, u32 a2, u32 a3); /* ov49_0225D450 */
-extern void ov45_0222D740(void *a0); /* ov49_0225D450 */
+extern void ov49_02258830(void *a0, NARC *a1, u32 a2, u32 a3);             /* ov49_0225D450 */
+extern void ov45_0222D740(void *a0);                                       /* ov49_0225D450 */
 
 BOOL ov49_0225D450(const UnkStruct_ov49_0225D098 *param0, int param1);
 fx32 ov49_0225D470(const UnkStruct_ov49_0225D098 *param0, int param1);
 void ov49_0225D494(UnkStruct_ov49_0225D098 *param0, BOOL param1);
 
 // FUNCTION ov49_0225D450: matching C (r2)
-BOOL ov49_0225D450(const UnkStruct_ov49_0225D098 *param0, int param1)
-{
+BOOL ov49_0225D450(const UnkStruct_ov49_0225D098 *param0, int param1) {
     GF_ASSERT(param1 < 3);
     GF_ASSERT(param0->unk02 < 18);
     return param0->unkB8[param1];
 }
 
 // FUNCTION ov49_0225D470: matching C (r2)
-fx32 ov49_0225D470(const UnkStruct_ov49_0225D098 *param0, int param1)
-{
+fx32 ov49_0225D470(const UnkStruct_ov49_0225D098 *param0, int param1) {
     GF_ASSERT(param1 < 3);
     GF_ASSERT(param0->unk02 < 18);
     return param0->unkC0[param1];
 }
 
 // FUNCTION ov49_0225D494: matching C (r2)
-void ov49_0225D494(UnkStruct_ov49_0225D098 *param0, BOOL param1)
-{
+void ov49_0225D494(UnkStruct_ov49_0225D098 *param0, BOOL param1) {
     sub_020182A0(&param0->unk04, param1);
 }

@@ -2,10 +2,12 @@
 #pragma warning_errors off
 #pragma thumb on
 #include "global.h"
+
+#include "constants/sndseq.h"
+
 #include "assert.h"
 #include "bg_window.h"
 #include "camera.h"
-#include "constants/sndseq.h"
 #include "filesystem.h"
 #include "font.h"
 #include "gf_3d_vramman.h"
@@ -66,20 +68,19 @@ typedef struct UnkStruct_ov48_Touch {
 } UnkStruct_ov48_Touch; /* ov48_02259824 */
 typedef struct UnkStruct_ov48_Flags {
     u32 unk_00_0 : 1;
-} UnkStruct_ov48_Flags; /* ov48_02259824 */
-extern const VecFx32 ov48_0225B16C; /* ov48_02259824 */
-extern const u32 ov48_0225B178[3]; /* ov48_02259824 */
-extern const VecFx32 ov48_0225B184; /* ov48_02259824 */
+} UnkStruct_ov48_Flags;                            /* ov48_02259824 */
+extern const VecFx32 ov48_0225B16C;                /* ov48_02259824 */
+extern const u32 ov48_0225B178[3];                 /* ov48_02259824 */
+extern const VecFx32 ov48_0225B184;                /* ov48_02259824 */
 BOOL ov45_0222D724(const void *param0, u8 param1); /* ov48_02259824 */
-u32 ov45_0222D6FC(const void *param0, u8 param1); /* ov48_02259824 */
-u8 ov45_0222D6B0(const void *param0, u8 param1); /* ov48_02259824 */
-u32 ov45_0222D6D4(const void *param0, u8 param1); /* ov48_02259824 */
+u32 ov45_0222D6FC(const void *param0, u8 param1);  /* ov48_02259824 */
+u8 ov45_0222D6B0(const void *param0, u8 param1);   /* ov48_02259824 */
+u32 ov45_0222D6D4(const void *param0, u8 param1);  /* ov48_02259824 */
 
 void ov48_02259824(UnkStruct_ov48_Obj *param0, UnkStruct_ov48_Parent *param1, u32 heapID);
 
 // FUNCTION ov48_02259824: matching C (r2)
-void ov48_02259824(UnkStruct_ov48_Obj *param0, UnkStruct_ov48_Parent *param1, u32 heapID)
-{
+void ov48_02259824(UnkStruct_ov48_Obj *param0, UnkStruct_ov48_Parent *param1, u32 heapID) {
     param0->unk_00.x = 0;
     param0->unk_00.y = 0;
     param0->unk_00.z = 0;

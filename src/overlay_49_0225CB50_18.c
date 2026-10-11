@@ -2,6 +2,7 @@
 #pragma warning_errors off
 #pragma thumb on
 #include "global.h"
+
 #include "assert.h"
 #include "filesystem.h"
 #include "gf_3d_render.h"
@@ -51,12 +52,12 @@ typedef struct UnkStruct_ov49_0225D5FC {
     UnkStruct_02018030 unk00[2];
     UnkStruct_020180BC unk20[5];
     u32 unk84[5];
-} UnkStruct_ov49_0225D5FC; /* ov49_0225D520 */
-extern UnkStruct_ov49_0225D098 *ov49_0225DBF8(void *a0); /* ov49_0225D520 */
+} UnkStruct_ov49_0225D5FC;                                                 /* ov49_0225D520 */
+extern UnkStruct_ov49_0225D098 *ov49_0225DBF8(void *a0);                   /* ov49_0225D520 */
 extern void ov49_02258800(const UnkStruct_ov49_0225D1EC *a0, VecFx32 *a1); /* ov49_0225D520 */
 extern void ov49_02258814(const VecFx32 *a0, UnkStruct_ov49_0225D1EC *a1); /* ov49_0225D520 */
-extern void ov49_02258830(void *a0, NARC *a1, u32 a2, u32 a3); /* ov49_0225D520 */
-extern void ov45_0222D740(void *a0); /* ov49_0225D520 */
+extern void ov49_02258830(void *a0, NARC *a1, u32 a2, u32 a3);             /* ov49_0225D520 */
+extern void ov45_0222D740(void *a0);                                       /* ov49_0225D520 */
 
 void ov49_0225D520(void *param0);
 void ov49_0225D528(int param_1, int param_2, int param_3, int param_4);
@@ -67,8 +68,7 @@ void ov49_0225D5C8(fx32 *param0, UnkStruct_020180BC *param1, fx32 param2);
 BOOL ov49_0225D5E4(fx32 *param0, const UnkStruct_020180BC *param1, fx32 param2);
 
 // FUNCTION ov49_0225D520: matching C (r2)
-void ov49_0225D520(void *param0)
-{
+void ov49_0225D520(void *param0) {
     Heap_Free(param0);
 }
 
@@ -116,14 +116,12 @@ _0225D55E:
 // clang-format on
 
 // FUNCTION ov49_0225D574: matching C (r2)
-void ov49_0225D574(UnkStruct_02018030 *param0)
-{
+void ov49_0225D574(UnkStruct_02018030 *param0) {
     sub_02018068(param0);
 }
 
 // FUNCTION ov49_0225D57C: matching C (r2)
-void ov49_0225D57C(fx32 *param0, UnkStruct_020180BC *param1, fx32 param2)
-{
+void ov49_0225D57C(fx32 *param0, UnkStruct_020180BC *param1, fx32 param2) {
     fx32 v0;
 
     v0 = sub_020181A4(param1);
@@ -136,8 +134,7 @@ void ov49_0225D57C(fx32 *param0, UnkStruct_020180BC *param1, fx32 param2)
 }
 
 // FUNCTION ov49_0225D5A0: matching C (r2)
-BOOL ov49_0225D5A0(fx32 *param0, UnkStruct_020180BC *param1, fx32 param2)
-{
+BOOL ov49_0225D5A0(fx32 *param0, UnkStruct_020180BC *param1, fx32 param2) {
     fx32 v0;
     BOOL v1;
 
@@ -155,8 +152,7 @@ BOOL ov49_0225D5A0(fx32 *param0, UnkStruct_020180BC *param1, fx32 param2)
 }
 
 // FUNCTION ov49_0225D5C8: matching C (r2)
-void ov49_0225D5C8(fx32 *param0, UnkStruct_020180BC *param1, fx32 param2)
-{
+void ov49_0225D5C8(fx32 *param0, UnkStruct_020180BC *param1, fx32 param2) {
     fx32 v0;
 
     v0 = sub_020181A4(param1);
@@ -169,8 +165,7 @@ void ov49_0225D5C8(fx32 *param0, UnkStruct_020180BC *param1, fx32 param2)
 }
 
 // FUNCTION ov49_0225D5E4: matching C (r2)
-BOOL ov49_0225D5E4(fx32 *param0, const UnkStruct_020180BC *param1, fx32 param2)
-{
+BOOL ov49_0225D5E4(fx32 *param0, const UnkStruct_020180BC *param1, fx32 param2) {
     BOOL v0;
 
     if (((*param0) - param2) > 0) {

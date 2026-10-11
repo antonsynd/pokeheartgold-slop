@@ -8,11 +8,11 @@ typedef struct UnkStruct_ov43_0222C2B0_B {
     void *saveData;
     u8 padding_08[0x10];
     u8 unk_18[0x40];
-} UnkStruct_ov43_0222C2B0_B; /* ov43_0222C2B0 */
-extern void *sub_0202C6F4(void *saveData); /* ov43_0222C2B0 */
-extern void *sub_0202C23C(void *a, u32 b); /* ov43_0222C2B0 */
+} UnkStruct_ov43_0222C2B0_B;                                  /* ov43_0222C2B0 */
+extern void *sub_0202C6F4(void *saveData);                    /* ov43_0222C2B0 */
+extern void *sub_0202C23C(void *a, u32 b);                    /* ov43_0222C2B0 */
 extern unsigned long long DWC_GetFriendKey(void *friendData); /* ov43_0222C2B0 */
-extern void PlaySE(u16 sndseq); /* ov43_0222C2B0 */
+extern void PlaySE(u16 sndseq);                               /* ov43_0222C2B0 */
 
 void ov43_0222AAA4(int param_1, int param_2, int param_3);
 void ov43_0222AB20(int param_1, int param_2, int param_3, int param_4);

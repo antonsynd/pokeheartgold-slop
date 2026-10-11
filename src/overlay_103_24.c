@@ -2,11 +2,12 @@
 #pragma warning_errors off
 #pragma thumb on
 #include "global.h"
+
 #include "sprite_system.h"
 #include "unk_0201956C.h"
 
 typedef s32 (*UnkFunc_ov103_021ED2D4)(u8 *data, void *fn, u32 offset, u32 a3); /* ov103_021ED2D4 */
-extern const UnkFunc_ov103_021ED2D4 ov103_021EECA8[]; /* ov103_021ED2D4 */
+extern const UnkFunc_ov103_021ED2D4 ov103_021EECA8[];                          /* ov103_021ED2D4 */
 
 BOOL ov103_021ED2D4(u8 *data, s32 *state, u32 a2, u32 a3);
 void ov103_021EDF68(int param_1);
