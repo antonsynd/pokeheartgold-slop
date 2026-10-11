@@ -37,10 +37,17 @@ env:
   CC: gcc-10
   CXX: g++-10
   COMPARE: 1
+  # Wine's fixme/err chatter on stderr would become ::error:: annotations.
+  WINEDEBUG: -all
 
 jobs:
-  build:
+  # The two games share no build outputs, so they build on parallel runners.
+  rom:
+    name: rom (${{ matrix.game }})
     runs-on: ubuntu-22.04
+    strategy:
+      matrix:
+        game: [HEARTGOLD, SOULSILVER]
 
     steps:
       - name: Update and Install Software
@@ -87,19 +94,16 @@ jobs:
         with:
           swap-size-gb: 19
 
-      - name: Build HeartGold
+      - name: Build
         env:
-          GAME_VERSION: HEARTGOLD
+          GAME_VERSION: ${{ matrix.game }}
           GAME_LANGUAGE: ENGLISH
           GAME_REVISION: 0
-        run: make -j4 2> >(sed -r 's/^/::error::/')
-
-      - name: Build SoulSilver
-        env:
-          GAME_VERSION: SOULSILVER
-          GAME_LANGUAGE: ENGLISH
-          GAME_REVISION: 0
-        run: make -j4 2> >(sed -r 's/^/::error::/')
+        run: |
+          # Keep one wineserver up for the whole build, rather than letting it
+          # exit and restart whenever no compile happens to be running.
+          wineserver -p
+          make -j"$(nproc)" 2> >(sed -r 's/^/::error::/')
 
       - name: Post error archive
         if: failure()
@@ -110,6 +114,15 @@ jobs:
         if: failure()
         uses: actions/upload-artifact@v4
         with:
-          name: pokeheartgold-failure-${{ github.run_id }}
+          name: pokeheartgold-failure-${{ github.run_id }}-${{ matrix.game }}
           path: failure.tar.gz
           retention-days: 1
+
+  # The status check the mainline ruleset requires: passes only if both games
+  # built and matched.
+  build:
+    needs: rom
+    if: ${{ !cancelled() }}
+    runs-on: ubuntu-latest
+    steps:
+      - run: test "${{ needs.rom.result }}" = success

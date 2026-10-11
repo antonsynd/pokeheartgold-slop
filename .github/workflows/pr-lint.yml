@@ -3,7 +3,8 @@ on:
   pull_request:
     # mainline is this fork's working branch; master tracks upstream.
     branches: [master, mainline]
-    paths: ['**.c', '**.h']
+    # No `paths` filter: GitHub matches it against only the first 300 changed
+    # files, so a large PR whose first 300 are asm/ would skip the lint.
   workflow_dispatch: {}
 
 jobs:
