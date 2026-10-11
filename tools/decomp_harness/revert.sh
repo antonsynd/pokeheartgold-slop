@@ -1,9 +1,12 @@
 #!/usr/bin/env bash
 #
 # Revert a decompilation attempt for a specific asm file.
-# Restores main.lsf and removes generated C/H files.
+# Restores main.lsf and removes generated C/H files. A C/H file that git
+# tracks is restored from HEAD instead of removed, so this never deletes an
+# hgify-generated src/<base>_NN.c (or any other committed file).
 #
 # Usage: ./tools/decomp_harness/revert.sh asm/unk_02004A44.s
+#        ./tools/decomp_harness/revert.sh src/overlay_99_04.c   (split unit, SPLIT_TARGETS.md)
 
 set -euo pipefail
 
@@ -17,12 +20,13 @@ if [[ $# -lt 1 ]]; then
 fi
 
 asmfile="$1"
-basename="$(basename "$asmfile" .s)"
+basename="$(basename "$(basename "$asmfile" .s)" .c)"
 
 cd "$PROJECT_ROOT"
 
-# Revert main.lsf
-if grep -q "Object src/${basename}.o" main.lsf 2>/dev/null; then
+# Revert main.lsf (only when there is an asm object to go back to: a generated
+# src/<base>_NN.c split unit has none and stays linked as src)
+if [[ -f "asm/${basename}.s" ]] && grep -q "Object src/${basename}.o" main.lsf 2>/dev/null; then
     if [[ "$(uname)" == "Darwin" ]]; then
         sed -i '' "s|Object src/${basename}.o|Object asm/${basename}.o|" main.lsf
     else
@@ -31,9 +35,12 @@ if grep -q "Object src/${basename}.o" main.lsf 2>/dev/null; then
     echo "Reverted main.lsf: src/${basename}.o → asm/${basename}.o"
 fi
 
-# Remove generated files
+# Remove generated files (restore tracked ones)
 for f in "src/${basename}.c" "include/${basename}.h"; do
-    if [[ -f "$f" ]]; then
+    if git ls-files --error-unmatch "$f" >/dev/null 2>&1; then
+        git checkout HEAD -- "$f"
+        echo "Restored $f from HEAD"
+    elif [[ -f "$f" ]]; then
         rm -f "$f"
         echo "Removed $f"
     fi

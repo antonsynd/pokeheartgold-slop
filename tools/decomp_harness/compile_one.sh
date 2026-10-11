@@ -17,6 +17,11 @@
 #
 # Usage:
 #   compile_one.sh <src/name.c | src/subdir/name.c> [--game soulsilver] [--no-objdiff]
+#                  [--ref <obj>]
+#
+# --ref objdiffs against <obj> instead of build/<game>.us/asm/<name>.o; use it
+# for a file that has no asm twin, e.g. a saved copy of an hgify-generated
+# src/<name>.o before rewriting its inline asm (SPLIT_TARGETS.md).
 #
 # Default game: heartgold.
 #
@@ -43,6 +48,7 @@ cd "$PROJECT_ROOT"
 # --- arg parse ---
 GAME="heartgold"
 DO_OBJDIFF=1
+REF_OBJ=""
 SRCFILE=""
 while [[ $# -gt 0 ]]; do
     case "$1" in
@@ -52,8 +58,12 @@ while [[ $# -gt 0 ]]; do
             GAME="${1#*=}"; shift ;;
         --no-objdiff)
             DO_OBJDIFF=0; shift ;;
+        --ref)
+            REF_OBJ="${2:-}"; shift 2 ;;
+        --ref=*)
+            REF_OBJ="${1#*=}"; shift ;;
         -h|--help)
-            sed -n '2,30p' "${BASH_SOURCE[0]}" | sed 's/^# \{0,1\}//'; exit 0 ;;
+            sed -n '2,37p' "${BASH_SOURCE[0]}" | sed 's/^# \{0,1\}//'; exit 0 ;;
         -*)
             echo "compile_one: unknown option '$1'" >&2; exit 2 ;;
         *)
@@ -138,7 +148,7 @@ echo "compile_one: compiled OK -> $OUT_O"
 
 # --- objdiff vs committed asm reference (informational) ---
 if [[ "$DO_OBJDIFF" -eq 1 ]]; then
-    ASM_REF="$BUILD_DIR/asm/$BASENAME.o"
+    ASM_REF="${REF_OBJ:-$BUILD_DIR/asm/$BASENAME.o}"
     if [[ -f "$ASM_REF" ]]; then
         echo "compile_one: objdiff vs $ASM_REF"
         python3 tools/decomp_harness/objdiff.py "$ASM_REF" "$OUT_O" --summary || true

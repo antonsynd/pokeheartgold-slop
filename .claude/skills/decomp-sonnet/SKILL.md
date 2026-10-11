@@ -15,6 +15,11 @@ prepares context, reviews the draft, and owns the full build-compare judgment lo
 2. Determine target:
    - If the user specified a file (e.g., `/decomp-sonnet asm/unk_02004A44.s`), use that
    - Otherwise run `./tools/decomp_harness/next_target.sh --info`
+   - **Split file?** If the target is tagged `[SPLIT unit of asm/<base>.s]`, or
+     `python3 tools/decomp_harness/split_units.py base <target>` prints a path, it is a piece of
+     an hgify-split file: follow `tools/decomp_harness/SPLIT_TARGETS.md` alongside this skill
+     (claim `asm/<base>.s`, not the unit; a `src/<base>_NN.c` unit is rewritten in place, with
+     no `main.lsf` change)
    - **Claim it:** `python3 tools/decomp_harness/claim.py open asm/<basename>.s` opens a
      `Claim asm/<basename>.s` issue (or reuses your own) and prints its number; the commit
      that lands the file says `Closes #<N>`. If it warns that someone else claimed the file
