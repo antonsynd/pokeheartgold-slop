@@ -124,11 +124,14 @@ def linked_asm_functions(root, objects):
     return total
 
 
-def stacked_bar(base_pct, added_pct, width=BAR_WIDTH):
-    """Two-segment bar: upstream work (█), then this fork's additions (▓)."""
+def stacked_bar(base_pct, added_pct, generated_pct=0, width=BAR_WIDTH):
+    """Upstream work (█), this fork's readable additions (▓), its generated additions (▒)."""
     base = min(max(round(base_pct / 100 * width), 0), width)
-    total = min(max(round((base_pct + added_pct) / 100 * width), base), width)
-    return "█" * base + "▓" * (total - base) + "░" * (width - total)
+    added = min(max(round((base_pct + added_pct) / 100 * width), base), width)
+    total = min(
+        max(round((base_pct + added_pct + generated_pct) / 100 * width), added), width
+    )
+    return "█" * base + "▓" * (added - base) + "▒" * (total - added) + "░" * (width - total)
 
 
 def fmt(n):
@@ -182,6 +185,11 @@ def generate_progress(root):
                 for o in src_objs
                 if is_fork(o)
             )
+            # Matching C that hgify generated from Ghidra drafts and nobody has
+            # rewritten readably yet. It has no NONMATCHING blocks, so it all matches.
+            gen_in_c = sum(
+                (generated_counts(root, o) or (0,))[0] for o in src_objs if is_fork(o)
+            )
         else:
             upstream_stems = {
                 Path(f["file"]).stem
@@ -193,6 +201,7 @@ def generate_progress(root):
                 return Path(obj).stem not in upstream_stems
 
             fork_in_c = ft.get("matched", 0) + partial_fns
+            gen_in_c = 0
 
         fork_nm = sum(n for o, n in nm_by_obj.items() if is_fork(o))
         up_nm = nm - fork_nm
@@ -200,6 +209,9 @@ def generate_progress(root):
         up_in_c = max(total_in_c - fork_in_c, 0)
         up_matching = max(up_in_c - up_nm, 0)
         total_matching = up_matching + fork_matching
+        # The readable share of the fork's additions; generated C is shown apart.
+        read_in_c = fork_in_c - gen_in_c
+        read_matching = fork_matching - gen_in_c
 
         def pct(n):
             return n / total_rom_fns * 100
@@ -211,25 +223,34 @@ def generate_progress(root):
             "(█) from what this fork has added on top (▓). The additions are "
             "LLM-assisted and have **not** been reviewed by pret."
         )
+        if gen_in_c:
+            lines.append("")
+            lines.append(
+                "Of the fork's additions, ▒ is C generated mechanically from "
+                "Ghidra drafts. It matches byte for byte, but still reads like "
+                "decompiler output (raw offsets, `undefined4`, `param_1`) and "
+                "is waiting to be rewritten readably."
+            )
         lines.append("")
         lines.append("```")
         lines.append(
             f"Functions in C (of ~{total_rom_fns // 1000}k total ROM functions)"
         )
         lines.append(
-            f"  {stacked_bar(pct(up_in_c), pct(fork_in_c))}  "
+            f"  {stacked_bar(pct(up_in_c), pct(read_in_c), pct(gen_in_c))}  "
             f"~{pct(total_in_c):4.1f}%  (~{fmt(total_in_c)})"
         )
         lines.append("")
         lines.append("Functions fully matching (byte-identical to retail)")
         lines.append(
-            f"  {stacked_bar(pct(up_matching), pct(fork_matching))}  "
+            f"  {stacked_bar(pct(up_matching), pct(read_matching), pct(gen_in_c))}  "
             f"~{pct(total_matching):4.1f}%  (~{fmt(total_matching)})"
         )
         lines.append("")
-        lines.append(
-            "  █ pret/pokeheartgold   ▓ added in this fork   ░ not yet in C"
-        )
+        legend = "  █ pret/pokeheartgold   ▓ added in this fork"
+        if gen_in_c:
+            legend += "   ▒ generated, not yet readable"
+        lines.append(legend + "   ░ not yet in C")
         lines.append("```")
         lines.append("")
 
@@ -240,9 +261,14 @@ def generate_progress(root):
             f"~{fmt(up_matching)} | {up_nm} |"
         )
         lines.append(
-            f"| ▓ Added in this fork (LLM-assisted) | {fmt(fork_in_c)} | "
-            f"{fmt(fork_matching)} | {fork_nm} |"
+            f"| ▓ Added in this fork (LLM-assisted) | {fmt(read_in_c)} | "
+            f"{fmt(read_matching)} | {fork_nm} |"
         )
+        if gen_in_c:
+            lines.append(
+                f"| ▒ Added in this fork, generated from Ghidra drafts | "
+                f"{fmt(gen_in_c)} | {fmt(gen_in_c)} | 0 |"
+            )
         lines.append(
             f"| Total | ~{fmt(total_in_c)} | ~{fmt(total_matching)} | {nm} |"
         )
