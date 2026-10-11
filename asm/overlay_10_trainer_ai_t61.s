@@ -1,0 +1,96 @@
+	.include "asm/macros.inc"
+	.include "overlay_10.inc"
+	.include "global.inc"
+	.public ov10_0221DBA4
+	.extern ov10_0221EEF0
+	.extern ov10_0221EF24
+	.extern ov10_0221EF34
+
+	.text
+
+	.text
+	thumb_func_start ov10_0221DBA4
+ov10_0221DBA4: ; 0x0221DBA4
+	push {r3, r4, r5, r6, r7, lr}
+	add r5, r1, #0
+	add r0, r5, #0
+	mov r1, #1
+	bl ov10_0221EF24
+	add r0, r5, #0
+	bl ov10_0221EEF0
+	add r6, r0, #0
+	add r0, r5, #0
+	bl ov10_0221EEF0
+	add r4, r0, #0
+	add r0, r5, #0
+	bl ov10_0221EEF0
+	lsl r1, r6, #0x18
+	add r7, r0, #0
+	add r0, r5, #0
+	lsr r1, r1, #0x18
+	bl ov10_0221EF34
+	cmp r6, #0
+	beq _0221DC0C
+	cmp r6, #1
+	bne _0221DC3C
+	mov r2, #0xc0
+	mul r2, r0
+	add r0, r5, r2
+	ldr r2, _0221DC40 ; =0x000003DE
+	ldr r3, _0221DC44 ; =0x00002D4C
+	mov r1, #0
+_0221DBE6:
+	ldrh r6, [r0, r3]
+	cmp r6, #0
+	beq _0221DBF6
+	lsl r6, r6, #4
+	add r6, r5, r6
+	ldrh r6, [r6, r2]
+	cmp r4, r6
+	beq _0221DBFE
+_0221DBF6:
+	add r1, r1, #1
+	add r0, r0, #2
+	cmp r1, #4
+	blt _0221DBE6
+_0221DBFE:
+	cmp r1, #4
+	bge _0221DC3C
+	add r0, r5, #0
+	add r1, r7, #0
+	bl ov10_0221EF24
+	pop {r3, r4, r5, r6, r7, pc}
+_0221DC0C:
+	ldr r2, _0221DC40 ; =0x000003DE
+	lsl r0, r0, #3
+	add r3, r2, #0
+	mov r1, #0
+	add r0, r5, r0
+	sub r3, #0x6e
+_0221DC18:
+	ldrh r6, [r0, r3]
+	cmp r6, #0
+	beq _0221DC28
+	lsl r6, r6, #4
+	add r6, r5, r6
+	ldrh r6, [r6, r2]
+	cmp r4, r6
+	beq _0221DC30
+_0221DC28:
+	add r1, r1, #1
+	add r0, r0, #2
+	cmp r1, #4
+	blt _0221DC18
+_0221DC30:
+	cmp r1, #4
+	bge _0221DC3C
+	add r0, r5, #0
+	add r1, r7, #0
+	bl ov10_0221EF24
+_0221DC3C:
+	pop {r3, r4, r5, r6, r7, pc}
+	nop
+_0221DC40: .word 0x000003DE
+_0221DC44: .word 0x00002D4C
+	thumb_func_end ov10_0221DBA4
+

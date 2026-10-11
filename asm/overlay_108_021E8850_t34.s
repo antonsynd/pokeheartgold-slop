@@ -1,0 +1,570 @@
+	.include "asm/macros.inc"
+	.include "overlay_108.inc"
+	.include "global.inc"
+	.public ov108_021E9F94
+	.public ov108_021EA040
+	.public ov108_021EA260
+	.public ov108_021EA2EC
+	.public ov108_021EA334
+	.extern ov108_021EA52C
+
+	.text
+
+	.text
+	thumb_func_start ov108_021E9F94
+ov108_021E9F94: ; 0x021E9F94
+	push {r4, r5, lr}
+	sub sp, #0x1c
+	add r5, r0, #0
+	cmp r1, #0
+	bne _021E9FA2
+	ldr r0, _021EA034 ; =0x00000524
+	b _021E9FA4
+_021E9FA2:
+	ldr r0, _021EA038 ; =0x0000052C
+_021E9FA4:
+	ldr r4, [r5, r0]
+	mov r1, #5
+	str r1, [sp]
+	mov r0, #0x20
+	str r0, [sp, #4]
+	mov r0, #0xe
+	str r0, [sp, #8]
+	mov r0, #0x11
+	str r0, [sp, #0xc]
+	ldr r0, _021EA03C ; =0x00000438
+	mov r2, #0
+	ldr r0, [r5, r0]
+	add r3, r2, #0
+	bl FillBgTilemapRect
+	mov r0, #5
+	str r0, [sp]
+	mov r0, #0x20
+	str r0, [sp, #4]
+	mov r0, #0xe
+	str r0, [sp, #8]
+	mov r0, #0x11
+	str r0, [sp, #0xc]
+	ldr r0, _021EA03C ; =0x00000438
+	mov r2, #0
+	ldr r0, [r5, r0]
+	mov r1, #6
+	add r3, r2, #0
+	bl FillBgTilemapRect
+	mov r0, #0x20
+	str r0, [sp]
+	mov r0, #0x18
+	str r0, [sp, #4]
+	add r0, r4, #0
+	add r0, #0xc
+	mov r2, #0
+	str r0, [sp, #8]
+	str r2, [sp, #0xc]
+	str r2, [sp, #0x10]
+	ldrh r0, [r4]
+	mov r1, #7
+	add r3, r2, #0
+	lsl r0, r0, #0x15
+	lsr r0, r0, #0x18
+	str r0, [sp, #0x14]
+	ldrh r0, [r4, #2]
+	lsl r0, r0, #0x15
+	lsr r0, r0, #0x18
+	str r0, [sp, #0x18]
+	ldr r0, _021EA03C ; =0x00000438
+	ldr r0, [r5, r0]
+	bl CopyToBgTilemapRect
+	ldr r0, _021EA03C ; =0x00000438
+	mov r1, #5
+	ldr r0, [r5, r0]
+	bl ScheduleBgTilemapBufferTransfer
+	ldr r0, _021EA03C ; =0x00000438
+	mov r1, #6
+	ldr r0, [r5, r0]
+	bl ScheduleBgTilemapBufferTransfer
+	ldr r0, _021EA03C ; =0x00000438
+	mov r1, #7
+	ldr r0, [r5, r0]
+	bl ScheduleBgTilemapBufferTransfer
+	add sp, #0x1c
+	pop {r4, r5, pc}
+	nop
+_021EA034: .word 0x00000524
+_021EA038: .word 0x0000052C
+_021EA03C: .word 0x00000438
+	thumb_func_end ov108_021E9F94
+
+	thumb_func_start ov108_021EA040
+ov108_021EA040: ; 0x021EA040
+	push {r4, r5, r6, r7, lr}
+	sub sp, #0x24
+	add r5, r0, #0
+	mov r0, #5
+	str r0, [sp]
+	mov r0, #0x20
+	str r0, [sp, #4]
+	mov r0, #0xe
+	str r0, [sp, #8]
+	mov r0, #0x11
+	str r0, [sp, #0xc]
+	ldr r0, _021EA244 ; =0x00000438
+	mov r2, #0
+	ldr r0, [r5, r0]
+	mov r1, #6
+	add r3, r2, #0
+	bl FillBgTilemapRect
+	ldr r0, _021EA248 ; =0x00000454
+	mov r4, #0
+	add r7, r5, r0
+_021EA06A:
+	mov r0, #0x43
+	lsl r0, r0, #4
+	ldrb r1, [r5, r0]
+	mov r0, #6
+	mul r0, r1
+	add r0, r4, r0
+	str r0, [sp, #0x1c]
+	add r0, r4, #6
+	lsl r0, r0, #4
+	str r0, [sp, #0x20]
+	add r0, r7, r0
+	mov r1, #0
+	bl FillWindowPixelBuffer
+	ldr r0, _021EA24C ; =0x0000042D
+	ldrb r1, [r5, r0]
+	ldr r0, [sp, #0x1c]
+	cmp r0, r1
+	blt _021EA09A
+	ldr r0, [sp, #0x20]
+	add r0, r7, r0
+	bl ScheduleWindowCopyToVram
+	b _021EA168
+_021EA09A:
+	ldr r1, [sp, #0x1c]
+	add r0, r5, #0
+	lsl r1, r1, #0x18
+	lsr r1, r1, #0x18
+	bl ov108_021EA52C
+	cmp r0, #0
+	ble _021EA0AE
+	mov r0, #1
+	b _021EA0B0
+_021EA0AE:
+	mov r0, #0
+_021EA0B0:
+	lsl r0, r0, #0x18
+	lsr r1, r0, #0x18
+	ldr r0, _021EA250 ; =0x0000051C
+	lsl r1, r1, #0x1c
+	ldr r0, [r5, r0]
+	mov r2, #0x10
+	str r2, [sp]
+	mov r2, #4
+	str r2, [sp, #4]
+	add r2, r0, #0
+	add r2, #0xc
+	str r2, [sp, #8]
+	lsr r1, r1, #0x18
+	str r1, [sp, #0xc]
+	mov r1, #0
+	str r1, [sp, #0x10]
+	ldrh r1, [r0]
+	lsr r3, r4, #0x1f
+	lsl r6, r4, #0x1f
+	lsl r1, r1, #0x15
+	lsr r1, r1, #0x18
+	str r1, [sp, #0x14]
+	ldrh r0, [r0, #2]
+	sub r6, r6, r3
+	mov r2, #0x1f
+	ror r6, r2
+	add r2, r3, r6
+	add r3, r4, r3
+	lsl r0, r0, #0x15
+	asr r3, r3, #1
+	lsr r0, r0, #0x18
+	add r6, r3, #1
+	str r0, [sp, #0x18]
+	ldr r0, _021EA244 ; =0x00000438
+	lsl r3, r6, #2
+	add r3, r6, r3
+	lsl r2, r2, #0x1c
+	lsl r3, r3, #0x18
+	ldr r0, [r5, r0]
+	mov r1, #6
+	lsr r2, r2, #0x18
+	lsr r3, r3, #0x18
+	bl CopyToBgTilemapRect
+	mov r1, #0xcd
+	ldr r2, [sp, #0x1c]
+	lsl r1, r1, #2
+	lsl r3, r2, #2
+	mov r0, #0xc3
+	lsl r0, r0, #2
+	ldr r1, [r5, r1]
+	add r2, r2, r3
+	ldrb r1, [r1, r2]
+	mov r2, #0xc6
+	lsl r2, r2, #2
+	ldr r0, [r5, r0]
+	ldr r2, [r5, r2]
+	add r1, #0xe
+	bl ReadMsgDataIntoString
+	mov r1, #0xc6
+	lsl r1, r1, #2
+	ldr r1, [r5, r1]
+	mov r0, #4
+	mov r2, #0
+	bl FontID_String_GetWidth
+	mov r1, #0x70
+	sub r3, r1, r0
+	mov r0, #0
+	str r0, [sp]
+	mov r0, #0xff
+	str r0, [sp, #4]
+	ldr r0, _021EA254 ; =0x00010200
+	mov r2, #0xc6
+	str r0, [sp, #8]
+	mov r0, #0
+	str r0, [sp, #0xc]
+	ldr r0, [sp, #0x20]
+	lsl r2, r2, #2
+	lsr r6, r3, #0x1f
+	add r6, r3, r6
+	ldr r2, [r5, r2]
+	add r0, r7, r0
+	mov r1, #4
+	asr r3, r6, #1
+	bl AddTextPrinterParameterizedWithColor
+	ldr r0, [sp, #0x20]
+	add r0, r7, r0
+	bl ScheduleWindowCopyToVram
+_021EA168:
+	add r4, r4, #1
+	cmp r4, #6
+	bge _021EA170
+	b _021EA06A
+_021EA170:
+	ldr r0, _021EA258 ; =0x00000484
+	mov r1, #0
+	add r0, r5, r0
+	bl FillWindowPixelBuffer
+	mov r3, #1
+	str r3, [sp]
+	mov r2, #0x43
+	mov r0, #0x31
+	str r3, [sp, #4]
+	lsl r2, r2, #4
+	ldrb r2, [r5, r2]
+	lsl r0, r0, #4
+	ldr r0, [r5, r0]
+	mov r1, #0
+	add r2, r2, #1
+	bl BufferIntegerAsString
+	mov r1, #1
+	str r1, [sp]
+	mov r0, #0x31
+	ldr r2, _021EA25C ; =0x0000042E
+	str r1, [sp, #4]
+	lsl r0, r0, #4
+	ldrb r2, [r5, r2]
+	ldr r0, [r5, r0]
+	add r3, r1, #0
+	bl BufferIntegerAsString
+	mov r2, #0x31
+	lsl r2, r2, #4
+	add r1, r2, #4
+	ldr r0, [r5, r2]
+	add r2, #0x1c
+	ldr r1, [r5, r1]
+	ldr r2, [r5, r2]
+	bl StringExpandPlaceholders
+	mov r1, #0
+	mov r2, #0xc5
+	str r1, [sp]
+	mov r0, #0xff
+	str r0, [sp, #4]
+	mov r0, #0xc1
+	lsl r0, r0, #0xa
+	str r0, [sp, #8]
+	ldr r0, _021EA258 ; =0x00000484
+	str r1, [sp, #0xc]
+	lsl r2, r2, #2
+	ldr r2, [r5, r2]
+	add r0, r5, r0
+	add r3, r1, #0
+	bl AddTextPrinterParameterizedWithColor
+	ldr r0, _021EA258 ; =0x00000484
+	add r0, r5, r0
+	bl ScheduleWindowCopyToVram
+	ldr r0, _021EA244 ; =0x00000438
+	mov r1, #5
+	ldr r0, [r5, r0]
+	bl ScheduleBgTilemapBufferTransfer
+	ldr r0, _021EA244 ; =0x00000438
+	mov r1, #6
+	ldr r0, [r5, r0]
+	bl ScheduleBgTilemapBufferTransfer
+	mov r0, #0x43
+	lsl r0, r0, #4
+	ldrb r1, [r5, r0]
+	cmp r1, #0
+	bne _021EA20E
+	add r0, #0x1c
+	ldr r0, [r5, r0]
+	mov r1, #7
+	bl Sprite_SetAnimCtrlSeq
+	b _021EA218
+_021EA20E:
+	add r0, #0x1c
+	ldr r0, [r5, r0]
+	mov r1, #5
+	bl Sprite_SetAnimCtrlSeq
+_021EA218:
+	mov r0, #0x43
+	lsl r0, r0, #4
+	sub r1, r0, #2
+	ldrb r1, [r5, r1]
+	ldrb r2, [r5, r0]
+	sub r1, r1, #1
+	cmp r2, r1
+	bne _021EA236
+	add r0, #0x20
+	ldr r0, [r5, r0]
+	mov r1, #0xa
+	bl Sprite_SetAnimCtrlSeq
+	add sp, #0x24
+	pop {r4, r5, r6, r7, pc}
+_021EA236:
+	add r0, #0x20
+	ldr r0, [r5, r0]
+	mov r1, #8
+	bl Sprite_SetAnimCtrlSeq
+	add sp, #0x24
+	pop {r4, r5, r6, r7, pc}
+	.balign 4, 0
+_021EA244: .word 0x00000438
+_021EA248: .word 0x00000454
+_021EA24C: .word 0x0000042D
+_021EA250: .word 0x0000051C
+_021EA254: .word 0x00010200
+_021EA258: .word 0x00000484
+_021EA25C: .word 0x0000042E
+	thumb_func_end ov108_021EA040
+
+	thumb_func_start ov108_021EA260
+ov108_021EA260: ; 0x021EA260
+	push {r3, r4, r5, lr}
+	sub sp, #0x10
+	add r4, r0, #0
+	ldr r0, _021EA2DC ; =0x00000494
+	mov r1, #0
+	add r0, r4, r0
+	bl FillWindowPixelBuffer
+	ldr r3, _021EA2E0 ; =0x00000432
+	mov r2, #0xc3
+	lsl r2, r2, #2
+	ldrb r5, [r4, r3]
+	add r1, r2, #0
+	add r1, #0x28
+	lsl r3, r5, #2
+	ldr r0, [r4, r2]
+	add r2, #0xc
+	ldr r1, [r4, r1]
+	add r3, r5, r3
+	ldrb r1, [r1, r3]
+	ldr r2, [r4, r2]
+	add r1, #0xe
+	bl ReadMsgDataIntoString
+	mov r1, #0xc6
+	lsl r1, r1, #2
+	ldr r1, [r4, r1]
+	mov r0, #4
+	mov r2, #0
+	bl FontID_String_GetWidth
+	mov r1, #0x70
+	sub r3, r1, r0
+	mov r1, #0
+	mov r2, #0xc6
+	lsr r5, r3, #0x1f
+	add r5, r3, r5
+	str r1, [sp]
+	mov r0, #0xff
+	str r0, [sp, #4]
+	ldr r0, _021EA2E4 ; =0x00010200
+	lsl r2, r2, #2
+	str r0, [sp, #8]
+	str r1, [sp, #0xc]
+	ldr r0, _021EA2DC ; =0x00000494
+	ldr r2, [r4, r2]
+	add r0, r4, r0
+	mov r1, #4
+	asr r3, r5, #1
+	bl AddTextPrinterParameterizedWithColor
+	ldr r0, _021EA2DC ; =0x00000494
+	add r0, r4, r0
+	bl ScheduleWindowCopyToVram
+	ldr r0, _021EA2E8 ; =0x00000484
+	add r0, r4, r0
+	bl ClearWindowTilemapAndScheduleTransfer
+	add sp, #0x10
+	pop {r3, r4, r5, pc}
+	nop
+_021EA2DC: .word 0x00000494
+_021EA2E0: .word 0x00000432
+_021EA2E4: .word 0x00010200
+_021EA2E8: .word 0x00000484
+	thumb_func_end ov108_021EA260
+
+	thumb_func_start ov108_021EA2EC
+ov108_021EA2EC: ; 0x021EA2EC
+	push {r3, r4, r5, lr}
+	add r4, r0, #0
+	cmp r1, #6
+	blo _021EA2FC
+	mov r3, #0xe0
+	mov r2, #0xb4
+	mov r5, #1
+	b _021EA31A
+_021EA2FC:
+	lsr r3, r1, #0x1f
+	lsl r2, r1, #0x1f
+	sub r2, r2, r3
+	mov r0, #0x1f
+	ror r2, r0
+	add r0, r3, r2
+	lsl r0, r0, #0x17
+	asr r3, r0, #0x10
+	lsr r0, r1, #1
+	add r1, r0, #1
+	mov r0, #0x28
+	mul r0, r1
+	lsl r0, r0, #0x10
+	asr r2, r0, #0x10
+	mov r5, #0
+_021EA31A:
+	ldr r0, _021EA330 ; =0x00000444
+	add r1, r3, #0
+	ldr r0, [r4, r0]
+	bl Sprite_SetPositionXY
+	ldr r0, _021EA330 ; =0x00000444
+	add r1, r5, #0
+	ldr r0, [r4, r0]
+	bl Sprite_SetAnimCtrlSeq
+	pop {r3, r4, r5, pc}
+	.balign 4, 0
+_021EA330: .word 0x00000444
+	thumb_func_end ov108_021EA2EC
+
+	thumb_func_start ov108_021EA334
+ov108_021EA334: ; 0x021EA334
+	push {r4, r5, r6, lr}
+	sub sp, #0x10
+	add r5, r0, #0
+	ldr r0, _021EA40C ; =0x00000454
+	mov r6, #0
+	add r4, r1, #0
+	add r0, r5, r0
+	add r1, r6, #0
+	bl FillWindowPixelBuffer
+	cmp r4, #0
+	beq _021EA352
+	cmp r4, #2
+	beq _021EA382
+	b _021EA3A4
+_021EA352:
+	ldr r1, _021EA410 ; =0x00000433
+	mov r2, #0xc3
+	lsl r2, r2, #2
+	ldrb r1, [r5, r1]
+	ldr r0, [r5, r2]
+	add r2, #8
+	ldr r2, [r5, r2]
+	add r1, #0xe
+	bl ReadMsgDataIntoString
+	add r1, r6, #0
+	mov r2, #0x31
+	str r1, [sp]
+	mov r0, #2
+	lsl r2, r2, #4
+	str r0, [sp, #4]
+	ldr r0, [r5, r2]
+	add r2, r2, #4
+	ldr r2, [r5, r2]
+	mov r3, #1
+	bl BufferString
+	mov r6, #1
+	b _021EA3A4
+_021EA382:
+	ldr r0, _021EA414 ; =0x00000435
+	ldrb r2, [r5, r0]
+	cmp r2, #0
+	bne _021EA38E
+	mov r4, #3
+	b _021EA3A4
+_021EA38E:
+	mov r0, #1
+	str r0, [sp]
+	str r0, [sp, #4]
+	mov r0, #0x31
+	lsl r0, r0, #4
+	ldr r0, [r5, r0]
+	add r1, r6, #0
+	mov r3, #2
+	bl BufferIntegerAsString
+	mov r6, #1
+_021EA3A4:
+	cmp r6, #0
+	beq _021EA3CE
+	mov r2, #0xc3
+	lsl r2, r2, #2
+	ldr r0, [r5, r2]
+	add r2, #8
+	ldr r2, [r5, r2]
+	add r1, r4, #0
+	bl ReadMsgDataIntoString
+	mov r2, #0x31
+	lsl r2, r2, #4
+	add r1, r2, #0
+	ldr r0, [r5, r2]
+	add r1, #8
+	add r2, r2, #4
+	ldr r1, [r5, r1]
+	ldr r2, [r5, r2]
+	bl StringExpandPlaceholders
+	b _021EA3DE
+_021EA3CE:
+	mov r2, #0xc3
+	lsl r2, r2, #2
+	ldr r0, [r5, r2]
+	add r2, #0xc
+	ldr r2, [r5, r2]
+	add r1, r4, #0
+	bl ReadMsgDataIntoString
+_021EA3DE:
+	mov r1, #0
+	str r1, [sp]
+	mov r0, #0xff
+	str r0, [sp, #4]
+	mov r0, #0xc1
+	lsl r0, r0, #0xa
+	str r0, [sp, #8]
+	mov r2, #0xc6
+	ldr r0, _021EA40C ; =0x00000454
+	str r1, [sp, #0xc]
+	lsl r2, r2, #2
+	ldr r2, [r5, r2]
+	add r0, r5, r0
+	add r3, r1, #0
+	bl AddTextPrinterParameterizedWithColor
+	ldr r0, _021EA40C ; =0x00000454
+	add r0, r5, r0
+	bl ScheduleWindowCopyToVram
+	add sp, #0x10
+	pop {r4, r5, r6, pc}
+	nop
+_021EA40C: .word 0x00000454
+_021EA410: .word 0x00000433
+_021EA414: .word 0x00000435
+	thumb_func_end ov108_021EA334
+
