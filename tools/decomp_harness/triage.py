@@ -62,6 +62,8 @@ WEIGHTS = {
     "arm_function": 25.0,
     "blocker_gated": 300.0,
     "special_section": 500.0,
+    # what an hgify split left in asm: the functions the scripts could not match, so after untouched files
+    "split_remainder": 100000.0,
 }
 
 
@@ -149,6 +151,7 @@ def build_report(ledger):
             + WEIGHTS["arm_function"] * arm_fns
             + WEIGHTS["blocker_gated"] * sum(gate_weights.get(bid, 1.0) for bid in gates)
             + WEIGHTS["special_section"] * len(special)
+            + (WEIGHTS["split_remainder"] if r.get("split") == "hgify" else 0)
         )
         copyprop = [f["name"] for f in r.get("functions", []) if f.get("copyprop_entry")]
         rows.append({
