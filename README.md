@@ -26,20 +26,23 @@ Setup lives in [INSTALL.md](INSTALL.md).
 
 Most of the decompiled code here is the work of the [pret/pokeheartgold](https://github.com/pret/pokeheartgold) contributors, merged from upstream. The bars separate that baseline (█) from what this fork has added on top (▓). The additions are LLM-assisted and have **not** been reviewed by pret.
 
+Of the fork's additions, ▒ is C generated mechanically from Ghidra drafts. It matches byte for byte, but still reads like decompiler output (raw offsets, `undefined4`, `param_1`) and is waiting to be rewritten readably.
+
 ```
 Functions in C (of ~29k total ROM functions)
-  █████████████████▓▓▓▓▓▓▓▓░░░░░░░░░░░░░░░░░░░░░░░░░  ~50.2%  (~14,797)
+  █████████████████▓▓▓▓▓▒▒▒░░░░░░░░░░░░░░░░░░░░░░░░░  ~50.2%  (~14,797)
 
 Functions fully matching (byte-identical to retail)
-  █████████████████▓▓▓▓▓▓▓▓░░░░░░░░░░░░░░░░░░░░░░░░░  ~49.9%  (~14,710)
+  █████████████████▓▓▓▓▓▒▒▒░░░░░░░░░░░░░░░░░░░░░░░░░  ~49.9%  (~14,710)
 
-  █ pret/pokeheartgold   ▓ added in this fork   ░ not yet in C
+  █ pret/pokeheartgold   ▓ added in this fork   ▒ generated, not yet readable   ░ not yet in C
 ```
 
 | | Functions in C | Fully matching | NONMATCHING blocks |
 |---|---:|---:|---:|
 | █ From pret/pokeheartgold | ~10,209 | ~10,205 | 4 |
-| ▓ Added in this fork (LLM-assisted) | 4,588 | 4,505 | 83 |
+| ▓ Added in this fork (LLM-assisted) | 2,864 | 2,781 | 83 |
+| ▒ Added in this fork, generated from Ghidra drafts | 1,724 | 1,724 | 0 |
 | Total | ~14,797 | ~14,710 | 87 |
 
 The fork's additions are counted from the files it decompiled. pret's figures (~) are derived from an estimated ~29,500 total ROM functions, because upstream doesn't keep the asm for decompiled files. A NONMATCHING block is a function with a C version kept for reference that is still linked from handwritten asm. It counts toward *Functions in C* but not *Fully matching*.
