@@ -40,8 +40,8 @@ Functions fully matching (byte-identical to retail)
 
 | | Functions in C | Fully matching | NONMATCHING blocks |
 |---|---:|---:|---:|
-| █ From pret/pokeheartgold | ~10,209 | ~10,205 | 4 |
-| ▓ Added in this fork (LLM-assisted) | 2,864 | 2,781 | 83 |
+| █ From pret/pokeheartgold | ~10,206 | ~10,206 | 0 |
+| ▓ Added in this fork (LLM-assisted) | 2,867 | 2,780 | 87 |
 | ▒ Added in this fork, generated from Ghidra drafts | 1,724 | 1,724 | 0 |
 | Total | ~14,797 | ~14,710 | 87 |
 
