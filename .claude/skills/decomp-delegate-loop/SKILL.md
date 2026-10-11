@@ -14,8 +14,11 @@ completely using the `/decomp-delegate` workflow — Qwen drafts, Claude judges.
    If it prints a claim WARNING (someone else claimed the file or has a PR touching it),
    carry on anyway (claims can go stale) and mention it in this iteration's report.
    If it is tagged `[SPLIT unit of asm/<base>.s]`, follow `tools/decomp_harness/SPLIT_TARGETS.md`
-   alongside the workflow below: claim `asm/<base>.s` rather than the unit, and a
-   `src/<base>_NN.c` unit is rewritten in place (no `main.lsf` flip).
+   alongside the workflow below. It overrides these steps: claim `asm/<base>.s`, not the unit,
+   and never `claim.py close` it after one unit fails; the commit says `Refs #<N>`, and
+   `Closes #<N>` only once `split_units.py units asm/<base>.s` prints nothing; skip
+   `twins.py prune`; a `src/<base>_NN.c` unit is rewritten in place (no `main.lsf` flip;
+   `compile_one.sh --ref`).
 2. If output is `ALL_DONE` — report completion and **stop the loop** (do not schedule another wakeup)
 3. Otherwise execute the full `/decomp-delegate` workflow for that file:
 

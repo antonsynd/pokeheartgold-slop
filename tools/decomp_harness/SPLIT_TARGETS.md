@@ -24,10 +24,17 @@ tags them `[SPLIT unit of asm/<base>.s]`:
 | `asm/<base>_NN.s` | a linked asm slice | the usual one, below |
 | `src/<base>_NN.c` | a generated file with inline asm | rewrite in place, below |
 
+Data-only slices (`asm/<base>_data.s`, and slices without functions) are not
+units. The generated C extern-references that data, so moving it to C changes
+the whole split file, not one piece of it. Leave them in asm.
+
 `python3 tools/decomp_harness/split_units.py base <path>` tells you whether a
 path belongs to a split file (prints `asm/<base>.s`, else exits 1);
-`split_units.py units asm/<base>.s` lists the pending units and
-`split_units.py funcs <unit>` the functions still in asm in one.
+`split_units.py units asm/<base>.s` lists the pending units (leaving out those
+recorded completed or failed in progress.json) and `split_units.py funcs <unit>`
+the functions still in asm in one. The ledger may list a split file as one row
+or each slice as its own row; either way `next_target.sh` serves the split
+file's next pending unit.
 
 These are the functions hgify's scripts could **not** match, so expect them to
 be harder than the queue's untouched files. The draft's behaviour is still right.
@@ -35,8 +42,9 @@ be harder than the queue's untouched files. The draft's behaviour is still right
 ## Common to both
 
 - **Claim the original file**, not the unit: `claim.py open asm/<base>.s`. One
-  claim covers all its units. Unit commits say `Refs #N`; the commit that lands
-  the last unit (`split_units.py units` prints nothing afterwards) says `Closes #N`.
+  claim covers all its units. Unit commits say `Refs #N`; the commit after which
+  `split_units.py units asm/<base>.s` prints nothing says `Closes #N`. Don't
+  `claim.py close` after a failed unit: the other units are still yours.
 - **Prior knowledge** is keyed by the original file and by function:
   `attempts_log.py query --file asm/<base>.s` (log with that `--file` too), and
   `twins.py func <fn> --show` for each function `split_units.py funcs <unit>`
@@ -45,7 +53,8 @@ be harder than the queue's untouched files. The draft's behaviour is still right
   `next_target.sh` skips). `matched` only when every function in the unit is C;
   otherwise `failed` with a `reason`.
 - **Revert** with `./tools/decomp_harness/revert.sh <unit>`. It restores a
-  tracked generated file from HEAD rather than deleting it.
+  tracked generated file from HEAD rather than deleting it, and removes the
+  unit's build object, so rebuild before saving a new reference.
 - After a unit lands, run `triage.py --rebuild` as usual. Skip `twins.py prune`:
   it only knows `src/<name>.c` for `asm/<name>.s`, not split files.
 
@@ -73,15 +82,17 @@ function with C, in place:
    `cp build/heartgold.us/src/<base>_NN.o /tmp/<base>_NN_ref.o`
 2. For each function `split_units.py funcs src/<base>_NN.c` prints, replace the
    `// clang-format off` / `asm ... { }` / `// clang-format on` block with C and
-   change its marker to `// FUNCTION <fn>: matching C (manual)`. The ledger and
-   the README count functions by those markers (`^// FUNCTION <fn>: matching C`),
-   so a converted function with the old marker is still counted as asm.
+   change its marker to `// FUNCTION <fn>: matching C (manual)`.
+   `tools/update_readme_progress.py` counts functions by those markers
+   (`^// FUNCTION <fn>: matching C`), as does `coverage_ledger.py` once PR #7's
+   split handling lands, so a converted function with the old marker is still
+   counted as asm. `split_units.py funcs` reads them too.
 3. Stay in the file's style (its existing types and local prototypes). The file
    is one TU under `-ipa file`: a new declaration or a changed prototype can move
    the codegen of functions in it that already match.
 4. `tools/decomp_harness/compile_one.sh src/<base>_NN.c --ref /tmp/<base>_NN_ref.o`
    must show **every** function in the object matching, not only the one you
-   converted.
+   converted. (A missing `--ref` file is an error, not a silent compile-only run.)
 5. A function that won't match keeps its asm block. It is already the fallback,
    so no NONMATCHING block is needed, but log the dead ends.
 6. Finalize as usual: full `compare` (ROM SHA1).

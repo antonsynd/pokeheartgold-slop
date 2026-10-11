@@ -140,10 +140,14 @@ with open('$PROGRESS_FILE', 'w') as f:
 
 # --- File discovery ---
 
+# Slices of hgify-split files are left out: they need the split workflow
+# (SPLIT_TARGETS.md), which this loop doesn't drive; next_target.sh serves them.
 get_asm_targets() {
+    local split_pieces
+    split_pieces=$(python3 "$SCRIPT_DIR/split_units.py" pieces)
     grep 'Object asm/' "$PROJECT_ROOT/main.lsf" | sed 's/.*Object asm\///' | sed 's/\.o$//' | while read -r basename; do
         echo "asm/${basename}.s"
-    done
+    done | grep -vxF -f <(printf '%s\n' "$split_pieces")
 }
 
 is_data_only() {

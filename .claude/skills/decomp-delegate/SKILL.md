@@ -17,9 +17,11 @@ integrates it, and owns the full build-compare judgment loop.
    - Otherwise run `./tools/decomp_harness/next_target.sh --info`
    - **Split file?** If the target is tagged `[SPLIT unit of asm/<base>.s]`, or
      `python3 tools/decomp_harness/split_units.py base <target>` prints a path, it is a piece of
-     an hgify-split file: follow `tools/decomp_harness/SPLIT_TARGETS.md` alongside this skill
-     (claim `asm/<base>.s`, not the unit; a `src/<base>_NN.c` unit is rewritten in place, with
-     no `main.lsf` change)
+     an hgify-split file: follow `tools/decomp_harness/SPLIT_TARGETS.md` alongside this skill.
+     It overrides these steps: claim `asm/<base>.s`, not the unit, and never `claim.py close`
+     it after one unit fails; commit with `Refs #<N>`, and `Closes #<N>` only once
+     `split_units.py units asm/<base>.s` prints nothing; skip `twins.py prune`; a
+     `src/<base>_NN.c` unit is rewritten in place (no `main.lsf` flip; `compile_one.sh --ref`)
    - **Claim it:** `python3 tools/decomp_harness/claim.py open asm/<basename>.s` opens a
      `Claim asm/<basename>.s` issue (or reuses your own) and prints its number; the commit
      that lands the file says `Closes #<N>`. If it warns that someone else claimed the file

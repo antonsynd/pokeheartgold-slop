@@ -43,6 +43,7 @@ set -euo pipefail
 # path matches a make build driven from the same CWD.
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd -L)"
 PROJECT_ROOT="$(cd "$SCRIPT_DIR/../.." && pwd -L)"
+CALLER_PWD="$PWD"  # a relative --ref is the caller's, not the repo root's
 cd "$PROJECT_ROOT"
 
 # --- arg parse ---
@@ -59,9 +60,15 @@ while [[ $# -gt 0 ]]; do
         --no-objdiff)
             DO_OBJDIFF=0; shift ;;
         --ref)
-            REF_OBJ="${2:-}"; shift 2 ;;
+            if [[ $# -lt 2 ]]; then
+                echo "compile_one: --ref needs an object file" >&2; exit 2
+            fi
+            REF_OBJ="$2"; shift 2 ;;
         --ref=*)
-            REF_OBJ="${1#*=}"; shift ;;
+            REF_OBJ="${1#*=}"; shift
+            if [[ -z "$REF_OBJ" ]]; then
+                echo "compile_one: --ref needs an object file" >&2; exit 2
+            fi ;;
         -h|--help)
             sed -n '2,37p' "${BASH_SOURCE[0]}" | sed 's/^# \{0,1\}//'; exit 0 ;;
         -*)
@@ -73,6 +80,14 @@ while [[ $# -gt 0 ]]; do
             SRCFILE="$1"; shift ;;
     esac
 done
+
+if [[ -n "$REF_OBJ" ]]; then
+    [[ "$REF_OBJ" == /* ]] || REF_OBJ="$CALLER_PWD/$REF_OBJ"
+    # an explicit reference must exist: a silent compile-only run would read as a pass
+    if [[ ! -f "$REF_OBJ" ]]; then
+        echo "compile_one: --ref object not found: $REF_OBJ" >&2; exit 2
+    fi
+fi
 
 if [[ -z "$SRCFILE" ]]; then
     echo "compile_one: missing <src/name.c> argument" >&2

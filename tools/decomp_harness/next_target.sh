@@ -52,27 +52,23 @@ for asmfile in $targets; do
     if echo "$completed" | grep -qx "$asmfile" 2>/dev/null; then
         continue
     fi
+    rowfile="$asmfile"
     claimfile="$asmfile"
     split_note=""
-    # triage queue can be stale: skip files already flipped to src in main.lsf
-    basename="${asmfile#asm/}"
-    basename="${basename%.s}"
-    if ! grep -q "Object asm/${basename}\.o" "$PROJECT_ROOT/main.lsf" 2>/dev/null; then
-        # ...unless hgify split it: then serve its first pending unit
-        unit=""
-        for u in $(python3 "$SCRIPT_DIR/split_units.py" units "$asmfile"); do
-            if ! echo "$completed" | grep -qx "$u" 2>/dev/null; then
-                unit="$u"
-                break
-            fi
-        done
-        [[ -z "$unit" ]] && continue
-        asmfile="$unit"
-    fi
-    # a unit of a split file (also when the queue lists the slice itself)
     if base=$(python3 "$SCRIPT_DIR/split_units.py" base "$asmfile"); then
+        # An hgify-split file, or one of its slices (the ledger may list either):
+        # serve the split file's next pending unit (progress.json already applied)
+        asmfile=$(python3 "$SCRIPT_DIR/split_units.py" units "$base" | head -n 1)
+        [[ -z "$asmfile" ]] && continue
         claimfile="$base"
         split_note="  [SPLIT unit of $base; see tools/decomp_harness/SPLIT_TARGETS.md]"
+    else
+        # triage queue can be stale: skip files already flipped to src in main.lsf
+        basename="${asmfile#asm/}"
+        basename="${basename%.s}"
+        if ! grep -q "Object asm/${basename}\.o" "$PROJECT_ROOT/main.lsf" 2>/dev/null; then
+            continue
+        fi
     fi
 
     if [[ "$SHOW_INFO" == "true" ]]; then
@@ -89,7 +85,10 @@ for asmfile in $targets; do
             echo "  functions still in asm: $(python3 "$SCRIPT_DIR/split_units.py" funcs "$asmfile" | tr '\n' ' ')"
         fi
         if [[ -f "$TRIAGE_FILE" ]]; then
-            python3 "$SCRIPT_DIR/triage.py" --file "$claimfile" 2>/dev/null || true
+            # a split unit may have no row of its own: fall back to the queue row
+            # (the split file, or another slice of it)
+            python3 "$SCRIPT_DIR/triage.py" --file "$asmfile" 2>/dev/null \
+                || python3 "$SCRIPT_DIR/triage.py" --file "$rowfile" 2>/dev/null || true
         fi
     else
         echo "$asmfile"
