@@ -725,7 +725,7 @@ BattleSetup *ov80_022375D0(void *work, void *fieldCtx) {
         loopCnt = 0;
         if (sides_b > 0) {
             do {
-                while (ov80_02237820(work, (u8)r7)) { }
+                while (ov80_02237820(work, (u8)r7)) {}
                 {
                     u8 monIdx = ov80_022378F8(work, rank);
                     ov80_0222A140(oppBase, tmpMon, (int)monIdx);
@@ -758,7 +758,7 @@ BattleSetup *ov80_022375D0(void *work, void *fieldCtx) {
         tmpMon = AllocMonZeroed(HEAP_ID_FIELD2);
         {
             void *monRow = (u8 *)work + 0x290 + r7x38;
-            while (ov80_02237820(work, (u8)r7)) { }
+            while (ov80_02237820(work, (u8)r7)) {}
             {
                 u8 monIdx = ov80_022378F8(work, rank);
                 ov80_0222A140(monRow, tmpMon, (int)monIdx);

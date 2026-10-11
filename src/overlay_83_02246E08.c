@@ -316,7 +316,7 @@ Sprite *ov83_0224714C(UnkStruct_ov83_02246E08 *ctx, u32 chara, u32 pal, u32 cell
     }
     template.heapID = HEAP_ID_107;
     if (display == 1) {
-        template.position.y += GX_LCD_SIZE_Y * FX32_ONE;
+        template.position.y += (GX_LCD_SIZE_Y * FX32_ONE);
     }
 
     sprite = Sprite_CreateAffine(&template);
