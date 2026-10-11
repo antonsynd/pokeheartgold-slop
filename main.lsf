@@ -288,7 +288,63 @@ Static main
     Object src/unk_02087E70.o
     Object asm/unk_02087FD4.o
     Object src/unk_0208805C.o
-    Object asm/unk_02088288.o
+    Object src/unk_02088288_00.o
+    Object src/unk_02088288_01.o
+    Object asm/unk_02088288_02.o
+    Object asm/unk_02088288_03.o
+    Object asm/unk_02088288_04.o
+    Object src/unk_02088288_05.o
+    Object src/unk_02088288_06.o
+    Object src/unk_02088288_07.o
+    Object src/unk_02088288_08.o
+    Object src/unk_02088288_09.o
+    Object src/unk_02088288_10.o
+    Object src/unk_02088288_11.o
+    Object asm/unk_02088288_12.o
+    Object asm/unk_02088288_13.o
+    Object asm/unk_02088288_14.o
+    Object asm/unk_02088288_15.o
+    Object asm/unk_02088288_16.o
+    Object asm/unk_02088288_17.o
+    Object asm/unk_02088288_18.o
+    Object src/unk_02088288_19.o
+    Object src/unk_02088288_20.o
+    Object asm/unk_02088288_21.o
+    Object src/unk_02088288_22.o
+    Object src/unk_02088288_23.o
+    Object src/unk_02088288_24.o
+    Object src/unk_02088288_25.o
+    Object asm/unk_02088288_26.o
+    Object src/unk_02088288_27.o
+    Object asm/unk_02088288_28.o
+    Object src/unk_02088288_29.o
+    Object asm/unk_02088288_30.o
+    Object asm/unk_02088288_31.o
+    Object src/unk_02088288_32.o
+    Object asm/unk_02088288_33.o
+    Object src/unk_02088288_34.o
+    Object src/unk_02088288_35.o
+    Object src/unk_02088288_36.o
+    Object src/unk_02088288_37.o
+    Object asm/unk_02088288_38.o
+    Object asm/unk_02088288_39.o
+    Object asm/unk_02088288_40.o
+    Object asm/unk_02088288_41.o
+    Object asm/unk_02088288_42.o
+    Object asm/unk_02088288_43.o
+    Object asm/unk_02088288_44.o
+    Object src/unk_02088288_45.o
+    Object asm/unk_02088288_46.o
+    Object src/unk_02088288_47.o
+    Object src/unk_02088288_48.o
+    Object asm/unk_02088288_49.o
+    Object asm/unk_02088288_50.o
+    Object asm/unk_02088288_51.o
+    Object asm/unk_02088288_52.o
+    Object asm/unk_02088288_53.o
+    Object asm/unk_02088288_54.o
+    Object src/unk_02088288_55.o
+    Object asm/unk_02088288_data.o
     Object asm/unk_0208B1AC.o
     Object asm/unk_0208C3E4.o
     Object src/unk_0208DE40.o
