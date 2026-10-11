@@ -38,7 +38,7 @@ This repository includes an opinionated `clang-format` specification to ensure t
 
 - `clang-format@18` or newer
 
-CI's `pr-lint` check runs clang-format 19, and that is the version the tree is formatted with. Newer releases can disagree on code that 19 accepts (clang-format 23 would reformat some upstream files), so if the check flags a file the pre-commit hook left alone, format it with 19 (`pip install clang-format==19.1.7` installs it). To make the pre-commit hook use it, run `git config clangFormat.binary /path/to/clang-format-19`.
+CI's `pr-lint` check runs clang-format 19, and that is the version the tree is formatted with. Newer releases can disagree on code that 19 accepts (clang-format 23 would reformat some upstream files), so if the check flags a file the pre-commit hook left alone, format it with 19 (`pip install clang-format==19.1.7` installs it). To make the pre-commit hook and `./format.sh` use it, run `git config clangFormat.binary /path/to/clang-format-19`.
 
 ### Usage
 
