@@ -1,0 +1,302 @@
+	.include "asm/macros.inc"
+	.include "overlay_37.inc"
+	.include "global.inc"
+	.public ov37_021E65EC
+	.public ov37_021E6818
+	.extern ov37_021E657C
+	.extern ov37_021E6848
+	.extern ov37_021E762C
+	.extern ov37_021E7844
+	.extern ov37_021E78E0
+	.extern ov37_021E7970
+	.extern ov37_021E7A4C
+	.extern ov37_021E7A80
+
+	.text
+
+	.text
+	thumb_func_start ov37_021E65EC
+ov37_021E65EC: ; 0x021E65EC
+	push {r4, r5, r6, r7, lr}
+	sub sp, #0x54
+	str r0, [sp]
+	mov r0, #0
+	str r0, [sp, #4]
+	ldr r0, _021E67E8 ; =ov37_021E7A4C
+	bl TouchscreenHitbox_FindRectAtTouchNew
+	mov r1, #0
+	mvn r1, r1
+	str r0, [sp, #8]
+	cmp r0, r1
+	beq _021E663A
+	cmp r0, #0xb
+	bhi _021E663A
+	add r0, r0, r0
+	add r0, pc
+	ldrh r0, [r0, #6]
+	lsl r0, r0, #0x10
+	asr r0, r0, #0x10
+	add pc, r0
+_021E6616: ; jump table
+	.short _021E662E - _021E6616 - 2 ; case 0
+	.short _021E662E - _021E6616 - 2 ; case 1
+	.short _021E662E - _021E6616 - 2 ; case 2
+	.short _021E662E - _021E6616 - 2 ; case 3
+	.short _021E662E - _021E6616 - 2 ; case 4
+	.short _021E662E - _021E6616 - 2 ; case 5
+	.short _021E662E - _021E6616 - 2 ; case 6
+	.short _021E662E - _021E6616 - 2 ; case 7
+	.short _021E6656 - _021E6616 - 2 ; case 8
+	.short _021E66FA - _021E6616 - 2 ; case 9
+	.short _021E66FA - _021E6616 - 2 ; case 10
+	.short _021E66FA - _021E6616 - 2 ; case 11
+_021E662E:
+	ldr r2, _021E67EC ; =0x00004376
+	ldr r0, [sp]
+	ldrb r1, [r0, r2]
+	ldr r0, [sp, #8]
+	cmp r1, r0
+	bne _021E663C
+_021E663A:
+	b _021E6752
+_021E663C:
+	add r1, r0, #0
+	ldr r0, [sp]
+	strb r1, [r0, r2]
+	mov r1, #0x92
+	lsl r1, r1, #2
+	add r0, r0, r1
+	ldr r1, [sp, #8]
+	bl ov37_021E6818
+	ldr r0, _021E67F0 ; =0x000005DC
+	bl PlaySE
+	b _021E6752
+_021E6656:
+	mov r1, #0xc1
+	ldr r0, [sp]
+	lsl r1, r1, #2
+	ldr r0, [r0, r1]
+	cmp r0, #4
+	bne _021E6752
+	bl sub_0203769C
+	cmp r0, #0
+	bne _021E66BC
+	bl sub_02033250
+	mov r2, #0xc7
+	ldr r1, [sp]
+	lsl r2, r2, #2
+	ldr r1, [r1, r2]
+	cmp r1, r0
+	beq _021E6682
+	ldr r0, _021E67F4 ; =0x000005F2
+	bl PlaySE
+	b _021E6752
+_021E6682:
+	bl sub_02037454
+	bl sub_02038C1C
+	ldr r1, _021E67F8 ; =0x000093F4
+	ldr r0, [sp]
+	mov r2, #2
+	str r2, [r0, r1]
+	mov r1, #1
+	add r2, r1, #0
+	bl ov37_021E762C
+	ldr r0, [sp]
+	mov r1, #5
+	bl ov37_021E7844
+	mov r1, #0x92
+	ldr r0, [sp]
+	lsl r1, r1, #2
+	add r0, r0, r1
+	mov r1, #1
+	bl ov37_021E6848
+	mov r0, #1
+	str r0, [sp, #4]
+	ldr r0, _021E67F0 ; =0x000005DC
+	bl PlaySE
+	b _021E6752
+_021E66BC:
+	ldr r1, _021E67FC ; =0x0000438B
+	ldr r0, [sp]
+	ldrb r0, [r0, r1]
+	cmp r0, #2
+	bne _021E66CE
+	ldr r0, _021E67F4 ; =0x000005F2
+	bl PlaySE
+	b _021E6752
+_021E66CE:
+	mov r1, #1
+	ldr r0, [sp]
+	add r2, r1, #0
+	bl ov37_021E762C
+	ldr r0, [sp]
+	mov r1, #5
+	bl ov37_021E7844
+	mov r1, #0x92
+	ldr r0, [sp]
+	lsl r1, r1, #2
+	add r0, r0, r1
+	mov r1, #1
+	bl ov37_021E6848
+	mov r0, #1
+	str r0, [sp, #4]
+	ldr r0, _021E67F0 ; =0x000005DC
+	bl PlaySE
+	b _021E6752
+_021E66FA:
+	ldr r0, [sp, #8]
+	ldr r5, [sp]
+	str r0, [sp, #0xc]
+	sub r0, #9
+	mov r4, #0
+	mov r7, #0x1e
+	mov r6, #0x1d
+	str r0, [sp, #0xc]
+_021E670A:
+	ldr r0, [sp, #0xc]
+	cmp r0, r4
+	bne _021E671E
+	mov r0, #0x9b
+	lsl r0, r0, #2
+	ldr r0, [r5, r0]
+	add r1, r7, #0
+	bl Sprite_SetAnimCtrlSeq
+	b _021E672A
+_021E671E:
+	mov r0, #0x9b
+	lsl r0, r0, #2
+	ldr r0, [r5, r0]
+	add r1, r6, #0
+	bl Sprite_SetAnimCtrlSeq
+_021E672A:
+	add r4, r4, #1
+	add r7, r7, #2
+	add r5, r5, #4
+	add r6, r6, #2
+	cmp r4, #3
+	blt _021E670A
+	ldr r2, _021E6800 ; =0x00004377
+	ldr r0, [sp]
+	ldrb r1, [r0, r2]
+	ldr r0, [sp, #8]
+	sub r0, #9
+	str r0, [sp, #8]
+	cmp r1, r0
+	beq _021E6752
+	add r1, r0, #0
+	ldr r0, [sp]
+	strb r1, [r0, r2]
+	ldr r0, _021E6804 ; =0x000005E5
+	bl PlaySE
+_021E6752:
+	ldr r0, _021E6808 ; =ov37_021E7970
+	bl TouchscreenHitbox_FindRectAtTouchHeld
+	add r4, r0, #0
+	bl sub_0203769C
+	lsl r1, r0, #2
+	ldr r0, [sp]
+	add r1, r0, r1
+	mov r0, #0x76
+	lsl r0, r0, #2
+	ldr r0, [r1, r0]
+	mov r1, #0
+	bl Sprite_SetDrawFlag
+	mov r0, #0
+	mvn r0, r0
+	cmp r4, r0
+	beq _021E67A8
+	bl sub_0203769C
+	lsl r1, r0, #2
+	ldr r0, [sp]
+	ldr r2, _021E680C ; =gSystem + 0x40
+	add r1, r0, r1
+	mov r0, #0x76
+	lsl r0, r0, #2
+	ldr r0, [r1, r0]
+	ldrh r1, [r2, #0x20]
+	ldrh r2, [r2, #0x22]
+	bl ov37_021E657C
+	bl sub_0203769C
+	lsl r1, r0, #2
+	ldr r0, [sp]
+	add r1, r0, r1
+	mov r0, #0x76
+	lsl r0, r0, #2
+	ldr r0, [r1, r0]
+	mov r1, #1
+	bl Sprite_SetDrawFlag
+_021E67A8:
+	add r0, sp, #0x10
+	mov r1, #4
+	mov r2, #0x40
+	bl sub_02021280
+	cmp r0, #1
+	bne _021E67E2
+	ldr r3, _021E6810 ; =0x00004378
+	ldr r0, [sp]
+	ldr r2, [sp]
+	sub r4, r3, #2
+	ldrb r2, [r2, r4]
+	add r0, r0, r3
+	sub r4, r3, #1
+	ldr r3, [sp]
+	add r1, sp, #0x10
+	ldrb r3, [r3, r4]
+	bl ov37_021E78E0
+	ldr r0, [sp, #4]
+	cmp r0, #1
+	bne _021E67E2
+	ldr r1, _021E6814 ; =0x00004380
+	ldr r0, [sp]
+	ldrb r2, [r0, r1]
+	mov r0, #0x38
+	bic r2, r0
+	ldr r0, [sp]
+	strb r2, [r0, r1]
+_021E67E2:
+	add sp, #0x54
+	pop {r4, r5, r6, r7, pc}
+	nop
+_021E67E8: .word ov37_021E7A4C
+_021E67EC: .word 0x00004376
+_021E67F0: .word 0x000005DC
+_021E67F4: .word 0x000005F2
+_021E67F8: .word 0x000093F4
+_021E67FC: .word 0x0000438B
+_021E6800: .word 0x00004377
+_021E6804: .word 0x000005E5
+_021E6808: .word ov37_021E7970
+_021E680C: .word gSystem + 0x40
+_021E6810: .word 0x00004378
+_021E6814: .word 0x00004380
+	thumb_func_end ov37_021E65EC
+
+	thumb_func_start ov37_021E6818
+ov37_021E6818: ; 0x021E6818
+	push {r3, r4, r5, r6, r7, lr}
+	ldr r4, _021E6844 ; =ov37_021E7A80
+	add r5, r0, #0
+	add r7, r1, #0
+	mov r6, #0
+_021E6822:
+	cmp r6, r7
+	ldr r0, [r5]
+	bne _021E6832
+	ldrh r1, [r4, #4]
+	add r1, r1, #1
+	bl Sprite_SetAnimCtrlSeq
+	b _021E6838
+_021E6832:
+	ldrh r1, [r4, #4]
+	bl Sprite_SetAnimCtrlSeq
+_021E6838:
+	add r6, r6, #1
+	add r4, r4, #6
+	add r5, r5, #4
+	cmp r6, #8
+	blt _021E6822
+	pop {r3, r4, r5, r6, r7, pc}
+	.balign 4, 0
+_021E6844: .word ov37_021E7A80
+	thumb_func_end ov37_021E6818
+

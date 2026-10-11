@@ -1,0 +1,191 @@
+#pragma warning_errors off
+#include "global.h"
+#pragma thumb on
+void GF_AssertFail(void);
+typedef struct MapObject MapObject;
+typedef struct MapObjectAnimCmd {
+    u16 movementAction;
+    u16 count;
+} MapObjectAnimCmd;
+typedef struct SysTask SysTask;
+typedef struct SysTaskManager SysTaskManager;
+typedef void (*SysTaskFunc)(SysTask *, void *);
+enum TaskState {
+    TASK_STATE_ACTIVE = 0,
+    TASK_STATE_INACTIVE,
+};
+typedef struct SysTask {
+    SysTaskManager *manager;
+    SysTask *prevTask;
+    SysTask *nextTask;
+    u32 priority;
+    void *param;
+    SysTaskFunc callback;
+    enum TaskState state;
+} SysTask;
+typedef struct SysTaskManager {
+    u16 maxTasks;
+    u16 stackPointer;
+    SysTask sentinelTask;
+    SysTask **taskStack;
+    SysTask *tasks;
+    BOOL locked;
+    SysTask *currentTask;
+    SysTask *nextTask;
+} SysTaskManager;
+SysTask *EventObjectMovementMan_Create(MapObject *mapObj, const MapObjectAnimCmd *animCmd);
+enum HeapID {
+    HEAP_ID_SYSTEM = 0,
+    HEAP_ID_SAVE,
+    HEAP_ID_DEBUG,
+    HEAP_ID_APPLICATION,
+    HEAP_ID_FIELD1,
+    HEAP_ID_BATTLE,
+    HEAP_ID_BAG,
+    HEAP_ID_POKETCH_MAIN,
+    HEAP_ID_POKETCH_APP,
+    HEAP_ID_BOX_DATA,
+    HEAP_ID_BOX_GRAPHICS,
+    HEAP_ID_FIELD2,
+    HEAP_ID_PARTY_MENU,
+    HEAP_ID_13,
+    HEAP_ID_14,
+    HEAP_ID_COMMUNICATION,
+    HEAP_ID_16,
+    HEAP_ID_TOWN_MAP,
+    HEAP_ID_NAMING_SCREEN_APP,
+    HEAP_ID_POKEMON_SUMMARY_SCREEN,
+    HEAP_ID_20,
+    HEAP_ID_21,
+    HEAP_ID_22,
+    HEAP_ID_23,
+    HEAP_ID_24,
+    HEAP_ID_TRAINER_CASE,
+    HEAP_ID_TRADE_ROOM,
+    HEAP_ID_27,
+    HEAP_ID_28,
+    HEAP_ID_MINING,
+    HEAP_ID_DISTORTION_WORLD_WARP,
+    HEAP_ID_31,
+    HEAP_ID_FIELD3,
+    HEAP_ID_UNDERGROUND,
+    HEAP_ID_34,
+    HEAP_ID_35,
+    HEAP_ID_BERRY_TAG,
+    HEAP_ID_POKEDEX,
+    HEAP_ID_OPTIONS_MENU,
+    HEAP_ID_DRAWING,
+    HEAP_ID_MAIL,
+    HEAP_ID_MAIL_VIEWER,
+    HEAP_ID_JOURNAL,
+    HEAP_ID_43,
+    HEAP_ID_POFFIN_CASE,
+    HEAP_ID_POFFIN_MANAGER,
+    HEAP_ID_POFFIN_CUTSCENE,
+    HEAP_ID_CHOOSE_STARTER_APP,
+    HEAP_ID_48,
+    HEAP_ID_NINTENDO_WFC,
+    HEAP_ID_50,
+    HEAP_ID_51,
+    HEAP_ID_52,
+    HEAP_ID_53,
+    HEAP_ID_54,
+    HEAP_ID_POFFIN_BERRY_SELECTION,
+    HEAP_ID_56,
+    HEAP_ID_TRADE_SEQUENCE,
+    HEAP_ID_TRADE_SEQUENCE_PHASE,
+    HEAP_ID_59,
+    HEAP_ID_60,
+    HEAP_ID_PC_HALL_OF_FAME,
+    HEAP_ID_62,
+    HEAP_ID_HALL_OF_FAME,
+    HEAP_ID_64,
+    HEAP_ID_65,
+    HEAP_ID_66,
+    HEAP_ID_MOVE_REMINDER,
+    HEAP_ID_68,
+    HEAP_ID_69,
+    HEAP_ID_70,
+    HEAP_ID_EGG_HATCH,
+    HEAP_ID_BOAT_CUTSCENE,
+    HEAP_ID_EVOLUTION,
+    HEAP_ID_BATTLE_TOWER_RECORDS_APP,
+    HEAP_ID_END_CREDITS,
+    HEAP_ID_76,
+    HEAP_ID_GAME_START,
+    HEAP_ID_MIGRATE_FROM_GBA,
+    HEAP_ID_79,
+    HEAP_ID_RANKINGS_MACHINE,
+    HEAP_ID_MAIN_MENU,
+    HEAP_ID_ROWAN_INTRO,
+    HEAP_ID_ROWAN_INTRO_TV,
+    HEAP_ID_DIPLOMA,
+    HEAP_ID_RANGER_LINK,
+    HEAP_ID_MYSTERY_GIFT_APP,
+    HEAP_ID_WONDER_CARDS_APP,
+    HEAP_ID_88,
+    HEAP_ID_89,
+    HEAP_ID_90,
+    HEAP_ID_NETWORK_ICON,
+    HEAP_ID_92,
+    HEAP_ID_BATTLE_FACTORY_APP,
+    HEAP_ID_94,
+    HEAP_ID_95,
+    HEAP_ID_96,
+    HEAP_ID_97,
+    HEAP_ID_BATTLE_HALL_APP,
+    HEAP_ID_99,
+    HEAP_ID_BATTLE_CASTLE_APP,
+    HEAP_ID_101,
+    HEAP_ID_102,
+    HEAP_ID_BATTLE_ARCADE_APP,
+    HEAP_ID_104,
+    HEAP_ID_105,
+    HEAP_ID_106,
+    HEAP_ID_107,
+    HEAP_ID_108,
+    HEAP_ID_109,
+    HEAP_ID_110,
+    HEAP_ID_111,
+    HEAP_ID_112,
+    HEAP_ID_113,
+    HEAP_ID_FRONTIER_RECORD_APP,
+    HEAP_ID_SCRATCH_OFF_CARD_APP,
+    HEAP_ID_116,
+    HEAP_ID_117,
+    HEAP_ID_118,
+    HEAP_ID_119,
+    HEAP_ID_LIBRARY_TV,
+    HEAP_ID_PARTY_MENU1,
+    HEAP_ID_PARTY_MENU2,
+    HEAP_ID_MAX,
+};
+void *Heap_AllocAtEnd(u32 heapID, u32 size);
+SysTask *SysTask_CreateOnMainQueue(SysTaskFunc callback, void *param, u32 priority);
+typedef struct MapObjectManager MapObjectManager;
+int MapObjectManager_GetPriority(const MapObjectManager *mapObjMan);
+const MapObjectManager *MapObject_GetManager(const MapObject *mapObj);
+typedef struct MoveAnimData {
+    int state;
+    BOOL ended;
+    int count;
+    MapObject *mapObj;
+    const MapObjectAnimCmd *animCmd;
+} MoveAnimData;
+void MovementScriptMachine(SysTask *task, void *data);
+#pragma force_active on
+SysTask *EventObjectMovementMan_Create(MapObject *mapObj, const MapObjectAnimCmd *animCmd) {
+    MoveAnimData *data = Heap_AllocAtEnd(HEAP_ID_FIELD1, sizeof(MoveAnimData));
+    ((data != ((void *)0)) ? (void)0 : GF_AssertFail());
+    memset(data, 0, sizeof(MoveAnimData));
+
+    int priority = MapObjectManager_GetPriority(MapObject_GetManager(mapObj)) - 1;
+    SysTask *task = SysTask_CreateOnMainQueue(MovementScriptMachine, data, priority);
+    ((task != ((void *)0)) ? (void)0 : GF_AssertFail());
+
+    data->mapObj = mapObj;
+    data->animCmd = animCmd;
+
+    return task;
+}
+#pragma force_active reset
