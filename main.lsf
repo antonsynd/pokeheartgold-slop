@@ -1830,7 +1830,67 @@ Overlay OVY_64
 Overlay OVY_65
 {
     After OVY_6
-    Object asm/overlay_65.o
+    Object asm/overlay_65_00.o
+    Object asm/overlay_65_01.o
+    Object asm/overlay_65_02.o
+    Object asm/overlay_65_03.o
+    Object asm/overlay_65_04.o
+    Object src/overlay_65_05.o
+    Object asm/overlay_65_06.o
+    Object asm/overlay_65_07.o
+    Object asm/overlay_65_08.o
+    Object asm/overlay_65_09.o
+    Object asm/overlay_65_10.o
+    Object asm/overlay_65_11.o
+    Object asm/overlay_65_12.o
+    Object src/overlay_65_13.o
+    Object asm/overlay_65_14.o
+    Object asm/overlay_65_15.o
+    Object src/overlay_65_16.o
+    Object asm/overlay_65_17.o
+    Object asm/overlay_65_18.o
+    Object asm/overlay_65_19.o
+    Object src/overlay_65_20.o
+    Object asm/overlay_65_21.o
+    Object asm/overlay_65_22.o
+    Object src/overlay_65_23.o
+    Object src/overlay_65_24.o
+    Object src/overlay_65_25.o
+    Object src/overlay_65_26.o
+    Object src/overlay_65_27.o
+    Object src/overlay_65_28.o
+    Object asm/overlay_65_29.o
+    Object src/overlay_65_30.o
+    Object asm/overlay_65_31.o
+    Object asm/overlay_65_32.o
+    Object asm/overlay_65_33.o
+    Object src/overlay_65_34.o
+    Object asm/overlay_65_35.o
+    Object asm/overlay_65_36.o
+    Object asm/overlay_65_37.o
+    Object src/overlay_65_38.o
+    Object asm/overlay_65_39.o
+    Object src/overlay_65_40.o
+    Object asm/overlay_65_41.o
+    Object asm/overlay_65_42.o
+    Object asm/overlay_65_43.o
+    Object asm/overlay_65_44.o
+    Object asm/overlay_65_45.o
+    Object asm/overlay_65_46.o
+    Object asm/overlay_65_47.o
+    Object asm/overlay_65_48.o
+    Object asm/overlay_65_49.o
+    Object asm/overlay_65_50.o
+    Object src/overlay_65_51.o
+    Object src/overlay_65_52.o
+    Object src/overlay_65_53.o
+    Object src/overlay_65_54.o
+    Object src/overlay_65_55.o
+    Object src/overlay_65_56.o
+    Object src/overlay_65_57.o
+    Object src/overlay_65_58.o
+    Object src/overlay_65_59.o
+    Object asm/overlay_65_data.o
 }
 Overlay OVY_66
 {
