@@ -30,10 +30,10 @@ Of the fork's additions, ▒ is C generated mechanically from Ghidra drafts. It 
 
 ```
 Functions in C (of ~29k total ROM functions)
-  █████████████████▓▓▓▓▓▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒░░░░░░  ~88.0%  (~25,962)
+  █████████████████▓▓▓▓▓▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒░░░░░  ~90.2%  (~26,612)
 
 Functions fully matching (byte-identical to retail)
-  █████████████████▓▓▓▓▓▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒░░░░░░  ~87.7%  (~25,875)
+  █████████████████▓▓▓▓▓▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒░░░░░  ~89.9%  (~26,525)
 
   █ pret/pokeheartgold   ▓ added in this fork   ▒ generated, not yet readable   ░ not yet in C
 ```
@@ -42,12 +42,12 @@ Functions fully matching (byte-identical to retail)
 |---|---:|---:|---:|
 | █ From pret/pokeheartgold | ~10,207 | ~10,207 | 0 |
 | ▓ Added in this fork (LLM-assisted) | 2,867 | 2,780 | 87 |
-| ▒ Added in this fork, generated from Ghidra drafts | 12,888 | 12,888 | 0 |
-| Total | ~25,962 | ~25,875 | 87 |
+| ▒ Added in this fork, generated from Ghidra drafts | 13,538 | 13,538 | 0 |
+| Total | ~26,612 | ~26,525 | 87 |
 
 The fork's additions are counted from the files it decompiled. pret's figures (~) are derived from an estimated ~29,500 total ROM functions, because upstream doesn't keep the asm for decompiled files. A NONMATCHING block is a function with a C version kept for reference that is still linked from handwritten asm. It counts toward *Functions in C* but not *Fully matching*.
 
-13,462 of 15,881 linked objects are C (84.8%). Object counts aren't comparable with upstream's, because this fork splits some overlays into smaller chunks.
+14,108 of 16,184 linked objects are C (87.2%). Object counts aren't comparable with upstream's, because this fork splits some overlays into smaller chunks.
 
 Detailed function-level coverage, active blockers, and the triage queue are tracked in **[`COVERAGE.md`](tools/decomp_harness/COVERAGE.md)**, regenerated from the build by `coverage_ledger.py`.
 <!-- PROGRESS_END -->
