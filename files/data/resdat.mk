@@ -6,7 +6,7 @@ DATA_RESDAT_BIN = $(DATA_RESDAT_JSON:%.json=%.bin)
 
 $(DATA_RESDAT_BIN): %.bin: %.json $(DATA_RESDAT_DIR).json.txt | $(WORK_DIR)/include/global.h
 	$(JSONPROC) $^ $*.c
-	$(WINE) $(MWCC) $(MWCFLAGS) -c -o $*.o $*.c
+	$(MWWINE) $(MWCC) $(MWCFLAGS) -c -o $*.o $*.c
 	$(O2NARC) $*.o $@ -f
 	@$(RM) $*.c $*.o
 

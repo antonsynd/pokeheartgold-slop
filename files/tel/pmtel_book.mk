@@ -4,7 +4,7 @@ PMTEL_BOOK_TEMPLATE := files/tel/pmtel_book.json.txt
 
 $(PMTEL_BOOK_DAT): %.dat: $(PMTEL_BOOK_JSON) $(PMTEL_BOOK_TEMPLATE)
 	$(JSONPROC) $^ $*.s
-	$(WINE) $(MWAS) $(MWASFLAGS) -c -o $*.o $*.s
+	$(MWWINE) $(MWAS) $(MWASFLAGS) -c -o $*.o $*.s
 	$(OBJCOPY) -O binary $*.o $@
 	@$(RM) $*.o $*.s
 

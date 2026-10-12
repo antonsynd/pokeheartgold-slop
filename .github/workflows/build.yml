@@ -33,7 +33,6 @@ concurrency:
   cancel-in-progress: true
 
 env:
-  LM_LICENSE_FILE: "$GITHUB_WORKSPACE/tools/mwccarm/license.dat"
   CC: gcc-10
   CXX: g++-10
   COMPARE: 1
@@ -71,17 +70,20 @@ jobs:
         run: |
           mkdir -p ~/download
           cd ~/download
-          # Toolchain assets from pret's workflows/assets branch, pinned to a
-          # commit and checksummed so the compiler can't change under us.
+          # Toolchain assets, pinned and checksummed so the compiler can't
+          # change under us. The Metrowerks compiler, assembler and linker
+          # come from metroskrew (mid-kid/metroskrew, what pret's Meson build
+          # uses): the same compilers relinked as Linux binaries, so they run
+          # without Wine and give the same bytes. Wine still runs the NitroSDK
+          # tools (makerom, makelcf, makebanner).
           ASSETS=https://github.com/pret/pokeheartgold/raw/79948ad5db02cb4dc190dbaa0c4b7848279bc61c
-          wget $ASSETS/mwccarm.zip
           wget $ASSETS/NitroSDK-3_2-060901.7z
+          wget https://github.com/mid-kid/metroskrew/releases/download/0.1.3/metroskrew-linux.tar.xz
           sha256sum -c - <<'SHA256'
-          dc386e37b2176e960954a733de928337d9b7e7620b9e94228008c31774339ace  mwccarm.zip
           0ee935e34237cb1954e657083cd80a31ec9de1aeddd9468cceef684cac75b491  NitroSDK-3_2-060901.7z
+          2fec5ba308690a25157afc532ed87411a413501d43d85892ae4bfb9eb3975790  metroskrew-linux.tar.xz
           SHA256
-          unzip mwccarm.zip
-          mv mwccarm $GITHUB_WORKSPACE/tools
+          tar xJf metroskrew-linux.tar.xz -C ~
           7z x NitroSDK-3_2-060901.7z
           mv NitroSDK-3_2-060901/tools/bin $GITHUB_WORKSPACE/tools
           mv NitroSDK-3_2-060901/include/nitro/specfiles/ARM7-TS.lcf.template $GITHUB_WORKSPACE/sub/
@@ -99,7 +101,7 @@ jobs:
           GAME_VERSION: ${{ matrix.game }}
           GAME_LANGUAGE: ENGLISH
           GAME_REVISION: 0
-        run: make -j"$(nproc)" 2> >(sed -r 's/^/::error::/')
+        run: make -j"$(nproc)" SKREW=$HOME/metroskrew 2> >(sed -r 's/^/::error::/')
 
       - name: Post error archive
         if: failure()

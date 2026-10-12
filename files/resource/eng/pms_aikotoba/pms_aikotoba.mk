@@ -17,7 +17,7 @@ $(PMS_AIKOTOBA_NARC): %.narc: %.s %.d
 	@echo gen  $@
 	@mkdir -p $*
 	@$(RM) $*/*
-	@$(WINE) $(MWAS) $(MWASFLAGS) $(DEPFLAGS) -DPM_ASM -o $*.o $< || { rm -f $*.d; exit 1; }
+	@$(MWWINE) $(MWAS) $(MWASFLAGS) $(DEPFLAGS) -DPM_ASM -o $*.o $< || { rm -f $*.d; exit 1; }
 	@$(call fixdep,$*.d)
 	@$(OBJCOPY) -O binary $*.o $*/tmp.bin
 	@$(NARC) -cf $@ $*
@@ -31,7 +31,7 @@ $(PMS_AIKOTOBA_NARC): %.narc: %.s
 	@echo gen  $@
 	@mkdir -p $*
 	@$(RM) $*/*
-	@$(WINE) $(MWAS) $(MWASFLAGS) -DPM_ASM -o $*.o $<
+	@$(MWWINE) $(MWAS) $(MWASFLAGS) -DPM_ASM -o $*.o $<
 	@$(OBJCOPY) -O binary $*.o $*/tmp.bin
 	@$(NARC) -cf $@ $*
 	@$(RM) -r $*

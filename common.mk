@@ -47,9 +47,25 @@ include $(WORK_DIR)/platform.mk
 include $(WORK_DIR)/binutils.mk
 
 # NitroSDK tools
+# The Metrowerks compiler, assembler and linker run under Wine by default. On
+# Linux, SKREW=<absolute path to a metroskrew install> runs them natively
+# instead (https://github.com/mid-kid/metroskrew, what pret's Meson build uses):
+# no Wine, so no per-process startup or case-insensitive directory scans.
+# metroskrew ships its own copies of each MWCCVER and needs no license file or
+# mwasmarm patch.
+ifeq ($(SKREW),)
 MWCC          = $(TOOLSDIR)/mwccarm/$(MWCCVER)/mwccarm.exe
 MWAS          = $(TOOLSDIR)/mwccarm/$(MWCCVER)/mwasmarm.exe
 MWLD          = $(TOOLSDIR)/mwccarm/$(MWCCVER)/mwldarm.exe
+MWWINE        = $(WINE)
+MWAS_DEP      = $(MWAS)
+else
+MWCC          = $(SKREW)/bin/mwccarm -wrap:sdk $(MWCCVER)
+MWAS          = $(SKREW)/bin/mwasmarm -wrap:sdk $(MWCCVER)
+MWLD          = $(SKREW)/bin/mwldarm -wrap:sdk $(MWCCVER)
+MWWINE        =
+MWAS_DEP      =
+endif
 MAKEROM      := $(TOOLSDIR)/bin/makerom.exe
 MAKELCF      := $(TOOLSDIR)/bin/makelcf.exe
 MAKEBNR      := $(TOOLSDIR)/bin/makebanner.exe
@@ -142,8 +158,8 @@ MWASFLAGS          = $(DEFINES) -proc $(PROC_S) -g -gccinc -i . -i ./include -i 
 MWLDFLAGS         := -proc $(PROC) -sym on -nopic -nopid -interworking -map closure,unused -symtab sort -m _start -msgstyle gcc
 ARFLAGS           := rcS
 
-MW_COMPILE = $(WINE) $(MWCC) $(MWCFLAGS)
-MW_ASSEMBLE = $(WINE) $(MWAS) $(MWASFLAGS)
+MW_COMPILE = $(MWWINE) $(MWCC) $(MWCFLAGS)
+MW_ASSEMBLE = $(MWWINE) $(MWAS) $(MWASFLAGS)
 
 export MWCIncludes := lib/include
 
@@ -164,7 +180,9 @@ DUMMY := $(shell mkdir -p $(ALL_BUILDDIRS))
 .PRECIOUS: $(SBIN)
 
 patch_mwasmarm:
+ifeq ($(SKREW),)
 	$(ASPATCH) -q $(MWAS)
+endif
 
 ifeq ($(NODEP),)
 ifneq ($(WINPATH),)
@@ -218,8 +236,8 @@ $(BUILD_DIR)/%.o: %.c $(BUILD_DIR)/%.d
 
 $(BUILD_DIR)/%.o: %.s
 $(BUILD_DIR)/%.o: %.s $(BUILD_DIR)/%.d
-	@echo $(WINE) $(MWAS) $(MWASFLAGS) $(DEPFLAGS) -o $@ $<
-	@$(WINE) $(MWAS) $(MWASFLAGS) $(DEPFLAGS) -o $@ $< || { rm -f $(BUILD_DIR)/%.d; exit 1; }
+	@echo $(MWWINE) $(MWAS) $(MWASFLAGS) $(DEPFLAGS) -o $@ $<
+	@$(MWWINE) $(MWAS) $(MWASFLAGS) $(DEPFLAGS) -o $@ $< || { rm -f $(BUILD_DIR)/%.d; exit 1; }
 	@$(call fixdep,$(BUILD_DIR)/$*.d)
 
 include $(filter-out $(BAD_DEPFILES),$(EXISTING_DEPFILES))
@@ -231,12 +249,12 @@ $(BUILD_DIR)/%.o: %.c
 	$(BUILD_C) $@ $<
 
 $(BUILD_DIR)/%.o: %.s
-	$(WINE) $(MWAS) $(MWASFLAGS) -o $@ $<
+	$(MWWINE) $(MWAS) $(MWASFLAGS) -o $@ $<
 endif
 
 $(NATIVE_TOOLS): tools
 
-tools: $(TOOLDIRS) $(MWAS)
+tools: $(TOOLDIRS) $(MWAS_DEP)
 
 $(TOOLDIRS):
 	@$(MAKE) -C $@
@@ -272,7 +290,7 @@ endif
 $(ELF): $(ALL_OBJS)
 	$(MAKE) $(LCF)
 	$(MAKE) $(RESPONSE)
-	cd $(BUILD_DIR) && LM_LICENSE_FILE=$(BACK_REL)/$(LM_LICENSE_FILE) $(WINE) $(MWLD) $(MWLDFLAGS) $(LIBS) -o $(BACK_REL)/$(ELF) $(LCF:$(BUILD_DIR)/%=%) @$(RESPONSE:$(BUILD_DIR)/%=%) $(CRT0_OBJ)
+	cd $(BUILD_DIR) && LM_LICENSE_FILE=$(BACK_REL)/$(LM_LICENSE_FILE) $(MWWINE) $(MWLD) $(MWLDFLAGS) $(LIBS) -o $(BACK_REL)/$(ELF) $(LCF:$(BUILD_DIR)/%=%) @$(RESPONSE:$(BUILD_DIR)/%=%) $(CRT0_OBJ)
 #	$(NTRMERGE) $*
 
 print-% : ; $(info $* is a $(flavor $*) variable set to [$($*)]) @true

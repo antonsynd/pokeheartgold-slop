@@ -80,12 +80,12 @@ install: all
 
 # Assembly assembling
 $(BUILD_DIR)/%.o: $(BUILD_DIR)/%.s
-	$(WINE) $(MWAS) $(ASM_PARAM) $< -o $@
+	$(MWWINE) $(MWAS) $(ASM_PARAM) $< -o $@
 
 
 # C compilation
 $(C_OBJ_DIR)/%.o: $(SRC_DIR)/%.c
-	$(WINE) $(MWCC) $(CC_PARAM) $(DEP_PARAM) $< -o $@
+	$(MWWINE) $(MWCC) $(CC_PARAM) $(DEP_PARAM) $< -o $@
 	@$(call fixdep,$(@:.o=.d))
 
 

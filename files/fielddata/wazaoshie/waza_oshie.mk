@@ -7,7 +7,7 @@ WAZA_OSHIE_O                := $(WAZA_OSHIE_DIR)/waza_oshie.o
 
 $(WAZA_OSHIE_BIN): %.bin: %.json %.json.txt
 	$(JSONPROC) $^ $*.s
-	$(WINE) $(MWAS) -DPM_ASM $(MWASFLAGS) -o $*.o $*.s
+	$(MWWINE) $(MWAS) -DPM_ASM $(MWASFLAGS) -o $*.o $*.s
 	$(OBJCOPY) -O binary $*.o $@
 
 clean-waza-oshie:

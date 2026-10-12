@@ -4,7 +4,7 @@ EVO_TEMPLATE := files/poketool/personal/evo.json.txt
 
 $(EVO_NARC): %.narc: $(EVO_JSON) $(EVO_TEMPLATE)
 	$(JSONPROC) $^ $*.c
-	$(WINE) $(MWCC) $(MWCFLAGS) -c -o $*.o $*.c
+	$(MWWINE) $(MWCC) $(MWCFLAGS) -c -o $*.o $*.c
 	$(O2NARC) $*.o $@ -n -p 0x00
 	@$(RM) $*.o $*.c
 

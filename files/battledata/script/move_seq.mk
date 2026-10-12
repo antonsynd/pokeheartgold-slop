@@ -13,15 +13,15 @@ $(MOVE_SCRIPT_DEPS):
 
 $(MOVE_SCRIPT_BINS): %.bin: %.s
 $(MOVE_SCRIPT_BINS): %.bin: %.s %.d
-	@echo $(WINE) $(MWAS) $(MWASFLAGS) $(DEPFLAGS) -o $*.o $<
-	@$(WINE) $(MWAS) $(MWASFLAGS) $(DEPFLAGS) -o $*.o $< || { rm -f $*.d; exit 1; }
+	@echo $(MWWINE) $(MWAS) $(MWASFLAGS) $(DEPFLAGS) -o $*.o $<
+	@$(MWWINE) $(MWAS) $(MWASFLAGS) $(DEPFLAGS) -o $*.o $< || { rm -f $*.d; exit 1; }
 	@$(call fixdep,$*.d)
 	@$(SED) -i 's/\.o/.bin/' $*.d
 	$(OBJCOPY) -O binary --file-alignment 4 $*.o $@
 include $(wildcard $(MOVE_SCRIPT_DEPS))
 else
 $(MOVE_SCRIPT_BINS): %.bin: %.s
-	$(WINE) $(MWAS) $(MWASFLAGS) -o $*.o $<
+	$(MWWINE) $(MWAS) $(MWASFLAGS) -o $*.o $<
 	$(OBJCOPY) -O binary --file-alignment 4 $*.o $@
 endif
 

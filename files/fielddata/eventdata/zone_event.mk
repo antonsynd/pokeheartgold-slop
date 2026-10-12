@@ -23,7 +23,7 @@ $(ZONE_EVENT_BIN): MWASFLAGS += -DPM_ASM
 $(ZONE_EVENT_BIN): %.bin: %.json
 	@echo event_data: gen $@
 	@$(JSONPROC) $< $(ZONE_EVENT_TEMPL) $*.s
-	@$(WINE) $(MWAS) $(MWASFLAGS) $(DEPFLAGS) -o $*.o $*.s
+	@$(MWWINE) $(MWAS) $(MWASFLAGS) $(DEPFLAGS) -o $*.o $*.s
 	@$(OBJCOPY) -O binary $*.o $@
 	@$(RM) $*.s $*.o
 	@echo event_data: gen $@ done

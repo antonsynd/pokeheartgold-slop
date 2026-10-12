@@ -11,7 +11,7 @@ $(ENCDATA_DIR)/s_enc_data.narc: GAME_VERSION_S = ENC_SOULSILVER
 
 $(ENCDATA_NARCS): %.narc: $(ENCDATA_JSON) $(ENCDATA_JSON).txt | $(WORK_DIR)/include/global.h
 	$(JSONPROC) $^ $*.c
-	$(WINE) $(MWCC) $(MWCFLAGS) -D$(GAME_VERSION_S) -c -o $*.o $*.c
+	$(MWWINE) $(MWCC) $(MWCFLAGS) -D$(GAME_VERSION_S) -c -o $*.o $*.c
 	$(O2NARC) $*.o $@ -n
 #	@$(RM) $*.o $*.c
 

@@ -4,7 +4,7 @@ PHOTO_DATA_TEMPLATE := files/data/photo_data.json.txt
 
 $(PHOTO_DATA_NARC): %.narc: $(PHOTO_DATA_JSON) $(PHOTO_DATA_TEMPLATE)
 	$(JSONPROC) $^ $*.c
-	$(WINE) $(MWCC) $(MWCFLAGS) -c -o $*.o $*.c
+	$(MWWINE) $(MWCC) $(MWCFLAGS) -c -o $*.o $*.c
 	$(O2NARC) $*.o $@ -n -p 0x00
 	@$(RM) $*.o $*.c
 

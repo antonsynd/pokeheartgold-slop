@@ -10,7 +10,7 @@ $(MMODEL_NARC): $(MMODEL_BINS) $(MMODEL_NSBTX) $(MMODEL_NSBMD)
 
 $(MMODEL_BINS): %.bin: %.json $(MMODEL_ROOT).json.txt
 	$(JSONPROC) $^ $*.s
-	$(WINE) $(MWAS) $(MWASFLAGS) -c -o $*.o $*.s
+	$(MWWINE) $(MWAS) $(MWASFLAGS) -c -o $*.o $*.s
 	$(OBJCOPY) -O binary $*.o $@
 	@$(RM) $*.o $*.s
 
