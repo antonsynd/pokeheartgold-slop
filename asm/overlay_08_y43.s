@@ -1,0 +1,112 @@
+#include "constants/moves.h"
+	.include "asm/macros.inc"
+	.include "overlay_08.inc"
+	.include "global.inc"
+	.public ov08_0221D614
+	.extern _02224E2C
+	.extern ov08_0221D5DC
+	.extern ov08_0221DB04
+
+	.text
+
+	.text
+	thumb_func_start ov08_0221D614
+ov08_0221D614: ; 0x0221D614
+	push {r3, r4, r5, r6, r7, lr}
+	sub sp, #8
+	add r4, r1, #0
+	add r5, r0, #0
+	add r7, r2, #0
+	add r6, r4, #0
+	bl ov08_0221DB04
+	cmp r0, #1
+	bne _0221D68C
+	ldr r2, _0221D6C8 ; =_02224E2C
+	add r1, sp, #0
+	ldrb r3, [r2]
+	add r0, sp, #0
+	mov r4, #0
+	strb r3, [r1]
+	ldrb r3, [r2, #1]
+	strb r3, [r1, #1]
+	ldrb r3, [r2, #2]
+	strb r3, [r1, #2]
+	ldrb r3, [r2, #3]
+	strb r3, [r1, #3]
+	ldrb r3, [r2, #4]
+	ldrb r2, [r2, #5]
+	strb r3, [r1, #4]
+	strb r2, [r1, #5]
+_0221D648:
+	ldrb r1, [r0]
+	cmp r6, r1
+	beq _0221D656
+	add r4, r4, #1
+	add r0, r0, #1
+	cmp r4, #6
+	blt _0221D648
+_0221D656:
+	add r4, r4, r7
+	bpl _0221D65E
+	mov r4, #5
+	b _0221D664
+_0221D65E:
+	cmp r4, #6
+	blt _0221D664
+	mov r4, #0
+_0221D664:
+	add r0, sp, #0
+	ldrb r1, [r0, r4]
+	cmp r6, r1
+	beq _0221D6C0
+	add r0, r5, #0
+	bl ov08_0221D5DC
+	cmp r0, #0
+	beq _0221D656
+	add r0, sp, #0
+	ldrb r0, [r0, r4]
+	mov r1, #0x50
+	mul r1, r0
+	add r1, r5, r1
+	ldrb r1, [r1, #0x1b]
+	lsl r1, r1, #0x18
+	lsr r1, r1, #0x1f
+	bne _0221D656
+	add sp, #8
+	pop {r3, r4, r5, r6, r7, pc}
+_0221D68C:
+	add r4, r4, r7
+	bpl _0221D694
+	mov r4, #5
+	b _0221D69A
+_0221D694:
+	cmp r4, #6
+	blt _0221D69A
+	mov r4, #0
+_0221D69A:
+	cmp r6, r4
+	beq _0221D6C0
+	add r0, r5, #0
+	add r1, r4, #0
+	bl ov08_0221D5DC
+	cmp r0, #0
+	beq _0221D68C
+	mov r0, #0x50
+	mul r0, r4
+	add r0, r5, r0
+	ldrb r0, [r0, #0x1b]
+	lsl r0, r0, #0x18
+	lsr r0, r0, #0x1f
+	bne _0221D68C
+	lsl r0, r4, #0x18
+	add sp, #8
+	lsr r0, r0, #0x18
+	pop {r3, r4, r5, r6, r7, pc}
+_0221D6C0:
+	mov r0, #0xff
+	add sp, #8
+	pop {r3, r4, r5, r6, r7, pc}
+	nop
+_0221D6C8: .word _02224E2C
+	thumb_func_end ov08_0221D614
+
