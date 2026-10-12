@@ -31,6 +31,7 @@ $(PROGRAM): $(OBJS)
 %.o: %.cpp
 %.o: %.cpp $(DEPDIR)/%.d | $(DEPDIR)
 	$(CXX) $(CXXFLAGS) $(DEPFLAGS) -c -o $@ $<
+	@touch $@  # the compiler may write the .d after the .o (Apple clang); keep the .o newer
 
 $(DEPDIR): ; @mkdir -p $@
 

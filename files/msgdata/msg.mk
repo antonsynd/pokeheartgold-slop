@@ -27,7 +27,12 @@ $(MSGFILE_BIN): MSGENCFLAGS = -e -c charmap.txt --gmm -H $*.h
 $(MSGFILE_BIN): %.bin: %.gmm charmap.txt | $(BUILT_GMMS)
 	$(MSGENC) $(MSGENCFLAGS) $< $@
 
+# msgenc writes the .h a moment before the .bin, so without a recipe the header
+# always looks out of date and everything that includes it recompiles on every
+# build. Give it the .bin's timestamp instead.
 $(MSGFILE_H): %.h: %.bin
+	@test -f $@ || { echo "$@ is missing: delete $< and rebuild" >&2; exit 1; }
+	@touch -r $< $@
 
 # This target only runs once when the header files are first generated. All the
 # headers need to built by the time we start assembling the scripts. But we
