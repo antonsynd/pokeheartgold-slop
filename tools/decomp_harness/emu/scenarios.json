@@ -1,0 +1,16 @@
+{
+  "_doc": "Scenario graph. Each scenario starts from its parent's savestate (null = cold boot) and runs `script` (see Harness.run_script). `expect.loaded` lists overlays that must be loaded afterwards. States live under build/<game>/emu/states/ (regenerable, never committed). The build dir has no save file, so boot goes intro -> title -> ov36 main menu (17 frames, NEW GAME only) -> ov53 new-game tutorial.",
+  "boot": {"from": null, "script": [], "expect": {}, "note": "cold boot, frame 0"},
+  "tutorial_menu": {
+    "from": "boot",
+    "script": ["wait 600", "until overlay=53 max=4000 spam=A every=90", "wait 300"],
+    "expect": {"loaded": [53]},
+    "note": "ov53: 'CONTROL INFO / ADVENTURE INFO / NO INFO NEEDED' touch menu, idle"
+  },
+  "tutorial_controls": {
+    "from": "tutorial_menu",
+    "script": ["touch 128 40", "wait 240"],
+    "expect": {"loaded": [53]},
+    "note": "ov53 after touching CONTROL INFO (bottom-screen y=40; ADVENTURE INFO y=96, NO INFO NEEDED y=151): text box + Touch panel"
+  }
+}
