@@ -31,3 +31,7 @@
 .public _ll_udiv
 .public DWC_SendReliable
 .public DWC_SendUnreliable
+.public AllocatorAllocForFrmHeap
+.public AllocatorAllocForUnitHeap
+.public AllocatorFreeForFrmHeap
+.public AllocatorFreeForUnitHeap
