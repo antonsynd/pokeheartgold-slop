@@ -2,28 +2,37 @@
 #pragma warning_errors off
 #pragma thumb on
 #include "global.h"
-extern struct {
-    u8 pad[0x60];
-    u16 x;
-    u16 y;
-} gSystem;
-int FX_Sqrt(int x);
-// FUNCTION ov91_0225ED6C: matching C (agent7)
-#pragma force_active on
-int ov91_0225ED6C(int param_1) {
-    int iVar1;
-    int dx;
-    int dy;
 
-    if (*(u32 *)(param_1 + 0x48) < 2) {
-        return 0;
+#include "system.h"
+int FX_Sqrt(int x);
+// FUNCTION ov91_0225ED6C: matching C (twin)
+#pragma force_active on
+typedef struct UnkStruct_ov91_0225ED6C {
+    u8 unk_00[0x20];
+    struct {
+        u8 unk_00[0x28];
+        u32 unk_28;
+    } unk_20;
+} UnkStruct_ov91_0225ED6C;
+
+BOOL ov91_0225ED6C(UnkStruct_ov91_0225ED6C *param0);
+BOOL ov91_0225ED6C(UnkStruct_ov91_0225ED6C *param0) {
+    s32 v0;
+    s32 v1;
+    s32 v2;
+
+    if (param0->unk_20.unk_28 < 2) {
+        return FALSE;
     }
-    dx = 0x80 - gSystem.x;
-    dy = -0x60 - gSystem.y;
-    iVar1 = FX_Sqrt((dx * dx + dy * dy) * 0x1000);
-    if (iVar1 >> 0xc <= 0x11e) {
-        return 1;
+
+    v0 = 128 - gSystem.touchX;
+    v1 = -96 - gSystem.touchY;
+    v2 = FX_Sqrt(((v0 * v0) + (v1 * v1)) << FX32_SHIFT) >> FX32_SHIFT;
+
+    if (v2 <= (190 - -96)) {
+        return TRUE;
     }
-    return 0;
+
+    return FALSE;
 }
 #pragma force_active reset

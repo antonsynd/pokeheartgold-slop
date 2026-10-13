@@ -4,25 +4,29 @@
 
 #include "screen_fade.h"
 #include "sys_task_api.h"
-void ov71_02249C98(void);
 #pragma thumb on
-#include "ghidra_compat.h"
-typedef int code();
-undefined4 ov71_022498F0();
-undefined4 ov71_022497E0();
-undefined4 ov71_02249670();
-undefined4 ov71_02249558(undefined *param_1);
-// FUNCTION ov71_02249558: matching C (r2)
-#pragma force_active on
-undefined4 ov71_02249558(undefined *param_1)
 
-{
+typedef struct UnkStruct_ov71_02249558 {
+    u8 unk_00[0x0c];
+    int screenSwapPending;
+} UnkStruct_ov71_02249558;
+
+void ov71_02249C98(SysTask *task, void *data);
+void ov71_02249670(void);
+void ov71_022497E0(UnkStruct_ov71_02249558 *tbfPhase);
+void ov71_022498F0(UnkStruct_ov71_02249558 *tbfPhase);
+// FUNCTION ov71_02249558: matching C (twin)
+#pragma force_active on
+int ov71_02249558(UnkStruct_ov71_02249558 *tbfPhase, int *unused) {
     ov71_02249670();
-    ov71_022497E0(param_1);
-    ov71_022498F0(param_1);
-    *(undefined4 *)(param_1 + 0xc) = 0;
-    SysTask_CreateOnVWaitQueue((SysTaskFunc)ov71_02249C98, param_1, 0);
-    BeginNormalPaletteFade(0, 1, 1, 0x7fff, 3, 1, 0x39);
+    ov71_022497E0(tbfPhase);
+    ov71_022498F0(tbfPhase);
+
+    tbfPhase->screenSwapPending = 0;
+
+    SysTask_CreateOnVWaitQueue(ov71_02249C98, tbfPhase, 0);
+    BeginNormalPaletteFade(FADE_BOTH_SCREENS, FADE_TYPE_BRIGHTNESS_IN, FADE_TYPE_BRIGHTNESS_IN, 0x7fff, 3, 1, 0x39);
+
     return 1;
 }
 #pragma force_active reset

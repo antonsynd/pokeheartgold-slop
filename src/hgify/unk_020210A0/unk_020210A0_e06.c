@@ -2,33 +2,53 @@
 #pragma warning_errors off
 #pragma thumb on
 #include "global.h"
-extern struct {
-    u8 pad[0x58];
-    u16 v;
-} _021D2198;
+
+typedef struct UnkStruct_GF_TouchpadStopAutoSampling {
+    u8 unk_00[0x58];
+    u16 touchPadMode;
+} UnkStruct_GF_TouchpadStopAutoSampling;
+
+extern UnkStruct_GF_TouchpadStopAutoSampling _021D2198;
+
+enum TouchPadMode {
+    TOUCH_PAD_MODE_INACTIVE = 0,
+};
+
+enum AutoSamplingOperationResult {
+    AUTO_SAMPLING_OPERATION_RESULT_SUCCESS = 1,
+    AUTO_SAMPLING_OPERATION_RESULT_FAILURE,
+};
+
+#define AUTO_SAMPLING_NUM_ERRORS_BEFORE_FAIL 5
+
 void TP_RequestAutoSamplingStopAsync(void);
 void TP_WaitBusy(int);
 int TP_CheckBusy(int);
-// FUNCTION GF_TouchpadStopAutoSampling: matching C (agent7)
+// FUNCTION GF_TouchpadStopAutoSampling: matching C (twin)
 #pragma force_active on
-u32 GF_TouchpadStopAutoSampling(void) {
-    u32 count;
-    int busy;
-    count = 0;
-    if (_021D2198.v == 0) {
-        return 1;
+enum AutoSamplingOperationResult GF_TouchpadStopAutoSampling(void) {
+    u32 errorCount = 0;
+    BOOL hasError;
+
+    if (_021D2198.touchPadMode == TOUCH_PAD_MODE_INACTIVE) {
+        return AUTO_SAMPLING_OPERATION_RESULT_SUCCESS;
     }
+
     do {
         TP_RequestAutoSamplingStopAsync();
         TP_WaitBusy(4);
-        busy = TP_CheckBusy(4);
-        if (busy != 0) {
-            count++;
+
+        hasError = TP_CheckBusy(4);
+
+        if (hasError != FALSE) {
+            errorCount++;
         }
-    } while (busy != 0 && count <= 5);
-    if (5 < count) {
-        return 2;
+    } while ((hasError != FALSE) && (errorCount <= AUTO_SAMPLING_NUM_ERRORS_BEFORE_FAIL));
+
+    if (errorCount > AUTO_SAMPLING_NUM_ERRORS_BEFORE_FAIL) {
+        return AUTO_SAMPLING_OPERATION_RESULT_FAILURE;
     }
-    return 1;
+
+    return AUTO_SAMPLING_OPERATION_RESULT_SUCCESS;
 }
 #pragma force_active reset

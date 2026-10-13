@@ -13,6 +13,7 @@
 #include "unk_02034354.h"
 #include "unk_02034B0C.h"
 #include "unk_02035900.h"
+#include "unk_02037C94.h"
 #include "unk_02058AEC.h"
 #include "unk_0205A44C.h"
 #include "unk_02091564.h"
@@ -114,8 +115,7 @@ FieldSystem *sub_0205A1F0(struct UnkStruct_02059E1C *param0);
 void *sub_0205A1F4(struct UnkStruct_02059E1C *param0, int param1);
 void *sub_0205A1F4(struct UnkStruct_02059E1C *param0, int param1);
 u32 sub_0205A35C(struct UnkStruct_02059E1C *param0);
-// FUNCTION sub_0205A35C: matching C (r0)
-#pragma force_active on
+// FUNCTION sub_0205A35C: matching C (twin)
 u32 sub_0205A35C(struct UnkStruct_02059E1C *param0) {
     if (param0->unk44) {
         return 7;

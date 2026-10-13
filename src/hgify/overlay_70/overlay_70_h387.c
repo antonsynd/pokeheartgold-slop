@@ -4,24 +4,32 @@
 #include "global.h"
 
 #include "error_handling.h"
-#include "ghidra_compat.h"
-typedef int code();
-int ov70_02241868(int param_1, int param_2);
-// FUNCTION ov70_02241868: matching C (r2)
+typedef struct UnkStruct_ov70_02241868_Pokemon {
+    u8 bytes[0x124];
+} UnkStruct_ov70_02241868_Pokemon;
+typedef struct UnkStruct_ov70_02241868_Listing {
+    UnkStruct_ov70_02241868_Pokemon pokemon;
+} UnkStruct_ov70_02241868_Listing;
+typedef struct UnkStruct_ov70_02241868 {
+    u8 pad_0000[0x12C];
+    s32 selectedSearchResult;
+    u8 pad_0130[0x0C];
+    UnkStruct_ov70_02241868_Listing receivedListing;
+    UnkStruct_ov70_02241868_Listing searchResults[];
+} UnkStruct_ov70_02241868;
+void *ov70_02241868(UnkStruct_ov70_02241868 *appState, int screenArgument);
+// FUNCTION ov70_02241868: matching C (twin)
 #pragma force_active on
-int ov70_02241868(int param_1, int param_2)
+void *ov70_02241868(UnkStruct_ov70_02241868 *appState, int screenArgument) {
+    if (screenArgument == 9) {
+        return appState->searchResults[appState->selectedSearchResult].pokemon.bytes;
+    } else if (screenArgument == 10) {
+        return appState->receivedListing.pokemon.bytes;
+    } else if (screenArgument == 8) {
+        return appState->receivedListing.pokemon.bytes;
+    }
 
-{
-    if (param_2 == 9) {
-        return param_1 + 0x260 + *(int *)(param_1 + 300) * 0x124;
-    }
-    if (param_2 == 10) {
-        return param_1 + 0x13c;
-    }
-    if (param_2 == 8) {
-        return param_1 + 0x13c;
-    }
     GF_AssertFail();
-    return 0;
+    return NULL;
 }
 #pragma force_active reset

@@ -4,27 +4,20 @@
 #include "global.h"
 
 #include "bg_window.h"
-#include "ghidra_compat.h"
 #include "party.h"
 #include "pm_string.h"
 #include "pokemon.h"
-typedef int code();
-undefined4 ov65_0221FB4C();
-void ov65_0221D5FC(undefined4 param_1, undefined4 param_2, undefined4 param_3, undefined4 param_4, undefined4 param_5);
-// FUNCTION ov65_0221D5FC: matching C (r2)
+#include "text.h"
+void ov65_0221FB4C(Window *window, String *str, int unused, u32 textSpeed, int xOrCenter, int yOffset);
+void ov65_0221D5FC(Window *window, Party *party, int slot, int unused, int xOrCenter);
+// FUNCTION ov65_0221D5FC: matching C (twin)
 #pragma force_active on
-void ov65_0221D5FC(undefined4 param_1, undefined4 param_2, undefined4 param_3, undefined4 param_4, undefined4 param_5)
+void ov65_0221D5FC(Window *window, Party *party, int slot, int unused, int xOrCenter) {
+    String *str = String_New(20, HEAP_ID_26);
 
-{
-    undefined4 uVar1;
-    undefined4 uVar2;
-
-    uVar1 = String_New(0x14, 0x1a);
-    uVar2 = Party_GetMonByIndex(param_2, param_3);
-    GetMonData(uVar2, 0x77, uVar1);
-    FillWindowPixelBuffer(param_1, 0);
-    ov65_0221FB4C(param_1, uVar1, param_4, 0, param_5, 1);
-    String_Delete(uVar1);
-    return;
+    GetMonData(Party_GetMonByIndex(party, slot), MON_DATA_NICKNAME_STRING, str);
+    FillWindowPixelBuffer(window, 0);
+    ov65_0221FB4C(window, str, unused, TEXT_SPEED_INSTANT, xOrCenter, 1);
+    String_Delete(str);
 }
 #pragma force_active reset

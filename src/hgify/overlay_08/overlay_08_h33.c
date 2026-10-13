@@ -3,28 +3,31 @@
 #pragma thumb on
 #include "global.h"
 
-#include "ghidra_compat.h"
 #include "message_format.h"
 #include "message_printer.h"
 #include "msgdata.h"
 #include "pm_string.h"
-typedef void code(void);
-void ov08_0221D0F4(int *param_1);
-// FUNCTION ov08_0221D0F4: matching C (r2)
+
+typedef struct UnkStruct_ov08_0221D0F4_Context {
+    u8 unk0[0xC];
+    enum HeapID heapID;
+} UnkStruct_ov08_0221D0F4_Context;
+
+typedef struct UnkStruct_ov08_0221D0F4 {
+    UnkStruct_ov08_0221D0F4_Context *context;
+    u8 unk4[0x1FA4 - 0x4];
+    MessagePrinter *printer;
+    MsgData *messageLoader;
+    MessageFormat *stringTemplate;
+    String *string;
+} UnkStruct_ov08_0221D0F4;
+
+// FUNCTION ov08_0221D0F4: matching C (twin)
 #pragma force_active on
-void ov08_0221D0F4(int *param_1)
-
-{
-    int iVar1;
-
-    iVar1 = NewMsgDataFromNarc(0, 0x1b, 6, *(undefined4 *)(*param_1 + 0xc));
-    param_1[0x7ea] = iVar1;
-    iVar1 = MessagePrinter_New(0xf, 0xe, 0, *(undefined4 *)(*param_1 + 0xc));
-    param_1[0x7e9] = iVar1;
-    iVar1 = MessageFormat_New(*(undefined4 *)(*param_1 + 0xc));
-    param_1[0x7eb] = iVar1;
-    iVar1 = String_New(0x200, *(undefined4 *)(*param_1 + 0xc));
-    param_1[0x7ec] = iVar1;
-    return;
+void ov08_0221D0F4(UnkStruct_ov08_0221D0F4 *param0) {
+    param0->messageLoader = NewMsgDataFromNarc(0, 0x1B, 6, param0->context->heapID);
+    param0->printer = MessagePrinter_New(15, 14, 0, param0->context->heapID);
+    param0->stringTemplate = MessageFormat_New(param0->context->heapID);
+    param0->string = String_New(512, param0->context->heapID);
 }
 #pragma force_active reset

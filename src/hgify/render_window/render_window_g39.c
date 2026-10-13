@@ -4,16 +4,19 @@
 #include "global.h"
 
 #include "bg_window.h"
-#include "ghidra_compat.h"
-typedef int code();
-void sub_0200F9DC(int param_1);
-// FUNCTION sub_0200F9DC: matching C (r4)
-#pragma force_active on
-void sub_0200F9DC(int param_1)
 
-{
-    FillBgTilemapRect(*(BgConfig **)(param_1 + 0x168), *(byte *)(param_1 + 0x16c), 0, *(unsigned char *)(param_1 + 0x16d) - 1, *(unsigned char *)(param_1 + 0x16e) - 1, 0xc, 0xc, 0);
-    ScheduleBgTilemapBufferTransfer(*(BgConfig **)(param_1 + 0x168), *(byte *)(param_1 + 0x16c));
-    return;
+typedef struct UnkStruct_sub_0200F9DC {
+    u8 unk_00[0x168];
+    BgConfig *bgConfig;
+    u8 bgLayer;
+    u8 x;
+    u8 y;
+} UnkStruct_sub_0200F9DC;
+
+// FUNCTION sub_0200F9DC: matching C (twin)
+#pragma force_active on
+void sub_0200F9DC(UnkStruct_sub_0200F9DC *preview) {
+    FillBgTilemapRect(preview->bgConfig, preview->bgLayer, 0, preview->x - 1, preview->y - 1, 0xc, 0xc, 0);
+    ScheduleBgTilemapBufferTransfer(preview->bgConfig, preview->bgLayer);
 }
 #pragma force_active reset

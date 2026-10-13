@@ -3,23 +3,31 @@
 #pragma thumb on
 #include "global.h"
 
-#include "ghidra_compat.h"
 #include "sprite.h"
-typedef int code();
-undefined4 ov48_0225AEA8();
-undefined4 ov48_0225B010();
-undefined4 ov48_0225ADBC(int param_1, int param_2, undefined4 param_3, undefined4 param_4);
-// FUNCTION ov48_0225ADBC: matching C (r4)
-#pragma force_active on
-undefined4 ov48_0225ADBC(int param_1, int param_2, undefined4 param_3, undefined4 param_4)
 
-{
-    if (*(unsigned char *)(param_1 + param_2 + 0x34) == '\0') {
+typedef struct UnkStruct_ov48_0225ADBC {
+    u8 unk_00[3][0x10];
+    u8 unk_30[4];
+    u8 unk_34[3];
+    u8 unk_37;
+    u8 unk_38[3];
+    u8 unk_3B;
+    Sprite *unk_3C[3];
+} UnkStruct_ov48_0225ADBC;
+
+void ov48_0225AEA8(u8 *param0, u32 param1);
+void ov48_0225B010(UnkStruct_ov48_0225ADBC *param0, u32 param1);
+// FUNCTION ov48_0225ADBC: matching C (twin)
+#pragma force_active on
+BOOL ov48_0225ADBC(UnkStruct_ov48_0225ADBC *param0, u32 param1, u32 param2) {
+    if (param0->unk_34[param1] == 0) {
         return 0;
     }
-    ov48_0225AEA8(param_1 + param_2 * 0x10, param_3);
-    Sprite_SetDrawFlag(*(undefined4 *)(param_1 + (uint) * (byte *)(param_1 + param_2 + 0x38) * 4 + 0x3c), 1);
-    ov48_0225B010(param_1, param_2);
+
+    ov48_0225AEA8(param0->unk_00[param1], param2);
+    Sprite_SetDrawFlag(param0->unk_3C[param0->unk_38[param1]], TRUE);
+    ov48_0225B010(param0, param1);
+
     return 1;
 }
 #pragma force_active reset

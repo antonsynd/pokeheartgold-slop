@@ -4,35 +4,30 @@
 #include "global.h"
 
 #include "error_handling.h"
-#include "ghidra_compat.h"
-typedef int code();
-extern int _021D10A0;
-void sub_02015354(int param_1);
-// FUNCTION sub_02015354: matching C (r2)
+#include "unk_02014DA0.h"
+
+typedef struct UnkStruct_sub_02015354 {
+    u8 unk_00[0x58];
+    NNSGfdTexKey textureKeys[0x10];
+} UnkStruct_sub_02015354;
+
+extern UnkStruct_sub_02015354 *_021D10A0;
+
+// FUNCTION sub_02015354: matching C (twin)
 #pragma force_active on
-void sub_02015354(int param_1)
+void sub_02015354(NNSGfdTexKey key) {
+    GF_ASSERT(key != NNS_GFD_ALLOC_ERROR_TEXKEY);
+    GF_ASSERT(_021D10A0 != NULL);
 
-{
-    int iVar1;
-    int iVar2;
+    UnkStruct_sub_02015354 *particleSystem = _021D10A0;
 
-    if (param_1 == 0) {
-        GF_AssertFail();
-    }
-    if (_021D10A0 == 0) {
-        GF_AssertFail();
-    }
-    iVar1 = 0;
-    iVar2 = _021D10A0;
-    do {
-        if (*(int *)(iVar2 + 0x58) == 0) {
-            *(int *)(_021D10A0 + iVar1 * 4 + 0x58) = param_1;
+    for (int i = 0; i < 0x10; i++) {
+        if (particleSystem->textureKeys[i] == NNS_GFD_ALLOC_ERROR_TEXKEY) {
+            particleSystem->textureKeys[i] = key;
             return;
         }
-        iVar1 = iVar1 + 1;
-        iVar2 = iVar2 + 4;
-    } while (iVar1 < 0x10);
-    GF_AssertFail();
-    return;
+    }
+
+    GF_ASSERT(FALSE);
 }
 #pragma force_active reset

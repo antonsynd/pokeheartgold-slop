@@ -3,26 +3,36 @@
 #pragma thumb on
 #include "global.h"
 
-#include "error_handling.h"
-#include "ghidra_compat.h"
-typedef void code(void);
-undefined4 ov07_02222558(undefined2 *param_1);
-// FUNCTION ov07_02222558: matching C (r2)
-#pragma force_active on
-undefined4 ov07_02222558(undefined2 *param_1)
+#include "assert.h"
 
-{
-    if (param_1 == (undefined2 *)0x0) {
-        GF_AssertFail();
+typedef struct UnkStruct_ov07_02222558 {
+    s16 x;
+    s16 y;
+    s32 data[8];
+} UnkStruct_ov07_02222558;
+
+enum {
+    XY_PARAM_STEPS = 0,
+    XY_PARAM_STEP_SIZE = 1,
+    XY_PARAM_CUR_X = 3,
+    XY_PARAM_CUR_Y = 4,
+};
+
+// FUNCTION ov07_02222558: matching C (twin)
+#pragma force_active on
+BOOL ov07_02222558(UnkStruct_ov07_02222558 *ctx) {
+    GF_ASSERT(ctx);
+
+    if (ctx->data[XY_PARAM_STEPS]) {
+        ctx->data[XY_PARAM_STEPS]--;
+        ctx->data[XY_PARAM_CUR_X] += ctx->data[XY_PARAM_STEP_SIZE];
+        ctx->data[XY_PARAM_CUR_Y] += ctx->data[XY_PARAM_STEP_SIZE];
+        ctx->x = (ctx->data[XY_PARAM_CUR_X] >> 0xc);
+        ctx->y = (ctx->data[XY_PARAM_CUR_Y] >> 0xc);
+
+        return TRUE;
     }
-    if (*(int *)(param_1 + 2) != 0) {
-        *(int *)(param_1 + 2) = *(int *)(param_1 + 2) + -1;
-        *(int *)(param_1 + 8) = *(int *)(param_1 + 8) + *(int *)(param_1 + 4);
-        *(int *)(param_1 + 10) = *(int *)(param_1 + 10) + *(int *)(param_1 + 4);
-        *param_1 = (short)(*(int *)(param_1 + 8) >> 0xc);
-        param_1[1] = (short)(*(int *)(param_1 + 10) >> 0xc);
-        return 1;
-    }
-    return 0;
+
+    return FALSE;
 }
 #pragma force_active reset

@@ -2,16 +2,26 @@
 #pragma warning_errors off
 #pragma thumb on
 #include "global.h"
-void ov81_02240628(u8 *param_1, int param_2, u8 param_3, u32 param_4, u32 param_5);
-// FUNCTION ov81_022405F0: matching C (agent11)
+
+#include "gf_gfx_planes.h"
+
+typedef struct UnkStruct_ov81_022405F0 {
+    u8 unk_00[0x14];
+    u32 wheelPaletteCounter;
+} UnkStruct_ov81_022405F0;
+
+void ov81_02240628(UnkStruct_ov81_022405F0 *app, int bgLayer, u8 palette, u32 width, u32 height);
+// FUNCTION ov81_022405F0: matching C (twin)
 #pragma force_active on
-void ov81_022405F0(u8 *param_1) {
-    if ((*(u32 *)(param_1 + 0x14) & 3) == 0) {
-        if ((*(u32 *)(param_1 + 0x14) >> 2) >= 4) {
-            *(u32 *)(param_1 + 0x14) = 0;
+void ov81_022405F0(UnkStruct_ov81_022405F0 *app) {
+    if (app->wheelPaletteCounter % 4 == 0) {
+        if (app->wheelPaletteCounter / 4 >= 4) {
+            app->wheelPaletteCounter = 0;
         }
-        ov81_02240628(param_1, 7, (*(u32 *)(param_1 + 0x14) >> 2) + 2, 0x20, 0x20);
+
+        ov81_02240628(app, GF_BG_LYR_SUB_3, (app->wheelPaletteCounter / 4) + 2, 32, 32);
     }
-    *(u32 *)(param_1 + 0x14) = *(u32 *)(param_1 + 0x14) + 1;
+
+    app->wheelPaletteCounter++;
 }
 #pragma force_active reset

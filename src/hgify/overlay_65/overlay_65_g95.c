@@ -7,16 +7,19 @@
 #include "font.h"
 #include "text.h"
 // clang-format on
-u8 ov65_0221FB4C(Window *window, String *str, int unused, u32 textSpeed, int xOrCenter, int yOffset);
-// FUNCTION ov65_0221FB4C: matching C (r0)
+void ov65_0221FB4C(Window *window, String *str, int unused, u32 textSpeed, int xOrCenter, int yOffset);
+// FUNCTION ov65_0221FB4C: matching C (twin)
 #pragma force_active on
-u8 ov65_0221FB4C(Window *window, String *str, int unused, u32 textSpeed, int xOrCenter, int yOffset) {
-    int x = xOrCenter;
+void ov65_0221FB4C(Window *window, String *str, int unused, u32 textSpeed, int xOrCenter, int yOffset) {
+    int xOffset = 0;
 
     if (xOrCenter == 1) {
-        u32 strWidth = FontID_String_GetWidth(0, str, 0);
-        x = ((int)(window->width * 8) - (int)strWidth) / 2;
+        int strWidth = FontID_String_GetWidth(0, str, 0);
+        xOffset = ((window->width * 8) - strWidth) / 2;
+    } else {
+        xOffset = xOrCenter;
     }
-    return AddTextPrinterParameterizedWithColor(window, 0, str, x, yOffset, textSpeed, 0xB0C00, NULL);
+
+    AddTextPrinterParameterizedWithColor(window, 0, str, xOffset, yOffset, textSpeed, MAKE_TEXT_COLOR(11, 12, 0), NULL);
 }
 #pragma force_active reset

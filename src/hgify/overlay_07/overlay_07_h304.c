@@ -3,26 +3,39 @@
 #pragma thumb on
 #include "global.h"
 
-#include "error_handling.h"
-#include "ghidra_compat.h"
-typedef void code(void);
-undefined4 ov07_0222260C(undefined2 *param_1);
-// FUNCTION ov07_0222260C: matching C (r2)
-#pragma force_active on
-undefined4 ov07_0222260C(undefined2 *param_1)
+#include "assert.h"
 
-{
-    if (param_1 == (undefined2 *)0x0) {
-        GF_AssertFail();
+typedef struct UnkStruct_ov07_0222260C {
+    s16 x;
+    s16 y;
+    s32 data[8];
+} UnkStruct_ov07_0222260C;
+
+enum {
+    XY_PARAM_STEPS = 0,
+    XY_PARAM_STEP_SIZE,
+    XY_PARAM_STEP_SIZE_X = 1,
+    XY_PARAM_STEP_SIZE_Y,
+    XY_PARAM_CUR_X,
+    XY_PARAM_CUR_Y,
+};
+
+BOOL ov07_0222260C(UnkStruct_ov07_0222260C *ctx);
+// FUNCTION ov07_0222260C: matching C (twin)
+#pragma force_active on
+BOOL ov07_0222260C(UnkStruct_ov07_0222260C *ctx) {
+    GF_ASSERT(ctx);
+
+    if (ctx->data[XY_PARAM_STEPS]) {
+        ctx->data[XY_PARAM_STEPS]--;
+        ctx->data[XY_PARAM_CUR_X] += ctx->data[XY_PARAM_STEP_SIZE_X];
+        ctx->data[XY_PARAM_CUR_Y] += ctx->data[XY_PARAM_STEP_SIZE_Y];
+        ctx->x = (ctx->data[XY_PARAM_CUR_X] >> FX32_SHIFT);
+        ctx->y = (ctx->data[XY_PARAM_CUR_Y] >> FX32_SHIFT);
+
+        return TRUE;
     }
-    if (*(int *)(param_1 + 2) != 0) {
-        *(int *)(param_1 + 2) = *(int *)(param_1 + 2) + -1;
-        *(int *)(param_1 + 8) = *(int *)(param_1 + 8) + *(int *)(param_1 + 4);
-        *(int *)(param_1 + 10) = *(int *)(param_1 + 10) + *(int *)(param_1 + 6);
-        *param_1 = (short)(*(int *)(param_1 + 8) >> 0xc);
-        param_1[1] = (short)(*(int *)(param_1 + 10) >> 0xc);
-        return 1;
-    }
-    return 0;
+
+    return FALSE;
 }
 #pragma force_active reset

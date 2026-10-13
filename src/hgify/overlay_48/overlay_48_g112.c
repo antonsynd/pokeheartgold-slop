@@ -3,27 +3,39 @@
 #pragma thumb on
 #include "global.h"
 
-#include "ghidra_compat.h"
 #include "sprite.h"
-typedef int code();
-undefined4 ov48_0225AE60();
-undefined4 ov48_0225B010();
-int ov48_0225ADF8(int param_1, int param_2, undefined4 param_3);
-// FUNCTION ov48_0225ADF8: matching C (r4)
+
+typedef struct UnkStruct_ov48_0225ADF8_elem {
+    u8 unk_00[0x10];
+} UnkStruct_ov48_0225ADF8_elem;
+
+typedef struct UnkStruct_ov48_0225ADF8 {
+    UnkStruct_ov48_0225ADF8_elem unk_00[3];
+    u8 unk_30[0x34 - 0x30];
+    u8 unk_34[4];
+    u8 unk_38[4];
+    Sprite *unk_3C[4];
+} UnkStruct_ov48_0225ADF8;
+
+int ov48_0225AE60(UnkStruct_ov48_0225ADF8_elem *elem, void *param1);
+void ov48_0225B010(UnkStruct_ov48_0225ADF8 *param0, u32 param1);
+
+// FUNCTION ov48_0225ADF8: matching C (twin)
 #pragma force_active on
-int ov48_0225ADF8(int param_1, int param_2, undefined4 param_3)
+BOOL ov48_0225ADF8(UnkStruct_ov48_0225ADF8 *param0, u32 param1, void *param2) {
+    int v0;
 
-{
-    int iVar1;
-
-    if (*(unsigned char *)(param_1 + param_2 + 0x34) == '\0') {
+    if (param0->unk_34[param1] == 0) {
         return 1;
     }
-    iVar1 = ov48_0225AE60(param_1 + param_2 * 0x10, param_3);
-    ov48_0225B010(param_1, param_2);
-    if (iVar1 == 1) {
-        Sprite_SetDrawFlag(*(undefined4 *)(param_1 + (uint) * (byte *)(param_1 + param_2 + 0x38) * 4 + 0x3c), 0);
+
+    v0 = ov48_0225AE60(&param0->unk_00[param1], param2);
+    ov48_0225B010(param0, param1);
+
+    if (v0 == 1) {
+        Sprite_SetDrawFlag(param0->unk_3C[param0->unk_38[param1]], 0);
     }
-    return iVar1;
+
+    return v0;
 }
 #pragma force_active reset

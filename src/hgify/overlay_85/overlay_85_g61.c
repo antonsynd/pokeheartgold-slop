@@ -4,28 +4,31 @@
 #include "global.h"
 
 #include "camera.h"
-#include "ghidra_compat.h"
 #include "sprite_system.h"
 #include "unk_02026E30.h"
-typedef int code();
-undefined4 ov85_021E7628();
-undefined4 ov85_021E782C();
-void ov85_021E67F4(int param_1);
-// FUNCTION ov85_021E67F4: matching C (r2)
-#pragma force_active on
-void ov85_021E67F4(int param_1)
 
-{
+typedef struct UnkStruct_ov85_021E67F4 {
+    u8 unk0[0xD98];
+    SpriteManager *unk_D98;
+} UnkStruct_ov85_021E67F4;
+
+void ov85_021E7628(UnkStruct_ov85_021E67F4 *param0);
+void ov85_021E782C(UnkStruct_ov85_021E67F4 *param0);
+// FUNCTION ov85_021E67F4: matching C (twin)
+#pragma force_active on
+void ov85_021E67F4(UnkStruct_ov85_021E67F4 *param0) {
     Thunk_G3X_Reset();
     Camera_PushLookAtToNNSGlb();
-    NNS_G3dGlbLightVector(0, 0, 0xfffff000, 0);
-    NNS_G3dGlbLightColor(0, 0x7fff);
-    NNS_G3dGlbMaterialColorDiffAmb(0x7fff, 0x7fff, 0);
-    NNS_G3dGlbMaterialColorSpecEmi(0x7fff, 0x7fff, 0);
-    ov85_021E7628(param_1);
-    ov85_021E782C(param_1);
+
+    NNS_G3dGlbLightVector(0, 0, -0x1000, 0);
+    NNS_G3dGlbLightColor(0, RGB(31, 31, 31));
+    NNS_G3dGlbMaterialColorDiffAmb(RGB(31, 31, 31), RGB(31, 31, 31), 0);
+    NNS_G3dGlbMaterialColorSpecEmi(RGB(31, 31, 31), RGB(31, 31, 31), 0);
+
+    ov85_021E7628(param0);
+    ov85_021E782C(param0);
+
     RequestSwap3DBuffers(0, 0);
-    SpriteSystem_DrawSprites(*(undefined4 *)(param_1 + 0xd98));
-    return;
+    SpriteSystem_DrawSprites(param0->unk_D98);
 }
 #pragma force_active reset

@@ -3,36 +3,39 @@
 #pragma thumb on
 #include "global.h"
 
-#include "ghidra_compat.h"
 #include "party.h"
-typedef int code();
-undefined4 ov65_0221F79C(int param_1);
-// FUNCTION ov65_0221F79C: matching C (r2)
+
+typedef struct {
+    u8 isEgg;
+    u8 unk_01[0x10 - 1];
+} UnkStruct_ov65_0221F79C_displayData;
+
+typedef struct {
+    u8 unk_00[0x94];
+    int selectedSlot[1];
+    u8 unk_98[0x6A1 - 0x98];
+    UnkStruct_ov65_0221F79C_displayData monDisplayData[0x1B];
+    u8 unk_851[0x2224 - 0x851];
+    Party *playerParty;
+} UnkStruct_ov65_0221F79C;
+
+BOOL ov65_0221F79C(UnkStruct_ov65_0221F79C *tradeRoom);
+// FUNCTION ov65_0221F79C: matching C (twin)
 #pragma force_active on
-undefined4 ov65_0221F79C(int param_1)
+BOOL ov65_0221F79C(UnkStruct_ov65_0221F79C *tradeRoom) {
+    int otherEggCount = 0;
+    int partyCount = Party_GetCount(tradeRoom->playerParty);
 
-{
-    int iVar1;
-    int *piVar2;
-    int iVar3;
-    int iVar4;
+    for (int i = 0; i < partyCount; i++) {
+        if (i != tradeRoom->selectedSlot[0]) {
+            otherEggCount += tradeRoom->monDisplayData[i].isEgg;
+        }
+    }
 
-    iVar4 = 0;
-    iVar1 = Party_GetCount(*(undefined4 *)(param_1 + 0x2224));
-    iVar3 = 0;
-    if (0 < iVar1) {
-        piVar2 = (int *)(param_1 + 0x94);
-        do {
-            if (iVar3 != *piVar2) {
-                iVar4 = iVar4 + (uint) * (byte *)(param_1 + 0x6a1);
-            }
-            iVar3 = iVar3 + 1;
-            param_1 = param_1 + 0x10;
-        } while (iVar3 < iVar1);
+    if (otherEggCount == (partyCount - 1)) {
+        return FALSE;
     }
-    if (iVar4 == iVar1 + -1) {
-        return 0;
-    }
-    return 1;
+
+    return TRUE;
 }
 #pragma force_active reset

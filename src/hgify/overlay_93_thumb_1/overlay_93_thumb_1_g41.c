@@ -9,18 +9,28 @@ typedef struct UnkStruct_ov93_0225E1A0_Entry {
     u32 unk_0C;
     u32 unk_10;
 } UnkStruct_ov93_0225E1A0_Entry;
-UnkStruct_ov93_0225E1A0_Entry *ov93_0225E1A0(char *self, s32 param1);
-// FUNCTION ov93_0225E1A0: matching C (r2)
+typedef struct UnkStruct_ov93_0225E1A0_Sub {
+    UnkStruct_ov93_0225E1A0_Entry unk_00[60];
+} UnkStruct_ov93_0225E1A0_Sub;
+typedef struct UnkStruct_ov93_0225E1A0 {
+    u8 pad_0000[0x1C1C];
+    UnkStruct_ov93_0225E1A0_Sub unk_1C1C[4];
+    u8 pad_2EDC[0x38];
+    s32 unk_2F14[4];
+} UnkStruct_ov93_0225E1A0;
+UnkStruct_ov93_0225E1A0_Entry *ov93_0225E1A0(UnkStruct_ov93_0225E1A0 *param0, s32 param1);
+// FUNCTION ov93_0225E1A0: matching C (twin)
 #pragma force_active on
-UnkStruct_ov93_0225E1A0_Entry *ov93_0225E1A0(char *self, s32 param1) {
-    s32 *counter = (s32 *)(self + 0x2F14);
-    s32 v1 = counter[param1] % 60;
-    UnkStruct_ov93_0225E1A0_Entry *v0 = (UnkStruct_ov93_0225E1A0_Entry *)(self + 0x1C1C + param1 * 0x4B0) + v1;
+UnkStruct_ov93_0225E1A0_Entry *ov93_0225E1A0(UnkStruct_ov93_0225E1A0 *param0, s32 param1) {
+    UnkStruct_ov93_0225E1A0_Entry *v0;
+    s32 v1 = param0->unk_2F14[param1] % 60;
+    v0 = &param0->unk_1C1C[param1].unk_00[v1];
 
     if (v0->unk_00 != 0) {
-        counter[param1] = counter[param1] + 1;
+        param0->unk_2F14[param1]++;
         return v0;
     }
-    return 0;
+
+    return NULL;
 }
 #pragma force_active reset

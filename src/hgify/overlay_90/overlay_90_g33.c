@@ -3,34 +3,37 @@
 #pragma thumb on
 #include "global.h"
 
-#include "ghidra_compat.h"
 #include "heap.h"
 #include "unk_0200A090.h"
-typedef void code(void);
-typedef struct Ent90 {
-    int state;
-    u8 pad[0x34];
-} Ent90;
-typedef struct Obj90 {
-    void *res[4];
-    Ent90 *ents;
-    u32 count;
-} Obj90;
-void ov90_02258FB8(Obj90 *, Ent90 *);
-// FUNCTION ov90_02258E10: matching C (agent3)
-#pragma force_active on
-void ov90_02258E10(Obj90 *p) {
-    u32 i;
-    int j;
 
-    for (i = 0; i < p->count; i++) {
-        if (p->ents[i].state == 1) {
-            ov90_02258FB8(p, &p->ents[i]);
+typedef struct UnkStruct_ov90_02258E10_Entry {
+    int unk_00;
+    u8 unk_04[0x34];
+} UnkStruct_ov90_02258E10_Entry;
+
+typedef struct UnkStruct_ov90_02258E10 {
+    void *unk_00[4];
+    UnkStruct_ov90_02258E10_Entry *unk_10;
+    u32 unk_14;
+} UnkStruct_ov90_02258E10;
+
+void ov90_02258FB8(UnkStruct_ov90_02258E10 *param0, UnkStruct_ov90_02258E10_Entry *param1);
+// FUNCTION ov90_02258E10: matching C (twin)
+#pragma force_active on
+void ov90_02258E10(UnkStruct_ov90_02258E10 *param0) {
+    u32 v0;
+    int v1;
+
+    for (v0 = 0; v0 < param0->unk_14; v0++) {
+        if (param0->unk_10[v0].unk_00 == 1) {
+            ov90_02258FB8(param0, &param0->unk_10[v0]);
         }
     }
-    for (j = 0; j < 4; j++) {
-        Destroy2DGfxResObjMan(p->res[j]);
+
+    for (v1 = 0; v1 < 4; v1++) {
+        Destroy2DGfxResObjMan(param0->unk_00[v1]);
     }
-    Heap_Free(p->ents);
+
+    Heap_Free(param0->unk_10);
 }
 #pragma force_active reset

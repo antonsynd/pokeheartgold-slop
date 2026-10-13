@@ -4,23 +4,17 @@
 #include "global.h"
 
 #include "font.h"
-#include "ghidra_compat.h"
 #include "pm_string.h"
 #include "text.h"
-typedef int code();
-void ov51_021E74F4(undefined4 param_1, int param_2, int param_3, undefined4 param_4, undefined4 param_5, undefined4 param_6, undefined1 param_7, undefined4 param_8);
-// FUNCTION ov51_021E74F4: matching C (r3)
+
+void ov51_021E74F4(Window *window, u32 windowWidth, u32 endXOffset, u32 yOffset, String *string, u32 num, u8 maxDigits, PrintingMode paddingMode);
+// FUNCTION ov51_021E74F4: matching C (twin)
 #pragma force_active on
-void ov51_021E74F4(undefined4 param_1, int param_2, int param_3, undefined4 param_4, undefined4 param_5, undefined4 param_6, undefined1 param_7, undefined4 param_8)
+void ov51_021E74F4(Window *window, u32 windowWidth, u32 endXOffset, u32 yOffset, String *string, u32 num, u8 maxDigits, PrintingMode paddingMode) {
+    u32 width;
 
-{
-    int iVar1;
-    undefined4 uVar2;
-
-    uVar2 = param_4;
-    String16_FormatInteger(param_5, param_6, param_7, param_8, 1);
-    iVar1 = FontID_String_GetWidth(0, param_5, 0);
-    AddTextPrinterParameterizedWithColor(param_1, 0, param_5, param_2 - (iVar1 + param_3), param_4, 0xff, 0x10200, 0);
-    return;
+    String16_FormatInteger(string, num, maxDigits, paddingMode, 1);
+    width = FontID_String_GetWidth(0, string, 0);
+    AddTextPrinterParameterizedWithColor(window, 0, string, windowWidth - (width + endXOffset), yOffset, TEXT_SPEED_NOTRANSFER, MAKE_TEXT_COLOR(1, 2, 0), NULL);
 }
 #pragma force_active reset

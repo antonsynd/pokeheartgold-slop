@@ -8,38 +8,40 @@
 #include "frontier/frontier.h"
 #include "screen_fade.h"
 // clang-format on
+
 typedef struct FrontierScriptManager {
     void *frontier;
 } FrontierScriptManager;
+
 typedef struct FrontierScriptContext_ov80_0222DCF0 {
     FrontierScriptManager *scriptMan;
 } FrontierScriptContext_ov80_0222DCF0;
-typedef struct {
-    u8 filler_00[8];
-    int state;
-    u8 filler_0C[0x14 - 0x0C];
-    u32 prevData;
+
+typedef struct UnkStruct_ov80_0222DCF0 {
+    u8 unk_00[8];
+    int unk_08;
+    u8 unk_0C[0x14 - 0x0C];
+    u32 unk_14;
 } UnkStruct_ov80_0222DCF0;
-typedef int (*UnkFn_ov80_0222DCF0)(void *, void *, u32);
+
+typedef BOOL (*UnkFn_ov80_0222DCF0)(UnkStruct_ov80_0222DCF0 *);
 extern UnkFn_ov80_0222DCF0 ov80_0223B9EC[];
-// FUNCTION ov80_0222DCF0: matching C (agent11)
+
+// FUNCTION ov80_0222DCF0: matching C (twin)
 #pragma force_active on
-BOOL ov80_0222DCF0(FrontierScriptContext *ctx) {
-    FrontierScriptContext_ov80_0222DCF0 *c = (FrontierScriptContext_ov80_0222DCF0 *)ctx;
-    UnkStruct_ov80_0222DCF0 *work = Frontier_GetData(c->scriptMan->frontier);
-    UnkFn_ov80_0222DCF0 fn;
-    int result;
+BOOL ov80_0222DCF0(FrontierScriptContext_ov80_0222DCF0 *ctx) {
+    UnkStruct_ov80_0222DCF0 *v1 = Frontier_GetData(ctx->scriptMan->frontier);
+    BOOL v0;
 
-    fn = ov80_0223B9EC[work->state];
-    result = fn(work, (void *)fn, (u32)work->state << 2);
+    v0 = ov80_0223B9EC[v1->unk_08](v1);
 
-    if (result == 0) {
+    if (v0 == 0) {
         sub_0200FBF4(0, 0);
         sub_0200FBF4(1, 0);
-        Frontier_SetData(c->scriptMan->frontier, work->prevData);
-        Heap_Free(work);
+        Frontier_SetData(ctx->scriptMan->frontier, v1->unk_14);
+        Heap_Free(v1);
     }
 
-    return result == 0;
+    return !v0;
 }
 #pragma force_active reset

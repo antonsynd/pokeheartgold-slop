@@ -5,31 +5,32 @@
 
 #include "party.h"
 #include "pokemon.h"
-struct Sub0208A520 {
-    int field_0;
-    u8 pad4[0x11 - 4];
-    u8 type;
-    u8 pad12[0x14 - 0x12];
-    u8 field_14;
-};
-// FUNCTION sub_0208A520: matching C (agent7)
+
+typedef struct {
+    void *monData;
+    u8 unk_04[0x11 - 4];
+    u8 dataType;
+    u8 unk_12[0x14 - 0x12];
+    u8 monIndex;
+} UnkStruct_sub_0208A520_data;
+
+typedef struct {
+    u8 unk_00[0x22C];
+    UnkStruct_sub_0208A520_data *data;
+} UnkStruct_sub_0208A520;
+
+// FUNCTION sub_0208A520: matching C (twin)
 #pragma force_active on
-int sub_0208A520(int param_1) {
-    struct Sub0208A520 *p;
-    p = *(struct Sub0208A520 **)(param_1 + 0x22c);
-    switch (p->type) {
-    case 0: {
-        int r = sub_02070D90();
-        return p->field_0 + p->field_14 * r;
-    }
+void *sub_0208A520(UnkStruct_sub_0208A520 *summaryScreen) {
+    switch (summaryScreen->data->dataType) {
+    case 0:
+        return (u8 *)summaryScreen->data->monData + (sub_02070D90() * summaryScreen->data->monIndex);
     case 1:
-        return Party_GetMonByIndex(p->field_0, p->field_14);
-    case 2: {
-        int r = sub_02070D94();
-        return p->field_0 + p->field_14 * r;
+        return Party_GetMonByIndex(summaryScreen->data->monData, summaryScreen->data->monIndex);
+    case 2:
+        return (u8 *)summaryScreen->data->monData + (sub_02070D94() * summaryScreen->data->monIndex);
     }
-    default:
-        return 0;
-    }
+
+    return NULL;
 }
 #pragma force_active reset

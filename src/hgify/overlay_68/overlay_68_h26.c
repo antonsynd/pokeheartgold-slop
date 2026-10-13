@@ -3,23 +3,24 @@
 #pragma thumb on
 #include "global.h"
 
-#include "ghidra_compat.h"
 #include "message_format.h"
 #include "msgdata.h"
 #include "pm_string.h"
-typedef int code();
-void ov68_021E62D4(int param_1, int param_2, int param_3, uint param_4, byte param_5);
-// FUNCTION ov68_021E62D4: matching C (r2)
+
+typedef struct UnkStruct_ov68_021E62D4 {
+    u8 unk0[0xF8];
+    MsgData *messageLoader;
+    MessageFormat *stringTemplate;
+    String *string;
+} UnkStruct_ov68_021E62D4;
+
+// FUNCTION ov68_021E62D4: matching C (twin)
 #pragma force_active on
-void ov68_021E62D4(int param_1, int param_2, int param_3, uint param_4, byte param_5)
+void ov68_021E62D4(UnkStruct_ov68_021E62D4 *controller, u32 entryID, s32 num, u8 maxDigits, u8 paddingMode) {
+    String *string = NewString_ReadMsgData(controller->messageLoader, entryID);
 
-{
-    String *puVar1;
-
-    puVar1 = NewString_ReadMsgData((struct MsgData *)*(undefined **)(param_1 + 0xf8), param_2);
-    BufferIntegerAsString((struct MessageFormat *)*(undefined **)(param_1 + 0xfc), 0, param_3, param_4, (uint)param_5, 1);
-    StringExpandPlaceholders((struct MessageFormat *)*(undefined **)(param_1 + 0xfc), (struct String *)*(undefined **)(param_1 + 0x100), puVar1);
-    String_Delete(puVar1);
-    return;
+    BufferIntegerAsString(controller->stringTemplate, 0, num, maxDigits, (PrintingMode)paddingMode, TRUE);
+    StringExpandPlaceholders(controller->stringTemplate, controller->string, string);
+    String_Delete(string);
 }
 #pragma force_active reset

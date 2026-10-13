@@ -3,27 +3,27 @@
 #pragma thumb on
 #include "global.h"
 
-#include "ghidra_compat.h"
 #include "unk_02013534.h"
-typedef int code();
-void ov41_0224A8D4(int param_1, int param_2, undefined4 param_3, undefined4 param_4);
-// FUNCTION ov41_0224A8D4: matching C (r3)
-#pragma force_active on
-void ov41_0224A8D4(int param_1, int param_2, undefined4 param_3, undefined4 param_4)
 
-{
-    if (param_2 == 0) {
-        sub_020136B4(*(undefined4 *)(param_1 + 0x10), 0, 0xf);
-        TextOBJ_SetPaletteNum(*(undefined4 *)(param_1 + 0x10), 4);
+typedef struct UnkStruct_ov41_0224A8D4 {
+    u8 unk_00[0x10];
+    TextOBJ *unk_10;
+} UnkStruct_ov41_0224A8D4;
+
+// FUNCTION ov41_0224A8D4: matching C (twin)
+#pragma force_active on
+void ov41_0224A8D4(UnkStruct_ov41_0224A8D4 *param0, int param1) {
+    if (param1 == 0) {
+        sub_020136B4(param0->unk_10, 0, 0xf);
+        TextOBJ_SetPaletteNum(param0->unk_10, 4);
         return;
     }
-    if (param_2 == 1) {
-        sub_020136B4(*(undefined4 *)(param_1 + 0x10), 0, 0x13);
+    if (param1 == 1) {
+        sub_020136B4(param0->unk_10, 0, 0x13);
     }
-    if (param_2 == 3) {
-        sub_020136B4(*(undefined4 *)(param_1 + 0x10), 0, 0x13);
-        TextOBJ_SetPaletteNum(*(undefined4 *)(param_1 + 0x10), 3);
+    if (param1 == 3) {
+        sub_020136B4(param0->unk_10, 0, 0x13);
+        TextOBJ_SetPaletteNum(param0->unk_10, 3);
     }
-    return;
 }
 #pragma force_active reset

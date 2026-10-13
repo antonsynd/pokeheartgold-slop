@@ -3,32 +3,31 @@
 #pragma thumb on
 #include "global.h"
 
-#include "ghidra_compat.h"
 #include "heap.h"
 #include "unk_0200A090.h"
-typedef void code(void);
-void ov90_02258DD0(undefined4 *param_1, int param_2, undefined4 param_3);
-// FUNCTION ov90_02258DD0: matching C (r2)
+
+typedef struct UnkStruct_ov90_02258DD0_Entry {
+    u8 unk0[0x38];
+} UnkStruct_ov90_02258DD0_Entry;
+
+typedef struct UnkStruct_ov90_02258DD0 {
+    GF_2DGfxResMan *unk_00[4];
+    UnkStruct_ov90_02258DD0_Entry *unk_10;
+    u32 unk_14;
+} UnkStruct_ov90_02258DD0;
+
+void ov90_02258DD0(UnkStruct_ov90_02258DD0 *param0, u32 param1, enum HeapID heapID);
+// FUNCTION ov90_02258DD0: matching C (twin)
 #pragma force_active on
-void ov90_02258DD0(undefined4 *param_1, int param_2, undefined4 param_3)
+void ov90_02258DD0(UnkStruct_ov90_02258DD0 *param0, u32 param1, enum HeapID heapID) {
+    int i;
 
-{
-    undefined4 uVar1;
-    int iVar2;
-    undefined4 *puVar3;
+    for (i = 0; i < 4; i++) {
+        param0->unk_00[i] = Create2DGfxResObjMan(param1, i, heapID);
+    }
 
-    iVar2 = 0;
-    puVar3 = param_1;
-    do {
-        uVar1 = Create2DGfxResObjMan(param_2, iVar2, param_3);
-        iVar2 = iVar2 + 1;
-        *puVar3 = uVar1;
-        puVar3 = puVar3 + 1;
-    } while (iVar2 < 4);
-    uVar1 = Heap_Alloc(param_3, param_2 * 0x38);
-    param_1[4] = uVar1;
-    memset(uVar1, 0, param_2 * 0x38);
-    param_1[5] = param_2;
-    return;
+    param0->unk_10 = Heap_Alloc(heapID, sizeof(UnkStruct_ov90_02258DD0_Entry) * param1);
+    memset(param0->unk_10, 0, sizeof(UnkStruct_ov90_02258DD0_Entry) * param1);
+    param0->unk_14 = param1;
 }
 #pragma force_active reset

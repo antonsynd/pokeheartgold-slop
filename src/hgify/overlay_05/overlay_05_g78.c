@@ -3,16 +3,30 @@
 #pragma thumb on
 #include "global.h"
 
-#include "ghidra_compat.h"
+#include "bg_window.h"
+#include "msgdata.h"
 #include "unk_0200CE7C.h"
-typedef void code(void);
-void ov05_0221E714(int param_1, undefined4 param_2, undefined4 param_3, undefined4 param_4, undefined4 param_5, int param_6);
-// FUNCTION ov05_0221E714: matching C (r3)
-#pragma force_active on
-void ov05_0221E714(int param_1, undefined4 param_2, undefined4 param_3, undefined4 param_4, undefined4 param_5, int param_6)
 
-{
-    sub_0200CE7C(param_3, 1, *(undefined1 *)(param_1 + param_6 * 0x18 + 0x220), 3, 0, param_1 + 0x10 + (param_6 * 4 + 1) * 0x10, 0, 2);
-    return;
+typedef struct UnkStruct_ov05_0221E714_sub1 {
+    u8 unk_00[0x0C];
+    u8 unk_0C;
+    u8 unk_0D[0x18 - 0x0D];
+} UnkStruct_ov05_0221E714_sub1;
+
+typedef struct UnkStruct_ov05_0221E714 {
+    u8 unk_00[0x10];
+    Window unk_10[32];
+    u32 unk_210;
+    UnkStruct_ov05_0221E714_sub1 unk_214[6];
+} UnkStruct_ov05_0221E714;
+
+// FUNCTION ov05_0221E714: matching C (twin)
+#pragma force_active on
+void ov05_0221E714(UnkStruct_ov05_0221E714 *param0, MsgData *param1, MessagePrinter *param2, void *param3, String *param4, u32 param5) {
+    Window *v0;
+
+    v0 = &param0->unk_10[param5 * 4 + 1];
+
+    sub_0200CE7C(param2, 1, param0->unk_214[param5].unk_0C, 3, 0, v0, 0, 5 - 3);
 }
 #pragma force_active reset

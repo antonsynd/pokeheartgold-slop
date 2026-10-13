@@ -4,22 +4,34 @@
 #include "global.h"
 
 #include "save.h"
-void ov70_02238E50(int *, int, int);
-void ov70_02238F80(int *);
-void ov70_02244FA4(int *, int, int, int, int);
-void ov70_02238D84(int *, int, int);
-// FUNCTION ov70_022408FC: matching C (agent8)
-#pragma force_active on
-int ov70_022408FC(int *param_1, int param_2, int param_3, int param_4) {
-    int iVar1;
 
-    iVar1 = Save_WriteFileAsync(*(int *)(*param_1 + 0x20));
-    if (iVar1 == 2) {
-        ov70_02238E50(param_1, 1, 0);
-        ov70_02238F80(param_1);
-        ov70_02244FA4(param_1, param_1[0x2e8], param_1[10], 1, 0xf0f);
-        ov70_02238D84(param_1, 0x25, 0x1c);
+typedef struct UnkStruct_ov70_022408FC_player {
+    u8 unk_00[0x20];
+    SaveData *saveData;
+} UnkStruct_ov70_022408FC_player;
+
+typedef struct UnkStruct_ov70_022408FC {
+    UnkStruct_ov70_022408FC_player *playerData;
+    u8 unk_04[0x28 - 0x4];
+    int depositReturnError;
+    u8 unk_2C[0xBA0 - 0x2C];
+    void *gtsMessageLoader;
+} UnkStruct_ov70_022408FC;
+
+void ov70_02238E50(UnkStruct_ov70_022408FC *appState, int, int);
+void ov70_02238F80(UnkStruct_ov70_022408FC *appState);
+void ov70_02244FA4(UnkStruct_ov70_022408FC *appState, void *messageLoader, int depositReturnError, int, int);
+void ov70_02238D84(UnkStruct_ov70_022408FC *appState, int, int);
+// FUNCTION ov70_022408FC: matching C (twin)
+#pragma force_active on
+int ov70_022408FC(UnkStruct_ov70_022408FC *appState, int param1, int param2, int param3) {
+    if (Save_WriteFileAsync(appState->playerData->saveData) == 2) {
+        ov70_02238E50(appState, 1, 0);
+        ov70_02238F80(appState);
+        ov70_02244FA4(appState, appState->gtsMessageLoader, appState->depositReturnError, 1, 0xf0f);
+        ov70_02238D84(appState, 0x25, 0x1c);
     }
+
     return 3;
 }
 #pragma force_active reset

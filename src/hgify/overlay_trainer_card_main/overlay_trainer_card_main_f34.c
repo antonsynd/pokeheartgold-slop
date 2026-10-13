@@ -6,14 +6,14 @@
 #include "bg_window.h"
 #include "text.h"
 // clang-format on
-void ov51_021E7664(Window *window, BOOL showColon, String *string);
-// FUNCTION ov51_021E7664: matching C (r0)
+
+// FUNCTION ov51_021E7664: matching C (twin)
 #pragma force_active on
 void ov51_021E7664(Window *window, BOOL showColon, String *string) {
     if (showColon) {
-        AddTextPrinterParameterizedWithColor(window, 0, string, 0xcd, 0, 0, 0x10200, NULL);
+        AddTextPrinterParameterizedWithColor(window, 0, string, 205, 0, TEXT_SPEED_INSTANT, 0x10200, NULL);
     } else {
-        FillWindowPixelRect(window, 0, 0xcd, 0, 5, 0x10);
+        FillWindowPixelRect(window, 0, 205, 0, 5, 0x10);
         CopyWindowToVram(window);
     }
 }

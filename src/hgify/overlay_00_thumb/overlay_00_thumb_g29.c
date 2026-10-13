@@ -3,34 +3,45 @@
 #pragma thumb on
 #include "global.h"
 
-#include "ghidra_compat.h"
 #include "unk_02037C94.h"
-typedef int code();
-undefined4 NNS_FndGetGroupIDForMBlockExpHeap();
+
+typedef u32 DWCAllocType;
+
+typedef struct UnkStruct_ov00_021E6638 {
+    u8 unk_000[0xF94];
+    void *heap1;
+    void *heap2AllocPtr;
+    void *heap2;
+} UnkStruct_ov00_021E6638;
+
 extern int _0221A680;
-void ov00_021E6638(undefined4 param_1, int param_2);
-// FUNCTION ov00_021E6638: matching C (r2)
+
+u16 NNS_FndGetGroupIDForMBlockExpHeap(void *ptr);
+
+// FUNCTION ov00_021E6638: matching C (twin)
 #pragma force_active on
-void ov00_021E6638(undefined4 param_1, int param_2)
+void ov00_021E6638(DWCAllocType allocType, void *ptr, u32 size) {
+    OSIntrMode intrMode;
+    u16 blockGroupID;
 
-{
-    undefined4 uVar1;
-    int iVar2;
-
-    if (param_2 != 0) {
-        uVar1 = OS_DisableInterrupts();
-        iVar2 = NNS_FndGetGroupIDForMBlockExpHeap(param_2);
-        if (iVar2 == 0x10) {
-            if (*(int *)(_0221A680 + 0xf98) == 0) {
-                sub_02039AD8(1);
-                return;
-            }
-            NNS_FndFreeToExpHeap(*(undefined4 *)(_0221A680 + 0xf9c), param_2);
-        } else {
-            NNS_FndFreeToExpHeap(*(undefined4 *)(_0221A680 + 0xf94), param_2);
-        }
-        OS_RestoreInterrupts(uVar1);
+    if (ptr == NULL) {
+        return;
     }
-    return;
+
+    intrMode = OS_DisableInterrupts();
+    blockGroupID = NNS_FndGetGroupIDForMBlockExpHeap(ptr);
+
+    if (blockGroupID == 16) {
+        if (((UnkStruct_ov00_021E6638 *)_0221A680)->heap2AllocPtr == NULL) {
+            sub_02039AD8(1);
+            return;
+        }
+
+        NNS_FndFreeToExpHeap(((UnkStruct_ov00_021E6638 *)_0221A680)->heap2, ptr);
+    } else {
+        NNS_FndFreeToExpHeap(((UnkStruct_ov00_021E6638 *)_0221A680)->heap1, ptr);
+    }
+
+    OS_RestoreInterrupts(intrMode);
 }
 #pragma force_active reset

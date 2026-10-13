@@ -3,34 +3,35 @@
 #pragma thumb on
 #include "global.h"
 
-#include "ghidra_compat.h"
 #include "message_format.h"
 #include "unk_02034354.h"
 #include "unk_02035900.h"
-typedef int code();
-undefined4 ov85_021EA0EC();
-undefined4 ov85_021E9458();
-undefined4 ov85_021E943C();
-undefined4 ov85_021E9A1C(int param_1, undefined4 param_2);
-// FUNCTION ov85_021E9A1C: matching C (r2)
+
+typedef struct {
+    u8 unk_00[0x34];
+    MessageFormat *unk_34;
+    u8 unk_38[0x360 - 0x38];
+    int unk_360;
+} UnkStruct_ov85_021E9A1C;
+
+void ov85_021EA0EC(UnkStruct_ov85_021E9A1C *param0, int arg1, int arg2);
+void ov85_021E9458(UnkStruct_ov85_021E9A1C *param0, int arg1);
+void ov85_021E943C(UnkStruct_ov85_021E9A1C *param0);
+
+// FUNCTION ov85_021E9A1C: matching C (twin)
 #pragma force_active on
-undefined4 ov85_021E9A1C(int param_1, undefined4 param_2)
-
-{
-    int iVar1;
-    undefined4 uVar2;
-
-    iVar1 = sub_0203769C();
-    if (iVar1 == 0) {
-        ov85_021EA0EC(param_1, 5, 0);
+int ov85_021E9A1C(UnkStruct_ov85_021E9A1C *param0, int param1) {
+    if (sub_0203769C() == 0) {
+        ov85_021EA0EC(param0, 5, 0);
     } else {
-        uVar2 = sub_02034818(0);
-        BufferPlayersName(*(undefined4 *)(param_1 + 0x34), 0, uVar2);
-        ov85_021EA0EC(param_1, 0x10, 0);
+        BufferPlayersName(param0->unk_34, 0, sub_02034818(0));
+        ov85_021EA0EC(param0, 16, 0);
     }
-    ov85_021E9458(param_1, 0xe);
-    *(undefined4 *)(param_1 + 0x360) = 0;
-    ov85_021E943C(param_1);
-    return param_2;
+
+    ov85_021E9458(param0, 14);
+    param0->unk_360 = 0;
+    ov85_021E943C(param0);
+
+    return param1;
 }
 #pragma force_active reset

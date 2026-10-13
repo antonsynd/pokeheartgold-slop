@@ -3,28 +3,29 @@
 #pragma thumb on
 #include "global.h"
 
-#include "ghidra_compat.h"
 #include "heap.h"
-typedef void code(void);
-typedef struct S {
-    u8 pad0[0xf80];
-    void *ptrs[88];
-    u8 pad1;
-    u8 flags[1];
-} S;
-extern S *_0221A680;
-void ov00_021E6638(int a, void *p, int b);
-// FUNCTION ov00_021E7234: matching C (agent1)
+
+typedef struct {
+    u8 unk_00[0xF80];
+    void *receiveBuffers[0x58];
+    u8 unk_10E0;
+    u8 receiveBuffersOnGlobalHeap[0x58];
+} UnkStruct_ov00_021E7234;
+
+extern UnkStruct_ov00_021E7234 *_0221A680;
+
+void ov00_021E6638(int allocType, void *ptr, u32 size);
+// FUNCTION ov00_021E7234: matching C (twin)
 #pragma force_active on
-void ov00_021E7234(int idx) {
-    void *p = _0221A680->ptrs[idx];
-    if (p != 0) {
-        if (_0221A680->flags[idx] == 1) {
-            Heap_Free(p);
+void ov00_021E7234(int index) {
+    if (_0221A680->receiveBuffers[index] != NULL) {
+        if (_0221A680->receiveBuffersOnGlobalHeap[index] == TRUE) {
+            Heap_Free(_0221A680->receiveBuffers[index]);
         } else {
-            ov00_021E6638(0, p, 0);
+            ov00_021E6638(0, _0221A680->receiveBuffers[index], 0);
         }
-        _0221A680->ptrs[idx] = 0;
+
+        _0221A680->receiveBuffers[index] = NULL;
     }
 }
 #pragma force_active reset

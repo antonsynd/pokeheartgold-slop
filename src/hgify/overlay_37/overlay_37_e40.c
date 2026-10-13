@@ -3,32 +3,39 @@
 #pragma thumb on
 #include "global.h"
 
-#include "ghidra_compat.h"
 #include "unk_02035900.h"
-typedef int code();
-undefined4 ov37_021E76A0();
-undefined4 ov37_021E7844();
-undefined4 ov37_021E68AC();
-undefined4 ov37_021E6F14(int param_1, undefined4 param_2);
-// FUNCTION ov37_021E6F14: matching C (r2)
+
+typedef struct {
+    u8 unk_00[0x30];
+    void *unk_30;
+    u8 unk_34[0x310 - 0x34];
+    int unk_310;
+    u8 unk_314[0x93B0 - 0x314];
+    int unk_93B0;
+} UnkStruct_ov37_021E6F14;
+
+int ov37_021E76A0(void *param0);
+void ov37_021E7844(UnkStruct_ov37_021E6F14 *param0, int param1);
+void ov37_021E68AC(UnkStruct_ov37_021E6F14 *param0);
+
+// FUNCTION ov37_021E6F14: matching C (twin)
 #pragma force_active on
-undefined4 ov37_021E6F14(int param_1, undefined4 param_2)
+int ov37_021E6F14(UnkStruct_ov37_021E6F14 *param0, int param1) {
+    int connectedCount;
 
-{
-    int iVar1;
-
-    if (*(int *)(param_1 + 0x93b0) != 0) {
-        iVar1 = sub_02037454();
-        if (*(int *)(param_1 + 0x93b0) != iVar1) {
-            *(undefined4 *)(param_1 + 0x93b0) = 0;
+    if (param0->unk_93B0 != 0) {
+        connectedCount = sub_02037454();
+        if (param0->unk_93B0 != connectedCount) {
+            param0->unk_93B0 = 0;
         }
     }
-    iVar1 = ov37_021E76A0(*(undefined4 *)(param_1 + 0x30));
-    if (iVar1 != 0) {
-        ov37_021E7844(param_1, 0x17);
-        *(undefined4 *)(param_1 + 0x310) = 0;
+
+    if (ov37_021E76A0(param0->unk_30) != 0) {
+        ov37_021E7844(param0, 0x17);
+        param0->unk_310 = 0;
     }
-    ov37_021E68AC(param_1);
-    return param_2;
+
+    ov37_021E68AC(param0);
+    return param1;
 }
 #pragma force_active reset

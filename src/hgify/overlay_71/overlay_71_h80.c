@@ -3,38 +3,45 @@
 #pragma thumb on
 #include "global.h"
 
-#include "ghidra_compat.h"
 #include "heap.h"
 #include "math_util.h"
 #include "sys_task_api.h"
-typedef int code();
-undefined4 ov71_022489F8();
-undefined4 ov71_0224889C();
-undefined4 ov71_02248E04();
-undefined4 ov71_02248B24();
-void ov71_02248358(int param_1);
-// FUNCTION ov71_02248358: matching C (r2)
+
+typedef struct UnkStruct_ov71_02248358 {
+    u8 unk0[0xBC];
+    u32 rngSeed;
+    u8 unkC0[0x160 - 0xC0];
+    SysTask *task0;
+    void *task1;
+} UnkStruct_ov71_02248358;
+
+void ov71_0224889C(UnkStruct_ov71_02248358 *param0);
+void ov71_022489F8(UnkStruct_ov71_02248358 *param0);
+void ov71_02248B24(UnkStruct_ov71_02248358 *param0);
+void ov71_02248E04(void *param0);
+// FUNCTION ov71_02248358: matching C (twin)
 #pragma force_active on
-void ov71_02248358(int param_1)
+void ov71_02248358(void *param) {
+    UnkStruct_ov71_02248358 *ttPhase = param;
+    OSIntrMode mode = OS_DisableInterrupts();
 
-{
-    undefined4 uVar1;
+    if (ttPhase) {
+        ov71_0224889C(ttPhase);
+        ov71_022489F8(ttPhase);
+        ov71_02248B24(ttPhase);
 
-    uVar1 = OS_DisableInterrupts();
-    if (param_1 != 0) {
-        ov71_0224889C(param_1);
-        ov71_022489F8(param_1);
-        ov71_02248B24(param_1);
-        if (*(int *)(param_1 + 0x160) != 0) {
-            SysTask_Destroy((struct SysTask *)*(int *)(param_1 + 0x160));
+        if (ttPhase->task0) {
+            SysTask_Destroy(ttPhase->task0);
         }
-        if (*(int *)(param_1 + 0x164) != 0) {
-            ov71_02248E04();
+
+        if (ttPhase->task1) {
+            ov71_02248E04(ttPhase->task1);
         }
-        SetMTRNGSeed(*(undefined4 *)(param_1 + 0xbc));
-        Heap_Free(param_1);
+
+        SetMTRNGSeed(ttPhase->rngSeed);
+        Heap_Free(ttPhase);
     }
-    OS_RestoreInterrupts(uVar1);
-    return;
+
+    OS_RestoreInterrupts(mode);
 }
 #pragma force_active reset

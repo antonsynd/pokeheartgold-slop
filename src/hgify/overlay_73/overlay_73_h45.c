@@ -3,34 +3,37 @@
 #pragma thumb on
 #include "global.h"
 
-#include "ghidra_compat.h"
 #include "message_format.h"
 #include "unk_02034354.h"
 #include "unk_02035900.h"
-typedef int code();
-undefined4 ov73_021E670C();
-undefined4 ov73_021E756C();
-undefined4 ov73_021E66F0();
-undefined4 ov73_021E6DF8(int param_1, undefined4 param_2);
-// FUNCTION ov73_021E6DF8: matching C (r2)
+typedef struct UnkStruct_ov73_021E6DF8 {
+    u8 unk_00[0x24];
+    MessageFormat *unk_24;
+    u8 unk_28[0x324 - 0x28];
+    int unk_324;
+} UnkStruct_ov73_021E6DF8;
+
+void ov73_021E670C(UnkStruct_ov73_021E6DF8 *param0, int param1);
+void ov73_021E756C(UnkStruct_ov73_021E6DF8 *param0, int param1, int param2);
+void ov73_021E66F0(UnkStruct_ov73_021E6DF8 *param0);
+int ov73_021E6DF8(UnkStruct_ov73_021E6DF8 *param0, int param1);
+// FUNCTION ov73_021E6DF8: matching C (twin)
 #pragma force_active on
-undefined4 ov73_021E6DF8(int param_1, undefined4 param_2)
+int ov73_021E6DF8(UnkStruct_ov73_021E6DF8 *param0, int param1) {
+    PlayerProfile *v0;
 
-{
-    int iVar1;
-    undefined4 uVar2;
-
-    iVar1 = sub_0203769C();
-    if (iVar1 == 0) {
-        ov73_021E756C(param_1, 5, 0);
+    if (sub_0203769C() == 0) {
+        ov73_021E756C(param0, 5, 0);
     } else {
-        uVar2 = sub_02034818(0);
-        BufferPlayersName(*(undefined4 *)(param_1 + 0x24), 0, uVar2);
-        ov73_021E756C(param_1, 0x10, 0);
+        v0 = sub_02034818(0);
+        BufferPlayersName(param0->unk_24, 0, v0);
+        ov73_021E756C(param0, 0x10, 0);
     }
-    ov73_021E670C(param_1, 0xe);
-    *(undefined4 *)(param_1 + 0x324) = 0;
-    ov73_021E66F0(param_1);
-    return param_2;
+
+    ov73_021E670C(param0, 0xe);
+    param0->unk_324 = 0;
+    ov73_021E66F0(param0);
+
+    return param1;
 }
 #pragma force_active reset

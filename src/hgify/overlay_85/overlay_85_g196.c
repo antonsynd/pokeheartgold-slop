@@ -5,20 +5,17 @@
 
 #include "bg_window.h"
 #include "font.h"
-#include "ghidra_compat.h"
 #include "text.h"
-typedef int code();
-void ov85_021E9244(undefined4 param_1, undefined4 param_2, undefined4 param_3, undefined4 param_4);
-// FUNCTION ov85_021E9244: matching C (r3)
+
+void ov85_021E9244(Window *param0, String *param1, int param2);
+
+// FUNCTION ov85_021E9244: matching C (twin)
 #pragma force_active on
-void ov85_021E9244(undefined4 param_1, undefined4 param_2, undefined4 param_3, undefined4 param_4)
+void ov85_021E9244(Window *param0, String *param1, int param2) {
+    int v0 = FontID_String_GetWidth(1, param1, 0);
+    int v1 = (26 * 8 - v0) / 2;
 
-{
-    int iVar1;
-
-    iVar1 = FontID_String_GetWidth(1, param_2, 0);
-    FillWindowPixelBuffer(param_1, 0);
-    AddTextPrinterParameterizedWithColor(param_1, 1, param_2, (0xd0 - iVar1) / 2, 1, param_3, 0x10400, 0);
-    return;
+    FillWindowPixelBuffer(param0, 0);
+    AddTextPrinterParameterizedWithColor(param0, 1, param1, v1, 1, param2, 0x10400, NULL);
 }
 #pragma force_active reset

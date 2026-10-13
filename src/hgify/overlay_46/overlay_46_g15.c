@@ -4,33 +4,40 @@
 #include "global.h"
 
 #include "bg_window.h"
-#include "ghidra_compat.h"
 #include "message_format.h"
 #include "msgdata.h"
 #include "pm_string.h"
+#include "render_window.h"
 #include "text.h"
-typedef int code();
-undefined4 ov46_02259474();
-void ov46_02259494(undefined4 *param_1);
-// FUNCTION ov46_02259494: matching C (r2)
+
+typedef struct UnkStruct_ov46_02259494 {
+    MessageFormat *unk_00;
+    MsgData *unk_04;
+    Window unk_08;
+    String *unk_18;
+    String *unk_1C;
+    u32 unk_20;
+    WaitingIcon *unk_24;
+    u32 unk_28;
+    u32 unk_2C;
+} UnkStruct_ov46_02259494;
+
+void ov46_02259474(UnkStruct_ov46_02259494 *param0);
+// FUNCTION ov46_02259494: matching C (twin)
 #pragma force_active on
-void ov46_02259494(undefined4 *param_1)
-
-{
-    int iVar1;
-
-    iVar1 = TextPrinterCheckActive(param_1[0xb] & 0xff);
-    if (iVar1 != 0) {
-        RemoveTextPrinter(param_1[0xb] & 0xff);
+void ov46_02259494(UnkStruct_ov46_02259494 *param0) {
+    if (TextPrinterCheckActive(param0->unk_2C)) {
+        RemoveTextPrinter(param0->unk_2C);
     }
-    if (param_1[9] != 0) {
-        ov46_02259474(param_1);
+
+    if (param0->unk_24) {
+        ov46_02259474(param0);
     }
-    RemoveWindow((Window *)(param_1 + 2));
-    String_Delete(param_1[7]);
-    String_Delete(param_1[6]);
-    DestroyMsgData(param_1[1]);
-    MessageFormat_Delete(*param_1);
-    return;
+
+    RemoveWindow(&param0->unk_08);
+    String_Delete(param0->unk_1C);
+    String_Delete(param0->unk_18);
+    DestroyMsgData(param0->unk_04);
+    MessageFormat_Delete(param0->unk_00);
 }
 #pragma force_active reset

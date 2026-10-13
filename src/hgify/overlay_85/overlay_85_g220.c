@@ -3,22 +3,25 @@
 #pragma thumb on
 #include "global.h"
 
-#include "ghidra_compat.h"
 #include "screen_fade.h"
-typedef int code();
-undefined4 ov85_021E943C();
-undefined4 ov85_021E9900(int param_1, undefined4 param_2);
-// FUNCTION ov85_021E9900: matching C (r2)
-#pragma force_active on
-undefined4 ov85_021E9900(int param_1, undefined4 param_2)
 
-{
-    *(int *)(param_1 + 0x360) = *(int *)(param_1 + 0x360) + 1;
-    if (0x3c < *(int *)(param_1 + 0x360)) {
-        BeginNormalPaletteFade(0, 0x10, 0x10, 0, 0x10, 1, 0x66);
-        param_2 = 3;
+typedef struct UnkStruct_ov85_021E9900 {
+    u8 unk0[0x360];
+    int unk360;
+} UnkStruct_ov85_021E9900;
+
+void ov85_021E943C(UnkStruct_ov85_021E9900 *param0);
+int ov85_021E9900(UnkStruct_ov85_021E9900 *param0, int param1);
+
+// FUNCTION ov85_021E9900: matching C (twin)
+#pragma force_active on
+int ov85_021E9900(UnkStruct_ov85_021E9900 *param0, int param1) {
+    if (++param0->unk360 > 60) {
+        BeginNormalPaletteFade(FADE_BOTH_SCREENS, 0x10, 0x10, 0, 16, 1, 0x66);
+        param1 = 3;
     }
-    ov85_021E943C(param_1);
-    return param_2;
+
+    ov85_021E943C(param0);
+    return param1;
 }
 #pragma force_active reset

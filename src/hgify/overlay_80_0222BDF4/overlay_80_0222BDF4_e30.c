@@ -3,29 +3,23 @@
 #pragma thumb on
 #include "global.h"
 
+#include "constants/heap.h"
+
 #include "frontier/frontier_script_context.h"
 
-#include "ghidra_compat.h"
 #include "screen_fade.h"
-typedef int code();
-undefined4 FrtCmd_019(undefined4 param_1);
-// FUNCTION FrtCmd_019: matching C (r2)
+
+// FUNCTION FrtCmd_019: matching C (twin)
 #pragma force_active on
-undefined4 FrtCmd_019(undefined4 param_1)
+BOOL FrtCmd_019(FrontierScriptContext *ctx) {
+    u16 transition = FrontierScriptContext_ReadHalfWord(ctx);
+    u16 frames = FrontierScriptContext_ReadHalfWord(ctx);
+    u16 type = FrontierScriptContext_ReadHalfWord(ctx);
+    u16 color = FrontierScriptContext_ReadHalfWord(ctx);
 
-{
-    u16 uVar1;
-    u16 uVar2;
-    u16 uVar3;
-    u16 uVar4;
-
-    uVar1 = FrontierScriptContext_ReadHalfWord((struct FrontierScriptContext *)param_1);
-    uVar2 = FrontierScriptContext_ReadHalfWord((struct FrontierScriptContext *)param_1);
-    uVar3 = FrontierScriptContext_ReadHalfWord((struct FrontierScriptContext *)param_1);
-    uVar4 = FrontierScriptContext_ReadHalfWord((struct FrontierScriptContext *)param_1);
-    BeginNormalPaletteFade(0, uVar3, uVar3, uVar4, uVar1, uVar2, 0xb);
+    BeginNormalPaletteFade(FADE_BOTH_SCREENS, type, type, color, transition, frames, HEAP_ID_FIELD2);
     ResetVisibleHardwareWindows(0);
     ResetVisibleHardwareWindows(1);
-    return 0;
+    return FALSE;
 }
 #pragma force_active reset

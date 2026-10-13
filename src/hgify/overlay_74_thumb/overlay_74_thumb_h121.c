@@ -3,31 +3,37 @@
 #pragma thumb on
 #include "global.h"
 
-#include "ghidra_compat.h"
 #include "mystery_gift.h"
 #include "overlay_manager.h"
-typedef int code();
-undefined4 ov74_0222D9E0();
-undefined4 ov74_0222D448();
-undefined4 ov74_0222D1D4();
-undefined4 ov74_0222D308(OverlayManager *man);
-// FUNCTION ov74_0222D308: matching C (r2)
+
+typedef struct UnkStruct_ov74_0222D308 {
+    u8 unk_00[0x2ba0];
+    MysteryGiftSave *mysteryGift;
+    u8 unk_2BA4[0x2bc0 - 0x2ba4];
+    int selectedWondercardSlot;
+    u8 unk_2BC4[0x2bd0 - 0x2bc4];
+    u8 messageBox[0x2be0 - 0x2bd0];
+    u8 standardWindow[0x2bf0 - 0x2be0];
+    u32 nextWindowBasetile;
+} UnkStruct_ov74_0222D308;
+
+void ov74_0222D9E0(UnkStruct_ov74_0222D308 *appData, void *window, int templateIndex, u32 basetile);
+void ov74_0222D448(void);
+void ov74_0222D1D4(void *messageBox, int messageId);
+// FUNCTION ov74_0222D308: matching C (twin)
 #pragma force_active on
-undefined4 ov74_0222D308(OverlayManager *man)
+u32 ov74_0222D308(OverlayManager *man) {
+    UnkStruct_ov74_0222D308 *appData = OverlayManager_GetData(man);
 
-{
-    int iVar1;
-    int iVar2;
-
-    iVar1 = (int)OverlayManager_GetData(man);
     ov74_0222D448();
-    iVar2 = SaveMysteryGift_HasAnyGift((const MysteryGiftSave *)*(undefined4 *)(iVar1 + 0x2ba0), *(undefined4 *)(iVar1 + 0x2bc0));
-    if (iVar2 == 1) {
-        ov74_0222D1D4(iVar1 + 0x2bd0, 0x3f);
+
+    if (SaveMysteryGift_HasAnyGift(appData->mysteryGift, appData->selectedWondercardSlot) == TRUE) {
+        ov74_0222D1D4(appData->messageBox, 0x3f);
     } else {
-        ov74_0222D1D4(iVar1 + 0x2bd0, 0x3e);
+        ov74_0222D1D4(appData->messageBox, 0x3e);
     }
-    ov74_0222D9E0(iVar1, iVar1 + 0x2be0, 9, *(undefined4 *)(iVar1 + 0x2bf0));
+
+    ov74_0222D9E0(appData, appData->standardWindow, 9, appData->nextWindowBasetile);
     return 0xc;
 }
 #pragma force_active reset

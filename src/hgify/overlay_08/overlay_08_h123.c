@@ -2,28 +2,36 @@
 #pragma warning_errors off
 #pragma thumb on
 #include "global.h"
+
 typedef struct UnkStruct_ov08_02220BB4 {
     u8 pad_0000[0x2004];
     void *typeSprite1;
     void *typeSprite2;
 } UnkStruct_ov08_02220BB4;
-typedef struct UnkPokemon_ov08_02220BB4 {
+
+typedef struct UnkStruct_ov08_02220BB4_Pokemon {
     u8 pad_00[0x14];
     u8 type1;
     u8 type2;
-} UnkPokemon_ov08_02220BB4;
+} UnkStruct_ov08_02220BB4_Pokemon;
+
+typedef struct UnkStruct_ov08_02220BB4_Position {
+    int x;
+    int y;
+} UnkStruct_ov08_02220BB4_Position;
+
 void ov08_02220AEC(UnkStruct_ov08_02220BB4 *ctx, void *sprite, int resId, int type);
 void ov08_02220A8C(void *sprite, int x, int y);
-void ov08_02220BB4(UnkStruct_ov08_02220BB4 *ctx, UnkPokemon_ov08_02220BB4 *pokemon, int *coordinates);
-// FUNCTION ov08_02220BB4: matching C (r0)
+void ov08_02220BB4(UnkStruct_ov08_02220BB4 *battleParty, UnkStruct_ov08_02220BB4_Pokemon *pokemon, UnkStruct_ov08_02220BB4_Position *coordinates);
+// FUNCTION ov08_02220BB4: matching C (twin)
 #pragma force_active on
-void ov08_02220BB4(UnkStruct_ov08_02220BB4 *ctx, UnkPokemon_ov08_02220BB4 *pokemon, int *coordinates) {
-    ov08_02220AEC(ctx, ctx->typeSprite1, 0xb00e, pokemon->type1);
-    ov08_02220A8C(ctx->typeSprite1, coordinates[0], coordinates[1]);
+void ov08_02220BB4(UnkStruct_ov08_02220BB4 *battleParty, UnkStruct_ov08_02220BB4_Pokemon *pokemon, UnkStruct_ov08_02220BB4_Position *coordinates) {
+    ov08_02220AEC(battleParty, battleParty->typeSprite1, 0xB00E, pokemon->type1);
+    ov08_02220A8C(battleParty->typeSprite1, coordinates[0].x, coordinates[0].y);
 
     if (pokemon->type1 != pokemon->type2) {
-        ov08_02220AEC(ctx, ctx->typeSprite2, 0xb00f, pokemon->type2);
-        ov08_02220A8C(ctx->typeSprite2, coordinates[2], coordinates[3]);
+        ov08_02220AEC(battleParty, battleParty->typeSprite2, 0xB00F, pokemon->type2);
+        ov08_02220A8C(battleParty->typeSprite2, coordinates[1].x, coordinates[1].y);
     }
 }
 #pragma force_active reset
