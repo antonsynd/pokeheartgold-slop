@@ -2,15 +2,16 @@
 #pragma warning_errors off
 #pragma thumb on
 #include "global.h"
+
+#include "sprite_system.h"
 typedef struct UnkStruct_ov07_022344B4 {
     u8 pad_00[0x30];
     void *sprite;
 } UnkStruct_ov07_022344B4;
-int ManagedSprite_SetAffineZRotation(void *sprite, int rotation);
 int ov07_022344B4(UnkStruct_ov07_022344B4 *ctx, int rotation);
 // FUNCTION ov07_022344B4: matching C (r0)
 #pragma force_active on
 int ov07_022344B4(UnkStruct_ov07_022344B4 *ctx, int rotation) {
-    return ManagedSprite_SetAffineZRotation(ctx->sprite, rotation);
+    return ((int (*)(void *, int))ManagedSprite_SetAffineZRotation)(ctx->sprite, rotation);
 }
 #pragma force_active reset

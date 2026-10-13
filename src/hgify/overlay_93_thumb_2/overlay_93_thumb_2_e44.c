@@ -2,6 +2,8 @@
 #pragma warning_errors off
 #pragma thumb on
 #include "global.h"
+
+#include "field_move.h"
 typedef struct UnkStruct_ov93_02261538 {
     u8 filler_00[0x10];
     u8 unk_10;

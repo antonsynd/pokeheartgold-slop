@@ -2,6 +2,8 @@
 #pragma warning_errors off
 #pragma thumb on
 #include "global.h"
+
+#include "font_types_def.h"
 typedef struct UnkStruct_ov07_022335A0 {
     u8 pad_00[0x14];
     s32 index;

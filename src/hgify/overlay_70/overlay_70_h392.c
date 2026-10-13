@@ -2,9 +2,11 @@
 #pragma warning_errors off
 #pragma thumb on
 #include "global.h"
+
+#include "overlay_manager.h"
+#include "unk_0201956C.h"
 typedef int (*Ov70Handler)(void *, void *, u32, u32);
 extern Ov70Handler ov70_022466F8[];
-extern void sub_02019934(void *a0);
 int ov70_02242144(u8 *work, u32 unused1, u32 unused2, u32 callerR3);
 // FUNCTION ov70_02242144: matching C (agent10)
 #pragma force_active on

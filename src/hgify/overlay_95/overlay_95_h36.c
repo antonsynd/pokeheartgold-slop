@@ -2,6 +2,8 @@
 #pragma warning_errors off
 #pragma thumb on
 #include "global.h"
+
+#include "font_types_def.h"
 typedef BOOL (*ov95_021E6300_Fn)(void *, void *, u32, u32);
 extern ov95_021E6300_Fn ov95_021E7810[];
 BOOL ov95_021E6300(void *param0, void *a1, void *a2, u32 callerR3);
