@@ -7,24 +7,36 @@
 #include "naming_screen.h"
 #include "player_data.h"
 #include "pm_string.h"
-// FUNCTION ov43_0222CD44: matching C (agent7)
-#pragma force_active on
-int ov43_0222CD44(u32 param_1, int *param_2, u32 param_3) {
-    int iVar2;
-    int iVar3;
-    u32 uVar1;
 
-    uVar1 = Save_PlayerData_GetOptionsAddr(param_2[1]);
-    iVar2 = NamingScreen_CreateArgs(param_3, 7, 0, 7, uVar1, 0);
-    if (param_2[0x19] == 1) {
-        iVar3 = sub_02020B78(*(u16 *)param_2[0x18]);
-        if (iVar3 == 0) {
-            CopyU16ArrayToString(*(void **)(iVar2 + 0x18), (void *)param_2[0x18]);
+typedef struct UnkStruct_ov43_0222CD44_1 {
+    u16 *unk_00;
+    int unk_04;
+} UnkStruct_ov43_0222CD44_1;
+
+typedef struct UnkStruct_ov43_0222CD44 {
+    u8 unk_00[4];
+    SaveData *saveData;
+    u8 unk_08[0x60 - 0x08];
+    UnkStruct_ov43_0222CD44_1 unk_60;
+} UnkStruct_ov43_0222CD44;
+
+// FUNCTION ov43_0222CD44: matching C (twin)
+#pragma force_active on
+NamingScreenArgs *ov43_0222CD44(void *param0, UnkStruct_ov43_0222CD44 *param1, enum HeapID heapID) {
+    NamingScreenArgs *v0;
+
+    v0 = NamingScreen_CreateArgs(heapID, 7, 0, 7, Save_PlayerData_GetOptionsAddr(param1->saveData), 0);
+
+    if (param1->unk_60.unk_04 == 1) {
+        if (sub_02020B78(*param1->unk_60.unk_00) == 0) {
+            CopyU16ArrayToString(v0->nameInputString, param1->unk_60.unk_00);
         } else {
-            String_SetEmpty(*(void **)(iVar2 + 0x18));
+            String_SetEmpty(v0->nameInputString);
         }
-        param_2[0x19] = 0;
+
+        param1->unk_60.unk_04 = 0;
     }
-    return iVar2;
+
+    return v0;
 }
 #pragma force_active reset

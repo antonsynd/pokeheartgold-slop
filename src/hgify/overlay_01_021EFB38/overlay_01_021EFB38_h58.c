@@ -3,23 +3,26 @@
 #pragma thumb on
 #include "global.h"
 
-#include "ghidra_compat.h"
 #include "overlay_01_021FB4C0_internal.h"
 #include "sys_task_api.h"
-typedef void code(void);
-#define uRam04000000 (*(volatile undefined4 *)0x04000000)
-void ov01_021F0CDC(int param_1);
-// FUNCTION ov01_021F0CDC: matching C (r2)
-#pragma force_active on
-void ov01_021F0CDC(int param_1)
 
-{
-    uRam04000000 = uRam04000000 & 0xffff1fff;
-    **(undefined4 **)(param_1 + 0xe4) = 1;
-    ov01_021FB554(*(undefined4 *)(param_1 + 0xdc));
-    *(undefined4 *)(param_1 + 0xdc) = 0;
-    SysTask_Destroy(*(undefined4 *)(param_1 + 0xe0));
-    *(undefined4 *)(param_1 + 0xe0) = 0;
-    return;
+typedef struct UnkStruct_ov01_021F0CDC {
+    u8 unk_00[0xDC];
+    UnkStruct_Ov01_021FB4C0_sub *unk_DC;
+    SysTask *unk_E0;
+    u32 *unk_E4;
+} UnkStruct_ov01_021F0CDC;
+
+void ov01_021F0CDC(UnkStruct_ov01_021F0CDC *param0);
+// FUNCTION ov01_021F0CDC: matching C (twin)
+#pragma force_active on
+void ov01_021F0CDC(UnkStruct_ov01_021F0CDC *param0) {
+    GX_SetVisibleWnd(GX_WNDMASK_NONE);
+
+    *(param0->unk_E4) = 1;
+    ov01_021FB554(param0->unk_DC);
+    param0->unk_DC = NULL;
+    SysTask_Destroy(param0->unk_E0);
+    param0->unk_E0 = NULL;
 }
 #pragma force_active reset

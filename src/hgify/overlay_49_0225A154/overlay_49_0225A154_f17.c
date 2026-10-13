@@ -8,10 +8,12 @@
 #include "player_data.h"
 #include "unk_02005D10.h"
 // clang-format on
+
 typedef struct UnkStruct_Ov49_0225A154_2DC {
     MessageFormat *unk0;
     u8 unk4[0x58];
 } UnkStruct_Ov49_0225A154_2DC;
+
 typedef struct UnkStruct_Ov49_0225A154 {
     u8 unk0[0x34];
     void *unk34;
@@ -23,104 +25,27 @@ typedef struct UnkStruct_Ov49_0225A154 {
     u8 unk3A4[0x20];
     u8 unk3C4[0x20];
 } UnkStruct_Ov49_0225A154;
-extern void *ov49_0225AF04(void *a0);
-extern BOOL ov49_0225AF08(void *a0, int a1);
-extern void ov49_0225AF30(void *a0, void *a1, void *a2, int a3, int a4, int a5, int a6, int a7, int a8);
-extern int ov49_0225AFD8(void *a0);
-extern void ov49_0225B014(void *a0, int a1, int a2);
-extern void ov49_0225B06C(void *a0, int a1);
-extern void ov49_0225B0E0(void *a0, void *a1, int a2, int a3, int a4, int a5, int a6);
-extern void ov49_0225B124(void *a0);
-extern void ov49_0225B148(void *a0, int a1, int a2, int a3);
-extern void ov49_0225B178(void *a0, int a1, int a2, int a3, int a4);
-extern void *ov49_0225B388(void *a0, int a1, int a2);
-extern void ov49_0225B3A8(void *a0, int a1, int a2, int a3, int a4);
-extern void ov49_0225B3C8(void *a0, PlayerProfile *a1, int a2);
-extern void ov49_0225B3D8(void *a0, int a1, int a2);
-extern void ov49_0225B3E8(void *a0, int a1, int a2);
-extern void ov49_0225B3F8(void *a0, int a1, int a2);
-extern void ov49_0225B89C(void *a0, int a1, int a2);
-extern void ov49_0225B8A8(void *a0, void *a1, int a2, int a3);
-extern u8 ov49_0225B8F8(void *a0);
-extern BOOL ov49_0225B8FC(void *a0);
-extern int ov49_0225B928(void *a0);
-extern BOOL ov49_0225B934(void *a0);
+
 extern int ov45_0222A53C(void *a0);
 extern void *ov45_0222A578(void *a0, int a1);
 extern void *ov45_0222A5C0(void *a0);
 extern void ov45_0222A844(void *a0, PlayerProfile *a1, int a2);
-extern u8 ov45_0222D7C0(int a0);
-void *ov49_0225A154(UnkStruct_Ov49_0225A154 *a0);
-void *ov49_0225A154(UnkStruct_Ov49_0225A154 *a0);
-BOOL ov49_0225A164(UnkStruct_Ov49_0225A154 *a0, int a1);
-BOOL ov49_0225A164(UnkStruct_Ov49_0225A154 *a0, int a1);
-void ov49_0225A174(UnkStruct_Ov49_0225A154 *a0, void *a1, int a2, int a3);
-void ov49_0225A174(UnkStruct_Ov49_0225A154 *a0, void *a1, int a2, int a3);
-void ov49_0225A1A4(UnkStruct_Ov49_0225A154 *a0, void *a1, int a2, int a3, u8 a4, u8 a5, u8 a6);
-void ov49_0225A1A4(UnkStruct_Ov49_0225A154 *a0, void *a1, int a2, int a3, u8 a4, u8 a5, u8 a6);
-int ov49_0225A1D4(UnkStruct_Ov49_0225A154 *a0);
-int ov49_0225A1D4(UnkStruct_Ov49_0225A154 *a0);
-void ov49_0225A1E4(UnkStruct_Ov49_0225A154 *a0, int a1, int a2);
-void ov49_0225A1E4(UnkStruct_Ov49_0225A154 *a0, int a1, int a2);
-void ov49_0225A1F4(UnkStruct_Ov49_0225A154 *a0, int a1);
-void ov49_0225A1F4(UnkStruct_Ov49_0225A154 *a0, int a1);
-void ov49_0225A204(UnkStruct_Ov49_0225A154 *a0, int a1, int a2, int a3, u8 a4);
-void ov49_0225A204(UnkStruct_Ov49_0225A154 *a0, int a1, int a2, int a3, u8 a4);
-void ov49_0225A22C(UnkStruct_Ov49_0225A154 *a0);
-void ov49_0225A22C(UnkStruct_Ov49_0225A154 *a0);
-void ov49_0225A23C(UnkStruct_Ov49_0225A154 *a0, int a1, int a2, int a3);
-void ov49_0225A23C(UnkStruct_Ov49_0225A154 *a0, int a1, int a2, int a3);
-void ov49_0225A24C(UnkStruct_Ov49_0225A154 *a0, int a1, int a2, int a3, u16 a4);
-void ov49_0225A24C(UnkStruct_Ov49_0225A154 *a0, int a1, int a2, int a3, u16 a4);
-void ov49_0225A264(UnkStruct_Ov49_0225A154 *a0);
-void ov49_0225A264(UnkStruct_Ov49_0225A154 *a0);
-void ov49_0225A294(UnkStruct_Ov49_0225A154 *a0);
-void ov49_0225A294(UnkStruct_Ov49_0225A154 *a0);
-int ov49_0225A2C4(UnkStruct_Ov49_0225A154 *a0);
-int ov49_0225A2C4(UnkStruct_Ov49_0225A154 *a0);
-void ov49_0225A2F8(UnkStruct_Ov49_0225A154 *a0);
-void ov49_0225A2F8(UnkStruct_Ov49_0225A154 *a0);
-void *ov49_0225A30C(UnkStruct_Ov49_0225A154 *a0, int a1, int a2);
-void *ov49_0225A30C(UnkStruct_Ov49_0225A154 *a0, int a1, int a2);
-void ov49_0225A31C(UnkStruct_Ov49_0225A154 *a0, int a1, int a2, int a3, int a4);
-void ov49_0225A31C(UnkStruct_Ov49_0225A154 *a0, int a1, int a2, int a3, int a4);
-void ov49_0225A334(UnkStruct_Ov49_0225A154 *a0, int a1, int a2);
-// FUNCTION ov49_0225A334: matching C (r0)
+extern void ov49_0225B3C8(void *a0, PlayerProfile *a1, int a2);
+
+// FUNCTION ov49_0225A334: matching C (twin)
 #pragma force_active on
-void ov49_0225A334(UnkStruct_Ov49_0225A154 *a0, int a1, int a2) {
+void ov49_0225A334(UnkStruct_Ov49_0225A154 *param0, int param1, int param2) {
     PlayerProfile *profile = PlayerProfile_New(HEAP_ID_119);
     void *entry;
-    if (a1 == ov45_0222A53C(a0->unk34)) {
-        entry = ov45_0222A5C0(a0->unk34);
+
+    if (param1 == ov45_0222A53C(param0->unk34)) {
+        entry = ov45_0222A5C0(param0->unk34);
     } else {
-        entry = ov45_0222A578(a0->unk34, a1);
+        entry = ov45_0222A578(param0->unk34, param1);
     }
-    ov45_0222A844(entry, profile, 0x77);
-    ov49_0225B3C8(&a0->unk2DC, profile, a2);
+
+    ov45_0222A844(entry, profile, HEAP_ID_119);
+    ov49_0225B3C8(&param0->unk2DC, profile, param2);
     Heap_Free(profile);
 }
 #pragma force_active reset
-void ov49_0225A37C(UnkStruct_Ov49_0225A154 *a0, int a1, int a2);
-void ov49_0225A37C(UnkStruct_Ov49_0225A154 *a0, int a1, int a2);
-void ov49_0225A38C(UnkStruct_Ov49_0225A154 *a0, int a1, int a2);
-void ov49_0225A38C(UnkStruct_Ov49_0225A154 *a0, int a1, int a2);
-void ov49_0225A39C(UnkStruct_Ov49_0225A154 *a0, int a1, int a2);
-void ov49_0225A39C(UnkStruct_Ov49_0225A154 *a0, int a1, int a2);
-void ov49_0225A3AC(UnkStruct_Ov49_0225A154 *a0, u32 a1, u32 a2);
-void ov49_0225A3AC(UnkStruct_Ov49_0225A154 *a0, u32 a1, u32 a2);
-void ov49_0225A3BC(UnkStruct_Ov49_0225A154 *a0, u32 a1, u32 a2);
-void ov49_0225A3BC(UnkStruct_Ov49_0225A154 *a0, u32 a1, u32 a2);
-void ov49_0225A3CC(UnkStruct_Ov49_0225A154 *a0, u32 a1, u32 a2);
-void ov49_0225A3CC(UnkStruct_Ov49_0225A154 *a0, u32 a1, u32 a2);
-void ov49_0225A3DC(UnkStruct_Ov49_0225A154 *a0, u32 a1, u32 a2);
-void ov49_0225A3DC(UnkStruct_Ov49_0225A154 *a0, u32 a1, u32 a2);
-void ov49_0225A3EC(UnkStruct_Ov49_0225A154 *a0, u32 a1, u32 a2);
-void ov49_0225A3EC(UnkStruct_Ov49_0225A154 *a0, u32 a1, u32 a2);
-void ov49_0225A3FC(UnkStruct_Ov49_0225A154 *a0, u32 a1, u32 a2);
-void ov49_0225A3FC(UnkStruct_Ov49_0225A154 *a0, u32 a1, u32 a2);
-void ov49_0225A40C(UnkStruct_Ov49_0225A154 *a0, u32 a1, int a2);
-void ov49_0225A40C(UnkStruct_Ov49_0225A154 *a0, u32 a1, int a2);
-void ov49_0225A428(UnkStruct_Ov49_0225A154 *a0, int a1, int a2);
-void ov49_0225A428(UnkStruct_Ov49_0225A154 *a0, int a1, int a2);
-void ov49_0225A478(UnkStruct_Ov49_0225A154 *a0, int a1);
-void ov49_0225A478(UnkStruct_Ov49_0225A154 *a0, int a1);

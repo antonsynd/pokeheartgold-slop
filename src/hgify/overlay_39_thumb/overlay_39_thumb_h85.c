@@ -3,32 +3,44 @@
 #pragma thumb on
 #include "global.h"
 
-#include "ghidra_compat.h"
 #include "sav_system_info.h"
 #include "unk_0202C034.h"
 #include "unk_02037C94.h"
-typedef int code();
-undefined4 ov39_02228E54(int *param_1);
-// FUNCTION ov39_02228E54: matching C (r2)
+
+typedef struct UnkStruct_ov39_02228E54_saveHolder {
+    u8 unk_00[4];
+    SaveData *saveData;
+} UnkStruct_ov39_02228E54_saveHolder;
+
+typedef struct UnkStruct_ov39_02228E54_inner {
+    UnkStruct_ov39_02228E54_saveHolder *unk_00;
+    u8 unk_04[0x7C - 0x4];
+    u32 unk_7C;
+} UnkStruct_ov39_02228E54_inner;
+
+typedef struct UnkStruct_ov39_02228E54 {
+    UnkStruct_ov39_02228E54_inner *unk_00;
+    u8 unk_04[0x8 - 0x4];
+    u32 unk_08;
+} UnkStruct_ov39_02228E54;
+
+// FUNCTION ov39_02228E54: matching C (twin)
 #pragma force_active on
-undefined4 ov39_02228E54(int *param_1)
+int ov39_02228E54(UnkStruct_ov39_02228E54 *param0) {
+    WiFiList *wiFiList = sub_0202C6F4(param0->unk_00->unk_00->saveData);
+    SysInfo *sysInfo = Save_SysInfo_Get(param0->unk_00->unk_00->saveData);
 
-{
-    undefined4 uVar1;
-    undefined4 uVar2;
-    int iVar3;
+    sub_0202C08C(wiFiList);
 
-    uVar1 = sub_0202C6F4(*(undefined4 *)(*(int *)*param_1 + 4));
-    uVar2 = Save_SysInfo_Get(*(undefined4 *)(*(int *)*param_1 + 4));
-    sub_0202C08C(uVar1);
-    iVar3 = Save_SysInfo_GetDwcProfileId(uVar2);
-    if (iVar3 == 0) {
-        uVar1 = sub_0203A040(uVar1);
-        Save_SysInfo_SetDwcProfileId(uVar2, uVar1);
+    if (Save_SysInfo_GetDwcProfileId(sysInfo) == 0) {
+        Save_SysInfo_SetDwcProfileId(sysInfo, sub_0203A040(wiFiList));
     }
-    Save_SysInfo_GetDwcProfileId(uVar2);
-    param_1[2] = 9;
-    *(undefined4 *)(*param_1 + 0x7c) = 1;
+
+    Save_SysInfo_GetDwcProfileId(sysInfo);
+
+    param0->unk_08 = 9;
+    param0->unk_00->unk_7C = 1;
+
     return 0;
 }
 #pragma force_active reset

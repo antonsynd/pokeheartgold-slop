@@ -3,18 +3,39 @@
 #pragma thumb on
 #include "global.h"
 
-#include "unk_02018000.h"
-// FUNCTION ov89_0225B100: matching C (agent7)
-#pragma force_active on
-void ov89_0225B100(int param_1, int param_2) {
-    int *piVar1;
+#include "nnsys/g3d/glbstate.h"
+#include "nnsys/g3d/model_inline.h"
 
-    piVar1 = (int *)(param_2 + 0x94);
-    if (((u8 *)piVar1)[9] != 0xff) {
-        NNS_G3dGlbPolygonAttr(0, 0, 0, (int)((u8 *)piVar1)[9], *piVar1 >> 8, 0);
-        NNSi_G3dModifyPolygonAttrMask(*(void **)(param_2 + 0x14), 0, 0x3f000000);
-        NNSi_G3dModifyPolygonAttrMask(*(void **)(param_2 + 0x14), 0, 0x1f0000);
+#include "unk_02018000.h"
+typedef struct UnkStruct_ov89_0225B100_Model {
+    u8 pad_00[8];
+    void *model;
+    u8 pad_0C[4];
+} UnkStruct_ov89_0225B100_Model;
+typedef struct UnkStruct_ov89_0225B100_Val2 {
+    int unk_00;
+    fx32 unk_04;
+    u8 unk_08;
+    u8 unk_09;
+} UnkStruct_ov89_0225B100_Val2;
+typedef struct UnkStruct_ov89_0225B100 {
+    u8 pad_00[0x0C];
+    UnkStruct_ov89_0225B100_Model unk_0C;
+    UnkStruct_020181B0 unk_1C;
+    UnkStruct_ov89_0225B100_Val2 unk_94;
+} UnkStruct_ov89_0225B100;
+void ov89_0225B100(void *param0, UnkStruct_ov89_0225B100 *param1);
+// FUNCTION ov89_0225B100: matching C (twin)
+#pragma force_active on
+void ov89_0225B100(void *param0, UnkStruct_ov89_0225B100 *param1) {
+    UnkStruct_ov89_0225B100_Val2 *v0 = &param1->unk_94;
+
+    if (v0->unk_09 != 0xff) {
+        NNS_G3dGlbPolygonAttr(0, GX_POLYGONMODE_MODULATE, GX_CULL_ALL, v0->unk_09, v0->unk_00 >> 8, 0);
+        NNSi_G3dModifyPolygonAttrMask(param1->unk_0C.model, 0, 0x3f000000);
+        NNSi_G3dModifyPolygonAttrMask(param1->unk_0C.model, 0, 0x1f0000);
     }
-    sub_020181EC((void *)(param_2 + 0x1c));
+
+    sub_020181EC(&param1->unk_1C);
 }
 #pragma force_active reset

@@ -3,31 +3,29 @@
 #pragma thumb on
 #include "global.h"
 
-#include "ghidra_compat.h"
 #include "heap.h"
 #include "unk_02033AE0.h"
-typedef int code();
-undefined4 ov96_021E883C();
-undefined2 *ov96_021E8770(undefined4 param_1, undefined4 param_2, undefined4 param_3, int param_4, undefined4 param_5);
-// FUNCTION ov96_021E8770: matching C (r2)
+typedef struct UnkStruct_ov96_021E8770 {
+    u16 unk_00;
+    u16 unk_02;
+    void *unk_04;
+} UnkStruct_ov96_021E8770;
+void *ov96_021E883C(const void *param0, int param1, void *param2, enum HeapID heapID);
+UnkStruct_ov96_021E8770 *ov96_021E8770(const void *param0, int param1, void *param2, int param3, enum HeapID heapID);
+// FUNCTION ov96_021E8770: matching C (twin)
 #pragma force_active on
-undefined2 *
-ov96_021E8770(undefined4 param_1, undefined4 param_2, undefined4 param_3, int param_4, undefined4 param_5)
+UnkStruct_ov96_021E8770 *ov96_021E8770(const void *param0, int param1, void *param2, int param3, enum HeapID heapID) {
+    UnkStruct_ov96_021E8770 *v0 = Heap_Alloc(heapID, sizeof(UnkStruct_ov96_021E8770));
+    v0->unk_00 = param3;
+    v0->unk_02 = 0;
+    v0->unk_04 = NULL;
 
-{
-    undefined2 *puVar1;
-    undefined4 uVar2;
-
-    puVar1 = (undefined2 *)Heap_Alloc(param_5, 8);
-    *puVar1 = (short)param_4;
-    puVar1[1] = 0;
-    *(undefined4 *)(puVar1 + 2) = 0;
-    if (param_4 == 1) {
-        sub_0203410C(param_1, param_2, param_3);
+    if (param3 == 1) {
+        sub_0203410C(param0, param1, param2);
     } else {
-        uVar2 = ov96_021E883C(param_1, param_2, param_3, param_5);
-        *(undefined4 *)(puVar1 + 2) = uVar2;
+        v0->unk_04 = ov96_021E883C(param0, param1, param2, heapID);
     }
-    return puVar1;
+
+    return v0;
 }
 #pragma force_active reset

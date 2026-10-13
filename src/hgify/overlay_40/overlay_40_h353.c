@@ -4,23 +4,33 @@
 #include "global.h"
 
 #include "bg_window.h"
-#include "ghidra_compat.h"
-typedef int code();
-undefined4 ov40_0223CCBC();
-void ov40_0223CD14(int param_1, undefined4 param_2, undefined4 param_3, undefined4 param_4);
-// FUNCTION ov40_0223CD14: matching C (r3)
+
+typedef struct UnkStruct_ov40_0223CD14_1 {
+    u8 unk_00[0x10];
+    int unk_10;
+    u8 unk_14[0x94 - 0x14];
+    Window unk_94;
+} UnkStruct_ov40_0223CD14_1;
+
+typedef struct UnkStruct_ov40_0223CD14 {
+    u8 unk_00[0x24];
+    BgConfig *unk_24;
+    u8 unk_28[0x860 - 0x28];
+    UnkStruct_ov40_0223CD14_1 *unk_860;
+} UnkStruct_ov40_0223CD14;
+
+void ov40_0223CCBC(UnkStruct_ov40_0223CD14 *param0, int param1);
+// FUNCTION ov40_0223CD14: matching C (twin)
 #pragma force_active on
-void ov40_0223CD14(int param_1, undefined4 param_2, undefined4 param_3, undefined4 param_4)
+void ov40_0223CD14(UnkStruct_ov40_0223CD14 *param0) {
+    UnkStruct_ov40_0223CD14_1 *v0 = param0->unk_860;
+    Window *v1;
+    int v2 = 1;
 
-{
-    int iVar1;
-    int iVar2;
+    v1 = &v0->unk_94;
 
-    iVar1 = *(int *)(param_1 + 0x860);
-    iVar2 = iVar1 + 0x94;
-    InitWindow(iVar2);
-    AddWindowParameterized(*(undefined4 *)(param_1 + 0x24), iVar2, 6, 8, 3, 0x10, 2, 0xe, 1);
-    ov40_0223CCBC(param_1, *(int *)(iVar1 + 0x10) + 0x79);
-    return;
+    InitWindow(v1);
+    AddWindowParameterized(param0->unk_24, v1, 6, 8, 3, 16, 2, 14, v2);
+    ov40_0223CCBC(param0, 121 + v0->unk_10);
 }
 #pragma force_active reset

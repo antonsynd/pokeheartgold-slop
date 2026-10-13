@@ -149,28 +149,28 @@ BOOL ov39_02227DB8(UnkStruct_ov39_Work *work);
 int ov39_02227DE4(UnkStruct_ov39_Work *work);
 int ov39_02227DE4(UnkStruct_ov39_Work *work);
 void *ov39_02227DEC(enum HeapID heapID);
-// FUNCTION ov39_02227DEC: matching C (r0)
+// FUNCTION ov39_02227DEC: matching C (twin)
 #pragma force_active on
 void *ov39_02227DEC(enum HeapID heapID) {
-    void *start;
-    void *end;
-    void *buffer;
-    int size = 0x2000;
+    void *v0;
+    void *v1;
+    void *v2;
+    int v3 = 0x2000;
 
-    start = Heap_Alloc(heapID, size);
-    buffer = start;
-    end = (void *)((u32)start + size);
-    start = OS_InitAlloc(OS_ARENA_MAIN, start, end, 1);
+    v0 = Heap_Alloc(heapID, v3);
+    v2 = v0;
+    v1 = (void *)((u32)v0 + v3);
+    v0 = OS_InitAlloc(OS_ARENA_MAIN, v0, v1, 1);
 
-    OS_SetArenaLo(OS_ARENA_MAIN, start);
+    OS_SetArenaLo(OS_ARENA_MAIN, v0);
 
-    start = (void *)(((u32)start + 32 - 1) & ~(32 - 1));
-    end = (void *)(((u32)end + 32 - 1) & ~(32 - 1));
+    v0 = (void *)(((u32)(v0) + 32 - 1) & ~(32 - 1));
+    v1 = (void *)(((u32)(v1) + 32 - 1) & ~(32 - 1));
 
-    _0222AB80 = OS_CreateHeap(OS_ARENA_MAIN, start, end);
+    _0222AB80 = OS_CreateHeap(OS_ARENA_MAIN, v0, v1);
     OS_SetCurrentHeap(OS_ARENA_MAIN, _0222AB80);
 
-    return buffer;
+    return v2;
 }
 #pragma force_active reset
 void ov39_02227E3C(void);

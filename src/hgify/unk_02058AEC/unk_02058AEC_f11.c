@@ -3,35 +3,43 @@
 #pragma thumb on
 #include "global.h"
 
-#include "ghidra_compat.h"
 #include "party.h"
 #include "pokemon.h"
-typedef int code();
-void sub_020596A8(int param_1, undefined4 param_2);
-// FUNCTION sub_020596A8: matching C (r2)
+
+typedef struct UnkStruct_sub_020596A8_fieldSystem {
+    u8 unk_00[0xC];
+    SaveData *saveData;
+} UnkStruct_sub_020596A8_fieldSystem;
+
+typedef struct UnkStruct_sub_020596A8 {
+    u8 unk_00[0x24];
+    UnkStruct_sub_020596A8_fieldSystem *fieldSystem;
+    u8 unk_28[0x3D - 0x28];
+    u8 unk_3D[3];
+    u8 unk_40[0x4C - 0x40];
+    u8 *unk_4C;
+} UnkStruct_sub_020596A8;
+
+// FUNCTION sub_020596A8: matching C (twin)
 #pragma force_active on
-void sub_020596A8(int param_1, undefined4 param_2)
+void sub_020596A8(UnkStruct_sub_020596A8 *param0, u32 param1) {
+    Party *v0;
+    u32 *v1;
+    u8 *v2;
+    int v3;
+    u32 v4;
 
-{
-    undefined4 uVar1;
-    int iVar2;
-    undefined4 uVar3;
-    int iVar4;
-    int iVar5;
+    v0 = SaveArray_Party_Get(param0->fieldSystem->saveData);
+    v2 = param0->unk_4C;
+    v4 = sub_02070D90();
+    v1 = (u32 *)(v2 + v4 * 3);
+    *v1 = param1;
 
-    uVar1 = SaveArray_Party_Get(*(undefined4 *)(*(int *)(param_1 + 0x24) + 0xc));
-    iVar4 = *(int *)(param_1 + 0x4c);
-    iVar2 = sub_02070D90();
-    *(undefined4 *)(iVar4 + iVar2 * 3) = param_2;
-    if (*(int *)(iVar4 + iVar2 * 3) != 0) {
-        iVar5 = 0;
-        do {
-            uVar3 = Party_GetMonByIndex(uVar1, *(byte *)(param_1 + iVar5 + 0x3d) - 1);
-            MI_CpuCopy8(uVar3, iVar4, iVar2);
-            iVar5 = iVar5 + 1;
-            iVar4 = iVar4 + iVar2;
-        } while (iVar5 < 3);
+    if (*v1) {
+        for (v3 = 0; v3 < 3; v3++) {
+            MI_CpuCopy8(Party_GetMonByIndex(v0, param0->unk_3D[v3] - 1), v2, v4);
+            v2 += v4;
+        }
     }
-    return;
 }
 #pragma force_active reset

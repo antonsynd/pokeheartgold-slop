@@ -3,31 +3,30 @@
 #pragma thumb on
 #include "global.h"
 
-#include "ghidra_compat.h"
+#include "constants/player_avatar.h"
+
 #include "map_object.h"
 #include "player_avatar.h"
 #include "unk_0205FD20.h"
 #include "unk_02062108.h"
-typedef int code();
-undefined4 sub_0206234C(int, int);
-void sub_0205CFBC(undefined4 param_1, undefined4 param_2, undefined4 param_3, undefined4 param_4);
-// FUNCTION sub_0205CFBC: matching C (r3)
+
+u32 sub_0206234C(u32 param0, u32 param1);
+void sub_0205CFBC(PlayerAvatar *playerAvatar, u32 dir);
+
+// FUNCTION sub_0205CFBC: matching C (twin)
 #pragma force_active on
-void sub_0205CFBC(undefined4 param_1, undefined4 param_2, undefined4 param_3, undefined4 param_4)
+void sub_0205CFBC(PlayerAvatar *playerAvatar, u32 dir) {
+    LocalMapObject *mapObj;
 
-{
-    undefined4 uVar1;
-    undefined4 uVar2;
+    PlayerAvatar_SetMoveState(playerAvatar, AVATAR_MOVE_STATE_NONE);
+    PlayerAvatar_SetPlayerMoveState(playerAvatar, PLAYER_MOVE_STATE_NONE);
 
-    PlayerAvatar_SetMoveState(param_1, 0);
-    PlayerAvatar_SetPlayerMoveState(param_1, 0);
-    uVar1 = PlayerAvatar_GetMapObject(param_1);
-    MapObject_SetFacingDirection(uVar1, param_2);
-    sub_0205F328(uVar1, 0);
-    sub_02060F78(uVar1);
-    MapObject_ClearHeldMovement(uVar1);
-    uVar2 = sub_0206234C(param_2, 0);
-    MapObject_SetHeldMovement(uVar1, uVar2);
-    return;
+    mapObj = PlayerAvatar_GetMapObject(playerAvatar);
+
+    MapObject_SetFacingDirection(mapObj, dir);
+    sub_0205F328(mapObj, 0x0);
+    sub_02060F78(mapObj);
+    MapObject_ClearHeldMovement(mapObj);
+    MapObject_SetHeldMovement(mapObj, sub_0206234C(dir, 0));
 }
 #pragma force_active reset

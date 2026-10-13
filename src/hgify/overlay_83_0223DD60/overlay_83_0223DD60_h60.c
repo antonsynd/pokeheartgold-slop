@@ -3,41 +3,29 @@
 #pragma thumb on
 #include "global.h"
 
-#include "error_handling.h"
-#include "ghidra_compat.h"
-typedef int code();
-extern undefined ov83_02247F16;
-extern undefined ov83_02247EE0;
-extern undefined ov83_02247FC8;
-extern undefined ov83_02247F88;
-undefined2 ov83_02240EF8(uint param_1);
-// FUNCTION ov83_02240EF8: matching C (r2)
+extern const u16 ov83_02247EE0[0x1B];
+extern const u16 ov83_02247F16[0x1B];
+extern const u16 ov83_02247F88[0x20];
+extern const u16 ov83_02247FC8[0x20];
+
+// FUNCTION ov83_02240EF8: matching C (twin)
 #pragma force_active on
-undefined2 ov83_02240EF8(uint param_1)
+u16 ov83_02240EF8(u16 itemID) {
+    int i;
 
-{
-    uint uVar1;
-    ushort *puVar2;
+    for (i = 0; i < NELEMS(ov83_02247EE0); i++) {
+        if (ov83_02247EE0[i] == itemID) {
+            return ov83_02247F16[i];
+        }
+    }
 
-    puVar2 = (ushort *)&ov83_02247EE0;
-    uVar1 = 0;
-    do {
-        if (param_1 == *puVar2) {
-            return *(undefined2 *)(&ov83_02247F16 + uVar1 * 2);
+    for (i = 0; i < NELEMS(ov83_02247F88); i++) {
+        if (ov83_02247F88[i] == itemID) {
+            return ov83_02247FC8[i];
         }
-        uVar1 = uVar1 + 1;
-        puVar2 = puVar2 + 1;
-    } while (uVar1 < 0x1b);
-    puVar2 = (ushort *)&ov83_02247F88;
-    uVar1 = 0;
-    do {
-        if (param_1 == *puVar2) {
-            return *(undefined2 *)(&ov83_02247FC8 + uVar1 * 2);
-        }
-        uVar1 = uVar1 + 1;
-        puVar2 = puVar2 + 1;
-    } while (uVar1 < 0x20);
-    GF_AssertFail();
+    }
+
+    GF_ASSERT(FALSE);
     return 0;
 }
 #pragma force_active reset

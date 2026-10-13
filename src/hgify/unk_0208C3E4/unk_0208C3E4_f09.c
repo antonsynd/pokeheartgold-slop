@@ -3,23 +3,26 @@
 #pragma thumb on
 #include "global.h"
 
-#include "ghidra_compat.h"
 #include "message_format.h"
 #include "msgdata.h"
 #include "pm_string.h"
-typedef int code();
-void sub_0208C87C(int param_1, int param_2, int param_3, uint param_4, byte param_5);
-// FUNCTION sub_0208C87C: matching C (r2)
+
+typedef struct UnkStruct_sub_0208C87C {
+    u8 unk0[0x7A0];
+    MsgData *msgLoader;
+    u8 unk7A4[4];
+    MessageFormat *strFormatter;
+    String *string;
+} UnkStruct_sub_0208C87C;
+
+void sub_0208C87C(UnkStruct_sub_0208C87C *summaryScreen, u32 entryID, u32 number, u8 digits, u8 paddingMode);
+// FUNCTION sub_0208C87C: matching C (twin)
 #pragma force_active on
-void sub_0208C87C(int param_1, int param_2, int param_3, uint param_4, byte param_5)
+void sub_0208C87C(UnkStruct_sub_0208C87C *summaryScreen, u32 entryID, u32 number, u8 digits, u8 paddingMode) {
+    String *buf = NewString_ReadMsgData(summaryScreen->msgLoader, entryID);
 
-{
-    String *puVar1;
-
-    puVar1 = NewString_ReadMsgData((MsgData *)*(undefined **)(param_1 + 0x7a0), param_2);
-    BufferIntegerAsString((MessageFormat *)*(undefined **)(param_1 + 0x7a8), 0, param_3, param_4, (uint)param_5, 1);
-    StringExpandPlaceholders((MessageFormat *)*(undefined **)(param_1 + 0x7a8), (String *)*(undefined **)(param_1 + 0x7ac), puVar1);
-    String_Delete(puVar1);
-    return;
+    BufferIntegerAsString(summaryScreen->strFormatter, 0, number, digits, paddingMode, TRUE);
+    StringExpandPlaceholders(summaryScreen->strFormatter, summaryScreen->string, buf);
+    String_Delete(buf);
 }
 #pragma force_active reset

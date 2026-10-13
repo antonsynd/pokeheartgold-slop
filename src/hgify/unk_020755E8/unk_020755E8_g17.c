@@ -3,29 +3,32 @@
 #include "global.h"
 
 #include "bg_window.h"
+#include "dialog_box.h"
 #include "heap.h"
 #include "message_format.h"
 #include "msgdata.h"
 #include "options.h"
 #include "text.h"
-void sub_02077340(void);
-#pragma thumb on
-#include "ghidra_compat.h"
-typedef int code();
-void sub_020772F8(int param_1, int param_2);
-// FUNCTION sub_020772F8: matching C (r2)
-#pragma force_active on
-void sub_020772F8(int param_1, int param_2)
 
-{
-    undefined4 uVar1;
+typedef struct UnkStruct_sub_020772F8 {
+    u8 unk_00[4];
+    Window *window;
+    MsgData *msgLoader;
+    MessageFormat *strTemplate;
+    String *string;
+    u8 unk_14[0x18];
+    Options *options;
+} UnkStruct_sub_020772F8;
 
-    uVar1 = NewString_ReadMsgData(*(undefined4 *)(param_1 + 8), param_2);
-    StringExpandPlaceholders(*(undefined4 *)(param_1 + 0xc), *(undefined4 *)(param_1 + 0x10), uVar1);
-    Heap_Free(uVar1);
-    FillWindowPixelBuffer(*(undefined4 *)(param_1 + 4), 0xff);
-    uVar1 = Options_GetTextFrameDelay(*(undefined4 *)(param_1 + 0x2c));
-    AddTextPrinterParameterized(*(undefined4 *)(param_1 + 4), 1, *(undefined4 *)(param_1 + 0x10), 0, 0, uVar1, ((unsigned int)sub_02077340));
-    return;
+BOOL sub_02077340(TextPrinterTemplate *template, u16 glyphId);
+u8 sub_020772F8(UnkStruct_sub_020772F8 *evolutionData, int entryID);
+// FUNCTION sub_020772F8: matching C (twin)
+u8 sub_020772F8(UnkStruct_sub_020772F8 *evolutionData, int entryID) {
+    String *string = NewString_ReadMsgData(evolutionData->msgLoader, entryID);
+
+    StringExpandPlaceholders(evolutionData->strTemplate, evolutionData->string, string);
+    Heap_Free(string);
+    FillWindowPixelBuffer(evolutionData->window, 0xFF);
+
+    return AddTextPrinterParameterized(evolutionData->window, 1, evolutionData->string, 0, 0, Options_GetTextFrameDelay(evolutionData->options), sub_02077340);
 }
-#pragma force_active reset

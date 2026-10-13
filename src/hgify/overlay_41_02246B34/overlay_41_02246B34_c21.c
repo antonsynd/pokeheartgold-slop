@@ -2,40 +2,50 @@
 #pragma warning_errors off
 #pragma thumb on
 #include "global.h"
-typedef struct Ov41Arr {
-    u32 w0;
-    u32 w1;
-    u32 w2;
-    u32 w3;
-    u32 w4;
-    u32 w5;
-    u32 w6;
-    u32 w7;
-    u32 w8;
-    u32 w9;
-    u32 w10;
-    u32 w11;
-} Ov41Arr;
-void ov41_02249C7C(void *, void *);
-// FUNCTION ov41_02247480: matching C (agent11)
-#pragma force_active on
-void ov41_02247480(int param_1, int param_2) {
-    Ov41Arr t;
-    int v;
 
-    t.w0 = *(u32 *)(param_1 + 0x40);
-    t.w1 = 0x1a;
-    v = param_2 * 2;
-    t.w2 = v + 0x79;
-    t.w3 = 0x85;
-    t.w4 = v + 0x7a;
-    t.w5 = 0;
-    t.w6 = 0;
-    t.w7 = 1;
-    t.w8 = 1;
-    t.w9 = 2;
-    t.w10 = 0;
-    t.w11 = 0xe;
-    ov41_02249C7C((void *)(param_1 + 0x4b4), &t);
+#include "constants/heap.h"
+
+typedef struct UnkStruct_ov41_02247480_Args {
+    u32 unk_00;
+    int narcID;
+    u32 unk_08;
+    u32 unk_0C;
+    u32 unk_10;
+    u32 unk_14;
+    u32 unk_18;
+    u32 unk_1C;
+    u32 unk_20;
+    u32 unk_24;
+    u32 unk_28;
+    enum HeapID heapID;
+} UnkStruct_ov41_02247480_Args;
+
+typedef struct UnkStruct_ov41_02247480 {
+    u8 unk_00[0x40];
+    u32 unk_40;
+    u8 unk_44[0x4B4 - 0x44];
+    u8 unk_4B4[0];
+} UnkStruct_ov41_02247480;
+
+void ov41_02249C7C(void *, void *);
+// FUNCTION ov41_02247480: matching C (twin)
+#pragma force_active on
+void ov41_02247480(UnkStruct_ov41_02247480 *param0, int param1) {
+    UnkStruct_ov41_02247480_Args v0;
+
+    v0.unk_00 = param0->unk_40;
+    v0.narcID = 0x1A;
+    v0.unk_08 = (param1) * 2 + 0x79;
+    v0.unk_0C = 0x85;
+    v0.unk_10 = (param1) * 2 + 0x79 + 1;
+    v0.unk_14 = 0;
+    v0.unk_18 = 0;
+    v0.unk_1C = 1;
+    v0.unk_20 = 1;
+    v0.unk_24 = 2;
+    v0.unk_28 = 0;
+    v0.heapID = HEAP_ID_14;
+
+    ov41_02249C7C(&param0->unk_4B4, &v0);
 }
 #pragma force_active reset

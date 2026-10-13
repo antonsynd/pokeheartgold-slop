@@ -3,29 +3,24 @@
 #pragma thumb on
 #include "global.h"
 
-#include "ghidra_compat.h"
 #include "map_object.h"
-typedef int code();
-undefined4 MapObject_AreBitsSetForMovementScriptInit(undefined4 param_1);
-// FUNCTION MapObject_AreBitsSetForMovementScriptInit: matching C (r2)
+#include "unk_02062108.h"
+
+// FUNCTION MapObject_AreBitsSetForMovementScriptInit: matching C (twin)
 #pragma force_active on
-undefined4 MapObject_AreBitsSetForMovementScriptInit(undefined4 param_1)
+BOOL MapObject_AreBitsSetForMovementScriptInit(LocalMapObject *mapObj) {
+    if (!MapObject_TestFlagsBits(mapObj, MAPOBJECTFLAG_ACTIVE)) {
+        return FALSE;
+    }
 
-{
-    int iVar1;
+    if (MapObject_TestFlagsBits(mapObj, MAPOBJECTFLAG_SINGLE_MOVEMENT) == TRUE) {
+        return FALSE;
+    }
 
-    iVar1 = MapObject_TestFlagsBits(param_1, 1);
-    if (iVar1 == 0) {
-        return 0;
+    if (MapObject_TestFlagsBits(mapObj, MAPOBJECTFLAG_UNK4) == TRUE && !MapObject_TestFlagsBits(mapObj, MAPOBJECTFLAG_UNK5)) {
+        return FALSE;
     }
-    iVar1 = MapObject_TestFlagsBits(param_1, 2);
-    if (iVar1 == 1) {
-        return 0;
-    }
-    iVar1 = MapObject_TestFlagsBits(param_1, 0x10);
-    if ((iVar1 == 1) && (iVar1 = MapObject_TestFlagsBits(param_1, 0x20), iVar1 == 0)) {
-        return 0;
-    }
-    return 1;
+
+    return TRUE;
 }
 #pragma force_active reset

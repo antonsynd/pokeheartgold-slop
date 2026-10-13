@@ -5,30 +5,28 @@
 
 #include "bg_window.h"
 #include "dialog_box.h"
-#include "ghidra_compat.h"
+#include "field_system.h"
 #include "player_data.h"
+
 typedef int code();
-void sub_02059478(int param_1, undefined4 param_2);
-// FUNCTION sub_02059478: matching C (r2)
+// FUNCTION sub_02059478: matching C (twin)
 #pragma force_active on
-void sub_02059478(int param_1, undefined4 param_2)
+typedef struct UnkStruct_sub_02059478 {
+    u8 unk_00[0x14];
+    Window unk_14;
+    FieldSystem *fieldSystem;
+} UnkStruct_sub_02059478;
 
-{
-    int iVar1;
-    undefined4 uVar2;
-    int iVar3;
+int sub_02059478(UnkStruct_sub_02059478 *param0, String *param1) {
+    Window *v0 = &(param0->unk_14);
 
-    iVar3 = param_1 + 0x14;
-    iVar1 = WindowIsInUse(iVar3);
-    if (iVar1 == 0) {
-        DialogBox_AddWindowToLayer3(*(undefined4 *)(*(int *)(param_1 + 0x24) + 8), iVar3, 3);
-        uVar2 = Save_PlayerData_GetOptionsAddr(*(undefined4 *)(*(int *)(param_1 + 0x24) + 0xc));
-        DialogBox_LoadFrame(iVar3, uVar2);
+    if (WindowIsInUse(v0) == 0) {
+        DialogBox_AddWindowToLayer3(param0->fieldSystem->bgConfig, v0, 3);
+        DialogBox_LoadFrame(v0, Save_PlayerData_GetOptionsAddr(param0->fieldSystem->saveData));
     } else {
-        DialogBox_Clear(iVar3);
+        DialogBox_Clear(v0);
     }
-    uVar2 = Save_PlayerData_GetOptionsAddr(*(undefined4 *)(*(int *)(param_1 + 0x24) + 0xc));
-    DialogBox_PrintMessage(iVar3, param_2, uVar2, 1);
-    return;
+
+    return DialogBox_PrintMessage(v0, param1, Save_PlayerData_GetOptionsAddr(param0->fieldSystem->saveData), 1);
 }
 #pragma force_active reset

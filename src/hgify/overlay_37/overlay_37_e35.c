@@ -3,26 +3,19 @@
 #pragma thumb on
 #include "global.h"
 
-#include "ghidra_compat.h"
 #include "screen_fade.h"
 #include "unk_02035900.h"
 #include "unk_020379A0.h"
-typedef int code();
-undefined4 ov37_021E68AC();
-undefined4 ov37_021E6E2C(undefined4 param_1, undefined4 param_2);
-// FUNCTION ov37_021E6E2C: matching C (r2)
+u32 ov37_021E68AC(void *param0);
+// FUNCTION ov37_021E6E2C: matching C (twin)
 #pragma force_active on
-undefined4 ov37_021E6E2C(undefined4 param_1, undefined4 param_2)
-
-{
-    int iVar1;
-
-    iVar1 = sub_02037B38(200);
-    if ((iVar1 != 0) || (iVar1 = sub_02037454(), iVar1 == 1)) {
-        BeginNormalPaletteFade(0, 0x10, 0x10, 0, 0x10, 1, 0x27);
-        param_2 = 3;
+int ov37_021E6E2C(void *param0, int param1) {
+    if (sub_02037B38(200) != 0 || sub_02037454() == 1) {
+        BeginNormalPaletteFade(FADE_BOTH_SCREENS, 0x10, 0x10, 0, 0x10, 1, 0x27);
+        param1 = 3;
     }
-    ov37_021E68AC(param_1);
-    return param_2;
+
+    ov37_021E68AC(param0);
+    return param1;
 }
 #pragma force_active reset

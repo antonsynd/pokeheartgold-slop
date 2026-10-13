@@ -6,22 +6,25 @@ extern u8 _021D2198[];
 int TP_RequestAutoSamplingStartAsync(u16 vCount, u16 frequency, void *buf, u32 bufSize);
 void TP_WaitBusy(int);
 int TP_CheckBusy(int);
-// FUNCTION GF_TouchpadStartAutoSampling: matching C (agent5)
+// FUNCTION GF_TouchpadStartAutoSampling: matching C (twin)
 #pragma force_active on
-int GF_TouchpadStartAutoSampling(int frequency) {
-    int i = 0;
-    int busy;
+int GF_TouchpadStartAutoSampling(u32 frequency) {
+    int errorCount = 0;
+    BOOL hasError;
+
     do {
         TP_RequestAutoSamplingStartAsync(0, frequency, _021D2198 + 0xC, 9);
         TP_WaitBusy(2);
-        busy = TP_CheckBusy(2);
-        if (busy != 0) {
-            i++;
+        hasError = TP_CheckBusy(2);
+        if (hasError != FALSE) {
+            errorCount++;
         }
-    } while (busy != 0 && i <= 5);
-    if (i > 5) {
+    } while ((hasError != FALSE) && (errorCount <= 5));
+
+    if (errorCount > 5) {
         return 2;
     }
+
     return 1;
 }
 #pragma force_active reset

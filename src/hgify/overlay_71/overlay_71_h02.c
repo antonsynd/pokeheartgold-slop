@@ -3,7 +3,6 @@
 #pragma thumb on
 #include "global.h"
 
-#include "ghidra_compat.h"
 #include "heap.h"
 #include "message_format.h"
 #include "msgdata.h"
@@ -13,30 +12,40 @@
 #include "sys_task_api.h"
 #include "unk_0200B150.h"
 #include "unk_0203A3B0.h"
-typedef int code();
-undefined4 TradeSequence_Exit(undefined4 param_1);
-// FUNCTION TradeSequence_Exit: matching C (r2)
+typedef struct UnkStruct_TradeSequence_Exit {
+    u8 pad_00[8];
+    void *bgConfig;
+    MessageFormat *strTemplate;
+    MsgData *msgLoader;
+    String *strBuffer;
+    SpriteList *spriteList;
+    u8 pad_1C[0x144 - 0x1C];
+    SysTask *task;
+} UnkStruct_TradeSequence_Exit;
+int TradeSequence_Exit(OverlayManager *appMan);
+// FUNCTION TradeSequence_Exit: matching C (twin)
 #pragma force_active on
-undefined4 TradeSequence_Exit(undefined4 param_1)
+int TradeSequence_Exit(OverlayManager *appMan) {
+    OSIntrMode intrMode;
+    UnkStruct_TradeSequence_Exit *sequenceData;
 
-{
-    undefined4 uVar1;
-    int iVar2;
+    intrMode = OS_DisableInterrupts();
+    sequenceData = OverlayManager_GetData(appMan);
 
-    uVar1 = OS_DisableInterrupts();
-    iVar2 = OverlayManager_GetData(param_1);
-    SysTask_Destroy(*(undefined4 *)(iVar2 + 0x144));
+    SysTask_Destroy(sequenceData->task);
     sub_0203A914();
-    MessageFormat_Delete(*(undefined4 *)(iVar2 + 0xc));
-    DestroyMsgData(*(undefined4 *)(iVar2 + 0x10));
-    String_Delete(*(undefined4 *)(iVar2 + 0x14));
-    Heap_Free(*(undefined4 *)(iVar2 + 8));
-    SpriteList_Delete(*(undefined4 *)(iVar2 + 0x18));
+    MessageFormat_Delete(sequenceData->strTemplate);
+    DestroyMsgData(sequenceData->msgLoader);
+    String_Delete(sequenceData->strBuffer);
+    Heap_Free(sequenceData->bgConfig);
+    SpriteList_Delete(sequenceData->spriteList);
     OamManager_Free();
-    OverlayManager_FreeData(param_1);
+    OverlayManager_FreeData(appMan);
     Heap_Destroy(0x38);
     Heap_Destroy(0x39);
-    OS_RestoreInterrupts(uVar1);
+
+    OS_RestoreInterrupts(intrMode);
+
     return 1;
 }
 #pragma force_active reset

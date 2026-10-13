@@ -3,35 +3,50 @@
 #pragma thumb on
 #include "global.h"
 
-#include "ghidra_compat.h"
 #include "heap.h"
 #include "list_menu_cursor.h"
 #include "message_format.h"
 #include "msgdata.h"
 #include "pm_string.h"
-typedef int code();
-undefined4 sub_020594C8();
-void sub_02059650(int param_1);
-// FUNCTION sub_02059650: matching C (r2)
-#pragma force_active on
-void sub_02059650(int param_1)
 
-{
-    if (*(int *)(param_1 + 0x50) != 0) {
-        Heap_Free((void *)*(int *)(param_1 + 0x50));
+typedef struct UnkStruct_sub_02059650 {
+    u8 unk_00[0x0c];
+    String *unk_0C;
+    String *unk_10;
+    u8 unk_14[0x28 - 0x14];
+    MessageFormat *unk_28;
+    MsgData *unk_2C;
+    u8 unk_30[0x48 - 0x30];
+    void *unk_48;
+    void *unk_4C;
+    void *unk_50;
+    u8 unk_54[0x78 - 0x54];
+    struct ListMenuCursor *unk_78;
+} UnkStruct_sub_02059650;
+
+void sub_020594C8(UnkStruct_sub_02059650 *param0, int param1);
+
+// FUNCTION sub_02059650: matching C (twin)
+#pragma force_active on
+void sub_02059650(UnkStruct_sub_02059650 *param0) {
+    if (param0->unk_50) {
+        Heap_Free(param0->unk_50);
     }
-    if (*(int *)(param_1 + 0x4c) != 0) {
-        Heap_Free((void *)*(int *)(param_1 + 0x4c));
+
+    if (param0->unk_4C) {
+        Heap_Free(param0->unk_4C);
     }
-    if (*(int *)(param_1 + 0x48) != 0) {
-        Heap_Free((void *)*(int *)(param_1 + 0x48));
+
+    if (param0->unk_48) {
+        Heap_Free(param0->unk_48);
     }
-    DestroyMsgData((MsgData *)*(undefined4 *)(param_1 + 0x2c));
-    MessageFormat_Delete((MessageFormat *)*(undefined4 *)(param_1 + 0x28));
-    String_Delete((String *)*(undefined4 *)(param_1 + 0xc));
-    String_Delete((String *)*(undefined4 *)(param_1 + 0x10));
-    DestroyListMenuCursorObj((struct ListMenuCursor *)*(undefined4 *)(param_1 + 0x78));
-    sub_020594C8(param_1, 1);
-    return;
+
+    DestroyMsgData(param0->unk_2C);
+    MessageFormat_Delete(param0->unk_28);
+    String_Delete(param0->unk_0C);
+    String_Delete(param0->unk_10);
+    DestroyListMenuCursorObj(param0->unk_78);
+
+    sub_020594C8(param0, 1);
 }
 #pragma force_active reset

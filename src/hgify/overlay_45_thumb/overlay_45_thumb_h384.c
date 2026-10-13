@@ -3,28 +3,43 @@
 #pragma thumb on
 #include "global.h"
 
-#include "error_handling.h"
-#include "ghidra_compat.h"
-typedef int code();
-extern int _022577C0;
-undefined1 ov45_0222E96C(void);
-// FUNCTION ov45_0222E96C: matching C (r4)
-#pragma force_active on
-undefined1 ov45_0222E96C(void)
+#include "assert.h"
 
-{
-    if (_022577C0 == 0) {
-        GF_AssertFail();
+typedef struct UnkStruct_ov45_0222E96C {
+    u8 unk_000[0x12C];
+    u8 unk_12C;
+    u8 unk_12D;
+    u8 unk_12E;
+    u8 unk_12F[0x132 - 0x12F];
+    u8 unk_132;
+    u8 unk_133;
+} UnkStruct_ov45_0222E96C;
+
+extern int _022577C0;
+
+// FUNCTION ov45_0222E96C: matching C (twin)
+#pragma force_active on
+u8 ov45_0222E96C(void) {
+    UnkStruct_ov45_0222E96C *state;
+
+    GF_ASSERT(_022577C0 != 0);
+
+    state = (UnkStruct_ov45_0222E96C *)_022577C0;
+
+    if (state->unk_12D != 4) {
+        if (state->unk_12E == 4) {
+            return 4;
+        }
     }
-    if ((*(unsigned char *)(_022577C0 + 0x12d) != '\x04') && (*(unsigned char *)(_022577C0 + 0x12e) == '\x04')) {
+
+    if (state->unk_133) {
         return 4;
     }
-    if (*(unsigned char *)(_022577C0 + 0x133) != '\0') {
+
+    if (state->unk_132) {
         return 4;
     }
-    if (*(unsigned char *)(_022577C0 + 0x132) != '\0') {
-        return 4;
-    }
-    return *(undefined1 *)(_022577C0 + 300);
+
+    return state->unk_12C;
 }
 #pragma force_active reset

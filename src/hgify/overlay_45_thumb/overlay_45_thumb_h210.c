@@ -105,29 +105,32 @@ extern const UnkStruct_ov45_02254A84 ov45_02254A84[16];
 void ov45_0222C8C8(UnkStruct_ov45_0222C8C8 *work, u32 a1, u32 a2);
 void ov45_0222C8C8(UnkStruct_ov45_0222C8C8 *work, u32 a1, u32 a2);
 u32 ov45_0222C900(const UnkStruct_ov45_0222C8C8 *work);
-// FUNCTION ov45_0222C900: matching C (r2)
+// FUNCTION ov45_0222C900: matching C (twin)
 #pragma force_active on
-u32 ov45_0222C900(const UnkStruct_ov45_0222C8C8 *work) {
-    int i;
-    u32 total;
-    u32 roll;
-    u32 sum;
+u32 ov45_0222C900(const UnkStruct_ov45_0222C8C8 *param0) {
+    int v0;
+    u32 v1;
+    u32 v2;
+    u32 v3;
 
-    total = 0;
-    for (i = 0; i < 9; i++) {
-        total += work->unk_00[i];
+    v1 = 0;
+
+    for (v0 = 0; v0 < 9; v0++) {
+        v1 += param0->unk_00[v0];
     }
 
-    roll = MTRandom() % total;
-    sum = 0;
-    for (i = 0; i < 9; i++) {
-        if (sum <= roll && sum + work->unk_00[i] > roll) {
-            return i * 3;
+    v3 = MTRandom() % v1;
+    v2 = 0;
+
+    for (v0 = 0; v0 < 9; v0++) {
+        if ((v2 <= v3) && ((v2 + param0->unk_00[v0]) > v3)) {
+            return v0 * 3;
         }
-        sum += work->unk_00[i];
+
+        v2 += param0->unk_00[v0];
     }
 
-    GF_ASSERT(FALSE);
+    GF_AssertFail();
     return 0;
 }
 #pragma force_active reset

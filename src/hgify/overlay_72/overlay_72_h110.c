@@ -3,23 +3,30 @@
 #pragma thumb on
 #include "global.h"
 
-#include "ghidra_compat.h"
 #include "message_format.h"
 #include "render_window.h"
-typedef int code();
-undefined4 ov72_0223A460();
-void ov72_0223A4DC(int param_1, int param_2, undefined4 param_3, undefined4 param_4);
-// FUNCTION ov72_0223A4DC: matching C (r3)
-#pragma force_active on
-void ov72_0223A4DC(int param_1, int param_2, undefined4 param_3, undefined4 param_4)
 
-{
-    if (param_2 == -1) {
-        param_2 = 0xb;
+typedef struct UnkStruct_ov72_0223A4DC {
+    u8 unk_000[0xBD0];
+    MessageFormat *stringTemplate;
+    u8 unk_BD4[0xE18 - 0xBD4];
+    Window msgWindow;
+} UnkStruct_ov72_0223A4DC;
+
+void ov72_0223A460(UnkStruct_ov72_0223A4DC *appState, int msgIndex);
+// FUNCTION ov72_0223A4DC: matching C (twin)
+#pragma force_active on
+void ov72_0223A4DC(UnkStruct_ov72_0223A4DC *param0, int errCode, int rawErrorCode) {
+    int msgIndex;
+
+    if (errCode != -1) {
+        msgIndex = errCode;
+    } else {
+        msgIndex = 11;
     }
-    BufferIntegerAsString(*(undefined4 *)(param_1 + 0xbd0), 0, param_3, 5, 2, 1);
-    ClearFrameAndWindow2(param_1 + 0xe18, 1);
-    ov72_0223A460(param_1, param_2);
-    return;
+
+    BufferIntegerAsString(param0->stringTemplate, 0, rawErrorCode, 5, 2, 1);
+    ClearFrameAndWindow2(&param0->msgWindow, 1);
+    ov72_0223A460(param0, msgIndex);
 }
 #pragma force_active reset

@@ -2,15 +2,20 @@
 #pragma warning_errors off
 #pragma thumb on
 #include "global.h"
+
+#include "text.h"
+
 typedef struct FrontierScriptManager {
     u8 filler_00[0x48];
     void *string;
 } FrontierScriptManager;
+
 extern void ov80_0222E2B8(FrontierScriptManager *scriptMan);
 extern void ov80_0222E400(void *string, u32 sentenceType, u32 sentenceID, u16 word1, u16 word2);
 extern void ov80_0222E344(FrontierScriptManager *scriptMan, u32 font, u32 renderDelay, u32 canSpeedUp, u32 autoScroll);
+
 void ov80_0222E3B8(FrontierScriptManager *scriptMan, u32 renderDelay, u32 sentenceType, u32 sentenceID, u16 word1, u16 word2, u8 canSpeedUp);
-// FUNCTION ov80_0222E3B8: matching C (r0)
+// FUNCTION ov80_0222E3B8: matching C (twin)
 #pragma force_active on
 void ov80_0222E3B8(FrontierScriptManager *scriptMan, u32 renderDelay, u32 sentenceType, u32 sentenceID, u16 word1, u16 word2, u8 canSpeedUp) {
     ov80_0222E2B8(scriptMan);
@@ -19,7 +24,7 @@ void ov80_0222E3B8(FrontierScriptManager *scriptMan, u32 renderDelay, u32 senten
     if (canSpeedUp != 0xFF) {
         ov80_0222E344(scriptMan, 1, renderDelay, canSpeedUp, 0);
     } else {
-        ov80_0222E344(scriptMan, 1, 0, canSpeedUp, 0);
+        ov80_0222E344(scriptMan, 1, TEXT_SPEED_INSTANT, canSpeedUp, 0);
     }
 }
 #pragma force_active reset

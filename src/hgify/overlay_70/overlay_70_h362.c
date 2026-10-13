@@ -4,19 +4,30 @@
 #include "global.h"
 
 #include "party.h"
-int ov70_0223E76C(int);
-// FUNCTION ov70_02240D00: matching C (agent7)
-#pragma force_active on
-int ov70_02240D00(int *param_1, int param_2) {
-    int iVar1;
 
-    iVar1 = ov70_0223E76C(param_2);
-    if ((iVar1 != 0) && (iVar1 = Party_GetCount(*(u32 *)(*param_1 + 8)), iVar1 == 6)) {
+typedef struct UnkStruct_ov70_02240D00_playerData {
+    u8 unk_00[0x8];
+    Party *party;
+} UnkStruct_ov70_02240D00_playerData;
+
+typedef struct UnkStruct_ov70_02240D00 {
+    UnkStruct_ov70_02240D00_playerData *playerData;
+    u8 unk_04[0x11f8 - 0x4];
+    u16 deferredBoxPokemonCount;
+} UnkStruct_ov70_02240D00;
+
+int ov70_0223E76C(void *listing);
+// FUNCTION ov70_02240D00: matching C (twin)
+#pragma force_active on
+int ov70_02240D00(UnkStruct_ov70_02240D00 *appState, void *listing) {
+    if (ov70_0223E76C(listing) != 0 && Party_GetCount(appState->playerData->party) == 6) {
         return 2;
     }
-    if ((*(u16 *)((u8 *)param_1 + 0x11f8) == 0x21c) && (iVar1 = Party_GetCount(*(u32 *)(*param_1 + 8)), iVar1 == 6)) {
+
+    if (appState->deferredBoxPokemonCount == 0x21c && Party_GetCount(appState->playerData->party) == 6) {
         return 1;
     }
+
     return 0;
 }
 #pragma force_active reset

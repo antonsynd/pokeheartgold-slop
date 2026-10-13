@@ -164,23 +164,32 @@ s32 ov45_0222A548(const UnkStruct_ov45_0222A3D4 *a0);
 BOOL ov45_0222A550(const UnkStruct_ov45_0222A3D4 *a0, u32 a1);
 BOOL ov45_0222A550(const UnkStruct_ov45_0222A3D4 *a0, u32 a1);
 const UnkStruct_ov45_0222A5C0_Profile *ov45_0222A578(const UnkStruct_ov45_0222A3D4 *a0, u32 a1);
-// FUNCTION ov45_0222A578: matching C (r0)
+// FUNCTION ov45_0222A578: matching C (twin)
 #pragma force_active on
-const UnkStruct_ov45_0222A5C0_Profile *ov45_0222A578(const UnkStruct_ov45_0222A3D4 *a0, u32 a1) {
-    s32 id;
-    UnkStruct_ov45_0222EC10 info;
+const UnkStruct_ov45_0222A5C0_Profile *ov45_0222A578(const UnkStruct_ov45_0222A3D4 *param0, u32 param1) {
+    s32 v0;
+    UnkStruct_ov45_0222EC10 v1;
+    const UnkStruct_ov45_0222A5C0_Profile *v2;
 
-    GF_ASSERT(a1 < 20);
-    ov45_0222EC10(&info);
-    id = info.unk4[a1];
-    if (id == UNK_OV45_INVALID_ID) {
+    GF_ASSERT(param1 < 20);
+
+    ov45_0222EC10(&v1);
+
+    v0 = v1.unk4[param1];
+
+    if (v0 == UNK_OV45_INVALID_ID) {
         return NULL;
     }
-    if (id == ov45_0222E9E0()) {
-        return &a0->unk108.profile;
+
+    if (v0 == ov45_0222E9E0()) {
+        v2 = &param0->unk108.profile;
+    } else {
+        v2 = ov45_0222EA2C(v0);
     }
-    return ov45_0222EA2C(id);
+
+    return v2;
 }
+#pragma force_active reset
 #pragma force_active reset
 UnkStruct_ov45_0222A5C0_Profile *ov45_0222A5C0(UnkStruct_ov45_0222A3D4 *a0);
 UnkStruct_ov45_0222A5C0_Profile *ov45_0222A5C0(UnkStruct_ov45_0222A3D4 *a0);

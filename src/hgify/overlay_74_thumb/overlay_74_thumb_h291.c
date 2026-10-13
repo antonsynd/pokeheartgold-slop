@@ -2,19 +2,22 @@
 #pragma warning_errors off
 #pragma thumb on
 #include "global.h"
+
 int WM_SetMPDataToPortEx(void (*callback)(void), void *arg, const u16 *sendData, u16 sendDataSize, u32 destBitmap, u16 port, u16 prio);
 u32 ov74_022310AC(void);
 void ov74_02231448(void);
 void ov74_02230018(void);
-// FUNCTION ov74_02231460: matching C (agent7)
+// FUNCTION ov74_02231460: matching C (twin)
 #pragma force_active on
-u32 ov74_02231460(const u16 *param_1, u32 param_2, u32 param_3) {
-    u16 uVar1 = ov74_022310AC();
-    int iVar2 = WM_SetMPDataToPortEx(ov74_02230018, 0, param_1, param_2, param_3, uVar1, 2);
-    if (iVar2 != 2) {
+u32 ov74_02231460(const u16 *param0, u32 param1, u32 param2) {
+    u16 port = ov74_022310AC();
+    int v0 = WM_SetMPDataToPortEx(ov74_02230018, 0, param0, param1, param2, port, 2);
+
+    if (v0 != 2) {
         ov74_02231448();
         return 0;
+    } else {
+        return 1;
     }
-    return 1;
 }
 #pragma force_active reset

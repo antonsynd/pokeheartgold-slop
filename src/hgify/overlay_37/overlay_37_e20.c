@@ -3,31 +3,34 @@
 #pragma thumb on
 #include "global.h"
 
-#include "ghidra_compat.h"
 #include "unk_02005D10.h"
 #include "unk_02035900.h"
-typedef int code();
-undefined4 ov37_021E762C();
-undefined4 ov37_021E68AC();
-undefined4 ov37_021E7844();
-undefined4 ov37_021E68D0(int param_1, undefined4 param_2);
-// FUNCTION ov37_021E68D0: matching C (r2)
+
+typedef struct UnkStruct_ov37_021E68D0 {
+    u8 unk_000[0x320];
+    int unk_320;
+} UnkStruct_ov37_021E68D0;
+
+void ov37_021E762C(UnkStruct_ov37_021E68D0 *param0, int a1, int a2);
+void ov37_021E68AC(UnkStruct_ov37_021E68D0 *param0);
+void ov37_021E7844(UnkStruct_ov37_021E68D0 *param0, int a1);
+
+// FUNCTION ov37_021E68D0: matching C (twin)
 #pragma force_active on
-undefined4 ov37_021E68D0(int param_1, undefined4 param_2)
-
-{
-    int iVar1;
-
-    iVar1 = sub_0203769C();
-    if (*(int *)(param_1 + 800) == iVar1) {
-        ov37_021E762C(param_1, 0xd, 0);
+int ov37_021E68D0(UnkStruct_ov37_021E68D0 *param0, int param1) {
+    if (param0->unk_320 == sub_0203769C()) {
+        ov37_021E762C(param0, 13, 0);
     } else {
-        ov37_021E762C(param_1, 0, 0);
+        ov37_021E762C(param0, 0, 0);
     }
-    ov37_021E7844(param_1, 2);
+
+    ov37_021E7844(param0, 2);
     PlaySE(0x5e4);
-    G2x_SetBlendBrightness_(0x4000050, 0xe, 0xfffffffa);
-    ov37_021E68AC(param_1);
-    return param_2;
+
+    G2x_SetBlendBrightness_((vu16 *)0x4000050, 0xe, -6);
+
+    ov37_021E68AC(param0);
+
+    return param1;
 }
 #pragma force_active reset

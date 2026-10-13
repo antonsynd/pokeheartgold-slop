@@ -3,32 +3,27 @@
 #pragma thumb on
 #include "global.h"
 
-#include "ghidra_compat.h"
 #include "sprite_system.h"
-typedef int code();
-void ov89_0225A21C(int param_1);
-// FUNCTION ov89_0225A21C: matching C (r2)
+
+typedef struct UnkStruct_ov89_0225A21C {
+    u8 unk_000[0x990];
+    ManagedSprite *unk_990[3];
+} UnkStruct_ov89_0225A21C;
+
+// FUNCTION ov89_0225A21C: matching C (twin)
 #pragma force_active on
-void ov89_0225A21C(int param_1)
+void ov89_0225A21C(UnkStruct_ov89_0225A21C *param0) {
+    int v0;
 
-{
-    int iVar1;
-    int iVar2;
-
-    iVar2 = 0;
-    do {
-        if (*(int *)(param_1 + 0x990) != 0) {
-            iVar1 = ManagedSprite_IsAnimated((struct ManagedSprite *)*(int *)(param_1 + 0x990));
-            if (iVar1 == 0) {
-                Sprite_DeleteAndFreeResources(*(undefined4 *)(param_1 + 0x990));
-                *(undefined4 *)(param_1 + 0x990) = 0;
+    for (v0 = 0; v0 < 3; v0++) {
+        if (param0->unk_990[v0] != NULL) {
+            if (ManagedSprite_IsAnimated(param0->unk_990[v0]) == 0) {
+                Sprite_DeleteAndFreeResources(param0->unk_990[v0]);
+                param0->unk_990[v0] = NULL;
             } else {
-                Sprite_TickFrame(**(undefined4 **)(param_1 + 0x990));
+                Sprite_TickFrame(param0->unk_990[v0]->sprite);
             }
         }
-        iVar2 = iVar2 + 1;
-        param_1 = param_1 + 4;
-    } while (iVar2 < 3);
-    return;
+    }
 }
 #pragma force_active reset

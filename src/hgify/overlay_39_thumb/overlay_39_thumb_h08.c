@@ -3,28 +3,39 @@
 #pragma thumb on
 #include "global.h"
 
-#include "ghidra_compat.h"
 #include "heap.h"
 #include "message_format.h"
 #include "msgdata.h"
 #include "pm_string.h"
-typedef int code();
-undefined4 ov39_02227E3C();
-undefined4 ov39_0222A130();
-void ov39_022272EC(int param_1);
-// FUNCTION ov39_022272EC: matching C (r2)
-#pragma force_active on
-void ov39_022272EC(int param_1)
 
-{
+typedef struct UnkStruct_ov39_022272EC {
+    u8 unk_00[0x18c];
+    void *unk_18C;
+    u8 unk_190[0x3b4 - 0x190];
+    void *unk_3B4;
+    u8 unk_3B8[0x3c4 - 0x3b8];
+    int unk_3C4;
+    u8 unk_3C8[0x3f4 - 0x3c8];
+    MsgData *unk_3F4;
+    MessageFormat *unk_3F8;
+    String *unk_3FC;
+} UnkStruct_ov39_022272EC;
+
+void ov39_0222A130(void);
+void ov39_02227E3C(void);
+
+// FUNCTION ov39_022272EC: matching C (twin)
+#pragma force_active on
+void ov39_022272EC(UnkStruct_ov39_022272EC *param0) {
     ov39_0222A130();
-    *(undefined4 *)(param_1 + 0x3c4) = 0;
-    String_Delete(*(undefined4 *)(param_1 + 0x3fc));
-    MessageFormat_Delete(*(undefined4 *)(param_1 + 0x3f8));
-    DestroyMsgData(*(undefined4 *)(param_1 + 0x3f4));
-    Heap_Free(*(undefined4 *)(param_1 + 0x3b4));
+
+    param0->unk_3C4 = 0;
+
+    String_Delete(param0->unk_3FC);
+    MessageFormat_Delete(param0->unk_3F8);
+    DestroyMsgData(param0->unk_3F4);
+    Heap_Free(param0->unk_3B4);
     ov39_02227E3C();
-    Heap_Free(*(undefined4 *)(param_1 + 0x18c));
-    return;
+    Heap_Free(param0->unk_18C);
 }
 #pragma force_active reset

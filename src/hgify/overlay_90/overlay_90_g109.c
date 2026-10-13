@@ -4,19 +4,37 @@
 #include "global.h"
 
 #include "yes_no_prompt.h"
-// FUNCTION ov90_0225B340: matching C (agent7)
+
+typedef struct UnkStruct_ov90_0225B340 {
+    u8 unk_00;
+    u8 unk_01;
+    u8 unk_02[2];
+    YesNoPrompt *unk_04;
+    YesNoPromptTemplate unk_08;
+    u8 unk_1C;
+    u8 unk_1D;
+    u8 unk_1E[2];
+} UnkStruct_ov90_0225B340;
+
+typedef struct UnkStruct_ov90_0225B340_src {
+    BgConfig *unk_00;
+} UnkStruct_ov90_0225B340_src;
+
+// FUNCTION ov90_0225B340: matching C (twin)
 #pragma force_active on
-void ov90_0225B340(u8 *param_1, u32 *param_2, u8 param_3, u32 param_4) {
-    memset(param_1, 0, 0x20);
-    *(u32 *)(param_1 + 8) = *param_2;
-    *(u32 *)(param_1 + 0xc) = 4;
-    *(u32 *)(param_1 + 0x10) = 0x8b;
-    *(u32 *)(param_1 + 0x14) = 2;
-    *(u8 *)(param_1 + 0x18) = 0x18;
-    *(u8 *)(param_1 + 0x19) = 8;
-    *(u8 *)(param_1 + 0x1b) = 0;
-    *(u32 *)(param_1 + 4) = YesNoPrompt_Create(param_4);
-    *(u8 *)(param_1 + 1) = param_3;
-    *(u8 *)(param_1 + 0x1d) = 1;
+void ov90_0225B340(UnkStruct_ov90_0225B340 *param0, UnkStruct_ov90_0225B340_src *param1, u32 param2, enum HeapID param3) {
+    memset(param0, 0, sizeof(UnkStruct_ov90_0225B340));
+
+    param0->unk_08.bgConfig = param1->unk_00;
+    param0->unk_08.bgId = 4;
+    param0->unk_08.tileStart = 139;
+    param0->unk_08.plttSlot = 2;
+    param0->unk_08.x = 24;
+    param0->unk_08.y = 8;
+    param0->unk_08.shapeParam = 0;
+
+    param0->unk_04 = YesNoPrompt_Create(param3);
+    param0->unk_01 = param2;
+    param0->unk_1D = 1;
 }
 #pragma force_active reset

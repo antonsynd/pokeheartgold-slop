@@ -6,34 +6,37 @@
 #include "battle/battle_hp_bar.h"
 
 #include "sys_task_api.h"
-typedef struct Ov12Obj {
+typedef struct UnkStruct_ov12_0225DA8C {
     u8 state;
-    u8 pad01[0x0b];
-    void *ptr;
-    u32 timer;
-    u8 pad14[0x10];
-    u8 unk24;
-    u8 pad25[0x27];
-    u8 unk4c;
-    u8 pad4d[0x2];
-    u8 flag0 : 1;
-    u8 flag1 : 1;
-    u8 rest : 6;
-} Ov12Obj;
+    u8 pad_01[0x0B];
+    void *battleSys;
+    SysTask *task_10;
+    u8 pad_14[0x10];
+    u8 battler;
+    u8 pad_25[0x27];
+    u8 command;
+    u8 pad_4D[2];
+    u8 scrollDirection : 1;
+    u8 doneScrolling : 1;
+    u8 pad_4F : 6;
+} UnkStruct_ov12_0225DA8C;
 void ov12_0226430C(void *, int, u8);
-// FUNCTION ov12_0225DA8C: matching C (agent8)
+void ov12_0225DA8C(SysTask *task, void *data);
+// FUNCTION ov12_0225DA8C: matching C (twin)
 #pragma force_active on
-void ov12_0225DA8C(void *param_1, Ov12Obj *param_2, int param_3, int param_4) {
-    if (param_2->state == 0) {
-        if (param_2->flag1 == 1) {
-            param_2->state = param_2->state + 1;
+void ov12_0225DA8C(SysTask *task, void *data) {
+    UnkStruct_ov12_0225DA8C *healthbox = data;
+
+    if (healthbox->state == 0) {
+        if (healthbox->doneScrolling == TRUE) {
+            healthbox->state++;
             return;
         }
     } else {
-        ov12_0226430C(param_2->ptr, param_2->unk24, param_2->unk4c);
-        param_2->timer = 0;
-        SysTask_Destroy(param_1);
-        BattleHpBar_SetEnabled((BattleHpBar *)param_2, 0);
+        ov12_0226430C(healthbox->battleSys, healthbox->battler, healthbox->command);
+        healthbox->task_10 = NULL;
+        SysTask_Destroy(task);
+        BattleHpBar_SetEnabled((BattleHpBar *)healthbox, FALSE);
     }
 }
 #pragma force_active reset

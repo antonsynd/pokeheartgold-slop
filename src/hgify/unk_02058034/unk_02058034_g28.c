@@ -3,31 +3,35 @@
 #pragma thumb on
 #include "global.h"
 
+#include "constants/heap.h"
+
 #include "party.h"
 #include "unk_02035900.h"
-typedef struct {
-    u8 filler_00[0x40];
-    void *field_40;
+
+typedef struct UnkStruct_sub_02058640 {
+    u8 unk_00[0x40];
+    Party *party;
 } UnkStruct_sub_02058640;
+
 extern UnkStruct_sub_02058640 *_021D41C8;
 extern void sub_020582F4(void (*fn)(void), int arg);
 extern void sub_02058870(void);
 extern void sub_02058608(void);
-// FUNCTION sub_02058640: matching C (agent11)
+// FUNCTION sub_02058640: matching C (twin)
 #pragma force_active on
-void sub_02058640(int param_1, void *param_2) {
-    if (param_2 != NULL) {
-        _021D41C8->field_40 = SaveArray_Party_Alloc(0xb);
-        Party_Copy(param_2, _021D41C8->field_40);
+void sub_02058640(BOOL param0, const Party *party) {
+    if (party) {
+        _021D41C8->party = SaveArray_Party_Alloc(HEAP_ID_FIELD2);
+        Party_Copy(party, _021D41C8->party);
     }
-    if (param_1 != 0) {
+
+    if (param0) {
         sub_020582F4(sub_02058870, 3);
-        return;
+    } else {
+        u8 data = 3;
+        sub_020376E0(94, &data);
+
+        sub_020582F4(sub_02058608, 0);
     }
-    {
-        u8 buf = 3;
-        sub_020376E0(0x5e, &buf);
-    }
-    sub_020582F4(sub_02058608, 0);
 }
 #pragma force_active reset

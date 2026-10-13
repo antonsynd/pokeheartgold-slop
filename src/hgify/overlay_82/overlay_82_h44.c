@@ -6,15 +6,30 @@
 #include "party.h"
 #include "pokemon.h"
 #include "unk_02035900.h"
-// FUNCTION ov82_0223F770: matching C (agent11)
+
+typedef struct {
+    u8 unk_00[0x18];
+    u8 selectionID;
+    u8 unk_19[0x214 - 0x19];
+    Party *party;
+    u8 unk_218[0x224 - 0x218];
+    u16 commPayload[4];
+} UnkStruct_ov82_0223F770;
+
+// FUNCTION ov82_0223F770: matching C (twin)
 #pragma force_active on
-void ov82_0223F770(u8 *obj, u16 param2, u16 param3) {
-    *(u16 *)(obj + 0x224) = param2;
-    *(u16 *)(obj + 0x226) = param3;
-    if (sub_0203769C() == 0 && obj[0x18] == 0xff) {
-        obj[0x18] = (u8)param3;
+void ov82_0223F770(UnkStruct_ov82_0223F770 *app, u16 cmd, u16 cursorPos) {
+    app->commPayload[0] = cmd;
+    app->commPayload[1] = cursorPos;
+
+    if (sub_0203769C() == 0) {
+        if (app->selectionID == 0xff) {
+            app->selectionID = cursorPos;
+        }
     }
-    *(u16 *)(obj + 0x228) = obj[0x18];
-    *(u16 *)(obj + 0x22a) = GetMonData(Party_GetMonByIndex(*(void **)(obj + 0x214), 0), 0xa1, 0);
+
+    app->commPayload[2] = app->selectionID;
+    Pokemon *mon = Party_GetMonByIndex(app->party, 0);
+    app->commPayload[3] = GetMonData(mon, MON_DATA_LEVEL, NULL);
 }
 #pragma force_active reset

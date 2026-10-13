@@ -4,26 +4,31 @@
 
 #include "heap.h"
 #include "sys_task_api.h"
-void ov96_021E8884(void);
 #pragma thumb on
-#include "ghidra_compat.h"
-typedef int code();
-int ov96_021E883C(undefined4 param_1, undefined4 param_2, undefined4 param_3, undefined4 param_4);
-// FUNCTION ov96_021E883C: matching C (r3)
+
+typedef struct CommCmdTable CommCmdTable;
+
+typedef struct UnkStruct_ov96_021E883C {
+    u8 unk_000[0x1C0];
+    const CommCmdTable *unk_1C0;
+    int unk_1C4;
+    void *unk_1C8;
+    SysTask *unk_1CC;
+} UnkStruct_ov96_021E883C;
+
+void ov96_021E8884(SysTask *task, void *data);
+
+// FUNCTION ov96_021E883C: matching C (twin)
 #pragma force_active on
-int ov96_021E883C(undefined4 param_1, undefined4 param_2, undefined4 param_3, undefined4 param_4)
+UnkStruct_ov96_021E883C *ov96_021E883C(const CommCmdTable *param0, int param1, void *param2, enum HeapID heapID) {
+    UnkStruct_ov96_021E883C *v0 = Heap_Alloc(heapID, sizeof(UnkStruct_ov96_021E883C));
+    memset(v0, 0, sizeof(UnkStruct_ov96_021E883C));
 
-{
-    int iVar1;
-    undefined4 uVar2;
+    v0->unk_1C0 = param0;
+    v0->unk_1C4 = param1;
+    v0->unk_1C8 = param2;
+    v0->unk_1CC = SysTask_CreateOnVWaitQueue(ov96_021E8884, v0, 5000);
 
-    iVar1 = Heap_Alloc(param_4, 0x1d0);
-    memset(iVar1, 0, 0x1d0);
-    *(undefined4 *)(iVar1 + 0x1c0) = param_1;
-    *(undefined4 *)(iVar1 + 0x1c4) = param_2;
-    *(undefined4 *)(iVar1 + 0x1c8) = param_3;
-    uVar2 = SysTask_CreateOnVWaitQueue(((unsigned int)ov96_021E8884), iVar1, 5000);
-    *(undefined4 *)(iVar1 + 0x1cc) = uVar2;
-    return iVar1;
+    return v0;
 }
 #pragma force_active reset

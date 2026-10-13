@@ -5,24 +5,22 @@
 
 #include "bg_window.h"
 #include "gf_gfx_planes.h"
-#include "ghidra_compat.h"
 #include "heap.h"
-typedef int code();
-void sub_0208877C(undefined4 param_1);
-// FUNCTION sub_0208877C: matching C (r2)
-#pragma force_active on
-void sub_0208877C(undefined4 param_1)
 
-{
+void sub_0208877C(BgConfig *bgConfig);
+// FUNCTION sub_0208877C: matching C (twin)
+#pragma force_active on
+void sub_0208877C(BgConfig *bgConfig) {
     GfGfx_DisableEngineAPlanes();
     GfGfx_DisableEngineBPlanes();
-    FreeBgTilemapBuffer(param_1, 6);
-    FreeBgTilemapBuffer(param_1, 5);
-    FreeBgTilemapBuffer(param_1, 4);
-    FreeBgTilemapBuffer(param_1, 3);
-    FreeBgTilemapBuffer(param_1, 2);
-    FreeBgTilemapBuffer(param_1, 1);
-    Heap_FreeExplicit(0x13, param_1);
-    return;
+
+    FreeBgTilemapBuffer(bgConfig, 6);
+    FreeBgTilemapBuffer(bgConfig, 5);
+    FreeBgTilemapBuffer(bgConfig, 4);
+    FreeBgTilemapBuffer(bgConfig, 3);
+    FreeBgTilemapBuffer(bgConfig, 2);
+    FreeBgTilemapBuffer(bgConfig, 1);
+
+    Heap_FreeExplicit(0x13, bgConfig);
 }
 #pragma force_active reset

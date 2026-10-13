@@ -3,30 +3,30 @@
 #pragma thumb on
 #include "global.h"
 
-#include "ghidra_compat.h"
 #include "msgdata.h"
 #include "pm_string.h"
+
+typedef struct UnkStruct_ov70_0223A1E4 {
+    u8 unk0[0xBA0];
+    MsgData *gtsMessageLoader;
+    u8 unkBA4[0x18];
+    String *genericMessageBuffer;
+    String *title;
+    String *trainerLocationStrings[10];
+} UnkStruct_ov70_0223A1E4;
+
 typedef int code();
-void ov70_0223A1E4(int param_1, undefined4 param_2, undefined4 param_3, undefined4 param_4);
-// FUNCTION ov70_0223A1E4: matching C (r3)
+void ov70_0223A1E4(UnkStruct_ov70_0223A1E4 *appState);
+// FUNCTION ov70_0223A1E4: matching C (twin)
 #pragma force_active on
-void ov70_0223A1E4(int param_1, undefined4 param_2, undefined4 param_3, undefined4 param_4)
+void ov70_0223A1E4(UnkStruct_ov70_0223A1E4 *appState) {
+    int i;
 
-{
-    undefined4 uVar1;
-    int iVar2;
+    appState->genericMessageBuffer = String_New(90 * 2, HEAP_ID_61);
+    appState->title = NewString_ReadMsgData(appState->gtsMessageLoader, 0x27);
 
-    uVar1 = String_New(0xb4, 0x3d);
-    *(undefined4 *)(param_1 + 0xbbc) = uVar1;
-    uVar1 = NewString_ReadMsgData(*(undefined4 *)(param_1 + 0xba0), 0x27);
-    *(undefined4 *)(param_1 + 0xbc0) = uVar1;
-    iVar2 = 0;
-    do {
-        uVar1 = String_New(0x14, 0x3d);
-        *(undefined4 *)(param_1 + 0xbc4) = uVar1;
-        iVar2 = iVar2 + 1;
-        param_1 = param_1 + 4;
-    } while (iVar2 < 10);
-    return;
+    for (i = 0; i < 10; i++) {
+        appState->trainerLocationStrings[i] = String_New(10 * 2, HEAP_ID_61);
+    }
 }
 #pragma force_active reset

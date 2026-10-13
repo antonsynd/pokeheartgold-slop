@@ -247,22 +247,22 @@ void ov41_0224B888(UnkStruct_ov41_Portrait *a0, UnkStruct_ov41_0224B530 *a1);
 void ov41_0224B8DC(UnkStruct_ov41_0224B530 *a0, const UnkStruct_ov41_0224B530_Args *a1);
 void ov41_0224B8DC(UnkStruct_ov41_0224B530 *a0, const UnkStruct_ov41_0224B530_Args *a1);
 void ov41_0224B8F0(UnkStruct_ov41_0224B530 *a0, void *a1);
-// FUNCTION ov41_0224B8F0: matching C (r2)
+// FUNCTION ov41_0224B8F0: matching C (twin)
 #pragma force_active on
-void ov41_0224B8F0(UnkStruct_ov41_0224B530 *a0, void *a1) {
-    int i;
+void ov41_0224B8F0(UnkStruct_ov41_0224B530 *param0, void *param1) {
+    int v0;
 
-    a0->unk_00 = sub_0202BE14(a1);
-    a0->unk_54 = 0;
+    param0->unk_00 = sub_0202BE14(param1);
+    param0->unk_54 = 0;
 
-    for (i = 0; i < 10; i++) {
-        if (sub_0202BDEC(a1, i)) {
-            a0->unk_04[a0->unk_54] = sub_0202BE2C(a1, i);
-            a0->unk_54++;
+    for (v0 = 0; v0 < 10; v0++) {
+        if (sub_0202BDEC(param1, v0)) {
+            param0->unk_04[param0->unk_54] = sub_0202BE2C(param1, v0);
+            param0->unk_54++;
         }
     }
 
-    a0->unk_5C = sub_0202BE80(a1);
+    param0->unk_5C = sub_0202BE80(param1);
 }
 #pragma force_active reset
 void ov41_0224B938(UnkStruct_ov41_Portrait *a0, UnkStruct_ov41_B958 *a1, const UnkStruct_ov41_0224B530 *a2, int heapID);

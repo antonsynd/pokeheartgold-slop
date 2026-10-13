@@ -4,22 +4,26 @@
 #include "global.h"
 
 #include "bg_window.h"
-#include "ghidra_compat.h"
-typedef int code();
-undefined4 ov71_02246D54();
-void ov71_0224889C(int param_1);
-// FUNCTION ov71_0224889C: matching C (r2)
-#pragma force_active on
-void ov71_0224889C(int param_1)
 
-{
-    if (*(int *)(param_1 + 200) != 0) {
-        ov71_02246D54(*(undefined4 *)(param_1 + 0xc4));
+typedef struct {
+    u8 unk_00[0xC0];
+    BgConfig *bgConfig;
+    void *shimmerEffect;
+    int shimmerActive;
+} UnkStruct_ov71_0224889C;
+
+void ov71_02246D54(void *shimmerEffect);
+
+// FUNCTION ov71_0224889C: matching C (twin)
+#pragma force_active on
+void ov71_0224889C(UnkStruct_ov71_0224889C *ttPhase) {
+    if (ttPhase->shimmerActive) {
+        ov71_02246D54(ttPhase->shimmerEffect);
     }
-    FreeBgTilemapBuffer(*(undefined4 *)(param_1 + 0xc0), 2);
-    FreeBgTilemapBuffer(*(undefined4 *)(param_1 + 0xc0), 6);
-    FreeBgTilemapBuffer(*(undefined4 *)(param_1 + 0xc0), 3);
-    FreeBgTilemapBuffer(*(undefined4 *)(param_1 + 0xc0), 7);
-    return;
+
+    FreeBgTilemapBuffer(ttPhase->bgConfig, 2);
+    FreeBgTilemapBuffer(ttPhase->bgConfig, 6);
+    FreeBgTilemapBuffer(ttPhase->bgConfig, 3);
+    FreeBgTilemapBuffer(ttPhase->bgConfig, 7);
 }
 #pragma force_active reset

@@ -4,21 +4,24 @@
 #include "global.h"
 
 #include "gf_gfx_loader.h"
-#include "ghidra_compat.h"
-typedef int code();
-void ov40_0222C710(int param_1, undefined4 param_2);
-// FUNCTION ov40_0222C710: matching C (r2)
+
+typedef struct UnkStruct_ov40_0222C710 {
+    u8 unk_00[0x14];
+    NARC *unk_14;
+    u8 unk_18[0xC];
+    BgConfig *unk_24;
+} UnkStruct_ov40_0222C710;
+
+// FUNCTION ov40_0222C710: matching C (twin)
 #pragma force_active on
-void ov40_0222C710(int param_1, undefined4 param_2)
+void ov40_0222C710(UnkStruct_ov40_0222C710 *param0, int param1) {
+    NARC *v0;
+    BgConfig *v1;
 
-{
-    undefined4 uVar1;
-    undefined4 uVar2;
+    v1 = param0->unk_24;
+    v0 = param0->unk_14;
 
-    uVar2 = *(undefined4 *)(param_1 + 0x24);
-    uVar1 = *(undefined4 *)(param_1 + 0x14);
-    GfGfxLoader_LoadCharDataFromOpenNarc(uVar1, 0x2d, uVar2, param_2, 0, 0, 0, 0x6d);
-    GfGfxLoader_LoadScrnDataFromOpenNarc(uVar1, 1, uVar2, param_2, 0, 0, 0, 0x6d);
-    return;
+    GfGfxLoader_LoadCharDataFromOpenNarc(v0, 45, v1, param1, 0, 0, 0, 0x6d);
+    GfGfxLoader_LoadScrnDataFromOpenNarc(v0, 1, v1, param1, 0, 0, 0, 0x6d);
 }
 #pragma force_active reset

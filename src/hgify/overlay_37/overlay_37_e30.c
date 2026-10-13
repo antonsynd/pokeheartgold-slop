@@ -3,22 +3,23 @@
 #pragma thumb on
 #include "global.h"
 
-#include "ghidra_compat.h"
 #include "screen_fade.h"
-typedef int code();
-undefined4 ov37_021E68AC();
-undefined4 ov37_021E6C84(int param_1, undefined4 param_2);
-// FUNCTION ov37_021E6C84: matching C (r2)
-#pragma force_active on
-undefined4 ov37_021E6C84(int param_1, undefined4 param_2)
 
-{
-    *(int *)(param_1 + 0x310) = *(int *)(param_1 + 0x310) + 1;
-    if (0x3c < *(int *)(param_1 + 0x310)) {
-        BeginNormalPaletteFade(0, 0x10, 0x10, 0, 0x10, 1, 0x27);
-        param_2 = 3;
+typedef struct {
+    u8 unk_00[0x310];
+    int unk_310;
+} UnkStruct_ov37_021E6C84;
+
+void ov37_021E68AC(UnkStruct_ov37_021E6C84 *param0);
+// FUNCTION ov37_021E6C84: matching C (twin)
+#pragma force_active on
+int ov37_021E6C84(UnkStruct_ov37_021E6C84 *param0, int param1) {
+    if (++param0->unk_310 > 60) {
+        BeginNormalPaletteFade(FADE_BOTH_SCREENS, 0x10, 0x10, 0, 0x10, 1, 0x27);
+        param1 = 3;
     }
-    ov37_021E68AC(param_1);
-    return param_2;
+
+    ov37_021E68AC(param0);
+    return param1;
 }
 #pragma force_active reset

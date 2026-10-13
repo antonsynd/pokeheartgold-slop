@@ -5,31 +5,31 @@
 
 #include "bg_window.h"
 #include "gf_gfx_planes.h"
-#include "ghidra_compat.h"
 #include "heap.h"
 #include "overlay_manager.h"
 #include "palette.h"
 #include "screen_fade.h"
 #include "system.h"
-typedef void code(void);
-void ov12_0223A088(OverlayManager *param_1);
-// FUNCTION ov12_0223A088: matching C (r2)
+typedef struct UnkStruct_ov12_0223A088 {
+    u8 pad_0000[4];
+    BgConfig *bgConfig;
+    Window *window;
+    PaletteData *paletteData;
+} UnkStruct_ov12_0223A088;
+void ov12_0223A088(OverlayManager *appMan);
+// FUNCTION ov12_0223A088: matching C (twin)
 #pragma force_active on
-void ov12_0223A088(OverlayManager *param_1)
+void ov12_0223A088(OverlayManager *appMan) {
+    UnkStruct_ov12_0223A088 *linkBattleCommState = OverlayManager_GetData(appMan);
 
-{
-    int iVar1;
-
-    iVar1 = (int)OverlayManager_GetData(param_1);
-    Main_SetVBlankIntrCB(0, 0);
+    Main_SetVBlankIntrCB(NULL, NULL);
     sub_0200FBF4(0, 0);
-    PaletteData_FreeBuffers(*(undefined4 *)(iVar1 + 0xc), 0);
-    PaletteData_Free(*(undefined4 *)(iVar1 + 0xc));
-    WindowArray_Delete(*(undefined4 *)(iVar1 + 8), 1);
+    PaletteData_FreeBuffers(linkBattleCommState->paletteData, PLTTBUF_MAIN_BG);
+    PaletteData_Free(linkBattleCommState->paletteData);
+    WindowArray_Delete(linkBattleCommState->window, 1);
     GfGfx_EngineATogglePlanes(2, 0);
-    FreeBgTilemapBuffer(*(undefined4 *)(iVar1 + 4), 1);
-    Heap_Free(*(undefined4 *)(iVar1 + 4));
-    Heap_Free(iVar1);
-    return;
+    FreeBgTilemapBuffer(linkBattleCommState->bgConfig, 1);
+    Heap_Free(linkBattleCommState->bgConfig);
+    Heap_Free(linkBattleCommState);
 }
 #pragma force_active reset

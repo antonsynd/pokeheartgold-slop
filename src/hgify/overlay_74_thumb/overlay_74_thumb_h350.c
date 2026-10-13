@@ -3,30 +3,31 @@
 #pragma thumb on
 #include "global.h"
 
+#include "bg_window.h"
+#include "gf_gfx_planes.h"
 #include "yes_no_prompt.h"
-typedef struct {
-    int a;
-    int b;
-    int c;
-    int d;
-    u8 e;
-    u8 f;
-    u8 g : 4;
-    u8 h : 4;
-    u8 i;
-} YesNoTemplate2;
-// FUNCTION ov74_02232F5C: matching C (agent11)
+
+typedef struct UnkStruct_ov74_02232F5C {
+    u8 unk_00[0x20];
+    BgConfig *bgConfig;
+    u8 unk_24[0xE88C - 0x24];
+    YesNoPrompt *yesNoTouchMenu;
+} UnkStruct_ov74_02232F5C;
+
+// FUNCTION ov74_02232F5C: matching C (twin)
 #pragma force_active on
-void ov74_02232F5C(u8 *obj) {
-    YesNoTemplate2 t;
-    t.a = *(int *)(obj + 0x20);
-    t.c = 0x200;
-    t.d = 8;
-    t.b = 0;
-    t.e = 0x19;
-    t.f = 7;
-    t.i = 0;
-    t.h = 1;
-    YesNoPrompt_InitFromTemplate(*(YesNoPrompt **)(obj + 0xE88C), (const YesNoPromptTemplate *)&t);
+void ov74_02232F5C(UnkStruct_ov74_02232F5C *migrator) {
+    YesNoPromptTemplate v0;
+
+    v0.bgConfig = migrator->bgConfig;
+    v0.tileStart = 512;
+    v0.plttSlot = 8;
+    v0.bgId = GF_BG_LYR_MAIN_0;
+    v0.x = 25;
+    v0.y = 7;
+    v0.shapeParam = 0;
+    v0.initialCursorPos = 1;
+
+    YesNoPrompt_InitFromTemplate(migrator->yesNoTouchMenu, &v0);
 }
 #pragma force_active reset

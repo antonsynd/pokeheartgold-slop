@@ -5,30 +5,28 @@
 
 #include "battle/battle_system.h"
 
-#include "ghidra_compat.h"
 #include "sprite_system.h"
 #include "unk_02077678.h"
-typedef void code(void);
-undefined4 sub_0207769C(int);
-void ov08_02220AEC(int *param_1, undefined4 param_2, undefined4 param_3, undefined4 param_4);
-// FUNCTION ov08_02220AEC: matching C (r3)
+
+typedef struct UnkStruct_ov08_02220AEC_Context {
+    u8 unk0[8];
+    BattleSystem *battleSys;
+} UnkStruct_ov08_02220AEC_Context;
+
+typedef struct UnkStruct_ov08_02220AEC {
+    UnkStruct_ov08_02220AEC_Context *context;
+    u8 unk4[0x1FB4 - 4];
+    SpriteManager *spriteManager;
+} UnkStruct_ov08_02220AEC;
+
+int sub_0207769C(int moveType);
+void ov08_02220AEC(UnkStruct_ov08_02220AEC *battleParty, ManagedSprite *sprite, u32 resourceID, u8 type);
+// FUNCTION ov08_02220AEC: matching C (twin)
 #pragma force_active on
-void ov08_02220AEC(int *param_1, undefined4 param_2, undefined4 param_3, undefined4 param_4)
+void ov08_02220AEC(UnkStruct_ov08_02220AEC *battleParty, ManagedSprite *sprite, u32 resourceID, u8 type) {
+    SpriteSystem *spriteSystem = BattleSystem_GetSpriteSystem(battleParty->context->battleSys);
 
-{
-    undefined4 uVar1;
-    undefined4 uVar2;
-    undefined4 uVar3;
-    int iVar4;
-    undefined4 uVar5;
-
-    uVar5 = param_4;
-    uVar1 = BattleSystem_GetSpriteSystem(*(undefined4 *)(*param_1 + 8));
-    uVar2 = sub_020776B4();
-    uVar3 = sub_02077678(param_4);
-    SpriteSystem_ReplaceCharResObj(uVar1, param_1[0x7ed], uVar2, uVar3, 1, param_3);
-    iVar4 = sub_0207769C(param_4);
-    ManagedSprite_SetPaletteOverride(param_2, iVar4 + 4);
-    return;
+    SpriteSystem_ReplaceCharResObj(spriteSystem, battleParty->spriteManager, sub_020776B4(), sub_02077678(type), TRUE, resourceID);
+    ManagedSprite_SetPaletteOverride(sprite, sub_0207769C(type) + 4);
 }
 #pragma force_active reset

@@ -4,27 +4,33 @@
 #include "global.h"
 
 #include "bg_window.h"
-#include "ghidra_compat.h"
-typedef int code();
-undefined4 ov49_0225C148();
-undefined4 ov49_0225C328();
-undefined4 ov49_0225C78C();
-void ov49_0225BF80(int *param_1, undefined4 param_2, undefined4 *param_3, undefined4 param_4);
-// FUNCTION ov49_0225BF80: matching C (r4)
-#pragma force_active on
-void ov49_0225BF80(int *param_1, undefined4 param_2, undefined4 *param_3, undefined4 param_4)
 
-{
-    if (*param_1 == 1) {
-        *param_1 = 0;
+typedef struct UnkStruct_ov49_0225BF80 {
+    int unk_00;
+} UnkStruct_ov49_0225BF80;
+
+typedef struct UnkStruct_ov49_0225BF80_bg {
+    BgConfig *unk_00;
+} UnkStruct_ov49_0225BF80_bg;
+
+void ov49_0225C148(UnkStruct_ov49_0225BF80 *param0, UnkStruct_ov49_0225BF80_bg *param1);
+void ov49_0225C328(UnkStruct_ov49_0225BF80 *param0, UnkStruct_ov49_0225BF80_bg *param1);
+void ov49_0225C78C(UnkStruct_ov49_0225BF80 *param0, UnkStruct_ov49_0225BF80_bg *param1);
+void ov49_0225BF80(UnkStruct_ov49_0225BF80 *param0, u32 param1, UnkStruct_ov49_0225BF80_bg *param2, u32 param3);
+// FUNCTION ov49_0225BF80: matching C (twin)
+#pragma force_active on
+void ov49_0225BF80(UnkStruct_ov49_0225BF80 *param0, u32 param1, UnkStruct_ov49_0225BF80_bg *param2, u32 param3) {
+    if (param0->unk_00 == 1) {
+        param0->unk_00 = 0;
     } else {
-        ov49_0225C78C(param_1, param_3);
+        ov49_0225C78C(param0, param2);
     }
-    ov49_0225C148(param_1, param_3);
-    ov49_0225C328(param_1, param_3);
-    BgClearTilemapBufferAndCommit(*param_3, 4);
-    BgClearTilemapBufferAndCommit(*param_3, 5);
-    BgClearTilemapBufferAndCommit(*param_3, 6);
-    return;
+
+    ov49_0225C148(param0, param2);
+    ov49_0225C328(param0, param2);
+
+    BgClearTilemapBufferAndCommit(param2->unk_00, 4);
+    BgClearTilemapBufferAndCommit(param2->unk_00, 5);
+    BgClearTilemapBufferAndCommit(param2->unk_00, 6);
 }
 #pragma force_active reset

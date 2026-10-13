@@ -3,30 +3,37 @@
 #include "global.h"
 
 #include "heap.h"
+#include "sys_task.h"
 #include "sys_task_api.h"
-void ov01_021EFD3C(void);
+void ov01_021EFD3C(SysTask *task, void *data);
 #pragma thumb on
-#include "ghidra_compat.h"
-typedef void code(void);
-void ov01_021EFCF8(undefined4 param_1, undefined4 param_2, undefined4 param_3, undefined4 *param_4, undefined4 param_5);
-// FUNCTION ov01_021EFCF8: matching C (r2)
+typedef struct UnkStruct_ov01_021EFCF8 {
+    u32 state;
+    u32 numFlashes;
+    int flashCounter;
+    u32 screen;
+    u32 screenFlashColor;
+    u32 otherScreenFlashColor;
+    u8 pad_0018[0x30];
+    BOOL *done;
+} UnkStruct_ov01_021EFCF8;
+void ov01_021EFCF8(u32 screen, u32 screenFlashColor, u32 otherScreenFlashColor, BOOL *done, u32 numFlashes);
+// FUNCTION ov01_021EFCF8: matching C (twin)
 #pragma force_active on
-void ov01_021EFCF8(undefined4 param_1, undefined4 param_2, undefined4 param_3, undefined4 *param_4, undefined4 param_5)
+void ov01_021EFCF8(u32 screen, u32 screenFlashColor, u32 otherScreenFlashColor, BOOL *done, u32 numFlashes) {
+    UnkStruct_ov01_021EFCF8 *screenFlash = Heap_Alloc(4, sizeof(UnkStruct_ov01_021EFCF8));
+    memset(screenFlash, 0, sizeof(UnkStruct_ov01_021EFCF8));
+    SysTask_CreateOnMainQueue(ov01_021EFD3C, screenFlash, 5);
 
-{
-    int iVar1;
+    screenFlash->done = done;
 
-    iVar1 = Heap_Alloc(4, 0x4c);
-    memset(iVar1, 0, 0x4c);
-    SysTask_CreateOnMainQueue(((unsigned int)ov01_021EFD3C), iVar1, 5);
-    *(undefined4 **)(iVar1 + 0x48) = param_4;
-    if (param_4 != (undefined4 *)0x0) {
-        *param_4 = 0;
+    if (screenFlash->done != NULL) {
+        *(screenFlash->done) = FALSE;
     }
-    *(undefined4 *)(iVar1 + 0xc) = param_1;
-    *(undefined4 *)(iVar1 + 0x10) = param_2;
-    *(undefined4 *)(iVar1 + 0x14) = param_3;
-    *(undefined4 *)(iVar1 + 4) = param_5;
-    return;
+
+    screenFlash->screen = screen;
+    screenFlash->screenFlashColor = screenFlashColor;
+    screenFlash->otherScreenFlashColor = otherScreenFlashColor;
+    screenFlash->numFlashes = numFlashes;
 }
 #pragma force_active reset

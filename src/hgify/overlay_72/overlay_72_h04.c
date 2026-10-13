@@ -2,30 +2,55 @@
 #pragma warning_errors off
 #pragma thumb on
 #include "global.h"
-typedef struct {
-    u32 field_00;
-    u32 field_04;
-    u8 filler_08[0x14 - 0x08];
-    u8 field_14;
-} UnkStruct_ov72_02237B80;
-extern UnkStruct_ov72_02237B80 _0223B820;
+
+enum BattleTowerHttpRequestState {
+    HTTP_STATE_INACTIVE,
+    HTTP_STATE_IDLE,
+    HTTP_STATE_AWAITING_ROOMNUM,
+    HTTP_STATE_ERROR_ROOMNUM,
+    HTTP_STATE_AWAITING_DOWNLOAD,
+    HTTP_STATE_ERROR_DOWNLOAD,
+    HTTP_STATE_AWAITING_UPLOAD,
+    HTTP_STATE_ERROR_UPLOAD,
+    HTTP_STATE_AWAITING_INFO,
+    HTTP_STATE_ERROR_INFO,
+    HTTP_STATE_AWAITING_SET_PROFILE,
+    HTTP_STATE_ERROR_SET_PROFILE,
+    HTTP_STATE_COMPLETE,
+};
+
+#define BT_CODE_NETWORK_FAILURE -5
+
+typedef struct BattleTowerHttpState {
+    enum BattleTowerHttpRequestState requestState;
+    s32 result;
+    s32 profileId;
+    u8 friendKey[8];
+    u8 requestBody[239];
+    u8 responseBuffer[2];
+} BattleTowerHttpState;
+
+extern BattleTowerHttpState _0223B820;
 extern u8 _0223B4E0[];
 extern u8 ov72_0223B834[];
 extern u8 ov72_0223B923[];
 extern void ov38_0221BE84(void);
 extern int ov72_02237D50(void *a, void *b, int c, void *d, int e);
 extern void ov38_0221BFEC(void);
-// FUNCTION ov72_02237B80: matching C (agent11)
+
+// FUNCTION ov72_02237B80: matching C (twin)
 #pragma force_active on
-void ov72_02237B80(int param_1) {
+void ov72_02237B80(s32 rank) {
     ov38_0221BE84();
-    _0223B820.field_14 = param_1 - 1;
+
+    _0223B820.requestBody[0] = (u8)(rank - 1);
+
     if (ov72_02237D50(_0223B4E0, ov72_0223B834, 1, ov72_0223B923, 2) != 0) {
-        _0223B820.field_00 = 2;
-        return;
+        _0223B820.requestState = HTTP_STATE_AWAITING_ROOMNUM;
+    } else {
+        _0223B820.requestState = HTTP_STATE_COMPLETE;
+        _0223B820.result = BT_CODE_NETWORK_FAILURE;
+        ov38_0221BFEC();
     }
-    _0223B820.field_00 = 0xc;
-    _0223B820.field_04 = 0xfffffffb;
-    ov38_0221BFEC();
 }
 #pragma force_active reset

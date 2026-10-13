@@ -6,35 +6,46 @@
 #include "sys_task_api.h"
 void ov71_0224820C(SysTask *, void *);
 #pragma thumb on
-#include "ghidra_compat.h"
-typedef int code();
-undefined4 ov71_022476B4();
-undefined4 ov71_022476D4();
-void ov71_0224817C(int param_1);
-// FUNCTION ov71_0224817C: matching C (r2)
+typedef struct UnkStruct_ov71_0224817C {
+    u8 pad_0000[0x74];
+    void *model;
+    u8 pad_0078[4];
+    SysTask *task1;
+} UnkStruct_ov71_0224817C;
+typedef struct UnkStruct_ov71_0224817C_Bounce {
+    UnkStruct_ov71_0224817C *phase;
+    void *model;
+    VecFx32 position;
+    VecFx16 rotation;
+    u8 pad_1A[2];
+    fx32 velocityY;
+    int bounceCount;
+    BOOL settled;
+    int settleTimer;
+    fx16 spinSpeed;
+    u8 pad_2E[2];
+} UnkStruct_ov71_0224817C_Bounce;
+void ov71_022476B4(void *model, void *position);
+void ov71_022476D4(void *model, void *rotation);
+void ov71_0224817C(UnkStruct_ov71_0224817C *tsPhase);
+// FUNCTION ov71_0224817C: matching C (twin)
 #pragma force_active on
-void ov71_0224817C(int param_1)
+void ov71_0224817C(UnkStruct_ov71_0224817C *tsPhase) {
+    UnkStruct_ov71_0224817C_Bounce *bbState = Heap_Alloc(0x39, sizeof(UnkStruct_ov71_0224817C_Bounce));
+    if (bbState) {
+        bbState->phase = tsPhase;
+        bbState->model = tsPhase->model;
 
-{
-    int *piVar1;
-    int iVar2;
-    undefined *puVar3;
+        ov71_022476B4(bbState->model, &(bbState->position));
+        ov71_022476D4(bbState->model, &(bbState->rotation));
 
-    piVar1 = (int *)Heap_Alloc(0x39, 0x30);
-    if (piVar1 != (int *)0x0) {
-        *piVar1 = param_1;
-        iVar2 = *(int *)(param_1 + 0x74);
-        piVar1[1] = iVar2;
-        ov71_022476B4(iVar2, piVar1 + 2);
-        ov71_022476D4(piVar1[1], piVar1 + 5);
-        piVar1[7] = 0x2f60;
-        piVar1[8] = 0;
-        *(undefined2 *)(piVar1 + 0xb) = 0;
-        piVar1[9] = 0;
-        piVar1[10] = 0;
-        puVar3 = (undefined *)SysTask_CreateOnMainQueue(ov71_0224820C, piVar1, 0);
-        *(undefined **)(param_1 + 0x7c) = puVar3;
+        bbState->velocityY = 12128;
+        bbState->bounceCount = 0;
+        bbState->spinSpeed = 0;
+        bbState->settled = 0;
+        bbState->settleTimer = 0;
+
+        tsPhase->task1 = SysTask_CreateOnMainQueue(ov71_0224820C, bbState, 0);
     }
-    return;
 }
 #pragma force_active reset

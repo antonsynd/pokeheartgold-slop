@@ -4,35 +4,39 @@
 #include "global.h"
 
 #include "bg_window.h"
-#include "ghidra_compat.h"
 #include "heap.h"
-typedef int code();
-undefined4 ov48_0225A768();
-undefined4 ov48_0225A928();
-undefined4 ov48_0225AC34();
-undefined4 ov48_0225A634();
-undefined4 ov48_0225A294();
-void ov48_0225A108(int param_1, undefined4 param_2);
-// FUNCTION ov48_0225A108: matching C (r2)
+
+typedef struct UnkStruct_ov48_0225A108 {
+    u8 unk_00[0x94];
+    void *unk_94;
+    u8 unk_98[0xA0 - 0x98];
+    u8 unk_A0[5][0x28];
+    u8 unk_168[0x1A8 - 0x168];
+    Window unk_1A8;
+    u8 unk_1B8[0x2E4 - 0x1B8];
+    u8 unk_2E4[4];
+} UnkStruct_ov48_0225A108;
+
+void ov48_0225A634(void *param0);
+void ov48_0225AC34(void *param0, int param1);
+void ov48_0225A768(UnkStruct_ov48_0225A108 *param0);
+void ov48_0225A294(UnkStruct_ov48_0225A108 *param0);
+void ov48_0225A928(void *param0);
+// FUNCTION ov48_0225A108: matching C (twin)
 #pragma force_active on
-void ov48_0225A108(int param_1, undefined4 param_2)
+void ov48_0225A108(UnkStruct_ov48_0225A108 *param0, int param1) {
+    int v0;
 
-{
-    int iVar1;
+    ov48_0225A634(param0->unk_2E4);
+    ov48_0225AC34(param0->unk_1B8, param1);
 
-    ov48_0225A634(param_1 + 0x2e4);
-    ov48_0225AC34(param_1 + 0x1b8, param_2);
-    Heap_Free(*(undefined4 *)(param_1 + 0x94));
-    ov48_0225A768(param_1);
-    RemoveWindow(param_1 + 0x1a8);
-    ov48_0225A294(param_1);
-    iVar1 = 0;
-    param_1 = param_1 + 0xa0;
-    do {
-        ov48_0225A928(param_1);
-        iVar1 = iVar1 + 1;
-        param_1 = param_1 + 0x28;
-    } while (iVar1 < 5);
-    return;
+    Heap_Free(param0->unk_94);
+    ov48_0225A768(param0);
+    RemoveWindow(&param0->unk_1A8);
+    ov48_0225A294(param0);
+
+    for (v0 = 0; v0 < 5; v0++) {
+        ov48_0225A928(param0->unk_A0[v0]);
+    }
 }
 #pragma force_active reset

@@ -3,29 +3,17 @@
 #pragma thumb on
 #include "global.h"
 
-#include "ghidra_compat.h"
 #include "map_object.h"
 #include "unk_0205FD20.h"
-typedef int code();
-undefined4 sub_02060B90();
-void sub_02060BB8(LocalMapObject *param_1, undefined4 param_2);
-// FUNCTION sub_02060BB8: matching C (r2)
+
+u32 sub_02060B90(LocalMapObject *mapObj, int x, int y, int z, int dir);
+// FUNCTION sub_02060BB8: matching C (twin)
 #pragma force_active on
-void sub_02060BB8(LocalMapObject *param_1, undefined4 param_2)
+void sub_02060BB8(LocalMapObject *mapObj, int dir) {
+    int x = MapObject_GetXCoord(mapObj) + GetDeltaXByFacingDirection(dir);
+    int y = MapObject_GetYCoord(mapObj);
+    int z = MapObject_GetZCoord(mapObj) + GetDeltaYByFacingDirection(dir);
 
-{
-    int iVar1;
-    int iVar2;
-    undefined4 uVar3;
-    int iVar4;
-    int iVar5;
-
-    iVar1 = MapObject_GetXCoord(param_1);
-    iVar2 = GetDeltaXByFacingDirection(param_2);
-    uVar3 = MapObject_GetYCoord(param_1);
-    iVar4 = MapObject_GetZCoord(param_1);
-    iVar5 = GetDeltaYByFacingDirection(param_2);
-    sub_02060B90(param_1, iVar1 + iVar2, uVar3, iVar4 + iVar5, param_2);
-    return;
+    sub_02060B90(mapObj, x, y, z, dir);
 }
 #pragma force_active reset

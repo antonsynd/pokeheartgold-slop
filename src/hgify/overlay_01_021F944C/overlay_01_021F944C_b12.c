@@ -36,6 +36,11 @@ typedef struct UnkStruct_Ov01_021F944C {
 typedef struct UnkOv01_Resources {
     u32 unk[10];
 } UnkOv01_Resources;
+typedef struct UnkOv01_Entry_021F9698 {
+    u32 unk_00;
+    UnkOv01_Resources *unk_04;
+} UnkOv01_Entry_021F9698;
+
 typedef struct UnkOv01_ResourceSlot {
     u32 id;
     UnkOv01_Resources *resources;
@@ -148,58 +153,33 @@ void ov01_021F9654(LocalMapObject *object, Sprite **sprite, int id);
 void ov01_021F9688(LocalMapObject *object);
 void ov01_021F9688(LocalMapObject *object);
 void ov01_021F9698(UnkStruct_Ov01_021F944C *data, int count);
-// FUNCTION ov01_021F9698: matching C (r0)
+// FUNCTION ov01_021F9698: matching C (twin)
 #pragma force_active on
-void ov01_021F9698(UnkStruct_Ov01_021F944C *data, int count) {
-    UnkOv01_Resources *resources;
-    UnkOv01_ResourceSlot *slots;
+void ov01_021F9698(UnkStruct_Ov01_021F944C *param0, int param1) {
+    int v0, v1;
+    UnkOv01_Resources *v2;
+    UnkOv01_Entry_021F9698 *v3;
 
-    resources = Heap_Alloc(HEAP_ID_FIELD1, sizeof(UnkOv01_Resources) * count);
-    data->unkE4 = resources;
-    GF_ASSERT(resources != NULL);
+    v0 = sizeof(UnkOv01_Resources) * param1;
+    v2 = Heap_Alloc(HEAP_ID_FIELD1, v0);
 
-    slots = Heap_Alloc(HEAP_ID_FIELD1, sizeof(UnkOv01_ResourceSlot) * count);
-    data->unkF4 = slots;
-    GF_ASSERT(slots != NULL);
+    param0->unkE4 = v2;
+    GF_ASSERT(v2 != NULL);
+
+    v0 = sizeof(UnkOv01_Entry_021F9698) * param1;
+    v3 = Heap_Alloc(HEAP_ID_FIELD1, v0);
+
+    param0->unkF4 = v3;
+    GF_ASSERT(v3 != NULL);
+
+    v1 = sizeof(UnkOv01_Resources);
 
     do {
-        slots->id = UNK_OV01_021F944C_EMPTY_LONG;
-        slots->resources = resources;
-        slots++;
-        resources++;
-        count--;
-    } while (count);
+        v3->unk_00 = 0xffff;
+        v3->unk_04 = v2;
+        v3++;
+        v2 = (UnkOv01_Resources *)((u8 *)v2 + v1);
+        param1--;
+    } while (param1);
 }
 #pragma force_active reset
-void ov01_021F96E4(UnkStruct_Ov01_021F944C *data);
-void ov01_021F96E4(UnkStruct_Ov01_021F944C *data);
-UnkOv01_Resources *ov01_021F9704(UnkStruct_Ov01_021F944C *data, u32 id);
-UnkOv01_Resources *ov01_021F9704(UnkStruct_Ov01_021F944C *data, u32 id);
-BOOL ov01_021F9744(MapObjectManager *manager, u32 id, UnkOv01_Resources *dest);
-BOOL ov01_021F9744(MapObjectManager *manager, u32 id, UnkOv01_Resources *dest);
-void ov01_021F9778(UnkStruct_Ov01_021F944C *data, u32 id);
-void ov01_021F9778(UnkStruct_Ov01_021F944C *data, u32 id);
-void ov01_021F9798(UnkStruct_Ov01_021F944C *data);
-BOOL ov01_021F97BC(MapObjectManager *manager, LocalMapObject *exclude, u32 spriteId);
-void ov01_021F9808(UnkStruct_Ov01_021F944C *data, int arg1, int arg2, int arg3, int arg4, int arg5, int arg6);
-void ov01_021F9808(UnkStruct_Ov01_021F944C *data, int arg1, int arg2, int arg3, int arg4, int arg5, int arg6);
-void ov01_021F9890(UnkStruct_Ov01_021F944C *data);
-void ov01_021F9890(UnkStruct_Ov01_021F944C *data);
-const UnkOv01_GfxEntry *ov01_021F98B4(int id, int terminator, const UnkOv01_GfxEntry *table);
-const UnkOv01_GfxEntry *ov01_021F98B4(int id, int terminator, const UnkOv01_GfxEntry *table);
-int ov01_021F98CC(UnkStruct_Ov01_021F944C *data, void *heap, int id, int terminator, const UnkOv01_GfxEntry *table);
-int ov01_021F98CC(UnkStruct_Ov01_021F944C *data, void *heap, int id, int terminator, const UnkOv01_GfxEntry *table);
-int ov01_021F9918(UnkStruct_Ov01_021F944C *data, int arg1, int id);
-int ov01_021F9918(UnkStruct_Ov01_021F944C *data, int arg1, int id);
-int ov01_021F9968(UnkStruct_Ov01_021F944C *data, int id);
-int ov01_021F9968(UnkStruct_Ov01_021F944C *data, int id);
-int ov01_021F9974(UnkStruct_Ov01_021F944C *data, int id);
-int ov01_021F9974(UnkStruct_Ov01_021F944C *data, int id);
-void ov01_021F9980(UnkStruct_Ov01_021F944C *data, const int *list);
-void ov01_021F9980(UnkStruct_Ov01_021F944C *data, const int *list);
-void ov01_021F99A4(UnkStruct_Ov01_021F944C *data, int id);
-void ov01_021F99A4(UnkStruct_Ov01_021F944C *data, int id);
-void ov01_021F99D0(UnkStruct_Ov01_021F944C *data, int id);
-void ov01_021F99D0(UnkStruct_Ov01_021F944C *data, int id);
-void ov01_021F99FC(UnkStruct_Ov01_021F944C *data, const int *list);
-void ov01_021F99FC(UnkStruct_Ov01_021F944C *data, const int *list);

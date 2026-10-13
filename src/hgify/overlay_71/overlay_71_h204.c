@@ -2,30 +2,33 @@
 #pragma warning_errors off
 #pragma thumb on
 #include "global.h"
+
+typedef struct Trade3DModel Trade3DModel;
+
 typedef struct {
-    u8 unk00[0x14];
-    u32 unk14;
-    u8 unk18[0x34 - 0x18];
-    u8 unk34[0x36 - 0x34];
-    s16 unk36;
-    s16 unk38;
-    s16 unk3a;
-    s16 unk3c;
-    s16 unk3e;
-    int unk40;
-} Ov71Obj;
-u32 ov71_022476EC(u32 a, u32 b);
-// FUNCTION ov71_0224BA64: matching C (agent7)
+    u8 unk_00[0x14];
+    Trade3DModel *model;
+    u8 unk_18[0x34 - 0x18];
+    VecFx16 rotation;
+    fx16 rotationSpeed;
+    fx16 rotationSpeedStep;
+    fx16 targetRotationSpeed;
+    int rotationTransitionFrames;
+} UnkStruct_ov71_0224BA64;
+
+u32 ov71_022476EC(Trade3DModel *model, VecFx16 *rotation);
+// FUNCTION ov71_0224BA64: matching C (twin)
 #pragma force_active on
-u32 ov71_0224BA64(Ov71Obj *param_1) {
-    if (param_1->unk40 != 0) {
-        param_1->unk3a = param_1->unk3a + param_1->unk3c;
-        param_1->unk40 = param_1->unk40 - 1;
-        if (param_1->unk40 == 0) {
-            param_1->unk3a = param_1->unk3e;
+u32 ov71_0224BA64(UnkStruct_ov71_0224BA64 *boState) {
+    if (boState->rotationTransitionFrames) {
+        boState->rotationSpeed += boState->rotationSpeedStep;
+
+        if (--(boState->rotationTransitionFrames) == 0) {
+            boState->rotationSpeed = boState->targetRotationSpeed;
         }
     }
-    param_1->unk36 = param_1->unk36 + param_1->unk3a;
-    return ov71_022476EC(param_1->unk14, (u32)param_1->unk34);
+
+    boState->rotation.y += boState->rotationSpeed;
+    return ov71_022476EC(boState->model, &boState->rotation);
 }
 #pragma force_active reset

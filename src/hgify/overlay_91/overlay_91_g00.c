@@ -3,27 +3,37 @@
 #pragma thumb on
 #include "global.h"
 
-#include "ghidra_compat.h"
 #include "heap.h"
 #include "overlay_manager.h"
-typedef int code();
-undefined4 ov90_02258800();
-undefined4 ov91_0225CBE4();
-undefined4 ov91_0225C540(undefined4 param_1);
-// FUNCTION ov91_0225C540: matching C (r2)
+
+typedef struct UnkStruct_ov91_0225C540_Args {
+    u8 unk_00[0x34];
+    void *saveData;
+    u8 unk_38;
+    u8 unk_39;
+} UnkStruct_ov91_0225C540_Args;
+
+typedef struct UnkStruct_ov91_0225C540 {
+    u8 unk_00[0x08];
+    u8 unk_08[0x88 - 0x08];
+} UnkStruct_ov91_0225C540;
+
+void ov90_02258800(void *param0, u8 param1, void *saveData, u8 param3, void *param4);
+void ov91_0225CBE4(void *param0, int heapID);
+
+// FUNCTION ov91_0225C540: matching C (twin)
 #pragma force_active on
-undefined4 ov91_0225C540(undefined4 param_1)
+int ov91_0225C540(OverlayManager *ovyMan, int *param1) {
+    UnkStruct_ov91_0225C540_Args *v1 = OverlayManager_GetArgs(ovyMan);
 
-{
-    int iVar1;
-    int iVar2;
-
-    iVar1 = (int)OverlayManager_GetArgs((OverlayManager *)param_1);
     Heap_Create(3, 0x6a, 0x60000);
-    iVar2 = OverlayManager_CreateAndGetData(param_1, 0x88, 0x6a);
-    memset(iVar2, 0, 0x88);
-    ov90_02258800(iVar2 + 8, *(undefined1 *)(iVar1 + 0x39), *(undefined4 *)(iVar1 + 0x34), *(undefined1 *)(iVar1 + 0x38), iVar1);
-    ov91_0225CBE4(iVar2, 0x6a);
+
+    UnkStruct_ov91_0225C540 *v0 = OverlayManager_CreateAndGetData(ovyMan, sizeof(UnkStruct_ov91_0225C540), 0x6a);
+    memset(v0, 0, sizeof(UnkStruct_ov91_0225C540));
+
+    ov90_02258800(&v0->unk_08, v1->unk_39, v1->saveData, v1->unk_38, v1);
+    ov91_0225CBE4(v0, 0x6a);
+
     return 1;
 }
 #pragma force_active reset
