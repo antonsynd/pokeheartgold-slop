@@ -3,23 +3,18 @@
 #pragma thumb on
 #include "global.h"
 
-#include "ghidra_compat.h"
 #include "unk_02034B0C.h"
 #include "unk_02037C94.h"
 #include "unk_0203A3B0.h"
 #include "unk_020915B0.h"
-typedef int code();
 void ov74_02236AC8(void);
-// FUNCTION ov74_02236AC8: matching C (r2)
+// FUNCTION ov74_02236AC8: matching C (twin)
 #pragma force_active on
-void ov74_02236AC8(void)
-
-{
+void ov74_02236AC8(void) {
     sub_0203A914();
     sub_020394F4();
     UnloadOVY38();
     UnloadDwcOverlay();
     sub_02034DE0();
-    return;
 }
 #pragma force_active reset

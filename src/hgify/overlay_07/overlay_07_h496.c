@@ -3,21 +3,12 @@
 #pragma thumb on
 #include "global.h"
 
-#include "ghidra_compat.h"
 #include "sprite_system.h"
-typedef void code(void);
-void ov07_0222A8D8(undefined4 param_1);
-// FUNCTION ov07_0222A8D8: matching C (r2)
+// FUNCTION ov07_0222A8D8: matching C (twin)
 #pragma force_active on
-void ov07_0222A8D8(undefined4 param_1)
-
-{
-    int iVar1;
-
-    iVar1 = ManagedSprite_GetDrawFlag((ManagedSprite *)param_1);
-    if (iVar1 == 1) {
-        ManagedSprite_TickFrame((ManagedSprite *)param_1);
+void ov07_0222A8D8(ManagedSprite *sprite) {
+    if (ManagedSprite_GetDrawFlag(sprite) == TRUE) {
+        ManagedSprite_TickFrame(sprite);
     }
-    return;
 }
 #pragma force_active reset

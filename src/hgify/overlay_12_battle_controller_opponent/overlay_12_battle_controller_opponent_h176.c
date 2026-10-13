@@ -8,39 +8,10 @@
 #include "battle/battle_system.h"
 #include "battle/overlay_12_0224E4FC.h"
 #undef Pokepic_StartAnim
-#include "brightness.h"
-#include "heap.h"
-#include "player_data.h"
-#include "pokemon.h"
-#include "sprite_system.h"
-#include "sys_task_api.h"
-typedef struct UnkStruct_Ov12_02261DC8 {
-    u8 unk0[0xC];
-    ManagedSprite *unkC;
-    u8 unk10[6];
-    u16 unk16_0 : 1;
-    u16 unk16_1 : 15;
-} UnkStruct_Ov12_02261DC8;
-typedef struct UnkStruct_Ov12_02261E40 {
-    int state;
-    int unk4;
-} UnkStruct_Ov12_02261E40;
-void ov12_02261E40(SysTask *task, void *data);
-BOOL ov12_02261DC8(UnkStruct_Ov12_02261DC8 *a0);
-BOOL ov12_02261DC8(UnkStruct_Ov12_02261DC8 *a0);
-void ov12_02261E40(SysTask *task, void *data);
-void ov12_02261E40(SysTask *task, void *data);
-void ov12_02261EB8(BattleSystem *battleSystem);
-void ov12_02261EB8(BattleSystem *battleSystem);
-void ov12_02261ED4(BattleSystem *battleSystem);
-// FUNCTION ov12_02261ED4: matching C (r2)
+// FUNCTION ov12_02261ED4: matching C (twin)
 #pragma force_active on
-void ov12_02261ED4(BattleSystem *battleSystem) {
-    ov12_0223BFFC(battleSystem, 2);
-    BattleController_TryEmitExitRecording(battleSystem, BattleSystem_GetBattleContext(battleSystem));
+void ov12_02261ED4(BattleSystem *battleSys) {
+    ov12_0223BFFC(battleSys, 2);
+    BattleController_TryEmitExitRecording(battleSys, BattleSystem_GetBattleContext(battleSys));
 }
 #pragma force_active reset
-u8 ov12_02261EF0(BattleSystem *battleSystem, int a1, u8 a2);
-u8 ov12_02261EF0(BattleSystem *battleSystem, int a1, u8 a2);
-void ov12_02261F38(BattleSystem *battleSystem, int battler, u32 isFrontpic, Pokepic *pokepic, NARC *narc, u32 species, s32 a6, u32 a7, u32 a8);
-void ov12_02261F38(BattleSystem *battleSystem, int battler, u32 isFrontpic, Pokepic *pokepic, NARC *narc, u32 species, s32 a6, u32 a7, u32 a8);

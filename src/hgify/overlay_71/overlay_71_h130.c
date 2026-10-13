@@ -3,19 +3,19 @@
 #pragma thumb on
 #include "global.h"
 
-#include "ghidra_compat.h"
-#include "sys_task_api.h"
-typedef int code();
-void ov71_02249990(int param_1);
-// FUNCTION ov71_02249990: matching C (r2)
-#pragma force_active on
-void ov71_02249990(int param_1)
+#include "sys_task.h"
 
-{
-    if (*(int *)(param_1 + 4) != 0) {
-        SysTask_Destroy((SysTask *)*(int *)(param_1 + 4));
-        *(undefined4 *)(param_1 + 4) = 0;
+typedef struct BallOrbitState {
+    void *phase;
+    SysTask *taskHandle;
+} BallOrbitState;
+
+// FUNCTION ov71_02249990: matching C (twin)
+#pragma force_active on
+void ov71_02249990(BallOrbitState *boState) {
+    if (boState->taskHandle) {
+        SysTask_Destroy(boState->taskHandle);
+        boState->taskHandle = NULL;
     }
-    return;
 }
 #pragma force_active reset

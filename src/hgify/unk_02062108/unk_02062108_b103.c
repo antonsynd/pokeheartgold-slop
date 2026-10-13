@@ -3,20 +3,18 @@
 #pragma thumb on
 #include "global.h"
 
-#include "ghidra_compat.h"
 #include "map_object.h"
-typedef int code();
-void sub_02062D54(undefined4 param_1, undefined4 param_2, undefined4 param_3, undefined4 param_4);
-// FUNCTION sub_02062D54: matching C (r3)
+
+typedef struct DelayMovementData {
+    int delay;
+} DelayMovementData;
+
+// FUNCTION sub_02062D54: matching C (twin)
 #pragma force_active on
-void sub_02062D54(undefined4 param_1, undefined4 param_2, undefined4 param_3, undefined4 param_4)
+void sub_02062D54(LocalMapObject *mapObj, int delay) {
+    DelayMovementData *data = (DelayMovementData *)sub_0205F3C0(mapObj, sizeof(DelayMovementData));
+    data->delay = delay;
 
-{
-    undefined4 *puVar1;
-
-    puVar1 = (undefined4 *)sub_0205F3C0(param_1, 4);
-    *puVar1 = param_2;
-    MapObject_IncrementMovementStep(param_1);
-    return;
+    MapObject_IncrementMovementStep(mapObj);
 }
 #pragma force_active reset

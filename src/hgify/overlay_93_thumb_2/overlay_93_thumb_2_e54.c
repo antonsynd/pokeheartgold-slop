@@ -3,19 +3,20 @@
 #pragma thumb on
 #include "global.h"
 
-#include "ghidra_compat.h"
 #include "obj_char_transfer.h"
 #include "unk_02013534.h"
-typedef int code();
-void ov93_02261FB0(undefined4 *param_1);
-// FUNCTION ov93_02261FB0: matching C (r2)
-#pragma force_active on
-void ov93_02261FB0(undefined4 *param_1)
 
-{
-    FontOAM_Delete((TextOBJ *)*param_1);
-    sub_02021B5C((UnkStruct_02021AC8 *)(param_1 + 1));
-    *param_1 = 0;
-    return;
+typedef struct UnkStruct_ov93_02261FB0_t {
+    TextOBJ *textOBJ;
+    void *unk_04;
+} UnkStruct_ov93_02261FB0;
+
+void ov93_02261FB0(UnkStruct_ov93_02261FB0 *param0);
+// FUNCTION ov93_02261FB0: matching C (twin)
+#pragma force_active on
+void ov93_02261FB0(UnkStruct_ov93_02261FB0 *param0) {
+    FontOAM_Delete(param0->textOBJ);
+    sub_02021B5C((UnkStruct_02021AC8 *)&param0->unk_04);
+    param0->textOBJ = NULL;
 }
 #pragma force_active reset

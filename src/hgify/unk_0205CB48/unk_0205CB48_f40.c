@@ -3,18 +3,13 @@
 #pragma thumb on
 #include "global.h"
 
-#include "ghidra_compat.h"
 #include "player_avatar.h"
 #include "unk_02062108.h"
-typedef int code();
-void sub_0205DA1C(undefined4 param_1, undefined4 param_2, undefined4 param_3, undefined4 param_4);
-// FUNCTION sub_0205DA1C: matching C (r3)
-#pragma force_active on
-void sub_0205DA1C(undefined4 param_1, undefined4 param_2, undefined4 param_3, undefined4 param_4)
 
-{
-    PlayerAvatar_SetUnk8(param_1, param_3);
-    MapObject_SetHeldMovement(param_2, param_3);
-    return;
+// FUNCTION sub_0205DA1C: matching C (twin)
+#pragma force_active on
+void sub_0205DA1C(PlayerAvatar *playerAvatar, LocalMapObject *mapObj, u32 movementAction, u32 speed) {
+    PlayerAvatar_SetUnk8(playerAvatar, movementAction);
+    MapObject_SetHeldMovement(mapObj, movementAction);
 }
 #pragma force_active reset

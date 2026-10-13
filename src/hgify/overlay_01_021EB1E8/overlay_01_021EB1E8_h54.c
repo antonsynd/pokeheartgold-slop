@@ -3,17 +3,17 @@
 #pragma thumb on
 #include "global.h"
 
-#include "ghidra_compat.h"
 #include "sprite.h"
-typedef int code();
-typedef struct Vec3 {
-    int x;
-    int y;
-    int z;
-} Vec3;
-// FUNCTION ov01_021EC304: matching C (agent4)
+
+typedef struct UnkStruct_ov01_021EC304 {
+    int unk_00;
+    Sprite *unk_04;
+} UnkStruct_ov01_021EC304;
+
+// FUNCTION ov01_021EC304: matching C (twin)
 #pragma force_active on
-void ov01_021EC304(Vec3 *dst, void **obj) {
-    *dst = *(Vec3 *)Sprite_GetMatrixPtr(obj[1]);
+VecFx32 ov01_021EC304(UnkStruct_ov01_021EC304 *param0) {
+    const VecFx32 *v0 = Sprite_GetMatrixPtr(param0->unk_04);
+    return *v0;
 }
 #pragma force_active reset

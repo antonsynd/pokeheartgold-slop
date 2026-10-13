@@ -3,19 +3,22 @@
 #pragma thumb on
 #include "global.h"
 
-#include "ghidra_compat.h"
-#include "unk_02005D10.h"
-typedef int code();
-void ov91_022619E8(undefined2 *param_1);
-// FUNCTION ov91_022619E8: matching C (r2)
-#pragma force_active on
-void ov91_022619E8(undefined2 *param_1)
+#include "constants/sndseq.h"
 
-{
-    *param_1 = 0;
-    *(undefined1 *)(param_1 + 1) = 1;
-    *(undefined1 *)((int)param_1 + 3) = 0;
-    PlaySE(0x586);
-    return;
+#include "unk_02005D10.h"
+
+typedef struct UnkStruct_ov91_022619E8 {
+    u16 unk_00;
+    u8 unk_02;
+    u8 unk_03;
+} UnkStruct_ov91_022619E8;
+
+// FUNCTION ov91_022619E8: matching C (twin)
+#pragma force_active on
+void ov91_022619E8(UnkStruct_ov91_022619E8 *param0) {
+    param0->unk_00 = 0;
+    param0->unk_02 = 1;
+    param0->unk_03 = 0;
+    PlaySE(SEQ_SE_PL_PINPON);
 }
 #pragma force_active reset

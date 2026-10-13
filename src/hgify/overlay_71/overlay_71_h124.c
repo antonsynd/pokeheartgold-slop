@@ -4,16 +4,16 @@
 #include "global.h"
 
 #include "bg_window.h"
-#include "ghidra_compat.h"
-typedef int code();
-void ov71_022497C8(int param_1);
-// FUNCTION ov71_022497C8: matching C (r2)
-#pragma force_active on
-void ov71_022497C8(int param_1)
 
-{
-    FreeBgTilemapBuffer(*(undefined4 *)(param_1 + 0x24), 3);
-    FreeBgTilemapBuffer(*(undefined4 *)(param_1 + 0x24), 7);
-    return;
+typedef struct UnkStruct_ov71_022497C8 {
+    u8 unk_00[0x24];
+    BgConfig *bgConfig;
+} UnkStruct_ov71_022497C8;
+
+// FUNCTION ov71_022497C8: matching C (twin)
+#pragma force_active on
+void ov71_022497C8(UnkStruct_ov71_022497C8 *tbfPhase) {
+    FreeBgTilemapBuffer(tbfPhase->bgConfig, 3);
+    FreeBgTilemapBuffer(tbfPhase->bgConfig, 7);
 }
 #pragma force_active reset

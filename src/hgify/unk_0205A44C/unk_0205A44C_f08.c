@@ -4,12 +4,10 @@
 #include "global.h"
 
 #include "unk_02035900.h"
-void sub_0205A508(s32 param0);
-// FUNCTION sub_0205A508: matching C (r2)
+// FUNCTION sub_0205A508: matching C (twin)
 #pragma force_active on
-void sub_0205A508(s32 param0) {
+void sub_0205A508(int param0) {
     u8 v0 = param0;
-
     sub_02037030(101, &v0, 1);
 }
 #pragma force_active reset

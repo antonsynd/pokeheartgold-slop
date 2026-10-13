@@ -3,21 +3,24 @@
 #pragma thumb on
 #include "global.h"
 
-#include "ghidra_compat.h"
 #include "text.h"
-typedef void code(void);
-undefined4 ov08_02222DAC(int param_1);
-// FUNCTION ov08_02222DAC: matching C (r2)
+
+typedef struct BattleBag_t {
+    u8 unk_00[0x32];
+    u8 textPrinterID;
+} BattleBag;
+
+#define TASK_STATE_AWAITING_TEXT_FINISH 9
+#define TASK_STATE_AWAITING_INPUT       10
+
+u8 ov08_02222DAC(BattleBag *battleBag);
+// FUNCTION ov08_02222DAC: matching C (twin)
 #pragma force_active on
-undefined4 ov08_02222DAC(int param_1)
-
-{
-    int iVar1;
-
-    iVar1 = TextPrinterCheckActive(*(undefined1 *)(param_1 + 0x32));
-    if (iVar1 == 0) {
-        return 10;
+u8 ov08_02222DAC(BattleBag *battleBag) {
+    if (TextPrinterCheckActive(battleBag->textPrinterID) == FALSE) {
+        return TASK_STATE_AWAITING_INPUT;
     }
-    return 9;
+
+    return TASK_STATE_AWAITING_TEXT_FINISH;
 }
 #pragma force_active reset

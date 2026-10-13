@@ -3,11 +3,7 @@
 #pragma thumb on
 #include "global.h"
 
-#include "field_move.h"
-#include "font_types_def.h"
-#include "heap.h"
 #include "screen_fade.h"
-#include "sys_task.h"
 #include "sys_task_api.h"
 #include "system.h"
 typedef void (*FadeHBlankFunc)(void *);
@@ -30,161 +26,12 @@ typedef struct FadeWork {
     int unk_28;
     int unk_2C;
 } FadeWork;
-typedef struct FadeCtrl {
-    int order;
-    int mainActive;
-    int subActive;
-    int mainEnabled;
-    int subEnabled;
-    FadeWork main;
-    FadeWork sub;
-    FadeHBlank hblank;
-    u8 windows[0xC0];
-    u16 active;
-    u8 mainFlag;
-    u8 subFlag;
-    u16 color;
-} FadeCtrl;
-typedef struct FadeHBlankRegisterTask {
-    FadeHBlank *hblank;
-    void *arg;
-    FadeHBlankFunc func;
-    int idx;
-} FadeHBlankRegisterTask;
-typedef struct FadeHBlankClearTask {
-    FadeHBlank *hblank;
-    int idx;
-} FadeHBlankClearTask;
-extern FadeCtrl _021D0EF4;
-typedef BOOL (*FadeFunc)(FadeWork *work);
-extern const FadeFunc sFadeFuncPtrs[43];
-void GXx_SetMasterBrightness_(vu16 *reg, int brightness);
-void sub_020131F4(u32 a0, int a1);
-void sub_02013424(void *base, u32 a1, u32 idx);
-void sub_02013440(void *base, u32 a1, u32 a2, u32 a3, u32 a4);
-void sub_02013468(void *base, s32 a1, s32 a2, s32 a3);
-void sub_02013488(void *base, s16 a1, s16 a2, s16 a3, s16 a4, u32 a5, u32 a6);
-extern BOOL FadeFunc_00(FadeWork *work);
-extern BOOL FadeFunc_01(FadeWork *work);
-extern BOOL FadeFunc_02(FadeWork *work);
-extern BOOL FadeFunc_03(FadeWork *work);
-extern BOOL FadeFunc_04(FadeWork *work);
-extern BOOL FadeFunc_05(FadeWork *work);
-extern BOOL FadeFunc_06(FadeWork *work);
-extern BOOL FadeFunc_07(FadeWork *work);
-extern BOOL FadeFunc_08(FadeWork *work);
-extern BOOL FadeFunc_09(FadeWork *work);
-extern BOOL FadeFunc_10(FadeWork *work);
-extern BOOL FadeFunc_11(FadeWork *work);
-extern BOOL FadeFunc_12(FadeWork *work);
-extern BOOL FadeFunc_13(FadeWork *work);
-extern BOOL FadeFunc_14(FadeWork *work);
-extern BOOL FadeFunc_15(FadeWork *work);
-extern BOOL FadeFunc_16(FadeWork *work);
-extern BOOL FadeFunc_17(FadeWork *work);
-extern BOOL FadeFunc_18(FadeWork *work);
-extern BOOL FadeFunc_19(FadeWork *work);
-extern BOOL FadeFunc_20(FadeWork *work);
-extern BOOL FadeFunc_21(FadeWork *work);
-extern BOOL FadeFunc_22(FadeWork *work);
-extern BOOL FadeFunc_23(FadeWork *work);
-extern BOOL FadeFunc_24(FadeWork *work);
-extern BOOL FadeFunc_25(FadeWork *work);
-extern BOOL FadeFunc_26(FadeWork *work);
-extern BOOL FadeFunc_27(FadeWork *work);
-extern BOOL FadeFunc_28(FadeWork *work);
-extern BOOL FadeFunc_29(FadeWork *work);
-extern BOOL FadeFunc_30(FadeWork *work);
-extern BOOL FadeFunc_31(FadeWork *work);
-extern BOOL FadeFunc_32(FadeWork *work);
-extern BOOL FadeFunc_33(FadeWork *work);
-extern BOOL FadeFunc_34(FadeWork *work);
-extern BOOL FadeFunc_35(FadeWork *work);
-extern BOOL FadeFunc_36(FadeWork *work);
-extern BOOL FadeFunc_37(FadeWork *work);
-extern BOOL FadeFunc_38(FadeWork *work);
-extern BOOL FadeFunc_39(FadeWork *work);
-extern BOOL FadeFunc_40(FadeWork *work);
-extern BOOL FadeFunc_41(FadeWork *work);
-extern BOOL FadeFunc_42(FadeWork *work);
-void sub_02010014(void *unused);
-BOOL CallFadeFunc(FadeWork *work);
-void FadeWork_UpdateFrame(int *active, FadeWork *work);
-BOOL DoFadeUpdateFrame(FadeCtrl *ctrl, FadeWork *main, FadeWork *sub);
-void HandleEndFade(FadeCtrl *ctrl);
-void sub_0200FE14(int mode, FadeCtrl *ctrl);
-void sub_0200FE78(FadeCtrl *ctrl, int order, int mainEnabled, int subEnabled);
-void sub_0200FE84(FadeWork *work, int type, int steps, int framesPerStep, int unk_0C, int unk_14, int screen, void *windows, FadeHBlank *hblank, enum HeapID heapID, u16 color);
-void sub_0200FEB0(FadeHBlank *hblank);
-void sub_0200FECC(void *arg);
-void sub_0200FEE4(FadeHBlank *hblank, void *arg, FadeHBlankFunc func, int idx);
-void sub_0200FF5C(FadeHBlank *hblank, int idx);
-void sub_0200FFD8(SysTask *task, void *data);
-void sub_0200FFF8(SysTask *task, void *data);
-u16 sub_02010018(FadeCtrl *ctrl, u16 color);
-u16 sub_0201002C(FadeCtrl *ctrl);
-void sub_02010050(SysTask *task, void *data);
-void sub_02010064(FadeWork *work);
-void sub_02010094(FadeWork *work);
-void sub_020100C4(FadeCtrl *ctrl);
-void SetMasterBrightness(PMLCDTarget screen, int brightness);
-void sub_0200FC20(u16 color);
-void sub_0200FC20(u16 color);
-void sub_0200FC60(PMLCDTarget screen, u16 color);
-void sub_0200FC60(PMLCDTarget screen, u16 color);
-void sub_0200FCDC(u16 color);
-void sub_0200FCDC(u16 color);
-void SetMasterBrightness(PMLCDTarget screen, int brightness);
-void SetMasterBrightness(PMLCDTarget screen, int brightness);
-void HandleEndFade(FadeCtrl *ctrl);
-void HandleEndFade(FadeCtrl *ctrl);
-BOOL DoFadeUpdateFrame(FadeCtrl *ctrl, FadeWork *main, FadeWork *sub);
-BOOL DoFadeUpdateFrame(FadeCtrl *ctrl, FadeWork *main, FadeWork *sub);
-void FadeWork_UpdateFrame(int *active, FadeWork *work);
-void FadeWork_UpdateFrame(int *active, FadeWork *work);
-BOOL CallFadeFunc(FadeWork *work);
-BOOL CallFadeFunc(FadeWork *work);
-void sub_0200FE14(int mode, FadeCtrl *ctrl);
-void sub_0200FE14(int mode, FadeCtrl *ctrl);
-void sub_0200FE78(FadeCtrl *ctrl, int order, int mainEnabled, int subEnabled);
-void sub_0200FE78(FadeCtrl *ctrl, int order, int mainEnabled, int subEnabled);
-void sub_0200FE84(FadeWork *work, int type, int steps, int framesPerStep, int unk_0C, int unk_14, int screen, void *windows, FadeHBlank *hblank, enum HeapID heapID, u16 color);
-void sub_0200FE84(FadeWork *work, int type, int steps, int framesPerStep, int unk_0C, int unk_14, int screen, void *windows, FadeHBlank *hblank, enum HeapID heapID, u16 color);
-void sub_0200FEB0(FadeHBlank *hblank);
-void sub_0200FEB0(FadeHBlank *hblank);
-void sub_0200FECC(void *arg);
-void sub_0200FECC(void *arg);
-void sub_0200FEE4(FadeHBlank *hblank, void *arg, FadeHBlankFunc func, int idx);
-void sub_0200FEE4(FadeHBlank *hblank, void *arg, FadeHBlankFunc func, int idx);
-void sub_0200FF5C(FadeHBlank *hblank, int idx);
-void sub_0200FF5C(FadeHBlank *hblank, int idx);
-void sub_0200FF88(FadeHBlank *hblank, void *arg, FadeHBlankFunc func, int idx, enum HeapID heapID);
-void sub_0200FF88(FadeHBlank *hblank, void *arg, FadeHBlankFunc func, int idx, enum HeapID heapID);
-void sub_0200FFB4(FadeHBlank *hblank, int idx, enum HeapID heapID);
-void sub_0200FFB4(FadeHBlank *hblank, int idx, enum HeapID heapID);
-void sub_0200FFD8(SysTask *task, void *data);
-void sub_0200FFD8(SysTask *task, void *data);
-void sub_0200FFF8(SysTask *task, void *data);
-void sub_0200FFF8(SysTask *task, void *data);
-void sub_02010014(void *unused);
-void sub_02010014(void *unused);
-u16 sub_02010018(FadeCtrl *ctrl, u16 color);
-u16 sub_02010018(FadeCtrl *ctrl, u16 color);
-u16 sub_0201002C(FadeCtrl *ctrl);
-u16 sub_0201002C(FadeCtrl *ctrl);
-void sub_02010050(SysTask *task, void *data);
-// FUNCTION sub_02010050: matching C (r2)
+// FUNCTION sub_02010050: matching C (twin)
 #pragma force_active on
 void sub_02010050(SysTask *task, void *data) {
-    FadeWork *work = data;
+    FadeWork *fade = data;
 
-    SetMasterBrightness(work->screen, 0);
+    SetMasterBrightness(fade->screen, 0);
     SysTask_Destroy(task);
 }
 #pragma force_active reset
-void sub_02010064(FadeWork *work);
-void sub_02010064(FadeWork *work);
-void sub_02010094(FadeWork *work);
-void sub_02010094(FadeWork *work);
-void sub_020100C4(FadeCtrl *ctrl);
-void sub_020100C4(FadeCtrl *ctrl);

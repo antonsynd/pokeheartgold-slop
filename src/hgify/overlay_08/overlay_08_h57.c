@@ -4,17 +4,18 @@
 #include "global.h"
 
 #include "bg_window.h"
-#include "ghidra_compat.h"
-typedef void code(void);
-undefined4 ov08_0221D81C(void);
-void ov08_0221DBB4(int param_1);
-// FUNCTION ov08_0221DBB4: matching C (r2)
-#pragma force_active on
-void ov08_0221DBB4(int param_1)
 
-{
-    ov08_0221D81C();
-    ScheduleBgTilemapBufferTransfer(*(undefined4 *)(param_1 + 0x1e4), 7);
-    return;
+typedef struct UnkOv08BattleParty {
+    u8 unk_00[0x1E4];
+    BgConfig *background;
+} UnkOv08BattleParty;
+
+void ov08_0221D81C(UnkOv08BattleParty *battleParty);
+
+// FUNCTION ov08_0221DBB4: matching C (twin)
+#pragma force_active on
+void ov08_0221DBB4(UnkOv08BattleParty *battleParty) {
+    ov08_0221D81C(battleParty);
+    ScheduleBgTilemapBufferTransfer(battleParty->background, 7);
 }
 #pragma force_active reset

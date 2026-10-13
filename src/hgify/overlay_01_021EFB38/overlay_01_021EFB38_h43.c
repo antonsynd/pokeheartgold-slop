@@ -3,19 +3,18 @@
 #pragma thumb on
 #include "global.h"
 
-#include "ghidra_compat.h"
 #include "heap.h"
-typedef void code(void);
-undefined4 ov01_021F0848(undefined4 param_1);
-// FUNCTION ov01_021F0848: matching C (r2)
+
+typedef struct UnkStruct_ov01_021F0848 {
+    u8 unk_00[0x30];
+} UnkStruct_ov01_021F0848;
+
+// FUNCTION ov01_021F0848: matching C (twin)
 #pragma force_active on
-undefined4 ov01_021F0848(undefined4 param_1)
+UnkStruct_ov01_021F0848 *ov01_021F0848(u32 heapID) {
+    UnkStruct_ov01_021F0848 *v0 = Heap_Alloc(heapID, sizeof(UnkStruct_ov01_021F0848));
 
-{
-    undefined4 uVar1;
-
-    uVar1 = Heap_Alloc(param_1, 0x30);
-    memset(uVar1, 0, 0x30);
-    return uVar1;
+    memset(v0, 0, sizeof(UnkStruct_ov01_021F0848));
+    return v0;
 }
 #pragma force_active reset

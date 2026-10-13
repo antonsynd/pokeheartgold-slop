@@ -3,18 +3,13 @@
 #pragma thumb on
 #include "global.h"
 
-#include "error_handling.h"
-#include "ghidra_compat.h"
-typedef void code(void);
-undefined4 ov07_02233F20(int param_1);
-// FUNCTION ov07_02233F20: matching C (r2)
+#include "assert.h"
+#include "overlay_07.h"
+// FUNCTION ov07_02233F20: matching C (twin)
 #pragma force_active on
-undefined4 ov07_02233F20(int param_1)
+s32 ov07_02233F20(UnkBallData *param0) {
+    GF_ASSERT(param0 != NULL);
 
-{
-    if (param_1 == 0) {
-        GF_AssertFail();
-    }
-    return *(undefined4 *)(param_1 + 0x98);
+    return param0->unk90.unk8;
 }
 #pragma force_active reset

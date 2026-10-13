@@ -3,17 +3,17 @@
 #pragma thumb on
 #include "global.h"
 
-#include "ghidra_compat.h"
 #include "sprite.h"
-typedef int code();
-void ov91_02260CB4(undefined4 *param_1);
-// FUNCTION ov91_02260CB4: matching C (r2)
-#pragma force_active on
-void ov91_02260CB4(undefined4 *param_1)
 
-{
-    Sprite_SetDrawFlag(param_1[1], 1);
-    *param_1 = 1;
-    return;
+typedef struct UnkStruct_ov91_02260CB4 {
+    u32 unk_00;
+    Sprite *unk_04;
+} UnkStruct_ov91_02260CB4;
+
+// FUNCTION ov91_02260CB4: matching C (twin)
+#pragma force_active on
+void ov91_02260CB4(UnkStruct_ov91_02260CB4 *param0) {
+    Sprite_SetDrawFlag(param0->unk_04, TRUE);
+    param0->unk_00 = 1;
 }
 #pragma force_active reset

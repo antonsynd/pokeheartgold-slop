@@ -3,18 +3,21 @@
 #pragma thumb on
 #include "global.h"
 
-#include "ghidra_compat.h"
 #include "pokemon.h"
-typedef int code();
-undefined4 sub_02059748(int param_1);
-// FUNCTION sub_02059748: matching C (r2)
+
+typedef struct UnkStruct_0205A0D8 {
+    u8 unk_00[0x48];
+    void *unk_48;
+} UnkStruct_0205A0D8;
+
+typedef struct UnkStruct_0205AD20 {
+    BOOL unk_00;
+} UnkStruct_0205AD20;
+
+// FUNCTION sub_02059748: matching C (twin)
 #pragma force_active on
-undefined4 sub_02059748(int param_1)
-
-{
-    int iVar1;
-
-    iVar1 = sub_02070D90();
-    return *(undefined4 *)(*(int *)(param_1 + 0x48) + iVar1 * 3);
+BOOL sub_02059748(UnkStruct_0205A0D8 *param0) {
+    UnkStruct_0205AD20 *v0 = (UnkStruct_0205AD20 *)((u8 *)(param0->unk_48) + (sub_02070D90() * 3));
+    return v0->unk_00;
 }
 #pragma force_active reset

@@ -4,16 +4,17 @@
 #include "global.h"
 
 #include "camera.h"
-#include "ghidra_compat.h"
-typedef int code();
-void ov93_0225D064(int param_1);
-// FUNCTION ov93_0225D064: matching C (r2)
-#pragma force_active on
-void ov93_0225D064(int param_1)
 
-{
-    Camera_Delete(*(undefined4 *)(param_1 + 0x9c));
-    Camera_Delete(*(undefined4 *)(param_1 + 0xa0));
-    return;
+typedef struct UnkStruct_ov93_0225D064 {
+    u8 unk_00[0x9C];
+    Camera *camera1;
+    Camera *camera2;
+} UnkStruct_ov93_0225D064;
+
+// FUNCTION ov93_0225D064: matching C (twin)
+#pragma force_active on
+void ov93_0225D064(UnkStruct_ov93_0225D064 *param0) {
+    Camera_Delete(param0->camera1);
+    Camera_Delete(param0->camera2);
 }
 #pragma force_active reset

@@ -5,13 +5,9 @@
 #include "global.h"
 #include "unk_02025C44.h"
 // clang-format on
-void GF_InitG2dRenderer(NNSG2dRendererInstance *instance, fx32 zOffset);
-void GF_InitG2dRenderer(NNSG2dRendererInstance *instance, fx32 zOffset);
-void sub_02025C54(NNSG2dRenderSurface *surface, NNSG2dViewRect *rect, NNSG2dOamRegisterFunction registerOam, NNSG2dAffineRegisterFunction registerAffine, NNSG2dRndCellCullingFunction cull, NNSG2dSurfaceType type, NNSG2dRendererInstance *renderer);
-void GF_SetG2dRendererSurface(NNSG2dRenderSurface *surface, NNSG2dViewRect *rect);
-// FUNCTION GF_SetG2dRendererSurface: matching C (r2)
+// FUNCTION GF_SetG2dRendererSurface: matching C (twin)
 #pragma force_active on
-void GF_SetG2dRendererSurface(NNSG2dRenderSurface *surface, NNSG2dViewRect *rect) {
-    surface->viewRect = *rect;
+void GF_SetG2dRendererSurface(NNSG2dRenderSurface *surface, NNSG2dViewRect *viewRect) {
+    surface->viewRect = *viewRect;
 }
 #pragma force_active reset

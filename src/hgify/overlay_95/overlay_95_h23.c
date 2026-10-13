@@ -3,21 +3,17 @@
 #pragma thumb on
 #include "global.h"
 
-#include "ghidra_compat.h"
 #include "unk_02014DA0.h"
-typedef int code();
-undefined4 ov95_021E5EDC(int param_1);
-// FUNCTION ov95_021E5EDC: matching C (r2)
+
+// Layout up to ps, the only field this function reads.
+typedef struct EggHatchParticleSystem {
+    u8 unk00[0xC];
+    void *ps;
+} EggHatchParticleSystem;
+
+// FUNCTION ov95_021E5EDC: matching C (twin)
 #pragma force_active on
-undefined4 ov95_021E5EDC(int param_1)
-
-{
-    int iVar1;
-
-    iVar1 = sub_020154B0(*(undefined4 *)(param_1 + 0xc));
-    if (iVar1 != 0) {
-        return 1;
-    }
-    return 0;
+BOOL ov95_021E5EDC(EggHatchParticleSystem *eps) {
+    return !!sub_020154B0(eps->ps);
 }
 #pragma force_active reset

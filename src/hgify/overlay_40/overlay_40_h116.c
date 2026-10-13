@@ -4,18 +4,17 @@
 #include "global.h"
 
 #include "game_stats.h"
-#include "ghidra_compat.h"
-typedef int code();
-void ov40_0222FB28(int param_1, undefined4 param_2);
-// FUNCTION ov40_0222FB28: matching C (r2)
+
+typedef struct UnkStruct_ov40_0222FB28 {
+    u8 unk_000[0x830];
+    SaveData *saveData;
+} UnkStruct_ov40_0222FB28;
+
+// FUNCTION ov40_0222FB28: matching C (twin)
 #pragma force_active on
-void ov40_0222FB28(int param_1, undefined4 param_2)
+void ov40_0222FB28(UnkStruct_ov40_0222FB28 *param0, int param1) {
+    GameStats *v0 = Save_GameStats_Get(param0->saveData);
 
-{
-    undefined4 uVar1;
-
-    uVar1 = Save_GameStats_Get(*(undefined4 *)(param_1 + 0x830));
-    GameStats_AddScore(uVar1, param_2);
-    return;
+    GameStats_AddScore(v0, param1);
 }
 #pragma force_active reset

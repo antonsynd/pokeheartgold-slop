@@ -3,21 +3,13 @@
 #include "global.h"
 
 #include "task.h"
-void ov01_021F2944(void);
+BOOL ov01_021F2944(TaskManager *taskman);
+void *ov01_021F28B8(FieldSystem *fieldSystem, int param1, void *param2);
 #pragma thumb on
-#include "ghidra_compat.h"
-typedef void code(void);
-undefined4 ov01_021F28B8(undefined4, undefined4, undefined4);
-void ov01_021F28EC(undefined4 param_1, undefined4 param_2);
-// FUNCTION ov01_021F28EC: matching C (r2)
+// FUNCTION ov01_021F28EC: matching C (twin)
 #pragma force_active on
-void ov01_021F28EC(undefined4 param_1, undefined4 param_2)
-
-{
-    undefined4 uVar1;
-
-    uVar1 = ov01_021F28B8(param_1, param_2, 0);
-    FieldSystem_CreateTask(param_1, ((unsigned int)ov01_021F2944), uVar1);
-    return;
+void ov01_021F28EC(FieldSystem *fieldSystem, int param1) {
+    void *taskEnv = ov01_021F28B8(fieldSystem, param1, NULL);
+    FieldSystem_CreateTask(fieldSystem, ov01_021F2944, taskEnv);
 }
 #pragma force_active reset

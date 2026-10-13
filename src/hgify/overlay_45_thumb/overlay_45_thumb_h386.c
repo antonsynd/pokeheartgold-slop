@@ -4,20 +4,13 @@
 #include "global.h"
 
 #include "error_handling.h"
-#include "ghidra_compat.h"
-typedef int code();
-undefined4 ov45_02232580();
 extern int _022577C0;
-void ov45_0222E9E0(void);
-// FUNCTION ov45_0222E9E0: matching C (r2)
+s32 ov45_02232580(void);
+s32 ov45_0222E9E0(void);
+// FUNCTION ov45_0222E9E0: matching C (twin)
 #pragma force_active on
-void ov45_0222E9E0(void)
-
-{
-    if (_022577C0 == 0) {
-        GF_AssertFail();
-    }
-    ov45_02232580();
-    return;
+s32 ov45_0222E9E0(void) {
+    GF_ASSERT(_022577C0 != 0);
+    return ov45_02232580();
 }
 #pragma force_active reset
