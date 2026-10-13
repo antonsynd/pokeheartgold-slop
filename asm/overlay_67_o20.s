@@ -1,0 +1,221 @@
+	.include "asm/macros.inc"
+	.include "overlay_67.inc"
+	.include "global.inc"
+	.public ov67_021E6220
+	.extern ov67_021E6164
+	.extern ov67_021E61A0
+	.extern ov67_021E61E8
+
+	.text
+
+	.text
+	thumb_func_start ov67_021E6220
+ov67_021E6220: ; 0x021E6220
+	push {r3, r4, r5, r6, r7, lr}
+	sub sp, #0x10
+	add r5, r0, #0
+	mov r6, #0
+	add r4, r5, #0
+	add r4, #0x6c
+	add r7, r6, #0
+_021E622E:
+	add r0, r4, #0
+	add r1, r7, #0
+	bl FillWindowPixelBuffer
+	add r6, r6, #1
+	add r4, #0x10
+	cmp r6, #0xa
+	blo _021E622E
+	add r0, r5, #0
+	bl ov67_021E61E8
+	add r0, r5, #0
+	add r0, #0x7c
+	bl GetWindowWidth
+	add r3, r0, #0
+	mov r0, #0
+	str r0, [sp]
+	lsl r4, r3, #3
+	str r0, [sp, #4]
+	ldr r0, _021E63E0 ; =0x000F0200
+	lsr r3, r4, #0x1f
+	add r3, r4, r3
+	str r0, [sp, #8]
+	mov r2, #2
+	add r0, r5, #0
+	mov r1, #1
+	asr r3, r3, #1
+	str r2, [sp, #0xc]
+	bl ov67_021E6164
+	mov r3, #0
+	str r3, [sp]
+	ldr r0, _021E63E4 ; =0x00010200
+	str r3, [sp, #4]
+	str r0, [sp, #8]
+	add r0, r5, #0
+	mov r1, #2
+	mov r2, #5
+	str r3, [sp, #0xc]
+	bl ov67_021E6164
+	mov r3, #0
+	str r3, [sp]
+	ldr r0, _021E63E4 ; =0x00010200
+	str r3, [sp, #4]
+	str r0, [sp, #8]
+	add r0, r5, #0
+	mov r1, #3
+	mov r2, #8
+	str r3, [sp, #0xc]
+	bl ov67_021E6164
+	mov r3, #0
+	str r3, [sp]
+	ldr r0, _021E63E4 ; =0x00010200
+	str r3, [sp, #4]
+	str r0, [sp, #8]
+	str r3, [sp, #0xc]
+	add r0, r5, #0
+	mov r1, #4
+	mov r2, #0xc
+	bl ov67_021E6164
+	ldr r0, [r5, #0x20]
+	mov r1, #0xc
+	mov r2, #0
+	bl sub_0202D5DC
+	cmp r0, #0
+	ldr r0, _021E63E4 ; =0x00010200
+	bne _021E62D4
+	mov r3, #0
+	str r3, [sp]
+	str r3, [sp, #4]
+	str r0, [sp, #8]
+	add r0, r5, #0
+	mov r1, #6
+	mov r2, #9
+	str r3, [sp, #0xc]
+	bl ov67_021E6164
+	b _021E62E8
+_021E62D4:
+	mov r3, #0
+	str r3, [sp]
+	str r3, [sp, #4]
+	str r0, [sp, #8]
+	add r0, r5, #0
+	mov r1, #6
+	mov r2, #0xa
+	str r3, [sp, #0xc]
+	bl ov67_021E6164
+_021E62E8:
+	mov r3, #0
+	str r3, [sp]
+	ldr r0, _021E63E4 ; =0x00010200
+	str r3, [sp, #4]
+	str r0, [sp, #8]
+	str r3, [sp, #0xc]
+	add r0, r5, #0
+	mov r1, #8
+	mov r2, #0xb
+	bl ov67_021E6164
+	ldr r0, [r5, #0x20]
+	mov r1, #0
+	bl sub_0202D488
+	mov r1, #0
+	add r2, r0, #0
+	str r1, [sp]
+	mov r0, #1
+	str r0, [sp, #4]
+	ldr r0, [r5, #0x2c]
+	mov r3, #2
+	bl BufferIntegerAsString
+	add r0, r5, #0
+	add r0, #0xbc
+	bl GetWindowWidth
+	add r3, r0, #0
+	mov r0, #0
+	str r0, [sp]
+	str r0, [sp, #4]
+	ldr r0, _021E63E4 ; =0x00010200
+	mov r1, #5
+	str r0, [sp, #8]
+	mov r0, #1
+	str r0, [sp, #0xc]
+	add r0, r5, #0
+	mov r2, #0xe
+	lsl r3, r3, #3
+	bl ov67_021E61A0
+	ldr r0, [r5, #0x1c]
+	mov r1, #9
+	mov r2, #0xff
+	bl FrontierSave_GetStat
+	add r2, r0, #0
+	mov r0, #1
+	str r0, [sp]
+	str r0, [sp, #4]
+	ldr r0, [r5, #0x2c]
+	mov r1, #0
+	mov r3, #4
+	bl BufferIntegerAsString
+	add r0, r5, #0
+	add r0, #0xdc
+	bl GetWindowWidth
+	add r3, r0, #0
+	mov r0, #0
+	str r0, [sp]
+	str r0, [sp, #4]
+	ldr r0, _021E63E4 ; =0x00010200
+	lsl r4, r3, #3
+	lsr r3, r4, #0x1f
+	str r0, [sp, #8]
+	mov r0, #2
+	add r3, r4, r3
+	str r0, [sp, #0xc]
+	add r0, r5, #0
+	mov r1, #7
+	mov r2, #0xf
+	asr r3, r3, #1
+	bl ov67_021E61A0
+	ldr r0, [r5, #0x1c]
+	mov r1, #8
+	mov r2, #0xff
+	bl FrontierSave_GetStat
+	add r2, r0, #0
+	mov r0, #1
+	str r0, [sp]
+	str r0, [sp, #4]
+	ldr r0, [r5, #0x2c]
+	mov r1, #0
+	mov r3, #4
+	bl BufferIntegerAsString
+	add r0, r5, #0
+	add r0, #0xfc
+	bl GetWindowWidth
+	add r3, r0, #0
+	mov r0, #0
+	str r0, [sp]
+	str r0, [sp, #4]
+	ldr r0, _021E63E4 ; =0x00010200
+	lsl r4, r3, #3
+	lsr r3, r4, #0x1f
+	str r0, [sp, #8]
+	mov r0, #2
+	add r3, r4, r3
+	str r0, [sp, #0xc]
+	add r0, r5, #0
+	mov r1, #9
+	mov r2, #0xf
+	asr r3, r3, #1
+	bl ov67_021E61A0
+	mov r4, #0
+	add r5, #0x6c
+_021E63CC:
+	add r0, r5, #0
+	bl ScheduleWindowCopyToVram
+	add r4, r4, #1
+	add r5, #0x10
+	cmp r4, #0xa
+	blo _021E63CC
+	add sp, #0x10
+	pop {r3, r4, r5, r6, r7, pc}
+	nop
+_021E63E0: .word 0x000F0200
+_021E63E4: .word 0x00010200
+	thumb_func_end ov67_021E6220
+
