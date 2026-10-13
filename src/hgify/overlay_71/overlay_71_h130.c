@@ -3,12 +3,14 @@
 #pragma thumb on
 #include "global.h"
 
-#include "sys_task.h"
+#include "sys_task_api.h"
 
 typedef struct BallOrbitState {
     void *phase;
     SysTask *taskHandle;
 } BallOrbitState;
+
+void ov71_02249990(BallOrbitState *boState);
 
 // FUNCTION ov71_02249990: matching C (twin)
 #pragma force_active on

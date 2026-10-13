@@ -26,6 +26,8 @@ typedef struct FadeWork {
     int unk_28;
     int unk_2C;
 } FadeWork;
+void SetMasterBrightness(PMLCDTarget screen, int brightness);
+void sub_02010050(SysTask *task, void *data);
 // FUNCTION sub_02010050: matching C (twin)
 #pragma force_active on
 void sub_02010050(SysTask *task, void *data) {
