@@ -3,27 +3,37 @@
 #pragma thumb on
 #include "global.h"
 
-#include "ghidra_compat.h"
 #include "sprite.h"
 #include "unk_02018000.h"
-typedef int code();
-undefined4 ov91_02260B48();
-void ov91_02260AF8(undefined4 *param_1, int param_2, undefined4 param_3, undefined4 param_4);
-// FUNCTION ov91_02260AF8: matching C (r4)
+
+typedef struct UnkStruct_ov91_02260AF8_F8 {
+    u8 unk_00;
+} UnkStruct_ov91_02260AF8_F8;
+
+typedef struct UnkStruct_ov91_02260AF8 {
+    Sprite *unk_00;
+    UnkStruct_020181B0 unk_04;
+    UnkStruct_020181B0 unk_7C;
+    int unk_F4;
+    UnkStruct_ov91_02260AF8_F8 *unk_F8;
+} UnkStruct_ov91_02260AF8;
+
+UnkStruct_02018030 *ov91_02260B48(UnkStruct_ov91_02260AF8_F8 *param0, void *param1);
+// FUNCTION ov91_02260AF8: matching C (twin)
 #pragma force_active on
-void ov91_02260AF8(undefined4 *param_1, int param_2, undefined4 param_3, undefined4 param_4)
+void ov91_02260AF8(UnkStruct_ov91_02260AF8 *param0, void *param1, u32 param2, u32 param3) {
+    UnkStruct_02018030 *v0;
 
-{
-    undefined4 uVar1;
+    Sprite_SetDrawFlag(param0->unk_00, FALSE);
+    param0->unk_F4 = 0;
 
-    Sprite_SetDrawFlag(*param_1, 0);
-    param_1[0x3d] = 0;
-    uVar1 = ov91_02260B48(param_1[0x3e], param_2 + 0x6fc);
-    sub_020181B0((UnkStruct_020181B0 *)(param_1 + 1), (UnkStruct_02018030 *)uVar1);
-    sub_020182A0((UnkStruct_020181B0 *)(param_1 + 1), 1);
-    if (*(unsigned char *)param_1[0x3e] == '\x01') {
-        sub_020182A0((UnkStruct_020181B0 *)(param_1 + 0x1f), 1);
+    v0 = ov91_02260B48(param0->unk_F8, (u8 *)param1 + 0x6FC);
+
+    sub_020181B0(&param0->unk_04, v0);
+    sub_020182A0(&param0->unk_04, 1);
+
+    if (param0->unk_F8->unk_00 == 1) {
+        sub_020182A0(&param0->unk_7C, 1);
     }
-    return;
 }
 #pragma force_active reset

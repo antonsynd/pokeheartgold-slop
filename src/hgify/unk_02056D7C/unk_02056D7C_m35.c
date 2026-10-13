@@ -5,28 +5,29 @@
 
 #include "unk_02035900.h"
 #include "unk_02056D7C.h"
-typedef struct {
-    u16 unk0;
-    u8 pad[6];
-} Entry;
-typedef struct {
-    u8 pad[0x24];
-    u8 unk24[0x10];
-    Entry entries[16];
-} Work57B4C;
-extern Work57B4C *_021D41C4;
-// FUNCTION sub_02057B4C: matching C (agent7)
+
+typedef struct UnkStruct_sub_02057B4C {
+    u8 pad0[0x24];
+    u8 isActive[0x10];
+    struct {
+        u16 x;
+        u8 pad[6];
+    } playerLocationServer[16];
+} UnkStruct_sub_02057B4C;
+
+extern UnkStruct_sub_02057B4C *_021D41C4;
+
+// FUNCTION sub_02057B4C: matching C (twin)
 #pragma force_active on
-u16 sub_02057B4C(int a) {
-    if (_021D41C4 == 0) {
+int sub_02057B4C(int netId) {
+    if (!_021D41C4) {
+        return 0xffff;
+    } else if (sub_0203769C() == netId) {
+        return _021D41C4->playerLocationServer[netId].x;
+    } else if (!sub_02057A0C() || !_021D41C4->isActive[netId]) {
         return 0xffff;
     }
-    if (a == sub_0203769C()) {
-        return _021D41C4->entries[a].unk0;
-    }
-    if (sub_02057A0C() == 0 || _021D41C4->unk24[a] == 0) {
-        return 0xffff;
-    }
-    return _021D41C4->entries[a].unk0;
+
+    return _021D41C4->playerLocationServer[netId].x;
 }
 #pragma force_active reset

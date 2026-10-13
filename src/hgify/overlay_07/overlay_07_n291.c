@@ -131,7 +131,7 @@ BOOL ov07_02222218(XYTransformContext *ctx, s16 cx, s16 cy, ManagedSprite *sprit
 BOOL ov07_02222240(XYTransformContext *ctx, s16 cx, s16 cy, Pokepic *sprite);
 BOOL ov07_02222240(XYTransformContext *ctx, s16 cx, s16 cy, Pokepic *sprite);
 void ov07_02222268(XYTransformContext *ctx, s16 sx, s16 ex, s16 sy, s16 ey, u16 steps);
-// FUNCTION ov07_02222268: matching C (r0)
+// FUNCTION ov07_02222268: matching C (twin)
 #pragma force_active on
 void ov07_02222268(XYTransformContext *ctx, s16 sx, s16 ex, s16 sy, s16 ey, u16 steps) {
     GF_ASSERT(ctx);
@@ -139,21 +139,9 @@ void ov07_02222268(XYTransformContext *ctx, s16 sx, s16 ex, s16 sy, s16 ey, u16 
     ctx->x = sx;
     ctx->y = sy;
     ctx->data[XY_PARAM_STEPS] = steps;
-    ctx->data[XY_PARAM_STEP_SIZE_X] = ov07_02222040(sx * (1 << FX32_SHIFT), ex * (1 << FX32_SHIFT), steps);
-    ctx->data[XY_PARAM_STEP_SIZE_Y] = ov07_02222040(sy * (1 << FX32_SHIFT), ey * (1 << FX32_SHIFT), steps);
-    ctx->data[XY_PARAM_CUR_X] = sx * (1 << FX32_SHIFT);
-    ctx->data[XY_PARAM_CUR_Y] = sy * (1 << FX32_SHIFT);
+    ctx->data[XY_PARAM_STEP_SIZE_X] = ov07_02222040(sx * FX32_ONE, ex * FX32_ONE, steps);
+    ctx->data[XY_PARAM_STEP_SIZE_Y] = ov07_02222040(sy * FX32_ONE, ey * FX32_ONE, steps);
+    ctx->data[XY_PARAM_CUR_X] = sx * FX32_ONE;
+    ctx->data[XY_PARAM_CUR_Y] = sy * FX32_ONE;
 }
 #pragma force_active reset
-BOOL ov07_022222B4(XYTransformContext *ctx);
-BOOL ov07_022222B4(XYTransformContext *ctx);
-BOOL ov07_022222F0(XYTransformContext *ctx, ManagedSprite *sprite);
-BOOL ov07_022222F0(XYTransformContext *ctx, ManagedSprite *sprite);
-BOOL ov07_02222314(XYTransformContext *ctx, Pokepic *sprite);
-BOOL ov07_02222314(XYTransformContext *ctx, Pokepic *sprite);
-void ov07_02222338(XYTransformContext *linear, XYTransformContext *revs, s16 sx, s16 ex, s16 sy, s16 ey, u16 frames, fx32 arcRadius);
-void ov07_02222338(XYTransformContext *linear, XYTransformContext *revs, s16 sx, s16 ex, s16 sy, s16 ey, u16 frames, fx32 arcRadius);
-BOOL ov07_02222384(XYTransformContext *linear, XYTransformContext *revs);
-BOOL ov07_02222384(XYTransformContext *linear, XYTransformContext *revs);
-BOOL ov07_022223CC(XYTransformContext *linear, XYTransformContext *revs, ManagedSprite *sprite);
-BOOL ov07_022223CC(XYTransformContext *linear, XYTransformContext *revs, ManagedSprite *sprite);

@@ -8,39 +8,46 @@
 #include "unk_0202C034.h"
 #include "unk_02037C94.h"
 // clang-format on
+
 extern u64 DWC_CreateFriendKey(DWCUserData *userData);
 extern void ov70_022378C0(s32 profileId, u32 keyLow, u32 keyHigh);
+
 typedef struct {
     u8 filler_00[4];
     SaveData *saveData;
     u8 filler_08[0x118 - 0x08];
     int unk_118;
 } UnkStruct_ov75_02248994_Parent;
+
 typedef struct {
     UnkStruct_ov75_02248994_Parent *parent;
     u8 filler_04[4];
     int unk_08;
 } UnkStruct_ov75_02248994;
-int ov75_02248994(UnkStruct_ov75_02248994 *work);
-// FUNCTION ov75_02248994: matching C (r0)
+
+// FUNCTION ov75_02248994: matching C (twin)
 #pragma force_active on
-int ov75_02248994(UnkStruct_ov75_02248994 *work) {
-    WiFiList *wifiList = sub_0202C6F4(work->parent->saveData);
-    SysInfo *sysInfo = Save_SysInfo_Get(work->parent->saveData);
-    DWCUserData *userData = sub_0202C08C(wifiList);
-    s32 profileId;
+int ov75_02248994(UnkStruct_ov75_02248994 *param0) {
+    WiFiList *v3 = sub_0202C6F4(param0->parent->saveData);
+    SysInfo *v2 = Save_SysInfo_Get(param0->parent->saveData);
+    DWCUserData *v0 = sub_0202C08C(v3);
+    s32 v1;
     u64 friendKey;
 
-    if (Save_SysInfo_GetDwcProfileId(sysInfo) == 0) {
-        Save_SysInfo_SetDwcProfileId(sysInfo, sub_0203A040(wifiList));
+    v1 = Save_SysInfo_GetDwcProfileId(v2);
+
+    if (v1 == 0) {
+        Save_SysInfo_SetDwcProfileId(v2, sub_0203A040(v3));
     }
 
-    profileId = Save_SysInfo_GetDwcProfileId(sysInfo);
-    friendKey = DWC_CreateFriendKey(userData);
-    ov70_022378C0(profileId, (u32)friendKey, (u32)(friendKey >> 32));
+    v1 = Save_SysInfo_GetDwcProfileId(v2);
 
-    work->parent->unk_118 = 1;
-    work->unk_08 = 0x11;
+    friendKey = DWC_CreateFriendKey(v0);
+    ov70_022378C0(v1, (u32)friendKey, (u32)(friendKey >> 32));
+
+    param0->parent->unk_118 = 1;
+    param0->unk_08 = 0x11;
+
     return 0;
 }
 #pragma force_active reset

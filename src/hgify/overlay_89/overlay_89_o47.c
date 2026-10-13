@@ -3,36 +3,39 @@
 #pragma thumb on
 #include "global.h"
 
-#include "ghidra_compat.h"
-typedef int code();
-undefined4 SetMasterBrightness();
-void ov89_0225A760(int param_1, int param_2);
-// FUNCTION ov89_0225A760: matching C (r4)
+typedef struct UnkStruct_ov89_0225A760 {
+    u8 unk_00[0x4B4];
+    NNSG3dResTex *unk_4B4[32];
+    u8 unk_534[0x740 - 0x534];
+    u8 unk_740;
+    s16 unk_742;
+} UnkStruct_ov89_0225A760;
+
+void SetMasterBrightness(int screen, int brightness);
+// FUNCTION ov89_0225A760: matching C (twin)
 #pragma force_active on
-void ov89_0225A760(int param_1, int param_2)
+void ov89_0225A760(UnkStruct_ov89_0225A760 *param0, int param1) {
+    int v0;
+    NNSG3dResTex **v1;
 
-{
-    int iVar1;
-    int iVar2;
-    int *piVar3;
+    v1 = param0->unk_4B4;
 
-    iVar2 = 0;
-    piVar3 = (int *)(param_1 + 0x4b4);
-    do {
-        iVar1 = *piVar3;
-        if (iVar1 != 0) {
-            DC_FlushRange(iVar1, *(undefined4 *)(iVar1 + 4));
-            NNS_G3dTexLoad(*piVar3, 1);
-            NNS_G3dPlttLoad(*piVar3, 1);
-            *piVar3 = 0;
+    for (v0 = 0; v0 < 32; v0++) {
+        if (*v1 != NULL) {
+            DC_FlushRange(*v1, (*v1)->header.size);
+
+            NNS_G3dTexLoad(*v1, 1);
+            NNS_G3dPlttLoad(*v1, 1);
+
+            *v1 = NULL;
         }
-        iVar2 = iVar2 + 1;
-        piVar3 = piVar3 + 1;
-    } while (iVar2 < 0x20);
-    if ((*(unsigned char *)(param_1 + 0x740) != '\0') && (param_2 != 3)) {
-        SetMasterBrightness(0, (int)*(short *)(param_1 + 0x742));
-        *(undefined1 *)(param_1 + 0x740) = 0;
+
+        v1++;
     }
-    return;
+
+    if (param0->unk_740 && (param1 != 3)) {
+        SetMasterBrightness(0, param0->unk_742);
+        param0->unk_740 = 0;
+    }
 }
 #pragma force_active reset

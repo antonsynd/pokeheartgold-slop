@@ -3,34 +3,32 @@
 #pragma thumb on
 #include "global.h"
 
-#include "ghidra_compat.h"
 #include "unk_02018000.h"
-typedef int code();
-void ov91_022600FC(int param_1, undefined4 param_2);
-// FUNCTION ov91_022600FC: matching C (r2)
+
+typedef struct UnkStruct_ov91_022600FC {
+    u8 unk_00[0x168];
+    UnkStruct_02018030 unk_168[3];
+    UnkStruct_020180BC unk_198[6];
+    u8 unk_210[4];
+    UnkStruct_020180BC unk_214;
+    u8 unk_228[8];
+} UnkStruct_ov91_022600FC;
+
+// FUNCTION ov91_022600FC: matching C (twin)
 #pragma force_active on
-void ov91_022600FC(int param_1, undefined4 param_2)
+void ov91_022600FC(UnkStruct_ov91_022600FC *param0, NNSFndAllocator *param1) {
+    int v0;
 
-{
-    int iVar1;
-    int iVar2;
+    for (v0 = 0; v0 < 3; v0++) {
+        sub_02018068(&param0->unk_168[v0]);
+    }
 
-    iVar1 = 0;
-    iVar2 = param_1 + 0x168;
-    do {
-        sub_02018068(iVar2);
-        iVar1 = iVar1 + 1;
-        iVar2 = iVar2 + 0x10;
-    } while (iVar1 < 3);
-    iVar2 = 0;
-    iVar1 = param_1 + 0x198;
-    do {
-        sub_020180F8(iVar1, param_2);
-        iVar2 = iVar2 + 1;
-        iVar1 = iVar1 + 0x14;
-    } while (iVar2 < 6);
-    sub_020180F8(param_1 + 0x214, param_2);
-    memset(param_1, 0, 0x230);
-    return;
+    for (v0 = 0; v0 < 6; v0++) {
+        sub_020180F8(&param0->unk_198[v0], param1);
+    }
+
+    sub_020180F8(&param0->unk_214, param1);
+
+    memset(param0, 0, sizeof(UnkStruct_ov91_022600FC));
 }
 #pragma force_active reset

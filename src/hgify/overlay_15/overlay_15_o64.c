@@ -7,26 +7,29 @@
 #include "msgdata.h"
 #include "roamer.h"
 #include "unk_02005D10.h"
-typedef struct BagApp {
-    u8 pad0[0x2f0];
-    void *msgData;
-    u8 pad1[0x680 - 0x2f4];
-    u16 state;
-} BagApp;
-void *BagApp_GetSaveRoamers(BagApp *);
-void BagApp_GetRepelStepCountAddr(BagApp *, u8);
-void BagApp_TryUseRepel(BagApp *param_1, u16 param_2);
-// FUNCTION BagApp_TryUseRepel: matching C (agent2)
+
+typedef struct UnkStruct_BagApp_TryUseRepel {
+    u8 unk_00[0x2F0];
+    MsgData *bagStringsLoader;
+    u8 unk_2F4[0x680 - 0x2F4];
+    u16 selectedItemCount;
+} UnkStruct_BagApp_TryUseRepel;
+
+RoamerSaveData *BagApp_GetSaveRoamers(UnkStruct_BagApp_TryUseRepel *controller);
+void BagApp_GetRepelStepCountAddr(UnkStruct_BagApp_TryUseRepel *controller, u8 steps);
+
+// FUNCTION BagApp_TryUseRepel: matching C (twin)
 #pragma force_active on
-void BagApp_TryUseRepel(BagApp *param_1, u16 param_2) {
-    if (!RoamerSave_RepelNotInUse(BagApp_GetSaveRoamers(param_1))) {
-        param_1->state = 0;
-        NewString_ReadMsgData(param_1->msgData, 63);
+void BagApp_TryUseRepel(UnkStruct_BagApp_TryUseRepel *controller, u16 item) {
+    if (RoamerSave_RepelNotInUse(BagApp_GetSaveRoamers(controller)) == FALSE) {
+        controller->selectedItemCount = 0;
+        NewString_ReadMsgData(controller->bagStringsLoader, 63);
         return;
     }
-    BagApp_GetRepelStepCountAddr(param_1, GetItemAttr(param_2, 2, 6));
-    param_1->state = 1;
-    PlaySE(1535);
-    NewString_ReadMsgData(param_1->msgData, 62);
+
+    BagApp_GetRepelStepCountAddr(controller, GetItemAttr(item, 2, 6));
+    controller->selectedItemCount = 1;
+    PlaySE(SEQ_SE_DP_CARD2);
+    NewString_ReadMsgData(controller->bagStringsLoader, 62);
 }
 #pragma force_active reset

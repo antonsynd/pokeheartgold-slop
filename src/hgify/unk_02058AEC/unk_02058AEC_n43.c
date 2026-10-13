@@ -76,30 +76,7 @@ void sub_0205A1AC(struct UnkStruct_02059E1C *param0);
 void sub_0205A1D4(struct UnkStruct_02059E1C *param0);
 FieldSystem *sub_0205A1F0(struct UnkStruct_02059E1C *param0);
 void *sub_0205A1F4(struct UnkStruct_02059E1C *param0, int param1);
-struct UnkStruct_02059E1C *sub_02059E1C(FieldSystem *fieldSystem);
-struct UnkStruct_02059E1C *sub_02059E1C(FieldSystem *fieldSystem);
-void sub_02059E88(struct UnkStruct_02059E1C *param0);
-void sub_02059E88(struct UnkStruct_02059E1C *param0);
-void sub_02059EBC(struct UnkStruct_02059E1C *param0);
-void sub_02059EBC(struct UnkStruct_02059E1C *param0);
-void sub_02059F30(struct UnkStruct_02059E1C *param0);
-void sub_02059F30(struct UnkStruct_02059E1C *param0);
-int sub_02059F54(void);
-int sub_02059F54(void);
-void sub_02059F78(struct UnkStruct_02059E1C *param0);
-void sub_02059F78(struct UnkStruct_02059E1C *param0);
-void sub_02059FF8(struct UnkStruct_02059E1C *param0);
-void sub_02059FF8(struct UnkStruct_02059E1C *param0);
-void sub_0205A034(struct UnkStruct_02059E1C *param0, UnkFuncPtr_02059E1C param1, int param2);
-void sub_0205A034(struct UnkStruct_02059E1C *param0, UnkFuncPtr_02059E1C param1, int param2);
-void sub_0205A03C(SysTask *param0, void *param1);
-void sub_0205A03C(SysTask *param0, void *param1);
-void sub_0205A07C(struct UnkStruct_02059E1C *param0);
-void sub_0205A07C(struct UnkStruct_02059E1C *param0);
-void sub_0205A0A0(struct UnkStruct_02059E1C *param0);
-void sub_0205A0A0(struct UnkStruct_02059E1C *param0);
-void sub_0205A0B4(struct UnkStruct_02059E1C *param0);
-// FUNCTION sub_0205A0B4: matching C (r0)
+// FUNCTION sub_0205A0B4: matching C (twin)
 #pragma force_active on
 void sub_0205A0B4(struct UnkStruct_02059E1C *param0) {
     if (sub_02037F94() == 1) {
@@ -125,15 +102,3 @@ void sub_0205A0B4(struct UnkStruct_02059E1C *param0) {
     param0->unk44 = 0;
 }
 #pragma force_active reset
-void sub_0205A114(struct UnkStruct_02059E1C *param0);
-void sub_0205A114(struct UnkStruct_02059E1C *param0);
-void sub_0205A144(struct UnkStruct_02059E1C *param0);
-void sub_0205A144(struct UnkStruct_02059E1C *param0);
-void sub_0205A1AC(struct UnkStruct_02059E1C *param0);
-void sub_0205A1AC(struct UnkStruct_02059E1C *param0);
-void sub_0205A1D4(struct UnkStruct_02059E1C *param0);
-void sub_0205A1D4(struct UnkStruct_02059E1C *param0);
-FieldSystem *sub_0205A1F0(struct UnkStruct_02059E1C *param0);
-FieldSystem *sub_0205A1F0(struct UnkStruct_02059E1C *param0);
-void *sub_0205A1F4(struct UnkStruct_02059E1C *param0, int param1);
-void *sub_0205A1F4(struct UnkStruct_02059E1C *param0, int param1);

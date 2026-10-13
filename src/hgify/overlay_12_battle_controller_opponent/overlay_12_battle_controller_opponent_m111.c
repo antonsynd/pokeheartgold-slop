@@ -3,39 +3,46 @@
 #pragma thumb on
 #include "global.h"
 
-#include "ghidra_compat.h"
+#include "constants/heap.h"
+
+#include "battle/battle.h"
+
 #include "heap.h"
 #include "sys_task_api.h"
-typedef void code(void);
-typedef struct S {
-    void *unk0;
-    unsigned char unk4;
-    unsigned char unk5;
-    unsigned char unk6;
-    unsigned char unk7;
-    unsigned char unk8[6];
-    unsigned char unkE;
-    unsigned char unkF;
-} S;
-void ov12_02260BA0(SysTask *, void *);
-// FUNCTION ov12_0225B120: matching C (agent1)
-#pragma force_active on
-void *ov12_0225B120(void *param_1, unsigned char *param_2, unsigned char *param_3) {
-    S *p;
-    int i;
 
-    p = Heap_Alloc(5, 0x10);
-    p->unk7 = 0;
-    p->unk0 = param_1;
-    p->unk4 = param_3[0];
-    p->unk5 = param_2[0x194];
-    p->unk6 = param_2[0x195];
-    i = 0;
-    do {
-        p->unk8[i] = param_3[2 + i];
-        i++;
-    } while (i < 6);
-    p->unkE = 1;
-    return SysTask_CreateOnMainQueue(ov12_02260BA0, p, 0);
+typedef struct UnkStruct_ov12_0225B120Input {
+    u8 command;
+    u8 padding_01;
+    u8 status[6];
+} UnkStruct_ov12_0225B120Input;
+
+typedef struct UnkStruct_ov12_0225B120 {
+    BattleSystem *battleSys;
+    u8 command;
+    u8 battler;
+    u8 battlerType;
+    u8 state;
+    u8 status[6];
+    u8 midBattle;
+} UnkStruct_ov12_0225B120;
+
+void ov12_02260BA0(SysTask *, void *);
+// FUNCTION ov12_0225B120: matching C (twin)
+#pragma force_active on
+SysTask *ov12_0225B120(BattleSystem *battleSystem, OpponentData *opponentData, UnkStruct_ov12_0225B120Input *partyGauge) {
+    UnkStruct_ov12_0225B120 *task = Heap_Alloc(HEAP_ID_BATTLE, sizeof(UnkStruct_ov12_0225B120));
+
+    task->state = 0;
+    task->battleSys = battleSystem;
+    task->command = partyGauge->command;
+    task->battler = opponentData->unk194;
+    task->battlerType = opponentData->battlerType;
+
+    for (int i = 0; i < 6; i++) {
+        task->status[i] = partyGauge->status[i];
+    }
+
+    task->midBattle = TRUE;
+    return SysTask_CreateOnMainQueue(ov12_02260BA0, task, 0);
 }
 #pragma force_active reset

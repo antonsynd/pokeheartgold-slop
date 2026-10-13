@@ -5,40 +5,35 @@
 
 #include "frontier/overlay_80_0222BDF4.h"
 
-#include "error_handling.h"
-#include "ghidra_compat.h"
+#include "assert.h"
 #include "heap.h"
-typedef int code();
-undefined4 ov80_02239BF0();
-void ov80_0222CAD0(undefined4 *param_1, undefined4 param_2, int param_3);
-// FUNCTION ov80_0222CAD0: matching C (r2)
+
+typedef struct UnkStruct_ov80_0222CAD0 {
+    void *frontier;
+    u8 unk_04[0x30];
+    enum HeapID heapID;
+} UnkStruct_ov80_0222CAD0;
+
+void ov80_02239BF0(void *frontier, u32 a1, int a2, const s16 *a3, int count);
+
+// FUNCTION ov80_0222CAD0: matching C (twin)
 #pragma force_active on
-void ov80_0222CAD0(undefined4 *param_1, undefined4 param_2, int param_3)
+void ov80_0222CAD0(FrontierScriptContext *ctx, int param1, int param2) {
+    UnkStruct_ov80_0222CAD0 *v0 = (UnkStruct_ov80_0222CAD0 *)ctx->frontierSystem;
+    s16 *v1;
+    u32 v2;
+    int v3;
 
-{
-    undefined2 uVar1;
-    undefined2 *puVar2;
-    undefined4 uVar3;
-    int iVar4;
-    undefined2 *puVar5;
-    undefined4 *puVar6;
+    GF_ASSERT(param2 <= 7);
 
-    puVar6 = (undefined4 *)*param_1;
-    if (7 < param_3) {
-        GF_AssertFail();
+    v1 = Heap_Alloc(v0->heapID, sizeof(s16) * param2);
+    v2 = FrontierScript_ReadVar(ctx);
+
+    for (v3 = 0; v3 < 3; v3++) {
+        v1[v3] = FrontierScript_ReadVar(ctx);
     }
-    puVar2 = (undefined2 *)Heap_Alloc(puVar6[0xd], param_3 << 1);
-    uVar3 = FrontierScript_ReadVar((struct FrontierScriptContext *)param_1);
-    iVar4 = 0;
-    puVar5 = puVar2;
-    do {
-        uVar1 = FrontierScript_ReadVar((struct FrontierScriptContext *)param_1);
-        *puVar5 = uVar1;
-        iVar4 = iVar4 + 1;
-        puVar5 = puVar5 + 1;
-    } while (iVar4 < 3);
-    ov80_02239BF0(*puVar6, uVar3, 1, puVar2, 3);
-    Heap_Free(puVar2);
-    return;
+
+    ov80_02239BF0(v0->frontier, v2, 1, v1, 3);
+    Heap_Free(v1);
 }
 #pragma force_active reset

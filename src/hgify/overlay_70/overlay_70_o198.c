@@ -4,24 +4,28 @@
 #include "global.h"
 
 #include "bg_window.h"
-#include "ghidra_compat.h"
 #include "msgdata.h"
 #include "render_window.h"
 #include "text.h"
-typedef int code();
-void ov70_0223CAC4(int param_1, undefined4 param_2, undefined4 param_3);
-// FUNCTION ov70_0223CAC4: matching C (r2)
+
+typedef struct UnkStruct_ov70_0223CAC4 {
+    u8 pad_000[0xBA0];
+    MsgData *gtsMessageLoader;
+    u8 pad_BA4[0xBBC - 0xBA4];
+    String *genericMessageBuffer;
+    u8 pad_BC0[0xBF0 - 0xBC0];
+    u32 textPrinter;
+    u8 pad_BF4[0xF18 - 0xBF4];
+    Window bottomInstructionWindow;
+} UnkStruct_ov70_0223CAC4;
+
+void ov70_0223CAC4(UnkStruct_ov70_0223CAC4 *appState, int entryID, int renderDelay);
+// FUNCTION ov70_0223CAC4: matching C (twin)
 #pragma force_active on
-void ov70_0223CAC4(int param_1, undefined4 param_2, undefined4 param_3)
-
-{
-    undefined4 uVar1;
-
-    ReadMsgDataIntoString(*(undefined4 *)(param_1 + 0xba0), param_2, *(undefined4 *)(param_1 + 0xbbc));
-    FillWindowPixelBuffer(param_1 + 0xf18, 0xf);
-    DrawFrameAndWindow2(param_1 + 0xf18, 0, 1, 0xe);
-    uVar1 = AddTextPrinterParameterized(param_1 + 0xf18, 1, *(undefined4 *)(param_1 + 0xbbc), 0, 0, param_3, 0);
-    *(undefined4 *)(param_1 + 0xbf0) = uVar1;
-    return;
+void ov70_0223CAC4(UnkStruct_ov70_0223CAC4 *appState, int entryID, int renderDelay) {
+    ReadMsgDataIntoString(appState->gtsMessageLoader, entryID, appState->genericMessageBuffer);
+    FillWindowPixelBuffer(&appState->bottomInstructionWindow, 0xf);
+    DrawFrameAndWindow2(&appState->bottomInstructionWindow, 0, 1, 0xe);
+    appState->textPrinter = AddTextPrinterParameterized(&appState->bottomInstructionWindow, 1, appState->genericMessageBuffer, 0, 0, renderDelay, NULL);
 }
 #pragma force_active reset

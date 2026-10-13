@@ -4,30 +4,16 @@
 #include "global.h"
 
 #include "bg_window.h"
-#include "ghidra_compat.h"
-typedef int code();
-undefined4 sub_0200E448();
-void DrawFrameAndWindow1(undefined4 *param_1, int param_2, undefined4 param_3, undefined4 param_4);
-// FUNCTION DrawFrameAndWindow1: matching C (r2)
+
+void sub_0200E448(BgConfig *bgConfig, u8 bgLayer, u8 x, u8 y, u8 width, u8 height, u8 palette, u16 tile);
+void DrawFrameAndWindow1(Window *window, u8 skipTransfer, u16 tile, u8 palette);
+// FUNCTION DrawFrameAndWindow1: matching C (twin)
 #pragma force_active on
-void DrawFrameAndWindow1(undefined4 *param_1, int param_2, undefined4 param_3, undefined4 param_4)
+void DrawFrameAndWindow1(Window *window, u8 skipTransfer, u16 tile, u8 palette) {
+    sub_0200E448(window->bgConfig, GetWindowBgId(window), GetWindowX(window), GetWindowY(window), GetWindowWidth(window), GetWindowHeight(window), palette, tile);
 
-{
-    undefined4 uVar1;
-    undefined4 uVar2;
-    undefined4 uVar3;
-    undefined4 uVar4;
-    undefined4 uVar5;
-
-    uVar1 = GetWindowBgId((struct Window *)param_1);
-    uVar2 = GetWindowX((struct Window *)param_1);
-    uVar3 = GetWindowY((struct Window *)param_1);
-    uVar4 = GetWindowWidth((struct Window *)param_1);
-    uVar5 = GetWindowHeight((struct Window *)param_1);
-    sub_0200E448(*param_1, uVar1, uVar2, uVar3, uVar4, uVar5, param_4, param_3);
-    if (param_2 == 0) {
-        CopyWindowToVram((struct Window *)param_1);
+    if (skipTransfer == FALSE) {
+        CopyWindowToVram(window);
     }
-    return;
 }
 #pragma force_active reset

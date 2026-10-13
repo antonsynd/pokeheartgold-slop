@@ -61,17 +61,12 @@ void ov49_0225B070(UnkStruct_ov49_0225AC_List *param0);
 void ov49_0225B124(UnkStruct_ov49_0225AC_Win *param0);
 void ov49_0225B24C(UnkStruct_ov49_0225AC_Win *param0, const String *param1);
 void ov49_0225B148(Window *param0, const String *param1, u32 param2, u32 param3);
-void ov49_0225B148(Window *param0, const String *param1, u32 param2, u32 param3);
-BOOL ov49_0225AC5C(const UnkStruct_ov49_0225AC_Text *param0);
 BOOL ov49_0225AC5C(const UnkStruct_ov49_0225AC_Text *param0);
 void ov49_0225AC74(UnkStruct_ov49_0225AC_Text *param0);
-void ov49_0225AC74(UnkStruct_ov49_0225AC_Text *param0);
 void ov49_0225ACA8(UnkStruct_ov49_0225AC_Text *param0, void *param1, void *saveData, u32 heapID);
-void ov49_0225ACA8(UnkStruct_ov49_0225AC_Text *param0, void *param1, void *saveData, u32 heapID);
-void ov49_0225ACBC(UnkStruct_ov49_0225AC_Text *param0);
 void ov49_0225ACBC(UnkStruct_ov49_0225AC_Text *param0);
 void ov49_0225ACC4(UnkStruct_ov49_0225AC_Text *param0, const String *param1);
-// FUNCTION ov49_0225ACC4: matching C (r2)
+// FUNCTION ov49_0225ACC4: matching C (twin)
 #pragma force_active on
 void ov49_0225ACC4(UnkStruct_ov49_0225AC_Text *param0, const String *param1) {
     if (TextPrinterCheckActive((u8)param0->printerId)) {
@@ -86,50 +81,3 @@ void ov49_0225ACC4(UnkStruct_ov49_0225AC_Text *param0, const String *param1) {
     DrawFrameAndWindow3(&param0->window, 1, 1 + (18 + 12), 2, 3);
 }
 #pragma force_active reset
-void ov49_0225AD20(UnkStruct_ov49_0225AC_List *param0, UnkStruct_ov49_0225AC_Gfx *param1, u32 heapID);
-void ov49_0225AD20(UnkStruct_ov49_0225AC_List *param0, UnkStruct_ov49_0225AC_Gfx *param1, u32 heapID);
-void ov49_0225AE4C(UnkStruct_ov49_0225AC_List *param0, UnkStruct_ov49_0225AC_Gfx *param1);
-void ov49_0225AE4C(UnkStruct_ov49_0225AC_List *param0, UnkStruct_ov49_0225AC_Gfx *param1);
-void ov49_0225AEA8(UnkStruct_ov49_0225AC_List *param0, u32 param1, u32 heapID, u32 param3);
-void ov49_0225AEE0(UnkStruct_ov49_0225AC_List *param0);
-void ov49_0225AEE0(UnkStruct_ov49_0225AC_List *param0);
-void ov49_0225AEF8(UnkStruct_ov49_0225AC_List *param0, const String *param1, u32 param2);
-void ov49_0225AEF8(UnkStruct_ov49_0225AC_List *param0, const String *param1, u32 param2);
-ListMenuItem *ov49_0225AF04(const UnkStruct_ov49_0225AC_List *param0);
-ListMenuItem *ov49_0225AF04(const UnkStruct_ov49_0225AC_List *param0);
-BOOL ov49_0225AF08(const UnkStruct_ov49_0225AC_List *param0, u32 param1);
-BOOL ov49_0225AF08(const UnkStruct_ov49_0225AC_List *param0, u32 param1);
-void ov49_0225B058(struct ListMenu *list, s32 index, u8 onInit);
-void ov49_0225B058(struct ListMenu *list, s32 index, u8 onInit);
-void ov49_0225AF30(UnkStruct_ov49_0225AC_List *param0, const ListMenuTemplate *param1, UnkStruct_ov49_0225AC_Gfx *param2, u16 param3, u16 param4, u32 heapID, u8 param6, u8 param7, u8 param8);
-void ov49_0225AF30(UnkStruct_ov49_0225AC_List *param0, const ListMenuTemplate *param1, UnkStruct_ov49_0225AC_Gfx *param2, u16 param3, u16 param4, u32 heapID, u8 param6, u8 param7, u8 param8);
-u32 ov49_0225AFD8(UnkStruct_ov49_0225AC_List *param0);
-u32 ov49_0225AFD8(UnkStruct_ov49_0225AC_List *param0);
-void ov49_0225B014(UnkStruct_ov49_0225AC_List *param0, u16 *param1, u16 *param2);
-void ov49_0225B014(UnkStruct_ov49_0225AC_List *param0, u16 *param1, u16 *param2);
-void ov49_0225B06C(UnkStruct_ov49_0225AC_List *param0, BOOL param1);
-void ov49_0225B06C(UnkStruct_ov49_0225AC_List *param0, BOOL param1);
-void ov49_0225B070(UnkStruct_ov49_0225AC_List *param0);
-void ov49_0225B070(UnkStruct_ov49_0225AC_List *param0);
-void ov49_0225B0D4(UnkStruct_ov49_0225AC_Win *param0, void *param1, u32 heapID);
-void ov49_0225B0D4(UnkStruct_ov49_0225AC_Win *param0, void *param1, u32 heapID);
-void ov49_0225B0D8(UnkStruct_ov49_0225AC_Win *param0);
-void ov49_0225B0D8(UnkStruct_ov49_0225AC_Win *param0);
-void ov49_0225B0E0(UnkStruct_ov49_0225AC_Win *param0, UnkStruct_ov49_0225AC_Gfx *param1, u32 param2, u8 param3, u8 param4, u8 param5, u8 param6);
-void ov49_0225B0E0(UnkStruct_ov49_0225AC_Win *param0, UnkStruct_ov49_0225AC_Gfx *param1, u32 param2, u8 param3, u8 param4, u8 param5, u8 param6);
-void ov49_0225B124(UnkStruct_ov49_0225AC_Win *param0);
-void ov49_0225B124(UnkStruct_ov49_0225AC_Win *param0);
-void ov49_0225B178(UnkStruct_ov49_0225AC_Win *param0, u16 param1, u16 param2, u16 param3, u16 param4);
-void ov49_0225B178(UnkStruct_ov49_0225AC_Win *param0, u16 param1, u16 param2, u16 param3, u16 param4);
-void ov49_0225B198(UnkStruct_ov49_0225AC_Menu *param0, void *param1, u32 heapID);
-void ov49_0225B198(UnkStruct_ov49_0225AC_Menu *param0, void *param1, u32 heapID);
-void ov49_0225B200(UnkStruct_ov49_0225AC_Menu *param0);
-void ov49_0225B200(UnkStruct_ov49_0225AC_Menu *param0);
-void ov49_0225B214(UnkStruct_ov49_0225AC_Win *param0, UnkStruct_ov49_0225AC_Gfx *param1, u32 heapID);
-void ov49_0225B214(UnkStruct_ov49_0225AC_Win *param0, UnkStruct_ov49_0225AC_Gfx *param1, u32 heapID);
-void ov49_0225B244(UnkStruct_ov49_0225AC_Win *param0);
-void ov49_0225B244(UnkStruct_ov49_0225AC_Win *param0);
-void ov49_0225B24C(UnkStruct_ov49_0225AC_Win *param0, const String *param1);
-void ov49_0225B24C(UnkStruct_ov49_0225AC_Win *param0, const String *param1);
-void ov49_0225B284(UnkStruct_ov49_0225AC_Win *param0, void *param1);
-void ov49_0225B284(UnkStruct_ov49_0225AC_Win *param0, void *param1);

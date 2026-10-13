@@ -4,25 +4,29 @@
 #include "global.h"
 
 #include "bg_window.h"
-#include "ghidra_compat.h"
 #include "msgdata.h"
 #include "pm_string.h"
 #include "render_window.h"
 #include "text.h"
-typedef int code();
-void ov93_0225D468(int param_1, undefined4 param_2, undefined4 param_3, undefined4 param_4);
-// FUNCTION ov93_0225D468: matching C (r3)
+
+typedef struct UnkStruct_ov93_0225D468 {
+    u8 unk_00[0x70];
+    Window unk_70;
+    MsgData *unk_80;
+} UnkStruct_ov93_0225D468;
+
+void ov93_0225D468(UnkStruct_ov93_0225D468 *param0);
+// FUNCTION ov93_0225D468: matching C (twin)
 #pragma force_active on
-void ov93_0225D468(int param_1, undefined4 param_2, undefined4 param_3, undefined4 param_4)
+void ov93_0225D468(UnkStruct_ov93_0225D468 *param0) {
+    String *v0;
 
-{
-    undefined4 uVar1;
+    DrawFrameAndWindow1(&param0->unk_70, 1, 0x350, 6);
 
-    DrawFrameAndWindow1(param_1 + 0x70, 1, 0x350, 6);
-    uVar1 = NewString_ReadMsgData(*(undefined4 *)(param_1 + 0x80), 3);
-    AddTextPrinterParameterizedWithColor(param_1 + 0x70, 0, uVar1, 0, 0, 0, 0x1020f, 0);
-    String_Delete(uVar1);
-    ScheduleWindowCopyToVram(param_1 + 0x70);
-    return;
+    v0 = NewString_ReadMsgData(param0->unk_80, 3);
+    AddTextPrinterParameterizedWithColor(&param0->unk_70, 0, v0, 0, 0, TEXT_SPEED_INSTANT, 0x1020F, NULL);
+    String_Delete(v0);
+
+    ScheduleWindowCopyToVram(&param0->unk_70);
 }
 #pragma force_active reset

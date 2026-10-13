@@ -4,6 +4,7 @@
 #include "global.h"
 
 #include "gf_gfx_loader.h"
+
 typedef struct {
     u8 unk_00[0x08];
     u8 unk_08[0x08];
@@ -14,25 +15,23 @@ typedef struct {
     u32 unk_50[4];
     u32 unk_60[4];
 } Ov91State;
+
 u32 _u32_div_f(u32 num, u32 den);
 u32 ov90_022588CC(void *sub, int idx);
 u32 ov90_022588A4(void *sub, int idx);
-// FUNCTION ov91_0225CBE4: matching C (agent8)
-#pragma force_active on
-void ov91_0225CBE4(Ov91State *param_1, u32 param_2) {
-    u32 uVar1;
-    u32 uStack_18;
-    int i;
 
-    uVar1 = GfGfxLoader_LoadFromNarc_GetSizeOut(0xd4, 0, 0, param_2, 0, &uStack_18);
-    param_1->unk_4c = uVar1;
-    uVar1 = _u32_div_f(uStack_18, 0x18);
-    param_1->unk_48 = uVar1;
-    for (i = 0; i < param_1->count; i++) {
-        uVar1 = ov90_022588CC(&param_1->unk_08, i);
-        param_1->unk_50[i] = uVar1;
-        uVar1 = ov90_022588A4(&param_1->unk_08, i);
-        param_1->unk_60[i] = uVar1;
+// FUNCTION ov91_0225CBE4: matching C (twin)
+#pragma force_active on
+void ov91_0225CBE4(Ov91State *param0, u32 param1) {
+    u32 v0;
+    int v1;
+
+    param0->unk_4c = GfGfxLoader_LoadFromNarc_GetSizeOut(0xd4, 0, 0, param1, 0, &v0);
+    param0->unk_48 = _u32_div_f(v0, 0x18);
+
+    for (v1 = 0; v1 < param0->count; v1++) {
+        param0->unk_50[v1] = ov90_022588CC(&param0->unk_08, v1);
+        param0->unk_60[v1] = ov90_022588A4(&param0->unk_08, v1);
     }
 }
 #pragma force_active reset

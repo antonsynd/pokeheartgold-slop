@@ -5,31 +5,46 @@
 
 #include "battle/battle_system.h"
 
-#include "ghidra_compat.h"
 #include "heap.h"
 #include "sys_task_api.h"
-typedef void code(void);
-undefined4 ov12_02261390();
-extern void ov12_022605D0(struct SysTask *task, void *env);
-void ov12_0225AD44(undefined4 param_1, int param_2, undefined1 *param_3);
-// FUNCTION ov12_0225AD44: matching C (agent8)
-#pragma force_active on
-void ov12_0225AD44(undefined4 param_1, int param_2, undefined1 *param_3) {
-    undefined1 uVar1;
-    undefined4 uVar2;
-    undefined4 *puVar3;
-    unsigned char uVar4;
-    undefined1 auStack_3c[36];
 
-    ov12_02261390(param_1, param_2, param_3, auStack_3c);
-    uVar2 = BattleSystem_GetMessageLoader(param_1);
-    puVar3 = (undefined4 *)Heap_Alloc(5, 8);
-    *puVar3 = param_1;
-    *(undefined1 *)(puVar3 + 1) = *param_3;
-    *(undefined1 *)((int)puVar3 + 5) = *(undefined1 *)(param_2 + 0x194);
-    uVar4 = BattleSystem_GetTextFrameDelay(param_1);
-    uVar1 = BattleSystem_PrintBattleMessage(param_1, uVar2, (struct BattleMessage *)auStack_3c, uVar4);
-    *(undefined1 *)((int)puVar3 + 6) = uVar1;
-    SysTask_CreateOnMainQueue(ov12_022605D0, puVar3, 0);
+typedef struct {
+    u8 unk_00[0x194];
+    u8 battler;
+} UnkStruct_ov12_0225AD44;
+
+typedef struct {
+    u8 command;
+} UnkStruct_ov12_0225AD44_message;
+
+typedef struct {
+    BattleSystem *battleSys;
+    u8 command;
+    u8 battler;
+    u8 msgIdx;
+} BattleMessageWaitTask;
+
+extern void ov12_02261390(BattleSystem *battleSys, UnkStruct_ov12_0225AD44 *battlerData, UnkStruct_ov12_0225AD44_message *message, BattleMessage *battleMsg);
+extern void ov12_022605D0(SysTask *task, void *data);
+// FUNCTION ov12_0225AD44: matching C (twin)
+#pragma force_active on
+void ov12_0225AD44(BattleSystem *battleSys, UnkStruct_ov12_0225AD44 *battlerData, UnkStruct_ov12_0225AD44_message *message) {
+    BattleMessageWaitTask *waitTask;
+    MsgData *msgLoader;
+    BattleMessage battleMsg;
+    u8 textFrameDelay;
+
+    ov12_02261390(battleSys, battlerData, message, &battleMsg);
+
+    msgLoader = BattleSystem_GetMessageLoader(battleSys);
+    waitTask = (BattleMessageWaitTask *)Heap_Alloc(5, sizeof(BattleMessageWaitTask));
+
+    waitTask->battleSys = battleSys;
+    waitTask->command = message->command;
+    waitTask->battler = battlerData->battler;
+    textFrameDelay = BattleSystem_GetTextFrameDelay(battleSys);
+    waitTask->msgIdx = BattleSystem_PrintBattleMessage(battleSys, msgLoader, &battleMsg, textFrameDelay);
+
+    SysTask_CreateOnMainQueue(ov12_022605D0, waitTask, 0);
 }
 #pragma force_active reset

@@ -3,26 +3,30 @@
 #pragma thumb on
 #include "global.h"
 
-#include "ghidra_compat.h"
 #include "unk_02005D10.h"
-typedef int code();
-undefined4 ov70_02238D84();
-undefined4 ov70_0223CAC4();
-undefined4 ov70_0223C19C(int param_1, undefined4 param_2, undefined4 param_3, undefined4 param_4);
-// FUNCTION ov70_0223C19C: matching C (agent8)
-#pragma force_active on
-undefined4 ov70_0223C19C(int param_1, undefined4 param_2, undefined4 param_3, undefined4 param_4)
 
-{
-    if (*(int *)(param_1 + 0x128) == 0) {
-        ov70_0223CAC4(param_1, 0xe, 1, 0, 0xf0f);
-        ov70_02238D84(param_1, 0x15, 1);
-        PlaySE(0x5f3);
+typedef struct UnkStruct_ov70_0223C19C {
+    u8 unk_00[0x128];
+    int searchResultCount;
+    u8 unk_12C[0x11C0 - 0x12C];
+    int frameDelay;
+} UnkStruct_ov70_0223C19C;
+
+void ov70_0223CAC4(UnkStruct_ov70_0223C19C *appState, u32 textID, u32 textSpeed, u32 x, u32 color);
+void ov70_02238D84(UnkStruct_ov70_0223C19C *appState, u32 current, u32 next);
+// FUNCTION ov70_0223C19C: matching C (twin)
+#pragma force_active on
+int ov70_0223C19C(UnkStruct_ov70_0223C19C *appState) {
+    if (appState->searchResultCount == 0) {
+        ov70_0223CAC4(appState, 14, 1, 0, 0xf0f);
+        ov70_02238D84(appState, 0x15, 1);
+        PlaySE(0x5F3);
     } else {
-        ov70_0223CAC4(param_1, 0x1e, 1, 0, 0xf0f);
-        ov70_02238D84(param_1, 0x15, 0x13);
-        *(undefined4 *)(param_1 + 0x11c0) = 0;
+        ov70_0223CAC4(appState, 30, 1, 0, 0xf0f);
+        ov70_02238D84(appState, 0x15, 0x13);
+        appState->frameDelay = 0;
     }
+
     return 3;
 }
 #pragma force_active reset

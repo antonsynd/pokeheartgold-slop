@@ -8,19 +8,18 @@
 // clang-format on
 extern void ov57_02237EA8(void *rect);
 extern void ov57_02237E90(void *rect, u8 x, u8 y);
-void ov57_02237EB8(void *rect, ManagedSprite *sprite, BOOL touchingSprite);
-// FUNCTION ov57_02237EB8: matching C (agent12)
+
+// FUNCTION ov57_02237EB8: matching C (twin)
 #pragma force_active on
 void ov57_02237EB8(void *rect, ManagedSprite *sprite, BOOL touchingSprite) {
-    s16 x;
-    s16 y;
+    s16 x, y;
 
     if (sprite == NULL) {
         return;
     }
 
     if (touchingSprite == 1) {
-        ManagedSprite_SetPositionXY(sprite, (s16)gSystem.touchX, (s16)gSystem.touchY);
+        ManagedSprite_SetPositionXY(sprite, gSystem.touchX, gSystem.touchY);
         ManagedSprite_GetPositionXY(sprite, &x, &y);
         ov57_02237EA8(rect);
     } else {

@@ -3,31 +3,36 @@
 #pragma thumb on
 #include "global.h"
 
-#include "ghidra_compat.h"
 #include "map_object.h"
 #include "unk_0205FD20.h"
-typedef int code();
-undefined4 sub_0206101C();
-undefined4 sub_02062FEC(undefined4 param_1, int param_2);
-// FUNCTION sub_02062FEC: matching C (r2)
+
+typedef struct UnkStruct_sub_02062FEC {
+    s16 dir;
+    u8 pad_02[2];
+    s16 duration;
+    s16 timer;
+} UnkStruct_sub_02062FEC;
+
+void sub_0206101C(LocalMapObject *object, int dir, fx32 stepSize);
+
+// FUNCTION sub_02062FEC: matching C (twin)
 #pragma force_active on
-undefined4 sub_02062FEC(undefined4 param_1, int param_2)
+BOOL sub_02062FEC(LocalMapObject *mapObj, const fx32 *stepSizes) {
+    UnkStruct_sub_02062FEC *data = (UnkStruct_sub_02062FEC *)sub_0205F3E4(mapObj);
 
-{
-    short *psVar1;
+    sub_0206101C(mapObj, data->dir, stepSizes[data->timer]);
+    sub_02061070(mapObj);
 
-    psVar1 = (short *)sub_0205F3E4((struct LocalMapObject *)param_1);
-    sub_0206101C(param_1, (int)*psVar1, *(undefined4 *)(param_2 + psVar1[3] * 4));
-    sub_02061070(param_1);
-    psVar1[3] = psVar1[3] + 1;
-    if (psVar1[3] < psVar1[2]) {
-        return 0;
+    if (++(data->timer) < data->duration) {
+        return FALSE;
     }
-    MapObject_SetFlagsBits(param_1, 0x28);
-    sub_02060F78(param_1);
-    sub_0205F484(param_1);
-    sub_0205F328(param_1, 0);
-    MapObject_IncrementMovementStep(param_1);
-    return 1;
+
+    MapObject_SetFlagsBits(mapObj, 0x28);
+    sub_02060F78(mapObj);
+    sub_0205F484(mapObj);
+    sub_0205F328(mapObj, 0);
+    MapObject_IncrementMovementStep(mapObj);
+
+    return TRUE;
 }
 #pragma force_active reset

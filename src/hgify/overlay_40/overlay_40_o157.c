@@ -3,29 +3,34 @@
 #pragma thumb on
 #include "global.h"
 
-#include "ghidra_compat.h"
 #include "sprite_system.h"
 #include "unk_02013534.h"
-typedef int code();
-undefined4 ov40_0222D800();
-undefined4 ov40_0222D66C();
-undefined4 ov40_0222D5AC();
-void ov40_02230970(int param_1, int param_2, undefined4 param_3, undefined4 param_4, short param_5, short param_6, short param_7, short param_8, undefined4 param_9, undefined4 param_10);
-// FUNCTION ov40_02230970: matching C (r4)
+
+typedef struct UnkStruct_ov40_02230970_Owner {
+    u8 unk_00[0x14];
+    int unk_14;
+} UnkStruct_ov40_02230970_Owner;
+
+typedef struct UnkStruct_ov40_02230970 {
+    u8 unk_00[4];
+    ManagedSprite *unk_04;
+    TextOBJ *unk_08;
+} UnkStruct_ov40_02230970;
+
+ManagedSprite *ov40_0222D800(UnkStruct_ov40_02230970_Owner *param0, int param1);
+void ov40_0222D5AC(UnkStruct_ov40_02230970 *param0, void *param1, int param2);
+void ov40_0222D66C(UnkStruct_ov40_02230970 *param0, void *param1, int param2);
+void ov40_02230970(UnkStruct_ov40_02230970_Owner *param0, UnkStruct_ov40_02230970 *param1, int param2, int param3, s16 param4, s16 param5, s16 param6, s16 param7, int param8, BOOL param9);
+// FUNCTION ov40_02230970: matching C (twin)
 #pragma force_active on
-void ov40_02230970(int param_1, int param_2, undefined4 param_3, undefined4 param_4, short param_5, short param_6, short param_7, short param_8, undefined4 param_9, undefined4 param_10)
+void ov40_02230970(UnkStruct_ov40_02230970_Owner *param0, UnkStruct_ov40_02230970 *param1, int param2, int param3, s16 param4, s16 param5, s16 param6, s16 param7, int param8, BOOL param9) {
+    param1->unk_04 = ov40_0222D800(param0, param2);
 
-{
-    undefined4 uVar1;
-
-    uVar1 = ov40_0222D800(param_1, param_3);
-    *(undefined4 *)(param_2 + 4) = uVar1;
-    ov40_0222D5AC(param_2, param_1 + 0x14, param_3);
-    ov40_0222D66C(param_2, param_1 + 0x14, param_4);
-    ManagedSprite_SetPositionXY(*(undefined4 *)(param_2 + 4), (int)param_5, (int)param_6);
-    sub_020136B4(*(undefined4 *)(param_2 + 8), (int)param_7, (int)param_8);
-    TextOBJ_SetSpritesDrawFlag(*(undefined4 *)(param_2 + 8), param_10);
-    ManagedSprite_SetAnim(*(undefined4 *)(param_2 + 4), param_9);
-    return;
+    ov40_0222D5AC(param1, &param0->unk_14, param2);
+    ov40_0222D66C(param1, &param0->unk_14, param3);
+    ManagedSprite_SetPositionXY(param1->unk_04, param4, param5);
+    sub_020136B4(param1->unk_08, param6, param7);
+    TextOBJ_SetSpritesDrawFlag(param1->unk_08, param9);
+    ManagedSprite_SetAnim(param1->unk_04, param8);
 }
 #pragma force_active reset

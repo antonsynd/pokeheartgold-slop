@@ -5,22 +5,32 @@
 
 #include "bg_window.h"
 #include "error_handling.h"
-// FUNCTION ov90_0225A5BC: matching C (agent8)
+
+typedef struct UnkStruct_ov90_0225A5BC {
+    u8 unk_00[0x10];
+    int unk_10;
+} UnkStruct_ov90_0225A5BC;
+
+typedef struct UnkStruct_ov90_0225A5BC_Bg {
+    BgConfig *unk_00;
+} UnkStruct_ov90_0225A5BC_Bg;
+
+// FUNCTION ov90_0225A5BC: matching C (twin)
 #pragma force_active on
-void ov90_0225A5BC(int param_1, u32 *param_2, int param_3) {
-    switch (*(int *)(param_1 + 0x10)) {
+void ov90_0225A5BC(UnkStruct_ov90_0225A5BC *param0, UnkStruct_ov90_0225A5BC_Bg *param1, int param2) {
+    switch (param0->unk_10) {
     case 0:
     case 1:
-        BgSetPosTextAndCommit(*param_2, 0, 0, param_3);
-        BgSetPosTextAndCommit(*param_2, 1, 0, param_3);
-        return;
+        BgSetPosTextAndCommit(param1->unk_00, 0, 0, param2);
+        BgSetPosTextAndCommit(param1->unk_00, 1, 0, param2);
+        break;
     case 2:
-        BgSetPosTextAndCommit(*param_2, 0, 3, param_3);
-        BgSetPosTextAndCommit(*param_2, 1, 3, param_3);
-        return;
+        BgSetPosTextAndCommit(param1->unk_00, 0, 3, param2);
+        BgSetPosTextAndCommit(param1->unk_00, 1, 3, param2);
+        break;
     default:
         GF_AssertFail();
-        return;
+        break;
     }
 }
 #pragma force_active reset

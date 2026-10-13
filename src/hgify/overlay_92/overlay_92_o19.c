@@ -3,47 +3,43 @@
 #pragma thumb on
 #include "global.h"
 
-#include "ghidra_compat.h"
 #include "heap.h"
 #include "overlay_manager.h"
 #include "unk_02034354.h"
 #include "unk_02035900.h"
 #include "unk_020379A0.h"
 #include "unk_02037C94.h"
-typedef int code();
-undefined4 ov92_0225D8E4();
-int ov92_0225D36C(undefined *param_1, undefined *param_2);
-// FUNCTION ov92_0225D36C: matching C (agent8)
+
+u32 ov92_0225D8E4(void *data);
+
+// FUNCTION ov92_0225D36C: matching C (twin)
 #pragma force_active on
-int ov92_0225D36C(undefined *param_1, undefined *param_2)
+int ov92_0225D36C(OverlayManager *appMan, int *param1) {
+    switch (*param1) {
+    case 0: {
+        u32 v0;
+        void *v1 = OverlayManager_GetData(appMan);
 
-{
-    int iVar1;
-    int iVar2;
+        v0 = ov92_0225D8E4(v1);
 
-    if (*(int *)param_2 == 0) {
-        OverlayManager_GetData((OverlayManager *)param_1);
-        iVar1 = ov92_0225D8E4();
-        OverlayManager_FreeData((OverlayManager *)param_1);
-        Heap_Destroy(0x71);
+        OverlayManager_FreeData(appMan);
+        Heap_Destroy(HEAP_ID_113);
         sub_020398D4(0, 1);
-        if (iVar1 != 0) {
+
+        if (v0 != 0) {
             return 1;
         }
+
         sub_02037AC0(0xe7);
-        *(int *)param_2 = *(int *)param_2 + 1;
-        goto done;
-    }
-    iVar1 = sub_02037B38(0xe7);
-    if (iVar1 != 1) {
-        iVar1 = sub_02037454();
-        iVar2 = sub_020347A0();
-        if (iVar1 >= iVar2) {
-            goto done;
+        (*param1)++;
+    } break;
+    default:
+        if ((sub_02037B38(0xe7) == 1) || (sub_02037454() < sub_020347A0())) {
+            return 1;
         }
+        break;
     }
-    return 1;
-done:
+
     return 0;
 }
 #pragma force_active reset

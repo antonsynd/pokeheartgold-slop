@@ -4,29 +4,26 @@
 #include "global.h"
 
 #include "font.h"
-#include "ghidra_compat.h"
 #include "message_format.h"
 #include "msgdata.h"
 #include "pm_string.h"
-typedef void code(void);
-void ov90_02259184(undefined4 *param_1, undefined4 param_2, undefined4 param_3, undefined4 param_4);
-// FUNCTION ov90_02259184: matching C (r3)
+
+typedef struct UnkStruct_ov90_02259184 {
+    MsgData *unk_00;
+    MessageFormat *unk_04;
+    String *unk_08;
+    String *unk_0C;
+} UnkStruct_ov90_02259184;
+
+// FUNCTION ov90_02259184: matching C (twin)
 #pragma force_active on
-void ov90_02259184(undefined4 *param_1, undefined4 param_2, undefined4 param_3, undefined4 param_4)
+void ov90_02259184(UnkStruct_ov90_02259184 *param0, u32 heapID) {
+    param0->unk_00 = NewMsgDataFromNarc(0, 0x1b, 0xec, heapID);
+    param0->unk_04 = MessageFormat_New_Custom(8, 0x40, heapID);
+    param0->unk_08 = String_New(0x80, heapID);
+    param0->unk_0C = String_New(0x80, heapID);
 
-{
-    undefined4 uVar1;
-
-    uVar1 = NewMsgDataFromNarc(0, 0x1b, 0xec, param_2);
-    *param_1 = uVar1;
-    uVar1 = MessageFormat_New_Custom(8, 0x40, param_2);
-    param_1[1] = uVar1;
-    uVar1 = String_New(0x80, param_2);
-    param_1[2] = uVar1;
-    uVar1 = String_New(0x80, param_2);
-    param_1[3] = uVar1;
-    LoadFontPal1(0, 0x180, param_2);
-    LoadFontPal1(4, 0x180, param_2);
-    return;
+    LoadFontPal1(0, 0x180, heapID);
+    LoadFontPal1(4, 0x180, heapID);
 }
 #pragma force_active reset

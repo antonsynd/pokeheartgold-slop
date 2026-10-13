@@ -3,38 +3,40 @@
 #pragma thumb on
 #include "global.h"
 
-#include "ghidra_compat.h"
-typedef void code(void);
-typedef struct S {
+#include "map_object.h"
+
+typedef struct UnkStruct_ov01_021F9BD4 {
     u8 pad[0xF8];
     void *unk_F8;
-} S;
-int ov01_021FA1DC(S *);
-int *ov01_021FA200(S *);
-int ov01_021FA20C(S *);
-int ov01_021FA214(S *);
+} UnkStruct_ov01_021F9BD4;
+
+int ov01_021FA1DC(UnkStruct_ov01_021F9BD4 *);
+int *ov01_021FA200(UnkStruct_ov01_021F9BD4 *);
+int ov01_021FA20C(UnkStruct_ov01_021F9BD4 *);
+int ov01_021FA214(UnkStruct_ov01_021F9BD4 *);
 int ov01_021FA01C(void *, int, int);
 void ov01_021FC588(void *, int);
-// FUNCTION ov01_021F9BD4: matching C (agent3)
+// FUNCTION ov01_021F9BD4: matching C (twin)
 #pragma force_active on
-void ov01_021F9BD4(void *param_1, S *param_2) {
-    int iVar1;
-    int iVar2;
-    int *piVar3;
-    int *base;
+void ov01_021F9BD4(MapObjectManager *param0, UnkStruct_ov01_021F9BD4 *param1) {
+    int v0;
+    int *v1;
 
-    ov01_021FA1DC(param_2);
-    base = ov01_021FA200(param_2);
-    iVar2 = ov01_021FA20C(param_2);
-    piVar3 = base + iVar2;
-    iVar1 = ov01_021FA214(param_2);
+    ov01_021FA1DC(param1);
+    v1 = ov01_021FA200(param1);
+    v1 = &v1[ov01_021FA20C(param1)];
+    v0 = ov01_021FA214(param1);
+
     do {
-        if ((*piVar3 != 0xff) && (iVar2 = ov01_021FA01C(param_1, *piVar3, 0), iVar2 == 0)) {
-            ov01_021FC588(param_2->unk_F8, *piVar3);
-            *piVar3 = 0xff;
+        if ((*v1) != 0xff) {
+            if (ov01_021FA01C(param0, *v1, 0) == 0) {
+                ov01_021FC588(param1->unk_F8, *v1);
+                *v1 = 0xff;
+            }
         }
-        piVar3 = piVar3 + 1;
-        iVar1 = iVar1 + -1;
-    } while (iVar1 != 0);
+
+        v1++;
+        v0--;
+    } while (v0);
 }
 #pragma force_active reset

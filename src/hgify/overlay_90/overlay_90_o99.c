@@ -5,22 +5,28 @@
 
 #include "bg_window.h"
 #include "error_handling.h"
-// FUNCTION ov90_0225A60C: matching C (agent8)
+
+typedef struct UnkStruct_ov90_0225A60C {
+    u8 pad_00[0x10];
+    s32 unk_10;
+} UnkStruct_ov90_0225A60C;
+
+// FUNCTION ov90_0225A60C: matching C (twin)
 #pragma force_active on
-void ov90_0225A60C(int param_1, u32 *param_2, u32 param_3) {
-    switch (*(int *)(param_1 + 0x10)) {
+void ov90_0225A60C(UnkStruct_ov90_0225A60C *param0, u32 *param1, s32 param2) {
+    switch (param0->unk_10) {
     case 0:
     case 1:
-        ScheduleSetBgPosText(*param_2, 0, 0, param_3);
-        ScheduleSetBgPosText(*param_2, 1, 0, param_3);
-        return;
+        ScheduleSetBgPosText(*param1, 0, 0, param2);
+        ScheduleSetBgPosText(*param1, 1, 0, param2);
+        break;
     case 2:
-        ScheduleSetBgPosText(*param_2, 0, 3, param_3);
-        ScheduleSetBgPosText(*param_2, 1, 3, param_3);
-        return;
+        ScheduleSetBgPosText(*param1, 0, 3, param2);
+        ScheduleSetBgPosText(*param1, 1, 3, param2);
+        break;
     default:
         GF_AssertFail();
-        return;
+        break;
     }
 }
 #pragma force_active reset

@@ -10,22 +10,36 @@
 #include "sys_task_api.h"
 extern void ov12_02261928(int, int, unsigned char *);
 extern void ov12_022605D0(SysTask *, void *);
-// FUNCTION ov12_0225B2A4: matching C (agent12)
-#pragma force_active on
-void ov12_0225B2A4(int param_1, int param_2) {
-    unsigned char auStack_38[36];
-    int uVar2;
-    int *puVar3;
-    unsigned char uVar1;
 
-    ov12_02261928(param_1, param_2, auStack_38);
-    uVar2 = BattleSystem_GetMessageLoader(param_1);
-    puVar3 = (int *)Heap_Alloc(5, 8);
-    *puVar3 = param_1;
-    *(unsigned char *)(puVar3 + 1) = 0x3b;
-    *(unsigned char *)((int)puVar3 + 5) = *(unsigned char *)(param_2 + 0x194);
-    uVar1 = BattleSystem_PrintBattleMessage(param_1, uVar2, (BattleMessage *)auStack_38, BattleSystem_GetTextFrameDelay(param_1));
-    *(unsigned char *)((int)puVar3 + 6) = uVar1;
-    SysTask_CreateOnMainQueue(ov12_022605D0, puVar3, 0);
+typedef struct UnkStruct_ov12_0225B2A4 {
+    u8 unk_000[0x194];
+    u8 battler;
+} UnkStruct_ov12_0225B2A4;
+
+typedef struct UnkStruct_ov12_0225B2A4_WaitTask {
+    BattleSystem *battleSys;
+    u8 command;
+    u8 battler;
+    u8 msgIdx;
+} UnkStruct_ov12_0225B2A4_WaitTask;
+
+// FUNCTION ov12_0225B2A4: matching C (twin)
+#pragma force_active on
+void ov12_0225B2A4(BattleSystem *battleSys, UnkStruct_ov12_0225B2A4 *battlerData) {
+    BattleMessage battleMsg;
+    MsgData *msgLoader;
+    UnkStruct_ov12_0225B2A4_WaitTask *waitTask;
+
+    ov12_02261928(battleSys, battlerData, (unsigned char *)&battleMsg);
+
+    msgLoader = BattleSystem_GetMessageLoader(battleSys);
+    waitTask = (UnkStruct_ov12_0225B2A4_WaitTask *)Heap_Alloc(HEAP_ID_BATTLE, sizeof(UnkStruct_ov12_0225B2A4_WaitTask));
+
+    waitTask->battleSys = battleSys;
+    waitTask->command = 0x3b;
+    waitTask->battler = battlerData->battler;
+    waitTask->msgIdx = BattleSystem_PrintBattleMessage(battleSys, msgLoader, &battleMsg, BattleSystem_GetTextFrameDelay(battleSys));
+
+    SysTask_CreateOnMainQueue(ov12_022605D0, waitTask, 0);
 }
 #pragma force_active reset

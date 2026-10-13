@@ -3,29 +3,33 @@
 #pragma thumb on
 #include "global.h"
 
-#include "ghidra_compat.h"
 #include "heap.h"
 #include "pokemon_icon_idx.h"
-typedef int code();
-undefined4 ov70_0223E094();
-void ov70_0223E0BC(undefined4 param_1, undefined4 param_2, undefined4 param_3, int param_4, int param_5, undefined4 param_6, int *param_7);
-// FUNCTION ov70_0223E0BC: matching C (r2)
+#include "sprite.h"
+
+typedef struct UnkStruct_ov70_0223E0BC {
+    int tileData;
+    int paletteIndex;
+    Sprite *sprite;
+    u8 vramOffset[0x200];
+} UnkStruct_ov70_0223E0BC;
+
+void *ov70_0223E094(NARC *narc, u32 naix, NNSG2dCharacterData **charData, u32 heapID);
+
+// FUNCTION ov70_0223E0BC: matching C (twin)
 #pragma force_active on
-void ov70_0223E0BC(undefined4 param_1, undefined4 param_2, undefined4 param_3, int param_4, int param_5, undefined4 param_6, int *param_7)
+void ov70_0223E0BC(int species, int form, int isEgg, int iconIndex, Sprite *sprite, NARC *narc, UnkStruct_ov70_0223E0BC *monIcon) {
+    u8 *rawData;
+    NNSG2dCharacterData *charData;
 
-{
-    undefined4 uVar1;
-    int iVar2;
-    int iStack_18;
+    rawData = ov70_0223E094(narc, GetMonIconNaixEx(species, isEgg, form), &charData, 0x3d);
 
-    uVar1 = GetMonIconNaixEx(param_1, param_3, param_2);
-    uVar1 = ov70_0223E094(param_6, uVar1, &iStack_18, 0x3d);
-    MIi_CpuCopyFast(*(undefined4 *)(iStack_18 + 0x14), param_7 + 3, 0x200);
-    *param_7 = (param_4 * 0x10 + 0xc) * 0x20;
-    param_7[2] = param_5;
-    iVar2 = GetMonIconPaletteEx(param_1, param_2, param_3);
-    param_7[1] = iVar2 + 3;
-    Heap_Free(uVar1);
-    return;
+    MIi_CpuCopyFast(charData->pRawData, monIcon->vramOffset, (4 * 4) * 0x20);
+
+    monIcon->tileData = (12 + iconIndex * (4 * 4)) * 0x20;
+    monIcon->sprite = sprite;
+    monIcon->paletteIndex = GetMonIconPaletteEx(species, form, isEgg) + 3;
+
+    Heap_Free(rawData);
 }
 #pragma force_active reset

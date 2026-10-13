@@ -3,36 +3,42 @@
 #pragma thumb on
 #include "global.h"
 
-#include "ghidra_compat.h"
 #include "text.h"
 #include "unk_02035900.h"
-typedef int code();
-undefined4 ov85_021EA17C();
-undefined4 ov85_021EA0EC();
-undefined4 ov85_021E943C();
-undefined4 ov85_021EA39C();
-undefined4 ov85_021E9B40(int param_1, undefined4 param_2);
-// FUNCTION ov85_021E9B40: matching C (r2)
+
+typedef struct UnkStruct_ov85_021E9B40 {
+    u8 unk_00[0x5C];
+    int textPrinterID;
+    u8 unk_60[0x354 - 0x60];
+    int unk_354;
+    u8 unk_358[0x4A54 - 0x358];
+    int unk_4A54;
+    int unk_4A58;
+} UnkStruct_ov85_021E9B40;
+
+BOOL ov85_021EA17C(int printerID);
+void ov85_021EA0EC(UnkStruct_ov85_021E9B40 *param0, int param1, int param2);
+void ov85_021EA39C(UnkStruct_ov85_021E9B40 *param0, int param1);
+void ov85_021E943C(UnkStruct_ov85_021E9B40 *param0);
+// FUNCTION ov85_021E9B40: matching C (twin)
 #pragma force_active on
-undefined4 ov85_021E9B40(int param_1, undefined4 param_2)
-
-{
-    int iVar1;
-    undefined4 uVar2;
-
-    if ((*(int *)(param_1 + 0x5c) != 0xff) && (iVar1 = ov85_021EA17C(), iVar1 == 0)) {
-        RemoveTextPrinter(*(uint *)(param_1 + 0x5c) & 0xff);
+int ov85_021E9B40(UnkStruct_ov85_021E9B40 *param0, int param1) {
+    if ((param0->textPrinterID != 0xff) && (ov85_021EA17C(param0->textPrinterID) == 0)) {
+        RemoveTextPrinter(param0->textPrinterID);
     }
-    ov85_021EA0EC(param_1, 0xf, 1);
-    *(undefined4 *)(param_1 + 0x354) = 0x14;
-    iVar1 = sub_0203769C();
-    if (iVar1 == 0) {
-        ov85_021EA39C(param_1, 0);
+
+    ov85_021EA0EC(param0, 15, 1);
+    param0->unk_354 = 20;
+
+    if (sub_0203769C() == 0) {
+        ov85_021EA39C(param0, 0);
     }
-    uVar2 = sub_02037454();
-    *(undefined4 *)(param_1 + 0x4a58) = uVar2;
-    *(undefined4 *)(param_1 + 0x4a54) = 300;
-    ov85_021E943C(param_1);
-    return param_2;
+
+    param0->unk_4A58 = sub_02037454();
+    param0->unk_4A54 = (10 * 30);
+
+    ov85_021E943C(param0);
+
+    return param1;
 }
 #pragma force_active reset

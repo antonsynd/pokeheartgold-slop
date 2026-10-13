@@ -3,29 +3,48 @@
 #pragma thumb on
 #include "global.h"
 
-#include "ghidra_compat.h"
 #include "touch_hitbox_controller.h"
-typedef int code();
-undefined4 ov40_0222FA88();
-undefined4 ov40_0222EFD8();
-undefined4 sub_020878EC();
-undefined4 ov40_0222F5EC();
-undefined4 ov40_02238358(int param_1);
-// FUNCTION ov40_02238358: matching C (r2)
+
+typedef struct UnkStruct_ov40_02238358_Inner {
+    u8 unk_000[0x330];
+    TouchHitboxController *unk_330[4];
+    u8 unk_340[0x2E0C - 0x340];
+    u8 unk_2E0C[0x2F64 - 0x2E0C];
+    int unk_2F64;
+} UnkStruct_ov40_02238358_Inner;
+
+typedef struct UnkStruct_ov40_02238358 {
+    u8 unk_000[0x47C];
+    u8 unk_47C[0x10];
+    s16 unk_48C;
+    u8 unk_48E[0x49C - 0x48E];
+    u8 unk_49C[0x4D8 - 0x49C];
+    int unk_4D8;
+    u8 unk_4DC[0x6F0 - 0x4DC];
+    void *unk_6F0;
+    u8 unk_6F4[0x860 - 0x6F4];
+    UnkStruct_ov40_02238358_Inner *unk_860;
+} UnkStruct_ov40_02238358;
+
+void ov40_0222FA88(void *param0);
+void ov40_0222F5EC(void *param0, int param1);
+void ov40_0222EFD8(void *param0, void *param1, void *param2);
+void sub_020878EC(void *param0, int param1, s16 param2);
+
+// FUNCTION ov40_02238358: matching C (twin)
 #pragma force_active on
-undefined4 ov40_02238358(int param_1)
+int ov40_02238358(UnkStruct_ov40_02238358 *param0) {
+    UnkStruct_ov40_02238358_Inner *v0 = param0->unk_860;
 
-{
-    int iVar1;
-
-    iVar1 = *(int *)(param_1 + 0x860);
-    if (*(int *)(iVar1 + 0x2f64) == 0) {
-        ov40_0222FA88(param_1 + 0x47c);
-        ov40_0222F5EC(param_1 + 0x49c, (int)*(short *)(param_1 + 0x48c));
-        ov40_0222EFD8(param_1 + 0x49c, param_1, iVar1 + 0x2e0c);
-        sub_020878EC(*(undefined4 *)(param_1 + 0x6f0), 0x10, (*(int *)(param_1 + 0x4d8) * 0x18 + 0x44) * 0x10000 >> 0x10);
+    if (v0->unk_2F64 == 0) {
+        ov40_0222FA88(&param0->unk_47C);
+        ov40_0222F5EC(&param0->unk_49C, param0->unk_48C);
+        ov40_0222EFD8(&param0->unk_49C, param0, &v0->unk_2E0C);
+        sub_020878EC(param0->unk_6F0, 0x10, param0->unk_4D8 * 0x18 + 0x44);
     }
-    TouchHitboxController_IsTriggered(*(undefined4 *)(iVar1 + 0x33c));
+
+    TouchHitboxController_IsTriggered(v0->unk_330[3]);
+
     return 0;
 }
 #pragma force_active reset

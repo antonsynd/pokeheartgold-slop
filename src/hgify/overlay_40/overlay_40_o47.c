@@ -4,28 +4,37 @@
 #include "global.h"
 
 #include "bg_window.h"
-#include "ghidra_compat.h"
 #include "msgdata.h"
 #include "pm_string.h"
 #include "text.h"
 #include "unk_02013534.h"
-typedef int code();
-void ov40_0222D66C(int param_1, int param_2, undefined4 param_3);
-// FUNCTION ov40_0222D66C: matching C (r2)
+
+typedef struct UnkStruct_ov40_0222D66C {
+    u8 unk_00[8];
+    TextOBJ *unk_08;
+    UnkStruct_02013910 *unk_0C;
+} UnkStruct_ov40_0222D66C;
+
+typedef struct UnkStruct_ov40_0222D66C_Param {
+    u8 unk_00[0x10];
+    BgConfig *unk_10;
+    u8 unk_14[0x34 - 0x14];
+    MsgData *unk_34;
+} UnkStruct_ov40_0222D66C_Param;
+
+// FUNCTION ov40_0222D66C: matching C (twin)
 #pragma force_active on
-void ov40_0222D66C(int param_1, int param_2, undefined4 param_3)
+void ov40_0222D66C(UnkStruct_ov40_0222D66C *param0, UnkStruct_ov40_0222D66C_Param *param1, u32 param2) {
+    String *v0;
+    Window v2;
 
-{
-    undefined4 uVar1;
-    undefined1 auStack_20[16];
+    v0 = NewString_ReadMsgData(param1->unk_34, param2);
 
-    uVar1 = NewString_ReadMsgData(*(undefined4 *)(param_2 + 0x34), param_3);
-    InitWindow((struct Window *)auStack_20);
-    AddTextWindowTopLeftCorner(*(undefined4 *)(param_2 + 0x10), (struct Window *)auStack_20, 0x14, 2, 0, 0);
-    AddTextPrinterParameterizedWithColor((struct Window *)auStack_20, 0, uVar1, 0, 0, 0xff, 0xe0d00, 0);
-    TextOBJ_CopyFromBGWindow(*(undefined4 *)(param_1 + 8), *(undefined4 *)(param_1 + 0xc), (struct Window *)auStack_20, 0x6d);
-    String_Delete(uVar1);
-    RemoveWindow((struct Window *)auStack_20);
-    return;
+    InitWindow(&v2);
+    AddTextWindowTopLeftCorner(param1->unk_10, &v2, 20, 2, 0, 0);
+    AddTextPrinterParameterizedWithColor(&v2, 0, v0, 0, 0, 0xFF, 0xE0D00, NULL);
+    TextOBJ_CopyFromBGWindow(param0->unk_08, param0->unk_0C, &v2, 0x6D);
+    String_Delete(v0);
+    RemoveWindow(&v2);
 }
 #pragma force_active reset

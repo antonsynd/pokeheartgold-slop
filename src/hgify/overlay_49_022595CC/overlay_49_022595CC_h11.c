@@ -2,6 +2,7 @@
 #pragma warning_errors off
 #pragma thumb on
 #include "global.h"
+
 typedef struct UnkStruct_ov49_02259A54 {
     u8 unk_00;
     u8 unk_01;
@@ -10,11 +11,11 @@ typedef struct UnkStruct_ov49_02259A54 {
     s16 unk_04;
     s16 unk_06;
 } UnkStruct_ov49_02259A54;
+
 extern void ov45_02230700(void *a, u32 b);
-int ov49_02259A54(UnkStruct_ov49_02259A54 *param0, void *param1);
-// FUNCTION ov49_02259A54: matching C (r0)
+// FUNCTION ov49_02259A54: matching C (twin)
 #pragma force_active on
-int ov49_02259A54(UnkStruct_ov49_02259A54 *param0, void *param1) {
+BOOL ov49_02259A54(UnkStruct_ov49_02259A54 *param0, void *param1) {
     if (param0->unk_00 == 0) {
         return 1;
     }

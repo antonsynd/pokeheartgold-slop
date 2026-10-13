@@ -3,38 +3,42 @@
 #pragma thumb on
 #include "global.h"
 
-#include "ghidra_compat.h"
 #include "text.h"
 #include "unk_02005D10.h"
 #include "unk_02035900.h"
-typedef int code();
-undefined4 ov37_021E7844();
-undefined4 ov37_021E762C();
-undefined4 ov37_021E68AC();
-undefined4 ov37_021E76A0();
-undefined4 ov37_021E76D0();
-undefined4 ov37_021E6EB4(int param_1, undefined4 param_2);
-// FUNCTION ov37_021E6EB4: matching C (r2)
+
+typedef struct UnkStruct_ov37_021E6EB4 {
+    u8 unk_00[0x30];
+    u32 unk_30;
+    u8 unk_34[0x937C];
+    u32 unk_93B0;
+} UnkStruct_ov37_021E6EB4;
+
+int ov37_021E6EB4(UnkStruct_ov37_021E6EB4 *param0, int param1);
+int ov37_021E76A0(u32 param0);
+void ov37_021E762C(UnkStruct_ov37_021E6EB4 *param0, int param1, int param2);
+void ov37_021E7844(UnkStruct_ov37_021E6EB4 *param0, int param1);
+void ov37_021E76D0(UnkStruct_ov37_021E6EB4 *param0, int param1);
+void ov37_021E68AC(UnkStruct_ov37_021E6EB4 *param0);
+
+// FUNCTION ov37_021E6EB4: matching C (twin)
 #pragma force_active on
-undefined4 ov37_021E6EB4(int param_1, undefined4 param_2)
-
-{
-    int iVar1;
-    undefined4 uVar2;
-
-    if ((*(int *)(param_1 + 0x30) != 0xff) && (iVar1 = ov37_021E76A0(), iVar1 == 0)) {
-        RemoveTextPrinter(*(uint *)(param_1 + 0x30) & 0xff);
+int ov37_021E6EB4(UnkStruct_ov37_021E6EB4 *param0, int param1) {
+    if ((param0->unk_30 != 0xff) && (ov37_021E76A0(param0->unk_30) == 0)) {
+        RemoveTextPrinter((u8)param0->unk_30);
     }
-    ov37_021E762C(param_1, 2, 1);
-    ov37_021E7844(param_1, 0x16);
-    PlaySE(0x5e4);
-    iVar1 = sub_0203769C();
-    if (iVar1 == 0) {
-        ov37_021E76D0(param_1, 0);
+
+    ov37_021E762C(param0, 2, 1);
+    ov37_021E7844(param0, 0x16);
+    PlaySE(0x5E4);
+
+    if (sub_0203769C() == 0) {
+        ov37_021E76D0(param0, 0);
     }
-    uVar2 = sub_02037454();
-    *(undefined4 *)(param_1 + 0x93b0) = uVar2;
-    ov37_021E68AC(param_1);
-    return param_2;
+
+    param0->unk_93B0 = sub_02037454();
+    ov37_021E68AC(param0);
+
+    return param1;
 }
 #pragma force_active reset

@@ -3,7 +3,6 @@
 #pragma thumb on
 #include "global.h"
 
-#include "ghidra_compat.h"
 #include "obj_char_transfer.h"
 #include "obj_pltt_transfer.h"
 #include "sprite.h"
@@ -11,35 +10,36 @@
 #include "unk_0200A090.h"
 #include "unk_0200B150.h"
 #include "vram_transfer_manager.h"
-typedef int code();
-void ov43_0222A81C(int param_1);
-// FUNCTION ov43_0222A81C: matching C (perm2)
+
+typedef struct UnkStruct_ov43_0222A81C {
+    u8 unk00[0x04];
+    SpriteList *unk_04;
+    u8 unk08[0xAC - 0x08];
+    void *unk_AC[4];
+    u8 unkBC[0x1E4 - 0xBC];
+    void *unk_1E4[4];
+} UnkStruct_ov43_0222A81C;
+
+// FUNCTION ov43_0222A81C: matching C (twin)
 #pragma force_active on
-void ov43_0222A81C(int param_1) {
-    int iVar1;
-    int iVar2;
-    iVar2 = param_1 + 0xac;
-    SpriteTransfer_DeleteCharTransferTask(*((undefined4 *)iVar2));
-    SpriteTransfer_DeletePlttTransferTask(*((undefined4 *)(param_1 + 0xb0)));
-    iVar1 = 0;
-    iVar2 = param_1;
-    do {
-        DestroySingle2DGfxResObj(*((undefined4 *)(iVar2 + 0x1e4)), *((undefined4 *)(iVar2 + 0xac)));
-        iVar1 = iVar1 + 1;
-        iVar2 = iVar2 + 4;
-    } while (iVar1 < 4);
-    iVar1 = 0;
-    iVar2 = param_1;
-    do {
-        Destroy2DGfxResObjMan(*((undefined4 *)(iVar2 + 0x1e4)));
-        iVar1 = iVar1 + 1;
-        iVar2 = 4 + iVar2;
-    } while (iVar1 < 4);
-    SpriteList_Delete(*((undefined4 *)(param_1 + 4)));
+void ov43_0222A81C(UnkStruct_ov43_0222A81C *param0) {
+    int v0;
+
+    SpriteTransfer_DeleteCharTransferTask(param0->unk_AC[0]);
+    SpriteTransfer_DeletePlttTransferTask(param0->unk_AC[1]);
+
+    for (v0 = 0; v0 < 4; v0++) {
+        DestroySingle2DGfxResObj(param0->unk_1E4[v0], param0->unk_AC[v0]);
+    }
+
+    for (v0 = 0; v0 < 4; v0++) {
+        Destroy2DGfxResObjMan(param0->unk_1E4[v0]);
+    }
+
+    SpriteList_Delete(param0->unk_04);
     ObjCharTransfer_Destroy();
     ObjPlttTransfer_Destroy();
     OamManager_Free();
     GF_DestroyVramTransferManager();
-    return;
 }
 #pragma force_active reset

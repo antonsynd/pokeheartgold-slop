@@ -5,28 +5,28 @@
 
 #include "bg_window.h"
 #include "gf_gfx_loader.h"
-#include "ghidra_compat.h"
-typedef int code();
-undefined4 ov47_0225999C();
-void ov47_02259C3C(int param_1, undefined4 param_2, undefined4 *param_3, undefined4 param_4);
-// FUNCTION ov47_02259C3C: matching C (r2)
+#include "text.h"
+
+typedef struct {
+    BgConfig *unk_00;
+    u8 unk_04[0x140 - 0x04];
+    NARC *unk_140;
+} UnkStruct_ov47_02259C3C;
+
+void ov47_0225999C(Window *windows, void *param1, int param2, u32 param3);
+void ov47_02259C3C(Window *param0, void *param1, UnkStruct_ov47_02259C3C *param2, enum HeapID param3);
+// FUNCTION ov47_02259C3C: matching C (twin)
 #pragma force_active on
-void ov47_02259C3C(int param_1, undefined4 param_2, undefined4 *param_3, undefined4 param_4)
+void ov47_02259C3C(Window *param0, void *param1, UnkStruct_ov47_02259C3C *param2, enum HeapID param3) {
+    int v0;
 
-{
-    int iVar1;
-    int iVar2;
+    GfGfxLoader_LoadScrnDataFromOpenNarc(param2->unk_140, 203, param2->unk_00, 0, 0, 0, 0, param3);
 
-    iVar1 = 0;
-    GfGfxLoader_LoadScrnDataFromOpenNarc(param_3[0x50], 0xcb, *param_3, 0, 0, 0, 0, param_4);
-    iVar2 = param_1;
-    do {
-        FillWindowPixelBuffer(iVar2, 0);
-        CopyWindowToVram(iVar2);
-        iVar1 = iVar1 + 1;
-        iVar2 = iVar2 + 0x10;
-    } while (iVar1 < 6);
-    ov47_0225999C(param_1, param_2, 0x77, 0x50600);
-    return;
+    for (v0 = 0; v0 < 6; v0++) {
+        FillWindowPixelBuffer(&param0[v0], 0);
+        CopyWindowToVram(&param0[v0]);
+    }
+
+    ov47_0225999C(param0, param1, 119, MAKE_TEXT_COLOR(5, 6, 0));
 }
 #pragma force_active reset

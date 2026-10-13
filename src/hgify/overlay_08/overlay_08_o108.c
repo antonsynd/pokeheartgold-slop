@@ -5,30 +5,39 @@
 
 #include "battle/battle_system.h"
 
-#include "ghidra_compat.h"
 #include "message_format.h"
 #include "msgdata.h"
 #include "pm_string.h"
 #include "pokemon.h"
-typedef void code(void);
-void ov08_0222057C(int *param_1);
-// FUNCTION ov08_0222057C: matching C (r2)
+
+typedef struct UnkStruct_ov08_0222057C_Context {
+    u8 unk_00[0x8];
+    BattleSystem *battleSys;
+    u8 unk_0C[0x5];
+    u8 selectedPartyIndex;
+    u8 unk_12[0x16];
+    int battler;
+    u8 pokemonPartySlots[6];
+} UnkStruct_ov08_0222057C_Context;
+
+typedef struct UnkStruct_ov08_0222057C {
+    UnkStruct_ov08_0222057C_Context *context;
+    u8 unk_04[0x1FA8 - 0x4];
+    MsgData *messageLoader;
+    MessageFormat *stringTemplate;
+    String *string;
+} UnkStruct_ov08_0222057C;
+
+// FUNCTION ov08_0222057C: matching C (twin)
 #pragma force_active on
-void ov08_0222057C(int *param_1)
+void ov08_0222057C(UnkStruct_ov08_0222057C *battleParty) {
+    UnkStruct_ov08_0222057C_Context *context = battleParty->context;
+    Pokemon *mon = BattleSystem_GetPartyMon(context->battleSys, context->battler, context->pokemonPartySlots[context->selectedPartyIndex]);
+    String *string = NewString_ReadMsgData(battleParty->messageLoader, 0x5F);
 
-{
-    undefined4 uVar1;
-    undefined4 uVar2;
-    int iVar3;
-
-    iVar3 = *param_1;
-    uVar1 = BattleSystem_GetPartyMon(*(undefined4 *)(iVar3 + 8), *(undefined4 *)(iVar3 + 0x28), *(undefined1 *)(iVar3 + (uint) * (byte *)(iVar3 + 0x11) + 0x2c));
-    uVar2 = NewString_ReadMsgData(param_1[0x7ea], 0x5f);
-    uVar1 = Mon_GetBoxMon(uVar1);
-    BufferBoxMonNickname(param_1[0x7eb], 0, uVar1);
-    BufferMoveName(param_1[0x7eb], 1, 0x175);
-    StringExpandPlaceholders(param_1[0x7eb], param_1[0x7ec], uVar2);
-    String_Delete(uVar2);
-    return;
+    BufferBoxMonNickname(battleParty->stringTemplate, 0, Mon_GetBoxMon(mon));
+    BufferMoveName(battleParty->stringTemplate, 1, MOVE_EMBARGO);
+    StringExpandPlaceholders(battleParty->stringTemplate, battleParty->string, string);
+    String_Delete(string);
 }
 #pragma force_active reset

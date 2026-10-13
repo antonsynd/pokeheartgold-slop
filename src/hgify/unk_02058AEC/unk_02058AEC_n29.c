@@ -2,50 +2,51 @@
 #pragma warning_errors off
 #include "global.h"
 
+#include "constants/heap.h"
+
 #include "field_system.h"
 #include "heap.h"
 #include "task.h"
 #include "unk_02035900.h"
-void sub_02059B64(void);
+
 #pragma thumb on
-#include "ghidra_compat.h"
-typedef int code();
-undefined4 sub_02057A88();
-undefined4 sub_02057B14();
-undefined4 sub_02057ADC();
-undefined4 sub_02057A34();
-void sub_02059D44(undefined *param_1);
-// FUNCTION sub_02059D44: matching C (r2)
+
+typedef struct UnkStruct_sub_02059D44 {
+    u8 unk_00[0x24];
+    int unk_24;
+    int unk_28;
+    u8 unk_2C[0x6A8 - 0x2C];
+} UnkStruct_sub_02059D44;
+
+BOOL sub_02059B64(TaskManager *taskman);
+int sub_02057ADC(u16 netId);
+int sub_02057B14(u16 netId);
+int sub_02057A34(int netId);
+int sub_02057A88(int netId);
+
+// FUNCTION sub_02059D44: matching C (twin)
 #pragma force_active on
-void sub_02059D44(undefined *param_1)
+void sub_02059D44(FieldSystem *fieldSystem) {
+    int v0;
+    u16 v1 = sub_0203769C();
+    int v2 = sub_02057ADC(v1);
+    int v3 = sub_02057B14(v1);
 
-{
-    ushort uVar1;
-    int iVar2;
-    int iVar3;
-    int iVar4;
-    undefined *puVar5;
-    uint uVar6;
+    for (v0 = 0; v0 < sub_02037454(); v0++) {
+        if (v0 == v1) {
+            continue;
+        }
 
-    uVar1 = sub_0203769C();
-    iVar2 = sub_02057ADC();
-    iVar3 = sub_02057B14((uint)uVar1);
-    uVar6 = 0;
-    iVar4 = sub_02037454();
-    if (0 < iVar4) {
-        do {
-            if (((uVar6 != uVar1) && (iVar4 = sub_02057A34(uVar6), iVar2 == iVar4)) && (iVar4 = sub_02057A88(uVar6), iVar3 == iVar4)) {
-                puVar5 = Heap_AllocAtEnd(0xb, 0x6a8);
-                *(uint *)(puVar5 + 0x24) = uVar6;
-                *(undefined4 *)(puVar5 + 0x28) = 0;
-                FieldSystem_CreateTask((FieldSystem *)param_1, (TaskFunc)sub_02059B64, puVar5);
-                sub_0203E2F4();
-                return;
-            }
-            uVar6 = uVar6 + 1;
-            iVar4 = sub_02037454();
-        } while ((int)uVar6 < iVar4);
+        if ((v2 == sub_02057A34(v0)) && (v3 == sub_02057A88(v0))) {
+            UnkStruct_sub_02059D44 *v4 = Heap_AllocAtEnd(HEAP_ID_FIELD2, sizeof(UnkStruct_sub_02059D44));
+
+            v4->unk_24 = v0;
+            v4->unk_28 = 0;
+
+            FieldSystem_CreateTask(fieldSystem, sub_02059B64, v4);
+            sub_0203E2F4();
+            break;
+        }
     }
-    return;
 }
 #pragma force_active reset

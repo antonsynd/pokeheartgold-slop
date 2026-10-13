@@ -3,33 +3,36 @@
 #pragma thumb on
 // clang-format off
 #include "global.h"
+#include "constants/sndseq.h"
 #include "unk_02005D10.h"
 #include "sprite.h"
 // clang-format on
 int ov65_0221DCFC(int slot, int direction, void *displayData);
 void ov65_0221DD34(int slot, Sprite *sprite, int side);
-int ov65_0221DDC0(int *directionFlag, int *slotIdx, Sprite *sprite, void *displayData, int side);
-// FUNCTION ov65_0221DDC0: matching C (r0)
+// FUNCTION ov65_0221DDC0: matching C (twin)
 #pragma force_active on
-int ov65_0221DDC0(int *directionFlag, int *slotIdx, Sprite *sprite, void *displayData, int side) {
+int ov65_0221DDC0(u32 *directionFlag, int *slotIdx, Sprite *sprite, void *displayData, int side) {
     int direction = *directionFlag - 1;
-    int moved = 0;
-    int target;
+    int targetSlot = 0;
+    int didMove = 0;
 
     if (side == 0) {
-        if (*directionFlag != 0) {
-            target = ov65_0221DCFC(*slotIdx, direction, displayData);
-            ov65_0221DD34(target, sprite, side);
-            if (*slotIdx != target) {
-                PlaySE(0x5DC);
-                *slotIdx = target;
-                moved = 1;
+        if (*directionFlag) {
+            targetSlot = ov65_0221DCFC(*slotIdx, direction, displayData);
+            ov65_0221DD34(targetSlot, sprite, side);
+
+            if (*slotIdx != targetSlot) {
+                PlaySE(SEQ_SE_DP_SELECT);
+                *slotIdx = targetSlot;
+                didMove = 1;
             }
         }
+
         *directionFlag = 0;
     } else {
         ov65_0221DD34(*slotIdx, sprite, side);
     }
-    return moved;
+
+    return didMove;
 }
 #pragma force_active reset

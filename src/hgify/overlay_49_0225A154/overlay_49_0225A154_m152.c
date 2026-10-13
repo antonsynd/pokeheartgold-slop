@@ -61,35 +61,19 @@ extern const TouchscreenHitbox ov49_022696F4;
 extern const WindowTemplate ov49_0226970C;
 extern const UnkStruct_ov49_Entry ov49_02269764[2];
 extern const UnkStruct_ov49_Entry ov49_022699AC[24];
-void ov49_0225C78C(UnkStruct_ov49_Sprites *sprites, UnkStruct_ov49_Gfx *gfx);
-void ov49_0225C78C(UnkStruct_ov49_Sprites *sprites, UnkStruct_ov49_Gfx *gfx);
-const UnkStruct_ov49_Entry *ov49_0225C828(int index, s32 a1, s32 a2, u32 altIndex);
-const UnkStruct_ov49_Entry *ov49_0225C828(int index, s32 a1, s32 a2, u32 altIndex);
-void ov49_0225C844(UnkStruct_ov49_Touch *touch, UnkStruct_ov49_Gfx *gfx, NARC *narc, enum HeapID heapID);
-// FUNCTION ov49_0225C844: matching C (r0)
+
+// FUNCTION ov49_0225C844: matching C (twin)
 #pragma force_active on
-void ov49_0225C844(UnkStruct_ov49_Touch *touch, UnkStruct_ov49_Gfx *gfx, NARC *narc, enum HeapID heapID) {
-    int i;
+void ov49_0225C844(UnkStruct_ov49_Touch *param0, UnkStruct_ov49_Gfx *param1, NARC *param2, enum HeapID heapID) {
+    int v0;
 
-    AddWindow(gfx->bgConfig, &touch->window, &ov49_0226970C);
+    AddWindow(param1->bgConfig, &param0->window, &ov49_0226970C);
 
-    for (i = 0; i < 3; i++) {
-        touch->scrnBuffers[i] = GfGfxLoader_GetScrnDataFromOpenNarc(narc, 56 + i, FALSE, &touch->scrnData[i], heapID);
+    for (v0 = 0; v0 < 3; v0++) {
+        param0->scrnBuffers[v0] = GfGfxLoader_GetScrnDataFromOpenNarc(param2, 56 + v0, FALSE, &param0->scrnData[v0], heapID);
     }
 
-    touch->hitboxController = TouchHitboxController_Create(&ov49_022696F4, 1, ov49_0225CB50, touch, heapID);
-    touch->unk6 = 1;
+    param0->hitboxController = TouchHitboxController_Create(&ov49_022696F4, 1, ov49_0225CB50, param0, heapID);
+    param0->unk6 = 1;
 }
 #pragma force_active reset
-void ov49_0225C8A8(UnkStruct_ov49_Touch *touch);
-void ov49_0225C8A8(UnkStruct_ov49_Touch *touch);
-BOOL ov49_0225C8D4(UnkStruct_ov49_Touch *touch, UnkStruct_ov49_Gfx *gfx, NARC *narc, enum HeapID heapID);
-BOOL ov49_0225C8D4(UnkStruct_ov49_Touch *touch, UnkStruct_ov49_Gfx *gfx, NARC *narc, enum HeapID heapID);
-void ov49_0225C970(UnkStruct_ov49_Touch *touch, UnkStruct_ov49_Gfx *gfx, void *msgSource, const void *profile, NARC *narc, enum HeapID heapID);
-void ov49_0225C970(UnkStruct_ov49_Touch *touch, UnkStruct_ov49_Gfx *gfx, void *msgSource, const void *profile, NARC *narc, enum HeapID heapID);
-void ov49_0225CA30(UnkStruct_ov49_Touch *touch, UnkStruct_ov49_Gfx *gfx, u32 index, NARC *narc, enum HeapID heapID);
-void ov49_0225CA30(UnkStruct_ov49_Touch *touch, UnkStruct_ov49_Gfx *gfx, u32 index, NARC *narc, enum HeapID heapID);
-void ov49_0225CAA8(UnkStruct_ov49_Touch *touch, UnkStruct_ov49_Gfx *gfx);
-void ov49_0225CAA8(UnkStruct_ov49_Touch *touch, UnkStruct_ov49_Gfx *gfx);
-void ov49_0225CAD4(UnkStruct_ov49_Touch *touch, UnkStruct_ov49_Gfx *gfx, u32 state, NARC *narc, enum HeapID heapID);
-void ov49_0225CAD4(UnkStruct_ov49_Touch *touch, UnkStruct_ov49_Gfx *gfx, u32 state, NARC *narc, enum HeapID heapID);
