@@ -3,32 +3,23 @@
 #pragma thumb on
 #include "global.h"
 
-#include "ghidra_compat.h"
-typedef int code();
-undefined4 ov74_0223514C();
-undefined4 CTRDG_IsAgbCartridge();
-undefined4 CTRDG_GetAgbMakerCode();
-undefined4 ov74_022351FC(void);
-// FUNCTION ov74_022351FC: matching C (r2)
+BOOL CTRDG_IsAgbCartridge(void);
+int CTRDG_GetAgbMakerCode(void);
+BOOL ov74_0223514C(void);
+BOOL ov74_022351FC(void);
+// FUNCTION ov74_022351FC: matching C (twin)
 #pragma force_active on
-undefined4 ov74_022351FC(void)
-
-{
-    int iVar1;
-
+BOOL ov74_022351FC(void) {
     CTRDG_Init();
-    iVar1 = CTRDG_IsAgbCartridge();
-    if (iVar1 == 0) {
-        return 0;
+    if (CTRDG_IsAgbCartridge() == FALSE) {
+        return FALSE;
     }
-    iVar1 = CTRDG_GetAgbMakerCode();
-    if (iVar1 != 0x3130) {
-        return 0;
+    if (CTRDG_GetAgbMakerCode() != 0x3130) {
+        return FALSE;
     }
-    iVar1 = ov74_0223514C();
-    if (iVar1 != 0) {
-        return 1;
+    if (ov74_0223514C() == FALSE) {
+        return FALSE;
     }
-    return 0;
+    return TRUE;
 }
 #pragma force_active reset

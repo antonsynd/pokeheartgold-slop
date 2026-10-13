@@ -3,21 +3,32 @@
 #pragma thumb on
 #include "global.h"
 
-#include "error_handling.h"
-#include "ghidra_compat.h"
-typedef int code();
-extern int _022577C0;
-void ov45_0222EC3C(int *param_1);
-// FUNCTION ov45_0222EC3C: matching C (r2)
-#pragma force_active on
-void ov45_0222EC3C(int *param_1)
+#include "assert.h"
 
-{
-    if (_022577C0 == 0) {
-        GF_AssertFail();
-    }
-    *param_1 = (int)*(short *)(_022577C0 + 0x124);
-    param_1[1] = *(int *)(_022577C0 + 0x128);
-    return;
+typedef struct UnkStruct_ov45_0222EC3C {
+    s32 unk_00;
+    s32 unk_04;
+} UnkStruct_ov45_0222EC3C;
+
+typedef struct UnkStruct_ov45_0222EC3C_Sub {
+    s16 unk_00;
+    u16 unk_02;
+    s32 unk_04;
+} UnkStruct_ov45_0222EC3C_Sub;
+
+typedef struct UnkStruct_ov45_0222EC3C_Global {
+    u8 unk_000[0x11C];
+    UnkStruct_ov45_0222EC3C_Sub unk_11C[2];
+} UnkStruct_ov45_0222EC3C_Global;
+
+extern UnkStruct_ov45_0222EC3C_Global *_022577C0;
+
+// FUNCTION ov45_0222EC3C: matching C (twin)
+#pragma force_active on
+void ov45_0222EC3C(UnkStruct_ov45_0222EC3C *param0) {
+    GF_ASSERT(_022577C0 != NULL);
+
+    param0->unk_00 = _022577C0->unk_11C[1].unk_00;
+    param0->unk_04 = _022577C0->unk_11C[1].unk_04;
 }
 #pragma force_active reset

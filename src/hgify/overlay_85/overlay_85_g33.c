@@ -3,32 +3,39 @@
 #pragma thumb on
 #include "global.h"
 
-#include "ghidra_compat.h"
+#include "constants/sndseq.h"
+
 #include "unk_02005D10.h"
 #include "unk_02035900.h"
-typedef int code();
-undefined4 ov85_021E7958();
-undefined4 ov85_021E84EC();
-undefined4 ov85_021E61C8(undefined4 *param_1);
-// FUNCTION ov85_021E61C8: matching C (r2)
+
+typedef struct UnkStruct_ov85_021E61C8_Sub {
+    u8 unk_00[0xC];
+    int unk_0C;
+} UnkStruct_ov85_021E61C8_Sub;
+
+typedef struct UnkStruct_ov85_021E61C8 {
+    int unk_00;
+    u8 unk_04[0x24];
+    UnkStruct_ov85_021E61C8_Sub *unk_28;
+} UnkStruct_ov85_021E61C8;
+
+void ov85_021E84EC(UnkStruct_ov85_021E61C8 *param0, BOOL param1);
+UnkStruct_ov85_021E61C8_Sub *ov85_021E7958(UnkStruct_ov85_021E61C8 *param0);
+
+// FUNCTION ov85_021E61C8: matching C (twin)
 #pragma force_active on
-undefined4 ov85_021E61C8(undefined4 *param_1)
+int ov85_021E61C8(UnkStruct_ov85_021E61C8 *param0) {
+    ov85_021E84EC(param0, 0);
 
-{
-    undefined4 uVar1;
-    int iVar2;
+    param0->unk_28 = ov85_021E7958(param0);
 
-    ov85_021E84EC(param_1, 0);
-    uVar1 = ov85_021E7958(param_1);
-    param_1[10] = uVar1;
-    iVar2 = sub_0203769C();
-    if (*(int *)(param_1[10] + 0xc) == iVar2) {
-        uVar1 = 0x1e;
+    if (param0->unk_28->unk_0C == sub_0203769C()) {
+        param0->unk_00 = 30;
     } else {
-        uVar1 = 0x1f;
+        param0->unk_00 = 31;
     }
-    *param_1 = uVar1;
-    PlaySE(0x5f1);
+
+    PlaySE(SEQ_SE_DP_PINPON);
     return 1;
 }
 #pragma force_active reset

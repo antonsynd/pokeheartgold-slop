@@ -4,19 +4,28 @@
 #include "global.h"
 
 #include "sprite.h"
-int ov102_021E8F7C(int param);
-// FUNCTION ov102_021EB98C: matching C (agent7)
+
+typedef struct UnkStruct_ov102_021EB98C {
+    u8 unk_00[0x4];
+    void *easyChatApp;
+    u8 unk_08[0x54];
+    Sprite *cursorSprite;
+} UnkStruct_ov102_021EB98C;
+
+int ov102_021E8F7C(void *param);
+
+// FUNCTION ov102_021EB98C: matching C (twin)
 #pragma force_active on
-void ov102_021EB98C(int param_1, int param_2) {
-    if (param_2 != 0) {
-        Sprite_SetDrawFlag(*(int *)(param_1 + 0x5c), 1);
-        if (ov102_021E8F7C(*(int *)(param_1 + 4)) == 0) {
-            Sprite_SetAnimCtrlSeq(*(int *)(param_1 + 0x5c), 4);
+void ov102_021EB98C(UnkStruct_ov102_021EB98C *ctx, BOOL param1) {
+    if (param1) {
+        Sprite_SetDrawFlag(ctx->cursorSprite, 1);
+        if (ov102_021E8F7C(ctx->easyChatApp) == 0) {
+            Sprite_SetAnimCtrlSeq(ctx->cursorSprite, 4);
         } else {
-            Sprite_SetAnimCtrlSeq(*(int *)(param_1 + 0x5c), 6);
+            Sprite_SetAnimCtrlSeq(ctx->cursorSprite, 6);
         }
     } else {
-        Sprite_SetDrawFlag(*(int *)(param_1 + 0x5c), 0);
+        Sprite_SetDrawFlag(ctx->cursorSprite, 0);
     }
 }
 #pragma force_active reset

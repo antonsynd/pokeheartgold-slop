@@ -3,33 +3,36 @@
 #pragma thumb on
 #include "global.h"
 
-#include "ghidra_compat.h"
 #include "obj_char_transfer.h"
 #include "obj_pltt_transfer.h"
 #include "sprite.h"
 #include "unk_0200A090.h"
 #include "unk_0200B150.h"
 #include "unk_02013534.h"
-typedef int code();
-void ov91_0225FB48(int param_1);
-// FUNCTION ov91_0225FB48: matching C (r2)
+
+typedef struct UnkStruct_ov91_0225FB48 {
+    u8 unk_00[0x1c];
+    SpriteList *unk_1C;
+    u8 unk_20[0x148 - 0x20];
+    GF_2DGfxResMan *unk_148[4];
+    u8 unk_158[0x18c - 0x158];
+    UnkStruct_02013534 *unk_18C;
+} UnkStruct_ov91_0225FB48;
+
+// FUNCTION ov91_0225FB48: matching C (twin)
 #pragma force_active on
-void ov91_0225FB48(int param_1)
+void ov91_0225FB48(UnkStruct_ov91_0225FB48 *param0) {
+    int v0;
 
-{
-    int iVar1;
+    sub_020135AC(param0->unk_18C);
+    SpriteList_Delete(param0->unk_1C);
 
-    sub_020135AC(*(undefined4 *)(param_1 + 0x18c));
-    SpriteList_Delete(*(undefined4 *)(param_1 + 0x1c));
-    iVar1 = 0;
-    do {
-        Destroy2DGfxResObjMan(*(undefined4 *)(param_1 + 0x148));
-        iVar1 = iVar1 + 1;
-        param_1 = param_1 + 4;
-    } while (iVar1 < 4);
+    for (v0 = 0; v0 < 4; v0++) {
+        Destroy2DGfxResObjMan(param0->unk_148[v0]);
+    }
+
     ObjCharTransfer_Destroy();
     ObjPlttTransfer_Destroy();
     OamManager_Free();
-    return;
 }
 #pragma force_active reset

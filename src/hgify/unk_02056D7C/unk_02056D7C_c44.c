@@ -3,24 +3,32 @@
 #pragma thumb on
 #include "global.h"
 
-#include "ghidra_compat.h"
+#include "field_system.h"
 #include "player_avatar.h"
 #include "unk_02035900.h"
-typedef int code();
-undefined4 sub_0205701C();
-extern int _021D41C4;
-void sub_02057F28(undefined4 param_1);
-// FUNCTION sub_02057F28: matching C (r2)
+
+typedef struct UnkStruct_sub_02057F28 {
+    u8 unk_00[0x30];
+    FieldSystem *fieldSystem;
+    u8 unk_34[0x78 - 0x34];
+    struct {
+        u8 dir;
+        u8 unk_01[7];
+    } playerLocation[2];
+} UnkStruct_sub_02057F28;
+
+extern UnkStruct_sub_02057F28 *_021D41C4;
+
+void sub_0205701C(int param0);
+
+// FUNCTION sub_02057F28: matching C (twin)
 #pragma force_active on
-void sub_02057F28(undefined4 param_1)
+void sub_02057F28(int dir) {
+    int netId;
 
-{
-    int iVar1;
-
-    PlayerAvatar_SetFacingDirection(*(undefined4 *)(*(int *)(_021D41C4 + 0x30) + 0x40), param_1);
-    iVar1 = sub_0203769C();
-    *(char *)(_021D41C4 + iVar1 * 8 + 0x78) = (char)param_1;
+    PlayerAvatar_SetFacingDirection(_021D41C4->fieldSystem->playerAvatar, dir);
+    netId = sub_0203769C();
+    _021D41C4->playerLocation[netId].dir = dir;
     sub_0205701C(0);
-    return;
 }
 #pragma force_active reset

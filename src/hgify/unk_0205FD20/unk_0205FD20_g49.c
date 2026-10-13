@@ -3,29 +3,19 @@
 #pragma thumb on
 #include "global.h"
 
-#include "ghidra_compat.h"
 #include "map_object.h"
 #include "unk_02054648.h"
 #include "unk_0205FD20.h"
-typedef int code();
-void sub_02060FA8(undefined4 param_1, undefined4 param_2);
-// FUNCTION sub_02060FA8: matching C (r2)
+
+// FUNCTION sub_02060FA8: matching C (twin)
 #pragma force_active on
-void sub_02060FA8(undefined4 param_1, undefined4 param_2)
+void sub_02060FA8(LocalMapObject *mapObj, int dir) {
+    int x = MapObject_GetXCoord(mapObj);
+    int dx = GetDeltaXByFacingDirection(dir);
+    int z = MapObject_GetZCoord(mapObj);
+    int dz = GetDeltaYByFacingDirection(dir);
+    FieldSystem *fieldSystem = MapObject_GetFieldSystem(mapObj);
 
-{
-    int iVar1;
-    int iVar2;
-    int iVar3;
-    int iVar4;
-    undefined4 uVar5;
-
-    iVar1 = MapObject_GetXCoord((LocalMapObject *)param_1);
-    iVar2 = GetDeltaXByFacingDirection(param_2);
-    iVar3 = MapObject_GetZCoord(param_1);
-    iVar4 = GetDeltaYByFacingDirection(param_2);
-    uVar5 = MapObject_GetFieldSystem(param_1);
-    GetMetatileBehavior(uVar5, iVar1 + iVar2, iVar3 + iVar4);
-    return;
+    GetMetatileBehavior(fieldSystem, x + dx, z + dz);
 }
 #pragma force_active reset

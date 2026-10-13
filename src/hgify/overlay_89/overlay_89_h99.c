@@ -2,16 +2,18 @@
 #pragma warning_errors off
 #pragma thumb on
 #include "global.h"
+
+#include "constants/species.h"
 extern const u8 ov89_0225CE94[];
 BOOL ov89_0225C88C(int species, int form, BOOL canShowArceus);
-// FUNCTION ov89_0225C88C: matching C (r0)
+// FUNCTION ov89_0225C88C: matching C (twin)
 #pragma force_active on
 BOOL ov89_0225C88C(int species, int form, BOOL canShowArceus) {
-    if (species == 0x1e7 && form > 0) {
+    if (species == SPECIES_GIRATINA && form > 0) {
         return FALSE;
     }
 
-    if (species == 0x1ed && canShowArceus == FALSE) {
+    if (species == SPECIES_ARCEUS && canShowArceus == FALSE) {
         return FALSE;
     }
 

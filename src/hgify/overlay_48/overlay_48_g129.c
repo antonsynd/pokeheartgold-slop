@@ -3,20 +3,22 @@
 #pragma thumb on
 #include "global.h"
 
-#include "ghidra_compat.h"
 #include "message_format.h"
 #include "msgdata.h"
-typedef int code();
-undefined4 ov48_0225B108(undefined4 *param_1, undefined4 param_2, undefined4 param_3);
-// FUNCTION ov48_0225B108: matching C (r2)
+typedef struct UnkStruct_ov48_0225B108 {
+    MsgData *unk_00;
+    MessageFormat *unk_04;
+    String *unk_08;
+    String *unk_0C;
+} UnkStruct_ov48_0225B108;
+// FUNCTION ov48_0225B108: matching C (twin)
 #pragma force_active on
-undefined4 ov48_0225B108(undefined4 *param_1, undefined4 param_2, undefined4 param_3)
+String *ov48_0225B108(UnkStruct_ov48_0225B108 *param0, u32 param1, u32 param2) {
+    MessageFormat_ResetBuffers(param0->unk_04);
+    ReadMsgDataIntoString(param0->unk_00, 3, param0->unk_0C);
+    BufferCityName(param0->unk_04, 0, param1, param2);
+    StringExpandPlaceholders(param0->unk_04, param0->unk_08, param0->unk_0C);
 
-{
-    MessageFormat_ResetBuffers(param_1[1]);
-    ReadMsgDataIntoString(*param_1, 3, param_1[3]);
-    BufferCityName(param_1[1], 0, param_2, param_3);
-    StringExpandPlaceholders(param_1[1], param_1[2], param_1[3]);
-    return param_1[2];
+    return param0->unk_08;
 }
 #pragma force_active reset

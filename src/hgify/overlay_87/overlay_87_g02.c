@@ -3,30 +3,36 @@
 #pragma thumb on
 #include "global.h"
 
-#include "ghidra_compat.h"
 #include "heap.h"
 #include "overlay_manager.h"
 #include "system.h"
 #include "unk_020210A0.h"
 #include "vram_transfer_manager.h"
-typedef int code();
-undefined4 ov87_021E6780();
-undefined4 ScratchOffCards_Exit(undefined4 param_1);
-// FUNCTION ScratchOffCards_Exit: matching C (r2)
+
+typedef struct UnkStruct_ScratchOffCards_Exit {
+    u8 unk_00[0xC];
+    u8 dummy2;
+    u8 unk_0D[0x374 - 0xD];
+    u16 *dummy4;
+} UnkStruct_ScratchOffCards_Exit;
+
+void ov87_021E6780(UnkStruct_ScratchOffCards_Exit *app);
+
+// FUNCTION ScratchOffCards_Exit: matching C (twin)
 #pragma force_active on
-undefined4 ScratchOffCards_Exit(undefined4 param_1)
+BOOL ScratchOffCards_Exit(OverlayManager *ovlMan, int *state) {
+    UnkStruct_ScratchOffCards_Exit *app = OverlayManager_GetData(ovlMan);
 
-{
-    int iVar1;
-
-    iVar1 = OverlayManager_GetData((struct OverlayManager *)param_1);
     sub_02021238();
-    **(ushort **)(iVar1 + 0x374) = (ushort) * (byte *)(iVar1 + 0xc);
+    *app->dummy4 = app->dummy2;
     GF_DestroyVramTransferManager();
-    ov87_021E6780(iVar1);
-    OverlayManager_FreeData(param_1);
-    Main_SetVBlankIntrCB(0, 0);
-    Heap_Destroy(0x7a);
-    return 1;
+
+    ov87_021E6780(app);
+
+    OverlayManager_FreeData(ovlMan);
+    Main_SetVBlankIntrCB(NULL, NULL);
+    Heap_Destroy(HEAP_ID_122);
+
+    return TRUE;
 }
 #pragma force_active reset

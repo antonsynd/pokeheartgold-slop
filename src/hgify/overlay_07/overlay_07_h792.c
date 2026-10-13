@@ -3,29 +3,41 @@
 #pragma thumb on
 #include "global.h"
 
-#include "ghidra_compat.h"
 #include "sys_task_api.h"
-typedef void code(void);
-undefined4 ov07_0221FF2C(undefined4);
-void ov07_02234628(int param_1);
-// FUNCTION ov07_02234628: matching C (r2)
+typedef struct UnkStruct_ov07_02234628_Entry {
+    u8 unk_00[0x10];
+    void *unk_10;
+    u8 unk_14[0x18 - 0x14];
+    SysTask *unk_18;
+    u8 unk_1C[0x20 - 0x1C];
+    u32 unk_20;
+} UnkStruct_ov07_02234628_Entry;
+typedef struct UnkStruct_ov07_02234628 {
+    u8 unk_00[8];
+    UnkStruct_ov07_02234628_Entry *unk_08[16];
+} UnkStruct_ov07_02234628;
+void ov07_0221FF2C(void *particleSystem);
+// FUNCTION ov07_02234628: matching C (twin)
 #pragma force_active on
-void ov07_02234628(int param_1)
+void ov07_02234628(UnkStruct_ov07_02234628 *param0) {
+    int v0;
 
-{
-    int iVar1;
-
-    iVar1 = 0;
-    do {
-        if (*(int *)(param_1 + 8) != 0) {
-            ov07_0221FF2C(*(undefined4 *)(*(int *)(param_1 + 8) + 0x10));
-            if ((*(int *)(*(int *)(param_1 + 8) + 0x20) != 0) && (*(int *)(*(int *)(param_1 + 8) + 0x18) != 0)) {
-                SysTask_Destroy((SysTask *)*(int *)(*(int *)(param_1 + 8) + 0x18));
-            }
+    for (v0 = 0; v0 < 16; v0++) {
+        if (param0->unk_08[v0] == NULL) {
+            continue;
         }
-        iVar1 = iVar1 + 1;
-        param_1 = param_1 + 4;
-    } while (iVar1 < 0x10);
-    return;
+
+        ov07_0221FF2C(param0->unk_08[v0]->unk_10);
+
+        if (param0->unk_08[v0]->unk_20 == 0) {
+            continue;
+        }
+
+        if (param0->unk_08[v0]->unk_18 == NULL) {
+            continue;
+        }
+
+        SysTask_Destroy(param0->unk_08[v0]->unk_18);
+    }
 }
 #pragma force_active reset

@@ -3,19 +3,23 @@
 #pragma thumb on
 #include "global.h"
 
-#include "ghidra_compat.h"
 #include "heap.h"
-typedef int code();
-void ov85_021EA368(int param_1);
-// FUNCTION ov85_021EA368: matching C (r2)
-#pragma force_active on
-void ov85_021EA368(int param_1)
 
-{
-    Heap_Free(*(undefined4 *)(param_1 + 0x344));
-    Heap_Free(*(undefined4 *)(param_1 + 0x348));
-    Heap_Free(*(undefined4 *)(param_1 + 0x334));
-    Heap_Free(*(undefined4 *)(param_1 + 0x338));
-    return;
+typedef struct UnkStruct_ov85_021EA368 {
+    u8 unk_000[0x334];
+    void *unk_334[2];
+    u8 unk_33C[0x344 - 0x33C];
+    void *unk_344[2];
+} UnkStruct_ov85_021EA368;
+
+void ov85_021EA368(UnkStruct_ov85_021EA368 *param0);
+
+// FUNCTION ov85_021EA368: matching C (twin)
+#pragma force_active on
+void ov85_021EA368(UnkStruct_ov85_021EA368 *param0) {
+    Heap_Free(param0->unk_344[0]);
+    Heap_Free(param0->unk_344[1]);
+    Heap_Free(param0->unk_334[0]);
+    Heap_Free(param0->unk_334[1]);
 }
 #pragma force_active reset

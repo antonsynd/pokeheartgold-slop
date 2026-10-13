@@ -3,97 +3,24 @@
 #pragma thumb on
 #include "global.h"
 
-#include "field_move.h"
-#include "field_system.h"
-#include "heap.h"
-#include "mail_message.h"
-#include "player_data.h"
-#include "sys_task_api.h"
-#include "task.h"
-#include "unk_02034354.h"
-#include "unk_02034B0C.h"
 #include "unk_02035900.h"
-#include "unk_02058AEC.h"
+#include "unk_02037C94.h"
 #include "unk_0205A44C.h"
-#include "unk_02091564.h"
+
 struct UnkStruct_02059E1C;
 typedef void (*UnkFuncPtr_02059E1C)(struct UnkStruct_02059E1C *param0);
-typedef struct UnkStruct_02059E1C {
-    FieldSystem *fieldSystem;
-    SaveData *saveData;
-    PlayerProfile *profile;
-    SysTask *unkC;
-    UnkFuncPtr_02059E1C unk10;
-    int unk14;
-    int unk18;
-    int unk1C;
-    int unk20;
-    int unk24;
-    int unk28;
-    u8 unk2C[4];
-    int unk30;
-    int unk34;
-    u8 unk38[4];
-    int unk3C;
-    int unk40;
-    int unk44;
-    u8 unk48[0x110 - 0x48];
-    void *unk110[16];
-    u8 unk150[0x40];
-} UnkStruct_02059E1C;
-typedef struct UnkStruct_02059E1C_Sub80 {
-    u8 unk0[0x1C];
-    u8 unk1C;
-} UnkStruct_02059E1C_Sub80;
-typedef struct UnkStruct_021D41CC {
-    int unk0;
-    UnkStruct_02059E1C_Sub80 *unk4;
-    int unk8;
-} UnkStruct_021D41CC;
-extern UnkStruct_021D41CC _021D41CC;
-extern void *_021D41D8[16];
-extern UnkStruct_02059E1C_Sub80 *sub_02035878(void);
-extern void *sub_02035754(int a0);
-extern void *sub_02035798(int a0);
-extern void sub_02037108(int a0, void *a1, int a2);
-extern void sub_0205ABBC(struct UnkStruct_02059E1C *param0);
-extern void sub_0208F814(void *a0);
-struct UnkStruct_02059E1C *sub_02059E1C(FieldSystem *fieldSystem);
-void sub_02059E88(struct UnkStruct_02059E1C *param0);
-void sub_02059EBC(struct UnkStruct_02059E1C *param0);
-void sub_02059F30(struct UnkStruct_02059E1C *param0);
-int sub_02059F54(void);
-void sub_02059F78(struct UnkStruct_02059E1C *param0);
-void sub_02059FF8(struct UnkStruct_02059E1C *param0);
+
 void sub_0205A034(struct UnkStruct_02059E1C *param0, UnkFuncPtr_02059E1C param1, int param2);
-void sub_0205A03C(SysTask *param0, void *param1);
-void sub_0205A07C(struct UnkStruct_02059E1C *param0);
-void sub_0205A0A0(struct UnkStruct_02059E1C *param0);
-void sub_0205A0B4(struct UnkStruct_02059E1C *param0);
-void sub_0205A114(struct UnkStruct_02059E1C *param0);
-void sub_0205A144(struct UnkStruct_02059E1C *param0);
-void sub_0205A1AC(struct UnkStruct_02059E1C *param0);
-void sub_0205A1D4(struct UnkStruct_02059E1C *param0);
-FieldSystem *sub_0205A1F0(struct UnkStruct_02059E1C *param0);
-void *sub_0205A1F4(struct UnkStruct_02059E1C *param0, int param1);
-struct UnkStruct_02059E1C *sub_02059E1C(FieldSystem *fieldSystem);
-struct UnkStruct_02059E1C *sub_02059E1C(FieldSystem *fieldSystem);
-void sub_02059E88(struct UnkStruct_02059E1C *param0);
-void sub_02059E88(struct UnkStruct_02059E1C *param0);
-void sub_02059EBC(struct UnkStruct_02059E1C *param0);
-void sub_02059EBC(struct UnkStruct_02059E1C *param0);
+void sub_0205ABBC(struct UnkStruct_02059E1C *param0);
 void sub_02059F30(struct UnkStruct_02059E1C *param0);
-void sub_02059F30(struct UnkStruct_02059E1C *param0);
-int sub_02059F54(void);
-int sub_02059F54(void);
-void sub_02059F78(struct UnkStruct_02059E1C *param0);
-void sub_02059F78(struct UnkStruct_02059E1C *param0);
-void sub_02059FF8(struct UnkStruct_02059E1C *param0);
-// FUNCTION sub_02059FF8: matching C (r0)
+
+// FUNCTION sub_02059FF8: matching C (twin)
 #pragma force_active on
 void sub_02059FF8(struct UnkStruct_02059E1C *param0) {
-    if (sub_02039918() && (sub_020376F8() == 0)) {
-        return;
+    if (sub_02039918()) {
+        if (sub_020376F8() == 0) {
+            return;
+        }
     }
 
     if (sub_020376F8() == 0) {
@@ -104,25 +31,3 @@ void sub_02059FF8(struct UnkStruct_02059E1C *param0) {
     }
 }
 #pragma force_active reset
-void sub_0205A034(struct UnkStruct_02059E1C *param0, UnkFuncPtr_02059E1C param1, int param2);
-void sub_0205A034(struct UnkStruct_02059E1C *param0, UnkFuncPtr_02059E1C param1, int param2);
-void sub_0205A03C(SysTask *param0, void *param1);
-void sub_0205A03C(SysTask *param0, void *param1);
-void sub_0205A07C(struct UnkStruct_02059E1C *param0);
-void sub_0205A07C(struct UnkStruct_02059E1C *param0);
-void sub_0205A0A0(struct UnkStruct_02059E1C *param0);
-void sub_0205A0A0(struct UnkStruct_02059E1C *param0);
-void sub_0205A0B4(struct UnkStruct_02059E1C *param0);
-void sub_0205A0B4(struct UnkStruct_02059E1C *param0);
-void sub_0205A114(struct UnkStruct_02059E1C *param0);
-void sub_0205A114(struct UnkStruct_02059E1C *param0);
-void sub_0205A144(struct UnkStruct_02059E1C *param0);
-void sub_0205A144(struct UnkStruct_02059E1C *param0);
-void sub_0205A1AC(struct UnkStruct_02059E1C *param0);
-void sub_0205A1AC(struct UnkStruct_02059E1C *param0);
-void sub_0205A1D4(struct UnkStruct_02059E1C *param0);
-void sub_0205A1D4(struct UnkStruct_02059E1C *param0);
-FieldSystem *sub_0205A1F0(struct UnkStruct_02059E1C *param0);
-FieldSystem *sub_0205A1F0(struct UnkStruct_02059E1C *param0);
-void *sub_0205A1F4(struct UnkStruct_02059E1C *param0, int param1);
-void *sub_0205A1F4(struct UnkStruct_02059E1C *param0, int param1);

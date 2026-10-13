@@ -4,29 +4,37 @@
 #include "global.h"
 
 #include "bg_window.h"
-#include "ghidra_compat.h"
 #include "palette.h"
 #include "sprite_system.h"
 #include "vram_transfer_manager.h"
-typedef int code();
-undefined4 ov89_0225A760();
-void ov89_0225901C(int param_1);
-// FUNCTION ov89_0225901C: matching C (agent7)
+
+typedef struct UnkStruct_ov89_0225901C {
+    u8 unk_00[0x08];
+    BgConfig *unk_08;
+    PaletteData *unk_0C;
+    u8 unk_10[0x194 - 0x10];
+    u8 unk_194[0x9BC - 0x194];
+    u32 unk_9BC;
+} UnkStruct_ov89_0225901C;
+
+void ov89_0225A760(void *param0, u32 param1);
+
+// FUNCTION ov89_0225901C: matching C (twin)
 #pragma force_active on
-void ov89_0225901C(int param_1)
-
-{
+void ov89_0225901C(UnkStruct_ov89_0225901C *param0) {
     int off;
-    uint *base;
+    u32 *base;
 
-    ov89_0225A760(param_1 + 0x194, *(undefined4 *)(param_1 + 0x9bc));
+    ov89_0225A760(param0->unk_194, param0->unk_9BC);
+
     GF_RunVramTransferTasks();
     SpriteSystem_TransferOam();
-    PaletteData_PushTransparentBuffers(*(undefined4 *)(param_1 + 0xc));
-    DoScheduledBgGpuUpdates(*(undefined4 *)(param_1 + 8));
+    PaletteData_PushTransparentBuffers(param0->unk_0C);
+    DoScheduledBgGpuUpdates(param0->unk_08);
+
+    // OS_SetIrqCheckFlag(OS_IE_V_BLANK), inlined
     off = 0x3ff8;
-    base = (uint *)0x027E0000;
-    *(uint *)((char *)base + off) = 1 | *(uint *)((char *)base + off);
-    return;
+    base = (u32 *)0x027E0000;
+    *(u32 *)((char *)base + off) = 1 | *(u32 *)((char *)base + off);
 }
 #pragma force_active reset

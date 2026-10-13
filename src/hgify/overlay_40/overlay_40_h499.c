@@ -3,20 +3,26 @@
 #pragma thumb on
 #include "global.h"
 
-#include "ghidra_compat.h"
 #include "sprite_system.h"
-typedef int code();
-void ov40_02243E80(int param_1, int param_2, int param_3, undefined4 param_4);
-// FUNCTION ov40_02243E80: matching C (r3)
-#pragma force_active on
-void ov40_02243E80(int param_1, int param_2, int param_3, undefined4 param_4)
 
-{
-    if (param_3 == 1) {
-        ManagedSprite_SetDrawFlag(*(undefined4 *)(param_1 + param_2 * 0x1c + 0x194), 1);
-        return;
+typedef struct UnkStruct_ov40_02243E80_Entry {
+    u8 unk_00[0xC];
+    ManagedSprite *unk_0C;
+    u8 unk_10[0xC];
+} UnkStruct_ov40_02243E80_Entry;
+
+typedef struct UnkStruct_ov40_02243E80 {
+    u8 unk_000[0x188];
+    UnkStruct_ov40_02243E80_Entry unk_188[];
+} UnkStruct_ov40_02243E80;
+
+// FUNCTION ov40_02243E80: matching C (twin)
+#pragma force_active on
+void ov40_02243E80(UnkStruct_ov40_02243E80 *param0, int param1, BOOL param2) {
+    if (param2 == 1) {
+        ManagedSprite_SetDrawFlag(param0->unk_188[param1].unk_0C, 1);
+    } else {
+        ManagedSprite_SetDrawFlag(param0->unk_188[param1].unk_0C, 0);
     }
-    ManagedSprite_SetDrawFlag(*(undefined4 *)(param_1 + param_2 * 0x1c + 0x194), 0);
-    return;
 }
 #pragma force_active reset

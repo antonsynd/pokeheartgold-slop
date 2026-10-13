@@ -3,26 +3,22 @@
 #pragma thumb on
 #include "global.h"
 
-#include "ghidra_compat.h"
+#include "spl.h"
 #include "unk_02014DA0.h"
-typedef void code(void);
-undefined4 ov07_0221C468(void);
-undefined4 ov07_0221C470(undefined4);
-undefined4 ov07_0222050C(undefined4, undefined4, undefined4, undefined4, undefined4, undefined4);
-void ov07_022207D0(undefined4 param_1, undefined4 param_2, undefined4 param_3);
-// FUNCTION ov07_022207D0: matching C (r2)
+
+typedef struct BattleAnimSystem BattleAnimSystem;
+
+int ov07_0221C468(BattleAnimSystem *system);
+int ov07_0221C470(BattleAnimSystem *system);
+void ov07_0222050C(BattleAnimSystem *system, SPLEmitter *emitter, int attacker, int defender, int behaviorMode, int targetMode);
+
+// FUNCTION ov07_022207D0: matching C (twin)
 #pragma force_active on
-void ov07_022207D0(undefined4 param_1, undefined4 param_2, undefined4 param_3)
+void ov07_022207D0(SPLEmitter *emitter, int behaviorMode, int targetMode) {
+    BattleAnimSystem *system = sub_02015504();
+    int attacker = ov07_0221C468(system);
+    int defender = ov07_0221C470(system);
 
-{
-    undefined4 uVar1;
-    undefined4 uVar2;
-    undefined4 uVar3;
-
-    uVar1 = sub_02015504();
-    uVar2 = ov07_0221C468();
-    uVar3 = ov07_0221C470(uVar1);
-    ov07_0222050C(uVar1, param_1, uVar2, uVar3, param_2, param_3);
-    return;
+    ov07_0222050C(system, emitter, attacker, defender, behaviorMode, targetMode);
 }
 #pragma force_active reset

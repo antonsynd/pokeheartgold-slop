@@ -3,18 +3,23 @@
 #pragma thumb on
 #include "global.h"
 
-#include "ghidra_compat.h"
 #include "player_data.h"
-typedef int code();
-extern int _021D4130;
-void sub_020346E8(int param_1);
-// FUNCTION sub_020346E8: matching C (r2)
-#pragma force_active on
-void sub_020346E8(int param_1)
 
-{
-    PlayerProfile_Init((struct PlayerProfile *)*(undefined **)(_021D4130 + param_1 * 4 + 0x34c));
-    *(undefined1 *)(_021D4130 + param_1 + 0x39c) = 0;
-    return;
+#define INFO_STATE_EMPTY 0
+
+typedef struct UnkStruct_sub_020346E8 {
+    u8 unk_000[0x34C];
+    PlayerProfile *trainerInfo[8];
+    u8 unk_36C[0x39C - 0x36C];
+    u8 infoState[8];
+} UnkStruct_sub_020346E8;
+
+extern UnkStruct_sub_020346E8 *_021D4130;
+
+// FUNCTION sub_020346E8: matching C (twin)
+#pragma force_active on
+void sub_020346E8(int netId) {
+    PlayerProfile_Init(_021D4130->trainerInfo[netId]);
+    _021D4130->infoState[netId] = INFO_STATE_EMPTY;
 }
 #pragma force_active reset

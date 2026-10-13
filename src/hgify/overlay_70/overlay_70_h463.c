@@ -3,24 +3,26 @@
 #pragma thumb on
 #include "global.h"
 
-#include "ghidra_compat.h"
 #include "msgdata.h"
 #include "pm_string.h"
-typedef int code();
-void ov70_02244670(int param_1);
-// FUNCTION ov70_02244670: matching C (r2)
+
+typedef struct UnkStruct_ov70_02244670 {
+    u8 unk_00[0xBA0];
+    MsgData *gtsMessageLoader;
+    u8 unk_BA4[0xBBC - 0xBA4];
+    String *genericMessageBuffer;
+    String *title;
+    u8 unk_BC4[0xBEC - 0xBC4];
+    String *shortErrorBuffer;
+} UnkStruct_ov70_02244670;
+
+void ov70_02244670(UnkStruct_ov70_02244670 *appState);
+
+// FUNCTION ov70_02244670: matching C (twin)
 #pragma force_active on
-void ov70_02244670(int param_1)
-
-{
-    undefined4 uVar1;
-
-    uVar1 = String_New(0xb4, 0x3d);
-    *(undefined4 *)(param_1 + 0xbbc) = uVar1;
-    uVar1 = String_New(0x100, 0x3d);
-    *(undefined4 *)(param_1 + 0xbec) = uVar1;
-    uVar1 = NewString_ReadMsgData(*(undefined4 *)(param_1 + 0xba0), 0x1f);
-    *(undefined4 *)(param_1 + 0xbc0) = uVar1;
-    return;
+void ov70_02244670(UnkStruct_ov70_02244670 *appState) {
+    appState->genericMessageBuffer = String_New(90 * 2, HEAP_ID_61);
+    appState->shortErrorBuffer = String_New(16 * 8 * 2, HEAP_ID_61);
+    appState->title = NewString_ReadMsgData(appState->gtsMessageLoader, 0x1F);
 }
 #pragma force_active reset

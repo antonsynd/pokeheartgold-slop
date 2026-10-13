@@ -3,24 +3,19 @@
 #pragma thumb on
 #include "global.h"
 
+#include "constants/items.h"
+
 #include "battle/battle_system.h"
 
 #include "bag.h"
 #include "bag_cursor.h"
-#include "ghidra_compat.h"
-typedef int code();
-void ov08_0221DBCC(undefined4 param_1, u16 param_2, u16 param_3, undefined4 param_4);
-// FUNCTION ov08_0221DBCC: matching C (r2)
+// FUNCTION ov08_0221DBCC: matching C (twin)
 #pragma force_active on
-void ov08_0221DBCC(undefined4 param_1, u16 param_2, u16 param_3, undefined4 param_4) {
-    undefined4 uVar1;
-
-    if (((param_2 != 0x41) && (param_2 != 0x43)) && (param_2 != 0x42)) {
-        Bag *bag = BattleSystem_GetBag((BattleSystem *)param_1);
-        Bag_TakeItem(bag, param_2, 1, param_4);
+void ov08_0221DBCC(BattleSystem *battleSys, u16 item, u16 category, enum HeapID heapID) {
+    if (item != ITEM_BLUE_FLUTE && item != ITEM_RED_FLUTE && item != ITEM_YELLOW_FLUTE) {
+        Bag_TakeItem(BattleSystem_GetBag(battleSys), item, 1, heapID);
     }
-    uVar1 = BattleSystem_GetBagCursor(param_1);
-    BagCursor_Battle_SetLastUsedItem(uVar1, param_2, param_3);
-    return;
+
+    BagCursor_Battle_SetLastUsedItem(BattleSystem_GetBagCursor(battleSys), item, category);
 }
 #pragma force_active reset

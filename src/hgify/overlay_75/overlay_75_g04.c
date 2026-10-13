@@ -3,168 +3,35 @@
 #pragma thumb on
 #include "global.h"
 
-#include "constants/sndseq.h"
-
-#include "assert.h"
 #include "heap.h"
-#include "main.h"
-#include "overlay_00_thumb.h"
-#include "overlay_manager.h"
-#include "player_data.h"
-#include "pm_string.h"
 #include "poke_overlay.h"
-#include "save.h"
-#include "sound_02004A44.h"
-#include "system.h"
-#include "title_screen.h"
-#include "unk_0203170C.h"
 #include "unk_02034B0C.h"
-#include "unk_02037C94.h"
-#include "unk_0203A3B0.h"
 #include "unk_020915B0.h"
-#define OVY_ID_INTRO_TITLE 60
-#define OVY_ID_70          70
+
+#define OVY_ID_70 70
 FS_EXTERN_OVERLAY(OVY_70);
-typedef struct UnkStruct_ov75_Args {
-    u8 unk0[8];
-    SaveData *saveData;
-} UnkStruct_ov75_Args;
-typedef struct UnkStruct_ov75_Dialog {
-    u8 unk0[0x1C];
-    String *unk1C;
-} UnkStruct_ov75_Dialog;
-typedef struct UnkStruct_ov75_Work {
-    OverlayManager *unk0;
-    SaveData *saveData;
-    Options *options;
-    void *unkC;
-    NNSFndHeapHandle unk10;
-    u8 unk14[0x78 - 0x14];
-    u16 unk78;
-    u8 unk7A;
-    u8 unk7B;
-    int unk7C;
-    int unk80;
-    int unk84;
-    int unk88;
-    int unk8C;
-    u8 unk90[4];
-    UnkStruct_ov75_Dialog *unk94;
-    Unk020317F4 unk98;
-    u8 unkFC[8];
-    u32 unk104;
-    u32 unk108;
-    u8 unk10C;
-    u8 unk10D[3];
-    String *unk110;
-    String *unk114;
-    u8 unk118[4];
-} UnkStruct_ov75_Work;
-typedef struct UnkStruct_ov75_Screen {
-    void *(*unk0)(UnkStruct_ov75_Work *work);
-    void (*unk4)(UnkStruct_ov75_Work *work);
-    const OverlayManagerTemplate *template;
-    int unkC;
-} UnkStruct_ov75_Screen;
-extern const OverlayManagerTemplate ov75_022498F4;
-extern const OverlayManagerTemplate ov75_022498E4;
-extern const OverlayManagerTemplate _02102620;
-extern void *ov75_02246EAC(UnkStruct_ov75_Work *work);
-extern void ov75_02246EDC(UnkStruct_ov75_Work *work);
-extern void ov75_02249780(String *src, char *dest, enum HeapID heapID);
-extern BOOL ov75_02249838(String *str, enum HeapID heapID);
-extern void ov00_021EC294(void *(*alloc)(int, u32, int), void (*free)(int, void *));
-extern void ov00_021ECB40(void);
-extern void ov70_022378DC(void);
-extern UnkStruct_ov75_Dialog *sub_02085400(enum HeapID heapID, int a1, int *a2, Options *options, int a4, int a5);
-extern UnkStruct_ov75_Dialog *sub_0208541C(enum HeapID heapID, int a1, int *a2, Options *options, int a4, int a5, int a6, int a7);
-extern void sub_02085438(UnkStruct_ov75_Dialog *dialog);
-void *ov75_02246D00(UnkStruct_ov75_Work *work);
-void ov75_02246D04(UnkStruct_ov75_Work *work);
-void *ov75_02246D08(UnkStruct_ov75_Work *work);
-void ov75_02246D40(UnkStruct_ov75_Work *work);
-void *ov75_02246DB4(UnkStruct_ov75_Work *work);
-void ov75_02246DFC(UnkStruct_ov75_Work *work);
-void *ov75_02246E3C(UnkStruct_ov75_Work *work);
-void ov75_02246E78(UnkStruct_ov75_Work *work);
-void ov75_02246B48(UnkStruct_ov75_Work *work);
-void ov75_02246B98(UnkStruct_ov75_Work *work);
-void *ov75_02246BF0(int type, u32 size, int alignment);
-void ov75_02246C18(int type, void *ptr);
-void ov75_02246BCC(UnkStruct_ov75_Work *work, int a1, int a2);
-void ov75_02246CD8(UnkStruct_ov75_Work *work, u32 a1);
-void ov75_02246CF0(UnkStruct_ov75_Work *work, int a1);
-int ov75_02246CF8(UnkStruct_ov75_Work *work);
-extern NNSFndHeapHandle _02249BE0;
-extern const UnkStruct_ov75_Screen ov75_02249904[];
-BOOL ov75_02246960(OverlayManager *man, int *state);
-BOOL ov75_02246960(OverlayManager *man, int *state);
-BOOL ov75_022469D8(OverlayManager *man, int *state);
-BOOL ov75_022469D8(OverlayManager *man, int *state);
-BOOL ov75_02246B00(OverlayManager *man, int *state);
-BOOL ov75_02246B00(OverlayManager *man, int *state);
-void ov75_02246B48(UnkStruct_ov75_Work *work);
-void ov75_02246B48(UnkStruct_ov75_Work *work);
-void ov75_02246B98(UnkStruct_ov75_Work *work);
-// FUNCTION ov75_02246B98: matching C (agent10)
+
+typedef struct UnkStruct_ov75_02246B98 {
+    u8 unk_00[0x0C];
+    void *unk_0C;
+    NNSFndHeapHandle unk_10;
+    u8 unk_14[0x7C - 0x14];
+    int unk_7C;
+} UnkStruct_ov75_02246B98;
+
+// FUNCTION ov75_02246B98: matching C (twin)
 #pragma force_active on
-void ov75_02246B98(UnkStruct_ov75_Work *work) {
-    if (work->unk7C == 1) {
-        NNS_FndDestroyExpHeap(work->unk10);
-        Heap_Free(work->unkC);
+void ov75_02246B98(UnkStruct_ov75_02246B98 *param0) {
+    if (param0->unk_7C == 1) {
+        NNS_FndDestroyExpHeap(param0->unk_10);
+
+        Heap_Free(param0->unk_0C);
         UnloadOVY38();
         UnloadDwcOverlay();
         sub_02034DE0();
         UnloadOverlayByID(FS_OVERLAY_ID(OVY_70));
-        work->unk7C = 0;
+
+        param0->unk_7C = 0;
     }
 }
 #pragma force_active reset
-void ov75_02246BCC(UnkStruct_ov75_Work *work, int a1, int a2);
-void ov75_02246BCC(UnkStruct_ov75_Work *work, int a1, int a2);
-void ov75_02246BD8(UnkStruct_ov75_Work *work);
-void ov75_02246BD8(UnkStruct_ov75_Work *work);
-void ov75_02246BE0(UnkStruct_ov75_Work *work, int a1);
-void ov75_02246BE0(UnkStruct_ov75_Work *work, int a1);
-int ov75_02246BE8(UnkStruct_ov75_Work *work);
-int ov75_02246BE8(UnkStruct_ov75_Work *work);
-void *ov75_02246BF0(int type, u32 size, int alignment);
-void *ov75_02246BF0(int type, u32 size, int alignment);
-void ov75_02246C18(int type, void *ptr);
-void ov75_02246C18(int type, void *ptr);
-void ov75_02246C3C(UnkStruct_ov75_Work *work);
-void ov75_02246C3C(UnkStruct_ov75_Work *work);
-void ov75_02246C68(UnkStruct_ov75_Work *work);
-void ov75_02246C68(UnkStruct_ov75_Work *work);
-void ov75_02246C8C(UnkStruct_ov75_Work *work);
-void ov75_02246C8C(UnkStruct_ov75_Work *work);
-void ov75_02246CA0(UnkStruct_ov75_Work *work);
-void ov75_02246CA0(UnkStruct_ov75_Work *work);
-void ov75_02246CB8(UnkStruct_ov75_Work *work);
-void ov75_02246CB8(UnkStruct_ov75_Work *work);
-void ov75_02246CCC(UnkStruct_ov75_Work *work);
-void ov75_02246CCC(UnkStruct_ov75_Work *work);
-void ov75_02246CD8(UnkStruct_ov75_Work *work, u32 a1);
-void ov75_02246CD8(UnkStruct_ov75_Work *work, u32 a1);
-u32 ov75_02246CE0(UnkStruct_ov75_Work *work);
-u32 ov75_02246CE0(UnkStruct_ov75_Work *work);
-u32 ov75_02246CE8(UnkStruct_ov75_Work *work);
-u32 ov75_02246CE8(UnkStruct_ov75_Work *work);
-void ov75_02246CF0(UnkStruct_ov75_Work *work, int a1);
-void ov75_02246CF0(UnkStruct_ov75_Work *work, int a1);
-int ov75_02246CF8(UnkStruct_ov75_Work *work);
-int ov75_02246CF8(UnkStruct_ov75_Work *work);
-void *ov75_02246D00(UnkStruct_ov75_Work *work);
-void *ov75_02246D00(UnkStruct_ov75_Work *work);
-void ov75_02246D04(UnkStruct_ov75_Work *work);
-void ov75_02246D04(UnkStruct_ov75_Work *work);
-void *ov75_02246D08(UnkStruct_ov75_Work *work);
-void *ov75_02246D08(UnkStruct_ov75_Work *work);
-void ov75_02246D40(UnkStruct_ov75_Work *work);
-void ov75_02246D40(UnkStruct_ov75_Work *work);
-void *ov75_02246DB4(UnkStruct_ov75_Work *work);
-void *ov75_02246DB4(UnkStruct_ov75_Work *work);
-void ov75_02246DFC(UnkStruct_ov75_Work *work);
-void *ov75_02246E3C(UnkStruct_ov75_Work *work);
-void *ov75_02246E3C(UnkStruct_ov75_Work *work);
-void ov75_02246E78(UnkStruct_ov75_Work *work);

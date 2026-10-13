@@ -3,28 +3,40 @@
 #pragma thumb on
 #include "global.h"
 
-#include "ghidra_compat.h"
 #include "heap.h"
 #include "sprite_system.h"
-typedef void code(void);
-undefined4 ov07_022222F0(undefined4, undefined4);
-undefined4 ov07_0221C448(undefined4, undefined4);
-void ov07_02230960(undefined4 param_1, undefined4 *param_2, undefined4 param_3, undefined4 param_4);
-// FUNCTION ov07_02230960: matching C (r4)
+#include "sys_task.h"
+
+typedef struct BattleAnimSystem BattleAnimSystem;
+
+typedef struct XYTransformContext {
+    s16 x;
+    s16 y;
+    s32 data[8];
+} XYTransformContext;
+
+typedef struct UnkStruct_ov07_02230960 {
+    BattleAnimSystem *battleAnimSys;
+    SpriteManager *spriteManager;
+    XYTransformContext pos;
+    ManagedSprite *hornSprite;
+} UnkStruct_ov07_02230960;
+
+BOOL ov07_022222F0(XYTransformContext *ctx, ManagedSprite *sprite);
+void ov07_0221C448(BattleAnimSystem *system, SysTask *task);
+
+// FUNCTION ov07_02230960: matching C (twin)
 #pragma force_active on
-void ov07_02230960(undefined4 param_1, undefined4 *param_2, undefined4 param_3, undefined4 param_4)
+void ov07_02230960(SysTask *task, void *param) {
+    UnkStruct_ov07_02230960 *ctx = param;
 
-{
-    int iVar1;
-
-    iVar1 = ov07_022222F0(param_2 + 2, param_2[0xb]);
-    if (iVar1 == 0) {
-        Sprite_DeleteAndFreeResources(param_2[0xb]);
-        Heap_Free(param_2);
-        ov07_0221C448(*param_2, param_1);
+    if (ov07_022222F0(&ctx->pos, ctx->hornSprite) == FALSE) {
+        Sprite_DeleteAndFreeResources(ctx->hornSprite);
+        Heap_Free(ctx);
+        ov07_0221C448(ctx->battleAnimSys, task);
         return;
     }
-    SpriteSystem_DrawSprites(param_2[1]);
-    return;
+
+    SpriteSystem_DrawSprites(ctx->spriteManager);
 }
 #pragma force_active reset

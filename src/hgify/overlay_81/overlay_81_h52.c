@@ -4,23 +4,18 @@
 #include "global.h"
 
 #include "gf_gfx_planes.h"
-#include "ghidra_compat.h"
 #include "system.h"
-typedef int code();
-#define uRam04000000 (*(volatile uint *)0x04000000)
-#define uRam04001000 (*(volatile uint *)0x04001000)
-void ov81_02240D2C(undefined4 param_1, undefined4 param_2, undefined4 param_3, undefined4 param_4);
-// FUNCTION ov81_02240D2C: matching C (r3)
-#pragma force_active on
-void ov81_02240D2C(undefined4 param_1, undefined4 param_2, undefined4 param_3, undefined4 param_4)
 
-{
-    Main_SetVBlankIntrCB(0, 0);
-    Main_SetHBlankIntrCB(0, 0);
+// FUNCTION ov81_02240D2C: matching C (twin)
+#pragma force_active on
+void ov81_02240D2C(void) {
+    Main_SetVBlankIntrCB(NULL, NULL);
+    Main_SetHBlankIntrCB(NULL, NULL);
+
     GfGfx_DisableEngineAPlanes();
     GfGfx_DisableEngineBPlanes();
-    uRam04000000 = uRam04000000 & 0xffffe0ff;
-    uRam04001000 = uRam04001000 & 0xffffe0ff;
-    return;
+
+    GX_SetVisiblePlane(0);
+    GXS_SetVisiblePlane(0);
 }
 #pragma force_active reset

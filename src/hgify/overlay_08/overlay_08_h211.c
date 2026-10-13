@@ -6,23 +6,26 @@
 #include "battle/battle_system.h"
 
 #include "bg_window.h"
-#include "ghidra_compat.h"
 #include "render_text.h"
 #include "text.h"
-typedef void code(void);
-void ov08_02223B48(undefined4 *param_1, undefined4 param_2, undefined4 param_3, undefined4 param_4);
-// FUNCTION ov08_02223B48: matching C (r3)
+
+typedef struct UnkStruct_ov08_02223B48_Context {
+    BattleSystem *battleSys;
+} UnkStruct_ov08_02223B48_Context;
+
+typedef struct UnkStruct_ov08_02223B48 {
+    UnkStruct_ov08_02223B48_Context *context;
+    u8 unk_04[0x14];
+    String *string;
+    Window messageBoxWindow;
+    u8 unk_2C[6];
+    u8 textPrinterID;
+} UnkStruct_ov08_02223B48;
+
+// FUNCTION ov08_02223B48: matching C (twin)
 #pragma force_active on
-void ov08_02223B48(undefined4 *param_1, undefined4 param_2, undefined4 param_3, undefined4 param_4)
-
-{
-    undefined1 uVar1;
-    undefined4 uVar2;
-
-    TextFlags_SetCanABSpeedUpPrint(1);
-    uVar2 = BattleSystem_GetTextFrameDelay((BattleSystem *)*(undefined4 *)*param_1);
-    uVar1 = AddTextPrinterParameterized((Window *)(param_1 + 7), 1, (String *)param_1[6], 0, 0, uVar2, 0);
-    *(undefined1 *)((int)param_1 + 0x32) = uVar1;
-    return;
+void ov08_02223B48(UnkStruct_ov08_02223B48 *battleBag) {
+    TextFlags_SetCanABSpeedUpPrint(TRUE);
+    battleBag->textPrinterID = AddTextPrinterParameterized(&battleBag->messageBoxWindow, 1, battleBag->string, 0, 0, BattleSystem_GetTextFrameDelay(battleBag->context->battleSys), NULL);
 }
 #pragma force_active reset

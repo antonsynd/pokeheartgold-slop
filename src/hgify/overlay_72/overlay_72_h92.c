@@ -3,21 +3,24 @@
 #pragma thumb on
 #include "global.h"
 
-#include "ghidra_compat.h"
 #include "screen_fade.h"
 #include "unk_02037C94.h"
 #include "unk_0203A3B0.h"
-typedef int code();
-undefined4 ov72_0223A014(int param_1, undefined4 param_2, undefined4 param_3, undefined4 param_4);
-// FUNCTION ov72_0223A014: matching C (r3)
-#pragma force_active on
-undefined4 ov72_0223A014(int param_1, undefined4 param_2, undefined4 param_3, undefined4 param_4)
 
-{
+typedef struct UnkStruct_ov72_0223A014 {
+    u8 unk_00[0x1C];
+    int state;
+} UnkStruct_ov72_0223A014;
+
+// FUNCTION ov72_0223A014: matching C (twin)
+#pragma force_active on
+int ov72_0223A014(UnkStruct_ov72_0223A014 *appState) {
     sub_0203A914();
     sub_0203946C();
-    BeginNormalPaletteFade(0, 0, 0, 0, 8, 1, 0x43);
-    *(undefined4 *)(param_1 + 0x1c) = 0;
+    BeginNormalPaletteFade(FADE_BOTH_SCREENS, FADE_TYPE_BRIGHTNESS_OUT, FADE_TYPE_BRIGHTNESS_OUT, 0, 8, 1, HEAP_ID_67);
+
+    appState->state = 0;
+
     return 4;
 }
 #pragma force_active reset

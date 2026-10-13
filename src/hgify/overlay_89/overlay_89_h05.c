@@ -4,20 +4,15 @@
 #include "global.h"
 
 #include "bg_window.h"
-#include "ghidra_compat.h"
-typedef int code();
-void ov89_02259230(undefined4 param_1);
-// FUNCTION ov89_02259230: matching C (r2)
-#pragma force_active on
-void ov89_02259230(undefined4 param_1)
+#include "gf_gfx_planes.h"
 
-{
-    FreeBgTilemapBuffer(param_1, 6);
-    FreeBgTilemapBuffer(param_1, 5);
-    FreeBgTilemapBuffer(param_1, 7);
-    FreeBgTilemapBuffer(param_1, 3);
-    FreeBgTilemapBuffer(param_1, 2);
-    FreeBgTilemapBuffer(param_1, 1);
-    return;
+void ov89_02259230(BgConfig *param0);
+// FUNCTION ov89_02259230: matching C (twin)
+void ov89_02259230(BgConfig *param0) {
+    FreeBgTilemapBuffer(param0, GF_BG_LYR_SUB_2);
+    FreeBgTilemapBuffer(param0, GF_BG_LYR_SUB_1);
+    FreeBgTilemapBuffer(param0, GF_BG_LYR_SUB_3);
+    FreeBgTilemapBuffer(param0, GF_BG_LYR_MAIN_3);
+    FreeBgTilemapBuffer(param0, GF_BG_LYR_MAIN_2);
+    FreeBgTilemapBuffer(param0, GF_BG_LYR_MAIN_1);
 }
-#pragma force_active reset

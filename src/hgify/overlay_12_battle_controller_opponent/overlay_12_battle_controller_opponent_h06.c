@@ -3,29 +3,28 @@
 #pragma thumb on
 #include "global.h"
 
+#include "battle/battle.h"
 #include "battle/battle_02261FD4.h"
 #include "battle/battle_hp_bar.h"
 
 #include "filesystem.h"
-#include "ghidra_compat.h"
 #include "heap.h"
 #include "sprite_system.h"
-typedef void code(void);
-void ov12_02258E7C(undefined4 param_1, int param_2, int param_3);
-// FUNCTION ov12_02258E7C: matching C (r2)
-#pragma force_active on
-void ov12_02258E7C(undefined4 param_1, int param_2, int param_3)
 
-{
-    if (param_3 != 2) {
-        BattleHpBar_FreeResources(param_2 + 0x28);
+// FUNCTION ov12_02258E7C: matching C (twin)
+#pragma force_active on
+void ov12_02258E7C(BattleSystem *battleSys, OpponentData *battlerData, int renderMode) {
+    if (renderMode != 2) {
+        BattleHpBar_FreeResources(&battlerData->hpBar);
     }
-    if (*(int *)(param_2 + 0x18) != 0) {
-        Sprite_DeleteAndFreeResources((struct ManagedSprite *)*(int *)(param_2 + 0x18));
+
+    if (battlerData->managedSprite) {
+        Sprite_DeleteAndFreeResources(battlerData->managedSprite);
     }
-    ov12_02262014(param_2);
-    NARC_Delete(*(undefined4 *)(param_2 + 0x1a4));
-    Heap_Free(param_2);
-    return;
+
+    ov12_02262014(battlerData);
+
+    NARC_Delete((NARC *)battlerData->unk1A4);
+    Heap_Free(battlerData);
 }
 #pragma force_active reset

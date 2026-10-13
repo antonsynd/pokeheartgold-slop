@@ -3,24 +3,25 @@
 #pragma thumb on
 #include "global.h"
 
-#include "ghidra_compat.h"
 #include "unk_02018000.h"
-typedef int code();
-typedef struct S91 {
-    u8 pad0[0x198];
-    u8 sub[0x7a];
-    u16 mode;
-} S91;
-// FUNCTION ov91_02260334: matching C (agent7)
+
+typedef struct UnkStruct_ov91_02260334 {
+    u8 unk_000[0x198];
+    u8 unk_198[0x7A];
+    u16 unk_212;
+} UnkStruct_ov91_02260334;
+
+// FUNCTION ov91_02260334: matching C (twin)
 #pragma force_active on
-void ov91_02260334(S91 *param_1, int param_2) {
-    if (param_1->mode != param_2) {
-        if (param_2 == 1) {
-            sub_020181D4((UnkStruct_020181B0 *)param_1, (UnkStruct_020180BC *)param_1->sub);
+void ov91_02260334(UnkStruct_ov91_02260334 *param0, BOOL param1) {
+    if (param0->unk_212 != param1) {
+        if (param1 == 1) {
+            sub_020181D4((UnkStruct_020181B0 *)param0, (UnkStruct_020180BC *)&param0->unk_198[0]);
         } else {
-            sub_020181E0((UnkStruct_020181B0 *)param_1, (UnkStruct_020180BC *)param_1->sub);
+            sub_020181E0((UnkStruct_020181B0 *)param0, (UnkStruct_020180BC *)&param0->unk_198[0]);
         }
-        param_1->mode = param_2;
+
+        param0->unk_212 = param1;
     }
 }
 #pragma force_active reset

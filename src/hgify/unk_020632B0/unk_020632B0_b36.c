@@ -3,28 +3,24 @@
 #pragma thumb on
 #include "global.h"
 
-#include "ghidra_compat.h"
 #include "map_object.h"
-typedef int code();
-undefined4 sub_02063AC8(undefined4 param_1);
-// FUNCTION sub_02063AC8: matching C (r2)
-#pragma force_active on
-undefined4 sub_02063AC8(undefined4 param_1)
 
-{
-    int iVar1;
-    int iVar2;
+int sub_02063AC8(LocalMapObject *param0);
+// FUNCTION sub_02063AC8: matching C (twin)
+int sub_02063AC8(LocalMapObject *param0) {
+    int v0 = MapObject_GetXCoord(param0);
+    int v1 = MapObject_GetPreviousXCoord(param0);
 
-    iVar1 = MapObject_GetXCoord((LocalMapObject *)param_1);
-    iVar2 = MapObject_GetPreviousXCoord((LocalMapObject *)param_1);
-    if (iVar1 != iVar2) {
+    if (v0 != v1) {
         return 0;
     }
-    iVar1 = MapObject_GetZCoord((LocalMapObject *)param_1);
-    iVar2 = MapObject_GetPreviousZCoord((LocalMapObject *)param_1);
-    if (iVar1 == iVar2) {
-        return 1;
+
+    v0 = MapObject_GetZCoord(param0);
+    v1 = MapObject_GetPreviousZCoord(param0);
+
+    if (v0 != v1) {
+        return 0;
     }
-    return 0;
+
+    return 1;
 }
-#pragma force_active reset

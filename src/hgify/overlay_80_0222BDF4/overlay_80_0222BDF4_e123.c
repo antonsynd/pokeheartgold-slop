@@ -5,26 +5,24 @@
 
 #include "frontier/overlay_80_0222BDF4.h"
 
-#include "ghidra_compat.h"
-typedef int code();
-undefined4 ov80_022399A4(void *, unsigned int, int, int);
-undefined4 sub_0209680C(void *);
-undefined4 FrtCmd_065(undefined4 *param_1, undefined4 param_2, undefined4 param_3, undefined4 param_4);
-// FUNCTION FrtCmd_065: matching C (r3)
+typedef struct UnkStruct_FrtCmd_065 {
+    u8 unk_00[0x10];
+    void *particleSys;
+} UnkStruct_FrtCmd_065;
+
+UnkStruct_FrtCmd_065 *sub_0209680C(void *frontier);
+void ov80_022399A4(void *particleSys, u32 index, u32 narcIdx, u32 projection);
+
+// FUNCTION FrtCmd_065: matching C (twin)
 #pragma force_active on
-undefined4 FrtCmd_065(undefined4 *param_1, undefined4 param_2, undefined4 param_3, undefined4 param_4)
+BOOL FrtCmd_065(FrontierScriptContext *ctx) {
+    UnkStruct_FrtCmd_065 *graphics = sub_0209680C(ctx->frontierSystem->unk0);
+    u32 index = FrontierScript_ReadVar(ctx);
+    u32 narcIdx = FrontierScript_ReadVar(ctx);
+    u32 projection = FrontierScript_ReadVar(ctx);
 
-{
-    int iVar1;
-    undefined4 uVar2;
-    undefined4 uVar3;
-    undefined4 uVar4;
+    ov80_022399A4(graphics->particleSys, index, narcIdx, projection);
 
-    iVar1 = sub_0209680C(*(undefined4 *)*param_1);
-    uVar2 = FrontierScript_ReadVar((FrontierScriptContext *)param_1);
-    uVar3 = FrontierScript_ReadVar((FrontierScriptContext *)param_1);
-    uVar4 = FrontierScript_ReadVar((FrontierScriptContext *)param_1);
-    ov80_022399A4(*(undefined4 *)(iVar1 + 0x10), uVar2, uVar3, uVar4);
-    return 0;
+    return FALSE;
 }
 #pragma force_active reset

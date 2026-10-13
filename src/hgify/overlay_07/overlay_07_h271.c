@@ -3,103 +3,15 @@
 #pragma thumb on
 #include "global.h"
 
-#include "camera.h"
-#include "font_types_def.h"
-#include "obj_pltt_transfer.h"
-#include "pokepic.h"
-#include "sprite.h"
-#include "sprite_system.h"
-#include "unk_02014DA0.h"
-typedef struct UnkStruct_ov07_0221FA38 UnkStruct_ov07_0221FA38;
-typedef struct GenericEmitterCallbackData {
-    UnkStruct_ov07_0221FA38 *battleAnimSys;
-    SPLEmitter *particleSys;
-    s8 dir;
-    int params[6];
-    int startBattler;
-    int endBattler;
-} GenericEmitterCallbackData;
-typedef BOOL (*GenericEmitterCallbackFunc)(SPLEmitter *emitter, GenericEmitterCallbackData *data);
 typedef struct BattleAnimBattlerPosition {
     s16 x;
     s16 y;
 } BattleAnimBattlerPosition;
-typedef struct XYTransformContext {
-    s16 x;
-    s16 y;
-    s32 data[7];
-} XYTransformContext;
-enum XYTransformParam {
-    XY_PARAM_STEPS,
-    XY_PARAM_STEP_SIZE_X,
-    XY_PARAM_STEP_SIZE_Y,
-    XY_PARAM_CUR_X,
-    XY_PARAM_CUR_Y,
-};
-enum XYRevolutionParam {
-    XY_PARAM_REV_STEPS,
-    XY_PARAM_REV_CUR_X,
-    XY_PARAM_REV_RADIUS_X,
-    XY_PARAM_REV_CUR_Y,
-    XY_PARAM_REV_RADIUS_Y,
-    XY_PARAM_REV_STEP_SIZE_X,
-    XY_PARAM_REV_STEP_SIZE_Y,
-};
-extern const CameraAngle ov07_02236414[];
-extern const GenericEmitterCallbackFunc ov07_02236444[];
+
 extern const BattleAnimBattlerPosition ov07_02236468[][6];
-extern BOOL ov07_0221BFC0(UnkStruct_ov07_0221FA38 *a0);
-extern BOOL ov07_0221FAB0(UnkStruct_ov07_0221FA38 *a0);
-extern int ov07_02231924(UnkStruct_ov07_0221FA38 *a0, int a1);
-extern int ov07_0223192C(UnkStruct_ov07_0221FA38 *a0, int a1);
-extern void ov07_02231D70(UnkStruct_ov07_0221FA38 *a0, int a1, VecFx32 *a2);
-extern void ov07_02222644(XYTransformContext *a0, f32 *a1, f32 *a2);
-extern s32 _s32_div_f(s32 a0, s32 a1);
-extern fx32 FX_Modf(fx32 a0, fx32 *a1);
-BOOL ov07_02221DC4(SPLEmitter *emitter, GenericEmitterCallbackData *data);
-BOOL ov07_02221E24(SPLEmitter *emitter, GenericEmitterCallbackData *data);
-BOOL ov07_02221E60(SPLEmitter *emitter, GenericEmitterCallbackData *data);
-BOOL ov07_02221E9C(SPLEmitter *emitter, GenericEmitterCallbackData *data);
-BOOL ov07_02221EC4(SPLEmitter *emitter, GenericEmitterCallbackData *data);
-BOOL ov07_02221EEC(int idx, SPLEmitter *emitter, GenericEmitterCallbackData *data);
+
 void ov07_02221F04(int isDoubles, int battlerType, s16 *px, s16 *py);
-void ov07_02221F38(UnkStruct_ov07_0221FA38 *system, int battler, s16 *px, s16 *py);
-s16 ov07_02221F80(UnkStruct_ov07_0221FA38 *system, int battler, int posType);
-u8 ov07_02221FF0(ManagedSprite *sprite);
-int ov07_02222004(UnkStruct_ov07_0221FA38 *system, int battler);
-int ov07_0222202C(UnkStruct_ov07_0221FA38 *system, int battler);
-fx32 ov07_02222040(fx32 start, fx32 end, u32 steps);
-u32 ov07_0222204C(fx32 a, fx32 b, fx32 stepSize);
-void ov07_0222207C(XYTransformContext *ctx, ManagedSprite *sprite, s16 cx, s16 cy);
-void ov07_0222209C(XYTransformContext *ctx, ManagedSprite *sprite);
-void ov07_022220B8(XYTransformContext *ctx, Pokepic *sprite, s16 cx, s16 cy);
-void ov07_022220DC(XYTransformContext *ctx, Pokepic *sprite);
-void ov07_022220FC(XYTransformContext *ctx, u16 sx, u16 ex, u16 sy, u16 ey, fx32 rx, fx32 ry, int steps);
-void ov07_0222212C(XYTransformContext *ctx, u16 sx, u16 ex, u16 sy, u16 ey, fx32 rx, fx32 ry, u16 stepSizeX);
-BOOL ov07_02222180(XYTransformContext *ctx);
-BOOL ov07_02222218(XYTransformContext *ctx, s16 cx, s16 cy, ManagedSprite *sprite);
-BOOL ov07_02222240(XYTransformContext *ctx, s16 cx, s16 cy, Pokepic *sprite);
-void ov07_02222268(XYTransformContext *ctx, s16 sx, s16 ex, s16 sy, s16 ey, u16 steps);
-BOOL ov07_022222B4(XYTransformContext *ctx);
-BOOL ov07_022222F0(XYTransformContext *ctx, ManagedSprite *sprite);
-BOOL ov07_02222314(XYTransformContext *ctx, Pokepic *sprite);
-void ov07_02222338(XYTransformContext *linear, XYTransformContext *revs, s16 sx, s16 ex, s16 sy, s16 ey, u16 frames, fx32 arcRadius);
-BOOL ov07_02222384(XYTransformContext *linear, XYTransformContext *revs);
-BOOL ov07_022223CC(XYTransformContext *linear, XYTransformContext *revs, ManagedSprite *sprite);
-BOOL ov07_02221DC4(SPLEmitter *emitter, GenericEmitterCallbackData *data);
-BOOL ov07_02221DC4(SPLEmitter *emitter, GenericEmitterCallbackData *data);
-BOOL ov07_02221E24(SPLEmitter *emitter, GenericEmitterCallbackData *data);
-BOOL ov07_02221E24(SPLEmitter *emitter, GenericEmitterCallbackData *data);
-BOOL ov07_02221E60(SPLEmitter *emitter, GenericEmitterCallbackData *data);
-BOOL ov07_02221E60(SPLEmitter *emitter, GenericEmitterCallbackData *data);
-BOOL ov07_02221E9C(SPLEmitter *emitter, GenericEmitterCallbackData *data);
-BOOL ov07_02221E9C(SPLEmitter *emitter, GenericEmitterCallbackData *data);
-BOOL ov07_02221EC4(SPLEmitter *emitter, GenericEmitterCallbackData *data);
-BOOL ov07_02221EC4(SPLEmitter *emitter, GenericEmitterCallbackData *data);
-BOOL ov07_02221EEC(int idx, SPLEmitter *emitter, GenericEmitterCallbackData *data);
-void ov07_02221F04(int isDoubles, int battlerType, s16 *px, s16 *py);
-// FUNCTION ov07_02221F04: matching C (r0)
-#pragma force_active on
+// FUNCTION ov07_02221F04: matching C (twin)
 void ov07_02221F04(int isDoubles, int battlerType, s16 *px, s16 *py) {
     if (px != NULL) {
         *px = ov07_02236468[isDoubles][battlerType].x;
@@ -109,49 +21,3 @@ void ov07_02221F04(int isDoubles, int battlerType, s16 *px, s16 *py) {
         *py = ov07_02236468[isDoubles][battlerType].y;
     }
 }
-#pragma force_active reset
-void ov07_02221F38(UnkStruct_ov07_0221FA38 *system, int battler, s16 *px, s16 *py);
-void ov07_02221F38(UnkStruct_ov07_0221FA38 *system, int battler, s16 *px, s16 *py);
-s16 ov07_02221F80(UnkStruct_ov07_0221FA38 *system, int battler, int posType);
-s16 ov07_02221F80(UnkStruct_ov07_0221FA38 *system, int battler, int posType);
-u8 ov07_02221FF0(ManagedSprite *sprite);
-u8 ov07_02221FF0(ManagedSprite *sprite);
-int ov07_02222004(UnkStruct_ov07_0221FA38 *system, int battler);
-int ov07_02222004(UnkStruct_ov07_0221FA38 *system, int battler);
-int ov07_0222202C(UnkStruct_ov07_0221FA38 *system, int battler);
-int ov07_0222202C(UnkStruct_ov07_0221FA38 *system, int battler);
-fx32 ov07_02222040(fx32 start, fx32 end, u32 steps);
-fx32 ov07_02222040(fx32 start, fx32 end, u32 steps);
-u32 ov07_0222204C(fx32 a, fx32 b, fx32 stepSize);
-u32 ov07_0222204C(fx32 a, fx32 b, fx32 stepSize);
-void ov07_0222207C(XYTransformContext *ctx, ManagedSprite *sprite, s16 cx, s16 cy);
-void ov07_0222207C(XYTransformContext *ctx, ManagedSprite *sprite, s16 cx, s16 cy);
-void ov07_0222209C(XYTransformContext *ctx, ManagedSprite *sprite);
-void ov07_0222209C(XYTransformContext *ctx, ManagedSprite *sprite);
-void ov07_022220B8(XYTransformContext *ctx, Pokepic *sprite, s16 cx, s16 cy);
-void ov07_022220B8(XYTransformContext *ctx, Pokepic *sprite, s16 cx, s16 cy);
-void ov07_022220DC(XYTransformContext *ctx, Pokepic *sprite);
-void ov07_022220DC(XYTransformContext *ctx, Pokepic *sprite);
-void ov07_022220FC(XYTransformContext *ctx, u16 sx, u16 ex, u16 sy, u16 ey, fx32 rx, fx32 ry, int steps);
-void ov07_022220FC(XYTransformContext *ctx, u16 sx, u16 ex, u16 sy, u16 ey, fx32 rx, fx32 ry, int steps);
-void ov07_0222212C(XYTransformContext *ctx, u16 sx, u16 ex, u16 sy, u16 ey, fx32 rx, fx32 ry, u16 stepSizeX);
-BOOL ov07_02222180(XYTransformContext *ctx);
-BOOL ov07_02222180(XYTransformContext *ctx);
-BOOL ov07_02222218(XYTransformContext *ctx, s16 cx, s16 cy, ManagedSprite *sprite);
-BOOL ov07_02222218(XYTransformContext *ctx, s16 cx, s16 cy, ManagedSprite *sprite);
-BOOL ov07_02222240(XYTransformContext *ctx, s16 cx, s16 cy, Pokepic *sprite);
-BOOL ov07_02222240(XYTransformContext *ctx, s16 cx, s16 cy, Pokepic *sprite);
-void ov07_02222268(XYTransformContext *ctx, s16 sx, s16 ex, s16 sy, s16 ey, u16 steps);
-void ov07_02222268(XYTransformContext *ctx, s16 sx, s16 ex, s16 sy, s16 ey, u16 steps);
-BOOL ov07_022222B4(XYTransformContext *ctx);
-BOOL ov07_022222B4(XYTransformContext *ctx);
-BOOL ov07_022222F0(XYTransformContext *ctx, ManagedSprite *sprite);
-BOOL ov07_022222F0(XYTransformContext *ctx, ManagedSprite *sprite);
-BOOL ov07_02222314(XYTransformContext *ctx, Pokepic *sprite);
-BOOL ov07_02222314(XYTransformContext *ctx, Pokepic *sprite);
-void ov07_02222338(XYTransformContext *linear, XYTransformContext *revs, s16 sx, s16 ex, s16 sy, s16 ey, u16 frames, fx32 arcRadius);
-void ov07_02222338(XYTransformContext *linear, XYTransformContext *revs, s16 sx, s16 ex, s16 sy, s16 ey, u16 frames, fx32 arcRadius);
-BOOL ov07_02222384(XYTransformContext *linear, XYTransformContext *revs);
-BOOL ov07_02222384(XYTransformContext *linear, XYTransformContext *revs);
-BOOL ov07_022223CC(XYTransformContext *linear, XYTransformContext *revs, ManagedSprite *sprite);
-BOOL ov07_022223CC(XYTransformContext *linear, XYTransformContext *revs, ManagedSprite *sprite);

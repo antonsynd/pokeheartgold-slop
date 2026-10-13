@@ -2,19 +2,24 @@
 #pragma warning_errors off
 #pragma thumb on
 #include "global.h"
-void ov91_022614D4(void *self);
-// FUNCTION ov91_022614D4: matching C (r2)
+
+typedef struct UnkStruct_ov91_022614D4 {
+    u16 unk_00;
+    u8 unk_02[2];
+    s16 unk_04;
+    u8 unk_06;
+    u8 unk_07;
+} UnkStruct_ov91_022614D4;
+
+// FUNCTION ov91_022614D4: matching C (twin)
 #pragma force_active on
-void ov91_022614D4(void *self) {
-    char *p = (char *)self;
-    u8 t = *(u8 *)(p + 7);
-    t++;
-    *(u8 *)(p + 7) = t;
-    if (*(u8 *)(p + 7) >= 10) {
-        *(u16 *)(p + 0) = 1;
-        s32 cur = *(s16 *)(p + 4);
-        *(s16 *)(p + 4) = (s16)((cur + 1) % 3);
-        *(u8 *)(p + 7) = 0;
+void ov91_022614D4(UnkStruct_ov91_022614D4 *param0) {
+    param0->unk_07++;
+
+    if (param0->unk_07 >= 10) {
+        param0->unk_00 = 1;
+        param0->unk_04 = (param0->unk_04 + 1) % 3;
+        param0->unk_07 = 0;
     }
 }
 #pragma force_active reset

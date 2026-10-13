@@ -4,24 +4,19 @@
 
 #include "error_handling.h"
 #include "sys_task_api.h"
-void ov85_021E83C0(void);
 #pragma thumb on
-#include "ghidra_compat.h"
-typedef int code();
-void ov85_021E83E0(int param_1);
-// FUNCTION ov85_021E83E0: matching C (r2)
+typedef struct UnkStruct_ov85_021E83E0 {
+    u8 unk_000[0xC4C];
+    u8 unk_C4C[0x50];
+    u8 unk_C9C[0x128];
+    SysTask *unk_DC4;
+} UnkStruct_ov85_021E83E0;
+void ov85_021E83C0(SysTask *task, void *data);
+// FUNCTION ov85_021E83E0: matching C (twin)
 #pragma force_active on
-void ov85_021E83E0(int param_1)
-
-{
-    undefined4 uVar1;
-
-    memset(param_1 + 0xc4c, 0, 0x50);
-    uVar1 = SysTask_CreateOnMainQueue(((unsigned int)ov85_021E83C0), param_1, 0x104);
-    *(undefined4 *)(param_1 + 0xdc4) = uVar1;
-    if (*(int *)(param_1 + 0xdc4) == 0) {
-        GF_AssertFail();
-    }
-    return;
+void ov85_021E83E0(UnkStruct_ov85_021E83E0 *param0) {
+    memset(param0->unk_C4C, 0, sizeof(param0->unk_C4C));
+    param0->unk_DC4 = SysTask_CreateOnMainQueue(ov85_021E83C0, param0, 0x104);
+    GF_ASSERT(param0->unk_DC4);
 }
 #pragma force_active reset

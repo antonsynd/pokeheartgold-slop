@@ -4,19 +4,21 @@
 #include "global.h"
 
 #include "bg_window.h"
-#include "ghidra_compat.h"
 #include "sprite_system.h"
-typedef void code(void);
-void ov08_0221DB7C(int param_1);
-// FUNCTION ov08_0221DB7C: matching C (r2)
-#pragma force_active on
-void ov08_0221DB7C(int param_1)
 
-{
-    ManagedSprite_SetDrawFlag(*(undefined4 *)(param_1 + 0x2020), 0);
-    ClearWindowTilemapAndScheduleTransfer(*(int *)(param_1 + 0x2070) + 0xa0);
-    ClearWindowTilemapAndScheduleTransfer(*(int *)(param_1 + 0x2070) + 0x60);
-    ClearWindowTilemapAndScheduleTransfer(*(int *)(param_1 + 0x2070) + 0x70);
-    return;
+typedef struct UnkStruct_ov08_0221DB7C {
+    u8 unk_0000[0x1FB8];
+    ManagedSprite *sprites[27];
+    u8 unk_2024[0x2070 - 0x2024];
+    Window *windows;
+} UnkStruct_ov08_0221DB7C;
+
+// FUNCTION ov08_0221DB7C: matching C (twin)
+#pragma force_active on
+void ov08_0221DB7C(UnkStruct_ov08_0221DB7C *battleParty) {
+    ManagedSprite_SetDrawFlag(battleParty->sprites[26], FALSE);
+    ClearWindowTilemapAndScheduleTransfer(&battleParty->windows[10]);
+    ClearWindowTilemapAndScheduleTransfer(&battleParty->windows[6]);
+    ClearWindowTilemapAndScheduleTransfer(&battleParty->windows[7]);
 }
 #pragma force_active reset

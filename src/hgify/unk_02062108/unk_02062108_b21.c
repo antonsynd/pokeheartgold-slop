@@ -3,26 +3,23 @@
 #pragma thumb on
 #include "global.h"
 
-#include "ghidra_compat.h"
 #include "map_object.h"
-typedef int code();
-undefined4 sub_02062400();
-undefined4 sub_02062428(undefined4 param_1);
-// FUNCTION sub_02062428: matching C (r2)
+
+void sub_02062400(LocalMapObject *mapObj);
+
+// FUNCTION sub_02062428: matching C (twin)
 #pragma force_active on
-undefined4 sub_02062428(undefined4 param_1)
+BOOL sub_02062428(LocalMapObject *mapObj) {
+    sub_02062400(mapObj);
 
-{
-    int iVar1;
-
-    sub_02062400();
-    iVar1 = MapObject_TestFlagsBits(param_1, 0x20);
-    if (iVar1 == 0) {
-        return 0;
+    if (!MapObject_TestFlagsBits(mapObj, MAPOBJECTFLAG_UNK5)) {
+        return FALSE;
     }
-    MapObject_ClearFlagsBits(param_1, 0x20);
-    MapObject_SetMovementCommand(param_1, 0xff);
-    MapObject_SetMovementStep(param_1, 0);
-    return 1;
+
+    MapObject_ClearFlagsBits(mapObj, MAPOBJECTFLAG_UNK5);
+    MapObject_SetMovementCommand(mapObj, 0xFF);
+    MapObject_SetMovementStep(mapObj, 0);
+
+    return TRUE;
 }
 #pragma force_active reset

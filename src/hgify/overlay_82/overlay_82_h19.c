@@ -4,25 +4,15 @@
 #include "global.h"
 
 #include "gf_gfx_loader.h"
-#include "ghidra_compat.h"
 #include "heap.h"
-typedef int code();
+
 void ov82_0223EE38(void);
-// FUNCTION ov82_0223EE38: matching C (r2)
-#pragma force_active on
-void ov82_0223EE38(void)
+// FUNCTION ov82_0223EE38: matching C (twin)
+void ov82_0223EE38(void) {
+    NNSG2dPaletteData *plttData;
+    void *pltt = GfGfxLoader_GetPlttData(NARC_a_1_8_3, 0x99, &plttData, HEAP_ID_105);
 
-{
-    undefined4 uVar1;
-    undefined4 in_r3;
-    int iStack_10;
-    undefined4 uStack_c;
-
-    uStack_c = in_r3;
-    uVar1 = GfGfxLoader_GetPlttData(0xb7, 0x99, (NNSG2dPaletteData **)&iStack_10, 0x69);
-    DC_FlushRange(*(undefined4 *)(iStack_10 + 0xc), 0xc0);
-    GX_LoadBGPltt(*(undefined4 *)(iStack_10 + 0xc), 0, 0xc0);
-    Heap_Free(uVar1);
-    return;
+    DC_FlushRange(plttData->pRawData, 0xc0);
+    GX_LoadBGPltt(plttData->pRawData, 0, 0xc0);
+    Heap_Free(pltt);
 }
-#pragma force_active reset

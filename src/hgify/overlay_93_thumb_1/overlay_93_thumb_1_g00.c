@@ -3,25 +3,27 @@
 #pragma thumb on
 #include "global.h"
 
-#include "ghidra_compat.h"
 #include "heap.h"
 #include "overlay_manager.h"
-typedef int code();
-undefined4 ov93_0225C6D8();
-undefined4 ov93_0225C540(undefined4 param_1);
-// FUNCTION ov93_0225C540: matching C (r2)
+
+typedef struct UnkStruct_ov93_0225C540 {
+    u8 unk_00[0x40];
+} UnkStruct_ov93_0225C540;
+
+void ov93_0225C6D8(UnkStruct_ov93_0225C540 *param0, void *param1);
+
+// FUNCTION ov93_0225C540: matching C (twin)
 #pragma force_active on
-undefined4 ov93_0225C540(undefined4 param_1)
+int ov93_0225C540(OverlayManager *ovyMan) {
+    void *v0 = OverlayManager_GetArgs(ovyMan);
+    UnkStruct_ov93_0225C540 *v1;
 
-{
-    undefined4 uVar1;
-    undefined4 uVar2;
+    Heap_Create(HEAP_ID_3, HEAP_ID_117, 0x60000);
 
-    uVar1 = OverlayManager_GetArgs((OverlayManager *)param_1);
-    Heap_Create(3, 0x75, 0x60000);
-    uVar2 = OverlayManager_CreateAndGetData(param_1, 0x40, 0x75);
-    MI_CpuFill8(uVar2, 0, 0x40);
-    ov93_0225C6D8(uVar2, uVar1);
+    v1 = OverlayManager_CreateAndGetData(ovyMan, sizeof(UnkStruct_ov93_0225C540), HEAP_ID_117);
+    MI_CpuFill8(v1, 0, sizeof(UnkStruct_ov93_0225C540));
+    ov93_0225C6D8(v1, v0);
+
     return 1;
 }
 #pragma force_active reset

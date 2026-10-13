@@ -3,22 +3,39 @@
 #pragma thumb on
 #include "global.h"
 
-#include "ghidra_compat.h"
+#include "battle/battle_system.h"
+
 #include "unk_02005D10.h"
-typedef void code(void);
-undefined4 ov12_0226430C(undefined4, undefined4, undefined4);
-void ov12_0225ABB8(undefined4 param_1, int param_2, undefined1 *param_3, undefined4 param_4);
-// FUNCTION ov12_0225ABB8: matching C (perm1)
+
+#define BATTLE_SOUND_PAN_RIGHT 0x75
+#define BATTLE_SOUND_PAN_LEFT  -0x75
+
+typedef struct UnkStruct_ov12_0225ABB8 {
+    u8 unk_00[0x194];
+    u8 battler;
+    u8 battlerType;
+} UnkStruct_ov12_0225ABB8;
+
+typedef struct UnkStruct_ov12_0225ABB8Message {
+    u8 command;
+    u8 unk_01;
+    u16 sdatID;
+} UnkStruct_ov12_0225ABB8Message;
+
+void ov12_0226430C(BattleSystem *battleSys, u8 battler, u8 command);
+
+// FUNCTION ov12_0225ABB8: matching C (twin)
 #pragma force_active on
-void ov12_0225ABB8(undefined4 param_1, int param_2, undefined1 *param_3, undefined4 param_4) {
-    undefined4 uVar1;
-    if (!((*((byte *)(param_2 + 0x195))) & 1)) {
-        uVar1 = 0xffffff8b;
+void ov12_0225ABB8(BattleSystem *battleSys, UnkStruct_ov12_0225ABB8 *battlerData, UnkStruct_ov12_0225ABB8Message *message, u32 unused) {
+    int pan;
+
+    if (battlerData->battlerType & 1) {
+        pan = BATTLE_SOUND_PAN_RIGHT;
     } else {
-        uVar1 = 0x75;
+        pan = BATTLE_SOUND_PAN_LEFT;
     }
-    ov12_0226430C(param_1, *((undefined1 *)(param_2 + 0x194)), *param_3);
-    sub_0200602C(*((undefined2 *)(param_3 + 2)), uVar1);
-    return;
+
+    ov12_0226430C(battleSys, battlerData->battler, message->command);
+    sub_0200602C(message->sdatID, pan);
 }
 #pragma force_active reset

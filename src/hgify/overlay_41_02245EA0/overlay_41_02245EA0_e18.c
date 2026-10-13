@@ -3,28 +3,35 @@
 #pragma thumb on
 #include "global.h"
 
-#include "ghidra_compat.h"
 #include "pokepic.h"
 #include "unk_02026E30.h"
-typedef int code();
-undefined4 ov41_02246830();
-undefined4 ov41_02246B5C();
-void ov41_0224621C(int param_1);
-// FUNCTION ov41_0224621C: matching C (r2)
-#pragma force_active on
-void ov41_0224621C(int param_1)
 
-{
+typedef struct UnkStruct_ov41_0224621C {
+    u8 unk_00[0x1C];
+    int unk_1C;
+    PokepicManager *unk_20;
+    u8 unk_24[8];
+    int unk_2C;
+} UnkStruct_ov41_0224621C;
+
+void ov41_02246830(UnkStruct_ov41_0224621C *param0);
+void ov41_02246B5C(UnkStruct_ov41_0224621C *param0);
+
+// FUNCTION ov41_0224621C: matching C (twin)
+#pragma force_active on
+void ov41_0224621C(UnkStruct_ov41_0224621C *param0) {
     Thunk_G3X_Reset();
     NNS_G2dSetupSoftwareSpriteCamera();
-    if (*(int *)(param_1 + 0x1c) != 0) {
-        ov41_02246830(param_1);
+
+    if (param0->unk_1C) {
+        ov41_02246830(param0);
     }
-    if (*(int *)(param_1 + 0x2c) != 0) {
-        PokepicManager_DrawAll(*(undefined4 *)(param_1 + 0x20));
+
+    if (param0->unk_2C) {
+        PokepicManager_DrawAll(param0->unk_20);
     }
-    RequestSwap3DBuffers(0, 0);
-    ov41_02246B5C(param_1);
-    return;
+
+    RequestSwap3DBuffers(GX_SORTMODE_AUTO, GX_BUFFERMODE_Z);
+    ov41_02246B5C(param0);
 }
 #pragma force_active reset

@@ -3,21 +3,17 @@
 #pragma thumb on
 #include "global.h"
 
-#include "error_handling.h"
-#include "ghidra_compat.h"
+#include "assert.h"
 #include "map_object.h"
-typedef int code();
-void MapObject_SetHeldMovement(undefined4 param_1, int param_2);
-// FUNCTION MapObject_SetHeldMovement: matching C (perm1)
+void MapObject_SetHeldMovement(LocalMapObject *object, int movementCommand);
+// FUNCTION MapObject_SetHeldMovement: matching C (twin)
 #pragma force_active on
-void MapObject_SetHeldMovement(undefined4 param_1, int param_2) {
-    if ((0x70 + 1) <= param_2) {
-        GF_AssertFail();
-    }
-    MapObject_SetMovementCommand(param_1, param_2);
-    MapObject_SetMovementStep(param_1, 0);
-    MapObject_SetFlagsBits(param_1, 0x10);
-    MapObject_ClearFlagsBits(param_1, 0x20);
-    return;
+void MapObject_SetHeldMovement(LocalMapObject *object, int movementCommand) {
+    GF_ASSERT(movementCommand < 0x71);
+
+    MapObject_SetMovementCommand(object, movementCommand);
+    MapObject_SetMovementStep(object, 0);
+    MapObject_SetFlagsBits(object, MAPOBJECTFLAG_UNK4);
+    MapObject_ClearFlagsBits(object, MAPOBJECTFLAG_UNK5);
 }
 #pragma force_active reset

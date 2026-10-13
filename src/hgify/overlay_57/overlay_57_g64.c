@@ -3,29 +3,29 @@
 #pragma thumb on
 #include "global.h"
 
-#include "ghidra_compat.h"
 #include "sprite_system.h"
-typedef int code();
-undefined4 ov57_02239014();
-undefined4 ov57_02238F48();
-void ov57_022394AC(int param_1);
-// FUNCTION ov57_022394AC: matching C (r2)
+typedef struct UnkStruct_ov57_022394AC {
+    u8 unk0[0x290];
+    struct {
+        int animIdx;
+        ManagedSprite *sprite;
+        int unk8;
+    } capsuleSprites[12];
+} UnkStruct_ov57_022394AC;
+void ov57_02239014(UnkStruct_ov57_022394AC *appMan);
+void ov57_02238F48(UnkStruct_ov57_022394AC *appMan);
+// FUNCTION ov57_022394AC: matching C (twin)
 #pragma force_active on
-void ov57_022394AC(int param_1)
+void ov57_022394AC(UnkStruct_ov57_022394AC *appMan) {
+    ov57_02239014(appMan);
+    ov57_02238F48(appMan);
 
-{
-    int iVar1;
-
-    ov57_02239014();
-    ov57_02238F48(param_1);
-    iVar1 = 0;
-    do {
-        if (*(int *)(param_1 + 0x294) != 0) {
-            ManagedSprite_SetAnim(*(int *)(param_1 + 0x294), *(undefined4 *)(param_1 + 0x290));
+    for (int i = 0; i < 12; i++) {
+        if (appMan->capsuleSprites[i].sprite == NULL) {
+            continue;
         }
-        iVar1 = iVar1 + 1;
-        param_1 = param_1 + 0xc;
-    } while (iVar1 < 0xc);
-    return;
+
+        ManagedSprite_SetAnim(appMan->capsuleSprites[i].sprite, appMan->capsuleSprites[i].animIdx);
+    }
 }
 #pragma force_active reset

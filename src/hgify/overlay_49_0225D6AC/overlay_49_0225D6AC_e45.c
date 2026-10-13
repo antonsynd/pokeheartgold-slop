@@ -3,20 +3,27 @@
 #pragma thumb on
 #include "global.h"
 
-#include "unk_02005D10.h"
-int ov49_0225D3BC(u32, u32, u32);
-void ov49_0225EAE0(u8 *, u32);
-// FUNCTION ov49_0225EAB4: matching C (agent10)
-#pragma force_active on
-void ov49_0225EAB4(u8 *param_1, u32 param_2) {
-    int flag = 0;
+#include "constants/sndseq.h"
 
-    if (ov49_0225D3BC(*(u32 *)(param_1 + 4), param_2, 0) == 0) {
-        flag = 1;
+#include "unk_02005D10.h"
+typedef struct UnkStruct_ov49_0225EAB4 {
+    int unk_00;
+    u32 unk_04;
+} UnkStruct_ov49_0225EAB4;
+int ov49_0225D3BC(u32, u32, u32);
+void ov49_0225EAE0(UnkStruct_ov49_0225EAB4 *, u32);
+// FUNCTION ov49_0225EAB4: matching C (twin)
+#pragma force_active on
+void ov49_0225EAB4(UnkStruct_ov49_0225EAB4 *param0, u32 param1) {
+    BOOL v0 = 0;
+
+    if (ov49_0225D3BC(param0->unk_04, param1, 0) == 0) {
+        v0 = 1;
     }
-    if (flag == 1) {
-        ov49_0225EAE0(param_1, param_2);
-        PlaySE(0x5c0);
+
+    if (v0 == 1) {
+        ov49_0225EAE0(param0, param1);
+        PlaySE(SEQ_SE_PL_EFF04);
     }
 }
 #pragma force_active reset

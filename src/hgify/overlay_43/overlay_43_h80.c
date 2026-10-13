@@ -2,16 +2,26 @@
 #pragma warning_errors off
 #pragma thumb on
 #include "global.h"
-int ov43_0222C620(int param_1);
-void ov43_0222AB20(int param_1, int param_2, u8 param_3, int param_4);
-void ov43_0222C550(int param_1, int param_2, int param_3, int param_4);
-// FUNCTION ov43_0222C32C: matching C (agent6)
-#pragma force_active on
-void ov43_0222C32C(int param_1, int param_2, int param_3, int param_4) {
-    int iVar1;
 
-    iVar1 = ov43_0222C620(param_1);
-    ov43_0222AB20(param_3, *(int *)(param_2 + 4), *(u8 *)(param_2 + iVar1 + 0x18), param_4);
-    ov43_0222C550(param_1, param_3, 0x39, param_4);
+#include "constants/heap.h"
+
+typedef struct UnkStruct_ov43_0222C32C {
+    u8 padding_00[4];
+    void *saveData;
+    u8 padding_08[0x10];
+    u8 unk_18[0x40];
+} UnkStruct_ov43_0222C32C;
+
+extern u32 ov43_0222C620(void *a);
+extern void ov43_0222AB20(void *a, void *b, u32 c, u32 d);
+extern void ov43_0222C550(void *a, void *b, u32 c, u32 d);
+
+// FUNCTION ov43_0222C32C: matching C (twin)
+#pragma force_active on
+void ov43_0222C32C(void *param0, UnkStruct_ov43_0222C32C *param1, void *param2, enum HeapID heapID) {
+    u32 v0 = ov43_0222C620(param0);
+
+    ov43_0222AB20(param2, param1->saveData, param1->unk_18[v0], heapID);
+    ov43_0222C550(param0, param2, 0x39, heapID);
 }
 #pragma force_active reset

@@ -3,26 +3,25 @@
 #pragma thumb on
 #include "global.h"
 
-#include "ghidra_compat.h"
 #include "map_object.h"
-typedef int code();
-undefined4 sub_02061E20();
-extern undefined _020FD7B8;
-void sub_02061284(undefined4 param_1, undefined4 param_2);
-// FUNCTION sub_02061284: matching C (r2)
+
+typedef struct UnkStruct_sub_02061284 {
+    u16 unk_00;
+    s16 unk_02;
+    int unk_04;
+} UnkStruct_sub_02061284;
+
+extern const int _020FD7B8;
+int sub_02061E20(const int *param0, int param1);
+
+// FUNCTION sub_02061284: matching C (twin)
 #pragma force_active on
-void sub_02061284(undefined4 param_1, undefined4 param_2)
+void sub_02061284(LocalMapObject *mapObj, int param1) {
+    UnkStruct_sub_02061284 *v0 = (UnkStruct_sub_02061284 *)sub_0205F370(mapObj, sizeof(UnkStruct_sub_02061284));
+    v0->unk_02 = sub_02061E20(&_020FD7B8, -1);
+    v0->unk_04 = param1;
 
-{
-    undefined2 uVar1;
-    int iVar2;
-
-    iVar2 = sub_0205F370(param_1, 8);
-    uVar1 = sub_02061E20(&_020FD7B8, 0xffffffff);
-    *(undefined2 *)(iVar2 + 2) = uVar1;
-    *(undefined4 *)(iVar2 + 4) = param_2;
-    sub_0205F328(param_1, 0);
-    MapObject_ClearSingleMovement(param_1);
-    return;
+    sub_0205F328(mapObj, 0x0);
+    MapObject_ClearSingleMovement(mapObj);
 }
 #pragma force_active reset

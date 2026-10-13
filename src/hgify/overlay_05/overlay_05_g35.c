@@ -3,26 +3,30 @@
 #pragma thumb on
 #include "global.h"
 
-#include "ghidra_compat.h"
 #include "message_format.h"
 #include "msgdata.h"
 #include "pm_string.h"
-typedef void code(void);
-void ov05_0221D020(int param_1);
-// FUNCTION ov05_0221D020: matching C (r2)
-#pragma force_active on
-void ov05_0221D020(int param_1)
 
-{
-    if (*(int *)(param_1 + 0xbb4) != 0) {
-        String_Delete((String *)*(int *)(param_1 + 0xbb4));
+typedef struct UnkStruct_ov05_0221D020 {
+    u8 unk_000[0xBAC];
+    MsgData *unk_BAC;
+    MessageFormat *unk_BB0;
+    String *unk_BB4;
+} UnkStruct_ov05_0221D020;
+
+// FUNCTION ov05_0221D020: matching C (twin)
+#pragma force_active on
+void ov05_0221D020(UnkStruct_ov05_0221D020 *param0) {
+    if (param0->unk_BB4 != NULL) {
+        String_Delete(param0->unk_BB4);
     }
-    if (*(int *)(param_1 + 0xbb0) != 0) {
-        MessageFormat_Delete((MessageFormat *)*(int *)(param_1 + 0xbb0));
+
+    if (param0->unk_BB0 != NULL) {
+        MessageFormat_Delete(param0->unk_BB0);
     }
-    if (*(int *)(param_1 + 0xbac) != 0) {
-        DestroyMsgData((MsgData *)*(int *)(param_1 + 0xbac));
+
+    if (param0->unk_BAC != NULL) {
+        DestroyMsgData(param0->unk_BAC);
     }
-    return;
 }
 #pragma force_active reset

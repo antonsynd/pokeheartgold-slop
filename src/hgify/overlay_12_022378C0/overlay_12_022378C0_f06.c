@@ -7,19 +7,16 @@
 
 #include "bg_window.h"
 #include "gf_gfx_planes.h"
-#include "ghidra_compat.h"
-typedef void code(void);
-// FUNCTION ov12_02238A30: matching C (r2)
+void ov12_02238A30(BgConfig *bgConfig);
+// FUNCTION ov12_02238A30: matching C (twin)
 #pragma force_active on
-void ov12_02238A30(BgConfig *param_1)
+void ov12_02238A30(BgConfig *bgConfig) {
+    GfGfx_EngineATogglePlanes(1, FALSE);
+    GfGfx_EngineATogglePlanes(2, FALSE);
+    FreeBgTilemapBuffer(bgConfig, 1);
+    FreeBgTilemapBuffer(bgConfig, 2);
+    FreeBgTilemapBuffer(bgConfig, 3);
 
-{
-    GfGfx_EngineATogglePlanes(1, 0);
-    GfGfx_EngineATogglePlanes(2, 0);
-    FreeBgTilemapBuffer(param_1, 1);
-    FreeBgTilemapBuffer(param_1, 2);
-    FreeBgTilemapBuffer(param_1, 3);
-    BgConfig_CleanupBattleMenuBackgrounds(param_1);
-    return;
+    BgConfig_CleanupBattleMenuBackgrounds(bgConfig);
 }
 #pragma force_active reset

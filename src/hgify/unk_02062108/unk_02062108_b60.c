@@ -3,25 +3,26 @@
 #pragma thumb on
 #include "global.h"
 
-#include "ghidra_compat.h"
 #include "map_object.h"
-typedef int code();
-undefined4 MapObjectMovementCmd040_Step1(undefined4 param_1);
-// FUNCTION MapObjectMovementCmd040_Step1: matching C (r2)
+
+typedef struct UnkStruct_MapObjectMovementCmd040_Step1 {
+    u8 unk_00[2];
+    s16 duration;
+} UnkStruct_MapObjectMovementCmd040_Step1;
+
+// FUNCTION MapObjectMovementCmd040_Step1: matching C (twin)
 #pragma force_active on
-undefined4 MapObjectMovementCmd040_Step1(undefined4 param_1)
+BOOL MapObjectMovementCmd040_Step1(LocalMapObject *mapObj) {
+    UnkStruct_MapObjectMovementCmd040_Step1 *data = (UnkStruct_MapObjectMovementCmd040_Step1 *)sub_0205F3E4(mapObj);
 
-{
-    int iVar1;
-
-    iVar1 = sub_0205F3E4((LocalMapObject *)param_1);
-    *(short *)(iVar1 + 2) = *(short *)(iVar1 + 2) + -1;
-    if (0 < *(short *)(iVar1 + 2)) {
-        return 0;
+    if (--(data->duration) > 0) {
+        return FALSE;
     }
-    MapObject_SetFlagsBits(param_1, 0x20);
-    sub_0205F328(param_1, 0);
-    MapObject_IncrementMovementStep(param_1);
-    return 1;
+
+    MapObject_SetFlagsBits(mapObj, 0x20);
+    sub_0205F328(mapObj, 0);
+    MapObject_IncrementMovementStep(mapObj);
+
+    return TRUE;
 }
 #pragma force_active reset

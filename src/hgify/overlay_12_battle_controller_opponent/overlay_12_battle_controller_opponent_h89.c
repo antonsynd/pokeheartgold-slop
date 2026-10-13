@@ -3,25 +3,42 @@
 #pragma thumb on
 #include "global.h"
 
+#include "constants/heap.h"
+
+#include "battle/battle.h"
+
 #include "heap.h"
 #include "sys_task_api.h"
-typedef struct Ov12_0225A9B0_Data {
-    u32 a;
-    u32 b;
-    u8 c;
-    u8 d;
-    u8 e;
-} Ov12_0225A9B0_Data;
+
+typedef struct UnkStruct_ov12_0225A9B0 {
+    BattleSystem *battleSys;
+    void *monSprite;
+    u8 battler;
+    u8 counter;
+    u8 delay;
+    u8 unused;
+} UnkStruct_ov12_0225A9B0;
+
+typedef struct UnkStruct_ov12_0225A9B0_Battler {
+    u8 unk_00[0x20];
+    void *monSprite;
+    u8 unk_24[0x194 - 0x24];
+    u8 battler;
+} UnkStruct_ov12_0225A9B0_Battler;
+
 extern void ov12_0225FF80(SysTask *, void *);
-// FUNCTION ov12_0225A9B0: matching C (agent4)
+
+// FUNCTION ov12_0225A9B0: matching C (twin)
 #pragma force_active on
-void ov12_0225A9B0(u32 a, u8 *bt) {
-    Ov12_0225A9B0_Data *p = Heap_Alloc(5, 0xc);
-    p->d = 0;
-    p->a = a;
-    p->b = *(u32 *)(bt + 0x20);
-    p->c = bt[0x194];
-    p->e = 0;
-    SysTask_CreateOnMainQueue(ov12_0225FF80, p, 0);
+void ov12_0225A9B0(BattleSystem *battleSys, UnkStruct_ov12_0225A9B0_Battler *battlerData) {
+    UnkStruct_ov12_0225A9B0 *flickerBattlerData = Heap_Alloc(HEAP_ID_BATTLE, sizeof(UnkStruct_ov12_0225A9B0));
+
+    flickerBattlerData->counter = 0;
+    flickerBattlerData->battleSys = battleSys;
+    flickerBattlerData->monSprite = battlerData->monSprite;
+    flickerBattlerData->battler = battlerData->battler;
+    flickerBattlerData->delay = 0;
+
+    SysTask_CreateOnMainQueue(ov12_0225FF80, flickerBattlerData, 0);
 }
 #pragma force_active reset

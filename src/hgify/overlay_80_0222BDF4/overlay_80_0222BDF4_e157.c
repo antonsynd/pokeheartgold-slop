@@ -5,21 +5,24 @@
 
 #include "bg_window.h"
 #include "error_handling.h"
-#include "ghidra_compat.h"
 #include "render_window.h"
-typedef int code();
-void ov80_0222E38C(int param_1);
-// FUNCTION ov80_0222E38C: matching C (r4)
-#pragma force_active on
-void ov80_0222E38C(int param_1)
 
-{
-    if (*(unsigned char *)(param_1 + 0x5a) != '\x01') {
-        GF_AssertFail();
-    }
-    ClearFrameAndWindow2(param_1 + 100, 0);
-    RemoveWindow(param_1 + 100);
-    *(undefined1 *)(param_1 + 0x5a) = 0;
-    return;
+typedef struct UnkStruct_ov80_0222E38C {
+    u8 unk_00[0x5a];
+    u8 isMsgBoxOpen;
+    u8 unk_5b[0x64 - 0x5b];
+    Window msgWindow;
+} UnkStruct_ov80_0222E38C;
+
+void ov80_0222E38C(UnkStruct_ov80_0222E38C *scriptMan);
+// FUNCTION ov80_0222E38C: matching C (twin)
+#pragma force_active on
+void ov80_0222E38C(UnkStruct_ov80_0222E38C *scriptMan) {
+    GF_ASSERT(scriptMan->isMsgBoxOpen == TRUE);
+
+    ClearFrameAndWindow2(&scriptMan->msgWindow, FALSE);
+    RemoveWindow(&scriptMan->msgWindow);
+
+    scriptMan->isMsgBoxOpen = FALSE;
 }
 #pragma force_active reset
