@@ -1,10 +1,10 @@
 {
  "summary": {
-  "generated": "2026-10-12T18:25:46Z",
+  "generated": "2026-10-13T12:37:00Z",
   "by_status": {
    "matched": {
     "files": 499,
-    "functions": 16385,
+    "functions": 16364,
     "insn_lines": 87424,
     "text_bytes_est": 195924
    },
@@ -28,8 +28,8 @@
    }
   },
   "function_totals": {
-   "tracked": 19292,
-   "matched": 16385,
+   "tracked": 19271,
+   "matched": 16364,
    "partial_in_blocked": 20,
    "pending": 2874
   },
@@ -41348,7 +41348,7 @@
    "status": "matched",
    "source": "hgify",
    "objects": 768,
-   "function_count": 766,
+   "function_count": 760,
    "lines": 0,
    "text_bytes_est": 0,
    "data_only": false,
@@ -41509,13 +41509,6 @@
     },
     {
      "name": "ov07_0221C4A8",
-     "mode": "thumb",
-     "insns": 0,
-     "size_est": 0,
-     "status": "matched"
-    },
-    {
-     "name": "ov07_0221C4C0",
      "mode": "thumb",
      "insns": 0,
      "size_est": 0,
@@ -41712,13 +41705,6 @@
     },
     {
      "name": "ov07_0221CE5C",
-     "mode": "thumb",
-     "insns": 0,
-     "size_est": 0,
-     "status": "matched"
-    },
-    {
-     "name": "ov07_0221CF14",
      "mode": "thumb",
      "insns": 0,
      "size_est": 0,
@@ -42936,13 +42922,6 @@
      "status": "matched"
     },
     {
-     "name": "ov07_02221A6C",
-     "mode": "thumb",
-     "insns": 0,
-     "size_est": 0,
-     "status": "matched"
-    },
-    {
      "name": "ov07_02221AD4",
      "mode": "thumb",
      "insns": 0,
@@ -43952,13 +43931,6 @@
     },
     {
      "name": "ov07_02224CB8",
-     "mode": "thumb",
-     "insns": 0,
-     "size_est": 0,
-     "status": "matched"
-    },
-    {
-     "name": "ov07_02224E58",
      "mode": "thumb",
      "insns": 0,
      "size_est": 0,
@@ -45309,13 +45281,6 @@
      "status": "matched"
     },
     {
-     "name": "ov07_0222FBEC",
-     "mode": "thumb",
-     "insns": 0,
-     "size_est": 0,
-     "status": "matched"
-    },
-    {
      "name": "ov07_0222FC44",
      "mode": "thumb",
      "insns": 0,
@@ -45632,13 +45597,6 @@
     },
     {
      "name": "ov07_022318A0",
-     "mode": "thumb",
-     "insns": 0,
-     "size_est": 0,
-     "status": "matched"
-    },
-    {
-     "name": "ov07_022318CC",
      "mode": "thumb",
      "insns": 0,
      "size_est": 0,
@@ -63337,7 +63295,7 @@
    "status": "matched",
    "source": "hgify",
    "objects": 88,
-   "function_count": 88,
+   "function_count": 86,
    "lines": 0,
    "text_bytes_est": 0,
    "data_only": false,
@@ -63658,13 +63616,6 @@
      "status": "matched"
     },
     {
-     "name": "ov39_02227E8C",
-     "mode": "thumb",
-     "insns": 0,
-     "size_est": 0,
-     "status": "matched"
-    },
-    {
      "name": "ov39_02227ECC",
      "mode": "thumb",
      "insns": 0,
@@ -63694,13 +63645,6 @@
     },
     {
      "name": "ov39_02227F74",
-     "mode": "thumb",
-     "insns": 0,
-     "size_est": 0,
-     "status": "matched"
-    },
-    {
-     "name": "ov39_02227F84",
      "mode": "thumb",
      "insns": 0,
      "size_est": 0,
@@ -68389,7 +68333,7 @@
    "status": "matched",
    "source": "hgify",
    "objects": 37,
-   "function_count": 37,
+   "function_count": 36,
    "lines": 0,
    "text_bytes_est": 0,
    "data_only": false,
@@ -68473,13 +68417,6 @@
     },
     {
      "name": "ov41_02249418",
-     "mode": "thumb",
-     "insns": 0,
-     "size_est": 0,
-     "status": "matched"
-    },
-    {
-     "name": "ov41_0224942C",
      "mode": "thumb",
      "insns": 0,
      "size_est": 0,
@@ -80962,7 +80899,7 @@
    "status": "matched",
    "source": "hgify",
    "objects": 111,
-   "function_count": 111,
+   "function_count": 110,
    "lines": 0,
    "text_bytes_est": 0,
    "data_only": false,
@@ -81627,13 +81564,6 @@
     },
     {
      "name": "ov57_0223B774",
-     "mode": "thumb",
-     "insns": 0,
-     "size_est": 0,
-     "status": "matched"
-    },
-    {
-     "name": "ov57_0223B78C",
      "mode": "thumb",
      "insns": 0,
      "size_est": 0,
@@ -90932,7 +90862,7 @@
    "status": "matched",
    "source": "hgify",
    "objects": 399,
-   "function_count": 399,
+   "function_count": 398,
    "lines": 0,
    "text_bytes_est": 0,
    "data_only": false,
@@ -91100,13 +91030,6 @@
     },
     {
      "name": "ov74_02229D50",
-     "mode": "thumb",
-     "insns": 0,
-     "size_est": 0,
-     "status": "matched"
-    },
-    {
-     "name": "ov74_02229D6C",
      "mode": "thumb",
      "insns": 0,
      "size_est": 0,
@@ -95726,7 +95649,7 @@
    "status": "matched",
    "source": "hgify",
    "objects": 191,
-   "function_count": 191,
+   "function_count": 190,
    "lines": 0,
    "text_bytes_est": 0,
    "data_only": false,
@@ -96755,13 +96678,6 @@
     },
     {
      "name": "FrtCmd_207",
-     "mode": "thumb",
-     "insns": 0,
-     "size_est": 0,
-     "status": "matched"
-    },
-    {
-     "name": "ov80_0222E268",
      "mode": "thumb",
      "insns": 0,
      "size_est": 0,
@@ -104089,7 +104005,7 @@
    "status": "matched",
    "source": "hgify",
    "objects": 233,
-   "function_count": 232,
+   "function_count": 229,
    "lines": 0,
    "text_bytes_est": 0,
    "data_only": false,
@@ -104452,13 +104368,6 @@
      "status": "matched"
     },
     {
-     "name": "ov85_021E66F4",
-     "mode": "thumb",
-     "insns": 0,
-     "size_est": 0,
-     "status": "matched"
-    },
-    {
      "name": "ov85_021E670C",
      "mode": "thumb",
      "insns": 0,
@@ -104795,13 +104704,6 @@
      "status": "matched"
     },
     {
-     "name": "ov85_021E78A4",
-     "mode": "thumb",
-     "insns": 0,
-     "size_est": 0,
-     "status": "matched"
-    },
-    {
      "name": "ov85_021E78D8",
      "mode": "thumb",
      "insns": 0,
@@ -104943,13 +104845,6 @@
     },
     {
      "name": "ov85_021E7E78",
-     "mode": "thumb",
-     "insns": 0,
-     "size_est": 0,
-     "status": "matched"
-    },
-    {
-     "name": "ov85_021E7E88",
      "mode": "thumb",
      "insns": 0,
      "size_est": 0,
@@ -110955,7 +110850,7 @@
    "status": "matched",
    "source": "hgify",
    "objects": 61,
-   "function_count": 61,
+   "function_count": 59,
    "lines": 0,
    "text_bytes_est": 0,
    "data_only": false,
@@ -111178,13 +111073,6 @@
      "status": "matched"
     },
     {
-     "name": "ov93_0225E10C",
-     "mode": "thumb",
-     "insns": 0,
-     "size_est": 0,
-     "status": "matched"
-    },
-    {
      "name": "ov93_0225E144",
      "mode": "thumb",
      "insns": 0,
@@ -111200,13 +111088,6 @@
     },
     {
      "name": "ov93_0225E1E0",
-     "mode": "thumb",
-     "insns": 0,
-     "size_est": 0,
-     "status": "matched"
-    },
-    {
-     "name": "ov93_0225E230",
      "mode": "thumb",
      "insns": 0,
      "size_est": 0,
@@ -111574,7 +111455,7 @@
    "status": "matched",
    "source": "hgify",
    "objects": 89,
-   "function_count": 89,
+   "function_count": 86,
    "lines": 0,
    "text_bytes_est": 0,
    "data_only": false,
@@ -111826,13 +111707,6 @@
     },
     {
      "name": "ov93_02261354",
-     "mode": "thumb",
-     "insns": 0,
-     "size_est": 0,
-     "status": "matched"
-    },
-    {
-     "name": "ov93_022614F4",
      "mode": "thumb",
      "insns": 0,
      "size_est": 0,
@@ -112091,13 +111965,6 @@
      "status": "matched"
     },
     {
-     "name": "ov93_022627A4",
-     "mode": "thumb",
-     "insns": 0,
-     "size_est": 0,
-     "status": "matched"
-    },
-    {
      "name": "ov93_022627C0",
      "mode": "thumb",
      "insns": 0,
@@ -112155,13 +112022,6 @@
     },
     {
      "name": "ov93_02262920",
-     "mode": "thumb",
-     "insns": 0,
-     "size_est": 0,
-     "status": "matched"
-    },
-    {
-     "name": "ov93_02262934",
      "mode": "thumb",
      "insns": 0,
      "size_est": 0,
@@ -125627,7 +125487,7 @@
    "status": "matched",
    "source": "hgify",
    "objects": 225,
-   "function_count": 225,
+   "function_count": 224,
    "lines": 0,
    "text_bytes_est": 0,
    "data_only": false,
@@ -125942,13 +125802,6 @@
     },
     {
      "name": "ov102_021E8CA4",
-     "mode": "thumb",
-     "insns": 0,
-     "size_est": 0,
-     "status": "matched"
-    },
-    {
-     "name": "ov102_021E8D1C",
      "mode": "thumb",
      "insns": 0,
      "size_est": 0,

@@ -30,19 +30,19 @@ Of the fork's additions, ▒ is C generated mechanically from Ghidra drafts. It 
 
 ```
 Functions in C (of ~29k total ROM functions)
-  █████████████████▓▓▓▓▓▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒░░░░░  ~90.2%  (~26,612)
+  █████████████████▓▓▓▓▓▓▓▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒░░░░░  ~90.2%  (~26,612)
 
 Functions fully matching (byte-identical to retail)
-  █████████████████▓▓▓▓▓▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒░░░░░  ~89.9%  (~26,525)
+  █████████████████▓▓▓▓▓▓▓▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒░░░░░  ~89.9%  (~26,525)
 
   █ pret/pokeheartgold   ▓ added in this fork   ▒ generated, not yet readable   ░ not yet in C
 ```
 
 | | Functions in C | Fully matching | NONMATCHING blocks |
 |---|---:|---:|---:|
-| █ From pret/pokeheartgold | ~10,207 | ~10,207 | 0 |
-| ▓ Added in this fork (LLM-assisted) | 2,867 | 2,780 | 87 |
-| ▒ Added in this fork, generated from Ghidra drafts | 13,538 | 13,538 | 0 |
+| █ From pret/pokeheartgold | ~10,228 | ~10,228 | 0 |
+| ▓ Added in this fork (LLM-assisted) | 3,950 | 3,863 | 87 |
+| ▒ Added in this fork, generated from Ghidra drafts | 12,434 | 12,434 | 0 |
 | Total | ~26,612 | ~26,525 | 87 |
 
 The fork's additions are counted from the files it decompiled. pret's figures (~) are derived from an estimated ~29,500 total ROM functions, because upstream doesn't keep the asm for decompiled files. A NONMATCHING block is a function with a C version kept for reference that is still linked from handwritten asm. It counts toward *Functions in C* but not *Fully matching*.

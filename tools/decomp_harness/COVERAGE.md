@@ -1,12 +1,12 @@
 # Decomp Coverage Ledger
 
-*Generated 2026-10-12T18:25:46Z by `coverage_ledger.py` — do not hand-edit; regenerate after each decomp.*
+*Generated 2026-10-13T12:37:00Z by `coverage_ledger.py` — do not hand-edit; regenerate after each decomp.*
 
-Tracked functions (files with retained asm): **19292** — matched 16385, pending 2874, plus 20 matched-but-blocked inside failed files.
+Tracked functions (files with retained asm): **19271** — matched 16364, pending 2874, plus 20 matched-but-blocked inside failed files.
 
 | status | files | functions | insn lines | ~text bytes |
 |---|---|---|---|---|
-| matched | 499 | 16385 | 87424 | 195924 |
+| matched | 499 | 16364 | 87424 | 195924 |
 | blocked | 5 | 33 | 1328 | 2942 |
 | pending | 243 | 2874 | 362051 | 810554 |
 | upstream | 397 | 0 | 0 | 0 |
@@ -36,18 +36,18 @@ Tracked functions (files with retained asm): **19292** — matched 16385, pendin
 | file | functions | insn lines | data-only | notes |
 |---|---|---|---|---|
 | asm/overlay_96.s | 779 | 0 |  | hgify |
-| asm/overlay_07.s | 766 | 0 |  | hgify |
+| asm/overlay_07.s | 760 | 0 |  | hgify |
 | asm/overlay_45_thumb.s | 529 | 0 |  | hgify |
 | asm/overlay_40.s | 436 | 0 |  | hgify |
 | asm/overlay_112.s | 424 | 0 |  | hgify |
 | asm/overlay_70.s | 419 | 0 |  | hgify |
-| asm/overlay_74_thumb.s | 399 | 0 |  | hgify |
+| asm/overlay_74_thumb.s | 398 | 0 |  | hgify |
 | asm/overlay_02_02248728.s | 364 | 14752 |  | retained_asm |
 | asm/overlay_08.s | 238 | 0 |  | hgify |
-| asm/overlay_85.s | 232 | 0 |  | hgify |
+| asm/overlay_85.s | 229 | 0 |  | hgify |
 | asm/overlay_91.s | 229 | 0 |  | hgify |
-| asm/overlay_102.s | 225 | 0 |  | hgify |
-| asm/overlay_80_0222BDF4.s | 191 | 0 |  | hgify |
+| asm/overlay_102.s | 224 | 0 |  | hgify |
+| asm/overlay_80_0222BDF4.s | 190 | 0 |  | hgify |
 | asm/overlay_14_021E5900.s | 173 | 0 |  | hgify |
 | asm/overlay_71.s | 173 | 0 |  | hgify |
 | asm/overlay_73.s | 173 | 0 |  | hgify |
@@ -66,16 +66,16 @@ Tracked functions (files with retained asm): **19292** — matched 16385, pendin
 | asm/overlay_59.s | 119 | 0 |  | hgify |
 | asm/overlay_99.s | 115 | 0 |  | hgify |
 | asm/overlay_14_021F2490.s | 113 | 0 |  | hgify |
-| asm/overlay_57.s | 111 | 0 |  | hgify |
+| asm/overlay_57.s | 110 | 0 |  | hgify |
 | asm/overlay_103.s | 104 | 0 |  | hgify |
 | asm/overlay_92.s | 103 | 0 |  | hgify |
 | asm/unk_0201010C.s | 100 | 0 |  | hgify |
 | asm/unk_02004A44.s | 95 | 1764 |  | harness |
 | asm/overlay_13_thumb_2.s | 95 | 0 |  | hgify |
 | asm/overlay_89.s | 89 | 0 |  | hgify |
-| asm/overlay_93_thumb_2.s | 89 | 0 |  | hgify |
-| asm/overlay_39_thumb.s | 88 | 0 |  | hgify |
 | asm/overlay_83_0223DD60.s | 88 | 0 |  | hgify |
+| asm/overlay_39_thumb.s | 86 | 0 |  | hgify |
+| asm/overlay_93_thumb_2.s | 86 | 0 |  | hgify |
 | asm/unk_020632B0.s | 85 | 0 |  | hgify |
 | asm/overlay_65.s | 84 | 0 |  | hgify |
 | asm/overlay_05.s | 83 | 0 |  | hgify |
@@ -105,11 +105,11 @@ Tracked functions (files with retained asm): **19292** — matched 16385, pendin
 | asm/overlay_86.s | 62 | 0 |  | hgify |
 | asm/unk_0202B614.s | 61 | 1125 |  | retained_asm |
 | asm/overlay_37.s | 61 | 0 |  | hgify |
-| asm/overlay_93_thumb_1.s | 61 | 0 |  | hgify |
 | asm/unk_02016EDC.s | 60 | 0 |  | hgify |
 | asm/overlay_18_021EE35C.s | 60 | 0 |  | hgify |
 | asm/overlay_49_0225D6AC.s | 60 | 0 |  | hgify |
 | asm/overlay_49_0225EEAC.s | 60 | 0 |  | hgify |
+| asm/overlay_93_thumb_1.s | 59 | 0 |  | hgify |
 | asm/overlay_01_021F1348.s | 58 | 0 |  | hgify |
 | asm/overlay_49_0225CB50.s | 58 | 0 |  | hgify |
 | asm/overlay_82.s | 58 | 0 |  | hgify |
@@ -159,11 +159,11 @@ Tracked functions (files with retained asm): **19292** — matched 16385, pendin
 | asm/overlay_49_022649F4.s | 38 | 0 |  | hgify |
 | asm/unk_02015DD8.s | 37 | 0 |  | hgify |
 | asm/overlay_01_021FC66C.s | 37 | 733 |  | harness |
-| asm/overlay_41_02248ED4.s | 37 | 0 |  | hgify |
 | asm/overlay_trainer_card_signature.s | 37 | 0 |  | hgify |
 | asm/overlay_02_02245B80.s | 36 | 0 |  | hgify |
 | asm/overlay_32.s | 36 | 1354 |  | harness |
 | asm/overlay_34.s | 36 | 1981 |  | harness |
+| asm/overlay_41_02248ED4.s | 36 | 0 |  | hgify |
 | asm/overlay_41_0224A5A4.s | 36 | 0 |  | hgify |
 | asm/overlay_14_021EE26C.s | 35 | 0 |  | hgify |
 | asm/overlay_trainer_card_main.s | 35 | 0 |  | hgify |
