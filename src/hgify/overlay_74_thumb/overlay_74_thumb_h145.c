@@ -2,9 +2,10 @@
 #pragma warning_errors off
 #pragma thumb on
 #include "global.h"
-void ov74_0222DE68(void);
-int sub_02014A08(int a, void *b, void *c);
-int SysTask_CreateOnVBlankQueue(void (*func)(void), void *arg, u32 size);
+
+#include "sys_task_api.h"
+#include "unk_02014A08.h"
+void ov74_0222DE68(SysTask *task, void *param);
 void ov74_0222DE8C(int param_1, int param_2, int param_3, int param_4);
 // FUNCTION ov74_0222DE8C: matching C (agent12)
 #pragma force_active on

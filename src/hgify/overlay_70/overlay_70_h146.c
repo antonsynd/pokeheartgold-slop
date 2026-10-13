@@ -2,6 +2,8 @@
 #pragma warning_errors off
 #pragma thumb on
 #include "global.h"
+
+#include "overlay_manager.h"
 typedef int (*Ov70Handler)(void *, void *, u32, u32);
 extern Ov70Handler ov70_02246528[];
 extern u8 ov70_022464FE[];

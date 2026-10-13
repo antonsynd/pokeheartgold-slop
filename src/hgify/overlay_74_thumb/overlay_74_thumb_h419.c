@@ -2,11 +2,12 @@
 #pragma warning_errors off
 #pragma thumb on
 #include "global.h"
+
+#include "bg_window.h"
+#include "unk_0200B150.h"
+#include "vram_transfer_manager.h"
 extern u8 ov74_0223E2D4[];
 extern u32 ov74_0223D454;
-void GF_RunVramTransferTasks(void);
-void OamManager_ApplyAndResetBuffers(void);
-void DoScheduledBgGpuUpdates(void);
 // FUNCTION ov74_02235A74: matching C (agent11)
 #pragma force_active on
 void ov74_02235A74(void) {
@@ -19,7 +20,7 @@ void ov74_02235A74(void) {
     GF_RunVramTransferTasks();
     OamManager_ApplyAndResetBuffers();
     if (*(u32 *)mgr != 0) {
-        DoScheduledBgGpuUpdates();
+        DoScheduledBgGpuUpdates((struct BgConfig *)*(u32 *)mgr);
     }
     {
         u32 *reg = (u32 *)0x027E0000;

@@ -2,8 +2,9 @@
 #pragma warning_errors off
 #pragma thumb on
 #include "global.h"
+
+#include "sprite.h"
 void ov102_021EAD5C(void *p, s16 *out);
-void Sprite_SetMatrix(void *sprite, void *mtx);
 void ov102_021EB088(int p, int x);
 void ov102_021EAFF0(int param_1, int param_2);
 // FUNCTION ov102_021EAFF0: matching C (agent16)
@@ -24,7 +25,7 @@ void ov102_021EAFF0(int param_1, int param_2) {
         v[1] = 0x18000;
         v[2] = 0;
     }
-    Sprite_SetMatrix(*(void **)(param_1 + 0x60), v);
+    Sprite_SetMatrix(*(Sprite **)(param_1 + 0x60), (VecFx32 *)v);
     iVar1 = 0xc0 - *(s16 *)(param_1 + 0x1e2);
     if (iVar1 > 0) {
         f = 0.5f + (float)(iVar1 * 0x1000);
@@ -32,7 +33,7 @@ void ov102_021EAFF0(int param_1, int param_2) {
         f = (float)(iVar1 * 0x1000) - 0.5f;
     }
     v[1] += (int)f;
-    Sprite_SetMatrix(*(void **)(param_1 + 0x64), v);
+    Sprite_SetMatrix(*(Sprite **)(param_1 + 0x64), (VecFx32 *)v);
     ov102_021EB088(param_1, 1);
 }
 #pragma force_active reset

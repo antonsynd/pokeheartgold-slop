@@ -2,9 +2,10 @@
 #pragma warning_errors off
 #pragma thumb on
 #include "global.h"
+
+#include "unk_02069528.h"
 extern u32 sub_0202D568(void *a0);
 extern void sub_0202D7F0(void *a0, u8 *out);
-extern void sub_02069528(void *a0, int a1, void *a2);
 extern void ov72_02237C30(int a0, int a1, u32 a2, void *a3);
 typedef struct UnkStruct_ov73_021E95CC_Inner {
     void *unk_00;
@@ -25,7 +26,7 @@ int ov73_021E95CC(UnkStruct_ov73_021E95CC *work) {
 
     r4 = sub_0202D568(work->unk_00->unk_00);
     sub_0202D7F0(work->unk_00->unk_04, buf);
-    sub_02069528(work->unk_00->unk_0C, 1, (u8 *)work + 0xAD8);
+    sub_02069528(work->unk_00->unk_0C, 1, (struct UnkStruct_02069528 *)((u8 *)work + 0xAD8));
     ov72_02237C30(buf[0], buf[1], r4, (u8 *)work + 0xAD8);
     work->unk_1C = 0x1b;
     *(int *)((u8 *)work + 0xF94) = 0;

@@ -2,6 +2,8 @@
 #pragma warning_errors off
 #pragma thumb on
 #include "global.h"
+
+#include "yes_no_prompt.h"
 typedef struct Ov39Tmpl {
     u32 a;
     u32 b;
@@ -13,8 +15,6 @@ typedef struct Ov39Tmpl {
     u8 hi : 4;
     u8 g;
 } Ov39Tmpl;
-u32 YesNoPrompt_Create(int);
-void YesNoPrompt_InitFromTemplate(u32, void *);
 // FUNCTION ov39_02228AC0: matching C (agent11)
 #pragma force_active on
 u32 ov39_02228AC0(u32 param_1, u32 param_2) {
@@ -31,7 +31,7 @@ u32 ov39_02228AC0(u32 param_1, u32 param_2) {
     t.lo = 0;
     t.hi = 0;
     t.g = 0;
-    YesNoPrompt_InitFromTemplate(uVar1, &t);
+    YesNoPrompt_InitFromTemplate(uVar1, (const struct YesNoPromptTemplate *)&t);
     return uVar1;
 }
 #pragma force_active reset

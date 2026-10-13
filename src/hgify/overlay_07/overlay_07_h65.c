@@ -2,6 +2,8 @@
 #pragma warning_errors off
 #pragma thumb on
 #include "global.h"
+
+#include "field_move.h"
 typedef struct UnkStruct_ov07_0221D0E8 UnkStruct_ov07_0221D0E8;
 typedef void (*UnkFunc_ov07_0221D0E8)(UnkStruct_ov07_0221D0E8 *);
 struct UnkStruct_ov07_0221D0E8 {

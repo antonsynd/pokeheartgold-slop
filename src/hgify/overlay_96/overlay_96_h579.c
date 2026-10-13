@@ -2,6 +2,8 @@
 #pragma warning_errors off
 #pragma thumb on
 #include "global.h"
+
+#include "sprite_system.h"
 typedef struct {
     u32 w[6];
 } Blk24_ov96_021F8448;
@@ -14,11 +16,6 @@ typedef struct {
 extern const Blk24_ov96_021F8448 ov96_0221C2D8;
 extern const Blk32_ov96_021F8448 ov96_0221C2F0;
 extern const Blk20_ov96_021F8448 ov96_0221C2C4;
-void *SpriteSystem_Alloc(u32 heapId);
-void *SpriteManager_New(void *sys);
-void SpriteSystem_Init(void *sys, void *a, void *b, int c);
-void SpriteSystem_InitSprites(void *sys, void *mgr, int c);
-void SpriteSystem_InitManagerWithCapacities(void *sys, void *mgr, void *p);
 void ov96_021F8448(u32 *param_1);
 // FUNCTION ov96_021F8448: matching C (agent16)
 #pragma force_active on
@@ -30,8 +27,8 @@ void ov96_021F8448(u32 *param_1) {
     a.w[0] = 0x1a;
     param_1[0x25] = (u32)SpriteSystem_Alloc(param_1[0]);
     param_1[0x26] = (u32)SpriteManager_New((void *)param_1[0x25]);
-    SpriteSystem_Init((void *)param_1[0x25], &b, &a, 0x20);
+    SpriteSystem_Init((void *)param_1[0x25], (const struct OamManagerParam *)&b, (const struct OamCharTransferParam *)&a, 0x20);
     SpriteSystem_InitSprites((void *)param_1[0x25], (void *)param_1[0x26], 2);
-    SpriteSystem_InitManagerWithCapacities((void *)param_1[0x25], (void *)param_1[0x26], &c);
+    SpriteSystem_InitManagerWithCapacities((void *)param_1[0x25], (void *)param_1[0x26], (union SpriteResourceCountsListUnion *)&c);
 }
 #pragma force_active reset

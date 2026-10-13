@@ -2,11 +2,12 @@
 #pragma warning_errors off
 #pragma thumb on
 #include "global.h"
+
+#include "unk_0206979C.h"
 extern const u32 ov85_021EA5C4[];
 extern const u32 ov85_021EA5DC[];
 extern void sub_020696C4(void *a, u32 b, void *narc, u32 c, u32 heapId, u32 d);
 extern void sub_02069714(void *a);
-extern void sub_02069978(void *a, void *b);
 typedef struct {
     u32 a;
     u32 b;
@@ -21,7 +22,7 @@ void ov85_021E752C(u8 *p) {
 
     sub_020696C4(v2 + 0x54, 0, *(void **)(p + 0xd80), ov85_021EA5C4[idx], 0x66, 0);
     sub_02069714(v2 + 0x54);
-    sub_02069978(v2 + 0x68, v2 + 0x54);
+    sub_02069978((NNSG3dRenderObj *)(v2 + 0x68), (UnkOv01_021FFECC_sub *)(v2 + 0x54));
 
     *(u32 *)(v2 + 0x3c) = 0;
     *(u32 *)(v2 + 0x44) = ov85_021EA5DC[idx];

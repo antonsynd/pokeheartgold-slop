@@ -2,10 +2,10 @@
 #pragma warning_errors off
 #pragma thumb on
 #include "global.h"
+
+#include "sprite_system.h"
 extern s16 ov96_0221BA80[];
 extern u8 ov96_0221DA80[];
-void *SpriteSystem_NewSpriteWithYOffset(void *a, void *b, void *tmpl, int yOff);
-void ManagedSprite_SetAnimateFlag(void *spr, int flag);
 void ov96_021EFA04(void *app);
 void ov96_021EF99C(u8 *app);
 // FUNCTION ov96_021EF99C: matching C (agent14)
@@ -23,7 +23,7 @@ void ov96_021EF99C(u8 *app) {
         void *b = *(void **)(app + 0x14);
         dst[0] = src[0];
         dst[1] = src[1];
-        spr = SpriteSystem_NewSpriteWithYOffset(a, b, tmpl, 0x200000);
+        spr = SpriteSystem_NewSpriteWithYOffset(a, b, (const ManagedSpriteTemplate *)tmpl, 0x200000);
         *(void **)(o + 0x38) = spr;
         ManagedSprite_SetAnimateFlag(spr, 1);
         src += 2;

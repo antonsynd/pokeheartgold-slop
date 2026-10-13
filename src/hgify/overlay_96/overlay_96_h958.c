@@ -2,10 +2,11 @@
 #pragma warning_errors off
 #pragma thumb on
 #include "global.h"
-u32 SpriteSystem_GetRenderer(u32 a);
-void G2dRenderer_SetMainSurfaceCoords(u32 a, int b, int c);
-void ScheduleSetBgPosText(u32 a, int b, int c, int d);
-void SysTask_Destroy(u8 *a);
+
+#include "bg_window.h"
+#include "sprite_system.h"
+#include "sys_task_api.h"
+#include "unk_02009D48.h"
 // FUNCTION ov96_0220D360: matching C (agent16)
 #pragma force_active on
 void ov96_0220D360(u8 *param_1, u32 *param_2) {
@@ -19,22 +20,22 @@ void ov96_0220D360(u8 *param_1, u32 *param_2) {
         iVar3 = -1;
     }
     iVar2 = *(s8 *)((u8 *)param_2 + 0xc) * iVar3;
-    ScheduleSetBgPosText(param_2[1], 1, 3, iVar2 + 8);
-    ScheduleSetBgPosText(param_2[1], 0, 3, iVar2);
-    uVar1 = SpriteSystem_GetRenderer(param_2[0]);
-    G2dRenderer_SetMainSurfaceCoords(uVar1, 0, (-iVar2) << 12);
+    ScheduleSetBgPosText((BgConfig *)param_2[1], 1, 3, iVar2 + 8);
+    ScheduleSetBgPosText((BgConfig *)param_2[1], 0, 3, iVar2);
+    uVar1 = (u32)SpriteSystem_GetRenderer((SpriteSystem *)param_2[0]);
+    G2dRenderer_SetMainSurfaceCoords((G2dRenderer *)uVar1, 0, (-iVar2) << 12);
     if (*(s8 *)((u8 *)param_2 + 0xd) % 2 == 1) {
         *(s8 *)((u8 *)param_2 + 0xc) = *(s8 *)((u8 *)param_2 + 0xc) - 1;
     }
     param_2[4] = param_2[4] ^ 1;
     *(s8 *)((u8 *)param_2 + 0xd) = *(s8 *)((u8 *)param_2 + 0xd) - 1;
     if (*(s8 *)((u8 *)param_2 + 0xd) <= 0) {
-        ScheduleSetBgPosText(param_2[1], 1, 3, 8);
-        ScheduleSetBgPosText(param_2[1], 0, 3, 0);
-        uVar1 = SpriteSystem_GetRenderer(param_2[0]);
-        G2dRenderer_SetMainSurfaceCoords(uVar1, 0, 0);
+        ScheduleSetBgPosText((BgConfig *)param_2[1], 1, 3, 8);
+        ScheduleSetBgPosText((BgConfig *)param_2[1], 0, 3, 0);
+        uVar1 = (u32)SpriteSystem_GetRenderer((SpriteSystem *)param_2[0]);
+        G2dRenderer_SetMainSurfaceCoords((G2dRenderer *)uVar1, 0, 0);
         param_2[2] = 0;
-        SysTask_Destroy(param_1);
+        SysTask_Destroy((SysTask *)param_1);
     }
 }
 #pragma force_active reset

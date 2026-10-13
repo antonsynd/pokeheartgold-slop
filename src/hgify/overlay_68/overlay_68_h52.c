@@ -2,6 +2,10 @@
 #pragma warning_errors off
 #pragma thumb on
 #include "global.h"
+
+#include "gf_gfx_planes.h"
+#include "sprite_system.h"
+#include "vram_transfer_manager.h"
 typedef struct {
     u32 w[6];
 } Ov68ArrA;
@@ -14,14 +18,6 @@ typedef struct {
 extern Ov68ArrA ov68_021E7C2C;
 extern Ov68ArrB ov68_021E7CD0;
 extern Ov68ArrC ov68_021E7C18;
-void GF_CreateVramTransferManager(u32 size, u32 heap);
-void *SpriteSystem_Alloc(u32 heapId);
-void *SpriteManager_New(void *sys);
-void SpriteSystem_Init(void *sys, void *a, void *b, int n);
-void SpriteSystem_InitSprites(void *sys, void *mgr, u32 x);
-void SpriteSystem_InitManagerWithCapacities(void *sys, void *mgr, void *p);
-void GfGfx_EngineATogglePlanes(u8 a, u8 b);
-void GfGfx_EngineBTogglePlanes(u8 a, u8 b);
 void ov68_021E6DDC(u8 *param_1);
 // FUNCTION ov68_021E6DDC: matching C (agent16)
 #pragma force_active on
@@ -36,9 +32,9 @@ void ov68_021E6DDC(u8 *param_1) {
     *(void **)(param_1 + 0x120) = SpriteManager_New(*(void **)(param_1 + 0x11c));
     b = ov68_021E7CD0;
     c = ov68_021E7C18;
-    SpriteSystem_Init(*(void **)(param_1 + 0x11c), &b, &c, 0x20);
+    SpriteSystem_Init(*(void **)(param_1 + 0x11c), (const OamManagerParam *)&b, (const OamCharTransferParam *)&c, 0x20);
     SpriteSystem_InitSprites(*(void **)(param_1 + 0x11c), *(void **)(param_1 + 0x120), 0xc);
-    SpriteSystem_InitManagerWithCapacities(*(void **)(param_1 + 0x11c), *(void **)(param_1 + 0x120), &a);
+    SpriteSystem_InitManagerWithCapacities(*(void **)(param_1 + 0x11c), *(void **)(param_1 + 0x120), (SpriteResourceCountsListUnion *)&a);
     GfGfx_EngineATogglePlanes(0x10, 1);
     GfGfx_EngineBTogglePlanes(0x10, 1);
 }

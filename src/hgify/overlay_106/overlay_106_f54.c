@@ -2,6 +2,8 @@
 #pragma warning_errors off
 #pragma thumb on
 #include "global.h"
+
+#include "overlay_42.h"
 typedef s32 (*UnkFunc_ov106_021E6988)(u8 *work, s32 *script);
 struct Data {
     u8 pad[0x14];
