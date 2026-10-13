@@ -2,6 +2,8 @@
 #pragma warning_errors off
 #pragma thumb on
 #include "global.h"
+
+#include "field_move.h"
 typedef struct UnkStruct_MapLoadManager_InitialLoad UnkStruct_MapLoadManager_InitialLoad;
 typedef void (*UnkFunc_MapLoadManager_InitialLoad)(UnkStruct_MapLoadManager_InitialLoad *manager, s32 playerTileX, s32 playerTileZ, u32 unk_CC);
 typedef struct UnkStruct_MapLoadManager_InitialLoad_Fns {

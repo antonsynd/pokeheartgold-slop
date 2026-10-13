@@ -2,22 +2,23 @@
 #pragma warning_errors off
 #pragma thumb on
 #include "global.h"
+
+#include "frontier/frontier_script_context.h"
+#include "frontier/overlay_80_0222BDF4.h"
 typedef struct FrontierScriptManager {
     void *frontier;
 } FrontierScriptManager;
-typedef struct FrontierScriptContext {
+typedef struct FrontierScriptContext_FrtCmd_004 {
     FrontierScriptManager *scriptMan;
-} FrontierScriptContext;
-extern u16 FrontierScript_ReadVar(FrontierScriptContext *ctx);
-extern void sub_02096854(void *frontier, u16 sceneID, u16 entryPoint);
-extern void FrontierScriptContext_Stop(FrontierScriptContext *ctx);
+} FrontierScriptContext_FrtCmd_004;
+extern void sub_02096854(void *frontier, u32 sceneID, u32 entryPoint);
 BOOL FrtCmd_004(FrontierScriptContext *ctx);
 // FUNCTION FrtCmd_004: matching C (r0)
 #pragma force_active on
 BOOL FrtCmd_004(FrontierScriptContext *ctx) {
-    FrontierScriptManager *scriptMan = ctx->scriptMan;
-    u16 sceneID = FrontierScript_ReadVar(ctx);
-    u16 entryPoint = FrontierScript_ReadVar(ctx);
+    FrontierScriptManager *scriptMan = ((FrontierScriptContext_FrtCmd_004 *)ctx)->scriptMan;
+    int sceneID = FrontierScript_ReadVar(ctx);
+    int entryPoint = FrontierScript_ReadVar(ctx);
 
     sub_02096854(scriptMan->frontier, sceneID, entryPoint);
     FrontierScriptContext_Stop(ctx);
