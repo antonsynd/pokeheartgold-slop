@@ -4,14 +4,22 @@
 #include "global.h"
 
 #include "font_types_def.h"
-typedef BOOL (*ov95_021E6300_Fn)(void *, void *, u32, u32);
-extern ov95_021E6300_Fn ov95_021E7810[];
-BOOL ov95_021E6300(void *param0, void *a1, void *a2, u32 callerR3);
-// FUNCTION ov95_021E6300: matching C (agent9)
+
+// Layout up to isManaphy, the only field read here.
+typedef struct EggHatchCutscene {
+    u8 unk00[0x5C];
+    u32 isManaphy;
+} EggHatchCutscene;
+
+// HeartGold passes the table entry, its byte offset and r3 along with the cutscene pointer.
+typedef BOOL (*EggHatchCutsceneFunc)(void *, void *, u32, u32);
+extern EggHatchCutsceneFunc ov95_021E7810[];
+
+// FUNCTION ov95_021E6300: matching C (twin)
 #pragma force_active on
-BOOL ov95_021E6300(void *param0, void *a1, void *a2, u32 callerR3) {
-    u32 idx = *(u32 *)((u8 *)param0 + 0x5c);
-    ov95_021E6300_Fn fn = ov95_021E7810[idx];
-    return fn(param0, (void *)fn, idx * 4, callerR3);
+BOOL ov95_021E6300(EggHatchCutscene *eggHatch, void *a1, void *a2, u32 callerR3) {
+    u32 idx = eggHatch->isManaphy;
+    EggHatchCutsceneFunc fn = ov95_021E7810[idx];
+    return fn(eggHatch, (void *)fn, idx * 4, callerR3);
 }
 #pragma force_active reset

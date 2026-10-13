@@ -2,12 +2,18 @@
 #pragma warning_errors off
 #pragma thumb on
 #include "global.h"
-extern const u8 ov48_0225B239[];
+
+typedef struct UnkStruct_ov48_0225B239_t {
+    u8 unk_00;
+    u8 unk_01;
+} UnkStruct_ov48_0225B239;
+
+extern const UnkStruct_ov48_0225B239 ov48_0225B239[];
 u8 ov48_0225B050(u32 param0);
-// FUNCTION ov48_0225B050: matching C (r0)
+// FUNCTION ov48_0225B050: matching C (twin)
 #pragma force_active on
 u8 ov48_0225B050(u32 param0) {
     GF_ASSERT(param0 < 24);
-    return ov48_0225B239[param0 * 2];
+    return ov48_0225B239[param0].unk_00;
 }
 #pragma force_active reset

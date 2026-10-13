@@ -3,18 +3,13 @@
 #pragma thumb on
 #include "global.h"
 
-#include "ghidra_compat.h"
 #include "map_object.h"
-typedef int code();
-void MapObject_ForceSetHeldMovement(LocalMapObject *param_1, u32 command);
-// FUNCTION MapObject_ForceSetHeldMovement: matching C (r2)
-#pragma force_active on
-void MapObject_ForceSetHeldMovement(LocalMapObject *param_1, u32 command)
 
-{
-    MapObject_SetMovementCommand(param_1, command);
-    MapObject_SetMovementStep(param_1, 0);
-    MapObject_ClearFlagsBits(param_1, 0x20);
-    return;
+// FUNCTION MapObject_ForceSetHeldMovement: matching C (twin)
+#pragma force_active on
+void MapObject_ForceSetHeldMovement(LocalMapObject *mapObj, u32 movementAction) {
+    MapObject_SetMovementCommand(mapObj, movementAction);
+    MapObject_SetMovementStep(mapObj, 0);
+    MapObject_ClearFlagsBits(mapObj, MAPOBJECTFLAG_UNK5);
 }
 #pragma force_active reset

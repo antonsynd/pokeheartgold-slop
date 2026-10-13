@@ -3,19 +3,21 @@
 #pragma thumb on
 #include "global.h"
 
-#include "ghidra_compat.h"
 #include "obj_char_transfer.h"
 #include "unk_02013534.h"
-typedef int code();
-void ov40_0222D6D0(int param_1);
-// FUNCTION ov40_0222D6D0: matching C (r2)
-#pragma force_active on
-void ov40_0222D6D0(int param_1)
 
-{
-    sub_02013938(*(undefined4 *)(param_1 + 0xc));
-    TextOBJ_Destroy(*(undefined4 *)(param_1 + 8));
-    sub_02021B5C(param_1 + 0x10);
-    return;
+typedef struct UnkStruct_ov40_0222D6D0 {
+    u8 unk_00[0x8];
+    TextOBJ *unk_08;
+    UnkStruct_02013910 *unk_0C;
+    UnkStruct_02021AC8 unk_10;
+} UnkStruct_ov40_0222D6D0;
+
+// FUNCTION ov40_0222D6D0: matching C (twin)
+#pragma force_active on
+void ov40_0222D6D0(UnkStruct_ov40_0222D6D0 *param0) {
+    sub_02013938(param0->unk_0C);
+    TextOBJ_Destroy(param0->unk_08);
+    sub_02021B5C(&param0->unk_10);
 }
 #pragma force_active reset

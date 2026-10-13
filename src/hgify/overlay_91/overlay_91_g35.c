@@ -4,19 +4,19 @@
 #include "global.h"
 
 #include "bg_window.h"
-#include "ghidra_compat.h"
 #include "unk_0200B150.h"
 #include "vram_transfer_manager.h"
-typedef int code();
-void ov91_0225D2D0(int param_1);
-// FUNCTION ov91_0225D2D0: matching C (r2)
-#pragma force_active on
-void ov91_0225D2D0(int param_1)
 
-{
-    DoScheduledBgGpuUpdates(*(undefined4 *)(param_1 + 0x1ab4));
+typedef struct UnkStruct_ov91_0225D2D0 {
+    u8 unk_0000[0x1AB4];
+    BgConfig *unk_1AB4;
+} UnkStruct_ov91_0225D2D0;
+
+// FUNCTION ov91_0225D2D0: matching C (twin)
+#pragma force_active on
+void ov91_0225D2D0(UnkStruct_ov91_0225D2D0 *param0) {
+    DoScheduledBgGpuUpdates(param0->unk_1AB4);
     GF_RunVramTransferTasks();
     OamManager_ApplyAndResetBuffers();
-    return;
 }
 #pragma force_active reset

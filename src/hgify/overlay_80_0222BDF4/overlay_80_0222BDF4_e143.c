@@ -3,23 +3,17 @@
 #pragma thumb on
 #include "global.h"
 
+#include "frontier/frontier_script_context.h"
 #include "frontier/overlay_80_0222BDF4.h"
 
-#include "ghidra_compat.h"
-typedef int code();
-undefined4 sub_020304B4();
-undefined4 FrtCmd_113(FrontierScriptContext *ctx);
-// FUNCTION FrtCmd_113: matching C (r2)
+u16 sub_020304B4(void);
+
+// FUNCTION FrtCmd_113: matching C (twin)
 #pragma force_active on
-undefined4 FrtCmd_113(FrontierScriptContext *ctx)
+BOOL FrtCmd_113(FrontierScriptContext *ctx) {
+    u16 *destVar = FrontierScript_ReadVarPtr(ctx);
 
-{
-    undefined2 uVar1;
-    undefined2 *puVar2;
-
-    puVar2 = (undefined2 *)FrontierScript_ReadVarPtr(ctx);
-    uVar1 = sub_020304B4();
-    *puVar2 = uVar1;
-    return 0;
+    *destVar = sub_020304B4();
+    return FALSE;
 }
 #pragma force_active reset

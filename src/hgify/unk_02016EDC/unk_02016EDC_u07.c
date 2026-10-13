@@ -3,21 +3,17 @@
 #pragma thumb on
 #include "global.h"
 
-#include "error_handling.h"
-#include "ghidra_compat.h"
-typedef int code();
-undefined4 sub_020171F4(int param_1, int param_2, int param_3);
-// FUNCTION sub_020171F4: matching C (r2)
+#include "assert.h"
+
+// FUNCTION sub_020171F4: matching C (twin)
 #pragma force_active on
-undefined4 sub_020171F4(int param_1, int param_2, int param_3)
+int sub_020171F4(u32 *scriptPtr, u8 index, u8 one) {
+    int ret = scriptPtr[index];
 
-{
-    undefined4 uVar1;
-
-    uVar1 = *(undefined4 *)(param_1 + param_2 * 4);
-    if (param_3 != 1) {
-        GF_AssertFail();
+    if (one != 1) {
+        GF_ASSERT(FALSE);
     }
-    return uVar1;
+
+    return ret;
 }
 #pragma force_active reset

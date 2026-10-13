@@ -6,11 +6,11 @@
 #include "bg_window.h"
 typedef struct {
     int a, b, c;
-    void *bgConfig;
+    BgConfig *bgConfig;
 } Work;
-// FUNCTION ov102_021EBB1C: matching C (agent2)
+// FUNCTION ov102_021EBB1C: matching C (twin)
 #pragma force_active on
-void ov102_021EBB1C(Work *work, int a, int b, int c) {
-    BgSetPosTextAndCommit(work->bgConfig, 1, 3, 0x10);
+void ov102_021EBB1C(Work *ctx) {
+    BgSetPosTextAndCommit(ctx->bgConfig, 1, BG_POS_OP_SET_Y, 0x10);
 }
 #pragma force_active reset

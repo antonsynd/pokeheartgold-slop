@@ -4,16 +4,15 @@
 #include "global.h"
 
 #include "bg_window.h"
-#include "ghidra_compat.h"
-typedef int code();
-void ov75_02247D0C(int param_1);
-// FUNCTION ov75_02247D0C: matching C (r2)
+#include "render_window.h"
+typedef struct UnkStruct_ov75_02247D0C {
+    u8 unk_00[0xD4];
+    Window unk_D4;
+} UnkStruct_ov75_02247D0C;
+// FUNCTION ov75_02247D0C: matching C (twin)
 #pragma force_active on
-void ov75_02247D0C(int param_1)
-
-{
-    FillWindowPixelBuffer(param_1 + 0xd4, 0xf);
-    CopyWindowToVram(param_1 + 0xd4);
-    return;
+void ov75_02247D0C(UnkStruct_ov75_02247D0C *param0) {
+    FillWindowPixelBuffer(&param0->unk_D4, 0xf);
+    CopyWindowToVram(&param0->unk_D4);
 }
 #pragma force_active reset

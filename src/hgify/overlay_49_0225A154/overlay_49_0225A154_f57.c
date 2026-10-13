@@ -3,19 +3,20 @@
 #pragma thumb on
 #include "global.h"
 
-#include "ghidra_compat.h"
 #include "render_window.h"
-typedef int code();
-void ov49_0225AC24(int param_1);
-// FUNCTION ov49_0225AC24: matching C (r2)
-#pragma force_active on
-void ov49_0225AC24(int param_1)
 
-{
-    if (*(int *)(param_1 + 0x1c) != 0) {
-        sub_0200F450((WaitingIcon *)*(int *)(param_1 + 0x1c));
-        *(undefined4 *)(param_1 + 0x1c) = 0;
+// Layout up to unk_1C, the only field this function touches.
+typedef struct UnkStruct_ov49_0225AC24 {
+    u8 unk00[0x1C];
+    WaitingIcon *unk_1C;
+} UnkStruct_ov49_0225AC24;
+
+// FUNCTION ov49_0225AC24: matching C (twin)
+#pragma force_active on
+void ov49_0225AC24(UnkStruct_ov49_0225AC24 *param0) {
+    if (param0->unk_1C != NULL) {
+        sub_0200F450(param0->unk_1C);
+        param0->unk_1C = NULL;
     }
-    return;
 }
 #pragma force_active reset

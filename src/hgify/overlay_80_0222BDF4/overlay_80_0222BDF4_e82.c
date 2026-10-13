@@ -4,20 +4,16 @@
 #include "global.h"
 
 #include "frontier/frontier.h"
+#include "frontier/frontier_script_context.h"
 
-#include "ghidra_compat.h"
 #include "save.h"
-typedef int code();
-undefined4 FrtCmd_116(undefined4 *param_1);
-// FUNCTION FrtCmd_116: matching C (r2)
+
+// FUNCTION FrtCmd_116: matching C (twin)
 #pragma force_active on
-undefined4 FrtCmd_116(undefined4 *param_1)
+BOOL FrtCmd_116(FrontierScriptContext *ctx) {
+    FrontierLaunchArgs *launchArgs = Frontier_GetLaunchArgs(ctx->frontierSystem->unk0);
 
-{
-    int iVar1;
-
-    iVar1 = Frontier_GetLaunchArgs(*(undefined4 *)*param_1);
-    Save_WipeExtraChunks(*(undefined4 *)(iVar1 + 8));
-    return 0;
+    Save_WipeExtraChunks(launchArgs->saveData);
+    return FALSE;
 }
 #pragma force_active reset

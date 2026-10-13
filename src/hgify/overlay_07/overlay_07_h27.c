@@ -3,18 +3,18 @@
 #pragma thumb on
 #include "global.h"
 
-#include "error_handling.h"
-#include "ghidra_compat.h"
-typedef void code(void);
-undefined4 ov07_0221C514(int param_1);
-// FUNCTION ov07_0221C514: matching C (r2)
-#pragma force_active on
-undefined4 ov07_0221C514(int param_1)
+#include "assert.h"
+#include "sprite_system.h"
 
-{
-    if (param_1 == 0) {
-        GF_AssertFail();
-    }
-    return *(undefined4 *)(param_1 + 0x138);
+typedef struct BattleAnimSystem {
+    u8 unk_000[0x138];
+    SpriteManager *pokemonSpriteManager;
+} BattleAnimSystem;
+
+// FUNCTION ov07_0221C514: matching C (twin)
+#pragma force_active on
+SpriteManager *ov07_0221C514(BattleAnimSystem *system) {
+    GF_ASSERT(system != NULL);
+    return system->pokemonSpriteManager;
 }
 #pragma force_active reset

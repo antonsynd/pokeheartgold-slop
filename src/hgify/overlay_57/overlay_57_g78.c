@@ -4,17 +4,15 @@
 #include "global.h"
 
 #include "gf_gfx_planes.h"
-#include "ghidra_compat.h"
-typedef int code();
-void ov57_02239B94(void);
-// FUNCTION ov57_02239B94: matching C (r2)
-#pragma force_active on
-void ov57_02239B94(void)
 
-{
+// No HeartGold header names the OBJ plane mask.
+#define GF_PLANEMASK_OBJ 0x10
+
+// FUNCTION ov57_02239B94: matching C (twin)
+#pragma force_active on
+void ov57_02239B94(void) {
     GfGfx_BothDispOn();
-    GfGfx_EngineATogglePlanes(0x10, 1);
-    GfGfx_EngineBTogglePlanes(0x10, 1);
-    return;
+    GfGfx_EngineATogglePlanes(GF_PLANEMASK_OBJ, TRUE);
+    GfGfx_EngineBTogglePlanes(GF_PLANEMASK_OBJ, TRUE);
 }
 #pragma force_active reset

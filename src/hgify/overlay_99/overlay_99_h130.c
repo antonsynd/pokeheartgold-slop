@@ -3,18 +3,16 @@
 #pragma thumb on
 #include "global.h"
 
-#include "ghidra_compat.h"
 #include "heap.h"
 #include "pm_string.h"
-typedef int code();
-void ov99_021E9418(int param_1);
-// FUNCTION ov99_021E9418: matching C (r2)
+typedef struct UnkStruct_ov99_021E9418 {
+    u8 unk_000[0x1BC];
+    String *textInputStr;
+} UnkStruct_ov99_021E9418;
+// FUNCTION ov99_021E9418: matching C (twin)
 #pragma force_active on
-void ov99_021E9418(int param_1)
-
-{
-    String_Delete(*(undefined4 *)(param_1 + 0x1bc));
-    Heap_Free(param_1);
-    return;
+void ov99_021E9418(UnkStruct_ov99_021E9418 *args) {
+    String_Delete(args->textInputStr);
+    Heap_Free(args);
 }
 #pragma force_active reset

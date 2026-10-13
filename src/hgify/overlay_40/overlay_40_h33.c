@@ -3,17 +3,18 @@
 #pragma thumb on
 #include "global.h"
 
-#include "ghidra_compat.h"
 #include "sprite_system.h"
-typedef int code();
-void ov40_0222CBC0(int param_1);
-// FUNCTION ov40_0222CBC0: matching C (r2)
+typedef struct UnkStruct_ov40_0222CBC0 {
+    u8 unk_00[0x14];
+    struct {
+        u8 unk_00[8];
+        SpriteManager *unk_08;
+    } unk_14;
+} UnkStruct_ov40_0222CBC0;
+// FUNCTION ov40_0222CBC0: matching C (twin)
 #pragma force_active on
-void ov40_0222CBC0(int param_1)
-
-{
-    SpriteManager_UnloadCharObjById(*(undefined4 *)(param_1 + 0x1c), 0x2711);
-    SpriteManager_UnloadCharObjById(*(undefined4 *)(param_1 + 0x1c), 0x2712);
-    return;
+void ov40_0222CBC0(UnkStruct_ov40_0222CBC0 *param0) {
+    SpriteManager_UnloadCharObjById(param0->unk_14.unk_08, 10001);
+    SpriteManager_UnloadCharObjById(param0->unk_14.unk_08, 10002);
 }
 #pragma force_active reset

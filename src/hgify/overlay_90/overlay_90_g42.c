@@ -3,22 +3,21 @@
 #pragma thumb on
 #include "global.h"
 
-#include "ghidra_compat.h"
 #include "obj_char_transfer.h"
 #include "obj_pltt_transfer.h"
 #include "sprite.h"
 #include "unk_0200B150.h"
-typedef void code(void);
-void ov90_02259158(undefined4 *param_1);
-// FUNCTION ov90_02259158: matching C (r2)
-#pragma force_active on
-void ov90_02259158(undefined4 *param_1)
 
-{
-    SpriteList_Delete(*param_1);
+typedef struct UnkStruct_ov90_02259158 {
+    SpriteList *unk_00;
+} UnkStruct_ov90_02259158;
+
+// FUNCTION ov90_02259158: matching C (twin)
+#pragma force_active on
+void ov90_02259158(UnkStruct_ov90_02259158 *param0) {
+    SpriteList_Delete(param0->unk_00);
     ObjCharTransfer_Destroy();
     ObjPlttTransfer_Destroy();
     OamManager_Free();
-    return;
 }
 #pragma force_active reset

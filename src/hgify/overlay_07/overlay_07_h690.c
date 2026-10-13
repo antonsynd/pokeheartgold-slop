@@ -3,20 +3,13 @@
 #pragma thumb on
 #include "global.h"
 
-#include "error_handling.h"
-#include "ghidra_compat.h"
+#include "assert.h"
 #include "heap.h"
-typedef void code(void);
-void ov07_02232508(int param_1);
-// FUNCTION ov07_02232508: matching C (r2)
-#pragma force_active on
-void ov07_02232508(int param_1)
 
-{
-    if (param_1 == 0) {
-        GF_AssertFail();
-    }
-    Heap_Free(param_1);
-    return;
+// FUNCTION ov07_02232508: matching C (twin)
+#pragma force_active on
+void ov07_02232508(void *ptr) {
+    GF_ASSERT(ptr != NULL);
+    Heap_Free(ptr);
 }
 #pragma force_active reset

@@ -3,15 +3,15 @@
 #pragma thumb on
 #include "global.h"
 
-#include "ghidra_compat.h"
-typedef void code(void);
-void ov07_0221C69C(void);
-// FUNCTION ov07_0221C69C: matching C (r2)
-#pragma force_active on
-void ov07_0221C69C(void)
+#define GX_BLEND_PLANEMASK_NONE 0x00
+#define GX_BLEND_PLANEMASK_OBJ  0x10
+#define GX_BLEND_PLANEMASK_BD   0x20
+#define BATTLE_BG_BLENDMASK_ALL 0x0F
 
-{
-    G2x_SetBlendAlpha_(0x4000050, 0, 0x3f, 8, 8);
-    return;
+void ov07_0221C69C(void);
+// FUNCTION ov07_0221C69C: matching C (twin)
+#pragma force_active on
+void ov07_0221C69C(void) {
+    G2x_SetBlendAlpha_(0x04000050, GX_BLEND_PLANEMASK_NONE, BATTLE_BG_BLENDMASK_ALL | GX_BLEND_PLANEMASK_OBJ | GX_BLEND_PLANEMASK_BD, 8, 8);
 }
 #pragma force_active reset

@@ -3,17 +3,13 @@
 #pragma thumb on
 #include "global.h"
 
-#include "ghidra_compat.h"
 #include "overlay_manager.h"
-typedef int code();
-undefined4 ov93_022626E8(undefined4 param_1);
-// FUNCTION ov93_022626E8: matching C (r2)
+// FUNCTION ov93_022626E8: matching C (twin)
 #pragma force_active on
-undefined4 ov93_022626E8(undefined4 param_1)
+int ov93_022626E8(OverlayManager *man, int *state) {
+    OverlayManager_GetData(man);
+    OverlayManager_FreeData(man);
 
-{
-    OverlayManager_GetData((struct OverlayManager *)param_1);
-    OverlayManager_FreeData(param_1);
     return 1;
 }
 #pragma force_active reset

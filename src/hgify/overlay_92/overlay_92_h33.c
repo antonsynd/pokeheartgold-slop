@@ -3,17 +3,17 @@
 #pragma thumb on
 #include "global.h"
 
-#include "ghidra_compat.h"
 #include "unk_02018000.h"
-typedef int code();
-void ov92_0225DA2C(int param_1);
-// FUNCTION ov92_0225DA2C: matching C (r2)
+typedef struct UnkStruct_ov92_0225DA2C {
+    u8 unk_00[0x78];
+    UnkStruct_02018030 unk_78;
+    u8 unk_88[0x1F0 - 0x88];
+    u32 unk_1F0;
+} UnkStruct_ov92_0225DA2C;
+// FUNCTION ov92_0225DA2C: matching C (twin)
 #pragma force_active on
-void ov92_0225DA2C(int param_1)
-
-{
-    *(undefined4 *)(param_1 + 0x1f0) = 0;
-    sub_02018068((struct UnkStruct_02018030 *)(param_1 + 0x78));
-    return;
+void ov92_0225DA2C(UnkStruct_ov92_0225DA2C *param0) {
+    param0->unk_1F0 = 0;
+    sub_02018068(&param0->unk_78);
 }
 #pragma force_active reset

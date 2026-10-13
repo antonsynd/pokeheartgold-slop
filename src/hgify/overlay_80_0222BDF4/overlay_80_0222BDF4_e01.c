@@ -6,16 +6,10 @@
 #include "frontier/frontier_script_context.h"
 #include "frontier/overlay_80_0222BDF4.h"
 
-#include "ghidra_compat.h"
-typedef int code();
-// FUNCTION FrontierScript_ReadVar: matching C (r2)
+// FUNCTION FrontierScript_ReadVar: matching C (twin)
 #pragma force_active on
-u32 FrontierScript_ReadVar(FrontierScriptContext *param_1)
-
-{
-    u16 uVar1;
-
-    uVar1 = FrontierScriptContext_ReadHalfWord(param_1);
-    ov80_0222BE9C(param_1, uVar1);
+u32 FrontierScript_ReadVar(FrontierScriptContext *ctx) {
+    u16 varID = FrontierScriptContext_ReadHalfWord(ctx);
+    ov80_0222BE9C(ctx, varID);
 }
 #pragma force_active reset

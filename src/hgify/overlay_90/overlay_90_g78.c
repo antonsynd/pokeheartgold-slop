@@ -4,16 +4,11 @@
 #include "global.h"
 
 #include "bg_window.h"
-#include "ghidra_compat.h"
-typedef void code(void);
-void ov90_02259E8C(Window *window, undefined4 *param_2);
-// FUNCTION ov90_02259E8C: matching C (r2)
-#pragma force_active on
-void ov90_02259E8C(Window *window, undefined4 *param_2)
 
-{
+// FUNCTION ov90_02259E8C: matching C (twin)
+#pragma force_active on
+void ov90_02259E8C(Window *window, BgConfig **param1) {
     ScheduleWindowCopyToVram(window);
-    ScheduleBgTilemapBufferTransfer(*param_2, 1);
-    return;
+    ScheduleBgTilemapBufferTransfer(*param1, 1);
 }
 #pragma force_active reset

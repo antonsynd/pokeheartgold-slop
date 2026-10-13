@@ -4,16 +4,15 @@
 #include "global.h"
 
 #include "bg_window.h"
-#include "ghidra_compat.h"
-typedef int code();
-void ov71_0224A3D8(int param_1);
-// FUNCTION ov71_0224A3D8: matching C (r2)
+#include "gf_gfx_planes.h"
+typedef struct TradeBallArrivalPhase {
+    u8 unk_00[0x24];
+    BgConfig *bgConfig;
+} TradeBallArrivalPhase;
+// FUNCTION ov71_0224A3D8: matching C (twin)
 #pragma force_active on
-void ov71_0224A3D8(int param_1)
-
-{
-    FreeBgTilemapBuffer(*(undefined4 *)(param_1 + 0x24), 3);
-    FreeBgTilemapBuffer(*(undefined4 *)(param_1 + 0x24), 7);
-    return;
+void ov71_0224A3D8(TradeBallArrivalPhase *arrivalPhase) {
+    FreeBgTilemapBuffer(arrivalPhase->bgConfig, GF_BG_LYR_MAIN_3);
+    FreeBgTilemapBuffer(arrivalPhase->bgConfig, GF_BG_LYR_SUB_3);
 }
 #pragma force_active reset

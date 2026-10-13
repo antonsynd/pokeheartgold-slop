@@ -8,11 +8,13 @@ struct UnkStruct_02059E1C;
 typedef void (*UnkFuncPtr_02059E1C)(struct UnkStruct_02059E1C *);
 void sub_0205A034(struct UnkStruct_02059E1C *param0, UnkFuncPtr_02059E1C param1, int param2);
 void sub_0205A07C(struct UnkStruct_02059E1C *param0);
-// FUNCTION sub_02059E04: matching C (r0)
+
+// FUNCTION sub_02059E04: matching C (twin)
 #pragma force_active on
 void sub_02059E04(FieldSystem *fieldSystem) {
-    if (fieldSystem->unk80 != NULL) {
-        sub_0205A034(fieldSystem->unk80, sub_0205A07C, 5);
+    if (fieldSystem->unk80 == NULL) {
+        return;
     }
+    sub_0205A034(fieldSystem->unk80, sub_0205A07C, 5);
 }
 #pragma force_active reset

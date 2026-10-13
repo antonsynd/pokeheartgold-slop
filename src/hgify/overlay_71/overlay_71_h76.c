@@ -3,21 +3,30 @@
 #pragma thumb on
 #include "global.h"
 
-#include "ghidra_compat.h"
 #include "sys_task.h"
-typedef int code();
-undefined4 ov71_022481D8(int param_1);
-// FUNCTION ov71_022481D8: matching C (r2)
+
+typedef struct TradeSendPhase {
+    u8 unk_00[0x7C];
+    SysTask *task1;
+} TradeSendPhase;
+
+typedef struct BallBounceState {
+    TradeSendPhase *phase;
+    void *model;
+    VecFx32 position;
+    VecFx16 rotation;
+    fx32 velocityY;
+    int bounceCount;
+} BallBounceState;
+
+// FUNCTION ov71_022481D8: matching C (twin)
 #pragma force_active on
-undefined4 ov71_022481D8(int param_1)
-
-{
-    int iVar1;
-
-    if (*(int *)(param_1 + 0x7c) != 0) {
-        iVar1 = (int)SysTask_GetData((SysTask *)*(int *)(param_1 + 0x7c));
-        return *(undefined4 *)(iVar1 + 0x20);
+int ov71_022481D8(TradeSendPhase *tsPhase) {
+    if (tsPhase->task1) {
+        BallBounceState *bbState = SysTask_GetData(tsPhase->task1);
+        return bbState->bounceCount;
     }
+
     return 0;
 }
 #pragma force_active reset

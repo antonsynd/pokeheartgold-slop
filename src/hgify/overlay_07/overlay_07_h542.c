@@ -3,17 +3,14 @@
 #pragma thumb on
 #include "global.h"
 
-#include "ghidra_compat.h"
 #include "sprite_system.h"
-typedef void code(void);
-void ov07_0222D578(undefined4 *param_1);
-// FUNCTION ov07_0222D578: matching C (r2)
+typedef struct ConstrictVine {
+    ManagedSprite *sprite;
+} ConstrictVine;
+// FUNCTION ov07_0222D578: matching C (twin)
 #pragma force_active on
-void ov07_0222D578(undefined4 *param_1)
-
-{
-    ManagedSprite_SetDrawFlag(*param_1, 1);
-    ManagedSprite_SetAnimateFlag(*param_1, 1);
-    return;
+void ov07_0222D578(ConstrictVine *vine) {
+    ManagedSprite_SetDrawFlag(vine->sprite, TRUE);
+    ManagedSprite_SetAnimateFlag(vine->sprite, TRUE);
 }
 #pragma force_active reset

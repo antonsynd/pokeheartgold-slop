@@ -31,53 +31,8 @@ typedef struct UnkStruct_ov41_02245EA0 {
     u8 unk44[0x13C];
     NARC *unk180;
 } UnkStruct_ov41_02245EA0;
-typedef struct UnkStruct_ov41_022467E4_Template {
-    u8 unk00[0xC];
-    int heapID;
-} UnkStruct_ov41_022467E4_Template;
-typedef struct UnkStruct_ov41_0224683C_Template {
-    u32 unk00;
-    void *charsData;
-} UnkStruct_ov41_0224683C_Template;
-typedef struct UnkStruct_ov41_0224689C_Template {
-    u32 unk00;
-    void *paletteData;
-    u32 unk08;
-} UnkStruct_ov41_0224689C_Template;
-extern void ov41_02246D54(void *a0, int a1, int a2, enum HeapID heapID);
-extern void ov41_02246B68(UnkStruct_ov41_02245EA0 *a0, void *a1);
-extern void ov41_02246BEC(UnkStruct_ov41_02245EA0 *a0, void *a1);
-extern void ov41_02246DA8(void *a0);
-extern void ov41_02246CB0(UnkStruct_ov41_02245EA0 *a0);
-extern void ov41_02246D2C(UnkStruct_ov41_02245EA0 *a0);
-extern void ov41_02246B34(UnkStruct_ov41_02245EA0 *a0);
-extern void ov41_02246A94(UnkStruct_ov41_02245EA0 *a0);
-extern void ov41_02246C90(UnkStruct_ov41_02245EA0 *a0, enum HeapID heapID);
-extern void ov41_02246CC0(UnkStruct_ov41_02245EA0 *a0, enum HeapID heapID, u32 a2, u32 a3);
-extern void ov41_02246B5C(UnkStruct_ov41_02245EA0 *a0);
-extern void ov41_022467E4(UnkStruct_ov41_02245EA0 *a0, const UnkStruct_ov41_022467E4_Template *a1);
-extern void ov41_02246830(UnkStruct_ov41_02245EA0 *a0);
-extern void ov41_02246820(UnkStruct_ov41_02245EA0 *a0);
-extern void ov41_022468FC(UnkStruct_ov41_02245EA0 *a0);
-extern void ov41_02246A20(UnkStruct_ov41_02245EA0 *a0);
-extern void ov41_02246B34(UnkStruct_ov41_02245EA0 *a0);
-extern void *sub_02015DDC(const void *a0);
-extern void sub_02015E20(void *a0);
-extern void sub_02015E64(void *a0);
-extern void *sub_02015EA0(const void *a0);
-extern void *sub_02015F1C(const void *a0);
-void ov41_022463B0(UnkStruct_ov41_02245EA0 *param0, void *param1);
-void ov41_022463B0(UnkStruct_ov41_02245EA0 *param0, void *param1);
-void ov41_022463D4(void *param0);
-void ov41_022463D4(void *param0);
-NNSG2dCharacterData *ov41_022463DC(UnkStruct_ov41_02245EA0 *param0, void *param1, int param2);
-NNSG2dCharacterData *ov41_022463DC(UnkStruct_ov41_02245EA0 *param0, void *param1, int param2);
-void ov41_022463FC(void);
-void ov41_022463FC(void);
-void ov41_0224642C(void);
-void ov41_0224642C(void);
-void ov41_02246494(UnkStruct_ov41_02245EA0 *param0);
-// FUNCTION ov41_02246494: matching C (r2)
+
+// FUNCTION ov41_02246494: matching C (twin)
 #pragma force_active on
 void ov41_02246494(UnkStruct_ov41_02245EA0 *param0) {
     DoScheduledBgGpuUpdates(param0->unk40);
@@ -85,49 +40,3 @@ void ov41_02246494(UnkStruct_ov41_02245EA0 *param0) {
     OamManager_ApplyAndResetBuffers();
 }
 #pragma force_active reset
-void ov41_022464AC(void *param0, enum HeapID heapID);
-void ov41_022464AC(void *param0, enum HeapID heapID);
-int ov41_022464BC(NNSG2dCharacterData *param0, int param1, int param2, int param3);
-int ov41_022464BC(NNSG2dCharacterData *param0, int param1, int param2, int param3);
-void ov41_02246518(UnkStruct_ov41_02245EA0 *param0, const UnkStruct_ov41_022467E4_Template *param1, enum HeapID heapID);
-void ov41_02246518(UnkStruct_ov41_02245EA0 *param0, const UnkStruct_ov41_022467E4_Template *param1, enum HeapID heapID);
-void ov41_02246544(UnkStruct_ov41_02245EA0 *param0, BgConfig *param1, int param2);
-void ov41_02246544(UnkStruct_ov41_02245EA0 *param0, BgConfig *param1, int param2);
-void ov41_02246594(UnkStruct_ov41_02245EA0 *param0);
-void ov41_02246594(UnkStruct_ov41_02245EA0 *param0);
-void ov41_022465C0(UnkStruct_ov41_02245EA0 *param0);
-void ov41_022465C0(UnkStruct_ov41_02245EA0 *param0);
-void ov41_022465CC(UnkStruct_ov41_02245EA0 *param0);
-void ov41_022465CC(UnkStruct_ov41_02245EA0 *param0);
-void ov41_022465D8(UnkStruct_ov41_02245EA0 *param0, int param1, int param2, u16 param3, const VecFx32 *param4);
-void ov41_022465D8(UnkStruct_ov41_02245EA0 *param0, int param1, int param2, u16 param3, const VecFx32 *param4);
-void ov41_02246670(UnkStruct_ov41_02245EA0 *param0, int param1);
-void ov41_02246670(UnkStruct_ov41_02245EA0 *param0, int param1);
-void ov41_02246698(UnkStruct_ov41_02245EA0 *param0);
-void ov41_02246698(UnkStruct_ov41_02245EA0 *param0);
-void ov41_022466B8(UnkStruct_ov41_02245EA0 *param0);
-void ov41_022466B8(UnkStruct_ov41_02245EA0 *param0);
-void ov41_022466C8(UnkStruct_ov41_02245EA0 *param0);
-void ov41_022466C8(UnkStruct_ov41_02245EA0 *param0);
-void ov41_022466D0(void);
-void ov41_022466D0(void);
-void ov41_022466F0(void);
-void ov41_022466F0(void);
-void ov41_02246778(void);
-void ov41_02246778(void);
-void ov41_022467C8(void);
-void ov41_022467C8(void);
-void ov41_022467D4(void);
-void ov41_022467D4(void);
-void ov41_022467E4(UnkStruct_ov41_02245EA0 *param0, const UnkStruct_ov41_022467E4_Template *param1);
-void ov41_022467E4(UnkStruct_ov41_02245EA0 *param0, const UnkStruct_ov41_022467E4_Template *param1);
-void ov41_02246820(UnkStruct_ov41_02245EA0 *param0);
-void ov41_02246820(UnkStruct_ov41_02245EA0 *param0);
-void ov41_02246830(UnkStruct_ov41_02245EA0 *param0);
-void ov41_02246830(UnkStruct_ov41_02245EA0 *param0);
-void ov41_0224683C(UnkStruct_ov41_02245EA0 *param0, const UnkStruct_ov41_0224683C_Template *param1, int param2);
-void ov41_0224689C(UnkStruct_ov41_02245EA0 *param0, const UnkStruct_ov41_0224689C_Template *param1, int param2);
-void ov41_022468FC(UnkStruct_ov41_02245EA0 *param0);
-void ov41_022468FC(UnkStruct_ov41_02245EA0 *param0);
-void ov41_02246A20(UnkStruct_ov41_02245EA0 *param0);
-void ov41_02246A20(UnkStruct_ov41_02245EA0 *param0);

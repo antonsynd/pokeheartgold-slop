@@ -3,20 +3,13 @@
 #pragma thumb on
 #include "global.h"
 
-#include "ghidra_compat.h"
 #include "unk_02005D10.h"
-typedef int code();
-void ov112_021ED314(int param_1);
-// FUNCTION ov112_021ED314: matching C (r2)
+
+// FUNCTION ov112_021ED314: matching C (twin)
 #pragma force_active on
-void ov112_021ED314(int param_1)
-
-{
-    int iVar1;
-
-    if ((param_1 != 0) && (iVar1 = IsSEPlaying(0x934), iVar1 == 0)) {
+void ov112_021ED314(int param0) {
+    if (param0 != 0 && !IsSEPlaying(0x934)) {
         PlaySE(0x934);
     }
-    return;
 }
 #pragma force_active reset
