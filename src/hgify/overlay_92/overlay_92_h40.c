@@ -3,23 +3,20 @@
 #pragma thumb on
 #include "global.h"
 
-#include "ghidra_compat.h"
 #include "sprite_system.h"
-typedef int code();
-void ov92_0225DEF0(int param_1);
-// FUNCTION ov92_0225DEF0: matching C (r2)
+
+typedef struct UnkStruct_ov92_0225DEF0 {
+    u8 unk_000[0xD0];
+    ManagedSprite *unk_0D0[4];
+} UnkStruct_ov92_0225DEF0;
+
+// FUNCTION ov92_0225DEF0: matching C (twin)
 #pragma force_active on
-void ov92_0225DEF0(int param_1)
+void ov92_0225DEF0(UnkStruct_ov92_0225DEF0 *param0) {
+    int v0;
 
-{
-    int iVar1;
-
-    iVar1 = 0;
-    do {
-        Sprite_DeleteAndFreeResources(*(undefined4 *)(param_1 + 0xd0));
-        iVar1 = iVar1 + 1;
-        param_1 = param_1 + 4;
-    } while (iVar1 < 4);
-    return;
+    for (v0 = 0; v0 < 4; v0++) {
+        Sprite_DeleteAndFreeResources(param0->unk_0D0[v0]);
+    }
 }
 #pragma force_active reset

@@ -3,18 +3,19 @@
 #pragma thumb on
 #include "global.h"
 
-#include "ghidra_compat.h"
 #include "unk_02018000.h"
-typedef int code();
-undefined4 ov91_02260378();
-void ov91_022601AC(int param_1);
-// FUNCTION ov91_022601AC: matching C (r2)
-#pragma force_active on
-void ov91_022601AC(int param_1)
 
-{
-    sub_02018124(param_1 + 0x198, 0x1000);
-    ov91_02260378(param_1);
-    return;
+typedef struct UnkStruct_ov91_022601AC {
+    u8 unk_000[0x198];
+    UnkStruct_020180BC unk_198[6];
+} UnkStruct_ov91_022601AC;
+
+void ov91_02260378(UnkStruct_ov91_022601AC *param0);
+
+// FUNCTION ov91_022601AC: matching C (twin)
+#pragma force_active on
+void ov91_022601AC(UnkStruct_ov91_022601AC *param0) {
+    sub_02018124(&param0->unk_198[0], FX32_CONST(1));
+    ov91_02260378(param0);
 }
 #pragma force_active reset

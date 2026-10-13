@@ -5,24 +5,25 @@
 
 #include "field/fieldmap.h"
 
-#include "ghidra_compat.h"
+#include "screen_fade.h"
 #include "task.h"
-typedef int code();
-undefined4 sub_02056E60();
-undefined4 sub_02058D04(int param_1);
-// FUNCTION sub_02058D04: matching C (r2)
+
+typedef struct UnkStruct_sub_02058D04 {
+    u8 unk_00[0x24];
+    FieldSystem *fieldSystem;
+} UnkStruct_sub_02058D04;
+
+void sub_02056E60(void);
+
+// FUNCTION sub_02058D04: matching C (twin)
 #pragma force_active on
-undefined4 sub_02058D04(int param_1)
-
-{
-    int iVar1;
-
-    iVar1 = sub_020505C8(*(undefined4 *)(param_1 + 0x24));
-    if (iVar1 != 0) {
-        FieldMap_FadeScreen(1);
+BOOL sub_02058D04(UnkStruct_sub_02058D04 *param0) {
+    if (sub_020505C8(param0->fieldSystem)) {
+        FieldMap_FadeScreen(FADE_TYPE_BRIGHTNESS_IN);
         sub_02056E60();
         return 1;
     }
+
     return 0;
 }
 #pragma force_active reset

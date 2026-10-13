@@ -2,23 +2,29 @@
 #pragma warning_errors off
 void ov74_02230138(void);
 #pragma thumb on
-#include "ghidra_compat.h"
-typedef int code();
-undefined4 ov74_02231448();
-undefined4 WM_StartParent();
-undefined4 ov74_02231544(void);
-// FUNCTION ov74_02231544: matching C (r2)
+#include "global.h"
+
+typedef enum WMErrCode {
+    WM_ERRCODE_SUCCESS = 0,
+    WM_ERRCODE_FAILED,
+    WM_ERRCODE_OPERATING,
+} WMErrCode;
+
+int WM_StartParent(void (*callback)(void));
+void ov74_02231448(WMErrCode errCode);
+
+// FUNCTION ov74_02231544: matching C (twin)
 #pragma force_active on
-undefined4 ov74_02231544(void)
+BOOL ov74_02231544(void) {
+    WMErrCode v0;
 
-{
-    int iVar1;
+    v0 = WM_StartParent(ov74_02230138);
 
-    iVar1 = WM_StartParent((unsigned int)ov74_02230138);
-    if (iVar1 != 2) {
-        ov74_02231448();
+    if (v0 != WM_ERRCODE_OPERATING) {
+        ov74_02231448(v0);
         return 0;
+    } else {
+        return 1;
     }
-    return 1;
 }
 #pragma force_active reset

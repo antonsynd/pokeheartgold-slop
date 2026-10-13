@@ -4,16 +4,11 @@
 #include "global.h"
 
 #include "filesystem.h"
-#include "ghidra_compat.h"
-typedef int code();
-void sub_02094C6C(undefined4 param_1, undefined4 param_2, undefined4 param_3, undefined4 param_4);
-// FUNCTION sub_02094C6C: matching C (r2)
-#pragma force_active on
-void sub_02094C6C(undefined4 param_1, undefined4 param_2, undefined4 param_3, undefined4 param_4)
 
-{
-    NARC_ReadWholeMember(param_4, param_1, param_3);
-    NNS_G2dGetUnpackedBGCharacterData(param_3, param_2);
-    return;
+// FUNCTION sub_02094C6C: matching C (twin)
+#pragma force_active on
+void sub_02094C6C(u32 memberIndex, NNSG2dCharacterData **param1, void *param2, NARC *param3) {
+    NARC_ReadWholeMember(param3, memberIndex, param2);
+    NNS_G2dGetUnpackedBGCharacterData(param2, param1);
 }
 #pragma force_active reset

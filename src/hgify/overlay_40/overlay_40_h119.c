@@ -3,19 +3,25 @@
 #include "global.h"
 
 #include "sys_task_api.h"
-void ov40_0222FB74(void);
+void ov40_0222FB74(SysTask *param0, void *param1);
 #pragma thumb on
-#include "ghidra_compat.h"
-typedef int code();
-void ov40_0222FB90(int param_1, undefined4 param_2);
-// FUNCTION ov40_0222FB90: matching C (r2)
-#pragma force_active on
-void ov40_0222FB90(int param_1, undefined4 param_2)
 
-{
-    *(undefined4 *)(param_1 + 0x52c) = param_2;
-    *(undefined4 *)(param_1 + 0x530) = 0;
-    SysTask_CreateOnVBlankQueue(((unsigned int)ov40_0222FB74), param_1 + 0x52c, 4);
-    return;
+typedef struct UnkStruct_ov40_0222FB90_Sub {
+    int unk_00;
+    int unk_04;
+} UnkStruct_ov40_0222FB90_Sub;
+
+typedef struct UnkStruct_ov40_0222FB90 {
+    u8 filler_000[0x52C];
+    UnkStruct_ov40_0222FB90_Sub unk_52C;
+} UnkStruct_ov40_0222FB90;
+
+// FUNCTION ov40_0222FB90: matching C (twin)
+#pragma force_active on
+void ov40_0222FB90(UnkStruct_ov40_0222FB90 *param0, int param1) {
+    param0->unk_52C.unk_00 = param1;
+    param0->unk_52C.unk_04 = 0;
+
+    SysTask_CreateOnVBlankQueue(ov40_0222FB74, &param0->unk_52C, 4);
 }
 #pragma force_active reset

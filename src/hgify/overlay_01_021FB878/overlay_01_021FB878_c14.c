@@ -4,18 +4,21 @@
 #include "global.h"
 
 #include "gf_3d_render.h"
-#include "ghidra_compat.h"
 #include "sys_task_api.h"
-typedef void code(void);
-void ov01_021FBD8C(undefined4 param_1, undefined4 *param_2);
-// FUNCTION ov01_021FBD8C: matching C (r2)
-#pragma force_active on
-void ov01_021FBD8C(undefined4 param_1, undefined4 *param_2)
 
-{
-    GF3dRender_AllocAndLoadTexResources(param_2[3]);
-    GF3dRender_BindModelSet(*param_2, param_2[3]);
-    SysTask_Destroy(param_1);
-    return;
+typedef struct UnkStruct_ov01_021FBD8C {
+    NNSG3dResFileHeader *data;
+    u8 unk_04[8];
+    NNSG3dResTex *texture;
+} UnkStruct_ov01_021FBD8C;
+
+// FUNCTION ov01_021FBD8C: matching C (twin)
+#pragma force_active on
+void ov01_021FBD8C(SysTask *task, void *param) {
+    UnkStruct_ov01_021FBD8C *model = param;
+
+    GF3dRender_AllocAndLoadTexResources(model->texture);
+    GF3dRender_BindModelSet(model->data, model->texture);
+    SysTask_Destroy(task);
 }
 #pragma force_active reset

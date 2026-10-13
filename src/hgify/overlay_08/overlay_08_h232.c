@@ -5,20 +5,20 @@
 
 #include "battle/battle_cursor.h"
 
-#include "ghidra_compat.h"
-typedef void code(void);
-undefined4 ov08_02224B90(undefined4, undefined4);
-undefined4 ov08_02224B84(undefined4);
-undefined4 ov08_02224BC0(undefined4);
-void ov08_0222417C(int param_1);
-// FUNCTION ov08_0222417C: matching C (r2)
-#pragma force_active on
-void ov08_0222417C(int param_1)
+typedef struct UnkStruct_ov08_0222417C {
+    u8 unk_00[0x34];
+    BattleCursor *cursor;
+} UnkStruct_ov08_0222417C;
 
-{
-    ov08_02224B90(*(undefined4 *)(param_1 + 0x34), 0);
-    ov08_02224BC0(*(undefined4 *)(param_1 + 0x34));
-    BattleCursor_Disable((struct BattleCursor *)ov08_02224B84(*(undefined4 *)(param_1 + 0x34)));
-    return;
+void ov08_02224B90(BattleCursor *cursor, BOOL visible);
+void ov08_02224BC0(BattleCursor *cursor);
+void *ov08_02224B84(BattleCursor *cursor);
+
+// FUNCTION ov08_0222417C: matching C (twin)
+#pragma force_active on
+void ov08_0222417C(UnkStruct_ov08_0222417C *param0) {
+    ov08_02224B90(param0->cursor, FALSE);
+    ov08_02224BC0(param0->cursor);
+    BattleCursor_Disable(ov08_02224B84(param0->cursor));
 }
 #pragma force_active reset

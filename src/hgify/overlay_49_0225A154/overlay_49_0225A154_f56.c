@@ -4,22 +4,18 @@
 #include "global.h"
 
 #include "error_handling.h"
-#include "ghidra_compat.h"
 #include "render_window.h"
-typedef int code();
-void ov49_0225AC08(int param_1);
-// FUNCTION ov49_0225AC08: matching C (r2)
+
+typedef struct UnkStruct_ov49_0225AC08 {
+    Window unk_00;
+    u8 unk_pad[0x1C - sizeof(Window)];
+    WaitingIcon *unk_1C;
+} UnkStruct_ov49_0225AC08;
+
+// FUNCTION ov49_0225AC08: matching C (twin)
 #pragma force_active on
-void ov49_0225AC08(int param_1)
-
-{
-    undefined4 uVar1;
-
-    if (*(int *)(param_1 + 0x1c) != 0) {
-        GF_AssertFail();
-    }
-    uVar1 = WaitingIcon_New(param_1, 1);
-    *(undefined4 *)(param_1 + 0x1c) = uVar1;
-    return;
+void ov49_0225AC08(UnkStruct_ov49_0225AC08 *param0) {
+    GF_ASSERT(param0->unk_1C == NULL);
+    param0->unk_1C = WaitingIcon_New(&param0->unk_00, 1);
 }
 #pragma force_active reset

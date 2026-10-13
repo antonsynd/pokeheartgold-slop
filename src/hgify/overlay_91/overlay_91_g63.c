@@ -5,18 +5,18 @@
 
 #include "bg_window.h"
 #include "gf_gfx_planes.h"
-#include "ghidra_compat.h"
 #include "render_window.h"
-typedef int code();
-void ov91_0225DB5C(int param_1);
-// FUNCTION ov91_0225DB5C: matching C (r2)
-#pragma force_active on
-void ov91_0225DB5C(int param_1)
 
-{
-    sub_0200E5D4(param_1 + 0xc, 1);
-    ClearWindowTilemapAndScheduleTransfer(param_1 + 0xc);
+typedef struct UnkStruct_ov91_0225DB5C {
+    u8 unk_00[0xC];
+    Window unk_0C;
+} UnkStruct_ov91_0225DB5C;
+
+// FUNCTION ov91_0225DB5C: matching C (twin)
+#pragma force_active on
+void ov91_0225DB5C(UnkStruct_ov91_0225DB5C *param0) {
+    sub_0200E5D4(&param0->unk_0C, 1);
+    ClearWindowTilemapAndScheduleTransfer(&param0->unk_0C);
     GfGfx_EngineATogglePlanes(4, 0);
-    return;
 }
 #pragma force_active reset

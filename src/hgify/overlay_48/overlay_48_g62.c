@@ -4,17 +4,17 @@
 #include "global.h"
 
 #include "bg_window.h"
-#include "ghidra_compat.h"
 #include "render_window.h"
-typedef int code();
-void ov48_02259E90(int param_1);
-// FUNCTION ov48_02259E90: matching C (r2)
-#pragma force_active on
-void ov48_02259E90(int param_1)
 
-{
-    ScheduleWindowCopyToVram(param_1 + 0x1c);
-    DrawFrameAndWindow1(param_1 + 0x1c, 0, 0x1f, 0);
-    return;
+typedef struct UnkStruct_ov48_02259E90 {
+    u8 unk_00[0x1C];
+    Window unk_1C;
+} UnkStruct_ov48_02259E90;
+
+// FUNCTION ov48_02259E90: matching C (twin)
+#pragma force_active on
+void ov48_02259E90(UnkStruct_ov48_02259E90 *param0) {
+    ScheduleWindowCopyToVram(&param0->unk_1C);
+    DrawFrameAndWindow1(&param0->unk_1C, 0, 1 + (18 + 12), 0);
 }
 #pragma force_active reset

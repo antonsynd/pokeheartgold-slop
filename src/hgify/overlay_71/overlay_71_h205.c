@@ -3,22 +3,20 @@
 #pragma thumb on
 #include "global.h"
 
-#include "ghidra_compat.h"
-typedef int code();
-#define SEXT24(x) ((int)(unsigned short)(x))
-typedef struct S {
-    char pad[0x3a];
-    s16 f3a;
-    s16 f3c;
-    char pad2[2];
-    int f40;
-} S;
-// FUNCTION ov71_0224BAA0: matching C (agent3)
+typedef struct UnkStruct_ov71_0224BAA0 {
+    u8 filler_00[0x3A];
+    s16 rotationSpeed;
+    s16 rotationSpeedStep;
+    u8 filler_3E[2];
+    int rotationTransitionFrames;
+} UnkStruct_ov71_0224BAA0;
+
+// FUNCTION ov71_0224BAA0: matching C (twin)
 #pragma force_active on
-void ov71_0224BAA0(S *p, int a, int d, int unused) {
-    if (d != 0) {
-        p->f3c = (a - p->f3a) / d;
-        p->f40 = d;
+void ov71_0224BAA0(UnkStruct_ov71_0224BAA0 *boState, fx32 targetSpeed, int duration) {
+    if (duration) {
+        boState->rotationSpeedStep = (targetSpeed - boState->rotationSpeed) / duration;
+        boState->rotationTransitionFrames = duration;
     }
 }
 #pragma force_active reset

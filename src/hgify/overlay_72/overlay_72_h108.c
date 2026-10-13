@@ -3,19 +3,19 @@
 #pragma thumb on
 #include "global.h"
 
-#include "ghidra_compat.h"
 #include "render_window.h"
-typedef int code();
-void ov72_0223A444(int param_1);
-// FUNCTION ov72_0223A444: matching C (r2)
-#pragma force_active on
-void ov72_0223A444(int param_1)
 
-{
-    if (*(int *)(param_1 + 0xf4c) != 0) {
-        sub_0200F450((WaitingIcon *)*(int *)(param_1 + 0xf4c));
-        *(undefined4 *)(param_1 + 0xf4c) = 0;
+typedef struct UnkStruct_ov72_0223A444 {
+    u8 filler_000[0xF4C];
+    WaitingIcon *waitDial;
+} UnkStruct_ov72_0223A444;
+
+// FUNCTION ov72_0223A444: matching C (twin)
+#pragma force_active on
+void ov72_0223A444(UnkStruct_ov72_0223A444 *appState) {
+    if (appState->waitDial != NULL) {
+        sub_0200F450(appState->waitDial);
+        appState->waitDial = NULL;
     }
-    return;
 }
 #pragma force_active reset

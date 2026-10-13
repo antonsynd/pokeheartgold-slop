@@ -4,21 +4,12 @@
 #include "global.h"
 
 #include "bg_window.h"
-#include "ghidra_compat.h"
 #include "render_window.h"
-typedef int code();
-void ov74_02229F60(undefined4 param_1, undefined4 param_2);
-// FUNCTION ov74_02229F60: matching C (r2)
+// FUNCTION ov74_02229F60: matching C (twin)
 #pragma force_active on
-void ov74_02229F60(undefined4 param_1, undefined4 param_2)
-
-{
-    int iVar1;
-
-    iVar1 = WindowIsInUse((const struct Window *)param_1);
-    if (iVar1 == 1) {
-        sub_0200E5D4(param_1, param_2);
+void ov74_02229F60(Window *window, BOOL skipTransfer) {
+    if (WindowIsInUse(window) == TRUE) {
+        sub_0200E5D4(window, skipTransfer);
     }
-    return;
 }
 #pragma force_active reset

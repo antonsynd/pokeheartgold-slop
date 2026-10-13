@@ -3,22 +3,20 @@
 #include "global.h"
 
 #include "unk_02037C94.h"
-void sub_02058A60(void);
 #pragma thumb on
-#include "ghidra_compat.h"
-typedef int code();
-undefined4 sub_020582F4();
-extern int _021D41C8;
-void sub_02058284(undefined4 param_1, undefined4 param_2, undefined4 param_3, undefined4 param_4);
-// FUNCTION sub_02058284: matching C (r3)
-#pragma force_active on
-void sub_02058284(undefined4 param_1, undefined4 param_2, undefined4 param_3, undefined4 param_4)
 
-{
-    if (_021D41C8 != 0) {
-        sub_020398D4(0, 0);
-        sub_020582F4(((unsigned int)sub_02058A60), 5);
+extern void *_021D41C8;
+void sub_020582F4(void (*task)(void), int priority);
+void sub_02058A60(void);
+
+// FUNCTION sub_02058284: matching C (twin)
+#pragma force_active on
+void sub_02058284(void) {
+    if (_021D41C8 == NULL) {
+        return;
     }
-    return;
+
+    sub_020398D4(FALSE, FALSE);
+    sub_020582F4(sub_02058A60, 5);
 }
 #pragma force_active reset

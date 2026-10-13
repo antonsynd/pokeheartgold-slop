@@ -3,21 +3,20 @@
 #pragma thumb on
 #include "global.h"
 
-#include "ghidra_compat.h"
 #include "unk_02035900.h"
-typedef int code();
-undefined4 ov93_0225E0F4(int param_1);
-// FUNCTION ov93_0225E0F4: matching C (r2)
+
+typedef struct UnkStruct_ov93_0225E0F4 {
+    int unk_00;
+    int unk_04;
+} UnkStruct_ov93_0225E0F4;
+
+// FUNCTION ov93_0225E0F4: matching C (twin)
 #pragma force_active on
-undefined4 ov93_0225E0F4(int param_1)
-
-{
-    int iVar1;
-
-    iVar1 = sub_0203769C();
-    if (*(int *)(param_1 + 4) == iVar1) {
+BOOL ov93_0225E0F4(UnkStruct_ov93_0225E0F4 *param0) {
+    if (param0->unk_04 == sub_0203769C()) {
         return 1;
     }
+
     return 0;
 }
 #pragma force_active reset

@@ -4,25 +4,21 @@
 #include "global.h"
 
 #include "frontier/frontier_script_context.h"
+#include "frontier/overlay_80_0222BDF4.h"
 
-#include "error_handling.h"
-#include "ghidra_compat.h"
-typedef int code();
-undefined4 ov80_0222BE24();
-int FrontierScript_ReadVarPtr(undefined4 param_1);
-// FUNCTION FrontierScript_ReadVarPtr: matching C (r2)
+#include "assert.h"
+
+u16 *ov80_0222BE24(FrontierScriptContext *ctx, u16 varID);
+
+// FUNCTION FrontierScript_ReadVarPtr: matching C (twin)
 #pragma force_active on
-int FrontierScript_ReadVarPtr(undefined4 param_1)
+u16 *FrontierScript_ReadVarPtr(FrontierScriptContext *ctx) {
+    u16 *var;
+    u16 varID = FrontierScriptContext_ReadHalfWord(ctx);
 
-{
-    undefined4 uVar1;
-    int iVar2;
+    var = ov80_0222BE24(ctx, varID);
 
-    uVar1 = FrontierScriptContext_ReadHalfWord((FrontierScriptContext *)param_1);
-    iVar2 = ov80_0222BE24(param_1, uVar1);
-    if (iVar2 == 0) {
-        GF_AssertFail();
-    }
-    return iVar2;
+    GF_ASSERT(var != NULL);
+    return var;
 }
 #pragma force_active reset

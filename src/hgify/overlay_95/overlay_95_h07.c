@@ -3,26 +3,20 @@
 #pragma thumb on
 #include "global.h"
 
-#include "ghidra_compat.h"
 #include "unk_02014DA0.h"
 #include "unk_02026E30.h"
-typedef int code();
-void ov95_021E5B58(void);
-// FUNCTION ov95_021E5B58: matching C (r2)
+
+// FUNCTION ov95_021E5B58: matching C (twin)
 #pragma force_active on
-void ov95_021E5B58(void)
-
-{
-    int iVar1;
-
+void ov95_021E5B58(void) {
     Thunk_G3X_Reset();
-    iVar1 = sub_0201543C();
-    if (0 < iVar1) {
+
+    if (sub_0201543C() > 0) {
         Thunk_G3X_Reset();
         NNS_G2dSetupSoftwareSpriteCamera();
     }
+
     sub_02015460();
     RequestSwap3DBuffers(1, 0);
-    return;
 }
 #pragma force_active reset

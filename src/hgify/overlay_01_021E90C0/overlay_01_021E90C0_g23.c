@@ -3,23 +3,24 @@
 #pragma thumb on
 #include "global.h"
 
-#include "error_handling.h"
-#include "ghidra_compat.h"
+#include "assert.h"
 #include "heap.h"
-typedef void code(void);
-undefined4 ov01_021EA564(undefined4);
-void AreaLightManager_Free(int *param_1);
-// FUNCTION AreaLightManager_Free: matching C (r2)
-#pragma force_active on
-void AreaLightManager_Free(int *param_1)
 
-{
-    if (param_1 == (int *)0x0) {
-        GF_AssertFail();
-    }
-    ov01_021EA564(*param_1 + 4);
-    Heap_FreeExplicit(4, *param_1);
-    *param_1 = 0;
-    return;
+typedef struct UnkStruct_AreaLightManager_Free {
+    u8 unk_00[4];
+    u8 templates[1];
+} UnkStruct_AreaLightManager_Free;
+
+void ov01_021EA564(void *templates);
+
+// FUNCTION AreaLightManager_Free: matching C (twin)
+#pragma force_active on
+void AreaLightManager_Free(UnkStruct_AreaLightManager_Free **areaLightMan) {
+    GF_ASSERT(areaLightMan);
+
+    ov01_021EA564(&(*areaLightMan)->templates);
+    Heap_FreeExplicit(HEAP_ID_FIELD1, *areaLightMan);
+
+    *areaLightMan = NULL;
 }
 #pragma force_active reset

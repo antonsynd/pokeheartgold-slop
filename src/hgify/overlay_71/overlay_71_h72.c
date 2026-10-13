@@ -3,23 +3,20 @@
 #pragma thumb on
 #include "global.h"
 
-#include "ghidra_compat.h"
 #include "sys_task.h"
 #include "sys_task_api.h"
-typedef int code();
-undefined4 ov71_02247424();
-void ov71_02248120(int param_1);
-// FUNCTION ov71_02248120: matching C (r2)
+typedef struct UnkStruct_ov71_02248120 {
+    u8 unk_00[0x78];
+    SysTask *task0;
+} UnkStruct_ov71_02248120;
+void ov71_02247424(void *param0);
+// FUNCTION ov71_02248120: matching C (twin)
 #pragma force_active on
-void ov71_02248120(int param_1)
-
-{
-    if (*(int *)(param_1 + 0x78) != 0) {
-        SysTask_GetData((SysTask *)*(int *)(param_1 + 0x78));
-        ov71_02247424();
-        SysTask_Destroy(*(undefined4 *)(param_1 + 0x78));
-        *(undefined4 *)(param_1 + 0x78) = 0;
+void ov71_02248120(UnkStruct_ov71_02248120 *tsPhase) {
+    if (tsPhase->task0) {
+        ov71_02247424(SysTask_GetData(tsPhase->task0));
+        SysTask_Destroy(tsPhase->task0);
+        tsPhase->task0 = NULL;
     }
-    return;
 }
 #pragma force_active reset

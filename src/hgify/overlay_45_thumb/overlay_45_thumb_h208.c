@@ -3,22 +3,21 @@
 #pragma thumb on
 #include "global.h"
 
-#include "ghidra_compat.h"
-typedef int code();
-void ov45_0222C8AC(int param_1);
-// FUNCTION ov45_0222C8AC: matching C (r2)
+typedef struct UnkStruct_ov45_0222C8AC {
+    u8 unk_00[9];
+    u8 unk_09[3];
+    u8 unk_0C[20];
+} UnkStruct_ov45_0222C8AC;
+
+// FUNCTION ov45_0222C8AC: matching C (twin)
 #pragma force_active on
-void ov45_0222C8AC(int param_1)
+void ov45_0222C8AC(UnkStruct_ov45_0222C8AC *param0) {
+    int v0;
 
-{
-    int iVar1;
+    memset(param0, 0, sizeof(UnkStruct_ov45_0222C8AC));
 
-    memset(param_1, 0, 0x20);
-    iVar1 = 0;
-    do {
-        *(undefined1 *)(param_1 + iVar1) = 100;
-        iVar1 = iVar1 + 1;
-    } while (iVar1 < 9);
-    return;
+    for (v0 = 0; v0 < (27 / 3); v0++) {
+        param0->unk_00[v0] = 100;
+    }
 }
 #pragma force_active reset

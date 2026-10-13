@@ -4,20 +4,15 @@
 #include "global.h"
 
 #include "bg_window.h"
-#include "ghidra_compat.h"
 #include "render_window.h"
-typedef int code();
-void ov74_02232DA4(int *param_1);
-// FUNCTION ov74_02232DA4: matching C (r2)
-#pragma force_active on
-void ov74_02232DA4(int *param_1)
 
-{
-    if (*param_1 != 0) {
-        ClearFrameAndWindow2((Window *)param_1, 0);
-        ClearWindowTilemapAndCopyToVram((Window *)param_1);
-        RemoveWindow((Window *)param_1);
+// FUNCTION ov74_02232DA4: matching C (twin)
+#pragma force_active on
+void ov74_02232DA4(Window *window) {
+    if (window->bgConfig != NULL) {
+        ClearFrameAndWindow2(window, 0);
+        ClearWindowTilemapAndCopyToVram(window);
+        RemoveWindow(window);
     }
-    return;
 }
 #pragma force_active reset

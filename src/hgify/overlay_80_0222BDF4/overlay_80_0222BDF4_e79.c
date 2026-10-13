@@ -6,20 +6,14 @@
 #include "frontier/frontier.h"
 #include "frontier/overlay_80_0222BDF4.h"
 
-#include "ghidra_compat.h"
 #include "save.h"
-typedef int code();
-undefined4 FrtCmd_114(undefined4 *param_1);
-// FUNCTION FrtCmd_114: matching C (r2)
+
+// FUNCTION FrtCmd_114: matching C (twin)
 #pragma force_active on
-undefined4 FrtCmd_114(undefined4 *param_1)
-
-{
-    int iVar1;
-
-    iVar1 = Frontier_GetLaunchArgs(*(undefined4 *)*param_1);
-    FrontierScript_ReadVarPtr((FrontierScriptContext *)param_1);
-    SaveGameNormal(*(undefined4 *)(iVar1 + 8));
-    return 0;
+BOOL FrtCmd_114(FrontierScriptContext *ctx) {
+    FrontierLaunchArgs *fieldData = Frontier_GetLaunchArgs(ctx->frontierSystem->unk0);
+    FrontierScript_ReadVarPtr(ctx);
+    SaveGameNormal(fieldData->saveData);
+    return FALSE;
 }
 #pragma force_active reset

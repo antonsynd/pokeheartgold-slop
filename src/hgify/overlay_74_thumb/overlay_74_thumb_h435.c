@@ -4,21 +4,21 @@
 
 #include "save.h"
 #include "system.h"
-extern unsigned char ov74_0223D454[];
 #pragma thumb on
-#include "ghidra_compat.h"
-typedef int code();
-#define sub_0223D468 (*(undefined4 *)((unsigned char *)ov74_0223D454 + 0x14))
-#define sub_0223D46C (*(undefined4 *)((unsigned char *)ov74_0223D454 + 0x18))
-void ov74_02236140(void);
-// FUNCTION ov74_02236140: matching C (r5)
-#pragma force_active on
-void ov74_02236140(void)
 
-{
-    Save_Cancel(sub_0223D46C);
-    sub_0223D468 = 3;
+typedef struct UnkStruct_ov74_02236140 {
+    u8 unk_00[0x14];
+    int savingStatus;
+    SaveData *saveData;
+} UnkStruct_ov74_02236140;
+
+extern UnkStruct_ov74_02236140 ov74_0223D454;
+
+// FUNCTION ov74_02236140: matching C (twin)
+#pragma force_active on
+void ov74_02236140(void) {
+    Save_Cancel(ov74_0223D454.saveData);
+    ov74_0223D454.savingStatus = 3;
     sub_0201A738(4);
-    return;
 }
 #pragma force_active reset
