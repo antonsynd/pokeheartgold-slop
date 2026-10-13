@@ -3,36 +3,50 @@
 #pragma thumb on
 #include "global.h"
 
-#include "ghidra_compat.h"
+#include "constants/sndseq.h"
+
 #include "touchscreen.h"
 #include "unk_02005D10.h"
-typedef int code();
-int ov40_02231700(void);
-void ov40_0222C474(int *);
-void ov40_0222BF80(int *, int);
-void ov40_0222DE40(int *);
-// FUNCTION ov40_0223169C: matching C (agent4)
-#pragma force_active on
-int ov40_0223169C(int *param_1) {
-    int iVar1;
 
-    if (System_GetTouchNew() != 0 && param_1[0x227] == 0) {
-        ov40_0222DE40(param_1);
+typedef struct UnkStruct_ov40_0223169C {
+    int unk_00;
+    u8 pad_04[0x89C - 0x04];
+    int unk_89C;
+} UnkStruct_ov40_0223169C;
+
+int ov40_02231700(void);
+void ov40_0222C474(UnkStruct_ov40_0223169C *);
+void ov40_0222BF80(UnkStruct_ov40_0223169C *, int);
+void ov40_0222DE40(UnkStruct_ov40_0223169C *);
+
+// FUNCTION ov40_0223169C: matching C (twin)
+#pragma force_active on
+int ov40_0223169C(UnkStruct_ov40_0223169C *param0) {
+    int v0;
+
+    if (System_GetTouchNew() != 0 && param0->unk_89C == 0) {
+        ov40_0222DE40(param0);
     }
-    if (*param_1 == 0) {
-        iVar1 = ov40_02231700();
-        switch (iVar1) {
+
+    if (param0->unk_00 == 0) {
+        v0 = ov40_02231700();
+
+        switch (v0) {
         case 1:
-            PlaySE(0x57b);
-            ov40_0222BF80(param_1, 7);
+            PlaySE(SEQ_SE_PL_BREC57);
+            ov40_0222BF80(param0, 7);
             return 0;
         case 2:
-            PlaySE(0x57b);
-            ov40_0222BF80(param_1, 8);
+            PlaySE(SEQ_SE_PL_BREC57);
+            ov40_0222BF80(param0, 8);
             return 0;
+        default:
+            break;
         }
     }
-    ov40_0222C474(param_1);
+
+    ov40_0222C474(param0);
+
     return 0;
 }
 #pragma force_active reset

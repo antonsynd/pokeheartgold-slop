@@ -8,28 +8,39 @@
 
 #include "heap.h"
 #include "sys_task_api.h"
-typedef struct Ov12Task {
-    BattleSystem *bsys;
-    u8 unk4;
-    u8 unk5;
-    u8 unk6;
-} Ov12Task;
-void ov12_022619E4(BattleSystem *bsys, u8 *param_2, u32 param_3, u8 *buf);
-void ov12_022605D0(SysTask *, void *);
-// FUNCTION ov12_0225B2F8: matching C (agent8)
-#pragma force_active on
-void ov12_0225B2F8(BattleSystem *param_1, u8 *param_2, u32 param_3) {
-    u8 buf[36];
-    MsgData *loader;
-    Ov12Task *task;
 
-    ov12_022619E4(param_1, param_2, param_3, buf);
-    loader = BattleSystem_GetMessageLoader(param_1);
-    task = Heap_Alloc(5, 8);
-    task->bsys = param_1;
-    task->unk4 = 0x3c;
-    task->unk5 = param_2[0x65 << 2];
-    task->unk6 = BattleSystem_PrintBattleMessage(param_1, loader, (struct BattleMessage *)buf, BattleSystem_GetTextFrameDelay(param_1));
-    SysTask_CreateOnMainQueue(ov12_022605D0, task, 0);
+typedef struct UnkStruct_ov12_0225B2F8 {
+    u8 padding[0x194];
+    u8 battler;
+} UnkStruct_ov12_0225B2F8;
+
+typedef struct BattleMessageWaitTask {
+    BattleSystem *battleSys;
+    u8 command;
+    u8 battler;
+    u8 msgIdx;
+} BattleMessageWaitTask;
+
+void ov12_022619E4(BattleSystem *battleSys, UnkStruct_ov12_0225B2F8 *battlerData, u32 message, BattleMessage *battleMsg);
+void ov12_022605D0(SysTask *, void *);
+
+// FUNCTION ov12_0225B2F8: matching C (twin)
+#pragma force_active on
+void ov12_0225B2F8(BattleSystem *battleSys, UnkStruct_ov12_0225B2F8 *battlerData, u32 message) {
+    BattleMessage battleMsg;
+    MsgData *msgLoader;
+    BattleMessageWaitTask *waitTask;
+
+    ov12_022619E4(battleSys, battlerData, message, &battleMsg);
+
+    msgLoader = BattleSystem_GetMessageLoader(battleSys);
+    waitTask = (BattleMessageWaitTask *)Heap_Alloc(HEAP_ID_BATTLE, sizeof(BattleMessageWaitTask));
+
+    waitTask->battleSys = battleSys;
+    waitTask->command = 0x3c;
+    waitTask->battler = battlerData->battler;
+    waitTask->msgIdx = BattleSystem_PrintBattleMessage(battleSys, msgLoader, &battleMsg, BattleSystem_GetTextFrameDelay(battleSys));
+
+    SysTask_CreateOnMainQueue(ov12_022605D0, waitTask, 0);
 }
 #pragma force_active reset

@@ -208,17 +208,17 @@ void ov45_0222DA80(UnkStruct_ov45_0222D860 *a0, const UnkStruct_ov45_0222DA80 *a
 void ov45_0222DAE0(UnkStruct_ov45_0222D860 *a0, const UnkStruct_ov45_0222DAE0 *a1);
 void ov45_0222DAE0(UnkStruct_ov45_0222D860 *a0, const UnkStruct_ov45_0222DAE0 *a1);
 void ov45_0222DB3C(UnkStruct_ov45_0222D860 *a0, const UnkStruct_ov45_0222DAE0 *a1);
-// FUNCTION ov45_0222DB3C: matching C (r0)
+// FUNCTION ov45_0222DB3C: matching C (twin)
 #pragma force_active on
-void ov45_0222DB3C(UnkStruct_ov45_0222D860 *a0, const UnkStruct_ov45_0222DAE0 *a1) {
-    UnkStruct_ov45_0222E04C *entry = ov45_0222E04C(&a0->unk5C, 13);
+void ov45_0222DB3C(UnkStruct_ov45_0222D860 *param0, const UnkStruct_ov45_0222DAE0 *param1) {
+    UnkStruct_ov45_0222E04C *v0 = ov45_0222E04C(&param0->unk5C, 13);
 
-    if (entry == NULL) {
+    if (v0 == NULL) {
         return;
     }
 
-    ov45_0222E0E0(entry, a1->unk0, 0, 0, a1->unk4, a1->unk8, a1->unkC, a1->unk10, a1->unk14, a1->unk16, a1->unk18, a1->unk1A, 450, 13, 5);
-    ov45_0222E0A4(&a0->unk5C, entry);
+    ov45_0222E0E0(v0, param1->unk0, 0, 0, param1->unk4, param1->unk8, param1->unkC, param1->unk10, param1->unk14, param1->unk16, param1->unk18, param1->unk1A, 450, 13, 5);
+    ov45_0222E0A4(&param0->unk5C, v0);
 }
 #pragma force_active reset
 void ov45_0222DB98(UnkStruct_ov45_0222D860 *a0, const UnkStruct_ov45_0222DB98 *a1);

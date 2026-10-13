@@ -3,41 +3,27 @@
 #pragma thumb on
 #include "global.h"
 
-#include "ghidra_compat.h"
 #include "pokemon.h"
-typedef int code();
-undefined4 Pokemon_GetStatusIconId(undefined4 param_1);
-// FUNCTION Pokemon_GetStatusIconId: matching C (r3)
+
+// FUNCTION Pokemon_GetStatusIconId: matching C (twin)
 #pragma force_active on
-undefined4
-Pokemon_GetStatusIconId(undefined4 param_1)
+u32 Pokemon_GetStatusIconId(Pokemon *mon) {
+    u32 statusCondition = GetMonData(mon, MON_DATA_STATUS, NULL);
 
-{
-    uint uVar1;
-    int iVar2;
-    undefined4 uVar3;
-
-    uVar1 = GetMonData(param_1, 0xa0, 0);
-    iVar2 = GetMonData(param_1, 0xa3, 0);
-    if (iVar2 == 0) {
+    if (GetMonData(mon, MON_DATA_HP, NULL) == 0) {
         return 6;
-    }
-    if ((uVar1 & 0x88) != 0) {
+    } else if ((statusCondition & (MON_STATUS_PSN_MASK | MON_STATUS_TOX_MASK)) != 0) {
         return 4;
-    }
-    uVar3 = 7;
-    if ((uVar1 & 7) != 0) {
+    } else if ((statusCondition & MON_STATUS_SLP_MASK) != 0) {
         return 3;
-    }
-    if ((uVar1 & 0x10) != 0) {
+    } else if ((statusCondition & MON_STATUS_BRN_MASK) != 0) {
         return 5;
-    }
-    if ((uVar1 & 0x20) != 0) {
+    } else if ((statusCondition & MON_STATUS_FRZ_MASK) != 0) {
         return 2;
+    } else if ((statusCondition & MON_STATUS_PRZ_MASK) != 0) {
+        return 1;
     }
-    if ((uVar1 & 0x40) != 0) {
-        uVar3 = 1;
-    }
-    return uVar3;
+
+    return 7;
 }
 #pragma force_active reset

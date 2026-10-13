@@ -3,7 +3,10 @@
 #pragma thumb on
 #include "global.h"
 
+#include "constants/sndseq.h"
+
 #include "unk_02005D10.h"
+
 typedef struct UnkStruct_ov40_0222F6D0 {
     u8 filler_00[4];
     s32 unk_04;
@@ -11,25 +14,31 @@ typedef struct UnkStruct_ov40_0222F6D0 {
     u8 filler_0A[6];
     s32 unk_10;
 } UnkStruct_ov40_0222F6D0;
-void ov40_0222F878(UnkStruct_ov40_0222F6D0 *param0);
-// FUNCTION ov40_0222F6D0: matching C (agent8)
-#pragma force_active on
-void ov40_0222F6D0(UnkStruct_ov40_0222F6D0 *param0, u16 param1) {
-    s16 old = param0->unk_08;
 
-    param0->unk_08 = old + param1;
+void ov40_0222F878(UnkStruct_ov40_0222F6D0 *param0);
+// FUNCTION ov40_0222F6D0: matching C (twin)
+#pragma force_active on
+void ov40_0222F6D0(UnkStruct_ov40_0222F6D0 *param0, s16 param1) {
+    s16 v0 = param0->unk_08;
+
+    param0->unk_08 += param1;
+
     if (param0->unk_08 < 0) {
         param0->unk_08 = 0;
     }
+
     if (param0->unk_10 == param0->unk_04) {
         param0->unk_08 = 0;
     }
+
     if (param0->unk_08 + param0->unk_10 > param0->unk_04) {
         param0->unk_08 = param0->unk_04 - param0->unk_10;
     }
-    if (old != param0->unk_08) {
-        PlaySE(0x572);
+
+    if (v0 != param0->unk_08) {
+        PlaySE(SEQ_SE_PL_BUTTON);
     }
+
     ov40_0222F878(param0);
 }
 #pragma force_active reset

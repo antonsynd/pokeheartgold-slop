@@ -3,27 +3,32 @@
 #pragma thumb on
 #include "global.h"
 
+#include "bg_window.h"
 #include "font.h"
-#include "ghidra_compat.h"
+#include "pm_string.h"
 #include "text.h"
-typedef int code();
-undefined4 ov49_0225B388();
-void ov49_0225C414(int param_1, undefined4 param_2, int param_3, undefined4 param_4, byte param_5, undefined1 param_6, undefined4 param_7);
-// FUNCTION ov49_0225C414: matching C (r2)
+
+typedef struct UnkStruct_ov49_0225C414 {
+    u8 unk_00[4];
+    Window unk_04[];
+} UnkStruct_ov49_0225C414;
+
+String *ov49_0225B388(void *param0, int param1, u32 param2);
+// FUNCTION ov49_0225C414: matching C (twin)
 #pragma force_active on
-void ov49_0225C414(int param_1, undefined4 param_2, int param_3, undefined4 param_4, byte param_5, undefined1 param_6, undefined4 param_7)
+void ov49_0225C414(UnkStruct_ov49_0225C414 *param0, void *param1, u32 param2, u32 param3, u8 param4, u8 param5, u32 param6) {
+    String *v0;
+    u32 v1;
+    s32 v2;
 
-{
-    undefined4 uVar1;
-    int iVar2;
+    v0 = ov49_0225B388(param1, 1, param3);
+    v1 = FontID_String_GetWidth(0, v0, 0);
+    v2 = param4 - v1;
 
-    uVar1 = ov49_0225B388(param_2, 1, param_4);
-    iVar2 = FontID_String_GetWidth(0, uVar1, 0);
-    iVar2 = (uint)param_5 - iVar2;
-    if (iVar2 < 0) {
-        iVar2 = 0;
+    if (v2 < 0) {
+        v2 = 0;
     }
-    AddTextPrinterParameterizedWithColor(param_1 + 4 + param_3 * 0x10, 0, uVar1, iVar2, param_6, 0xff, param_7, 0);
-    return;
+
+    AddTextPrinterParameterizedWithColor(&param0->unk_04[param2], 0, v0, v2, param5, 0xff, param6, NULL);
 }
 #pragma force_active reset

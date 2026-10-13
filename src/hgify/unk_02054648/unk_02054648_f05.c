@@ -3,26 +3,23 @@
 #pragma thumb on
 #include "global.h"
 
+#include "field_system.h"
 #include "map_matrix.h"
 #include "terrain_attributes.h"
-typedef struct {
-    u8 unk_00[0x30];
-    void *mapMatrix;
-    u8 unk_34[0x5c - 0x34];
-    void *terrainAttributes;
-} FieldSystemView;
-// FUNCTION sub_02054824: matching C (agent8)
+
+// FUNCTION sub_02054824: matching C (twin)
 #pragma force_active on
-BOOL sub_02054824(FieldSystemView *fieldSystem, int x, int z, u16 *out) {
-    u8 mapWidth = MapMatrix_GetWidth(fieldSystem->mapMatrix);
-    int block_col = x / 32;
-    int block_row = z / 32;
-    int matrix_idx = block_col + block_row * mapWidth;
-    const u16 *tileData = TerrainAttributes_Get(matrix_idx, fieldSystem->terrainAttributes);
-    int col = x % 32;
-    int row = z % 32;
-    int idx = col + row * 32;
-    *out = tileData[idx];
-    return 1;
+BOOL sub_02054824(const FieldSystem *fieldSystem, const int tileX, const int tileZ, u16 *attributes) {
+    int mapMatrixWidth = MapMatrix_GetWidth(fieldSystem->mapMatrix);
+
+    u32 mapMatrixX = tileX / MAP_TILES_COUNT_X;
+    u32 mapMatrixZ = tileZ / MAP_TILES_COUNT_Z;
+    u32 mapMatrixIndex = mapMatrixX + mapMatrixZ * mapMatrixWidth;
+
+    u32 tileIndex = (tileZ % MAP_TILES_COUNT_Z) * MAP_TILES_COUNT_X + (tileX % MAP_TILES_COUNT_X);
+    const u16 *terrainAttributes = TerrainAttributes_Get(mapMatrixIndex, fieldSystem->terrainAttributes);
+    *attributes = terrainAttributes[tileIndex];
+
+    return TRUE;
 }
 #pragma force_active reset

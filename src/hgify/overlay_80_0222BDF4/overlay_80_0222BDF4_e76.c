@@ -3,30 +3,36 @@
 #pragma thumb on
 #include "global.h"
 
+#include "constants/heap.h"
+
 #include "frontier/frontier.h"
 
-#include "ghidra_compat.h"
 #include "heap.h"
+#include "launch_application.h"
 #include "sound_02004A44.h"
-typedef int code();
-undefined4 sub_0202FC90();
-extern undefined gOverlayTemplate_Battle;
-undefined4 FrtCmd_110(undefined4 *param_1);
-// FUNCTION FrtCmd_110: matching C (r2)
+
+typedef struct UnkStruct_FrtCmd_110_Frontier {
+    void *unk_00;
+} UnkStruct_FrtCmd_110_Frontier;
+
+typedef struct UnkStruct_FrtCmd_110 {
+    UnkStruct_FrtCmd_110_Frontier *frontier;
+} UnkStruct_FrtCmd_110;
+
+u32 sub_0202FC90(SaveData *saveData, u32 a1, int *a2, void *a3, u32 a4);
+// FUNCTION FrtCmd_110: matching C (twin)
 #pragma force_active on
-undefined4 FrtCmd_110(undefined4 *param_1)
+BOOL FrtCmd_110(UnkStruct_FrtCmd_110 *ctx) {
+    int v0;
+    FrontierLaunchArgs *fieldData = Frontier_GetLaunchArgs(ctx->frontier->unk_00);
+    void *dto = Heap_Alloc(HEAP_ID_FIELD2, 0x1d4);
 
-{
-    int iVar1;
-    undefined4 uVar2;
-    undefined1 auStack_14[4];
+    MI_CpuFill8(dto, 0, 0x1d4);
 
-    iVar1 = Frontier_GetLaunchArgs(*(undefined4 *)*param_1);
-    uVar2 = Heap_Alloc(0xb, 0x1d4);
-    MI_CpuFill8(uVar2, 0, 0x1d4);
-    sub_0202FC90(*(undefined4 *)(iVar1 + 8), 0xb, auStack_14, uVar2, 0);
+    sub_0202FC90(fieldData->saveData, 11, &v0, dto, 0);
     Sound_SetSceneAndPlayBGM(5, 0x45d, 1);
-    Frontier_LaunchApplication(*(undefined4 *)*param_1, (const struct OverlayManagerTemplate *)&gOverlayTemplate_Battle, uVar2, 1, 0);
-    return 1;
+    Frontier_LaunchApplication(ctx->frontier->unk_00, &gOverlayTemplate_Battle, dto, 1, NULL);
+
+    return TRUE;
 }
 #pragma force_active reset

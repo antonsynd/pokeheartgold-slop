@@ -4,29 +4,39 @@
 #include "global.h"
 
 #include "gf_3d_loader.h"
-#include "ghidra_compat.h"
 #include "heap.h"
-typedef int code();
-void ov41_02246D54(undefined4 *param_1, int param_2, int param_3, undefined4 param_4);
-// FUNCTION ov41_02246D54: matching C (r2)
+
+typedef struct UnkStruct_ov41_02246D54_CharsTemplate {
+    u32 unk_00;
+    u32 unk_04;
+} UnkStruct_ov41_02246D54_CharsTemplate;
+
+typedef struct UnkStruct_ov41_02246D54_PaletteTemplate {
+    u32 unk_00;
+    u32 unk_04;
+    u32 unk_08;
+} UnkStruct_ov41_02246D54_PaletteTemplate;
+
+typedef struct UnkStruct_ov41_02246D54 {
+    void *unk_00;
+    int unk_04;
+    void *unk_08;
+    int unk_0C;
+    GF_2DGfxRawResMan *unk_10;
+    GF_2DGfxRawResMan *unk_14;
+} UnkStruct_ov41_02246D54;
+
+// FUNCTION ov41_02246D54: matching C (twin)
 #pragma force_active on
-void ov41_02246D54(undefined4 *param_1, int param_2, int param_3, undefined4 param_4)
+void ov41_02246D54(UnkStruct_ov41_02246D54 *param0, int param1, int param2, enum HeapID heapID) {
+    param0->unk_00 = Heap_Alloc(heapID, sizeof(UnkStruct_ov41_02246D54_CharsTemplate) * param1);
+    memset(param0->unk_00, 0, sizeof(UnkStruct_ov41_02246D54_CharsTemplate) * param1);
+    param0->unk_10 = GF2dGfxRawResMan_Create(param1, heapID);
+    param0->unk_04 = param1;
 
-{
-    undefined4 uVar1;
-
-    uVar1 = Heap_Alloc(param_4, param_2 << 3);
-    *param_1 = uVar1;
-    memset(uVar1, 0, param_2 << 3);
-    uVar1 = GF2dGfxRawResMan_Create(param_2, param_4);
-    param_1[4] = uVar1;
-    param_1[1] = param_2;
-    uVar1 = Heap_Alloc(param_4, param_3 * 0xc);
-    param_1[2] = uVar1;
-    memset(uVar1, 0, param_3 * 0xc);
-    uVar1 = GF2dGfxRawResMan_Create(param_3, param_4);
-    param_1[5] = uVar1;
-    param_1[3] = param_3;
-    return;
+    param0->unk_08 = Heap_Alloc(heapID, sizeof(UnkStruct_ov41_02246D54_PaletteTemplate) * param2);
+    memset(param0->unk_08, 0, sizeof(UnkStruct_ov41_02246D54_PaletteTemplate) * param2);
+    param0->unk_14 = GF2dGfxRawResMan_Create(param2, heapID);
+    param0->unk_0C = param2;
 }
 #pragma force_active reset

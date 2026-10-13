@@ -5,18 +5,20 @@
 
 #include "bg_window.h"
 #include "gf_gfx_loader.h"
-#include "ghidra_compat.h"
-typedef int code();
-extern undefined ov74_0223C960;
-void ov74_02232AC8(int *param_1);
-// FUNCTION ov74_02232AC8: matching C (r2)
-#pragma force_active on
-void ov74_02232AC8(int *param_1)
 
-{
-    GfGfxLoader_LoadScrnData(0x71, 0x18, param_1[8], 2, 0, 0x600, 1, 0x4c);
-    BgTilemapRectChangePalette(param_1[8], 2, 0, 0, 0x20, 0x18, (&ov74_0223C960)[*param_1]);
-    BgCommitTilemapBufferToVram(param_1[8], 2);
-    return;
+extern const u8 ov74_0223C960[];
+
+typedef struct UnkStruct_ov74_02232AC8 {
+    int gbaVersion;
+    u8 unk4[0x1C];
+    BgConfig *bgConfig;
+} UnkStruct_ov74_02232AC8;
+
+// FUNCTION ov74_02232AC8: matching C (twin)
+#pragma force_active on
+void ov74_02232AC8(UnkStruct_ov74_02232AC8 *migrator) {
+    GfGfxLoader_LoadScrnData(0x71, 0x18, migrator->bgConfig, 2, 0, 32 * 24 * 2, 1, 0x4c);
+    BgTilemapRectChangePalette(migrator->bgConfig, 2, 0, 0, 32, 24, ov74_0223C960[migrator->gbaVersion]);
+    BgCommitTilemapBufferToVram(migrator->bgConfig, 2);
 }
 #pragma force_active reset

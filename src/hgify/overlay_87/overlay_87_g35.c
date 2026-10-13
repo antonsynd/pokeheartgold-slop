@@ -3,32 +3,33 @@
 #pragma thumb on
 #include "global.h"
 
-#include "ghidra_compat.h"
 #include "unk_02005D10.h"
-typedef int code();
-undefined4 ov87_021E8084();
-undefined4 ov87_021E803C();
-undefined4 ov87_021E7FD4();
-undefined4 ov87_021E70D0(int param_1);
-// FUNCTION ov87_021E70D0: matching C (r2)
+
+typedef struct UnkStruct_ov87_021E70D0 {
+    u8 unk_000[0x350];
+    void *winMonSprites[3];
+    void *winPopupSprite;
+    u8 scratchCellValues[0x3A2 - 0x360];
+    u8 scratchedOffCellIdxs[3];
+} UnkStruct_ov87_021E70D0;
+
+void ov87_021E803C(void *sprite, u8 anim);
+void ov87_021E7FD4(void *sprite, BOOL flag);
+void ov87_021E8084(void *sprite, BOOL flag);
+
+// FUNCTION ov87_021E70D0: matching C (twin)
 #pragma force_active on
-undefined4 ov87_021E70D0(int param_1)
+u8 ov87_021E70D0(UnkStruct_ov87_021E70D0 *app) {
+    for (u8 i = 0; i < 3; i++) {
+        ov87_021E803C(app->winMonSprites[i], app->scratchCellValues[app->scratchedOffCellIdxs[i]]);
+        ov87_021E7FD4(app->winMonSprites[i], TRUE);
+    }
 
-{
-    uint uVar1;
-    int iVar2;
+    ov87_021E7FD4(app->winPopupSprite, TRUE);
+    ov87_021E8084(app->winPopupSprite, TRUE);
 
-    uVar1 = 0;
-    do {
-        iVar2 = param_1 + uVar1 * 4;
-        ov87_021E803C(*(undefined4 *)(iVar2 + 0x350),
-            *(undefined1 *)(param_1 + (uint) * (byte *)(param_1 + uVar1 + 0x3a2) + 0x360));
-        ov87_021E7FD4(*(undefined4 *)(iVar2 + 0x350), 1);
-        uVar1 = uVar1 + 1 & 0xff;
-    } while (uVar1 < 3);
-    ov87_021E7FD4(*(undefined4 *)(param_1 + 0x35c), 1);
-    ov87_021E8084(*(undefined4 *)(param_1 + 0x35c), 1);
     PlaySE(0x561);
+
     return 0;
 }
 #pragma force_active reset

@@ -3,36 +3,57 @@
 #pragma thumb on
 #include "global.h"
 
-#include "ghidra_compat.h"
 #include "heap.h"
 #include "sprite_system.h"
-typedef void code(void);
-undefined4 ov07_022227D8(undefined4);
-undefined4 ov07_022222B4(undefined4);
-undefined4 ov07_0221C448(undefined4, undefined4);
-undefined4 ov07_02222AF4(undefined4);
-void ov07_02228D08(undefined4 param_1, unsigned char *param_2);
-// FUNCTION ov07_02228D08: matching C (r4)
+#include "sys_task_api.h"
+
+typedef struct BattleAnimSystem BattleAnimSystem;
+typedef struct XYTransformContext {
+    s16 x;
+    s16 y;
+    s32 data[7];
+} XYTransformContext;
+
+typedef struct UnkStruct_ov07_02228D08 {
+    u8 state;
+    u8 unk1[0xB];
+    BattleAnimSystem *system;
+    SpriteManager *pokemonSpriteManager;
+    u8 unk14[4];
+    ManagedSprite *xluSprite;
+    u8 shake[0x24];
+    XYTransformContext pos;
+    u8 unk60[4];
+    u8 alpha[0x10];
+} UnkStruct_ov07_02228D08;
+
+BOOL ov07_022222B4(XYTransformContext *ctx);
+void ov07_022227D8(void *shake);
+BOOL ov07_02222AF4(void *alpha);
+void ov07_0221C448(BattleAnimSystem *system, SysTask *task);
+
+// FUNCTION ov07_02228D08: matching C (twin)
 #pragma force_active on
-void ov07_02228D08(undefined4 param_1, unsigned char *param_2)
+void ov07_02228D08(SysTask *task, void *param) {
+    UnkStruct_ov07_02228D08 *ctx = param;
 
-{
-    int iVar1;
-
-    if (*param_2 == '\0') {
-        iVar1 = ov07_022222B4(param_2 + 0x40);
-        if (iVar1 == 0) {
-            *param_2 = *param_2 + '\x01';
+    switch (ctx->state) {
+    case 0:
+        if (ov07_022222B4(&ctx->pos) == FALSE) {
+            ctx->state++;
         }
-        ov07_022227D8(param_2 + 0x1c);
-        ov07_02222AF4(param_2 + 100);
-        ManagedSprite_SetPositionXY(*(undefined4 *)(param_2 + 0x18), (int)*(short *)(param_2 + 0x40), (int)*(short *)(param_2 + 0x42));
-        ManagedSprite_TickFrame(*(undefined4 *)(param_2 + 0x18));
-        SpriteSystem_DrawSprites(*(undefined4 *)(param_2 + 0x10));
-        return;
+
+        ov07_022227D8(&ctx->shake);
+        ov07_02222AF4(&ctx->alpha);
+
+        ManagedSprite_SetPositionXY(ctx->xluSprite, ctx->pos.x, ctx->pos.y);
+        ManagedSprite_TickFrame(ctx->xluSprite);
+        SpriteSystem_DrawSprites(ctx->pokemonSpriteManager);
+        break;
+    default:
+        ov07_0221C448(ctx->system, task);
+        Heap_Free(ctx);
+        break;
     }
-    ov07_0221C448(*(undefined4 *)(param_2 + 0xc), param_1);
-    Heap_Free(param_2);
-    return;
 }
 #pragma force_active reset

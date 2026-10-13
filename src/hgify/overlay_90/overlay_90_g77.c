@@ -2,16 +2,19 @@
 #pragma warning_errors off
 #pragma thumb on
 #include "global.h"
-void ov90_02259234(int param_1, int param_2, int param_3);
-void ov90_022592C4(int param_1, int param_2, int param_3, int param_4, int param_5);
-// FUNCTION ov90_02259E38: matching C (agent12)
+
+void ov90_02259234(void *param0, u32 param1, u32 param2);
+void ov90_022592C4(void *param0, int param1, void *param2, u8 param3, u8 param4);
+
+// FUNCTION ov90_02259E38: matching C (twin)
 #pragma force_active on
-void ov90_02259E38(int param_1, int param_2, int param_3, int param_4, s16 param_5, int param_6) {
-    ov90_02259234(param_2, param_3, param_6);
-    if (param_6 == 5) {
-        ov90_022592C4(param_2, 0xe, param_1, (u8)param_4, (u8)param_5);
+void ov90_02259E38(void *param0, void *param1, u32 param2, s16 param3, s16 param4, u32 param5) {
+    ov90_02259234(param1, param2, param5);
+
+    if (param5 == 5) {
+        ov90_022592C4(param1, 14, param0, param3, param4);
     } else {
-        ov90_022592C4(param_2, 0xd, param_1, (u8)param_4, (u8)param_5);
+        ov90_022592C4(param1, 13, param0, param3, param4);
     }
 }
 #pragma force_active reset

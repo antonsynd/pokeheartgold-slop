@@ -4,29 +4,37 @@
 #include "global.h"
 
 #include "bg_window.h"
-#include "ghidra_compat.h"
 #include "msgdata.h"
 #include "pm_string.h"
 #include "text.h"
-typedef int code();
-undefined4 ov40_022306C0();
-void ov40_0223CCBC(int param_1, undefined4 param_2);
-// FUNCTION ov40_0223CCBC: matching C (r2)
+
+typedef struct UnkStruct_ov40_0223CCBC_Sub {
+    u8 pad_00[0x94];
+    Window unk_94;
+} UnkStruct_ov40_0223CCBC_Sub;
+
+typedef struct UnkStruct_ov40_0223CCBC {
+    u8 pad_00[0x48];
+    MsgData *msgData;
+    u8 pad_4C[0x860 - 0x4C];
+    UnkStruct_ov40_0223CCBC_Sub *unk_860;
+} UnkStruct_ov40_0223CCBC;
+
+int ov40_022306C0(Window *window, String *string);
+void ov40_0223CCBC(UnkStruct_ov40_0223CCBC *param0, s32 param1);
+// FUNCTION ov40_0223CCBC: matching C (twin)
 #pragma force_active on
-void ov40_0223CCBC(int param_1, undefined4 param_2)
+void ov40_0223CCBC(UnkStruct_ov40_0223CCBC *param0, s32 param1) {
+    Window *window = &param0->unk_860->unk_94;
+    String *string;
+    int x;
 
-{
-    undefined4 uVar1;
-    undefined4 uVar2;
-    int iVar3;
+    FillWindowPixelBuffer(window, 0);
+    string = NewString_ReadMsgData(param0->msgData, param1);
+    x = ov40_022306C0(window, string);
 
-    iVar3 = *(int *)(param_1 + 0x860) + 0x94;
-    FillWindowPixelBuffer(iVar3, 0);
-    uVar1 = NewString_ReadMsgData(*(undefined4 *)(param_1 + 0x48), param_2);
-    uVar2 = ov40_022306C0(iVar3, uVar1);
-    AddTextPrinterParameterizedWithColor(iVar3, 0, uVar1, uVar2, 0, 0xff, 0xf0d00, 0);
-    String_Delete(uVar1);
-    ScheduleWindowCopyToVram(iVar3);
-    return;
+    AddTextPrinterParameterizedWithColor(window, 0, string, x, 0, TEXT_SPEED_NOTRANSFER, 0xF0D00, NULL);
+    String_Delete(string);
+    ScheduleWindowCopyToVram(window);
 }
 #pragma force_active reset

@@ -6,28 +6,29 @@
 #include "frontier/overlay_80_022340E8.h"
 
 #include "bg_window.h"
-#include "ghidra_compat.h"
 #include "message_printer.h"
-typedef int code();
-void ov83_02240238(int param_1, undefined4 param_2, int param_3, undefined4 param_4);
-// FUNCTION ov83_02240238: matching C (r2)
+
+typedef struct UnkStruct_ov83_02240238 {
+    u8 unk_00[9];
+    u8 challengeType;
+    u8 unk_0A[0x504 - 0x0A];
+    MessagePrinter *specialChars;
+} UnkStruct_ov83_02240238;
+
+void ov83_02240238(UnkStruct_ov83_02240238 *app, Window *window, u8 slot, u32 hp);
+// FUNCTION ov83_02240238: matching C (twin)
 #pragma force_active on
-void ov83_02240238(int param_1, undefined4 param_2, int param_3, undefined4 param_4)
+void ov83_02240238(UnkStruct_ov83_02240238 *app, Window *window, u8 slot, u32 hp) {
+    u16 xOffset;
 
-{
-    int iVar1;
-    uint uVar2;
-
-    iVar1 = ov80_02237D8C(*(undefined1 *)(param_1 + 9));
-    if (iVar1 == 0) {
-        iVar1 = 0x24;
+    if (ov80_02237D8C(app->challengeType) == FALSE) {
+        xOffset = 36;
     } else {
-        iVar1 = 4;
+        xOffset = 4;
     }
-    uVar2 = iVar1 + param_3 * 0x40;
-    FillWindowPixelRect(param_2, 0, uVar2 & 0xffff, 0, 0x18, 9);
-    PrintUIntOnWindow(*(undefined4 *)(param_1 + 0x504), param_4, 3, 1, param_2, uVar2, 1);
-    ScheduleWindowCopyToVram(param_2);
-    return;
+
+    FillWindowPixelRect(window, 0, xOffset + (64 * slot), 0, 24, 9);
+    PrintUIntOnWindow(app->specialChars, hp, 3, 1, window, xOffset + (64 * slot), 1);
+    ScheduleWindowCopyToVram(window);
 }
 #pragma force_active reset

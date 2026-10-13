@@ -51,151 +51,23 @@ typedef struct UnkStruct_ov39_Work {
     String *unk3FC;
     UnkStruct_ov39_Reply unk400;
 } UnkStruct_ov39_Work;
-typedef struct UnkStruct_ov39_Request {
-    u16 unk0;
-    u16 unk2;
-    u8 unk4[4];
-} UnkStruct_ov39_Request;
-typedef struct UnkStruct_ov39_PairArg {
-    u8 unk0[4];
-    u16 unk4;
-    u16 unk6;
-} UnkStruct_ov39_PairArg;
-typedef struct UnkStruct_ov39_Item {
-    u8 unk0[0x80];
-    u8 unk80[0x58];
-    u32 unkD8;
-    u32 unkDC;
-    u16 unkE0;
-    u16 unkE2;
-} UnkStruct_ov39_Item;
-typedef struct UnkStruct_ov39_Entry {
-    u32 unk0;
-    u32 unk4;
-    u32 unk8;
-    UnkStruct_ov39_Item unkC;
-} UnkStruct_ov39_Entry;
-typedef struct UnkStruct_ov39_EntryList {
-    int count;
-    UnkStruct_ov39_Entry entries[1];
-} UnkStruct_ov39_EntryList;
-typedef struct UnkStruct_ov39_Elem0EC {
-    u8 unk0[0xC];
-    u8 unkC[0xE0];
-} UnkStruct_ov39_Elem0EC;
-typedef struct UnkStruct_ov39_ElemList0EC {
-    int count;
-    UnkStruct_ov39_Elem0EC entries[1];
-} UnkStruct_ov39_ElemList0EC;
-typedef struct UnkStruct_ov39_Elem22C {
-    u8 unk0[0x10];
-    u8 unk10[0x21C];
-} UnkStruct_ov39_Elem22C;
-typedef struct UnkStruct_ov39_ElemList22C {
-    int count;
-    UnkStruct_ov39_Elem22C entries[1];
-} UnkStruct_ov39_ElemList22C;
-typedef struct UnkStruct_ov39_Pair {
-    u32 unk0;
-    u32 unk4;
-} UnkStruct_ov39_Pair;
-typedef struct UnkStruct_ov39_Payload558 {
-    u8 unk0[0x558];
-    u8 unk558[1];
-} UnkStruct_ov39_Payload558;
-extern UnkStruct_ov39_Request *ov39_0222A2B4(void);
-extern int ov39_0222A2A8(void);
-extern int ov39_02228120(UnkStruct_ov39_Work *work, UnkStruct_ov39_Request *request);
-extern int ov40_02244B70(SaveData *saveData, u32 a1, u32 a2, u16 *a3, u16 *a4);
-BOOL ov39_02227B1C(void *work, void *arg);
-BOOL ov39_02227B20(void *work, void *arg);
-BOOL ov39_02227B24(void *work, void *arg);
-BOOL ov39_02227B50(void *work, void *arg);
-BOOL ov39_02227B54(void *work, void *arg);
-int ov39_02227DE4(UnkStruct_ov39_Work *work);
 void ov39_02227D50(UnkStruct_ov39_Work *work, String *string);
-int ov39_02227E48(UnkStruct_ov39_Work *work, UnkStruct_ov39_Request *request);
-int ov39_02227E6C(UnkStruct_ov39_Work *work, UnkStruct_ov39_Request *request);
-int ov39_02227ECC(UnkStruct_ov39_Work *work, UnkStruct_ov39_Request *request);
-int ov39_02227EF4(UnkStruct_ov39_Work *work, UnkStruct_ov39_Request *request);
-int ov39_02227F60(UnkStruct_ov39_Work *work, UnkStruct_ov39_Request *request);
-int ov39_02227F84(UnkStruct_ov39_Work *work, UnkStruct_ov39_Request *request);
-int ov39_02227FC4(UnkStruct_ov39_Work *work, UnkStruct_ov39_Request *request);
-int ov39_02227FFC(UnkStruct_ov39_Work *work, UnkStruct_ov39_Request *request);
-int ov39_022280B4(UnkStruct_ov39_Work *work, UnkStruct_ov39_Request *request);
-extern OSHeapHandle _0222AB80;
-BOOL ov39_02227B1C(void *work, void *arg);
-BOOL ov39_02227B1C(void *work, void *arg);
-BOOL ov39_02227B20(void *work, void *arg);
-BOOL ov39_02227B20(void *work, void *arg);
-BOOL ov39_02227B24(void *work, void *arg);
-BOOL ov39_02227B24(void *work, void *arg);
-BOOL ov39_02227B50(void *work, void *arg);
-BOOL ov39_02227B50(void *work, void *arg);
-BOOL ov39_02227B54(void *work, void *arg);
-BOOL ov39_02227B54(void *work, void *arg);
-BOOL ov39_02227B58(void *work, void *arg);
-BOOL ov39_02227B58(void *work, void *arg);
-int ov39_02227B5C(UnkStruct_ov39_Work *work);
-int ov39_02227B5C(UnkStruct_ov39_Work *work);
-BOOL ov39_02227D44(UnkStruct_ov39_Work *work, UnkStruct_ov39_Status **status);
-BOOL ov39_02227D44(UnkStruct_ov39_Work *work, UnkStruct_ov39_Status **status);
-void ov39_02227D50(UnkStruct_ov39_Work *work, String *string);
-void ov39_02227D50(UnkStruct_ov39_Work *work, String *string);
-void ov39_02227D5C(UnkStruct_ov39_Work *work, int msgNo, int number);
-// FUNCTION ov39_02227D5C: matching C (r0)
+// FUNCTION ov39_02227D5C: matching C (twin)
 #pragma force_active on
-void ov39_02227D5C(UnkStruct_ov39_Work *work, int msgNo, int number) {
-    String *string;
+void ov39_02227D5C(UnkStruct_ov39_Work *param0, int param1, int param2) {
+    String *v1;
+    int v0;
 
-    if (msgNo == -1) {
-        msgNo = 11;
+    if (param1 != -1) {
+        v0 = 0 + param1;
+    } else {
+        v0 = 11;
     }
 
-    BufferIntegerAsString(work->unk3F8, 0, number, 5, PRINTING_MODE_LEADING_ZEROS, TRUE);
-    string = NewString_ReadMsgData(work->unk3F4, msgNo);
-    StringExpandPlaceholders(work->unk3F8, work->unk3FC, string);
-    String_Delete(string);
-    ov39_02227D50(work, work->unk3FC);
+    BufferIntegerAsString(param0->unk3F8, 0, param2, 5, PRINTING_MODE_LEADING_ZEROS, TRUE);
+    v1 = NewString_ReadMsgData(param0->unk3F4, v0);
+    StringExpandPlaceholders(param0->unk3F8, param0->unk3FC, v1);
+    String_Delete(v1);
+    ov39_02227D50(param0, param0->unk3FC);
 }
 #pragma force_active reset
-BOOL ov39_02227DB8(UnkStruct_ov39_Work *work);
-BOOL ov39_02227DB8(UnkStruct_ov39_Work *work);
-int ov39_02227DE4(UnkStruct_ov39_Work *work);
-int ov39_02227DE4(UnkStruct_ov39_Work *work);
-void *ov39_02227DEC(enum HeapID heapID);
-void *ov39_02227DEC(enum HeapID heapID);
-void ov39_02227E3C(void);
-void ov39_02227E3C(void);
-int ov39_02227E48(UnkStruct_ov39_Work *work, UnkStruct_ov39_Request *request);
-int ov39_02227E48(UnkStruct_ov39_Work *work, UnkStruct_ov39_Request *request);
-int ov39_02227E6C(UnkStruct_ov39_Work *work, UnkStruct_ov39_Request *request);
-int ov39_02227E6C(UnkStruct_ov39_Work *work, UnkStruct_ov39_Request *request);
-int ov39_02227E8C(UnkStruct_ov39_Work *work, u8 **out, int max);
-int ov39_02227E8C(UnkStruct_ov39_Work *work, u8 **out, int max);
-int ov39_02227ECC(UnkStruct_ov39_Work *work, UnkStruct_ov39_Request *request);
-int ov39_02227ECC(UnkStruct_ov39_Work *work, UnkStruct_ov39_Request *request);
-int ov39_02227EF4(UnkStruct_ov39_Work *work, UnkStruct_ov39_Request *request);
-int ov39_02227EF4(UnkStruct_ov39_Work *work, UnkStruct_ov39_Request *request);
-int ov39_02227F14(UnkStruct_ov39_Work *work, u8 **out, int max);
-int ov39_02227F14(UnkStruct_ov39_Work *work, u8 **out, int max);
-int ov39_02227F60(UnkStruct_ov39_Work *work, UnkStruct_ov39_Request *request);
-int ov39_02227F60(UnkStruct_ov39_Work *work, UnkStruct_ov39_Request *request);
-void ov39_02227F74(UnkStruct_ov39_Work *work, void **out);
-void ov39_02227F74(UnkStruct_ov39_Work *work, void **out);
-int ov39_02227F84(UnkStruct_ov39_Work *work, UnkStruct_ov39_Request *request);
-int ov39_02227F84(UnkStruct_ov39_Work *work, UnkStruct_ov39_Request *request);
-void ov39_02227FA8(UnkStruct_ov39_Work *work, void **out1, void **out2);
-void ov39_02227FA8(UnkStruct_ov39_Work *work, void **out1, void **out2);
-int ov39_02227FC4(UnkStruct_ov39_Work *work, UnkStruct_ov39_Request *request);
-int ov39_02227FC4(UnkStruct_ov39_Work *work, UnkStruct_ov39_Request *request);
-u64 ov39_02227FEC(UnkStruct_ov39_Work *work);
-u64 ov39_02227FEC(UnkStruct_ov39_Work *work);
-int ov39_02227FFC(UnkStruct_ov39_Work *work, UnkStruct_ov39_Request *request);
-int ov39_02227FFC(UnkStruct_ov39_Work *work, UnkStruct_ov39_Request *request);
-int ov39_0222801C(UnkStruct_ov39_Work *work, UnkStruct_ov39_Item **out, int max);
-int ov39_0222801C(UnkStruct_ov39_Work *work, UnkStruct_ov39_Item **out, int max);
-int ov39_022280B4(UnkStruct_ov39_Work *work, UnkStruct_ov39_Request *request);
-int ov39_022280B4(UnkStruct_ov39_Work *work, UnkStruct_ov39_Request *request);
-int ov39_022280D4(UnkStruct_ov39_Work *work, UnkStruct_ov39_Item **out);
-int ov39_022280D4(UnkStruct_ov39_Work *work, UnkStruct_ov39_Item **out);

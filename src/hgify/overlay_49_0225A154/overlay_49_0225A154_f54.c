@@ -4,29 +4,29 @@
 #include "global.h"
 
 #include "bg_window.h"
-#include "ghidra_compat.h"
 #include "pm_string.h"
 #include "render_window.h"
 #include "text.h"
-typedef int code();
-void ov49_0225AB44(int param_1, undefined4 param_2, undefined4 param_3, undefined4 param_4);
-// FUNCTION ov49_0225AB44: matching C (r3)
+
+typedef struct UnkStruct_ov49_0225AB44 {
+    Window unk_00;
+    u32 unk_10;
+    int unk_14;
+    String *unk_18;
+} UnkStruct_ov49_0225AB44;
+
+// FUNCTION ov49_0225AB44: matching C (twin)
 #pragma force_active on
-void ov49_0225AB44(int param_1, undefined4 param_2, undefined4 param_3, undefined4 param_4)
-
-{
-    int iVar1;
-    undefined4 uVar2;
-
-    iVar1 = TextPrinterCheckActive(*(uint *)(param_1 + 0x10) & 0xff);
-    if (iVar1 != 0) {
-        RemoveTextPrinter(*(uint *)(param_1 + 0x10) & 0xff);
+void ov49_0225AB44(UnkStruct_ov49_0225AB44 *param0, const String *param1) {
+    if (TextPrinterCheckActive(param0->unk_10)) {
+        RemoveTextPrinter(param0->unk_10);
     }
-    FillWindowPixelBuffer(param_1, 0xf);
-    String_Copy(*(undefined4 *)(param_1 + 0x18), param_2);
-    uVar2 = AddTextPrinterParameterizedWithColor(param_1, 1, *(undefined4 *)(param_1 + 0x18), 0, 0, *(undefined4 *)(param_1 + 0x14), 0x1020f, 0);
-    *(undefined4 *)(param_1 + 0x10) = uVar2;
-    DrawFrameAndWindow2(param_1, 1, 1, 1);
-    return;
+
+    FillWindowPixelBuffer(&param0->unk_00, 15);
+    String_Copy(param0->unk_18, param1);
+
+    param0->unk_10 = AddTextPrinterParameterizedWithColor(&param0->unk_00, 1, param0->unk_18, 0, 0, param0->unk_14, 0x1020F, NULL);
+
+    DrawFrameAndWindow2(&param0->unk_00, 1, 1, 1);
 }
 #pragma force_active reset

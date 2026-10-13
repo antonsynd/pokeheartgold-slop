@@ -2,35 +2,46 @@
 #pragma warning_errors off
 #pragma thumb on
 #include "global.h"
-void ov39_02228B04(u8 *param_1, u32 param_2, u32 param_3, u32 param_4, u32 param_5);
-void ov39_02228B6C(u8 *param_1, u32 param_2, u32 param_3);
-// FUNCTION ov39_02228F54: matching C (agent12)
-#pragma force_active on
-u32 ov39_02228F54(u8 *param_1) {
-    u32 uVar1;
 
-    uVar1 = 0;
-    switch (*(s32 *)(param_1 + 0x10)) {
+typedef struct UnkStruct_ov39_02228F54 {
+    u8 unk_00[0x10];
+    int unk_10;
+    u8 unk_14[0x24 - 0x14];
+    u32 unk_24;
+    u8 unk_28[0x90 - 0x28];
+    u32 unk_90;
+} UnkStruct_ov39_02228F54;
+
+void ov39_02228B04(UnkStruct_ov39_02228F54 *param0, u32 param1, u32 param2, u32 param3, u32 param4);
+void ov39_02228B6C(UnkStruct_ov39_02228F54 *param0, u32 param1, u32 param2);
+// FUNCTION ov39_02228F54: matching C (twin)
+#pragma force_active on
+u32 ov39_02228F54(UnkStruct_ov39_02228F54 *param0) {
+    u32 v0 = 0;
+
+    switch (param0->unk_10) {
     case 1:
-        uVar1 = 0x96;
+        v0 = 0x96;
         break;
     case -1:
     case 2:
-        uVar1 = 0x97;
+        v0 = 0x97;
         break;
     case -14:
     case -2:
-        uVar1 = 0x9c;
+        v0 = 0x9c;
         break;
     case -15:
     case -12:
     case -5:
     case -3:
-        uVar1 = 0x9b;
+        v0 = 0x9b;
         break;
     }
-    ov39_02228B04(param_1, *(u32 *)(param_1 + 0x24), uVar1, *(u32 *)(param_1 + 0x90), 0xf0f);
-    ov39_02228B6C(param_1, 0xc, 0xb);
+
+    ov39_02228B04(param0, param0->unk_24, v0, param0->unk_90, 0xf0f);
+    ov39_02228B6C(param0, 12, 11);
+
     return 0;
 }
 #pragma force_active reset

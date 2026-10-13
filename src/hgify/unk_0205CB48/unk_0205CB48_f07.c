@@ -3,45 +3,45 @@
 #pragma thumb on
 #include "global.h"
 
-#include "ghidra_compat.h"
+#include "constants/player_avatar.h"
+
 #include "map_object.h"
 #include "player_avatar.h"
 #include "unk_02062108.h"
-typedef int code();
-undefined4 sub_0205DE64();
-undefined4 sub_0205CF60(undefined4 param_1);
-// FUNCTION sub_0205CF60: matching C (r2)
+
+int sub_0205DE64(u32 movementCommand);
+// FUNCTION sub_0205CF60: matching C (twin)
 #pragma force_active on
-undefined4 sub_0205CF60(undefined4 param_1)
+BOOL sub_0205CF60(PlayerAvatar *playerAvatar) {
+    int avatarMoveState = PlayerAvatar_GetMoveState(playerAvatar);
+    int playerMoveState = PlayerAvatar_GetPlayerMoveState(playerAvatar);
 
-{
-    int iVar1;
-    int iVar2;
-    undefined4 uVar3;
+    if (avatarMoveState == AVATAR_MOVE_STATE_NONE) {
+        return TRUE;
+    }
 
-    iVar1 = PlayerAvatar_GetMoveState((PlayerAvatar *)param_1);
-    iVar2 = PlayerAvatar_GetPlayerMoveState(param_1);
-    if (iVar1 == 0) {
-        return 1;
+    if (avatarMoveState == AVATAR_MOVE_STATE_TURNING) {
+        return TRUE;
     }
-    if (iVar1 == 2) {
-        return 1;
-    }
-    if (iVar1 == 1) {
-        if ((iVar2 == 0) || (iVar2 == 3)) {
-            return 1;
+
+    if (avatarMoveState == AVATAR_MOVE_STATE_MOVING) {
+        if (playerMoveState == PLAYER_MOVE_STATE_NONE || playerMoveState == PLAYER_MOVE_STATE_END) {
+            return TRUE;
         }
-        uVar3 = PlayerAvatar_GetMapObject(param_1);
-        iVar1 = MapObject_AreBitsSetForMovementScriptInit((LocalMapObject *)uVar3);
-        if (iVar1 == 1) {
-            return 1;
+
+        LocalMapObject *mapObj = PlayerAvatar_GetMapObject(playerAvatar);
+
+        if (MapObject_AreBitsSetForMovementScriptInit(mapObj) == TRUE) {
+            return TRUE;
         }
-        MapObject_GetMovementCommand(uVar3);
-        iVar1 = sub_0205DE64();
-        if (iVar1 == 1) {
-            return 1;
+
+        int movementAction = MapObject_GetMovementCommand(mapObj);
+
+        if (sub_0205DE64(movementAction) == TRUE) {
+            return TRUE;
         }
     }
-    return 0;
+
+    return FALSE;
 }
 #pragma force_active reset

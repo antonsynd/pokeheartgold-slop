@@ -3,46 +3,29 @@
 #pragma thumb on
 #include "global.h"
 
+#include "frontier/overlay_80_022340E8.h"
 #include "frontier/overlay_80_02238034.h"
 
-#include "ghidra_compat.h"
-typedef int code();
-undefined4 ov80_0222F324();
-// FUNCTION ov80_02234B24: matching C (r3)
+void ov80_0222F324(FrontierMap *map, ManagedSprite *sprite, int index);
+
+// FUNCTION ov80_02234B24: matching C (twin)
 #pragma force_active on
-void ov80_02234B24(ArcadeContext *ctx, FrontierMap *map, u32 a2)
+void ov80_02234B24(ArcadeContext *arcade, FrontierMap *graphics, u32 isOpponent) {
+    int i;
+    int j;
+    int playerPartySize = BattleArcade_GetMonCount(arcade->type, TRUE);
+    int opponentPartySize = BattleArcade_GetOpponentMonCount(arcade->type, TRUE);
 
-{
-    int param_1 = (int)ctx;
-    undefined4 param_2 = (undefined4)map;
-    int param_3 = (int)a2;
-    int iVar1;
-    int iVar2;
-    int iVar3;
-
-    iVar1 = BattleArcade_GetMonCount(*(undefined1 *)(param_1 + 0x10), 1);
-    iVar2 = BattleArcade_GetOpponentMonCount(*(undefined1 *)(param_1 + 0x10), 1);
-    if (param_3 == 0) {
-        iVar2 = 0;
-        if (0 < iVar1) {
-            do {
-                ov80_0222F324(param_2, *(undefined4 *)(param_1 + 0x30), iVar2);
-                iVar2 = iVar2 + 1;
-                param_1 = param_1 + 4;
-            } while (iVar2 < iVar1);
-            return;
+    if (isOpponent == 0) {
+        for (i = 0; i < playerPartySize; i++) {
+            ov80_0222F324(graphics, arcade->unk30[i], i);
         }
     } else {
-        iVar3 = 0;
-        if (0 < iVar2) {
-            do {
-                ov80_0222F324(param_2, *(undefined4 *)(param_1 + 0x40), iVar1);
-                iVar3 = iVar3 + 1;
-                iVar1 = iVar1 + 1;
-                param_1 = param_1 + 4;
-            } while (iVar3 < iVar2);
+        j = playerPartySize;
+        for (i = 0; i < opponentPartySize; i++) {
+            ov80_0222F324(graphics, arcade->unk40[i], j);
+            j++;
         }
     }
-    return;
 }
 #pragma force_active reset

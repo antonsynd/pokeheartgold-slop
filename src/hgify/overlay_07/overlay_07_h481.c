@@ -3,34 +3,46 @@
 #pragma thumb on
 #include "global.h"
 
-#include "ghidra_compat.h"
 #include "sprite_system.h"
-typedef void code(void);
-undefined4 ov07_02232508(undefined4);
-undefined4 ov07_0221C448(undefined4, undefined4);
-undefined4 ov07_022223CC(undefined4, undefined4, undefined4);
-undefined4 ov07_02222440(undefined4);
-void ov07_0222928C(undefined4 param_1, int param_2, undefined4 param_3, undefined4 param_4);
-// FUNCTION ov07_0222928C: matching C (r4)
+#include "sys_task.h"
+
+typedef struct UnkStruct_ov07_0222928C_Pos {
+    u8 unk_00[0x24];
+} UnkStruct_ov07_0222928C_Pos;
+
+typedef struct UnkStruct_ov07_0222928C {
+    u8 unk_00[0x14];
+    void *battleAnimSys;
+    u8 unk_18[0x8];
+    SpriteManager *primarySpriteManager;
+    u8 unk_24[0x14];
+    ManagedSprite *sprite;
+    u8 unk_3C[0x50];
+    UnkStruct_ov07_0222928C_Pos pos[2];
+    struct {
+        u32 value;
+    } angle;
+} UnkStruct_ov07_0222928C;
+
+BOOL ov07_022223CC(UnkStruct_ov07_0222928C_Pos *pos0, UnkStruct_ov07_0222928C_Pos *pos1, ManagedSprite *sprite);
+void ov07_0221C448(void *battleAnimSys, SysTask *task);
+void ov07_02232508(UnkStruct_ov07_0222928C *ctx);
+BOOL ov07_02222440(void *angle);
+// FUNCTION ov07_0222928C: matching C (twin)
 #pragma force_active on
-void ov07_0222928C(undefined4 param_1, int param_2, undefined4 param_3, undefined4 param_4)
-
-{
-    int iVar1;
-
-    iVar1 = ov07_022223CC(param_2 + 0x8c, param_2 + 0xb0, *(undefined4 *)(param_2 + 0x38));
-    if (iVar1 == 0) {
-        Sprite_DeleteAndFreeResources(*(undefined4 *)(param_2 + 0x38));
-        ov07_0221C448(*(undefined4 *)(param_2 + 0x14), param_1);
-        ov07_02232508(param_2);
+void ov07_0222928C(SysTask *task, UnkStruct_ov07_0222928C *ctx) {
+    if (ov07_022223CC(&ctx->pos[0], &ctx->pos[1], ctx->sprite) == FALSE) {
+        Sprite_DeleteAndFreeResources(ctx->sprite);
+        ov07_0221C448(ctx->battleAnimSys, task);
+        ov07_02232508(ctx);
         return;
     }
-    iVar1 = ov07_02222440(param_2 + 0xd4);
-    if (iVar1 == 1) {
-        ManagedSprite_SetAffineZRotation(*(undefined4 *)(param_2 + 0x38), *(uint *)(param_2 + 0xd4) & 0xffff);
+
+    if (ov07_02222440(&ctx->angle) == TRUE) {
+        ManagedSprite_SetAffineZRotation(ctx->sprite, (u16)ctx->angle.value);
     }
-    ManagedSprite_TickFrame(*(undefined4 *)(param_2 + 0x38));
-    SpriteSystem_DrawSprites(*(undefined4 *)(param_2 + 0x20));
-    return;
+
+    ManagedSprite_TickFrame(ctx->sprite);
+    SpriteSystem_DrawSprites(ctx->primarySpriteManager);
 }
 #pragma force_active reset

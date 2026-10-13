@@ -3,41 +3,41 @@
 #pragma thumb on
 #include "global.h"
 
-#include "ghidra_compat.h"
 #include "obj_char_transfer.h"
 #include "obj_pltt_transfer.h"
 #include "sprite.h"
 #include "sprite_transfer.h"
 #include "unk_0200A090.h"
 #include "unk_0200B150.h"
-typedef int code();
-undefined4 ov70_02241308();
-void ov70_02238E98(int param_1);
-// FUNCTION ov70_02238E98: matching C (r2)
+
+typedef struct {
+    u8 unk_000[0xBF4];
+    void *spriteList;
+    u8 unk_BF8[0xD20 - 0xBF8];
+    void *spriteResourceCollection[4];
+    void *spriteResource[2][4];
+} UnkStruct_ov70_02238E98;
+
+void ov70_02241308(UnkStruct_ov70_02238E98 *appState);
+// FUNCTION ov70_02238E98: matching C (twin)
 #pragma force_active on
-void ov70_02238E98(int param_1)
+void ov70_02238E98(UnkStruct_ov70_02238E98 *appState) {
+    ov70_02241308(appState);
 
-{
-    int iVar1;
-    int iVar2;
+    SpriteTransfer_DeleteCharTransferTask(appState->spriteResource[0][0]);
+    SpriteTransfer_DeleteCharTransferTask(appState->spriteResource[1][0]);
+    SpriteTransfer_DeletePlttTransferTask(appState->spriteResource[0][1]);
+    SpriteTransfer_DeletePlttTransferTask(appState->spriteResource[1][1]);
 
-    ov70_02241308();
-    SpriteTransfer_DeleteCharTransferTask(*(undefined4 *)(param_1 + 0xd30));
-    SpriteTransfer_DeleteCharTransferTask(*(undefined4 *)(param_1 + 0xd40));
-    SpriteTransfer_DeletePlttTransferTask(*(undefined4 *)(param_1 + 0xd34));
-    SpriteTransfer_DeletePlttTransferTask(*(undefined4 *)(param_1 + 0xd44));
-    iVar1 = 0;
-    iVar2 = param_1;
-    do {
-        Destroy2DGfxResObjMan(*(undefined4 *)(iVar2 + 0xd20));
-        iVar1 = iVar1 + 1;
-        iVar2 = iVar2 + 4;
-    } while (iVar1 < 4);
-    SpriteList_Delete(*(undefined4 *)(param_1 + 0xbf4));
-    *(undefined4 *)(param_1 + 0xbf4) = 0;
+    for (int i = 0; i < 4; i++) {
+        Destroy2DGfxResObjMan(appState->spriteResourceCollection[i]);
+    }
+
+    SpriteList_Delete(appState->spriteList);
+    appState->spriteList = NULL;
+
     OamManager_Free();
     ObjCharTransfer_Destroy();
     ObjPlttTransfer_Destroy();
-    return;
 }
 #pragma force_active reset

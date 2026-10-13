@@ -4,26 +4,30 @@
 #include "global.h"
 
 #include "bg_window.h"
-#include "ghidra_compat.h"
 #include "msgdata.h"
 #include "pm_string.h"
 #include "render_window.h"
 #include "text.h"
-typedef void code(void);
-void ov08_0221E340(int param_1, undefined4 param_2, undefined4 param_3, undefined4 param_4);
-// FUNCTION ov08_0221E340: matching C (r3)
+
+typedef struct UnkStruct_ov08_0221E340 {
+    u8 unk_00[0x1FA8];
+    MsgData *messageLoader;
+    u8 unk_1FAC[0x2050 - 0x1FAC];
+    Window selectOptionWindow;
+} UnkStruct_ov08_0221E340;
+
+// FUNCTION ov08_0221E340: matching C (twin)
 #pragma force_active on
-void ov08_0221E340(int param_1, undefined4 param_2, undefined4 param_3, undefined4 param_4)
+void ov08_0221E340(UnkStruct_ov08_0221E340 *battleParty, u32 textID) {
+    String *string;
 
-{
-    undefined4 uVar1;
+    DrawFrameAndWindow2(&battleParty->selectOptionWindow, 1, 1, 0xe);
+    FillWindowPixelBuffer(&battleParty->selectOptionWindow, 0xf);
 
-    DrawFrameAndWindow2(param_1 + 0x2050, 1, 1, 0xe);
-    FillWindowPixelBuffer(param_1 + 0x2050, 0xf);
-    uVar1 = NewString_ReadMsgData(*(undefined4 *)(param_1 + 0x1fa8), param_2);
-    AddTextPrinterParameterizedWithColor(param_1 + 0x2050, 1, uVar1, 0, 0, 0xff, 0x10200, 0);
-    String_Delete(uVar1);
-    ScheduleWindowCopyToVram(param_1 + 0x2050);
-    return;
+    string = NewString_ReadMsgData(battleParty->messageLoader, textID);
+
+    AddTextPrinterParameterizedWithColor(&battleParty->selectOptionWindow, 1, string, 0, 0, 0xff, 0x10200, NULL);
+    String_Delete(string);
+    ScheduleWindowCopyToVram(&battleParty->selectOptionWindow);
 }
 #pragma force_active reset

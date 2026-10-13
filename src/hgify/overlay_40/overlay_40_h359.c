@@ -3,31 +3,47 @@
 #pragma thumb on
 #include "global.h"
 
-#include "ghidra_compat.h"
-typedef int code();
-undefined4 sub_020314A4();
-undefined4 ov39_022271C0();
-undefined4 sub_02030920();
-void ov40_0223CFA8(int param_1);
-// FUNCTION ov40_0223CFA8: matching C (r2)
+#include "constants/heap.h"
+
+typedef struct UnkStruct_ov40_0223CFA8_Elem {
+    u8 unk_00[0x80];
+    u8 unk_80[100];
+} UnkStruct_ov40_0223CFA8_Elem;
+
+typedef struct UnkStruct_ov40_0223CFA8_Inner {
+    u8 pad_000[0x194];
+    struct {
+        void *unk_00;
+    } unk_194;
+    u8 pad_198[0x220 - 0x198];
+    struct {
+        void *unk_00;
+        void *unk_04;
+    } unk_220;
+} UnkStruct_ov40_0223CFA8_Inner;
+
+typedef struct UnkStruct_ov40_0223CFA8 {
+    u8 pad_000[0x4D4];
+    int unk_4D4;
+    u8 pad_4D8[0x860 - 0x4D8];
+    UnkStruct_ov40_0223CFA8_Inner *unk_860;
+    u8 pad_864[0x2608 - 0x864];
+    UnkStruct_ov40_0223CFA8_Elem *unk_2608[8];
+} UnkStruct_ov40_0223CFA8;
+
+void *sub_020314A4(enum HeapID heapID);
+void *sub_02030920(enum HeapID heapID);
+void ov39_022271C0(void *param0, void *param1);
+
+// FUNCTION ov40_0223CFA8: matching C (twin)
 #pragma force_active on
-void ov40_0223CFA8(int param_1)
+void ov40_0223CFA8(UnkStruct_ov40_0223CFA8 *param0) {
+    UnkStruct_ov40_0223CFA8_Inner *v0 = param0->unk_860;
 
-{
-    undefined4 uVar1;
-    int iVar2;
-
-    iVar2 = *(int *)(param_1 + 0x860);
-    uVar1 = sub_020314A4(0x6d);
-    *(undefined4 *)(iVar2 + 0x194) = uVar1;
-    ov39_022271C0(*(undefined4 *)(param_1 + *(int *)(param_1 + 0x4d4) * 4 + 0x2608),
-        *(undefined4 *)(iVar2 + 0x194));
-    *(undefined4 *)(iVar2 + 0x220) = *(undefined4 *)(iVar2 + 0x194);
-    uVar1 = sub_02030920(0x6d);
-    *(undefined4 *)(iVar2 + 0x224) = uVar1;
-    MI_CpuCopy8(*(int *)(param_1 + *(int *)(param_1 + 0x4d4) * 4 + 0x2608) + 0x80,
-        *(undefined4 *)(iVar2 + 0x224),
-        100);
-    return;
+    v0->unk_194.unk_00 = sub_020314A4(HEAP_ID_109);
+    ov39_022271C0(&param0->unk_2608[param0->unk_4D4]->unk_00, v0->unk_194.unk_00);
+    v0->unk_220.unk_00 = v0->unk_194.unk_00;
+    v0->unk_220.unk_04 = sub_02030920(HEAP_ID_109);
+    MI_CpuCopy8(&param0->unk_2608[param0->unk_4D4]->unk_80, v0->unk_220.unk_04, 100);
 }
 #pragma force_active reset

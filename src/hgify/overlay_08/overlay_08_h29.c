@@ -4,39 +4,51 @@
 #include "global.h"
 
 #include "font.h"
-#include "ghidra_compat.h"
 #include "palette.h"
 #include "systask_environment.h"
-typedef void code(void);
-undefined4 ov08_02220A50(undefined4);
-undefined4 ov08_0221DD40(undefined4);
-undefined4 ov08_02224B8C(undefined4);
-undefined4 ov08_0221CF08(undefined4);
-undefined4 ov08_02224B7C(undefined4);
-undefined4 ov08_0221D14C(undefined4);
-undefined4 ov08_0221CD90(undefined4 param_1, int *param_2);
-// FUNCTION ov08_0221CD90: matching C (r2)
+
+typedef struct UnkStruct_ov08_0221CD90_Context {
+    u8 pad_00[0x32];
+    u8 isCursorEnabled;
+    u8 pad_33[3];
+    u8 battlePartyExited;
+} UnkStruct_ov08_0221CD90_Context;
+
+typedef struct UnkStruct_ov08_0221CD90 {
+    UnkStruct_ov08_0221CD90_Context *context;
+    u8 pad_04[0x1E4 - 4];
+    void *background;
+    PaletteData *palette;
+    u8 pad_1EC[0x2088 - 0x1EC];
+    void *cursor;
+} UnkStruct_ov08_0221CD90;
+
+void ov08_02220A50(UnkStruct_ov08_0221CD90 *battleParty);
+void ov08_0221DD40(UnkStruct_ov08_0221CD90 *battleParty);
+void ov08_0221D14C(UnkStruct_ov08_0221CD90 *battleParty);
+void ov08_0221CF08(void *background);
+u32 ov08_02224B8C(void *cursor);
+void ov08_02224B7C(void *cursor);
+// FUNCTION ov08_0221CD90: matching C (twin)
 #pragma force_active on
-undefined4 ov08_0221CD90(undefined4 param_1, int *param_2)
-
-{
-    undefined1 uVar1;
-    int iVar2;
-
-    iVar2 = PaletteData_GetSelectedBuffersBitmask(param_2[0x7a]);
-    if (iVar2 != 0) {
-        return 0;
+BOOL ov08_0221CD90(SysTask *task, UnkStruct_ov08_0221CD90 *battleParty) {
+    if (PaletteData_GetSelectedBuffersBitmask(battleParty->palette) != 0) {
+        return FALSE;
     }
-    ov08_0221D14C(param_2);
-    ov08_02220A50(param_2);
-    ov08_0221DD40(param_2);
-    ov08_0221CF08(param_2[0x79]);
-    uVar1 = ov08_02224B8C(param_2[0x822]);
-    *(undefined1 *)(*param_2 + 0x32) = uVar1;
-    ov08_02224B7C(param_2[0x822]);
+
+    ov08_0221D14C(battleParty);
+    ov08_02220A50(battleParty);
+    ov08_0221DD40(battleParty);
+    ov08_0221CF08(battleParty->background);
+
+    battleParty->context->isCursorEnabled = ov08_02224B8C(battleParty->cursor);
+
+    ov08_02224B7C(battleParty->cursor);
     FontID_Release(4);
-    *(undefined1 *)(*param_2 + 0x36) = 1;
-    DestroySysTaskAndEnvironment(param_1);
-    return 1;
+
+    battleParty->context->battlePartyExited = TRUE;
+    DestroySysTaskAndEnvironment(task);
+
+    return TRUE;
 }
 #pragma force_active reset

@@ -4,33 +4,39 @@
 #include "global.h"
 
 #include "gf_gfx_loader.h"
-#include "ghidra_compat.h"
 #include "heap.h"
-typedef int code();
-undefined4 ov41_02249F7C();
-void ov41_02249D60(int *param_1, undefined4 param_2, undefined4 param_3, undefined4 param_4);
-// FUNCTION ov41_02249D60: matching C (v2)
+
+typedef struct UnkStruct_ov41_02249D60_Args {
+    u32 unk_00;
+    u32 narcID;
+    u32 unk_08;
+    u32 unk_0C;
+    u32 unk_10;
+    u32 unk_14;
+    u32 unk_18;
+    u32 unk_1C;
+    u32 unk_20;
+    u32 unk_24;
+    u32 unk_28;
+} UnkStruct_ov41_02249D60_Args;
+
+typedef struct UnkStruct_ov41_02249D60 {
+    UnkStruct_ov41_02249D60_Args *unk_00;
+    u8 unk_04[0x10];
+    u32 unk_14;
+} UnkStruct_ov41_02249D60;
+
+void ov41_02249F7C(u32 a0, u32 a1, NNSG2dScreenData *a2, u32 a3, u32 a4, u32 a5, u32 a6, u32 a7, u32 a8);
+
+// FUNCTION ov41_02249D60: matching C (twin)
 #pragma force_active on
-void ov41_02249D60(int *param_1, undefined4 param_2, undefined4 param_3, undefined4 param_4)
+void ov41_02249D60(UnkStruct_ov41_02249D60 *param0) {
+    NNSG2dScreenData *v0;
+    void *v1 = GfGfxLoader_GetScrnData(param0->unk_00->narcID, param0->unk_00->unk_08, 0, &v0, param0->unk_14);
 
-{
-    undefined4 uVar1;
-    uint iVar2;
-    undefined4 *puVar3;
-    undefined4 uStack_14;
-    undefined4 uStack_10;
+    ov41_02249F7C(param0->unk_00->unk_00, param0->unk_00->unk_1C, v0, param0->unk_00->unk_14, param0->unk_00->unk_18, param0->unk_00->unk_0C, param0->unk_00->unk_10, param0->unk_00->unk_28, param0->unk_00->unk_20);
+    Heap_Free(v1);
 
-    uStack_10 = param_4;
-    uVar1 = GfGfxLoader_GetScrnData(*(undefined4 *)(*param_1 + 4), *(undefined4 *)(*param_1 + 8), 0, (struct NNSG2dScreenData **)&uStack_14, param_1[5]);
-    puVar3 = (undefined4 *)*param_1;
-    ov41_02249F7C(*puVar3, puVar3[7], uStack_14, puVar3[5], puVar3[6], puVar3[3], puVar3[4], puVar3[10], puVar3[8]);
-    Heap_Free(uVar1);
-    iVar2 = 0x18;
-    do {
-        *(undefined1 *)param_1 = 0;
-        param_1 = (int *)((int)param_1 + 1);
-        iVar2 = iVar2 + -1;
-    } while (iVar2 != 0);
-    return;
+    memset(param0, 0, sizeof(UnkStruct_ov41_02249D60));
 }
 #pragma force_active reset

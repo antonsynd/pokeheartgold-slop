@@ -2,25 +2,59 @@
 #pragma warning_errors off
 #pragma thumb on
 #include "global.h"
-void ov41_02249C7C(u8 *param_1, u32 *param_2);
-// FUNCTION ov41_0224825C: matching C (agent12)
-#pragma force_active on
-void ov41_0224825C(u8 *param_1, int param_2, u32 param_3) {
-    u32 local[12];
 
-    local[0] = *(u32 *)(param_1 + 0x40);
-    local[1] = 0x1a;
-    local[2] = param_2 * 4 + 0x86;
-    local[3] = param_2 * 4 + 0x87;
-    local[4] = param_2 * 4 + 0x88;
-    local[5] = 0x88;
-    local[6] = 0x10;
-    local[7] = 2;
-    local[8] = 1;
-    local[9] = 0xd;
-    local[10] = 0;
-    local[11] = param_3;
-    ov41_02249C7C(param_1 + 0x48, local);
-    *(int *)(param_1 + 0x74) = param_2;
+#include "heap.h"
+
+typedef struct UnkStruct_ov41_0224825C_Args {
+    u32 unk_00;
+    u32 narcID;
+    u32 unk_08;
+    u32 unk_0C;
+    u32 unk_10;
+    u32 unk_14;
+    u32 unk_18;
+    u32 unk_1C;
+    u32 unk_20;
+    u32 unk_24;
+    u32 unk_28;
+    u32 heapID;
+} UnkStruct_ov41_0224825C_Args;
+
+typedef struct UnkStruct_ov41_0224825C_Sub {
+    u32 unk_00[5];
+    u32 unk_14;
+    u32 unk_18;
+    u8 unk_1C[0x2C];
+    u32 unk_48;
+} UnkStruct_ov41_0224825C_Sub;
+
+typedef struct UnkStruct_ov41_0224825C {
+    u8 unk_00[0x2C];
+    UnkStruct_ov41_0224825C_Sub unk_2C;
+} UnkStruct_ov41_0224825C;
+
+void ov41_02249C7C(void *param0, UnkStruct_ov41_0224825C_Args *param1);
+
+// FUNCTION ov41_0224825C: matching C (twin)
+#pragma force_active on
+void ov41_0224825C(UnkStruct_ov41_0224825C *param0, int param1, enum HeapID heapID) {
+    UnkStruct_ov41_0224825C_Args v0;
+
+    v0.unk_00 = param0->unk_2C.unk_14;
+    v0.narcID = 0x1a;
+    v0.unk_08 = (param1) * 4 + 134;
+    v0.unk_0C = (param1) * 4 + 134 + 1;
+    v0.unk_10 = (param1) * 4 + 134 + 2;
+    v0.unk_14 = 136;
+    v0.unk_18 = 16;
+    v0.unk_1C = 2;
+    v0.unk_20 = 1;
+    v0.unk_24 = 13;
+    v0.unk_28 = 0;
+    v0.heapID = heapID;
+
+    ov41_02249C7C(&param0->unk_2C.unk_1C, &v0);
+
+    param0->unk_2C.unk_48 = param1;
 }
 #pragma force_active reset

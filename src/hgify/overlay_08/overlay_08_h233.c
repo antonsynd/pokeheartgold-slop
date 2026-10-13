@@ -6,21 +6,33 @@
 #include "battle/battle_finger.h"
 #include "battle/battle_system.h"
 
-#include "ghidra_compat.h"
-typedef void code(void);
-void ov08_0222419C(int *param_1);
-// FUNCTION ov08_0222419C: matching C (r2)
+#define CATCH_TUTORIAL_CURSOR_CHAR_RESOURCE_ID 0xB4BD
+#define CATCH_TUTORIAL_CURSOR_PLTT_RESOURCE_ID 0xB4BD
+#define CATCH_TUTORIAL_CURSOR_CELL_RESOURCE_ID 0xB4B8
+#define CATCH_TUTORIAL_CURSOR_ANIM_RESOURCE_ID 0xB4B8
+
+typedef struct UnkStruct_ov08_0222419C_Context {
+    BattleSystem *battleSys;
+    u8 pad_04[8];
+    enum HeapID heapID;
+} UnkStruct_ov08_0222419C_Context;
+
+typedef struct UnkStruct_ov08_0222419C {
+    UnkStruct_ov08_0222419C_Context *context;
+    u8 pad_04[4];
+    PaletteData *palette;
+    u8 pad_0C[0x38 - 0x0C];
+    BattleFinger *catchTutorialCursor;
+    u8 pad_3C[0x30C - 0x3C];
+    SpriteManager *spriteManager;
+} UnkStruct_ov08_0222419C;
+
+// FUNCTION ov08_0222419C: matching C (twin)
 #pragma force_active on
-void ov08_0222419C(int *param_1)
+void ov08_0222419C(UnkStruct_ov08_0222419C *battleBag) {
+    SpriteSystem *spriteSystem = BattleSystem_GetSpriteSystem(battleBag->context->battleSys);
 
-{
-    undefined4 uVar1;
-    int iVar2;
-
-    uVar1 = BattleSystem_GetSpriteSystem(*(undefined4 *)*param_1);
-    BattleFinger_LoadResources(uVar1, param_1[0xc3], *(undefined4 *)(*param_1 + 0xc), param_1[2], 0xb4bd, 0xb4bd, 0xb4b8, 0xb4b8);
-    iVar2 = BattleFinger_New(uVar1, param_1[0xc3], *(undefined4 *)(*param_1 + 0xc), 0xb4bd, 0xb4bd, 0xb4b8, 0xb4b8, 0, 0);
-    param_1[0xe] = iVar2;
-    return;
+    BattleFinger_LoadResources(spriteSystem, battleBag->spriteManager, battleBag->context->heapID, battleBag->palette, CATCH_TUTORIAL_CURSOR_CHAR_RESOURCE_ID, CATCH_TUTORIAL_CURSOR_PLTT_RESOURCE_ID, CATCH_TUTORIAL_CURSOR_CELL_RESOURCE_ID, CATCH_TUTORIAL_CURSOR_ANIM_RESOURCE_ID);
+    battleBag->catchTutorialCursor = BattleFinger_New(spriteSystem, battleBag->spriteManager, battleBag->context->heapID, CATCH_TUTORIAL_CURSOR_CHAR_RESOURCE_ID, CATCH_TUTORIAL_CURSOR_PLTT_RESOURCE_ID, CATCH_TUTORIAL_CURSOR_CELL_RESOURCE_ID, CATCH_TUTORIAL_CURSOR_ANIM_RESOURCE_ID, 0, 0);
 }
 #pragma force_active reset

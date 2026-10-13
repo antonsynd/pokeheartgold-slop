@@ -3,34 +3,23 @@
 #pragma thumb on
 #include "global.h"
 
-#include "ghidra_compat.h"
+#include "bg_window.h"
+#include "message_format.h"
 #include "msgdata.h"
 #include "party.h"
 #include "pm_string.h"
-typedef int code();
-undefined4 ov65_0221FB4C();
-void ov65_0221C414(int param_1, undefined4 param_2, undefined4 param_3, undefined4 param_4, int param_5);
-// FUNCTION ov65_0221C414: matching C (r2)
+#include "text.h"
+
+void ov65_0221FB4C(Window *window, String *str, int unused, u32 textSpeed, int xOrCenter, int yOffset);
+
+// FUNCTION ov65_0221C414: matching C (twin)
 #pragma force_active on
-void ov65_0221C414(int param_1, undefined4 param_2, undefined4 param_3, undefined4 param_4, int param_5)
+void ov65_0221C414(Window *window, MessageFormat *strTemplate, MsgData *msgLoader, Party *party, int templateSlotBase) {
+    for (int i = 0; i < Party_GetCount(party); i++) {
+        String *str = ReadMsgData_ExpandPlaceholders(strTemplate, msgLoader, 1 + templateSlotBase + i, 0x1a);
 
-{
-    int iVar1;
-    undefined4 uVar2;
-    int iVar3;
-
-    iVar3 = 0;
-    iVar1 = Party_GetCount(param_4);
-    if (0 < iVar1) {
-        do {
-            uVar2 = ReadMsgData_ExpandPlaceholders(param_2, param_3, param_5 + 1 + iVar3, 0x1a);
-            ov65_0221FB4C(param_1, uVar2, 8, 0, 1, 0);
-            String_Delete(uVar2);
-            param_1 = param_1 + 0x10;
-            iVar3 = iVar3 + 1;
-            iVar1 = Party_GetCount(param_4);
-        } while (iVar3 < iVar1);
+        ov65_0221FB4C(&window[i], str, 8, TEXT_SPEED_INSTANT, 1, 0);
+        String_Delete(str);
     }
-    return;
 }
 #pragma force_active reset

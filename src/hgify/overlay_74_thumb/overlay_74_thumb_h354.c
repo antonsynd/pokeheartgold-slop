@@ -3,35 +3,48 @@
 #pragma thumb on
 #include "global.h"
 
-#include "ghidra_compat.h"
 #include "render_text.h"
 #include "text.h"
-typedef int code();
-undefined4 ov74_02231A1C();
-undefined4 ov74_02232B18(undefined4);
-extern undefined ov74_0223C9B8;
-undefined4 ov74_022330D0(int param_1, int param_2);
-// FUNCTION ov74_022330D0: matching C (v1)
+
+#define CAN_MIGRATE 0
+
+typedef struct UnkStruct_ov74_022330D0_Msg {
+    u8 unk00[0x34];
+    u32 messageEntryID;
+    u8 unk38[0x44 - 0x38];
+    u32 unk_44;
+    u32 unk_48;
+} UnkStruct_ov74_022330D0_Msg;
+
+typedef struct UnkStruct_ov74_022330D0 {
+    u8 unk00[0x4];
+    int canMigrateStatus;
+    u8 unk08[0x42C - 0x08];
+    UnkStruct_ov74_022330D0_Msg unk_42C;
+} UnkStruct_ov74_022330D0;
+
+extern const u32 ov74_0223C9B8[];
+
+void ov74_02232B18(UnkStruct_ov74_022330D0 *migrator);
+void ov74_02231A1C(UnkStruct_ov74_022330D0 *migrator, UnkStruct_ov74_022330D0_Msg *msg, u32 flags);
+
+// FUNCTION ov74_022330D0: matching C (twin)
 #pragma force_active on
-undefined4 ov74_022330D0(int param_1, int param_2)
-
-{
-    int iVar1;
-
-    if (!(*(int *)(param_1 + 4) == 0)) {
-        ov74_02232B18(param_1);
+BOOL ov74_022330D0(UnkStruct_ov74_022330D0 *migrator, int canMigrateStatus) {
+    if (migrator->canMigrateStatus != CAN_MIGRATE) {
+        ov74_02232B18(migrator);
         TextFlags_SetCanTouchSpeedUpPrint(1);
-        *(undefined4 *)(param_1 + 0x460) = *(undefined4 *)(&ov74_0223C9B8 + param_2 * 4);
-        *(undefined4 *)(param_1 + 0x470) = 1;
-        ov74_02231A1C(param_1, param_1 + 0x42c, 0x18);
-        *(undefined4 *)(param_1 + 4) = 0;
+        migrator->unk_42C.messageEntryID = ov74_0223C9B8[canMigrateStatus];
+        migrator->unk_42C.unk_44 = 1;
+        ov74_02231A1C(migrator, &migrator->unk_42C, 0x8 | 0x10);
+        migrator->canMigrateStatus = CAN_MIGRATE;
     } else {
-        iVar1 = TextPrinterCheckActive(*(uint *)(param_1 + 0x474) & 0xff);
-        if (iVar1 == 0) {
+        if (TextPrinterCheckActive(migrator->unk_42C.unk_48 & 0xff) == 0) {
             TextFlags_SetCanTouchSpeedUpPrint(0);
-            return 1;
+            return TRUE;
         }
     }
-    return 0;
+
+    return FALSE;
 }
 #pragma force_active reset

@@ -4,33 +4,37 @@
 #include "global.h"
 
 #include "bg_window.h"
-#include "ghidra_compat.h"
 #include "render_window.h"
 #include "text.h"
-typedef int code();
-undefined4 ov46_02259474();
-void ov46_022593F8(int param_1);
-// FUNCTION ov46_022593F8: matching C (r2)
+
+typedef struct UnkStruct_ov46_022593F8 {
+    u8 unk_00[8];
+    Window unk_08;
+    u8 unk_18[8];
+    int unk_20;
+    int unk_24;
+    u8 unk_28[4];
+    u32 unk_2C;
+} UnkStruct_ov46_022593F8;
+
+void ov46_02259474(UnkStruct_ov46_022593F8 *param0);
+// FUNCTION ov46_022593F8: matching C (twin)
 #pragma force_active on
-void ov46_022593F8(int param_1)
+void ov46_022593F8(UnkStruct_ov46_022593F8 *param0) {
+    if (TextPrinterCheckActive((u8)param0->unk_2C)) {
+        RemoveTextPrinter((u8)param0->unk_2C);
+    }
 
-{
-    int iVar1;
+    if (param0->unk_20 == 0) {
+        sub_0200E5D4(&param0->unk_08, 1);
+        ClearWindowTilemapAndScheduleTransfer(&param0->unk_08);
+    } else {
+        if (param0->unk_24) {
+            ov46_02259474(param0);
+        }
 
-    iVar1 = TextPrinterCheckActive(*(uint *)(param_1 + 0x2c) & 0xff);
-    if (iVar1 != 0) {
-        RemoveTextPrinter(*(uint *)(param_1 + 0x2c) & 0xff);
+        ClearFrameAndWindow2(&param0->unk_08, 1);
+        ClearWindowTilemapAndScheduleTransfer(&param0->unk_08);
     }
-    if (*(int *)(param_1 + 0x20) == 0) {
-        sub_0200E5D4(param_1 + 8, 1);
-        ClearWindowTilemapAndScheduleTransfer(param_1 + 8);
-        return;
-    }
-    if (*(int *)(param_1 + 0x24) != 0) {
-        ov46_02259474(param_1);
-    }
-    ClearFrameAndWindow2(param_1 + 8, 1);
-    ClearWindowTilemapAndScheduleTransfer(param_1 + 8);
-    return;
 }
 #pragma force_active reset

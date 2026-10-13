@@ -4,16 +4,19 @@
 #include "global.h"
 
 #include "gf_gfx_loader.h"
-#include "ghidra_compat.h"
-typedef int code();
-void ov83_02244704(int param_1, undefined4 param_2, undefined4 param_3, undefined4 param_4);
-// FUNCTION ov83_02244704: matching C (r3)
-#pragma force_active on
-void ov83_02244704(int param_1, undefined4 param_2, undefined4 param_3, undefined4 param_4)
 
-{
-    GfGfxLoader_LoadCharDataFromOpenNarc(*(undefined4 *)(param_1 + 0x560), 0x30, *(undefined4 *)(param_1 + 0x4c), param_2, 0, 0, 1, 0x6b);
-    GfGfxLoader_LoadScrnDataFromOpenNarc(*(undefined4 *)(param_1 + 0x560), 0x2e, *(undefined4 *)(param_1 + 0x4c), param_2, 0, 0, 1, 0x6b);
-    return;
+typedef struct UnkStruct_ov83_02244704 {
+    u8 pad_00[0x4c];
+    BgConfig *bgConfig;
+    u8 pad_50[0x510];
+    NARC *narc;
+} UnkStruct_ov83_02244704;
+
+void ov83_02244704(UnkStruct_ov83_02244704 *app, GFBgLayer bgLayer);
+// FUNCTION ov83_02244704: matching C (twin)
+#pragma force_active on
+void ov83_02244704(UnkStruct_ov83_02244704 *app, GFBgLayer bgLayer) {
+    GfGfxLoader_LoadCharDataFromOpenNarc(app->narc, 0x30, app->bgConfig, bgLayer, 0, 0, TRUE, 0x6b);
+    GfGfxLoader_LoadScrnDataFromOpenNarc(app->narc, 0x2e, app->bgConfig, bgLayer, 0, 0, TRUE, 0x6b);
 }
 #pragma force_active reset

@@ -6,18 +6,28 @@
 
 #include "bg_window.h"
 #include "sys_task_api.h"
-// FUNCTION ov71_02248B60: matching C (agent8)
+
+typedef struct UnkStruct_ov71_02248B60 {
+    u8 pad_00[0xc0];
+    BgConfig *bgConfig;
+    u8 pad_C4[0x168 - 0xc4];
+    int screenSwapPending;
+} UnkStruct_ov71_02248B60;
+
+// FUNCTION ov71_02248B60: matching C (twin)
 #pragma force_active on
-void ov71_02248B60(int param_1, int param_2) {
-    if (*(int *)(param_2 + 0x168) != 0) {
-        *(int *)(param_2 + 0x168) = 0;
-        BgSetPosTextAndCommit(*(int *)(param_2 + 0xc0), 2, 3, 0xffffff00);
-        BgSetPosTextAndCommit(*(int *)(param_2 + 0xc0), 6, 3, 0);
+void ov71_02248B60(SysTask *task, void *param) {
+    UnkStruct_ov71_02248B60 *ttPhase = param;
+
+    if (ttPhase->screenSwapPending != 0) {
+        ttPhase->screenSwapPending = 0;
+
+        BgSetPosTextAndCommit(ttPhase->bgConfig, 2, 3, -256);
+        BgSetPosTextAndCommit(ttPhase->bgConfig, 6, 3, 0);
         ToggleBgLayer(3, 0);
         ToggleBgLayer(7, 1);
         uRam04000304 = uRam04000304 | 0x8000;
-        SysTask_Destroy(param_1);
+        SysTask_Destroy(task);
     }
-    return;
 }
 #pragma force_active reset

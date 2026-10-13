@@ -3,25 +3,32 @@
 #pragma thumb on
 #include "global.h"
 
-#include "ghidra_compat.h"
 #include "screen_fade.h"
 #include "unk_0203A3B0.h"
-typedef int code();
-undefined4 ov70_02238F80();
-undefined4 ov70_02240948(int param_1, undefined4 param_2, undefined4 param_3, undefined4 param_4);
-// FUNCTION ov70_02240948: matching C (r3)
-#pragma force_active on
-undefined4 ov70_02240948(int param_1, undefined4 param_2, undefined4 param_3, undefined4 param_4)
 
-{
-    ov70_02238F80();
+typedef struct UnkStruct_ov70_02240948 {
+    u8 unk_00[0x2C];
+    int currentScreenInstruction;
+    u8 unk_30[0x11FC - 0x30];
+    BOOL fadeBothScreens;
+} UnkStruct_ov70_02240948;
+
+void ov70_02238F80(UnkStruct_ov70_02240948 *appState);
+
+// FUNCTION ov70_02240948: matching C (twin)
+#pragma force_active on
+int ov70_02240948(UnkStruct_ov70_02240948 *appState) {
+    ov70_02238F80(appState);
     sub_0203A914();
-    if (*(int *)(param_1 + 0x11fc) == 1) {
-        BeginNormalPaletteFade(0, 0, 0, 0, 6, 1, 0x3d);
+
+    if (appState->fadeBothScreens == 1) {
+        BeginNormalPaletteFade(0, 0, 0, 0, 6, 1, 0x3D);
     } else {
-        BeginNormalPaletteFade(3, 0, 0, 0, 6, 1, 0x3d);
+        BeginNormalPaletteFade(3, 0, 0, 0, 6, 1, 0x3D);
     }
-    *(undefined4 *)(param_1 + 0x2c) = 0;
+
+    appState->currentScreenInstruction = 0;
+
     return 4;
 }
 #pragma force_active reset

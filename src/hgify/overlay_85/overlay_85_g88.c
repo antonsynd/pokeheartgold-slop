@@ -5,27 +5,26 @@
 
 #include "bg_window.h"
 #include "font.h"
-#include "ghidra_compat.h"
 #include "render_window.h"
 #include "text.h"
-typedef int code();
-void ov85_021E7380(int param_1, undefined4 param_2, int param_3, undefined4 param_4);
-// FUNCTION ov85_021E7380: matching C (r3)
+
+typedef struct {
+    u8 unk_00[0xCB8];
+    Window unk_CB8[1];
+} UnkStruct_ov85_021E7380;
+
+// FUNCTION ov85_021E7380: matching C (twin)
 #pragma force_active on
-void ov85_021E7380(int param_1, undefined4 param_2, int param_3, undefined4 param_4)
+void ov85_021E7380(UnkStruct_ov85_021E7380 *param0, String *param1, int param2, u32 param3) {
+    Window *window = &param0->unk_CB8[param2];
+    u32 x;
 
-{
-    undefined4 uVar1;
-    undefined4 uVar2;
+    DrawFrameAndWindow1(window, 1, 1, 14);
+    FillWindowPixelBuffer(window, 15);
 
-    param_3 = param_3 * 0x10;
-    param_1 = param_1 + 0xcb8;
-    uVar2 = param_4;
-    DrawFrameAndWindow1(param_1 + param_3, 1, 1, 0xe);
-    FillWindowPixelBuffer(param_1 + param_3, 0xf);
-    uVar1 = FontID_String_GetCenterAlignmentX(0, param_2, 0, 0x40);
-    AddTextPrinterParameterizedWithColor(param_1 + param_3, 0, param_2, uVar1, 0, 0xff, param_4, 0);
-    ScheduleWindowCopyToVram(param_1 + param_3);
-    return;
+    x = FontID_String_GetCenterAlignmentX(0, param1, 0, 0x40);
+    AddTextPrinterParameterizedWithColor(window, 0, param1, x, 0, 0xff, param3, NULL);
+
+    ScheduleWindowCopyToVram(window);
 }
 #pragma force_active reset

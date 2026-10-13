@@ -4,27 +4,33 @@
 #include "global.h"
 
 #include "game_stats.h"
-#include "ghidra_compat.h"
 #include "party.h"
-typedef int code();
-#define SEXT24(x) ((int)(unsigned short)(x))
-undefined4 ov80_02230AE4(void *);
-void ov80_022309F8(int param_1);
-// FUNCTION ov80_022309F8: matching C (v1)
+#include "save.h"
+
+typedef struct UnkStruct_ov80_022309F8 {
+    u8 unk0[0x254];
+    u16 initialRentalSetIDs[(0x4D4 - 0x254) / sizeof(u16)];
+    Party *playersParty;
+    Party *opponentsParty;
+    u16 selectedAppSlots[2];
+    u8 unk4E0[0x4E8 - 0x4E0];
+    u16 playerMonSetIDs[(0x4F8 - 0x4E8) / sizeof(u16)];
+    SaveData *saveData;
+} UnkStruct_ov80_022309F8;
+
+void ov80_02230AE4(UnkStruct_ov80_022309F8 *factory);
+
+// FUNCTION ov80_022309F8: matching C (twin)
 #pragma force_active on
-void ov80_022309F8(int param_1)
+void ov80_022309F8(UnkStruct_ov80_022309F8 *factory) {
+    if (factory->selectedAppSlots[0] != 0xff) {
+        Pokemon *mon = Party_GetMonByIndex(factory->opponentsParty, factory->selectedAppSlots[1]);
+        Party_SafeCopyMonToSlot_ResetAprijuiceModifiers(factory->playersParty, factory->selectedAppSlots[0], mon);
 
-{
-    undefined4 uVar1;
+        factory->playerMonSetIDs[factory->selectedAppSlots[0]] = factory->initialRentalSetIDs[factory->selectedAppSlots[1]];
 
-    if (*(unsigned short *)(param_1 + 0x4dc) != 0xff) {
-        uVar1 = Party_GetMonByIndex(*(undefined4 *)(param_1 + 0x4d8), *(undefined2 *)(param_1 + 0x4de));
-        Party_SafeCopyMonToSlot_ResetAprijuiceModifiers(*(undefined4 *)(param_1 + 0x4d4), *(undefined2 *)(param_1 + 0x4dc), uVar1);
-        *(undefined2 *)(param_1 + (uint) * (ushort *)(param_1 + 0x4dc) * 2 + 0x4e8) = *(undefined2 *)(param_1 + (uint) * (ushort *)(param_1 + 0x4de) * 2 + 0x254);
-        ov80_02230AE4(param_1);
-        uVar1 = Save_GameStats_Get(*(undefined4 *)(param_1 + 0x4f8));
-        GameStats_Inc(uVar1, 0x41);
+        ov80_02230AE4(factory);
+        GameStats_Inc(Save_GameStats_Get(factory->saveData), GAME_STAT_UNK65);
     }
-    return;
 }
 #pragma force_active reset
