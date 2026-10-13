@@ -2,6 +2,8 @@
 #pragma warning_errors off
 #pragma thumb on
 #include "global.h"
+
+#include "field_move.h"
 typedef void (*UnkFunc_ov103_021ED550)(u8 *data, void *fn, s32 state, u32 offset);
 typedef struct UnkStruct_ov103_021ED550 {
     UnkFunc_ov103_021ED550 func0;

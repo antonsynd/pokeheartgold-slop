@@ -2,6 +2,8 @@
 #pragma warning_errors off
 #pragma thumb on
 #include "global.h"
+
+#include "overlay_manager.h"
 typedef int (*UnkFunc_ov112_021EF67C)(u8 *work, void *fn, u32 r2, u32 r3);
 extern void *ov112_021FF924[];
 int ov112_021EF67C(u8 *work, u32 unused1, u32 unused2, u32 callerR3);

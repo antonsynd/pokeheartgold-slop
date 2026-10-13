@@ -2,8 +2,10 @@
 #pragma warning_errors off
 #pragma thumb on
 #include "global.h"
-typedef int (*UnkFunc_ov112_021EEDFC)(u8 *work, void *fn, u32 r2, u32 r3);
+
+#include "overlay_manager.h"
 extern void *ov112_021FF8F8[];
+typedef int (*UnkFunc_ov112_021EEDFC)(u8 *, void *, u32, u32);
 int ov112_021EEDFC(u8 *work, u32 unused1, u32 unused2, u32 callerR3);
 // FUNCTION ov112_021EEDFC: matching C (agent10)
 #pragma force_active on

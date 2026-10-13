@@ -2,6 +2,8 @@
 #pragma warning_errors off
 #pragma thumb on
 #include "global.h"
+
+#include "overlay_42.h"
 typedef s32 (*UnkFunc_ScriptCinematic_Lugia)(u8 *work, void *fn, u32 offset, u32 a3);
 extern const UnkFunc_ScriptCinematic_Lugia sScriptCinematicSubs_Lugia[];
 extern void ov106_021E5C30(u8 *work);

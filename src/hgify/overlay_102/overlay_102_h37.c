@@ -2,6 +2,8 @@
 #pragma warning_errors off
 #pragma thumb on
 #include "global.h"
+
+#include "font_types_def.h"
 typedef BOOL (*UnkFunc_ov102_021E85E8)(void *a0, void *a1, u32 a2, void *a3);
 extern UnkFunc_ov102_021E85E8 _021EC5D8[];
 BOOL ov102_021E85E8(u8 *a0, void *a1, void *a2, void *a3);

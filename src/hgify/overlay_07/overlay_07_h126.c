@@ -2,10 +2,12 @@
 #pragma warning_errors off
 #pragma thumb on
 #include "global.h"
+
+#include "font_types_def.h"
+#include "heap.h"
+#include "sys_task_api.h"
 typedef BOOL (*UnkFunc_ov07_0221ED14)(void *task, void *bgSwitch, void *self, u32 offset);
 extern const UnkFunc_ov07_0221ED14 ov07_02234BC0[];
-extern void Heap_Free(void *ptr);
-extern void SysTask_Destroy(void *task);
 void ov07_0221ED14(void *task, u8 *bgSwitch);
 // FUNCTION ov07_0221ED14: matching C (r0)
 #pragma force_active on
