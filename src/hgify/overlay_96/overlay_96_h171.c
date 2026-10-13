@@ -2,6 +2,10 @@
 #pragma warning_errors off
 #pragma thumb on
 #include "global.h"
+
+#include "error_handling.h"
+#include "sprite.h"
+#include "unk_02009D48.h"
 typedef struct {
     u32 unk00;
     u8 *unk04;
@@ -17,12 +21,6 @@ typedef struct {
     u32 unk2C;
 } Ov96AffineTemplate;
 u32 ov96_021E9D08(void *param_1, int param_2);
-void CreateSpriteResourcesHeader(u8 *buf, int a1, int a2, int a3, int a4, int a5, int a6, int a7, u32 a8, u32 a9, u32 a10, u32 a11, u32 a12, u32 a13, u32 a14);
-int Sprite_CreateAffine(Ov96AffineTemplate *tmpl);
-void Sprite_SetAnimActiveFlag(int sprite, int flag);
-void Sprite_SetAnimCtrlSeq(int sprite, int seq);
-void Sprite_SetDrawFlag(int sprite, int flag);
-void GF_AssertFail(void);
 int ov96_021EA4D4(void *param_1, u32 param_2, u32 param_3, u32 param_4);
 // FUNCTION ov96_021EA4D4: matching C (agent17)
 #pragma force_active on
@@ -39,7 +37,7 @@ int ov96_021EA4D4(void *param_1, u32 param_2, u32 param_3, u32 param_4) {
     uVar2 = ov96_021E9D08(param_1, 1);
     uVar3 = ov96_021E9D08(param_1, 2);
     uVar4 = ov96_021E9D08(param_1, 3);
-    CreateSpriteResourcesHeader(auStack_38, 0x1b, 0x17, 0x1b, 0x1b, -1, -1, 0, param_3, uVar1, uVar2, uVar3, uVar4, 0, 0);
+    CreateSpriteResourcesHeader((struct SpriteResourcesHeader *)auStack_38, 0x1b, 0x17, 0x1b, 0x1b, -1, -1, 0, param_3, uVar1, uVar2, uVar3, uVar4, 0, 0);
     tmpl.unk04 = auStack_38;
     tmpl.unk00 = param_2;
     tmpl.unk2C = param_4;
@@ -52,7 +50,7 @@ int ov96_021EA4D4(void *param_1, u32 param_2, u32 param_3, u32 param_4) {
     tmpl.unk20 = 0;
     tmpl.unk28 = 1;
     tmpl.unk24 = 0;
-    iVar5 = Sprite_CreateAffine(&tmpl);
+    iVar5 = Sprite_CreateAffine((const struct SpriteTemplate *)&tmpl);
     if (iVar5 == 0) {
         GF_AssertFail();
     }

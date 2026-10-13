@@ -2,11 +2,12 @@
 #pragma warning_errors off
 #pragma thumb on
 #include "global.h"
+
+#include "error_handling.h"
+#include "sprite_system.h"
+#include "touchscreen.h"
 extern u32 ov96_0221DC68[];
 extern u8 ov96_0221CDA0[];
-void GF_AssertFail(void);
-void ManagedSprite_GetPositionXY(void *sprite, s16 *x, s16 *y);
-u32 TouchscreenHitbox_FindRectAtTouchNew(u8 *rects);
 BOOL ov96_0220B0A4(u8 *param_1, s32 param_2);
 // FUNCTION ov96_0220B0A4: matching C (agent17)
 #pragma force_active on
@@ -39,7 +40,7 @@ BOOL ov96_0220B0A4(u8 *param_1, s32 param_2) {
         } while (i < r5);
     }
     buf[4 * r5] = 0xff;
-    if (TouchscreenHitbox_FindRectAtTouchNew(buf) != 0xffffffff) {
+    if (TouchscreenHitbox_FindRectAtTouchNew((const TouchscreenHitbox *)buf) != 0xffffffff) {
         return 1;
     }
     return 0;

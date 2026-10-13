@@ -2,6 +2,10 @@
 #pragma warning_errors off
 #pragma thumb on
 #include "global.h"
+
+#include "filesystem.h"
+#include "sprite_system.h"
+#include "unk_02009D48.h"
 typedef struct UnkStruct_ov07_022342E4 {
     u8 pad_00[0x2c];
     void *spriteMan;
@@ -15,17 +19,7 @@ typedef struct UnkStruct_ov07_022342E4 {
     void *cellActorSys;
     void *paletteSys;
 } UnkStruct_ov07_022342E4;
-int SpriteSystem_InitSprites(void *sys, void *mgr, int max);
-void *SpriteSystem_GetRenderer(void *sys);
-void G2dRenderer_SetSubSurfaceCoords(void *renderer, int x, int y);
-int SpriteSystem_InitManagerWithCapacities(void *sys, void *mgr, int *caps);
 int ov07_02232658(int ballID, int which);
-void *NARC_New(int narcID, int heapID);
-void NARC_Delete(void *narc);
-int SpriteSystem_LoadCharResObjFromOpenNarc(void *sys, void *mgr, void *narc, int fileId, int compressed, int vram, int resId);
-u8 SpriteSystem_LoadPaletteBufferFromOpenNarc(void *plttData, int bufferId, void *sys, void *mgr, void *narc, int fileId, int compressed, int plttNum, int vram, int resId);
-int SpriteSystem_LoadCellResObjFromOpenNarc(void *sys, void *mgr, void *narc, int fileId, int compressed, int resId);
-int SpriteSystem_LoadAnimResObjFromOpenNarc(void *sys, void *mgr, void *narc, int fileId, int compressed, int resId);
 void ov07_022342E4(UnkStruct_ov07_022342E4 *ctx);
 // FUNCTION ov07_022342E4: matching C (r0)
 #pragma force_active on
@@ -46,7 +40,7 @@ void ov07_022342E4(UnkStruct_ov07_022342E4 *ctx) {
     }
     caps[4] = 0;
     caps[5] = 0;
-    SpriteSystem_InitManagerWithCapacities(ctx->cellActorSys, ctx->spriteMan, caps);
+    SpriteSystem_InitManagerWithCapacities(ctx->cellActorSys, ctx->spriteMan, (SpriteResourceCountsListUnion *)caps);
 
     v0 = ov07_02232658(ctx->ballID, 0);
     v1 = ov07_02232658(ctx->ballID, 1);

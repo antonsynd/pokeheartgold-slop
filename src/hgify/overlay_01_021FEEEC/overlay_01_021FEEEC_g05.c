@@ -2,6 +2,9 @@
 #pragma warning_errors off
 #pragma thumb on
 #include "global.h"
+
+#include "map_object.h"
+#include "overlay_01_021F1348.h"
 typedef struct Ov01_Args {
     u32 a;
     u32 y;
@@ -14,16 +17,6 @@ typedef struct Ov01_Args {
     s16 z;
     s8 facing;
 } Ov01_Args;
-u32 MapObject_CopyPositionVector(void *obj, VecFx32 *pos);
-int MapObject_GetZCoord(void *obj);
-int MapObject_GetYCoord(void *obj);
-int MapObject_GetXCoord(void *obj);
-int MapObject_GetFacingDirection(void *obj);
-u32 MapObject_GetPriorityPlusValue(void *obj, u32 v);
-u32 ov01_021F146C(void);
-u32 ov01_021F1450(u32 a, u32 b);
-u32 ov01_021F1468(u32 a);
-u32 ov01_021F1620(u32 a, void *b, VecFx32 *c, u32 d, Ov01_Args *e, u32 f);
 extern u8 ov01_02209138[];
 // FUNCTION ov01_021FF0E4: matching C (agent15)
 #pragma force_active on
@@ -33,7 +26,7 @@ void ov01_021FF0E4(void *obj, u32 param_2, u32 param_3, u32 param_4, int param_5
     u32 v;
     u32 prio;
 
-    v = ov01_021F146C();
+    v = ov01_021F146C((LocalMapObject *)obj);
     args.a = param_3;
     args.y = MapObject_GetYCoord(obj);
     args.b = param_4;
@@ -50,6 +43,6 @@ void ov01_021FF0E4(void *obj, u32 param_2, u32 param_3, u32 param_4, int param_5
     args.f = (u32)obj;
     MapObject_CopyPositionVector(obj, &pos);
     prio = MapObject_GetPriorityPlusValue(obj, 2);
-    ov01_021F1620(v, ov01_02209138, &pos, param_2, &args, prio);
+    ov01_021F1620((FieldSystem *)v, (const UnkOv01_02209280 *)ov01_02209138, &pos, param_2, (UnkOv01_021FFF5C *)&args, prio);
 }
 #pragma force_active reset

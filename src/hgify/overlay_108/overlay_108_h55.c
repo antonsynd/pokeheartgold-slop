@@ -2,7 +2,14 @@
 #pragma warning_errors off
 #pragma thumb on
 #pragma thumb on
+#include "global.h"
+
+#include "bg_window.h"
+#include "font.h"
 #include "ghidra_compat.h"
+#include "message_format.h"
+#include "sprite.h"
+#include "text.h"
 typedef int code();
 typedef struct W {
     int a[4];
@@ -23,28 +30,19 @@ typedef struct S77 {
     char pad5[0x184de - 0x3f4];
     unsigned char sel;
 } S77;
-void AddTextPrinterParameterizedWithColor(W *w, int font, void *str, int x, int y, int speed, int color, void *cb);
-int FontID_String_GetWidth(int font, void *str, int a);
-void FillWindowPixelBuffer(W *w, int v);
-void BufferIntegerAsString(void *fmt, int idx, int num, int digits, int a, int b);
-void ScheduleBgTilemapBufferTransfer(void *bg, int layer);
-void Sprite_SetAnimActiveFlag(void *spr, int v);
-void StringExpandPlaceholders(void *fmt, void *dst, void *src);
-int GetWindowWidth(W *w);
-void Sprite_SetAnimCtrlSeq(void *spr, int seq);
 // FUNCTION ov108_021E77D4: matching C (agent4)
 #pragma force_active on
 void ov108_021E77D4(S77 *param_1) {
     int iVar1;
     int iVar2;
 
-    FillWindowPixelBuffer(&param_1->win, 2);
+    FillWindowPixelBuffer((struct Window *)&param_1->win, 2);
     BufferIntegerAsString(param_1->fmt, 0, param_1->sel + 1, 1, 1, 1);
     StringExpandPlaceholders(param_1->fmt, param_1->str, param_1->tmp);
-    iVar1 = GetWindowWidth(&param_1->win);
+    iVar1 = GetWindowWidth((struct Window *)&param_1->win);
     iVar2 = FontID_String_GetWidth(0, param_1->str, 0);
     iVar2 = (unsigned int)(iVar1 * 8 - iVar2) >> 1;
-    AddTextPrinterParameterizedWithColor(&param_1->win, 0, param_1->str, iVar2, 0, 0, 0x30102, 0);
+    AddTextPrinterParameterizedWithColor((struct Window *)&param_1->win, 0, param_1->str, iVar2, 0, 0, 0x30102, 0);
     ScheduleBgTilemapBufferTransfer(param_1->bg, 3);
     Sprite_SetAnimActiveFlag(param_1->spr1, 0);
     if (param_1->sel == 0) {

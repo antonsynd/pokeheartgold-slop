@@ -2,6 +2,9 @@
 #pragma warning_errors off
 #pragma thumb on
 #pragma thumb on
+#include "global.h"
+
+#include "bg_window.h"
 #include "ghidra_compat.h"
 typedef int code();
 typedef struct W {
@@ -21,11 +24,8 @@ struct S2 {
 int ov102_021E8F90(void *p, int i);
 int ov102_021EAB30(S2 *p, W *w);
 int ov102_021E8F6C(void *p);
-void ScheduleBgTilemapBufferTransfer(void *bg, int layer);
-void CopyWindowPixelsToVram_TextMode(W *w);
 void *ov102_021EA268(void *p);
 void ov102_021EA874(S2 *p);
-void FillWindowPixelBuffer(W *w, int v);
 void ov102_021EAC20(S2 *p);
 void ov102_021EAD70(W *w, int *t);
 void ov102_021EAD98(S2 *p, W *w, int *t, int v);
@@ -45,7 +45,7 @@ void ov102_021EAA3C(S2 *param_1) {
     puVar4 = &param_1->win[0];
     puVar5 = &param_1->t0;
     do {
-        FillWindowPixelBuffer(puVar4, 0xd);
+        FillWindowPixelBuffer((Window *)puVar4, 0xd);
         switch (ov102_021E8F6C(param_1->p1)) {
         case 0:
             ov102_021EAD70(puVar4, puVar5);
@@ -65,7 +65,7 @@ void ov102_021EAA3C(S2 *param_1) {
             ov102_021EAC20(param_1);
             break;
         }
-        CopyWindowPixelsToVram_TextMode(puVar4);
+        CopyWindowPixelsToVram_TextMode((Window *)puVar4);
         puVar4++;
         i++;
     } while (i < 2);

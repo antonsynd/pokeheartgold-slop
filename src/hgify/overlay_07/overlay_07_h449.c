@@ -2,6 +2,10 @@
 #pragma warning_errors off
 #pragma thumb on
 #include "global.h"
+
+#include "error_handling.h"
+#include "heap.h"
+#include "sprite_system.h"
 typedef struct UnkStruct_ov07_022274F8 {
     u8 state;      // 0x00
     u8 counter[3]; // 0x01
@@ -16,8 +20,6 @@ typedef struct UnkStruct_ov07_022274F8 {
     u8 unk20[0x24];   // 0x20
 } UnkStruct_ov07_022274F8;
 extern u32 ov07_0221BFD0(void *sys);
-extern void *Heap_Alloc(u32 heapId, u32 size);
-extern void GF_AssertFail(void);
 extern void ov07_0221F9E8(void *tmpl, void *sys);
 extern void ov07_02231E08(void *sys, int a, int b);
 extern int ov07_0221C470(void *sys);
@@ -25,11 +27,6 @@ extern int ov07_0223192C(void *sys, int battler);
 extern int ov07_0221BFC0(void *sys);
 extern void ov07_02231A20(int a, int b, s16 *pos);
 extern int ov07_0221C4A8(void *sys, int idx);
-extern void *SpriteSystem_NewSprite(void *a, void *b, void *tmpl);
-extern void ManagedSprite_SetPositionXY(void *sprite, s16 x, s16 y);
-extern void ManagedSprite_SetAffineOverwriteMode(void *sprite, u8 mode);
-extern void ManagedSprite_OffsetPositionXY(void *sprite, s16 dx, s16 dy);
-extern void ManagedSprite_SetOamMode(void *sprite, int mode);
 extern void ov07_0221C3F4(void *sys, void *fn, void *ctx, u32 prio);
 extern void ov07_02227300(void *task, void *ctx);
 void ov07_022274F8(void *sys, void *a, void *b, void *c);
@@ -60,7 +57,7 @@ void ov07_022274F8(void *sys, void *a, void *b, void *c) {
         ov07_02231A20(1, ov07_0221BFC0(sys), pos);
     }
     for (i = 1; i < ov07_0221C4A8(ctx->sys, 0); i++) {
-        ctx->sprites[i] = SpriteSystem_NewSprite(ctx->unk0C, ctx->unk10, tmpl);
+        ctx->sprites[i] = SpriteSystem_NewSprite(ctx->unk0C, ctx->unk10, (const ManagedSpriteTemplate *)tmpl);
         ManagedSprite_SetPositionXY(ctx->sprites[i], pos[0], pos[1]);
     }
     ManagedSprite_SetPositionXY(ctx->sprites[0], pos[0], pos[1]);

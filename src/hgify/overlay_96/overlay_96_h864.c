@@ -2,6 +2,10 @@
 #pragma warning_errors off
 #pragma thumb on
 #include "global.h"
+
+#include "filesystem.h"
+#include "sprite_system.h"
+#include "unk_02009D48.h"
 typedef struct {
     u32 w[6];
 } Ov96ArrA;
@@ -14,15 +18,7 @@ typedef struct {
 extern Ov96ArrA ov96_0221CC30;
 extern Ov96ArrB ov96_0221CC80;
 extern Ov96ArrC ov96_0221CC1C;
-void *SpriteSystem_Alloc(u32 heapId);
-void *SpriteManager_New(void *sys);
-void SpriteSystem_Init(void *sys, void *a, void *b, int n);
-void SpriteSystem_InitSprites(void *sys, void *mgr, u32 x);
-void SpriteSystem_InitManagerWithCapacities(void *sys, void *mgr, void *p);
-void *SpriteSystem_GetRenderer(void *sys);
-void G2dRenderer_SetSubSurfaceCoords(void *r, u32 x, u32 y);
 u32 ov96_021E9A78(u32 heap, u32 id, u32 flag);
-void *NARC_New(u32 id, u32 heap);
 void ov96_02209840(u32 *param_1);
 // FUNCTION ov96_02209840: matching C (agent16)
 #pragma force_active on
@@ -39,9 +35,9 @@ void ov96_02209840(u32 *param_1) {
     s = SpriteSystem_Alloc(param_1[0]);
     param_1[2] = (u32)s;
     param_1[3] = (u32)SpriteManager_New(s);
-    SpriteSystem_Init((void *)param_1[2], &b, &c, 0x20);
+    SpriteSystem_Init((void *)param_1[2], (const OamManagerParam *)&b, (const OamCharTransferParam *)&c, 0x20);
     SpriteSystem_InitSprites((void *)param_1[2], (void *)param_1[3], 0x100);
-    SpriteSystem_InitManagerWithCapacities((void *)param_1[2], (void *)param_1[3], &a);
+    SpriteSystem_InitManagerWithCapacities((void *)param_1[2], (void *)param_1[3], (SpriteResourceCountsListUnion *)&a);
     G2dRenderer_SetSubSurfaceCoords(SpriteSystem_GetRenderer((void *)param_1[2]), 0, 0x100000);
     param_1[5] = ov96_021E9A78(param_1[0], 0x2e7, 1);
     param_1[0x14] = (u32)NARC_New(0x14, param_1[0]);

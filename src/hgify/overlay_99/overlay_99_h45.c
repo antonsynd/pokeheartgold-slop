@@ -2,6 +2,12 @@
 #pragma warning_errors off
 #pragma thumb on
 #include "global.h"
+
+#include "pokeathlon/pokeathlon_save.h"
+
+#include "heap.h"
+#include "overlay_98.h"
+#include "player_data.h"
 typedef struct Ov99_Rec {
     u8 pad0[6];
     u16 f6;
@@ -28,16 +34,8 @@ typedef struct Ov99_Arg2 {
     void *save;
     void *profile;
 } Ov99_Arg2;
-void *Heap_Alloc(int heapId, u32 size);
-void MI_CpuFill8(void *dst, u8 data, u32 size);
-Ov99_Rec *PokeathlonSave_dummy1(void *save);
-void *PokeathlonSave_GetRecordsSolo(void *save);
-void *PokeathlonSave_GetUnkDC(void *save);
 u16 ov99_021E6F70(void *save);
 u16 ov99_021E6FA0(void *a);
-u8 ov98_0221F024(void *a);
-u8 ov98_0221F058(void *a);
-u8 PlayerProfile_GetTrainerGender(void *profile);
 // FUNCTION ov99_021E6FD0: matching C (agent15)
 #pragma force_active on
 void ov99_021E6FD0(Ov99_Arg1 *arg1, Ov99_Arg2 *arg2) {
@@ -54,7 +52,7 @@ void ov99_021E6FD0(Ov99_Arg1 *arg1, Ov99_Arg2 *arg2) {
     MI_CpuFill8(out, 0, sizeof(Ov99_Out));
     save = arg2->save;
     profile = arg2->profile;
-    rec = PokeathlonSave_dummy1(save);
+    rec = (Ov99_Rec *)PokeathlonSave_dummy1(save);
     records = PokeathlonSave_GetRecordsSolo(save);
     unkDC = PokeathlonSave_GetUnkDC(save);
     i = 0;

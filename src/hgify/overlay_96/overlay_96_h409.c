@@ -2,17 +2,18 @@
 #pragma warning_errors off
 #pragma thumb on
 #include "global.h"
+
+#include "pokeathlon/pokeathlon.h"
+
+#include "error_handling.h"
+#include "screen_fade.h"
+#include "touchscreen.h"
+#include "unk_02005D10.h"
 extern u8 ov96_0221BA2C[];
-void *PokeathlonCourse_GetHeapAllocPtr4(u8 *a);
 void ov96_021EF924(void);
-void BeginNormalPaletteFade(int a, int b, int c, int d, int e, int f, int g);
-BOOL IsPaletteFadeFinished(void);
-int TouchscreenHitbox_FindRectAtTouchNew(u8 *a);
-void PlaySE(int a);
 void ov96_021EFB20(u8 *a, int b);
 int ov96_021EFB50(u8 *a);
 void ov96_021EFD08(u8 *a);
-void GF_AssertFail(void);
 // FUNCTION ov96_021EFF3C: matching C (agent16)
 #pragma force_active on
 u32 ov96_021EFF3C(u8 *param_1, u8 *param_2) {
@@ -20,7 +21,7 @@ u32 ov96_021EFF3C(u8 *param_1, u8 *param_2) {
     u8 cVar1;
     int hit;
 
-    iVar2 = PokeathlonCourse_GetHeapAllocPtr4(param_1);
+    iVar2 = (u8 *)PokeathlonCourse_GetHeapAllocPtr4((struct PokeathlonCourseData *)param_1);
     ov96_021EF924();
     cVar1 = *param_2;
     switch (cVar1) {
@@ -29,7 +30,7 @@ u32 ov96_021EFF3C(u8 *param_1, u8 *param_2) {
         *param_2 = *param_2 + 1;
     case 1:
         if (IsPaletteFadeFinished() != 0) {
-            hit = TouchscreenHitbox_FindRectAtTouchNew(ov96_0221BA2C);
+            hit = TouchscreenHitbox_FindRectAtTouchNew((const TouchscreenHitbox *)ov96_0221BA2C);
             if (hit == 0) {
                 PlaySE(0x5dc);
                 ov96_021EFB20(param_1, 3);

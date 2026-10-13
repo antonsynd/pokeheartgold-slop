@@ -2,17 +2,14 @@
 #pragma warning_errors off
 #pragma thumb on
 #include "global.h"
-void Main_SetVBlankIntrCB(void *cb, void *arg);
-void HBlankInterruptDisable(void);
-void GfGfx_EngineASetPlanes(int planes);
-void GfGfx_EngineBSetPlanes(int planes);
-void sub_020210BC(void);
-void sub_02021148(int a);
-void Heap_Create(int heapId, int parent, u32 size);
-void *OverlayManager_CreateAndGetData(void *ovy, u32 size, u32 heap);
-void *OverlayManager_GetArgs(void *ovy);
-u32 Save_HOF_GetNumRecords(void);
-void *NARC_New(u32 narc, u32 heap);
+
+#include "filesystem.h"
+#include "gf_gfx_planes.h"
+#include "hall_of_fame.h"
+#include "heap.h"
+#include "overlay_manager.h"
+#include "system.h"
+#include "unk_020210A0.h"
 void ov64_021E5B00(void);
 void ov64_021E5B10(void *p);
 void ov64_021E5CD0(void *p);
@@ -41,7 +38,7 @@ int HallOfFameShowcase_Init(void *param_1) {
     MI_CpuFill8(puVar1, 0, 0x1d0);
     uVar2 = (u32)OverlayManager_GetArgs(param_1);
     *puVar1 = uVar2;
-    uVar2 = Save_HOF_GetNumRecords();
+    uVar2 = Save_HOF_GetNumRecords((const HallOfFame *)uVar2);
     puVar1[0x6e] = uVar2;
     uVar2 = (u32)NARC_New(0xb4, 0x3b);
     puVar1[0x61] = uVar2;

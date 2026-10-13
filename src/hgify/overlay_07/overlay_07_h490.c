@@ -3,6 +3,8 @@
 #pragma warning_errors off
 #pragma thumb on
 #include "global.h"
+
+#include "sprite_system.h"
 typedef struct UnkStruct_ov07_0222A1F0_Template {
     s16 x;
     s16 y;
@@ -38,13 +40,6 @@ extern int ov07_0221BFD0(void *system);
 extern UnkStruct_ov07_0222A1F0_Template ov07_0221F9E8(void *system);
 extern void ov07_02231E08(void *system, int a, int b);
 extern int ov07_0221C4A8(void *system, int index);
-extern void *SpriteSystem_NewSprite(void *spriteSys, void *spriteMan, void *tmpl);
-extern void ManagedSprite_SetAnim(void *sprite, int anim);
-extern void ManagedSprite_SetFlipMode(void *sprite, int flip);
-extern void ManagedSprite_SetAnimateFlag(void *sprite, int flag);
-extern void ManagedSprite_SetPositionXY(void *sprite, s16 x, s16 y);
-extern void ManagedSprite_SetOamMode(void *sprite, int mode);
-extern void ManagedSprite_SetDrawFlag(void *sprite, int flag);
 extern void ov07_02229FC4(void);
 extern void ov07_0221C3F4(void *system, void (*func)(void), void *ctx, int priority);
 #define REG_BLDALPHA (*(vu16 *)0x04000052)
@@ -78,7 +73,7 @@ void ov07_0222A1F0(void *system, void *spriteSys, void *spriteMan, void *sprite)
     ctx->handSprites[0] = sprite;
 
     for (i = 1; i < ctx->handCount; i++) {
-        ctx->handSprites[i] = SpriteSystem_NewSprite(ctx->spriteSys, ctx->spriteMan, &template);
+        ctx->handSprites[i] = SpriteSystem_NewSprite(ctx->spriteSys, ctx->spriteMan, (const ManagedSpriteTemplate *)&template);
     }
 
     ManagedSprite_SetAnim(ctx->handSprites[0], 0);

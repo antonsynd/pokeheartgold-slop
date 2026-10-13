@@ -2,7 +2,13 @@
 #pragma warning_errors off
 #pragma thumb on
 #pragma thumb on
+#include "global.h"
+
+#include "bg_window.h"
 #include "ghidra_compat.h"
+#include "message_format.h"
+#include "msgdata.h"
+#include "text.h"
 typedef int code();
 typedef struct W {
     int a[4];
@@ -20,20 +26,13 @@ typedef struct S334 {
     char pad2[0x454 - 0x436];
     W win;
 } S334;
-void ReadMsgDataIntoString(void *msgData, int id, void *str);
-void AddTextPrinterParameterizedWithColor(W *w, int font, void *str, int x, int y, int speed, int color, void *cb);
-void StringExpandPlaceholders(void *fmt, void *dst, void *src);
-void FillWindowPixelBuffer(W *w, int v);
-void BufferString(void *fmt, int idx, void *str, int a, int b, int c);
-void BufferIntegerAsString(void *fmt, int idx, int num, int digits, int a, int b);
-void ScheduleWindowCopyToVram(W *w);
 // FUNCTION ov108_021EA334: matching C (agent4)
 #pragma force_active on
 void ov108_021EA334(S334 *param_1, int param_2) {
     int bVar1;
 
     bVar1 = 0;
-    FillWindowPixelBuffer(&param_1->win, 0);
+    FillWindowPixelBuffer((struct Window *)&param_1->win, 0);
     switch (param_2) {
     case 0:
         ReadMsgDataIntoString(param_1->msgData, param_1->b433 + 0xe, param_1->tmpStr);
@@ -55,7 +54,7 @@ void ov108_021EA334(S334 *param_1, int param_2) {
     } else {
         ReadMsgDataIntoString(param_1->msgData, param_2, param_1->str);
     }
-    AddTextPrinterParameterizedWithColor(&param_1->win, 0, param_1->str, 0, 0, 0xff, 0x30400, 0);
-    ScheduleWindowCopyToVram(&param_1->win);
+    AddTextPrinterParameterizedWithColor((struct Window *)&param_1->win, 0, param_1->str, 0, 0, 0xff, 0x30400, 0);
+    ScheduleWindowCopyToVram((struct Window *)&param_1->win);
 }
 #pragma force_active reset
