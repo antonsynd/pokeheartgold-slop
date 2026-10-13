@@ -97,19 +97,21 @@ import hgify_marks  # noqa: E402
 GENERATED_MARK = hgify_marks.MARK
 GENERATED_C_RE = hgify_marks.C_FUNC_RE
 GENERATED_ASM_RE = hgify_marks.ASM_FUNC_RE
+READABLE_C_RE = hgify_marks.READABLE_C_RE
 
 
 def generated_counts(root, obj):
-    """(matching C, asm) functions in a src/ file that hgify generated from a split asm file, else None.
+    """(matching C, asm, readable C) functions in a src/ file that hgify generated from a split asm file, else None.
     Such a file keeps some of the asm file's functions as matching C and the rest as inline asm; the others
-    of that asm file are linked from asm/<name>_NN.s slices, which count as asm like any linked .s."""
+    of that asm file are linked from asm/<name>_NN.s slices, which count as asm like any linked .s. Readable C is
+    the part of the matching C that has been rewritten since ("(manual)", "(twin)")."""
     c = root / Path(obj).with_suffix(".c")
     if not c.exists():
         return None
     text = c.read_text(errors="replace")
     if GENERATED_MARK not in text:
         return None
-    return len(GENERATED_C_RE.findall(text)), len(GENERATED_ASM_RE.findall(text))
+    return len(GENERATED_C_RE.findall(text)), len(GENERATED_ASM_RE.findall(text)), len(READABLE_C_RE.findall(text))
 
 
 def linked_asm_functions(root, objects):
@@ -191,7 +193,8 @@ def generate_progress(root):
             # Matching C that hgify generated from Ghidra drafts and nobody has
             # rewritten readably yet. It has no NONMATCHING blocks, so it all matches.
             gen_in_c = sum(
-                (generated_counts(root, o) or (0,))[0] for o in src_objs if is_fork(o)
+                c - readable
+                for c, _, readable in (generated_counts(root, o) or (0, 0, 0) for o in src_objs if is_fork(o))
             )
         else:
             upstream_stems = {
