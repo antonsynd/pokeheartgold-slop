@@ -82,7 +82,7 @@ void ov37_021E784C(UnkStruct_ov37p3 *param0, int param1);
 BOOL ov37_021E7880(UnkStruct_ov37p3 *param0, YesNoPromptTemplate *param1);
 BOOL ov37_021E7880(UnkStruct_ov37p3 *param0, YesNoPromptTemplate *param1);
 void ov37_021E78A4(UnkStruct_ov37p3 *param0);
-// FUNCTION ov37_021E78A4: matching C (r2)
+// FUNCTION ov37_021E78A4: matching C (twin)
 #pragma force_active on
 void ov37_021E78A4(UnkStruct_ov37p3 *param0) {
     if (param0->unk_93F8) {

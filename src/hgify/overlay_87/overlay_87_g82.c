@@ -3,21 +3,18 @@
 #pragma thumb on
 #include "global.h"
 
-#include "ghidra_compat.h"
 #include "sprite.h"
-typedef int code();
-void ov87_021E8084(int param_1, int param_2);
-// FUNCTION ov87_021E8084: matching C (r2)
+
+typedef struct UnkStruct_ov87_021E8084 {
+    u8 unk_00[0xC];
+    Sprite *sprite;
+} UnkStruct_ov87_021E8084;
+
+// FUNCTION ov87_021E8084: matching C (twin)
 #pragma force_active on
-void ov87_021E8084(int param_1, int param_2)
-
-{
-    undefined4 uVar1;
-
-    Sprite_SetAnimActiveFlag((struct Sprite *)*(undefined4 *)(param_1 + 0xc), param_2);
-    Sprite_SetAnimSpeed(*(undefined4 *)(param_1 + 0xc), 0x1000);
-    uVar1 = Sprite_GetAnimationNumber(*(undefined4 *)(param_1 + 0xc));
-    Sprite_SetAnimCtrlSeq(*(undefined4 *)(param_1 + 0xc), uVar1);
-    return;
+void ov87_021E8084(UnkStruct_ov87_021E8084 *param0, BOOL animate) {
+    Sprite_SetAnimActiveFlag(param0->sprite, animate);
+    Sprite_SetAnimSpeed(param0->sprite, 0x1000);
+    Sprite_SetAnimCtrlSeq(param0->sprite, Sprite_GetAnimationNumber(param0->sprite));
 }
 #pragma force_active reset

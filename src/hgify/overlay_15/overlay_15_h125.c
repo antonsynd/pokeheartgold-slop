@@ -4,15 +4,17 @@
 #include "global.h"
 
 #include "filesystem.h"
-typedef struct {
-    u8 pad[0x244];
-    void *narc;
-} Unk;
-// FUNCTION ov15_021FE990: matching C (agent7)
+
+typedef struct UnkStruct_ov15_021FE990 {
+    u8 pad_0000[0x244];
+    NARC *bagGraphicsNARC;
+} UnkStruct_ov15_021FE990;
+
+// FUNCTION ov15_021FE990: matching C (twin)
 #pragma force_active on
-void *ov15_021FE990(Unk *a, void **b) {
-    void *r = NARC_AllocAndReadWholeMember(a->narc, 0x25, 6);
-    NNS_G2dGetUnpackedBGCharacterData(r, (NNSG2dCharacterData **)b);
-    return r;
+void *ov15_021FE990(UnkStruct_ov15_021FE990 *controller, NNSG2dCharacterData **charData) {
+    void *file = NARC_AllocAndReadWholeMember(controller->bagGraphicsNARC, 0x25, HEAP_ID_6);
+    NNS_G2dGetUnpackedBGCharacterData(file, charData);
+    return file;
 }
 #pragma force_active reset

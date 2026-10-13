@@ -4,15 +4,19 @@
 #include "global.h"
 
 #include "gf_gfx_loader.h"
-#include "ghidra_compat.h"
-typedef int code();
-void ov40_022307DC(int param_1, undefined4 param_2, undefined4 param_3);
-// FUNCTION ov40_022307DC: matching C (r2)
-#pragma force_active on
-void ov40_022307DC(int param_1, undefined4 param_2, undefined4 param_3)
 
-{
-    GfGfxLoader_LoadScrnDataFromOpenNarc(*(undefined4 *)(param_1 + 0x14), param_2, *(undefined4 *)(param_1 + 0x24), param_3, 0, 0, 0, 0x6d);
-    return;
+typedef struct UnkStruct_ov40_022307DC {
+    u8 unk_00[0x14];
+    struct {
+        NARC *unk_00;
+        u8 unk_04[0xC];
+        BgConfig *unk_10;
+    } unk_14;
+} UnkStruct_ov40_022307DC;
+
+// FUNCTION ov40_022307DC: matching C (twin)
+#pragma force_active on
+void ov40_022307DC(UnkStruct_ov40_022307DC *param0, s32 param1, GFBgLayer param2) {
+    GfGfxLoader_LoadScrnDataFromOpenNarc(param0->unk_14.unk_00, param1, param0->unk_14.unk_10, param2, 0, 0, 0, HEAP_ID_109);
 }
 #pragma force_active reset

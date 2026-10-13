@@ -5,23 +5,21 @@
 
 #include "frontier/frontier_script_context.h"
 
-#include "ghidra_compat.h"
-typedef int code();
-undefined4 ov80_0222E5A8();
-undefined4 FrtCmd_023(int *param_1);
-// FUNCTION FrtCmd_023: matching C (r2)
+typedef struct UnkStruct_FrtCmd_023 {
+    u8 unk_00[0x60];
+    void *menuMan;
+} UnkStruct_FrtCmd_023;
+
+void ov80_0222E5A8(void *menuMan, u16 entryID, u16 descriptionID, u16 index);
+// FUNCTION FrtCmd_023: matching C (twin)
 #pragma force_active on
-undefined4 FrtCmd_023(int *param_1)
+BOOL FrtCmd_023(FrontierScriptContext *ctx) {
+    UnkStruct_FrtCmd_023 *scriptMan = (UnkStruct_FrtCmd_023 *)ctx->frontierSystem;
+    u16 entryID = FrontierScriptContext_ReadHalfWord(ctx);
+    u16 descriptionID = 0xff;
+    u16 index = FrontierScriptContext_ReadHalfWord(ctx);
 
-{
-    ushort uVar1;
-    ushort uVar2;
-    int iVar3;
-
-    iVar3 = *param_1;
-    uVar1 = FrontierScriptContext_ReadHalfWord((FrontierScriptContext *)param_1);
-    uVar2 = FrontierScriptContext_ReadHalfWord((FrontierScriptContext *)param_1);
-    ov80_0222E5A8(*(undefined4 *)(iVar3 + 0x60), uVar1, 0xff, uVar2);
-    return 0;
+    ov80_0222E5A8(scriptMan->menuMan, entryID, descriptionID, index);
+    return FALSE;
 }
 #pragma force_active reset

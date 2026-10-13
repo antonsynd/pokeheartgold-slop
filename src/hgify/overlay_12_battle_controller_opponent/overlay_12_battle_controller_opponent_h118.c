@@ -3,18 +3,27 @@
 #pragma thumb on
 #include "global.h"
 
-#include "ghidra_compat.h"
-#include "sound.h"
-typedef void code(void);
-undefined4 ov12_0226430C(undefined4, undefined4, undefined4);
-void ov12_0225B434(undefined4 param_1, int param_2, undefined1 *param_3);
-// FUNCTION ov12_0225B434: matching C (r2)
-#pragma force_active on
-void ov12_0225B434(undefined4 param_1, int param_2, undefined1 *param_3)
+#include "battle/battle.h"
 
-{
-    PlayBGM(*(undefined2 *)(param_3 + 2));
-    ov12_0226430C(param_1, *(undefined1 *)(param_2 + 0x194), *param_3);
-    return;
+#include "sound.h"
+
+typedef struct UnkStruct_ov12_0225B434 {
+    u8 filler_000[0x194];
+    u8 battler;
+} UnkStruct_ov12_0225B434;
+
+typedef struct MusicPlayMessage {
+    u8 command;
+    u8 padding_01;
+    u16 bgmID;
+} MusicPlayMessage;
+
+void ov12_0226430C(BattleSystem *battleSys, u8 battler, u8 command);
+void ov12_0225B434(BattleSystem *battleSys, UnkStruct_ov12_0225B434 *battlerData, MusicPlayMessage *message);
+// FUNCTION ov12_0225B434: matching C (twin)
+#pragma force_active on
+void ov12_0225B434(BattleSystem *battleSys, UnkStruct_ov12_0225B434 *battlerData, MusicPlayMessage *message) {
+    PlayBGM(message->bgmID);
+    ov12_0226430C(battleSys, battlerData->battler, message->command);
 }
 #pragma force_active reset

@@ -3,28 +3,19 @@
 #pragma thumb on
 #include "global.h"
 
-#include "ghidra_compat.h"
 #include "unk_02035900.h"
-typedef int code();
-int sub_02037454(void);
-// FUNCTION sub_02037454: matching C (r2)
+
+// FUNCTION sub_02037454: matching C (twin)
 #pragma force_active on
-int sub_02037454(void)
+int sub_02037454(void) {
+    int v0 = 0, i;
 
-{
-    int iVar1;
-    int iVar2;
-    uint uVar3;
-
-    iVar2 = 0;
-    uVar3 = 0;
-    do {
-        iVar1 = sub_020373B4(uVar3 & 0xffff);
-        if (iVar1 != 0) {
-            iVar2 = iVar2 + 1;
+    for (i = 0; i < 8; i++) {
+        if (sub_020373B4((u16)i)) {
+            v0++;
         }
-        uVar3 = uVar3 + 1;
-    } while ((int)uVar3 < 8);
-    return iVar2;
+    }
+
+    return v0;
 }
 #pragma force_active reset

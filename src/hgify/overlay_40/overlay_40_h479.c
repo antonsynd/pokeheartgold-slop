@@ -3,25 +3,22 @@
 #pragma thumb on
 #include "global.h"
 
-#include "error_handling.h"
-#include "ghidra_compat.h"
+#include "assert.h"
 #include "heap.h"
 #include "pm_string.h"
-typedef int code();
-void ov40_02242FF8(int param_1);
-// FUNCTION ov40_02242FF8: matching C (r2)
-#pragma force_active on
-void ov40_02242FF8(int param_1)
 
-{
-    if (*(int *)(param_1 + 0x18) == 0) {
-        GF_AssertFail();
-    }
-    if (param_1 == 0) {
-        GF_AssertFail();
-    }
-    String_Delete(*(undefined4 *)(param_1 + 0x18));
-    Heap_Free(param_1);
-    return;
+typedef struct UnkStruct_ov40_02242FF8 {
+    u8 pad_0000[0x18];
+    String *unk_18;
+} UnkStruct_ov40_02242FF8;
+
+// FUNCTION ov40_02242FF8: matching C (twin)
+#pragma force_active on
+void ov40_02242FF8(UnkStruct_ov40_02242FF8 *param0) {
+    GF_ASSERT(param0->unk_18 != NULL);
+    GF_ASSERT(param0 != NULL);
+
+    String_Delete(param0->unk_18);
+    Heap_Free(param0);
 }
 #pragma force_active reset

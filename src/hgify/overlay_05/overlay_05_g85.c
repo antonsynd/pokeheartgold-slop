@@ -3,21 +3,21 @@
 #pragma thumb on
 #include "global.h"
 
-#include "ghidra_compat.h"
 #include "render_window.h"
-typedef void code(void);
-void ov05_0221EA18(int param_1);
-// FUNCTION ov05_0221EA18: matching C (r2)
+
+typedef struct UnkStruct_ov05_0221EA18 {
+    u8 filler_000[0xB88];
+    Window unk_B88;
+    u8 filler_B98[0xBC4 - 0xB98];
+    WaitingIcon *unk_BC4;
+} UnkStruct_ov05_0221EA18;
+
+void ov05_0221EA18(UnkStruct_ov05_0221EA18 *param0);
+// FUNCTION ov05_0221EA18: matching C (twin)
 #pragma force_active on
-void ov05_0221EA18(int param_1)
-
-{
-    undefined4 uVar1;
-
-    if (*(int *)(param_1 + 0xbc4) == 0) {
-        uVar1 = WaitingIcon_New(param_1 + 0xb88, 1);
-        *(undefined4 *)(param_1 + 0xbc4) = uVar1;
+void ov05_0221EA18(UnkStruct_ov05_0221EA18 *param0) {
+    if (param0->unk_BC4 == NULL) {
+        param0->unk_BC4 = WaitingIcon_New(&param0->unk_B88, 1);
     }
-    return;
 }
 #pragma force_active reset

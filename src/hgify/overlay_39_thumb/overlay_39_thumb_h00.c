@@ -3,21 +3,20 @@
 #pragma thumb on
 #include "global.h"
 
-#include "ghidra_compat.h"
 #include "save.h"
-typedef int code();
-undefined4 ov39_0222915C();
-void ov39_02227060(undefined4 param_1, undefined4 param_2, int param_3, undefined4 param_4);
-// FUNCTION ov39_02227060: matching C (r4)
+
+typedef struct UnkStruct_ov39_02227060 {
+    u8 unk_00[0x5C];
+    struct {
+        u16 unk_00;
+    } unk_5C;
+} UnkStruct_ov39_02227060;
+
+void ov39_0222915C(const void *photo, UnkStruct_ov39_02227060 *param2);
+// FUNCTION ov39_02227060: matching C (twin)
 #pragma force_active on
-void ov39_02227060(undefined4 param_1, undefined4 param_2, int param_3, undefined4 param_4)
-
-{
-    undefined2 uVar1;
-
-    ov39_0222915C(param_2, param_3);
-    uVar1 = SaveArray_CalcCRC16(param_1, param_3, 0x5c);
-    *(undefined2 *)(param_3 + 0x5c) = uVar1;
-    return;
+void ov39_02227060(SaveData *saveData, const void *photo, UnkStruct_ov39_02227060 *param2) {
+    ov39_0222915C(photo, param2);
+    param2->unk_5C.unk_00 = SaveArray_CalcCRC16(saveData, param2, 0x5C);
 }
 #pragma force_active reset

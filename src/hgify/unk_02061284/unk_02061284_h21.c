@@ -3,23 +3,20 @@
 #pragma thumb on
 #include "global.h"
 
-#include "ghidra_compat.h"
 #include "map_object.h"
 #include "unk_0205FD20.h"
-typedef int code();
-void sub_02061648(undefined4 param_1, undefined4 param_2, undefined4 param_3, undefined4 param_4);
-// FUNCTION sub_02061648: matching C (r3)
+typedef struct UnkStruct_sub_02061648 {
+    int unk_00;
+    int unk_04;
+} UnkStruct_sub_02061648;
+// FUNCTION sub_02061648: matching C (twin)
 #pragma force_active on
-void sub_02061648(undefined4 param_1, undefined4 param_2, undefined4 param_3, undefined4 param_4)
+void sub_02061648(LocalMapObject *mapObj, int param1) {
+    UnkStruct_sub_02061648 *v0 = (UnkStruct_sub_02061648 *)sub_0205F370(mapObj, sizeof(UnkStruct_sub_02061648));
+    v0->unk_00 = param1;
 
-{
-    undefined4 *puVar1;
-
-    puVar1 = (undefined4 *)sub_0205F370(param_1, 8);
-    *puVar1 = param_2;
-    sub_0205F328(param_1, 0);
-    MapObject_ClearSingleMovement(param_1);
-    sub_02060F78(param_1);
-    return;
+    sub_0205F328(mapObj, 0);
+    MapObject_ClearSingleMovement(mapObj);
+    sub_02060F78(mapObj);
 }
 #pragma force_active reset

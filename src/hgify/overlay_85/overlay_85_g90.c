@@ -4,20 +4,20 @@
 #include "global.h"
 
 #include "bg_window.h"
-#include "ghidra_compat.h"
 #include "render_window.h"
-typedef int code();
-void ov85_021E7400(int param_1, int param_2, undefined4 param_3, undefined4 param_4);
-// FUNCTION ov85_021E7400: matching C (r3)
-#pragma force_active on
-void ov85_021E7400(int param_1, int param_2, undefined4 param_3, undefined4 param_4)
 
-{
-    param_2 = param_2 * 0x10;
-    param_1 = param_1 + 0xcb8;
-    ClearFrameAndWindow2(param_1 + param_2, 1);
-    FillWindowPixelBuffer(param_1 + param_2, 0);
-    ScheduleWindowCopyToVram(param_1 + param_2);
-    return;
+typedef struct UnkStruct_ov85_021E7400 {
+    u8 unk00[0xCB8];
+    Window windows[];
+} UnkStruct_ov85_021E7400;
+
+// FUNCTION ov85_021E7400: matching C (twin)
+#pragma force_active on
+void ov85_021E7400(UnkStruct_ov85_021E7400 *param0, int param1) {
+    Window *window = &param0->windows[param1];
+
+    ClearFrameAndWindow2(window, 1);
+    FillWindowPixelBuffer(window, 0);
+    ScheduleWindowCopyToVram(window);
 }
 #pragma force_active reset

@@ -3,65 +3,28 @@
 #pragma thumb on
 #include "global.h"
 
-#include "constants/heap.h"
-
-#include "field_move.h"
-#include "filesystem.h"
 #include "heap.h"
-#include "map_object.h"
-#include "overlay_01.h"
 #include "overlay_01_021F1348.h"
-#define UNK_OV01_021F1348_NONE 0x17
-typedef struct UnkStruct_Ov01_021F1348_Renderer {
-    int id;
-    void *data;
-} UnkStruct_Ov01_021F1348_Renderer;
-typedef struct UnkStruct_Ov01_021F1348 {
-    enum HeapID heapID;
-    u32 rendererCount;
-    u32 animManagerCount;
-    u32 unkC;
-    FieldSystem *fieldSystem;
-    UnkStruct_Ov01_021F1348_Renderer *renderers;
-    NARC *narc;
-    void *animManager;
-    void *unk20;
-} UnkStruct_Ov01_021F1348;
-typedef struct UnkStruct_Ov01_021F1348_FieldSystem {
-    u8 filler0[0x10];
-    TaskManager *taskman;
-    u8 filler14[0x30];
-    UnkStruct_Ov01_021F1348 *fieldEffectManager;
-} UnkStruct_Ov01_021F1348_FieldSystem;
-extern void *sub_020689C8(enum HeapID heapID, u32 count);
-extern void ov01_021F1610(UnkStruct_Ov01_021F1348 *manager);
-extern void ov01_021F15FC(UnkStruct_Ov01_021F1348 *manager);
-extern void ov01_021F16B8(UnkStruct_Ov01_021F1348 *manager);
-extern void ov01_021F1648(UnkStruct_Ov01_021F1348 *manager, enum HeapID heapID, int a2, int a3, int a4, int a5, int a6, int a7, int a8);
-void ov01_021F13B0(UnkStruct_Ov01_021F1348 *manager, int id);
-void *ov01_021F141C(UnkStruct_Ov01_021F1348 *manager, u32 size, BOOL atEnd);
-enum HeapID ov01_021F1478(UnkStruct_Ov01_021F1348 *manager);
-void ov01_021F147C(UnkStruct_Ov01_021F1348 *manager);
-void ov01_021F1490(UnkStruct_Ov01_021F1348 *manager);
-void *ov01_021F14B4(UnkStruct_Ov01_021F1348 *manager, u32 memberId, BOOL atEnd);
-void ov01_021F14DC(UnkStruct_Ov01_021F1348 *manager);
-void ov01_021F14F4(UnkStruct_Ov01_021F1348 *manager, int id);
-void ov01_021F151C(UnkStruct_Ov01_021F1348 *manager, UnkStruct_Ov01_021F1348_Renderer *renderer);
-void ov01_021F1538(UnkStruct_Ov01_021F1348 *manager);
-UnkStruct_Ov01_021F1348_Renderer *ov01_021F1560(UnkStruct_Ov01_021F1348 *manager);
-UnkStruct_Ov01_021F1348_Renderer *ov01_021F1588(UnkStruct_Ov01_021F1348 *manager, int id);
-void ov01_021F15A0(UnkStruct_Ov01_021F1348_Renderer *renderer);
-void ov01_021F15AC(UnkStruct_Ov01_021F1348_Renderer *renderer, int id, void *data);
-BOOL ov01_021F15B4(UnkStruct_Ov01_021F1348_Renderer *renderer);
-void ov01_021F15EC(UnkStruct_Ov01_021F1348 *manager);
-// FUNCTION FieldEffectManager_Free: matching C (r0)
+
+typedef struct UnkStruct_FieldEffectManager_Free {
+    u8 unk_00[0x14];
+    void *renderers;
+} UnkStruct_FieldEffectManager_Free;
+
+void ov01_021F15FC(FieldEffectManager *fieldEffMan);
+void ov01_021F1538(FieldEffectManager *fieldEffMan);
+void ov01_021F16B8(FieldEffectManager *fieldEffMan);
+void ov01_021F1490(FieldEffectManager *fieldEffMan);
+void FieldEffectManager_Free(FieldEffectManager *fieldEffMan);
+// FUNCTION FieldEffectManager_Free: matching C (twin)
 #pragma force_active on
-void FieldEffectManager_Free(FieldEffectManager *fieldEffectManager) {
-    UnkStruct_Ov01_021F1348 *manager = (UnkStruct_Ov01_021F1348 *)fieldEffectManager;
-    ov01_021F15FC(manager);
-    ov01_021F1538(manager);
-    ov01_021F16B8(manager);
-    ov01_021F1490(manager);
+void FieldEffectManager_Free(FieldEffectManager *fieldEffMan) {
+    UnkStruct_FieldEffectManager_Free *manager = (UnkStruct_FieldEffectManager_Free *)fieldEffMan;
+
+    ov01_021F15FC(fieldEffMan);
+    ov01_021F1538(fieldEffMan);
+    ov01_021F16B8(fieldEffMan);
+    ov01_021F1490(fieldEffMan);
     Heap_Free(manager->renderers);
     Heap_Free(manager);
 }

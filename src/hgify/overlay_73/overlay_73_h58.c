@@ -3,28 +3,21 @@
 #pragma thumb on
 #include "global.h"
 
-#include "ghidra_compat.h"
 #include "unk_02034354.h"
-typedef int code();
-int ov73_021E7340(void);
-// FUNCTION ov73_021E7340: matching C (r2)
+
+// FUNCTION ov73_021E7340: matching C (twin)
 #pragma force_active on
-int ov73_021E7340(void)
+int ov73_021E7340(void) {
+    int i, v1 = 0;
 
-{
-    int iVar1;
-    int iVar2;
-    int iVar3;
+    for (i = 0; i < 5; i++) {
+        PlayerProfile *trainerInfo = sub_02034818(i);
 
-    iVar3 = 0;
-    iVar2 = 0;
-    do {
-        iVar1 = sub_02034818(iVar2);
-        if (iVar1 != 0) {
-            iVar3 = iVar3 + 1;
+        if (trainerInfo != NULL) {
+            v1++;
         }
-        iVar2 = iVar2 + 1;
-    } while (iVar2 < 5);
-    return iVar3;
+    }
+
+    return v1;
 }
 #pragma force_active reset

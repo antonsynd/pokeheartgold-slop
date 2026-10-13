@@ -5,17 +5,18 @@
 
 #include "bg_window.h"
 #include "gf_gfx_planes.h"
-#include "ghidra_compat.h"
-typedef int code();
-void ov40_022442CC(int param_1);
-// FUNCTION ov40_022442CC: matching C (r2)
-#pragma force_active on
-void ov40_022442CC(int param_1)
 
-{
-    ClearWindowTilemapAndCopyToVram(param_1 + 0x8a4);
-    RemoveWindow(param_1 + 0x8a4);
+typedef struct UnkStruct_ov40_022442CC {
+    u8 unk_000[0x8A4];
+    Window unk_8A4;
+} UnkStruct_ov40_022442CC;
+
+void ov40_022442CC(UnkStruct_ov40_022442CC *param0);
+// FUNCTION ov40_022442CC: matching C (twin)
+#pragma force_active on
+void ov40_022442CC(UnkStruct_ov40_022442CC *param0) {
+    ClearWindowTilemapAndCopyToVram(&param0->unk_8A4);
+    RemoveWindow(&param0->unk_8A4);
     GfGfx_EngineATogglePlanes(4, 0);
-    return;
 }
 #pragma force_active reset

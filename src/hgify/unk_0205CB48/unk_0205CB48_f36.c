@@ -3,24 +3,18 @@
 #pragma thumb on
 #include "global.h"
 
-#include "ghidra_compat.h"
 #include "map_object.h"
 #include "player_avatar.h"
-typedef int code();
-undefined4 sub_0205DA1C();
-undefined4 sub_0206234C();
-void sub_0205D818(undefined4 param_1, undefined4 param_2);
-// FUNCTION sub_0205D818: matching C (r2)
+
+int sub_0206234C(int param0, int param1);
+void sub_0205DA1C(PlayerAvatar *playerAvatar, LocalMapObject *mapObj, int movementAction);
+
+// FUNCTION sub_0205D818: matching C (twin)
 #pragma force_active on
-void sub_0205D818(undefined4 param_1, undefined4 param_2)
+void sub_0205D818(PlayerAvatar *playerAvatar, LocalMapObject *mapObj) {
+    int movementAction = sub_0206234C(MapObject_GetFacingDirection(mapObj), 0);
 
-{
-    undefined4 uVar1;
-
-    uVar1 = MapObject_GetFacingDirection(param_2);
-    uVar1 = sub_0206234C(uVar1, 0);
-    sub_0205DA1C(param_1, param_2, uVar1);
-    PlayerAvatar_ClearUnk24ClearFlag2(param_1);
-    return;
+    sub_0205DA1C(playerAvatar, mapObj, movementAction);
+    PlayerAvatar_ClearUnk24ClearFlag2(playerAvatar);
 }
 #pragma force_active reset

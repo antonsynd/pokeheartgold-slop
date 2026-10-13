@@ -4,19 +4,20 @@
 #include "global.h"
 
 #include "bg_window.h"
-#include "ghidra_compat.h"
 #include "render_window.h"
-typedef void code(void);
-undefined4 ov08_02223B48(undefined4);
-void ov08_02223B20(int param_1);
-// FUNCTION ov08_02223B20: matching C (r3)
-#pragma force_active on
-void ov08_02223B20(int param_1)
 
-{
-    DrawFrameAndWindow2(param_1 + 0x1c, 1, 0x3e2, 0xe);
-    FillWindowPixelBuffer(param_1 + 0x1c, 0xf);
-    ov08_02223B48(param_1);
-    return;
+typedef struct UnkStruct_ov08_02223B20 {
+    u8 pad_00[0x1C];
+    Window messageBoxWindow;
+} UnkStruct_ov08_02223B20;
+
+void ov08_02223B48(UnkStruct_ov08_02223B20 *battleBag);
+
+// FUNCTION ov08_02223B20: matching C (twin)
+#pragma force_active on
+void ov08_02223B20(UnkStruct_ov08_02223B20 *battleBag) {
+    DrawFrameAndWindow2(&battleBag->messageBoxWindow, TRUE, 994, 14);
+    FillWindowPixelBuffer(&battleBag->messageBoxWindow, 15);
+    ov08_02223B48(battleBag);
 }
 #pragma force_active reset

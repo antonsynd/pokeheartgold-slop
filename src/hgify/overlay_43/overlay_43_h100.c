@@ -3,26 +3,23 @@
 #pragma thumb on
 #include "global.h"
 
-#include "ghidra_compat.h"
 #include "overlay_42.h"
-typedef int code();
-void ov43_0222CA30(int param_1);
-// FUNCTION ov43_0222CA30: matching C (r2)
+
+typedef struct UnkStruct_ov43_0222CA30 {
+    u8 unk_00[0x18];
+    UnkStruct_ov42_02227114 *unk_18[8];
+} UnkStruct_ov43_0222CA30;
+
+// FUNCTION ov43_0222CA30: matching C (twin)
 #pragma force_active on
-void ov43_0222CA30(int param_1)
+void ov43_0222CA30(UnkStruct_ov43_0222CA30 *param0) {
+    int v0;
 
-{
-    int iVar1;
-
-    iVar1 = 0;
-    do {
-        if (*(int *)(param_1 + 0x18) != 0) {
-            ov42_0222740C((UnkStruct_ov42_02227114 *)*(int *)(param_1 + 0x18));
-            *(undefined4 *)(param_1 + 0x18) = 0;
+    for (v0 = 0; v0 < 8; v0++) {
+        if (param0->unk_18[v0]) {
+            ov42_0222740C(param0->unk_18[v0]);
+            param0->unk_18[v0] = NULL;
         }
-        iVar1 = iVar1 + 1;
-        param_1 = param_1 + 4;
-    } while (iVar1 < 8);
-    return;
+    }
 }
 #pragma force_active reset

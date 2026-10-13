@@ -3,24 +3,25 @@
 #pragma thumb on
 #include "global.h"
 
-#include "ghidra_compat.h"
 #include "heap.h"
 #include "palette.h"
-typedef void code(void);
-undefined4 ov07_0221C448(undefined4, undefined4);
-void ov07_02223E94(undefined4 param_1, undefined4 *param_2);
-// FUNCTION ov07_02223E94: matching C (r2)
+#include "task.h"
+
+typedef struct UnkStruct_ov07_02223E94 {
+    void *battleAnimSys;
+    PaletteData *paletteData;
+} UnkStruct_ov07_02223E94;
+
+void ov07_0221C448(void *battleAnimSys, SysTask *task);
+void ov07_02223E94(SysTask *task, void *param);
+// FUNCTION ov07_02223E94: matching C (twin)
 #pragma force_active on
-void ov07_02223E94(undefined4 param_1, undefined4 *param_2)
+void ov07_02223E94(SysTask *task, void *param) {
+    UnkStruct_ov07_02223E94 *ctx = param;
 
-{
-    int iVar1;
-
-    iVar1 = PaletteData_GetSelectedBuffersBitmask(param_2[1]);
-    if (iVar1 == 0) {
-        Heap_Free(param_2);
-        ov07_0221C448(*param_2, param_1);
+    if (PaletteData_GetSelectedBuffersBitmask(ctx->paletteData) == 0) {
+        Heap_Free(ctx);
+        ov07_0221C448(ctx->battleAnimSys, task);
     }
-    return;
 }
 #pragma force_active reset

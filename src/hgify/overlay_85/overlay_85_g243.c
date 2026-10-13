@@ -3,24 +3,19 @@
 #pragma thumb on
 #include "global.h"
 
-#include "ghidra_compat.h"
 #include "text.h"
-typedef int code();
-undefined4 ov85_021EA17C(uint param_1);
-// FUNCTION ov85_021EA17C: matching C (r2)
+
+// FUNCTION ov85_021EA17C: matching C (twin)
 #pragma force_active on
-undefined4 ov85_021EA17C(uint param_1)
-
-{
-    int iVar1;
-
-    if (param_1 == 0xff) {
+int ov85_021EA17C(int param0) {
+    if (param0 == 0xff) {
         return 1;
     }
-    iVar1 = TextPrinterCheckActive(param_1 & 0xff);
-    if (iVar1 == 0) {
+
+    if (TextPrinterCheckActive(param0) == 0) {
         return 1;
     }
+
     return 0;
 }
 #pragma force_active reset

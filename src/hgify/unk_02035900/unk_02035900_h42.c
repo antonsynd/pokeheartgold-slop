@@ -11,15 +11,16 @@ extern struct {
     int b;
     u8 *p;
 } _021D4140;
-// FUNCTION sub_02037474: matching C (agent7)
+// FUNCTION sub_02037474: matching C (twin)
 #pragma force_active on
 BOOL sub_02037474(void) {
-    if (_021D4140.p != 0) {
+    if (_021D4140.p) {
         sub_0203993C();
-        if (sub_02034044() != 0) {
-            return 1;
+        if (sub_02034044()) {
+            return TRUE;
         }
     }
+
     return sub_02035650();
 }
 #pragma force_active reset

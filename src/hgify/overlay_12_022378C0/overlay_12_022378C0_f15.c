@@ -8,20 +8,20 @@
 #include "vram_transfer_manager.h"
 typedef struct UnkStruct_ov12_022397E4 {
     u8 unk_00[0x4];
-    void *unk_04;
+    BgConfig *bgConfig;
     u8 unk_08[0x4];
-    void *unk_0C;
+    PaletteData *paletteData;
 } UnkStruct_ov12_022397E4;
-void ov12_022397E4(UnkStruct_ov12_022397E4 *param_1);
-// FUNCTION ov12_022397E4: matching C (agent10)
+// FUNCTION ov12_022397E4: matching C (twin)
 #pragma force_active on
-void ov12_022397E4(UnkStruct_ov12_022397E4 *param_1) {
+void ov12_022397E4(UnkStruct_ov12_022397E4 *commState) {
+    PaletteData_PushTransparentBuffers(commState->paletteData);
+    GF_RunVramTransferTasks();
+    DoScheduledBgGpuUpdates(commState->bgConfig);
+
     u8 *base;
     u32 off;
 
-    PaletteData_PushTransparentBuffers(param_1->unk_0C);
-    GF_RunVramTransferTasks();
-    DoScheduledBgGpuUpdates(param_1->unk_04);
     base = (u8 *)0x027E0000;
     off = 0x3FF8;
     *(u32 *)(base + off) |= 1;

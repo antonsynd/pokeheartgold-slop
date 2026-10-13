@@ -5,19 +5,14 @@
 
 #include "bg_window.h"
 #include "font.h"
-#include "ghidra_compat.h"
-typedef int code();
-int ov92_0225E188(undefined4 param_1, undefined4 param_2, undefined4 param_3, undefined4 param_4);
-// FUNCTION ov92_0225E188: matching C (r3)
+
+int ov92_0225E188(Window *param0, String *param1);
+// FUNCTION ov92_0225E188: matching C (twin)
 #pragma force_active on
-int ov92_0225E188(undefined4 param_1, undefined4 param_2, undefined4 param_3, undefined4 param_4)
+int ov92_0225E188(Window *param0, String *param1) {
+    int v0 = FontID_String_GetWidth(0, param1, 0);
+    int v1 = (GetWindowWidth(param0) * 8 - v0) / 2;
 
-{
-    int iVar1;
-    int iVar2;
-
-    iVar1 = FontID_String_GetWidth(0, param_2, 0);
-    iVar2 = GetWindowWidth(param_1);
-    return (iVar2 * 8 - iVar1) / 2;
+    return v1;
 }
 #pragma force_active reset

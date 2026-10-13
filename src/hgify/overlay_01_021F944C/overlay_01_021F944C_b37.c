@@ -96,17 +96,19 @@ int ov01_021F9AB4(int *arg0, int arg1, int arg2, int arg3);
 int ov01_021F9AB4(int *arg0, int arg1, int arg2, int arg3);
 int ov01_021F9AD0(int *arg0, int arg1, int arg2);
 int ov01_021F9AE4(int *arg0, int arg1, int arg2, int arg3);
-// FUNCTION ov01_021F9AE4: matching C (r0)
+// FUNCTION ov01_021F9AE4: matching C (twin)
 #pragma force_active on
-int ov01_021F9AE4(int *arg0, int arg1, int arg2, int arg3) {
+int ov01_021F9AE4(int *param0, int param1, int param2, int param3) {
     do {
-        if (*arg0 == arg1) {
-            *arg0 = arg2;
+        if ((*param0) == param1) {
+            *param0 = param2;
             return 1;
         }
-        arg0++;
-        arg3--;
-    } while (arg3);
+
+        param0++;
+        param3--;
+    } while (param3);
+
     return 0;
 }
 #pragma force_active reset

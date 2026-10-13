@@ -4,25 +4,30 @@
 #include "global.h"
 
 #include "bg_window.h"
-#include "ghidra_compat.h"
-typedef int code();
-undefined4 ov102_021E8F7C();
-void ov102_021EBBD0(int param_1);
-// FUNCTION ov102_021EBBD0: matching C (r2)
+
+#define GROUP_MODE_BG_X_OFFSET -4
+#define ABC_MODE_BG_X_OFFSET   252
+
+typedef struct UnkStruct_ov102_021EBBD0 {
+    u8 unk_00[4];
+    void *easyChatApp;
+    u8 unk_08[4];
+    BgConfig *bgConfig;
+} UnkStruct_ov102_021EBBD0;
+
+int ov102_021E8F7C(void *easyChatApp);
+
+// FUNCTION ov102_021EBBD0: matching C (twin)
 #pragma force_active on
-void ov102_021EBBD0(int param_1)
+void ov102_021EBBD0(UnkStruct_ov102_021EBBD0 *ctx) {
+    int val;
 
-{
-    int iVar1;
-    undefined4 uVar2;
-
-    iVar1 = ov102_021E8F7C(*(undefined4 *)(param_1 + 4));
-    if (iVar1 == 0) {
-        uVar2 = 0xfffffffc;
+    if (ov102_021E8F7C(ctx->easyChatApp) == 0) {
+        val = GROUP_MODE_BG_X_OFFSET;
     } else {
-        uVar2 = 0xfc;
+        val = ABC_MODE_BG_X_OFFSET;
     }
-    BgSetPosTextAndCommit(*(undefined4 *)(param_1 + 0xc), 1, 0, uVar2);
-    return;
+
+    BgSetPosTextAndCommit(ctx->bgConfig, 1, BG_POS_OP_SET_X, val);
 }
 #pragma force_active reset

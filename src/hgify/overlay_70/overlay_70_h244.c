@@ -3,22 +3,19 @@
 #pragma thumb on
 #include "global.h"
 
-#include "ghidra_compat.h"
 #include "party.h"
-typedef int code();
-undefined4 ov70_0223E490();
-undefined4 ov70_0223E4DC(undefined4 param_1, undefined4 param_2, undefined4 param_3);
-// FUNCTION ov70_0223E4DC: matching C (r2)
+
+BOOL ov70_0223E490(int boxID);
+
+// FUNCTION ov70_0223E4DC: matching C (twin)
 #pragma force_active on
-undefined4 ov70_0223E4DC(undefined4 param_1, undefined4 param_2, undefined4 param_3)
-
-{
-    int iVar1;
-
-    iVar1 = ov70_0223E490(param_3);
-    if ((iVar1 != 0) && (iVar1 = Party_GetCount(param_1), iVar1 < 2)) {
-        return 0;
+BOOL ov70_0223E4DC(Party *party, void *unused1, int boxID, int unused2) {
+    if (ov70_0223E490(boxID)) {
+        if (Party_GetCount(party) < 2) { // BUG? includes eggs, so a party of [valid mon, egg] passes the < 2 guard.
+            return FALSE;
+        }
     }
-    return 1;
+
+    return TRUE;
 }
 #pragma force_active reset

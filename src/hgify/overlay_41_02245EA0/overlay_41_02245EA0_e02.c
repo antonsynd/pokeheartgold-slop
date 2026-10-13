@@ -4,26 +4,31 @@
 #include "global.h"
 
 #include "error_handling.h"
-#include "ghidra_compat.h"
-typedef int code();
-undefined4 ov41_0224607C();
-undefined4 ov41_022460A8();
-undefined4 *ov41_02245EE0(undefined4 *param_1);
-// FUNCTION ov41_02245EE0: matching C (r2)
+
+typedef struct UnkStruct_ov41_02245EE0_Result {
+    u32 unk_00;
+    void *unk_04;
+} UnkStruct_ov41_02245EE0_Result;
+
+typedef struct UnkStruct_ov41_02245EE0 {
+    void *unk_00;
+    u8 unk_04[0x14];
+    u32 unk_18;
+} UnkStruct_ov41_02245EE0;
+
+UnkStruct_ov41_02245EE0_Result *ov41_0224607C(void *param0);
+void *ov41_022460A8(UnkStruct_ov41_02245EE0 *param0);
+// FUNCTION ov41_02245EE0: matching C (twin)
 #pragma force_active on
-undefined4 *ov41_02245EE0(undefined4 *param_1)
-
-{
-    undefined4 *puVar1;
-    undefined4 uVar2;
-
-    puVar1 = (undefined4 *)ov41_0224607C(*param_1);
-    if (puVar1 == (undefined4 *)0x0) {
+UnkStruct_ov41_02245EE0_Result *ov41_02245EE0(UnkStruct_ov41_02245EE0 *param0) {
+    UnkStruct_ov41_02245EE0_Result *v0 = ov41_0224607C(param0->unk_00);
+    if (v0 == NULL) {
         GF_AssertFail();
     }
-    *puVar1 = param_1[6];
-    uVar2 = ov41_022460A8(param_1);
-    puVar1[1] = uVar2;
-    return puVar1;
+
+    v0->unk_00 = param0->unk_18;
+    v0->unk_04 = ov41_022460A8(param0);
+
+    return v0;
 }
 #pragma force_active reset

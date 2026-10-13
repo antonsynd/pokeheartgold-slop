@@ -3,22 +3,20 @@
 #pragma thumb on
 #include "global.h"
 
-#include "ghidra_compat.h"
-typedef int code();
-extern undefined4 ov70_02246944;
-void ov70_02238E20(undefined4 param_1, int param_2);
-// FUNCTION ov70_02238E20: matching C (r2)
+extern NNSFndHeapHandle ov70_02246944;
+void ov70_02238E20(u32 param0, void *param1);
+// FUNCTION ov70_02238E20: matching C (twin)
 #pragma force_active on
-void ov70_02238E20(undefined4 param_1, int param_2)
+void ov70_02238E20(u32 param0, void *param1) {
+#pragma unused(param0)
+    OSIntrMode v0;
 
-{
-    undefined4 uVar1;
-
-    if (param_2 != 0) {
-        uVar1 = OS_DisableInterrupts();
-        NNS_FndFreeToExpHeap(ov70_02246944, param_2);
-        OS_RestoreInterrupts(uVar1);
+    if (!param1) {
+        return;
     }
-    return;
+
+    v0 = OS_DisableInterrupts();
+    NNS_FndFreeToExpHeap(ov70_02246944, param1);
+    OS_RestoreInterrupts(v0);
 }
 #pragma force_active reset

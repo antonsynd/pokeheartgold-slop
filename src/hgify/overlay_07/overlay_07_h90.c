@@ -3,23 +3,33 @@
 #pragma thumb on
 #include "global.h"
 
-#include "ghidra_compat.h"
 #include "sprite_system.h"
 #include "sys_task_api.h"
-typedef void code(void);
-void ov07_0221DAD0(undefined4 param_1, int *param_2);
-// FUNCTION ov07_0221DAD0: matching C (r6)
-#pragma force_active on
-void ov07_0221DAD0(undefined4 param_1, int *param_2)
 
-{
-    if (param_2[3] == 0) {
-        SysTask_Destroy(param_1);
+typedef struct UnkStruct_ov07_0221DAD0_System {
+    u8 unk000[0x138];
+    void *pokemonSpriteManager;
+} UnkStruct_ov07_0221DAD0_System;
+
+typedef struct UnkStruct_ov07_0221DAD0 {
+    UnkStruct_ov07_0221DAD0_System *battleAnimSys;
+    SpriteManager *spriteManager;
+    u8 unk08[4];
+    BOOL active;
+} UnkStruct_ov07_0221DAD0;
+
+// FUNCTION ov07_0221DAD0: matching C (twin)
+#pragma force_active on
+void ov07_0221DAD0(SysTask *task, void *param) {
+    UnkStruct_ov07_0221DAD0 *ctx = param;
+
+    if (ctx->active == FALSE) {
+        SysTask_Destroy(task);
         return;
     }
-    if (*(int *)(*param_2 + 0x138) != 0) {
-        SpriteSystem_DrawSprites(param_2[1]);
+
+    if (ctx->battleAnimSys->pokemonSpriteManager != NULL) {
+        SpriteSystem_DrawSprites(ctx->spriteManager);
     }
-    return;
 }
 #pragma force_active reset

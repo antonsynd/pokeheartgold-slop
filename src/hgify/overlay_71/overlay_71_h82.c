@@ -3,21 +3,20 @@
 #pragma thumb on
 #include "global.h"
 
-#include "ghidra_compat.h"
 #include "unk_02026E30.h"
-typedef int code();
-undefined4 ov71_022474CC();
-void ov71_022483E4(int param_1);
-// FUNCTION ov71_022483E4: matching C (r2)
+typedef struct UnkStruct_ov71_022483E4 {
+    u8 unk_00[0xD4];
+    void *scene;
+} UnkStruct_ov71_022483E4;
+void ov71_022474CC(void *scene);
+// FUNCTION ov71_022483E4: matching C (twin)
 #pragma force_active on
-void ov71_022483E4(int param_1)
-
-{
-    if (*(int *)(param_1 + 0xd4) != 0) {
+void ov71_022483E4(UnkStruct_ov71_022483E4 *ttPhase) {
+    if (ttPhase->scene) {
         G3X_Reset();
-        ov71_022474CC(*(undefined4 *)(param_1 + 0xd4));
-        RequestSwap3DBuffers(0, 0);
+
+        ov71_022474CC(ttPhase->scene);
+        RequestSwap3DBuffers(GX_SORTMODE_AUTO, GX_BUFFERMODE_Z);
     }
-    return;
 }
 #pragma force_active reset

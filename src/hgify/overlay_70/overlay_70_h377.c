@@ -3,20 +3,23 @@
 #pragma thumb on
 #include "global.h"
 
-#include "ghidra_compat.h"
 #include "heap.h"
-typedef int code();
-#define SEXT24(x) ((int)(unsigned short)(x))
-void ov70_02241308(int param_1);
-// FUNCTION ov70_02241308: matching C (v1)
-#pragma force_active on
-void ov70_02241308(int param_1)
 
-{
-    if (*(unsigned short *)(param_1 + 0x11dc) != 0) {
-        Heap_Free(*(undefined4 *)(param_1 + 0x11e8));
-        Heap_Free(*(undefined4 *)(param_1 + 0x11e0));
+typedef struct UnkStruct_ov70_02241308 {
+    u8 unk_00[0x11DC];
+    u16 hasAvatarFinishedMoving;
+    u8 unk_11DE[0x2];
+    void *avatarCharDataHeapPtr;
+    u8 unk_11E4[0x4];
+    void *avatarPaletteHeapPtr;
+} UnkStruct_ov70_02241308;
+
+// FUNCTION ov70_02241308: matching C (twin)
+#pragma force_active on
+void ov70_02241308(UnkStruct_ov70_02241308 *appState) {
+    if (appState->hasAvatarFinishedMoving) {
+        Heap_Free(appState->avatarPaletteHeapPtr);
+        Heap_Free(appState->avatarCharDataHeapPtr);
     }
-    return;
 }
 #pragma force_active reset

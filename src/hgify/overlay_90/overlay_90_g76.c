@@ -3,18 +3,19 @@
 #pragma thumb on
 #include "global.h"
 
-#include "ghidra_compat.h"
 #include "sprite.h"
-typedef void code(void);
-void ov90_02259E18(int param_1, int param_2, undefined4 param_3, undefined4 param_4);
-// FUNCTION ov90_02259E18: matching C (r3)
-#pragma force_active on
-void ov90_02259E18(int param_1, int param_2, undefined4 param_3, undefined4 param_4)
 
-{
-    Sprite_SetDrawFlag(*(undefined4 *)(param_1 + 0x14), 1);
-    Sprite_SetAnimCtrlSeq(*(undefined4 *)(param_1 + 0x14), param_2 + 4);
-    Sprite_SetAnimActiveFlag(*(undefined4 *)(param_1 + 0x14), 1);
-    return;
+typedef struct UnkStruct_ov90_02259E18 {
+    u8 filler_000[0x14];
+    Sprite *unk_14;
+} UnkStruct_ov90_02259E18;
+
+void ov90_02259E18(UnkStruct_ov90_02259E18 *param0, u32 param1, u32 param2, u32 param3);
+// FUNCTION ov90_02259E18: matching C (twin)
+#pragma force_active on
+void ov90_02259E18(UnkStruct_ov90_02259E18 *param0, u32 param1, u32 param2, u32 param3) {
+    Sprite_SetDrawFlag(param0->unk_14, TRUE);
+    Sprite_SetAnimCtrlSeq(param0->unk_14, param1 + 4);
+    Sprite_SetAnimActiveFlag(param0->unk_14, TRUE);
 }
 #pragma force_active reset

@@ -4,21 +4,17 @@
 #include "global.h"
 
 #include "bg_window.h"
-#include "ghidra_compat.h"
 #include "render_text.h"
-typedef int code();
-undefined4 sub_0200E948();
-void DrawFrameAndWindow2(undefined4 param_1, int param_2, undefined4 param_3, undefined4 param_4);
-// FUNCTION DrawFrameAndWindow2: matching C (r2)
+void sub_0200E948(Window *window, u16 tile, u8 palette);
+// FUNCTION DrawFrameAndWindow2: matching C (twin)
 #pragma force_active on
-void DrawFrameAndWindow2(undefined4 param_1, int param_2, undefined4 param_3, undefined4 param_4)
+void DrawFrameAndWindow2(Window *window, u8 skipTransfer, u16 tile, u8 palette) {
+    sub_0200E948(window, tile, palette);
 
-{
-    sub_0200E948(param_1, param_3, param_4);
-    if (param_2 == 0) {
-        CopyWindowToVram(param_1);
+    if (skipTransfer == FALSE) {
+        CopyWindowToVram(window);
     }
-    TextPrinter_SetDownArrowBaseTile(param_3);
-    return;
+
+    TextPrinter_SetDownArrowBaseTile(tile);
 }
 #pragma force_active reset

@@ -3,21 +3,22 @@
 #pragma thumb on
 #include "global.h"
 
-#include "ghidra_compat.h"
 #include "pokepic.h"
-typedef int code();
-extern code *NNS_GfdDefaultFuncFreeTexVram;
-extern code *NNS_GfdDefaultFuncFreePlttVram;
-void ov41_02246D2C(int param_1);
-// FUNCTION ov41_02246D2C: matching C (r2)
+typedef struct UnkStruct_ov41_02246D2C {
+    u8 unk_00[0x20];
+    PokepicManager *unk_20;
+    u32 unk_24;
+    u32 unk_28;
+    u32 unk_2C;
+} UnkStruct_ov41_02246D2C;
+// FUNCTION ov41_02246D2C: matching C (twin)
 #pragma force_active on
-void ov41_02246D2C(int param_1)
+void ov41_02246D2C(UnkStruct_ov41_02246D2C *param0) {
+    PokepicManager_Delete(param0->unk_20);
 
-{
-    PokepicManager_Delete((PokepicManager *)*(undefined **)(param_1 + 0x20));
-    (*NNS_GfdDefaultFuncFreeTexVram)(*(undefined4 *)(param_1 + 0x24));
-    (*NNS_GfdDefaultFuncFreePlttVram)(*(undefined4 *)(param_1 + 0x28));
-    *(undefined4 *)(param_1 + 0x2c) = 0;
-    return;
+    (*NNS_GfdDefaultFuncFreeTexVram)(param0->unk_24);
+    (*NNS_GfdDefaultFuncFreePlttVram)(param0->unk_28);
+
+    param0->unk_2C = 0;
 }
 #pragma force_active reset

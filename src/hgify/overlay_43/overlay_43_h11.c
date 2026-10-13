@@ -3,21 +3,23 @@
 #pragma thumb on
 #include "global.h"
 
-#include "ghidra_compat.h"
 #include "pm_string.h"
-typedef int code();
-void ov43_0222A338(int param_1, int param_2, int param_3);
-// FUNCTION ov43_0222A338: matching C (r2)
-#pragma force_active on
-void ov43_0222A338(int param_1, int param_2, int param_3)
 
-{
-    if (param_2 != 0) {
-        String_Copy((String *)*(undefined4 *)(param_1 + 0x58), (const String *)param_2);
+typedef struct UnkStruct_ov43_0222A338 {
+    u8 unk_00[0x58];
+    String *unk_58;
+    String *unk_5C;
+} UnkStruct_ov43_0222A338;
+
+// FUNCTION ov43_0222A338: matching C (twin)
+#pragma force_active on
+void ov43_0222A338(UnkStruct_ov43_0222A338 *param0, const String *param1, const String *param2) {
+    if (param1) {
+        String_Copy(param0->unk_58, param1);
     }
-    if (param_3 != 0) {
-        String_Copy((String *)*(undefined4 *)(param_1 + 0x5c), (const String *)param_3);
+
+    if (param2) {
+        String_Copy(param0->unk_5C, param2);
     }
-    return;
 }
 #pragma force_active reset

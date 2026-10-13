@@ -3,18 +3,18 @@
 #pragma thumb on
 #include "global.h"
 
-#include "heap.h"
 #include "main.h"
 #include "overlay_manager.h"
-extern const struct OverlayManagerTemplate gApplication_TitleScreen;
-extern u32 SDK_OVERLAY_intro_title_ID[1];
-// FUNCTION ov74_02229450: matching C (agent6)
+#include "title_screen.h"
+
+// FUNCTION ov74_02229450: matching C (twin)
 #pragma force_active on
-BOOL ov74_02229450(void *param_1) {
-    Heap_Destroy(0x59);
+BOOL ov74_02229450(OverlayManager *appMan) {
+    Heap_Destroy(HEAP_ID_89);
     RegisterMainOverlay((u32)&SDK_OVERLAY_intro_title_ID, &gApplication_TitleScreen);
-    OverlayManager_FreeData(param_1);
-    Heap_Destroy(0x53);
-    return 1;
+    OverlayManager_FreeData(appMan);
+    Heap_Destroy(HEAP_ID_83);
+
+    return TRUE;
 }
 #pragma force_active reset

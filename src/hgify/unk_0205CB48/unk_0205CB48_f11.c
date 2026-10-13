@@ -3,16 +3,17 @@
 #pragma thumb on
 #include "global.h"
 
-#include "ghidra_compat.h"
-#include "overlay_manager.h"
-typedef int code();
-extern int (*_020FCB7C[])(int, int);
-// FUNCTION sub_0205D07C: matching C (agent6)
+#include "field_types_def.h"
+
+extern BOOL (*_020FCB7C[])(PlayerAvatar *, int);
+
+// FUNCTION sub_0205D07C: matching C (twin)
 #pragma force_active on
-int sub_0205D07C(int a, int idx, int b, int c) {
-    if (_020FCB7C[idx](a, b) == 1) {
-        return 1;
+BOOL sub_0205D07C(PlayerAvatar *playerAvatar, u32 tileMove, int dir) {
+    if (_020FCB7C[tileMove](playerAvatar, dir) == TRUE) {
+        return TRUE;
     }
-    return 0;
+
+    return FALSE;
 }
 #pragma force_active reset

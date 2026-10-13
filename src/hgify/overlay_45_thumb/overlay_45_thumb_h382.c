@@ -3,30 +3,26 @@
 #pragma thumb on
 #include "global.h"
 
+#include "assert.h"
 #include "error_handling.h"
-#include "ghidra_compat.h"
-typedef int code();
-undefined4 ov45_0222F74C();
-undefined4 ov45_0222F78C();
-undefined4 ov45_02231490();
+
 extern int _022577C0;
+
+int ov45_02231490(void);
+void ov45_0222F78C(void);
+BOOL ov45_0222F74C(int lobbyResult);
+
 void ov45_0222E91C(void);
-// FUNCTION ov45_0222E91C: matching C (r2)
+// FUNCTION ov45_0222E91C: matching C (twin)
 #pragma force_active on
-void ov45_0222E91C(void)
+void ov45_0222E91C(void) {
+    GF_ASSERT(_022577C0 != 0);
 
-{
-    int iVar1;
-
-    if (_022577C0 == 0) {
-        GF_AssertFail();
-    }
     ov45_0222F78C();
-    ov45_02231490();
-    iVar1 = ov45_0222F74C();
-    if (iVar1 == 0) {
-        GF_AssertFail();
-    }
-    return;
+
+    int lobbyResult = ov45_02231490();
+    BOOL v1 = ov45_0222F74C(lobbyResult);
+
+    GF_ASSERT(v1 != 0);
 }
 #pragma force_active reset
