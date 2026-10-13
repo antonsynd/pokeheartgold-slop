@@ -2,6 +2,7 @@
 #pragma warning_errors off
 #include "global.h"
 #pragma thumb on
+#include "pokemon.h"
 typedef struct {
     u8 unk_00;
     u8 unk_01;
@@ -29,131 +30,6 @@ typedef union MailIconData {
     } asStruct;
     u16 asValue;
 } MailIconData;
-typedef struct Mail {
-    u32 trainerID;
-    u8 trainerGender;
-    u8 language;
-    u8 gameVersion;
-    u8 mailType;
-    charcode_t trainerName[7 + 1];
-    MailIconData iconData[3];
-    u16 platExclusiveFormIcons;
-    EasyChatSentence sentences[3];
-} Mail;
-typedef struct PokemonDataBlockA {
-    u16 species;
-    u16 heldItem;
-
-    u32 otID;
-    u32 exp;
-
-    u8 friendship;
-    u8 ability;
-    u8 markings;
-    u8 originLanguage;
-
-    u8 hpEV;
-    u8 atkEV;
-    u8 defEV;
-    u8 speedEV;
-    u8 spAtkEV;
-    u8 spDefEV;
-
-    u8 cool;
-    u8 beauty;
-    u8 cute;
-    u8 smart;
-    u8 tough;
-    u8 sheen;
-
-    u32 ribbonsDS1;
-} PokemonDataBlockA;
-typedef struct PokemonDataBlockB {
-    u16 moves[4];
-    u8 moveCurrentPPs[4];
-    u8 movePPUps[4];
-
-    u32 hpIV : 5;
-    u32 atkIV : 5;
-    u32 defIV : 5;
-    u32 speedIV : 5;
-    u32 spAtkIV : 5;
-    u32 spDefIV : 5;
-    u32 isEgg : 1;
-    u32 hasNickname : 1;
-
-    u32 ribbonsGBA;
-    u8 fatefulEncounter : 1;
-    u8 gender : 2;
-    u8 form : 5;
-    u8 unused1;
-    u16 unused2;
-
-    u16 EggLocation_PtHGSS;
-    u16 MetLocation_PtHGSS;
-} PokemonDataBlockB;
-typedef struct PokemonDataBlockC {
-    charcode_t nickname[10 + 1];
-
-    u8 unused;
-    u8 originGame;
-
-    u64 ribbonsDS2;
-} PokemonDataBlockC;
-typedef struct PokemonDataBlockD {
-    u16 otName[7 + 1];
-
-    u8 eggYear;
-    u8 eggMonth;
-    u8 eggDay;
-
-    u8 metYear;
-    u8 metMonth;
-    u8 metDay;
-
-    u16 EggLocation_DP;
-    u16 MetLocation_DP;
-
-    u8 pokerus;
-    u8 pokeball;
-    u8 metLevel : 7;
-    u8 otGender : 1;
-    u8 metTerrain;
-    u16 unused;
-} PokemonDataBlockD;
-typedef union {
-    PokemonDataBlockA blockA;
-    PokemonDataBlockB blockB;
-    PokemonDataBlockC blockC;
-    PokemonDataBlockD blockD;
-} PokemonDataBlock;
-typedef struct BoxPokemon {
-    u32 personality;
-    u16 partyDecrypted : 1;
-    u16 boxDecrypted : 1;
-    u16 checksumFailed : 1;
-    u16 unused : 13;
-    u16 checksum;
-    PokemonDataBlock dataBlocks[4];
-} BoxPokemon;
-typedef struct PartyPokemon {
-    u32 status;
-    u8 level;
-    u8 ballCapsuleID;
-    u16 hp;
-    u16 maxHP;
-    u16 attack;
-    u16 defense;
-    u16 speed;
-    u16 spAtk;
-    u16 spDef;
-    Mail mail;
-    BallCapsule ballCapsule;
-} PartyPokemon;
-typedef struct Pokemon {
-    BoxPokemon box;
-    PartyPokemon party;
-} Pokemon;
 enum PokemonSpriteAttribute {
     MON_SPRITE_X_CENTER,
     MON_SPRITE_Y_CENTER,
@@ -298,7 +174,6 @@ struct PokemonSprite {
     PokemonSpriteShadow shadowBackup;
     SpriteAnimFrame animFrames[10];
 };
-void Pokepic_SetAttr(PokemonSprite *monSprite, enum PokemonSpriteAttribute attribute, int value);
 typedef union {
     struct {
         u8 top;
@@ -323,14 +198,15 @@ typedef struct {
 void ov41_0224971C(UnkStruct_020298D8 *param0, int param1, int param2);
 void ov41_022497A0(UnkStruct_020298D8 *param0, int *param1, int *param2);
 void ov41_02249978(TouchScreenRect *rect, int param1, int param2, int param3, int param4);
+
 // FUNCTION ov41_0224971C: matching C (pt2)
 #pragma force_active on
 void ov41_0224971C(UnkStruct_020298D8 *param0, int param1, int param2) {
     int v0, v1;
 
     ov41_022497A0(param0, &v0, &v1);
-    Pokepic_SetAttr(param0->unk_00, MON_SPRITE_X_CENTER, param1);
-    Pokepic_SetAttr(param0->unk_00, MON_SPRITE_Y_CENTER, param2);
+    Pokepic_SetAttr((Pokepic *)param0->unk_00, MON_SPRITE_X_CENTER, param1);
+    Pokepic_SetAttr((Pokepic *)param0->unk_00, MON_SPRITE_Y_CENTER, param2);
 
     v1 /= 2;
     v0 /= 2;

@@ -2,7 +2,6 @@
 #pragma warning_errors off
 #include "global.h"
 #pragma thumb on
-void GF_AssertFail(void);
 typedef struct UnkStruct_ov66_0222DFF8_t UnkStruct_ov66_0222DFF8;
 typedef struct UnkStruct_ov70_0225C894_t UnkStruct_ov70_0225C894;
 typedef struct UnkStruct_ov70_0225CA20_t UnkStruct_ov70_0225CA20;
@@ -161,7 +160,9 @@ BOOL ov70_0226A820(UnkStruct_ov70_02269204 *param0, UnkStruct_ov70_02269800 *par
 BOOL ov70_0226A858(UnkStruct_ov70_02269204 *param0, UnkStruct_ov70_02269800 *param1);
 BOOL ov70_0226A930(UnkStruct_ov70_02269204 *param0, UnkStruct_ov70_02269800 *param1);
 BOOL ov70_0226A958(UnkStruct_ov70_02269204 *param0, UnkStruct_ov70_02269800 *param1);
+
 extern BOOL (*const ov49_0226A538[27])(UnkStruct_ov70_02269204 *, UnkStruct_ov70_02269800 *);
+
 // FUNCTION ov49_022658E4: matching C (pt4)
 #pragma force_active on
 void ov49_022658E4(UnkStruct_ov70_02269204 *param0, UnkStruct_ov70_02269800 *param1) {

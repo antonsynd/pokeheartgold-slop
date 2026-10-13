@@ -2,6 +2,8 @@
 #pragma warning_errors off
 #include "global.h"
 #pragma thumb on
+#include "heap.h"
+#include "sys_task.h"
 typedef struct SpriteAnimFrame {
     s8 spriteFrame;
     u8 frameDelay;
@@ -97,21 +99,11 @@ struct PokemonSprite {
     PokemonSpriteShadow shadowBackup;
     SpriteAnimFrame animFrames[10];
 };
-typedef struct SysTask SysTask;
 typedef struct SysTaskManager SysTaskManager;
 typedef void (*SysTaskFunc)(SysTask *, void *);
 enum TaskState {
     TASK_STATE_ACTIVE = 0,
     TASK_STATE_INACTIVE,
-};
-struct SysTask {
-    SysTaskManager *manager;
-    SysTask *prevTask;
-    SysTask *nextTask;
-    u32 priority;
-    void *param;
-    SysTaskFunc callback;
-    enum TaskState state;
 };
 struct SysTaskManager {
     u16 maxTasks;
@@ -176,6 +168,7 @@ struct PokemonAnim {
 };
 void sub_02017ED4(TransformData *transform, PokemonAnim *monAnim);
 void sub_02017BC8(u8 calcType, int *originalValue, int *currentValue, int *nextValue);
+
 // FUNCTION sub_02017ED4: matching C (pt2)
 #pragma force_active on
 void sub_02017ED4(TransformData *transform, PokemonAnim *monAnim) {

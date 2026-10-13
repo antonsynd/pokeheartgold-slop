@@ -146,6 +146,7 @@ struct UnkStruct_ov66_02234548_t {
 void ov45_02230ACC(UnkStruct_ov66_02234798 *param0);
 void ov45_02230CB0(UnkStruct_ov66_02234798 *param0);
 void ov45_02230DF4(UnkStruct_ov66_02234798 *param0);
+
 // FUNCTION ov45_02230680: matching C (pt2)
 #pragma force_active on
 void ov45_02230680(UnkStruct_ov66_02234548 *param0) {

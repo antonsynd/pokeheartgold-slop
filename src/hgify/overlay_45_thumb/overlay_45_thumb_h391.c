@@ -2,7 +2,8 @@
 #pragma warning_errors off
 #include "global.h"
 #pragma thumb on
-void GF_AssertFail(void);
+#include "save.h"
+#include "unk_0202C034.h"
 typedef enum PPW_LOBBY_RESULT {
     PPW_LOBBY_RESULT_SUCCESS,
     PPW_LOBBY_RESULT_ERROR_ALLOC,
@@ -172,25 +173,8 @@ typedef struct SaveDataState {
     u32 blockCounterBackup[SAVE_BLOCK_ID_MAX];
     volatile BOOL locked;
 } SaveDataState;
-typedef struct SaveData {
-    BOOL backupExists;
-    BOOL dataExists;
-    BOOL isNewGameData;
-    BOOL fullSaveRequired;
-    u32 loadCheckStatus;
-    SaveDataBody body;
-    u32 globalCounter;
-    u32 blockCounters[SAVE_BLOCK_ID_MAX];
-    u8 blockOffsets[SAVE_BLOCK_ID_MAX];
-    SavePageInfo pageInfo[SAVE_TABLE_ENTRY_MAX];
-    SaveBlockInfo blockInfo[SAVE_BLOCK_ID_MAX];
-    SaveDataState state;
-    int sectorSwitch;
-    u32 sectorCounter;
-} SaveData;
 void ov45_0222EA4C(s32 param0, s64 *param1);
 s32 ov45_0222EAD4(s32 param0);
-typedef struct WiFiList WiFiList;
 typedef struct WiFiHistory {
     u32 unused_00;
     u8 hasInteractedOutsideOfJapan;
@@ -198,7 +182,6 @@ typedef struct WiFiHistory {
     u8 region;
     u8 geonetCommunicationMap[4080];
 } WiFiHistory;
-void GF_AssertFail(void);
 typedef struct {
     u16 country;
     u8 region;
@@ -262,6 +245,7 @@ typedef struct {
 } UnkStruct_ov66_022336C4;
 s32 ov45_0222FB5C(const UnkStruct_ov66_022336C4 *param0, s32 param1, u32 param2);
 extern UnkStruct_ov66_022336C4 *_022577C0;
+
 // FUNCTION ov45_0222EAD4: matching C (pt4)
 #pragma force_active on
 s32 ov45_0222EAD4(s32 param0) {
