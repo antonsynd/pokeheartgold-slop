@@ -4,17 +4,19 @@
 #include "global.h"
 
 #include "gf_gfx_planes.h"
-#include "ghidra_compat.h"
 #include "unk_02009D48.h"
-typedef int code();
-void ov74_02231CFC(int param_1);
-// FUNCTION ov74_02231CFC: matching C (r2)
-#pragma force_active on
-void ov74_02231CFC(int param_1)
 
-{
-    CreateSpriteResourcesHeader(param_1 + 0x184, 0, 0, 0, 0, 0xffffffff, 0xffffffff, 0, 0, *(undefined4 *)(param_1 + 0x154), *(undefined4 *)(param_1 + 0x158), *(undefined4 *)(param_1 + 0x15c), *(undefined4 *)(param_1 + 0x160), 0, 0);
+typedef struct UnkStruct_ov74_02231CFC {
+    u8 unk_000[0x154];
+    GF_2DGfxResMan *unk_154[4];
+    u8 unk_164[0x20];
+    SpriteResourcesHeader unk_184;
+} UnkStruct_ov74_02231CFC;
+
+// FUNCTION ov74_02231CFC: matching C (twin)
+#pragma force_active on
+void ov74_02231CFC(UnkStruct_ov74_02231CFC *migrator) {
+    CreateSpriteResourcesHeader(&migrator->unk_184, 0, 0, 0, 0, -1, -1, 0, 0, migrator->unk_154[0], migrator->unk_154[1], migrator->unk_154[2], migrator->unk_154[3], NULL, NULL);
     GfGfx_EngineATogglePlanes(0x10, 1);
-    return;
 }
 #pragma force_active reset

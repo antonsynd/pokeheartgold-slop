@@ -4,18 +4,23 @@
 #include "global.h"
 
 #include "bg_window.h"
-#include "ghidra_compat.h"
-typedef int code();
-void ov08_022232AC(int param_1, int param_2, undefined4 param_3, undefined4 param_4);
-// FUNCTION ov08_022232AC: matching C (r4)
-#pragma force_active on
-void ov08_022232AC(int param_1, int param_2, undefined4 param_3, undefined4 param_4)
 
-{
-    if (param_2 == 2) {
-        BgTilemapRectChangePalette(*(undefined4 *)(param_1 + 4), 6, 2, 0x23, 0x1c, 4, *(unsigned char *)(param_1 + 0x114d) + '\b');
-        BgTilemapRectChangePalette(*(undefined4 *)(param_1 + 4), 6, 2, 0x28, 0x1c, 8, *(unsigned char *)(param_1 + 0x114d) + '\b');
+typedef struct {
+    u8 unk_00[4];
+    BgConfig *background;
+    u8 unk_08[0x114D - 0x08];
+    u8 currentBattlePocket;
+} UnkStruct_ov08_022232AC;
+
+void ov08_022232AC(UnkStruct_ov08_022232AC *battleBag, int screen);
+// FUNCTION ov08_022232AC: matching C (twin)
+#pragma force_active on
+void ov08_022232AC(UnkStruct_ov08_022232AC *battleBag, int screen) {
+    if (screen != 2) {
+        return;
     }
-    return;
+
+    BgTilemapRectChangePalette(battleBag->background, 6, 2, 35, 28, 4, 8 + battleBag->currentBattlePocket);
+    BgTilemapRectChangePalette(battleBag->background, 6, 2, 40, 28, 8, 8 + battleBag->currentBattlePocket);
 }
 #pragma force_active reset

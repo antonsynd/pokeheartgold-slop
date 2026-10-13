@@ -2,31 +2,38 @@
 #pragma warning_errors off
 #pragma thumb on
 #include "global.h"
-static inline s32 fxmul(s32 a, s32 b) {
-    return (s32)(((s64)a * b + 0x800LL) >> 12);
-}
-s32 ov92_02260870(s32 *param0);
-// FUNCTION ov92_02260870: matching C (r2)
-#pragma force_active on
-s32 ov92_02260870(s32 *param0) {
-    s32 v0;
-    s32 v1;
-    s32 v2;
 
-    if (param0[4] >= param0[5]) {
-        v0 = param0[5];
+typedef struct {
+    fx32 unk_00;
+    fx32 unk_04;
+    fx32 unk_08;
+    fx32 unk_0C;
+    int unk_10;
+    int unk_14;
+} UnkStruct_ov92_02260870;
+
+BOOL ov92_02260870(UnkStruct_ov92_02260870 *param0);
+// FUNCTION ov92_02260870: matching C (twin)
+#pragma force_active on
+BOOL ov92_02260870(UnkStruct_ov92_02260870 *param0) {
+    s32 v0;
+    BOOL v1;
+    fx32 v2;
+
+    if (param0->unk_10 >= param0->unk_14) {
+        v0 = param0->unk_14;
         v1 = 1;
     } else {
-        v0 = param0[4];
-        param0[4] = param0[4] + 1;
+        v0 = param0->unk_10;
+        param0->unk_10++;
         v1 = 0;
     }
 
-    v2 = fxmul(param0[3], v0 << 12);
-    v2 = FX_Div(v2, param0[5] << 12);
-    v2 += param0[1];
+    v2 = FX_MUL(param0->unk_0C, v0 << FX32_SHIFT);
+    v2 = FX_Div(v2, param0->unk_14 << FX32_SHIFT);
+    v2 += param0->unk_04;
 
-    param0[0] = v2;
+    param0->unk_00 = v2;
 
     return v1;
 }

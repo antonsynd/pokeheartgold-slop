@@ -4,27 +4,28 @@
 #include "global.h"
 
 #include "gf_gfx_loader.h"
-#include "ghidra_compat.h"
-// FUNCTION ov90_0225A65C: matching C (agent8)
-#pragma force_active on
-void ov90_0225A65C(void *param_1, int param_2, u32 param_3) {
-    int iVar1;
 
-    switch (param_2) {
+// FUNCTION ov90_0225A65C: matching C (twin)
+#pragma force_active on
+void ov90_0225A65C(void *param0, u32 param1, u32 param2) {
+    u32 v0;
+
+    switch (param1) {
     case 0:
-        iVar1 = 1;
+        v0 = 1;
         break;
     case 1:
-        iVar1 = 2;
+        v0 = 2;
         break;
     case 2:
-        iVar1 = 0;
+        v0 = 0;
         break;
     default:
-        iVar1 = 1;
+        v0 = 1;
         break;
     }
-    GfGfxLoader_GXLoadPalWithSrcOffsetFromOpenNarc(param_1, 5, 0, iVar1 * 0x20, 0xa0, 0x20, param_3);
-    GfGfxLoader_GXLoadPalWithSrcOffsetFromOpenNarc(param_1, 5, 4, iVar1 * 0x20, 0xa0, 0x20, param_3);
+
+    GfGfxLoader_GXLoadPalWithSrcOffsetFromOpenNarc(param0, 5, 0, v0 * 32, 5 * 32, 32, param2);
+    GfGfxLoader_GXLoadPalWithSrcOffsetFromOpenNarc(param0, 5, 4, v0 * 32, 5 * 32, 32, param2);
 }
 #pragma force_active reset

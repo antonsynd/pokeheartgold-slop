@@ -4,27 +4,32 @@
 #include "global.h"
 
 #include "font.h"
-#include "ghidra_compat.h"
 #include "message_format.h"
 #include "msgdata.h"
 #include "text.h"
-typedef void code(void);
-typedef struct S90 {
-    void *msg;
-    void *fmt;
-    void *str;
-    void *tmp;
-} S90;
-// FUNCTION ov90_022592C4: matching C (agent3)
+
+typedef struct {
+    MsgData *unk_00;
+    MessageFormat *unk_04;
+    String *unk_08;
+    String *unk_0C;
+} UnkStruct_ov90_022592C4;
+
+// FUNCTION ov90_022592C4: matching C (twin)
 #pragma force_active on
-void ov90_022592C4(S90 *p, int msgId, void *window, int param_4, unsigned char param_5) {
-    int x;
-    ReadMsgDataIntoString(p->msg, msgId, p->tmp);
-    StringExpandPlaceholders(p->fmt, p->str, p->tmp);
-    x = param_4 - FontID_String_GetWidth(0, p->str, 0);
-    if (x < 0) {
-        x = 0;
+void ov90_022592C4(UnkStruct_ov90_022592C4 *param0, u32 param1, Window *param2, int param3, u8 param4) {
+    s32 v0;
+
+    ReadMsgDataIntoString(param0->unk_00, param1, param0->unk_0C);
+    StringExpandPlaceholders(param0->unk_04, param0->unk_08, param0->unk_0C);
+
+    v0 = FontID_String_GetWidth(0, param0->unk_08, 0);
+    v0 = param3 - v0;
+
+    if (v0 < 0) {
+        v0 = 0;
     }
-    AddTextPrinterParameterizedWithColor(window, 0, p->str, x, param_5, 0xff, 0xf0e00, 0);
+
+    AddTextPrinterParameterizedWithColor(param2, 0, param0->unk_08, v0, param4, 0xff, MAKE_TEXT_COLOR(15, 14, 0), NULL);
 }
 #pragma force_active reset

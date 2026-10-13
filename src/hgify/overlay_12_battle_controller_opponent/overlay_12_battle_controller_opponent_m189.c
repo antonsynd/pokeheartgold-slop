@@ -3,30 +3,26 @@
 #pragma thumb on
 #include "global.h"
 
+#include "constants/heap.h"
+
 #include "battle/battle_system.h"
 
-#include "ghidra_compat.h"
 #include "pokemon.h"
-typedef void code(void);
-void ov12_02261B2C(undefined4 param_1, uint param_2, undefined4 param_3, undefined4 param_4, undefined4 param_5, short param_6, short param_7);
-// FUNCTION ov12_02261B2C: matching C (perm1)
+
+// FUNCTION ov12_02261B2C: matching C (twin)
 #pragma force_active on
-void ov12_02261B2C(undefined4 param_1, uint param_2, undefined4 param_3, undefined4 param_4, undefined4 param_5, short param_6, short param_7) {
-    undefined4 uVar1;
-    undefined4 uVar2;
-    undefined4 uVar3;
-    undefined4 uVar4;
-    undefined4 uVar5;
-    uVar5 = param_4;
-    uVar1 = BattleSystem_GetSpriteSystem(param_1);
-    uVar2 = BattleSystem_GetSpriteManager(param_1);
-    uVar3 = BattleSystem_GetPaletteData(param_1);
-    if (!(param_2 & 1)) {
-        uVar4 = 0;
+ManagedSprite *ov12_02261B2C(BattleSystem *battleSys, int side, int trainerClass, int battlerType, BOOL isLink, s16 x, s16 y) {
+    SpriteSystem *spriteSys = BattleSystem_GetSpriteSystem(battleSys);
+    SpriteManager *spriteMan = BattleSystem_GetSpriteManager(battleSys);
+    PaletteData *paletteData = BattleSystem_GetPaletteData(battleSys);
+    int face;
+
+    if (side & 1) {
+        face = 2;
     } else {
-        uVar4 = 2;
+        face = 0;
     }
-    sub_02070C24(uVar1, uVar2, uVar3, (int)param_6, (int)param_7, param_3, uVar4, param_5, param_4, 5);
-    return;
+
+    return sub_02070C24(spriteSys, spriteMan, paletteData, x, y, trainerClass, face, isLink, battlerType, HEAP_ID_BATTLE);
 }
 #pragma force_active reset

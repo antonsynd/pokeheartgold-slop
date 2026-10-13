@@ -3,30 +3,42 @@
 #pragma thumb on
 #include "global.h"
 
-#include "ghidra_compat.h"
 #include "sprite_system.h"
 #include "unk_02013534.h"
-typedef int code();
-void ov40_022420B4(int param_1, int param_2);
-// FUNCTION ov40_022420B4: matching C (r2)
+
+typedef struct UnkStruct_ov40_022420B4_Item {
+    u8 pad_00[8];
+    ManagedSprite *unk_08;
+    TextOBJ *unk_0C;
+    u8 pad_10[0x1C - 0x10];
+} UnkStruct_ov40_022420B4_Item;
+
+typedef struct UnkStruct_ov40_022420B4_Inner {
+    u8 pad_00[0x0C];
+    UnkStruct_ov40_022420B4_Item unk_0C[2];
+} UnkStruct_ov40_022420B4_Inner;
+
+typedef struct UnkStruct_ov40_022420B4 {
+    u8 pad_000[0x860];
+    UnkStruct_ov40_022420B4_Inner *unk_860;
+} UnkStruct_ov40_022420B4;
+
+// FUNCTION ov40_022420B4: matching C (twin)
 #pragma force_active on
-void ov40_022420B4(int param_1, int param_2)
+void ov40_022420B4(UnkStruct_ov40_022420B4 *param0, int param1) {
+    UnkStruct_ov40_022420B4_Inner *v0 = param0->unk_860;
 
-{
-    int iVar1;
-
-    iVar1 = *(int *)(param_1 + 0x860);
-    if (param_2 == 0) {
-        ManagedSprite_SetDrawFlag(*(undefined4 *)(iVar1 + 0x30), 1);
-        TextOBJ_SetSpritesDrawFlag(*(undefined4 *)(iVar1 + 0x34), 1);
-        ManagedSprite_SetPositionXY(*(undefined4 *)(iVar1 + 0x14), 0x20, 0xe8);
+    if (param1 == 0) {
+        ManagedSprite_SetDrawFlag(v0->unk_0C[1].unk_08, 1);
+        TextOBJ_SetSpritesDrawFlag(v0->unk_0C[1].unk_0C, 1);
+        ManagedSprite_SetPositionXY(v0->unk_0C[0].unk_08, 32, 232);
     } else {
-        ManagedSprite_SetDrawFlag(*(undefined4 *)(iVar1 + 0x30), 0);
-        TextOBJ_SetSpritesDrawFlag(*(undefined4 *)(iVar1 + 0x34), 0);
-        ManagedSprite_SetPositionXY(*(undefined4 *)(iVar1 + 0x14), 0x50, 0xe8);
+        ManagedSprite_SetDrawFlag(v0->unk_0C[1].unk_08, 0);
+        TextOBJ_SetSpritesDrawFlag(v0->unk_0C[1].unk_0C, 0);
+        ManagedSprite_SetPositionXY(v0->unk_0C[0].unk_08, 80, 232);
     }
-    sub_020136B4(*(undefined4 *)(iVar1 + 0x18), 0x24, 0xfffffff8);
-    sub_020136B4(*(undefined4 *)(iVar1 + 0x34), 0x24, 0xfffffff8);
-    return;
+
+    sub_020136B4(v0->unk_0C[0].unk_0C, 36, -8);
+    sub_020136B4(v0->unk_0C[1].unk_0C, 36, -8);
 }
 #pragma force_active reset

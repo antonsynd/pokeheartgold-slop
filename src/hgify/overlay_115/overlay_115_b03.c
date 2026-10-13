@@ -3,32 +3,30 @@
 #pragma thumb on
 #include "global.h"
 
-#include "ghidra_compat.h"
 #include "message_format.h"
 #include "msgdata.h"
 #include "pm_string.h"
-typedef int code();
-undefined4 ov115_0225F158(undefined4 param_1, undefined4 param_2);
-// FUNCTION ov115_0225F158: matching C (r2)
+
+// FUNCTION ov115_0225F158: matching C (twin)
 #pragma force_active on
-undefined4 ov115_0225F158(undefined4 param_1, undefined4 param_2)
+String *ov115_0225F158(u32 trainerID, enum HeapID heapID) {
+    MsgData *msgData;
+    MessageFormat *msgFormat;
+    String *result;
+    String *message;
 
-{
-    undefined4 uVar1;
-    undefined4 uVar2;
-    undefined4 uVar3;
-    undefined4 uVar4;
+    msgData = NewMsgDataFromNarc(1, 0x1b, 0xbd, heapID);
+    msgFormat = MessageFormat_New(heapID);
+    result = String_New(0x80, heapID);
+    message = String_New(0x80, heapID);
 
-    uVar1 = NewMsgDataFromNarc(1, 0x1b, 0xbd, param_2);
-    uVar2 = MessageFormat_New(param_2);
-    uVar3 = String_New(0x80, param_2);
-    uVar4 = String_New(0x80, param_2);
-    ReadMsgDataIntoString(uVar1, 0, uVar4);
-    BufferTrainerName(uVar2, 0, param_1);
-    StringExpandPlaceholders(uVar2, uVar3, uVar4);
-    DestroyMsgData(uVar1);
-    MessageFormat_Delete(uVar2);
-    String_Delete(uVar4);
-    return uVar3;
+    ReadMsgDataIntoString(msgData, 0, message);
+    BufferTrainerName(msgFormat, 0, trainerID);
+    StringExpandPlaceholders(msgFormat, result, message);
+
+    DestroyMsgData(msgData);
+    MessageFormat_Delete(msgFormat);
+    String_Delete(message);
+    return result;
 }
 #pragma force_active reset

@@ -5,35 +5,46 @@
 #include "bag.h"
 #include "sys_task.h"
 #include "systask_environment.h"
-void ov05_0221BA70(void);
+
 #pragma thumb on
-#include "ghidra_compat.h"
-typedef void code(void);
-undefined4 sub_020304B4(void);
-void ov05_0221BA00(int param_1, undefined4 param_2, undefined4 param_3, undefined4 param_4);
-// FUNCTION ov05_0221BA00: matching C (r3)
+
+typedef struct UnkStruct_ov05_0221BA00_Dto {
+    u8 unk_000[0x1C0];
+    SaveData *saveData;
+} UnkStruct_ov05_0221BA00_Dto;
+
+typedef struct UnkStruct_ov05_0221BA00_Intro {
+    UnkStruct_ov05_0221BA00_Dto *dto;
+    u8 unk_04[0x20];
+    enum HeapID heapID;
+} UnkStruct_ov05_0221BA00_Intro;
+
+typedef struct UnkStruct_ov05_0221BA00 {
+    UnkStruct_ov05_0221BA00_Intro *trainerIntroData;
+    u8 unk_04[0xB7F - 0x04];
+    u8 unk_B7F;
+    u8 unk_B80[0xBC8 - 0xB80];
+    int unk_BC8;
+    u8 unk_BCC[0xBD4 - 0xBCC];
+} UnkStruct_ov05_0221BA00;
+
+void ov05_0221BA70(SysTask *task, void *data);
+int sub_020304B4(void);
+
+// FUNCTION ov05_0221BA00: matching C (twin)
 #pragma force_active on
-void ov05_0221BA00(int param_1, undefined4 param_2, undefined4 param_3, undefined4 param_4)
+void ov05_0221BA00(UnkStruct_ov05_0221BA00_Intro *trainerIntroData) {
+    UnkStruct_ov05_0221BA00 *v0 = SysTask_GetData(CreateSysTaskAndEnvironment(ov05_0221BA70, sizeof(UnkStruct_ov05_0221BA00), 100, trainerIntroData->heapID));
+    memset(v0, 0, sizeof(UnkStruct_ov05_0221BA00));
 
-{
-    int *piVar1;
-    int iVar2;
-    Bag *uVar3;
+    v0->trainerIntroData = trainerIntroData;
+    v0->unk_B7F = 0;
+    v0->unk_BC8 = sub_020304B4();
 
-    SysTask *task;
-
-    task = CreateSysTaskAndEnvironment(((unsigned int)ov05_0221BA70), 0xbd4, 100, *(undefined4 *)(param_1 + 0x24));
-    piVar1 = (int *)SysTask_GetData(task);
-    memset(piVar1, 0, 0xbd4);
-    *piVar1 = param_1;
-    *(undefined1 *)((int)piVar1 + 0xb7f) = 0;
-    iVar2 = sub_020304B4();
-    piVar1[0x2f2] = iVar2;
-    if (((piVar1[0x2f2] == 1) && (*(int *)*piVar1 != 0)) && (*(int *)(*(int *)*piVar1 + 0x1c0) != 0)) {
-        uVar3 = Save_Bag_Get((SaveData *)*(int *)(*(int *)*piVar1 + 0x1c0));
-        iVar2 = Bag_HasItem(uVar3, 0x1d1, 1, *(undefined4 *)(param_1 + 0x24));
-        piVar1[0x2f2] = iVar2;
+    if (v0->unk_BC8 == 1) {
+        if ((v0->trainerIntroData->dto != NULL) && (v0->trainerIntroData->dto->saveData != NULL)) {
+            v0->unk_BC8 = Bag_HasItem(Save_Bag_Get(v0->trainerIntroData->dto->saveData), 0x1D1, 1, trainerIntroData->heapID);
+        }
     }
-    return;
 }
 #pragma force_active reset

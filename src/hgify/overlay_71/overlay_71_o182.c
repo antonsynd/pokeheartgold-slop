@@ -5,25 +5,43 @@
 
 #include "heap.h"
 #include "sys_task_api.h"
-void ov71_022476B4(void *model, void *position);
-void ov71_0224B028(SysTask *task, void *data);
-void ov71_0224AFD4(u8 *phase, void **task);
-// FUNCTION ov71_0224AFD4: matching C (r2)
-#pragma force_active on
-void ov71_0224AFD4(u8 *phase, void **task) {
-    s32 *state = Heap_Alloc(0x39, 0x1c);
 
-    if (state != 0) {
-        s32 delta;
-        state[0] = (s32)task;
-        state[2] = *(s32 *)(phase + 0x24);
-        ov71_022476B4((void *)state[2], &state[3]);
-        delta = 0x32000 - state[4];
-        state[6] = delta / 16;
-        state[1] = 0x10;
-        *task = SysTask_CreateOnMainQueue(ov71_0224B028, state, 0);
-        if (*task == 0) {
-            Heap_Free(state);
+typedef struct UnkStruct_ov71_0224AFD4_Phase {
+    u8 unk0[0x24];
+    void *model;
+} UnkStruct_ov71_0224AFD4_Phase;
+
+typedef struct UnkStruct_ov71_0224AFD4 {
+    SysTask **taskHandle;
+    int framesRemaining;
+    void *model;
+    VecFx32 position;
+    int yStep;
+} UnkStruct_ov71_0224AFD4;
+
+void ov71_022476B4(void *model, VecFx32 *position);
+void ov71_0224B028(SysTask *task, void *param);
+
+#define MODEL_SLIDE_TARGET_Y (0x32 << FX32_SHIFT)
+#define MODEL_SLIDE_DURATION 16
+
+// FUNCTION ov71_0224AFD4: matching C (twin)
+#pragma force_active on
+void ov71_0224AFD4(UnkStruct_ov71_0224AFD4_Phase *tprPhase, SysTask **task) {
+    UnkStruct_ov71_0224AFD4 *msState = Heap_Alloc(0x39, sizeof(UnkStruct_ov71_0224AFD4));
+
+    if (msState) {
+        msState->taskHandle = task;
+        msState->model = tprPhase->model;
+
+        ov71_022476B4(msState->model, &msState->position);
+
+        msState->yStep = (MODEL_SLIDE_TARGET_Y - msState->position.y) / MODEL_SLIDE_DURATION;
+        msState->framesRemaining = MODEL_SLIDE_DURATION;
+        *task = SysTask_CreateOnMainQueue(ov71_0224B028, msState, 0);
+
+        if (*task == NULL) {
+            Heap_Free(msState);
         }
     }
 }

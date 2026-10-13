@@ -3,32 +3,39 @@
 #pragma thumb on
 #include "global.h"
 
-#include "ghidra_compat.h"
+#include "nnsys/fnd/expheap.h"
+
 #include "unk_02037C94.h"
-typedef void code(void);
-extern undefined4 _0221A680;
-int ov00_021E65D4(undefined4 param_1, undefined4 param_2, undefined4 param_3);
-// FUNCTION ov00_021E65D4: matching C (r2)
+
+typedef struct UnkStruct_ov00_021E65D4 {
+    u8 pad_000[0xF94];
+    NNSFndHeapHandle heap1;
+    void *heap2AllocPtr;
+    NNSFndHeapHandle heap2;
+} UnkStruct_ov00_021E65D4;
+
+extern UnkStruct_ov00_021E65D4 *_0221A680;
+
+void *ov00_021E65D4(int allocType, u32 size, int alignment);
+// FUNCTION ov00_021E65D4: matching C (twin)
 #pragma force_active on
-int ov00_021E65D4(undefined4 param_1, undefined4 param_2, undefined4 param_3)
+void *ov00_021E65D4(int allocType, u32 size, int alignment) {
+    OSIntrMode intrMode = OS_DisableInterrupts();
+    void *ptr = NNS_FndAllocFromExpHeapEx(_0221A680->heap1, size, alignment);
 
-{
-    undefined4 uVar1;
-    int iVar2;
-
-    uVar1 = OS_DisableInterrupts();
-    iVar2 = NNS_FndAllocFromExpHeapEx(*(undefined4 *)(_0221A680 + 0xf94), param_2, param_3);
-    if (iVar2 == 0) {
-        if (*(int *)(_0221A680 + 0xf98) != 0) {
-            iVar2 = NNS_FndAllocFromExpHeapEx(*(undefined4 *)(_0221A680 + 0xf9c), param_2, param_3);
-        }
+    if (ptr == NULL && _0221A680->heap2AllocPtr != NULL) {
+        ptr = NNS_FndAllocFromExpHeapEx(_0221A680->heap2, size, alignment);
     }
-    if (iVar2 == 0) {
+
+    if (ptr == NULL) {
         sub_02039AD8(1);
-        OS_RestoreInterrupts(uVar1);
-        return 0;
+        OS_RestoreInterrupts(intrMode);
+
+        return NULL;
     }
-    OS_RestoreInterrupts(uVar1);
-    return iVar2;
+
+    OS_RestoreInterrupts(intrMode);
+
+    return ptr;
 }
 #pragma force_active reset

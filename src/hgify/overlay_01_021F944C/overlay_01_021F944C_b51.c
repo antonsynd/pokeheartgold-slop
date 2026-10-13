@@ -3,8 +3,6 @@
 #pragma thumb on
 #include "global.h"
 
-#include "ghidra_compat.h"
-typedef void code(void);
 typedef struct Obj01 {
     u8 pad0[0xfc];
     void *w;
@@ -15,23 +13,25 @@ int ov01_021FA094(void *, int, int);
 void ov01_021FA1E4(Obj01 *);
 int ov01_021FA224(Obj01 *);
 int *ov01_021FA204(Obj01 *);
-// FUNCTION ov01_021F9CF8: matching C (agent3)
+// FUNCTION ov01_021F9CF8: matching C (twin)
 #pragma force_active on
-void ov01_021F9CF8(void *param_1, Obj01 *param_2) {
-    int iVar1;
-    int *piVar3;
+void ov01_021F9CF8(void *param0, Obj01 *param1) {
+    int v0;
+    int *v1;
 
-    ov01_021FA1E4(param_2);
-    piVar3 = ov01_021FA204(param_2);
-    piVar3 += ov01_021FA21C(param_2);
-    iVar1 = ov01_021FA224(param_2);
+    ov01_021FA1E4(param1);
+    v1 = ov01_021FA204(param1);
+    v1 = &v1[ov01_021FA21C(param1)];
+    v0 = ov01_021FA224(param1);
+
     do {
-        if (*piVar3 != 0xff && ov01_021FA094(param_1, *piVar3, 0) == 0) {
-            ov01_021FC588(param_2->w, *piVar3);
-            *piVar3 = 0xff;
+        if (*v1 != 0xff && ov01_021FA094(param0, *v1, 0) == 0) {
+            ov01_021FC588(param1->w, *v1);
+            *v1 = 0xff;
         }
-        piVar3++;
-        iVar1--;
-    } while (iVar1 != 0);
+
+        v1++;
+        v0--;
+    } while (v0);
 }
 #pragma force_active reset

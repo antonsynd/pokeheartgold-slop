@@ -4,7 +4,7 @@
 #include "global.h"
 typedef struct UnkStruct_ov41_02249C7C_out {
     s32 unk_00; // 0x00
-    s32 unk_04; // 0x04
+    s32 narcID; // 0x04
     s32 unk_08; // 0x08
     s32 unk_0C; // 0x0C
     s32 unk_10; // 0x10
@@ -17,7 +17,7 @@ typedef struct UnkStruct_ov41_02249C7C_out {
 } UnkStruct_ov41_02249C7C_out;
 typedef struct UnkStruct_ov41_02249C7C_in {
     s32 unk_00; // 0x00
-    s32 unk_04; // 0x04
+    s32 narcID; // 0x04
     s32 unk_08; // 0x08
     s32 unk_0C; // 0x0C
     s32 unk_10; // 0x10
@@ -30,7 +30,7 @@ typedef struct UnkStruct_ov41_02249C7C_in {
 } UnkStruct_ov41_02249C7C_in;
 void ov41_02249E60(UnkStruct_ov41_02249C7C_in *a, s32 *b, s32 *c);
 void ov41_02249C7C(UnkStruct_ov41_02249C7C_out *param0, UnkStruct_ov41_02249C7C_in *param1);
-// FUNCTION ov41_02249C7C: matching C (r2)
+// FUNCTION ov41_02249C7C: matching C (twin)
 #pragma force_active on
 void ov41_02249C7C(UnkStruct_ov41_02249C7C_out *param0, UnkStruct_ov41_02249C7C_in *param1) {
     param0->unk_00 = param1->unk_00;
@@ -40,7 +40,7 @@ void ov41_02249C7C(UnkStruct_ov41_02249C7C_out *param0, UnkStruct_ov41_02249C7C_
     param0->unk_20 = param1->unk_24;
     param0->unk_24 = param1->unk_20;
     param0->unk_28 = param1->unk_28;
-    param0->unk_04 = param1->unk_04;
+    param0->narcID = param1->narcID;
     param0->unk_08 = param1->unk_10;
 
     ov41_02249E60(param1, &param0->unk_14, &param0->unk_18);

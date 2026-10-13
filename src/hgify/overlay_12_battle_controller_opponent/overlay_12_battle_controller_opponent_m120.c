@@ -3,30 +3,46 @@
 #pragma thumb on
 #include "global.h"
 
-#include "ghidra_compat.h"
+#include "battle/battle_system.h"
+
 #include "unk_02005D10.h"
-#define NULL ((void *)0)
-void ov12_0226430C(void *, int, int);
-// FUNCTION ov12_0225B3D4: matching C (agent5)
+
+typedef struct UnkStruct_ov12_0225B3D4 {
+    u8 pad_00[0x194];
+    u8 battler;
+    u8 battlerType;
+} UnkStruct_ov12_0225B3D4;
+
+typedef struct MoveHitSoundMessage {
+    u8 command;
+    u8 effectiveness;
+} MoveHitSoundMessage;
+
+void ov12_0226430C(BattleSystem *battleSys, int battler, int command);
+
+// FUNCTION ov12_0225B3D4: matching C (twin)
 #pragma force_active on
-void ov12_0225B3D4(void *param_1, u8 *param_2, u8 *param_3) {
-    int v;
-    if (param_2[0x195] & 1) {
-        v = 0x75;
+void ov12_0225B3D4(BattleSystem *battleSys, UnkStruct_ov12_0225B3D4 *battlerData, MoveHitSoundMessage *message) {
+    int pan;
+
+    if (battlerData->battlerType & 1) {
+        pan = 0x75;
     } else {
-        v = -0x75;
+        pan = -0x75;
     }
-    switch (param_3[1]) {
+
+    switch (message->effectiveness) {
     case 0:
-        sub_0200602C(0x6fe, v);
+        sub_0200602C(SEQ_SE_DP_KOUKA_M, pan);
         break;
     case 2:
-        sub_0200602C(0x6fc, v);
+        sub_0200602C(SEQ_SE_DP_KOUKA_H, pan);
         break;
     case 1:
-        sub_0200602C(0x6fd, v);
+        sub_0200602C(SEQ_SE_DP_KOUKA_L, pan);
         break;
     }
-    ov12_0226430C(param_1, param_2[0x194], param_3[0]);
+
+    ov12_0226430C(battleSys, battlerData->battler, message->command);
 }
 #pragma force_active reset

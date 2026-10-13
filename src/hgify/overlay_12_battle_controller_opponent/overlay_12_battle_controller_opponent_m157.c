@@ -6,36 +6,43 @@
 #include "battle/battle_hp_bar.h"
 
 #include "sys_task_api.h"
-typedef struct UnkStruct_ov12_0225FFDC {
-    u8 unk_00;
-    u8 filler_01[0xB];
-    void *unk_0C;
-    int unk_10;
-    u8 filler_14[0x10];
-    u8 unk_24;
-    u8 filler_25[0x7];
+
+typedef struct {
+    u8 state;
+    u8 unk_01[0xB];
+    BattleSystem *battleSys;
+    SysTask *task_10;
+    u8 unk_14[0x10];
+    u8 battler;
+    u8 unk_25[0x7];
     int unk_2C;
-    int unk_30;
-    u8 filler_34[0x18];
-    u8 unk_4C;
+    int damage;
+    u8 unk_34[0x18];
+    u8 command;
 } UnkStruct_ov12_0225FFDC;
-void ov12_0226430C(void *param0, u8 param1, u8 param2);
-// FUNCTION ov12_0225FFDC: matching C (agent8)
+
+void ov12_0226430C(BattleSystem *battleSys, u8 battler, u8 command);
+// FUNCTION ov12_0225FFDC: matching C (twin)
 #pragma force_active on
-void ov12_0225FFDC(SysTask *task, UnkStruct_ov12_0225FFDC *param1) {
-    switch (param1->unk_00) {
+void ov12_0225FFDC(SysTask *task, void *data) {
+    UnkStruct_ov12_0225FFDC *healthbox = data;
+    int result;
+
+    switch (healthbox->state) {
     case 0:
-        ov12_02264DCC((BattleHpBar *)param1, param1->unk_30);
-        param1->unk_00++;
+        ov12_02264DCC((BattleHpBar *)healthbox, healthbox->damage);
+        healthbox->state++;
         // fall through
     case 1:
-        if (ov12_02264E00((BattleHpBar *)param1) == -1) {
-            param1->unk_00++;
+        result = ov12_02264E00((BattleHpBar *)healthbox);
+
+        if (result == -1) {
+            healthbox->state++;
         }
         break;
     default:
-        ov12_0226430C(param1->unk_0C, param1->unk_24, param1->unk_4C);
-        param1->unk_10 = 0;
+        ov12_0226430C(healthbox->battleSys, healthbox->battler, healthbox->command);
+        healthbox->task_10 = NULL;
         SysTask_Destroy(task);
         break;
     }

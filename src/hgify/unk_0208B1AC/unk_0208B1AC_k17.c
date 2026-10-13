@@ -4,23 +4,28 @@
 #include "global.h"
 
 #include "sprite_system.h"
-typedef struct Work {
-    u8 pad[0x438];
-    void *sprites[4];
-} Work;
-void sub_0208BAD8(Work *param_1, u8 *param_2, s16 *param_3, s16 *param_4);
-// FUNCTION sub_0208BAD8: matching C (agent2)
-#pragma force_active on
-void sub_0208BAD8(Work *param_1, u8 *param_2, s16 *param_3, s16 *param_4) {
-    s16 target;
-    s16 i;
 
-    target = *param_2 * 32 + 16;
-    for (i = 0; i < 4; i++) {
-        Sprite_GetPositionXY(param_1->sprites[i], param_3, param_4);
-        if (target == *param_4) {
-            *param_2 = i;
-            return;
+#define MOVE_TYPE_ICON_BASE_Y               16
+#define PIXELS_BETWEEN_MOVES                32
+#define LEARNED_MOVES_MAX                   4
+#define SUMMARY_MOVE_TYPE_ICON_SPRITE_START 0
+
+typedef struct UnkStruct_sub_0208BAD8 {
+    u8 unk0[0x438];
+    void *sprites[LEARNED_MOVES_MAX];
+} UnkStruct_sub_0208BAD8;
+
+// FUNCTION sub_0208BAD8: matching C (twin)
+#pragma force_active on
+void sub_0208BAD8(UnkStruct_sub_0208BAD8 *summaryScreen, u8 *moveIndex, s16 *outX, s16 *outY) {
+    s16 newYPos = MOVE_TYPE_ICON_BASE_Y + *moveIndex * PIXELS_BETWEEN_MOVES;
+
+    for (s16 i = 0; i < LEARNED_MOVES_MAX; i++) {
+        Sprite_GetPositionXY(summaryScreen->sprites[SUMMARY_MOVE_TYPE_ICON_SPRITE_START + i], outX, outY);
+
+        if (newYPos == *outY) {
+            *moveIndex = i;
+            break;
         }
     }
 }

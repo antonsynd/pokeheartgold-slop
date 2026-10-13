@@ -2,23 +2,27 @@
 #pragma warning_errors off
 #pragma thumb on
 #include "global.h"
+
 extern fx32 FX_Modf(fx32 x, fx32 *fractionalPart);
 s16 ov07_02222674(s16 baseY, int height, fx32 scaleY);
-// FUNCTION ov07_02222674: matching C (r0)
+// FUNCTION ov07_02222674: matching C (twin)
 #pragma force_active on
 s16 ov07_02222674(s16 baseY, int height, fx32 scaleY) {
+    // MON_SPRITE_FRAME_HEIGHT is 0x50; FX32_ONE is 1 << FX32_SHIFT; FX32_HALF is 0x800
+    fx32 availableHeight = (0x50 - (height * 2)) * (1 << FX32_SHIFT);
+    // base scale (reference scale) is 1.0
+    fx32 baseScale = 0x100000;
+    fx32 scaledAvailableHeight = FX_Mul(availableHeight, scaleY);
+    fx32 relativeScaledHeight = FX_Div(scaledAvailableHeight, baseScale);
+    fx32 scaledHeightDiff = availableHeight - relativeScaledHeight;
     fx32 fractionalPart;
-    fx32 availableHeight = (0x50 - height * 2) << 12;
-    fx32 scaled = FX_Mul(availableHeight, scaleY);
-    fx32 relative = FX_Div(scaled, 0x100000);
-    fx32 diff = availableHeight - relative;
-    fx32 integerPart = FX_Modf(diff, &fractionalPart);
+    fx32 integerPart = FX_Modf(scaledHeightDiff, &fractionalPart);
 
-    if (integerPart != 0) {
+    if (integerPart) {
         integerPart += 0x800;
     }
 
-    diff = fractionalPart + integerPart;
-    return (s16)((diff >> 12) / 2);
+    scaledHeightDiff = fractionalPart + integerPart;
+    return (s16)((scaledHeightDiff >> FX32_SHIFT) / 2);
 }
 #pragma force_active reset

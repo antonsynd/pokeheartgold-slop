@@ -4,31 +4,40 @@
 #include "global.h"
 
 #include "heap.h"
+#include "options.h"
 #include "pm_string.h"
-// FUNCTION sub_020853B4: matching C (agent8)
-#pragma force_active on
-int *sub_020853B4(int param_1, int param_2, int *param_3, int param_4, int param_5, int param_6) {
-    int i;
-    int *piVar1;
-    int *piVar3;
-    int *piVar5;
 
-    piVar1 = (int *)Heap_Alloc(param_1, 0x34);
-    *piVar1 = param_2;
-    piVar1[7] = (int)String_New(param_2 + 1, param_1);
-    piVar1[8] = param_4;
-    i = 0;
-    piVar3 = param_3;
-    piVar5 = piVar1;
-    do {
-        i = i + 1;
-        piVar5[1] = *piVar3;
-        piVar3 = piVar3 + 1;
-        piVar5 = piVar5 + 1;
-    } while (i < 4);
-    (piVar1 + i)[1] = param_3[i - 1];
-    piVar1[0xb] = param_5;
-    piVar1[0xc] = param_6;
-    return piVar1;
+typedef struct UnkStruct_sub_020853B4 {
+    int unk_00;
+    int unk_04[5];
+    u8 unk_18[0x1c - 0x18];
+    String *unk_1C;
+    Options *options;
+    u8 unk_24[0x2c - 0x24];
+    u32 unk_2C;
+    u32 unk_30;
+} UnkStruct_sub_020853B4;
+
+// FUNCTION sub_020853B4: matching C (twin)
+#pragma force_active on
+UnkStruct_sub_020853B4 *sub_020853B4(enum HeapID heapID, int param1, int param2[], Options *options, u32 param4, u32 param5) {
+    int i;
+    UnkStruct_sub_020853B4 *v1 = NULL;
+
+    v1 = Heap_Alloc(heapID, sizeof(UnkStruct_sub_020853B4));
+
+    v1->unk_00 = param1;
+    v1->unk_1C = String_New(param1 + 1, heapID);
+    v1->options = options;
+
+    for (i = 0; i < 4; i++) {
+        v1->unk_04[i] = param2[i];
+    }
+
+    v1->unk_04[i] = param2[i - 1];
+    v1->unk_2C = param4;
+    v1->unk_30 = param5;
+
+    return v1;
 }
 #pragma force_active reset

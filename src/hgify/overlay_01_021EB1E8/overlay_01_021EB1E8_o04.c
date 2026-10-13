@@ -3,47 +3,52 @@
 #pragma thumb on
 #include "global.h"
 
+#include "assert.h"
 #include "error_handling.h"
-#include "ghidra_compat.h"
 #include "sys_task_api.h"
-typedef void code(void);
-#define TRUE  1
-#define FALSE 0
-typedef struct WeatherManager {
-    int unk0;
-    int cur;
-    int next;
-    int state;
-    int pending;
-    void *task;
-} WeatherManager;
-BOOL ov01_021EB4B4(int, int);
-void ov01_021EB320(SysTask *, void *);
-void ov01_021EB3F0(SysTask *, void *);
-// FUNCTION WeatherManager_ChangeWeather: matching C (agent4)
+
+typedef struct UnkStruct_WeatherManager_ChangeWeather {
+    int unk_00;
+    int unk_04;
+    int unk_08;
+    int unk_0C;
+    int unk_10;
+    SysTask *unk_14;
+} UnkStruct_WeatherManager_ChangeWeather;
+
+int ov01_021EB4B4(int a0, int a1);
+void ov01_021EB320(SysTask *task, void *data);
+void ov01_021EB3F0(SysTask *task, void *data);
+
+// FUNCTION WeatherManager_ChangeWeather: matching C (twin)
 #pragma force_active on
-BOOL WeatherManager_ChangeWeather(WeatherManager *mgr, int weather) {
-    if (weather >= 14) {
-        GF_AssertFail();
-    }
-    if (mgr->state != 6) {
-        mgr->pending = weather;
+BOOL WeatherManager_ChangeWeather(UnkStruct_WeatherManager_ChangeWeather *param0, int param1) {
+    int v0;
+
+    GF_ASSERT(param1 < 14);
+
+    if (param0->unk_0C != 6) {
+        param0->unk_10 = param1;
         return TRUE;
     }
-    if (mgr->cur == weather) {
+
+    if (param0->unk_04 == param1) {
         return TRUE;
     }
-    if (mgr->task != 0) {
-        GF_AssertFail();
-    }
-    mgr->next = weather;
-    if (ov01_021EB4B4(mgr->cur, weather) == 0) {
-        mgr->state = 0;
-        mgr->task = SysTask_CreateOnMainQueue(ov01_021EB320, mgr, 0);
+
+    GF_ASSERT(param0->unk_14 == NULL);
+    param0->unk_08 = param1;
+
+    v0 = ov01_021EB4B4(param0->unk_04, param0->unk_08);
+
+    if (v0 == 0) {
+        param0->unk_0C = 0;
+        param0->unk_14 = SysTask_CreateOnMainQueue(ov01_021EB320, param0, 0);
     } else {
-        mgr->state = 0;
-        mgr->task = SysTask_CreateOnMainQueue(ov01_021EB3F0, mgr, 0);
+        param0->unk_0C = 0;
+        param0->unk_14 = SysTask_CreateOnMainQueue(ov01_021EB3F0, param0, 0);
     }
+
     return TRUE;
 }
 #pragma force_active reset

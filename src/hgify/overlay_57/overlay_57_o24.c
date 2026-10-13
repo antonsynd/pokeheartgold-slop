@@ -3,31 +3,46 @@
 #pragma thumb on
 #include "global.h"
 
-#include "ghidra_compat.h"
 #include "sprite_system.h"
 #include "unk_02091054.h"
-typedef int code();
-undefined4 ov57_02237E90();
-void ov57_02238438(int param_1, int param_2, undefined4 param_3, undefined4 param_4);
-// FUNCTION ov57_02238438: matching C (r4)
+
+typedef struct UnkStruct_ov57_02238438_Seal {
+    u32 unk_00;
+    u8 type;
+    u8 shouldRender;
+    u8 unk_06;
+    u8 unk_07;
+    ManagedSprite *sprite;
+    void *touchScreenRect;
+} UnkStruct_ov57_02238438_Seal;
+
+typedef struct UnkStruct_ov57_02238438 {
+    u8 unk_00[0xe0];
+    SpriteManager *spriteManager;
+    u8 unk_e4[0x34c - 0xe4];
+    UnkStruct_ov57_02238438_Seal sealRenderInfo[8];
+} UnkStruct_ov57_02238438;
+
+u32 ov57_02237E90(void *param0, int param1, int param2);
+void ov57_02238438(UnkStruct_ov57_02238438 *appMan, int sealIndex);
+// FUNCTION ov57_02238438: matching C (twin)
 #pragma force_active on
-void ov57_02238438(int param_1, int param_2, undefined4 param_3, undefined4 param_4)
+void ov57_02238438(UnkStruct_ov57_02238438 *appMan, int sealIndex) {
+    int dummy;
+    int objID;
 
-{
-    int iVar1;
-    int iVar2;
+    dummy = sub_02091054(appMan->sealRenderInfo[sealIndex].type);
+    objID = sealIndex + 20000;
 
-    iVar2 = param_2 * 0x10;
-    sub_02091054(*(undefined1 *)(param_1 + 0x350 + iVar2));
-    SpriteManager_UnloadCharObjById(*(undefined4 *)(param_1 + 0xe0), param_2 + 20000);
-    Sprite_DeleteAndFreeResources(*(undefined4 *)(param_1 + 0x354 + iVar2));
-    *(undefined4 *)(param_1 + 0x354 + iVar2) = 0;
-    iVar1 = param_1 + iVar2;
-    *(undefined4 *)(iVar1 + 0x34c) = 0;
-    *(undefined1 *)(param_1 + 0x350 + iVar2) = 0;
-    *(undefined1 *)(iVar1 + 0x351) = 0;
-    *(undefined1 *)(iVar1 + 0x352) = 0;
-    ov57_02237E90(*(undefined4 *)(iVar1 + 0x358), 0, 0);
-    return;
+    SpriteManager_UnloadCharObjById(appMan->spriteManager, objID);
+    Sprite_DeleteAndFreeResources(appMan->sealRenderInfo[sealIndex].sprite);
+
+    appMan->sealRenderInfo[sealIndex].sprite = NULL;
+    appMan->sealRenderInfo[sealIndex].unk_00 = 0;
+    appMan->sealRenderInfo[sealIndex].type = 0;
+    appMan->sealRenderInfo[sealIndex].shouldRender = 0;
+    appMan->sealRenderInfo[sealIndex].unk_06 = 0;
+
+    ov57_02237E90(appMan->sealRenderInfo[sealIndex].touchScreenRect, 0, 0);
 }
 #pragma force_active reset

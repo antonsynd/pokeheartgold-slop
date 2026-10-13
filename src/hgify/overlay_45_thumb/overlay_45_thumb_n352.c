@@ -31,143 +31,30 @@ typedef struct UnkStruct_ov45_0222DF78 {
     UnkStruct_ov45_0222E04C unk0[UNK_OV45_ENTRY_COUNT];
     UnkStruct_ov45_0222E04C unk1A0;
 } UnkStruct_ov45_0222DF78;
-typedef struct UnkStruct_ov45_0222DE3C_Slot {
-    u16 unk0;
-    u16 unk2;
-} UnkStruct_ov45_0222DE3C_Slot;
-typedef struct UnkStruct_ov45_0222DE3C {
-    UnkStruct_ov45_0222DE3C_Slot unk0[UNK_OV45_SLOT_COUNT];
-    u16 unk50;
-    u16 unk52;
-} UnkStruct_ov45_0222DE3C;
-typedef struct UnkStruct_ov45_0222DD38 {
-    u8 unk0[8];
-    UnkStruct_ov45_0222DE3C unk8;
-    UnkStruct_ov45_0222DF78 unk5C;
-} UnkStruct_ov45_0222DD38;
-typedef BOOL (*UnkFuncPtr_ov45_0222DD78)(UnkStruct_ov45_0222E04C *, const void *, MessageFormat *, MsgData *, String *, enum HeapID);
-extern UnkFuncPtr_ov45_0222DD78 const ov45_02254C0C[UNK_OV45_KIND_COUNT];
-typedef u32 (*UnkFuncPtr_ov45_0222DDE4)(const UnkStruct_ov45_0222E04C *, u32);
-extern UnkFuncPtr_ov45_0222DDE4 const ov45_02254BE8[UNK_OV45_KIND_COUNT];
-extern u32 ov45_0222E540(const UnkStruct_ov45_0222E04C *a0, u32 a1);
-extern u32 ov45_0222E550(const UnkStruct_ov45_0222E04C *a0, u32 a1);
-extern u32 ov45_0222E560(const UnkStruct_ov45_0222E04C *a0, u32 a1);
-extern u32 ov45_0222E574(const UnkStruct_ov45_0222E04C *a0, u32 a1);
-extern u32 ov45_0222E584(const UnkStruct_ov45_0222E04C *a0, u32 a1);
-extern u32 ov45_0222E598(const UnkStruct_ov45_0222E04C *a0, u32 a1);
-extern u32 ov45_0222E59C(const UnkStruct_ov45_0222E04C *a0, u32 a1);
-extern u32 ov45_0222E5A0(const UnkStruct_ov45_0222E04C *a0, u32 a1);
-u32 ov45_0222DD38(const UnkStruct_ov45_0222DD38 *a0);
-BOOL ov45_0222DD44(const UnkStruct_ov45_0222DD38 *a0);
-int ov45_0222DD5C(const UnkStruct_ov45_0222DD38 *a0);
-BOOL ov45_0222DD78(const UnkStruct_ov45_0222DD38 *a0, const void *a1, int a2, String *a3, enum HeapID heapID);
-u32 ov45_0222DDE4(const UnkStruct_ov45_0222DD38 *a0, int a1, u32 a2);
-void ov45_0222DE1C(UnkStruct_ov45_0222DE3C *a0);
-void ov45_0222DE3C(UnkStruct_ov45_0222DE3C *a0, u32 a1, u32 a2, u32 a3);
-void ov45_0222DE58(UnkStruct_ov45_0222DE3C *a0, u32 a1, u32 a2, u32 a3);
-void ov45_0222DE74(UnkStruct_ov45_0222DE3C *a0, u32 a1);
-void ov45_0222DE8C(UnkStruct_ov45_0222DE3C *a0, u32 a1, u32 a2);
-void ov45_0222DEA4(UnkStruct_ov45_0222DE3C *a0, int a1);
-void ov45_0222DEB8(UnkStruct_ov45_0222DE3C *a0, u32 a1);
-BOOL ov45_0222DECC(const UnkStruct_ov45_0222DE3C *a0, u32 a1);
-u32 ov45_0222DEE0(const UnkStruct_ov45_0222DE3C *a0, u32 a1);
-BOOL ov45_0222DEF4(const UnkStruct_ov45_0222DE3C *a0, u32 a1);
-BOOL ov45_0222DF14(const UnkStruct_ov45_0222DE3C *a0, u32 a1);
-u32 ov45_0222DF38(const UnkStruct_ov45_0222DE3C *a0, u32 a1);
-u32 ov45_0222DF50(const UnkStruct_ov45_0222DE3C *a0);
-BOOL ov45_0222DF58(const UnkStruct_ov45_0222DE3C *a0, u32 a1);
-void ov45_0222DF78(UnkStruct_ov45_0222DF78 *a0, enum HeapID heapID);
-void ov45_0222DFD0(UnkStruct_ov45_0222DF78 *a0);
-void ov45_0222E000(UnkStruct_ov45_0222DF78 *a0);
-void ov45_0222E03C(UnkStruct_ov45_0222DF78 *a0);
-UnkStruct_ov45_0222E04C *ov45_0222E04C(UnkStruct_ov45_0222DF78 *a0, u16 a1);
-void ov45_0222E094(UnkStruct_ov45_0222E04C *a0, UnkStruct_ov45_0222E04C *a1);
-void ov45_0222E0A4(UnkStruct_ov45_0222DF78 *a0, UnkStruct_ov45_0222E04C *a1);
 void ov45_0222E0CC(UnkStruct_ov45_0222DF78 *a0, UnkStruct_ov45_0222E04C *a1);
-void ov45_0222E0E0(UnkStruct_ov45_0222E04C *a0, int a1, int a2, int a3, PlayerProfile *a4, PlayerProfile *a5, PlayerProfile *a6, PlayerProfile *a7, u16 a8, u16 a9, u16 a10, u16 a11, u32 a12, u32 a13, u32 a14);
-BOOL ov45_0222E14C(UnkStruct_ov45_0222E04C *a0, const void *a1, MessageFormat *a2, MsgData *a3, String *a4, enum HeapID heapID);
-BOOL ov45_0222E1A0(UnkStruct_ov45_0222E04C *a0, const void *a1, MessageFormat *a2, MsgData *a3, String *a4, enum HeapID heapID);
-u32 ov45_0222DD38(const UnkStruct_ov45_0222DD38 *a0);
-u32 ov45_0222DD38(const UnkStruct_ov45_0222DD38 *a0);
-BOOL ov45_0222DD44(const UnkStruct_ov45_0222DD38 *a0);
-BOOL ov45_0222DD44(const UnkStruct_ov45_0222DD38 *a0);
-int ov45_0222DD5C(const UnkStruct_ov45_0222DD38 *a0);
-int ov45_0222DD5C(const UnkStruct_ov45_0222DD38 *a0);
-BOOL ov45_0222DD78(const UnkStruct_ov45_0222DD38 *a0, const void *a1, int a2, String *a3, enum HeapID heapID);
-BOOL ov45_0222DD78(const UnkStruct_ov45_0222DD38 *a0, const void *a1, int a2, String *a3, enum HeapID heapID);
-u32 ov45_0222DDE4(const UnkStruct_ov45_0222DD38 *a0, int a1, u32 a2);
-u32 ov45_0222DDE4(const UnkStruct_ov45_0222DD38 *a0, int a1, u32 a2);
-void ov45_0222DE1C(UnkStruct_ov45_0222DE3C *a0);
-void ov45_0222DE1C(UnkStruct_ov45_0222DE3C *a0);
-void ov45_0222DE3C(UnkStruct_ov45_0222DE3C *a0, u32 a1, u32 a2, u32 a3);
-void ov45_0222DE3C(UnkStruct_ov45_0222DE3C *a0, u32 a1, u32 a2, u32 a3);
-void ov45_0222DE58(UnkStruct_ov45_0222DE3C *a0, u32 a1, u32 a2, u32 a3);
-void ov45_0222DE58(UnkStruct_ov45_0222DE3C *a0, u32 a1, u32 a2, u32 a3);
-void ov45_0222DE74(UnkStruct_ov45_0222DE3C *a0, u32 a1);
-void ov45_0222DE74(UnkStruct_ov45_0222DE3C *a0, u32 a1);
-void ov45_0222DE8C(UnkStruct_ov45_0222DE3C *a0, u32 a1, u32 a2);
-void ov45_0222DE8C(UnkStruct_ov45_0222DE3C *a0, u32 a1, u32 a2);
-void ov45_0222DEA4(UnkStruct_ov45_0222DE3C *a0, int a1);
-void ov45_0222DEA4(UnkStruct_ov45_0222DE3C *a0, int a1);
-void ov45_0222DEB8(UnkStruct_ov45_0222DE3C *a0, u32 a1);
-void ov45_0222DEB8(UnkStruct_ov45_0222DE3C *a0, u32 a1);
-BOOL ov45_0222DECC(const UnkStruct_ov45_0222DE3C *a0, u32 a1);
-BOOL ov45_0222DECC(const UnkStruct_ov45_0222DE3C *a0, u32 a1);
-u32 ov45_0222DEE0(const UnkStruct_ov45_0222DE3C *a0, u32 a1);
-u32 ov45_0222DEE0(const UnkStruct_ov45_0222DE3C *a0, u32 a1);
-BOOL ov45_0222DEF4(const UnkStruct_ov45_0222DE3C *a0, u32 a1);
-BOOL ov45_0222DEF4(const UnkStruct_ov45_0222DE3C *a0, u32 a1);
-BOOL ov45_0222DF14(const UnkStruct_ov45_0222DE3C *a0, u32 a1);
-BOOL ov45_0222DF14(const UnkStruct_ov45_0222DE3C *a0, u32 a1);
-u32 ov45_0222DF38(const UnkStruct_ov45_0222DE3C *a0, u32 a1);
-u32 ov45_0222DF38(const UnkStruct_ov45_0222DE3C *a0, u32 a1);
-u32 ov45_0222DF50(const UnkStruct_ov45_0222DE3C *a0);
-u32 ov45_0222DF50(const UnkStruct_ov45_0222DE3C *a0);
-BOOL ov45_0222DF58(const UnkStruct_ov45_0222DE3C *a0, u32 a1);
-BOOL ov45_0222DF58(const UnkStruct_ov45_0222DE3C *a0, u32 a1);
-void ov45_0222DF78(UnkStruct_ov45_0222DF78 *a0, enum HeapID heapID);
-void ov45_0222DF78(UnkStruct_ov45_0222DF78 *a0, enum HeapID heapID);
-void ov45_0222DFD0(UnkStruct_ov45_0222DF78 *a0);
-void ov45_0222DFD0(UnkStruct_ov45_0222DF78 *a0);
-void ov45_0222E000(UnkStruct_ov45_0222DF78 *a0);
-void ov45_0222E03C(UnkStruct_ov45_0222DF78 *a0);
-void ov45_0222E03C(UnkStruct_ov45_0222DF78 *a0);
-UnkStruct_ov45_0222E04C *ov45_0222E04C(UnkStruct_ov45_0222DF78 *a0, u16 a1);
-// FUNCTION ov45_0222E04C: matching C (r0)
+// FUNCTION ov45_0222E04C: matching C (twin)
 #pragma force_active on
-UnkStruct_ov45_0222E04C *ov45_0222E04C(UnkStruct_ov45_0222DF78 *a0, u16 a1) {
-    int i;
-    UnkStruct_ov45_0222E04C *found = NULL;
+UnkStruct_ov45_0222E04C *ov45_0222E04C(UnkStruct_ov45_0222DF78 *param0, u16 param1) {
+    int v0;
+    UnkStruct_ov45_0222E04C *v1 = NULL;
 
-    for (i = 0; i < UNK_OV45_ENTRY_COUNT; i++) {
-        if (a0->unk0[i].unk2C == NULL) {
-            found = &a0->unk0[i];
+    for (v0 = 0; v0 < UNK_OV45_ENTRY_COUNT; v0++) {
+        if (param0->unk0[v0].unk2C == NULL) {
+            v1 = &param0->unk0[v0];
             break;
         }
     }
 
-    if (found == NULL) {
-        for (i = 0; i < UNK_OV45_ENTRY_COUNT; i++) {
-            if (a0->unk0[i].unk28 >= a1) {
-                found = &a0->unk0[i];
-                ov45_0222E0CC(a0, found);
+    if (v1 == NULL) {
+        for (v0 = 0; v0 < UNK_OV45_ENTRY_COUNT; v0++) {
+            if (param0->unk0[v0].unk28 >= param1) {
+                ov45_0222E0CC(param0, &param0->unk0[v0]);
+                v1 = &param0->unk0[v0];
                 break;
             }
         }
     }
 
-    return found;
+    return v1;
 }
 #pragma force_active reset
-void ov45_0222E094(UnkStruct_ov45_0222E04C *a0, UnkStruct_ov45_0222E04C *a1);
-void ov45_0222E094(UnkStruct_ov45_0222E04C *a0, UnkStruct_ov45_0222E04C *a1);
-void ov45_0222E0A4(UnkStruct_ov45_0222DF78 *a0, UnkStruct_ov45_0222E04C *a1);
-void ov45_0222E0A4(UnkStruct_ov45_0222DF78 *a0, UnkStruct_ov45_0222E04C *a1);
-void ov45_0222E0CC(UnkStruct_ov45_0222DF78 *a0, UnkStruct_ov45_0222E04C *a1);
-void ov45_0222E0CC(UnkStruct_ov45_0222DF78 *a0, UnkStruct_ov45_0222E04C *a1);
-void ov45_0222E0E0(UnkStruct_ov45_0222E04C *a0, int a1, int a2, int a3, PlayerProfile *a4, PlayerProfile *a5, PlayerProfile *a6, PlayerProfile *a7, u16 a8, u16 a9, u16 a10, u16 a11, u32 a12, u32 a13, u32 a14);
-void ov45_0222E0E0(UnkStruct_ov45_0222E04C *a0, int a1, int a2, int a3, PlayerProfile *a4, PlayerProfile *a5, PlayerProfile *a6, PlayerProfile *a7, u16 a8, u16 a9, u16 a10, u16 a11, u32 a12, u32 a13, u32 a14);
-BOOL ov45_0222E14C(UnkStruct_ov45_0222E04C *a0, const void *a1, MessageFormat *a2, MsgData *a3, String *a4, enum HeapID heapID);
-BOOL ov45_0222E14C(UnkStruct_ov45_0222E04C *a0, const void *a1, MessageFormat *a2, MsgData *a3, String *a4, enum HeapID heapID);
-BOOL ov45_0222E1A0(UnkStruct_ov45_0222E04C *a0, const void *a1, MessageFormat *a2, MsgData *a3, String *a4, enum HeapID heapID);
-BOOL ov45_0222E1A0(UnkStruct_ov45_0222E04C *a0, const void *a1, MessageFormat *a2, MsgData *a3, String *a4, enum HeapID heapID);

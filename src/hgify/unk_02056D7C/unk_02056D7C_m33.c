@@ -5,23 +5,32 @@
 
 #include "unk_02035900.h"
 #include "unk_02056D7C.h"
-extern u8 *_021D41C4;
-// FUNCTION sub_02057A88: matching C (agent8)
-#pragma force_active on
-u16 sub_02057A88(int param_1) {
-    int iVar1;
 
-    if (_021D41C4 == 0) {
+typedef struct UnkStruct_sub_02057A88_Location {
+    u8 unk_00[6];
+    u16 z;
+} UnkStruct_sub_02057A88_Location;
+
+typedef struct UnkStruct_sub_02057A88 {
+    u8 unk_00[0x24];
+    u8 isActive[4];
+    u8 unk_28[0x70 - 0x28];
+    UnkStruct_sub_02057A88_Location playerLocation[4];
+} UnkStruct_sub_02057A88;
+
+extern UnkStruct_sub_02057A88 *_021D41C4;
+
+// FUNCTION sub_02057A88: matching C (twin)
+#pragma force_active on
+u16 sub_02057A88(int netId) {
+    if (!_021D41C4) {
+        return 0xffff;
+    } else if (sub_0203769C() == netId) {
+        return _021D41C4->playerLocation[netId].z;
+    } else if (!sub_02057A0C() || !_021D41C4->isActive[netId]) {
         return 0xffff;
     }
-    iVar1 = sub_0203769C();
-    if (param_1 == iVar1) {
-        return *(u16 *)(_021D41C4 + (param_1 << 3) + 0x76);
-    }
-    iVar1 = sub_02057A0C();
-    if (iVar1 == 0 || *(u8 *)(_021D41C4 + param_1 + 0x24) == 0) {
-        return 0xffff;
-    }
-    return *(u16 *)(_021D41C4 + (param_1 << 3) + 0x76);
+
+    return _021D41C4->playerLocation[netId].z;
 }
 #pragma force_active reset

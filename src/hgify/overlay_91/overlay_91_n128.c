@@ -3,25 +3,34 @@
 #pragma thumb on
 #include "global.h"
 
-#include "ghidra_compat.h"
 #include "sprite.h"
 #include "sprite_transfer.h"
+#include "unk_02009D48.h"
 #include "unk_0200A090.h"
-typedef int code();
-void ov91_0225F1E8(undefined4 *param_1, int param_2);
-// FUNCTION ov91_0225F1E8: matching C (r2)
-#pragma force_active on
-void ov91_0225F1E8(undefined4 *param_1, int param_2)
 
-{
-    Sprite_Delete(param_1[0xd]);
-    SpriteTransfer_DeleteCharTransferTask(*param_1);
-    SpriteTransfer_DeletePlttTransferTask(param_1[1]);
-    DestroySingle2DGfxResObj(*(undefined4 *)(param_2 + 0x148), *param_1);
-    DestroySingle2DGfxResObj(*(undefined4 *)(param_2 + 0x14c), param_1[1]);
-    DestroySingle2DGfxResObj(*(undefined4 *)(param_2 + 0x150), param_1[2]);
-    DestroySingle2DGfxResObj(*(undefined4 *)(param_2 + 0x154), param_1[3]);
-    memset(param_1, 0, 0x40);
-    return;
+typedef struct UnkStruct_ov91_0225F1E8 {
+    SpriteResource *unk_00[4];
+    SpriteResourcesHeader unk_10;
+    Sprite *unk_34;
+    u8 unk_38[8];
+} UnkStruct_ov91_0225F1E8;
+
+typedef struct UnkStruct_ov91_0225F1E8_Parent {
+    u8 unk_000[0x148];
+    GF_2DGfxResMan *unk_148[4];
+} UnkStruct_ov91_0225F1E8_Parent;
+
+void ov91_0225F1E8(UnkStruct_ov91_0225F1E8 *param0, UnkStruct_ov91_0225F1E8_Parent *param1);
+// FUNCTION ov91_0225F1E8: matching C (twin)
+#pragma force_active on
+void ov91_0225F1E8(UnkStruct_ov91_0225F1E8 *param0, UnkStruct_ov91_0225F1E8_Parent *param1) {
+    Sprite_Delete(param0->unk_34);
+    SpriteTransfer_DeleteCharTransferTask(param0->unk_00[0]);
+    SpriteTransfer_DeletePlttTransferTask(param0->unk_00[1]);
+    DestroySingle2DGfxResObj(param1->unk_148[0], param0->unk_00[0]);
+    DestroySingle2DGfxResObj(param1->unk_148[1], param0->unk_00[1]);
+    DestroySingle2DGfxResObj(param1->unk_148[2], param0->unk_00[2]);
+    DestroySingle2DGfxResObj(param1->unk_148[3], param0->unk_00[3]);
+    memset(param0, 0, sizeof(UnkStruct_ov91_0225F1E8));
 }
 #pragma force_active reset

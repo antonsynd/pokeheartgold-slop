@@ -5,29 +5,26 @@
 
 #include "bg_window.h"
 #include "font.h"
-#include "ghidra_compat.h"
 #include "overlay_manager.h"
 #include "pm_string.h"
 #include "render_window.h"
 #include "text.h"
-typedef int code();
-void ov74_0222AAAC(undefined4 param_1, undefined4 param_2, undefined4 param_3);
-// FUNCTION ov74_0222AAAC: matching C (r2)
+
+// FUNCTION ov74_0222AAAC: matching C (twin)
 #pragma force_active on
-void ov74_0222AAAC(undefined4 param_1, undefined4 param_2, undefined4 param_3)
+void ov74_0222AAAC(OverlayManager *ovlMan, Window *window, u16 *title) {
+    String *string;
+    u8 fontAttr;
 
-{
-    undefined4 uVar1;
-    u8 uVar2;
+    OverlayManager_GetData(ovlMan);
 
-    OverlayManager_GetData((OverlayManager *)param_1);
-    uVar1 = String_New(0x25, 0x54);
-    CopyU16ArrayToStringN(uVar1, param_3, 0x24);
-    uVar2 = GetFontAttribute(0, 6);
-    FillWindowPixelBuffer(param_2, uVar2);
-    AddTextPrinterParameterizedWithColor(param_2, 0, uVar1, 0, 0, 0xff, 0x1020f, 0);
-    DrawFrameAndWindow1(param_2, 0, 0x1f, 3);
-    String_Delete(uVar1);
-    return;
+    string = String_New(0x25, 0x54);
+    CopyU16ArrayToStringN(string, title, 0x24);
+
+    fontAttr = GetFontAttribute(0, 6);
+    FillWindowPixelBuffer(window, fontAttr);
+    AddTextPrinterParameterizedWithColor(window, 0, string, 0, 0, 0xff, 0x1020f, NULL);
+    DrawFrameAndWindow1(window, 0, 0x1f, 3);
+    String_Delete(string);
 }
 #pragma force_active reset

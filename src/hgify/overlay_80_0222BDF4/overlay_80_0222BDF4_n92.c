@@ -6,35 +6,22 @@
 #include "frontier/frontier_script_context.h"
 #include "frontier/overlay_80_0222BDF4.h"
 
-#include "ghidra_compat.h"
 #include "message_format.h"
 #include "pm_string.h"
-typedef int code();
-undefined4 ov80_0222D0D4();
-undefined4 FrtCmd_126(int *param_1);
-// FUNCTION FrtCmd_126: matching C (r2)
+
+String *ov80_0222D0D4(u32 species, u32 heapID);
+
+// FUNCTION FrtCmd_126: matching C (twin)
 #pragma force_active on
-undefined4 FrtCmd_126(int *param_1)
+BOOL FrtCmd_126(FrontierScriptContext *ctx) {
+    u8 templateArg = FrontierScriptContext_ReadByte(ctx);
+    u32 species = FrontierScript_ReadVar(ctx);
+    u16 unused1 = FrontierScriptContext_ReadHalfWord(ctx);
+    u8 unused2 = FrontierScriptContext_ReadByte(ctx);
+    String *speciesName = ov80_0222D0D4(species, 0xb);
 
-{
-    byte bVar1;
-    byte bVar2;
-    ushort uVar3;
-    uint uVar4;
-    String *puVar5;
-    byte *pbVar6;
-
-    pbVar6 = (byte *)param_1[7];
-    param_1[7] = (int)(pbVar6 + 1);
-    bVar1 = *pbVar6;
-    uVar4 = FrontierScript_ReadVar((FrontierScriptContext *)param_1);
-    uVar3 = FrontierScriptContext_ReadHalfWord((FrontierScriptContext *)param_1);
-    pbVar6 = (byte *)param_1[7];
-    param_1[7] = (int)(pbVar6 + 1);
-    bVar2 = *pbVar6;
-    puVar5 = (String *)ov80_0222D0D4(uVar4, 0xb);
-    BufferString((struct MessageFormat *)*(undefined **)(*param_1 + 0x44), (uint)bVar1, puVar5, (uint)uVar3, (uint)bVar2, 2);
-    String_Delete(puVar5);
-    return 0;
+    BufferString(ctx->frontierSystem->unk44, templateArg, speciesName, unused1, unused2, 2);
+    String_Delete(speciesName);
+    return FALSE;
 }
 #pragma force_active reset

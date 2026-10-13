@@ -3,33 +3,42 @@
 #pragma thumb on
 #include "global.h"
 
+#include "assert.h"
 #include "error_handling.h"
-#include "ghidra_compat.h"
-typedef void code(void);
-undefined4 ov07_02222040(undefined4, undefined4, undefined4);
-undefined4 _s32_div_f();
-void ov07_02222508(short *param_1, int param_2, undefined4 param_3, int param_4, undefined4 param_5);
-// FUNCTION ov07_02222508: matching C (r2)
+
+#define MON_AFFINE_SCALE(x) ((x) << 8)
+#define FX32_ONE            0x1000
+
+typedef struct UnkStruct_ov07_02222508 {
+    s16 x;
+    s16 y;
+    s32 data[8];
+} UnkStruct_ov07_02222508;
+
+enum {
+    XY_PARAM_STEPS = 0,
+    XY_PARAM_STEP_SIZE,
+    XY_PARAM_STEP_SIZE_X = 1,
+    XY_PARAM_STEP_SIZE_Y,
+    XY_PARAM_CUR_X,
+    XY_PARAM_CUR_Y,
+};
+
+fx32 ov07_02222040(fx32 start, fx32 end, u32 steps);
+// FUNCTION ov07_02222508: matching C (twin)
 #pragma force_active on
-void ov07_02222508(short *param_1, int param_2, undefined4 param_3, int param_4, undefined4 param_5)
+void ov07_02222508(UnkStruct_ov07_02222508 *ctx, s16 startScale, s16 refScale, s16 endScale, u32 steps) {
+    GF_ASSERT(ctx);
 
-{
-    int iVar1;
-    int iVar2;
-    undefined4 uVar3;
+    ctx->data[XY_PARAM_STEPS] = steps;
+    ctx->data[XY_PARAM_STEP_SIZE] = ov07_02222040(
+        ((startScale * MON_AFFINE_SCALE(1)) / refScale) * FX32_ONE,
+        ((endScale * MON_AFFINE_SCALE(1)) / refScale) * FX32_ONE,
+        steps);
 
-    if (param_1 == (short *)0x0) {
-        GF_AssertFail();
-    }
-    *(undefined4 *)(param_1 + 2) = param_5;
-    iVar1 = _s32_div_f(param_2 << 8, param_3);
-    iVar2 = _s32_div_f(param_4 << 8, param_3);
-    uVar3 = ov07_02222040(iVar1 << 0xc, iVar2 << 0xc, param_5);
-    *(undefined4 *)(param_1 + 4) = uVar3;
-    *param_1 = (short)iVar1;
-    param_1[1] = (short)iVar1;
-    *(int *)(param_1 + 8) = (int)*param_1 << 0xc;
-    *(int *)(param_1 + 10) = (int)param_1[1] << 0xc;
-    return;
+    ctx->x = (startScale * MON_AFFINE_SCALE(1)) / refScale;
+    ctx->y = (startScale * MON_AFFINE_SCALE(1)) / refScale;
+    ctx->data[XY_PARAM_CUR_X] = ctx->x * FX32_ONE;
+    ctx->data[XY_PARAM_CUR_Y] = ctx->y * FX32_ONE;
 }
 #pragma force_active reset

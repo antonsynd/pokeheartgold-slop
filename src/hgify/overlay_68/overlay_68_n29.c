@@ -4,13 +4,22 @@
 #include "global.h"
 
 #include "bg_window.h"
-// FUNCTION ov68_021E66A0: matching C (agent12)
-#pragma force_active on
-void ov68_021E66A0(u8 *param_1, u8 param_2, u8 param_3, u8 param_4, u8 param_5, u8 param_6, u8 param_7) {
-    u16 *puVar1;
+#include "gf_gfx_loader.h"
 
-    puVar1 = *(u16 **)(param_1 + 0x1c4);
-    CopyToBgTilemapRect(*(void **)(param_1 + 4), 7, param_2, param_3, param_4, param_5, puVar1 + 6, param_6, param_7, (u8)(puVar1[0] >> 3), (u8)(puVar1[1] >> 3));
-    ScheduleBgTilemapBufferTransfer(*(void **)(param_1 + 4), 7);
+typedef struct UnkStruct_ov68_021E66A0 {
+    u8 pad_00[0x4];
+    BgConfig *bgConfig;
+    u8 pad_08[0x1C4 - 0x08];
+    NNSG2dScreenData *screenData;
+} UnkStruct_ov68_021E66A0;
+
+void ov68_021E66A0(UnkStruct_ov68_021E66A0 *param0, u8 destX, u8 destY, u8 destWidth, u8 destHeight, u8 srcX, u8 srcY);
+// FUNCTION ov68_021E66A0: matching C (twin)
+#pragma force_active on
+void ov68_021E66A0(UnkStruct_ov68_021E66A0 *param0, u8 destX, u8 destY, u8 destWidth, u8 destHeight, u8 srcX, u8 srcY) {
+    NNSG2dScreenData *screenData = param0->screenData;
+
+    CopyToBgTilemapRect(param0->bgConfig, 7, destX, destY, destWidth, destHeight, screenData->rawData, srcX, srcY, (u8)(screenData->screenWidth / 8), (u8)(screenData->screenHeight / 8));
+    ScheduleBgTilemapBufferTransfer(param0->bgConfig, 7);
 }
 #pragma force_active reset

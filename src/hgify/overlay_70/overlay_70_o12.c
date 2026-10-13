@@ -2,43 +2,57 @@
 #pragma warning_errors off
 #pragma thumb on
 #include "global.h"
+
 typedef struct UnkStruct_ov70_02246800 {
     /* 0x00 */ s32 status;
     /* 0x04 */ s32 result;
     /* 0x08 */ u8 filler_08[0x12];
     /* 0x1A */ u8 maxResults;
 } UnkStruct_ov70_02246800;
+
+typedef struct UnkStruct_ov70_022381A4_Request {
+    u8 pad_00[6];
+    s8 count;
+} UnkStruct_ov70_022381A4_Request;
+
+typedef struct UnkStruct_ov70_022381A4_State {
+    u8 pad_00[0x40];
+    void *responseData;
+} UnkStruct_ov70_022381A4_State;
+
+extern UnkStruct_ov70_022381A4_State ov70_02246900;
 extern UnkStruct_ov70_02246800 _02246800;
 extern u8 ov70_02246814[];
-extern u8 ov70_02246900[];
 extern const char ov70_02246268[];
+
 void ov38_0221BE84(void);
 void ov38_0221BFEC(void);
 int ov70_02238360(const char *url, u8 *request, u32 requestSize, void *response, int responseSize);
-// FUNCTION ov70_022381A4: matching C (agent12)
-#pragma force_active on
-void ov70_022381A4(u8 *param_1, void *param_2) {
-    u8 uVar1;
-    u32 iVar2;
-    u8 *puVar3;
-    u8 *puVar4;
 
-    *(void **)(ov70_02246900 + 0x40) = param_2;
+// FUNCTION ov70_022381A4: matching C (twin)
+#pragma force_active on
+void ov70_022381A4(const UnkStruct_ov70_022381A4_Request *req, void *listing) {
+    u32 n;
+    const u8 *src;
+    u8 *dst;
+
+    ov70_02246900.responseData = listing;
     ov38_0221BE84();
-    puVar4 = ov70_02246814;
-    puVar3 = param_1;
-    iVar2 = 8;
+
+    src = (const u8 *)req;
+    dst = ov70_02246814;
+    n = 8;
     do {
-        uVar1 = *puVar3;
-        puVar3 = puVar3 + 1;
-        *puVar4 = uVar1;
-        puVar4 = puVar4 + 1;
-        iVar2 = iVar2 - 1;
-    } while (iVar2 != 0);
-    if (ov70_02238360(ov70_02246268, ov70_02246814, 8, param_2, (s8)param_1[6] * 0x124) != 0) {
+        *dst = *src;
+        src++;
+        dst++;
+    } while (--n != 0);
+
+    if (ov70_02238360(ov70_02246268, ov70_02246814, 8, listing, req->count * 0x124) != 0) {
         _02246800.status = 0xe;
         return;
     }
+
     _02246800.status = 0x18;
     _02246800.result = -13;
     ov38_0221BFEC();

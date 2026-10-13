@@ -105,89 +105,26 @@ extern void ov85_021E7644(void *a0, fx32 a1);
 extern void ov85_021E78A4(UnkStruct_Ov85_021E5FE0 *a0, fx32 a1);
 extern Party *sub_02097018(void *a0, int a1);
 extern int _021EAA80[16];
-void ov85_021E8530(fx32 *a0, fx32 a1);
-void ov85_021E8428(UnkStruct_Ov85_021E5FE0 *a0, UnkStruct_Ov85_Entry *a1);
-void ov85_021E8374(UnkStruct_Ov85_021E5FE0 *a0, UnkStruct_Ov85_021E8374 *a1);
-void ov85_021E83C0(SysTask *a0, void *a1);
-void ov85_021E84A4(SysTask *a0, void *a1);
-BOOL ov85_021E834C(UnkStruct_Ov85_021E5FE0 *a0);
-BOOL ov85_021E834C(UnkStruct_Ov85_021E5FE0 *a0);
-void ov85_021E8358(UnkStruct_Ov85_021E5FE0 *a0);
-void ov85_021E8358(UnkStruct_Ov85_021E5FE0 *a0);
-void ov85_021E8374(UnkStruct_Ov85_021E5FE0 *a0, UnkStruct_Ov85_021E8374 *a1);
-void ov85_021E8374(UnkStruct_Ov85_021E5FE0 *a0, UnkStruct_Ov85_021E8374 *a1);
-void ov85_021E83C0(SysTask *a0, void *a1);
-void ov85_021E83C0(SysTask *a0, void *a1);
-void ov85_021E83E0(UnkStruct_Ov85_021E5FE0 *a0);
-void ov85_021E8418(UnkStruct_Ov85_021E5FE0 *a0);
-void ov85_021E8418(UnkStruct_Ov85_021E5FE0 *a0);
-void ov85_021E8428(UnkStruct_Ov85_021E5FE0 *a0, UnkStruct_Ov85_Entry *a1);
-void ov85_021E8428(UnkStruct_Ov85_021E5FE0 *a0, UnkStruct_Ov85_Entry *a1);
-void ov85_021E8454(UnkStruct_Ov85_021E5FE0 *a0);
-void ov85_021E8454(UnkStruct_Ov85_021E5FE0 *a0);
-void ov85_021E84A4(SysTask *a0, void *a1);
-void ov85_021E84A4(SysTask *a0, void *a1);
-void ov85_021E84EC(UnkStruct_Ov85_021E5FE0 *a0, BOOL a1);
-void ov85_021E84EC(UnkStruct_Ov85_021E5FE0 *a0, BOOL a1);
-void ov85_021E8530(fx32 *a0, fx32 a1);
-void ov85_021E8530(fx32 *a0, fx32 a1);
-void ov85_021E8558(UnkStruct_Ov85_021E5FE0 *a0, fx32 a1);
-void ov85_021E8558(UnkStruct_Ov85_021E5FE0 *a0, fx32 a1);
-BOOL ov85_021E8570(UnkStruct_Ov85_021E5FE0 *a0);
-BOOL ov85_021E8570(UnkStruct_Ov85_021E5FE0 *a0);
-void *ov85_021E8588(UnkStruct_Ov85_021E5FE0 *a0, u32 a1, BOOL a2);
-void *ov85_021E8588(UnkStruct_Ov85_021E5FE0 *a0, u32 a1, BOOL a2);
-void ov85_021E85C4(UnkStruct_Ov85_021E5FE0 *a0, u32 a1);
-void ov85_021E85C4(UnkStruct_Ov85_021E5FE0 *a0, u32 a1);
-void ov85_021E85CC(UnkStruct_Ov85_021E5FE0 *a0, const UnkStruct_Ov85_Quad *a1);
-void ov85_021E85CC(UnkStruct_Ov85_021E5FE0 *a0, const UnkStruct_Ov85_Quad *a1);
-void *ov85_021E85F0(UnkStruct_Ov85_021E5FE0 *a0, u32 a1);
-void *ov85_021E85F0(UnkStruct_Ov85_021E5FE0 *a0, u32 a1);
-void *ov85_021E8610(UnkStruct_Ov85_021E5FE0 *a0);
-void *ov85_021E8610(UnkStruct_Ov85_021E5FE0 *a0);
-BOOL ov85_021E8614(UnkStruct_Ov85_021E5FE0 *a0, u16 a1);
-BOOL ov85_021E8614(UnkStruct_Ov85_021E5FE0 *a0, u16 a1);
-BOOL ov85_021E8628(UnkStruct_Ov85_021E5FE0 *a0);
-BOOL ov85_021E8628(UnkStruct_Ov85_021E5FE0 *a0);
-int ov85_021E8660(UnkStruct_Ov85_021E5FE0 *a0);
-int ov85_021E8660(UnkStruct_Ov85_021E5FE0 *a0);
-void ov85_021E8680(UnkStruct_Ov85_021E5FE0 *a0, const UnkStruct_Ov85_Pair *a1);
-void ov85_021E8680(UnkStruct_Ov85_021E5FE0 *a0, const UnkStruct_Ov85_Pair *a1);
-void ov85_021E86AC(UnkStruct_Ov85_021E5FE0 *a0, int a1);
-void ov85_021E86AC(UnkStruct_Ov85_021E5FE0 *a0, int a1);
-BOOL ov85_021E86B0(UnkStruct_Ov85_021E5FE0 *a0, int a1);
-BOOL ov85_021E86B0(UnkStruct_Ov85_021E5FE0 *a0, int a1);
-void ov85_021E86CC(UnkStruct_Ov85_021E5FE0 *a0, int a1);
-// FUNCTION ov85_021E86CC: matching C (r2)
+// FUNCTION ov85_021E86CC: matching C (twin)
 #pragma force_active on
-void ov85_021E86CC(UnkStruct_Ov85_021E5FE0 *a0, int a1) {
-    int slotA;
-    int slotB;
-    Party *partyA;
-    Party *partyB;
-    Pokemon *monA;
-    Pokemon *monB;
+void ov85_021E86CC(UnkStruct_Ov85_021E5FE0 *param0, int param1) {
+    int v0;
+    int v1;
+    Party *v2;
+    Party *v3;
+    Pokemon *v4;
+    Pokemon *v5;
 
-    partyA = a0->unk24;
-    partyB = sub_02097018(a0->unkD0, a1);
+    v2 = param0->unk24;
+    v3 = sub_02097018(param0->unkD0, param1);
 
-    slotA = a0->unkCC->unk4;
-    slotB = a0->unk2C.unk18[a1];
+    v0 = param0->unkCC->unk4;
+    v1 = param0->unk2C.unk18[param1];
 
-    monA = Party_GetMonByIndex(partyA, slotA);
-    monB = Party_GetMonByIndex(partyB, slotB);
+    v4 = Party_GetMonByIndex(v2, v0);
+    v5 = Party_GetMonByIndex(v3, v1);
 
-    MonSetTrainerMemo(monB, sub_02034818(sub_0203769C()), 5, 0, HEAP_ID_FIELD2);
-    CopyPokemonToPokemon(monB, monA);
+    MonSetTrainerMemo(v5, sub_02034818(sub_0203769C()), 5, 0, HEAP_ID_FIELD2);
+    CopyPokemonToPokemon(v5, v4);
 }
 #pragma force_active reset
-int ov85_021E8720(UnkStruct_Ov85_021E5FE0 *a0);
-int ov85_021E8720(UnkStruct_Ov85_021E5FE0 *a0);
-void ov85_021E8740(UnkStruct_Ov85_021E5FE0 *a0, int a1, int a2);
-void ov85_021E8740(UnkStruct_Ov85_021E5FE0 *a0, int a1, int a2);
-void ov85_021E8748(UnkStruct_Ov85_021E5FE0 *a0, const UnkStruct_Ov85_Octet *a1);
-void ov85_021E8748(UnkStruct_Ov85_021E5FE0 *a0, const UnkStruct_Ov85_Octet *a1);
-BOOL ov85_021E8764(UnkStruct_Ov85_021E5FE0 *a0, fx32 a1, int a2);
-BOOL ov85_021E8764(UnkStruct_Ov85_021E5FE0 *a0, fx32 a1, int a2);
-BOOL ov85_021E87F0(Party *a0);
-BOOL ov85_021E87F0(Party *a0);

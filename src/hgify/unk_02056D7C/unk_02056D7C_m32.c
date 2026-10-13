@@ -5,23 +5,30 @@
 
 #include "unk_02035900.h"
 #include "unk_02056D7C.h"
-extern u8 *_021D41C4;
-// FUNCTION sub_02057A34: matching C (agent8)
-#pragma force_active on
-u16 sub_02057A34(int param_1) {
-    int iVar1;
 
-    if (_021D41C4 == 0) {
+typedef struct UnkStruct_sub_02057A34 {
+    u8 pad0[0x24];
+    u8 isActive[0x10];
+    u8 pad1[0x40];
+    struct {
+        u16 x;
+        u8 pad[6];
+    } playerLocation[8];
+} UnkStruct_sub_02057A34;
+
+extern UnkStruct_sub_02057A34 *_021D41C4;
+
+// FUNCTION sub_02057A34: matching C (twin)
+#pragma force_active on
+int sub_02057A34(int netId) {
+    if (!_021D41C4) {
+        return 0xffff;
+    } else if (sub_0203769C() == netId) {
+        return _021D41C4->playerLocation[netId].x;
+    } else if (!sub_02057A0C() || !_021D41C4->isActive[netId]) {
         return 0xffff;
     }
-    iVar1 = sub_0203769C();
-    if (param_1 == iVar1) {
-        return *(u16 *)(_021D41C4 + (param_1 << 3) + 0x74);
-    }
-    iVar1 = sub_02057A0C();
-    if (iVar1 == 0 || *(u8 *)(_021D41C4 + param_1 + 0x24) == 0) {
-        return 0xffff;
-    }
-    return *(u16 *)(_021D41C4 + (param_1 << 3) + 0x74);
+
+    return _021D41C4->playerLocation[netId].x;
 }
 #pragma force_active reset

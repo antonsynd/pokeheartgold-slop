@@ -3,35 +3,40 @@
 #pragma thumb on
 #include "global.h"
 
-#include "ghidra_compat.h"
 #include "heap.h"
 #include "sprite.h"
 #include "sys_task_api.h"
 #include "unk_0200A090.h"
-typedef void code(void);
-void ov01_021EB5A4(undefined4 *param_1);
-// FUNCTION ov01_021EB5A4: matching C (r2)
+
+typedef struct UnkStruct_ov01_021EB5A4 {
+    GF_2DGfxResMan *unk_00[4];
+    GF_2DGfxResHeader *unk_10;
+    u8 unk_14[0xF4 - 0x14];
+    SpriteList *unk_F4;
+    SysTask *unk_F8;
+} UnkStruct_ov01_021EB5A4;
+
+void ov01_021EB5A4(UnkStruct_ov01_021EB5A4 *param0);
+// FUNCTION ov01_021EB5A4: matching C (twin)
 #pragma force_active on
-void ov01_021EB5A4(undefined4 *param_1)
+void ov01_021EB5A4(UnkStruct_ov01_021EB5A4 *param0) {
+    int v0;
+    GF_2DGfxResHeader *v1;
 
-{
-    int iVar1;
-    undefined4 *puVar2;
+    for (v0 = 0; v0 < 4; v0++) {
+        v1 = GF2DGfxResHeader_GetByIndex(param0->unk_10, v0);
 
-    iVar1 = 0;
-    puVar2 = param_1;
-    do {
-        GF2DGfxResHeader_Reset(GF2DGfxResHeader_GetByIndex(param_1[4], iVar1));
-        Destroy2DGfxResObjMan(*puVar2);
-        iVar1 = iVar1 + 1;
-        puVar2 = puVar2 + 1;
-    } while (iVar1 < 4);
-    Heap_Free(param_1[4]);
-    param_1[4] = 0;
-    SpriteList_Delete(param_1[0x3d]);
-    param_1[0x3d] = 0;
-    SysTask_Destroy(param_1[0x3e]);
-    param_1[0x3e] = 0;
-    return;
+        GF2DGfxResHeader_Reset(v1);
+        Destroy2DGfxResObjMan(param0->unk_00[v0]);
+    }
+
+    Heap_Free(param0->unk_10);
+    param0->unk_10 = NULL;
+
+    SpriteList_Delete(param0->unk_F4);
+    param0->unk_F4 = NULL;
+
+    SysTask_Destroy(param0->unk_F8);
+    param0->unk_F8 = NULL;
 }
 #pragma force_active reset

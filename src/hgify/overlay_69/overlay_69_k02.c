@@ -10,32 +10,37 @@
 #include "overlay_manager.h"
 #include "system.h"
 #pragma thumb on
-#include "ghidra_compat.h"
-typedef int code();
-#define sub_021D1175 (*(undefined1 *)((unsigned char *)&gSystem + 0x69))
-undefined4 GeonetGlobe_Exit(undefined4 param_1);
-// FUNCTION GeonetGlobe_Exit: matching C (r5)
+
+typedef struct UnkStruct_GeonetGlobe_Exit {
+    u32 heapID;
+    u8 unk04[0xC010 - 0x04];
+    void *bgConfig;
+    u8 unkC014[0xC080 - 0xC014];
+    MessageFormat *messageFormat;
+    u8 unkC084[0xC2DC - 0xC084];
+    Camera *camera;
+} UnkStruct_GeonetGlobe_Exit;
+
+// FUNCTION GeonetGlobe_Exit: matching C (twin)
 #pragma force_active on
-undefined4 GeonetGlobe_Exit(undefined4 param_1)
+int GeonetGlobe_Exit(OverlayManager *appMan) {
+    UnkStruct_GeonetGlobe_Exit *v0 = OverlayManager_GetData(appMan);
+    u32 heapID = v0->heapID;
 
-{
-    undefined4 *puVar1;
-    undefined4 uVar2;
-
-    puVar1 = (undefined4 *)OverlayManager_GetData(param_1);
-    uVar2 = *puVar1;
     GfGfx_EngineATogglePlanes(4, 0);
     GfGfx_EngineBTogglePlanes(4, 0);
     GfGfx_EngineATogglePlanes(8, 0);
     GfGfx_EngineBTogglePlanes(8, 0);
-    Camera_Delete(puVar1[0x30b7]);
-    MessageFormat_Delete(puVar1[0x3020]);
+    Camera_Delete(v0->camera);
+    MessageFormat_Delete(v0->messageFormat);
     GF3dRender_DeleteSimpleManager();
-    Heap_Free(puVar1[0x3004]);
+    Heap_Free(v0->bgConfig);
     Main_SetVBlankIntrCB(0, 0);
-    OverlayManager_FreeData(param_1);
-    Heap_Destroy(uVar2);
-    sub_021D1175 = 0;
+    OverlayManager_FreeData(appMan);
+    Heap_Destroy(heapID);
+
+    gSystem.screensFlipped = 0;
+
     return 1;
 }
 #pragma force_active reset

@@ -3,31 +3,37 @@
 #pragma thumb on
 #include "global.h"
 
-#include "ghidra_compat.h"
 #include "heap.h"
 #include "sprite.h"
-typedef int code();
-void ov70_0223E120(int param_1);
-// FUNCTION ov70_0223E120: matching C (r2)
+
+typedef struct UnkStruct_ov70_0223E120 {
+    u32 tileData;
+    u32 paletteIndex;
+    Sprite *sprite;
+    u8 vramOffset[0x200];
+} UnkStruct_ov70_0223E120;
+
+typedef struct UnkStruct_ov70_0223E120_State {
+    u8 unk_000[0x1200];
+    UnkStruct_ov70_0223E120 *selectPokemonIconHeapPtr;
+} UnkStruct_ov70_0223E120_State;
+
+void ov70_0223E120(UnkStruct_ov70_0223E120_State *statePtr);
+// FUNCTION ov70_0223E120: matching C (twin)
 #pragma force_active on
-void ov70_0223E120(int param_1)
+void ov70_0223E120(UnkStruct_ov70_0223E120_State *statePtr) {
+    int i;
+    UnkStruct_ov70_0223E120 *monIcon = statePtr->selectPokemonIconHeapPtr;
 
-{
-    int iVar1;
-    undefined4 *puVar2;
+    for (i = 0; i < 30; i++, monIcon++) {
+        if (monIcon->sprite) {
+            DC_FlushRange(monIcon->vramOffset, 0x200);
+            GX_LoadOBJ(monIcon->vramOffset, monIcon->tileData, 0x200);
 
-    puVar2 = *(undefined4 **)(param_1 + 0x1200);
-    iVar1 = 0;
-    do {
-        if (puVar2[2] != 0) {
-            DC_FlushRange(puVar2 + 3, 0x200);
-            GX_LoadOBJ(puVar2 + 3, *puVar2, 0x200);
-            Sprite_SetPaletteOverride(puVar2[2], puVar2[1]);
+            Sprite_SetPaletteOverride(monIcon->sprite, monIcon->paletteIndex);
         }
-        iVar1 = iVar1 + 1;
-        puVar2 = puVar2 + 0x83;
-    } while (iVar1 < 0x1e);
-    Heap_Free(*(undefined4 *)(param_1 + 0x1200));
-    return;
+    }
+
+    Heap_Free(statePtr->selectPokemonIconHeapPtr);
 }
 #pragma force_active reset

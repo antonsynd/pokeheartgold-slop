@@ -5,29 +5,28 @@
 
 #include "heap.h"
 #include "system.h"
-typedef struct {
-    u32 unk0;
-    u32 unk4;
-    u32 unk8;
-    void *pRawData;
-} PalData;
+
 extern char _0210F930[];
-// FUNCTION sub_0203A4D4: matching C (agent7)
+
+// FUNCTION sub_0203A4D4: matching C (twin)
 #pragma force_active on
-void sub_0203A4D4(int mode, int unused, u32 offset, int heapId) {
-    void *buf;
-    PalData *pal;
-    buf = Heap_AllocAtEnd(heapId, 600);
-    if (buf != 0) {
-        sub_0201A3F8(_0210F930, &buf);
-        DC_FlushRange(buf, 600);
-        NNS_G2dGetUnpackedPaletteData(buf, (NNSG2dPaletteData **)&pal);
-        if (mode == 1) {
-            GX_LoadOBJPltt(pal->pRawData, offset, 0x20);
+void sub_0203A4D4(NNS_G2D_VRAM_TYPE vramType, BOOL unusedIsWifi, u32 offset, enum HeapID heapID) {
+    void *heapPtr = Heap_AllocAtEnd(heapID, 600);
+
+    if (heapPtr) {
+        sub_0201A3F8(_0210F930, &heapPtr);
+        DC_FlushRange(heapPtr, 600);
+
+        NNSG2dPaletteData *paletteData;
+        NNS_G2dGetUnpackedPaletteData(heapPtr, &paletteData);
+
+        if (vramType == NNS_G2D_VRAM_TYPE_2DMAIN) {
+            GX_LoadOBJPltt(paletteData->pRawData, offset, 0x20);
         } else {
-            GXS_LoadOBJPltt(pal->pRawData, offset, 0x20);
+            GXS_LoadOBJPltt(paletteData->pRawData, offset, 0x20);
         }
-        Heap_Free(buf);
+
+        Heap_Free(heapPtr);
     }
 }
 #pragma force_active reset

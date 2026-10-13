@@ -3,31 +3,31 @@
 #pragma thumb on
 #include "global.h"
 
-#include "move.h"
-struct OvMoves {
-    char pad[0x264];
-    u16 moves[4];
-};
-void sub_0208BA60(void);
-void sub_0208BA88(struct OvMoves *, u8, u8, u8);
-void sub_0208BE70(struct OvMoves *);
-// FUNCTION sub_0208B55C: matching C (agent8)
-#pragma force_active on
-void sub_0208B55C(struct OvMoves *p) {
-    u16 i;
-    u16 uVar1;
-    int uVar2;
+#include "constants/moves.h"
 
+#include "move.h"
+
+typedef struct UnkStruct_sub_0208B55C {
+    u8 unk_000[0x264];
+    u16 moves[4];
+} UnkStruct_sub_0208B55C;
+
+void sub_0208BA60(void);
+void sub_0208BA88(UnkStruct_sub_0208B55C *, u8, u8, u8);
+void sub_0208BE70(UnkStruct_sub_0208B55C *);
+// FUNCTION sub_0208B55C: matching C (twin)
+#pragma force_active on
+void sub_0208B55C(UnkStruct_sub_0208B55C *summaryScreen) {
     sub_0208BA60();
-    i = 0;
-    do {
-        uVar1 = p->moves[i];
-        if (uVar1 != 0) {
-            uVar2 = GetMoveAttr(uVar1, 3);
-            sub_0208BA88(p, (u8)(i + 0xd), (u8)(i + 5), (u8)uVar2);
+
+    for (u16 i = 0; i < 4; i++) {
+        if (summaryScreen->moves[i] == MOVE_NONE) {
+            continue;
         }
-        i++;
-    } while (i < 4);
-    sub_0208BE70(p);
+
+        sub_0208BA88(summaryScreen, (u8)(0xd + i), (u8)(5 + i), (u8)GetMoveAttr(summaryScreen->moves[i], 3));
+    }
+
+    sub_0208BE70(summaryScreen);
 }
 #pragma force_active reset

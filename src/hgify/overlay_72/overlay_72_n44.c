@@ -3,28 +3,28 @@
 #pragma thumb on
 #include "global.h"
 
-#include "ghidra_compat.h"
 #include "msgdata.h"
 #include "pm_string.h"
-typedef int code();
-void ov72_02239040(int param_1);
-// FUNCTION ov72_02239040: matching C (r2)
+
+typedef struct UnkStruct_ov72_02239040 {
+    u8 unk_000[0xbd4];
+    MsgData *msgLoader1;
+    u8 unk_bd8[0xbe0 - 0xbd8];
+    String *msgString;
+    String *titleString;
+    String *opponentIdxString;
+    String *rankString;
+    String *errorString;
+} UnkStruct_ov72_02239040;
+
+void ov72_02239040(UnkStruct_ov72_02239040 *appState);
+// FUNCTION ov72_02239040: matching C (twin)
 #pragma force_active on
-void ov72_02239040(int param_1)
-
-{
-    undefined4 uVar1;
-
-    uVar1 = String_New(0xb4, 0x43);
-    *(undefined4 *)(param_1 + 0xbe0) = uVar1;
-    uVar1 = String_New(4, 0x43);
-    *(undefined4 *)(param_1 + 0xbe8) = uVar1;
-    uVar1 = String_New(3, 0x43);
-    *(undefined4 *)(param_1 + 0xbec) = uVar1;
-    uVar1 = NewString_ReadMsgData(*(undefined4 *)(param_1 + 0xbd4), 0xc);
-    *(undefined4 *)(param_1 + 0xbe4) = uVar1;
-    uVar1 = String_New(0x100, 0x43);
-    *(undefined4 *)(param_1 + 0xbf0) = uVar1;
-    return;
+void ov72_02239040(UnkStruct_ov72_02239040 *appState) {
+    appState->msgString = String_New(90 * 2, HEAP_ID_67);
+    appState->opponentIdxString = String_New(4, HEAP_ID_67);
+    appState->rankString = String_New(3, HEAP_ID_67);
+    appState->titleString = NewString_ReadMsgData(appState->msgLoader1, 12);
+    appState->errorString = String_New(16 * 8 * 2, HEAP_ID_67);
 }
 #pragma force_active reset

@@ -3,37 +3,35 @@
 #pragma thumb on
 #include "global.h"
 
-#include "ghidra_compat.h"
 #include "message_format.h"
 #include "msgdata.h"
 #include "pm_string.h"
-typedef int code();
-extern undefined ov47_02259E9C;
-void ov47_02258C70(undefined4 *param_1, undefined4 param_2, undefined4 param_3);
-// FUNCTION ov47_02258C70: matching C (perm2)
+
+typedef struct UnkStruct_ov47_02258C70 {
+    MsgData *unk_00[9];
+    MessageFormat *unk_24;
+    String *unk_28;
+    String *unk_2C;
+    void *unk_30;
+} UnkStruct_ov47_02258C70;
+
+extern const u32 ov47_02259E9C[9];
+
+void ov47_02258C70(UnkStruct_ov47_02258C70 *param0, void *param1, enum HeapID heapID);
+
+// FUNCTION ov47_02258C70: matching C (twin)
 #pragma force_active on
-void ov47_02258C70(undefined4 *param_1, undefined4 param_2, undefined4 param_3) {
-    undefined4 uVar1;
-    int iVar4;
-    undefined4 *puVar2;
-    undefined4 *puVar3;
-    puVar2 = (undefined4 *)(&ov47_02259E9C);
-    param_1[0xc] = param_2;
-    iVar4 = 0;
-    puVar3 = param_1;
-    do {
-        uVar1 = NewMsgDataFromNarc(0, 0x1b, *puVar2, param_3);
-        iVar4 = iVar4 + 1;
-        puVar2 = puVar2 + 1;
-        *puVar3 = uVar1;
-        puVar3 = puVar3 + 1;
-    } while (iVar4 < 9);
-    uVar1 = MessageFormat_New(param_3);
-    param_1[9] = uVar1;
-    uVar1 = String_New(0x100, param_3);
-    param_1[10] = uVar1;
-    uVar1 = String_New(0x100, param_3);
-    param_1[0xb] = uVar1;
-    return;
+void ov47_02258C70(UnkStruct_ov47_02258C70 *param0, void *param1, enum HeapID heapID) {
+    int v0;
+
+    param0->unk_30 = param1;
+
+    for (v0 = 0; v0 < 9; v0++) {
+        param0->unk_00[v0] = NewMsgDataFromNarc(0, NARC_msgdata_msg, ov47_02259E9C[v0], heapID);
+    }
+
+    param0->unk_24 = MessageFormat_New(heapID);
+    param0->unk_28 = String_New(256, heapID);
+    param0->unk_2C = String_New(256, heapID);
 }
 #pragma force_active reset

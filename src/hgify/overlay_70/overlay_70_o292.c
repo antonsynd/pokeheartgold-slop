@@ -3,28 +3,25 @@
 #pragma thumb on
 #include "global.h"
 
-#include "ghidra_compat.h"
+#include "bg_window.h"
 #include "msgdata.h"
 #include "pm_string.h"
-typedef int code();
-undefined4 ov70_02245084();
-void ov70_0223F244(undefined4 param_1, undefined4 param_2, undefined4 param_3, int param_4, undefined4 param_5, undefined4 param_6, undefined4 param_7);
-// FUNCTION ov70_0223F244: matching C (agent8)
+
+void ov70_02245084(Window *window, String *string, int param2, int y, int centered, u32 textColor);
+void ov70_0223F244(Window *window, MsgData *countryMessageLoader, MsgData *gtsMessageLoader, int messageId, int centered, int y, u32 textColor);
+// FUNCTION ov70_0223F244: matching C (twin)
 #pragma force_active on
-void ov70_0223F244(undefined4 param_1, undefined4 param_2, undefined4 param_3, int param_4, undefined4 param_5, undefined4 param_6, undefined4 param_7)
+void ov70_0223F244(Window *window, MsgData *countryMessageLoader, MsgData *gtsMessageLoader, int messageId, int centered, int y, u32 textColor) {
+    String *string;
 
-{
-    undefined4 uVar1;
-
-    if (param_4 != 0) {
-        uVar1 = NewString_ReadMsgData(param_2, param_4);
-        ov70_02245084(param_1, uVar1, 0, param_6, param_5, param_7);
-        String_Delete(uVar1);
-        return;
+    if (messageId != 0) {
+        string = NewString_ReadMsgData(countryMessageLoader, messageId);
+        ov70_02245084(window, string, 0, y, centered, textColor);
+        String_Delete(string);
+    } else {
+        string = NewString_ReadMsgData(gtsMessageLoader, 0xad);
+        ov70_02245084(window, string, 0, y, centered, textColor);
+        String_Delete(string);
     }
-    uVar1 = NewString_ReadMsgData(param_3, 0xad);
-    ov70_02245084(param_1, uVar1, 0, param_6, param_5, param_7);
-    String_Delete(uVar1);
-    return;
 }
 #pragma force_active reset
