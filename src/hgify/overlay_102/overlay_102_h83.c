@@ -2,18 +2,17 @@
 #pragma warning_errors off
 #pragma thumb on
 #include "global.h"
-void *Heap_Alloc(int heapId, u32 size);
-void Main_SetVBlankIntrCB(int a, int b);
-void HBlankInterruptDisable(void);
+
+#include "bg_window.h"
+#include "font.h"
+#include "heap.h"
+#include "sys_task_api.h"
+#include "system.h"
+#include "unk_02009D48.h"
+#include "unk_0200B150.h"
 void *ov102_021E8F68(u32 a);
 void ov102_021E9198(void *p);
-void NNS_G2dInitOamManagerModule(void);
-void OamManager_Create(int, int, int, int, int, int, int, int, int);
-void *G2dRenderer_Init(int numSprites, void *renderer, int heapId);
-void *BgConfig_Alloc(int heapId);
-void *SysTask_CreateOnMainQueue(void *func, void *data, u32 priority);
 void *ov102_021E93D4(void *func, void *data, u32 priority);
-void FontID_Alloc(int fontId, int heapId);
 void ov102_021E93DC(void *data);
 void ov102_021E93E0(void *data);
 void *ov102_021E909C(u32 param_1, u32 param_2);
@@ -33,7 +32,7 @@ void *ov102_021E909C(u32 param_1, u32 param_2) {
     ov102_021E9198(puVar1);
     NNS_G2dInitOamManagerModule();
     OamManager_Create(1, 0x7f, 0, 0x20, 0, 0x7f, 0, 0x20, 0x23);
-    puVar1[9] = (u32)G2dRenderer_Init(0x80, puVar1 + 10, 0x23);
+    puVar1[9] = (u32)G2dRenderer_Init(0x80, (struct G2dRenderer *)(puVar1 + 10), 0x23);
     puVar1[8] = (u32)BgConfig_Alloc(0x23);
     puVar1[0] = (u32)SysTask_CreateOnMainQueue((void *)ov102_021E93DC, puVar1, 2);
     puVar1[1] = (u32)ov102_021E93D4((void *)ov102_021E93E0, puVar1, 1);

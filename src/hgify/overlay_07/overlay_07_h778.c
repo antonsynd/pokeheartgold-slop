@@ -2,6 +2,8 @@
 #pragma warning_errors off
 #pragma thumb on
 #include "global.h"
+
+#include "sprite_system.h"
 typedef struct UnkTemplate_ov07_0223441C {
     s16 x;
     s16 y;
@@ -26,12 +28,6 @@ typedef struct UnkStruct_ov07_0223441C {
     void *cellActorSys;
 } UnkStruct_ov07_0223441C;
 void ov07_022341A4(void *ctx, s16 *x, s16 *y);
-void *SpriteSystem_NewSprite(void *sys, void *mgr, void *tmpl);
-void ManagedSprite_SetDrawFlag(void *sprite, int flag);
-void ManagedSprite_SetAffineOverwriteMode(void *sprite, int mode);
-void ManagedSprite_SetAnimationFrame(void *sprite, int frame);
-void ManagedSprite_SetAnim(void *sprite, int anim);
-void ManagedSprite_TickFrame(void *sprite);
 void ov07_0221C69C(void);
 void ov07_0223441C(UnkStruct_ov07_0223441C *ctx);
 // FUNCTION ov07_0223441C: matching C (r0)
@@ -53,7 +49,7 @@ void ov07_0223441C(UnkStruct_ov07_0223441C *ctx) {
         tmpl.resources[i] = ctx->target + 6000;
     }
 
-    ctx->sprite = SpriteSystem_NewSprite(ctx->cellActorSys, ctx->spriteMan, &tmpl);
+    ctx->sprite = SpriteSystem_NewSprite(ctx->cellActorSys, ctx->spriteMan, (const ManagedSpriteTemplate *)&tmpl);
     ManagedSprite_SetDrawFlag(ctx->sprite, 1);
     ManagedSprite_SetAffineOverwriteMode(ctx->sprite, 2);
     ManagedSprite_SetAnimationFrame(ctx->sprite, 0);

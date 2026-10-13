@@ -2,6 +2,11 @@
 #pragma warning_errors off
 #pragma thumb on
 #include "global.h"
+
+#include "battle/battle_system.h"
+
+#include "sys_task.h"
+#include "systask_environment.h"
 typedef struct UnkContext_ov08_0221BE20 {
     u8 pad_00[8];
     void *battleSys;
@@ -24,12 +29,7 @@ typedef struct UnkTaskData_ov08_0221BE20 {
     u8 pad_2079[0x208f - 0x2079];
     u8 unk_208F;
 } UnkTaskData_ov08_0221BE20;
-void ov08_0221BE98(void *task, void *data);
-void *CreateSysTaskAndEnvironment(void (*func)(void *, void *), int size, int priority, int heapID);
-void *SysTask_GetData(void *task);
-void *BattleSystem_GetBgConfig(void *battleSys);
-void *BattleSystem_GetPaletteData(void *battleSys);
-u8 ov12_0223AB0C(void *battleSys, int battler);
+void ov08_0221BE98(SysTask *task, void *data);
 void ov08_0221BE20(UnkContext_ov08_0221BE20 *ctx);
 // FUNCTION ov08_0221BE20: matching C (agent14)
 #pragma force_active on

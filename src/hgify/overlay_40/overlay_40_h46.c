@@ -2,6 +2,11 @@
 #pragma warning_errors off
 #pragma thumb on
 #include "global.h"
+
+#include "bg_window.h"
+#include "obj_char_transfer.h"
+#include "sprite_system.h"
+#include "unk_02013534.h"
 typedef struct {
     u32 unk00;
     void *unk04;
@@ -16,18 +21,6 @@ typedef struct {
     int unk28;
     u32 unk2C;
 } Ov40TextObjArgs;
-void InitWindow(void *window);
-void AddTextWindowTopLeftCorner(void *param, void *window, int x, int y, int a, int b);
-u32 sub_02013910(void *window, int value);
-u32 sub_02013688(void *window, int value, int value2);
-void sub_02021AC8(u32 a, int b, int c, void *d);
-void ManagedSprite_GetPositionXY(void *sprite, s16 *x, s16 *y);
-void *SpriteManager_GetSpriteList(void *spriteMan);
-void *SpriteManager_FindPlttResourceProxy(void *spriteMan, int id);
-void *TextOBJ_Create(Ov40TextObjArgs *args, u32 unk);
-void sub_020138E0(void *textObj, int flag);
-void RemoveWindow(void *window);
-void TextOBJ_SetSpritesDrawFlag(void *textObj, int flag);
 void ov40_0222D5AC(int param_1, int param_2, int param_3);
 // FUNCTION ov40_0222D5AC: matching C (agent17)
 #pragma force_active on
@@ -44,11 +37,11 @@ void ov40_0222D5AC(int param_1, int param_2, int param_3) {
     if (param_3 == 2) {
         uVar2 = 10000;
     }
-    InitWindow(auStack_54);
-    AddTextWindowTopLeftCorner(*(void **)(param_2 + 0x10), auStack_54, 0x14, 2, 0, 0);
-    uVar1 = sub_02013910(auStack_54, 0x6d);
+    InitWindow((Window *)auStack_54);
+    AddTextWindowTopLeftCorner(*(void **)(param_2 + 0x10), (Window *)auStack_54, 0x14, 2, 0, 0);
+    uVar1 = sub_02013910((Window *)auStack_54, 0x6d);
     *(u32 *)(param_1 + 0xc) = uVar1;
-    uVar1 = sub_02013688(auStack_54, param_3, 0x6d);
+    uVar1 = sub_02013688((Window *)auStack_54, param_3, 0x6d);
     sub_02021AC8(uVar1, 1, param_3, (void *)(param_1 + 0x10));
     ManagedSprite_GetPositionXY(*(void **)(param_1 + 4), &sStack_56, &sStack_58);
     args.unk00 = *(u32 *)(param_2 + 0x3c);
@@ -63,10 +56,10 @@ void ov40_0222D5AC(int param_1, int param_2, int param_3) {
     args.unk24 = 0;
     args.unk28 = param_3;
     args.unk2C = 0x6d;
-    textObj = TextOBJ_Create(&args, *(u32 *)(param_1 + 0xc));
+    textObj = TextOBJ_Create((const struct TextOBJTemplate *)&args, *(u32 *)(param_1 + 0xc));
     *(void **)(param_1 + 8) = textObj;
     sub_020138E0(textObj, 1);
-    RemoveWindow(auStack_54);
+    RemoveWindow((Window *)auStack_54);
     TextOBJ_SetSpritesDrawFlag(*(void **)(param_1 + 8), 0);
 }
 #pragma force_active reset

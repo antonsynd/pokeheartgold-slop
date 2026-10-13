@@ -2,8 +2,10 @@
 #pragma require_prototypes off
 #pragma warning_errors off
 #include "global.h"
+
+#include "error_handling.h"
+#include "unk_02018000.h"
 #pragma thumb on
-void GF_AssertFail(void);
 typedef struct UnkStruct_ov70_02260E8C_t UnkStruct_ov70_02260E8C;
 enum RotationAxis {
     ROTATION_AXIS_X = 0,
@@ -32,10 +34,6 @@ typedef struct Easy3DObject {
     u16 rotation[ROTATION_AXIS_COUNT];
     u8 padding_76[2];
 } Easy3DObject;
-void sub_02018198(Easy3DAnim *anim, fx32 frame);
-void sub_020181D4(Easy3DObject *obj, Easy3DAnim *anim);
-void sub_020181E0(Easy3DObject *obj, Easy3DAnim *anim);
-void sub_020181EC(Easy3DObject *obj);
 BOOL ov49_022588A0(const Easy3DModel *param0, const Easy3DObject *param1);
 struct UnkStruct_ov70_02260E8C_t {
     u8 unk_00;
@@ -78,16 +76,16 @@ void ov49_0225DAFC(UnkStruct_ov70_02260E8C *param0, UnkStruct_ov70_022618C8 *par
 
     for (v1 = 0; v1 < 4; v1++) {
         if (param0->unk_7C[v1]) {
-            sub_020181D4(&param0->unk_04, &param1->unk_38[param0->unk_02][v1]);
-            sub_02018198(&param1->unk_38[param0->unk_02][v1], param0->unk_8C[v1]);
+            sub_020181D4((struct UnkStruct_020181B0 *)&param0->unk_04, (struct UnkStruct_020180BC *)&param1->unk_38[param0->unk_02][v1]);
+            sub_02018198((struct UnkStruct_020180BC *)&param1->unk_38[param0->unk_02][v1], param0->unk_8C[v1]);
         }
     }
 
-    sub_020181EC(&param0->unk_04);
+    sub_020181EC((struct UnkStruct_020181B0 *)&param0->unk_04);
 
     for (v1 = 0; v1 < 4; v1++) {
         if (param0->unk_7C[v1]) {
-            sub_020181E0(&param0->unk_04, &param1->unk_38[param0->unk_02][v1]);
+            sub_020181E0((struct UnkStruct_020181B0 *)&param0->unk_04, (struct UnkStruct_020180BC *)&param1->unk_38[param0->unk_02][v1]);
         }
     }
 

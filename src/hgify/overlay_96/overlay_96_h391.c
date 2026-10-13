@@ -2,6 +2,10 @@
 #pragma warning_errors off
 #pragma thumb on
 #include "global.h"
+
+#include "gf_gfx_planes.h"
+#include "sprite_system.h"
+#include "unk_02009D48.h"
 typedef struct {
     u32 w[6];
 } Ov96Tab24;
@@ -14,15 +18,6 @@ typedef struct {
 extern const Ov96Tab24 ov96_0221BA68;
 extern const Ov96Tab32 ov96_0221BAA0;
 extern const Ov96Tab20 ov96_0221BA54;
-u32 SpriteSystem_Alloc(u32 a);
-u32 SpriteManager_New(void);
-void SpriteSystem_Init(u32 a, void *b, void *c, u32 d);
-void SpriteSystem_InitSprites(u32 a, u32 b, u32 c);
-void SpriteSystem_InitManagerWithCapacities(u32 a, u32 b, void *c);
-void GfGfx_EngineATogglePlanes(int a, int b);
-void GfGfx_EngineBTogglePlanes(int a, int b);
-u32 SpriteSystem_GetRenderer(u32 a);
-void G2dRenderer_SetSubSurfaceCoords(u32 a, int b, int c);
 void ov96_021EF8C0(u8 *a);
 void ov96_021EF99C(u8 *a);
 // FUNCTION ov96_021EF818: matching C (agent16)
@@ -38,10 +33,10 @@ void ov96_021EF818(u8 *param_1) {
     c = ov96_0221BA54;
     c.w[0] = 4;
     *(u32 *)(param_1 + 0x10) = SpriteSystem_Alloc(*(u32 *)(param_1 + 0xc));
-    *(u32 *)(param_1 + 0x14) = SpriteManager_New();
-    SpriteSystem_Init(*(u32 *)(param_1 + 0x10), &b, &c, 0x20);
+    *(u32 *)(param_1 + 0x14) = SpriteManager_New((SpriteSystem *)*(u32 *)(param_1 + 0x10));
+    SpriteSystem_Init(*(u32 *)(param_1 + 0x10), (const OamManagerParam *)&b, (const OamCharTransferParam *)&c, 0x20);
     SpriteSystem_InitSprites(*(u32 *)(param_1 + 0x10), *(u32 *)(param_1 + 0x14), 4);
-    SpriteSystem_InitManagerWithCapacities(*(u32 *)(param_1 + 0x10), *(u32 *)(param_1 + 0x14), &a);
+    SpriteSystem_InitManagerWithCapacities(*(u32 *)(param_1 + 0x10), *(u32 *)(param_1 + 0x14), (union SpriteResourceCountsListUnion *)&a);
     GfGfx_EngineATogglePlanes(0x10, 1);
     GfGfx_EngineBTogglePlanes(0x10, 1);
     uVar1 = SpriteSystem_GetRenderer(*(u32 *)(param_1 + 0x10));

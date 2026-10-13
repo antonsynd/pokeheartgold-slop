@@ -2,12 +2,13 @@
 #pragma warning_errors off
 #pragma thumb on
 #include "global.h"
+
+#include "unk_02005D10.h"
+#include "unk_02037C94.h"
 int ov70_02237F38(void);
 int ov70_02237F58(void);
-void StopSE(int a);
 void ov70_02241184(u8 *a, int b, int c);
 void ov70_0223CC04(u32 a, u8 *b, u32 c, int d);
-void sub_020399EC(void);
 // FUNCTION ov70_0223C0C8: matching C (agent16)
 #pragma force_active on
 u32 ov70_0223C0C8(u8 *param_1) {
@@ -26,7 +27,7 @@ u32 ov70_0223C0C8(u8 *param_1) {
         case 6:
         case 7:
             ((int *)param_1)[0x4a] = iVar1;
-            StopSE(0x5fe);
+            StopSE(0x5fe, 0);
             ov70_02241184(param_1, iVar1, 1);
             if (iVar1 == 0) {
                 ov70_0223CC04(*(u32 *)(param_1 + 4), param_1 + 0x10d8, *(u32 *)(param_1 + 0xba0), 0);

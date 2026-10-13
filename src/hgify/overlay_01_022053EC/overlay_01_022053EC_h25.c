@@ -3,27 +3,20 @@
 #pragma thumb on
 #define TRUE  1
 #define FALSE 0
-typedef unsigned char u8;
-typedef unsigned short u16;
-typedef unsigned int u32;
-typedef signed char s8;
-typedef signed short s16;
-typedef signed int s32;
-typedef int BOOL;
+#include "global.h"
+
+#include "field_system.h"
+#include "follow_mon.h"
 #include "ghidra_compat.h"
+#include "map_object.h"
+#include "task.h"
+#include "unk_02062108.h"
 #define NULL ((void *)0)
-typedef struct FieldSystem {
+
+typedef struct FieldSystemView_ov01_02205A60 {
     u8 pad[0xe4];
     void *mapObj;
-} FieldSystem;
-FieldSystem *TaskManager_GetFieldSystem(void *);
-int *TaskManager_GetStatePtr(void *);
-BOOL FollowMon_IsActive(FieldSystem *);
-BOOL MapObject_CheckMovementPaused(void *);
-void MapObject_UnpauseMovement(void *);
-BOOL MapObject_IsMovementPaused(void *);
-BOOL MapObject_AreBitsSetForMovementScriptInit(void *);
-void MapObject_PauseMovement(void *);
+} FieldSystemView_ov01_02205A60;
 // FUNCTION ov01_02205A60: matching C (agent5)
 #pragma force_active on
 BOOL ov01_02205A60(void *taskman) {
@@ -34,7 +27,7 @@ BOOL ov01_02205A60(void *taskman) {
     if (!FollowMon_IsActive(fsys)) {
         return TRUE;
     }
-    obj = fsys->mapObj;
+    obj = ((FieldSystemView_ov01_02205A60 *)fsys)->mapObj;
     switch (*state) {
     case 0:
         if (MapObject_CheckMovementPaused(obj)) {

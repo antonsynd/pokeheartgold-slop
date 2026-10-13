@@ -2,16 +2,14 @@
 #pragma warning_errors off
 #pragma thumb on
 #include "global.h"
-void *TaskManager_GetEnvironment(void);
+
+#include "player_avatar.h"
+#include "task.h"
+#include "unk_02005D10.h"
+#include "unk_02062108.h"
 void *sub_0206234C(int param_1, int param_2);
 int ov01_021F2004(int param_1, int param_2, int param_3);
-void PlaySE(u32 sndseq);
-void MapObject_SetHeldMovement(void *mapObject, void *movement);
-BOOL MapObject_AreBitsSetForMovementScriptInit(void *mapObject);
-void MapObject_ClearHeldMovementIfActive(void *mapObject);
 void ov01_021F30F4(int *param_1);
-BOOL MapObject_IsMovementPaused(void *mapObject);
-void *PlayerAvatar_GetMapObject(int param_1);
 int sub_0205DE38(int param_1);
 int ov01_021F1ECC(int param_1);
 // FUNCTION ov01_021F1ECC: matching C (agent17)
@@ -23,7 +21,7 @@ int ov01_021F1ECC(int param_1) {
     void *uVar4;
     int iVar5;
 
-    piVar1 = (int *)TaskManager_GetEnvironment();
+    piVar1 = (int *)TaskManager_GetEnvironment((TaskManager *)param_1);
     uVar2 = PlayerAvatar_GetMapObject(piVar1[3]);
     iVar3 = *piVar1;
     iVar5 = piVar1[4];

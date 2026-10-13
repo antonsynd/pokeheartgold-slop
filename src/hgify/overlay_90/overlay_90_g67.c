@@ -2,11 +2,15 @@
 #pragma warning_errors off
 #pragma thumb on
 #include <string.h>
-typedef unsigned char u8;
-typedef unsigned short u16;
-typedef unsigned int u32;
-typedef volatile u16 vu16;
-typedef volatile u32 vu32;
+
+#include "global.h"
+
+#include "game_stats.h"
+#include "gf_gfx_planes.h"
+#include "heap.h"
+#include "overlay_00_thumb.h"
+#include "sound_02004A44.h"
+#include "sys_task_api.h"
 typedef struct B16 {
     u8 b[16];
 } B16;
@@ -29,29 +33,21 @@ typedef struct S {
     void *task1;
     void *task2;
 } S;
-void *Heap_Alloc(int, u32);
 void ov90_02258FF0(void *, void *, void *, int, int);
 void ov90_0225A204(void *, void *);
-void Sound_SetSceneAndPlayBGM(u8, u16, int);
 void ov90_02259184(void *, int);
 void ov90_0225C178(S *);
 void ov90_022590CC(void *, int, int, int, int);
 void ov90_02258DD0(void *, int, int);
-void GfGfx_SetBanks(void *);
 extern u8 ov90_0225C2CC[];
 extern u8 ov90_0225C2A4[];
 extern u8 ov90_0225C39C[];
 int ov90_022588A4(void *, int);
-void ov00_021E69A8(int);
 void ov90_0225938C(void *, void *, u32, int, int);
-void GameStats_AddScore(void *, int);
 int ov90_0225888C(void *, int);
 void ov90_022596C8(S *, int);
-void *SysTask_CreateOnVWaitQueue(void *, void *, u32);
-void *Save_GameStats_Get(u32);
-void *SysTask_CreateOnMainQueue(void *, void *, u32);
-void ov90_02259794(void *, void *);
-void ov90_02259B18(void *, void *);
+void ov90_02259794(struct SysTask *, void *);
+void ov90_02259B18(struct SysTask *, void *);
 // FUNCTION ov90_02259588: matching C (agent9)
 #pragma force_active on
 S *ov90_02259588(B16 *src, u16 a, int heapId) {
@@ -65,7 +61,7 @@ S *ov90_02259588(B16 *src, u16 a, int heapId) {
     *(vu16 *)0x04001050 = 0;
     *(vu32 *)0x04000000 &= 0xFFFF1FFF;
     *(vu32 *)0x04001000 &= 0xFFFF1FFF;
-    GfGfx_SetBanks(ov90_0225C2CC);
+    GfGfx_SetBanks((const struct GraphicsBanks *)ov90_0225C2CC);
     p->heapId = heapId;
     ov90_0225C178(p);
     ov90_0225A204((u8 *)p + 0x18, (u8 *)p + 8);

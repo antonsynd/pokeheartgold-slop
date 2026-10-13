@@ -2,6 +2,8 @@
 #pragma warning_errors off
 #pragma thumb on
 #include "global.h"
+
+#include "unk_02018000.h"
 typedef struct UnkStruct_ov91_02260378 {
     u8 unk_00[0x214];
     u8 unk_214[0x14];
@@ -11,7 +13,6 @@ typedef struct UnkStruct_ov91_02260378 {
 } UnkStruct_ov91_02260378;
 extern const u8 ov91_02261C12[];
 extern const u8 ov91_02261C13[];
-extern void sub_02018198(void *a0, fx32 frame);
 void ov91_02260378(UnkStruct_ov91_02260378 *param0);
 // FUNCTION ov91_02260378: matching C (r0)
 #pragma force_active on
@@ -40,6 +41,6 @@ void ov91_02260378(UnkStruct_ov91_02260378 *param0) {
         }
     }
 
-    sub_02018198(param0->unk_214, param0->unk_228);
+    sub_02018198((struct UnkStruct_020180BC *)param0->unk_214, param0->unk_228);
 }
 #pragma force_active reset

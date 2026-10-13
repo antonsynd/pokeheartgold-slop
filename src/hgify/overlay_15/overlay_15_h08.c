@@ -2,6 +2,8 @@
 #pragma warning_errors off
 #pragma thumb on
 #include "global.h"
+
+#include "bg_window.h"
 typedef struct Ov15Cfg {
     u32 a;
     u32 b;
@@ -16,11 +18,6 @@ extern u8 ov15_02200720[];
 extern u8 ov15_0220073C[];
 extern u8 ov15_02200758[];
 extern u8 ov15_02200774[];
-void SetBothScreensModesAndDisable(void *cfg);
-void InitBgFromTemplate(u8 *param_1, int bgId, void *tmpl, int a);
-void BgClearTilemapBufferAndCommit(u8 *param_1, int bgId);
-void BG_ClearCharDataRange(int bgId, u32 a, int b, int c);
-void G2x_SetBlendAlpha_(u32 reg, int a, int b, int c, int d);
 void ov15_021F99A4(u8 *param_1);
 // FUNCTION ov15_021F99A4: matching C (agent17)
 #pragma force_active on
@@ -28,19 +25,19 @@ void ov15_021F99A4(u8 *param_1) {
     Ov15Cfg uStack_1c;
 
     uStack_1c = ov15_02200518;
-    SetBothScreensModesAndDisable(&uStack_1c);
-    InitBgFromTemplate(param_1, 1, ov15_022006CC, 0);
-    InitBgFromTemplate(param_1, 2, ov15_022006E8, 0);
-    InitBgFromTemplate(param_1, 3, ov15_02200704, 0);
-    BgClearTilemapBufferAndCommit(param_1, 1);
-    BgClearTilemapBufferAndCommit(param_1, 3);
+    SetBothScreensModesAndDisable((const GraphicsModes *)&uStack_1c);
+    InitBgFromTemplate((BgConfig *)param_1, 1, (const BgTemplate *)ov15_022006CC, 0);
+    InitBgFromTemplate((BgConfig *)param_1, 2, (const BgTemplate *)ov15_022006E8, 0);
+    InitBgFromTemplate((BgConfig *)param_1, 3, (const BgTemplate *)ov15_02200704, 0);
+    BgClearTilemapBufferAndCommit((BgConfig *)param_1, 1);
+    BgClearTilemapBufferAndCommit((BgConfig *)param_1, 3);
     BG_ClearCharDataRange(1, 0x20, 0, 6);
-    InitBgFromTemplate(param_1, 4, ov15_02200720, 0);
-    InitBgFromTemplate(param_1, 5, ov15_0220073C, 0);
-    InitBgFromTemplate(param_1, 6, ov15_02200758, 0);
-    InitBgFromTemplate(param_1, 7, ov15_02200774, 0);
-    BgClearTilemapBufferAndCommit(param_1, 4);
-    BgClearTilemapBufferAndCommit(param_1, 7);
+    InitBgFromTemplate((BgConfig *)param_1, 4, (const BgTemplate *)ov15_02200720, 0);
+    InitBgFromTemplate((BgConfig *)param_1, 5, (const BgTemplate *)ov15_0220073C, 0);
+    InitBgFromTemplate((BgConfig *)param_1, 6, (const BgTemplate *)ov15_02200758, 0);
+    InitBgFromTemplate((BgConfig *)param_1, 7, (const BgTemplate *)ov15_02200774, 0);
+    BgClearTilemapBufferAndCommit((BgConfig *)param_1, 4);
+    BgClearTilemapBufferAndCommit((BgConfig *)param_1, 7);
     BG_ClearCharDataRange(4, 0x20, 0, 6);
     BG_ClearCharDataRange(7, 0x20, 0, 6);
     G2x_SetBlendAlpha_(0x4000050, 0, 8, 0, 0);

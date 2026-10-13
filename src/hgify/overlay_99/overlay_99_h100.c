@@ -2,6 +2,9 @@
 #pragma warning_errors off
 #pragma thumb on
 #include "global.h"
+
+#include "overlay_98.h"
+#include "sprite_system.h"
 typedef struct {
     s16 x;
     s16 y;
@@ -13,9 +16,6 @@ typedef struct {
     int resIds[4];
     u32 extra[4];
 } UnkTemplate_ov99_021E810C;
-extern void *ov98_0221E6E0(void *spriteSys, const UnkTemplate_ov99_021E810C *template);
-extern void ManagedSprite_SetAnimateFlag(void *managedSprite, int flag);
-extern void ManagedSprite_SetDrawFlag(void *managedSprite, int flag);
 extern const int ov99_021E9FB0[5];
 void ov99_021E810C(u8 *data);
 // FUNCTION ov99_021E810C: matching C (agent16)
@@ -36,7 +36,7 @@ void ov99_021E810C(u8 *data) {
         template.priority = i;
         template.x = *table * 8 + 0x68;
         template.y = y;
-        *(void **)((u8 *)data + (i + 0xf) * 4 + 0x408) = ov98_0221E6E0(*(void **)(data + 0x404), &template);
+        *(void **)((u8 *)data + (i + 0xf) * 4 + 0x408) = ov98_0221E6E0(*(void **)(data + 0x404), (const struct ManagedSpriteTemplate *)&template);
         ManagedSprite_SetAnimateFlag(*(void **)((u8 *)data + (i + 0xf) * 4 + 0x408), 1);
         ManagedSprite_SetDrawFlag(*(void **)((u8 *)data + (i + 0xf) * 4 + 0x408), 0);
         table++;
