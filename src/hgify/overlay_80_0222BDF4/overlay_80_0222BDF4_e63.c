@@ -3,31 +3,26 @@
 #pragma thumb on
 #include "global.h"
 
+#include "frontier/frontier_script_context.h"
 #include "frontier/overlay_80_0222BDF4.h"
 
-#include "ghidra_compat.h"
 #include "sprite_system.h"
-typedef int code();
-undefined4 ov80_02239700();
-undefined4 sub_0209680C();
-undefined4 ov80_02239708();
-undefined4 FrtCmd_049(undefined4 *param_1);
-// FUNCTION FrtCmd_049: matching C (r2)
+
+void *sub_0209680C(void *param0);
+ManagedSprite *ov80_02239700(void *param0, u32 param1);
+void ov80_02239708(void *param0, u32 param1, int param2);
+
+// FUNCTION FrtCmd_049: matching C (twin)
 #pragma force_active on
-undefined4 FrtCmd_049(undefined4 *param_1)
+BOOL FrtCmd_049(FrontierScriptContext *ctx) {
+    u32 v0 = FrontierScript_ReadVar(ctx);
+    u32 animID = FrontierScript_ReadVar(ctx);
+    void *v3 = sub_0209680C(ctx->frontierSystem->unk0);
+    ManagedSprite *managedSprite = ov80_02239700(v3, v0);
 
-{
-    undefined4 uVar1;
-    undefined4 uVar2;
-    undefined4 uVar3;
-    undefined4 uVar4;
+    ManagedSprite_SetAnim(managedSprite, animID);
+    ov80_02239708(v3, v0, 1);
 
-    uVar1 = FrontierScript_ReadVar((FrontierScriptContext *)param_1);
-    uVar2 = FrontierScript_ReadVar((FrontierScriptContext *)param_1);
-    uVar3 = sub_0209680C(*(undefined4 *)*param_1);
-    uVar4 = ov80_02239700(uVar3, uVar1);
-    ManagedSprite_SetAnim(uVar4, uVar2);
-    ov80_02239708(uVar3, uVar1, 1);
-    return 0;
+    return FALSE;
 }
 #pragma force_active reset

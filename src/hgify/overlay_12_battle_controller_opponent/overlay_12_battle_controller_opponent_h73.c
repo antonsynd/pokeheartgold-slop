@@ -6,23 +6,24 @@
 #include "battle/battle_system.h"
 
 #include "bg_window.h"
-#include "ghidra_compat.h"
-typedef void code(void);
-undefined4 ov12_0226430C(undefined4, undefined4, undefined4);
-undefined4 ov12_02259928(undefined4);
-void ov12_022598F8(undefined4 param_1, int param_2);
-// FUNCTION ov12_022598F8: matching C (r2)
+
+typedef struct UnkStruct_ov12_022598F8 {
+    u8 unk_00[0x194];
+    u8 battler;
+} UnkStruct_ov12_022598F8;
+
+void ov12_0226430C(BattleSystem *battleSys, int battler, int command);
+void ov12_02259928(UnkStruct_ov12_022598F8 *battlerData);
+
+// FUNCTION ov12_022598F8: matching C (twin)
 #pragma force_active on
-void ov12_022598F8(undefined4 param_1, int param_2)
+void ov12_022598F8(BattleSystem *battleSys, UnkStruct_ov12_022598F8 *battlerData) {
+    Window *window = BattleSystem_GetWindow(battleSys, 0);
 
-{
-    undefined4 uVar1;
+    FillWindowPixelBuffer(window, 0xFF);
+    CopyWindowPixelsToVram_TextMode(window);
 
-    uVar1 = BattleSystem_GetWindow(param_1, 0);
-    FillWindowPixelBuffer(uVar1, 0xff);
-    CopyWindowPixelsToVram_TextMode(uVar1);
-    ov12_0226430C(param_1, *(undefined1 *)(param_2 + 0x194), 0x42);
-    ov12_02259928(param_2);
-    return;
+    ov12_0226430C(battleSys, battlerData->battler, 0x42);
+    ov12_02259928(battlerData);
 }
 #pragma force_active reset

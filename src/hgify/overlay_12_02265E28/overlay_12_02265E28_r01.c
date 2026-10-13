@@ -8,16 +8,21 @@
 #include "sprite.h"
 #include "sprite_system.h"
 // clang-format on
-extern ManagedSpriteTemplate ov12_0226E100[2];
-// FUNCTION ov12_02265F34: matching C (dm1)
-#pragma force_active on
-void ov12_02265F34(UnkBattleSystemSub17C *arg0) {
-    ManagedSprite *temp_r0;
-    SpriteSystem *temp_r5;
 
-    temp_r5 = BattleSystem_GetSpriteSystem(arg0->battleSystem);
-    temp_r0 = SpriteSystem_NewSprite(temp_r5, BattleSystem_GetSpriteManager(arg0->battleSystem), &ov12_0226E100[arg0->unk8]);
-    arg0->unk0 = temp_r0;
-    Sprite_TickFrame(temp_r0->sprite);
+extern ManagedSpriteTemplate ov12_0226E100[2];
+
+// FUNCTION ov12_02265F34: matching C (twin)
+#pragma force_active on
+void ov12_02265F34(UnkBattleSystemSub17C *terrain) {
+    SpriteSystem *spriteSys;
+    SpriteManager *spriteMan;
+    const ManagedSpriteTemplate *spriteTemplate;
+
+    spriteSys = BattleSystem_GetSpriteSystem(terrain->battleSystem);
+    spriteMan = BattleSystem_GetSpriteManager(terrain->battleSystem);
+    spriteTemplate = &ov12_0226E100[terrain->unk8];
+
+    terrain->unk0 = SpriteSystem_NewSprite(spriteSys, spriteMan, spriteTemplate);
+    Sprite_TickFrame(terrain->unk0->sprite);
 }
 #pragma force_active reset

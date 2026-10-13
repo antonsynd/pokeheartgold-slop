@@ -3,28 +3,21 @@
 #pragma thumb on
 #include "global.h"
 
-#include "ghidra_compat.h"
 #include "item.h"
 #include "sprite_system.h"
-typedef void code(void);
-undefined4 ov08_02220A8C(undefined4, undefined4, undefined4);
-void ov08_02220C08(u16 param_1, undefined4 param_2, undefined4 param_3, undefined4 param_4);
-// FUNCTION ov08_02220C08: matching C (r2)
+void ov08_02220A8C(ManagedSprite *sprite, int x, int y);
+void ov08_02220C08(u16 item, ManagedSprite *sprite, const int x, const int y);
+// FUNCTION ov08_02220C08: matching C (twin)
 #pragma force_active on
-void ov08_02220C08(u16 param_1, undefined4 param_2, undefined4 param_3, undefined4 param_4)
-
-{
-    int iVar1;
-
-    if (param_1 != 0) {
-        iVar1 = ItemIdIsMail(param_1);
-        if (iVar1 == 1) {
-            ManagedSprite_SetAnim(param_2, 1);
-        } else {
-            ManagedSprite_SetAnim(param_2, 0);
-        }
-        ov08_02220A8C(param_2, param_3, param_4);
+void ov08_02220C08(u16 item, ManagedSprite *sprite, const int x, const int y) {
+    if (item == 0) {
+        return;
     }
-    return;
+    if (ItemIdIsMail(item) == TRUE) {
+        ManagedSprite_SetAnim(sprite, 1);
+    } else {
+        ManagedSprite_SetAnim(sprite, 0);
+    }
+    ov08_02220A8C(sprite, x, y);
 }
 #pragma force_active reset

@@ -4,14 +4,14 @@
 #include "global.h"
 
 #include "bg_window.h"
-typedef struct S {
-    u8 pad[0x58];
-    void *bg;
-} S;
-// FUNCTION ov87_021E7460: matching C (agent4)
+typedef struct UnkStruct_ov87_021E7460 {
+    u8 unk_00[0x58];
+    BgConfig *bgConfig;
+} UnkStruct_ov87_021E7460;
+// FUNCTION ov87_021E7460: matching C (twin)
 #pragma force_active on
-void ov87_021E7460(S *p, int param_2, u8 param_3, u8 param_4, u8 param_5) {
-    BgTilemapRectChangePalette(p->bg, param_2, 0, 0, param_4, param_5, param_3);
-    ScheduleBgTilemapBufferTransfer(p->bg, param_2);
+void ov87_021E7460(UnkStruct_ov87_021E7460 *app, int bgLayer, u8 palette, u8 width, u8 height) {
+    BgTilemapRectChangePalette(app->bgConfig, bgLayer, 0, 0, width, height, palette);
+    ScheduleBgTilemapBufferTransfer(app->bgConfig, bgLayer);
 }
 #pragma force_active reset

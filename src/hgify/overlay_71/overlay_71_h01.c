@@ -3,26 +3,14 @@
 #pragma thumb on
 #include "global.h"
 
-#include "ghidra_compat.h"
 #include "pokemon.h"
-typedef int code();
-undefined4 ov71_02246B28(undefined4 param_1, undefined4 param_2, undefined4 param_3, undefined4 param_4);
-// FUNCTION ov71_02246B28: matching C (r3)
+
+// FUNCTION ov71_02246B28: matching C (twin)
 #pragma force_active on
-undefined4
-ov71_02246B28(undefined4 param_1, undefined4 param_2, undefined4 param_3, undefined4 param_4)
+int ov71_02246B28(BoxPokemon *boxMon, int unused1, int unused2, int unused3) {
+    int species = GetBoxMonData(boxMon, MON_DATA_SPECIES, NULL);
+    int form = GetBoxMonData(boxMon, MON_DATA_FORM, NULL);
 
-{
-    undefined4 uVar1;
-    undefined4 uVar2;
-    int iVar3;
-
-    uVar1 = GetBoxMonData(param_1, 5, 0);
-    uVar2 = GetBoxMonData(param_1, 0x70, 0);
-    iVar3 = GetMonBaseStat_HandleAlternateForm(uVar1, uVar2, 0x1c);
-    if (iVar3 == 0) {
-        return 1;
-    }
-    return 0;
+    return GetMonBaseStat_HandleAlternateForm(species, form, 0x1c) == 0;
 }
 #pragma force_active reset

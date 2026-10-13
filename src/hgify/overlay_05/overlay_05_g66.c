@@ -3,18 +3,27 @@
 #pragma thumb on
 #include "global.h"
 
-#include "ghidra_compat.h"
-typedef void code(void);
-undefined4 ov05_0221DF38(undefined4, undefined4, undefined4);
-void ov05_0221E07C(int *param_1);
-// FUNCTION ov05_0221E07C: matching C (r2)
-#pragma force_active on
-void ov05_0221E07C(int *param_1)
+#include "party.h"
 
-{
-    memset(param_1 + 0x85, 0, 0x90);
-    ov05_0221DF38(param_1, *(undefined4 *)(*param_1 + 4), 0);
-    ov05_0221DF38(param_1, *(undefined4 *)(*param_1 + 0xc), 3);
-    return;
+typedef struct UnkStruct_ov05_0221E07C_Intro {
+    void *dto;
+    Party *party[4];
+} UnkStruct_ov05_0221E07C_Intro;
+
+typedef struct UnkStruct_ov05_0221E07C {
+    UnkStruct_ov05_0221E07C_Intro *trainerIntroData;
+    u8 unk_04[0x210];
+    u8 unk_214[6][0x18];
+} UnkStruct_ov05_0221E07C;
+
+void ov05_0221DF38(UnkStruct_ov05_0221E07C *param0, Party *param1, u8 param2);
+
+// FUNCTION ov05_0221E07C: matching C (twin)
+#pragma force_active on
+void ov05_0221E07C(UnkStruct_ov05_0221E07C *param0) {
+    memset(param0->unk_214, 0, sizeof(param0->unk_214));
+
+    ov05_0221DF38(param0, param0->trainerIntroData->party[0], 0);
+    ov05_0221DF38(param0, param0->trainerIntroData->party[2], 3);
 }
 #pragma force_active reset

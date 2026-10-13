@@ -3,27 +3,30 @@
 #pragma thumb on
 #include "global.h"
 
-#include "ghidra_compat.h"
+#include "constants/pokemon.h"
+#include "constants/species.h"
+
 #include "party.h"
 #include "pokemon.h"
-typedef int code();
-#define SEXT24(x) ((int)(unsigned short)(x))
-undefined4 ov65_0221D648(unsigned short *param_1, undefined4 param_2, undefined4 param_3, undefined4 param_4);
-// FUNCTION ov65_0221D648: matching C (v1)
+
+#define GENDER_NONE 2
+
+typedef struct UnkStruct_ov65_0221D648 {
+    u16 species;
+} UnkStruct_ov65_0221D648;
+
+// FUNCTION ov65_0221D648: matching C (twin)
 #pragma force_active on
-undefined4 ov65_0221D648(unsigned short *param_1, undefined4 param_2, undefined4 param_3, undefined4 param_4)
+int ov65_0221D648(UnkStruct_ov65_0221D648 *displayData, Party *party, int slot, int genderValue) {
+    if ((displayData->species == SPECIES_NIDORAN_F) || (displayData->species == SPECIES_NIDORAN_M)) {
+        Pokemon *mon = Party_GetMonByIndex(party, slot);
+        int hasNickname = GetMonData(mon, MON_DATA_HAS_NICKNAME, NULL);
 
-{
-    undefined4 uVar1;
-    int iVar2;
-
-    if ((*param_1 == 0x1d) || (*param_1 == 0x20)) {
-        uVar1 = Party_GetMonByIndex(param_2, param_3);
-        iVar2 = GetMonData(uVar1, 0x4d, 0);
-        if (iVar2 == 0) {
-            return 2;
+        if (hasNickname == FALSE) {
+            return GENDER_NONE;
         }
     }
-    return param_4;
+
+    return genderValue;
 }
 #pragma force_active reset

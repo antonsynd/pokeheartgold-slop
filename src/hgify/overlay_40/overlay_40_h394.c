@@ -3,23 +3,36 @@
 #pragma thumb on
 #include "global.h"
 
-#include "ghidra_compat.h"
 #include "heap.h"
 #include "msgdata.h"
-typedef int code();
-void ov40_0223EDA8(int param_1);
-// FUNCTION ov40_0223EDA8: matching C (r2)
+
+typedef struct UnkStruct_ov40_0223EDA8_2 {
+    u8 unk_00[0x08];
+    void *unk_08;
+    MsgData *unk_0C;
+    u32 unk_10;
+} UnkStruct_ov40_0223EDA8_2;
+
+typedef struct UnkStruct_ov40_0223EDA8_1 {
+    u8 unk_00[0x4C8];
+    UnkStruct_ov40_0223EDA8_2 unk_4C8;
+    void *unk_4DC;
+} UnkStruct_ov40_0223EDA8_1;
+
+typedef struct UnkStruct_ov40_0223EDA8 {
+    u8 unk_00[0x860];
+    UnkStruct_ov40_0223EDA8_1 *unk_860;
+} UnkStruct_ov40_0223EDA8;
+
+// FUNCTION ov40_0223EDA8: matching C (twin)
 #pragma force_active on
-void ov40_0223EDA8(int param_1)
+void ov40_0223EDA8(UnkStruct_ov40_0223EDA8 *param0) {
+    UnkStruct_ov40_0223EDA8_1 *v0 = param0->unk_860;
 
-{
-    int iVar1;
+    DestroyMsgData(v0->unk_4C8.unk_0C);
+    Heap_Free(v0->unk_4DC);
+    Heap_Free(v0->unk_4C8.unk_08);
 
-    iVar1 = *(int *)(param_1 + 0x860);
-    DestroyMsgData(*(undefined4 *)(iVar1 + 0x4d4));
-    Heap_Free(*(undefined4 *)(iVar1 + 0x4dc));
-    Heap_Free(*(undefined4 *)(iVar1 + 0x4d0));
-    *(undefined4 *)(iVar1 + 0x4d8) = 0;
-    return;
+    v0->unk_4C8.unk_10 = 0;
 }
 #pragma force_active reset

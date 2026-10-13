@@ -4,17 +4,17 @@
 #include "global.h"
 
 #include "bg_window.h"
-#include "ghidra_compat.h"
 #include "render_window.h"
-typedef void code(void);
-void ov05_0221E9C4(int param_1);
-// FUNCTION ov05_0221E9C4: matching C (r3)
-#pragma force_active on
-void ov05_0221E9C4(int param_1)
 
-{
-    FillWindowPixelRect(param_1 + 0xb88, 0xf, 0, 0, 0xd8, 0x20);
-    DrawFrameAndWindow2(param_1 + 0xb88, 0, 1, 0xf);
-    return;
+typedef struct UnkStruct_ov05_0221E9C4 {
+    u8 unk_00[0xB88];
+    Window unk_B88;
+} UnkStruct_ov05_0221E9C4;
+
+// FUNCTION ov05_0221E9C4: matching C (twin)
+#pragma force_active on
+void ov05_0221E9C4(UnkStruct_ov05_0221E9C4 *param0) {
+    FillWindowPixelRect(&param0->unk_B88, 15, 0, 0, 27 * 8, 4 * 8);
+    DrawFrameAndWindow2(&param0->unk_B88, 0, 1, 15);
 }
 #pragma force_active reset

@@ -3,25 +3,33 @@
 #pragma thumb on
 #include "global.h"
 
-#include "ghidra_compat.h"
 #include "sprite.h"
-typedef void code(void);
-undefined4 ov01_021EC1E4(undefined4);
-void ov01_021EC29C(int param_1, undefined4 param_2, undefined4 param_3, undefined4 param_4);
-// FUNCTION ov01_021EC29C: matching C (r3)
+
+typedef struct UnkStruct_ov01_021EC29C {
+    void *unk_00;
+    Sprite *unk_04;
+    void *unk_08;
+    s32 unk_0C[10];
+    struct UnkStruct_ov01_021EC29C *unk_34;
+    struct UnkStruct_ov01_021EC29C *unk_38;
+} UnkStruct_ov01_021EC29C;
+
+void ov01_021EC1E4(UnkStruct_ov01_021EC29C *param0);
+
+// FUNCTION ov01_021EC29C: matching C (twin)
 #pragma force_active on
-void ov01_021EC29C(int param_1, undefined4 param_2, undefined4 param_3, undefined4 param_4)
+void ov01_021EC29C(UnkStruct_ov01_021EC29C *param0) {
+    Sprite *v0;
 
-{
-    undefined4 uVar1;
+    param0->unk_38->unk_34 = param0->unk_34;
+    param0->unk_34->unk_38 = param0->unk_38;
 
-    *(undefined4 *)(*(int *)(param_1 + 0x38) + 0x34) = *(undefined4 *)(param_1 + 0x34);
-    *(undefined4 *)(*(int *)(param_1 + 0x34) + 0x38) = *(undefined4 *)(param_1 + 0x38);
-    Sprite_SetDrawFlag(*(undefined4 *)(param_1 + 4), 0);
-    ov01_021EC1E4(param_1);
-    uVar1 = *(undefined4 *)(param_1 + 4);
-    memset(param_1, 0, 0x3c);
-    *(undefined4 *)(param_1 + 4) = uVar1;
-    return;
+    Sprite_SetDrawFlag(param0->unk_04, FALSE);
+    ov01_021EC1E4(param0);
+
+    v0 = param0->unk_04;
+    memset(param0, 0, sizeof(UnkStruct_ov01_021EC29C));
+
+    param0->unk_04 = v0;
 }
 #pragma force_active reset

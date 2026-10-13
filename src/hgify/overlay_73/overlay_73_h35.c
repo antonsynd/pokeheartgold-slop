@@ -3,21 +3,31 @@
 #pragma thumb on
 #include "global.h"
 
-#include "ghidra_compat.h"
+#include "bg_window.h"
 #include "msgdata.h"
 #include "sprite.h"
-typedef int code();
-undefined4 ov73_021E63BC();
-void ov73_021E6B98(int param_1);
-// FUNCTION ov73_021E6B98: matching C (r2)
-#pragma force_active on
-void ov73_021E6B98(int param_1)
+#include "text.h"
 
-{
-    ReadMsgDataIntoString(*(undefined4 *)(param_1 + 0x28), 0x12, *(undefined4 *)(param_1 + 0x48));
-    ov73_021E63BC(param_1 + 0x2d8, *(undefined4 *)(param_1 + 0x48), 0);
-    Sprite_SetAnimCtrlSeq(*(undefined4 *)(param_1 + 0x228), 0x25);
-    *(undefined4 *)(param_1 + 0xc) = 1;
-    return;
+typedef struct {
+    u8 unk_00[0x0C];
+    u32 unk_0C;
+    u8 unk_10[0x28 - 0x10];
+    MsgData *unk_28;
+    u8 unk_2C[0x48 - 0x2C];
+    String *unk_48;
+    u8 unk_4C[0x228 - 0x4C];
+    Sprite *unk_228;
+    u8 unk_22C[0x2D8 - 0x22C];
+    Window unk_2D8;
+} UnkStruct_ov73_021E6B98;
+
+void ov73_021E63BC(Window *param0, String *param1, u32 param2);
+// FUNCTION ov73_021E6B98: matching C (twin)
+#pragma force_active on
+void ov73_021E6B98(UnkStruct_ov73_021E6B98 *param0) {
+    ReadMsgDataIntoString(param0->unk_28, 18, param0->unk_48);
+    ov73_021E63BC(&param0->unk_2D8, param0->unk_48, TEXT_SPEED_INSTANT);
+    Sprite_SetAnimCtrlSeq(param0->unk_228, 37);
+    param0->unk_0C = 1;
 }
 #pragma force_active reset

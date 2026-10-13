@@ -3,30 +3,36 @@
 #pragma thumb on
 #include "global.h"
 
-#include "ghidra_compat.h"
 #include "heap.h"
-typedef int code();
-undefined4 ov71_02249988();
-undefined4 ov71_02247384();
-undefined4 *ov71_022494A0(undefined4 param_1, undefined4 param_2, undefined4 param_3, undefined4 param_4);
-// FUNCTION ov71_022494A0: matching C (r3)
+
+typedef struct UnkStruct_ov71_022494A0 {
+    void *sequenceData;
+    int subStepCounter;
+    u8 unk_08[0x1C];
+    void *bgConfig;
+    void *scene;
+    u8 unk_2C[8];
+    u8 ballOrbit[0x70];
+} UnkStruct_ov71_022494A0;
+
+void *ov71_02247384(void *sequenceData);
+void ov71_02249988(void *ballOrbit);
+UnkStruct_ov71_022494A0 *ov71_022494A0(void *sequenceData);
+
+// FUNCTION ov71_022494A0: matching C (twin)
 #pragma force_active on
-undefined4 *
-ov71_022494A0(undefined4 param_1, undefined4 param_2, undefined4 param_3, undefined4 param_4)
+UnkStruct_ov71_022494A0 *ov71_022494A0(void *sequenceData) {
+    UnkStruct_ov71_022494A0 *tbfPhase = Heap_Alloc(HEAP_ID_57, sizeof(UnkStruct_ov71_022494A0));
 
-{
-    undefined4 *puVar1;
-    undefined4 uVar2;
+    if (tbfPhase) {
+        tbfPhase->sequenceData = sequenceData;
+        tbfPhase->subStepCounter = 0;
+        tbfPhase->bgConfig = ov71_02247384(sequenceData);
+        tbfPhase->scene = NULL;
 
-    puVar1 = (undefined4 *)Heap_Alloc(0x39, 0xa4);
-    if (puVar1 != (undefined4 *)0x0) {
-        *puVar1 = param_1;
-        puVar1[1] = 0;
-        uVar2 = ov71_02247384(param_1);
-        puVar1[9] = uVar2;
-        puVar1[10] = 0;
-        ov71_02249988(puVar1 + 0xd);
+        ov71_02249988(tbfPhase->ballOrbit);
     }
-    return puVar1;
+
+    return tbfPhase;
 }
 #pragma force_active reset

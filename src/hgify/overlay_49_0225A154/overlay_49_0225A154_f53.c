@@ -4,26 +4,27 @@
 #include "global.h"
 
 #include "bg_window.h"
-#include "ghidra_compat.h"
 #include "pm_string.h"
 #include "text.h"
-typedef int code();
-undefined4 ov49_0225AC38();
-void ov49_0225AB14(int param_1);
-// FUNCTION ov49_0225AB14: matching C (r2)
+
+typedef struct {
+    Window unk_00;
+    u32 unk_10;
+    u32 unk_14;
+    String *unk_18;
+} UnkStruct_ov49_0225AB14;
+
+void ov49_0225AC38(UnkStruct_ov49_0225AB14 *param0);
+// FUNCTION ov49_0225AB14: matching C (twin)
 #pragma force_active on
-void ov49_0225AB14(int param_1)
-
-{
-    int iVar1;
-
-    iVar1 = TextPrinterCheckActive(*(uint *)(param_1 + 0x10) & 0xff);
-    if (iVar1 != 0) {
-        RemoveTextPrinter(*(uint *)(param_1 + 0x10) & 0xff);
+void ov49_0225AB14(UnkStruct_ov49_0225AB14 *param0) {
+    if (TextPrinterCheckActive(param0->unk_10)) {
+        RemoveTextPrinter(param0->unk_10);
     }
-    ov49_0225AC38(param_1);
-    String_Delete(*(undefined4 *)(param_1 + 0x18));
-    RemoveWindow(param_1);
-    return;
+
+    ov49_0225AC38(param0);
+
+    String_Delete(param0->unk_18);
+    RemoveWindow(&param0->unk_00);
 }
 #pragma force_active reset

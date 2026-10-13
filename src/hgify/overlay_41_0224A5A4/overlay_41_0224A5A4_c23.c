@@ -3,22 +3,18 @@
 #pragma thumb on
 #include "global.h"
 
+#include "bg_window.h"
 #include "font.h"
-#include "ghidra_compat.h"
+#include "gf_gfx_planes.h"
 #include "options.h"
 #include "render_window.h"
-typedef int code();
-void ov41_0224ACDC(undefined4 param_1, undefined4 param_2);
-// FUNCTION ov41_0224ACDC: matching C (r2)
+
+// FUNCTION ov41_0224ACDC: matching C (twin)
 #pragma force_active on
-void ov41_0224ACDC(undefined4 param_1, undefined4 param_2)
+void ov41_0224ACDC(BgConfig *param0, Options *options) {
+    u8 frame = Options_GetFrame(options);
 
-{
-    undefined1 uVar1;
-
-    uVar1 = Options_GetFrame(param_2);
-    LoadUserFrameGfx2(param_1, 5, 1, 1, uVar1, 0xe);
-    LoadFontPal1(4, 0x40, 0xe);
-    return;
+    LoadUserFrameGfx2(param0, GF_BG_LYR_SUB_1, 1, 1, frame, HEAP_ID_14);
+    LoadFontPal1(GF_PAL_LOCATION_SUB_BG, GF_PAL_SLOT_2_OFFSET, HEAP_ID_14);
 }
 #pragma force_active reset

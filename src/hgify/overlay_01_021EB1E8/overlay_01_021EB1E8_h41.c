@@ -4,31 +4,37 @@
 #include "global.h"
 
 #include "error_handling.h"
-#include "ghidra_compat.h"
 #include "sprite.h"
-typedef void code(void);
-typedef struct S {
-    u8 pad0[8];
-    u8 *unk_8;
-} S;
-// FUNCTION ov01_021EC028: matching C (agent3)
-#pragma force_active on
-void ov01_021EC028(S *param_1) {
-    void *uVar1;
-    int iVar2;
-    u8 *iVar3;
 
-    iVar2 = 0;
-    iVar3 = (u8 *)param_1;
-    do {
-        uVar1 = Sprite_CreateAffine((const struct SpriteTemplate *)(param_1->unk_8 + 0x10));
-        *(void **)(iVar3 + 0x4c) = uVar1;
-        Sprite_SetDrawFlag(uVar1, 0);
-        if (*(void **)(iVar3 + 0x4c) == 0) {
+typedef struct UnkStruct_ov01_021EC028_1 {
+    u8 unk_00[0x10];
+    SpriteTemplate unk_10;
+} UnkStruct_ov01_021EC028_1;
+
+typedef struct UnkStruct_ov01_021EC028_2 {
+    u8 unk_00[4];
+    Sprite *unk_04;
+    u8 unk_08[0x3C - 0x08];
+} UnkStruct_ov01_021EC028_2;
+
+typedef struct UnkStruct_ov01_021EC028 {
+    u8 unk_00[8];
+    UnkStruct_ov01_021EC028_1 *unk_08;
+    u8 unk_0C[0x48 - 0x0C];
+    UnkStruct_ov01_021EC028_2 unk_48[0x40];
+} UnkStruct_ov01_021EC028;
+
+// FUNCTION ov01_021EC028: matching C (twin)
+#pragma force_active on
+void ov01_021EC028(UnkStruct_ov01_021EC028 *param0) {
+    int v0;
+
+    for (v0 = 0; v0 < 0x40; v0++) {
+        param0->unk_48[v0].unk_04 = Sprite_CreateAffine(&param0->unk_08->unk_10);
+        Sprite_SetDrawFlag(param0->unk_48[v0].unk_04, FALSE);
+        if (param0->unk_48[v0].unk_04 == NULL) {
             GF_AssertFail();
         }
-        iVar2 = iVar2 + 1;
-        iVar3 = iVar3 + 0x3c;
-    } while (iVar2 < 0x40);
+    }
 }
 #pragma force_active reset

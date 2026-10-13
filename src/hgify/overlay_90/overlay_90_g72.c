@@ -3,22 +3,25 @@
 #pragma thumb on
 #include "global.h"
 
-#include "error_handling.h"
+#include "assert.h"
 #include "math_util.h"
-// FUNCTION ov90_02259B38: matching C (agent10)
+int ov90_02259B38(const u8 *param0, u32 param1);
+// FUNCTION ov90_02259B38: matching C (twin)
 #pragma force_active on
-u32 ov90_02259B38(u8 *param_1, u32 param_2) {
-    u32 roll = MTRandom() % 100;
-    u32 sum = 0;
-    u32 i;
+int ov90_02259B38(const u8 *param0, u32 param1) {
+    u32 v0;
+    u32 v1;
+    int v2;
 
-    for (i = 0; i < param_2; i++) {
-        sum += param_1[i];
-        if (sum > roll) {
-            return i;
+    v0 = MTRandom() % 100;
+    v1 = 0;
+    for (v2 = 0; v2 < param1; v2++) {
+        v1 += param0[v2];
+        if (v1 > v0) {
+            return v2;
         }
     }
-    GF_AssertFail();
-    return param_2 - 1;
+    GF_ASSERT(FALSE);
+    return param1 - 1;
 }
 #pragma force_active reset

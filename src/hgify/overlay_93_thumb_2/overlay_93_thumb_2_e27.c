@@ -3,29 +3,36 @@
 #pragma thumb on
 #include "global.h"
 
-#include "ghidra_compat.h"
 #include "sprite_system.h"
-typedef int code();
-void ov93_02260B84(int param_1, undefined4 param_2, undefined4 param_3, undefined4 param_4);
-// FUNCTION ov93_02260B84: matching C (r4)
+
+typedef struct UnkStruct_ov93_02260B84_Entry {
+    ManagedSprite *unk_00;
+    u8 unk_04;
+    u8 unk_05;
+    u8 unk_06;
+    u8 unk_07;
+    u32 unk_08;
+} UnkStruct_ov93_02260B84_Entry;
+
+typedef struct UnkStruct_ov93_02260B84 {
+    u8 unk_000[0x380C];
+    UnkStruct_ov93_02260B84_Entry unk_3D10[5];
+} UnkStruct_ov93_02260B84;
+
+// FUNCTION ov93_02260B84: matching C (twin)
 #pragma force_active on
-void ov93_02260B84(int param_1, undefined4 param_2, undefined4 param_3, undefined4 param_4)
+void ov93_02260B84(UnkStruct_ov93_02260B84 *param0) {
+    int v0;
+    UnkStruct_ov93_02260B84_Entry *v1;
 
-{
-    undefined4 *puVar1;
-    int iVar2;
+    for (v0 = 0; v0 < 5; v0++) {
+        v1 = &param0->unk_3D10[v0];
 
-    iVar2 = 0;
-    puVar1 = (undefined4 *)(param_1 + 0x380c);
-    do {
-        if (*(unsigned char *)((int)puVar1 + 6) == '\0') {
-            *(undefined1 *)((int)puVar1 + 5) = 3;
-            ManagedSprite_SetAnim(*puVar1, 6);
+        if (v1->unk_06 == 0) {
+            v1->unk_05 = 3;
+            ManagedSprite_SetAnim(v1->unk_00, 6);
             return;
         }
-        iVar2 = iVar2 + 1;
-        puVar1 = puVar1 + 3;
-    } while (iVar2 < 5);
-    return;
+    }
 }
 #pragma force_active reset

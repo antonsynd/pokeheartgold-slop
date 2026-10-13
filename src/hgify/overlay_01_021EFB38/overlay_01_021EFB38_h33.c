@@ -3,28 +3,24 @@
 #pragma thumb on
 #include "global.h"
 
-#include "ghidra_compat.h"
 #include "unk_02009D48.h"
 #include "unk_0200A090.h"
-typedef void code(void);
-void ov01_021F05C4(undefined4 *param_1, undefined4 param_2, undefined4 param_3, undefined4 param_4);
-// FUNCTION ov01_021F05C4: matching C (r3)
+
+typedef struct UnkStruct_ov01_021F05C4 {
+    SpriteList *unk_00;
+    u8 unk_04[0x128];
+    GF_2DGfxResMan *unk_12C[4];
+} UnkStruct_ov01_021F05C4;
+
+// FUNCTION ov01_021F05C4: matching C (twin)
 #pragma force_active on
-void ov01_021F05C4(undefined4 *param_1, undefined4 param_2, undefined4 param_3, undefined4 param_4)
+void ov01_021F05C4(UnkStruct_ov01_021F05C4 *param0, int param1, int param2) {
+    int v0;
 
-{
-    undefined4 uVar1;
-    int iVar2;
+    param0->unk_00 = G2dRenderer_Init(param1, (G2dRenderer *)&param0->unk_04, HEAP_ID_FIELD1);
 
-    uVar1 = (undefined4)G2dRenderer_Init(param_2, (G2dRenderer *)(param_1 + 1), 4);
-    *param_1 = uVar1;
-    iVar2 = 0;
-    do {
-        uVar1 = (undefined4)Create2DGfxResObjMan(param_3, iVar2, 4);
-        param_1[0x4b] = uVar1;
-        iVar2 = iVar2 + 1;
-        param_1 = param_1 + 1;
-    } while (iVar2 < 4);
-    return;
+    for (v0 = 0; v0 < 4; v0++) {
+        param0->unk_12C[v0] = Create2DGfxResObjMan(param2, v0, HEAP_ID_FIELD1);
+    }
 }
 #pragma force_active reset

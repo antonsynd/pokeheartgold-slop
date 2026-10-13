@@ -3,31 +3,26 @@
 #pragma thumb on
 #include "global.h"
 
-#include "ghidra_compat.h"
+#include "constants/sndseq.h"
+
+#include "font_types_def.h"
 #include "unk_02005D10.h"
-typedef int code();
-undefined4 ov15_021FEFC4(undefined4 param_1, undefined4 param_2);
-// FUNCTION ov15_021FEFC4: matching C (r2)
+
+// FUNCTION ov15_021FEFC4: matching C (twin)
 #pragma force_active on
-undefined4 ov15_021FEFC4(undefined4 param_1, undefined4 param_2)
-
-{
-    undefined4 uVar1;
-
-    switch (param_2) {
+BOOL ov15_021FEFC4(TextPrinterTemplate *template, u16 param1) {
+    switch (param1) {
     case 1:
-        uVar1 = GF_IsAnySEPlaying();
-        return uVar1;
+        return GF_IsAnySEPlaying();
     case 2:
-        uVar1 = IsFanfarePlaying();
-        return uVar1;
+        return IsFanfarePlaying();
     case 3:
-        PlaySE(0x60c);
+        PlaySE(SEQ_SE_DP_PC_LOGIN);
         break;
     case 4:
-        uVar1 = IsSEPlaying(0x60c);
-        return uVar1;
+        return IsSEPlaying(SEQ_SE_DP_PC_LOGIN);
     }
-    return 0;
+
+    return FALSE;
 }
 #pragma force_active reset

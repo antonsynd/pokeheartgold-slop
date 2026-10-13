@@ -3,25 +3,32 @@
 #pragma thumb on
 #include "global.h"
 
-#include "ghidra_compat.h"
 #include "heap.h"
-typedef int code();
-void ov80_02232ABC(int param_1);
-// FUNCTION ov80_02232ABC: matching C (r2)
-#pragma force_active on
-void ov80_02232ABC(int param_1)
+#include "party.h"
 
-{
-    if (param_1 != 0) {
-        if (*(int *)(param_1 + 0x28) != 0) {
-            Heap_Free((void *)*(int *)(param_1 + 0x28));
-        }
-        if (*(int *)(param_1 + 0x2c) != 0) {
-            Heap_Free((void *)*(int *)(param_1 + 0x2c));
-        }
-        MI_CpuFill8(param_1, 0, 0xa28);
-        Heap_Free(param_1);
+typedef struct UnkStruct_ov80_02232ABC {
+    u8 unk_00[0x28];
+    Party *playersParty;
+    Party *opponentsParty;
+    u8 unk_30[0xa28 - 0x30];
+} UnkStruct_ov80_02232ABC;
+
+// FUNCTION ov80_02232ABC: matching C (twin)
+#pragma force_active on
+void ov80_02232ABC(UnkStruct_ov80_02232ABC *castle) {
+    if (castle == NULL) {
+        return;
     }
-    return;
+
+    if (castle->playersParty != NULL) {
+        Heap_Free(castle->playersParty);
+    }
+
+    if (castle->opponentsParty != NULL) {
+        Heap_Free(castle->opponentsParty);
+    }
+
+    MI_CpuFill8(castle, 0, 0xa28);
+    Heap_Free(castle);
 }
 #pragma force_active reset

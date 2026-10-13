@@ -3,16 +3,19 @@
 #pragma thumb on
 #include "global.h"
 
-#include "ghidra_compat.h"
 #include "palette.h"
-typedef void code(void);
-undefined4 ov08_0221CD64(int param_1);
-// FUNCTION ov08_0221CD64: matching C (r2)
-#pragma force_active on
-undefined4 ov08_0221CD64(int param_1)
 
-{
-    PaletteData_BeginPaletteFade(*(undefined4 *)(param_1 + 0x1e8), 10, 0xffff, 0xfffffff8, 0, 0x10, 0);
+typedef struct UnkStruct_ov08_0221CD64 {
+    u8 unk_00[0x1E8];
+    PaletteData *palette;
+} UnkStruct_ov08_0221CD64;
+
+u8 ov08_0221CD64(UnkStruct_ov08_0221CD64 *battleParty);
+
+// FUNCTION ov08_0221CD64: matching C (twin)
+#pragma force_active on
+u8 ov08_0221CD64(UnkStruct_ov08_0221CD64 *battleParty) {
+    PaletteData_BeginPaletteFade(battleParty->palette, (0x2 | 0x8), 0xffff, -8, 0, 16, 0);
     return 0x1a;
 }
 #pragma force_active reset

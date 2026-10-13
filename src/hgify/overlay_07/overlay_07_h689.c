@@ -3,29 +3,21 @@
 #pragma thumb on
 #include "global.h"
 
-#include "error_handling.h"
-#include "ghidra_compat.h"
+#include "assert.h"
 #include "heap.h"
-typedef void code(void);
-undefined4 ov07_0221BFD0(undefined4);
-int ov07_022324D8(int param_1, undefined4 param_2);
-// FUNCTION ov07_022324D8: matching C (r2)
+typedef struct UnkStruct_ov07_022324D8 UnkStruct_ov07_022324D8;
+enum HeapID ov07_0221BFD0(UnkStruct_ov07_022324D8 *system);
+// FUNCTION ov07_022324D8: matching C (twin)
 #pragma force_active on
-int ov07_022324D8(int param_1, undefined4 param_2)
+void *ov07_022324D8(UnkStruct_ov07_022324D8 *system, int size) {
+    GF_ASSERT(system != NULL);
 
-{
-    undefined4 uVar1;
-    int iVar2;
+    enum HeapID heapID = ov07_0221BFD0(system);
+    void *ptr = Heap_Alloc(heapID, size);
 
-    if (param_1 == 0) {
-        GF_AssertFail();
-    }
-    uVar1 = ov07_0221BFD0(param_1);
-    iVar2 = Heap_Alloc(uVar1, param_2);
-    if (iVar2 == 0) {
-        GF_AssertFail();
-    }
-    memset(iVar2, 0, param_2);
-    return iVar2;
+    GF_ASSERT(ptr != NULL);
+    memset(ptr, 0, size);
+
+    return ptr;
 }
 #pragma force_active reset

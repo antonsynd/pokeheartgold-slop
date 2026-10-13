@@ -3,29 +3,24 @@
 #pragma thumb on
 #include "global.h"
 
-#include "ghidra_compat.h"
 #include "player_avatar.h"
-typedef int code();
-extern undefined sPlayerAvatarBitUpdateFuncs;
-void Field_PlayerAvatar_ApplyTransitionFlags(PlayerAvatar *param_1);
-// FUNCTION Field_PlayerAvatar_ApplyTransitionFlags: matching C (perm2)
+
+extern void (*const sPlayerAvatarBitUpdateFuncs[])(PlayerAvatar *);
+
+// FUNCTION Field_PlayerAvatar_ApplyTransitionFlags: matching C (twin)
 #pragma force_active on
-void Field_PlayerAvatar_ApplyTransitionFlags(PlayerAvatar *param_1) {
-    uint uVar1;
-    undefined4 *puVar2;
-    uint uVar3;
-    uVar3 = 0;
-    uVar1 = PlayerAvatar_GetTransitionFlags(param_1);
-    puVar2 = (undefined4 *)(&sPlayerAvatarBitUpdateFuncs);
+void Field_PlayerAvatar_ApplyTransitionFlags(PlayerAvatar *playerAvatar) {
+    u32 state = 0;
+    u32 flag = PlayerAvatar_GetTransitionFlags(playerAvatar);
+
     do {
-        if ((uVar1 & 1) != 0) {
-            (*((code *)(*puVar2)))(param_1);
+        if (flag & 0x1) {
+            sPlayerAvatarBitUpdateFuncs[state](playerAvatar);
         }
-        uVar1 = uVar1 >> 1;
-        puVar2 = puVar2 + 1;
-        uVar3 = uVar3 + 1;
-    } while (uVar3 < 0xf);
-    PlayerAvatar_SetTransitionFlags(param_1, 0);
-    return;
+
+        flag >>= 1;
+    } while (++state < 15);
+
+    PlayerAvatar_SetTransitionFlags(playerAvatar, 0);
 }
 #pragma force_active reset

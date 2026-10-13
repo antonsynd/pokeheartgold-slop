@@ -3,27 +3,32 @@
 #pragma thumb on
 #include "global.h"
 
-#include "error_handling.h"
-#include "ghidra_compat.h"
-typedef int code();
-undefined4 sub_0205D778(undefined4 param_1);
-// FUNCTION sub_0205D778: matching C (r2)
-#pragma force_active on
-undefined4 sub_0205D778(undefined4 param_1)
+#include "constants/player_avatar.h"
 
-{
-    switch (param_1) {
-    case 0:
-        return 0;
-    case 1:
-        return 1;
-    case 2:
-        return 2;
-    case 3:
-        return 1;
-    default:
-        GF_AssertFail();
-        return 0;
+#include "assert.h"
+
+enum AvatarBikeState {
+    AVATAR_BIKE_STATE_NONE = 0,
+    AVATAR_BIKE_STATE_MOVING,
+    AVATAR_BIKE_STATE_TURNING,
+    AVATAR_BIKE_STATE_BRAKE,
+};
+
+// FUNCTION sub_0205D778: matching C (twin)
+#pragma force_active on
+enum AvatarMoveState sub_0205D778(enum AvatarBikeState bikeState) {
+    switch (bikeState) {
+    case AVATAR_BIKE_STATE_NONE:
+        return AVATAR_MOVE_STATE_NONE;
+    case AVATAR_BIKE_STATE_MOVING:
+        return AVATAR_MOVE_STATE_MOVING;
+    case AVATAR_BIKE_STATE_TURNING:
+        return AVATAR_MOVE_STATE_TURNING;
+    case AVATAR_BIKE_STATE_BRAKE:
+        return AVATAR_MOVE_STATE_MOVING;
     }
+
+    GF_ASSERT(FALSE);
+    return AVATAR_MOVE_STATE_NONE;
 }
 #pragma force_active reset

@@ -3,19 +3,18 @@
 #pragma thumb on
 #include "global.h"
 
-#include "ghidra_compat.h"
 #include "obj_char_transfer.h"
 #include "obj_pltt_transfer.h"
-typedef int code();
-typedef struct {
-    int a, b, c, d;
-} Tmpl;
-extern const Tmpl ov82_0223FEF0;
-// FUNCTION ov82_0223FC14: matching C (agent5)
+
+extern const ObjCharTransferTemplate ov82_0223FEF0;
+
+// FUNCTION ov82_0223FC14: matching C (twin)
 #pragma force_active on
 void ov82_0223FC14(void) {
-    Tmpl t = ov82_0223FEF0;
-    ObjCharTransfer_InitEx((struct ObjCharTransferTemplate *)&t, 0x10, 0x10);
+    ObjCharTransferTemplate transferTemplate = ov82_0223FEF0;
+
+    ObjCharTransfer_InitEx(&transferTemplate, 0x10, 0x10);
+
     ObjPlttTransfer_Init(4, 0x69);
     ObjCharTransfer_ClearBuffers();
     ObjPlttTransfer_Reset();

@@ -3,28 +3,30 @@
 #pragma thumb on
 #include "global.h"
 
-#include "ghidra_compat.h"
 #include "map_object.h"
-typedef int code();
-undefined4 sub_02062050();
-undefined4 sub_02062064();
-void sub_02061AEC(undefined4 param_1, undefined1 param_2, undefined1 param_3, undefined4 param_4);
-// FUNCTION sub_02061AEC: matching C (r2)
+
+typedef struct UnkStruct_sub_02061AEC {
+    u8 unk_00[2];
+    u8 unk_02;
+    u8 unk_03;
+    int unk_04;
+    u8 unk_08[4];
+} UnkStruct_sub_02061AEC;
+
+int sub_02062050(LocalMapObject *mapObj);
+void sub_02062064(LocalMapObject *mapObj, void *param1);
+
+// FUNCTION sub_02061AEC: matching C (twin)
 #pragma force_active on
-void sub_02061AEC(undefined4 param_1, undefined1 param_2, undefined1 param_3, undefined4 param_4)
+void sub_02061AEC(LocalMapObject *mapObj, int param1, int param2, int param3) {
+    UnkStruct_sub_02061AEC *v0 = (UnkStruct_sub_02061AEC *)sub_0205F370(mapObj, sizeof(UnkStruct_sub_02061AEC));
 
-{
-    int iVar1;
-    int iVar2;
+    v0->unk_02 = param1;
+    v0->unk_03 = param2;
+    v0->unk_04 = param3;
 
-    iVar1 = sub_0205F370(param_1, 0xc);
-    *(undefined1 *)(iVar1 + 2) = param_2;
-    *(undefined1 *)(iVar1 + 3) = param_3;
-    *(undefined4 *)(iVar1 + 4) = param_4;
-    iVar2 = sub_02062050(param_1);
-    if (iVar2 == 1) {
-        sub_02062064(param_1, iVar1 + 8);
+    if (sub_02062050(mapObj) == 1) {
+        sub_02062064(mapObj, &v0->unk_08);
     }
-    return;
 }
 #pragma force_active reset

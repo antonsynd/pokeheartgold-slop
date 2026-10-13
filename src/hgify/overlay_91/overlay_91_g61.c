@@ -3,21 +3,28 @@
 #pragma thumb on
 #include "global.h"
 
+#include "bg_window.h"
 #include "gf_gfx_planes.h"
-#include "ghidra_compat.h"
 #include "render_window.h"
-typedef int code();
-undefined4 ov90_02258C8C();
-void ov91_0225DB18(int param_1, int param_2);
-// FUNCTION ov91_0225DB18: matching C (r2)
-#pragma force_active on
-void ov91_0225DB18(int param_1, int param_2)
 
-{
-    DrawFrameAndWindow1(param_1 + 0xc, 0, 1, 4);
+void ov90_02258C8C(void *param0);
+
+typedef struct UnkStruct_ov91_0225DB18 {
+    u8 unk_00[0x0C];
+    Window unk_0C;
+} UnkStruct_ov91_0225DB18;
+
+typedef struct UnkStruct_ov91_0225DB18_1 {
+    u8 unk_00[0x6F0];
+    void *unk_6F0;
+} UnkStruct_ov91_0225DB18_1;
+
+// FUNCTION ov91_0225DB18: matching C (twin)
+#pragma force_active on
+void ov91_0225DB18(UnkStruct_ov91_0225DB18 *param0, UnkStruct_ov91_0225DB18_1 *param1) {
+    DrawFrameAndWindow1(&param0->unk_0C, 0, 1, 4);
     GfGfx_EngineATogglePlanes(2, 1);
     GfGfx_EngineATogglePlanes(4, 1);
-    ov90_02258C8C(*(undefined4 *)(param_2 + 0x6f0));
-    return;
+    ov90_02258C8C(param1->unk_6F0);
 }
 #pragma force_active reset

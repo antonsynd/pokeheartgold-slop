@@ -16,19 +16,6 @@
 #include "unk_02005D10.h"
 #include "unk_02018000.h"
 // clang-format on
-typedef struct UnkStruct_ov48_Parent {
-    BgConfig *bgConfig;
-    u8 unk_04[0x13C];
-    GF3DVramMan *vramMan;
-    NARC *narc;
-} UnkStruct_ov48_Parent;
-typedef struct UnkStruct_ov48_Obj {
-    VecFx32 unk_00;
-    VecFx32 unk_0C;
-    VecFx32 unk_18;
-    UnkStruct_020181B0 unk_24;
-    UnkStruct_02018030 unk_9C;
-} UnkStruct_ov48_Obj;
 typedef struct UnkStruct_ov48_Entry {
     s16 unk_00;
     s16 unk_02;
@@ -48,77 +35,7 @@ typedef struct UnkStruct_ov48_Scene {
     UnkStruct_020181B0 unk_C010[3];
     UnkStruct_02018030 unk_C178[3];
 } UnkStruct_ov48_Scene;
-typedef struct UnkStruct_ov48_Cam {
-    Camera *camera;
-    u8 unk_04[8];
-    s32 unk_0C;
-    u16 unk_10;
-    u16 unk_12;
-} UnkStruct_ov48_Cam;
-typedef struct UnkStruct_ov48_Touch {
-    u32 unk_00;
-    u32 unk_04;
-    u32 unk_08;
-    u32 unk_0C;
-    u32 unk_10;
-    u32 unk_14;
-    u32 unk_18;
-    Window unk_1C;
-} UnkStruct_ov48_Touch;
-typedef struct UnkStruct_ov48_Flags {
-    u32 unk_00_0 : 1;
-} UnkStruct_ov48_Flags;
-extern const VecFx32 ov48_0225B16C;
-extern const u32 ov48_0225B178[3];
-extern const VecFx32 ov48_0225B184;
-void ov48_02259798(void);
-void ov48_022598BC(const UnkStruct_ov48_Obj *param0, MtxFx33 *param1);
-u32 ov48_02259BBC(const UnkStruct_ov48_Scene *param0);
-u32 ov48_02259B10(const UnkStruct_ov48_Scene *param0, u32 param1, u32 param2);
-void ov48_02259B3C(const UnkStruct_ov48_Scene *param0, VecFx32 *param1, int param2);
-u32 ov48_02259B68(const UnkStruct_ov48_Scene *param0, int param1);
-void ov48_02258A80(UnkStruct_ov48_Scene *param0, const void *param1, u32 heapID);
-void ov48_02258BF4(MtxFx33 *param0, const VecFx32 *param1);
-void ov48_02258CE4(u32 param0, u32 param1, u32 *param2, u32 *param3, u32 *param4, u32 *param5);
-String *ov48_0225B0C4(const void *param0, u32 param1);
-BOOL ov45_0222D724(const void *param0, u8 param1);
-u32 ov45_0222D6FC(const void *param0, u8 param1);
-u8 ov45_0222D6B0(const void *param0, u8 param1);
-u32 ov45_0222D6D4(const void *param0, u8 param1);
-void ov48_02259750(UnkStruct_ov48_Parent *param0, u32 heapID);
-void ov48_02259750(UnkStruct_ov48_Parent *param0, u32 heapID);
-void ov48_02259788(UnkStruct_ov48_Parent *param0);
-void ov48_02259788(UnkStruct_ov48_Parent *param0);
-void ov48_02259798(void);
-void ov48_02259798(void);
-void ov48_02259824(UnkStruct_ov48_Obj *param0, UnkStruct_ov48_Parent *param1, u32 heapID);
-void ov48_02259824(UnkStruct_ov48_Obj *param0, UnkStruct_ov48_Parent *param1, u32 heapID);
-void ov48_02259868(UnkStruct_ov48_Obj *param0);
-void ov48_02259868(UnkStruct_ov48_Obj *param0);
-void ov48_02259874(UnkStruct_ov48_Obj *param0);
-void ov48_02259874(UnkStruct_ov48_Obj *param0);
-void ov48_022598AC(const UnkStruct_ov48_Obj *param0, VecFx32 *param1);
-void ov48_022598AC(const UnkStruct_ov48_Obj *param0, VecFx32 *param1);
-void ov48_022598BC(const UnkStruct_ov48_Obj *param0, MtxFx33 *param1);
-void ov48_022598BC(const UnkStruct_ov48_Obj *param0, MtxFx33 *param1);
-void ov48_022598CC(const UnkStruct_ov48_Obj *param0, VecFx32 *param1);
-void ov48_022598CC(const UnkStruct_ov48_Obj *param0, VecFx32 *param1);
-void ov48_022598DC(UnkStruct_ov48_Obj *param0, const VecFx32 *param1);
-void ov48_022598DC(UnkStruct_ov48_Obj *param0, const VecFx32 *param1);
-void ov48_022598EC(UnkStruct_ov48_Scene *param0, const void *param1, UnkStruct_ov48_Parent *param2, u32 param3, u32 unused, u32 heapID);
-void ov48_022598EC(UnkStruct_ov48_Scene *param0, const void *param1, UnkStruct_ov48_Parent *param2, u32 param3, u32 unused, u32 heapID);
-void ov48_02259984(UnkStruct_ov48_Scene *param0);
-void ov48_02259984(UnkStruct_ov48_Scene *param0);
-void ov48_022599A0(UnkStruct_ov48_Scene *param0, const UnkStruct_ov48_Obj *param1);
-void ov48_022599A0(UnkStruct_ov48_Scene *param0, const UnkStruct_ov48_Obj *param1);
-u32 ov48_02259A68(const void *param0, u32 param1, u32 param2);
-u32 ov48_02259A68(const void *param0, u32 param1, u32 param2);
-u32 ov48_02259AD0(const UnkStruct_ov48_Scene *param0, u32 param1, u32 param2, VecFx32 *param3);
-u32 ov48_02259AD0(const UnkStruct_ov48_Scene *param0, u32 param1, u32 param2, VecFx32 *param3);
-u32 ov48_02259B10(const UnkStruct_ov48_Scene *param0, u32 param1, u32 param2);
-u32 ov48_02259B10(const UnkStruct_ov48_Scene *param0, u32 param1, u32 param2);
-void ov48_02259B3C(const UnkStruct_ov48_Scene *param0, VecFx32 *param1, int param2);
-// FUNCTION ov48_02259B3C: matching C (r2)
+// FUNCTION ov48_02259B3C: matching C (twin)
 #pragma force_active on
 void ov48_02259B3C(const UnkStruct_ov48_Scene *param0, VecFx32 *param1, int param2) {
     GF_ASSERT(param2 < param0->unk_00.unk_00);
@@ -128,29 +45,3 @@ void ov48_02259B3C(const UnkStruct_ov48_Scene *param0, VecFx32 *param1, int para
     param1->z = 0;
 }
 #pragma force_active reset
-u32 ov48_02259B68(const UnkStruct_ov48_Scene *param0, int param1);
-u32 ov48_02259B68(const UnkStruct_ov48_Scene *param0, int param1);
-u32 ov48_02259B84(const UnkStruct_ov48_Scene *param0, int param1);
-u32 ov48_02259B84(const UnkStruct_ov48_Scene *param0, int param1);
-u32 ov48_02259BA0(const UnkStruct_ov48_Scene *param0, int param1);
-u32 ov48_02259BA0(const UnkStruct_ov48_Scene *param0, int param1);
-u32 ov48_02259BBC(const UnkStruct_ov48_Scene *param0);
-u32 ov48_02259BBC(const UnkStruct_ov48_Scene *param0);
-void ov48_02259BC0(UnkStruct_ov48_Cam *param0, UnkStruct_ov48_Flags param1, u32 unused, enum HeapID heapID);
-void ov48_02259BC0(UnkStruct_ov48_Cam *param0, UnkStruct_ov48_Flags param1, u32 unused, enum HeapID heapID);
-void ov48_02259C38(UnkStruct_ov48_Cam *param0);
-void ov48_02259C38(UnkStruct_ov48_Cam *param0);
-void ov48_02259C44(const UnkStruct_ov48_Cam *param0);
-void ov48_02259C44(const UnkStruct_ov48_Cam *param0);
-void ov48_02259C4C(UnkStruct_ov48_Cam *param0);
-void ov48_02259C4C(UnkStruct_ov48_Cam *param0);
-BOOL ov48_02259C78(UnkStruct_ov48_Cam *param0, UnkStruct_ov48_Scene *param1);
-BOOL ov48_02259C78(UnkStruct_ov48_Cam *param0, UnkStruct_ov48_Scene *param1);
-u32 ov48_02259CFC(const UnkStruct_ov48_Cam *param0);
-u32 ov48_02259CFC(const UnkStruct_ov48_Cam *param0);
-void ov48_02259D00(UnkStruct_ov48_Touch *param0, UnkStruct_ov48_Parent *param1, void *param2, u32 heapID);
-void ov48_02259D00(UnkStruct_ov48_Touch *param0, UnkStruct_ov48_Parent *param1, void *param2, u32 heapID);
-void ov48_02259D94(UnkStruct_ov48_Touch *param0);
-void ov48_02259D94(UnkStruct_ov48_Touch *param0);
-void ov48_02259DA0(UnkStruct_ov48_Touch *param0);
-void ov48_02259DA0(UnkStruct_ov48_Touch *param0);

@@ -5,22 +5,28 @@
 
 #include "battle/battle_finger.h"
 
-#include "ghidra_compat.h"
-typedef void code(void);
-extern undefined ov08_02225D30;
-extern undefined ov08_02225D2C;
-void ov08_0222421C(int *param_1, int param_2);
-// FUNCTION ov08_0222421C: matching C (r2)
-#pragma force_active on
-void ov08_0222421C(int *param_1, int param_2)
+typedef struct UnkStruct_ov08_0222421C_Context {
+    u8 unk_00[0x14];
+    int isInCatchTutorial;
+} UnkStruct_ov08_0222421C_Context;
 
-{
-    if (*(int *)(*param_1 + 0x14) == 1) {
-        ov12_0226BD2C(param_1[0xe], *(undefined4 *)(&ov08_02225D2C + param_2 * 8), *(undefined4 *)(&ov08_02225D30 + param_2 * 8));
-        ov12_0226BD4C(param_1[0xe], 0x3c);
-        return;
+typedef struct UnkStruct_ov08_0222421C {
+    UnkStruct_ov08_0222421C_Context *context;
+    u8 unk_04[0x38 - 0x04];
+    BattleFinger *catchTutorialCursor;
+} UnkStruct_ov08_0222421C;
+
+extern const s32 ov08_02225D2C[];
+extern const s32 ov08_02225D30[];
+
+// FUNCTION ov08_0222421C: matching C (twin)
+#pragma force_active on
+void ov08_0222421C(UnkStruct_ov08_0222421C *battleBag, int screen) {
+    if (battleBag->context->isInCatchTutorial == TRUE) {
+        ov12_0226BD2C(battleBag->catchTutorialCursor, ov08_02225D2C[screen * 2], ov08_02225D30[screen * 2]);
+        ov12_0226BD4C(battleBag->catchTutorialCursor, 60);
+    } else {
+        BattleFinger_Disable(battleBag->catchTutorialCursor);
     }
-    BattleFinger_Disable(param_1[0xe]);
-    return;
 }
 #pragma force_active reset

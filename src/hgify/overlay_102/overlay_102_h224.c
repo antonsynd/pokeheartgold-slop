@@ -3,29 +3,28 @@
 #pragma thumb on
 #include "global.h"
 
-#include "ghidra_compat.h"
 #include "sprite.h"
-typedef int code();
-undefined4 ov102_021E9064();
-undefined4 ov102_021E9050();
-undefined4 ov102_021EC2EC();
-undefined4 ov102_021EC05C(int param_1);
-// FUNCTION ov102_021EC05C: matching C (r2)
+typedef struct UnkStruct_ov102_021EC05C {
+    u8 unk_00[0x04];
+    u32 unk_04;
+    u8 unk_08[0x2C];
+    Sprite *unk_34;
+    Sprite *unk_38;
+    u8 unk_3C[0x60 - 0x3C];
+    u8 unk_60[4];
+} UnkStruct_ov102_021EC05C;
+BOOL ov102_021EC2EC(void *param0);
+u32 ov102_021E9050(u32 param);
+u32 ov102_021E9064(u32 param);
+// FUNCTION ov102_021EC05C: matching C (twin)
 #pragma force_active on
-undefined4 ov102_021EC05C(int param_1)
-
-{
-    int iVar1;
-    undefined4 uVar2;
-
-    iVar1 = ov102_021EC2EC(param_1 + 0x60);
-    if (iVar1 != 0) {
-        uVar2 = ov102_021E9050(*(undefined4 *)(param_1 + 4));
-        Sprite_SetDrawFlag(*(undefined4 *)(param_1 + 0x34), uVar2);
-        uVar2 = ov102_021E9064(*(undefined4 *)(param_1 + 4));
-        Sprite_SetDrawFlag(*(undefined4 *)(param_1 + 0x38), uVar2);
+BOOL ov102_021EC05C(UnkStruct_ov102_021EC05C *param0) {
+    if (ov102_021EC2EC(&param0->unk_60)) {
+        Sprite_SetDrawFlag(param0->unk_34, ov102_021E9050(param0->unk_04));
+        Sprite_SetDrawFlag(param0->unk_38, ov102_021E9064(param0->unk_04));
         return 1;
     }
+
     return 0;
 }
 #pragma force_active reset

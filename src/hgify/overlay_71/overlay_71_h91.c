@@ -3,32 +3,29 @@
 #pragma thumb on
 #include "global.h"
 
-#include "ghidra_compat.h"
 #include "sprite.h"
-typedef int code();
-undefined4 ov71_022472FC();
-void ov71_02248B24(int param_1);
-// FUNCTION ov71_02248B24: matching C (r2)
+
+typedef struct UnkStruct_ov71_02248B24 {
+    u8 unk_00[0xc];
+    u8 animResources[0x10];
+    Sprite *sprites[20][2];
+} UnkStruct_ov71_02248B24;
+
+void ov71_022472FC(void *animResources);
+
+// FUNCTION ov71_02248B24: matching C (twin)
 #pragma force_active on
-void ov71_02248B24(int param_1)
-
-{
-    int iVar1;
-    int iVar2;
-
-    iVar1 = 0;
-    iVar2 = param_1;
-    do {
-        if (*(int *)(iVar2 + 0x1c) != 0) {
-            Sprite_Delete((Sprite *)*(int *)(iVar2 + 0x1c));
+void ov71_02248B24(UnkStruct_ov71_02248B24 *ttPhase) {
+    for (int i = 0; i < 20; i++) {
+        if (ttPhase->sprites[i][0]) {
+            Sprite_Delete(ttPhase->sprites[i][0]);
         }
-        if (*(int *)(iVar2 + 0x20) != 0) {
-            Sprite_Delete((Sprite *)*(int *)(iVar2 + 0x20));
+
+        if (ttPhase->sprites[i][1]) {
+            Sprite_Delete(ttPhase->sprites[i][1]);
         }
-        iVar1 = iVar1 + 1;
-        iVar2 = iVar2 + 8;
-    } while (iVar1 < 0x14);
-    ov71_022472FC(param_1 + 0xc);
-    return;
+    }
+
+    ov71_022472FC(&ttPhase->animResources);
 }
 #pragma force_active reset

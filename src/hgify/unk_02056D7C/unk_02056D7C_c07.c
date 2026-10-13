@@ -3,23 +3,24 @@
 #pragma thumb on
 #include "global.h"
 
-#include "ghidra_compat.h"
+#include "field_system.h"
 #include "player_avatar.h"
-typedef int code();
-undefined4 sub_02056FD0();
-extern int _021D41C4;
-void sub_0205701C(undefined4 param_1);
-// FUNCTION sub_0205701C: matching C (r2)
+
+typedef struct UnkStruct_sub_0205701C {
+    u8 unk_00[0x30];
+    FieldSystem *fieldSystem;
+} UnkStruct_sub_0205701C;
+
+extern UnkStruct_sub_0205701C *_021D41C4;
+
+void sub_02056FD0(BOOL param0, int x, int z);
+
+// FUNCTION sub_0205701C: matching C (twin)
 #pragma force_active on
-void sub_0205701C(undefined4 param_1)
+void sub_0205701C(BOOL param0) {
+    int x = PlayerAvatar_GetXCoord(_021D41C4->fieldSystem->playerAvatar);
+    int z = PlayerAvatar_GetZCoord(_021D41C4->fieldSystem->playerAvatar);
 
-{
-    undefined4 uVar1;
-    undefined4 uVar2;
-
-    uVar1 = PlayerAvatar_GetXCoord(*(undefined4 *)(*(int *)(_021D41C4 + 0x30) + 0x40));
-    uVar2 = PlayerAvatar_GetZCoord(*(undefined4 *)(*(int *)(_021D41C4 + 0x30) + 0x40));
-    sub_02056FD0(param_1, uVar1, uVar2);
-    return;
+    sub_02056FD0(param0, x, z);
 }
 #pragma force_active reset

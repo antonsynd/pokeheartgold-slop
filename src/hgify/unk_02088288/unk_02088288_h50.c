@@ -2,19 +2,35 @@
 #pragma warning_errors off
 #pragma thumb on
 #include "global.h"
-u32 sub_0208A3CC(int param_1);
-// FUNCTION sub_0208A3CC: matching C (agent10)
-#pragma force_active on
-u32 sub_0208A3CC(int param_1) {
-    s8 v;
 
-    if (*(u8 *)(*(int *)(param_1 + 0x22c) + 0x12) == 3) {
-        return 0;
+enum {
+    SUMMARY_MODE_FEED_POFFIN = 3,
+};
+
+typedef struct UnkStruct_sub_0208A3CC_Data {
+    u8 unk_00[0x12];
+    u8 mode;
+} UnkStruct_sub_0208A3CC_Data;
+
+typedef struct UnkStruct_sub_0208A3CC {
+    u8 unk_00[0x22C];
+    UnkStruct_sub_0208A3CC_Data *data;
+    u8 unk_230[0x7BC - 0x230];
+    s8 page;
+} UnkStruct_sub_0208A3CC;
+
+// FUNCTION sub_0208A3CC: matching C (twin)
+#pragma force_active on
+BOOL sub_0208A3CC(UnkStruct_sub_0208A3CC *summaryScreen) {
+    if (summaryScreen->data->mode == SUMMARY_MODE_FEED_POFFIN) {
+        return FALSE;
     }
-    v = *(s8 *)(param_1 + 0x7bc);
-    if (v != 0 && v != 3) {
-        return 0;
+
+    // HeartGold's page values for the memo and exit pages are 0 and 3 (Platinum: SUMMARY_PAGE_MEMO, SUMMARY_PAGE_EXIT)
+    if (summaryScreen->page != 0 && summaryScreen->page != 3) {
+        return FALSE;
     }
-    return 1;
+
+    return TRUE;
 }
 #pragma force_active reset

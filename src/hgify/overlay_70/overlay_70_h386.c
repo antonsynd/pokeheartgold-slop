@@ -3,22 +3,26 @@
 #pragma thumb on
 #include "global.h"
 
-#include "ghidra_compat.h"
 #include "player_data.h"
-typedef int code();
-undefined4 ov70_0224182C(int param_1);
-// FUNCTION ov70_0224182C: matching C (r2)
+
+typedef struct UnkStruct_ov70_0224182C {
+    u8 unk_00[0x10C];
+    u16 trainerNames[8];
+    u8 unk_11C[0x122 - 0x11C];
+    u8 gameVersion;
+    u8 trainerLanguage;
+} UnkStruct_ov70_0224182C;
+
+// FUNCTION ov70_0224182C: matching C (twin)
 #pragma force_active on
-undefined4 ov70_0224182C(int param_1)
+PlayerProfile *ov70_0224182C(UnkStruct_ov70_0224182C *listing) {
+    PlayerProfile *profile = PlayerProfile_New(0x3d);
 
-{
-    undefined4 uVar1;
+    PlayerProfile_Init(profile);
+    Save_Profile_PlayerName_Set(profile, listing->trainerNames);
+    PlayerProfile_SetVersion(profile, listing->gameVersion);
+    PlayerProfile_SetLanguage(profile, listing->trainerLanguage);
 
-    uVar1 = PlayerProfile_New(0x3d);
-    PlayerProfile_Init((PlayerProfile *)uVar1);
-    Save_Profile_PlayerName_Set(uVar1, param_1 + 0x10c);
-    PlayerProfile_SetVersion(uVar1, *(undefined1 *)(param_1 + 0x122));
-    PlayerProfile_SetLanguage(uVar1, *(undefined1 *)(param_1 + 0x123));
-    return uVar1;
+    return profile;
 }
 #pragma force_active reset

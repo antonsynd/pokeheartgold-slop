@@ -4,26 +4,27 @@
 #include "global.h"
 
 #include "bg_window.h"
-#include "ghidra_compat.h"
 #include "pm_string.h"
 #include "text.h"
 #include "yes_no_prompt.h"
-typedef int code();
-void ov48_02259F14(int param_1);
-// FUNCTION ov48_02259F14: matching C (r2)
+typedef struct UnkStruct_ov48_02259F14 {
+    int unk_00;
+    u32 unk_04;
+    int unk_08;
+    String *unk_0C;
+    Window unk_10;
+    YesNoPrompt *unk_20;
+} UnkStruct_ov48_02259F14;
+void ov48_02259F14(UnkStruct_ov48_02259F14 *param0);
+// FUNCTION ov48_02259F14: matching C (twin)
 #pragma force_active on
-void ov48_02259F14(int param_1)
-
-{
-    int iVar1;
-
-    iVar1 = TextPrinterCheckActive(*(uint *)(param_1 + 4) & 0xff);
-    if (iVar1 != 0) {
-        RemoveTextPrinter(*(uint *)(param_1 + 4) & 0xff);
+void ov48_02259F14(UnkStruct_ov48_02259F14 *param0) {
+    if (TextPrinterCheckActive((u8)param0->unk_04) != 0) {
+        RemoveTextPrinter((u8)param0->unk_04);
     }
-    String_Delete(*(undefined4 *)(param_1 + 0xc));
-    YesNoPrompt_Destroy(*(undefined4 *)(param_1 + 0x20));
-    RemoveWindow(param_1 + 0x10);
-    return;
+
+    String_Delete(param0->unk_0C);
+    YesNoPrompt_Destroy(param0->unk_20);
+    RemoveWindow(&param0->unk_10);
 }
 #pragma force_active reset
