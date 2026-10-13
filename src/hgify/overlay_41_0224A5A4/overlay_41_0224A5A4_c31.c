@@ -2,190 +2,8 @@
 #pragma warning_errors off
 #include "global.h"
 #pragma thumb on
-enum HeapID {
-    HEAP_ID_SYSTEM = 0,
-    HEAP_ID_SAVE,
-    HEAP_ID_DEBUG,
-    HEAP_ID_APPLICATION,
-    HEAP_ID_FIELD1,
-    HEAP_ID_BATTLE,
-    HEAP_ID_BAG,
-    HEAP_ID_POKETCH_MAIN,
-    HEAP_ID_POKETCH_APP,
-    HEAP_ID_BOX_DATA,
-    HEAP_ID_BOX_GRAPHICS,
-    HEAP_ID_FIELD2,
-    HEAP_ID_PARTY_MENU,
-    HEAP_ID_13,
-    HEAP_ID_14,
-    HEAP_ID_COMMUNICATION,
-    HEAP_ID_16,
-    HEAP_ID_TOWN_MAP,
-    HEAP_ID_NAMING_SCREEN_APP,
-    HEAP_ID_POKEMON_SUMMARY_SCREEN,
-    HEAP_ID_20,
-    HEAP_ID_21,
-    HEAP_ID_22,
-    HEAP_ID_23,
-    HEAP_ID_24,
-    HEAP_ID_TRAINER_CASE,
-    HEAP_ID_TRADE_ROOM,
-    HEAP_ID_27,
-    HEAP_ID_28,
-    HEAP_ID_MINING,
-    HEAP_ID_DISTORTION_WORLD_WARP,
-    HEAP_ID_31,
-    HEAP_ID_FIELD3,
-    HEAP_ID_UNDERGROUND,
-    HEAP_ID_34,
-    HEAP_ID_35,
-    HEAP_ID_BERRY_TAG,
-    HEAP_ID_POKEDEX,
-    HEAP_ID_OPTIONS_MENU,
-    HEAP_ID_DRAWING,
-    HEAP_ID_MAIL,
-    HEAP_ID_MAIL_VIEWER,
-    HEAP_ID_JOURNAL,
-    HEAP_ID_43,
-    HEAP_ID_POFFIN_CASE,
-    HEAP_ID_POFFIN_MANAGER,
-    HEAP_ID_POFFIN_CUTSCENE,
-    HEAP_ID_CHOOSE_STARTER_APP,
-    HEAP_ID_48,
-    HEAP_ID_NINTENDO_WFC,
-    HEAP_ID_50,
-    HEAP_ID_51,
-    HEAP_ID_52,
-    HEAP_ID_53,
-    HEAP_ID_54,
-    HEAP_ID_POFFIN_BERRY_SELECTION,
-    HEAP_ID_56,
-    HEAP_ID_TRADE_SEQUENCE,
-    HEAP_ID_TRADE_SEQUENCE_PHASE,
-    HEAP_ID_59,
-    HEAP_ID_60,
-    HEAP_ID_PC_HALL_OF_FAME,
-    HEAP_ID_62,
-    HEAP_ID_HALL_OF_FAME,
-    HEAP_ID_64,
-    HEAP_ID_65,
-    HEAP_ID_66,
-    HEAP_ID_MOVE_REMINDER,
-    HEAP_ID_68,
-    HEAP_ID_69,
-    HEAP_ID_70,
-    HEAP_ID_EGG_HATCH,
-    HEAP_ID_BOAT_CUTSCENE,
-    HEAP_ID_EVOLUTION,
-    HEAP_ID_BATTLE_TOWER_RECORDS_APP,
-    HEAP_ID_END_CREDITS,
-    HEAP_ID_76,
-    HEAP_ID_GAME_START,
-    HEAP_ID_MIGRATE_FROM_GBA,
-    HEAP_ID_79,
-    HEAP_ID_RANKINGS_MACHINE,
-    HEAP_ID_MAIN_MENU,
-    HEAP_ID_ROWAN_INTRO,
-    HEAP_ID_ROWAN_INTRO_TV,
-    HEAP_ID_DIPLOMA,
-    HEAP_ID_RANGER_LINK,
-    HEAP_ID_MYSTERY_GIFT_APP,
-    HEAP_ID_WONDER_CARDS_APP,
-    HEAP_ID_88,
-    HEAP_ID_89,
-    HEAP_ID_90,
-    HEAP_ID_NETWORK_ICON,
-    HEAP_ID_92,
-    HEAP_ID_BATTLE_FACTORY_APP,
-    HEAP_ID_94,
-    HEAP_ID_95,
-    HEAP_ID_96,
-    HEAP_ID_97,
-    HEAP_ID_BATTLE_HALL_APP,
-    HEAP_ID_99,
-    HEAP_ID_BATTLE_CASTLE_APP,
-    HEAP_ID_101,
-    HEAP_ID_102,
-    HEAP_ID_BATTLE_ARCADE_APP,
-    HEAP_ID_104,
-    HEAP_ID_105,
-    HEAP_ID_106,
-    HEAP_ID_107,
-    HEAP_ID_108,
-    HEAP_ID_109,
-    HEAP_ID_110,
-    HEAP_ID_111,
-    HEAP_ID_112,
-    HEAP_ID_113,
-    HEAP_ID_FRONTIER_RECORD_APP,
-    HEAP_ID_SCRATCH_OFF_CARD_APP,
-    HEAP_ID_116,
-    HEAP_ID_117,
-    HEAP_ID_118,
-    HEAP_ID_119,
-    HEAP_ID_LIBRARY_TV,
-    HEAP_ID_PARTY_MENU1,
-    HEAP_ID_PARTY_MENU2,
-    HEAP_ID_MAX,
-};
-typedef struct NARC {
-    FSFile file;
-    u32 fatbStart;
-    u32 fimgStart;
-    u16 numFiles;
-} NARC;
-typedef struct SpriteList SpriteList;
-typedef struct Sprite {
-    VecFx32 position;
-    VecFx32 affineTranslation;
-    VecFx32 affineScale;
-    u16 affineZRotation;
-    u8 affineOverwriteMode;
-    u8 flip;
-    u8 overwriteFlags;
-    u8 explicitPalette;
-    u8 explicitPaletteOffset;
-    BOOL explicitMosaic;
-    GXOamMode explicitOamMode;
-    u8 draw;
-    u8 animate;
-    fx32 animSpeed;
-    SpriteList *list;
-
-    u32 animData[29];
-    NNSG2dImageProxy imageProxy;
-    NNSG2dImagePaletteProxy paletteProxy;
-    u32 type;
-    u16 activeAnimID;
-    u8 explicitPriority;
-    u16 priority;
-    enum NNS_G2D_VRAM_TYPE vramType;
-    struct Sprite *prev;
-    struct Sprite *next;
-} Sprite;
-struct SpriteList {
-    Sprite *sprites;
-    int capacity;
-    Sprite **freeSprites;
-    int freeSpriteHead;
-    Sprite sentinelData;
-    NNSG2dRendererInstance *renderer;
-    void *rawAnimData;
-    NNSG2dCellAnimBankData *defaultAnimBank;
-    BOOL active;
-};
-typedef struct SpriteResourcesHeader {
-    const NNSG2dImageProxy *imageProxy;
-    const NNSG2dCharacterData *charData;
-    const NNSG2dImagePaletteProxy *paletteProxy;
-    NNSG2dCellDataBank *cellBank;
-    const NNSG2dCellAnimBankData *cellAnimBank;
-    const NNSG2dMultiCellDataBank *multiCellBank;
-    const NNSG2dMultiCellAnimBankData *multiCellAnimBank;
-    BOOL isVRamTransfer;
-    u8 priority;
-    u8 padding_21[3];
-} SpriteResourcesHeader;
+#include "heap.h"
+#include "sprite.h"
 typedef struct SpriteListTemplate {
     SpriteList *list;
     const SpriteResourcesHeader *resourceData;
@@ -194,9 +12,6 @@ typedef struct SpriteListTemplate {
     enum NNS_G2D_VRAM_TYPE vramType;
     enum HeapID heapID;
 } SpriteListTemplate;
-Sprite *Sprite_Create(const SpriteListTemplate *template);
-void Sprite_SetDrawFlag(Sprite *sprite, BOOL draw);
-void Sprite_SetAnimCtrlSeq(Sprite *sprite, u32 animID);
 typedef struct Resource {
     int id;
     void *data;
@@ -215,11 +30,6 @@ enum SpriteResourceType {
     SPRITE_RESOURCE_MULTI_ANIM,
     SPRITE_RESOURCE_MAX,
 };
-typedef struct SpriteResource {
-    Resource *rawResource;
-    enum SpriteResourceType type;
-    void *data;
-} SpriteResource;
 typedef struct SpriteResourceCollection {
     ResourceCollection *collection;
     SpriteResource *resources;
@@ -236,6 +46,7 @@ typedef struct {
 void ov41_0224AED8(UnkStruct_ov22_0225A914 *param0, SpriteList *param1, SpriteResourceCollection **param2, int param3, NARC *param4);
 void ov41_0224AFF8(SpriteResource **param0, SpriteResourceCollection **param1, int param2, NARC *param3, int param4, int param5, int param6, int param7, int param8, int param9);
 void ov41_0224B0B8(SpriteResource **param0, SpriteResourceCollection **param1, SpriteResourcesHeader *param2, int param3);
+
 // FUNCTION ov41_0224AED8: matching C (pt2)
 #pragma force_active on
 void ov41_0224AED8(UnkStruct_ov22_0225A914 *param0, SpriteList *param1, SpriteResourceCollection **param2, int param3, NARC *param4) {
@@ -261,7 +72,7 @@ void ov41_0224AED8(UnkStruct_ov22_0225A914 *param0, SpriteList *param1, SpriteRe
             v1.position.x = 38 + (18 * v3);
             v1.position.x *= ((fx32)0x00001000L);
 
-            param0->unk_10[(v2 * 10) + v3] = Sprite_Create(&v1);
+            param0->unk_10[(v2 * 10) + v3] = Sprite_Create((const struct SimpleSpriteTemplate *)&v1);
             Sprite_SetAnimCtrlSeq(param0->unk_10[(v2 * 10) + v3], 1);
 
             if (((v2 * 10) + v3) >= param3) {
