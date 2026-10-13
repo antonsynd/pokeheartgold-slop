@@ -7,7 +7,6 @@ extern void CARD_SetSpiWriteWaitCycles(u32 cycles);
 extern void CARD_SetSpiReadWaitCycles(u32 cycles);
 extern void CARD_SpiWaitReadRange(void *p);
 extern void ov112_021E594C(void);
-extern u64 OS_GetTick(void);
 extern u8 ov112_021FFA18[];
 extern u8 _021FF500[];
 extern u32 _021FF9E0[];

@@ -2,6 +2,9 @@
 #pragma warning_errors off
 #pragma thumb on
 #include "global.h"
+
+#include "error_handling.h"
+#include "math_util.h"
 typedef struct {
     u8 pad0[0xa];
     s16 x;
@@ -16,8 +19,6 @@ typedef struct {
 } Pt;
 extern Pt ov96_0221CDC8[];
 extern Pt ov96_0221CDCA[];
-u32 MTRandom(void);
-void GF_AssertFail(void);
 void ov96_0220AFF8(Obj *obj);
 // FUNCTION ov96_0220AFF8: matching C (agent14)
 #pragma force_active on

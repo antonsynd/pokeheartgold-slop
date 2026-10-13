@@ -2,12 +2,13 @@
 #pragma warning_errors off
 #pragma thumb on
 #include "global.h"
-void sub_020399EC(void);
+
+#include "unk_0202D230.h"
+#include "unk_02037C94.h"
 void ov73_021EA180(u32 *param_1);
 void ov73_021E83EC(u32 *param_1, int a, int b);
 int ov72_02237B54(void);
 int ov72_02237B74(void);
-void sub_0202D5DC(u32 a, int b, int c);
 int ov73_021E9618(u32 *param_1);
 // FUNCTION ov73_021E9618: matching C (agent17)
 #pragma force_active on

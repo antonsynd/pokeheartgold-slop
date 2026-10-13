@@ -2,6 +2,8 @@
 #pragma warning_errors off
 #pragma thumb on
 #include "global.h"
+
+#include "unk_02014DA0.h"
 typedef struct UnkStruct_ov07_0221CE5C_Ctx {
     u8 filler_00[0x18];
     u32 currentParticleSystem;
@@ -20,7 +22,6 @@ typedef struct UnkStruct_ov07_0221CE5C {
 extern int ov07_0221CD4C(UnkStruct_ov07_0221CE5C *system);
 extern void sub_020154D4(void *particleSystem, VecFx32 *vec);
 extern void sub_020154E4(void *particleSystem, VecFx32 *vec);
-extern void sub_02015528(void *particleSystem, u8 projection);
 extern void *ov07_0221FF18(void *particleSystem, u32 resId, u32 callbackId, UnkStruct_ov07_0221CE5C *system);
 void ov07_0221CE5C(UnkStruct_ov07_0221CE5C *system);
 // FUNCTION ov07_0221CE5C: matching C (r0)

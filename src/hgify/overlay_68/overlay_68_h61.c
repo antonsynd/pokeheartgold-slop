@@ -2,16 +2,14 @@
 #pragma warning_errors off
 #pragma thumb on
 #include "global.h"
+
+#include "gf_gfx_planes.h"
 typedef struct Ov68Obj {
     void *unk00;
     u8 unk04[0x154 - 0x04];
 } Ov68Obj;
-void NNS_G3dInit(void);
-void G3X_Init(void);
-void G3X_InitMtxStack(void);
 void ov68_021E71C4(void *a, int b);
 void ov68_021E7224(void *a, u32 b, int c);
-void GfGfx_EngineATogglePlanes(int a, int b);
 // FUNCTION ov68_021E7288: matching C (agent17)
 #pragma force_active on
 void ov68_021E7288(Ov68Obj *param_1) {

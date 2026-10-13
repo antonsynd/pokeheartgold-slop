@@ -2,9 +2,10 @@
 #pragma warning_errors off
 #pragma thumb on
 #include "global.h"
+
+#include "bg_window.h"
 extern BOOL ov99_021E7198(u8 *data, u32 species);
 extern void ov99_021E738C(u8 *data, s16 x, s16 y);
-extern void BgCommitTilemapBufferToVram(void *bgConfig, u8 bgId);
 void ov99_021E73E0(u8 *data, int idx, u32 species);
 // FUNCTION ov99_021E73E0: matching C (r0)
 #pragma force_active on

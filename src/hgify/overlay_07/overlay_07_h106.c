@@ -2,14 +2,12 @@
 #pragma warning_errors off
 #pragma thumb on
 #include "global.h"
-extern void ToggleBgLayer(u8 bgId, u8 toggle);
-extern void SetBgPriority(u8 bgId, u16 priority);
-extern void SetBgControlParam(void *config, u8 bgId, int attr, u8 value);
-extern void BgSetPosTextAndCommit(void *bgConfig, u8 bgId, int op, int val);
-extern u32 GfGfxLoader_LoadCharData(int narcId, s32 memberNo, void *bgConfig, int layer, u32 tileStart, u32 szByte, BOOL isCompressed, int heapID);
-extern void GfGfxLoader_LoadScrnData(int narcId, s32 memberNo, void *bgConfig, int layer, u32 tileStart, u32 szByte, BOOL isCompressed, int heapID);
-extern void PaletteData_LoadNarc(void *data, int narcID, s32 memberNo, int heapID, int bufferID, u32 size, u16 pos);
-extern void BattleSystem_SetDefaultBlend(void);
+
+#include "battle/battle_system.h"
+
+#include "bg_window.h"
+#include "gf_gfx_loader.h"
+#include "palette.h"
 extern int ov07_0221FB04(void *animSys, int a);
 extern void ov07_0221DEC0(void *bgSwitch);
 extern void ov07_0221E664(void *bgSwitch);

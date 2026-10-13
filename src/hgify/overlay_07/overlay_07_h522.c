@@ -3,6 +3,9 @@
 #pragma warning_errors off
 #pragma thumb on
 #include "global.h"
+
+#include "sprite.h"
+#include "sprite_system.h"
 typedef struct UnkStruct_ov07_0222C2D4_Spoon {
     void *sprite;
     u8 pad_04[0x44];
@@ -23,12 +26,6 @@ typedef struct UnkStruct_ov07_0222C2D4 {
 extern int ov07_0222C214(void *spoon);
 extern void ov07_0222C208(void *spoon, int flag);
 extern void ov07_0222C1FC(void *spoon);
-extern void ManagedSprite_SetDrawFlag(void *sprite, int flag);
-extern void ManagedSprite_SetOamMode(void *sprite, int mode);
-extern void ManagedSprite_TickFrame(void *sprite);
-extern int Sprite_IsAnimated(void *sprite);
-extern void Sprite_DeleteAndFreeResources(void *sprite);
-extern void SpriteSystem_DrawSprites(void *manager);
 extern void ov07_0221C448(void *system, void *task);
 #define REG_BLDALPHA (*(vu16 *)0x04000052)
 void ov07_0222C2D4(void *task, UnkStruct_ov07_0222C2D4 *ctx);

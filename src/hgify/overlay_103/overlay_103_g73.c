@@ -2,9 +2,9 @@
 #pragma warning_errors off
 #pragma thumb on
 #include "global.h"
+
+#include "gf_gfx_planes.h"
 extern u8 ov103_021EED58[];
-void GfGfx_EngineATogglePlanes(int a, int b);
-void GfGfx_EngineBTogglePlanes(int a, int b);
 void ov103_021EE13C(int a);
 void ov103_021EDF88(int a);
 void ov103_021EE2E0(int a);

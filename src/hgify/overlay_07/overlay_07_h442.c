@@ -3,6 +3,8 @@
 #pragma warning_errors off
 #pragma thumb on
 #include "global.h"
+
+#include "sprite_system.h"
 typedef struct UnkStruct_ov07_02226F04 {
     u8 state;
     u8 pad_01[3];
@@ -18,9 +20,6 @@ typedef struct UnkStruct_ov07_02226F04 {
 } UnkStruct_ov07_02226F04;
 extern void ov07_02226CB0(UnkStruct_ov07_02226F04 *ctx);
 extern void ov07_0221C448(void *system, void *task);
-extern void ManagedSprite_TickFrame(void *sprite);
-extern void SpriteSystem_DrawSprites(void *manager);
-extern void ManagedSprite_SetDrawFlag(void *sprite, int flag);
 #define REG_DISPCNT (*(vu32 *)0x04000000)
 #define REG_WIN0H   (*(vu16 *)0x04000040)
 #define REG_WIN0V   (*(vu16 *)0x04000044)

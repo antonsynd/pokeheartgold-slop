@@ -2,9 +2,9 @@
 #pragma warning_errors off
 #pragma thumb on
 #include "global.h"
-typedef struct ManagedSprite ManagedSprite;
-void ManagedSprite_GetPositionXY(ManagedSprite *managedSprite, s16 *x, s16 *y);
-void ManagedSprite_SetPositionXY(ManagedSprite *managedSprite, s16 x, s16 y);
+
+#include "sprite.h"
+#include "sprite_system.h"
 void ov14_021F46F4(void *a);
 #define DATA(p) (*(u8 **)((p) + 0x34))
 void ov14_021F47B8(u8 *param0, s32 param1);

@@ -2,14 +2,14 @@
 #pragma warning_errors off
 #pragma thumb on
 #include "global.h"
+
+#include "party.h"
+#include "unk_02035900.h"
 typedef struct {
     u8 filler_00[0x40];
     void *field_40;
 } UnkStruct_sub_02058640;
 extern UnkStruct_sub_02058640 *_021D41C8;
-extern void *SaveArray_Party_Alloc(int size);
-extern void Party_Copy(void *dst, void *src);
-extern void sub_020376E0(int id, void *buf);
 extern void sub_020582F4(void (*fn)(void), int arg);
 extern void sub_02058870(void);
 extern void sub_02058608(void);

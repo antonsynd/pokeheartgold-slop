@@ -2,11 +2,10 @@
 #pragma warning_errors off
 #pragma thumb on
 #include "global.h"
-void Thunk_G3X_Reset(void);
-void Camera_PushLookAtToNNSGlb(void);
-void NNS_G3dGlbFlushP(void);
-void NNS_G2dSetupSoftwareSpriteCamera(void);
-void PokepicManager_DrawAll(void *data);
+
+#include "camera.h"
+#include "pokepic.h"
+#include "unk_02026E30.h"
 void ov68_021E734C(u8 *self);
 // FUNCTION ov68_021E734C: matching C (agent10)
 #pragma force_active on

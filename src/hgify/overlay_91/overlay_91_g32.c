@@ -2,6 +2,9 @@
 #pragma warning_errors off
 #pragma thumb on
 #include "global.h"
+
+#include "unk_02005D10.h"
+#include "unk_020379A0.h"
 typedef struct UnkStruct_ov91_0225CEB4_19CC {
     u16 unk_00;
     u16 unk_02;
@@ -30,9 +33,6 @@ extern void ov91_022601F4(void *param0, void *param1);
 extern void ov91_02260218(void *param0, void *param1);
 extern void ov91_0225F23C(void *param0);
 extern int ov91_0225F25C(void *param0, void *param1);
-extern void sub_02037AC0(u8 a0);
-extern BOOL sub_02037B38(u8 a0);
-extern void PlaySE(u16 sndseq);
 extern void ov91_0226031C(void *param0, fx32 param1);
 extern void ov91_0225DB7C(void *param0, void *param1);
 extern void ov91_0225DB18(void *param0, void *param1);

@@ -2,7 +2,8 @@
 #pragma warning_errors off
 #pragma thumb on
 #include "global.h"
-void GF_AssertFail(void);
+
+#include "error_handling.h"
 BOOL ov01_021F4728(int a, int b, int c);
 u8 ov01_021F635C(int idx, int tileData, u8 *mgr);
 // FUNCTION ov01_021F635C: matching C (r0)

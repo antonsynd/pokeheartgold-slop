@@ -2,10 +2,8 @@
 #pragma warning_errors off
 #pragma thumb on
 #include "global.h"
-void SpriteSystem_LoadCharResObj(void *a, void *b, int c, int d, int e, int f, int g);
-void SpriteSystem_LoadPlttResObj(void *a, void *b, int c, int d, int e, int f, int g, int h);
-void SpriteSystem_LoadCellResObj(void *a, void *b, int c, int d, int e, int f);
-void SpriteSystem_LoadAnimResObj(void *a, void *b, int c, int d, int e, int f);
+
+#include "sprite_system.h"
 // FUNCTION ov14_021F41E4: matching C (agent16)
 #pragma force_active on
 void ov14_021F41E4(u32 *param_1) {

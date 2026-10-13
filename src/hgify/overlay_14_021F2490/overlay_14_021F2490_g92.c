@@ -2,9 +2,9 @@
 #pragma warning_errors off
 #pragma thumb on
 #include "global.h"
-typedef struct ManagedSprite ManagedSprite;
-void ManagedSprite_GetPositionXY(ManagedSprite *managedSprite, s16 *x, s16 *y);
-void ManagedSprite_SetPositionXY(ManagedSprite *managedSprite, s16 x, s16 y);
+
+#include "sprite.h"
+#include "sprite_system.h"
 extern const s8 ov14_021F8070[8];
 extern const s8 ov14_021F8078[8];
 typedef struct Obj {

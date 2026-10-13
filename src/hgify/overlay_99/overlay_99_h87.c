@@ -2,10 +2,11 @@
 #pragma warning_errors off
 #pragma thumb on
 #include "global.h"
-extern const void *GridInputHandler_GetDpadBox(void *inputHandler, int target);
-extern void DpadMenuBox_GetPosition(const void *dpadBoxes, u8 *px, u8 *py);
-extern void ManagedSprite_SetPositionXY(void *managedSprite, s16 x, s16 y);
-extern void PlaySE(u16 sndseq);
+
+#include "sprite_system.h"
+#include "unk_02005D10.h"
+#include "unk_02019BA4.h"
+#include "unk_02020A0C.h"
 // FUNCTION ov99_021E7C58: matching C (agent11)
 #pragma force_active on
 void ov99_021E7C58(u8 *data, int idx) {

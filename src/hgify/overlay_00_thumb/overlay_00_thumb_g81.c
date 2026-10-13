@@ -2,7 +2,8 @@
 #pragma warning_errors off
 #pragma thumb on
 #include "global.h"
-extern void ov00_021E6A4C(void);
+
+#include "overlay_00_thumb.h"
 extern int VCT_Request(void *session, int request);
 typedef struct {
     s32 timeToProcess;

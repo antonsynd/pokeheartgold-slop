@@ -2,6 +2,11 @@
 #pragma warning_errors off
 #pragma thumb on
 #include "global.h"
+
+#include "overlay_00_thumb.h"
+#include "system.h"
+#include "unk_02037C94.h"
+#include "unk_0203A3B0.h"
 typedef struct Ov75_Parent {
     u8 pad0[0x118];
     int f118;
@@ -17,16 +22,11 @@ typedef struct Ov75_Obj {
     int f1c;
 } Ov75_Obj;
 void ov75_02247878(Ov75_Obj *obj);
-void sub_0203A914(void);
-void sub_0203957C(void);
 void ov00_021EC60C(void);
 void ov00_021EC9E0(void *buf);
 void ov70_02237F2C(void);
 int ov00_021EC724(void);
-int ov00_021EC11C(int *a, int *b);
 void ov00_021EC8D8(void);
-void ov00_021EC210(void);
-void Sys_ClearSleepDisableFlag(u32 flag);
 void ov00_021EC0FC(void *buf);
 int ov00_021EC5B4(void);
 // FUNCTION ov75_02248800: matching C (agent15)

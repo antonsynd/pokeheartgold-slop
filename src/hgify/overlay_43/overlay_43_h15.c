@@ -2,8 +2,10 @@
 #pragma warning_errors off
 #pragma thumb on
 #include <string.h>
-typedef unsigned char u8;
-typedef unsigned int u32;
+
+#include "global.h"
+
+#include "unk_0202C034.h"
 typedef struct Ov43Work {
     u32 unk00;
     u32 unk04;
@@ -14,9 +16,7 @@ typedef struct Ov43Work {
     u8 arr1[0x20];
     u8 arr2[0x20];
 } Ov43Work;
-u32 sub_0202C090();
 u32 sub_0202C2DC();
-u32 sub_0202C6F4();
 // FUNCTION ov43_0222A420: matching C (agent8)
 #pragma force_active on
 void ov43_0222A420(Ov43Work *p, u32 param_2, u32 param_3, u32 param_4) {

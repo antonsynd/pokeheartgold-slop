@@ -2,6 +2,10 @@
 #pragma warning_errors off
 #pragma thumb on
 #include "global.h"
+
+#include "bg_window.h"
+#include "gf_gfx_loader.h"
+#include "palette.h"
 typedef struct UnkStruct_ov07_02223550_Common {
     void *unk_00;
     void *battleAnimSys;
@@ -34,12 +38,6 @@ extern int ov07_0221BFD0(void *system);
 extern int ov07_0221FB7C(int bgId, int member);
 extern void ov07_022233D8(void);
 extern void ov07_0221C410(void *system, void (*func)(void), void *ctx);
-extern void ToggleBgLayer(u8 bgId, u8 toggle);
-extern u32 GfGfxLoader_LoadCharData(int narcId, s32 memberNo, void *bgConfig, int layer, u32 tileStart, u32 szByte, BOOL isCompressed, int heapID);
-extern void GfGfxLoader_LoadScrnData(int narcId, s32 memberNo, void *bgConfig, int layer, u32 tileStart, u32 szByte, BOOL isCompressed, int heapID);
-extern void PaletteData_LoadNarc(void *data, int narcID, s32 memberNo, int heapID, int bufferID, u32 size, u16 pos);
-extern void BgClearTilemapBufferAndCommit(void *bgConfig, u8 bgId);
-extern void BgSetPosTextAndCommit(void *bgConfig, u8 bgId, int op, int val);
 void ov07_02223550(void *system);
 // FUNCTION ov07_02223550: matching C (r0)
 #pragma force_active on

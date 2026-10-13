@@ -2,6 +2,8 @@
 #pragma warning_errors off
 #pragma thumb on
 #include "global.h"
+
+#include "unk_02005D10.h"
 typedef struct UnkStruct_ov93_0225EAE0 {
     u8 filler_00[0x10];
     int unk_10;
@@ -11,7 +13,6 @@ typedef struct UnkStruct_ov93_0225EAE0 {
     int unk_244;
 } UnkStruct_ov93_0225EAE0;
 void ov93_0225D700(void *param0, int param1, int param2, int param3);
-void PlaySE(u16 seqNo);
 // FUNCTION ov93_0225EAE0: matching C (agent8)
 #pragma force_active on
 void ov93_0225EAE0(void *param0, UnkStruct_ov93_0225EAE0 *param1, int unused, int param3) {

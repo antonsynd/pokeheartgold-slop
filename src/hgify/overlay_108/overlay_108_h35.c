@@ -2,14 +2,14 @@
 #pragma warning_errors off
 #pragma thumb on
 #include "global.h"
+
+#include "bg_window.h"
+#include "vram_transfer_manager.h"
 typedef struct {
     u8 flag : 1;
     u8 rest : 7;
 } Ov108Flags;
 void ov108_021E8490(u8 *p);
-void BgSetPosTextAndCommit(void *bgConfig, int bgLayer, int a, int b);
-void GF_RunVramTransferTasks(void);
-void DoScheduledBgGpuUpdates(void *bgConfig);
 // FUNCTION ov108_021E6BA0: matching C (agent16)
 #pragma force_active on
 void ov108_021E6BA0(u8 *param_1) {

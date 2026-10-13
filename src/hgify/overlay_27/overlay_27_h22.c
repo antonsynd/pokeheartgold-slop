@@ -2,11 +2,10 @@
 #pragma warning_errors off
 #pragma thumb on
 #include "global.h"
+
+#include "bag.h"
+#include "sprite.h"
 int ov27_0225BDAC(int param_1);
-void *Save_Bag_Get(void *save);
-int Bag_GetRegisteredItem1(void *bag);
-int Bag_GetRegisteredItem2(void *bag);
-void Sprite_SetDrawFlag(void *sprite, int flag);
 void ov27_0225A9C0(int param_1, int param_2);
 // FUNCTION ov27_0225A9C0: matching C (agent16)
 #pragma force_active on

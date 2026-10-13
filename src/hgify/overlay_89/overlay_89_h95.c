@@ -2,10 +2,9 @@
 #pragma warning_errors off
 #pragma thumb on
 #include "global.h"
-s32 Camera_GetDistance(void *cam);
-void Camera_AdjustDistance(s32 delta, void *cam);
-void Camera_SetDistance(s32 dist, void *cam);
-void PlaySE(u16 se);
+
+#include "camera.h"
+#include "unk_02005D10.h"
 int ov89_0225C3E8(int param_1, u8 *param_2, void *param_3);
 // FUNCTION ov89_0225C3E8: matching C (agent16)
 #pragma force_active on

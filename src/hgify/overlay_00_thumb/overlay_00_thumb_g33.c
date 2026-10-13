@@ -2,7 +2,11 @@
 #pragma warning_errors off
 #pragma thumb on
 #pragma thumb on
+#include "global.h"
+
 #include "ghidra_compat.h"
+#include "overlay_00_arm.h"
+#include "overlay_00_thumb.h"
 typedef int code();
 typedef struct S00 {
     char pad0[0x1070];
@@ -25,8 +29,6 @@ typedef struct S00 {
     unsigned char b10df;
 } S00;
 extern S00 *_0221A680;
-int ov00_021E6690(void);
-void ov00_021EDB1C(void);
 void ov00_021E6CE8(void);
 void ov00_021E7AE0(void);
 void ov00_021E7ACC(void);

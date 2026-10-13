@@ -2,12 +2,12 @@
 #pragma require_prototypes off
 #pragma warning_errors off
 #pragma thumb on
-// clang-format off
 #include "global.h"
+
+#include "pokeathlon/pokeathlon.h"
+
 #include "screen_fade.h"
 #include "touchscreen.h"
-// clang-format on
-void *PokeathlonCourse_GetHeapAllocPtr4(void *data);
 void ov96_021EF924(void *heap);
 int ov96_021EFB50(void *param);
 void ov96_021EFD08(void *param);

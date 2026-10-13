@@ -2,6 +2,8 @@
 #pragma warning_errors off
 #pragma thumb on
 #include "global.h"
+
+#include "list_menu_items.h"
 typedef struct {
     u32 threshold;
     u32 msgId;
@@ -9,9 +11,7 @@ typedef struct {
 } Ov83Entry;
 extern Ov83Entry ov83_02247EB0[];
 extern const u8 ov83_02248008[];
-void *ListMenuItems_New(u32 a, u32 b);
 u8 ov83_0224777C(void *a, u8 b, u8 c);
-void ListMenuItems_AppendFromMsgData(void *list, void *msgData, u32 msgId, u32 kind);
 void ov83_02242AEC(void *obj, u32 count, u32 a, u32 b, u32 c);
 // FUNCTION ov83_02242CAC: matching C (agent17)
 #pragma force_active on

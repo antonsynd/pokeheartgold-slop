@@ -2,12 +2,14 @@
 #pragma warning_errors off
 #pragma thumb on
 #include "global.h"
+
+#include "overlay_manager.h"
+#include "unk_02005D10.h"
 typedef struct UnkStruct_ov112_021F3018 {
     u8 pad_000[0x13d];
     u8 cursor;
     u8 count;
 } UnkStruct_ov112_021F3018;
-extern void *OverlayManager_GetData(void *man);
 extern int ov112_021F2CD4(UnkStruct_ov112_021F3018 *data);
 extern int ov112_021F0EB4(UnkStruct_ov112_021F3018 *data);
 extern int ov112_021F0EFC(UnkStruct_ov112_021F3018 *data);
@@ -15,7 +17,6 @@ extern int ov112_021F0E60(UnkStruct_ov112_021F3018 *data);
 extern void ov112_021F2CC4(UnkStruct_ov112_021F3018 *data);
 extern void ov112_021F2338(UnkStruct_ov112_021F3018 *data);
 extern void ov112_021F1D28(UnkStruct_ov112_021F3018 *data, int arg);
-extern void PlaySE(int seq);
 int ov112_021F3018(void *man);
 // FUNCTION ov112_021F3018: matching C (r0)
 #pragma force_active on

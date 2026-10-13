@@ -2,12 +2,13 @@
 #pragma warning_errors off
 #pragma thumb on
 #include "global.h"
+
+#include "heap.h"
 typedef struct UnkStruct_Field3dModel_Unload {
     void *buffer;
     u8 unk4[8];
     NNSG3dResTex *tex;
 } UnkStruct_Field3dModel_Unload;
-extern void Heap_Free(void *ptr);
 // FUNCTION Field3dModel_Unload: matching C (agent12)
 #pragma force_active on
 void Field3dModel_Unload(UnkStruct_Field3dModel_Unload *model) {

@@ -2,6 +2,9 @@
 #pragma warning_errors off
 #pragma thumb on
 #include "global.h"
+
+#include "bg_window.h"
+#include "unk_02005D10.h"
 typedef struct UnkStruct_ov05_0221C6C8 {
     u8 filler_00[0x0c];
     void *bgConfig;
@@ -9,8 +12,6 @@ typedef struct UnkStruct_ov05_0221C6C8 {
     u8 frame;
 } UnkStruct_ov05_0221C6C8;
 extern const u8 ov05_0221EA6C[][2];
-extern void PlaySE(u16 sndseq);
-extern void ScheduleSetBgPosText(void *bgConfig, u8 bgId, int op, int value);
 extern void ov05_0221D3AC(UnkStruct_ov05_0221C6C8 *param0, u8 param1, s16 param2, s16 param3);
 extern void ov05_0221D664(UnkStruct_ov05_0221C6C8 *param0, u8 param1, s16 param2, s16 param3);
 u8 ov05_0221C6C8(UnkStruct_ov05_0221C6C8 *param0);

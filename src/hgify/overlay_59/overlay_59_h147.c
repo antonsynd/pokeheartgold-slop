@@ -2,7 +2,8 @@
 #pragma warning_errors off
 #pragma thumb on
 #include "global.h"
-void sub_02015394(NNSGfdPlttKey plttKey);
+
+#include "unk_02014DA0.h"
 // FUNCTION ov59_0223C4D0: matching C (agent9)
 #pragma force_active on
 u32 ov59_0223C4D0(u32 param_1, BOOL param_2) {

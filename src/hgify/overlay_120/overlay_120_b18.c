@@ -2,11 +2,14 @@
 #pragma warning_errors off
 #pragma thumb on
 #include <string.h>
+
+#include "global.h"
+
+#include "bg_window.h"
+#include "gf_gfx_planes.h"
+#include "heap.h"
+#include "sprite.h"
 #define NULL ((void *)0)
-typedef unsigned char u8;
-typedef unsigned short u16;
-typedef unsigned int u32;
-typedef int BOOL;
 typedef struct Ent {
     u32 a;
     u32 b;
@@ -40,25 +43,13 @@ typedef struct T {
     u8 pad[8];
     void *f20;
 } T;
-void Sprite_Delete(void *);
-void RemoveWindow(void *);
-void ClearWindowTilemapAndCopyToVram(void *);
 void ov120_0225F9D4(void *, void *, void *, void *, int);
-void GfGfx_EngineATogglePlanes(u8, u8);
 void ov01_021EFCF8(int, int, int, void *, int);
-void *AllocWindows(int, int);
-void FillWindowPixelBuffer(void *, u8);
 void ov120_0225F6FC(void *, void *);
 void ov01_021F06EC(void *, void *);
 BOOL ov120_0225F704(void *, void *);
-void ScheduleWindowCopyToVram(void *);
-void BG_LoadPlttData(int, void *, int, int);
 void sub_0200FC20(int);
-void AddWindowParameterized(void *, void *, int, int, int, int, int, int, int);
-void WindowArray_Delete(void *, int);
 void ov01_021F05C4(void *, int, int);
-void *Heap_Alloc(int, u32);
-void SpriteList_RenderAndAnimateSprites(void *);
 void ov01_021F05F4(void *);
 void ov01_021EFCDC(void *, void *);
 void ov120_0225F8B0(void);

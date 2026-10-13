@@ -2,8 +2,9 @@
 #pragma warning_errors off
 #pragma thumb on
 #include "global.h"
-void GF_AssertFail(void);
-void GfGfxLoader_LoadScrnData(int narc, int file, void *bg, int layer, unsigned int offset, unsigned int size, int compressed, int heapID);
+
+#include "error_handling.h"
+#include "gf_gfx_loader.h"
 void ov96_0220EFD0(u8 *p, void *bg, int heapID);
 // FUNCTION ov96_0220EFD0: matching C (agent14)
 #pragma force_active on

@@ -2,9 +2,10 @@
 #pragma warning_errors off
 #pragma thumb on
 #define uRam04000304 (*(volatile unsigned short *)0x04000304)
-void BgSetPosTextAndCommit(int, int, int, int);
-void ToggleBgLayer(int, int);
-void SysTask_Destroy(int);
+#include "global.h"
+
+#include "bg_window.h"
+#include "sys_task_api.h"
 // FUNCTION ov71_02248B60: matching C (agent8)
 #pragma force_active on
 void ov71_02248B60(int param_1, int param_2) {

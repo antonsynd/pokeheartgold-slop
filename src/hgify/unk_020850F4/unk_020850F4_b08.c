@@ -2,10 +2,11 @@
 #pragma warning_errors off
 #pragma thumb on
 #include "global.h"
-void GF_RunVramTransferTasks(void);
-void SpriteSystem_TransferOam(void);
-void PaletteData_PushTransparentBuffers(void *data);
-void DoScheduledBgGpuUpdates(void *bgConfig);
+
+#include "bg_window.h"
+#include "palette.h"
+#include "sprite_system.h"
+#include "vram_transfer_manager.h"
 typedef struct OV020855CC_Obj {
     u8 unk000[0x2f8];
     void *unk2f8;

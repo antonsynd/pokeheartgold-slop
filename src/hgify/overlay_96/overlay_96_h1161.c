@@ -2,7 +2,8 @@
 #pragma warning_errors off
 #pragma thumb on
 #include "global.h"
-void *SpriteManager_GetSpriteList(void *a);
+
+#include "sprite_system.h"
 u32 ov96_021EA854(u32 a, u32 b, u32 c, void *d, void *e);
 void ov96_021E6168(u32 a, int b, int c, void *d);
 void ov96_021E60C0(u32 a, int b, int c);

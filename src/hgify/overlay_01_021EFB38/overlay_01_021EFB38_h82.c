@@ -2,7 +2,8 @@
 #pragma warning_errors off
 #pragma thumb on
 #include "global.h"
-extern void *sub_02014BF8(void *self);
+
+#include "unk_02014A08.h"
 extern u32 _u32_div_f(u32 a, u32 b);
 // FUNCTION ov01_021F1310: matching C (agent11)
 #pragma force_active on

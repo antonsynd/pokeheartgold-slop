@@ -2,7 +2,11 @@
 #pragma warning_errors off
 #pragma thumb on
 #pragma thumb on
+#include "global.h"
+
+#include "gf_gfx_planes.h"
 #include "ghidra_compat.h"
+#include "system.h"
 typedef int code();
 typedef struct S5B44 {
     int pad0;
@@ -10,12 +14,8 @@ typedef struct S5B44 {
     unsigned short flag;
 } S5B44;
 void ov67_021E6080(S5B44 *p);
-void Main_SetVBlankIntrCB(void *a, void *b);
 void ov67_021E6C04(S5B44 *p);
-void GfGfx_DisableEngineAPlanes(void);
 void ov67_021E5E84(S5B44 *p);
-void HBlankInterruptDisable(void);
-void GfGfx_DisableEngineBPlanes(void);
 void ov67_021E6474(S5B44 *p);
 void ov67_021E6990(S5B44 *p);
 void ov67_021E60F4(S5B44 *p);

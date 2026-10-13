@@ -2,8 +2,8 @@
 #pragma warning_errors off
 #pragma thumb on
 #include "global.h"
-void ManagedSprite_GetPositionXY(void *spr, s16 *x, s16 *y);
-void ManagedSprite_SetPositionXY(void *spr, s16 x, s16 y);
+
+#include "sprite_system.h"
 void ov14_021F29E4(void *a, u32 b, u32 c);
 void ov14_021F2A18(void *a, u32 b, u32 c);
 u32 ov14_021F2A04(void *a, u32 b);

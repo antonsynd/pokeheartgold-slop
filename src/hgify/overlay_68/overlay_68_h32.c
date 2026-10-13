@@ -2,11 +2,10 @@
 #pragma warning_errors off
 #pragma thumb on
 #include "global.h"
+
+#include "list_menu_items.h"
+#include "msgdata.h"
 u8 ov68_021E6678(u8 *p);
-void *ListMenuItems_New(u32 n, u32 heapID);
-void *NewMsgDataFromNarc(u32 type, u32 narc, s32 fileId, u32 heapID);
-void DestroyMsgData(void *msgData);
-void ListMenuItems_AppendFromMsgData(void *items, void *msgData, int msgId, int value);
 void ov68_021E67E0(u8 *p);
 // FUNCTION ov68_021E6820: matching C (agent16)
 #pragma force_active on

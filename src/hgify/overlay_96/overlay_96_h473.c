@@ -2,12 +2,14 @@
 #pragma warning_errors off
 #pragma thumb on
 #pragma thumb on
+#include "global.h"
+
+#include "error_handling.h"
 #include "ghidra_compat.h"
+#include "sprite.h"
 typedef int code();
 void *ov96_021EB5B8(void *p);
-void Sprite_SetAnimCtrlSeq(void *spr, int seq);
 void ov96_021EB52C(void *p, int a, int b);
-void GF_AssertFail(void);
 // FUNCTION ov96_021F4390: matching C (agent4)
 #pragma force_active on
 void ov96_021F4390(char *param_1, int param_2, int param_3) {

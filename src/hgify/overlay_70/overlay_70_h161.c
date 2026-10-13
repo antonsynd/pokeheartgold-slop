@@ -2,11 +2,12 @@
 #pragma warning_errors off
 #pragma thumb on
 #include "global.h"
+
+#include "unk_02005D10.h"
 void ov70_0223CAC4(u8 *param_1, int a, int b, int c, int d);
 void ov70_02238D84(u8 *param_1, int a, int b);
 void ov70_02241234(u8 *param_1);
 int ov70_0223CC68(void *a, void *b, u32 c, u32 d);
-void PlaySE(int seNo);
 int ov70_0223BF00(u8 *param_1, u32 param_2, u32 param_3, u32 param_4);
 // FUNCTION ov70_0223BF00: matching C (agent16)
 #pragma force_active on

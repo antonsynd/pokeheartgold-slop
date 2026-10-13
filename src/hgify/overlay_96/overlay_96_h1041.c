@@ -2,6 +2,8 @@
 #pragma warning_errors off
 #pragma thumb on
 #include "global.h"
+
+#include "pokeathlon/pokeathlon.h"
 typedef struct Ov96_Out {
     u32 a;
     s16 b;
@@ -14,7 +16,6 @@ typedef struct Ov96_In {
     u32 a : 2;
     u32 b : 2;
 } Ov96_In;
-void *PokeathlonCourse_GetHeapAllocPtr4(u32 a);
 s16 *ov96_0220E74C(void *heap, u8 idx);
 void ov96_0220E770(void *heap, u8 a, u8 b, s16 *out1, u32 *out2);
 u32 ov96_02210C48(s16 a, s16 b, u32 c, s16 d, s16 e, u32 f);

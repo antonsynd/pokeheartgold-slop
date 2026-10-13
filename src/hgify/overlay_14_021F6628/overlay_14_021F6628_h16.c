@@ -2,8 +2,9 @@
 #pragma warning_errors off
 #pragma thumb on
 #include "global.h"
+
+#include "message_format.h"
 void *ov14_021E60C0(int param_1, u32 param_2, u32 param_3);
-void BufferBoxMonNickname(void *, u32, void *);
 void ov14_021F6698(u8 *param_1, int param_2, int param_3);
 // FUNCTION ov14_021F685C: matching C (agent12)
 #pragma force_active on

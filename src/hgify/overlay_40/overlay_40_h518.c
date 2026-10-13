@@ -3,11 +3,14 @@
 #pragma thumb on
 #include "global.h"
 
-void GF_AssertFail(void); /* ov40_02244AB0 */
+#include "error_handling.h"
+#include "options.h"
+#include "save.h"
+#include "trainer_data.h"
 typedef struct {
     u16 unk_00;
     u16 unk_02;
-} UnkStruct_0202F298_sub1; /* ov40_02244AB0 */
+} UnkStruct_0202F298_sub1;
 typedef struct TrainerHeader {
     u8 monDataType;
     u8 trainerType;
@@ -16,19 +19,13 @@ typedef struct TrainerHeader {
     u16 items[4];
     u32 aiMask;
     u32 battleType;
-} TrainerHeader;        /* ov40_02244AB0 */
-typedef u16 charcode_t; /* ov40_02244AB0 */
+} TrainerHeader;
+typedef u16 charcode_t;
 typedef struct EasyChatSentence {
     u16 type;
     u16 id;
     u16 words[2];
-} EasyChatSentence; /* ov40_02244AB0 */
-typedef struct Trainer {
-    TrainerHeader header;
-    charcode_t name[7 + 1];
-    EasyChatSentence winMsg;
-    EasyChatSentence loseMsg;
-} Trainer; /* ov40_02244AB0 */
+} EasyChatSentence;
 typedef struct {
     u32 unk_00;
     int unk_04;
@@ -55,10 +52,10 @@ typedef struct {
     u16 unk_146;
     int unk_148;
     u8 unk_14C[4];
-} UnkStruct_0202FAA8; /* ov40_02244AB0 */
+} UnkStruct_0202FAA8;
 typedef struct UnkStruct_0202FAA8_sub1_t {
     u8 unk_00[4][1024];
-} UnkStruct_0202FAA8_sub1; /* ov40_02244AB0 */
+} UnkStruct_0202FAA8_sub1;
 typedef struct UnkStruct_02078B40_t {
     u32 personality;
     u16 partyDecrypted : 1;
@@ -105,18 +102,18 @@ typedef struct UnkStruct_02078B40_t {
     u16 unk_6A;
     u16 unk_6C;
     u16 unk_6E;
-} UnkStruct_02078B40; /* ov40_02244AB0 */
+} UnkStruct_02078B40;
 typedef struct {
     u16 unk_00;
     u16 unk_02;
     UnkStruct_02078B40 unk_04[6];
-} UnkStruct_0202FD30; /* ov40_02244AB0 */
+} UnkStruct_0202FD30;
 enum SaveBlockID {
     SAVE_BLOCK_ID_NORMAL = 0,
     SAVE_BLOCK_ID_BOXES,
 
     SAVE_BLOCK_ID_MAX
-}; /* ov40_02244AB0 */
+};
 enum SaveTableEntryID {
     SAVE_TABLE_ENTRY_SYSTEM = 0,
     SAVE_TABLE_ENTRY_PLAYER,
@@ -158,24 +155,24 @@ enum SaveTableEntryID {
     SAVE_TABLE_ENTRY_PC_BOXES,
 
     SAVE_TABLE_ENTRY_MAX
-}; /* ov40_02244AB0 */
+};
 typedef struct SaveBlockInfo {
     u8 saveBlockID;
     u8 sectorStartPos;
     u8 sectorsInUse;
     u32 offset;
     u32 size;
-} SaveBlockInfo; /* ov40_02244AB0 */
+} SaveBlockInfo;
 typedef struct SavePageInfo {
     int pageID;
     u32 size;
     u32 location;
     u16 checksum;
     u16 blockID;
-} SavePageInfo; /* ov40_02244AB0 */
+} SavePageInfo;
 typedef struct SaveDataBody {
     u8 data[(0x1000) * 32];
-} SaveDataBody; /* ov40_02244AB0 */
+} SaveDataBody;
 typedef struct SaveDataState {
     BOOL fullSaveMode;
     int startBlock;
@@ -186,33 +183,7 @@ typedef struct SaveDataState {
     u32 globalCounterBackup;
     u32 blockCounterBackup[SAVE_BLOCK_ID_MAX];
     volatile BOOL locked;
-} SaveDataState; /* ov40_02244AB0 */
-typedef struct SaveData {
-    BOOL backupExists;
-    BOOL dataExists;
-    BOOL isNewGameData;
-    BOOL fullSaveRequired;
-    u32 loadCheckStatus;
-    SaveDataBody body;
-    u32 globalCounter;
-    u32 blockCounters[SAVE_BLOCK_ID_MAX];
-    u8 blockOffsets[SAVE_BLOCK_ID_MAX];
-    SavePageInfo pageInfo[SAVE_TABLE_ENTRY_MAX];
-    SaveBlockInfo blockInfo[SAVE_BLOCK_ID_MAX];
-    SaveDataState state;
-    int sectorSwitch;
-    u32 sectorCounter;
-} SaveData;                                                                            /* ov40_02244AB0 */
-u16 SaveArray_CalcCRC16(const SaveData *saveData, const void *startAddress, u32 size); /* ov40_02244AB0 */
-typedef struct Options {
-    u16 textSpeed : 4;
-    u16 soundMode : 2;
-    u16 battleStyle : 1;
-    u16 battleScene : 1;
-    u16 buttonMode : 2;
-    u16 frame : 5;
-    u16 : 1;
-} Options; /* ov40_02244AB0 */
+} SaveDataState;
 typedef struct TrainerInfo {
     charcode_t name[7 + 1];
     u32 id;
@@ -225,7 +196,7 @@ typedef struct TrainerInfo {
     u8 isMainStoryCleared : 1;
     u8 hasNationalDex : 1;
     u8 : 6;
-} TrainerInfo; /* ov40_02244AB0 */
+} TrainerInfo;
 typedef struct UnkStruct_0202F298_t {
     UnkStruct_0202FAA8 unk_00;
     UnkStruct_0202FAA8_sub1 unk_150;
@@ -234,7 +205,7 @@ typedef struct UnkStruct_0202F298_t {
     Options unk_1BE8;
     u16 unk_1BEA;
     UnkStruct_0202F298_sub1 unk_1BEC;
-} UnkStruct_0202F298; /* ov40_02244AB0 */
+} UnkStruct_0202F298;
 typedef struct BattleRegulation {
     u16 name[12];
     u16 maxTotalLevel;
@@ -247,7 +218,7 @@ typedef struct BattleRegulation {
     u8 speciesUniqueness : 1;
     u8 itemUniqueness : 1;
     u8 moveRestrictions : 1;
-} BattleRegulation; /* ov40_02244AB0 */
+} BattleRegulation;
 typedef struct UnkStruct_0202F41C_t {
     u16 unk_00[12];
     u8 unk_18[12];
@@ -259,7 +230,7 @@ typedef struct UnkStruct_0202F41C_t {
     u8 unk_4A[14];
     u64 unk_58;
     UnkStruct_0202F298_sub1 unk_60;
-} UnkStruct_0202F41C; /* ov40_02244AB0 */
+} UnkStruct_0202F41C;
 typedef struct UnkStruct_02030A80_t {
     u16 unk_00[8];
     u32 id;
@@ -281,19 +252,17 @@ typedef struct UnkStruct_02030A80_t {
     };
     u8 unk_70[12];
     UnkStruct_0202F298_sub1 unk_7C;
-} UnkStruct_02030A80; /* ov40_02244AB0 */
+} UnkStruct_02030A80;
 typedef struct BattleRecording {
     u32 unk_00;
     UnkStruct_02030A80 unk_04;
     UnkStruct_0202F41C unk_84;
     UnkStruct_0202F298 unk_E8;
-} BattleRecording;                                                                      /* ov40_02244AB0 */
-int sub_0202FDA4(SaveData *saveData, BattleRecording *param1, int param2, u16 *param3); /* ov40_02244AB0 */
-void sub_02030250(void *param0, u32 param1, u32 param2);                                /* ov40_02244AB0 */
-extern BattleRecording *_021D2AF8;                                                      /* ov40_02244AB0 */
-
+} BattleRecording;
+int sub_0202FDA4(SaveData *saveData, BattleRecording *param1, int param2, u16 *param3);
+void sub_02030250(void *param0, u32 param1, u32 param2);
+extern BattleRecording *_021D2AF8;
 int ov40_02244AB0(SaveData *saveData, int param1, u8 param2, u16 *param3, u16 *param4);
-
 // FUNCTION ov40_02244AB0: matching C (pt2)
 int ov40_02244AB0(SaveData *saveData, int param1, u8 param2, u16 *param3, u16 *param4) {
     int v0;

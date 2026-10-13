@@ -2,7 +2,8 @@
 #pragma warning_errors off
 #pragma thumb on
 #include "global.h"
-void GF_AssertFail(void);
+
+#include "error_handling.h"
 void ov96_0220C578(void *obj, u32 value);
 void ov96_0220B6EC(u8 *param_1);
 // FUNCTION ov96_0220B6EC: matching C (agent9)

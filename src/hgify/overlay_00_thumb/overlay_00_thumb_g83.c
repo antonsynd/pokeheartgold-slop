@@ -2,11 +2,12 @@
 #pragma warning_errors off
 #pragma thumb on
 #include "global.h"
+
+#include "heap.h"
 extern int MIC_StopAutoSampling(void);
 extern void NNS_SndStrmStop(void *strm);
 extern void NNS_SndStrmFreeChannel(void *strm);
 extern void VCT_Cleanup(void);
-extern void Heap_FreeExplicit(u32 heapID, void *ptr);
 typedef struct {
     s32 timeToProcess;
     u8 *manager;

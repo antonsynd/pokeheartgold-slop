@@ -2,7 +2,6 @@
 #pragma warning_errors off
 #pragma thumb on
 #include "global.h"
-extern u64 OS_GetTick(void);
 extern u64 _ll_udiv(u64 a, u64 b);
 extern void ov112_021E5A14(int param);
 extern u32 _021FF9E0[];

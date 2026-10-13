@@ -2,7 +2,8 @@
 #pragma warning_errors off
 #pragma thumb on
 #include "global.h"
-extern void GF_AssertFail(void);
+
+#include "error_handling.h"
 s32 ov01_021F0D20(u8 *battleSetup);
 // FUNCTION ov01_021F0D20: matching C (agent12)
 #pragma force_active on

@@ -2,7 +2,8 @@
 #pragma warning_errors off
 #pragma thumb on
 #include "global.h"
-extern void Sprite_UpdateAnim(void *sprite, int param);
+
+#include "sprite.h"
 // FUNCTION ov05_0221CE50: matching C (agent11)
 #pragma force_active on
 void ov05_0221CE50(u8 *param_1) {

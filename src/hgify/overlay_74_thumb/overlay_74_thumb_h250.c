@@ -2,6 +2,8 @@
 #pragma warning_errors off
 #pragma thumb on
 #include "global.h"
+
+#include "overlay_13_arm_2.h"
 typedef struct UnkOv74Peer {
     u32 unk_00;
     u8 unk_04[0x34];
@@ -62,7 +64,6 @@ typedef struct UnkOv74WMParent {
 } UnkOv74WMParent;
 extern u8 ov74_0223C920[];
 extern u8 ov74_0223D0C4[];
-extern u32 WM_GetLinkLevel(void);
 extern u32 WM_Finish(void);
 extern void ov74_02230A34(void);
 extern void ov74_02230CCC(void);

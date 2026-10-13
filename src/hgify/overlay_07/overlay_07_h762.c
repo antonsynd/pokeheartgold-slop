@@ -2,6 +2,9 @@
 #pragma warning_errors off
 #pragma thumb on
 #include "global.h"
+
+#include "math_util.h"
+#include "sprite_system.h"
 typedef struct UnkStruct_ov07_02233874 {
     u8 pad_00[8];
     s32 state;
@@ -29,7 +32,6 @@ typedef struct UnkStruct_ov07_02233874 {
     u8 pad_CC[8];
     void *palFade;
 } UnkStruct_ov07_02233874;
-u16 LCRandom(void);
 int ov07_02232540(int type);
 int ov07_02232580(int type);
 void ov07_02222338(void *a, void *b, int c, int d, int e, int f, int g, int h);
@@ -39,10 +41,6 @@ void ov07_022344C0(void *ctx, int a);
 int ov07_02222EE8(void *p);
 void ov07_02222EF8(void *p);
 void *ov07_02222F10(void *a, int b, int c, int d, int e, int f, int g, int h, int i, int j, int k);
-void ManagedSprite_OffsetAffineZRotation(void *sprite, int a);
-int ManagedSprite_GetPaletteOverrideOffset(void *sprite);
-void ManagedSprite_SetAnim(void *sprite, int anim);
-void ManagedSprite_SetAnimationFrame(void *sprite, int frame);
 BOOL ov07_02233874(UnkStruct_ov07_02233874 *ctx);
 // FUNCTION ov07_02233874: matching C (r0)
 #pragma force_active on

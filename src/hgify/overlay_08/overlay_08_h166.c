@@ -2,6 +2,12 @@
 #pragma warning_errors off
 #pragma thumb on
 #include "global.h"
+
+#include "battle/battle_system.h"
+
+#include "bag_cursor.h"
+#include "font.h"
+#include "palette.h"
 typedef struct UnkContext_ov08_0222276C {
     void *battleSys;
     u8 pad_04[8];
@@ -25,9 +31,6 @@ void *ov08_02224B64(int heapID);
 void ov08_02223000(void *ctx);
 void ov08_022230F4(void *ctx);
 void ov08_022231E8(void *ctx);
-void FontID_Alloc(int font, int heapID);
-void *BattleSystem_GetBagCursor(void *battleSys);
-u16 BagCursor_Battle_GetPocket(void *cursor);
 void ov08_02223BF4(void *ctx);
 void ov08_02224A50(void *ctx, int screen);
 void ov08_022233B8(void *ctx);
@@ -37,7 +40,6 @@ void ov08_02223F94(void *ctx, int screen);
 void ov08_02224B90(void *cursor, int enable);
 void ov08_02224134(void *ctx, int screen);
 void ov08_0222421C(void *ctx, int screen);
-void PaletteData_BeginPaletteFade(void *palette, int bufferFlags, int mask, int start, int end, int a5, int a6);
 u8 ov08_0222276C(UnkStruct_ov08_0222276C *ctx);
 // FUNCTION ov08_0222276C: matching C (r0)
 #pragma force_active on

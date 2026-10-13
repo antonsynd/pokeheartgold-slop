@@ -2,6 +2,8 @@
 #pragma warning_errors off
 #pragma thumb on
 #include "global.h"
+
+#include "heap.h"
 typedef struct UnkStruct_ov108_021E90C4_Entry {
     u8 unk0[0x14];
 } UnkStruct_ov108_021E90C4_Entry;
@@ -16,8 +18,6 @@ typedef struct UnkStruct_ov108_021E90C4 {
 } UnkStruct_ov108_021E90C4;
 extern void ov108_021E9204(UnkStruct_ov108_021E90C4 *data, UnkStruct_ov108_021E90C4_Entry *entry);
 extern void ov108_021E91D4(void *owner, UnkStruct_ov108_021E90C4_Entry *entry);
-extern void Heap_Free(void *ptr);
-extern void MI_CpuFill8(void *dest, u8 value, u32 size);
 // FUNCTION ov108_021E90C4: matching C (agent15)
 #pragma force_active on
 void ov108_021E90C4(void *owner, UnkStruct_ov108_021E90C4 *data) {

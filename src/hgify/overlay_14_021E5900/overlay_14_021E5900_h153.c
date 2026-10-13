@@ -3,6 +3,8 @@
 #pragma warning_errors off
 #pragma thumb on
 #include "global.h"
+
+#include "pokemon_storage_system.h"
 typedef struct UnkBox_ov14_021E8A7C {
     u8 filler_00[0x14];
     u8 unk_14;
@@ -21,7 +23,6 @@ typedef struct UnkStruct_ov14_021E8A7C {
     u8 filler_22[0x27 - 0x22];
     u8 unk_27;
 } UnkStruct_ov14_021E8A7C;
-void PCStorage_SetBoxModified(void *param0, u8 param1);
 // FUNCTION ov14_021E8A7C: matching C (agent8)
 #pragma force_active on
 int ov14_021E8A7C(UnkStruct_ov14_021E8A7C *param0) {

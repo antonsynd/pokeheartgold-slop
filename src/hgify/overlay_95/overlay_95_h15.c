@@ -2,7 +2,8 @@
 #pragma warning_errors off
 #pragma thumb on
 #include "global.h"
-void sub_02015354(NNSGfdTexKey texKey);
+
+#include "unk_02014DA0.h"
 // FUNCTION ov95_021E5D98: matching C (agent9)
 #pragma force_active on
 u32 ov95_021E5D98(u32 param_1, BOOL param_2) {

@@ -2,11 +2,12 @@
 #pragma warning_errors off
 #pragma thumb on
 #include "global.h"
+
+#include "pokemon_storage_system.h"
 typedef struct {
     u8 filler_00[4];
     void *field_04;
 } UnkStruct_ov14_021F46B0;
-extern int PCStorage_IsBonusWallpaperUnlocked(void *storage, int idx);
 // FUNCTION ov14_021F46B0: matching C (agent11)
 #pragma force_active on
 void ov14_021F46B0(UnkStruct_ov14_021F46B0 *param_1, u8 *param_2, u32 param_3, u32 param_4, u32 param_5) {

@@ -2,11 +2,12 @@
 #pragma warning_errors off
 #pragma thumb on
 #include "global.h"
+
+#include "math_util.h"
+#include "sprite.h"
 void ov01_021EC304(int *out, int param_1);
 void ov01_021EC29C(int param_1);
 void ov01_021EB5F4(void *sprite, int *pos);
-u32 MTRandom(void);
-void Sprite_SetAnimationFrame(void *sprite, u16 frame);
 // FUNCTION ov01_021ECC70: matching C (agent16)
 #pragma force_active on
 void ov01_021ECC70(int param_1) {

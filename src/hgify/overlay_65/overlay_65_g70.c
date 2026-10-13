@@ -2,13 +2,14 @@
 #pragma warning_errors off
 #pragma thumb on
 #include "global.h"
+
+#include "sprite.h"
 typedef struct Ov65_P6 {
     u8 pad0[2];
     u16 f2;
     u8 pad4[8];
     int fc;
 } Ov65_P6;
-void Sprite_SetMatrix(void *sprite, VecFx32 *mtx);
 // FUNCTION ov65_0221ED94: matching C (agent15)
 #pragma force_active on
 void ov65_0221ED94(void *s1, void *s2, void *s3, int t, int *p5, Ov65_P6 *p6) {

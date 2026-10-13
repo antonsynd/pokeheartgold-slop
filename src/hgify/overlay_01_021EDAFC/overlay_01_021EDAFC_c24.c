@@ -2,7 +2,8 @@
 #pragma warning_errors off
 #pragma thumb on
 #include "global.h"
-extern void ListMenuGetCurrentItemArrayId(void *listMenu, u16 *index);
+
+#include "list_menu.h"
 extern void ov01_021EE5D0(void *menuManager, u16 msgId, u32 a2);
 void ov01_021EE634(u8 *menuManager);
 // FUNCTION ov01_021EE634: matching C (r0)
