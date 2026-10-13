@@ -2,6 +2,8 @@
 #pragma warning_errors off
 #pragma thumb on
 #include "global.h"
+
+#include "field_move.h"
 typedef void (*ov93_022627C0_Fn)(void *, u32 *, void *, u32);
 extern ov93_022627C0_Fn ov93_02263114[];
 BOOL ov93_022627C0(void *param0, u32 *param1);

@@ -2,6 +2,8 @@
 #pragma warning_errors off
 #pragma thumb on
 #include "global.h"
+
+#include "font_types_def.h"
 typedef BOOL (*OV71_02249D28_Func)(void *self, void *data);
 extern OV71_02249D28_Func ov71_0224BDE8[];
 BOOL ov71_02249D28(u8 *self, u32 *state);

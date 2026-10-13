@@ -2,6 +2,8 @@
 #pragma warning_errors off
 #pragma thumb on
 #include "global.h"
+
+#include "overlay_42.h"
 typedef s32 (*UnkFn_ov14_021F7D9C)(void *arg, void *self, u32 offset, u32 callerR3);
 extern UnkFn_ov14_021F7D9C ov14_021F7D9C[];
 BOOL ov14_021EAF8C(void *arg, s32 *state, u32 unused, u32 callerR3);
