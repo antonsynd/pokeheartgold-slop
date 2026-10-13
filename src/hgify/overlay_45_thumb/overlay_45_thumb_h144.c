@@ -3,19 +3,18 @@
 #pragma thumb on
 #include "global.h"
 
-#include "ghidra_compat.h"
 #include "save.h"
-typedef int code();
-void ov45_0222BAC4(int param_1, undefined4 param_2);
-// FUNCTION ov45_0222BAC4: matching C (r2)
+
+typedef struct UnkStruct_ov45_0222BAC4 {
+    u8 unk_00[0x20];
+    u8 profile[0x94];
+    u32 unk_B4;
+} UnkStruct_ov45_0222BAC4;
+
+void ov45_0222BAC4(UnkStruct_ov45_0222BAC4 *param0, SaveData *saveData);
+// FUNCTION ov45_0222BAC4: matching C (twin)
 #pragma force_active on
-void ov45_0222BAC4(int param_1, undefined4 param_2)
-
-{
-    undefined4 uVar1;
-
-    uVar1 = SaveArray_CalcCRC16(param_2, param_1 + 0x20, 0x94);
-    *(undefined4 *)(param_1 + 0xb4) = uVar1;
-    return;
+void ov45_0222BAC4(UnkStruct_ov45_0222BAC4 *param0, SaveData *saveData) {
+    param0->unk_B4 = SaveArray_CalcCRC16(saveData, param0->profile, sizeof(param0->profile));
 }
 #pragma force_active reset

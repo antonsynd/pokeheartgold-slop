@@ -5,22 +5,16 @@
 
 #include "frontier/overlay_80_0222BDF4.h"
 
-#include "ghidra_compat.h"
-typedef int code();
-undefined4 ov80_02239708();
-undefined4 sub_0209680C();
-undefined4 FrtCmd_050(undefined4 *param_1);
-// FUNCTION FrtCmd_050: matching C (r2)
+void *sub_0209680C(void *param0);
+void ov80_02239708(void *param0, u32 param1, int param2);
+
+// FUNCTION FrtCmd_050: matching C (twin)
 #pragma force_active on
-undefined4 FrtCmd_050(undefined4 *param_1)
+BOOL FrtCmd_050(FrontierScriptContext *ctx) {
+    u32 v0 = FrontierScript_ReadVar(ctx);
+    void *v1 = sub_0209680C(ctx->frontierSystem->unk0);
 
-{
-    undefined4 uVar1;
-    undefined4 uVar2;
-
-    uVar1 = FrontierScript_ReadVar((FrontierScriptContext *)param_1);
-    uVar2 = sub_0209680C(*(undefined4 *)*param_1);
-    ov80_02239708(uVar2, uVar1, 0);
-    return 0;
+    ov80_02239708(v1, v0, 0);
+    return FALSE;
 }
 #pragma force_active reset

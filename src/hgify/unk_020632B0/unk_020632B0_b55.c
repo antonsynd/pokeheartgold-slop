@@ -3,26 +3,23 @@
 #pragma thumb on
 #include "global.h"
 
-#include "ghidra_compat.h"
 #include "map_object.h"
-typedef int code();
-undefined4 sub_02064298(undefined4 param_1);
-// FUNCTION sub_02064298: matching C (r2)
+
+// FUNCTION sub_02064298: matching C (twin)
 #pragma force_active on
-undefined4 sub_02064298(undefined4 param_1)
+int sub_02064298(LocalMapObject *param0) {
+    int trainerType = MapObject_GetType(param0);
 
-{
-    undefined4 uVar1;
-
-    uVar1 = MapObject_GetType((struct LocalMapObject *)param_1);
-    switch (uVar1) {
+    switch (trainerType) {
     case 4:
     case 5:
     case 6:
     case 7:
     case 8:
-        uVar1 = 1;
+        trainerType = 1;
+        break;
     }
-    return uVar1;
+
+    return trainerType;
 }
 #pragma force_active reset

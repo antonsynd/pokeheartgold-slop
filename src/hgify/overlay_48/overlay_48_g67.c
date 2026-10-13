@@ -4,19 +4,20 @@
 #include "global.h"
 
 #include "bg_window.h"
-#include "ghidra_compat.h"
 #include "render_window.h"
 #include "yes_no_prompt.h"
-typedef int code();
-void ov48_02259FEC(int param_1);
-// FUNCTION ov48_02259FEC: matching C (r2)
-#pragma force_active on
-void ov48_02259FEC(int param_1)
 
-{
-    YesNoPrompt_Reset(*(undefined4 *)(param_1 + 0x20));
-    ClearFrameAndWindow2(param_1 + 0x10, 1);
-    ClearWindowTilemapAndScheduleTransfer(param_1 + 0x10);
-    return;
+typedef struct UnkStruct_ov48_02259FEC {
+    u8 unk_00[0x10];
+    Window unk_10;
+    YesNoPrompt *unk_20;
+} UnkStruct_ov48_02259FEC;
+
+// FUNCTION ov48_02259FEC: matching C (twin)
+#pragma force_active on
+void ov48_02259FEC(UnkStruct_ov48_02259FEC *param0) {
+    YesNoPrompt_Reset(param0->unk_20);
+    ClearFrameAndWindow2(&param0->unk_10, 1);
+    ClearWindowTilemapAndScheduleTransfer(&param0->unk_10);
 }
 #pragma force_active reset

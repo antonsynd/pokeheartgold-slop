@@ -3,17 +3,18 @@
 #pragma thumb on
 #include "global.h"
 
-#include "ghidra_compat.h"
 #include "mail_message.h"
-typedef int code();
-void sub_0205AA6C(undefined *param_1, undefined *param_2);
-// FUNCTION sub_0205AA6C: matching C (r2)
-#pragma force_active on
-void sub_0205AA6C(undefined *param_1, undefined *param_2)
 
-{
-    MailMsg_Copy((MailMessage *)(param_1 + 0x178), (const MailMessage *)param_2);
-    *(undefined4 *)(param_1 + 0x180) = 1;
-    return;
+typedef struct UnkStruct_sub_0205AA6C {
+    u8 unk_000[0x178];
+    MailMessage unk_178;
+    s32 unk_180;
+} UnkStruct_sub_0205AA6C;
+
+// FUNCTION sub_0205AA6C: matching C (twin)
+#pragma force_active on
+void sub_0205AA6C(UnkStruct_sub_0205AA6C *param0, MailMessage *param1) {
+    MailMsg_Copy(&param0->unk_178, param1);
+    param0->unk_180 = 1;
 }
 #pragma force_active reset

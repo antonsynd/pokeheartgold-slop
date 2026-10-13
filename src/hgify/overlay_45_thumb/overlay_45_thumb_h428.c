@@ -3,19 +3,19 @@
 #pragma thumb on
 #include "global.h"
 
-#include "error_handling.h"
-#include "ghidra_compat.h"
-typedef int code();
-extern int _022577C0;
-undefined1 ov45_0222F464(void);
-// FUNCTION ov45_0222F464: matching C (r2)
-#pragma force_active on
-undefined1 ov45_0222F464(void)
+#include "assert.h"
 
-{
-    if (_022577C0 == 0) {
-        GF_AssertFail();
-    }
-    return *(undefined1 *)(_022577C0 + 0x69e);
+typedef struct UnkStruct_ov45_0222F464 {
+    u8 unk_000[0x69E];
+    u8 unk_69E;
+} UnkStruct_ov45_0222F464;
+
+extern UnkStruct_ov45_0222F464 *_022577C0;
+
+// FUNCTION ov45_0222F464: matching C (twin)
+#pragma force_active on
+u8 ov45_0222F464(void) {
+    GF_ASSERT(_022577C0 != NULL);
+    return _022577C0->unk_69E;
 }
 #pragma force_active reset

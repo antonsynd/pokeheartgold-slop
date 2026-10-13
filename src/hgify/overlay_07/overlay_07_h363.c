@@ -3,17 +3,12 @@
 #pragma thumb on
 #include "global.h"
 
-#include "ghidra_compat.h"
 #include "pokepic.h"
-typedef void code(void);
-void ov07_02223224(undefined4 param_1);
-// FUNCTION ov07_02223224: matching C (r2)
-#pragma force_active on
-void ov07_02223224(undefined4 param_1)
 
-{
-    Pokepic_SetAttr(param_1, 0xc, 0x100);
-    Pokepic_SetAttr(param_1, 0xd, 0x100);
-    return;
+// FUNCTION ov07_02223224: matching C (twin)
+#pragma force_active on
+void ov07_02223224(Pokepic *sprite) {
+    Pokepic_SetAttr(sprite, POKEPIC_AFFINEW, 0x100);
+    Pokepic_SetAttr(sprite, POKEPIC_AFFINEH, 0x100);
 }
 #pragma force_active reset

@@ -4,16 +4,18 @@
 #include "global.h"
 
 #include "bg_window.h"
-#include "ghidra_compat.h"
-typedef int code();
-void ov41_02249CC4(undefined4 *param_1);
-// FUNCTION ov41_02249CC4: matching C (r2)
-#pragma force_active on
-void ov41_02249CC4(undefined4 *param_1)
 
-{
-    BgClearTilemapBufferAndCommit(*param_1, param_1[7] & 0xff);
-    memset(param_1, 0, 0x2c);
-    return;
+typedef struct UnkStruct_ov41_02249CC4 {
+    BgConfig *unk_00;
+    u8 unk_04[0x18];
+    u32 unk_1C;
+    u8 unk_20[0xC];
+} UnkStruct_ov41_02249CC4;
+
+// FUNCTION ov41_02249CC4: matching C (twin)
+#pragma force_active on
+void ov41_02249CC4(UnkStruct_ov41_02249CC4 *param0) {
+    BgClearTilemapBufferAndCommit(param0->unk_00, param0->unk_1C);
+    memset(param0, 0, sizeof(UnkStruct_ov41_02249CC4));
 }
 #pragma force_active reset

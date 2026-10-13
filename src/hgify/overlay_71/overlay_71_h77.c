@@ -3,22 +3,22 @@
 #pragma thumb on
 #include "global.h"
 
-#include "ghidra_compat.h"
 #include "heap.h"
 #include "sys_task.h"
 #include "sys_task_api.h"
-typedef int code();
-void ov71_022481EC(int param_1);
-// FUNCTION ov71_022481EC: matching C (r2)
-#pragma force_active on
-void ov71_022481EC(int param_1)
 
-{
-    if (*(int *)(param_1 + 0x7c) != 0) {
-        Heap_Free(SysTask_GetData((SysTask *)*(int *)(param_1 + 0x7c)));
-        SysTask_Destroy(*(undefined4 *)(param_1 + 0x7c));
-        *(undefined4 *)(param_1 + 0x7c) = 0;
+typedef struct UnkStruct_ov71_022481EC {
+    u8 unk_00[0x7C];
+    SysTask *task1;
+} UnkStruct_ov71_022481EC;
+
+// FUNCTION ov71_022481EC: matching C (twin)
+#pragma force_active on
+void ov71_022481EC(UnkStruct_ov71_022481EC *param0) {
+    if (param0->task1) {
+        Heap_Free(SysTask_GetData(param0->task1));
+        SysTask_Destroy(param0->task1);
+        param0->task1 = NULL;
     }
-    return;
 }
 #pragma force_active reset

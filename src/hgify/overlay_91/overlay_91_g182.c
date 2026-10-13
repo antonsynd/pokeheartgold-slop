@@ -3,17 +3,15 @@
 #pragma thumb on
 #include "global.h"
 
-#include "ghidra_compat.h"
 #include "sprite.h"
-typedef int code();
-void ov91_02260830(undefined4 param_1, undefined4 *param_2);
-// FUNCTION ov91_02260830: matching C (r2)
+typedef struct UnkStruct_ov91_02260830 {
+    Sprite *unk_00;
+    u8 unk_04[0x108 - 0x04];
+} UnkStruct_ov91_02260830;
+// FUNCTION ov91_02260830: matching C (twin)
 #pragma force_active on
-void ov91_02260830(undefined4 param_1, undefined4 *param_2)
-
-{
-    Sprite_Delete(*param_2);
-    memset(param_2, 0, 0x108);
-    return;
+void ov91_02260830(void *param0, UnkStruct_ov91_02260830 *param1) {
+    Sprite_Delete(param1->unk_00);
+    memset(param1, 0, sizeof(UnkStruct_ov91_02260830));
 }
 #pragma force_active reset

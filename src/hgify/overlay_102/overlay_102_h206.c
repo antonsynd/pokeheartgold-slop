@@ -4,22 +4,18 @@
 #include "global.h"
 
 #include "bg_window.h"
-#include "ghidra_compat.h"
-typedef int code();
-undefined4 ov102_021EC3AC();
-undefined4 ov102_021EBB6C(int param_1);
-// FUNCTION ov102_021EBB6C: matching C (r2)
-#pragma force_active on
-undefined4 ov102_021EBB6C(int param_1)
-
-{
-    int iVar1;
-
-    iVar1 = ov102_021EC3AC(param_1 + 0x1c);
-    if (iVar1 != 0) {
-        ToggleBgLayer(1, 0);
-        return 1;
+#include "gf_gfx_planes.h"
+typedef struct UnkStruct_ov102_021EBB6C {
+    u8 unk_00[0x1C];
+    u8 unk_1C;
+} UnkStruct_ov102_021EBB6C;
+BOOL ov102_021EC3AC(void *param0);
+// FUNCTION ov102_021EBB6C: matching C (twin)
+BOOL ov102_021EBB6C(UnkStruct_ov102_021EBB6C *ctx) {
+    if (ov102_021EC3AC(&ctx->unk_1C)) {
+        ToggleBgLayer(GF_BG_LYR_MAIN_1, FALSE);
+        return TRUE;
     }
-    return 0;
+
+    return FALSE;
 }
-#pragma force_active reset

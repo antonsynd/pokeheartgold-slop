@@ -3,18 +3,25 @@
 #pragma thumb on
 #include "global.h"
 
-#include "ghidra_compat.h"
 #include "pokepic.h"
-typedef int code();
-void ov40_02237564(int param_1);
-// FUNCTION ov40_02237564: matching C (r2)
-#pragma force_active on
-void ov40_02237564(int param_1)
 
-{
-    if (*(int *)(*(int *)(param_1 + 0x860) + 0x32c) != 0) {
-        Pokepic_Delete((Pokepic *)*(int *)(*(int *)(param_1 + 0x860) + 0x32c));
+typedef struct UnkStruct_ov62_02239DBC {
+    u8 unk_000[0x32C];
+    Pokepic *unk_32C;
+} UnkStruct_ov62_02239DBC;
+
+typedef struct UnkStruct_ov40_02237564 {
+    u8 unk_000[0x860];
+    UnkStruct_ov62_02239DBC *unk_860;
+} UnkStruct_ov40_02237564;
+
+// FUNCTION ov40_02237564: matching C (twin)
+#pragma force_active on
+void ov40_02237564(UnkStruct_ov40_02237564 *param0) {
+    UnkStruct_ov62_02239DBC *v0 = param0->unk_860;
+
+    if (v0->unk_32C) {
+        Pokepic_Delete(v0->unk_32C);
     }
-    return;
 }
 #pragma force_active reset

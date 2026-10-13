@@ -4,19 +4,20 @@
 #include "global.h"
 
 #include "filesystem.h"
-#include "ghidra_compat.h"
 #include "heap.h"
 #include "overlay_01_021FAC44.h"
-typedef void code(void);
-void MapLoadManager_FreeNARCAndLoadedMapBuffers(undefined4 *param_1);
-// FUNCTION MapLoadManager_FreeNARCAndLoadedMapBuffers: matching C (r2)
-#pragma force_active on
-void MapLoadManager_FreeNARCAndLoadedMapBuffers(undefined4 *param_1)
 
-{
-    NARC_Delete(param_1[0x40]);
-    ov01_021FACB4(*param_1);
-    Heap_Free(param_1);
-    return;
+typedef struct UnkStruct_MapLoadManager_FreeNARCAndLoadedMapBuffers {
+    UnkStruct_Ov01_021FAC44 *loadedMapBufs;
+    u8 unk_04[0x100 - 4];
+    NARC *landDataNARC;
+} UnkStruct_MapLoadManager_FreeNARCAndLoadedMapBuffers;
+
+// FUNCTION MapLoadManager_FreeNARCAndLoadedMapBuffers: matching C (twin)
+#pragma force_active on
+void MapLoadManager_FreeNARCAndLoadedMapBuffers(UnkStruct_MapLoadManager_FreeNARCAndLoadedMapBuffers *param0) {
+    NARC_Delete(param0->landDataNARC);
+    ov01_021FACB4(param0->loadedMapBufs);
+    Heap_Free(&param0->loadedMapBufs);
 }
 #pragma force_active reset

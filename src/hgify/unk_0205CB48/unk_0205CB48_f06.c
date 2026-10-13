@@ -3,18 +3,12 @@
 #pragma thumb on
 #include "global.h"
 
-#include "ghidra_compat.h"
 #include "player_avatar.h"
-typedef int code();
-void sub_0205CF44(undefined4 param_1);
-// FUNCTION sub_0205CF44: matching C (r2)
+// FUNCTION sub_0205CF44: matching C (twin)
 #pragma force_active on
-void sub_0205CF44(undefined4 param_1)
-
-{
-    PlayerAvatar_SetMoveState(param_1, 0);
-    PlayerAvatar_SetPlayerMoveState(param_1, 0);
-    PlayerAvatar_ClearUnk24ClearFlag2(param_1);
-    return;
+void sub_0205CF44(PlayerAvatar *playerAvatar) {
+    PlayerAvatar_SetMoveState(playerAvatar, 0);
+    PlayerAvatar_SetPlayerMoveState(playerAvatar, 0);
+    PlayerAvatar_ClearUnk24ClearFlag2(playerAvatar);
 }
 #pragma force_active reset

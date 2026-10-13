@@ -3,17 +3,17 @@
 #pragma thumb on
 #include "global.h"
 
-#include "ghidra_compat.h"
 #include "pm_string.h"
-typedef int code();
-void ov41_0224AC80(int param_1);
-// FUNCTION ov41_0224AC80: matching C (r2)
-#pragma force_active on
-void ov41_0224AC80(int param_1)
 
-{
-    String_Delete(*(undefined4 *)(param_1 + 0x144));
-    *(undefined4 *)(param_1 + 0x144) = 0;
-    return;
+typedef struct UnkStruct_ov41_0224AC80 {
+    u8 unk_000[0x144];
+    String *unk_144;
+} UnkStruct_ov41_0224AC80;
+
+// FUNCTION ov41_0224AC80: matching C (twin)
+#pragma force_active on
+void ov41_0224AC80(UnkStruct_ov41_0224AC80 *param0) {
+    String_Delete(param0->unk_144);
+    param0->unk_144 = NULL;
 }
 #pragma force_active reset

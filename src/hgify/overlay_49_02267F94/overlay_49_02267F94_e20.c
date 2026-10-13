@@ -3,22 +3,26 @@
 #pragma thumb on
 #include "global.h"
 
-#include "ghidra_compat.h"
 #include "heap.h"
-typedef int code();
-undefined4 ov49_02268A6C();
-undefined4 ov49_022684F4();
-undefined4 ov49_02269090();
-void ov49_02268850(int param_1);
-// FUNCTION ov49_02268850: matching C (r2)
-#pragma force_active on
-void ov49_02268850(int param_1)
 
-{
-    ov49_02268A6C(*(undefined4 *)(param_1 + 0x18));
-    ov49_02269090(*(undefined4 *)(param_1 + 0x14));
-    ov49_022684F4(*(undefined4 *)(param_1 + 0x10));
-    Heap_Free(param_1);
-    return;
+typedef struct UnkStruct_ov49_02268850 {
+    u8 unk_00[0x10];
+    void *unk_10;
+    void *unk_14;
+    void *unk_18;
+} UnkStruct_ov49_02268850;
+
+void ov49_02268A6C(void *param0);
+void ov49_02269090(void *param0);
+void ov49_022684F4(void *param0);
+
+// FUNCTION ov49_02268850: matching C (twin)
+#pragma force_active on
+void ov49_02268850(UnkStruct_ov49_02268850 *param0) {
+    ov49_02268A6C(param0->unk_18);
+    ov49_02269090(param0->unk_14);
+    ov49_022684F4(param0->unk_10);
+
+    Heap_Free(param0);
 }
 #pragma force_active reset

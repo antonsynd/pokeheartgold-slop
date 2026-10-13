@@ -4,17 +4,12 @@
 #include "global.h"
 
 #include "bg_window.h"
-#include "ghidra_compat.h"
 #include "render_window.h"
-typedef int code();
-void ov80_022333D0(undefined4 param_1, undefined4 param_2);
-// FUNCTION ov80_022333D0: matching C (r2)
-#pragma force_active on
-void ov80_022333D0(undefined4 param_1, undefined4 param_2)
 
-{
-    DrawFrameAndWindow1(param_2, 1, 0x3d9, 0xc);
-    FillWindowPixelBuffer(param_2, 0xf);
-    return;
+// FUNCTION ov80_022333D0: matching C (twin)
+#pragma force_active on
+void ov80_022333D0(BgConfig *bgConfig, Window *window) {
+    DrawFrameAndWindow1(window, TRUE, (1024 - (18 + 12)) - 9, 12);
+    FillWindowPixelBuffer(window, 15);
 }
 #pragma force_active reset

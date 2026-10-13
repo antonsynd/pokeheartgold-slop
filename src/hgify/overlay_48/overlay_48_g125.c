@@ -3,21 +3,23 @@
 #pragma thumb on
 #include "global.h"
 
-#include "ghidra_compat.h"
 #include "message_format.h"
 #include "msgdata.h"
 #include "pm_string.h"
-typedef int code();
-void ov48_0225B0A4(undefined4 *param_1);
-// FUNCTION ov48_0225B0A4: matching C (r2)
-#pragma force_active on
-void ov48_0225B0A4(undefined4 *param_1)
 
-{
-    DestroyMsgData(*param_1);
-    MessageFormat_Delete(param_1[1]);
-    String_Delete(param_1[2]);
-    String_Delete(param_1[3]);
-    return;
+typedef struct UnkStruct_ov48_0225B0A4 {
+    MsgData *unk_00;
+    MessageFormat *unk_04;
+    String *unk_08;
+    String *unk_0C;
+} UnkStruct_ov48_0225B0A4;
+
+// FUNCTION ov48_0225B0A4: matching C (twin)
+#pragma force_active on
+void ov48_0225B0A4(UnkStruct_ov48_0225B0A4 *param0) {
+    DestroyMsgData(param0->unk_00);
+    MessageFormat_Delete(param0->unk_04);
+    String_Delete(param0->unk_08);
+    String_Delete(param0->unk_0C);
 }
 #pragma force_active reset

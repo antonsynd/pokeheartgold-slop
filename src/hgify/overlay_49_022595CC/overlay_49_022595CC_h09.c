@@ -2,19 +2,21 @@
 #pragma warning_errors off
 #pragma thumb on
 #include "global.h"
+
 typedef struct UnkStruct_ov49_02259A20 {
     u8 unk_00;
     u8 unk_01;
-    s8 unk_02;
-    s8 unk_03;
-    s16 unk_04;
-    s16 unk_06;
+    u8 unk_02;
+    u8 unk_03;
+    u16 unk_04;
+    u16 unk_06;
 } UnkStruct_ov49_02259A20;
-extern void ov45_02230700(void *a, u32 b);
-void ov49_02259A20(UnkStruct_ov49_02259A20 *param0, void *param1, u32 param2);
-// FUNCTION ov49_02259A20: matching C (r0)
+
+void ov45_02230700(void *param0, u32 param1);
+
+// FUNCTION ov49_02259A20: matching C (twin)
 #pragma force_active on
-void ov49_02259A20(UnkStruct_ov49_02259A20 *param0, void *param1, u32 param2) {
+void ov49_02259A20(UnkStruct_ov49_02259A20 *param0, void *param1, u8 param2) {
     param0->unk_01 = param2;
     param0->unk_02 = param2;
     param0->unk_03 = 0;

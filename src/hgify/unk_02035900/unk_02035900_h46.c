@@ -2,20 +2,24 @@
 #pragma warning_errors off
 #pragma thumb on
 #include "global.h"
-typedef struct {
-    u8 pad[0x65c];
-    u16 f65c;
-} Unk;
-extern struct {
-    int a;
-    int b;
-    Unk *p;
-} _021D4140;
-// FUNCTION sub_020374E4: matching C (agent7)
+
+typedef struct UnkStruct_sub_020374E4_Sys {
+    u8 unk_000[0x65C];
+    u16 sendHeldKeys;
+} UnkStruct_sub_020374E4_Sys;
+
+typedef struct UnkStruct_sub_020374E4 {
+    u8 unk_00[8];
+    UnkStruct_sub_020374E4_Sys *sys;
+} UnkStruct_sub_020374E4;
+
+extern UnkStruct_sub_020374E4 _021D4140;
+
+// FUNCTION sub_020374E4: matching C (twin)
 #pragma force_active on
 void sub_020374E4(void) {
-    if (_021D4140.p != 0) {
-        _021D4140.p->f65c |= 0x8000;
+    if (_021D4140.sys) {
+        _021D4140.sys->sendHeldKeys |= 0x8000;
     }
 }
 #pragma force_active reset

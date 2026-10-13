@@ -3,27 +3,13 @@
 #pragma thumb on
 #include "global.h"
 
-#include "error_handling.h"
-#include "ghidra_compat.h"
 #include "player_data.h"
 #include "unk_02034354.h"
 #include "unk_02035900.h"
-typedef int code();
-void sub_0205A894(void);
-// FUNCTION sub_0205A894: matching C (r2)
-#pragma force_active on
-void sub_0205A894(void)
+// FUNCTION sub_0205A894: matching C (twin)
+u8 sub_0205A894(void) {
+    PlayerProfile *trainerInfo = sub_02034818(sub_0203769C() ^ 1);
 
-{
-    uint uVar1;
-    int iVar2;
-
-    uVar1 = sub_0203769C();
-    iVar2 = sub_02034818(uVar1 ^ 1);
-    if (iVar2 == 0) {
-        GF_AssertFail();
-    }
-    PlayerProfile_GetVersion(iVar2);
-    return;
+    GF_ASSERT(trainerInfo != NULL);
+    return PlayerProfile_GetVersion(trainerInfo);
 }
-#pragma force_active reset

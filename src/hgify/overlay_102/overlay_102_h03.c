@@ -3,23 +3,19 @@
 #pragma thumb on
 #include "global.h"
 
-#include "ghidra_compat.h"
 #include "heap.h"
 #include "overlay_manager.h"
-typedef int code();
-undefined4 ov102_021E7A24();
-undefined4 EasyChat_Exit(OverlayManager *param_1);
-// FUNCTION EasyChat_Exit: matching C (r2)
+
+void ov102_021E7A24(void *param0, OverlayManager *param1);
+
+// FUNCTION EasyChat_Exit: matching C (twin)
 #pragma force_active on
-undefined4 EasyChat_Exit(OverlayManager *param_1)
+BOOL EasyChat_Exit(OverlayManager *appMan, int *state) {
+    ov102_021E7A24(OverlayManager_GetData(appMan), appMan);
 
-{
-    undefined4 uVar1;
+    Heap_Destroy(HEAP_ID_34);
+    Heap_Destroy(HEAP_ID_35);
 
-    uVar1 = OverlayManager_GetData(param_1);
-    ov102_021E7A24(uVar1, param_1);
-    Heap_Destroy(0x22);
-    Heap_Destroy(0x23);
-    return 1;
+    return TRUE;
 }
 #pragma force_active reset

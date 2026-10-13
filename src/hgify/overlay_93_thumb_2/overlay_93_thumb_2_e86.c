@@ -3,22 +3,26 @@
 #pragma thumb on
 #include "global.h"
 
-#include "ghidra_compat.h"
 #include "unk_02035900.h"
-typedef int code();
-undefined4 ov93_0225FEC4();
-void ov93_02262814(undefined4 param_1, int param_2);
-// FUNCTION ov93_02262814: matching C (r2)
+
+typedef struct UnkStruct_ov93_02262814_Val4 {
+    u8 unk_00;
+} UnkStruct_ov93_02262814_Val4;
+
+typedef struct UnkStruct_ov93_02262814 {
+    u8 unk_00[4];
+    UnkStruct_ov93_02262814_Val4 unk_04_val4;
+} UnkStruct_ov93_02262814;
+
+BOOL ov93_0225FEC4(void *param0, const UnkStruct_ov93_02262814_Val4 *param1);
+
+// FUNCTION ov93_02262814: matching C (twin)
 #pragma force_active on
-void ov93_02262814(undefined4 param_1, int param_2)
-
-{
-    uint uVar1;
-
-    uVar1 = sub_0203769C();
-    if (*(byte *)(param_2 + 4) != uVar1) {
-        ov93_0225FEC4(param_1, param_2 + 4);
+void ov93_02262814(void *param0, const UnkStruct_ov93_02262814 *param1) {
+    if (param1->unk_04_val4.unk_00 == sub_0203769C()) {
+        return;
     }
-    return;
+
+    ov93_0225FEC4(param0, &param1->unk_04_val4);
 }
 #pragma force_active reset

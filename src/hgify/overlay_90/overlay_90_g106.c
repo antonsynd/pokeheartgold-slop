@@ -4,18 +4,16 @@
 #include "global.h"
 
 #include "gf_gfx_loader.h"
-#include "ghidra_compat.h"
-typedef void code(void);
-void ov90_0225B254(int param_1, undefined4 param_2, undefined4 param_3);
-// FUNCTION ov90_0225B254: matching C (r2)
+
+typedef struct UnkStruct_ov90_0225B254 {
+    u8 unk_000[0x654];
+    void *unk_654;
+    NNSG2dPaletteData *unk_658;
+} UnkStruct_ov90_0225B254;
+
+// FUNCTION ov90_0225B254: matching C (twin)
 #pragma force_active on
-void ov90_0225B254(int param_1, undefined4 param_2, undefined4 param_3)
-
-{
-    undefined4 uVar1;
-
-    uVar1 = GfGfxLoader_GetPlttDataFromOpenNarc(param_2, 5, param_1 + 0x658, param_3);
-    *(undefined4 *)(param_1 + 0x654) = uVar1;
-    return;
+void ov90_0225B254(UnkStruct_ov90_0225B254 *param0, NARC *param1, u32 param2) {
+    param0->unk_654 = GfGfxLoader_GetPlttDataFromOpenNarc(param1, 5, &param0->unk_658, param2);
 }
 #pragma force_active reset

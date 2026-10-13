@@ -3,20 +3,23 @@
 #pragma thumb on
 #include "global.h"
 
-#include "ghidra_compat.h"
 #include "sprite.h"
-typedef int code();
-undefined4 ov71_022472FC();
-void ov71_02249970(int param_1);
-// FUNCTION ov71_02249970: matching C (r2)
-#pragma force_active on
-void ov71_02249970(int param_1)
 
-{
-    if (*(int *)(param_1 + 0x20) != 0) {
-        Sprite_Delete((Sprite *)*(int *)(param_1 + 0x20));
+typedef struct UnkStruct_ov71_02249970 {
+    u8 unk0[0x10];
+    u8 animResources[0x10];
+    Sprite *sprite;
+} UnkStruct_ov71_02249970;
+
+void ov71_022472FC(void *animResources);
+
+// FUNCTION ov71_02249970: matching C (twin)
+#pragma force_active on
+void ov71_02249970(UnkStruct_ov71_02249970 *tbfPhase) {
+    if (tbfPhase->sprite) {
+        Sprite_Delete(tbfPhase->sprite);
     }
-    ov71_022472FC(param_1 + 0x10);
-    return;
+
+    ov71_022472FC(&tbfPhase->animResources);
 }
 #pragma force_active reset

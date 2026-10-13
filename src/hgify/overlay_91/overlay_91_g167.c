@@ -3,16 +3,17 @@
 #pragma thumb on
 #include "global.h"
 
-#include "ghidra_compat.h"
 #include "unk_02018000.h"
-typedef int code();
-void ov91_0226031C(int param_1, int param_2);
-// FUNCTION ov91_0226031C: matching C (r2)
-#pragma force_active on
-void ov91_0226031C(int param_1, int param_2)
 
-{
-    sub_0201815C((UnkStruct_020180BC *)(param_1 + 0x198 + (uint) * (ushort *)(param_1 + 0x210) * 0x14), param_2);
-    return;
+typedef struct UnkStruct_ov91_0226031C {
+    u8 unk_000[0x198];
+    UnkStruct_020180BC unk_198[6];
+    u16 unk_210;
+} UnkStruct_ov91_0226031C;
+
+// FUNCTION ov91_0226031C: matching C (twin)
+#pragma force_active on
+BOOL ov91_0226031C(UnkStruct_ov91_0226031C *param0, fx32 param1) {
+    return sub_0201815C(&param0->unk_198[param0->unk_210], param1);
 }
 #pragma force_active reset

@@ -3,16 +3,17 @@
 #pragma thumb on
 #include "global.h"
 
-#include "ghidra_compat.h"
 #include "message_format.h"
-typedef int code();
-void ov87_021E7244(int param_1, uint param_2, int param_3);
-// FUNCTION ov87_021E7244: matching C (r2)
-#pragma force_active on
-void ov87_021E7244(int param_1, uint param_2, int param_3)
+#include "string_util.h"
 
-{
-    BufferIntegerAsString((struct MessageFormat *)*(undefined **)(param_1 + 0x3c), param_2, param_3, 1, 0, 1);
-    return;
+typedef struct UnkStruct_ov87_021E7244 {
+    u8 filler_00[0x3C];
+    MessageFormat *strTemplate;
+} UnkStruct_ov87_021E7244;
+
+// FUNCTION ov87_021E7244: matching C (twin)
+#pragma force_active on
+void ov87_021E7244(UnkStruct_ov87_021E7244 *app, u32 idx, s32 num) {
+    BufferIntegerAsString(app->strTemplate, idx, num, 1, PRINTING_MODE_LEFT_ALIGN, TRUE);
 }
 #pragma force_active reset

@@ -3,24 +3,26 @@
 #pragma thumb on
 #include "global.h"
 
-#include "ghidra_compat.h"
 #include "sprite_system.h"
-typedef int code();
-void ov93_02261C3C(undefined4 param_1, undefined4 *param_2);
-// FUNCTION ov93_02261C3C: matching C (r2)
+
+typedef struct UnkStruct_ov93_02261C3C_Entry {
+    ManagedSprite *unk_00;
+    ManagedSprite *unk_04;
+    u8 filler_08[0x18 - 0x08];
+} UnkStruct_ov93_02261C3C_Entry;
+
+typedef struct UnkStruct_ov93_02261C3C {
+    UnkStruct_ov93_02261C3C_Entry unk_00[3];
+} UnkStruct_ov93_02261C3C;
+
+// FUNCTION ov93_02261C3C: matching C (twin)
 #pragma force_active on
-void ov93_02261C3C(undefined4 param_1, undefined4 *param_2)
+void ov93_02261C3C(void *param0, UnkStruct_ov93_02261C3C *param1) {
+    int v0;
 
-{
-    int iVar1;
-
-    iVar1 = 0;
-    do {
-        Sprite_DeleteAndFreeResources(*param_2);
-        Sprite_DeleteAndFreeResources(param_2[1]);
-        iVar1 = iVar1 + 1;
-        param_2 = param_2 + 6;
-    } while (iVar1 < 3);
-    return;
+    for (v0 = 0; v0 < 3; v0++) {
+        Sprite_DeleteAndFreeResources(param1->unk_00[v0].unk_00);
+        Sprite_DeleteAndFreeResources(param1->unk_00[v0].unk_04);
+    }
 }
 #pragma force_active reset
