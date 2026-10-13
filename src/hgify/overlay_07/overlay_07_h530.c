@@ -2,11 +2,13 @@
 #pragma warning_errors off
 #pragma thumb on
 #include <string.h>
-typedef unsigned char u8;
-typedef signed short s16;
-typedef unsigned short u16;
-typedef unsigned int u32;
-typedef int fx32;
+
+#include "global.h"
+
+#include "bg_window.h"
+#include "heap.h"
+#include "pokepic.h"
+#include "sys_task.h"
 typedef struct Sys Sys;
 typedef struct S {
     Sys *sys;
@@ -21,23 +23,18 @@ typedef struct S {
     int f24;
     char pad1[0x68 - 0x28];
 } S;
-extern void *Heap_Alloc(int heap, u32 size);
 extern int ov07_0221BFD0(Sys *sys);
 extern void *ov07_0221C410(Sys *sys, void (*fn)(void *, void *), void *arg);
 extern int ov07_0221C468(Sys *sys);
 extern void *ov07_0221FA48(Sys *sys, int a);
-extern int Pokepic_GetAttr(void *pic, int attr);
-extern void Pokepic_SetAttr(void *pic, int attr, int val);
 extern int ov07_02222004(Sys *sys, int a);
 extern int ov07_0221FAF8(Sys *sys, int a);
-extern u32 SysTask_GetPriority(void *task);
 extern u32 ov07_02222D88(u16 a0, u16 a1);
 extern void *ov07_02222CCC(u8 a0, u8 a1, u16 a2, fx32 a3, s16 a4, u32 a5, u32 a6, u32 a7, int heapId);
 extern void ov07_02222268(void *ctx, s16 sx, s16 ex, s16 sy, s16 ey, u16 steps);
 extern int ov07_02231924(Sys *sys, int a);
 extern int ov07_0221FAEC(Sys *sys, int a);
 extern int ov07_0221FAE8(Sys *sys);
-extern void SetBgPriority(u8 bgId, u16 priority);
 extern void ov07_0222C918(void *task, S *s);
 void ov07_0222CA8C(Sys *sys);
 // FUNCTION ov07_0222CA8C: matching C (agent5)

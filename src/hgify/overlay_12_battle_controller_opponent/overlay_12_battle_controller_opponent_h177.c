@@ -2,9 +2,10 @@
 #pragma warning_errors off
 #pragma thumb on
 #include "global.h"
-int BattleSystem_GetBattleType(void *battleSystem);
-void *BattleSystem_GetPlayerProfile(void *battleSystem, int a1);
-int PlayerProfile_GetVersion(void *profile);
+
+#include "battle/battle_system.h"
+
+#include "player_data.h"
 // FUNCTION ov12_02261EF0: matching C (agent11)
 #pragma force_active on
 u8 ov12_02261EF0(void *battleSystem, int a1, u8 a2) {

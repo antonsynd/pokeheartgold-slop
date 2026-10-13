@@ -2,12 +2,11 @@
 #pragma warning_errors off
 #pragma thumb on
 #include "global.h"
-int sub_02037454(void);
+
+#include "unk_02035900.h"
 int ov37_021E75C4(void);
 void ov37_021E7844(void *param0, int param1);
 void ov37_021E68AC(void *param0);
-u32 sub_0203769C(void);
-void sub_02037030(int a0, void *a1, int a2);
 int ov37_021E6B64(u8 *param0, int param1);
 // FUNCTION ov37_021E6B64: matching C (r0)
 #pragma force_active on

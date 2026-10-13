@@ -2,6 +2,8 @@
 #pragma warning_errors off
 #pragma thumb on
 #include "global.h"
+
+#include "bg_window.h"
 typedef struct UnkStruct_ov109_021E71BC {
     u8 unk0[0x14];
     void *bgConfig;
@@ -9,7 +11,6 @@ typedef struct UnkStruct_ov109_021E71BC {
     u8 unk19;
 } UnkStruct_ov109_021E71BC;
 extern void ov109_021E7178(void *data, void *photo, u8 a2, u8 x, u8 y);
-extern void ScheduleBgTilemapBufferTransfer(void *bgConfig, u8 bgId);
 extern const u8 ov109_021E7890[12];
 void ov109_021E71BC(UnkStruct_ov109_021E71BC *data, int a, int b);
 // FUNCTION ov109_021E71BC: matching C (r0)

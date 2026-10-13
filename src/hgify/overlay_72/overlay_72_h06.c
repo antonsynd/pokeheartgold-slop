@@ -2,10 +2,8 @@
 #pragma warning_errors off
 #pragma thumb on
 #include <string.h>
-typedef unsigned char u8;
-typedef unsigned short u16;
-typedef unsigned int u32;
-typedef int BOOL;
+
+#include "global.h"
 extern u8 ov72_0223B834[0xe4];
 extern struct {
     u8 pad[0x18];

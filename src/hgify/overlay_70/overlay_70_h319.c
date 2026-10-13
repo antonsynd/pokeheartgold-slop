@@ -2,10 +2,10 @@
 #pragma warning_errors off
 #pragma thumb on
 #include "global.h"
+
+#include "unk_02037C94.h"
 int ov70_02237F38(void);
 int ov70_02237F58(void);
-void sub_02039AD8(int param);
-void sub_020399EC(void);
 int ov70_0223FE60(int param_1);
 // FUNCTION ov70_0223FE60: matching C (agent12)
 #pragma force_active on

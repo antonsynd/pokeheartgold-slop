@@ -2,14 +2,13 @@
 #pragma warning_errors off
 #pragma thumb on
 #include "global.h"
+
+#include "bg_window.h"
+#include "error_handling.h"
+#include "font.h"
+#include "message_format.h"
+#include "msgdata.h"
 extern u8 ov112_021FF350[];
-void *NewMsgDataFromNarc(int narc, int msgId, int heapId, int heap);
-void *MessageFormat_New_Custom(int a, int b, int c);
-void AddWindow(int a, int b, int c);
-void GF_AssertFail(void);
-void BG_FillCharDataRange(int a, int b, int c, int d, int e);
-void LoadFontPal1(int a, int b, int c);
-void FontID_Alloc(int a, int b);
 // FUNCTION ov112_021F1288: matching C (agent16)
 #pragma force_active on
 void ov112_021F1288(u8 *param_1) {

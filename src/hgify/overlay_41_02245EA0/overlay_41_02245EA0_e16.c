@@ -2,6 +2,9 @@
 #pragma warning_errors off
 #pragma thumb on
 #include "global.h"
+
+#include "bg_window.h"
+#include "filesystem.h"
 typedef struct {
     int a;
     int b;
@@ -9,8 +12,6 @@ typedef struct {
     int d;
 } Ov41Cfg;
 extern const Ov41Cfg ov41_0224BFB4;
-void *NARC_New(int, int);
-void *BgConfig_Alloc(int);
 void ov41_022467E4(int param_1, Ov41Cfg *param_2);
 void ov41_02246CC0(int param_1, int param_2, int param_3, int param_4);
 void ov41_02246A50(int param_1);

@@ -2,8 +2,9 @@
 #pragma warning_errors off
 #pragma thumb on
 #include "global.h"
-u16 LCRandom(void);
-void ReadWholeNarcMemberByIdPair(void *dest, u32 narcId, s32 fileId);
+
+#include "filesystem.h"
+#include "math_util.h"
 void ov96_021FC144(u8 *param_1);
 // FUNCTION ov96_021FC144: matching C (agent9)
 #pragma force_active on

@@ -2,6 +2,9 @@
 #pragma warning_errors off
 #pragma thumb on
 #include "global.h"
+
+#include "heap.h"
+#include "pokepic.h"
 typedef struct UnkStruct_ov07_022280A8 {
     u8 state;  // 0x00
     u8 count;  // 0x01
@@ -17,10 +20,8 @@ typedef struct UnkStruct_ov07_022280A8 {
 } UnkStruct_ov07_022280A8;
 extern void ov07_02222590(void *a, int b, int c, int d, int e, int f, int g);
 extern BOOL ov07_0222260C(void *a);
-extern void Pokepic_SetAttr(void *pokepic, int attr, int value);
 extern int ov07_02222674(int a, int b, int c);
 extern void ov07_0221C448(void *sys, void *task);
-extern void Heap_Free(void *p);
 extern const u8 ov07_02236713[];
 extern const u8 ov07_02236714[];
 extern const u8 ov07_02236715[];

@@ -2,6 +2,8 @@
 #pragma warning_errors off
 #pragma thumb on
 #include "global.h"
+
+#include "sprite_system.h"
 typedef struct UnkStruct_ov07_0223350C {
     u8 pad_00[8];
     s32 state;
@@ -11,8 +13,6 @@ typedef struct UnkStruct_ov07_0223350C {
     u8 pad_22[0xe];
     void *sprite;
 } UnkStruct_ov07_0223350C;
-void ManagedSprite_SetOamMode(void *sprite, int mode);
-void ManagedSprite_SetDrawFlag(void *sprite, int flag);
 void ov07_02232F74(void *param, int a);
 BOOL ov07_0223350C(UnkStruct_ov07_0223350C *ctx);
 // FUNCTION ov07_0223350C: matching C (r0)

@@ -2,9 +2,10 @@
 #pragma warning_errors off
 #pragma thumb on
 #include "global.h"
-extern void Sound_SetSceneAndPlayBGM(u8 scene, u16 seqNo, int unused);
-extern BOOL Heap_Create(u32 parent, u32 child, u32 size);
-extern void *OverlayManager_GetData(void *man);
+
+#include "heap.h"
+#include "overlay_manager.h"
+#include "sound_02004A44.h"
 extern u8 *ov102_021E7888(void *man);
 extern void ov102_021E940C(void *a, int b);
 extern BOOL ov102_021E9464(void *a);

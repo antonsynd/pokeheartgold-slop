@@ -2,17 +2,17 @@
 #pragma warning_errors off
 #pragma thumb on
 #include "global.h"
+
+#include "unk_02005D10.h"
+#include "unk_0202C034.h"
 typedef struct UnkStruct_ov43_0222C2B0_B {
     u8 padding_00[4];
     void *saveData;
     u8 padding_08[0x10];
     u8 unk_18[0x40];
 } UnkStruct_ov43_0222C2B0_B;
-extern void *sub_0202C6F4(void *saveData);
 extern u32 ov43_0222C620(void *a);
-extern void *sub_0202C23C(void *a, u32 b);
 extern unsigned long long DWC_GetFriendKey(void *friendData);
-extern void PlaySE(u16 sndseq);
 extern void ov43_0222AAA4(void *a, u32 lo, u32 hi);
 extern void ov43_0222AB20(void *a, void *b, u32 c, u32 d);
 extern void ov43_0222C550(void *a, void *b, u32 c, u32 d);

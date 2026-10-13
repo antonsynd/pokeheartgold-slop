@@ -2,14 +2,13 @@
 #pragma warning_errors off
 #pragma thumb on
 #include "global.h"
+
+#include "map_matrix.h"
 typedef struct UnkStruct_ov01_021F5FB8_Pos {
     s32 x;
     s32 y;
     s32 z;
 } UnkStruct_ov01_021F5FB8_Pos;
-extern u8 MapMatrix_GetWidth(void *mapMatrix);
-extern u8 MapMatrix_GetMatrixId(void *mapMatrix);
-extern u8 MapMatrix_GetMapAltitude(void *mapMatrix, u8 matrixId, u16 x, u16 y, int matrixWidth);
 void ov01_021F5FB8(int mapMatrixIndex, int mapMatrixWidth, void *mapMatrix, UnkStruct_ov01_021F5FB8_Pos *position);
 // FUNCTION ov01_021F5FB8: matching C (r0)
 #pragma force_active on

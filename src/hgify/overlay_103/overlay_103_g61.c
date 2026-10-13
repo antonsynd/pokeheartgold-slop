@@ -2,10 +2,10 @@
 #pragma warning_errors off
 #pragma thumb on
 #include "global.h"
-void *Save_Bag_Get(void *saveData);
-u8 Mail_GetType(const void *mail);
-u16 MailToItemId(u8 mailId);
-int Bag_AddItem(void *bag, u16 itemId, u16 quantity, int heapID);
+
+#include "bag.h"
+#include "item.h"
+#include "mail.h"
 // FUNCTION ov103_021EDC00: matching C (agent12)
 #pragma force_active on
 void ov103_021EDC00(int param_1, int param_2, int param_3, int param_4) {

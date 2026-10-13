@@ -2,7 +2,8 @@
 #pragma warning_errors off
 #pragma thumb on
 #include "global.h"
-extern void sub_02021238(void);
+
+#include "unk_020210A0.h"
 extern void ov59_0223AD58(u8 *param_1);
 extern void ov59_0223ACD0(void);
 // FUNCTION ov59_0223AB00: matching C (agent11)

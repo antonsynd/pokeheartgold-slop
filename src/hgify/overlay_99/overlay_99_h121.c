@@ -2,16 +2,9 @@
 #pragma warning_errors off
 #pragma thumb on
 #include "global.h"
-extern void *ov98_0221EEFC(void *textSys);
-extern void BufferPokeathlonEventName(void *messageFormat, u32 fieldno, u32 eventId);
-extern void BufferIntegerAsString(void *messageFormat, u32 idx, s32 num, u32 numDigits, int strconvmode, BOOL whichCharset);
-extern void ov98_0221EBD8(void *textSys, u32 windowIdx, u32 msgId, BOOL center);
-extern void ov98_0221EBEC(void *textSys, u32 windowIdx, u32 msgId, BOOL center, u8 y, u32 fontId);
-extern void ov98_0221EC08(void *textSys, u32 windowIdx, u32 msgId, u8 x, u8 y);
-extern void ov98_0221ECD0(void *textSys, u32 windowIdx, u32 msgId, s32 value, u32 numDigits, u32 bufIdx);
-extern void ov98_0221EDC4(void *textSys, u32 windowIdx, u32 msgId, u32 bufIdx, void *profile);
-extern void ov98_0221EE84(void *textSys, u32 windowIdx);
-extern void ov98_0221EE9C(void *textSys, u32 windowIdx, void *string, u32 x, u8 y);
+
+#include "message_format.h"
+#include "overlay_98.h"
 extern s32 ov99_021E94FC(void *a, u8 event, u32 b);
 extern BOOL ov99_021E8544(u8 *data, u8 idx);
 extern s32 ov99_021E94CC(void *a, s8 event, u8 idx, u32 b);

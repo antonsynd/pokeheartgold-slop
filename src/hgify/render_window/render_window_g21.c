@@ -2,16 +2,12 @@
 #pragma warning_errors off
 #pragma thumb on
 #include "global.h"
-int GetWindowBgId(void *win);
-int GetWindowX(void *win);
-int GetWindowY(void *win);
-int GetWindowWidth(void *win);
-int GetWindowHeight(void *win);
+
+#include "bg_window.h"
+#include "render_text.h"
 void sub_0200ECBC(int a, int b, int c, int d, int e, int f, int g, int h);
 void sub_0200E6B4(int a, int b, int c, int d, int e, int f, int g, int h);
 void sub_0200EF84(void *win, u16 x, int y);
-void CopyWindowToVram(void *win);
-void TextPrinter_SetDownArrowBaseTile(int x);
 void DrawFrameAndWindow3(void *param_1, int param_2, int param_3, int param_4, u8 param_5);
 // FUNCTION DrawFrameAndWindow3: matching C (agent16)
 #pragma force_active on

@@ -2,10 +2,9 @@
 #pragma warning_errors off
 #pragma thumb on
 #include "global.h"
-u32 sub_0202C6F4(u32 a);
-int sub_0202C090(u32 a, u32 b, u32 c);
-void BufferIntegerAsString(void *buf, int a, int b, int c, int d, int e);
-void BufferMonthNameAbbr(void *buf, int a, int b);
+
+#include "message_format.h"
+#include "unk_0202C034.h"
 BOOL ov43_0222AB94(int param_1, u32 param_2, u32 param_3, u32 param_4);
 // FUNCTION ov43_0222AB94: matching C (agent12)
 #pragma force_active on

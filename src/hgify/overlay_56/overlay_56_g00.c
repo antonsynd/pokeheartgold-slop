@@ -2,10 +2,14 @@
 #pragma warning_errors off
 #pragma thumb on
 #include <string.h>
-typedef unsigned char u8;
-typedef unsigned short u16;
-typedef unsigned int u32;
-typedef int BOOL;
+
+#include "global.h"
+
+#include "heap.h"
+#include "menu_input_state.h"
+#include "options.h"
+#include "overlay_manager.h"
+#include "render_text.h"
 typedef struct Args {
     u16 unk0;
     u8 unk2;
@@ -31,13 +35,6 @@ typedef struct Obj {
     Args *args;
     u8 pad20[0xc4 - 0x20];
 } Obj;
-void *OverlayManager_GetArgs(void *);
-u8 Options_GetFrame(void *);
-void TextFlags_SetCanABSpeedUpPrint(BOOL);
-u8 Options_GetTextFrameDelay(void *);
-void Heap_Create(int, int, u32);
-void *OverlayManager_CreateAndGetData(void *, u32, int);
-u8 MenuInputStateMgr_GetState(void *);
 // FUNCTION ov56_021E5C20: matching C (agent9)
 #pragma force_active on
 BOOL ov56_021E5C20(void *ovy) {

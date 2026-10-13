@@ -2,6 +2,8 @@
 #pragma warning_errors off
 #pragma thumb on
 #include "global.h"
+
+#include "sprite.h"
 typedef struct Ov97_Order {
     u8 a[5];
 } Ov97_Order;
@@ -9,7 +11,6 @@ extern const Ov97_Order ov97_0221FCFC;
 void ov97_0221FBDC(u8 *p);
 void ov97_0221FC54(u8 *p);
 void ov97_0221F5F8(u8 *p, u8 *arg);
-void Sprite_SetDrawFlag(void *sprite, int flag);
 // FUNCTION ov97_0221F56C: matching C (agent15)
 #pragma force_active on
 void ov97_0221F56C(u8 *obj, u8 *arg) {

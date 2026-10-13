@@ -2,17 +2,15 @@
 #pragma warning_errors off
 #pragma thumb on
 #include "global.h"
+
+#include "heap.h"
+#include "overlay_manager.h"
 typedef struct UnkStruct_PhotoAlbum_Init {
     u32 heapId;
     u8 unk4[0xC];
     void *args;
 } UnkStruct_PhotoAlbum_Init;
 extern void ov109_021E5A20(void);
-extern BOOL Heap_Create(u32 parent, u32 child, u32 size);
-extern void *OverlayManager_CreateAndGetData(void *man, u32 size, u32 heapId);
-extern void MI_CpuFill8(void *dest, u8 value, u32 size);
-extern void *OverlayManager_GetArgs(void *man);
-extern void *OverlayManager_GetData(void *man);
 extern void ov109_021E5A70(UnkStruct_PhotoAlbum_Init *data);
 extern BOOL ov109_021E5B60(UnkStruct_PhotoAlbum_Init *data);
 s32 PhotoAlbum_Init(void *man, int *state);

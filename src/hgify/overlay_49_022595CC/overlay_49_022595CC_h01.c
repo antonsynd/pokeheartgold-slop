@@ -2,6 +2,8 @@
 #pragma warning_errors off
 #pragma thumb on
 #include "global.h"
+
+#include "unk_02005D10.h"
 typedef struct {
     u8 unk0[4];
     u32 unk4;
@@ -19,7 +21,6 @@ extern void ov45_02230908(u32 a, void *buf);
 extern u32 ov49_022593BC(void *p);
 extern void ov45_022308E4(u32 a, void *buf);
 extern void ov45_02230968(u32 a);
-extern void PlaySE(u32 se);
 // FUNCTION ov49_0225967C: matching C (agent17)
 #pragma force_active on
 void ov49_0225967C(Ov49Obj *param_1) {

@@ -2,10 +2,11 @@
 #pragma warning_errors off
 #pragma thumb on
 #pragma thumb on
+#include "global.h"
+
 #include "ghidra_compat.h"
+#include "photo_album.h"
 typedef int code();
-void PhotoAlbum_SetPhotoAtIndex(void *album, int photo, int idx);
-void PhotoAlbum_DeletePhotoByIndex(void *album, int idx);
 typedef struct S5D5C {
     char pad0[0xc4];
     unsigned char nDel;

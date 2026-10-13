@@ -2,11 +2,12 @@
 #pragma warning_errors off
 #pragma thumb on
 #include "global.h"
+
+#include "sprite_system.h"
 typedef struct {
     u8 filler_000[0x670];
     void *field_670;
 } UnkStruct_ov18_021F2AF8;
-extern void ManagedSprite_GetPositionXY(void *sprite, s16 *x, s16 *y);
 // FUNCTION ov18_021F2AF8: matching C (agent11)
 #pragma force_active on
 int ov18_021F2AF8(UnkStruct_ov18_021F2AF8 *param_1, u32 param_2, u32 param_3) {

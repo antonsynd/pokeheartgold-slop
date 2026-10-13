@@ -2,6 +2,8 @@
 #pragma warning_errors off
 #pragma thumb on
 #include "global.h"
+
+#include "sprite_system.h"
 typedef struct UnkStruct_ov07_022292E4 {
     u8 unk00[4];
     int unk04;     // 0x04
@@ -30,15 +32,12 @@ extern int ov07_0221C4A8(void *sys, int idx);
 extern int ov07_0221C468(void *sys);
 extern int ov07_0221C470(void *sys);
 extern int ov07_02222004(void *sys, int battler);
-extern void ManagedSprite_SetAffineOverwriteMode(void *sprite, u8 mode);
 extern void *ov07_0221FA48(void *sys, int battler);
 extern void ov07_02231FA0(void *a, s16 *pos);
 extern void ov07_02222338(void *a, void *b, s16 c, s16 d, s16 e, s16 f, u16 g, int h);
 extern int ov07_0221FA04(void *sys, int battler);
 extern void ov07_022223F0(void *a, int b, int c, int d);
-extern void ManagedSprite_SetAffineZRotation(void *sprite, u16 rot);
 extern void ov07_022223CC(void *a, void *b, void *sprite);
-extern void ManagedSprite_TickFrame(void *sprite);
 extern void ov07_0221C410(void *a, void *fn, void *ctx);
 extern void ov07_0222928C(void);
 void ov07_022292E4(void *sys, void *unused1, void *unused2, void *sprite);

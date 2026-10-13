@@ -3,7 +3,6 @@
 #pragma thumb on
 #include "global.h"
 extern u8 ov28_0225EA90[];
-int abs(int x);
 u8 ov28_0225E51C(u8 *ctx, int x, int y);
 // FUNCTION ov28_0225E51C: matching C (r0)
 #pragma force_active on

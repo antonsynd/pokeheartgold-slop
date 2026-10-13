@@ -2,8 +2,9 @@
 #pragma warning_errors off
 #pragma thumb on
 #include "global.h"
-u32 SpriteList_RenderAndAnimateSprites();
-u32 OamManager_ApplyAndResetBuffers();
+
+#include "sprite.h"
+#include "unk_0200B150.h"
 void ov71_02246C48(u32 param_1, int param_2);
 // FUNCTION ov71_02246C48: matching C (agent10)
 #pragma force_active on

@@ -4,7 +4,6 @@
 #include "global.h"
 extern const u8 ov85_021EA8EA[];
 extern const u8 ov85_021EA8EB[];
-extern void GX_LoadOBJPltt(const void *pSrc, u32 offset, u32 szByte);
 extern void ov85_021E9E58(void *p);
 void ov85_021E8BB0(void *param0, u8 *param1);
 // FUNCTION ov85_021E8BB0: matching C (r0)

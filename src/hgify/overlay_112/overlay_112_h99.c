@@ -2,14 +2,12 @@
 #pragma warning_errors off
 #pragma thumb on
 #include "global.h"
+
+#include "sprite_system.h"
 extern const u8 ov112_021FECE4[];
 extern const u8 ov112_021FECE5[];
 extern const u8 ov112_021FECE6[];
 extern const u8 ov112_021FECE7[];
-extern void ManagedSprite_SetPositionXYWithSubscreenOffset(void *sprite, int x, int y, int subscreen);
-extern void ManagedSprite_SetAnim(void *sprite, int anim);
-extern void ManagedSprite_SetPaletteOverride(void *sprite, int pal);
-extern void ManagedSprite_SetDrawFlag(void *sprite, int flag);
 // FUNCTION ov112_021EA51C: matching C (agent11)
 #pragma force_active on
 void ov112_021EA51C(u8 *work, int idx) {

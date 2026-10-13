@@ -2,10 +2,8 @@
 #pragma warning_errors off
 #pragma thumb on
 #include "global.h"
-void *PokeathlonCourse_GetDataCopyArea(void *data);
-BOOL ov96_021E5F24(void *data);
-void PokeathlonCourse_SetStateTransitionType(void *data, u32 transitionType);
-void PokeathlonCourse_SetStateField07(void *data, u8 value);
+
+#include "pokeathlon/pokeathlon.h"
 void ov96_021E9994(int a, int b, int c, void *d);
 // FUNCTION ov96_021E9994: matching C (agent9)
 #pragma force_active on

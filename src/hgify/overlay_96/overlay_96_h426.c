@@ -13,8 +13,6 @@ typedef struct UnkStruct_ov96_021F22FC {
     VecFx32 unk_28;
 } UnkStruct_ov96_021F22FC;
 extern u8 _0221DCA0[];
-void VEC_Subtract(const VecFx32 *param0, const VecFx32 *param1, VecFx32 *param2);
-fx32 VEC_DotProduct(const VecFx32 *param0, const VecFx32 *param1);
 // FUNCTION ov96_021F22FC: matching C (agent8)
 #pragma force_active on
 int ov96_021F22FC(void *param0, UnkStruct_ov96_021F22FC *param1, u32 param2, VecFx32 *param3) {

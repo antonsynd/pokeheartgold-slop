@@ -2,10 +2,10 @@
 #pragma warning_errors off
 #pragma thumb on
 #include "global.h"
-void *AllocMonZeroed(u32 species);
-int Pokewalker_TryGetBoxMon(void *pokewalker, void *mon);
-u32 GetMonData(void *mon, int attr, void *ret);
-void Heap_Free(void *ptr);
+
+#include "heap.h"
+#include "pokemon.h"
+#include "pokewalker.h"
 typedef struct {
     u8 low : 5;
     u8 high : 3;

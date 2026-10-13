@@ -2,10 +2,12 @@
 #pragma warning_errors off
 #pragma thumb on
 #pragma thumb on
+#include "global.h"
+
+#include "error_handling.h"
 #include "ghidra_compat.h"
 typedef int code();
 void ov01_021EFE34(void *p, int a, int b, int c);
-void GF_AssertFail(void);
 typedef struct SX {
     char pad0[0x14];
     char sub[0x14];

@@ -2,15 +2,14 @@
 #pragma warning_errors off
 #pragma thumb on
 #include "global.h"
+
+#include "sprite_system.h"
+#include "unk_02005D10.h"
 u32 ov18_021F5964(int *param_1);
 void ov18_021F54C0(int *p, u32 a, u32 b);
 void ov18_021F5180(int *p, u32 a, u32 b);
 void ov18_021F5000(int a, u32 b);
 u32 ov18_021F55D8(int *p);
-void PlaySE(u32 se);
-void ManagedSprite_OffsetAffineZRotation(void *spr, u32 v);
-u16 ManagedSprite_GetRotation(void *spr);
-void ManagedSprite_SetAffineZRotation(void *spr, u16 rot);
 // FUNCTION ov18_021F5964: matching C (agent17)
 #pragma force_active on
 u32 ov18_021F5964(int *param_1) {

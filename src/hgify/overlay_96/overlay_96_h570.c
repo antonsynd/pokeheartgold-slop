@@ -2,7 +2,8 @@
 #pragma warning_errors off
 #pragma thumb on
 #include "global.h"
-void GF_AssertFail(void);
+
+#include "error_handling.h"
 // FUNCTION ov96_021F82E4: matching C (agent12)
 #pragma force_active on
 void ov96_021F82E4(int param_1, u32 param_2, u32 param_3) {

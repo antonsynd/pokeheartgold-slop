@@ -2,7 +2,8 @@
 #pragma warning_errors off
 #pragma thumb on
 #include "global.h"
-extern void *PokeathlonCourse_GetHeapAllocPtr4(void *param_1);
+
+#include "pokeathlon/pokeathlon.h"
 // FUNCTION ov96_02215EE8: matching C (agent11)
 #pragma force_active on
 void ov96_02215EE8(void *param_1, int param_2, s16 *param_3) {

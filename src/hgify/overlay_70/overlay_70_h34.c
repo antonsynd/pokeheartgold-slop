@@ -2,7 +2,8 @@
 #pragma warning_errors off
 #pragma thumb on
 #include "global.h"
-void PlaySE(unsigned short);
+
+#include "unk_02005D10.h"
 void ov70_02238D38(u32 unused0, u32 unused1, u32 unused2, u32 in_r3);
 // FUNCTION ov70_02238D38: matching C (agent10)
 #pragma force_active on

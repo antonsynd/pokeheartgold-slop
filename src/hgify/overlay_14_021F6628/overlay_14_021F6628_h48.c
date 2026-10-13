@@ -2,9 +2,10 @@
 #pragma warning_errors off
 #pragma thumb on
 #include "global.h"
+
+#include "unk_02019BA4.h"
 u32 ov14_021E8544(u32 a);
 void ov14_021F6B28(int param_1, u32 param_2);
-void GridInputHandler_SetNextInput(u32 a, u32 b);
 void ov14_021F73E4(int param_1, u32 param_2, int param_3);
 // FUNCTION ov14_021F73E4: matching C (agent12)
 #pragma force_active on

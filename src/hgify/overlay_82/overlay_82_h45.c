@@ -2,7 +2,8 @@
 #pragma warning_errors off
 #pragma thumb on
 #include "global.h"
-u32 sub_0203769C(void);
+
+#include "unk_02035900.h"
 // FUNCTION ov82_0223F7B4: matching C (agent12)
 #pragma force_active on
 void ov82_0223F7B4(int param_1, u32 param_2, u16 *param_3, u8 *param_4) {

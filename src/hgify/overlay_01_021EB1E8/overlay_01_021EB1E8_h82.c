@@ -2,6 +2,9 @@
 #pragma warning_errors off
 #pragma thumb on
 #include "global.h"
+
+#include "math_util.h"
+#include "sprite.h"
 typedef struct UnkStruct_ov01_021ED31C_Particle {
     int unk_00;
     int unk_04;
@@ -16,8 +19,6 @@ typedef struct UnkStruct_ov01_021ED31C_Node {
     UnkStruct_ov01_021ED31C_Particle *data;
 } UnkStruct_ov01_021ED31C_Node;
 extern UnkStruct_ov01_021ED31C_Node *ov01_021EC1F4(void *system, int size);
-extern u32 MTRandom(void);
-extern void Sprite_SetAnimationFrame(void *sprite, u16 frame);
 extern VecFx32 ov01_021EC304(UnkStruct_ov01_021ED31C_Node *node);
 extern void ov01_021EB5F4(void *sprite, VecFx32 *pos);
 void ov01_021ED31C(void *param0, int param1);

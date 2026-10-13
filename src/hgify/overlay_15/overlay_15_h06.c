@@ -2,9 +2,10 @@
 #pragma warning_errors off
 #pragma thumb on
 #include "global.h"
-extern void DoScheduledBgGpuUpdates(u32 arg);
-extern void GF_RunVramTransferTasks(void);
-extern void SpriteSystem_TransferOam(void);
+
+#include "bg_window.h"
+#include "sprite_system.h"
+#include "vram_transfer_manager.h"
 void ov15_021F995C(u32 *param_1);
 // FUNCTION ov15_021F995C: matching C (agent10)
 #pragma force_active on

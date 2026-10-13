@@ -2,6 +2,8 @@
 #pragma warning_errors off
 #pragma thumb on
 #include "global.h"
+
+#include "sprite_system.h"
 typedef struct UnkStruct_ov05_0221D3AC {
     u8 filler_000[0x198];
     void *sprites[12];
@@ -9,7 +11,6 @@ typedef struct UnkStruct_ov05_0221D3AC {
     u8 baseX[4];
     u8 baseY[4];
 } UnkStruct_ov05_0221D3AC;
-extern void ManagedSprite_SetPositionXY(void *sprite, s16 x, s16 y);
 void ov05_0221D3AC(UnkStruct_ov05_0221D3AC *param0, BOOL param1, s16 param2, s16 param3);
 struct HgInit__0221EA54 {
     u8 a[4];

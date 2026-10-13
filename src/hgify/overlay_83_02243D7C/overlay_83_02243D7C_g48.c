@@ -2,7 +2,8 @@
 #pragma warning_errors off
 #pragma thumb on
 #include "global.h"
-extern u16 sub_0203769C(void);
+
+#include "unk_02035900.h"
 void ov83_022451B8(int netID, int unused, u8 *data, u8 *app);
 // FUNCTION ov83_022451B8: matching C (r0)
 #pragma force_active on

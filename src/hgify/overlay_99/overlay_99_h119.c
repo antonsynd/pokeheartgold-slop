@@ -2,9 +2,9 @@
 #pragma warning_errors off
 #pragma thumb on
 #include "global.h"
-extern void GF_AssertFail(void);
-extern void ov98_0221ED48(void *textSys, u32 windowIdx, u32 msgId, u32 x, u8 y);
-extern void ov98_0221EDA4(void *textSys, s32 value, u32 numDigits, u32 bufIdx);
+
+#include "error_handling.h"
+#include "overlay_98.h"
 void ov99_021E88EC(u8 *data, s32 value, u32 windowIdx, u32 unused, u32 y);
 // FUNCTION ov99_021E88EC: matching C (r0)
 #pragma force_active on

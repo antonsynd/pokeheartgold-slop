@@ -2,7 +2,6 @@
 #pragma warning_errors off
 #pragma thumb on
 #include "global.h"
-extern void MI_CpuFill8(void *dest, u8 data, u32 size);
 extern int MIC_StartAutoSamplingAsync(void *param, void *callback, void *arg);
 extern void *MIC_GetLastSamplingAddress(void);
 extern BOOL VCT_SendAudio(void *data, u32 size);

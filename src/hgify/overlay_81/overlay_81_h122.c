@@ -2,7 +2,8 @@
 #pragma warning_errors off
 #pragma thumb on
 #include "global.h"
-extern int ov80_02237254(u8 challengeType);
+
+#include "frontier/overlay_80_02236B78.h"
 int ov81_02242710(u8 *app);
 // FUNCTION ov81_02242710: matching C (r0)
 #pragma force_active on

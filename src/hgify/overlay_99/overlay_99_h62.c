@@ -2,7 +2,8 @@
 #pragma warning_errors off
 #pragma thumb on
 #include "global.h"
-extern u16 ov98_0221F024(const u8 *dexFlags);
+
+#include "overlay_98.h"
 u16 ov99_021E718C(u8 *data);
 // FUNCTION ov99_021E718C: matching C (r0)
 #pragma force_active on
