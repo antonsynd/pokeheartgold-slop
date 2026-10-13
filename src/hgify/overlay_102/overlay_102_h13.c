@@ -2,6 +2,8 @@
 #pragma warning_errors off
 #pragma thumb on
 #include "global.h"
+
+#include "field_move.h"
 typedef void (*UnkFunc_ov102_021E7AA4)(void *a0, void *a1, void *a2, u32 a3);
 extern UnkFunc_ov102_021E7AA4 ov102_021EC5E8[];
 void ov102_021E7AA4(u8 *a0, void *a1);

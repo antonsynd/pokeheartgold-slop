@@ -2,15 +2,15 @@
 #pragma warning_errors off
 #pragma thumb on
 #include "global.h"
+
+#include "sprite_system.h"
 typedef struct UnkStruct_ov07_022344C4 {
     u8 pad_00[0x30];
     void *sprite;
 } UnkStruct_ov07_022344C4;
-int ManagedSprite_SetDrawPriority(void *sprite, int priority);
-int ov07_022344C4(UnkStruct_ov07_022344C4 *ctx, int priority);
 // FUNCTION ov07_022344C4: matching C (r0)
 #pragma force_active on
-int ov07_022344C4(UnkStruct_ov07_022344C4 *ctx, int priority) {
-    return ManagedSprite_SetDrawPriority(ctx->sprite, priority);
+void ov07_022344C4(UnkStruct_ov07_022344C4 *ctx, u16 priority) {
+    ManagedSprite_SetDrawPriority(ctx->sprite, priority);
 }
 #pragma force_active reset

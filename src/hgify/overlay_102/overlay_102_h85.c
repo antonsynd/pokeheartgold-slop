@@ -2,17 +2,14 @@
 #pragma warning_errors off
 #pragma thumb on
 #include "global.h"
-typedef struct {
-    u32 words[4];
-} UnkStruct_ov102_021E9198;
-extern const UnkStruct_ov102_021E9198 ov102_021EC698;
-extern void ObjCharTransfer_Init(UnkStruct_ov102_021E9198 *tmpl);
-extern void ObjCharTransfer_ClearBuffers(void);
+
+#include "obj_char_transfer.h"
+extern const ObjCharTransferTemplate ov102_021EC698;
 void ov102_021E9198(void);
 // FUNCTION ov102_021E9198: matching C (agent10)
 #pragma force_active on
 void ov102_021E9198(void) {
-    UnkStruct_ov102_021E9198 tmpl = ov102_021EC698;
+    ObjCharTransferTemplate tmpl = ov102_021EC698;
     ObjCharTransfer_Init(&tmpl);
     ObjCharTransfer_ClearBuffers();
 }

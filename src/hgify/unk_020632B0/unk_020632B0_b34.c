@@ -2,7 +2,9 @@
 #pragma warning_errors off
 #pragma thumb on
 #include "global.h"
-u32 MapObject_GetType(void *object);
+
+#include "field_move.h"
+#include "map_object.h"
 typedef void (*MapObjHandler)(void *object);
 extern MapObjHandler _020FE164[];
 void sub_02063A78(void *mapObj);
