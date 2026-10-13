@@ -5,24 +5,15 @@
 
 #include "frontier/overlay_80_0222BDF4.h"
 
-#include "ghidra_compat.h"
 #include "message_format.h"
-typedef int code();
-undefined4 FrtCmd_125(int *param_1);
-// FUNCTION FrtCmd_125: matching C (r2)
+
+// FUNCTION FrtCmd_125: matching C (twin)
 #pragma force_active on
-undefined4 FrtCmd_125(int *param_1)
+BOOL FrtCmd_125(FrontierScriptContext *ctx) {
+    u8 templateArg = FrontierScriptContext_ReadByte(ctx);
+    u32 move = FrontierScript_ReadVar(ctx);
 
-{
-    byte bVar1;
-    uint uVar2;
-    byte *pbVar3;
-
-    pbVar3 = (byte *)param_1[7];
-    param_1[7] = (int)(pbVar3 + 1);
-    bVar1 = *pbVar3;
-    uVar2 = FrontierScript_ReadVar((FrontierScriptContext *)param_1);
-    BufferMoveName((MessageFormat *)*(undefined **)(*param_1 + 0x44), (uint)bVar1, uVar2);
-    return 0;
+    BufferMoveName(ctx->frontierSystem->unk44, templateArg, move);
+    return FALSE;
 }
 #pragma force_active reset

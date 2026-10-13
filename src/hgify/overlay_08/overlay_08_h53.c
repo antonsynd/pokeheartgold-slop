@@ -5,20 +5,22 @@
 
 #include "battle/battle_system.h"
 
-#include "ghidra_compat.h"
-typedef void code(void);
-undefined4 ov08_0221DB04(int *param_1);
-// FUNCTION ov08_0221DB04: matching C (r2)
+typedef struct UnkStruct_ov08_0221DB04 {
+    struct {
+        u8 unk_00[8];
+        BattleSystem *battleSys;
+    } *context;
+} UnkStruct_ov08_0221DB04;
+
+// FUNCTION ov08_0221DB04: matching C (twin)
 #pragma force_active on
-undefined4 ov08_0221DB04(int *param_1)
+BOOL ov08_0221DB04(UnkStruct_ov08_0221DB04 *battleParty) {
+    u32 battleType = BattleSystem_GetBattleType(battleParty->context->battleSys);
 
-{
-    uint uVar1;
-
-    uVar1 = BattleSystem_GetBattleType(*(undefined4 *)(*param_1 + 8));
-    if (((uVar1 != 0x4a) && (uVar1 != 0x4b)) && ((uVar1 & 8) != 0)) {
-        return 1;
+    if (battleType != 0x4A && battleType != 0x4B && battleType & 0x8) {
+        return TRUE;
     }
-    return 0;
+
+    return FALSE;
 }
 #pragma force_active reset

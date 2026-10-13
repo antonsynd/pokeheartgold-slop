@@ -4,18 +4,13 @@
 #include "global.h"
 
 #include "bg_window.h"
-#include "ghidra_compat.h"
-typedef int code();
-void ov39_022285A8(undefined4 param_1);
-// FUNCTION ov39_022285A8: matching C (r2)
-#pragma force_active on
-void ov39_022285A8(undefined4 param_1)
 
-{
-    FreeBgTilemapBuffer(param_1, 5);
-    FreeBgTilemapBuffer(param_1, 4);
-    FreeBgTilemapBuffer(param_1, 1);
-    FreeBgTilemapBuffer(param_1, 0);
-    return;
+// FUNCTION ov39_022285A8: matching C (twin)
+#pragma force_active on
+void ov39_022285A8(BgConfig *param0) {
+    FreeBgTilemapBuffer(param0, 5);
+    FreeBgTilemapBuffer(param0, 4);
+    FreeBgTilemapBuffer(param0, 1);
+    FreeBgTilemapBuffer(param0, 0);
 }
 #pragma force_active reset

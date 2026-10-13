@@ -3,22 +3,16 @@
 #pragma thumb on
 #include "global.h"
 
-#include "ghidra_compat.h"
 #include "sprite_system.h"
-typedef void code(void);
-void ov08_022213E4(undefined4 param_1, int param_2);
-// FUNCTION ov08_022213E4: matching C (r2)
+
+// FUNCTION ov08_022213E4: matching C (twin)
 #pragma force_active on
-void ov08_022213E4(undefined4 param_1, int param_2)
-
-{
-    int iVar1;
-
-    iVar1 = ManagedSprite_GetActiveAnim((ManagedSprite *)param_1);
-    if (param_2 != iVar1) {
-        ManagedSprite_SetAnimationFrame(param_1, 0);
-        ManagedSprite_SetAnim(param_1, param_2);
+void ov08_022213E4(ManagedSprite *sprite, int animationID) {
+    if (ManagedSprite_GetActiveAnim(sprite) == animationID) {
+        return;
     }
-    return;
+
+    ManagedSprite_SetAnimationFrame(sprite, 0);
+    ManagedSprite_SetAnim(sprite, animationID);
 }
 #pragma force_active reset

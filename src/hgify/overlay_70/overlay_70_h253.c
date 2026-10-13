@@ -3,25 +3,16 @@
 #pragma thumb on
 #include "global.h"
 
-#include "ghidra_compat.h"
 #include "item.h"
 #include "pokemon.h"
-typedef int code();
-undefined4 ov70_0223E76C(undefined4 param_1, undefined4 param_2, undefined4 param_3, undefined4 param_4);
-// FUNCTION ov70_0223E76C: matching C (r3)
+
+// FUNCTION ov70_0223E76C: matching C (twin)
 #pragma force_active on
-undefined4
-ov70_0223E76C(undefined4 param_1, undefined4 param_2, undefined4 param_3, undefined4 param_4)
-
-{
-    undefined2 uVar1;
-    int iVar2;
-
-    uVar1 = GetMonData(param_1, 6, 0);
-    iVar2 = ItemIdIsMail(uVar1);
-    if (iVar2 != 0) {
-        return 1;
+BOOL ov70_0223E76C(Pokemon *mon) {
+    if (ItemIdIsMail(GetMonData(mon, MON_DATA_HELD_ITEM, NULL))) {
+        return TRUE;
     }
-    return 0;
+
+    return FALSE;
 }
 #pragma force_active reset

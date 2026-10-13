@@ -3,19 +3,24 @@
 #pragma thumb on
 #include "global.h"
 
-#include "ghidra_compat.h"
+#include "constants/sndseq.h"
+
 #include "sprite_system.h"
 #include "unk_02005D10.h"
-typedef void code(void);
-undefined4 ov05_0221C8E0(int param_1);
-// FUNCTION ov05_0221C8E0: matching C (r2)
-#pragma force_active on
-undefined4 ov05_0221C8E0(int param_1)
 
-{
-    PlaySE(0x71a);
-    ManagedSprite_SetDrawFlag(*(undefined4 *)(param_1 + 0x1c8), 1);
-    *(undefined1 *)(param_1 + 0xb81) = 0x40;
+typedef struct UnkStruct_ov05_0221C8E0 {
+    u8 unk_000[0x198];
+    ManagedSprite *unk_198[13];
+    u8 unk_1CC[0xB81 - 0x1CC];
+    u8 unk_B81;
+} UnkStruct_ov05_0221C8E0;
+
+// FUNCTION ov05_0221C8E0: matching C (twin)
+#pragma force_active on
+BOOL ov05_0221C8E0(UnkStruct_ov05_0221C8E0 *param0) {
+    PlaySE(SEQ_SE_DP_VSDEMO06);
+    ManagedSprite_SetDrawFlag(param0->unk_198[12], 1);
+    param0->unk_B81 = 64;
     return 1;
 }
 #pragma force_active reset

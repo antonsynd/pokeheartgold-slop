@@ -3,23 +3,16 @@
 #pragma thumb on
 #include "global.h"
 
-#include "error_handling.h"
-#include "ghidra_compat.h"
 #include "heap.h"
-typedef void code(void);
-int ov01_021F30D0(undefined4 param_1, undefined4 param_2, undefined4 param_3, undefined4 param_4);
-// FUNCTION ov01_021F30D0: matching C (r3)
+void *ov01_021F30D0(int size);
+// FUNCTION ov01_021F30D0: matching C (twin)
 #pragma force_active on
-int ov01_021F30D0(undefined4 param_1, undefined4 param_2, undefined4 param_3, undefined4 param_4)
+void *ov01_021F30D0(int size) {
+    void *monRideTaskEnv = Heap_AllocAtEnd(HEAP_ID_FIELD1, size);
 
-{
-    int iVar1;
+    GF_ASSERT(monRideTaskEnv != NULL);
+    memset(monRideTaskEnv, 0, size);
 
-    iVar1 = Heap_AllocAtEnd(4, param_1);
-    if (iVar1 == 0) {
-        GF_AssertFail();
-    }
-    memset(iVar1, 0, param_1);
-    return iVar1;
+    return monRideTaskEnv;
 }
 #pragma force_active reset

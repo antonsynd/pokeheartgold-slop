@@ -3,31 +3,33 @@
 #pragma thumb on
 #include "global.h"
 
-#include "ghidra_compat.h"
 #include "obj_char_transfer.h"
 #include "obj_pltt_transfer.h"
 #include "sprite.h"
 #include "unk_0200A090.h"
 #include "unk_0200B150.h"
-typedef int code();
-void ov41_02246B34(int param_1);
-// FUNCTION ov41_02246B34: matching C (r2)
+
+typedef struct UnkStruct_ov41_02246B34 {
+    u8 unk_00[0x44];
+    SpriteList *unk_44;
+    GF_2DGfxResMan *unk_48[4];
+} UnkStruct_ov41_02246B34;
+
+// FUNCTION ov41_02246B34: matching C (twin)
 #pragma force_active on
-void ov41_02246B34(int param_1)
+void ov41_02246B34(UnkStruct_ov41_02246B34 *param0) {
+    SpriteList_Delete(param0->unk_44);
 
-{
-    int iVar1;
+    {
+        int v0;
 
-    SpriteList_Delete(*(undefined4 *)(param_1 + 0x44));
-    iVar1 = 0;
-    do {
-        Destroy2DGfxResObjMan(*(undefined4 *)(param_1 + 0x48));
-        iVar1 = iVar1 + 1;
-        param_1 = param_1 + 4;
-    } while (iVar1 < 4);
+        for (v0 = 0; v0 < 4; v0++) {
+            Destroy2DGfxResObjMan(param0->unk_48[v0]);
+        }
+    }
+
     ObjCharTransfer_Destroy();
     ObjPlttTransfer_Destroy();
     OamManager_Free();
-    return;
 }
 #pragma force_active reset

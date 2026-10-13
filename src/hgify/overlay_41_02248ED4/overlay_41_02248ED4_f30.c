@@ -39,11 +39,11 @@ void ov41_022499B4(UnkStruct_ov41_022499B4 *a0, int count, enum HeapID heapID);
 void ov41_022499DC(UnkStruct_ov41_022499B4 *a0);
 UnkStruct_ov41_022499B4_Node *ov41_022499F0(UnkStruct_ov41_022499B4 *a0, int a1, int a2);
 void ov41_02249780(UnkStruct_ov41_02249780 *a0, int *x, int *y);
-// FUNCTION ov41_02249780: matching C (r0)
+// FUNCTION ov41_02249780: matching C (twin)
 #pragma force_active on
-void ov41_02249780(UnkStruct_ov41_02249780 *a0, int *x, int *y) {
-    *x = Pokepic_GetAttr(a0->unk0, 0);
-    *y = Pokepic_GetAttr(a0->unk0, 1);
+void ov41_02249780(UnkStruct_ov41_02249780 *param0, int *xCenter, int *yCenter) {
+    *xCenter = Pokepic_GetAttr(param0->unk0, POKEPIC_X);
+    *yCenter = Pokepic_GetAttr(param0->unk0, POKEPIC_Y);
 }
 #pragma force_active reset
 void ov41_022497A0(UnkStruct_ov41_02249780 *a0, int *width, int *height);

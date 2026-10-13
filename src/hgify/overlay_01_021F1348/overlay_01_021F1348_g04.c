@@ -3,7 +3,7 @@
 #pragma thumb on
 #include "global.h"
 
-#include "constants/heap.h"
+#include "constants/field/field_effect_renderer.h"
 
 #include "field_move.h"
 #include "filesystem.h"
@@ -11,14 +11,13 @@
 #include "map_object.h"
 #include "overlay_01.h"
 #include "overlay_01_021F1348.h"
-#define UNK_OV01_021F1348_NONE 0x17
 void ov01_021F13B0(void *manager, int id);
-// FUNCTION FieldEffectManager_InitRenderers: matching C (r0)
+// FUNCTION FieldEffectManager_InitRenderers: matching C (twin)
 #pragma force_active on
-void FieldEffectManager_InitRenderers(FieldEffectManager *fieldEffectManager, const u32 *ids) {
-    while (*ids != UNK_OV01_021F1348_NONE) {
-        ov01_021F13B0(fieldEffectManager, *ids);
-        ids++;
+void FieldEffectManager_InitRenderers(FieldEffectManager *fieldEffMan, const u32 *idIter) {
+    while (*idIter != FIELD_EFFECT_RENDERER_INVALID) {
+        ov01_021F13B0(fieldEffMan, *idIter);
+        idIter++;
     }
 }
 #pragma force_active reset

@@ -3,19 +3,23 @@
 #pragma thumb on
 #include "global.h"
 
-#include "ghidra_compat.h"
 #include "sprite.h"
-typedef int code();
-void ov91_0225F23C(int param_1);
-// FUNCTION ov91_0225F23C: matching C (r2)
+typedef struct UnkStruct_ov91_0225F23C {
+    u8 unk_00[0x34];
+    Sprite *unk_34;
+    u8 unk_38;
+    u8 unk_39;
+    u8 unk_3A;
+} UnkStruct_ov91_0225F23C;
+// FUNCTION ov91_0225F23C: matching C (twin)
 #pragma force_active on
-void ov91_0225F23C(int param_1)
+void ov91_0225F23C(UnkStruct_ov91_0225F23C *param0) {
+    {
+        param0->unk_38 = 1;
+        param0->unk_3A = 0;
+        param0->unk_39 = 0;
+    }
 
-{
-    *(undefined1 *)(param_1 + 0x38) = 1;
-    *(undefined1 *)(param_1 + 0x3a) = 0;
-    *(undefined1 *)(param_1 + 0x39) = 0;
-    Sprite_SetDrawFlag((Sprite *)*(undefined **)(param_1 + 0x34), 1);
-    return;
+    Sprite_SetDrawFlag(param0->unk_34, TRUE);
 }
 #pragma force_active reset

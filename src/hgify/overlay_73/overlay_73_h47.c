@@ -3,19 +3,22 @@
 #pragma thumb on
 #include "global.h"
 
-#include "ghidra_compat.h"
 #include "unk_020379A0.h"
-typedef int code();
-undefined4 ov73_021E66F0();
-undefined4 ov73_021E6E6C(int param_1, undefined4 param_2);
-// FUNCTION ov73_021E6E6C: matching C (r2)
-#pragma force_active on
-undefined4 ov73_021E6E6C(int param_1, undefined4 param_2)
 
-{
-    sub_02037AC0(0xc9);
-    *(undefined4 *)(param_1 + 0x318) = 0x10;
-    ov73_021E66F0(param_1);
-    return param_2;
+typedef struct UnkStruct_ov73_021E6E6C {
+    u8 filler_000[0x318];
+    int unk_318;
+} UnkStruct_ov73_021E6E6C;
+
+void ov73_021E66F0(UnkStruct_ov73_021E6E6C *param0);
+int ov73_021E6E6C(UnkStruct_ov73_021E6E6C *param0, int param1);
+// FUNCTION ov73_021E6E6C: matching C (twin)
+#pragma force_active on
+int ov73_021E6E6C(UnkStruct_ov73_021E6E6C *param0, int param1) {
+    sub_02037AC0(201);
+    param0->unk_318 = 16;
+    ov73_021E66F0(param0);
+
+    return param1;
 }
 #pragma force_active reset

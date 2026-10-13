@@ -6,23 +6,20 @@
 #include "bg_window.h"
 #include "palette.h"
 #include "vram_transfer_manager.h"
+
 typedef struct UnkStruct_ov40_0222BD04 {
     u8 unk_00[0x24];
     void *unk_24;
     void *unk_28;
 } UnkStruct_ov40_0222BD04;
-void ov40_0222BD04(UnkStruct_ov40_0222BD04 *param_1);
-// FUNCTION ov40_0222BD04: matching C (agent10)
-#pragma force_active on
-void ov40_0222BD04(UnkStruct_ov40_0222BD04 *param_1) {
-    u8 *base;
-    u32 off;
 
+// FUNCTION ov40_0222BD04: matching C (twin)
+#pragma force_active on
+void ov40_0222BD04(UnkStruct_ov40_0222BD04 *param0) {
     GF_RunVramTransferTasks();
-    PaletteData_PushTransparentBuffers(param_1->unk_28);
-    DoScheduledBgGpuUpdates(param_1->unk_24);
-    base = (u8 *)0x027E0000;
-    off = 0x3FF8;
-    *(u32 *)(base + off) |= 1;
+    PaletteData_PushTransparentBuffers(param0->unk_28);
+    DoScheduledBgGpuUpdates(param0->unk_24);
+
+    OS_SetIrqCheckFlag(OS_IE_V_BLANK);
 }
 #pragma force_active reset

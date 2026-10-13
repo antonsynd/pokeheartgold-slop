@@ -5,20 +5,16 @@
 
 #include "frontier/overlay_80_022340E8.h"
 
-#include "ghidra_compat.h"
-typedef int code();
-// FUNCTION ov80_022347C4: matching C (r2)
+// FUNCTION ov80_022347C4: matching C (twin)
 #pragma force_active on
-void ov80_022347C4(struct ArcadeContext *ctx)
+void ov80_022347C4(ArcadeContext *arcade) {
+    arcade->unkF = TRUE;
 
-{
-    undefined *param_1 = (undefined *)ctx;
-    param_1[0x2f] = 1;
-    if (*(ushort *)(param_1 + 0x1a) < 8) {
-        *(ushort *)(param_1 + 0x1a) = *(ushort *)(param_1 + 0x1a) + 1;
+    if (arcade->unk1A < 8) {
+        arcade->unk1A++;
     }
-    param_1[0x11] = 0;
-    ov80_02234588((struct ArcadeContext *)ctx, 0);
-    return;
+
+    arcade->unk11 = 0;
+    ov80_02234588(arcade, 0);
 }
 #pragma force_active reset

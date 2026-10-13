@@ -3,21 +3,18 @@
 #pragma thumb on
 #include "global.h"
 
-#include "ghidra_compat.h"
 #include "sprite.h"
-typedef int code();
-void sub_0208C3C0(int param_1);
-// FUNCTION sub_0208C3C0: matching C (r2)
+
+typedef struct UnkStruct_sub_0208C3C0 {
+    u8 unk_000[0x50C];
+    Sprite *unk_50C;
+} UnkStruct_sub_0208C3C0;
+
+// FUNCTION sub_0208C3C0: matching C (twin)
 #pragma force_active on
-void sub_0208C3C0(int param_1)
-
-{
-    int iVar1;
-
-    iVar1 = Sprite_GetDrawFlag(*(undefined4 *)(param_1 + 0x50c));
-    if (iVar1 == 1) {
-        Sprite_UpdateAnim(*(undefined4 *)(param_1 + 0x50c), 0x1000);
+void sub_0208C3C0(UnkStruct_sub_0208C3C0 *summaryScreen) {
+    if (Sprite_GetDrawFlag(summaryScreen->unk_50C) == TRUE) {
+        Sprite_UpdateAnim(summaryScreen->unk_50C, FX32_ONE);
     }
-    return;
 }
 #pragma force_active reset

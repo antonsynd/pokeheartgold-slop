@@ -3,21 +3,24 @@
 #pragma thumb on
 #include "global.h"
 
-#include "ghidra_compat.h"
 #include "overlay_00_thumb.h"
-typedef int code();
-undefined4 ov39_02228A34();
-undefined4 ov39_02228EA4(int param_1);
-// FUNCTION ov39_02228EA4: matching C (r2)
+
+typedef struct UnkStruct_ov39_02228EA4 {
+    u8 unk_00[0x08];
+    int unk_08;
+    u8 unk_0C[0x18 - 0x0C];
+    int unk_18;
+    int unk_1C;
+} UnkStruct_ov39_02228EA4;
+
+void ov39_02228A34(UnkStruct_ov39_02228EA4 *param0, int errorCode, int param2);
+// FUNCTION ov39_02228EA4: matching C (twin)
 #pragma force_active on
-undefined4 ov39_02228EA4(int param_1)
+int ov39_02228EA4(UnkStruct_ov39_02228EA4 *param0) {
+    int errorCode = ov00_021E6A70(-param0->unk_18, param0->unk_1C);
+    ov39_02228A34(param0, errorCode, -param0->unk_18);
+    param0->unk_08 = 7;
 
-{
-    undefined4 uVar1;
-
-    uVar1 = ov00_021E6A70(-*(int *)(param_1 + 0x18), *(undefined4 *)(param_1 + 0x1c));
-    ov39_02228A34(param_1, uVar1, -*(int *)(param_1 + 0x18));
-    *(undefined4 *)(param_1 + 8) = 7;
     return 0;
 }
 #pragma force_active reset

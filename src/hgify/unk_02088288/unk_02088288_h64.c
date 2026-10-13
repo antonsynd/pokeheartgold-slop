@@ -3,24 +3,20 @@
 #pragma thumb on
 #include "global.h"
 
-#include "ghidra_compat.h"
 #include "player_data.h"
-typedef int code();
-void sub_0208AD34(int param_1, undefined4 param_2);
-// FUNCTION sub_0208AD34: matching C (r2)
+
+typedef struct UnkStruct_sub_0208AD34 {
+    u8 unk_00[8];
+    const u16 *OTName;
+    u32 OTID;
+    u8 OTGender;
+} UnkStruct_sub_0208AD34;
+
+// FUNCTION sub_0208AD34: matching C (twin)
 #pragma force_active on
-void sub_0208AD34(int param_1, undefined4 param_2)
-
-{
-    undefined1 uVar1;
-    undefined4 uVar2;
-
-    uVar2 = PlayerProfile_GetNamePtr(param_2);
-    *(undefined4 *)(param_1 + 8) = uVar2;
-    uVar2 = PlayerProfile_GetTrainerID(param_2);
-    *(undefined4 *)(param_1 + 0xc) = uVar2;
-    uVar1 = PlayerProfile_GetTrainerGender(param_2);
-    *(undefined1 *)(param_1 + 0x10) = uVar1;
-    return;
+void sub_0208AD34(UnkStruct_sub_0208AD34 *summary, PlayerProfile *profile) {
+    summary->OTName = PlayerProfile_GetNamePtr(profile);
+    summary->OTID = PlayerProfile_GetTrainerID(profile);
+    summary->OTGender = (u8)PlayerProfile_GetTrainerGender(profile);
 }
 #pragma force_active reset

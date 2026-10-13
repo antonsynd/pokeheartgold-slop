@@ -3,28 +3,24 @@
 #pragma thumb on
 #include "global.h"
 
-#include "ghidra_compat.h"
 #include "unk_02034354.h"
-typedef int code();
 int ov85_021E9FD0(void);
-// FUNCTION ov85_021E9FD0: matching C (r2)
+// FUNCTION ov85_021E9FD0: matching C (twin)
 #pragma force_active on
-int ov85_021E9FD0(void)
+int ov85_021E9FD0(void) {
+    int v0, v1;
+    PlayerProfile *v2;
 
-{
-    int iVar1;
-    int iVar2;
-    int iVar3;
+    v1 = 0;
 
-    iVar3 = 0;
-    iVar2 = 0;
-    do {
-        iVar1 = sub_02034818(iVar2);
-        if (iVar1 != 0) {
-            iVar3 = iVar3 + 1;
+    for (v0 = 0; v0 < 5; v0++) {
+        v2 = sub_02034818(v0);
+
+        if (v2 != NULL) {
+            v1++;
         }
-        iVar2 = iVar2 + 1;
-    } while (iVar2 < 5);
-    return iVar3;
+    }
+
+    return v1;
 }
 #pragma force_active reset

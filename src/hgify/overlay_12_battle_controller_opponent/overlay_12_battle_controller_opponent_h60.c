@@ -6,19 +6,21 @@
 #include "battle/battle_system.h"
 #include "battle/party_gauge.h"
 
-#include "ghidra_compat.h"
-typedef void code(void);
-undefined4 ov12_0226430C(undefined4, undefined4, undefined4);
-undefined4 ov12_02259928(undefined4);
-void ov12_02259694(undefined4 param_1, int param_2);
-// FUNCTION ov12_02259694: matching C (r2)
-#pragma force_active on
-void ov12_02259694(undefined4 param_1, int param_2)
+typedef struct UnkStruct_ov12_02259694 {
+    u8 pad_0000[0x194];
+    u8 battler;
+} UnkStruct_ov12_02259694;
 
-{
-    PartyGauge_FreeGraphics(BattleSystem_GetSpriteManager((BattleSystem *)param_1));
-    ov12_0226430C(param_1, *(undefined1 *)(param_2 + 0x194), 0x35);
-    ov12_02259928(param_2);
-    return;
+void ov12_0226430C(BattleSystem *battleSys, int battler, int command);
+void ov12_02259928(UnkStruct_ov12_02259694 *battlerData);
+
+// FUNCTION ov12_02259694: matching C (twin)
+#pragma force_active on
+void ov12_02259694(BattleSystem *battleSys, UnkStruct_ov12_02259694 *battlerData) {
+    SpriteManager *spriteMan = BattleSystem_GetSpriteManager(battleSys);
+
+    PartyGauge_FreeGraphics(spriteMan);
+    ov12_0226430C(battleSys, battlerData->battler, 0x35);
+    ov12_02259928(battlerData);
 }
 #pragma force_active reset

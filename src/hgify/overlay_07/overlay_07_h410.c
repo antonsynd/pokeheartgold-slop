@@ -3,26 +3,28 @@
 #pragma thumb on
 #include "global.h"
 
-#include "ghidra_compat.h"
 #include "heap.h"
-typedef void code(void);
-undefined4 ov07_02222EF8(undefined4);
-undefined4 ov07_0221C448(undefined4, undefined4);
-undefined4 ov07_02222EE8(undefined4);
-void ov07_02225810(undefined4 param_1, int param_2);
-// FUNCTION ov07_02225810: matching C (r2)
+#include "sys_task_api.h"
+typedef struct UnkStruct_ov07_02225810 {
+    struct {
+        int unk_00;
+        void *battleAnimSys;
+    } common;
+    u8 unk_08[0x30 - 0x08];
+    void *paletteFade;
+} UnkStruct_ov07_02225810;
+BOOL ov07_02222EE8(void *paletteFade);
+void ov07_02222EF8(void *paletteFade);
+void ov07_0221C448(void *battleAnimSys, SysTask *task);
+// FUNCTION ov07_02225810: matching C (twin)
 #pragma force_active on
-void ov07_02225810(undefined4 param_1, int param_2)
+void ov07_02225810(SysTask *task, void *param) {
+    UnkStruct_ov07_02225810 *ctx = param;
 
-{
-    int iVar1;
-
-    iVar1 = ov07_02222EE8(*(undefined4 *)(param_2 + 0x30));
-    if (iVar1 == 0) {
-        ov07_02222EF8(*(undefined4 *)(param_2 + 0x30));
-        ov07_0221C448(*(undefined4 *)(param_2 + 4), param_1);
-        Heap_Free(param_2);
+    if (ov07_02222EE8(ctx->paletteFade) == FALSE) {
+        ov07_02222EF8(ctx->paletteFade);
+        ov07_0221C448(ctx->common.battleAnimSys, task);
+        Heap_Free(ctx);
     }
-    return;
 }
 #pragma force_active reset

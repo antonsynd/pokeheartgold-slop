@@ -3,26 +3,19 @@
 #pragma thumb on
 #include "global.h"
 
-#include "error_handling.h"
-#include "ghidra_compat.h"
-typedef int code();
-extern undefined _020FC604;
-extern undefined _020FC614;
-void sub_0205489C(undefined4 *param_1, int param_2);
-// FUNCTION sub_0205489C: matching C (r2)
-#pragma force_active on
-void sub_0205489C(undefined4 *param_1, int param_2)
+typedef struct TerrainCollisionManager TerrainCollisionManager;
 
-{
-    if (param_2 == 0) {
-        *param_1 = &_020FC604;
-        return;
+extern const TerrainCollisionManager _020FC604;
+extern const TerrainCollisionManager _020FC614;
+// FUNCTION sub_0205489C: matching C (twin)
+#pragma force_active on
+void sub_0205489C(const TerrainCollisionManager **terrainCollisionMan, BOOL useSimpleTerrainCollisions) {
+    if (useSimpleTerrainCollisions == FALSE) {
+        *terrainCollisionMan = &_020FC604;
+    } else if (useSimpleTerrainCollisions == TRUE) {
+        *terrainCollisionMan = &_020FC614;
+    } else {
+        GF_ASSERT(FALSE);
     }
-    if (param_2 == 1) {
-        *param_1 = &_020FC614;
-        return;
-    }
-    GF_AssertFail();
-    return;
 }
 #pragma force_active reset

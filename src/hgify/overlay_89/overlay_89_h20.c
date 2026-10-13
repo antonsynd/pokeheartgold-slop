@@ -4,24 +4,22 @@
 #include "global.h"
 
 #include "bg_window.h"
-#include "ghidra_compat.h"
-typedef int code();
-void ov89_02259D50(int param_1);
-// FUNCTION ov89_02259D50: matching C (r2)
+
+typedef struct UnkStruct_ov89_02259D50 {
+    u8 unk_00[0x34];
+    Window unk_34[8];
+    Window unk_B4;
+} UnkStruct_ov89_02259D50;
+
+// FUNCTION ov89_02259D50: matching C (twin)
 #pragma force_active on
-void ov89_02259D50(int param_1)
+void ov89_02259D50(UnkStruct_ov89_02259D50 *param0) {
+    int v0;
 
-{
-    int iVar1;
+    RemoveWindow(&param0->unk_B4);
 
-    RemoveWindow(param_1 + 0xb4);
-    iVar1 = 0;
-    param_1 = param_1 + 0x34;
-    do {
-        RemoveWindow(param_1);
-        iVar1 = iVar1 + 1;
-        param_1 = param_1 + 0x10;
-    } while (iVar1 < 8);
-    return;
+    for (v0 = 0; v0 < 8; v0++) {
+        RemoveWindow(&param0->unk_34[v0]);
+    }
 }
 #pragma force_active reset

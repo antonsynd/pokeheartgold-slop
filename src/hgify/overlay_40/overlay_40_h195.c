@@ -4,19 +4,24 @@
 #include "global.h"
 
 #include "bg_window.h"
-#include "ghidra_compat.h"
-typedef int code();
-void ov40_02232FCC(int param_1);
-// FUNCTION ov40_02232FCC: matching C (r2)
+
+typedef struct UnkStruct_ov40_02232FCC_Window {
+    u8 unk_000[0x178];
+    Window unk_178;
+} UnkStruct_ov40_02232FCC_Window;
+
+typedef struct UnkStruct_ov40_02232FCC {
+    u8 unk_000[0x860];
+    UnkStruct_ov40_02232FCC_Window *unk_860;
+} UnkStruct_ov40_02232FCC;
+
+void ov40_02232FCC(UnkStruct_ov40_02232FCC *param0);
+// FUNCTION ov40_02232FCC: matching C (twin)
 #pragma force_active on
-void ov40_02232FCC(int param_1)
+void ov40_02232FCC(UnkStruct_ov40_02232FCC *param0) {
+    UnkStruct_ov40_02232FCC_Window *v0 = param0->unk_860;
 
-{
-    int iVar1;
-
-    iVar1 = *(int *)(param_1 + 0x860);
-    ClearWindowTilemapAndCopyToVram(iVar1 + 0x178);
-    RemoveWindow(iVar1 + 0x178);
-    return;
+    ClearWindowTilemapAndCopyToVram(&v0->unk_178);
+    RemoveWindow(&v0->unk_178);
 }
 #pragma force_active reset

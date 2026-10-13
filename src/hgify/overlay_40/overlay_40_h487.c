@@ -3,22 +3,22 @@
 #pragma thumb on
 #include "global.h"
 
-#include "overlay_42.h"
 typedef struct UnkStruct_ov40_02243538 {
-    u8 filler_000[0x1F4];
+    u8 unk_000[0x1F4];
     s32 unk_1F4;
 } UnkStruct_ov40_02243538;
-extern s32 (*const ov40_02245C18[])(UnkStruct_ov40_02243538 *p, u32 fn, u32 offset, u32 callerR3);
-void ov40_02243F88(UnkStruct_ov40_02243538 *p);
-// FUNCTION ov40_02243538: matching C (agent10)
-#pragma force_active on
-s32 ov40_02243538(UnkStruct_ov40_02243538 *p, u32 unused1, u32 unused2, u32 callerR3) {
-    s32 result;
 
-    result = ov40_02245C18[p->unk_1F4](p, (u32)ov40_02245C18[p->unk_1F4], (u32)p->unk_1F4 * 4, callerR3);
-    if (result == 0) {
-        ov40_02243F88(p);
+extern BOOL (*const ov40_02245C18[])(UnkStruct_ov40_02243538 *param0);
+void ov40_02243F88(UnkStruct_ov40_02243538 *param0);
+// FUNCTION ov40_02243538: matching C (twin)
+#pragma force_active on
+BOOL ov40_02243538(UnkStruct_ov40_02243538 *param0) {
+    BOOL v0 = ov40_02245C18[param0->unk_1F4](param0);
+
+    if (v0 == 0) {
+        ov40_02243F88(param0);
     }
-    return result;
+
+    return v0;
 }
 #pragma force_active reset

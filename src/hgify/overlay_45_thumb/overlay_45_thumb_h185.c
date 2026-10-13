@@ -3,16 +3,21 @@
 #pragma thumb on
 #include "global.h"
 
-#include "ghidra_compat.h"
-typedef int code();
-void ov45_0222C388(int param_1);
-// FUNCTION ov45_0222C388: matching C (r2)
-#pragma force_active on
-void ov45_0222C388(int param_1)
+typedef struct UnkStruct_ov45_0222C388 {
+    BOOL unk_00;
+    s32 unk_04;
+    s32 unk_08[9];
+    u32 unk_2C[9];
+    u32 unk_50[9][3];
+    u32 unk_BC[9][3];
+    BOOL unk_128[9][3];
+} UnkStruct_ov45_0222C388;
 
-{
-    memset(param_1, 0, 0x194);
-    MIi_CpuClear32(0xffffffff, param_1 + 0x50, 0x6c);
-    return;
+void ov45_0222C388(UnkStruct_ov45_0222C388 *param0);
+// FUNCTION ov45_0222C388: matching C (twin)
+#pragma force_active on
+void ov45_0222C388(UnkStruct_ov45_0222C388 *param0) {
+    memset(param0, 0, sizeof(UnkStruct_ov45_0222C388));
+    MIi_CpuClear32(0xffffffff, param0->unk_50[0], sizeof(u32) * (9 * 3));
 }
 #pragma force_active reset

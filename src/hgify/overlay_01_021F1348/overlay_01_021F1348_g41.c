@@ -4,28 +4,36 @@
 #include "global.h"
 
 #include "error_handling.h"
-#include "ghidra_compat.h"
-typedef void code(void);
-void ov01_021F1804(int param_1, int param_2);
-// FUNCTION ov01_021F1804: matching C (r2)
+
+typedef struct UnkStruct_ov01_021F1804_Entry {
+    u32 unk_00;
+    void *unk_04;
+} UnkStruct_ov01_021F1804_Entry;
+
+typedef struct UnkStruct_ov01_021F1804 {
+    u8 unk_00[4];
+    u16 unk_04;
+    u8 unk_06[0x16];
+    UnkStruct_ov01_021F1804_Entry *unk_1C;
+} UnkStruct_ov01_021F1804;
+
+void ov01_021F1804(UnkStruct_ov01_021F1804 *param0, u32 param1);
+// FUNCTION ov01_021F1804: matching C (twin)
 #pragma force_active on
-void ov01_021F1804(int param_1, int param_2)
+void ov01_021F1804(UnkStruct_ov01_021F1804 *param0, u32 param1) {
+    u32 v0 = param0->unk_04;
+    UnkStruct_ov01_021F1804_Entry *v1 = param0->unk_1C;
 
-{
-    uint uVar1;
-    int *piVar2;
-
-    uVar1 = (uint) * (ushort *)(param_1 + 4);
-    piVar2 = *(int **)(param_1 + 0x1c);
     do {
-        if (*piVar2 == param_2) {
-            *piVar2 = 0xf;
+        if (v1->unk_00 == param1) {
+            v1->unk_00 = 0xf;
             return;
         }
-        piVar2 = piVar2 + 2;
-        uVar1 = uVar1 - 1;
-    } while (uVar1 != 0);
+
+        v1++;
+        v0--;
+    } while (v0);
+
     GF_AssertFail();
-    return;
 }
 #pragma force_active reset

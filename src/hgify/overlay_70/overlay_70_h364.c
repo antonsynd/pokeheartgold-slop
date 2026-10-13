@@ -3,22 +3,28 @@
 #pragma thumb on
 #include "global.h"
 
-#include "ghidra_compat.h"
 #include "unk_0202DB34.h"
-typedef int code();
-#define SEXT24(x) ((int)(unsigned short)(x))
-undefined4 ov70_02240D54(undefined4 *param_1);
-// FUNCTION ov70_02240D54: matching C (v1)
+
+typedef struct UnkStruct_ov70_02240D54_PlayerData {
+    UnkStruct_0202DB34 *globalTrade;
+} UnkStruct_ov70_02240D54_PlayerData;
+
+typedef struct UnkStruct_ov70_02240D54 {
+    UnkStruct_ov70_02240D54_PlayerData *playerData;
+    u8 unk_04[0x32];
+    u16 isPokemonListed;
+} UnkStruct_ov70_02240D54;
+
+BOOL ov70_02240D54(UnkStruct_ov70_02240D54 *appState);
+// FUNCTION ov70_02240D54: matching C (twin)
 #pragma force_active on
-undefined4 ov70_02240D54(undefined4 *param_1)
-
-{
-    int iVar1;
-
-    iVar1 = sub_0202DB54(*(undefined4 *)*param_1);
-    if ((iVar1 == 0) && (*(unsigned short *)((int)param_1 + 0x36) != 0)) {
-        return 1;
+BOOL ov70_02240D54(UnkStruct_ov70_02240D54 *appState) {
+    if (sub_0202DB54(appState->playerData->globalTrade) == FALSE) {
+        if (appState->isPokemonListed) {
+            return TRUE;
+        }
     }
-    return 0;
+
+    return FALSE;
 }
 #pragma force_active reset

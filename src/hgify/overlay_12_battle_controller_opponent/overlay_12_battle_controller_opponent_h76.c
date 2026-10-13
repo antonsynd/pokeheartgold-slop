@@ -9,27 +9,25 @@
 #include "sys_task.h"
 #include "sys_task_api.h"
 // clang-format on
+
+typedef struct UnkStruct_ov12_02259944 {
+    BattleSystem *battleSys;
+    u8 unk_04[0x10];
+    u8 step;
+    u8 frameCount;
+    u8 fadeStep;
+} UnkStruct_ov12_02259944;
+
 void ov12_02260668(SysTask *task, void *data);
-typedef struct unk_02259944Struct {
-    BattleSystem *unk0;
-    u8 unk4;
-    u8 unk5;
-    u8 filler[14];
-    u8 unk14;
-    u8 unk15;
-    u8 unk16;
-    u8 dummy;
-} unk_02259944Struct;
-// FUNCTION ov12_02259944: matching C (dm1)
+// FUNCTION ov12_02259944: matching C (twin)
 #pragma force_active on
-void ov12_02259944(BattleSystem *arg0) {
-    unk_02259944Struct *data;
-    data = Heap_Alloc(HEAP_ID_BATTLE, sizeof(unk_02259944Struct));
-    data->unk0 = arg0;
-    data->unk14 = 0;
-    data->unk15 = 0;
-    data->unk16 = 0;
-    SysTask_CreateOnMainQueue(ov12_02260668, data, 0);
-    return;
+void ov12_02259944(BattleSystem *battleSys) {
+    UnkStruct_ov12_02259944 *uiSetupTaskData = (UnkStruct_ov12_02259944 *)Heap_Alloc(HEAP_ID_BATTLE, sizeof(UnkStruct_ov12_02259944));
+    uiSetupTaskData->battleSys = battleSys;
+    uiSetupTaskData->step = 0;
+    uiSetupTaskData->frameCount = 0;
+    uiSetupTaskData->fadeStep = 0;
+
+    SysTask_CreateOnMainQueue(ov12_02260668, uiSetupTaskData, 0);
 }
 #pragma force_active reset

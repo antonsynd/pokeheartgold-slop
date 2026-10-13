@@ -4,25 +4,27 @@
 #include "global.h"
 
 #include "bg_window.h"
-#include "ghidra_compat.h"
-typedef int code();
-void ov40_022393F4(int param_1);
-// FUNCTION ov40_022393F4: matching C (r2)
+
+typedef struct UnkStruct_ov40_022393F4_Inner {
+    u8 filler_000[0x84];
+    Window unk_84[2];
+} UnkStruct_ov40_022393F4_Inner;
+
+typedef struct UnkStruct_ov40_022393F4 {
+    u8 filler_000[0x860];
+    UnkStruct_ov40_022393F4_Inner *unk_860;
+} UnkStruct_ov40_022393F4;
+
+void ov40_022393F4(UnkStruct_ov40_022393F4 *param0);
+// FUNCTION ov40_022393F4: matching C (twin)
 #pragma force_active on
-void ov40_022393F4(int param_1)
+void ov40_022393F4(UnkStruct_ov40_022393F4 *param0) {
+    UnkStruct_ov40_022393F4_Inner *v0 = param0->unk_860;
+    int v2;
 
-{
-    int iVar1;
-    int iVar2;
-
-    iVar1 = 0;
-    iVar2 = *(int *)(param_1 + 0x860) + 0x84;
-    do {
-        ClearWindowTilemapAndCopyToVram(iVar2);
-        RemoveWindow(iVar2);
-        iVar1 = iVar1 + 1;
-        iVar2 = iVar2 + 0x10;
-    } while (iVar1 < 2);
-    return;
+    for (v2 = 0; v2 < 2; v2++) {
+        ClearWindowTilemapAndCopyToVram(&v0->unk_84[v2]);
+        RemoveWindow(&v0->unk_84[v2]);
+    }
 }
 #pragma force_active reset

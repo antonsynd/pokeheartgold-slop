@@ -4,24 +4,34 @@
 #include "global.h"
 
 #include "error_handling.h"
-#include "ghidra_compat.h"
-typedef int code();
-void ov89_0225AF7C(int param_1, int param_2);
-// FUNCTION ov89_0225AF7C: matching C (r2)
+
+typedef struct UnkStruct_ov89_0225AF7C {
+    u8 unk_000[0x53C];
+    struct {
+        u8 unk_00;
+        u8 unk_01;
+        u8 unk_02;
+        u8 unk_03;
+    } unk_53C[0x100];
+} UnkStruct_ov89_0225AF7C;
+
+// FUNCTION ov89_0225AF7C: matching C (twin)
 #pragma force_active on
-void ov89_0225AF7C(int param_1, int param_2)
+void ov89_0225AF7C(UnkStruct_ov89_0225AF7C *param0, int param1) {
+    int v0;
 
-{
-    int iVar1;
-
-    if (param_2 != 0xff) {
-        iVar1 = *(byte *)(param_1 + 0x53d + param_2 * 4) - 1;
-        if (iVar1 < 0) {
-            GF_AssertFail();
-            iVar1 = 0;
-        }
-        *(char *)(param_1 + 0x53d + param_2 * 4) = (char)iVar1;
+    if (param1 == 0xff) {
+        return;
     }
-    return;
+
+    v0 = param0->unk_53C[param1].unk_01;
+    v0--;
+
+    if (v0 < 0) {
+        GF_AssertFail();
+        v0 = 0;
+    }
+
+    param0->unk_53C[param1].unk_01 = v0;
 }
 #pragma force_active reset

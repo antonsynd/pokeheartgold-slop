@@ -3,27 +3,28 @@
 #pragma thumb on
 #include "global.h"
 
-#include "ghidra_compat.h"
 #include "heap.h"
 #include "sprite.h"
-typedef void code(void);
-void ov90_0225B690(undefined4 *param_1);
-// FUNCTION ov90_0225B690: matching C (r2)
+
+typedef struct UnkStruct_ov90_0225B690 {
+    void *unk_00;
+    u8 pad_04[4];
+    Sprite *unk_08[15];
+} UnkStruct_ov90_0225B690;
+
+// FUNCTION ov90_0225B690: matching C (twin)
 #pragma force_active on
-void ov90_0225B690(undefined4 *param_1)
+void ov90_0225B690(UnkStruct_ov90_0225B690 *param0) {
+    {
+        int v0;
 
-{
-    int iVar1;
-    undefined4 *puVar2;
+        for (v0 = 0; v0 < (5 * 3); v0++) {
+            Sprite_Delete(param0->unk_08[v0]);
+        }
+    }
 
-    iVar1 = 0;
-    puVar2 = param_1;
-    do {
-        Sprite_Delete(puVar2[2]);
-        iVar1 = iVar1 + 1;
-        puVar2 = puVar2 + 1;
-    } while (iVar1 < 0xf);
-    Heap_Free(*param_1);
-    return;
+    {
+        Heap_Free(param0->unk_00);
+    }
 }
 #pragma force_active reset

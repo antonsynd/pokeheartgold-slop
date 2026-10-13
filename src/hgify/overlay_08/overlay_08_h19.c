@@ -3,23 +3,30 @@
 #pragma thumb on
 #include "global.h"
 
-#include "ghidra_compat.h"
 #include "item.h"
-typedef void code(void);
-undefined4 ov08_0221D840(undefined4, undefined4);
-undefined4 ov08_0221C9A4(int *param_1);
-// FUNCTION ov08_0221C9A4: matching C (r2)
+
+typedef struct UnkStruct_ov08_0221C9A4_Context {
+    u8 unk_00[0xC];
+    u32 heapID;
+    u8 unk_10[0x12];
+    u16 selectedBattleBagItem;
+} UnkStruct_ov08_0221C9A4_Context;
+
+typedef struct UnkStruct_ov08_0221C9A4 {
+    UnkStruct_ov08_0221C9A4_Context *context;
+} UnkStruct_ov08_0221C9A4;
+
+void ov08_0221D840(UnkStruct_ov08_0221C9A4 *battleParty, int screen);
+
+// FUNCTION ov08_0221C9A4: matching C (twin)
 #pragma force_active on
-undefined4 ov08_0221C9A4(int *param_1)
+u8 ov08_0221C9A4(UnkStruct_ov08_0221C9A4 *battleParty) {
+    ov08_0221D840(battleParty, 5);
 
-{
-    int iVar1;
-
-    ov08_0221D840(param_1, 5);
-    iVar1 = GetItemAttr(*(undefined2 *)(*param_1 + 0x22), 0x25, *(undefined4 *)(*param_1 + 0xc));
-    if (iVar1 != 0) {
+    if (GetItemAttr(battleParty->context->selectedBattleBagItem, 0x25, battleParty->context->heapID) != FALSE) {
         return 0x18;
     }
+
     return 0x15;
 }
 #pragma force_active reset

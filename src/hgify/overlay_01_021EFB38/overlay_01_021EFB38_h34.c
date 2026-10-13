@@ -3,25 +3,24 @@
 #pragma thumb on
 #include "global.h"
 
-#include "ghidra_compat.h"
 #include "sprite.h"
 #include "unk_0200A090.h"
-typedef void code(void);
-void ov01_021F05F4(undefined4 *param_1);
-// FUNCTION ov01_021F05F4: matching C (r2)
+
+typedef struct UnkStruct_ov01_021F05F4 {
+    SpriteList *unk_00;
+    u8 pad_04[0x12C - 0x04];
+    GF_2DGfxResMan *unk_12C[4];
+} UnkStruct_ov01_021F05F4;
+
+// FUNCTION ov01_021F05F4: matching C (twin)
 #pragma force_active on
-void ov01_021F05F4(undefined4 *param_1)
+void ov01_021F05F4(UnkStruct_ov01_021F05F4 *param0) {
+    int v0;
 
-{
-    int iVar1;
+    SpriteList_Delete(param0->unk_00);
 
-    SpriteList_Delete(*param_1);
-    iVar1 = 0;
-    do {
-        Destroy2DGfxResObjMan(param_1[0x4b]);
-        iVar1 = iVar1 + 1;
-        param_1 = param_1 + 1;
-    } while (iVar1 < 4);
-    return;
+    for (v0 = 0; v0 < 4; v0++) {
+        Destroy2DGfxResObjMan(param0->unk_12C[v0]);
+    }
 }
 #pragma force_active reset

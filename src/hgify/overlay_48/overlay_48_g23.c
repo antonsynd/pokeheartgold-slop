@@ -4,23 +4,24 @@
 #include "global.h"
 
 #include "filesystem.h"
-#include "ghidra_compat.h"
 #include "vram_transfer_manager.h"
-typedef int code();
-undefined4 ov48_02259724();
-undefined4 ov48_02259650();
-undefined4 ov48_02259788();
-void ov48_022594A8(int param_1);
-// FUNCTION ov48_022594A8: matching C (r2)
-#pragma force_active on
-void ov48_022594A8(int param_1)
 
-{
-    NARC_Delete(*(undefined4 *)(param_1 + 0x144));
+typedef struct UnkStruct_ov48_022594A8 {
+    u8 unk_000[0x144];
+    NARC *unk_144;
+} UnkStruct_ov48_022594A8;
+
+void ov48_02259650(UnkStruct_ov48_022594A8 *param0);
+void ov48_02259724(UnkStruct_ov48_022594A8 *param0);
+void ov48_02259788(UnkStruct_ov48_022594A8 *param0);
+void ov48_022594A8(UnkStruct_ov48_022594A8 *param0);
+// FUNCTION ov48_022594A8: matching C (twin)
+#pragma force_active on
+void ov48_022594A8(UnkStruct_ov48_022594A8 *param0) {
+    NARC_Delete(param0->unk_144);
     GF_DestroyVramTransferManager();
-    ov48_02259650(param_1);
-    ov48_02259724(param_1);
-    ov48_02259788(param_1);
-    return;
+    ov48_02259650(param0);
+    ov48_02259724(param0);
+    ov48_02259788(param0);
 }
 #pragma force_active reset
