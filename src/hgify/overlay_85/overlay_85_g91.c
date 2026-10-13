@@ -2,10 +2,8 @@
 #pragma warning_errors off
 #pragma thumb on
 #include "global.h"
-extern void *Camera_New(u32 heapId);
-extern void Camera_Init_FromTargetDistanceAndAngle(void *target, int distance, void *angle, u16 perspective, u32 a, u32 b, void *camera);
-extern void Camera_SetLookAtCamUp(void *up, void *camera);
-extern void Camera_SetStaticPtr(void *camera);
+
+#include "camera.h"
 void ov85_021E7424(u8 *p);
 // FUNCTION ov85_021E7424: matching C (r0)
 #pragma force_active on
@@ -26,12 +24,12 @@ void ov85_021E7424(u8 *p) {
     *(int *)(v0 + 4) = 0x444;
 
     w = *(u32 *)(v0 + 4);
-    Camera_Init_FromTargetDistanceAndAngle(v0 + 8, *(int *)(p + 0xd0c), v0 + 0x14, (u16)w, 0, 1, *(void **)(v0 + 0x1c));
+    Camera_Init_FromTargetDistanceAndAngle((VecFx32 *)(v0 + 8), *(int *)(p + 0xd0c), (const CameraAngle *)(v0 + 0x14), (u16)w, 0, 1, *(Camera **)(v0 + 0x1c));
 
     up[0] = 0;
     up[1] = 0x1000;
     up[2] = 0;
-    Camera_SetLookAtCamUp(up, *(void **)(v0 + 0x1c));
+    Camera_SetLookAtCamUp((VecFx32 *)up, *(Camera **)(v0 + 0x1c));
     Camera_SetStaticPtr(*(void **)(v0 + 0x1c));
 }
 #pragma force_active reset

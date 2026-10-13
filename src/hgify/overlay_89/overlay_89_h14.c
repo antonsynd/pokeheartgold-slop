@@ -2,9 +2,11 @@
 #pragma require_prototypes off
 #pragma warning_errors off
 #pragma thumb on
+#include "global.h"
+
+#include "camera.h"
 #include "ghidra_compat.h"
 typedef int code();
-undefined4 Camera_Init_FromTargetDistanceAndAngle();
 typedef struct {
     unsigned int w[3];
 } Ov89Arr3;
@@ -21,12 +23,12 @@ void ov89_02259B00(int param_1) {
     undefined4 uVar2;
 
     a = ov89_0225C9C0;
-    *(undefined4 *)(param_1 + 0xcc) = Camera_New(0x7d);
-    Camera_Init_FromTargetDistanceAndAngle(&a, 0x7c000, &ov89_0225C9B8, 0xfa4, 0, 0, *(undefined4 *)(param_1 + 0xcc));
-    Camera_SetPerspectiveClippingPlane(0x1000, 0x384000, *(undefined4 *)(param_1 + 0xcc));
-    Camera_SetStaticPtr(*(undefined4 *)(param_1 + 0xcc));
-    uVar1 = Camera_GetPerspectiveAngle(*(undefined4 *)(param_1 + 0xcc));
-    uVar2 = Camera_GetDistance(*(undefined4 *)(param_1 + 0xcc));
+    *(undefined4 *)(param_1 + 0xcc) = (undefined4)Camera_New(0x7d);
+    Camera_Init_FromTargetDistanceAndAngle((VecFx32 *)&a, 0x7c000, (const CameraAngle *)&ov89_0225C9B8, 0xfa4, 0, 0, (Camera *)*(undefined4 *)(param_1 + 0xcc));
+    Camera_SetPerspectiveClippingPlane(0x1000, 0x384000, (Camera *)*(undefined4 *)(param_1 + 0xcc));
+    Camera_SetStaticPtr((Camera *)*(undefined4 *)(param_1 + 0xcc));
+    uVar1 = Camera_GetPerspectiveAngle((Camera *)*(undefined4 *)(param_1 + 0xcc));
+    uVar2 = Camera_GetDistance((Camera *)*(undefined4 *)(param_1 + 0xcc));
     sub_02020E10(uVar1, uVar2, 0x1555, &uStack_20, &uStack_24);
     *(undefined4 *)(param_1 + 0xd0) = uStack_20;
     *(undefined4 *)(param_1 + 0xd4) = uStack_24;

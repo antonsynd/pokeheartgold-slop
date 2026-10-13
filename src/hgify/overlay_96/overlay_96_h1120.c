@@ -2,17 +2,17 @@
 #pragma warning_errors off
 #pragma thumb on
 #include "global.h"
-int IsPaletteFadeFinished(void);
-void BeginNormalPaletteFade(int a, int b, int c, int d, int e, int f, int heapID);
-void PokeathlonCourse_SetStateField07(void *course, int v);
-int *PokeathlonCourse_GetHeapAllocPtr4(void);
+
+#include "pokeathlon/pokeathlon.h"
+
+#include "error_handling.h"
+#include "screen_fade.h"
 int ov96_021E637C(void *course);
-void GF_AssertFail(void);
 int ov96_02215984(void *course, u8 *state);
 // FUNCTION ov96_02215984: matching C (agent14)
 #pragma force_active on
 int ov96_02215984(void *course, u8 *state) {
-    int *heap = PokeathlonCourse_GetHeapAllocPtr4();
+    int *heap = PokeathlonCourse_GetHeapAllocPtr4((PokeathlonCourseData *)course);
 
     switch (*state) {
     case 0:

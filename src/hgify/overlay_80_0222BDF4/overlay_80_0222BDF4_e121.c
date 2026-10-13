@@ -4,13 +4,16 @@
 // clang-format off
 #include "global.h"
 #include "heap.h"
+#include "frontier/frontier_script_context.h"
+#include "frontier/frontier.h"
+#include "screen_fade.h"
 // clang-format on
 typedef struct FrontierScriptManager {
     void *frontier;
 } FrontierScriptManager;
-typedef struct FrontierScriptContext {
+typedef struct FrontierScriptContext_ov80_0222DCF0 {
     FrontierScriptManager *scriptMan;
-} FrontierScriptContext;
+} FrontierScriptContext_ov80_0222DCF0;
 typedef struct {
     u8 filler_00[8];
     int state;
@@ -18,14 +21,12 @@ typedef struct {
     u32 prevData;
 } UnkStruct_ov80_0222DCF0;
 typedef int (*UnkFn_ov80_0222DCF0)(void *, void *, u32);
-extern void *Frontier_GetData(void *frontier);
-extern void Frontier_SetData(void *frontier, u32 data);
-extern void sub_0200FBF4(int screen, int color);
 extern UnkFn_ov80_0222DCF0 ov80_0223B9EC[];
 // FUNCTION ov80_0222DCF0: matching C (agent11)
 #pragma force_active on
 BOOL ov80_0222DCF0(FrontierScriptContext *ctx) {
-    UnkStruct_ov80_0222DCF0 *work = Frontier_GetData(ctx->scriptMan->frontier);
+    FrontierScriptContext_ov80_0222DCF0 *c = (FrontierScriptContext_ov80_0222DCF0 *)ctx;
+    UnkStruct_ov80_0222DCF0 *work = Frontier_GetData(c->scriptMan->frontier);
     UnkFn_ov80_0222DCF0 fn;
     int result;
 
@@ -35,7 +36,7 @@ BOOL ov80_0222DCF0(FrontierScriptContext *ctx) {
     if (result == 0) {
         sub_0200FBF4(0, 0);
         sub_0200FBF4(1, 0);
-        Frontier_SetData(ctx->scriptMan->frontier, work->prevData);
+        Frontier_SetData(c->scriptMan->frontier, work->prevData);
         Heap_Free(work);
     }
 

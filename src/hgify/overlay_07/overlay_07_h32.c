@@ -2,10 +2,13 @@
 #pragma warning_errors off
 #pragma thumb on
 #pragma thumb on
+#include "global.h"
+
 #include "ghidra_compat.h"
+#include "heap.h"
+#include "overlay_manager.h"
+#include "sys_task_api.h"
 typedef int code();
-void SysTask_Destroy(void *t);
-void Heap_Free(void *p);
 typedef struct SB {
     char pad[0x90];
     unsigned short cnt;

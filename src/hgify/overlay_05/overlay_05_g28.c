@@ -2,6 +2,10 @@
 #pragma warning_errors off
 #pragma thumb on
 #include "global.h"
+
+#include "gf_gfx_planes.h"
+#include "sprite_system.h"
+#include "vram_transfer_manager.h"
 typedef struct {
     u32 w[8];
 } Ov05ArrA;
@@ -10,13 +14,6 @@ typedef struct {
 } Ov05ArrB;
 extern Ov05ArrA ov05_0221EBE0;
 extern Ov05ArrB ov05_0221EAAC;
-void GF_CreateVramTransferManager(u32 size, u32 heap);
-void *SpriteSystem_Alloc(u32 heapId);
-void *SpriteManager_New(void *sys);
-void SpriteSystem_Init(void *sys, void *a, void *b, int n);
-void SpriteSystem_InitSprites(void *sys, void *mgr, u32 x);
-void SpriteSystem_InitManagerWithCapacities(void *sys, void *mgr, u32 x);
-void GfGfx_EngineATogglePlanes(u8 a, u8 b);
 void ov05_0221CD24(int *param_1, u32 param_2, u32 param_3);
 // FUNCTION ov05_0221CD24: matching C (agent16)
 #pragma force_active on
@@ -30,7 +27,7 @@ void ov05_0221CD24(int *param_1, u32 param_2, u32 param_3) {
     a = ov05_0221EBE0;
     b = ov05_0221EAAC;
     b.w[0] = param_3;
-    SpriteSystem_Init((void *)param_1[100], &a, &b, 0x10);
+    SpriteSystem_Init((void *)param_1[100], (const struct OamManagerParam *)&a, (const struct OamCharTransferParam *)&b, 0x10);
     SpriteSystem_InitSprites((void *)param_1[100], (void *)param_1[101], param_3);
     SpriteSystem_InitManagerWithCapacities((void *)param_1[100], (void *)param_1[101], param_2);
     GfGfx_EngineATogglePlanes(0x10, 1);

@@ -2,12 +2,12 @@
 #pragma warning_errors off
 #pragma thumb on
 #include "global.h"
-void ov18_021F118C(void *app, int a1, int a2);
-void ov18_021F11C0(void *app, int a1, int a2);
-void ov18_021F38F0(void *app, s32 idx, u16 value);
+
+#include "application/pokedex/pokedex_internal.h"
+void ov18_021F38F0(struct PokedexAppData *app, int idx, u16 value);
 // FUNCTION ov18_021F38F0: matching C (v1)
 #pragma force_active on
-void ov18_021F38F0(void *app, s32 idx, u16 value) {
+void ov18_021F38F0(struct PokedexAppData *app, int idx, u16 value) {
     u32 total;
     u32 hi;
     u32 lo;

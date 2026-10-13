@@ -2,6 +2,8 @@
 #pragma warning_errors off
 #pragma thumb on
 #include "global.h"
+
+#include "yes_no_prompt.h"
 typedef struct {
     u32 unk_00;
     u32 unk_04;
@@ -13,8 +15,6 @@ typedef struct {
     u8 unk_12_hi : 4;
     u8 unk_13;
 } UnkTemplate_ov41_02247D64;
-void YesNoPrompt_Reset(void *prompt);
-void YesNoPrompt_InitFromTemplate(void *prompt, const UnkTemplate_ov41_02247D64 *tmpl);
 void ov41_02247D34(u8 *param_1, int arg);
 void ov41_02247D64(u8 *param_1);
 // FUNCTION ov41_02247D64: matching C (agent16)
@@ -31,7 +31,7 @@ void ov41_02247D64(u8 *param_1) {
     tmpl.unk_11 = 4;
     tmpl.unk_12_lo = *(u32 *)(param_1 + 0x6ec);
     YesNoPrompt_Reset(*(void **)(param_1 + 0x6b8));
-    YesNoPrompt_InitFromTemplate(*(void **)(param_1 + 0x6b8), &tmpl);
+    YesNoPrompt_InitFromTemplate(*(void **)(param_1 + 0x6b8), (const YesNoPromptTemplate *)&tmpl);
     ov41_02247D34(param_1, 2);
     *(vu16 *)0x04000008 = 2 | (*(vu16 *)0x04000008 & ~3);
     *(vu16 *)0x0400000A = 1 | (*(vu16 *)0x0400000A & ~3);

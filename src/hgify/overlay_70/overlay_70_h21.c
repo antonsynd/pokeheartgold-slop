@@ -2,9 +2,11 @@
 #pragma warning_errors off
 #pragma thumb on
 #include "global.h"
-extern void DoScheduledBgGpuUpdates(void *bgConfig);
-extern void GF_RunVramTransferTasks(void);
-extern void OamManager_ApplyAndResetBuffers(void);
+
+#include "bg_window.h"
+#include "field_move.h"
+#include "unk_0200B150.h"
+#include "vram_transfer_manager.h"
 typedef void (*Ov70Cb)(void *, void *);
 void ov70_022387AC(u8 *work);
 // FUNCTION ov70_022387AC: matching C (agent11)
