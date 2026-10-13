@@ -97,7 +97,7 @@ void ov49_0225B2F0(UnkStruct_ov49_0225B_Win *param0, UnkStruct_ov49_0225B_Msg *p
 void ov49_0225B308(UnkStruct_ov49_0225B_Msg *param0, u32 heapID);
 void ov49_0225B308(UnkStruct_ov49_0225B_Msg *param0, u32 heapID);
 void ov49_0225B35C(UnkStruct_ov49_0225B_Msg *param0);
-// FUNCTION ov49_0225B35C: matching C (r2)
+// FUNCTION ov49_0225B35C: matching C (twin)
 #pragma force_active on
 void ov49_0225B35C(UnkStruct_ov49_0225B_Msg *param0) {
     int v0;

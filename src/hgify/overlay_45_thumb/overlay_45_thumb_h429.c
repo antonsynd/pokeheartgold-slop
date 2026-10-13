@@ -3,21 +3,22 @@
 #pragma thumb on
 #include "global.h"
 
-#include "error_handling.h"
-#include "ghidra_compat.h"
-typedef int code();
-undefined4 ov45_02230434();
-extern int _022577C0;
-void ov45_0222F484(undefined4 param_1);
-// FUNCTION ov45_0222F484: matching C (r2)
-#pragma force_active on
-void ov45_0222F484(undefined4 param_1)
+#include "assert.h"
 
-{
-    if (_022577C0 == 0) {
-        GF_AssertFail();
-    }
-    ov45_02230434(_022577C0 + 0x6a0, param_1);
-    return;
+typedef struct UnkStruct_ov45_0222F484 {
+    u8 unk_000[0x6A0];
+    u8 unk_6A0[1];
+} UnkStruct_ov45_0222F484;
+
+extern UnkStruct_ov45_0222F484 *_022577C0;
+
+BOOL ov45_02230434(void *param0, s32 param1);
+BOOL ov45_0222F484(s32 param0);
+// FUNCTION ov45_0222F484: matching C (twin)
+#pragma force_active on
+BOOL ov45_0222F484(s32 param0) {
+    GF_ASSERT(_022577C0 != NULL);
+
+    return ov45_02230434(&_022577C0->unk_6A0, param0);
 }
 #pragma force_active reset

@@ -69,17 +69,17 @@ void ov49_0225F018(UnkStruct_Ov49_0225EEAC_Manager *a0, u32 a1);
 UnkStruct_Ov49_0225EEAC_Manager *ov49_0225EEAC(void *a0, enum HeapID heapId);
 UnkStruct_Ov49_0225EEAC_Manager *ov49_0225EEAC(void *a0, enum HeapID heapId);
 void ov49_0225EEF8(UnkStruct_Ov49_0225EEAC_Manager *a0);
-// FUNCTION ov49_0225EEF8: matching C (r2)
+// FUNCTION ov49_0225EEF8: matching C (twin)
 #pragma force_active on
-void ov49_0225EEF8(UnkStruct_Ov49_0225EEAC_Manager *a0) {
-    int i;
+void ov49_0225EEF8(UnkStruct_Ov49_0225EEAC_Manager *param0) {
+    int v0;
 
-    for (i = 0; i < 20; i++) {
-        ov49_0225F074(&a0->unk8[i]);
+    for (v0 = 0; v0 < 20; v0++) {
+        ov49_0225F074(&param0->unk8[v0]);
     }
 
-    ov49_0225F074(&a0->unk2D8);
-    Heap_Free(a0);
+    ov49_0225F074(&param0->unk2D8);
+    Heap_Free(param0);
 }
 #pragma force_active reset
 void ov49_0225EF24(UnkStruct_Ov49_0225EEAC_Manager *a0);

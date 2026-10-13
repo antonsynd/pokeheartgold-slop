@@ -5,26 +5,24 @@
 
 #include "field/map_prop_animation.h"
 
-#include "ghidra_compat.h"
+#include "field_system.h"
 #include "heap.h"
 #include "task.h"
-typedef void code(void);
-undefined4 ov01_021E9ABC(undefined4 param_1);
-// FUNCTION ov01_021E9ABC: matching C (r2)
+BOOL ov01_021E9ABC(TaskManager *task);
+// FUNCTION ov01_021E9ABC: matching C (twin)
 #pragma force_active on
-undefined4 ov01_021E9ABC(undefined4 param_1)
+BOOL ov01_021E9ABC(TaskManager *task) {
+    BOOL finished;
+    FieldSystem *fieldSystem = TaskManager_GetFieldSystem(task);
+    u8 *taskEnv = TaskManager_GetEnvironment(task);
 
-{
-    int iVar1;
-    undefined1 *puVar2;
+    finished = MapPropOneShotAnimationManager_IsAnimationLoopFinished(fieldSystem->mapPropOneShotAnimationManager, *taskEnv);
 
-    iVar1 = (int)TaskManager_GetFieldSystem((TaskManager *)param_1);
-    puVar2 = (undefined1 *)TaskManager_GetEnvironment(param_1);
-    iVar1 = MapPropOneShotAnimationManager_IsAnimationLoopFinished(*(undefined4 *)(iVar1 + 0x58), *puVar2);
-    if (iVar1 != 0) {
-        Heap_Free(puVar2);
-        return 1;
+    if (finished) {
+        Heap_Free(taskEnv);
+        return TRUE;
     }
-    return 0;
+
+    return FALSE;
 }
 #pragma force_active reset

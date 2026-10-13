@@ -3,22 +3,19 @@
 #pragma thumb on
 #include "global.h"
 
+#include "constants/heap.h"
+
 #include "obj_char_transfer.h"
 #include "obj_pltt_transfer.h"
-typedef struct {
-    u32 a;
-    u32 b;
-    u32 c;
-    u32 d;
-} ObjTransferParams;
-extern const ObjTransferParams ov65_0221FD48;
-// FUNCTION ov65_0221D3B8: matching C (agent6)
+extern const ObjCharTransferTemplate ov65_0221FD48;
+void ov65_0221D3B8(void);
+// FUNCTION ov65_0221D3B8: matching C (twin)
 #pragma force_active on
 void ov65_0221D3B8(void) {
-    ObjTransferParams local = ov65_0221FD48;
+    ObjCharTransferTemplate ctTemplate = ov65_0221FD48;
 
-    ObjCharTransfer_Init((struct ObjCharTransferTemplate *)&local);
-    ObjPlttTransfer_Init(0x14, 0x1a);
+    ObjCharTransfer_Init(&ctTemplate);
+    ObjPlttTransfer_Init(20, HEAP_ID_26);
     ObjCharTransfer_ClearBuffers();
     ObjPlttTransfer_Reset();
 }

@@ -82,15 +82,17 @@ int ov01_021F9EC4(UnkStruct_Ov01_021F944C *arg0, int arg1);
 int ov01_021F9EEC(UnkStruct_Ov01_021F944C *arg0, int arg1);
 int ov01_021F9EEC(UnkStruct_Ov01_021F944C *arg0, int arg1);
 int ov01_021F9F14(UnkStruct_Ov01_021F944C *arg0, int arg1);
-// FUNCTION ov01_021F9F14: matching C (r0)
+// FUNCTION ov01_021F9F14: matching C (twin)
 #pragma force_active on
-int ov01_021F9F14(UnkStruct_Ov01_021F944C *arg0, int arg1) {
-    if (ov01_021F9C5C(arg0, arg1) == 1) {
+int ov01_021F9F14(UnkStruct_Ov01_021F944C *param0, int param1) {
+    if (ov01_021F9C5C(param0, param1) == 1) {
         return 0;
     }
-    if (ov01_021F9CA8(arg0, arg1) == 1) {
+
+    if (ov01_021F9CA8(param0, param1) == 1) {
         return 1;
     }
+
     return 2;
 }
 #pragma force_active reset

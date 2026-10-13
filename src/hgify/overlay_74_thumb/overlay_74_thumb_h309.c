@@ -3,28 +3,25 @@
 #pragma thumb on
 #include "global.h"
 
-#include "ghidra_compat.h"
 #include "palPark_migration.h"
 #include "save.h"
 #include "save_arrays.h"
 #include "system.h"
-typedef int code();
-undefined4 ov74_02233F68();
-void ov74_02231930(int param_1);
-// FUNCTION ov74_02231930: matching C (r2)
+
+typedef struct UnkStruct_ov74_02231930 {
+    u8 unk_00[0x10];
+    SaveData *saveData;
+} UnkStruct_ov74_02231930;
+
+u32 ov74_02233F68(void);
+// FUNCTION ov74_02231930: matching C (twin)
 #pragma force_active on
-void ov74_02231930(int param_1)
+void ov74_02231930(UnkStruct_ov74_02231930 *migrator) {
+    MigratedPokemon *transferData = Save_MigratedPokemon_Get(migrator->saveData);
 
-{
-    undefined4 uVar1;
-    undefined4 uVar2;
-
-    uVar1 = Save_MigratedPokemon_Get(*(undefined4 *)(param_1 + 0x10));
-    uVar2 = ov74_02233F68();
-    MigratedPokemon_RecordMigration(uVar1, uVar2);
+    MigratedPokemon_RecordMigration(transferData, ov74_02233F68());
     sub_0201A728(4);
-    SaveGameNormal(*(undefined4 *)(param_1 + 0x10));
+    SaveGameNormal(migrator->saveData);
     sub_0201A738(4);
-    return;
 }
 #pragma force_active reset

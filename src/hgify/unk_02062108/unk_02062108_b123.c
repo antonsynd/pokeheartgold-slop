@@ -3,27 +3,27 @@
 #pragma thumb on
 #include "global.h"
 
-#include "ghidra_compat.h"
 #include "map_object.h"
 #include "overlay_01_022001E4.h"
 #include "unk_020689C8.h"
-typedef int code();
-undefined4 MapObjectMovementCmd075_Step1(undefined4 param_1);
-// FUNCTION MapObjectMovementCmd075_Step1: matching C (r2)
+
+typedef struct UnkStruct_MapObjectMovementCmd075_Step1 {
+    u32 unk_00;
+    int unk_04;
+} UnkStruct_MapObjectMovementCmd075_Step1;
+
+BOOL MapObjectMovementCmd075_Step1(LocalMapObject *mapObj);
+// FUNCTION MapObjectMovementCmd075_Step1: matching C (twin)
 #pragma force_active on
-undefined4 MapObjectMovementCmd075_Step1(undefined4 param_1)
+BOOL MapObjectMovementCmd075_Step1(LocalMapObject *mapObj) {
+    UnkStruct_MapObjectMovementCmd075_Step1 *data = (UnkStruct_MapObjectMovementCmd075_Step1 *)sub_0205F3E4(mapObj);
 
-{
-    int iVar1;
-    int iVar2;
-
-    iVar1 = (int)sub_0205F3E4((LocalMapObject *)param_1);
-    iVar2 = ov01_022003F4(*(undefined4 *)(iVar1 + 4));
-    if (iVar2 == 1) {
-        sub_02068B48(*(undefined4 *)(iVar1 + 4));
-        MapObject_IncrementMovementStep((LocalMapObject *)param_1);
-        return 1;
+    if (ov01_022003F4(data->unk_04) == 1) {
+        sub_02068B48(data->unk_04);
+        MapObject_IncrementMovementStep(mapObj);
+        return TRUE;
     }
-    return 0;
+
+    return FALSE;
 }
 #pragma force_active reset

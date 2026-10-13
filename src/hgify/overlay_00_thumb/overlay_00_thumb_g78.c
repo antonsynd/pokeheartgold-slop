@@ -3,23 +3,26 @@
 #pragma thumb on
 #include "global.h"
 
-#include "ghidra_compat.h"
-typedef int code();
-typedef struct Unk {
-    int a;
-    int manager;
-} Unk;
-extern Unk _0221A684;
-extern int VCT_HandleData(u8 data, int b, int c);
-// FUNCTION ov00_021E77A4: matching C (agent2)
+typedef struct UnkStruct_ov00_021E77A4 {
+    int unk_00;
+    void *manager;
+} UnkStruct_ov00_021E77A4;
+
+extern UnkStruct_ov00_021E77A4 _0221A684;
+extern int VCT_HandleData(u8 data, void *buffer, int size);
+
+BOOL ov00_021E77A4(int id, void *buffer, int size);
+// FUNCTION ov00_021E77A4: matching C (twin)
 #pragma force_active on
-int ov00_021E77A4(int param_1, int p2, int p3) {
-    if (_0221A684.manager == 0) {
-        return 0;
+BOOL ov00_021E77A4(int id, void *buffer, int size) {
+    if (_0221A684.manager == NULL) {
+        return FALSE;
     }
-    if (VCT_HandleData((u8)param_1, p2, p3) != 0) {
-        return 1;
+
+    if (VCT_HandleData((u8)id, buffer, size)) {
+        return TRUE;
     }
-    return 0;
+
+    return FALSE;
 }
 #pragma force_active reset

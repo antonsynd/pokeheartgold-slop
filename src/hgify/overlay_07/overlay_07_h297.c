@@ -4,22 +4,24 @@
 #include "global.h"
 
 #include "error_handling.h"
-#include "ghidra_compat.h"
-typedef void code(void);
-undefined4 ov07_02222440(int *param_1);
-// FUNCTION ov07_02222440: matching C (r2)
-#pragma force_active on
-undefined4 ov07_02222440(int *param_1)
 
-{
-    if (param_1 == (int *)0x0) {
-        GF_AssertFail();
+typedef struct UnkStruct_ov07_02222440_t {
+    s32 value;
+    s32 data[4];
+} UnkStruct_ov07_02222440;
+
+// FUNCTION ov07_02222440: matching C (twin)
+#pragma force_active on
+BOOL ov07_02222440(UnkStruct_ov07_02222440 *ctx) {
+    GF_ASSERT(ctx);
+
+    if (ctx->data[0]) {
+        ctx->value += ctx->data[1];
+        ctx->data[0]--;
+
+        return TRUE;
     }
-    if (param_1[1] != 0) {
-        *param_1 = *param_1 + param_1[2];
-        param_1[1] = param_1[1] + -1;
-        return 1;
-    }
-    return 0;
+
+    return FALSE;
 }
 #pragma force_active reset

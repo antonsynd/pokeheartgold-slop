@@ -2,16 +2,19 @@
 #pragma warning_errors off
 #pragma thumb on
 #include "global.h"
-typedef struct {
-    u8 pad0[0x40];
-    u8 f40[0x40];
-    int f80;
-} Unk;
-extern void ov102_021EC37C(void *a, int b, int c, int d, int e, int f);
-// FUNCTION ov102_021EBEA4: matching C (agent7)
+
+typedef struct UnkStruct_ov102_021EBEA4 {
+    u8 unk_00[0x40];
+    u8 unk_40[0x40];
+    int unk_80;
+} UnkStruct_ov102_021EBEA4;
+
+void ov102_021EC37C(void *a, int b, int c, int d, int e, int f);
+void ov102_021EBEA4(UnkStruct_ov102_021EBEA4 *param0);
+// FUNCTION ov102_021EBEA4: matching C (twin)
 #pragma force_active on
-void ov102_021EBEA4(Unk *p) {
-    p->f80 = 0;
-    ov102_021EC37C(p->f40, 4, 0x3f, 0x7c, 0, 0xc);
+void ov102_021EBEA4(UnkStruct_ov102_021EBEA4 *param0) {
+    param0->unk_80 = 0;
+    ov102_021EC37C(&param0->unk_40, GX_BLEND_PLANEMASK_BG2, 0x3F, 124, 0, (6 * 2));
 }
 #pragma force_active reset

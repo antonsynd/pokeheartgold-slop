@@ -3,26 +3,26 @@
 #pragma thumb on
 #include "global.h"
 
-#include "ghidra_compat.h"
 #include "unk_020379A0.h"
-typedef int code();
-undefined4 ov37_021E68AC();
-undefined4 ov37_021E7844();
-undefined4 ov37_021E76A0();
-undefined4 ov37_021E6E04(int param_1, undefined4 param_2);
-// FUNCTION ov37_021E6E04: matching C (r2)
+
+typedef struct UnkStruct_ov37_021E6E04 {
+    u8 unk_00[0x30];
+    void *unk_30;
+} UnkStruct_ov37_021E6E04;
+
+BOOL ov37_021E76A0(void *param0);
+void ov37_021E7844(UnkStruct_ov37_021E6E04 *param0, int param1);
+void ov37_021E68AC(UnkStruct_ov37_021E6E04 *param0);
+
+// FUNCTION ov37_021E6E04: matching C (twin)
 #pragma force_active on
-undefined4 ov37_021E6E04(int param_1, undefined4 param_2)
-
-{
-    int iVar1;
-
-    iVar1 = ov37_021E76A0(*(undefined4 *)(param_1 + 0x30));
-    if (iVar1 != 0) {
-        ov37_021E7844(param_1, 0x11);
+int ov37_021E6E04(UnkStruct_ov37_021E6E04 *param0, int param1) {
+    if (ov37_021E76A0(param0->unk_30)) {
+        ov37_021E7844(param0, 17);
         sub_02037AC0(200);
     }
-    ov37_021E68AC(param_1);
-    return param_2;
+
+    ov37_021E68AC(param0);
+    return param1;
 }
 #pragma force_active reset

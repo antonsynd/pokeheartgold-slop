@@ -3,28 +3,17 @@
 #pragma thumb on
 #include "global.h"
 
-#include "error_handling.h"
-#include "ghidra_compat.h"
-typedef int code();
-int sub_02061E00(int *param_1, int param_2);
-// FUNCTION sub_02061E00: matching C (r2)
+#include "assert.h"
+// FUNCTION sub_02061E00: matching C (twin)
 #pragma force_active on
-int sub_02061E00(int *param_1, int param_2)
+int sub_02061E00(const int *param0, int param1) {
+    int i = 0;
 
-{
-    int iVar1;
-    int iVar2;
+    while (param0[i] != param1) {
+        i++;
+    }
 
-    iVar2 = 0;
-    iVar1 = *param_1;
-    while (param_2 != iVar1) {
-        param_1 = param_1 + 1;
-        iVar2 = iVar2 + 1;
-        iVar1 = *param_1;
-    }
-    if (iVar2 == 0) {
-        GF_AssertFail();
-    }
-    return iVar2;
+    GF_ASSERT(i);
+    return i;
 }
 #pragma force_active reset

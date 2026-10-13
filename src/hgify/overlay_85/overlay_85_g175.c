@@ -160,25 +160,17 @@ BOOL ov85_021E86B0(UnkStruct_Ov85_021E5FE0 *a0, int a1);
 void ov85_021E86CC(UnkStruct_Ov85_021E5FE0 *a0, int a1);
 void ov85_021E86CC(UnkStruct_Ov85_021E5FE0 *a0, int a1);
 int ov85_021E8720(UnkStruct_Ov85_021E5FE0 *a0);
-// FUNCTION ov85_021E8720: matching C (r2)
+// FUNCTION ov85_021E8720: matching C (twin)
 #pragma force_active on
-int ov85_021E8720(UnkStruct_Ov85_021E5FE0 *a0) {
-    int count = 0;
-    u32 bits = a0->unkD0->unk46;
+int ov85_021E8720(UnkStruct_Ov85_021E5FE0 *param0) {
+    int v0 = 0;
+    u32 v1 = param0->unkD0->unk46;
 
-    while (bits) {
-        count += (bits & 0x1);
-        bits >>= 1;
+    while (v1) {
+        v0 += (v1 & 0x1);
+        v1 >>= 1;
     }
 
-    return count;
+    return v0;
 }
 #pragma force_active reset
-void ov85_021E8740(UnkStruct_Ov85_021E5FE0 *a0, int a1, int a2);
-void ov85_021E8740(UnkStruct_Ov85_021E5FE0 *a0, int a1, int a2);
-void ov85_021E8748(UnkStruct_Ov85_021E5FE0 *a0, const UnkStruct_Ov85_Octet *a1);
-void ov85_021E8748(UnkStruct_Ov85_021E5FE0 *a0, const UnkStruct_Ov85_Octet *a1);
-BOOL ov85_021E8764(UnkStruct_Ov85_021E5FE0 *a0, fx32 a1, int a2);
-BOOL ov85_021E8764(UnkStruct_Ov85_021E5FE0 *a0, fx32 a1, int a2);
-BOOL ov85_021E87F0(Party *a0);
-BOOL ov85_021E87F0(Party *a0);

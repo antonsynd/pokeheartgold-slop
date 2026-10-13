@@ -4,18 +4,26 @@
 #include "global.h"
 
 #include "bg_window.h"
-#include "ghidra_compat.h"
-typedef int code();
-undefined4 ov87_021E7FD4();
-void ov87_021E79A0(int param_1);
-// FUNCTION ov87_021E79A0: matching C (r2)
-#pragma force_active on
-void ov87_021E79A0(int param_1)
 
-{
-    ov87_021E7FD4(*(undefined4 *)(param_1 + 0x340), 0);
-    FillWindowPixelBuffer(param_1 + 0xfc, 0);
-    ScheduleWindowCopyToVram(param_1 + 0xfc);
-    return;
+struct ScratchOffCardsAppSprite;
+void ov87_021E7FD4(struct ScratchOffCardsAppSprite *appSprite, int draw);
+
+enum {
+    SCRATCH_WINDOW_START_CARD = 10,
+};
+
+typedef struct UnkStruct_ov87_021E79A0 {
+    u8 filler_00[0x5c];
+    Window windows[SCRATCH_WINDOW_START_CARD + 1];
+    u8 filler_10c[0x340 - 0x10c];
+    struct ScratchOffCardsAppSprite *centerMessageBoxSprite;
+} UnkStruct_ov87_021E79A0;
+
+// FUNCTION ov87_021E79A0: matching C (twin)
+#pragma force_active on
+void ov87_021E79A0(UnkStruct_ov87_021E79A0 *app) {
+    ov87_021E7FD4(app->centerMessageBoxSprite, FALSE);
+    FillWindowPixelBuffer(&app->windows[SCRATCH_WINDOW_START_CARD], 0);
+    ScheduleWindowCopyToVram(&app->windows[SCRATCH_WINDOW_START_CARD]);
 }
 #pragma force_active reset

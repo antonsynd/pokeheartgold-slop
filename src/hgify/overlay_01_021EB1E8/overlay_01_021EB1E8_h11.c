@@ -4,23 +4,16 @@
 #include "global.h"
 
 #include "gf_gfx_loader.h"
-#include "ghidra_compat.h"
 #include "heap.h"
 #include "unk_0200A090.h"
 typedef void code(void);
-void ov01_021EB578(undefined4 param_1, undefined4 param_2, undefined4 param_3);
-// FUNCTION ov01_021EB578: matching C (r2)
+// FUNCTION ov01_021EB578: matching C (twin)
 #pragma force_active on
-void ov01_021EB578(undefined4 param_1, undefined4 param_2, undefined4 param_3)
+void ov01_021EB578(GF_2DGfxResHeader *param0, int param1, int param2) {
+    void *v0 = GF2DGfxResHeader_GetByIndex(param0, param1);
+    void *v1 = GfGfxLoader_LoadFromNarc(0x3f, param2, 0, 4, 1);
 
-{
-    undefined4 uVar1;
-    undefined4 uVar2;
-
-    uVar1 = (undefined4)GF2DGfxResHeader_GetByIndex((GF_2DGfxResHeader *)param_1, (int)param_2);
-    uVar2 = GfGfxLoader_LoadFromNarc(0x3f, param_3, 0, 4, 1);
-    GF2DGfxResHeader_Init(uVar2, uVar1, 4);
-    Heap_Free(uVar2);
-    return;
+    GF2DGfxResHeader_Init(v1, v0, 4);
+    Heap_Free(v1);
 }
 #pragma force_active reset

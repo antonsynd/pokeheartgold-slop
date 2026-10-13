@@ -3,28 +3,28 @@
 #pragma thumb on
 #include "global.h"
 
-#include "ghidra_compat.h"
 #include "heap.h"
 #include "pm_string.h"
-typedef int code();
-extern undefined _020F60DC;
-undefined4 *ListMenuCursorNew(undefined4 param_1);
-// FUNCTION ListMenuCursorNew: matching C (r3)
+
+typedef struct UnkStruct_ListMenuCursorNew {
+    u32 color;
+    String *string;
+} UnkStruct_ListMenuCursorNew;
+
+extern const u16 _020F60DC[];
+
+UnkStruct_ListMenuCursorNew *ListMenuCursorNew(enum HeapID heapID);
+// FUNCTION ListMenuCursorNew: matching C (twin)
 #pragma force_active on
-undefined4 *
-ListMenuCursorNew(undefined4 param_1)
+UnkStruct_ListMenuCursorNew *ListMenuCursorNew(enum HeapID heapID) {
+    UnkStruct_ListMenuCursorNew *arrow = Heap_Alloc(heapID, sizeof(UnkStruct_ListMenuCursorNew));
 
-{
-    undefined4 *puVar1;
-    undefined4 uVar2;
-
-    puVar1 = (undefined4 *)Heap_Alloc(param_1, 8);
-    if (puVar1 != (undefined4 *)0x0) {
-        *puVar1 = 0x1020f;
-        uVar2 = String_New(4, param_1);
-        puVar1[1] = uVar2;
-        CopyU16ArrayToString(uVar2, &_020F60DC);
+    if (arrow) {
+        arrow->color = 0x1020F;
+        arrow->string = String_New(4, heapID);
+        CopyU16ArrayToString(arrow->string, _020F60DC);
     }
-    return puVar1;
+
+    return arrow;
 }
 #pragma force_active reset

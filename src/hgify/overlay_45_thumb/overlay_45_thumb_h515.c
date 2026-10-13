@@ -98,14 +98,14 @@ void ov45_02230978(UnkStruct_ov45_02230920 *arg0, BOOL arg1);
 BOOL ov45_02230994(const UnkStruct_ov45_02230920 *arg0);
 BOOL ov45_02230994(const UnkStruct_ov45_02230920 *arg0);
 const UnkStruct_ov45_02254C48 *ov45_0223099C(u32 arg0);
-// FUNCTION ov45_0223099C: matching C (r0)
+// FUNCTION ov45_0223099C: matching C (twin)
 #pragma force_active on
-const UnkStruct_ov45_02254C48 *ov45_0223099C(u32 arg0) {
-    int i;
+const UnkStruct_ov45_02254C48 *ov45_0223099C(u32 param0) {
+    int v0;
 
-    for (i = 0; i < 20; i++) {
-        if (ov45_02254C48[i].unk_00 == arg0) {
-            return &ov45_02254C48[i];
+    for (v0 = 0; v0 < 20; v0++) {
+        if (ov45_02254C48[v0].unk_00 == param0) {
+            return &ov45_02254C48[v0];
         }
     }
 
@@ -113,48 +113,3 @@ const UnkStruct_ov45_02254C48 *ov45_0223099C(u32 arg0) {
     return NULL;
 }
 #pragma force_active reset
-u32 ov45_022309C4(BOOL arg0, u32 arg1);
-u32 ov45_022309C4(BOOL arg0, u32 arg1);
-fx32 ov45_022309D0(u32 arg0, u32 arg1, u32 arg2);
-fx32 ov45_022309D0(u32 arg0, u32 arg1, u32 arg2);
-void ov45_022309E8(UnkStruct_ov45_02230A44 *arg0, NARC *arg1, u32 arg2, enum HeapID heapID);
-void ov45_022309E8(UnkStruct_ov45_02230A44 *arg0, NARC *arg1, u32 arg2, enum HeapID heapID);
-void ov45_02230A44(UnkStruct_ov45_02230A44 *arg0);
-void ov45_02230A44(UnkStruct_ov45_02230A44 *arg0);
-void ov45_02230A4C(UnkStruct_ov45_02230A44 *arg0, u32 arg1);
-void ov45_02230A4C(UnkStruct_ov45_02230A44 *arg0, u32 arg1);
-u32 ov45_02230A58(const UnkStruct_ov45_02230A44 *arg0);
-u32 ov45_02230A58(const UnkStruct_ov45_02230A44 *arg0);
-void ov45_02230A5C(UnkStruct_ov45_02230A44 *arg0, UnkStruct_020181B0 *arg1);
-void ov45_02230A5C(UnkStruct_ov45_02230A44 *arg0, UnkStruct_020181B0 *arg1);
-UnkStruct_ov45_02230920 *ov45_02230A6C(UnkStruct_ov45_02230A6C *arg0);
-UnkStruct_ov45_02230920 *ov45_02230A6C(UnkStruct_ov45_02230A6C *arg0);
-BOOL ov45_02230AA4(const UnkStruct_ov45_02230920 *arg0);
-BOOL ov45_02230AA4(const UnkStruct_ov45_02230920 *arg0);
-void ov45_02230AB4(UnkStruct_ov45_02230920 *arg0);
-void ov45_02230AB4(UnkStruct_ov45_02230920 *arg0);
-void ov45_02230AC0(UnkStruct_ov45_02230920 *arg0);
-void ov45_02230AC0(UnkStruct_ov45_02230920 *arg0);
-void ov45_02230ACC(UnkStruct_ov45_02230920 *arg0);
-void ov45_02230B64(UnkStruct_ov45_02230920 *arg0);
-void ov45_02230B64(UnkStruct_ov45_02230920 *arg0);
-void ov45_02230B8C(UnkStruct_ov45_02230920 *arg0);
-void ov45_02230B8C(UnkStruct_ov45_02230920 *arg0);
-void ov45_02230BFC(UnkStruct_ov45_02230920 *arg0);
-void ov45_02230BFC(UnkStruct_ov45_02230920 *arg0);
-void ov45_02230C40(UnkStruct_ov45_02230920 *arg0);
-void ov45_02230C40(UnkStruct_ov45_02230920 *arg0);
-void ov45_02230CB0(UnkStruct_ov45_02230920 *arg0);
-void ov45_02230CB0(UnkStruct_ov45_02230920 *arg0);
-void ov45_02230CD8(UnkStruct_ov45_02230920 *arg0);
-void ov45_02230CD8(UnkStruct_ov45_02230920 *arg0);
-void ov45_02230D20(UnkStruct_ov45_02230920 *arg0);
-void ov45_02230D20(UnkStruct_ov45_02230920 *arg0);
-void ov45_02230D5C(UnkStruct_ov45_02230920 *arg0);
-void ov45_02230D5C(UnkStruct_ov45_02230920 *arg0);
-BOOL ov45_02230DC4(u32 arg0);
-BOOL ov45_02230DC4(u32 arg0);
-void ov45_02230DF4(UnkStruct_ov45_02230920 *arg0);
-void ov45_02230DF4(UnkStruct_ov45_02230920 *arg0);
-void ov45_02230E28(UnkStruct_ov45_02230920 *arg0);
-void ov45_02230E28(UnkStruct_ov45_02230920 *arg0);

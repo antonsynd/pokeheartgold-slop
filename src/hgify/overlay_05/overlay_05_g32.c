@@ -4,7 +4,6 @@
 #include "global.h"
 
 #include "bg_window.h"
-#include "ghidra_compat.h"
 #include "palette.h"
 #include "sprite_system.h"
 #include "vram_transfer_manager.h"
@@ -12,14 +11,22 @@ extern u32 SDK_AUTOLOAD_DTCM_START[];
 #define HW_DTCM           ((u32)SDK_AUTOLOAD_DTCM_START)
 #define HW_DTCM_SYSRV     (HW_DTCM + 0x00003fc0)
 #define HW_INTR_CHECK_BUF (HW_DTCM_SYSRV + 0x38)
-void ov05_0221CE88(int param_1);
-// FUNCTION ov05_0221CE88: matching C (agent10)
+
+typedef struct UnkStruct_ov05_0221CE88 {
+    u8 unk_00[0x08];
+    PaletteData *unk_08;
+    BgConfig *unk_0C;
+} UnkStruct_ov05_0221CE88;
+
+void ov05_0221CE88(UnkStruct_ov05_0221CE88 *param0);
+// FUNCTION ov05_0221CE88: matching C (twin)
 #pragma force_active on
-void ov05_0221CE88(int param_1) {
-    DoScheduledBgGpuUpdates(*(undefined4 *)(param_1 + 0xc));
-    PaletteData_PushTransparentBuffers(*(undefined4 *)(param_1 + 8));
+void ov05_0221CE88(UnkStruct_ov05_0221CE88 *param0) {
+    DoScheduledBgGpuUpdates(param0->unk_0C);
+    PaletteData_PushTransparentBuffers(param0->unk_08);
     GF_RunVramTransferTasks();
     SpriteSystem_TransferOam();
+
     *(vu32 *)HW_INTR_CHECK_BUF |= (u32)1UL;
 }
 #pragma force_active reset

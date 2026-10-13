@@ -80,43 +80,9 @@ int ov07_0221FAF8(UnkStruct_ov07_0221FA38 *a0, int a1);
 int ov07_0221FB04(UnkStruct_ov07_0221FA38 *a0, int a1);
 int ov07_0221FB04(UnkStruct_ov07_0221FA38 *a0, int a1);
 void ov07_0221FB30(UnkStruct_ov07_0221FA38 *a0, int a1);
-// FUNCTION ov07_0221FB30: matching C (r2)
+// FUNCTION ov07_0221FB30: matching C (twin)
 #pragma force_active on
-void ov07_0221FB30(UnkStruct_ov07_0221FA38 *a0, int a1) {
-    BG_LoadCharTilesData(a0->unkC4, a1, a0->unkC0->unk110, 0x10000, 0);
+void ov07_0221FB30(UnkStruct_ov07_0221FA38 *system, int layer) {
+    BG_LoadCharTilesData(system->unkC4, (u8)layer, system->unkC0->unk110, 0x10000, 0);
 }
 #pragma force_active reset
-void ov07_0221FB58(UnkStruct_ov07_0221FA38 *a0);
-void ov07_0221FB58(UnkStruct_ov07_0221FA38 *a0);
-BOOL ov07_0221FB78(UnkStruct_ov07_0221FA38 *a0, int a1);
-BOOL ov07_0221FB78(UnkStruct_ov07_0221FA38 *a0, int a1);
-int ov07_0221FB7C(int a0, int a1);
-int ov07_0221FB7C(int a0, int a1);
-UnkStruct_ov07_0221FB90 *ov07_0221FB90(BattleSystem *a0, enum HeapID heapId, int a2);
-UnkStruct_ov07_0221FB90 *ov07_0221FB90(BattleSystem *a0, enum HeapID heapId, int a2);
-UnkStruct_ov07_0221FB90 *ov07_0221FDFC(BattleSystem *a0, enum HeapID heapId);
-UnkStruct_ov07_0221FB90 *ov07_0221FDFC(BattleSystem *a0, enum HeapID heapId);
-void ov07_0221FE08(UnkStruct_ov07_0221FB90 *a0);
-void ov07_0221FE08(UnkStruct_ov07_0221FB90 *a0);
-void ov07_0221FE3C(UnkStruct_ov07_0221FB90 *a0, int a1);
-void ov07_0221FE3C(UnkStruct_ov07_0221FB90 *a0, int a1);
-int ov07_0221FE70(UnkStruct_ov07_0221FB90 *a0);
-int ov07_0221FE70(UnkStruct_ov07_0221FB90 *a0);
-void ov07_0221FE84(struct SPLEmitter *a0);
-void ov07_0221FE84(struct SPLEmitter *a0);
-struct SPLEmitter *ov07_0221FE88(enum HeapID heapId, int memberIdx, BOOL loadNow);
-struct SPLEmitter *ov07_0221FE88(enum HeapID heapId, int memberIdx, BOOL loadNow);
-struct SPLEmitter *ov07_0221FEB0(enum HeapID heapId, NarcId narcId, int memberIdx, BOOL loadNow);
-struct SPLEmitter *ov07_0221FEB0(enum HeapID heapId, NarcId narcId, int memberIdx, BOOL loadNow);
-void *ov07_0221FEDC(NARC *narc, int memberIdx, enum HeapID heapId);
-void *ov07_0221FEDC(NARC *narc, int memberIdx, enum HeapID heapId);
-struct SPLEmitter *ov07_0221FEE4(NARC *narc, enum HeapID heapId, int memberIdx, BOOL loadNow);
-struct SPLEmitter *ov07_0221FEE4(NARC *narc, enum HeapID heapId, int memberIdx, BOOL loadNow);
-struct SPLEmitter *ov07_0221FF18(struct SPLEmitter *ps, int resNo, int callbackId, void *arg);
-struct SPLEmitter *ov07_0221FF18(struct SPLEmitter *ps, int resNo, int callbackId, void *arg);
-void ov07_0221FF2C(struct SPLEmitter *ps);
-void ov07_0221FF2C(struct SPLEmitter *ps);
-s8 ov07_0221FF34(UnkStruct_ov07_0221FA38 *a0, int a1, int a2);
-s8 ov07_0221FF34(UnkStruct_ov07_0221FA38 *a0, int a1, int a2);
-void ov07_0221FF74(struct SPLEmitter *a0);
-void ov07_0221FF74(struct SPLEmitter *a0);

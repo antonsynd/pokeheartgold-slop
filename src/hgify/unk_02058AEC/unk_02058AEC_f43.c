@@ -101,7 +101,7 @@ void sub_0205A0A0(struct UnkStruct_02059E1C *param0);
 void sub_0205A0B4(struct UnkStruct_02059E1C *param0);
 void sub_0205A0B4(struct UnkStruct_02059E1C *param0);
 void sub_0205A114(struct UnkStruct_02059E1C *param0);
-// FUNCTION sub_0205A114: matching C (r0)
+// FUNCTION sub_0205A114: matching C (twin)
 #pragma force_active on
 void sub_0205A114(struct UnkStruct_02059E1C *param0) {
     if (!FieldSystem_TaskIsRunning(param0->fieldSystem)) {
@@ -112,13 +112,3 @@ void sub_0205A114(struct UnkStruct_02059E1C *param0) {
     }
 }
 #pragma force_active reset
-void sub_0205A144(struct UnkStruct_02059E1C *param0);
-void sub_0205A144(struct UnkStruct_02059E1C *param0);
-void sub_0205A1AC(struct UnkStruct_02059E1C *param0);
-void sub_0205A1AC(struct UnkStruct_02059E1C *param0);
-void sub_0205A1D4(struct UnkStruct_02059E1C *param0);
-void sub_0205A1D4(struct UnkStruct_02059E1C *param0);
-FieldSystem *sub_0205A1F0(struct UnkStruct_02059E1C *param0);
-FieldSystem *sub_0205A1F0(struct UnkStruct_02059E1C *param0);
-void *sub_0205A1F4(struct UnkStruct_02059E1C *param0, int param1);
-void *sub_0205A1F4(struct UnkStruct_02059E1C *param0, int param1);

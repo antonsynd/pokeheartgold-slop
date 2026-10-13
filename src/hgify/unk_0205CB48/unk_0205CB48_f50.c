@@ -3,31 +3,25 @@
 #pragma thumb on
 #include "global.h"
 
-#include "ghidra_compat.h"
 #include "map_object.h"
 #include "player_avatar.h"
 #include "unk_02062108.h"
-typedef int code();
-undefined4 sub_0205DE64();
-undefined4 sub_0205DE38(PlayerAvatar *param_1);
-// FUNCTION sub_0205DE38: matching C (r2)
+
+BOOL sub_0205DE64(int cmd);
+
+// FUNCTION sub_0205DE38: matching C (twin)
 #pragma force_active on
-undefined4 sub_0205DE38(PlayerAvatar *param_1)
+BOOL sub_0205DE38(PlayerAvatar *playerAvatar) {
+    LocalMapObject *mapObj = PlayerAvatar_GetMapObject(playerAvatar);
 
-{
-    undefined4 uVar1;
-    int iVar2;
+    if (MapObject_AreBitsSetForMovementScriptInit(mapObj) == TRUE) {
+        return TRUE;
+    }
 
-    uVar1 = PlayerAvatar_GetMapObject(param_1);
-    iVar2 = MapObject_AreBitsSetForMovementScriptInit((LocalMapObject *)uVar1);
-    if (iVar2 == 1) {
-        return 1;
+    if (sub_0205DE64(MapObject_GetMovementCommand(mapObj)) == TRUE) {
+        return TRUE;
     }
-    MapObject_GetMovementCommand((LocalMapObject *)uVar1);
-    iVar2 = sub_0205DE64();
-    if (iVar2 == 1) {
-        return 1;
-    }
-    return 0;
+
+    return FALSE;
 }
 #pragma force_active reset

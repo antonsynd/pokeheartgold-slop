@@ -3,19 +3,23 @@
 #pragma thumb on
 #include "global.h"
 
-#include "ghidra_compat.h"
 #include "heap.h"
 #include "sys_task_api.h"
-typedef int code();
-void ov102_021E94A4(int *param_1);
-// FUNCTION ov102_021E94A4: matching C (r2)
+typedef struct UnkStruct_ov102_021E94A4_Inner {
+    u8 pad_0000[0x8];
+    SysTask *unk_08[1];
+} UnkStruct_ov102_021E94A4_Inner;
+typedef struct UnkStruct_ov102_021E94A4 {
+    UnkStruct_ov102_021E94A4_Inner *unk_00;
+    u8 pad_0004[0x10 - 0x4];
+    int unk_10;
+} UnkStruct_ov102_021E94A4;
+void ov102_021E94A4(UnkStruct_ov102_021E94A4 *param0);
+// FUNCTION ov102_021E94A4: matching C (twin)
 #pragma force_active on
-void ov102_021E94A4(int *param_1)
-
-{
-    SysTask_Destroy(*(undefined4 *)(*param_1 + param_1[4] * 4 + 8));
-    *(undefined4 *)(*param_1 + param_1[4] * 4 + 8) = 0;
-    Heap_Free(param_1);
-    return;
+void ov102_021E94A4(UnkStruct_ov102_021E94A4 *param0) {
+    SysTask_Destroy(param0->unk_00->unk_08[param0->unk_10]);
+    param0->unk_00->unk_08[param0->unk_10] = NULL;
+    Heap_Free(param0);
 }
 #pragma force_active reset

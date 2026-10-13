@@ -3,26 +3,24 @@
 #pragma thumb on
 #include "global.h"
 
-#include "ghidra_compat.h"
 #include "unk_02018000.h"
-typedef int code();
-void ov89_0225B298(undefined4 param_1, int param_2);
-// FUNCTION ov89_0225B298: matching C (r2)
+
+typedef struct UnkStruct_ov89_0225B298 {
+    u8 unk_00[0x1C];
+    UnkStruct_020181B0 unk_1C;
+    UnkStruct_020181B0 unk_94[3];
+} UnkStruct_ov89_0225B298;
+
+void ov89_0225B298(void *param0, UnkStruct_ov89_0225B298 *param1);
+// FUNCTION ov89_0225B298: matching C (twin)
 #pragma force_active on
-void ov89_0225B298(undefined4 param_1, int param_2)
+void ov89_0225B298(void *param0, UnkStruct_ov89_0225B298 *param1) {
+    int v1;
 
-{
-    int iVar1;
-    int iVar2;
+    for (v1 = 0; v1 < 3; v1++) {
+        sub_020181EC(&param1->unk_94[v1]);
+    }
 
-    iVar1 = 0;
-    iVar2 = param_2 + 0x94;
-    do {
-        sub_020181EC(iVar2);
-        iVar1 = iVar1 + 1;
-        iVar2 = iVar2 + 0x78;
-    } while (iVar1 < 3);
-    sub_020181EC(param_2 + 0x1c);
-    return;
+    sub_020181EC(&param1->unk_1C);
 }
 #pragma force_active reset

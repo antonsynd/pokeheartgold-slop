@@ -4,19 +4,20 @@
 #include "global.h"
 
 #include "gf_gfx_planes.h"
-#include "ghidra_compat.h"
 #include "sprite.h"
-typedef int code();
-void ov70_02239304(int param_1);
-// FUNCTION ov70_02239304: matching C (r2)
-#pragma force_active on
-void ov70_02239304(int param_1)
 
-{
-    GfGfx_EngineATogglePlanes(1, 0);
-    GfGfx_EngineATogglePlanes(2, 0);
-    GfGfx_EngineATogglePlanes(4, 0);
-    Sprite_SetDrawFlag(*(undefined4 *)(param_1 + 0xdcc), 0);
-    return;
+typedef struct UnkStruct_ov70_02239304 {
+    u8 unk_000[0xDCC];
+    Sprite *cursorSprite;
+} UnkStruct_ov70_02239304;
+
+void ov70_02239304(UnkStruct_ov70_02239304 *param0);
+// FUNCTION ov70_02239304: matching C (twin)
+#pragma force_active on
+void ov70_02239304(UnkStruct_ov70_02239304 *param0) {
+    GfGfx_EngineATogglePlanes(GF_BG_LYR_MAIN_0_F, FALSE);
+    GfGfx_EngineATogglePlanes(GF_BG_LYR_MAIN_1_F, FALSE);
+    GfGfx_EngineATogglePlanes(GF_BG_LYR_MAIN_2_F, FALSE);
+    Sprite_SetDrawFlag(param0->cursorSprite, FALSE);
 }
 #pragma force_active reset

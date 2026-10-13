@@ -5,19 +5,14 @@
 
 #include "bg_window.h"
 #include "gf_gfx_planes.h"
-#include "ghidra_compat.h"
 typedef void code(void);
-void ov08_0221CF08(undefined4 param_1);
-// FUNCTION ov08_0221CF08: matching C (r2)
+// FUNCTION ov08_0221CF08: matching C (twin)
 #pragma force_active on
-void ov08_0221CF08(undefined4 param_1)
-
-{
+void ov08_0221CF08(BgConfig *battleParty) {
     GfGfx_EngineBTogglePlanes(0x1f, 0);
-    FreeBgTilemapBuffer(param_1, 4);
-    FreeBgTilemapBuffer(param_1, 5);
-    FreeBgTilemapBuffer(param_1, 6);
-    FreeBgTilemapBuffer(param_1, 7);
-    return;
+    FreeBgTilemapBuffer(battleParty, 4);
+    FreeBgTilemapBuffer(battleParty, 5);
+    FreeBgTilemapBuffer(battleParty, 6);
+    FreeBgTilemapBuffer(battleParty, 7);
 }
 #pragma force_active reset

@@ -6,12 +6,12 @@
 #include "obj_char_transfer.h"
 #include "obj_pltt_transfer.h"
 extern const ObjCharTransferTemplate ov70_02245208;
-// FUNCTION ov70_022388D0: matching C (agent6)
+// FUNCTION ov70_022388D0: matching C (twin)
 #pragma force_active on
 void ov70_022388D0(void) {
-    ObjCharTransferTemplate local = ov70_02245208;
+    ObjCharTransferTemplate template = ov70_02245208;
 
-    ObjCharTransfer_Init(&local);
+    ObjCharTransfer_Init(&template);
     ObjPlttTransfer_Init(0x14, 0x3d);
     ObjCharTransfer_ClearBuffers();
     ObjPlttTransfer_Reset();

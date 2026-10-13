@@ -4,20 +4,24 @@
 #include "global.h"
 
 #include "font.h"
-#include "ghidra_compat.h"
-typedef int code();
-int ov74_022319F8(int param_1, undefined4 param_2, uint param_3);
-// FUNCTION ov74_022319F8: matching C (r2)
+typedef struct UnkStruct_ov74_022319F8 {
+    u8 unk_00[0x10];
+    int unk_10;
+    u8 unk_14[4];
+    int unk_18;
+} UnkStruct_ov74_022319F8;
+int ov74_022319F8(UnkStruct_ov74_022319F8 *param0, String *param1, int param2);
+// FUNCTION ov74_022319F8: matching C (twin)
 #pragma force_active on
-int ov74_022319F8(int param_1, undefined4 param_2, uint param_3)
+int ov74_022319F8(UnkStruct_ov74_022319F8 *param0, String *param1, int param2) {
+    int v0, v1;
 
-{
-    int iVar1;
-
-    if ((param_3 & 1) != 0) {
-        iVar1 = FontID_String_GetWidth(1, param_2, 0);
-        return (*(int *)(param_1 + 0x10) * 8 - iVar1) / 2;
+    if (param2 & 0x1) {
+        v0 = FontID_String_GetWidth(1, param1, 0);
+        v1 = param0->unk_10 * 8;
+        return (v1 - v0) / 2;
+    } else {
+        return param0->unk_18;
     }
-    return *(int *)(param_1 + 0x18);
 }
 #pragma force_active reset

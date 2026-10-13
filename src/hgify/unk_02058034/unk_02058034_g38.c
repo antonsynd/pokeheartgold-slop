@@ -46,7 +46,6 @@ void sub_0205876C(void);
 void sub_020587E8(void);
 void sub_0205882C(void);
 void sub_02058854(void);
-void sub_02058870(void);
 void sub_020588A0(void);
 void sub_020588B4(void);
 void sub_020588F8(void);
@@ -71,8 +70,7 @@ void sub_0205882C(void);
 void sub_0205882C(void);
 void sub_02058854(void);
 void sub_02058854(void);
-void sub_02058870(void);
-// FUNCTION sub_02058870: matching C (r0)
+// FUNCTION sub_02058870: matching C (twin)
 #pragma force_active on
 void sub_02058870(void) {
     if (_021D41C8->timer != 0) {

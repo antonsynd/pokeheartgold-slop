@@ -3,23 +3,28 @@
 #pragma thumb on
 #include "global.h"
 
-#include "ghidra_compat.h"
 #include "render_window.h"
 #include "text.h"
-typedef int code();
-undefined4 ov70_0223DFF0(int param_1);
-// FUNCTION ov70_0223DFF0: matching C (r2)
+
+typedef struct UnkStruct_ov70_0223DFF0 {
+    u8 unk_00[0x2C];
+    int currentScreenInstruction;
+    int nextScreenInstruction;
+    u8 unk_34[0xBF0 - 0x34];
+    int textPrinter;
+    u8 unk_BF4[0x1158 - 0xBF4];
+    Window confirmationWindow;
+} UnkStruct_ov70_0223DFF0;
+
+int ov70_0223DFF0(UnkStruct_ov70_0223DFF0 *param0);
+// FUNCTION ov70_0223DFF0: matching C (twin)
 #pragma force_active on
-undefined4 ov70_0223DFF0(int param_1)
-
-{
-    int iVar1;
-
-    iVar1 = TextPrinterCheckActive(*(uint *)(param_1 + 0xbf0) & 0xff);
-    if (iVar1 == 0) {
-        ClearFrameAndWindow2(param_1 + 0x1158, 0);
-        *(undefined4 *)(param_1 + 0x2c) = *(undefined4 *)(param_1 + 0x30);
+int ov70_0223DFF0(UnkStruct_ov70_0223DFF0 *param0) {
+    if (TextPrinterCheckActive((u8)param0->textPrinter) == 0) {
+        ClearFrameAndWindow2(&param0->confirmationWindow, 0);
+        param0->currentScreenInstruction = param0->nextScreenInstruction;
     }
+
     return 3;
 }
 #pragma force_active reset

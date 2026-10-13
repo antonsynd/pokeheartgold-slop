@@ -3,27 +3,28 @@
 #pragma thumb on
 #include "global.h"
 
-#include "ghidra_compat.h"
 #include "heap.h"
 #include "sys_task.h"
 #include "sys_task_api.h"
-typedef int code();
-undefined4 ov71_02248CF4();
-void ov71_02248E04(int param_1);
-// FUNCTION ov71_02248E04: matching C (r2)
+
+typedef struct UnkStruct_ov71_02248E04 {
+    u8 filler_00[0x168];
+    SysTask **taskHandle;
+    SysTask *particleTask;
+} UnkStruct_ov71_02248E04;
+
+void ov71_02248CF4(SysTask *task);
+
+// FUNCTION ov71_02248E04: matching C (twin)
 #pragma force_active on
-void ov71_02248E04(int param_1)
+void ov71_02248E04(SysTask *task) {
+    if (task) {
+        UnkStruct_ov71_02248E04 *tbsState = SysTask_GetData(task);
 
-{
-    int iVar1;
-
-    if (param_1 != 0) {
-        iVar1 = (int)SysTask_GetData((SysTask *)param_1);
-        **(undefined4 **)(iVar1 + 0x168) = 0;
-        ov71_02248CF4(*(undefined4 *)(iVar1 + 0x16c));
-        Heap_Free(iVar1);
-        SysTask_Destroy((SysTask *)param_1);
+        *(tbsState->taskHandle) = NULL;
+        ov71_02248CF4(tbsState->particleTask);
+        Heap_Free(tbsState);
+        SysTask_Destroy(task);
     }
-    return;
 }
 #pragma force_active reset

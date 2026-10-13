@@ -3,22 +3,29 @@
 #pragma thumb on
 #include "global.h"
 
-#include "ghidra_compat.h"
+#include "battle/battle.h"
+
 #include "heap.h"
 #include "sys_task_api.h"
-typedef void code(void);
-undefined4 ov12_0226430C(undefined4, undefined4, undefined4);
-undefined4 ov12_02262F24(undefined4, undefined4, undefined4);
-void ov12_0225E1D4(undefined4 param_1, undefined4 *param_2, undefined4 param_3, undefined4 param_4);
-// FUNCTION ov12_0225E1D4: matching C (r4)
-#pragma force_active on
-void ov12_0225E1D4(undefined4 param_1, undefined4 *param_2, undefined4 param_3, undefined4 param_4)
 
-{
-    ov12_02262F24(*param_2, *(undefined1 *)((int)param_2 + 9), 4);
-    ov12_0226430C(*param_2, *(undefined1 *)((int)param_2 + 9), *(undefined1 *)(param_2 + 2));
-    Heap_Free(param_2);
-    SysTask_Destroy(param_1);
-    return;
+typedef struct UnkStruct_ov12_0225E1D4 {
+    BattleSystem *battleSys;
+    void *healthbox;
+    u8 command;
+    u8 battler;
+} UnkStruct_ov12_0225E1D4;
+
+void ov12_02262F24(BattleSystem *battleSys, int battler, int command);
+void ov12_0226430C(BattleSystem *battleSys, int battler, int command);
+// FUNCTION ov12_0225E1D4: matching C (twin)
+#pragma force_active on
+void ov12_0225E1D4(SysTask *task, void *data) {
+    UnkStruct_ov12_0225E1D4 *commandSetData = data;
+
+    ov12_02262F24(commandSetData->battleSys, commandSetData->battler, 4);
+    ov12_0226430C(commandSetData->battleSys, commandSetData->battler, commandSetData->command);
+
+    Heap_Free(data);
+    SysTask_Destroy(task);
 }
 #pragma force_active reset

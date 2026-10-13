@@ -3,23 +3,24 @@
 #pragma thumb on
 #include "global.h"
 
-#include "ghidra_compat.h"
-typedef int code();
-undefined4 ov74_02231054();
-undefined4 ov74_02231460();
-void ov74_02230A4C(undefined4 param_1, uint param_2, undefined4 param_3);
-// FUNCTION ov74_02230A4C: matching C (r2)
+typedef struct UnkStruct_ov74_02230A4C {
+    u8 unk_00[0x34];
+    u16 parentMaxSize;
+} UnkStruct_ov74_02230A4C;
+
+const UnkStruct_ov74_02230A4C *ov74_02231054(void);
+void ov74_02231460(void *param0, u32 param1, u16 param2);
+void ov74_02230A4C(const void *param0, u32 param1, u16 param2);
+// FUNCTION ov74_02230A4C: matching C (twin)
 #pragma force_active on
-void ov74_02230A4C(undefined4 param_1, uint param_2, undefined4 param_3)
+void ov74_02230A4C(const void *param0, u32 param1, u16 param2) {
+    const UnkStruct_ov74_02230A4C *v0 = ov74_02231054();
 
-{
-    int iVar1;
-
-    iVar1 = ov74_02231054();
-    if (param_2 <= *(ushort *)(iVar1 + 0x34)) {
-        DC_FlushRange(param_1, param_2);
-        ov74_02231460(param_1, param_2, param_3);
+    if (param1 > v0->parentMaxSize) {
+        return;
     }
-    return;
+
+    DC_FlushRange((void *)param0, param1);
+    ov74_02231460((void *)param0, param1, param2);
 }
 #pragma force_active reset

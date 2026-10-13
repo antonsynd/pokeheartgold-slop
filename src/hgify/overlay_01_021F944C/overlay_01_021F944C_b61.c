@@ -6,7 +6,6 @@
 #include "gf_3d_loader.h"
 #include "map_object.h"
 #include "overlay_01_021F944C.h"
-#define UNK_OV01_021F944C_NO_SPRITE 0xFFFF
 typedef struct UnkStruct_Ov01_021F944C {
     int unk0;
     int unk4;
@@ -28,117 +27,21 @@ typedef struct UnkStruct_Ov01_021F944C {
     void *unkF8;
     void *unkFC;
 } UnkStruct_Ov01_021F944C;
-extern int ov01_021F9D88(UnkStruct_Ov01_021F944C *arg0, int arg1);
-extern int ov01_021F9E9C(UnkStruct_Ov01_021F944C *arg0, int arg1);
-extern int ov01_021F9B38(UnkStruct_Ov01_021F944C *arg0, int arg1);
-extern int ov01_021F9B84(UnkStruct_Ov01_021F944C *arg0, int arg1);
-extern int ov01_021F9C5C(UnkStruct_Ov01_021F944C *arg0, int arg1);
-extern int ov01_021F9CA8(UnkStruct_Ov01_021F944C *arg0, int arg1);
-extern int ov01_021F9DA4(UnkStruct_Ov01_021F944C *arg0, int arg1);
-extern void ov01_021F9974(UnkStruct_Ov01_021F944C *arg0, int arg1);
-extern void ov01_021F99D0(UnkStruct_Ov01_021F944C *arg0, int arg1);
-extern void ov01_021F9A44(UnkStruct_Ov01_021F944C *arg0, int arg1);
-extern void ov01_021F9BAC(UnkStruct_Ov01_021F944C *arg0, int arg1);
-extern void ov01_021F9CD0(UnkStruct_Ov01_021F944C *arg0, int arg1);
-extern void ov01_021F9E04(UnkStruct_Ov01_021F944C *arg0, int arg1);
-extern void ov01_021F9BD4(MapObjectManager *manager, UnkStruct_Ov01_021F944C *arg1);
-extern void ov01_021F9CF8(MapObjectManager *manager, UnkStruct_Ov01_021F944C *arg1);
-extern void ov01_021F9E30(MapObjectManager *manager, UnkStruct_Ov01_021F944C *arg1);
-extern void ov01_021FA4F0(UnkStruct_Ov01_021F944C *arg0, int arg1);
-extern void ov01_021FA6A4(UnkStruct_Ov01_021F944C *arg0, int arg1);
-extern void ov01_021FC588(void *arg0, int arg1);
-extern u16 *ov01_021F9318(LocalMapObject *object);
-extern int ov01_021FA28C(int arg0);
-extern int ov01_021FA2A0(int arg0);
-int ov01_021F9EC4(UnkStruct_Ov01_021F944C *arg0, int arg1);
-int ov01_021F9EEC(UnkStruct_Ov01_021F944C *arg0, int arg1);
-int ov01_021F9F14(UnkStruct_Ov01_021F944C *arg0, int arg1);
-void ov01_021F9F3C(UnkStruct_Ov01_021F944C *arg0, int arg1);
-void ov01_021F9F54(UnkStruct_Ov01_021F944C *arg0, int arg1);
-void ov01_021F9F6C(UnkStruct_Ov01_021F944C *arg0, int arg1);
-void ov01_021F9F84(UnkStruct_Ov01_021F944C *arg0, int arg1);
-int ov01_021F9FCC(MapObjectManager *manager, int spriteId, LocalMapObject *exclude);
-int ov01_021FA01C(MapObjectManager *manager, int arg1, LocalMapObject *exclude);
-int ov01_021FA094(MapObjectManager *manager, int arg1, LocalMapObject *exclude);
-void ov01_021FA1C8(UnkStruct_Ov01_021F944C *arg0, void *arg1);
-void ov01_021FA1D8(UnkStruct_Ov01_021F944C *arg0, int arg1);
-void *ov01_021FA1DC(UnkStruct_Ov01_021F944C *arg0);
-void *ov01_021FA1E4(UnkStruct_Ov01_021F944C *arg0);
-void ov01_021FA1EC(UnkStruct_Ov01_021F944C *arg0, GF_3DGfxRawResMan *arg1);
-GF_3DGfxRawResMan *ov01_021FA1F4(UnkStruct_Ov01_021F944C *arg0);
-int *ov01_021FA1FC(UnkStruct_Ov01_021F944C *arg0);
-int *ov01_021FA200(UnkStruct_Ov01_021F944C *arg0);
-int *ov01_021FA204(UnkStruct_Ov01_021F944C *arg0);
-void ov01_021FA208(UnkStruct_Ov01_021F944C *arg0, int arg1);
-int ov01_021FA20C(UnkStruct_Ov01_021F944C *arg0);
-void ov01_021FA210(UnkStruct_Ov01_021F944C *arg0, int arg1);
-int ov01_021FA214(UnkStruct_Ov01_021F944C *arg0);
-void ov01_021FA218(UnkStruct_Ov01_021F944C *arg0, int arg1);
-int ov01_021FA21C(UnkStruct_Ov01_021F944C *arg0);
-void ov01_021FA220(UnkStruct_Ov01_021F944C *arg0, int arg1);
-int ov01_021FA224(UnkStruct_Ov01_021F944C *arg0);
-int ov01_021F9EC4(UnkStruct_Ov01_021F944C *arg0, int arg1);
-int ov01_021F9EC4(UnkStruct_Ov01_021F944C *arg0, int arg1);
-int ov01_021F9EEC(UnkStruct_Ov01_021F944C *arg0, int arg1);
-// FUNCTION ov01_021F9EEC: matching C (r0)
+
+int ov01_021F9B38(UnkStruct_Ov01_021F944C *param0, int param1);
+int ov01_021F9B84(UnkStruct_Ov01_021F944C *param0, int param1);
+
+// FUNCTION ov01_021F9EEC: matching C (twin)
 #pragma force_active on
-int ov01_021F9EEC(UnkStruct_Ov01_021F944C *arg0, int arg1) {
-    if (ov01_021F9B38(arg0, arg1) == 1) {
+int ov01_021F9EEC(UnkStruct_Ov01_021F944C *param0, int param1) {
+    if (ov01_021F9B38(param0, param1) == 1) {
         return 0;
     }
-    if (ov01_021F9B84(arg0, arg1) == 1) {
+
+    if (ov01_021F9B84(param0, param1) == 1) {
         return 1;
     }
+
     return 2;
 }
 #pragma force_active reset
-int ov01_021F9F14(UnkStruct_Ov01_021F944C *arg0, int arg1);
-int ov01_021F9F14(UnkStruct_Ov01_021F944C *arg0, int arg1);
-void ov01_021F9F3C(UnkStruct_Ov01_021F944C *arg0, int arg1);
-void ov01_021F9F3C(UnkStruct_Ov01_021F944C *arg0, int arg1);
-void ov01_021F9F54(UnkStruct_Ov01_021F944C *arg0, int arg1);
-void ov01_021F9F54(UnkStruct_Ov01_021F944C *arg0, int arg1);
-void ov01_021F9F6C(UnkStruct_Ov01_021F944C *arg0, int arg1);
-void ov01_021F9F6C(UnkStruct_Ov01_021F944C *arg0, int arg1);
-void ov01_021F9F84(UnkStruct_Ov01_021F944C *arg0, int arg1);
-void ov01_021F9F84(UnkStruct_Ov01_021F944C *arg0, int arg1);
-int ov01_021F9FCC(MapObjectManager *manager, int spriteId, LocalMapObject *exclude);
-int ov01_021F9FCC(MapObjectManager *manager, int spriteId, LocalMapObject *exclude);
-int ov01_021FA01C(MapObjectManager *manager, int arg1, LocalMapObject *exclude);
-int ov01_021FA01C(MapObjectManager *manager, int arg1, LocalMapObject *exclude);
-int ov01_021FA094(MapObjectManager *manager, int arg1, LocalMapObject *exclude);
-int ov01_021FA094(MapObjectManager *manager, int arg1, LocalMapObject *exclude);
-void ov01_021FA1C8(UnkStruct_Ov01_021F944C *arg0, void *arg1);
-void ov01_021FA1C8(UnkStruct_Ov01_021F944C *arg0, void *arg1);
-void ov01_021FA1D8(UnkStruct_Ov01_021F944C *arg0, int arg1);
-void ov01_021FA1D8(UnkStruct_Ov01_021F944C *arg0, int arg1);
-void *ov01_021FA1DC(UnkStruct_Ov01_021F944C *arg0);
-void *ov01_021FA1DC(UnkStruct_Ov01_021F944C *arg0);
-void *ov01_021FA1E4(UnkStruct_Ov01_021F944C *arg0);
-void *ov01_021FA1E4(UnkStruct_Ov01_021F944C *arg0);
-void ov01_021FA1EC(UnkStruct_Ov01_021F944C *arg0, GF_3DGfxRawResMan *arg1);
-void ov01_021FA1EC(UnkStruct_Ov01_021F944C *arg0, GF_3DGfxRawResMan *arg1);
-GF_3DGfxRawResMan *ov01_021FA1F4(UnkStruct_Ov01_021F944C *arg0);
-GF_3DGfxRawResMan *ov01_021FA1F4(UnkStruct_Ov01_021F944C *arg0);
-int *ov01_021FA1FC(UnkStruct_Ov01_021F944C *arg0);
-int *ov01_021FA1FC(UnkStruct_Ov01_021F944C *arg0);
-int *ov01_021FA200(UnkStruct_Ov01_021F944C *arg0);
-int *ov01_021FA200(UnkStruct_Ov01_021F944C *arg0);
-int *ov01_021FA204(UnkStruct_Ov01_021F944C *arg0);
-int *ov01_021FA204(UnkStruct_Ov01_021F944C *arg0);
-void ov01_021FA208(UnkStruct_Ov01_021F944C *arg0, int arg1);
-void ov01_021FA208(UnkStruct_Ov01_021F944C *arg0, int arg1);
-int ov01_021FA20C(UnkStruct_Ov01_021F944C *arg0);
-int ov01_021FA20C(UnkStruct_Ov01_021F944C *arg0);
-void ov01_021FA210(UnkStruct_Ov01_021F944C *arg0, int arg1);
-void ov01_021FA210(UnkStruct_Ov01_021F944C *arg0, int arg1);
-int ov01_021FA214(UnkStruct_Ov01_021F944C *arg0);
-int ov01_021FA214(UnkStruct_Ov01_021F944C *arg0);
-void ov01_021FA218(UnkStruct_Ov01_021F944C *arg0, int arg1);
-void ov01_021FA218(UnkStruct_Ov01_021F944C *arg0, int arg1);
-int ov01_021FA21C(UnkStruct_Ov01_021F944C *arg0);
-int ov01_021FA21C(UnkStruct_Ov01_021F944C *arg0);
-void ov01_021FA220(UnkStruct_Ov01_021F944C *arg0, int arg1);
-void ov01_021FA220(UnkStruct_Ov01_021F944C *arg0, int arg1);
-int ov01_021FA224(UnkStruct_Ov01_021F944C *arg0);
-int ov01_021FA224(UnkStruct_Ov01_021F944C *arg0);
