@@ -4,19 +4,20 @@
 #include "global.h"
 
 #include "bg_window.h"
-#include "ghidra_compat.h"
-typedef int code();
-undefined4 ov81_0224080C();
-undefined4 ov81_0224086C(int param_1, undefined4 param_2, undefined4 param_3, undefined4 param_4);
-// FUNCTION ov81_0224086C: matching C (agent7)
+
+typedef struct UnkStruct_ov81_0224086C {
+    u8 unk_00[0xC0];
+    Window windows[1];
+} UnkStruct_ov81_0224086C;
+
+u8 ov81_0224080C(UnkStruct_ov81_0224086C *param0, Window *window, int entryID, int param3, int param4, int textSpeed, int param6, int param7, int param8, int fontID);
+
+// FUNCTION ov81_0224086C: matching C (twin)
 #pragma force_active on
-undefined4 ov81_0224086C(int param_1, undefined4 param_2, undefined4 param_3, undefined4 param_4)
+u8 ov81_0224086C(UnkStruct_ov81_0224086C *param0, int entryID) {
+    u8 printerID = ov81_0224080C(param0, &param0->windows[0], entryID, 1, 1, 0xff, 1, 2, 0xf, 1);
+    ScheduleWindowCopyToVram(&param0->windows[0]);
 
-{
-    undefined4 uVar1;
-
-    uVar1 = ov81_0224080C(param_1, param_1 + 0xc0, param_2, 1, 1, 0xff, 1, 2, 0xf, 1);
-    ScheduleWindowCopyToVram(param_1 + 0xc0);
-    return uVar1;
+    return printerID;
 }
 #pragma force_active reset

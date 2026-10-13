@@ -3,23 +3,28 @@
 #pragma thumb on
 #include "global.h"
 
-#include "ghidra_compat.h"
 #include "message_format.h"
 #include "render_window.h"
-typedef int code();
-undefined4 ov39_022289D0();
-void ov39_02228A34(int param_1, int param_2, undefined4 param_3, undefined4 param_4);
-// FUNCTION ov39_02228A34: matching C (r3)
-#pragma force_active on
-void ov39_02228A34(int param_1, int param_2, undefined4 param_3, undefined4 param_4)
 
-{
-    if (param_2 == -1) {
-        param_2 = 0xb;
+typedef struct UnkStruct_ov39_02228A34 {
+    u8 unk_00[0x20];
+    MessageFormat *unk_20;
+    u8 unk_24[0x44 - 0x24];
+    Window unk_44;
+} UnkStruct_ov39_02228A34;
+
+void ov39_022289D0(UnkStruct_ov39_02228A34 *param0, int param1);
+
+// FUNCTION ov39_02228A34: matching C (twin)
+#pragma force_active on
+void ov39_02228A34(UnkStruct_ov39_02228A34 *param0, int param1, int param2) {
+    if (param1 == -1) {
+        param1 = 11;
     }
-    BufferIntegerAsString(*(undefined4 *)(param_1 + 0x20), 0, param_3, 5, 2, 1);
-    ClearFrameAndWindow2(param_1 + 0x44, 1);
-    ov39_022289D0(param_1, param_2);
-    return;
+
+    BufferIntegerAsString(param0->unk_20, 0, param2, 5, 2, 1);
+    ClearFrameAndWindow2(&param0->unk_44, 1);
+
+    ov39_022289D0(param0, param1);
 }
 #pragma force_active reset

@@ -3,26 +3,31 @@
 #pragma thumb on
 #include "global.h"
 
-#include "error_handling.h"
-#include "ghidra_compat.h"
+#include "assert.h"
 #include "overlay_00_thumb.h"
-typedef int code();
-undefined4 ov00_021E5CD0();
-extern int _022577C0;
-void ov45_0222F70C(void);
-// FUNCTION ov45_0222F70C: matching C (r2)
-#pragma force_active on
-void ov45_0222F70C(void)
 
-{
-    if (_022577C0 == 0) {
-        GF_AssertFail();
-    }
+typedef struct UnkStruct_ov45_0222F70C {
+    u8 unk_000[0x69C];
+    u16 gameKind;
+    u8 unk_69E;
+    u8 unk_69F;
+} UnkStruct_ov45_0222F70C;
+
+extern UnkStruct_ov45_0222F70C *_022577C0;
+
+void ov00_021E5CD0(int a0, int a1);
+void ov45_0222F70C(void);
+
+// FUNCTION ov45_0222F70C: matching C (twin)
+#pragma force_active on
+void ov45_0222F70C(void) {
+    GF_ASSERT(_022577C0 != NULL);
+
     ov00_021E5CD0(0, 0);
     ov00_021E5CA0(0, 0);
-    *(undefined2 *)(_022577C0 + 0x69c) = 3;
-    *(undefined1 *)(_022577C0 + 0x69e) = 0;
-    *(undefined1 *)(_022577C0 + 0x69f) = 0;
-    return;
+
+    _022577C0->gameKind = 3;
+    _022577C0->unk_69E = 0;
+    _022577C0->unk_69F = 0;
 }
 #pragma force_active reset

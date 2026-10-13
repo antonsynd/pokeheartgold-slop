@@ -3,20 +3,22 @@
 #pragma thumb on
 #include "global.h"
 
-#include "ghidra_compat.h"
 #include "screen_fade.h"
-typedef int code();
-void ov74_02232910(int param_1, undefined4 param_2, undefined4 param_3, undefined4 *param_4);
-// FUNCTION ov74_02232910: matching C (r3)
-#pragma force_active on
-void ov74_02232910(int param_1, undefined4 param_2, undefined4 param_3, undefined4 *param_4)
 
-{
-    BeginNormalPaletteFade(0, param_2, param_2, 0, 6, 1, 0x4c);
-    if (param_4 != (undefined4 *)0x0) {
-        *param_4 = 0x17;
+typedef struct UnkStruct_ov74_02232910 {
+    u8 unk_00[0x24];
+    int unk_24;
+} UnkStruct_ov74_02232910;
+
+// FUNCTION ov74_02232910: matching C (twin)
+#pragma force_active on
+void ov74_02232910(UnkStruct_ov74_02232910 *migrator, enum FadeType fadeType, int param2, int *state) {
+    BeginNormalPaletteFade(FADE_BOTH_SCREENS, fadeType, fadeType, 0, 6, 1, HEAP_ID_76);
+
+    if (state != NULL) {
+        *state = 0x17;
     }
-    *(undefined4 *)(param_1 + 0x24) = param_3;
-    return;
+
+    migrator->unk_24 = param2;
 }
 #pragma force_active reset

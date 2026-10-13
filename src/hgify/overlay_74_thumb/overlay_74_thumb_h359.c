@@ -7,22 +7,32 @@
 #include "main.h"
 #include "overlay_manager.h"
 #include "pm_string.h"
-extern u32 SDK_OVERLAY_intro_title_ID[1];
-extern const char gApplication_TitleScreen[];
-void ov74_02236034(int);
-// FUNCTION ov74_022338D4: matching C (agent7)
-#pragma force_active on
-u32 ov74_022338D4(void *param_1) {
-    char *iVar1;
+#include "title_screen.h"
 
-    iVar1 = OverlayManager_GetData(param_1);
-    String_Delete(*(void **)(iVar1 + 0x12608));
-    String_Delete(*(void **)(iVar1 + 0x1260c));
-    Heap_Free(*(void **)(iVar1 + 0x20));
-    RegisterMainOverlay((u32)&SDK_OVERLAY_intro_title_ID, (const OverlayManagerTemplate *)gApplication_TitleScreen);
-    OverlayManager_FreeData(param_1);
-    Heap_Destroy(0x4c);
+typedef struct UnkStruct_ov74_022338D4 {
+    u8 unk_00[0x20];
+    void *bgConfig;
+    u8 unk_24[0x12608 - 0x24];
+    String *unk_12668;
+    String *unk_1266C;
+} UnkStruct_ov74_022338D4;
+
+void ov74_02236034(int state);
+
+// FUNCTION ov74_022338D4: matching C (twin)
+#pragma force_active on
+int ov74_022338D4(OverlayManager *appMan, int *state) {
+    UnkStruct_ov74_022338D4 *migrator = OverlayManager_GetData(appMan);
+
+    String_Delete(migrator->unk_12668);
+    String_Delete(migrator->unk_1266C);
+    Heap_Free(migrator->bgConfig);
+    RegisterMainOverlay((u32)&SDK_OVERLAY_intro_title_ID, &gApplication_TitleScreen);
+    OverlayManager_FreeData(appMan);
+    Heap_Destroy(0x4C);
+
     ov74_02236034(0);
+
     return 1;
 }
 #pragma force_active reset

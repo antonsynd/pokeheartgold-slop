@@ -3,33 +3,27 @@
 #pragma thumb on
 #include "global.h"
 
-#include "ghidra_compat.h"
 #include "pokepic.h"
-typedef void code(void);
-void ov07_02231FA0(int param_1, undefined2 *param_2);
-// FUNCTION ov07_02231FA0: matching C (r2)
+
+typedef struct UnkStruct_ov07_02231FA0 {
+    s16 x;
+    s16 y;
+} UnkStruct_ov07_02231FA0;
+
+// FUNCTION ov07_02231FA0: matching C (twin)
 #pragma force_active on
-void ov07_02231FA0(int param_1, undefined2 *param_2)
-
-{
-    undefined2 uVar1;
-    int iVar2;
-
-    if (param_1 == 0) {
-        *param_2 = 0;
-        param_2[1] = 0;
+void ov07_02231FA0(Pokepic *sprite, UnkStruct_ov07_02231FA0 *pos) {
+    if (sprite == NULL) {
+        pos->x = 0;
+        pos->y = 0;
+        return;
+    } else if (Pokepic_IsActive(sprite) == FALSE) {
+        pos->x = 0;
+        pos->y = 0;
         return;
     }
-    iVar2 = Pokepic_IsActive((struct Pokepic *)param_1);
-    if (iVar2 == 0) {
-        *param_2 = 0;
-        param_2[1] = 0;
-        return;
-    }
-    uVar1 = Pokepic_GetAttr(param_1, 0);
-    *param_2 = uVar1;
-    uVar1 = Pokepic_GetAttr(param_1, 1);
-    param_2[1] = uVar1;
-    return;
+
+    pos->x = Pokepic_GetAttr(sprite, 0);
+    pos->y = Pokepic_GetAttr(sprite, 1);
 }
 #pragma force_active reset

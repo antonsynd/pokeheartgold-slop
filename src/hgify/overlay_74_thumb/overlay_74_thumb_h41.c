@@ -3,24 +3,23 @@
 #pragma thumb on
 #include "global.h"
 
-#include "ghidra_compat.h"
 #include "sprite.h"
-typedef int code();
-undefined4 ov74_02235930(unsigned int, void *, unsigned int, unsigned int, unsigned int);
-void ov74_02229F28(int param_1, int param_2, undefined4 param_3, undefined4 param_4);
-// FUNCTION ov74_02229F28: matching C (r3)
+
+typedef struct UnkStruct_ov74_02229F28 {
+    u8 unk_000[0x5c4];
+    Sprite *dowloadArrowSprite;
+} UnkStruct_ov74_02229F28;
+
+extern void *ov74_02235930(int screen, void *sprite, int x, int y, int animID);
+void ov74_02229F28(UnkStruct_ov74_02229F28 *appData, int animID);
+
+// FUNCTION ov74_02229F28: matching C (twin)
 #pragma force_active on
-void ov74_02229F28(int param_1, int param_2, undefined4 param_3, undefined4 param_4)
-
-{
-    undefined4 uVar1;
-
-    if (param_2 != -1) {
-        uVar1 = ov74_02235930(0, *(undefined4 *)(param_1 + 0x5c4), 0x80, 100, param_2);
-        *(undefined4 *)(param_1 + 0x5c4) = uVar1;
-        return;
+void ov74_02229F28(UnkStruct_ov74_02229F28 *appData, int animID) {
+    if (animID != -1) {
+        appData->dowloadArrowSprite = ov74_02235930(0, appData->dowloadArrowSprite, 0x80, 100, animID);
+    } else {
+        Sprite_SetDrawFlag(appData->dowloadArrowSprite, FALSE);
     }
-    Sprite_SetDrawFlag(*(undefined4 *)(param_1 + 0x5c4), 0);
-    return;
 }
 #pragma force_active reset

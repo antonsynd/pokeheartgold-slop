@@ -3,31 +3,35 @@
 #pragma thumb on
 #include "global.h"
 
-#include "ghidra_compat.h"
 #include "pokepic.h"
 #include "unk_02026E30.h"
-typedef int code();
-undefined4 ov71_022474CC();
-void ov71_022479C8(int param_1, undefined4 param_2, undefined4 param_3, undefined4 param_4);
-// FUNCTION ov71_022479C8: matching C (r2)
+
+typedef struct UnkStruct_ov71_022479C8 {
+    u8 unk_00[0xC];
+    PokepicManager *spriteManager;
+    u8 unk_10[0x60];
+    void *scene;
+} UnkStruct_ov71_022479C8;
+
+void ov71_022474CC(void *param0);
+// FUNCTION ov71_022479C8: matching C (twin)
 #pragma force_active on
-void ov71_022479C8(int param_1, undefined4 param_2, undefined4 param_3, undefined4 param_4)
+void ov71_022479C8(UnkStruct_ov71_022479C8 *tsPhase) {
+    u32 popCount;
 
-{
-    undefined4 uStack_10;
-    undefined4 uStack_c;
-
-    uStack_c = param_4;
     G3X_Reset();
-    NNS_G3dGeBufferOP_N(0x11, (undefined *)0x0, 0);
+    NNS_G3dGeBufferOP_N(0x11, NULL, 0);
+
     NNS_G3dGeFlushBuffer();
     NNS_G2dSetupSoftwareSpriteCamera();
-    PokepicManager_HandleLoadImgAndOrPltt(*(struct PokepicManager **)(param_1 + 0xc));
-    PokepicManager_DrawAll(*(struct PokepicManager **)(param_1 + 0xc));
-    uStack_10 = 1;
-    NNS_G3dGeBufferOP_N(0x12, (undefined *)&uStack_10, 1);
-    ov71_022474CC(*(undefined4 *)(param_1 + 0x70));
+
+    PokepicManager_HandleLoadImgAndOrPltt(tsPhase->spriteManager);
+    PokepicManager_DrawAll(tsPhase->spriteManager);
+
+    popCount = 1;
+    NNS_G3dGeBufferOP_N(0x12, &popCount, 1);
+
+    ov71_022474CC(tsPhase->scene);
     RequestSwap3DBuffers(0, 0);
-    return;
 }
 #pragma force_active reset

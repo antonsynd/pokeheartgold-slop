@@ -3,21 +3,27 @@
 #pragma thumb on
 #include "global.h"
 
-#include "ghidra_compat.h"
 #include "unk_02018000.h"
-typedef int code();
-void ov91_022611D0(int param_1);
-// FUNCTION ov91_022611D0: matching C (r2)
-#pragma force_active on
-void ov91_022611D0(int param_1)
 
-{
-    sub_020182A0(param_1, 0);
-    sub_020182A0(param_1 + 0x78, 1);
-    *(undefined4 *)(param_1 + 0x1dc) = 0;
-    *(undefined4 *)(param_1 + 0x1e0) = 0x1000;
-    *(undefined1 *)(param_1 + 0x1d8) = 1;
-    *(undefined1 *)(param_1 + 0x1d9) = 0;
-    return;
+typedef struct UnkStruct_ov91_022611D0 {
+    UnkStruct_020181B0 unk_00[2];
+    u8 unk_0F0[0x1D8 - 0xF0];
+    u8 unk_1D8;
+    u8 unk_1D9;
+    u8 unk_1DA[0x1DC - 0x1DA];
+    u32 unk_1DC;
+    fx32 unk_1E0;
+} UnkStruct_ov91_022611D0;
+
+// FUNCTION ov91_022611D0: matching C (twin)
+#pragma force_active on
+void ov91_022611D0(UnkStruct_ov91_022611D0 *param0) {
+    sub_020182A0(&param0->unk_00[0], 0);
+    sub_020182A0(&param0->unk_00[1], 1);
+
+    param0->unk_1DC = 0;
+    param0->unk_1E0 = FX32_CONST(1.0);
+    param0->unk_1D8 = 1;
+    param0->unk_1D9 = 0;
 }
 #pragma force_active reset

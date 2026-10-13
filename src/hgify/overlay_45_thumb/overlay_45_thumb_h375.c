@@ -4,27 +4,31 @@
 #include "global.h"
 
 #include "error_handling.h"
-#include "ghidra_compat.h"
 #include "heap.h"
-typedef int code();
-undefined4 ov45_0222FA10();
-undefined4 ov45_0222F878();
-undefined4 ov45_022303FC();
-extern int _022577C0;
+typedef struct UnkStruct_ov45_0222E688_6A0 {
+    u32 unk_00;
+} UnkStruct_ov45_0222E688_6A0;
+typedef struct UnkStruct_ov45_0222E688 {
+    u8 pad_000[0x6A0];
+    UnkStruct_ov45_0222E688_6A0 unk_6A0;
+} UnkStruct_ov45_0222E688;
+extern UnkStruct_ov45_0222E688 *_022577C0;
+void ov45_022303FC(UnkStruct_ov45_0222E688_6A0 *param0);
+void ov45_0222FA10(UnkStruct_ov45_0222E688 *param0);
+void ov45_0222F878(UnkStruct_ov45_0222E688 *param0);
 void ov45_0222E688(void);
-// FUNCTION ov45_0222E688: matching C (r2)
+// FUNCTION ov45_0222E688: matching C (twin)
 #pragma force_active on
-void ov45_0222E688(void)
-
-{
-    if (_022577C0 == 0) {
+void ov45_0222E688(void) {
+    if (_022577C0 == NULL) {
         GF_AssertFail();
     }
-    ov45_022303FC(_022577C0 + 0x6a0);
+
+    ov45_022303FC(&_022577C0->unk_6A0);
     ov45_0222FA10(_022577C0);
     ov45_0222F878(_022577C0);
+
     Heap_Free(_022577C0);
-    _022577C0 = 0;
-    return;
+    _022577C0 = NULL;
 }
 #pragma force_active reset

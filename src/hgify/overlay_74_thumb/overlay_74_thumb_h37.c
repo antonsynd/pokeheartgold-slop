@@ -3,29 +3,27 @@
 #pragma thumb on
 #include "global.h"
 
-#include "ghidra_compat.h"
 #include "render_window.h"
-typedef int code();
-void ov74_02229E28(int param_1, int param_2);
-// FUNCTION ov74_02229E28: matching C (r2)
+typedef struct UnkStruct_ov74_02229E28 {
+    u8 pad_00[0x18];
+    Window messageBox;
+    u8 pad_18[0x29F0 - 0x18 - sizeof(Window)];
+    WaitingIcon *waitDial;
+} UnkStruct_ov74_02229E28;
+void ov74_02229E28(UnkStruct_ov74_02229E28 *appData, BOOL show);
+// FUNCTION ov74_02229E28: matching C (twin)
 #pragma force_active on
-void ov74_02229E28(int param_1, int param_2)
-
-{
-    undefined4 uVar1;
-
-    if (param_2 == 1) {
-        if (*(int *)(param_1 + 0x29f0) == 0) {
-            uVar1 = WaitingIcon_New(param_1 + 0x18, 1);
-            *(undefined4 *)(param_1 + 0x29f0) = uVar1;
-            return;
+void ov74_02229E28(UnkStruct_ov74_02229E28 *appData, BOOL show) {
+    if (show == TRUE) {
+        if (appData->waitDial == NULL) {
+            appData->waitDial = WaitingIcon_New(&appData->messageBox, 1);
         }
     } else {
-        if (*(int *)(param_1 + 0x29f0) != 0) {
+        if (appData->waitDial) {
             sub_0200F478();
         }
-        *(undefined4 *)(param_1 + 0x29f0) = 0;
+
+        appData->waitDial = NULL;
     }
-    return;
 }
 #pragma force_active reset

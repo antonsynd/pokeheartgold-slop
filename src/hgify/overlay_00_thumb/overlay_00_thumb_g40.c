@@ -4,23 +4,23 @@
 #include "global.h"
 
 #include "overlay_00_thumb.h"
-typedef struct G {
-    u8 pad0[0x1070];
+typedef struct UnkStruct_ov00_021E6C68 {
+    u8 pad_0000[0x1070];
     int state;
-    u8 pad1[0x1098 - 0x1074];
-    int val;
-} G;
-extern G *_0221A680;
-// FUNCTION ov00_021E6C68: matching C (agent3)
+    u8 pad_1074[0x1098 - 0x1074];
+    int latestNewClientFriendIdx;
+} UnkStruct_ov00_021E6C68;
+extern UnkStruct_ov00_021E6C68 *_0221A680;
+// FUNCTION ov00_021E6C68: matching C (twin)
 #pragma force_active on
-int ov00_021E6C68(void) {
-    int s = _0221A680->state;
-    if (s == 0x11 || s == 0x12 || s == 4) {
+BOOL ov00_021E6C68(void) {
+    if (_0221A680->state == 0x11 || _0221A680->state == 0x12 || _0221A680->state == 4) {
         _0221A680->state = 4;
-        _0221A680->val = -1;
+        _0221A680->latestNewClientFriendIdx = -1;
         ov00_021E7130();
-        return 1;
+        return TRUE;
     }
-    return 0;
+
+    return FALSE;
 }
 #pragma force_active reset

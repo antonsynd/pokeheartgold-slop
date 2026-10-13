@@ -116,7 +116,7 @@ void ov49_0225B214(UnkStruct_ov49_0225AC_Win *param0, UnkStruct_ov49_0225AC_Gfx 
 void ov49_0225B244(UnkStruct_ov49_0225AC_Win *param0);
 void ov49_0225B244(UnkStruct_ov49_0225AC_Win *param0);
 void ov49_0225B24C(UnkStruct_ov49_0225AC_Win *param0, const String *param1);
-// FUNCTION ov49_0225B24C: matching C (r2)
+// FUNCTION ov49_0225B24C: matching C (twin)
 #pragma force_active on
 void ov49_0225B24C(UnkStruct_ov49_0225AC_Win *param0, const String *param1) {
     AddTextPrinterParameterizedWithColor(&param0->window, 0, param1, 0, 0, 0xFF, 0x0001020F, NULL);

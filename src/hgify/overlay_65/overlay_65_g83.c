@@ -4,17 +4,19 @@
 #include "global.h"
 
 #include "bg_window.h"
-#include "ghidra_compat.h"
-typedef int code();
-void ov65_0221F714(int param_1);
-// FUNCTION ov65_0221F714: matching C (r2)
-#pragma force_active on
-void ov65_0221F714(int param_1)
 
-{
-    *(int *)(param_1 + 0x22c4) = *(int *)(param_1 + 0x22c4) + 2;
-    BgSetPosTextAndCommit(*(undefined4 *)(param_1 + 0x180), 6, 0, *(undefined4 *)(param_1 + 0x22c4));
-    BgSetPosTextAndCommit(*(undefined4 *)(param_1 + 0x180), 3, 0, *(undefined4 *)(param_1 + 0x22c4));
-    return;
+typedef struct UnkStruct_ov65_0221F714 {
+    u8 unk_00[0x180];
+    BgConfig *bgConfig;
+    u8 unk_184[0x22C4 - 0x184];
+    int bgScrollOffset;
+} UnkStruct_ov65_0221F714;
+
+// FUNCTION ov65_0221F714: matching C (twin)
+#pragma force_active on
+void ov65_0221F714(UnkStruct_ov65_0221F714 *tradeRoom) {
+    tradeRoom->bgScrollOffset += 2;
+    BgSetPosTextAndCommit(tradeRoom->bgConfig, 6, 0, tradeRoom->bgScrollOffset);
+    BgSetPosTextAndCommit(tradeRoom->bgConfig, 3, 0, tradeRoom->bgScrollOffset);
 }
 #pragma force_active reset

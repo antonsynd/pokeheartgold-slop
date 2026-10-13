@@ -3,31 +3,38 @@
 #pragma thumb on
 #include "global.h"
 
-#include "ghidra_compat.h"
+#include "save.h"
 #include "unk_0202C034.h"
-typedef int code();
-undefined4 sub_0202C2DC(undefined4, int);
-undefined4 ov43_0222B574(int *param_1, int param_2);
-// FUNCTION ov43_0222B574: matching C (agent7)
-#pragma force_active on
-undefined4 ov43_0222B574(int *param_1, int param_2) {
-    if (*param_1 == 1) {
-        int iVar3;
-        undefined4 uVar1;
-        int iVar2;
 
-        uVar1 = sub_0202C6F4(*(undefined4 *)(param_2 + 4));
-        iVar3 = 0;
-        do {
-            iVar2 = sub_0202C2DC(uVar1, iVar3);
-            if (iVar2 == 0) {
+typedef struct UnkStruct_ov43_0222B574 {
+    int unk_00;
+} UnkStruct_ov43_0222B574;
+
+typedef struct UnkStruct_ov43_0222B574_Save {
+    int unk_00;
+    SaveData *saveData;
+} UnkStruct_ov43_0222B574_Save;
+
+int sub_0202C2DC(WiFiList *a0, int a1);
+
+// FUNCTION ov43_0222B574: matching C (twin)
+#pragma force_active on
+BOOL ov43_0222B574(UnkStruct_ov43_0222B574 *param0, UnkStruct_ov43_0222B574_Save *param1) {
+    int v0;
+    WiFiList *v1;
+
+    if (param0->unk_00 == 1) {
+        v1 = sub_0202C6F4(param1->saveData);
+
+        for (v0 = 0; v0 < 32; v0++) {
+            if (!sub_0202C2DC(v1, v0)) {
                 return 1;
             }
-            iVar3 = iVar3 + 1;
-        } while (iVar3 < 0x20);
+        }
     } else {
         return 1;
     }
+
     return 0;
 }
 #pragma force_active reset

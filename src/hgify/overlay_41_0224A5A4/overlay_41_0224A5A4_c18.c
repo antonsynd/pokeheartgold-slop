@@ -3,20 +3,21 @@
 #pragma thumb on
 #include "global.h"
 
-#include "error_handling.h"
-#include "ghidra_compat.h"
-typedef int code();
-undefined4 ov41_0224AD90();
-void ov41_0224AC08(int param_1, undefined4 param_2, undefined4 param_3, undefined4 param_4);
-// FUNCTION ov41_0224AC08: matching C (r2)
-#pragma force_active on
-void ov41_0224AC08(int param_1, undefined4 param_2, undefined4 param_3, undefined4 param_4)
+#include "assert.h"
 
-{
-    if ((*(uint *)(param_1 + 0x138) & 4) == 0) {
-        GF_AssertFail();
-    }
-    ov41_0224AD90(*(undefined4 *)(param_1 + 0x2c), param_2, param_3, param_4, 0, 0, 0xff);
-    return;
+typedef struct UnkStruct_ov41_0224AC08 {
+    u8 unk_00[0x2C];
+    void *unk_2C;
+    u8 unk_30[0x138 - 0x30];
+    u32 unk_138;
+} UnkStruct_ov41_0224AC08;
+
+void ov41_0224AD90(void *a0, int a1, int a2, int a3, int a4, int a5, int a6);
+
+// FUNCTION ov41_0224AC08: matching C (twin)
+#pragma force_active on
+void ov41_0224AC08(UnkStruct_ov41_0224AC08 *param0, int param1, int param2, int param3) {
+    GF_ASSERT(param0->unk_138 & 4);
+    ov41_0224AD90(param0->unk_2C, param1, param2, param3, 0, 0, 0xFF);
 }
 #pragma force_active reset

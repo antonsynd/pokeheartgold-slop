@@ -3,22 +3,33 @@
 #pragma thumb on
 #include "global.h"
 
-#include "ghidra_compat.h"
 #include "sprite.h"
-typedef int code();
-undefined4 ov91_02260A88();
-void ov91_02260848(undefined4 param_1, undefined4 *param_2, int param_3, undefined4 param_4);
-// FUNCTION ov91_02260848: matching C (r2)
-#pragma force_active on
-void ov91_02260848(undefined4 param_1, undefined4 *param_2, int param_3, undefined4 param_4)
 
-{
-    param_2[0x3e] = param_3;
-    param_2[0x3d] = 1;
-    *(undefined2 *)(param_2 + 0x41) = 0;
-    Sprite_SetPaletteOverride(*param_2, *(undefined2 *)(param_3 + 4));
-    ov91_02260A88(param_2, param_3, param_4);
-    Sprite_SetDrawFlag(*param_2, 1);
-    return;
+typedef struct UnkStruct_ov91_02260848_arg {
+    u8 unk_00[4];
+    u16 unk_04;
+} UnkStruct_ov91_02260848_arg;
+
+typedef struct UnkStruct_ov91_02260848 {
+    Sprite *unk_00;
+    u8 unk_04[0xF4 - 0x04];
+    int unk_F4;
+    const UnkStruct_ov91_02260848_arg *unk_F8;
+    u8 unk_FC[0x104 - 0xFC];
+    u16 unk_104;
+} UnkStruct_ov91_02260848;
+
+void ov91_02260A88(UnkStruct_ov91_02260848 *param0, const UnkStruct_ov91_02260848_arg *param1, u32 param2);
+
+// FUNCTION ov91_02260848: matching C (twin)
+#pragma force_active on
+void ov91_02260848(void *param0, UnkStruct_ov91_02260848 *param1, const UnkStruct_ov91_02260848_arg *param2, u32 param3) {
+    param1->unk_F8 = param2;
+    param1->unk_F4 = 1;
+    param1->unk_104 = 0;
+
+    Sprite_SetPaletteOverride(param1->unk_00, param2->unk_04);
+    ov91_02260A88(param1, param2, param3);
+    Sprite_SetDrawFlag(param1->unk_00, 1);
 }
 #pragma force_active reset

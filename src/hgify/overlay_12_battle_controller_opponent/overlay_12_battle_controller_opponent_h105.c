@@ -3,42 +3,45 @@
 #pragma thumb on
 #include "global.h"
 
-#include "ghidra_compat.h"
 #include "heap.h"
 #include "sys_task_api.h"
-typedef void code(void);
-typedef struct Task12 {
-    void *a;
-    u8 pad4[4];
-    u8 b8;
-    u8 b9;
-    u8 b10;
-    u8 pad11;
-    u16 h12;
-    u8 b14;
-} Task12;
-typedef struct Arg12 {
-    u8 a;
-    u8 b;
-    u16 c;
-} Arg12;
-typedef struct Obj12 {
-    u8 pad[0x194];
-    u8 b194;
-} Obj12;
-extern void ov12_022609F8(SysTask *, void *);
-// FUNCTION ov12_0225B028: matching C (agent3)
-#pragma force_active on
-void ov12_0225B028(void *param_1, Obj12 *param_2, Arg12 *param_3) {
-    Task12 *t;
 
-    t = Heap_Alloc(5, 0x10);
-    t->b10 = 0;
-    t->a = param_1;
-    t->b8 = param_3->a;
-    t->b9 = param_2->b194;
-    t->h12 = param_3->c;
-    t->b14 = param_3->b;
-    SysTask_CreateOnMainQueue(ov12_022609F8, t, 0);
+typedef struct UnkStruct_ov12_0225B028 {
+    void *battleSys;
+    u8 unk_04[4];
+    u8 command;
+    u8 battler;
+    u8 state;
+    u8 unk_0B;
+    u16 move;
+    u8 slot;
+} UnkStruct_ov12_0225B028;
+
+typedef struct UnkStruct_ov12_0225B028_Battler {
+    u8 unk_000[0x194];
+    u8 battler;
+} UnkStruct_ov12_0225B028_Battler;
+
+typedef struct UnkStruct_ov12_0225B028_Message {
+    u8 command;
+    u8 slot;
+    u16 move;
+} UnkStruct_ov12_0225B028_Message;
+
+extern void ov12_022609F8(SysTask *, void *);
+
+// FUNCTION ov12_0225B028: matching C (twin)
+#pragma force_active on
+void ov12_0225B028(void *battleSys, UnkStruct_ov12_0225B028_Battler *battlerData, UnkStruct_ov12_0225B028_Message *message) {
+    UnkStruct_ov12_0225B028 *forgetMoveData = Heap_Alloc(HEAP_ID_BATTLE, sizeof(UnkStruct_ov12_0225B028));
+
+    forgetMoveData->state = 0;
+    forgetMoveData->battleSys = battleSys;
+    forgetMoveData->command = message->command;
+    forgetMoveData->battler = battlerData->battler;
+    forgetMoveData->move = message->move;
+    forgetMoveData->slot = message->slot;
+
+    SysTask_CreateOnMainQueue(ov12_022609F8, forgetMoveData, 0);
 }
 #pragma force_active reset

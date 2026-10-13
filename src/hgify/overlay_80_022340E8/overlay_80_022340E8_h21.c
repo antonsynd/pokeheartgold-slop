@@ -3,29 +3,22 @@
 #pragma thumb on
 #include "global.h"
 
+#include "frontier/overlay_80_022340E8.h"
 #include "frontier/overlay_80_02238034.h"
 
-#include "ghidra_compat.h"
 #include "sprite.h"
-typedef int code();
-// FUNCTION ov80_02234B7C: matching C (r2)
+
+// FUNCTION ov80_02234B7C: matching C (twin)
 #pragma force_active on
-void ov80_02234B7C(ArcadeContext *arcadeContext, FrontierMap *frontierMap, u32 p3, u32 p4)
+void ov80_02234B7C(ArcadeContext *arcade, FrontierMap *graphics, u32 draw, u32 index) {
+    u8 partySize = BattleArcade_GetMonCount(arcade->type, 1);
 
-{
-    int iVar1;
-    int param_1 = (int)arcadeContext;
-    int param_3 = (int)p3;
-    int param_4 = (int)p4;
-
-    iVar1 = BattleArcade_GetMonCount(*(undefined1 *)(param_1 + 0x10), 1);
-    if (param_4 < iVar1) {
-        if (param_3 == 1) {
-            Sprite_SetDrawFlag(**(undefined4 **)(param_1 + param_4 * 4 + 0x30), 1);
+    if ((s32)index < partySize) {
+        if (draw == TRUE) {
+            Sprite_SetDrawFlag(arcade->unk30[index]->sprite, TRUE);
             return;
         }
-        Sprite_SetDrawFlag(**(undefined4 **)(param_1 + param_4 * 4 + 0x30), 0);
+        Sprite_SetDrawFlag(arcade->unk30[index]->sprite, FALSE);
     }
-    return;
 }
 #pragma force_active reset

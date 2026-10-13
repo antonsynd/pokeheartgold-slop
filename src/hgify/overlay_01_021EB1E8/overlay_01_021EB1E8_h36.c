@@ -3,26 +3,29 @@
 #pragma thumb on
 #include "global.h"
 
-#include "ghidra_compat.h"
-typedef void code(void);
-struct A {
-    u8 pad[8];
-    int *out;
-};
-struct B {
-    u8 pad0[0x10];
-    int f10;
-    int f14;
-    int f18;
-    u8 pad1[0xec];
-    int f108;
-};
+typedef struct UnkStruct_ov01_021EBEF0_sub {
+    int unk_00[4];
+    int unk_10;
+} UnkStruct_ov01_021EBEF0_sub;
+
+typedef struct UnkStruct_ov01_021EBEF0 {
+    u8 unk_00[0x8];
+    UnkStruct_ov01_021EBEF0_sub unk_08;
+    u8 unk_1C[0x108 - 0x1C];
+    int unk_108;
+} UnkStruct_ov01_021EBEF0;
+
+typedef struct UnkStruct_ov01_021EBEF0_out {
+    int unk_00[4];
+} UnkStruct_ov01_021EBEF0_out;
+
 int ov01_021EB898(int, int, int, int, int, int);
-// FUNCTION ov01_021EBEF0: matching C (agent3)
+
+// FUNCTION ov01_021EBEF0: matching C (twin)
 #pragma force_active on
-void ov01_021EBEF0(struct B *b, int param_2, struct A *a) {
-    if (param_2 != 0xffff) {
-        *(int *)((u8 *)a + 8) = ov01_021EB898(b->f18, 2, param_2, b->f10, b->f108, 0);
+void ov01_021EBEF0(UnkStruct_ov01_021EBEF0 *param0, int param1, UnkStruct_ov01_021EBEF0_out *param2) {
+    if (param1 != 0xffff) {
+        param2->unk_00[2] = ov01_021EB898(param0->unk_08.unk_10, 2, param1, param0->unk_08.unk_00[2], param0->unk_108, 0);
     }
 }
 #pragma force_active reset

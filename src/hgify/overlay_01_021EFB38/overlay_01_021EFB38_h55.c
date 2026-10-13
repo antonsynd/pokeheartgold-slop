@@ -4,24 +4,21 @@
 
 #include "overlay_01_021FB4C0_internal.h"
 #include "sys_task_api.h"
-void ov01_021F0CA8(void);
-void ov01_021F0C7C(void);
+typedef struct UnkStruct_ov01_021F0C40 {
+    u8 pad_00[0xD8];
+    UnkStruct_Ov01_021FB4C0 *unk_D8;
+    UnkStruct_Ov01_021FB4C0_sub *unk_DC;
+    SysTask *unk_E0;
+} UnkStruct_ov01_021F0C40;
+void ov01_021F0CA8(void *param0, void *param1);
+void ov01_021F0C7C(SysTask *param0, void *param1);
 #pragma thumb on
-#include "ghidra_compat.h"
-typedef void code(void);
-void ov01_021F0C40(undefined4 param_1, int param_2, undefined4 param_3, undefined4 param_4);
-// FUNCTION ov01_021F0C40: matching C (r3)
+void ov01_021F0C40(SysTask *param0, UnkStruct_ov01_021F0C40 *param1);
+// FUNCTION ov01_021F0C40: matching C (twin)
 #pragma force_active on
-void ov01_021F0C40(undefined4 param_1, int param_2, undefined4 param_3, undefined4 param_4)
-
-{
-    undefined4 uVar1;
-
-    uVar1 = ov01_021FB530(*(undefined4 *)(param_2 + 0xd8), ((unsigned int)ov01_021F0CA8), param_2);
-    *(undefined4 *)(param_2 + 0xdc) = uVar1;
-    uVar1 = SysTask_CreateOnVWaitQueue(((unsigned int)ov01_021F0C7C), param_2, 0x400);
-    *(undefined4 *)(param_2 + 0xe0) = uVar1;
-    SysTask_Destroy(param_1);
-    return;
+void ov01_021F0C40(SysTask *param0, UnkStruct_ov01_021F0C40 *param1) {
+    param1->unk_DC = ov01_021FB530(param1->unk_D8, ov01_021F0CA8, param1);
+    param1->unk_E0 = SysTask_CreateOnVWaitQueue(ov01_021F0C7C, param1, 0x400);
+    SysTask_Destroy(param0);
 }
 #pragma force_active reset

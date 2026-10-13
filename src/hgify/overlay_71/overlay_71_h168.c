@@ -3,23 +3,31 @@
 #pragma thumb on
 #include "global.h"
 
-#include "ghidra_compat.h"
 #include "unk_02026E30.h"
-typedef int code();
-undefined4 ov71_022476EC();
-undefined4 ov71_022474CC();
-void ov71_0224A9C4(int param_1);
-// FUNCTION ov71_0224A9C4: matching C (r2)
-#pragma force_active on
-void ov71_0224A9C4(int param_1)
 
-{
-    if (*(int *)(param_1 + 0x20) != 0) {
-        *(short *)(param_1 + 0x2a) = *(short *)(param_1 + 0x2a) + 0x1000;
-        ov71_022476EC(*(undefined4 *)(param_1 + 0x24), param_1 + 0x28);
+typedef struct Trade3DScene Trade3DScene;
+typedef struct Trade3DModel Trade3DModel;
+
+typedef struct UnkStruct_ov71_0224A9C4 {
+    u8 unk_00[0x20];
+    Trade3DScene *scene;
+    Trade3DModel *model;
+    VecFx16 modelRotation;
+} UnkStruct_ov71_0224A9C4;
+
+void ov71_022476EC(Trade3DModel *model, VecFx16 *rotation);
+void ov71_022474CC(Trade3DScene *scene);
+
+// FUNCTION ov71_0224A9C4: matching C (twin)
+#pragma force_active on
+void ov71_0224A9C4(UnkStruct_ov71_0224A9C4 *param0) {
+    if (param0->scene) {
+        param0->modelRotation.y += 0x1000;
+
+        ov71_022476EC(param0->model, &(param0->modelRotation));
         G3X_Reset();
-        ov71_022474CC(*(undefined4 *)(param_1 + 0x20));
-        RequestSwap3DBuffers(0, 0);
+        ov71_022474CC(param0->scene);
+        RequestSwap3DBuffers(GX_SORTMODE_AUTO, GX_BUFFERMODE_Z);
     }
     return;
 }

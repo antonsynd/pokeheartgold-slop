@@ -2,16 +2,26 @@
 #pragma warning_errors off
 #pragma thumb on
 #include "global.h"
-void ov12_02261CA8(u32 a0, u8 *a1, void *a2, u32 a3);
-void ov07_02234A20(void *a0, u32 a1);
-void ov12_0226430C(u32 a0, u32 a1, u32 a2);
-// FUNCTION ov12_0225B3A0: matching C (agent10)
-#pragma force_active on
-void ov12_0225B3A0(u32 param_1, u8 *param_2, u8 *param_3) {
-    u8 buf[0x50];
 
-    ov12_02261CA8(param_1, param_3, buf, *(u8 *)(param_2 + 0x194));
-    ov07_02234A20(buf, 5);
-    ov12_0226430C(param_1, *(u8 *)(param_2 + 0x194), *param_3);
+#include "constants/heap.h"
+
+#include "battle/battle.h"
+void ov12_02261CA8(BattleSystem *battleSys, u8 *animation, void *battlerSpriteCtx, u32 battler);
+void ov07_02234A20(void *battlerSpriteCtx, u32 heapId);
+void ov12_0226430C(BattleSystem *battleSys, u32 battler, u32 command);
+
+typedef struct UnkStruct_ov12_0225B3A0 {
+    u8 unk_00[0x194];
+    u8 battler;
+} UnkStruct_ov12_0225B3A0;
+
+// FUNCTION ov12_0225B3A0: matching C (twin)
+#pragma force_active on
+void ov12_0225B3A0(BattleSystem *battleSys, UnkStruct_ov12_0225B3A0 *battlerData, u8 *animation) {
+    u8 battlerSpriteCtx[0x50];
+
+    ov12_02261CA8(battleSys, animation, battlerSpriteCtx, battlerData->battler);
+    ov07_02234A20(battlerSpriteCtx, HEAP_ID_BATTLE);
+    ov12_0226430C(battleSys, battlerData->battler, *animation);
 }
 #pragma force_active reset

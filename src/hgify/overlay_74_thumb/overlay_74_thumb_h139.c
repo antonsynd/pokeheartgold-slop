@@ -6,15 +6,21 @@
 #include "bg_window.h"
 #include "gf_gfx_loader.h"
 #include "heap.h"
-// FUNCTION ov74_0222DB30: matching C (agent7)
+typedef struct UnkStruct_ov74_0222DB30 {
+    enum HeapID heapID;
+    u8 pad_04[0x29FC - 0x04];
+    BgConfig *bgConfig;
+} UnkStruct_ov74_0222DB30;
+void ov74_0222DB30(UnkStruct_ov74_0222DB30 *appData, u32 narcMemberIdx, u32 bgLayer, u32 size);
+// FUNCTION ov74_0222DB30: matching C (twin)
 #pragma force_active on
-void ov74_0222DB30(int *param_1, int param_2, int param_3, int param_4) {
-    void *uVar1;
-    NNSG2dScreenData *iStack_1c;
+void ov74_0222DB30(UnkStruct_ov74_0222DB30 *appData, u32 narcMemberIdx, u32 bgLayer, u32 size) {
+    NNSG2dScreenData *screenData;
+    void *nscr = GfGfxLoader_LoadFromNarc(0x71, narcMemberIdx, TRUE, appData->heapID, TRUE);
 
-    uVar1 = GfGfxLoader_LoadFromNarc(0x71, param_2, 1, *param_1, 1);
-    NNS_G2dGetUnpackedScreenData(uVar1, &iStack_1c);
-    BG_LoadScreenTilemapData((BgConfig *)param_1[0xa7f], (u8)param_3, (u8 *)iStack_1c + 0xc, param_4);
-    Heap_Free(uVar1);
+    NNS_G2dGetUnpackedScreenData(nscr, &screenData);
+
+    BG_LoadScreenTilemapData(appData->bgConfig, (u8)bgLayer, screenData->rawData, size);
+    Heap_Free(nscr);
 }
 #pragma force_active reset

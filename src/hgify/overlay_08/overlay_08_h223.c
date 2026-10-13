@@ -5,32 +5,31 @@
 
 #include "battle/battle_system.h"
 
-#include "ghidra_compat.h"
 #include "sprite_system.h"
-typedef void code(void);
-undefined4 ov08_02224108(undefined4);
-undefined4 ov08_022241F4(undefined4);
-void ov08_02223F34(undefined4 *param_1);
-// FUNCTION ov08_02223F34: matching C (r2)
+#define NUM_BATTLE_BAG_SPRITES 6
+typedef struct UnkStruct_ov08_02223F34_Context {
+    BattleSystem *battleSys;
+} UnkStruct_ov08_02223F34_Context;
+typedef struct UnkStruct_ov08_02223F34 {
+    UnkStruct_ov08_02223F34_Context *context;
+    u8 pad_04[0x30C - 0x04];
+    SpriteManager *spriteManager;
+    ManagedSprite *sprites[NUM_BATTLE_BAG_SPRITES];
+} UnkStruct_ov08_02223F34;
+void ov08_02224108(UnkStruct_ov08_02223F34 *battleBag);
+void ov08_022241F4(UnkStruct_ov08_02223F34 *battleBag);
+void ov08_02223F34(UnkStruct_ov08_02223F34 *battleBag);
+// FUNCTION ov08_02223F34: matching C (twin)
 #pragma force_active on
-void ov08_02223F34(undefined4 *param_1)
+void ov08_02223F34(UnkStruct_ov08_02223F34 *battleBag) {
+    SpriteSystem *spriteSystem = BattleSystem_GetSpriteSystem(battleBag->context->battleSys);
 
-{
-    undefined4 uVar1;
-    uint uVar2;
-    undefined4 *puVar3;
+    for (u32 i = 0; i < NUM_BATTLE_BAG_SPRITES; i++) {
+        Sprite_DeleteAndFreeResources(battleBag->sprites[i]);
+    }
 
-    uVar1 = BattleSystem_GetSpriteSystem(*(undefined4 *)*param_1);
-    uVar2 = 0;
-    puVar3 = param_1;
-    do {
-        Sprite_DeleteAndFreeResources(puVar3[0xc4]);
-        uVar2 = uVar2 + 1;
-        puVar3 = puVar3 + 1;
-    } while (uVar2 < 6);
-    ov08_02224108(param_1);
-    ov08_022241F4(param_1);
-    SpriteSystem_FreeResourcesAndManager(uVar1, param_1[0xc3]);
-    return;
+    ov08_02224108(battleBag);
+    ov08_022241F4(battleBag);
+    SpriteSystem_FreeResourcesAndManager(spriteSystem, battleBag->spriteManager);
 }
 #pragma force_active reset

@@ -3,20 +3,30 @@
 #pragma thumb on
 #include "global.h"
 
-#include "ghidra_compat.h"
+#include "bg_window.h"
 #include "render_window.h"
-typedef int code();
-undefined4 ov82_0223EFCC();
-undefined4 ov82_0223FCB0();
-void ov82_0223F90C(int param_1);
-// FUNCTION ov82_0223F90C: matching C (r2)
-#pragma force_active on
-void ov82_0223F90C(int param_1)
 
-{
-    ov82_0223FCB0(*(undefined4 *)(param_1 + 0x208), 1);
-    ClearFrameAndWindow2(param_1 + 0x4c, 0);
-    ov82_0223EFCC(param_1, param_1 + 0x5c, 0, 0, 1, 2, 0, 0);
-    return;
+typedef struct UnkStruct_ov82_0223F90C {
+    u8 unk_00[0x4C];
+    Window windows[2];
+    u8 unk_6C[0x208 - 0x6C];
+    void *monSprite;
+} UnkStruct_ov82_0223F90C;
+
+enum {
+    WINDOW_MSG_BOX = 0,
+    WINDOW_MON_NAME,
+};
+
+void ov82_0223FCB0(void *sprite, BOOL drawFlag);
+void ov82_0223EFCC(UnkStruct_ov82_0223F90C *app, Window *window, int a2, int a3, int a4, int a5, int a6, int a7);
+
+// FUNCTION ov82_0223F90C: matching C (twin)
+#pragma force_active on
+void ov82_0223F90C(UnkStruct_ov82_0223F90C *app) {
+    ov82_0223FCB0(app->monSprite, TRUE);
+    ClearFrameAndWindow2(&app->windows[WINDOW_MSG_BOX], FALSE);
+
+    ov82_0223EFCC(app, &app->windows[WINDOW_MON_NAME], 0, 0, 1, 2, 0, 0);
 }
 #pragma force_active reset

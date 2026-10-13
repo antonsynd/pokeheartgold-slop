@@ -4,23 +4,23 @@
 #include "global.h"
 
 #include "bg_window.h"
-#include "ghidra_compat.h"
 #include "heap.h"
-typedef int code();
-undefined4 ov85_021E8588();
-void ov85_021E6DAC(int param_1, undefined4 param_2, undefined4 param_3, undefined4 param_4);
-// FUNCTION ov85_021E6DAC: matching C (r4)
+
+typedef struct UnkStruct_ov85_021E6DAC {
+    u8 unk_00[0xD84];
+    BgConfig *unk_D84;
+    NNSG2dScreenData *unk_D88;
+} UnkStruct_ov85_021E6DAC;
+
+void *ov85_021E8588(UnkStruct_ov85_021E6DAC *param0, u32 param1, BOOL param2);
+// FUNCTION ov85_021E6DAC: matching C (twin)
 #pragma force_active on
-void ov85_021E6DAC(int param_1, undefined4 param_2, undefined4 param_3, undefined4 param_4)
+void ov85_021E6DAC(UnkStruct_ov85_021E6DAC *param0, u32 param1) {
+    void *v0 = ov85_021E8588(param0, param1, 0);
+    NNS_G2dGetUnpackedScreenData(v0, &param0->unk_D88);
 
-{
-    undefined4 uVar1;
-
-    uVar1 = ov85_021E8588(param_1, param_2, 0);
-    NNS_G2dGetUnpackedScreenData(uVar1, param_1 + 0xd88);
-    BG_LoadScreenTilemapData(*(undefined4 *)(param_1 + 0xd84), 6, *(int *)(param_1 + 0xd88) + 0xc, *(undefined4 *)(*(int *)(param_1 + 0xd88) + 8));
-    BgCommitTilemapBufferToVram(*(undefined4 *)(param_1 + 0xd84), 6);
-    Heap_Free(uVar1);
-    return;
+    BG_LoadScreenTilemapData(param0->unk_D84, 6, param0->unk_D88->rawData, param0->unk_D88->szByte);
+    BgCommitTilemapBufferToVram(param0->unk_D84, 6);
+    Heap_Free(v0);
 }
 #pragma force_active reset

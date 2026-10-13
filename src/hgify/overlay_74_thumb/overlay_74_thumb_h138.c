@@ -3,27 +3,38 @@
 #pragma thumb on
 #include "global.h"
 
-#include "ghidra_compat.h"
 #include "mystery_gift.h"
-typedef int code();
-int ov74_0222DAF8(int param_1, int param_2, int param_3);
-// FUNCTION ov74_0222DAF8: matching C (perm3)
+#define NUM_WONDERCARD_SLOTS 3
+typedef struct UnkStruct_ov74_0222DAF8 {
+    u8 pad_0000[0x2BA0];
+    MysteryGiftSave *mysteryGift;
+} UnkStruct_ov74_0222DAF8;
+int ov74_0222DAF8(UnkStruct_ov74_0222DAF8 *appData, int current, int direction);
+// FUNCTION ov74_0222DAF8: matching C (twin)
 #pragma force_active on
-int ov74_0222DAF8(int param_1, int param_2, int param_3) {
-    int iVar1;
-    unsigned int new_var;
-    int iVar2;
-    iVar2 = param_2;
-    new_var = param_2;
-    do {
-        iVar2 = iVar2 + param_3;
-        if (iVar2 == 3) {
-            iVar2 = 0;
+int ov74_0222DAF8(UnkStruct_ov74_0222DAF8 *appData, int current, int direction) {
+    int initial = current;
+
+    while (TRUE) {
+        current += direction;
+
+        if (current == NUM_WONDERCARD_SLOTS) {
+            current = 0;
         }
-        if (iVar2 == (-1)) {
-            iVar2 = 2;
+
+        if (current == -1) {
+            current = NUM_WONDERCARD_SLOTS - 1;
         }
-    } while ((new_var != iVar2) && (iVar1 = SaveMysteryGift_CardTagIsValid(*((undefined4 *)(param_1 + 0x2ba0)), iVar2), iVar1 == 0));
-    return iVar2;
+
+        if (initial == current) {
+            break;
+        }
+
+        if (SaveMysteryGift_CardTagIsValid(appData->mysteryGift, current)) {
+            break;
+        }
+    }
+
+    return current;
 }
 #pragma force_active reset

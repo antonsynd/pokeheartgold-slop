@@ -3,52 +3,16 @@
 #pragma thumb on
 #include "global.h"
 
-#include "constants/abilities.h"
-#include "constants/battle.h"
-#include "constants/pokemon.h"
-
 #include "frontier/overlay_80_022340E8.h"
 #include "frontier/overlay_80_02238034.h"
 
-#include "field_move.h"
-#include "math_util.h"
 #include "party.h"
-#include "pokemon.h"
-extern const u16 ov80_0223BEA8[];
-extern const u16 ov80_0223BF32[];
-extern const u16 ov80_0223BED8[];
-extern const u16 ov80_0223BEEC[];
-extern const u16 ov80_0223BF18[];
-extern const u16 ov80_0223BF02[];
-extern const u8 ov80_0223C01C[];
-extern const u8 ov80_0223C028[];
-void ov80_02234ECC(ArcadeContext *arcade, Party *party, u8 partySize);
-void ov80_02234F28(ArcadeContext *arcade, Party *party, u8 partySize);
-void ov80_02234FAC(ArcadeContext *arcade, Party *party, u8 partySize);
-void ov80_02235024(ArcadeContext *arcade, Party *party, u8 partySize);
-void ov80_0223509C(ArcadeContext *arcade, Party *party, u8 partySize);
-void ov80_02235118(ArcadeContext *arcade, Party *party, u8 partySize);
-void ov80_022351AC(ArcadeContext *arcade, Party *party, u8 partySize);
-void ov80_02235208(ArcadeContext *arcade, Party *party, u8 partySize);
-void ov80_02235264(ArcadeContext *arcade, Party *party, u8 partySize);
-void ov80_022352BC(ArcadeContext *arcade, Party *party, u8 partySize);
-void ov80_022352C8(ArcadeContext *arcade, Party *party, u8 partySize);
-void ov80_022352D0(ArcadeContext *arcade, Party *party, u8 partySize);
-void ov80_022352D8(ArcadeContext *arcade, Party *party, u8 partySize);
-void ov80_022352E0(ArcadeContext *arcade, Party *party, u8 partySize);
-void ov80_022352E8(ArcadeContext *arcade, Party *party, u8 partySize);
-void ov80_022352F4(ArcadeContext *arcade, Party *party, u8 partySize);
-void ov80_02235300(ArcadeContext *arcade, Party *party, u8 partySize);
-void ov80_0223530C(ArcadeContext *arcade, Party *party, u8 partySize);
-void ov80_02235314(ArcadeContext *arcade, Party *party, u8 partySize);
-void ov80_02235318(ArcadeContext *arcade, Party *party, u8 partySize);
-void ov80_0223531C(ArcadeContext *arcade, Party *party, u8 partySize);
-void ov80_02235320(ArcadeContext *arcade, Party *party, u8 partySize);
-extern const u16 *ov80_0223DCA0[6];
+
 typedef void (*ov80_ArcadeEffectFunc)(ArcadeContext *, Party *, u8);
 extern ov80_ArcadeEffectFunc ov80_0223DCB8[32];
+
 void ov80_02234E98(ArcadeContext *arcade, u8 effect);
-// FUNCTION ov80_02234E98: matching C (r0)
+// FUNCTION ov80_02234E98: matching C (twin)
 #pragma force_active on
 void ov80_02234E98(ArcadeContext *arcade, u8 effect) {
     u8 partySize;
@@ -62,50 +26,7 @@ void ov80_02234E98(ArcadeContext *arcade, u8 effect) {
         partySize = BattleArcade_GetMonCount(arcade->type, TRUE);
     }
 
-    ov80_0223DCB8[effect](arcade, party, partySize);
+    ov80_ArcadeEffectFunc func = ov80_0223DCB8[effect];
+    func(arcade, party, partySize);
 }
 #pragma force_active reset
-void ov80_02234ECC(ArcadeContext *arcade, Party *party, u8 partySize);
-void ov80_02234ECC(ArcadeContext *arcade, Party *party, u8 partySize);
-void ov80_02234F28(ArcadeContext *arcade, Party *party, u8 partySize);
-void ov80_02234F28(ArcadeContext *arcade, Party *party, u8 partySize);
-void ov80_02234FAC(ArcadeContext *arcade, Party *party, u8 partySize);
-void ov80_02234FAC(ArcadeContext *arcade, Party *party, u8 partySize);
-void ov80_02235024(ArcadeContext *arcade, Party *party, u8 partySize);
-void ov80_02235024(ArcadeContext *arcade, Party *party, u8 partySize);
-void ov80_0223509C(ArcadeContext *arcade, Party *party, u8 partySize);
-void ov80_0223509C(ArcadeContext *arcade, Party *party, u8 partySize);
-void ov80_02235118(ArcadeContext *arcade, Party *party, u8 partySize);
-void ov80_02235118(ArcadeContext *arcade, Party *party, u8 partySize);
-void ov80_022351AC(ArcadeContext *arcade, Party *party, u8 partySize);
-void ov80_022351AC(ArcadeContext *arcade, Party *party, u8 partySize);
-void ov80_02235208(ArcadeContext *arcade, Party *party, u8 partySize);
-void ov80_02235208(ArcadeContext *arcade, Party *party, u8 partySize);
-void ov80_02235264(ArcadeContext *arcade, Party *party, u8 partySize);
-void ov80_02235264(ArcadeContext *arcade, Party *party, u8 partySize);
-void ov80_022352BC(ArcadeContext *arcade, Party *party, u8 partySize);
-void ov80_022352BC(ArcadeContext *arcade, Party *party, u8 partySize);
-void ov80_022352C8(ArcadeContext *arcade, Party *party, u8 partySize);
-void ov80_022352C8(ArcadeContext *arcade, Party *party, u8 partySize);
-void ov80_022352D0(ArcadeContext *arcade, Party *party, u8 partySize);
-void ov80_022352D0(ArcadeContext *arcade, Party *party, u8 partySize);
-void ov80_022352D8(ArcadeContext *arcade, Party *party, u8 partySize);
-void ov80_022352D8(ArcadeContext *arcade, Party *party, u8 partySize);
-void ov80_022352E0(ArcadeContext *arcade, Party *party, u8 partySize);
-void ov80_022352E0(ArcadeContext *arcade, Party *party, u8 partySize);
-void ov80_022352E8(ArcadeContext *arcade, Party *party, u8 partySize);
-void ov80_022352E8(ArcadeContext *arcade, Party *party, u8 partySize);
-void ov80_022352F4(ArcadeContext *arcade, Party *party, u8 partySize);
-void ov80_022352F4(ArcadeContext *arcade, Party *party, u8 partySize);
-void ov80_02235300(ArcadeContext *arcade, Party *party, u8 partySize);
-void ov80_02235300(ArcadeContext *arcade, Party *party, u8 partySize);
-void ov80_0223530C(ArcadeContext *arcade, Party *party, u8 partySize);
-void ov80_0223530C(ArcadeContext *arcade, Party *party, u8 partySize);
-void ov80_02235314(ArcadeContext *arcade, Party *party, u8 partySize);
-void ov80_02235314(ArcadeContext *arcade, Party *party, u8 partySize);
-void ov80_02235318(ArcadeContext *arcade, Party *party, u8 partySize);
-void ov80_02235318(ArcadeContext *arcade, Party *party, u8 partySize);
-void ov80_0223531C(ArcadeContext *arcade, Party *party, u8 partySize);
-void ov80_0223531C(ArcadeContext *arcade, Party *party, u8 partySize);
-void ov80_02235320(ArcadeContext *arcade, Party *party, u8 partySize);
-void ov80_02235320(ArcadeContext *arcade, Party *party, u8 partySize);

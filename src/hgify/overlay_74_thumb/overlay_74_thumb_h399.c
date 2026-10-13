@@ -3,25 +3,23 @@
 #pragma thumb on
 #include "global.h"
 
-#include "ghidra_compat.h"
 #include "heap.h"
 #include "overlay_manager.h"
 #include "screen_fade.h"
-typedef int code();
-undefined4 ov74_022352D0(undefined4 param_1, undefined4 param_2, undefined4 param_3, undefined4 param_4);
-// FUNCTION ov74_022352D0: matching C (r2)
+
+// FUNCTION ov74_022352D0: matching C (twin)
 #pragma force_active on
-undefined4
-ov74_022352D0(undefined4 param_1, undefined4 param_2, undefined4 param_3, undefined4 param_4)
+void *ov74_022352D0(OverlayManager *appMan, enum HeapID heapID, int appDataSize, u32 heapSize) {
+    void *newAppData;
 
-{
-    undefined4 uVar1;
+    Heap_Create(3, heapID, heapSize);
+    newAppData = OverlayManager_CreateAndGetData(appMan, appDataSize, heapID);
 
-    Heap_Create(3, param_2, param_4);
-    uVar1 = OverlayManager_CreateAndGetData(param_1, param_3, param_2);
-    memset(uVar1, 0, param_3);
+    memset(newAppData, 0, appDataSize);
+
     sub_0200FBF4(0, 0);
     sub_0200FBF4(1, 0);
-    return uVar1;
+
+    return newAppData;
 }
 #pragma force_active reset

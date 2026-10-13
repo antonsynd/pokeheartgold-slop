@@ -3,26 +3,49 @@
 #pragma thumb on
 #include "global.h"
 
-#include "ghidra_compat.h"
 #include "pokepic.h"
 #include "sprite_system.h"
-typedef int code();
-undefined4 ov40_02230958();
-void ov40_0222FBBC(undefined4 param_1, int param_2);
-// FUNCTION ov40_0222FBBC: matching C (r2)
+#include "sys_task.h"
+
+typedef struct UnkStruct_ov40_0222FBBC_sub {
+    u8 unk_00[0x8];
+    SpriteManager *unk_08;
+    u8 unk_0C[0x50 - 0x0C];
+    PokepicManager *unk_50;
+    u8 unk_54[0x510 - 0x54];
+    int unk_510;
+} UnkStruct_ov40_0222FBBC_sub;
+
+typedef struct UnkStruct_ov40_0222FBBC {
+    u8 unk_00[0x14];
+    UnkStruct_ov40_0222FBBC_sub unk_14;
+} UnkStruct_ov40_0222FBBC;
+
+int ov40_02230958(UnkStruct_ov40_0222FBBC *param0);
+
+// FUNCTION ov40_0222FBBC: matching C (twin)
 #pragma force_active on
-void ov40_0222FBBC(undefined4 param_1, int param_2)
+void ov40_0222FBBC(SysTask *param0, void *param1) {
+    UnkStruct_ov40_0222FBBC *v0 = param1;
 
-{
-    int iVar1;
-
-    if (((*(int *)(param_2 + 0x1c) != 0) && (iVar1 = ov40_02230958(param_2), iVar1 != 1)) && (*(int *)(param_2 + 0x524) != 1)) {
-        *(undefined4 *)(param_2 + 0x524) = 1;
-        PokepicManager_HandleLoadImgAndOrPltt(*(undefined4 *)(param_2 + 100));
-        SpriteSystem_DrawSprites(*(undefined4 *)(param_2 + 0x1c));
-        SpriteSystem_TransferOam();
-        *(undefined4 *)(param_2 + 0x524) = 0;
+    if (v0->unk_14.unk_08 == NULL) {
+        return;
     }
-    return;
+
+    if (ov40_02230958(v0) == 1) {
+        return;
+    }
+
+    if (v0->unk_14.unk_510 == 1) {
+        return;
+    }
+
+    v0->unk_14.unk_510 = 1;
+
+    PokepicManager_HandleLoadImgAndOrPltt(v0->unk_14.unk_50);
+    SpriteSystem_DrawSprites(v0->unk_14.unk_08);
+    SpriteSystem_TransferOam();
+
+    v0->unk_14.unk_510 = 0;
 }
 #pragma force_active reset

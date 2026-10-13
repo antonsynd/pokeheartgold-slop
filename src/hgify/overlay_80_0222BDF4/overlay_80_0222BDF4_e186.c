@@ -3,24 +3,25 @@
 #pragma thumb on
 #include "global.h"
 
-#include "ghidra_compat.h"
 #include "sprite_system.h"
-typedef int code();
-void ov80_0222F1D0(int param_1, int param_2);
-// FUNCTION ov80_0222F1D0: matching C (r2)
+
+typedef struct UnkStruct_ov80_0222F1D0 {
+    u8 unk_00[0x38];
+    SpriteManager *spriteMan;
+    u8 unk_3C[0x80 - 0x3C];
+    ManagedSprite *unk_80[1];
+} UnkStruct_ov80_0222F1D0;
+
+// FUNCTION ov80_0222F1D0: matching C (twin)
 #pragma force_active on
-void ov80_0222F1D0(int param_1, int param_2)
+void ov80_0222F1D0(UnkStruct_ov80_0222F1D0 *param0, int param1) {
+    Sprite_DeleteAndFreeResources(param0->unk_80[param1 - 50000]);
 
-{
-    int iVar1;
+    param0->unk_80[param1 - 50000] = NULL;
 
-    iVar1 = (param_2 + -50000) * 4;
-    Sprite_DeleteAndFreeResources(*(undefined4 *)(param_1 + 0x80 + iVar1));
-    *(undefined4 *)(param_1 + 0x80 + iVar1) = 0;
-    SpriteManager_UnloadCharObjById(*(undefined4 *)(param_1 + 0x38), param_2);
-    SpriteManager_UnloadPlttObjById(*(undefined4 *)(param_1 + 0x38), param_2);
-    SpriteManager_UnloadCellObjById(*(undefined4 *)(param_1 + 0x38), param_2);
-    SpriteManager_UnloadAnimObjById(*(undefined4 *)(param_1 + 0x38), param_2);
-    return;
+    SpriteManager_UnloadCharObjById(param0->spriteMan, param1);
+    SpriteManager_UnloadPlttObjById(param0->spriteMan, param1);
+    SpriteManager_UnloadCellObjById(param0->spriteMan, param1);
+    SpriteManager_UnloadAnimObjById(param0->spriteMan, param1);
 }
 #pragma force_active reset

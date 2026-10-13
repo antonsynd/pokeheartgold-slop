@@ -4,17 +4,16 @@
 #include "global.h"
 
 #include "bg_window.h"
-#include "ghidra_compat.h"
-typedef int code();
-void ov71_0224A0B8(undefined4 param_1, uint param_2, uint param_3);
-// FUNCTION ov71_0224A0B8: matching C (perm3)
+#include "gf_gfx_planes.h"
+void ov71_0224A0B8(BgConfig *bgConfig, int bg1Scroll, int bg2Scroll);
+// FUNCTION ov71_0224A0B8: matching C (twin)
 #pragma force_active on
-void ov71_0224A0B8(undefined4 param_1, uint param_2, uint param_3) {
-    int new_var;
-    new_var = param_2 & 0x1ff;
-    BgSetPosTextAndCommit(param_1, 2, 3, param_3 & 0x1ff);
-    BgSetPosTextAndCommit(param_1, 1, 3, new_var);
-    BgSetPosTextAndCommit(param_1, 5, 3, new_var + 0xc0);
-    return;
+void ov71_0224A0B8(BgConfig *bgConfig, int bg1Scroll, int bg2Scroll) {
+    bg2Scroll &= 0x1ff;
+    bg1Scroll &= 0x1ff;
+
+    BgSetPosTextAndCommit(bgConfig, GF_BG_LYR_MAIN_2, BG_POS_OP_SET_Y, bg2Scroll);
+    BgSetPosTextAndCommit(bgConfig, GF_BG_LYR_MAIN_1, BG_POS_OP_SET_Y, bg1Scroll);
+    BgSetPosTextAndCommit(bgConfig, GF_BG_LYR_SUB_1, BG_POS_OP_SET_Y, bg1Scroll + 192);
 }
 #pragma force_active reset

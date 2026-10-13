@@ -3,27 +3,30 @@
 #pragma thumb on
 #include "global.h"
 
-#include "ghidra_compat.h"
 #include "map_object.h"
-typedef int code();
-undefined4 sub_02060F24();
-void sub_02062FAC(undefined4 param_1, undefined4 param_2, undefined4 param_3, undefined4 param_4);
-// FUNCTION sub_02062FAC: matching C (r3)
+
+typedef struct UnkStruct_sub_02062FAC {
+    short dir;
+    u16 unused;
+    short duration;
+    u8 unk_06[2];
+} UnkStruct_sub_02062FAC;
+
+void sub_02060F24(LocalMapObject *object, u32 dir);
+
+// FUNCTION sub_02062FAC: matching C (twin)
 #pragma force_active on
-void sub_02062FAC(undefined4 param_1, undefined4 param_2, undefined4 param_3, undefined4 param_4)
+void sub_02062FAC(LocalMapObject *mapObj, u32 dir, short duration, u16 param3) {
+    UnkStruct_sub_02062FAC *data = (UnkStruct_sub_02062FAC *)sub_0205F3C0(mapObj, sizeof(UnkStruct_sub_02062FAC));
 
-{
-    undefined2 *puVar1;
+    data->dir = dir;
+    data->unused = param3;
+    data->duration = duration;
 
-    puVar1 = (undefined2 *)sub_0205F3C0(param_1, 8);
-    *puVar1 = (short)param_2;
-    puVar1[1] = (short)param_4;
-    puVar1[2] = (short)param_3;
-    sub_02060F24(param_1, param_2);
-    MapObject_SetOrQueueFacing(param_1, param_2);
-    sub_0205F328(param_1, param_4);
-    MapObject_SetFlagsBits(param_1, 4);
-    MapObject_IncrementMovementStep(param_1);
-    return;
+    sub_02060F24(mapObj, dir);
+    MapObject_SetOrQueueFacing(mapObj, dir);
+    sub_0205F328(mapObj, param3);
+    MapObject_SetFlagsBits(mapObj, 4);
+    MapObject_IncrementMovementStep(mapObj);
 }
 #pragma force_active reset

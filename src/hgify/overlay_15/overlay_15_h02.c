@@ -4,23 +4,25 @@
 #include "global.h"
 
 #include "bag.h"
-#include "ghidra_compat.h"
 #include "player_data.h"
-typedef int code();
-void BagApp_GetSaveStructPtrs(int param_1);
-// FUNCTION BagApp_GetSaveStructPtrs: matching C (r2)
+
+typedef struct UnkStruct_BagApp_GetSaveStructPtrs_ctx {
+    SaveData *saveData;
+} UnkStruct_BagApp_GetSaveStructPtrs_ctx;
+
+typedef struct UnkStruct_BagApp_GetSaveStructPtrs {
+    u8 unk_000[0x234];
+    UnkStruct_BagApp_GetSaveStructPtrs_ctx *bagCtx;
+    Bag *bag;
+    PlayerProfile *trainerInfo;
+    Options *options;
+} UnkStruct_BagApp_GetSaveStructPtrs;
+
+// FUNCTION BagApp_GetSaveStructPtrs: matching C (twin)
 #pragma force_active on
-void BagApp_GetSaveStructPtrs(int param_1)
-
-{
-    undefined4 uVar1;
-
-    uVar1 = Save_Bag_Get(**(undefined4 **)(param_1 + 0x234));
-    *(undefined4 *)(param_1 + 0x238) = uVar1;
-    uVar1 = Save_PlayerData_GetProfile(**(undefined4 **)(param_1 + 0x234));
-    *(undefined4 *)(param_1 + 0x23c) = uVar1;
-    uVar1 = Save_PlayerData_GetOptionsAddr(**(undefined4 **)(param_1 + 0x234));
-    *(undefined4 *)(param_1 + 0x240) = uVar1;
-    return;
+void BagApp_GetSaveStructPtrs(UnkStruct_BagApp_GetSaveStructPtrs *controller) {
+    controller->bag = Save_Bag_Get(controller->bagCtx->saveData);
+    controller->trainerInfo = Save_PlayerData_GetProfile(controller->bagCtx->saveData);
+    controller->options = Save_PlayerData_GetOptionsAddr(controller->bagCtx->saveData);
 }
 #pragma force_active reset

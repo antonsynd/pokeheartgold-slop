@@ -3,32 +3,36 @@
 #pragma thumb on
 #include "global.h"
 
-#include "ghidra_compat.h"
+#include "battle/battle.h"
+
 #include "heap.h"
 #include "sys_task_api.h"
-typedef int code();
-typedef struct S12a {
-    u32 f0;
-    u8 f4;
-    u8 f5;
-    u8 f6;
-    u8 f7;
-} S12a;
-typedef struct S12b {
+
+typedef struct UnkStruct_ov12_0225ABE8 {
+    BattleSystem *battleSys;
+    u8 command;
+    u8 battler;
+    u8 state;
+} UnkStruct_ov12_0225ABE8;
+
+typedef struct UnkStruct_ov12_0225ABE8_BattlerData {
     u8 pad0[0x94];
-    u8 f94;
+    u8 data0;
     u8 pad1[0x194 - 0x95];
-    u8 f194;
-} S12b;
+    u8 battler;
+} UnkStruct_ov12_0225ABE8_BattlerData;
+
 void ov12_0226037C(SysTask *a, void *b);
-// FUNCTION ov12_0225ABE8: matching C (agent7)
+// FUNCTION ov12_0225ABE8: matching C (twin)
 #pragma force_active on
-void ov12_0225ABE8(u32 param_1, S12b *param_2) {
-    S12a *p = Heap_Alloc(5, 8);
-    p->f6 = 0;
-    p->f0 = param_1;
-    p->f4 = param_2->f94;
-    p->f5 = param_2->f194;
-    SysTask_CreateOnMainQueue(ov12_0226037C, p, 0);
+void ov12_0225ABE8(BattleSystem *battleSys, UnkStruct_ov12_0225ABE8_BattlerData *battlerData) {
+    UnkStruct_ov12_0225ABE8 *fadeOutData = Heap_Alloc(HEAP_ID_BATTLE, sizeof(UnkStruct_ov12_0225ABE8));
+
+    fadeOutData->state = 0;
+    fadeOutData->battleSys = battleSys;
+    fadeOutData->command = battlerData->data0;
+    fadeOutData->battler = battlerData->battler;
+
+    SysTask_CreateOnMainQueue(ov12_0226037C, fadeOutData, 0);
 }
 #pragma force_active reset

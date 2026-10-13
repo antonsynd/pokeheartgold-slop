@@ -3,27 +3,24 @@
 #pragma thumb on
 #include "global.h"
 
-#include "ghidra_compat.h"
 #include "heap.h"
 #include "message_format.h"
 #include "player_data.h"
 #include "unk_0202C034.h"
-typedef int code();
-void ov43_0222AB20(int param_1, undefined4 param_2, undefined4 param_3, undefined4 param_4);
-// FUNCTION ov43_0222AB20: matching C (r2)
+
+typedef struct UnkStruct_ov43_0222AB20 {
+    u8 unk_00[0x50];
+    MessageFormat *unk_50;
+} UnkStruct_ov43_0222AB20;
+
+// FUNCTION ov43_0222AB20: matching C (twin)
 #pragma force_active on
-void ov43_0222AB20(int param_1, undefined4 param_2, undefined4 param_3, undefined4 param_4)
+void ov43_0222AB20(UnkStruct_ov43_0222AB20 *param0, SaveData *saveData, u32 param2, enum HeapID heapID) {
+    WiFiList *v0 = sub_0202C6F4(saveData);
+    PlayerProfile *v1 = PlayerProfile_New(heapID);
 
-{
-    undefined4 uVar1;
-    undefined4 uVar2;
-
-    uVar1 = sub_0202C6F4(param_2);
-    uVar2 = PlayerProfile_New(param_4);
-    uVar1 = sub_0202C254(uVar1, param_3);
-    Save_Profile_PlayerName_Set(uVar2, uVar1);
-    BufferPlayersName(*(undefined4 *)(param_1 + 0x50), 0, uVar2);
-    Heap_Free(uVar2);
-    return;
+    Save_Profile_PlayerName_Set(v1, sub_0202C254(v0, param2));
+    BufferPlayersName(param0->unk_50, 0, v1);
+    Heap_Free(v1);
 }
 #pragma force_active reset

@@ -2,12 +2,14 @@
 #pragma warning_errors off
 #pragma thumb on
 #include "global.h"
+
 typedef struct UnkStruct_ov90_0225BAA0_Inner {
     u8 unk_00[4];
     u8 unk_04[4];
     u8 unk_08[0x28];
     void *unk_30;
 } UnkStruct_ov90_0225BAA0_Inner;
+
 typedef struct UnkStruct_ov90_0225BAA0 {
     u8 unk_00[7];
     u8 unk_07;
@@ -18,9 +20,10 @@ typedef struct UnkStruct_ov90_0225BAA0 {
     u8 unk_1C[0x14];
     u32 unk_30;
 } UnkStruct_ov90_0225BAA0;
+
 extern void ov45_0222ACB8(void *param0, u32 param1, u32 param2, u32 param3, u32 param4, u32 param5, u32 param6);
-void ov90_0225BAA0(UnkStruct_ov90_0225BAA0 *param0);
-// FUNCTION ov90_0225BAA0: matching C (r0)
+
+// FUNCTION ov90_0225BAA0: matching C (twin)
 #pragma force_active on
 void ov90_0225BAA0(UnkStruct_ov90_0225BAA0 *param0) {
     if (param0->unk_14 > 0) {

@@ -3,23 +3,22 @@
 #pragma thumb on
 #include "global.h"
 
-#include "ghidra_compat.h"
 #include "unk_02005D10.h"
-typedef int code();
-undefined4 ov70_02238E50();
-undefined4 ov70_02238D84();
-undefined4 ov70_0223CAC4();
-undefined4 ov70_0223C2B0(undefined4 param_1, undefined4 param_2, undefined4 param_3, undefined4 param_4);
-// FUNCTION ov70_0223C2B0: matching C (agent7)
-#pragma force_active on
-undefined4
-ov70_0223C2B0(undefined4 param_1, undefined4 param_2, undefined4 param_3, undefined4 param_4)
 
-{
-    ov70_0223CAC4(param_1, 0x9e, 4, 0, 0xf0f);
-    ov70_02238D84(param_1, 0x16, 2);
-    ov70_02238E50(param_1, 0, 0);
+typedef struct UnkStruct_ov70_0223C2B0 UnkStruct_ov70_0223C2B0;
+
+void ov70_0223CAC4(UnkStruct_ov70_0223C2B0 *appState, int param1, int param2, int param3, int param4);
+void ov70_02238D84(UnkStruct_ov70_0223C2B0 *appState, int param1, int param2);
+void ov70_02238E50(UnkStruct_ov70_0223C2B0 *appState, int param1, int param2);
+int ov70_0223C2B0(UnkStruct_ov70_0223C2B0 *appState);
+// FUNCTION ov70_0223C2B0: matching C (twin)
+#pragma force_active on
+int ov70_0223C2B0(UnkStruct_ov70_0223C2B0 *appState) {
+    ov70_0223CAC4(appState, 0x9e, 4, 0, 0xf0f);
+    ov70_02238D84(appState, 0x16, 2);
+    ov70_02238E50(appState, 0, 0);
     PlaySE(0x5f3);
+
     return 3;
 }
 #pragma force_active reset

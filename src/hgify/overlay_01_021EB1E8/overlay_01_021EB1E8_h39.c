@@ -5,6 +5,7 @@
 
 #include "sprite_transfer.h"
 #include "unk_0200A090.h"
+
 typedef struct S1 {
     u8 filler_0[0xc];
     int unk_0c;
@@ -15,18 +16,22 @@ typedef struct S1 {
     u8 filler_10c[0x100 - 0xc];
     int unk_208;
 } S1;
+
 typedef struct S2 {
     int unk_0;
     SpriteResource *res;
 } S2;
+
 SpriteResource *ov01_021EB898(int a, int b, int c, int d, int e, int f);
-// FUNCTION ov01_021EBF94: matching C (agent4)
+
+// FUNCTION ov01_021EBF94: matching C (twin)
 #pragma force_active on
-void ov01_021EBF94(S1 *a, int id, S2 *out) {
-    if (id != 0xffff) {
-        out->res = ov01_021EB898(a->unk_18, 1, id, a->unk_0c, a->unk_108, 1);
-        SpriteTransfer_CreatePlttTransferTask(out->res);
-        sub_0200A740(out->res);
+void ov01_021EBF94(S1 *param0, int param1, S2 *param2) {
+    if (param1 != 0xffff) {
+        param2->res = ov01_021EB898(param0->unk_18, 1, param1, param0->unk_0c, param0->unk_108, 1);
+
+        SpriteTransfer_CreatePlttTransferTask(param2->res);
+        sub_0200A740(param2->res);
     }
 }
 #pragma force_active reset

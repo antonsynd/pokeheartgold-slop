@@ -90,7 +90,7 @@ void ov49_0225B058(struct ListMenu *list, s32 index, u8 onInit);
 void ov49_0225AF30(UnkStruct_ov49_0225AC_List *param0, const ListMenuTemplate *param1, UnkStruct_ov49_0225AC_Gfx *param2, u16 param3, u16 param4, u32 heapID, u8 param6, u8 param7, u8 param8);
 void ov49_0225AF30(UnkStruct_ov49_0225AC_List *param0, const ListMenuTemplate *param1, UnkStruct_ov49_0225AC_Gfx *param2, u16 param3, u16 param4, u32 heapID, u8 param6, u8 param7, u8 param8);
 u32 ov49_0225AFD8(UnkStruct_ov49_0225AC_List *param0);
-// FUNCTION ov49_0225AFD8: matching C (r2)
+// FUNCTION ov49_0225AFD8: matching C (twin)
 #pragma force_active on
 u32 ov49_0225AFD8(UnkStruct_ov49_0225AC_List *param0) {
     u32 v0;

@@ -3,23 +3,28 @@
 #pragma thumb on
 #include "global.h"
 
-#include "ghidra_compat.h"
 #include "heap.h"
 #include "palette.h"
-typedef int code();
-void ov56_021E692C(int param_1);
-// FUNCTION ov56_021E692C: matching C (r2)
-#pragma force_active on
-void ov56_021E692C(int param_1)
 
-{
-    Heap_Free(*(undefined4 *)(param_1 + 0x40));
-    Heap_Free(*(undefined4 *)(param_1 + 0x3c));
-    PaletteData_FreeBuffers(*(undefined4 *)(param_1 + 0x30), 2);
-    PaletteData_FreeBuffers(*(undefined4 *)(param_1 + 0x30), 0);
-    PaletteData_Free(*(undefined4 *)(param_1 + 0x30));
-    *(undefined4 *)(param_1 + 0x30) = 0;
+typedef struct UnkStruct_ov56_021E692C {
+    u8 unk_00[0x30];
+    PaletteData *paletteData;
+    u8 unk_34[0x8];
+    void *backgroundNSCRBuffer;
+    void *interfaceNSCRBuffer;
+} UnkStruct_ov56_021E692C;
+
+// FUNCTION ov56_021E692C: matching C (twin)
+#pragma force_active on
+void ov56_021E692C(UnkStruct_ov56_021E692C *mailViewerApp) {
+    Heap_Free(mailViewerApp->interfaceNSCRBuffer);
+    Heap_Free(mailViewerApp->backgroundNSCRBuffer);
+    PaletteData_FreeBuffers(mailViewerApp->paletteData, PLTTBUF_MAIN_OBJ);
+    PaletteData_FreeBuffers(mailViewerApp->paletteData, PLTTBUF_MAIN_BG);
+    PaletteData_Free(mailViewerApp->paletteData);
+
+    mailViewerApp->paletteData = NULL;
+
     G2x_SetBlendAlpha_(0x4000050, 0, 0, 0x1f, 0);
-    return;
 }
 #pragma force_active reset

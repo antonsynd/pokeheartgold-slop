@@ -3,39 +3,44 @@
 #pragma thumb on
 #include "global.h"
 
-#include "ghidra_compat.h"
+#include "constants/heap.h"
+
+#include "battle/battle.h"
+
 #include "heap.h"
 #include "sys_task_api.h"
-typedef void code(void);
-typedef struct Task12 {
-    void *a;
-    void *obj;
-    u32 w8;
-    u8 b12;
-    u8 b13;
-    u8 b14;
-} Task12;
-typedef struct Obj12 {
-    u8 pad0[0x20];
-    u32 w20;
-    u8 pad24[0x94 - 0x24];
-    u8 b94;
-    u8 pad95[0x194 - 0x95];
-    u8 b194;
-} Obj12;
-extern void ov12_02260D28(SysTask *task, void *param);
-// FUNCTION ov12_0225B26C: matching C (agent3)
-#pragma force_active on
-void ov12_0225B26C(void *param_1, Obj12 *param_2) {
-    Task12 *t;
 
-    t = Heap_Alloc(5, 0x10);
-    t->b14 = 0;
-    t->a = param_1;
-    t->obj = param_2;
-    t->b12 = param_2->b94;
-    t->b13 = param_2->b194;
-    t->w8 = param_2->w20;
-    SysTask_CreateOnMainQueue(ov12_02260D28, t, 0);
+typedef struct UnkStruct_ov12_0225B26C_Battler {
+    u8 unk_00[0x20];
+    void *monSprite;
+    u8 unk_24[0x94 - 0x24];
+    u8 data[0x100];
+    u8 battler;
+} UnkStruct_ov12_0225B26C_Battler;
+
+typedef struct UnkStruct_ov12_0225B26C {
+    BattleSystem *battleSys;
+    UnkStruct_ov12_0225B26C_Battler *battlerData;
+    void *monSprite;
+    u8 command;
+    u8 battler;
+    u8 delay;
+} UnkStruct_ov12_0225B26C;
+
+extern void ov12_02260D28(SysTask *task, void *param);
+
+// FUNCTION ov12_0225B26C: matching C (twin)
+#pragma force_active on
+void ov12_0225B26C(BattleSystem *battleSys, UnkStruct_ov12_0225B26C_Battler *battlerData) {
+    UnkStruct_ov12_0225B26C *oamToSpriteData = Heap_Alloc(HEAP_ID_BATTLE, sizeof(UnkStruct_ov12_0225B26C));
+
+    oamToSpriteData->delay = 0;
+    oamToSpriteData->battleSys = battleSys;
+    oamToSpriteData->battlerData = battlerData;
+    oamToSpriteData->command = battlerData->data[0];
+    oamToSpriteData->battler = battlerData->battler;
+    oamToSpriteData->monSprite = battlerData->monSprite;
+
+    SysTask_CreateOnMainQueue(ov12_02260D28, oamToSpriteData, 0);
 }
 #pragma force_active reset

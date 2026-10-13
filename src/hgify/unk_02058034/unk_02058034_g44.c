@@ -12,6 +12,7 @@
 #include "unk_020379A0.h"
 #include "unk_02037C94.h"
 #include "unk_02058034.h"
+
 typedef struct UnkStruct_021D41C8 {
     void *trainerCase[4];
     u8 trainerCaseCopied[4];
@@ -26,61 +27,11 @@ typedef struct UnkStruct_021D41C8 {
     Party *party;
 } UnkStruct_021D41C8;
 extern UnkStruct_021D41C8 *_021D41C8;
-void sub_02057F58(void);
-void sub_02056EA0(BOOL flag);
-void sub_02059538(FieldSystem *fieldSystem, void (*callback)(int, Party *));
+
 void sub_020582F4(void (*task)(void), u32 timer);
-void sub_02058098(void);
-void sub_0205857C(void);
-void sub_02058608(void);
-void sub_02058640(int, Party *);
-void sub_02058690(void);
-void sub_0205836C(void);
-void sub_0205838C(void);
-void sub_020584BC(void);
-BOOL sub_02036010(void);
-void sub_02036FD8(int, void *, int);
-void sub_020586A0(void);
-void sub_020586EC(void);
-void sub_0205876C(void);
-void sub_020587E8(void);
-void sub_0205882C(void);
-void sub_02058854(void);
-void sub_02058870(void);
-void sub_020588A0(void);
-void sub_020588B4(void);
-void sub_020588F8(void);
-void sub_02058930(void);
-void sub_0205896C(void);
-void sub_020589B0(void);
 void sub_020589D8(void);
-void sub_020589F4(void);
-void sub_02058A38(void);
-void sub_02058A60(void);
-void sub_02058A78(void);
-BOOL sub_02058AA0(void);
-void sub_020586A0(void);
-void sub_020586A0(void);
-void sub_020586EC(void);
-void sub_020586EC(void);
-void sub_0205876C(void);
-void sub_0205876C(void);
-void sub_020587E8(void);
-void sub_020587E8(void);
-void sub_0205882C(void);
-void sub_0205882C(void);
-void sub_02058854(void);
-void sub_02058854(void);
-void sub_02058870(void);
-void sub_02058870(void);
-void sub_020588A0(void);
-void sub_020588A0(void);
-void sub_020588B4(void);
-void sub_020588B4(void);
-void sub_020588F8(void);
-void sub_020588F8(void);
-void sub_02058930(void);
-// FUNCTION sub_02058930: matching C (r0)
+
+// FUNCTION sub_02058930: matching C (twin)
 #pragma force_active on
 void sub_02058930(void) {
     int netId;
@@ -95,19 +46,3 @@ void sub_02058930(void) {
     sub_020582F4(sub_020589D8, 0);
 }
 #pragma force_active reset
-void sub_0205896C(void);
-void sub_0205896C(void);
-void sub_020589B0(void);
-void sub_020589B0(void);
-void sub_020589D8(void);
-void sub_020589D8(void);
-void sub_020589F4(void);
-void sub_020589F4(void);
-void sub_02058A38(void);
-void sub_02058A38(void);
-void sub_02058A60(void);
-void sub_02058A60(void);
-void sub_02058A78(void);
-void sub_02058A78(void);
-BOOL sub_02058AA0(void);
-BOOL sub_02058AA0(void);

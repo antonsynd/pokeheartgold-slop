@@ -3,28 +3,39 @@
 #pragma thumb on
 #include "global.h"
 
-#include "ghidra_compat.h"
 #include "system.h"
 #include "unk_02037C94.h"
 #include "unk_0203A3B0.h"
-typedef int code();
-undefined4 ov00_021EC8D8();
-undefined4 ov70_02237F2C();
-undefined4 ov75_02248714(int *param_1);
-// FUNCTION ov75_02248714: matching C (r2)
-#pragma force_active on
-undefined4 ov75_02248714(int *param_1)
 
-{
+int ov00_021EC8D8(void);
+int ov70_02237F2C(void);
+
+typedef struct UnkStruct_ov75_02248714_Sub {
+    u8 unk_00[0x118];
+    int unk_118;
+} UnkStruct_ov75_02248714_Sub;
+
+typedef struct UnkStruct_ov75_02248714 {
+    UnkStruct_ov75_02248714_Sub *unk_00;
+    int unk_04;
+    int unk_08;
+} UnkStruct_ov75_02248714;
+
+int ov75_02248714(UnkStruct_ov75_02248714 *param0);
+// FUNCTION ov75_02248714: matching C (twin)
+#pragma force_active on
+int ov75_02248714(UnkStruct_ov75_02248714 *param0) {
     sub_0203957C();
     ov00_021EC8D8();
     sub_0203A914();
     Sys_ClearSleepDisableFlag(4);
-    if (*(int *)(*param_1 + 0x118) == 1) {
+
+    if (param0->unk_00->unk_118 == 1) {
         ov70_02237F2C();
-        *(undefined4 *)(*param_1 + 0x118) = 0;
+        param0->unk_00->unk_118 = 0;
     }
-    param_1[2] = 0xb;
+
+    param0->unk_08 = 11;
     return 0;
 }
 #pragma force_active reset

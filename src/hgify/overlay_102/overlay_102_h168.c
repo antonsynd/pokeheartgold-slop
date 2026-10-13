@@ -4,24 +4,29 @@
 #include "global.h"
 
 #include "sprite.h"
-// FUNCTION ov102_021EB088: matching C (agent10)
+
+typedef struct UnkStruct_ov102_021EB088 {
+    u8 unk_00[0x60];
+    Sprite *unk_60;
+    u8 unk_64[0x28];
+    void *unk_8C;
+} UnkStruct_ov102_021EB088;
+
+// FUNCTION ov102_021EB088: matching C (twin)
 #pragma force_active on
-void ov102_021EB088(int param_1, int param_2, int param_3, int param_4) {
-    int iVar1;
-    iVar1 = *(int *)(param_1 + 0x8c);
-    if (iVar1 != 0) {
-        if (param_2 != 0) {
-            Sprite_SetAnimCtrlSeq(*(void **)(param_1 + 0x60), 0);
-            return;
+void ov102_021EB088(UnkStruct_ov102_021EB088 *param0, BOOL param1) {
+    if (param0->unk_8C != NULL) {
+        if (param1) {
+            Sprite_SetAnimCtrlSeq(param0->unk_60, 0);
+        } else {
+            Sprite_SetAnimCtrlSeq(param0->unk_60, 1);
         }
-        Sprite_SetAnimCtrlSeq(*(void **)(param_1 + 0x60), 1);
-        return;
+    } else {
+        if (param1) {
+            Sprite_SetAnimCtrlSeq(param0->unk_60, 0xe);
+        } else {
+            Sprite_SetAnimCtrlSeq(param0->unk_60, 0xf);
+        }
     }
-    if (param_2 != 0) {
-        Sprite_SetAnimCtrlSeq(*(void **)(param_1 + 0x60), 0xe);
-        return;
-    }
-    Sprite_SetAnimCtrlSeq(*(void **)(param_1 + 0x60), 0xf);
-    return;
 }
 #pragma force_active reset
