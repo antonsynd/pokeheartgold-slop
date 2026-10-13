@@ -3,18 +3,9 @@
 #pragma thumb on
 #include "global.h"
 
-#include "ghidra_compat.h"
 #include "heap.h"
 #include "sys_task_api.h"
-typedef void code(void);
-typedef struct Task12 {
-    void *a;
-    void *obj;
-    u32 w8;
-    u8 b12;
-    u8 b13;
-    u8 b14;
-} Task12;
+
 typedef struct Obj12 {
     u8 pad0[0x20];
     u32 w20;
@@ -23,19 +14,30 @@ typedef struct Obj12 {
     u8 pad95[0x194 - 0x95];
     u8 b194;
 } Obj12;
-extern void ov12_02260CDC(struct SysTask *, void *);
-// FUNCTION ov12_0225B234: matching C (agent3)
-#pragma force_active on
-void ov12_0225B234(void *param_1, Obj12 *param_2) {
-    Task12 *t;
 
-    t = Heap_Alloc(5, 0x10);
-    t->b14 = 0;
-    t->a = param_1;
-    t->obj = param_2;
-    t->b12 = param_2->b94;
-    t->b13 = param_2->b194;
-    t->w8 = param_2->w20;
-    SysTask_CreateOnMainQueue(ov12_02260CDC, t, 0);
+typedef struct UnkStruct_ov12_0225B234 {
+    void *battleSys;
+    Obj12 *battlerData;
+    u32 monSprite;
+    u8 command;
+    u8 battler;
+    u8 state;
+} UnkStruct_ov12_0225B234;
+
+extern void ov12_02260CDC(struct SysTask *, void *);
+
+// FUNCTION ov12_0225B234: matching C (twin)
+#pragma force_active on
+void ov12_0225B234(void *battleSys, Obj12 *battlerData) {
+    UnkStruct_ov12_0225B234 *spriteToOAMData = Heap_Alloc(5, sizeof(UnkStruct_ov12_0225B234));
+
+    spriteToOAMData->state = 0;
+    spriteToOAMData->battleSys = battleSys;
+    spriteToOAMData->battlerData = battlerData;
+    spriteToOAMData->command = battlerData->b94;
+    spriteToOAMData->battler = battlerData->b194;
+    spriteToOAMData->monSprite = battlerData->w20;
+
+    SysTask_CreateOnMainQueue(ov12_02260CDC, spriteToOAMData, 0);
 }
 #pragma force_active reset

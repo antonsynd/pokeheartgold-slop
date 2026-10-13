@@ -3,25 +3,31 @@
 #pragma thumb on
 #include "global.h"
 
-#include "ghidra_compat.h"
 #include "unk_02026E30.h"
-typedef int code();
-undefined4 ov48_022599A0();
-undefined4 ov48_022594D0();
-undefined4 ov48_02259C44();
-undefined4 ov48_02259874();
-void ov48_02259050(int param_1);
-// FUNCTION ov48_02259050: matching C (r2)
-#pragma force_active on
-void ov48_02259050(int param_1)
 
-{
+typedef struct UnkStruct_ov48_02259050 {
+    u8 unk_00[0x20];
+    u8 unk_20[0x178 - 0x20];
+    u8 unk_178[0x224 - 0x178];
+    u8 unk_224[0xC3CC - 0x224];
+    u8 unk_C3CC;
+} UnkStruct_ov48_02259050;
+
+void ov48_02259C44(void *param);
+void ov48_02259874(void *param);
+void ov48_022599A0(void *param0, void *param1);
+void ov48_022594D0(void *param);
+
+// FUNCTION ov48_02259050: matching C (twin)
+#pragma force_active on
+void ov48_02259050(UnkStruct_ov48_02259050 *param0) {
     Thunk_G3X_Reset();
-    ov48_02259C44(param_1 + 0xc3cc);
-    ov48_02259874(param_1 + 0x178);
-    ov48_022599A0(param_1 + 0x224, param_1 + 0x178);
-    ov48_022594D0(param_1 + 0x20);
+
+    ov48_02259C44(&param0->unk_C3CC);
+    ov48_02259874(&param0->unk_178);
+    ov48_022599A0(&param0->unk_224, &param0->unk_178);
+    ov48_022594D0(&param0->unk_20);
+
     RequestSwap3DBuffers(0, 1);
-    return;
 }
 #pragma force_active reset

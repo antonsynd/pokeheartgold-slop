@@ -3,37 +3,38 @@
 #pragma thumb on
 #include "global.h"
 
-#include "battle/battle_022378C0.h"
-
-#include "ghidra_compat.h"
 #include "heap.h"
 #include "overlay_manager.h"
-typedef int code();
-// FUNCTION ov12_0223A5E4: matching C (r4)
+
+typedef struct UnkStruct_ov12_0223A5E4_TrainerIntroData {
+    u8 unk_00[0x14];
+    void *trainerNames[4];
+    u8 unk_24[0x2B - 0x24];
+    u8 isDone;
+} UnkStruct_ov12_0223A5E4_TrainerIntroData;
+
+typedef struct UnkStruct_ov12_0223A5E4 {
+    u8 unk_00[0x198];
+    UnkStruct_ov12_0223A5E4_TrainerIntroData *postBattleData;
+} UnkStruct_ov12_0223A5E4;
+
+// FUNCTION ov12_0223A5E4: matching C (twin)
 #pragma force_active on
-BOOL ov12_0223A5E4(OverlayManager *man)
+BOOL ov12_0223A5E4(OverlayManager *man) {
+    UnkStruct_ov12_0223A5E4 *dto = OverlayManager_GetArgs(man);
+    UnkStruct_ov12_0223A5E4_TrainerIntroData *trainerIntroData = dto->postBattleData;
 
-{
-    int iVar1;
-    int iVar2;
-    int iVar3;
-
-    iVar1 = OverlayManager_GetArgs(man);
-    iVar1 = *(int *)(iVar1 + 0x198);
-    if (*(unsigned char *)(iVar1 + 0x2b) != '\0') {
-        iVar2 = 0;
-        iVar3 = iVar1;
-        do {
-            void *e = *(void **)(iVar3 + 0x14);
-            if (e != 0) {
-                Heap_Free(e);
+    if (trainerIntroData->isDone) {
+        for (int i = 0; i < 4; i++) {
+            if (trainerIntroData->trainerNames[i] != NULL) {
+                Heap_Free(trainerIntroData->trainerNames[i]);
             }
-            iVar2 = iVar2 + 1;
-            iVar3 = iVar3 + 4;
-        } while (iVar2 < 4);
-        Heap_Free(iVar1);
-        return 1;
+        }
+
+        Heap_Free(trainerIntroData);
+        return TRUE;
     }
-    return 0;
+
+    return FALSE;
 }
 #pragma force_active reset

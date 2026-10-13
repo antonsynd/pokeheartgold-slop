@@ -3,21 +3,27 @@
 #pragma thumb on
 #include "global.h"
 
-#include "ghidra_compat.h"
+#include "constants/sndseq.h"
+
 #include "sprite_system.h"
 #include "unk_02005D10.h"
-typedef void code(void);
-undefined4 ov05_0221C8A0(int param_1);
-// FUNCTION ov05_0221C8A0: matching C (r2)
-#pragma force_active on
-undefined4 ov05_0221C8A0(int param_1)
 
-{
-    PlaySE(0x71a);
-    ManagedSprite_SetDrawFlag(*(undefined4 *)(param_1 + 0x1c8), 1);
-    ManagedSprite_SetDrawFlag(*(undefined4 *)(param_1 + 0x1cc), 1);
-    ManagedSprite_SetAnim(*(undefined4 *)(param_1 + 0x1c8), 0);
-    *(undefined1 *)(param_1 + 0xb81) = 0x20;
+typedef struct UnkStruct_ov05_0221C8A0 {
+    u8 unk_000[0x198];
+    ManagedSprite *unk_198[14];
+    u8 unk_1D0[0xB81 - 0x1D0];
+    u8 unk_B81;
+} UnkStruct_ov05_0221C8A0;
+
+u8 ov05_0221C8A0(UnkStruct_ov05_0221C8A0 *param0);
+// FUNCTION ov05_0221C8A0: matching C (twin)
+#pragma force_active on
+u8 ov05_0221C8A0(UnkStruct_ov05_0221C8A0 *param0) {
+    PlaySE(SEQ_SE_DP_VSDEMO06);
+    ManagedSprite_SetDrawFlag(param0->unk_198[12], 1);
+    ManagedSprite_SetDrawFlag(param0->unk_198[13], 1);
+    ManagedSprite_SetAnim(param0->unk_198[12], 0);
+    param0->unk_B81 = 32;
     return 1;
 }
 #pragma force_active reset

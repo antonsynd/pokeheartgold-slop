@@ -5,28 +5,28 @@
 
 #include "filesystem.h"
 #include "gf_gfx_planes.h"
-#include "ghidra_compat.h"
+#include "options.h"
 #include "vram_transfer_manager.h"
-typedef int code();
-undefined4 ov48_022594F0();
-undefined4 ov48_02259750();
-undefined4 ov48_02259688();
+
+typedef struct UnkStruct_ov48_02259464 {
+    u8 unk_000[0x144];
+    NARC *unk_144;
+} UnkStruct_ov48_02259464;
+
 extern GraphicsBanks ov48_0225B210;
-void ov48_02259464(int param_1, undefined4 param_2, undefined4 param_3);
-// FUNCTION ov48_02259464: matching C (r2)
+
+void ov48_022594F0(UnkStruct_ov48_02259464 *param0, Options *options, enum HeapID heapID);
+void ov48_02259688(UnkStruct_ov48_02259464 *param0, enum HeapID heapID);
+void ov48_02259750(UnkStruct_ov48_02259464 *param0, enum HeapID heapID);
+
+// FUNCTION ov48_02259464: matching C (twin)
 #pragma force_active on
-void ov48_02259464(int param_1, undefined4 param_2, undefined4 param_3)
-
-{
-    undefined4 uVar1;
-
-    uVar1 = NARC_New(0xc0, param_3);
-    *(undefined4 *)(param_1 + 0x144) = uVar1;
-    GF_CreateVramTransferManager(0x40, param_3);
+void ov48_02259464(UnkStruct_ov48_02259464 *param0, Options *options, enum HeapID heapID) {
+    param0->unk_144 = NARC_New(0xc0, heapID);
+    GF_CreateVramTransferManager(0x40, heapID);
     GfGfx_SetBanks(&ov48_0225B210);
-    ov48_022594F0(param_1, param_2, param_3);
-    ov48_02259688(param_1, param_3);
-    ov48_02259750(param_1, param_3);
-    return;
+    ov48_022594F0(param0, options, heapID);
+    ov48_02259688(param0, heapID);
+    ov48_02259750(param0, heapID);
 }
 #pragma force_active reset

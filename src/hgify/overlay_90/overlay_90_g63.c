@@ -14,7 +14,7 @@ typedef struct UnkStruct_ov90_022594FC {
 } UnkStruct_ov90_022594FC;
 extern void ov90_02259570(UnkStruct_ov90_022594FC *param0, u32 param1);
 void ov90_022594FC(UnkStruct_ov90_022594FC *param0, u32 param1);
-// FUNCTION ov90_022594FC: matching C (r0)
+// FUNCTION ov90_022594FC: matching C (twin)
 #pragma force_active on
 void ov90_022594FC(UnkStruct_ov90_022594FC *param0, u32 param1) {
     ov90_02259570(param0, param1);

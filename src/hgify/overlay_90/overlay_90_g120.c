@@ -3,23 +3,26 @@
 #pragma thumb on
 #include "global.h"
 
-#include "ghidra_compat.h"
 #include "unk_02005D10.h"
-typedef void code(void);
-undefined4 ov90_0225B978(int param_1);
-// FUNCTION ov90_0225B978: matching C (r2)
+
+typedef struct UnkStruct_ov90_0225B978 {
+    u8 unk_00[0x660];
+    int unk_660;
+} UnkStruct_ov90_0225B978;
+
+// FUNCTION ov90_0225B978: matching C (twin)
 #pragma force_active on
-undefined4 ov90_0225B978(int param_1)
-
-{
-    int iVar1;
-
-    if ((*(int *)(param_1 + 0x660) == 1) && (iVar1 = IsFanfarePlaying(), iVar1 == 0)) {
-        *(undefined4 *)(param_1 + 0x660) = 0;
+BOOL ov90_0225B978(UnkStruct_ov90_0225B978 *param0) {
+    if (param0->unk_660 == 1) {
+        if (IsFanfarePlaying() == 0) {
+            param0->unk_660 = 0;
+        }
     }
-    if (*(int *)(param_1 + 0x660) != 1) {
+
+    if (param0->unk_660 == 1) {
+        return 0;
+    } else {
         return 1;
     }
-    return 0;
 }
 #pragma force_active reset

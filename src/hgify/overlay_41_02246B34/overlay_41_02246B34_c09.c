@@ -4,27 +4,34 @@
 #include "global.h"
 
 #include "gf_3d_loader.h"
-#include "ghidra_compat.h"
 #include "heap.h"
-typedef int code();
-void ov41_02246DA8(undefined4 *param_1);
-// FUNCTION ov41_02246DA8: matching C (r2)
-#pragma force_active on
-void ov41_02246DA8(undefined4 *param_1)
 
-{
-    if (param_1[4] != 0) {
-        GF2dGfxRawResObj_Destroy((GF_2DGfxRawResMan *)param_1[4]);
-        param_1[4] = 0;
+typedef struct UnkStruct_ov41_02246DA8 {
+    void *unk_00;
+    u8 unk_04[0x8 - 0x4];
+    void *unk_08;
+    u8 unk_0C[0x10 - 0xC];
+    GF_2DGfxRawResMan *unk_10;
+    GF_2DGfxRawResMan *unk_14;
+} UnkStruct_ov41_02246DA8;
+
+void ov41_02246DA8(UnkStruct_ov41_02246DA8 *param0);
+// FUNCTION ov41_02246DA8: matching C (twin)
+#pragma force_active on
+void ov41_02246DA8(UnkStruct_ov41_02246DA8 *param0) {
+    if (param0->unk_10 != NULL) {
+        GF2dGfxRawResObj_Destroy(param0->unk_10);
+        param0->unk_10 = NULL;
     }
-    if (param_1[5] != 0) {
-        GF2dGfxRawResObj_Destroy((GF_2DGfxRawResMan *)param_1[5]);
-        param_1[5] = 0;
+
+    if (param0->unk_14 != NULL) {
+        GF2dGfxRawResObj_Destroy(param0->unk_14);
+        param0->unk_14 = NULL;
     }
-    Heap_Free(*param_1);
-    *param_1 = 0;
-    Heap_Free(param_1[2]);
-    param_1[2] = 0;
-    return;
+
+    Heap_Free(param0->unk_00);
+    param0->unk_00 = NULL;
+    Heap_Free(param0->unk_08);
+    param0->unk_08 = NULL;
 }
 #pragma force_active reset

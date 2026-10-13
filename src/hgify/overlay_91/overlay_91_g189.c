@@ -4,27 +4,26 @@
 #include "global.h"
 
 #include "error_handling.h"
-#include "ghidra_compat.h"
-typedef int code();
-int ov91_02260A50(int param_1);
-// FUNCTION ov91_02260A50: matching C (r2)
+typedef struct UnkStruct_ov91_02260A50_Entry {
+    u8 pad_00[0xF8];
+    void *unk_F8;
+    u8 pad_FC[0x108 - 0xFC];
+} UnkStruct_ov91_02260A50_Entry;
+typedef struct UnkStruct_ov91_02260A50 {
+    u8 pad_000[0x790];
+    UnkStruct_ov91_02260A50_Entry unk_790[0x60];
+} UnkStruct_ov91_02260A50;
+UnkStruct_ov91_02260A50_Entry *ov91_02260A50(UnkStruct_ov91_02260A50 *param0);
+// FUNCTION ov91_02260A50: matching C (twin)
 #pragma force_active on
-int ov91_02260A50(int param_1)
-
-{
-    int iVar1;
-    int iVar2;
-
-    iVar1 = 0;
-    iVar2 = param_1;
-    do {
-        if (*(int *)(iVar2 + 0x888) == 0) {
-            return param_1 + 0x790 + iVar1 * 0x108;
+UnkStruct_ov91_02260A50_Entry *ov91_02260A50(UnkStruct_ov91_02260A50 *param0) {
+    for (int v0 = 0; v0 < 0x60; v0++) {
+        if (param0->unk_790[v0].unk_F8 == NULL) {
+            return &param0->unk_790[v0];
         }
-        iVar1 = iVar1 + 1;
-        iVar2 = iVar2 + 0x108;
-    } while (iVar1 < 0x60);
+    }
+
     GF_AssertFail();
-    return 0;
+    return NULL;
 }
 #pragma force_active reset

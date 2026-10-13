@@ -5,20 +5,31 @@
 
 #include "sys_task_api.h"
 #include "unk_02014A08.h"
-// FUNCTION ov74_0222DEF0: matching C (agent11)
-#pragma force_active on
-void ov74_0222DEF0(int param_1) {
-    char *p;
 
-    p = (char *)param_1 + 0x3130;
-    if (*(int *)(p + 0xc00) != 0) {
-        sub_02014A38((UnkStruct_02014A08 *)*(int *)(p + 0xc00));
+typedef struct UnkStruct_ov74_0222DEF0_FlipAnimMan {
+    u8 unk_00[0xC00];
+    UnkStruct_02014A08 *bufferManager;
+    SysTask *sysTask;
+} UnkStruct_ov74_0222DEF0_FlipAnimMan;
+
+typedef struct UnkStruct_ov74_0222DEF0 {
+    u8 unk_0000[0x3130];
+    UnkStruct_ov74_0222DEF0_FlipAnimMan flipAnimMan;
+} UnkStruct_ov74_0222DEF0;
+
+// FUNCTION ov74_0222DEF0: matching C (twin)
+#pragma force_active on
+void ov74_0222DEF0(UnkStruct_ov74_0222DEF0 *param0) {
+    UnkStruct_ov74_0222DEF0_FlipAnimMan *animMan = &param0->flipAnimMan;
+
+    if (animMan->bufferManager) {
+        sub_02014A38(animMan->bufferManager);
     }
-    if (*(int *)(p + 0xc04) != 0) {
-        SysTask_Destroy((SysTask *)*(int *)(p + 0xc04));
+    if (animMan->sysTask) {
+        SysTask_Destroy(animMan->sysTask);
     }
-    *(int *)(p + 0xc00) = 0;
-    *(int *)(p + 0xc04) = 0;
+    animMan->bufferManager = NULL;
+    animMan->sysTask = NULL;
     sub_02014AA0();
 }
 #pragma force_active reset

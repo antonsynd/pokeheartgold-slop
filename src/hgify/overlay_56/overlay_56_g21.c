@@ -4,23 +4,24 @@
 #include "global.h"
 
 #include "bg_window.h"
-#include "ghidra_compat.h"
 #include "heap.h"
-typedef int code();
-#define uRam04000304 (*(volatile ushort *)0x04000304)
-void ov56_021E660C(int param_1);
-// FUNCTION ov56_021E660C: matching C (r2)
-#pragma force_active on
-void ov56_021E660C(int param_1)
 
-{
-    FreeBgTilemapBuffer(*(undefined4 *)(param_1 + 0x18), 4);
-    FreeBgTilemapBuffer(*(undefined4 *)(param_1 + 0x18), 3);
-    FreeBgTilemapBuffer(*(undefined4 *)(param_1 + 0x18), 2);
-    FreeBgTilemapBuffer(*(undefined4 *)(param_1 + 0x18), 1);
-    FreeBgTilemapBuffer(*(undefined4 *)(param_1 + 0x18), 0);
+#define uRam04000304 (*(volatile u16 *)0x04000304)
+
+typedef struct UnkStruct_ov56_021E660C {
+    u8 unk_00[0x18];
+    BgConfig *bgConfig;
+} UnkStruct_ov56_021E660C;
+
+// FUNCTION ov56_021E660C: matching C (twin)
+#pragma force_active on
+void ov56_021E660C(UnkStruct_ov56_021E660C *mailViewerApp) {
+    FreeBgTilemapBuffer(mailViewerApp->bgConfig, 4);
+    FreeBgTilemapBuffer(mailViewerApp->bgConfig, 3);
+    FreeBgTilemapBuffer(mailViewerApp->bgConfig, 2);
+    FreeBgTilemapBuffer(mailViewerApp->bgConfig, 1);
+    FreeBgTilemapBuffer(mailViewerApp->bgConfig, 0);
     uRam04000304 = uRam04000304 | 0x8000;
-    Heap_Free(*(undefined4 *)(param_1 + 0x18));
-    return;
+    Heap_Free(mailViewerApp->bgConfig);
 }
 #pragma force_active reset

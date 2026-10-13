@@ -3,25 +3,32 @@
 #pragma thumb on
 #include "global.h"
 
-#include "ghidra_compat.h"
 #include "screen_fade.h"
 #include "unk_02037C94.h"
 #include "unk_0203A3B0.h"
-typedef int code();
-undefined4 ov75_02247878();
-undefined4 ov75_0224921C(int param_1, undefined4 param_2, undefined4 param_3, undefined4 param_4);
-// FUNCTION ov75_0224921C: matching C (r3)
-#pragma force_active on
-undefined4 ov75_0224921C(int param_1, undefined4 param_2, undefined4 param_3, undefined4 param_4)
 
-{
-    if (*(int *)(param_1 + 8) != 0x1e) {
+typedef struct UnkStruct_ov75_0224921C {
+    u8 unk_00[8];
+    int unk_08;
+} UnkStruct_ov75_0224921C;
+
+int ov75_0224921C(UnkStruct_ov75_0224921C *param0);
+void ov75_02247878(UnkStruct_ov75_0224921C *param0);
+
+// FUNCTION ov75_0224921C: matching C (twin)
+#pragma force_active on
+int ov75_0224921C(UnkStruct_ov75_0224921C *param0) {
+    if (param0->unk_08 != 30) {
         sub_0203957C();
     }
+
     sub_0203A914();
-    ov75_02247878(param_1);
+    ov75_02247878(param0);
+
     BeginNormalPaletteFade(0, 0, 0, 0, 6, 1, 0x74);
-    *(undefined4 *)(param_1 + 8) = 0;
+
+    param0->unk_08 = 0;
+
     return 1;
 }
 #pragma force_active reset

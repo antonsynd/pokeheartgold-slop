@@ -3,36 +3,39 @@
 #pragma thumb on
 #include "global.h"
 
+#include "field_system.h"
 #include "player_avatar.h"
+
 typedef struct V16 {
     u32 a, b, c, d;
 } V16;
-typedef struct PlayerCtx {
-    u8 pad0[0x40];
-    void *avatar;
-} PlayerCtx;
-typedef struct Ov01Task {
-    u8 pad0[4];
-    u32 unk4;
-    u8 pad8[0x34 - 0x8];
-    PlayerCtx *ctx;
-    void *avatar;
-    void *mapObj;
-    V16 unk40;
-} Ov01Task;
-Ov01Task *ov01_021F30D0(int size);
-// FUNCTION ov01_021F28B8: matching C (agent5)
-#pragma force_active on
-Ov01Task *ov01_021F28B8(PlayerCtx *ctx, u32 arg, V16 *src) {
-    Ov01Task *task = ov01_021F30D0(0x54);
 
-    task->unk4 = arg;
-    task->ctx = ctx;
-    task->avatar = ctx->avatar;
-    task->mapObj = PlayerAvatar_GetMapObject(ctx->avatar);
-    if (src != 0) {
-        task->unk40 = *src;
+typedef struct UnkStruct_ov01_021F28B8 {
+    u8 unk_00[4];
+    int direction;
+    u8 unk_08[0x34 - 0x08];
+    FieldSystem *fieldSystem;
+    PlayerAvatar *playerAvatar;
+    LocalMapObject *playerObject;
+    V16 monRideTask;
+} UnkStruct_ov01_021F28B8;
+
+void *ov01_021F30D0(int size);
+
+// FUNCTION ov01_021F28B8: matching C (twin)
+#pragma force_active on
+UnkStruct_ov01_021F28B8 *ov01_021F28B8(FieldSystem *fieldSystem, int direction, const V16 *monRideTask) {
+    UnkStruct_ov01_021F28B8 *taskEnv = ov01_021F30D0(0x54);
+
+    taskEnv->direction = direction;
+    taskEnv->fieldSystem = fieldSystem;
+    taskEnv->playerAvatar = fieldSystem->playerAvatar;
+    taskEnv->playerObject = PlayerAvatar_GetMapObject(fieldSystem->playerAvatar);
+
+    if (monRideTask != NULL) {
+        taskEnv->monRideTask = *monRideTask;
     }
-    return task;
+
+    return taskEnv;
 }
 #pragma force_active reset

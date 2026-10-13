@@ -3,25 +3,30 @@
 #pragma thumb on
 #include "global.h"
 
-#include "ghidra_compat.h"
-typedef int code();
-typedef struct S00 {
-    u8 pad[0x10e0];
-    u8 state;
-} S00;
-extern S00 *_0221A680;
+typedef struct UnkStruct_ov00_021E70F4 {
+    u8 unk_00[0x10E0];
+    u8 matchmakingCancelState;
+} UnkStruct_ov00_021E70F4;
+
+enum {
+    MATCHMAKING_NOT_CANCELED,
+    MATCHMAKING_CANCEL_REQUESTED,
+    MATCHMAKING_CANCELED,
+};
+
+extern UnkStruct_ov00_021E70F4 *_0221A680;
+
 void ov00_021E70E0(void);
 void ov00_021F12F0(void (*cb)(void), int b);
-// FUNCTION ov00_021E70F4: matching C (agent7)
+int ov00_021E70F4(void);
+// FUNCTION ov00_021E70F4: matching C (twin)
 #pragma force_active on
 int ov00_021E70F4(void) {
-    if (_0221A680->state == 0) {
-        _0221A680->state = 1;
+    if (_0221A680->matchmakingCancelState == MATCHMAKING_NOT_CANCELED) {
+        _0221A680->matchmakingCancelState = MATCHMAKING_CANCEL_REQUESTED;
         ov00_021F12F0(ov00_021E70E0, 0);
     }
-    if (_0221A680->state == 2) {
-        return 1;
-    }
-    return 0;
+
+    return _0221A680->matchmakingCancelState == MATCHMAKING_CANCELED;
 }
 #pragma force_active reset

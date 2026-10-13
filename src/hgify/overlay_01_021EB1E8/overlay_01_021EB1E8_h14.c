@@ -3,30 +3,35 @@
 #pragma thumb on
 #include "global.h"
 
+#include "field_system.h"
 #include "filesystem.h"
-#include "ghidra_compat.h"
 #include "heap.h"
-typedef void code(void);
-undefined4 ov01_021EB4B8(undefined4);
-extern undefined ov01_0220675C;
-extern undefined ov01_022098B0;
-undefined4 *ov01_021EB64C(undefined4 param_1, undefined4 param_2, undefined4 param_3, undefined4 param_4);
-// FUNCTION ov01_021EB64C: matching C (r3)
+
+typedef struct UnkStruct_ov01_021EB64C {
+    void *unk_00;
+    void *unk_04;
+    u8 unk_08[0xFC];
+    FieldSystem *fieldSystem;
+    NARC *unk_108;
+} UnkStruct_ov01_021EB64C;
+
+extern char ov01_022098B0[];
+extern char ov01_0220675C[];
+
+void ov01_021EB4B8(void *param0);
+
+// FUNCTION ov01_021EB64C: matching C (twin)
 #pragma force_active on
-undefined4 *
-ov01_021EB64C(undefined4 param_1, undefined4 param_2, undefined4 param_3, undefined4 param_4)
+UnkStruct_ov01_021EB64C *ov01_021EB64C(FieldSystem *fieldSystem) {
+    UnkStruct_ov01_021EB64C *v0 = Heap_Alloc(HEAP_ID_FIELD1, sizeof(UnkStruct_ov01_021EB64C));
+    v0->fieldSystem = fieldSystem;
 
-{
-    undefined4 *puVar1;
-    undefined4 uVar2;
+    ov01_021EB4B8(&v0->unk_08);
 
-    puVar1 = (undefined4 *)Heap_Alloc(4, 0x10c);
-    puVar1[0x41] = param_1;
-    ov01_021EB4B8(puVar1 + 2);
-    *puVar1 = &ov01_022098B0;
-    puVar1[1] = &ov01_0220675C;
-    uVar2 = NARC_New(0x3f, 4);
-    puVar1[0x42] = uVar2;
-    return puVar1;
+    v0->unk_00 = ov01_022098B0;
+    v0->unk_04 = ov01_0220675C;
+    v0->unk_108 = NARC_New(NARC_a_0_6_3, HEAP_ID_FIELD1);
+
+    return v0;
 }
 #pragma force_active reset

@@ -4,27 +4,17 @@
 #include "global.h"
 
 #include "error_handling.h"
-#include "ghidra_compat.h"
-typedef int code();
-void sub_02017BC8(int param_1, int *param_2, int *param_3, int *param_4);
-// FUNCTION sub_02017BC8: matching C (r2)
+// FUNCTION sub_02017BC8: matching C (twin)
 #pragma force_active on
-void sub_02017BC8(int param_1, int *param_2, int *param_3, int *param_4)
-
-{
-    if (param_1 == 0x18) {
-        *param_4 = *param_3;
-        return;
+void sub_02017BC8(u8 calcType, int *originalValue, int *currentValue, int *nextValue) {
+    if (calcType == 0x18) {
+        *nextValue = *currentValue;
+    } else if (calcType == 0x19) {
+        *nextValue = *originalValue + *currentValue;
+    } else if (calcType == 0x1a) {
+        *nextValue += *currentValue;
+    } else {
+        GF_AssertFail();
     }
-    if (param_1 == 0x19) {
-        *param_4 = *param_2 + *param_3;
-        return;
-    }
-    if (param_1 == 0x1a) {
-        *param_4 = *param_4 + *param_3;
-        return;
-    }
-    GF_AssertFail();
-    return;
 }
 #pragma force_active reset

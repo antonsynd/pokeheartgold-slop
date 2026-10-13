@@ -5,32 +5,34 @@
 
 #include "battle/battle_system.h"
 
-#include "ghidra_compat.h"
 #include "heap.h"
 #include "render_window.h"
 #include "sys_task_api.h"
 #include "text.h"
-typedef void code(void);
-undefined4 ov12_0226430C(undefined4, undefined4, undefined4);
-void ov12_022605D0(undefined4 param_1, undefined4 *param_2);
-// FUNCTION ov12_022605D0: matching C (r2)
+
+typedef struct UnkStruct_ov12_022605D0 {
+    BattleSystem *battleSys;
+    u8 command;
+    u8 battler;
+    u8 msgIdx;
+} UnkStruct_ov12_022605D0;
+
+void ov12_0226430C(BattleSystem *battleSys, u32 battler, u32 command);
+
+// FUNCTION ov12_022605D0: matching C (twin)
 #pragma force_active on
-void ov12_022605D0(undefined4 param_1, undefined4 *param_2)
+void ov12_022605D0(SysTask *task, void *data) {
+    UnkStruct_ov12_022605D0 *waitTask = data;
 
-{
-    int iVar1;
+    if (ov12_0223BB78(waitTask->battleSys)) {
+        sub_0200F450((struct WaitingIcon *)ov12_0223BB78(waitTask->battleSys));
+        ov12_0223BB80(waitTask->battleSys, NULL);
+    }
 
-    iVar1 = ov12_0223BB78(*param_2);
-    if (iVar1 != 0) {
-        sub_0200F450((struct WaitingIcon *)ov12_0223BB78(*param_2));
-        ov12_0223BB80(*param_2, 0);
+    if (TextPrinterCheckActive(waitTask->msgIdx) == FALSE) {
+        ov12_0226430C(waitTask->battleSys, waitTask->battler, waitTask->command);
+        Heap_Free(data);
+        SysTask_Destroy(task);
     }
-    iVar1 = TextPrinterCheckActive(*(undefined1 *)((int)param_2 + 6));
-    if (iVar1 == 0) {
-        ov12_0226430C(*param_2, *(undefined1 *)((int)param_2 + 5), *(undefined1 *)(param_2 + 1));
-        Heap_Free(param_2);
-        SysTask_Destroy(param_1);
-    }
-    return;
 }
 #pragma force_active reset

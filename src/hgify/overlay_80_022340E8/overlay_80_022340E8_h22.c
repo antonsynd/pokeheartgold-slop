@@ -3,29 +3,25 @@
 #pragma thumb on
 #include "global.h"
 
+#include "frontier/frontier_map.h"
+#include "frontier/overlay_80_022340E8.h"
 #include "frontier/overlay_80_02238034.h"
 
-#include "ghidra_compat.h"
 #include "sprite.h"
-typedef int code();
-// FUNCTION ov80_02234BB4: matching C (r2)
+
+// FUNCTION ov80_02234BB4: matching C (twin)
 #pragma force_active on
-void ov80_02234BB4(ArcadeContext *arcade, FrontierMap *map, u32 p3, u32 p4)
+void ov80_02234BB4(ArcadeContext *arcade, FrontierMap *map, u32 draw, u32 index) {
+    int partySize = BattleArcade_GetOpponentMonCount(arcade->type, TRUE);
 
-{
-    int param_1 = (int)arcade;
-    int param_3 = (int)p3;
-    int param_4 = (int)p4;
-    int iVar1;
-
-    iVar1 = BattleArcade_GetOpponentMonCount(*(undefined1 *)(param_1 + 0x10), 1);
-    if (param_4 < iVar1) {
-        if (param_3 == 1) {
-            Sprite_SetDrawFlag(**(undefined4 **)(param_1 + param_4 * 4 + 0x40), 1);
-            return;
-        }
-        Sprite_SetDrawFlag(**(undefined4 **)(param_1 + param_4 * 4 + 0x40), 0);
+    if ((int)index >= partySize) {
+        return;
     }
-    return;
+
+    if (draw == TRUE) {
+        Sprite_SetDrawFlag(arcade->unk40[index]->sprite, TRUE);
+    } else {
+        Sprite_SetDrawFlag(arcade->unk40[index]->sprite, FALSE);
+    }
 }
 #pragma force_active reset

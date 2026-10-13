@@ -4,26 +4,35 @@
 #include "global.h"
 
 #include "bag.h"
-#include "ghidra_compat.h"
-typedef int code();
-undefined4 ov08_02223B78(int *param_1);
-// FUNCTION ov08_02223B78: matching C (r2)
+#include "item.h"
+
+typedef struct UnkStruct_ov08_02223B78_Context {
+    u8 unused0[8];
+    Bag *bag;
+    enum HeapID heapID;
+    u8 unused1[15];
+    u8 lastUsedItemPocket;
+    u16 lastUsedItem;
+} UnkStruct_ov08_02223B78_Context;
+
+typedef struct UnkStruct_ov08_02223B78 {
+    UnkStruct_ov08_02223B78_Context *context;
+} UnkStruct_ov08_02223B78;
+
+BOOL ov08_02223B78(UnkStruct_ov08_02223B78 *battleBag);
+// FUNCTION ov08_02223B78: matching C (twin)
 #pragma force_active on
-undefined4 ov08_02223B78(int *param_1)
-
-{
-    int iVar1;
-
-    iVar1 = *param_1;
-    if (*(ushort *)(iVar1 + 0x20) == 0) {
-        return 0;
+BOOL ov08_02223B78(UnkStruct_ov08_02223B78 *battleBag) {
+    if (battleBag->context->lastUsedItem == ITEM_NONE) {
+        return FALSE;
     }
-    iVar1 = Bag_HasItem((Bag *)*(int *)(iVar1 + 8), *(ushort *)(iVar1 + 0x20), 1, (enum HeapID) * (int *)(iVar1 + 0xc));
-    if (iVar1 == 0) {
-        *(undefined2 *)(*param_1 + 0x20) = 0;
-        *(undefined1 *)(*param_1 + 0x1f) = 0;
-        return 0;
+
+    if (Bag_HasItem(battleBag->context->bag, battleBag->context->lastUsedItem, 1, battleBag->context->heapID) == FALSE) {
+        battleBag->context->lastUsedItem = ITEM_NONE;
+        battleBag->context->lastUsedItemPocket = 0;
+        return FALSE;
     }
-    return 1;
+
+    return TRUE;
 }
 #pragma force_active reset

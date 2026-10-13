@@ -2,26 +2,30 @@
 #pragma warning_errors off
 #pragma thumb on
 #include "global.h"
-typedef struct {
-    u16 unk0;
-    u16 unk2;
-    unsigned int unk4;
-    void *unk8;
-    void *unkC;
+
+typedef struct UnkStruct_ov01_021EBD34 {
+    u16 unk_00;
+    u8 unk_02[0xA];
+    void *unk_0C;
 } UnkStruct_ov01_021EBD34;
-BOOL ov01_021EBEB8(UnkStruct_ov01_021EBD34 *e);
-void ov01_021EB86C(void *mgr, u16 id, void *p);
-void ov01_021EBFD0(void *mgr, UnkStruct_ov01_021EBD34 *e);
-BOOL ov01_021EBD34(void *mgr, UnkStruct_ov01_021EBD34 *e);
-// FUNCTION ov01_021EBD34: matching C (r2)
+
+BOOL ov01_021EBEB8(UnkStruct_ov01_021EBD34 *param0);
+void ov01_021EB86C(void *param0, u16 param1, void *param2);
+void ov01_021EBFD0(void *param0, UnkStruct_ov01_021EBD34 *param1);
+
+// FUNCTION ov01_021EBD34: matching C (twin)
 #pragma force_active on
-BOOL ov01_021EBD34(void *mgr, UnkStruct_ov01_021EBD34 *e) {
-    if (e->unk0 != 0xFFFF && e->unkC == 0) {
-        if (!ov01_021EBEB8(e)) {
-            return 0;
+BOOL ov01_021EBD34(void *param0, UnkStruct_ov01_021EBD34 *param1) {
+    BOOL v0;
+    if (param1->unk_00 != 0xffff) {
+        if (param1->unk_0C == NULL) {
+            v0 = ov01_021EBEB8(param1);
+            if (v0 == 0) {
+                return 0;
+            }
+            ov01_021EB86C(param0, param1->unk_00, param1->unk_0C);
+            ov01_021EBFD0(param0, param1);
         }
-        ov01_021EB86C(mgr, e->unk0, e->unkC);
-        ov01_021EBFD0(mgr, e);
     }
     return 1;
 }

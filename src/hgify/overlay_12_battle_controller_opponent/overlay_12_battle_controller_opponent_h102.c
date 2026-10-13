@@ -3,27 +3,36 @@
 #pragma thumb on
 #include "global.h"
 
-#include "ghidra_compat.h"
+#include "battle/battle_system.h"
+
 #include "heap.h"
 #include "sys_task_api.h"
-typedef void code(void);
-typedef struct Ov12Task {
-    void *a;
-    void *b;
-    u8 c;
-    u8 d;
-    u8 e;
-} Ov12Task;
+typedef struct UnkStruct_ov12_0225AEA0_Src {
+    u8 pad_00[0x28];
+    u8 healthbox[0x94 - 0x28];
+    u8 data[0x100];
+    u8 battler;
+} UnkStruct_ov12_0225AEA0_Src;
+typedef struct UnkStruct_ov12_0225AEA0 {
+    BattleSystem *battleSys;
+    void *healthbox;
+    u8 command;
+    u8 battler;
+    u8 state;
+} UnkStruct_ov12_0225AEA0;
 void ov12_02260584(SysTask *, void *);
-// FUNCTION ov12_0225AEA0: matching C (agent4)
+void ov12_0225AEA0(BattleSystem *battleSys, UnkStruct_ov12_0225AEA0_Src *battlerData);
+// FUNCTION ov12_0225AEA0: matching C (twin)
 #pragma force_active on
-void ov12_0225AEA0(void *param_1, u8 *param_2) {
-    Ov12Task *t = Heap_Alloc(5, 0xc);
-    t->a = param_1;
-    t->c = param_2[0x94];
-    t->d = param_2[0x194];
-    t->e = 0;
-    t->b = param_2 + 0x28;
-    SysTask_CreateOnMainQueue(ov12_02260584, t, 0);
+void ov12_0225AEA0(BattleSystem *battleSys, UnkStruct_ov12_0225AEA0_Src *battlerData) {
+    UnkStruct_ov12_0225AEA0 *playLevelUpAnimationData = Heap_Alloc(HEAP_ID_BATTLE, sizeof(UnkStruct_ov12_0225AEA0));
+
+    playLevelUpAnimationData->battleSys = battleSys;
+    playLevelUpAnimationData->command = battlerData->data[0];
+    playLevelUpAnimationData->battler = battlerData->battler;
+    playLevelUpAnimationData->state = 0;
+    playLevelUpAnimationData->healthbox = &battlerData->healthbox;
+
+    SysTask_CreateOnMainQueue(ov12_02260584, playLevelUpAnimationData, 0);
 }
 #pragma force_active reset

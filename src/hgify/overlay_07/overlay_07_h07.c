@@ -4,32 +4,32 @@
 #include "global.h"
 
 #include "filesystem.h"
-#include "ghidra_compat.h"
 #include "heap.h"
-typedef void code(void);
-undefined4 ov07_0221C3DC(void);
-undefined4 ov07_0221BFE0(int param_1);
-// FUNCTION ov07_0221BFE0: matching C (r2)
+
+typedef struct UnkStruct_ov07_0221BFE0 {
+    u8 unk_000[0xC0];
+    void *context;
+    u8 unk_0C4[0x1B0 - 0xC4];
+    NARC *arcs[6];
+} UnkStruct_ov07_0221BFE0;
+
+BOOL ov07_0221C3DC(void);
+
+BOOL ov07_0221BFE0(UnkStruct_ov07_0221BFE0 *system);
+// FUNCTION ov07_0221BFE0: matching C (twin)
 #pragma force_active on
-undefined4 ov07_0221BFE0(int param_1)
-
-{
-    int iVar1;
-    int iVar2;
-
-    iVar1 = ov07_0221C3DC();
-    if (iVar1 == 0) {
-        return 0;
+BOOL ov07_0221BFE0(UnkStruct_ov07_0221BFE0 *system) {
+    if (ov07_0221C3DC() == FALSE) {
+        return FALSE;
     }
-    iVar2 = 0;
-    iVar1 = param_1;
-    do {
-        NARC_Delete(*(undefined4 *)(iVar1 + 0x1b0));
-        iVar2 = iVar2 + 1;
-        iVar1 = iVar1 + 4;
-    } while (iVar2 < 6);
-    Heap_Free(*(undefined4 *)(param_1 + 0xc0));
-    Heap_Free(param_1);
-    return 1;
+
+    for (int i = 0; i < 6; i++) {
+        NARC_Delete(system->arcs[i]);
+    }
+
+    Heap_Free(system->context);
+    Heap_Free(system);
+
+    return TRUE;
 }
 #pragma force_active reset

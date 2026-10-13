@@ -4,28 +4,25 @@
 #include "global.h"
 
 #include "font.h"
-#include "ghidra_compat.h"
 #include "pm_string.h"
-typedef int code();
-undefined4 ov40_0223D540();
-undefined4 ov40_02230E08();
-void ov40_02230DCC(undefined4 param_1, undefined4 param_2);
-// FUNCTION ov40_02230DCC: matching C (r2)
+typedef struct UnkStruct_ov40_02230DCC UnkStruct_ov40_02230DCC;
+typedef struct UnkStruct_ov40_02230DCC_Ctx {
+    u8 pad_00[0x144];
+    enum HeapID heapID;
+} UnkStruct_ov40_02230DCC_Ctx;
+UnkStruct_ov40_02230DCC_Ctx *ov40_0223D540(UnkStruct_ov40_02230DCC *param0);
+void ov40_02230E08(String *param0, enum HeapID heapID);
+void ov40_02230DCC(UnkStruct_ov40_02230DCC *param0, String *param1);
+// FUNCTION ov40_02230DCC: matching C (twin)
 #pragma force_active on
-void ov40_02230DCC(undefined4 param_1, undefined4 param_2)
+void ov40_02230DCC(UnkStruct_ov40_02230DCC *param0, String *param1) {
+    UnkStruct_ov40_02230DCC_Ctx *v0 = ov40_0223D540(param0);
+    String *v1 = String_New(0x40, v0->heapID);
 
-{
-    int iVar1;
-    undefined4 uVar2;
-    int iVar3;
-
-    iVar1 = ov40_0223D540();
-    uVar2 = String_New(0x40, *(undefined4 *)(iVar1 + 0x144));
-    iVar3 = FontID_String_AllCharsValid(0, param_2, uVar2);
-    if (iVar3 == 0) {
-        ov40_02230E08(param_2, *(undefined4 *)(iVar1 + 0x144));
+    if (FontID_String_AllCharsValid(0, param1, v1) == 0) {
+        ov40_02230E08(param1, v0->heapID);
     }
-    String_Delete(uVar2);
-    return;
+
+    String_Delete(v1);
 }
 #pragma force_active reset

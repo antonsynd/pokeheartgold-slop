@@ -2,19 +2,29 @@
 #pragma warning_errors off
 #pragma thumb on
 #include "global.h"
-extern int ov38_0221BEA8(void *a0, void *a1, void *a2, void *a3, void *a4, void *a5);
-extern void *_02246800[];
-// FUNCTION ov70_02238360: matching C (agent11)
+
+typedef struct UnkStruct_ov70_02238360 {
+    u8 unk_00[8];
+    u32 dwcProfileId;
+} UnkStruct_ov70_02238360;
+
+extern UnkStruct_ov70_02238360 _02246800;
+
+int ov38_0221BEA8(const u8 *url, u32 dwcProfileId, const void *data, int dataSize, u8 *response, int maxResponseLength);
+
+// FUNCTION ov70_02238360: matching C (twin)
 #pragma force_active on
-int ov70_02238360(void *param_1, void *param_2, void *param_3, void *param_4, void *param_5) {
-    int iVar1 = ov38_0221BEA8(param_1, _02246800[2], param_2, param_3, param_4, param_5);
-    switch (iVar1) {
+BOOL ov70_02238360(const u8 *url, const void *data, int dataSize, void *response, int maxResponseLength) {
+    switch (ov38_0221BEA8(url, _02246800.dwcProfileId, data, dataSize, (u8 *)response, maxResponseLength)) {
     case 0:
-        return 1;
+        return TRUE;
+        break;
     case 1:
+        break;
     case 2:
-    default:
-        return 0;
+        break;
     }
+
+    return FALSE;
 }
 #pragma force_active reset

@@ -14,11 +14,11 @@ typedef struct Out {
     void *p;
 } Out;
 void *ov01_021EB898(void *, int, u32, void *, void *, int);
-// FUNCTION ov01_021EBF24: matching C (agent3)
+// FUNCTION ov01_021EBF24: matching C (twin)
 #pragma force_active on
-void ov01_021EBF24(Obj *obj, u32 id, Out *out) {
-    if (id != 0xFFFF) {
-        out->p = ov01_021EB898(obj->p18, 3, id, obj->p14, obj->p108, 0);
+void ov01_021EBF24(Obj *param0, u32 param1, Out *param2) {
+    if (param1 != 0xFFFF) {
+        param2->p = ov01_021EB898(param0->p18, 3, param1, param0->p14, param0->p108, 0);
     }
 }
 #pragma force_active reset

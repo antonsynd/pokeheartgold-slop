@@ -3,28 +3,39 @@
 #pragma thumb on
 #include "global.h"
 
-#include "error_handling.h"
-#include "ghidra_compat.h"
-typedef void code(void);
-void ov07_022227A8(undefined2 *param_1, int param_2, int param_3, undefined4 param_4, undefined4 param_5);
-// FUNCTION ov07_022227A8: matching C (r2)
-#pragma force_active on
-void ov07_022227A8(undefined2 *param_1, int param_2, int param_3, undefined4 param_4, undefined4 param_5)
+#include "assert.h"
 
-{
-    if (param_1 == (undefined2 *)0x0) {
-        GF_AssertFail();
-    }
-    *(undefined4 *)(param_1 + 2) = param_4;
-    *(undefined4 *)(param_1 + 4) = param_4;
-    *(undefined4 *)(param_1 + 6) = param_5;
-    *(undefined4 *)(param_1 + 8) = 0;
-    *(int *)(param_1 + 10) = param_2;
-    *(int *)(param_1 + 0xc) = param_3;
-    *(int *)(param_1 + 0xe) = -param_2;
-    *(int *)(param_1 + 0x10) = -param_3;
-    *param_1 = 0;
-    param_1[1] = 0;
-    return;
+typedef struct UnkStruct_ov07_022227A8 {
+    s16 x;
+    s16 y;
+    s32 data[8];
+} UnkStruct_ov07_022227A8;
+
+enum {
+    XY_PARAM_SHAKE_COUNTER = 0,
+    XY_PARAM_SHAKE_INTERVAL,
+    XY_PARAM_SHAKE_REMAINING,
+    XY_PARAM_SHAKE_CYCLE,
+    XY_PARAM_SHAKE_EXTENT_X,
+    XY_PARAM_SHAKE_EXTENT_Y,
+    XY_PARAM_SHAKE_PREV_X,
+    XY_PARAM_SHAKE_PREV_Y,
+};
+
+// FUNCTION ov07_022227A8: matching C (twin)
+#pragma force_active on
+void ov07_022227A8(UnkStruct_ov07_022227A8 *ctx, s16 extentX, s16 extentY, u32 interval, u32 amount) {
+    GF_ASSERT(ctx);
+
+    ctx->data[XY_PARAM_SHAKE_COUNTER] = interval;
+    ctx->data[XY_PARAM_SHAKE_INTERVAL] = interval;
+    ctx->data[XY_PARAM_SHAKE_REMAINING] = amount;
+    ctx->data[XY_PARAM_SHAKE_CYCLE] = 0;
+    ctx->data[XY_PARAM_SHAKE_EXTENT_X] = extentX;
+    ctx->data[XY_PARAM_SHAKE_EXTENT_Y] = extentY;
+    ctx->data[XY_PARAM_SHAKE_PREV_X] = -extentX;
+    ctx->data[XY_PARAM_SHAKE_PREV_Y] = -extentY;
+    ctx->x = 0;
+    ctx->y = 0;
 }
 #pragma force_active reset

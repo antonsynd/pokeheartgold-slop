@@ -3,27 +3,31 @@
 #pragma thumb on
 #include "global.h"
 
-#include "ghidra_compat.h"
 #include "sprite.h"
 #include "unk_02005D10.h"
-typedef int code();
-typedef struct S43 {
-    unsigned char pad[0xf8];
-    void *sprite;
-    unsigned int frame;
-} S43;
-// FUNCTION ov43_0222C714: matching C (agent3)
+
+typedef struct UnkStruct_ov43_0222C714 {
+    u8 unk_00[0xF8];
+    Sprite *unk_F8;
+    u32 unk_FC;
+} UnkStruct_ov43_0222C714;
+
+// FUNCTION ov43_0222C714: matching C (twin)
 #pragma force_active on
-int ov43_0222C714(S43 *p) {
-    unsigned int f;
-    if (!Sprite_IsAnimated(p->sprite)) {
+BOOL ov43_0222C714(UnkStruct_ov43_0222C714 *param0) {
+    u32 v0;
+
+    if (Sprite_IsAnimated(param0->unk_F8) == 0) {
         return 1;
     }
-    f = Sprite_GetAnimationFrame(p->sprite);
-    if (f - p->frame >= 2) {
-        p->frame = f;
+
+    v0 = Sprite_GetAnimationFrame(param0->unk_F8);
+
+    if ((v0 - param0->unk_FC) >= 2) {
+        param0->unk_FC = v0;
         PlaySE(0x628);
     }
+
     return 0;
 }
 #pragma force_active reset

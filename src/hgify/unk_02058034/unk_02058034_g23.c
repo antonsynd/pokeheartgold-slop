@@ -5,23 +5,30 @@
 
 #include "unk_02035900.h"
 #include "unk_020379A0.h"
-extern u8 *_021D41C8;
+
+typedef struct UnkStruct_sub_02058478 {
+    u8 unk_00[0x38];
+    u16 timer;
+} UnkStruct_sub_02058478;
+
+extern UnkStruct_sub_02058478 *_021D41C8;
+
 int sub_02057E50(void);
 void sub_02058444(void);
-void sub_020582F4(void (*fn)(void), int n);
-// FUNCTION sub_02058478: matching C (agent7)
+void sub_020582F4(void (*param0)(void), int param1);
+
+// FUNCTION sub_02058478: matching C (twin)
 #pragma force_active on
 void sub_02058478(void) {
-    int iVar1;
-
-    if (*(u16 *)(_021D41C8 + 0x38) != 0) {
-        *(u16 *)(_021D41C8 + 0x38) = *(u16 *)(_021D41C8 + 0x38) - 1;
+    int v0;
+    if (_021D41C8->timer != 0) {
+        _021D41C8->timer--;
         return;
     }
-    iVar1 = sub_0203769C();
-    if (iVar1 == 0) {
-        iVar1 = sub_02057E50();
-        if (iVar1 == 0) {
+    v0 = sub_0203769C();
+    if (v0 == 0) {
+        v0 = sub_02057E50();
+        if (v0 == 0) {
             return;
         }
         sub_02037AC0(0x1e);

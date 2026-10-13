@@ -3,24 +3,22 @@
 #pragma thumb on
 #include "global.h"
 
-#include "ghidra_compat.h"
 #include "sprite_system.h"
-typedef int code();
-undefined4 ov40_0222F950();
-void ov40_0222F9E0(int param_1, undefined4 param_2, undefined4 param_3);
-// FUNCTION ov40_0222F9E0: matching C (r2)
+
+typedef struct UnkStruct_ov40_0222F9E0 {
+    u8 unk_00[0x18];
+    ManagedSprite *unk_18[2];
+} UnkStruct_ov40_0222F9E0;
+
+ManagedSprite *ov40_0222F950(UnkStruct_ov40_0222F9E0 *param0, void *param1, int param2, int param3);
+
+// FUNCTION ov40_0222F9E0: matching C (twin)
 #pragma force_active on
-void ov40_0222F9E0(int param_1, undefined4 param_2, undefined4 param_3)
+void ov40_0222F9E0(UnkStruct_ov40_0222F9E0 *param0, void *param1, int param2) {
+    param0->unk_18[0] = ov40_0222F950(param0, param1, 2, param2);
+    param0->unk_18[1] = ov40_0222F950(param0, param1, 2, param2);
 
-{
-    undefined4 uVar1;
-
-    uVar1 = ov40_0222F950(param_1, param_2, 2, param_3);
-    *(undefined4 *)(param_1 + 0x18) = uVar1;
-    uVar1 = ov40_0222F950(param_1, param_2, 2, param_3);
-    *(undefined4 *)(param_1 + 0x1c) = uVar1;
-    ManagedSprite_SetPositionXY(*(undefined4 *)(param_1 + 0x18), 0x18, 0x88);
-    ManagedSprite_SetPositionXY(*(undefined4 *)(param_1 + 0x1c), 0xe8, 0x88);
-    return;
+    ManagedSprite_SetPositionXY(param0->unk_18[0], 0 + 24, 72 + 64);
+    ManagedSprite_SetPositionXY(param0->unk_18[1], 256 - 24, 72 + 64);
 }
 #pragma force_active reset

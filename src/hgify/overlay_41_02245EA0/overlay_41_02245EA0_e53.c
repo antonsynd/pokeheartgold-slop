@@ -113,7 +113,7 @@ void ov41_022467C8(void);
 void ov41_022467D4(void);
 void ov41_022467D4(void);
 void ov41_022467E4(UnkStruct_ov41_02245EA0 *param0, const UnkStruct_ov41_022467E4_Template *param1);
-// FUNCTION ov41_022467E4: matching C (r2)
+// FUNCTION ov41_022467E4: matching C (twin)
 #pragma force_active on
 void ov41_022467E4(UnkStruct_ov41_02245EA0 *param0, const UnkStruct_ov41_022467E4_Template *param1) {
     param0->unk00 = sub_02015DDC(param1);

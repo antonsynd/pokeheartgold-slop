@@ -4,26 +4,27 @@
 #include "global.h"
 
 #include "sprite.h"
-typedef struct {
-    void *sprite0;
-    void *sprite1;
-    s16 timer;
-} Ov90Obj;
-extern void ov90_0225BC28(Ov90Obj *obj, int arg);
-// FUNCTION ov90_0225BBF0: matching C (agent10)
+
+typedef struct UnkStruct_ov90_0225BBF0 {
+    Sprite *unk_00[2];
+    s16 unk_08;
+} UnkStruct_ov90_0225BBF0;
+
+void ov90_0225BC28(UnkStruct_ov90_0225BBF0 *param0, int param1);
+
+// FUNCTION ov90_0225BBF0: matching C (twin)
 #pragma force_active on
-u8 ov90_0225BBF0(Ov90Obj *param_1) {
-    s16 sVar1;
-    u8 ret = 0;
-    param_1->timer = param_1->timer - 1;
-    sVar1 = param_1->timer;
-    if (sVar1 <= 0) {
-        ret = 1;
-        param_1->timer = 1;
-        Sprite_SetDrawFlag(param_1->sprite0, 0);
-        Sprite_SetDrawFlag(param_1->sprite1, 0);
+BOOL ov90_0225BBF0(UnkStruct_ov90_0225BBF0 *param0) {
+    BOOL v0 = 0;
+    param0->unk_08--;
+
+    if (param0->unk_08 <= 0) {
+        param0->unk_08 = 1;
+        v0 = 1;
+        Sprite_SetDrawFlag(param0->unk_00[0], FALSE);
+        Sprite_SetDrawFlag(param0->unk_00[1], FALSE);
     }
-    ov90_0225BC28(param_1, -1);
-    return ret;
+    ov90_0225BC28(param0, -1);
+    return v0;
 }
 #pragma force_active reset

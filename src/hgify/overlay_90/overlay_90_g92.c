@@ -2,24 +2,28 @@
 #pragma warning_errors off
 #pragma thumb on
 #include "global.h"
-// FUNCTION ov90_0225A258: matching C (agent7)
-#pragma force_active on
-int ov90_0225A258(volatile u8 *param_1, u8 *param_2) {
-    int i;
-    int result;
 
-    result = 0;
-    i = 0;
-    if (0 < (int)(param_1[8] - 1)) {
-        do {
-            u8 next = param_2[i + 1];
-            u8 cur = param_2[i];
-            if (cur != next || cur == 0 || next == 0) {
-                result = 1;
-            }
-            i++;
-        } while (i < (int)(param_1[8] - 1));
+typedef struct UnkStruct_ov90_0225A258_0 {
+    u8 unk_00[8];
+    u8 unk_08;
+} UnkStruct_ov90_0225A258_0;
+
+typedef struct UnkStruct_ov90_0225A258_1 {
+    u8 unk_00[];
+} UnkStruct_ov90_0225A258_1;
+
+// FUNCTION ov90_0225A258: matching C (twin)
+#pragma force_active on
+BOOL ov90_0225A258(const UnkStruct_ov90_0225A258_0 *param0, const UnkStruct_ov90_0225A258_1 *param1) {
+    int v0;
+    BOOL v1 = 0;
+
+    for (v0 = 0; v0 < param0->unk_08 - 1; v0++) {
+        if ((param1->unk_00[v0] != param1->unk_00[v0 + 1]) || (param1->unk_00[v0] == 0) || (param1->unk_00[v0 + 1] == 0)) {
+            v1 = 1;
+        }
     }
-    return result;
+
+    return v1;
 }
 #pragma force_active reset

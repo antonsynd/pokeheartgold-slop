@@ -4,37 +4,43 @@
 #include "global.h"
 
 #include "error_handling.h"
-#include "ghidra_compat.h"
 #include "heap.h"
-typedef void code(void);
-undefined4 ov07_0221C69C(void);
-undefined4 *ov07_0223458C(undefined4 param_1, undefined4 *param_2);
-// FUNCTION ov07_0223458C: matching C (r2)
+
+typedef struct UnkStruct_ov07_0223458C {
+    enum HeapID heapID;
+    u32 unk_04;
+    void *unk_08[16];
+} UnkStruct_ov07_0223458C;
+
+void ov07_0221C69C(void);
+
+// FUNCTION ov07_0223458C: matching C (twin)
 #pragma force_active on
-undefined4 *ov07_0223458C(undefined4 param_1, undefined4 *param_2)
+UnkStruct_ov07_0223458C *ov07_0223458C(enum HeapID heapID, u32 *param1) {
+    UnkStruct_ov07_0223458C *v0 = NULL;
+    v0 = Heap_Alloc(heapID, sizeof(UnkStruct_ov07_0223458C));
 
-{
-    undefined4 *puVar1;
-    int iVar2;
-    undefined4 *puVar3;
-
-    puVar1 = (undefined4 *)Heap_Alloc(param_1, 0x48);
-    if (puVar1 == (undefined4 *)0x0) {
+    if (v0 == NULL) {
         GF_AssertFail();
-        return (undefined4 *)0x0;
+        return NULL;
     }
+
     ov07_0221C69C();
-    *puVar1 = param_1;
-    if (param_2 != (undefined4 *)0x0) {
-        puVar1[1] = *param_2;
+
+    v0->heapID = heapID;
+
+    if (param1 != NULL) {
+        v0->unk_04 = *param1;
     }
-    iVar2 = 0;
-    puVar3 = puVar1;
-    do {
-        iVar2 = iVar2 + 1;
-        puVar3[2] = 0;
-        puVar3 = puVar3 + 1;
-    } while (iVar2 < 0x10);
-    return puVar1;
+
+    {
+        int v1;
+
+        for (v1 = 0; v1 < 16; v1++) {
+            v0->unk_08[v1] = NULL;
+        }
+    }
+
+    return v0;
 }
 #pragma force_active reset

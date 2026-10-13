@@ -3,30 +3,33 @@
 #pragma thumb on
 #include "global.h"
 
-#include "error_handling.h"
-#include "ghidra_compat.h"
-typedef int code();
-undefined4 ov91_02260A2C();
-void ov91_02260754(int param_1, int param_2);
-// FUNCTION ov91_02260754: matching C (r2)
+#include "assert.h"
+
+typedef struct UnkStruct_ov91_02260754_Elem {
+    u8 unk_00[0xF8];
+    const void *unk_F8;
+    u8 unk_FC[0x108 - 0xFC];
+} UnkStruct_ov91_02260754_Elem;
+
+typedef struct UnkStruct_ov91_02260754 {
+    u8 unk_000[0x790];
+    UnkStruct_ov91_02260754_Elem unk_790[96];
+} UnkStruct_ov91_02260754;
+
+void ov91_02260A2C(UnkStruct_ov91_02260754_Elem *param0);
+
+// FUNCTION ov91_02260754: matching C (twin)
 #pragma force_active on
-void ov91_02260754(int param_1, int param_2)
+void ov91_02260754(UnkStruct_ov91_02260754 *param0, const void *param1) {
+    int v0;
 
-{
-    int iVar1;
-    int iVar2;
-
-    iVar1 = 0;
-    iVar2 = param_1;
-    do {
-        if (*(int *)(iVar2 + 0x888) == param_2) {
-            ov91_02260A2C(param_1 + 0x790 + iVar1 * 0x108);
+    for (v0 = 0; v0 < 96; v0++) {
+        if (param0->unk_790[v0].unk_F8 == param1) {
+            ov91_02260A2C(&param0->unk_790[v0]);
             return;
         }
-        iVar1 = iVar1 + 1;
-        iVar2 = iVar2 + 0x108;
-    } while (iVar1 < 0x60);
-    GF_AssertFail();
-    return;
+    }
+
+    GF_ASSERT(FALSE);
 }
 #pragma force_active reset

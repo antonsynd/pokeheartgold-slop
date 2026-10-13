@@ -153,14 +153,16 @@ u32 ov74_0223127C(u32 seed, u32 size, u32 *data);
 void ov74_022312C0(UnkOv74Packet *packet, const u8 *payload, u32 length, u32 a3, u32 a4);
 void ov74_022312C0(UnkOv74Packet *packet, const u8 *payload, u32 length, u32 a3, u32 a4);
 void ov74_022313F0(UnkOv74Packet *packet);
-// FUNCTION ov74_022313F0: matching C (r0)
+// FUNCTION ov74_022313F0: matching C (twin)
 #pragma force_active on
-void ov74_022313F0(UnkOv74Packet *packet) {
-    u32 seed;
+void ov74_022313F0(UnkOv74Packet *param0) {
     ov74_022311DC();
-    if (packet->word0.hi == 1) {
-        seed = ov74_0223127C(packet->word0.top, 12, (u32 *)((u8 *)packet + 4));
-        ov74_0223127C(seed, packet->word3.offset + packet->word3.length - 0x10, (u32 *)((u8 *)packet + 0x10));
+
+    if (param0->word0.hi == 1) {
+        u32 v2;
+
+        v2 = ov74_0223127C(param0->word0.top, 12, (u32 *)&param0->word1);
+        ov74_0223127C(v2, param0->word3.offset + param0->word3.length - sizeof(UnkOv74Packet), (u32 *)((u32)param0 + sizeof(UnkOv74Packet)));
     }
 }
 #pragma force_active reset

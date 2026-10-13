@@ -3,21 +3,21 @@
 #pragma thumb on
 #include "global.h"
 
-#include "ghidra_compat.h"
-#include "sprite.h"
 #include "sprite_system.h"
-typedef int code();
-void sub_0208BC78(int param_1, undefined4 param_2, undefined4 param_3, undefined4 param_4);
-// FUNCTION sub_0208BC78: matching C (perm1)
+
+typedef struct UnkStruct_sub_0208BC78 {
+    u8 unk_000[0x428];
+    Sprite *moveSelector1;
+    Sprite *moveSelector2;
+} UnkStruct_sub_0208BC78;
+
+// FUNCTION sub_0208BC78: matching C (twin)
 #pragma force_active on
-void sub_0208BC78(int param_1, undefined4 param_2, undefined4 param_3, undefined4 param_4) {
-    short sStack_e;
-    short sStack_10;
-    undefined4 uStack_c;
-    uStack_c = param_4;
-    Sprite_GetPositionXY(*((undefined4 *)(param_1 + 0x428)), &sStack_e, &sStack_10);
-    Sprite_SetPositionXY(*((undefined4 *)(param_1 + 0x42c)), (int)sStack_e, (int)sStack_10);
-    Sprite_SetDrawFlag(*((undefined4 *)(param_1 + 0x42c)), 1);
-    return;
+void sub_0208BC78(UnkStruct_sub_0208BC78 *summaryScreen) {
+    s16 x, y;
+
+    Sprite_GetPositionXY(summaryScreen->moveSelector1, &x, &y);
+    Sprite_SetPositionXY(summaryScreen->moveSelector2, x, y);
+    Sprite_SetDrawFlag(summaryScreen->moveSelector2, TRUE);
 }
 #pragma force_active reset

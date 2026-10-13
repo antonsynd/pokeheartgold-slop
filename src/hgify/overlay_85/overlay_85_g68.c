@@ -4,21 +4,22 @@
 #include "global.h"
 
 #include "bg_window.h"
-#include "ghidra_compat.h"
 #include "heap.h"
-typedef int code();
-void ov85_021E6D68(int param_1);
-// FUNCTION ov85_021E6D68: matching C (r2)
-#pragma force_active on
-void ov85_021E6D68(int param_1)
 
-{
-    FreeBgTilemapBuffer(*(undefined4 *)(param_1 + 0xd84), 1);
-    FreeBgTilemapBuffer(*(undefined4 *)(param_1 + 0xd84), 2);
-    FreeBgTilemapBuffer(*(undefined4 *)(param_1 + 0xd84), 3);
-    FreeBgTilemapBuffer(*(undefined4 *)(param_1 + 0xd84), 6);
-    FreeBgTilemapBuffer(*(undefined4 *)(param_1 + 0xd84), 7);
-    Heap_Free(*(undefined4 *)(param_1 + 0xd84));
-    return;
+typedef struct UnkStruct_ov85_021E6D68 {
+    u8 unk_000[0xD84];
+    BgConfig *unk_D84;
+} UnkStruct_ov85_021E6D68;
+
+void ov85_021E6D68(UnkStruct_ov85_021E6D68 *param0);
+// FUNCTION ov85_021E6D68: matching C (twin)
+#pragma force_active on
+void ov85_021E6D68(UnkStruct_ov85_021E6D68 *param0) {
+    FreeBgTilemapBuffer(param0->unk_D84, 1);
+    FreeBgTilemapBuffer(param0->unk_D84, 2);
+    FreeBgTilemapBuffer(param0->unk_D84, 3);
+    FreeBgTilemapBuffer(param0->unk_D84, 6);
+    FreeBgTilemapBuffer(param0->unk_D84, 7);
+    Heap_Free(param0->unk_D84);
 }
 #pragma force_active reset

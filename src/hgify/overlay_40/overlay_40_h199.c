@@ -3,25 +3,31 @@
 #pragma thumb on
 #include "global.h"
 
-#include "ghidra_compat.h"
 #include "sprite_system.h"
 #include "unk_02013534.h"
-typedef int code();
-void ov40_022330E0(int param_1, int param_2);
-// FUNCTION ov40_022330E0: matching C (r2)
+
+typedef struct UnkStruct_ov40_022330E0_ctx {
+    u8 unk_00[0xBC];
+    ManagedSprite *unk_BC;
+    TextOBJ *unk_C0;
+} UnkStruct_ov40_022330E0_ctx;
+
+typedef struct UnkStruct_ov40_022330E0 {
+    u8 unk_000[0x860];
+    UnkStruct_ov40_022330E0_ctx *unk_860;
+} UnkStruct_ov40_022330E0;
+
+// FUNCTION ov40_022330E0: matching C (twin)
 #pragma force_active on
-void ov40_022330E0(int param_1, int param_2)
+void ov40_022330E0(UnkStruct_ov40_022330E0 *param0, int param1) {
+    UnkStruct_ov40_022330E0_ctx *v0 = param0->unk_860;
 
-{
-    int iVar1;
-
-    iVar1 = *(int *)(param_1 + 0x860);
-    if (param_2 == 0) {
-        ManagedSprite_SetPositionXY(*(undefined4 *)(iVar1 + 0xbc), 0x80, 0xe8);
+    if (param1 == 0) {
+        ManagedSprite_SetPositionXY(v0->unk_BC, 128, 232);
     } else {
-        ManagedSprite_SetPositionXY(*(undefined4 *)(iVar1 + 0xbc), 0x50, 0xe8);
+        ManagedSprite_SetPositionXY(v0->unk_BC, 80, 232);
     }
-    sub_020136B4(*(undefined4 *)(iVar1 + 0xc0), 0x24, 0xfffffff8);
-    return;
+
+    sub_020136B4(v0->unk_C0, 36, -8);
 }
 #pragma force_active reset

@@ -6,20 +6,18 @@
 #include "bg_window.h"
 #include "filesystem.h"
 #include "gf_gfx_loader.h"
-#include "ghidra_compat.h"
-typedef int code();
-void ov80_02234A38(undefined4 param_1, undefined4 *param_2, undefined4 param_3, undefined4 param_4);
-// FUNCTION ov80_02234A38: matching C (r3)
+
+typedef struct UnkStruct_ov80_02234A38 {
+    BgConfig *bgConfig;
+} UnkStruct_ov80_02234A38;
+
+// FUNCTION ov80_02234A38: matching C (twin)
 #pragma force_active on
-void ov80_02234A38(undefined4 param_1, undefined4 *param_2, undefined4 param_3, undefined4 param_4)
+void ov80_02234A38(void *arcade, UnkStruct_ov80_02234A38 *graphics) {
+    NARC *narc = NARC_New(0xB7, 0x65);
 
-{
-    undefined4 uVar1;
-
-    uVar1 = NARC_New(0xb7, 0x65);
-    GfGfxLoader_LoadScrnDataFromOpenNarc(uVar1, 0x39, *param_2, 3, 0, 0, 1, 0x65);
-    ScheduleBgTilemapBufferTransfer(*param_2, 3);
-    NARC_Delete(uVar1);
-    return;
+    GfGfxLoader_LoadScrnDataFromOpenNarc(narc, 0x39, graphics->bgConfig, 3, 0, 0, TRUE, 0x65);
+    ScheduleBgTilemapBufferTransfer(graphics->bgConfig, 3);
+    NARC_Delete(narc);
 }
 #pragma force_active reset

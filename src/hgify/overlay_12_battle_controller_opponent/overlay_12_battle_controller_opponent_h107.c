@@ -3,30 +3,44 @@
 #pragma thumb on
 #include "global.h"
 
-#include "ghidra_compat.h"
+#include "battle/battle.h"
+
 #include "heap.h"
 #include "sys_task_api.h"
-typedef void code(void);
-typedef struct T {
-    void *a;
-    u8 b;
-    u8 c;
-    u8 d;
-    u8 e;
-    u8 pad[6];
-    u8 f;
-} T;
-extern void ov12_02260C58(SysTask *, void *);
-// FUNCTION ov12_0225B0E8: matching C (agent3)
+
+typedef struct UnkStruct_ov12_0225B0E8 {
+    BattleSystem *battleSys;
+    u8 command;
+    u8 battler;
+    u8 battlerType;
+    u8 state;
+    u8 unk_08[6];
+    u8 midBattle;
+    u8 unk_0F;
+} UnkStruct_ov12_0225B0E8;
+
+typedef struct UnkStruct_ov12_0225B0E8_BattlerData {
+    u8 pad0[0x194];
+    u8 battler;
+    u8 battlerType;
+} UnkStruct_ov12_0225B0E8_BattlerData;
+
+typedef struct UnkStruct_ov12_0225B0E8_PartyGauge {
+    u8 command;
+} UnkStruct_ov12_0225B0E8_PartyGauge;
+
+void ov12_02260C58(SysTask *a, void *b);
+// FUNCTION ov12_0225B0E8: matching C (twin)
 #pragma force_active on
-void ov12_0225B0E8(void *param_1, u8 *param_2, u8 *param_3) {
-    T *t = Heap_Alloc(5, 0x10);
-    t->e = 0;
-    t->a = param_1;
-    t->b = *param_3;
-    t->c = param_2[0x194];
-    t->d = param_2[0x195];
-    t->f = 0;
-    SysTask_CreateOnMainQueue(ov12_02260C58, t, 0);
+void ov12_0225B0E8(BattleSystem *battleSys, UnkStruct_ov12_0225B0E8_BattlerData *battlerData, UnkStruct_ov12_0225B0E8_PartyGauge *partyGauge) {
+    UnkStruct_ov12_0225B0E8 *task = Heap_Alloc(HEAP_ID_BATTLE, sizeof(UnkStruct_ov12_0225B0E8));
+    task->state = 0;
+    task->battleSys = battleSys;
+    task->command = partyGauge->command;
+    task->battler = battlerData->battler;
+    task->battlerType = battlerData->battlerType;
+    task->midBattle = FALSE;
+
+    SysTask_CreateOnMainQueue(ov12_02260C58, task, 0);
 }
 #pragma force_active reset

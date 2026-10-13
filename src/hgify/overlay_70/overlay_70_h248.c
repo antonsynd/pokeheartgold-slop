@@ -3,31 +3,29 @@
 #pragma thumb on
 #include "global.h"
 
-#include "ghidra_compat.h"
 #include "pokemon.h"
-typedef int code();
-undefined4 ov70_0223E49C();
-undefined4 ov70_0223E5C8(void);
-// FUNCTION ov70_0223E5C8: matching C (r2)
+
+typedef struct PCBoxes PCBoxes;
+
+BoxPokemon *ov70_0223E49C(Party *party, PCBoxes *pcBoxes, int boxID, int slot);
+
+// FUNCTION ov70_0223E5C8: matching C (twin)
 #pragma force_active on
-undefined4 ov70_0223E5C8(void)
+int ov70_0223E5C8(Party *party, PCBoxes *pcBoxes, int boxID, int slot) {
+    BoxPokemon *boxMon = ov70_0223E49C(party, pcBoxes, boxID, slot);
 
-{
-    int iVar1;
-    int iVar2;
-
-    iVar1 = ov70_0223E49C();
-    if (iVar1 == 0) {
+    if (boxMon == NULL) {
         return 0;
     }
-    iVar2 = GetBoxMonData(iVar1, 0xac, 0);
-    if (iVar2 == 0) {
+
+    if (!GetBoxMonData(boxMon, MON_DATA_SPECIES_EXISTS, NULL)) {
         return 0;
     }
-    iVar1 = GetBoxMonData(iVar1, 0xad, 0);
-    if (iVar1 != 0) {
+
+    if (GetBoxMonData(boxMon, MON_DATA_SANITY_IS_EGG, NULL)) {
         return 2;
     }
+
     return 1;
 }
 #pragma force_active reset

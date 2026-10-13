@@ -3,27 +3,24 @@
 #pragma thumb on
 #include "global.h"
 
-#include "ghidra_compat.h"
 #include "message_format.h"
 #include "msgdata.h"
 #include "pm_string.h"
-typedef int code();
-void ov48_0225B068(undefined4 *param_1, undefined4 param_2, undefined4 param_3, undefined4 param_4);
-// FUNCTION ov48_0225B068: matching C (r3)
+
+typedef struct UnkStruct_ov48_0225B068 {
+    MsgData *unk_00;
+    MessageFormat *unk_04;
+    String *unk_08;
+    String *unk_0C;
+} UnkStruct_ov48_0225B068;
+
+void ov48_0225B068(UnkStruct_ov48_0225B068 *param0, enum HeapID heapID);
+// FUNCTION ov48_0225B068: matching C (twin)
 #pragma force_active on
-void ov48_0225B068(undefined4 *param_1, undefined4 param_2, undefined4 param_3, undefined4 param_4)
-
-{
-    undefined4 uVar1;
-
-    uVar1 = NewMsgDataFromNarc(0, 0x1b, 0x321, param_2);
-    *param_1 = uVar1;
-    uVar1 = MessageFormat_New_Custom(8, 0x40, param_2);
-    param_1[1] = uVar1;
-    uVar1 = String_New(0x80, param_2);
-    param_1[2] = uVar1;
-    uVar1 = String_New(0x80, param_2);
-    param_1[3] = uVar1;
-    return;
+void ov48_0225B068(UnkStruct_ov48_0225B068 *param0, enum HeapID heapID) {
+    param0->unk_00 = NewMsgDataFromNarc(0, 0x1B, 0x321, heapID);
+    param0->unk_04 = MessageFormat_New_Custom(8, 0x40, heapID);
+    param0->unk_08 = String_New(0x80, heapID);
+    param0->unk_0C = String_New(0x80, heapID);
 }
 #pragma force_active reset

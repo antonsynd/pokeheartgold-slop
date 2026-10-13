@@ -88,7 +88,7 @@ void sub_020589B0(void);
 void sub_020589D8(void);
 void sub_020589D8(void);
 void sub_020589F4(void);
-// FUNCTION sub_020589F4: matching C (r0)
+// FUNCTION sub_020589F4: matching C (twin)
 #pragma force_active on
 void sub_020589F4(void) {
     if (_021D41C8->timer != 0) {

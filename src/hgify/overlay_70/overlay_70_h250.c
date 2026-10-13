@@ -12,7 +12,7 @@ typedef struct UnkStruct_ov70_0223E658 {
 } UnkStruct_ov70_0223E658;
 extern int ov70_0223E5FC(UnkStruct_ov70_0223E658 *criteria, void *requirements);
 int ov70_0223E658(BoxPokemon *boxMon, void *requirements);
-// FUNCTION ov70_0223E658: matching C (r0)
+// FUNCTION ov70_0223E658: matching C (twin)
 #pragma force_active on
 int ov70_0223E658(BoxPokemon *boxMon, void *requirements) {
     UnkStruct_ov70_0223E658 criteria;

@@ -5,21 +5,31 @@
 
 #include "bg_window.h"
 #include "gf_gfx_planes.h"
-#include "ghidra_compat.h"
-typedef int code();
-void ov40_0222DFB0(int param_1);
-// FUNCTION ov40_0222DFB0: matching C (r2)
-#pragma force_active on
-void ov40_0222DFB0(int param_1)
 
-{
-    if (*(int *)(param_1 + 0x8a0) != 0) {
-        *(undefined4 *)(param_1 + 0x8a0) = 0;
-        ClearWindowTilemapAndCopyToVram(param_1 + 0x8a4);
-        RemoveWindow(param_1 + 0x8a4);
-        BgClearTilemapBufferAndCommit(*(undefined4 *)(param_1 + 0x24), 2);
-        GfGfx_EngineATogglePlanes(4, 0);
+typedef struct UnkStruct_ov40_0222DFB0 {
+    u8 unk_00[0x14];
+    struct {
+        u8 unk_00[0x10];
+        BgConfig *unk_10;
+    } unk_14;
+    u8 unk_28[0x8A0 - 0x28];
+    int unk_8A0;
+    Window unk_8A4;
+} UnkStruct_ov40_0222DFB0;
+
+void ov40_0222DFB0(UnkStruct_ov40_0222DFB0 *param0);
+// FUNCTION ov40_0222DFB0: matching C (twin)
+#pragma force_active on
+void ov40_0222DFB0(UnkStruct_ov40_0222DFB0 *param0) {
+    if (param0->unk_8A0 == 0) {
+        return;
     }
-    return;
+
+    param0->unk_8A0 = 0;
+
+    ClearWindowTilemapAndCopyToVram(&param0->unk_8A4);
+    RemoveWindow(&param0->unk_8A4);
+    BgClearTilemapBufferAndCommit(param0->unk_14.unk_10, 2);
+    GfGfx_EngineATogglePlanes(4, 0);
 }
 #pragma force_active reset

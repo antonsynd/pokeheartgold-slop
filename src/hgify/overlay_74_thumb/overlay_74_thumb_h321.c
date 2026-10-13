@@ -4,27 +4,19 @@
 #include "global.h"
 
 #include "filesystem.h"
-#include "ghidra_compat.h"
 #include "heap.h"
-typedef int code();
-int ov74_02231E00(undefined4 param_1, undefined4 param_2, undefined4 param_3, undefined4 param_4);
-// FUNCTION ov74_02231E00: matching C (r3)
+
+// FUNCTION ov74_02231E00: matching C (twin)
 #pragma force_active on
-int ov74_02231E00(undefined4 param_1, undefined4 param_2, undefined4 param_3, undefined4 param_4)
-
-{
-    int iVar1;
-    int iVar2;
-
-    iVar1 = Heap_AllocAtEnd(param_4, 0x1000);
-    if (iVar1 != 0) {
-        ReadWholeNarcMemberByIdPair(iVar1, param_1, param_2);
-        iVar2 = NNS_G2dGetUnpackedBGCharacterData(iVar1, param_3);
-        if (iVar2 == 0) {
-            Heap_Free(iVar1);
-            return 0;
+void *ov74_02231E00(u32 narcID, u32 memberIndex, NNSG2dCharacterData **param2, enum HeapID heapID) {
+    void *v0 = Heap_AllocAtEnd(heapID, 4096);
+    if (v0 != NULL) {
+        ReadWholeNarcMemberByIdPair(v0, narcID, memberIndex);
+        if (NNS_G2dGetUnpackedBGCharacterData(v0, param2) == 0) {
+            Heap_Free(v0);
+            return NULL;
         }
     }
-    return iVar1;
+    return v0;
 }
 #pragma force_active reset

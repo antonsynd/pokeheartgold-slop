@@ -4,31 +4,35 @@
 #include "global.h"
 
 #include "bg_window.h"
-#include "ghidra_compat.h"
 #include "palette.h"
 #include "sprite_system.h"
-typedef int code();
-void ov56_021E63C0(int param_1);
-// FUNCTION ov56_021E63C0: matching C (agent7)
+
+typedef struct UnkStruct_ov56_021E63C0 {
+    u8 unk_00[0x18];
+    BgConfig *bgConfig;
+    u8 unk_1C[0x30 - 0x1C];
+    PaletteData *paletteData;
+    u8 unk_34[0xB0 - 0x34];
+    SpriteSystem *spriteSys;
+} UnkStruct_ov56_021E63C0;
+
+void ov56_021E63C0(void *data);
+// FUNCTION ov56_021E63C0: matching C (twin)
 #pragma force_active on
-void ov56_021E63C0(int param_1)
+void ov56_021E63C0(void *data) {
+    UnkStruct_ov56_021E63C0 *mailViewerApp = (UnkStruct_ov56_021E63C0 *)data;
 
-{
-    int off;
-    uint *base;
-
-    PaletteData *pal = *(PaletteData **)(param_1 + 0x30);
-    if (pal != 0) {
-        PaletteData_PushTransparentBuffers(pal);
+    if (mailViewerApp->paletteData != NULL) {
+        PaletteData_PushTransparentBuffers(mailViewerApp->paletteData);
     }
-    if (*(int *)(param_1 + 0xb0) != 0) {
+
+    if (mailViewerApp->spriteSys != NULL) {
         SpriteSystem_TransferOam();
     }
+
     NNS_GfdDoVramTransfer();
-    DoScheduledBgGpuUpdates(*(undefined4 *)(param_1 + 0x18));
-    off = 0x3ff8;
-    base = (uint *)0x027E0000;
-    *(uint *)((char *)base + off) = 1 | *(uint *)((char *)base + off);
-    return;
+    DoScheduledBgGpuUpdates(mailViewerApp->bgConfig);
+
+    OS_SetIrqCheckFlag(OS_IE_VBLANK);
 }
 #pragma force_active reset

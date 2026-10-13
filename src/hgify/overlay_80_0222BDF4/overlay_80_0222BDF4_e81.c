@@ -4,31 +4,33 @@
 #include "global.h"
 
 #include "frontier/frontier.h"
+#include "frontier/overlay_80_0222BDF4.h"
 
-#include "ghidra_compat.h"
 #include "save.h"
 #include "system.h"
-typedef int code();
-undefined4 ov80_0222CE80(undefined4 *param_1);
-// FUNCTION ov80_0222CE80: matching C (r2)
+
+typedef struct UnkStruct_ov80_0222CE80 {
+    FrontierScriptContext *ctx;
+} UnkStruct_ov80_0222CE80;
+
+// FUNCTION ov80_0222CE80: matching C (twin)
 #pragma force_active on
-undefined4 ov80_0222CE80(undefined4 *param_1)
+BOOL ov80_0222CE80(UnkStruct_ov80_0222CE80 *scriptMan) {
+    FrontierLaunchArgs *fieldData = Frontier_GetLaunchArgs(scriptMan->ctx->frontierSystem);
+    int saveResult = Save_WriteFileAsync(fieldData->saveData);
 
-{
-    int iVar1;
-
-    iVar1 = Frontier_GetLaunchArgs(*(undefined4 *)*param_1);
-    iVar1 = Save_WriteFileAsync(*(undefined4 *)(iVar1 + 8));
-    if (iVar1 == 2) {
+    if (saveResult == 2) {
         sub_0201A774();
         sub_0201A738(4);
-        return 1;
+        return TRUE;
     }
-    if (iVar1 == 3) {
+
+    if (saveResult == 3) {
         sub_0201A774();
         sub_0201A738(4);
-        return 1;
+        return TRUE;
     }
-    return 0;
+
+    return FALSE;
 }
 #pragma force_active reset
