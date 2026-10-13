@@ -2,11 +2,23 @@
 #pragma warning_errors off
 #pragma thumb on
 #include <string.h>
-void ov39_02227088(void *a, void *b, void *c, void *d, int e);
-// FUNCTION ov40_02236578: matching C (agent6)
+
+#include "global.h"
+
+#include "heap.h"
+#include "save.h"
+
+typedef struct PCBoxes PCBoxes;
+
+typedef struct UnkStruct_ov40_02236578 {
+    u8 unk_00[0x19C];
+} UnkStruct_ov40_02236578;
+
+void ov39_02227088(SaveData *saveData, const PCBoxes *pcBoxes, int boxID, UnkStruct_ov40_02236578 *param3, enum HeapID heapID);
+// FUNCTION ov40_02236578: matching C (twin)
 #pragma force_active on
-void ov40_02236578(void *param_1, void *param_2, void *param_3, void *param_4) {
-    memset(param_4, 0, 0x19c);
-    ov39_02227088(param_1, param_2, param_3, param_4, 0x6d);
+void ov40_02236578(SaveData *saveData, const PCBoxes *pcBoxes, int boxID, UnkStruct_ov40_02236578 *param3) {
+    memset(param3, 0, sizeof(UnkStruct_ov40_02236578));
+    ov39_02227088(saveData, pcBoxes, boxID, param3, HEAP_ID_109);
 }
 #pragma force_active reset

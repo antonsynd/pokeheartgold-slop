@@ -3,28 +3,26 @@
 #pragma thumb on
 #include "global.h"
 
-#include "ghidra_compat.h"
 #include "map_object.h"
 #include "script_manager.h"
-typedef int code();
-void GetEngagingTrainerParams(undefined4 *param_1, undefined4 param_2, undefined4 param_3, undefined4 param_4);
-// FUNCTION GetEngagingTrainerParams: matching C (r2)
+
+typedef struct UnkStruct_GetEngagingTrainerParams {
+    int distance;
+    int direction;
+    u32 script;
+    u32 trainerID;
+    BOOL isDoubleBattle;
+    LocalMapObject *trainerMapObj;
+} UnkStruct_GetEngagingTrainerParams;
+
+// FUNCTION GetEngagingTrainerParams: matching C (twin)
 #pragma force_active on
-void GetEngagingTrainerParams(undefined4 *param_1, undefined4 param_2, undefined4 param_3, undefined4 param_4)
-
-{
-    uint uVar1;
-    undefined4 uVar2;
-
-    *param_1 = param_3;
-    param_1[1] = param_4;
-    uVar1 = MapObject_GetScriptID(param_2);
-    param_1[2] = uVar1;
-    uVar1 = ScriptNumToTrainerNum(uVar1 & 0xffff);
-    param_1[3] = uVar1;
-    uVar2 = TrainerNumIsDouble(uVar1 & 0xffff);
-    param_1[4] = uVar2;
-    param_1[5] = param_2;
-    return;
+void GetEngagingTrainerParams(UnkStruct_GetEngagingTrainerParams *apprTrTemplate, LocalMapObject *trainerMapObj, int distance, int direction) {
+    apprTrTemplate->distance = distance;
+    apprTrTemplate->direction = direction;
+    apprTrTemplate->script = MapObject_GetScriptID(trainerMapObj);
+    apprTrTemplate->trainerID = ScriptNumToTrainerNum(apprTrTemplate->script & 0xffff);
+    apprTrTemplate->isDoubleBattle = TrainerNumIsDouble(apprTrTemplate->trainerID & 0xffff);
+    apprTrTemplate->trainerMapObj = trainerMapObj;
 }
 #pragma force_active reset

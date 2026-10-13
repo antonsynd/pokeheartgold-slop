@@ -3,24 +3,22 @@
 #pragma thumb on
 #include "global.h"
 
-#include "ghidra_compat.h"
 #include "unk_02035900.h"
-typedef int code();
-undefined4 ov91_0225CA90();
-undefined4 ov91_0225CA74();
-void ov91_02261B64(undefined4 param_1, undefined4 param_2, undefined4 param_3, undefined4 param_4);
-// FUNCTION ov91_02261B64: matching C (r2)
+
+typedef struct UnkStruct_ov91_02261B64 UnkStruct_ov91_02261B64;
+
+void ov91_0225CA90(UnkStruct_ov91_02261B64 *param0, void *param1, int param2);
+void ov91_0225CA74(UnkStruct_ov91_02261B64 *param0, void *param1, int param2);
+void ov91_02261B64(int param0, int param1, void *param2, void *param3);
+// FUNCTION ov91_02261B64: matching C (twin)
 #pragma force_active on
-void ov91_02261B64(undefined4 param_1, undefined4 param_2, undefined4 param_3, undefined4 param_4)
+void ov91_02261B64(int param0, int param1, void *param2, void *param3) {
+    UnkStruct_ov91_02261B64 *v0 = param3;
 
-{
-    int iVar1;
+    ov91_0225CA90(v0, param2, param0);
 
-    ov91_0225CA90(param_4, param_3, param_1);
-    iVar1 = sub_0203769C();
-    if (iVar1 == 0) {
-        ov91_0225CA74(param_4, param_3, param_1);
+    if (sub_0203769C() == 0) {
+        ov91_0225CA74(v0, param2, param0);
     }
-    return;
 }
 #pragma force_active reset

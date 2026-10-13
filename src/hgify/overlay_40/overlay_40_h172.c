@@ -3,27 +3,20 @@
 #pragma thumb on
 #include "global.h"
 
-#include "ghidra_compat.h"
 #include "touchscreen.h"
-typedef int code();
-extern undefined ov40_02245104;
-extern undefined ov40_02245100;
-undefined4 ov40_02231700(void);
-// FUNCTION ov40_02231700: matching C (r2)
+extern const TouchscreenHitbox ov40_02245104;
+extern const TouchscreenHitbox ov40_02245100;
+// FUNCTION ov40_02231700: matching C (twin)
 #pragma force_active on
-undefined4 ov40_02231700(void)
-
-{
-    int iVar1;
-
-    iVar1 = TouchscreenHitbox_TouchHeldIsIn((const union TouchscreenHitbox *)&ov40_02245100);
-    if (iVar1 != 0) {
+int ov40_02231700(void) {
+    if (TouchscreenHitbox_TouchHeldIsIn(&ov40_02245100)) {
         return 1;
     }
-    iVar1 = TouchscreenHitbox_TouchHeldIsIn((const union TouchscreenHitbox *)&ov40_02245104);
-    if (iVar1 != 0) {
+
+    if (TouchscreenHitbox_TouchHeldIsIn(&ov40_02245104)) {
         return 2;
     }
+
     return 0;
 }
 #pragma force_active reset

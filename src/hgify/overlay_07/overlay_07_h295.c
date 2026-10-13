@@ -3,25 +3,25 @@
 #pragma thumb on
 #include "global.h"
 
-#include "error_handling.h"
-#include "ghidra_compat.h"
-typedef void code(void);
-undefined4 ov07_02222040(undefined4, undefined4, undefined4);
-void ov07_022223F0(int *param_1, int param_2, int param_3, int param_4);
-// FUNCTION ov07_022223F0: matching C (r2)
+#include "assert.h"
+
+#define FX32_SHIFT 12
+#define FX32_ONE   (1 << FX32_SHIFT)
+
+typedef struct UnkStruct_ov07_022223F0 {
+    int value;
+    int data[2];
+} UnkStruct_ov07_022223F0;
+
+int ov07_02222040(int param0, int param1, int param2);
+
+// FUNCTION ov07_022223F0: matching C (twin)
 #pragma force_active on
-void ov07_022223F0(int *param_1, int param_2, int param_3, int param_4)
+void ov07_022223F0(UnkStruct_ov07_022223F0 *ctx, int start, int end, int steps) {
+    GF_ASSERT(ctx);
 
-{
-    int iVar1;
-
-    if (param_1 == (int *)0x0) {
-        GF_AssertFail();
-    }
-    *param_1 = param_2;
-    param_1[1] = param_4;
-    iVar1 = ov07_02222040(param_2 << 0xc, param_3 << 0xc, param_4);
-    param_1[2] = iVar1 >> 0xc;
-    return;
+    ctx->value = start;
+    ctx->data[0] = steps;
+    ctx->data[1] = ov07_02222040(start * FX32_ONE, end * FX32_ONE, steps) >> FX32_SHIFT;
 }
 #pragma force_active reset

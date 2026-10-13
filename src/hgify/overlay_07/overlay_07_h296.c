@@ -3,26 +3,29 @@
 #pragma thumb on
 #include "global.h"
 
-#include "error_handling.h"
-#include "ghidra_compat.h"
-typedef void code(void);
-undefined4 ov07_02222040(undefined4, undefined4, undefined4);
-void ov07_02222418(int *param_1, int param_2, int param_3, int param_4);
-// FUNCTION ov07_02222418: matching C (r2)
+#include "assert.h"
+
+typedef struct UnkStruct_ov07_02222418 {
+    s32 value;
+    s32 data[3];
+} UnkStruct_ov07_02222418;
+
+enum {
+    VALUE_PARAM_FX32_STEPS,
+    VALUE_PARAM_FX32_STEP_SIZE,
+    VALUE_PARAM_FX32_CUR_ANGLE,
+};
+
+fx32 ov07_02222040(fx32 start, fx32 end, u32 steps);
+void ov07_02222418(UnkStruct_ov07_02222418 *ctx, s32 start, s32 end, u32 steps);
+// FUNCTION ov07_02222418: matching C (twin)
 #pragma force_active on
-void ov07_02222418(int *param_1, int param_2, int param_3, int param_4)
+void ov07_02222418(UnkStruct_ov07_02222418 *ctx, s32 start, s32 end, u32 steps) {
+    GF_ASSERT(ctx);
 
-{
-    int iVar1;
-
-    if (param_1 == (int *)0x0) {
-        GF_AssertFail();
-    }
-    *param_1 = param_2;
-    param_1[1] = param_4;
-    iVar1 = ov07_02222040(param_2 * 0x1000, param_3 << 0xc, param_4);
-    param_1[2] = iVar1;
-    param_1[3] = param_2 * 0x1000;
-    return;
+    ctx->value = start;
+    ctx->data[VALUE_PARAM_FX32_STEPS] = steps;
+    ctx->data[VALUE_PARAM_FX32_STEP_SIZE] = ov07_02222040(start * FX32_ONE, end * FX32_ONE, steps);
+    ctx->data[VALUE_PARAM_FX32_CUR_ANGLE] = start * FX32_ONE;
 }
 #pragma force_active reset

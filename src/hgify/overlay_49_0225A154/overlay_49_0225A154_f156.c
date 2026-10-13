@@ -76,13 +76,13 @@ void ov49_0225C970(UnkStruct_ov49_Touch *touch, UnkStruct_ov49_Gfx *gfx, void *m
 void ov49_0225CA30(UnkStruct_ov49_Touch *touch, UnkStruct_ov49_Gfx *gfx, u32 index, NARC *narc, enum HeapID heapID);
 void ov49_0225CA30(UnkStruct_ov49_Touch *touch, UnkStruct_ov49_Gfx *gfx, u32 index, NARC *narc, enum HeapID heapID);
 void ov49_0225CAA8(UnkStruct_ov49_Touch *touch, UnkStruct_ov49_Gfx *gfx);
-// FUNCTION ov49_0225CAA8: matching C (r0)
+// FUNCTION ov49_0225CAA8: matching C (twin)
 #pragma force_active on
-void ov49_0225CAA8(UnkStruct_ov49_Touch *touch, UnkStruct_ov49_Gfx *gfx) {
-    BgClearTilemapBufferAndCommit(gfx->bgConfig, GF_BG_LYR_SUB_0);
-    BgClearTilemapBufferAndCommit(gfx->bgConfig, GF_BG_LYR_SUB_1);
-    BgClearTilemapBufferAndCommit(gfx->bgConfig, GF_BG_LYR_SUB_2);
-    BgSetPosTextAndCommit(gfx->bgConfig, GF_BG_LYR_SUB_2, BG_POS_OP_SET_Y, 0);
+void ov49_0225CAA8(UnkStruct_ov49_Touch *param0, UnkStruct_ov49_Gfx *param1) {
+    BgClearTilemapBufferAndCommit(param1->bgConfig, GF_BG_LYR_SUB_0);
+    BgClearTilemapBufferAndCommit(param1->bgConfig, GF_BG_LYR_SUB_1);
+    BgClearTilemapBufferAndCommit(param1->bgConfig, GF_BG_LYR_SUB_2);
+    BgSetPosTextAndCommit(param1->bgConfig, GF_BG_LYR_SUB_2, BG_POS_OP_SET_Y, 0);
 }
 #pragma force_active reset
 void ov49_0225CAD4(UnkStruct_ov49_Touch *touch, UnkStruct_ov49_Gfx *gfx, u32 state, NARC *narc, enum HeapID heapID);

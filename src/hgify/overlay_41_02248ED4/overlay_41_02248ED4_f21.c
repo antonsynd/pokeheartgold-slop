@@ -4,22 +4,23 @@
 #include "global.h"
 
 #include "gf_gfx_loader.h"
-#include "ghidra_compat.h"
 #include "pokepic.h"
-typedef int code();
-undefined4 ov41_022463DC();
-void ov41_022495C8(undefined4 param_1, undefined2 *param_2);
-// FUNCTION ov41_022495C8: matching C (r2)
+
+typedef struct UnkStruct_ov41_022495C8 UnkStruct_ov41_022495C8;
+
+typedef struct PokemonSpriteTemplate {
+    u16 narcID;
+    u16 character;
+} PokemonSpriteTemplate;
+
+NNSG2dCharacterData *ov41_022463DC(UnkStruct_ov41_022495C8 *param0, void *param1, int param2);
+
+// FUNCTION ov41_022495C8: matching C (twin)
 #pragma force_active on
-void ov41_022495C8(undefined4 param_1, undefined2 *param_2)
+void ov41_022495C8(UnkStruct_ov41_022495C8 *param0, PokemonSpriteTemplate *param1) {
+    void *v0 = GfGfxLoader_LoadFromNarc(param1->narcID, param1->character, FALSE, 0xe, FALSE);
+    NNSG2dCharacterData *v1 = ov41_022463DC(param0, v0, (100 + 18));
 
-{
-    undefined4 uVar1;
-    int iVar2;
-
-    uVar1 = GfGfxLoader_LoadFromNarc(*param_2, param_2[1], 0, 0xe, 0);
-    iVar2 = ov41_022463DC(param_1, uVar1, 0x76);
-    UnscanPokepic(*(undefined4 *)(iVar2 + 0x14), *param_2);
-    return;
+    UnscanPokepic(v1->pRawData, param1->narcID);
 }
 #pragma force_active reset

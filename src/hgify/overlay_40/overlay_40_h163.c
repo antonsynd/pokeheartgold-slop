@@ -3,22 +3,19 @@
 #pragma thumb on
 #include "global.h"
 
-#include "ghidra_compat.h"
+#include "filesystem.h"
 #include "msgdata.h"
 #include "pm_string.h"
-typedef int code();
-void ov40_02230E08(undefined4 param_1, undefined4 param_2, undefined4 param_3, undefined4 param_4);
-// FUNCTION ov40_02230E08: matching C (r3)
+
+// FUNCTION ov40_02230E08: matching C (twin)
 #pragma force_active on
-void ov40_02230E08(undefined4 param_1, undefined4 param_2, undefined4 param_3, undefined4 param_4)
+void ov40_02230E08(String *param0, enum HeapID heapID) {
+    MsgData *v0;
 
-{
-    undefined4 uVar1;
+    String_SetEmpty(param0);
+    v0 = NewMsgDataFromNarc(MSGDATA_LOAD_LAZY, NARC_msgdata_msg, 0xd, heapID);
 
-    String_SetEmpty((String *)param_1);
-    uVar1 = NewMsgDataFromNarc(1, 0x1b, 0xd, param_2);
-    ReadMsgDataIntoString((MsgData *)uVar1, 0x14c, (String *)param_1);
-    DestroyMsgData((MsgData *)uVar1);
-    return;
+    ReadMsgDataIntoString(v0, 332, param0);
+    DestroyMsgData(v0);
 }
 #pragma force_active reset

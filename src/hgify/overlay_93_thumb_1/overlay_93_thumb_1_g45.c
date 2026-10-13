@@ -13,15 +13,17 @@ typedef struct UnkStruct_ov93_0225E2D4 {
     int unk_2F28;
 } UnkStruct_ov93_0225E2D4;
 UnkStruct_ov93_0225E2D4_Elem *ov93_0225E2D4(UnkStruct_ov93_0225E2D4 *param0);
-// FUNCTION ov93_0225E2D4: matching C (r0)
+// FUNCTION ov93_0225E2D4: matching C (twin)
 #pragma force_active on
 UnkStruct_ov93_0225E2D4_Elem *ov93_0225E2D4(UnkStruct_ov93_0225E2D4 *param0) {
-    int idx = param0->unk_2F28 % 60;
-    UnkStruct_ov93_0225E2D4_Elem *elem = &param0->unk_176C[idx];
+    UnkStruct_ov93_0225E2D4_Elem *v0;
+    int v1 = param0->unk_2F28 % 60;
 
-    if (elem->unk_00 != 0) {
-        return elem;
+    v0 = &param0->unk_176C[v1];
+    if (v0->unk_00 != 0) {
+        return v0;
     }
+
     return NULL;
 }
 #pragma force_active reset

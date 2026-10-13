@@ -86,7 +86,7 @@ void ov07_02222338(XYTransformContext *linear, XYTransformContext *revs, s16 sx,
 BOOL ov07_02222384(XYTransformContext *linear, XYTransformContext *revs);
 BOOL ov07_022223CC(XYTransformContext *linear, XYTransformContext *revs, ManagedSprite *sprite);
 
-// FUNCTION ov07_02222240: matching C (r0)
+// FUNCTION ov07_02222240: matching C (twin)
 #pragma force_active on
 BOOL ov07_02222240(XYTransformContext *ctx, s16 cx, s16 cy, Pokepic *sprite) {
     if (ov07_02222180(ctx)) {

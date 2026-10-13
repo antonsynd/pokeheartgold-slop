@@ -4,19 +4,23 @@
 #include "global.h"
 
 #include "bg_window.h"
-#include "ghidra_compat.h"
-typedef void code(void);
-undefined4 ov05_0221DDEC(undefined4, undefined4, undefined4);
-void ov05_0221DE38(int param_1);
-// FUNCTION ov05_0221DE38: matching C (r2)
-#pragma force_active on
-void ov05_0221DE38(int param_1)
 
-{
-    ov05_0221DDEC(param_1, param_1 + 0x544, 1);
-    ov05_0221DDEC(param_1, param_1 + 0x844, 2);
-    ScheduleBgTilemapBufferTransfer(*(undefined4 *)(param_1 + 0xc), 1);
-    ScheduleBgTilemapBufferTransfer(*(undefined4 *)(param_1 + 0xc), 2);
-    return;
+typedef struct UnkStruct_ov05_0221DE38 {
+    u8 unk_00[0x0C];
+    BgConfig *unk_0C;
+    u8 unk_10[0x544 - 0x10];
+    u8 unk_544[2][0x300];
+} UnkStruct_ov05_0221DE38;
+
+void ov05_0221DDEC(UnkStruct_ov05_0221DE38 *param0, u8 *param1, int param2);
+
+// FUNCTION ov05_0221DE38: matching C (twin)
+#pragma force_active on
+void ov05_0221DE38(UnkStruct_ov05_0221DE38 *param0) {
+    ov05_0221DDEC(param0, param0->unk_544[0], 1);
+    ov05_0221DDEC(param0, param0->unk_544[1], 2);
+
+    ScheduleBgTilemapBufferTransfer(param0->unk_0C, 1);
+    ScheduleBgTilemapBufferTransfer(param0->unk_0C, 2);
 }
 #pragma force_active reset

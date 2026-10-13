@@ -3,25 +3,32 @@
 #pragma thumb on
 #include "global.h"
 
-#include "error_handling.h"
-#include "ghidra_compat.h"
+#include "assert.h"
 #include "heap.h"
 #include "sprite_system.h"
 #include "sys_task_api.h"
-typedef void code(void);
-void ov07_02233ECC(int param_1);
-// FUNCTION ov07_02233ECC: matching C (r2)
+typedef struct UnkStruct_ov07_02233ECC_Unk90 {
+    u8 unk_00[0x1C];
+    SpriteSystem *cellActorSys;
+} UnkStruct_ov07_02233ECC_Unk90;
+typedef struct UnkStruct_ov07_02233ECC {
+    u8 unk_00[0x2C];
+    SpriteManager *unk_2C;
+    ManagedSprite *unk_30;
+    u8 unk_34[0x90 - 0x34];
+    UnkStruct_ov07_02233ECC_Unk90 unk_90;
+    u8 unk_B0[0xCC - 0xB0];
+    SysTask *unk_CC;
+} UnkStruct_ov07_02233ECC;
+void ov07_02233ECC(UnkStruct_ov07_02233ECC *param0);
+// FUNCTION ov07_02233ECC: matching C (twin)
 #pragma force_active on
-void ov07_02233ECC(int param_1)
+void ov07_02233ECC(UnkStruct_ov07_02233ECC *param0) {
+    GF_ASSERT(param0 != NULL);
 
-{
-    if (param_1 == 0) {
-        GF_AssertFail();
-    }
-    SpriteSystem_FreeResourcesAndManager(*(undefined4 *)(param_1 + 0xac), *(undefined4 *)(param_1 + 0x2c));
-    Sprite_DeleteAndFreeResources(*(undefined4 *)(param_1 + 0x30));
-    SysTask_Destroy(*(undefined4 *)(param_1 + 0xcc));
-    Heap_Free(param_1);
-    return;
+    SpriteSystem_FreeResourcesAndManager(param0->unk_90.cellActorSys, param0->unk_2C);
+    Sprite_DeleteAndFreeResources(param0->unk_30);
+    SysTask_Destroy(param0->unk_CC);
+    Heap_Free(param0);
 }
 #pragma force_active reset

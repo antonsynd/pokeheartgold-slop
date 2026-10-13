@@ -86,13 +86,13 @@ void ov45_0222E0E0(UnkStruct_ov45_0222E04C *a0, int a1, int a2, int a3, PlayerPr
 BOOL ov45_0222E14C(UnkStruct_ov45_0222E04C *a0, const void *a1, MessageFormat *a2, MsgData *a3, String *a4, enum HeapID heapID);
 BOOL ov45_0222E1A0(UnkStruct_ov45_0222E04C *a0, const void *a1, MessageFormat *a2, MsgData *a3, String *a4, enum HeapID heapID);
 
-// FUNCTION ov45_0222DF14: matching C (r0)
+// FUNCTION ov45_0222DF14: matching C (twin)
 #pragma force_active on
-BOOL ov45_0222DF14(const UnkStruct_ov45_0222DE3C *a0, u32 a1) {
-    GF_ASSERT(a1 < UNK_OV45_SLOT_COUNT);
-    if (a0->unk0[a1].unk2 & 2) {
-        return TRUE;
+BOOL ov45_0222DF14(const UnkStruct_ov45_0222DE3C *param0, u32 param1) {
+    GF_ASSERT(param1 < UNK_OV45_SLOT_COUNT);
+    if (param0->unk0[param1].unk2 & 2) {
+        return 1;
     }
-    return FALSE;
+    return 0;
 }
 #pragma force_active reset

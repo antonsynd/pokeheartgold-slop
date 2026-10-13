@@ -3,18 +3,21 @@
 #pragma thumb on
 #include "global.h"
 
-#include "ghidra_compat.h"
 #include "sprite_system.h"
-typedef int code();
-void ov80_0222F278(int param_1);
-// FUNCTION ov80_0222F278: matching C (r2)
-#pragma force_active on
-void ov80_0222F278(int param_1)
 
-{
-    SpriteManager_UnloadCellObjById(*(undefined4 *)(param_1 + 0x38), 2000);
-    SpriteManager_UnloadAnimObjById(*(undefined4 *)(param_1 + 0x38), 2000);
-    SpriteManager_UnloadPlttObjById(*(undefined4 *)(param_1 + 0x38), 2000);
-    return;
+#define MON_SPRITE_BASE_RESOURCE_ID 2000
+
+typedef struct UnkStruct_ov80_0222F278 {
+    u8 unk_00[0x38];
+    SpriteManager *spriteMan;
+} UnkStruct_ov80_0222F278;
+
+void ov80_0222F278(UnkStruct_ov80_0222F278 *graphics);
+// FUNCTION ov80_0222F278: matching C (twin)
+#pragma force_active on
+void ov80_0222F278(UnkStruct_ov80_0222F278 *graphics) {
+    SpriteManager_UnloadCellObjById(graphics->spriteMan, MON_SPRITE_BASE_RESOURCE_ID);
+    SpriteManager_UnloadAnimObjById(graphics->spriteMan, MON_SPRITE_BASE_RESOURCE_ID);
+    SpriteManager_UnloadPlttObjById(graphics->spriteMan, MON_SPRITE_BASE_RESOURCE_ID);
 }
 #pragma force_active reset

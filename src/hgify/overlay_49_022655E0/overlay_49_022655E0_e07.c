@@ -128,8 +128,7 @@ void ov49_02265668(UnkStruct_ov49p1_Work *param0, UnkStruct_ov49p1_Elem *param1,
 void ov49_02265698(UnkStruct_ov49p1_Work *param0, NARC *param1, enum HeapID heapID);
 void ov49_0226571C(UnkStruct_ov49p1_Work *param0);
 void ov49_0226571C(UnkStruct_ov49p1_Work *param0);
-void ov49_02265738(UnkStruct_ov49p1_Work *param0, NARC *param1, u32 heapID);
-// FUNCTION ov49_02265738: matching C (r2)
+// FUNCTION ov49_02265738: matching C (twin)
 #pragma force_active on
 void ov49_02265738(UnkStruct_ov49p1_Work *param0, NARC *param1, u32 heapID) {
     int v0;

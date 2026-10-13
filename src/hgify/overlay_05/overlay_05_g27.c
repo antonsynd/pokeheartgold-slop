@@ -3,27 +3,21 @@
 #pragma thumb on
 #include "global.h"
 
-#include "ghidra_compat.h"
 #include "unk_02035900.h"
-typedef void code(void);
-undefined4 ov05_0221CCF4(void);
-// FUNCTION ov05_0221CCF4: matching C (r2)
+
+BOOL ov05_0221CCF4(void);
+// FUNCTION ov05_0221CCF4: matching C (twin)
 #pragma force_active on
-undefined4 ov05_0221CCF4(void)
-
-{
-    undefined4 uVar1;
-
-    uVar1 = sub_020378AC(sub_0203769C());
-    switch (uVar1) {
+BOOL ov05_0221CCF4(void) {
+    switch (sub_020378AC(sub_0203769C())) {
     case 0:
     case 2:
-        return 1;
+        return TRUE;
     case 1:
     case 3:
-        return 0;
-    default:
-        return 0;
+        return FALSE;
     }
+
+    return FALSE;
 }
 #pragma force_active reset

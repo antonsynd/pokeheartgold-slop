@@ -2,19 +2,26 @@
 #pragma warning_errors off
 #pragma thumb on
 #include "global.h"
-void ov90_0225BC28(u8 *param_1, int param_2);
-BOOL ov90_0225BBD0(u8 *param_1);
-// FUNCTION ov90_0225BBD0: matching C (agent10)
+typedef struct UnkStruct_ov90_0225BBD0 {
+    u8 unk_00[8];
+    s16 unk_08;
+} UnkStruct_ov90_0225BBD0;
+void ov90_0225BC28(UnkStruct_ov90_0225BBD0 *param0, int arg1);
+BOOL ov90_0225BBD0(UnkStruct_ov90_0225BBD0 *param0);
+// FUNCTION ov90_0225BBD0: matching C (twin)
 #pragma force_active on
-BOOL ov90_0225BBD0(u8 *param_1) {
-    BOOL result = FALSE;
+BOOL ov90_0225BBD0(UnkStruct_ov90_0225BBD0 *param0) {
+    BOOL v0 = FALSE;
 
-    *(s16 *)(param_1 + 8) = *(s16 *)(param_1 + 8) + 1;
-    if (*(s16 *)(param_1 + 8) >= 8) {
-        *(s16 *)(param_1 + 8) = 8;
-        result = TRUE;
+    param0->unk_08++;
+
+    if (param0->unk_08 >= 8) {
+        param0->unk_08 = 8;
+        v0 = TRUE;
     }
-    ov90_0225BC28(param_1, 1);
-    return result;
+
+    ov90_0225BC28(param0, 1);
+
+    return v0;
 }
 #pragma force_active reset

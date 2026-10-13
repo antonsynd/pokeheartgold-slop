@@ -2,16 +2,16 @@
 #pragma warning_errors off
 #pragma thumb on
 #include "global.h"
-typedef struct Obj {
-    u8 pad0[0x5b4];
-    u8 sub[0x3680 - 0x5b4];
-    u32 f3680;
-    u32 f3684;
-} Obj;
+typedef struct UnkStruct_ov65_0221E330 {
+    u8 pad_0000[0x5b4];
+    u8 windows[0x3680 - 0x5b4];
+    u32 palPadStrTemplate;
+    u32 palPadMsgLoader;
+} UnkStruct_ov65_0221E330;
 void ov65_0221FB90(void *a, u32 b, u32 c, u32 d, u32 e);
-// FUNCTION ov65_0221E330: matching C (agent6)
+// FUNCTION ov65_0221E330: matching C (twin)
 #pragma force_active on
-void ov65_0221E330(Obj *param_1, u32 param_2) {
-    ov65_0221FB90(param_1->sub, param_2, 1, param_1->f3684, param_1->f3680);
+void ov65_0221E330(UnkStruct_ov65_0221E330 *tradeRoom, int entryId) {
+    ov65_0221FB90(tradeRoom->windows, entryId, 1, tradeRoom->palPadMsgLoader, tradeRoom->palPadStrTemplate);
 }
 #pragma force_active reset

@@ -3,21 +3,18 @@
 #pragma thumb on
 #include "global.h"
 
-#include "ghidra_compat.h"
 #include "msgdata.h"
-typedef int code();
-void ov15_021FE874(int param_1);
-// FUNCTION ov15_021FE874: matching C (r2)
+typedef struct UnkStruct_ov15_021FE874 {
+    u8 pad_0000[0x2F0];
+    MsgData *bagStringsLoader;
+    u8 pad_02F4[0x5E8 - 0x2F4];
+    String *itemCountX;
+    String *itemCountNumberFmt;
+} UnkStruct_ov15_021FE874;
+// FUNCTION ov15_021FE874: matching C (twin)
 #pragma force_active on
-void ov15_021FE874(int param_1)
-
-{
-    undefined4 uVar1;
-
-    uVar1 = NewString_ReadMsgData(*(undefined4 *)(param_1 + 0x2f0), 0x27);
-    *(undefined4 *)(param_1 + 0x5e8) = uVar1;
-    uVar1 = NewString_ReadMsgData(*(undefined4 *)(param_1 + 0x2f0), 0x26);
-    *(undefined4 *)(param_1 + 0x5ec) = uVar1;
-    return;
+void ov15_021FE874(UnkStruct_ov15_021FE874 *controller) {
+    controller->itemCountX = NewString_ReadMsgData(controller->bagStringsLoader, 0x27);
+    controller->itemCountNumberFmt = NewString_ReadMsgData(controller->bagStringsLoader, 0x26);
 }
 #pragma force_active reset

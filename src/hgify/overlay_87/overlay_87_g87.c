@@ -3,17 +3,15 @@
 #pragma thumb on
 #include "global.h"
 
-#include "ghidra_compat.h"
+#include "bg_window.h"
 #include "render_window.h"
-typedef int code();
-void ov87_021E810C(undefined4 param_1, undefined4 param_2, undefined4 param_3, undefined4 param_4);
-// FUNCTION ov87_021E810C: matching C (r3)
-#pragma force_active on
-void ov87_021E810C(undefined4 param_1, undefined4 param_2, undefined4 param_3, undefined4 param_4)
 
-{
-    sub_0200E398(param_1, 2, 0x3f7, 0, 0x7a);
-    DrawFrameAndWindow1(param_2, 1, 0x3f7, 0xb);
-    return;
+#define BASE_TILE_WINDOW_FRAME 0x3f7
+
+// FUNCTION ov87_021E810C: matching C (twin)
+#pragma force_active on
+void ov87_021E810C(BgConfig *bgConfig, Window *window) {
+    sub_0200E398(bgConfig, 2, BASE_TILE_WINDOW_FRAME, 0, 0x7a);
+    DrawFrameAndWindow1(window, TRUE, BASE_TILE_WINDOW_FRAME, 11);
 }
 #pragma force_active reset

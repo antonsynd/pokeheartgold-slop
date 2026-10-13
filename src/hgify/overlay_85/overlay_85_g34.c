@@ -3,27 +3,32 @@
 #pragma thumb on
 #include "global.h"
 
-#include "ghidra_compat.h"
 #include "unk_02035900.h"
 typedef int code();
-undefined4 ov85_021E7958();
-undefined4 ov85_021E8558();
-undefined4 ov85_021E61FC(undefined4 *param_1);
-// FUNCTION ov85_021E61FC: matching C (r2)
+typedef struct UnkStruct_ov85_021E61FC_Sub {
+    u8 unk_00[0x0C];
+    int unk_0C;
+} UnkStruct_ov85_021E61FC_Sub;
+
+typedef struct UnkStruct_ov85_021E61FC {
+    int unk_00;
+    u8 unk_04[0x24];
+    UnkStruct_ov85_021E61FC_Sub *unk_28;
+} UnkStruct_ov85_021E61FC;
+
+void ov85_021E8558(UnkStruct_ov85_021E61FC *param0, int param1);
+UnkStruct_ov85_021E61FC_Sub *ov85_021E7958(UnkStruct_ov85_021E61FC *param0);
+
+// FUNCTION ov85_021E61FC: matching C (twin)
 #pragma force_active on
-undefined4 ov85_021E61FC(undefined4 *param_1)
+int ov85_021E61FC(UnkStruct_ov85_021E61FC *param0) {
+    ov85_021E8558(param0, 0x4000);
+    param0->unk_28 = ov85_021E7958(param0);
 
-{
-    undefined4 uVar1;
-    int iVar2;
-
-    ov85_021E8558(param_1, 0x4000);
-    uVar1 = ov85_021E7958(param_1);
-    param_1[10] = uVar1;
-    iVar2 = sub_0203769C();
-    if (*(int *)(param_1[10] + 0xc) != iVar2) {
-        *param_1 = 0x1f;
+    if (param0->unk_28->unk_0C != sub_0203769C()) {
+        param0->unk_00 = 31;
     }
+
     return 0;
 }
 #pragma force_active reset

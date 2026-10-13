@@ -119,14 +119,14 @@ void ov45_0222C9A0(UnkStruct_ov45_0222C978 *work, u32 index, BOOL a2, u32 a3);
 BOOL ov45_0222C9D0(const UnkStruct_ov45_0222C978 *work, u32 index);
 BOOL ov45_0222C9D0(const UnkStruct_ov45_0222C978 *work, u32 index);
 const UnkStruct_ov45_0222CA10 *ov45_0222C9EC(const UnkStruct_ov45_0222C978 *work, u32 index);
-// FUNCTION ov45_0222C9EC: matching C (r2)
+// FUNCTION ov45_0222C9EC: matching C (twin)
 #pragma force_active on
-const UnkStruct_ov45_0222CA10 *ov45_0222C9EC(const UnkStruct_ov45_0222C978 *work, u32 index) {
-    GF_ASSERT(index < 20);
+const UnkStruct_ov45_0222CA10 *ov45_0222C9EC(const UnkStruct_ov45_0222C978 *param0, u32 param1) {
+    GF_ASSERT(param1 < 20);
 
-    if (index < 20) {
-        if (work->unk_00[index]) {
-            return &work->unk_14[index];
+    if (param1 < 20) {
+        if (param0->unk_00[param1]) {
+            return &param0->unk_14[param1];
         }
     }
 

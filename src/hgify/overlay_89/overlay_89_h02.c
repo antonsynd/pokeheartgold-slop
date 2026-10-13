@@ -3,23 +3,31 @@
 #pragma thumb on
 #include "global.h"
 
-#include "ghidra_compat.h"
 #include "sprite_system.h"
+#include "sys_task.h"
 #include "unk_02026E30.h"
-typedef int code();
-undefined4 ov89_02259C0C();
-undefined4 ov89_0225A5EC();
-void ov89_02258FF4(undefined4 param_1, int param_2);
-// FUNCTION ov89_02258FF4: matching C (r2)
-#pragma force_active on
-void ov89_02258FF4(undefined4 param_1, int param_2)
 
-{
-    ov89_0225A5EC(param_2 + 0x194);
-    ov89_02259C0C(param_2);
-    SpriteSystem_DrawSprites(*(undefined4 *)(param_2 + 0x20));
+typedef struct UnkStruct_ov89_02258FF4_t {
+    u8 unk_00[0x20];
+    SpriteManager *unk_20;
+    u8 unk_24[0x194 - 0x24];
+    u8 unk_194[];
+} UnkStruct_ov89_02258FF4;
+
+void ov89_0225A5EC(void *param0);
+void ov89_02259C0C(UnkStruct_ov89_02258FF4 *param0);
+
+// FUNCTION ov89_02258FF4: matching C (twin)
+#pragma force_active on
+void ov89_02258FF4(SysTask *param0, void *param1) {
+#pragma unused(param0)
+    UnkStruct_ov89_02258FF4 *v0 = param1;
+
+    ov89_0225A5EC(&v0->unk_194);
+    ov89_02259C0C(v0);
+
+    SpriteSystem_DrawSprites(v0->unk_20);
     SpriteSystem_UpdateTransfer();
     RequestSwap3DBuffers(0, 0);
-    return;
 }
 #pragma force_active reset

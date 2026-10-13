@@ -3,22 +3,21 @@
 #pragma thumb on
 #include "global.h"
 
-#include "ghidra_compat.h"
 #include "msgdata.h"
 #include "pm_string.h"
-typedef int code();
-void ov70_02239614(int param_1);
-// FUNCTION ov70_02239614: matching C (r2)
+
+typedef struct UnkStruct_ov70_02239614 {
+    u8 filler_00[0xba0];
+    MsgData *gtsMessageLoader;
+    u8 filler_ba4[0xbbc - 0xba4];
+    String *genericMessageBuffer;
+    String *title;
+} UnkStruct_ov70_02239614;
+
+// FUNCTION ov70_02239614: matching C (twin)
 #pragma force_active on
-void ov70_02239614(int param_1)
-
-{
-    undefined4 uVar1;
-
-    uVar1 = String_New(0xb4, 0x3d);
-    *(undefined4 *)(param_1 + 0xbbc) = uVar1;
-    uVar1 = NewString_ReadMsgData(*(undefined4 *)(param_1 + 0xba0), 0x27);
-    *(undefined4 *)(param_1 + 0xbc0) = uVar1;
-    return;
+void ov70_02239614(UnkStruct_ov70_02239614 *appState) {
+    appState->genericMessageBuffer = String_New(90 * 2, 0x3d);
+    appState->title = NewString_ReadMsgData(appState->gtsMessageLoader, 0x27);
 }
 #pragma force_active reset

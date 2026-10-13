@@ -3,18 +3,16 @@
 #pragma thumb on
 #include "global.h"
 
-#include "frontier/overlay_80_022340E8.h"
-
-#include "field_move.h"
 #include "party.h"
 #include "pokemon.h"
-// FUNCTION ov80_02235364: matching C (r0)
+
+// FUNCTION ov80_02235364: matching C (twin)
 #pragma force_active on
 void ov80_02235364(Party *battleParty, Party *arcadeParty, int battleSlot, int arcadeSlot) {
     Pokemon *battleMon = Party_GetMonByIndex(battleParty, battleSlot);
     u16 item = GetMonData(battleMon, MON_DATA_HELD_ITEM, NULL);
-    Pokemon *mon = Party_GetMonByIndex(arcadeParty, arcadeSlot);
 
+    Pokemon *mon = Party_GetMonByIndex(arcadeParty, arcadeSlot);
     SetMonData(mon, MON_DATA_HELD_ITEM, &item);
 }
 #pragma force_active reset

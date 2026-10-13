@@ -4,20 +4,20 @@
 #include "global.h"
 
 #include "error_handling.h"
-#include "ghidra_compat.h"
-typedef int code();
-undefined4 ov45_0223045C();
-extern int _022577C0;
-void ov45_0222F4AC(undefined4 param_1);
-// FUNCTION ov45_0222F4AC: matching C (r2)
-#pragma force_active on
-void ov45_0222F4AC(undefined4 param_1)
 
-{
-    if (_022577C0 == 0) {
-        GF_AssertFail();
-    }
-    ov45_0223045C(_022577C0 + 0x6a0, param_1);
-    return;
+typedef struct UnkStruct_ov45_0222F4AC_t {
+    u8 unk_000[0x6A0];
+    u8 unk_6A0[];
+} UnkStruct_ov45_0222F4AC;
+
+extern UnkStruct_ov45_0222F4AC *_022577C0;
+
+void ov45_0223045C(void *param0, s32 param1);
+
+// FUNCTION ov45_0222F4AC: matching C (twin)
+#pragma force_active on
+void ov45_0222F4AC(s32 param0) {
+    GF_ASSERT(_022577C0 != NULL);
+    ov45_0223045C(&_022577C0->unk_6A0, param0);
 }
 #pragma force_active reset

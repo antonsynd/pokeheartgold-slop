@@ -6,17 +6,27 @@
 #include "bg_window.h"
 #include "sprite_system.h"
 #include "vram_transfer_manager.h"
-// FUNCTION ov113_021E62B0: matching C (agent6)
+
+typedef struct UnkStruct_ov113_021E62B0 {
+    u8 unk_00[0x40];
+    BgConfig *bgConfig;
+    u8 unk_44[0xac - 0x44];
+    SpriteSystem *spriteSys;
+} UnkStruct_ov113_021E62B0;
+
+void ov113_021E62B0(void *ptr);
+// FUNCTION ov113_021E62B0: matching C (twin)
 #pragma force_active on
-void ov113_021E62B0(int param_1) {
-    if (*(int *)(param_1 + 0xac) != 0) {
+void ov113_021E62B0(void *ptr) {
+    UnkStruct_ov113_021E62B0 *app = ptr;
+
+    if (app->spriteSys != NULL) {
         SpriteSystem_TransferOam();
     }
+
     GF_RunVramTransferTasks();
-    DoScheduledBgGpuUpdates(*(int *)(param_1 + 0x40));
-    {
-        u32 *base = (u32 *)0x027E0000;
-        base[0xFFE] = base[0xFFE] | 1;
-    }
+    DoScheduledBgGpuUpdates(app->bgConfig);
+
+    OS_SetIrqCheckFlag(OS_IE_V_BLANK);
 }
 #pragma force_active reset

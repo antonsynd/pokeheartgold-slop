@@ -166,13 +166,14 @@ BOOL ov45_0222A550(const UnkStruct_ov45_0222A3D4 *a0, u32 a1);
 const UnkStruct_ov45_0222A5C0_Profile *ov45_0222A578(const UnkStruct_ov45_0222A3D4 *a0, u32 a1);
 const UnkStruct_ov45_0222A5C0_Profile *ov45_0222A578(const UnkStruct_ov45_0222A3D4 *a0, u32 a1);
 UnkStruct_ov45_0222A5C0_Profile *ov45_0222A5C0(UnkStruct_ov45_0222A3D4 *a0);
-// FUNCTION ov45_0222A5C0: matching C (r0)
+// FUNCTION ov45_0222A5C0: matching C (twin)
 #pragma force_active on
-UnkStruct_ov45_0222A5C0_Profile *ov45_0222A5C0(UnkStruct_ov45_0222A3D4 *a0) {
-    if (ov45_0222BADC(&a0->unk108, a0->unk0) == FALSE) {
-        a0->unk52C = 1;
+UnkStruct_ov45_0222A5C0_Profile *ov45_0222A5C0(UnkStruct_ov45_0222A3D4 *param0) {
+    if (ov45_0222BADC(&param0->unk108, param0->unk0) == FALSE) {
+        param0->unk52C = 1;
     }
-    return &a0->unk108.profile;
+
+    return &param0->unk108.profile;
 }
 #pragma force_active reset
 void ov45_0222A5E8(UnkStruct_ov45_0222A3D4 *a0, int a1);

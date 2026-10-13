@@ -5,29 +5,33 @@
 #include "overlay_manager.h"
 #include "unk_02035900.h"
 #include "unk_02037C94.h"
-void ov74_02229C44(void);
 #pragma thumb on
-#include "ghidra_compat.h"
-typedef int code();
-undefined4 ov74_02229BC0();
-undefined4 ov74_0222CD7C();
-undefined4 ov74_02229B68();
-void ov74_02229D1C(undefined4 param_1, s8 param_2);
-// FUNCTION ov74_02229D1C: matching C (r2)
+
+typedef struct UnkStruct_ov74_02229D1C UnkStruct_ov74_02229D1C;
+
+typedef struct ApplicationArgs {
+    u8 unk_00[8];
+    SaveData *saveData;
+} ApplicationArgs;
+
+OverlayManager *ov74_0222CD7C(void);
+void ov74_02229B68(UnkStruct_ov74_02229D1C *param0);
+void ov74_02229BC0(void (*param0)(void), int param1);
+void ov74_02229C44(void);
+void ov74_02229D1C(UnkStruct_ov74_02229D1C *param0, s8 param1);
+// FUNCTION ov74_02229D1C: matching C (twin)
 #pragma force_active on
-void ov74_02229D1C(undefined4 param_1, s8 param_2)
+void ov74_02229D1C(UnkStruct_ov74_02229D1C *param0, s8 param1) {
+    SaveData *saveData;
 
-{
-    int iVar1;
-
-    iVar1 = sub_02037474();
-    if (iVar1 == 0) {
-        undefined4 mgr = ov74_0222CD7C();
-        iVar1 = OverlayManager_GetArgs((OverlayManager *)mgr);
-        sub_02038148((SaveData *)*(undefined4 *)(iVar1 + 8), param_2);
-        ov74_02229B68(param_1);
-        ov74_02229BC0(((unsigned int)ov74_02229C44), 0);
+    if (sub_02037474()) {
+        return;
     }
-    return;
+
+    saveData = ((ApplicationArgs *)OverlayManager_GetArgs(ov74_0222CD7C()))->saveData;
+    sub_02038148(saveData, param1);
+
+    ov74_02229B68(param0);
+    ov74_02229BC0(ov74_02229C44, 0);
 }
 #pragma force_active reset

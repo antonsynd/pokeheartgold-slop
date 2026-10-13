@@ -2,16 +2,18 @@
 #pragma warning_errors off
 #pragma thumb on
 #include "global.h"
+
 extern const int ov07_022363D8[15];
-typedef struct UnkTable15 {
+
+typedef struct UnkStruct_ov07_02221C8C {
     int v[15];
-} UnkTable15;
-int ov07_02221C8C(int behaviorValue);
-// FUNCTION ov07_02221C8C: matching C (agent10)
+} UnkStruct_ov07_02221C8C;
+
+// FUNCTION ov07_02221C8C: matching C (twin)
 #pragma force_active on
 int ov07_02221C8C(int behaviorValue) {
-    UnkTable15 local = *(const UnkTable15 *)ov07_022363D8;
+    UnkStruct_ov07_02221C8C flagTable = *(const UnkStruct_ov07_02221C8C *)ov07_022363D8;
 
-    return local.v[behaviorValue];
+    return flagTable.v[behaviorValue];
 }
 #pragma force_active reset

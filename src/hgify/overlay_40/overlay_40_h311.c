@@ -3,19 +3,21 @@
 #pragma thumb on
 #include "global.h"
 typedef struct UnkStruct_ov40_0223992C {
-    u8 filler_00[0x14];
+    u8 unk_00[0x14];
     s32 unk_14;
-    u8 filler_18[8];
-    u32 unk_20;
+    u8 unk_18[0x20 - 0x18];
+    s32 unk_20;
 } UnkStruct_ov40_0223992C;
-struct HgInit_ov40_022453A0 {
-    u32 a[3];
-};
-extern const struct HgInit_ov40_022453A0 ov40_022453A0;
-// FUNCTION ov40_0223992C: matching C (agent10)
+typedef struct UnkStruct_ov40_022453A0 {
+    s32 unk_00[3];
+} UnkStruct_ov40_022453A0;
+extern const UnkStruct_ov40_022453A0 ov40_022453A0;
+void ov40_0223992C(UnkStruct_ov40_0223992C *param0);
+// FUNCTION ov40_0223992C: matching C (twin)
 #pragma force_active on
-void ov40_0223992C(UnkStruct_ov40_0223992C *p) {
-    struct HgInit_ov40_022453A0 table = ov40_022453A0;
-    p->unk_20 = table.a[p->unk_14];
+void ov40_0223992C(UnkStruct_ov40_0223992C *param0) {
+    UnkStruct_ov40_022453A0 v0 = ov40_022453A0;
+
+    param0->unk_20 = v0.unk_00[param0->unk_14];
 }
 #pragma force_active reset

@@ -3,20 +3,23 @@
 #pragma thumb on
 #include "global.h"
 
-#include "ghidra_compat.h"
 #include "message_format.h"
 #include "msgdata.h"
-typedef int code();
-undefined4 ov48_0225B0E0(undefined4 *param_1, undefined4 param_2, undefined4 param_3, undefined4 param_4);
-// FUNCTION ov48_0225B0E0: matching C (r3)
-#pragma force_active on
-undefined4
-ov48_0225B0E0(undefined4 *param_1, undefined4 param_2, undefined4 param_3, undefined4 param_4)
 
-{
-    ReadMsgDataIntoString(*param_1, 3, param_1[3]);
-    BufferCountryName(param_1[1], 0, param_2);
-    StringExpandPlaceholders(param_1[1], param_1[2], param_1[3]);
-    return param_1[2];
+typedef struct UnkStruct_ov48_0225B0E0 {
+    MsgData *unk_00;
+    MessageFormat *unk_04;
+    String *unk_08;
+    String *unk_0C;
+} UnkStruct_ov48_0225B0E0;
+
+String *ov48_0225B0E0(UnkStruct_ov48_0225B0E0 *param0, u32 param1);
+// FUNCTION ov48_0225B0E0: matching C (twin)
+#pragma force_active on
+String *ov48_0225B0E0(UnkStruct_ov48_0225B0E0 *param0, u32 param1) {
+    ReadMsgDataIntoString(param0->unk_00, 3, param0->unk_0C);
+    BufferCountryName(param0->unk_04, 0, param1);
+    StringExpandPlaceholders(param0->unk_04, param0->unk_08, param0->unk_0C);
+    return param0->unk_08;
 }
 #pragma force_active reset

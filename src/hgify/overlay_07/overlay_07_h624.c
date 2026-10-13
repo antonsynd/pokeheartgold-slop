@@ -3,26 +3,22 @@
 #pragma thumb on
 #include "global.h"
 
-#include "ghidra_compat.h"
 #include "sprite_system.h"
-typedef void code(void);
-undefined4 ov07_022222F0(undefined4, undefined4);
-undefined4 ov07_02222748(undefined4, undefined4);
-undefined4 ov07_02230F6C(undefined4 param_1, undefined4 param_2, undefined4 param_3);
-// FUNCTION ov07_02230F6C: matching C (r4)
+
+typedef struct XYTransformContext XYTransformContext;
+
+BOOL ov07_022222F0(XYTransformContext *ctx, ManagedSprite *sprite);
+BOOL ov07_02222748(XYTransformContext *ctx, ManagedSprite *sprite);
+// FUNCTION ov07_02230F6C: matching C (twin)
 #pragma force_active on
-undefined4
-ov07_02230F6C(undefined4 param_1, undefined4 param_2, undefined4 param_3)
-
-{
-    int iVar1;
-
-    ov07_022222F0(param_2, param_1);
-    iVar1 = ov07_02222748(param_3, param_1);
-    if (iVar1 != 0) {
-        return 0;
+BOOL ov07_02230F6C(ManagedSprite *sprite, XYTransformContext *pos, XYTransformContext *scale) {
+    ov07_022222F0(pos, sprite);
+    BOOL active = ov07_02222748(scale, sprite);
+    if (active) {
+        return FALSE;
     }
-    ManagedSprite_SetDrawFlag(param_1, 0);
-    return 1;
+
+    ManagedSprite_SetDrawFlag(sprite, FALSE);
+    return TRUE;
 }
 #pragma force_active reset

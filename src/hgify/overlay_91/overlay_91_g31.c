@@ -3,28 +3,26 @@
 #pragma thumb on
 #include "global.h"
 
-#include "error_handling.h"
-#include "ghidra_compat.h"
 #include "heap.h"
 #include "unk_020210A0.h"
-typedef int code();
-undefined4 ov91_0225F66C();
-undefined4 ov91_0225F1E8();
-void ov91_0225CE80(int param_1);
-// FUNCTION ov91_0225CE80: matching C (r2)
+
+typedef struct UnkStruct_ov91_0225CE80 {
+    u8 unk_0000[0x1AB4];
+    u8 unk_1AB4[0x878C - 0x1AB4];
+    u8 unk_878C[1];
+} UnkStruct_ov91_0225CE80;
+
+void ov91_0225F1E8(void *param0, void *param1);
+void ov91_0225F66C(UnkStruct_ov91_0225CE80 *param0);
+
+// FUNCTION ov91_0225CE80: matching C (twin)
 #pragma force_active on
-void ov91_0225CE80(int param_1)
+void ov91_0225CE80(UnkStruct_ov91_0225CE80 *param0) {
+    BOOL v0 = sub_02021238();
+    GF_ASSERT(v0 == 1);
 
-{
-    int iVar1;
-
-    iVar1 = sub_02021238();
-    if (iVar1 != 1) {
-        GF_AssertFail();
-    }
-    ov91_0225F1E8(param_1 + 0x878c, param_1 + 0x1ab4);
-    ov91_0225F66C(param_1);
-    Heap_Free(param_1);
-    return;
+    ov91_0225F1E8(param0->unk_878C, param0->unk_1AB4);
+    ov91_0225F66C(param0);
+    Heap_Free(param0);
 }
 #pragma force_active reset

@@ -3,17 +3,19 @@
 #pragma thumb on
 #include "global.h"
 
-#include "ghidra_compat.h"
 #include "unk_02037C94.h"
-typedef int code();
-void sub_0203A8CC(int a, int b, int c, int d, int e);
-// FUNCTION sub_0203A880: matching C (agent4)
+
+void sub_0203A8CC(int a, int b, BOOL c, u32 d, int e);
+void sub_0203A880(void);
+// FUNCTION sub_0203A880: matching C (twin)
 #pragma force_active on
 void sub_0203A880(void) {
-    int flag = 0;
-    if (sub_02039998() != 0) {
-        flag = 1;
+    BOOL isWifi = FALSE;
+
+    if (sub_02039998()) {
+        isWifi = TRUE;
     }
-    sub_0203A8CC(0xf0, 0, flag, 1, 0x1c0);
+
+    sub_0203A8CC(240, 0, isWifi, NNS_G2D_VRAM_TYPE_2DMAIN, 0x1C0);
 }
 #pragma force_active reset

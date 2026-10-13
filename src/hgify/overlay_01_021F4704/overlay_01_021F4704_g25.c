@@ -2,13 +2,17 @@
 #pragma warning_errors off
 #pragma thumb on
 #include "global.h"
-extern u64 _u32_div_f(u32 a, u32 b);
+
+#include "terrain_attributes.h"
 s32 ov01_021F5A04(u32 tileIndex, s32 mapMatrixWidth, u32 mapMatrixWidthTiles);
-// FUNCTION ov01_021F5A04: matching C (r0)
+// FUNCTION ov01_021F5A04: matching C (twin)
 #pragma force_active on
 s32 ov01_021F5A04(u32 tileIndex, s32 mapMatrixWidth, u32 mapMatrixWidthTiles) {
-    u32 tileX = (u32)(_u32_div_f(tileIndex, mapMatrixWidthTiles) >> 32);
-    u32 tileZ = (u32)_u32_div_f(tileIndex, mapMatrixWidthTiles);
-    return (tileX >> 5) + (tileZ >> 5) * mapMatrixWidth;
+    u32 tileX = tileIndex % mapMatrixWidthTiles;
+    u32 tileZ = tileIndex / mapMatrixWidthTiles;
+    u32 mapMatrixX = tileX / MAP_TILES_COUNT_X;
+    u32 mapMatrixZ = tileZ / MAP_TILES_COUNT_Z;
+
+    return mapMatrixX + mapMatrixZ * mapMatrixWidth;
 }
 #pragma force_active reset

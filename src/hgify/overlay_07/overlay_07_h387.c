@@ -3,27 +3,43 @@
 #pragma thumb on
 #include "global.h"
 
-#include "ghidra_compat.h"
 #include "heap.h"
 #include "sprite_system.h"
-typedef void code(void);
-undefined4 ov07_0221C448(undefined4, undefined4);
-undefined4 ov07_02222AF4(undefined4);
-void ov07_022247C8(undefined4 param_1, undefined4 *param_2);
-// FUNCTION ov07_022247C8: matching C (r2)
+#include "sys_task.h"
+
+typedef struct BattleAnimSystem BattleAnimSystem;
+
+typedef struct XYTransformContext {
+    s16 x;
+    s16 y;
+    s32 data[8];
+} XYTransformContext;
+
+typedef struct AlphaFadeContext {
+    XYTransformContext lerp;
+    int done;
+} AlphaFadeContext;
+
+typedef struct AlphaFadePokemonSpriteContext {
+    BattleAnimSystem *battleAnimSys;
+    SpriteManager *pokemonSpriteManager;
+    AlphaFadeContext alpha;
+} AlphaFadePokemonSpriteContext;
+
+BOOL ov07_02222AF4(const AlphaFadeContext *ctx);
+void ov07_0221C448(BattleAnimSystem *system, SysTask *task);
+
+void ov07_022247C8(SysTask *task, void *param);
+// FUNCTION ov07_022247C8: matching C (twin)
 #pragma force_active on
-void ov07_022247C8(undefined4 param_1, undefined4 *param_2)
+void ov07_022247C8(SysTask *task, void *param) {
+    AlphaFadePokemonSpriteContext *ctx = param;
 
-{
-    int iVar1;
-
-    iVar1 = ov07_02222AF4(param_2 + 2);
-    if (iVar1 != 0) {
-        Heap_Free(param_2);
-        ov07_0221C448(*param_2, param_1);
-        return;
+    if (ov07_02222AF4(&ctx->alpha)) {
+        Heap_Free(ctx);
+        ov07_0221C448(ctx->battleAnimSys, task);
+    } else {
+        SpriteSystem_DrawSprites(ctx->pokemonSpriteManager);
     }
-    SpriteSystem_DrawSprites(param_2[1]);
-    return;
 }
 #pragma force_active reset

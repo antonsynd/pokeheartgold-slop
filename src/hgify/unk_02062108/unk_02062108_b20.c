@@ -3,27 +3,25 @@
 #pragma thumb on
 #include "global.h"
 
-#include "ghidra_compat.h"
 #include "map_object.h"
-typedef int code();
-undefined4 MapObject_RunMovementCommand();
-void sub_02062400(undefined4 param_1);
-// FUNCTION sub_02062400: matching C (r2)
-#pragma force_active on
-void sub_02062400(undefined4 param_1)
 
-{
-    int iVar1;
-    undefined4 uVar2;
+#define MOVEMENT_ACTION_NONE 0xff
+
+BOOL MapObject_RunMovementCommand(LocalMapObject *object, u32 movementAction, u32 movementStep);
+
+// FUNCTION sub_02062400: matching C (twin)
+#pragma force_active on
+void sub_02062400(LocalMapObject *mapObj) {
+    u32 movementAction, movementStep;
 
     do {
-        iVar1 = MapObject_GetMovementCommand(param_1);
-        if (iVar1 == 0xff) {
-            return;
+        movementAction = MapObject_GetMovementCommand(mapObj);
+
+        if (movementAction == MOVEMENT_ACTION_NONE) {
+            break;
         }
-        uVar2 = MapObject_GetMovementStep(param_1);
-        iVar1 = MapObject_RunMovementCommand(param_1, iVar1, uVar2);
-    } while (iVar1 != 0);
-    return;
+
+        movementStep = MapObject_GetMovementStep(mapObj);
+    } while (MapObject_RunMovementCommand(mapObj, movementAction, movementStep));
 }
 #pragma force_active reset

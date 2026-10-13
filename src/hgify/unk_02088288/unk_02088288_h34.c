@@ -3,23 +3,21 @@
 #pragma thumb on
 #include "global.h"
 
-#include "ghidra_compat.h"
 #include "heap.h"
 #include "pokemon.h"
-typedef int code();
-undefined4 sub_0208981C();
-void sub_020897F0(undefined4 param_1, undefined4 param_2, undefined4 param_3);
-// FUNCTION sub_020897F0: matching C (r2)
+
+typedef struct PokemonSummaryScreen PokemonSummaryScreen;
+typedef struct PokemonSummaryMonData PokemonSummaryMonData;
+
+void sub_0208981C(PokemonSummaryScreen *summaryScreen, Pokemon *mon, PokemonSummaryMonData *monData);
+
+// FUNCTION sub_020897F0: matching C (twin)
 #pragma force_active on
-void sub_020897F0(undefined4 param_1, undefined4 param_2, undefined4 param_3)
+void sub_020897F0(PokemonSummaryScreen *summaryScreen, BoxPokemon *boxMon, PokemonSummaryMonData *monData) {
+    Pokemon *mon = AllocMonZeroed(HEAP_ID_19);
 
-{
-    undefined4 uVar1;
-
-    uVar1 = AllocMonZeroed(0x13);
-    CopyBoxPokemonToPokemon(param_2, uVar1);
-    sub_0208981C(param_1, uVar1, param_3);
-    Heap_Free(uVar1);
-    return;
+    CopyBoxPokemonToPokemon(boxMon, mon);
+    sub_0208981C(summaryScreen, mon, monData);
+    Heap_Free(mon);
 }
 #pragma force_active reset

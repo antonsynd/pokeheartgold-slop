@@ -123,7 +123,7 @@ void ov41_0224689C(UnkStruct_ov41_02245EA0 *param0, const UnkStruct_ov41_0224689
 void ov41_022468FC(UnkStruct_ov41_02245EA0 *param0);
 void ov41_022468FC(UnkStruct_ov41_02245EA0 *param0);
 void ov41_02246A20(UnkStruct_ov41_02245EA0 *param0);
-// FUNCTION ov41_02246A20: matching C (r2)
+// FUNCTION ov41_02246A20: matching C (twin)
 #pragma force_active on
 void ov41_02246A20(UnkStruct_ov41_02245EA0 *param0) {
     FreeBgTilemapBuffer(param0->unk40, GF_BG_LYR_MAIN_1);

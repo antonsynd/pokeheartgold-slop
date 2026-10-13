@@ -3,23 +3,31 @@
 #pragma thumb on
 #include "global.h"
 
-#include "ghidra_compat.h"
 #include "sprite_system.h"
-typedef int code();
-undefined4 ov40_0222D6D0();
-undefined4 ov40_0222D7DC();
-void ov40_022330B8(int param_1);
-// FUNCTION ov40_022330B8: matching C (r2)
+
+typedef struct UnkStruct_ov40_022330B8_Inner {
+    u8 unk_000[0x158];
+    struct {
+        u32 unk_00;
+        ManagedSprite *unk_04;
+    } unk_158;
+} UnkStruct_ov40_022330B8_Inner;
+
+typedef struct UnkStruct_ov40_022330B8 {
+    u8 unk_000[0x860];
+    UnkStruct_ov40_022330B8_Inner *unk_860;
+} UnkStruct_ov40_022330B8;
+
+void ov40_0222D6D0(void *param0);
+void ov40_0222D7DC(UnkStruct_ov40_022330B8 *param0);
+void ov40_022330B8(UnkStruct_ov40_022330B8 *param0);
+// FUNCTION ov40_022330B8: matching C (twin)
 #pragma force_active on
-void ov40_022330B8(int param_1)
+void ov40_022330B8(UnkStruct_ov40_022330B8 *param0) {
+    UnkStruct_ov40_022330B8_Inner *v0 = param0->unk_860;
 
-{
-    int iVar1;
-
-    iVar1 = *(int *)(param_1 + 0x860);
-    ov40_0222D6D0(iVar1 + 0x158);
-    Sprite_DeleteAndFreeResources(*(undefined4 *)(iVar1 + 0x15c));
-    ov40_0222D7DC(param_1);
-    return;
+    ov40_0222D6D0(&v0->unk_158);
+    Sprite_DeleteAndFreeResources(v0->unk_158.unk_04);
+    ov40_0222D7DC(param0);
 }
 #pragma force_active reset

@@ -2,21 +2,28 @@
 #pragma warning_errors off
 #pragma thumb on
 #include "global.h"
-typedef struct Ov102_Work {
-    u8 pad0[0x40];
-    u8 sub[0x40];
-    int unk80;
-} Ov102_Work;
+
+typedef struct UnkStruct_ov102_021EBE80_t {
+    u8 unk_00[0x40];
+    u8 unk_40[0x40];
+    int unk_80;
+} UnkStruct_ov102_021EBE80;
+
 int ov102_021EC3AC(void *p);
-// FUNCTION ov102_021EBE80: matching C (agent4)
+
+// FUNCTION ov102_021EBE80: matching C (twin)
 #pragma force_active on
-int ov102_021EBE80(Ov102_Work *w) {
-    if (w->unk80 == 0) {
-        if (ov102_021EC3AC(w->sub) != 0) {
+int ov102_021EBE80(UnkStruct_ov102_021EBE80 *param0) {
+    switch (param0->unk_80) {
+    case 0:
+        if (ov102_021EC3AC(&param0->unk_40) != 0) {
             return 1;
         }
-        return 0;
+        break;
+    default:
+        return 1;
     }
-    return 1;
+
+    return 0;
 }
 #pragma force_active reset

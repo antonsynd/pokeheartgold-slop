@@ -3,20 +3,19 @@
 #pragma thumb on
 #include "global.h"
 
-#include "ghidra_compat.h"
 #include "unk_02035900.h"
-typedef int code();
-typedef struct S {
-    u8 pad[0xed];
-    u8 f;
-} S;
-extern S *_021D41C4;
-// FUNCTION sub_02057384: matching C (agent7)
+typedef struct UnkStruct_sub_02057384 {
+    u8 unk_00[0xED];
+    u8 isFieldSystemActive;
+} UnkStruct_sub_02057384;
+extern UnkStruct_sub_02057384 *_021D41C4;
+void sub_02057384(u8 param0);
+// FUNCTION sub_02057384: matching C (twin)
 #pragma force_active on
-void sub_02057384(u8 param_1) {
-    if (_021D41C4 != 0 && _021D41C4->f != param_1) {
-        _021D41C4->f = param_1;
-        sub_020376E0(0x3e, &_021D41C4->f);
+void sub_02057384(u8 param0) {
+    if (_021D41C4 != NULL && _021D41C4->isFieldSystemActive != param0) {
+        _021D41C4->isFieldSystemActive = param0;
+        sub_020376E0(62, &_021D41C4->isFieldSystemActive);
     }
 }
 #pragma force_active reset
