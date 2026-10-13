@@ -2,6 +2,12 @@
 #pragma require_prototypes off
 #pragma warning_errors off
 #include "global.h"
+
+#include "camera.h"
+#include "field_move.h"
+#include "heap.h"
+#include "save_arrays.h"
+#include "spl.h"
 #pragma thumb on
 typedef enum {
     GX_POLYGON_ATTR_MISC_NONE = 0,
@@ -19,17 +25,6 @@ typedef struct NNSGfdFrmPlttVramState {
 } NNSGfdFrmPlttVramState;
 void NNS_GfdSetFrmTexVramState(const NNSGfdFrmTexVramState *pState);
 void NNS_GfdSetFrmPlttVramState(const NNSGfdFrmPlttVramState *pState);
-typedef struct CameraAngle {
-    u16 x;
-    u16 y;
-    u16 z;
-    u16 padding_06;
-} CameraAngle;
-typedef struct CameraLookAt {
-    VecFx32 position;
-    VecFx32 target;
-    VecFx32 up;
-} CameraLookAt;
 typedef struct CameraPerspectiveProjection {
     fx32 sinFovY;
     fx32 cosFovY;
@@ -48,53 +43,6 @@ typedef struct CameraPositionHistory {
     BOOL delayZ;
     VecFx32 *positions;
 } CameraPositionHistory;
-typedef struct Camera {
-    CameraPerspectiveProjection perspective;
-    CameraLookAt lookAt;
-    fx32 distance;
-    CameraAngle angle;
-    u8 projection;
-    u16 fovY;
-    VecFx32 prevTargetPos;
-    const VecFx32 *targetPos;
-    BOOL trackTargetX;
-    BOOL trackTargetY;
-    BOOL trackTargetZ;
-    CameraPositionHistory *history;
-} Camera;
-void Camera_Delete(Camera *camera);
-typedef struct SPLParticle {
-    struct SPLParticle *next;
-    struct SPLParticle *prev;
-    VecFx32 position;
-    VecFx32 velocity;
-    u16 rotation;
-    s16 angularVelocity;
-    u16 lifeTime;
-    u16 age;
-
-    u16 loopTimeFactor;
-    u16 lifeTimeFactor;
-
-    u8 texture;
-
-    u8 lifeRateOffset;
-
-    struct {
-        u16 baseAlpha : 5;
-        u16 animAlpha : 5;
-        u16 currentPolygonID : 6;
-    } visibility;
-    fx32 baseScale;
-    fx16 animScale;
-    GXRgb color;
-    VecFx32 emitterPos;
-} SPLParticle;
-typedef struct SPLParticleList {
-    SPLParticle *first;
-    int count;
-    SPLParticle *last;
-} SPLParticleList;
 typedef struct SPLBehavior {
     void (*applyFunc)(const void *, struct SPLParticle *, VecFx32 *, struct SPLEmitter *);
     const void *object;
@@ -283,22 +231,10 @@ typedef struct SPLChildResource {
         u32 : 25;
     } misc;
 } SPLChildResource;
-typedef struct SPLResource {
-    SPLResourceHeader *header;
-    SPLScaleAnim *scaleAnim;
-    SPLColorAnim *colorAnim;
-    SPLAlphaAnim *alphaAnim;
-    SPLTexAnim *texAnim;
-    SPLChildResource *childResource;
-    SPLBehavior *behaviors;
-    u16 behaviorCount;
-    u16 reserved;
-} SPLResource;
 enum SPLUpdateCallbackType {
     SPL_CALLBACK_PRE_UPDATE = 0,
     SPL_CALLBACK_POST_UPDATE = 1,
 };
-typedef void (*SPLEmitterUpdateCallback)(struct SPLEmitter *emitter, enum SPLUpdateCallbackType type);
 typedef struct SPLEmitterState {
     union {
         u32 all;
@@ -313,55 +249,6 @@ typedef struct SPLEmitterState {
         };
     };
 } SPLEmitterState;
-typedef struct SPLEmitter {
-    struct SPLEmitter *next;
-    struct SPLEmitter *prev;
-    SPLParticleList particles;
-    SPLParticleList childParticles;
-    SPLResource *resource;
-    SPLEmitterState state;
-    VecFx32 position;
-    VecFx32 velocity;
-    VecFx32 particleInitVelocity;
-    u16 age;
-    fx16 emissionCountFractional;
-    VecFx16 axis;
-    u16 initAngle;
-    fx32 emissionCount;
-    fx32 radius;
-    fx32 length;
-    fx32 initVelPositionAmplifier;
-    fx32 initVelAxisAmplifier;
-    fx32 baseScale;
-    u16 particleLifeTime;
-    GXRgb color;
-    fx32 collisionPlaneHeight;
-    fx16 textureS;
-    fx16 textureT;
-    fx16 childTextureS;
-    fx16 childTextureT;
-    struct {
-        u32 emissionInterval : 8;
-        u32 baseAlpha : 8;
-        u32 updateCycle : 3;
-        u32 reserved : 13;
-    } misc;
-    VecFx16 crossAxis1;
-    VecFx16 crossAxis2;
-    SPLEmitterUpdateCallback updateCallback;
-
-    void *userDataPtr;
-    union {
-        u32 u32;
-        u16 u16[2];
-        u8 u8[4];
-    } userData;
-} SPLEmitter;
-typedef struct SPLEmitterList {
-    SPLEmitter *first;
-    int count;
-    SPLEmitter *last;
-} SPLEmitterList;
 typedef union SPLTextureParam {
     u32 all;
     struct {
@@ -376,44 +263,7 @@ typedef union SPLTextureParam {
         u32 : 6;
     };
 } SPLTextureParam;
-typedef struct SPLTexture {
-    const void *resource;
-    u32 texAddr;
-    u32 palAddr;
-    SPLTextureParam param;
-    u16 width;
-    u16 height;
-} SPLTexture;
 typedef void *(*SPLAllocFunc)(u32);
-typedef struct SPLManager {
-    SPLAllocFunc alloc;
-    SPLEmitterList activeEmitters;
-    SPLEmitterList inactiveEmitters;
-    SPLParticleList inactiveParticles;
-    SPLResource *resources;
-    SPLTexture *textures;
-    u16 resCount;
-    u16 texCount;
-    u16 maxEmitters;
-    u16 maxParticles;
-    struct {
-        u32 min : 6;
-        u32 max_PT : 6;
-        u32 current : 6;
-        u32 fix : 6;
-        u32 drawOrder : 1;
-        u32 unused : 7;
-    } polygonID;
-    GXPolygonAttrMisc miscPolygonAttr;
-    struct {
-        SPLEmitter *emitter;
-        const MtxFx43 *viewMatrix;
-    } renderState;
-    u16 currentCycle;
-    u16 reserved;
-} SPLManager;
-typedef u32 (*SPLTexVRAMAllocFunc)(u32 size, BOOL is4x4comp);
-typedef u32 (*SPLPalVRAMAllocFunc)(u32 size, BOOL is4pal);
 enum VRAMAutoRelease {
     VRAM_AUTO_RELEASE_NONE = 0,
 
@@ -422,6 +272,8 @@ enum VRAMAutoRelease {
     VRAM_AUTO_RELEASE_PALETTE_FRM = (1 << 2),
     VRAM_AUTO_RELEASE_PALETTE_LNK = (1 << 3),
 };
+typedef u32 (*SPLTexVRAMAllocFunc)(u32 size, BOOL is4x4comp);
+typedef u32 (*SPLPalVRAMAllocFunc)(u32 size, BOOL is4pal);
 typedef struct ParticleSystem {
     SPLManager *manager;
     void *resource;
@@ -452,7 +304,6 @@ typedef struct ParticleSystem {
 } ParticleSystem;
 void sub_02014EBC(ParticleSystem *particleSystem);
 void sub_020154B8(ParticleSystem *particleSystem);
-void Heap_Free(void *ptr);
 extern void *_021D10A8[16];
 // FUNCTION sub_02014EBC: matching C (pt4)
 #pragma force_active on
