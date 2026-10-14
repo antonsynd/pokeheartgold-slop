@@ -15,6 +15,11 @@ include filesystem.mk
 $(ASM_OBJS): MWASFLAGS += -DPM_ASM
 
 $(BUILD_DIR)/asm/nitrocrypto.o:  MWCCVER := 1.2/sp2p3
+# nitrocrypto's C pieces and asm slices (src/hgify/nitrocrypto, asm/nitrocrypto_*) build as asm/nitrocrypto.o
+# did: with MWCC 1.2/sp2p3, which has no -ipa.
+$(BUILD_DIR)/asm/nitrocrypto_%.o: MWCCVER := 1.2/sp2p3
+$(BUILD_DIR)/src/hgify/nitrocrypto/%.o: MWCCVER := 1.2/sp2p3
+$(BUILD_DIR)/src/hgify/nitrocrypto/%.o: IPAFLAGS :=
 $(BUILD_DIR)/lib/msl/src/*.o:    EXCCFLAGS := -Cpp_exceptions on
 
 $(ASM_OBJS): $(WORK_DIR)/include/config.h
