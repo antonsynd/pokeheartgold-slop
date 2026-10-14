@@ -1,10 +1,10 @@
 {
  "summary": {
-  "generated": "2026-10-14T14:04:23Z",
+  "generated": "2026-10-14T17:14:54Z",
   "by_status": {
    "matched": {
-    "files": 609,
-    "functions": 17785,
+    "files": 612,
+    "functions": 17987,
     "insn_lines": 87311,
     "text_bytes_est": 195662
    },
@@ -15,10 +15,10 @@
     "text_bytes_est": 2942
    },
    "pending": {
-    "files": 247,
-    "functions": 1314,
-    "insn_lines": 205222,
-    "text_bytes_est": 463236
+    "files": 243,
+    "functions": 1111,
+    "insn_lines": 176176,
+    "text_bytes_est": 392802
    },
    "upstream": {
     "files": 398,
@@ -28,10 +28,10 @@
    }
   },
   "function_totals": {
-   "tracked": 19132,
-   "matched": 17785,
+   "tracked": 19131,
+   "matched": 17987,
    "partial_in_blocked": 20,
-   "pending": 1314
+   "pending": 1111
   },
   "blockers": [
    {
@@ -11560,8 +11560,8 @@
    "lsf_kind": "src",
    "status": "matched",
    "source": "hgify",
-   "objects": 82,
-   "function_count": 82,
+   "objects": 83,
+   "function_count": 83,
    "lines": 0,
    "text_bytes_est": 0,
    "data_only": false,
@@ -11855,6 +11855,13 @@
     },
     {
      "name": "sub_020371A8",
+     "mode": "thumb",
+     "insns": 0,
+     "size_est": 0,
+     "status": "matched"
+    },
+    {
+     "name": "sub_020371C4",
      "mode": "thumb",
      "insns": 0,
      "size_est": 0,
@@ -12337,8 +12344,8 @@
    "lsf_kind": "src",
    "status": "matched",
    "source": "hgify",
-   "objects": 18,
-   "function_count": 18,
+   "objects": 19,
+   "function_count": 19,
    "lines": 0,
    "text_bytes_est": 0,
    "data_only": false,
@@ -12394,6 +12401,13 @@
     },
     {
      "name": "sub_0203A534",
+     "mode": "thumb",
+     "insns": 0,
+     "size_est": 0,
+     "status": "matched"
+    },
+    {
+     "name": "sub_0203A59C",
      "mode": "thumb",
      "insns": 0,
      "size_est": 0,
@@ -14387,14 +14401,21 @@
    "lsf_kind": "src",
    "status": "matched",
    "source": "hgify",
-   "objects": 58,
-   "function_count": 57,
+   "objects": 59,
+   "function_count": 58,
    "lines": 0,
    "text_bytes_est": 0,
    "data_only": false,
    "functions": [
     {
      "name": "sub_02058AEC",
+     "mode": "thumb",
+     "insns": 0,
+     "size_est": 0,
+     "status": "matched"
+    },
+    {
+     "name": "sub_02058B84",
      "mode": "thumb",
      "insns": 0,
      "size_est": 0,
@@ -15445,8 +15466,8 @@
    "lsf_kind": "src",
    "status": "matched",
    "source": "hgify",
-   "objects": 63,
-   "function_count": 63,
+   "objects": 64,
+   "function_count": 64,
    "lines": 0,
    "text_bytes_est": 0,
    "data_only": false,
@@ -15635,6 +15656,13 @@
     },
     {
      "name": "sub_0205D494",
+     "mode": "thumb",
+     "insns": 0,
+     "size_est": 0,
+     "status": "matched"
+    },
+    {
+     "name": "sub_0205D4B4",
      "mode": "thumb",
      "insns": 0,
      "size_est": 0,
@@ -18496,12 +18524,19 @@
    "lsf_kind": "src",
    "status": "matched",
    "source": "hgify",
-   "objects": 88,
-   "function_count": 88,
+   "objects": 89,
+   "function_count": 89,
    "lines": 0,
    "text_bytes_est": 0,
    "data_only": false,
    "functions": [
+    {
+     "name": "MapObjectMovementCmd108_Step1",
+     "mode": "thumb",
+     "insns": 0,
+     "size_est": 0,
+     "status": "matched"
+    },
     {
      "name": "MapObjectMovementCmd105_Step0",
      "mode": "thumb",
@@ -21329,8 +21364,8 @@
    "lsf_kind": "src",
    "status": "matched",
    "source": "hgify",
-   "objects": 19,
-   "function_count": 19,
+   "objects": 20,
+   "function_count": 20,
    "lines": 0,
    "text_bytes_est": 0,
    "data_only": false,
@@ -21393,6 +21428,13 @@
     },
     {
      "name": "sub_02075A04",
+     "mode": "thumb",
+     "insns": 0,
+     "size_est": 0,
+     "status": "matched"
+    },
+    {
+     "name": "sub_02075A7C",
      "mode": "thumb",
      "insns": 0,
      "size_est": 0,
@@ -22121,12 +22163,19 @@
    "lsf_kind": "src",
    "status": "matched",
    "source": "hgify",
-   "objects": 8,
-   "function_count": 8,
+   "objects": 9,
+   "function_count": 9,
    "lines": 0,
    "text_bytes_est": 0,
    "data_only": false,
    "functions": [
+    {
+     "name": "sub_020850F4",
+     "mode": "thumb",
+     "insns": 0,
+     "size_est": 0,
+     "status": "matched"
+    },
     {
      "name": "sub_0208524C",
      "mode": "thumb",
@@ -23771,8 +23820,8 @@
    "lsf_kind": "src",
    "status": "matched",
    "source": "hgify",
-   "objects": 36,
-   "function_count": 36,
+   "objects": 38,
+   "function_count": 38,
    "lines": 0,
    "text_bytes_est": 0,
    "data_only": false,
@@ -23834,6 +23883,13 @@
      "status": "matched"
     },
     {
+     "name": "sub_0208B5A8",
+     "mode": "thumb",
+     "insns": 0,
+     "size_est": 0,
+     "status": "matched"
+    },
+    {
      "name": "sub_0208B714",
      "mode": "thumb",
      "insns": 0,
@@ -23849,6 +23905,13 @@
     },
     {
      "name": "sub_0208B780",
+     "mode": "thumb",
+     "insns": 0,
+     "size_est": 0,
+     "status": "matched"
+    },
+    {
+     "name": "sub_0208B89C",
      "mode": "thumb",
      "insns": 0,
      "size_est": 0,
@@ -24036,8 +24099,8 @@
    "lsf_kind": "src",
    "status": "matched",
    "source": "hgify",
-   "objects": 32,
-   "function_count": 32,
+   "objects": 33,
+   "function_count": 33,
    "lines": 0,
    "text_bytes_est": 0,
    "data_only": false,
@@ -24198,6 +24261,13 @@
     },
     {
      "name": "sub_0208D7C4",
+     "mode": "thumb",
+     "insns": 0,
+     "size_est": 0,
+     "status": "matched"
+    },
+    {
+     "name": "sub_0208D884",
      "mode": "thumb",
      "insns": 0,
      "size_est": 0,
@@ -25311,8 +25381,8 @@
    "lsf_kind": "src",
    "status": "matched",
    "source": "hgify",
-   "objects": 51,
-   "function_count": 51,
+   "objects": 53,
+   "function_count": 53,
    "lines": 0,
    "text_bytes_est": 0,
    "data_only": false,
@@ -25332,6 +25402,13 @@
      "status": "matched"
     },
     {
+     "name": "sub_02093440",
+     "mode": "thumb",
+     "insns": 0,
+     "size_est": 0,
+     "status": "matched"
+    },
+    {
      "name": "sub_02093594",
      "mode": "thumb",
      "insns": 0,
@@ -25340,6 +25417,13 @@
     },
     {
      "name": "sub_020935E0",
+     "mode": "thumb",
+     "insns": 0,
+     "size_est": 0,
+     "status": "matched"
+    },
+    {
+     "name": "sub_02093630",
      "mode": "thumb",
      "insns": 0,
      "size_est": 0,
@@ -26969,8 +27053,8 @@
    "lsf_kind": "src",
    "status": "matched",
    "source": "hgify",
-   "objects": 84,
-   "function_count": 84,
+   "objects": 85,
+   "function_count": 85,
    "lines": 0,
    "text_bytes_est": 0,
    "data_only": false,
@@ -27291,6 +27375,13 @@
      "status": "matched"
     },
     {
+     "name": "ov00_021E6D7C",
+     "mode": "thumb",
+     "insns": 0,
+     "size_est": 0,
+     "status": "matched"
+    },
+    {
      "name": "ov00_021E6EBC",
      "mode": "thumb",
      "insns": 0,
@@ -27600,8 +27691,8 @@
    "lsf_kind": "src",
    "status": "matched",
    "source": "hgify",
-   "objects": 29,
-   "function_count": 29,
+   "objects": 31,
+   "function_count": 31,
    "lines": 0,
    "text_bytes_est": 0,
    "data_only": false,
@@ -27622,6 +27713,13 @@
     },
     {
      "name": "ov01_021E90DC",
+     "mode": "thumb",
+     "insns": 0,
+     "size_est": 0,
+     "status": "matched"
+    },
+    {
+     "name": "ov01_021E90E4",
      "mode": "thumb",
      "insns": 0,
      "size_est": 0,
@@ -27713,6 +27811,13 @@
     },
     {
      "name": "ov01_021E9C30",
+     "mode": "thumb",
+     "insns": 0,
+     "size_est": 0,
+     "status": "matched"
+    },
+    {
+     "name": "ov01_021E9C40",
      "mode": "thumb",
      "insns": 0,
      "size_est": 0,
@@ -28306,8 +28411,8 @@
    "lsf_kind": "src",
    "status": "matched",
    "source": "hgify",
-   "objects": 88,
-   "function_count": 88,
+   "objects": 89,
+   "function_count": 89,
    "lines": 0,
    "text_bytes_est": 0,
    "data_only": false,
@@ -28811,6 +28916,13 @@
     },
     {
      "name": "ov01_021EC8F8",
+     "mode": "thumb",
+     "insns": 0,
+     "size_est": 0,
+     "status": "matched"
+    },
+    {
+     "name": "ov01_021EC94C",
      "mode": "thumb",
      "insns": 0,
      "size_est": 0,
@@ -31256,8 +31368,8 @@
    "lsf_kind": "src",
    "status": "matched",
    "source": "hgify",
-   "objects": 65,
-   "function_count": 65,
+   "objects": 66,
+   "function_count": 66,
    "lines": 0,
    "text_bytes_est": 0,
    "data_only": false,
@@ -31334,6 +31446,13 @@
     },
     {
      "name": "ov01_021F4AE4",
+     "mode": "thumb",
+     "insns": 0,
+     "size_est": 0,
+     "status": "matched"
+    },
+    {
+     "name": "ov01_021F4B1C",
      "mode": "thumb",
      "insns": 0,
      "size_est": 0,
@@ -42366,8 +42485,8 @@
    "lsf_kind": "src",
    "status": "matched",
    "source": "hgify",
-   "objects": 84,
-   "function_count": 84,
+   "objects": 85,
+   "function_count": 85,
    "lines": 0,
    "text_bytes_est": 0,
    "data_only": false,
@@ -42388,6 +42507,13 @@
     },
     {
      "name": "ov05_0221BB00",
+     "mode": "thumb",
+     "insns": 0,
+     "size_est": 0,
+     "status": "matched"
+    },
+    {
+     "name": "ov05_0221BB30",
      "mode": "thumb",
      "insns": 0,
      "size_est": 0,
@@ -42973,8 +43099,8 @@
    "lsf_kind": "src",
    "status": "matched",
    "source": "hgify",
-   "objects": 784,
-   "function_count": 782,
+   "objects": 787,
+   "function_count": 785,
    "lines": 0,
    "text_bytes_est": 0,
    "data_only": false,
@@ -43002,6 +43128,13 @@
     },
     {
      "name": "ov07_0221BEA4",
+     "mode": "thumb",
+     "insns": 0,
+     "size_est": 0,
+     "status": "matched"
+    },
+    {
+     "name": "ov07_0221BEDC",
      "mode": "thumb",
      "insns": 0,
      "size_est": 0,
@@ -43680,6 +43813,13 @@
      "status": "matched"
     },
     {
+     "name": "ov07_0221E280",
+     "mode": "thumb",
+     "insns": 0,
+     "size_est": 0,
+     "status": "matched"
+    },
+    {
      "name": "ov07_0221E3B8",
      "mode": "thumb",
      "insns": 0,
@@ -44031,6 +44171,13 @@
     },
     {
      "name": "ov07_0221F604",
+     "mode": "thumb",
+     "insns": 0,
+     "size_est": 0,
+     "status": "matched"
+    },
+    {
+     "name": "ov07_0221F710",
      "mode": "thumb",
      "insns": 0,
      "size_est": 0,
@@ -51102,8 +51249,8 @@
    "lsf_kind": "src",
    "status": "matched",
    "source": "hgify",
-   "objects": 27,
-   "function_count": 27,
+   "objects": 28,
+   "function_count": 28,
    "lines": 0,
    "text_bytes_est": 0,
    "data_only": false,
@@ -51236,6 +51383,13 @@
     },
     {
      "name": "ov12_0223A088",
+     "mode": "thumb",
+     "insns": 0,
+     "size_est": 0,
+     "status": "matched"
+    },
+    {
+     "name": "ov12_0223A0D4",
      "mode": "thumb",
      "insns": 0,
      "size_est": 0,
@@ -51782,8 +51936,8 @@
    "lsf_kind": "src",
    "status": "matched",
    "source": "hgify",
-   "objects": 184,
-   "function_count": 184,
+   "objects": 185,
+   "function_count": 185,
    "lines": 0,
    "text_bytes_est": 0,
    "data_only": false,
@@ -52818,6 +52972,13 @@
      "status": "matched"
     },
     {
+     "name": "ov12_0225FD14",
+     "mode": "thumb",
+     "insns": 0,
+     "size_est": 0,
+     "status": "matched"
+    },
+    {
      "name": "ov12_0225FF80",
      "mode": "thumb",
      "insns": 0,
@@ -53780,8 +53941,8 @@
    "lsf_kind": "src",
    "status": "matched",
    "source": "hgify",
-   "objects": 196,
-   "function_count": 196,
+   "objects": 202,
+   "function_count": 202,
    "lines": 0,
    "text_bytes_est": 0,
    "data_only": false,
@@ -54060,6 +54221,20 @@
      "status": "matched"
     },
     {
+     "name": "ov14_021E65C4",
+     "mode": "thumb",
+     "insns": 0,
+     "size_est": 0,
+     "status": "matched"
+    },
+    {
+     "name": "ov14_021E66F4",
+     "mode": "thumb",
+     "insns": 0,
+     "size_est": 0,
+     "status": "matched"
+    },
+    {
      "name": "ov14_021E6814",
      "mode": "thumb",
      "insns": 0,
@@ -54109,6 +54284,20 @@
      "status": "matched"
     },
     {
+     "name": "ov14_021E6CF8",
+     "mode": "thumb",
+     "insns": 0,
+     "size_est": 0,
+     "status": "matched"
+    },
+    {
+     "name": "ov14_021E6F3C",
+     "mode": "thumb",
+     "insns": 0,
+     "size_est": 0,
+     "status": "matched"
+    },
+    {
      "name": "ov14_021E70B0",
      "mode": "thumb",
      "insns": 0,
@@ -54145,6 +54334,13 @@
     },
     {
      "name": "ov14_021E7264",
+     "mode": "thumb",
+     "insns": 0,
+     "size_est": 0,
+     "status": "matched"
+    },
+    {
+     "name": "ov14_021E7358",
      "mode": "thumb",
      "insns": 0,
      "size_est": 0,
@@ -55054,6 +55250,13 @@
      "status": "matched"
     },
     {
+     "name": "ov14_021E9A24",
+     "mode": "thumb",
+     "insns": 0,
+     "size_est": 0,
+     "status": "matched"
+    },
+    {
      "name": "ov14_021E9F20",
      "mode": "thumb",
      "insns": 0,
@@ -55165,8 +55368,8 @@
    "lsf_kind": "src",
    "status": "matched",
    "source": "hgify",
-   "objects": 78,
-   "function_count": 78,
+   "objects": 80,
+   "function_count": 80,
    "lines": 0,
    "text_bytes_est": 0,
    "data_only": false,
@@ -55292,6 +55495,13 @@
     },
     {
      "name": "ov14_021EBAEC",
+     "mode": "thumb",
+     "insns": 0,
+     "size_est": 0,
+     "status": "matched"
+    },
+    {
+     "name": "ov14_021EBB3C",
      "mode": "thumb",
      "insns": 0,
      "size_est": 0,
@@ -55716,6 +55926,13 @@
      "insns": 0,
      "size_est": 0,
      "status": "matched"
+    },
+    {
+     "name": "ov14_021EDFA0",
+     "mode": "thumb",
+     "insns": 0,
+     "size_est": 0,
+     "status": "matched"
     }
    ]
   },
@@ -56100,14 +56317,21 @@
    "lsf_kind": "src",
    "status": "matched",
    "source": "hgify",
-   "objects": 28,
-   "function_count": 28,
+   "objects": 30,
+   "function_count": 30,
    "lines": 0,
    "text_bytes_est": 0,
    "data_only": false,
    "functions": [
     {
      "name": "ov14_021EFDE4",
+     "mode": "thumb",
+     "insns": 0,
+     "size_est": 0,
+     "status": "matched"
+    },
+    {
+     "name": "ov14_021EFDF4",
      "mode": "thumb",
      "insns": 0,
      "size_est": 0,
@@ -56248,6 +56472,13 @@
     },
     {
      "name": "ov14_021F0594",
+     "mode": "thumb",
+     "insns": 0,
+     "size_est": 0,
+     "status": "matched"
+    },
+    {
+     "name": "ov14_021F0660",
      "mode": "thumb",
      "insns": 0,
      "size_est": 0,
@@ -56553,8 +56784,8 @@
    "lsf_kind": "src",
    "status": "matched",
    "source": "hgify",
-   "objects": 18,
-   "function_count": 18,
+   "objects": 19,
+   "function_count": 19,
    "lines": 0,
    "text_bytes_est": 0,
    "data_only": false,
@@ -56568,6 +56799,13 @@
     },
     {
      "name": "ov14_021F18B0",
+     "mode": "thumb",
+     "insns": 0,
+     "size_est": 0,
+     "status": "matched"
+    },
+    {
+     "name": "ov14_021F19F0",
      "mode": "thumb",
      "insns": 0,
      "size_est": 0,
@@ -58588,8 +58826,8 @@
    "lsf_kind": "src",
    "status": "matched",
    "source": "hgify",
-   "objects": 182,
-   "function_count": 182,
+   "objects": 188,
+   "function_count": 188,
    "lines": 0,
    "text_bytes_est": 0,
    "data_only": false,
@@ -58931,7 +59169,21 @@
      "status": "matched"
     },
     {
+     "name": "ov15_021FB14C",
+     "mode": "thumb",
+     "insns": 0,
+     "size_est": 0,
+     "status": "matched"
+    },
+    {
      "name": "ov15_021FB380",
+     "mode": "thumb",
+     "insns": 0,
+     "size_est": 0,
+     "status": "matched"
+    },
+    {
+     "name": "ov15_021FB3F0",
      "mode": "thumb",
      "insns": 0,
      "size_est": 0,
@@ -59085,6 +59337,13 @@
      "status": "matched"
     },
     {
+     "name": "ov15_021FC01C",
+     "mode": "thumb",
+     "insns": 0,
+     "size_est": 0,
+     "status": "matched"
+    },
+    {
      "name": "ov15_021FC140",
      "mode": "thumb",
      "insns": 0,
@@ -59184,6 +59443,13 @@
     },
     {
      "name": "ov15_021FD0E8",
+     "mode": "thumb",
+     "insns": 0,
+     "size_est": 0,
+     "status": "matched"
+    },
+    {
+     "name": "ov15_021FD10C",
      "mode": "thumb",
      "insns": 0,
      "size_est": 0,
@@ -59631,6 +59897,13 @@
      "status": "matched"
     },
     {
+     "name": "ov15_021FF570",
+     "mode": "thumb",
+     "insns": 0,
+     "size_est": 0,
+     "status": "matched"
+    },
+    {
      "name": "ov15_021FF66C",
      "mode": "thumb",
      "insns": 0,
@@ -59848,6 +60121,13 @@
      "status": "matched"
     },
     {
+     "name": "ov15_02200300",
+     "mode": "thumb",
+     "insns": 0,
+     "size_est": 0,
+     "status": "matched"
+    },
+    {
      "name": "ov15_02200428",
      "mode": "thumb",
      "insns": 0,
@@ -59929,8 +60209,8 @@
    "lsf_kind": "src",
    "status": "matched",
    "source": "hgify",
-   "objects": 67,
-   "function_count": 67,
+   "objects": 68,
+   "function_count": 68,
    "lines": 0,
    "text_bytes_est": 0,
    "data_only": false,
@@ -60377,6 +60657,13 @@
      "status": "matched"
     },
     {
+     "name": "ov18_021F05E8",
+     "mode": "thumb",
+     "insns": 0,
+     "size_est": 0,
+     "status": "matched"
+    },
+    {
      "name": "ov18_021F0838",
      "mode": "thumb",
      "insns": 0,
@@ -60411,8 +60698,8 @@
    "lsf_kind": "src",
    "status": "matched",
    "source": "hgify",
-   "objects": 193,
-   "function_count": 193,
+   "objects": 196,
+   "function_count": 196,
    "lines": 0,
    "text_bytes_est": 0,
    "data_only": false,
@@ -61111,6 +61398,20 @@
      "status": "matched"
     },
     {
+     "name": "ov18_021F36D4",
+     "mode": "thumb",
+     "insns": 0,
+     "size_est": 0,
+     "status": "matched"
+    },
+    {
+     "name": "ov18_021F37D4",
+     "mode": "thumb",
+     "insns": 0,
+     "size_est": 0,
+     "status": "matched"
+    },
+    {
      "name": "ov18_021F38F0",
      "mode": "thumb",
      "insns": 0,
@@ -61763,6 +62064,13 @@
     },
     {
      "name": "ov18_021F69C0",
+     "mode": "thumb",
+     "insns": 0,
+     "size_est": 0,
+     "status": "matched"
+    },
+    {
+     "name": "ov18_021F69E8",
      "mode": "thumb",
      "insns": 0,
      "size_est": 0,
@@ -64134,8 +64442,8 @@
    "lsf_kind": "src",
    "status": "matched",
    "source": "hgify",
-   "objects": 44,
-   "function_count": 44,
+   "objects": 45,
+   "function_count": 45,
    "lines": 0,
    "text_bytes_est": 0,
    "data_only": false,
@@ -64247,6 +64555,13 @@
     },
     {
      "name": "ov31_0225DCF4",
+     "mode": "thumb",
+     "insns": 0,
+     "size_est": 0,
+     "status": "matched"
+    },
+    {
+     "name": "ov31_0225DD14",
      "mode": "thumb",
      "insns": 0,
      "size_est": 0,
@@ -66522,8 +66837,8 @@
    "lsf_kind": "src",
    "status": "matched",
    "source": "hgify",
-   "objects": 491,
-   "function_count": 491,
+   "objects": 510,
+   "function_count": 510,
    "lines": 0,
    "text_bytes_est": 0,
    "data_only": false,
@@ -66809,6 +67124,13 @@
      "status": "matched"
     },
     {
+     "name": "ov40_0222D048",
+     "mode": "thumb",
+     "insns": 0,
+     "size_est": 0,
+     "status": "matched"
+    },
+    {
      "name": "ov40_0222D288",
      "mode": "thumb",
      "insns": 0,
@@ -66817,6 +67139,13 @@
     },
     {
      "name": "ov40_0222D294",
+     "mode": "thumb",
+     "insns": 0,
+     "size_est": 0,
+     "status": "matched"
+    },
+    {
+     "name": "ov40_0222D3E8",
      "mode": "thumb",
      "insns": 0,
      "size_est": 0,
@@ -67635,6 +67964,13 @@
      "status": "matched"
     },
     {
+     "name": "ov40_0223142C",
+     "mode": "thumb",
+     "insns": 0,
+     "size_est": 0,
+     "status": "matched"
+    },
+    {
      "name": "ov40_0223169C",
      "mode": "thumb",
      "insns": 0,
@@ -67678,6 +68014,13 @@
     },
     {
      "name": "ov40_022318C8",
+     "mode": "thumb",
+     "insns": 0,
+     "size_est": 0,
+     "status": "matched"
+    },
+    {
+     "name": "ov40_02231C78",
      "mode": "thumb",
      "insns": 0,
      "size_est": 0,
@@ -67943,6 +68286,13 @@
      "status": "matched"
     },
     {
+     "name": "ov40_022344D8",
+     "mode": "thumb",
+     "insns": 0,
+     "size_est": 0,
+     "status": "matched"
+    },
+    {
      "name": "ov40_0223480C",
      "mode": "thumb",
      "insns": 0,
@@ -68077,6 +68427,13 @@
     },
     {
      "name": "ov40_02235B10",
+     "mode": "thumb",
+     "insns": 0,
+     "size_est": 0,
+     "status": "matched"
+    },
+    {
+     "name": "ov40_02235B4C",
      "mode": "thumb",
      "insns": 0,
      "size_est": 0,
@@ -68643,6 +69000,13 @@
      "status": "matched"
     },
     {
+     "name": "ov40_02239B58",
+     "mode": "thumb",
+     "insns": 0,
+     "size_est": 0,
+     "status": "matched"
+    },
+    {
      "name": "ov40_02239EFC",
      "mode": "thumb",
      "insns": 0,
@@ -68748,6 +69112,13 @@
      "status": "matched"
     },
     {
+     "name": "ov40_0223ACD0",
+     "mode": "thumb",
+     "insns": 0,
+     "size_est": 0,
+     "status": "matched"
+    },
+    {
      "name": "ov40_0223AF24",
      "mode": "thumb",
      "insns": 0,
@@ -68818,6 +69189,13 @@
      "status": "matched"
     },
     {
+     "name": "ov40_0223B75C",
+     "mode": "thumb",
+     "insns": 0,
+     "size_est": 0,
+     "status": "matched"
+    },
+    {
      "name": "ov40_0223BA70",
      "mode": "thumb",
      "insns": 0,
@@ -68833,6 +69211,13 @@
     },
     {
      "name": "ov40_0223BD98",
+     "mode": "thumb",
+     "insns": 0,
+     "size_est": 0,
+     "status": "matched"
+    },
+    {
+     "name": "ov40_0223BF88",
      "mode": "thumb",
      "insns": 0,
      "size_est": 0,
@@ -68861,6 +69246,20 @@
     },
     {
      "name": "ov40_0223C3A4",
+     "mode": "thumb",
+     "insns": 0,
+     "size_est": 0,
+     "status": "matched"
+    },
+    {
+     "name": "ov40_0223C498",
+     "mode": "thumb",
+     "insns": 0,
+     "size_est": 0,
+     "status": "matched"
+    },
+    {
+     "name": "ov40_0223C710",
      "mode": "thumb",
      "insns": 0,
      "size_est": 0,
@@ -68944,6 +69343,13 @@
      "status": "matched"
     },
     {
+     "name": "ov40_0223D244",
+     "mode": "thumb",
+     "insns": 0,
+     "size_est": 0,
+     "status": "matched"
+    },
+    {
      "name": "ov40_0223D504",
      "mode": "thumb",
      "insns": 0,
@@ -68994,6 +69400,13 @@
     },
     {
      "name": "ov40_0223D874",
+     "mode": "thumb",
+     "insns": 0,
+     "size_est": 0,
+     "status": "matched"
+    },
+    {
+     "name": "ov40_0223D8D4",
      "mode": "thumb",
      "insns": 0,
      "size_est": 0,
@@ -69140,6 +69553,13 @@
      "status": "matched"
     },
     {
+     "name": "ov40_0223F028",
+     "mode": "thumb",
+     "insns": 0,
+     "size_est": 0,
+     "status": "matched"
+    },
+    {
      "name": "ov40_0223F16C",
      "mode": "thumb",
      "insns": 0,
@@ -69259,6 +69679,13 @@
      "status": "matched"
     },
     {
+     "name": "ov40_0223FF8C",
+     "mode": "thumb",
+     "insns": 0,
+     "size_est": 0,
+     "status": "matched"
+    },
+    {
      "name": "ov40_02240238",
      "mode": "thumb",
      "insns": 0,
@@ -69365,6 +69792,20 @@
     },
     {
      "name": "ov40_02240D50",
+     "mode": "thumb",
+     "insns": 0,
+     "size_est": 0,
+     "status": "matched"
+    },
+    {
+     "name": "ov40_02240E28",
+     "mode": "thumb",
+     "insns": 0,
+     "size_est": 0,
+     "status": "matched"
+    },
+    {
+     "name": "ov40_02240F24",
      "mode": "thumb",
      "insns": 0,
      "size_est": 0,
@@ -69924,6 +70365,13 @@
      "status": "matched"
     },
     {
+     "name": "ov40_0224462C",
+     "mode": "thumb",
+     "insns": 0,
+     "size_est": 0,
+     "status": "matched"
+    },
+    {
      "name": "ov40_0224483C",
      "mode": "thumb",
      "insns": 0,
@@ -70398,8 +70846,8 @@
    "lsf_kind": "src",
    "status": "matched",
    "source": "hgify",
-   "objects": 35,
-   "function_count": 35,
+   "objects": 36,
+   "function_count": 36,
    "lines": 0,
    "text_bytes_est": 0,
    "data_only": false,
@@ -70462,6 +70910,13 @@
     },
     {
      "name": "ov41_02246DA8",
+     "mode": "thumb",
+     "insns": 0,
+     "size_est": 0,
+     "status": "matched"
+    },
+    {
+     "name": "ov41_02246DE0",
      "mode": "thumb",
      "insns": 0,
      "size_est": 0,
@@ -72622,8 +73077,8 @@
    "lsf_kind": "src",
    "status": "matched",
    "source": "hgify",
-   "objects": 150,
-   "function_count": 150,
+   "objects": 152,
+   "function_count": 152,
    "lines": 0,
    "text_bytes_est": 0,
    "data_only": false,
@@ -72763,6 +73218,13 @@
     },
     {
      "name": "ov43_0222A550",
+     "mode": "thumb",
+     "insns": 0,
+     "size_est": 0,
+     "status": "matched"
+    },
+    {
+     "name": "ov43_0222A570",
      "mode": "thumb",
      "insns": 0,
      "size_est": 0,
@@ -73616,6 +74078,13 @@
      "status": "matched"
     },
     {
+     "name": "ov43_0222E0E8",
+     "mode": "thumb",
+     "insns": 0,
+     "size_est": 0,
+     "status": "matched"
+    },
+    {
      "name": "ov43_0222E5B4",
      "mode": "thumb",
      "insns": 0,
@@ -73709,8 +74178,8 @@
    "lsf_kind": "src",
    "status": "matched",
    "source": "hgify",
-   "objects": 535,
-   "function_count": 535,
+   "objects": 536,
+   "function_count": 536,
    "lines": 0,
    "text_bytes_est": 0,
    "data_only": false,
@@ -74095,6 +74564,13 @@
     },
     {
      "name": "ov45_0222A7DC",
+     "mode": "thumb",
+     "insns": 0,
+     "size_est": 0,
+     "status": "matched"
+    },
+    {
+     "name": "ov45_0222A844",
      "mode": "thumb",
      "insns": 0,
      "size_est": 0,
@@ -77983,8 +78459,8 @@
    "lsf_kind": "src",
    "status": "matched",
    "source": "hgify",
-   "objects": 129,
-   "function_count": 129,
+   "objects": 132,
+   "function_count": 132,
    "lines": 0,
    "text_bytes_est": 0,
    "data_only": false,
@@ -78005,6 +78481,13 @@
     },
     {
      "name": "ov48_022589FC",
+     "mode": "thumb",
+     "insns": 0,
+     "size_est": 0,
+     "status": "matched"
+    },
+    {
+     "name": "ov48_02258A80",
      "mode": "thumb",
      "insns": 0,
      "size_est": 0,
@@ -78096,6 +78579,13 @@
     },
     {
      "name": "ov48_02259188",
+     "mode": "thumb",
+     "insns": 0,
+     "size_est": 0,
+     "status": "matched"
+    },
+    {
+     "name": "ov48_022591D8",
      "mode": "thumb",
      "insns": 0,
      "size_est": 0,
@@ -78383,6 +78873,13 @@
     },
     {
      "name": "ov48_02259D94",
+     "mode": "thumb",
+     "insns": 0,
+     "size_est": 0,
+     "status": "matched"
+    },
+    {
+     "name": "ov48_02259DA0",
      "mode": "thumb",
      "insns": 0,
      "size_est": 0,
@@ -79395,8 +79892,8 @@
    "lsf_kind": "src",
    "status": "matched",
    "source": "hgify",
-   "objects": 45,
-   "function_count": 45,
+   "objects": 46,
+   "function_count": 46,
    "lines": 0,
    "text_bytes_est": 0,
    "data_only": false,
@@ -79487,6 +79984,13 @@
     },
     {
      "name": "ov49_02259AA4",
+     "mode": "thumb",
+     "insns": 0,
+     "size_est": 0,
+     "status": "matched"
+    },
+    {
+     "name": "ov49_02259C90",
      "mode": "thumb",
      "insns": 0,
      "size_est": 0,
@@ -79723,8 +80227,8 @@
    "lsf_kind": "src",
    "status": "matched",
    "source": "hgify",
-   "objects": 157,
-   "function_count": 157,
+   "objects": 158,
+   "function_count": 158,
    "lines": 0,
    "text_bytes_est": 0,
    "data_only": false,
@@ -80648,6 +81152,13 @@
     },
     {
      "name": "ov49_0225BBCC",
+     "mode": "thumb",
+     "insns": 0,
+     "size_est": 0,
+     "status": "matched"
+    },
+    {
+     "name": "ov49_0225BBD0",
      "mode": "thumb",
      "insns": 0,
      "size_est": 0,
@@ -81694,8 +82205,8 @@
    "lsf_kind": "src",
    "status": "matched",
    "source": "hgify",
-   "objects": 62,
-   "function_count": 62,
+   "objects": 63,
+   "function_count": 63,
    "lines": 0,
    "text_bytes_est": 0,
    "data_only": false,
@@ -81996,6 +82507,13 @@
     },
     {
      "name": "ov49_02260254",
+     "mode": "thumb",
+     "insns": 0,
+     "size_est": 0,
+     "status": "matched"
+    },
+    {
+     "name": "ov49_022607C4",
      "mode": "thumb",
      "insns": 0,
      "size_est": 0,
@@ -83645,8 +84163,8 @@
    "lsf_kind": "src",
    "status": "matched",
    "source": "hgify",
-   "objects": 42,
-   "function_count": 42,
+   "objects": 43,
+   "function_count": 43,
    "lines": 0,
    "text_bytes_est": 0,
    "data_only": false,
@@ -83695,6 +84213,13 @@
     },
     {
      "name": "ov51_021E6238",
+     "mode": "thumb",
+     "insns": 0,
+     "size_est": 0,
+     "status": "matched"
+    },
+    {
+     "name": "ov51_021E6354",
      "mode": "thumb",
      "insns": 0,
      "size_est": 0,
@@ -84268,8 +84793,8 @@
    "lsf_kind": "src",
    "status": "matched",
    "source": "hgify",
-   "objects": 27,
-   "function_count": 27,
+   "objects": 28,
+   "function_count": 28,
    "lines": 0,
    "text_bytes_est": 0,
    "data_only": false,
@@ -84450,6 +84975,13 @@
      "status": "matched"
     },
     {
+     "name": "ov56_021E6AA4",
+     "mode": "thumb",
+     "insns": 0,
+     "size_est": 0,
+     "status": "matched"
+    },
+    {
      "name": "ov56_021E6BB4",
      "mode": "thumb",
      "insns": 0,
@@ -84470,8 +85002,8 @@
    "lsf_kind": "src",
    "status": "matched",
    "source": "hgify",
-   "objects": 133,
-   "function_count": 133,
+   "objects": 134,
+   "function_count": 134,
    "lines": 0,
    "text_bytes_est": 0,
    "data_only": false,
@@ -85135,6 +85667,13 @@
      "status": "matched"
     },
     {
+     "name": "ov57_0223A8FC",
+     "mode": "thumb",
+     "insns": 0,
+     "size_est": 0,
+     "status": "matched"
+    },
+    {
      "name": "ov57_0223B12C",
      "mode": "thumb",
      "insns": 0,
@@ -85579,8 +86118,8 @@
    "lsf_kind": "src",
    "status": "matched",
    "source": "hgify",
-   "objects": 154,
-   "function_count": 154,
+   "objects": 158,
+   "function_count": 158,
    "lines": 0,
    "text_bytes_est": 0,
    "data_only": false,
@@ -85699,6 +86238,13 @@
     },
     {
      "name": "ov59_0223834C",
+     "mode": "thumb",
+     "insns": 0,
+     "size_est": 0,
+     "status": "matched"
+    },
+    {
+     "name": "ov59_022383B4",
      "mode": "thumb",
      "insns": 0,
      "size_est": 0,
@@ -85888,6 +86434,13 @@
     },
     {
      "name": "ov59_02238FF4",
+     "mode": "thumb",
+     "insns": 0,
+     "size_est": 0,
+     "status": "matched"
+    },
+    {
+     "name": "ov59_022390A8",
      "mode": "thumb",
      "insns": 0,
      "size_est": 0,
@@ -86174,6 +86727,13 @@
      "status": "matched"
     },
     {
+     "name": "ov59_0223A7FC",
+     "mode": "thumb",
+     "insns": 0,
+     "size_est": 0,
+     "status": "matched"
+    },
+    {
      "name": "ov59_0223A8E0",
      "mode": "thumb",
      "insns": 0,
@@ -86434,6 +86994,13 @@
     },
     {
      "name": "ov59_0223B8C8",
+     "mode": "thumb",
+     "insns": 0,
+     "size_est": 0,
+     "status": "matched"
+    },
+    {
+     "name": "ov59_0223B8E4",
      "mode": "thumb",
      "insns": 0,
      "size_est": 0,
@@ -86973,8 +87540,8 @@
    "lsf_kind": "src",
    "status": "matched",
    "source": "hgify",
-   "objects": 96,
-   "function_count": 96,
+   "objects": 100,
+   "function_count": 100,
    "lines": 0,
    "text_bytes_est": 0,
    "data_only": false,
@@ -87023,6 +87590,13 @@
     },
     {
      "name": "ov65_0221C414",
+     "mode": "thumb",
+     "insns": 0,
+     "size_est": 0,
+     "status": "matched"
+    },
+    {
+     "name": "ov65_0221C5E0",
      "mode": "thumb",
      "insns": 0,
      "size_est": 0,
@@ -87163,6 +87737,13 @@
     },
     {
      "name": "ov65_0221D648",
+     "mode": "thumb",
+     "insns": 0,
+     "size_est": 0,
+     "status": "matched"
+    },
+    {
+     "name": "ov65_0221D674",
      "mode": "thumb",
      "insns": 0,
      "size_est": 0,
@@ -87442,6 +88023,13 @@
      "status": "matched"
     },
     {
+     "name": "ov65_0221EE18",
+     "mode": "thumb",
+     "insns": 0,
+     "size_est": 0,
+     "status": "matched"
+    },
+    {
      "name": "ov65_0221EF0C",
      "mode": "thumb",
      "insns": 0,
@@ -87464,6 +88052,13 @@
     },
     {
      "name": "ov65_0221F0D8",
+     "mode": "thumb",
+     "insns": 0,
+     "size_est": 0,
+     "status": "matched"
+    },
+    {
+     "name": "ov65_0221F120",
      "mode": "thumb",
      "insns": 0,
      "size_est": 0,
@@ -88545,8 +89140,8 @@
    "lsf_kind": "src",
    "status": "matched",
    "source": "hgify",
-   "objects": 32,
-   "function_count": 32,
+   "objects": 34,
+   "function_count": 34,
    "lines": 0,
    "text_bytes_est": 0,
    "data_only": false,
@@ -88574,6 +89169,13 @@
     },
     {
      "name": "ov69_021E6118",
+     "mode": "thumb",
+     "insns": 0,
+     "size_est": 0,
+     "status": "matched"
+    },
+    {
+     "name": "ov69_021E6138",
      "mode": "thumb",
      "insns": 0,
      "size_est": 0,
@@ -88672,6 +89274,13 @@
     },
     {
      "name": "ov69_021E6C14",
+     "mode": "thumb",
+     "insns": 0,
+     "size_est": 0,
+     "status": "matched"
+    },
+    {
+     "name": "ov69_021E6C30",
      "mode": "thumb",
      "insns": 0,
      "size_est": 0,
@@ -88782,8 +89391,8 @@
    "lsf_kind": "src",
    "status": "matched",
    "source": "hgify",
-   "objects": 489,
-   "function_count": 489,
+   "objects": 490,
+   "function_count": 490,
    "lines": 0,
    "text_bytes_est": 0,
    "data_only": false,
@@ -91470,6 +92079,13 @@
      "status": "matched"
     },
     {
+     "name": "ov70_02241DB4",
+     "mode": "thumb",
+     "insns": 0,
+     "size_est": 0,
+     "status": "matched"
+    },
+    {
      "name": "ov70_02242014",
      "mode": "thumb",
      "insns": 0,
@@ -92218,8 +92834,8 @@
    "lsf_kind": "src",
    "status": "matched",
    "source": "hgify",
-   "objects": 201,
-   "function_count": 200,
+   "objects": 203,
+   "function_count": 202,
    "lines": 0,
    "text_bytes_est": 0,
    "data_only": false,
@@ -92254,6 +92870,13 @@
     },
     {
      "name": "ov71_02246C48",
+     "mode": "thumb",
+     "insns": 0,
+     "size_est": 0,
+     "status": "matched"
+    },
+    {
+     "name": "ov71_02246C6C",
      "mode": "thumb",
      "insns": 0,
      "size_est": 0,
@@ -92653,6 +93276,13 @@
     },
     {
      "name": "ov71_02247C60",
+     "mode": "thumb",
+     "insns": 0,
+     "size_est": 0,
+     "status": "matched"
+    },
+    {
+     "name": "ov71_02247DEC",
      "mode": "thumb",
      "insns": 0,
      "size_est": 0,
@@ -93631,8 +94261,8 @@
    "lsf_kind": "src",
    "status": "matched",
    "source": "hgify",
-   "objects": 145,
-   "function_count": 145,
+   "objects": 147,
+   "function_count": 147,
    "lines": 0,
    "text_bytes_est": 0,
    "data_only": false,
@@ -93758,6 +94388,13 @@
     },
     {
      "name": "ov72_022383DC",
+     "mode": "thumb",
+     "insns": 0,
+     "size_est": 0,
+     "status": "matched"
+    },
+    {
+     "name": "ov72_02238408",
      "mode": "thumb",
      "insns": 0,
      "size_est": 0,
@@ -94625,6 +95262,13 @@
      "status": "matched"
     },
     {
+     "name": "ov72_0223B0C4",
+     "mode": "thumb",
+     "insns": 0,
+     "size_est": 0,
+     "status": "matched"
+    },
+    {
      "name": "ov72_0223B1C8",
      "mode": "thumb",
      "insns": 0,
@@ -94659,8 +95303,8 @@
    "lsf_kind": "src",
    "status": "matched",
    "source": "hgify",
-   "objects": 202,
-   "function_count": 202,
+   "objects": 203,
+   "function_count": 203,
    "lines": 0,
    "text_bytes_est": 0,
    "data_only": false,
@@ -95311,6 +95955,13 @@
     },
     {
      "name": "ov73_021E7E24",
+     "mode": "thumb",
+     "insns": 0,
+     "size_est": 0,
+     "status": "matched"
+    },
+    {
+     "name": "ov73_021E7E4C",
      "mode": "thumb",
      "insns": 0,
      "size_est": 0,
@@ -96092,8 +96743,8 @@
    "lsf_kind": "src",
    "status": "matched",
    "source": "hgify",
-   "objects": 442,
-   "function_count": 442,
+   "objects": 447,
+   "function_count": 446,
    "lines": 0,
    "text_bytes_est": 0,
    "data_only": false,
@@ -96107,6 +96758,13 @@
     },
     {
      "name": "ov74_IntToWstring5",
+     "mode": "thumb",
+     "insns": 0,
+     "size_est": 0,
+     "status": "matched"
+    },
+    {
+     "name": "ov74_02228D64",
      "mode": "thumb",
      "insns": 0,
      "size_est": 0,
@@ -97100,6 +97758,13 @@
      "status": "matched"
     },
     {
+     "name": "ov74_0222E0D4",
+     "mode": "thumb",
+     "insns": 0,
+     "size_est": 0,
+     "status": "matched"
+    },
+    {
      "name": "ov74_0222E7EC",
      "mode": "thumb",
      "insns": 0,
@@ -97304,6 +97969,13 @@
     },
     {
      "name": "ov74_0222F6C4",
+     "mode": "thumb",
+     "insns": 0,
+     "size_est": 0,
+     "status": "matched"
+    },
+    {
+     "name": "ov74_0222F7D4",
      "mode": "thumb",
      "insns": 0,
      "size_est": 0,
@@ -99191,508 +99863,439 @@
      "insns": 0,
      "size_est": 0,
      "status": "matched"
+    },
+    {
+     "name": "ConvertRSStringToDPStringInternational",
+     "mode": "thumb",
+     "insns": 0,
+     "size_est": 0,
+     "status": "matched"
     }
    ]
   },
   {
    "file": "asm/nitrocrypto.s",
-   "lsf_kind": "asm",
-   "status": "pending",
-   "lines": 4843,
-   "function_count": 67,
-   "text_bytes_est": 16980,
+   "lsf_kind": "src",
+   "status": "matched",
+   "source": "hgify",
+   "objects": 59,
+   "function_count": 59,
+   "lines": 0,
+   "text_bytes_est": 0,
    "data_only": false,
-   "sections": {
-    "rodata_bytes": 116,
-    "data_bytes": 28,
-    "bss_bytes": 8,
-    "other_bytes": 0
-   },
-   "other_sections": [],
-   "jumptable_words": 0,
-   "imports": [
-    "MATH_CalcSHA1",
-    "MI_CpuCopy8",
-    "MI_CpuFill8",
-    "OS_AllocFromHeap",
-    "OS_FreeToHeap",
-    "_s32_div_f",
-    "_u32_div_f"
-   ],
-   "exports": [
-    "CRYPTO_RC4Encrypt",
-    "CRYPTO_SetAllocator",
-    "CRYPTO_VerifySignature"
-   ],
    "functions": [
     {
-     "name": "CRYPTO_RC4Encrypt",
-     "mode": "arm",
-     "insns": 30,
-     "size_est": 120,
-     "status": "pending"
-    },
-    {
      "name": "CRYPTO_VerifySignature",
-     "mode": "arm",
-     "insns": 17,
-     "size_est": 68,
-     "status": "pending"
+     "mode": "thumb",
+     "insns": 0,
+     "size_est": 0,
+     "status": "matched"
     },
     {
      "name": "CRYPTO_VerifySignatureWithHash",
-     "mode": "arm",
-     "insns": 64,
-     "size_est": 256,
-     "status": "pending"
+     "mode": "thumb",
+     "insns": 0,
+     "size_est": 0,
+     "status": "matched"
     },
     {
      "name": "ParseSignHash",
-     "mode": "arm",
-     "insns": 105,
-     "size_est": 420,
-     "status": "pending"
+     "mode": "thumb",
+     "insns": 0,
+     "size_est": 0,
+     "status": "matched"
     },
     {
      "name": "SkipPadding",
-     "mode": "arm",
-     "insns": 49,
-     "size_est": 196,
-     "status": "pending"
+     "mode": "thumb",
+     "insns": 0,
+     "size_est": 0,
+     "status": "matched"
     },
     {
      "name": "ASN1Skip",
-     "mode": "arm",
-     "insns": 53,
-     "size_est": 212,
-     "status": "pending"
+     "mode": "thumb",
+     "insns": 0,
+     "size_est": 0,
+     "status": "matched"
     },
     {
      "name": "CRYPTOi_RSA",
-     "mode": "arm",
-     "insns": 87,
-     "size_est": 348,
-     "status": "pending"
-    },
-    {
-     "name": "BN_mod_exp_mont",
-     "mode": "arm",
-     "insns": 513,
-     "size_est": 2052,
-     "status": "pending"
+     "mode": "thumb",
+     "insns": 0,
+     "size_est": 0,
+     "status": "matched"
     },
     {
      "name": "BN_mod_exp_recp",
-     "mode": "arm",
-     "insns": 229,
-     "size_est": 916,
-     "status": "pending"
+     "mode": "thumb",
+     "insns": 0,
+     "size_est": 0,
+     "status": "matched"
     },
     {
      "name": "bn_div_words",
-     "mode": "arm",
-     "insns": 80,
-     "size_est": 320,
-     "status": "pending"
+     "mode": "thumb",
+     "insns": 0,
+     "size_est": 0,
+     "status": "matched"
     },
     {
      "name": "BN_reciprocal",
-     "mode": "arm",
-     "insns": 31,
-     "size_est": 124,
-     "status": "pending"
+     "mode": "thumb",
+     "insns": 0,
+     "size_est": 0,
+     "status": "matched"
     },
     {
      "name": "BN_div_recp",
-     "mode": "arm",
-     "insns": 159,
-     "size_est": 636,
-     "status": "pending"
+     "mode": "thumb",
+     "insns": 0,
+     "size_est": 0,
+     "status": "matched"
     },
     {
      "name": "BN_mod_mul_reciprocal",
-     "mode": "arm",
-     "insns": 43,
-     "size_est": 172,
-     "status": "pending"
+     "mode": "thumb",
+     "insns": 0,
+     "size_est": 0,
+     "status": "matched"
     },
     {
      "name": "BN_RECP_CTX_set",
-     "mode": "arm",
-     "insns": 17,
-     "size_est": 68,
-     "status": "pending"
+     "mode": "thumb",
+     "insns": 0,
+     "size_est": 0,
+     "status": "matched"
     },
     {
      "name": "BN_RECP_CTX_free",
-     "mode": "arm",
-     "insns": 13,
-     "size_est": 52,
-     "status": "pending"
+     "mode": "thumb",
+     "insns": 0,
+     "size_est": 0,
+     "status": "matched"
     },
     {
      "name": "BN_RECP_CTX_init",
-     "mode": "arm",
-     "insns": 10,
-     "size_est": 40,
-     "status": "pending"
+     "mode": "thumb",
+     "insns": 0,
+     "size_est": 0,
+     "status": "matched"
     },
     {
      "name": "BN_MONT_CTX_free",
-     "mode": "arm",
-     "insns": 16,
-     "size_est": 64,
-     "status": "pending"
+     "mode": "thumb",
+     "insns": 0,
+     "size_est": 0,
+     "status": "matched"
     },
     {
      "name": "BN_MONT_CTX_init",
-     "mode": "arm",
-     "insns": 15,
-     "size_est": 60,
-     "status": "pending"
+     "mode": "thumb",
+     "insns": 0,
+     "size_est": 0,
+     "status": "matched"
     },
     {
      "name": "BN_MONT_CTX_new",
-     "mode": "arm",
-     "insns": 13,
-     "size_est": 52,
-     "status": "pending"
+     "mode": "thumb",
+     "insns": 0,
+     "size_est": 0,
+     "status": "matched"
     },
     {
      "name": "BN_MONT_CTX_set_word",
-     "mode": "arm",
-     "insns": 111,
-     "size_est": 444,
-     "status": "pending"
-    },
-    {
-     "name": "BN_gen_exp_string",
-     "mode": "arm",
-     "insns": 118,
-     "size_est": 472,
-     "status": "pending"
+     "mode": "thumb",
+     "insns": 0,
+     "size_est": 0,
+     "status": "matched"
     },
     {
      "name": "BN_gen_exp_bits",
-     "mode": "arm",
-     "insns": 93,
-     "size_est": 372,
-     "status": "pending"
+     "mode": "thumb",
+     "insns": 0,
+     "size_est": 0,
+     "status": "matched"
     },
     {
      "name": "BN_mod_inverse_word",
-     "mode": "arm",
-     "insns": 37,
-     "size_est": 148,
-     "status": "pending"
+     "mode": "thumb",
+     "insns": 0,
+     "size_est": 0,
+     "status": "matched"
     },
     {
      "name": "bn_from_montgomery_words",
-     "mode": "arm",
-     "insns": 80,
-     "size_est": 320,
-     "status": "pending"
+     "mode": "thumb",
+     "insns": 0,
+     "size_est": 0,
+     "status": "matched"
     },
     {
      "name": "bn_sqr_normal",
-     "mode": "arm",
-     "insns": 59,
-     "size_est": 236,
-     "status": "pending"
+     "mode": "thumb",
+     "insns": 0,
+     "size_est": 0,
+     "status": "matched"
     },
     {
      "name": "BN_sqr",
-     "mode": "arm",
-     "insns": 87,
-     "size_est": 348,
-     "status": "pending"
+     "mode": "thumb",
+     "insns": 0,
+     "size_est": 0,
+     "status": "matched"
     },
     {
      "name": "BN_mod_exp",
-     "mode": "arm",
-     "insns": 23,
-     "size_est": 92,
-     "status": "pending"
+     "mode": "thumb",
+     "insns": 0,
+     "size_est": 0,
+     "status": "matched"
     },
     {
      "name": "BN_mod",
-     "mode": "arm",
-     "insns": 13,
-     "size_est": 52,
-     "status": "pending"
-    },
-    {
-     "name": "BN_div",
-     "mode": "arm",
-     "insns": 360,
-     "size_est": 1440,
-     "status": "pending"
+     "mode": "thumb",
+     "insns": 0,
+     "size_est": 0,
+     "status": "matched"
     },
     {
      "name": "bn_mul_normal",
-     "mode": "arm",
-     "insns": 73,
-     "size_est": 292,
-     "status": "pending"
+     "mode": "thumb",
+     "insns": 0,
+     "size_est": 0,
+     "status": "matched"
     },
     {
      "name": "BN_mul",
-     "mode": "arm",
-     "insns": 64,
-     "size_est": 256,
-     "status": "pending"
+     "mode": "thumb",
+     "insns": 0,
+     "size_est": 0,
+     "status": "matched"
     },
     {
      "name": "BN_sub",
-     "mode": "arm",
-     "insns": 81,
-     "size_est": 324,
-     "status": "pending"
+     "mode": "thumb",
+     "insns": 0,
+     "size_est": 0,
+     "status": "matched"
     },
     {
      "name": "BN_usub",
-     "mode": "arm",
-     "insns": 89,
-     "size_est": 356,
-     "status": "pending"
+     "mode": "thumb",
+     "insns": 0,
+     "size_est": 0,
+     "status": "matched"
     },
     {
      "name": "BN_uadd",
-     "mode": "arm",
-     "insns": 71,
-     "size_est": 284,
-     "status": "pending"
+     "mode": "thumb",
+     "insns": 0,
+     "size_est": 0,
+     "status": "matched"
     },
     {
      "name": "BN_add",
-     "mode": "arm",
-     "insns": 55,
-     "size_est": 220,
-     "status": "pending"
+     "mode": "thumb",
+     "insns": 0,
+     "size_est": 0,
+     "status": "matched"
     },
     {
      "name": "BN_sub_word",
-     "mode": "arm",
-     "insns": 88,
-     "size_est": 352,
-     "status": "pending"
+     "mode": "thumb",
+     "insns": 0,
+     "size_est": 0,
+     "status": "matched"
     },
     {
      "name": "BN_add_word",
-     "mode": "arm",
-     "insns": 74,
-     "size_est": 296,
-     "status": "pending"
+     "mode": "thumb",
+     "insns": 0,
+     "size_est": 0,
+     "status": "matched"
     },
     {
      "name": "BN_rshift",
-     "mode": "arm",
-     "insns": 71,
-     "size_est": 284,
-     "status": "pending"
+     "mode": "thumb",
+     "insns": 0,
+     "size_est": 0,
+     "status": "matched"
     },
     {
      "name": "BN_lshift",
-     "mode": "arm",
-     "insns": 65,
-     "size_est": 260,
-     "status": "pending"
-    },
-    {
-     "name": "bn_sub_words",
-     "mode": "arm",
-     "insns": 69,
-     "size_est": 276,
-     "status": "pending"
-    },
-    {
-     "name": "bn_add_words",
-     "mode": "arm",
-     "insns": 84,
-     "size_est": 336,
-     "status": "pending"
+     "mode": "thumb",
+     "insns": 0,
+     "size_est": 0,
+     "status": "matched"
     },
     {
      "name": "bn_sqr_words",
-     "mode": "arm",
-     "insns": 85,
-     "size_est": 340,
-     "status": "pending"
+     "mode": "thumb",
+     "insns": 0,
+     "size_est": 0,
+     "status": "matched"
     },
     {
      "name": "bn_mul_words",
-     "mode": "arm",
-     "insns": 104,
-     "size_est": 416,
-     "status": "pending"
-    },
-    {
-     "name": "bn_mul_add_words",
-     "mode": "arm",
-     "insns": 120,
-     "size_est": 480,
-     "status": "pending"
+     "mode": "thumb",
+     "insns": 0,
+     "size_est": 0,
+     "status": "matched"
     },
     {
      "name": "BN_is_bit_set",
-     "mode": "arm",
-     "insns": 28,
-     "size_est": 112,
-     "status": "pending"
+     "mode": "thumb",
+     "insns": 0,
+     "size_est": 0,
+     "status": "matched"
     },
     {
      "name": "BN_set_bit",
-     "mode": "arm",
-     "insns": 39,
-     "size_est": 156,
-     "status": "pending"
+     "mode": "thumb",
+     "insns": 0,
+     "size_est": 0,
+     "status": "matched"
     },
     {
      "name": "BN_ucmp",
-     "mode": "arm",
-     "insns": 21,
-     "size_est": 84,
-     "status": "pending"
+     "mode": "thumb",
+     "insns": 0,
+     "size_est": 0,
+     "status": "matched"
     },
     {
      "name": "BN_bn2bin",
-     "mode": "arm",
-     "insns": 31,
-     "size_est": 124,
-     "status": "pending"
+     "mode": "thumb",
+     "insns": 0,
+     "size_est": 0,
+     "status": "matched"
     },
     {
      "name": "BN_bin2bn",
-     "mode": "arm",
-     "insns": 69,
-     "size_est": 276,
-     "status": "pending"
+     "mode": "thumb",
+     "insns": 0,
+     "size_est": 0,
+     "status": "matched"
     },
     {
      "name": "BN_set_word",
-     "mode": "arm",
-     "insns": 28,
-     "size_est": 112,
-     "status": "pending"
+     "mode": "thumb",
+     "insns": 0,
+     "size_est": 0,
+     "status": "matched"
     },
     {
      "name": "BN_clear",
-     "mode": "arm",
-     "insns": 14,
-     "size_est": 56,
-     "status": "pending"
+     "mode": "thumb",
+     "insns": 0,
+     "size_est": 0,
+     "status": "matched"
     },
     {
      "name": "BN_copy",
-     "mode": "arm",
-     "insns": 38,
-     "size_est": 152,
-     "status": "pending"
+     "mode": "thumb",
+     "insns": 0,
+     "size_est": 0,
+     "status": "matched"
     },
     {
      "name": "bn_expand2",
-     "mode": "arm",
-     "insns": 32,
-     "size_est": 128,
-     "status": "pending"
+     "mode": "thumb",
+     "insns": 0,
+     "size_est": 0,
+     "status": "matched"
     },
     {
      "name": "BN_CTX_free",
-     "mode": "arm",
-     "insns": 18,
-     "size_est": 72,
-     "status": "pending"
+     "mode": "thumb",
+     "insns": 0,
+     "size_est": 0,
+     "status": "matched"
     },
     {
      "name": "BN_CTX_init",
-     "mode": "arm",
-     "insns": 10,
-     "size_est": 40,
-     "status": "pending"
+     "mode": "thumb",
+     "insns": 0,
+     "size_est": 0,
+     "status": "matched"
     },
     {
      "name": "BN_CTX_new",
-     "mode": "arm",
-     "insns": 13,
-     "size_est": 52,
-     "status": "pending"
+     "mode": "thumb",
+     "insns": 0,
+     "size_est": 0,
+     "status": "matched"
     },
     {
      "name": "BN_new",
-     "mode": "arm",
-     "insns": 19,
-     "size_est": 76,
-     "status": "pending"
+     "mode": "thumb",
+     "insns": 0,
+     "size_est": 0,
+     "status": "matched"
     },
     {
      "name": "BN_init",
-     "mode": "arm",
-     "insns": 5,
-     "size_est": 20,
-     "status": "pending"
+     "mode": "thumb",
+     "insns": 0,
+     "size_est": 0,
+     "status": "matched"
     },
     {
      "name": "bn_fix_top",
-     "mode": "arm",
-     "insns": 19,
-     "size_est": 76,
-     "status": "pending"
+     "mode": "thumb",
+     "insns": 0,
+     "size_est": 0,
+     "status": "matched"
     },
     {
      "name": "bn_zexpand",
-     "mode": "arm",
-     "insns": 32,
-     "size_est": 128,
-     "status": "pending"
+     "mode": "thumb",
+     "insns": 0,
+     "size_est": 0,
+     "status": "matched"
     },
     {
      "name": "BN_free",
-     "mode": "arm",
-     "insns": 22,
-     "size_est": 88,
-     "status": "pending"
+     "mode": "thumb",
+     "insns": 0,
+     "size_est": 0,
+     "status": "matched"
     },
     {
      "name": "BN_clear_free",
-     "mode": "arm",
-     "insns": 9,
-     "size_est": 36,
-     "status": "pending"
+     "mode": "thumb",
+     "insns": 0,
+     "size_est": 0,
+     "status": "matched"
     },
     {
      "name": "BN_num_bits",
-     "mode": "arm",
-     "insns": 13,
-     "size_est": 52,
-     "status": "pending"
+     "mode": "thumb",
+     "insns": 0,
+     "size_est": 0,
+     "status": "matched"
     },
     {
      "name": "BN_num_bits_word",
-     "mode": "arm",
-     "insns": 24,
-     "size_est": 96,
-     "status": "pending"
-    },
-    {
-     "name": "CRYPTO_SetAllocator",
-     "mode": "arm",
-     "insns": 7,
-     "size_est": 28,
-     "status": "pending"
+     "mode": "thumb",
+     "insns": 0,
+     "size_est": 0,
+     "status": "matched"
     },
     {
      "name": "CRYPTOi_MyFree",
-     "mode": "arm",
-     "insns": 18,
-     "size_est": 72,
-     "status": "pending"
+     "mode": "thumb",
+     "insns": 0,
+     "size_est": 0,
+     "status": "matched"
     },
     {
      "name": "CRYPTOi_MyAlloc",
-     "mode": "arm",
-     "insns": 18,
-     "size_est": 72,
-     "status": "pending"
+     "mode": "thumb",
+     "insns": 0,
+     "size_est": 0,
+     "status": "matched"
     }
    ]
   },
@@ -99701,8 +100304,8 @@
    "lsf_kind": "src",
    "status": "matched",
    "source": "hgify",
-   "objects": 93,
-   "function_count": 93,
+   "objects": 96,
+   "function_count": 96,
    "lines": 0,
    "text_bytes_est": 0,
    "data_only": false,
@@ -99967,6 +100570,13 @@
      "status": "matched"
     },
     {
+     "name": "ov75_02247450",
+     "mode": "thumb",
+     "insns": 0,
+     "size_est": 0,
+     "status": "matched"
+    },
+    {
      "name": "ov75_022476E8",
      "mode": "thumb",
      "insns": 0,
@@ -100163,6 +100773,13 @@
      "status": "matched"
     },
     {
+     "name": "ov75_02248A20",
+     "mode": "thumb",
+     "insns": 0,
+     "size_est": 0,
+     "status": "matched"
+    },
+    {
      "name": "ov75_02248B8C",
      "mode": "thumb",
      "insns": 0,
@@ -100241,6 +100858,13 @@
     },
     {
      "name": "ov75_02249258",
+     "mode": "thumb",
+     "insns": 0,
+     "size_est": 0,
+     "status": "matched"
+    },
+    {
+     "name": "ov75_02249278",
      "mode": "thumb",
      "insns": 0,
      "size_est": 0,
@@ -106543,12 +107167,19 @@
    "lsf_kind": "src",
    "status": "matched",
    "source": "hgify",
-   "objects": 176,
-   "function_count": 176,
+   "objects": 181,
+   "function_count": 181,
    "lines": 0,
    "text_bytes_est": 0,
    "data_only": false,
    "functions": [
+    {
+     "name": "ov81_0223DD60",
+     "mode": "thumb",
+     "insns": 0,
+     "size_est": 0,
+     "status": "matched"
+    },
     {
      "name": "ov81_0223E520",
      "mode": "thumb",
@@ -106592,6 +107223,13 @@
      "status": "matched"
     },
     {
+     "name": "ov81_0223ECE4",
+     "mode": "thumb",
+     "insns": 0,
+     "size_est": 0,
+     "status": "matched"
+    },
+    {
      "name": "ov81_0223EF5C",
      "mode": "thumb",
      "insns": 0,
@@ -106614,6 +107252,13 @@
     },
     {
      "name": "ov81_0223F320",
+     "mode": "thumb",
+     "insns": 0,
+     "size_est": 0,
+     "status": "matched"
+    },
+    {
+     "name": "ov81_0223F38C",
      "mode": "thumb",
      "insns": 0,
      "size_est": 0,
@@ -106851,7 +107496,21 @@
      "status": "matched"
     },
     {
+     "name": "ov81_022409B0",
+     "mode": "thumb",
+     "insns": 0,
+     "size_est": 0,
+     "status": "matched"
+    },
+    {
      "name": "ov81_02240AD8",
+     "mode": "thumb",
+     "insns": 0,
+     "size_est": 0,
+     "status": "matched"
+    },
+    {
+     "name": "ov81_02240BB0",
      "mode": "thumb",
      "insns": 0,
      "size_est": 0,
@@ -107788,14 +108447,21 @@
    "lsf_kind": "src",
    "status": "matched",
    "source": "hgify",
-   "objects": 64,
-   "function_count": 64,
+   "objects": 67,
+   "function_count": 67,
    "lines": 0,
    "text_bytes_est": 0,
    "data_only": false,
    "functions": [
     {
      "name": "ov82_0223DD60",
+     "mode": "thumb",
+     "insns": 0,
+     "size_est": 0,
+     "status": "matched"
+    },
+    {
+     "name": "ov82_0223DE20",
      "mode": "thumb",
      "insns": 0,
      "size_est": 0,
@@ -107830,6 +108496,13 @@
      "status": "matched"
     },
     {
+     "name": "ov82_0223E2EC",
+     "mode": "thumb",
+     "insns": 0,
+     "size_est": 0,
+     "status": "matched"
+    },
+    {
      "name": "ov82_0223E7E8",
      "mode": "thumb",
      "insns": 0,
@@ -107852,6 +108525,13 @@
     },
     {
      "name": "ov82_0223E9B0",
+     "mode": "thumb",
+     "insns": 0,
+     "size_est": 0,
+     "status": "matched"
+    },
+    {
+     "name": "ov82_0223E9E8",
      "mode": "thumb",
      "insns": 0,
      "size_est": 0,
@@ -108249,8 +108929,8 @@
    "lsf_kind": "src",
    "status": "matched",
    "source": "hgify",
-   "objects": 111,
-   "function_count": 111,
+   "objects": 112,
+   "function_count": 112,
    "lines": 0,
    "text_bytes_est": 0,
    "data_only": false,
@@ -108299,6 +108979,13 @@
     },
     {
      "name": "ov83_0223F010",
+     "mode": "thumb",
+     "insns": 0,
+     "size_est": 0,
+     "status": "matched"
+    },
+    {
+     "name": "ov83_0223F058",
      "mode": "thumb",
      "insns": 0,
      "size_est": 0,
@@ -109039,8 +109726,8 @@
    "lsf_kind": "src",
    "status": "matched",
    "source": "hgify",
-   "objects": 4,
-   "function_count": 4,
+   "objects": 6,
+   "function_count": 6,
    "lines": 0,
    "text_bytes_est": 0,
    "data_only": false,
@@ -109053,7 +109740,21 @@
      "status": "matched"
     },
     {
+     "name": "ov83_02243108",
+     "mode": "thumb",
+     "insns": 0,
+     "size_est": 0,
+     "status": "matched"
+    },
+    {
      "name": "ov83_02243268",
+     "mode": "thumb",
+     "insns": 0,
+     "size_est": 0,
+     "status": "matched"
+    },
+    {
+     "name": "ov83_022432B4",
      "mode": "thumb",
      "insns": 0,
      "size_est": 0,
@@ -109080,8 +109781,8 @@
    "lsf_kind": "src",
    "status": "matched",
    "source": "hgify",
-   "objects": 85,
-   "function_count": 85,
+   "objects": 86,
+   "function_count": 86,
    "lines": 0,
    "text_bytes_est": 0,
    "data_only": false,
@@ -109529,6 +110230,13 @@
     },
     {
      "name": "ov83_02245824",
+     "mode": "thumb",
+     "insns": 0,
+     "size_est": 0,
+     "status": "matched"
+    },
+    {
+     "name": "ov83_02245838",
      "mode": "thumb",
      "insns": 0,
      "size_est": 0,
@@ -110369,8 +111077,8 @@
    "lsf_kind": "src",
    "status": "matched",
    "source": "hgify",
-   "objects": 251,
-   "function_count": 251,
+   "objects": 252,
+   "function_count": 252,
    "lines": 0,
    "text_bytes_est": 0,
    "data_only": false,
@@ -111650,6 +112358,13 @@
      "status": "matched"
     },
     {
+     "name": "ov85_021E88AC",
+     "mode": "thumb",
+     "insns": 0,
+     "size_est": 0,
+     "status": "matched"
+    },
+    {
      "name": "ov85_021E8A08",
      "mode": "thumb",
      "insns": 0,
@@ -112677,8 +113392,8 @@
    "lsf_kind": "src",
    "status": "matched",
    "source": "hgify",
-   "objects": 87,
-   "function_count": 87,
+   "objects": 90,
+   "function_count": 90,
    "lines": 0,
    "text_bytes_est": 0,
    "data_only": false,
@@ -112720,6 +113435,20 @@
     },
     {
      "name": "ov87_021E5C38",
+     "mode": "thumb",
+     "insns": 0,
+     "size_est": 0,
+     "status": "matched"
+    },
+    {
+     "name": "ov87_021E5CEC",
+     "mode": "thumb",
+     "insns": 0,
+     "size_est": 0,
+     "status": "matched"
+    },
+    {
+     "name": "ov87_021E5E00",
      "mode": "thumb",
      "insns": 0,
      "size_est": 0,
@@ -112839,6 +113568,13 @@
     },
     {
      "name": "ov87_021E6C40",
+     "mode": "thumb",
+     "insns": 0,
+     "size_est": 0,
+     "status": "matched"
+    },
+    {
+     "name": "ov87_021E6C60",
      "mode": "thumb",
      "insns": 0,
      "size_est": 0,
@@ -114431,8 +115167,8 @@
    "lsf_kind": "src",
    "status": "matched",
    "source": "hgify",
-   "objects": 139,
-   "function_count": 139,
+   "objects": 141,
+   "function_count": 141,
    "lines": 0,
    "text_bytes_est": 0,
    "data_only": false,
@@ -115096,6 +115832,13 @@
      "status": "matched"
     },
     {
+     "name": "ov90_0225A428",
+     "mode": "thumb",
+     "insns": 0,
+     "size_est": 0,
+     "status": "matched"
+    },
+    {
      "name": "ov90_0225A544",
      "mode": "thumb",
      "insns": 0,
@@ -115230,6 +115973,13 @@
     },
     {
      "name": "ov90_0225B6B0",
+     "mode": "thumb",
+     "insns": 0,
+     "size_est": 0,
+     "status": "matched"
+    },
+    {
+     "name": "ov90_0225B6C4",
      "mode": "thumb",
      "insns": 0,
      "size_est": 0,
@@ -115417,8 +116167,8 @@
    "lsf_kind": "src",
    "status": "matched",
    "source": "hgify",
-   "objects": 235,
-   "function_count": 235,
+   "objects": 236,
+   "function_count": 236,
    "lines": 0,
    "text_bytes_est": 0,
    "data_only": false,
@@ -116314,6 +117064,13 @@
     },
     {
      "name": "ov91_0225F23C",
+     "mode": "thumb",
+     "insns": 0,
+     "size_est": 0,
+     "status": "matched"
+    },
+    {
+     "name": "ov91_0225F25C",
      "mode": "thumb",
      "insns": 0,
      "size_est": 0,
@@ -117879,8 +118636,8 @@
    "lsf_kind": "src",
    "status": "matched",
    "source": "hgify",
-   "objects": 69,
-   "function_count": 69,
+   "objects": 71,
+   "function_count": 71,
    "lines": 0,
    "text_bytes_est": 0,
    "data_only": false,
@@ -117915,6 +118672,13 @@
     },
     {
      "name": "ov93_0225C730",
+     "mode": "thumb",
+     "insns": 0,
+     "size_est": 0,
+     "status": "matched"
+    },
+    {
+     "name": "ov93_0225CA8C",
      "mode": "thumb",
      "insns": 0,
      "size_est": 0,
@@ -118041,6 +118805,13 @@
     },
     {
      "name": "ov93_0225D768",
+     "mode": "thumb",
+     "insns": 0,
+     "size_est": 0,
+     "status": "matched"
+    },
+    {
+     "name": "ov93_0225D78C",
      "mode": "thumb",
      "insns": 0,
      "size_est": 0,
@@ -119642,8 +120413,8 @@
    "lsf_kind": "src",
    "status": "matched",
    "source": "hgify",
-   "objects": 881,
-   "function_count": 880,
+   "objects": 887,
+   "function_count": 886,
    "lines": 0,
    "text_bytes_est": 0,
    "data_only": false,
@@ -120413,6 +121184,13 @@
     },
     {
      "name": "ov96_021E8FB4",
+     "mode": "thumb",
+     "insns": 0,
+     "size_est": 0,
+     "status": "matched"
+    },
+    {
+     "name": "ov96_021E8FE0",
      "mode": "thumb",
      "insns": 0,
      "size_est": 0,
@@ -121568,6 +122346,13 @@
     },
     {
      "name": "ov96_021ED17C",
+     "mode": "thumb",
+     "insns": 0,
+     "size_est": 0,
+     "status": "matched"
+    },
+    {
+     "name": "ov96_021ED1D0",
      "mode": "thumb",
      "insns": 0,
      "size_est": 0,
@@ -123401,6 +124186,13 @@
      "status": "matched"
     },
     {
+     "name": "ov96_021F7934",
+     "mode": "thumb",
+     "insns": 0,
+     "size_est": 0,
+     "status": "matched"
+    },
+    {
      "name": "ov96_021F7C4C",
      "mode": "thumb",
      "insns": 0,
@@ -125102,6 +125894,13 @@
      "status": "matched"
     },
     {
+     "name": "ov96_02207418",
+     "mode": "thumb",
+     "insns": 0,
+     "size_est": 0,
+     "status": "matched"
+    },
+    {
      "name": "ov96_0220764C",
      "mode": "thumb",
      "insns": 0,
@@ -125257,6 +126056,13 @@
     },
     {
      "name": "ov96_02207F18",
+     "mode": "thumb",
+     "insns": 0,
+     "size_est": 0,
+     "status": "matched"
+    },
+    {
+     "name": "ov96_022080F4",
      "mode": "thumb",
      "insns": 0,
      "size_est": 0,
@@ -125536,6 +126342,13 @@
      "status": "matched"
     },
     {
+     "name": "ov96_0220A14C",
+     "mode": "thumb",
+     "insns": 0,
+     "size_est": 0,
+     "status": "matched"
+    },
+    {
      "name": "ov96_0220A254",
      "mode": "thumb",
      "insns": 0,
@@ -125614,6 +126427,13 @@
     },
     {
      "name": "ov96_0220A8CC",
+     "mode": "thumb",
+     "insns": 0,
+     "size_est": 0,
+     "status": "matched"
+    },
+    {
+     "name": "ov96_0220AAEC",
      "mode": "thumb",
      "insns": 0,
      "size_est": 0,
@@ -125800,7 +126620,20 @@
      "insns": 0,
      "size_est": 0,
      "status": "matched"
-    },
+    }
+   ]
+  },
+  {
+   "file": "asm/overlay_96_s1000.s",
+   "lsf_kind": "src",
+   "status": "matched",
+   "source": "hgify",
+   "objects": 1,
+   "function_count": 1,
+   "lines": 0,
+   "text_bytes_est": 0,
+   "data_only": false,
+   "functions": [
     {
      "name": "ov96_0220B774",
      "mode": "thumb",
@@ -125811,7 +126644,7 @@
    ]
   },
   {
-   "file": "asm/overlay_96_q1000.s",
+   "file": "asm/overlay_96_s1001.s",
    "lsf_kind": "src",
    "status": "matched",
    "source": "hgify",
@@ -125831,7 +126664,7 @@
    ]
   },
   {
-   "file": "asm/overlay_96_q1001.s",
+   "file": "asm/overlay_96_s1002.s",
    "lsf_kind": "src",
    "status": "matched",
    "source": "hgify",
@@ -125851,7 +126684,7 @@
    ]
   },
   {
-   "file": "asm/overlay_96_q1002.s",
+   "file": "asm/overlay_96_s1003.s",
    "lsf_kind": "src",
    "status": "matched",
    "source": "hgify",
@@ -125871,7 +126704,7 @@
    ]
   },
   {
-   "file": "asm/overlay_96_q1003.s",
+   "file": "asm/overlay_96_s1004.s",
    "lsf_kind": "src",
    "status": "matched",
    "source": "hgify",
@@ -125891,7 +126724,7 @@
    ]
   },
   {
-   "file": "asm/overlay_96_q1004.s",
+   "file": "asm/overlay_96_s1005.s",
    "lsf_kind": "src",
    "status": "matched",
    "source": "hgify",
@@ -125911,7 +126744,7 @@
    ]
   },
   {
-   "file": "asm/overlay_96_q1005.s",
+   "file": "asm/overlay_96_s1006.s",
    "lsf_kind": "src",
    "status": "matched",
    "source": "hgify",
@@ -125931,7 +126764,7 @@
    ]
   },
   {
-   "file": "asm/overlay_96_q1006.s",
+   "file": "asm/overlay_96_s1007.s",
    "lsf_kind": "src",
    "status": "matched",
    "source": "hgify",
@@ -125951,7 +126784,7 @@
    ]
   },
   {
-   "file": "asm/overlay_96_q1007.s",
+   "file": "asm/overlay_96_s1008.s",
    "lsf_kind": "asm",
    "status": "pending",
    "lines": 99,
@@ -125979,7 +126812,7 @@
    ]
   },
   {
-   "file": "asm/overlay_96_q1008.s",
+   "file": "asm/overlay_96_s1009.s",
    "lsf_kind": "src",
    "status": "matched",
    "source": "hgify",
@@ -125999,7 +126832,7 @@
    ]
   },
   {
-   "file": "asm/overlay_96_q1009.s",
+   "file": "asm/overlay_96_s1010.s",
    "lsf_kind": "asm",
    "status": "pending",
    "lines": 80,
@@ -126027,7 +126860,7 @@
    ]
   },
   {
-   "file": "asm/overlay_96_q1010.s",
+   "file": "asm/overlay_96_s1011.s",
    "lsf_kind": "src",
    "status": "matched",
    "source": "hgify",
@@ -126047,7 +126880,7 @@
    ]
   },
   {
-   "file": "asm/overlay_96_q1011.s",
+   "file": "asm/overlay_96_s1012.s",
    "lsf_kind": "asm",
    "status": "pending",
    "lines": 502,
@@ -126075,7 +126908,7 @@
    ]
   },
   {
-   "file": "asm/overlay_96_q1012.s",
+   "file": "asm/overlay_96_s1013.s",
    "lsf_kind": "src",
    "status": "matched",
    "source": "hgify",
@@ -126095,7 +126928,7 @@
    ]
   },
   {
-   "file": "asm/overlay_96_q1013.s",
+   "file": "asm/overlay_96_s1014.s",
    "lsf_kind": "asm",
    "status": "pending",
    "lines": 285,
@@ -126130,7 +126963,7 @@
    ]
   },
   {
-   "file": "asm/overlay_96_q1014.s",
+   "file": "asm/overlay_96_s1015.s",
    "lsf_kind": "src",
    "status": "matched",
    "source": "hgify",
@@ -126150,7 +126983,7 @@
    ]
   },
   {
-   "file": "asm/overlay_96_q1015.s",
+   "file": "asm/overlay_96_s1016.s",
    "lsf_kind": "src",
    "status": "matched",
    "source": "hgify",
@@ -126170,7 +127003,7 @@
    ]
   },
   {
-   "file": "asm/overlay_96_q1016.s",
+   "file": "asm/overlay_96_s1017.s",
    "lsf_kind": "asm",
    "status": "pending",
    "lines": 379,
@@ -126198,7 +127031,7 @@
    ]
   },
   {
-   "file": "asm/overlay_96_q1017.s",
+   "file": "asm/overlay_96_s1018.s",
    "lsf_kind": "src",
    "status": "matched",
    "source": "hgify",
@@ -126218,7 +127051,7 @@
    ]
   },
   {
-   "file": "asm/overlay_96_q1018.s",
+   "file": "asm/overlay_96_s1019.s",
    "lsf_kind": "src",
    "status": "matched",
    "source": "hgify",
@@ -126238,7 +127071,7 @@
    ]
   },
   {
-   "file": "asm/overlay_96_q1019.s",
+   "file": "asm/overlay_96_s1020.s",
    "lsf_kind": "src",
    "status": "matched",
    "source": "hgify",
@@ -126258,7 +127091,7 @@
    ]
   },
   {
-   "file": "asm/overlay_96_q1020.s",
+   "file": "asm/overlay_96_s1021.s",
    "lsf_kind": "asm",
    "status": "pending",
    "lines": 80,
@@ -126286,7 +127119,7 @@
    ]
   },
   {
-   "file": "asm/overlay_96_q1021.s",
+   "file": "asm/overlay_96_s1022.s",
    "lsf_kind": "src",
    "status": "matched",
    "source": "hgify",
@@ -126306,7 +127139,7 @@
    ]
   },
   {
-   "file": "asm/overlay_96_q1022.s",
+   "file": "asm/overlay_96_s1023.s",
    "lsf_kind": "src",
    "status": "matched",
    "source": "hgify",
@@ -126326,7 +127159,7 @@
    ]
   },
   {
-   "file": "asm/overlay_96_q1023.s",
+   "file": "asm/overlay_96_s1024.s",
    "lsf_kind": "asm",
    "status": "pending",
    "lines": 103,
@@ -126354,7 +127187,7 @@
    ]
   },
   {
-   "file": "asm/overlay_96_q1024.s",
+   "file": "asm/overlay_96_s1025.s",
    "lsf_kind": "src",
    "status": "matched",
    "source": "hgify",
@@ -126374,7 +127207,7 @@
    ]
   },
   {
-   "file": "asm/overlay_96_q1025.s",
+   "file": "asm/overlay_96_s1026.s",
    "lsf_kind": "src",
    "status": "matched",
    "source": "hgify",
@@ -126394,7 +127227,7 @@
    ]
   },
   {
-   "file": "asm/overlay_96_q1026.s",
+   "file": "asm/overlay_96_s1027.s",
    "lsf_kind": "src",
    "status": "matched",
    "source": "hgify",
@@ -126414,7 +127247,7 @@
    ]
   },
   {
-   "file": "asm/overlay_96_q1027.s",
+   "file": "asm/overlay_96_s1028.s",
    "lsf_kind": "asm",
    "status": "pending",
    "lines": 121,
@@ -126442,7 +127275,7 @@
    ]
   },
   {
-   "file": "asm/overlay_96_q1028.s",
+   "file": "asm/overlay_96_s1029.s",
    "lsf_kind": "src",
    "status": "matched",
    "source": "hgify",
@@ -126462,7 +127295,7 @@
    ]
   },
   {
-   "file": "asm/overlay_96_q1029.s",
+   "file": "asm/overlay_96_s1030.s",
    "lsf_kind": "asm",
    "status": "pending",
    "lines": 131,
@@ -126497,7 +127330,7 @@
    ]
   },
   {
-   "file": "asm/overlay_96_q1030.s",
+   "file": "asm/overlay_96_s1031.s",
    "lsf_kind": "src",
    "status": "matched",
    "source": "hgify",
@@ -126517,7 +127350,7 @@
    ]
   },
   {
-   "file": "asm/overlay_96_q1031.s",
+   "file": "asm/overlay_96_s1032.s",
    "lsf_kind": "src",
    "status": "matched",
    "source": "hgify",
@@ -126537,7 +127370,7 @@
    ]
   },
   {
-   "file": "asm/overlay_96_q1032.s",
+   "file": "asm/overlay_96_s1033.s",
    "lsf_kind": "src",
    "status": "matched",
    "source": "hgify",
@@ -126557,7 +127390,7 @@
    ]
   },
   {
-   "file": "asm/overlay_96_q1033.s",
+   "file": "asm/overlay_96_s1034.s",
    "lsf_kind": "src",
    "status": "matched",
    "source": "hgify",
@@ -126577,7 +127410,7 @@
    ]
   },
   {
-   "file": "asm/overlay_96_q1034.s",
+   "file": "asm/overlay_96_s1035.s",
    "lsf_kind": "src",
    "status": "matched",
    "source": "hgify",
@@ -126597,7 +127430,7 @@
    ]
   },
   {
-   "file": "asm/overlay_96_q1035.s",
+   "file": "asm/overlay_96_s1036.s",
    "lsf_kind": "asm",
    "status": "pending",
    "lines": 239,
@@ -126639,7 +127472,7 @@
    ]
   },
   {
-   "file": "asm/overlay_96_q1036.s",
+   "file": "asm/overlay_96_s1037.s",
    "lsf_kind": "src",
    "status": "matched",
    "source": "hgify",
@@ -126659,7 +127492,7 @@
    ]
   },
   {
-   "file": "asm/overlay_96_q1037.s",
+   "file": "asm/overlay_96_s1038.s",
    "lsf_kind": "src",
    "status": "matched",
    "source": "hgify",
@@ -126679,7 +127512,7 @@
    ]
   },
   {
-   "file": "asm/overlay_96_q1038.s",
+   "file": "asm/overlay_96_s1039.s",
    "lsf_kind": "asm",
    "status": "pending",
    "lines": 92,
@@ -126707,7 +127540,7 @@
    ]
   },
   {
-   "file": "asm/overlay_96_q1039.s",
+   "file": "asm/overlay_96_s1040.s",
    "lsf_kind": "src",
    "status": "matched",
    "source": "hgify",
@@ -126727,7 +127560,7 @@
    ]
   },
   {
-   "file": "asm/overlay_96_q1040.s",
+   "file": "asm/overlay_96_s1041.s",
    "lsf_kind": "src",
    "status": "matched",
    "source": "hgify",
@@ -126747,7 +127580,7 @@
    ]
   },
   {
-   "file": "asm/overlay_96_q1041.s",
+   "file": "asm/overlay_96_s1042.s",
    "lsf_kind": "src",
    "status": "matched",
    "source": "hgify",
@@ -126767,7 +127600,7 @@
    ]
   },
   {
-   "file": "asm/overlay_96_q1042.s",
+   "file": "asm/overlay_96_s1043.s",
    "lsf_kind": "asm",
    "status": "pending",
    "lines": 152,
@@ -126795,7 +127628,7 @@
    ]
   },
   {
-   "file": "asm/overlay_96_q1043.s",
+   "file": "asm/overlay_96_s1044.s",
    "lsf_kind": "src",
    "status": "matched",
    "source": "hgify",
@@ -126815,7 +127648,7 @@
    ]
   },
   {
-   "file": "asm/overlay_96_q1044.s",
+   "file": "asm/overlay_96_s1045.s",
    "lsf_kind": "src",
    "status": "matched",
    "source": "hgify",
@@ -126835,7 +127668,7 @@
    ]
   },
   {
-   "file": "asm/overlay_96_q1045.s",
+   "file": "asm/overlay_96_s1046.s",
    "lsf_kind": "asm",
    "status": "pending",
    "lines": 196,
@@ -126877,7 +127710,7 @@
    ]
   },
   {
-   "file": "asm/overlay_96_q1046.s",
+   "file": "asm/overlay_96_s1047.s",
    "lsf_kind": "src",
    "status": "matched",
    "source": "hgify",
@@ -126897,7 +127730,7 @@
    ]
   },
   {
-   "file": "asm/overlay_96_q1047.s",
+   "file": "asm/overlay_96_s1048.s",
    "lsf_kind": "src",
    "status": "matched",
    "source": "hgify",
@@ -126917,7 +127750,7 @@
    ]
   },
   {
-   "file": "asm/overlay_96_q1048.s",
+   "file": "asm/overlay_96_s1049.s",
    "lsf_kind": "src",
    "status": "matched",
    "source": "hgify",
@@ -126937,7 +127770,7 @@
    ]
   },
   {
-   "file": "asm/overlay_96_q1049.s",
+   "file": "asm/overlay_96_s1050.s",
    "lsf_kind": "src",
    "status": "matched",
    "source": "hgify",
@@ -126957,7 +127790,7 @@
    ]
   },
   {
-   "file": "asm/overlay_96_q1050.s",
+   "file": "asm/overlay_96_s1051.s",
    "lsf_kind": "src",
    "status": "matched",
    "source": "hgify",
@@ -126977,7 +127810,7 @@
    ]
   },
   {
-   "file": "asm/overlay_96_q1051.s",
+   "file": "asm/overlay_96_s1052.s",
    "lsf_kind": "src",
    "status": "matched",
    "source": "hgify",
@@ -126997,7 +127830,7 @@
    ]
   },
   {
-   "file": "asm/overlay_96_q1052.s",
+   "file": "asm/overlay_96_s1053.s",
    "lsf_kind": "src",
    "status": "matched",
    "source": "hgify",
@@ -127017,7 +127850,7 @@
    ]
   },
   {
-   "file": "asm/overlay_96_q1053.s",
+   "file": "asm/overlay_96_s1054.s",
    "lsf_kind": "src",
    "status": "matched",
    "source": "hgify",
@@ -127037,7 +127870,7 @@
    ]
   },
   {
-   "file": "asm/overlay_96_q1054.s",
+   "file": "asm/overlay_96_s1055.s",
    "lsf_kind": "src",
    "status": "matched",
    "source": "hgify",
@@ -127057,7 +127890,7 @@
    ]
   },
   {
-   "file": "asm/overlay_96_q1055.s",
+   "file": "asm/overlay_96_s1056.s",
    "lsf_kind": "src",
    "status": "matched",
    "source": "hgify",
@@ -127077,7 +127910,7 @@
    ]
   },
   {
-   "file": "asm/overlay_96_q1056.s",
+   "file": "asm/overlay_96_s1057.s",
    "lsf_kind": "src",
    "status": "matched",
    "source": "hgify",
@@ -127097,7 +127930,7 @@
    ]
   },
   {
-   "file": "asm/overlay_96_q1057.s",
+   "file": "asm/overlay_96_s1058.s",
    "lsf_kind": "src",
    "status": "matched",
    "source": "hgify",
@@ -127117,7 +127950,7 @@
    ]
   },
   {
-   "file": "asm/overlay_96_q1058.s",
+   "file": "asm/overlay_96_s1059.s",
    "lsf_kind": "src",
    "status": "matched",
    "source": "hgify",
@@ -127137,7 +127970,7 @@
    ]
   },
   {
-   "file": "asm/overlay_96_q1059.s",
+   "file": "asm/overlay_96_s1060.s",
    "lsf_kind": "src",
    "status": "matched",
    "source": "hgify",
@@ -127157,7 +127990,7 @@
    ]
   },
   {
-   "file": "asm/overlay_96_q1060.s",
+   "file": "asm/overlay_96_s1061.s",
    "lsf_kind": "src",
    "status": "matched",
    "source": "hgify",
@@ -127177,7 +128010,7 @@
    ]
   },
   {
-   "file": "asm/overlay_96_q1061.s",
+   "file": "asm/overlay_96_s1062.s",
    "lsf_kind": "src",
    "status": "matched",
    "source": "hgify",
@@ -127197,7 +128030,7 @@
    ]
   },
   {
-   "file": "asm/overlay_96_q1062.s",
+   "file": "asm/overlay_96_s1063.s",
    "lsf_kind": "src",
    "status": "matched",
    "source": "hgify",
@@ -127217,7 +128050,7 @@
    ]
   },
   {
-   "file": "asm/overlay_96_q1063.s",
+   "file": "asm/overlay_96_s1064.s",
    "lsf_kind": "src",
    "status": "matched",
    "source": "hgify",
@@ -127237,7 +128070,7 @@
    ]
   },
   {
-   "file": "asm/overlay_96_q1064.s",
+   "file": "asm/overlay_96_s1065.s",
    "lsf_kind": "asm",
    "status": "pending",
    "lines": 277,
@@ -127272,7 +128105,7 @@
    ]
   },
   {
-   "file": "asm/overlay_96_q1065.s",
+   "file": "asm/overlay_96_s1066.s",
    "lsf_kind": "src",
    "status": "matched",
    "source": "hgify",
@@ -127292,7 +128125,7 @@
    ]
   },
   {
-   "file": "asm/overlay_96_q1066.s",
+   "file": "asm/overlay_96_s1067.s",
    "lsf_kind": "src",
    "status": "matched",
    "source": "hgify",
@@ -127312,7 +128145,7 @@
    ]
   },
   {
-   "file": "asm/overlay_96_q1067.s",
+   "file": "asm/overlay_96_s1068.s",
    "lsf_kind": "src",
    "status": "matched",
    "source": "hgify",
@@ -127332,7 +128165,7 @@
    ]
   },
   {
-   "file": "asm/overlay_96_q1068.s",
+   "file": "asm/overlay_96_s1069.s",
    "lsf_kind": "src",
    "status": "matched",
    "source": "hgify",
@@ -127352,7 +128185,7 @@
    ]
   },
   {
-   "file": "asm/overlay_96_q1069.s",
+   "file": "asm/overlay_96_s1070.s",
    "lsf_kind": "src",
    "status": "matched",
    "source": "hgify",
@@ -127372,7 +128205,7 @@
    ]
   },
   {
-   "file": "asm/overlay_96_q1070.s",
+   "file": "asm/overlay_96_s1071.s",
    "lsf_kind": "src",
    "status": "matched",
    "source": "hgify",
@@ -127392,7 +128225,7 @@
    ]
   },
   {
-   "file": "asm/overlay_96_q1071.s",
+   "file": "asm/overlay_96_s1072.s",
    "lsf_kind": "asm",
    "status": "pending",
    "lines": 488,
@@ -127420,7 +128253,7 @@
    ]
   },
   {
-   "file": "asm/overlay_96_q1072.s",
+   "file": "asm/overlay_96_s1073.s",
    "lsf_kind": "src",
    "status": "matched",
    "source": "hgify",
@@ -127440,7 +128273,7 @@
    ]
   },
   {
-   "file": "asm/overlay_96_q1073.s",
+   "file": "asm/overlay_96_s1074.s",
    "lsf_kind": "src",
    "status": "matched",
    "source": "hgify",
@@ -127460,7 +128293,7 @@
    ]
   },
   {
-   "file": "asm/overlay_96_q1074.s",
+   "file": "asm/overlay_96_s1075.s",
    "lsf_kind": "src",
    "status": "matched",
    "source": "hgify",
@@ -127480,7 +128313,7 @@
    ]
   },
   {
-   "file": "asm/overlay_96_q1075.s",
+   "file": "asm/overlay_96_s1076.s",
    "lsf_kind": "src",
    "status": "matched",
    "source": "hgify",
@@ -127500,7 +128333,7 @@
    ]
   },
   {
-   "file": "asm/overlay_96_q1076.s",
+   "file": "asm/overlay_96_s1077.s",
    "lsf_kind": "asm",
    "status": "pending",
    "lines": 299,
@@ -127528,7 +128361,7 @@
    ]
   },
   {
-   "file": "asm/overlay_96_q1077.s",
+   "file": "asm/overlay_96_s1078.s",
    "lsf_kind": "src",
    "status": "matched",
    "source": "hgify",
@@ -127548,7 +128381,7 @@
    ]
   },
   {
-   "file": "asm/overlay_96_q1078.s",
+   "file": "asm/overlay_96_s1079.s",
    "lsf_kind": "src",
    "status": "matched",
    "source": "hgify",
@@ -127568,7 +128401,7 @@
    ]
   },
   {
-   "file": "asm/overlay_96_q1079.s",
+   "file": "asm/overlay_96_s1080.s",
    "lsf_kind": "src",
    "status": "matched",
    "source": "hgify",
@@ -127588,7 +128421,7 @@
    ]
   },
   {
-   "file": "asm/overlay_96_q1080.s",
+   "file": "asm/overlay_96_s1081.s",
    "lsf_kind": "src",
    "status": "matched",
    "source": "hgify",
@@ -127608,7 +128441,7 @@
    ]
   },
   {
-   "file": "asm/overlay_96_q1081.s",
+   "file": "asm/overlay_96_s1082.s",
    "lsf_kind": "src",
    "status": "matched",
    "source": "hgify",
@@ -127628,7 +128461,7 @@
    ]
   },
   {
-   "file": "asm/overlay_96_q1082.s",
+   "file": "asm/overlay_96_s1083.s",
    "lsf_kind": "src",
    "status": "matched",
    "source": "hgify",
@@ -127648,7 +128481,7 @@
    ]
   },
   {
-   "file": "asm/overlay_96_q1083.s",
+   "file": "asm/overlay_96_s1084.s",
    "lsf_kind": "asm",
    "status": "pending",
    "lines": 149,
@@ -127683,7 +128516,7 @@
    ]
   },
   {
-   "file": "asm/overlay_96_q1084.s",
+   "file": "asm/overlay_96_s1085.s",
    "lsf_kind": "src",
    "status": "matched",
    "source": "hgify",
@@ -127703,7 +128536,7 @@
    ]
   },
   {
-   "file": "asm/overlay_96_q1085.s",
+   "file": "asm/overlay_96_s1086.s",
    "lsf_kind": "src",
    "status": "matched",
    "source": "hgify",
@@ -127723,7 +128556,7 @@
    ]
   },
   {
-   "file": "asm/overlay_96_q1086.s",
+   "file": "asm/overlay_96_s1087.s",
    "lsf_kind": "src",
    "status": "matched",
    "source": "hgify",
@@ -127743,7 +128576,7 @@
    ]
   },
   {
-   "file": "asm/overlay_96_q1087.s",
+   "file": "asm/overlay_96_s1088.s",
    "lsf_kind": "src",
    "status": "matched",
    "source": "hgify",
@@ -127763,7 +128596,7 @@
    ]
   },
   {
-   "file": "asm/overlay_96_q1088.s",
+   "file": "asm/overlay_96_s1089.s",
    "lsf_kind": "src",
    "status": "matched",
    "source": "hgify",
@@ -127783,7 +128616,7 @@
    ]
   },
   {
-   "file": "asm/overlay_96_q1089.s",
+   "file": "asm/overlay_96_s1090.s",
    "lsf_kind": "src",
    "status": "matched",
    "source": "hgify",
@@ -127803,7 +128636,7 @@
    ]
   },
   {
-   "file": "asm/overlay_96_q1090.s",
+   "file": "asm/overlay_96_s1091.s",
    "lsf_kind": "src",
    "status": "matched",
    "source": "hgify",
@@ -127823,7 +128656,7 @@
    ]
   },
   {
-   "file": "asm/overlay_96_q1091.s",
+   "file": "asm/overlay_96_s1092.s",
    "lsf_kind": "src",
    "status": "matched",
    "source": "hgify",
@@ -127843,7 +128676,7 @@
    ]
   },
   {
-   "file": "asm/overlay_96_q1092.s",
+   "file": "asm/overlay_96_s1093.s",
    "lsf_kind": "src",
    "status": "matched",
    "source": "hgify",
@@ -127863,7 +128696,7 @@
    ]
   },
   {
-   "file": "asm/overlay_96_q1093.s",
+   "file": "asm/overlay_96_s1094.s",
    "lsf_kind": "src",
    "status": "matched",
    "source": "hgify",
@@ -127883,7 +128716,7 @@
    ]
   },
   {
-   "file": "asm/overlay_96_q1094.s",
+   "file": "asm/overlay_96_s1095.s",
    "lsf_kind": "asm",
    "status": "pending",
    "lines": 129,
@@ -127911,7 +128744,7 @@
    ]
   },
   {
-   "file": "asm/overlay_96_q1095.s",
+   "file": "asm/overlay_96_s1096.s",
    "lsf_kind": "src",
    "status": "matched",
    "source": "hgify",
@@ -127931,7 +128764,7 @@
    ]
   },
   {
-   "file": "asm/overlay_96_q1096.s",
+   "file": "asm/overlay_96_s1097.s",
    "lsf_kind": "src",
    "status": "matched",
    "source": "hgify",
@@ -127951,7 +128784,7 @@
    ]
   },
   {
-   "file": "asm/overlay_96_q1097.s",
+   "file": "asm/overlay_96_s1098.s",
    "lsf_kind": "asm",
    "status": "pending",
    "lines": 221,
@@ -127979,7 +128812,7 @@
    ]
   },
   {
-   "file": "asm/overlay_96_q1098.s",
+   "file": "asm/overlay_96_s1099.s",
    "lsf_kind": "src",
    "status": "matched",
    "source": "hgify",
@@ -127999,7 +128832,7 @@
    ]
   },
   {
-   "file": "asm/overlay_96_q1099.s",
+   "file": "asm/overlay_96_s1100.s",
    "lsf_kind": "asm",
    "status": "pending",
    "lines": 109,
@@ -128027,7 +128860,7 @@
    ]
   },
   {
-   "file": "asm/overlay_96_q1100.s",
+   "file": "asm/overlay_96_s1101.s",
    "lsf_kind": "src",
    "status": "matched",
    "source": "hgify",
@@ -128047,7 +128880,7 @@
    ]
   },
   {
-   "file": "asm/overlay_96_q1101.s",
+   "file": "asm/overlay_96_s1102.s",
    "lsf_kind": "src",
    "status": "matched",
    "source": "hgify",
@@ -128067,7 +128900,7 @@
    ]
   },
   {
-   "file": "asm/overlay_96_q1102.s",
+   "file": "asm/overlay_96_s1103.s",
    "lsf_kind": "src",
    "status": "matched",
    "source": "hgify",
@@ -128087,7 +128920,7 @@
    ]
   },
   {
-   "file": "asm/overlay_96_q1103.s",
+   "file": "asm/overlay_96_s1104.s",
    "lsf_kind": "src",
    "status": "matched",
    "source": "hgify",
@@ -128107,7 +128940,7 @@
    ]
   },
   {
-   "file": "asm/overlay_96_q1104.s",
+   "file": "asm/overlay_96_s1105.s",
    "lsf_kind": "src",
    "status": "matched",
    "source": "hgify",
@@ -128127,7 +128960,7 @@
    ]
   },
   {
-   "file": "asm/overlay_96_q1105.s",
+   "file": "asm/overlay_96_s1106.s",
    "lsf_kind": "src",
    "status": "matched",
    "source": "hgify",
@@ -128147,7 +128980,7 @@
    ]
   },
   {
-   "file": "asm/overlay_96_q1106.s",
+   "file": "asm/overlay_96_s1107.s",
    "lsf_kind": "asm",
    "status": "pending",
    "lines": 209,
@@ -128182,7 +129015,7 @@
    ]
   },
   {
-   "file": "asm/overlay_96_q1107.s",
+   "file": "asm/overlay_96_s1108.s",
    "lsf_kind": "src",
    "status": "matched",
    "source": "hgify",
@@ -128202,7 +129035,7 @@
    ]
   },
   {
-   "file": "asm/overlay_96_q1108.s",
+   "file": "asm/overlay_96_s1109.s",
    "lsf_kind": "src",
    "status": "matched",
    "source": "hgify",
@@ -128222,7 +129055,7 @@
    ]
   },
   {
-   "file": "asm/overlay_96_q1109.s",
+   "file": "asm/overlay_96_s1110.s",
    "lsf_kind": "src",
    "status": "matched",
    "source": "hgify",
@@ -128242,7 +129075,7 @@
    ]
   },
   {
-   "file": "asm/overlay_96_q1110.s",
+   "file": "asm/overlay_96_s1111.s",
    "lsf_kind": "asm",
    "status": "pending",
    "lines": 362,
@@ -128270,7 +129103,7 @@
    ]
   },
   {
-   "file": "asm/overlay_96_q1111.s",
+   "file": "asm/overlay_96_s1112.s",
    "lsf_kind": "src",
    "status": "matched",
    "source": "hgify",
@@ -128290,7 +129123,7 @@
    ]
   },
   {
-   "file": "asm/overlay_96_q1112.s",
+   "file": "asm/overlay_96_s1113.s",
    "lsf_kind": "asm",
    "status": "pending",
    "lines": 428,
@@ -128325,7 +129158,7 @@
    ]
   },
   {
-   "file": "asm/overlay_96_q1113.s",
+   "file": "asm/overlay_96_s1114.s",
    "lsf_kind": "src",
    "status": "matched",
    "source": "hgify",
@@ -128345,7 +129178,7 @@
    ]
   },
   {
-   "file": "asm/overlay_96_q1114.s",
+   "file": "asm/overlay_96_s1115.s",
    "lsf_kind": "src",
    "status": "matched",
    "source": "hgify",
@@ -128365,7 +129198,7 @@
    ]
   },
   {
-   "file": "asm/overlay_96_q1115.s",
+   "file": "asm/overlay_96_s1116.s",
    "lsf_kind": "src",
    "status": "matched",
    "source": "hgify",
@@ -128385,7 +129218,7 @@
    ]
   },
   {
-   "file": "asm/overlay_96_q1116.s",
+   "file": "asm/overlay_96_s1117.s",
    "lsf_kind": "src",
    "status": "matched",
    "source": "hgify",
@@ -128405,7 +129238,7 @@
    ]
   },
   {
-   "file": "asm/overlay_96_q1117.s",
+   "file": "asm/overlay_96_s1118.s",
    "lsf_kind": "asm",
    "status": "pending",
    "lines": 355,
@@ -128440,7 +129273,7 @@
    ]
   },
   {
-   "file": "asm/overlay_96_q1118.s",
+   "file": "asm/overlay_96_s1119.s",
    "lsf_kind": "src",
    "status": "matched",
    "source": "hgify",
@@ -128460,7 +129293,7 @@
    ]
   },
   {
-   "file": "asm/overlay_96_q1119.s",
+   "file": "asm/overlay_96_s1120.s",
    "lsf_kind": "src",
    "status": "matched",
    "source": "hgify",
@@ -128480,7 +129313,7 @@
    ]
   },
   {
-   "file": "asm/overlay_96_q1120.s",
+   "file": "asm/overlay_96_s1121.s",
    "lsf_kind": "src",
    "status": "matched",
    "source": "hgify",
@@ -128500,7 +129333,7 @@
    ]
   },
   {
-   "file": "asm/overlay_96_q1121.s",
+   "file": "asm/overlay_96_s1122.s",
    "lsf_kind": "src",
    "status": "matched",
    "source": "hgify",
@@ -128520,7 +129353,7 @@
    ]
   },
   {
-   "file": "asm/overlay_96_q1122.s",
+   "file": "asm/overlay_96_s1123.s",
    "lsf_kind": "src",
    "status": "matched",
    "source": "hgify",
@@ -128540,7 +129373,7 @@
    ]
   },
   {
-   "file": "asm/overlay_96_q1123.s",
+   "file": "asm/overlay_96_s1124.s",
    "lsf_kind": "src",
    "status": "matched",
    "source": "hgify",
@@ -128560,7 +129393,7 @@
    ]
   },
   {
-   "file": "asm/overlay_96_q1124.s",
+   "file": "asm/overlay_96_s1125.s",
    "lsf_kind": "src",
    "status": "matched",
    "source": "hgify",
@@ -128580,7 +129413,7 @@
    ]
   },
   {
-   "file": "asm/overlay_96_q1125.s",
+   "file": "asm/overlay_96_s1126.s",
    "lsf_kind": "src",
    "status": "matched",
    "source": "hgify",
@@ -128600,7 +129433,7 @@
    ]
   },
   {
-   "file": "asm/overlay_96_q1126.s",
+   "file": "asm/overlay_96_s1127.s",
    "lsf_kind": "src",
    "status": "matched",
    "source": "hgify",
@@ -128620,7 +129453,7 @@
    ]
   },
   {
-   "file": "asm/overlay_96_q1127.s",
+   "file": "asm/overlay_96_s1128.s",
    "lsf_kind": "src",
    "status": "matched",
    "source": "hgify",
@@ -128640,7 +129473,7 @@
    ]
   },
   {
-   "file": "asm/overlay_96_q1128.s",
+   "file": "asm/overlay_96_s1129.s",
    "lsf_kind": "src",
    "status": "matched",
    "source": "hgify",
@@ -128660,7 +129493,7 @@
    ]
   },
   {
-   "file": "asm/overlay_96_q1129.s",
+   "file": "asm/overlay_96_s1130.s",
    "lsf_kind": "src",
    "status": "matched",
    "source": "hgify",
@@ -128680,7 +129513,7 @@
    ]
   },
   {
-   "file": "asm/overlay_96_q1130.s",
+   "file": "asm/overlay_96_s1131.s",
    "lsf_kind": "src",
    "status": "matched",
    "source": "hgify",
@@ -128700,7 +129533,7 @@
    ]
   },
   {
-   "file": "asm/overlay_96_q1131.s",
+   "file": "asm/overlay_96_s1132.s",
    "lsf_kind": "src",
    "status": "matched",
    "source": "hgify",
@@ -128720,7 +129553,7 @@
    ]
   },
   {
-   "file": "asm/overlay_96_q1132.s",
+   "file": "asm/overlay_96_s1133.s",
    "lsf_kind": "src",
    "status": "matched",
    "source": "hgify",
@@ -128740,7 +129573,7 @@
    ]
   },
   {
-   "file": "asm/overlay_96_q1133.s",
+   "file": "asm/overlay_96_s1134.s",
    "lsf_kind": "asm",
    "status": "pending",
    "lines": 106,
@@ -128768,7 +129601,7 @@
    ]
   },
   {
-   "file": "asm/overlay_96_q1134.s",
+   "file": "asm/overlay_96_s1135.s",
    "lsf_kind": "src",
    "status": "matched",
    "source": "hgify",
@@ -128788,7 +129621,7 @@
    ]
   },
   {
-   "file": "asm/overlay_96_q1135.s",
+   "file": "asm/overlay_96_s1136.s",
    "lsf_kind": "src",
    "status": "matched",
    "source": "hgify",
@@ -128808,7 +129641,7 @@
    ]
   },
   {
-   "file": "asm/overlay_96_q1136.s",
+   "file": "asm/overlay_96_s1137.s",
    "lsf_kind": "asm",
    "status": "pending",
    "lines": 254,
@@ -128850,7 +129683,7 @@
    ]
   },
   {
-   "file": "asm/overlay_96_q1137.s",
+   "file": "asm/overlay_96_s1138.s",
    "lsf_kind": "src",
    "status": "matched",
    "source": "hgify",
@@ -128870,7 +129703,7 @@
    ]
   },
   {
-   "file": "asm/overlay_96_q1138.s",
+   "file": "asm/overlay_96_s1139.s",
    "lsf_kind": "src",
    "status": "matched",
    "source": "hgify",
@@ -128890,7 +129723,7 @@
    ]
   },
   {
-   "file": "asm/overlay_96_q1139.s",
+   "file": "asm/overlay_96_s1140.s",
    "lsf_kind": "src",
    "status": "matched",
    "source": "hgify",
@@ -128910,7 +129743,7 @@
    ]
   },
   {
-   "file": "asm/overlay_96_q1140.s",
+   "file": "asm/overlay_96_s1141.s",
    "lsf_kind": "src",
    "status": "matched",
    "source": "hgify",
@@ -128930,7 +129763,7 @@
    ]
   },
   {
-   "file": "asm/overlay_96_q1141.s",
+   "file": "asm/overlay_96_s1142.s",
    "lsf_kind": "src",
    "status": "matched",
    "source": "hgify",
@@ -128950,7 +129783,7 @@
    ]
   },
   {
-   "file": "asm/overlay_96_q1142.s",
+   "file": "asm/overlay_96_s1143.s",
    "lsf_kind": "src",
    "status": "matched",
    "source": "hgify",
@@ -128970,7 +129803,7 @@
    ]
   },
   {
-   "file": "asm/overlay_96_q1143.s",
+   "file": "asm/overlay_96_s1144.s",
    "lsf_kind": "src",
    "status": "matched",
    "source": "hgify",
@@ -128990,7 +129823,7 @@
    ]
   },
   {
-   "file": "asm/overlay_96_q1144.s",
+   "file": "asm/overlay_96_s1145.s",
    "lsf_kind": "asm",
    "status": "pending",
    "lines": 100,
@@ -129018,7 +129851,7 @@
    ]
   },
   {
-   "file": "asm/overlay_96_q1145.s",
+   "file": "asm/overlay_96_s1146.s",
    "lsf_kind": "src",
    "status": "matched",
    "source": "hgify",
@@ -129038,7 +129871,7 @@
    ]
   },
   {
-   "file": "asm/overlay_96_q1146.s",
+   "file": "asm/overlay_96_s1147.s",
    "lsf_kind": "src",
    "status": "matched",
    "source": "hgify",
@@ -129058,7 +129891,7 @@
    ]
   },
   {
-   "file": "asm/overlay_96_q1147.s",
+   "file": "asm/overlay_96_s1148.s",
    "lsf_kind": "src",
    "status": "matched",
    "source": "hgify",
@@ -129078,7 +129911,7 @@
    ]
   },
   {
-   "file": "asm/overlay_96_q1148.s",
+   "file": "asm/overlay_96_s1149.s",
    "lsf_kind": "asm",
    "status": "pending",
    "lines": 1293,
@@ -129113,7 +129946,7 @@
    ]
   },
   {
-   "file": "asm/overlay_96_q1149.s",
+   "file": "asm/overlay_96_s1150.s",
    "lsf_kind": "src",
    "status": "matched",
    "source": "hgify",
@@ -129133,7 +129966,7 @@
    ]
   },
   {
-   "file": "asm/overlay_96_q1150.s",
+   "file": "asm/overlay_96_s1151.s",
    "lsf_kind": "src",
    "status": "matched",
    "source": "hgify",
@@ -129153,7 +129986,7 @@
    ]
   },
   {
-   "file": "asm/overlay_96_q1151.s",
+   "file": "asm/overlay_96_s1152.s",
    "lsf_kind": "src",
    "status": "matched",
    "source": "hgify",
@@ -129173,7 +130006,7 @@
    ]
   },
   {
-   "file": "asm/overlay_96_q1152.s",
+   "file": "asm/overlay_96_s1153.s",
    "lsf_kind": "src",
    "status": "matched",
    "source": "hgify",
@@ -129193,7 +130026,7 @@
    ]
   },
   {
-   "file": "asm/overlay_96_q1153.s",
+   "file": "asm/overlay_96_s1154.s",
    "lsf_kind": "src",
    "status": "matched",
    "source": "hgify",
@@ -129213,7 +130046,7 @@
    ]
   },
   {
-   "file": "asm/overlay_96_q1154.s",
+   "file": "asm/overlay_96_s1155.s",
    "lsf_kind": "src",
    "status": "matched",
    "source": "hgify",
@@ -129233,7 +130066,7 @@
    ]
   },
   {
-   "file": "asm/overlay_96_q1155.s",
+   "file": "asm/overlay_96_s1156.s",
    "lsf_kind": "src",
    "status": "matched",
    "source": "hgify",
@@ -129253,7 +130086,7 @@
    ]
   },
   {
-   "file": "asm/overlay_96_q1156.s",
+   "file": "asm/overlay_96_s1157.s",
    "lsf_kind": "src",
    "status": "matched",
    "source": "hgify",
@@ -129273,7 +130106,7 @@
    ]
   },
   {
-   "file": "asm/overlay_96_q1157.s",
+   "file": "asm/overlay_96_s1158.s",
    "lsf_kind": "asm",
    "status": "pending",
    "lines": 1179,
@@ -129329,7 +130162,7 @@
    ]
   },
   {
-   "file": "asm/overlay_96_q1158.s",
+   "file": "asm/overlay_96_s1159.s",
    "lsf_kind": "src",
    "status": "matched",
    "source": "hgify",
@@ -129349,7 +130182,7 @@
    ]
   },
   {
-   "file": "asm/overlay_96_q1159.s",
+   "file": "asm/overlay_96_s1160.s",
    "lsf_kind": "asm",
    "status": "pending",
    "lines": 1404,
@@ -129391,7 +130224,7 @@
    ]
   },
   {
-   "file": "asm/overlay_96_q1160.s",
+   "file": "asm/overlay_96_s1161.s",
    "lsf_kind": "src",
    "status": "matched",
    "source": "hgify",
@@ -129411,7 +130244,7 @@
    ]
   },
   {
-   "file": "asm/overlay_96_q1161.s",
+   "file": "asm/overlay_96_s1162.s",
    "lsf_kind": "asm",
    "status": "pending",
    "lines": 550,
@@ -129453,7 +130286,7 @@
    ]
   },
   {
-   "file": "asm/overlay_96_q1162.s",
+   "file": "asm/overlay_96_s1163.s",
    "lsf_kind": "src",
    "status": "matched",
    "source": "hgify",
@@ -129473,7 +130306,7 @@
    ]
   },
   {
-   "file": "asm/overlay_96_q1163.s",
+   "file": "asm/overlay_96_s1164.s",
    "lsf_kind": "asm",
    "status": "pending",
    "lines": 156,
@@ -129501,7 +130334,7 @@
    ]
   },
   {
-   "file": "asm/overlay_96_q1164.s",
+   "file": "asm/overlay_96_s1165.s",
    "lsf_kind": "src",
    "status": "matched",
    "source": "hgify",
@@ -129521,7 +130354,7 @@
    ]
   },
   {
-   "file": "asm/overlay_96_q1165.s",
+   "file": "asm/overlay_96_s1166.s",
    "lsf_kind": "src",
    "status": "matched",
    "source": "hgify",
@@ -129541,7 +130374,7 @@
    ]
   },
   {
-   "file": "asm/overlay_96_q1166.s",
+   "file": "asm/overlay_96_s1167.s",
    "lsf_kind": "src",
    "status": "matched",
    "source": "hgify",
@@ -129561,7 +130394,7 @@
    ]
   },
   {
-   "file": "asm/overlay_96_q1167.s",
+   "file": "asm/overlay_96_s1168.s",
    "lsf_kind": "asm",
    "status": "pending",
    "lines": 94,
@@ -129596,7 +130429,7 @@
    ]
   },
   {
-   "file": "asm/overlay_96_q1168.s",
+   "file": "asm/overlay_96_s1169.s",
    "lsf_kind": "src",
    "status": "matched",
    "source": "hgify",
@@ -129616,7 +130449,7 @@
    ]
   },
   {
-   "file": "asm/overlay_96_q1169.s",
+   "file": "asm/overlay_96_s1170.s",
    "lsf_kind": "src",
    "status": "matched",
    "source": "hgify",
@@ -129636,7 +130469,7 @@
    ]
   },
   {
-   "file": "asm/overlay_96_q1170.s",
+   "file": "asm/overlay_96_s1171.s",
    "lsf_kind": "src",
    "status": "matched",
    "source": "hgify",
@@ -129656,7 +130489,7 @@
    ]
   },
   {
-   "file": "asm/overlay_96_q1171.s",
+   "file": "asm/overlay_96_s1172.s",
    "lsf_kind": "src",
    "status": "matched",
    "source": "hgify",
@@ -129676,7 +130509,7 @@
    ]
   },
   {
-   "file": "asm/overlay_96_q1172.s",
+   "file": "asm/overlay_96_s1173.s",
    "lsf_kind": "asm",
    "status": "pending",
    "lines": 834,
@@ -129704,7 +130537,7 @@
    ]
   },
   {
-   "file": "asm/overlay_96_q1173.s",
+   "file": "asm/overlay_96_s1174.s",
    "lsf_kind": "src",
    "status": "matched",
    "source": "hgify",
@@ -129724,7 +130557,7 @@
    ]
   },
   {
-   "file": "asm/overlay_96_q1174.s",
+   "file": "asm/overlay_96_s1175.s",
    "lsf_kind": "asm",
    "status": "pending",
    "lines": 213,
@@ -129752,7 +130585,7 @@
    ]
   },
   {
-   "file": "asm/overlay_96_q1175.s",
+   "file": "asm/overlay_96_s1176.s",
    "lsf_kind": "asm",
    "status": "pending",
    "lines": 108,
@@ -129780,7 +130613,7 @@
    ]
   },
   {
-   "file": "asm/overlay_96_q1176.s",
+   "file": "asm/overlay_96_s1177.s",
    "lsf_kind": "asm",
    "status": "pending",
    "lines": 194,
@@ -129816,7 +130649,7 @@
    ]
   },
   {
-   "file": "asm/overlay_96_q1177.s",
+   "file": "asm/overlay_96_s1178.s",
    "lsf_kind": "src",
    "status": "matched",
    "source": "hgify",
@@ -129836,7 +130669,7 @@
    ]
   },
   {
-   "file": "asm/overlay_96_q1178.s",
+   "file": "asm/overlay_96_s1179.s",
    "lsf_kind": "src",
    "status": "matched",
    "source": "hgify",
@@ -129856,7 +130689,7 @@
    ]
   },
   {
-   "file": "asm/overlay_96_q1179.s",
+   "file": "asm/overlay_96_s1180.s",
    "lsf_kind": "asm",
    "status": "pending",
    "lines": 144,
@@ -129884,7 +130717,7 @@
    ]
   },
   {
-   "file": "asm/overlay_96_q1180.s",
+   "file": "asm/overlay_96_s1181.s",
    "lsf_kind": "src",
    "status": "matched",
    "source": "hgify",
@@ -129904,7 +130737,7 @@
    ]
   },
   {
-   "file": "asm/overlay_96_q1181.s",
+   "file": "asm/overlay_96_s1182.s",
    "lsf_kind": "src",
    "status": "matched",
    "source": "hgify",
@@ -129924,7 +130757,7 @@
    ]
   },
   {
-   "file": "asm/overlay_96_q1182.s",
+   "file": "asm/overlay_96_s1183.s",
    "lsf_kind": "src",
    "status": "matched",
    "source": "hgify",
@@ -129944,7 +130777,7 @@
    ]
   },
   {
-   "file": "asm/overlay_96_q1183.s",
+   "file": "asm/overlay_96_s1184.s",
    "lsf_kind": "src",
    "status": "matched",
    "source": "hgify",
@@ -129964,7 +130797,7 @@
    ]
   },
   {
-   "file": "asm/overlay_96_q1184.s",
+   "file": "asm/overlay_96_s1185.s",
    "lsf_kind": "asm",
    "status": "pending",
    "lines": 272,
@@ -130006,7 +130839,7 @@
    ]
   },
   {
-   "file": "asm/overlay_96_q1185.s",
+   "file": "asm/overlay_96_s1186.s",
    "lsf_kind": "src",
    "status": "matched",
    "source": "hgify",
@@ -130026,7 +130859,7 @@
    ]
   },
   {
-   "file": "asm/overlay_96_q1186.s",
+   "file": "asm/overlay_96_s1187.s",
    "lsf_kind": "src",
    "status": "matched",
    "source": "hgify",
@@ -130046,7 +130879,7 @@
    ]
   },
   {
-   "file": "asm/overlay_96_q1187.s",
+   "file": "asm/overlay_96_s1188.s",
    "lsf_kind": "src",
    "status": "matched",
    "source": "hgify",
@@ -130066,7 +130899,7 @@
    ]
   },
   {
-   "file": "asm/overlay_96_q1188.s",
+   "file": "asm/overlay_96_s1189.s",
    "lsf_kind": "src",
    "status": "matched",
    "source": "hgify",
@@ -130086,7 +130919,7 @@
    ]
   },
   {
-   "file": "asm/overlay_96_q1189.s",
+   "file": "asm/overlay_96_s1190.s",
    "lsf_kind": "src",
    "status": "matched",
    "source": "hgify",
@@ -130106,7 +130939,7 @@
    ]
   },
   {
-   "file": "asm/overlay_96_q1190.s",
+   "file": "asm/overlay_96_s1191.s",
    "lsf_kind": "src",
    "status": "matched",
    "source": "hgify",
@@ -130126,7 +130959,7 @@
    ]
   },
   {
-   "file": "asm/overlay_96_q1191.s",
+   "file": "asm/overlay_96_s1192.s",
    "lsf_kind": "src",
    "status": "matched",
    "source": "hgify",
@@ -130146,7 +130979,7 @@
    ]
   },
   {
-   "file": "asm/overlay_96_q1192.s",
+   "file": "asm/overlay_96_s1193.s",
    "lsf_kind": "src",
    "status": "matched",
    "source": "hgify",
@@ -130166,7 +130999,7 @@
    ]
   },
   {
-   "file": "asm/overlay_96_q1193.s",
+   "file": "asm/overlay_96_s1194.s",
    "lsf_kind": "src",
    "status": "matched",
    "source": "hgify",
@@ -130186,7 +131019,7 @@
    ]
   },
   {
-   "file": "asm/overlay_96_q1194.s",
+   "file": "asm/overlay_96_s1195.s",
    "lsf_kind": "src",
    "status": "matched",
    "source": "hgify",
@@ -130206,7 +131039,7 @@
    ]
   },
   {
-   "file": "asm/overlay_96_q1195.s",
+   "file": "asm/overlay_96_s1196.s",
    "lsf_kind": "src",
    "status": "matched",
    "source": "hgify",
@@ -130226,7 +131059,7 @@
    ]
   },
   {
-   "file": "asm/overlay_96_q1196.s",
+   "file": "asm/overlay_96_s1197.s",
    "lsf_kind": "src",
    "status": "matched",
    "source": "hgify",
@@ -130246,7 +131079,7 @@
    ]
   },
   {
-   "file": "asm/overlay_96_q1197.s",
+   "file": "asm/overlay_96_s1198.s",
    "lsf_kind": "src",
    "status": "matched",
    "source": "hgify",
@@ -130266,7 +131099,7 @@
    ]
   },
   {
-   "file": "asm/overlay_96_q1198.s",
+   "file": "asm/overlay_96_s1199.s",
    "lsf_kind": "src",
    "status": "matched",
    "source": "hgify",
@@ -130286,7 +131119,7 @@
    ]
   },
   {
-   "file": "asm/overlay_96_q1199.s",
+   "file": "asm/overlay_96_s1200.s",
    "lsf_kind": "src",
    "status": "matched",
    "source": "hgify",
@@ -130306,7 +131139,7 @@
    ]
   },
   {
-   "file": "asm/overlay_96_q1200.s",
+   "file": "asm/overlay_96_s1201.s",
    "lsf_kind": "src",
    "status": "matched",
    "source": "hgify",
@@ -130326,7 +131159,7 @@
    ]
   },
   {
-   "file": "asm/overlay_96_q1201.s",
+   "file": "asm/overlay_96_s1202.s",
    "lsf_kind": "src",
    "status": "matched",
    "source": "hgify",
@@ -130346,7 +131179,7 @@
    ]
   },
   {
-   "file": "asm/overlay_96_q1202.s",
+   "file": "asm/overlay_96_s1203.s",
    "lsf_kind": "src",
    "status": "matched",
    "source": "hgify",
@@ -130366,7 +131199,7 @@
    ]
   },
   {
-   "file": "asm/overlay_96_q1203.s",
+   "file": "asm/overlay_96_s1204.s",
    "lsf_kind": "asm",
    "status": "pending",
    "lines": 135,
@@ -130394,7 +131227,7 @@
    ]
   },
   {
-   "file": "asm/overlay_96_q1204.s",
+   "file": "asm/overlay_96_s1205.s",
    "lsf_kind": "src",
    "status": "matched",
    "source": "hgify",
@@ -130414,7 +131247,7 @@
    ]
   },
   {
-   "file": "asm/overlay_96_q1205.s",
+   "file": "asm/overlay_96_s1206.s",
    "lsf_kind": "asm",
    "status": "pending",
    "lines": 80,
@@ -130442,7 +131275,7 @@
    ]
   },
   {
-   "file": "asm/overlay_96_q1206.s",
+   "file": "asm/overlay_96_s1207.s",
    "lsf_kind": "src",
    "status": "matched",
    "source": "hgify",
@@ -130462,7 +131295,7 @@
    ]
   },
   {
-   "file": "asm/overlay_96_q1207.s",
+   "file": "asm/overlay_96_s1208.s",
    "lsf_kind": "src",
    "status": "matched",
    "source": "hgify",
@@ -130482,7 +131315,7 @@
    ]
   },
   {
-   "file": "asm/overlay_96_q1208.s",
+   "file": "asm/overlay_96_s1209.s",
    "lsf_kind": "src",
    "status": "matched",
    "source": "hgify",
@@ -130502,7 +131335,7 @@
    ]
   },
   {
-   "file": "asm/overlay_96_q1209.s",
+   "file": "asm/overlay_96_s1210.s",
    "lsf_kind": "src",
    "status": "matched",
    "source": "hgify",
@@ -130522,7 +131355,7 @@
    ]
   },
   {
-   "file": "asm/overlay_96_q1210.s",
+   "file": "asm/overlay_96_s1211.s",
    "lsf_kind": "src",
    "status": "matched",
    "source": "hgify",
@@ -130542,7 +131375,7 @@
    ]
   },
   {
-   "file": "asm/overlay_96_q1211.s",
+   "file": "asm/overlay_96_s1212.s",
    "lsf_kind": "asm",
    "status": "pending",
    "lines": 263,
@@ -130570,7 +131403,7 @@
    ]
   },
   {
-   "file": "asm/overlay_96_q1212.s",
+   "file": "asm/overlay_96_s1213.s",
    "lsf_kind": "src",
    "status": "matched",
    "source": "hgify",
@@ -130590,7 +131423,7 @@
    ]
   },
   {
-   "file": "asm/overlay_96_q1213.s",
+   "file": "asm/overlay_96_s1214.s",
    "lsf_kind": "asm",
    "status": "pending",
    "lines": 278,
@@ -130618,7 +131451,7 @@
    ]
   },
   {
-   "file": "asm/overlay_96_q1214.s",
+   "file": "asm/overlay_96_s1215.s",
    "lsf_kind": "src",
    "status": "matched",
    "source": "hgify",
@@ -130638,7 +131471,7 @@
    ]
   },
   {
-   "file": "asm/overlay_96_q1215.s",
+   "file": "asm/overlay_96_s1216.s",
    "lsf_kind": "asm",
    "status": "pending",
    "lines": 441,
@@ -130666,7 +131499,7 @@
    ]
   },
   {
-   "file": "asm/overlay_96_q1216.s",
+   "file": "asm/overlay_96_s1217.s",
    "lsf_kind": "src",
    "status": "matched",
    "source": "hgify",
@@ -130686,7 +131519,7 @@
    ]
   },
   {
-   "file": "asm/overlay_96_q1217.s",
+   "file": "asm/overlay_96_s1218.s",
    "lsf_kind": "asm",
    "status": "pending",
    "lines": 215,
@@ -130714,7 +131547,7 @@
    ]
   },
   {
-   "file": "asm/overlay_96_q1218.s",
+   "file": "asm/overlay_96_s1219.s",
    "lsf_kind": "src",
    "status": "matched",
    "source": "hgify",
@@ -130734,7 +131567,7 @@
    ]
   },
   {
-   "file": "asm/overlay_96_q1219.s",
+   "file": "asm/overlay_96_s1220.s",
    "lsf_kind": "src",
    "status": "matched",
    "source": "hgify",
@@ -130754,7 +131587,7 @@
    ]
   },
   {
-   "file": "asm/overlay_96_q1220.s",
+   "file": "asm/overlay_96_s1221.s",
    "lsf_kind": "src",
    "status": "matched",
    "source": "hgify",
@@ -130774,7 +131607,7 @@
    ]
   },
   {
-   "file": "asm/overlay_96_q1221.s",
+   "file": "asm/overlay_96_s1222.s",
    "lsf_kind": "src",
    "status": "matched",
    "source": "hgify",
@@ -130794,7 +131627,7 @@
    ]
   },
   {
-   "file": "asm/overlay_96_q1222.s",
+   "file": "asm/overlay_96_s1223.s",
    "lsf_kind": "src",
    "status": "matched",
    "source": "hgify",
@@ -130814,7 +131647,7 @@
    ]
   },
   {
-   "file": "asm/overlay_96_q1223.s",
+   "file": "asm/overlay_96_s1224.s",
    "lsf_kind": "src",
    "status": "matched",
    "source": "hgify",
@@ -130834,7 +131667,7 @@
    ]
   },
   {
-   "file": "asm/overlay_96_q1224.s",
+   "file": "asm/overlay_96_s1225.s",
    "lsf_kind": "src",
    "status": "matched",
    "source": "hgify",
@@ -130854,7 +131687,7 @@
    ]
   },
   {
-   "file": "asm/overlay_96_q1225.s",
+   "file": "asm/overlay_96_s1226.s",
    "lsf_kind": "src",
    "status": "matched",
    "source": "hgify",
@@ -130874,7 +131707,7 @@
    ]
   },
   {
-   "file": "asm/overlay_96_q1226.s",
+   "file": "asm/overlay_96_s1227.s",
    "lsf_kind": "src",
    "status": "matched",
    "source": "hgify",
@@ -130894,7 +131727,7 @@
    ]
   },
   {
-   "file": "asm/overlay_96_q1227.s",
+   "file": "asm/overlay_96_s1228.s",
    "lsf_kind": "src",
    "status": "matched",
    "source": "hgify",
@@ -130914,7 +131747,7 @@
    ]
   },
   {
-   "file": "asm/overlay_96_q1228.s",
+   "file": "asm/overlay_96_s1229.s",
    "lsf_kind": "src",
    "status": "matched",
    "source": "hgify",
@@ -130934,7 +131767,7 @@
    ]
   },
   {
-   "file": "asm/overlay_96_q1229.s",
+   "file": "asm/overlay_96_s1230.s",
    "lsf_kind": "src",
    "status": "matched",
    "source": "hgify",
@@ -130954,7 +131787,7 @@
    ]
   },
   {
-   "file": "asm/overlay_96_q1230.s",
+   "file": "asm/overlay_96_s1231.s",
    "lsf_kind": "src",
    "status": "matched",
    "source": "hgify",
@@ -130974,7 +131807,7 @@
    ]
   },
   {
-   "file": "asm/overlay_96_q1231.s",
+   "file": "asm/overlay_96_s1232.s",
    "lsf_kind": "src",
    "status": "matched",
    "source": "hgify",
@@ -130994,7 +131827,7 @@
    ]
   },
   {
-   "file": "asm/overlay_96_q1232.s",
+   "file": "asm/overlay_96_s1233.s",
    "lsf_kind": "src",
    "status": "matched",
    "source": "hgify",
@@ -131014,7 +131847,7 @@
    ]
   },
   {
-   "file": "asm/overlay_96_q1233.s",
+   "file": "asm/overlay_96_s1234.s",
    "lsf_kind": "src",
    "status": "matched",
    "source": "hgify",
@@ -131034,7 +131867,7 @@
    ]
   },
   {
-   "file": "asm/overlay_96_q1234.s",
+   "file": "asm/overlay_96_s1235.s",
    "lsf_kind": "src",
    "status": "matched",
    "source": "hgify",
@@ -131054,7 +131887,7 @@
    ]
   },
   {
-   "file": "asm/overlay_96_q1235.s",
+   "file": "asm/overlay_96_s1236.s",
    "lsf_kind": "src",
    "status": "matched",
    "source": "hgify",
@@ -131074,7 +131907,7 @@
    ]
   },
   {
-   "file": "asm/overlay_96_q1236.s",
+   "file": "asm/overlay_96_s1237.s",
    "lsf_kind": "src",
    "status": "matched",
    "source": "hgify",
@@ -131094,7 +131927,7 @@
    ]
   },
   {
-   "file": "asm/overlay_96_q1237.s",
+   "file": "asm/overlay_96_s1238.s",
    "lsf_kind": "src",
    "status": "matched",
    "source": "hgify",
@@ -131114,7 +131947,7 @@
    ]
   },
   {
-   "file": "asm/overlay_96_q1238.s",
+   "file": "asm/overlay_96_s1239.s",
    "lsf_kind": "src",
    "status": "matched",
    "source": "hgify",
@@ -131134,7 +131967,7 @@
    ]
   },
   {
-   "file": "asm/overlay_96_q1239.s",
+   "file": "asm/overlay_96_s1240.s",
    "lsf_kind": "src",
    "status": "matched",
    "source": "hgify",
@@ -131154,7 +131987,7 @@
    ]
   },
   {
-   "file": "asm/overlay_96_q1240.s",
+   "file": "asm/overlay_96_s1241.s",
    "lsf_kind": "src",
    "status": "matched",
    "source": "hgify",
@@ -131174,7 +132007,7 @@
    ]
   },
   {
-   "file": "asm/overlay_96_q1241.s",
+   "file": "asm/overlay_96_s1242.s",
    "lsf_kind": "src",
    "status": "matched",
    "source": "hgify",
@@ -131194,7 +132027,7 @@
    ]
   },
   {
-   "file": "asm/overlay_96_q1242.s",
+   "file": "asm/overlay_96_s1243.s",
    "lsf_kind": "asm",
    "status": "pending",
    "lines": 90,
@@ -131222,7 +132055,7 @@
    ]
   },
   {
-   "file": "asm/overlay_96_q1243.s",
+   "file": "asm/overlay_96_s1244.s",
    "lsf_kind": "src",
    "status": "matched",
    "source": "hgify",
@@ -131242,7 +132075,7 @@
    ]
   },
   {
-   "file": "asm/overlay_96_q1244.s",
+   "file": "asm/overlay_96_s1245.s",
    "lsf_kind": "src",
    "status": "matched",
    "source": "hgify",
@@ -131262,7 +132095,7 @@
    ]
   },
   {
-   "file": "asm/overlay_96_q1245.s",
+   "file": "asm/overlay_96_s1246.s",
    "lsf_kind": "src",
    "status": "matched",
    "source": "hgify",
@@ -131282,7 +132115,7 @@
    ]
   },
   {
-   "file": "asm/overlay_96_q1246.s",
+   "file": "asm/overlay_96_s1247.s",
    "lsf_kind": "src",
    "status": "matched",
    "source": "hgify",
@@ -131302,7 +132135,7 @@
    ]
   },
   {
-   "file": "asm/overlay_96_q1247.s",
+   "file": "asm/overlay_96_s1248.s",
    "lsf_kind": "src",
    "status": "matched",
    "source": "hgify",
@@ -131322,7 +132155,7 @@
    ]
   },
   {
-   "file": "asm/overlay_96_q1248.s",
+   "file": "asm/overlay_96_s1249.s",
    "lsf_kind": "src",
    "status": "matched",
    "source": "hgify",
@@ -131342,7 +132175,7 @@
    ]
   },
   {
-   "file": "asm/overlay_96_q1249.s",
+   "file": "asm/overlay_96_s1250.s",
    "lsf_kind": "src",
    "status": "matched",
    "source": "hgify",
@@ -131362,7 +132195,7 @@
    ]
   },
   {
-   "file": "asm/overlay_96_q1250.s",
+   "file": "asm/overlay_96_s1251.s",
    "lsf_kind": "src",
    "status": "matched",
    "source": "hgify",
@@ -131382,7 +132215,7 @@
    ]
   },
   {
-   "file": "asm/overlay_96_q1251.s",
+   "file": "asm/overlay_96_s1252.s",
    "lsf_kind": "src",
    "status": "matched",
    "source": "hgify",
@@ -131402,7 +132235,7 @@
    ]
   },
   {
-   "file": "asm/overlay_96_q1252.s",
+   "file": "asm/overlay_96_s1253.s",
    "lsf_kind": "src",
    "status": "matched",
    "source": "hgify",
@@ -131422,7 +132255,7 @@
    ]
   },
   {
-   "file": "asm/overlay_96_q1253.s",
+   "file": "asm/overlay_96_s1254.s",
    "lsf_kind": "src",
    "status": "matched",
    "source": "hgify",
@@ -131442,7 +132275,7 @@
    ]
   },
   {
-   "file": "asm/overlay_96_q1254.s",
+   "file": "asm/overlay_96_s1255.s",
    "lsf_kind": "src",
    "status": "matched",
    "source": "hgify",
@@ -131462,7 +132295,7 @@
    ]
   },
   {
-   "file": "asm/overlay_96_q1255.s",
+   "file": "asm/overlay_96_s1256.s",
    "lsf_kind": "asm",
    "status": "pending",
    "lines": 342,
@@ -131490,7 +132323,7 @@
    ]
   },
   {
-   "file": "asm/overlay_96_q1256.s",
+   "file": "asm/overlay_96_s1257.s",
    "lsf_kind": "src",
    "status": "matched",
    "source": "hgify",
@@ -131510,7 +132343,7 @@
    ]
   },
   {
-   "file": "asm/overlay_96_q1257.s",
+   "file": "asm/overlay_96_s1258.s",
    "lsf_kind": "src",
    "status": "matched",
    "source": "hgify",
@@ -131530,7 +132363,7 @@
    ]
   },
   {
-   "file": "asm/overlay_96_q1258.s",
+   "file": "asm/overlay_96_s1259.s",
    "lsf_kind": "src",
    "status": "matched",
    "source": "hgify",
@@ -131550,7 +132383,7 @@
    ]
   },
   {
-   "file": "asm/overlay_96_q1259.s",
+   "file": "asm/overlay_96_s1260.s",
    "lsf_kind": "src",
    "status": "matched",
    "source": "hgify",
@@ -131570,7 +132403,7 @@
    ]
   },
   {
-   "file": "asm/overlay_96_q1260.s",
+   "file": "asm/overlay_96_s1261.s",
    "lsf_kind": "asm",
    "status": "pending",
    "lines": 345,
@@ -131612,7 +132445,7 @@
    ]
   },
   {
-   "file": "asm/overlay_96_q1261.s",
+   "file": "asm/overlay_96_s1262.s",
    "lsf_kind": "src",
    "status": "matched",
    "source": "hgify",
@@ -131632,7 +132465,7 @@
    ]
   },
   {
-   "file": "asm/overlay_96_q1262.s",
+   "file": "asm/overlay_96_s1263.s",
    "lsf_kind": "src",
    "status": "matched",
    "source": "hgify",
@@ -131652,7 +132485,7 @@
    ]
   },
   {
-   "file": "asm/overlay_96_q1263.s",
+   "file": "asm/overlay_96_s1264.s",
    "lsf_kind": "src",
    "status": "matched",
    "source": "hgify",
@@ -131672,7 +132505,7 @@
    ]
   },
   {
-   "file": "asm/overlay_96_q1264.s",
+   "file": "asm/overlay_96_s1265.s",
    "lsf_kind": "src",
    "status": "matched",
    "source": "hgify",
@@ -131692,7 +132525,7 @@
    ]
   },
   {
-   "file": "asm/overlay_96_q1265.s",
+   "file": "asm/overlay_96_s1266.s",
    "lsf_kind": "src",
    "status": "matched",
    "source": "hgify",
@@ -131712,7 +132545,7 @@
    ]
   },
   {
-   "file": "asm/overlay_96_q1266.s",
+   "file": "asm/overlay_96_s1267.s",
    "lsf_kind": "src",
    "status": "matched",
    "source": "hgify",
@@ -131732,7 +132565,7 @@
    ]
   },
   {
-   "file": "asm/overlay_96_q1267.s",
+   "file": "asm/overlay_96_s1268.s",
    "lsf_kind": "src",
    "status": "matched",
    "source": "hgify",
@@ -131752,7 +132585,7 @@
    ]
   },
   {
-   "file": "asm/overlay_96_q1268.s",
+   "file": "asm/overlay_96_s1269.s",
    "lsf_kind": "src",
    "status": "matched",
    "source": "hgify",
@@ -131772,7 +132605,7 @@
    ]
   },
   {
-   "file": "asm/overlay_96_q1269.s",
+   "file": "asm/overlay_96_s1270.s",
    "lsf_kind": "asm",
    "status": "pending",
    "lines": 1353,
@@ -131807,7 +132640,7 @@
    ]
   },
   {
-   "file": "asm/overlay_96_q1270.s",
+   "file": "asm/overlay_96_s1271.s",
    "lsf_kind": "src",
    "status": "matched",
    "source": "hgify",
@@ -131827,7 +132660,7 @@
    ]
   },
   {
-   "file": "asm/overlay_96_q1271.s",
+   "file": "asm/overlay_96_s1272.s",
    "lsf_kind": "src",
    "status": "matched",
    "source": "hgify",
@@ -131847,7 +132680,7 @@
    ]
   },
   {
-   "file": "asm/overlay_96_q1272.s",
+   "file": "asm/overlay_96_s1273.s",
    "lsf_kind": "asm",
    "status": "pending",
    "lines": 88,
@@ -131875,7 +132708,7 @@
    ]
   },
   {
-   "file": "asm/overlay_96_q1273.s",
+   "file": "asm/overlay_96_s1274.s",
    "lsf_kind": "src",
    "status": "matched",
    "source": "hgify",
@@ -131895,7 +132728,7 @@
    ]
   },
   {
-   "file": "asm/overlay_96_q1274.s",
+   "file": "asm/overlay_96_s1275.s",
    "lsf_kind": "src",
    "status": "matched",
    "source": "hgify",
@@ -131915,7 +132748,7 @@
    ]
   },
   {
-   "file": "asm/overlay_96_q1275.s",
+   "file": "asm/overlay_96_s1276.s",
    "lsf_kind": "src",
    "status": "matched",
    "source": "hgify",
@@ -131935,35 +132768,27 @@
    ]
   },
   {
-   "file": "asm/overlay_96_q1276.s",
-   "lsf_kind": "asm",
-   "status": "pending",
-   "lines": 349,
+   "file": "asm/overlay_96_s1277.s",
+   "lsf_kind": "src",
+   "status": "matched",
+   "source": "hgify",
+   "objects": 1,
    "function_count": 1,
-   "text_bytes_est": 568,
+   "lines": 0,
+   "text_bytes_est": 0,
    "data_only": false,
-   "sections": {
-    "rodata_bytes": 0,
-    "data_bytes": 0,
-    "bss_bytes": 0,
-    "other_bytes": 0
-   },
-   "other_sections": [],
-   "jumptable_words": 0,
-   "imports": [],
-   "exports": [],
    "functions": [
     {
      "name": "ov96_022178A0",
      "mode": "thumb",
-     "insns": 264,
-     "size_est": 568,
-     "status": "pending"
+     "insns": 0,
+     "size_est": 0,
+     "status": "matched"
     }
    ]
   },
   {
-   "file": "asm/overlay_96_q1277.s",
+   "file": "asm/overlay_96_s1278.s",
    "lsf_kind": "src",
    "status": "matched",
    "source": "hgify",
@@ -131983,7 +132808,7 @@
    ]
   },
   {
-   "file": "asm/overlay_96_q1278.s",
+   "file": "asm/overlay_96_s1279.s",
    "lsf_kind": "asm",
    "status": "pending",
    "lines": 341,
@@ -132011,7 +132836,7 @@
    ]
   },
   {
-   "file": "asm/overlay_96_q1279.s",
+   "file": "asm/overlay_96_s1280.s",
    "lsf_kind": "src",
    "status": "matched",
    "source": "hgify",
@@ -132031,7 +132856,7 @@
    ]
   },
   {
-   "file": "asm/overlay_96_q1280.s",
+   "file": "asm/overlay_96_s1281.s",
    "lsf_kind": "src",
    "status": "matched",
    "source": "hgify",
@@ -132051,7 +132876,7 @@
    ]
   },
   {
-   "file": "asm/overlay_96_q1281.s",
+   "file": "asm/overlay_96_s1282.s",
    "lsf_kind": "src",
    "status": "matched",
    "source": "hgify",
@@ -132071,7 +132896,7 @@
    ]
   },
   {
-   "file": "asm/overlay_96_q1282.s",
+   "file": "asm/overlay_96_s1283.s",
    "lsf_kind": "asm",
    "status": "pending",
    "lines": 230,
@@ -132099,7 +132924,7 @@
    ]
   },
   {
-   "file": "asm/overlay_96_q1283.s",
+   "file": "asm/overlay_96_s1284.s",
    "lsf_kind": "src",
    "status": "matched",
    "source": "hgify",
@@ -132119,7 +132944,7 @@
    ]
   },
   {
-   "file": "asm/overlay_96_q1284.s",
+   "file": "asm/overlay_96_s1285.s",
    "lsf_kind": "asm",
    "status": "pending",
    "lines": 357,
@@ -132147,7 +132972,7 @@
    ]
   },
   {
-   "file": "asm/overlay_96_q1285.s",
+   "file": "asm/overlay_96_s1286.s",
    "lsf_kind": "src",
    "status": "matched",
    "source": "hgify",
@@ -132167,7 +132992,7 @@
    ]
   },
   {
-   "file": "asm/overlay_96_q1286.s",
+   "file": "asm/overlay_96_s1287.s",
    "lsf_kind": "src",
    "status": "matched",
    "source": "hgify",
@@ -132187,7 +133012,7 @@
    ]
   },
   {
-   "file": "asm/overlay_96_q1287.s",
+   "file": "asm/overlay_96_s1288.s",
    "lsf_kind": "src",
    "status": "matched",
    "source": "hgify",
@@ -132207,7 +133032,7 @@
    ]
   },
   {
-   "file": "asm/overlay_96_q1288.s",
+   "file": "asm/overlay_96_s1289.s",
    "lsf_kind": "src",
    "status": "matched",
    "source": "hgify",
@@ -132227,7 +133052,7 @@
    ]
   },
   {
-   "file": "asm/overlay_96_q1289.s",
+   "file": "asm/overlay_96_s1290.s",
    "lsf_kind": "src",
    "status": "matched",
    "source": "hgify",
@@ -132247,7 +133072,7 @@
    ]
   },
   {
-   "file": "asm/overlay_96_q1290.s",
+   "file": "asm/overlay_96_s1291.s",
    "lsf_kind": "src",
    "status": "matched",
    "source": "hgify",
@@ -132267,7 +133092,7 @@
    ]
   },
   {
-   "file": "asm/overlay_96_q1291.s",
+   "file": "asm/overlay_96_s1292.s",
    "lsf_kind": "src",
    "status": "matched",
    "source": "hgify",
@@ -132287,7 +133112,7 @@
    ]
   },
   {
-   "file": "asm/overlay_96_q1292.s",
+   "file": "asm/overlay_96_s1293.s",
    "lsf_kind": "src",
    "status": "matched",
    "source": "hgify",
@@ -132307,7 +133132,7 @@
    ]
   },
   {
-   "file": "asm/overlay_96_q1293.s",
+   "file": "asm/overlay_96_s1294.s",
    "lsf_kind": "asm",
    "status": "pending",
    "lines": 93,
@@ -132335,7 +133160,7 @@
    ]
   },
   {
-   "file": "asm/overlay_96_q1294.s",
+   "file": "asm/overlay_96_s1295.s",
    "lsf_kind": "src",
    "status": "matched",
    "source": "hgify",
@@ -132355,7 +133180,7 @@
    ]
   },
   {
-   "file": "asm/overlay_96_q1295.s",
+   "file": "asm/overlay_96_s1296.s",
    "lsf_kind": "asm",
    "status": "pending",
    "lines": 401,
@@ -132390,7 +133215,7 @@
    ]
   },
   {
-   "file": "asm/overlay_96_q1296.s",
+   "file": "asm/overlay_96_s1297.s",
    "lsf_kind": "src",
    "status": "matched",
    "source": "hgify",
@@ -132410,7 +133235,7 @@
    ]
   },
   {
-   "file": "asm/overlay_96_q1297.s",
+   "file": "asm/overlay_96_s1298.s",
    "lsf_kind": "src",
    "status": "matched",
    "source": "hgify",
@@ -132430,7 +133255,7 @@
    ]
   },
   {
-   "file": "asm/overlay_96_q1298.s",
+   "file": "asm/overlay_96_s1299.s",
    "lsf_kind": "src",
    "status": "matched",
    "source": "hgify",
@@ -132450,7 +133275,7 @@
    ]
   },
   {
-   "file": "asm/overlay_96_q1299.s",
+   "file": "asm/overlay_96_s1300.s",
    "lsf_kind": "asm",
    "status": "pending",
    "lines": 438,
@@ -132478,7 +133303,7 @@
    ]
   },
   {
-   "file": "asm/overlay_96_q1300.s",
+   "file": "asm/overlay_96_s1301.s",
    "lsf_kind": "src",
    "status": "matched",
    "source": "hgify",
@@ -132498,7 +133323,7 @@
    ]
   },
   {
-   "file": "asm/overlay_96_q1301.s",
+   "file": "asm/overlay_96_s1302.s",
    "lsf_kind": "asm",
    "status": "pending",
    "lines": 108,
@@ -132526,7 +133351,7 @@
    ]
   },
   {
-   "file": "asm/overlay_96_q1302.s",
+   "file": "asm/overlay_96_s1303.s",
    "lsf_kind": "src",
    "status": "matched",
    "source": "hgify",
@@ -132546,7 +133371,7 @@
    ]
   },
   {
-   "file": "asm/overlay_96_q1303.s",
+   "file": "asm/overlay_96_s1304.s",
    "lsf_kind": "src",
    "status": "matched",
    "source": "hgify",
@@ -132566,7 +133391,7 @@
    ]
   },
   {
-   "file": "asm/overlay_96_q1304.s",
+   "file": "asm/overlay_96_s1305.s",
    "lsf_kind": "src",
    "status": "matched",
    "source": "hgify",
@@ -132586,7 +133411,7 @@
    ]
   },
   {
-   "file": "asm/overlay_96_q1305.s",
+   "file": "asm/overlay_96_s1306.s",
    "lsf_kind": "src",
    "status": "matched",
    "source": "hgify",
@@ -132606,7 +133431,7 @@
    ]
   },
   {
-   "file": "asm/overlay_96_q1306.s",
+   "file": "asm/overlay_96_s1307.s",
    "lsf_kind": "src",
    "status": "matched",
    "source": "hgify",
@@ -132626,7 +133451,7 @@
    ]
   },
   {
-   "file": "asm/overlay_96_q1307.s",
+   "file": "asm/overlay_96_s1308.s",
    "lsf_kind": "asm",
    "status": "pending",
    "lines": 110,
@@ -132654,7 +133479,7 @@
    ]
   },
   {
-   "file": "asm/overlay_96_q1308.s",
+   "file": "asm/overlay_96_s1309.s",
    "lsf_kind": "src",
    "status": "matched",
    "source": "hgify",
@@ -132674,7 +133499,7 @@
    ]
   },
   {
-   "file": "asm/overlay_96_q1309.s",
+   "file": "asm/overlay_96_s1310.s",
    "lsf_kind": "src",
    "status": "matched",
    "source": "hgify",
@@ -132694,7 +133519,7 @@
    ]
   },
   {
-   "file": "asm/overlay_96_q1310.s",
+   "file": "asm/overlay_96_s1311.s",
    "lsf_kind": "asm",
    "status": "pending",
    "lines": 88,
@@ -132722,7 +133547,7 @@
    ]
   },
   {
-   "file": "asm/overlay_96_q1311.s",
+   "file": "asm/overlay_96_s1312.s",
    "lsf_kind": "src",
    "status": "matched",
    "source": "hgify",
@@ -132742,7 +133567,7 @@
    ]
   },
   {
-   "file": "asm/overlay_96_q1312.s",
+   "file": "asm/overlay_96_s1313.s",
    "lsf_kind": "src",
    "status": "matched",
    "source": "hgify",
@@ -132762,7 +133587,7 @@
    ]
   },
   {
-   "file": "asm/overlay_96_q1313.s",
+   "file": "asm/overlay_96_s1314.s",
    "lsf_kind": "src",
    "status": "matched",
    "source": "hgify",
@@ -132782,7 +133607,7 @@
    ]
   },
   {
-   "file": "asm/overlay_96_q1314.s",
+   "file": "asm/overlay_96_s1315.s",
    "lsf_kind": "src",
    "status": "matched",
    "source": "hgify",
@@ -132802,7 +133627,7 @@
    ]
   },
   {
-   "file": "asm/overlay_96_q1315.s",
+   "file": "asm/overlay_96_s1316.s",
    "lsf_kind": "asm",
    "status": "pending",
    "lines": 117,
@@ -132830,7 +133655,7 @@
    ]
   },
   {
-   "file": "asm/overlay_96_q1316.s",
+   "file": "asm/overlay_96_s1317.s",
    "lsf_kind": "src",
    "status": "matched",
    "source": "hgify",
@@ -132850,7 +133675,7 @@
    ]
   },
   {
-   "file": "asm/overlay_96_q1317.s",
+   "file": "asm/overlay_96_s1318.s",
    "lsf_kind": "src",
    "status": "matched",
    "source": "hgify",
@@ -132870,7 +133695,7 @@
    ]
   },
   {
-   "file": "asm/overlay_96_q1318.s",
+   "file": "asm/overlay_96_s1319.s",
    "lsf_kind": "src",
    "status": "matched",
    "source": "hgify",
@@ -132890,7 +133715,7 @@
    ]
   },
   {
-   "file": "asm/overlay_96_q1319.s",
+   "file": "asm/overlay_96_s1320.s",
    "lsf_kind": "src",
    "status": "matched",
    "source": "hgify",
@@ -132910,7 +133735,7 @@
    ]
   },
   {
-   "file": "asm/overlay_96_q1320.s",
+   "file": "asm/overlay_96_s1321.s",
    "lsf_kind": "asm",
    "status": "pending",
    "lines": 120,
@@ -132938,7 +133763,7 @@
    ]
   },
   {
-   "file": "asm/overlay_96_q1321.s",
+   "file": "asm/overlay_96_s1322.s",
    "lsf_kind": "src",
    "status": "matched",
    "source": "hgify",
@@ -132958,7 +133783,7 @@
    ]
   },
   {
-   "file": "asm/overlay_96_q1322.s",
+   "file": "asm/overlay_96_s1323.s",
    "lsf_kind": "src",
    "status": "matched",
    "source": "hgify",
@@ -132978,7 +133803,7 @@
    ]
   },
   {
-   "file": "asm/overlay_96_q1323.s",
+   "file": "asm/overlay_96_s1324.s",
    "lsf_kind": "src",
    "status": "matched",
    "source": "hgify",
@@ -132998,7 +133823,7 @@
    ]
   },
   {
-   "file": "asm/overlay_96_q1324.s",
+   "file": "asm/overlay_96_s1325.s",
    "lsf_kind": "src",
    "status": "matched",
    "source": "hgify",
@@ -133018,7 +133843,7 @@
    ]
   },
   {
-   "file": "asm/overlay_96_q1325.s",
+   "file": "asm/overlay_96_s1326.s",
    "lsf_kind": "asm",
    "status": "pending",
    "lines": 171,
@@ -133060,7 +133885,7 @@
    ]
   },
   {
-   "file": "asm/overlay_96_q1326.s",
+   "file": "asm/overlay_96_s1327.s",
    "lsf_kind": "src",
    "status": "matched",
    "source": "hgify",
@@ -133080,7 +133905,7 @@
    ]
   },
   {
-   "file": "asm/overlay_96_q1327.s",
+   "file": "asm/overlay_96_s1328.s",
    "lsf_kind": "asm",
    "status": "pending",
    "lines": 154,
@@ -133108,7 +133933,7 @@
    ]
   },
   {
-   "file": "asm/overlay_96_q1328.s",
+   "file": "asm/overlay_96_s1329.s",
    "lsf_kind": "src",
    "status": "matched",
    "source": "hgify",
@@ -133128,7 +133953,7 @@
    ]
   },
   {
-   "file": "asm/overlay_96_q1329.s",
+   "file": "asm/overlay_96_s1330.s",
    "lsf_kind": "src",
    "status": "matched",
    "source": "hgify",
@@ -133148,7 +133973,7 @@
    ]
   },
   {
-   "file": "asm/overlay_96_q1330.s",
+   "file": "asm/overlay_96_s1331.s",
    "lsf_kind": "src",
    "status": "matched",
    "source": "hgify",
@@ -133168,7 +133993,7 @@
    ]
   },
   {
-   "file": "asm/overlay_96_q1331.s",
+   "file": "asm/overlay_96_s1332.s",
    "lsf_kind": "asm",
    "status": "pending",
    "lines": 238,
@@ -133196,7 +134021,7 @@
    ]
   },
   {
-   "file": "asm/overlay_96_q1332.s",
+   "file": "asm/overlay_96_s1333.s",
    "lsf_kind": "src",
    "status": "matched",
    "source": "hgify",
@@ -133216,7 +134041,7 @@
    ]
   },
   {
-   "file": "asm/overlay_96_q1333.s",
+   "file": "asm/overlay_96_s1334.s",
    "lsf_kind": "src",
    "status": "matched",
    "source": "hgify",
@@ -133236,7 +134061,7 @@
    ]
   },
   {
-   "file": "asm/overlay_96_q1334.s",
+   "file": "asm/overlay_96_s1335.s",
    "lsf_kind": "asm",
    "status": "pending",
    "lines": 106,
@@ -133264,7 +134089,7 @@
    ]
   },
   {
-   "file": "asm/overlay_96_q1335.s",
+   "file": "asm/overlay_96_s1336.s",
    "lsf_kind": "src",
    "status": "matched",
    "source": "hgify",
@@ -133284,7 +134109,7 @@
    ]
   },
   {
-   "file": "asm/overlay_96_q1336.s",
+   "file": "asm/overlay_96_s1337.s",
    "lsf_kind": "asm",
    "status": "pending",
    "lines": 88,
@@ -133312,7 +134137,7 @@
    ]
   },
   {
-   "file": "asm/overlay_96_q1337.s",
+   "file": "asm/overlay_96_s1338.s",
    "lsf_kind": "src",
    "status": "matched",
    "source": "hgify",
@@ -133332,7 +134157,7 @@
    ]
   },
   {
-   "file": "asm/overlay_96_q1338.s",
+   "file": "asm/overlay_96_s1339.s",
    "lsf_kind": "src",
    "status": "matched",
    "source": "hgify",
@@ -133352,7 +134177,7 @@
    ]
   },
   {
-   "file": "asm/overlay_96_q1339.s",
+   "file": "asm/overlay_96_s1340.s",
    "lsf_kind": "src",
    "status": "matched",
    "source": "hgify",
@@ -133372,7 +134197,7 @@
    ]
   },
   {
-   "file": "asm/overlay_96_q1340.s",
+   "file": "asm/overlay_96_s1341.s",
    "lsf_kind": "src",
    "status": "matched",
    "source": "hgify",
@@ -133392,7 +134217,7 @@
    ]
   },
   {
-   "file": "asm/overlay_96_q1341.s",
+   "file": "asm/overlay_96_s1342.s",
    "lsf_kind": "src",
    "status": "matched",
    "source": "hgify",
@@ -133412,7 +134237,7 @@
    ]
   },
   {
-   "file": "asm/overlay_96_q1342.s",
+   "file": "asm/overlay_96_s1343.s",
    "lsf_kind": "src",
    "status": "matched",
    "source": "hgify",
@@ -133432,7 +134257,7 @@
    ]
   },
   {
-   "file": "asm/overlay_96_q1343.s",
+   "file": "asm/overlay_96_s1344.s",
    "lsf_kind": "src",
    "status": "matched",
    "source": "hgify",
@@ -133452,7 +134277,7 @@
    ]
   },
   {
-   "file": "asm/overlay_96_q1344.s",
+   "file": "asm/overlay_96_s1345.s",
    "lsf_kind": "src",
    "status": "matched",
    "source": "hgify",
@@ -133472,7 +134297,7 @@
    ]
   },
   {
-   "file": "asm/overlay_96_q1345.s",
+   "file": "asm/overlay_96_s1346.s",
    "lsf_kind": "asm",
    "status": "pending",
    "lines": 465,
@@ -133507,7 +134332,7 @@
    ]
   },
   {
-   "file": "asm/overlay_96_q1346.s",
+   "file": "asm/overlay_96_s1347.s",
    "lsf_kind": "src",
    "status": "matched",
    "source": "hgify",
@@ -133527,7 +134352,7 @@
    ]
   },
   {
-   "file": "asm/overlay_96_q1347.s",
+   "file": "asm/overlay_96_s1348.s",
    "lsf_kind": "asm",
    "status": "pending",
    "lines": 242,
@@ -133555,7 +134380,7 @@
    ]
   },
   {
-   "file": "asm/overlay_96_q1348.s",
+   "file": "asm/overlay_96_s1349.s",
    "lsf_kind": "src",
    "status": "matched",
    "source": "hgify",
@@ -133575,7 +134400,7 @@
    ]
   },
   {
-   "file": "asm/overlay_96_q1349.s",
+   "file": "asm/overlay_96_s1350.s",
    "lsf_kind": "src",
    "status": "matched",
    "source": "hgify",
@@ -133595,7 +134420,7 @@
    ]
   },
   {
-   "file": "asm/overlay_96_q1350.s",
+   "file": "asm/overlay_96_s1351.s",
    "lsf_kind": "asm",
    "status": "pending",
    "lines": 73,
@@ -133623,7 +134448,7 @@
    ]
   },
   {
-   "file": "asm/overlay_96_q1351.s",
+   "file": "asm/overlay_96_s1352.s",
    "lsf_kind": "src",
    "status": "matched",
    "source": "hgify",
@@ -133643,7 +134468,7 @@
    ]
   },
   {
-   "file": "asm/overlay_96_q1352.s",
+   "file": "asm/overlay_96_s1353.s",
    "lsf_kind": "src",
    "status": "matched",
    "source": "hgify",
@@ -133663,7 +134488,7 @@
    ]
   },
   {
-   "file": "asm/overlay_96_q1353.s",
+   "file": "asm/overlay_96_s1354.s",
    "lsf_kind": "asm",
    "status": "pending",
    "lines": 75,
@@ -133691,7 +134516,7 @@
    ]
   },
   {
-   "file": "asm/overlay_96_q1354.s",
+   "file": "asm/overlay_96_s1355.s",
    "lsf_kind": "src",
    "status": "matched",
    "source": "hgify",
@@ -133711,7 +134536,7 @@
    ]
   },
   {
-   "file": "asm/overlay_96_q1355.s",
+   "file": "asm/overlay_96_s1356.s",
    "lsf_kind": "src",
    "status": "matched",
    "source": "hgify",
@@ -133731,7 +134556,7 @@
    ]
   },
   {
-   "file": "asm/overlay_96_q1356.s",
+   "file": "asm/overlay_96_s1357.s",
    "lsf_kind": "src",
    "status": "matched",
    "source": "hgify",
@@ -133751,7 +134576,7 @@
    ]
   },
   {
-   "file": "asm/overlay_96_q1357.s",
+   "file": "asm/overlay_96_s1358.s",
    "lsf_kind": "src",
    "status": "matched",
    "source": "hgify",
@@ -133771,7 +134596,7 @@
    ]
   },
   {
-   "file": "asm/overlay_96_q1358.s",
+   "file": "asm/overlay_96_s1359.s",
    "lsf_kind": "src",
    "status": "matched",
    "source": "hgify",
@@ -133791,7 +134616,7 @@
    ]
   },
   {
-   "file": "asm/overlay_96_q1359.s",
+   "file": "asm/overlay_96_s1360.s",
    "lsf_kind": "src",
    "status": "matched",
    "source": "hgify",
@@ -133811,7 +134636,7 @@
    ]
   },
   {
-   "file": "asm/overlay_96_q1360.s",
+   "file": "asm/overlay_96_s1361.s",
    "lsf_kind": "src",
    "status": "matched",
    "source": "hgify",
@@ -133831,7 +134656,7 @@
    ]
   },
   {
-   "file": "asm/overlay_96_q1361.s",
+   "file": "asm/overlay_96_s1362.s",
    "lsf_kind": "src",
    "status": "matched",
    "source": "hgify",
@@ -133851,7 +134676,7 @@
    ]
   },
   {
-   "file": "asm/overlay_96_q1362.s",
+   "file": "asm/overlay_96_s1363.s",
    "lsf_kind": "src",
    "status": "matched",
    "source": "hgify",
@@ -134632,8 +135457,8 @@
    "lsf_kind": "src",
    "status": "matched",
    "source": "hgify",
-   "objects": 135,
-   "function_count": 135,
+   "objects": 136,
+   "function_count": 136,
    "lines": 0,
    "text_bytes_est": 0,
    "data_only": false,
@@ -135137,6 +135962,13 @@
     },
     {
      "name": "ov99_021E7508",
+     "mode": "thumb",
+     "insns": 0,
+     "size_est": 0,
+     "status": "matched"
+    },
+    {
+     "name": "ov99_021E7598",
      "mode": "thumb",
      "insns": 0,
      "size_est": 0,
@@ -135926,8 +136758,8 @@
    "lsf_kind": "src",
    "status": "matched",
    "source": "hgify",
-   "objects": 247,
-   "function_count": 247,
+   "objects": 248,
+   "function_count": 248,
    "lines": 0,
    "text_bytes_est": 0,
    "data_only": false,
@@ -136942,6 +137774,13 @@
     },
     {
      "name": "ov102_021EAB10",
+     "mode": "thumb",
+     "insns": 0,
+     "size_est": 0,
+     "status": "matched"
+    },
+    {
+     "name": "ov102_021EAB30",
      "mode": "thumb",
      "insns": 0,
      "size_est": 0,
@@ -140234,8 +141073,8 @@
    "lsf_kind": "src",
    "status": "matched",
    "source": "hgify",
-   "objects": 73,
-   "function_count": 73,
+   "objects": 74,
+   "function_count": 74,
    "lines": 0,
    "text_bytes_est": 0,
    "data_only": false,
@@ -140263,6 +141102,13 @@
     },
     {
      "name": "ov109_021E5A20",
+     "mode": "thumb",
+     "insns": 0,
+     "size_est": 0,
+     "status": "matched"
+    },
+    {
+     "name": "ov109_021E5A70",
      "mode": "thumb",
      "insns": 0,
      "size_est": 0,
@@ -141120,8 +141966,8 @@
    "lsf_kind": "src",
    "status": "matched",
    "source": "hgify",
-   "objects": 481,
-   "function_count": 481,
+   "objects": 489,
+   "function_count": 489,
    "lines": 0,
    "text_bytes_est": 0,
    "data_only": false,
@@ -142066,6 +142912,13 @@
     },
     {
      "name": "ov112_021EB3D8",
+     "mode": "thumb",
+     "insns": 0,
+     "size_est": 0,
+     "status": "matched"
+    },
+    {
+     "name": "ov112_021EB44C",
      "mode": "thumb",
      "insns": 0,
      "size_est": 0,
@@ -143241,6 +144094,13 @@
      "status": "matched"
     },
     {
+     "name": "ov112_021EE7A8",
+     "mode": "thumb",
+     "insns": 0,
+     "size_est": 0,
+     "status": "matched"
+    },
+    {
      "name": "ov112_021EE8BC",
      "mode": "thumb",
      "insns": 0,
@@ -143291,6 +144151,13 @@
     },
     {
      "name": "ov112_021EECF0",
+     "mode": "thumb",
+     "insns": 0,
+     "size_est": 0,
+     "status": "matched"
+    },
+    {
+     "name": "ov112_021EED08",
      "mode": "thumb",
      "insns": 0,
      "size_est": 0,
@@ -143542,6 +144409,13 @@
      "status": "matched"
     },
     {
+     "name": "ov112_021EF758",
+     "mode": "thumb",
+     "insns": 0,
+     "size_est": 0,
+     "status": "matched"
+    },
+    {
      "name": "ov112_021EF8C0",
      "mode": "thumb",
      "insns": 0,
@@ -143717,6 +144591,13 @@
      "status": "matched"
     },
     {
+     "name": "ov112_021EFF84",
+     "mode": "thumb",
+     "insns": 0,
+     "size_est": 0,
+     "status": "matched"
+    },
+    {
      "name": "ov112_021F00CC",
      "mode": "thumb",
      "insns": 0,
@@ -143760,6 +144641,13 @@
     },
     {
      "name": "ov112_021F01B8",
+     "mode": "thumb",
+     "insns": 0,
+     "size_est": 0,
+     "status": "matched"
+    },
+    {
+     "name": "ov112_021F01CC",
      "mode": "thumb",
      "insns": 0,
      "size_est": 0,
@@ -144347,6 +145235,13 @@
      "status": "matched"
     },
     {
+     "name": "ov112_021F298C",
+     "mode": "thumb",
+     "insns": 0,
+     "size_est": 0,
+     "status": "matched"
+    },
+    {
      "name": "ov112_021F2A78",
      "mode": "thumb",
      "insns": 0,
@@ -144355,6 +145250,13 @@
     },
     {
      "name": "ov112_021F2B2C",
+     "mode": "thumb",
+     "insns": 0,
+     "size_est": 0,
+     "status": "matched"
+    },
+    {
+     "name": "ov112_021F2B80",
      "mode": "thumb",
      "insns": 0,
      "size_est": 0,
@@ -144500,8 +145402,8 @@
    "lsf_kind": "src",
    "status": "matched",
    "source": "hgify",
-   "objects": 47,
-   "function_count": 47,
+   "objects": 48,
+   "function_count": 48,
    "lines": 0,
    "text_bytes_est": 0,
    "data_only": false,
@@ -144662,6 +145564,13 @@
     },
     {
      "name": "ov113_021E5F94",
+     "mode": "thumb",
+     "insns": 0,
+     "size_est": 0,
+     "status": "matched"
+    },
+    {
+     "name": "ov113_021E5FC0",
      "mode": "thumb",
      "insns": 0,
      "size_est": 0,
@@ -144842,12 +145751,19 @@
    "lsf_kind": "src",
    "status": "matched",
    "source": "hgify",
-   "objects": 1,
-   "function_count": 1,
+   "objects": 2,
+   "function_count": 2,
    "lines": 0,
    "text_bytes_est": 0,
    "data_only": false,
    "functions": [
+    {
+     "name": "ov114_0225F020",
+     "mode": "thumb",
+     "insns": 0,
+     "size_est": 0,
+     "status": "matched"
+    },
     {
      "name": "ov114_0225F280",
      "mode": "thumb",
@@ -145362,7 +146278,7 @@
    "status": "matched",
    "source": "hgify",
    "objects": 38,
-   "function_count": 35,
+   "function_count": 36,
    "lines": 0,
    "text_bytes_est": 0,
    "data_only": false,
@@ -145607,6 +146523,13 @@
     },
     {
      "name": "ov120_0225FEE8",
+     "mode": "thumb",
+     "insns": 0,
+     "size_est": 0,
+     "status": "matched"
+    },
+    {
+     "name": "ov120_0225FF00",
      "mode": "thumb",
      "insns": 0,
      "size_est": 0,
@@ -146304,9 +147227,9 @@
    "lsf_kind": "asm",
    "status": "pending",
    "split": "hgify",
-   "lines": 1454,
-   "function_count": 8,
-   "text_bytes_est": 2516,
+   "lines": 1304,
+   "function_count": 7,
+   "text_bytes_est": 2234,
    "data_only": false,
    "sections": {
     "rodata_bytes": 0,
@@ -146367,13 +147290,6 @@
      "insns": 92,
      "size_est": 202,
      "status": "pending"
-    },
-    {
-     "name": "sub_020371C4",
-     "mode": "thumb",
-     "insns": 126,
-     "size_est": 282,
-     "status": "pending"
     }
    ]
   },
@@ -146382,9 +147298,9 @@
    "lsf_kind": "asm",
    "status": "pending",
    "split": "hgify",
-   "lines": 486,
-   "function_count": 2,
-   "text_bytes_est": 694,
+   "lines": 298,
+   "function_count": 1,
+   "text_bytes_est": 350,
    "data_only": false,
    "sections": {
     "rodata_bytes": 52,
@@ -146397,13 +147313,6 @@
    "imports": [],
    "exports": [],
    "functions": [
-    {
-     "name": "sub_0203A59C",
-     "mode": "thumb",
-     "insns": 158,
-     "size_est": 344,
-     "status": "pending"
-    },
     {
      "name": "sub_0203A700",
      "mode": "thumb",
@@ -146540,9 +147449,9 @@
    "lsf_kind": "asm",
    "status": "pending",
    "split": "hgify",
-   "lines": 1128,
-   "function_count": 3,
-   "text_bytes_est": 2438,
+   "lines": 996,
+   "function_count": 2,
+   "text_bytes_est": 2188,
    "data_only": false,
    "sections": {
     "rodata_bytes": 8,
@@ -146555,13 +147464,6 @@
    "imports": [],
    "exports": [],
    "functions": [
-    {
-     "name": "sub_02058B84",
-     "mode": "thumb",
-     "insns": 118,
-     "size_est": 250,
-     "status": "pending"
-    },
     {
      "name": "sub_02058D4C",
      "mode": "thumb",
@@ -146655,9 +147557,9 @@
    "lsf_kind": "asm",
    "status": "pending",
    "split": "hgify",
-   "lines": 490,
-   "function_count": 3,
-   "text_bytes_est": 618,
+   "lines": 308,
+   "function_count": 2,
+   "text_bytes_est": 270,
    "data_only": false,
    "sections": {
     "rodata_bytes": 92,
@@ -146675,13 +147577,6 @@
      "mode": "thumb",
      "insns": 42,
      "size_est": 94,
-     "status": "pending"
-    },
-    {
-     "name": "sub_0205D4B4",
-     "mode": "thumb",
-     "insns": 144,
-     "size_est": 348,
      "status": "pending"
     },
     {
@@ -146806,9 +147701,9 @@
    "lsf_kind": "asm",
    "status": "pending",
    "split": "hgify",
-   "lines": 1097,
-   "function_count": 5,
-   "text_bytes_est": 1706,
+   "lines": 823,
+   "function_count": 4,
+   "text_bytes_est": 1102,
    "data_only": false,
    "sections": {
     "rodata_bytes": 296,
@@ -146826,13 +147721,6 @@
      "mode": "thumb",
      "insns": 149,
      "size_est": 368,
-     "status": "pending"
-    },
-    {
-     "name": "MapObjectMovementCmd108_Step1",
-     "mode": "thumb",
-     "insns": 257,
-     "size_est": 604,
      "status": "pending"
     },
     {
@@ -146921,9 +147809,9 @@
    "lsf_kind": "asm",
    "status": "pending",
    "split": "hgify",
-   "lines": 2508,
-   "function_count": 3,
-   "text_bytes_est": 5016,
+   "lines": 2216,
+   "function_count": 2,
+   "text_bytes_est": 4370,
    "data_only": false,
    "sections": {
     "rodata_bytes": 376,
@@ -146936,13 +147824,6 @@
    "imports": [],
    "exports": [],
    "functions": [
-    {
-     "name": "sub_02075A7C",
-     "mode": "thumb",
-     "insns": 274,
-     "size_est": 646,
-     "status": "pending"
-    },
     {
      "name": "sub_02075E14",
      "mode": "thumb",
@@ -146964,10 +147845,10 @@
    "lsf_kind": "asm",
    "status": "pending",
    "split": "hgify",
-   "lines": 221,
-   "function_count": 1,
-   "text_bytes_est": 334,
-   "data_only": false,
+   "lines": 56,
+   "function_count": 0,
+   "text_bytes_est": 0,
+   "data_only": true,
    "sections": {
     "rodata_bytes": 252,
     "data_bytes": 0,
@@ -146978,15 +147859,7 @@
    "jumptable_words": 0,
    "imports": [],
    "exports": [],
-   "functions": [
-    {
-     "name": "sub_020850F4",
-     "mode": "thumb",
-     "insns": 140,
-     "size_est": 334,
-     "status": "pending"
-    }
-   ]
+   "functions": []
   },
   {
    "file": "asm/unk_02087FD4.s",
@@ -147121,9 +147994,9 @@
    "lsf_kind": "asm",
    "status": "pending",
    "split": "hgify",
-   "lines": 923,
-   "function_count": 5,
-   "text_bytes_est": 870,
+   "lines": 585,
+   "function_count": 3,
+   "text_bytes_est": 222,
    "data_only": false,
    "sections": {
     "rodata_bytes": 4691,
@@ -147144,24 +148017,10 @@
      "status": "pending"
     },
     {
-     "name": "sub_0208B5A8",
-     "mode": "thumb",
-     "insns": 158,
-     "size_est": 352,
-     "status": "pending"
-    },
-    {
      "name": "sub_0208B85C",
      "mode": "thumb",
      "insns": 32,
      "size_est": 64,
-     "status": "pending"
-    },
-    {
-     "name": "sub_0208B89C",
-     "mode": "thumb",
-     "insns": 137,
-     "size_est": 296,
      "status": "pending"
     },
     {
@@ -147178,9 +148037,9 @@
    "lsf_kind": "asm",
    "status": "pending",
    "split": "hgify",
-   "lines": 856,
-   "function_count": 3,
-   "text_bytes_est": 1300,
+   "lines": 700,
+   "function_count": 2,
+   "text_bytes_est": 1022,
    "data_only": false,
    "sections": {
     "rodata_bytes": 544,
@@ -147205,13 +148064,6 @@
      "mode": "thumb",
      "insns": 348,
      "size_est": 806,
-     "status": "pending"
-    },
-    {
-     "name": "sub_0208D884",
-     "mode": "thumb",
-     "insns": 130,
-     "size_est": 278,
      "status": "pending"
     }
    ]
@@ -147242,9 +148094,9 @@
    "lsf_kind": "asm",
    "status": "pending",
    "split": "hgify",
-   "lines": 1649,
-   "function_count": 9,
-   "text_bytes_est": 2840,
+   "lines": 1146,
+   "function_count": 7,
+   "text_bytes_est": 1910,
    "data_only": false,
    "sections": {
     "rodata_bytes": 112,
@@ -147257,20 +148109,6 @@
    "imports": [],
    "exports": [],
    "functions": [
-    {
-     "name": "sub_02093440",
-     "mode": "thumb",
-     "insns": 145,
-     "size_est": 330,
-     "status": "pending"
-    },
-    {
-     "name": "sub_02093630",
-     "mode": "thumb",
-     "insns": 270,
-     "size_est": 600,
-     "status": "pending"
-    },
     {
      "name": "sub_02093B84",
      "mode": "thumb",
@@ -147384,9 +148222,9 @@
    "lsf_kind": "asm",
    "status": "pending",
    "split": "hgify",
-   "lines": 767,
-   "function_count": 5,
-   "text_bytes_est": 1052,
+   "lines": 598,
+   "function_count": 4,
+   "text_bytes_est": 760,
    "data_only": false,
    "sections": {
     "rodata_bytes": 18,
@@ -147414,13 +148252,6 @@
      "status": "pending"
     },
     {
-     "name": "ov00_021E6D7C",
-     "mode": "thumb",
-     "insns": 138,
-     "size_est": 292,
-     "status": "pending"
-    },
-    {
      "name": "ov00_021E6ED8",
      "mode": "thumb",
      "insns": 100,
@@ -147441,9 +148272,9 @@
    "lsf_kind": "asm",
    "status": "pending",
    "split": "hgify",
-   "lines": 1235,
-   "function_count": 6,
-   "text_bytes_est": 2086,
+   "lines": 565,
+   "function_count": 4,
+   "text_bytes_est": 786,
    "data_only": false,
    "sections": {
     "rodata_bytes": 92,
@@ -147457,24 +148288,10 @@
    "exports": [],
    "functions": [
     {
-     "name": "ov01_021E90E4",
-     "mode": "thumb",
-     "insns": 278,
-     "size_est": 638,
-     "status": "pending"
-    },
-    {
      "name": "ov01_021E9AE8",
      "mode": "thumb",
      "insns": 92,
      "size_est": 208,
-     "status": "pending"
-    },
-    {
-     "name": "ov01_021E9C40",
-     "mode": "thumb",
-     "insns": 282,
-     "size_est": 662,
      "status": "pending"
     },
     {
@@ -147534,9 +148351,9 @@
    "lsf_kind": "asm",
    "status": "pending",
    "split": "hgify",
-   "lines": 763,
-   "function_count": 4,
-   "text_bytes_est": 922,
+   "lines": 427,
+   "function_count": 3,
+   "text_bytes_est": 338,
    "data_only": false,
    "sections": {
     "rodata_bytes": 140,
@@ -147568,13 +148385,6 @@
      "mode": "thumb",
      "insns": 25,
      "size_est": 50,
-     "status": "pending"
-    },
-    {
-     "name": "ov01_021EC94C",
-     "mode": "thumb",
-     "insns": 271,
-     "size_est": 584,
      "status": "pending"
     }
    ]
@@ -147807,9 +148617,9 @@
    "lsf_kind": "asm",
    "status": "pending",
    "split": "hgify",
-   "lines": 1556,
-   "function_count": 7,
-   "text_bytes_est": 2532,
+   "lines": 1439,
+   "function_count": 6,
+   "text_bytes_est": 2330,
    "data_only": false,
    "sections": {
     "rodata_bytes": 72,
@@ -147822,13 +148632,6 @@
    "imports": [],
    "exports": [],
    "functions": [
-    {
-     "name": "ov01_021F4B1C",
-     "mode": "thumb",
-     "insns": 91,
-     "size_est": 202,
-     "status": "pending"
-    },
     {
      "name": "MapLoadManager_Tick",
      "mode": "thumb",
@@ -148192,9 +148995,9 @@
    "lsf_kind": "asm",
    "status": "pending",
    "split": "hgify",
-   "lines": 872,
-   "function_count": 3,
-   "text_bytes_est": 908,
+   "lines": 615,
+   "function_count": 2,
+   "text_bytes_est": 436,
    "data_only": false,
    "sections": {
     "rodata_bytes": 2080,
@@ -148207,13 +149010,6 @@
    "imports": [],
    "exports": [],
    "functions": [
-    {
-     "name": "ov05_0221BB30",
-     "mode": "thumb",
-     "insns": 216,
-     "size_est": 472,
-     "status": "pending"
-    },
     {
      "name": "ov05_0221D240",
      "mode": "thumb",
@@ -148235,9 +149031,9 @@
    "lsf_kind": "asm",
    "status": "pending",
    "split": "hgify",
-   "lines": 7999,
-   "function_count": 30,
-   "text_bytes_est": 10270,
+   "lines": 7610,
+   "function_count": 27,
+   "text_bytes_est": 9554,
    "data_only": false,
    "sections": {
     "rodata_bytes": 11452,
@@ -148250,13 +149046,6 @@
    "imports": [],
    "exports": [],
    "functions": [
-    {
-     "name": "ov07_0221BEDC",
-     "mode": "thumb",
-     "insns": 102,
-     "size_est": 228,
-     "status": "pending"
-    },
     {
      "name": "ov07_0221C01C",
      "mode": "thumb",
@@ -148314,13 +149103,6 @@
      "status": "pending"
     },
     {
-     "name": "ov07_0221E280",
-     "mode": "thumb",
-     "insns": 144,
-     "size_est": 310,
-     "status": "pending"
-    },
-    {
      "name": "ov07_0221E788",
      "mode": "thumb",
      "insns": 100,
@@ -148332,13 +149114,6 @@
      "mode": "thumb",
      "insns": 36,
      "size_est": 78,
-     "status": "pending"
-    },
-    {
-     "name": "ov07_0221F710",
-     "mode": "thumb",
-     "insns": 84,
-     "size_est": 178,
      "status": "pending"
     },
     {
@@ -148707,9 +149482,9 @@
    "lsf_kind": "asm",
    "status": "pending",
    "split": "hgify",
-   "lines": 3406,
-   "function_count": 6,
-   "text_bytes_est": 6614,
+   "lines": 3233,
+   "function_count": 5,
+   "text_bytes_est": 6312,
    "data_only": false,
    "sections": {
     "rodata_bytes": 776,
@@ -148758,13 +149533,6 @@
      "insns": 458,
      "size_est": 1036,
      "status": "pending"
-    },
-    {
-     "name": "ov12_0223A0D4",
-     "mode": "thumb",
-     "insns": 137,
-     "size_est": 302,
-     "status": "pending"
     }
    ]
   },
@@ -148773,9 +149541,9 @@
    "lsf_kind": "asm",
    "status": "pending",
    "split": "hgify",
-   "lines": 11352,
-   "function_count": 32,
-   "text_bytes_est": 21346,
+   "lines": 11039,
+   "function_count": 31,
+   "text_bytes_est": 20750,
    "data_only": false,
    "sections": {
     "rodata_bytes": 856,
@@ -148964,13 +149732,6 @@
      "status": "pending"
     },
     {
-     "name": "ov12_0225FD14",
-     "mode": "thumb",
-     "insns": 269,
-     "size_est": 596,
-     "status": "pending"
-    },
-    {
      "name": "ov12_022600F0",
      "mode": "thumb",
      "insns": 286,
@@ -149077,9 +149838,9 @@
    "lsf_kind": "asm",
    "status": "pending",
    "split": "hgify",
-   "lines": 2948,
-   "function_count": 18,
-   "text_bytes_est": 4790,
+   "lines": 1768,
+   "function_count": 12,
+   "text_bytes_est": 2520,
    "data_only": false,
    "sections": {
     "rodata_bytes": 352,
@@ -149093,34 +149854,6 @@
    "exports": [],
    "functions": [
     {
-     "name": "ov14_021E65C4",
-     "mode": "thumb",
-     "insns": 144,
-     "size_est": 302,
-     "status": "pending"
-    },
-    {
-     "name": "ov14_021E66F4",
-     "mode": "thumb",
-     "insns": 139,
-     "size_est": 286,
-     "status": "pending"
-    },
-    {
-     "name": "ov14_021E6CF8",
-     "mode": "thumb",
-     "insns": 272,
-     "size_est": 578,
-     "status": "pending"
-    },
-    {
-     "name": "ov14_021E6F3C",
-     "mode": "thumb",
-     "insns": 117,
-     "size_est": 246,
-     "status": "pending"
-    },
-    {
      "name": "ov14_021E7034",
      "mode": "thumb",
      "insns": 57,
@@ -149132,13 +149865,6 @@
      "mode": "thumb",
      "insns": 103,
      "size_est": 220,
-     "status": "pending"
-    },
-    {
-     "name": "ov14_021E7358",
-     "mode": "thumb",
-     "insns": 121,
-     "size_est": 270,
      "status": "pending"
     },
     {
@@ -149184,13 +149910,6 @@
      "status": "pending"
     },
     {
-     "name": "ov14_021E9A24",
-     "mode": "thumb",
-     "insns": 267,
-     "size_est": 588,
-     "status": "pending"
-    },
-    {
      "name": "ov14_021E9C88",
      "mode": "thumb",
      "insns": 290,
@@ -149225,9 +149944,9 @@
    "lsf_kind": "asm",
    "status": "pending",
    "split": "hgify",
-   "lines": 3073,
-   "function_count": 7,
-   "text_bytes_est": 5512,
+   "lines": 2418,
+   "function_count": 5,
+   "text_bytes_est": 4184,
    "data_only": false,
    "sections": {
     "rodata_bytes": 844,
@@ -149245,13 +149964,6 @@
      "mode": "thumb",
      "insns": 423,
      "size_est": 1018,
-     "status": "pending"
-    },
-    {
-     "name": "ov14_021EBB3C",
-     "mode": "thumb",
-     "insns": 284,
-     "size_est": 648,
      "status": "pending"
     },
     {
@@ -149280,13 +149992,6 @@
      "mode": "thumb",
      "insns": 388,
      "size_est": 942,
-     "status": "pending"
-    },
-    {
-     "name": "ov14_021EDFA0",
-     "mode": "thumb",
-     "insns": 283,
-     "size_est": 680,
      "status": "pending"
     }
    ]
@@ -149357,42 +150062,6 @@
    ]
   },
   {
-   "file": "asm/overlay_14_021EFDE4.s",
-   "lsf_kind": "asm",
-   "status": "pending",
-   "split": "hgify",
-   "lines": 286,
-   "function_count": 2,
-   "text_bytes_est": 566,
-   "data_only": false,
-   "sections": {
-    "rodata_bytes": 0,
-    "data_bytes": 0,
-    "bss_bytes": 0,
-    "other_bytes": 0
-   },
-   "other_sections": [],
-   "jumptable_words": 0,
-   "imports": [],
-   "exports": [],
-   "functions": [
-    {
-     "name": "ov14_021EFDF4",
-     "mode": "thumb",
-     "insns": 112,
-     "size_est": 260,
-     "status": "pending"
-    },
-    {
-     "name": "ov14_021F0660",
-     "mode": "thumb",
-     "insns": 131,
-     "size_est": 306,
-     "status": "pending"
-    }
-   ]
-  },
-  {
    "file": "asm/overlay_14_021F0A80.s",
    "lsf_kind": "asm",
    "status": "pending",
@@ -149433,9 +150102,9 @@
    "lsf_kind": "asm",
    "status": "pending",
    "split": "hgify",
-   "lines": 318,
-   "function_count": 3,
-   "text_bytes_est": 598,
+   "lines": 151,
+   "function_count": 2,
+   "text_bytes_est": 260,
    "data_only": false,
    "sections": {
     "rodata_bytes": 0,
@@ -149448,13 +150117,6 @@
    "imports": [],
    "exports": [],
    "functions": [
-    {
-     "name": "ov14_021F19F0",
-     "mode": "thumb",
-     "insns": 147,
-     "size_est": 338,
-     "status": "pending"
-    },
     {
      "name": "ov14_021F1C04",
      "mode": "thumb",
@@ -149590,9 +150252,9 @@
    "lsf_kind": "asm",
    "status": "pending",
    "split": "hgify",
-   "lines": 3894,
-   "function_count": 21,
-   "text_bytes_est": 5626,
+   "lines": 2823,
+   "function_count": 15,
+   "text_bytes_est": 3656,
    "data_only": false,
    "sections": {
     "rodata_bytes": 3596,
@@ -149648,20 +150310,6 @@
      "status": "pending"
     },
     {
-     "name": "ov15_021FB14C",
-     "mode": "thumb",
-     "insns": 265,
-     "size_est": 556,
-     "status": "pending"
-    },
-    {
-     "name": "ov15_021FB3F0",
-     "mode": "thumb",
-     "insns": 129,
-     "size_est": 280,
-     "status": "pending"
-    },
-    {
      "name": "ov15_021FB680",
      "mode": "thumb",
      "insns": 55,
@@ -149669,24 +150317,10 @@
      "status": "pending"
     },
     {
-     "name": "ov15_021FC01C",
-     "mode": "thumb",
-     "insns": 123,
-     "size_est": 286,
-     "status": "pending"
-    },
-    {
      "name": "ov15_021FC41C",
      "mode": "thumb",
      "insns": 396,
      "size_est": 854,
-     "status": "pending"
-    },
-    {
-     "name": "ov15_021FD10C",
-     "mode": "thumb",
-     "insns": 135,
-     "size_est": 312,
      "status": "pending"
     },
     {
@@ -149732,24 +150366,10 @@
      "status": "pending"
     },
     {
-     "name": "ov15_021FF570",
-     "mode": "thumb",
-     "insns": 115,
-     "size_est": 250,
-     "status": "pending"
-    },
-    {
      "name": "ov15_021FFDD8",
      "mode": "thumb",
      "insns": 103,
      "size_est": 230,
-     "status": "pending"
-    },
-    {
-     "name": "ov15_02200300",
-     "mode": "thumb",
-     "insns": 132,
-     "size_est": 286,
      "status": "pending"
     }
    ]
@@ -149759,9 +150379,9 @@
    "lsf_kind": "asm",
    "status": "pending",
    "split": "hgify",
-   "lines": 1755,
-   "function_count": 7,
-   "text_bytes_est": 2312,
+   "lines": 1472,
+   "function_count": 6,
+   "text_bytes_est": 1732,
    "data_only": false,
    "sections": {
     "rodata_bytes": 1364,
@@ -149815,13 +150435,6 @@
      "insns": 102,
      "size_est": 222,
      "status": "pending"
-    },
-    {
-     "name": "ov18_021F05E8",
-     "mode": "thumb",
-     "insns": 266,
-     "size_est": 580,
-     "status": "pending"
     }
    ]
   },
@@ -149830,9 +150443,9 @@
    "lsf_kind": "asm",
    "status": "pending",
    "split": "hgify",
-   "lines": 3664,
-   "function_count": 24,
-   "text_bytes_est": 4518,
+   "lines": 3257,
+   "function_count": 21,
+   "text_bytes_est": 3798,
    "data_only": false,
    "sections": {
     "rodata_bytes": 4884,
@@ -149916,20 +150529,6 @@
      "status": "pending"
     },
     {
-     "name": "ov18_021F36D4",
-     "mode": "thumb",
-     "insns": 115,
-     "size_est": 250,
-     "status": "pending"
-    },
-    {
-     "name": "ov18_021F37D4",
-     "mode": "thumb",
-     "insns": 127,
-     "size_est": 276,
-     "status": "pending"
-    },
-    {
      "name": "ov18_021F39C4",
      "mode": "thumb",
      "insns": 68,
@@ -150004,13 +150603,6 @@
      "mode": "thumb",
      "insns": 142,
      "size_est": 308,
-     "status": "pending"
-    },
-    {
-     "name": "ov18_021F69E8",
-     "mode": "thumb",
-     "insns": 87,
-     "size_est": 194,
      "status": "pending"
     }
    ]
@@ -150198,9 +150790,9 @@
    "lsf_kind": "asm",
    "status": "pending",
    "split": "hgify",
-   "lines": 343,
-   "function_count": 2,
-   "text_bytes_est": 386,
+   "lines": 213,
+   "function_count": 1,
+   "text_bytes_est": 154,
    "data_only": false,
    "sections": {
     "rodata_bytes": 228,
@@ -150218,13 +150810,6 @@
      "mode": "thumb",
      "insns": 71,
      "size_est": 154,
-     "status": "pending"
-    },
-    {
-     "name": "ov31_0225DD14",
-     "mode": "thumb",
-     "insns": 107,
-     "size_est": 232,
      "status": "pending"
     }
    ]
@@ -150385,9 +150970,9 @@
    "lsf_kind": "asm",
    "status": "pending",
    "split": "hgify",
-   "lines": 16208,
-   "function_count": 67,
-   "text_bytes_est": 28632,
+   "lines": 11113,
+   "function_count": 48,
+   "text_bytes_est": 18640,
    "data_only": false,
    "sections": {
     "rodata_bytes": 4212,
@@ -150408,24 +150993,10 @@
      "status": "pending"
     },
     {
-     "name": "ov40_0222D048",
-     "mode": "thumb",
-     "insns": 257,
-     "size_est": 562,
-     "status": "pending"
-    },
-    {
      "name": "ov40_0222D2A0",
      "mode": "thumb",
      "insns": 149,
      "size_est": 322,
-     "status": "pending"
-    },
-    {
-     "name": "ov40_0222D3E8",
-     "mode": "thumb",
-     "insns": 155,
-     "size_est": 368,
      "status": "pending"
     },
     {
@@ -150506,24 +151077,10 @@
      "status": "pending"
     },
     {
-     "name": "ov40_0223142C",
-     "mode": "thumb",
-     "insns": 289,
-     "size_est": 618,
-     "status": "pending"
-    },
-    {
      "name": "ov40_022319A4",
      "mode": "thumb",
      "insns": 334,
      "size_est": 710,
-     "status": "pending"
-    },
-    {
-     "name": "ov40_02231C78",
-     "mode": "thumb",
-     "insns": 257,
-     "size_est": 546,
      "status": "pending"
     },
     {
@@ -150545,20 +151102,6 @@
      "mode": "thumb",
      "insns": 322,
      "size_est": 720,
-     "status": "pending"
-    },
-    {
-     "name": "ov40_022344D8",
-     "mode": "thumb",
-     "insns": 329,
-     "size_est": 796,
-     "status": "pending"
-    },
-    {
-     "name": "ov40_02235B4C",
-     "mode": "thumb",
-     "insns": 128,
-     "size_est": 302,
      "status": "pending"
     },
     {
@@ -150639,13 +151182,6 @@
      "status": "pending"
     },
     {
-     "name": "ov40_02239B58",
-     "mode": "thumb",
-     "insns": 387,
-     "size_est": 896,
-     "status": "pending"
-    },
-    {
      "name": "ov40_0223A3BC",
      "mode": "thumb",
      "insns": 55,
@@ -150657,13 +151193,6 @@
      "mode": "thumb",
      "insns": 125,
      "size_est": 300,
-     "status": "pending"
-    },
-    {
-     "name": "ov40_0223ACD0",
-     "mode": "thumb",
-     "insns": 258,
-     "size_est": 586,
      "status": "pending"
     },
     {
@@ -150681,34 +151210,6 @@
      "status": "pending"
     },
     {
-     "name": "ov40_0223B75C",
-     "mode": "thumb",
-     "insns": 329,
-     "size_est": 766,
-     "status": "pending"
-    },
-    {
-     "name": "ov40_0223BF88",
-     "mode": "thumb",
-     "insns": 141,
-     "size_est": 336,
-     "status": "pending"
-    },
-    {
-     "name": "ov40_0223C498",
-     "mode": "thumb",
-     "insns": 264,
-     "size_est": 600,
-     "status": "pending"
-    },
-    {
-     "name": "ov40_0223C710",
-     "mode": "thumb",
-     "insns": 105,
-     "size_est": 248,
-     "status": "pending"
-    },
-    {
      "name": "ov40_0223C80C",
      "mode": "thumb",
      "insns": 490,
@@ -150723,13 +151224,6 @@
      "status": "pending"
     },
     {
-     "name": "ov40_0223D244",
-     "mode": "thumb",
-     "insns": 334,
-     "size_est": 686,
-     "status": "pending"
-    },
-    {
      "name": "ov40_0223D618",
      "mode": "thumb",
      "insns": 55,
@@ -150741,13 +151235,6 @@
      "mode": "thumb",
      "insns": 198,
      "size_est": 406,
-     "status": "pending"
-    },
-    {
-     "name": "ov40_0223D8D4",
-     "mode": "thumb",
-     "insns": 334,
-     "size_est": 686,
      "status": "pending"
     },
     {
@@ -150786,38 +151273,10 @@
      "status": "pending"
     },
     {
-     "name": "ov40_0223F028",
-     "mode": "thumb",
-     "insns": 134,
-     "size_est": 302,
-     "status": "pending"
-    },
-    {
      "name": "ov40_0223F984",
      "mode": "thumb",
      "insns": 332,
      "size_est": 778,
-     "status": "pending"
-    },
-    {
-     "name": "ov40_0223FF8C",
-     "mode": "thumb",
-     "insns": 284,
-     "size_est": 644,
-     "status": "pending"
-    },
-    {
-     "name": "ov40_02240E28",
-     "mode": "thumb",
-     "insns": 105,
-     "size_est": 248,
-     "status": "pending"
-    },
-    {
-     "name": "ov40_02240F24",
-     "mode": "thumb",
-     "insns": 125,
-     "size_est": 300,
      "status": "pending"
     },
     {
@@ -150853,13 +151312,6 @@
      "mode": "thumb",
      "insns": 80,
      "size_est": 190,
-     "status": "pending"
-    },
-    {
-     "name": "ov40_0224462C",
-     "mode": "thumb",
-     "insns": 213,
-     "size_est": 502,
      "status": "pending"
     },
     {
@@ -150926,9 +151378,9 @@
    "lsf_kind": "asm",
    "status": "pending",
    "split": "hgify",
-   "lines": 199,
-   "function_count": 2,
-   "text_bytes_est": 388,
+   "lines": 59,
+   "function_count": 1,
+   "text_bytes_est": 104,
    "data_only": false,
    "sections": {
     "rodata_bytes": 0,
@@ -150946,13 +151398,6 @@
      "mode": "thumb",
      "insns": 47,
      "size_est": 104,
-     "status": "pending"
-    },
-    {
-     "name": "ov41_02246DE0",
-     "mode": "thumb",
-     "insns": 119,
-     "size_est": 284,
      "status": "pending"
     }
    ]
@@ -151049,9 +151494,9 @@
    "lsf_kind": "asm",
    "status": "pending",
    "split": "hgify",
-   "lines": 3142,
-   "function_count": 19,
-   "text_bytes_est": 4968,
+   "lines": 2876,
+   "function_count": 17,
+   "text_bytes_est": 4410,
    "data_only": false,
    "sections": {
     "rodata_bytes": 892,
@@ -151069,13 +151514,6 @@
      "mode": "thumb",
      "insns": 88,
      "size_est": 204,
-     "status": "pending"
-    },
-    {
-     "name": "ov43_0222A570",
-     "mode": "thumb",
-     "insns": 112,
-     "size_est": 248,
      "status": "pending"
     },
     {
@@ -151184,13 +151622,6 @@
      "status": "pending"
     },
     {
-     "name": "ov43_0222E0E8",
-     "mode": "thumb",
-     "insns": 143,
-     "size_est": 310,
-     "status": "pending"
-    },
-    {
      "name": "ov43_0222E220",
      "mode": "thumb",
      "insns": 416,
@@ -151204,9 +151635,9 @@
    "lsf_kind": "asm",
    "status": "pending",
    "split": "hgify",
-   "lines": 1891,
-   "function_count": 9,
-   "text_bytes_est": 1704,
+   "lines": 1782,
+   "function_count": 8,
+   "text_bytes_est": 1486,
    "data_only": false,
    "sections": {
     "rodata_bytes": 732,
@@ -151219,13 +151650,6 @@
    "imports": [],
    "exports": [],
    "functions": [
-    {
-     "name": "ov45_0222A844",
-     "mode": "thumb",
-     "insns": 87,
-     "size_est": 218,
-     "status": "pending"
-    },
     {
      "name": "ov45_0222AC14",
      "mode": "thumb",
@@ -151375,10 +151799,10 @@
    "lsf_kind": "asm",
    "status": "pending",
    "split": "hgify",
-   "lines": 663,
-   "function_count": 3,
-   "text_bytes_est": 702,
-   "data_only": false,
+   "lines": 263,
+   "function_count": 0,
+   "text_bytes_est": 0,
+   "data_only": true,
    "sections": {
     "rodata_bytes": 1036,
     "data_bytes": 0,
@@ -151389,29 +151813,7 @@
    "jumptable_words": 0,
    "imports": [],
    "exports": [],
-   "functions": [
-    {
-     "name": "ov48_02258A80",
-     "mode": "thumb",
-     "insns": 114,
-     "size_est": 252,
-     "status": "pending"
-    },
-    {
-     "name": "ov48_022591D8",
-     "mode": "thumb",
-     "insns": 125,
-     "size_est": 264,
-     "status": "pending"
-    },
-    {
-     "name": "ov48_02259DA0",
-     "mode": "thumb",
-     "insns": 92,
-     "size_est": 186,
-     "status": "pending"
-    }
-   ]
+   "functions": []
   },
   {
    "file": "asm/overlay_49_02258800.s",
@@ -151435,42 +151837,13 @@
    "functions": []
   },
   {
-   "file": "asm/overlay_49_022595CC.s",
-   "lsf_kind": "asm",
-   "status": "pending",
-   "split": "hgify",
-   "lines": 311,
-   "function_count": 1,
-   "text_bytes_est": 596,
-   "data_only": false,
-   "sections": {
-    "rodata_bytes": 0,
-    "data_bytes": 0,
-    "bss_bytes": 0,
-    "other_bytes": 0
-   },
-   "other_sections": [],
-   "jumptable_words": 0,
-   "imports": [],
-   "exports": [],
-   "functions": [
-    {
-     "name": "ov49_02259C90",
-     "mode": "thumb",
-     "insns": 266,
-     "size_est": 596,
-     "status": "pending"
-    }
-   ]
-  },
-  {
    "file": "asm/overlay_49_0225A154.s",
    "lsf_kind": "asm",
    "status": "pending",
    "split": "hgify",
-   "lines": 1021,
-   "function_count": 2,
-   "text_bytes_est": 1412,
+   "lines": 669,
+   "function_count": 1,
+   "text_bytes_est": 696,
    "data_only": false,
    "sections": {
     "rodata_bytes": 900,
@@ -151483,13 +151856,6 @@
    "imports": [],
    "exports": [],
    "functions": [
-    {
-     "name": "ov49_0225BBD0",
-     "mode": "thumb",
-     "insns": 313,
-     "size_est": 716,
-     "status": "pending"
-    },
     {
      "name": "ov49_0225C4CC",
      "mode": "thumb",
@@ -151546,9 +151912,9 @@
    "lsf_kind": "asm",
    "status": "pending",
    "split": "hgify",
-   "lines": 2058,
-   "function_count": 4,
-   "text_bytes_est": 3632,
+   "lines": 1731,
+   "function_count": 3,
+   "text_bytes_est": 2992,
    "data_only": false,
    "sections": {
     "rodata_bytes": 704,
@@ -151573,13 +151939,6 @@
      "mode": "thumb",
      "insns": 376,
      "size_est": 874,
-     "status": "pending"
-    },
-    {
-     "name": "ov49_022607C4",
-     "mode": "thumb",
-     "insns": 271,
-     "size_est": 640,
      "status": "pending"
     },
     {
@@ -151782,9 +152141,9 @@
    "lsf_kind": "asm",
    "status": "pending",
    "split": "hgify",
-   "lines": 2102,
-   "function_count": 8,
-   "text_bytes_est": 3798,
+   "lines": 1739,
+   "function_count": 7,
+   "text_bytes_est": 3062,
    "data_only": false,
    "sections": {
     "rodata_bytes": 740,
@@ -151809,13 +152168,6 @@
      "mode": "thumb",
      "insns": 87,
      "size_est": 194,
-     "status": "pending"
-    },
-    {
-     "name": "ov51_021E6354",
-     "mode": "thumb",
-     "insns": 333,
-     "size_est": 736,
      "status": "pending"
     },
     {
@@ -151903,9 +152255,9 @@
    "lsf_kind": "asm",
    "status": "pending",
    "split": "hgify",
-   "lines": 878,
-   "function_count": 4,
-   "text_bytes_est": 1596,
+   "lines": 742,
+   "function_count": 3,
+   "text_bytes_est": 1326,
    "data_only": false,
    "sections": {
     "rodata_bytes": 312,
@@ -151938,13 +152290,6 @@
      "insns": 316,
      "size_est": 724,
      "status": "pending"
-    },
-    {
-     "name": "ov56_021E6AA4",
-     "mode": "thumb",
-     "insns": 120,
-     "size_est": 270,
-     "status": "pending"
     }
    ]
   },
@@ -151953,9 +152298,9 @@
    "lsf_kind": "asm",
    "status": "pending",
    "split": "hgify",
-   "lines": 2708,
-   "function_count": 16,
-   "text_bytes_est": 4512,
+   "lines": 2422,
+   "function_count": 15,
+   "text_bytes_est": 3930,
    "data_only": false,
    "sections": {
     "rodata_bytes": 680,
@@ -152048,13 +152393,6 @@
      "status": "pending"
     },
     {
-     "name": "ov57_0223A8FC",
-     "mode": "thumb",
-     "insns": 261,
-     "size_est": 582,
-     "status": "pending"
-    },
-    {
      "name": "ov57_0223AB58",
      "mode": "thumb",
      "insns": 363,
@@ -152089,9 +152427,9 @@
    "lsf_kind": "asm",
    "status": "pending",
    "split": "hgify",
-   "lines": 1717,
-   "function_count": 9,
-   "text_bytes_est": 2326,
+   "lines": 1102,
+   "function_count": 5,
+   "text_bytes_est": 1226,
    "data_only": false,
    "sections": {
     "rodata_bytes": 1344,
@@ -152104,20 +152442,6 @@
    "imports": [],
    "exports": [],
    "functions": [
-    {
-     "name": "ov59_022383B4",
-     "mode": "thumb",
-     "insns": 128,
-     "size_est": 292,
-     "status": "pending"
-    },
-    {
-     "name": "ov59_022390A8",
-     "mode": "thumb",
-     "insns": 115,
-     "size_est": 244,
-     "status": "pending"
-    },
     {
      "name": "ov59_02239A24",
      "mode": "thumb",
@@ -152133,13 +152457,6 @@
      "status": "pending"
     },
     {
-     "name": "ov59_0223A7FC",
-     "mode": "thumb",
-     "insns": 110,
-     "size_est": 220,
-     "status": "pending"
-    },
-    {
      "name": "ov59_0223AEB0",
      "mode": "thumb",
      "insns": 87,
@@ -152151,13 +152468,6 @@
      "mode": "thumb",
      "insns": 156,
      "size_est": 330,
-     "status": "pending"
-    },
-    {
-     "name": "ov59_0223B8E4",
-     "mode": "thumb",
-     "insns": 157,
-     "size_est": 344,
      "status": "pending"
     },
     {
@@ -152217,9 +152527,9 @@
    "lsf_kind": "asm",
    "status": "pending",
    "split": "hgify",
-   "lines": 2469,
-   "function_count": 10,
-   "text_bytes_est": 4172,
+   "lines": 1400,
+   "function_count": 6,
+   "text_bytes_est": 2126,
    "data_only": false,
    "sections": {
     "rodata_bytes": 1120,
@@ -152247,24 +152557,10 @@
      "status": "pending"
     },
     {
-     "name": "ov65_0221C5E0",
-     "mode": "thumb",
-     "insns": 411,
-     "size_est": 950,
-     "status": "pending"
-    },
-    {
      "name": "ov65_0221CE1C",
      "mode": "thumb",
      "insns": 52,
      "size_est": 114,
-     "status": "pending"
-    },
-    {
-     "name": "ov65_0221D674",
-     "mode": "thumb",
-     "insns": 258,
-     "size_est": 580,
      "status": "pending"
     },
     {
@@ -152286,20 +152582,6 @@
      "mode": "thumb",
      "insns": 143,
      "size_est": 310,
-     "status": "pending"
-    },
-    {
-     "name": "ov65_0221EE18",
-     "mode": "thumb",
-     "insns": 107,
-     "size_est": 226,
-     "status": "pending"
-    },
-    {
-     "name": "ov65_0221F120",
-     "mode": "thumb",
-     "insns": 132,
-     "size_est": 290,
      "status": "pending"
     }
    ]
@@ -152388,9 +152670,9 @@
    "lsf_kind": "asm",
    "status": "pending",
    "split": "hgify",
-   "lines": 1434,
-   "function_count": 5,
-   "text_bytes_est": 2410,
+   "lines": 1134,
+   "function_count": 3,
+   "text_bytes_est": 1854,
    "data_only": false,
    "sections": {
     "rodata_bytes": 412,
@@ -152411,24 +152693,10 @@
      "status": "pending"
     },
     {
-     "name": "ov69_021E6138",
-     "mode": "thumb",
-     "insns": 118,
-     "size_est": 260,
-     "status": "pending"
-    },
-    {
      "name": "ov69_021E62B0",
      "mode": "thumb",
      "insns": 37,
      "size_est": 74,
-     "status": "pending"
-    },
-    {
-     "name": "ov69_021E6C30",
-     "mode": "thumb",
-     "insns": 145,
-     "size_est": 296,
      "status": "pending"
     },
     {
@@ -152445,9 +152713,9 @@
    "lsf_kind": "asm",
    "status": "pending",
    "split": "hgify",
-   "lines": 7005,
-   "function_count": 30,
-   "text_bytes_est": 9470,
+   "lines": 6710,
+   "function_count": 29,
+   "text_bytes_est": 8876,
    "data_only": false,
    "sections": {
     "rodata_bytes": 3748,
@@ -152601,13 +152869,6 @@
      "status": "pending"
     },
     {
-     "name": "ov70_02241DB4",
-     "mode": "thumb",
-     "insns": 261,
-     "size_est": 594,
-     "status": "pending"
-    },
-    {
      "name": "ov70_02242390",
      "mode": "thumb",
      "insns": 168,
@@ -152677,9 +152938,9 @@
    "lsf_kind": "asm",
    "status": "pending",
    "split": "hgify",
-   "lines": 1374,
-   "function_count": 11,
-   "text_bytes_est": 1576,
+   "lines": 1138,
+   "function_count": 9,
+   "text_bytes_est": 1156,
    "data_only": false,
    "sections": {
     "rodata_bytes": 1072,
@@ -152692,13 +152953,6 @@
    "imports": [],
    "exports": [],
    "functions": [
-    {
-     "name": "ov71_02246C6C",
-     "mode": "thumb",
-     "insns": 95,
-     "size_est": 204,
-     "status": "pending"
-    },
     {
      "name": "ov71_022473E4",
      "mode": "thumb",
@@ -152718,13 +152972,6 @@
      "mode": "thumb",
      "insns": 17,
      "size_est": 36,
-     "status": "pending"
-    },
-    {
-     "name": "ov71_02247DEC",
-     "mode": "thumb",
-     "insns": 93,
-     "size_est": 216,
      "status": "pending"
     },
     {
@@ -152776,9 +153023,9 @@
    "lsf_kind": "asm",
    "status": "pending",
    "split": "hgify",
-   "lines": 2186,
-   "function_count": 9,
-   "text_bytes_est": 3162,
+   "lines": 1775,
+   "function_count": 7,
+   "text_bytes_est": 2320,
    "data_only": false,
    "sections": {
     "rodata_bytes": 420,
@@ -152813,13 +153060,6 @@
      "status": "pending"
     },
     {
-     "name": "ov72_02238408",
-     "mode": "thumb",
-     "insns": 262,
-     "size_est": 584,
-     "status": "pending"
-    },
-    {
      "name": "ov72_0223894C",
      "mode": "thumb",
      "insns": 21,
@@ -152846,13 +153086,6 @@
      "insns": 17,
      "size_est": 42,
      "status": "pending"
-    },
-    {
-     "name": "ov72_0223B0C4",
-     "mode": "thumb",
-     "insns": 116,
-     "size_est": 258,
-     "status": "pending"
     }
    ]
   },
@@ -152861,9 +153094,9 @@
    "lsf_kind": "asm",
    "status": "pending",
    "split": "hgify",
-   "lines": 1726,
-   "function_count": 8,
-   "text_bytes_est": 2100,
+   "lines": 1560,
+   "function_count": 7,
+   "text_bytes_est": 1764,
    "data_only": false,
    "sections": {
     "rodata_bytes": 672,
@@ -152905,13 +153138,6 @@
      "status": "pending"
     },
     {
-     "name": "ov73_021E7E4C",
-     "mode": "thumb",
-     "insns": 145,
-     "size_est": 336,
-     "status": "pending"
-    },
-    {
      "name": "ov73_021E85AC",
      "mode": "thumb",
      "insns": 21,
@@ -152939,9 +153165,9 @@
    "lsf_kind": "asm",
    "status": "pending",
    "split": "hgify",
-   "lines": 11975,
-   "function_count": 53,
-   "text_bytes_est": 17986,
+   "lines": 10777,
+   "function_count": 48,
+   "text_bytes_est": 15784,
    "data_only": false,
    "sections": {
     "rodata_bytes": 2092,
@@ -152959,13 +153185,6 @@
      "mode": "thumb",
      "insns": 27,
      "size_est": 62,
-     "status": "pending"
-    },
-    {
-     "name": "ov74_02228D64",
-     "mode": "thumb",
-     "insns": 135,
-     "size_est": 304,
      "status": "pending"
     },
     {
@@ -153004,13 +153223,6 @@
      "status": "pending"
     },
     {
-     "name": "ov74_0222B3A4",
-     "mode": "thumb",
-     "insns": 260,
-     "size_est": 588,
-     "status": "pending"
-    },
-    {
      "name": "ov74_0222C04C",
      "mode": "thumb",
      "insns": 285,
@@ -153039,13 +153251,6 @@
      "status": "pending"
     },
     {
-     "name": "ov74_0222E0D4",
-     "mode": "thumb",
-     "insns": 127,
-     "size_est": 272,
-     "status": "pending"
-    },
-    {
      "name": "ov74_0222E1F4",
      "mode": "thumb",
      "insns": 599,
@@ -153064,13 +153269,6 @@
      "mode": "thumb",
      "insns": 125,
      "size_est": 282,
-     "status": "pending"
-    },
-    {
-     "name": "ov74_0222F7D4",
-     "mode": "thumb",
-     "insns": 366,
-     "size_est": 862,
      "status": "pending"
     },
     {
@@ -153317,12 +153515,83 @@
      "insns": 441,
      "size_est": 992,
      "status": "pending"
+    }
+   ]
+  },
+  {
+   "file": "asm/nitrocrypto.s",
+   "lsf_kind": "asm",
+   "status": "pending",
+   "split": "hgify",
+   "lines": 1659,
+   "function_count": 8,
+   "text_bytes_est": 5204,
+   "data_only": false,
+   "sections": {
+    "rodata_bytes": 116,
+    "data_bytes": 28,
+    "bss_bytes": 8,
+    "other_bytes": 0
+   },
+   "other_sections": [],
+   "jumptable_words": 0,
+   "imports": [],
+   "exports": [],
+   "functions": [
+    {
+     "name": "CRYPTO_RC4Encrypt",
+     "mode": "arm",
+     "insns": 30,
+     "size_est": 120,
+     "status": "pending"
     },
     {
-     "name": "ConvertRSStringToDPStringInternational",
-     "mode": "thumb",
-     "insns": 85,
-     "size_est": 176,
+     "name": "BN_mod_exp_mont",
+     "mode": "arm",
+     "insns": 513,
+     "size_est": 2052,
+     "status": "pending"
+    },
+    {
+     "name": "BN_gen_exp_string",
+     "mode": "arm",
+     "insns": 118,
+     "size_est": 472,
+     "status": "pending"
+    },
+    {
+     "name": "BN_div",
+     "mode": "arm",
+     "insns": 360,
+     "size_est": 1440,
+     "status": "pending"
+    },
+    {
+     "name": "bn_sub_words",
+     "mode": "arm",
+     "insns": 69,
+     "size_est": 276,
+     "status": "pending"
+    },
+    {
+     "name": "bn_add_words",
+     "mode": "arm",
+     "insns": 84,
+     "size_est": 336,
+     "status": "pending"
+    },
+    {
+     "name": "bn_mul_add_words",
+     "mode": "arm",
+     "insns": 120,
+     "size_est": 480,
+     "status": "pending"
+    },
+    {
+     "name": "CRYPTO_SetAllocator",
+     "mode": "arm",
+     "insns": 7,
+     "size_est": 28,
      "status": "pending"
     }
    ]
@@ -153332,9 +153601,9 @@
    "lsf_kind": "asm",
    "status": "pending",
    "split": "hgify",
-   "lines": 1823,
-   "function_count": 7,
-   "text_bytes_est": 2852,
+   "lines": 1145,
+   "function_count": 4,
+   "text_bytes_est": 1648,
    "data_only": false,
    "sections": {
     "rodata_bytes": 541,
@@ -153355,13 +153624,6 @@
      "status": "pending"
     },
     {
-     "name": "ov75_02247450",
-     "mode": "thumb",
-     "insns": 299,
-     "size_est": 660,
-     "status": "pending"
-    },
-    {
      "name": "ov75_02247C70",
      "mode": "thumb",
      "insns": 66,
@@ -153373,20 +153635,6 @@
      "mode": "thumb",
      "insns": 364,
      "size_est": 816,
-     "status": "pending"
-    },
-    {
-     "name": "ov75_02248A20",
-     "mode": "thumb",
-     "insns": 138,
-     "size_est": 310,
-     "status": "pending"
-    },
-    {
-     "name": "ov75_02249278",
-     "mode": "thumb",
-     "insns": 114,
-     "size_est": 234,
      "status": "pending"
     },
     {
@@ -153769,9 +154017,9 @@
    "lsf_kind": "asm",
    "status": "pending",
    "split": "hgify",
-   "lines": 4557,
-   "function_count": 21,
-   "text_bytes_est": 7822,
+   "lines": 3418,
+   "function_count": 16,
+   "text_bytes_est": 5622,
    "data_only": false,
    "sections": {
     "rodata_bytes": 1016,
@@ -153784,13 +154032,6 @@
    "imports": [],
    "exports": [],
    "functions": [
-    {
-     "name": "ov81_0223DD60",
-     "mode": "thumb",
-     "insns": 138,
-     "size_est": 316,
-     "status": "pending"
-    },
     {
      "name": "ov81_0223DEA8",
      "mode": "thumb",
@@ -153834,13 +154075,6 @@
      "status": "pending"
     },
     {
-     "name": "ov81_0223ECE4",
-     "mode": "thumb",
-     "insns": 252,
-     "size_est": 586,
-     "status": "pending"
-    },
-    {
      "name": "ov81_0223F0BC",
      "mode": "thumb",
      "insns": 102,
@@ -153852,13 +154086,6 @@
      "mode": "thumb",
      "insns": 152,
      "size_est": 350,
-     "status": "pending"
-    },
-    {
-     "name": "ov81_0223F38C",
-     "mode": "thumb",
-     "insns": 302,
-     "size_est": 714,
      "status": "pending"
     },
     {
@@ -153887,20 +154114,6 @@
      "mode": "thumb",
      "insns": 78,
      "size_est": 174,
-     "status": "pending"
-    },
-    {
-     "name": "ov81_022409B0",
-     "mode": "thumb",
-     "insns": 127,
-     "size_est": 294,
-     "status": "pending"
-    },
-    {
-     "name": "ov81_02240BB0",
-     "mode": "thumb",
-     "insns": 118,
-     "size_est": 290,
      "status": "pending"
     },
     {
@@ -153938,9 +154151,9 @@
    "lsf_kind": "asm",
    "status": "pending",
    "split": "hgify",
-   "lines": 1814,
-   "function_count": 13,
-   "text_bytes_est": 3094,
+   "lines": 1116,
+   "function_count": 10,
+   "text_bytes_est": 1720,
    "data_only": false,
    "sections": {
     "rodata_bytes": 256,
@@ -153954,13 +154167,6 @@
    "exports": [],
    "functions": [
     {
-     "name": "ov82_0223DE20",
-     "mode": "thumb",
-     "insns": 139,
-     "size_est": 326,
-     "status": "pending"
-    },
-    {
      "name": "ov82_0223DF74",
      "mode": "thumb",
      "insns": 28,
@@ -153972,13 +154178,6 @@
      "mode": "thumb",
      "insns": 169,
      "size_est": 354,
-     "status": "pending"
-    },
-    {
-     "name": "ov82_0223E2EC",
-     "mode": "thumb",
-     "insns": 306,
-     "size_est": 716,
      "status": "pending"
     },
     {
@@ -154000,13 +154199,6 @@
      "mode": "thumb",
      "insns": 26,
      "size_est": 58,
-     "status": "pending"
-    },
-    {
-     "name": "ov82_0223E9E8",
-     "mode": "thumb",
-     "insns": 139,
-     "size_est": 332,
      "status": "pending"
     },
     {
@@ -154051,9 +154243,9 @@
    "lsf_kind": "asm",
    "status": "pending",
    "split": "hgify",
-   "lines": 4152,
-   "function_count": 11,
-   "text_bytes_est": 7952,
+   "lines": 3997,
+   "function_count": 10,
+   "text_bytes_est": 7614,
    "data_only": false,
    "sections": {
     "rodata_bytes": 772,
@@ -154078,13 +154270,6 @@
      "mode": "thumb",
      "insns": 110,
      "size_est": 246,
-     "status": "pending"
-    },
-    {
-     "name": "ov83_0223F058",
-     "mode": "thumb",
-     "insns": 137,
-     "size_est": 338,
      "status": "pending"
     },
     {
@@ -154150,9 +154335,9 @@
    "lsf_kind": "asm",
    "status": "pending",
    "split": "hgify",
-   "lines": 1317,
-   "function_count": 3,
-   "text_bytes_est": 2692,
+   "lines": 1000,
+   "function_count": 1,
+   "text_bytes_est": 2106,
    "data_only": false,
    "sections": {
     "rodata_bytes": 0,
@@ -154165,20 +154350,6 @@
    "imports": [],
    "exports": [],
    "functions": [
-    {
-     "name": "ov83_02243108",
-     "mode": "thumb",
-     "insns": 143,
-     "size_est": 338,
-     "status": "pending"
-    },
-    {
-     "name": "ov83_022432B4",
-     "mode": "thumb",
-     "insns": 110,
-     "size_est": 248,
-     "status": "pending"
-    },
     {
      "name": "ov83_022433F8",
      "mode": "thumb",
@@ -154193,9 +154364,9 @@
    "lsf_kind": "asm",
    "status": "pending",
    "split": "hgify",
-   "lines": 1968,
-   "function_count": 5,
-   "text_bytes_est": 3734,
+   "lines": 1796,
+   "function_count": 4,
+   "text_bytes_est": 3380,
    "data_only": false,
    "sections": {
     "rodata_bytes": 360,
@@ -154230,13 +154401,6 @@
      "status": "pending"
     },
     {
-     "name": "ov83_02245838",
-     "mode": "thumb",
-     "insns": 146,
-     "size_est": 354,
-     "status": "pending"
-    },
-    {
      "name": "ov83_02246114",
      "mode": "thumb",
      "insns": 907,
@@ -154250,9 +154414,9 @@
    "lsf_kind": "asm",
    "status": "pending",
    "split": "hgify",
-   "lines": 1186,
-   "function_count": 4,
-   "text_bytes_est": 944,
+   "lines": 1021,
+   "function_count": 3,
+   "text_bytes_est": 606,
    "data_only": false,
    "sections": {
     "rodata_bytes": 1392,
@@ -154270,13 +154434,6 @@
      "mode": "thumb",
      "insns": 56,
      "size_est": 122,
-     "status": "pending"
-    },
-    {
-     "name": "ov85_021E88AC",
-     "mode": "thumb",
-     "insns": 136,
-     "size_est": 338,
      "status": "pending"
     },
     {
@@ -154357,9 +154514,9 @@
    "lsf_kind": "asm",
    "status": "pending",
    "split": "hgify",
-   "lines": 1853,
-   "function_count": 10,
-   "text_bytes_est": 2928,
+   "lines": 1219,
+   "function_count": 7,
+   "text_bytes_est": 1702,
    "data_only": false,
    "sections": {
     "rodata_bytes": 824,
@@ -154373,31 +154530,10 @@
    "exports": [],
    "functions": [
     {
-     "name": "ov87_021E5CEC",
-     "mode": "thumb",
-     "insns": 127,
-     "size_est": 268,
-     "status": "pending"
-    },
-    {
-     "name": "ov87_021E5E00",
-     "mode": "thumb",
-     "insns": 284,
-     "size_est": 624,
-     "status": "pending"
-    },
-    {
      "name": "ov87_021E6080",
      "mode": "thumb",
      "insns": 472,
      "size_est": 1104,
-     "status": "pending"
-    },
-    {
-     "name": "ov87_021E6C60",
-     "mode": "thumb",
-     "insns": 149,
-     "size_est": 334,
      "status": "pending"
     },
     {
@@ -154576,9 +154712,9 @@
    "lsf_kind": "asm",
    "status": "pending",
    "split": "hgify",
-   "lines": 2479,
-   "function_count": 14,
-   "text_bytes_est": 3724,
+   "lines": 2174,
+   "function_count": 12,
+   "text_bytes_est": 3156,
    "data_only": false,
    "sections": {
     "rodata_bytes": 856,
@@ -154627,13 +154763,6 @@
      "status": "pending"
     },
     {
-     "name": "ov90_0225A428",
-     "mode": "thumb",
-     "insns": 124,
-     "size_est": 266,
-     "status": "pending"
-    },
-    {
      "name": "ov90_0225A980",
      "mode": "thumb",
      "insns": 543,
@@ -154652,13 +154781,6 @@
      "mode": "thumb",
      "insns": 180,
      "size_est": 400,
-     "status": "pending"
-    },
-    {
-     "name": "ov90_0225B6C4",
-     "mode": "thumb",
-     "insns": 141,
-     "size_est": 302,
      "status": "pending"
     },
     {
@@ -154696,9 +154818,9 @@
    "lsf_kind": "asm",
    "status": "pending",
    "split": "hgify",
-   "lines": 2183,
-   "function_count": 7,
-   "text_bytes_est": 2380,
+   "lines": 2017,
+   "function_count": 6,
+   "text_bytes_est": 2094,
    "data_only": false,
    "sections": {
     "rodata_bytes": 1958,
@@ -154723,13 +154845,6 @@
      "mode": "thumb",
      "insns": 98,
      "size_est": 224,
-     "status": "pending"
-    },
-    {
-     "name": "ov91_0225F25C",
-     "mode": "thumb",
-     "insns": 130,
-     "size_est": 286,
      "status": "pending"
     },
     {
@@ -154922,9 +155037,9 @@
    "lsf_kind": "asm",
    "status": "pending",
    "split": "hgify",
-   "lines": 1904,
-   "function_count": 8,
-   "text_bytes_est": 3326,
+   "lines": 1298,
+   "function_count": 6,
+   "text_bytes_est": 2150,
    "data_only": false,
    "sections": {
     "rodata_bytes": 524,
@@ -154945,24 +155060,10 @@
      "status": "pending"
     },
     {
-     "name": "ov93_0225CA8C",
-     "mode": "thumb",
-     "insns": 269,
-     "size_est": 590,
-     "status": "pending"
-    },
-    {
      "name": "ov93_0225D4EC",
      "mode": "thumb",
      "insns": 85,
      "size_est": 186,
-     "status": "pending"
-    },
-    {
-     "name": "ov93_0225D78C",
-     "mode": "thumb",
-     "insns": 270,
-     "size_est": 586,
      "status": "pending"
     },
     {
@@ -155128,9 +155229,9 @@
    "lsf_kind": "asm",
    "status": "pending",
    "split": "hgify",
-   "lines": 45272,
-   "function_count": 159,
-   "text_bytes_est": 68470,
+   "lines": 43213,
+   "function_count": 152,
+   "text_bytes_est": 65002,
    "data_only": false,
    "sections": {
     "rodata_bytes": 12825,
@@ -155239,13 +155340,6 @@
      "mode": "thumb",
      "insns": 289,
      "size_est": 628,
-     "status": "pending"
-    },
-    {
-     "name": "ov96_021E8FE0",
-     "mode": "thumb",
-     "insns": 136,
-     "size_est": 282,
      "status": "pending"
     },
     {
@@ -155358,13 +155452,6 @@
      "mode": "thumb",
      "insns": 35,
      "size_est": 82,
-     "status": "pending"
-    },
-    {
-     "name": "ov96_021ED1D0",
-     "mode": "thumb",
-     "insns": 277,
-     "size_est": 668,
      "status": "pending"
     },
     {
@@ -155617,13 +155704,6 @@
      "mode": "thumb",
      "insns": 38,
      "size_est": 82,
-     "status": "pending"
-    },
-    {
-     "name": "ov96_021F7934",
-     "mode": "thumb",
-     "insns": 312,
-     "size_est": 770,
      "status": "pending"
     },
     {
@@ -156096,13 +156176,6 @@
      "status": "pending"
     },
     {
-     "name": "ov96_02207418",
-     "mode": "thumb",
-     "insns": 262,
-     "size_est": 564,
-     "status": "pending"
-    },
-    {
      "name": "ov96_02207A34",
      "mode": "thumb",
      "insns": 163,
@@ -156114,13 +156187,6 @@
      "mode": "thumb",
      "insns": 69,
      "size_est": 154,
-     "status": "pending"
-    },
-    {
-     "name": "ov96_022080F4",
-     "mode": "thumb",
-     "insns": 154,
-     "size_est": 346,
      "status": "pending"
     },
     {
@@ -156222,24 +156288,10 @@
      "status": "pending"
     },
     {
-     "name": "ov96_0220A14C",
-     "mode": "thumb",
-     "insns": 115,
-     "size_est": 262,
-     "status": "pending"
-    },
-    {
      "name": "ov96_0220A910",
      "mode": "thumb",
      "insns": 209,
      "size_est": 474,
-     "status": "pending"
-    },
-    {
-     "name": "ov96_0220AAEC",
-     "mode": "thumb",
-     "insns": 265,
-     "size_est": 576,
      "status": "pending"
     },
     {
@@ -156299,9 +156351,9 @@
    "lsf_kind": "asm",
    "status": "pending",
    "split": "hgify",
-   "lines": 1901,
-   "function_count": 14,
-   "text_bytes_est": 2110,
+   "lines": 1729,
+   "function_count": 13,
+   "text_bytes_est": 1792,
    "data_only": false,
    "sections": {
     "rodata_bytes": 4184,
@@ -156364,13 +156416,6 @@
      "status": "pending"
     },
     {
-     "name": "ov99_021E7598",
-     "mode": "thumb",
-     "insns": 146,
-     "size_est": 318,
-     "status": "pending"
-    },
-    {
      "name": "PokeathlonMedals_Main",
      "mode": "thumb",
      "insns": 110,
@@ -156419,9 +156464,9 @@
    "lsf_kind": "asm",
    "status": "pending",
    "split": "hgify",
-   "lines": 1316,
-   "function_count": 9,
-   "text_bytes_est": 1448,
+   "lines": 1180,
+   "function_count": 8,
+   "text_bytes_est": 1220,
    "data_only": false,
    "sections": {
     "rodata_bytes": 854,
@@ -156481,13 +156526,6 @@
      "mode": "thumb",
      "insns": 40,
      "size_est": 86,
-     "status": "pending"
-    },
-    {
-     "name": "ov102_021EAB30",
-     "mode": "thumb",
-     "insns": 104,
-     "size_est": 228,
      "status": "pending"
     },
     {
@@ -156740,9 +156778,9 @@
    "lsf_kind": "asm",
    "status": "pending",
    "split": "hgify",
-   "lines": 625,
-   "function_count": 6,
-   "text_bytes_est": 704,
+   "lines": 517,
+   "function_count": 5,
+   "text_bytes_est": 498,
    "data_only": false,
    "sections": {
     "rodata_bytes": 668,
@@ -156755,13 +156793,6 @@
    "imports": [],
    "exports": [],
    "functions": [
-    {
-     "name": "ov109_021E5A70",
-     "mode": "thumb",
-     "insns": 91,
-     "size_est": 206,
-     "status": "pending"
-    },
     {
      "name": "ov109_021E5D08",
      "mode": "thumb",
@@ -156833,9 +156864,9 @@
    "lsf_kind": "asm",
    "status": "pending",
    "split": "hgify",
-   "lines": 12160,
-   "function_count": 41,
-   "text_bytes_est": 11864,
+   "lines": 10927,
+   "function_count": 33,
+   "text_bytes_est": 9586,
    "data_only": false,
    "sections": {
     "rodata_bytes": 48772,
@@ -156961,13 +156992,6 @@
      "status": "pending"
     },
     {
-     "name": "ov112_021EB44C",
-     "mode": "thumb",
-     "insns": 120,
-     "size_est": 274,
-     "status": "pending"
-    },
-    {
      "name": "ov112_021EC044",
      "mode": "thumb",
      "insns": 86,
@@ -157010,45 +157034,10 @@
      "status": "pending"
     },
     {
-     "name": "ov112_021EE7A8",
-     "mode": "thumb",
-     "insns": 111,
-     "size_est": 260,
-     "status": "pending"
-    },
-    {
-     "name": "ov112_021EED08",
-     "mode": "thumb",
-     "insns": 98,
-     "size_est": 230,
-     "status": "pending"
-    },
-    {
      "name": "ov112_021EEF68",
      "mode": "thumb",
      "insns": 88,
      "size_est": 202,
-     "status": "pending"
-    },
-    {
-     "name": "ov112_021EF758",
-     "mode": "thumb",
-     "insns": 154,
-     "size_est": 344,
-     "status": "pending"
-    },
-    {
-     "name": "ov112_021EFF84",
-     "mode": "thumb",
-     "insns": 141,
-     "size_est": 312,
-     "status": "pending"
-    },
-    {
-     "name": "ov112_021F01CC",
-     "mode": "thumb",
-     "insns": 141,
-     "size_est": 312,
      "status": "pending"
     },
     {
@@ -157115,20 +157104,6 @@
      "status": "pending"
     },
     {
-     "name": "ov112_021F298C",
-     "mode": "thumb",
-     "insns": 109,
-     "size_est": 226,
-     "status": "pending"
-    },
-    {
-     "name": "ov112_021F2B80",
-     "mode": "thumb",
-     "insns": 138,
-     "size_est": 320,
-     "status": "pending"
-    },
-    {
      "name": "ov112_021F328C",
      "mode": "thumb",
      "insns": 102,
@@ -157142,9 +157117,9 @@
    "lsf_kind": "asm",
    "status": "pending",
    "split": "hgify",
-   "lines": 296,
-   "function_count": 2,
-   "text_bytes_est": 258,
+   "lines": 196,
+   "function_count": 1,
+   "text_bytes_est": 64,
    "data_only": false,
    "sections": {
     "rodata_bytes": 516,
@@ -157162,42 +157137,6 @@
      "mode": "thumb",
      "insns": 27,
      "size_est": 64,
-     "status": "pending"
-    },
-    {
-     "name": "ov113_021E5FC0",
-     "mode": "thumb",
-     "insns": 84,
-     "size_est": 194,
-     "status": "pending"
-    }
-   ]
-  },
-  {
-   "file": "asm/overlay_114.s",
-   "lsf_kind": "asm",
-   "status": "pending",
-   "split": "hgify",
-   "lines": 297,
-   "function_count": 1,
-   "text_bytes_est": 584,
-   "data_only": false,
-   "sections": {
-    "rodata_bytes": 0,
-    "data_bytes": 0,
-    "bss_bytes": 0,
-    "other_bytes": 0
-   },
-   "other_sections": [],
-   "jumptable_words": 0,
-   "imports": [],
-   "exports": [],
-   "functions": [
-    {
-     "name": "ov114_0225F020",
-     "mode": "thumb",
-     "insns": 261,
-     "size_est": 584,
      "status": "pending"
     }
    ]
@@ -157316,8 +157255,8 @@
    "status": "pending",
    "split": "hgify",
    "lines": 117,
-   "function_count": 4,
-   "text_bytes_est": 1660,
+   "function_count": 3,
+   "text_bytes_est": 1018,
    "data_only": false,
    "sections": {
     "rodata_bytes": 424,
@@ -157349,13 +157288,6 @@
      "mode": "thumb",
      "insns": 225,
      "size_est": 460,
-     "status": "pending"
-    },
-    {
-     "name": "ov120_0225FF00",
-     "mode": "thumb",
-     "insns": 284,
-     "size_est": 642,
      "status": "pending"
     }
    ]
