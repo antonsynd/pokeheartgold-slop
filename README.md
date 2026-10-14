@@ -67,7 +67,7 @@ Two ROMs, one source tree: HeartGold and SoulSilver share everything under `src/
 └── soulsilver.us/  SS build metadata + SHA1s
 ```
 
-The ROM links three object domains: the **ARM9 main + overlays** (`src/` + `asm/`, built with MWCC 2.0/sp2p2 — the decomp target), the **ARM7 sub-module** (`sub/`), and the **NitroFS filesystem** (`files/`, data only).
+The ROM links three object domains: the **ARM9 main + overlays** (`src/` + `asm/`, built with MWCC 2.0/sp2p2 — the decomp target, plus the NitroSDK/NitroSystem/NitroWiFi/NitroDWC libraries), the **ARM7** binary (NitroSDK's `ichneumon_sub`), and the **NitroFS filesystem** (`files/`, data only).
 
 Decompilation converts `asm/*.s` to C one file at a time; the `.s` is kept as a reference. When a function can't be written in C that compiles to identical bytes, it stays as inline assembly with the C attempt preserved under `#ifdef NONMATCHING`.
 
@@ -75,42 +75,37 @@ Decompilation converts `asm/*.s` to C one file at a time; the `.s` is kept as a 
 
 | Tool | Role |
 |------|------|
-| MWCC 2.0/sp2p2 | The original Metrowerks compiler (runs via Wine on macOS/Linux) |
-| devkitARM | `arm-none-eabi-*` assembler and linker utilities |
-| GNU Make 4.x | The build system (`Makefile`, `common.mk`, `filesystem.mk`) — same as upstream pret |
-| [chiri](https://github.com/antonsynd/chiri) | *Optional* front end over `make` (`chiri pkg -- build`) |
+| MWCC 2.0/sp2p2 | The original Metrowerks compiler, from [metroskrew](https://github.com/mid-kid/metroskrew): native on Linux, under Wine on macOS |
+| Meson + ninja | The build system, same as upstream pret: `meson.build` files, with `main.lsf` as the link order |
+| [chiri](https://github.com/antonsynd/chiri) | *Optional* front end over the build (`chiri pkg -- build`) |
 | `tools/decomp_harness/` | objdiff, coverage ledger, triage queue, and the MWCC pattern knowledge base |
 
 ## Building
 
-Needs the MWCC compiler, NitroSDK binaries, and devkitARM — see [INSTALL.md](INSTALL.md). The build is plain GNU Make; nothing project-specific has to be installed:
+See [INSTALL.md](INSTALL.md) for the packages to install. The `Makefile` fetches meson, metroskrew and the SDK subprojects on first use:
 
 ```bash
-make                      # HeartGold, verified against the retail SHA1
-make soulsilver           # SoulSilver
-make compare              # alias for the HeartGold build + SHA1 check
-make main COMPARE=0       # ARM9 only, skip the SHA1 check (fast iteration)
-make -j8                  # parallel
+make                              # HeartGold: build, then check against the retail SHA1s
+make GAME_VERSION=SOULSILVER      # SoulSilver
+make GAME_VERSION=HEARTGOLD check # build the ROM and run the four sha1 tests
 ```
 
-On macOS, use Homebrew's `gmake` in place of `make` — Apple's bundled GNU Make 3.81 can hang on parallel builds of this tree (the Makefile warns when it detects 3.81).
+The same operations are available through a small CLI wrapper, either directly (only needs `python3`) or via [chiri](https://github.com/antonsynd/chiri) if you have it installed:
 
-The same operations are available through a small CLI wrapper, either directly (only needs `python3`) or via [chiri](https://github.com/antonsynd/chiri) if you have it installed. The wrapper picks `gmake` automatically when present:
-
-| Plain Make | Wrapper | chiri |
+| Plain Make / Meson | Wrapper | chiri |
 |---|---|---|
 | `make` | `build_tools/bin/build_pokeheartgold build` | `chiri pkg -- build` |
-| `make soulsilver` | `… build --game soulsilver` | `chiri pkg -- build --game soulsilver` |
-| `make main COMPARE=0` | `… build --target main --no-compare` | `chiri pkg -- build --target main --no-compare` |
-| `make compare` | `… compare` | `chiri pkg -- compare` |
+| `make GAME_VERSION=SOULSILVER` | `… build --game soulsilver` | `chiri pkg -- build --game soulsilver` |
+| `meson compile -C build/heartgold.us main` | `… build --target main --no-compare` | `chiri pkg -- build --target main --no-compare` |
+| `make check` | `… compare` | `chiri pkg -- compare` |
 
-The SHA1 check (`make compare`, or any of its equivalents) is the authority on whether a decomp matches. A per-function `objdiff.py` pass is necessary but **not** sufficient — it can mask section-level differences (e.g. trailing `.balign` padding on a function whose body is 2-mod-4 bytes), so a file can show "all functions match" yet still fail the ROM SHA1.
+The SHA1 check (`make check`, or any of its equivalents) is the authority on whether a decomp matches. A per-function `objdiff.py` pass is necessary but **not** sufficient — it can mask section-level differences (e.g. trailing `.balign` padding on a function whose body is 2-mod-4 bytes), so a file can show "all functions match" yet still fail the ROM SHA1.
 
 ## Contributing
 
 Contributions to this fork follow [CONTRIBUTING.md](CONTRIBUTING.md). These rules are this fork's own and are **not** pret's. The workflow is converting assembly to matching C — see the [decompilation workflow](CLAUDE.md#decompilation-workflow) in CLAUDE.md, or use the `/decomp` skill in Claude Code.
 
-Enable the project hooks once per clone with `git config --local core.hooksPath .githooks/`. They run clang-format, reject duplicate header declarations (MWCC's `-W error` won't tolerate them), check for IPA cascades from header changes, and refresh `COVERAGE.md`.
+Enable the project hooks once per clone with `git config --local core.hooksPath .githooks/`. They run clang-format, reject duplicate header declarations, check that the generated `src/meson.build` / `asm/meson.build` match `main.lsf`, and refresh `COVERAGE.md`.
 
 ## Credits
 

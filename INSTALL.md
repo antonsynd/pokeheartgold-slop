@@ -232,6 +232,20 @@ to install these, run:
     brew install --cask wine-stable
     ```
 
+> [!NOTE]
+> **pokeheartgold-slop:** also `brew install bison flex` (NitroSDK's `makelcf`
+> is built from source with them). Homebrew installs both keg-only, so with
+> plain `make` put them first on `PATH`:
+> `export PATH="/opt/homebrew/opt/bison/bin:/opt/homebrew/opt/flex/bin:$PATH"`.
+> The wrapper (`build_tools/bin/build_pokeheartgold`) does this for you.
+>
+> Keep the checkout path short (well under ~120 characters). The Metrowerks
+> tools run under Wine and fail with `die: FormatMessageA` on any path longer
+> than Windows' 260-character limit, and the deepest build paths add about 135.
+>
+> Apple Silicon also needs Rosetta for Wine (`softwareupdate --install-rosetta`).
+> Tested on macOS 27 with `wine-crossover`.
+
 4. You may need to authorize the Wine installation to satisfy macOS security
 requirements. To do this, open the Applications folder in Finder and locate the
 Wine Stable application. Control-Click on this icon to open the context menu,
@@ -335,6 +349,13 @@ make soulsilver
 ```
 If everything works, then the following ROM should be built:
 - [build/pokeheartgold.us.nds](https://datomatic.no-intro.org/index.php?page=show_record&s=28&n=4788) `sha1: f8dc38ea20c17541a43b58c5e6d18c1732c7e582`
+
+> [!NOTE]
+> **pokeheartgold-slop:** `build_tools/bin/build_pokeheartgold build|compare`
+> (`--game heartgold|soulsilver|both`, `--target main|sub|filesystem`) wraps the
+> same build, and [chiri](https://github.com/antonsynd/chiri) users can run
+> `chiri pkg -- build`. To check one game, use `make GAME_VERSION=SOULSILVER check`,
+> not `make soulsilver check`: the latter also builds and checks HeartGold.
 
 If you need further assistance, feel free to ask a question in the `#pokeheartgold`
 channel of the `pret` Discord (see `README.md` for contact information) or [open
