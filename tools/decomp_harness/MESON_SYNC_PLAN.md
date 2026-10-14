@@ -489,3 +489,16 @@ The review findings above were first written in as instructions. Each now has a 
 6. **Generated files in `files/` after the merge: designed out.** Branch work happens in a fresh worktree (Phase 0 step 6), which has no generated files to orphan. Measured: 314 MB tracked, Meson writes only to `build/`, which upstream's `.gitignore` covers.
 
 Still open by nature, so they stay as Phase 1/4 measurements: metroskrew-wine on macOS 27, the ~950 KB response file under Wine, regenerate time per asm→C flip, and the R10 stand-in removals, which are compile-driven.
+
+## 12. Execution log (2026-10-14)
+
+- **Phase 1:** untouched pret master (HG) builds on macOS 27 with metroskrew-wine and passes all four tests: setup 70 s, build 11.6 min at `-j8`. Two traps, both now in CLAUDE.md:
+  - Windows `MAX_PATH` under Wine: every compile with an absolute path over 259 characters died with `die: FormatMessageA`. The first spike ran from the ~120-character session scratchpad; at `/Users/anton/Documents/github/phg-upstream` it passes.
+  - `make NINJA="ninja -j8"` exports `NINJA`, and meson reads it as one program name: "Could not detect Ninja".
+- **Phase 2:** the 40 conflicts resolved exactly per §4. #26 (rounds 27–28, nitrocrypto) was merged into mainline mid-sync and brought in as a second merge: 125 conflicts, 121 of them asm slices #26 had replaced with C. The pipeline (`lsf`, `lists`, `rewrite`) reran unchanged.
+- **Configure** of the 16.7k-source tree: 74 s, about the same as upstream's 1.7k.
+- **R10** went in three steps:
+  1. **The clang pre-check** needed a `wchar_t` prelude, since MWCC has `wchar_t` built in. It must also report fatal errors: a missing generated header (`gen/nitro/fx/fx_const.h`) made one run look clean.
+  2. **`r10_fix.py`** deleted the stand-ins in 676 files. Its first statement finder overshot on nested structs and also deleted 547 innocent statements, mostly `#pragma thumb on` and four prototypes. `r10_audit.py` found and restored all of them, following #26's renames.
+  3. **Deleting a conflicting prototype** can break a call (MWCC rejects pointer conversions the old `void *` allowed) or, worse, silently change it: `GF_SndHandleSetTrackPan/Pitch` grew 2 bytes under the SDK's `u16` parameter. `r10_adapt.py` therefore gives every such call a macro that calls through the matched-time declaration's type. MWCC still emits a direct `bl`. Checked with objdiff against upstream's objects: 517 functions identical.
+- **CI** builds the tree natively in about 30 minutes (`ninja -k 0` lists every error). The first full run had 36 MWCC failures, all fixed by the above.
