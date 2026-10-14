@@ -8,62 +8,45 @@ WIP matching disassembly of Pokémon HeartGold and SoulSilver (US). Goal: byte-f
 
 ## Build
 
-The build system is **GNU Make** (same Makefiles as upstream pret). There are three equivalent entry points; none adds build logic beyond flag plumbing:
+The build system is **pret's Meson build** (since the sync with pret master, #22; plan and history in `tools/decomp_harness/MESON_SYNC_PLAN.md`). The top-level `Makefile` is upstream's thin driver: it clones meson 1.12.0 into `subprojects/`, downloads [metroskrew](https://github.com/mid-kid/metroskrew) (the Metrowerks compiler, assembler and linker) into `tools/metroskrew/`, configures one build dir per game (`build/heartgold.us`, `build/soulsilver.us`) and runs ninja. The libraries (NitroSDK, NitroSystem, NitroWiFi, NitroDWC, libvct) are git-wrap subprojects; NitroSDK's `makelcf` and the ARM7 binary (`ichneumon_sub`) build from source. Three equivalent entry points:
 
-1. **Plain Make** — `make` / `gmake` from the repo root. Needs nothing project-specific.
-2. **The wrapper** — `build_tools/bin/build_pokeheartgold <cmd>` (python3 only). Adds a subcommand CLI, `--game both`, and picks Homebrew `gmake` over Apple's Make 3.81 automatically (`MAKE_BIN` overrides).
-3. **[chiri](https://github.com/antonsynd/chiri)** — `chiri pkg -- <cmd>`. *Optional.* `chiri_config.json5` just points chiri at the wrapper above, so `chiri pkg -- X` ≡ `build_tools/bin/build_pokeheartgold X`.
+1. **Plain Make** — `make` (HeartGold: build, then check), `make GAME_VERSION=SOULSILVER`, `make GAME_VERSION=X check`. Don't use `make soulsilver check`: the `soulsilver` target runs a whole sub-make, and the trailing `check` then builds HeartGold too.
+2. **The wrapper** — `build_tools/bin/build_pokeheartgold <cmd>` (python3 only). Adds a subcommand CLI and `--game both`; configures on first use.
+3. **[chiri](https://github.com/antonsynd/chiri)** — `chiri pkg -- <cmd>`. *Optional.* `chiri_config.json5` points chiri at the wrapper, so `chiri pkg -- X` ≡ `build_tools/bin/build_pokeheartgold X`.
 
-Repo scripts (`build_attestation.sh`, `recomp.sh`, `find_x86_failures.sh`) call the wrapper directly, so chiri is never required. This doc and the `/decomp` skills use the chiri spelling for brevity; substitute either of the others freely. Wrapper/chiri commands:
+Repo scripts (`build_attestation.sh`, `recomp.sh`) call the wrapper directly, so chiri is never required. This doc and the `/decomp` skills use the chiri spelling for brevity; substitute either of the others freely. Wrapper/chiri commands:
 
-- `chiri pkg -- build` — build HeartGold (default)
-- `chiri pkg -- build --game soulsilver` — build SoulSilver
-- `chiri pkg -- build --game both` — build both ROMs
-- `chiri pkg -- build --target main|sub|filesystem` — partial rebuild (ARM9 / ARM7 / NitroFS)
-- `chiri pkg -- build --no-compare` — skip retail SHA1 verification (`COMPARE=0`)
-- `chiri pkg -- build -j4` — parallel jobs
-- `chiri pkg -- compare` / `chiri pkg -- test` — build and verify against retail SHA1 (the matching check *is* the test for a decomp)
-- `chiri pkg -- tidy` / `chiri pkg -- clean` — shallow / full clean
+- `chiri pkg -- build` — build HeartGold and run the sha1 tests
+- `chiri pkg -- build --game soulsilver` / `--game both`
+- `chiri pkg -- build --target main|sub|filesystem` — partial build: `main.nef` (ARM9), `ichneumon_sub` (ARM7), or the NitroFS targets
+- `chiri pkg -- build --no-compare` — skip the sha1 tests
+- `chiri pkg -- build -j8` — parallel jobs for ninja
+- `chiri pkg -- compare` / `chiri pkg -- test` — build and run the four sha1 tests (Main, Sub, Filesystem, ROM); the matching check *is* the test for a decomp
+- `chiri pkg -- tidy` (`ninja -t clean`, keeps the configuration) / `chiri pkg -- clean` (deletes the build dir)
 - `chiri pkg -- format` — runs `./format.sh`
 
-Note the `--` separator: chiri consumes its own args first, then forwards everything after `--` to `build_tools/bin/build_pokeheartgold`. Extra args after a second `--` are passed through to `make` (e.g. `chiri pkg -- build -- FOO=bar`, or `build_tools/bin/build_pokeheartgold build -- FOO=bar` without chiri).
+Note the `--` separator: chiri consumes its own args first, then forwards everything after `--` to the wrapper. Extra args after a second `--` go to `meson compile` / ninja.
 
-Plain Make equivalents: `make` builds HeartGold (`build/heartgold.us/pokeheartgold.us.nds`); `make soulsilver` builds SoulSilver. Both are gated by a sha1 check unless you pass `COMPARE=0`. `GAME_VERSION=HEARTGOLD|SOULSILVER` is the version switch — all version-aware sub-targets honor it.
+Direct Meson: `ninja -C build/heartgold.us pokeheartgold.us.nds`, then `subprojects/meson-1.12.0/meson.py test -C build/heartgold.us`. The tests depend on the ROM (a fork edit to `meson.build`, plan decision D7), so `meson test` rebuilds it first; without that it would check whatever stale files were in the build dir. Objects are named after their source: `src/field/fieldmap.c` → `build/heartgold.us/main.nef.p/src_field_fieldmap.c.o`. The linker map is `build/<game>/main.nef.xMAP`.
 
-Partial targets (avoid rebuilding the whole ROM while iterating):
-- `make main` — ARM9 modules only (matches the `.elf` / static + overlays)
-- `make sub` — ARM7 module (driven by `sub/Makefile`)
-- `make filesystem` — NitroFS assets only (driven by `filesystem.mk`)
-- `make tidy` — clean build outputs but keep generated tools
-- `make clean` — full clean (incl. `lib/dsprot`, `lib/syscall`, tools, generated filesystem)
-- `make compare` — alias for `compare_heartgold`
+**`main.lsf` is the link order and the source of truth for what is built.** `src/meson.build` and `asm/meson.build` are **generated** from it by `python3 tools/decomp_harness/meson_port.py lists` (never edit them; the pre-commit hook checks them). To link C instead of asm (or back), use `python3 tools/decomp_harness/lsf_flip.py asm/<name>.s src/<name>.c`, which swaps the `Object main.nef.p/...` line and regenerates the lists. Every asm→C flip edits `meson.build`, so the next build re-runs Meson's configure (~1 min).
 
-After pulling upstream, if things break try in order: `make tidy && make compare`, then `make clean && make compare`, then `git clean -fdx && make compare`.
+**Prerequisites.** Linux: see `INSTALL.md` (`bison flex g++ gcc-arm-none-eabi ninja-build pkg-config python3 xz-utils nasm libc6:i386 libpng-dev`). CI builds on Ubuntu with metroskrew running natively, no Wine (about 4× faster than Wine on macOS). macOS: `brew install gcc@14 bison flex ninja libpng pkg-config xz arm-none-eabi-gcc wget wine-crossover` (`meson/native_macos.ini` hard-codes `gcc-14`). metroskrew's macOS bundle runs the Metrowerks tools under Wine, so Rosetta is needed too (memory: macOS 27 removed it once; `softwareupdate --install-rosetta`). Homebrew's bison and flex are keg-only: the wrapper puts `/opt/homebrew/opt/{bison,flex}/bin` first on PATH; with plain `make`, export that PATH yourself, or the configure step finds macOS's 2006 bison.
 
-Prerequisites are **not** in the repo and must be staged manually (see `INSTALL.md`): MWCC `2.0/sp2p2` at `tools/mwccarm/2.0/sp2p2/mwccarm.exe`, NitroSDK binaries at `tools/bin/`, and the NitroSDK LCF templates copied to `ARM9-TS.lcf.template` (root) / `sub/ARM7-TS.lcf.template` / `mwldarm.response.template` (root). Without these `make` will fail early. On macOS/Linux, MWCC runs via `wine`; `nitrocrypto.o` is special-cased to build with MWCC `1.2/sp2p3`. On Linux, `make SKREW=<abs path to an extracted metroskrew-linux.tar.xz>` runs the Metrowerks compiler/assembler/linker natively instead ([metroskrew](https://github.com/mid-kid/metroskrew), same bytes, no `tools/mwccarm/` needed; Wine still runs the NitroSDK tools). CI builds this way (about 4× faster: Wine on Linux scans big directories case-insensitively on every header lookup). A native linker is case-sensitive, so object paths in `main.lsf` must match the tree's case exactly.
+**Keep the checkout path short on macOS.** The Metrowerks tools under Wine fail with `die: FormatMessageA` on any path over Windows' 260-character limit (`MAX_PATH`). Upstream's deepest object path inside the build dir is about 135 characters, so a checkout path of about 120 characters or more breaks. `/Users/<you>/Documents/github/pokeheartgold-slop` is fine; a deep temp dir is not.
 
-On macOS, install prerequisites via Homebrew: `brew tap osx-cross/homebrew-arm && brew install gnu-sed arm-gcc-bin wine-crossover make`. The build requires `gsed` (GNU sed) — without it, `.d` dependency files retain Wine `Z:` paths and break `make`. The `make` formula provides `gmake` (GNU Make 4.4), which the wrapper prefers automatically — Apple's bundled Make 3.81 hangs in its parallel dependency walk after large invalidations. When invoking Make directly on macOS, type `gmake`; `common.mk` prints a warning if it detects 3.81 (fall back to `-j1` if that's all you have).
+**Never pass `NINJA="ninja -jN"` to make.** Make exports command-line variables, and meson reads `$NINJA` as the name of a single program, so configure fails with "Could not detect Ninja v1.8.2 or newer". Pass `-j` to ninja (or the wrapper's `-j`) instead.
 
-**ARM64 / Apple Silicon builds:** MWCC via Wine on ARM64 (Rosetta 2) produces identical output to native x86_64. Only the retail SHA1 files (`main.sha1` / `rom.sha1`) are used — no platform-specific variants.
+**Build timeouts and runaway processes:** All build commands MUST use `timeout: 1200000` (20 minutes). **Never** launch multiple background build commands — run one at a time, and kill the previous one before starting a new build. Before starting any build, check for and kill stale processes:
+```bash
+# Kill any leftover ninja/Metrowerks processes from prior builds
+pkill -f 'ninja -C build/|mwccarm|mwldarm|mwasmarm' 2>/dev/null; sleep 1
+```
+A full build of this fork under Wine on macOS is slow (about 1 compile per second at `-j8`, ~17k sources): build incrementally, and use CI (or `--target main`) for whole-tree checks.
 
-**Docker volume caution.** Docker builds (`docker run -v .:/work`) share the project directory. Running `make clean-tools` or `make tools` inside a container replaces native tool binaries (nitrogfx, compstatic, etc.) with Linux ELF binaries. Run `make clean-tools && make tools` on macOS after any container build to restore native tools.
-
-**Cross-environment `.d` files.** When switching between macOS and Docker builds, `.d` dependency files may contain absolute paths from the other environment (`/Users/...` vs `/work/...`). Run `find build lib/dsprot sub -name "*.d" -delete` before building in a different environment.
+A PreToolUse hook (`tools/decomp_harness/prebuild_guard.sh`, wired in `.claude/settings.json`) runs automatically before `chiri`/`make`/`ninja`/`meson`/`build_tools/bin/build_pokeheartgold`/`tools/build_attestation.sh` commands and blocks the build if Metrowerks processes are already running. Commands it can't parse (heredocs, `$(...)`, `bash script`) also trigger it while a build runs; use a script file run with `python3 file.py` instead.
 
 The shell is zsh: unquoted words starting with `=` (e.g. `echo ====` as a separator) fail with `... not found` — quote them.
-
-**Symlinked checkouts and Wine paths.** Wine takes its working directory from `$PWD` whenever `$PWD` names the same directory as the real cwd, so a shell that entered the tree through a symlink (e.g. `~/github` → `~/Documents/github`) used to leak the symlinked spelling into `winepath` output and `.d` files. `common.mk` now pins `export PWD := $(CURDIR)` (make's physical path), so every entry point — `make`, `make -C <path>`, the wrapper, chiri — sees the same paths. `common.mk` also drops any `.d` still containing a Wine `Z:\` path (a compile that died before fixdep ran) before including it. If `make` still spins at 100% CPU, kill it, run `find build -name "*.d" -delete`, then `make tidy` and rebuild.
-
-**Build recovery:** `./tools/decomp_harness/recomp.sh` kills stale processes, cleans corrupted `.d` files, and rebuilds. Use it when builds hang or fail after switching asm→C. Use `--full` for a complete clean rebuild.
-
-**Build timeouts and runaway processes:** All build/make commands MUST use `timeout: 1200000` (20 minutes). Builds that hang (e.g. Wine path issues, `.d` file corruption) will otherwise spin at 100% CPU indefinitely. **Never** launch multiple background build commands — run one at a time, and kill the previous one before starting a new build. Before starting any build, check for and kill stale processes:
-```bash
-# Kill any leftover make/wine processes from prior builds
-pkill -f 'make.*heartgold\|make.*soulsilver\|mwccarm\|mwldarm\|mwasmarm' 2>/dev/null; sleep 1
-```
-If a build times out, do `find build -name "*.d" -delete && make tidy` (or `chiri pkg -- tidy`) before retrying.
-
-A PreToolUse hook (`tools/decomp_harness/prebuild_guard.sh`, wired in `.claude/settings.json`) runs automatically before `chiri`/`make`/`gmake`/`build_tools/bin/build_pokeheartgold`/`tools/build_attestation.sh` commands: it blocks the build if MWCC processes are already running and deletes `.d` files corrupted with Wine `Z:\` paths. The manual cleanup above is the fallback if the hook is bypassed.
 
 ## Formatting
 
@@ -75,18 +58,18 @@ clang-format does **not** understand MWCC inline asm. For NONMATCHING blocks, wr
 
 This is a **matching decomp**, not a reimplementation. The guiding constraint on every change is: does the compiler still emit the same bytes? That shapes the source layout more than any logical concern.
 
-**Two ROMs, one tree.** `heartgold.us/` and `soulsilver.us/` are not source — they hold per-version build metadata only: `main.sha1`, `rom.sha1`, `filesystem.sha1`, the banner spec, icon, and ROM-header template. Version-specific behavior in the shared `src/` tree is selected via `GAME_VERSION` defines from `config.mk`, not via divergent files.
+**Two ROMs, one tree.** `heartgold.us/` and `soulsilver.us/` are not source — they hold per-version build metadata only: `main.sha1`, `rom.sha1`, `filesystem.sha1`, the banner spec, icon, and ROM-header template. Version-specific behavior in the shared `src/` tree is selected via the `-DHEARTGOLD` / `-DSOULSILVER` define (Meson option `game_version`), not via divergent files.
 
 **Three object domains, linked into a DS ROM:**
-- **ARM9 main + overlays** — built from `src/` (C, MWCC) and `asm/` (assembler stubs for functions not yet decompiled or where C can't match). Entry in the root `Makefile`; link script `main.lsf` + `ARM9-TS.lcf.template`; response file `mwldarm.response.template`. `include/` is the public header tree shared across ARM9 code. Overlays are the `overlay_XX_*` files under `asm/` and matching subdirs under `src/`.
-- **ARM7 sub-module** — self-contained build under `sub/` with its own `Makefile`, `global.inc`, LCF, and sha1. Built by `make sub`.
-- **NitroFS filesystem** — `files/` holds game data (graphics, message archives, NARCs, map scripts, battle data, etc.). `filesystem.mk` drives packing; `graphics_files_rules.mk` handles graphic conversion. Outputs are checked against `filesystem.sha1`.
+- **ARM9 main + overlays** — the `main` executable (`main.nef`) in the top-level `meson.build`, from `src/` (C, MWCC) and `asm/` (assembler stubs for functions not yet decompiled or where C can't match), plus `Library` lines for the SDK libraries. Link order: `main.lsf`, turned into `main.lcf` by NitroSDK's `makelcf`. `include/` is the public header tree shared across ARM9 code. Overlays are the `overlay_XX_*` files under `asm/` and matching subdirs under `src/`.
+- **ARM7** — NitroSDK's `ichneumon_sub`, built by the subproject. `sub/` is upstream's unused leftover.
+- **NitroFS filesystem** — `files/` holds game data (graphics, message archives, NARCs, map scripts, battle data, etc.), built by `files/**/meson.build`; generated headers (`*.naix`, `msgdata/msg/*.h`) land in `build/<game>/files/` and are included as `"files/..."`. Outputs are checked against `filesystem.sha1`.
 
-**Build scaffolding.** `common.mk` defines compiler/assembler/linker toolchain vars, search paths, and object rules shared across the ARM9 and sub Makefiles. `config.mk` holds per-version switches. `platform.mk` handles host-OS differences (wine vs native). `binutils.mk` centralizes devkitARM `arm-none-eabi-*` tool paths. `global.inc` is force-included into every assembler translation unit; `include/global.h` is force-included into every C translation unit (see the `$(ASM_OBJS)` / `$(C_OBJS)` rules in `Makefile`).
+**Build scaffolding.** The top-level `meson.build` holds the flags (`-O4,p -ipa file ...`, `-nosyspath -stdinc`, `warning_level=0` = `-warnings off`), the include order (`include, asm/include, lib/include, files, src, asm`), the subproject dependencies, the ROM and the tests. `meson/` has the cross file (metroskrew, `-wrap:sdk 2.0/sp2p2`) and the native files. Every C file includes `global.h` itself (no forced include), which pulls in `<nitro.h>` and `<nnsys.h>` from the real NitroSDK 4.2 / NitroSystem headers; asm files `.include "macros.inc"` and `"global.inc"` (`asm/global.inc`).
 
-**In-tree tools (`tools/`).** Many targets depend on small custom utilities that are built from source on first invocation: `nitrogfx` (image → DS graphic formats), `nitroarc` / `o2narc` (NARC pack/unpack), `jsonproc` (templated JSON → data tables), `msgenc` (message archive encoder), `gen_fx_consts` (fixed-point constant tables), `fixrom`, `compstatic`, `elfcoder`, `mwasmarm_patcher`, etc. `asm_processor/` preprocesses MWCC source so inline-asm tricks survive. `asmdiff` and `py_scripts/` are decomp workflow helpers. The `tools` sub-make is run automatically from `make all`.
+**In-tree tools (`tools/`).** Many targets depend on small custom utilities that are built from source on first invocation: `nitrogfx` (image → DS graphic formats), `nitroarc` / `o2narc` (NARC pack/unpack), `jsonproc` (templated JSON → data tables), `msgenc` (message archive encoder), `gen_fx_consts` (fixed-point constant tables), `fixrom`, `compstatic`, `elfcoder`, `mwasmarm_patcher`, etc. `asm_processor/` preprocesses MWCC source so inline-asm tricks survive. `py_scripts/` holds decomp workflow helpers. Each tool has its own `meson.build` and builds as part of the configure/build.
 
-**NONMATCHING pattern.** When a function cannot be expressed in C such that MWCC emits identical bytes, it is committed as handwritten asm and the C version is kept under `#ifdef NONMATCHING` as documentation. Do not "clean up" such asm — it was written to match a specific compiler output and is load-bearing for `COMPARE=1`.
+**NONMATCHING pattern.** When a function cannot be expressed in C such that MWCC emits identical bytes, it is committed as handwritten asm and the C version is kept under `#ifdef NONMATCHING` as documentation. Do not "clean up" such asm — it was written to match a specific compiler output and is load-bearing for the sha1 tests.
 
 ## Codebase exploration (MCP)
 
@@ -120,13 +103,13 @@ Manual workflow for a file `asm/<name>.s`:
 1. Read `asm/<name>.s` and `asm/include/<name>.inc` to understand functions
 2. Search `include/` and `src/` for callers, headers, and similar patterns — and check prior knowledge: the file's entry in `tools/decomp_harness/knowledge.json` (sweep hypotheses/risks), `attempts_log.py query --file asm/<name>.s` (logged dead ends), and `twins.py file asm/<name>.s --show` (Platinum twin C + verified non-matching drafts — see below)
 3. Create `src/<name>.c` (and `include/<name>.h` if needed)
-4. Before switching `main.lsf`, build with asm to save a reference: `cp build/heartgold.us/asm/<name>.o /tmp/<name>_asm.o`
-5. In `main.lsf`, change `Object asm/<name>.o` → `Object src/<name>.o`
+4. Before switching `main.lsf`, build with asm to save a reference: `cp build/heartgold.us/main.nef.p/asm_<name>.s.o /tmp/<name>_asm.o`
+5. Link the C: `python3 tools/decomp_harness/lsf_flip.py asm/<name>.s src/<name>.c` (swaps the `main.lsf` line, regenerates `src/meson.build` / `asm/meson.build`)
 6. Do NOT modify `save_arrays.c` — adding `#include` of a new header causes IPA cascade. Leave the existing `DECL_CHUNK_EX` macros in place
 7. Build: `chiri pkg -- build --target main --no-compare` (fast, ARM9 only). **Always use `timeout: 1200000`.**
-8. Compare function-by-function: `python3 tools/decomp_harness/objdiff.py /tmp/<name>_asm.o build/heartgold.us/src/<name>.o`
-9. Verify: `chiri pkg -- compare` (full ROM SHA1 — `main.sha1` checks the ELF, `rom.sha1` checks the final ROM)
-10. If mismatch: use `objdiff.py --bytes <func>` or `./tools/asmdiff/asmdiff.sh <address>` to see byte diffs, adjust C, repeat
+8. Compare function-by-function: `python3 tools/decomp_harness/objdiff.py /tmp/<name>_asm.o build/heartgold.us/main.nef.p/src_<name>.c.o` (path: `/` → `_` in the source path)
+9. Verify: `chiri pkg -- compare` (the four sha1 tests: `main.sha1` lists the linked `.sbin` files, `rom.sha1` the final ROM)
+10. If mismatch: use `objdiff.py --bytes <func>` to see byte diffs, adjust C, repeat
 
 Do **not** delete the original `.s` file. Function order in the C file must match the asm. Accumulated matching knowledge lives in `tools/decomp_harness/patterns.json` (source of truth, query with `patterns.py query --grep <word>`, add with `patterns.py add`); `insights.md` is **generated** from it — never edit insights.md directly.
 
