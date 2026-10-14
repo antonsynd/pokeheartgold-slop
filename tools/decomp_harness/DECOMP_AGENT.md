@@ -83,32 +83,29 @@ The header should declare all public functions with correct signatures.
 
 ### Step 5: Update main.lsf
 
-In `main.lsf`, find the line:
+Run:
+```bash
+python3 tools/decomp_harness/lsf_flip.py asm/<basename>.s src/<basename>.c
 ```
-    Object asm/<basename>.o
-```
-Replace with:
-```
-    Object src/<basename>.o
-```
-
-**Do NOT change the position in the file.** The link order is load-bearing.
+It swaps `Object main.nef.p/asm_<basename>.s.o` for `Object main.nef.p/src_<basename>.c.o` in place
+and regenerates `src/meson.build` / `asm/meson.build`. **Do NOT move the line by hand.** The link order
+is load-bearing.
 
 ### Step 6: Build and Compare
 
 Run:
 ```bash
-make main COMPARE=0 -j4 2>&1
+build_tools/bin/build_pokeheartgold build --target main --no-compare -j4 2>&1
 ```
 
 If compilation fails, fix errors and retry.
 
 Once compilation succeeds, run the full comparison:
 ```bash
-make compare -j4 2>&1
+build_tools/bin/build_pokeheartgold compare -j4 2>&1
 ```
 
-If `make compare` passes (SHA1 matches), the decompilation is complete.
+If `compare` passes (all four sha1 tests OK), the decompilation is complete.
 
 ### Step 7: If Comparison Fails
 

@@ -72,9 +72,10 @@ be harder than the queue's untouched files. The draft's behaviour is still right
 ## A slice: `asm/<base>_NN.s`
 
 The normal `/decomp` workflow with `<basename>` = `<base>_NN`: write
-`src/<base>_NN.c` (top level of `src/`, not `src/hgify/`: it's hand-written), flip `Object asm/<base>_NN.o` → `Object src/<base>_NN.o`, and
-`compile_one.sh src/<base>_NN.c` objdiffs against `build/heartgold.us/asm/<base>_NN.o`
-by itself. Differences:
+`src/<base>_NN.c` (top level of `src/`, not `src/hgify/`: it's hand-written), flip it in with
+`lsf_flip.py asm/<base>_NN.s src/<base>_NN.c`, and `compile_one.sh src/<base>_NN.c` objdiffs
+against `build/heartgold.us/main.nef.p/asm_<base>_NN.s.o` by itself (save a copy before the flip:
+once the slice is unlinked, Meson no longer builds it). Differences:
 
 - There is no `asm/include/<base>_NN.inc`; the slice includes the original
   `<base>.inc`. Imports vs exports: a symbol is defined here only if the slice
@@ -93,7 +94,8 @@ No `main.lsf` change: the file is already linked as C. Replace each inline-asm
 function with C, in place:
 
 1. **Save the reference** from a build of HEAD before editing:
-   `cp build/heartgold.us/src/<base>_NN.o /tmp/<base>_NN_ref.o`
+   `cp build/heartgold.us/main.nef.p/src_hgify_<base>_<base>_NN.c.o /tmp/<base>_NN_ref.o`
+   (the object name is the source path with `/` → `_`; `meson_names.object_name()` computes it)
 2. For each function `split_units.py funcs src/<base>_NN.c` prints, replace the
    `// clang-format off` / `asm ... { }` / `// clang-format on` block with C and
    change its marker to `// FUNCTION <fn>: matching C (manual)`.
