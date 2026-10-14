@@ -6,8 +6,16 @@
 #include "overlay_00_arm.h"
 #include "overlay_00_thumb.h"
 
+// Called as matched, before the real SDK headers declared these (#22, R10).
+#define DWC_SetAuthServer(...) ((void (*)(s32 arg0))DWC_SetAuthServer)(__VA_ARGS__)
+#define DWC_SetMemFunc(...) ((void (*)(void (*a)(void), void (*b)(void)))DWC_SetMemFunc)(__VA_ARGS__)
+#define DWC_InitInetEx(...) ((void (*)(void *a, int b, int c, int d))DWC_InitInetEx)(__VA_ARGS__)
+#define DWC_GetInetStatus(...) ((int (*)(void))DWC_GetInetStatus)(__VA_ARGS__)
+#define DWC_InitFriendsMatch(...) ((void (*)(void *a, u32 b, int c, const void *d, const void *e, int f, int g, u32 h, int i))DWC_InitFriendsMatch)(__VA_ARGS__)
+#define DWC_LoginAsync(...) ((void (*)(void *a, int b, void (*c)(void), int d))DWC_LoginAsync)(__VA_ARGS__)
+
+
 // Upstream renamed these and its header still declares the old names (#22).
-void DWC_SetAuthServer(s32 arg0);
 void DWC_ProcessFriendsMatch(void);
 
 typedef struct {
@@ -23,14 +31,9 @@ typedef struct {
 extern NetState *_0221A680;
 extern const u8 _02216400[];
 extern const u8 _0221640C[];
-void DWC_SetMemFunc(void (*a)(void), void (*b)(void));
-void DWC_InitInetEx(void *a, int b, int c, int d);
 void DWC_ConnectInetAsync(void);
 int DWC_CheckInet(void);
-int DWC_GetInetStatus(void);
 void DWC_ProcessInet(void);
-void DWC_InitFriendsMatch(void *a, u32 b, int c, const void *d, const void *e, int f, int g, u32 h, int i);
-void DWC_LoginAsync(void *a, int b, void (*c)(void), int d);
 void ov00_021E65D4(void);
 void ov00_021E6638(void);
 void ov00_021E61A8(void);

@@ -8,8 +8,11 @@
 #include "overlay_manager.h"
 #include "unk_0203A3B0.h"
 
+// Called as matched, before the real SDK headers declared these (#22, R10).
+#define DWC_GetLinkLevel(...) ((int (*)(void))DWC_GetLinkLevel)(__VA_ARGS__)
+
+
 // Upstream renamed these and its header still declares the old names (#22).
-int DWC_GetLinkLevel(void);
 
 typedef int code();
 undefined4 sub_02085BEC();

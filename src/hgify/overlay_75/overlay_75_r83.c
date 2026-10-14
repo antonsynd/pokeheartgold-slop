@@ -7,11 +7,14 @@
 #include "system.h"
 #include "unk_02037C94.h"
 #include "unk_0203A3B0.h"
+
+// Called as matched, before the real SDK headers declared these (#22, R10).
+#define DWC_CleanupInet(...) ((undefined4 (*)())DWC_CleanupInet)(__VA_ARGS__)
+
 typedef int code();
 undefined4 ov75_02246BD8();
 undefined4 ov75_02249534();
 undefined4 ov70_02237F2C();
-undefined4 DWC_CleanupInet();
 undefined4 ov75_022494CC();
 undefined4 ov75_0224937C(int *param_1, undefined4 param_2, undefined4 param_3, undefined4 param_4);
 // FUNCTION ov75_0224937C: matching C (agent20)

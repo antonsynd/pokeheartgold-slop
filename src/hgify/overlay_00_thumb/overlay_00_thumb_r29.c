@@ -9,7 +9,6 @@
 #define NNS_FndGetGroupIDForMBlockExpHeap(...) ((u16 (*)(void *ptr))NNS_FndGetGroupIDForMBlockExpHeap)(__VA_ARGS__)
 
 
-typedef u32 DWCAllocType;
 
 typedef struct UnkStruct_ov00_021E6638 {
     u8 unk_000[0xF94];

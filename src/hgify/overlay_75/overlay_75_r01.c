@@ -23,8 +23,13 @@
 #include "unk_0203A3B0.h"
 #include "unk_020915B0.h"
 
+// Called as matched, before the real SDK headers declared these (#22, R10).
+#define DWC_GetLinkLevel(...) ((int (*)(void))DWC_GetLinkLevel)(__VA_ARGS__)
+#define DWC_SetMemFunc(...) ((void (*)(void *(*alloc)(int, u32, int), void (*free)(int, void *)))DWC_SetMemFunc)(__VA_ARGS__)
+#define DWC_UpdateConnection(...) ((void (*)(void))DWC_UpdateConnection)(__VA_ARGS__)
+
+
 // Upstream renamed these and its header still declares the old names (#22).
-int DWC_GetLinkLevel(void);
 
 #define OVY_ID_INTRO_TITLE 60
 #define OVY_ID_70          70
@@ -76,8 +81,6 @@ extern void *ov75_02246EAC(UnkStruct_ov75_Work *work);
 extern void ov75_02246EDC(UnkStruct_ov75_Work *work);
 extern void ov75_02249780(String *src, char *dest, enum HeapID heapID);
 extern BOOL ov75_02249838(String *str, enum HeapID heapID);
-extern void DWC_SetMemFunc(void *(*alloc)(int, u32, int), void (*free)(int, void *));
-extern void DWC_UpdateConnection(void);
 extern void ov70_022378DC(void);
 extern UnkStruct_ov75_Dialog *sub_02085400(enum HeapID heapID, int a1, int *a2, Options *options, int a4, int a5);
 extern UnkStruct_ov75_Dialog *sub_0208541C(enum HeapID heapID, int a1, int *a2, Options *options, int a4, int a5, int a6, int a7);

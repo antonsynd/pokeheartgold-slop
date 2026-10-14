@@ -9,6 +9,12 @@
 #include "unk_02037C94.h"
 #include "unk_020915B0.h"
 
+// Called as matched, before the real SDK headers declared these (#22, R10).
+#define DWC_SetMemFunc(...) ((void (*)(void *(*alloc)(int, u32, int), void (*free)(int, void *)))DWC_SetMemFunc)(__VA_ARGS__)
+#define DWC_UpdateConnection(...) ((void (*)(void))DWC_UpdateConnection)(__VA_ARGS__)
+#define DWC_GetLinkLevel(...) ((int (*)(void))DWC_GetLinkLevel)(__VA_ARGS__)
+
+
 typedef struct {
     void *unk0;
     u8 filler4[8];
@@ -29,9 +35,6 @@ typedef struct {
 extern void LoadOVY38(void);
 extern void UnloadOVY38(void);
 extern void sub_02034DE0(void);
-extern void DWC_SetMemFunc(void *(*alloc)(int, u32, int), void (*free)(int, void *));
-extern void DWC_UpdateConnection(void);
-extern int DWC_GetLinkLevel(void);
 extern void sub_0203A930(int a0);
 extern const OverlayManagerTemplate *sub_02087E10(int a0);
 extern BOOL ov39_02228140(OverlayManager *man, int *state);

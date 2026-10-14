@@ -5,6 +5,12 @@
 
 #include "overlay_00_thumb.h"
 
+// Called as matched, before the real SDK headers declared these (#22, R10).
+#define DWC_GetInetStatus(...) ((int (*)(void))DWC_GetInetStatus)(__VA_ARGS__)
+#define DWC_GetLastError(...) ((u32 (*)(void *out))DWC_GetLastError)(__VA_ARGS__)
+#define DWC_GetApInfo(...) ((void (*)(void *out))DWC_GetApInfo)(__VA_ARGS__)
+
+
 // Upstream renamed these and its header still declares the old names (#22).
 void DWC_ClearError(void);
 
@@ -19,10 +25,7 @@ typedef struct Ov72Work {
 } Ov72Work;
 void DWC_ProcessInet(void);
 int DWC_CheckInet(void);
-int DWC_GetInetStatus(void);
-u32 DWC_GetLastError(void *out);
 void DWC_CleanupInet(void);
-void DWC_GetApInfo(void *out);
 void ov72_0223A444(Ov72Work *w);
 int ov72_02239220(Ov72Work *w);
 // FUNCTION ov72_02239220: matching C (agent14)

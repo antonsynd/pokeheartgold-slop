@@ -6,14 +6,17 @@
 #include "overlay_00_thumb.h"
 #include "unk_02037C94.h"
 
+// Called as matched, before the real SDK headers declared these (#22, R10).
+#define DWC_GetLastErrorEx(...) ((int (*)(s32 *arg0, s32 *arg1))DWC_GetLastErrorEx)(__VA_ARGS__)
+#define DWC_NASLoginProcess(...) ((int (*)(void))DWC_NASLoginProcess)(__VA_ARGS__)
+#define DWC_ShutdownGHTTP(...) ((void (*)(void))DWC_ShutdownGHTTP)(__VA_ARGS__)
+
+
 // Upstream renamed these and its header still declares the old names (#22).
-int DWC_GetLastErrorEx(s32 *arg0, s32 *arg1);
 void DWC_ClearError(void);
 
-int DWC_NASLoginProcess(void);
 void ov72_0223A444(void *);
 void DWC_CleanupInet(void);
-void DWC_ShutdownGHTTP(void);
 void DWC_ShutdownFriendsMatch(void);
 typedef struct S {
     char pad0[0x1c];

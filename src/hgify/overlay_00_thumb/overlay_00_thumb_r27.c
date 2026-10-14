@@ -5,8 +5,11 @@
 
 #include "ghidra_compat.h"
 #include "overlay_00_thumb.h"
+
+// Called as matched, before the real SDK headers declared these (#22, R10).
+#define DWC_GetNumConnectionHost(...) ((undefined4 (*)())DWC_GetNumConnectionHost)(__VA_ARGS__)
+
 typedef int code();
-undefined4 DWC_GetNumConnectionHost();
 extern int _0221A680;
 void ov00_021E6554(int param_1, undefined4 param_2, undefined4 param_3, undefined4 param_4);
 // FUNCTION ov00_021E6554: matching C (r4)

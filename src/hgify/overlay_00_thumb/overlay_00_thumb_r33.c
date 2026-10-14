@@ -8,6 +8,11 @@
 #include "overlay_00_arm.h"
 #include "overlay_00_thumb.h"
 
+// Called as matched, before the real SDK headers declared these (#22, R10).
+#define DWC_GetAIDBitmap(...) ((int (*)(void))DWC_GetAIDBitmap)(__VA_ARGS__)
+#define DWC_GetMyAID(...) ((int (*)(void))DWC_GetMyAID)(__VA_ARGS__)
+
+
 // Upstream renamed these and its header still declares the old names (#22).
 void DWC_ProcessFriendsMatch(void);
 
@@ -37,8 +42,6 @@ void ov00_021E6CE8(void);
 void ov00_021E7AE0(void);
 void ov00_021E7ACC(void);
 void ov00_021E765C(void);
-int DWC_GetAIDBitmap(void);
-int DWC_GetMyAID(void);
 int ov00_021E7AF4(int a, int b);
 int ov00_021E67E0(int i);
 void ov00_021E62D8(void);

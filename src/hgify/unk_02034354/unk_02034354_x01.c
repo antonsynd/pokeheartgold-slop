@@ -6,11 +6,6 @@
 #include "heap.h"
 #include "save.h"
 #pragma thumb on
-typedef struct {
-    u32 id_data;
-    u32 userid_lo32;
-    u32 playerid;
-} DWCAccLoginId;
 enum SaveBlockID {
     SAVE_BLOCK_ID_NORMAL = 0,
     SAVE_BLOCK_ID_BOXES,

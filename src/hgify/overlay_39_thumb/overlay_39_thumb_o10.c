@@ -7,11 +7,14 @@
 #include "overlay_00_thumb.h"
 #include "unk_02037C94.h"
 
+// Called as matched, before the real SDK headers declared these (#22, R10).
+#define DWC_CleanupInet(...) ((undefined4 (*)())DWC_CleanupInet)(__VA_ARGS__)
+
+
 // Upstream renamed these and its header still declares the old names (#22).
 void DWC_ClearError(void);
 
 typedef int code();
-undefined4 DWC_CleanupInet();
 undefined4 ov39_02227348(int param_1);
 // FUNCTION ov39_02227348: matching C (r2)
 #pragma force_active on

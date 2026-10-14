@@ -8,11 +8,14 @@
 #include "pm_string.h"
 #include "unk_0202C034.h"
 #include "unk_02037C94.h"
+
+// Called as matched, before the real SDK headers declared these (#22, R10).
+#define DWC_CreateFriendKey(...) ((u64 (*)(u32 a0))DWC_CreateFriendKey)(__VA_ARGS__)
+
 typedef struct {
     u8 pad0[4];
     u32 unk4;
 } UnkStruct_ov43_0222A358;
-u64 DWC_CreateFriendKey(u32 a0);
 s32 sub_0202C2DC(u32 a0, s32 a1);
 s32 ov43_0222A358(UnkStruct_ov43_0222A358 *param_1, const char *param_2, u32 param_3);
 // FUNCTION ov43_0222A358: matching C (agent17)
@@ -35,7 +38,7 @@ s32 ov43_0222A358(UnkStruct_ov43_0222A358 *param_1, const char *param_2, u32 par
             lVar8 = String_atoi((struct String *)param_2, &iStack_1c);
             if ((iStack_1c == 1) && (lVar8 != lVar7)) {
                 uVar4 = sub_0202C08C(uVar1);
-                iVar2 = DWC_CheckFriendKey((struct DWCUserData *)uVar4, lVar8);
+                iVar2 = DWC_CheckFriendKey((DWCUserData *)uVar4, lVar8);
                 if (iVar2 == 0) {
                     return 1;
                 }
@@ -44,7 +47,7 @@ s32 ov43_0222A358(UnkStruct_ov43_0222A358 *param_1, const char *param_2, u32 par
                     return 2;
                 }
                 uVar4 = sub_0202C23C(uVar1, iVar6);
-                DWC_CreateFriendKeyToken((struct DWCFriendData *)uVar4, lVar8);
+                DWC_CreateFriendKeyToken((DWCFriendData *)uVar4, lVar8);
                 sub_0202C270(uVar1, iVar6, param_3);
                 sub_0202C190(uVar1, iVar6, 8, 2);
                 return 0;

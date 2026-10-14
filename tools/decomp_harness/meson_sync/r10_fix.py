@@ -21,6 +21,9 @@ sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 KNOWN_SAME = {
     'GXPolygonAttrMisc', 'NNSGfdFrmTexVramState', 'NNSGfdFrmPlttVramState', 'WMErrCode', 'WMGameInfo',
     'MATHRandContext32', 'G2_ChangeBlendAlpha', 'VEC_Set', 'MATH_IAbs',
+    # pret #523 (NitroDWC headers): the same three u32s. (Also checked: overlay_00_thumb_r29.c's
+    # `typedef u32 DWCAllocType`, reported as 'u32', only types a parameter that is never read.)
+    'DWCAccLoginId',
     *(f'GX_POLYGON_ATTR_MISC_{n}' for n in ('NONE', 'XLU_DEPTH_UPDATE', 'FAR_CLIPPING', 'DISP_1DOT',
                                              'DEPTHTEST_DECAL', 'FOG')),
 }

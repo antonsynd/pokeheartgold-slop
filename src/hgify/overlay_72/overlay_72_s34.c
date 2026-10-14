@@ -9,9 +9,12 @@
 #include "system.h"
 #include "unk_0202D230.h"
 #include "unk_02037C94.h"
+
+// Called as matched, before the real SDK headers declared these (#22, R10).
+#define DWC_CheckInet(...) ((undefined4 (*)())DWC_CheckInet)(__VA_ARGS__)
+
 typedef int code();
 undefined4 ov72_0223A350();
-undefined4 DWC_CheckInet();
 undefined4 ov72_02238680();
 undefined4 ov72_02238EE4();
 undefined4 ov72_022389C8();

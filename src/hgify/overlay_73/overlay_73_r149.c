@@ -4,11 +4,14 @@
 #include "global.h"
 
 #include "unk_02037C94.h"
+
+// Called as matched, before the real SDK headers declared these (#22, R10).
+#define DWC_GetDateTime(...) ((void (*)(void *, void *))DWC_GetDateTime)(__VA_ARGS__)
+
 void sub_0202D678(void *, unsigned int, unsigned int, void *);
 void ov73_021EA180(int *);
 void ov73_021E83EC(int *, int, int);
 void sub_0202D7C0(void *, void *, unsigned char, unsigned char);
-void DWC_GetDateTime(void *, void *);
 int ov72_02237B54(void);
 int ov72_02237B74(void);
 // FUNCTION ov73_021E944C: matching C (agent21)

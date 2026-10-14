@@ -7,7 +7,10 @@
 #include "unk_02037C94.h"
 #include "unk_0203A3B0.h"
 
-int DWC_CleanupInet(void);
+// Called as matched, before the real SDK headers declared these (#22, R10).
+#define DWC_CleanupInet(...) ((int (*)(void))DWC_CleanupInet)(__VA_ARGS__)
+
+
 int ov70_02237F2C(void);
 
 typedef struct UnkStruct_ov75_02248714_Sub {

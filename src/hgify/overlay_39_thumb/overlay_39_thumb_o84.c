@@ -6,8 +6,14 @@
 #include "ghidra_compat.h"
 #include "overlay_00_thumb.h"
 
+// Called as matched, before the real SDK headers declared these (#22, R10).
+#define DWC_GetLastErrorEx(...) ((int (*)(s32 *arg0, s32 *arg1))DWC_GetLastErrorEx)(__VA_ARGS__)
+#define DWC_GetInetStatus(...) ((int (*)(void))DWC_GetInetStatus)(__VA_ARGS__)
+#define DWC_GetLastError(...) ((void (*)(void *a))DWC_GetLastError)(__VA_ARGS__)
+#define DWC_GetApInfo(...) ((void (*)(void *a))DWC_GetApInfo)(__VA_ARGS__)
+
+
 // Upstream renamed these and its header still declares the old names (#22).
-int DWC_GetLastErrorEx(s32 *arg0, s32 *arg1);
 void DWC_ClearError(void);
 
 typedef int code();
@@ -23,9 +29,6 @@ typedef struct {
 void ov39_02228AA8(Ov39_Obj *obj);
 void DWC_ProcessInet(void);
 int DWC_CheckInet(void);
-int DWC_GetInetStatus(void);
-void DWC_GetLastError(void *a);
-void DWC_GetApInfo(void *a);
 void DWC_CleanupInet(void);
 // FUNCTION ov39_02228D0C: matching C (agent14)
 #pragma force_active on

@@ -5,6 +5,12 @@
 
 #include <dwc.h>
 #include "unk_02037C94.h"
+
+// Called as matched, before the real SDK headers declared these (#22, R10).
+#define DWC_CheckDirtyFlag(...) ((BOOL (*)(void *))DWC_CheckDirtyFlag)(__VA_ARGS__)
+#define DWC_UpdateServersAsync(...) ((int (*)(int, void (*)(void), void *, void (*)(void), u32, void (*)(void), u32))DWC_UpdateServersAsync)(__VA_ARGS__)
+#define DWC_SetBuddyFriendCallback(...) ((void (*)(void (*)(void), int))DWC_SetBuddyFriendCallback)(__VA_ARGS__)
+
 typedef struct {
     char pad0[0xF10];
     void *x0F10;
@@ -14,13 +20,10 @@ typedef struct {
     u8 x10E6;
 } Sys;
 extern Sys *_0221A680;
-extern BOOL DWC_CheckDirtyFlag(void *);
 extern void ov00_021E6274(void);
 extern void ov00_021E6298(void);
 extern void ov00_021E629C(void);
 extern void ov00_021E62D4(void);
-extern int DWC_UpdateServersAsync(int, void (*)(void), void *, void (*)(void), u32, void (*)(void), u32);
-extern void DWC_SetBuddyFriendCallback(void (*)(void), int);
 // FUNCTION ov00_021E61A8: matching C (agent15)
 #pragma force_active on
 void ov00_021E61A8(int a, int b, u32 c) {

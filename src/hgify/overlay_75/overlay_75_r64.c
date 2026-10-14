@@ -8,8 +8,14 @@
 #include "unk_02037C94.h"
 #include "unk_0203A3B0.h"
 
+// Called as matched, before the real SDK headers declared these (#22, R10).
+#define DWC_GetLastErrorEx(...) ((int (*)(s32 *arg0, s32 *arg1))DWC_GetLastErrorEx)(__VA_ARGS__)
+#define DWC_GetApInfo(...) ((void (*)(void *buf))DWC_GetApInfo)(__VA_ARGS__)
+#define DWC_GetInetStatus(...) ((int (*)(void))DWC_GetInetStatus)(__VA_ARGS__)
+#define DWC_GetLastError(...) ((void (*)(void *buf))DWC_GetLastError)(__VA_ARGS__)
+
+
 // Upstream renamed these and its header still declares the old names (#22).
-int DWC_GetLastErrorEx(s32 *arg0, s32 *arg1);
 void DWC_ClearError(void);
 
 typedef struct Ov75_Parent {
@@ -28,11 +34,8 @@ typedef struct Ov75_Obj {
 } Ov75_Obj;
 void ov75_02247878(Ov75_Obj *obj);
 void DWC_ProcessInet(void);
-void DWC_GetApInfo(void *buf);
 void ov70_02237F2C(void);
-int DWC_GetInetStatus(void);
 void DWC_CleanupInet(void);
-void DWC_GetLastError(void *buf);
 int DWC_CheckInet(void);
 // FUNCTION ov75_02248800: matching C (agent15)
 #pragma force_active on

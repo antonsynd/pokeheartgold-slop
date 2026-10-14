@@ -6,10 +6,13 @@
 #include "ghidra_compat.h"
 #include "text.h"
 #include "unk_02037C94.h"
+
+// Called as matched, before the real SDK headers declared these (#22, R10).
+#define DWC_CleanupInet(...) ((undefined4 (*)())DWC_CleanupInet)(__VA_ARGS__)
+
 typedef int code();
 undefined4 ov73_021E844C();
 undefined4 ov73_021E9FF8();
-undefined4 DWC_CleanupInet();
 undefined4 ov73_021E9DE0(int param_1, undefined4 param_2, undefined4 param_3, undefined4 param_4);
 // FUNCTION ov73_021E9DE0: matching C (agent20)
 #pragma force_active on

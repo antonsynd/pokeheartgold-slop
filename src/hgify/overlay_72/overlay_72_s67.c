@@ -5,11 +5,14 @@
 
 #include "ghidra_compat.h"
 #include "unk_02037C94.h"
+
+// Called as matched, before the real SDK headers declared these (#22, R10).
+#define DWC_GetDateTime(...) ((undefined4 (*)())DWC_GetDateTime)(__VA_ARGS__)
+
 typedef int code();
 undefined4 ov72_02237B54();
 undefined4 ov72_02238680();
 undefined4 ov72_0223A444();
-undefined4 DWC_GetDateTime();
 undefined4 sub_0202D7C0(void *, void *, unsigned char, unsigned char);
 undefined4 sub_0202D678(void *, unsigned int, unsigned int, void *);
 undefined4 ov72_02237B74();

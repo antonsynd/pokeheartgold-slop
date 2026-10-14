@@ -5,9 +5,12 @@
 
 #include "ghidra_compat.h"
 #include "overlay_00_thumb.h"
+
+// Called as matched, before the real SDK headers declared these (#22, R10).
+#define DWC_CleanupInet(...) ((undefined4 (*)())DWC_CleanupInet)(__VA_ARGS__)
+#define DWC_ShutdownFriendsMatch(...) ((undefined4 (*)())DWC_ShutdownFriendsMatch)(__VA_ARGS__)
+
 typedef void code(void);
-undefined4 DWC_CleanupInet();
-undefined4 DWC_ShutdownFriendsMatch();
 undefined4 ov00_021E5AE8(void);
 void ov00_021E6CB8(void);
 // FUNCTION ov00_021E6CB8: matching C (r2)

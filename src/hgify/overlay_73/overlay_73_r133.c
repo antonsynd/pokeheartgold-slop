@@ -6,6 +6,12 @@
 #include "ghidra_compat.h"
 #include "overlay_00_thumb.h"
 
+// Called as matched, before the real SDK headers declared these (#22, R10).
+#define DWC_GetInetStatus(...) ((int (*)(void))DWC_GetInetStatus)(__VA_ARGS__)
+#define DWC_GetLastError(...) ((int (*)(void *))DWC_GetLastError)(__VA_ARGS__)
+#define DWC_GetApInfo(...) ((void (*)(void *))DWC_GetApInfo)(__VA_ARGS__)
+
+
 // Upstream renamed these and its header still declares the old names (#22).
 void DWC_ClearError(void);
 
@@ -21,11 +27,8 @@ struct S {
 };
 void DWC_ProcessInet(void);
 int DWC_CheckInet(void);
-int DWC_GetInetStatus(void);
-int DWC_GetLastError(void *);
 void ov73_021EA180(struct S *);
 void DWC_CleanupInet(void);
-void DWC_GetApInfo(void *);
 // FUNCTION ov73_021E8D2C: matching C (agent14)
 #pragma force_active on
 int ov73_021E8D2C(struct S *p, int a, int b, int c) {

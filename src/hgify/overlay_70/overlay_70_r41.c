@@ -6,8 +6,11 @@
 #include "ghidra_compat.h"
 #include "overlay_00_thumb.h"
 
+// Called as matched, before the real SDK headers declared these (#22, R10).
+#define DWC_GetLinkLevel(...) ((int (*)(void))DWC_GetLinkLevel)(__VA_ARGS__)
+
+
 // Upstream renamed these and its header still declares the old names (#22).
-int DWC_GetLinkLevel(void);
 
 typedef int code();
 int ov70_02238E44(void);

@@ -8,6 +8,10 @@
 #include "screen_fade.h"
 #include "unk_0202D230.h"
 #include "unk_02037C94.h"
+
+// Called as matched, before the real SDK headers declared these (#22, R10).
+#define DWC_CheckInet(...) ((undefined4 (*)())DWC_CheckInet)(__VA_ARGS__)
+
 typedef int code();
 undefined4 ov73_021E8B64(undefined4);
 undefined4 ov73_021E8A08();
@@ -16,7 +20,6 @@ undefined4 ov73_021EA12C();
 undefined4 ov73_021E8628();
 undefined4 ov73_021EA15C();
 undefined4 ov73_021E8730();
-undefined4 DWC_CheckInet();
 undefined4 ov73_021E9FF8();
 undefined4 ov73_021E84D0(int *param_1, undefined4 param_2, undefined4 param_3, undefined4 param_4);
 // FUNCTION ov73_021E84D0: matching C (v1)

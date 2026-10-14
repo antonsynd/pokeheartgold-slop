@@ -5,6 +5,11 @@
 
 #include <dwc.h>
 #include "ghidra_compat.h"
+
+// Called as matched, before the real SDK headers declared these (#22, R10).
+#define DWC_GetFriendDataType(...) ((void (*)(FD00 *))DWC_GetFriendDataType)(__VA_ARGS__)
+#define DWC_IsBuddyFriendData(...) ((void (*)(FD00 *))DWC_IsBuddyFriendData)(__VA_ARGS__)
+
 typedef int code();
 typedef struct FD00 {
     unsigned char d[12];
@@ -16,8 +21,6 @@ typedef struct S00 {
     void *profile;
 } S00;
 extern S00 *_0221A680;
-void DWC_GetFriendDataType(FD00 *);
-void DWC_IsBuddyFriendData(FD00 *);
 // FUNCTION ov00_021E700C: matching C (agent3)
 #pragma force_active on
 void ov00_021E700C(void) {

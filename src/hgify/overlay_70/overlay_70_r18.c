@@ -5,10 +5,13 @@
 
 #include "overlay_00_thumb.h"
 
+// Called as matched, before the real SDK headers declared these (#22, R10).
+#define WCM_GetPhase(...) ((int (*)(void))WCM_GetPhase)(__VA_ARGS__)
+
+
 // Upstream renamed these and its header still declares the old names (#22).
 void DWC_ClearError(void);
 
-int WCM_GetPhase(void);
 // FUNCTION ov70_02238398: matching C (agent8)
 #pragma force_active on
 int ov70_02238398(unsigned int param_1) {
