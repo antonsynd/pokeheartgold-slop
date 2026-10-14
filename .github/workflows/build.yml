@@ -42,7 +42,11 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        game: [HEARTGOLD, SOULSILVER]
+        include:
+          - game: HEARTGOLD
+            name: heartgold
+          - game: SOULSILVER
+            name: soulsilver
 
     steps:
       - name: Install packages
@@ -69,9 +73,16 @@ jobs:
             !subprojects/packagefiles
           key: meson-deps-${{ hashFiles('Makefile', 'subprojects/*.wrap', 'subprojects/packagefiles/**') }}
 
+      # Build everything first with `ninja -k 0`, so a failing run lists every
+      # compile error, not just the first.
+      - name: Build
+        run: |
+          make GAME_VERSION=${{ matrix.game }} setup_rom
+          ninja -C build/${{ matrix.name }}.us -k 0 poke${{ matrix.name }}.us.nds
+
       # `check` builds the ROM, then runs the four sha1 tests (main, sub,
       # filesystem, ROM) against the retail hashes.
-      - name: Build and compare
+      - name: Compare
         run: make GAME_VERSION=${{ matrix.game }} check
 
       - name: Upload logs on failure
