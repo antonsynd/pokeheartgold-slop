@@ -15,6 +15,10 @@
 #include "unk_0205A44C.h"
 #include "unk_02091564.h"
 
+// Called as matched, before the real SDK headers declared these (#22, R10).
+#define MATH_CountPopulation(...) ((int (*)(u32 x))MATH_CountPopulation)(__VA_ARGS__)
+
+
 extern u32 sub_02033250(void);
 extern void sub_02038C1C(int);
 extern void sub_0205AD24(void *);

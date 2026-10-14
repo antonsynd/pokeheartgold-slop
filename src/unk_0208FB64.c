@@ -11,6 +11,10 @@
 #define sub_02038C1C sub_02038C1C_UpstreamDecl
 #include "unk_02035900.h"
 #include "unk_02037C94.h"
+
+// Called as matched, before the real SDK headers declared these (#22, R10).
+#define MATH_CountPopulation(...) ((int (*)(u32 x))MATH_CountPopulation)(__VA_ARGS__)
+
 #undef sub_02038C1C
 
 extern void sub_02091570(int a0, int a1, void *a2, void *a3);

@@ -2,6 +2,7 @@
 #pragma require_prototypes off
 #pragma warning_errors off
 #include "global.h"
+#pragma thumb on
 void NNS_GfdSetFrmTexVramState(const NNSGfdFrmTexVramState *pState);
 void NNS_GfdSetFrmPlttVramState(const NNSGfdFrmPlttVramState *pState);
 typedef struct CameraAngle {

@@ -21,6 +21,7 @@
 #include "unk_02005D10.h"
 #include "unk_02009D48.h"
 #include "unk_0200A090.h"
+#pragma thumb on
 typedef struct BallSeal {
     u8 type;
     u8 x;

@@ -2,9 +2,6 @@
 #pragma warning_errors off
 #include "global.h"
 #pragma thumb on
-static inline u32 NNS_GfdGetPlttKeySize(NNSGfdPlttKey plttKey) {
-    return (u32)(((plttKey & 0xFFFF0000) >> 16) << 3);
-}
 void sub_020161A8(NNSG2dPaletteData *paletteData, NNSGfdPlttKey vramKey, NNSG2dImagePaletteProxy *proxy);
 // FUNCTION sub_020161A8: matching C (pt2)
 #pragma force_active on

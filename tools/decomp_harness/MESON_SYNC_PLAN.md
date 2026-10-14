@@ -97,8 +97,7 @@ These are files that exist only in our tree: 16,566 in `src/`, `include/` and `a
 
 - #26 turns 59 of nitrocrypto's 67 functions into C pieces (`src/hgify/nitrocrypto/`) plus asm slices (`asm/nitrocrypto_*.s`). They must be built with **MWCC 1.2/sp2p3, ARM, and no `-ipa`**: `common.mk` spells `-ipa file` as `$(IPAFLAGS)` so the `Makefile` can empty it for them.
 - Upstream keeps `asm/nitrocrypto.s` as one plain asm game object (`main.nef.p/asm_nitrocrypto.s.o`, last in OVY_74), and its per-file 1.2 override is gone.
-- So the Meson port needs a separate target for these pieces: `static_library('nitrocrypto', ..., pic: false)` with the 1.2 compiler and its own flags, and its objects listed in `main.lsf`. Meson allows only one C compiler per language, so it has to be a `custom_target` per file, or a generator, calling metroskrew's 1.2 binary. Whether metroskrew 0.1.3 ships 1.2/sp2p3 is a Phase 1 check.
-- **Fallback if it doesn't:** link `asm/nitrocrypto.s` (kept per policy) in place of the pieces, exactly like upstream, and park the pieces until a 1.2 path exists. The ROM is unaffected either way; only the C count drops by 59.
+- **Resolved (2026-10-14):** metroskrew ships 1.2/sp2p3 (`-wrap:sdk 1.2/sp2p3` runs `mwccarm-2.0-82.exe`). A `static_library` can't drop the global `-ipa file`, which 1.2 rejects, so the top-level `meson.build` (a fork edit) has a `generator()` that calls metroskrew's `mwccarm` with the Make build's flags for these objects. Its objects are `main.nef.p/<file>.c.o`; `meson_names.MWCC12_RE` knows that naming and `lists` emits them as `pokeheartgold_c_mwcc12`. Three pieces checked with objdiff against upstream's assembled `asm/nitrocrypto.s`: identical.
 - #26 also edits `Makefile` and `common.mk`. Both become merge conflicts: take upstream's, as in §4.
 
 ### Already broken against today's upstream

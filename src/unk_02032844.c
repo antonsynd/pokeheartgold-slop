@@ -1,5 +1,33 @@
 #include "global.h"
 
+// Called as matched, before the real SDK headers declared these (#22, R10).
+#define WM_Initialize(...) ((int (*)(void *buf, WMCallbackFunc callback, u16 dmaNo))WM_Initialize)(__VA_ARGS__)
+#define WM_InitializeForListening(...) ((int (*)(void *buf, WMCallbackFunc callback, u16 dmaNo, u16 flag))WM_InitializeForListening)(__VA_ARGS__)
+#define WM_Reset(...) ((int (*)(WMCallbackFunc callback))WM_Reset)(__VA_ARGS__)
+#define WM_End(...) ((int (*)(WMCallbackFunc callback))WM_End)(__VA_ARGS__)
+#define WM_SetIndCallback(...) ((int (*)(WMCallbackFunc callback))WM_SetIndCallback)(__VA_ARGS__)
+#define WM_SetPortCallback(...) ((int (*)(u16 port, WMCallbackFunc callback, void *arg))WM_SetPortCallback)(__VA_ARGS__)
+#define WM_StartParent(...) ((int (*)(WMCallbackFunc callback))WM_StartParent)(__VA_ARGS__)
+#define WM_EndParent(...) ((int (*)(WMCallbackFunc callback))WM_EndParent)(__VA_ARGS__)
+#define WM_StartScan(...) ((int (*)(WMCallbackFunc callback, const WifiScanParam *param))WM_StartScan)(__VA_ARGS__)
+#define WM_EndScan(...) ((int (*)(WMCallbackFunc callback))WM_EndScan)(__VA_ARGS__)
+#define WM_Disconnect(...) ((int (*)(WMCallbackFunc callback, u16 aid))WM_Disconnect)(__VA_ARGS__)
+#define WM_StartMP(...) ((int (*)(WMCallbackFunc callback, u16 *recvBuf, u16 recvBufSize, u16 *sendBuf, u16 sendBufSize, u16 param))WM_StartMP)(__VA_ARGS__)
+#define WM_SetMPDataToPortEx(...) ((int (*)(WMCallbackFunc callback, void *arg, const u16 *sendData, u16 sendDataSize, u16 destBitmap, u16 port, u16 prio))WM_SetMPDataToPortEx)(__VA_ARGS__)
+#define WM_EndMP(...) ((int (*)(WMCallbackFunc callback))WM_EndMP)(__VA_ARGS__)
+#define WM_SetGameInfo(...) ((int (*)(WMCallbackFunc callback, const u16 *userGameInfo, u16 length, u32 ggid, u16 tgid, u8 attr))WM_SetGameInfo)(__VA_ARGS__)
+#define WM_SetLifeTime(...) ((int (*)(WMCallbackFunc callback, u16 tgid, u16 camLifeTime, u16 frameLifeTime, u16 mpLifeTime))WM_SetLifeTime)(__VA_ARGS__)
+#define WM_MeasureChannel(...) ((int (*)(WMCallbackFunc callback, u16 ccaMode, u16 edThreshold, u16 channel, u16 measureTime))WM_MeasureChannel)(__VA_ARGS__)
+#define WM_SetEntry(...) ((int (*)(WMCallbackFunc callback, BOOL enabled))WM_SetEntry)(__VA_ARGS__)
+#define WMi_GetStatusAddress(...) ((void * (*)(void))WMi_GetStatusAddress)(__VA_ARGS__)
+#define WVR_TerminateAsync(...) ((void (*)(void *callback, void *arg))WVR_TerminateAsync)(__VA_ARGS__)
+
+
+// Called as matched, before the real SDK headers declared these (#22, R10).
+#define WM_SetParentParameter(...) ((int (*)(WMCallbackFunc callback, const WifiParentParam *param))WM_SetParentParameter)(__VA_ARGS__)
+#define WM_StartConnectEx(...) ((int (*)(WMCallbackFunc callback, const void *bssDesc, const u8 *ssid, BOOL powerSave, u16 authMode))WM_StartConnectEx)(__VA_ARGS__)
+
+
 typedef void (*WMCallbackFunc)(void *arg);
 typedef void (*WifiConnectFunc)(int aid);
 typedef void (*WifiRecvFunc)(u16 aid, void *data, u16 length);

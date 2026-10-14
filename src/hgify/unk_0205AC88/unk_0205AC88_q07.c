@@ -2967,6 +2967,7 @@ typedef struct TerrainAttributes {
     u16 terrainAttributes[(0x800 / sizeof(u16)) * 16];
 } TerrainAttributes;
 typedef const fx32 (*GetHeightFunc)(const FieldSystem *, const fx32, const fx32, const fx32, u8 *);
+typedef BOOL (*GetTileAttributesFunc)(const FieldSystem *, const int, const int, u16 *);
 typedef struct TerrainCollisionManager {
     GetHeightFunc getHeight;
     GetTileAttributesFunc getTileAttributes;

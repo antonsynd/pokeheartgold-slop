@@ -5,6 +5,10 @@
 #include "sys_task.h"
 #include "sys_task_api.h"
 
+// Called as matched, before the real SDK headers declared these (#22, R10).
+#define NNS_SndPlayerSetTrackPan(...) ((void (*)(NNSSndHandle *handle, u32 track, int pan))NNS_SndPlayerSetTrackPan)(__VA_ARGS__)
+
+
 extern void GF_SndSetState(u32 state);
 extern void *GF_SdatGetAttrPtr(u32 attr);
 extern void GF_Snd_SaveState(int *level_p);
