@@ -7,23 +7,23 @@ on:
     branches: [master, mainline]
     paths:
       - 'Makefile'
-      - '*.mk'
+      - 'meson.build'
+      - 'meson.options'
+      - '**/meson.build'
+      - 'meson/**'
+      - 'subprojects/**'
       - 'main.lsf'
-      - 'global.inc'
-      - 'charmap.txt'
-      - 'rom.rsf'
       - 'asm/**'
       - 'src/**'
       - 'include/**'
       - 'lib/**'
-      - 'sub/**'
       - 'files/**'
       - 'heartgold.us/**'
       - 'soulsilver.us/**'
       - 'tools/**'
       - '!tools/decomp_harness/**'
       - '.github/workflows/build.yml'
-      - '.github/actions/**'
+  # No path filter: `build` is a required check, so it must report on every PR.
   pull_request:
   workflow_dispatch:
 
@@ -32,90 +32,56 @@ concurrency:
   group: build-${{ github.ref }}
   cancel-in-progress: true
 
-env:
-  CC: gcc-10
-  CXX: g++-10
-  COMPARE: 1
-  # Wine's fixme/err chatter on stderr would become ::error:: annotations.
-  WINEDEBUG: -all
-
 jobs:
   # The two games share no build outputs, so they build on parallel runners.
+  # pret's Meson build: metroskrew runs the Metrowerks tools natively on
+  # Linux, and the NitroSDK tools are built from source, so no Wine.
   rom:
     name: rom (${{ matrix.game }})
-    runs-on: ubuntu-22.04
+    runs-on: ubuntu-24.04
     strategy:
+      fail-fast: false
       matrix:
         game: [HEARTGOLD, SOULSILVER]
 
     steps:
-      - name: Update and Install Software
+      - name: Install packages
         run: |
-          sudo add-apt-repository ppa:ubuntu-toolchain-r/test -y
-          sudo apt update
-          sudo apt -y --allow-downgrades install g++-10-multilib linux-libc-dev binutils-arm-none-eabi p7zip-full pkg-config libpugixml-dev ppa-purge
-          sudo ppa-purge -y ppa:ubuntu-toolchain-r/test || true
+          # metroskrew's Linux binaries are 32-bit.
           sudo dpkg --add-architecture i386
-          sudo mkdir -pm755 /etc/apt/keyrings
-          sudo wget -O /etc/apt/keyrings/winehq-archive.key https://dl.winehq.org/wine-builds/winehq.key
-          sudo add-apt-repository ppa:cybermax-dexter/sdl2-backport
-          sudo wget -NP /etc/apt/sources.list.d/ https://dl.winehq.org/wine-builds/ubuntu/dists/$(lsb_release -cs)/winehq-$(lsb_release -cs).sources
-          sudo apt update
-          sudo apt -y --allow-downgrades install --install-recommends winehq-stable
-          sudo apt-get install -y --no-install-recommends gcc-arm-none-eabi
+          sudo apt-get update
+          sudo apt-get install -y --no-install-recommends \
+            bison flex g++ gcc-arm-none-eabi ninja-build pkg-config python3 \
+            xz-utils nasm libc6:i386 libpng-dev
 
       - name: Checkout Repo
         uses: actions/checkout@v4
 
-      - name: Setup Repo
-        run: |
-          mkdir -p ~/download
-          cd ~/download
-          # Toolchain assets, pinned and checksummed so the compiler can't
-          # change under us. The Metrowerks compiler, assembler and linker
-          # come from metroskrew (mid-kid/metroskrew, what pret's Meson build
-          # uses): the same compilers relinked as Linux binaries, so they run
-          # without Wine and give the same bytes. Wine still runs the NitroSDK
-          # tools (makerom, makelcf, makebanner).
-          ASSETS=https://github.com/pret/pokeheartgold/raw/79948ad5db02cb4dc190dbaa0c4b7848279bc61c
-          wget $ASSETS/NitroSDK-3_2-060901.7z
-          wget https://github.com/mid-kid/metroskrew/releases/download/0.1.3/metroskrew-linux.tar.xz
-          sha256sum -c - <<'SHA256'
-          0ee935e34237cb1954e657083cd80a31ec9de1aeddd9468cceef684cac75b491  NitroSDK-3_2-060901.7z
-          2fec5ba308690a25157afc532ed87411a413501d43d85892ae4bfb9eb3975790  metroskrew-linux.tar.xz
-          SHA256
-          tar xJf metroskrew-linux.tar.xz -C ~
-          7z x NitroSDK-3_2-060901.7z
-          mv NitroSDK-3_2-060901/tools/bin $GITHUB_WORKSPACE/tools
-          mv NitroSDK-3_2-060901/include/nitro/specfiles/ARM7-TS.lcf.template $GITHUB_WORKSPACE/sub/
-          mv NitroSDK-3_2-060901/include/nitro/specfiles/ARM9-TS.lcf.template $GITHUB_WORKSPACE/
-          mv NitroSDK-3_2-060901/include/nitro/specfiles/mwldarm.response.template $GITHUB_WORKSPACE/
-        working-directory: ~
-
-      - name: Set Swap Space
-        uses: pierotofy/set-swap-space@fc79b3f67fa8a838184ce84a674ca12238d2c761 # master as of 2025-05-08
+      # metroskrew, the meson checkout and the subproject sources are pinned by
+      # the Makefile and the .wrap files, so they key the cache.
+      - name: Cache toolchain and subprojects
+        uses: actions/cache@v4
         with:
-          swap-size-gb: 19
+          path: |
+            tools/metroskrew
+            subprojects/*
+            !subprojects/*.wrap
+            !subprojects/packagefiles
+          key: meson-deps-${{ hashFiles('Makefile', 'subprojects/*.wrap', 'subprojects/packagefiles/**') }}
 
-      - name: Build
-        env:
-          GAME_VERSION: ${{ matrix.game }}
-          GAME_LANGUAGE: ENGLISH
-          GAME_REVISION: 0
-        run: make -j"$(nproc)" SKREW=$HOME/metroskrew 2> >(sed -r 's/^/::error::/')
+      # `check` builds the ROM, then runs the four sha1 tests (main, sub,
+      # filesystem, ROM) against the retail hashes.
+      - name: Build and compare
+        run: make GAME_VERSION=${{ matrix.game }} check
 
-      - name: Post error archive
+      - name: Upload logs on failure
         if: failure()
         continue-on-error: true
-        run: find . -maxdepth 2 -type d \( -name build -or -name files \) -exec tar -czvhf failure.tar.gz {} +
-
-      - name: Post error upload
-        if: failure()
         uses: actions/upload-artifact@v4
         with:
-          name: pokeheartgold-failure-${{ github.run_id }}-${{ matrix.game }}
-          path: failure.tar.gz
-          retention-days: 1
+          name: meson-logs-${{ github.run_id }}-${{ matrix.game }}
+          path: build/*/meson-logs/
+          retention-days: 3
 
   # The status check the mainline ruleset requires: passes only if both games
   # built and matched.
