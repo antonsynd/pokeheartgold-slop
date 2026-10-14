@@ -6,6 +6,10 @@
 #include "ghidra_compat.h"
 #include "heap.h"
 #include "unk_02037C94.h"
+
+// Called as matched, before the real SDK headers declared these (#22, R10).
+#define NNS_FndSetGroupIDForExpHeap(...) ((undefined4 (*)())NNS_FndSetGroupIDForExpHeap)(__VA_ARGS__)
+
 typedef int code();
 extern int _0221A680;
 void ov00_021E714C(int param_1, undefined4 param_2);

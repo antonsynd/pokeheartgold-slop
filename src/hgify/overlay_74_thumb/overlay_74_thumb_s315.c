@@ -2,6 +2,10 @@
 #pragma warning_errors off
 #pragma thumb on
 #include "global.h"
+
+// Called as matched, before the real SDK headers declared these (#22, R10).
+#define WM_Reset(...) ((int (*)(void (*callback)(void)))WM_Reset)(__VA_ARGS__)
+
 void ov74_022309AC(void);
 void ov74_02231448(int errCode);
 // FUNCTION ov74_02231724: matching C (twin)

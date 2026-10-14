@@ -2,6 +2,10 @@
 #pragma warning_errors off
 #pragma thumb on
 #include "global.h"
+
+// Called as matched, before the real SDK headers declared these (#22, R10).
+#define MIC_StartAutoSamplingAsync(...) ((int (*)(void *param, void *callback, void *arg))MIC_StartAutoSamplingAsync)(__VA_ARGS__)
+
 extern void *MIC_GetLastSamplingAddress(void);
 extern BOOL VCT_SendAudio(void *data, u32 size);
 extern BOOL VCT_ReceiveAudio(void *data, u32 size, void *info);

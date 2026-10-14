@@ -1,5 +1,9 @@
 #include "global.h"
 
+// Called as matched, before the real SDK headers declared these (#22, R10).
+#define G3X_GetBoxTestResult(...) ((int (*)(int *result))G3X_GetBoxTestResult)(__VA_ARGS__)
+
+
 
 typedef struct {
     u8 pad_00[0x18];

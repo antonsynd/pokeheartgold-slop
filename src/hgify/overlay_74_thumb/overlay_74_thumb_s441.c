@@ -4,6 +4,10 @@
 // clang-format off
 #include "global.h"
 #include "heap.h"
+
+// Called as matched, before the real SDK headers declared these (#22, R10).
+#define MATH_CalcCRC16(...) ((u16 (*)(void *table, const void *data, u32 dataLength))MATH_CalcCRC16)(__VA_ARGS__)
+
 // clang-format on
 extern u8 *sub_02035754(int netId);
 extern void CRYPTO_RC4Init(void *context, const void *key, u32 keyLength);

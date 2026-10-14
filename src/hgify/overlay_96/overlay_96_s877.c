@@ -4,6 +4,10 @@
 #include "global.h"
 
 #include "ghidra_compat.h"
+
+// Called as matched, before the real SDK headers declared these (#22, R10).
+#define FX_Sqrt(...) ((undefined4 (*)())FX_Sqrt)(__VA_ARGS__)
+
 typedef int code();
 int ov96_02207390(undefined4 param_1, undefined4 param_2, undefined4 param_3, int param_4);
 // FUNCTION ov96_02207390: matching C (r2)

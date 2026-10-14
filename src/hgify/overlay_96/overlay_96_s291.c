@@ -2,6 +2,10 @@
 #pragma warning_errors off
 #pragma thumb on
 #include "global.h"
+
+// Called as matched, before the real SDK headers declared these (#22, R10).
+#define MATH_QSort(...) ((void (*)(void *, u32, u32, void *, void *))MATH_QSort)(__VA_ARGS__)
+
 typedef struct E {
     u32 val : 16;
     u32 rank : 8;

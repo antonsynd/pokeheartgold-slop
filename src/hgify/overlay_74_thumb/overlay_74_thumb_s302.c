@@ -3,6 +3,10 @@
 #pragma thumb on
 #include "global.h"
 
+// Called as matched, before the real SDK headers declared these (#22, R10).
+#define WM_SetMPDataToPortEx(...) ((int (*)(void (*callback)(void), void *arg, const u16 *sendData, u16 sendDataSize, u32 destBitmap, u16 port, u16 prio))WM_SetMPDataToPortEx)(__VA_ARGS__)
+
+
 u32 ov74_022310AC(void);
 void ov74_02231448(void);
 void ov74_02230018(void);

@@ -5,6 +5,10 @@
 
 #include "unk_02037C94.h"
 
+// Called as matched, before the real SDK headers declared these (#22, R10).
+#define NNS_FndGetGroupIDForMBlockExpHeap(...) ((u16 (*)(void *ptr))NNS_FndGetGroupIDForMBlockExpHeap)(__VA_ARGS__)
+
+
 typedef u32 DWCAllocType;
 
 typedef struct UnkStruct_ov00_021E6638 {

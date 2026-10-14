@@ -216,10 +216,10 @@ def cmd_lists(args):
 sys.path.insert(0, os.path.join(ROOT, 'tools', 'decomp_harness', 'meson_sync'))
 from rules import C_RULES, ASM_RULES, SYM_MAP, _SYM_RE  # noqa: E402  (R1, R2, R5-R7, R9 and R3)
 
-R4_RULES = [
-    (re.compile(r'(#include\s*)<nitro/fx\.h>'), r'\1<nitro/fx/fx.h>'),
-    (re.compile(r'(#include\s*)<nitro/os/(cache|interrupt|system|ownerInfo)\.h>'), r'\1<nitro/os.h>'),
-    (re.compile(r'(#include\s*)<nitro/hw/common/io_reg\.h>'), r'\1<nitro/hw/ARM9/ioreg_OS.h>'),
+R4_RULES = [  # <...> or "..." spellings alike
+    (re.compile(r'(#include\s*)[<"]nitro/fx\.h[>"]'), r'\1<nitro/fx/fx.h>'),
+    (re.compile(r'(#include\s*)[<"]nitro/os/(cache|interrupt|system|ownerInfo)\.h[>"]'), r'\1<nitro/os.h>'),
+    (re.compile(r'(#include\s*)[<"]nitro/hw/common/io_reg\.h[>"]'), r'\1<nitro/hw/ARM9/ioreg_OS.h>'),
     (re.compile(r'(#include\s*)"(spl(?:_\w+)?\.h)"'), r'\1"library/\2"'),
     (re.compile(r'^[ \t]*#include\s*<MSL\.h>[ \t]*\n', re.M), ''),
 ]

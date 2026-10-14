@@ -4,6 +4,10 @@
 #include "global.h"
 
 #include "error_handling.h"
+
+// Called as matched, before the real SDK headers declared these (#22, R10).
+#define MATH_CountPopulation(...) ((unsigned int (*)(unsigned int))MATH_CountPopulation)(__VA_ARGS__)
+
 // FUNCTION ov99_021E6FA0: matching C (agent7)
 #pragma force_active on
 unsigned short ov99_021E6FA0(int param_1) {

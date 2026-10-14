@@ -3,6 +3,10 @@
 #pragma thumb on
 // clang-format off
 #include "global.h"
+
+// Called as matched, before the real SDK headers declared these (#22, R10).
+#define WM_End(...) ((int (*)(void (*callback)(void)))WM_End)(__VA_ARGS__)
+
 // clang-format on
 
 #define WM_ERRCODE_OPERATING 2

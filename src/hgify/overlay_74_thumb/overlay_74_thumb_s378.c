@@ -2,6 +2,10 @@
 #pragma warning_errors off
 #pragma thumb on
 #include "global.h"
+
+// Called as matched, before the real SDK headers declared these (#22, R10).
+#define CTRDG_ReadAgbFlash(...) ((int (*)())CTRDG_ReadAgbFlash)(__VA_ARGS__)
+
 // FUNCTION ov74_02233AB8: matching C (tiny1)
 #pragma force_active on
 int ov74_02233AB8(int p0, int p1) {

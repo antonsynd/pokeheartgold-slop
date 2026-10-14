@@ -4,6 +4,10 @@
 #include "global.h"
 
 #include "ghidra_compat.h"
+
+// Called as matched, before the real SDK headers declared these (#22, R10).
+#define NNS_SndStrmInit(...) ((void (*)(void *strm))NNS_SndStrmInit)(__VA_ARGS__)
+
 typedef int code();
 typedef struct W {
     char pad0[0x110c];

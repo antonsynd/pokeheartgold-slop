@@ -2,6 +2,15 @@
 #pragma warning_errors off
 #pragma thumb on
 #include "global.h"
+
+// Called as matched, before the real SDK headers declared these (#22, R10).
+#define TP_WaitBusy(...) ((void (*)(int))TP_WaitBusy)(__VA_ARGS__)
+#define TP_CheckError(...) ((int (*)(int))TP_CheckError)(__VA_ARGS__)
+
+
+// Called as matched, before the real SDK headers declared these (#22, R10).
+#define TP_RequestAutoSamplingStartAsync(...) ((int (*)(u16 vCount, u16 frequency, void *buf, u32 bufSize))TP_RequestAutoSamplingStartAsync)(__VA_ARGS__)
+
 extern u8 _021D2198[];
 // FUNCTION GF_TouchpadStartAutoSampling: matching C (twin)
 #pragma force_active on

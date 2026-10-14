@@ -2,6 +2,10 @@
 #pragma warning_errors off
 #pragma thumb on
 #include "global.h"
+
+// Called as matched, before the real SDK headers declared these (#22, R10).
+#define NNS_SndStrmStart(...) ((void (*)(void *strm))NNS_SndStrmStart)(__VA_ARGS__)
+
 typedef struct {
     u32 unk0;
     u8 *manager;

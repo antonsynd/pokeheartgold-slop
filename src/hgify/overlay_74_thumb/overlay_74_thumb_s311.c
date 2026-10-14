@@ -3,6 +3,10 @@
 #pragma thumb on
 #include "global.h"
 
+// Called as matched, before the real SDK headers declared these (#22, R10).
+#define WM_StartConnectEx(...) ((int (*)(void (*cb)(void *), void *bss, void *ssid, int powerSave, int auth))WM_StartConnectEx)(__VA_ARGS__)
+
+
 extern void *ov74_022311E8(void);
 extern void *ov74_02231100(void);
 extern void ov74_02231448(void);
