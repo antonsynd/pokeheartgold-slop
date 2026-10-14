@@ -18,6 +18,7 @@ on:
       - 'tools/decomp_harness/coverage_ledger.json'
       - 'tools/decomp_harness/coverage_ledger.py'
       - 'tools/decomp_harness/asmscan.py'
+      - 'tools/decomp_harness/meson_names.py'
       - 'tools/update_readme_progress.py'
       - '.github/progress_reference.json'
       - '.github/workflows/update-progress.yml'

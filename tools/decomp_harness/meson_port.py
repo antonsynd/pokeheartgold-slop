@@ -16,40 +16,19 @@ Subcommands:
 
 See tools/decomp_harness/MESON_SYNC_PLAN.md, Phase 3.
 """
-import argparse, hashlib, os, re, subprocess, sys
+import argparse, os, re, subprocess, sys
+
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+from meson_names import GAME_OBJ_RE, OBJDIR, object_name  # noqa: E402
 
 ROOT = subprocess.run(['git', 'rev-parse', '--show-toplevel'], capture_output=True, text=True,
                       check=True).stdout.strip()
-OBJDIR = 'main.nef.p/'
 
 # Game objects that move into upstream's libraries (plan §1, D2): not carried over.
 DROPPED_RE = re.compile(r'^(asm/middleware\.o|src/hgify/overlay_13_thumb_2/[^/]+\.o|asm/overlay_13_thumb_2_[^/]+\.o)$')
 
 HEADER_RE = re.compile(r'^(Static|Autoload|Overlay)\s+(\S+)\s*$')
 ENTRY_RE = re.compile(r'^(\s*)(Object|Library)\s+(\S+)(\s+\(\S+\))?\s*$')
-GAME_OBJ_RE = re.compile(r'^main\.nef\.p/(src|asm)_')
-
-
-def canonicalize_filename(fname):
-    """Verbatim from meson 1.12 mesonbuild/backend/backends.py (Backend.canonicalize_filename)."""
-    if os.path.altsep is not None:
-        fname = fname.replace(os.path.altsep, os.path.sep)
-    parts = fname.split(os.path.sep)
-    hashed = ''
-    if len(parts) > 5:
-        temp = '/'.join(parts[-5:])
-        # is it shorter to hash the beginning of the path?
-        if len(fname) > len(temp) + 41:
-            hashed = hashlib.sha1(fname.encode('utf-8')).hexdigest() + '_'
-            fname = temp
-    for ch in ('/', '\\', ':'):
-        fname = fname.replace(ch, '_')
-    return hashed + fname
-
-
-def object_name(src):
-    """Meson object path for a source of the top-level `main` target, e.g. src/a/b.c."""
-    return OBJDIR + canonicalize_filename(src) + '.o'
 
 
 def read_rev_or_file(spec, path='main.lsf'):

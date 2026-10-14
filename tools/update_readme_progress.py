@@ -48,9 +48,19 @@ def load_reference():
     return {}
 
 
-def lsf_objects(lsf_text):
-    """Object paths in an LSF file, in order."""
-    return re.findall(r"^\s*Object\s+(\S+)", lsf_text, re.M)
+def lsf_objects(lsf_text, root=ROOT):
+    """Object paths in an LSF file, in order, as src/....o / asm/....o.
+
+    main.lsf names objects the Meson way (main.nef.p/src_field_fieldmap.c.o, ours and
+    upstream's alike); those are mapped back to their source paths through this tree.
+    Names without a source here (lib objects) are kept as they are."""
+    import meson_names  # tools/decomp_harness, on sys.path below
+
+    objects = []
+    for o in re.findall(r"^\s*Object\s+(\S+)", lsf_text, re.M):
+        src = meson_names.source_of(o, root) if meson_names.GAME_OBJ_RE.match(o) else None
+        objects.append(Path(src).with_suffix(".o").as_posix() if src else o)
+    return objects
 
 
 def fetch_upstream_lsf():

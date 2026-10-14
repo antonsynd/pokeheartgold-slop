@@ -7,9 +7,12 @@ asm/include/*.inc public lists. Pure stdlib, read-only.
 import re
 from pathlib import Path
 
+import meson_names
+
 FUNC_START_RE = re.compile(r"^\s*(thumb|arm)_func_start\s+(\w+)")
 FUNC_END_RE = re.compile(r"^\s*(?:thumb|arm)_func_end\s+(\w+)")
-LSF_OBJ_RE = re.compile(r"^\s*Object\s+(asm|src)/(.+)\.o\s*$")
+# main.lsf names game objects the Meson way: main.nef.p/src_field_fieldmap.c.o
+LSF_OBJ_RE = re.compile(r"^\s*Object\s+(main\.nef\.p/(?:asm|src)_\S+\.[cs]\.o)\s*$")
 BL_RE = re.compile(r"\bblx?\s+(\w+)")
 LITERAL_RE = re.compile(r"^\s*\.word\s+(.+)$")
 SECTION_RE = re.compile(r"^\s*\.(text|rodata|data|bss)\b\s*$")
@@ -43,7 +46,11 @@ def parse_lsf(root=None):
     for line in (root / "main.lsf").read_text().splitlines():
         m = LSF_OBJ_RE.match(line)
         if m:
-            objects.append({"kind": m.group(1), "name": m.group(2)})
+            src = meson_names.source_of(m.group(1), root)
+            if src is None:
+                raise ValueError(f"main.lsf: no source file for {m.group(1)}")
+            kind, rest = src.split("/", 1)
+            objects.append({"kind": kind, "name": rest.rsplit(".", 1)[0]})
     return objects
 
 
