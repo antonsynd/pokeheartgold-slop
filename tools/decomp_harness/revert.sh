@@ -1,9 +1,10 @@
 #!/usr/bin/env bash
 #
 # Revert a decompilation attempt for a specific asm file.
-# Restores main.lsf and removes generated C/H files. A C/H file that git
-# tracks is restored from HEAD instead of removed, so this never deletes an
-# hgify-generated src/<base>_NN.c (or any other committed file).
+# Restores main.lsf (and the Meson source lists) and removes generated C/H
+# files. A C/H file that git tracks is restored from HEAD instead of removed,
+# so this never deletes an hgify-generated src/<base>_NN.c (or any other
+# committed file).
 #
 # Usage: ./tools/decomp_harness/revert.sh asm/unk_02004A44.s
 #        ./tools/decomp_harness/revert.sh src/overlay_99_04.c   (split unit, SPLIT_TARGETS.md)
@@ -25,14 +26,30 @@ basename="$(basename "$(basename "$asmfile" .s)" .c)"
 cd "$PROJECT_ROOT"
 
 # Revert main.lsf (only when there is an asm object to go back to: a generated
-# src/<base>_NN.c split unit has none and stays linked as src)
-if [[ -f "asm/${basename}.s" ]] && grep -q "Object src/${basename}.o" main.lsf 2>/dev/null; then
-    if [[ "$(uname)" == "Darwin" ]]; then
-        sed -i '' "s|Object src/${basename}.o|Object asm/${basename}.o|" main.lsf
+# src/<base>_NN.c split unit has none and stays linked as src). lsf_flip.py swaps
+# main.nef.p/src_..<base>.c.o back to main.nef.p/asm_<base>.s.o and regenerates
+# src/meson.build and asm/meson.build. The linked C may sit in a src/ subdirectory.
+linked_c=""
+if [[ -f "asm/${basename}.s" ]]; then
+    linked_c=$(python3 - "$basename" <<'PYEOF'
+import sys
+sys.path.insert(0, 'tools/decomp_harness')
+import asmscan
+base = sys.argv[1]
+for o in asmscan.parse_lsf('.'):
+    if o['kind'] == 'src' and o['name'].rsplit('/', 1)[-1] == base:
+        print('src/%s.c' % o['name'])
+PYEOF
+)
+fi
+if [[ -n "$linked_c" ]]; then
+    if [[ "$(printf '%s\n' "$linked_c" | wc -l | tr -d ' ')" -ne 1 ]]; then
+        echo "revert: several linked C files are named ${basename}; flip main.lsf back by hand:" >&2
+        printf '  %s\n' $linked_c >&2
     else
-        sed -i "s|Object src/${basename}.o|Object asm/${basename}.o|" main.lsf
+        python3 tools/decomp_harness/lsf_flip.py "$linked_c" "asm/${basename}.s"
+        echo "Reverted main.lsf: $linked_c → asm/${basename}.s"
     fi
-    echo "Reverted main.lsf: src/${basename}.o → asm/${basename}.o"
 fi
 
 # Remove generated files (restore tracked ones)
@@ -46,9 +63,19 @@ for f in "src/${basename}.c" "include/${basename}.h"; do
     fi
 done
 
-# Clean build artifacts
-for f in "build/heartgold.us/src/${basename}.o" "build/heartgold.us/src/${basename}.d"; do
-    rm -f "$f" 2>/dev/null
-done
+# Clean build artifacts: the C object under Meson's name (build/<game>.us/main.nef.p/src_<path>.c.o)
+if [[ -n "$linked_c" ]]; then
+    obj=$(python3 -c "
+import sys
+sys.path.insert(0, 'tools/decomp_harness')
+import meson_names
+print(meson_names.object_name('$linked_c'))
+" 2>/dev/null) || obj=""
+    if [[ -n "$obj" ]]; then
+        for g in heartgold.us soulsilver.us; do
+            rm -f "build/$g/$obj" 2>/dev/null
+        done
+    fi
+fi
 
 echo "Revert complete for $asmfile"

@@ -34,6 +34,16 @@ for entry in data['completed'] + data['failed']:
     print(entry['file'] if isinstance(entry, dict) else entry)
 ")
 
+# asm/<name>.s files main.lsf still links as asm (main.nef.p/asm_<name>.s.o), in link order
+linked_asm=$(python3 -c "
+import sys
+sys.path.insert(0, '$SCRIPT_DIR')
+import asmscan
+for o in asmscan.parse_lsf('$PROJECT_ROOT'):
+    if o['kind'] == 'asm':
+        print('asm/%s.s' % o['name'])
+")
+
 if [[ -f "$TRIAGE_FILE" ]]; then
     # Triage queue order (easiest first)
     targets=$(python3 -c "
@@ -45,7 +55,7 @@ for row in report['queue']:
 ")
 else
     # Fallback: main.lsf link order
-    targets=$(grep 'Object asm/' "$PROJECT_ROOT/main.lsf" | sed 's/.*Object //; s/\.o$/.s/')
+    targets="$linked_asm"
 fi
 
 for asmfile in $targets; do
@@ -64,9 +74,7 @@ for asmfile in $targets; do
         split_note="  [SPLIT unit of $base; see tools/decomp_harness/SPLIT_TARGETS.md]"
     else
         # triage queue can be stale: skip files already flipped to src in main.lsf
-        basename="${asmfile#asm/}"
-        basename="${basename%.s}"
-        if ! grep -q "Object asm/${basename}\.o" "$PROJECT_ROOT/main.lsf" 2>/dev/null; then
+        if ! echo "$linked_asm" | grep -qxF "$asmfile"; then
             continue
         fi
     fi

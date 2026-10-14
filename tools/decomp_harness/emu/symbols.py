@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Overlay-aware symbol table built from the linked ARM9 ELF.
 
-The matching build emits ``build/<game>/main.elf`` with every function and
+The matching build emits ``build/<game>/main.nef`` with every function and
 data symbol (about 43k) and one ELF section per overlay, named after the
 overlay (``OVY_38``, ``field``, ``intro_title`` ...).  Overlays share address
 ranges, so an address alone is ambiguous: this module resolves an address to
@@ -73,7 +73,7 @@ class SymbolTable:
     @classmethod
     def load(cls, game: str = "heartgold.us", elf: Optional[Path] = None,
              refresh: bool = False) -> "SymbolTable":
-        elf = elf or REPO / "build" / game / "main.elf"
+        elf = elf or REPO / "build" / game / "main.nef"
         if not elf.exists():
             sys.exit(f"missing {elf}: build the ROM first (chiri pkg -- build --target main --no-compare)")
         cache = elf.parent / "emu" / "symbols.json"

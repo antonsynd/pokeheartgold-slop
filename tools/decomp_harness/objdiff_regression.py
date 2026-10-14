@@ -11,15 +11,19 @@ section-mismatch flag, reduced to a single label:
     <detail>  otherwise (counts of SIZE/DIFF/MISS)
 
 Pairs enumerated:
-  1. self-compares: every build/heartgold.us/asm/*.o vs itself (extraction smoke
-     test; must be ALLMATCH under both paths).
-  2. reference pairs: scratchpad *_asm.o vs the matching build src .o.
+  1. self-compares: every linked asm object build/heartgold.us/main.nef.p/asm_*.s.o
+     vs itself (extraction smoke test; must be ALLMATCH under both paths).
+  2. reference pairs: scratchpad *_asm.o vs the matching build C object
+     (build/heartgold.us/main.nef.p/src_<path>.c.o).
 """
 
 import glob
 import os
 import subprocess
 import sys
+
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+from meson_names import object_name  # noqa: E402
 
 ROOT = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 OBJDIFF = os.path.join(ROOT, "tools", "decomp_harness", "objdiff.py")
@@ -57,17 +61,16 @@ def verdict(asm_o, c_o, legacy):
 def main():
     pairs = []  # (label, asm_o, c_o)
 
-    # 1. self-compares of every pending asm object.
-    for o in sorted(glob.glob(os.path.join(ROOT, "build/heartgold.us/asm/**/*.o"),
-                              recursive=True)):
+    # 1. self-compares of every linked (pending) asm object.
+    for o in sorted(glob.glob(os.path.join(ROOT, "build/heartgold.us/main.nef.p/asm_*.s.o"))):
         pairs.append(("self:" + os.path.relpath(o, ROOT), o, o))
 
     # 2. reference pairs from scratchpad.
     refs = {
-        "unk_0200B150": "build/heartgold.us/src/unk_0200B150.o",
+        "unk_0200B150": "build/heartgold.us/" + object_name("src/unk_0200B150.c"),
         "bagbd": None,   # resolved below
-        "unk_02005D10": "build/heartgold.us/src/unk_02005D10.o",
-        "unk_0202FBCC": "build/heartgold.us/src/unk_0202FBCC.o",
+        "unk_02005D10": "build/heartgold.us/" + object_name("src/unk_02005D10.c"),
+        "unk_0202FBCC": "build/heartgold.us/" + object_name("src/unk_0202FBCC.c"),
     }
     for stem, rel in refs.items():
         for suffix in ("_asm.o", "_noipa.o"):
@@ -75,8 +78,8 @@ def main():
             if not os.path.exists(asm_o):
                 continue
             if rel is None:
-                cand = glob.glob(os.path.join(ROOT, f"build/heartgold.us/**/{stem}.o"),
-                                 recursive=True)
+                # src/<dir>/<stem>.c -> main.nef.p/src_<dir>_<stem>.c.o
+                cand = glob.glob(os.path.join(ROOT, f"build/heartgold.us/main.nef.p/src_*{stem}.c.o"))
                 rel_path = cand[0] if cand else None
             else:
                 rel_path = os.path.join(ROOT, rel)

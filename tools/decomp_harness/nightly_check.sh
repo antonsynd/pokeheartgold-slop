@@ -31,7 +31,7 @@ stamp() { date -u +%Y-%m-%dT%H:%M:%SZ; }
 
 # 1. Don't run under an active build (same class of guard as
 # prebuild_guard.sh — one Wine/MWCC at a time).
-if pgrep -f 'mwccarm|mwldarm|mwasmarm' >/dev/null 2>&1; then
+if pgrep -f '(mwccarm|mwldarm|mwasmarm)(-[0-9][0-9.-]*)?\.exe|ninja -C [^ ]*build/' >/dev/null 2>&1; then
     echo "$(stamp) SKIP: MWCC/MWLD already running (active build)" >>"$LOG"
     exit 0
 fi

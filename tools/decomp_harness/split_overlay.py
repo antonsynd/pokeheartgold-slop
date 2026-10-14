@@ -20,22 +20,29 @@ referencing chunk's per-chunk .inc — exactly as the upstream "Split Overlay 80
 precedent did.
 
 The .s carries authoritative `; 0xADDR` comments and address-encoded symbol
-names (ov83_0223DD60 == 0x0223DD60); build/<ver>/main.elf.xMAP is used only as
+names (ov83_0223DD60 == 0x0223DD60); build/<ver>/main.nef.xMAP is used only as
 an optional cross-check.
 
 Pipeline: parse -> reference graph -> cut points -> emit chunks + .inc ->
-rewrite main.lsf -> manifest.
+rewrite main.lsf (Meson object names, main.nef.p/asm_<chunk>.s.o) ->
+regenerate src/meson.build and asm/meson.build (meson_port.py lists) -> manifest.
 
 Usage:
   split_overlay.py asm/overlay_83.s [--dry-run] [--align N] [--min-funcs N]
                                     [--lsf main.lsf] [--manifest PATH]
-                                    [--xmap build/heartgold.us/main.elf.xMAP]
+                                    [--xmap build/heartgold.us/main.nef.xMAP]
 """
 import argparse
 import json
 import os
 import re
+import subprocess
 import sys
+
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+from meson_names import object_name  # noqa: E402
+
+HARNESS_DIR = os.path.dirname(os.path.abspath(__file__))
 
 # ---------------------------------------------------------------------------
 # Parsing
@@ -481,26 +488,44 @@ def emit(base, lines, funcs, syms, chunks, header_lines, orig_public, out_asm_di
 # ---------------------------------------------------------------------------
 
 def rewrite_lsf(lsf_path, base, records, dry_run):
+    """Replace the overlay's one game object line with its chunks' (Meson names), in address order."""
     with open(lsf_path) as f:
         text = f.read()
-    old = 'Object asm/%s.o' % base
+    old = object_name('asm/%s.s' % base)
+    # an optional section selector, e.g. "(.itcm)", is carried over to every chunk
+    old_re = re.compile(r'^(\s*)Object\s+%s(\s+\(\S+\))?\s*$' % re.escape(old))
     lines = text.splitlines(keepends=True)
     out = []
     replaced = False
     for ln in lines:
-        if ln.strip() == old:
-            indent = ln[:len(ln) - len(ln.lstrip())]
+        m = old_re.match(ln.rstrip('\n'))
+        if m:
             for r in records:
-                out.append('%sObject asm/%s.o\n' % (indent, r['chunk']))
+                out.append('%sObject %s%s\n' % (m.group(1), object_name('asm/%s.s' % r['chunk']),
+                                                m.group(2) or ''))
             replaced = True
         else:
             out.append(ln)
     if not replaced:
-        raise SystemExit('ERROR: `%s` not found in %s' % (old, lsf_path))
+        raise SystemExit('ERROR: `Object %s` not found in %s' % (old, lsf_path))
     if not dry_run:
         with open(lsf_path, 'w') as f:
             f.writelines(out)
     return replaced
+
+
+def regenerate_lists(lsf_path):
+    """Run `meson_port.py lists` so src/meson.build and asm/meson.build follow main.lsf.
+    It reads the repo's main.lsf, so a --lsf pointing elsewhere is left alone."""
+    root = subprocess.run(['git', 'rev-parse', '--show-toplevel'], capture_output=True, text=True,
+                          check=True).stdout.strip()
+    if os.path.realpath(lsf_path) != os.path.realpath(os.path.join(root, 'main.lsf')):
+        print('NOTE: %s is not the repo main.lsf; run `meson_port.py lists` by hand once it is' % lsf_path)
+        return
+    rc = subprocess.run([sys.executable, os.path.join(HARNESS_DIR, 'meson_port.py'), 'lists'],
+                        cwd=root).returncode
+    if rc != 0:
+        raise SystemExit('ERROR: meson_port.py lists failed (exit %d); main.lsf is already rewritten' % rc)
 
 
 # ---------------------------------------------------------------------------
@@ -513,7 +538,7 @@ def xmap_func_count(xmap_path, base):
     if not xmap_path or not os.path.exists(xmap_path):
         return None
     try:
-        obj = base + '.o'
+        obj = 'asm_%s.s.o' % base  # main.nef.p/asm_<base>.s.o
         n = 0
         with open(xmap_path, errors='ignore') as f:
             for ln in f:
@@ -541,7 +566,7 @@ def main():
                          '(0 = cut at every valid boundary)')
     ap.add_argument('--lsf', default='main.lsf')
     ap.add_argument('--manifest', default=None)
-    ap.add_argument('--xmap', default='build/heartgold.us/main.elf.xMAP')
+    ap.add_argument('--xmap', default='build/heartgold.us/main.nef.xMAP')
     ap.add_argument('--json-out', default=None, help='write chunk plan JSON here')
     args = ap.parse_args()
 
@@ -595,6 +620,7 @@ def main():
 
     if not args.dry_run:
         rewrite_lsf(args.lsf, base, records, args.dry_run)
+        regenerate_lists(args.lsf)
         manifest_path = args.manifest or os.path.join(
             'tools/decomp_harness/split_manifests', base + '.json')
         os.makedirs(os.path.dirname(manifest_path), exist_ok=True)
@@ -610,7 +636,7 @@ def main():
                 'chunks': records,
             }, f, indent=2)
         print('\nmanifest: %s' % manifest_path)
-        print('main.lsf rewritten: %s' % args.lsf)
+        print('main.lsf rewritten: %s (src/meson.build and asm/meson.build regenerated)' % args.lsf)
 
     if args.json_out:
         with open(args.json_out, 'w') as f:

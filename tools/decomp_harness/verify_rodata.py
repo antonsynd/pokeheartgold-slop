@@ -6,10 +6,14 @@ multiple instances, so resolve each symbol to its exact section via readelf
 section index. Pointer words are 0 in both .o's (relocated at link) -> compared
 equal; their targets are correct by construction.
 """
-import re, subprocess
+import os, re, subprocess, sys
 
-ASM = 'build/heartgold.us/asm/overlay_02_02248728.o'
-SRC = 'build/heartgold.us/src/overlay_02_02248728.o'
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+from meson_names import object_name
+
+# Meson names the objects main.nef.p/<source path, '/' -> '_'>.o
+ASM = 'build/heartgold.us/' + object_name('asm/overlay_02_02248728.s')
+SRC = 'build/heartgold.us/' + object_name('src/overlay_02_02248728.c')
 READELF = 'arm-none-eabi-readelf'
 OD = 'arm-none-eabi-objdump'
 ROBASE = 0x022532F8
@@ -51,6 +55,12 @@ def readelf_hex(o, ndx):
     return data
 
 if __name__ == '__main__':
+    for path, what in ((ASM, 'asm reference'), (SRC, 'C')):
+        if not os.path.exists(path):
+            sys.exit(f'verify_rodata: {what} object {path} not found'
+                     + ('; Meson builds asm/*.s only while main.lsf links it, so the reference object is'
+                        ' unavailable until the refs targets exist (or copy a saved one there)'
+                        if what == 'asm reference' else ': build --target main first'))
     asm_ro = asm_blob(ASM, '.rodata')
     asm_da = asm_blob(ASM, '.data')
     syms = readelf_syms(SRC)
