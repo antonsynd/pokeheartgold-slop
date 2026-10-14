@@ -138,6 +138,26 @@ subdir('files')
 subdir('asm')
 subdir('src')
 
+# Fork edit (pokeheartgold-slop #26): nitrocrypto's C pieces match only with
+# MWCC 1.2/sp2p3, which has no -ipa. The global C arguments carry -ipa file and
+# can't be dropped for one target, so a generator calls the compiler with the
+# flags the Make build used for them. Its objects are main.nef.p/<file>.c.o.
+mwccarm = find_program('tools/metroskrew/bin/mwccarm')
+mwcc12 = generator(mwccarm,
+    output : '@PLAINNAME@.o',
+    arguments : [
+        '-wrap:sdk', '1.2/sp2p3',
+        '-O4,p', '-sym', 'on', '-enum', 'int', '-lang', 'c99',
+        '-Cpp_exceptions', 'off', '-gccext,on', '-proc', 'arm946e',
+        '-msgstyle', 'gcc', '-gccinc', '-interworking', '-inline', 'on,noauto',
+        '-char', 'signed',
+        '-D' + game_version, '-DGAME_REMASTER=0', '-DENGLISH', '-DPM_KEEP_ASSERTS',
+        '-DSDK_ARM9', '-DSDK_CODE_ARM', '-DSDK_FINALROM',
+        '-I' + meson.project_source_root() / 'include',
+        '-c', '@INPUT@', '-o', '@OUTPUT@',
+    ],
+)
+
 libdsprot = fs.copyfile('lib/dsprot/libdsprot.a')
 
 main = executable('main',
@@ -146,6 +166,7 @@ main = executable('main',
         pokeheartgold_asm,
         nitrodwc_asm,
         naix_headers,
+        mwcc12.process(pokeheartgold_c_mwcc12),
     ],
     c_args : [
         '-DPM_KEEP_ASSERTS',

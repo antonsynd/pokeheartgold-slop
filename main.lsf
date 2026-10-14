@@ -11546,71 +11546,71 @@ Overlay OVY_74
     Object main.nef.p/src_hgify_overlay_74_thumb_overlay_74_thumb_s487.c.o
     Object main.nef.p/asm_overlay_74_thumb_sdata.s.o
     Object main.nef.p/asm_nitrocrypto_00.s.o
-    Object main.nef.p/src_hgify_nitrocrypto_nitrocrypto_01.c.o
-    Object main.nef.p/src_hgify_nitrocrypto_nitrocrypto_02.c.o
-    Object main.nef.p/src_hgify_nitrocrypto_nitrocrypto_03.c.o
-    Object main.nef.p/src_hgify_nitrocrypto_nitrocrypto_04.c.o
-    Object main.nef.p/src_hgify_nitrocrypto_nitrocrypto_05.c.o
-    Object main.nef.p/src_hgify_nitrocrypto_nitrocrypto_06.c.o
+    Object main.nef.p/nitrocrypto_01.c.o
+    Object main.nef.p/nitrocrypto_02.c.o
+    Object main.nef.p/nitrocrypto_03.c.o
+    Object main.nef.p/nitrocrypto_04.c.o
+    Object main.nef.p/nitrocrypto_05.c.o
+    Object main.nef.p/nitrocrypto_06.c.o
     Object main.nef.p/asm_nitrocrypto_07.s.o
-    Object main.nef.p/src_hgify_nitrocrypto_nitrocrypto_08.c.o
-    Object main.nef.p/src_hgify_nitrocrypto_nitrocrypto_09.c.o
-    Object main.nef.p/src_hgify_nitrocrypto_nitrocrypto_10.c.o
-    Object main.nef.p/src_hgify_nitrocrypto_nitrocrypto_11.c.o
-    Object main.nef.p/src_hgify_nitrocrypto_nitrocrypto_12.c.o
-    Object main.nef.p/src_hgify_nitrocrypto_nitrocrypto_13.c.o
-    Object main.nef.p/src_hgify_nitrocrypto_nitrocrypto_14.c.o
-    Object main.nef.p/src_hgify_nitrocrypto_nitrocrypto_15.c.o
-    Object main.nef.p/src_hgify_nitrocrypto_nitrocrypto_16.c.o
-    Object main.nef.p/src_hgify_nitrocrypto_nitrocrypto_17.c.o
-    Object main.nef.p/src_hgify_nitrocrypto_nitrocrypto_18.c.o
-    Object main.nef.p/src_hgify_nitrocrypto_nitrocrypto_19.c.o
+    Object main.nef.p/nitrocrypto_08.c.o
+    Object main.nef.p/nitrocrypto_09.c.o
+    Object main.nef.p/nitrocrypto_10.c.o
+    Object main.nef.p/nitrocrypto_11.c.o
+    Object main.nef.p/nitrocrypto_12.c.o
+    Object main.nef.p/nitrocrypto_13.c.o
+    Object main.nef.p/nitrocrypto_14.c.o
+    Object main.nef.p/nitrocrypto_15.c.o
+    Object main.nef.p/nitrocrypto_16.c.o
+    Object main.nef.p/nitrocrypto_17.c.o
+    Object main.nef.p/nitrocrypto_18.c.o
+    Object main.nef.p/nitrocrypto_19.c.o
     Object main.nef.p/asm_nitrocrypto_20.s.o
-    Object main.nef.p/src_hgify_nitrocrypto_nitrocrypto_21.c.o
-    Object main.nef.p/src_hgify_nitrocrypto_nitrocrypto_22.c.o
-    Object main.nef.p/src_hgify_nitrocrypto_nitrocrypto_23.c.o
-    Object main.nef.p/src_hgify_nitrocrypto_nitrocrypto_24.c.o
-    Object main.nef.p/src_hgify_nitrocrypto_nitrocrypto_25.c.o
-    Object main.nef.p/src_hgify_nitrocrypto_nitrocrypto_26.c.o
-    Object main.nef.p/src_hgify_nitrocrypto_nitrocrypto_27.c.o
+    Object main.nef.p/nitrocrypto_21.c.o
+    Object main.nef.p/nitrocrypto_22.c.o
+    Object main.nef.p/nitrocrypto_23.c.o
+    Object main.nef.p/nitrocrypto_24.c.o
+    Object main.nef.p/nitrocrypto_25.c.o
+    Object main.nef.p/nitrocrypto_26.c.o
+    Object main.nef.p/nitrocrypto_27.c.o
     Object main.nef.p/asm_nitrocrypto_28.s.o
-    Object main.nef.p/src_hgify_nitrocrypto_nitrocrypto_29.c.o
-    Object main.nef.p/src_hgify_nitrocrypto_nitrocrypto_30.c.o
-    Object main.nef.p/src_hgify_nitrocrypto_nitrocrypto_31.c.o
-    Object main.nef.p/src_hgify_nitrocrypto_nitrocrypto_32.c.o
-    Object main.nef.p/src_hgify_nitrocrypto_nitrocrypto_33.c.o
-    Object main.nef.p/src_hgify_nitrocrypto_nitrocrypto_34.c.o
-    Object main.nef.p/src_hgify_nitrocrypto_nitrocrypto_35.c.o
-    Object main.nef.p/src_hgify_nitrocrypto_nitrocrypto_36.c.o
-    Object main.nef.p/src_hgify_nitrocrypto_nitrocrypto_37.c.o
-    Object main.nef.p/src_hgify_nitrocrypto_nitrocrypto_38.c.o
+    Object main.nef.p/nitrocrypto_29.c.o
+    Object main.nef.p/nitrocrypto_30.c.o
+    Object main.nef.p/nitrocrypto_31.c.o
+    Object main.nef.p/nitrocrypto_32.c.o
+    Object main.nef.p/nitrocrypto_33.c.o
+    Object main.nef.p/nitrocrypto_34.c.o
+    Object main.nef.p/nitrocrypto_35.c.o
+    Object main.nef.p/nitrocrypto_36.c.o
+    Object main.nef.p/nitrocrypto_37.c.o
+    Object main.nef.p/nitrocrypto_38.c.o
     Object main.nef.p/asm_nitrocrypto_39.s.o
-    Object main.nef.p/src_hgify_nitrocrypto_nitrocrypto_40.c.o
-    Object main.nef.p/src_hgify_nitrocrypto_nitrocrypto_41.c.o
+    Object main.nef.p/nitrocrypto_40.c.o
+    Object main.nef.p/nitrocrypto_41.c.o
     Object main.nef.p/asm_nitrocrypto_42.s.o
-    Object main.nef.p/src_hgify_nitrocrypto_nitrocrypto_43.c.o
-    Object main.nef.p/src_hgify_nitrocrypto_nitrocrypto_44.c.o
-    Object main.nef.p/src_hgify_nitrocrypto_nitrocrypto_45.c.o
-    Object main.nef.p/src_hgify_nitrocrypto_nitrocrypto_46.c.o
-    Object main.nef.p/src_hgify_nitrocrypto_nitrocrypto_47.c.o
-    Object main.nef.p/src_hgify_nitrocrypto_nitrocrypto_48.c.o
-    Object main.nef.p/src_hgify_nitrocrypto_nitrocrypto_49.c.o
-    Object main.nef.p/src_hgify_nitrocrypto_nitrocrypto_50.c.o
-    Object main.nef.p/src_hgify_nitrocrypto_nitrocrypto_51.c.o
-    Object main.nef.p/src_hgify_nitrocrypto_nitrocrypto_52.c.o
-    Object main.nef.p/src_hgify_nitrocrypto_nitrocrypto_53.c.o
-    Object main.nef.p/src_hgify_nitrocrypto_nitrocrypto_54.c.o
-    Object main.nef.p/src_hgify_nitrocrypto_nitrocrypto_55.c.o
-    Object main.nef.p/src_hgify_nitrocrypto_nitrocrypto_56.c.o
-    Object main.nef.p/src_hgify_nitrocrypto_nitrocrypto_57.c.o
-    Object main.nef.p/src_hgify_nitrocrypto_nitrocrypto_58.c.o
-    Object main.nef.p/src_hgify_nitrocrypto_nitrocrypto_59.c.o
-    Object main.nef.p/src_hgify_nitrocrypto_nitrocrypto_60.c.o
-    Object main.nef.p/src_hgify_nitrocrypto_nitrocrypto_61.c.o
-    Object main.nef.p/src_hgify_nitrocrypto_nitrocrypto_62.c.o
+    Object main.nef.p/nitrocrypto_43.c.o
+    Object main.nef.p/nitrocrypto_44.c.o
+    Object main.nef.p/nitrocrypto_45.c.o
+    Object main.nef.p/nitrocrypto_46.c.o
+    Object main.nef.p/nitrocrypto_47.c.o
+    Object main.nef.p/nitrocrypto_48.c.o
+    Object main.nef.p/nitrocrypto_49.c.o
+    Object main.nef.p/nitrocrypto_50.c.o
+    Object main.nef.p/nitrocrypto_51.c.o
+    Object main.nef.p/nitrocrypto_52.c.o
+    Object main.nef.p/nitrocrypto_53.c.o
+    Object main.nef.p/nitrocrypto_54.c.o
+    Object main.nef.p/nitrocrypto_55.c.o
+    Object main.nef.p/nitrocrypto_56.c.o
+    Object main.nef.p/nitrocrypto_57.c.o
+    Object main.nef.p/nitrocrypto_58.c.o
+    Object main.nef.p/nitrocrypto_59.c.o
+    Object main.nef.p/nitrocrypto_60.c.o
+    Object main.nef.p/nitrocrypto_61.c.o
+    Object main.nef.p/nitrocrypto_62.c.o
     Object main.nef.p/asm_nitrocrypto_63.s.o
-    Object main.nef.p/src_hgify_nitrocrypto_nitrocrypto_64.c.o
-    Object main.nef.p/src_hgify_nitrocrypto_nitrocrypto_65.c.o
+    Object main.nef.p/nitrocrypto_64.c.o
+    Object main.nef.p/nitrocrypto_65.c.o
     Object main.nef.p/asm_nitrocrypto_data.s.o
 }
 Overlay OVY_75

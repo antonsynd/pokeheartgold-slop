@@ -19,7 +19,7 @@ See tools/decomp_harness/MESON_SYNC_PLAN.md, Phase 3.
 import argparse, os, re, subprocess, sys
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
-from meson_names import GAME_OBJ_RE, OBJDIR, object_name  # noqa: E402
+from meson_names import GAME_OBJ_RE, MWCC12_RE, object_name  # noqa: E402
 
 ROOT = subprocess.run(['git', 'rev-parse', '--show-toplevel'], capture_output=True, text=True,
                       check=True).stdout.strip()
@@ -184,8 +184,12 @@ def render(var, files, prefix):
 
 def cmd_lists(args):
     c, s = lsf_game_sources()
+    c12 = [f for f in c if MWCC12_RE.match(f)]
+    c = [f for f in c if not MWCC12_RE.match(f)]
     want = {
-        'src/meson.build': render('pokeheartgold_c', c, 'src/'),
+        'src/meson.build': render('pokeheartgold_c', c, 'src/')
+        + '\n# Built with MWCC 1.2/sp2p3 and no -ipa by a generator in the top-level meson.build.\n'
+        + render('pokeheartgold_c_mwcc12', c12, 'src/').replace(LIST_HEADER, ''),
         'asm/meson.build': render('pokeheartgold_asm', s, 'asm/'),
     }
     stale = []
@@ -203,7 +207,7 @@ def cmd_lists(args):
             return 1
         print('lists: up to date')
         return 0
-    print(f'lists: {len(c)} C, {len(s)} asm sources; rewrote {" ".join(stale) or "nothing"}')
+    print(f'lists: {len(c)} C, {len(c12)} C for MWCC 1.2, {len(s)} asm sources; rewrote {" ".join(stale) or "nothing"}')
     return 0
 
 

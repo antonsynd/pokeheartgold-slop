@@ -9,7 +9,12 @@ import re
 from pathlib import Path
 
 OBJDIR = "main.nef.p/"
-GAME_OBJ_RE = re.compile(r"^main\.nef\.p/(src|asm)_")
+# Every object of the main target; lib objects (main.nef.p/lib_...) belong to lib/*/meson.build.
+GAME_OBJ_RE = re.compile(r"^main\.nef\.p/(?!lib_)")
+
+# C built with MWCC 1.2/sp2p3 and no -ipa (nitrocrypto, #26) by a generator in meson.build.
+# A generator's objects are named after the source's basename: main.nef.p/nitrocrypto_01.c.o.
+MWCC12_RE = re.compile(r"^src/hgify/nitrocrypto/[^/]+\.c$")
 
 
 def canonicalize_filename(fname):
@@ -31,6 +36,8 @@ def canonicalize_filename(fname):
 
 def object_name(src):
     """Meson object path in main.lsf for a source of the `main` target, e.g. src/a/b.c."""
+    if MWCC12_RE.match(src):
+        return OBJDIR + os.path.basename(src) + ".o"
     return OBJDIR + canonicalize_filename(src) + ".o"
 
 

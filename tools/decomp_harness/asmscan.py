@@ -12,7 +12,7 @@ import meson_names
 FUNC_START_RE = re.compile(r"^\s*(thumb|arm)_func_start\s+(\w+)")
 FUNC_END_RE = re.compile(r"^\s*(?:thumb|arm)_func_end\s+(\w+)")
 # main.lsf names game objects the Meson way: main.nef.p/src_field_fieldmap.c.o
-LSF_OBJ_RE = re.compile(r"^\s*Object\s+(main\.nef\.p/(?:asm|src)_\S+\.[cs]\.o)\s*$")
+LSF_OBJ_RE = re.compile(r"^\s*Object\s+(main\.nef\.p/(?!lib_)\S+\.[cs]\.o)\s*$")
 BL_RE = re.compile(r"\bblx?\s+(\w+)")
 LITERAL_RE = re.compile(r"^\s*\.word\s+(.+)$")
 SECTION_RE = re.compile(r"^\s*\.(text|rodata|data|bss)\b\s*$")
