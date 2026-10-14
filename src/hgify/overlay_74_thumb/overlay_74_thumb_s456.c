@@ -6,7 +6,6 @@
 // Called as matched, before the real SDK headers declared these (#22, R10).
 #define WM_EndScan(...) ((int (*)(void (*callback)(void)))WM_EndScan)(__VA_ARGS__)
 
-
 void ov74_022364A8(void);
 void ov74_022361B8(int errCode);
 

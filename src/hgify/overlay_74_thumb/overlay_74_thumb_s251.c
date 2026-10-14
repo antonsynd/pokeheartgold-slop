@@ -6,7 +6,7 @@
 #include "overlay_13_arm_2.h"
 
 // Called as matched, before the real SDK headers declared these (#22, R10).
-#define WM_Finish(...) ((u32 (*)(void))WM_Finish)(__VA_ARGS__)
+#define WM_Finish(...) ((u32(*)(void))WM_Finish)(__VA_ARGS__)
 
 typedef struct UnkOv74Peer {
     u32 unk_00;

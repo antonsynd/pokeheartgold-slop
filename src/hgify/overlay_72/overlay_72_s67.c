@@ -7,7 +7,7 @@
 #include "unk_02037C94.h"
 
 // Called as matched, before the real SDK headers declared these (#22, R10).
-#define DWC_GetDateTime(...) ((undefined4 (*)())DWC_GetDateTime)(__VA_ARGS__)
+#define DWC_GetDateTime(...) ((undefined4(*)())DWC_GetDateTime)(__VA_ARGS__)
 
 typedef int code();
 undefined4 ov72_02237B54();

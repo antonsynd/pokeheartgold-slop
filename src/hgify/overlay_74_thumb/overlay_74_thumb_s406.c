@@ -6,7 +6,6 @@
 // Called as matched, before the real SDK headers declared these (#22, R10).
 #define CTRDG_GetAgbMakerCode(...) ((int (*)(void))CTRDG_GetAgbMakerCode)(__VA_ARGS__)
 
-
 BOOL CTRDG_IsAgbCartridge(void);
 BOOL ov74_0223514C(void);
 BOOL ov74_022351FC(void);

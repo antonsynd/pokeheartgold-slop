@@ -6,7 +6,6 @@
 // Called as matched, before the real SDK headers declared these (#22, R10).
 #define WM_Enable(...) ((int (*)(void *param0))WM_Enable)(__VA_ARGS__)
 
-
 extern u8 ov74_02230030[];
 void ov74_02231448(int param0);
 

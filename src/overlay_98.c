@@ -38,7 +38,6 @@
 // Called as matched, before the real SDK headers declared these (#22, R10).
 #define MATH_CountPopulation(...) ((int (*)(u32 x))MATH_CountPopulation)(__VA_ARGS__)
 
-
 #undef AddTextPrinterParameterizedWithColor
 u8 AddTextPrinterParameterizedWithColor(Window *window, u32 fontId, String *string, u32 x, u32 y, u32 textSpeed, u32 color, PrinterCallback_t callback);
 

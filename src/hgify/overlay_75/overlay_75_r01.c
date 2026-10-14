@@ -24,10 +24,9 @@
 #include "unk_020915B0.h"
 
 // Called as matched, before the real SDK headers declared these (#22, R10).
-#define DWC_GetLinkLevel(...) ((int (*)(void))DWC_GetLinkLevel)(__VA_ARGS__)
-#define DWC_SetMemFunc(...) ((void (*)(void *(*alloc)(int, u32, int), void (*free)(int, void *)))DWC_SetMemFunc)(__VA_ARGS__)
+#define DWC_GetLinkLevel(...)     ((int (*)(void))DWC_GetLinkLevel)(__VA_ARGS__)
+#define DWC_SetMemFunc(...)       ((void (*)(void *(*alloc)(int, u32, int), void (*free)(int, void *)))DWC_SetMemFunc)(__VA_ARGS__)
 #define DWC_UpdateConnection(...) ((void (*)(void))DWC_UpdateConnection)(__VA_ARGS__)
-
 
 // Upstream renamed these and its header still declares the old names (#22).
 

@@ -8,8 +8,7 @@
 #include "unk_02037C94.h"
 
 // Called as matched, before the real SDK headers declared these (#22, R10).
-#define DWC_CleanupInet(...) ((undefined4 (*)())DWC_CleanupInet)(__VA_ARGS__)
-
+#define DWC_CleanupInet(...) ((undefined4(*)())DWC_CleanupInet)(__VA_ARGS__)
 
 // Upstream renamed these and its header still declares the old names (#22).
 void DWC_ClearError(void);

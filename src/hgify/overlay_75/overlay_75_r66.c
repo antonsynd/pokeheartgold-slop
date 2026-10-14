@@ -10,12 +10,11 @@
 #include "unk_0203A3B0.h"
 
 // Called as matched, before the real SDK headers declared these (#22, R10).
-#define DWC_GetLastErrorEx(...) ((int (*)(s32 *arg0, s32 *arg1))DWC_GetLastErrorEx)(__VA_ARGS__)
-#define DWC_ShutdownFriendsMatch(...) ((undefined4 (*)())DWC_ShutdownFriendsMatch)(__VA_ARGS__)
-#define DWC_ShutdownGHTTP(...) ((undefined4 (*)())DWC_ShutdownGHTTP)(__VA_ARGS__)
-#define DWC_CleanupInet(...) ((undefined4 (*)())DWC_CleanupInet)(__VA_ARGS__)
-#define DWC_NASLoginProcess(...) ((undefined4 (*)())DWC_NASLoginProcess)(__VA_ARGS__)
-
+#define DWC_GetLastErrorEx(...)       ((int (*)(s32 * arg0, s32 * arg1)) DWC_GetLastErrorEx)(__VA_ARGS__)
+#define DWC_ShutdownFriendsMatch(...) ((undefined4(*)())DWC_ShutdownFriendsMatch)(__VA_ARGS__)
+#define DWC_ShutdownGHTTP(...)        ((undefined4(*)())DWC_ShutdownGHTTP)(__VA_ARGS__)
+#define DWC_CleanupInet(...)          ((undefined4(*)())DWC_CleanupInet)(__VA_ARGS__)
+#define DWC_NASLoginProcess(...)      ((undefined4(*)())DWC_NASLoginProcess)(__VA_ARGS__)
 
 // Upstream renamed these and its header still declares the old names (#22).
 void DWC_ClearError(void);

@@ -9,9 +9,8 @@
 #include "system.h"
 
 // Called as matched, before the real SDK headers declared these (#22, R10).
-#define WVR_StartUpAsync(...) ((int (*)(int vram, void (*callback)(void *, int), void *arg))WVR_StartUpAsync)(__VA_ARGS__)
+#define WVR_StartUpAsync(...)   ((int (*)(int vram, void (*callback)(void *, int), void *arg))WVR_StartUpAsync)(__VA_ARGS__)
 #define WVR_TerminateAsync(...) ((void (*)(void (*callback)(void *, int), void *arg))WVR_TerminateAsync)(__VA_ARGS__)
-
 
 typedef struct CommBssDesc {
     u16 length;

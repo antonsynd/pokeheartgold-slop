@@ -6,9 +6,7 @@
 #include "unk_02037C94.h"
 
 // Called as matched, before the real SDK headers declared these (#22, R10).
-#define NNS_FndGetGroupIDForMBlockExpHeap(...) ((u16 (*)(void *ptr))NNS_FndGetGroupIDForMBlockExpHeap)(__VA_ARGS__)
-
-
+#define NNS_FndGetGroupIDForMBlockExpHeap(...) ((u16(*)(void *ptr))NNS_FndGetGroupIDForMBlockExpHeap)(__VA_ARGS__)
 
 typedef struct UnkStruct_ov00_021E6638 {
     u8 unk_000[0xF94];
@@ -18,7 +16,6 @@ typedef struct UnkStruct_ov00_021E6638 {
 } UnkStruct_ov00_021E6638;
 
 extern int _0221A680;
-
 
 // FUNCTION ov00_021E6638: matching C (twin)
 #pragma force_active on

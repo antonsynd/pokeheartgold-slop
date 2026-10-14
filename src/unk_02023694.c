@@ -6,7 +6,6 @@
 
 // This is the same billboard (3D sprite) list system as pokeplatinum's src/billboard.c.
 
-
 // NitroSystem G3D material constants not in the SDK headers. (The accessors NNS_G3dGetMat,
 // NNS_G3dGetTexDataByIdx, NNS_G3dGetPlttDataByIdx and NNS_G3dGetMatDataByIdx used to be local
 // copies; NitroSystem now provides them.)

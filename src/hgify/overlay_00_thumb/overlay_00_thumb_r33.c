@@ -10,8 +10,7 @@
 
 // Called as matched, before the real SDK headers declared these (#22, R10).
 #define DWC_GetAIDBitmap(...) ((int (*)(void))DWC_GetAIDBitmap)(__VA_ARGS__)
-#define DWC_GetMyAID(...) ((int (*)(void))DWC_GetMyAID)(__VA_ARGS__)
-
+#define DWC_GetMyAID(...)     ((int (*)(void))DWC_GetMyAID)(__VA_ARGS__)
 
 // Upstream renamed these and its header still declares the old names (#22).
 void DWC_ProcessFriendsMatch(void);

@@ -7,13 +7,12 @@
 #include "overlay_00_thumb.h"
 
 // Called as matched, before the real SDK headers declared these (#22, R10).
-#define DWC_SetAuthServer(...) ((void (*)(s32 arg0))DWC_SetAuthServer)(__VA_ARGS__)
-#define DWC_SetMemFunc(...) ((void (*)(void (*a)(void), void (*b)(void)))DWC_SetMemFunc)(__VA_ARGS__)
-#define DWC_InitInetEx(...) ((void (*)(void *a, int b, int c, int d))DWC_InitInetEx)(__VA_ARGS__)
-#define DWC_GetInetStatus(...) ((int (*)(void))DWC_GetInetStatus)(__VA_ARGS__)
+#define DWC_SetAuthServer(...)    ((void (*)(s32 arg0))DWC_SetAuthServer)(__VA_ARGS__)
+#define DWC_SetMemFunc(...)       ((void (*)(void (*a)(void), void (*b)(void)))DWC_SetMemFunc)(__VA_ARGS__)
+#define DWC_InitInetEx(...)       ((void (*)(void *a, int b, int c, int d))DWC_InitInetEx)(__VA_ARGS__)
+#define DWC_GetInetStatus(...)    ((int (*)(void))DWC_GetInetStatus)(__VA_ARGS__)
 #define DWC_InitFriendsMatch(...) ((void (*)(void *a, u32 b, int c, const void *d, const void *e, int f, int g, u32 h, int i))DWC_InitFriendsMatch)(__VA_ARGS__)
-#define DWC_LoginAsync(...) ((void (*)(void *a, int b, void (*c)(void), int d))DWC_LoginAsync)(__VA_ARGS__)
-
+#define DWC_LoginAsync(...)       ((void (*)(void *a, int b, void (*c)(void), int d))DWC_LoginAsync)(__VA_ARGS__)
 
 // Upstream renamed these and its header still declares the old names (#22).
 void DWC_ProcessFriendsMatch(void);

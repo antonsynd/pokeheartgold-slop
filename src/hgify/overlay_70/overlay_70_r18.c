@@ -8,7 +8,6 @@
 // Called as matched, before the real SDK headers declared these (#22, R10).
 #define WCM_GetPhase(...) ((int (*)(void))WCM_GetPhase)(__VA_ARGS__)
 
-
 // Upstream renamed these and its header still declares the old names (#22).
 void DWC_ClearError(void);
 

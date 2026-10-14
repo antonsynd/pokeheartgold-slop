@@ -6,7 +6,6 @@
 // Called as matched, before the real SDK headers declared these (#22, R10).
 #define WM_PowerOff(...) ((int (*)(void (*callback)(void)))WM_PowerOff)(__VA_ARGS__)
 
-
 void ov74_02230988(void);
 void ov74_02231448(int param0);
 

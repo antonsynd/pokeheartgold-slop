@@ -5,20 +5,18 @@
 #include "heap.h"
 
 // Called as matched, before the real SDK headers declared these (#22, R10).
-#define MIC_StartAutoSampling(...) ((int (*)(MICAutoParam *param))MIC_StartAutoSampling)(__VA_ARGS__)
-#define MIC_StopAutoSampling(...) ((int (*)(void))MIC_StopAutoSampling)(__VA_ARGS__)
-#define NNS_SndArcGetBankInfo(...) ((void * (*)(int bankNo))NNS_SndArcGetBankInfo)(__VA_ARGS__)
-#define NNS_SndWaveOutStart(...) ((BOOL (*)(NNSSndWaveOutHandle handle, NNSSndWaveFormat format, void *data, BOOL loopFlag, u32 loopStart, u32 samples, u32 sampleRate, s32 volume, u32 speed, s32 pan))NNS_SndWaveOutStart)(__VA_ARGS__)
-#define NNS_SndWaveOutSetSpeed(...) ((void (*)(NNSSndWaveOutHandle handle, u32 speed))NNS_SndWaveOutSetSpeed)(__VA_ARGS__)
-#define NNS_SndCaptureGetCaptureType(...) ((int (*)(void))NNS_SndCaptureGetCaptureType)(__VA_ARGS__)
-#define NNS_SndPlayerSetTrackPitch(...) ((void (*)(NNSSndHandle *handle, u32 trackBitMask, int pitch))NNS_SndPlayerSetTrackPitch)(__VA_ARGS__)
-#define NNS_SndPlayerSetTrackPan(...) ((void (*)(NNSSndHandle *handle, u32 trackBitMask, int pan))NNS_SndPlayerSetTrackPan)(__VA_ARGS__)
-#define NNS_SndPlayerSetTrackAllocatableChannel(...) ((void (*)(NNSSndHandle *handle, u32 trackBitMask, u32 chBitFlag))NNS_SndPlayerSetTrackAllocatableChannel)(__VA_ARGS__)
-
+#define MIC_StartAutoSampling(...)                   ((int (*)(MICAutoParam * param)) MIC_StartAutoSampling)(__VA_ARGS__)
+#define MIC_StopAutoSampling(...)                    ((int (*)(void))MIC_StopAutoSampling)(__VA_ARGS__)
+#define NNS_SndArcGetBankInfo(...)                   ((void *(*)(int bankNo))NNS_SndArcGetBankInfo)(__VA_ARGS__)
+#define NNS_SndWaveOutStart(...)                     ((BOOL(*)(NNSSndWaveOutHandle handle, NNSSndWaveFormat format, void *data, BOOL loopFlag, u32 loopStart, u32 samples, u32 sampleRate, s32 volume, u32 speed, s32 pan))NNS_SndWaveOutStart)(__VA_ARGS__)
+#define NNS_SndWaveOutSetSpeed(...)                  ((void (*)(NNSSndWaveOutHandle handle, u32 speed))NNS_SndWaveOutSetSpeed)(__VA_ARGS__)
+#define NNS_SndCaptureGetCaptureType(...)            ((int (*)(void))NNS_SndCaptureGetCaptureType)(__VA_ARGS__)
+#define NNS_SndPlayerSetTrackPitch(...)              ((void (*)(NNSSndHandle * handle, u32 trackBitMask, int pitch)) NNS_SndPlayerSetTrackPitch)(__VA_ARGS__)
+#define NNS_SndPlayerSetTrackPan(...)                ((void (*)(NNSSndHandle * handle, u32 trackBitMask, int pan)) NNS_SndPlayerSetTrackPan)(__VA_ARGS__)
+#define NNS_SndPlayerSetTrackAllocatableChannel(...) ((void (*)(NNSSndHandle * handle, u32 trackBitMask, u32 chBitFlag)) NNS_SndPlayerSetTrackAllocatableChannel)(__VA_ARGS__)
 
 // Called as matched, before the real SDK headers declared these (#22, R10).
-#define NNS_SndArcGetWaveArcInfo(...) ((void * (*)(int waveArcNo))NNS_SndArcGetWaveArcInfo)(__VA_ARGS__)
-
+#define NNS_SndArcGetWaveArcInfo(...) ((void *(*)(int waveArcNo))NNS_SndArcGetWaveArcInfo)(__VA_ARGS__)
 
 typedef struct UnkStruct_02004A44_0 {
     NNSSndWaveOutHandle *unk00;
@@ -89,7 +87,6 @@ extern void Sound_Stop(void);
 extern void sub_02005FD8(void);
 extern BOOL sub_020378CC(void);
 extern int _s32_div_f(int a, int b);
-
 
 extern void NNS_SndPlayerPause(NNSSndHandle *handle, BOOL flag);
 extern void NNS_SndPlayerMoveVolume(NNSSndHandle *handle, int volume, int frames);

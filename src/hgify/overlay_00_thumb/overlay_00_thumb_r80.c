@@ -9,11 +9,10 @@
 // Called as matched, before the real SDK headers declared these (#22, R10).
 #define DWC_GetMyAID(...) ((int (*)(void))DWC_GetMyAID)(__VA_ARGS__)
 
-
 // Called as matched, before the real SDK headers declared these (#22, R10).
 #define NNS_SndStrmAllocChannel(...) ((void (*)(void *strm, int a, void *b))NNS_SndStrmAllocChannel)(__VA_ARGS__)
-#define NNS_SndStrmSetVolume(...) ((void (*)(void *strm, int v))NNS_SndStrmSetVolume)(__VA_ARGS__)
-#define NNS_SndStrmSetup(...) ((void (*)(void *strm, int a, void *b, int c, int d, int e, void *cb, void *arg))NNS_SndStrmSetup)(__VA_ARGS__)
+#define NNS_SndStrmSetVolume(...)    ((void (*)(void *strm, int v))NNS_SndStrmSetVolume)(__VA_ARGS__)
+#define NNS_SndStrmSetup(...)        ((void (*)(void *strm, int a, void *b, int c, int d, int e, void *cb, void *arg))NNS_SndStrmSetup)(__VA_ARGS__)
 
 typedef struct {
     s32 timeToProcess;

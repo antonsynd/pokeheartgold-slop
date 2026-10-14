@@ -6,11 +6,10 @@
 #include "overlay_00_thumb.h"
 
 // Called as matched, before the real SDK headers declared these (#22, R10).
-#define DWC_GetLastErrorEx(...) ((int (*)(s32 *arg0, s32 *arg1))DWC_GetLastErrorEx)(__VA_ARGS__)
-#define DWC_GetInetStatus(...) ((int (*)(void))DWC_GetInetStatus)(__VA_ARGS__)
-#define DWC_GetLastError(...) ((void (*)(void *))DWC_GetLastError)(__VA_ARGS__)
-#define DWC_GetApInfo(...) ((void (*)(void *))DWC_GetApInfo)(__VA_ARGS__)
-
+#define DWC_GetLastErrorEx(...) ((int (*)(s32 * arg0, s32 * arg1)) DWC_GetLastErrorEx)(__VA_ARGS__)
+#define DWC_GetInetStatus(...)  ((int (*)(void))DWC_GetInetStatus)(__VA_ARGS__)
+#define DWC_GetLastError(...)   ((void (*)(void *))DWC_GetLastError)(__VA_ARGS__)
+#define DWC_GetApInfo(...)      ((void (*)(void *))DWC_GetApInfo)(__VA_ARGS__)
 
 // Upstream renamed these and its header still declares the old names (#22).
 void DWC_ClearError(void);

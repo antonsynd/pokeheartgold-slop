@@ -8,9 +8,8 @@
 // Called as matched, before the real SDK headers declared these (#22, R10).
 #define MIC_StopAutoSampling(...) ((int (*)(void))MIC_StopAutoSampling)(__VA_ARGS__)
 
-
 // Called as matched, before the real SDK headers declared these (#22, R10).
-#define NNS_SndStrmStop(...) ((void (*)(void *strm))NNS_SndStrmStop)(__VA_ARGS__)
+#define NNS_SndStrmStop(...)        ((void (*)(void *strm))NNS_SndStrmStop)(__VA_ARGS__)
 #define NNS_SndStrmFreeChannel(...) ((void (*)(void *strm))NNS_SndStrmFreeChannel)(__VA_ARGS__)
 
 extern void VCT_Cleanup(void);

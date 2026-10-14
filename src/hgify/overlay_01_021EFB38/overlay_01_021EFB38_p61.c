@@ -7,7 +7,7 @@
 #include "sys_task_api.h"
 
 // Called as matched, before the real SDK headers declared these (#22, R10).
-#define GXx_SetMasterBrightness_(...) ((undefined4 (*)())GXx_SetMasterBrightness_)(__VA_ARGS__)
+#define GXx_SetMasterBrightness_(...) ((undefined4(*)())GXx_SetMasterBrightness_)(__VA_ARGS__)
 
 typedef void code(void);
 void ov01_021F0DB0(undefined4 param_1, undefined4 *param_2);

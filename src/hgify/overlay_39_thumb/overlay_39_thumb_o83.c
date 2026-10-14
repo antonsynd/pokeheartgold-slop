@@ -10,8 +10,7 @@
 
 // Called as matched, before the real SDK headers declared these (#22, R10).
 #define DWC_SetAuthServer(...) ((void (*)(s32 arg0))DWC_SetAuthServer)(__VA_ARGS__)
-#define DWC_InitInetEx(...) ((void (*)(int a, int b, int c, int d))DWC_InitInetEx)(__VA_ARGS__)
-
+#define DWC_InitInetEx(...)    ((void (*)(int a, int b, int c, int d))DWC_InitInetEx)(__VA_ARGS__)
 
 // Upstream renamed these and its header still declares the old names (#22).
 

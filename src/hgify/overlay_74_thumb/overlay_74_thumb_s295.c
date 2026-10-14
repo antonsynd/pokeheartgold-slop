@@ -4,8 +4,7 @@
 #include "global.h"
 
 // Called as matched, before the real SDK headers declared these (#22, R10).
-#define SVC_GetCRC16(...) ((u16 (*)(u16 crc, const void *data, u32 size))SVC_GetCRC16)(__VA_ARGS__)
-
+#define SVC_GetCRC16(...) ((u16(*)(u16 crc, const void *data, u32 size))SVC_GetCRC16)(__VA_ARGS__)
 
 typedef struct UnkStruct_ov74_02231424 {
     u8 unk_00[8];

@@ -7,7 +7,7 @@
 #include "overlay_00_thumb.h"
 
 // Called as matched, before the real SDK headers declared these (#22, R10).
-#define DWC_GetNumConnectionHost(...) ((undefined4 (*)())DWC_GetNumConnectionHost)(__VA_ARGS__)
+#define DWC_GetNumConnectionHost(...) ((undefined4(*)())DWC_GetNumConnectionHost)(__VA_ARGS__)
 
 typedef int code();
 extern int _0221A680;

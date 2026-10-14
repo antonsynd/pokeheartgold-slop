@@ -6,7 +6,6 @@
 // Called as matched, before the real SDK headers declared these (#22, R10).
 #define WM_Disable(...) ((int (*)(void (*callback)(void)))WM_Disable)(__VA_ARGS__)
 
-
 void ov74_02230070(void);
 void ov74_02231448(int errCode);
 

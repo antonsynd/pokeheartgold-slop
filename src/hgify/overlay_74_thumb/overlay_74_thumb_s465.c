@@ -3,7 +3,6 @@
 #pragma thumb on
 #include "global.h"
 
-
 WMErrCode WM_Reset(void (*callback)(void *));
 void ov74_02236168(int param0);
 void ov74_022361B8(WMErrCode errcode);

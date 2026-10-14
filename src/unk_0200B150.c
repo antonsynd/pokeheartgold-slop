@@ -6,11 +6,10 @@
 #include "sprite.h"
 
 // Called as matched, before the real SDK headers declared these (#22, R10).
-#define NNS_G2dGetNewOamManagerInstance(...) ((BOOL (*)(void *oamManager, u16 fromOBJ, u16 numOBJ, u16 fromAffine, u16 numAffine, int type))NNS_G2dGetNewOamManagerInstance)(__VA_ARGS__)
-#define NNS_G2dApplyAndResetOamManagerBuffer(...) ((void (*)(void *oamManager))NNS_G2dApplyAndResetOamManagerBuffer)(__VA_ARGS__)
-#define NNS_G2dEntryOamManagerOamWithAffineIdx(...) ((BOOL (*)(void *oamManager, const GXOamAttr *oam, u16 affineIndex))NNS_G2dEntryOamManagerOamWithAffineIdx)(__VA_ARGS__)
-#define NNS_G2dEntryOamManagerAffine(...) ((u16 (*)(void *oamManager, const MtxFx22 *mtx))NNS_G2dEntryOamManagerAffine)(__VA_ARGS__)
-
+#define NNS_G2dGetNewOamManagerInstance(...)        ((BOOL(*)(void *oamManager, u16 fromOBJ, u16 numOBJ, u16 fromAffine, u16 numAffine, int type))NNS_G2dGetNewOamManagerInstance)(__VA_ARGS__)
+#define NNS_G2dApplyAndResetOamManagerBuffer(...)   ((void (*)(void *oamManager))NNS_G2dApplyAndResetOamManagerBuffer)(__VA_ARGS__)
+#define NNS_G2dEntryOamManagerOamWithAffineIdx(...) ((BOOL(*)(void *oamManager, const GXOamAttr *oam, u16 affineIndex))NNS_G2dEntryOamManagerOamWithAffineIdx)(__VA_ARGS__)
+#define NNS_G2dEntryOamManagerAffine(...)           ((u16(*)(void *oamManager, const MtxFx22 *mtx))NNS_G2dEntryOamManagerAffine)(__VA_ARGS__)
 
 typedef struct OamManager {
     u8 mainOamManager[0x1C];
