@@ -4,7 +4,6 @@
 #include "global.h"
 
 BOOL CTRDG_IsAgbCartridge(void);
-int CTRDG_GetAgbMakerCode(void);
 BOOL ov74_0223514C(void);
 BOOL ov74_022351FC(void);
 // FUNCTION ov74_022351FC: matching C (twin)

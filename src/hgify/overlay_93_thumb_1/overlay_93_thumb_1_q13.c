@@ -4,7 +4,6 @@
 // clang-format off
 #include "global.h"
 #include <nnsys/g3d/glbstate.h>
-#include <nnsys/g3d/glbstate_inline.h>
 #include <nnsys/g3d/gecom.h>
 // clang-format on
 extern void ov93_02262034(u8 *, u8 *);

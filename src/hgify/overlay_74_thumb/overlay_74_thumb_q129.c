@@ -15,7 +15,6 @@ typedef struct S {
     Inner *inner[3];
     int idx;
 } S;
-void RTC_ConvertDayToDate(RTCDate *, int);
 // FUNCTION ov74_0222D55C: matching C (agent3)
 #pragma force_active on
 int ov74_0222D55C(S *p) {

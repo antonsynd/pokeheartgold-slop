@@ -2,7 +2,6 @@
 #pragma warning_errors off
 #pragma thumb on
 #include "global.h"
-extern void NNS_SndStrmStart(void *strm);
 typedef struct {
     u32 unk0;
     u8 *manager;

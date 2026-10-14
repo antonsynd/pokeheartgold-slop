@@ -9,7 +9,6 @@ typedef struct E {
     u32 flag : 4;
 } E;
 u16 ov96_021ECC4C(u32 a, u8 b);
-void MATH_QSort(void *, u32, u32, void *, void *);
 int ov96_021ECC58(void *, void *);
 // FUNCTION ov96_021ECC7C: matching C (agent23)
 #pragma force_active on

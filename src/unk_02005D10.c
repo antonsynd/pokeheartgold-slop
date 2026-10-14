@@ -53,7 +53,6 @@ extern void GBSounds_SetAllocatableChannels(void);
 extern void NNS_SndPlayerStopSeq(NNSSndHandle *handle, int fadeFrame);
 extern void NNS_SndPlayerStopSeqBySeqNo(int seqNo, int fadeFrame);
 extern void NNS_SndPlayerStopSeqAll(int fadeFrame);
-extern void NNS_SndPlayerSetTrackPan(NNSSndHandle *handle, u32 track, int pan);
 extern void GF_SndHandleSetTrackPan(int handleNo, int track, int pan);
 extern void GF_SndHandleSetTrackPitch(int handleNo, int track, int pitch);
 

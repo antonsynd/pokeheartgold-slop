@@ -5,7 +5,6 @@
 #include "global.h"
 #include "heap.h"
 // clang-format on
-extern u16 MATH_CalcCRC16(void *table, const void *data, u32 dataLength);
 extern u8 *sub_02035754(int netId);
 extern void CRYPTO_RC4Init(void *context, const void *key, u32 keyLength);
 extern void CRYPTO_RC4Encrypt(void *context, const void *in, u32 length, void *out);

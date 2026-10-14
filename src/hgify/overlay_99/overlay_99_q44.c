@@ -4,7 +4,6 @@
 #include "global.h"
 
 #include "error_handling.h"
-extern unsigned int MATH_CountPopulation(unsigned int);
 // FUNCTION ov99_021E6FA0: matching C (agent7)
 #pragma force_active on
 unsigned short ov99_021E6FA0(int param_1) {

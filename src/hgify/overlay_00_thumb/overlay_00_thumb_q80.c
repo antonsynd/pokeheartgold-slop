@@ -23,9 +23,6 @@ typedef struct {
 } VctCfg;
 extern void ov00_021E77CC(void *a, void *b, int c, int d);
 extern void ov00_021E733C(void);
-extern void NNS_SndStrmAllocChannel(void *strm, int a, void *b);
-extern void NNS_SndStrmSetVolume(void *strm, int v);
-extern void NNS_SndStrmSetup(void *strm, int a, void *b, int c, int d, int e, void *cb, void *arg);
 extern int sub_02034084(void);
 extern int DWC_GetMyAID(void);
 extern void VCT_Init(VctCfg *cfg);

@@ -4,7 +4,6 @@
 #include "global.h"
 
 void ov74_02230964(void);
-int WM_PowerOn(void (*callback)(void));
 void ov74_02231448(int errCode);
 
 // FUNCTION ov74_022316E8: matching C (twin)

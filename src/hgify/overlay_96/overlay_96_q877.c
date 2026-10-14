@@ -5,7 +5,6 @@
 
 #include "ghidra_compat.h"
 typedef int code();
-undefined4 FX_Sqrt();
 int ov96_02207390(undefined4 param_1, undefined4 param_2, undefined4 param_3, int param_4);
 // FUNCTION ov96_02207390: matching C (r2)
 #pragma force_active on

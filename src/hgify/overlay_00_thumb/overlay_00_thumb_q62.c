@@ -7,7 +7,6 @@
 #include "heap.h"
 #include "unk_02037C94.h"
 typedef int code();
-undefined4 NNS_FndSetGroupIDForExpHeap();
 extern int _0221A680;
 void ov00_021E714C(int param_1, undefined4 param_2);
 // FUNCTION ov00_021E714C: matching C (v1)

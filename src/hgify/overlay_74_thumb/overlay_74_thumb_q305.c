@@ -4,13 +4,7 @@ void ov74_02230138(void);
 #pragma thumb on
 #include "global.h"
 
-typedef enum WMErrCode {
-    WM_ERRCODE_SUCCESS = 0,
-    WM_ERRCODE_FAILED,
-    WM_ERRCODE_OPERATING,
-} WMErrCode;
 
-int WM_StartParent(void (*callback)(void));
 void ov74_02231448(WMErrCode errCode);
 
 // FUNCTION ov74_02231544: matching C (twin)

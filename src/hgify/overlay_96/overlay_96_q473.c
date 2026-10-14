@@ -9,7 +9,6 @@ typedef struct UnkStruct_ov96_021F2FEC_Entry {
 void ov96_021EB06C(void *a0, u32 a1, u32 a2, u32 *a3, u32 *a4);
 void ov96_021EABA8(void *a0, int a1);
 int ov96_021F2FBC(void *a, void *b);
-void MATH_QSort(void *data, u32 nel, u32 size, int (*comp)(void *, void *), void *work);
 void ov96_021F2FEC(u8 *param0, u8 *param1);
 // FUNCTION ov96_021F2FEC: matching C (r0)
 #pragma force_active on

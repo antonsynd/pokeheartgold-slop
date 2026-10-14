@@ -23,7 +23,6 @@ extern struct {
     W *w;
 } _0221A684;
 extern void VCT_EnableVAD(int v);
-extern void NNS_SndStrmInit(void *strm);
 extern void VCT_EnableEchoCancel(int v);
 void ov00_021E733C(void);
 // FUNCTION ov00_021E733C: matching C (agent3)

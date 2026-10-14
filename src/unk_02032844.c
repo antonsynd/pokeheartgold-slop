@@ -176,30 +176,8 @@ typedef struct WifiMeasureCallback {
     u16 ccaBusyRatio;
 } WifiMeasureCallback;
 
-int WM_Initialize(void *buf, WMCallbackFunc callback, u16 dmaNo);
-int WM_InitializeForListening(void *buf, WMCallbackFunc callback, u16 dmaNo, u16 flag);
-int WM_Reset(WMCallbackFunc callback);
-int WM_End(WMCallbackFunc callback);
-int WM_SetIndCallback(WMCallbackFunc callback);
-int WM_SetPortCallback(u16 port, WMCallbackFunc callback, void *arg);
 u16 WM_GetAllowedChannel(void);
 u16 WM_GetDispersionScanPeriod(void);
-int WM_SetParentParameter(WMCallbackFunc callback, const WifiParentParam *param);
-int WM_StartParent(WMCallbackFunc callback);
-int WM_EndParent(WMCallbackFunc callback);
-int WM_StartScan(WMCallbackFunc callback, const WifiScanParam *param);
-int WM_EndScan(WMCallbackFunc callback);
-int WM_StartConnectEx(WMCallbackFunc callback, const void *bssDesc, const u8 *ssid, BOOL powerSave, u16 authMode);
-int WM_Disconnect(WMCallbackFunc callback, u16 aid);
-int WM_StartMP(WMCallbackFunc callback, u16 *recvBuf, u16 recvBufSize, u16 *sendBuf, u16 sendBufSize, u16 param);
-int WM_SetMPDataToPortEx(WMCallbackFunc callback, void *arg, const u16 *sendData, u16 sendDataSize, u16 destBitmap, u16 port, u16 prio);
-int WM_EndMP(WMCallbackFunc callback);
-int WM_SetGameInfo(WMCallbackFunc callback, const u16 *userGameInfo, u16 length, u32 ggid, u16 tgid, u8 attr);
-int WM_SetLifeTime(WMCallbackFunc callback, u16 tgid, u16 camLifeTime, u16 frameLifeTime, u16 mpLifeTime);
-int WM_MeasureChannel(WMCallbackFunc callback, u16 ccaMode, u16 edThreshold, u16 channel, u16 measureTime);
-int WM_SetEntry(WMCallbackFunc callback, BOOL enabled);
-void *WMi_GetStatusAddress(void);
-void WVR_TerminateAsync(void *callback, void *arg);
 
 u8 sub_0203993C(void);
 BOOL sub_02039918(void);

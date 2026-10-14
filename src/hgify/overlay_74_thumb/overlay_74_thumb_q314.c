@@ -5,7 +5,6 @@
 
 void ov74_022309F0(void);
 void ov74_02231448(int errCode);
-int WM_End(void (*callback)(void));
 
 // FUNCTION ov74_02231744: matching C (twin)
 #pragma force_active on

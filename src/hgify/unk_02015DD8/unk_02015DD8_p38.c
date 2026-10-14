@@ -37,11 +37,6 @@ typedef struct Sprite {
 } Sprite;
 void NNS_G2dDrawSpriteFast(s16 px, s16 py, int pz, int sx, int sy, int U0, int V0, int U1, int V1);
 void G3_RotZ(fx32 s, fx32 c);
-static inline void G3_Scale(fx32 x, fx32 y, fx32 z) {
-    reg_G3_MTX_SCALE = (u32)x;
-    reg_G3_MTX_SCALE = (u32)y;
-    reg_G3_MTX_SCALE = (u32)z;
-}
 void sub_020161CC(Sprite *sprite);
 // FUNCTION sub_020161CC: matching C (agent29)
 #pragma force_active on

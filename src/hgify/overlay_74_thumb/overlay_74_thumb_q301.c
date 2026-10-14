@@ -4,7 +4,6 @@
 #include "global.h"
 
 extern u8 ov74_02230030[];
-int WM_Enable(void *param0);
 void ov74_02231448(int param0);
 
 // FUNCTION ov74_022314A0: matching C (twin)

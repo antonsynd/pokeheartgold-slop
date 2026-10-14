@@ -2967,7 +2967,6 @@ typedef struct TerrainAttributes {
     u16 terrainAttributes[(0x800 / sizeof(u16)) * 16];
 } TerrainAttributes;
 typedef const fx32 (*GetHeightFunc)(const FieldSystem *, const fx32, const fx32, const fx32, u8 *);
-typedef BOOL (*GetTileAttributesFunc)(const FieldSystem *, const int, const int, u16 *);
 typedef struct TerrainCollisionManager {
     GetHeightFunc getHeight;
     GetTileAttributesFunc getTileAttributes;
@@ -3046,45 +3045,6 @@ struct FieldSystem_t {
     u32 unk_C0;
     UnkStruct_ov66_0222DCE0_sub1 unk_C4;
 };
-typedef struct WMGameInfo {
-    u16 magicNumber;
-    u8 ver;
-    u8 platform;
-    u32 ggid;
-    u16 tgid;
-    u8 userGameInfoLength;
-    u8 gameNameCount_attribute;
-    u16 parentMaxSize;
-    u16 childMaxSize;
-    union {
-        u16 userGameInfo[112 / sizeof(u16)];
-        struct {
-            u16 userName[4];
-            u16 gameName[8];
-            u16 padd1[44];
-        } old_type;
-    };
-} WMGameInfo;
-typedef struct WMBssDesc {
-    u16 length;
-    u16 rssi;
-    u8 bssid[6];
-    u16 ssidLength;
-    u8 ssid[32];
-    u16 capaInfo;
-    struct {
-        u16 basic;
-        u16 support;
-    } rateSet;
-    u16 beaconPeriod;
-    u16 dtimPeriod;
-    u16 channel;
-    u16 cfpPeriod;
-    u16 cfpMaxDuration;
-    u16 gameInfoLength;
-    u16 otherElementCount;
-    WMGameInfo gameInfo;
-} WMBssDesc;
 WMBssDesc *sub_0205A1F4(UnkStruct_0205B43C *param0, int param1);
 void sub_0205AEA8(UnkStruct_0205C22C *param0, UnkStruct_0205B43C *param1, MapObjectManager *param2, PalPad *param3);
 int sub_0205AD9C(UnkStruct_0205C22C *param0, int param1, WMBssDesc *param2, PalPad *param3);

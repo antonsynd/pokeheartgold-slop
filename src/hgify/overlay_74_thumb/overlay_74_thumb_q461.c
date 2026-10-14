@@ -16,7 +16,6 @@ typedef struct UnkStruct_ov74_022365AC {
 
 extern int ov74_0223E2FC;
 
-int WM_End(void (*callback)(void));
 void ov74_02236168(int param0);
 void ov74_022364C0(void);
 

@@ -5,7 +5,6 @@
 void *ov96_021EB594(u32 value);
 void ov96_021EB630(void *ptr, u32 index);
 int ov96_02203924(void *a, void *b);
-void MATH_QSort(void *data, u32 nel, u32 size, int (*comp)(void *, void *), void *work);
 void ov96_02203970(u8 *param_1, u16 param_2);
 // FUNCTION ov96_02203970: matching C (agent16)
 #pragma force_active on

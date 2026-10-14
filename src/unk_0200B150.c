@@ -15,10 +15,6 @@ static OamManager *sOamManager; // _021D0EB0
 
 // The NNS OAM-manager API is not declared in the (stubbed) SDK headers;
 // declare locally to keep lib/include frozen (IPA discipline).
-extern BOOL NNS_G2dGetNewOamManagerInstance(void *oamManager, u16 fromOBJ, u16 numOBJ, u16 fromAffine, u16 numAffine, int type);
-extern void NNS_G2dApplyAndResetOamManagerBuffer(void *oamManager);
-extern BOOL NNS_G2dEntryOamManagerOamWithAffineIdx(void *oamManager, const GXOamAttr *oam, u16 affineIndex);
-extern u16 NNS_G2dEntryOamManagerAffine(void *oamManager, const MtxFx22 *mtx);
 
 // Defined in asm/unk_02025C44.s; local prototypes keep unk_02025C44.h frozen
 // (IPA discipline).

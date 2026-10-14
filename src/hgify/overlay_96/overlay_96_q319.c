@@ -6,7 +6,6 @@
 #include "pokeathlon/pokeathlon.h"
 
 #include "error_handling.h"
-int MATH_CountPopulation(unsigned int x);
 // FUNCTION ov96_021ED754: matching C (agent7)
 #pragma force_active on
 int ov96_021ED754(int param_1) {

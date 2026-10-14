@@ -18,7 +18,6 @@
 extern u32 sub_02033250(void);
 extern void sub_02038C1C(int);
 extern void sub_0205AD24(void *);
-extern int MATH_CountPopulation(u32 x);
 extern void ov85_021E85C4(void *, int);
 extern void ov85_021E85CC(void *, void *);
 extern void ov85_021E8680(void *, void *);

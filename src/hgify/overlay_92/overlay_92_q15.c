@@ -23,7 +23,6 @@ typedef struct S {
 } S0;
 void ov92_02260628(void *, u32);
 void ov92_02260428(void *, s32, s32, s32, s32, u32, int);
-void MTX_MultVec43(const Vec *, void *, void *);
 s32 _s32_div_f(s32, s32);
 extern const Vec ov92_02263884;
 extern const Vec ov92_02263878;

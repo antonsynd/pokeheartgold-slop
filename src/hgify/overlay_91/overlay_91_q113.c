@@ -4,7 +4,6 @@
 #include "global.h"
 
 #include "system.h"
-int FX_Sqrt(int x);
 // FUNCTION ov91_0225ED6C: matching C (twin)
 #pragma force_active on
 typedef struct UnkStruct_ov91_0225ED6C {

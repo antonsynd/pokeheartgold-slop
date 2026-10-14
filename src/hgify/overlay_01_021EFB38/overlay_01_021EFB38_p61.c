@@ -6,7 +6,6 @@
 #include "ghidra_compat.h"
 #include "sys_task_api.h"
 typedef void code(void);
-undefined4 GXx_SetMasterBrightness_();
 void ov01_021F0DB0(undefined4 param_1, undefined4 *param_2);
 // FUNCTION ov01_021F0DB0: matching C (r2)
 #pragma force_active on

@@ -16,7 +16,6 @@ typedef struct UnkStruct_ov00_021E6638 {
 
 extern int _0221A680;
 
-u16 NNS_FndGetGroupIDForMBlockExpHeap(void *ptr);
 
 // FUNCTION ov00_021E6638: matching C (twin)
 #pragma force_active on

@@ -1,6 +1,5 @@
 #include "global.h"
 
-extern int G3X_GetBoxTestResult(int *result);
 
 typedef struct {
     u8 pad_00[0x18];

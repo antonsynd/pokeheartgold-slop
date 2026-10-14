@@ -2,9 +2,6 @@
 #pragma warning_errors off
 #include "global.h"
 #pragma thumb on
-static inline int MATH_IAbs(int a) {
-    return (a < 0) ? -a : a;
-}
 enum HeapID {
     HEAP_ID_SYSTEM = 0,
     HEAP_ID_SAVE,

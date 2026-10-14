@@ -3,7 +3,6 @@
 #pragma thumb on
 #include "global.h"
 void ov74_022309AC(void);
-int WM_Reset(void (*callback)(void));
 void ov74_02231448(int errCode);
 // FUNCTION ov74_02231724: matching C (twin)
 BOOL ov74_02231724(void) {

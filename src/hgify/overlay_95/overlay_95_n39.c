@@ -18,13 +18,6 @@
 #include "unk_02005D10.h"
 #include "unk_02009D48.h"
 #include "unk_0200A090.h"
-#pragma thumb on
-typedef struct NNSGfdFrmTexVramState {
-    u32 address[10];
-} NNSGfdFrmTexVramState;
-typedef struct NNSGfdFrmPlttVramState {
-    u32 address[2];
-} NNSGfdFrmPlttVramState;
 typedef u16 charcode_t;
 typedef struct SpriteAnimFrame {
     s8 spriteFrame;

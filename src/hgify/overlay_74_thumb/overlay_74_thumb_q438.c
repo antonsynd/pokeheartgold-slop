@@ -4,7 +4,6 @@
 #include "global.h"
 
 #include "heap.h"
-u16 MATH_CalcCRC16(void *table, void *data, u32 size);
 void CRYPTO_RC4Init(void *ctx, u16 *key, u32 keylen);
 void CRYPTO_RC4Encrypt(void *ctx, void *src, u32 len, void *dst);
 // FUNCTION ov74_02235ED0: matching C (agent18)

@@ -4,7 +4,6 @@
 #include "global.h"
 
 void ov74_02230070(void);
-int WM_Disable(void (*callback)(void));
 void ov74_02231448(int errCode);
 
 // FUNCTION ov74_022314BC: matching C (twin)

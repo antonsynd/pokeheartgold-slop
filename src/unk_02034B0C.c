@@ -77,8 +77,6 @@ static struct {
 
 u16 WM_GetNextTgid(void);
 u16 WM_GetDispersionBeaconPeriod(void);
-int WVR_StartUpAsync(int vram, void (*callback)(void *, int), void *arg);
-void WVR_TerminateAsync(void (*callback)(void *, int), void *arg);
 
 u32 sub_0203993C(void);
 u32 sub_02039954(void);

@@ -5,13 +5,7 @@
 
 typedef void (*WMCallbackFunc)(void *arg);
 
-typedef enum WMErrCode {
-    WM_ERRCODE_SUCCESS = 0,
-    WM_ERRCODE_FAILED,
-    WM_ERRCODE_OPERATING,
-} WMErrCode;
 
-int WM_EndScan(WMCallbackFunc callback);
 void ov74_02231448(WMErrCode errCode);
 void ov74_02230590(void *arg);
 

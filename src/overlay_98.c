@@ -39,7 +39,6 @@
 u8 AddTextPrinterParameterizedWithColor(Window *window, u32 fontId, String *string, u32 x, u32 y, u32 textSpeed, u32 color, PrinterCallback_t callback);
 
 // NitroSDK MATH; declared locally like the other consumers (unk_02096C88.c).
-extern int MATH_CountPopulation(u32 x);
 
 #define OV98_MON_PIC_BUFFER_SIZE 0xC80
 #define OV98_NUM_STATS           10

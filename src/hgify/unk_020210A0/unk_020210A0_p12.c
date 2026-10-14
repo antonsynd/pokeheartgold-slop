@@ -3,9 +3,6 @@
 #pragma thumb on
 #include "global.h"
 extern u8 _021D2198[];
-int TP_RequestAutoSamplingStartAsync(u16 vCount, u16 frequency, void *buf, u32 bufSize);
-void TP_WaitBusy(int);
-int TP_CheckError(int);
 // FUNCTION GF_TouchpadStartAutoSampling: matching C (twin)
 #pragma force_active on
 int GF_TouchpadStartAutoSampling(u32 frequency) {

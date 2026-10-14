@@ -7,7 +7,6 @@ extern void *ov74_022311E8(void);
 extern void *ov74_02231100(void);
 extern void ov74_02231448(void);
 extern void ov74_022305E4(void *arg);
-extern int WM_StartConnectEx(void (*cb)(void *), void *bss, void *ssid, int powerSave, int auth);
 
 // FUNCTION ov74_02231638: matching C (twin)
 #pragma force_active on

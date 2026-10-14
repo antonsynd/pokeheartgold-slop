@@ -2,7 +2,6 @@
 #pragma warning_errors off
 #pragma thumb on
 #include "global.h"
-extern int CTRDG_ReadAgbFlash();
 // FUNCTION ov74_02233AB8: matching C (tiny1)
 #pragma force_active on
 int ov74_02233AB8(int p0, int p1) {

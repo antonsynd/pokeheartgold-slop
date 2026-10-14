@@ -7,7 +7,6 @@
 
 BOOL ov74_022351FC(void);
 int ov74_02235230(void);
-BOOL CTRDG_CpuCopy16(u32 src, void *dest, u32 size);
 void CTRDG_Enable(BOOL enable);
 BOOL CTRDG_IsExisting(void);
 // FUNCTION ov74_02235258: matching C (twin)

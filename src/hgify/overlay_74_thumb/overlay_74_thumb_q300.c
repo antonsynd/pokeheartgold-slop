@@ -3,7 +3,6 @@
 #pragma thumb on
 #include "global.h"
 
-int WM_SetMPDataToPortEx(void (*callback)(void), void *arg, const u16 *sendData, u16 sendDataSize, u32 destBitmap, u16 port, u16 prio);
 u32 ov74_022310AC(void);
 void ov74_02231448(void);
 void ov74_02230018(void);
