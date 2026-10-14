@@ -35,7 +35,7 @@ completely using the `/decomp-sonnet` workflow — Sonnet drafts, Opus judges.
    **Phase 3 — Draft review + file writing (Orchestrator)**
    - Check draft against dead ends already logged, type conventions, function order, invented headers
    - Write cleaned draft to `src/<basename>.c` (and `include/<basename>.h` if needed)
-   - Update `main.lsf`: `Object asm/<basename>.o` → `Object src/<basename>.o`
+   - Update the LSF: `python3 tools/decomp_harness/lsf_flip.py asm/<basename>.s src/<basename>.c` (swaps the `main.lsf` object and regenerates `src/meson.build` / `asm/meson.build`)
 
    **Phase 4 — Build-compare judgment loop (Orchestrator)**
    - `chiri pkg -- build --target main --no-compare` (timeout 1200000). Fix compile errors.

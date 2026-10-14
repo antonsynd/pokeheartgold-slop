@@ -66,7 +66,7 @@ For the target `asm/<basename>.s`:
    For long tails of mechanical functions (getters/setters, save-chunk accessors) you may
    draft bodies via `tools/decomp_harness/delegate.sh` (local model) — drafts are untrusted;
    review against the patterns DB before building (see `tools/decomp_harness/DELEGATION.md`)
-4. **Update LSF**: In `main.lsf`, change `Object asm/<basename>.o` to `Object src/<basename>.o`
+4. **Update LSF**: `python3 tools/decomp_harness/lsf_flip.py asm/<basename>.s src/<basename>.c` (swaps the `main.lsf` object and regenerates `src/meson.build` / `asm/meson.build`)
    (the LSF edit is only needed for the finalization link in step 10, not for the
    compile_one inner loop below — but make it now so it isn't forgotten)
 5. **Compile (inner loop)**: Run `tools/decomp_harness/compile_one.sh src/<basename>.c`
@@ -175,7 +175,7 @@ Iterate on step 5 until objdiff is green, then:
 
 ### Important Rules
 
-- Do NOT modify any file except `src/<basename>.c`, `include/<basename>.h`, the one line in `main.lsf`, and the harness state files named above
+- Do NOT modify any file except `src/<basename>.c`, `include/<basename>.h`, the one line in `main.lsf` (with the regenerated `src/meson.build` / `asm/meson.build`), and the harness state files named above
 - Do NOT delete or modify the original `.s` file
 - Function order in the C file must match the asm file exactly
 - Keep the build green — if something breaks, revert before moving on

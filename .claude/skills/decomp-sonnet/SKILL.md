@@ -92,7 +92,7 @@ if public symbols exist).
 
 This is identical to the standard `/decomp` workflow:
 
-1. **Update LSF**: `main.lsf`: `Object asm/<basename>.o` → `Object src/<basename>.o`
+1. **Update LSF**: `python3 tools/decomp_harness/lsf_flip.py asm/<basename>.s src/<basename>.c` (swaps the `main.lsf` object and regenerates `src/meson.build` / `asm/meson.build`)
 2. **Build**: `chiri pkg -- build --target main --no-compare` (timeout 1200000). Fix compile errors.
 3. **Compare**: `chiri pkg -- compare`. Exit 0 = match → go to Phase 6.
 4. **Diff on mismatch**: `./tools/asmdiff/asmdiff.sh <address>` to see byte differences. For overlays: `./tools/asmdiff/asmdiff.sh -m OVY_NN <address>`
@@ -145,7 +145,7 @@ with `reason` and `blocker_id`, ensure all dead ends are logged. If nothing land
 
 ### Important Rules (same as /decomp)
 
-- Do NOT modify any file except `src/<basename>.c`, `include/<basename>.h`, the one line in `main.lsf`, and harness state files
+- Do NOT modify any file except `src/<basename>.c`, `include/<basename>.h`, the one line in `main.lsf` (with the regenerated `src/meson.build` / `asm/meson.build`), and harness state files
 - Do NOT delete or modify the original `.s` file
 - Function order in the C file must match the asm exactly
 - Keep the build green — if something breaks, revert before moving on

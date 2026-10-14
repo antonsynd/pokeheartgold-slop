@@ -31,7 +31,7 @@ This skill is designed to be used with `/loop /decomp-loop` for continuous auton
       `twins.py file <target>` (Platinum twins + `nonmatching/` drafts; see `/decomp` step 4)
    c. Read the target asm file and its .inc file
    d. Search for relevant headers and similar decompiled files
-   e. Write the C file, update main.lsf
+   e. Write the C file, flip it in with `tools/decomp_harness/lsf_flip.py asm/<base>.s src/<base>.c`
    f. Build with `chiri pkg -- build --target main --no-compare` (timeout 1200000),
       fix compile errors
    g. Compare with `chiri pkg -- compare`, check exit code (0 = match)
