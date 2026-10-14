@@ -27,6 +27,10 @@ case "$path" in
         echo "BLOCKED: triage_report.json is GENERATED. Regenerate with: python3 tools/decomp_harness/triage.py --rebuild." >&2
         exit 2
         ;;
+    */src/meson.build|*/asm/meson.build)
+        echo "BLOCKED: $path is GENERATED from main.lsf. Edit main.lsf, then run: python3 tools/decomp_harness/meson_port.py lists." >&2
+        exit 2
+        ;;
     *tools/decomp_harness/knowledge.json)
         echo "BLOCKED: knowledge.json is GENERATED. Correct the per-file JSON in tools/decomp_harness/sweep/out/ and re-run: python3 tools/decomp_harness/sweep/merge_sweep.py." >&2
         exit 2

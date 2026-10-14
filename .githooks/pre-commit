@@ -16,10 +16,19 @@ if git diff --cached --name-only --diff-filter=ACM -- 'include/*.h' | grep -q .;
     fi
 fi
 
+# The Meson source lists are generated from main.lsf; they must not drift.
+if git diff --cached --name-only | grep -qE '^(main\.lsf|src/meson\.build|asm/meson\.build)$'; then
+    if ! python3 tools/decomp_harness/meson_port.py lists --check; then
+        exit 1
+    fi
+fi
+
 # Check for IPA cascade from header changes (requires a built tree).
-# Skipped if no build exists — run `make` (or `chiri pkg -- build`) first.
+# ipa_check.sh and verify_matched.sh still read the Make build's outputs
+# (main.elf, .d files) and are not yet ported to Meson (MESON_SYNC_PLAN.md §6,
+# P1), so they only run against a Make-era build dir.
 if git diff --cached --name-only --diff-filter=M -- 'include/*.h' | grep -q .; then
-    if [ -d build/heartgold.us ]; then
+    if [ -f build/heartgold.us/main.elf ]; then
         if ! tools/decomp_harness/ipa_check.sh; then
             exit 1
         fi

@@ -141,6 +141,30 @@
             "command": "\"$CLAUDE_PROJECT_DIR\"/tools/decomp_harness/prebuild_guard.sh",
             "if": "Bash(./tools/build_attestation.sh:*)",
             "timeout": 30
+          },
+          {
+            "type": "command",
+            "command": "\"$CLAUDE_PROJECT_DIR\"/tools/decomp_harness/prebuild_guard.sh",
+            "if": "Bash(ninja:*)",
+            "timeout": 30
+          },
+          {
+            "type": "command",
+            "command": "\"$CLAUDE_PROJECT_DIR\"/tools/decomp_harness/prebuild_guard.sh",
+            "if": "Bash(meson:*)",
+            "timeout": 30
+          },
+          {
+            "type": "command",
+            "command": "\"$CLAUDE_PROJECT_DIR\"/tools/decomp_harness/prebuild_guard.sh",
+            "if": "Bash(python3 subprojects/meson-1.12.0/meson.py:*)",
+            "timeout": 30
+          },
+          {
+            "type": "command",
+            "command": "\"$CLAUDE_PROJECT_DIR\"/tools/decomp_harness/prebuild_guard.sh",
+            "if": "Bash(subprojects/meson-1.12.0/meson.py:*)",
+            "timeout": 30
           }
         ]
       }
