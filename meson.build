@@ -394,30 +394,40 @@ if game_version == 'HEARTGOLD'
     main_sha1 = main_sha1_hg
     filesystem_sha1 = filesystem_sha1_hg
     rom_sha1 = rom_sha1_hg
+    rom_nds = pokeheartgold_nds
 elif game_version == 'SOULSILVER'
     main_sha1 = main_sha1_ss
     filesystem_sha1 = filesystem_sha1_ss
     rom_sha1 = rom_sha1_ss
+    rom_nds = pokesoulsilver_nds
 endif
 
+# Fork edit (pokeheartgold-slop #22, decision D7): every test depends on the
+# ROM, which depends on everything else. Without it `meson test` builds
+# nothing (the ROM isn't built by default and the tests name no targets), so
+# it checks whatever stale files are in the build dir and can pass.
 test(game_version + ' Main Checksums',
     sha1sum,
-    args: ['-c', '--quiet', main_sha1]
+    args: ['-c', '--quiet', main_sha1],
+    depends: rom_nds
 )
 
 test(game_version + ' Sub Checksums',
     sha1sum,
-    args: ['-c', '--quiet', arm7_sha1]
+    args: ['-c', '--quiet', arm7_sha1],
+    depends: rom_nds
 )
 
 test(game_version + ' Filesystem Checksums',
     sha1sum,
-    args: ['-c', '--quiet', filesystem_sha1]
+    args: ['-c', '--quiet', filesystem_sha1],
+    depends: rom_nds
 )
 
 test(game_version + ' ROM Checksum',
     sha1sum,
-    args: ['-c', '--quiet', rom_sha1]
+    args: ['-c', '--quiet', rom_sha1],
+    depends: rom_nds
 )
 
 
