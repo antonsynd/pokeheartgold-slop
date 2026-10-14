@@ -2,7 +2,7 @@
 #pragma warning_errors off
 #include "global.h"
 
-#include "dwcaccount.h"
+#include <dwc.h>
 #include "save.h"
 #pragma thumb on
 typedef struct {

@@ -3,7 +3,7 @@
 #pragma thumb on
 #include "global.h"
 
-#include "dwcaccount.h"
+#include <dwc.h>
 #include "unk_02037C94.h"
 typedef struct {
     char pad0[0xF10];

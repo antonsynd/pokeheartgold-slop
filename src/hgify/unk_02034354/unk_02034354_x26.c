@@ -2,7 +2,7 @@
 #pragma warning_errors off
 #include "global.h"
 
-#include "dwcaccount.h"
+#include <dwc.h>
 #include "error_handling.h"
 #include "save.h"
 #include "unk_0202C034.h"

@@ -3,7 +3,7 @@
 #pragma thumb on
 #include "global.h"
 
-#include "dwcaccount.h"
+#include <dwc.h>
 #include "ghidra_compat.h"
 typedef int code();
 typedef struct FD00 {

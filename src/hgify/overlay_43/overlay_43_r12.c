@@ -3,7 +3,7 @@
 #pragma thumb on
 #include "global.h"
 
-#include "dwcaccount.h"
+#include <dwc.h>
 #include "error_handling.h"
 #include "pm_string.h"
 #include "unk_0202C034.h"

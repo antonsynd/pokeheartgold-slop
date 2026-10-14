@@ -2,7 +2,7 @@
 #pragma warning_errors off
 #include "global.h"
 
-#include "dwcaccount.h"
+#include <dwc.h>
 #include "heap.h"
 #include "player_data.h"
 #include "save.h"
