@@ -25,7 +25,7 @@ import subprocess
 import sys
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
-from meson_names import object_name  # noqa: E402
+from meson_names import MWCC12_RE, object_name  # noqa: E402
 
 # Physical path: compile_commands.json records the resolved build directory, and the source is
 # spelled relative to it, so a symlinked checkout path must not leak into that spelling.
@@ -53,6 +53,9 @@ def load_commands(game):
 
 def find_entry(entries, src):
     """(entry, is_template) for src: its own entry in the main target, else the src/main.c one."""
+    if MWCC12_RE.match(src):
+        raise SystemExit(f'compile_cmd: {src} is built with MWCC 1.2 by the mwcc12 generator in meson.build, '
+                         f'not with the main flags; build it with: ninja -C build/heartgold.us {object_name(src)}')
     want, tmpl = object_name(src), object_name(TEMPLATE_SRC)
     own = template = None
     for e in entries:
