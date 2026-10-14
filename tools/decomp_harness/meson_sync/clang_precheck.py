@@ -7,7 +7,8 @@ Reports only error classes that MWCC also rejects: redefinitions, conflicting ty
 headers, undeclared identifiers. Clang's other complaints about MWCC dialect are dropped.
 
 Usage: clang_precheck.py [BUILD_DIR] [--all]   (default build/heartgold.us; --all prints every error)
-Generated headers (naix, msg banks) must already be built. Writes clang_precheck.txt.
+Generated headers (naix, msg banks, NitroSDK's gen/nitro/fx/fx_const.h) must already be built;
+a missing one shows up as a fatal error. Writes clang_precheck.txt.
 """
 import collections, concurrent.futures, json, os, re, shlex, subprocess, sys
 
@@ -15,7 +16,7 @@ MSL = 'tools/metroskrew/lib/metroskrew/sdk/ds/2.0/sp2/msl'
 MSL_INC = [f'{MSL}/MSL_C/MSL_Common/Include', f'{MSL}/MSL_C/MSL_ARM/Include',
            f'{MSL}/MSL_Extras/MSL_Common/Include', f'{MSL}/MSL_Extras/MSL_ARM/Include',
            f'{MSL}/MSL_C/MSL_Common_Embedded/Math/Include']
-KEEP = re.compile(r'redefinition|conflicting types|file not found|undeclared identifier|'
+KEEP = re.compile(r'fatal error|redefinition|conflicting types|file not found|undeclared identifier|'
                   r'unknown type name|implicit declaration|incompatible pointer types')
 
 
@@ -54,11 +55,12 @@ def main():
     per_file, kinds = {}, collections.Counter()
     with concurrent.futures.ThreadPoolExecutor(os.cpu_count()) as ex:
         for src, out in zip(jobs, ex.map(run_clang, jobs.values())):
-            kept = [l for l in out if ': error: ' in l and (show_all or KEEP.search(l))]
+            # A fatal error (a missing header) aborts the file, hiding every later error: always report it.
+            kept = [l for l in out if ': fatal error: ' in l or (': error: ' in l and (show_all or KEEP.search(l)))]
             if kept:
                 per_file[src] = kept
                 for l in kept:
-                    kinds[re.sub(r"'[^']*'", "'X'", l.split(': error: ', 1)[1])[:90]] += 1
+                    kinds[re.sub(r"'[^']*'", "'X'", re.split(r': (?:fatal )?error: ', l, 1)[1])[:90]] += 1
     print(f'{len(jobs)} files, {len(per_file)} with errors')
     for k, n in kinds.most_common(25):
         print(f'{n:6d}  {k}')

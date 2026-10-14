@@ -13,7 +13,9 @@ parameter in a prototype, say) changes codegen, which the ROM check and object p
 
 Usage: r10_fix.py [--dry-run]   (run from the repo root, after r10_report.py)
 """
-import collections, json, re, sys
+import collections, json, os, re, sys
+
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 
 # SDK types checked by hand to have the same layout and member names as the stand-ins.
 KNOWN_SAME = {
@@ -26,57 +28,24 @@ TYPE_KINDS = ('redefinition of enumerator', 'typedef redefinition', 'redefinitio
 
 
 def statement_span(text, line_no):
-    """(start, end) offsets of the top-level statement covering 1-based line_no."""
-    lines = text.split('\n')
-    offs = [0]
-    for l in lines:
-        offs.append(offs[-1] + len(l) + 1)
-    # Walk up to the statement's first line: stop after a line that ends a statement.
-    i = line_no - 1
-    while i > 0:
-        prev = lines[i - 1].rstrip()
-        if (not prev or prev.endswith((';', '}')) or prev.lstrip().startswith(('#', '//'))
-                or prev.endswith('*/')):
-            break
-        i -= 1
-    # A line inside a braced body: keep walking up until brace depth balances.
-    depth_before = sum(l.count('{') - l.count('}') for l in lines[:i])
-    while depth_before > 0 and i > 0:
-        i -= 1
-        depth_before = sum(l.count('{') - l.count('}') for l in lines[:i])
-        while i > 0:
-            prev = lines[i - 1].rstrip()
-            if not prev or prev.endswith((';', '}')) or prev.lstrip().startswith(('#', '//')):
-                break
-            i -= 1
-    start = offs[i]
-    depth, j, seen_brace = 0, start, False
-    while j < len(text):
-        c = text[j]
-        if c == '{':
-            depth += 1
-            seen_brace = True
-        elif c == '}':
-            depth -= 1
-            if depth == 0 and seen_brace:
-                # function definition ends here; typedef/struct continue to ';'
-                k = j + 1
-                while k < len(text) and text[k] in ' \t':
-                    k += 1
-                rest = text[k:k + 200]
-                if not re.match(r'[A-Za-z_\w\s,\*]*;', rest):
-                    end = j + 1
-                    break
-        elif c == ';' and depth == 0:
-            end = j + 1
-            break
-        j += 1
-    else:
-        return None
-    # swallow the newline
-    if end < len(text) and text[end] == '\n':
-        end += 1
-    return start, end
+    """(start, end) offsets of the top-level statement covering 1-based line_no.
+
+    Uses r10_audit's brace- and comment-aware tokenizer. (The first version walked up line by
+    line with a stale brace depth and could swallow the previous statement: a `#pragma thumb on`
+    or a prototype. r10_audit.py finds and restores such deletions.)"""
+    from r10_audit import statements
+    offs = 0
+    for _ in range(line_no - 1):
+        offs = text.index('\n', offs) + 1
+    line_end = text.find('\n', offs)
+    line_end = len(text) if line_end < 0 else line_end
+    for st, en in statements(text):
+        if st <= line_end and en > offs:
+            if text[st] == '#' or text.startswith('//', st) or text.startswith('/*', st):
+                continue
+            end = en + 1 if en < len(text) and text[en] == '\n' else en
+            return st, end
+    return None
 
 
 def main():

@@ -4,6 +4,7 @@
 #include "global.h"
 #pragma thumb on
 BOOL ov74_02231584(void);
+void ov74_02230520(void *param0);
 typedef struct {
     u16 unk_00[12];
 } UnkStruct_ov97_02233268_sub2_sub1;

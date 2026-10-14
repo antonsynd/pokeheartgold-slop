@@ -7,6 +7,7 @@
 // This is the same billboard (3D sprite) list system as pokeplatinum's src/billboard.c.
 
 
+// NitroSystem G3D material structures and accessors not present in lib/include.
 #define NNS_G3D_TEXIMAGE_PARAM_TEX_ADDR_MASK 0x0000FFFF
 #define REG_G3_TEXPLTT_BASE_PLTT_BASE_MASK   0x1FFF
 

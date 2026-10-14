@@ -5,6 +5,7 @@
 #pragma thumb on
 BOOL ov74_02231670(void);
 void ov74_022306C8(void *param0);
+void ov74_022308E0(void *param0);
 WMParentParam *ov74_02231054(void);
 u32 ov74_022310D0(void);
 u32 ov74_022310DC(void);

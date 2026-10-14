@@ -3,6 +3,7 @@
 #pragma warning_errors off
 #include "global.h"
 #pragma thumb on
+u32 ov74_02230E7C(void);
 typedef WMBssDesc WMbssDesc;
 typedef WMScanParam WMscanParam;
 typedef struct {
