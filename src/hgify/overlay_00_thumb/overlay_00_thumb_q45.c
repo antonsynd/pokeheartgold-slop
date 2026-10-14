@@ -2,11 +2,11 @@
 #pragma warning_errors off
 #pragma thumb on
 #include "global.h"
-extern BOOL ov00_021EFE78(const void *statusData, int size);
+extern BOOL DWC_SetOwnStatusData(const void *statusData, int size);
 BOOL ov00_021E6D60(const void *statusData, int size);
 // FUNCTION ov00_021E6D60: matching C (r0)
 #pragma force_active on
 BOOL ov00_021E6D60(const void *statusData, int size) {
-    return ov00_021EFE78(statusData, size);
+    return DWC_SetOwnStatusData(statusData, size);
 }
 #pragma force_active reset

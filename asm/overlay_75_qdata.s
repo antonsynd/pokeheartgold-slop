@@ -1,4 +1,4 @@
-	.include "asm/macros.inc"
+	.include "macros.inc"
 	.include "overlay_75.inc"
 	.include "global.inc"
 	.public ov75_022498E4
@@ -185,7 +185,7 @@
 	.rodata
 
 ov75_022498E4:
-	.word ov44_0222A4B4, ov44_0222A60C, ov44_0222A758, FS_OVERLAY_ID(OVY_44)
+	.word ov44_0222A4B4, ov44_0222A60C, ov44_0222A758, SDK_OVERLAY_OVY_44_ID
 ov75_022498F4:
 	.word ov75_02246F0C, ov75_02247118, ov75_02247180, 0xFFFFFFFF
 

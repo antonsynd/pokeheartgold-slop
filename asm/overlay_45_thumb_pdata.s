@@ -1,5 +1,5 @@
 #include "config.h"
-	.include "asm/macros.inc"
+	.include "macros.inc"
 	.include "overlay_45_thumb.inc"
 	.include "global.inc"
 	.public _02254A28
@@ -722,67 +722,67 @@ ov45_02254B04: ; 0x02254B04
 	.word ov46_02258CB4
 	.word ov46_02258DA8
 	.word ov46_02258EFC
-	.word FS_OVERLAY_ID(OVY_46)
+	.word SDK_OVERLAY_OVY_46_ID
 
 ov45_02254B14: ; 0x02254B14
 	.word ov89_02258800
 	.word ov89_02258B04
 	.word ov89_02258F00
-	.word FS_OVERLAY_ID(OVY_89)
+	.word SDK_OVERLAY_OVY_89_ID
 
 ov45_02254B24: ; 0x02254B24
 	.word ov89_02258800
 	.word ov89_02258B04
 	.word ov89_02258F00
-	.word FS_OVERLAY_ID(OVY_89)
+	.word SDK_OVERLAY_OVY_89_ID
 
 ov45_02254B34: ; 0x02254B34
 	.word ov93_0225C540
 	.word ov93_0225C574
 	.word ov93_0225C6C0
-	.word FS_OVERLAY_ID(OVY_93)
+	.word SDK_OVERLAY_OVY_93_ID
 
 ov45_02254B44: ; 0x02254B44
 	.word ov47_02258800
 	.word ov47_02258898
 	.word ov47_022589A8
-	.word FS_OVERLAY_ID(OVY_47)
+	.word SDK_OVERLAY_OVY_47_ID
 
 ov45_02254B54: ; 0x02254B54
 	.word ov91_0225C540
 	.word ov91_0225C58C
 	.word ov91_0225C9EC
-	.word FS_OVERLAY_ID(OVY_91)
+	.word SDK_OVERLAY_OVY_91_ID
 
 ov45_02254B64: ; 0x02254B64
 	.word ov46_02258800
 	.word ov46_0225892C
 	.word ov46_02258C38
-	.word FS_OVERLAY_ID(OVY_46)
+	.word SDK_OVERLAY_OVY_46_ID
 
 ov45_02254B74: ; 0x02254B74
 	.word ov88_02258800
 	.word ov88_022588C4
 	.word ov88_022589FC
-	.word FS_OVERLAY_ID(OVY_88)
+	.word SDK_OVERLAY_OVY_88_ID
 
 ov45_02254B84: ; 0x02254B84
 	.word ov48_02258800
 	.word ov48_02258920
 	.word ov48_022589FC
-	.word FS_OVERLAY_ID(OVY_48)
+	.word SDK_OVERLAY_OVY_48_ID
 
 ov45_02254B94: ; 0x02254B94
 	.word ov49_02259AA4
 	.word ov49_02259C90
 	.word ov49_02259EF8
-	.word FS_OVERLAY_ID(OVY_49)
+	.word SDK_OVERLAY_OVY_49_ID
 
 ov45_02254BA4: ; 0x02254BA4
 	.word ov92_0225CAB4
 	.word ov92_0225CDF4
 	.word ov92_0225D36C
-	.word FS_OVERLAY_ID(OVY_92)
+	.word SDK_OVERLAY_OVY_92_ID
 
 ov45_02254BB4: ; 0x02254BB4
 	.byte 0x09, 0x00, 0x01, 0x02, 0x03, 0x04, 0x05, 0x06, 0x07, 0x08, 0x0A, 0x0B

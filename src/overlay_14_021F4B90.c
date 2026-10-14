@@ -1,6 +1,6 @@
 #include "global.h"
 
-#include "msgdata/msg.naix"
+#include "files/msgdata/msg.naix"
 
 #include "bg_window.h"
 #include "font.h"
@@ -437,7 +437,7 @@ int ov14_021F5404(UnkStruct_ov14_boxapp *work, UnkStruct_ov14_mon *mon) {
     sys->unk44E_0 ^= 1;
     data = GfGfxLoader_GetCharData(NARC_a_0_1_9, 6, TRUE, &charData, HEAP_ID_10);
     pixels = charData->pRawData;
-    msgData = NewMsgDataFromNarc(MSGDATA_LOAD_DIRECT, NARC_msgdata_msg, NARC_msg_msg_0750_bin, HEAP_ID_10);
+    msgData = NewMsgDataFromNarc(MSGDATA_LOAD_DIRECT, NARC_msgdata_msg, msg_0750, HEAP_ID_10);
     if (!mon->isEgg) {
         for (i = 0; i < 4; i++) {
             for (j = 0; j < 0xB; j++) {

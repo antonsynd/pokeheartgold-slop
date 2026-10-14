@@ -27,7 +27,7 @@ extern void NNS_SndStrmAllocChannel(void *strm, int a, void *b);
 extern void NNS_SndStrmSetVolume(void *strm, int v);
 extern void NNS_SndStrmSetup(void *strm, int a, void *b, int c, int d, int e, void *cb, void *arg);
 extern int sub_02034084(void);
-extern int ov00_021EE490(void);
+extern int DWC_GetMyAID(void);
 extern void VCT_Init(VctCfg *cfg);
 extern void VCT_SetCodec(int c);
 extern void ov00_021E79B4(void);
@@ -73,7 +73,7 @@ void ov00_021E77F4(int heap, int codec, int count) {
     *(u32 *)(_0221A684.manager + 0x19e8) = cfg.f8;
     cfg.f0 = _0221A684.manager + 0x1990;
     cfg.count = count;
-    cfg.id = ov00_021EE490();
+    cfg.id = DWC_GetMyAID();
     if (cfg.id == -1) {
         GF_AssertFail();
     }

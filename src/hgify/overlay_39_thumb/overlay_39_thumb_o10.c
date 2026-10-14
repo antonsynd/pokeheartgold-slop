@@ -6,16 +6,20 @@
 #include "ghidra_compat.h"
 #include "overlay_00_thumb.h"
 #include "unk_02037C94.h"
+
+// Upstream renamed these and its header still declares the old names (#22).
+void DWC_ClearError(void);
+
 typedef int code();
-undefined4 ov00_021EC8D8();
+undefined4 DWC_CleanupInet();
 undefined4 ov39_02227348(int param_1);
 // FUNCTION ov39_02227348: matching C (r2)
 #pragma force_active on
 undefined4 ov39_02227348(int param_1)
 
 {
-    ov00_021EC210();
-    ov00_021EC8D8();
+    DWC_ClearError();
+    DWC_CleanupInet();
     sub_0203946C();
     *(undefined4 *)(param_1 + 0x3c8) = 0;
     return 1;

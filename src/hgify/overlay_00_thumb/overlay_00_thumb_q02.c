@@ -5,6 +5,11 @@
 
 #include "overlay_00_arm.h"
 #include "overlay_00_thumb.h"
+
+// Upstream renamed these and its header still declares the old names (#22).
+void DWC_SetAuthServer(s32 arg0);
+void DWC_ProcessFriendsMatch(void);
+
 typedef struct {
     char pad0[0x100];
     u32 f100;
@@ -18,14 +23,14 @@ typedef struct {
 extern NetState *_0221A680;
 extern const u8 _02216400[];
 extern const u8 _0221640C[];
-void ov00_021EC294(void (*a)(void), void (*b)(void));
-void ov00_021EC3F0(void *a, int b, int c, int d);
-void ov00_021EC4A4(void);
-int ov00_021EC5B4(void);
-int ov00_021EC724(void);
-void ov00_021EC60C(void);
-void ov00_021ED730(void *a, u32 b, int c, const void *d, const void *e, int f, int g, u32 h, int i);
-void ov00_021EDD6C(void *a, int b, void (*c)(void), int d);
+void DWC_SetMemFunc(void (*a)(void), void (*b)(void));
+void DWC_InitInetEx(void *a, int b, int c, int d);
+void DWC_ConnectInetAsync(void);
+int DWC_CheckInet(void);
+int DWC_GetInetStatus(void);
+void DWC_ProcessInet(void);
+void DWC_InitFriendsMatch(void *a, u32 b, int c, const void *d, const void *e, int f, int g, u32 h, int i);
+void DWC_LoginAsync(void *a, int b, void (*c)(void), int d);
 void ov00_021E65D4(void);
 void ov00_021E6638(void);
 void ov00_021E61A8(void);
@@ -38,21 +43,21 @@ s32 ov00_021E5B6C(void) {
 
     switch (_0221A680->state) {
     case 0:
-        ov00_021EC294(ov00_021E65D4, ov00_021E6638);
-        ov00_021EC3F0(_0221A680->fF14, 2, 1, 0x14);
-        ov00_021EC454(2);
-        ov00_021EC4A4();
+        DWC_SetMemFunc(ov00_021E65D4, ov00_021E6638);
+        DWC_InitInetEx(_0221A680->fF14, 2, 1, 0x14);
+        DWC_SetAuthServer(2);
+        DWC_ConnectInetAsync();
         _0221A680->state = 1;
         _0221A680->f1090 = 0;
     case 1:
-        if (ov00_021EC5B4() != 0) {
-            if (ov00_021EC724() == 4) {
+        if (DWC_CheckInet() != 0) {
+            if (DWC_GetInetStatus() == 4) {
                 _0221A680->state = 2;
             } else {
                 _0221A680->state = 0xc;
             }
         } else {
-            ov00_021EC60C();
+            DWC_ProcessInet();
             break;
         }
     case 2:
@@ -60,15 +65,15 @@ s32 ov00_021E5B6C(void) {
         if (r != 0) {
             return r;
         }
-        ov00_021ED730(_0221A680->f104, _0221A680->fF10, 0x29E7, _02216400, _0221640C, 0, 0, _0221A680->f100, 0x20);
+        DWC_InitFriendsMatch(_0221A680->f104, _0221A680->fF10, 0x29E7, _02216400, _0221640C, 0, 0, _0221A680->f100, 0x20);
         OS_GetOwnerInfo((struct OSOwnerInfo *)owner);
-        ov00_021EDD6C(buf, 0, ov00_021E61A8, 0);
+        DWC_LoginAsync(buf, 0, ov00_021E61A8, 0);
         _0221A680->state = 3;
     case 3:
-        ov00_021EDB1C();
+        DWC_ProcessFriendsMatch();
         break;
     case 4:
-        ov00_021EDB1C();
+        DWC_ProcessFriendsMatch();
         return 0x1b;
     default:
         break;

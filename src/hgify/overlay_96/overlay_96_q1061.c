@@ -3,7 +3,7 @@
 #pragma thumb on
 // clang-format off
 #include "global.h"
-#include <nitro/fx.h>
+#include <nitro/fx/fx.h>
 // clang-format on
 typedef struct Ov96Cfg {
     u8 pad0[4];

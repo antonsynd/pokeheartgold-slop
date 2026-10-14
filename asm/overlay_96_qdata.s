@@ -1,4 +1,4 @@
-	.include "asm/macros.inc"
+	.include "macros.inc"
 	.include "overlay_96.inc"
 	.include "global.inc"
 	.public _0221A7D8
@@ -2029,7 +2029,7 @@ subOverlayTemplate: ; 0x0221A7E4
 	.word ov97_0221E5C0
 	.word ov97_0221E5D4
 	.word ov97_0221E69C
-	.word FS_OVERLAY_ID(OVY_97)
+	.word SDK_OVERLAY_OVY_97_ID
 
 ov96_0221A7F4:
 	.word ov96_021F010C

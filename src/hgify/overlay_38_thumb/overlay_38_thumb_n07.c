@@ -21,7 +21,7 @@ extern char ov38_0222508C[];
 extern char ov38_02225094[];
 int sprintf(char *, const char *, ...);
 int ov38_0221BB44(u8 *);
-char *ov00_021EC2A8(int, int);
+char *DWC_Alloc(int, int);
 // FUNCTION ov38_0221BEA8: matching C (agent22)
 #pragma force_active on
 int ov38_0221BEA8(const char *a, u32 b, u32 c, u8 *d, int e, int f) {
@@ -40,7 +40,7 @@ int ov38_0221BEA8(const char *a, u32 b, u32 c, u8 *d, int e, int f) {
     _02225040.f20 = f;
     q = d + 8;
     n = strlen(a);
-    _02225040.buf = ov00_021EC2A8(10, n + 0x45 + ov38_0221BB44(q));
+    _02225040.buf = DWC_Alloc(10, n + 0x45 + ov38_0221BB44(q));
     if (_02225040.buf == 0) {
         return 2;
     }

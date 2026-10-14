@@ -4,7 +4,7 @@
 #include "constants/sndseq.h"
 
 #include "battle/battle_setup.h"
-#include "msgdata/msg/msg_0096_D31R0201.h"
+#include "files/msgdata/msg/msg_0096_D31R0201.h"
 
 #include "bg_window.h"
 #include "encounter.h"

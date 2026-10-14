@@ -22,7 +22,7 @@ typedef struct {
     u32 fba8;
 } S;
 void ov70_02244670(S *);
-int ov00_021EC5B4(void);
+int DWC_CheckInet(void);
 void ov70_02245124(S *);
 void ov70_022441A4(u32);
 void ov70_02244FA4(S *, u32, int, int, int);
@@ -47,7 +47,7 @@ int ov70_02244038(S *param_1) {
     GfGfx_EngineBTogglePlanes(2, 1);
     GfGfx_EngineBTogglePlanes(4, 0);
     GfGfx_EngineBTogglePlanes(8, 0);
-    if (ov00_021EC5B4() == 0) {
+    if (DWC_CheckInet() == 0) {
         if (param_1->inner->f3c != 0) {
             sub_02039418(param_1->inner->f20);
             ov70_02244FA4(param_1, param_1->fba8, 1, 1, 0xf0f);

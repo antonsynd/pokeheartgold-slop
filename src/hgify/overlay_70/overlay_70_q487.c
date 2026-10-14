@@ -7,7 +7,7 @@
 #include "unk_02037C94.h"
 typedef int code();
 undefined4 ov70_02238E50();
-undefined4 ov00_021EC8D8();
+undefined4 DWC_CleanupInet();
 undefined4 ov70_02244834(int param_1);
 // FUNCTION ov70_02244834: matching C (r2)
 #pragma force_active on
@@ -15,7 +15,7 @@ undefined4 ov70_02244834(int param_1)
 
 {
     sub_0203946C();
-    ov00_021EC8D8();
+    DWC_CleanupInet();
     ov70_02238E50(param_1, 0, 0);
     *(undefined4 *)(param_1 + 0x2c) = 0x13;
     return 3;

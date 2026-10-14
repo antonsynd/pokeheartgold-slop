@@ -5,11 +5,16 @@
 
 #include "overlay_00_thumb.h"
 #include "unk_02037C94.h"
-int ov00_021ECDC8(void);
+
+// Upstream renamed these and its header still declares the old names (#22).
+int DWC_GetLastErrorEx(s32 *arg0, s32 *arg1);
+void DWC_ClearError(void);
+
+int DWC_NASLoginProcess(void);
 void ov72_0223A444(void *);
-void ov00_021EC8D8(void);
-void ov00_021FA0D8(void);
-void ov00_021ED9B4(void);
+void DWC_CleanupInet(void);
+void DWC_ShutdownGHTTP(void);
+void DWC_ShutdownFriendsMatch(void);
 typedef struct S {
     char pad0[0x1c];
     int state;
@@ -23,7 +28,7 @@ int ov72_022392BC(S *p) {
     int iStack_c;
     int uStack_10;
 
-    switch (ov00_021ECDC8()) {
+    switch (DWC_NASLoginProcess()) {
     case 3:
         p->state = 6;
         break;
@@ -31,10 +36,10 @@ int ov72_022392BC(S *p) {
     case 4:
     case 5:
         ov72_0223A444(p);
-        p->v_f50 = ov00_021EC11C(&iStack_c, &uStack_10);
+        p->v_f50 = DWC_GetLastErrorEx(&iStack_c, &uStack_10);
         p->v_f54 = iStack_c;
-        ov00_021EC210();
-        ov00_021EC8D8();
+        DWC_ClearError();
+        DWC_CleanupInet();
         p->state = 0x37;
         switch (uStack_10) {
         case 0:
@@ -44,14 +49,14 @@ int ov72_022392BC(S *p) {
             p->state = 0x37;
             break;
         case 4:
-            ov00_021FA0D8();
+            DWC_ShutdownGHTTP();
             p->state = 0x37;
             break;
         case 6:
             p->state = 0x37;
             break;
         case 3:
-            ov00_021ED9B4();
+            DWC_ShutdownFriendsMatch();
             p->state = 0x37;
             break;
         case 5:

@@ -11,7 +11,7 @@
 
 #include "constants/gx.h"
 
-#include "msgdata/msg.naix"
+#include "files/msgdata/msg.naix"
 
 #include "bg_window.h"
 #include "filesystem.h"
@@ -376,7 +376,7 @@ Ov98TextSys *ov98_0221EABC(enum HeapID heapId, BgConfig *bgConfig, int windowCou
         FillWindowPixelBuffer(&textSys->windows[i], 0);
         ClearWindowTilemap(&textSys->windows[i]);
     }
-    textSys->commonMsgData = NewMsgDataFromNarc(MSGDATA_LOAD_LAZY, NARC_msgdata_msg, NARC_msg_msg_0237_bin, heapId);
+    textSys->commonMsgData = NewMsgDataFromNarc(MSGDATA_LOAD_LAZY, NARC_msgdata_msg, msg_0237, heapId);
     textSys->msgData = NewMsgDataFromNarc(MSGDATA_LOAD_LAZY, NARC_msgdata_msg, msgBank, heapId);
     textSys->msgFmt = MessageFormat_New(heapId);
     textSys->string = String_New(0x400, heapId);

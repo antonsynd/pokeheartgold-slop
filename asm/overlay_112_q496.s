@@ -1,5 +1,5 @@
 #include "config.h"
-	.include "asm/macros.inc"
+	.include "macros.inc"
 	.include "overlay_112.inc"
 	.include "global.inc"
 	.public ov112_021F2B80

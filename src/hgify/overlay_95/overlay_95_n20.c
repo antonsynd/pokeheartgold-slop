@@ -2,8 +2,9 @@
 #pragma warning_errors off
 #include "global.h"
 
+#include "library/spl_emitter.h"
+
 #include "field_move.h"
-#include "spl_emitter.h"
 #pragma thumb on
 typedef struct SPLBehavior {
     void (*applyFunc)(const void *, struct SPLParticle *, VecFx32 *, struct SPLEmitter *);

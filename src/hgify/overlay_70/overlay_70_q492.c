@@ -61,12 +61,12 @@ typedef enum {
     DWC_NASLOGIN_STATE_CANCELED,
     DWC_NASLOGIN_STATE_MAX
 } DWCNasLoginState;
-void ov00_021EC210(void);
-DWCError ov00_021EC11C(int *errorCode, DWCErrorType *errorType);
-void ov00_021EC8D8(void);
-void ov00_021ED9B4(void);
-BOOL ov00_021FA0D8(void);
-DWCNasLoginState ov00_021ECDC8(void);
+void DWC_ClearError(void);
+DWCError DWC_GetLastErrorEx(int *errorCode, DWCErrorType *errorType);
+void DWC_CleanupInet(void);
+void DWC_ShutdownFriendsMatch(void);
+BOOL DWC_ShutdownGHTTP(void);
+DWCNasLoginState DWC_NASLoginProcess(void);
 typedef struct WiFiList WiFiList;
 typedef struct WiFiHistory {
     u32 unused_00;
@@ -2410,7 +2410,7 @@ int ov70_02244954(GTSApplicationState *appState);
 // FUNCTION ov70_02244954: matching C (pt2)
 #pragma force_active on
 int ov70_02244954(GTSApplicationState *appState) {
-    switch (ov00_021ECDC8()) {
+    switch (DWC_NASLoginProcess()) {
     case DWC_NASLOGIN_STATE_SUCCESS:
         appState->currentScreenInstruction = GTSWFCINIT_GET_DWC_KEY;
         break;
@@ -2423,13 +2423,13 @@ int ov70_02244954(GTSApplicationState *appState) {
         DWCErrorType errType;
         DWCError dwcErr;
 
-        dwcErr = ov00_021EC11C(&errCode, &errType);
+        dwcErr = DWC_GetLastErrorEx(&errCode, &errType);
 
         appState->dwcErr = dwcErr;
         appState->dwcErrCode = errCode;
 
-        ov00_021EC210();
-        ov00_021EC8D8();
+        DWC_ClearError();
+        DWC_CleanupInet();
 
         appState->currentScreenInstruction = GTSWFCINIT_SHOW_NETWORK_ERROR;
 
@@ -2439,14 +2439,14 @@ int ov70_02244954(GTSApplicationState *appState) {
             appState->currentScreenInstruction = GTSWFCINIT_SHOW_NETWORK_ERROR;
             break;
         case DWC_ETYPE_SHUTDOWN_GHTTP:
-            ov00_021FA0D8();
+            DWC_ShutdownGHTTP();
             appState->currentScreenInstruction = GTSWFCINIT_SHOW_NETWORK_ERROR;
             break;
         case DWC_ETYPE_DISCONNECT:
             appState->currentScreenInstruction = GTSWFCINIT_SHOW_NETWORK_ERROR;
             break;
         case DWC_ETYPE_SHUTDOWN_FM:
-            ov00_021ED9B4();
+            DWC_ShutdownFriendsMatch();
             appState->currentScreenInstruction = GTSWFCINIT_SHOW_NETWORK_ERROR;
             break;
         case DWC_ETYPE_SHUTDOWN_ND:

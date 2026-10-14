@@ -1,6 +1,6 @@
 #include "constants/mmodel.h"
 #include "constants/species.h"
-	.include "asm/macros.inc"
+	.include "macros.inc"
 	.include "overlay_106.inc"
 	.include "global.inc"
 	.public ov106_021E5F84

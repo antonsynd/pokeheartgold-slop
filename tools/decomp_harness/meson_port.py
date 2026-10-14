@@ -252,9 +252,58 @@ def fork_files(upstream):
     return sorted(p for p in paths if p.endswith(('.c', '.h', '.s', '.inc')))
 
 
-def rewrite_text(path, t):
+_STALE_DECLS = None
+
+
+def stale_decls(upstream):
+    """{old name: (return type, params)} from upstream headers that still declare R3's old names
+    (include/overlay_00_thumb.h etc.; upstream left them stale)."""
+    global _STALE_DECLS
+    if _STALE_DECLS is None:
+        _STALE_DECLS = {}
+        args = ['git', 'grep', '-h', '-w', '-F']
+        for k in SYM_MAP:
+            args += ['-e', k]
+        out = subprocess.run(args + [upstream, '--', 'include/*.h'], capture_output=True, text=True,
+                             cwd=ROOT).stdout
+        for line in out.splitlines():
+            m = re.match(r'^\s*([A-Za-z_][\w\s\*]*?)\b(\w+)\s*\(([^;{]*)\)\s*;', line)
+            if m and m.group(2) in SYM_MAP:
+                _STALE_DECLS[m.group(2)] = (m.group(1).strip(), m.group(3).strip())
+    return _STALE_DECLS
+
+
+def r3_prototypes_needed(t, upstream):
+    """Prototypes a C file needs after R3: one for each renamed symbol it uses but doesn't declare.
+
+    Such files got the declaration from an upstream header that keeps the old name, so after R3
+    the call would have no prototype. The local one keeps the signature the file was matched with
+    (split-header discipline). Computed on the text before R3 runs.
+    """
+    decls = stale_decls(upstream)
+    need = []
+    for old, new in SYM_MAP.items():
+        if old not in decls or not re.search(rf'\b{re.escape(old)}\b', t):
+            continue
+        if re.search(rf'^[A-Za-z_][^\n;=]*\b{re.escape(old)}\s*\([^;{{]*\)\s*[;{{]', t, re.M):
+            continue  # declared or defined locally; R3 renames it in place
+        ret, params = decls[old]
+        need.append(f'{ret} {new}({params});')
+    return need
+
+
+def insert_after_includes(t, lines):
+    incs = list(re.finditer(r'^#include .*$', t, re.M))
+    at = incs[-1].end() if incs else 0
+    block = ('// Upstream renamed these and its header still declares the old names (#22).\n'
+             + '\n'.join(lines) + '\n')
+    return t[:at] + '\n\n' + block + t[at:]
+
+
+def rewrite_text(path, t, upstream='upstream/master'):
     """Return (new text, {rule: count})."""
     counts = {}
+    protos = r3_prototypes_needed(t, upstream) if path.endswith('.c') else []
 
     def apply(label, rx, repl):
         nonlocal t
@@ -272,6 +321,9 @@ def rewrite_text(path, t):
     else:
         for i, (rx, repl) in enumerate(ASM_RULES):
             apply(['R6', 'R5', 'R7', 'R3'][i], rx, repl)
+    if protos:
+        t = insert_after_includes(t, protos)
+        counts['R3 prototypes'] = len(protos)
     return t, counts
 
 
@@ -280,7 +332,7 @@ def cmd_rewrite(args):
     for path in fork_files(args.upstream):
         full = os.path.join(ROOT, path)
         old = open(full, encoding='latin-1').read()
-        new, counts = rewrite_text(path, old)
+        new, counts = rewrite_text(path, old, args.upstream)
         if new != old:
             touched.append(path)
             for k, v in counts.items():

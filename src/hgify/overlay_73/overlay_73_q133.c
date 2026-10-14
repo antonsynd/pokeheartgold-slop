@@ -5,6 +5,10 @@
 
 #include "ghidra_compat.h"
 #include "overlay_00_thumb.h"
+
+// Upstream renamed these and its header still declares the old names (#22).
+void DWC_ClearError(void);
+
 typedef int code();
 struct S {
     u8 pad[0x1c];
@@ -15,13 +19,13 @@ struct S {
     u8 pad3[4];
     int f1c;
 };
-void ov00_021EC60C(void);
-int ov00_021EC5B4(void);
-int ov00_021EC724(void);
-int ov00_021EC0FC(void *);
+void DWC_ProcessInet(void);
+int DWC_CheckInet(void);
+int DWC_GetInetStatus(void);
+int DWC_GetLastError(void *);
 void ov73_021EA180(struct S *);
-void ov00_021EC8D8(void);
-void ov00_021EC9E0(void *);
+void DWC_CleanupInet(void);
+void DWC_GetApInfo(void *);
 // FUNCTION ov73_021E8D2C: matching C (agent14)
 #pragma force_active on
 int ov73_021E8D2C(struct S *p, int a, int b, int c) {
@@ -29,14 +33,14 @@ int ov73_021E8D2C(struct S *p, int a, int b, int c) {
     u32 s0;
     u8 buf[60];
 
-    ov00_021EC60C();
-    if (ov00_021EC5B4() != 0) {
-        switch (ov00_021EC724()) {
+    DWC_ProcessInet();
+    if (DWC_CheckInet() != 0) {
+        switch (DWC_GetInetStatus()) {
         case 7:
-            p->f10 = ov00_021EC0FC(&s4);
+            p->f10 = DWC_GetLastError(&s4);
             p->f14 = s4;
-            ov00_021EC210();
-            ov00_021EC8D8();
+            DWC_ClearError();
+            DWC_CleanupInet();
             ov73_021EA180(p);
             p->state = 0x37;
             break;
@@ -48,13 +52,13 @@ int ov73_021E8D2C(struct S *p, int a, int b, int c) {
         case 6:
         case 8:
         default:
-            ov00_021EC0FC(&s0);
+            DWC_GetLastError(&s0);
             ov73_021EA180(p);
             p->state = 0x35;
             p->f1c = -2;
             break;
         case 4:
-            ov00_021EC9E0(buf);
+            DWC_GetApInfo(buf);
             p->state = 4;
             break;
         }

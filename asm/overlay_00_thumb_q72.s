@@ -1,4 +1,4 @@
-	.include "asm/macros.inc"
+	.include "macros.inc"
 	.include "overlay_00_thumb.inc"
 	.include "global.inc"
 	.public ov00_021E74A8

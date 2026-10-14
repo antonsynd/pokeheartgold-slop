@@ -3,7 +3,7 @@
 #include "global.h"
 #pragma thumb on
 void ov38_0221BE84(void);
-BOOL ov00_021FA0B4(const char *gameName);
+BOOL DWC_InitGHTTP(const char *gameName);
 extern struct {
     int readyState;
     int requestHandle;
@@ -25,7 +25,7 @@ void ov38_0221BE84(void) {
     _02225040.readyState = 2;
     _02225040.requestHandle = -1;
 
-    if (!ov00_021FA0B4((void *)0)) {
+    if (!DWC_InitGHTTP((void *)0)) {
         _02225040.readyState = 1;
     }
 

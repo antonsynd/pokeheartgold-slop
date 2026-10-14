@@ -1,4 +1,4 @@
-	.include "asm/macros.inc"
+	.include "macros.inc"
 	.include "overlay_27.inc"
 	.include "global.inc"
 	.public ov27_0225C80C

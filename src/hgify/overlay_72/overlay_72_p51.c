@@ -4,6 +4,10 @@
 #include "global.h"
 
 #include "overlay_00_thumb.h"
+
+// Upstream renamed these and its header still declares the old names (#22).
+void DWC_ClearError(void);
+
 typedef struct Ov72Work {
     u8 pad_00[0x1c];
     int state;
@@ -13,12 +17,12 @@ typedef struct Ov72Work {
     u8 pad_f58[4];
     int unk_f5c;
 } Ov72Work;
-void ov00_021EC60C(void);
-int ov00_021EC5B4(void);
-int ov00_021EC724(void);
-u32 ov00_021EC0FC(void *out);
-void ov00_021EC8D8(void);
-void ov00_021EC9E0(void *out);
+void DWC_ProcessInet(void);
+int DWC_CheckInet(void);
+int DWC_GetInetStatus(void);
+u32 DWC_GetLastError(void *out);
+void DWC_CleanupInet(void);
+void DWC_GetApInfo(void *out);
 void ov72_0223A444(Ov72Work *w);
 int ov72_02239220(Ov72Work *w);
 // FUNCTION ov72_02239220: matching C (agent14)
@@ -28,14 +32,14 @@ int ov72_02239220(Ov72Work *w) {
     u32 v;
     u8 buf0[4];
 
-    ov00_021EC60C();
-    if (ov00_021EC5B4() != 0) {
-        switch (ov00_021EC724()) {
+    DWC_ProcessInet();
+    if (DWC_CheckInet() != 0) {
+        switch (DWC_GetInetStatus()) {
         case 7:
-            w->unk_f50 = ov00_021EC0FC(&v);
+            w->unk_f50 = DWC_GetLastError(&v);
             w->unk_f54 = v;
-            ov00_021EC210();
-            ov00_021EC8D8();
+            DWC_ClearError();
+            DWC_CleanupInet();
             ov72_0223A444(w);
             w->state = 0x37;
             break;
@@ -47,13 +51,13 @@ int ov72_02239220(Ov72Work *w) {
         case 6:
         case 8:
         default:
-            ov00_021EC0FC(buf0);
+            DWC_GetLastError(buf0);
             ov72_0223A444(w);
             w->state = 0x35;
             w->unk_f5c = -2;
             break;
         case 4:
-            ov00_021EC9E0(buf2);
+            DWC_GetApInfo(buf2);
             w->state = 4;
             break;
         }

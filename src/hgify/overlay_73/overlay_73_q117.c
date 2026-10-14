@@ -16,7 +16,7 @@ undefined4 ov73_021EA12C();
 undefined4 ov73_021E8628();
 undefined4 ov73_021EA15C();
 undefined4 ov73_021E8730();
-undefined4 ov00_021EC5B4();
+undefined4 DWC_CheckInet();
 undefined4 ov73_021E9FF8();
 undefined4 ov73_021E84D0(int *param_1, undefined4 param_2, undefined4 param_3, undefined4 param_4);
 // FUNCTION ov73_021E84D0: matching C (v1)
@@ -42,7 +42,7 @@ undefined4 ov73_021E84D0(int *param_1, undefined4 param_2, undefined4 param_3, u
     param_1[0x25] = param_1[0x24];
     param_1[0x27] = 1;
     param_1[0x3c3] = 0;
-    iVar1 = ov00_021EC5B4();
+    iVar1 = DWC_CheckInet();
     if (iVar1 == 0) {
         if (!(*(int *)(*param_1 + 0x24) == 0)) {
             ov73_021E9FF8(param_1, param_1[0x2f6], 1, 1, 0xf0f);

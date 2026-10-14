@@ -19,7 +19,7 @@ typedef struct NNSGfdFrmPlttVramState {
 typedef struct {
     u32 _[0x68 / 4];
 } DWCInetControl;
-BOOL ov00_021ECB94(RTCDate *date, RTCTime *time);
+BOOL DWC_GetDateTime(RTCDate *date, RTCTime *time);
 typedef struct WiFiList WiFiList;
 typedef struct WiFiHistory {
     u32 unused_00;
@@ -2357,7 +2357,7 @@ int ov70_0223BFA8(GTSApplicationState *appState, int bySearching) {
     }
 
     Date_Decode(datestamp, &date);
-    ov00_021ECB94(&currentDate, &time);
+    DWC_GetDateTime(&currentDate, &time);
 
     int diff = RTC_ConvertDateToDay(&currentDate) - RTC_ConvertDateToDay(&date);
 

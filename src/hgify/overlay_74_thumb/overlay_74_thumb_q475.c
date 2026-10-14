@@ -2,8 +2,8 @@
 #pragma warning_errors off
 #pragma thumb on
 #include "global.h"
-int ov00_021EC724(void);
-void ov00_021EC9E0(void *buf);
+int DWC_GetInetStatus(void);
+void DWC_GetApInfo(void *buf);
 int ov74_02236A2C(void);
 // FUNCTION ov74_02236A2C: matching C (agent10)
 #pragma force_active on
@@ -11,10 +11,10 @@ int ov74_02236A2C(void) {
     int iVar1;
     u8 buf[60];
 
-    iVar1 = ov00_021EC724();
+    iVar1 = DWC_GetInetStatus();
     switch (iVar1) {
     case 4:
-        ov00_021EC9E0(buf);
+        DWC_GetApInfo(buf);
         return 1;
     case 7:
         break;

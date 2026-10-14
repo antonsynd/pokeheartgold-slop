@@ -16,7 +16,7 @@ extern struct {
 } _021D4140;
 void sub_0203993C(void);
 int sub_02034044(void);
-u32 ov00_021EE4FC(void);
+u32 DWC_GetAIDBitmap(void);
 int sub_02037474(void);
 int sub_02033298(void);
 int sub_0203769C(void);
@@ -30,7 +30,7 @@ int sub_020373B4(u32 param_1) {
     sub_0203993C();
     if (sub_02034044() != 0) {
         if (_021D4140.c->b6b6 != 0) {
-            u16 v = ov00_021EE4FC();
+            u16 v = DWC_GetAIDBitmap();
             if ((1 << param_1 & v) != 0) {
                 return 1;
             }

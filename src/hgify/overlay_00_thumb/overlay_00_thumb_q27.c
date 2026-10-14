@@ -6,7 +6,7 @@
 #include "ghidra_compat.h"
 #include "overlay_00_thumb.h"
 typedef int code();
-undefined4 ov00_021EE448();
+undefined4 DWC_GetNumConnectionHost();
 extern int _0221A680;
 void ov00_021E6554(int param_1, undefined4 param_2, undefined4 param_3, undefined4 param_4);
 // FUNCTION ov00_021E6554: matching C (r4)
@@ -19,7 +19,7 @@ void ov00_021E6554(int param_1, undefined4 param_2, undefined4 param_3, undefine
     *(undefined4 *)(_0221A680 + 0x1078) = 0;
     *(undefined4 *)(_0221A680 + 0x10cc) = 0;
     *(undefined4 *)(_0221A680 + 0x10a0) = 0;
-    if (((param_1 == 0) && (*(unsigned char *)(_0221A680 + 0x10e5) == '\x01')) && (iVar1 = ov00_021EE448(), iVar1 == 1)) {
+    if (((param_1 == 0) && (*(unsigned char *)(_0221A680 + 0x10e5) == '\x01')) && (iVar1 = DWC_GetNumConnectionHost(), iVar1 == 1)) {
         if (*(int *)(_0221A680 + 0x1070) != 6) {
             *(undefined4 *)(_0221A680 + 0x1070) = 0x10;
         }

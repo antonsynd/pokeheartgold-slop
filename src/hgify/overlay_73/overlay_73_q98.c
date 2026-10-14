@@ -6,10 +6,10 @@ typedef unsigned int u32;
 typedef int s32;
 typedef int BOOL;
 void *OverlayManager_GetData(void *appMan);
-void ov00_021ECB40(void);
+void DWC_UpdateConnection(void);
 void ov72_022378DC(void);
 BOOL sub_02034DB8(void);
-void ov00_021EC294(void *alloc, void *free);
+void DWC_SetMemFunc(void *alloc, void *free);
 void ov73_021E83F4(void);
 void ov73_021E841C(void);
 BOOL IsPaletteFadeFinished(void);
@@ -23,15 +23,15 @@ s32 ov73_021E7FB8(void *appMan, s32 *state);
 s32 ov73_021E7FB8(void *appMan, s32 *state) {
     u8 *work = OverlayManager_GetData(appMan);
 
-    ov00_021ECB40();
+    DWC_UpdateConnection();
     ov72_022378DC();
-    ov00_021ECB40();
+    DWC_UpdateConnection();
 
     switch (*state) {
     case 0:
         if (sub_02034DB8()) {
             _021EA940[1] = *(void **)(work + 0x28);
-            ov00_021EC294(ov73_021E83F4, ov73_021E841C);
+            DWC_SetMemFunc(ov73_021E83F4, ov73_021E841C);
             *state = 1;
         }
         break;

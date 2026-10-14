@@ -7,7 +7,7 @@
 #include "unk_02037C94.h"
 #include "unk_0203A3B0.h"
 
-int ov00_021EC8D8(void);
+int DWC_CleanupInet(void);
 int ov70_02237F2C(void);
 
 typedef struct UnkStruct_ov75_02248714_Sub {
@@ -26,7 +26,7 @@ int ov75_02248714(UnkStruct_ov75_02248714 *param0);
 #pragma force_active on
 int ov75_02248714(UnkStruct_ov75_02248714 *param0) {
     sub_0203957C();
-    ov00_021EC8D8();
+    DWC_CleanupInet();
     sub_0203A914();
     Sys_ClearSleepDisableFlag(4);
 

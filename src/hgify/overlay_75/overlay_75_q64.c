@@ -7,6 +7,11 @@
 #include "system.h"
 #include "unk_02037C94.h"
 #include "unk_0203A3B0.h"
+
+// Upstream renamed these and its header still declares the old names (#22).
+int DWC_GetLastErrorEx(s32 *arg0, s32 *arg1);
+void DWC_ClearError(void);
+
 typedef struct Ov75_Parent {
     u8 pad0[0x118];
     int f118;
@@ -22,13 +27,13 @@ typedef struct Ov75_Obj {
     int f1c;
 } Ov75_Obj;
 void ov75_02247878(Ov75_Obj *obj);
-void ov00_021EC60C(void);
-void ov00_021EC9E0(void *buf);
+void DWC_ProcessInet(void);
+void DWC_GetApInfo(void *buf);
 void ov70_02237F2C(void);
-int ov00_021EC724(void);
-void ov00_021EC8D8(void);
-void ov00_021EC0FC(void *buf);
-int ov00_021EC5B4(void);
+int DWC_GetInetStatus(void);
+void DWC_CleanupInet(void);
+void DWC_GetLastError(void *buf);
+int DWC_CheckInet(void);
 // FUNCTION ov75_02248800: matching C (agent15)
 #pragma force_active on
 int ov75_02248800(Ov75_Obj *obj) {
@@ -38,16 +43,16 @@ int ov75_02248800(Ov75_Obj *obj) {
     u8 buf4[4];
     int ret;
 
-    ov00_021EC60C();
-    if (ov00_021EC5B4() != 0) {
-        switch (ov00_021EC724()) {
+    DWC_ProcessInet();
+    if (DWC_CheckInet() != 0) {
+        switch (DWC_GetInetStatus()) {
         case 7:
-            ret = ov00_021EC11C(&v8, &v4);
+            ret = DWC_GetLastErrorEx(&v8, &v4);
             obj->f14 = ret;
             obj->f18 = v8;
             obj->f1c = v4;
-            ov00_021EC210();
-            ov00_021EC8D8();
+            DWC_ClearError();
+            DWC_CleanupInet();
             sub_0203A914();
             sub_0203957C();
             Sys_ClearSleepDisableFlag(4);
@@ -66,13 +71,13 @@ int ov75_02248800(Ov75_Obj *obj) {
         case 6:
         case 8:
         default:
-            ov00_021EC0FC(buf4);
+            DWC_GetLastError(buf4);
             ov75_02247878(obj);
             obj->state = 0x20;
             obj->f10 = -2;
             break;
         case 4:
-            ov00_021EC9E0(buf60);
+            DWC_GetApInfo(buf60);
             obj->state = 0xe;
             break;
         }

@@ -1,4 +1,4 @@
-#include <nitro/fs/overlay.h>
+
 #pragma once
 .public Camera_Delete
 .public Camera_Init_FromTargetDistanceAndAngle

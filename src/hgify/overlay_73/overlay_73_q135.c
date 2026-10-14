@@ -6,12 +6,17 @@
 #include "ghidra_compat.h"
 #include "overlay_00_thumb.h"
 #include "unk_02037C94.h"
+
+// Upstream renamed these and its header still declares the old names (#22).
+int DWC_GetLastErrorEx(s32 *arg0, s32 *arg1);
+void DWC_ClearError(void);
+
 typedef int code();
 undefined4 ov73_021EA180();
-undefined4 ov00_021ED9B4();
-undefined4 ov00_021EC8D8();
-undefined4 ov00_021FA0D8();
-undefined4 ov00_021ECDC8();
+undefined4 DWC_ShutdownFriendsMatch();
+undefined4 DWC_CleanupInet();
+undefined4 DWC_ShutdownGHTTP();
+undefined4 DWC_NASLoginProcess();
 undefined4 ov73_021E8DC8(undefined4 *param_1);
 // FUNCTION ov73_021E8DC8: matching C (agent19)
 #pragma force_active on
@@ -22,7 +27,7 @@ undefined4 ov73_021E8DC8(undefined4 *param_1)
     int iStack_c;
     undefined4 uStack_10;
 
-    uVar1 = ov00_021ECDC8();
+    uVar1 = DWC_NASLoginProcess();
     switch (uVar1) {
     case 3:
         param_1[7] = 6;
@@ -31,11 +36,11 @@ undefined4 ov73_021E8DC8(undefined4 *param_1)
     case 4:
     case 5:
         ov73_021EA180(param_1);
-        uVar1 = ov00_021EC11C(&iStack_c, &uStack_10);
+        uVar1 = DWC_GetLastErrorEx(&iStack_c, &uStack_10);
         param_1[0x3c4] = uVar1;
         param_1[0x3c5] = iStack_c;
-        ov00_021EC210();
-        ov00_021EC8D8();
+        DWC_ClearError();
+        DWC_CleanupInet();
         param_1[7] = 0x37;
         switch (uStack_10) {
         case 1:
@@ -43,14 +48,14 @@ undefined4 ov73_021E8DC8(undefined4 *param_1)
             param_1[7] = 0x37;
             break;
         case 4:
-            ov00_021FA0D8();
+            DWC_ShutdownGHTTP();
             param_1[7] = 0x37;
             break;
         case 6:
             param_1[7] = 0x37;
             break;
         case 3:
-            ov00_021ED9B4();
+            DWC_ShutdownFriendsMatch();
             param_1[7] = 0x37;
             break;
         case 5:

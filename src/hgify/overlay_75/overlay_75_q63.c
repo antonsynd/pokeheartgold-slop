@@ -153,9 +153,9 @@ typedef enum {
     DWC_CONNECTINET_AUTH_DEVELOP,
     DWC_CONNECTINET_AUTH_RELEASE
 } DWCInetAuthType;
-void ov00_021EC3F0(DWCInetControl *inetCntl, int dmaNo, int powerMode, int sslPriority);
-void ov00_021EC454(DWCInetAuthType type);
-void ov00_021EC4A4(void);
+void DWC_InitInetEx(DWCInetControl *inetCntl, int dmaNo, int powerMode, int sslPriority);
+void DWC_SetAuthServer(DWCInetAuthType type);
+void DWC_ConnectInetAsync(void);
 typedef struct WorldExchangeTrainer {
     u8 gameCode;
     u8 language;
@@ -580,9 +580,9 @@ int ov75_02248774(UnkStruct_ov98_02247704 *param0) {
     case 2:
         Sys_SetSleepDisableFlag(4);
 
-        ov00_021EC3F0(&param0->unk_00->unk_14, 2, 1, 20);
-        ov00_021EC454(DWC_CONNECTINET_AUTH_RELEASE);
-        ov00_021EC4A4();
+        DWC_InitInetEx(&param0->unk_00->unk_14, 2, 1, 20);
+        DWC_SetAuthServer(DWC_CONNECTINET_AUTH_RELEASE);
+        DWC_ConnectInetAsync();
         param0->unk_08 = 13;
         break;
     }

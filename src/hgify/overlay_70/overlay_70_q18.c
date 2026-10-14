@@ -4,6 +4,10 @@
 #include "global.h"
 
 #include "overlay_00_thumb.h"
+
+// Upstream renamed these and its header still declares the old names (#22).
+void DWC_ClearError(void);
+
 int WCM_GetPhase(void);
 // FUNCTION ov70_02238398: matching C (agent8)
 #pragma force_active on
@@ -64,7 +68,7 @@ int ov70_02238398(unsigned int param_1) {
         if (iVar1 != 9) {
             iVar2 = -0xe;
         }
-        ov00_021EC210();
+        DWC_ClearError();
     }
     return iVar2;
 }

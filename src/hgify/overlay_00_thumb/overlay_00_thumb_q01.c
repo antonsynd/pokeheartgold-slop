@@ -6,6 +6,10 @@
 #include "ghidra_compat.h"
 #include "heap.h"
 #include "overlay_00_thumb.h"
+
+// Upstream renamed these and its header still declares the old names (#22).
+void DWC_ClearError(void);
+
 typedef int code();
 undefined4 ov00_021E7300();
 extern int _0221A680;
@@ -27,7 +31,7 @@ void ov00_021E5AE8(void)
         Heap_FreeExplicit(*(undefined4 *)(_0221A680 + 0x1084), *(undefined4 *)(_0221A680 + 0xf7c));
         _0221A680 = 0;
     }
-    ov00_021EC210();
+    DWC_ClearError();
     return;
 }
 #pragma force_active reset

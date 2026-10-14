@@ -8,8 +8,8 @@
 #include "unk_02037C94.h"
 typedef int code();
 undefined4 ov70_02238E50();
-undefined4 ov00_021EC5B4();
-undefined4 ov00_021EC8D8();
+undefined4 DWC_CheckInet();
+undefined4 DWC_CleanupInet();
 undefined4 ov70_022447A0(int param_1);
 // FUNCTION ov70_022447A0: matching C (r2)
 #pragma force_active on
@@ -21,7 +21,7 @@ undefined4 ov70_022447A0(int param_1)
     iVar1 = Handle2dMenuInput_DeleteOnFinish(*(undefined4 *)(param_1 + 0x11b0), 0x3d);
     if (iVar1 != -1) {
         if (iVar1 == -2) {
-            iVar1 = ov00_021EC5B4();
+            iVar1 = DWC_CheckInet();
             if (iVar1 == 0) {
                 *(undefined4 *)(param_1 + 0x2c) = 0;
             } else {
@@ -30,9 +30,9 @@ undefined4 ov70_022447A0(int param_1)
                 *(undefined4 *)(param_1 + 0x2c) = 0xb;
             }
         } else {
-            iVar1 = ov00_021EC5B4();
+            iVar1 = DWC_CheckInet();
             if (iVar1 != 0) {
-                ov00_021EC8D8();
+                DWC_CleanupInet();
             }
             sub_0203946C();
             ov70_02238E50(param_1, 0, 0);

@@ -5,6 +5,10 @@
 
 #include "ghidra_compat.h"
 #include "overlay_00_thumb.h"
+
+// Upstream renamed these and its header still declares the old names (#22).
+int DWC_GetLinkLevel(void);
+
 typedef int code();
 int ov70_02238E44(void);
 // FUNCTION ov70_02238E44: matching C (r2)
@@ -14,7 +18,7 @@ int ov70_02238E44(void)
 {
     int iVar1;
 
-    iVar1 = ov00_021EC9D4();
+    iVar1 = DWC_GetLinkLevel();
     return 3 - iVar1;
 }
 #pragma force_active reset

@@ -1,4 +1,4 @@
-	.include "asm/macros.inc"
+	.include "macros.inc"
 	.include "overlay_00_thumb.inc"
 	.include "global.inc"
 	.public ov00_021E6D7C
@@ -90,7 +90,7 @@ _021E6DEE:
 	ldr r3, _021E6E98 ; =ov00_021E6FE0
 	lsr r0, r0, #0x18
 	str r2, [sp]
-	bl ov00_021EDFBC
+	bl DWC_SetupGameServer
 	mov r3, #1
 	ldr r1, _021E6E84 ; =_0221A680
 	b _021E6E24
@@ -100,7 +100,7 @@ _021E6E12:
 	ldr r3, _021E6E98 ; =ov00_021E6FE0
 	add r0, r5, #0
 	str r2, [sp]
-	bl ov00_021EE054
+	bl DWC_ConnectToGameServerAsync
 	ldr r1, _021E6E84 ; =_0221A680
 	mov r3, #2
 _021E6E24:
@@ -136,14 +136,14 @@ _021E6E4E:
 	sub r0, #0x5c
 	str r2, [r1, r0]
 	ldr r0, _021E6EA8 ; =ov00_021E6428
-	bl ov00_021F989C
+	bl DWC_SetUserSendCallback
 	ldr r0, _021E6EAC ; =ov00_021E6484
-	bl ov00_021F98BC
+	bl DWC_SetUserRecvCallback
 	ldr r0, _021E6EB0 ; =ov00_021E6554
 	mov r1, #0
-	bl ov00_021EE24C
+	bl DWC_SetConnectionClosedCallback
 	ldr r0, _021E6EB4 ; =ov00_021E6240
-	bl ov00_021F98DC
+	bl DWC_SetUserRecvTimeoutCallback
 	ldr r1, _021E6E84 ; =_0221A680
 	mov r0, #0
 	ldr r2, [r1]

@@ -16,16 +16,16 @@ typedef struct {
     u8 counter;
 } NetState;
 extern NetState *_0221A680;
-int ov00_021EE490(void);
+int DWC_GetMyAID(void);
 int ov00_021E6790(void);
-void ov00_021F9750(int a, void *buf, u32 size);
+void DWC_SendReliableBitmap(int a, void *buf, u32 size);
 // FUNCTION ov00_021E5F84: matching C (agent5)
 #pragma force_active on
 int ov00_021E5F84(void *buf, int size) {
     if (size >= 0x100) {
         return 0;
     }
-    if (ov00_021EE490() == 0) {
+    if (DWC_GetMyAID() == 0) {
         if (_0221A680->cb != 0) {
             _0221A680->cb(0, buf, size);
         }
@@ -39,7 +39,7 @@ int ov00_021E5F84(void *buf, int size) {
     *((u8 *)_0221A680 + 2) = _0221A680->counter;
     MI_CpuCopy8(buf, _0221A680->data, size);
     _0221A680->busy = 1;
-    ov00_021F9750(1, _0221A680, size + 4);
+    DWC_SendReliableBitmap(1, _0221A680, size + 4);
     return 1;
 }
 #pragma force_active reset

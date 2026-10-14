@@ -9,7 +9,7 @@ typedef int code();
 undefined4 ov72_02237B54();
 undefined4 ov72_02238680();
 undefined4 ov72_0223A444();
-undefined4 ov00_021ECB94();
+undefined4 DWC_GetDateTime();
 undefined4 sub_0202D7C0(void *, void *, unsigned char, unsigned char);
 undefined4 sub_0202D678(void *, unsigned int, unsigned int, void *);
 undefined4 ov72_02237B74();
@@ -31,7 +31,7 @@ undefined4 ov72_022398BC(int *param_1)
         case 0:
             sub_0202D7C0(*(undefined4 *)(*param_1 + 4), param_1 + 0x28, param_1[0x24] & 0xff, param_1[0x27] & 0xff);
             ov72_02238680(param_1, 0x27, 0x13);
-            ov00_021ECB94(auStack_28, auStack_18);
+            DWC_GetDateTime(auStack_28, auStack_18);
             sub_0202D678(*(undefined4 *)(*param_1 + 4), param_1[0x25] & 0xff, param_1[0x27] & 0xff, auStack_28);
             break;
         case -1:

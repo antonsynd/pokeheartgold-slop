@@ -1,4 +1,4 @@
-	.include "asm/macros.inc"
+	.include "macros.inc"
 	.include "overlay_43.inc"
 	.include "global.inc"
 	.public PalPad_Init
@@ -18,7 +18,7 @@
 PalPad_Init: ; 0x02229EE0
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
-	ldr r0, _02229FA4 ; =FS_OVERLAY_ID(OVY_42)
+	ldr r0, _02229FA4 ; =SDK_OVERLAY_OVY_42_ID
 	mov r1, #2
 	bl HandleLoadOverlay
 	mov r2, #7
@@ -100,7 +100,7 @@ PalPad_Init: ; 0x02229EE0
 	mov r0, #1
 	pop {r3, r4, r5, pc}
 	nop
-_02229FA4: .word FS_OVERLAY_ID(OVY_42)
+_02229FA4: .word SDK_OVERLAY_OVY_42_ID
 _02229FA8: .word 0x000005A4
 _02229FAC: .word 0x00000408
 _02229FB0: .word ov43_0222A148

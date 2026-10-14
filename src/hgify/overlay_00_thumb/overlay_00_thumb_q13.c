@@ -19,8 +19,8 @@ extern void ov00_021E6274(void);
 extern void ov00_021E6298(void);
 extern void ov00_021E629C(void);
 extern void ov00_021E62D4(void);
-extern int ov00_021EDE74(int, void (*)(void), void *, void (*)(void), u32, void (*)(void), u32);
-extern void ov00_021EFF04(void (*)(void), int);
+extern int DWC_UpdateServersAsync(int, void (*)(void), void *, void (*)(void), u32, void (*)(void), u32);
+extern void DWC_SetBuddyFriendCallback(void (*)(void), int);
 // FUNCTION ov00_021E61A8: matching C (agent15)
 #pragma force_active on
 void ov00_021E61A8(int a, int b, u32 c) {
@@ -29,11 +29,11 @@ void ov00_021E61A8(int a, int b, u32 c) {
         _0221A680->x10E6 = 1;
     }
     if (a == 0) {
-        if (ov00_021EDE74(0, ov00_021E6274, _0221A680->x0F10, ov00_021E6298, c, ov00_021E629C, c) == 0) {
+        if (DWC_UpdateServersAsync(0, ov00_021E6274, _0221A680->x0F10, ov00_021E6298, c, ov00_021E629C, c) == 0) {
             sub_02039AD8(1);
             return;
         }
-        ov00_021EFF04(ov00_021E62D4, 0);
+        DWC_SetBuddyFriendCallback(ov00_021E62D4, 0);
         return;
     }
     _0221A680->x1070 = 12;

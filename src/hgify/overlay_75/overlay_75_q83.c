@@ -11,7 +11,7 @@ typedef int code();
 undefined4 ov75_02246BD8();
 undefined4 ov75_02249534();
 undefined4 ov70_02237F2C();
-undefined4 ov00_021EC8D8();
+undefined4 DWC_CleanupInet();
 undefined4 ov75_022494CC();
 undefined4 ov75_0224937C(int *param_1, undefined4 param_2, undefined4 param_3, undefined4 param_4);
 // FUNCTION ov75_0224937C: matching C (agent20)
@@ -30,7 +30,7 @@ undefined4 ov75_0224937C(int *param_1, undefined4 param_2, undefined4 param_3, u
         iVar1 = ov75_02249534(param_1[0x11]);
         if (iVar1 == 0) {
             sub_0203957C();
-            ov00_021EC8D8();
+            DWC_CleanupInet();
             sub_0203A914();
             Sys_ClearSleepDisableFlag(4);
             if (*(int *)(*param_1 + 0x118) == 1) {

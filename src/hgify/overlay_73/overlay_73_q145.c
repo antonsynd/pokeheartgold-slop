@@ -12,7 +12,7 @@ extern struct {
 void ov73_021EA0F0(int *, int, int, int);
 void ov73_021EA134(int *, int, int);
 int sub_0202D720(void *, u8, u8, void *);
-void ov00_021ECB94(void *, void *);
+void DWC_GetDateTime(void *, void *);
 // FUNCTION ov73_021E926C: matching C (agent21)
 #pragma force_active on
 int ov73_021E926C(int *param_1, u32 param_2, u32 param_3, u32 param_4) {
@@ -35,7 +35,7 @@ int ov73_021E926C(int *param_1, u32 param_2, u32 param_3, u32 param_4) {
         ov73_021EA0F0(param_1 + 0x37e, param_1[0x2fa], param_1[0x27], 3);
         PlaySE(0x5dc);
     } else if ((gSystem.f48 & 1) != 0) {
-        ov00_021ECB94(auStack_28, auStack_18);
+        DWC_GetDateTime(auStack_28, auStack_18);
         iVar1 = sub_0202D720(*(void **)(*param_1 + 4), param_1[0x25], param_1[0x27], auStack_28);
         if (iVar1 != 0) {
             iVar1 = 0x14;

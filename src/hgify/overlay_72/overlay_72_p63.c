@@ -5,7 +5,7 @@
 int ov72_0223A588(void);
 void ov72_0223A41C(int *p, int a, int b);
 int sub_0202D720(int a, u8 b, u8 c, void *d);
-void ov00_021ECB94(void *a, void *b);
+void DWC_GetDateTime(void *a, void *b);
 // FUNCTION ov72_02239784: matching C (agent8)
 #pragma force_active on
 int ov72_02239784(int *param_1) {
@@ -16,7 +16,7 @@ int ov72_02239784(int *param_1) {
     iVar1 = ov72_0223A588();
     if (iVar1 != 0) {
         if (iVar1 > 0) {
-            ov00_021ECB94(auStack_28, auStack_18);
+            DWC_GetDateTime(auStack_28, auStack_18);
             param_1[0x27] = iVar1;
             iVar1 = sub_0202D720(*(int *)(*param_1 + 4), (u8)param_1[0x25], (u8)param_1[0x27], auStack_28);
             if (iVar1 != 0) {

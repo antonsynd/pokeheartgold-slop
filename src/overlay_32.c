@@ -6,8 +6,8 @@
 
 #include "constants/sndseq.h"
 
-#include "msgdata/msg.naix"
-#include "msgdata/msg/msg_0196.h"
+#include "files/msgdata/msg.naix"
+#include "files/msgdata/msg/msg_0196.h"
 
 #include "bg_window.h"
 #include "filesystem.h"
@@ -346,7 +346,7 @@ static void ov32_0225D6E0(NamePickerData *data, NARC *narc) {
 }
 
 static void ov32_0225D748(NamePickerData *data) {
-    data->msgData = NewMsgDataFromNarc(MSGDATA_LOAD_DIRECT, NARC_msgdata_msg, NARC_msg_msg_0196_bin, HEAP_ID_8);
+    data->msgData = NewMsgDataFromNarc(MSGDATA_LOAD_DIRECT, NARC_msgdata_msg, msg_0196, HEAP_ID_8);
     data->msgFormat = MessageFormat_New(HEAP_ID_8);
 }
 

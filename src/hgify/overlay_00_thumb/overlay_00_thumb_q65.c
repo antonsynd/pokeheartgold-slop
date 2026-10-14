@@ -21,7 +21,7 @@ typedef struct {
 extern S *_0221A680;
 void ov00_021E7234(u32 idx);
 void *ov00_021E65D4(int a, int b, int c);
-void ov00_021F9850(int a, void *b, int c);
+void DWC_SetRecvBuffer(int a, void *b, int c);
 // FUNCTION ov00_021E727C: matching C (agent15)
 #pragma force_active on
 void ov00_021E727C(u32 idx) {
@@ -34,7 +34,7 @@ void ov00_021E727C(u32 idx) {
             _0221A680->tbl[idx] = ov00_021E65D4(0, 0x1000, 0x20);
             _0221A680->flag[idx] = 0;
         }
-        ov00_021F9850(idx & 0xff, (void *)(((u32)_0221A680->tbl[idx] + 0x1f) & ~0x1f), 0x1000);
+        DWC_SetRecvBuffer(idx & 0xff, (void *)(((u32)_0221A680->tbl[idx] + 0x1f) & ~0x1f), 0x1000);
     }
 }
 #pragma force_active reset

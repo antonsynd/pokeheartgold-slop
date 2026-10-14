@@ -17,14 +17,14 @@ enum {
 extern UnkStruct_ov00_021E70F4 *_0221A680;
 
 void ov00_021E70E0(void);
-void ov00_021F12F0(void (*cb)(void), int b);
+void DWC_StopSCMatchingAsync(void (*cb)(void), int b);
 int ov00_021E70F4(void);
 // FUNCTION ov00_021E70F4: matching C (twin)
 #pragma force_active on
 int ov00_021E70F4(void) {
     if (_0221A680->matchmakingCancelState == MATCHMAKING_NOT_CANCELED) {
         _0221A680->matchmakingCancelState = MATCHMAKING_CANCEL_REQUESTED;
-        ov00_021F12F0(ov00_021E70E0, 0);
+        DWC_StopSCMatchingAsync(ov00_021E70E0, 0);
     }
 
     return _0221A680->matchmakingCancelState == MATCHMAKING_CANCELED;

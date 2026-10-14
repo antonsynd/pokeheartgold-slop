@@ -11,8 +11,8 @@ typedef enum {
     DWC_ALLOCTYPE_BASE,
     DWC_ALLOCTYPE_LAST
 } DWCAllocType;
-void ov00_021EC2EC(DWCAllocType name, void *ptr, u32 size);
-BOOL ov00_021FA0D8(void);
+void DWC_Free(DWCAllocType name, void *ptr, u32 size);
+BOOL DWC_ShutdownGHTTP(void);
 extern struct {
     int readyState;
     int requestHandle;
@@ -32,11 +32,11 @@ extern struct {
 #pragma force_active on
 void ov38_0221BFEC(void) {
     if (_02225040.url != ((void *)0)) {
-        ov00_021EC2EC((DWCAllocType)10, _02225040.url, (u32)0);
+        DWC_Free((DWCAllocType)10, _02225040.url, (u32)0);
         _02225040.url = ((void *)0);
     }
 
-    ov00_021FA0D8();
+    DWC_ShutdownGHTTP();
 
     _02225040.readyState = 1;
     return;

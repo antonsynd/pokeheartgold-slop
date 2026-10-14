@@ -6,8 +6,8 @@
 #include "ghidra_compat.h"
 #include "overlay_00_thumb.h"
 typedef void code(void);
-undefined4 ov00_021EC8D8();
-undefined4 ov00_021ED9B4();
+undefined4 DWC_CleanupInet();
+undefined4 DWC_ShutdownFriendsMatch();
 undefined4 ov00_021E5AE8(void);
 void ov00_021E6CB8(void);
 // FUNCTION ov00_021E6CB8: matching C (r2)
@@ -15,8 +15,8 @@ void ov00_021E6CB8(void);
 void ov00_021E6CB8(void)
 
 {
-    ov00_021ED9B4();
-    ov00_021EC8D8();
+    DWC_ShutdownFriendsMatch();
+    DWC_CleanupInet();
     ov00_021E6A4C();
     ov00_021E5AE8();
     return;

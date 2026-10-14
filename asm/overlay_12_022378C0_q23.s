@@ -1,7 +1,7 @@
 #include "config.h"
 #include "constants/pokemon.h"
 #include "constants/sndseq.h"
-	.include "asm/macros.inc"
+	.include "macros.inc"
 	.include "overlay_12_022378C0.inc"
 	.include "global.inc"
 	.public ov12_0223A0D4
@@ -45,7 +45,7 @@ _0223A114:
 	mov r0, #0
 	pop {r3, r4, r5, pc}
 _0223A11C:
-	ldr r0, _0223A214 ; =FS_OVERLAY_ID(OVY_5)
+	ldr r0, _0223A214 ; =SDK_OVERLAY_OVY_5_ID
 	mov r1, #2
 	bl HandleLoadOverlay
 	ldr r1, [r4, #0x2c]
@@ -168,6 +168,6 @@ _0223A1FE:
 	.balign 4, 0
 _0223A20C: .word 0x00002490
 _0223A210: .word 0x0000240C
-_0223A214: .word FS_OVERLAY_ID(OVY_5)
+_0223A214: .word SDK_OVERLAY_OVY_5_ID
 	thumb_func_end ov12_0223A0D4
 

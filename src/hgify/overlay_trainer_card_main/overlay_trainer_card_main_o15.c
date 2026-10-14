@@ -5,7 +5,7 @@
 #include "global.h"
 #include <nitro/gx/g2.h>
 #include <nitro/fx/fx_cp.h>
-#include <nitro/os/system.h>
+#include <nitro/os.h>
 // clang-format on
 // FUNCTION ov51_021E69EC: matching C (agent12)
 #pragma force_active on

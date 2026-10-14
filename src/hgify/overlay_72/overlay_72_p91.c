@@ -3,7 +3,7 @@
 #pragma thumb on
 #include "ghidra_compat.h"
 typedef int code();
-undefined4 ov00_021EC8D8();
+undefined4 DWC_CleanupInet();
 undefined4 ov72_022387D0();
 undefined4 ov72_02239FBC(int param_1);
 // FUNCTION ov72_02239FBC: matching C (r2)
@@ -11,7 +11,7 @@ undefined4 ov72_02239FBC(int param_1);
 undefined4 ov72_02239FBC(int param_1)
 
 {
-    ov00_021EC8D8();
+    DWC_CleanupInet();
     ov72_022387D0(param_1, 0, 0);
     *(undefined4 *)(param_1 + 0x1c) = 0x2b;
     return 3;

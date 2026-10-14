@@ -7,6 +7,10 @@
 #include "overlay_00_thumb.h"
 #include "overlay_manager.h"
 #include "unk_0203A3B0.h"
+
+// Upstream renamed these and its header still declares the old names (#22).
+int DWC_GetLinkLevel(void);
+
 typedef int code();
 undefined4 sub_02085BEC();
 undefined4 sub_0208524C(struct OverlayManager *param_1);
@@ -21,7 +25,7 @@ undefined4 sub_0208524C(struct OverlayManager *param_1)
     iVar1 = OverlayManager_GetData(param_1);
     iVar2 = sub_02085BEC();
     if (*(int *)(iVar1 + 1000) != 0) {
-        iVar1 = ov00_021EC9D4();
+        iVar1 = DWC_GetLinkLevel();
         sub_0203A930(3 - iVar1);
     }
     if (iVar2 != 0) {

@@ -1,4 +1,4 @@
-#include <nitro/fs/overlay.h>
+
 #pragma once
 .public Bag_TakeItem
 .public DpadMenuBox_GetPosition

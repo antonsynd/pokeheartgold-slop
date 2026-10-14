@@ -6,10 +6,10 @@
 #include "error_handling.h"
 #include "ghidra_compat.h"
 typedef int code();
-int ov00_021EE490(void);
-unsigned int ov00_021EE4FC(void);
+int DWC_GetMyAID(void);
+unsigned int DWC_GetAIDBitmap(void);
 void ov00_021E62D8(void);
-int ov00_021F9988(unsigned char, int);
+int DWC_SetRecvTimeoutTime(unsigned char, int);
 extern int _0221A680;
 // FUNCTION ov00_021E62F4: matching C (agent1)
 #pragma force_active on
@@ -17,20 +17,20 @@ void ov00_021E62F4(void) {
     int i;
 
     for (i = 0; i < 4; i++) {
-        ov00_021F9988(i, 0);
+        DWC_SetRecvTimeoutTime(i, 0);
     }
-    if (ov00_021EE490() == 0) {
+    if (DWC_GetMyAID() == 0) {
         i = 0;
         if (0 < *(int *)(_0221A680 + 0x107c)) {
             do {
-                if (i != ov00_021EE490() && (ov00_021EE4FC() & (1 << i)) != 0 && ov00_021F9988(i, 10000) == 0) {
+                if (i != DWC_GetMyAID() && (DWC_GetAIDBitmap() & (1 << i)) != 0 && DWC_SetRecvTimeoutTime(i, 10000) == 0) {
                     GF_AssertFail();
                 }
                 i++;
             } while (i < *(int *)(_0221A680 + 0x107c));
         }
     } else {
-        if (ov00_021F9988(0, 10000) == 0) {
+        if (DWC_SetRecvTimeoutTime(0, 10000) == 0) {
             GF_AssertFail();
         }
     }

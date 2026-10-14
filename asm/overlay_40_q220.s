@@ -1,4 +1,4 @@
-	.include "asm/macros.inc"
+	.include "macros.inc"
 	.include "overlay_40.inc"
 	.include "global.inc"
 	.public ov40_022344D8
@@ -345,7 +345,7 @@ _02234776:
 	bl ov40_0222BF80
 	add r0, r5, #0
 	bl Heap_Free
-	ldr r0, _02234804 ; =FS_OVERLAY_ID(OVY_41)
+	ldr r0, _02234804 ; =SDK_OVERLAY_OVY_41_ID
 	bl UnloadOverlayByID
 	ldr r0, _02234808 ; =ov40_0222BD04
 	add r1, r4, #0
@@ -382,7 +382,7 @@ _022347F2:
 _022347F8: .word 0x0000011E
 _022347FC: .word 0x0000057D
 _02234800: .word 0x00000577
-_02234804: .word FS_OVERLAY_ID(OVY_41)
+_02234804: .word SDK_OVERLAY_OVY_41_ID
 _02234808: .word ov40_0222BD04
 	thumb_func_end ov40_022344D8
 

@@ -1,4 +1,4 @@
-	.include "asm/macros.inc"
+	.include "macros.inc"
 	.include "overlay_38_thumb.inc"
 	.include "global.inc"
 	.public ov38_0221BF48
@@ -35,7 +35,7 @@ _0221BF6E:
 	ldr r0, [r1, #0x24]
 	ldr r1, _0221BFE4 ; =ov38_0221BBD0
 	ldr r2, _0221BFE8 ; =_02225040
-	bl ov00_021FA21C
+	bl DWC_GetGHTTPData
 	ldr r1, _0221BFE0 ; =_02225040
 	str r0, [r1, #4]
 	bl ov38_0221BB68
@@ -51,7 +51,7 @@ _0221BF8E:
 	str r1, [r0]
 	b _0221BFD8
 _0221BF94:
-	bl ov00_021FA118
+	bl DWC_ProcessGHTTP
 	cmp r0, #0
 	bne _0221BFD8
 	ldr r0, _0221BFE0 ; =_02225040
@@ -62,7 +62,7 @@ _0221BFA4:
 	ldr r0, [r1, #0x24]
 	ldr r1, _0221BFE4 ; =ov38_0221BBD0
 	ldr r2, _0221BFE8 ; =_02225040
-	bl ov00_021FA21C
+	bl DWC_GetGHTTPData
 	ldr r1, _0221BFE0 ; =_02225040
 	str r0, [r1, #4]
 	bl ov38_0221BB68
@@ -78,7 +78,7 @@ _0221BFC4:
 	str r1, [r0]
 	b _0221BFD8
 _0221BFCA:
-	bl ov00_021FA118
+	bl DWC_ProcessGHTTP
 	cmp r0, #0
 	bne _0221BFD8
 	ldr r0, _0221BFE0 ; =_02225040

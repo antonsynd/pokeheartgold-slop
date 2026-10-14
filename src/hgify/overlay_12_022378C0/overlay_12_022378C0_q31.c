@@ -9,6 +9,10 @@
 #include "unk_02034B0C.h"
 #include "unk_02037C94.h"
 #include "unk_0203A3B0.h"
+
+// Upstream renamed these and its header still declares the old names (#22).
+int DWC_GetLinkLevel(void);
+
 typedef int code();
 void ov12_0223A7A0(void);
 // FUNCTION ov12_0223A7A0: matching C (r2)
@@ -21,7 +25,7 @@ void ov12_0223A7A0(void)
     sub_0203A880();
     iVar1 = sub_02039998();
     if (iVar1 != 0) {
-        iVar1 = ov00_021EC9D4();
+        iVar1 = DWC_GetLinkLevel();
         sub_0203A930(3 - iVar1);
         return;
     }

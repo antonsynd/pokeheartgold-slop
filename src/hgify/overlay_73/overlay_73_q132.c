@@ -5,18 +5,22 @@
 
 #include "ghidra_compat.h"
 #include "overlay_00_thumb.h"
+
+// Upstream renamed these and its header still declares the old names (#22).
+void DWC_SetAuthServer(s32 arg0);
+
 typedef int code();
-undefined4 ov00_021EC4A4();
-undefined4 ov00_021EC3F0();
+undefined4 DWC_ConnectInetAsync();
+undefined4 DWC_InitInetEx();
 void ov73_021E8D0C(int param_1);
 // FUNCTION ov73_021E8D0C: matching C (r2)
 #pragma force_active on
 void ov73_021E8D0C(int param_1)
 
 {
-    ov00_021EC3F0(param_1 + 0x2c, 2, 1, 0x14);
-    ov00_021EC454(2);
-    ov00_021EC4A4();
+    DWC_InitInetEx(param_1 + 0x2c, 2, 1, 0x14);
+    DWC_SetAuthServer(2);
+    DWC_ConnectInetAsync();
     *(undefined4 *)(param_1 + 0x1c) = 3;
     return;
 }

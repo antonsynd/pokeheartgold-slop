@@ -23,7 +23,7 @@ enum AutoSamplingOperationResult {
 
 void TP_RequestAutoSamplingStopAsync(void);
 void TP_WaitBusy(int);
-int TP_CheckBusy(int);
+int TP_CheckError(int);
 // FUNCTION GF_TouchpadStopAutoSampling: matching C (twin)
 #pragma force_active on
 enum AutoSamplingOperationResult GF_TouchpadStopAutoSampling(void) {
@@ -38,7 +38,7 @@ enum AutoSamplingOperationResult GF_TouchpadStopAutoSampling(void) {
         TP_RequestAutoSamplingStopAsync();
         TP_WaitBusy(4);
 
-        hasError = TP_CheckBusy(4);
+        hasError = TP_CheckError(4);
 
         if (hasError != FALSE) {
             errorCount++;

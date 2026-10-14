@@ -1,4 +1,4 @@
-	.include "asm/macros.inc"
+	.include "macros.inc"
 	.include "overlay_00_thumb.inc"
 	.include "global.inc"
 	.public ov00_021E6484
@@ -70,7 +70,7 @@ _021E64E2:
 	add r1, r5, #0
 	add r2, r6, #0
 	bl MI_CpuCopy8
-	bl ov00_021EE490
+	bl DWC_GetMyAID
 	cmp r0, #0
 	bne _021E651E
 	ldr r0, _021E6544 ; =_0221A680
