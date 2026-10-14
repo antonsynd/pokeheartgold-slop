@@ -5,7 +5,7 @@
 *.nds
 
 # Compilers
-tools/mwccarm/**
+tools/metroskrew/**
 
 # SDK
 tools/bin/**
