@@ -85,6 +85,24 @@ jobs:
       - name: Compare
         run: make GAME_VERSION=${{ matrix.game }} check
 
+      # objdiff progress report for bytematch.dev, which reads the
+      # <version>_report artifact of successful push runs on mainline (and of
+      # PR runs, for its PR comments). Comparing the report with itself in a
+      # pinned objdiff-cli only checks that objdiff can parse it.
+      - name: Progress report
+        run: |
+          python3 tools/objdiff_report.py --build-dir build/${{ matrix.name }}.us -o build/${{ matrix.name }}.us/report.json
+          curl -sSfL -o objdiff-cli https://github.com/encounter/objdiff/releases/download/v3.8.2/objdiff-cli-linux-x86_64
+          echo "e5445089a6f707e30cb5e02992451b604619cedfd2660ee2373a86bfefd9e718  objdiff-cli" | sha256sum -c -
+          chmod +x objdiff-cli
+          ./objdiff-cli report changes build/${{ matrix.name }}.us/report.json build/${{ matrix.name }}.us/report.json -o /dev/null
+
+      - name: Upload progress report
+        uses: actions/upload-artifact@v4
+        with:
+          name: ${{ matrix.name }}.us_report
+          path: build/${{ matrix.name }}.us/report.json
+
       - name: Upload logs on failure
         if: failure()
         continue-on-error: true
