@@ -6,6 +6,9 @@
 
 # Compilers
 tools/metroskrew/**
+# The Metrowerks compilers the Make build used. Meson doesn't need them, but
+# older checkouts still have them, and they must never be committed.
+tools/mwccarm/**
 
 # SDK
 tools/bin/**
