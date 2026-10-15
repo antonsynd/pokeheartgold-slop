@@ -94,11 +94,21 @@ jobs:
           path: build/*/meson-logs/
           retention-days: 3
 
+  # src/meson.build and asm/meson.build are generated from main.lsf; fail if
+  # they drift from it or if main.lsf names an object twice.
+  lists:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repo
+        uses: actions/checkout@v4
+      - name: Check the Meson source lists
+        run: python3 tools/decomp_harness/meson_port.py lists --check
+
   # The status check the mainline ruleset requires: passes only if both games
-  # built and matched.
+  # built and matched, and the source lists are current.
   build:
-    needs: rom
+    needs: [rom, lists]
     if: ${{ !cancelled() }}
     runs-on: ubuntu-latest
     steps:
-      - run: test "${{ needs.rom.result }}" = success
+      - run: test "${{ needs.rom.result }}" = success && test "${{ needs.lists.result }}" = success

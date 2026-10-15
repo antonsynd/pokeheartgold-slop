@@ -142,9 +142,13 @@ subdir('src')
 # MWCC 1.2/sp2p3, which has no -ipa. The global C arguments carry -ipa file and
 # can't be dropped for one target, so a generator calls the compiler with the
 # flags the Make build used for them. Its objects are main.nef.p/<file>.c.o.
-mwccarm = find_program('tools/metroskrew/bin/mwccarm')
+# The program is the cross file's C compiler (mwccarm, or mwccarm.exe on
+# Windows), and the include paths are the Make rule's. SDK headers and the
+# generated headers under the build dir are not on the path.
+mwccarm = find_program(meson.get_compiler('c').cmd_array()[0])
 mwcc12 = generator(mwccarm,
     output : '@PLAINNAME@.o',
+    depfile : '@PLAINNAME@.d',
     arguments : [
         '-wrap:sdk', '1.2/sp2p3',
         '-O4,p', '-sym', 'on', '-enum', 'int', '-lang', 'c99',
@@ -153,7 +157,12 @@ mwcc12 = generator(mwccarm,
         '-char', 'signed',
         '-D' + game_version, '-DGAME_REMASTER=0', '-DENGLISH', '-DPM_KEEP_ASSERTS',
         '-DSDK_ARM9', '-DSDK_CODE_ARM', '-DSDK_FINALROM',
+        '-I' + meson.project_source_root() / 'src',
         '-I' + meson.project_source_root() / 'include',
+        '-I' + meson.project_source_root() / 'include' / 'library',
+        '-I' + meson.project_source_root() / 'files',
+        '-I' + meson.project_source_root() / 'lib' / 'include',
+        '-gccdep', '-MD',
         '-c', '@INPUT@', '-o', '@OUTPUT@',
     ],
 )

@@ -8,8 +8,9 @@ if ! git clang-format --extensions c,cpp,h,hpp ; then
     exit 1
 fi
 
-# Check for duplicate function declarations in staged headers.
-# MWCC -W error rejects redeclarations (even K&R vs prototyped).
+# Check for duplicate function declarations in staged headers. The build no
+# longer passes -W error (D4), so a redeclaration now compiles silently;
+# this check is what still catches it.
 if git diff --cached --name-only --diff-filter=ACM -- 'include/*.h' | grep -q .; then
     if ! tools/decomp_harness/check_dup_decls.sh; then
         exit 1
@@ -23,12 +24,14 @@ if git diff --cached --name-only | grep -qE '^(main\.lsf|src/meson\.build|asm/me
     fi
 fi
 
-# Check for IPA cascade from header changes (requires a built tree).
-# ipa_check.sh and verify_matched.sh still read the Make build's outputs
-# (main.elf, .d files) and are not yet ported to Meson (MESON_SYNC_PLAN.md §6,
-# P1), so they only run against a Make-era build dir.
+# Check for IPA cascade from header changes. Both checks compile through
+# compile_cmd.py, which needs a configured HeartGold build dir
+# (build/heartgold.us/build.ninja and compile_commands.json).
 if git diff --cached --name-only --diff-filter=M -- 'include/*.h' | grep -q .; then
-    if [ -f build/heartgold.us/main.elf ]; then
+    if [ ! -f build/heartgold.us/build.ninja ]; then
+        echo "pre-commit: build/heartgold.us is not configured; skipping the IPA and"
+        echo "drift checks for the staged header edits. Build once to enable them."
+    else
         if ! tools/decomp_harness/ipa_check.sh; then
             exit 1
         fi
@@ -64,8 +67,8 @@ if git diff --cached --name-only | grep -qE '^(main\.lsf|src/|asm/|include/)'; t
 fi
 
 # Regenerate the coverage ledger when decomp-related files change, so COVERAGE.md
-# (the single source of truth for progress) stays current. README carries no
-# numbers — it just links to COVERAGE.md — so there is nothing to patch here.
+# (function-level coverage) stays current. README's PROGRESS block is not
+# patched here: the update-progress workflow regenerates it on mainline.
 if git diff --cached --name-only | grep -qE '^(main\.lsf|src/|asm/|tools/decomp_harness/progress\.json|tools/decomp_harness/blockers\.json)'; then
     if python3 tools/decomp_harness/coverage_ledger.py --quiet 2>/dev/null; then
         git add tools/decomp_harness/coverage_ledger.json tools/decomp_harness/COVERAGE.md 2>/dev/null || true

@@ -1,3 +1,6 @@
 {
-  "total_rom_functions": 29500
+  "total_rom_functions": 29500,
+  "prebuilt_libraries": {
+    "libdwcutil.a": ["asm/overlay_13_thumb_2.s"]
+  }
 }

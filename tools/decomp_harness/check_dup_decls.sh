@@ -2,9 +2,10 @@
 #
 # Detect duplicate function declarations in header files.
 # Scans staged .h files (or all headers if --all) for function names
-# declared more than once. MWCC -W error rejects redeclarations even
-# when return types match (K&R vs prototyped), so any duplicate is a
-# build-breaking bug.
+# declared more than once. The Make build's -W error rejected these
+# redeclarations (even K&R vs prototyped); the Meson build compiles with
+# warnings off (D4), so a duplicate now builds silently and can change
+# how callers are compiled. This check is what still catches it.
 #
 # Usage:
 #   check_dup_decls.sh              # check staged .h files

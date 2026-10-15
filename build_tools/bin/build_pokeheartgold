@@ -196,6 +196,37 @@ def ensure_configured(game: str) -> None:
     _run(["make", f"GAME_VERSION={GAME_VERSION[game]}", "setup_rom"], "configure")
 
 
+def ensure_subprojects_current() -> None:
+    """Check out each wrap-git subproject at its .wrap's revision.
+
+    Meson fetches a subproject once and never moves it, so after a pull that
+    bumps a .wrap (e.g. NitroDWC for pret #523) the old checkout keeps building
+    against the old headers and fails in confusing ways."""
+    for wrap in sorted((ROOT_DIR / "subprojects").glob("*.wrap")):
+        fields: MutableMapping[str, str] = {}
+        for line in wrap.read_text().splitlines():
+            key, sep, value = line.partition("=")
+            if sep:
+                fields[key.strip()] = value.strip()
+        rev, directory = fields.get("revision"), fields.get("directory")
+        if not rev or not directory:
+            continue
+        checkout = ROOT_DIR / "subprojects" / directory
+        if not (checkout / ".git").exists():
+            continue  # not fetched yet; configure fetches it at the right revision
+        head = subprocess.run(
+            ["git", "-C", str(checkout), "rev-parse", "HEAD"],
+            capture_output=True,
+            text=True,
+        ).stdout.strip()
+        if head and head != rev:
+            get_logger().info(f"{directory} is at {head[:9]}, {wrap.name} wants {rev[:9]}")
+            _run(
+                [sys.executable, str(MESON), "subprojects", "update", "--sourcedir", str(ROOT_DIR), wrap.stem],
+                "subproject update",
+            )
+
+
 def _filesystem_targets(game: str) -> Sequence[str]:
     """Ninja paths of every custom target defined under files/ (the NitroFS)."""
     out = subprocess.run(
@@ -213,6 +244,8 @@ def _filesystem_targets(game: str) -> Sequence[str]:
 
 
 def build(args: argparse.Namespace, rest: Sequence[str], compare: bool) -> None:
+    if MESON.is_file():
+        ensure_subprojects_current()
     for game in _games_for(args):
         ensure_configured(game)
         bdir = str(build_dir(game))

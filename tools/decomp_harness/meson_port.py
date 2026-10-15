@@ -16,7 +16,7 @@ Subcommands:
 
 See tools/decomp_harness/MESON_SYNC_PLAN.md, Phase 3.
 """
-import argparse, os, re, subprocess, sys
+import argparse, collections, os, re, subprocess, sys
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from meson_names import GAME_OBJ_RE, MWCC12_RE, object_name  # noqa: E402
@@ -170,6 +170,9 @@ def lsf_game_sources():
             if o in rev:
                 raise SystemExit(f'lists: {f} and {rev[o]} map to the same object name {o}')
             rev[o] = f
+    dups = sorted(o for o, n in collections.Counter(objs).items() if n > 1)
+    if dups:
+        raise SystemExit(f'lists: {len(dups)} objects appear more than once in main.lsf, e.g. {dups[:3]}')
     missing = [o for o in objs if o not in rev]
     if missing:
         raise SystemExit(f'lists: {len(missing)} LSF objects have no source, e.g. {missing[:3]}')

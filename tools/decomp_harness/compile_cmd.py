@@ -51,11 +51,12 @@ def load_commands(game):
         return json.load(f)
 
 
-def find_entry(entries, src):
+def find_entry(entries, src, game='heartgold'):
     """(entry, is_template) for src: its own entry in the main target, else the src/main.c one."""
     if MWCC12_RE.match(src):
         raise SystemExit(f'compile_cmd: {src} is built with MWCC 1.2 by the mwcc12 generator in meson.build, '
-                         f'not with the main flags; build it with: ninja -C build/heartgold.us {object_name(src)}')
+                         f'not with the main flags; build it with: '
+                         f'ninja -C {os.path.relpath(build_dir(game), ROOT)} {object_name(src)}')
     want, tmpl = object_name(src), object_name(TEMPLATE_SRC)
     own = template = None
     for e in entries:
@@ -73,7 +74,7 @@ def find_entry(entries, src):
 
 def command_for(src, game, out):
     """(cwd, argv, is_template) running MWCC on src (repo-relative) into out (absolute path)."""
-    entry, is_template = find_entry(load_commands(game), src)
+    entry, is_template = find_entry(load_commands(game), src, game)
     cwd = os.path.realpath(entry['directory'])
     if not os.path.isdir(cwd):
         raise SystemExit(f'compile_cmd: build directory {cwd} (from compile_commands.json) is gone: '

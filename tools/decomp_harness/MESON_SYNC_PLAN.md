@@ -336,7 +336,7 @@ Paths are in the inventory behind this plan; the central LSF parser is `asmscan.
 
 - `hooks/clean_bad_deps.sh`, and the `.d` handling everywhere
 - `scripts/setup-ubuntu.sh`, `scripts/bundle-tools.sh`
-- `scripts/find_x86_failures.sh`: rewrite it or retire it
+- ~~`scripts/find_x86_failures.sh`~~: retired in #27 (the x86_64 vs ARM64 question it chased is settled, and its all-asm upstream baseline no longer exists)
 - the fork's leftover Make files. Some of these survive the merge because upstream kept the file: `files/data/resdat.mk`, `tools/{compstatic,csv2bin,gen_fx_consts,nitrogfx,o2narc}/Makefile` and `lib/dsprot/Makefile`. Reset each to upstream's version, so our now-pointless edits don't linger.
 - **Not ours to port:** upstream's own stale leftovers (`Dockerfile` vs our `Containerfile`, `.devcontainer`, `tools/asmdiff`, `tools/py_scripts/get_scrcmd_args.py`, `scripts/rename_header.sh`, `CMakeLists.txt`, `rom.rsf`, `sub/`). Leave them to upstream.
 - **User-level, outside the repo:** `.claude/settings.local.json` (gitignored) allows `make` and `wine` but not `meson` or `ninja`, so expect permission prompts until Anton adds them.
