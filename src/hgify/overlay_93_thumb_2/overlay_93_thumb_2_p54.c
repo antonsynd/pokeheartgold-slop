@@ -10,6 +10,9 @@
 #include "text.h"
 #include "unk_02013534.h"
 // clang-format on
+
+// Called as matched, before pret #536 retyped fontId from u32 to enum Font.
+#define FontID_String_GetWidthMultiline(...) ((u32(*)(u32 fontId, String * string, u32 letterSpacing)) FontID_String_GetWidthMultiline)(__VA_ARGS__)
 typedef struct UnkStruct_ov93_02261EB8 {
     TextOBJ *unk_00;
     UnkStruct_02021AC8 unk_04;
