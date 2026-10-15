@@ -20,6 +20,10 @@ scr_seq_gen = generator(makescript_sh,
         '-i', relative_source_root,
         '@INPUT@',
     ],
+    # Fork edit: the scripts include the generated msgdata/msg/*.h headers, so
+    # each assemble step waits for text_banks, as the battle scripts' do. Only
+    # the NARC depended on it, so a cold build could assemble a script first.
+    depends : text_banks,
     output : '@BASENAME@.bin'
 )
 
