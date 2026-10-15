@@ -780,14 +780,6 @@ enum BattleMoveSummaryScreenWindow {
     BATTLE_MOVE_SUMMARY_SCREEN_WINDOW_ALT_CATEGORY,
     BATTLE_MOVE_SUMMARY_SCREEN_WINDOW_ALT_POKEMON_NAME,
 };
-enum Font {
-    FONT_SYSTEM = 0,
-    FONT_MESSAGE,
-    FONT_SUBSCREEN,
-    FONT_UNOWN,
-
-    FONT_MAX,
-};
 typedef u32 TextColor;
 void ov08_0221FB18(BattleParty *battleParty);
 extern const u32 ov08_02224FE0[5];

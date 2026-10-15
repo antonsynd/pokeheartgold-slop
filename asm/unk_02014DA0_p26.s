@@ -24,7 +24,7 @@ _020153F4:
 	bl NNS_G3dGlbFlushP
 	ldr r0, [r4]
 	ldr r1, _02015410 ; =NNS_G3dGlb + 0x4C
-	bl SPL_Draw
+	bl SPLManager_Draw
 	ldr r0, [r4, #0x20]
 	cmp r0, #0
 	beq _0201540A

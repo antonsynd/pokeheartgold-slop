@@ -326,14 +326,6 @@ enum BattlePokemonSummaryScreenWindow {
     BATTLE_POKEMON_SUMMARY_SCREEN_WINDOW_ALT_LEVEL,
     BATTLE_POKEMON_SUMMARY_SCREEN_WINDOW_ALT_EXP_TO_NEXT_LVL,
 };
-enum Font {
-    FONT_SYSTEM = 0,
-    FONT_MESSAGE,
-    FONT_SUBSCREEN,
-    FONT_UNOWN,
-
-    FONT_MAX,
-};
 void ov08_0221F900(BattleParty *battleParty);
 void ov08_0221DDCC(BattleParty *battleParty, u32 windowIndex, enum Font font, u16 partyIndex, u8 xOffset, u8 yOffset);
 void ov08_0221E048(BattleParty *battleParty, u32 windowIndex, u16 partyIndex, u8 x, u8 y);

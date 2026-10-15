@@ -7,14 +7,6 @@
 #include "pm_string.h"
 #pragma thumb on
 typedef u16 charcode_t;
-enum Font {
-    FONT_SYSTEM = 0,
-    FONT_MESSAGE,
-    FONT_SUBSCREEN,
-    FONT_UNOWN,
-
-    FONT_MAX,
-};
 int ov39_02228964(Window *param0, String *param1, int param2, int param3, u32 param4, int param5);
 // FUNCTION ov39_02228964: matching C (pt2)
 #pragma force_active on

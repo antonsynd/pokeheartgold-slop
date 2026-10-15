@@ -308,14 +308,6 @@ union StringToPrint {
     const u16 *raw;
     const String *string;
 };
-enum Font {
-    FONT_SYSTEM = 0,
-    FONT_MESSAGE,
-    FONT_SUBSCREEN,
-    FONT_UNOWN,
-
-    FONT_MAX,
-};
 void ov08_0221F284(BattleParty *battleParty, BattlePartyPokemonMove *move, u32 windowIndex);
 // FUNCTION ov08_0221F284: matching C (pt2)
 #pragma force_active on

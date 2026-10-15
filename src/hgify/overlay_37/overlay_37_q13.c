@@ -302,14 +302,6 @@ union StringToPrint {
     const charcode_t *raw;
     const String *string;
 };
-enum Font {
-    FONT_SYSTEM = 0,
-    FONT_MESSAGE,
-    FONT_SUBSCREEN,
-    FONT_UNOWN,
-
-    FONT_MAX,
-};
 typedef u32 TextColor;
 void ov37_021E6418(UnkStruct_02095EAC *param0, ApplicationManager *appMan);
 void ov37_021E7478(Window *param0, int param1, u32 param2, UnkStruct_02095EAC *param3);

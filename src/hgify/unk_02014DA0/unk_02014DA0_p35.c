@@ -3,14 +3,14 @@
 #pragma thumb on
 #include "ghidra_compat.h"
 typedef int code();
-extern undefined SPL_Delete;
+extern undefined SPLManager_DeleteEmitter;
 void sub_020154C4(undefined4 *param_1);
 // FUNCTION sub_020154C4: matching C (r2)
 #pragma force_active on
 void sub_020154C4(undefined4 *param_1)
 
 {
-    (*(code *)&SPL_Delete)(*param_1);
+    (*(code *)&SPLManager_DeleteEmitter)(*param_1);
     return;
 }
 #pragma force_active reset

@@ -3,13 +3,13 @@
 #pragma thumb on
 typedef unsigned int u32;
 extern u32 _021D10A0[];
-void *SPL_CreateWithInitialize(void *p);
+void *SPLManager_CreateEmitterWithCallback(void *p);
 // FUNCTION sub_02015494: matching C (agent30)
 #pragma force_active on
 void sub_02015494(void **obj, int a1, int a2, u32 v) {
     void *r;
     _021D10A0[1] = v;
-    r = SPL_CreateWithInitialize(obj[0]);
+    r = SPLManager_CreateEmitterWithCallback(obj[0]);
     _021D10A0[1] = 0;
     obj[2] = r;
 }

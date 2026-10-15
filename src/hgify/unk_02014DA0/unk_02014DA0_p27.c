@@ -3,14 +3,14 @@
 #pragma thumb on
 #include "ghidra_compat.h"
 typedef int code();
-extern undefined SPL_Calc;
+extern undefined SPLManager_Update;
 void sub_02015414(undefined4 *param_1);
 // FUNCTION sub_02015414: matching C (r2)
 #pragma force_active on
 void sub_02015414(undefined4 *param_1)
 
 {
-    (*(code *)&SPL_Calc)(*param_1);
+    (*(code *)&SPLManager_Update)(*param_1);
     return;
 }
 #pragma force_active reset
