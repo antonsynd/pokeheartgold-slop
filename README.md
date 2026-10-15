@@ -1,7 +1,6 @@
 # pokeheartgold-slop: an LLM-assisted fork of pret/pokeheartgold
 
 [![CI build](https://github.com/antonsynd/pokeheartgold-slop/actions/workflows/build.yml/badge.svg?branch=mainline&event=push)](https://github.com/antonsynd/pokeheartgold-slop/actions/workflows/build.yml?query=branch%3Amainline)
-[![Local build attestation](https://img.shields.io/badge/retail_SHA1-attested-brightgreen)](build_attestation.json)
 
 > [!IMPORTANT]
 > **This is an unofficial personal fork. It is not affiliated with, endorsed by, or reviewed by [pret](https://pret.github.io/).**

@@ -51,21 +51,6 @@ if git diff --cached --name-only --diff-filter=M -- 'include/*.h' | grep -q .; t
     fi
 fi
 
-# Verify build attestation is current when source files change.
-if git diff --cached --name-only | grep -qE '^(main\.lsf|src/|asm/|include/)'; then
-    if ! tools/build_attestation.sh --check 2>/dev/null; then
-        echo ""
-        echo "Build attestation is stale or missing."
-        echo "Run: ./tools/build_attestation.sh"
-        echo "Then stage build_attestation.json and retry."
-        exit 1
-    fi
-    git add build_attestation.json 2>/dev/null || true
-    # build_attestation.sh recaptures the matched-TU manifest after a green
-    # compare; keep the committed manifest in sync with the attestation.
-    git add tools/decomp_harness/matched_manifest.json 2>/dev/null || true
-fi
-
 # Regenerate the coverage ledger when decomp-related files change, so COVERAGE.md
 # (function-level coverage) stays current. README's PROGRESS block is not
 # patched here: the update-progress workflow regenerates it on mainline.

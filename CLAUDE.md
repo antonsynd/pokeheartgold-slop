@@ -14,7 +14,7 @@ The build system is **pret's Meson build** (since the sync with pret master, #22
 2. **The wrapper** — `build_tools/bin/build_pokeheartgold <cmd>` (python3 only). Adds a subcommand CLI and `--game both`; configures on first use, and before every build moves any subproject checkout that has fallen behind its `.wrap` revision (Meson never does this itself). With plain `make` after a pull that bumps a `.wrap`, run `subprojects/meson-1.12.0/meson.py subprojects update --sourcedir . <Name>` yourself, or the build compiles against the old headers.
 3. **[chiri](https://github.com/antonsynd/chiri)** — `chiri pkg -- <cmd>`. *Optional.* `chiri_config.json5` points chiri at the wrapper, so `chiri pkg -- X` ≡ `build_tools/bin/build_pokeheartgold X`.
 
-Repo scripts (`build_attestation.sh`, `recomp.sh`) call the wrapper directly, so chiri is never required. This doc and the `/decomp` skills use the chiri spelling for brevity; substitute either of the others freely. Wrapper/chiri commands:
+Repo scripts (e.g. `recomp.sh`) call the wrapper directly, so chiri is never required. This doc and the `/decomp` skills use the chiri spelling for brevity; substitute either of the others freely. Wrapper/chiri commands:
 
 - `chiri pkg -- build` — build HeartGold and run the sha1 tests
 - `chiri pkg -- build --game soulsilver` / `--game both`
@@ -44,7 +44,7 @@ pkill -f 'ninja -C build/|mwccarm|mwldarm|mwasmarm' 2>/dev/null; sleep 1
 ```
 A full build of this fork under Wine on macOS is slow (about 1 compile per second at `-j8`, ~17k sources): build incrementally, and use CI (or `--target main`) for whole-tree checks.
 
-A PreToolUse hook (`tools/decomp_harness/prebuild_guard.sh`, wired in `.claude/settings.json`) runs automatically before `chiri`/`make`/`ninja`/`meson`/`build_tools/bin/build_pokeheartgold`/`tools/build_attestation.sh` commands and blocks the build if Metrowerks processes are already running. Commands it can't parse (heredocs, `$(...)`, `bash script`) also trigger it while a build runs; use a script file run with `python3 file.py` instead.
+A PreToolUse hook (`tools/decomp_harness/prebuild_guard.sh`, wired in `.claude/settings.json`) runs automatically before `chiri`/`make`/`ninja`/`meson`/`build_tools/bin/build_pokeheartgold` commands and blocks the build if Metrowerks processes are already running. Commands it can't parse (heredocs, `$(...)`, `bash script`) also trigger it while a build runs; use a script file run with `python3 file.py` instead.
 
 The shell is zsh: unquoted words starting with `=` (e.g. `echo ====` as a separator) fail with `... not found` — quote them.
 
