@@ -2,24 +2,6 @@
 #pragma warning_errors off
 #include "global.h"
 #pragma thumb on
-typedef struct {
-    u32 x;
-    u32 mul;
-    u32 add;
-} MATHRandContext16;
-static inline void MATH_InitRand16(MATHRandContext16 *context, u32 seed) {
-    context->x = seed;
-    context->mul = 1566083941LL;
-    context->add = 2531011;
-}
-static inline u16 MATH_Rand16(MATHRandContext16 *context, u16 max_PT) {
-    context->x = context->mul * context->x + context->add;
-    if (max_PT == 0) {
-        return (u16)(context->x >> 16);
-    } else {
-        return (u16)(((context->x >> 16) * max_PT) >> 16);
-    }
-}
 // FUNCTION ov74_0223127C: matching C (pt2)
 #pragma force_active on
 u32 ov74_0223127C(u32 param0, u32 param1, void *param2) {

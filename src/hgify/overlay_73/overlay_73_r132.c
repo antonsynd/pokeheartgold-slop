@@ -5,18 +5,24 @@
 
 #include "ghidra_compat.h"
 #include "overlay_00_thumb.h"
+
+// Called as matched, before the real SDK headers declared these (#22, R10).
+#define DWC_SetAuthServer(...)    ((void (*)(s32 arg0))DWC_SetAuthServer)(__VA_ARGS__)
+#define DWC_ConnectInetAsync(...) ((undefined4(*)())DWC_ConnectInetAsync)(__VA_ARGS__)
+#define DWC_InitInetEx(...)       ((undefined4(*)())DWC_InitInetEx)(__VA_ARGS__)
+
+// Upstream renamed these and its header still declares the old names (#22).
+
 typedef int code();
-undefined4 ov00_021EC4A4();
-undefined4 ov00_021EC3F0();
 void ov73_021E8D0C(int param_1);
 // FUNCTION ov73_021E8D0C: matching C (r2)
 #pragma force_active on
 void ov73_021E8D0C(int param_1)
 
 {
-    ov00_021EC3F0(param_1 + 0x2c, 2, 1, 0x14);
-    ov00_021EC454(2);
-    ov00_021EC4A4();
+    DWC_InitInetEx(param_1 + 0x2c, 2, 1, 0x14);
+    DWC_SetAuthServer(2);
+    DWC_ConnectInetAsync();
     *(undefined4 *)(param_1 + 0x1c) = 3;
     return;
 }

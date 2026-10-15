@@ -3,11 +3,13 @@
 #pragma thumb on
 #include "global.h"
 
+// Called as matched, before the real SDK headers declared these (#22, R10).
+#define CTRDG_CpuCopy16(...) ((BOOL(*)(u32 src, void *dest, u32 size))CTRDG_CpuCopy16)(__VA_ARGS__)
+
 #define DIST_CTRDG_EVENT_DATA_PTR 0x08100100
 
 BOOL ov74_022351FC(void);
 int ov74_02235230(void);
-BOOL CTRDG_CpuCopy16(u32 src, void *dest, u32 size);
 void CTRDG_Enable(BOOL enable);
 BOOL CTRDG_IsExisting(void);
 // FUNCTION ov74_02235258: matching C (twin)

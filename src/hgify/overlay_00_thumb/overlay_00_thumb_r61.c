@@ -2,11 +2,11 @@
 #pragma warning_errors off
 #pragma thumb on
 #include "global.h"
-extern int ov00_021EE448(void);
+extern int DWC_GetNumConnectionHost(void);
 int ov00_021E7144(void);
 // FUNCTION ov00_021E7144: matching C (r0)
 #pragma force_active on
 int ov00_021E7144(void) {
-    return ov00_021EE448();
+    return DWC_GetNumConnectionHost();
 }
 #pragma force_active reset

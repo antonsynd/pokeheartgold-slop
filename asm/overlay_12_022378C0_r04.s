@@ -1,7 +1,7 @@
 #include "config.h"
 #include "constants/pokemon.h"
 #include "constants/sndseq.h"
-	.include "asm/macros.inc"
+	.include "macros.inc"
 	.include "overlay_12_022378C0.inc"
 	.include "global.inc"
 	.public ov12_0223843C
@@ -370,14 +370,14 @@ _02238748:
 _02238756:
 	add r0, r4, #0
 	bl Heap_Free
-	ldr r0, _022387A0 ; =FS_OVERLAY_ID(OVY_6)
+	ldr r0, _022387A0 ; =SDK_OVERLAY_OVY_6_ID
 	bl UnloadOverlayByID
-	ldr r0, _022387A4 ; =FS_OVERLAY_ID(OVY_7)
+	ldr r0, _022387A4 ; =SDK_OVERLAY_OVY_7_ID
 	bl UnloadOverlayByID
 	bl sub_02039998
 	cmp r0, #0
 	bne _02238776
-	ldr r0, _022387A8 ; =FS_OVERLAY_ID(OVY_18)
+	ldr r0, _022387A8 ; =SDK_OVERLAY_OVY_18_ID
 	bl UnloadOverlayByID
 _02238776:
 	pop {r3, r4, r5, r6, r7, pc}
@@ -392,9 +392,9 @@ _02238790: .word 0x00002478
 _02238794: .word 0x000023FD
 _02238798: .word 0x00002434
 _0223879C: .word 0x00000704
-_022387A0: .word FS_OVERLAY_ID(OVY_6)
-_022387A4: .word FS_OVERLAY_ID(OVY_7)
-_022387A8: .word FS_OVERLAY_ID(OVY_18)
+_022387A0: .word SDK_OVERLAY_OVY_6_ID
+_022387A4: .word SDK_OVERLAY_OVY_7_ID
+_022387A8: .word SDK_OVERLAY_OVY_18_ID
 	thumb_func_end ov12_0223843C
 
 	thumb_func_start ov12_022387AC

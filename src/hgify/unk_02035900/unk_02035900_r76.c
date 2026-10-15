@@ -2,16 +2,6 @@
 #pragma warning_errors off
 #include "global.h"
 #pragma thumb on
-typedef struct {
-    u64 x;
-    u64 mul;
-    u64 add;
-} MATHRandContext32;
-static inline void MATH_InitRand32(MATHRandContext32 *context, u64 seed) {
-    context->x = seed;
-    context->mul = (1566083941LL << 32) + 1812433253LL;
-    context->add = 2531011;
-}
 void sub_0203778C(MATHRandContext32 *rand);
 void GF_RTC_CopyDateTime(RTCDate *date, RTCTime *time);
 typedef struct SysTask SysTask;

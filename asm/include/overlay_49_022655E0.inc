@@ -1,4 +1,4 @@
-#include <nitro/fs/overlay.h>
+
 #pragma once
 .public FX_SinCosTable_
 .public GF_AssertFail

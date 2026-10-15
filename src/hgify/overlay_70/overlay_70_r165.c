@@ -2,24 +2,10 @@
 #pragma warning_errors off
 #include "global.h"
 #pragma thumb on
-typedef enum {
-    GX_POLYGON_ATTR_MISC_NONE = 0,
-    GX_POLYGON_ATTR_MISC_XLU_DEPTH_UPDATE = 1 << 11,
-    GX_POLYGON_ATTR_MISC_FAR_CLIPPING = 1 << 12,
-    GX_POLYGON_ATTR_MISC_DISP_1DOT = 1 << 13,
-    GX_POLYGON_ATTR_MISC_DEPTHTEST_DECAL = 1 << 14,
-    GX_POLYGON_ATTR_MISC_FOG = 1 << 15
-} GXPolygonAttrMisc;
-typedef struct NNSGfdFrmTexVramState {
-    u32 address[10];
-} NNSGfdFrmTexVramState;
-typedef struct NNSGfdFrmPlttVramState {
-    u32 address[2];
-} NNSGfdFrmPlttVramState;
 typedef struct {
     u32 _[0x68 / 4];
 } DWCInetControl;
-BOOL ov00_021ECB94(RTCDate *date, RTCTime *time);
+BOOL DWC_GetDateTime(RTCDate *date, RTCTime *time);
 typedef struct WiFiList WiFiList;
 typedef struct WiFiHistory {
     u32 unused_00;
@@ -2357,7 +2343,7 @@ int ov70_0223BFA8(GTSApplicationState *appState, int bySearching) {
     }
 
     Date_Decode(datestamp, &date);
-    ov00_021ECB94(&currentDate, &time);
+    DWC_GetDateTime(&currentDate, &time);
 
     int diff = RTC_ConvertDateToDay(&currentDate) - RTC_ConvertDateToDay(&date);
 

@@ -1,4 +1,4 @@
-	.include "asm/macros.inc"
+	.include "macros.inc"
 	.include "overlay_00_thumb.inc"
 	.include "global.inc"
 	.public ov00_021E5E54
@@ -78,10 +78,10 @@ _021E5EC4:
 	ldr r0, [r3, r0]
 	cmp r0, #0
 	bne _021E5ED2
-	bl ov00_021F1284
+	bl DWC_CancelMatching
 	b _021E5F68
 _021E5ED2:
-	bl ov00_021EE278
+	bl DWC_CloseAllConnectionsHard
 	bl ov00_021E5E34
 	b _021E5F68
 _021E5EDC:
@@ -151,7 +151,7 @@ _021E5F52:
 	ldr r0, [r3, r1]
 	cmp r0, #0
 	bne _021E5F68
-	bl ov00_021EE278
+	bl DWC_CloseAllConnectionsHard
 	ldr r0, _021E5F70 ; =_0221A680
 	mov r2, #0x11
 	ldr r1, [r0]

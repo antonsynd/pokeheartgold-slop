@@ -4,7 +4,13 @@
 #include "global.h"
 
 #include "overlay_00_thumb.h"
-int WCM_GetPhase(void);
+
+// Called as matched, before the real SDK headers declared these (#22, R10).
+#define WCM_GetPhase(...) ((int (*)(void))WCM_GetPhase)(__VA_ARGS__)
+
+// Upstream renamed these and its header still declares the old names (#22).
+void DWC_ClearError(void);
+
 // FUNCTION ov72_02237D88: matching C (agent8)
 #pragma force_active on
 int ov72_02237D88(unsigned int param_1) {
@@ -64,7 +70,7 @@ int ov72_02237D88(unsigned int param_1) {
         if (iVar1 != 9) {
             iVar2 = -6;
         }
-        ov00_021EC210();
+        DWC_ClearError();
     }
     return iVar2;
 }

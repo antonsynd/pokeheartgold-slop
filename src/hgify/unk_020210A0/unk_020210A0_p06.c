@@ -3,6 +3,10 @@
 #pragma thumb on
 #include "global.h"
 
+// Called as matched, before the real SDK headers declared these (#22, R10).
+#define TP_WaitBusy(...)   ((void (*)(int))TP_WaitBusy)(__VA_ARGS__)
+#define TP_CheckError(...) ((int (*)(int))TP_CheckError)(__VA_ARGS__)
+
 typedef struct UnkStruct_GF_TouchpadStopAutoSampling {
     u8 unk_00[0x58];
     u16 touchPadMode;
@@ -22,8 +26,6 @@ enum AutoSamplingOperationResult {
 #define AUTO_SAMPLING_NUM_ERRORS_BEFORE_FAIL 5
 
 void TP_RequestAutoSamplingStopAsync(void);
-void TP_WaitBusy(int);
-int TP_CheckBusy(int);
 // FUNCTION GF_TouchpadStopAutoSampling: matching C (twin)
 #pragma force_active on
 enum AutoSamplingOperationResult GF_TouchpadStopAutoSampling(void) {
@@ -38,7 +40,7 @@ enum AutoSamplingOperationResult GF_TouchpadStopAutoSampling(void) {
         TP_RequestAutoSamplingStopAsync();
         TP_WaitBusy(4);
 
-        hasError = TP_CheckBusy(4);
+        hasError = TP_CheckError(4);
 
         if (hasError != FALSE) {
             errorCount++;

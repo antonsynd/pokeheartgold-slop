@@ -3,10 +3,12 @@
 #pragma thumb on
 #include "global.h"
 
+// Called as matched, before the real SDK headers declared these (#22, R10).
+#define WM_StartScan(...) ((int (*)(void (*callback)(void), u32 param))WM_StartScan)(__VA_ARGS__)
+
 void ov74_02230404(void);
 u32 ov74_022310C4(void);
 void ov74_02231448(int errCode);
-int WM_StartScan(void (*callback)(void), u32 param);
 
 BOOL ov74_02231560(void);
 // FUNCTION ov74_02231560: matching C (twin)

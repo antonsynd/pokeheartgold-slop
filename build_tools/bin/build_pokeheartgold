@@ -1,13 +1,17 @@
 #!/usr/bin/env python3
 """Chiri build-system entry point for pokeheartgold.
 
-Wraps the project Makefile behind a chiri-style subcommand CLI so that
-`chiri pkg build`, `chiri pkg test`, etc. map onto the right `make`
-invocations with the right `GAME_VERSION` / `COMPARE` flags.
+Wraps pret's Meson build behind a chiri-style subcommand CLI so that
+`chiri pkg build`, `chiri pkg test`, etc. map onto the right `meson` / `ninja`
+invocations for each game. The first build of a game configures it through the
+top-level Makefile (`make GAME_VERSION=... setup_rom`), which also fetches
+meson and metroskrew.
 """
 import argparse
+import json
 import logging
 import os
+import shutil
 import subprocess
 import sys
 from pathlib import Path
@@ -16,6 +20,7 @@ from typing import Mapping, MutableMapping, MutableSequence, Sequence
 _logger: logging.Logger = logging.getLogger(name="build_pokeheartgold")
 
 ROOT_DIR: Path = Path(__file__).resolve().parent.parent.parent
+MESON: Path = ROOT_DIR / "subprojects" / "meson-1.12.0" / "meson.py"
 
 HEARTGOLD: str = "heartgold"
 SOULSILVER: str = "soulsilver"
@@ -27,7 +32,7 @@ GAME_VERSION: Mapping[str, str] = {
     SOULSILVER: "SOULSILVER",
 }
 
-MAKE_TARGETS: Sequence[str] = ("all", "main", "sub", "filesystem")
+TARGETS: Sequence[str] = ("all", "main", "sub", "filesystem")
 
 
 def main() -> None:
@@ -52,9 +57,9 @@ def main() -> None:
     elif command == "compare" or command == "test":
         build(args=args, rest=rest, compare=True)
     elif command == "clean":
-        clean(args=args, rest=rest)
+        clean(args=args)
     elif command == "tidy":
-        tidy(args=args, rest=rest)
+        tidy(args=args)
     elif command == "format":
         format_tree(args=args, rest=rest)
     elif command == "help" or command is None:
@@ -67,55 +72,56 @@ def main() -> None:
 def create_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(
         prog="build_pokeheartgold",
-        description="Meta-build wrapper around the pokeheartgold Makefile.",
+        description="Meta-build wrapper around pret's Meson build.",
     )
     subparsers = parser.add_subparsers(dest="command")
 
     build_parser = subparsers.add_parser(
         "build",
-        help="Build the ROM (or a partial target).",
+        help="Build the ROM (or a partial target), then run the sha1 tests.",
     )
     _add_game_arg(build_parser)
     build_parser.add_argument(
         "--target",
-        choices=MAKE_TARGETS,
+        choices=TARGETS,
         default="all",
-        help="Which sub-target to build (default: all = full ROM).",
+        help="What to build: all = the ROM, main = the ARM9 binary (main.nef), "
+        "sub = the ARM7 binary, filesystem = the NitroFS files (default: all).",
     )
     build_parser.add_argument(
         "--no-compare",
         action="store_true",
-        help="Skip the retail SHA1 verification (pass COMPARE=0).",
+        help="Skip the sha1 tests against the retail hashes.",
     )
     _add_jobs_arg(build_parser)
 
     compare_parser = subparsers.add_parser(
         "compare",
-        help="Build and verify against retail SHA1 (COMPARE=1).",
+        help="Build the ROM and run the sha1 tests (main, sub, filesystem, ROM).",
     )
     _add_game_arg(compare_parser)
     _add_jobs_arg(compare_parser)
 
     test_parser = subparsers.add_parser(
         "test",
-        help="Alias for `compare` — the decomp's matching check is its test.",
+        help="Alias for `compare`: the decomp's matching check is its test.",
     )
     _add_game_arg(test_parser)
     _add_jobs_arg(test_parser)
-    # `test` uses the same downstream code path as compare; give it the same
-    # shape as `build` so arg lookups are uniform.
+    # `test` and `compare` share build()'s code path; give them the same shape
+    # as `build` so arg lookups are uniform.
     test_parser.set_defaults(target="all", no_compare=False)
     compare_parser.set_defaults(target="all", no_compare=False)
 
     clean_parser = subparsers.add_parser(
         "clean",
-        help="Full clean (make clean, incl. lib/dsprot, lib/syscall, tools).",
+        help="Delete the game's build directory (the next build reconfigures).",
     )
     _add_game_arg(clean_parser)
 
     tidy_parser = subparsers.add_parser(
         "tidy",
-        help="Shallow clean (make tidy) — keeps generated tools.",
+        help="Delete build outputs but keep the configuration (ninja -t clean).",
     )
     _add_game_arg(tidy_parser)
 
@@ -144,7 +150,7 @@ def _add_jobs_arg(parser: argparse.ArgumentParser) -> None:
         "--jobs",
         type=int,
         default=None,
-        help="Parallel jobs to pass to make (e.g. -j4).",
+        help="Parallel jobs for ninja (e.g. -j8). Default: ninja's own choice.",
     )
 
 
@@ -154,96 +160,133 @@ def _games_for(args: argparse.Namespace) -> Sequence[str]:
     return (args.game,)
 
 
-def _make_env(game: str) -> MutableMapping[str, str]:
+def build_dir(game: str) -> Path:
+    return ROOT_DIR / "build" / f"{game}.us"
+
+
+def _env() -> MutableMapping[str, str]:
     env: MutableMapping[str, str] = os.environ.copy()
-    env["GAME_VERSION"] = GAME_VERSION[game]
+    # meson reads $NINJA as the name of one program; a value with arguments
+    # ("ninja -j8") makes configure fail with "Could not detect Ninja".
+    env.pop("NINJA", None)
+    # makelcf (built from the NitroSDK subproject) needs a modern bison and
+    # flex; Homebrew installs them keg-only, behind macOS's 2006-era bison.
+    extra = [
+        p
+        for p in ("/opt/homebrew/opt/bison/bin", "/opt/homebrew/opt/flex/bin")
+        if os.path.isdir(p)
+    ]
+    if extra:
+        env["PATH"] = os.pathsep.join(extra + [env.get("PATH", "")])
     return env
 
 
-def _make_bin() -> str:
-    # Apple's bundled GNU Make 3.81 hangs in its parallel dependency walk on
-    # large invalidations (see tools/decomp_harness/TODO.md); prefer a newer
-    # GNU Make when one is available. MAKE_BIN overrides; sub-makes inherit
-    # whichever binary we pick via $(MAKE).
-    override = os.environ.get("MAKE_BIN")
-    if override:
-        return override
-    for candidate in ("/opt/homebrew/bin/gmake", "/usr/local/bin/gmake"):
-        if os.access(candidate, os.X_OK):
-            return candidate
-    return "make"
-
-
-def _run_make(
-    targets: Sequence[str],
-    game: str,
-    jobs: int | None,
-    compare: bool,
-    rest: Sequence[str],
-) -> None:
-    cmd: MutableSequence[str] = [_make_bin()]
-
-    if jobs is not None:
-        cmd.append(f"-j{jobs}")
-
-    cmd.extend(targets)
-
-    if not compare:
-        cmd.append("COMPARE=0")
-
-    # Let the caller pass extra make variables / flags after `--`.
-    cmd.extend(rest)
-
-    env: MutableMapping[str, str] = _make_env(game)
-
-    get_logger().info(
-        f"[{game}] $ GAME_VERSION={env['GAME_VERSION']} {' '.join(cmd)}"
-    )
+def _run(cmd: Sequence[str], what: str) -> None:
+    get_logger().info(f"$ {' '.join(cmd)}")
     try:
-        subprocess.run(cmd, check=True, cwd=ROOT_DIR, env=env)
+        subprocess.run(cmd, check=True, cwd=ROOT_DIR, env=_env())
     except subprocess.CalledProcessError as e:
-        get_logger().error(f"make failed: {e}")
+        get_logger().error(f"{what} failed: {e}")
         sys.exit(e.returncode or 1)
 
 
-def build(
-    args: argparse.Namespace, rest: Sequence[str], compare: bool
-) -> None:
-    target: str = args.target
-    # `make` with no target builds the full ROM via the `all` rule; the other
-    # named targets (`main`, `sub`, `filesystem`) rebuild just that slice.
-    targets: Sequence[str] = () if target == "all" else (target,)
+def ensure_configured(game: str) -> None:
+    if (build_dir(game) / "build.ninja").is_file() and MESON.is_file():
+        return
+    _run(["make", f"GAME_VERSION={GAME_VERSION[game]}", "setup_rom"], "configure")
 
+
+def ensure_subprojects_current() -> None:
+    """Check out each wrap-git subproject at its .wrap's revision.
+
+    Meson fetches a subproject once and never moves it, so after a pull that
+    bumps a .wrap (e.g. NitroDWC for pret #523) the old checkout keeps building
+    against the old headers and fails in confusing ways."""
+    for wrap in sorted((ROOT_DIR / "subprojects").glob("*.wrap")):
+        fields: MutableMapping[str, str] = {}
+        for line in wrap.read_text().splitlines():
+            key, sep, value = line.partition("=")
+            if sep:
+                fields[key.strip()] = value.strip()
+        rev, directory = fields.get("revision"), fields.get("directory")
+        if not rev or not directory:
+            continue
+        checkout = ROOT_DIR / "subprojects" / directory
+        if not (checkout / ".git").exists():
+            continue  # not fetched yet; configure fetches it at the right revision
+        head = subprocess.run(
+            ["git", "-C", str(checkout), "rev-parse", "HEAD"],
+            capture_output=True,
+            text=True,
+        ).stdout.strip()
+        if head and head != rev:
+            get_logger().info(f"{directory} is at {head[:9]}, {wrap.name} wants {rev[:9]}")
+            _run(
+                [sys.executable, str(MESON), "subprojects", "update", "--sourcedir", str(ROOT_DIR), wrap.stem],
+                "subproject update",
+            )
+
+
+def _filesystem_targets(game: str) -> Sequence[str]:
+    """Ninja paths of every custom target defined under files/ (the NitroFS)."""
+    out = subprocess.run(
+        [sys.executable, str(MESON), "introspect", str(build_dir(game)), "--targets"],
+        capture_output=True,
+        text=True,
+        check=True,
+        cwd=ROOT_DIR,
+    ).stdout
+    paths: MutableSequence[str] = []
+    for t in json.loads(out):
+        if f"{os.sep}files{os.sep}" in t["defined_in"]:
+            paths.extend(os.path.relpath(f, build_dir(game)) for f in t["filename"])
+    return paths
+
+
+def build(args: argparse.Namespace, rest: Sequence[str], compare: bool) -> None:
+    if MESON.is_file():
+        ensure_subprojects_current()
     for game in _games_for(args):
-        _run_make(
-            targets=targets,
-            game=game,
-            jobs=args.jobs,
-            compare=compare,
-            rest=rest,
-        )
+        ensure_configured(game)
+        bdir = str(build_dir(game))
+        jobs = [f"-j{args.jobs}"] if args.jobs else []
+
+        if args.target == "filesystem":
+            _run(["ninja", "-C", bdir, *jobs, *_filesystem_targets(game), *rest], "build")
+        else:
+            name = {
+                "all": f"poke{game}.us.nds",
+                "main": "main",
+                "sub": "ichneumon_sub",
+            }[args.target]
+            _run(
+                [sys.executable, str(MESON), "compile", "-C", bdir, *jobs, name, *rest],
+                "build",
+            )
+
+        if compare:
+            # The tests depend on the ROM (a fork edit to meson.build, see
+            # tools/decomp_harness/MESON_SYNC_PLAN.md D7), so this rebuilds it
+            # first and can't pass on stale files.
+            _run(
+                [sys.executable, str(MESON), "test", "-C", bdir, "--print-errorlogs"],
+                "compare",
+            )
 
 
-def clean(args: argparse.Namespace, rest: Sequence[str]) -> None:
+def clean(args: argparse.Namespace) -> None:
     for game in _games_for(args):
-        _run_make(
-            targets=("clean",),
-            game=game,
-            jobs=None,
-            compare=True,
-            rest=rest,
-        )
+        bdir = build_dir(game)
+        if bdir.is_dir():
+            get_logger().info(f"Removing {bdir}")
+            shutil.rmtree(bdir)
 
 
-def tidy(args: argparse.Namespace, rest: Sequence[str]) -> None:
+def tidy(args: argparse.Namespace) -> None:
     for game in _games_for(args):
-        _run_make(
-            targets=("tidy",),
-            game=game,
-            jobs=None,
-            compare=True,
-            rest=rest,
-        )
+        bdir = build_dir(game)
+        if (bdir / "build.ninja").is_file():
+            _run(["ninja", "-C", str(bdir), "-t", "clean"], "tidy")
 
 
 def format_tree(args: argparse.Namespace, rest: Sequence[str]) -> None:

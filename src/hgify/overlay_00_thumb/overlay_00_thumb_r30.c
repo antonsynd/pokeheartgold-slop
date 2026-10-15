@@ -5,6 +5,13 @@
 
 #include "overlay_00_thumb.h"
 #include "unk_02037C94.h"
+
+// Called as matched, before the real SDK headers declared these (#22, R10).
+#define DWC_GetLastErrorEx(...) ((int (*)(s32 * arg0, s32 * arg1)) DWC_GetLastErrorEx)(__VA_ARGS__)
+
+// Upstream renamed these and its header still declares the old names (#22).
+void DWC_ClearError(void);
+
 typedef struct Ctx {
     u8 pad[0xfc0];
     void (*cb)(int);
@@ -14,8 +21,8 @@ typedef struct Ctx {
     u8 flag;
 } Ctx;
 extern Ctx *_0221A680;
-void ov00_021EC8D8(void);
-void ov00_021ED9B4(void);
+void DWC_CleanupInet(void);
+void DWC_ShutdownFriendsMatch(void);
 // FUNCTION ov00_021E6690: matching C (agent5)
 #pragma force_active on
 s32 ov00_021E6690(void) {
@@ -23,7 +30,7 @@ s32 ov00_021E6690(void) {
     s32 b;
     s32 r;
     s32 ret = 0;
-    r = ov00_021EC11C(&a, &b);
+    r = DWC_GetLastErrorEx(&a, &b);
     if (r != 0) {
         ret = a;
         if (a == 0 || b == 1) {
@@ -31,10 +38,10 @@ s32 ov00_021E6690(void) {
         }
         switch (b) {
         case 1:
-            ov00_021EC210();
+            DWC_ClearError();
             break;
         case 2:
-            ov00_021EC210();
+            DWC_ClearError();
             break;
         case 3:
         case 4:
@@ -53,15 +60,15 @@ s32 ov00_021E6690(void) {
                 case 16:
                 case 17:
                 case 18:
-                    ov00_021ED9B4();
+                    DWC_ShutdownFriendsMatch();
                 case 0:
                 case 1:
                 case 2:
                     if (sub_0203993C() != 0x21) {
-                        ov00_021EC8D8();
+                        DWC_CleanupInet();
                     }
                 default:
-                    ov00_021EC210();
+                    DWC_ClearError();
                 }
             }
             if (_0221A680 != 0) {

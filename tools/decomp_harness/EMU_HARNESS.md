@@ -25,7 +25,7 @@ Current backlog (`emu/symbols.py stats`):
 
 | | functions | unnamed |
 |---|---|---|
-| whole ARM9 (`main.elf`) | 34,519 | 23,412 |
+| whole ARM9 (`main.nef`) | 34,519 | 23,412 |
 | static module (`main`) | 11,116 | 3,543 |
 | `field` overlay (ov1) | 1,763 | 1,355 |
 
@@ -33,18 +33,18 @@ Current backlog (`emu/symbols.py stats`):
 
 ```
 tools/decomp_harness/emu/
-  symbols.py     overlay-aware symbol table from build/<game>/main.elf
+  symbols.py     overlay-aware symbol table from build/<game>/main.nef
   harness.py     DeSmuME wrapper: input, overlay tracking, hooks, savestates
   scenarios.json scenario graph (committed)      scenarios.py  materialize/explore
   trace.py       one experiment -> JSON evidence record
 build/<game>/emu/
-  symbols.json   cache (keyed on main.elf mtime)
+  symbols.json   cache (keyed on main.nef mtime)
   states/<name>.dst + .json sidecar + .png      regenerable, never committed
 tools/decomp_harness/naming_evidence.jsonl      append-only experiment log (trace.py --record)
 tools/decomp_harness/naming_proposals.jsonl     name proposals awaiting a rename pass (section 6)
 ```
 
-**Symbol table.** `arm-none-eabi-readelf -s` over `main.elf` yields ~43k
+**Symbol table.** `arm-none-eabi-readelf -s` over `main.nef` yields ~43k
 symbols. Each overlay is its own ELF section (`OVY_38`, `field`,
 `intro_title`), and the linker emits `SDK_OVERLAY_<section>_ID` constants, so
 every symbol knows its overlay id. Overlays share address ranges (`0x0221BA00`

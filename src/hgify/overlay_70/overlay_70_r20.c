@@ -25,10 +25,10 @@ struct S {
 };
 typedef int (*Fn)(S *, int);
 void *OverlayManager_GetData(void *);
-void ov00_021ECB40(void);
+void DWC_UpdateConnection(void);
 void ov70_022378DC(void);
 int sub_02034DB8(void);
-void ov00_021EC294(void *, void *);
+void DWC_SetMemFunc(void *, void *);
 void ov70_02238DF8(void);
 void ov70_02238E20(void);
 extern int ov70_02246944;
@@ -49,13 +49,13 @@ void SpriteList_RenderAndAnimateSprites(void *);
 #pragma force_active on
 BOOL ov70_022385C0(void *man, int *state) {
     S *s = OverlayManager_GetData(man);
-    ov00_021ECB40();
+    DWC_UpdateConnection();
     ov70_022378DC();
     switch (*state) {
     case 0:
         if (sub_02034DB8()) {
             ov70_02246944 = s->heap;
-            ov00_021EC294(ov70_02238DF8, ov70_02238E20);
+            DWC_SetMemFunc(ov70_02238DF8, ov70_02238E20);
             *state = 1;
         }
         break;

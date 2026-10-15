@@ -26,14 +26,14 @@ extern Ctx *_0221A680;
 extern char _02216034[];
 extern char _02216414[];
 extern void ov00_021E7300(void);
-extern int ov00_021F14D4(int, void *, int);
-extern int ov00_021F13A4(int, void *, ...);
+extern int DWC_SetMatchingOption(int, void *, int);
+extern int DWC_AddMatchKeyString(int, void *, ...);
 extern int sprintf(char *, const char *, ...);
-extern void ov00_021EDF1C(u8, void *, void *, int, void *, int);
-extern void ov00_021F989C(void *);
-extern void ov00_021F98BC(void *);
-extern void ov00_021EE24C(void *, int);
-extern void ov00_021F98DC(void *);
+extern void DWC_ConnectToAnybodyAsync(u8, void *, void *, int, void *, int);
+extern void DWC_SetUserSendCallback(void *);
+extern void DWC_SetUserRecvCallback(void *);
+extern void DWC_SetConnectionClosedCallback(void *, int);
+extern void DWC_SetUserRecvTimeoutCallback(void *);
 extern void ov00_021E63CC(void);
 extern void ov00_021E6424(void);
 extern void ov00_021E6428(void);
@@ -52,10 +52,10 @@ int ov00_021E5CEC(int a, u32 b, int c, int d) {
     ov00_021E7300();
     P v = _0221602C;
     v.b = d * 1000;
-    if (ov00_021F14D4(0, &v, 8) != 0) {
+    if (DWC_SetMatchingOption(0, &v, 8) != 0) {
         GF_AssertFail();
     }
-    if (ov00_021F13A4(0, _02216414, a) == 0) {
+    if (DWC_AddMatchKeyString(0, _02216414, a) == 0) {
         GF_AssertFail();
     }
     MI_CpuFill8(_0221A680->buf, 0, 0x80);
@@ -64,16 +64,16 @@ int ov00_021E5CEC(int a, u32 b, int c, int d) {
         GF_AssertFail();
     }
     if (c != 0) {
-        ov00_021F13A4(1, _0221A680->buf, _0221A680->buf);
+        DWC_AddMatchKeyString(1, _0221A680->buf, _0221A680->buf);
     }
     _0221A680->state = 5;
     _0221A680->f107c = b;
-    ov00_021EDF1C(b, _0221A680->buf, ov00_021E63CC, 0, ov00_021E6424, 0);
+    DWC_ConnectToAnybodyAsync(b, _0221A680->buf, ov00_021E63CC, 0, ov00_021E6424, 0);
     _0221A680->f1074 = 0;
-    ov00_021F989C(ov00_021E6428);
-    ov00_021F98BC(ov00_021E6484);
-    ov00_021EE24C(ov00_021E6554, 0);
-    ov00_021F98DC(ov00_021E6240);
+    DWC_SetUserSendCallback(ov00_021E6428);
+    DWC_SetUserRecvCallback(ov00_021E6484);
+    DWC_SetConnectionClosedCallback(ov00_021E6554, 0);
+    DWC_SetUserRecvTimeoutCallback(ov00_021E6240);
     _0221A680->f1078 = 0;
     _0221A680->f10e5 = 1;
     return 1;

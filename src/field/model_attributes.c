@@ -15,21 +15,22 @@
 
 #include "heap.h"
 
-struct NNSG3dResMdl;
+// Called as matched, before the real SDK headers declared these (#22, R10).
+#define NNS_G3dMdlSetMdlDiffAll(...)            ((void (*)(struct NNSG3dResMdl * model, GXRgb val)) NNS_G3dMdlSetMdlDiffAll)(__VA_ARGS__)
+#define NNS_G3dMdlSetMdlAmbAll(...)             ((void (*)(struct NNSG3dResMdl * model, GXRgb val)) NNS_G3dMdlSetMdlAmbAll)(__VA_ARGS__)
+#define NNS_G3dMdlSetMdlSpecAll(...)            ((void (*)(struct NNSG3dResMdl * model, GXRgb val)) NNS_G3dMdlSetMdlSpecAll)(__VA_ARGS__)
+#define NNS_G3dMdlSetMdlEmiAll(...)             ((void (*)(struct NNSG3dResMdl * model, GXRgb val)) NNS_G3dMdlSetMdlEmiAll)(__VA_ARGS__)
+#define NNS_G3dMdlSetMdlLightEnableFlagAll(...) ((void (*)(struct NNSG3dResMdl * model, u32 val)) NNS_G3dMdlSetMdlLightEnableFlagAll)(__VA_ARGS__)
+#define NNS_G3dMdlSetMdlPolygonModeAll(...)     ((void (*)(struct NNSG3dResMdl * model, u32 val)) NNS_G3dMdlSetMdlPolygonModeAll)(__VA_ARGS__)
+#define NNS_G3dMdlSetMdlCullModeAll(...)        ((void (*)(struct NNSG3dResMdl * model, u32 val)) NNS_G3dMdlSetMdlCullModeAll)(__VA_ARGS__)
+#define NNS_G3dMdlSetMdlPolygonIDAll(...)       ((void (*)(struct NNSG3dResMdl * model, u32 val)) NNS_G3dMdlSetMdlPolygonIDAll)(__VA_ARGS__)
+#define NNS_G3dMdlSetMdlAlphaAll(...)           ((void (*)(struct NNSG3dResMdl * model, u32 val)) NNS_G3dMdlSetMdlAlphaAll)(__VA_ARGS__)
+#define NNS_G3dMdlSetMdlDepthTestCondAll(...)   ((void (*)(struct NNSG3dResMdl * model, u32 val)) NNS_G3dMdlSetMdlDepthTestCondAll)(__VA_ARGS__)
+#define NNS_G3dMdlSetMdl1DotAll(...)            ((void (*)(struct NNSG3dResMdl * model, u32 val)) NNS_G3dMdlSetMdl1DotAll)(__VA_ARGS__)
+#define NNS_G3dMdlSetMdlFarClipAll(...)         ((void (*)(struct NNSG3dResMdl * model, u32 val)) NNS_G3dMdlSetMdlFarClipAll)(__VA_ARGS__)
+#define NNS_G3dMdlSetMdlXLDepthUpdateAll(...)   ((void (*)(struct NNSG3dResMdl * model, u32 val)) NNS_G3dMdlSetMdlXLDepthUpdateAll)(__VA_ARGS__)
 
-extern void NNS_G3dMdlSetMdlDiffAll(struct NNSG3dResMdl *model, GXRgb val);
-extern void NNS_G3dMdlSetMdlAmbAll(struct NNSG3dResMdl *model, GXRgb val);
-extern void NNS_G3dMdlSetMdlSpecAll(struct NNSG3dResMdl *model, GXRgb val);
-extern void NNS_G3dMdlSetMdlEmiAll(struct NNSG3dResMdl *model, GXRgb val);
-extern void NNS_G3dMdlSetMdlLightEnableFlagAll(struct NNSG3dResMdl *model, u32 val);
-extern void NNS_G3dMdlSetMdlPolygonModeAll(struct NNSG3dResMdl *model, u32 val);
-extern void NNS_G3dMdlSetMdlCullModeAll(struct NNSG3dResMdl *model, u32 val);
-extern void NNS_G3dMdlSetMdlPolygonIDAll(struct NNSG3dResMdl *model, u32 val);
-extern void NNS_G3dMdlSetMdlAlphaAll(struct NNSG3dResMdl *model, u32 val);
-extern void NNS_G3dMdlSetMdlDepthTestCondAll(struct NNSG3dResMdl *model, u32 val);
-extern void NNS_G3dMdlSetMdl1DotAll(struct NNSG3dResMdl *model, u32 val);
-extern void NNS_G3dMdlSetMdlFarClipAll(struct NNSG3dResMdl *model, u32 val);
-extern void NNS_G3dMdlSetMdlXLDepthUpdateAll(struct NNSG3dResMdl *model, u32 val);
+struct NNSG3dResMdl;
 
 void ov01_021EA9B0(ModelAttributes *modelAttributes, struct NNSG3dResMdl *model, u32 flags);
 void ov01_021EAAB8(ModelAttributes *modelAttributes, int lightId, fx16 x, fx16 y, fx16 z);

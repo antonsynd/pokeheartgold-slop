@@ -11,7 +11,7 @@
 
 #include "constants/gx.h"
 
-#include "msgdata/msg.naix"
+#include "files/msgdata/msg.naix"
 
 #include "bg_window.h"
 #include "filesystem.h"
@@ -35,11 +35,13 @@
 #include "touchscreen.h"
 #include "unk_02013FDC.h"
 
+// Called as matched, before the real SDK headers declared these (#22, R10).
+#define MATH_CountPopulation(...) ((int (*)(u32 x))MATH_CountPopulation)(__VA_ARGS__)
+
 #undef AddTextPrinterParameterizedWithColor
 u8 AddTextPrinterParameterizedWithColor(Window *window, u32 fontId, String *string, u32 x, u32 y, u32 textSpeed, u32 color, PrinterCallback_t callback);
 
 // NitroSDK MATH; declared locally like the other consumers (unk_02096C88.c).
-extern int MATH_CountPopulation(u32 x);
 
 #define OV98_MON_PIC_BUFFER_SIZE 0xC80
 #define OV98_NUM_STATS           10
@@ -376,7 +378,7 @@ Ov98TextSys *ov98_0221EABC(enum HeapID heapId, BgConfig *bgConfig, int windowCou
         FillWindowPixelBuffer(&textSys->windows[i], 0);
         ClearWindowTilemap(&textSys->windows[i]);
     }
-    textSys->commonMsgData = NewMsgDataFromNarc(MSGDATA_LOAD_LAZY, NARC_msgdata_msg, NARC_msg_msg_0237_bin, heapId);
+    textSys->commonMsgData = NewMsgDataFromNarc(MSGDATA_LOAD_LAZY, NARC_msgdata_msg, msg_0237, heapId);
     textSys->msgData = NewMsgDataFromNarc(MSGDATA_LOAD_LAZY, NARC_msgdata_msg, msgBank, heapId);
     textSys->msgFmt = MessageFormat_New(heapId);
     textSys->string = String_New(0x400, heapId);

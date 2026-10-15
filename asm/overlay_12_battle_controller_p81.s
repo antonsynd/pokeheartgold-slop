@@ -1,4 +1,4 @@
-	.include "asm/macros.inc"
+	.include "macros.inc"
 	.include "overlay_12_battle_controller.inc"
 	.include "global.inc"
 	.public ov12_022643C8

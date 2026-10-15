@@ -2,11 +2,14 @@
 #pragma warning_errors off
 #pragma thumb on
 #include "global.h"
+
+// Called as matched, before the real SDK headers declared these (#22, R10).
+#define WM_Init(...) ((int (*)(void *wmBuf, u16 dmaNo))WM_Init)(__VA_ARGS__)
+
 extern void *ov74_02231054(void);
 extern u8 *ov74_0223105C(void);
 extern int ov74_02230A74(void);
 extern int ov74_02230A7C(void);
-extern int WM_Init(void *wmBuf, u16 dmaNo);
 extern u32 ov74_02230A14(void);
 extern void ov74_02231194(void);
 extern u8 *ov74_02231184(void);

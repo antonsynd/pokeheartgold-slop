@@ -3,13 +3,6 @@
 #pragma thumb on
 #include "global.h"
 
-typedef struct WMParentParam {
-    u8 unk_00[0x0C];
-    u16 tgid;
-    u8 unk_0E[0x18 - 0x0E];
-    u16 beaconPeriod;
-} WMParentParam;
-
 WMParentParam *ov74_02231054(void);
 u16 WM_GetDispersionBeaconPeriod(void);
 u16 WM_GetNextTgid(void);

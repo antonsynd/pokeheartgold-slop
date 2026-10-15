@@ -1,4 +1,4 @@
-#include <nitro/fs/overlay.h>
+
 #pragma once
 .public GridInputHandler_Create
 .public GridInputHandler_Free

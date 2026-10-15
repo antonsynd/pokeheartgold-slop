@@ -3,6 +3,10 @@
 #pragma thumb on
 // clang-format off
 #include "global.h"
+
+// Called as matched, before the real SDK headers declared these (#22, R10).
+#define WM_End(...) ((int (*)(void (*callback)(void)))WM_End)(__VA_ARGS__)
+
 // clang-format on
 
 #define WM_ERRCODE_OPERATING 2
@@ -16,7 +20,6 @@ typedef struct UnkStruct_ov74_022365AC {
 
 extern int ov74_0223E2FC;
 
-int WM_End(void (*callback)(void));
 void ov74_02236168(int param0);
 void ov74_022364C0(void);
 

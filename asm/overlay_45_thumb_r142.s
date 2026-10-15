@@ -1,5 +1,5 @@
 #include "config.h"
-	.include "asm/macros.inc"
+	.include "macros.inc"
 	.include "overlay_45_thumb.inc"
 	.include "global.inc"
 	.public ov45_0222B8A0

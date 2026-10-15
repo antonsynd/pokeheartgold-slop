@@ -1,5 +1,5 @@
 #include "constants/moves.h"
-	.include "asm/macros.inc"
+	.include "macros.inc"
 	.include "overlay_08.inc"
 	.include "global.inc"
 	.public ov08_02221D2C

@@ -5,7 +5,10 @@
 
 #include "sav_system_info.h"
 #include "unk_0202C034.h"
-u64 DWC_CreateFriendKey(void *userData);
+
+// Called as matched, before the real SDK headers declared these (#22, R10).
+#define DWC_CreateFriendKey(...) ((u64(*)(void *userData))DWC_CreateFriendKey)(__VA_ARGS__)
+
 void ov70_022378C0(s32 profileId, u32 keyLo, u32 keyHi);
 s32 ov70_02244A04(u8 **work);
 // FUNCTION ov70_02244A04: matching C (r2)

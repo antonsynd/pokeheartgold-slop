@@ -13,15 +13,15 @@ typedef struct Ov00State {
 } Ov00State;
 extern Ov00State *_0221A680;
 extern int ov00_021E6790(void);
-extern u32 ov00_021EE4FC(void);
-extern void ov00_021F9750(u32 a, void *b, int c);
+extern u32 DWC_GetAIDBitmap(void);
+extern void DWC_SendReliableBitmap(u32 a, void *b, int c);
 // FUNCTION ov00_021E67E0: matching C (agent4)
 #pragma force_active on
 int ov00_021E67E0(int idx) {
-    if (_0221A680->flag == 0 && ov00_021E6790() != 0 && (ov00_021EE4FC() & 0xfffe) != 0) {
+    if (_0221A680->flag == 0 && ov00_021E6790() != 0 && (DWC_GetAIDBitmap() & 0xfffe) != 0) {
         _0221A680->flag = 1;
         _0221A680->unk0 = (_0221A680->val << 8) | 2;
-        ov00_021F9750(ov00_021EE4FC(), _0221A680, 4);
+        DWC_SendReliableBitmap(DWC_GetAIDBitmap(), _0221A680, 4);
         *(u32 *)((u8 *)_0221A680 + idx * 4 + 0x10AC) = 0;
         return 1;
     }

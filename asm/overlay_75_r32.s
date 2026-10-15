@@ -1,4 +1,4 @@
-	.include "asm/macros.inc"
+	.include "macros.inc"
 	.include "overlay_75.inc"
 	.include "global.inc"
 	.public ov75_02246F0C
@@ -137,7 +137,7 @@ ov75_02246F0C: ; 0x02246F0C
 	beq _0224705E
 	b _02247074
 _02247032:
-	bl ov00_021EC5B4
+	bl DWC_CheckInet
 	cmp r0, #0
 	bne _02247058
 	ldr r0, [r5]

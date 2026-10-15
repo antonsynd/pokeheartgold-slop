@@ -3,11 +3,6 @@
 #include "global.h"
 #pragma thumb on
 typedef struct {
-    u64 x;
-    u64 mul;
-    u64 add;
-} MATHRandContext32;
-typedef struct {
     u32 _[0x68 / 4];
 } DWCInetControl;
 typedef enum {

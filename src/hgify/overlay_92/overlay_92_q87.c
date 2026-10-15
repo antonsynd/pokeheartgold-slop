@@ -2,6 +2,10 @@
 #pragma warning_errors off
 #pragma thumb on
 #include "global.h"
+
+// Called as matched, before the real SDK headers declared these (#22, R10).
+#define MTX_MultVec43(...) ((void (*)(Vec3_ov92 * src, void *mtx, void *dst)) MTX_MultVec43)(__VA_ARGS__)
+
 typedef struct Work_ov92 {
     u8 filler_000[0x114];
     u8 unk_114[0x30c - 0x114];
@@ -34,7 +38,6 @@ void System_GetTouchHeldCoords(int *x, int *y);
 int TouchscreenHitbox_FindHitboxAtPoint(const void *hitbox, int x, int y);
 void ov92_02260628(void *obj, float f);
 void ov92_02260428(void *obj, int x, int y, int px, int py, float f, int flag);
-void MTX_MultVec43(Vec3_ov92 *src, void *mtx, void *dst);
 int IsSEPlaying(int se);
 void PlaySE(int se);
 void ov92_02260A38(Work_ov92 *work, s16 x, s16 y);

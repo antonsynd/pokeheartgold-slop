@@ -1,4 +1,4 @@
-	.include "asm/macros.inc"
+	.include "macros.inc"
 	.include "unk_020210A0.inc"
 	.include "global.inc"
 	.public _021D2198

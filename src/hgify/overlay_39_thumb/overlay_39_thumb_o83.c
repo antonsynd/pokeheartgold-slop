@@ -7,11 +7,17 @@
 #include "system.h"
 #include "unk_02037C94.h"
 #include "unk_0203A3B0.h"
+
+// Called as matched, before the real SDK headers declared these (#22, R10).
+#define DWC_SetAuthServer(...) ((void (*)(s32 arg0))DWC_SetAuthServer)(__VA_ARGS__)
+#define DWC_InitInetEx(...)    ((void (*)(int a, int b, int c, int d))DWC_InitInetEx)(__VA_ARGS__)
+
+// Upstream renamed these and its header still declares the old names (#22).
+
 void ov39_02228B04(int *p, int a, int b, int c, int d);
 void ov39_02228A8C(int *p);
 int ov39_02228A70(int a);
-void ov00_021EC3F0(int a, int b, int c, int d);
-void ov00_021EC4A4(void);
+void DWC_ConnectInetAsync(void);
 // FUNCTION ov39_02228C78: matching C (agent19)
 #pragma force_active on
 int ov39_02228C78(int *param_1) {
@@ -34,9 +40,9 @@ int ov39_02228C78(int *param_1) {
         }
         break;
     case 2:
-        ov00_021EC3F0(*param_1 + 0x14, 2, 1, 0x14);
-        ov00_021EC454(2);
-        ov00_021EC4A4();
+        DWC_InitInetEx(*param_1 + 0x14, 2, 1, 0x14);
+        DWC_SetAuthServer(2);
+        DWC_ConnectInetAsync();
         param_1[2] = 2;
         break;
     }

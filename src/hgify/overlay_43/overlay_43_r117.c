@@ -11,6 +11,10 @@
 #include "pm_string.h"
 #include "text.h"
 #include "unk_0202C034.h"
+
+// Called as matched, before the real SDK headers declared these (#22, R10).
+#define DWC_CreateFriendKey(...) ((unsigned long long (*)(void *a))DWC_CreateFriendKey)(__VA_ARGS__)
+
 typedef struct UnkStruct_ov43_0222CE48_A {
     Window unk_00;
     Window unk_10;
@@ -29,7 +33,6 @@ typedef struct UnkStruct_ov43_0222CE48_C {
     MsgData *unk_54;
     NARC *unk_58;
 } UnkStruct_ov43_0222CE48_C;
-extern unsigned long long DWC_CreateFriendKey(void *a);
 extern void ov43_0222AAA4(void *a, u32 lo, u32 hi);
 void ov43_0222CE48(UnkStruct_ov43_0222CE48_A *param0, UnkStruct_ov43_0222CE48_B *param1, UnkStruct_ov43_0222CE48_C *param2, enum HeapID heapID);
 // FUNCTION ov43_0222CE48: matching C (agent34)

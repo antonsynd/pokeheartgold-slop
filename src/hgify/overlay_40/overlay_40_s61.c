@@ -2,12 +2,6 @@
 #pragma warning_errors off
 #include "global.h"
 #pragma thumb on
-static inline void G2_ChangeBlendAlpha(int eva, int evb) {
-    (*(REGType16v *)(0x04000000 + 0x52)) = (u16)((eva << 0) | (evb << 8));
-}
-static inline void G2S_ChangeBlendAlpha(int eva, int evb) {
-    (*(REGType16v *)(0x04000000 + 0x1052)) = (u16)((eva << 0) | (evb << 8));
-}
 BOOL ov40_0222DA00(int *param0, int *param1, int param2, int param3);
 // FUNCTION ov40_0222DA00: matching C (pt2)
 #pragma force_active on

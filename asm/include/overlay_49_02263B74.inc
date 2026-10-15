@@ -1,4 +1,4 @@
-#include <nitro/fs/overlay.h>
+
 #pragma once
 .public IncrementGameStat47
 .public PlaySE

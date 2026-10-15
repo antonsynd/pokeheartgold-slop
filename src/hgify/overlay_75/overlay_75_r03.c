@@ -73,8 +73,6 @@ extern void *ov75_02246EAC(UnkStruct_ov75_Work *work);
 extern void ov75_02246EDC(UnkStruct_ov75_Work *work);
 extern void ov75_02249780(String *src, char *dest, enum HeapID heapID);
 extern BOOL ov75_02249838(String *str, enum HeapID heapID);
-extern void ov00_021EC294(void *(*alloc)(int, u32, int), void (*free)(int, void *));
-extern void ov00_021ECB40(void);
 extern void ov70_022378DC(void);
 extern UnkStruct_ov75_Dialog *sub_02085400(enum HeapID heapID, int a1, int *a2, Options *options, int a4, int a5);
 extern UnkStruct_ov75_Dialog *sub_0208541C(enum HeapID heapID, int a1, int *a2, Options *options, int a4, int a5, int a6, int a7);

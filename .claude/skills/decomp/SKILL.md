@@ -66,18 +66,23 @@ For the target `asm/<basename>.s`:
    For long tails of mechanical functions (getters/setters, save-chunk accessors) you may
    draft bodies via `tools/decomp_harness/delegate.sh` (local model) — drafts are untrusted;
    review against the patterns DB before building (see `tools/decomp_harness/DELEGATION.md`)
-4. **Update LSF**: In `main.lsf`, change `Object asm/<basename>.o` to `Object src/<basename>.o`
+4. **Save the asm reference, then update LSF**: Meson builds `asm/<basename>.s` only while
+   `main.lsf` links it, so copy its object before flipping:
+   `cp build/heartgold.us/main.nef.p/asm_<basename>.s.o /tmp/<basename>_asm.o`
+   (build once first if it's missing). Then
+   `python3 tools/decomp_harness/lsf_flip.py asm/<basename>.s src/<basename>.c` (swaps the `main.lsf` object and regenerates `src/meson.build` / `asm/meson.build`)
    (the LSF edit is only needed for the finalization link in step 10, not for the
    compile_one inner loop below — but make it now so it isn't forgotten)
-5. **Compile (inner loop)**: Run `tools/decomp_harness/compile_one.sh src/<basename>.c`
+5. **Compile (inner loop)**: Run `tools/decomp_harness/compile_one.sh src/<basename>.c --ref /tmp/<basename>_asm.o`
    (timeout 60000). This compiles the single TU standalone — NO full ARM9 link — and
-   objdiffs the result against the committed asm reference `build/heartgold.us/asm/<basename>.o`.
+   objdiffs the result against the asm reference saved in step 4. (Without `--ref` it looks for
+   `build/heartgold.us/main.nef.p/asm_<basename>.s.o`, which exists only while the asm is linked.)
    Iterate here: fix compile errors, reshape the C, re-run. One cycle is a few seconds
    versus ~45–120 s for a full link. (`--no-objdiff` for compile-only; `--game soulsilver`
    for the SS variant.)
 6. **Objdiff to green**: Keep iterating step 5 until objdiff reports all functions MATCH.
    For a byte-level view of a still-diffing function, run
-   `python3 tools/decomp_harness/objdiff.py build/heartgold.us/asm/<basename>.o \
+   `python3 tools/decomp_harness/objdiff.py /tmp/<basename>_asm.o \
    build/heartgold.us/compile_one/<basename>.o --bytes <fn>`.
 
 Iterate on step 5 until objdiff is green, then:
@@ -154,7 +159,7 @@ Iterate on step 5 until objdiff is green, then:
    re-encoded from the assembled `.o`):
    ```bash
    python3 tools/decomp_harness/nonmatch_fallback.py \
-     asm/<basename>.s build/heartgold.us/asm/<basename>.o <func> \
+     asm/<basename>.s /tmp/<basename>_asm.o <func> \
      [--sig 'void <func>(int a)']   # --sig only if no include/*.h or knowledge.json prototype
    ```
    Paste the block into `src/<basename>.c` at the function's position (order must
@@ -175,7 +180,7 @@ Iterate on step 5 until objdiff is green, then:
 
 ### Important Rules
 
-- Do NOT modify any file except `src/<basename>.c`, `include/<basename>.h`, the one line in `main.lsf`, and the harness state files named above
+- Do NOT modify any file except `src/<basename>.c`, `include/<basename>.h`, the one line in `main.lsf` (with the regenerated `src/meson.build` / `asm/meson.build`), and the harness state files named above
 - Do NOT delete or modify the original `.s` file
 - Function order in the C file must match the asm file exactly
 - Keep the build green — if something breaks, revert before moving on

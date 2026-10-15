@@ -25,7 +25,7 @@ typedef struct T {
 } T;
 extern void ov75_022494CC(T *, u32, int, int, int);
 extern int ov75_02249534(u32);
-extern void ov00_021EC8D8(void);
+extern void DWC_CleanupInet(void);
 extern void ov70_02237F2C(void);
 // FUNCTION ov75_022490D8: matching C (agent24)
 #pragma force_active on
@@ -39,7 +39,7 @@ int ov75_022490D8(T *t) {
         t->state = t->state + 1;
         break;
     case 1:
-        ov00_021EC8D8();
+        DWC_CleanupInet();
         sub_0203A914();
         sub_0203957C();
         Sys_ClearSleepDisableFlag(4);

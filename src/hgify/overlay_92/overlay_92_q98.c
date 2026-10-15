@@ -3,7 +3,7 @@
 #pragma thumb on
 // clang-format off
 #include "global.h"
-#include <nitro/fx.h>
+#include <nitro/fx/fx.h>
 #include "sprite_system.h"
 #include "sys_task_api.h"
 #include "screen_fade.h"

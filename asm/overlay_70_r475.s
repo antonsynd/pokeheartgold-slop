@@ -1,6 +1,6 @@
 #include "config.h"
 #include "constants/pokemon.h"
-	.include "asm/macros.inc"
+	.include "macros.inc"
 	.include "overlay_70.inc"
 	.include "global.inc"
 	.public ov70_022441A4

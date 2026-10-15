@@ -25,22 +25,20 @@ ATTESTATION="$REPO/build_attestation.json"
 
 compute_source_hash() {
     {
-        find asm src include sub \
+        # Game sources, plus lib/ (dsprot, syscall, NitroDWC asm), which the
+        # Meson build compiles from the tree.
+        find asm src include lib \
             \( -name '*.s' -o -name '*.c' -o -name '*.h' -o -name '*.inc' \) \
             -type f 2>/dev/null
+        # The build definition: every meson.build outside the subprojects,
+        # the toolchain files, and the pinned subproject wraps.
+        find . -name meson.build -not -path './subprojects/*' -not -path './build/*' \
+            -not -path './tools/metroskrew/*' -type f 2>/dev/null | sed 's|^\./||'
+        find meson subprojects/packagefiles -type f 2>/dev/null
+        ls subprojects/*.wrap 2>/dev/null
         echo main.lsf
-        echo global.inc
+        echo meson.options
         echo Makefile
-        echo common.mk
-        echo config.mk
-        echo platform.mk
-        echo binutils.mk
-        echo filesystem.mk
-        echo graphics_files_rules.mk
-        echo ARM9-TS.lcf.template
-        echo mwldarm.response.template
-        echo sub/Makefile
-        echo sub/ARM7-TS.lcf.template
     } | sort -u | while IFS= read -r f; do
         [ -f "$f" ] && shasum "$f"
     done | shasum | cut -d' ' -f1
@@ -82,7 +80,9 @@ SOURCE_HASH=$(compute_source_hash)
 echo "[attest] Source hash: $SOURCE_HASH"
 
 echo "[attest] Building and verifying against retail SHA1 ..."
-if timeout 2400 "$REPO/build_tools/bin/build_pokeheartgold" compare 2>&1 | tee /dev/stderr | tail -1 | grep -q 'OK$'; then
+# `compare` runs meson's sha1 tests, which rebuild the ROM first (MESON_SYNC_PLAN.md
+# D7); its exit status is the verdict.
+if timeout 2400 "$REPO/build_tools/bin/build_pokeheartgold" compare; then
     STATUS="MATCH"
     echo ""
     echo "[attest] ROM matches retail SHA1."

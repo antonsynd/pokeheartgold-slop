@@ -1,5 +1,5 @@
 #include "constants/pokemon.h"
-	.include "asm/macros.inc"
+	.include "macros.inc"
 	.include "overlay_14_021EE26C.inc"
 	.include "global.inc"
 	.public ov14_021EE87C

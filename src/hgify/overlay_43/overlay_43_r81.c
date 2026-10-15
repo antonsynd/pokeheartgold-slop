@@ -5,6 +5,10 @@
 
 #include "unk_02005D10.h"
 #include "unk_0202C034.h"
+
+// Called as matched, before the real SDK headers declared these (#22, R10).
+#define DWC_GetFriendKey(...) ((unsigned long long (*)(void *friendData))DWC_GetFriendKey)(__VA_ARGS__)
+
 typedef struct UnkStruct_ov43_0222C2B0_B {
     u8 padding_00[4];
     void *saveData;
@@ -12,7 +16,6 @@ typedef struct UnkStruct_ov43_0222C2B0_B {
     u8 unk_18[0x40];
 } UnkStruct_ov43_0222C2B0_B;
 extern u32 ov43_0222C620(void *a);
-extern unsigned long long DWC_GetFriendKey(void *friendData);
 extern void ov43_0222AAA4(void *a, u32 lo, u32 hi);
 extern void ov43_0222AB20(void *a, void *b, u32 c, u32 d);
 extern void ov43_0222C550(void *a, void *b, u32 c, u32 d);

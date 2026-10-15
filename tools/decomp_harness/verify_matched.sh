@@ -2,30 +2,28 @@
 #
 # verify_matched.sh — regression guard for already-matched TUs.
 #
-# A matched TU is one linked from source: an `Object src/....o` line in
-# main.lsf. This tool captures a fingerprint of every matched object and
+# A matched TU is one linked from source: a `main.nef.p/src_*.c.o` object line
+# in main.lsf. This tool captures a fingerprint of every matched object and
 # later recompiles each one standalone (via compile_one.sh) to prove the
 # committed C still produces the same machine code — catching regressions
 # introduced by header edits, shared-struct changes, or IPA cascades before
 # they reach a full `chiri pkg -- compare`.
 #
 # CWD-INDEPENDENCE (the whole reason this isn't a plain SHA1 manifest):
-# MWCC/Wine embed the shell's logical $PWD as the DWARF comp_dir, so the
-# .debug_* sections of an object depend on which directory the build was
-# driven from. The current retail baseline was built from a symlinked root
-# (/Users/anton/github/...), while compile_one runs from the real root — so
-# whole-file SHA1s would spuriously differ. We therefore fingerprint ONLY
-# the SHF_ALLOC sections (.text/.rodata/.data/.bss), which never carry
-# DWARF and are exactly the bytes that matter for matching. Proven identical
-# across CWDs; debug sections are the only thing that moves.
+# MWCC/Wine embed the working directory as the DWARF comp_dir, so the
+# .debug_* sections of an object depend on which checkout path the build ran
+# in, and a baseline built elsewhere would spuriously differ in a whole-file
+# SHA1. We therefore fingerprint ONLY the SHF_ALLOC sections
+# (.text/.rodata/.data/.bss), which never carry DWARF and are exactly the
+# bytes that matter for matching. Debug sections are the only thing that moves.
 #
 # Sections are hashed BY INDEX (an ELF object legitimately has several
 # same-named sections, e.g. two `.rodata`), so name collisions are handled.
 #
 # Usage:
 #   verify_matched.sh capture [--game G]
-#       Recapture the manifest from build/<game>.us/src/*.o for every
-#       matched TU. Run after every green `chiri pkg -- compare`.
+#       Recapture the manifest from build/<game>.us/main.nef.p/src_*.c.o for
+#       every matched TU. Run after every green `chiri pkg -- compare`.
 #
 #   verify_matched.sh check [--game G] [--file src/foo.c] [--quick N]
 #       Recompile matched TUs via compile_one.sh (serial) and diff their
@@ -48,6 +46,7 @@ cd "$PROJECT_ROOT"
 MANIFEST="$SCRIPT_DIR/matched_manifest.json"
 LSF="main.lsf"
 COMPILE_ONE="$SCRIPT_DIR/compile_one.sh"
+export HARNESS_DIR="$SCRIPT_DIR"  # the embedded Python imports asmscan/meson_names from here
 
 # --- embedded ELF allocatable-section hasher / manifest engine ----------
 # Written to a temp file so it can be called repeatedly without re-parsing.
@@ -55,6 +54,10 @@ PYHELP="$(mktemp "${TMPDIR:-/tmp}/verify_matched_py.XXXXXX")"
 trap 'rm -f "$PYHELP"' EXIT
 cat >"$PYHELP" <<'PYEOF'
 import struct, hashlib, sys, json, os
+
+sys.path.insert(0, os.environ['HARNESS_DIR'])
+import asmscan
+import meson_names
 
 SHF_ALLOC = 0x2
 SHT_NOBITS = 8
@@ -99,23 +102,17 @@ def fingerprint(path):
     return top.hexdigest(), per
 
 def matched_tus(lsf):
-    tus = []
-    with open(lsf) as f:
-        for line in f:
-            line = line.strip()
-            if line.startswith('Object src/') and line.endswith('.o'):
-                obj = line[len('Object '):]
-                tus.append(obj[:-2] + '.c')  # src/x.o -> src/x.c
-    return tus
+    """src/x.c for every C object main.lsf links (main.nef.p/src_x.c.o), in link order."""
+    root = os.path.dirname(os.path.abspath(lsf))
+    return ["src/%s.c" % o['name'] for o in asmscan.parse_lsf(root) if o['kind'] == 'src']
 
 def cmd_capture(game, lsf, out):
-    build = "build/%s/src" % game
     tus = matched_tus(lsf)
     entry = {}
     missing = []
     for c in tus:
-        rel = c[len('src/'):-2]           # strip src/ and .c
-        obj = os.path.join(build, rel + '.o')
+        # Meson's object for the TU: build/<game>/main.nef.p/src_<path with / -> _>.c.o
+        obj = os.path.join("build", game, meson_names.object_name(c))
         if not os.path.isfile(obj):
             missing.append(c)
             continue
@@ -208,7 +205,7 @@ while [[ $# -gt 0 ]]; do
         --file=*) ONE_FILE="${1#*=}"; shift ;;
         --quick) QUICK="${2:-}"; shift 2 ;;
         --quick=*) QUICK="${1#*=}"; shift ;;
-        -h|--help) sed -n '2,45p' "${BASH_SOURCE[0]}" | sed 's/^# \{0,1\}//'; exit 0 ;;
+        -h|--help) sed -n '2,38p' "${BASH_SOURCE[0]}" | sed 's/^# \{0,1\}//'; exit 0 ;;
         *) echo "verify_matched: unknown argument '$1'" >&2; exit 2 ;;
     esac
 done
@@ -245,7 +242,7 @@ if [[ -n "$ONE_FILE" ]]; then
     found=0
     for t in "${ALL_TUS[@]}"; do [[ "$t" == "$ONE_FILE" ]] && found=1 && break; done
     if [[ "$found" -ne 1 ]]; then
-        echo "verify_matched: '$ONE_FILE' is not a matched TU (no 'Object $ONE_FILE'->.o in $LSF)" >&2
+        echo "verify_matched: '$ONE_FILE' is not a matched TU (no main.nef.p object for it in $LSF)" >&2
         exit 2
     fi
     TUS=("$ONE_FILE")
@@ -260,7 +257,7 @@ total="${#TUS[@]}"
 echo "verify_matched: check mode — game=$BUILDNAME, $total TU(s), manifest=$MANIFEST"
 start=$(date +%s)
 
-# Compile each TU serially (compile_one invokes wine mwccarm). A PreToolUse
+# Compile each TU serially (compile_one invokes mwccarm via compile_cmd.py). A PreToolUse
 # guard may already have handled stale processes; we never kill anything.
 compile_fail=0
 declare -a OK_TUS=()

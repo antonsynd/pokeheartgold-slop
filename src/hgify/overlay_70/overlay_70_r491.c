@@ -4,6 +4,16 @@
 #include "global.h"
 
 #include "overlay_00_thumb.h"
+
+// Called as matched, before the real SDK headers declared these (#22, R10).
+#define DWC_GetLastErrorEx(...) ((int (*)(s32 * arg0, s32 * arg1)) DWC_GetLastErrorEx)(__VA_ARGS__)
+#define DWC_GetInetStatus(...)  ((int (*)(void))DWC_GetInetStatus)(__VA_ARGS__)
+#define DWC_GetLastError(...)   ((void (*)(void *))DWC_GetLastError)(__VA_ARGS__)
+#define DWC_GetApInfo(...)      ((void (*)(void *))DWC_GetApInfo)(__VA_ARGS__)
+
+// Upstream renamed these and its header still declares the old names (#22).
+void DWC_ClearError(void);
+
 typedef struct {
     u8 pad0[0x2c];
     int f2c;
@@ -13,12 +23,9 @@ typedef struct {
     int f44;
     int f48;
 } Obj;
-void ov00_021EC60C(void);
-int ov00_021EC5B4(void);
-int ov00_021EC724(void);
-void ov00_021EC0FC(void *);
-void ov00_021EC8D8(void);
-void ov00_021EC9E0(void *);
+void DWC_ProcessInet(void);
+int DWC_CheckInet(void);
+void DWC_CleanupInet(void);
 void ov70_02238F80(Obj *);
 // FUNCTION ov70_022448C0: matching C (agent14)
 #pragma force_active on
@@ -28,15 +35,15 @@ BOOL ov70_022448C0(Obj *obj) {
     int v1;
     u8 buf1[4];
 
-    ov00_021EC60C();
-    if (ov00_021EC5B4() != 0) {
-        switch (ov00_021EC724()) {
+    DWC_ProcessInet();
+    if (DWC_CheckInet() != 0) {
+        switch (DWC_GetInetStatus()) {
         case 7:
-            obj->f40 = ov00_021EC11C(&v2, &v1);
+            obj->f40 = DWC_GetLastErrorEx(&v2, &v1);
             obj->f44 = v2;
             obj->f48 = v1;
-            ov00_021EC210();
-            ov00_021EC8D8();
+            DWC_ClearError();
+            DWC_CleanupInet();
             ov70_02238F80(obj);
             obj->f2c = 0x17;
             break;
@@ -48,13 +55,13 @@ BOOL ov70_022448C0(Obj *obj) {
         case 6:
         case 8:
         default:
-            ov00_021EC0FC(buf1);
+            DWC_GetLastError(buf1);
             ov70_02238F80(obj);
             obj->f2c = 0x15;
             obj->f3c = -2;
             break;
         case 4:
-            ov00_021EC9E0(buf2);
+            DWC_GetApInfo(buf2);
             obj->f2c = 4;
             break;
         }

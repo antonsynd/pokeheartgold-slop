@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 #
 # Automated decompilation harness for pokeheartgold.
-# Iterates through assembly files in main.lsf, invokes Claude Code to
+# Iterates through assembly files linked in main.lsf, invokes Claude Code to
 # decompile each one to C, and verifies byte-for-byte matching.
 #
 # Usage:
@@ -20,6 +20,8 @@ set -euo pipefail
 
 SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
 PROJECT_ROOT="$(cd "$SCRIPT_DIR/../.." && pwd)"
+# Same entry point `chiri pkg --` dispatches to (Meson/ninja underneath).
+BUILD="$PROJECT_ROOT/build_tools/bin/build_pokeheartgold"
 PROGRESS_FILE="$SCRIPT_DIR/progress.json"
 INSIGHTS_FILE="$SCRIPT_DIR/insights.md"
 AGENT_INSTRUCTIONS="$SCRIPT_DIR/DECOMP_AGENT.md"
@@ -145,9 +147,14 @@ with open('$PROGRESS_FILE', 'w') as f:
 get_asm_targets() {
     local split_pieces
     split_pieces=$(python3 "$SCRIPT_DIR/split_units.py" pieces)
-    grep 'Object asm/' "$PROJECT_ROOT/main.lsf" | sed 's/.*Object asm\///' | sed 's/\.o$//' | while read -r basename; do
-        echo "asm/${basename}.s"
-    done | grep -vxF -f <(printf '%s\n' "$split_pieces")
+    python3 -c "
+import sys
+sys.path.insert(0, '$SCRIPT_DIR')
+import asmscan
+for o in asmscan.parse_lsf('$PROJECT_ROOT'):
+    if o['kind'] == 'asm':
+        print('asm/%s.s' % o['name'])
+" | grep -vxF -f <(printf '%s\n' "$split_pieces")
 }
 
 is_data_only() {
@@ -173,7 +180,7 @@ build_and_compare() {
 
     # First try compilation only
     local compile_out
-    if ! compile_out=$(make main COMPARE=0 -j4 2>&1); then
+    if ! compile_out=$("$BUILD" build --target main --no-compare -j4 2>&1); then
         BUILD_OUTPUT="$compile_out"
         echo "COMPILE_ERROR"
         return 1
@@ -181,7 +188,7 @@ build_and_compare() {
 
     # Then try full comparison (sha1sum -c outputs "filename: OK" on success)
     local compare_out
-    if compare_out=$(make compare -j4 2>&1); then
+    if compare_out=$("$BUILD" compare -j4 2>&1); then
         BUILD_OUTPUT="$compare_out"
         echo "MATCH"
         return 0
@@ -204,7 +211,7 @@ run_asmdiff() {
         local addr="0x${BASH_REMATCH[2]}"
         # Try to get the overlay name from main.lsf
         local ovname
-        ovname=$(grep -B 100 "Object asm/${bn}.o" main.lsf | grep '^Overlay ' | tail -1 | awk '{print $2}') || true
+        ovname=$(awk -v t="Object main.nef.p/asm_${bn}.s.o" '/^Overlay /{ov=$2} index($0,t){print ov; exit}' main.lsf) || true
         if [[ -n "$ovname" ]]; then
             ./tools/asmdiff/asmdiff.sh -m "$ovname" "$addr" 2>&1 | head -100
         else
@@ -251,9 +258,9 @@ Read the accumulated insights in \`tools/decomp_harness/insights.md\`.
 3. Search \`include/\` for relevant headers (functions called by this code)
 4. Look at similar decompiled files in \`src/\` for patterns
 5. Write \`src/${bn}.c\` (and \`include/${bn}.h\` if needed)
-6. Update \`main.lsf\`: change \`Object asm/${bn}.o\` to \`Object src/${bn}.o\`
-7. Build: \`make main COMPARE=0 -j4\` — fix any compilation errors
-8. Compare: \`make compare -j4\` — check if SHA1 matches
+6. Update \`main.lsf\`: run \`python3 tools/decomp_harness/lsf_flip.py asm/${bn}.s src/${bn}.c\` (swaps \`main.nef.p/asm_${bn}.s.o\` for \`main.nef.p/src_${bn}.c.o\` and regenerates src/meson.build and asm/meson.build)
+7. Build: \`build_tools/bin/build_pokeheartgold build --target main --no-compare -j4\` — fix any compilation errors
+8. Compare: \`build_tools/bin/build_pokeheartgold compare -j4\` — check if SHA1 matches
 9. If comparison fails, use \`./tools/asmdiff/asmdiff.sh\` to see the byte differences and adjust your C code
 10. Repeat steps 7-9 until it matches or you've done 20 build-compare cycles
 
@@ -264,7 +271,7 @@ When done (matched or NONMATCHING fallback used), briefly describe what you lear
 IMPORTANT: Do not modify any files other than:
 - \`src/${bn}.c\` (create)
 - \`include/${bn}.h\` (create if needed)
-- \`main.lsf\` (one line change: asm/ → src/)
+- \`main.lsf\` (one line change: asm/ → src/, via lsf_flip.py), plus the regenerated \`src/meson.build\` and \`asm/meson.build\`
 
 Do not touch other source files, other headers, or the assembly file itself.
 PROMPT_EOF
@@ -312,7 +319,7 @@ $(echo "$diff_output" | head -100)
 1. Read the original assembly at \`$asmfile\`
 2. Read the diff above — left side is correct (original), right side is your output
 3. Adjust the C code in \`src/${bn}.c\` to make the compiler emit the correct instructions
-4. Rebuild: \`make main COMPARE=0 -j4\` then \`make compare -j4\`
+4. Rebuild: \`build_tools/bin/build_pokeheartgold build --target main --no-compare -j4\` then \`build_tools/bin/build_pokeheartgold compare -j4\`
 5. If it still doesn't match, use \`./tools/asmdiff/asmdiff.sh\` to check again
 
 Common fixes:
@@ -327,7 +334,7 @@ If this is attempt 50+, you MUST use NONMATCHING for any remaining unmatched fun
 IMPORTANT: Do not modify any files other than:
 - \`src/${bn}.c\`
 - \`include/${bn}.h\`
-- \`main.lsf\` (only the one line: asm/${bn}.o → src/${bn}.o)
+- \`main.lsf\` (only the one line: main.nef.p/asm_${bn}.s.o → main.nef.p/src_${bn}.c.o, via lsf_flip.py), plus the regenerated \`src/meson.build\` and \`asm/meson.build\`
 PROMPT_EOF
 }
 
@@ -512,10 +519,10 @@ main() {
 
         # Ensure build is clean before starting
         cd "$PROJECT_ROOT"
-        if ! make main COMPARE=0 -j4 >/dev/null 2>&1; then
+        if ! "$BUILD" build --target main --no-compare -j4 >/dev/null 2>&1; then
             echo "ERROR: Build is broken before starting $target. Attempting tidy..."
-            make tidy >/dev/null 2>&1 || true
-            if ! make main COMPARE=0 -j4 >/dev/null 2>&1; then
+            "$BUILD" tidy >/dev/null 2>&1 || true
+            if ! "$BUILD" build --target main --no-compare -j4 >/dev/null 2>&1; then
                 echo "FATAL: Cannot build. Stopping."
                 break
             fi

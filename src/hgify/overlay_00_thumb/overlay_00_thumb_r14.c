@@ -3,7 +3,7 @@
 #pragma thumb on
 #include "ghidra_compat.h"
 typedef int code();
-undefined4 ov00_021EE278();
+undefined4 DWC_CloseAllConnectionsHard();
 extern int _0221A680;
 void ov00_021E6240(void);
 // FUNCTION ov00_021E6240: matching C (r2)
@@ -12,7 +12,7 @@ void ov00_021E6240(void)
 
 {
     if (*(int *)(_0221A680 + 0x10a8) != 0) {
-        ov00_021EE278();
+        DWC_CloseAllConnectionsHard();
         *(undefined4 *)(_0221A680 + 0x1098) = 0xffffffff;
         *(undefined4 *)(_0221A680 + 0x1070) = 0x12;
     }

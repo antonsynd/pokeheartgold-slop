@@ -102,7 +102,6 @@ extern const u8 ov45_02254C98[];
 u32 ov00_021E7144(void);
 void ov45_02232BB0(void *recruitInfo);
 void ov45_0222D740(void *resource);
-u32 NNS_G3dMdlGetMdlLightEnableFlag(void *model, u32 index);
 void ov45_022309E8(void *dest, NARC *narc, u32 param2, enum HeapID heapID);
 const UnkOv45TableEntry *ov45_0223099C(u32 arg0);
 u32 ov42_02228188(const void *arg0, int arg1);

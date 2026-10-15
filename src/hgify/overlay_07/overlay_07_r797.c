@@ -2,20 +2,6 @@
 #pragma warning_errors off
 #include "global.h"
 #pragma thumb on
-typedef enum {
-    GX_POLYGON_ATTR_MISC_NONE = 0,
-    GX_POLYGON_ATTR_MISC_XLU_DEPTH_UPDATE = 1 << 11,
-    GX_POLYGON_ATTR_MISC_FAR_CLIPPING = 1 << 12,
-    GX_POLYGON_ATTR_MISC_DISP_1DOT = 1 << 13,
-    GX_POLYGON_ATTR_MISC_DEPTHTEST_DECAL = 1 << 14,
-    GX_POLYGON_ATTR_MISC_FOG = 1 << 15
-} GXPolygonAttrMisc;
-typedef struct NNSGfdFrmTexVramState {
-    u32 address[10];
-} NNSGfdFrmTexVramState;
-typedef struct NNSGfdFrmPlttVramState {
-    u32 address[2];
-} NNSGfdFrmPlttVramState;
 void GF_AssertFail(void);
 enum HeapID {
     HEAP_ID_SYSTEM = 0,

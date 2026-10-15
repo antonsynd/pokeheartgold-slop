@@ -19,7 +19,7 @@ struct Big {
 };
 extern struct Big *_0221A680;
 int DWC_IsBuddyFriendData(void *);
-u8 ov00_021EFDCC(void *, void *, u32 *);
+u8 DWC_GetFriendStatusData(void *, void *, u32 *);
 // FUNCTION ov00_021E6CE8: matching C (agent3)
 #pragma force_active on
 void ov00_021E6CE8(void) {
@@ -29,7 +29,7 @@ void ov00_021E6CE8(void) {
     if (_0221A680->base != 0) {
         i = _0221A680->idx & 0x1f;
         if (DWC_IsBuddyFriendData(&_0221A680->items[i]) != 0) {
-            _0221A680->results[i] = ov00_021EFDCC(&_0221A680->items[i], _0221A680->base + _0221A680->stride * i, &out);
+            _0221A680->results[i] = DWC_GetFriendStatusData(&_0221A680->items[i], _0221A680->base + _0221A680->stride * i, &out);
         }
         _0221A680->idx = (_0221A680->idx + 1) & 0x1f;
     }

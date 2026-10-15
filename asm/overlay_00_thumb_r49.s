@@ -1,4 +1,4 @@
-	.include "asm/macros.inc"
+	.include "macros.inc"
 	.include "overlay_00_thumb.inc"
 	.include "global.inc"
 	.public ov00_021E6ED8
@@ -54,7 +54,7 @@ _021E6F1E:
 	cmp r4, #0
 	beq _021E6F66
 _021E6F2E:
-	bl ov00_021EE4FC
+	bl DWC_GetAIDBitmap
 	ldr r1, _021E6FA0 ; =_0221A680
 	ldr r2, [r1]
 	ldr r1, _021E6FB0 ; =0x000010D8
@@ -62,13 +62,13 @@ _021E6F2E:
 	mvn r1, r1
 	and r0, r1
 	str r0, [sp]
-	bl ov00_021EE4FC
+	bl DWC_GetAIDBitmap
 	add r4, r0, #0
 	ldr r0, [sp]
 	cmp r0, #0
 	beq _021E6F66
 	add r0, sp, #0
-	bl ov00_021EE384
+	bl DWC_CloseConnectionHardBitmap
 	ldr r0, [sp]
 	eor r0, r4
 	cmp r0, #1
@@ -84,7 +84,7 @@ _021E6F66:
 	ldr r1, [r0]
 	ldr r0, _021E6FB8 ; =0x00001094
 	str r5, [r1, r0]
-	bl ov00_021EE4FC
+	bl DWC_GetAIDBitmap
 	ldr r2, _021E6FA0 ; =_0221A680
 	ldr r1, _021E6FB0 ; =0x000010D8
 	ldr r3, [r2]

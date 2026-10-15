@@ -4,7 +4,10 @@
 #include "global.h"
 
 #include "system.h"
-int FX_Sqrt(int x);
+
+// Called as matched, before the real SDK headers declared these (#22, R10).
+#define FX_Sqrt(...) ((int (*)(int x))FX_Sqrt)(__VA_ARGS__)
+
 // FUNCTION ov91_0225ED6C: matching C (twin)
 #pragma force_active on
 typedef struct UnkStruct_ov91_0225ED6C {

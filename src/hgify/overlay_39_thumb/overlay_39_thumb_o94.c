@@ -20,7 +20,7 @@ typedef struct UnkStruct_ov39_022290A4 {
 } UnkStruct_ov39_022290A4;
 extern int ov39_02228A70(s32 x);
 extern void ov39_02228B04(UnkStruct_ov39_022290A4 *p, s32 a, s32 b, s32 c, s32 d);
-extern void ov00_021EC8D8(void);
+extern void DWC_CleanupInet(void);
 // FUNCTION ov39_022290A4: matching C (agent17)
 #pragma force_active on
 int ov39_022290A4(UnkStruct_ov39_022290A4 *param_1, int param_2, int param_3, int param_4) {
@@ -37,7 +37,7 @@ int ov39_022290A4(UnkStruct_ov39_022290A4 *param_1, int param_2, int param_3, in
             param_1->unk94 = param_1->unk94 + 1;
             break;
         case 1:
-            ov00_021EC8D8();
+            DWC_CleanupInet();
             sub_0203946C();
             param_1->unk94 = param_1->unk94 + 1;
             break;

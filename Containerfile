@@ -1,37 +1,23 @@
-# Build environment for pokeheartgold decomp.
-# Uses Wine 7.0 (pre-page-size-assertion) under QEMU to avoid the
-# Wine + Apple Silicon page size crash that affects Wine 8.0+.
+# Linux build environment for pokeheartgold (pret's Meson build). On Linux,
+# metroskrew runs the Metrowerks tools natively (32-bit, hence libc6:i386),
+# so no Wine. Packages: INSTALL.md's Debian list, same as CI.
+#
+# Use it on a checkout of its own (a separate clone or `git worktree`), not the
+# one you build on macOS: tools/metroskrew and the build dirs are per-platform
+# (macOS gets metroskrew's Wine bundle, and meson/cross_unix.ini hard-codes
+# tools/metroskrew/bin), so sharing one tree makes each side break the other.
 #
 # Build:  docker build --platform linux/amd64 -t pokeheartgold-build -f Containerfile .
-# Run:    docker run --platform linux/amd64 --rm -v .:/work pokeheartgold-build make -j4 compare
-FROM ubuntu:22.04
+# Run:    docker run --platform linux/amd64 --rm -v .:/work pokeheartgold-build make GAME_VERSION=HEARTGOLD check
+FROM ubuntu:24.04
 
 ENV DEBIAN_FRONTEND=noninteractive
-ENV CC=gcc-10
-ENV CXX=g++-10
 
-# Base packages (matches CI)
-RUN apt-get update && \
-    apt-get install -y --no-install-recommends \
-        software-properties-common wget gnupg2 ca-certificates && \
-    add-apt-repository ppa:ubuntu-toolchain-r/test -y && \
-    apt-get update && \
-    apt-get install -y --allow-downgrades \
-        g++-10-multilib linux-libc-dev binutils-arm-none-eabi \
-        p7zip-full pkg-config libpugixml-dev libpng-dev zlib1g-dev make git && \
-    apt-get install -y ppa-purge && \
-    ppa-purge -y ppa:ubuntu-toolchain-r/test || true && \
-    update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-10 10 && \
-    update-alternatives --install /usr/bin/g++ g++ /usr/bin/g++-10 10
-
-# Wine from Ubuntu repos (7.0) — predates the page-size assertion that
-# crashes under QEMU on Apple Silicon (16KB host pages vs 4KB expected)
 RUN dpkg --add-architecture i386 && \
     apt-get update && \
-    apt-get install -y wine64 wine32 && \
+    apt-get install -y --no-install-recommends \
+        bison flex g++ gcc-arm-none-eabi git make ninja-build pkg-config \
+        python3 xz-utils nasm libc6:i386 libpng-dev wget ca-certificates && \
     apt-get clean && rm -rf /var/lib/apt/lists/*
-
-# Warm Wine prefix
-RUN wineboot --init 2>/dev/null || true
 
 WORKDIR /work

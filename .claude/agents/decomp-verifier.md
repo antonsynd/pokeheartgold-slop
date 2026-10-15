@@ -23,7 +23,7 @@ Run every check below and report each as PASS / FAIL / SKIP (with one-line evide
 
 7. **Sweep risks addressed** — if `tools/decomp_harness/knowledge.json` has an entry for `asm/<name>.s`, read its `risks` list and verify each one was respected (e.g. "keep header declaration verbatim" → check the header; "must be static" → check). Report any risk you cannot confirm.
 
-8. **Data sections** — if a reference object exists at `/tmp/<name>_asm.o`, run `python3 tools/decomp_harness/objdiff.py /tmp/<name>_asm.o build/heartgold.us/src/<name>.o --summary` and confirm code AND data sections match. SKIP if either object is missing.
+8. **Data sections** — if a reference object exists at `/tmp/<name>_asm.o`, run `python3 tools/decomp_harness/objdiff.py /tmp/<name>_asm.o build/heartgold.us/main.nef.p/src_<name>.c.o --summary` (Meson object name: the source path with `/` → `_`) and confirm code AND data sections match. SKIP if either object is missing.
 
 9. **Harness state** — `progress.json` has a dict entry for this file under `completed`; `coverage_ledger.json`'s entry for the file shows status `matched` (if it still shows pending, the ledger wasn't regenerated).
 

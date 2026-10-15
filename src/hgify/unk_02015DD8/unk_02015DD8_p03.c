@@ -100,7 +100,7 @@ UnkStruct_02015DD8_Image *sub_02015EA0(UnkStruct_02015EA0 *a0) {
     UnkStruct_02015DD8_Image *image = sub_02016118(a0->unk0);
     NNSG2dImageProxy *proxy;
     GF_ASSERT(image != NULL);
-    GF_ASSERT(a0->unk4->mapingType == 0);
+    GF_ASSERT(a0->unk4->mappingType == 0);
     image->unk0 = sub_02016170(a0->unk4);
     GF_ASSERT(image->unk0 != 0);
     proxy = &image->unk4;

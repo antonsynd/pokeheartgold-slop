@@ -9,6 +9,11 @@
 #include "unk_02037C94.h"
 #include "unk_020915B0.h"
 
+// Called as matched, before the real SDK headers declared these (#22, R10).
+#define DWC_SetMemFunc(...)       ((void (*)(void *(*alloc)(int, u32, int), void (*free)(int, void *)))DWC_SetMemFunc)(__VA_ARGS__)
+#define DWC_UpdateConnection(...) ((void (*)(void))DWC_UpdateConnection)(__VA_ARGS__)
+#define DWC_GetLinkLevel(...)     ((int (*)(void))DWC_GetLinkLevel)(__VA_ARGS__)
+
 typedef struct {
     void *unk0;
     u8 filler4[8];
@@ -29,9 +34,6 @@ typedef struct {
 extern void LoadOVY38(void);
 extern void UnloadOVY38(void);
 extern void sub_02034DE0(void);
-extern void ov00_021EC294(void *(*alloc)(int, u32, int), void (*free)(int, void *));
-extern void ov00_021ECB40(void);
-extern int ov00_021EC9D4(void);
 extern void sub_0203A930(int a0);
 extern const OverlayManagerTemplate *sub_02087E10(int a0);
 extern BOOL ov39_02228140(OverlayManager *man, int *state);
@@ -81,7 +83,7 @@ BOOL sub_0201935C(OverlayManager *man, int *state) {
             break;
         }
         _021D1108 = work->unk10;
-        ov00_021EC294(sub_02019520, sub_02019548);
+        DWC_SetMemFunc(sub_02019520, sub_02019548);
         work->unk78 = 1;
         (*state)++;
         break;
@@ -127,8 +129,8 @@ BOOL sub_0201935C(OverlayManager *man, int *state) {
         return TRUE;
     }
     if (work->unk78 == 1 && work->unk4 == 1 && work->unk7C == 1) {
-        ov00_021ECB40();
-        sub_0203A930(3 - ov00_021EC9D4());
+        DWC_UpdateConnection();
+        sub_0203A930(3 - DWC_GetLinkLevel());
     }
     return FALSE;
 }

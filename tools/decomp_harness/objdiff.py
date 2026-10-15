@@ -13,13 +13,14 @@ Usage:
 
 Typical decomp workflow:
     # Save reference ASM object before switching main.lsf to C
-    cp build/heartgold.us/asm/foo.o /tmp/foo_asm.o
+    cp build/heartgold.us/main.nef.p/asm_foo.s.o /tmp/foo_asm.o
 
-    # Build C version
-    make main COMPARE=0
+    # Flip main.lsf to the C and build it (Meson names the object after its source path)
+    python3 tools/decomp_harness/lsf_flip.py asm/foo.s src/foo.c
+    build_tools/bin/build_pokeheartgold build --target main --no-compare
 
     # Compare
-    objdiff.py /tmp/foo_asm.o build/heartgold.us/src/foo.o
+    objdiff.py /tmp/foo_asm.o build/heartgold.us/main.nef.p/src_foo.c.o
 
 Extraction (default, non-legacy):
     Function bytes are sliced directly out of the raw ELF section that each
@@ -1071,14 +1072,23 @@ def cmd_summary(args):
 
 
 def _autodetect_s(*objfiles):
-    """Infer asm/<name>.s from a built object path (build/.../<name>.o)."""
+    """Infer asm/<name>.s from a built object path: Meson's main.nef.p/asm_<name>.s.o or
+    src_<dir>_<name>.c.o, compile_one's compile_one/<name>.o, or a plain <name>.o."""
     root = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
     root = os.path.dirname(root)  # repo root (tools/decomp_harness -> repo)
+    sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+    import meson_names
     for o in objfiles:
-        stem = os.path.splitext(os.path.basename(o))[0]
-        cand = os.path.join(root, "asm", stem + ".s")
-        if os.path.exists(cand):
-            return cand
+        base = os.path.basename(o)
+        stems = []
+        src = meson_names.source_of(meson_names.OBJDIR + base, root)  # asm/x.s or src/dir/x.c
+        if src:
+            stems.append(os.path.splitext(os.path.basename(src))[0])
+        stems.append(os.path.splitext(base)[0])
+        for stem in stems:
+            cand = os.path.join(root, "asm", stem + ".s")
+            if os.path.exists(cand):
+                return cand
     return None
 
 

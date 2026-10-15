@@ -3,7 +3,7 @@
 #pragma thumb on
 #include "ghidra_compat.h"
 typedef int code();
-undefined4 ov00_021EE490();
+undefined4 DWC_GetMyAID();
 undefined4 ov00_021E62F4();
 undefined4 ov00_021E727C();
 extern int _0221A680;
@@ -20,7 +20,7 @@ void ov00_021E6388(void)
     iVar2 = 0;
     if (0 < *(int *)(_0221A680 + 0x107c)) {
         do {
-            iVar1 = ov00_021EE490();
+            iVar1 = DWC_GetMyAID();
             if (iVar2 != iVar1) {
                 ov00_021E727C(iVar2);
             }

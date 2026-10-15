@@ -190,12 +190,12 @@ typedef enum {
     DWC_NASLOGIN_STATE_CANCELED,
     DWC_NASLOGIN_STATE_MAX
 } DWCNasLoginState;
-void ov00_021EC210(void);
-DWCError ov00_021EC11C(int *errorCode, DWCErrorType *errorType);
-void ov00_021EC8D8(void);
-void ov00_021ED9B4(void);
-BOOL ov00_021FA0D8(void);
-DWCNasLoginState ov00_021ECDC8(void);
+void DWC_ClearError(void);
+DWCError DWC_GetLastErrorEx(int *errorCode, DWCErrorType *errorType);
+void DWC_CleanupInet(void);
+void DWC_ShutdownFriendsMatch(void);
+BOOL DWC_ShutdownGHTTP(void);
+DWCNasLoginState DWC_NASLoginProcess(void);
 typedef struct WiFiList WiFiList;
 typedef struct FieldSystem_t FieldSystem;
 enum SaveBlockID {
@@ -3105,7 +3105,7 @@ int ov39_02228DA0(UnkStruct_ov61_0222C664 *param0);
 // FUNCTION ov39_02228DA0: matching C (pt2)
 #pragma force_active on
 int ov39_02228DA0(UnkStruct_ov61_0222C664 *param0) {
-    switch (ov00_021ECDC8()) {
+    switch (DWC_NASLoginProcess()) {
     case DWC_NASLOGIN_STATE_SUCCESS:;
         param0->unk_08 = 5;
         break;
@@ -3117,14 +3117,14 @@ int ov39_02228DA0(UnkStruct_ov61_0222C664 *param0) {
             int v0;
             DWCErrorType v1;
 
-            DWCError v2 = ov00_021EC11C(&v0, &v1);
+            DWCError v2 = DWC_GetLastErrorEx(&v0, &v1);
 
             param0->unk_14 = v2;
             param0->unk_18 = v0;
             param0->unk_1C = v1;
 
-            ov00_021EC210();
-            ov00_021EC8D8();
+            DWC_ClearError();
+            DWC_CleanupInet();
 
             param0->unk_08 = 6;
 
@@ -3134,14 +3134,14 @@ int ov39_02228DA0(UnkStruct_ov61_0222C664 *param0) {
                 param0->unk_08 = 6;
                 break;
             case DWC_ETYPE_SHUTDOWN_GHTTP:
-                ov00_021FA0D8();
+                DWC_ShutdownGHTTP();
                 param0->unk_08 = 6;
                 break;
             case DWC_ETYPE_DISCONNECT:
                 param0->unk_08 = 6;
                 break;
             case DWC_ETYPE_SHUTDOWN_FM:
-                ov00_021ED9B4();
+                DWC_ShutdownFriendsMatch();
                 param0->unk_08 = 6;
                 break;
             case DWC_ETYPE_SHUTDOWN_ND:

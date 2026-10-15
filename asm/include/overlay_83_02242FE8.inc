@@ -1,4 +1,4 @@
-#include <nitro/fs/overlay.h>
+
 #pragma once
 .public BeginNormalPaletteFade
 .public BgConfig_Alloc

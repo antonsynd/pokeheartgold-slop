@@ -41,11 +41,14 @@ for every matched file in the cluster:
 ```bash
 chiri pkg -- build --target main --no-compare    # timeout: 1200000
 mkdir -p /tmp/blocker_ref
-for f in <matched cluster files>; do cp build/heartgold.us/src/$f.o /tmp/blocker_ref/; done
+# Meson names objects after their source path, `/` -> `_`:
+# src/field/foo.c -> build/heartgold.us/main.nef.p/src_field_foo.c.o
+for f in <matched cluster files>; do o=${f//\//_}; cp build/heartgold.us/main.nef.p/src_$o.c.o /tmp/blocker_ref/$o.o; done   # f = path under src/ without .c
 ```
 
-Also save reference asm objects for any blocked files being re-matched:
-`cp build/heartgold.us/asm/<name>.o /tmp/blocker_ref/<name>_asm.o`.
+Also save reference asm objects for any blocked files being re-matched, while
+`main.lsf` still links the asm (Meson doesn't build unlinked asm):
+`cp build/heartgold.us/main.nef.p/asm_<name>.s.o /tmp/blocker_ref/<name>_asm.o`.
 
 ### Step 3: Apply the coordinated fix
 
@@ -66,12 +69,12 @@ Follow the blocker's `fix_plan`. Typical shapes:
 chiri pkg -- build --target main --no-compare    # timeout: 1200000
 ```
 
-1. **Every matched cluster file**: `cmp /tmp/blocker_ref/$f.o build/heartgold.us/src/$f.o`
+1. **Every matched cluster file**: `cmp /tmp/blocker_ref/$o.o build/heartgold.us/main.nef.p/src_$o.c.o` (`o=${f//\//_}` as above)
    must be byte-identical, OR (if the fix intentionally changes its codegen
    to the correct bytes) `objdiff.py <name>_asm-reference comparison must
    pass. Unexplained divergence = stop.
 2. **Every re-matched file**: `python3 tools/decomp_harness/objdiff.py
-   /tmp/blocker_ref/<name>_asm.o build/heartgold.us/src/<name>.o --summary`.
+   /tmp/blocker_ref/<name>_asm.o build/heartgold.us/main.nef.p/src_<name>.c.o --summary`.
 3. **Full ROM**: `chiri pkg -- compare` must pass (this is the whole point —
    after the staged-rodata blocker is cleared, full-ROM compare works again).
 

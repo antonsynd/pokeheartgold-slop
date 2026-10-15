@@ -3,7 +3,7 @@
 #pragma thumb on
 #include "ghidra_compat.h"
 typedef int code();
-undefined4 ov00_021EC5B4();
+undefined4 DWC_CheckInet();
 undefined4 ov72_0223AF48();
 undefined4 ov72_022387D0();
 undefined4 ov72_02239198(int *param_1);
@@ -17,14 +17,14 @@ undefined4 ov72_02239198(int *param_1)
     iVar1 = ov72_0223AF48(param_1 + 0x4db);
     if (iVar1 != 0) {
         if (iVar1 == 2) {
-            iVar1 = ov00_021EC5B4();
+            iVar1 = DWC_CheckInet();
             if (iVar1 == 0) {
                 param_1[7] = 0;
             } else {
                 param_1[7] = 0x29;
             }
         } else {
-            iVar1 = ov00_021EC5B4();
+            iVar1 = DWC_CheckInet();
             if (iVar1 == 0) {
                 ov72_022387D0(param_1, 0, 0);
                 iVar1 = 0x2e;

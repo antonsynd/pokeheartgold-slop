@@ -2,11 +2,6 @@
 #pragma warning_errors off
 #include "global.h"
 #pragma thumb on
-typedef struct {
-    u64 x;
-    u64 mul;
-    u64 add;
-} MATHRandContext32;
 void GF_AssertFail(void);
 typedef struct CommPlayerLocation {
     u16 x;

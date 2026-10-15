@@ -63,7 +63,6 @@ typedef struct UnkOv74Packet {
 } UnkOv74Packet;
 extern UnkOv74Global *ov74_0223105C(void);
 extern void ov74_0223145C(UnkOv74Packet *packet);
-extern u16 SVC_GetCRC16(u16 start, const void *data, u32 size);
 u32 ov74_022310DC(void);
 u32 ov74_022310E8(void);
 u32 ov74_022310F4(void);

@@ -51,13 +51,14 @@ from collections import Counter
 from pathlib import Path
 
 from asmscan import FUNC_START_RE, parse_lsf
+from meson_names import object_name
 
 HARNESS = Path(__file__).resolve().parent
 ROOT = HARNESS.parent.parent
 TWINS_TSV = HARNESS / "platinum_twins.tsv"
 NONMATCHING = ROOT / "nonmatching"
 PLATINUM_REV = "c248fb3f8cc9934ded800e489567c5c0eeee92eb"
-XMAP = ROOT / "build" / "heartgold.us" / "main.elf.xMAP"
+XMAP = ROOT / "build" / "heartgold.us" / "main.nef.xMAP"
 XMAP_RE = re.compile(r"^\s+([0-9A-F]{8}) [0-9A-F]{8} \S+\s+([A-Za-z_]\w*)\t")
 # Ghidra's declaration of a callee or global it knows only by address
 GHIDRA_ALIAS_RE = re.compile(r"\b(\w+)\s*(?:\([^)]*\))?\s*__asm__\(\"sub_([0-9A-Fa-f]{8})\"\)")
@@ -370,14 +371,15 @@ def cmd_stats(args, twins, drafts):
 
 def c_file_for(asm_path):
     """The C file that replaced asm_path: src/<name>.c, or src/<dir>/<name>.c when main.lsf links
-    src/<dir>/<name>.o (e.g. src/frontier/frontier_map.c for asm/frontier_map.s)."""
+    its object (main.nef.p/src_<dir>_<name>.c.o; e.g. src/frontier/frontier_map.c for
+    asm/frontier_map.s)."""
     stem = Path(asm_path).stem
     flat = ROOT / "src" / (stem + ".c")
     if flat.exists():
         return flat
     lsf = (ROOT / "main.lsf").read_text(errors="replace") if (ROOT / "main.lsf").exists() else ""
     for c in sorted((ROOT / "src").rglob(stem + ".c")):
-        obj = c.relative_to(ROOT).with_suffix(".o").as_posix()
+        obj = object_name(c.relative_to(ROOT).as_posix())
         if re.search(r"^\s*Object\s+" + re.escape(obj) + r"\s*$", lsf, re.M):
             return c
     return None

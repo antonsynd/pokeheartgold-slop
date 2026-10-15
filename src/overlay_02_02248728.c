@@ -8342,7 +8342,7 @@ WIP_LOCAL BOOL ov02_0224FC74(void *a0, void *a1) {
 }
 
 WIP_LOCAL void FollowMon_ExpandInteractionMessage(void *work, void *dest, enum HeapID heapID, int strno) {
-    MsgData *msgData = NewMsgDataFromNarc(MSGDATA_LOAD_DIRECT, NARC_msgdata_msg, 265 /* NARC_msg_msg_0265_bin */, heapID);
+    MsgData *msgData = NewMsgDataFromNarc(MSGDATA_LOAD_DIRECT, NARC_msgdata_msg, 265 /* msg_0265 */, heapID);
     MessageFormat *messageFormat = MessageFormat_New(heapID);
     String *str;
     FollowMon_PlaceholdersSet(work, messageFormat);
@@ -8354,7 +8354,7 @@ WIP_LOCAL void FollowMon_ExpandInteractionMessage(void *work, void *dest, enum H
 }
 
 WIP_LOCAL void ov02_0224FCE0(void *work, String *dest, enum HeapID heapID, int flags, u8 a5) {
-    MsgData *msgData = NewMsgDataFromNarc(MSGDATA_LOAD_DIRECT, NARC_msgdata_msg, 40 /* NARC_msg_msg_0040_bin */, heapID);
+    MsgData *msgData = NewMsgDataFromNarc(MSGDATA_LOAD_DIRECT, NARC_msgdata_msg, 40 /* msg_0040 */, heapID);
     MessageFormat *messageFormat = MessageFormat_New(heapID);
     String *str;
     int strno;

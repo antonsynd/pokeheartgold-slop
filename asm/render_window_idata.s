@@ -1,4 +1,4 @@
-	.include "asm/macros.inc"
+	.include "macros.inc"
 	.include "render_window.inc"
 	.include "global.inc"
 	.public _020F5C40

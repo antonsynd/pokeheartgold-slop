@@ -3,12 +3,6 @@
 #pragma thumb on
 #include "global.h"
 
-typedef enum WMErrCode {
-    WM_ERRCODE_SUCCESS = 0,
-    WM_ERRCODE_FAILED = 1,
-    WM_ERRCODE_OPERATING = 2,
-} WMErrCode;
-
 WMErrCode WM_Reset(void (*callback)(void *));
 void ov74_02236168(int param0);
 void ov74_022361B8(WMErrCode errcode);

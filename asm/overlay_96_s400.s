@@ -1,4 +1,4 @@
-	.include "asm/macros.inc"
+	.include "macros.inc"
 	.include "overlay_96.inc"
 	.include "global.inc"
 	.public ov96_021EF2C0
@@ -70,7 +70,7 @@ ov96_021EF2C0: ; 0x021EF2C0
 	mov r1, #0x88
 	lsl r2, r2, #0x12
 	bl Heap_Create
-	ldr r0, _021EF390 ; =FS_OVERLAY_ID(OVY_98)
+	ldr r0, _021EF390 ; =SDK_OVERLAY_OVY_98_ID
 	mov r1, #2
 	mov r6, #0x88
 	bl HandleLoadOverlay
@@ -151,7 +151,7 @@ _021EF386:
 	str r0, [r4, #0x28]
 	pop {r4, r5, r6, pc}
 	.balign 4, 0
-_021EF390: .word FS_OVERLAY_ID(OVY_98)
+_021EF390: .word SDK_OVERLAY_OVY_98_ID
 _021EF394: .word 0xFFFFE0FF
 _021EF398: .word 0x04001000
 _021EF39C: .word ov96_021EF23C

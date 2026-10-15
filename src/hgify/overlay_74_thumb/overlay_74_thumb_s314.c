@@ -3,8 +3,10 @@
 #pragma thumb on
 #include "global.h"
 
+// Called as matched, before the real SDK headers declared these (#22, R10).
+#define WM_PowerOff(...) ((int (*)(void (*callback)(void)))WM_PowerOff)(__VA_ARGS__)
+
 void ov74_02230988(void);
-int WM_PowerOff(void (*callback)(void));
 void ov74_02231448(int param0);
 
 // FUNCTION ov74_02231704: matching C (twin)

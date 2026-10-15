@@ -1,4 +1,4 @@
-#include <nitro/fs/overlay.h>
+
 #pragma once
 .public Bg_SetTextDimAndAffineParams
 .public DpadMenuBox_GetPosition

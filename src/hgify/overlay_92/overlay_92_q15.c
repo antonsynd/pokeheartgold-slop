@@ -4,6 +4,10 @@
 #include "global.h"
 
 #include "unk_02005D10.h"
+
+// Called as matched, before the real SDK headers declared these (#22, R10).
+#define MTX_MultVec43(...) ((void (*)(const Vec *, void *, void *))MTX_MultVec43)(__VA_ARGS__)
+
 typedef struct {
     s32 x, y, z;
 } Vec;
@@ -23,7 +27,6 @@ typedef struct S {
 } S0;
 void ov92_02260628(void *, u32);
 void ov92_02260428(void *, s32, s32, s32, s32, u32, int);
-void MTX_MultVec43(const Vec *, void *, void *);
 s32 _s32_div_f(s32, s32);
 extern const Vec ov92_02263884;
 extern const Vec ov92_02263878;

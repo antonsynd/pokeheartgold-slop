@@ -1,4 +1,4 @@
-#include "msgdata/msg.naix"
+#include "files/msgdata/msg.naix"
 
 #include "bg_window.h"
 #include "fashion_case.h"
@@ -47,7 +47,7 @@ static void ov41_0224BE80(UnkStruct_ov41_0224BE34 *param0) {
     VecFx32 matrix;
     int width;
 
-    msgData = NewMsgDataFromNarc(MSGDATA_LOAD_DIRECT, NARC_msgdata_msg, NARC_msg_msg_0215_bin, HEAP_ID_13);
+    msgData = NewMsgDataFromNarc(MSGDATA_LOAD_DIRECT, NARC_msgdata_msg, msg_0215, HEAP_ID_13);
     GF_ASSERT(msgData != NULL);
     messageFormat = MessageFormat_New(HEAP_ID_13);
 

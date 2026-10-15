@@ -5,7 +5,7 @@ extern unsigned char ov74_0223E304[];
 #pragma thumb on
 #include "ghidra_compat.h"
 typedef int code();
-undefined4 ov00_021ED308();
+undefined4 DWC_NdCleanupAsync();
 #define sub_0223E308 (*(int *)((unsigned char *)ov74_0223E304 + 0x4))
 #define sub_0223E30C (*(undefined4 *)((unsigned char *)ov74_0223E304 + 0x8))
 void ov74_02236A78(int param_1, undefined4 param_2, undefined4 *param_3, undefined4 param_4, undefined4 param_5);
@@ -20,7 +20,7 @@ void ov74_02236A78(int param_1, undefined4 param_2, undefined4 *param_3, undefin
     sub_0223E30C = param_2;
     *(undefined4 *)(param_1 + 0x1650) = param_4;
     *param_3 = 0x1013;
-    iVar1 = ov00_021ED308((unsigned int)ov74_02236ABC);
+    iVar1 = DWC_NdCleanupAsync((unsigned int)ov74_02236ABC);
     if (iVar1 == 0) {
         *param_3 = param_5;
     }

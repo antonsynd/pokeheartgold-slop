@@ -1,15 +1,16 @@
 #!/usr/bin/env bash
-# Build inside an Apple Container (x86_64 Linux + WineHQ) to match CI.
+# Build inside an Apple Container (x86_64 Linux, metroskrew native) to match CI.
+# Run it on a checkout of its own: see the note in Containerfile.
 #
 # First-time setup:
 #   container system start
 #   container build --arch amd64 --tag pokeheartgold-build --file Containerfile .
 #
 # Usage:
-#   ./build_tools/bin/container_build.sh              # build + compare HeartGold
-#   ./build_tools/bin/container_build.sh --no-compare  # build without SHA1 check
-#   ./build_tools/bin/container_build.sh clean         # clean build
-#   ./build_tools/bin/container_build.sh -j4           # parallel build
+#   ./build_tools/bin/container_build.sh              # build + check HeartGold
+#   ./build_tools/bin/container_build.sh --no-compare  # build the ROM without the sha1 tests
+#   ./build_tools/bin/container_build.sh clean         # delete the build dirs
+#   ./build_tools/bin/container_build.sh make GAME_VERSION=SOULSILVER check   # anything else
 #
 # The container mounts the project directory at /work, so build artifacts
 # appear directly in your local build/ directory.
@@ -34,14 +35,14 @@ if ! container images 2>/dev/null | grep -q "$IMAGE"; then
     container build --arch "$ARCH" --tag "$IMAGE" --file "$PROJECT_ROOT/Containerfile" "$PROJECT_ROOT"
 fi
 
-# Default: build + compare
+# Default: build + check
 if [ $# -eq 0 ]; then
-    set -- make compare
+    set -- make GAME_VERSION=HEARTGOLD check
 elif [ "$1" = "--no-compare" ]; then
     shift
-    set -- make COMPARE=0 "$@"
+    set -- make GAME_VERSION=HEARTGOLD rom "$@"
 elif [ "$1" = "clean" ]; then
-    set -- make clean
+    set -- rm -rf build/heartgold.us build/soulsilver.us
 fi
 
 echo "Running in container ($ARCH): $*" >&2

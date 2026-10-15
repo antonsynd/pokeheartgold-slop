@@ -8,22 +8,23 @@ particular which of those are already *matched* (and therefore at risk of
 silently regressing). This tool builds that index from the compiler's own
 dependency output.
 
-Source of truth: the `*.d` files make/MWCC emit under build/ (and sub/,
-lib/dsprot). Each is a Makefile fragment:
+Source of truth: ninja's dependency log, as printed by `ninja -C build/<game>.us -t deps`
+(MWCC emits the dependency list, ninja records it in .ninja_deps when it builds an object).
+Each entry is a target followed by the files its compile read:
 
-    build/heartgold.us/src/foo.o: src/foo.c \
-        include/global.h \
-        include/pokemon.h \
+    main.nef.p/src_foo.c.o: #deps 458, deps mtime 1791985659162172618 (VALID)
+        ../../src/foo.c
+        ../../include/global.h
         ...
 
-We invert it into  header -> {consumer TUs}  and cross-reference the
-consumers against main.lsf's `Object src/*.o` lines (the matched set).
+We invert it into  header -> {consumer TUs}  over the game objects (main.nef.p/*) and
+cross-reference the consumers against main.lsf's linked C objects (the matched set).
 
-IMPORTANT COVERAGE CAVEAT: `.d` files are periodically purged by the build
-recovery flow (`find build -name '*.d' -delete`). When that has happened,
-this index UNDER-reports consumers. Every run prints how many matched TUs
-have `.d` data vs how many are dark, so a partial index is never mistaken
-for a complete one.
+IMPORTANT COVERAGE CAVEAT: the log only has objects that were built in the build dir. A fresh
+configure, `build_pokeheartgold clean`, or objects never built (e.g. after a partial build) are
+absent, and this index then UNDER-reports consumers. Every run prints how many matched TUs
+have dependency data vs how many are dark, so a partial index is never mistaken for a complete
+one. `build_pokeheartgold build --target main` fills it in.
 
 Usage:
     ipa_map.py <header>            human query: who includes this header
@@ -34,101 +35,96 @@ Usage:
 
 <header> may be a full repo-relative path (include/pokemon.h) or a bare
 basename (pokemon.h); a bare name matches every header with that basename.
+--game picks one build dir (default: every configured one, merged).
 """
-import sys, os, json, glob, argparse
+import sys, os, json, argparse, subprocess
 
 HERE = os.path.dirname(os.path.abspath(__file__))
-ROOT = os.path.abspath(os.path.join(HERE, "..", ".."))
+ROOT = os.path.realpath(os.path.join(HERE, "..", ".."))  # physical: ninja prints paths relative to the resolved build dir
+sys.path.insert(0, HERE)
+import asmscan  # noqa: E402
 
-# Where .d files live. Globbed relative to repo root.
-D_GLOBS = [
-    "build/**/*.d",
-    "sub/**/*.d",
-    "lib/dsprot/**/*.d",
-]
+GAMES = ("heartgold", "soulsilver")
+GAME_OBJ_PREFIX = "main.nef.p/"
 
 
-def parse_d(path):
-    """Return (source, [headers]) for one .d file, or None if unparseable.
-    source is the first prerequisite (the .c/.s); headers are prereqs
-    ending in .h."""
-    try:
-        with open(path, "r", errors="replace") as f:
-            text = f.read()
-    except OSError:
-        return None
-    text = text.replace("\\\n", " ")
-    # Only the first logical rule matters (MWCC emits one target per .d).
-    if ":" not in text:
-        return None
-    _target, rhs = text.split(":", 1)
-    toks = rhs.split()
-    if not toks:
-        return None
-    source = toks[0]
-    headers = [t for t in toks[1:] if t.endswith(".h")]
-    return source, headers
+def build_dirs(games):
+    """Configured Meson build dirs (build/<game>.us with a build.ninja) for the given games."""
+    dirs = []
+    for g in games:
+        d = os.path.join(ROOT, "build", g + ".us")
+        if os.path.isfile(os.path.join(d, "build.ninja")):
+            dirs.append(d)
+    return dirs
 
 
-def norm(p):
-    """Normalise a path token to repo-relative, forward-slash form."""
-    p = p.replace("\\", "/")
-    # Some toolchains emit absolute paths; keep only the repo-relative tail.
-    for anchor in ("/build/", "/src/", "/include/", "/lib/", "/sub/", "/files/"):
-        i = p.find(anchor)
-        if i != -1 and not p.startswith(anchor[1:]):
-            p = p[i + 1:]
-            break
-    return os.path.normpath(p)
+def parse_ninja_deps(text):
+    """Yield (target, [dep paths as printed]) for each entry of `ninja -t deps` output."""
+    target, deps = None, []
+    for line in text.splitlines():
+        if not line.strip():
+            continue
+        if line[0] != " ":
+            if target is not None:
+                yield target, deps
+            target, deps = line.split(": #deps", 1)[0], []
+        else:
+            deps.append(line.strip())
+    if target is not None:
+        yield target, deps
 
 
-def matched_set(lsf):
-    m = set()
-    try:
-        with open(lsf) as f:
-            for line in f:
-                line = line.strip()
-                if line.startswith("Object src/") and line.endswith(".o"):
-                    m.add(norm(line[len("Object "):-2] + ".c"))
-    except OSError:
-        pass
-    return m
+def norm(p, base=ROOT):
+    """Normalise a path (relative to base) to repo-relative, forward-slash form."""
+    p = os.path.normpath(os.path.join(base, p.replace("\\", "/")))
+    if p == ROOT or p.startswith(ROOT + os.sep):
+        p = os.path.relpath(p, ROOT)
+    return p
 
 
-def build_index():
+def matched_set():
+    """Repo-relative paths of the C files linked in main.lsf."""
+    return {"src/%s.c" % o["name"] for o in asmscan.parse_lsf(ROOT) if o["kind"] == "src"}
+
+
+def build_index(games=GAMES):
     """Returns dict:
         header (str) -> sorted list of consumer sources (str)
       plus a meta dict describing coverage."""
-    os.chdir(ROOT)
-    dfiles = []
-    for g in D_GLOBS:
-        dfiles.extend(glob.glob(g, recursive=True))
-    dfiles = sorted(set(dfiles))
-
+    dirs = build_dirs(games)
+    if not dirs:
+        sys.exit("ipa_map: no configured build dir (build/<game>.us/build.ninja); "
+                 "run build_tools/bin/build_pokeheartgold build --target main first")
     index = {}                 # header -> set(sources)
-    sources_with_d = set()     # every source that had a parseable .d
-    for d in dfiles:
-        parsed = parse_d(d)
-        if not parsed:
-            continue
-        source, headers = parsed
-        source = norm(source)
-        sources_with_d.add(source)
-        for h in headers:
-            index.setdefault(norm(h), set()).add(source)
+    sources_with_deps = set()  # every game source that has an entry in the dependency log
+    entries = 0
+    for d in dirs:
+        r = subprocess.run(["ninja", "-C", d, "-t", "deps"], capture_output=True, text=True)
+        if r.returncode != 0:
+            sys.exit("ipa_map: `ninja -t deps` failed in %s:\n%s" % (d, r.stderr.strip()))
+        for target, deps in parse_ninja_deps(r.stdout):
+            if not target.startswith(GAME_OBJ_PREFIX) or not deps:
+                continue
+            entries += 1
+            source = norm(deps[0], d)
+            sources_with_deps.add(source)
+            for h in deps[1:]:
+                if h.endswith(".h"):
+                    index.setdefault(norm(h, d), set()).add(source)
 
-    matched = matched_set("main.lsf")
+    matched = matched_set()
     meta = dict(
-        d_files=len(dfiles),
-        sources_with_d=len(sources_with_d),
+        build_dirs=[os.path.relpath(d, ROOT) for d in dirs],
+        dep_entries=entries,
+        sources_with_deps=len(sources_with_deps),
         matched_total=len(matched),
-        matched_with_d=len(matched & sources_with_d),
-        matched_without_d=len(matched - sources_with_d),
+        matched_with_deps=len(matched & sources_with_deps),
+        matched_without_deps=len(matched - sources_with_deps),
         headers_indexed=len(index),
     )
     # freeze to sorted lists
     frozen = {h: sorted(v) for h, v in index.items()}
-    return frozen, matched, sources_with_d, meta
+    return frozen, matched, sources_with_deps, meta
 
 
 def resolve(index, query):
@@ -156,17 +152,17 @@ def classify(src, matched):
 
 def coverage_banner(meta):
     lines = []
-    mt, mw, mo = meta["matched_total"], meta["matched_with_d"], meta["matched_without_d"]
+    mt, mw, mo = meta["matched_total"], meta["matched_with_deps"], meta["matched_without_deps"]
     pct = (100.0 * mw / mt) if mt else 0.0
-    lines.append("--- .d coverage ---")
-    lines.append("  %d .d files parsed; %d distinct sources have dep data"
-                 % (meta["d_files"], meta["sources_with_d"]))
-    lines.append("  matched TUs: %d total | %d WITH .d data | %d WITHOUT (dark)"
+    lines.append("--- ninja deps coverage (%s) ---" % ", ".join(meta["build_dirs"]))
+    lines.append("  %d game objects in the dependency log; %d distinct sources have dep data"
+                 % (meta["dep_entries"], meta["sources_with_deps"]))
+    lines.append("  matched TUs: %d total | %d WITH dep data | %d WITHOUT (dark)"
                  % (mt, mw, mo))
     if mo:
-        lines.append("  !! %.0f%% coverage — %d matched TU(s) have NO .d data; "
+        lines.append("  !! %.0f%% coverage — %d matched TU(s) have NO dep data; "
                      "their header uses are INVISIBLE here." % (pct, mo))
-        lines.append("  !! Run a build to regenerate .d files for a complete index.")
+        lines.append("  !! Build them (build_pokeheartgold build --target main) for a complete index.")
     else:
         lines.append("  100% coverage — every matched TU has dep data.")
     return "\n".join(lines)
@@ -179,9 +175,10 @@ def main():
     ap.add_argument("--matched", action="store_true", help="only list matched consumers")
     ap.add_argument("--stats", action="store_true", help="coverage stats + top headers")
     ap.add_argument("--json", action="store_true", help="emit JSON")
+    ap.add_argument("--game", choices=GAMES, help="only this game's build dir (default: all configured)")
     args = ap.parse_args()
 
-    index, matched, _sources_with_d, meta = build_index()
+    index, matched, _sources_with_deps, meta = build_index((args.game,) if args.game else GAMES)
 
     if args.json and not args.header:
         # full index dump, with matched-flagging baked in
@@ -213,7 +210,7 @@ def main():
     keys = resolve(index, args.header)
     if not keys:
         print("ipa_map: no consumers found for '%s'" % args.header)
-        print("  (header may be unused, or its consumers' .d files were purged)")
+        print("  (header may be unused, or its consumers were never built in this build dir)")
         print()
         print(coverage_banner(meta))
         return 1
@@ -231,7 +228,7 @@ def main():
         matched_srcs = [s for s in srcs if s in matched]
         shown = matched_srcs if args.matched else srcs
         print("%s" % h)
-        print("  %d consumer(s) with .d data | %d matched"
+        print("  %d consumer(s) with dep data | %d matched"
               % (len(srcs), len(matched_srcs)))
         for s in shown:
             print("    [%-11s] %s" % (classify(s, matched), s))

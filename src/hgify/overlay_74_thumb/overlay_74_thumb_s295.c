@@ -3,13 +3,15 @@
 #pragma thumb on
 #include "global.h"
 
+// Called as matched, before the real SDK headers declared these (#22, R10).
+#define SVC_GetCRC16(...) ((u16(*)(u16 crc, const void *data, u32 size))SVC_GetCRC16)(__VA_ARGS__)
+
 typedef struct UnkStruct_ov74_02231424 {
     u8 unk_00[8];
     u32 unk_08;
     u32 unk_0C;
 } UnkStruct_ov74_02231424;
 
-u16 SVC_GetCRC16(u16 crc, const void *data, u32 size);
 BOOL ov74_02231424(void *param0);
 // FUNCTION ov74_02231424: matching C (twin)
 #pragma force_active on

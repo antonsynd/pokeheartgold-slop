@@ -3,14 +3,14 @@
 #pragma thumb on
 #include "ghidra_compat.h"
 typedef int code();
-undefined4 ov00_021ECD04();
+undefined4 DWC_NASLoginAsync();
 undefined4 ov72_022392AC(int param_1);
 // FUNCTION ov72_022392AC: matching C (r2)
 #pragma force_active on
 undefined4 ov72_022392AC(int param_1)
 
 {
-    ov00_021ECD04();
+    DWC_NASLoginAsync();
     *(undefined4 *)(param_1 + 0x1c) = 5;
     return 3;
 }

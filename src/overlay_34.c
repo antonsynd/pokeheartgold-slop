@@ -8,7 +8,7 @@
 
 #include "constants/sndseq.h"
 
-#include "msgdata/msg.naix"
+#include "files/msgdata/msg.naix"
 
 #include "bg_window.h"
 #include "dialog_box.h"
@@ -231,7 +231,7 @@ static void ov34_0225D5F8(Ov34Work *work) {
     work->scroll = 0;
     work->scrollbarVisible = 0;
     work->msgFormat = MessageFormat_New(HEAP_ID_FIELD1);
-    work->msgData = NewMsgDataFromNarc(MSGDATA_LOAD_DIRECT, NARC_msgdata_msg, NARC_msg_msg_0738_UNION_bin, HEAP_ID_FIELD1);
+    work->msgData = NewMsgDataFromNarc(MSGDATA_LOAD_DIRECT, NARC_msgdata_msg, msg_0738_UNION, HEAP_ID_FIELD1);
     work->scrnBuf = GfGfxLoader_GetScrnData(NARC_a_0_7_3, 3, TRUE, &work->scrnData, HEAP_ID_FIELD1);
 }
 

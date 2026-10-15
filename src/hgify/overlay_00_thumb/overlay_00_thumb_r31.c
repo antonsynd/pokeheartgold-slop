@@ -10,9 +10,9 @@ typedef struct {
 
 extern UnkStruct_ov00_021E6790 *_0221A680;
 
-int ov00_021EE490(void);
-int ov00_021EE530(u8 aid);
-int ov00_021F9580(u8 aid);
+int DWC_GetMyAID(void);
+int DWC_IsValidAID(u8 aid);
+int DWC_IsSendableReliable(u8 aid);
 
 // FUNCTION ov00_021E6790: matching C (twin)
 #pragma force_active on
@@ -21,14 +21,14 @@ BOOL ov00_021E6790(void) {
     BOOL ret = FALSE;
 
     for (i = 0; i < _0221A680->maxPlayers; i++) {
-        if (ov00_021EE490() == i) {
+        if (DWC_GetMyAID() == i) {
             continue;
         }
 
-        if (ov00_021EE530(i)) {
+        if (DWC_IsValidAID(i)) {
             ret = TRUE;
 
-            if (!ov00_021F9580(i)) {
+            if (!DWC_IsSendableReliable(i)) {
                 return FALSE;
             }
         }

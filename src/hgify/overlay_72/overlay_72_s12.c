@@ -6,10 +6,10 @@ typedef unsigned int u32;
 typedef int s32;
 typedef int BOOL;
 void *OverlayManager_GetData(void *appMan);
-void ov00_021ECB40(void);
+void DWC_UpdateConnection(void);
 void ov72_022378DC(void);
 BOOL sub_02034DB8(void);
-void ov00_021EC294(void *alloc, void *free);
+void DWC_SetMemFunc(void *alloc, void *free);
 void ov72_02238778(void);
 void ov72_022387A0(void);
 BOOL IsPaletteFadeFinished(void);
@@ -23,15 +23,15 @@ s32 NintendoWfc_Main(void *appMan, s32 *state);
 s32 NintendoWfc_Main(void *appMan, s32 *state) {
     u8 *work = OverlayManager_GetData(appMan);
 
-    ov00_021ECB40();
+    DWC_UpdateConnection();
     ov72_022378DC();
-    ov00_021ECB40();
+    DWC_UpdateConnection();
 
     switch (*state) {
     case 0:
         if (sub_02034DB8()) {
             ov72_0223B92C = *(void **)(work + 0x28);
-            ov00_021EC294(ov72_02238778, ov72_022387A0);
+            DWC_SetMemFunc(ov72_02238778, ov72_022387A0);
             *state = 1;
         }
         break;

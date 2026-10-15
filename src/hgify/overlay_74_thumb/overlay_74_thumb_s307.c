@@ -4,13 +4,9 @@ void ov74_02230138(void);
 #pragma thumb on
 #include "global.h"
 
-typedef enum WMErrCode {
-    WM_ERRCODE_SUCCESS = 0,
-    WM_ERRCODE_FAILED,
-    WM_ERRCODE_OPERATING,
-} WMErrCode;
+// Called as matched, before the real SDK headers declared these (#22, R10).
+#define WM_StartParent(...) ((int (*)(void (*callback)(void)))WM_StartParent)(__VA_ARGS__)
 
-int WM_StartParent(void (*callback)(void));
 void ov74_02231448(WMErrCode errCode);
 
 // FUNCTION ov74_02231544: matching C (twin)

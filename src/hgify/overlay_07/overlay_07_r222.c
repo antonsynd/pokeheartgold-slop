@@ -3,7 +3,8 @@
 #pragma thumb on
 #include "global.h"
 
-#include "spl.h"
+#include "library/spl.h"
+
 #include "unk_02014DA0.h"
 
 typedef struct BattleAnimSystem BattleAnimSystem;

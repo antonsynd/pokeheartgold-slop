@@ -48,9 +48,19 @@ def load_reference():
     return {}
 
 
-def lsf_objects(lsf_text):
-    """Object paths in an LSF file, in order."""
-    return re.findall(r"^\s*Object\s+(\S+)", lsf_text, re.M)
+def lsf_objects(lsf_text, root=ROOT):
+    """Object paths in an LSF file, in order, as src/....o / asm/....o.
+
+    main.lsf names objects the Meson way (main.nef.p/src_field_fieldmap.c.o, ours and
+    upstream's alike); those are mapped back to their source paths through this tree.
+    Names without a source here (lib objects) are kept as they are."""
+    import meson_names  # tools/decomp_harness, on sys.path below
+
+    objects = []
+    for o in re.findall(r"^\s*Object\s+(\S+)", lsf_text, re.M):
+        src = meson_names.source_of(o, root) if meson_names.GAME_OBJ_RE.match(o) else None
+        objects.append(Path(src).with_suffix(".o").as_posix() if src else o)
+    return objects
 
 
 def fetch_upstream_lsf():
@@ -114,6 +124,21 @@ def generated_counts(root, obj):
     return len(GENERATED_C_RE.findall(text)), len(GENERATED_ASM_RE.findall(text)), len(READABLE_C_RE.findall(text))
 
 
+def prebuilt_library_functions(root, lsf_text, ref):
+    """Functions linked from prebuilt libraries (a binary .a, not C or asm source).
+
+    progress_reference.json maps each such library to the reference asm/*.s files
+    that hold its functions; a library counts only while main.lsf links it."""
+    linked = set(re.findall(r"^\s*Library\s+(\S+)", lsf_text, re.M))
+    total, libs = 0, []
+    for lib, refs in ref.get("prebuilt_libraries", {}).items():
+        if lib in linked:
+            libs.append(lib)
+            for s in refs:
+                total += len(FUNC_START_RE.findall((root / s).read_text(errors="replace")))
+    return total, libs
+
+
 def linked_asm_functions(root, objects):
     """Functions linked from asm: every linked asm/*.s object, plus inline asm in generated src/ files."""
     total = 0
@@ -148,7 +173,8 @@ def generate_progress(root):
     ref = load_reference()
     total_rom_fns = ref.get("total_rom_functions", 29500)
 
-    objects = lsf_objects((root / "main.lsf").read_text())
+    lsf_text = (root / "main.lsf").read_text()
+    objects = lsf_objects(lsf_text)
     src_objs = [o for o in objects if o.startswith("src/")]
     f_src = len(src_objs)
     f_total = f_src + sum(o.startswith("asm/") for o in objects)
@@ -174,6 +200,10 @@ def generate_progress(root):
         if any(generated_counts(root, o) for o in src_objs):
             # A split asm file: the ledger sees its .s as replaced, but slices of it are still linked.
             still_asm = linked_asm_functions(root, objects) - partial_fns
+        # Functions linked from a prebuilt binary are neither asm nor C; count
+        # them as not in C, rather than letting the subtraction below claim them.
+        prebuilt_fns, prebuilt_libs = prebuilt_library_functions(root, lsf_text, ref)
+        still_asm += prebuilt_fns
         total_in_c = total_rom_fns - still_asm
 
         if up_lsf:
@@ -288,6 +318,13 @@ def generate_progress(root):
             "linked from handwritten asm. It counts toward *Functions in C* "
             "but not *Fully matching*."
         )
+        if prebuilt_fns:
+            lines.append("")
+            lines.append(
+                f"{fmt(prebuilt_fns)} functions are linked from prebuilt library "
+                f"binaries ({', '.join(f'`{l}`' for l in prebuilt_libs)}) "
+                "and count as not in C."
+            )
         if not up_lsf:
             lines.append("")
             lines.append(

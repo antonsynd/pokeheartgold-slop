@@ -6,7 +6,10 @@
 #include "pokeathlon/pokeathlon.h"
 
 #include "error_handling.h"
-int MATH_CountPopulation(unsigned int x);
+
+// Called as matched, before the real SDK headers declared these (#22, R10).
+#define MATH_CountPopulation(...) ((int (*)(unsigned int x))MATH_CountPopulation)(__VA_ARGS__)
+
 // FUNCTION ov96_021ED754: matching C (agent7)
 #pragma force_active on
 int ov96_021ED754(int param_1) {

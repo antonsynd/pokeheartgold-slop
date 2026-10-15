@@ -8,14 +8,6 @@
 #define reg_G2_WINOUT   (*(REGType16v *)0x0400004A)
 #define reg_G2_BLDALPHA (*(REGType16v *)0x04000052)
 #define reg_GX_DISPCNT  (*(REGType32v *)0x04000000)
-static inline void G2_SetWndOBJInsidePlane(int wnd, int effect) {
-    u32 tmp;
-    tmp = ((reg_G2_WINOUT & ~0x3F00) | ((u32)wnd << 8));
-    if (effect) {
-        tmp |= (0x20 << 8);
-    }
-    reg_G2_WINOUT = (u16)tmp;
-}
 typedef struct S {
     char pad0[0xc];
     s16 dx;

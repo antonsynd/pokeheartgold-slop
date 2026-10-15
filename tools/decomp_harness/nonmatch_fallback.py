@@ -327,12 +327,17 @@ if __name__ == '__main__':
     ap = argparse.ArgumentParser(description=__doc__,
                                  formatter_class=argparse.RawDescriptionHelpFormatter)
     ap.add_argument('s', help='asm/<file>.s source')
-    ap.add_argument('o', help='assembled .o (build/heartgold.us/asm/<file>.o)')
+    ap.add_argument('o', help='assembled .o (build/heartgold.us/main.nef.p/asm_<file>.s.o; '
+                    'Meson builds it only while main.lsf links the .s)')
     ap.add_argument('func', help='function symbol name')
     ap.add_argument('--sig', help="explicit signature, e.g. 'void f(int a)' "
                     "(lowest priority; used only if no header/knowledge sig)")
     a = ap.parse_args()
 
+    if not os.path.exists(a.o):
+        sys.exit(f'nonmatch_fallback: assembled object {a.o} not found. Meson builds asm/<file>.s only '
+                 'while main.lsf links it (before the lsf flip, or from a saved copy); an unlinked '
+                 '.s has no reference object until the refs targets exist.')
     sig, sig_src = resolve_sig(a.func, a.sig)
     static = is_static(a.s, a.func)
     lines, refs = transcribe(a.s, a.o, a.func)

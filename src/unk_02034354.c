@@ -14,7 +14,7 @@
 #include "unk_02034354.h"
 
 #include <nitro/mi/memory.h>
-#include <nitro/os/ownerInfo.h>
+#include <nitro/os.h>
 
 #include "global.h"
 

@@ -3,11 +3,12 @@
 #pragma thumb on
 #include "global.h"
 
+// Called as matched, before the real SDK headers declared these (#22, R10).
+#define GXx_SetMasterBrightness_(...) ((void (*)(u32 reg))GXx_SetMasterBrightness_)(__VA_ARGS__)
+
 #define SCREEN_TOP            1
 #define REG_MASTER_BRIGHT_TOP 0x0400006C
 #define REG_MASTER_BRIGHT_SUB 0x0400106C
-
-void GXx_SetMasterBrightness_(u32 reg);
 
 // FUNCTION ov01_021EFF90: matching C (twin)
 #pragma force_active on

@@ -4,9 +4,6 @@
 
 #include "bg_window.h"
 #pragma thumb on
-static inline int MATH_IAbs(int a) {
-    return (a < 0) ? -a : a;
-}
 #include "constants/heap.h"
 void ov52_021E8F2C(Window *window, void *src, int srcX, int srcY, int srcWidth, int srcHeight, int destX, int destY, int destWidth, int destHeight);
 // FUNCTION ov52_021E8FAC: matching C (pt2)

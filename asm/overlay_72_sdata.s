@@ -1,7 +1,6 @@
-	.include "asm/macros.inc"
+	.include "macros.inc"
 	.include "overlay_72.inc"
 	.include "global.inc"
-	.public _0223B330
 	.public ov72_0223B338
 	.public ov72_0223B344
 	.public ov72_0223B354

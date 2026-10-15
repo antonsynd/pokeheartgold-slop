@@ -6,48 +6,6 @@
 BOOL ov74_02231670(void);
 void ov74_022306C8(void *param0);
 void ov74_022308E0(void *param0);
-typedef enum WMErrCode {
-    WM_ERRCODE_SUCCESS = 0,
-    WM_ERRCODE_FAILED,
-    WM_ERRCODE_OPERATING,
-    WM_ERRCODE_ILLEGAL_STATE,
-    WM_ERRCODE_WM_DISABLE,
-    WM_ERRCODE_NO_KEYSET,
-    WM_ERRCODE_INVALID_PARAM,
-    WM_ERRCODE_NO_CHILD,
-    WM_ERRCODE_FIFO_ERROR,
-    WM_ERRCODE_TIMEOUT,
-    WM_ERRCODE_SEND_QUEUE_FULL,
-    WM_ERRCODE_NO_ENTRY,
-    WM_ERRCODE_OVER_MAX_ENTRY,
-    WM_ERRCODE_INVALID_POLLBITMAP,
-    WM_ERRCODE_NO_DATA,
-    WM_ERRCODE_SEND_FAILED,
-    WM_ERRCODE_DCF_TEST,
-    WM_ERRCODE_WL_INVALID_PARAM,
-    WM_ERRCODE_WL_LENGTH_ERR,
-    WM_ERRCODE_FLASH_ERROR,
-    WM_ERRCODE_MAX
-} WMErrCode;
-typedef struct WMParentParam {
-    u16 *userGameInfo;
-    u16 userGameInfoLength;
-    u16 padding;
-    u32 ggid;
-    u16 tgid;
-    u16 entryFlag;
-    u16 maxEntry;
-    u16 multiBootFlag;
-    u16 KS_Flag;
-    u16 CS_Flag;
-    u16 beaconPeriod;
-    u16 rsv1[4];
-    u16 rsv2[8];
-    u16 channel;
-    u16 parentMaxSize;
-    u16 childMaxSize;
-    u16 rsv[4];
-} WMParentParam;
 WMParentParam *ov74_02231054(void);
 u32 ov74_022310D0(void);
 u32 ov74_022310DC(void);

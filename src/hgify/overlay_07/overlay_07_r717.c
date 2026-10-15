@@ -2,11 +2,6 @@
 #pragma warning_errors off
 #include "global.h"
 #pragma thumb on
-static inline void VEC_Set(VecFx32 *a, fx32 x, fx32 y, fx32 z) {
-    a->x = x;
-    a->y = y;
-    a->z = z;
-}
 enum CameraProjection {
     CAMERA_PROJECTION_PERSPECTIVE = 0,
     CAMERA_PROJECTION_ORTHOGRAPHIC,

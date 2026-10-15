@@ -7,10 +7,16 @@
 #include "overlay_00_thumb.h"
 #include "system.h"
 #include "unk_02037C94.h"
+
+// Called as matched, before the real SDK headers declared these (#22, R10).
+#define DWC_SetAuthServer(...)    ((void (*)(s32 arg0))DWC_SetAuthServer)(__VA_ARGS__)
+#define DWC_InitInetEx(...)       ((undefined4(*)())DWC_InitInetEx)(__VA_ARGS__)
+#define DWC_ConnectInetAsync(...) ((undefined4(*)())DWC_ConnectInetAsync)(__VA_ARGS__)
+
+// Upstream renamed these and its header still declares the old names (#22).
+
 typedef int code();
-undefined4 ov00_021EC3F0();
 undefined4 ov72_0223A414();
-undefined4 ov00_021EC4A4();
 void ov72_022391E8(int *param_1);
 // FUNCTION ov72_022391E8: matching C (r2)
 #pragma force_active on
@@ -20,9 +26,9 @@ void ov72_022391E8(int *param_1)
     sub_02039418(*(undefined4 *)(*param_1 + 0xc));
     Sys_SetSleepDisableFlag(4);
     ov72_0223A414(param_1);
-    ov00_021EC3F0(param_1 + 0xb, 2, 1, 0x14);
-    ov00_021EC454(2);
-    ov00_021EC4A4();
+    DWC_InitInetEx(param_1 + 0xb, 2, 1, 0x14);
+    DWC_SetAuthServer(2);
+    DWC_ConnectInetAsync();
     param_1[7] = 3;
     return;
 }

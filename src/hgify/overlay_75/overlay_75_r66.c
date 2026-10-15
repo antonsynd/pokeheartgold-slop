@@ -8,13 +8,20 @@
 #include "system.h"
 #include "unk_02037C94.h"
 #include "unk_0203A3B0.h"
+
+// Called as matched, before the real SDK headers declared these (#22, R10).
+#define DWC_GetLastErrorEx(...)       ((int (*)(s32 * arg0, s32 * arg1)) DWC_GetLastErrorEx)(__VA_ARGS__)
+#define DWC_ShutdownFriendsMatch(...) ((undefined4(*)())DWC_ShutdownFriendsMatch)(__VA_ARGS__)
+#define DWC_ShutdownGHTTP(...)        ((undefined4(*)())DWC_ShutdownGHTTP)(__VA_ARGS__)
+#define DWC_CleanupInet(...)          ((undefined4(*)())DWC_CleanupInet)(__VA_ARGS__)
+#define DWC_NASLoginProcess(...)      ((undefined4(*)())DWC_NASLoginProcess)(__VA_ARGS__)
+
+// Upstream renamed these and its header still declares the old names (#22).
+void DWC_ClearError(void);
+
 typedef int code();
 undefined4 ov75_02247878();
-undefined4 ov00_021ED9B4();
 undefined4 ov70_02237F2C();
-undefined4 ov00_021FA0D8();
-undefined4 ov00_021EC8D8();
-undefined4 ov00_021ECDC8();
 undefined4 ov75_022488BC(int *param_1);
 // FUNCTION ov75_022488BC: matching C (agent20)
 #pragma force_active on
@@ -24,7 +31,7 @@ undefined4 ov75_022488BC(int *param_1) {
     int iStack_c;
     undefined4 uStack_10;
 
-    uVar1 = ov00_021ECDC8();
+    uVar1 = DWC_NASLoginProcess();
     switch (uVar1) {
     case 3:
         param_1[2] = 0x10;
@@ -33,11 +40,11 @@ undefined4 ov75_022488BC(int *param_1) {
     case 4:
     case 5:
         ov75_02247878(param_1);
-        iVar2 = ov00_021EC11C(&iStack_c, &uStack_10);
+        iVar2 = DWC_GetLastErrorEx(&iStack_c, &uStack_10);
         param_1[5] = iVar2;
         param_1[6] = iStack_c;
-        ov00_021EC210();
-        ov00_021EC8D8();
+        DWC_ClearError();
+        DWC_CleanupInet();
         sub_0203A914();
         sub_0203957C();
         Sys_ClearSleepDisableFlag(4);
@@ -52,14 +59,14 @@ undefined4 ov75_022488BC(int *param_1) {
             param_1[2] = 0x1b;
             break;
         case 4:
-            ov00_021FA0D8();
+            DWC_ShutdownGHTTP();
             param_1[2] = 0x1b;
             break;
         case 6:
             param_1[2] = 0x1b;
             break;
         case 3:
-            ov00_021ED9B4();
+            DWC_ShutdownFriendsMatch();
             param_1[2] = 0x1b;
             break;
         case 5:

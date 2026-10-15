@@ -3,15 +3,17 @@
 # Cleanup stale build state and rebuild cleanly.
 #
 # Usage:
-#   ./tools/decomp_harness/recomp.sh          # kill stale procs + clean .d files + tidy + rebuild main
-#   ./tools/decomp_harness/recomp.sh --full    # full clean + rebuild everything
+#   ./tools/decomp_harness/recomp.sh          # kill stale build procs + rebuild main (ARM9)
+#   ./tools/decomp_harness/recomp.sh --full    # kill stale procs + delete build/heartgold.us + rebuild
 #   ./tools/decomp_harness/recomp.sh --kill    # just kill stale processes
-#   ./tools/decomp_harness/recomp.sh --fix-d   # just clean corrupted .d files
+#   ./tools/decomp_harness/recomp.sh --fix-d   # no-op: the Meson build has no .d files
 #
 # Common scenarios:
-#   - Build hangs at 100% CPU → stale Wine .d files with Z: paths
-#   - "No rule to make target" after switching asm→C → .d files reference old paths
-#   - Build interrupted mid-compile → partial .o files confuse make
+#   - A previous build is still running (ninja / Wine mwccarm) and blocks the next one
+#   - Build interrupted mid-compile: ninja re-runs any command without a
+#     .ninja_log record, so partial objects are rebuilt by the plain run
+#   - Configure state looks wrong (stale compile_commands.json, moved tree) → --full
+#     reconfigures from scratch
 
 set -euo pipefail
 
@@ -31,11 +33,14 @@ NC='\033[0m'
 kill_stale() {
     echo -e "${YELLOW}Killing stale build processes...${NC}"
     local count=0
-    for pattern in 'make.*heartgold' 'make.*soulsilver' 'mwccarm' 'mwldarm' 'mwasmarm' 'wine.*mw'; do
+    # ninja/meson drivers, and the Wine-run Metrowerks tools (the .exe spelling keeps
+    # paths like tools/mwasmarm_patcher/ from matching, as in prebuild_guard.sh)
+    for pattern in 'ninja -C [^ ]*build/' 'meson\.py (compile|test)' \
+                   '(mwccarm|mwldarm|mwasmarm)(-[0-9][0-9.-]*)?\.exe'; do
         local pids
         pids=$(pgrep -f "$pattern" 2>/dev/null || true)
         if [ -n "$pids" ]; then
-            echo "  Killing: $pattern (pids: $pids)"
+            echo "  Killing: $pattern (pids: $(echo $pids))"
             kill $pids 2>/dev/null || true
             count=$((count + 1))
         fi
@@ -48,40 +53,13 @@ kill_stale() {
 }
 
 fix_d_files() {
-    echo -e "${YELLOW}Cleaning corrupted .d dependency files...${NC}"
-    local count
-    # Find .d files with Wine Z: paths (the telltale sign of corruption)
-    count=$(grep -rl 'Z:\\' build/ --include='*.d' 2>/dev/null | wc -l | tr -d ' ')
-    if [ "$count" -gt 0 ]; then
-        echo "  Found $count corrupted .d files (Wine Z: paths)"
-        grep -rl 'Z:\\' build/ --include='*.d' 2>/dev/null | xargs rm -f
-    fi
-    # Also remove any .d files that reference non-existent source files
-    local stale=0
-    while IFS= read -r dfile; do
-        # Check first dependency target — if source doesn't exist, .d is stale
-        local src
-        src=$(head -1 "$dfile" 2>/dev/null | sed 's/.*: //' | awk '{print $1}')
-        if [ -n "$src" ] && [ ! -f "$src" ]; then
-            rm -f "$dfile"
-            stale=$((stale + 1))
-        fi
-    done < <(find build -name "*.d" 2>/dev/null)
-    if [ "$stale" -gt 0 ]; then
-        echo "  Removed $stale stale .d files (missing sources)"
-    fi
-    if [ "$count" -eq 0 ] && [ "$stale" -eq 0 ]; then
-        echo "  No corrupted .d files found"
-    fi
-}
-
-tidy_build() {
-    echo -e "${YELLOW}Running tidy...${NC}"
-    "$BUILD" tidy 2>&1 | tail -3
+    # Make-era recovery: ninja keeps dependencies in .ninja_deps (not Wine-path-prone .d
+    # files), and re-runs any command that has no .ninja_log record.
+    echo "  The Meson build has no .d files; nothing to clean"
 }
 
 full_clean() {
-    echo -e "${YELLOW}Running full clean...${NC}"
+    echo -e "${YELLOW}Running full clean (removes build/heartgold.us)...${NC}"
     "$BUILD" clean 2>&1 | tail -3
 }
 
@@ -108,14 +86,10 @@ case "${1:-}" in
         rebuild_main
         ;;
     --help|-h)
-        head -12 "$0" | tail -10
+        sed -n '3,16p' "$SCRIPT_DIR/recomp.sh" | sed 's/^# \{0,1\}//'
         ;;
     *)
         kill_stale
-        fix_d_files
-        if [ -d build ]; then
-            tidy_build
-        fi
         rebuild_main
         ;;
 esac

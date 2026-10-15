@@ -1,4 +1,4 @@
-	.include "asm/macros.inc"
+	.include "macros.inc"
 	.include "nitrocrypto.inc"
 	.include "global.inc"
 	.public BN_gen_exp_string

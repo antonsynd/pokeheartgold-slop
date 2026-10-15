@@ -2,11 +2,14 @@
 #pragma warning_errors off
 #pragma thumb on
 #include "global.h"
+
+// Called as matched, before the real SDK headers declared these (#22, R10).
+#define CTRDG_WriteAndVerifyAgbFlashAsync(...) ((u32(*)(u32 sector, u8 * src, u32 verifyNum, void (*callback)(u16))) CTRDG_WriteAndVerifyAgbFlashAsync)(__VA_ARGS__)
+
 extern u16 ov74_02233A88(const u32 *data, u32 size);
 extern u16 ov74_02233ACC(u32 sectorId);
 extern const void *ov74_02233B04(u32 sectorId);
 extern void ov74_02233E50(u16 result);
-extern u32 CTRDG_WriteAndVerifyAgbFlashAsync(u32 sector, u8 *src, u32 verifyNum, void (*callback)(u16));
 typedef struct {
     s32 unk_00;
     s32 unk_04;

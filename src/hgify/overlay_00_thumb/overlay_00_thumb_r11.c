@@ -4,9 +4,9 @@
 #pragma thumb on
 #include "ghidra_compat.h"
 typedef int code();
-undefined4 ov00_021EE4FC();
-undefined4 ov00_021F9750();
-undefined4 ov00_021EE490();
+undefined4 DWC_GetAIDBitmap();
+undefined4 DWC_SendReliableBitmap();
+undefined4 DWC_GetMyAID();
 undefined4 ov00_021E6790();
 extern uint *_0221A680;
 // FUNCTION ov00_021E602C: matching C (agent20)
@@ -17,7 +17,7 @@ undefined4 ov00_021E602C(undefined *param_1, uint param_2) {
     if ((int)param_2 >= 0x100) {
         return 0;
     }
-    iVar1 = ov00_021EE490();
+    iVar1 = DWC_GetMyAID();
     if (iVar1 != 0) {
         return 0;
     }
@@ -36,8 +36,8 @@ body:
     *((u8 *)_0221A680 + 2) = *((u8 *)_0221A680 + 0x10dc);
     MI_CpuCopy8(param_1, (undefined *)(_0221A680 + 1), param_2);
     _0221A680[0x41e] = 1;
-    uVar2 = ov00_021EE4FC();
-    iVar1 = ov00_021F9750(uVar2, _0221A680, param_2 + 4);
+    uVar2 = DWC_GetAIDBitmap();
+    iVar1 = DWC_SendReliableBitmap(uVar2, _0221A680, param_2 + 4);
     if (iVar1 == 0) {
         _0221A680[0x41e] = 0;
         return 0;

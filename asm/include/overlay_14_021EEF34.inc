@@ -1,4 +1,4 @@
-#include <nitro/fs/overlay.h>
+
 #pragma once
 .public DpadMenuBox_GetPosition
 .public GridInputHandler_GetDpadBox

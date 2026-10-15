@@ -6,10 +6,13 @@
 #include "ghidra_compat.h"
 #include "text.h"
 #include "unk_02037C94.h"
+
+// Called as matched, before the real SDK headers declared these (#22, R10).
+#define DWC_CleanupInet(...) ((undefined4(*)())DWC_CleanupInet)(__VA_ARGS__)
+
 typedef int code();
 undefined4 ov70_02238E50();
 undefined4 ov70_02244FA4();
-undefined4 ov00_021EC8D8();
 undefined4 ov70_02244E44(int param_1, undefined4 param_2, undefined4 param_3, undefined4 param_4);
 // FUNCTION ov70_02244E44: matching C (agent20)
 #pragma force_active on
@@ -27,7 +30,7 @@ undefined4 ov70_02244E44(int param_1, undefined4 param_2, undefined4 param_3, un
         iVar1 = TextPrinterCheckActive(*(uint *)(param_1 + 0xbf0) & 0xff);
         if (iVar1 == 0) {
             sub_0203946C();
-            ov00_021EC8D8();
+            DWC_CleanupInet();
             *(short *)(param_1 + 0x1600) = *(short *)(param_1 + 0x1600) + 1;
         }
         break;

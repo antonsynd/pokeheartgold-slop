@@ -1,15 +1,15 @@
 # Decomp Coverage Ledger
 
-*Generated 2026-10-14T14:22:04Z by `coverage_ledger.py` — do not hand-edit; regenerate after each decomp.*
+*Generated 2026-10-15T08:06:42Z by `coverage_ledger.py` — do not hand-edit; regenerate after each decomp.*
 
-Tracked functions (files with retained asm): **19292** — matched 18111, pending 1148, plus 20 matched-but-blocked inside failed files.
+Tracked functions (files with retained asm): **19131** — matched 17987, pending 1111, plus 20 matched-but-blocked inside failed files.
 
 | status | files | functions | insn lines | ~text bytes |
 |---|---|---|---|---|
-| matched | 614 | 18111 | 87424 | 195924 |
-| blocked | 5 | 33 | 1328 | 2942 |
-| pending | 244 | 1148 | 183717 | 408788 |
-| upstream | 397 | 0 | 0 | 0 |
+| matched | 612 | 17987 | 87311 | 195662 |
+| blocked | 4 | 33 | 1328 | 2942 |
+| pending | 243 | 1111 | 176176 | 392802 |
+| upstream | 398 | 0 | 0 | 0 |
 
 ## Blockers (value-ordered: fix what gates the most)
 
@@ -21,17 +21,16 @@ Tracked functions (files with retained asm): **19292** — matched 18111, pendin
 | ipa-cse-literal-pool | 1 | 0 | MWCC -ipa file caches repeated literal-pool addresses/large offsets in callee-saved registers across calls where retail reloads them (or vice versa). A codegen-shape problem, not a header problem — split from ipa-shared-headers 2026-07-01, where this file's ubiquitous exports (BeginNormalPaletteFade family, imported by ~84 pending .inc files) badly inflated the gate count. |
 | objdiff-false-positives | 0 | 0 | RESOLVED. objdiff.py had a critical bug: the byte extraction regex did not match MWCC's ARM Thumb objdump format (packed hex like 'b418' vs expected space-separated 'b4 18'). It extracted 0 bytes for every function, so 0==0 always reported MATCH. 11 decomps accepted via objdiff were not actually byte-matching. Fixed; all 11 non-matching decomps reverted to asm. 2 decomps that truly match (unk_0202DB34, battle_arcade_game_board_data) kept. |
 
-## Blocked files (5)
+## Blocked files (4)
 
 | file | functions | insn lines | data-only | notes |
 |---|---|---|---|---|
 | asm/overlay_01_021FD41C.s | 24 | 660 |  |  20/24 matched; Camera/3D-effect map-object effect (dependent on overlay_01_021F1348 cluster head via local externs). 20/24 functions ma |
 | asm/overlay_104.s | 9 | 668 |  |   |
 | asm/unk_02055BF0_data.s | 0 | 0 | yes | ext-data-section-split Data-only: 3 external const fn-ptr arrays (sMapEnterRoutines, sMapExitRoutines, _020FC76C) referenced only by already-ma |
-| asm/middleware.s | 0 | 0 | yes |  Data-only: 7 NUL-terminated SDK middleware version strings in a custom .version section (single ordered section, each .b |
 | asm/overlay_12_battle_command.s | 0 | 0 | yes |   |
 
-## Matched files (asm retained) (614)
+## Matched files (asm retained) (612)
 
 | file | functions | insn lines | data-only | notes |
 |---|---|---|---|---|
@@ -66,7 +65,6 @@ Tracked functions (files with retained asm): **19292** — matched 18111, pendin
 | asm/overlay_48.s | 132 | 0 |  | hgify |
 | asm/overlay_01_021F944C.s | 128 | 0 |  | hgify |
 | asm/overlay_10_trainer_ai.s | 127 | 0 |  | hgify |
-| asm/overlay_13_thumb_2.s | 121 | 0 |  | hgify |
 | asm/overlay_14_021F2490.s | 121 | 0 |  | hgify |
 | asm/overlay_103.s | 115 | 0 |  | hgify |
 | asm/overlay_92.s | 113 | 0 |  | hgify |
@@ -337,7 +335,6 @@ Tracked functions (files with retained asm): **19292** — matched 18111, pendin
 | asm/unk_020961D8.s | 3 | 129 |  | harness |
 | asm/unk_02097B78.s | 3 | 43 |  | harness |
 | asm/overlay_01_021F4464.s | 3 | 0 |  | hgify |
-| asm/overlay_12_0226BEC4.s | 3 | 113 |  | retained_asm |
 | asm/overlay_41_0224BE34.s | 3 | 146 |  | harness |
 | asm/unk_02025C44.s | 2 | 0 |  | hgify |
 | asm/unk_02026DE0.s | 2 | 0 |  | hgify |
@@ -650,14 +647,13 @@ Tracked functions (files with retained asm): **19292** — matched 18111, pendin
 | asm/battle_arcade_game_board_data.s | 0 | 0 | yes | harness |
 | asm/battle_arcade_game_board_data2.s | 0 | 0 | yes | split_tu |
 
-## Pending files (244)
+## Pending files (243)
 
 | file | functions | insn lines | data-only | notes |
 |---|---|---|---|---|
 | asm/overlay_96.s | 152 | 29728 |  |  |
 | asm/overlay_40.s | 48 | 8325 |  |  |
 | asm/overlay_74_thumb.s | 48 | 6914 |  |  |
-| asm/overlay_13_thumb_2.s | 37 | 7541 |  |  |
 | asm/overlay_112.s | 33 | 4369 |  |  |
 | asm/overlay_12_battle_controller_opponent.s | 31 | 9393 |  |  |
 | asm/overlay_70.s | 29 | 4017 |  |  |

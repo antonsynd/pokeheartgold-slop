@@ -24,12 +24,12 @@ typedef struct Mgr {
 extern Mgr *_0221A680;
 BOOL ov00_021E7314(void);
 void ov00_021E7300(void);
-BOOL ov00_021EDFBC(u8 a, void *cb1, void *p1, void *cb2, void *p2);
-BOOL ov00_021EE054(int a, void *cb1, void *p1, void *cb2, void *p2);
-void ov00_021F989C(void *cb);
-void ov00_021F98BC(void *cb);
-void ov00_021EE24C(void *cb, void *p);
-void ov00_021F98DC(void *cb);
+BOOL DWC_SetupGameServer(u8 a, void *cb1, void *p1, void *cb2, void *p2);
+BOOL DWC_ConnectToGameServerAsync(int a, void *cb1, void *p1, void *cb2, void *p2);
+void DWC_SetUserSendCallback(void *cb);
+void DWC_SetUserRecvCallback(void *cb);
+void DWC_SetConnectionClosedCallback(void *cb, void *p);
+void DWC_SetUserRecvTimeoutCallback(void *cb);
 extern void ov00_021E6ED8(void);
 extern void ov00_021E6FE0(void);
 extern void ov00_021E6FBC(void);
@@ -61,10 +61,10 @@ int ov00_021E6D7C(int hostFriendIdx, int maxParties, BOOL twoOnly) {
     }
     _0221A680->disconnectIfAlone = 1;
     if (hostFriendIdx < 0) {
-        success = ov00_021EDFBC((u8)maxParties, ov00_021E6ED8, 0, ov00_021E6FE0, 0);
+        success = DWC_SetupGameServer((u8)maxParties, ov00_021E6ED8, 0, ov00_021E6FE0, 0);
         _0221A680->connectionRole = 1;
     } else {
-        success = ov00_021EE054(hostFriendIdx, ov00_021E6FBC, 0, ov00_021E6FE0, 0);
+        success = DWC_ConnectToGameServerAsync(hostFriendIdx, ov00_021E6FBC, 0, ov00_021E6FE0, 0);
         _0221A680->connectionRole = 2;
     }
     if (!success) {
@@ -76,10 +76,10 @@ int ov00_021E6D7C(int hostFriendIdx, int maxParties, BOOL twoOnly) {
     }
     _0221A680->timer = 0;
     _0221A680->state = 5;
-    ov00_021F989C(ov00_021E6428);
-    ov00_021F98BC(ov00_021E6484);
-    ov00_021EE24C(ov00_021E6554, 0);
-    ov00_021F98DC(ov00_021E6240);
+    DWC_SetUserSendCallback(ov00_021E6428);
+    DWC_SetUserRecvCallback(ov00_021E6484);
+    DWC_SetConnectionClosedCallback(ov00_021E6554, 0);
+    DWC_SetUserRecvTimeoutCallback(ov00_021E6240);
     _0221A680->dataSent = 0;
     return 0;
 }

@@ -12,8 +12,8 @@
 #include "constants/gx.h"
 #include "constants/pokemon.h"
 
-#include "graphic/zukan_gra.naix"
-#include "msgdata/msg.naix"
+#include "files/graphic/zukan_gra.naix"
+#include "files/msgdata/msg.naix"
 
 #include "bg_window.h"
 #include "dex_mon_measures.h"
@@ -254,7 +254,7 @@ void ov18_021F8CCC(PokedexEntryPopup *popup) {
         FillWindowPixelBuffer(&popup->windows[i], 0);
     }
 
-    msgData = NewMsgDataFromNarc(MSGDATA_LOAD_DIRECT, NARC_msgdata_msg, NARC_msg_msg_0802_bin, popup->heapId);
+    msgData = NewMsgDataFromNarc(MSGDATA_LOAD_DIRECT, NARC_msgdata_msg, msg_0802, popup->heapId);
     msgFormat = MessageFormat_New(popup->heapId);
     strbuf = String_New(0x400, popup->heapId);
 

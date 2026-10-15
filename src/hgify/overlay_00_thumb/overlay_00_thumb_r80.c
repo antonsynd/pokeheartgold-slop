@@ -5,6 +5,15 @@
 
 #include "error_handling.h"
 #include "unk_02037C94.h"
+
+// Called as matched, before the real SDK headers declared these (#22, R10).
+#define DWC_GetMyAID(...) ((int (*)(void))DWC_GetMyAID)(__VA_ARGS__)
+
+// Called as matched, before the real SDK headers declared these (#22, R10).
+#define NNS_SndStrmAllocChannel(...) ((void (*)(void *strm, int a, void *b))NNS_SndStrmAllocChannel)(__VA_ARGS__)
+#define NNS_SndStrmSetVolume(...)    ((void (*)(void *strm, int v))NNS_SndStrmSetVolume)(__VA_ARGS__)
+#define NNS_SndStrmSetup(...)        ((void (*)(void *strm, int a, void *b, int c, int d, int e, void *cb, void *arg))NNS_SndStrmSetup)(__VA_ARGS__)
+
 typedef struct {
     s32 timeToProcess;
     u8 *manager;
@@ -23,11 +32,7 @@ typedef struct {
 } VctCfg;
 extern void ov00_021E77CC(void *a, void *b, int c, int d);
 extern void ov00_021E733C(void);
-extern void NNS_SndStrmAllocChannel(void *strm, int a, void *b);
-extern void NNS_SndStrmSetVolume(void *strm, int v);
-extern void NNS_SndStrmSetup(void *strm, int a, void *b, int c, int d, int e, void *cb, void *arg);
 extern int sub_02034084(void);
-extern int ov00_021EE490(void);
 extern void VCT_Init(VctCfg *cfg);
 extern void VCT_SetCodec(int c);
 extern void ov00_021E79B4(void);
@@ -73,7 +78,7 @@ void ov00_021E77F4(int heap, int codec, int count) {
     *(u32 *)(_0221A684.manager + 0x19e8) = cfg.f8;
     cfg.f0 = _0221A684.manager + 0x1990;
     cfg.count = count;
-    cfg.id = ov00_021EE490();
+    cfg.id = DWC_GetMyAID();
     if (cfg.id == -1) {
         GF_AssertFail();
     }

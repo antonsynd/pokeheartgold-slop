@@ -3,7 +3,7 @@
 #include <nitro/gx/g3x.h>
 #include <nitro/gx/gx_load.h>
 #include <nitro/mi/memory.h>
-#include <nitro/os/interrupt.h>
+#include <nitro/os.h>
 
 #include "global.h"
 

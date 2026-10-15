@@ -4,6 +4,10 @@
 #include "global.h"
 
 #include "message_format.h"
+
+// Called as matched, before the real SDK headers declared these (#22, R10).
+#define RTC_ConvertDayToDate(...) ((void (*)(RTCDate *, int))RTC_ConvertDayToDate)(__VA_ARGS__)
+
 typedef struct Inner {
     u8 pad[0x354];
     int day;
@@ -15,7 +19,6 @@ typedef struct S {
     Inner *inner[3];
     int idx;
 } S;
-void RTC_ConvertDayToDate(RTCDate *, int);
 // FUNCTION ov74_0222D55C: matching C (agent3)
 #pragma force_active on
 int ov74_0222D55C(S *p) {

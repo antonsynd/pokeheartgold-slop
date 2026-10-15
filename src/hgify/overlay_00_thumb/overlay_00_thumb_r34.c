@@ -15,7 +15,7 @@ typedef struct UnkStruct_ov00_021E6964 {
 } UnkStruct_ov00_021E6964;
 
 extern UnkStruct_ov00_021E6964 *_0221A680;
-int ov00_021EE490(void);
+int DWC_GetMyAID(void);
 
 // FUNCTION ov00_021E6964: matching C (twin)
 #pragma force_active on
@@ -24,7 +24,7 @@ int ov00_021E6964(void) {
         if (_0221A680->state == WFC_STATE_MATCHMAKING_SUCCESS
             || _0221A680->state == WFC_STATE_WAIT_AFTER_MATCHMAKING_SUCCESS
             || _0221A680->state == WFC_STATE_CLOSE_CONNECTION) {
-            return ov00_021EE490();
+            return DWC_GetMyAID();
         }
     }
 

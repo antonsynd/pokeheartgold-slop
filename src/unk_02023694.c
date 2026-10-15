@@ -6,81 +6,11 @@
 
 // This is the same billboard (3D sprite) list system as pokeplatinum's src/billboard.c.
 
-// NitroSystem G3D material structures and accessors not present in lib/include.
-typedef struct NNSG3dResMat {
-    u16 ofsDictTexToMatList;
-    u16 ofsDictPlttToMatList;
-    NNSG3dResDict dict;
-} NNSG3dResMat;
-
-typedef struct NNSG3dResDictTexToMatIdxData {
-    u16 offset;
-    u8 numIdx;
-    u8 flag;
-} NNSG3dResDictTexToMatIdxData;
-
-typedef struct NNSG3dResDictPlttToMatIdxData {
-    u16 offset;
-    u8 numIdx;
-    u8 flag;
-} NNSG3dResDictPlttToMatIdxData;
-
-typedef struct NNSG3dResDictTexData {
-    u32 texImageParam;
-    u32 extraParam;
-} NNSG3dResDictTexData;
-
-typedef struct NNSG3dResDictPlttData {
-    u16 offset;
-    u16 flag;
-} NNSG3dResDictPlttData;
-
-typedef struct NNSG3dResMatData {
-    u16 itemTag;
-    u16 size;
-    u32 diffAmb;
-    u32 specEmi;
-    u32 polyAttr;
-    u32 polyAttrMask;
-    u32 texImageParam;
-    u32 texImageParamMask;
-    u16 texPlttBase;
-    u16 flag;
-} NNSG3dResMatData;
-
+// NitroSystem G3D material constants not in the SDK headers. (The accessors NNS_G3dGetMat,
+// NNS_G3dGetTexDataByIdx, NNS_G3dGetPlttDataByIdx and NNS_G3dGetMatDataByIdx used to be local
+// copies; NitroSystem now provides them.)
 #define NNS_G3D_TEXIMAGE_PARAM_TEX_ADDR_MASK 0x0000FFFF
 #define REG_G3_TEXPLTT_BASE_PLTT_BASE_MASK   0x1FFF
-
-static inline NNSG3dResMat *NNS_G3dGetMat(const NNSG3dResMdl *mdl) {
-    if (mdl != NULL && mdl->ofsMat != 0) {
-        return (NNSG3dResMat *)((u8 *)mdl + mdl->ofsMat);
-    }
-    return NULL;
-}
-
-static inline const NNSG3dResDictTexData *NNS_G3dGetTexDataByIdx(const NNSG3dResTex *tex, u32 idx) {
-    if (tex != NULL) {
-        return (const NNSG3dResDictTexData *)NNS_G3dGetResDataByIdx(&tex->dict, idx);
-    }
-    return NULL;
-}
-
-static inline const NNSG3dResDictPlttData *NNS_G3dGetPlttDataByIdx(const NNSG3dResTex *tex, u32 idx) {
-    if (tex != NULL && tex->plttInfo.ofsDict != 0) {
-        return (const NNSG3dResDictPlttData *)NNS_G3dGetResDataByIdx((const NNSG3dResDict *)((u8 *)tex + tex->plttInfo.ofsDict), idx);
-    }
-    return NULL;
-}
-
-static inline NNSG3dResMatData *NNS_G3dGetMatDataByIdx(const NNSG3dResMat *mat, u32 idx) {
-    if (mat != NULL) {
-        const u32 *ofs = (const u32 *)NNS_G3dGetResDataByIdx(&mat->dict, idx);
-        if (ofs != NULL) {
-            return (NNSG3dResMatData *)((u8 *)mat + *ofs);
-        }
-    }
-    return NULL;
-}
 
 void NNS_G3dReleaseMdlSet(NNSG3dResMdlSet *pMdlSet);
 

@@ -14,13 +14,20 @@
 #
 # Exit codes: 0 = no cascade (or no testable changes), 1 = cascade detected
 #
-# Requirements: built tree (make main must have run at least once),
-# MWCC toolchain available, wine configured.
+# Requirements: a configured HeartGold build dir (any `build_pokeheartgold
+# build` run creates build/heartgold.us/compile_commands.json, which supplies
+# the exact MWCC flags via compile_cmd.py), MWCC toolchain available.
 
 set -euo pipefail
 
-MWCC="wine tools/mwccarm/2.0/sp2p2/mwccarm.exe"
-MWCFLAGS="-DHEARTGOLD -DGAME_REMASTER=0 -DENGLISH -DPM_KEEP_ASSERTS -DSDK_ARM9 -DSDK_CODE_ARM -DSDK_FINALROM -O4,p -sym on -enum int -lang c99 -Cpp_exceptions off -gccext,on -proc arm946e -msgstyle gcc -gccinc -i ./src -i ./include -i ./include/library -i ./files -I./lib/include -ipa file -interworking -inline on,noauto -char signed -W all -W pedantic -W noimpl_signedunsigned -W noimplicitconv -W nounusedarg -W nomissingreturn -W error"
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd -L)"
+PROJECT_ROOT="$(cd "$SCRIPT_DIR/../.." && pwd -L)"
+cd "$PROJECT_ROOT"
+
+# Compile one TU the way ninja does: compile_cmd.py <src.c> -o <obj> [--game G].
+mwcc_compile() {
+    python3 "$SCRIPT_DIR/compile_cmd.py" "$2" -o "$1"
+}
 
 if [[ $# -gt 0 ]]; then
     headers="$*"
@@ -38,12 +45,19 @@ trap 'rm -rf "$tmpdir"' EXIT
 
 cascade_found=0
 
-# Matched TUs = source files linked via `Object src/*.o` in main.lsf. Only
-# these can regress silently under an IPA cascade (everything else is still
-# handwritten asm), so those are the includers we must test — ALL of them,
-# not just the first one found.
+# Matched TUs = C sources linked in main.lsf (main.nef.p/src_*.c.o objects).
+# Only these can regress silently under an IPA cascade (everything else is
+# still handwritten asm), so those are the includers we must test — ALL of
+# them, not just the first one found.
 matched_list="$tmpdir/matched.txt"
-grep -oE 'Object src/[^ ]+\.o' main.lsf 2>/dev/null | sed 's#Object ##; s#\.o$#.c#' | sort -u > "$matched_list"
+python3 -c "
+import sys
+sys.path.insert(0, '$SCRIPT_DIR')
+import asmscan
+for o in asmscan.parse_lsf('$PROJECT_ROOT'):
+    if o['kind'] == 'src':
+        print('src/%s.c' % o['name'])
+" | sort -u > "$matched_list"
 
 for header in $headers; do
     [[ -f "$header" ]] || continue
@@ -51,8 +65,8 @@ for header in $headers; do
     hbase=$(basename "$header")
 
     # Every matched C file that directly includes this header. (Transitive
-    # includers are only visible with .d data — see ipa_map.py; this check
-    # stays robust to purged .d files by grepping source directly.)
+    # includers are visible in ninja's dependency log — see ipa_map.py; this
+    # check stays independent of it by grepping source directly.)
     includers=$(grep -rlF "#include \"$hbase\"" src/ --include='*.c' 2>/dev/null \
                 | sort -u | grep -Fxf "$matched_list" || true)
     if [[ -z "$includers" ]]; then
@@ -79,7 +93,7 @@ for header in $headers; do
 
         # Compile with OLD (HEAD) header.
         cp "$tmpdir/head_header" "$header"
-        if ! $MWCC $MWCFLAGS -c -o "$old_obj" "$includer" >/dev/null 2>&1; then
+        if ! mwcc_compile "$old_obj" "$includer" >/dev/null 2>&1; then
             echo "  ~ $includer — old header fails to compile (expected if fixing a build break), skipping"
             cp "$tmpdir/staged_header" "$header"
             continue
@@ -87,7 +101,7 @@ for header in $headers; do
 
         # Compile with NEW (staged) header.
         cp "$tmpdir/staged_header" "$header"
-        if ! $MWCC $MWCFLAGS -c -o "$new_obj" "$includer" >/dev/null 2>&1; then
+        if ! mwcc_compile "$new_obj" "$includer" >/dev/null 2>&1; then
             echo "  ~ $includer — new header fails to compile, skipping"
             continue
         fi

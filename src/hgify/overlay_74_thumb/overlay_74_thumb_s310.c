@@ -3,15 +3,11 @@
 #pragma thumb on
 #include "global.h"
 
+// Called as matched, before the real SDK headers declared these (#22, R10).
+#define WM_EndScan(...) ((int (*)(WMCallbackFunc callback))WM_EndScan)(__VA_ARGS__)
+
 typedef void (*WMCallbackFunc)(void *arg);
 
-typedef enum WMErrCode {
-    WM_ERRCODE_SUCCESS = 0,
-    WM_ERRCODE_FAILED,
-    WM_ERRCODE_OPERATING,
-} WMErrCode;
-
-int WM_EndScan(WMCallbackFunc callback);
 void ov74_02231448(WMErrCode errCode);
 void ov74_02230590(void *arg);
 

@@ -4,14 +4,14 @@
 #include "ghidra_compat.h"
 typedef int code();
 undefined4 ov73_021E844C();
-undefined4 ov00_021EC8D8();
+undefined4 DWC_CleanupInet();
 undefined4 ov73_021E9CBC(int param_1);
 // FUNCTION ov73_021E9CBC: matching C (r2)
 #pragma force_active on
 undefined4 ov73_021E9CBC(int param_1)
 
 {
-    ov00_021EC8D8();
+    DWC_CleanupInet();
     ov73_021E844C(param_1, 0, 0);
     *(undefined4 *)(param_1 + 0x1c) = 0x2b;
     return 3;

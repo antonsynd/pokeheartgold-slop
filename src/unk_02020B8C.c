@@ -1,5 +1,5 @@
 // clang-format off
-#include <nitro/fx.h>
+#include <nitro/fx/fx.h>
 #include "unk_02020B8C.h"
 // clang-format on
 

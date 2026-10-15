@@ -2,7 +2,7 @@
 #pragma warning_errors off
 #include "global.h"
 #pragma thumb on
-BOOL ov00_021ECB94(RTCDate *date, RTCTime *time);
+BOOL DWC_GetDateTime(RTCDate *date, RTCTime *time);
 typedef struct BallSeal {
     u8 type;
     u8 x;
@@ -172,7 +172,7 @@ void ov70_02240CA0(GlobalTrade *globalTrade, int type) {
     RTCTime unused;
     u32 timestamp;
 
-    ov00_021ECB94(&currentDate, &unused);
+    DWC_GetDateTime(&currentDate, &unused);
 
     timestamp = Date_Encode(&currentDate);
 

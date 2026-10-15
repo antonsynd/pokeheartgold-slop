@@ -5,9 +5,9 @@
 int ov38_0221BB44(u32);
 void ov38_0221BA00(u32);
 u32 ov38_0221BA10(void);
-u8 *ov00_021EC2A8(int, u32);
-void ov00_021EC2EC(int, void *);
-void ov00_021FFC18(void *, void *, int, int);
+u8 *DWC_Alloc(int, u32);
+void DWC_Free(int, void *);
+void B64Encode(void *, void *, int, int);
 static inline void Acc(u32 *s, u8 b) {
     *s += b;
 }
@@ -23,7 +23,7 @@ int ov38_0221BA38(u32 key, u8 *data, int len, u8 *out, int outSize) {
     if (outSize < ov38_0221BB44(size) + 1) {
         return 2;
     }
-    buf = ov00_021EC2A8(10, size);
+    buf = DWC_Alloc(10, size);
     if (buf == 0) {
         return 1;
     }
@@ -51,9 +51,9 @@ int ov38_0221BA38(u32 key, u8 *data, int len, u8 *out, int outSize) {
     buf[1] = sum >> 16;
     buf[2] = sum >> 8;
     buf[3] = sum;
-    ov00_021FFC18(buf, out, len + 8, 2);
+    B64Encode(buf, out, len + 8, 2);
     out[ov38_0221BB44(size)] = 0;
-    ov00_021EC2EC(10, buf);
+    DWC_Free(10, buf);
     return 0;
 }
 #pragma force_active reset

@@ -1,4 +1,4 @@
-	.include "asm/macros.inc"
+	.include "macros.inc"
 	.include "overlay_81.inc"
 	.include "global.inc"
 	.public ov81_0223DEA8
@@ -566,7 +566,7 @@ _0223E2CE:
 	bl Main_SetVBlankIntrCB
 	mov r0, #0x64
 	bl Heap_Destroy
-	ldr r0, _0223E314 ; =FS_OVERLAY_ID(OVY_80)
+	ldr r0, _0223E314 ; =SDK_OVERLAY_OVY_80_ID
 	bl UnloadOverlayByID
 	mov r0, #1
 	pop {r3, r4, r5, r6, r7, pc}
@@ -574,7 +574,7 @@ _0223E2CE:
 _0223E308: .word 0x00000478
 _0223E30C: .word 0x0000046C
 _0223E310: .word 0x00000464
-_0223E314: .word FS_OVERLAY_ID(OVY_80)
+_0223E314: .word SDK_OVERLAY_OVY_80_ID
 	thumb_func_end ov81_0223E234
 
 	thumb_func_start ov81_0223E318

@@ -2,7 +2,7 @@
 #include "msgdata/msg/msg_0247.h"
 #include "msgdata/msg/msg_0442.h"
 #include "constants/sndseq.h"
-	.include "asm/macros.inc"
+	.include "macros.inc"
 	.include "overlay_74_thumb.inc"
 	.include "global.inc"
 	.public ov74_022369D8
@@ -32,7 +32,7 @@ ov74_022369D8: ; 0x022369D8
 	add r4, r0, #0
 	add r0, sp, #0
 	add r1, sp, #4
-	bl ov00_021EC11C
+	bl DWC_GetLastErrorEx
 	ldr r0, [sp]
 	ldr r1, [sp, #4]
 	neg r0, r0

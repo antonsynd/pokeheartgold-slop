@@ -2,7 +2,7 @@
 #pragma warning_errors off
 #pragma thumb on
 #include <nitro.h>
-#include <nnsys/g3d/glbstate_inline.h>
+#include <nnsys/g3d/glbstate.h>
 
 #include "global.h"
 

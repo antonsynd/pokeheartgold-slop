@@ -7,6 +7,14 @@
 #include "ghidra_compat.h"
 #include "overlay_00_arm.h"
 #include "overlay_00_thumb.h"
+
+// Called as matched, before the real SDK headers declared these (#22, R10).
+#define DWC_GetAIDBitmap(...) ((int (*)(void))DWC_GetAIDBitmap)(__VA_ARGS__)
+#define DWC_GetMyAID(...)     ((int (*)(void))DWC_GetMyAID)(__VA_ARGS__)
+
+// Upstream renamed these and its header still declares the old names (#22).
+void DWC_ProcessFriendsMatch(void);
+
 typedef int code();
 typedef struct S00 {
     char pad0[0x1070];
@@ -33,8 +41,6 @@ void ov00_021E6CE8(void);
 void ov00_021E7AE0(void);
 void ov00_021E7ACC(void);
 void ov00_021E765C(void);
-int ov00_021EE4FC(void);
-int ov00_021EE490(void);
 int ov00_021E7AF4(int a, int b);
 int ov00_021E67E0(int i);
 void ov00_021E62D8(void);
@@ -48,7 +54,7 @@ int ov00_021E6850(void) {
     int a;
     int b;
 
-    ov00_021EDB1C();
+    DWC_ProcessFriendsMatch();
     ov00_021E6CE8();
     if (_0221A680->active != 0) {
         if (_0221A680->h10d4 == 1 && _0221A680->w10d0 == 1 && _0221A680->h10d6 == 1) {
@@ -58,11 +64,11 @@ int ov00_021E6850(void) {
         }
         ov00_021E765C();
         s = _0221A680;
-        if (s->f1080 != ov00_021EE4FC() && s->b10df == 0 && s->f109c != 0) {
-            a = ov00_021EE4FC();
-            b = ov00_021EE490();
+        if (s->f1080 != DWC_GetAIDBitmap() && s->b10df == 0 && s->f109c != 0) {
+            a = DWC_GetAIDBitmap();
+            b = DWC_GetMyAID();
             if (ov00_021E7AF4(a, b) != 0) {
-                _0221A680->f1080 = ov00_021EE4FC();
+                _0221A680->f1080 = DWC_GetAIDBitmap();
             }
         }
     }

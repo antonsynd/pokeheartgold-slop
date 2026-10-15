@@ -4,7 +4,10 @@
 #include "global.h"
 
 #include "heap.h"
-u16 MATH_CalcCRC16(void *table, void *data, u32 size);
+
+// Called as matched, before the real SDK headers declared these (#22, R10).
+#define MATH_CalcCRC16(...) ((u16(*)(void *table, void *data, u32 size))MATH_CalcCRC16)(__VA_ARGS__)
+
 void CRYPTO_RC4Init(void *ctx, u16 *key, u32 keylen);
 void CRYPTO_RC4Encrypt(void *ctx, void *src, u32 len, void *dst);
 // FUNCTION ov74_02235ED0: matching C (agent18)

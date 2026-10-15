@@ -7,9 +7,12 @@
 #include "sav_system_info.h"
 #include "unk_0202C034.h"
 #include "unk_02037C94.h"
+
+// Called as matched, before the real SDK headers declared these (#22, R10).
+#define DWC_CreateFriendKey(...) ((u64 (*)(DWCUserData *userData))DWC_CreateFriendKey)(__VA_ARGS__)
+
 // clang-format on
 
-extern u64 DWC_CreateFriendKey(DWCUserData *userData);
 extern void ov70_022378C0(s32 profileId, u32 keyLow, u32 keyHigh);
 
 typedef struct {

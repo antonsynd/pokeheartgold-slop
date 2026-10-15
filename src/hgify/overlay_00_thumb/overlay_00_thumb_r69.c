@@ -4,6 +4,10 @@
 #include "global.h"
 
 #include "ghidra_compat.h"
+
+// Called as matched, before the real SDK headers declared these (#22, R10).
+#define NNS_SndStrmInit(...) ((void (*)(void *strm))NNS_SndStrmInit)(__VA_ARGS__)
+
 typedef int code();
 typedef struct W {
     char pad0[0x110c];
@@ -23,7 +27,6 @@ extern struct {
     W *w;
 } _0221A684;
 extern void VCT_EnableVAD(int v);
-extern void NNS_SndStrmInit(void *strm);
 extern void VCT_EnableEchoCancel(int v);
 void ov00_021E733C(void);
 // FUNCTION ov00_021E733C: matching C (agent3)
