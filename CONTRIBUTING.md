@@ -26,7 +26,7 @@ AI-assisted contributions to *this fork* are welcome. The only thing that matter
 
 1. **Claim the file first.** Before you start converting `asm/<name>.s`, check the open pull requests and issues to see whether someone else is already working on it. If nobody is, open an issue titled `Claim asm/<name>.s` (`python3 tools/decomp_harness/claim.py open asm/<name>.s` does both checks and opens it), or open a draft PR. Put `Closes #<issue>` in the commit that lands the file. Claims can go stale: if one has sat for a while with no PR, ask on the issue before taking the file over. Close the claim if you give up, so the file goes back into the pool. `tools/decomp_harness/next_target.sh --info` suggests the next file to take.
 2. **Send one asm file per pull request.** Splitting an overlay into chunks (see [CLAUDE.md](CLAUDE.md#decompilation-workflow)) is its own PR.
-3. **Both ROMs must match.** Before you open the PR, `make GAME_VERSION=HEARTGOLD check` and `make GAME_VERSION=SOULSILVER check` must both pass. Then run `./tools/build_attestation.sh`, and commit `build_attestation.json` and `tools/decomp_harness/matched_manifest.json` with your change. The [pre-commit hook](#usage) checks that the attestation is current.
+3. **Both ROMs must match.** Before you open the PR, `make GAME_VERSION=HEARTGOLD check` and `make GAME_VERSION=SOULSILVER check` must both pass. CI checks both again on the PR (the required `build` check), so a mismatch can't merge.
 4. **Prune the drafts.** After a file matches, run `python3 tools/decomp_harness/twins.py prune asm/<name>.s` and commit the result. This drops the `nonmatching/` drafts for the functions that are now real C.
 5. **Don't edit the progress bars in `README.md`.** CI regenerates them after every merge.
 

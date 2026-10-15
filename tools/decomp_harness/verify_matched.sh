@@ -23,7 +23,9 @@
 # Usage:
 #   verify_matched.sh capture [--game G]
 #       Recapture the manifest from build/<game>.us/main.nef.p/src_*.c.o for
-#       every matched TU. Run after every green `chiri pkg -- compare`.
+#       every matched TU. Run after a green `chiri pkg -- compare`; nothing runs
+#       it automatically. A TU matched since the last capture is skipped by
+#       `check` (except with --file) until the next capture.
 #
 #   verify_matched.sh check [--game G] [--file src/foo.c] [--quick N]
 #       Recompile matched TUs via compile_one.sh (serial) and diff their
@@ -184,7 +186,18 @@ if __name__ == '__main__':
     elif op == 'compare':
         cmd_compare(sys.argv[2], sys.argv[3])
     elif op == 'tus':
-        for t in matched_tus(sys.argv[2]):
+        tus = matched_tus(sys.argv[2])
+        if len(sys.argv) > 3:
+            # Only TUs the manifest has a fingerprint for: one matched since the
+            # last capture has nothing to compare against, so it isn't drift.
+            with open(sys.argv[3]) as f:
+                known = json.load(f)['tus']
+            new = [t for t in tus if t not in known]
+            if new:
+                sys.stderr.write("verify_matched: %d matched TU(s) are not in the manifest yet and are "
+                                 "skipped; 'verify_matched.sh capture' after a build adds them\n" % len(new))
+            tus = [t for t in tus if t in known]
+        for t in tus:
             print(t)
     else:
         sys.stderr.write("unknown op %r\n" % op)
@@ -236,6 +249,8 @@ fi
 # Build the TU list to check.
 declare -a ALL_TUS=()
 while IFS= read -r _t; do [[ -n "$_t" ]] && ALL_TUS+=("$_t"); done < <(python3 "$PYHELP" tus "$LSF")
+declare -a KNOWN_TUS=()
+while IFS= read -r _t; do [[ -n "$_t" ]] && KNOWN_TUS+=("$_t"); done < <(python3 "$PYHELP" tus "$LSF" "$MANIFEST")
 declare -a TUS=()
 if [[ -n "$ONE_FILE" ]]; then
     # normalise (accept src/foo.c)
@@ -248,9 +263,9 @@ if [[ -n "$ONE_FILE" ]]; then
     TUS=("$ONE_FILE")
 elif [[ -n "$QUICK" ]]; then
     if ! [[ "$QUICK" =~ ^[0-9]+$ ]]; then echo "verify_matched: --quick needs an integer" >&2; exit 2; fi
-    while IFS= read -r _t; do [[ -n "$_t" ]] && TUS+=("$_t"); done < <(printf '%s\n' "${ALL_TUS[@]}" | awk 'BEGIN{srand()} {print rand()"\t"$0}' | sort | head -n "$QUICK" | cut -f2-)
+    while IFS= read -r _t; do [[ -n "$_t" ]] && TUS+=("$_t"); done < <(printf '%s\n' "${KNOWN_TUS[@]}" | awk 'BEGIN{srand()} {print rand()"\t"$0}' | sort | head -n "$QUICK" | cut -f2-)
 else
-    TUS=("${ALL_TUS[@]}")
+    TUS=("${KNOWN_TUS[@]}")
 fi
 
 total="${#TUS[@]}"

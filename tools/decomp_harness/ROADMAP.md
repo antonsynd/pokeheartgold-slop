@@ -345,8 +345,9 @@ dsprot .d files with loud partial-coverage banner — currently 100% (483/483 ma
 fixed: iterates ALL matched includers of a changed header (source-grep based, .d-purge-proof).
 Hook wiring APPLIED (user-approved 2026-07-02): pre-commit runs `verify_matched.sh check
 --quick 20` on staged include/*.h changes (after ipa_check) and auto-stages
-matched_manifest.json; `build_attestation.sh` recaptures the manifest after every green
-compare; nightly full check via `nightly_check.sh` + launchd agent
+matched_manifest.json; `build_attestation.sh` recaptured the manifest after every green
+compare (removed 2026-10-15 with the attestation, since CI checks both ROMs; run
+`verify_matched.sh capture` by hand); nightly full check via `nightly_check.sh` + launchd agent
 `com.pokeheartgold.verify-matched` (03:30 daily, skips if MWCC busy, logs to
 ~/Library/Logs/pokeheartgold_verify_matched.log, drops a VERIFY_DRIFT marker on failure).
 - `verify_matched.sh`: SHA1 manifest of `build/heartgold.us/src/*.o` captured after every
