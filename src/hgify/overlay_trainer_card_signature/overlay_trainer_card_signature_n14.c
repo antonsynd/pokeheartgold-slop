@@ -248,14 +248,6 @@ union StringToPrint {
     const charcode_t *raw;
     const String *string;
 };
-enum Font {
-    FONT_SYSTEM = 0,
-    FONT_MESSAGE,
-    FONT_SUBSCREEN,
-    FONT_UNOWN,
-
-    FONT_MAX,
-};
 typedef u32 TextColor;
 void ov52_021E89D4(SignatureApp *signatureApp, ApplicationManager *appMan);
 void ov52_021E925C(Window *unused0, int unused1, TextColor unused2, SignatureApp *unused3);

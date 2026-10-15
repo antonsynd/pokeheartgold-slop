@@ -396,11 +396,11 @@ typedef struct SPLManager {
 } SPLManager;
 typedef u32 (*SPLTexVRAMAllocFunc)(u32 size, BOOL is4x4comp);
 typedef u32 (*SPLPalVRAMAllocFunc)(u32 size, BOOL is4pal);
-void SPL_Load(SPLManager *mgr, const void *data);
-BOOL SPL_LoadTexByCallbackFunction(SPLManager *mgr, SPLTexVRAMAllocFunc vramAlloc);
-BOOL SPL_LoadTexPlttByCallbackFunction(SPLManager *mgr, SPLPalVRAMAllocFunc vramAlloc);
-BOOL SPL_LoadTexByVRAMManager(SPLManager *mgr);
-BOOL SPL_LoadTexPlttByVRAMManager(SPLManager *mgr);
+void SPLManager_LoadResources(SPLManager *mgr, const void *data);
+BOOL SPLManager_UploadTexturesEx(SPLManager *mgr, SPLTexVRAMAllocFunc vramAlloc);
+BOOL SPLManager_UploadPalettesEx(SPLManager *mgr, SPLPalVRAMAllocFunc vramAlloc);
+BOOL SPLManager_UploadTextures(SPLManager *mgr);
+BOOL SPLManager_UploadPalettes(SPLManager *mgr);
 typedef struct ParticleSystem {
     SPLManager *manager;
     void *resource;
@@ -434,20 +434,20 @@ void sub_02015300(ParticleSystem *particleSystem);
 // FUNCTION sub_02015300: matching C (pt4)
 #pragma force_active on
 void sub_02015300(ParticleSystem *particleSystem) {
-    SPL_Load(particleSystem->manager, particleSystem->resource);
+    SPLManager_LoadResources(particleSystem->manager, particleSystem->resource);
 
     _021D10A0 = particleSystem;
 
     if (particleSystem->texAllocFunc == ((void *)0)) {
-        SPL_LoadTexByVRAMManager(particleSystem->manager);
+        SPLManager_UploadTextures(particleSystem->manager);
     } else {
-        SPL_LoadTexByCallbackFunction(particleSystem->manager, particleSystem->texAllocFunc);
+        SPLManager_UploadTexturesEx(particleSystem->manager, particleSystem->texAllocFunc);
     }
 
     if (particleSystem->palAllocFunc == ((void *)0)) {
-        SPL_LoadTexPlttByVRAMManager(particleSystem->manager);
+        SPLManager_UploadPalettes(particleSystem->manager);
     } else {
-        SPL_LoadTexPlttByCallbackFunction(particleSystem->manager, particleSystem->palAllocFunc);
+        SPLManager_UploadPalettesEx(particleSystem->manager, particleSystem->palAllocFunc);
     }
 
     _021D10A0 = ((void *)0);

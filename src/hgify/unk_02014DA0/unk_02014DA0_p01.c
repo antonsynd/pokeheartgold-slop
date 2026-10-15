@@ -531,7 +531,7 @@ typedef struct SPLManager {
 } SPLManager;
 typedef u32 (*SPLTexVRAMAllocFunc)(u32 size, BOOL is4x4comp);
 typedef u32 (*SPLPalVRAMAllocFunc)(u32 size, BOOL is4pal);
-SPLManager *SPL_Init(SPLAllocFunc alloc, u16 maxEmitters, u16 maxParticles, u16 fixPolyID, u16 minPolyID, u16 maxPolyID);
+SPLManager *SPLManager_New(SPLAllocFunc alloc, u16 maxEmitters, u16 maxParticles, u16 fixPolyID, u16 minPolyID, u16 maxPolyID);
 typedef struct ParticleSystem {
     SPLManager *manager;
     void *resource;
@@ -623,7 +623,7 @@ ParticleSystem *sub_02014DB4(SPLTexVRAMAllocFunc texAllocFunc, SPLPalVRAMAllocFu
         Camera_SetStaticPtr(particleSystem->camera);
     }
 
-    particleSystem->manager = SPL_Init(
+    particleSystem->manager = SPLManager_New(
         _020F609C[id],
         20,
         200,

@@ -299,14 +299,6 @@ union StringToPrint {
     const charcode_t *raw;
     const String *string;
 };
-enum Font {
-    FONT_SYSTEM = 0,
-    FONT_MESSAGE,
-    FONT_SUBSCREEN,
-    FONT_UNOWN,
-
-    FONT_MAX,
-};
 typedef u32 TextColor;
 enum Item {
     ITEM_NONE_PT,

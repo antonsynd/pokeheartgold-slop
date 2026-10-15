@@ -11,17 +11,17 @@
 #include "sys_task_api.h"
 #include "text.h"
 
-extern SPLManager *SPL_Init(u32 (*allocFn)(u32, BOOL), u16 maxEmtr, u16 maxPtcl, u8 polyIdMin, u8 polyIdMax, u8 unk5);
-extern void SPL_Load(SPLManager *mgr, void *data);
-extern void SPL_LoadTexByVRAMManager(SPLManager *mgr);
-extern void SPL_LoadTexByCallbackFunction(SPLManager *mgr, texAllocFun texAlloc);
-extern void SPL_LoadTexPlttByVRAMManager(SPLManager *mgr);
-extern void SPL_LoadTexPlttByCallbackFunction(SPLManager *mgr, plttAllocFun plttAlloc);
-extern SPLEmitter *SPL_Create(SPLManager *mgr);
-extern void SPL_DeleteAll(SPLManager *mgr);
-extern void SPL_Delete(SPLManager *mgr, SPLEmitter *emitter);
-extern void SPL_Draw(SPLManager *mgr, const MtxFx43 *cameraMtx);
-extern void SPL_Calc(SPLManager *mgr);
+extern SPLManager *SPLManager_New(u32 (*allocFn)(u32, BOOL), u16 maxEmtr, u16 maxPtcl, u8 polyIdMin, u8 polyIdMax, u8 unk5);
+extern void SPLManager_LoadResources(SPLManager *mgr, void *data);
+extern void SPLManager_UploadTextures(SPLManager *mgr);
+extern void SPLManager_UploadTexturesEx(SPLManager *mgr, texAllocFun texAlloc);
+extern void SPLManager_UploadPalettes(SPLManager *mgr);
+extern void SPLManager_UploadPalettesEx(SPLManager *mgr, plttAllocFun plttAlloc);
+extern SPLEmitter *SPLManager_CreateEmitter(SPLManager *mgr);
+extern void SPLManager_DeleteAllEmitters(SPLManager *mgr);
+extern void SPLManager_DeleteEmitter(SPLManager *mgr, SPLEmitter *emitter);
+extern void SPLManager_Draw(SPLManager *mgr, const MtxFx43 *cameraMtx);
+extern void SPLManager_Update(SPLManager *mgr);
 extern void NNS_GfdGetFrmTexVramState(void *pState);
 extern void NNS_GfdSetFrmTexVramState(const void *pState);
 extern void NNS_GfdGetFrmPlttVramState(void *pState);
@@ -30,12 +30,12 @@ extern int NNS_GfdFreeLnkTexVram(NNSGfdTexKey texKey);
 extern int NNS_GfdFreeLnkPlttVram(NNSGfdPlttKey plttKey);
 extern void NNS_G3dGlbFlushP(void);
 extern NNSG3dGlb NNS_G3dGlb;
-extern void spl_calc_gravity(void);
-extern void spl_calc_random(void);
-extern void spl_calc_magnet(void);
-extern void spl_calc_spin(void);
-extern void spl_calc_scfield(void);
-extern void spl_calc_convergence(void);
+extern void SPLBehavior_ApplyGravity(void);
+extern void SPLBehavior_ApplyRandom(void);
+extern void SPLBehavior_ApplyMagnet(void);
+extern void SPLBehavior_ApplySpin(void);
+extern void SPLBehavior_ApplyCollisionPlane(void);
+extern void SPLBehavior_ApplyConvergence(void);
 
 typedef struct SplSys {
     SPLManager *spl;
@@ -215,7 +215,7 @@ SPLEmitter *sub_02014DB4(texAllocFun texAlloc, plttAllocFun plttAlloc, void *par
         Camera_SetStaticPtr(sys->camera);
     }
 
-    sys->spl = SPL_Init(sFuncTable[slot], 0x14, 0xc8, 5, 6, 0x3f);
+    sys->spl = SPLManager_New(sFuncTable[slot], 0x14, 0xc8, 5, 6, 0x3f);
     sub_020154E4((SPLEmitter *)sys, &sVec_020F6078);
     return (SPLEmitter *)sys;
 }
@@ -554,17 +554,17 @@ void sub_0201526C(SPLEmitter *emitter, void *data, u32 flag, BOOL loadNow) {
 }
 
 static void sub_02015300(SplSys *sys) {
-    SPL_Load(sys->spl, sys->narcData);
+    SPLManager_LoadResources(sys->spl, sys->narcData);
     sSplState.activeSys = sys;
     if (sys->texAlloc == NULL) {
-        SPL_LoadTexByVRAMManager(sys->spl);
+        SPLManager_UploadTextures(sys->spl);
     } else {
-        SPL_LoadTexByCallbackFunction(sys->spl, sys->texAlloc);
+        SPLManager_UploadTexturesEx(sys->spl, sys->texAlloc);
     }
     if (sys->plttAlloc == NULL) {
-        SPL_LoadTexPlttByVRAMManager(sys->spl);
+        SPLManager_UploadPalettes(sys->spl);
     } else {
-        SPL_LoadTexPlttByCallbackFunction(sys->spl, sys->plttAlloc);
+        SPLManager_UploadPalettesEx(sys->spl, sys->plttAlloc);
     }
     sSplState.activeSys = NULL;
 }
@@ -623,7 +623,7 @@ static void sub_020153D8(SplSys *sys) {
         Camera_PushLookAtToNNSGlb();
     }
     NNS_G3dGlbFlushP();
-    SPL_Draw(sys->spl, &NNS_G3dGlb.cameraMtx);
+    SPLManager_Draw(sys->spl, &NNS_G3dGlb.cameraMtx);
     if (sys->camera != NULL) {
         Camera_UnsetStaticPtr();
     }
@@ -631,7 +631,7 @@ static void sub_020153D8(SplSys *sys) {
 }
 
 static void sub_02015414(SplSys *sys) {
-    SPL_Calc(sys->spl);
+    SPLManager_Update(sys->spl);
 }
 
 int sub_02015420(void) {
@@ -674,13 +674,13 @@ void sub_02015460(void) {
 
 void sub_02015484(SPLEmitter *emitter) {
     SplSys *sys = (SplSys *)emitter;
-    sys->activeEmitter = SPL_Create(sys->spl);
+    sys->activeEmitter = SPLManager_CreateEmitter(sys->spl);
 }
 
 void sub_02015494(SPLEmitter *emitter, int res_no, void (*fp_callback)(struct SPLEmitter *), void *arg) {
     SplSys *sys = (SplSys *)emitter;
     sSplState.callbackArg = arg;
-    sys->activeEmitter = SPL_CreateWithInitialize(sys->spl, res_no, fp_callback);
+    sys->activeEmitter = SPLManager_CreateEmitterWithCallback(sys->spl, res_no, fp_callback);
     sSplState.callbackArg = NULL;
 }
 
@@ -691,12 +691,12 @@ BOOL sub_020154B0(SPLEmitter *emitter) {
 
 void sub_020154B8(SPLEmitter *emitter) {
     SplSys *sys = (SplSys *)emitter;
-    SPL_DeleteAll(sys->spl);
+    SPLManager_DeleteAllEmitters(sys->spl);
 }
 
 void sub_020154C4(SPLEmitter *emitter) {
     SplSys *sys = (SplSys *)emitter;
-    SPL_Delete(sys->spl, NULL);
+    SPLManager_DeleteEmitter(sys->spl, NULL);
 }
 
 void *sub_020154D0(SPLEmitter *emitter) {
@@ -768,32 +768,32 @@ static void *sub_02015550(SPLEmitter *libEmitter, int type) {
         }
         switch (type) {
         case 0:
-            if (fld->p_exec == (void (*)(const void *, SPLParticle *, VecFx32 *, struct SPLEmitter *))spl_calc_gravity) {
+            if (fld->p_exec == (void (*)(const void *, SPLParticle *, VecFx32 *, struct SPLEmitter *))SPLBehavior_ApplyGravity) {
                 return (void *)fld->p_obj;
             }
             break;
         case 1:
-            if (fld->p_exec == (void (*)(const void *, SPLParticle *, VecFx32 *, struct SPLEmitter *))spl_calc_random) {
+            if (fld->p_exec == (void (*)(const void *, SPLParticle *, VecFx32 *, struct SPLEmitter *))SPLBehavior_ApplyRandom) {
                 return (void *)fld->p_obj;
             }
             break;
         case 2:
-            if (fld->p_exec == (void (*)(const void *, SPLParticle *, VecFx32 *, struct SPLEmitter *))spl_calc_magnet) {
+            if (fld->p_exec == (void (*)(const void *, SPLParticle *, VecFx32 *, struct SPLEmitter *))SPLBehavior_ApplyMagnet) {
                 return (void *)fld->p_obj;
             }
             break;
         case 3:
-            if (fld->p_exec == (void (*)(const void *, SPLParticle *, VecFx32 *, struct SPLEmitter *))spl_calc_spin) {
+            if (fld->p_exec == (void (*)(const void *, SPLParticle *, VecFx32 *, struct SPLEmitter *))SPLBehavior_ApplySpin) {
                 return (void *)fld->p_obj;
             }
             break;
         case 4:
-            if (fld->p_exec == (void (*)(const void *, SPLParticle *, VecFx32 *, struct SPLEmitter *))spl_calc_scfield) {
+            if (fld->p_exec == (void (*)(const void *, SPLParticle *, VecFx32 *, struct SPLEmitter *))SPLBehavior_ApplyCollisionPlane) {
                 return (void *)fld->p_obj;
             }
             break;
         case 5:
-            if (fld->p_exec == (void (*)(const void *, SPLParticle *, VecFx32 *, struct SPLEmitter *))spl_calc_convergence) {
+            if (fld->p_exec == (void (*)(const void *, SPLParticle *, VecFx32 *, struct SPLEmitter *))SPLBehavior_ApplyConvergence) {
                 return (void *)fld->p_obj;
             }
             break;

@@ -3,12 +3,12 @@
 #pragma thumb on
 #include "ghidra_compat.h"
 typedef int code();
-extern undefined spl_calc_scfield;
-extern undefined spl_calc_magnet;
-extern undefined spl_calc_spin;
-extern undefined spl_calc_convergence;
-extern undefined spl_calc_random;
-extern undefined spl_calc_gravity;
+extern undefined SPLBehavior_ApplyCollisionPlane;
+extern undefined SPLBehavior_ApplyMagnet;
+extern undefined SPLBehavior_ApplySpin;
+extern undefined SPLBehavior_ApplyConvergence;
+extern undefined SPLBehavior_ApplyRandom;
+extern undefined SPLBehavior_ApplyGravity;
 // FUNCTION sub_02015550: matching C (agent20)
 #pragma force_active on
 undefined4 sub_02015550(int param_1, undefined4 param_2) {
@@ -26,32 +26,32 @@ undefined4 sub_02015550(int param_1, undefined4 param_2) {
             if (puVar3 != (undefined4 *)0x0) {
                 switch (param_2) {
                 case 0:
-                    if ((undefined *)*puVar3 == &spl_calc_gravity) {
+                    if ((undefined *)*puVar3 == &SPLBehavior_ApplyGravity) {
                         return puVar3[1];
                     }
                     break;
                 case 1:
-                    if ((undefined *)*puVar3 == &spl_calc_random) {
+                    if ((undefined *)*puVar3 == &SPLBehavior_ApplyRandom) {
                         return puVar3[1];
                     }
                     break;
                 case 2:
-                    if ((undefined *)*puVar3 == &spl_calc_magnet) {
+                    if ((undefined *)*puVar3 == &SPLBehavior_ApplyMagnet) {
                         return puVar3[1];
                     }
                     break;
                 case 3:
-                    if ((undefined *)*puVar3 == &spl_calc_spin) {
+                    if ((undefined *)*puVar3 == &SPLBehavior_ApplySpin) {
                         return puVar3[1];
                     }
                     break;
                 case 4:
-                    if ((undefined *)*puVar3 == &spl_calc_scfield) {
+                    if ((undefined *)*puVar3 == &SPLBehavior_ApplyCollisionPlane) {
                         return puVar3[1];
                     }
                     break;
                 case 5:
-                    if ((undefined *)*puVar3 == &spl_calc_convergence) {
+                    if ((undefined *)*puVar3 == &SPLBehavior_ApplyConvergence) {
                         return puVar3[1];
                     }
                     break;

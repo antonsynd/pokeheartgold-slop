@@ -423,14 +423,6 @@ union StringToPrint {
     const u16 *raw;
     const String *string;
 };
-enum Font {
-    FONT_SYSTEM = 0,
-    FONT_MESSAGE,
-    FONT_SUBSCREEN,
-    FONT_UNOWN,
-
-    FONT_MAX,
-};
 // FUNCTION ov08_0221E120: matching C (pt2)
 #pragma force_active on
 void ov08_0221E120(BattleParty *battleParty, u32 windowIndex, u32 partyIndex);

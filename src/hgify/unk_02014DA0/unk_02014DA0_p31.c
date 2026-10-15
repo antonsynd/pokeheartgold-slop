@@ -3,7 +3,7 @@
 #pragma thumb on
 #include "ghidra_compat.h"
 typedef int code();
-undefined4 SPL_Create();
+undefined4 SPLManager_CreateEmitter();
 void sub_02015484(undefined4 *param_1);
 // FUNCTION sub_02015484: matching C (r2)
 #pragma force_active on
@@ -12,7 +12,7 @@ void sub_02015484(undefined4 *param_1)
 {
     undefined4 uVar1;
 
-    uVar1 = SPL_Create(*param_1);
+    uVar1 = SPLManager_CreateEmitter(*param_1);
     param_1[2] = uVar1;
     return;
 }

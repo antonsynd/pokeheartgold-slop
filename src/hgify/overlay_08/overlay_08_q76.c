@@ -346,14 +346,6 @@ union StringToPrint {
     const charcode_t *raw;
     const String *string;
 };
-enum Font {
-    FONT_SYSTEM = 0,
-    FONT_MESSAGE,
-    FONT_SUBSCREEN,
-    FONT_UNOWN,
-
-    FONT_MAX,
-};
 typedef u32 TextColor;
 void ov08_0221E6D8(BattleParty *battleParty, u32 partyIndex);
 // FUNCTION ov08_0221E6D8: matching C (pt2)
