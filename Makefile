@@ -48,8 +48,10 @@ UNAME_R := $(shell uname -r)
 UNAME_S := $(shell uname -s)
 CWD := $(shell pwd)
 
-# Check for Windows-drive access
-ifneq (,$(findstring Microsoft,$(UNAME_R)))
+# Check for Windows-drive access. Fork edit: WSL1 kernels say "Microsoft",
+# WSL2 kernels "microsoft" (6.x-microsoft-standard-WSL2), and findstring is
+# case-sensitive, so match both.
+ifneq (,$(findstring Microsoft,$(UNAME_R))$(findstring microsoft,$(UNAME_R)))
   ifneq (,$(filter /mnt/%,$(realpath $(CWD))))
     WSL_ACCESSING_WINDOWS := 0
   else

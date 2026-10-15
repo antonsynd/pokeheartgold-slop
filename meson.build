@@ -143,8 +143,10 @@ subdir('src')
 # can't be dropped for one target, so a generator calls the compiler with the
 # flags the Make build used for them. Its objects are main.nef.p/<file>.c.o.
 # The program is the cross file's C compiler (mwccarm, or mwccarm.exe on
-# Windows), and the include paths are the Make rule's. SDK headers and the
-# generated headers under the build dir are not on the path.
+# Windows), and the include paths are the Make rule's. They are relative
+# (@SOURCE_ROOT@), as ninja passes every other path: mwccarm.exe on WSL can't
+# open an absolute /mnt/... path. SDK headers and the generated headers under
+# the build dir are not on the path.
 mwccarm = find_program(meson.get_compiler('c').cmd_array()[0])
 mwcc12 = generator(mwccarm,
     output : '@PLAINNAME@.o',
@@ -157,11 +159,11 @@ mwcc12 = generator(mwccarm,
         '-char', 'signed',
         '-D' + game_version, '-DGAME_REMASTER=0', '-DENGLISH', '-DPM_KEEP_ASSERTS',
         '-DSDK_ARM9', '-DSDK_CODE_ARM', '-DSDK_FINALROM',
-        '-I' + meson.project_source_root() / 'src',
-        '-I' + meson.project_source_root() / 'include',
-        '-I' + meson.project_source_root() / 'include' / 'library',
-        '-I' + meson.project_source_root() / 'files',
-        '-I' + meson.project_source_root() / 'lib' / 'include',
+        '-I@SOURCE_ROOT@/src',
+        '-I@SOURCE_ROOT@/include',
+        '-I@SOURCE_ROOT@/include/library',
+        '-I@SOURCE_ROOT@/files',
+        '-I@SOURCE_ROOT@/lib/include',
         '-gccdep', '-MD',
         '-c', '@INPUT@', '-o', '@OUTPUT@',
     ],
