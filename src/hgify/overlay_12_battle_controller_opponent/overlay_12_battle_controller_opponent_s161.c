@@ -36,10 +36,10 @@ int ov07_0221C3B0(void *p);
 void ov07_0221C3C0(void *p);
 void ov07_0223494C(S80 *p, int n);
 void ov07_02234A20(S80 *p, int n);
-void ov12_022643C8(void *bsys, int a, S88 *out, int b, int c, int d, int e, int f);
+void BattleController_SetMoveAnimation(void *bsys, int a, S88 *out, int b, int c, int d, int e, int f);
 void ov12_02261B80(void *bsys, void *a, void *b, void *c);
 void ov12_02261CA8(void *bsys, void *a, S80 *out, int b);
-void ov12_0226430C(void *bsys, u8 a, u8 b);
+void BattleController_EmitClearCommand(void *bsys, u8 a, u8 b);
 void ov12_0225FD14(void *task, Ov12Work *work);
 // FUNCTION ov12_0225FD14: matching C (agent44)
 #pragma force_active on
@@ -54,7 +54,7 @@ void ov12_0225FD14(void *task, Ov12Work *work) {
     switch (work->state) {
     case 0:
         if (work->flag && work->unk_5C == 0 && Pokepic_GetAttr(work->unk_08, 6) == 0) {
-            ov12_022643C8(work->bsys, 0, &bufF, 1, 0xf, work->unk_69, work->unk_69, 0);
+            BattleController_SetMoveAnimation(work->bsys, 0, &bufF, 1, 0xf, work->unk_69, work->unk_69, 0);
             ov12_02261B80(work->bsys, work->unk_04, work->unk_0C, &bufF);
             work->state = 1;
             return;
@@ -64,7 +64,7 @@ void ov12_0225FD14(void *task, Ov12Work *work) {
     case 2:
         ov12_02261CA8(work->bsys, &work->filler_10, &bufE, work->unk_69);
         ov07_0223494C(&bufE, 5);
-        ov12_022643C8(work->bsys, 0, &bufD, 1, 0x10, work->unk_69, work->unk_69, 0);
+        BattleController_SetMoveAnimation(work->bsys, 0, &bufD, 1, 0x10, work->unk_69, work->unk_69, 0);
         ov12_02261B80(work->bsys, work->unk_04, work->unk_0C, &bufD);
         *(int *)((u8 *)work->unk_04 + 0x1a0) = 0;
         work->state++;
@@ -89,7 +89,7 @@ void ov12_0225FD14(void *task, Ov12Work *work) {
             PokepicManager_ResetG3UpdateFlagsMask(BattleSystem_GetPokepicManager(work->bsys), 1);
         }
         if (work->flag && work->unk_5C == 0 && Pokepic_GetAttr(work->unk_08, 6) == 0) {
-            ov12_022643C8(work->bsys, 0, &bufC, 1, 0xf, work->unk_69, work->unk_69, 0);
+            BattleController_SetMoveAnimation(work->bsys, 0, &bufC, 1, 0xf, work->unk_69, work->unk_69, 0);
             ov12_02261B80(work->bsys, work->unk_04, work->unk_0C, &bufC);
             work->state = 7;
             return;
@@ -99,13 +99,13 @@ void ov12_0225FD14(void *task, Ov12Work *work) {
     case 8:
         ov12_02261CA8(work->bsys, &work->filler_10, &bufB, work->unk_69);
         ov07_02234A20(&bufB, 5);
-        ov12_022643C8(work->bsys, 0, &bufA, 1, 0x10, work->unk_69, work->unk_69, 0);
+        BattleController_SetMoveAnimation(work->bsys, 0, &bufA, 1, 0x10, work->unk_69, work->unk_69, 0);
         ov12_02261B80(work->bsys, work->unk_04, work->unk_0C, &bufA);
         *(int *)((u8 *)work->unk_04 + 0x1a0) = 1;
         work->state++;
         return;
     case 10:
-        ov12_0226430C(work->bsys, work->unk_69, work->unk_68);
+        BattleController_EmitClearCommand(work->bsys, work->unk_69, work->unk_68);
         Heap_Free(work);
         SysTask_Destroy(task);
         return;

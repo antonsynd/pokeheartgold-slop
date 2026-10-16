@@ -11,7 +11,7 @@
 #include "sound.h"
 #include "sys_task_api.h"
 #include "unk_020163E0.h"
-void ov12_0226430C(u32, int, int);
+void BattleController_EmitClearCommand(u32, int, int);
 // FUNCTION ov12_0226037C: matching C (agent19)
 #pragma force_active on
 void ov12_0226037C(int param_1, u32 *param_2) {
@@ -41,7 +41,7 @@ void ov12_0226037C(int param_1, u32 *param_2) {
         *(u8 *)((int)param_2 + 6) = *(u8 *)((int)param_2 + 6) + 1;
         return;
     case 2:
-        ov12_0226430C(*param_2, *(u8 *)((int)param_2 + 5), *(u8 *)(param_2 + 1));
+        BattleController_EmitClearCommand(*param_2, *(u8 *)((int)param_2 + 5), *(u8 *)(param_2 + 1));
         Heap_Free(param_2);
         SysTask_Destroy(param_1);
         return;

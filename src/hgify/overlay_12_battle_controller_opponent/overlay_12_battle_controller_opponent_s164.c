@@ -8,7 +8,7 @@ void StopSE(unsigned short, int);
 void SysTask_Destroy(void *);
 void ov12_02264E34(void *, int);
 int ov12_02264E68(void *);
-void ov12_0226430C(void *, unsigned int, unsigned int, int);
+void BattleController_EmitClearCommand(void *, unsigned int, unsigned int, int);
 // FUNCTION ov12_02260030: matching C (agent20)
 #pragma force_active on
 void ov12_02260030(int *param_1, unsigned char *param_2, int param_3, int param_4) {
@@ -45,7 +45,7 @@ void ov12_02260030(int *param_1, unsigned char *param_2, int param_3, int param_
         param_2[0] = 'd';
         return;
     default:
-        ov12_0226430C(*(void **)(param_2 + 0xc), param_2[0x24], param_2[0x4c], param_4);
+        BattleController_EmitClearCommand(*(void **)(param_2 + 0xc), param_2[0x24], param_2[0x4c], param_4);
         *(int *)(param_2 + 0x10) = 0;
         SysTask_Destroy(param_1);
         return;

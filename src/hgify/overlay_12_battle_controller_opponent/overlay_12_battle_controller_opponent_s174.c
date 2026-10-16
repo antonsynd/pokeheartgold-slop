@@ -14,7 +14,7 @@ typedef struct W {
     u8 fe;
 } W;
 u32 BattleSystem_GetFieldSide(void *, int);
-void ov12_0226430C(void *, int, int);
+void BattleController_EmitClearCommand(void *, int, int);
 void *BattleSystem_GetSpriteSystem(void *);
 void ov12_0223A914(void *, int, void *);
 int PartyGauge_IsArrowTaskFinished(void);
@@ -70,7 +70,7 @@ void ov12_02260BA0(void *task, W *w) {
         }
         break;
     default:
-        ov12_0226430C(w->bs, w->f5, w->f4);
+        BattleController_EmitClearCommand(w->bs, w->f5, w->f4);
         Heap_Free(w);
         SysTask_Destroy(task);
         break;

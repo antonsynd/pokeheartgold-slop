@@ -67,7 +67,7 @@ _02260CC2:
 	ldrb r1, [r5, #5]
 	ldrb r2, [r5, #4]
 	ldr r0, [r5]
-	bl ov12_0226430C
+	bl BattleController_EmitClearCommand
 	add r0, r5, #0
 	bl Heap_Free
 	add r0, r7, #0

@@ -11,7 +11,7 @@ typedef struct UnkStruct_ov12_02259694 {
     u8 battler;
 } UnkStruct_ov12_02259694;
 
-void ov12_0226430C(BattleSystem *battleSys, int battler, int command);
+void BattleController_EmitClearCommand(BattleSystem *battleSys, int battler, int command);
 void ov12_02259928(UnkStruct_ov12_02259694 *battlerData);
 
 // FUNCTION ov12_02259694: matching C (twin)
@@ -20,7 +20,7 @@ void ov12_02259694(BattleSystem *battleSys, UnkStruct_ov12_02259694 *battlerData
     SpriteManager *spriteMan = BattleSystem_GetSpriteManager(battleSys);
 
     PartyGauge_FreeGraphics(spriteMan);
-    ov12_0226430C(battleSys, battlerData->battler, 0x35);
+    BattleController_EmitClearCommand(battleSys, battlerData->battler, 0x35);
     ov12_02259928(battlerData);
 }
 #pragma force_active reset

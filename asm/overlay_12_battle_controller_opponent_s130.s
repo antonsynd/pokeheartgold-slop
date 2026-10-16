@@ -398,7 +398,7 @@ _0225D11C:
 	ldrb r1, [r4, #0x11]
 	ldrb r2, [r4, #0x10]
 	ldr r0, [r4]
-	bl ov12_0226430C
+	bl BattleController_EmitClearCommand
 	add r0, r4, #0
 	bl Heap_Free
 	add r0, r6, #0
@@ -995,7 +995,7 @@ _0225D618:
 	ldrb r1, [r4, #9]
 	ldrb r2, [r4, #8]
 	ldr r0, [r4]
-	bl ov12_0226430C
+	bl BattleController_EmitClearCommand
 	add r0, r4, #0
 	bl Heap_Free
 	add r0, r5, #0

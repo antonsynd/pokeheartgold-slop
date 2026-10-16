@@ -22,7 +22,7 @@ typedef struct UnkStruct_ov12_0225ABB8Message {
     u16 sdatID;
 } UnkStruct_ov12_0225ABB8Message;
 
-void ov12_0226430C(BattleSystem *battleSys, u8 battler, u8 command);
+void BattleController_EmitClearCommand(BattleSystem *battleSys, u8 battler, u8 command);
 
 // FUNCTION ov12_0225ABB8: matching C (twin)
 #pragma force_active on
@@ -35,7 +35,7 @@ void ov12_0225ABB8(BattleSystem *battleSys, UnkStruct_ov12_0225ABB8 *battlerData
         pan = BATTLE_SOUND_PAN_LEFT;
     }
 
-    ov12_0226430C(battleSys, battlerData->battler, message->command);
+    BattleController_EmitClearCommand(battleSys, battlerData->battler, message->command);
     sub_0200602C(message->sdatID, pan);
 }
 #pragma force_active reset

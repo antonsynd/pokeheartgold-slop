@@ -1,15 +1,15 @@
 # Decomp Coverage Ledger
 
-*Generated 2026-10-15T08:06:42Z by `coverage_ledger.py` — do not hand-edit; regenerate after each decomp.*
+*Generated 2026-10-16T02:47:49Z by `coverage_ledger.py` — do not hand-edit; regenerate after each decomp.*
 
-Tracked functions (files with retained asm): **19131** — matched 17987, pending 1111, plus 20 matched-but-blocked inside failed files.
+Tracked functions (files with retained asm): **19047** — matched 17904, pending 1110, plus 20 matched-but-blocked inside failed files.
 
 | status | files | functions | insn lines | ~text bytes |
 |---|---|---|---|---|
-| matched | 612 | 17987 | 87311 | 195662 |
+| matched | 611 | 17904 | 87311 | 195662 |
 | blocked | 4 | 33 | 1328 | 2942 |
-| pending | 243 | 1111 | 176176 | 392802 |
-| upstream | 398 | 0 | 0 | 0 |
+| pending | 242 | 1110 | 175935 | 392310 |
+| upstream | 399 | 0 | 0 | 0 |
 
 ## Blockers (value-ordered: fix what gates the most)
 
@@ -30,7 +30,7 @@ Tracked functions (files with retained asm): **19131** — matched 17987, pendin
 | asm/unk_02055BF0_data.s | 0 | 0 | yes | ext-data-section-split Data-only: 3 external const fn-ptr arrays (sMapEnterRoutines, sMapExitRoutines, _020FC76C) referenced only by already-ma |
 | asm/overlay_12_battle_command.s | 0 | 0 | yes |   |
 
-## Matched files (asm retained) (612)
+## Matched files (asm retained) (611)
 
 | file | functions | insn lines | data-only | notes |
 |---|---|---|---|---|
@@ -86,7 +86,6 @@ Tracked functions (files with retained asm): **19131** — matched 17987, pendin
 | asm/overlay_00_thumb.s | 85 | 0 |  | hgify |
 | asm/overlay_05.s | 85 | 0 |  | hgify |
 | asm/unk_02035900.s | 83 | 0 |  | hgify |
-| asm/overlay_12_battle_controller.s | 83 | 0 |  | hgify |
 | asm/overlay_01_021F1AFC.s | 82 | 0 |  | hgify |
 | asm/unk_02061284.s | 81 | 0 |  | hgify |
 | asm/overlay_68.s | 81 | 0 |  | hgify |
@@ -647,7 +646,7 @@ Tracked functions (files with retained asm): **19131** — matched 17987, pendin
 | asm/battle_arcade_game_board_data.s | 0 | 0 | yes | harness |
 | asm/battle_arcade_game_board_data2.s | 0 | 0 | yes | split_tu |
 
-## Pending files (243)
+## Pending files (242)
 
 | file | functions | insn lines | data-only | notes |
 |---|---|---|---|---|
@@ -852,7 +851,6 @@ Tracked functions (files with retained asm): **19131** — matched 17987, pendin
 | asm/overlay_01_021F1AFC.s | 1 | 42 |  |  |
 | asm/overlay_01_021F3F50.s | 1 | 99 |  |  |
 | asm/overlay_01_021FE780.s | 1 | 57 |  |  |
-| asm/overlay_12_battle_controller.s | 1 | 241 |  |  |
 | asm/overlay_12_02265E28.s | 1 | 116 |  |  |
 | asm/overlay_14_021EE26C.s | 1 | 355 |  |  |
 | asm/overlay_18_021F6AB0.s | 1 | 18 |  |  |

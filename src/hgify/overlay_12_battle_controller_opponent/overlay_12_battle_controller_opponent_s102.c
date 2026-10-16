@@ -8,7 +8,7 @@
 #include "error_handling.h"
 #include "ghidra_compat.h"
 typedef void code(void);
-undefined4 ov12_0226430C(undefined4, undefined4, undefined4);
+undefined4 BattleController_EmitClearCommand(undefined4, undefined4, undefined4);
 void ov12_0225ACB0(undefined4 param_1, int param_2, undefined1 *param_3);
 // FUNCTION ov12_0225ACB0: matching C (r2)
 #pragma force_active on
@@ -20,7 +20,7 @@ void ov12_0225ACB0(undefined4 param_1, int param_2, undefined1 *param_3)
     }
     *(undefined1 *)(param_2 + 0x72) = param_3[1];
     ov12_0226498C(param_2 + 0x28, *(undefined4 *)(param_2 + 0x50), 0x100);
-    ov12_0226430C(param_1, *(undefined1 *)(param_2 + 0x194), *param_3);
+    BattleController_EmitClearCommand(param_1, *(undefined1 *)(param_2 + 0x194), *param_3);
     return;
 }
 #pragma force_active reset

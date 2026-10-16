@@ -1,10 +1,10 @@
 {
  "summary": {
-  "generated": "2026-10-15T08:06:42Z",
+  "generated": "2026-10-16T02:47:49Z",
   "by_status": {
    "matched": {
-    "files": 612,
-    "functions": 17987,
+    "files": 611,
+    "functions": 17904,
     "insn_lines": 87311,
     "text_bytes_est": 195662
    },
@@ -15,23 +15,23 @@
     "text_bytes_est": 2942
    },
    "pending": {
-    "files": 243,
-    "functions": 1111,
-    "insn_lines": 176176,
-    "text_bytes_est": 392802
+    "files": 242,
+    "functions": 1110,
+    "insn_lines": 175935,
+    "text_bytes_est": 392310
    },
    "upstream": {
-    "files": 398,
+    "files": 399,
     "functions": 0,
     "insn_lines": 0,
     "text_bytes_est": 0
    }
   },
   "function_totals": {
-   "tracked": 19131,
-   "matched": 17987,
+   "tracked": 19047,
+   "matched": 17904,
    "partial_in_blocked": 20,
-   "pending": 1111
+   "pending": 1110
   },
   "blockers": [
    {
@@ -20973,9 +20973,16 @@
    "other_sections": [],
    "jumptable_words": 0,
    "imports": [
+    "BattleController_RecvCommMessage",
     "BattleSystem_GetBattleSpecial",
-    "BattleSystem_GetRecvBufferPtr",
-    "BattleSystem_GetSendBufferPtr",
+    "BattleSystem_GetClientEndIndex",
+    "BattleSystem_GetClientMessage",
+    "BattleSystem_GetClientReadIndex",
+    "BattleSystem_GetClientWriteIndex",
+    "BattleSystem_GetServerEndIndex",
+    "BattleSystem_GetServerMessage",
+    "BattleSystem_GetServerReadIndex",
+    "BattleSystem_GetServerWriteIndex",
     "Chatot_Copy",
     "CopyU16StringArray",
     "Heap_Alloc",
@@ -20992,18 +20999,11 @@
     "SavePalPad_Merge",
     "SysTask_CreateOnMainQueue",
     "SysTask_Destroy",
-    "ov12_0223A954",
-    "ov12_0223A960",
-    "ov12_0223A96C",
-    "ov12_0223A978",
-    "ov12_0223A984",
-    "ov12_0223A990",
     "ov12_0223BBFC",
     "ov12_0223BC08",
     "ov12_0223BC14",
     "ov12_0223BC20",
     "ov12_0223BC2C",
-    "ov12_02264334",
     "sub_0203049C",
     "sub_0203410C",
     "sub_020342B8",
@@ -51488,10 +51488,16 @@
     "AllocAndLoadMonPersonal_HandleAlternateForm",
     "ApplyMonMoodModifier",
     "BattleBuffer_GetNext",
-    "BattleController_EmitDrawYesNoBox",
+    "BattleController_EmitForgetMove",
     "BattleController_EmitIncrementGameStat",
-    "BattleController_EmitPokemonSendOut",
-    "BattleController_EmitSetStatus2Effect",
+    "BattleController_EmitOpenCaptureBall",
+    "BattleController_EmitPlayLevelUpAnimation",
+    "BattleController_EmitPlayStatusEffect",
+    "BattleController_EmitRefreshHPGauge",
+    "BattleController_EmitShowPokemon",
+    "BattleController_EmitShowYesNoMenu",
+    "BattleController_EmitUpdateExpGauge",
+    "BattleMon_Get",
     "BattleScriptReadWord",
     "BattleSystem_CheckMonCaught",
     "BattleSystem_GameStatIncrement",
@@ -51767,7 +51773,6 @@
     "FontSystem_NewInit",
     "FreeMonPersonal",
     "GF_AssertFail",
-    "GetBattlerVar",
     "GetItemAttr",
     "GetMonBaseExperienceAtCurrentLevel",
     "GetMonBaseStat",
@@ -51868,11 +51873,6 @@
     "ov12_022567D4",
     "ov12_022568B0",
     "ov12_02261294",
-    "ov12_022628A0",
-    "ov12_02263564",
-    "ov12_0226399C",
-    "ov12_02263A1C",
-    "ov12_02263D14",
     "ov12_02265FC4",
     "ov18_021F8974",
     "ov18_021F89C8",
@@ -53246,598 +53246,10 @@
    "functions": []
   },
   {
-   "file": "asm/overlay_12_battle_controller.s",
+   "file": "asm/battle/battle_controller.s",
    "lsf_kind": "src",
-   "status": "matched",
-   "source": "hgify",
-   "objects": 83,
-   "function_count": 83,
-   "lines": 0,
-   "text_bytes_est": 0,
-   "data_only": false,
-   "functions": [
-    {
-     "name": "BattleController_SendData",
-     "mode": "thumb",
-     "insns": 0,
-     "size_est": 0,
-     "status": "matched"
-    },
-    {
-     "name": "BattleController_RecvData",
-     "mode": "thumb",
-     "insns": 0,
-     "size_est": 0,
-     "status": "matched"
-    },
-    {
-     "name": "ov12_022621C4",
-     "mode": "thumb",
-     "insns": 0,
-     "size_est": 0,
-     "status": "matched"
-    },
-    {
-     "name": "ov12_02262240",
-     "mode": "thumb",
-     "insns": 0,
-     "size_est": 0,
-     "status": "matched"
-    },
-    {
-     "name": "BattleController_EmitPlayEncounterAnimation",
-     "mode": "thumb",
-     "insns": 0,
-     "size_est": 0,
-     "status": "matched"
-    },
-    {
-     "name": "BattleController_EmitPokemonEncounter",
-     "mode": "thumb",
-     "insns": 0,
-     "size_est": 0,
-     "status": "matched"
-    },
-    {
-     "name": "BattleController_EmitPokemonSlideIn",
-     "mode": "thumb",
-     "insns": 0,
-     "size_est": 0,
-     "status": "matched"
-    },
-    {
-     "name": "BattleController_EmitPokemonSendOut",
-     "mode": "thumb",
-     "insns": 0,
-     "size_est": 0,
-     "status": "matched"
-    },
-    {
-     "name": "BattleController_EmitRecallPokemon",
-     "mode": "thumb",
-     "insns": 0,
-     "size_est": 0,
-     "status": "matched"
-    },
-    {
-     "name": "ov12_022628A0",
-     "mode": "thumb",
-     "insns": 0,
-     "size_est": 0,
-     "status": "matched"
-    },
-    {
-     "name": "BattleController_EmitDeletePokemon",
-     "mode": "thumb",
-     "insns": 0,
-     "size_est": 0,
-     "status": "matched"
-    },
-    {
-     "name": "BattleController_EmitTrainerEncounter",
-     "mode": "thumb",
-     "insns": 0,
-     "size_est": 0,
-     "status": "matched"
-    },
-    {
-     "name": "BattleController_EmitThrowPokeball",
-     "mode": "thumb",
-     "insns": 0,
-     "size_est": 0,
-     "status": "matched"
-    },
-    {
-     "name": "BattleController_EmitTrainerSlideOut",
-     "mode": "thumb",
-     "insns": 0,
-     "size_est": 0,
-     "status": "matched"
-    },
-    {
-     "name": "BattleController_EmitTrainerSlideIn",
-     "mode": "thumb",
-     "insns": 0,
-     "size_est": 0,
-     "status": "matched"
-    },
-    {
-     "name": "BattleController_EmitHealthbarSlideIn",
-     "mode": "thumb",
-     "insns": 0,
-     "size_est": 0,
-     "status": "matched"
-    },
-    {
-     "name": "BattleController_EmitHealthbarSlideOut",
-     "mode": "thumb",
-     "insns": 0,
-     "size_est": 0,
-     "status": "matched"
-    },
-    {
-     "name": "ov12_02262B80",
-     "mode": "thumb",
-     "insns": 0,
-     "size_est": 0,
-     "status": "matched"
-    },
-    {
-     "name": "ov12_02262F24",
-     "mode": "thumb",
-     "insns": 0,
-     "size_est": 0,
-     "status": "matched"
-    },
-    {
-     "name": "ov12_02262F40",
-     "mode": "thumb",
-     "insns": 0,
-     "size_est": 0,
-     "status": "matched"
-    },
-    {
-     "name": "ov12_02262FE0",
-     "mode": "thumb",
-     "insns": 0,
-     "size_est": 0,
-     "status": "matched"
-    },
-    {
-     "name": "ov12_02262FFC",
-     "mode": "thumb",
-     "insns": 0,
-     "size_est": 0,
-     "status": "matched"
-    },
-    {
-     "name": "ov12_0226311C",
-     "mode": "thumb",
-     "insns": 0,
-     "size_est": 0,
-     "status": "matched"
-    },
-    {
-     "name": "ov12_02263138",
-     "mode": "thumb",
-     "insns": 0,
-     "size_est": 0,
-     "status": "matched"
-    },
-    {
-     "name": "ov12_022632C0",
-     "mode": "thumb",
-     "insns": 0,
-     "size_est": 0,
-     "status": "matched"
-    },
-    {
-     "name": "BattleController_EmitShowMonList",
-     "mode": "thumb",
-     "insns": 0,
-     "size_est": 0,
-     "status": "matched"
-    },
-    {
-     "name": "ov12_02263360",
-     "mode": "thumb",
-     "insns": 0,
-     "size_est": 0,
-     "status": "matched"
-    },
-    {
-     "name": "BattleController_EmitDrawYesNoBox",
-     "mode": "thumb",
-     "insns": 0,
-     "size_est": 0,
-     "status": "matched"
-    },
-    {
-     "name": "BattleController_EmitPrintAttackMessage",
-     "mode": "thumb",
-     "insns": 0,
-     "size_est": 0,
-     "status": "matched"
-    },
-    {
-     "name": "BattleController_EmitPrintMessage",
-     "mode": "thumb",
-     "insns": 0,
-     "size_est": 0,
-     "status": "matched"
-    },
-    {
-     "name": "BattleController_SetMoveAnimation",
-     "mode": "thumb",
-     "insns": 0,
-     "size_est": 0,
-     "status": "matched"
-    },
-    {
-     "name": "ov12_0226343C",
-     "mode": "thumb",
-     "insns": 0,
-     "size_est": 0,
-     "status": "matched"
-    },
-    {
-     "name": "BattleController_EmitMonFlicker",
-     "mode": "thumb",
-     "insns": 0,
-     "size_est": 0,
-     "status": "matched"
-    },
-    {
-     "name": "BattleController_EmitHealthbarUpdate",
-     "mode": "thumb",
-     "insns": 0,
-     "size_est": 0,
-     "status": "matched"
-    },
-    {
-     "name": "ov12_02263564",
-     "mode": "thumb",
-     "insns": 0,
-     "size_est": 0,
-     "status": "matched"
-    },
-    {
-     "name": "BattleController_EmitPlayFaintAnimation",
-     "mode": "thumb",
-     "insns": 0,
-     "size_est": 0,
-     "status": "matched"
-    },
-    {
-     "name": "BattleController_EmitPlaySE",
-     "mode": "thumb",
-     "insns": 0,
-     "size_est": 0,
-     "status": "matched"
-    },
-    {
-     "name": "BattleController_EmitFadeOutBattle",
-     "mode": "thumb",
-     "insns": 0,
-     "size_est": 0,
-     "status": "matched"
-    },
-    {
-     "name": "BattleController_EmitToggleVanish",
-     "mode": "thumb",
-     "insns": 0,
-     "size_est": 0,
-     "status": "matched"
-    },
-    {
-     "name": "BattleController_EmitHealthbarStatus",
-     "mode": "thumb",
-     "insns": 0,
-     "size_est": 0,
-     "status": "matched"
-    },
-    {
-     "name": "BattleController_EmitPrintTrainerMessage",
-     "mode": "thumb",
-     "insns": 0,
-     "size_est": 0,
-     "status": "matched"
-    },
-    {
-     "name": "BattleController_EmitSetStatus2Effect",
-     "mode": "thumb",
-     "insns": 0,
-     "size_est": 0,
-     "status": "matched"
-    },
-    {
-     "name": "BattleController_EmitCopyStatus2Effect",
-     "mode": "thumb",
-     "insns": 0,
-     "size_est": 0,
-     "status": "matched"
-    },
-    {
-     "name": "BattleController_EmitPrintReturnMessage",
-     "mode": "thumb",
-     "insns": 0,
-     "size_est": 0,
-     "status": "matched"
-    },
-    {
-     "name": "BattleController_EmitPrintSendOutMessage",
-     "mode": "thumb",
-     "insns": 0,
-     "size_est": 0,
-     "status": "matched"
-    },
-    {
-     "name": "BattleController_EmitPrintEncounterMessage",
-     "mode": "thumb",
-     "insns": 0,
-     "size_est": 0,
-     "status": "matched"
-    },
-    {
-     "name": "BattleController_EmitPrintFirstSendOutMessage",
-     "mode": "thumb",
-     "insns": 0,
-     "size_est": 0,
-     "status": "matched"
-    },
-    {
-     "name": "ov12_0226399C",
-     "mode": "thumb",
-     "insns": 0,
-     "size_est": 0,
-     "status": "matched"
-    },
-    {
-     "name": "ov12_022639B8",
-     "mode": "thumb",
-     "insns": 0,
-     "size_est": 0,
-     "status": "matched"
-    },
-    {
-     "name": "ov12_02263A00",
-     "mode": "thumb",
-     "insns": 0,
-     "size_est": 0,
-     "status": "matched"
-    },
-    {
-     "name": "ov12_02263A1C",
-     "mode": "thumb",
-     "insns": 0,
-     "size_est": 0,
-     "status": "matched"
-    },
-    {
-     "name": "BattleController_EmitBattleMonToPartyMonCopy",
-     "mode": "thumb",
-     "insns": 0,
-     "size_est": 0,
-     "status": "matched"
-    },
-    {
-     "name": "BattleController_EmitBackgroundSlideIn",
-     "mode": "thumb",
-     "insns": 0,
-     "size_est": 0,
-     "status": "matched"
-    },
-    {
-     "name": "ov12_02263CCC",
-     "mode": "thumb",
-     "insns": 0,
-     "size_est": 0,
-     "status": "matched"
-    },
-    {
-     "name": "BattleControl_EmitPartyStatusHeal",
-     "mode": "thumb",
-     "insns": 0,
-     "size_est": 0,
-     "status": "matched"
-    },
-    {
-     "name": "ov12_02263D14",
-     "mode": "thumb",
-     "insns": 0,
-     "size_est": 0,
-     "status": "matched"
-    },
-    {
-     "name": "BattleController_EmitPlayMosaicAnimation",
-     "mode": "thumb",
-     "insns": 0,
-     "size_est": 0,
-     "status": "matched"
-    },
-    {
-     "name": "BattleController_EmitChangeForm",
-     "mode": "thumb",
-     "insns": 0,
-     "size_est": 0,
-     "status": "matched"
-    },
-    {
-     "name": "BattleController_EmitSetBattleBackground",
-     "mode": "thumb",
-     "insns": 0,
-     "size_est": 0,
-     "status": "matched"
-    },
-    {
-     "name": "ov12_02263E18",
-     "mode": "thumb",
-     "insns": 0,
-     "size_est": 0,
-     "status": "matched"
-    },
-    {
-     "name": "BattleController_EmitInitStartBallGauge",
-     "mode": "thumb",
-     "insns": 0,
-     "size_est": 0,
-     "status": "matched"
-    },
-    {
-     "name": "BattleController_EmitDeleteStartBallGauge",
-     "mode": "thumb",
-     "insns": 0,
-     "size_est": 0,
-     "status": "matched"
-    },
-    {
-     "name": "BattleController_EmitInitBallGauge",
-     "mode": "thumb",
-     "insns": 0,
-     "size_est": 0,
-     "status": "matched"
-    },
-    {
-     "name": "BattleController_EmitDeleteBallGauge",
-     "mode": "thumb",
-     "insns": 0,
-     "size_est": 0,
-     "status": "matched"
-    },
-    {
-     "name": "BattleController_EmitLoadBallGfx",
-     "mode": "thumb",
-     "insns": 0,
-     "size_est": 0,
-     "status": "matched"
-    },
-    {
-     "name": "BattleController_EmitDeleteBallGfx",
-     "mode": "thumb",
-     "insns": 0,
-     "size_est": 0,
-     "status": "matched"
-    },
-    {
-     "name": "BattleController_EmitIncrementGameStat",
-     "mode": "thumb",
-     "insns": 0,
-     "size_est": 0,
-     "status": "matched"
-    },
-    {
-     "name": "BattleController_EmitShowWaitMessage",
-     "mode": "thumb",
-     "insns": 0,
-     "size_est": 0,
-     "status": "matched"
-    },
-    {
-     "name": "ov12_02263F8C",
-     "mode": "thumb",
-     "insns": 0,
-     "size_est": 0,
-     "status": "matched"
-    },
-    {
-     "name": "ov12_02264038",
-     "mode": "thumb",
-     "insns": 0,
-     "size_est": 0,
-     "status": "matched"
-    },
-    {
-     "name": "ov12_02264054",
-     "mode": "thumb",
-     "insns": 0,
-     "size_est": 0,
-     "status": "matched"
-    },
-    {
-     "name": "BattleController_EmitPrintResultMessage",
-     "mode": "thumb",
-     "insns": 0,
-     "size_est": 0,
-     "status": "matched"
-    },
-    {
-     "name": "BattleController_EmitRunAwayMessage",
-     "mode": "thumb",
-     "insns": 0,
-     "size_est": 0,
-     "status": "matched"
-    },
-    {
-     "name": "BattleController_EmitForefitMessage",
-     "mode": "thumb",
-     "insns": 0,
-     "size_est": 0,
-     "status": "matched"
-    },
-    {
-     "name": "BattleController_EmitSwapToSubstituteSprite",
-     "mode": "thumb",
-     "insns": 0,
-     "size_est": 0,
-     "status": "matched"
-    },
-    {
-     "name": "BattleController_EmitPlayMoveSE",
-     "mode": "thumb",
-     "insns": 0,
-     "size_est": 0,
-     "status": "matched"
-    },
-    {
-     "name": "BattleController_EmitPlaySong",
-     "mode": "thumb",
-     "insns": 0,
-     "size_est": 0,
-     "status": "matched"
-    },
-    {
-     "name": "BattleController_EmitSetBattleResults",
-     "mode": "thumb",
-     "insns": 0,
-     "size_est": 0,
-     "status": "matched"
-    },
-    {
-     "name": "BattleController_EmitBlankMessage",
-     "mode": "thumb",
-     "insns": 0,
-     "size_est": 0,
-     "status": "matched"
-    },
-    {
-     "name": "ov12_0226430C",
-     "mode": "thumb",
-     "insns": 0,
-     "size_est": 0,
-     "status": "matched"
-    },
-    {
-     "name": "ov12_02264334",
-     "mode": "thumb",
-     "insns": 0,
-     "size_est": 0,
-     "status": "matched"
-    },
-    {
-     "name": "ov12_022645C8",
-     "mode": "thumb",
-     "insns": 0,
-     "size_est": 0,
-     "status": "matched"
-    },
-    {
-     "name": "ov12_022645F8",
-     "mode": "thumb",
-     "insns": 0,
-     "size_est": 0,
-     "status": "matched"
-    }
-   ]
+   "status": "upstream",
+   "functions": []
   },
   {
    "file": "asm/battle/battle_hp_bar.s",
@@ -149771,35 +149183,6 @@
      "mode": "thumb",
      "insns": 385,
      "size_est": 798,
-     "status": "pending"
-    }
-   ]
-  },
-  {
-   "file": "asm/overlay_12_battle_controller.s",
-   "lsf_kind": "asm",
-   "status": "pending",
-   "split": "hgify",
-   "lines": 266,
-   "function_count": 1,
-   "text_bytes_est": 492,
-   "data_only": false,
-   "sections": {
-    "rodata_bytes": 0,
-    "data_bytes": 0,
-    "bss_bytes": 0,
-    "other_bytes": 0
-   },
-   "other_sections": [],
-   "jumptable_words": 0,
-   "imports": [],
-   "exports": [],
-   "functions": [
-    {
-     "name": "ov12_022643C8",
-     "mode": "thumb",
-     "insns": 241,
-     "size_est": 492,
      "status": "pending"
     }
    ]

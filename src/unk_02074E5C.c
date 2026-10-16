@@ -18,7 +18,7 @@
 extern u32 sub_02037190(void);
 extern void sub_02036FD8(int a0, void *a1, int a2);
 extern void sub_0203049C(int a0, void *a1);
-extern BOOL ov12_02264334(BattleSystem *bs, void *a1);
+extern BOOL BattleController_RecvCommMessage(BattleSystem *bs, void *a1);
 
 typedef void (*ProtocolHandler)(int, int, void *, void *);
 typedef u32 (*ProtocolSizeGetter)(void);
@@ -200,9 +200,9 @@ void *sub_02074F94(int a0, void *a1) {
 #ifdef NONMATCHING
 void sub_02074F9C(BattleSystem *a0, u8 a1, u8 a2, void *a3, u8 a4) {
     u8 *hdr = Heap_Alloc(HEAP_ID_BATTLE, 4);
-    u8 *sendBuf = BattleSystem_GetSendBufferPtr(a0);
-    u16 *writeIdx = ov12_0223A960(a0);
-    u16 *checkIdx = ov12_0223A96C(a0);
+    u8 *sendBuf = BattleSystem_GetServerMessage(a0);
+    u16 *writeIdx = BattleSystem_GetServerWriteIndex(a0);
+    u16 *checkIdx = BattleSystem_GetServerEndIndex(a0);
     u32 i;
 
     if (*writeIdx + 5 + a4 > 0x1000) {
@@ -247,13 +247,13 @@ asm void sub_02074F9C(BattleSystem *a0, u8 a1, u8 a2, void *a3, u8 a4) {
 	bl Heap_Alloc
 	add r6, r0, #0
 	ldr r0, [sp, #0]
-	bl BattleSystem_GetSendBufferPtr
+	bl BattleSystem_GetServerMessage
 	add r5, r0, #0
 	ldr r0, [sp, #0]
-	bl ov12_0223A960
+	bl BattleSystem_GetServerWriteIndex
 	add r4, r0, #0
 	ldr r0, [sp, #0]
-	bl ov12_0223A96C
+	bl BattleSystem_GetServerEndIndex
 	mov ip, r0
 	add r0, sp, #0x10
 	ldrh r3, [r4, #0]
@@ -311,9 +311,9 @@ _0207501E:
 
 #ifdef NONMATCHING
 void sub_02075028(int a0, int a1, void *a2, void *a3) {
-    u8 *recvBuf = BattleSystem_GetRecvBufferPtr((BattleSystem *)a3);
-    u16 *writeIdx = ov12_0223A984((BattleSystem *)a3);
-    u16 *checkIdx = ov12_0223A990((BattleSystem *)a3);
+    u8 *recvBuf = BattleSystem_GetClientMessage((BattleSystem *)a3);
+    u16 *writeIdx = BattleSystem_GetClientWriteIndex((BattleSystem *)a3);
+    u16 *checkIdx = BattleSystem_GetClientEndIndex((BattleSystem *)a3);
     int i;
 
     if (*writeIdx + a1 + 1 > 0x1000) {
@@ -339,13 +339,13 @@ asm void sub_02075028(int a0, int a1, void *a2, void *a3) {
 	add r0, r3, #0
 	add r5, r1, #0
 	add r6, r2, #0
-	bl BattleSystem_GetRecvBufferPtr
+	bl BattleSystem_GetClientMessage
 	add r7, r0, #0
 	ldr r0, [sp, #0]
-	bl ov12_0223A984
+	bl BattleSystem_GetClientWriteIndex
 	add r4, r0, #0
 	ldr r0, [sp, #0]
-	bl ov12_0223A990
+	bl BattleSystem_GetClientEndIndex
 	ldrh r1, [r4, #0]
 	add r2, r1, r5
 	add r3, r2, #1
@@ -695,10 +695,10 @@ void sub_02075424(int a0, int a1, void *a2, void *a3) {
 
 void sub_02075434(SysTask *task, void *data) {
     Work *work = (Work *)data;
-    u8 *sendBuf = BattleSystem_GetSendBufferPtr(work->battleSystem);
-    u16 *writeIdx = ov12_0223A954(work->battleSystem);
-    u16 *syncIdx = ov12_0223A960(work->battleSystem);
-    u16 *checkIdx = ov12_0223A96C(work->battleSystem);
+    u8 *sendBuf = BattleSystem_GetServerMessage(work->battleSystem);
+    u16 *writeIdx = BattleSystem_GetServerReadIndex(work->battleSystem);
+    u16 *syncIdx = BattleSystem_GetServerWriteIndex(work->battleSystem);
+    u16 *checkIdx = BattleSystem_GetServerEndIndex(work->battleSystem);
     int pktSize;
 
     switch (work->unk4) {
@@ -729,10 +729,10 @@ void sub_02075434(SysTask *task, void *data) {
 
 void sub_020754C0(SysTask *task, void *data) {
     Work *work = (Work *)data;
-    u8 *recvBuf = BattleSystem_GetRecvBufferPtr(work->battleSystem);
-    u16 *readIdx = ov12_0223A978(work->battleSystem);
-    u16 *writeIdx = ov12_0223A984(work->battleSystem);
-    u16 *checkIdx = ov12_0223A990(work->battleSystem);
+    u8 *recvBuf = BattleSystem_GetClientMessage(work->battleSystem);
+    u16 *readIdx = BattleSystem_GetClientReadIndex(work->battleSystem);
+    u16 *writeIdx = BattleSystem_GetClientWriteIndex(work->battleSystem);
+    u16 *checkIdx = BattleSystem_GetClientEndIndex(work->battleSystem);
     int pktSize;
 
     switch (work->unk4) {
@@ -744,7 +744,7 @@ void sub_020754C0(SysTask *task, void *data) {
                 *readIdx = 0;
                 *checkIdx = 0;
             }
-            if (ov12_02264334(work->battleSystem, recvBuf + *readIdx) == 1) {
+            if (BattleController_RecvCommMessage(work->battleSystem, recvBuf + *readIdx) == 1) {
                 pktSize = (recvBuf[*readIdx + 2] | (recvBuf[*readIdx + 3] << 8)) + 4;
                 *readIdx = *readIdx + pktSize;
                 return;

@@ -20,7 +20,7 @@ typedef struct UnkStruct_ov12_0225DA8C {
     u8 doneScrolling : 1;
     u8 pad_4F : 6;
 } UnkStruct_ov12_0225DA8C;
-void ov12_0226430C(void *, int, u8);
+void BattleController_EmitClearCommand(void *, int, u8);
 void ov12_0225DA8C(SysTask *task, void *data);
 // FUNCTION ov12_0225DA8C: matching C (twin)
 #pragma force_active on
@@ -33,7 +33,7 @@ void ov12_0225DA8C(SysTask *task, void *data) {
             return;
         }
     } else {
-        ov12_0226430C(healthbox->battleSys, healthbox->battler, healthbox->command);
+        BattleController_EmitClearCommand(healthbox->battleSys, healthbox->battler, healthbox->command);
         healthbox->task_10 = NULL;
         SysTask_Destroy(task);
         BattleHpBar_SetEnabled((BattleHpBar *)healthbox, FALSE);

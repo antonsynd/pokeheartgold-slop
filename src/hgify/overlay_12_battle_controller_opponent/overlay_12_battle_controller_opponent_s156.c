@@ -20,8 +20,8 @@ typedef struct Ov12Ctx {
 } Ov12Ctx;
 void ov12_02261ED4(void *sys);
 void ov12_02261EB8(void *sys);
-void ov12_02263360(void *sys, int slot, int val);
-void ov12_0226430C(void *sys, int slot, int val);
+void BattleController_EmitPartyMenuResult(void *sys, int slot, int val);
+void BattleController_EmitClearCommand(void *sys, int slot, int val);
 // FUNCTION ov12_0225F980: matching C (agent20)
 #pragma force_active on
 void ov12_0225F980(void *task, Ov12Ctx *ctx) {
@@ -54,8 +54,8 @@ void ov12_0225F980(void *task, Ov12Ctx *ctx) {
             }
         }
     }
-    ov12_02263360(ctx->sys, ctx->slot, val);
-    ov12_0226430C(ctx->sys, ctx->slot, ctx->unk_08);
+    BattleController_EmitPartyMenuResult(ctx->sys, ctx->slot, val);
+    BattleController_EmitClearCommand(ctx->sys, ctx->slot, ctx->unk_08);
     Heap_Free(ctx);
     SysTask_Destroy(task);
 }

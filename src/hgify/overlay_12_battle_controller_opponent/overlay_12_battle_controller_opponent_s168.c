@@ -12,7 +12,7 @@ typedef struct Ov12Ex {
 } Ov12Ex;
 void BattleHpBar_BeginExpBarFullFlashEffect(void *, void *, int, int);
 void PlaySE(int);
-void ov12_0226430C(void *, int, u8);
+void BattleController_EmitClearCommand(void *, int, u8);
 void Heap_Free(void *);
 int SysTask_Destroy(void *);
 // FUNCTION ov12_02260584: matching C (agent8)
@@ -26,7 +26,7 @@ void ov12_02260584(void *param_1, Ov12Ex *param_2, int param_3, int param_4) {
         break;
     case 1:
         if (param_2->flag == 1) {
-            ov12_0226430C(param_2->a, param_2->d, param_2->c);
+            BattleController_EmitClearCommand(param_2->a, param_2->d, param_2->c);
             Heap_Free(param_2);
             SysTask_Destroy(param_1);
         }

@@ -98,7 +98,7 @@ _0221D860:
 	add r0, r6, #0
 	add r2, #0xa
 	mov r3, #0
-	bl GetBattlerVar
+	bl BattleMon_Get
 	strb r0, [r5]
 	add r4, r4, #1
 	add r5, r5, #1
@@ -246,7 +246,7 @@ _0221D98C:
 	add r0, r6, #0
 	add r2, #0xa
 	mov r3, #0
-	bl GetBattlerVar
+	bl BattleMon_Get
 	strb r0, [r5]
 	add r4, r4, #1
 	add r5, r5, #1

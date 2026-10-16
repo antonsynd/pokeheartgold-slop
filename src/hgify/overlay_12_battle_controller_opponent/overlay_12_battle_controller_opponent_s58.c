@@ -48,7 +48,7 @@ typedef struct UnkStruct_Ov12_02259358 {
     u8 ability;
     u16 move;
 } UnkStruct_Ov12_02259358;
-void ov12_0226430C(BattleSystem *battleSystem, int battler, int command);
+void BattleController_EmitClearCommand(BattleSystem *battleSystem, int battler, int command);
 void ov12_02259928(OpponentData *opponentData);
 int ov07_02234B5C(u8 battlerType, int arg1);
 void ov12_0225A9E0(BattleSystem *battleSystem, OpponentData *opponentData, void *message);
@@ -168,7 +168,7 @@ void ov12_0225961C(BattleSystem *battleSystem, OpponentData *opponentData) {
     if (BattleSystem_GetFieldSide(battleSystem, opponentData->unk194)) {
         ov12_0225B16C(battleSystem, opponentData, message);
     } else {
-        ov12_0226430C(battleSystem, opponentData->unk194, 0x33);
+        BattleController_EmitClearCommand(battleSystem, opponentData->unk194, 0x33);
     }
 
     ov12_02259928(opponentData);

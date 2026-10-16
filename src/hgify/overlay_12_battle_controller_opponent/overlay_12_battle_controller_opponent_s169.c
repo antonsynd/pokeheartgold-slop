@@ -17,7 +17,7 @@ typedef struct UnkStruct_ov12_022605D0 {
     u8 msgIdx;
 } UnkStruct_ov12_022605D0;
 
-void ov12_0226430C(BattleSystem *battleSys, u32 battler, u32 command);
+void BattleController_EmitClearCommand(BattleSystem *battleSys, u32 battler, u32 command);
 
 // FUNCTION ov12_022605D0: matching C (twin)
 #pragma force_active on
@@ -30,7 +30,7 @@ void ov12_022605D0(SysTask *task, void *data) {
     }
 
     if (TextPrinterCheckActive(waitTask->msgIdx) == FALSE) {
-        ov12_0226430C(waitTask->battleSys, waitTask->battler, waitTask->command);
+        BattleController_EmitClearCommand(waitTask->battleSys, waitTask->battler, waitTask->command);
         Heap_Free(data);
         SysTask_Destroy(task);
     }

@@ -770,7 +770,7 @@ typedef struct BattleSubscreen {
     } catchTutorialState;
 } BattleSubscreen;
 void BattleInput_StartMenuScrollHorizontalTask(BattleSubscreen *btlSubscreen, int slideSpeed, int targetOffset);
-void ov12_0226430C(BattleSystem *battleSys, int battler, int command);
+void BattleController_EmitClearCommand(BattleSystem *battleSys, int battler, int command);
 u32 BattleSystem_GetBattleType(BattleSystem *battleSys);
 BattleSubscreen *BattleSystem_GetBattleInput(BattleSystem *battleSys);
 void ov12_022592D0(BattleSystem *battleSys, BattlerData *battlerData);
@@ -788,7 +788,7 @@ void ov12_022592D0(BattleSystem *battleSys, BattlerData *battlerData) {
         }
     }
 
-    ov12_0226430C(battleSys, battlerData->battler, battlerData->data[0]);
+    BattleController_EmitClearCommand(battleSys, battlerData->battler, battlerData->data[0]);
     ov12_02259928(battlerData);
 }
 #pragma force_active reset

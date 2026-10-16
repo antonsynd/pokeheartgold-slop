@@ -15,10 +15,10 @@ typedef struct {
     u8 pad[0x30 - 0xe];
     u16 x30;
 } Ctx;
-void ov12_0226430C(void *, int, int);
+void BattleController_EmitClearCommand(void *, int, int);
 void ov12_02261EB8(void *);
 void ov12_02261ED4(void *);
-void ov12_0226311C(void *, int, int);
+void BattleController_EmitSelectedTarget(void *, int, int);
 // FUNCTION ov12_0225E760: matching C (agent23)
 #pragma force_active on
 void ov12_0225E760(void *param_1, Ctx *param_2) {
@@ -58,8 +58,8 @@ void ov12_0225E760(void *param_1, Ctx *param_2) {
             break;
         }
     }
-    ov12_0226311C(param_2->bsys, param_2->xd, val);
-    ov12_0226430C(param_2->bsys, param_2->xd, param_2->xc);
+    BattleController_EmitSelectedTarget(param_2->bsys, param_2->xd, val);
+    BattleController_EmitClearCommand(param_2->bsys, param_2->xd, param_2->xc);
     Heap_Free(param_2);
     SysTask_Destroy(param_1);
 }

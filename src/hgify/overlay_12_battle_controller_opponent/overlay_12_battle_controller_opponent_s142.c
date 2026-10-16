@@ -33,8 +33,8 @@ typedef struct {
     u8 battlerType;
     u8 pad[3];
 } UnkStruct_ov12_0225E250_MenuData;
-void ov12_02262FE0(BattleSystem *battleSys, int battler, int input);
-void ov12_0226430C(BattleSystem *battleSys, u8 battler, u8 command);
+void BattleController_EmitSelectedMove(BattleSystem *battleSys, int battler, int input);
+void BattleController_EmitClearCommand(BattleSystem *battleSys, u8 battler, u8 command);
 void ov12_0225E250(SysTask *task, void *data);
 // FUNCTION ov12_0225E250: matching C (r2)
 #pragma force_active on
@@ -108,7 +108,7 @@ void ov12_0225E250(SysTask *task, void *data) {
             }
             BattleInput_DisableBallGauge(input);
         }
-        ov12_02262FE0(d->battleSys, d->battler, d->input);
+        BattleController_EmitSelectedMove(d->battleSys, d->battler, d->input);
         d->state++;
         break;
     case 3:
@@ -116,7 +116,7 @@ void ov12_0225E250(SysTask *task, void *data) {
     default:
         if (ov12_022698B0(input) == 1) {
             ov12_0223BB10(d->battleSys, 1);
-            ov12_0226430C(d->battleSys, d->battler, d->command);
+            BattleController_EmitClearCommand(d->battleSys, d->battler, d->command);
             Heap_Free(data);
             SysTask_Destroy(task);
         }

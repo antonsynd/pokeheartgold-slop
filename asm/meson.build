@@ -219,7 +219,6 @@ pokeheartgold_asm = files(
     'overlay_12_battle_controller_opponent_s86.s',
     'overlay_12_battle_controller_opponent_s91.s',
     'overlay_12_battle_controller_opponent_sdata.s',
-    'overlay_12_battle_controller_p81.s',
     'overlay_14_021E5900_s166.s',
     'overlay_14_021E5900_s169.s',
     'overlay_14_021E5900_s186.s',

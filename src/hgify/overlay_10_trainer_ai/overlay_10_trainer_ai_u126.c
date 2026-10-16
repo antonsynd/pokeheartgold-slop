@@ -4323,7 +4323,7 @@ struct BattleSystem {
     SysTask *playbackStopButton;
     u8 recordedChatter[4];
 };
-int GetBattlerVar(BattleContext *battleCtx, int battler, enum BattleMonParam paramID, void *buf);
+int BattleMon_Get(BattleContext *battleCtx, int battler, enum BattleMonParam paramID, void *buf);
 void ov12_02252054(BattleContext *battleCtx, int move, int inType, int attackerAbility, int defenderAbility, int defenderItemEffect, int defenderType1, int defenderType2, u32 *moveStatusMask);
 u8 GetBattlerAbility(BattleContext *battleCtx, int battler);
 s32 GetBattlerHeldItemEffect(BattleContext *battleCtx, int battler);
@@ -4401,8 +4401,8 @@ BOOL ov10_02220010(BattleSystem *battleSys, BattleContext *battleCtx, int battle
                             GetMonData(mon, MON_DATA_ABILITY_PT, ((void *)0)),
                             GetBattlerAbility(battleCtx, battleCtx->moveHitBattler[battler]),
                             GetBattlerHeldItemEffect(battleCtx, battleCtx->moveHitBattler[battler]),
-                            GetBattlerVar(battleCtx, battleCtx->moveHitBattler[battler], BATTLEMON_TYPE_1, ((void *)0)),
-                            GetBattlerVar(battleCtx, battleCtx->moveHitBattler[battler], BATTLEMON_TYPE_2, ((void *)0)),
+                            BattleMon_Get(battleCtx, battleCtx->moveHitBattler[battler], BATTLEMON_TYPE_1, ((void *)0)),
+                            BattleMon_Get(battleCtx, battleCtx->moveHitBattler[battler], BATTLEMON_TYPE_2, ((void *)0)),
                             &effectiveness);
 
                         if ((effectiveness & (1 << 1)) && BattleSystem_Random(battleSys) % rand == 0) {

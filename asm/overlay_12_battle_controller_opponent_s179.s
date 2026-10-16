@@ -115,7 +115,7 @@ _02260F2C:
 	tst r1, r3
 	beq _02260F88
 	add r0, r6, #0
-	bl ov12_0223B688
+	bl BattleSystem_IsInitialized
 	cmp r0, #0
 	beq _02260F68
 	ldr r0, _022611E8 ; =ov12_0225E104

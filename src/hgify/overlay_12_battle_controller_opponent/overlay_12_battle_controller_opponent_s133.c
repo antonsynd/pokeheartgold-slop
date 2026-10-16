@@ -19,7 +19,7 @@ typedef struct Pos {
     s16 y;
     s16 x;
 } Pos;
-void ov12_0226430C(void *battleSys, u32 battler, u32 command);
+void BattleController_EmitClearCommand(void *battleSys, u32 battler, u32 command);
 // FUNCTION ov12_0225D990: matching C (agent15)
 #pragma force_active on
 void ov12_0225D990(void *task, Data *d) {
@@ -44,7 +44,7 @@ void ov12_0225D990(void *task, Data *d) {
         ManagedSprite_SetPositionXY(d->sprite, p.x, p.y);
         break;
     case 1:
-        ov12_0226430C(d->sys, d->f9, d->f8);
+        BattleController_EmitClearCommand(d->sys, d->f9, d->f8);
         Heap_Free(d);
         SysTask_Destroy(task);
         break;

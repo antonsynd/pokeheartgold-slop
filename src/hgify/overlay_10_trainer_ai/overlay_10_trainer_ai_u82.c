@@ -4271,7 +4271,7 @@ struct BattleSystem {
     SysTask *playbackStopButton;
     u8 recordedChatter[4];
 };
-int GetBattlerVar(BattleContext *battleCtx, int battler, enum BattleMonParam paramID, void *buf);
+int BattleMon_Get(BattleContext *battleCtx, int battler, enum BattleMonParam paramID, void *buf);
 u8 GetBattlerAbility(BattleContext *battleCtx, int battler);
 int BattleSystem_GetPartySize(BattleSystem *battleSys, int battler);
 Pokemon *BattleSystem_GetPartyMon(BattleSystem *battleSys, int battler, int slot);
@@ -4301,7 +4301,7 @@ void ov10_0221E2CC(BattleSystem *battleSys, BattleContext *battleCtx) {
     battler = (battleCtx->aiContext).attacker;
 
     for (i = 0; i < 6; i++) {
-        ivs[i] = GetBattlerVar(battleCtx, battler, BATTLEMON_HP_IV + i, ((void *)0));
+        ivs[i] = BattleMon_Get(battleCtx, battler, BATTLEMON_HP_IV + i, ((void *)0));
     }
 
     activeMonDamage = ov10_0221EF7C(battleSys,

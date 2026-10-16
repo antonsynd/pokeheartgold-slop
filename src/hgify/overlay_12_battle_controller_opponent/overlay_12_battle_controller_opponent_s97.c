@@ -36,7 +36,7 @@ typedef struct Param {
     u32 xc;
 } Param;
 void ov12_02260030(SysTask *, void *);
-void ov12_0226430C(u32 a, u8 b, u8 c);
+void BattleController_EmitClearCommand(u32 a, u8 b, u8 c);
 // FUNCTION ov12_0225AA6C: matching C (agent14)
 #pragma force_active on
 void ov12_0225AA6C(u32 param_1, Obj *o, Param *p) {
@@ -56,7 +56,7 @@ void ov12_0225AA6C(u32 param_1, Obj *o, Param *p) {
     if (o->x195 == 0) {
         s->x10 = SysTask_CreateOnMainQueue(ov12_02260030, s, 1000);
     } else {
-        ov12_0226430C(s->xc, s->x24, s->x4c);
+        BattleController_EmitClearCommand(s->xc, s->x24, s->x4c);
     }
 }
 #pragma force_active reset

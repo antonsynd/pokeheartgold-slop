@@ -8,7 +8,7 @@
 #include "ghidra_compat.h"
 typedef void code(void);
 undefined4 ov12_02259944(undefined4, undefined4);
-undefined4 ov12_0226430C(undefined4, undefined4, undefined4);
+undefined4 BattleController_EmitClearCommand(undefined4, undefined4, undefined4);
 undefined4 ov12_02259928(undefined4);
 void ov12_02258EB4(undefined4 param_1, int param_2, undefined4 param_3, undefined4 param_4);
 // FUNCTION ov12_02258EB4: matching C (r3)
@@ -18,7 +18,7 @@ void ov12_02258EB4(undefined4 param_1, int param_2, undefined4 param_3, undefine
 {
     BattleSystem_SetRandTemp(param_1, *(undefined4 *)(param_2 + 0x98));
     ov12_02259944(param_1, param_2);
-    ov12_0226430C(param_1, *(undefined1 *)(param_2 + 0x194), 1);
+    BattleController_EmitClearCommand(param_1, *(undefined1 *)(param_2 + 0x194), 1);
     ov12_02259928(param_2);
     return;
 }
