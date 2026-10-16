@@ -6,7 +6,7 @@
 #include "heap.h"
 #include "pokepic.h"
 #include "sys_task_api.h"
-u32 ov12_0226430C(u32, u32, u32);
+u32 BattleController_EmitClearCommand(u32, u32, u32);
 // FUNCTION ov12_02260B30: matching C (agent8)
 #pragma force_active on
 void ov12_02260B30(u32 param_1, u32 *param_2, u32 param_3, u32 param_4) {
@@ -31,7 +31,7 @@ void ov12_02260B30(u32 param_1, u32 *param_2, u32 param_3, u32 param_4) {
         }
         break;
     case 1:
-        ov12_0226430C(param_2[0], ((u8 *)param_2)[9], ((u8 *)param_2)[8]);
+        BattleController_EmitClearCommand(param_2[0], ((u8 *)param_2)[9], ((u8 *)param_2)[8]);
         Heap_Free(param_2);
         SysTask_Destroy((void *)param_1);
         break;

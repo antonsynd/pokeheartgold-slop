@@ -39,7 +39,7 @@ void MIi_CpuClearFast(unsigned int data, void *dest, unsigned int size);
 unsigned int BattleSystem_GetBattleType(void *);
 unsigned int BattleHpBar_Util_GetBarTypeFromBattlerSide(unsigned char, unsigned int);
 void ov12_0226498C(void *, unsigned int, unsigned int);
-void ov12_0226430C(void *, unsigned int, unsigned int);
+void BattleController_EmitClearCommand(void *, unsigned int, unsigned int);
 // FUNCTION ov12_0225AF74: matching C (agent20)
 #pragma force_active on
 void ov12_0225AF74(void *param_1, unsigned char *param_2, Ov12Init *param_3) {
@@ -64,6 +64,6 @@ void ov12_0225AF74(void *param_1, unsigned char *param_2, Ov12Init *param_3) {
     sub->unk_4b = param_3->bits_hi;
     sub->unk_27 = param_3->unk_10;
     ov12_0226498C(sub, sub->unk_28, 0xffffffdf);
-    ov12_0226430C(sub->sys, sub->unk_24, sub->unk_4c);
+    BattleController_EmitClearCommand(sub->sys, sub->unk_24, sub->unk_4c);
 }
 #pragma force_active reset

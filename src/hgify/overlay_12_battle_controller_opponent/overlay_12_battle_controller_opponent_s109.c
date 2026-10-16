@@ -7,8 +7,8 @@
 
 #include "heap.h"
 #include "sys_task_api.h"
-void ov12_02263A00(void *bsys, u8 battler);
-void ov12_0226430C(void *bsys, u8 battler, u8 command);
+void BattleController_EmitAlertMessageAck(void *bsys, u8 battler);
+void BattleController_EmitClearCommand(void *bsys, u8 battler, u8 command);
 void ov12_02260614(SysTask *task, void *data);
 typedef struct {
     void *bsys;
@@ -32,13 +32,13 @@ void ov12_0225AED8(void *bsys, u8 *battlerData, u8 *message) {
         d->msgIdx = BattleSystem_PrintBattleMessage(bsys, msgLoader, (BattleMessage *)(message + 4), BattleSystem_GetTextFrameDelay(bsys));
         SysTask_CreateOnMainQueue(ov12_02260614, d, 0);
     } else if (bootState == 1) {
-        ov12_02263A00(bsys, battlerData[0x194]);
-        ov12_0226430C(bsys, battlerData[0x194], message[0]);
+        BattleController_EmitAlertMessageAck(bsys, battlerData[0x194]);
+        BattleController_EmitClearCommand(bsys, battlerData[0x194], message[0]);
     } else {
         if ((BattleSystem_GetBattleType(bsys) & 4) == 0) {
-            ov12_02263A00(bsys, battlerData[0x194]);
+            BattleController_EmitAlertMessageAck(bsys, battlerData[0x194]);
         }
-        ov12_0226430C(bsys, battlerData[0x194], message[0]);
+        BattleController_EmitClearCommand(bsys, battlerData[0x194], message[0]);
     }
 }
 #pragma force_active reset

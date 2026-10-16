@@ -15,8 +15,8 @@ typedef struct {
 } Obj;
 extern void ov12_02261ED4(int);
 extern void ov12_02261EB8(int);
-extern void ov12_02262F24(int, int, int);
-extern void ov12_0226430C(int, int, int);
+extern void BattleController_EmitSelectedCommand(int, int, int);
+extern void BattleController_EmitClearCommand(int, int, int);
 // FUNCTION ov12_0225E1FC: matching C (agent12)
 #pragma force_active on
 void ov12_0225E1FC(int param_1, Obj *param_2, int param_3, int param_4) {
@@ -30,8 +30,8 @@ void ov12_0225E1FC(int param_1, Obj *param_2, int param_3, int param_4) {
     if ((uStack_10 == 0) || (4 < uStack_10) || (uStack_10 == 2)) {
         ov12_02261EB8(param_2->a);
     }
-    ov12_02262F24(param_2->a, param_2->b9, uStack_10);
-    ov12_0226430C(param_2->a, param_2->b9, param_2->b8);
+    BattleController_EmitSelectedCommand(param_2->a, param_2->b9, uStack_10);
+    BattleController_EmitClearCommand(param_2->a, param_2->b9, param_2->b8);
     Heap_Free(param_2);
     SysTask_Destroy(param_1);
 }

@@ -9,8 +9,8 @@
 #include "error_handling.h"
 #include "heap.h"
 #include "sys_task_api.h"
-void ov12_0226311C(int a, int b, int c);
-void ov12_0226430C(int a, int b, int c);
+void BattleController_EmitSelectedTarget(int a, int b, int c);
+void BattleController_EmitClearCommand(int a, int b, int c);
 // FUNCTION ov12_0225E6FC: matching C (agent11)
 #pragma force_active on
 void ov12_0225E6FC(int param_1, unsigned int *param_2) {
@@ -23,8 +23,8 @@ void ov12_0225E6FC(int param_1, unsigned int *param_2) {
     if (iVar3 >= 5) {
         GF_AssertFail();
     }
-    ov12_0226311C(*param_2, *(unsigned char *)((char *)param_2 + 0xd), iVar3);
-    ov12_0226430C(*param_2, *(unsigned char *)((char *)param_2 + 0xd), *(unsigned char *)((char *)param_2 + 0xc));
+    BattleController_EmitSelectedTarget(*param_2, *(unsigned char *)((char *)param_2 + 0xd), iVar3);
+    BattleController_EmitClearCommand(*param_2, *(unsigned char *)((char *)param_2 + 0xd), *(unsigned char *)((char *)param_2 + 0xc));
     Heap_Free(param_2);
     SysTask_Destroy(param_1);
 }

@@ -3999,7 +3999,7 @@ struct BattleSystem {
     SysTask *playbackStopButton;
     u8 recordedChatter[4];
 };
-void ov12_022621C4(BattleSystem *battleSys, int recipient);
+void BattleSystem_TryRecvMessage(BattleSystem *battleSys, int recipient);
 BOOL BattleContext_Main(BattleSystem *battleSys, BattleContext *battleCtx);
 void ov12_02258E54(BattleSystem *battleSys, BattlerData *battlerData);
 int ov12_02238358(ApplicationManager *appMan);
@@ -4020,23 +4020,23 @@ int ov12_02238358(ApplicationManager *appMan) {
     } else {
         if (battleSys->battleInitialized) {
             battleSys->commandIsEndWait = BattleContext_Main(battleSys, battleSys->battleCtx);
-            ov12_022621C4(battleSys, COMM_RECIPIENT_CLIENT);
+            BattleSystem_TryRecvMessage(battleSys, COMM_RECIPIENT_CLIENT);
         }
 
         for (battler = 0; battler < battleSys->maxBattlers; battler++) {
             ov12_02258E54(battleSys, battleSys->battlers[battler]);
-            ov12_022621C4(battleSys, COMM_RECIPIENT_SERVER);
+            BattleSystem_TryRecvMessage(battleSys, COMM_RECIPIENT_SERVER);
         }
 
         if (battleSys->commandIsEndWait == 0) {
             if (battleSys->battleInitialized) {
                 battleSys->commandIsEndWait = BattleContext_Main(battleSys, battleSys->battleCtx);
-                ov12_022621C4(battleSys, COMM_RECIPIENT_CLIENT);
+                BattleSystem_TryRecvMessage(battleSys, COMM_RECIPIENT_CLIENT);
             }
 
             for (battler = 0; battler < battleSys->maxBattlers; battler++) {
                 ov12_02258E54(battleSys, battleSys->battlers[battler]);
-                ov12_022621C4(battleSys, COMM_RECIPIENT_SERVER);
+                BattleSystem_TryRecvMessage(battleSys, COMM_RECIPIENT_SERVER);
             }
         }
     }

@@ -23,8 +23,8 @@ typedef struct Obj {
     u8 c;
     u8 d;
 } Obj;
-void ov12_0226430C(void *, int, int);
-void ov12_022632C0(void *, int, Pair);
+void BattleController_EmitClearCommand(void *, int, int);
+void BattleController_EmitSelectedBagItem(void *, int, Pair);
 void ov12_02261ED4(void *);
 // FUNCTION ov12_0225F434: matching C (agent22)
 #pragma force_active on
@@ -45,8 +45,8 @@ void ov12_0225F434(void *task, Obj *obj) {
     }
     v.b = buf[0] & 0xf;
     v.c = 0;
-    ov12_022632C0(obj->p0, obj->d, v);
-    ov12_0226430C(obj->p0, obj->d, obj->c);
+    BattleController_EmitSelectedBagItem(obj->p0, obj->d, v);
+    BattleController_EmitClearCommand(obj->p0, obj->d, obj->c);
     Heap_Free(*(void **)obj->p8->p4);
     Heap_Free(obj->p8->p4);
     Heap_Free(obj->p8);

@@ -11,8 +11,8 @@
 #include "sys_task_api.h"
 int ov12_02258BA0(void *bsys, u8 battler);
 int ov12_02258800(void *bsys, u8 battler);
-void ov12_02263360(void *bsys, u8 battler, int val);
-void ov12_0226430C(void *bsys, u8 battler, u8 val);
+void BattleController_EmitPartyMenuResult(void *bsys, u8 battler, int val);
+void BattleController_EmitClearCommand(void *bsys, u8 battler, u8 val);
 // FUNCTION ov12_0225F8AC: matching C (agent17)
 #pragma force_active on
 void ov12_0225F8AC(void *task, u32 *param_2) {
@@ -46,8 +46,8 @@ void ov12_0225F8AC(void *task, u32 *param_2) {
             }
         }
     }
-    ov12_02263360((void *)param_2[0], *((u8 *)param_2 + 9), idx + 1);
-    ov12_0226430C((void *)param_2[0], *((u8 *)param_2 + 9), *((u8 *)param_2 + 8));
+    BattleController_EmitPartyMenuResult((void *)param_2[0], *((u8 *)param_2 + 9), idx + 1);
+    BattleController_EmitClearCommand((void *)param_2[0], *((u8 *)param_2 + 9), *((u8 *)param_2 + 8));
     Heap_Free(param_2);
     SysTask_Destroy(task);
 }

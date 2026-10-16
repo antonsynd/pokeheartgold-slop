@@ -18,12 +18,12 @@ typedef struct MusicPlayMessage {
     u16 bgmID;
 } MusicPlayMessage;
 
-void ov12_0226430C(BattleSystem *battleSys, u8 battler, u8 command);
+void BattleController_EmitClearCommand(BattleSystem *battleSys, u8 battler, u8 command);
 void ov12_0225B434(BattleSystem *battleSys, UnkStruct_ov12_0225B434 *battlerData, MusicPlayMessage *message);
 // FUNCTION ov12_0225B434: matching C (twin)
 #pragma force_active on
 void ov12_0225B434(BattleSystem *battleSys, UnkStruct_ov12_0225B434 *battlerData, MusicPlayMessage *message) {
     PlayBGM(message->bgmID);
-    ov12_0226430C(battleSys, battlerData->battler, message->command);
+    BattleController_EmitClearCommand(battleSys, battlerData->battler, message->command);
 }
 #pragma force_active reset

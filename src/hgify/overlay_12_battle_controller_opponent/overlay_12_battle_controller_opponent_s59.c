@@ -7,7 +7,7 @@
 #include "battle/battle_system.h"
 #include "battle/party_gauge.h"
 
-void ov12_0226430C(BattleSystem *battleSys, int battler, int command);
+void BattleController_EmitClearCommand(BattleSystem *battleSys, int battler, int command);
 void ov12_02259928(OpponentData *opponentData);
 // FUNCTION ov12_02259658: matching C (twin)
 #pragma force_active on
@@ -17,7 +17,7 @@ void ov12_02259658(BattleSystem *battleSys, OpponentData *opponentData) {
     PaletteData *paletteData = BattleSystem_GetPaletteData(battleSys);
 
     PartyGauge_LoadGraphics(spriteSys, spriteMan, paletteData);
-    ov12_0226430C(battleSys, opponentData->unk194, 0x34);
+    BattleController_EmitClearCommand(battleSys, opponentData->unk194, 0x34);
     ov12_02259928(opponentData);
 }
 #pragma force_active reset

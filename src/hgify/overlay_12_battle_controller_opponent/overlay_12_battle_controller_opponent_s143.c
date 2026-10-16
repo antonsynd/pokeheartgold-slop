@@ -20,8 +20,8 @@ typedef struct {
     u8 pad_1E[4];
     u16 invalidMoves;
 } UnkStruct_ov12_0225E404;
-void ov12_02262FE0(BattleSystem *battleSys, int battler, int input);
-void ov12_0226430C(BattleSystem *battleSys, u8 battler, u8 command);
+void BattleController_EmitSelectedMove(BattleSystem *battleSys, int battler, int input);
+void BattleController_EmitClearCommand(BattleSystem *battleSys, u8 battler, u8 command);
 #pragma thumb on
 void ov12_0225E404(SysTask *task, void *data);
 // FUNCTION ov12_0225E404: matching C (agent17)
@@ -57,8 +57,8 @@ void ov12_0225E404(SysTask *task, void *data) {
         action = validMoves[index];
         ov12_022582B8(d->battleSys, ctx, 0xb, d->battler, ov12_022506D4(d->battleSys, ctx, d->battler, d->moves[action - 1], 1, 0));
     }
-    ov12_02262FE0(d->battleSys, d->battler, action);
-    ov12_0226430C(d->battleSys, d->battler, d->command);
+    BattleController_EmitSelectedMove(d->battleSys, d->battler, action);
+    BattleController_EmitClearCommand(d->battleSys, d->battler, d->command);
     Heap_Free(data);
     SysTask_Destroy(task);
 }

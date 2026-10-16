@@ -30,8 +30,8 @@ typedef struct {
     u8 battlerType;
     u8 targetingLayout;
 } UnkStruct_ov12_0225E568_MenuData;
-void ov12_0226311C(BattleSystem *battleSys, int battler, int input);
-void ov12_0226430C(BattleSystem *battleSys, u8 battler, u8 command);
+void BattleController_EmitSelectedTarget(BattleSystem *battleSys, int battler, int input);
+void BattleController_EmitClearCommand(BattleSystem *battleSys, u8 battler, u8 command);
 void ov12_0225E568(SysTask *task, void *data);
 // FUNCTION ov12_0225E568: matching C (agent33)
 #pragma force_active on
@@ -116,8 +116,8 @@ void ov12_0225E568(SysTask *task, void *data) {
                 }
             }
 
-            ov12_0226311C(d->battleSys, d->battler, selected);
-            ov12_0226430C(d->battleSys, d->battler, d->command);
+            BattleController_EmitSelectedTarget(d->battleSys, d->battler, selected);
+            BattleController_EmitClearCommand(d->battleSys, d->battler, d->command);
             Heap_Free(data);
             SysTask_Destroy(task);
         }

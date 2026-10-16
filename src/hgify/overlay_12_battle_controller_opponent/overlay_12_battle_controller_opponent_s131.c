@@ -45,7 +45,7 @@ void ov07_0223449C(void *a, u32 v);
 void ov07_02233EFC(void *a, u32 v);
 void ov07_022344C0(void *a, u32 v);
 void ov07_022344D0(void *a, u32 v);
-void ov12_0226430C(void *bs, u32 battler, u32 command);
+void BattleController_EmitClearCommand(void *bs, u32 battler, u32 command);
 void Heap_Free(void *ptr);
 void SysTask_Destroy(void *task);
 static inline void Cleanup(Task_ov12c *d) {
@@ -103,7 +103,7 @@ void ov12_0225D644(void *task, Task_ov12c *d) {
         }
         break;
     case 2:
-        ov12_0226430C(d->bsys, d->unk_09, d->unk_08);
+        BattleController_EmitClearCommand(d->bsys, d->unk_09, d->unk_08);
         Heap_Free(d);
         SysTask_Destroy(task);
         break;

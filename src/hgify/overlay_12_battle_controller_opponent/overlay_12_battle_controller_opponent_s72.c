@@ -15,7 +15,7 @@ typedef struct {
     u32 resultMask;
     u8 recordedInputs[1];
 } UnkStruct_ov12_022597EC;
-void ov12_0226430C(BattleSystem *battleSys, u8 battler, u8 command);
+void BattleController_EmitClearCommand(BattleSystem *battleSys, u8 battler, u8 command);
 void ov12_02259928(void *opponentData);
 void ov12_022597EC(BattleSystem *battleSys, void *opponentData);
 // FUNCTION ov12_022597EC: matching C (r0)
@@ -59,7 +59,7 @@ void ov12_022597EC(BattleSystem *battleSys, void *opponentData) {
         }
     }
 
-    ov12_0226430C(battleSys, ((u8 *)opponentData)[0x194], message->command);
+    BattleController_EmitClearCommand(battleSys, ((u8 *)opponentData)[0x194], message->command);
     ov12_02259928(opponentData);
 }
 #pragma force_active reset

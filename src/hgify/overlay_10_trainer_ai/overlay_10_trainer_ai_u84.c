@@ -4088,7 +4088,7 @@ struct BattleSystem {
     SysTask *playbackStopButton;
     u8 recordedChatter[4];
 };
-int GetBattlerVar(BattleContext *battleCtx, int battler, enum BattleMonParam paramID, void *buf);
+int BattleMon_Get(BattleContext *battleCtx, int battler, enum BattleMonParam paramID, void *buf);
 u8 GetBattlerAbility(BattleContext *battleCtx, int battler);
 void ov10_0221E498(BattleSystem *battleSys, BattleContext *battleCtx);
 int ov10_0221EEF0(BattleContext *battleCtx);
@@ -4117,7 +4117,7 @@ void ov10_0221E498(BattleSystem *battleSys, BattleContext *battleCtx) {
     jump = ov10_0221EEF0(battleCtx);
 
     for (i = 0; i < STAT_MAX; i++) {
-        ivs[i] = GetBattlerVar(battleCtx, (battleCtx->aiContext).attacker, BATTLEMON_HP_IV + i, ((void *)0));
+        ivs[i] = BattleMon_Get(battleCtx, (battleCtx->aiContext).attacker, BATTLEMON_HP_IV + i, ((void *)0));
     }
 
     aiDamage = ov10_0221EF7C(battleSys,

@@ -42,7 +42,7 @@ _0225B1E6:
 	ldrb r1, [r4, r1]
 	add r0, r5, #0
 	mov r2, #0x37
-	bl ov12_0226430C
+	bl BattleController_EmitClearCommand
 	add sp, #0x24
 	pop {r4, r5, pc}
 	.balign 4, 0

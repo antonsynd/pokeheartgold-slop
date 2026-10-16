@@ -17,8 +17,8 @@ struct OpponentTask {
 };
 void ov12_02261ED4(void *);
 void ov12_02261EB8(void *);
-void ov12_02262FE0(void *, int, int);
-void ov12_0226430C(void *, int, int);
+void BattleController_EmitSelectedMove(void *, int, int);
+void BattleController_EmitClearCommand(void *, int, int);
 // FUNCTION ov12_0225E4EC: matching C (agent8)
 #pragma force_active on
 void ov12_0225E4EC(void *task, struct OpponentTask *p) {
@@ -37,13 +37,13 @@ void ov12_0225E4EC(void *task, struct OpponentTask *p) {
         ov12_02261EB8(p->sys);
     } else {
         ctx = BattleSystem_GetBattleContext(p->sys);
-        uVar1 = GetBattlerVar(ctx, p->battler, uVar4 + 5, 0);
+        uVar1 = BattleMon_Get(ctx, p->battler, uVar4 + 5, 0);
         if (uVar1 == 0 || uVar1 > 0x1d3) {
             ov12_02261EB8(p->sys);
         }
     }
-    ov12_02262FE0(p->sys, p->battler, buf[0]);
-    ov12_0226430C(p->sys, p->battler, p->f1c);
+    BattleController_EmitSelectedMove(p->sys, p->battler, buf[0]);
+    BattleController_EmitClearCommand(p->sys, p->battler, p->f1c);
     Heap_Free(p);
     SysTask_Destroy(task);
 }

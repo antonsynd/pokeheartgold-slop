@@ -21,7 +21,7 @@ typedef struct {
     u8 command;
 } UnkStruct_ov12_0225FFDC;
 
-void ov12_0226430C(BattleSystem *battleSys, u8 battler, u8 command);
+void BattleController_EmitClearCommand(BattleSystem *battleSys, u8 battler, u8 command);
 // FUNCTION ov12_0225FFDC: matching C (twin)
 #pragma force_active on
 void ov12_0225FFDC(SysTask *task, void *data) {
@@ -41,7 +41,7 @@ void ov12_0225FFDC(SysTask *task, void *data) {
         }
         break;
     default:
-        ov12_0226430C(healthbox->battleSys, healthbox->battler, healthbox->command);
+        BattleController_EmitClearCommand(healthbox->battleSys, healthbox->battler, healthbox->command);
         healthbox->task_10 = NULL;
         SysTask_Destroy(task);
         break;

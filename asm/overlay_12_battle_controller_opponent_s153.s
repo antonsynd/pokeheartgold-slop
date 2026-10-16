@@ -435,7 +435,7 @@ _0225F846:
 	bne _0225F874
 	ldrb r1, [r4, #9]
 	mov r2, #0xff
-	bl ov12_02263360
+	bl BattleController_EmitPartyMenuResult
 	b _0225F882
 	nop
 _0225F870: .word 0x0000FFFF
@@ -445,12 +445,12 @@ _0225F874:
 	ldrb r2, [r2]
 	ldrb r1, [r4, #9]
 	add r2, r2, #1
-	bl ov12_02263360
+	bl BattleController_EmitPartyMenuResult
 _0225F882:
 	ldrb r1, [r4, #9]
 	ldrb r2, [r4, #8]
 	ldr r0, [r4]
-	bl ov12_0226430C
+	bl BattleController_EmitClearCommand
 	ldr r0, [r4, #4]
 	ldr r0, [r0]
 	bl Heap_Free

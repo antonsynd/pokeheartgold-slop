@@ -1347,7 +1347,7 @@ typedef struct RefreshPartyStatusMessage {
     u8 ability;
     u16 move;
 } RefreshPartyStatusMessage;
-void ov12_0226430C(BattleSystem *battleSys, int battler, int command);
+void BattleController_EmitClearCommand(BattleSystem *battleSys, int battler, int command);
 enum Ability {
     ABILITY_NONE_PT,
     ABILITY_STENCH_PT,
@@ -1501,7 +1501,7 @@ void ov12_02259358(BattleSystem *battleSys, BattlerData *battlerData) {
         }
     }
 
-    ov12_0226430C(battleSys, battlerData->battler, message->command);
+    BattleController_EmitClearCommand(battleSys, battlerData->battler, message->command);
     ov12_02259928(battlerData);
 }
 #pragma force_active reset

@@ -20,7 +20,7 @@ typedef struct S {
     u8 f0 : 1;
     u8 f1 : 1;
 } S;
-void ov12_0226430C(void *, u8, u8);
+void BattleController_EmitClearCommand(void *, u8, u8);
 // FUNCTION ov12_0225DA18: matching C (agent9)
 #pragma force_active on
 void ov12_0225DA18(void *task, S *s) {
@@ -40,7 +40,7 @@ void ov12_0225DA18(void *task, S *s) {
         }
         break;
     default:
-        ov12_0226430C(s->unkC, s->unk24, s->unk4c);
+        BattleController_EmitClearCommand(s->unkC, s->unk24, s->unk4c);
         s->unk10 = 0;
         SysTask_Destroy(task);
         break;
