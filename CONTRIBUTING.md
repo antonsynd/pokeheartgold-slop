@@ -4,6 +4,7 @@
 - [Relationship to pret/pokeheartgold](#relationship-to-pretpokeheartgold)
 - [AI Policy (this fork only)](#ai-policy-this-fork-only)
 - [Submitting changes](#submitting-changes)
+- [Don't mention pret issues or PRs](#dont-mention-pret-issues-or-prs)
 - [Code Formatting](#code-formatting)
 <!--toc:end-->
 
@@ -29,6 +30,14 @@ AI-assisted contributions to *this fork* are welcome. The only thing that matter
 3. **Both ROMs must match.** Before you open the PR, `make GAME_VERSION=HEARTGOLD check` and `make GAME_VERSION=SOULSILVER check` must both pass. CI checks both again on the PR (the required `build` check), so a mismatch can't merge.
 4. **Prune the drafts.** After a file matches, run `python3 tools/decomp_harness/twins.py prune asm/<name>.s` and commit the result. This drops the `nonmatching/` drafts for the functions that are now real C.
 5. **Don't edit the progress bars in `README.md`.** CI regenerates them after every merge.
+
+## Don't mention pret issues or PRs
+
+Do not write pret issue/PR numbers (`pret#123`, `pret/pokeheartgold#123`, links to pret pull requests or issues) in commit messages, PR titles or descriptions, or issue comments. GitHub cross-links them and notifies pret's maintainers every time, which is unsolicited noise for a project that doesn't endorse this fork. Describe the change itself instead, or wrap the reference in backticks (`` `pret#123` ``), which doesn't link. A bare `#123` always means this repository, so don't use it for upstream numbers.
+
+In PR and issue text a backticked reference is fine. In commit messages leave the number out entirely, since GitHub may record a commit cross-reference from the raw message.
+
+To catch mistakes: enable the hooks (`git config --local core.hooksPath .githooks/`), whose `commit-msg` hook strips references from your commit message. The `pret-refs` CI check fails PRs whose title or description has an unescaped reference, or whose commit messages have any (edit the PR text and it re-runs). It does not check comments. `python3 tools/decomp_harness/pret_refs.py fix` (backticks) and `strip` (remove) rewrite text from stdin.
 
 ## Code Formatting
 
