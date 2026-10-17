@@ -1002,6 +1002,838 @@
       "attempts": 7,
       "result": "matched",
       "note": "sonnet-drafted; drafts pilot #4 (32/36 on first successful compile, 36/36 after 5 more); twins.py prune deferred until PR #5 merges"
+    },
+    {
+      "file": "asm/nitrocrypto_63.s",
+      "lines": 24,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "Windows/MSYS2 session 2026-10-18; compile_one + objdiff, full ROM SHA1 OK"
+    },
+    {
+      "file": "asm/overlay_00_thumb_r72.s",
+      "lines": 54,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "Windows/MSYS2 session 2026-10-18; compile_one + objdiff, full ROM SHA1 OK"
+    },
+    {
+      "file": "asm/overlay_01_021EB1E8_r71.s",
+      "lines": 51,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "Windows/MSYS2 session 2026-10-18; compile_one + objdiff, full ROM SHA1 OK"
+    },
+    {
+      "file": "asm/overlay_01_021EFB38_p00.s",
+      "lines": 43,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "Windows/MSYS2 session 2026-10-18; compile_one + objdiff, full ROM SHA1 OK"
+    },
+    {
+      "file": "asm/overlay_01_021F1348_p59.s",
+      "lines": 38,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "Windows/MSYS2 session 2026-10-18; compile_one + objdiff, full ROM SHA1 OK"
+    },
+    {
+      "file": "asm/overlay_01_021F4464_e02.s",
+      "lines": 55,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "Windows/MSYS2 session 2026-10-18; compile_one + objdiff, full ROM SHA1 OK"
+    },
+    {
+      "file": "asm/overlay_01_021F72DC_q60.s",
+      "lines": 65,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "Windows/MSYS2 session 2026-10-18; compile_one + objdiff, full ROM SHA1 OK"
+    },
+    {
+      "file": "asm/overlay_01_021F944C_p95.s",
+      "lines": 56,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "Windows/MSYS2 session 2026-10-18; compile_one + objdiff, full ROM SHA1 OK"
+    },
+    {
+      "file": "asm/overlay_01_021FB878_c20.s",
+      "lines": 51,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "Windows/MSYS2 session 2026-10-18; compile_one + objdiff, full ROM SHA1 OK"
+    },
+    {
+      "file": "asm/overlay_01_sprite_data.s",
+      "lines": 1364,
+      "functions": 0,
+      "attempts": 1,
+      "result": "matched",
+      "note": "Windows/MSYS2 session 2026-10-18; compile_one + objdiff, full ROM SHA1 OK"
+    },
+    {
+      "file": "asm/overlay_07_r100.s",
+      "lines": 57,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "Windows/MSYS2 session 2026-10-18; compile_one + objdiff, full ROM SHA1 OK"
+    },
+    {
+      "file": "asm/overlay_07_r133.s",
+      "lines": 51,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "Windows/MSYS2 session 2026-10-18; compile_one + objdiff, full ROM SHA1 OK"
+    },
+    {
+      "file": "asm/overlay_07_r168.s",
+      "lines": 33,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "Windows/MSYS2 session 2026-10-18; compile_one + objdiff, full ROM SHA1 OK"
+    },
+    {
+      "file": "asm/overlay_07_r654.s",
+      "lines": 37,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "Windows/MSYS2 session 2026-10-18; compile_one + objdiff, full ROM SHA1 OK"
+    },
+    {
+      "file": "asm/overlay_08_q112.s",
+      "lines": 46,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "Windows/MSYS2 session 2026-10-18; compile_one + objdiff, full ROM SHA1 OK"
+    },
+    {
+      "file": "asm/overlay_08_q220.s",
+      "lines": 47,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "Windows/MSYS2 session 2026-10-18; compile_one + objdiff, full ROM SHA1 OK"
+    },
+    {
+      "file": "asm/overlay_102_r20.s",
+      "lines": 31,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "Windows/MSYS2 session 2026-10-18; compile_one + objdiff, full ROM SHA1 OK"
+    },
+    {
+      "file": "asm/overlay_102_r28.s",
+      "lines": 31,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "Windows/MSYS2 session 2026-10-18; compile_one + objdiff, full ROM SHA1 OK"
+    },
+    {
+      "file": "asm/overlay_103_q72.s",
+      "lines": 28,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "Windows/MSYS2 session 2026-10-18; compile_one + objdiff, full ROM SHA1 OK"
+    },
+    {
+      "file": "asm/overlay_106_p20.s",
+      "lines": 47,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "Windows/MSYS2 session 2026-10-18; compile_one + objdiff, full ROM SHA1 OK"
+    },
+    {
+      "file": "asm/overlay_112_r269.s",
+      "lines": 69,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "Windows/MSYS2 session 2026-10-18; compile_one + objdiff, full ROM SHA1 OK"
+    },
+    {
+      "file": "asm/overlay_112_r33.s",
+      "lines": 28,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "Windows/MSYS2 session 2026-10-18; compile_one + objdiff, full ROM SHA1 OK"
+    },
+    {
+      "file": "asm/overlay_112_r429.s",
+      "lines": 52,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "Windows/MSYS2 session 2026-10-18; compile_one + objdiff, full ROM SHA1 OK"
+    },
+    {
+      "file": "asm/overlay_112_r444.s",
+      "lines": 44,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "Windows/MSYS2 session 2026-10-18; compile_one + objdiff, full ROM SHA1 OK"
+    },
+    {
+      "file": "asm/overlay_112_r459.s",
+      "lines": 35,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "Windows/MSYS2 session 2026-10-18; compile_one + objdiff, full ROM SHA1 OK"
+    },
+    {
+      "file": "asm/overlay_112_r58.s",
+      "lines": 40,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "Windows/MSYS2 session 2026-10-18; compile_one + objdiff, full ROM SHA1 OK"
+    },
+    {
+      "file": "asm/overlay_113_r07.s",
+      "lines": 44,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "Windows/MSYS2 session 2026-10-18; compile_one + objdiff, full ROM SHA1 OK"
+    },
+    {
+      "file": "asm/overlay_119.s",
+      "lines": 2793,
+      "functions": 6,
+      "attempts": 1,
+      "result": "matched",
+      "note": "Windows/MSYS2 session 2026-10-18; compile_one + objdiff, full ROM SHA1 OK"
+    },
+    {
+      "file": "asm/overlay_12_battle_controller_opponent_s113.s",
+      "lines": 50,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "Windows/MSYS2 session 2026-10-18; compile_one + objdiff, full ROM SHA1 OK"
+    },
+    {
+      "file": "asm/overlay_12_battle_controller_opponent_s91.s",
+      "lines": 46,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "Windows/MSYS2 session 2026-10-18; compile_one + objdiff, full ROM SHA1 OK"
+    },
+    {
+      "file": "asm/overlay_14_021E5900_s186.s",
+      "lines": 50,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "Windows/MSYS2 session 2026-10-18; compile_one + objdiff, full ROM SHA1 OK"
+    },
+    {
+      "file": "asm/overlay_14_021E5900_s88.s",
+      "lines": 35,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "Windows/MSYS2 session 2026-10-18; compile_one + objdiff, full ROM SHA1 OK"
+    },
+    {
+      "file": "asm/overlay_14_021F1808_r04.s",
+      "lines": 45,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "Windows/MSYS2 session 2026-10-18; compile_one + objdiff, full ROM SHA1 OK"
+    },
+    {
+      "file": "asm/overlay_14_021F2490_q60.s",
+      "lines": 48,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "Windows/MSYS2 session 2026-10-18; compile_one + objdiff, full ROM SHA1 OK"
+    },
+    {
+      "file": "asm/overlay_15_s31.s",
+      "lines": 55,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "Windows/MSYS2 session 2026-10-18; compile_one + objdiff, full ROM SHA1 OK"
+    },
+    {
+      "file": "asm/overlay_18_021F0918_r192.s",
+      "lines": 45,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "Windows/MSYS2 session 2026-10-18; compile_one + objdiff, full ROM SHA1 OK"
+    },
+    {
+      "file": "asm/overlay_18_021F0918_r43.s",
+      "lines": 64,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "Windows/MSYS2 session 2026-10-18; compile_one + objdiff, full ROM SHA1 OK"
+    },
+    {
+      "file": "asm/overlay_18_021F0918_r49.s",
+      "lines": 62,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "Windows/MSYS2 session 2026-10-18; compile_one + objdiff, full ROM SHA1 OK"
+    },
+    {
+      "file": "asm/overlay_18_021F0918_r83.s",
+      "lines": 42,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "Windows/MSYS2 session 2026-10-18; compile_one + objdiff, full ROM SHA1 OK"
+    },
+    {
+      "file": "asm/overlay_40_s70.s",
+      "lines": 29,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "Windows/MSYS2 session 2026-10-18; compile_one + objdiff, full ROM SHA1 OK"
+    },
+    {
+      "file": "asm/overlay_41_02245EA0_q48.s",
+      "lines": 29,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "Windows/MSYS2 session 2026-10-18; compile_one + objdiff, full ROM SHA1 OK"
+    },
+    {
+      "file": "asm/overlay_41_02245EA0_q50.s",
+      "lines": 46,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "Windows/MSYS2 session 2026-10-18; compile_one + objdiff, full ROM SHA1 OK"
+    },
+    {
+      "file": "asm/overlay_43_r121.s",
+      "lines": 41,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "Windows/MSYS2 session 2026-10-18; compile_one + objdiff, full ROM SHA1 OK"
+    },
+    {
+      "file": "asm/overlay_43_r154.s",
+      "lines": 36,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "Windows/MSYS2 session 2026-10-18; compile_one + objdiff, full ROM SHA1 OK"
+    },
+    {
+      "file": "asm/overlay_43_r29.s",
+      "lines": 45,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "Windows/MSYS2 session 2026-10-18; compile_one + objdiff, full ROM SHA1 OK"
+    },
+    {
+      "file": "asm/overlay_43_r56.s",
+      "lines": 37,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "Windows/MSYS2 session 2026-10-18; compile_one + objdiff, full ROM SHA1 OK"
+    },
+    {
+      "file": "asm/overlay_43_r76.s",
+      "lines": 37,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "Windows/MSYS2 session 2026-10-18; compile_one + objdiff, full ROM SHA1 OK"
+    },
+    {
+      "file": "asm/overlay_47_i54.s",
+      "lines": 30,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "Windows/MSYS2 session 2026-10-18; compile_one + objdiff, full ROM SHA1 OK"
+    },
+    {
+      "file": "asm/overlay_49_0225CB50_edata.s",
+      "lines": 72,
+      "functions": 0,
+      "attempts": 1,
+      "result": "matched",
+      "note": "Windows/MSYS2 session 2026-10-18; compile_one + objdiff, full ROM SHA1 OK"
+    },
+    {
+      "file": "asm/overlay_59_r70.s",
+      "lines": 29,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "Windows/MSYS2 session 2026-10-18; compile_one + objdiff, full ROM SHA1 OK"
+    },
+    {
+      "file": "asm/overlay_70_r26.s",
+      "lines": 51,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "Windows/MSYS2 session 2026-10-18; compile_one + objdiff, full ROM SHA1 OK"
+    },
+    {
+      "file": "asm/overlay_70_r301.s",
+      "lines": 170,
+      "functions": 2,
+      "attempts": 1,
+      "result": "matched",
+      "note": "Windows/MSYS2 session 2026-10-18; compile_one + objdiff, full ROM SHA1 OK"
+    },
+    {
+      "file": "asm/overlay_70_r473.s",
+      "lines": 39,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "Windows/MSYS2 session 2026-10-18; compile_one + objdiff, full ROM SHA1 OK"
+    },
+    {
+      "file": "asm/overlay_71_r34.s",
+      "lines": 19,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "Windows/MSYS2 session 2026-10-18; compile_one + objdiff, full ROM SHA1 OK"
+    },
+    {
+      "file": "asm/overlay_71_r35.s",
+      "lines": 40,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "Windows/MSYS2 session 2026-10-18; compile_one + objdiff, full ROM SHA1 OK"
+    },
+    {
+      "file": "asm/overlay_71_r36.s",
+      "lines": 33,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "Windows/MSYS2 session 2026-10-18; compile_one + objdiff, full ROM SHA1 OK"
+    },
+    {
+      "file": "asm/overlay_72_s126.s",
+      "lines": 36,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "Windows/MSYS2 session 2026-10-18; compile_one + objdiff, full ROM SHA1 OK"
+    },
+    {
+      "file": "asm/overlay_72_s35.s",
+      "lines": 37,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "Windows/MSYS2 session 2026-10-18; compile_one + objdiff, full ROM SHA1 OK"
+    },
+    {
+      "file": "asm/overlay_73_r118.s",
+      "lines": 38,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "Windows/MSYS2 session 2026-10-18; compile_one + objdiff, full ROM SHA1 OK"
+    },
+    {
+      "file": "asm/overlay_74_thumb_s443.s",
+      "lines": 45,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "Windows/MSYS2 session 2026-10-18; compile_one + objdiff, full ROM SHA1 OK"
+    },
+    {
+      "file": "asm/overlay_74_thumb_s470.s",
+      "lines": 55,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "Windows/MSYS2 session 2026-10-18; compile_one + objdiff, full ROM SHA1 OK"
+    },
+    {
+      "file": "asm/overlay_74_thumb_s478.s",
+      "lines": 45,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "Windows/MSYS2 session 2026-10-18; compile_one + objdiff, full ROM SHA1 OK"
+    },
+    {
+      "file": "asm/overlay_74_thumb_s480.s",
+      "lines": 37,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "Windows/MSYS2 session 2026-10-18; compile_one + objdiff, full ROM SHA1 OK"
+    },
+    {
+      "file": "asm/overlay_80_0222FD08_q20.s",
+      "lines": 48,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "Windows/MSYS2 session 2026-10-18; compile_one + objdiff, full ROM SHA1 OK"
+    },
+    {
+      "file": "asm/overlay_80_022324C4_q25.s",
+      "lines": 48,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "Windows/MSYS2 session 2026-10-18; compile_one + objdiff, full ROM SHA1 OK"
+    },
+    {
+      "file": "asm/overlay_81_r31.s",
+      "lines": 43,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "Windows/MSYS2 session 2026-10-18; compile_one + objdiff, full ROM SHA1 OK"
+    },
+    {
+      "file": "asm/overlay_82_r02.s",
+      "lines": 41,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "Windows/MSYS2 session 2026-10-18; compile_one + objdiff, full ROM SHA1 OK"
+    },
+    {
+      "file": "asm/overlay_86_q47.s",
+      "lines": 32,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "Windows/MSYS2 session 2026-10-18; compile_one + objdiff, full ROM SHA1 OK"
+    },
+    {
+      "file": "asm/overlay_90_r97.s",
+      "lines": 48,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "Windows/MSYS2 session 2026-10-18; compile_one + objdiff, full ROM SHA1 OK"
+    },
+    {
+      "file": "asm/overlay_91_r174.s",
+      "lines": 45,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "Windows/MSYS2 session 2026-10-18; compile_one + objdiff, full ROM SHA1 OK"
+    },
+    {
+      "file": "asm/overlay_91_r175.s",
+      "lines": 48,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "Windows/MSYS2 session 2026-10-18; compile_one + objdiff, full ROM SHA1 OK"
+    },
+    {
+      "file": "asm/overlay_95_n21.s",
+      "lines": 34,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "Windows/MSYS2 session 2026-10-18; compile_one + objdiff, full ROM SHA1 OK"
+    },
+    {
+      "file": "asm/overlay_96_s1351.s",
+      "lines": 73,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "Windows/MSYS2 session 2026-10-18; compile_one + objdiff, full ROM SHA1 OK"
+    },
+    {
+      "file": "asm/overlay_96_s212.s",
+      "lines": 64,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "Windows/MSYS2 session 2026-10-18; compile_one + objdiff, full ROM SHA1 OK"
+    },
+    {
+      "file": "asm/overlay_96_s222.s",
+      "lines": 78,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "Windows/MSYS2 session 2026-10-18; compile_one + objdiff, full ROM SHA1 OK"
+    },
+    {
+      "file": "asm/overlay_96_s371.s",
+      "lines": 172,
+      "functions": 2,
+      "attempts": 1,
+      "result": "matched",
+      "note": "Windows/MSYS2 session 2026-10-18; compile_one + objdiff, full ROM SHA1 OK"
+    },
+    {
+      "file": "asm/overlay_96_s678.s",
+      "lines": 93,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "Windows/MSYS2 session 2026-10-18; compile_one + objdiff, full ROM SHA1 OK"
+    },
+    {
+      "file": "asm/overlay_96_s686.s",
+      "lines": 89,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "Windows/MSYS2 session 2026-10-18; compile_one + objdiff, full ROM SHA1 OK"
+    },
+    {
+      "file": "asm/overlay_96_s713.s",
+      "lines": 94,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "Windows/MSYS2 session 2026-10-18; compile_one + objdiff, full ROM SHA1 OK"
+    },
+    {
+      "file": "asm/overlay_96_s715.s",
+      "lines": 76,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "Windows/MSYS2 session 2026-10-18; compile_one + objdiff, full ROM SHA1 OK"
+    },
+    {
+      "file": "asm/overlay_96_s719.s",
+      "lines": 89,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "Windows/MSYS2 session 2026-10-18; compile_one + objdiff, full ROM SHA1 OK"
+    },
+    {
+      "file": "asm/overlay_96_s72.s",
+      "lines": 86,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "Windows/MSYS2 session 2026-10-18; compile_one + objdiff, full ROM SHA1 OK"
+    },
+    {
+      "file": "asm/overlay_96_s926.s",
+      "lines": 87,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "Windows/MSYS2 session 2026-10-18; compile_one + objdiff, full ROM SHA1 OK"
+    },
+    {
+      "file": "asm/overlay_99_r134.s",
+      "lines": 39,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "Windows/MSYS2 session 2026-10-18; compile_one + objdiff, full ROM SHA1 OK"
+    },
+    {
+      "file": "asm/overlay_99_r64.s",
+      "lines": 34,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "Windows/MSYS2 session 2026-10-18; compile_one + objdiff, full ROM SHA1 OK"
+    },
+    {
+      "file": "asm/unk_0201010C_t05.s",
+      "lines": 134,
+      "functions": 4,
+      "attempts": 1,
+      "result": "matched",
+      "note": "Windows/MSYS2 session 2026-10-18; compile_one + objdiff, full ROM SHA1 OK"
+    },
+    {
+      "file": "asm/unk_0201010C_t24.s",
+      "lines": 227,
+      "functions": 6,
+      "attempts": 1,
+      "result": "matched",
+      "note": "Windows/MSYS2 session 2026-10-18; compile_one + objdiff, full ROM SHA1 OK"
+    },
+    {
+      "file": "asm/unk_0201010C_t27.s",
+      "lines": 33,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "Windows/MSYS2 session 2026-10-18; compile_one + objdiff, full ROM SHA1 OK"
+    },
+    {
+      "file": "asm/unk_0201010C_t29.s",
+      "lines": 97,
+      "functions": 3,
+      "attempts": 1,
+      "result": "matched",
+      "note": "Windows/MSYS2 session 2026-10-18; compile_one + objdiff, full ROM SHA1 OK"
+    },
+    {
+      "file": "asm/unk_02012DD8_q06.s",
+      "lines": 34,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "Windows/MSYS2 session 2026-10-18; compile_one + objdiff, full ROM SHA1 OK"
+    },
+    {
+      "file": "asm/unk_02012DD8_q10.s",
+      "lines": 33,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "Windows/MSYS2 session 2026-10-18; compile_one + objdiff, full ROM SHA1 OK"
+    },
+    {
+      "file": "asm/unk_02014DA0_p00.s",
+      "lines": 24,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "Windows/MSYS2 session 2026-10-18; compile_one + objdiff, full ROM SHA1 OK"
+    },
+    {
+      "file": "asm/unk_02014DA0_p03.s",
+      "lines": 30,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "Windows/MSYS2 session 2026-10-18; compile_one + objdiff, full ROM SHA1 OK"
+    },
+    {
+      "file": "asm/unk_02014DA0_p26.s",
+      "lines": 38,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "Windows/MSYS2 session 2026-10-18; compile_one + objdiff, full ROM SHA1 OK"
+    },
+    {
+      "file": "asm/unk_02014DA0_p28.s",
+      "lines": 29,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "Windows/MSYS2 session 2026-10-18; compile_one + objdiff, full ROM SHA1 OK"
+    },
+    {
+      "file": "asm/unk_02025C44_01.s",
+      "lines": 37,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "Windows/MSYS2 session 2026-10-18; compile_one + objdiff, full ROM SHA1 OK"
+    },
+    {
+      "file": "asm/unk_02058034_g11.s",
+      "lines": 31,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "Windows/MSYS2 session 2026-10-18; compile_one + objdiff, full ROM SHA1 OK"
+    },
+    {
+      "file": "asm/unk_0205AC88_q03.s",
+      "lines": 29,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "Windows/MSYS2 session 2026-10-18; compile_one + objdiff, full ROM SHA1 OK"
+    },
+    {
+      "file": "asm/unk_0205AC88_q16.s",
+      "lines": 30,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "Windows/MSYS2 session 2026-10-18; compile_one + objdiff, full ROM SHA1 OK"
+    },
+    {
+      "file": "asm/unk_02062108_p19.s",
+      "lines": 41,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "Windows/MSYS2 session 2026-10-18; compile_one + objdiff, full ROM SHA1 OK"
+    },
+    {
+      "file": "asm/unk_02088288_q62.s",
+      "lines": 46,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "Windows/MSYS2 session 2026-10-18; compile_one + objdiff, full ROM SHA1 OK"
+    },
+    {
+      "file": "asm/unk_0208B1AC_r04.s",
+      "lines": 54,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "Windows/MSYS2 session 2026-10-18; compile_one + objdiff, full ROM SHA1 OK"
+    },
+    {
+      "file": "asm/unk_0208B1AC_r13.s",
+      "lines": 60,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "Windows/MSYS2 session 2026-10-18; compile_one + objdiff, full ROM SHA1 OK"
+    },
+    {
+      "file": "asm/unk_data_020FDB44.s",
+      "lines": 655,
+      "functions": 0,
+      "attempts": 1,
+      "result": "matched",
+      "note": "Windows/MSYS2 session 2026-10-18; compile_one + objdiff, full ROM SHA1 OK"
     }
   ],
   "failed": [
@@ -1410,8 +2242,8 @@
   ],
   "in_progress": null,
   "stats": {
-    "total_attempts": 283,
-    "total_matched": 93,
+    "total_attempts": 387,
+    "total_matched": 197,
     "total_failed": 31
   },
   "matched": [
