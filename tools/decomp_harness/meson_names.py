@@ -54,7 +54,8 @@ def source_map(root):
             for dirpath, _, files in os.walk(root / top):
                 for f in files:
                     if f.endswith((".c", ".s")):
-                        rel = os.path.relpath(os.path.join(dirpath, f), root)
+                        # main.lsf and MWCC12_RE spell paths with '/', also on Windows
+                        rel = os.path.relpath(os.path.join(dirpath, f), root).replace(os.sep, "/")
                         m[object_name(rel)] = rel
         _SOURCE_MAPS[key] = m
     return _SOURCE_MAPS[key]

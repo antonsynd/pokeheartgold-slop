@@ -142,7 +142,7 @@ def cmd_lsf(args):
         (dup if g in seen else seen).add(g)
     assert not dup, f'duplicate objects: {sorted(dup)[:5]}'
 
-    with open(os.path.join(ROOT, 'main.lsf'), 'w') as f:
+    with open(os.path.join(ROOT, 'main.lsf'), 'w', newline='\n') as f:
         f.write(new_text)
     print(f'lsf: {len(expected_seq)} game objects in {len(nb)} blocks; dropped {dropped} '
           f'(D2 pieces, middleware), {libs} old lib objects replaced by upstream Library lines')
@@ -202,7 +202,7 @@ def cmd_lists(args):
         if have != text:
             stale.append(path)
             if not args.check:
-                with open(full, 'w') as f:
+                with open(full, 'w', newline='\n') as f:
                     f.write(text)
     if args.check:
         if stale:
@@ -324,7 +324,7 @@ def cmd_rewrite(args):
             for k, v in counts.items():
                 total[k] = total.get(k, 0) + v
             if not args.dry_run:
-                with open(full, 'w', encoding='latin-1') as f:
+                with open(full, 'w', encoding='latin-1', newline='\n') as f:
                     f.write(new)
     for k in sorted(total):
         print(f'rewrite: {k}: {total[k]} replacements')

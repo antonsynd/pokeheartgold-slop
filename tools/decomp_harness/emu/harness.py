@@ -232,7 +232,7 @@ class Harness:
         side = {"frame": self.frame, "loaded": sorted(self.loaded), "keys": self.keys,
                 "rom": str(self.rom.relative_to(REPO)), "saved": time.strftime("%Y-%m-%dT%H:%M:%S"),
                 **(meta or {})}
-        p.with_suffix(".json").write_text(json.dumps(side, indent=1))
+        p.with_suffix(".json").write_text(json.dumps(side, indent=1), newline="\n")
         return p
 
     def load_state(self, name: str) -> dict:

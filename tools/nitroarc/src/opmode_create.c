@@ -19,7 +19,9 @@
 #include <assert.h>
 #include <dirent.h>
 #include <errno.h>
+#ifndef _WIN32
 #include <fnmatch.h>
+#endif
 #include <stdbool.h>
 #include <stddef.h>
 #include <stdint.h>
@@ -309,6 +311,69 @@ errcleanup:
     *out_files = (strvec_t){ 0 };
     return errc;
 }
+
+#ifdef _WIN32
+// MinGW has no fnmatch(); this covers what should_exclude() needs, which is
+// POSIX fnmatch() with flags 0: '*', '?', bracket expressions and '\\'.
+static int fnmatch(const char *pattern, const char *string, int flags) {
+    (void)flags;
+
+    for (; *pattern; pattern++, string++) {
+        switch (*pattern) {
+        case '*':
+            while (*pattern == '*') pattern++;
+            if (*pattern == 0) return 0;
+            for (; *string; string++) {
+                if (fnmatch(pattern, string, flags) == 0) return 0;
+            }
+            return 1;
+
+        case '?':
+            if (*string == 0) return 1;
+            break;
+
+        case '[': {
+            if (*string == 0) return 1;
+
+            const char *p      = pattern + 1;
+            bool        negate = *p == '!' || *p == '^';
+            if (negate) p++;
+
+            bool matched = false;
+            bool first   = true;
+            while (*p && (first || *p != ']')) {
+                char lo = *p++;
+                char hi = lo;
+                if (*p == '-' && p[1] && p[1] != ']') {
+                    hi = p[1];
+                    p += 2;
+                }
+                if (lo <= *string && *string <= hi) matched = true;
+                first = false;
+            }
+
+            // An unterminated '[' is an ordinary character.
+            if (*p != ']') {
+                if (*string != '[') return 1;
+                break;
+            }
+            if (matched == negate) return 1;
+            pattern = p;
+            break;
+        }
+
+        case '\\':
+            if (pattern[1]) pattern++;
+            // fall through
+        default:
+            if (*pattern != *string) return 1;
+            break;
+        }
+    }
+
+    return *string == 0 ? 0 : 1;
+}
+#endif
 
 static bool should_exclude(const char *name, const strvec_t *excls) {
     for (size_t i = 0; i < excls->size; i++) {

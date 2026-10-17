@@ -902,7 +902,7 @@ def parse_source(f, opt, framepointer, input_enc, output_enc, print_source=None)
             print_source.flush()
             if print_source != sys.stdout.buffer:
                 print_source.close()
-    out_file = open("output.txt", 'w')
+    out_file = open("output.txt", 'w', newline='\n')
     out_file.write(str(asm_functions))
     out_file.close()
     return asm_functions
@@ -981,7 +981,7 @@ def fixup_objfile(objfile_name, functions, asm_prelude, assembler, output_enc):
             asm.extend(conts)
         asm.append('glabel {}'.format(late_rodata_source_name_end))
 
-    o_file = open("asm_processor_temp.o", 'w').close() # Create temp file. tempfile module isn't working for me.
+    o_file = open("asm_processor_temp.o", 'w', newline='\n').close() # Create temp file. tempfile module isn't working for me.
     o_name = "asm_processor_temp.o"
 
     s_file = open("asm_processor_temp.s", 'wb') # Ditto.

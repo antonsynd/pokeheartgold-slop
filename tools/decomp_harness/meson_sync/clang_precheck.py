@@ -24,7 +24,7 @@ def game_c_jobs(build, root):
     """{source path relative to root: clang argv} for every game C file in the build."""
     # MWCC has wchar_t built in (MSL's wchar_t.h assumes it); clang's C mode doesn't.
     prelude = os.path.join(build, 'clang_precheck_prelude.h')
-    with open(prelude, 'w') as f:
+    with open(prelude, 'w', newline='\n') as f:
         f.write('typedef unsigned short wchar_t;\n')
     base = ['clang', '-include', prelude, '-fsyntax-only', '-target', 'armv5te-none-eabi', '-std=gnu99',
             '-fsigned-char', '-ffreestanding', '-nostdinc', '-fno-builtin', '-Wno-everything',
@@ -64,7 +64,7 @@ def main():
     print(f'{len(jobs)} files, {len(per_file)} with errors')
     for k, n in kinds.most_common(25):
         print(f'{n:6d}  {k}')
-    with open('clang_precheck.txt', 'w') as f:
+    with open('clang_precheck.txt', 'w', newline='\n') as f:
         for p, errs in sorted(per_file.items()):
             f.write(f'== {p}\n' + '\n'.join(errs) + '\n')
     print('details: clang_precheck.txt')

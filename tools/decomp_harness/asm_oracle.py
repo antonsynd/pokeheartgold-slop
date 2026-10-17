@@ -657,7 +657,7 @@ def update_knowledge(path, results):
     key = repo_key(path)
     entry = knowledge["files"].setdefault(key, {})
     entry["oracle"] = build_oracle_block(results)
-    with open(kpath, "w", encoding="utf-8") as f:
+    with open(kpath, "w", encoding="utf-8", newline="\n") as f:
         json.dump(knowledge, f, indent=1, sort_keys=True)
     return kpath, key
 

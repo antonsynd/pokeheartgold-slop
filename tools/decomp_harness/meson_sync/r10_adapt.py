@@ -158,7 +158,7 @@ def adapt(path, names, old_text, dry):
         at = incs[-1].end() if incs else 0
         block = ('\n\n// Called as matched, before the real SDK headers declared these (#22, R10).\n'
                  + '\n'.join(macros) + '\n')
-        open(path, 'w').write(text[:at] + block + text[at:])
+        open(path, 'w', newline='\n').write(text[:at] + block + text[at:])
     return len(macros)
 
 

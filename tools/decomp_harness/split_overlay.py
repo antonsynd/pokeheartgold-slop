@@ -460,9 +460,9 @@ def emit(base, lines, funcs, syms, chunks, header_lines, orig_public, out_asm_di
         asm_path = os.path.join(out_asm_dir, chunk_name + '.s')
         inc_path = os.path.join(out_inc_dir, chunk_name + '.inc')
         if not dry_run:
-            with open(asm_path, 'w') as f:
+            with open(asm_path, 'w', newline='\n') as f:
                 f.writelines(s_lines)
-            with open(inc_path, 'w') as f:
+            with open(inc_path, 'w', newline='\n') as f:
                 f.writelines(inc_lines)
 
         records.append({
@@ -509,7 +509,7 @@ def rewrite_lsf(lsf_path, base, records, dry_run):
     if not replaced:
         raise SystemExit('ERROR: `Object %s` not found in %s' % (old, lsf_path))
     if not dry_run:
-        with open(lsf_path, 'w') as f:
+        with open(lsf_path, 'w', newline='\n') as f:
             f.writelines(out)
     return replaced
 
@@ -624,7 +624,7 @@ def main():
         manifest_path = args.manifest or os.path.join(
             'tools/decomp_harness/split_manifests', base + '.json')
         os.makedirs(os.path.dirname(manifest_path), exist_ok=True)
-        with open(manifest_path, 'w') as f:
+        with open(manifest_path, 'w', newline='\n') as f:
             json.dump({
                 'overlay': base,
                 'source': asm_path,
@@ -639,7 +639,7 @@ def main():
         print('main.lsf rewritten: %s (src/meson.build and asm/meson.build regenerated)' % args.lsf)
 
     if args.json_out:
-        with open(args.json_out, 'w') as f:
+        with open(args.json_out, 'w', newline='\n') as f:
             json.dump(records, f, indent=2)
 
 

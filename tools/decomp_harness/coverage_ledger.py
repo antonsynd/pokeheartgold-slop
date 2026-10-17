@@ -340,7 +340,7 @@ def write_markdown(files, summary, blockers, out_path):
               f"{'yes' if r.get('data_only') else ''} | {note} |")
         w("")
 
-    out_path.write_text("\n".join(lines) + "\n")
+    out_path.write_text("\n".join(lines) + "\n", newline="\n")
 
 
 def compute_gating(files, blockers):
@@ -369,7 +369,7 @@ def main():
 
     summary = summarize(files, blockers)
     out = {"summary": summary, "files": files}
-    with open(HARNESS / "coverage_ledger.json", "w") as f:
+    with open(HARNESS / "coverage_ledger.json", "w", newline="\n") as f:
         json.dump(out, f, indent=1)
     write_markdown(files, summary, blockers, HARNESS / "COVERAGE.md")
 

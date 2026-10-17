@@ -85,7 +85,7 @@ def _validate(record):
 def _append(record):
     _validate(record)
     record.setdefault("ts", datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"))
-    with open(LOG, "a") as f:
+    with open(LOG, "a", newline="\n") as f:
         f.write(json.dumps(record) + "\n")
     print(f"logged: {record['file']} {record['function']} -> {record['outcome']}")
 

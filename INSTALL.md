@@ -213,6 +213,27 @@ the following commands to install necessary build dependencies:
 
 4. [Download the repository](#2-downloading-the-repository).
 
+> [!NOTE]
+> **pokeheartgold-slop:** the combination above mixes the MSYS and MinGW
+> toolchains and does not configure. What works (tested on Windows 11, without
+> WSL or admin rights; the [MSYS2 base archive](https://github.com/msys2/msys2-installer/releases)
+> can be extracted anywhere) is a **UCRT64** shell (`MSYSTEM=UCRT64`) with:
+>
+> ```bash
+> pacman -S --needed bison flex make git p7zip unzip diffutils patch \
+>     mingw-w64-ucrt-x86_64-{gcc,libpng,pkgconf,python,ninja,clang-tools-extra} \
+>     mingw-w64-ucrt-x86_64-arm-none-eabi-{gcc,binutils}
+> cp /usr/bin/bash.exe /ucrt64/bin/bash.exe
+> export PYTHONUTF8=1
+> ```
+>
+> The `bash.exe` copy matters: ninja and Python start the build scripts as a bare
+> `bash`, and Windows looks in `System32` (WSL's `bash.exe`) before `PATH`, but
+> after the directory of the program that starts it. `PYTHONUTF8=1` stops the
+> harness scripts from reading and writing UTF-8 files as cp1252. Also run
+> `git config core.autocrlf false` in the checkout before building, or
+> Git for Windows checks scripts and config files out with CRLF line endings.
+
 ### macOS
 
 1. Apple bundles a number of the requisite utilities into Xcode Command Line Tools;

@@ -170,7 +170,7 @@ def main():
                     print(f'   !! could not place: {norm(st)[:80]}')
                     continue
                 cur = cur[:pos] + st.strip() + '\n' + cur[pos:]
-            open(target, 'w').write(cur)
+            open(target, 'w', newline='\n').write(cur)
     print(f'{files_bad} files, {bad_total} statements deleted that declare nothing the SDK defines')
 
 

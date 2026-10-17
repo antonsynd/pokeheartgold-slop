@@ -134,7 +134,7 @@ def main():
     if args.out is None:
         sys.stdout.write(seed)
     else:
-        with open(args.out, "w", encoding="utf-8") as f:
+        with open(args.out, "w", encoding="utf-8", newline="\n") as f:
             f.write(seed)
         print(f"make_seed: wrote {args.out} ({note})", file=sys.stderr)
     # 3 tells emit_job.sh the TU compiles to our own output, not the retail

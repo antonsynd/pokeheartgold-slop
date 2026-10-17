@@ -42,7 +42,7 @@ def main(argv):
         print(f'lsf_flip: {new_obj} is already linked', file=sys.stderr)
         return 1
     text = pat.sub(lambda m: f'{m.group(1)}{new_obj}{m.group(2) or ""}', text)
-    with open(lsf_path, 'w') as f:
+    with open(lsf_path, 'w', newline='\n') as f:
         f.write(text)
     print(f'lsf_flip: {old_obj} -> {new_obj}')
     return subprocess.run([sys.executable, os.path.join(ROOT, 'tools', 'decomp_harness', 'meson_port.py'),

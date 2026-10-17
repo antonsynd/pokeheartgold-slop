@@ -251,7 +251,7 @@ def main():
             "known_blocker_ids": load_blocker_ids(),
         },
     }
-    with open(OUT, "w") as f:
+    with open(OUT, "w", newline="\n") as f:
         json.dump(doc, f, indent=2)
         f.write("\n")
     print(f"wrote {OUT}: total={total} candidates={cand} "
