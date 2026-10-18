@@ -3466,6 +3466,86 @@
       "attempts": 1,
       "result": "matched",
       "note": "matched"
+    },
+    {
+      "file": "asm/overlay_12_02265E28_r00.s",
+      "lines": 134,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched"
+    },
+    {
+      "file": "asm/overlay_12_battle_controller_opponent_s86.s",
+      "lines": 129,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched"
+    },
+    {
+      "file": "asm/overlay_37_q01.s",
+      "lines": 145,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched"
+    },
+    {
+      "file": "asm/overlay_57_s53.s",
+      "lines": 130,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched"
+    },
+    {
+      "file": "asm/overlay_65_s63.s",
+      "lines": 144,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched"
+    },
+    {
+      "file": "asm/overlay_74_thumb_s202.s",
+      "lines": 71,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched"
+    },
+    {
+      "file": "asm/overlay_90_r111.s",
+      "lines": 83,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched"
+    },
+    {
+      "file": "asm/overlay_90_r84.s",
+      "lines": 79,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched"
+    },
+    {
+      "file": "asm/overlay_95_n44.s",
+      "lines": 131,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched"
+    },
+    {
+      "file": "asm/unk_02034354_x03.s",
+      "lines": 115,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched"
     }
   ],
   "failed": [
@@ -3874,8 +3954,8 @@
   ],
   "in_progress": null,
   "stats": {
-    "total_attempts": 591,
-    "total_matched": 401,
+    "total_attempts": 601,
+    "total_matched": 411,
     "total_failed": 31
   },
   "matched": [
