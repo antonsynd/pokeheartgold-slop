@@ -4194,6 +4194,134 @@
       "attempts": 1,
       "result": "matched",
       "note": "matched (batch 14)"
+    },
+    {
+      "file": "asm/overlay_96_s1012.s",
+      "lines": 502,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched (batch 15)"
+    },
+    {
+      "file": "asm/overlay_96_s1162.s",
+      "lines": 550,
+      "functions": 3,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched (batch 15)"
+    },
+    {
+      "file": "src/hgify/overlay_01_021EFB38/overlay_01_021EFB38_p79.c",
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched in place (batch 15)"
+    },
+    {
+      "file": "src/hgify/overlay_02_02245B80/overlay_02_02245B80_o13.c",
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched in place (batch 15)"
+    },
+    {
+      "file": "src/hgify/overlay_07/overlay_07_r770.c",
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched in place (batch 15)"
+    },
+    {
+      "file": "src/hgify/overlay_08/overlay_08_q102.c",
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched in place (batch 15)"
+    },
+    {
+      "file": "src/hgify/overlay_08/overlay_08_q104.c",
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched in place (batch 15)"
+    },
+    {
+      "file": "src/hgify/overlay_08/overlay_08_q132.c",
+      "functions": 2,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched in place (batch 15)"
+    },
+    {
+      "file": "src/hgify/overlay_08/overlay_08_q158.c",
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched in place (batch 15)"
+    },
+    {
+      "file": "src/hgify/overlay_08/overlay_08_q49.c",
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched in place (batch 15)"
+    },
+    {
+      "file": "src/hgify/overlay_08/overlay_08_q73.c",
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched in place (batch 15)"
+    },
+    {
+      "file": "src/hgify/overlay_08/overlay_08_q86.c",
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched in place (batch 15)"
+    },
+    {
+      "file": "src/hgify/overlay_08/overlay_08_q90.c",
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched in place (batch 15)"
+    },
+    {
+      "file": "src/hgify/overlay_120/overlay_120_s03.c",
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched in place (batch 15)"
+    },
+    {
+      "file": "src/hgify/overlay_41_0224A5A4/overlay_41_0224A5A4_n32.c",
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched in place (batch 15)"
+    },
+    {
+      "file": "src/hgify/overlay_71/overlay_71_r97.c",
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched in place (batch 15)"
+    },
+    {
+      "file": "src/hgify/overlay_96/overlay_96_s103.c",
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched in place (batch 15)"
+    },
+    {
+      "file": "src/hgify/overlay_120/overlay_120_s13.c",
+      "functions": 2,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched in place (batch 15)"
     }
   ],
   "failed": [
@@ -4602,8 +4730,8 @@
   ],
   "in_progress": null,
   "stats": {
-    "total_attempts": 682,
-    "total_matched": 492,
+    "total_attempts": 700,
+    "total_matched": 510,
     "total_failed": 31
   },
   "matched": [

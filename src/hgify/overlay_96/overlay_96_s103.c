@@ -4,74 +4,46 @@
 
 void memset();
 void r4();
-void ov96_021E8884(void);
+struct Ov96CommHandler {
+    void (*func)(int netId, int size, void *data, void *arg);
+    int unk4;
+    int unk8;
+};
 
-// FUNCTION ov96_021E8884: no matching C yet, the original asm
+struct Ov96CommPending {
+    int active;
+    int cmd;
+    char data[0x28];
+    int size;
+    void *buffer;
+};
+
+struct Ov96CommCtx {
+    struct Ov96CommPending pending[8];
+    struct Ov96CommHandler *handlers;
+    int unk1C4;
+    void *handlerArg;
+};
+
+void ov96_021E8884(void *task, struct Ov96CommCtx *ctx);
+
+// FUNCTION ov96_021E8884: matching C (manual)
 #pragma force_active on
-// clang-format off
-asm void ov96_021E8884(void) {
-    push {r4, r5, r6, r7, lr}
-    sub sp, #0xc
-    add r7, r1, #0
-    mov r0, #0
-    str r0, [sp, #0]
-    add r6, r7, #0
-_021E8890:
-    ldr r0, [r6, #0]
-    cmp r0, #1
-    bne _021E88EA
-    ldr r1, [r6, #0x30]
-    cmp r1, #0x26
-    bgt _021E88BE
-    mov r4, #7
-    lsl r4, r4, #6
-    ldr r4, [r7, r4]
-    mov r3, #0x72
-    str r4, [sp, #4]
-    ldr r4, [r6, #4]
-    mov r5, #0xc
-    mul r5, r4
-    ldr r4, [sp, #4]
-    lsl r3, r3, #2
-    add r2, r6, #0
-    ldr r3, [r7, r3]
-    ldr r4, [r4, r5]
-    mov r0, #0
-    add r2, #8
-    blx r4
-    b _021E88E0
-_021E88BE:
-    mov r4, #7
-    lsl r4, r4, #6
-    ldr r4, [r7, r4]
-    mov r3, #0x72
-    mov ip, r4
-    ldr r4, [r6, #4]
-    mov r5, #0xc
-    mul r5, r4
-    str r5, [sp, #8]
-    lsl r3, r3, #2
-    ldr r4, [sp, #8]
-    mov r5, ip
-    ldr r2, [r6, #0x34]
-    ldr r3, [r7, r3]
-    ldr r4, [r5, r4]
-    mov r0, #0
-    blx r4
-_021E88E0:
-    add r0, r6, #0
-    mov r1, #0
-    mov r2, #0x38
-    bl memset
-_021E88EA:
-    ldr r0, [sp, #0]
-    add r6, #0x38
-    add r0, r0, #1
-    str r0, [sp, #0]
-    cmp r0, #8
-    blt _021E8890
-    add sp, #0xc
-    pop {r4, r5, r6, r7, pc}
+void ov96_021E8884(void *task, struct Ov96CommCtx *ctx) {
+    int i;
+    struct Ov96CommPending *pending;
+
+    i = 0;
+    pending = ctx->pending;
+    for (; i < 8; i++, pending++) {
+        if (pending->active == 1) {
+            if (pending->size <= 38) {
+                ctx->handlers[pending->cmd].func(0, pending->size, pending->data, ctx->handlerArg);
+            } else {
+                ctx->handlers[pending->cmd].func(0, pending->size, pending->buffer, ctx->handlerArg);
+            }
+            memset(pending, 0, sizeof(struct Ov96CommPending));
+        }
+    }
 }
-// clang-format on
 #pragma force_active reset

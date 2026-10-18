@@ -4,57 +4,41 @@
 
 void ManagedSprite_TickFrame();
 void SpriteSystem_DrawSprites();
-void ov07_022371A0();
-void r1();
-void ov07_02233D60(void);
+struct Ov07Effect {
+    char filler_00[0x1C];
+    int active;
+    int unk20;
+    int animate;
+    int unk28;
+    void *spriteManager;
+    void *sprite;
+    char filler_34[0x64];
+    int state;
+    char filler_9C[0x40];
+    int delay;
+};
 
-// FUNCTION ov07_02233D60: no matching C yet, the original asm
+extern int (*const ov07_022371A0[])(struct Ov07Effect *effect);
+
+void ov07_02233D60(void *task, struct Ov07Effect *effect);
+
+// FUNCTION ov07_02233D60: matching C (manual)
 #pragma force_active on
-// clang-format off
-asm void ov07_02233D60(void) {
-    push {r4, lr}
-    add r4, r1, #0
-    ldr r0, [r4, #0x1c]
-    cmp r0, #0
-    beq _02233DB2
-    add r0, r4, #0
-    add r0, #0xdc
-    ldr r0, [r0, #0]
-    cmp r0, #0
-    ble _02233D8A
-    add r0, r4, #0
-    add r0, #0xdc
-    ldr r0, [r0, #0]
-    sub r1, r0, #1
-    add r0, r4, #0
-    add r0, #0xdc
-    str r1, [r0, #0]
-    ldr r0, [r4, #0x2c]
-    bl SpriteSystem_DrawSprites
-    pop {r4, pc}
-_02233D8A:
-    add r1, #0x98
-    ldr r1, [r1, #0]
-    add r0, r4, #0
-    lsl r2, r1, #2
-    ldr r1, =ov07_022371A0
-    ldr r1, [r1, r2]
-    blx r1
-    cmp r0, #0
-    bne _02233DA0
-    mov r0, #0
-    str r0, [r4, #0x1c]
-_02233DA0:
-    ldr r0, [r4, #0x24]
-    cmp r0, #1
-    bne _02233DAC
-    ldr r0, [r4, #0x30]
-    bl ManagedSprite_TickFrame
-_02233DAC:
-    ldr r0, [r4, #0x2c]
-    bl SpriteSystem_DrawSprites
-_02233DB2:
-    pop {r4, pc}
+void ov07_02233D60(void *task, struct Ov07Effect *effect) {
+    if (effect->active == 0) {
+        return;
+    }
+    if (effect->delay > 0) {
+        effect->delay--;
+        SpriteSystem_DrawSprites(effect->spriteManager);
+        return;
+    }
+    if (!ov07_022371A0[effect->state](effect)) {
+        effect->active = 0;
+    }
+    if (effect->animate == 1) {
+        ManagedSprite_TickFrame(effect->sprite);
+    }
+    SpriteSystem_DrawSprites(effect->spriteManager);
 }
-// clang-format on
 #pragma force_active reset

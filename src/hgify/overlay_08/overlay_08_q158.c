@@ -2,69 +2,44 @@
 #pragma warning_errors off
 #pragma thumb on
 
-void Heap_Alloc();
-void Heap_Free();
-void LoadRectToBgTilemapRect();
-void ScheduleBgTilemapBufferTransfer();
-void ov08_02221D2C();
-void ov08_02225A54();
-void ov08_02225A55();
-void ov08_02225A56();
-void ov08_02225A57();
-void ov08_02221E6C(void);
+void *Heap_Alloc(int heapID, unsigned int size);
+void Heap_Free(void *ptr);
+void LoadRectToBgTilemapRect(void *bgConfig, unsigned char bgId, const void *buf, unsigned char x, unsigned char y, unsigned char w, unsigned char h);
+void ScheduleBgTilemapBufferTransfer(void *bgConfig, unsigned char bgId);
+void ov08_02221D2C(void *app, void *buf, unsigned char idx, unsigned char a2, unsigned char a3);
 
-// FUNCTION ov08_02221E6C: no matching C yet, the original asm
+struct Ov08Rect {
+    unsigned char x;
+    unsigned char y;
+    unsigned char width;
+    unsigned char height;
+};
+
+struct Ov08Args {
+    char filler_0[0xC];
+    int heapID;
+};
+
+struct Ov08App {
+    struct Ov08Args *args;
+    char filler_004[0x1E0];
+    void *bgConfig;
+};
+
+extern const struct Ov08Rect ov08_02225A54[];
+
+void ov08_02221E6C(struct Ov08App *app, unsigned char idx, unsigned char a2, unsigned char a3);
+
+// FUNCTION ov08_02221E6C: matching C (manual)
 #pragma force_active on
-// clang-format off
-asm void ov08_02221E6C(void) {
-    push {r4, r5, r6, r7, lr}
-    sub sp, #0x1c
-    str r1, [sp, #0xc]
-    str r2, [sp, #0x10]
-    str r3, [sp, #0x14]
-    add r5, r0, #0
-    ldr r0, [sp, #0xc]
-    lsl r4, r0, #2
-    ldr r0, =ov08_02225A57
-    ldrb r7, [r0, r4]
-    ldr r0, =ov08_02225A56
-    ldrb r6, [r0, r4]
-    ldr r0, [r5, #0]
-    add r1, r6, #0
-    mul r1, r7
-    ldr r0, [r0, #0xc]
-    lsl r1, r1, #1
-    bl Heap_Alloc
-    str r0, [sp, #0x18]
-    ldr r0, [sp, #0x14]
-    ldr r1, [sp, #0x18]
-    str r0, [sp, #0]
-    ldr r2, [sp, #0xc]
-    ldr r3, [sp, #0x10]
-    add r0, r5, #0
-    bl ov08_02221D2C
-    ldr r0, =ov08_02225A55
-    ldr r3, =ov08_02225A54
-    ldrb r0, [r0, r4]
-    ldrb r3, [r3, r4]
-    ldr r2, [sp, #0x18]
-    str r0, [sp, #0]
-    str r6, [sp, #4]
-    mov r0, #0x79
-    str r7, [sp, #8]
-    lsl r0, r0, #2
-    ldr r0, [r5, r0]
-    mov r1, #6
-    bl LoadRectToBgTilemapRect
-    mov r0, #0x79
-    lsl r0, r0, #2
-    ldr r0, [r5, r0]
-    mov r1, #6
-    bl ScheduleBgTilemapBufferTransfer
-    ldr r0, [sp, #0x18]
-    bl Heap_Free
-    add sp, #0x1c
-    pop {r4, r5, r6, r7, pc}
+void ov08_02221E6C(struct Ov08App *app, unsigned char idx, unsigned char a2, unsigned char a3) {
+    int height = ov08_02225A54[idx].height;
+    int width = ov08_02225A54[idx].width;
+    void *buf = Heap_Alloc(app->args->heapID, width * height * 2);
+
+    ov08_02221D2C(app, buf, idx, a2, a3);
+    LoadRectToBgTilemapRect(app->bgConfig, 6, buf, ov08_02225A54[idx].x, ov08_02225A54[idx].y, width, height);
+    ScheduleBgTilemapBufferTransfer(app->bgConfig, 6);
+    Heap_Free(buf);
 }
-// clang-format on
 #pragma force_active reset

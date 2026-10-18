@@ -2,67 +2,36 @@
 #pragma warning_errors off
 #pragma thumb on
 
-void ov01_021EFE44();
-void ov01_021F0960();
-void ov120_0225F08C(void);
+struct Ov120Tween {
+    int value;
+    char filler_04[0x10];
+};
 
-// FUNCTION ov120_0225F08C: no matching C yet, the original asm
+struct Ov120Window {
+    struct Ov120Tween width;
+    struct Ov120Tween height;
+    void *unk28;
+    short x;
+    short y;
+    unsigned char active;
+    unsigned char unk31;
+};
+
+int ov01_021EFE44(struct Ov120Tween *tween);
+void ov01_021F0960(void *a0, short top, short bottom, short left, short right, int a5);
+int ov120_0225F08C(struct Ov120Window *window);
+
+// FUNCTION ov120_0225F08C: matching C (manual)
 #pragma force_active on
-// clang-format off
-asm void ov120_0225F08C(void) {
-    push {r3, r4, r5, r6, r7, lr}
-    sub sp, #8
-    add r4, r0, #0
-    add r1, r4, #0
-    add r1, #0x30
-    ldrb r1, [r1, #0]
-    cmp r1, #0
-    bne _0225F0A2
-    add sp, #8
-    mov r0, #1
-    pop {r3, r4, r5, r6, r7, pc}
-_0225F0A2:
-    bl ov01_021EFE44
-    add r5, r0, #0
-    add r0, r4, #0
-    add r0, #0x14
-    bl ov01_021EFE44
-    add r7, r5, #0
-    ldr r1, [r4, #0]
-    orr r7, r0
-    lsr r0, r1, #0x1f
-    add r0, r1, r0
-    asr r5, r0, #1
-    mov r0, #0x2c
-    ldr r1, [r4, #0x14]
-    ldrsh r3, [r4, r0]
-    lsr r0, r1, #0x1f
-    add r0, r1, r0
-    asr r6, r0, #1
-    mov r0, #0x2e
-    ldrsh r2, [r4, r0]
-    add r0, r3, r5
-    lsl r0, r0, #0x10
-    sub r1, r2, r6
-    asr r0, r0, #0x10
-    str r0, [sp, #0]
-    add r0, r4, #0
-    add r0, #0x31
-    ldrb r0, [r0, #0]
-    add r2, r2, r6
-    sub r3, r3, r5
-    str r0, [sp, #4]
-    lsl r1, r1, #0x10
-    lsl r2, r2, #0x10
-    lsl r3, r3, #0x10
-    ldr r0, [r4, #0x28]
-    asr r1, r1, #0x10
-    asr r2, r2, #0x10
-    asr r3, r3, #0x10
-    bl ov01_021F0960
-    add r0, r7, #0
-    add sp, #8
-    pop {r3, r4, r5, r6, r7, pc}
+int ov120_0225F08C(struct Ov120Window *window) {
+    int ret;
+
+    if (window->active == 0) {
+        return 1;
+    }
+    ret = ov01_021EFE44(&window->width);
+    ret |= ov01_021EFE44(&window->height);
+    ov01_021F0960(window->unk28, window->y - window->height.value / 2, window->y + window->height.value / 2, window->x - window->width.value / 2, window->x + window->width.value / 2, window->unk31);
+    return ret;
 }
-// clang-format on
 #pragma force_active reset

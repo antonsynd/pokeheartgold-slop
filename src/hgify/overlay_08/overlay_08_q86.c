@@ -4,52 +4,38 @@
 
 void AddTextPrinterParameterizedWithColor();
 void DestroyMsgData();
-void NewMsgDataFromNarc();
-void NewString_ReadMsgData();
+void *NewMsgDataFromNarc();
+void *NewString_ReadMsgData();
 void ScheduleWindowCopyToVram();
 void String_Delete();
-void ov08_0221EF48(void);
 
-// FUNCTION ov08_0221EF48: no matching C yet, the original asm
+struct Ov08Window {
+    char data[0x10];
+};
+
+struct Ov08Args {
+    char filler_0[0xC];
+    int heapID;
+};
+
+struct Ov08App {
+    struct Ov08Args *args;
+    char filler_0004[0x206C];
+    struct Ov08Window *windows;
+};
+
+void ov08_0221EF48(struct Ov08App *app, int idx, int msgId);
+
+// FUNCTION ov08_0221EF48: matching C (manual)
 #pragma force_active on
-// clang-format off
-asm void ov08_0221EF48(void) {
-    push {r3, r4, r5, r6, r7, lr}
-    sub sp, #0x10
-    add r3, r0, #0
-    ldr r0, =0x00002070
-    add r6, r2, #0
-    ldr r5, [r3, r0]
-    ldr r3, [r3, #0]
-    lsl r4, r1, #4
-    ldr r2, =0x000002ED
-    ldr r3, [r3, #0xc]
-    mov r0, #1
-    mov r1, #0x1b
-    bl NewMsgDataFromNarc
-    add r1, r6, #0
-    add r7, r0, #0
-    bl NewString_ReadMsgData
-    mov r1, #0
-    add r6, r0, #0
-    str r1, [sp, #0]
-    mov r0, #0xff
-    str r0, [sp, #4]
-    ldr r0, =0x00010200
-    add r2, r6, #0
-    str r0, [sp, #8]
-    add r0, r5, r4
-    add r3, r1, #0
-    str r1, [sp, #0xc]
-    bl AddTextPrinterParameterizedWithColor
-    add r0, r6, #0
-    bl String_Delete
-    add r0, r7, #0
-    bl DestroyMsgData
-    add r0, r5, r4
-    bl ScheduleWindowCopyToVram
-    add sp, #0x10
-    pop {r3, r4, r5, r6, r7, pc}
+void ov08_0221EF48(struct Ov08App *app, int idx, int msgId) {
+    struct Ov08Window *window = &app->windows[idx];
+    void *msgData = NewMsgDataFromNarc(1, 27, 749, app->args->heapID);
+    void *string = NewString_ReadMsgData(msgData, msgId);
+
+    AddTextPrinterParameterizedWithColor(window, 0, string, 0, 0, 0xFF, 0x10200, 0);
+    String_Delete(string);
+    DestroyMsgData(msgData);
+    ScheduleWindowCopyToVram(window);
 }
-// clang-format on
 #pragma force_active reset

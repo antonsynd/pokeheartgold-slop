@@ -1153,6 +1153,10 @@ ov96_022163AC (overlay_96_s1261) loads sprite resources for the main screen with
 
 ov96_022130EC (overlay_96_s1162) updates a member's points in both branches of `if (zone == team)`. Retail computes r4 = teams + team*0x174 and r6 = member*0x7c ahead of the compare and then does `adds r0, r4, r6; adds r0, #0x5e` for every access. With `teams[team].members[member].points` written in each branch MWCC computes the address per branch (4 bytes shorter); with a `Ov96Team *t = &teams[team]` it changes register allocation (124 diffs). Assigning `Ov96Member *m = &teams[team].members[member];` right before the if matched (after also ordering the spilled locals teams > i > work by declaration). Same file: a u8 BOOL-ish parameter (`u8 flip`) is what makes MWCC spill r2 at function entry rather than after the first use.
 
+### `lsls rI, idx, #4` at the very top of a text-printing function means a `Window *window = &app->windows[idx];` local, not `&windows[idx]` at each use  <!-- id: window-pointer-hoists-index-shift -->
+
+ov08_0221EF48 / ov08_0221E3A4 / ov08_0221F1B0 (overlay_08 summary screen) compute `idx << 4` in the prologue and then use `adds r0, r5, r4` (windows base + offset) at every AddTextPrinter/ScheduleWindowCopyToVram call. Writing `&windows[idx]` at each call lets MWCC compute the shift lazily right before the first use (4-byte SIZE diff). Declaring the element pointer first, `struct Ov08Window *window = &app->windows[idx];`, reproduces the early shift and the base+offset adds. Related: [[pointer-to-element-hoists-index-products]].
+
 ## IPA (-ipa file) Behavior
 
 ### Shared-header signatures are load-bearing across compilation units  <!-- id: ipa-shared-headers -->
@@ -1486,6 +1490,10 @@ The helper that measures a String (FontID_String_GetWidth + FX_ModS32(width,8) t
 ### NewMsgDataFromNarc's first argument is MSGDATA_LOAD_DIRECT = 0, MSGDATA_LOAD_LAZY = 1; a `mov r0, #0` before the call means DIRECT  <!-- id: msgdata-load-direct-is-zero -->
 
 ov39_02228140 (twin of ov61_0222BF44, which uses MSG_LOADER_PRELOAD_ENTIRE_BANK) loads three banks with r0 = 0. Writing MSGDATA_LOAD_LAZY out of habit left exactly three `movs r0, #1` diffs. Many matched files use LAZY, so copy the constant from the asm rather than a neighbour.
+
+### Rewriting an hgify dead inline-asm function: unprototyped `void f();` calls skip argument narrowing, so add real prototypes (or casts) when retail truncates arguments  <!-- id: hgify-dead-function-prototypes-steer-truncation -->
+
+The generated dead-function files declare callees as `void f();`. With those, MWCC passes `i + 6` untouched; retail ov08_0221D8B0 does `lsl #24; lsr #24` before LoadRectToBgTilemapRect/ScheduleBgTilemapBufferTransfer, which only happens with a prototype taking u8 (or an explicit cast). Likewise ov08_02221E6C only matched with `unsigned char` parameters on both itself and ov08_02221D2C, and ov120_0225F08C needed `short` parameters on ov01_021F0960. Pass separate scalars where retail loads fields individually (Field3dObject_SetPosEx(obj, pos.x, pos.y, pos.z), not the struct). GF_ASSERT is NOT defined in these files (no includes): writing it compiles to a call of an implicit function `GF_ASSERT`; spell it `if (x == 0) { GF_AssertFail(); }`. Record each converted file in progress.json as its own unit and keep `#pragma force_active on`.
 
 ## NONMATCHING Fallback
 

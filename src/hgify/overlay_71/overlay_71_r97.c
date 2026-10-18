@@ -4,114 +4,62 @@
 
 void Sprite_SetDrawFlag();
 void Sprite_SetMatrix();
-void ov71_02248C24(void);
+struct Ov71Vec {
+    int x;
+    int y;
+    int z;
+};
 
-// FUNCTION ov71_02248C24: no matching C yet, the original asm
+struct Ov71SpritePair {
+    void *flake;
+    void *shadow;
+};
+
+struct Ov71SpriteSet {
+    char filler_00[0x1C];
+    struct Ov71SpritePair pairs[20];
+};
+
+struct Ov71Snow {
+    int unk0;
+    struct Ov71SpriteSet *sprites;
+    int active[20];
+    struct Ov71Vec positions[20];
+    int timer;
+    int count;
+};
+
+void ov71_02248C24(void *task, struct Ov71Snow *snow);
+
+// FUNCTION ov71_02248C24: matching C (manual)
 #pragma force_active on
-// clang-format off
-asm void ov71_02248C24(void) {
-    push {r4, r5, r6, r7, lr}
-    sub sp, #0x14
-    add r5, r1, #0
-    mov r1, #0x52
-    lsl r1, r1, #2
-    ldr r0, [r5, r1]
-    add r0, r0, #1
-    str r0, [r5, r1]
-    ldr r0, [r5, r1]
-    cmp r0, #0xc
-    ble _02248C58
-    mov r0, #0
-    str r0, [r5, r1]
-    add r0, r1, #4
-    ldr r0, [r5, r0]
-    cmp r0, #0x14
-    bge _02248C58
-    lsl r0, r0, #2
-    mov r2, #1
-    add r0, r5, r0
-    str r2, [r0, #8]
-    add r0, r1, #4
-    ldr r0, [r5, r0]
-    add r2, r0, #1
-    add r0, r1, #4
-    str r2, [r5, r0]
-_02248C58:
-    mov r0, #0
-    add r7, r5, #0
-    str r0, [sp, #4]
-    add r6, r5, #0
-    str r5, [sp, #0]
-    add r4, r0, #0
-    add r7, #0x58
-_02248C66:
-    mov r1, #0x21
-    ldr r2, [r6, #0x5c]
-    lsl r1, r1, #0xc
-    add r2, r2, r1
-    mov r1, #0x6a
-    add r0, r6, #0
-    lsl r1, r1, #0xe
-    add r0, #0x5c
-    str r2, [r6, #0x5c]
-    cmp r2, r1
-    blt _02248CA6
-    mov r1, #0x71
-    ldr r2, [r0, #0]
-    lsl r1, r1, #0xe
-    sub r1, r2, r1
-    str r1, [r0, #0]
-    ldr r0, [sp, #0]
-    ldr r0, [r0, #8]
-    cmp r0, #0
-    beq _02248CA6
-    ldr r0, [r5, #4]
-    mov r1, #1
-    add r0, r0, r4
-    ldr r0, [r0, #0x1c]
-    bl Sprite_SetDrawFlag
-    ldr r0, [r5, #4]
-    mov r1, #1
-    add r0, r0, r4
-    ldr r0, [r0, #0x20]
-    bl Sprite_SetDrawFlag
-_02248CA6:
-    ldr r0, [r5, #4]
-    add r1, r7, #0
-    add r0, r0, r4
-    ldr r0, [r0, #0x1c]
-    bl Sprite_SetMatrix
-    add r2, r6, #0
-    add r2, #0x58
-    add r3, sp, #8
-    ldmia r2!, {r0, r1}
-    mov ip, r3
-    stmia r3!, {r0, r1}
-    ldr r0, [r2, #0]
-    str r0, [r3, #0]
-    mov r0, #0xe
-    ldr r1, [sp, #0xc]
-    lsl r0, r0, #0xe
-    add r0, r1, r0
-    str r0, [sp, #0xc]
-    ldr r0, [r5, #4]
-    mov r1, ip
-    add r0, r0, r4
-    ldr r0, [r0, #0x20]
-    bl Sprite_SetMatrix
-    ldr r0, [sp, #0]
-    add r6, #0xc
-    add r0, r0, #4
-    str r0, [sp, #0]
-    ldr r0, [sp, #4]
-    add r4, #8
-    add r0, r0, #1
-    add r7, #0xc
-    str r0, [sp, #4]
-    cmp r0, #0x14
-    blt _02248C66
-    add sp, #0x14
-    pop {r4, r5, r6, r7, pc}
+void ov71_02248C24(void *task, struct Ov71Snow *snow) {
+    int i;
+
+    snow->timer++;
+    if (snow->timer > 12) {
+        snow->timer = 0;
+        if (snow->count < 20) {
+            snow->active[snow->count] = 1;
+            snow->count++;
+        }
+    }
+
+    for (i = 0; i < 20; i++) {
+        struct Ov71Vec pos;
+
+        snow->positions[i].y += 33 << 12;
+        if (snow->positions[i].y >= 424 << 12) {
+            snow->positions[i].y -= 452 << 12;
+            if (snow->active[i]) {
+                Sprite_SetDrawFlag(snow->sprites->pairs[i].flake, 1);
+                Sprite_SetDrawFlag(snow->sprites->pairs[i].shadow, 1);
+            }
+        }
+        Sprite_SetMatrix(snow->sprites->pairs[i].flake, &snow->positions[i]);
+        pos = snow->positions[i];
+        pos.y += 56 << 12;
+        Sprite_SetMatrix(snow->sprites->pairs[i].shadow, &pos);
+    }
 }
-// clang-format on
 #pragma force_active reset

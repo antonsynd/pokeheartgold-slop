@@ -2,185 +2,89 @@
 #pragma warning_errors off
 #pragma thumb on
 
-void ov08_02220A8C();
-void ov08_02220AEC();
-void ov08_02220B90();
-void ov08_02220BB4();
-void ov08_02220C08();
-void ov08_02220C3C();
-void ov08_022253D4();
-void ov08_022253F4();
-void ov08_02225454();
-void ov08_02220DE8(void);
-void ov08_02220E80(void);
+struct Ov08Move {
+    unsigned short move;
+    unsigned char unk2;
+    unsigned char unk3;
+    unsigned char type;
+    unsigned char unk5[3];
+};
 
-// FUNCTION ov08_02220DE8: no matching C yet, the original asm
+struct Ov08Mon {
+    char filler_00[0x17];
+    unsigned char unk17_0 : 3;
+    unsigned char gender : 4;
+    unsigned char unk17_7 : 1;
+    char filler_18[2];
+    unsigned short species;
+    char filler_1C[0x11];
+    unsigned char level;
+    char filler_2E[2];
+    struct Ov08Move moves[4];
+};
+
+struct Ov08Args {
+    char filler_00[0x11];
+    unsigned char current;
+    char filler_12[0x12];
+    unsigned short move;
+};
+
+struct Ov08Pos {
+    int x;
+    int y;
+};
+
+struct Ov08App {
+    struct Ov08Args *args;
+    struct Ov08Mon mons[6];
+    char filler_01E4[0x1DD4];
+    void *sprites[38];
+};
+
+void ov08_02220A8C(void *sprite, int x, int y);
+void ov08_02220AEC(struct Ov08App *app, void *sprite, int resId, unsigned char palette);
+void ov08_02220B90(int gender, void *sprite, int x, int y);
+void ov08_02220BB4(struct Ov08App *app, struct Ov08Mon *mon, const void *template);
+void ov08_02220C08(int species, void *sprite, int x, int y);
+void ov08_02220C3C(int level, void *sprite, int x, int y);
+
+extern const char ov08_022253D4[];
+extern const char ov08_022253F4[];
+extern const struct Ov08Pos ov08_02225454[4];
+
+void ov08_02220DE8(struct Ov08App *app);
+void ov08_02220E80(struct Ov08App *app);
+
+// FUNCTION ov08_02220DE8: matching C (manual)
 #pragma force_active on
-// clang-format off
-asm void ov08_02220DE8(void) {
-    push {r3, r4, r5, lr}
-    add r5, r0, #0
-    ldr r0, [r5, #0]
-    add r1, r5, #4
-    ldrb r2, [r0, #0x11]
-    mov r0, #0x50
-    mul r0, r2
-    add r4, r1, r0
-    add r0, r2, #7
-    lsl r0, r0, #2
-    add r1, r5, r0
-    ldr r0, =0x00001FB8
-    mov r2, #0xc
-    ldr r0, [r1, r0]
-    mov r1, #0x18
-    bl ov08_02220A8C
-    ldr r1, [r5, #0]
-    ldrb r0, [r4, #0x17]
-    ldrb r1, [r1, #0x11]
-    mov r3, #0x14
-    lsl r0, r0, #0x19
-    add r1, #0xd
-    lsl r1, r1, #2
-    add r2, r5, r1
-    ldr r1, =0x00001FB8
-    lsr r0, r0, #0x1c
-    ldr r1, [r2, r1]
-    mov r2, #0xc6
-    bl ov08_02220B90
-    ldr r2, =ov08_022253F4
-    add r0, r5, #0
-    add r1, r4, #0
-    bl ov08_02220BB4
-    ldr r1, [r5, #0]
-    ldrh r0, [r4, #0x1a]
-    ldrb r1, [r1, #0x11]
-    mov r3, #0x14
-    lsl r1, r1, #2
-    add r2, r5, r1
-    ldr r1, =0x00001FB8
-    ldr r1, [r2, r1]
-    mov r2, #0x20
-    bl ov08_02220C08
-    ldr r1, [r5, #0]
-    add r0, r4, #0
-    ldrb r1, [r1, #0x11]
-    add r0, #0x2d
-    ldrb r0, [r0, #0]
-    add r1, #0x20
-    lsl r1, r1, #2
-    add r2, r5, r1
-    ldr r1, =0x00001FB8
-    mov r3, #0x14
-    ldr r1, [r2, r1]
-    mov r2, #0x28
-    bl ov08_02220C3C
-    ldr r1, =0x00001FD0
-    ldrh r0, [r4, #0x1a]
-    ldr r1, [r5, r1]
-    mov r2, #0x14
-    mov r3, #0x84
-    bl ov08_02220C08
-    pop {r3, r4, r5, pc}
+void ov08_02220DE8(struct Ov08App *app) {
+    struct Ov08Mon *mon = &app->mons[app->args->current];
+
+    ov08_02220A8C(app->sprites[app->args->current + 7], 24, 12);
+    ov08_02220B90(mon->gender, app->sprites[app->args->current + 13], 198, 20);
+    ov08_02220BB4(app, mon, ov08_022253F4);
+    ov08_02220C08(mon->species, app->sprites[app->args->current], 32, 20);
+    ov08_02220C3C(mon->level, app->sprites[app->args->current + 32], 40, 20);
+    ov08_02220C08(mon->species, app->sprites[6], 20, 132);
 }
-// clang-format on
 #pragma force_active reset
-// FUNCTION ov08_02220E80: no matching C yet, the original asm
+// FUNCTION ov08_02220E80: matching C (manual)
 #pragma force_active on
-// clang-format off
-asm void ov08_02220E80(void) {
-    push {r3, r4, r5, r6, r7, lr}
-    str r0, [sp, #0]
-    ldr r0, [r0, #0]
-    ldrb r2, [r0, #0x11]
-    ldr r0, [sp, #0]
-    add r1, r0, #4
-    mov r0, #0x50
-    mul r0, r2
-    add r4, r1, r0
-    add r0, r2, #7
-    lsl r1, r0, #2
-    ldr r0, [sp, #0]
-    mov r2, #0xc
-    add r1, r0, r1
-    ldr r0, =0x00001FB8
-    ldr r0, [r1, r0]
-    mov r1, #0x18
-    bl ov08_02220A8C
-    ldr r1, [sp, #0]
-    ldrb r0, [r4, #0x17]
-    ldr r1, [r1, #0]
-    mov r3, #0x14
-    ldrb r1, [r1, #0x11]
-    lsl r0, r0, #0x19
-    lsr r0, r0, #0x1c
-    add r1, #0xd
-    lsl r2, r1, #2
-    ldr r1, [sp, #0]
-    add r2, r1, r2
-    ldr r1, =0x00001FB8
-    ldr r1, [r2, r1]
-    mov r2, #0xc6
-    bl ov08_02220B90
-    ldr r0, [sp, #0]
-    ldr r2, =ov08_022253D4
-    add r1, r4, #0
-    bl ov08_02220BB4
-    ldr r1, [sp, #0]
-    ldrh r0, [r4, #0x1a]
-    ldr r1, [r1, #0]
-    mov r3, #0x14
-    ldrb r1, [r1, #0x11]
-    lsl r2, r1, #2
-    ldr r1, [sp, #0]
-    add r2, r1, r2
-    ldr r1, =0x00001FB8
-    ldr r1, [r2, r1]
-    mov r2, #0x20
-    bl ov08_02220C08
-    ldr r1, [sp, #0]
-    add r0, r4, #0
-    ldr r1, [r1, #0]
-    add r0, #0x2d
-    ldrb r1, [r1, #0x11]
-    ldrb r0, [r0, #0]
-    mov r3, #0x14
-    add r1, #0x20
-    lsl r2, r1, #2
-    ldr r1, [sp, #0]
-    add r2, r1, r2
-    ldr r1, =0x00001FB8
-    ldr r1, [r2, r1]
-    mov r2, #0x28
-    bl ov08_02220C3C
-    ldr r5, [sp, #0]
-    ldr r6, =ov08_02225454
-    mov r7, #0
-_02220F10:
-    ldrh r0, [r4, #0x30]
-    cmp r0, #0
-    beq _02220F36
-    add r3, r4, #0
-    ldr r1, =0x0000200C
-    add r3, #0x34
-    ldr r2, =0x0000B010
-    ldrb r3, [r3, #0]
-    ldr r0, [sp, #0]
-    ldr r1, [r5, r1]
-    add r2, r7, r2
-    bl ov08_02220AEC
-    ldr r0, =0x0000200C
-    ldr r1, [r6, #0]
-    ldr r0, [r5, r0]
-    ldr r2, [r6, #4]
-    bl ov08_02220A8C
-_02220F36:
-    add r7, r7, #1
-    add r4, #8
-    add r5, r5, #4
-    add r6, #8
-    cmp r7, #4
-    blo _02220F10
-    pop {r3, r4, r5, r6, r7, pc}
+void ov08_02220E80(struct Ov08App *app) {
+    struct Ov08Mon *mon = &app->mons[app->args->current];
+    unsigned int i;
+
+    ov08_02220A8C(app->sprites[app->args->current + 7], 24, 12);
+    ov08_02220B90(mon->gender, app->sprites[app->args->current + 13], 198, 20);
+    ov08_02220BB4(app, mon, ov08_022253D4);
+    ov08_02220C08(mon->species, app->sprites[app->args->current], 32, 20);
+    ov08_02220C3C(mon->level, app->sprites[app->args->current + 32], 40, 20);
+    for (i = 0; i < 4; i++) {
+        if (mon->moves[i].move != 0) {
+            ov08_02220AEC(app, app->sprites[21 + i], 0xB010 + i, mon->moves[i].type);
+            ov08_02220A8C(app->sprites[21 + i], ov08_02225454[i].x, ov08_02225454[i].y);
+        }
+    }
 }
-// clang-format on
 #pragma force_active reset

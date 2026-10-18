@@ -3,50 +3,28 @@
 #pragma thumb on
 
 void Sprite_SetAnimCtrlSeq();
-void ov41_0224AF8C(void);
+struct Ov41Lights {
+    char filler_00[0x10];
+    void *sprites[20];
+    int count;
+};
 
-// FUNCTION ov41_0224AF8C: no matching C yet, the original asm
+void ov41_0224AF8C(struct Ov41Lights *a0, int count);
+
+// FUNCTION ov41_0224AF8C: matching C (manual)
 #pragma force_active on
-// clang-format off
-asm void ov41_0224AF8C(void) {
-    push {r3, r4, r5, r6, r7, lr}
-    add r7, r0, #0
-    ldr r6, [r7, #0x60]
-    add r5, r1, #0
-    cmp r6, r5
-    bge _0224AFB2
-    cmp r6, r5
-    bge _0224AFD0
-    lsl r0, r6, #2
-    add r4, r7, r0
-_0224AFA0:
-    ldr r0, [r4, #0x10]
-    mov r1, #0
-    bl Sprite_SetAnimCtrlSeq
-    add r6, r6, #1
-    add r4, r4, #4
-    cmp r6, r5
-    blt _0224AFA0
-    b _0224AFD0
-_0224AFB2:
-    cmp r6, r5
-    ble _0224AFD0
-    sub r6, r6, #1
-    cmp r6, r5
-    blt _0224AFD0
-    lsl r0, r6, #2
-    add r4, r7, r0
-_0224AFC0:
-    ldr r0, [r4, #0x10]
-    mov r1, #1
-    bl Sprite_SetAnimCtrlSeq
-    sub r6, r6, #1
-    sub r4, r4, #4
-    cmp r6, r5
-    bge _0224AFC0
-_0224AFD0:
-    str r5, [r7, #0x60]
-    pop {r3, r4, r5, r6, r7, pc}
+void ov41_0224AF8C(struct Ov41Lights *a0, int count) {
+    int i;
+
+    if (a0->count < count) {
+        for (i = a0->count; i < count; i++) {
+            Sprite_SetAnimCtrlSeq(a0->sprites[i], 0);
+        }
+    } else if (a0->count > count) {
+        for (i = a0->count - 1; i >= count; i--) {
+            Sprite_SetAnimCtrlSeq(a0->sprites[i], 1);
+        }
+    }
+    a0->count = count;
 }
-// clang-format on
 #pragma force_active reset

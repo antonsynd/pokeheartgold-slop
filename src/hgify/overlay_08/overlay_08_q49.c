@@ -2,65 +2,45 @@
 #pragma warning_errors off
 #pragma thumb on
 
-void AllocAndReadWholeNarcMemberByIdPair();
+void *AllocAndReadWholeNarcMemberByIdPair();
 void Heap_Free();
-void LoadRectToBgTilemapRect();
+void LoadRectToBgTilemapRect(void *bgConfig, unsigned char bgId, const void *buf, unsigned char x, unsigned char y, unsigned char w, unsigned char h);
 void NNS_G2dGetUnpackedScreenData();
-void ScheduleBgTilemapBufferTransfer();
-void ov08_02224F80();
-void ov08_0221D8B0(void);
+void ScheduleBgTilemapBufferTransfer(void *bgConfig, unsigned char bgId);
 
-// FUNCTION ov08_0221D8B0: no matching C yet, the original asm
+struct Ov08ScreenData {
+    char filler_0[0xC];
+    char rawData[1];
+};
+
+struct Ov08Args {
+    char filler_0[0xC];
+    int heapID;
+};
+
+struct Ov08App {
+    struct Ov08Args *args;
+    char filler_004[0x1E0];
+    void *bgConfig;
+};
+
+extern const unsigned int ov08_02224F80[][2];
+
+void ov08_0221D8B0(struct Ov08App *app, int idx);
+
+// FUNCTION ov08_0221D8B0: matching C (manual)
 #pragma force_active on
-// clang-format off
-asm void ov08_0221D8B0(void) {
-    push {r3, r4, r5, r6, r7, lr}
-    sub sp, #0x10
-    ldr r2, =ov08_02224F80
-    add r5, r0, #0
-    lsl r0, r1, #3
-    mov r4, #0
-    add r6, r2, r0
-_0221D8BE:
-    ldr r2, [r5, #0]
-    ldr r1, [r6, #0]
-    ldr r2, [r2, #0xc]
-    mov r0, #0x47
-    bl AllocAndReadWholeNarcMemberByIdPair
-    add r1, sp, #0xc
-    add r7, r0, #0
-    bl NNS_G2dGetUnpackedScreenData
-    mov r0, #0
-    str r0, [sp, #0]
-    mov r0, #0x20
-    str r0, [sp, #4]
-    mov r0, #0x18
-    str r0, [sp, #8]
-    mov r0, #0x79
-    lsl r0, r0, #2
-    add r1, r4, #6
-    ldr r2, [sp, #0xc]
-    lsl r1, r1, #0x18
-    ldr r0, [r5, r0]
-    lsr r1, r1, #0x18
-    add r2, #0xc
-    mov r3, #0
-    bl LoadRectToBgTilemapRect
-    mov r0, #0x79
-    lsl r0, r0, #2
-    add r1, r4, #6
-    lsl r1, r1, #0x18
-    ldr r0, [r5, r0]
-    lsr r1, r1, #0x18
-    bl ScheduleBgTilemapBufferTransfer
-    add r0, r7, #0
-    bl Heap_Free
-    add r4, r4, #1
-    add r6, r6, #4
-    cmp r4, #2
-    blo _0221D8BE
-    add sp, #0x10
-    pop {r3, r4, r5, r6, r7, pc}
+void ov08_0221D8B0(struct Ov08App *app, int idx) {
+    struct Ov08ScreenData *screen;
+    unsigned int i;
+
+    for (i = 0; i < 2; i++) {
+        void *data = AllocAndReadWholeNarcMemberByIdPair(71, ov08_02224F80[idx][i], app->args->heapID);
+
+        NNS_G2dGetUnpackedScreenData(data, &screen);
+        LoadRectToBgTilemapRect(app->bgConfig, i + 6, screen->rawData, 0, 0, 32, 24);
+        ScheduleBgTilemapBufferTransfer(app->bgConfig, i + 6);
+        Heap_Free(data);
+    }
 }
-// clang-format on
 #pragma force_active reset

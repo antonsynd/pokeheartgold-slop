@@ -14061,7 +14061,6 @@ ov96_0220B8A0	ghidra/overlay_96/ov96_0220B8A0.c	asm/overlay_96	PASS
 ov96_0220B8D8	ghidra/overlay_96/ov96_0220B8D8.c	asm/overlay_96	PASS
 ov96_0220B940	ghidra/overlay_96/ov96_0220B940.c	asm/overlay_96	PASS
 ov96_0220B988	ghidra/overlay_96/ov96_0220B988.c	asm/overlay_96	PASS
-ov96_0220B9A8	ghidra/overlay_96/ov96_0220B9A8.c	asm/overlay_96	PASS
 ov96_0220BD38	ghidra/overlay_96/ov96_0220BD38.c	asm/overlay_96	PASS
 ov96_0220C004	ghidra/overlay_96/ov96_0220C004.c	asm/overlay_96	PASS
 ov96_0220C0DC	ghidra/overlay_96/ov96_0220C0DC.c	asm/overlay_96	PASS
@@ -14202,9 +14201,6 @@ ov96_022124F8	ghidra/overlay_96/ov96_022124F8.c	asm/overlay_96	PASS
 ov96_022127F4	ghidra/overlay_96/ov96_022127F4.c	asm/overlay_96	PASS
 ov96_02212B94	ghidra/overlay_96/ov96_02212B94.c	asm/overlay_96	PASS
 ov96_02212F0C	ghidra/overlay_96/ov96_02212F0C.c	asm/overlay_96	PASS
-ov96_02212F94	ghidra/overlay_96/ov96_02212F94.c	asm/overlay_96	PASS
-ov96_022130EC	ghidra/overlay_96/ov96_022130EC.c	asm/overlay_96	PASS
-ov96_022132FC	ghidra/overlay_96/ov96_022132FC.c	asm/overlay_96	PASS
 ov96_02213354	ghidra/overlay_96/ov96_02213354.c	asm/overlay_96	PASS
 ov96_0221341C	ghidra/overlay_96/ov96_0221341C.c	asm/overlay_96	PASS
 ov96_02213444	ghidra/overlay_96/ov96_02213444.c	asm/overlay_96	PASS

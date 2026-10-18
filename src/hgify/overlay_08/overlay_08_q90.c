@@ -3,64 +3,45 @@
 #pragma thumb on
 
 void AddTextPrinterParameterizedWithColor();
-void FontID_String_GetWidth();
-void NewString_ReadMsgData();
+unsigned int FontID_String_GetWidth();
+void *NewString_ReadMsgData();
 void ScheduleWindowCopyToVram();
 void String_Delete();
-void ov08_0221F1B0(void);
 
-// FUNCTION ov08_0221F1B0: no matching C yet, the original asm
+struct Ov08Window {
+    char data[0x10];
+};
+
+struct Ov08Args {
+    char filler_00[0x34];
+    unsigned char mode;
+};
+
+struct Ov08App {
+    struct Ov08Args *args;
+    char filler_0004[0x1FA4];
+    void *msgData;
+    char filler_1FAC[0xC4];
+    struct Ov08Window *windows;
+};
+
+void ov08_0221F1B0(struct Ov08App *app, int idx);
+
+// FUNCTION ov08_0221F1B0: matching C (manual)
 #pragma force_active on
-// clang-format off
-asm void ov08_0221F1B0(void) {
-    push {r3, r4, r5, r6, r7, lr}
-    sub sp, #0x10
-    lsl r4, r1, #4
-    ldr r1, [r0, #0]
-    ldr r2, =0x00002070
-    add r1, #0x34
-    ldrb r1, [r1, #0]
-    ldr r5, [r0, r2]
-    cmp r1, #4
-    bne _0221F1D0
-    sub r2, #0xc8
-    ldr r0, [r0, r2]
-    mov r1, #0x3b
-    bl NewString_ReadMsgData
-    b _0221F1DA
-_0221F1D0:
-    sub r2, #0xc8
-    ldr r0, [r0, r2]
-    mov r1, #0x3a
-    bl NewString_ReadMsgData
-_0221F1DA:
-    add r6, r0, #0
-    mov r0, #4
-    add r1, r6, #0
-    mov r2, #0
-    bl FontID_String_GetWidth
-    add r7, r0, #0
-    mov r0, #5
-    str r0, [sp, #0]
-    mov r0, #0xff
-    str r0, [sp, #4]
-    ldr r0, =0x00070809
-    mov r3, #0x60
-    str r0, [sp, #8]
-    mov r0, #0
-    sub r3, r3, r7
-    str r0, [sp, #0xc]
-    add r0, r5, r4
-    mov r1, #4
-    add r2, r6, #0
-    lsr r3, r3, #1
-    bl AddTextPrinterParameterizedWithColor
-    add r0, r6, #0
-    bl String_Delete
-    add r0, r5, r4
-    bl ScheduleWindowCopyToVram
-    add sp, #0x10
-    pop {r3, r4, r5, r6, r7, pc}
+void ov08_0221F1B0(struct Ov08App *app, int idx) {
+    struct Ov08Window *window = &app->windows[idx];
+    void *string;
+    unsigned int width;
+
+    if (app->args->mode == 4) {
+        string = NewString_ReadMsgData(app->msgData, 59);
+    } else {
+        string = NewString_ReadMsgData(app->msgData, 58);
+    }
+    width = FontID_String_GetWidth(4, string, 0);
+    AddTextPrinterParameterizedWithColor(window, 4, string, (96 - width) / 2, 5, 0xFF, 0x70809, 0);
+    String_Delete(string);
+    ScheduleWindowCopyToVram(window);
 }
-// clang-format on
 #pragma force_active reset

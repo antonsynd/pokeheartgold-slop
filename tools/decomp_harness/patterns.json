@@ -2171,6 +2171,18 @@
       "category": "matching-tricks",
       "title": "When retail computes `base + team*0x174` and `member*0x7c` into two registers before a compare and re-adds them at every access, the source took `&teams[team].members[member]` into a pointer first",
       "body": "ov96_022130EC (overlay_96_s1162) updates a member's points in both branches of `if (zone == team)`. Retail computes r4 = teams + team*0x174 and r6 = member*0x7c ahead of the compare and then does `adds r0, r4, r6; adds r0, #0x5e` for every access. With `teams[team].members[member].points` written in each branch MWCC computes the address per branch (4 bytes shorter); with a `Ov96Team *t = &teams[team]` it changes register allocation (124 diffs). Assigning `Ov96Member *m = &teams[team].members[member];` right before the if matched (after also ordering the spilled locals teams > i > work by declaration). Same file: a u8 BOOL-ish parameter (`u8 flip`) is what makes MWCC spill r2 at function entry rather than after the first use."
+    },
+    {
+      "id": "hgify-dead-function-prototypes-steer-truncation",
+      "category": "file-patterns",
+      "title": "Rewriting an hgify dead inline-asm function: unprototyped `void f();` calls skip argument narrowing, so add real prototypes (or casts) when retail truncates arguments",
+      "body": "The generated dead-function files declare callees as `void f();`. With those, MWCC passes `i + 6` untouched; retail ov08_0221D8B0 does `lsl #24; lsr #24` before LoadRectToBgTilemapRect/ScheduleBgTilemapBufferTransfer, which only happens with a prototype taking u8 (or an explicit cast). Likewise ov08_02221E6C only matched with `unsigned char` parameters on both itself and ov08_02221D2C, and ov120_0225F08C needed `short` parameters on ov01_021F0960. Pass separate scalars where retail loads fields individually (Field3dObject_SetPosEx(obj, pos.x, pos.y, pos.z), not the struct). GF_ASSERT is NOT defined in these files (no includes): writing it compiles to a call of an implicit function `GF_ASSERT`; spell it `if (x == 0) { GF_AssertFail(); }`. Record each converted file in progress.json as its own unit and keep `#pragma force_active on`."
+    },
+    {
+      "id": "window-pointer-hoists-index-shift",
+      "category": "matching-tricks",
+      "title": "`lsls rI, idx, #4` at the very top of a text-printing function means a `Window *window = &app->windows[idx];` local, not `&windows[idx]` at each use",
+      "body": "ov08_0221EF48 / ov08_0221E3A4 / ov08_0221F1B0 (overlay_08 summary screen) compute `idx << 4` in the prologue and then use `adds r0, r5, r4` (windows base + offset) at every AddTextPrinter/ScheduleWindowCopyToVram call. Writing `&windows[idx]` at each call lets MWCC compute the shift lazily right before the first use (4-byte SIZE diff). Declaring the element pointer first, `struct Ov08Window *window = &app->windows[idx];`, reproduces the early shift and the base+offset adds. Related: [[pointer-to-element-hoists-index-products]]."
     }
   ]
 }
