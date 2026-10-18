@@ -3250,6 +3250,126 @@
       "attempts": 1,
       "result": "matched",
       "note": "matched"
+    },
+    {
+      "file": "asm/overlay_01_022053EC_p02.s",
+      "lines": 117,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched"
+    },
+    {
+      "file": "asm/overlay_05_r40.s",
+      "lines": 115,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched"
+    },
+    {
+      "file": "asm/overlay_05_r50.s",
+      "lines": 121,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched"
+    },
+    {
+      "file": "asm/overlay_18_021EE35C_r04.s",
+      "lines": 116,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched"
+    },
+    {
+      "file": "asm/overlay_40_s514.s",
+      "lines": 101,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched"
+    },
+    {
+      "file": "asm/overlay_43_r00.s",
+      "lines": 108,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched"
+    },
+    {
+      "file": "asm/overlay_59_r107.s",
+      "lines": 111,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched"
+    },
+    {
+      "file": "asm/overlay_80_022340E8_q18.s",
+      "lines": 115,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched"
+    },
+    {
+      "file": "asm/overlay_82_r31.s",
+      "lines": 106,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched"
+    },
+    {
+      "file": "asm/overlay_87_s57.s",
+      "lines": 153,
+      "functions": 2,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched"
+    },
+    {
+      "file": "asm/overlay_90_r133.s",
+      "lines": 122,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched"
+    },
+    {
+      "file": "asm/overlay_96_s11.s",
+      "lines": 157,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched"
+    },
+    {
+      "file": "asm/overlay_trainer_card_signature_n39.s",
+      "lines": 111,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched"
+    },
+    {
+      "file": "asm/unk_02061284_s78.s",
+      "lines": 118,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched"
+    },
+    {
+      "file": "asm/unk_0208C3E4_r12.s",
+      "lines": 123,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched"
     }
   ],
   "failed": [
@@ -3658,8 +3778,8 @@
   ],
   "in_progress": null,
   "stats": {
-    "total_attempts": 564,
-    "total_matched": 374,
+    "total_attempts": 579,
+    "total_matched": 389,
     "total_failed": 31
   },
   "matched": [

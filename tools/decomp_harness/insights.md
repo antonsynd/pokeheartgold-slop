@@ -41,6 +41,10 @@ Quick check that you actually got ARM: every function size must be a multiple of
 
 Note code32.h also redefines FX_Mul32x64c and MATH_CountLeadingZeros to their inline variants -- another reason to include the real header rather than writing a bare `#pragma thumb off`.
 
+### Loops that start with `b <test>` (test at the bottom, no duplicated pre-test) AND reload `a0->ptr->field` in every block, but still show instruction scheduling and flag-reusing `bpl` peepholes: compile the function under `#pragma optimization_level 2` + `#pragma opt_common_subs off`  <!-- id: unrotated-loops-opt2-no-common-subs -->
+
+ov93_0225D4EC (overlay_93_thumb_1_s19): -O4 rotates the loop; `#pragma optimization_level 1` keeps it unrotated but loses scheduling (26 diffs); level 2 alone CSEs the session pointer across blocks (51 diffs); level 2 + opt_common_subs off matched byte for byte. The same pair matched ov89_0225AF10 and ov89_02259CD0 (both parked earlier as 'unrotated loop, not reproducible with pragmas'), ov89_0225A878, ov89_0225C648 and ov89_0225B82C, so overlay_89 and overlay_93_thumb_1 look like TUs built with these settings. Put the pragmas after the declarations, right before the first function. Corollaries seen in the same TUs: an element pointer (`pos = &table[i]; pos->x, pos->y`) instead of `table[i].x/.y` keeps one base register; FX_Mul has to be written out as `(fx32)(((fx64)a * b + 0x800) >> FX32_SHIFT)`.
+
 ## General Codegen
 
 ### Register allocation follows declaration order  <!-- id: regalloc-order -->

@@ -621,7 +621,6 @@ PCBox_Exit	ghidra/overlay_14_021E5900/PCBox_Exit.c	asm/overlay_14_021E5900	PASS
 PCBox_Init	ghidra/overlay_14_021E5900/PCBox_Init.c	asm/overlay_14_021E5900	PASS
 PCBox_Main	ghidra/overlay_14_021E5900/PCBox_Main.c	asm/overlay_14_021E5900	PASS
 PalPad_Exit	ghidra/overlay_43/PalPad_Exit.c	asm/overlay_43	PASS
-PalPad_Init	ghidra/overlay_43/PalPad_Init.c	asm/overlay_43	PASS
 PalPad_Main	ghidra/overlay_43/PalPad_Main.c	asm/overlay_43	PASS
 ParseSignHash	ghidra/nitrocrypto/ParseSignHash.c	asm/nitrocrypto	PASS
 PhotoAlbum_Exit	ghidra/overlay_109/PhotoAlbum_Exit.c	asm/overlay_109	PASS
@@ -1517,7 +1516,6 @@ ov01_021FF418	ghidra/overlay_01_021FEEEC/ov01_021FF418.c	asm/overlay_01_021FEEEC
 ov01_021FF424	ghidra/overlay_01_021FEEEC/ov01_021FF424.c	asm/overlay_01_021FEEEC	PASS
 ov01_021FF44C	ghidra/overlay_01_021FEEEC/ov01_021FF44C.c	asm/overlay_01_021FEEEC	PASS
 ov01_02205424	ghidra/overlay_01_022053EC/ov01_02205424.c	asm/overlay_01_022053EC	PASS
-ov01_0220542C	written/overlay_01_022053EC/ov01_0220542C.c	asm/overlay_01_022053EC	PASS
 ov01_022054E0	written/overlay_01_022053EC/ov01_022054E0.c	asm/overlay_01_022053EC	PASS
 ov01_0220553C	ghidra/overlay_01_022053EC/ov01_0220553C.c	asm/overlay_01_022053EC	PASS
 ov01_02205564	ghidra/overlay_01_022053EC/ov01_02205564.c	asm/overlay_01_022053EC	PASS
@@ -1634,7 +1632,6 @@ ov05_0221D054	ghidra/overlay_05/ov05_0221D054.c	asm/overlay_05	PASS
 ov05_0221D094	ghidra/overlay_05/ov05_0221D094.c	asm/overlay_05	PASS
 ov05_0221D140	ghidra/overlay_05/ov05_0221D140.c	asm/overlay_05	PASS
 ov05_0221D228	ghidra/overlay_05/ov05_0221D228.c	asm/overlay_05	PASS
-ov05_0221D240	ghidra/overlay_05/ov05_0221D240.c	asm/overlay_05	PASS
 ov05_0221D318	ghidra/overlay_05/ov05_0221D318.c	asm/overlay_05	PASS
 ov05_0221D3AC	written/overlay_05/ov05_0221D3AC.c	asm/overlay_05	PASS-RESTRICTED
 ov05_0221D414	ghidra/overlay_05/ov05_0221D414.c	asm/overlay_05	PASS
@@ -1644,7 +1641,6 @@ ov05_0221D5DC	ghidra/overlay_05/ov05_0221D5DC.c	asm/overlay_05	PASS
 ov05_0221D664	ghidra/overlay_05/ov05_0221D664.c	asm/overlay_05	PASS
 ov05_0221D690	ghidra/overlay_05/ov05_0221D690.c	asm/overlay_05	PASS
 ov05_0221D6C4	ghidra/overlay_05/ov05_0221D6C4.c	asm/overlay_05	PASS
-ov05_0221D7AC	ghidra/overlay_05/ov05_0221D7AC.c	asm/overlay_05	PASS
 ov05_0221D890	ghidra/overlay_05/ov05_0221D890.c	asm/overlay_05	PASS
 ov05_0221D904	ghidra/overlay_05/ov05_0221D904.c	asm/overlay_05	PASS
 ov05_0221D9F0	ghidra/overlay_05/ov05_0221D9F0.c	asm/overlay_05	PASS
@@ -5480,7 +5476,6 @@ ov18_021EE35C	ghidra/overlay_18_021EE35C/ov18_021EE35C.c	asm/overlay_18_021EE35C
 ov18_021EE388	ghidra/overlay_18_021EE35C/ov18_021EE388.c	asm/overlay_18_021EE35C	PASS
 ov18_021EE3AC	ghidra/overlay_18_021EE35C/ov18_021EE3AC.c	asm/overlay_18_021EE35C	PASS
 ov18_021EE3FC	ghidra/overlay_18_021EE35C/ov18_021EE3FC.c	asm/overlay_18_021EE35C	PASS
-ov18_021EE44C	ghidra/overlay_18_021EE35C/ov18_021EE44C.c	asm/overlay_18_021EE35C	PASS
 ov18_021EE508	ghidra/overlay_18_021EE35C/ov18_021EE508.c	asm/overlay_18_021EE35C	PASS
 ov18_021EE520	ghidra/overlay_18_021EE35C/ov18_021EE520.c	asm/overlay_18_021EE35C	PASS
 ov18_021EE5E4	ghidra/overlay_18_021EE35C/ov18_021EE5E4.c	asm/overlay_18_021EE35C	PASS
@@ -6699,7 +6694,6 @@ ov40_0224326C	ghidra/overlay_40/ov40_0224326C.c	asm/overlay_40	PASS
 ov40_02243284	ghidra/overlay_40/ov40_02243284.c	asm/overlay_40	PASS
 ov40_022432AC	ghidra/overlay_40/ov40_022432AC.c	asm/overlay_40	PASS
 ov40_02243538	written/overlay_40/ov40_02243538.c	asm/overlay_40	PASS
-ov40_0224355C	written/overlay_40/ov40_0224355C.c	asm/overlay_40	PASS
 ov40_02243614	ghidra/overlay_40/ov40_02243614.c	asm/overlay_40	PASS
 ov40_022436D4	ghidra/overlay_40/ov40_022436D4.c	asm/overlay_40	PASS
 ov40_022437C0	ghidra/overlay_40/ov40_022437C0.c	asm/overlay_40	PASS
@@ -8682,7 +8676,6 @@ ov52_021E9260	ghidra/overlay_trainer_card_signature/ov52_021E9260.c	asm/overlay_
 ov52_021E927C	ghidra/overlay_trainer_card_signature/ov52_021E927C.c	asm/overlay_trainer_card_signature	PASS
 ov52_021E92E8	ghidra/overlay_trainer_card_signature/ov52_021E92E8.c	asm/overlay_trainer_card_signature	PASS
 ov52_021E9300	ghidra/overlay_trainer_card_signature/ov52_021E9300.c	asm/overlay_trainer_card_signature	PASS
-ov52_021E9364	ghidra/overlay_trainer_card_signature/ov52_021E9364.c	asm/overlay_trainer_card_signature	PASS
 ov52_021E9424	ghidra/overlay_trainer_card_signature/ov52_021E9424.c	asm/overlay_trainer_card_signature	PASS
 ov52_021E9488	ghidra/overlay_trainer_card_signature/ov52_021E9488.c	asm/overlay_trainer_card_signature	PASS
 ov56_021E5C20	ghidra/overlay_56/ov56_021E5C20.c	asm/overlay_56	PASS
@@ -8967,7 +8960,6 @@ ov59_0223AD58	ghidra/overlay_59/ov59_0223AD58.c	asm/overlay_59	PASS
 ov59_0223AD84	ghidra/overlay_59/ov59_0223AD84.c	asm/overlay_59	PASS
 ov59_0223AE20	ghidra/overlay_59/ov59_0223AE20.c	asm/overlay_59	PASS
 ov59_0223AE88	ghidra/overlay_59/ov59_0223AE88.c	asm/overlay_59	PASS
-ov59_0223AEB0	ghidra/overlay_59/ov59_0223AEB0.c	asm/overlay_59	PASS
 ov59_0223AF7C	ghidra/overlay_59/ov59_0223AF7C.c	asm/overlay_59	PASS
 ov59_0223AF9C	ghidra/overlay_59/ov59_0223AF9C.c	asm/overlay_59	PASS
 ov59_0223B11C	ghidra/overlay_59/ov59_0223B11C.c	asm/overlay_59	PASS
@@ -11167,7 +11159,6 @@ ov80_02234774	ghidra/overlay_80_022340E8/ov80_02234774.c	asm/overlay_80_022340E8
 ov80_022347A8	ghidra/overlay_80_022340E8/ov80_022347A8.c	asm/overlay_80_022340E8	PASS
 ov80_022347B8	ghidra/overlay_80_022340E8/ov80_022347B8.c	asm/overlay_80_022340E8	PASS
 ov80_022347C4	ghidra/overlay_80_022340E8/ov80_022347C4.c	asm/overlay_80_022340E8	PASS
-ov80_02234894	ghidra/overlay_80_022340E8/ov80_02234894.c	asm/overlay_80_022340E8	PASS
 ov80_02234968	ghidra/overlay_80_022340E8/ov80_02234968.c	asm/overlay_80_022340E8	PASS
 ov80_02234A38	ghidra/overlay_80_022340E8/ov80_02234A38.c	asm/overlay_80_022340E8	PASS
 ov80_02234A74	ghidra/overlay_80_022340E8/ov80_02234A74.c	asm/overlay_80_022340E8	PASS
@@ -11516,7 +11507,6 @@ ov82_0223EF1C	ghidra/overlay_82/ov82_0223EF1C.c	asm/overlay_82	PASS
 ov82_0223EF7C	ghidra/overlay_82/ov82_0223EF7C.c	asm/overlay_82	PASS
 ov82_0223EFB4	ghidra/overlay_82/ov82_0223EFB4.c	asm/overlay_82	PASS
 ov82_0223EFCC	ghidra/overlay_82/ov82_0223EFCC.c	asm/overlay_82	PASS
-ov82_0223F040	ghidra/overlay_82/ov82_0223F040.c	asm/overlay_82	PASS
 ov82_0223F10C	ghidra/overlay_82/ov82_0223F10C.c	asm/overlay_82	PASS
 ov82_0223F134	ghidra/overlay_82/ov82_0223F134.c	asm/overlay_82	PASS
 ov82_0223F1AC	ghidra/overlay_82/ov82_0223F1AC.c	asm/overlay_82	PASS
@@ -12161,8 +12151,6 @@ ov87_021E74B8	ghidra/overlay_87/ov87_021E74B8.c	asm/overlay_87	PASS
 ov87_021E74D4	ghidra/overlay_87/ov87_021E74D4.c	asm/overlay_87	PASS
 ov87_021E74F4	written/overlay_87/ov87_021E74F4.c	asm/overlay_87	PASS
 ov87_021E7550	ghidra/overlay_87/ov87_021E7550.c	asm/overlay_87	PASS
-ov87_021E7590	ghidra/overlay_87/ov87_021E7590.c	asm/overlay_87	PASS
-ov87_021E75E0	ghidra/overlay_87/ov87_021E75E0.c	asm/overlay_87	PASS
 ov87_021E7698	ghidra/overlay_87/ov87_021E7698.c	asm/overlay_87	PASS
 ov87_021E7734	ghidra/overlay_87/ov87_021E7734.c	asm/overlay_87	PASS
 ov87_021E788C	ghidra/overlay_87/ov87_021E788C.c	asm/overlay_87	PASS
@@ -12505,7 +12493,6 @@ ov90_0225BAA0	written/overlay_90/ov90_0225BAA0.c	asm/overlay_90	PASS
 ov90_0225BAD0	ghidra/overlay_90/ov90_0225BAD0.c	asm/overlay_90	PASS
 ov90_0225BBD0	ghidra/overlay_90/ov90_0225BBD0.c	asm/overlay_90	PASS
 ov90_0225BBF0	ghidra/overlay_90/ov90_0225BBF0.c	asm/overlay_90	PASS
-ov90_0225BC28	ghidra/overlay_90/ov90_0225BC28.c	asm/overlay_90	PASS
 ov90_0225BD08	ghidra/overlay_90/ov90_0225BD08.c	asm/overlay_90	PASS
 ov90_0225BDE4	ghidra/overlay_90/ov90_0225BDE4.c	asm/overlay_90	PASS
 ov90_0225BE08	ghidra/overlay_90/ov90_0225BE08.c	asm/overlay_90	PASS
@@ -13131,7 +13118,6 @@ ov96_021E6168	written/overlay_96/ov96_021E6168.c	asm/overlay_96	PASS
 ov96_021E61D8	ghidra/overlay_96/ov96_021E61D8.c	asm/overlay_96	PASS
 ov96_021E6290	ghidra/overlay_96/ov96_021E6290.c	asm/overlay_96	PASS
 ov96_021E634C	ghidra/overlay_96/ov96_021E634C.c	asm/overlay_96	PASS
-ov96_021E637C	ghidra/overlay_96/ov96_021E637C.c	asm/overlay_96	PASS
 ov96_021E6454	ghidra/overlay_96/ov96_021E6454.c	asm/overlay_96	PASS
 ov96_021E64B8	ghidra/overlay_96/ov96_021E64B8.c	asm/overlay_96	PASS
 ov96_021E6550	ghidra/overlay_96/ov96_021E6550.c	asm/overlay_96	PASS
@@ -15570,7 +15556,6 @@ sub_02061E00	ghidra/unk_02061284/sub_02061E00.c	asm/unk_02061284	PASS
 sub_02061E20	ghidra/unk_02061284/sub_02061E20.c	asm/unk_02061284	PASS
 sub_02061E44	ghidra/unk_02061284/sub_02061E44.c	asm/unk_02061284	PASS
 sub_02061E6C	ghidra/unk_02061284/sub_02061E6C.c	asm/unk_02061284	PASS
-sub_02061E90	ghidra/unk_02061284/sub_02061E90.c	asm/unk_02061284	PASS
 sub_02061F5C	ghidra/unk_02061284/sub_02061F5C.c	asm/unk_02061284	PASS
 sub_02062050	ghidra/unk_02061284/sub_02062050.c	asm/unk_02061284	PASS
 sub_02062064	ghidra/unk_02061284/sub_02062064.c	asm/unk_02061284	PASS
@@ -15894,7 +15879,6 @@ sub_0208C778	ghidra/unk_0208C3E4/sub_0208C778.c	asm/unk_0208C3E4	PASS
 sub_0208C7F8	ghidra/unk_0208C3E4/sub_0208C7F8.c	asm/unk_0208C3E4	PASS
 sub_0208C850	ghidra/unk_0208C3E4/sub_0208C850.c	asm/unk_0208C3E4	PASS
 sub_0208C87C	ghidra/unk_0208C3E4/sub_0208C87C.c	asm/unk_0208C3E4	PASS
-sub_0208C8C8	ghidra/unk_0208C3E4/sub_0208C8C8.c	asm/unk_0208C3E4	PASS
 sub_0208C9A4	ghidra/unk_0208C3E4/sub_0208C9A4.c	asm/unk_0208C3E4	PASS
 sub_0208CBD4	ghidra/unk_0208C3E4/sub_0208CBD4.c	asm/unk_0208C3E4	PASS
 sub_0208CC88	ghidra/unk_0208C3E4/sub_0208CC88.c	asm/unk_0208C3E4	PASS
