@@ -2213,6 +2213,18 @@
       "category": "codegen",
       "title": "s32/fx32 are `signed long`, not int: `(fx32 - field) / intParam` converts the int to long once, and that converted copy is a separate value MWCC may spill on its own",
       "body": "ov71_0224A694 (overlay_71_r164, twin BallArrivalPathState_BeginTransition) takes three coordinates in r1-r3 and `int duration` on the stack. Retail keeps the coordinates in r4/r6/r7, copies duration to [sp] for the three `_s32_div_f` calls, and reloads the ORIGINAL stack argument [sp, #0x18] for the final `state->transitionFrames = duration`. With all-int parameters (22 diffs) MWCC put duration in r4 and spilled z instead, and a local copy of duration was copy-propagated away. Declaring the three coordinates `fx32` matched: NitroSDK's types.h has `typedef signed long s32;`, so each division converts `duration` to long, and that converted value, not the int parameter, is the divisor that gets the stack slot. When a stack argument is spilled to a fresh slot but the final store reloads the incoming slot, look for an int/long mix (s32, fx32 or u32 vs int) between the divisor and the other operands. Related: [[param-types-change-prologue-spill-order]]."
+    },
+    {
+      "id": "double-negation-forces-add-operand-order",
+      "category": "matching-tricks",
+      "title": "`adds rD, rTable, rVar` vs `adds rD, rVar, rTable` that neither source order nor types fix: write `table - -var`",
+      "body": "ov43_0222CB34 (overlay_43_r106) passes `table[i].x + |offset.x|` to CopyToBgTilemapRect. Retail adds with the table load as the first operand (`adds r2, r2, r6`); MWCC emitted `adds r2, r6, r2` for both `table + d` and `d + table`, with if-statement or ternary abs, any declaration order, u8 casts, and s16/u8/u16/u32 locals (those added extensions). Writing `table[i].x - -dx` matched: MWCC folds the double negation into an add but keeps the subtraction's operand order. Add a one-line comment, since the expression looks like a typo. Related: [[cache-call-result-to-fix-cmp-operand-order]]."
+    },
+    {
+      "id": "local-pointer-to-static-keeps-register-offsets",
+      "category": "data-sections",
+      "title": "Retail `ldr r0, =sym; movs r1, #0x51; lsls r1, #2; ldr r0, [r0, r1]` (big field offset in a register, base reloaded from the pool) = access through a local pointer to the static; direct `sym.field` makes MWCC re-anchor (sym+0x100, #0x44)",
+      "body": "ov74_022359BC (overlay_74_thumb_s430) frees sprite resources held in one big static of the original overlay_74 TU (hgify labels ov74_0223D454, ov74_0223D488 = +0x34 and ov74_0223D654 = +0x200). Retail reads fields at 0x144..0x160 and 0x12C+4i as `ldr r0, =ov74_0223D488; ldr r0, [r0, rOff]`, and the sprite at +0x208 through r4 = ov74_0223D454 loaded once. Writing `ov74_0223D488.charRes` made MWCC pick a new anchor (`=ov74_0223D488+0x100`, `[r0, #0x44]`), 172 vs 156 bytes. Declaring `Ov74_0223D454 *work = &ov74_0223D454; Ov74_0223D488 *gfx = &ov74_0223D488;` at the top and accessing through them matched: MWCC rematerializes the constant address from the pool for each use and keeps large offsets in a register. The one direct access retail made (`ov74_0223D654.cursorSprite != NULL`, the anchored +0x208 field) stays direct. Related: [[global-field-anchor-label]], [[double-literal-load-means-tu-static]]."
     }
   ]
 }

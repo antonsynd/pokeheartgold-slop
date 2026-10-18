@@ -4530,6 +4530,70 @@
       "attempts": 1,
       "result": "matched",
       "note": "matched (batch 18)"
+    },
+    {
+      "file": "asm/overlay_12_battle_controller_p81.s",
+      "lines": 266,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched (batch 19)"
+    },
+    {
+      "file": "asm/overlay_14_021E5900_s169.s",
+      "lines": 56,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched (batch 19)"
+    },
+    {
+      "file": "asm/overlay_43_r106.s",
+      "lines": 73,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched (batch 19)"
+    },
+    {
+      "file": "asm/overlay_45_thumb_r445.s",
+      "lines": 45,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched (batch 19)"
+    },
+    {
+      "file": "asm/overlay_65_s33.s",
+      "lines": 341,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched (batch 19)"
+    },
+    {
+      "file": "asm/overlay_68_q22.s",
+      "lines": 38,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched (batch 19)"
+    },
+    {
+      "file": "asm/overlay_82_r06.s",
+      "lines": 182,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched (batch 19)"
+    },
+    {
+      "file": "asm/unk_02031B0C_p15.s",
+      "lines": 33,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched (batch 19)"
     }
   ],
   "failed": [
@@ -4938,8 +5002,8 @@
   ],
   "in_progress": null,
   "stats": {
-    "total_attempts": 726,
-    "total_matched": 536,
+    "total_attempts": 734,
+    "total_matched": 544,
     "total_failed": 31
   },
   "matched": [
