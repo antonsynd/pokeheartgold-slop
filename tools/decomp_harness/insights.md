@@ -805,6 +805,14 @@ ov40_0224355C: retail keeps the String* at sp+4 and the digit value at sp+8; dec
 
 ov18_021EE44C blits 8x8 tiles from `charData->pRawData + 0x20`. With `u8 *pixels = (u8 *)charData->pRawData + 0x20;` the add sat next to the load; writing `u8 *pixels = charData->pRawData;` and passing `pixels + 0x20` to both BlitBitmapRect calls let MWCC hoist the add into the loop preheader, after `movs r5,#0; str r5,[sp,#0x24]; adds r4,#12`, as retail does.
 
+### When a 5th+ (stack) parameter is passed to several calls, the declared parameter types of those callees decide which uses share one load and whether the parameter gets a register  <!-- id: callee-param-types-steer-stack-param-cse -->
+
+ov90_0225B38C passes its stack heapID to BeginNormalPaletteFade (enum HeapID), sub_0203A948 and ov00_021E69A8. Retail loads it once into r5 for the fade and ov00_021E69A8 and reloads it from the stack for sub_0203A948; a3 stays in r3. With every use typed enum HeapID the compiler gave heapID a register for the whole function (131 diffs). It matched with the function parameter declared `u32 heapID` (and `u8 a3`), a local `void sub_0203A948(int, u32)` and a local `void ov00_021E69A8(enum HeapID)` instead of including overlay_00_thumb.h (whose s32 parameter changes the grouping). Implicit conversions to differently typed parameters are separate expressions for CSE, so uses that share a load must convert to the same type. Sweep int/u32/s32/enum on the callee prototypes with vrun when only the reuse of a stack parameter is off.
+
+### A struct-pointer stack parameter can win the last callee-saved register from a local that retail keeps there; declaring it `void *` (cast at use) frees the register  <!-- id: struct-pointer-param-vs-local-for-r7 -->
+
+ov90_02259BCC (still parked, overlay_90_r73) keeps the switch result `row` in r7 and homes the 5th and 8th parameters with an `ldr r0, [sp, #N]; str r0, [sp, #N]` self-copy. Declared as `Ov90BgHolder *bg` the 5th parameter took r7 and row went to the stack; declared `void *bg` with `((Ov90BgHolder *)bg)->bgConfig` at the uses, row got r7, though the self-copy and the CSE temp slots still differ. Worth trying when a pointer parameter used only twice is enregistered and a busier local is spilled.
+
 ## Matching Tricks
 
 ### Small source changes that move codegen  <!-- id: decl-order-tricks -->
@@ -1084,6 +1092,10 @@ Refines [[param-copyprop-cmp]]. When the parameter copy instruction itself sets 
 ### When porting a pokeplatinum twin, keep its odd local copies (`u32 collision = _collision;`): they decide which register a stack parameter is loaded into  <!-- id: platinum-twin-local-copies-matter -->
 
 sub_0205DF0C (PlayerAvatar_GetMovementActionAnimCode in pokeplatinum) differed only by r0/r1 around the collision tests while the parameter was used directly; adding Platinum's `u32 collision = _collision;` after PlayerAvatar_GetMapObject matched. sub_02061E90 (twin sub_0206537C) and ov82_0223F040 (twin PrintTypeStrings) matched on the first try by transcribing the twin's block structure and nested scopes verbatim with HG names and constants.
+
+### Retail loop keeps two identical pointer IVs for the same &arr[i] (`add r5, r6, #0` init, both `add #stride` each pass, index spilled to the stack): spell one use as `(T *)a->arr + i`  <!-- id: duplicate-induction-pointer-via-array-cast -->
+
+ov90_0225B8F0 and ov90_02259B68 (twins of ov114_0225F7D8 / ov114_0225DA5C) loop over a 0x38-byte player array, passing &players[i] to two calls. MWCC merges two `&a0->players[i]` into one strength-reduced IV whatever the pragmas (opt_common_subs, opt_propagation, optimization_level 1-3 all left it at 90 bytes vs 100). Writing the second call's argument as `(Ov90Player *)a0->players + i` keeps the expression distinct, so the compiler builds a second IV with the same base: retail's three IVs (one for the `.unk10` check, two for the call args), i/done/ret on the stack. `(Ov90Player *)((u8 *)a0 + 0x25C) + i` also matches; `a0->players + i`, `&a0->players[0] + i` and `(void *)` casts are normalised back and do not. A local `players = a0->players` pointer gives the extra IV too but computes the base before the count<=0 pre-check, so it is 11 diffs off.
 
 ## IPA (-ipa file) Behavior
 
@@ -1402,6 +1414,10 @@ src/overlay_01_021F6830.c is the launcher for the bottom-screen sub-app family. 
 ### FontOAM TextOBJ creation helper (String -> window -> sub_020135D8) recurs across overlays: copy BattleInput_CreateTextObject  <!-- id: fontoam-textobj-helper-recipe -->
 
 The helper that measures a String (FontID_String_GetWidth + FX_ModS32(width,8) tile round-up), renders it into a temp Window (InitWindow / AddTextWindowTopLeftCorner(bg,&win,tiles,2,0,0) / AddTextPrinterParameterizedWithColorAndSpacing), reserves OBJ char VRAM (sub_02013688 + sub_02021AC8), fills a TextOBJTemplate {fontSystem, &window, SpriteManager_GetSpriteList, SpriteManager_FindPlttResourceProxy(palId), NULL, alloc.offset, x, y, 0, prio, vram, heap} and calls sub_020135D8 / sub_020138E0 / sub_020136B4, then RemoveWindow + stores {TextOBJ*, UnkStruct_02021AC8, u16 fontLength}, is the SAME function as src/battle/battle_input.c BattleInput_CreateTextObject. Its 11-arg signature (ctx, out, String*, fontId, color, palOffset, palId, x, y, centerText, displayObj{Window; u16 charLength; u16 fontLength}) matched verbatim in overlay_80_0223A00C (ov80_0223A62C) with only ctx field sources, the vram (2DMAIN) and y handling (y - 8, not +264) changed. Its companions: delete = FontOAM_Delete + sub_02021B5C(&alloc); measure = ov80_0223A75C-style. Grep a new file for sub_020135D8 and start from battle_input.c.
+
+### NewMsgDataFromNarc's first argument is MSGDATA_LOAD_DIRECT = 0, MSGDATA_LOAD_LAZY = 1; a `mov r0, #0` before the call means DIRECT  <!-- id: msgdata-load-direct-is-zero -->
+
+ov39_02228140 (twin of ov61_0222BF44, which uses MSG_LOADER_PRELOAD_ENTIRE_BANK) loads three banks with r0 = 0. Writing MSGDATA_LOAD_LAZY out of habit left exactly three `movs r0, #1` diffs. Many matched files use LAZY, so copy the constant from the asm rather than a neighbour.
 
 ## NONMATCHING Fallback
 
