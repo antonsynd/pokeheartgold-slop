@@ -821,6 +821,10 @@ ov96_0220E7BC compares data->teams[team].score (a u16 bitfield) with every other
 
 ov96_0220CF50 and ov96_0220D0F8 copy fields of a0->unk14 (id, score) into a result word and index a0->contestants[a0->current] with the 2-bit field from the same word. Retail does `ldr r7, [r5, #0x14]` once, derives both id and current from it, then stores. Writing `result->points = a0->contestants[a0->current].points;` after `result->id = a0->id;` reloads unk14 because the store might alias (73 diffs). `Ov96Contestant *contestant = &a0->contestants[a0->current];` declared before the first store matched both functions.
 
+### Two small local arrays copied from one extern template come out interleaved when the extern is const; declare it non-const to get retail's copy-one-then-the-other order  <!-- id: nonconst-extern-template-keeps-copies-sequential -->
+
+ov96_02214278 copies two 2-byte palette arrays (`bonus` from ov96_0221D1F4+2, `normal` from +0) with ldrb/strb. With `extern const u8 ov96_0221D1F4[];` MWCC hoists the second array's loads above the first array's stores (7 diffs). `extern u8 ov96_0221D1F4[];` with `*(Ov96FlashPalettes *)(ov96_0221D1F4 + 2)` keeps the four load/store pairs in source order, as retail. The stores to the stack might alias a non-const global, so the scheduler cannot reorder across them. Related: [[split-tu-local-array-template-extern-offset]].
+
 ## Matching Tricks
 
 ### Small source changes that move codegen  <!-- id: decl-order-tricks -->
@@ -1112,6 +1116,10 @@ ov93_02260080 (twin ov117_02263F80) computes `Unk_ov117_02266BB4[1].unk_02 - y` 
 ### `adds r5, r0, #0; adds r4, r1, #0; beq fail; cmp r4, #4; blo ok` tests the second parameter against zero, not the pointer: write `GF_ASSERT(index != 0 && index < 4)`  <!-- id: assert-flags-from-second-param-copy -->
 
 ov96_02219940 looks like `GF_ASSERT(a0 != NULL && player < 4)`, but the beq takes its flags from the last flag-setting move, the copy of r1. Every pointer-check spelling (a0 != NULL, !a0, split asserts) emits an explicit `cmp r5, #0`; `GF_ASSERT(player != 0 && player < 4)` reproduces the retail bytes, so the shipped code really checks the index. Note the quirk in a comment rather than "fixing" it.
+
+### ov96 (Pokéathlon) helpers that take a target x/y as the 3rd/4th register parameters declare them s16; int params reorder the prologue spills  <!-- id: pokeathlon-coord-params-are-s16 -->
+
+ov96_02213364 and ov96_0220DAA0 only matched once targetX/targetY were s16 (ov96_02213364 also needed `u8 team`); with int parameters the prologue stores and the `ldr r3, [sp, #...]` reload were scheduled differently (3-18 diffs). ov96_021FC630 needed its third parameter as u16 for the same reason. When an ov96 function's only diffs are in the prologue, sweep u8/s16/u16 on the parameters with vrun before anything else. Related: [[param-types-change-prologue-spill-order]].
 
 ## IPA (-ipa file) Behavior
 

@@ -1,24 +1,24 @@
 # Decomp Coverage Ledger
 
-*Generated 2026-10-18T05:50:07Z by `coverage_ledger.py` — do not hand-edit; regenerate after each decomp.*
+*Generated 2026-10-18T06:12:34Z by `coverage_ledger.py` — do not hand-edit; regenerate after each decomp.*
 
-Tracked functions (files with retained asm): **19131** — matched 18383, pending 715, plus 20 matched-but-blocked inside failed files.
+Tracked functions (files with retained asm): **19131** — matched 18401, pending 697, plus 20 matched-but-blocked inside failed files.
 
 | status | files | functions | insn lines | ~text bytes |
 |---|---|---|---|---|
-| matched | 980 | 18383 | 112766 | 251846 |
+| matched | 988 | 18401 | 113671 | 253770 |
 | blocked | 4 | 33 | 1328 | 2942 |
-| pending | 209 | 715 | 150721 | 336618 |
+| pending | 201 | 697 | 149816 | 334694 |
 | upstream | 399 | 0 | 0 | 0 |
 
 ## Blockers (value-ordered: fix what gates the most)
 
 | id | blocks | gates pending files | description |
 |---|---|---|---|
-| param-copyprop-cmp | 0 | 1 | MWCC copy-propagates parameter copies: 'adds r4, r0, #0; cmp r4, #N' at function entry cannot be produced from pure C (MWCC substitutes back to r0; the shape only arises for saved return values after a bl). Affected functions need the NONMATCHING inline-asm fallback — routine, not a wall (proven: unk_0200B150 re-landed 2026-07-02 via ROADMAP T0.2, full ROM SHA1 OK). Entry-idiom scan (asmscan) finds the remaining sites in pending files: overlay_102 (6), unk_02077678 (4), overlay_96 (3), overlay_48 (2), overlay_112, unk_020517A4, unk_02058034 (1 each). Gated files carry the affected function names in triage_report copyprop_funcs. (unk_02004A44 sub_020058F4 was a false positive -- saved return value after a bl; matched in plain C 2026-10-06.) |
 | ext-data-section-split | 0 | 1 | Data-only files exporting multiple EXTERNAL (.public) const arrays: MWCC (all modes — with/without -ipa file, pragma or not; T0.3 experiments 2026-07-02 disproved the earlier mwldarm-reorder theory) emits file-scope external consts SIZE-ASCENDING with a deterministic equal-size scramble, so a retail layout that is not size-ascending cannot come from one TU in source order. objdiff cannot see section order — verify these files ONLY with chiri pkg -- compare. |
 | ipa-shared-headers | 0 | 0 | MWCC -ipa file: changing a signature in a shared header cascades codegen changes into every already-matched caller in other compilation units. Affects only files that must ADD or CHANGE declarations in a frozen header — call-only consumers of the exported APIs are NOT gated (proven by patterns 'ipa-blocked-files-can-call-sound-fns-without-cascade' and 'false-ipa-gate-shared-imports'). Diagnostic before blaming IPA for any mismatch: recompile the TU without '-ipa file' and objdiff (pattern ipa-file-flag-effects-and-removal-nonviability). |
 | ipa-cse-literal-pool | 1 | 0 | MWCC -ipa file caches repeated literal-pool addresses/large offsets in callee-saved registers across calls where retail reloads them (or vice versa). A codegen-shape problem, not a header problem — split from ipa-shared-headers 2026-07-01, where this file's ubiquitous exports (BeginNormalPaletteFade family, imported by ~84 pending .inc files) badly inflated the gate count. |
+| param-copyprop-cmp | 0 | 0 | MWCC copy-propagates parameter copies: 'adds r4, r0, #0; cmp r4, #N' at function entry cannot be produced from pure C (MWCC substitutes back to r0; the shape only arises for saved return values after a bl). Affected functions need the NONMATCHING inline-asm fallback — routine, not a wall (proven: unk_0200B150 re-landed 2026-07-02 via ROADMAP T0.2, full ROM SHA1 OK). Entry-idiom scan (asmscan) finds the remaining sites in pending files: overlay_102 (6), unk_02077678 (4), overlay_96 (3), overlay_48 (2), overlay_112, unk_020517A4, unk_02058034 (1 each). Gated files carry the affected function names in triage_report copyprop_funcs. (unk_02004A44 sub_020058F4 was a false positive -- saved return value after a bl; matched in plain C 2026-10-06.) |
 | objdiff-false-positives | 0 | 0 | RESOLVED. objdiff.py had a critical bug: the byte extraction regex did not match MWCC's ARM Thumb objdump format (packed hex like 'b418' vs expected space-separated 'b4 18'). It extracted 0 bytes for every function, so 0==0 always reported MATCH. 11 decomps accepted via objdiff were not actually byte-matching. Fixed; all 11 non-matching decomps reverted to asm. 2 decomps that truly match (unk_0202DB34, battle_arcade_game_board_data) kept. |
 
 ## Blocked files (4)
@@ -30,7 +30,7 @@ Tracked functions (files with retained asm): **19131** — matched 18383, pendin
 | asm/unk_02055BF0_data.s | 0 | 0 | yes | ext-data-section-split Data-only: 3 external const fn-ptr arrays (sMapEnterRoutines, sMapExitRoutines, _020FC76C) referenced only by already-ma |
 | asm/overlay_12_battle_command.s | 0 | 0 | yes |   |
 
-## Matched files (asm retained) (980)
+## Matched files (asm retained) (988)
 
 | file | functions | insn lines | data-only | notes |
 |---|---|---|---|---|
@@ -342,6 +342,10 @@ Tracked functions (files with retained asm): **19131** — matched 18383, pendin
 | asm/overlay_01_021F4464.s | 3 | 0 |  | hgify |
 | asm/overlay_12_battle_controller_opponent_s84.s | 3 | 192 |  | harness |
 | asm/overlay_41_0224BE34.s | 3 | 146 |  | harness |
+| asm/overlay_96_s1036.s | 3 | 153 |  | harness |
+| asm/overlay_96_s1046.s | 3 | 118 |  | harness |
+| asm/overlay_96_s1185.s | 3 | 177 |  | harness |
+| asm/overlay_96_s1326.s | 3 | 88 |  | harness |
 | asm/unk_0201010C_t84.s | 2 | 61 |  | harness |
 | asm/unk_02025C44.s | 2 | 0 |  | hgify |
 | asm/unk_02026DE0.s | 2 | 0 |  | hgify |
@@ -362,7 +366,9 @@ Tracked functions (files with retained asm): **19131** — matched 18383, pendin
 | asm/overlay_96_s143.s | 2 | 82 |  | harness |
 | asm/overlay_96_s371.s | 2 | 100 |  | harness |
 | asm/overlay_96_s1030.s | 2 | 62 |  | harness |
+| asm/overlay_96_s1084.s | 2 | 76 |  | harness |
 | asm/overlay_96_s1168.s | 2 | 29 |  | harness |
+| asm/overlay_96_s1177.s | 2 | 114 |  | harness |
 | asm/overlay_114.s | 2 | 0 |  | hgify |
 | asm/unk_0201010C_t27.s | 1 | 18 |  | harness |
 | asm/unk_0201010C_t49.s | 1 | 55 |  | harness |
@@ -691,6 +697,7 @@ Tracked functions (files with retained asm): **19131** — matched 18383, pendin
 | asm/overlay_96_s1040.s | 1 | 0 |  | hgify |
 | asm/overlay_96_s1041.s | 1 | 0 |  | hgify |
 | asm/overlay_96_s1042.s | 1 | 0 |  | hgify |
+| asm/overlay_96_s1043.s | 1 | 90 |  | harness |
 | asm/overlay_96_s1044.s | 1 | 0 |  | hgify |
 | asm/overlay_96_s1045.s | 1 | 0 |  | hgify |
 | asm/overlay_96_s1047.s | 1 | 0 |  | hgify |
@@ -796,6 +803,7 @@ Tracked functions (files with retained asm): **19131** — matched 18383, pendin
 | asm/overlay_96_s1159.s | 1 | 0 |  | hgify |
 | asm/overlay_96_s1161.s | 1 | 0 |  | hgify |
 | asm/overlay_96_s1163.s | 1 | 0 |  | hgify |
+| asm/overlay_96_s1164.s | 1 | 89 |  | harness |
 | asm/overlay_96_s1165.s | 1 | 0 |  | hgify |
 | asm/overlay_96_s1166.s | 1 | 0 |  | hgify |
 | asm/overlay_96_s1167.s | 1 | 0 |  | hgify |
@@ -1015,7 +1023,7 @@ Tracked functions (files with retained asm): **19131** — matched 18383, pendin
 | asm/battle_arcade_game_board_data.s | 0 | 0 | yes | harness |
 | asm/battle_arcade_game_board_data2.s | 0 | 0 | yes | split_tu |
 
-## Pending files (209)
+## Pending files (201)
 
 | file | functions | insn lines | data-only | notes |
 |---|---|---|---|---|
@@ -1061,14 +1069,10 @@ Tracked functions (files with retained asm): **19131** — matched 18383, pendin
 | asm/overlay_83_02243D7C.s | 4 | 1515 |  |  |
 | asm/overlay_90.s | 4 | 822 |  |  |
 | asm/overlay_102.s | 4 | 436 |  |  |
-| asm/overlay_96_s1036.s | 3 | 153 |  |  |
-| asm/overlay_96_s1046.s | 3 | 118 |  |  |
 | asm/overlay_96_s1137.s | 3 | 171 |  |  |
 | asm/overlay_96_s1160.s | 3 | 1227 |  |  |
 | asm/overlay_96_s1162.s | 3 | 450 |  |  |
-| asm/overlay_96_s1185.s | 3 | 177 |  |  |
 | asm/overlay_96_s1261.s | 3 | 262 |  |  |
-| asm/overlay_96_s1326.s | 3 | 88 |  |  |
 | asm/unk_0201956C.s | 3 | 259 |  |  |
 | asm/unk_020632B0.s | 3 | 429 |  |  |
 | asm/overlay_00_thumb.s | 3 | 314 |  |  |
@@ -1089,12 +1093,10 @@ Tracked functions (files with retained asm): **19131** — matched 18383, pendin
 | asm/overlay_120.s | 3 | 496 |  |  |
 | asm/overlay_96_s1014.s | 2 | 211 |  |  |
 | asm/overlay_96_s1065.s | 2 | 187 |  |  |
-| asm/overlay_96_s1084.s | 2 | 76 |  |  |
 | asm/overlay_96_s1107.s | 2 | 130 |  |  |
 | asm/overlay_96_s1113.s | 2 | 338 |  |  |
 | asm/overlay_96_s1118.s | 2 | 263 |  |  |
 | asm/overlay_96_s1149.s | 2 | 1102 |  |  |
-| asm/overlay_96_s1177.s | 2 | 114 |  |  |
 | asm/overlay_96_s1270.s | 2 | 1186 |  |  |
 | asm/overlay_96_s1296.s | 2 | 309 |  |  |
 | asm/overlay_96_s1346.s | 2 | 364 |  |  |
@@ -1122,12 +1124,10 @@ Tracked functions (files with retained asm): **19131** — matched 18383, pendin
 | asm/overlay_96_s1012.s | 1 | 409 |  |  |
 | asm/overlay_96_s1017.s | 1 | 294 |  |  |
 | asm/overlay_96_s1028.s | 1 | 51 |  |  |
-| asm/overlay_96_s1043.s | 1 | 90 |  |  |
 | asm/overlay_96_s1072.s | 1 | 395 |  |  |
 | asm/overlay_96_s1077.s | 1 | 200 |  |  |
 | asm/overlay_96_s1098.s | 1 | 160 |  |  |
 | asm/overlay_96_s1111.s | 1 | 273 |  |  |
-| asm/overlay_96_s1164.s | 1 | 89 |  |  |
 | asm/overlay_96_s1173.s | 1 | 717 |  |  |
 | asm/overlay_96_s1175.s | 1 | 146 |  |  |
 | asm/overlay_96_s1204.s | 1 | 75 |  |  |

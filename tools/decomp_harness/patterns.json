@@ -2111,6 +2111,18 @@
       "category": "codegen",
       "title": "When retail reads a bitfield word once and uses it both for a field copy and for an array index before any store, the source took `&arr[s->index]` before the first store",
       "body": "ov96_0220CF50 and ov96_0220D0F8 copy fields of a0->unk14 (id, score) into a result word and index a0->contestants[a0->current] with the 2-bit field from the same word. Retail does `ldr r7, [r5, #0x14]` once, derives both id and current from it, then stores. Writing `result->points = a0->contestants[a0->current].points;` after `result->id = a0->id;` reloads unk14 because the store might alias (73 diffs). `Ov96Contestant *contestant = &a0->contestants[a0->current];` declared before the first store matched both functions."
+    },
+    {
+      "id": "nonconst-extern-template-keeps-copies-sequential",
+      "category": "codegen",
+      "title": "Two small local arrays copied from one extern template come out interleaved when the extern is const; declare it non-const to get retail's copy-one-then-the-other order",
+      "body": "ov96_02214278 copies two 2-byte palette arrays (`bonus` from ov96_0221D1F4+2, `normal` from +0) with ldrb/strb. With `extern const u8 ov96_0221D1F4[];` MWCC hoists the second array's loads above the first array's stores (7 diffs). `extern u8 ov96_0221D1F4[];` with `*(Ov96FlashPalettes *)(ov96_0221D1F4 + 2)` keeps the four load/store pairs in source order, as retail. The stores to the stack might alias a non-const global, so the scheduler cannot reorder across them. Related: [[split-tu-local-array-template-extern-offset]]."
+    },
+    {
+      "id": "pokeathlon-coord-params-are-s16",
+      "category": "matching-tricks",
+      "title": "ov96 (Pokéathlon) helpers that take a target x/y as the 3rd/4th register parameters declare them s16; int params reorder the prologue spills",
+      "body": "ov96_02213364 and ov96_0220DAA0 only matched once targetX/targetY were s16 (ov96_02213364 also needed `u8 team`); with int parameters the prologue stores and the `ldr r3, [sp, #...]` reload were scheduled differently (3-18 diffs). ov96_021FC630 needed its third parameter as u16 for the same reason. When an ov96 function's only diffs are in the prologue, sweep u8/s16/u16 on the parameters with vrun before anything else. Related: [[param-types-change-prologue-spill-order]]."
     }
   ]
 }
