@@ -4402,6 +4402,54 @@
       "attempts": 1,
       "result": "matched",
       "note": "matched (batch 16)"
+    },
+    {
+      "file": "asm/overlay_01_021EDAFC_q40.s",
+      "lines": 137,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched (batch 17)"
+    },
+    {
+      "file": "asm/overlay_01_021EFB38_p33.s",
+      "lines": 118,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched (batch 17)"
+    },
+    {
+      "file": "asm/overlay_02_02245B80_o28.s",
+      "lines": 121,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched (batch 17)"
+    },
+    {
+      "file": "asm/overlay_85_r196.s",
+      "lines": 117,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched (batch 17)"
+    },
+    {
+      "file": "asm/overlay_85_r239.s",
+      "lines": 139,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched (batch 17)"
+    },
+    {
+      "file": "asm/overlay_97_q30.s",
+      "lines": 181,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched (batch 17)"
     }
   ],
   "failed": [
@@ -4810,8 +4858,8 @@
   ],
   "in_progress": null,
   "stats": {
-    "total_attempts": 710,
-    "total_matched": 520,
+    "total_attempts": 716,
+    "total_matched": 526,
     "total_failed": 31
   },
   "matched": [
