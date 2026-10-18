@@ -250,7 +250,7 @@ def main():
 
     report, missing = build_report(args.build_dir.resolve(), args.allow_missing)
     args.output.parent.mkdir(parents=True, exist_ok=True)
-    args.output.write_text(json.dumps(report, separators=(",", ":")) + "\n")
+    args.output.write_text(json.dumps(report, separators=(",", ":")) + "\n", newline="\n")
     m = report["measures"]
     print(f"{args.output}: {len(report['units'])} units, functions {m['matched_functions']}/{m['total_functions']} "
           f"({m['matched_functions_percent']:.2f}%), code {m['matched_code']}/{m['total_code']} bytes "

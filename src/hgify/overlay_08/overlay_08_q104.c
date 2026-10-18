@@ -3,123 +3,71 @@
 #pragma thumb on
 
 void FillWindowPixelBuffer();
-void GetItemAttr();
+int GetItemAttr();
 void ScheduleWindowCopyToVram();
 void ov08_0221DDCC();
 void ov08_0221E244();
 void ov08_0221E340();
 void ov08_0221F284();
-void ov08_02224FE0();
-void ov08_0221FF70(void);
+struct Ov08Window {
+    char data[0x10];
+};
 
-// FUNCTION ov08_0221FF70: no matching C yet, the original asm
+struct Ov08Move {
+    unsigned short move;
+    unsigned char unk2[6];
+};
+
+struct Ov08Mon {
+    char filler_00[0x30];
+    struct Ov08Move moves[4];
+};
+
+struct Ov08Args {
+    char filler_00[0xC];
+    int heapID;
+    char filler_10[1];
+    unsigned char current;
+    char filler_12[0x10];
+    unsigned short item;
+};
+
+struct Ov08App {
+    struct Ov08Args *args;
+    struct Ov08Mon mons[6];
+    char filler_01E4[0x1E8C];
+    struct Ov08Window *windows;
+};
+
+extern const int ov08_02224FE0[4];
+
+void ov08_0221FF70(struct Ov08App *app);
+
+// FUNCTION ov08_0221FF70: matching C (manual)
 #pragma force_active on
-// clang-format off
-asm void ov08_0221FF70(void) {
-    push {r4, r5, r6, r7, lr}
-    sub sp, #0x14
-    add r5, r0, #0
-    ldr r0, =0x00002070
-    mov r1, #0
-    ldr r0, [r5, r0]
-    bl FillWindowPixelBuffer
-    ldr r0, =0x00002070
-    mov r1, #0
-    ldr r0, [r5, r0]
-    add r0, #0x10
-    bl FillWindowPixelBuffer
-    ldr r0, =0x00002070
-    mov r1, #0
-    ldr r0, [r5, r0]
-    add r0, #0x20
-    bl FillWindowPixelBuffer
-    ldr r0, =0x00002070
-    mov r1, #0
-    ldr r0, [r5, r0]
-    add r0, #0x30
-    bl FillWindowPixelBuffer
-    ldr r0, =0x00002070
-    mov r1, #0
-    ldr r0, [r5, r0]
-    add r0, #0x40
-    bl FillWindowPixelBuffer
-    mov r1, #0
-    str r1, [sp, #0]
-    str r1, [sp, #4]
-    ldr r3, [r5, #0]
-    add r0, r5, #0
-    ldrb r3, [r3, #0x11]
-    add r2, r1, #0
-    bl ov08_0221DDCC
-    add r0, r5, #0
-    mov r6, #0
-    str r0, [sp, #0x10]
-    add r0, #0x34
-    ldr r7, =ov08_02224FE0
-    add r4, r6, #0
-    str r0, [sp, #0x10]
-_0221FFD0:
-    ldr r0, [r5, #0]
-    ldrb r1, [r0, #0x11]
-    mov r0, #0x50
-    add r2, r1, #0
-    mul r2, r0
-    ldr r0, [sp, #0x10]
-    add r0, r0, r2
-    ldrh r1, [r0, r4]
-    str r0, [sp, #0xc]
-    cmp r1, #0
-    beq _02220008
-    mov r0, #4
-    str r0, [sp, #0]
-    mov r0, #7
-    str r0, [sp, #4]
-    ldr r0, =0x00070809
-    add r2, r6, #1
-    str r0, [sp, #8]
-    ldr r3, [r7, #0]
-    add r0, r5, #0
-    bl ov08_0221E244
-    ldr r1, [sp, #0xc]
-    add r0, r5, #0
-    add r1, r1, r4
-    add r2, r6, #1
-    bl ov08_0221F284
-_02220008:
-    add r6, r6, #1
-    add r4, #8
-    add r7, r7, #4
-    cmp r6, #4
-    blo _0221FFD0
-    ldr r2, [r5, #0]
-    mov r1, #0x25
-    ldrh r0, [r2, #0x22]
-    ldr r2, [r2, #0xc]
-    bl GetItemAttr
-    cmp r0, #0
-    bne _0222002A
-    add r0, r5, #0
-    mov r1, #0x5e
-    bl ov08_0221E340
-_0222002A:
-    ldr r0, =0x00002070
-    ldr r0, [r5, r0]
-    add r0, #0x10
-    bl ScheduleWindowCopyToVram
-    ldr r0, =0x00002070
-    ldr r0, [r5, r0]
-    add r0, #0x20
-    bl ScheduleWindowCopyToVram
-    ldr r0, =0x00002070
-    ldr r0, [r5, r0]
-    add r0, #0x30
-    bl ScheduleWindowCopyToVram
-    ldr r0, =0x00002070
-    ldr r0, [r5, r0]
-    add r0, #0x40
-    bl ScheduleWindowCopyToVram
-    add sp, #0x14
-    pop {r4, r5, r6, r7, pc}
+void ov08_0221FF70(struct Ov08App *app) {
+    unsigned int i;
+
+    FillWindowPixelBuffer(&app->windows[0], 0);
+    FillWindowPixelBuffer(&app->windows[1], 0);
+    FillWindowPixelBuffer(&app->windows[2], 0);
+    FillWindowPixelBuffer(&app->windows[3], 0);
+    FillWindowPixelBuffer(&app->windows[4], 0);
+    ov08_0221DDCC(app, 0, 0, app->args->current, 0, 0);
+    for (i = 0; i < 4; i++) {
+        struct Ov08Move *moves = app->mons[app->args->current].moves;
+
+        if (moves[i].move != 0) {
+            ov08_0221E244(app, moves[i].move, i + 1, ov08_02224FE0[i], 4, 7, 0x70809);
+            ov08_0221F284(app, &moves[i], i + 1);
+        }
+    }
+    if (GetItemAttr(app->args->item, 37, app->args->heapID) == 0) {
+        ov08_0221E340(app, 94);
+    }
+    ScheduleWindowCopyToVram(&app->windows[1]);
+    ScheduleWindowCopyToVram(&app->windows[2]);
+    ScheduleWindowCopyToVram(&app->windows[3]);
+    ScheduleWindowCopyToVram(&app->windows[4]);
 }
-// clang-format on
 #pragma force_active reset

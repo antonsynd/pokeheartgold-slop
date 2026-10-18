@@ -102,7 +102,8 @@ struct PokeathlonCourseData {
     u32 field_3A4[4];                          // 0x3A4
     PokeathlonCourseState courseState;         // 0x3B4 - State machine structure (16 bytes: 4 fields x 4 bytes)
     PokeathlonStateInfo stateInfo;             // 0x3C4 - State information (8 bytes)
-    u8 filler_3CC[0xC];                        // 0x3CC
+    PokeathlonStateInfo subStateInfo;          // 0x3CC - State information of the current event
+    u8 filler_3D4[4];                          // 0x3D4
     u32 field_3D8[4];                          // 0x3D8 - Array of 4 u32s (16 bytes)
     u32 field_3E8;                             // 0x3E8
     PokeathlonParticipantData participants[4]; // 0x3EC - 4 participant data elements (0x7C each = 0x1F0 bytes)
@@ -111,9 +112,11 @@ struct PokeathlonCourseData {
     u16 field_5F0[4][2];                       // 0x5F0
     u8 filler_600[0x14];                       // 0x600
     void *graphicsSystem;                      // 0x614 - Graphics/UI subsystem pointer
-    u8 filler_618[0x112];                      // 0x618
+    u8 filler_618[0x110];                      // 0x618
+    u8 field_728;                              // 0x728
+    u8 filler_729[1];                          // 0x729
     u8 maxParticipants;                        // 0x72A - Maximum participant limit (3 or 4)
-    u8 filler_72B[1];                          // 0x72B
+    u8 field_72B;                              // 0x72B
     PokeathlonFieldData fieldData[6];          // 0x72C - Array of PokeathlonFieldData (6 * 0x60 = 0x1E0 bytes)
     u8 filler_96C[8];                          // 0x96C
     PokeathlonUnkSubStruct_974 field_974[4];   // 0x974 - Array of 4 unknown sub-structures (0x74 bytes each = 0x1D0 bytes)
@@ -121,12 +124,12 @@ struct PokeathlonCourseData {
     u8 field_BA4[0x180];                       // 0xBA4
     s32 frameCounter;                          // 0xD24 - Increments every 0x708 frames (max 0xEA5F)
     u16 frameTimer;                            // 0xD28 - Frame counter, resets at 0x708
-    u16 filler_D2A;                            // 0xD2A - Alignment padding
+    u16 field_D2A;                             // 0xD2A - Record to beat, compared with the saved course record (0xFFFF = none)
     u32 counterEnabled;                        // 0xD2C - Flag to enable frame counters
     u8 filler_D30[0x34];                       // 0xD30
     void *heapAllocPtr2;                       // 0xD64 - Heap allocated pointer (freed in Exit if mode == 0)
     void *heapAllocPtr3;                       // 0xD68 - Heap allocated pointer (freed in Exit if mode == 0)
-    u8 filler_D6C[4];                          // 0xD6C
+    u32 field_D6C;                             // 0xD6C
 };
 
 BOOL PokeathlonCourse_Init(OverlayManager *manager, int *state);

@@ -4,28 +4,22 @@
 
 void sub_02014C08();
 void sub_02014C40();
-void ov01_021F1290(void);
+struct Ov01Emitter {
+    void *system;
+    int unk4;
+    unsigned int frames;
+};
 
-// FUNCTION ov01_021F1290: no matching C yet, the original asm
+void ov01_021F1290(void *task, struct Ov01Emitter *emitter);
+
+// FUNCTION ov01_021F1290: matching C (manual)
 #pragma force_active on
-// clang-format off
-asm void ov01_021F1290(void) {
-    push {r4, lr}
-    add r4, r1, #0
-    ldr r0, [r4, #8]
-    cmp r0, #2
-    blo _021F12A4
-    ldr r0, [r4, #0]
-    bl sub_02014C08
-    mov r0, #0
-    str r0, [r4, #8]
-_021F12A4:
-    ldr r0, [r4, #0]
-    bl sub_02014C40
-    ldr r0, [r4, #8]
-    add r0, r0, #1
-    str r0, [r4, #8]
-    pop {r4, pc}
+void ov01_021F1290(void *task, struct Ov01Emitter *emitter) {
+    if (emitter->frames >= 2) {
+        sub_02014C08(emitter->system);
+        emitter->frames = 0;
+    }
+    sub_02014C40(emitter->system);
+    emitter->frames++;
 }
-// clang-format on
 #pragma force_active reset

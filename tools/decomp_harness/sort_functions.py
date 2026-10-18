@@ -159,5 +159,5 @@ if __name__ == '__main__':
     keyed.sort(key=lambda t: t[0])
     new_region = [l for _,_,u in keyed for l in u]
     out = pre + new_region + post
-    open(C, 'w').write('\n'.join(out))
+    open(C, 'w', newline='\n').write('\n'.join(out))
     print(f'sorted {len(units)} units by address; wrote {C}')

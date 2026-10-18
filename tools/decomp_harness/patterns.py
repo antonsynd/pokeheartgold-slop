@@ -34,7 +34,7 @@ def load():
 
 
 def save(db):
-    with open(PATTERNS, "w") as f:
+    with open(PATTERNS, "w", newline="\n") as f:
         json.dump(db, f, indent=2, ensure_ascii=False)
         f.write("\n")
 
@@ -69,7 +69,7 @@ def cmd_gen(_args):
     if by_cat:
         sys.exit(f"patterns with unknown categories: "
                  f"{[p['id'] for ps in by_cat.values() for p in ps]}")
-    INSIGHTS.write_text("\n".join(lines))
+    INSIGHTS.write_text("\n".join(lines), newline="\n")
     print(f"wrote {INSIGHTS} ({len(db['patterns'])} patterns)")
 
 

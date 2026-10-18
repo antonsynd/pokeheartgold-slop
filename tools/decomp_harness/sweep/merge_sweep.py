@@ -169,7 +169,7 @@ def main():
         "signature_conflicts": conflicts,
         "platinum_twin_files": twin_files,
     }
-    with open(KNOWLEDGE, "w") as f:
+    with open(KNOWLEDGE, "w", newline="\n") as f:
         json.dump(knowledge, f, indent=1, sort_keys=True)
 
     print(f"merged {n_swept} sweep files -> {KNOWLEDGE}")

@@ -63,7 +63,7 @@ int strnequ(const string a, const string b, long n) // NOLINT
 
 #define lower(__c) (((__c) >= 'A' && (__c) <= 'Z') ? (__c) + ('a' - 'A') : (__c))
 
-int stricmp(const string a, const string b)
+int strcmpnocase(const string a, const string b)
 {
     long n = min(a.len, b.len);
     long i = 0;

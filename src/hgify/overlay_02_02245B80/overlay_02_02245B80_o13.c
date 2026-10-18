@@ -2,84 +2,68 @@
 #pragma warning_errors off
 #pragma thumb on
 
+struct Ov02Vec {
+    int x;
+    int y;
+    int z;
+};
+
+struct Ov02FieldSystem {
+    char filler_00[0x40];
+    void *playerAvatar;
+};
+
+struct Ov02FlashEnv {
+    void *unk0;
+    struct Ov02FieldSystem *fieldSystem;
+    char *obj;
+    unsigned short state;
+    unsigned short unkE;
+    unsigned short index;
+};
+
+struct Ov02FlashTemplate {
+    char filler_0[8];
+    unsigned short se;
+    unsigned short unkA;
+};
+
+extern struct Ov02FlashTemplate ov02_02253264[];
+
 void Field3dObject_SetPosEx();
 void Heap_Free();
 void PlaySE();
 void PlayerAvatar_CopyPositionVector();
-void TaskManager_GetEnvironment();
-void ov02_02245E04();
+void *TaskManager_GetEnvironment();
+char *ov02_02245E04();
 void ov02_02245E68();
-void ov02_02245FD0();
-void ov02_02253264();
-void ov02_022460FC(void);
+int ov02_02245FD0();
+int ov02_022460FC(void *taskManager);
 
-// FUNCTION ov02_022460FC: no matching C yet, the original asm
+// FUNCTION ov02_022460FC: matching C (manual)
 #pragma force_active on
-// clang-format off
-asm void ov02_022460FC(void) {
-    push {r3, r4, lr}
-    sub sp, #0xc
-    bl TaskManager_GetEnvironment
-    add r4, r0, #0
-    ldrh r0, [r4, #0xc]
-    cmp r0, #0
-    beq _02246116
-    cmp r0, #1
-    beq _02246158
-    cmp r0, #2
-    beq _0224616A
-    b _0224617C
-_02246116:
-    ldrh r1, [r4, #0x10]
-    mov r0, #0xc
-    ldr r2, =ov02_02253264
-    mul r0, r1
-    ldr r1, [r4, #0]
-    add r0, r2, r0
-    bl ov02_02245E04
-    str r0, [r4, #8]
-    ldr r0, [r4, #4]
-    add r1, sp, #0
-    ldr r0, [r0, #0x40]
-    bl PlayerAvatar_CopyPositionVector
-    ldr r0, [r4, #8]
-    ldr r1, [sp, #0]
-    ldr r2, [sp, #4]
-    ldr r3, [sp, #8]
-    add r0, #0x10
-    bl Field3dObject_SetPosEx
-    ldrh r1, [r4, #0x10]
-    mov r0, #0xc
-    add r2, r1, #0
-    mul r2, r0
-    ldr r0, =ov02_02253264 + 8
-    ldrh r0, [r0, r2]
-    bl PlaySE
-    ldrh r0, [r4, #0xc]
-    add r0, r0, #1
-    strh r0, [r4, #0xc]
-    b _0224617C
-_02246158:
-    ldr r0, [r4, #8]
-    bl ov02_02245FD0
-    cmp r0, #0
-    beq _0224617C
-    ldrh r0, [r4, #0xc]
-    add r0, r0, #1
-    strh r0, [r4, #0xc]
-    b _0224617C
-_0224616A:
-    ldr r0, [r4, #8]
-    bl ov02_02245E68
-    add r0, r4, #0
-    bl Heap_Free
-    add sp, #0xc
-    mov r0, #1
-    pop {r3, r4, pc}
-_0224617C:
-    mov r0, #0
-    add sp, #0xc
-    pop {r3, r4, pc}
+int ov02_022460FC(void *taskManager) {
+    struct Ov02FlashEnv *env = TaskManager_GetEnvironment(taskManager);
+    struct Ov02Vec pos;
+
+    switch (env->state) {
+    case 0:
+        env->obj = ov02_02245E04(&ov02_02253264[env->index], env->unk0);
+        PlayerAvatar_CopyPositionVector(env->fieldSystem->playerAvatar, &pos);
+        Field3dObject_SetPosEx(env->obj + 0x10, pos.x, pos.y, pos.z);
+        PlaySE(ov02_02253264[env->index].se);
+        env->state++;
+        break;
+    case 1:
+        if (ov02_02245FD0(env->obj)) {
+            env->state++;
+        }
+        break;
+    case 2:
+        ov02_02245E68(env->obj);
+        Heap_Free(env);
+        return 1;
+    }
+    return 0;
 }
-// clang-format on
 #pragma force_active reset

@@ -405,7 +405,7 @@ def update_readme(root, check_only=False):
         print("README.md is out of date (--check mode, not writing)")
         return True
 
-    readme_path.write_text(new_text)
+    readme_path.write_text(new_text, newline="\n")
     print("README.md updated")
     return True
 

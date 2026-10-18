@@ -10,6 +10,11 @@ nitroarc_cflags = [
     '-Werror',
 ]
 
+# MinGW's default printf is MSVCRT's, which -Wformat flags on %zu.
+if build_machine.system() == 'windows'
+    nitroarc_cflags += '-D__USE_MINGW_ANSI_STDIO=1'
+endif
+
 nitroarc_incdir = include_directories('lib/include')
 
 nitroarc_dep = declare_dependency(

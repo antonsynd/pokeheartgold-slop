@@ -42,8 +42,9 @@ import subprocess
 import sys
 
 
-def run(cmd):
-    return subprocess.run(cmd, shell=True, capture_output=True, text=True).stdout
+def run(argv):
+    """stdout of argv, stderr discarded. No shell, so it also runs where the shell is cmd.exe."""
+    return subprocess.run(argv, stdout=subprocess.PIPE, stderr=subprocess.DEVNULL, text=True).stdout
 
 
 # ---------------------------------------------------------------------------
@@ -667,8 +668,8 @@ CLASSIFY_TO_OUTCOME = {
 
 def get_functions_legacy(objfile):
     """Extract function names, sizes, and raw bytes by parsing objdump text."""
-    disasm = run(f"arm-none-eabi-objdump -d {objfile} 2>/dev/null")
-    syms = run(f"arm-none-eabi-nm -S {objfile} 2>/dev/null")
+    disasm = run(["arm-none-eabi-objdump", "-d", objfile])
+    syms = run(["arm-none-eabi-nm", "-S", objfile])
 
     sizes = {}
     for line in syms.strip().split("\n"):
@@ -761,7 +762,7 @@ def compare_bytes_legacy(asm_bytes, c_bytes, name, verbose=False):
 
 def get_sections(objfile):
     """Get section names and sizes from an object file."""
-    output = run(f"arm-none-eabi-objdump -h {objfile} 2>/dev/null")
+    output = run(["arm-none-eabi-objdump", "-h", objfile])
     sections = {}
     for line in output.split("\n"):
         m = re.match(r"\s+\d+\s+(\.[\w.]+)\s+([0-9a-f]+)", line)
@@ -1307,7 +1308,7 @@ def cmd_disasm(args):
         return 1
 
     for label, objfile in [("ASM", args.asm_obj), ("C", args.c_obj)]:
-        disasm = run(f"arm-none-eabi-objdump -d {objfile} 2>/dev/null")
+        disasm = run(["arm-none-eabi-objdump", "-d", objfile])
         in_fn = False
         print(f"\n=== {label}: {fn} ===")
         for line in disasm.split("\n"):

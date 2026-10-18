@@ -55,7 +55,7 @@ def main():
         compile_commands_string = relativize_json2bin_paths(compile_commands_string)
         compile_commands_string = relativize_pch_paths(compile_commands_string)
 
-    with open(BUILD_NINJA, 'w') as build_ninja_out, open(COMPILE_COMMANDS, 'w') as compile_commands_out:
+    with open(BUILD_NINJA, 'w', newline='\n') as build_ninja_out, open(COMPILE_COMMANDS, 'w', newline='\n') as compile_commands_out:
         build_ninja_out.write(build_ninja_string)
         compile_commands_out.write(compile_commands_string)
 

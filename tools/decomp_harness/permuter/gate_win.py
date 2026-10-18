@@ -52,7 +52,7 @@ def main():
     out_dir = os.path.join(job_dir, "gate_out")
     os.makedirs(out_dir, exist_ok=True)
     full_c = os.path.join(out_dir, "candidate_full.c")
-    open(full_c, "w").write(full)
+    open(full_c, "w", newline="\n").write(full)
 
     cmd = [sys.executable, os.path.join(SCRIPT_DIR, "score_candidate.py"),
            "--tu", tu, "--func", func, "--candidate", full_c,

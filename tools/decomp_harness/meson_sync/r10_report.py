@@ -52,7 +52,7 @@ report = {}
 with concurrent.futures.ThreadPoolExecutor(os.cpu_count()) as ex:
     for src, found in ex.map(run, files):
         report[src] = found
-json.dump(report, open('r10_report.json', 'w'), indent=1)
+json.dump(report, open('r10_report.json', 'w', newline='\n'), indent=1)
 
 # Summaries
 by_kind, owners, in_fork_hdr = collections.Counter(), collections.Counter(), collections.Counter()

@@ -1853,6 +1853,378 @@
       "category": "data-sections",
       "title": "Before consolidating an overlay rodata into one struct, check whether retail .rodata is already size-ascending: if so it was separate consts and the Platinum-twin layout matches directly",
       "body": "overlay_34 (ov01 sub-app row 8, Platinum twin overlay056/ov56_022561C0.c): the drafter followed the family convention (one static const struct, [[consolidated-rodata-all-ref-kinds-fold-clean]]) and ov34_0225DB20 then loaded a loop table as =sRodata + #12 where retail loads its own symbol (=ov34_0225E6A0, [r6,#0]). Retail object sizes were 12,12,20,28,28,28,28,32: exactly MWCC size-ascending emission of SEPARATE consts. Copying the Platinum layout (file-scope `static const int x[] = {...};` placed right before each user, four block-local `BgTemplate t = {...};` initializers in the BG-init function) reproduced .rodata byte-for-byte on the first try, including the equal-size tie order of the four 28-byte templates (source bg4,bg5,bg6,bg7 emitted bg6,bg7,bg5,bg4 as in retail). Rule: size-ascending retail rodata => separate consts (the original); interleaved sizes => one struct. Related: [[rodata-multi-symbol-size-sorted-use-one-struct]], [[overlay01-subapp-family-copy-overlay29-shapes]]."
+    },
+    {
+      "id": "double-literal-load-means-tu-static",
+      "category": "data-sections",
+      "title": "Two literal-pool entries for the SAME global, loaded back to back (ldr r0,=X; ldr r1,=X), mean X was a STATIC of the function's own TU accessed through a local pointer; an extern can never produce it",
+      "body": "Seen across hgify slices of overlay_74 (ov74_02236128, ov74_02235708, ov74_022360B0, ov74_02235690: ldr r0,=ov74_0223D454 / ldr r4,=ov74_0223D454). Experiment (compile_one, 2026-10-18): `static T sMgr; void f(void){ T *m = &sMgr; if (m->x == 4) m->x = 1; }` emits TWO pool entries, one relocated against the .bss section symbol and one against sMgr, i.e. exactly the retail shape. The same code with `extern T sMgr;` emits ONE entry (MWCC CSEs the extern address); direct `sMgr.x` access emits one entry in both cases. So the hgify split, which moved the TU's statics into a shared _Xdata.s slice and left each function in its own file with an extern, makes these functions unmatchable one by one. The fix is structural: rebuild the original TU (all its functions, in link order, plus its statics as `static` definitions) in one C file. Its .bss then lands at that object's link-order position, so it only preserves the layout if every .bss chunk before it in the overlay has also moved to its own TU (convert bss owners in .bss address order), or if the chunk is the overlay's first .bss. Do not burn attempts on the C shape of such functions; check the asm for a repeated `=sym` pool entry first. Related: [[ipa-cse-literal-pool]], [[public-vs-static]]."
+    },
+    {
+      "id": "return-value-kept-means-returned",
+      "category": "codegen",
+      "title": "If retail avoids r0 after a call (compares/stores through r1/r2 instead), the call's result is the function's return value",
+      "body": "ov59_02239F18, ov43_0222B374, ov70_02244124: retail loads a flag into r1 (`ldr r1,[sp]; cmp r1,#0`) or the state into r1 after `blx`, keeping r0 untouched, because r0 is returned on that path. Write `int ret = f(...); ...; return ret;` (or return the second call's result on the other path). The void version reuses r0 and differs by exactly those registers."
+    },
+    {
+      "id": "struct-return-rvo-vs-copy",
+      "category": "codegen",
+      "title": "VecFx32 returned by value: a function-scope local assigned later gets RVO (call writes it directly); a block-scoped `VecFx32 v = f(...)` gets a temp plus an ldmia/stmia copy",
+      "body": "overlay_119 (ov01_021F074C returns VecFx32): `add r0, sp, #0x54; bl f` then use sp+0x54 = function-scope `VecFx32 scale;` assigned with `scale = f(...)`. `add r0, sp, #0x30; bl f; ldmia/stmia to sp+0x48` = `{ VecFx32 v = f(...); ... }` declared inside a block. Choose per call site. Related: an initializer list with a non-constant member (`VecFx32 pos = {x << 12, 14 << 12, 0}`) emits a 12-byte .rodata template; retail field-by-field stores mean separate assignments."
+    },
+    {
+      "id": "anonymous-local-initializer-data",
+      "category": "data-sections",
+      "title": "A local array/struct initialised from rodata at an odd offset of a data-slice symbol (`ldrb [r3,#1]`, `=sym + 7`) is the anonymous initializer of a local; copy it with a struct assignment from `*(const T *)&sym[off]` as the FIRST statement",
+      "body": "ov43_0222D0F8 (2 bytes at _0222ED5C+1), ov112_021F0EFC/021F0E60 (TouchscreenHitbox at ov112_021FF2DC+7 / +0xB): the original had `u8 pals[] = {..}` / `TouchscreenHitbox hb = {..}` locals; their initializer data is unnamed in retail, and hgify's data slice labels only the start of the blob. `T local = *(const T *)&sym[off];` reproduces the byte copy; it must be the first statement (retail does it before even moving the parameters)."
+    },
+    {
+      "id": "loop-unrotated-and-nonconst-table",
+      "category": "codegen",
+      "title": "A table load repeated inside a loop around calls means the table is not const in the original; and MWCC deletes truly empty loops, so retail loops with only i++ had a body that died later",
+      "body": "ov33_0225D7D4 reloads `ov33_0225DA50[...]` every iteration: with `extern const` MWCC hoists it, so the table was mutable data. ov112_021E5A84 keeps two `for` loops whose only content is the counter; MWCC removes `for(..){}` and `for(..){buf[i]=0;}` entirely (dead-store version too) - still unsolved, probably a debug macro body."
+    },
+    {
+      "id": "untouched-arg-regs-mean-forwarded-args",
+      "category": "codegen",
+      "title": "An argument register the caller never sets, or a constant placed in r1-r3 'for no reason', is an argument of the callee: declare the callee with more parameters",
+      "body": "Seen over and over in hgify leftovers (2026-10-18): (1) wrapper `ldr r0,[r0,#0x14]; bl f` with r1-r3 untouched = `f(a0->x, a1, a2, a3)`, the wrapper forwards its own arguments; declaring f with one parameter makes MWCC tail-call it (`ldr r3,=f; bx r3`) instead of `bl`. (2) A callee-saved register (r4) used for a plain temp right before a call means r0-r3 are all live arguments (ov96_021EEB74: `lsl r4, r2, #2` because r1-r3 are forwarded). (3) A constant materialised in r1/r2 for a store (`mov r1,#1; str r1,[r4,#0x18]`) instead of r0 means the same constant is the next call's argument (`ov103_021EDA40(a0, 1)`); likewise `mov r2,#0; strb r2,...` right before `ov14_021F2A18(x, 9)` means it takes a third argument 0. (4) A parameter copied out of r1 before the first call (`add r4, r1, #0`) while r1 is also left intact means the first call takes it too. Check this before blaming register allocation."
+    },
+    {
+      "id": "switch-case-blocks-follow-source-order",
+      "category": "codegen",
+      "title": "MWCC lays out switch case bodies in source order, independent of case values; read the retail block order to recover the case order",
+      "body": "ov112_021EDCB0: jump table for 0..14 plus compares for 0x21/0x2A; the return blocks appear as 0x22,0x24,0x25,0x2B,0x26,0x27,0x23,0x2A, i.e. cases 4,5,7,6,8/9,3/11/12,13,14 in the source. Cases that only fall through to the default (`case 0x21: case 0x2A: break;`) still emit their compare (`cmp r0,#0x2a; bx lr`). Also: `x == 2 || x == 3` compiles to a range check (sub/cmp/bhi); two separate compares mean a switch."
+    },
+    {
+      "id": "ov112-pokewalker-optimization-level-2",
+      "category": "codegen",
+      "title": "Unrotated `b cond` loops with no strength reduction (ov112 Pokewalker comm code): compile the function under `#pragma optimization_level 2`",
+      "body": "ov112_021E59B4 (overlay_112_r05): both loops are emitted as `b cond; body; cond: cmp; blt body` and the second indexes `ldrb [r3, r1]` instead of walking a pointer. At the default -O4 MWCC rotates the loop (`cmp; ble` guard + bottom test) and strength-reduces the index, whatever the C shape (for, while, goto). `#pragma optimization_level 2` before the function reproduces both; levels 1 and 3 do not. The empty counter-only loops of ov112_021E5A84 are probably the same thing (level 2 does not delete them). Registers still follow declaration order: declare the cached global pointer LAST to get it into r4. Try the pragma whenever a loop in this module is unrotated."
+    },
+    {
+      "id": "split-globals-one-object-scheduling",
+      "category": "codegen",
+      "title": "Stores to two hgify-labelled globals kept strictly in source order: they are one object in the original; declare one struct spanning both and access the second through it",
+      "body": "ov112_021E7548 (overlay_112_r35): stores to ov112_021FFAA4 (+0x08..+0x38) and ov112_021FFB24 (+0x1C) were never interleaved by the scheduler in retail, while with two separate extern structs MWCC moved `str r3,[r4,#0x30]` past the ov112_021FFB24 stores. hgify labels every referenced address, so `ov112_021FFB24` is just `ov112_021FFAA4 + 0x80`. Declaring `extern struct { State state; Comm comm; } ov112_021FFAA4;` makes MWCC treat the accesses as possibly aliasing and keeps the order; the relocation becomes `ov112_021FFAA4+0x80`, same linked bytes, objdiff reports OK. Use the existing symbol name for the outer object (never invent one: it would not link)."
+    },
+    {
+      "id": "ret-var-break-preloads-r0",
+      "category": "codegen",
+      "title": "`mov r0,#K` before a search loop plus a duplicated epilogue returning the other value = `BOOL ret = K; for (...) { if (hit) { ret = !K; break; } } return ret;`",
+      "body": "ov07_02232580 / ov07_022325BC (overlay_07_r697): retail sets r0 = 0 (or 1) before the loop, keeps it untouched, and the hit path is its own `add sp; mov r0,#1; pop; bx lr`. `return TRUE;` inside the loop with `return FALSE;` after it materialises r0 after the loop instead; `BOOL ret = FALSE; ... return TRUE; ... return ret;` is no better. Only `ret = TRUE; break;` matched."
+    },
+    {
+      "id": "split-plus-equals-operand-order",
+      "category": "codegen",
+      "title": "`adds r0, r0, rN` right after a division call (quotient first) is `x = a / b; x += c;`, not `x = a / b + c` (which gives `adds r0, rN, r0`)",
+      "body": "sub_02012ACC (unk_0201010C_t104): `split = (end - start) * num / den + start` and `start + (...) / den` both compiled to `adds r0, r6, r0`; splitting into `split = (...) / den; split += start;` gave retail's `adds r0, r0, r6`. Same file: a common first call argument loaded once before an if/else that calls two different functions (`ldr r0,[r5,#0x14]` hoisted above `bne`) is a local assigned before the if (`bars = fade->data;`), not `fade->data` written in both calls."
+    },
+    {
+      "id": "window-pointer-local-keeps-offset-in-register",
+      "category": "codegen",
+      "title": "`ldr r6,=0x8A4` at entry and `add r0, r5, r6` before every Window call (other offsets derived as `sub r0, r6, #4`) = a local `Window *window = &x->field;` declared at the top",
+      "body": "ov40_0222DF60 (overlay_40_s77), ov40_02237144, ov40_0223DEB8: passing `&app->messageWindow` at each call makes MWCC reload the large offset from the literal pool every time (`ldr r0,[pc]; add r0,r5,r0`). With `Window *window = &app->messageWindow;` as the first declaration MWCC keeps the OFFSET in a callee-saved register from function entry, rematerialises `base + offset` per use, and derives neighbouring field offsets from it (`sub r0, r6, #4` for the BOOL just before the window). Casting to integer arithmetic gets the register but loads it too late. Seen across overlay 40; check other files where a large struct offset sits in r6/r7 for the whole function."
+    },
+    {
+      "id": "table-at-symbol-plus-addend",
+      "category": "data-sections",
+      "title": "A literal `.word sym + 36` indexed with `side * 6` is a separate array inside hgify's blob: index it as `(&sym[6])[side]` so the addend folds into the relocation",
+      "body": "ov12_0225A37C (overlay_12_battle_controller_opponent_s84): coordinates come from `ov07_022377F4 + 36` / `+ 38` with `mul side*6`. `ov07_022377F4[side + 6][0]` emits `adds r0, r1, #6; muls` and a plain `ov07_022377F4` literal; `#define sCoords (&ov07_022377F4[6])` then `sCoords[side][0]` reproduces the folded literal and plain index. Related: two parallel arrays accessed with the same `index*4` at 0x670 and 0x674 (ov18_021F2A2C) are two array fields (`sprites[1]; spritesNext[15];`), not `sprites[index + 1]` (which recomputes `(index+1)*4`)."
+    },
+    {
+      "id": "missing-include-macro-becomes-call",
+      "category": "tooling",
+      "title": "A `bl [MAKE_TEXT_COLOR]` (or any macro name) in your object means the header defining it was not included: warnings are off, so MWCC silently treats the macro as an implicit function",
+      "body": "overlay_70_r441 and overlay_08_q212 compiled 'fine' but objdiff showed `movs r0,#15; movs r1,#14; movs r2,#2; bl MAKE_TEXT_COLOR` where retail had a literal 0x000F0E02. The project builds with `-warnings off`, so an undeclared identifier used as a function compiles into a call. When a diff shows a bl to something that is a macro (MAKE_TEXT_COLOR, RGB, GX_* helpers), add the include (here text.h) instead of hunting for a codegen trick."
+    },
+    {
+      "id": "mid-function-struct-init-needs-block",
+      "category": "codegen",
+      "title": "A local struct/array initialised from rodata (or zeroed with an initializer) in the MIDDLE of a function, after calls, is declared in a `{ }` block at that point; a function-scope initializer is emitted at the top",
+      "body": "ov99_021E7D30, ov112_021F179C, ov96_021F7D30: `bgConfig = BgConfig_Alloc(...)` runs before the GraphicsModes copy, and SetBothScreensModesAndDisable runs before the BgTemplate[] copy. `{ GraphicsModes modes = X; SetBothScreensModesAndDisable(&modes); } { Templates t = Y; for (...) ... }` reproduces the order and the stack layout (modes at sp+0, templates above it). Same for ov96_021F27B8: `VecFx32 zero = {0,0,0}` stored through `add r1, sp, #0` (initializer form) after two VEC_ calls was a block-scoped initialised local; at function scope the stores move to the prologue, and plain `zero.x = 0` assignments drop the pointer form."
+    },
+    {
+      "id": "bool-switch-on-call-result",
+      "category": "codegen",
+      "title": "`cmp r0,#1; bne L; movs r0,#0; pop; L: movs r0,#1; pop` at the end of a function (fallthrough returns 0) can be `switch (f()) { case TRUE: return 0; default: return 1; }`",
+      "body": "ov01_021F9918: `if (f() == TRUE) return 0; return 1;`, its `!=` form, if/else, a ternary and a goto all put the `return 1` first (`beq` over it). Only a switch on the call result with `case TRUE` laid out the `return 0` as the fallthrough block. Try it whenever the two return blocks come out swapped."
+    },
+    {
+      "id": "cached-global-pointer-local-for-load-order",
+      "category": "codegen",
+      "title": "A global POINTER loaded before an unrelated local initialisation (e.g. before `VecFx32 v = {0,0,0}`) is read into a local first: `const T *table = gTablePtr;`",
+      "body": "MapObjectMovementCmd101_Step1: retail loads `_0210FACC` (an `extern const fx32 *`) right after the first call and before zeroing the vector; `vec.y = _0210FACC[*step]` after the initializer loads it after the zero stores, and a non-constant initializer `{0, _0210FACC[*step], 0}` changes nothing. `const fx32 *table = _0210FACC;` declared before the vector, then `vec.y = table[*step]`, matched."
+    },
+    {
+      "id": "switch-default-is-branch-to-next-block",
+      "category": "codegen",
+      "title": "A `beq`/`bne` test whose other arm is reached by an unconditional `b` into the very next block (instead of a fallthrough) is a two-way `switch` with a `default:`, not an if/else or ternary",
+      "body": "sub_02095540 decrements a wrapping cursor: retail `cmp r0,#0; bne L; ...count-1...; b next; L: ...sel-1...`. The ternary `(sel != 0 ? sel : count) - 1` and both if/else orders produced different block layouts. `switch (a0->selection) { case 0: a0->selection = a0->count - 1; break; default: a0->selection--; break; }` matched."
+    },
+    {
+      "id": "narrow-local-plus-counter-for-truncated-arg",
+      "category": "codegen",
+      "title": "An argument truncated at the call site (`lsl/lsr #24`) from an induction register that itself is NOT truncated when incremented: the value is `u8_local + i` (or an `int` local passed to a `u8` parameter), not a `u8` counter",
+      "body": "ov96_0220C93C: retail increments r5 with a plain `adds r5,#1` and truncates only at the call (`lsls r1,r5,#24; lsrs r1,r1,#24`) to `ov96_0220C9F4(.., u8 index, ..)`. `int index` + `index++` gave the right instructions but swapped r4/r5; `u8 index = GetParticipantCount(); ... f(&lanes[i], index + i, data)` matched (MWCC strength-reduces `index + i` into its own register). ov96_021E9718: an `int` local passed to a u8 parameter gives the call-site truncation where a u8 local truncates at every update."
+    },
+    {
+      "id": "param-types-change-prologue-spill-order",
+      "category": "codegen",
+      "title": "When only the ORDER of the prologue's parameter spills/moves differs (`str r1,[sp]` before vs after `adds r6,r0,#0`), sweep the narrow types of the spilled parameters (u8/u16/int) before touching the body",
+      "body": "ov96_0221966C(a0, player, value, ranks): with `u32 player, int value` the `str r1,[sp]` came after the r0/r3 moves; `u8 player, u16 value` (which also explains `cmp r0,#4; bcc` and the `strh` of value) put it first and matched. The body was identical in every variant: the spill order follows the parameter types, not the statement order."
+    },
+    {
+      "id": "field-address-register-from-prologue",
+      "category": "codegen",
+      "title": "`adds r4, r0, #0 ... adds r4, #0x5f` in the prologue, then every store goes through `strb rX,[r4,#0]`: the source keeps a pointer local to that field (`u8 *dest = &a0->state;`)",
+      "body": "ov96_02219460 writes a0->state (offset 0x5F) on five different return paths. Writing `a0->state = ...` each time re-materialises `adds r5,#0x5f` in every block (+7 instructions). Declaring `u8 *dest = &a0->state;` first and storing through `*dest` matched. Also: `cmp r0,#1; bhi` for `state == 0 || state == 1` came from `if (state <= 1) ... else if (state == 3) ... else GF_ASSERT(FALSE);`; the switch with `case 0: case 1:` emitted separate compares."
+    },
+    {
+      "id": "div-by-four-times-four-keeps-shifts",
+      "category": "codegen",
+      "title": "`lsrs rX,#2; lsls rX,#2` on an unsigned value is `(x / 4) * 4`; `(x >> 2) * 4` and `x & ~3` fold into a `bic`/mask",
+      "body": "ov14_021F462C rounds a u8 field down to a multiple of 4 with two shifts. MWCC folds `(x >> 2) << 2` and `(x >> 2) * 4` into an and-mask, but keeps the shifts for the division form `(unk44D / 4) * 4`."
+    },
+    {
+      "id": "switch-compare-order-reveals-unsigned",
+      "category": "codegen",
+      "title": "A small switch compiled to a compare chain tests its cases in ascending order of the case values AS SEEN BY THE SWITCH TYPE: `cmp #12` before `cmp #-2`/`cmp #-1` means the controlling expression is unsigned (0xFFFFFFFE > 12)",
+      "body": "ov70_0223F008: `switch (ret) { case 12: case -2: ...; case -1: break; default: ... }` emitted -2, -1, 12 with `int ret`; retail tests 12 first. Declaring the callee as returning `u32` (and `u32 ret`) sorted the cases as 12, 0xFFFFFFFE, 0xFFFFFFFF and matched byte for byte. When a compare chain is not in ascending signed order, try an unsigned subject before reordering the case labels."
+    },
+    {
+      "id": "stack-param-reloaded-means-narrow-type",
+      "category": "codegen",
+      "title": "A parameter that retail keeps re-reading from its stack slot (instead of reusing the register it was just loaded into), or whose prologue spill lands in an odd order, is usually a narrow type (u8/u16/s16): sweep the parameter types first",
+      "body": "ov96_021E62AC: `ldr r0,[sp,#0x34]` before the `strb` of the count and again for the loop guard; `u32 count` let MWCC reuse r0, `u8 count` reproduced both loads. ov96_02214044 (`u8 index`), ov96_021F31F0 (`u8 type` together with `for (i = 0, spawn = table[type]; ...)`), ov45_02231018 (`int heapId, s16 region`) and ov96_0221966C (`u8 player, u16 value`) were all prologue-only diffs fixed by the parameter type alone."
+    },
+    {
+      "id": "second-induction-variable-for-bg-id",
+      "category": "codegen",
+      "title": "Two registers counting up in step in one loop (one for the trip count, one passed as a truncated argument) come from two source variables, e.g. `bg = 0; for (i = 0; i < 8; i++) { f(bg); ...; bg++; }`",
+      "body": "ov108_021E6C68 initialises 8 BG layers: retail keeps r7 as the loop counter and r4 as the layer id (`lsls r1,r4,#24` at every call) and reloads the bgConfig offset each iteration. A single `i` hoisted the offset into r7 and used one counter; `for (i = 0, bg = 0; ...; i++, bg++)` was close but not exact; a separate `bg` incremented at the end of the body matched."
+    },
+    {
+      "id": "multiply-operand-order",
+      "category": "codegen",
+      "title": "For `muls rA, rB`, the operand loaded FIRST is the left operand of the C multiply: swap `x * y` when the loads come out in the wrong order",
+      "body": "ov15_021FD24C: retail loads quantity (ldrsh) then price and does `muls r1, r2`; `price * quantity` loaded price first. `quantity * price` matched. Same in ov40_02236F38 (`width * height`, loading [2] before [3])."
+    },
+    {
+      "id": "global-field-anchor-label",
+      "category": "data-sections",
+      "title": "A pool entry naming an odd label inside a global (e.g. ov43_0222F160 = ov43_0222F14C + 0x14) with offsets 0x4C/0x50/0x78 is the anchor MWCC chose so a far field fits the 0..0x7C store immediate; hgify labelled the anchor as its own symbol",
+      "body": "ov43_0222AC28 writes ov43_0222F14C[2] (offsets 0x60, 0x64, 0x8C) through `ldr r1,=ov43_0222F160` and `str [r1,#0x4C/#0x50/#0x78]`, then passes `=ov43_0222F1AC` to Sprite_CreateAffine. Writing `ov43_0222F14C[2].field` from C gives `sym` and `sym+0x80` bases instead. Until the data file is decompiled, declare a struct that starts at the anchor label (`typedef struct { u8 filler[0x4C]; SpriteTemplate cursor; } Anchor; extern Anchor ov43_0222F160;`) and take the template address through its own label (`extern SpriteTemplate ov43_0222F1AC;`)."
+    },
+    {
+      "id": "first-declared-local-gets-highest-stack-slot",
+      "category": "codegen",
+      "title": "Spilled/stack locals are laid out by declaration order: the FIRST declared local gets the HIGHEST sp offset. When two stack slots are swapped, swap the declarations",
+      "body": "ov40_0224355C: retail keeps the String* at sp+4 and the digit value at sp+8; declaring `u32 value;` before `String *string = String_New(...)` matched. Same fix for ov14_021F2D1C (the copied ManagedSpriteTemplate declared before the template it is copied from), ov83_022400BC (`u16 maxHpX; u16 slashX; u16 hpX;` before `Pokemon *mon = ...`) and ov96_0220EA08 (counts, OAM params, transfer params at 0x34/0x14/0 in that declaration order)."
+    },
+    {
+      "id": "loop-invariant-arg-offset-hoisted-late",
+      "category": "codegen",
+      "title": "An `add rX, #imm` of a loop-invariant pointer that retail emits just before the loop (after the counter inits) comes from writing the offset in the call arguments (`p + 0x20`) inside the loop, not from a pre-offset local",
+      "body": "ov18_021EE44C blits 8x8 tiles from `charData->pRawData + 0x20`. With `u8 *pixels = (u8 *)charData->pRawData + 0x20;` the add sat next to the load; writing `u8 *pixels = charData->pRawData;` and passing `pixels + 0x20` to both BlitBitmapRect calls let MWCC hoist the add into the loop preheader, after `movs r5,#0; str r5,[sp,#0x24]; adds r4,#12`, as retail does."
+    },
+    {
+      "id": "platinum-twin-local-copies-matter",
+      "category": "matching-tricks",
+      "title": "When porting a pokeplatinum twin, keep its odd local copies (`u32 collision = _collision;`): they decide which register a stack parameter is loaded into",
+      "body": "sub_0205DF0C (PlayerAvatar_GetMovementActionAnimCode in pokeplatinum) differed only by r0/r1 around the collision tests while the parameter was used directly; adding Platinum's `u32 collision = _collision;` after PlayerAvatar_GetMapObject matched. sub_02061E90 (twin sub_0206537C) and ov82_0223F040 (twin PrintTypeStrings) matched on the first try by transcribing the twin's block structure and nested scopes verbatim with HG names and constants."
+    },
+    {
+      "id": "unrotated-loops-opt2-no-common-subs",
+      "category": "compiler",
+      "title": "Loops that start with `b <test>` (test at the bottom, no duplicated pre-test) AND reload `a0->ptr->field` in every block, but still show instruction scheduling and flag-reusing `bpl` peepholes: compile the function under `#pragma optimization_level 2` + `#pragma opt_common_subs off`",
+      "body": "ov93_0225D4EC (overlay_93_thumb_1_s19): -O4 rotates the loop; `#pragma optimization_level 1` keeps it unrotated but loses scheduling (26 diffs); level 2 alone CSEs the session pointer across blocks (51 diffs); level 2 + opt_common_subs off matched byte for byte. The same pair matched ov89_0225AF10 and ov89_02259CD0 (both parked earlier as 'unrotated loop, not reproducible with pragmas'), ov89_0225A878, ov89_0225C648 and ov89_0225B82C, so overlay_89 and overlay_93_thumb_1 look like TUs built with these settings. Put the pragmas after the declarations, right before the first function. Corollaries seen in the same TUs: an element pointer (`pos = &table[i]; pos->x, pos->y`) instead of `table[i].x/.y` keeps one base register; FX_Mul has to be written out as `(fx32)(((fx64)a * b + 0x800) >> FX32_SHIFT)`."
+    },
+    {
+      "id": "recomputed-subexpressions-opt-common-subs-off",
+      "category": "compiler",
+      "title": "If retail recomputes the same cheap subexpression (`lsls rX, r7, #1` twice, `add rN, r5, #0x1c` before every call) where -O4 keeps one copy, try `#pragma opt_common_subs off` on its own (no optimization_level change)",
+      "body": "ov12_02265E28 (Terrain_LoadResources twin) computed `timeOffset * 2` once in C at -O4; retail shifts it again for the second palette load. `#pragma opt_common_subs off` before the function matched with no other change. Retrying every parked near miss with just that pragma also matched ov90_02259FC8 and ov90_0225B2A8 (overlay_90_r84 / r111), so battle (ov12) and ov90 sources appear to have been built without CSE. Loops stay rotated and scheduling stays on with this pragma alone; for the unrotated-loop variant see unrotated-loops-opt2-no-common-subs."
+    },
+    {
+      "id": "duplicate-induction-pointer-via-array-cast",
+      "category": "matching-tricks",
+      "title": "Retail loop keeps two identical pointer IVs for the same &arr[i] (`add r5, r6, #0` init, both `add #stride` each pass, index spilled to the stack): spell one use as `(T *)a->arr + i`",
+      "body": "ov90_0225B8F0 and ov90_02259B68 (twins of ov114_0225F7D8 / ov114_0225DA5C) loop over a 0x38-byte player array, passing &players[i] to two calls. MWCC merges two `&a0->players[i]` into one strength-reduced IV whatever the pragmas (opt_common_subs, opt_propagation, optimization_level 1-3 all left it at 90 bytes vs 100). Writing the second call's argument as `(Ov90Player *)a0->players + i` keeps the expression distinct, so the compiler builds a second IV with the same base: retail's three IVs (one for the `.unk10` check, two for the call args), i/done/ret on the stack. `(Ov90Player *)((u8 *)a0 + 0x25C) + i` also matches; `a0->players + i`, `&a0->players[0] + i` and `(void *)` casts are normalised back and do not. A local `players = a0->players` pointer gives the extra IV too but computes the base before the count<=0 pre-check, so it is 11 diffs off."
+    },
+    {
+      "id": "callee-param-types-steer-stack-param-cse",
+      "category": "codegen",
+      "title": "When a 5th+ (stack) parameter is passed to several calls, the declared parameter types of those callees decide which uses share one load and whether the parameter gets a register",
+      "body": "ov90_0225B38C passes its stack heapID to BeginNormalPaletteFade (enum HeapID), sub_0203A948 and ov00_021E69A8. Retail loads it once into r5 for the fade and ov00_021E69A8 and reloads it from the stack for sub_0203A948; a3 stays in r3. With every use typed enum HeapID the compiler gave heapID a register for the whole function (131 diffs). It matched with the function parameter declared `u32 heapID` (and `u8 a3`), a local `void sub_0203A948(int, u32)` and a local `void ov00_021E69A8(enum HeapID)` instead of including overlay_00_thumb.h (whose s32 parameter changes the grouping). Implicit conversions to differently typed parameters are separate expressions for CSE, so uses that share a load must convert to the same type. Sweep int/u32/s32/enum on the callee prototypes with vrun when only the reuse of a stack parameter is off."
+    },
+    {
+      "id": "struct-pointer-param-vs-local-for-r7",
+      "category": "codegen",
+      "title": "A struct-pointer stack parameter can win the last callee-saved register from a local that retail keeps there; declaring it `void *` (cast at use) frees the register",
+      "body": "ov90_02259BCC (still parked, overlay_90_r73) keeps the switch result `row` in r7 and homes the 5th and 8th parameters with an `ldr r0, [sp, #N]; str r0, [sp, #N]` self-copy. Declared as `Ov90BgHolder *bg` the 5th parameter took r7 and row went to the stack; declared `void *bg` with `((Ov90BgHolder *)bg)->bgConfig` at the uses, row got r7, though the self-copy and the CSE temp slots still differ. Worth trying when a pointer parameter used only twice is enregistered and a busier local is spilled."
+    },
+    {
+      "id": "msgdata-load-direct-is-zero",
+      "category": "file-patterns",
+      "title": "NewMsgDataFromNarc's first argument is MSGDATA_LOAD_DIRECT = 0, MSGDATA_LOAD_LAZY = 1; a `mov r0, #0` before the call means DIRECT",
+      "body": "ov39_02228140 (twin of ov61_0222BF44, which uses MSG_LOADER_PRELOAD_ENTIRE_BANK) loads three banks with r0 = 0. Writing MSGDATA_LOAD_LAZY out of habit left exactly three `movs r0, #1` diffs. Many matched files use LAZY, so copy the constant from the asm rather than a neighbour."
+    },
+    {
+      "id": "function-local-static-first-bss-move-from-qdata",
+      "category": "data-sections",
+      "title": "A pointer global used by one slice and reloaded after every store is a function-local static; when it is the overlay's first .bss, define it `static` in the slice and delete it from the _Xdata.s file",
+      "body": "ov80_0222FD08 (BattleFactory_Init twin, `static BattleFactory *factory;`) stores into the struct through _0223DD40 and keeps the pointer in r5 across those stores; with `extern BattleFactory *_0223DD40;` MWCC reloads the global after every store (the store might alias it), 528 vs 484 bytes. Declared `static BattleFactory *factory;` inside the function the body matched. _0223DD40 was the only content of asm/overlay_80_0222FD08_qdata.s and the first symbol under `# .OVY_80.bss` in main.nef.xMAP, so removing the .public and .bss block from the qdata file and letting the C object own the 4 bytes kept every address; both ROMs stayed 4/4. Check the xMAP first: if another object's .bss comes earlier in the overlay, the move shifts it. objdiff reports the .bss size difference (asm=0, c=4); that is the move itself, not a mismatch. Related: [[double-literal-load-means-tu-static]] (the general rebuild-the-TU case)."
+    },
+    {
+      "id": "folded-static-const-table-values-are-immediates",
+      "category": "matching-tricks",
+      "title": "Where the twin reads a static const table at a constant index and the asm has an immediate (`mov r0, #0x1c; sub r6, r0, r2`), write the literal: MWCC folded the TU's static table",
+      "body": "ov93_02260080 (twin ov117_02263F80) computes `Unk_ov117_02266BB4[1].unk_02 - y` etc.; the HG asm uses 28, 204, 164 and 52 directly because the table was `static const` in the original TU and every index was constant. The hgify split moved the TU's rodata to the _Xdata file, so declaring the table extern would emit loads. Writing `28 - startY`, `startX - 204`, ... matched. The same function's variable-index table (ov93_02262CA4[ball->bonus]) stays an extern array. Related: [[local-array-initializer-is-rodata-byte-copy]]."
+    },
+    {
+      "id": "managedsprite-setdrawpriority-called-with-int",
+      "category": "ipa",
+      "title": "ManagedSprite_SetDrawPriority callers matched against an int priority parameter: `6 - j` and other computed priorities pass with no lsl/lsr mask",
+      "body": "sprite_system.h declares ManagedSprite_SetDrawPriority(ManagedSprite *, u16), but ov40_0223D008 (`6 - j`) and ov57_022392F4 call it with an unmasked int (4 bytes smaller). Use the called-as-matched macro: `#define ManagedSprite_SetDrawPriority(sprite, priority) ((void (*)(ManagedSprite *, int))ManagedSprite_SetDrawPriority)(sprite, priority)`. Same story as [[shared-sound-header-int-vs-u16-mask]] (PlaySE) and Sprite_SetPalOffset (u8 in the header, unmasked u32 in ov90_02259BCC)."
+    },
+    {
+      "id": "split-tu-local-array-template-extern-offset",
+      "category": "data-sections",
+      "title": "In an hgify slice, a local const array copied element by element from `sym+N` (ldrh r0, [r3, #0x22]) is the original TU's initializer template, which now sits in the shared _Xdata file: copy it through `*(const T *)(sym + N)`, do not write the initializer",
+      "body": "ov40_0222C884 (twin ov62_02230464 with local `const s16 v6[]`, `const f32 v7[]`, `const s8 v8[]`) copies its tables from ov40_02244DA8+0x22, ov40_02244DF0 and ov40_02244DA8+0. Those bytes are in asm/overlay_40_sdata.s, so a C initializer would emit a second copy into the slice's .rodata and shift the overlay. Wrapping each array in a struct and copying it from the extern blob matched on the first try, with the same unrolled ldrh/strh, ldmia/stmia and ldrb/strb sequences: `Ov40WaveXs xs = *(const Ov40WaveXs *)(ov40_02244DA8 + 0x22); Ov40WaveScales scales = ov40_02244DF0; Ov40WaveSpeeds speeds = *(const Ov40WaveSpeeds *)ov40_02244DA8;` with `extern const u8 ov40_02244DA8[];`. [[local-array-initializer-is-rodata-byte-copy]] still applies when the whole TU, data included, is in one C file."
+    },
+    {
+      "id": "assert-flags-from-second-param-copy",
+      "category": "matching-tricks",
+      "title": "`adds r5, r0, #0; adds r4, r1, #0; beq fail; cmp r4, #4; blo ok` tests the second parameter against zero, not the pointer: write `GF_ASSERT(index != 0 && index < 4)`",
+      "body": "ov96_02219940 looks like `GF_ASSERT(a0 != NULL && player < 4)`, but the beq takes its flags from the last flag-setting move, the copy of r1. Every pointer-check spelling (a0 != NULL, !a0, split asserts) emits an explicit `cmp r5, #0`; `GF_ASSERT(player != 0 && player < 4)` reproduces the retail bytes, so the shipped code really checks the index. Note the quirk in a comment rather than \"fixing\" it."
+    },
+    {
+      "id": "read-invariant-inside-loop-for-licm-placement",
+      "category": "codegen",
+      "title": "A loop-invariant load that retail does after `movs rI, #0` in the preheader came from a read written inside the loop body; MWCC hoists it there. Reading it into a local before the loop puts it before the counter init and changes the registers",
+      "body": "ov96_0220E7BC compares data->teams[team].score (a u16 bitfield) with every other team's. With `u16 score = ...` before `for (i = 0; ...)` the shifts ran in r0 and i landed in r1 (13 diffs). Writing `score = data->teams[team].score;` as the first statement inside the loop let loop-invariant motion place the load and shifts after `movs r0, #0`, with i in r0 and score in r1, as retail. Related: [[local-stack-slot-order-equals-decl-order]] for the stack-slot side of the same problem."
+    },
+    {
+      "id": "pointer-before-bitfield-stores-shares-word-load",
+      "category": "codegen",
+      "title": "When retail reads a bitfield word once and uses it both for a field copy and for an array index before any store, the source took `&arr[s->index]` before the first store",
+      "body": "ov96_0220CF50 and ov96_0220D0F8 copy fields of a0->unk14 (id, score) into a result word and index a0->contestants[a0->current] with the 2-bit field from the same word. Retail does `ldr r7, [r5, #0x14]` once, derives both id and current from it, then stores. Writing `result->points = a0->contestants[a0->current].points;` after `result->id = a0->id;` reloads unk14 because the store might alias (73 diffs). `Ov96Contestant *contestant = &a0->contestants[a0->current];` declared before the first store matched both functions."
+    },
+    {
+      "id": "nonconst-extern-template-keeps-copies-sequential",
+      "category": "codegen",
+      "title": "Two small local arrays copied from one extern template come out interleaved when the extern is const; declare it non-const to get retail's copy-one-then-the-other order",
+      "body": "ov96_02214278 copies two 2-byte palette arrays (`bonus` from ov96_0221D1F4+2, `normal` from +0) with ldrb/strb. With `extern const u8 ov96_0221D1F4[];` MWCC hoists the second array's loads above the first array's stores (7 diffs). `extern u8 ov96_0221D1F4[];` with `*(Ov96FlashPalettes *)(ov96_0221D1F4 + 2)` keeps the four load/store pairs in source order, as retail. The stores to the stack might alias a non-const global, so the scheduler cannot reorder across them. Related: [[split-tu-local-array-template-extern-offset]]."
+    },
+    {
+      "id": "pokeathlon-coord-params-are-s16",
+      "category": "matching-tricks",
+      "title": "ov96 (Pokéathlon) helpers that take a target x/y as the 3rd/4th register parameters declare them s16; int params reorder the prologue spills",
+      "body": "ov96_02213364 and ov96_0220DAA0 only matched once targetX/targetY were s16 (ov96_02213364 also needed `u8 team`); with int parameters the prologue stores and the `ldr r3, [sp, #...]` reload were scheduled differently (3-18 diffs). ov96_021FC630 needed its third parameter as u16 for the same reason. When an ov96 function's only diffs are in the prologue, sweep u8/s16/u16 on the parameters with vrun before anything else. Related: [[param-types-change-prologue-spill-order]]."
+    },
+    {
+      "id": "else-branch-placed-last-in-loop-body",
+      "category": "codegen",
+      "title": "A far `beq` from a loop-body test to a store at the END of the body means the C had `if (x != K) { ...long chain... } else { short store }`",
+      "body": "ov96_02214C3C (overlay_96_s1212) computes a zone per runner and, when the zone is 4, stores results[i] = 0. Retail emits `cmp r7, #4; beq <far>` and places the `results[i] = 0` store after the whole if/else chain, right before the loop increment. Writing `if (zone == 4) { results[i] = 0; continue; }` produces an inline `bne; movs; strb; b` instead (63 diffs). Inverting to `if (zone != 4) { ...chain ending in results[i] = 1/2/3/4... } else { results[i] = 0; }` reproduced the layout exactly. The sister function ov96_02214EB4 (s1214) has the same shape with codes 5/6/7 and matched first time with it. Related: [[then-branch-continue-jump-shapes-bne-join-b-end]]."
+    },
+    {
+      "id": "loop-counter-init-before-pointer-setup",
+      "category": "matching-tricks",
+      "title": "When `movs rI, #0` comes before a hoisted pointer spill, set the loop counter first: `i = 0; p = &s->f; for (; i < n; i++)`",
+      "body": "ov96_02214C3C kept a pointer to ball->pos in a stack slot and retail emits `adds r0, #48; movs r4, #0; str r0, [sp, #28]` (counter zeroed between computing and spilling the pointer). With `p = &ball->pos; for (i = 0; ...)` the store came before `movs r4, #0`. Writing `i = 0; p = &ball->pos; for (; i < 2; i++)` matched. Same lever in ov96_02215FC8 (s1256): `i = 0; area += 0x50; for (; i < 4; i++)` put the counter's stack slot first. Related: [[stack-slot-reverse-decl-order]]."
+    },
+    {
+      "id": "u8-stack-param-copied-to-int-local",
+      "category": "matching-tricks",
+      "title": "A u8 stack parameter that retail reloads with ldrb once, stores to its own frame slot and then reads with ldr is copied into an `int` local after the first call",
+      "body": "ov96_0220BE28 (overlay_96_s1014) takes `u8 playerId` as its 5th parameter. Retail does `add r0, sp, #32; ldrb r0, [r0, #16]; str r0, [sp, #20]` right after MI_CpuFill8 and later uses `ldr r0, [sp, #20]`. Using the parameter directly gives ldrb reloads from the caller slot and a 4-byte smaller frame; `int player = playerId;` at the top schedules the copy before the call. Declare `int player;` and assign `player = playerId;` after the MI_CpuFill8 line. In ov96_02217B84 (s1279) the u8 loop value `slot = i % 3` likewise had to be an `int slot` holding `(u8)(i % 3)` to get its stack slot ordered with the other spilled ints. Related: [[u8-stack-param-ldrb-vs-hoisted-ldr]]."
+    },
+    {
+      "id": "separate-variable-for-loop-copy-of-constant",
+      "category": "matching-tricks",
+      "title": "`adds r7, r4, #0` copying a constant-valued register right before a loop means the loop uses a SECOND variable assigned the same constant",
+      "body": "ov96_022163AC (overlay_96_s1261) loads sprite resources for the main screen with `vram = NNS_G2D_VRAM_TYPE_2DMAIN` and then the sub screen with `vram = NNS_G2D_VRAM_TYPE_2DSUB` (r4 holds 1, then 2, and MWCC reuses it for any argument equal to that value, e.g. `adds r0, r4, #0` for a TRUE or a palette count of 2). Before the following `for (i...)` loop retail does `adds r7, r4, #0; movs r4, #0`. Using `vram` inside the loop puts the whole second web in r7 from the start (48 diffs); literal constants in the loop make MWCC hoist the most-used constant (1) instead. Matching source: `vram2 = NNS_G2D_VRAM_TYPE_2DSUB;` right before the loop and `vram2` in the loop body. Related: [[const-arg-reuses-compare-register]]."
+    },
+    {
+      "id": "point16-struct-copy-uses-ldrh",
+      "category": "codegen",
+      "title": "Copying two s16 coordinates with `ldrh/strh` (not `ldrsh`) means a struct assignment of an {s16 x, y} pair",
+      "body": "ov96_022180CC (overlay_96_s1285) copies the player's touch position into the mover's target with `ldrh r0, [r5]; strh r0, [r4, #0x1c]; ldrh r0, [r5, #2]; strh r0, [r4, #0x1e]`. Field-by-field `mover->targetX = player->x;` with s16 fields emits `movs r0, #0; ldrsh r0, [r5, r0]` (and u16 destinations do not change that). Declaring `typedef struct { s16 x; s16 y; } Ov96Point16;` for both and writing `mover->target = player->pos;` produces the halfword copy. Same function: FX32_CONST(intVar) is the SDK macro expanded on an int (`x > 0 ? x * 4096 + 0.5f : x * 4096 - 0.5f`), giving `lsl #12; _fflt; _fadd/_fsub 0.5f; _ffix`."
+    },
+    {
+      "id": "u8-array-zero-init-reloads-spilled-zero",
+      "category": "codegen",
+      "title": "Four `strb` of a value reloaded from a spilled zero counter = `u8 arr[4] = {0, 0, 0, 0};` declared next to that counter",
+      "body": "ov96_02215478 (overlay_96_s1218) starts with `str r0, [sp, #12]` (u8 i = 0 spilled) followed by `strb r0, [r7]; ldr r0, [sp, #12]; strb r0, [r7, #1]; ...` for a u8 counts[4]. Explicit `counts[k] = 0` or `counts[k] = i` statements come out 2 bytes shorter or with a different store order; `u8 counts[4] = { 0, 0, 0, 0 };` in the declaration matched (MWCC value-numbers the zero to the spilled counter). Also in this file: `(int)LCRandom() % 64` gives the signed-modulo `lsr #31; lsl #26; sub; ror #26` sequence. Related: [[aggregate-init-zeroes-vec-via-base-pointer]]."
+    },
+    {
+      "id": "ternary-clamp-sinks-store",
+      "category": "codegen",
+      "title": "`y = y > MAX ? MAX : y;` gives one store after the compare; `if (y > MAX) y = MAX;` stores inside the branch",
+      "body": "ov96_0220B9A8 (overlay_96_s1012) clamps a stack s16: retail is `ldrsh r0, [y]; cmp r0, #0xd8; ble 1f; movs r0, #0xd8; 1: strh r0, [y]`. The if-statement form emits `movs r0, #0xd8; strh r0, [y]` inside the taken branch and leaves the fall-through with no store (2-byte shorter, 8 diffs). The ternary assignment reproduces the single shared store. Same file: `MATH_ABS(272 - y) >> 2` (not `/ 4`) for the `asr #2` without rounding bias."
+    },
+    {
+      "id": "pointer-to-element-hoists-index-products",
+      "category": "matching-tricks",
+      "title": "When retail computes `base + team*0x174` and `member*0x7c` into two registers before a compare and re-adds them at every access, the source took `&teams[team].members[member]` into a pointer first",
+      "body": "ov96_022130EC (overlay_96_s1162) updates a member's points in both branches of `if (zone == team)`. Retail computes r4 = teams + team*0x174 and r6 = member*0x7c ahead of the compare and then does `adds r0, r4, r6; adds r0, #0x5e` for every access. With `teams[team].members[member].points` written in each branch MWCC computes the address per branch (4 bytes shorter); with a `Ov96Team *t = &teams[team]` it changes register allocation (124 diffs). Assigning `Ov96Member *m = &teams[team].members[member];` right before the if matched (after also ordering the spilled locals teams > i > work by declaration). Same file: a u8 BOOL-ish parameter (`u8 flip`) is what makes MWCC spill r2 at function entry rather than after the first use."
+    },
+    {
+      "id": "hgify-dead-function-prototypes-steer-truncation",
+      "category": "file-patterns",
+      "title": "Rewriting an hgify dead inline-asm function: unprototyped `void f();` calls skip argument narrowing, so add real prototypes (or casts) when retail truncates arguments",
+      "body": "The generated dead-function files declare callees as `void f();`. With those, MWCC passes `i + 6` untouched; retail ov08_0221D8B0 does `lsl #24; lsr #24` before LoadRectToBgTilemapRect/ScheduleBgTilemapBufferTransfer, which only happens with a prototype taking u8 (or an explicit cast). Likewise ov08_02221E6C only matched with `unsigned char` parameters on both itself and ov08_02221D2C, and ov120_0225F08C needed `short` parameters on ov01_021F0960. Pass separate scalars where retail loads fields individually (Field3dObject_SetPosEx(obj, pos.x, pos.y, pos.z), not the struct). GF_ASSERT is NOT defined in these files (no includes): writing it compiles to a call of an implicit function `GF_ASSERT`; spell it `if (x == 0) { GF_AssertFail(); }`. Record each converted file in progress.json as its own unit and keep `#pragma force_active on`."
+    },
+    {
+      "id": "window-pointer-hoists-index-shift",
+      "category": "matching-tricks",
+      "title": "`lsls rI, idx, #4` at the very top of a text-printing function means a `Window *window = &app->windows[idx];` local, not `&windows[idx]` at each use",
+      "body": "ov08_0221EF48 / ov08_0221E3A4 / ov08_0221F1B0 (overlay_08 summary screen) compute `idx << 4` in the prologue and then use `adds r0, r5, r4` (windows base + offset) at every AddTextPrinter/ScheduleWindowCopyToVram call. Writing `&windows[idx]` at each call lets MWCC compute the shift lazily right before the first use (4-byte SIZE diff). Declaring the element pointer first, `struct Ov08Window *window = &app->windows[idx];`, reproduces the early shift and the base+offset adds. Related: [[pointer-to-element-hoists-index-products]]."
+    },
+    {
+      "id": "fx32-const-macro-double-increment",
+      "category": "codegen",
+      "title": "`ldrh; adds #1; strh` twice around one `_fflt` = FX32_CONST(x->timer++): the macro evaluates its argument twice, so retail increments twice",
+      "body": "ov02_0224663C (overlay_02_02245B80_o28) loads the u16 timer, stores timer+1, compares the OLD value with 0, reloads, and in each branch increments the field a second time before `lsl #12; _fflt; _fadd/_fsub 0.5f`. That is the SDK FX32_CONST/FX_F32_TO_FX32 macro applied to `shake->timer++`: one ++ in the `(x) > 0` test and one in the selected arm. Write it exactly like that; the original has the bug. Same function: return FALSE early when `timer < duration` and `if (--repeats == 0) return TRUE; return FALSE;` so MWCC reuses the zero high word of the FX_Mul as the FALSE register (a `BOOL done` variable adds a `movs #0`)."
+    },
+    {
+      "id": "struct-array-field-base-without-offset",
+      "category": "matching-tricks",
+      "title": "`row = data + i*8` with fields read at [row, #0x28] means the source indexed `data->rows[i].field` directly; a `Row *row = &data->rows[i]` pointer folds the 0x28 into the base",
+      "body": "ov97_0221F5F8 (overlay_97_q30) computes `adds r7, data, i*8` and then reads `ldrsb [r7, #0x28]` and `ldrb [r7 + j + 0x29]`. With a local `Ov97ResultRow *row = &results->rows[i]` MWCC computes `results + 0x28` first and indexes from there (different code, 2 bytes shorter). Spelling every access as `results->rows[i].trend` / `results->rows[i].marks[j]` lets MWCC keep the struct base + i*8 and fold the 0x28 into the displacement. The opposite of [[pointer-to-element-hoists-index-products]]: check which base the retail loads use before introducing a row pointer."
+    },
+    {
+      "id": "rodata-order-msvc-shortsort-model",
+      "category": "data-sections",
+      "title": "MWCC's .rodata order = MSVC qsort by size over the REVERSED creation list; for <= 8 objects that is shortsort (unstable), so equal-size objects permute predictably",
+      "body": "MWCC (a Windows exe) sorts a TU's .rodata objects, named statics and anonymous local-initializer templates alike, by size with the CRT qsort. Model that reproduced every observation in ov01_02205B14 (overlay_01_022053EC_p27): take the objects in creation order (definition order for file-scope statics, declaration order for local `T x[] = {..}` templates), REVERSE the list, then run MSVC shortsort (used when there are <= 8 elements): `while (hi > lo) { max = lo; for (p = lo + 1; p <= hi; p++) if (size(p) > size(max)) max = p; swap(max, hi); hi--; }`. For three equal-size objects created [x1, x2, x3] the output is [x2, x1, x3]: three 8-byte objects created mov, y, z came out y, mov, z (retail), while the code-matching local arrays (created mov, z, y) came out z, mov, y. Smaller objects always end up first. So when the code needs one declaration order (stack slots and copy order follow it) and the data needs another, move the data to NAMED file-scope `static const` struct wrappers (`typedef struct { s8 v[8]; } T; static const T sZ = {..};` and `T z = sZ;` in the function, still a byte-copy loop) and pick their definition order with the model. Accesses still use the .rodata section symbol + offset where the anonymous template did. With more than 8 objects MSVC qsort switches to median-of-three quicksort, so simulate that instead. Caveat: the model was fitted on TUs of 3 to 6 objects; the 7-template observation in [[mwcc-rodata-const-struct-first-pinned-rest-reversed]] does not follow from plain shortsort (that TU probably had more objects), so always confirm with the full build. Related: [[size-sorted-static-consts-combine-into-struct]], [[mwcc-rodata-const-struct-first-pinned-rest-reversed]], [[local-array-init-as-named-const-struct-copy-for-rodata-order]], [[double-literal-load-means-tu-static]]."
+    },
+    {
+      "id": "split-struct-offset-adds-via-reused-pointer",
+      "category": "matching-tricks",
+      "title": "`adds rX, #0x50; adds rX, #0x30` (two adds where one #0x80 fits) = the address was formed in two assignments to the SAME pointer variable",
+      "body": "sub_0205A544 (unk_0205A44C_p10) loads an entry pointer and emits `adds r5, #80; adds r5, #48` before reading fields at [r5, #0x18] and [r5, #0x1C]. Nested structs (`&e->unk50.unk30`), an array of 0x30-byte structs (`&e->unk50[1]`), a u8 array (`e->unk50 + 0x30`) and a separate `mid` local all fold into one `adds #0x80`. What matched was assigning the variable twice: `sub = (Sub *)&a0->unk110[index]->unk50; sub = &((Mid *)sub)->unk30;`. MWCC does not fold the constant across the two definitions of one variable. Related: [[struct-array-field-base-without-offset]]."
+    },
+    {
+      "id": "fx32-is-long-int-divisor-gets-own-temp",
+      "category": "codegen",
+      "title": "s32/fx32 are `signed long`, not int: `(fx32 - field) / intParam` converts the int to long once, and that converted copy is a separate value MWCC may spill on its own",
+      "body": "ov71_0224A694 (overlay_71_r164, twin BallArrivalPathState_BeginTransition) takes three coordinates in r1-r3 and `int duration` on the stack. Retail keeps the coordinates in r4/r6/r7, copies duration to [sp] for the three `_s32_div_f` calls, and reloads the ORIGINAL stack argument [sp, #0x18] for the final `state->transitionFrames = duration`. With all-int parameters (22 diffs) MWCC put duration in r4 and spilled z instead, and a local copy of duration was copy-propagated away. Declaring the three coordinates `fx32` matched: NitroSDK's types.h has `typedef signed long s32;`, so each division converts `duration` to long, and that converted value, not the int parameter, is the divisor that gets the stack slot. When a stack argument is spilled to a fresh slot but the final store reloads the incoming slot, look for an int/long mix (s32, fx32 or u32 vs int) between the divisor and the other operands. Related: [[param-types-change-prologue-spill-order]]."
+    },
+    {
+      "id": "double-negation-forces-add-operand-order",
+      "category": "matching-tricks",
+      "title": "`adds rD, rTable, rVar` vs `adds rD, rVar, rTable` that neither source order nor types fix: write `table - -var`",
+      "body": "ov43_0222CB34 (overlay_43_r106) passes `table[i].x + |offset.x|` to CopyToBgTilemapRect. Retail adds with the table load as the first operand (`adds r2, r2, r6`); MWCC emitted `adds r2, r6, r2` for both `table + d` and `d + table`, with if-statement or ternary abs, any declaration order, u8 casts, and s16/u8/u16/u32 locals (those added extensions). Writing `table[i].x - -dx` matched: MWCC folds the double negation into an add but keeps the subtraction's operand order. Add a one-line comment, since the expression looks like a typo. Related: [[cache-call-result-to-fix-cmp-operand-order]]."
+    },
+    {
+      "id": "local-pointer-to-static-keeps-register-offsets",
+      "category": "data-sections",
+      "title": "Retail `ldr r0, =sym; movs r1, #0x51; lsls r1, #2; ldr r0, [r0, r1]` (big field offset in a register, base reloaded from the pool) = access through a local pointer to the static; direct `sym.field` makes MWCC re-anchor (sym+0x100, #0x44)",
+      "body": "ov74_022359BC (overlay_74_thumb_s430) frees sprite resources held in one big static of the original overlay_74 TU (hgify labels ov74_0223D454, ov74_0223D488 = +0x34 and ov74_0223D654 = +0x200). Retail reads fields at 0x144..0x160 and 0x12C+4i as `ldr r0, =ov74_0223D488; ldr r0, [r0, rOff]`, and the sprite at +0x208 through r4 = ov74_0223D454 loaded once. Writing `ov74_0223D488.charRes` made MWCC pick a new anchor (`=ov74_0223D488+0x100`, `[r0, #0x44]`), 172 vs 156 bytes. Declaring `Ov74_0223D454 *work = &ov74_0223D454; Ov74_0223D488 *gfx = &ov74_0223D488;` at the top and accessing through them matched: MWCC rematerializes the constant address from the pool for each use and keeps large offsets in a register. The one direct access retail made (`ov74_0223D654.cursorSprite != NULL`, the anchored +0x208 field) stays direct. Related: [[global-field-anchor-label]], [[double-literal-load-means-tu-static]]."
     }
   ]
 }

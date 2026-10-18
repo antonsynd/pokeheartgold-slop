@@ -18,7 +18,7 @@ from twins import platinum_source  # noqa: E402
 
 def extract(source, func):
     with tempfile.TemporaryDirectory() as root:
-        Path(root, "file.c").write_text(textwrap.dedent(source).lstrip("\n"))
+        Path(root, "file.c").write_text(textwrap.dedent(source).lstrip("\n"), newline="\n")
         return platinum_source(Path(root), "file.c", func)
 
 

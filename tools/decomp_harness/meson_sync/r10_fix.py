@@ -85,7 +85,7 @@ def main():
             deleted[kind] += 1
         files_changed += 1
         if not dry:
-            with open(src, 'w', encoding='latin-1') as fh:
+            with open(src, 'w', encoding='latin-1', newline='\n') as fh:
                 fh.write(text)
     print(f'r10_fix: {files_changed} files {"would change" if dry else "changed"}; deletions by kind: {dict(deleted)}')
     print(f'r10_fix: {len(review)} of the deleted type stand-ins were not compared by hand:')

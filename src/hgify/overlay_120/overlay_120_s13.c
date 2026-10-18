@@ -2,491 +2,143 @@
 #pragma warning_errors off
 #pragma thumb on
 
+struct Ov120Transition {
+    int unk0;
+    void *windows[48];
+    unsigned char count;
+    unsigned char done;
+    unsigned char interval;
+    unsigned char unkC7;
+    signed char timer;
+    unsigned char unkC9;
+    unsigned char active;
+    unsigned char reverse : 1;
+};
+
 void GF_AssertFail();
 void ov120_0225F040();
-void ov120_0225F08C();
-void ov120_022602E4();
-void ov120_022602FC();
-void ov120_02260314();
-void ov120_0226032C();
-void ov120_0225F318(void);
-void ov120_0225F4DC(void);
+int ov120_0225F08C();
+extern const unsigned char ov120_022602E4[];
+extern const unsigned char ov120_022602FC[];
+extern const unsigned char ov120_02260314[];
+extern const unsigned char ov120_0226032C[];
+int ov120_0225F318(struct Ov120Transition *transition);
+int ov120_0225F4DC(struct Ov120Transition *transition);
 
-// FUNCTION ov120_0225F318: no matching C yet, the original asm
+// FUNCTION ov120_0225F318: matching C (manual)
 #pragma force_active on
-// clang-format off
-asm void ov120_0225F318(void) {
-    push {r3, r4, r5, r6, r7, lr}
-    sub sp, #0x28
-    add r5, r0, #0
-    bne _0225F324
-    bl GF_AssertFail
-_0225F324:
-    add r0, r5, #0
-    add r0, #0xca
-    ldrb r0, [r0, #0]
-    cmp r0, #0
-    bne _0225F334
-    add sp, #0x28
-    mov r0, #1
-    pop {r3, r4, r5, r6, r7, pc}
-_0225F334:
-    add r0, r5, #0
-    add r0, #0xc4
-    ldrb r0, [r0, #0]
-    cmp r0, #0x18
-    bhs _0225F436
-    mov r1, #0xc8
-    ldrsb r0, [r5, r1]
-    sub r2, r0, #1
-    add r0, r5, #0
-    add r0, #0xc8
-    strb r2, [r0, #0]
-    ldrsb r0, [r5, r1]
-    cmp r0, #0
-    bgt _0225F436
-    add r0, r5, #0
-    add r0, #0xc6
-    ldrb r1, [r0, #0]
-    add r0, r5, #0
-    add r0, #0xc8
-    strb r1, [r0, #0]
-    add r0, r5, #0
-    add r0, #0xcb
-    ldrb r0, [r0, #0]
-    lsl r0, r0, #0x1f
-    lsr r0, r0, #0x1f
-    beq _0225F372
-    add r0, r5, #0
-    add r0, #0xc4
-    ldrb r1, [r0, #0]
-    ldr r0, =ov120_0226032C
-    b _0225F37A
-_0225F372:
-    add r0, r5, #0
-    add r0, #0xc4
-    ldrb r1, [r0, #0]
-    ldr r0, =ov120_022602FC
-_0225F37A:
-    ldrb r2, [r0, r1]
-    ldr r0, [r5, #0]
-    mov r1, #0x1d
-    str r0, [sp, #0]
-    mov r0, #0
-    str r0, [sp, #4]
-    mov r0, #0x20
-    str r0, [sp, #8]
-    str r0, [sp, #0xc]
-    str r0, [sp, #0x10]
-    add r0, r5, #0
-    add r0, #0xc9
-    ldrb r0, [r0, #0]
-    lsr r4, r2, #0x1f
-    lsl r3, r2, #0x1d
-    sub r3, r3, r4
-    ror r3, r1
-    add r1, r4, r3
-    asr r3, r2, #2
-    lsr r3, r3, #0x1d
-    str r0, [sp, #0x14]
-    lsl r0, r2, #2
-    add r3, r2, r3
-    asr r2, r3, #3
-    add r3, r5, #0
-    add r3, #0xc7
-    add r0, r5, r0
-    lsl r1, r1, #5
-    lsl r2, r2, #5
-    ldrb r3, [r3, #0]
-    ldr r0, [r0, #4]
-    add r1, #0x10
-    add r2, #0x10
-    bl ov120_0225F040
-    add r0, r5, #0
-    add r0, #0xcb
-    ldrb r0, [r0, #0]
-    lsl r0, r0, #0x1f
-    lsr r0, r0, #0x1f
-    beq _0225F3D6
-    add r0, r5, #0
-    add r0, #0xc4
-    ldrb r1, [r0, #0]
-    ldr r0, =ov120_0226032C
-    b _0225F3DE
-_0225F3D6:
-    add r0, r5, #0
-    add r0, #0xc4
-    ldrb r1, [r0, #0]
-    ldr r0, =ov120_022602FC
-_0225F3DE:
-    ldrb r1, [r0, r1]
-    mov r0, #0x2f
-    sub r2, r0, r1
-    ldr r0, [r5, #0]
-    lsr r4, r2, #0x1f
-    str r0, [sp, #0]
-    mov r0, #0
-    str r0, [sp, #4]
-    mov r0, #0x20
-    str r0, [sp, #8]
-    str r0, [sp, #0xc]
-    lsl r3, r2, #0x1d
-    str r0, [sp, #0x10]
-    add r0, r5, #0
-    add r0, #0xc9
-    ldrb r0, [r0, #0]
-    sub r3, r3, r4
-    mov r1, #0x1d
-    ror r3, r1
-    add r1, r4, r3
-    asr r3, r2, #2
-    lsr r3, r3, #0x1d
-    str r0, [sp, #0x14]
-    lsl r0, r2, #2
-    add r3, r2, r3
-    asr r2, r3, #3
-    add r3, r5, #0
-    add r3, #0xc7
-    add r0, r5, r0
-    lsl r1, r1, #5
-    lsl r2, r2, #5
-    ldrb r3, [r3, #0]
-    ldr r0, [r0, #4]
-    add r1, #0x10
-    add r2, #0x10
-    bl ov120_0225F040
-    add r0, r5, #0
-    add r0, #0xc4
-    ldrb r0, [r0, #0]
-    add r1, r0, #1
-    add r0, r5, #0
-    add r0, #0xc4
-    strb r1, [r0, #0]
-_0225F436:
-    add r0, r5, #0
-    add r0, #0xc5
-    ldrb r4, [r0, #0]
-    add r0, r5, #0
-    add r0, #0xc4
-    ldrb r0, [r0, #0]
-    cmp r4, r0
-    bge _0225F4B0
-    ldr r0, =ov120_0226032C
-    add r7, r0, r4
-    ldr r0, =ov120_022602FC
-    add r6, r0, r4
-    add r0, r5, #0
-    str r0, [sp, #0x24]
-    add r0, #0xc5
-    str r0, [sp, #0x24]
-_0225F456:
-    add r0, r5, #0
-    add r0, #0xcb
-    ldrb r0, [r0, #0]
-    lsl r0, r0, #0x1f
-    lsr r0, r0, #0x1f
-    beq _0225F46C
-    ldrb r0, [r7, #0]
-    mov r1, #0x2f
-    sub r1, r1, r0
-    str r1, [sp, #0x18]
-    b _0225F474
-_0225F46C:
-    ldrb r0, [r6, #0]
-    mov r1, #0x2f
-    sub r1, r1, r0
-    str r1, [sp, #0x18]
-_0225F474:
-    lsl r0, r0, #2
-    add r0, r5, r0
-    ldr r0, [r0, #4]
-    bl ov120_0225F08C
-    str r0, [sp, #0x20]
-    ldr r0, [sp, #0x18]
-    lsl r0, r0, #2
-    add r0, r5, r0
-    ldr r0, [r0, #4]
-    bl ov120_0225F08C
-    ldr r1, [sp, #0x20]
-    orr r0, r1
-    str r0, [sp, #0x1c]
-    cmp r0, #1
-    bne _0225F4A0
-    ldr r0, [sp, #0x24]
-    ldrb r0, [r0, #0]
-    add r1, r0, #1
-    ldr r0, [sp, #0x24]
-    strb r1, [r0, #0]
-_0225F4A0:
-    add r0, r5, #0
-    add r0, #0xc4
-    ldrb r0, [r0, #0]
-    add r4, r4, #1
-    add r7, r7, #1
-    add r6, r6, #1
-    cmp r4, r0
-    blt _0225F456
-_0225F4B0:
-    add r0, r5, #0
-    add r0, #0xc5
-    ldrb r0, [r0, #0]
-    cmp r0, #0x18
-    blo _0225F4CC
-    ldr r0, [sp, #0x1c]
-    cmp r0, #1
-    bne _0225F4CC
-    mov r0, #0
-    add r5, #0xca
-    strb r0, [r5, #0]
-    add sp, #0x28
-    mov r0, #1
-    pop {r3, r4, r5, r6, r7, pc}
-_0225F4CC:
-    mov r0, #0
-    add sp, #0x28
-    pop {r3, r4, r5, r6, r7, pc}
+int ov120_0225F318(struct Ov120Transition *transition) {
+    int done;
+    int i;
+
+    if (transition == 0) {
+        GF_AssertFail();
+    }
+    if (transition->active == 0) {
+        return 1;
+    }
+    if (transition->count < 24) {
+        transition->timer--;
+        if (transition->timer <= 0) {
+            int idx;
+
+            transition->timer = transition->interval;
+            if (transition->reverse) {
+                idx = ov120_0226032C[transition->count];
+            } else {
+                idx = ov120_022602FC[transition->count];
+            }
+            ov120_0225F040(transition->windows[idx], (idx % 8) * 32 + 16, (idx / 8) * 32 + 16, transition->unkC7, transition->unk0, 0, 32, 32, 32, transition->unkC9);
+            if (transition->reverse) {
+                idx = ov120_0226032C[transition->count];
+            } else {
+                idx = ov120_022602FC[transition->count];
+            }
+            idx = 47 - idx;
+            ov120_0225F040(transition->windows[idx], (idx % 8) * 32 + 16, (idx / 8) * 32 + 16, transition->unkC7, transition->unk0, 0, 32, 32, 32, transition->unkC9);
+            transition->count++;
+        }
+    }
+    for (i = transition->done; i < transition->count; i++) {
+        int idx;
+        int other;
+        int ret;
+
+        if (transition->reverse) {
+            idx = ov120_0226032C[i];
+            other = 47 - idx;
+        } else {
+            idx = ov120_022602FC[i];
+            other = 47 - idx;
+        }
+        ret = ov120_0225F08C(transition->windows[idx]);
+        done = ret | ov120_0225F08C(transition->windows[other]);
+        if (done == 1) {
+            transition->done++;
+        }
+    }
+    if (transition->done >= 24 && done == 1) {
+        transition->active = 0;
+        return 1;
+    }
+    return 0;
 }
-// clang-format on
 #pragma force_active reset
-// FUNCTION ov120_0225F4DC: no matching C yet, the original asm
+// FUNCTION ov120_0225F4DC: matching C (manual)
 #pragma force_active on
-// clang-format off
-asm void ov120_0225F4DC(void) {
-    push {r3, r4, r5, r6, r7, lr}
-    sub sp, #0x28
-    add r5, r0, #0
-    bne _0225F4E8
-    bl GF_AssertFail
-_0225F4E8:
-    add r0, r5, #0
-    add r0, #0xca
-    ldrb r0, [r0, #0]
-    cmp r0, #0
-    bne _0225F4F8
-    add sp, #0x28
-    mov r0, #1
-    pop {r3, r4, r5, r6, r7, pc}
-_0225F4F8:
-    add r0, r5, #0
-    add r0, #0xc4
-    ldrb r0, [r0, #0]
-    cmp r0, #0x18
-    bhs _0225F602
-    mov r1, #0xc8
-    ldrsb r0, [r5, r1]
-    sub r2, r0, #1
-    add r0, r5, #0
-    add r0, #0xc8
-    strb r2, [r0, #0]
-    ldrsb r0, [r5, r1]
-    cmp r0, #0
-    bgt _0225F602
-    add r0, r5, #0
-    add r0, #0xc6
-    ldrb r1, [r0, #0]
-    add r0, r5, #0
-    add r0, #0xc8
-    strb r1, [r0, #0]
-    add r0, r5, #0
-    add r0, #0xcb
-    ldrb r0, [r0, #0]
-    lsl r0, r0, #0x1f
-    lsr r0, r0, #0x1f
-    beq _0225F538
-    add r0, r5, #0
-    add r0, #0xc4
-    ldrb r1, [r0, #0]
-    ldr r0, =ov120_02260314
-    ldrb r2, [r0, r1]
-    b _0225F546
-_0225F538:
-    add r0, r5, #0
-    add r0, #0xc4
-    ldrb r1, [r0, #0]
-    ldr r0, =ov120_02260314
-    ldrb r1, [r0, r1]
-    mov r0, #0x2f
-    sub r2, r0, r1
-_0225F546:
-    ldr r0, [r5, #0]
-    lsr r4, r2, #0x1f
-    str r0, [sp, #0]
-    mov r0, #0
-    str r0, [sp, #4]
-    str r0, [sp, #8]
-    mov r0, #0x20
-    str r0, [sp, #0xc]
-    lsl r3, r2, #0x1d
-    str r0, [sp, #0x10]
-    add r0, r5, #0
-    add r0, #0xc9
-    ldrb r0, [r0, #0]
-    sub r3, r3, r4
-    mov r1, #0x1d
-    ror r3, r1
-    add r1, r4, r3
-    asr r3, r2, #2
-    lsr r3, r3, #0x1d
-    str r0, [sp, #0x14]
-    lsl r0, r2, #2
-    add r3, r2, r3
-    asr r2, r3, #3
-    add r3, r5, #0
-    add r3, #0xc7
-    add r0, r5, r0
-    lsl r1, r1, #5
-    lsl r2, r2, #5
-    ldrb r3, [r3, #0]
-    ldr r0, [r0, #4]
-    add r1, #0x10
-    add r2, #0x10
-    bl ov120_0225F040
-    add r0, r5, #0
-    add r0, #0xcb
-    ldrb r0, [r0, #0]
-    lsl r0, r0, #0x1f
-    lsr r0, r0, #0x1f
-    beq _0225F5A2
-    add r0, r5, #0
-    add r0, #0xc4
-    ldrb r1, [r0, #0]
-    ldr r0, =ov120_022602E4
-    ldrb r2, [r0, r1]
-    b _0225F5B0
-_0225F5A2:
-    add r0, r5, #0
-    add r0, #0xc4
-    ldrb r1, [r0, #0]
-    ldr r0, =ov120_022602E4
-    ldrb r1, [r0, r1]
-    mov r0, #0x2f
-    sub r2, r0, r1
-_0225F5B0:
-    ldr r0, [r5, #0]
-    lsr r4, r2, #0x1f
-    str r0, [sp, #0]
-    mov r0, #0
-    str r0, [sp, #4]
-    str r0, [sp, #8]
-    mov r0, #0x20
-    str r0, [sp, #0xc]
-    lsl r3, r2, #0x1d
-    str r0, [sp, #0x10]
-    add r0, r5, #0
-    add r0, #0xc9
-    ldrb r0, [r0, #0]
-    sub r3, r3, r4
-    mov r1, #0x1d
-    ror r3, r1
-    add r1, r4, r3
-    asr r3, r2, #2
-    lsr r3, r3, #0x1d
-    str r0, [sp, #0x14]
-    lsl r0, r2, #2
-    add r3, r2, r3
-    asr r2, r3, #3
-    add r3, r5, #0
-    add r3, #0xc7
-    add r0, r5, r0
-    lsl r1, r1, #5
-    lsl r2, r2, #5
-    ldrb r3, [r3, #0]
-    ldr r0, [r0, #4]
-    add r1, #0x10
-    add r2, #0x10
-    bl ov120_0225F040
-    add r0, r5, #0
-    add r0, #0xc4
-    ldrb r0, [r0, #0]
-    add r1, r0, #1
-    add r0, r5, #0
-    add r0, #0xc4
-    strb r1, [r0, #0]
-_0225F602:
-    add r0, r5, #0
-    add r0, #0xc5
-    ldrb r7, [r0, #0]
-    add r0, r5, #0
-    add r0, #0xc4
-    ldrb r0, [r0, #0]
-    cmp r7, r0
-    bge _0225F680
-    ldr r0, =ov120_02260314
-    add r6, r0, r7
-    ldr r0, =ov120_022602E4
-    add r4, r0, r7
-    add r0, r5, #0
-    str r0, [sp, #0x24]
-    add r0, #0xc5
-    str r0, [sp, #0x24]
-_0225F622:
-    add r0, r5, #0
-    add r0, #0xcb
-    ldrb r0, [r0, #0]
-    lsl r0, r0, #0x1f
-    lsr r0, r0, #0x1f
-    beq _0225F636
-    ldrb r1, [r4, #0]
-    ldrb r0, [r6, #0]
-    str r1, [sp, #0x18]
-    b _0225F644
-_0225F636:
-    ldrb r1, [r6, #0]
-    ldrb r2, [r4, #0]
-    mov r0, #0x2f
-    sub r0, r0, r1
-    mov r1, #0x2f
-    sub r1, r1, r2
-    str r1, [sp, #0x18]
-_0225F644:
-    lsl r0, r0, #2
-    add r0, r5, r0
-    ldr r0, [r0, #4]
-    bl ov120_0225F08C
-    str r0, [sp, #0x20]
-    ldr r0, [sp, #0x18]
-    lsl r0, r0, #2
-    add r0, r5, r0
-    ldr r0, [r0, #4]
-    bl ov120_0225F08C
-    ldr r1, [sp, #0x20]
-    orr r0, r1
-    str r0, [sp, #0x1c]
-    cmp r0, #1
-    bne _0225F670
-    ldr r0, [sp, #0x24]
-    ldrb r0, [r0, #0]
-    add r1, r0, #1
-    ldr r0, [sp, #0x24]
-    strb r1, [r0, #0]
-_0225F670:
-    add r0, r5, #0
-    add r0, #0xc4
-    ldrb r0, [r0, #0]
-    add r7, r7, #1
-    add r6, r6, #1
-    add r4, r4, #1
-    cmp r7, r0
-    blt _0225F622
-_0225F680:
-    add r0, r5, #0
-    add r0, #0xc5
-    ldrb r0, [r0, #0]
-    cmp r0, #0x18
-    blo _0225F69C
-    ldr r0, [sp, #0x1c]
-    cmp r0, #1
-    bne _0225F69C
-    mov r0, #0
-    add r5, #0xca
-    strb r0, [r5, #0]
-    add sp, #0x28
-    mov r0, #1
-    pop {r3, r4, r5, r6, r7, pc}
-_0225F69C:
-    mov r0, #0
-    add sp, #0x28
-    pop {r3, r4, r5, r6, r7, pc}
+int ov120_0225F4DC(struct Ov120Transition *transition) {
+    int done;
+    int i;
+
+    if (transition == 0) {
+        GF_AssertFail();
+    }
+    if (transition->active == 0) {
+        return 1;
+    }
+    if (transition->count < 24) {
+        transition->timer--;
+        if (transition->timer <= 0) {
+            int idx;
+
+            transition->timer = transition->interval;
+            if (transition->reverse) {
+                idx = ov120_02260314[transition->count];
+            } else {
+                idx = 47 - ov120_02260314[transition->count];
+            }
+            ov120_0225F040(transition->windows[idx], (idx % 8) * 32 + 16, (idx / 8) * 32 + 16, transition->unkC7, transition->unk0, 0, 0, 32, 32, transition->unkC9);
+            if (transition->reverse) {
+                idx = ov120_022602E4[transition->count];
+            } else {
+                idx = 47 - ov120_022602E4[transition->count];
+            }
+            ov120_0225F040(transition->windows[idx], (idx % 8) * 32 + 16, (idx / 8) * 32 + 16, transition->unkC7, transition->unk0, 0, 0, 32, 32, transition->unkC9);
+            transition->count++;
+        }
+    }
+    for (i = transition->done; i < transition->count; i++) {
+        int idx;
+        int other;
+        int ret;
+
+        if (transition->reverse) {
+            idx = ov120_02260314[i];
+            other = ov120_022602E4[i];
+        } else {
+            idx = 47 - ov120_02260314[i];
+            other = 47 - ov120_022602E4[i];
+        }
+        ret = ov120_0225F08C(transition->windows[idx]);
+        done = ret | ov120_0225F08C(transition->windows[other]);
+        if (done == 1) {
+            transition->done++;
+        }
+    }
+    if (transition->done >= 24 && done == 1) {
+        transition->active = 0;
+        return 1;
+    }
+    return 0;
 }
-// clang-format on
 #pragma force_active reset

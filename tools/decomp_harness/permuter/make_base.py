@@ -367,7 +367,7 @@ def main():
     if args.out is None:
         sys.stdout.write(base)
     else:
-        open(args.out, "w", encoding="utf-8").write(base)
+        open(args.out, "w", encoding="utf-8", newline="\n").write(base)
         print(f"make_base: wrote {args.out}; defined structs: "
               f"{', '.join(defined) or '(none)'}; opaque: "
               f"{', '.join(opaque) or '(none)'}", file=sys.stderr)

@@ -122,11 +122,11 @@ def main(argv):
     if args.out == "-":
         print(text)
     else:
-        Path(args.out).write_text(text)
+        Path(args.out).write_text(text, newline="\n")
         print(f"wrote {args.out}: {rec['fired']}/{rec['hooked']} hooked functions fired in {rec['frames']} frames ({wall:.1f}s)",
               file=sys.stderr)
     if args.record:
-        with EVIDENCE.open("a") as fp:
+        with EVIDENCE.open("a", newline="\n") as fp:
             fp.write(json.dumps({"ts": time.strftime("%Y-%m-%dT%H:%M:%S"), "note": args.record,
                                  "state": args.state, "script": args.script, "frames": rec["frames"],
                                  "fired": {k: v["hits"] for k, v in funcs.items() if v["hits"]},

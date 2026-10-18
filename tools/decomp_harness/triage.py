@@ -193,7 +193,7 @@ def main():
 
     ledger = load_ledger(args.rebuild)
     report = build_report(ledger)
-    with open(HARNESS / "triage_report.json", "w") as f:
+    with open(HARNESS / "triage_report.json", "w", newline="\n") as f:
         json.dump(report, f, indent=1)
 
     if args.file:

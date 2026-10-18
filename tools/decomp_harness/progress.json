@@ -1002,6 +1002,3598 @@
       "attempts": 7,
       "result": "matched",
       "note": "sonnet-drafted; drafts pilot #4 (32/36 on first successful compile, 36/36 after 5 more); twins.py prune deferred until PR #5 merges"
+    },
+    {
+      "file": "asm/nitrocrypto_63.s",
+      "lines": 24,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "Windows/MSYS2 session 2026-10-18; compile_one + objdiff, full ROM SHA1 OK"
+    },
+    {
+      "file": "asm/overlay_00_thumb_r72.s",
+      "lines": 54,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "Windows/MSYS2 session 2026-10-18; compile_one + objdiff, full ROM SHA1 OK"
+    },
+    {
+      "file": "asm/overlay_01_021EB1E8_r71.s",
+      "lines": 51,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "Windows/MSYS2 session 2026-10-18; compile_one + objdiff, full ROM SHA1 OK"
+    },
+    {
+      "file": "asm/overlay_01_021EFB38_p00.s",
+      "lines": 43,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "Windows/MSYS2 session 2026-10-18; compile_one + objdiff, full ROM SHA1 OK"
+    },
+    {
+      "file": "asm/overlay_01_021F1348_p59.s",
+      "lines": 38,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "Windows/MSYS2 session 2026-10-18; compile_one + objdiff, full ROM SHA1 OK"
+    },
+    {
+      "file": "asm/overlay_01_021F4464_e02.s",
+      "lines": 55,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "Windows/MSYS2 session 2026-10-18; compile_one + objdiff, full ROM SHA1 OK"
+    },
+    {
+      "file": "asm/overlay_01_021F72DC_q60.s",
+      "lines": 65,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "Windows/MSYS2 session 2026-10-18; compile_one + objdiff, full ROM SHA1 OK"
+    },
+    {
+      "file": "asm/overlay_01_021F944C_p95.s",
+      "lines": 56,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "Windows/MSYS2 session 2026-10-18; compile_one + objdiff, full ROM SHA1 OK"
+    },
+    {
+      "file": "asm/overlay_01_021FB878_c20.s",
+      "lines": 51,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "Windows/MSYS2 session 2026-10-18; compile_one + objdiff, full ROM SHA1 OK"
+    },
+    {
+      "file": "asm/overlay_01_sprite_data.s",
+      "lines": 1364,
+      "functions": 0,
+      "attempts": 1,
+      "result": "matched",
+      "note": "Windows/MSYS2 session 2026-10-18; compile_one + objdiff, full ROM SHA1 OK"
+    },
+    {
+      "file": "asm/overlay_07_r100.s",
+      "lines": 57,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "Windows/MSYS2 session 2026-10-18; compile_one + objdiff, full ROM SHA1 OK"
+    },
+    {
+      "file": "asm/overlay_07_r133.s",
+      "lines": 51,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "Windows/MSYS2 session 2026-10-18; compile_one + objdiff, full ROM SHA1 OK"
+    },
+    {
+      "file": "asm/overlay_07_r168.s",
+      "lines": 33,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "Windows/MSYS2 session 2026-10-18; compile_one + objdiff, full ROM SHA1 OK"
+    },
+    {
+      "file": "asm/overlay_07_r654.s",
+      "lines": 37,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "Windows/MSYS2 session 2026-10-18; compile_one + objdiff, full ROM SHA1 OK"
+    },
+    {
+      "file": "asm/overlay_08_q112.s",
+      "lines": 46,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "Windows/MSYS2 session 2026-10-18; compile_one + objdiff, full ROM SHA1 OK"
+    },
+    {
+      "file": "asm/overlay_08_q220.s",
+      "lines": 47,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "Windows/MSYS2 session 2026-10-18; compile_one + objdiff, full ROM SHA1 OK"
+    },
+    {
+      "file": "asm/overlay_102_r20.s",
+      "lines": 31,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "Windows/MSYS2 session 2026-10-18; compile_one + objdiff, full ROM SHA1 OK"
+    },
+    {
+      "file": "asm/overlay_102_r28.s",
+      "lines": 31,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "Windows/MSYS2 session 2026-10-18; compile_one + objdiff, full ROM SHA1 OK"
+    },
+    {
+      "file": "asm/overlay_103_q72.s",
+      "lines": 28,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "Windows/MSYS2 session 2026-10-18; compile_one + objdiff, full ROM SHA1 OK"
+    },
+    {
+      "file": "asm/overlay_106_p20.s",
+      "lines": 47,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "Windows/MSYS2 session 2026-10-18; compile_one + objdiff, full ROM SHA1 OK"
+    },
+    {
+      "file": "asm/overlay_112_r269.s",
+      "lines": 69,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "Windows/MSYS2 session 2026-10-18; compile_one + objdiff, full ROM SHA1 OK"
+    },
+    {
+      "file": "asm/overlay_112_r33.s",
+      "lines": 28,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "Windows/MSYS2 session 2026-10-18; compile_one + objdiff, full ROM SHA1 OK"
+    },
+    {
+      "file": "asm/overlay_112_r429.s",
+      "lines": 52,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "Windows/MSYS2 session 2026-10-18; compile_one + objdiff, full ROM SHA1 OK"
+    },
+    {
+      "file": "asm/overlay_112_r444.s",
+      "lines": 44,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "Windows/MSYS2 session 2026-10-18; compile_one + objdiff, full ROM SHA1 OK"
+    },
+    {
+      "file": "asm/overlay_112_r459.s",
+      "lines": 35,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "Windows/MSYS2 session 2026-10-18; compile_one + objdiff, full ROM SHA1 OK"
+    },
+    {
+      "file": "asm/overlay_112_r58.s",
+      "lines": 40,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "Windows/MSYS2 session 2026-10-18; compile_one + objdiff, full ROM SHA1 OK"
+    },
+    {
+      "file": "asm/overlay_113_r07.s",
+      "lines": 44,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "Windows/MSYS2 session 2026-10-18; compile_one + objdiff, full ROM SHA1 OK"
+    },
+    {
+      "file": "asm/overlay_119.s",
+      "lines": 2793,
+      "functions": 6,
+      "attempts": 1,
+      "result": "matched",
+      "note": "Windows/MSYS2 session 2026-10-18; compile_one + objdiff, full ROM SHA1 OK"
+    },
+    {
+      "file": "asm/overlay_12_battle_controller_opponent_s113.s",
+      "lines": 50,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "Windows/MSYS2 session 2026-10-18; compile_one + objdiff, full ROM SHA1 OK"
+    },
+    {
+      "file": "asm/overlay_12_battle_controller_opponent_s91.s",
+      "lines": 46,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "Windows/MSYS2 session 2026-10-18; compile_one + objdiff, full ROM SHA1 OK"
+    },
+    {
+      "file": "asm/overlay_14_021E5900_s186.s",
+      "lines": 50,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "Windows/MSYS2 session 2026-10-18; compile_one + objdiff, full ROM SHA1 OK"
+    },
+    {
+      "file": "asm/overlay_14_021E5900_s88.s",
+      "lines": 35,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "Windows/MSYS2 session 2026-10-18; compile_one + objdiff, full ROM SHA1 OK"
+    },
+    {
+      "file": "asm/overlay_14_021F1808_r04.s",
+      "lines": 45,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "Windows/MSYS2 session 2026-10-18; compile_one + objdiff, full ROM SHA1 OK"
+    },
+    {
+      "file": "asm/overlay_14_021F2490_q60.s",
+      "lines": 48,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "Windows/MSYS2 session 2026-10-18; compile_one + objdiff, full ROM SHA1 OK"
+    },
+    {
+      "file": "asm/overlay_15_s31.s",
+      "lines": 55,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "Windows/MSYS2 session 2026-10-18; compile_one + objdiff, full ROM SHA1 OK"
+    },
+    {
+      "file": "asm/overlay_18_021F0918_r192.s",
+      "lines": 45,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "Windows/MSYS2 session 2026-10-18; compile_one + objdiff, full ROM SHA1 OK"
+    },
+    {
+      "file": "asm/overlay_18_021F0918_r43.s",
+      "lines": 64,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "Windows/MSYS2 session 2026-10-18; compile_one + objdiff, full ROM SHA1 OK"
+    },
+    {
+      "file": "asm/overlay_18_021F0918_r49.s",
+      "lines": 62,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "Windows/MSYS2 session 2026-10-18; compile_one + objdiff, full ROM SHA1 OK"
+    },
+    {
+      "file": "asm/overlay_18_021F0918_r83.s",
+      "lines": 42,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "Windows/MSYS2 session 2026-10-18; compile_one + objdiff, full ROM SHA1 OK"
+    },
+    {
+      "file": "asm/overlay_40_s70.s",
+      "lines": 29,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "Windows/MSYS2 session 2026-10-18; compile_one + objdiff, full ROM SHA1 OK"
+    },
+    {
+      "file": "asm/overlay_41_02245EA0_q48.s",
+      "lines": 29,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "Windows/MSYS2 session 2026-10-18; compile_one + objdiff, full ROM SHA1 OK"
+    },
+    {
+      "file": "asm/overlay_41_02245EA0_q50.s",
+      "lines": 46,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "Windows/MSYS2 session 2026-10-18; compile_one + objdiff, full ROM SHA1 OK"
+    },
+    {
+      "file": "asm/overlay_43_r121.s",
+      "lines": 41,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "Windows/MSYS2 session 2026-10-18; compile_one + objdiff, full ROM SHA1 OK"
+    },
+    {
+      "file": "asm/overlay_43_r154.s",
+      "lines": 36,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "Windows/MSYS2 session 2026-10-18; compile_one + objdiff, full ROM SHA1 OK"
+    },
+    {
+      "file": "asm/overlay_43_r29.s",
+      "lines": 45,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "Windows/MSYS2 session 2026-10-18; compile_one + objdiff, full ROM SHA1 OK"
+    },
+    {
+      "file": "asm/overlay_43_r56.s",
+      "lines": 37,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "Windows/MSYS2 session 2026-10-18; compile_one + objdiff, full ROM SHA1 OK"
+    },
+    {
+      "file": "asm/overlay_43_r76.s",
+      "lines": 37,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "Windows/MSYS2 session 2026-10-18; compile_one + objdiff, full ROM SHA1 OK"
+    },
+    {
+      "file": "asm/overlay_47_i54.s",
+      "lines": 30,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "Windows/MSYS2 session 2026-10-18; compile_one + objdiff, full ROM SHA1 OK"
+    },
+    {
+      "file": "asm/overlay_49_0225CB50_edata.s",
+      "lines": 72,
+      "functions": 0,
+      "attempts": 1,
+      "result": "matched",
+      "note": "Windows/MSYS2 session 2026-10-18; compile_one + objdiff, full ROM SHA1 OK"
+    },
+    {
+      "file": "asm/overlay_59_r70.s",
+      "lines": 29,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "Windows/MSYS2 session 2026-10-18; compile_one + objdiff, full ROM SHA1 OK"
+    },
+    {
+      "file": "asm/overlay_70_r26.s",
+      "lines": 51,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "Windows/MSYS2 session 2026-10-18; compile_one + objdiff, full ROM SHA1 OK"
+    },
+    {
+      "file": "asm/overlay_70_r301.s",
+      "lines": 170,
+      "functions": 2,
+      "attempts": 1,
+      "result": "matched",
+      "note": "Windows/MSYS2 session 2026-10-18; compile_one + objdiff, full ROM SHA1 OK"
+    },
+    {
+      "file": "asm/overlay_70_r473.s",
+      "lines": 39,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "Windows/MSYS2 session 2026-10-18; compile_one + objdiff, full ROM SHA1 OK"
+    },
+    {
+      "file": "asm/overlay_71_r34.s",
+      "lines": 19,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "Windows/MSYS2 session 2026-10-18; compile_one + objdiff, full ROM SHA1 OK"
+    },
+    {
+      "file": "asm/overlay_71_r35.s",
+      "lines": 40,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "Windows/MSYS2 session 2026-10-18; compile_one + objdiff, full ROM SHA1 OK"
+    },
+    {
+      "file": "asm/overlay_71_r36.s",
+      "lines": 33,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "Windows/MSYS2 session 2026-10-18; compile_one + objdiff, full ROM SHA1 OK"
+    },
+    {
+      "file": "asm/overlay_72_s126.s",
+      "lines": 36,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "Windows/MSYS2 session 2026-10-18; compile_one + objdiff, full ROM SHA1 OK"
+    },
+    {
+      "file": "asm/overlay_72_s35.s",
+      "lines": 37,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "Windows/MSYS2 session 2026-10-18; compile_one + objdiff, full ROM SHA1 OK"
+    },
+    {
+      "file": "asm/overlay_73_r118.s",
+      "lines": 38,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "Windows/MSYS2 session 2026-10-18; compile_one + objdiff, full ROM SHA1 OK"
+    },
+    {
+      "file": "asm/overlay_74_thumb_s443.s",
+      "lines": 45,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "Windows/MSYS2 session 2026-10-18; compile_one + objdiff, full ROM SHA1 OK"
+    },
+    {
+      "file": "asm/overlay_74_thumb_s470.s",
+      "lines": 55,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "Windows/MSYS2 session 2026-10-18; compile_one + objdiff, full ROM SHA1 OK"
+    },
+    {
+      "file": "asm/overlay_74_thumb_s478.s",
+      "lines": 45,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "Windows/MSYS2 session 2026-10-18; compile_one + objdiff, full ROM SHA1 OK"
+    },
+    {
+      "file": "asm/overlay_74_thumb_s480.s",
+      "lines": 37,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "Windows/MSYS2 session 2026-10-18; compile_one + objdiff, full ROM SHA1 OK"
+    },
+    {
+      "file": "asm/overlay_80_0222FD08_q20.s",
+      "lines": 48,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "Windows/MSYS2 session 2026-10-18; compile_one + objdiff, full ROM SHA1 OK"
+    },
+    {
+      "file": "asm/overlay_80_022324C4_q25.s",
+      "lines": 48,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "Windows/MSYS2 session 2026-10-18; compile_one + objdiff, full ROM SHA1 OK"
+    },
+    {
+      "file": "asm/overlay_81_r31.s",
+      "lines": 43,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "Windows/MSYS2 session 2026-10-18; compile_one + objdiff, full ROM SHA1 OK"
+    },
+    {
+      "file": "asm/overlay_82_r02.s",
+      "lines": 41,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "Windows/MSYS2 session 2026-10-18; compile_one + objdiff, full ROM SHA1 OK"
+    },
+    {
+      "file": "asm/overlay_86_q47.s",
+      "lines": 32,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "Windows/MSYS2 session 2026-10-18; compile_one + objdiff, full ROM SHA1 OK"
+    },
+    {
+      "file": "asm/overlay_90_r97.s",
+      "lines": 48,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "Windows/MSYS2 session 2026-10-18; compile_one + objdiff, full ROM SHA1 OK"
+    },
+    {
+      "file": "asm/overlay_91_r174.s",
+      "lines": 45,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "Windows/MSYS2 session 2026-10-18; compile_one + objdiff, full ROM SHA1 OK"
+    },
+    {
+      "file": "asm/overlay_91_r175.s",
+      "lines": 48,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "Windows/MSYS2 session 2026-10-18; compile_one + objdiff, full ROM SHA1 OK"
+    },
+    {
+      "file": "asm/overlay_95_n21.s",
+      "lines": 34,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "Windows/MSYS2 session 2026-10-18; compile_one + objdiff, full ROM SHA1 OK"
+    },
+    {
+      "file": "asm/overlay_96_s1351.s",
+      "lines": 73,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "Windows/MSYS2 session 2026-10-18; compile_one + objdiff, full ROM SHA1 OK"
+    },
+    {
+      "file": "asm/overlay_96_s212.s",
+      "lines": 64,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "Windows/MSYS2 session 2026-10-18; compile_one + objdiff, full ROM SHA1 OK"
+    },
+    {
+      "file": "asm/overlay_96_s222.s",
+      "lines": 78,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "Windows/MSYS2 session 2026-10-18; compile_one + objdiff, full ROM SHA1 OK"
+    },
+    {
+      "file": "asm/overlay_96_s371.s",
+      "lines": 172,
+      "functions": 2,
+      "attempts": 1,
+      "result": "matched",
+      "note": "Windows/MSYS2 session 2026-10-18; compile_one + objdiff, full ROM SHA1 OK"
+    },
+    {
+      "file": "asm/overlay_96_s678.s",
+      "lines": 93,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "Windows/MSYS2 session 2026-10-18; compile_one + objdiff, full ROM SHA1 OK"
+    },
+    {
+      "file": "asm/overlay_96_s686.s",
+      "lines": 89,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "Windows/MSYS2 session 2026-10-18; compile_one + objdiff, full ROM SHA1 OK"
+    },
+    {
+      "file": "asm/overlay_96_s713.s",
+      "lines": 94,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "Windows/MSYS2 session 2026-10-18; compile_one + objdiff, full ROM SHA1 OK"
+    },
+    {
+      "file": "asm/overlay_96_s715.s",
+      "lines": 76,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "Windows/MSYS2 session 2026-10-18; compile_one + objdiff, full ROM SHA1 OK"
+    },
+    {
+      "file": "asm/overlay_96_s719.s",
+      "lines": 89,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "Windows/MSYS2 session 2026-10-18; compile_one + objdiff, full ROM SHA1 OK"
+    },
+    {
+      "file": "asm/overlay_96_s72.s",
+      "lines": 86,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "Windows/MSYS2 session 2026-10-18; compile_one + objdiff, full ROM SHA1 OK"
+    },
+    {
+      "file": "asm/overlay_96_s926.s",
+      "lines": 87,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "Windows/MSYS2 session 2026-10-18; compile_one + objdiff, full ROM SHA1 OK"
+    },
+    {
+      "file": "asm/overlay_99_r134.s",
+      "lines": 39,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "Windows/MSYS2 session 2026-10-18; compile_one + objdiff, full ROM SHA1 OK"
+    },
+    {
+      "file": "asm/overlay_99_r64.s",
+      "lines": 34,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "Windows/MSYS2 session 2026-10-18; compile_one + objdiff, full ROM SHA1 OK"
+    },
+    {
+      "file": "asm/unk_0201010C_t05.s",
+      "lines": 134,
+      "functions": 4,
+      "attempts": 1,
+      "result": "matched",
+      "note": "Windows/MSYS2 session 2026-10-18; compile_one + objdiff, full ROM SHA1 OK"
+    },
+    {
+      "file": "asm/unk_0201010C_t24.s",
+      "lines": 227,
+      "functions": 6,
+      "attempts": 1,
+      "result": "matched",
+      "note": "Windows/MSYS2 session 2026-10-18; compile_one + objdiff, full ROM SHA1 OK"
+    },
+    {
+      "file": "asm/unk_0201010C_t27.s",
+      "lines": 33,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "Windows/MSYS2 session 2026-10-18; compile_one + objdiff, full ROM SHA1 OK"
+    },
+    {
+      "file": "asm/unk_0201010C_t29.s",
+      "lines": 97,
+      "functions": 3,
+      "attempts": 1,
+      "result": "matched",
+      "note": "Windows/MSYS2 session 2026-10-18; compile_one + objdiff, full ROM SHA1 OK"
+    },
+    {
+      "file": "asm/unk_02012DD8_q06.s",
+      "lines": 34,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "Windows/MSYS2 session 2026-10-18; compile_one + objdiff, full ROM SHA1 OK"
+    },
+    {
+      "file": "asm/unk_02012DD8_q10.s",
+      "lines": 33,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "Windows/MSYS2 session 2026-10-18; compile_one + objdiff, full ROM SHA1 OK"
+    },
+    {
+      "file": "asm/unk_02014DA0_p00.s",
+      "lines": 24,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "Windows/MSYS2 session 2026-10-18; compile_one + objdiff, full ROM SHA1 OK"
+    },
+    {
+      "file": "asm/unk_02014DA0_p03.s",
+      "lines": 30,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "Windows/MSYS2 session 2026-10-18; compile_one + objdiff, full ROM SHA1 OK"
+    },
+    {
+      "file": "asm/unk_02014DA0_p26.s",
+      "lines": 38,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "Windows/MSYS2 session 2026-10-18; compile_one + objdiff, full ROM SHA1 OK"
+    },
+    {
+      "file": "asm/unk_02014DA0_p28.s",
+      "lines": 29,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "Windows/MSYS2 session 2026-10-18; compile_one + objdiff, full ROM SHA1 OK"
+    },
+    {
+      "file": "asm/unk_02025C44_01.s",
+      "lines": 37,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "Windows/MSYS2 session 2026-10-18; compile_one + objdiff, full ROM SHA1 OK"
+    },
+    {
+      "file": "asm/unk_02058034_g11.s",
+      "lines": 31,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "Windows/MSYS2 session 2026-10-18; compile_one + objdiff, full ROM SHA1 OK"
+    },
+    {
+      "file": "asm/unk_0205AC88_q03.s",
+      "lines": 29,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "Windows/MSYS2 session 2026-10-18; compile_one + objdiff, full ROM SHA1 OK"
+    },
+    {
+      "file": "asm/unk_0205AC88_q16.s",
+      "lines": 30,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "Windows/MSYS2 session 2026-10-18; compile_one + objdiff, full ROM SHA1 OK"
+    },
+    {
+      "file": "asm/unk_02062108_p19.s",
+      "lines": 41,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "Windows/MSYS2 session 2026-10-18; compile_one + objdiff, full ROM SHA1 OK"
+    },
+    {
+      "file": "asm/unk_02088288_q62.s",
+      "lines": 46,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "Windows/MSYS2 session 2026-10-18; compile_one + objdiff, full ROM SHA1 OK"
+    },
+    {
+      "file": "asm/unk_0208B1AC_r04.s",
+      "lines": 54,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "Windows/MSYS2 session 2026-10-18; compile_one + objdiff, full ROM SHA1 OK"
+    },
+    {
+      "file": "asm/unk_0208B1AC_r13.s",
+      "lines": 60,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "Windows/MSYS2 session 2026-10-18; compile_one + objdiff, full ROM SHA1 OK"
+    },
+    {
+      "file": "asm/unk_data_020FDB44.s",
+      "lines": 655,
+      "functions": 0,
+      "attempts": 1,
+      "result": "matched",
+      "note": "Windows/MSYS2 session 2026-10-18; compile_one + objdiff, full ROM SHA1 OK"
+    },
+    {
+      "file": "asm/overlay_01_021E90C0_s24.s",
+      "lines": 74,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched (decomp/windows-session batch 2)"
+    },
+    {
+      "file": "asm/overlay_01_021E90C0_s34.s",
+      "lines": 72,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched (decomp/windows-session batch 2)"
+    },
+    {
+      "file": "asm/overlay_01_021EB1E8_r57.s",
+      "lines": 72,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched (decomp/windows-session batch 2)"
+    },
+    {
+      "file": "asm/overlay_01_021EFB38_p63.s",
+      "lines": 89,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched (decomp/windows-session batch 2)"
+    },
+    {
+      "file": "asm/overlay_01_021F1AFC_q46.s",
+      "lines": 67,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched (decomp/windows-session batch 2)"
+    },
+    {
+      "file": "asm/overlay_01_021F944C_p23.s",
+      "lines": 64,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched (decomp/windows-session batch 2)"
+    },
+    {
+      "file": "asm/overlay_07_r105.s",
+      "lines": 62,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched (decomp/windows-session batch 2)"
+    },
+    {
+      "file": "asm/overlay_07_r69.s",
+      "lines": 60,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched (decomp/windows-session batch 2)"
+    },
+    {
+      "file": "asm/overlay_07_r697.s",
+      "lines": 81,
+      "functions": 2,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched (decomp/windows-session batch 2)"
+    },
+    {
+      "file": "asm/overlay_07_r792.s",
+      "lines": 59,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched (decomp/windows-session batch 2)"
+    },
+    {
+      "file": "asm/overlay_08_q212.s",
+      "lines": 74,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched (decomp/windows-session batch 2)"
+    },
+    {
+      "file": "asm/overlay_102_r46.s",
+      "lines": 71,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched (decomp/windows-session batch 2)"
+    },
+    {
+      "file": "asm/overlay_102_r92.s",
+      "lines": 58,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched (decomp/windows-session batch 2)"
+    },
+    {
+      "file": "asm/overlay_108_021E8850_q18.s",
+      "lines": 54,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched (decomp/windows-session batch 2)"
+    },
+    {
+      "file": "asm/overlay_108_021E8850_q32.s",
+      "lines": 76,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched (decomp/windows-session batch 2)"
+    },
+    {
+      "file": "asm/overlay_109_r19.s",
+      "lines": 55,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched (decomp/windows-session batch 2)"
+    },
+    {
+      "file": "asm/overlay_109_r31.s",
+      "lines": 59,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched (decomp/windows-session batch 2)"
+    },
+    {
+      "file": "asm/overlay_109_r57.s",
+      "lines": 55,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched (decomp/windows-session batch 2)"
+    },
+    {
+      "file": "asm/overlay_109_r67.s",
+      "lines": 58,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched (decomp/windows-session batch 2)"
+    },
+    {
+      "file": "asm/overlay_112_r05.s",
+      "lines": 66,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched (decomp/windows-session batch 2)"
+    },
+    {
+      "file": "asm/overlay_112_r10.s",
+      "lines": 62,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched (decomp/windows-session batch 2)"
+    },
+    {
+      "file": "asm/overlay_112_r257.s",
+      "lines": 59,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched (decomp/windows-session batch 2)"
+    },
+    {
+      "file": "asm/overlay_112_r295.s",
+      "lines": 51,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched (decomp/windows-session batch 2)"
+    },
+    {
+      "file": "asm/overlay_112_r427.s",
+      "lines": 53,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched (decomp/windows-session batch 2)"
+    },
+    {
+      "file": "asm/overlay_112_r447.s",
+      "lines": 72,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched (decomp/windows-session batch 2)"
+    },
+    {
+      "file": "asm/overlay_12_battle_controller_opponent_s117.s",
+      "lines": 52,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched (decomp/windows-session batch 2)"
+    },
+    {
+      "file": "asm/overlay_12_battle_controller_opponent_s84.s",
+      "lines": 223,
+      "functions": 3,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched (decomp/windows-session batch 2)"
+    },
+    {
+      "file": "asm/overlay_14_021E5900_s200.s",
+      "lines": 69,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched (decomp/windows-session batch 2)"
+    },
+    {
+      "file": "asm/overlay_14_021E5900_s207.s",
+      "lines": 55,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched (decomp/windows-session batch 2)"
+    },
+    {
+      "file": "asm/overlay_14_021F0A80_q09.s",
+      "lines": 47,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched (decomp/windows-session batch 2)"
+    },
+    {
+      "file": "asm/overlay_14_021F2490_q06.s",
+      "lines": 34,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched (decomp/windows-session batch 2)"
+    },
+    {
+      "file": "asm/overlay_14_021F2490_q69.s",
+      "lines": 69,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched (decomp/windows-session batch 2)"
+    },
+    {
+      "file": "asm/overlay_15_s119.s",
+      "lines": 59,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched (decomp/windows-session batch 2)"
+    },
+    {
+      "file": "asm/overlay_15_s48.s",
+      "lines": 65,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched (decomp/windows-session batch 2)"
+    },
+    {
+      "file": "asm/overlay_15_s61.s",
+      "lines": 76,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched (decomp/windows-session batch 2)"
+    },
+    {
+      "file": "asm/overlay_18_021F0918_r133.s",
+      "lines": 70,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched (decomp/windows-session batch 2)"
+    },
+    {
+      "file": "asm/overlay_18_021F0918_r145.s",
+      "lines": 74,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched (decomp/windows-session batch 2)"
+    },
+    {
+      "file": "asm/overlay_18_021F0918_r71.s",
+      "lines": 68,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched (decomp/windows-session batch 2)"
+    },
+    {
+      "file": "asm/overlay_27_q18.s",
+      "lines": 72,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched (decomp/windows-session batch 2)"
+    },
+    {
+      "file": "asm/overlay_27_q32.s",
+      "lines": 65,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched (decomp/windows-session batch 2)"
+    },
+    {
+      "file": "asm/overlay_27_q41.s",
+      "lines": 56,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched (decomp/windows-session batch 2)"
+    },
+    {
+      "file": "asm/overlay_27_q57.s",
+      "lines": 63,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched (decomp/windows-session batch 2)"
+    },
+    {
+      "file": "asm/overlay_33_l00.s",
+      "lines": 74,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched (decomp/windows-session batch 2)"
+    },
+    {
+      "file": "asm/overlay_37_q24.s",
+      "lines": 58,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched (decomp/windows-session batch 2)"
+    },
+    {
+      "file": "asm/overlay_40_s280.s",
+      "lines": 44,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched (decomp/windows-session batch 2)"
+    },
+    {
+      "file": "asm/overlay_40_s282.s",
+      "lines": 52,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched (decomp/windows-session batch 2)"
+    },
+    {
+      "file": "asm/overlay_40_s340.s",
+      "lines": 72,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched (decomp/windows-session batch 2)"
+    },
+    {
+      "file": "asm/overlay_40_s77.s",
+      "lines": 47,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched (decomp/windows-session batch 2)"
+    },
+    {
+      "file": "asm/overlay_41_02245EA0_q39.s",
+      "lines": 48,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched (decomp/windows-session batch 2)"
+    },
+    {
+      "file": "asm/overlay_41_02246B34_r06.s",
+      "lines": 59,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched (decomp/windows-session batch 2)"
+    },
+    {
+      "file": "asm/overlay_41_02249A40_h07.s",
+      "lines": 50,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched (decomp/windows-session batch 2)"
+    },
+    {
+      "file": "asm/overlay_43_r132.s",
+      "lines": 85,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched (decomp/windows-session batch 2)"
+    },
+    {
+      "file": "asm/overlay_43_r86.s",
+      "lines": 48,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched (decomp/windows-session batch 2)"
+    },
+    {
+      "file": "asm/overlay_57_s128.s",
+      "lines": 62,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched (decomp/windows-session batch 2)"
+    },
+    {
+      "file": "asm/overlay_57_s26.s",
+      "lines": 51,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched (decomp/windows-session batch 2)"
+    },
+    {
+      "file": "asm/overlay_59_r162.s",
+      "lines": 55,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched (decomp/windows-session batch 2)"
+    },
+    {
+      "file": "asm/overlay_65_s18.s",
+      "lines": 67,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched (decomp/windows-session batch 2)"
+    },
+    {
+      "file": "asm/overlay_68_q59.s",
+      "lines": 55,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched (decomp/windows-session batch 2)"
+    },
+    {
+      "file": "asm/overlay_68_q77.s",
+      "lines": 74,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched (decomp/windows-session batch 2)"
+    },
+    {
+      "file": "asm/overlay_69_r07.s",
+      "lines": 52,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched (decomp/windows-session batch 2)"
+    },
+    {
+      "file": "asm/overlay_70_r353.s",
+      "lines": 89,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched (decomp/windows-session batch 2)"
+    },
+    {
+      "file": "asm/overlay_70_r441.s",
+      "lines": 67,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched (decomp/windows-session batch 2)"
+    },
+    {
+      "file": "asm/overlay_80_0222BDF4_q45.s",
+      "lines": 56,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched (decomp/windows-session batch 2)"
+    },
+    {
+      "file": "asm/overlay_80_0222BDF4_q56.s",
+      "lines": 57,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched (decomp/windows-session batch 2)"
+    },
+    {
+      "file": "asm/overlay_81_r07.s",
+      "lines": 63,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched (decomp/windows-session batch 2)"
+    },
+    {
+      "file": "asm/overlay_81_r128.s",
+      "lines": 71,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched (decomp/windows-session batch 2)"
+    },
+    {
+      "file": "asm/overlay_81_r65.s",
+      "lines": 55,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched (decomp/windows-session batch 2)"
+    },
+    {
+      "file": "asm/overlay_82_r22.s",
+      "lines": 58,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched (decomp/windows-session batch 2)"
+    },
+    {
+      "file": "asm/overlay_82_r63.s",
+      "lines": 53,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched (decomp/windows-session batch 2)"
+    },
+    {
+      "file": "asm/overlay_82_r74.s",
+      "lines": 50,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched (decomp/windows-session batch 2)"
+    },
+    {
+      "file": "asm/overlay_86_q01.s",
+      "lines": 63,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched (decomp/windows-session batch 2)"
+    },
+    {
+      "file": "asm/overlay_86_q03.s",
+      "lines": 68,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched (decomp/windows-session batch 2)"
+    },
+    {
+      "file": "asm/overlay_86_q60.s",
+      "lines": 57,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched (decomp/windows-session batch 2)"
+    },
+    {
+      "file": "asm/overlay_90_r135.s",
+      "lines": 61,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched (decomp/windows-session batch 2)"
+    },
+    {
+      "file": "asm/overlay_92_q38.s",
+      "lines": 48,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched (decomp/windows-session batch 2)"
+    },
+    {
+      "file": "asm/overlay_92_q47.s",
+      "lines": 62,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched (decomp/windows-session batch 2)"
+    },
+    {
+      "file": "asm/overlay_92_q52.s",
+      "lines": 57,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched (decomp/windows-session batch 2)"
+    },
+    {
+      "file": "asm/overlay_95_n52.s",
+      "lines": 59,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched (decomp/windows-session batch 2)"
+    },
+    {
+      "file": "asm/overlay_96_s125.s",
+      "lines": 127,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched (decomp/windows-session batch 2)"
+    },
+    {
+      "file": "asm/overlay_96_s14.s",
+      "lines": 102,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched (decomp/windows-session batch 2)"
+    },
+    {
+      "file": "asm/overlay_96_s143.s",
+      "lines": 155,
+      "functions": 2,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched (decomp/windows-session batch 2)"
+    },
+    {
+      "file": "asm/overlay_96_s148.s",
+      "lines": 111,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched (decomp/windows-session batch 2)"
+    },
+    {
+      "file": "asm/overlay_96_s387.s",
+      "lines": 119,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched (decomp/windows-session batch 2)"
+    },
+    {
+      "file": "asm/overlay_96_s39.s",
+      "lines": 111,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched (decomp/windows-session batch 2)"
+    },
+    {
+      "file": "asm/overlay_96_s451.s",
+      "lines": 98,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched (decomp/windows-session batch 2)"
+    },
+    {
+      "file": "asm/overlay_96_s581.s",
+      "lines": 99,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched (decomp/windows-session batch 2)"
+    },
+    {
+      "file": "asm/overlay_96_s596.s",
+      "lines": 127,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched (decomp/windows-session batch 2)"
+    },
+    {
+      "file": "asm/overlay_96_s598.s",
+      "lines": 117,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched (decomp/windows-session batch 2)"
+    },
+    {
+      "file": "asm/overlay_96_s603.s",
+      "lines": 124,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched (decomp/windows-session batch 2)"
+    },
+    {
+      "file": "asm/overlay_96_s621.s",
+      "lines": 99,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched (decomp/windows-session batch 2)"
+    },
+    {
+      "file": "asm/overlay_96_s762.s",
+      "lines": 95,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched (decomp/windows-session batch 2)"
+    },
+    {
+      "file": "asm/overlay_96_s89.s",
+      "lines": 189,
+      "functions": 2,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched (decomp/windows-session batch 2)"
+    },
+    {
+      "file": "asm/overlay_97_q24.s",
+      "lines": 64,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched (decomp/windows-session batch 2)"
+    },
+    {
+      "file": "asm/overlay_99_r09.s",
+      "lines": 49,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched (decomp/windows-session batch 2)"
+    },
+    {
+      "file": "asm/overlay_99_r97.s",
+      "lines": 68,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched (decomp/windows-session batch 2)"
+    },
+    {
+      "file": "asm/overlay_trainer_card_main_r23.s",
+      "lines": 56,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched (decomp/windows-session batch 2)"
+    },
+    {
+      "file": "asm/overlay_trainer_card_signature_n01.s",
+      "lines": 64,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched (decomp/windows-session batch 2)"
+    },
+    {
+      "file": "asm/unk_0201010C_t104.s",
+      "lines": 147,
+      "functions": 3,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched (decomp/windows-session batch 2)"
+    },
+    {
+      "file": "asm/unk_0201010C_t49.s",
+      "lines": 67,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched (decomp/windows-session batch 2)"
+    },
+    {
+      "file": "asm/unk_0201956C_q11.s",
+      "lines": 68,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched (decomp/windows-session batch 2)"
+    },
+    {
+      "file": "asm/unk_02020B8C_q09.s",
+      "lines": 56,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched (decomp/windows-session batch 2)"
+    },
+    {
+      "file": "asm/unk_02056D7C_q38.s",
+      "lines": 52,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched (decomp/windows-session batch 2)"
+    },
+    {
+      "file": "asm/unk_02058034_g01.s",
+      "lines": 54,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched (decomp/windows-session batch 2)"
+    },
+    {
+      "file": "asm/unk_0205CB48_r12.s",
+      "lines": 71,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched (decomp/windows-session batch 2)"
+    },
+    {
+      "file": "asm/unk_02062108_p146.s",
+      "lines": 66,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched (decomp/windows-session batch 2)"
+    },
+    {
+      "file": "asm/unk_020632B0_s51.s",
+      "lines": 62,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched (decomp/windows-session batch 2)"
+    },
+    {
+      "file": "asm/unk_0206979C_t14.s",
+      "lines": 75,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched (decomp/windows-session batch 2)"
+    },
+    {
+      "file": "asm/unk_02087FD4_00.s",
+      "lines": 41,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched (decomp/windows-session batch 2)"
+    },
+    {
+      "file": "asm/unk_02088288_q42.s",
+      "lines": 65,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched (decomp/windows-session batch 2)"
+    },
+    {
+      "file": "asm/unk_0208B1AC_r38.s",
+      "lines": 68,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched (decomp/windows-session batch 2)"
+    },
+    {
+      "file": "asm/unk_020957B0_p02.s",
+      "lines": 66,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched (decomp/windows-session batch 2)"
+    },
+    {
+      "file": "asm/overlay_01_021F4464_e04.s",
+      "lines": 96,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched"
+    },
+    {
+      "file": "asm/overlay_01_021F72DC_q44.s",
+      "lines": 90,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched"
+    },
+    {
+      "file": "asm/overlay_07_r753.s",
+      "lines": 88,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched"
+    },
+    {
+      "file": "asm/overlay_08_q204.s",
+      "lines": 81,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched"
+    },
+    {
+      "file": "asm/overlay_103_q18.s",
+      "lines": 85,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched"
+    },
+    {
+      "file": "asm/overlay_106_p22.s",
+      "lines": 89,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched"
+    },
+    {
+      "file": "asm/overlay_112_r55.s",
+      "lines": 90,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched"
+    },
+    {
+      "file": "asm/overlay_12_battle_controller_opponent_s175.s",
+      "lines": 79,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched"
+    },
+    {
+      "file": "asm/overlay_14_021F2490_q115.s",
+      "lines": 74,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched"
+    },
+    {
+      "file": "asm/overlay_28_l04.s",
+      "lines": 79,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched"
+    },
+    {
+      "file": "asm/overlay_40_s285.s",
+      "lines": 85,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched"
+    },
+    {
+      "file": "asm/overlay_40_s416.s",
+      "lines": 82,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched"
+    },
+    {
+      "file": "asm/overlay_40_s73.s",
+      "lines": 83,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched"
+    },
+    {
+      "file": "asm/overlay_45_thumb_r364.s",
+      "lines": 88,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched"
+    },
+    {
+      "file": "asm/overlay_57_s16.s",
+      "lines": 75,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched"
+    },
+    {
+      "file": "asm/overlay_57_s61.s",
+      "lines": 85,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched"
+    },
+    {
+      "file": "asm/overlay_91_r152.s",
+      "lines": 82,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched"
+    },
+    {
+      "file": "asm/overlay_92_q24.s",
+      "lines": 84,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched"
+    },
+    {
+      "file": "asm/overlay_93_thumb_2_p00.s",
+      "lines": 84,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched"
+    },
+    {
+      "file": "asm/overlay_93_thumb_2_p25.s",
+      "lines": 87,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched"
+    },
+    {
+      "file": "asm/overlay_96_s904.s",
+      "lines": 134,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched"
+    },
+    {
+      "file": "asm/unk_02054648_p18.s",
+      "lines": 82,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched"
+    },
+    {
+      "file": "asm/unk_02056D7C_q29.s",
+      "lines": 75,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched"
+    },
+    {
+      "file": "asm/unk_02061284_s34.s",
+      "lines": 100,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched"
+    },
+    {
+      "file": "asm/unk_02088288_q40.s",
+      "lines": 95,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched"
+    },
+    {
+      "file": "asm/unk_020932E0_s52.s",
+      "lines": 95,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched"
+    },
+    {
+      "file": "asm/overlay_07_r217.s",
+      "lines": 96,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched"
+    },
+    {
+      "file": "asm/overlay_108_q38.s",
+      "lines": 98,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched"
+    },
+    {
+      "file": "asm/overlay_31_r07.s",
+      "lines": 95,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched"
+    },
+    {
+      "file": "asm/overlay_40_s277.s",
+      "lines": 90,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched"
+    },
+    {
+      "file": "asm/overlay_45_thumb_r527.s",
+      "lines": 89,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched"
+    },
+    {
+      "file": "asm/overlay_45_thumb_r542.s",
+      "lines": 85,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched"
+    },
+    {
+      "file": "asm/overlay_67_q03.s",
+      "lines": 117,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched"
+    },
+    {
+      "file": "asm/overlay_70_r285.s",
+      "lines": 98,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched"
+    },
+    {
+      "file": "asm/overlay_71_r86.s",
+      "lines": 105,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched"
+    },
+    {
+      "file": "asm/overlay_74_thumb_s214.s",
+      "lines": 103,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched"
+    },
+    {
+      "file": "asm/overlay_82_r11.s",
+      "lines": 103,
+      "functions": 2,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched"
+    },
+    {
+      "file": "asm/overlay_96_s09.s",
+      "lines": 139,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched"
+    },
+    {
+      "file": "asm/overlay_96_s1030.s",
+      "lines": 131,
+      "functions": 2,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched"
+    },
+    {
+      "file": "asm/overlay_96_s1095.s",
+      "lines": 129,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched"
+    },
+    {
+      "file": "asm/overlay_96_s1100.s",
+      "lines": 109,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched"
+    },
+    {
+      "file": "asm/overlay_96_s1134.s",
+      "lines": 106,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched"
+    },
+    {
+      "file": "asm/overlay_96_s1176.s",
+      "lines": 108,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched"
+    },
+    {
+      "file": "asm/overlay_96_s1180.s",
+      "lines": 144,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched"
+    },
+    {
+      "file": "asm/overlay_96_s1302.s",
+      "lines": 108,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched"
+    },
+    {
+      "file": "asm/overlay_96_s1308.s",
+      "lines": 110,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched"
+    },
+    {
+      "file": "asm/overlay_96_s1316.s",
+      "lines": 117,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched"
+    },
+    {
+      "file": "asm/overlay_96_s1321.s",
+      "lines": 120,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched"
+    },
+    {
+      "file": "asm/overlay_96_s1335.s",
+      "lines": 106,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched"
+    },
+    {
+      "file": "asm/overlay_96_s193.s",
+      "lines": 110,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched"
+    },
+    {
+      "file": "asm/overlay_96_s568.s",
+      "lines": 133,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched"
+    },
+    {
+      "file": "asm/overlay_96_s771.s",
+      "lines": 133,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched"
+    },
+    {
+      "file": "asm/unk_0201010C_t84.s",
+      "lines": 83,
+      "functions": 2,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched"
+    },
+    {
+      "file": "asm/overlay_15_s97.s",
+      "lines": 99,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched"
+    },
+    {
+      "file": "asm/overlay_18_021EE35C_r57.s",
+      "lines": 112,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched"
+    },
+    {
+      "file": "asm/overlay_18_021F0918_r53.s",
+      "lines": 115,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched"
+    },
+    {
+      "file": "asm/overlay_43_r39.s",
+      "lines": 96,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched"
+    },
+    {
+      "file": "asm/overlay_70_r304.s",
+      "lines": 97,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched"
+    },
+    {
+      "file": "asm/overlay_71_r198.s",
+      "lines": 99,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched"
+    },
+    {
+      "file": "asm/overlay_71_r67.s",
+      "lines": 99,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched"
+    },
+    {
+      "file": "asm/overlay_81_r38.s",
+      "lines": 102,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched"
+    },
+    {
+      "file": "asm/overlay_82_r38.s",
+      "lines": 104,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched"
+    },
+    {
+      "file": "asm/overlay_83_0223DD60_r32.s",
+      "lines": 98,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched"
+    },
+    {
+      "file": "asm/overlay_96_s479.s",
+      "lines": 143,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched"
+    },
+    {
+      "file": "asm/overlay_trainer_card_main_r03.s",
+      "lines": 103,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched"
+    },
+    {
+      "file": "asm/unk_0205CB48_r58.s",
+      "lines": 123,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched"
+    },
+    {
+      "file": "asm/overlay_01_022053EC_p02.s",
+      "lines": 117,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched"
+    },
+    {
+      "file": "asm/overlay_05_r40.s",
+      "lines": 115,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched"
+    },
+    {
+      "file": "asm/overlay_05_r50.s",
+      "lines": 121,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched"
+    },
+    {
+      "file": "asm/overlay_18_021EE35C_r04.s",
+      "lines": 116,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched"
+    },
+    {
+      "file": "asm/overlay_40_s514.s",
+      "lines": 101,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched"
+    },
+    {
+      "file": "asm/overlay_43_r00.s",
+      "lines": 108,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched"
+    },
+    {
+      "file": "asm/overlay_59_r107.s",
+      "lines": 111,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched"
+    },
+    {
+      "file": "asm/overlay_80_022340E8_q18.s",
+      "lines": 115,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched"
+    },
+    {
+      "file": "asm/overlay_82_r31.s",
+      "lines": 106,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched"
+    },
+    {
+      "file": "asm/overlay_87_s57.s",
+      "lines": 153,
+      "functions": 2,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched"
+    },
+    {
+      "file": "asm/overlay_90_r133.s",
+      "lines": 122,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched"
+    },
+    {
+      "file": "asm/overlay_96_s11.s",
+      "lines": 157,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched"
+    },
+    {
+      "file": "asm/overlay_trainer_card_signature_n39.s",
+      "lines": 111,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched"
+    },
+    {
+      "file": "asm/unk_02061284_s78.s",
+      "lines": 118,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched"
+    },
+    {
+      "file": "asm/unk_0208C3E4_r12.s",
+      "lines": 123,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched"
+    },
+    {
+      "file": "asm/overlay_40_s354.s",
+      "lines": 118,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched"
+    },
+    {
+      "file": "asm/overlay_40_s538.s",
+      "lines": 97,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched"
+    },
+    {
+      "file": "asm/overlay_47_i08.s",
+      "lines": 117,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched"
+    },
+    {
+      "file": "asm/overlay_89_q105.s",
+      "lines": 121,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched"
+    },
+    {
+      "file": "asm/overlay_89_q20.s",
+      "lines": 75,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched"
+    },
+    {
+      "file": "asm/overlay_89_q50.s",
+      "lines": 126,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched"
+    },
+    {
+      "file": "asm/overlay_89_q54.s",
+      "lines": 187,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched"
+    },
+    {
+      "file": "asm/overlay_89_q64.s",
+      "lines": 65,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched"
+    },
+    {
+      "file": "asm/overlay_89_q84.s",
+      "lines": 118,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched"
+    },
+    {
+      "file": "asm/overlay_93_thumb_1_s19.s",
+      "lines": 105,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched"
+    },
+    {
+      "file": "asm/overlay_93_thumb_1_s34.s",
+      "lines": 207,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched"
+    },
+    {
+      "file": "asm/overlay_93_thumb_1_s36.s",
+      "lines": 114,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched"
+    },
+    {
+      "file": "asm/overlay_12_02265E28_r00.s",
+      "lines": 134,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched"
+    },
+    {
+      "file": "asm/overlay_12_battle_controller_opponent_s86.s",
+      "lines": 129,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched"
+    },
+    {
+      "file": "asm/overlay_37_q01.s",
+      "lines": 145,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched"
+    },
+    {
+      "file": "asm/overlay_57_s53.s",
+      "lines": 130,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched"
+    },
+    {
+      "file": "asm/overlay_65_s63.s",
+      "lines": 144,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched"
+    },
+    {
+      "file": "asm/overlay_74_thumb_s202.s",
+      "lines": 71,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched"
+    },
+    {
+      "file": "asm/overlay_90_r111.s",
+      "lines": 83,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched"
+    },
+    {
+      "file": "asm/overlay_90_r84.s",
+      "lines": 79,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched"
+    },
+    {
+      "file": "asm/overlay_95_n44.s",
+      "lines": 131,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched"
+    },
+    {
+      "file": "asm/unk_02034354_x03.s",
+      "lines": 115,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched"
+    },
+    {
+      "file": "asm/overlay_07_r495.s",
+      "lines": 217,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched"
+    },
+    {
+      "file": "asm/overlay_12_battle_controller_opponent_s167.s",
+      "lines": 195,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched"
+    },
+    {
+      "file": "asm/overlay_39_thumb_o61.s",
+      "lines": 204,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched"
+    },
+    {
+      "file": "asm/overlay_40_s398.s",
+      "lines": 151,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched"
+    },
+    {
+      "file": "asm/overlay_40_s406.s",
+      "lines": 203,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched"
+    },
+    {
+      "file": "asm/overlay_40_s503.s",
+      "lines": 158,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched"
+    },
+    {
+      "file": "asm/overlay_40_s525.s",
+      "lines": 141,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched"
+    },
+    {
+      "file": "asm/overlay_45_thumb_r142.s",
+      "lines": 201,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched"
+    },
+    {
+      "file": "asm/overlay_45_thumb_r495.s",
+      "lines": 212,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched"
+    },
+    {
+      "file": "asm/overlay_65_s05.s",
+      "lines": 214,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched"
+    },
+    {
+      "file": "asm/overlay_65_s08.s",
+      "lines": 187,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched"
+    },
+    {
+      "file": "asm/overlay_65_s71.s",
+      "lines": 166,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched"
+    },
+    {
+      "file": "asm/overlay_70_r338.s",
+      "lines": 228,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched"
+    },
+    {
+      "file": "asm/overlay_70_r375.s",
+      "lines": 216,
+      "functions": 2,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched"
+    },
+    {
+      "file": "asm/overlay_80_0222BDF4_q161.s",
+      "lines": 147,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched"
+    },
+    {
+      "file": "asm/overlay_90_r115.s",
+      "lines": 232,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched"
+    },
+    {
+      "file": "asm/overlay_90_r123.s",
+      "lines": 195,
+      "functions": 2,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched"
+    },
+    {
+      "file": "asm/unk_0203A3B0_r09.s",
+      "lines": 210,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched"
+    },
+    {
+      "file": "asm/overlay_08_q157.s",
+      "lines": 184,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched"
+    },
+    {
+      "file": "asm/overlay_116_s01.s",
+      "lines": 192,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched"
+    },
+    {
+      "file": "asm/overlay_40_s383.s",
+      "lines": 230,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched"
+    },
+    {
+      "file": "asm/overlay_47_i22.s",
+      "lines": 257,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched"
+    },
+    {
+      "file": "asm/overlay_57_s89.s",
+      "lines": 186,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched"
+    },
+    {
+      "file": "asm/overlay_70_r395.s",
+      "lines": 229,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched"
+    },
+    {
+      "file": "asm/overlay_73_r209.s",
+      "lines": 186,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched"
+    },
+    {
+      "file": "asm/overlay_75_r32.s",
+      "lines": 232,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched"
+    },
+    {
+      "file": "asm/overlay_80_0222FD08_q00.s",
+      "lines": 220,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched"
+    },
+    {
+      "file": "asm/overlay_80_0222FD08_q15.s",
+      "lines": 157,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched"
+    },
+    {
+      "file": "asm/overlay_80_02237A70_p04.s",
+      "lines": 220,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched"
+    },
+    {
+      "file": "asm/overlay_07_r51.s",
+      "lines": 261,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched"
+    },
+    {
+      "file": "asm/overlay_08_q174.s",
+      "lines": 234,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched"
+    },
+    {
+      "file": "asm/overlay_40_s29.s",
+      "lines": 268,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched"
+    },
+    {
+      "file": "asm/overlay_57_s66.s",
+      "lines": 220,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched"
+    },
+    {
+      "file": "asm/overlay_82_r09.s",
+      "lines": 278,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched"
+    },
+    {
+      "file": "asm/overlay_91_r157.s",
+      "lines": 263,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched"
+    },
+    {
+      "file": "asm/overlay_92_q91.s",
+      "lines": 230,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched"
+    },
+    {
+      "file": "asm/overlay_93_thumb_2_p12.s",
+      "lines": 264,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched"
+    },
+    {
+      "file": "asm/overlay_96_s1008.s",
+      "lines": 99,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched"
+    },
+    {
+      "file": "asm/overlay_96_s1010.s",
+      "lines": 80,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched"
+    },
+    {
+      "file": "asm/overlay_96_s1021.s",
+      "lines": 80,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched"
+    },
+    {
+      "file": "asm/overlay_96_s1024.s",
+      "lines": 103,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched"
+    },
+    {
+      "file": "asm/overlay_96_s1039.s",
+      "lines": 92,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched"
+    },
+    {
+      "file": "asm/overlay_96_s1145.s",
+      "lines": 100,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched"
+    },
+    {
+      "file": "asm/overlay_96_s1168.s",
+      "lines": 94,
+      "functions": 2,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched"
+    },
+    {
+      "file": "asm/overlay_96_s1206.s",
+      "lines": 80,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched"
+    },
+    {
+      "file": "asm/overlay_96_s1243.s",
+      "lines": 90,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched"
+    },
+    {
+      "file": "asm/overlay_96_s1273.s",
+      "lines": 88,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched"
+    },
+    {
+      "file": "asm/overlay_96_s1294.s",
+      "lines": 93,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched"
+    },
+    {
+      "file": "asm/overlay_96_s1311.s",
+      "lines": 88,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched"
+    },
+    {
+      "file": "asm/overlay_96_s1354.s",
+      "lines": 75,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched"
+    },
+    {
+      "file": "asm/overlay_96_s1036.s",
+      "lines": 239,
+      "functions": 3,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched"
+    },
+    {
+      "file": "asm/overlay_96_s1043.s",
+      "lines": 152,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched"
+    },
+    {
+      "file": "asm/overlay_96_s1046.s",
+      "lines": 196,
+      "functions": 3,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched"
+    },
+    {
+      "file": "asm/overlay_96_s1084.s",
+      "lines": 149,
+      "functions": 2,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched"
+    },
+    {
+      "file": "asm/overlay_96_s1164.s",
+      "lines": 156,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched"
+    },
+    {
+      "file": "asm/overlay_96_s1177.s",
+      "lines": 194,
+      "functions": 2,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched"
+    },
+    {
+      "file": "asm/overlay_96_s1185.s",
+      "lines": 272,
+      "functions": 3,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched"
+    },
+    {
+      "file": "asm/overlay_96_s1326.s",
+      "lines": 171,
+      "functions": 3,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched"
+    },
+    {
+      "file": "asm/overlay_96_s1065.s",
+      "lines": 277,
+      "functions": 2,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched (batch 12)"
+    },
+    {
+      "file": "asm/overlay_96_s1175.s",
+      "lines": 213,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched (batch 12)"
+    },
+    {
+      "file": "asm/overlay_96_s1212.s",
+      "lines": 263,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched (batch 12)"
+    },
+    {
+      "file": "asm/overlay_96_s1214.s",
+      "lines": 278,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched (batch 12)"
+    },
+    {
+      "file": "asm/overlay_96_s1332.s",
+      "lines": 238,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched (batch 12)"
+    },
+    {
+      "file": "asm/overlay_96_s1348.s",
+      "lines": 242,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched (batch 12)"
+    },
+    {
+      "file": "asm/overlay_96_s278.s",
+      "lines": 123,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched (batch 12)"
+    },
+    {
+      "file": "asm/overlay_96_s729.s",
+      "lines": 108,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched (batch 12)"
+    },
+    {
+      "file": "asm/overlay_96_s1014.s",
+      "lines": 285,
+      "functions": 2,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched (batch 13)"
+    },
+    {
+      "file": "asm/overlay_96_s1017.s",
+      "lines": 379,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched (batch 13)"
+    },
+    {
+      "file": "asm/overlay_96_s1077.s",
+      "lines": 299,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched (batch 13)"
+    },
+    {
+      "file": "asm/overlay_96_s1256.s",
+      "lines": 342,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched (batch 13)"
+    },
+    {
+      "file": "asm/overlay_96_s1261.s",
+      "lines": 345,
+      "functions": 3,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched (batch 13)"
+    },
+    {
+      "file": "asm/overlay_96_s1285.s",
+      "lines": 357,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched (batch 13)"
+    },
+    {
+      "file": "asm/overlay_96_s1296.s",
+      "lines": 401,
+      "functions": 2,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched (batch 13)"
+    },
+    {
+      "file": "asm/overlay_96_s1300.s",
+      "lines": 438,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched (batch 13)"
+    },
+    {
+      "file": "asm/overlay_96_s1098.s",
+      "lines": 221,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched (batch 14)"
+    },
+    {
+      "file": "asm/overlay_96_s1113.s",
+      "lines": 428,
+      "functions": 2,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched (batch 14)"
+    },
+    {
+      "file": "asm/overlay_96_s1118.s",
+      "lines": 355,
+      "functions": 2,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched (batch 14)"
+    },
+    {
+      "file": "asm/overlay_96_s1216.s",
+      "lines": 441,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched (batch 14)"
+    },
+    {
+      "file": "asm/overlay_96_s1218.s",
+      "lines": 215,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched (batch 14)"
+    },
+    {
+      "file": "asm/overlay_96_s1283.s",
+      "lines": 230,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched (batch 14)"
+    },
+    {
+      "file": "asm/overlay_96_s1328.s",
+      "lines": 154,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched (batch 14)"
+    },
+    {
+      "file": "asm/overlay_96_s1012.s",
+      "lines": 502,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched (batch 15)"
+    },
+    {
+      "file": "asm/overlay_96_s1162.s",
+      "lines": 550,
+      "functions": 3,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched (batch 15)"
+    },
+    {
+      "file": "src/hgify/overlay_01_021EFB38/overlay_01_021EFB38_p79.c",
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched in place (batch 15)"
+    },
+    {
+      "file": "src/hgify/overlay_02_02245B80/overlay_02_02245B80_o13.c",
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched in place (batch 15)"
+    },
+    {
+      "file": "src/hgify/overlay_07/overlay_07_r770.c",
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched in place (batch 15)"
+    },
+    {
+      "file": "src/hgify/overlay_08/overlay_08_q102.c",
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched in place (batch 15)"
+    },
+    {
+      "file": "src/hgify/overlay_08/overlay_08_q104.c",
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched in place (batch 15)"
+    },
+    {
+      "file": "src/hgify/overlay_08/overlay_08_q132.c",
+      "functions": 2,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched in place (batch 15)"
+    },
+    {
+      "file": "src/hgify/overlay_08/overlay_08_q158.c",
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched in place (batch 15)"
+    },
+    {
+      "file": "src/hgify/overlay_08/overlay_08_q49.c",
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched in place (batch 15)"
+    },
+    {
+      "file": "src/hgify/overlay_08/overlay_08_q73.c",
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched in place (batch 15)"
+    },
+    {
+      "file": "src/hgify/overlay_08/overlay_08_q86.c",
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched in place (batch 15)"
+    },
+    {
+      "file": "src/hgify/overlay_08/overlay_08_q90.c",
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched in place (batch 15)"
+    },
+    {
+      "file": "src/hgify/overlay_120/overlay_120_s03.c",
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched in place (batch 15)"
+    },
+    {
+      "file": "src/hgify/overlay_41_0224A5A4/overlay_41_0224A5A4_n32.c",
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched in place (batch 15)"
+    },
+    {
+      "file": "src/hgify/overlay_71/overlay_71_r97.c",
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched in place (batch 15)"
+    },
+    {
+      "file": "src/hgify/overlay_96/overlay_96_s103.c",
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched in place (batch 15)"
+    },
+    {
+      "file": "src/hgify/overlay_120/overlay_120_s13.c",
+      "functions": 2,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched in place (batch 15)"
+    },
+    {
+      "file": "asm/overlay_01_021EB1E8_r60.s",
+      "lines": 134,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched (batch 16)"
+    },
+    {
+      "file": "asm/overlay_111_q25.s",
+      "lines": 137,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched (batch 16)"
+    },
+    {
+      "file": "asm/overlay_14_021F0A80_q14.s",
+      "lines": 133,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched (batch 16)"
+    },
+    {
+      "file": "asm/overlay_14_021F1808_r18.s",
+      "lines": 106,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched (batch 16)"
+    },
+    {
+      "file": "asm/overlay_41_02245EA0_q58.s",
+      "lines": 143,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched (batch 16)"
+    },
+    {
+      "file": "asm/overlay_41_02248ED4_p11.s",
+      "lines": 100,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched (batch 16)"
+    },
+    {
+      "file": "asm/overlay_trainer_card_signature_n12.s",
+      "lines": 136,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched (batch 16)"
+    },
+    {
+      "file": "asm/unk_02016EDC_k02.s",
+      "lines": 156,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched (batch 16)"
+    },
+    {
+      "file": "asm/unk_02056D7C_q12.s",
+      "lines": 105,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched (batch 16)"
+    },
+    {
+      "file": "asm/unk_0205FD20_q21.s",
+      "lines": 148,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched (batch 16)"
+    },
+    {
+      "file": "asm/overlay_01_021EDAFC_q40.s",
+      "lines": 137,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched (batch 17)"
+    },
+    {
+      "file": "asm/overlay_01_021EFB38_p33.s",
+      "lines": 118,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched (batch 17)"
+    },
+    {
+      "file": "asm/overlay_02_02245B80_o28.s",
+      "lines": 121,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched (batch 17)"
+    },
+    {
+      "file": "asm/overlay_85_r196.s",
+      "lines": 117,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched (batch 17)"
+    },
+    {
+      "file": "asm/overlay_85_r239.s",
+      "lines": 139,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched (batch 17)"
+    },
+    {
+      "file": "asm/overlay_97_q30.s",
+      "lines": 181,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched (batch 17)"
+    },
+    {
+      "file": "asm/overlay_00_thumb_r09.s",
+      "lines": 170,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched (batch 18)"
+    },
+    {
+      "file": "asm/overlay_00_thumb_r49.s",
+      "lines": 122,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched (batch 18)"
+    },
+    {
+      "file": "asm/overlay_01_021E90C0_s12.s",
+      "lines": 119,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched (batch 18)"
+    },
+    {
+      "file": "asm/overlay_01_021EDAFC_q26.s",
+      "lines": 65,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched (batch 18)"
+    },
+    {
+      "file": "asm/overlay_01_022053EC_p03.s",
+      "lines": 70,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched (batch 18)"
+    },
+    {
+      "file": "asm/overlay_01_022053EC_p27.s",
+      "lines": 253,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched (batch 18)"
+    },
+    {
+      "file": "asm/overlay_71_r164.s",
+      "lines": 44,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched (batch 18)"
+    },
+    {
+      "file": "asm/overlay_85_r145.s",
+      "lines": 73,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched (batch 18)"
+    },
+    {
+      "file": "asm/unk_0205A44C_p10.s",
+      "lines": 196,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched (batch 18)"
+    },
+    {
+      "file": "asm/unk_0205A44C_p13.s",
+      "lines": 186,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched (batch 18)"
+    },
+    {
+      "file": "asm/overlay_12_battle_controller_p81.s",
+      "lines": 266,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched (batch 19)"
+    },
+    {
+      "file": "asm/overlay_14_021E5900_s169.s",
+      "lines": 56,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched (batch 19)"
+    },
+    {
+      "file": "asm/overlay_43_r106.s",
+      "lines": 73,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched (batch 19)"
+    },
+    {
+      "file": "asm/overlay_45_thumb_r445.s",
+      "lines": 45,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched (batch 19)"
+    },
+    {
+      "file": "asm/overlay_65_s33.s",
+      "lines": 341,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched (batch 19)"
+    },
+    {
+      "file": "asm/overlay_68_q22.s",
+      "lines": 38,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched (batch 19)"
+    },
+    {
+      "file": "asm/overlay_82_r06.s",
+      "lines": 182,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched (batch 19)"
+    },
+    {
+      "file": "asm/unk_02031B0C_p15.s",
+      "lines": 33,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched (batch 19)"
     }
   ],
   "failed": [
@@ -1410,8 +5002,8 @@
   ],
   "in_progress": null,
   "stats": {
-    "total_attempts": 283,
-    "total_matched": 93,
+    "total_attempts": 734,
+    "total_matched": 544,
     "total_failed": 31
   },
   "matched": [
