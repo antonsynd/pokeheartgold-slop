@@ -2039,6 +2039,12 @@
       "category": "compiler",
       "title": "Loops that start with `b <test>` (test at the bottom, no duplicated pre-test) AND reload `a0->ptr->field` in every block, but still show instruction scheduling and flag-reusing `bpl` peepholes: compile the function under `#pragma optimization_level 2` + `#pragma opt_common_subs off`",
       "body": "ov93_0225D4EC (overlay_93_thumb_1_s19): -O4 rotates the loop; `#pragma optimization_level 1` keeps it unrotated but loses scheduling (26 diffs); level 2 alone CSEs the session pointer across blocks (51 diffs); level 2 + opt_common_subs off matched byte for byte. The same pair matched ov89_0225AF10 and ov89_02259CD0 (both parked earlier as 'unrotated loop, not reproducible with pragmas'), ov89_0225A878, ov89_0225C648 and ov89_0225B82C, so overlay_89 and overlay_93_thumb_1 look like TUs built with these settings. Put the pragmas after the declarations, right before the first function. Corollaries seen in the same TUs: an element pointer (`pos = &table[i]; pos->x, pos->y`) instead of `table[i].x/.y` keeps one base register; FX_Mul has to be written out as `(fx32)(((fx64)a * b + 0x800) >> FX32_SHIFT)`."
+    },
+    {
+      "id": "recomputed-subexpressions-opt-common-subs-off",
+      "category": "compiler",
+      "title": "If retail recomputes the same cheap subexpression (`lsls rX, r7, #1` twice, `add rN, r5, #0x1c` before every call) where -O4 keeps one copy, try `#pragma opt_common_subs off` on its own (no optimization_level change)",
+      "body": "ov12_02265E28 (Terrain_LoadResources twin) computed `timeOffset * 2` once in C at -O4; retail shifts it again for the second palette load. `#pragma opt_common_subs off` before the function matched with no other change. Retrying every parked near miss with just that pragma also matched ov90_02259FC8 and ov90_0225B2A8 (overlay_90_r84 / r111), so battle (ov12) and ov90 sources appear to have been built without CSE. Loops stay rotated and scheduling stays on with this pragma alone; for the unrotated-loop variant see unrotated-loops-opt2-no-common-subs."
     }
   ]
 }
