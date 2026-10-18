@@ -789,6 +789,14 @@ ov108_021E6C68 initialises 8 BG layers: retail keeps r7 as the loop counter and 
 
 ov15_021FD24C: retail loads quantity (ldrsh) then price and does `muls r1, r2`; `price * quantity` loaded price first. `quantity * price` matched. Same in ov40_02236F38 (`width * height`, loading [2] before [3]).
 
+### Spilled/stack locals are laid out by declaration order: the FIRST declared local gets the HIGHEST sp offset. When two stack slots are swapped, swap the declarations  <!-- id: first-declared-local-gets-highest-stack-slot -->
+
+ov40_0224355C: retail keeps the String* at sp+4 and the digit value at sp+8; declaring `u32 value;` before `String *string = String_New(...)` matched. Same fix for ov14_021F2D1C (the copied ManagedSpriteTemplate declared before the template it is copied from), ov83_022400BC (`u16 maxHpX; u16 slashX; u16 hpX;` before `Pokemon *mon = ...`) and ov96_0220EA08 (counts, OAM params, transfer params at 0x34/0x14/0 in that declaration order).
+
+### An `add rX, #imm` of a loop-invariant pointer that retail emits just before the loop (after the counter inits) comes from writing the offset in the call arguments (`p + 0x20`) inside the loop, not from a pre-offset local  <!-- id: loop-invariant-arg-offset-hoisted-late -->
+
+ov18_021EE44C blits 8x8 tiles from `charData->pRawData + 0x20`. With `u8 *pixels = (u8 *)charData->pRawData + 0x20;` the add sat next to the load; writing `u8 *pixels = charData->pRawData;` and passing `pixels + 0x20` to both BlitBitmapRect calls let MWCC hoist the add into the loop preheader, after `movs r5,#0; str r5,[sp,#0x24]; adds r4,#12`, as retail does.
+
 ## Matching Tricks
 
 ### Small source changes that move codegen  <!-- id: decl-order-tricks -->
@@ -1064,6 +1072,10 @@ When a call result is both stored to a struct field and kept in a callee-saved l
 ### Entry `adds r4,rN,#0; bpl/bmi/beq/bne` (param copy whose FLAGS are the test vs 0, no cmp) IS plain C -- only `cmp rCopy,#N` (N != 0) is the param-copyprop-cmp blocker  <!-- id: param-copy-flag-test-vs-zero-is-plain-c -->
 
 Refines [[param-copyprop-cmp]]. When the parameter copy instruction itself sets the flags for a compare-with-zero (`add r4, r1, #0; bpl L` for `if (v < 0) v = 0;`, `add r5, r0, #0 ... bne L` for `GF_ASSERT(p != NULL)`), MWCC emits exactly that from ordinary C because the copy (kept live across a later call) is the flag-setting op. Matched in plain C in unk_02004A44: GF_SndHandleSetInitialVolume (clamp 0..0x7F), GF_SndPlayerCountPlayingSeqByPlayerNo (GF_ASSERT(playerNo >= 0)), sub_02005B78 (GF_ASSERT(dst != NULL)) -- a drafter had pre-emptively written all three as NONMATCHING asm. Also: asmscan flags `bl X; adds r4,r0,#0; cmp r4,#1` (a SAVED RETURN value, e.g. sub_020058F4) as a copyprop site -- that is a false positive and is plain C. Always try the C variant (temporarily `#if 1` the NONMATCHING branch) and byte-check before keeping an asm fallback.
+
+### When porting a pokeplatinum twin, keep its odd local copies (`u32 collision = _collision;`): they decide which register a stack parameter is loaded into  <!-- id: platinum-twin-local-copies-matter -->
+
+sub_0205DF0C (PlayerAvatar_GetMovementActionAnimCode in pokeplatinum) differed only by r0/r1 around the collision tests while the parameter was used directly; adding Platinum's `u32 collision = _collision;` after PlayerAvatar_GetMapObject matched. sub_02061E90 (twin sub_0206537C) and ov82_0223F040 (twin PrintTypeStrings) matched on the first try by transcribing the twin's block structure and nested scopes verbatim with HG names and constants.
 
 ## IPA (-ipa file) Behavior
 

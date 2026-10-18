@@ -3146,6 +3146,110 @@
       "attempts": 1,
       "result": "matched",
       "note": "matched"
+    },
+    {
+      "file": "asm/overlay_15_s97.s",
+      "lines": 99,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched"
+    },
+    {
+      "file": "asm/overlay_18_021EE35C_r57.s",
+      "lines": 112,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched"
+    },
+    {
+      "file": "asm/overlay_18_021F0918_r53.s",
+      "lines": 115,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched"
+    },
+    {
+      "file": "asm/overlay_43_r39.s",
+      "lines": 96,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched"
+    },
+    {
+      "file": "asm/overlay_70_r304.s",
+      "lines": 97,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched"
+    },
+    {
+      "file": "asm/overlay_71_r198.s",
+      "lines": 99,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched"
+    },
+    {
+      "file": "asm/overlay_71_r67.s",
+      "lines": 99,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched"
+    },
+    {
+      "file": "asm/overlay_81_r38.s",
+      "lines": 102,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched"
+    },
+    {
+      "file": "asm/overlay_82_r38.s",
+      "lines": 104,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched"
+    },
+    {
+      "file": "asm/overlay_83_0223DD60_r32.s",
+      "lines": 98,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched"
+    },
+    {
+      "file": "asm/overlay_96_s479.s",
+      "lines": 143,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched"
+    },
+    {
+      "file": "asm/overlay_trainer_card_main_r03.s",
+      "lines": 103,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched"
+    },
+    {
+      "file": "asm/unk_0205CB48_r58.s",
+      "lines": 123,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched"
     }
   ],
   "failed": [
@@ -3554,8 +3658,8 @@
   ],
   "in_progress": null,
   "stats": {
-    "total_attempts": 551,
-    "total_matched": 361,
+    "total_attempts": 564,
+    "total_matched": 374,
     "total_failed": 31
   },
   "matched": [

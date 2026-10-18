@@ -2015,6 +2015,24 @@
       "category": "data-sections",
       "title": "A pool entry naming an odd label inside a global (e.g. ov43_0222F160 = ov43_0222F14C + 0x14) with offsets 0x4C/0x50/0x78 is the anchor MWCC chose so a far field fits the 0..0x7C store immediate; hgify labelled the anchor as its own symbol",
       "body": "ov43_0222AC28 writes ov43_0222F14C[2] (offsets 0x60, 0x64, 0x8C) through `ldr r1,=ov43_0222F160` and `str [r1,#0x4C/#0x50/#0x78]`, then passes `=ov43_0222F1AC` to Sprite_CreateAffine. Writing `ov43_0222F14C[2].field` from C gives `sym` and `sym+0x80` bases instead. Until the data file is decompiled, declare a struct that starts at the anchor label (`typedef struct { u8 filler[0x4C]; SpriteTemplate cursor; } Anchor; extern Anchor ov43_0222F160;`) and take the template address through its own label (`extern SpriteTemplate ov43_0222F1AC;`)."
+    },
+    {
+      "id": "first-declared-local-gets-highest-stack-slot",
+      "category": "codegen",
+      "title": "Spilled/stack locals are laid out by declaration order: the FIRST declared local gets the HIGHEST sp offset. When two stack slots are swapped, swap the declarations",
+      "body": "ov40_0224355C: retail keeps the String* at sp+4 and the digit value at sp+8; declaring `u32 value;` before `String *string = String_New(...)` matched. Same fix for ov14_021F2D1C (the copied ManagedSpriteTemplate declared before the template it is copied from), ov83_022400BC (`u16 maxHpX; u16 slashX; u16 hpX;` before `Pokemon *mon = ...`) and ov96_0220EA08 (counts, OAM params, transfer params at 0x34/0x14/0 in that declaration order)."
+    },
+    {
+      "id": "loop-invariant-arg-offset-hoisted-late",
+      "category": "codegen",
+      "title": "An `add rX, #imm` of a loop-invariant pointer that retail emits just before the loop (after the counter inits) comes from writing the offset in the call arguments (`p + 0x20`) inside the loop, not from a pre-offset local",
+      "body": "ov18_021EE44C blits 8x8 tiles from `charData->pRawData + 0x20`. With `u8 *pixels = (u8 *)charData->pRawData + 0x20;` the add sat next to the load; writing `u8 *pixels = charData->pRawData;` and passing `pixels + 0x20` to both BlitBitmapRect calls let MWCC hoist the add into the loop preheader, after `movs r5,#0; str r5,[sp,#0x24]; adds r4,#12`, as retail does."
+    },
+    {
+      "id": "platinum-twin-local-copies-matter",
+      "category": "matching-tricks",
+      "title": "When porting a pokeplatinum twin, keep its odd local copies (`u32 collision = _collision;`): they decide which register a stack parameter is loaded into",
+      "body": "sub_0205DF0C (PlayerAvatar_GetMovementActionAnimCode in pokeplatinum) differed only by r0/r1 around the collision tests while the parameter was used directly; adding Platinum's `u32 collision = _collision;` after PlayerAvatar_GetMapObject matched. sub_02061E90 (twin sub_0206537C) and ov82_0223F040 (twin PrintTypeStrings) matched on the first try by transcribing the twin's block structure and nested scopes verbatim with HG names and constants."
     }
   ]
 }
