@@ -1,14 +1,14 @@
 # Decomp Coverage Ledger
 
-*Generated 2026-10-18T07:03:51Z by `coverage_ledger.py` — do not hand-edit; regenerate after each decomp.*
+*Generated 2026-10-18T07:17:42Z by `coverage_ledger.py` — do not hand-edit; regenerate after each decomp.*
 
-Tracked functions (files with retained asm): **19131** — matched 18422, pending 676, plus 20 matched-but-blocked inside failed files.
+Tracked functions (files with retained asm): **19131** — matched 18431, pending 667, plus 20 matched-but-blocked inside failed files.
 
 | status | files | functions | insn lines | ~text bytes |
 |---|---|---|---|---|
-| matched | 1004 | 18422 | 116937 | 260896 |
+| matched | 1011 | 18431 | 118433 | 264066 |
 | blocked | 4 | 33 | 1328 | 2942 |
-| pending | 187 | 676 | 146550 | 327568 |
+| pending | 180 | 667 | 145054 | 324398 |
 | upstream | 399 | 0 | 0 | 0 |
 
 ## Blockers (value-ordered: fix what gates the most)
@@ -30,7 +30,7 @@ Tracked functions (files with retained asm): **19131** — matched 18422, pending 
 | asm/unk_02055BF0_data.s | 0 | 0 | yes | ext-data-section-split Data-only: 3 external const fn-ptr arrays (sMapEnterRoutines, sMapExitRoutines, _020FC76C) referenced only by already-ma |
 | asm/overlay_12_battle_command.s | 0 | 0 | yes |   |
 
-## Matched files (asm retained) (1004)
+## Matched files (asm retained) (1011)
 
 | file | functions | insn lines | data-only | notes |
 |---|---|---|---|---|
@@ -370,6 +370,8 @@ Tracked functions (files with retained asm): **19131** — matched 18422, pending 
 | asm/overlay_96_s1030.s | 2 | 62 |  | harness |
 | asm/overlay_96_s1065.s | 2 | 187 |  | harness |
 | asm/overlay_96_s1084.s | 2 | 76 |  | harness |
+| asm/overlay_96_s1113.s | 2 | 338 |  | harness |
+| asm/overlay_96_s1118.s | 2 | 263 |  | harness |
 | asm/overlay_96_s1168.s | 2 | 29 |  | harness |
 | asm/overlay_96_s1177.s | 2 | 114 |  | harness |
 | asm/overlay_96_s1296.s | 2 | 309 |  | harness |
@@ -755,6 +757,7 @@ Tracked functions (files with retained asm): **19131** — matched 18422, pending 
 | asm/overlay_96_s1095.s | 1 | 66 |  | harness |
 | asm/overlay_96_s1096.s | 1 | 0 |  | hgify |
 | asm/overlay_96_s1097.s | 1 | 0 |  | hgify |
+| asm/overlay_96_s1098.s | 1 | 160 |  | harness |
 | asm/overlay_96_s1099.s | 1 | 0 |  | hgify |
 | asm/overlay_96_s1100.s | 1 | 46 |  | harness |
 | asm/overlay_96_s1101.s | 1 | 0 |  | hgify |
@@ -858,7 +861,9 @@ Tracked functions (files with retained asm): **19131** — matched 18422, pending 
 | asm/overlay_96_s1213.s | 1 | 0 |  | hgify |
 | asm/overlay_96_s1214.s | 1 | 198 |  | harness |
 | asm/overlay_96_s1215.s | 1 | 0 |  | hgify |
+| asm/overlay_96_s1216.s | 1 | 346 |  | harness |
 | asm/overlay_96_s1217.s | 1 | 0 |  | hgify |
+| asm/overlay_96_s1218.s | 1 | 139 |  | harness |
 | asm/overlay_96_s1219.s | 1 | 0 |  | hgify |
 | asm/overlay_96_s1220.s | 1 | 0 |  | hgify |
 | asm/overlay_96_s1221.s | 1 | 0 |  | hgify |
@@ -920,6 +925,7 @@ Tracked functions (files with retained asm): **19131** — matched 18422, pending 
 | asm/overlay_96_s1280.s | 1 | 0 |  | hgify |
 | asm/overlay_96_s1281.s | 1 | 0 |  | hgify |
 | asm/overlay_96_s1282.s | 1 | 0 |  | hgify |
+| asm/overlay_96_s1283.s | 1 | 156 |  | harness |
 | asm/overlay_96_s1284.s | 1 | 0 |  | hgify |
 | asm/overlay_96_s1285.s | 1 | 266 |  | harness |
 | asm/overlay_96_s1286.s | 1 | 0 |  | hgify |
@@ -962,6 +968,7 @@ Tracked functions (files with retained asm): **19131** — matched 18422, pending 
 | asm/overlay_96_s1324.s | 1 | 0 |  | hgify |
 | asm/overlay_96_s1325.s | 1 | 0 |  | hgify |
 | asm/overlay_96_s1327.s | 1 | 0 |  | hgify |
+| asm/overlay_96_s1328.s | 1 | 94 |  | harness |
 | asm/overlay_96_s1329.s | 1 | 0 |  | hgify |
 | asm/overlay_96_s1330.s | 1 | 0 |  | hgify |
 | asm/overlay_96_s1331.s | 1 | 0 |  | hgify |
@@ -1039,7 +1046,7 @@ Tracked functions (files with retained asm): **19131** — matched 18422, pending 
 | asm/battle_arcade_game_board_data.s | 0 | 0 | yes | harness |
 | asm/battle_arcade_game_board_data2.s | 0 | 0 | yes | split_tu |
 
-## Pending files (187)
+## Pending files (180)
 
 | file | functions | insn lines | data-only | notes |
 |---|---|---|---|---|
@@ -1107,8 +1114,6 @@ Tracked functions (files with retained asm): **19131** — matched 18422, pending 
 | asm/overlay_115.s | 3 | 1583 |  |  |
 | asm/overlay_120.s | 3 | 496 |  |  |
 | asm/overlay_96_s1107.s | 2 | 130 |  |  |
-| asm/overlay_96_s1113.s | 2 | 338 |  |  |
-| asm/overlay_96_s1118.s | 2 | 263 |  |  |
 | asm/overlay_96_s1149.s | 2 | 1102 |  |  |
 | asm/overlay_96_s1270.s | 2 | 1186 |  |  |
 | asm/overlay_96_s1346.s | 2 | 364 |  |  |
@@ -1136,15 +1141,10 @@ Tracked functions (files with retained asm): **19131** — matched 18422, pending 
 | asm/overlay_96_s1012.s | 1 | 409 |  |  |
 | asm/overlay_96_s1028.s | 1 | 51 |  |  |
 | asm/overlay_96_s1072.s | 1 | 395 |  |  |
-| asm/overlay_96_s1098.s | 1 | 160 |  |  |
 | asm/overlay_96_s1111.s | 1 | 273 |  |  |
 | asm/overlay_96_s1173.s | 1 | 717 |  |  |
 | asm/overlay_96_s1204.s | 1 | 75 |  |  |
-| asm/overlay_96_s1216.s | 1 | 346 |  |  |
-| asm/overlay_96_s1218.s | 1 | 139 |  |  |
 | asm/overlay_96_s1279.s | 1 | 255 |  |  |
-| asm/overlay_96_s1283.s | 1 | 156 |  |  |
-| asm/overlay_96_s1328.s | 1 | 94 |  |  |
 | asm/overlay_96_s1337.s | 1 | 28 |  |  |
 | asm/render_window.s | 1 | 115 |  |  |
 | asm/unk_02016EDC.s | 1 | 139 |  |  |

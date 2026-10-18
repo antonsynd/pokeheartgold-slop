@@ -837,6 +837,10 @@ ov96_022180CC (overlay_96_s1285) copies the player's touch position into the mov
 
 ov96_02215478 (overlay_96_s1218) starts with `str r0, [sp, #12]` (u8 i = 0 spilled) followed by `strb r0, [r7]; ldr r0, [sp, #12]; strb r0, [r7, #1]; ...` for a u8 counts[4]. Explicit `counts[k] = 0` or `counts[k] = i` statements come out 2 bytes shorter or with a different store order; `u8 counts[4] = { 0, 0, 0, 0 };` in the declaration matched (MWCC value-numbers the zero to the spilled counter). Also in this file: `(int)LCRandom() % 64` gives the signed-modulo `lsr #31; lsl #26; sub; ror #26` sequence. Related: [[aggregate-init-zeroes-vec-via-base-pointer]].
 
+### `y = y > MAX ? MAX : y;` gives one store after the compare; `if (y > MAX) y = MAX;` stores inside the branch  <!-- id: ternary-clamp-sinks-store -->
+
+ov96_0220B9A8 (overlay_96_s1012) clamps a stack s16: retail is `ldrsh r0, [y]; cmp r0, #0xd8; ble 1f; movs r0, #0xd8; 1: strh r0, [y]`. The if-statement form emits `movs r0, #0xd8; strh r0, [y]` inside the taken branch and leaves the fall-through with no store (2-byte shorter, 8 diffs). The ternary assignment reproduces the single shared store. Same file: `MATH_ABS(272 - y) >> 2` (not `/ 4`) for the `asr #2` without rounding bias.
+
 ## Matching Tricks
 
 ### Small source changes that move codegen  <!-- id: decl-order-tricks -->
@@ -1144,6 +1148,10 @@ ov96_0220BE28 (overlay_96_s1014) takes `u8 playerId` as its 5th parameter. Retai
 ### `adds r7, r4, #0` copying a constant-valued register right before a loop means the loop uses a SECOND variable assigned the same constant  <!-- id: separate-variable-for-loop-copy-of-constant -->
 
 ov96_022163AC (overlay_96_s1261) loads sprite resources for the main screen with `vram = NNS_G2D_VRAM_TYPE_2DMAIN` and then the sub screen with `vram = NNS_G2D_VRAM_TYPE_2DSUB` (r4 holds 1, then 2, and MWCC reuses it for any argument equal to that value, e.g. `adds r0, r4, #0` for a TRUE or a palette count of 2). Before the following `for (i...)` loop retail does `adds r7, r4, #0; movs r4, #0`. Using `vram` inside the loop puts the whole second web in r7 from the start (48 diffs); literal constants in the loop make MWCC hoist the most-used constant (1) instead. Matching source: `vram2 = NNS_G2D_VRAM_TYPE_2DSUB;` right before the loop and `vram2` in the loop body. Related: [[const-arg-reuses-compare-register]].
+
+### When retail computes `base + team*0x174` and `member*0x7c` into two registers before a compare and re-adds them at every access, the source took `&teams[team].members[member]` into a pointer first  <!-- id: pointer-to-element-hoists-index-products -->
+
+ov96_022130EC (overlay_96_s1162) updates a member's points in both branches of `if (zone == team)`. Retail computes r4 = teams + team*0x174 and r6 = member*0x7c ahead of the compare and then does `adds r0, r4, r6; adds r0, #0x5e` for every access. With `teams[team].members[member].points` written in each branch MWCC computes the address per branch (4 bytes shorter); with a `Ov96Team *t = &teams[team]` it changes register allocation (124 diffs). Assigning `Ov96Member *m = &teams[team].members[member];` right before the if matched (after also ordering the spilled locals teams > i > work by declaration). Same file: a u8 BOOL-ish parameter (`u8 flip`) is what makes MWCC spill r2 at function entry rather than after the first use.
 
 ## IPA (-ipa file) Behavior
 
