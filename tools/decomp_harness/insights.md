@@ -841,6 +841,10 @@ ov96_02215478 (overlay_96_s1218) starts with `str r0, [sp, #12]` (u8 i = 0 spill
 
 ov96_0220B9A8 (overlay_96_s1012) clamps a stack s16: retail is `ldrsh r0, [y]; cmp r0, #0xd8; ble 1f; movs r0, #0xd8; 1: strh r0, [y]`. The if-statement form emits `movs r0, #0xd8; strh r0, [y]` inside the taken branch and leaves the fall-through with no store (2-byte shorter, 8 diffs). The ternary assignment reproduces the single shared store. Same file: `MATH_ABS(272 - y) >> 2` (not `/ 4`) for the `asr #2` without rounding bias.
 
+### `ldrh; adds #1; strh` twice around one `_fflt` = FX32_CONST(x->timer++): the macro evaluates its argument twice, so retail increments twice  <!-- id: fx32-const-macro-double-increment -->
+
+ov02_0224663C (overlay_02_02245B80_o28) loads the u16 timer, stores timer+1, compares the OLD value with 0, reloads, and in each branch increments the field a second time before `lsl #12; _fflt; _fadd/_fsub 0.5f`. That is the SDK FX32_CONST/FX_F32_TO_FX32 macro applied to `shake->timer++`: one ++ in the `(x) > 0` test and one in the selected arm. Write it exactly like that; the original has the bug. Same function: return FALSE early when `timer < duration` and `if (--repeats == 0) return TRUE; return FALSE;` so MWCC reuses the zero high word of the FX_Mul as the FALSE register (a `BOOL done` variable adds a `movs #0`).
+
 ## Matching Tricks
 
 ### Small source changes that move codegen  <!-- id: decl-order-tricks -->
@@ -1156,6 +1160,10 @@ ov96_022130EC (overlay_96_s1162) updates a member's points in both branches of `
 ### `lsls rI, idx, #4` at the very top of a text-printing function means a `Window *window = &app->windows[idx];` local, not `&windows[idx]` at each use  <!-- id: window-pointer-hoists-index-shift -->
 
 ov08_0221EF48 / ov08_0221E3A4 / ov08_0221F1B0 (overlay_08 summary screen) compute `idx << 4` in the prologue and then use `adds r0, r5, r4` (windows base + offset) at every AddTextPrinter/ScheduleWindowCopyToVram call. Writing `&windows[idx]` at each call lets MWCC compute the shift lazily right before the first use (4-byte SIZE diff). Declaring the element pointer first, `struct Ov08Window *window = &app->windows[idx];`, reproduces the early shift and the base+offset adds. Related: [[pointer-to-element-hoists-index-products]].
+
+### `row = data + i*8` with fields read at [row, #0x28] means the source indexed `data->rows[i].field` directly; a `Row *row = &data->rows[i]` pointer folds the 0x28 into the base  <!-- id: struct-array-field-base-without-offset -->
+
+ov97_0221F5F8 (overlay_97_q30) computes `adds r7, data, i*8` and then reads `ldrsb [r7, #0x28]` and `ldrb [r7 + j + 0x29]`. With a local `Ov97ResultRow *row = &results->rows[i]` MWCC computes `results + 0x28` first and indexes from there (different code, 2 bytes shorter). Spelling every access as `results->rows[i].trend` / `results->rows[i].marks[j]` lets MWCC keep the struct base + i*8 and fold the 0x28 into the displacement. The opposite of [[pointer-to-element-hoists-index-products]]: check which base the retail loads use before introducing a row pointer.
 
 ## IPA (-ipa file) Behavior
 

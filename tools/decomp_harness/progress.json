@@ -4322,6 +4322,86 @@
       "attempts": 1,
       "result": "matched",
       "note": "matched in place (batch 15)"
+    },
+    {
+      "file": "asm/overlay_01_021EB1E8_r60.s",
+      "lines": 134,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched (batch 16)"
+    },
+    {
+      "file": "asm/overlay_111_q25.s",
+      "lines": 137,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched (batch 16)"
+    },
+    {
+      "file": "asm/overlay_14_021F0A80_q14.s",
+      "lines": 133,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched (batch 16)"
+    },
+    {
+      "file": "asm/overlay_14_021F1808_r18.s",
+      "lines": 106,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched (batch 16)"
+    },
+    {
+      "file": "asm/overlay_41_02245EA0_q58.s",
+      "lines": 143,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched (batch 16)"
+    },
+    {
+      "file": "asm/overlay_41_02248ED4_p11.s",
+      "lines": 100,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched (batch 16)"
+    },
+    {
+      "file": "asm/overlay_trainer_card_signature_n12.s",
+      "lines": 136,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched (batch 16)"
+    },
+    {
+      "file": "asm/unk_02016EDC_k02.s",
+      "lines": 156,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched (batch 16)"
+    },
+    {
+      "file": "asm/unk_02056D7C_q12.s",
+      "lines": 105,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched (batch 16)"
+    },
+    {
+      "file": "asm/unk_0205FD20_q21.s",
+      "lines": 148,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched (batch 16)"
     }
   ],
   "failed": [
@@ -4730,8 +4810,8 @@
   ],
   "in_progress": null,
   "stats": {
-    "total_attempts": 700,
-    "total_matched": 510,
+    "total_attempts": 710,
+    "total_matched": 520,
     "total_failed": 31
   },
   "matched": [
