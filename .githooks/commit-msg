@@ -1,0 +1,8 @@
+#!/bin/sh
+# Remove pret issue/PR references from the commit message (issue #36): GitHub
+# cross-links them and notifies pret's maintainers. Numbers are dropped, not
+# backticked, since commit cross-references come from the raw message.
+if ! python3 "$(git rev-parse --show-toplevel)/tools/decomp_harness/pret_refs.py" strip --in-place "$1"; then
+    echo "commit-msg: pret_refs.py failed; check the message for pret issue/PR numbers by hand" >&2
+fi
+exit 0

@@ -6,16 +6,16 @@
 #include "heap.h"
 #include "sys_task_api.h"
 s32 ov10_022205BC(s32 a, u8 b);
-void ov12_02262F24(s32 a, u8 b, s32 c);
-void ov12_0226430C(s32 a, u8 b, u8 c);
+void BattleController_EmitSelectedCommand(s32 a, u8 b, s32 c);
+void BattleController_EmitClearCommand(s32 a, u8 b, u8 c);
 // FUNCTION ov12_0225E104: matching C (agent6)
 #pragma force_active on
 void ov12_0225E104(void *param_1, s32 *param_2) {
     s32 uVar1;
 
     uVar1 = ov10_022205BC(param_2[0], ((u8 *)param_2)[9]);
-    ov12_02262F24(param_2[0], ((u8 *)param_2)[9], uVar1);
-    ov12_0226430C(param_2[0], ((u8 *)param_2)[9], ((u8 *)param_2)[8]);
+    BattleController_EmitSelectedCommand(param_2[0], ((u8 *)param_2)[9], uVar1);
+    BattleController_EmitClearCommand(param_2[0], ((u8 *)param_2)[9], ((u8 *)param_2)[8]);
     Heap_Free(param_2);
     SysTask_Destroy(param_1);
 }

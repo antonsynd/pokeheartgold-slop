@@ -4091,7 +4091,7 @@ struct BattleSystem {
     SysTask *playbackStopButton;
     u8 recordedChatter[4];
 };
-int GetBattlerVar(BattleContext *battleCtx, int battler, enum BattleMonParam paramID, void *buf);
+int BattleMon_Get(BattleContext *battleCtx, int battler, enum BattleMonParam paramID, void *buf);
 int BattleSystem_GetBattlerIdPartner(BattleSystem *battleSys, int battler);
 void ov10_0221CB80(BattleSystem *battleSys, BattleContext *battleCtx);
 int ov10_0221EEF0(BattleContext *battleCtx);
@@ -4106,19 +4106,19 @@ void ov10_0221CB80(BattleSystem *battleSys, BattleContext *battleCtx) {
 
     switch (param) {
     case LOAD_ATTACKER_TYPE_1:
-        (battleCtx->aiContext).calcTemp = GetBattlerVar(battleCtx, (battleCtx->aiContext).attacker, BATTLEMON_TYPE_1, ((void *)0));
+        (battleCtx->aiContext).calcTemp = BattleMon_Get(battleCtx, (battleCtx->aiContext).attacker, BATTLEMON_TYPE_1, ((void *)0));
         break;
 
     case LOAD_DEFENDER_TYPE_1:
-        (battleCtx->aiContext).calcTemp = GetBattlerVar(battleCtx, (battleCtx->aiContext).defender, BATTLEMON_TYPE_1, ((void *)0));
+        (battleCtx->aiContext).calcTemp = BattleMon_Get(battleCtx, (battleCtx->aiContext).defender, BATTLEMON_TYPE_1, ((void *)0));
         break;
 
     case LOAD_ATTACKER_TYPE_2:
-        (battleCtx->aiContext).calcTemp = GetBattlerVar(battleCtx, (battleCtx->aiContext).attacker, BATTLEMON_TYPE_2, ((void *)0));
+        (battleCtx->aiContext).calcTemp = BattleMon_Get(battleCtx, (battleCtx->aiContext).attacker, BATTLEMON_TYPE_2, ((void *)0));
         break;
 
     case LOAD_DEFENDER_TYPE_2:
-        (battleCtx->aiContext).calcTemp = GetBattlerVar(battleCtx, (battleCtx->aiContext).defender, BATTLEMON_TYPE_2, ((void *)0));
+        (battleCtx->aiContext).calcTemp = BattleMon_Get(battleCtx, (battleCtx->aiContext).defender, BATTLEMON_TYPE_2, ((void *)0));
         break;
 
     case LOAD_MOVE_TYPE:
@@ -4127,22 +4127,22 @@ void ov10_0221CB80(BattleSystem *battleSys, BattleContext *battleCtx) {
 
     case LOAD_ATTACKER_PARTNER_TYPE_1:
         partner = BattleSystem_GetBattlerIdPartner(battleSys, (battleCtx->aiContext).attacker);
-        (battleCtx->aiContext).calcTemp = GetBattlerVar(battleCtx, partner, BATTLEMON_TYPE_1, ((void *)0));
+        (battleCtx->aiContext).calcTemp = BattleMon_Get(battleCtx, partner, BATTLEMON_TYPE_1, ((void *)0));
         break;
 
     case LOAD_DEFENDER_PARTNER_TYPE_1:
         partner = BattleSystem_GetBattlerIdPartner(battleSys, (battleCtx->aiContext).defender);
-        (battleCtx->aiContext).calcTemp = GetBattlerVar(battleCtx, partner, BATTLEMON_TYPE_1, ((void *)0));
+        (battleCtx->aiContext).calcTemp = BattleMon_Get(battleCtx, partner, BATTLEMON_TYPE_1, ((void *)0));
         break;
 
     case LOAD_ATTACKER_PARTNER_TYPE_2:
         partner = BattleSystem_GetBattlerIdPartner(battleSys, (battleCtx->aiContext).attacker);
-        (battleCtx->aiContext).calcTemp = GetBattlerVar(battleCtx, partner, BATTLEMON_TYPE_2, ((void *)0));
+        (battleCtx->aiContext).calcTemp = BattleMon_Get(battleCtx, partner, BATTLEMON_TYPE_2, ((void *)0));
         break;
 
     case LOAD_DEFENDER_PARTNER_TYPE_2:
         partner = BattleSystem_GetBattlerIdPartner(battleSys, (battleCtx->aiContext).defender);
-        (battleCtx->aiContext).calcTemp = GetBattlerVar(battleCtx, partner, BATTLEMON_TYPE_1, ((void *)0));
+        (battleCtx->aiContext).calcTemp = BattleMon_Get(battleCtx, partner, BATTLEMON_TYPE_1, ((void *)0));
         break;
 
     default:

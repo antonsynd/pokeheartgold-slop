@@ -4421,7 +4421,7 @@ enum CountAbilityMode {
     COUNT_ALIVE_BATTLERS,
     COUNT_ALIVE_BATTLERS_EXCEPT_ME,
 };
-int GetBattlerVar(BattleContext *battleCtx, int battler, enum BattleMonParam paramID, void *buf);
+int BattleMon_Get(BattleContext *battleCtx, int battler, enum BattleMonParam paramID, void *buf);
 int CheckAbilityActive(BattleSystem *battleSys, BattleContext *battleCtx, enum CountAbilityMode mode, int battler, int ability);
 u32 BattleSystem_GetBattleType(BattleSystem *battleSys);
 int BattleSystem_GetPartySize(BattleSystem *battleSys, int battler);
@@ -4450,7 +4450,7 @@ BOOL ov10_022203A4(BattleSystem *battleSys, BattleContext *battleCtx, int battle
         || CheckAbilityActive(battleSys, battleCtx, COUNT_ALL_BATTLERS_THEIR_SIDE, battler, ABILITY_SHADOW_TAG_PT)
         || CheckAbilityActive(battleSys, battleCtx, COUNT_ALL_BATTLERS_THEIR_SIDE, battler, ABILITY_ARENA_TRAP_PT)
         || (CheckAbilityActive(battleSys, battleCtx, COUNT_ALL_BATTLERS_EXCEPT_ME, battler, ABILITY_MAGNET_PULL_PT)
-            && (GetBattlerVar(battleCtx, battler, BATTLEMON_TYPE_1, ((void *)0)) == TYPE_STEEL_PT || GetBattlerVar(battleCtx, battler, BATTLEMON_TYPE_2, ((void *)0)) == TYPE_STEEL_PT))) {
+            && (BattleMon_Get(battleCtx, battler, BATTLEMON_TYPE_1, ((void *)0)) == TYPE_STEEL_PT || BattleMon_Get(battleCtx, battler, BATTLEMON_TYPE_2, ((void *)0)) == TYPE_STEEL_PT))) {
         return 0;
     }
 

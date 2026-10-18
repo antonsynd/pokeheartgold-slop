@@ -15,15 +15,15 @@ typedef struct UnkStruct_ov12_0225E1D4 {
     u8 battler;
 } UnkStruct_ov12_0225E1D4;
 
-void ov12_02262F24(BattleSystem *battleSys, int battler, int command);
-void ov12_0226430C(BattleSystem *battleSys, int battler, int command);
+void BattleController_EmitSelectedCommand(BattleSystem *battleSys, int battler, int command);
+void BattleController_EmitClearCommand(BattleSystem *battleSys, int battler, int command);
 // FUNCTION ov12_0225E1D4: matching C (twin)
 #pragma force_active on
 void ov12_0225E1D4(SysTask *task, void *data) {
     UnkStruct_ov12_0225E1D4 *commandSetData = data;
 
-    ov12_02262F24(commandSetData->battleSys, commandSetData->battler, 4);
-    ov12_0226430C(commandSetData->battleSys, commandSetData->battler, commandSetData->command);
+    BattleController_EmitSelectedCommand(commandSetData->battleSys, commandSetData->battler, 4);
+    BattleController_EmitClearCommand(commandSetData->battleSys, commandSetData->battler, commandSetData->command);
 
     Heap_Free(data);
     SysTask_Destroy(task);

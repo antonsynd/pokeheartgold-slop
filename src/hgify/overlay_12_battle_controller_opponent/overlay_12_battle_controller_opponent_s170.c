@@ -18,8 +18,8 @@ typedef struct UnkStruct_ov12_02260614 {
     u8 delay;
 } UnkStruct_ov12_02260614;
 
-void ov12_02263A00(BattleSystem *battleSys, u8 battler);
-void ov12_0226430C(BattleSystem *battleSys, u8 battler, u8 command);
+void BattleController_EmitAlertMessageAck(BattleSystem *battleSys, u8 battler);
+void BattleController_EmitClearCommand(BattleSystem *battleSys, u8 battler, u8 command);
 // FUNCTION ov12_02260614: matching C (twin)
 #pragma force_active on
 void ov12_02260614(SysTask *task, void *data) {
@@ -34,8 +34,8 @@ void ov12_02260614(SysTask *task, void *data) {
         break;
     case 1:
         if (++alertMsgData->delay == 40) {
-            ov12_02263A00(alertMsgData->battleSys, alertMsgData->battler);
-            ov12_0226430C(alertMsgData->battleSys, alertMsgData->battler, alertMsgData->command);
+            BattleController_EmitAlertMessageAck(alertMsgData->battleSys, alertMsgData->battler);
+            BattleController_EmitClearCommand(alertMsgData->battleSys, alertMsgData->battler, alertMsgData->command);
             Heap_Free(alertMsgData);
             SysTask_Destroy(task);
         }

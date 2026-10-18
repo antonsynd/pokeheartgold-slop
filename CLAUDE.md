@@ -48,6 +48,17 @@ A PreToolUse hook (`tools/decomp_harness/prebuild_guard.sh`, wired in `.claude/s
 
 The shell is zsh: unquoted words starting with `=` (e.g. `echo ====` as a separator) fail with `... not found` — quote them.
 
+## No pret issue/PR references
+
+**Never write pret issue or PR numbers in commit messages, PR titles/descriptions, issue text or comments** (`pret#123`, `pret/pokeheartgold#123`, `upstream#123`, pret PR/issue URLs). GitHub cross-links them and notifies the pret maintainers, which they don't want (issue #36). Describe the change by content instead ("battle_controller.c decompiled", the upstream commit hash is fine). In PR/issue text, if a reference is truly needed, wrap it in backticks (`` `pret#123` ``); inline code does not link. In **commit messages** use no number at all (not even backticked): GitHub can record a commit cross-reference from the raw message. A bare `#123` must only ever mean *this* repo's issue/PR, so don't use it for upstream numbers either (e.g. no "Merge upstream pret master (#516, #537)").
+
+Enforced deterministically, not by this note alone (logic in `tools/decomp_harness/pret_refs.py check|fix|strip`):
+- `.githooks/commit-msg` strips references from commit messages (needs `core.hooksPath` set).
+- The PreToolUse hook `tools/decomp_harness/hooks/block_pret_refs.sh` runs on every Bash call and blocks `git commit/merge/tag` and writing `gh` commands (incl. compound commands, `git -C`, `env`) whose text, or whose `-F`/`--file`/`--body-file` file, contains one; it also guards GitHub MCP writes. Read-only `gh` / MCP calls are not blocked.
+- The `pret-refs` CI workflow fails PRs whose title/body contain an unescaped reference or whose first-parent commit messages contain any. It does not look at comments.
+
+When a hook blocks you, rewrite the text; in shell use single quotes or edit the `-F` file.
+
 ## Formatting
 
 `./format.sh` runs `clang-format` over the tree. Requires **clang-format 18+** (the style file uses options newer versions only). A pre-commit hook lives in `.githooks/`; enable with `git config --local core.hooksPath .githooks/`.

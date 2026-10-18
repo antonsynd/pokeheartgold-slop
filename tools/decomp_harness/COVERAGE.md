@@ -1,15 +1,15 @@
 # Decomp Coverage Ledger
 
-*Generated 2026-10-18T09:19:37Z by `coverage_ledger.py` — do not hand-edit; regenerate after each decomp.*
+*Generated 2026-10-18T09:22:23Z by `coverage_ledger.py` — do not hand-edit; regenerate after each decomp.*
 
-Tracked functions (files with retained asm): **19131** — matched 18487, pending 611, plus 20 matched-but-blocked inside failed files.
+Tracked functions (files with retained asm): **19047** — matched 18403, pending 611, plus 20 matched-but-blocked inside failed files.
 
 | status | files | functions | insn lines | ~text bytes |
 |---|---|---|---|---|
-| matched | 1047 | 18487 | 122893 | 273732 |
+| matched | 1045 | 18403 | 122652 | 273240 |
 | blocked | 4 | 33 | 1328 | 2942 |
 | pending | 172 | 611 | 139164 | 311656 |
-| upstream | 399 | 0 | 0 | 0 |
+| upstream | 400 | 0 | 0 | 0 |
 
 ## Blockers (value-ordered: fix what gates the most)
 
@@ -30,7 +30,7 @@ Tracked functions (files with retained asm): **19131** — matched 18487, pendin
 | asm/unk_02055BF0_data.s | 0 | 0 | yes | ext-data-section-split Data-only: 3 external const fn-ptr arrays (sMapEnterRoutines, sMapExitRoutines, _020FC76C) referenced only by already-ma |
 | asm/overlay_12_battle_command.s | 0 | 0 | yes |   |
 
-## Matched files (asm retained) (1047)
+## Matched files (asm retained) (1045)
 
 | file | functions | insn lines | data-only | notes |
 |---|---|---|---|---|
@@ -86,7 +86,6 @@ Tracked functions (files with retained asm): **19131** — matched 18487, pendin
 | asm/overlay_00_thumb.s | 85 | 0 |  | hgify |
 | asm/overlay_05.s | 85 | 0 |  | hgify |
 | asm/unk_02035900.s | 83 | 0 |  | hgify |
-| asm/overlay_12_battle_controller.s | 83 | 0 |  | hgify |
 | asm/overlay_01_021F1AFC.s | 82 | 0 |  | hgify |
 | asm/unk_02061284.s | 81 | 0 |  | hgify |
 | asm/overlay_68.s | 81 | 0 |  | hgify |
@@ -473,7 +472,6 @@ Tracked functions (files with retained asm): **19131** — matched 18487, pendin
 | asm/overlay_12_battle_controller_opponent_s117.s | 1 | 36 |  | harness |
 | asm/overlay_12_battle_controller_opponent_s167.s | 1 | 162 |  | harness |
 | asm/overlay_12_battle_controller_opponent_s175.s | 1 | 56 |  | harness |
-| asm/overlay_12_battle_controller_p81.s | 1 | 241 |  | harness |
 | asm/overlay_12_02265E28_r00.s | 1 | 116 |  | harness |
 | asm/overlay_14_021E5900_s88.s | 1 | 21 |  | harness |
 | asm/overlay_14_021E5900_s169.s | 1 | 36 |  | harness |

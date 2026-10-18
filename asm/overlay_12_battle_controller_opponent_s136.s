@@ -731,11 +731,11 @@ _0225E0D0:
 	ldrb r1, [r4, #9]
 	ldr r0, [r4]
 	ldr r2, [r4, #0xc]
-	bl ov12_02262F24
+	bl BattleController_EmitSelectedCommand
 	ldrb r1, [r4, #9]
 	ldrb r2, [r4, #8]
 	ldr r0, [r4]
-	bl ov12_0226430C
+	bl BattleController_EmitClearCommand
 	add r0, r4, #0
 	bl Heap_Free
 	add r0, r7, #0

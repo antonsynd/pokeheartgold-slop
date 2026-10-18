@@ -7,7 +7,7 @@
 #include "pokepic.h"
 typedef void code(void);
 undefined4 ov12_02259928(undefined4);
-undefined4 ov12_0226430C(undefined4, undefined4, undefined4);
+undefined4 BattleController_EmitClearCommand(undefined4, undefined4, undefined4);
 void ov12_02258F44(undefined4 param_1, int param_2);
 // FUNCTION ov12_02258F44: matching C (r2)
 #pragma force_active on
@@ -15,7 +15,7 @@ void ov12_02258F44(undefined4 param_1, int param_2)
 
 {
     Pokepic_Delete(*(undefined4 *)(param_2 + 0x20));
-    ov12_0226430C(param_1, *(undefined1 *)(param_2 + 0x194), 7);
+    BattleController_EmitClearCommand(param_1, *(undefined1 *)(param_2 + 0x194), 7);
     ov12_02259928(param_2);
     return;
 }

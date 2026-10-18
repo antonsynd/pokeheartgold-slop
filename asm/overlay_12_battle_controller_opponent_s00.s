@@ -117,7 +117,7 @@ _02258874:
 	add r1, r6, #0
 	mov r2, #0x1b
 	mov r3, #0
-	bl GetBattlerVar
+	bl BattleMon_Get
 	lsl r0, r0, #0x18
 	lsr r0, r0, #0x18
 	str r0, [sp, #0x60]
@@ -125,7 +125,7 @@ _02258874:
 	add r1, r6, #0
 	mov r2, #0x1c
 	mov r3, #0
-	bl GetBattlerVar
+	bl BattleMon_Get
 	lsl r0, r0, #0x18
 	lsr r0, r0, #0x18
 	str r0, [sp, #0x5c]
@@ -229,13 +229,13 @@ _0225897E:
 	add r1, r6, #0
 	mov r2, #0x1b
 	mov r3, #0
-	bl GetBattlerVar
+	bl BattleMon_Get
 	str r0, [sp, #0x7c]
 	add r0, r5, #0
 	add r1, r6, #0
 	mov r2, #0x1c
 	mov r3, #0
-	bl GetBattlerVar
+	bl BattleMon_Get
 	ldr r1, [sp, #0x74]
 	ldr r2, [sp, #0x6c]
 	str r1, [sp]

@@ -8,7 +8,7 @@
 #include "heap.h"
 #include "sys_task_api.h"
 typedef int code();
-undefined4 ov12_0226430C();
+undefined4 BattleController_EmitClearCommand();
 undefined4 ov07_0221FE70();
 undefined4 ov07_0221FE3C();
 void ov12_02260D28(undefined4 param_1, undefined4 *param_2);
@@ -29,7 +29,7 @@ void ov12_02260D28(undefined4 param_1, undefined4 *param_2)
     }
     ov07_0221FE3C(*(undefined4 *)(param_2[1] + 0x8c), *(undefined1 *)((int)param_2 + 0xd));
     *(undefined4 *)(param_2[1] + 0x8c) = 0;
-    ov12_0226430C(*param_2, *(undefined1 *)((int)param_2 + 0xd), *(undefined1 *)(param_2 + 3));
+    BattleController_EmitClearCommand(*param_2, *(undefined1 *)((int)param_2 + 0xd), *(undefined1 *)(param_2 + 3));
     Heap_Free(param_2);
     SysTask_Destroy(param_1);
     return;

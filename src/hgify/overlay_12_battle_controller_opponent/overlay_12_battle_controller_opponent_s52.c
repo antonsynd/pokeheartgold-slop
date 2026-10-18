@@ -48,7 +48,7 @@ typedef struct UnkStruct_Ov12_02259358 {
     u8 ability;
     u16 move;
 } UnkStruct_Ov12_02259358;
-void ov12_0226430C(BattleSystem *battleSystem, int battler, int command);
+void BattleController_EmitClearCommand(BattleSystem *battleSystem, int battler, int command);
 void ov12_02259928(OpponentData *opponentData);
 int ov07_02234B5C(u8 battlerType, int arg1);
 void ov12_0225A9E0(BattleSystem *battleSystem, OpponentData *opponentData, void *message);
@@ -180,7 +180,7 @@ void ov12_022593FC(BattleSystem *battleSystem, OpponentData *opponentData) {
     y = ov07_02234B5C(opponentData->battlerType, 1) + y;
     Pokepic_SetAttr(opponentData->pokepic, 1, y);
 
-    ov12_0226430C(battleSystem, opponentData->unk194, message->command);
+    BattleController_EmitClearCommand(battleSystem, opponentData->unk194, message->command);
     ov12_02259928(opponentData);
 }
 #pragma force_active reset

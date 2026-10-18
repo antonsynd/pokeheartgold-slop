@@ -29,26 +29,26 @@ Of the fork's additions, ▒ is C generated mechanically from Ghidra drafts. It 
 
 ```
 Functions in C (of ~29k total ROM functions)
-  █████████████████▓▓▓▓▓▓▓▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒░░  ~95.7%  (~28,218)
+  █████████████████▓▓▓▓▓▓▓▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒░░  ~95.7%  (~28,219)
 
 Functions fully matching (byte-identical to retail)
-  █████████████████▓▓▓▓▓▓▓▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒░░  ~95.4%  (~28,131)
+  █████████████████▓▓▓▓▓▓▓▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒░░  ~95.4%  (~28,133)
 
   █ pret/pokeheartgold   ▓ added in this fork   ▒ generated, not yet readable   ░ not yet in C
 ```
 
 | | Functions in C | Fully matching | NONMATCHING blocks |
 |---|---:|---:|---:|
-| █ From pret/pokeheartgold | ~10,211 | ~10,207 | 4 |
-| ▓ Added in this fork (LLM-assisted) | 4,101 | 4,018 | 83 |
-| ▒ Added in this fork, generated from Ghidra drafts | 13,906 | 13,906 | 0 |
-| Total | ~28,218 | ~28,131 | 87 |
+| █ From pret/pokeheartgold | ~10,298 | ~10,295 | 3 |
+| ▓ Added in this fork (LLM-assisted) | 4,093 | 4,010 | 83 |
+| ▒ Added in this fork, generated from Ghidra drafts | 13,828 | 13,828 | 0 |
+| Total | ~28,219 | ~28,133 | 86 |
 
 The fork's additions are counted from the files it decompiled. pret's figures (~) are derived from an estimated ~29,500 total ROM functions, because upstream doesn't keep the asm for decompiled files. A NONMATCHING block is a function with a C version kept for reference that is still linked from handwritten asm. It counts toward *Functions in C* but not *Fully matching*.
 
 158 functions are linked from prebuilt library binaries (`libdwcutil.a`) and count as not in C.
 
-15,701 of 16,773 linked objects are C (93.6%). Object counts aren't comparable with upstream's, because this fork splits some overlays into smaller chunks.
+15,619 of 16,690 linked objects are C (93.6%). Object counts aren't comparable with upstream's, because this fork splits some overlays into smaller chunks.
 
 Detailed function-level coverage, active blockers, and the triage queue are tracked in **[`COVERAGE.md`](tools/decomp_harness/COVERAGE.md)**, regenerated from the build by `coverage_ledger.py`.
 <!-- PROGRESS_END -->

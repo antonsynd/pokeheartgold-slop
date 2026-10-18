@@ -8,7 +8,7 @@
 #include "battle/battle.h"
 void ov12_02261CA8(BattleSystem *battleSys, u8 *animation, void *battlerSpriteCtx, u32 battler);
 void ov07_02234A20(void *battlerSpriteCtx, u32 heapId);
-void ov12_0226430C(BattleSystem *battleSys, u32 battler, u32 command);
+void BattleController_EmitClearCommand(BattleSystem *battleSys, u32 battler, u32 command);
 
 typedef struct UnkStruct_ov12_0225B3A0 {
     u8 unk_00[0x194];
@@ -22,6 +22,6 @@ void ov12_0225B3A0(BattleSystem *battleSys, UnkStruct_ov12_0225B3A0 *battlerData
 
     ov12_02261CA8(battleSys, animation, battlerSpriteCtx, battlerData->battler);
     ov07_02234A20(battlerSpriteCtx, HEAP_ID_BATTLE);
-    ov12_0226430C(battleSys, battlerData->battler, *animation);
+    BattleController_EmitClearCommand(battleSys, battlerData->battler, *animation);
 }
 #pragma force_active reset

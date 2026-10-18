@@ -265,11 +265,11 @@ _0225FC4C:
 	ldrb r1, [r4, #0xd]
 	ldr r0, [r4]
 	ldr r2, [r4, #8]
-	bl ov12_02262F24
+	bl BattleController_EmitSelectedCommand
 	ldrb r1, [r4, #0xd]
 	ldrb r2, [r4, #0xc]
 	ldr r0, [r4]
-	bl ov12_0226430C
+	bl BattleController_EmitClearCommand
 	add r0, r4, #0
 	bl Heap_Free
 	add r0, r6, #0

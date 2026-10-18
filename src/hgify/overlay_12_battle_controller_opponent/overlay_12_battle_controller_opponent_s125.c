@@ -18,7 +18,7 @@ typedef struct MoveHitSoundMessage {
     u8 effectiveness;
 } MoveHitSoundMessage;
 
-void ov12_0226430C(BattleSystem *battleSys, int battler, int command);
+void BattleController_EmitClearCommand(BattleSystem *battleSys, int battler, int command);
 
 // FUNCTION ov12_0225B3D4: matching C (twin)
 #pragma force_active on
@@ -43,6 +43,6 @@ void ov12_0225B3D4(BattleSystem *battleSys, UnkStruct_ov12_0225B3D4 *battlerData
         break;
     }
 
-    ov12_0226430C(battleSys, battlerData->battler, message->command);
+    BattleController_EmitClearCommand(battleSys, battlerData->battler, message->command);
 }
 #pragma force_active reset

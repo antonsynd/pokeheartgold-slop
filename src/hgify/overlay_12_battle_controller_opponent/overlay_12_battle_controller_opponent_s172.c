@@ -43,8 +43,8 @@ typedef struct {
     u8 slot;
 } UnkStruct_ov12_022609F8;
 void ov10_0221BE20(void *ctx);
-void ov12_02263360(BattleSystem *battleSys, int battler, int input);
-void ov12_0226430C(BattleSystem *battleSys, u8 battler, u8 command);
+void BattleController_EmitPartyMenuResult(BattleSystem *battleSys, int battler, int input);
+void BattleController_EmitClearCommand(BattleSystem *battleSys, u8 battler, u8 command);
 void ov12_022609F8(SysTask *task, void *data);
 // FUNCTION ov12_022609F8: matching C (r2)
 #pragma force_active on
@@ -90,12 +90,12 @@ void ov12_022609F8(SysTask *task, void *data) {
     case 3:
         if (PaletteData_GetSelectedBuffersBitmask(paletteData) == 0) {
             if (d->ctx->selectedMoveSlot == 4) {
-                ov12_02263360(d->battleSys, d->battler, 0xff);
+                BattleController_EmitPartyMenuResult(d->battleSys, d->battler, 0xff);
             } else {
-                ov12_02263360(d->battleSys, d->battler, d->ctx->selectedMoveSlot + 1);
+                BattleController_EmitPartyMenuResult(d->battleSys, d->battler, d->ctx->selectedMoveSlot + 1);
             }
 
-            ov12_0226430C(d->battleSys, d->battler, d->command);
+            BattleController_EmitClearCommand(d->battleSys, d->battler, d->command);
             Heap_Free(d->ctx);
             Heap_Free(data);
             SysTask_Destroy(task);

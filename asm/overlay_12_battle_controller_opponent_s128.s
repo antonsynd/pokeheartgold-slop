@@ -373,7 +373,7 @@ _0225B728:
 	str r1, [sp, #0xc]
 	ldr r0, [r4]
 	mov r3, #1
-	bl ov12_022643C8
+	bl BattleController_SetMoveAnimation
 	ldr r0, [r4]
 	ldr r1, [r4, #4]
 	add r2, r5, #0
@@ -406,7 +406,7 @@ _0225B798:
 	ldrb r1, [r4, #0x11]
 	ldrb r2, [r4, #0x10]
 	ldr r0, [r4]
-	bl ov12_0226430C
+	bl BattleController_EmitClearCommand
 	add r0, r4, #0
 	bl Heap_Free
 	add r0, r6, #0
@@ -578,7 +578,7 @@ _0225B8D0:
 	str r1, [sp, #0xc]
 	ldr r0, [r4]
 	mov r3, #1
-	bl ov12_022643C8
+	bl BattleController_SetMoveAnimation
 	ldr r0, [r4]
 	ldr r1, [r4, #4]
 	add r2, r5, #0
@@ -611,7 +611,7 @@ _0225B940:
 	ldrb r1, [r4, #0x11]
 	ldrb r2, [r4, #0x10]
 	ldr r0, [r4]
-	bl ov12_0226430C
+	bl BattleController_EmitClearCommand
 	add r0, r4, #0
 	bl Heap_Free
 	add r0, r6, #0
@@ -681,7 +681,7 @@ _0225B9C8:
 	tst r0, r1
 	bne _0225BA06
 	ldr r0, [r4]
-	bl ov12_0223B688
+	bl BattleSystem_IsInitialized
 	cmp r0, #1
 	bne _0225B9F2
 	add r0, r4, #0
@@ -1150,7 +1150,7 @@ _0225BD50:
 	str r1, [sp, #0xc]
 	ldr r0, [r4]
 	mov r3, #1
-	bl ov12_022643C8
+	bl BattleController_SetMoveAnimation
 	ldr r0, [r4]
 	ldr r1, [r4, #4]
 	ldr r2, [r4, #0x24]
@@ -1193,7 +1193,7 @@ _0225BDFC:
 	ldrb r1, [r1]
 	ldrb r2, [r2]
 	ldr r0, [r4]
-	bl ov12_0226430C
+	bl BattleController_EmitClearCommand
 	add r0, r4, #0
 	bl Heap_Free
 	add r0, r5, #0
@@ -1268,7 +1268,7 @@ _0225BE9E:
 	tst r0, r1
 	bne _0225BEDC
 	ldr r0, [r4]
-	bl ov12_0223B688
+	bl BattleSystem_IsInitialized
 	cmp r0, #1
 	bne _0225BEC8
 	add r0, r4, #0
@@ -1436,7 +1436,7 @@ _0225BFE4:
 	str r1, [sp, #0xc]
 	ldr r0, [r4]
 	mov r3, #1
-	bl ov12_022643C8
+	bl BattleController_SetMoveAnimation
 	ldr r0, [r4]
 	ldr r1, [r4, #4]
 	ldr r2, [r4, #0x24]
@@ -1560,7 +1560,7 @@ _0225C0B0:
 	str r1, [sp, #0xc]
 	ldr r0, [r4]
 	mov r3, #1
-	bl ov12_022643C8
+	bl BattleController_SetMoveAnimation
 	ldr r0, [r4]
 	ldr r1, [r4, #4]
 	ldr r2, [r4, #0x24]
@@ -1603,7 +1603,7 @@ _0225C156:
 	ldrb r1, [r1]
 	ldrb r2, [r2]
 	ldr r0, [r4]
-	bl ov12_0226430C
+	bl BattleController_EmitClearCommand
 	add r0, r4, #0
 	bl Heap_Free
 	add r0, r5, #0
@@ -2126,7 +2126,7 @@ _0225C588:
 	str r1, [sp, #0xc]
 	ldr r0, [r4]
 	mov r3, #1
-	bl ov12_022643C8
+	bl BattleController_SetMoveAnimation
 	ldr r0, [r4]
 	ldr r1, [r4, #4]
 	add r2, r5, #0
@@ -2177,7 +2177,7 @@ _0225C5FE:
 	str r1, [sp, #0xc]
 	ldr r0, [r4]
 	mov r3, #1
-	bl ov12_022643C8
+	bl BattleController_SetMoveAnimation
 	ldr r0, [r4]
 	ldr r1, [r4, #4]
 	add r2, r5, #0
@@ -2221,7 +2221,7 @@ _0225C64A:
 	str r1, [sp, #0xc]
 	ldr r0, [r4]
 	mov r3, #1
-	bl ov12_022643C8
+	bl BattleController_SetMoveAnimation
 	ldr r0, [r4]
 	ldr r1, [r4, #4]
 	add r2, r5, #0
@@ -2248,7 +2248,7 @@ _0225C6A6:
 	ldrb r1, [r1]
 	ldrb r2, [r2]
 	ldr r0, [r4]
-	bl ov12_0226430C
+	bl BattleController_EmitClearCommand
 	add r0, r4, #0
 	bl Heap_Free
 	add r0, r6, #0
@@ -2393,7 +2393,7 @@ _0225C7C2:
 	str r1, [sp, #0xc]
 	ldr r0, [r4]
 	mov r3, #1
-	bl ov12_022643C8
+	bl BattleController_SetMoveAnimation
 	ldr r0, [r4]
 	ldr r1, [r4, #4]
 	add r2, r5, #0
@@ -2488,7 +2488,7 @@ _0225C87A:
 	str r1, [sp, #0xc]
 	ldr r0, [r4]
 	mov r3, #1
-	bl ov12_022643C8
+	bl BattleController_SetMoveAnimation
 	ldr r0, [r4]
 	ldr r1, [r4, #4]
 	add r2, r5, #0
@@ -2539,7 +2539,7 @@ _0225C8E4:
 	str r1, [sp, #0xc]
 	ldr r0, [r4]
 	mov r3, #1
-	bl ov12_022643C8
+	bl BattleController_SetMoveAnimation
 	ldr r0, [r4]
 	ldr r1, [r4, #4]
 	add r2, r5, #0
@@ -2583,7 +2583,7 @@ _0225C930:
 	str r1, [sp, #0xc]
 	ldr r0, [r4]
 	mov r3, #1
-	bl ov12_022643C8
+	bl BattleController_SetMoveAnimation
 	ldr r0, [r4]
 	ldr r1, [r4, #4]
 	add r2, r5, #0
@@ -2610,7 +2610,7 @@ _0225C98C:
 	ldrb r1, [r1]
 	ldrb r2, [r2]
 	ldr r0, [r4]
-	bl ov12_0226430C
+	bl BattleController_EmitClearCommand
 	add r0, r4, #0
 	bl Heap_Free
 	add r0, r6, #0
@@ -2670,7 +2670,7 @@ _0225C9F4:
 	str r1, [sp, #0xc]
 	ldr r0, [r4]
 	mov r3, #1
-	bl ov12_022643C8
+	bl BattleController_SetMoveAnimation
 	ldr r0, [r4]
 	ldr r1, [r4, #4]
 	add r2, r5, #0
@@ -2714,7 +2714,7 @@ _0225CA3C:
 	str r1, [sp, #0xc]
 	ldr r0, [r4]
 	mov r3, #1
-	bl ov12_022643C8
+	bl BattleController_SetMoveAnimation
 	ldr r0, [r4]
 	ldr r1, [r4, #4]
 	add r2, r5, #0
@@ -2931,7 +2931,7 @@ _0225CC24:
 	ldrb r1, [r1]
 	ldrb r2, [r2]
 	ldr r0, [r4]
-	bl ov12_0226430C
+	bl BattleController_EmitClearCommand
 	add r0, r4, #0
 	bl Heap_Free
 	add r0, r6, #0
@@ -2993,7 +2993,7 @@ _0225CC90:
 	str r1, [sp, #0xc]
 	ldr r0, [r4]
 	mov r3, #1
-	bl ov12_022643C8
+	bl BattleController_SetMoveAnimation
 	ldr r0, [r4]
 	ldr r1, [r4, #4]
 	add r2, r5, #0
@@ -3037,7 +3037,7 @@ _0225CCD8:
 	str r1, [sp, #0xc]
 	ldr r0, [r4]
 	mov r3, #1
-	bl ov12_022643C8
+	bl BattleController_SetMoveAnimation
 	ldr r0, [r4]
 	ldr r1, [r4, #4]
 	add r2, r5, #0
@@ -3085,7 +3085,7 @@ _0225CD58:
 	str r1, [sp, #0xc]
 	ldr r0, [r4]
 	mov r3, #1
-	bl ov12_022643C8
+	bl BattleController_SetMoveAnimation
 	ldr r0, [r4]
 	ldr r1, [r4, #4]
 	add r2, r5, #0
@@ -3110,7 +3110,7 @@ _0225CD96:
 	ldrb r1, [r1]
 	ldrb r2, [r2]
 	ldr r0, [r4]
-	bl ov12_0226430C
+	bl BattleController_EmitClearCommand
 	add r0, r4, #0
 	bl Heap_Free
 	add r0, r6, #0

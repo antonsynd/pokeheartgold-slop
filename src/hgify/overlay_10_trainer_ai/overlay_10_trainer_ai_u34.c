@@ -4079,7 +4079,7 @@ struct BattleSystem {
     SysTask *playbackStopButton;
     u8 recordedChatter[4];
 };
-int GetBattlerVar(BattleContext *battleCtx, int battler, enum BattleMonParam paramID, void *buf);
+int BattleMon_Get(BattleContext *battleCtx, int battler, enum BattleMonParam paramID, void *buf);
 void ov10_0221CCB4(BattleSystem *battleSys, BattleContext *battleCtx);
 int ov10_0221EEF0(BattleContext *battleCtx);
 void ov10_0221EF24(BattleContext *battleCtx, int i);
@@ -4093,7 +4093,7 @@ void ov10_0221CCB4(BattleSystem *battleSys, BattleContext *battleCtx) {
     int type = ov10_0221EEF0(battleCtx);
     u8 battler = ov10_0221EF34(battleCtx, inBattler);
 
-    if (GetBattlerVar(battleCtx, battler, BATTLEMON_TYPE_1, ((void *)0)) == type || GetBattlerVar(battleCtx, battler, BATTLEMON_TYPE_2, ((void *)0)) == type) {
+    if (BattleMon_Get(battleCtx, battler, BATTLEMON_TYPE_1, ((void *)0)) == type || BattleMon_Get(battleCtx, battler, BATTLEMON_TYPE_2, ((void *)0)) == type) {
         (battleCtx->aiContext).calcTemp = 1;
     } else {
         (battleCtx->aiContext).calcTemp = 0;

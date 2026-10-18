@@ -13,7 +13,7 @@
 #include "sys_task_api.h"
 #include "unk_020163E0.h"
 void sub_02003E5C(int a, int b, int c, int d, int e, int f);
-void ov12_0226430C(int a, int b, int c);
+void BattleController_EmitClearCommand(int a, int b, int c);
 // FUNCTION ov12_02260D84: matching C (agent21)
 #pragma force_active on
 void ov12_02260D84(int param_1, int *param_2, int param_3, int param_4) {
@@ -56,7 +56,7 @@ void ov12_02260D84(int param_1, int *param_2, int param_3, int param_4) {
         *(u8 *)((int)param_2 + 6) = *(u8 *)((int)param_2 + 6) + 1;
         return;
     case 2:
-        ov12_0226430C(*param_2, *(u8 *)((int)param_2 + 5), *(u8 *)(param_2 + 1));
+        BattleController_EmitClearCommand(*param_2, *(u8 *)((int)param_2 + 5), *(u8 *)(param_2 + 1));
         Heap_Free(param_2);
         SysTask_Destroy(param_1);
         return;

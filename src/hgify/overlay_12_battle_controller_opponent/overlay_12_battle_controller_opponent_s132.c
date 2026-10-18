@@ -8,7 +8,7 @@
 #include "heap.h"
 #include "sprite_system.h"
 #include "sys_task_api.h"
-void ov12_0226430C(void *, u8, u8);
+void BattleController_EmitClearCommand(void *, u8, u8);
 // FUNCTION ov12_0225D890: matching C (agent21)
 #pragma force_active on
 void ov12_0225D890(void *param_1, u32 *param_2, u32 param_3, u32 param_4) {
@@ -42,7 +42,7 @@ void ov12_0225D890(void *param_1, u32 *param_2, u32 param_3, u32 param_4) {
         SpriteManager_UnloadPlttObjById(uVar1, *(u8 *)(param_2[1] + 0x195) + 0x4E2A);
         SpriteManager_UnloadCellObjById(uVar1, *(u8 *)(param_2[1] + 0x195) + 0x4E27);
         SpriteManager_UnloadAnimObjById(uVar1, *(u8 *)(param_2[1] + 0x195) + 0x4E27);
-        ov12_0226430C((void *)param_2[0], *(u8 *)((int)param_2 + 9), *(u8 *)((int)param_2 + 8));
+        BattleController_EmitClearCommand((void *)param_2[0], *(u8 *)((int)param_2 + 9), *(u8 *)((int)param_2 + 8));
         Heap_Free(param_2);
         SysTask_Destroy(param_1);
         break;

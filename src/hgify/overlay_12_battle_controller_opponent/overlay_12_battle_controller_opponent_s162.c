@@ -8,7 +8,7 @@
 #include "pokepic.h"
 #include "sys_task_api.h"
 typedef void code(void);
-undefined4 ov12_0226430C(undefined4, undefined4, undefined4);
+undefined4 BattleController_EmitClearCommand(undefined4, undefined4, undefined4);
 typedef struct OvPokepicTask {
     undefined4 field0;
     undefined4 pokepic;
@@ -33,7 +33,7 @@ void ov12_0225FF80(undefined4 param_1, OvPokepicTask *param_2, undefined4 param_
         return;
     }
     Pokepic_SetAttr(param_2->pokepic, 6, 0);
-    ov12_0226430C(param_2->field0, param_2->field8, 0x17);
+    BattleController_EmitClearCommand(param_2->field0, param_2->field8, 0x17);
     Heap_Free(param_2);
     SysTask_Destroy(param_1);
     return;

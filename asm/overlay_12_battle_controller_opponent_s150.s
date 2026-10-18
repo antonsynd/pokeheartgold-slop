@@ -707,11 +707,11 @@ _0225ED8E:
 	ldrh r3, [r3, #2]
 	strh r3, [r2, #2]
 	ldr r2, [r2]
-	bl ov12_022632C0
+	bl BattleController_EmitSelectedBagItem
 	ldrb r1, [r4, #0xd]
 	ldrb r2, [r4, #0xc]
 	ldr r0, [r4]
-	bl ov12_0226430C
+	bl BattleController_EmitClearCommand
 	ldr r0, [r4, #8]
 	ldr r0, [r0, #4]
 	ldr r0, [r0]
@@ -788,7 +788,7 @@ _0225EE3E:
 	str r1, [sp, #0xc]
 	ldr r0, [r4]
 	mov r3, #1
-	bl ov12_022643C8
+	bl BattleController_SetMoveAnimation
 	ldrb r1, [r4, #0xd]
 	ldr r0, [r4]
 	bl BattleSystem_GetOpponentData
@@ -820,7 +820,7 @@ _0225EE7E:
 	str r5, [sp, #8]
 	str r1, [sp, #0xc]
 	ldr r0, [r4]
-	bl ov12_022643C8
+	bl BattleController_SetMoveAnimation
 	ldr r0, [r4]
 	add r1, r5, #0
 	bl BattleSystem_GetOpponentData
@@ -853,7 +853,7 @@ _0225EEC4:
 	mov r0, #0x36
 	str r0, [sp, #0xc]
 	ldr r0, [r4]
-	bl ov12_022643C8
+	bl BattleController_SetMoveAnimation
 	ldrb r1, [r4, #0xd]
 	ldr r0, [r4]
 	bl BattleSystem_GetOpponentData
@@ -878,7 +878,7 @@ _0225EF02:
 	mov r0, #0x74
 	str r0, [sp, #0xc]
 	ldr r0, [r4]
-	bl ov12_022643C8
+	bl BattleController_SetMoveAnimation
 	ldrb r1, [r4, #0xd]
 	ldr r0, [r4]
 	bl BattleSystem_GetOpponentData
@@ -901,7 +901,7 @@ _0225EF3A:
 	mov r1, #0
 	str r1, [sp, #0xc]
 	ldr r0, [r4]
-	bl ov12_022643C8
+	bl BattleController_SetMoveAnimation
 	ldrb r1, [r4, #0xd]
 	ldr r0, [r4]
 	bl BattleSystem_GetOpponentData
@@ -1029,7 +1029,7 @@ _0225F02A:
 	str r5, [sp, #8]
 	str r1, [sp, #0xc]
 	ldr r0, [r4]
-	bl ov12_022643C8
+	bl BattleController_SetMoveAnimation
 	ldr r0, [r4]
 	add r1, r5, #0
 	bl BattleSystem_GetOpponentData
@@ -1459,11 +1459,11 @@ ov12_0225F3A4: ; 0x0225F3A4
 	ldrh r3, [r3, #2]
 	strh r3, [r2, #2]
 	ldr r2, [r2]
-	bl ov12_022632C0
+	bl BattleController_EmitSelectedBagItem
 	ldrb r1, [r4, #0xd]
 	ldrb r2, [r4, #0xc]
 	ldr r0, [r4]
-	bl ov12_0226430C
+	bl BattleController_EmitClearCommand
 	ldr r0, [r4, #8]
 	ldr r0, [r0, #4]
 	ldr r0, [r0]

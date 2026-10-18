@@ -95,7 +95,7 @@ _0226048C:
 	str r1, [sp, #0xc]
 	ldr r0, [r4]
 	mov r3, #1
-	bl ov12_022643C8
+	bl BattleController_SetMoveAnimation
 	ldr r0, [r4]
 	ldr r1, [r4, #4]
 	add r2, r5, #0
@@ -139,7 +139,7 @@ _022604E0:
 	str r1, [sp, #0xc]
 	ldr r0, [r4]
 	mov r3, #1
-	bl ov12_022643C8
+	bl BattleController_SetMoveAnimation
 	ldr r0, [r4]
 	ldr r1, [r4, #4]
 	add r2, r5, #0
@@ -182,7 +182,7 @@ _02260560:
 	ldrb r1, [r1]
 	ldrb r2, [r2]
 	ldr r0, [r4]
-	bl ov12_0226430C
+	bl BattleController_EmitClearCommand
 	add r0, r4, #0
 	bl Heap_Free
 	add r0, r6, #0
