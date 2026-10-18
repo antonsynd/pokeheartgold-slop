@@ -2123,6 +2123,24 @@
       "category": "matching-tricks",
       "title": "ov96 (Pokéathlon) helpers that take a target x/y as the 3rd/4th register parameters declare them s16; int params reorder the prologue spills",
       "body": "ov96_02213364 and ov96_0220DAA0 only matched once targetX/targetY were s16 (ov96_02213364 also needed `u8 team`); with int parameters the prologue stores and the `ldr r3, [sp, #...]` reload were scheduled differently (3-18 diffs). ov96_021FC630 needed its third parameter as u16 for the same reason. When an ov96 function's only diffs are in the prologue, sweep u8/s16/u16 on the parameters with vrun before anything else. Related: [[param-types-change-prologue-spill-order]]."
+    },
+    {
+      "id": "else-branch-placed-last-in-loop-body",
+      "category": "codegen",
+      "title": "A far `beq` from a loop-body test to a store at the END of the body means the C had `if (x != K) { ...long chain... } else { short store }`",
+      "body": "ov96_02214C3C (overlay_96_s1212) computes a zone per runner and, when the zone is 4, stores results[i] = 0. Retail emits `cmp r7, #4; beq <far>` and places the `results[i] = 0` store after the whole if/else chain, right before the loop increment. Writing `if (zone == 4) { results[i] = 0; continue; }` produces an inline `bne; movs; strb; b` instead (63 diffs). Inverting to `if (zone != 4) { ...chain ending in results[i] = 1/2/3/4... } else { results[i] = 0; }` reproduced the layout exactly. The sister function ov96_02214EB4 (s1214) has the same shape with codes 5/6/7 and matched first time with it. Related: [[then-branch-continue-jump-shapes-bne-join-b-end]]."
+    },
+    {
+      "id": "loop-counter-init-before-pointer-setup",
+      "category": "matching-tricks",
+      "title": "When `movs rI, #0` comes before a hoisted pointer spill, set the loop counter first: `i = 0; p = &s->f; for (; i < n; i++)`",
+      "body": "ov96_02214C3C kept a pointer to ball->pos in a stack slot and retail emits `adds r0, #48; movs r4, #0; str r0, [sp, #28]` (counter zeroed between computing and spilling the pointer). With `p = &ball->pos; for (i = 0; ...)` the store came before `movs r4, #0`. Writing `i = 0; p = &ball->pos; for (; i < 2; i++)` matched. Same lever in ov96_02215FC8 (s1256): `i = 0; area += 0x50; for (; i < 4; i++)` put the counter's stack slot first. Related: [[stack-slot-reverse-decl-order]]."
+    },
+    {
+      "id": "u8-stack-param-copied-to-int-local",
+      "category": "matching-tricks",
+      "title": "A u8 stack parameter that retail reloads with ldrb once, stores to its own frame slot and then reads with ldr is copied into an `int` local after the first call",
+      "body": "ov96_0220BE28 (overlay_96_s1014) takes `u8 playerId` as its 5th parameter. Retail does `add r0, sp, #32; ldrb r0, [r0, #16]; str r0, [sp, #20]` right after MI_CpuFill8 and later uses `ldr r0, [sp, #20]`. Using the parameter directly gives ldrb reloads from the caller slot and a 4-byte smaller frame; `int player = playerId;` at the top schedules the copy before the call. Declare `int player;` and assign `player = playerId;` after the MI_CpuFill8 line. In ov96_02217B84 (s1279) the u8 loop value `slot = i % 3` likewise had to be an `int slot` holding `(u8)(i % 3)` to get its stack slot ordered with the other spilled ints. Related: [[u8-stack-param-ldrb-vs-hoisted-ldr]]."
     }
   ]
 }

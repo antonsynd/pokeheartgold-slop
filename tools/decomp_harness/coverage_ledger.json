@@ -1,12 +1,12 @@
 {
  "summary": {
-  "generated": "2026-10-18T06:12:34Z",
+  "generated": "2026-10-18T06:36:20Z",
   "by_status": {
    "matched": {
-    "files": 988,
-    "functions": 18401,
-    "insn_lines": 113671,
-    "text_bytes_est": 253770
+    "files": 996,
+    "functions": 18410,
+    "insn_lines": 114830,
+    "text_bytes_est": 256236
    },
    "blocked": {
     "files": 4,
@@ -15,10 +15,10 @@
     "text_bytes_est": 2942
    },
    "pending": {
-    "files": 201,
-    "functions": 697,
-    "insn_lines": 149816,
-    "text_bytes_est": 334694
+    "files": 195,
+    "functions": 688,
+    "insn_lines": 148657,
+    "text_bytes_est": 332228
    },
    "upstream": {
     "files": 399,
@@ -29,9 +29,9 @@
   },
   "function_totals": {
    "tracked": 19131,
-   "matched": 18401,
+   "matched": 18410,
    "partial_in_blocked": 20,
-   "pending": 697
+   "pending": 688
   },
   "blockers": [
    {
@@ -135079,6 +135079,35 @@
    "source": "harness"
   },
   {
+   "file": "asm/overlay_96_s278.s",
+   "lsf_kind": "src",
+   "status": "matched",
+   "lines": 123,
+   "function_count": 1,
+   "text_bytes_est": 130,
+   "data_only": false,
+   "sections": {
+    "rodata_bytes": 0,
+    "data_bytes": 0,
+    "bss_bytes": 0,
+    "other_bytes": 0
+   },
+   "other_sections": [],
+   "jumptable_words": 0,
+   "imports": [],
+   "exports": [],
+   "functions": [
+    {
+     "name": "ov96_021EC70C",
+     "mode": "thumb",
+     "insns": 62,
+     "size_est": 130,
+     "status": "matched"
+    }
+   ],
+   "source": "harness"
+  },
+  {
    "file": "asm/overlay_96_s371.s",
    "lsf_kind": "src",
    "status": "matched",
@@ -135515,6 +135544,35 @@
      "mode": "thumb",
      "insns": 31,
      "size_est": 68,
+     "status": "matched"
+    }
+   ],
+   "source": "harness"
+  },
+  {
+   "file": "asm/overlay_96_s729.s",
+   "lsf_kind": "src",
+   "status": "matched",
+   "lines": 108,
+   "function_count": 1,
+   "text_bytes_est": 94,
+   "data_only": false,
+   "sections": {
+    "rodata_bytes": 0,
+    "data_bytes": 0,
+    "bss_bytes": 0,
+    "other_bytes": 0
+   },
+   "other_sections": [],
+   "jumptable_words": 0,
+   "imports": [],
+   "exports": [],
+   "functions": [
+    {
+     "name": "ov96_021FC630",
+     "mode": "thumb",
+     "insns": 44,
+     "size_est": 94,
      "status": "matched"
     }
    ],
@@ -137093,8 +137151,8 @@
   },
   {
    "file": "asm/overlay_96_s1065.s",
-   "lsf_kind": "asm",
-   "status": "pending",
+   "lsf_kind": "src",
+   "status": "matched",
    "lines": 277,
    "function_count": 2,
    "text_bytes_est": 394,
@@ -137115,16 +137173,17 @@
      "mode": "thumb",
      "insns": 112,
      "size_est": 240,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ov96_0220DAA0",
      "mode": "thumb",
      "insns": 75,
      "size_est": 154,
-     "status": "pending"
+     "status": "matched"
     }
-   ]
+   ],
+   "source": "harness"
   },
   {
    "file": "asm/overlay_96_s1066.s",
@@ -139587,8 +139646,8 @@
   },
   {
    "file": "asm/overlay_96_s1175.s",
-   "lsf_kind": "asm",
-   "status": "pending",
+   "lsf_kind": "src",
+   "status": "matched",
    "lines": 213,
    "function_count": 1,
    "text_bytes_est": 308,
@@ -139609,9 +139668,10 @@
      "mode": "thumb",
      "insns": 146,
      "size_est": 308,
-     "status": "pending"
+     "status": "matched"
     }
-   ]
+   ],
+   "source": "harness"
   },
   {
    "file": "asm/overlay_96_s1176.s",
@@ -140410,8 +140470,8 @@
   },
   {
    "file": "asm/overlay_96_s1212.s",
-   "lsf_kind": "asm",
-   "status": "pending",
+   "lsf_kind": "src",
+   "status": "matched",
    "lines": 263,
    "function_count": 1,
    "text_bytes_est": 384,
@@ -140432,9 +140492,10 @@
      "mode": "thumb",
      "insns": 183,
      "size_est": 384,
-     "status": "pending"
+     "status": "matched"
     }
-   ]
+   ],
+   "source": "harness"
   },
   {
    "file": "asm/overlay_96_s1213.s",
@@ -140458,8 +140519,8 @@
   },
   {
    "file": "asm/overlay_96_s1214.s",
-   "lsf_kind": "asm",
-   "status": "pending",
+   "lsf_kind": "src",
+   "status": "matched",
    "lines": 278,
    "function_count": 1,
    "text_bytes_est": 420,
@@ -140480,9 +140541,10 @@
      "mode": "thumb",
      "insns": 198,
      "size_est": 420,
-     "status": "pending"
+     "status": "matched"
     }
-   ]
+   ],
+   "source": "harness"
   },
   {
    "file": "asm/overlay_96_s1215.s",
@@ -143037,8 +143099,8 @@
   },
   {
    "file": "asm/overlay_96_s1332.s",
-   "lsf_kind": "asm",
-   "status": "pending",
+   "lsf_kind": "src",
+   "status": "matched",
    "lines": 238,
    "function_count": 1,
    "text_bytes_est": 374,
@@ -143059,9 +143121,10 @@
      "mode": "thumb",
      "insns": 173,
      "size_est": 374,
-     "status": "pending"
+     "status": "matched"
     }
-   ]
+   ],
+   "source": "harness"
   },
   {
    "file": "asm/overlay_96_s1333.s",
@@ -143397,8 +143460,8 @@
   },
   {
    "file": "asm/overlay_96_s1348.s",
-   "lsf_kind": "asm",
-   "status": "pending",
+   "lsf_kind": "src",
+   "status": "matched",
    "lines": 242,
    "function_count": 1,
    "text_bytes_est": 362,
@@ -143419,9 +143482,10 @@
      "mode": "thumb",
      "insns": 166,
      "size_est": 362,
-     "status": "pending"
+     "status": "matched"
     }
-   ]
+   ],
+   "source": "harness"
   },
   {
    "file": "asm/overlay_96_s1349.s",
@@ -163083,9 +163147,9 @@
    "lsf_kind": "asm",
    "status": "pending",
    "split": "hgify",
-   "lines": 39663,
-   "function_count": 118,
-   "text_bytes_est": 61562,
+   "lines": 39432,
+   "function_count": 116,
+   "text_bytes_est": 61338,
    "data_only": false,
    "sections": {
     "rodata_bytes": 12825,
@@ -163187,13 +163251,6 @@
      "mode": "thumb",
      "insns": 97,
      "size_est": 202,
-     "status": "pending"
-    },
-    {
-     "name": "ov96_021EC70C",
-     "mode": "thumb",
-     "insns": 62,
-     "size_est": 130,
      "status": "pending"
     },
     {
@@ -163495,13 +163552,6 @@
      "mode": "thumb",
      "insns": 171,
      "size_est": 398,
-     "status": "pending"
-    },
-    {
-     "name": "ov96_021FC630",
-     "mode": "thumb",
-     "insns": 44,
-     "size_est": 94,
      "status": "pending"
     },
     {
