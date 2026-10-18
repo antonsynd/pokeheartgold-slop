@@ -2141,6 +2141,24 @@
       "category": "matching-tricks",
       "title": "A u8 stack parameter that retail reloads with ldrb once, stores to its own frame slot and then reads with ldr is copied into an `int` local after the first call",
       "body": "ov96_0220BE28 (overlay_96_s1014) takes `u8 playerId` as its 5th parameter. Retail does `add r0, sp, #32; ldrb r0, [r0, #16]; str r0, [sp, #20]` right after MI_CpuFill8 and later uses `ldr r0, [sp, #20]`. Using the parameter directly gives ldrb reloads from the caller slot and a 4-byte smaller frame; `int player = playerId;` at the top schedules the copy before the call. Declare `int player;` and assign `player = playerId;` after the MI_CpuFill8 line. In ov96_02217B84 (s1279) the u8 loop value `slot = i % 3` likewise had to be an `int slot` holding `(u8)(i % 3)` to get its stack slot ordered with the other spilled ints. Related: [[u8-stack-param-ldrb-vs-hoisted-ldr]]."
+    },
+    {
+      "id": "separate-variable-for-loop-copy-of-constant",
+      "category": "matching-tricks",
+      "title": "`adds r7, r4, #0` copying a constant-valued register right before a loop means the loop uses a SECOND variable assigned the same constant",
+      "body": "ov96_022163AC (overlay_96_s1261) loads sprite resources for the main screen with `vram = NNS_G2D_VRAM_TYPE_2DMAIN` and then the sub screen with `vram = NNS_G2D_VRAM_TYPE_2DSUB` (r4 holds 1, then 2, and MWCC reuses it for any argument equal to that value, e.g. `adds r0, r4, #0` for a TRUE or a palette count of 2). Before the following `for (i...)` loop retail does `adds r7, r4, #0; movs r4, #0`. Using `vram` inside the loop puts the whole second web in r7 from the start (48 diffs); literal constants in the loop make MWCC hoist the most-used constant (1) instead. Matching source: `vram2 = NNS_G2D_VRAM_TYPE_2DSUB;` right before the loop and `vram2` in the loop body. Related: [[const-arg-reuses-compare-register]]."
+    },
+    {
+      "id": "point16-struct-copy-uses-ldrh",
+      "category": "codegen",
+      "title": "Copying two s16 coordinates with `ldrh/strh` (not `ldrsh`) means a struct assignment of an {s16 x, y} pair",
+      "body": "ov96_022180CC (overlay_96_s1285) copies the player's touch position into the mover's target with `ldrh r0, [r5]; strh r0, [r4, #0x1c]; ldrh r0, [r5, #2]; strh r0, [r4, #0x1e]`. Field-by-field `mover->targetX = player->x;` with s16 fields emits `movs r0, #0; ldrsh r0, [r5, r0]` (and u16 destinations do not change that). Declaring `typedef struct { s16 x; s16 y; } Ov96Point16;` for both and writing `mover->target = player->pos;` produces the halfword copy. Same function: FX32_CONST(intVar) is the SDK macro expanded on an int (`x > 0 ? x * 4096 + 0.5f : x * 4096 - 0.5f`), giving `lsl #12; _fflt; _fadd/_fsub 0.5f; _ffix`."
+    },
+    {
+      "id": "u8-array-zero-init-reloads-spilled-zero",
+      "category": "codegen",
+      "title": "Four `strb` of a value reloaded from a spilled zero counter = `u8 arr[4] = {0, 0, 0, 0};` declared next to that counter",
+      "body": "ov96_02215478 (overlay_96_s1218) starts with `str r0, [sp, #12]` (u8 i = 0 spilled) followed by `strb r0, [r7]; ldr r0, [sp, #12]; strb r0, [r7, #1]; ...` for a u8 counts[4]. Explicit `counts[k] = 0` or `counts[k] = i` statements come out 2 bytes shorter or with a different store order; `u8 counts[4] = { 0, 0, 0, 0 };` in the declaration matched (MWCC value-numbers the zero to the spilled counter). Also in this file: `(int)LCRandom() % 64` gives the signed-modulo `lsr #31; lsl #26; sub; ror #26` sequence. Related: [[aggregate-init-zeroes-vec-via-base-pointer]]."
     }
   ]
 }

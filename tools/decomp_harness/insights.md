@@ -829,6 +829,14 @@ ov96_02214278 copies two 2-byte palette arrays (`bonus` from ov96_0221D1F4+2, `n
 
 ov96_02214C3C (overlay_96_s1212) computes a zone per runner and, when the zone is 4, stores results[i] = 0. Retail emits `cmp r7, #4; beq <far>` and places the `results[i] = 0` store after the whole if/else chain, right before the loop increment. Writing `if (zone == 4) { results[i] = 0; continue; }` produces an inline `bne; movs; strb; b` instead (63 diffs). Inverting to `if (zone != 4) { ...chain ending in results[i] = 1/2/3/4... } else { results[i] = 0; }` reproduced the layout exactly. The sister function ov96_02214EB4 (s1214) has the same shape with codes 5/6/7 and matched first time with it. Related: [[then-branch-continue-jump-shapes-bne-join-b-end]].
 
+### Copying two s16 coordinates with `ldrh/strh` (not `ldrsh`) means a struct assignment of an {s16 x, y} pair  <!-- id: point16-struct-copy-uses-ldrh -->
+
+ov96_022180CC (overlay_96_s1285) copies the player's touch position into the mover's target with `ldrh r0, [r5]; strh r0, [r4, #0x1c]; ldrh r0, [r5, #2]; strh r0, [r4, #0x1e]`. Field-by-field `mover->targetX = player->x;` with s16 fields emits `movs r0, #0; ldrsh r0, [r5, r0]` (and u16 destinations do not change that). Declaring `typedef struct { s16 x; s16 y; } Ov96Point16;` for both and writing `mover->target = player->pos;` produces the halfword copy. Same function: FX32_CONST(intVar) is the SDK macro expanded on an int (`x > 0 ? x * 4096 + 0.5f : x * 4096 - 0.5f`), giving `lsl #12; _fflt; _fadd/_fsub 0.5f; _ffix`.
+
+### Four `strb` of a value reloaded from a spilled zero counter = `u8 arr[4] = {0, 0, 0, 0};` declared next to that counter  <!-- id: u8-array-zero-init-reloads-spilled-zero -->
+
+ov96_02215478 (overlay_96_s1218) starts with `str r0, [sp, #12]` (u8 i = 0 spilled) followed by `strb r0, [r7]; ldr r0, [sp, #12]; strb r0, [r7, #1]; ...` for a u8 counts[4]. Explicit `counts[k] = 0` or `counts[k] = i` statements come out 2 bytes shorter or with a different store order; `u8 counts[4] = { 0, 0, 0, 0 };` in the declaration matched (MWCC value-numbers the zero to the spilled counter). Also in this file: `(int)LCRandom() % 64` gives the signed-modulo `lsr #31; lsl #26; sub; ror #26` sequence. Related: [[aggregate-init-zeroes-vec-via-base-pointer]].
+
 ## Matching Tricks
 
 ### Small source changes that move codegen  <!-- id: decl-order-tricks -->
@@ -1132,6 +1140,10 @@ ov96_02214C3C kept a pointer to ball->pos in a stack slot and retail emits `adds
 ### A u8 stack parameter that retail reloads with ldrb once, stores to its own frame slot and then reads with ldr is copied into an `int` local after the first call  <!-- id: u8-stack-param-copied-to-int-local -->
 
 ov96_0220BE28 (overlay_96_s1014) takes `u8 playerId` as its 5th parameter. Retail does `add r0, sp, #32; ldrb r0, [r0, #16]; str r0, [sp, #20]` right after MI_CpuFill8 and later uses `ldr r0, [sp, #20]`. Using the parameter directly gives ldrb reloads from the caller slot and a 4-byte smaller frame; `int player = playerId;` at the top schedules the copy before the call. Declare `int player;` and assign `player = playerId;` after the MI_CpuFill8 line. In ov96_02217B84 (s1279) the u8 loop value `slot = i % 3` likewise had to be an `int slot` holding `(u8)(i % 3)` to get its stack slot ordered with the other spilled ints. Related: [[u8-stack-param-ldrb-vs-hoisted-ldr]].
+
+### `adds r7, r4, #0` copying a constant-valued register right before a loop means the loop uses a SECOND variable assigned the same constant  <!-- id: separate-variable-for-loop-copy-of-constant -->
+
+ov96_022163AC (overlay_96_s1261) loads sprite resources for the main screen with `vram = NNS_G2D_VRAM_TYPE_2DMAIN` and then the sub screen with `vram = NNS_G2D_VRAM_TYPE_2DSUB` (r4 holds 1, then 2, and MWCC reuses it for any argument equal to that value, e.g. `adds r0, r4, #0` for a TRUE or a palette count of 2). Before the following `for (i...)` loop retail does `adds r7, r4, #0; movs r4, #0`. Using `vram` inside the loop puts the whole second web in r7 from the start (48 diffs); literal constants in the loop make MWCC hoist the most-used constant (1) instead. Matching source: `vram2 = NNS_G2D_VRAM_TYPE_2DSUB;` right before the loop and `vram2` in the loop body. Related: [[const-arg-reuses-compare-register]].
 
 ## IPA (-ipa file) Behavior
 

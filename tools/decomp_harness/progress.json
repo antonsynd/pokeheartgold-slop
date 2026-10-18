@@ -4074,6 +4074,70 @@
       "attempts": 1,
       "result": "matched",
       "note": "matched (batch 12)"
+    },
+    {
+      "file": "asm/overlay_96_s1014.s",
+      "lines": 285,
+      "functions": 2,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched (batch 13)"
+    },
+    {
+      "file": "asm/overlay_96_s1017.s",
+      "lines": 379,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched (batch 13)"
+    },
+    {
+      "file": "asm/overlay_96_s1077.s",
+      "lines": 299,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched (batch 13)"
+    },
+    {
+      "file": "asm/overlay_96_s1256.s",
+      "lines": 342,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched (batch 13)"
+    },
+    {
+      "file": "asm/overlay_96_s1261.s",
+      "lines": 345,
+      "functions": 3,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched (batch 13)"
+    },
+    {
+      "file": "asm/overlay_96_s1285.s",
+      "lines": 357,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched (batch 13)"
+    },
+    {
+      "file": "asm/overlay_96_s1296.s",
+      "lines": 401,
+      "functions": 2,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched (batch 13)"
+    },
+    {
+      "file": "asm/overlay_96_s1300.s",
+      "lines": 438,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched (batch 13)"
     }
   ],
   "failed": [
@@ -4482,8 +4546,8 @@
   ],
   "in_progress": null,
   "stats": {
-    "total_attempts": 667,
-    "total_matched": 477,
+    "total_attempts": 675,
+    "total_matched": 485,
     "total_failed": 31
   },
   "matched": [
