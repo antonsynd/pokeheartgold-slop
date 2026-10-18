@@ -1834,6 +1834,894 @@
       "attempts": 1,
       "result": "matched",
       "note": "Windows/MSYS2 session 2026-10-18; compile_one + objdiff, full ROM SHA1 OK"
+    },
+    {
+      "file": "asm/overlay_01_021E90C0_s24.s",
+      "lines": 74,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched (decomp/windows-session batch 2)"
+    },
+    {
+      "file": "asm/overlay_01_021E90C0_s34.s",
+      "lines": 72,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched (decomp/windows-session batch 2)"
+    },
+    {
+      "file": "asm/overlay_01_021EB1E8_r57.s",
+      "lines": 72,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched (decomp/windows-session batch 2)"
+    },
+    {
+      "file": "asm/overlay_01_021EFB38_p63.s",
+      "lines": 89,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched (decomp/windows-session batch 2)"
+    },
+    {
+      "file": "asm/overlay_01_021F1AFC_q46.s",
+      "lines": 67,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched (decomp/windows-session batch 2)"
+    },
+    {
+      "file": "asm/overlay_01_021F944C_p23.s",
+      "lines": 64,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched (decomp/windows-session batch 2)"
+    },
+    {
+      "file": "asm/overlay_07_r105.s",
+      "lines": 62,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched (decomp/windows-session batch 2)"
+    },
+    {
+      "file": "asm/overlay_07_r69.s",
+      "lines": 60,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched (decomp/windows-session batch 2)"
+    },
+    {
+      "file": "asm/overlay_07_r697.s",
+      "lines": 81,
+      "functions": 2,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched (decomp/windows-session batch 2)"
+    },
+    {
+      "file": "asm/overlay_07_r792.s",
+      "lines": 59,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched (decomp/windows-session batch 2)"
+    },
+    {
+      "file": "asm/overlay_08_q212.s",
+      "lines": 74,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched (decomp/windows-session batch 2)"
+    },
+    {
+      "file": "asm/overlay_102_r46.s",
+      "lines": 71,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched (decomp/windows-session batch 2)"
+    },
+    {
+      "file": "asm/overlay_102_r92.s",
+      "lines": 58,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched (decomp/windows-session batch 2)"
+    },
+    {
+      "file": "asm/overlay_108_021E8850_q18.s",
+      "lines": 54,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched (decomp/windows-session batch 2)"
+    },
+    {
+      "file": "asm/overlay_108_021E8850_q32.s",
+      "lines": 76,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched (decomp/windows-session batch 2)"
+    },
+    {
+      "file": "asm/overlay_109_r19.s",
+      "lines": 55,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched (decomp/windows-session batch 2)"
+    },
+    {
+      "file": "asm/overlay_109_r31.s",
+      "lines": 59,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched (decomp/windows-session batch 2)"
+    },
+    {
+      "file": "asm/overlay_109_r57.s",
+      "lines": 55,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched (decomp/windows-session batch 2)"
+    },
+    {
+      "file": "asm/overlay_109_r67.s",
+      "lines": 58,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched (decomp/windows-session batch 2)"
+    },
+    {
+      "file": "asm/overlay_112_r05.s",
+      "lines": 66,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched (decomp/windows-session batch 2)"
+    },
+    {
+      "file": "asm/overlay_112_r10.s",
+      "lines": 62,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched (decomp/windows-session batch 2)"
+    },
+    {
+      "file": "asm/overlay_112_r257.s",
+      "lines": 59,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched (decomp/windows-session batch 2)"
+    },
+    {
+      "file": "asm/overlay_112_r295.s",
+      "lines": 51,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched (decomp/windows-session batch 2)"
+    },
+    {
+      "file": "asm/overlay_112_r427.s",
+      "lines": 53,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched (decomp/windows-session batch 2)"
+    },
+    {
+      "file": "asm/overlay_112_r447.s",
+      "lines": 72,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched (decomp/windows-session batch 2)"
+    },
+    {
+      "file": "asm/overlay_12_battle_controller_opponent_s117.s",
+      "lines": 52,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched (decomp/windows-session batch 2)"
+    },
+    {
+      "file": "asm/overlay_12_battle_controller_opponent_s84.s",
+      "lines": 223,
+      "functions": 3,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched (decomp/windows-session batch 2)"
+    },
+    {
+      "file": "asm/overlay_14_021E5900_s200.s",
+      "lines": 69,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched (decomp/windows-session batch 2)"
+    },
+    {
+      "file": "asm/overlay_14_021E5900_s207.s",
+      "lines": 55,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched (decomp/windows-session batch 2)"
+    },
+    {
+      "file": "asm/overlay_14_021F0A80_q09.s",
+      "lines": 47,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched (decomp/windows-session batch 2)"
+    },
+    {
+      "file": "asm/overlay_14_021F2490_q06.s",
+      "lines": 34,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched (decomp/windows-session batch 2)"
+    },
+    {
+      "file": "asm/overlay_14_021F2490_q69.s",
+      "lines": 69,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched (decomp/windows-session batch 2)"
+    },
+    {
+      "file": "asm/overlay_15_s119.s",
+      "lines": 59,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched (decomp/windows-session batch 2)"
+    },
+    {
+      "file": "asm/overlay_15_s48.s",
+      "lines": 65,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched (decomp/windows-session batch 2)"
+    },
+    {
+      "file": "asm/overlay_15_s61.s",
+      "lines": 76,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched (decomp/windows-session batch 2)"
+    },
+    {
+      "file": "asm/overlay_18_021F0918_r133.s",
+      "lines": 70,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched (decomp/windows-session batch 2)"
+    },
+    {
+      "file": "asm/overlay_18_021F0918_r145.s",
+      "lines": 74,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched (decomp/windows-session batch 2)"
+    },
+    {
+      "file": "asm/overlay_18_021F0918_r71.s",
+      "lines": 68,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched (decomp/windows-session batch 2)"
+    },
+    {
+      "file": "asm/overlay_27_q18.s",
+      "lines": 72,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched (decomp/windows-session batch 2)"
+    },
+    {
+      "file": "asm/overlay_27_q32.s",
+      "lines": 65,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched (decomp/windows-session batch 2)"
+    },
+    {
+      "file": "asm/overlay_27_q41.s",
+      "lines": 56,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched (decomp/windows-session batch 2)"
+    },
+    {
+      "file": "asm/overlay_27_q57.s",
+      "lines": 63,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched (decomp/windows-session batch 2)"
+    },
+    {
+      "file": "asm/overlay_33_l00.s",
+      "lines": 74,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched (decomp/windows-session batch 2)"
+    },
+    {
+      "file": "asm/overlay_37_q24.s",
+      "lines": 58,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched (decomp/windows-session batch 2)"
+    },
+    {
+      "file": "asm/overlay_40_s280.s",
+      "lines": 44,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched (decomp/windows-session batch 2)"
+    },
+    {
+      "file": "asm/overlay_40_s282.s",
+      "lines": 52,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched (decomp/windows-session batch 2)"
+    },
+    {
+      "file": "asm/overlay_40_s340.s",
+      "lines": 72,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched (decomp/windows-session batch 2)"
+    },
+    {
+      "file": "asm/overlay_40_s77.s",
+      "lines": 47,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched (decomp/windows-session batch 2)"
+    },
+    {
+      "file": "asm/overlay_41_02245EA0_q39.s",
+      "lines": 48,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched (decomp/windows-session batch 2)"
+    },
+    {
+      "file": "asm/overlay_41_02246B34_r06.s",
+      "lines": 59,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched (decomp/windows-session batch 2)"
+    },
+    {
+      "file": "asm/overlay_41_02249A40_h07.s",
+      "lines": 50,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched (decomp/windows-session batch 2)"
+    },
+    {
+      "file": "asm/overlay_43_r132.s",
+      "lines": 85,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched (decomp/windows-session batch 2)"
+    },
+    {
+      "file": "asm/overlay_43_r86.s",
+      "lines": 48,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched (decomp/windows-session batch 2)"
+    },
+    {
+      "file": "asm/overlay_57_s128.s",
+      "lines": 62,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched (decomp/windows-session batch 2)"
+    },
+    {
+      "file": "asm/overlay_57_s26.s",
+      "lines": 51,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched (decomp/windows-session batch 2)"
+    },
+    {
+      "file": "asm/overlay_59_r162.s",
+      "lines": 55,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched (decomp/windows-session batch 2)"
+    },
+    {
+      "file": "asm/overlay_65_s18.s",
+      "lines": 67,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched (decomp/windows-session batch 2)"
+    },
+    {
+      "file": "asm/overlay_68_q59.s",
+      "lines": 55,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched (decomp/windows-session batch 2)"
+    },
+    {
+      "file": "asm/overlay_68_q77.s",
+      "lines": 74,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched (decomp/windows-session batch 2)"
+    },
+    {
+      "file": "asm/overlay_69_r07.s",
+      "lines": 52,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched (decomp/windows-session batch 2)"
+    },
+    {
+      "file": "asm/overlay_70_r353.s",
+      "lines": 89,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched (decomp/windows-session batch 2)"
+    },
+    {
+      "file": "asm/overlay_70_r441.s",
+      "lines": 67,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched (decomp/windows-session batch 2)"
+    },
+    {
+      "file": "asm/overlay_80_0222BDF4_q45.s",
+      "lines": 56,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched (decomp/windows-session batch 2)"
+    },
+    {
+      "file": "asm/overlay_80_0222BDF4_q56.s",
+      "lines": 57,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched (decomp/windows-session batch 2)"
+    },
+    {
+      "file": "asm/overlay_81_r07.s",
+      "lines": 63,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched (decomp/windows-session batch 2)"
+    },
+    {
+      "file": "asm/overlay_81_r128.s",
+      "lines": 71,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched (decomp/windows-session batch 2)"
+    },
+    {
+      "file": "asm/overlay_81_r65.s",
+      "lines": 55,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched (decomp/windows-session batch 2)"
+    },
+    {
+      "file": "asm/overlay_82_r22.s",
+      "lines": 58,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched (decomp/windows-session batch 2)"
+    },
+    {
+      "file": "asm/overlay_82_r63.s",
+      "lines": 53,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched (decomp/windows-session batch 2)"
+    },
+    {
+      "file": "asm/overlay_82_r74.s",
+      "lines": 50,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched (decomp/windows-session batch 2)"
+    },
+    {
+      "file": "asm/overlay_86_q01.s",
+      "lines": 63,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched (decomp/windows-session batch 2)"
+    },
+    {
+      "file": "asm/overlay_86_q03.s",
+      "lines": 68,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched (decomp/windows-session batch 2)"
+    },
+    {
+      "file": "asm/overlay_86_q60.s",
+      "lines": 57,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched (decomp/windows-session batch 2)"
+    },
+    {
+      "file": "asm/overlay_90_r135.s",
+      "lines": 61,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched (decomp/windows-session batch 2)"
+    },
+    {
+      "file": "asm/overlay_92_q38.s",
+      "lines": 48,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched (decomp/windows-session batch 2)"
+    },
+    {
+      "file": "asm/overlay_92_q47.s",
+      "lines": 62,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched (decomp/windows-session batch 2)"
+    },
+    {
+      "file": "asm/overlay_92_q52.s",
+      "lines": 57,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched (decomp/windows-session batch 2)"
+    },
+    {
+      "file": "asm/overlay_95_n52.s",
+      "lines": 59,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched (decomp/windows-session batch 2)"
+    },
+    {
+      "file": "asm/overlay_96_s125.s",
+      "lines": 127,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched (decomp/windows-session batch 2)"
+    },
+    {
+      "file": "asm/overlay_96_s14.s",
+      "lines": 102,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched (decomp/windows-session batch 2)"
+    },
+    {
+      "file": "asm/overlay_96_s143.s",
+      "lines": 155,
+      "functions": 2,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched (decomp/windows-session batch 2)"
+    },
+    {
+      "file": "asm/overlay_96_s148.s",
+      "lines": 111,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched (decomp/windows-session batch 2)"
+    },
+    {
+      "file": "asm/overlay_96_s387.s",
+      "lines": 119,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched (decomp/windows-session batch 2)"
+    },
+    {
+      "file": "asm/overlay_96_s39.s",
+      "lines": 111,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched (decomp/windows-session batch 2)"
+    },
+    {
+      "file": "asm/overlay_96_s451.s",
+      "lines": 98,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched (decomp/windows-session batch 2)"
+    },
+    {
+      "file": "asm/overlay_96_s581.s",
+      "lines": 99,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched (decomp/windows-session batch 2)"
+    },
+    {
+      "file": "asm/overlay_96_s596.s",
+      "lines": 127,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched (decomp/windows-session batch 2)"
+    },
+    {
+      "file": "asm/overlay_96_s598.s",
+      "lines": 117,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched (decomp/windows-session batch 2)"
+    },
+    {
+      "file": "asm/overlay_96_s603.s",
+      "lines": 124,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched (decomp/windows-session batch 2)"
+    },
+    {
+      "file": "asm/overlay_96_s621.s",
+      "lines": 99,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched (decomp/windows-session batch 2)"
+    },
+    {
+      "file": "asm/overlay_96_s762.s",
+      "lines": 95,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched (decomp/windows-session batch 2)"
+    },
+    {
+      "file": "asm/overlay_96_s89.s",
+      "lines": 189,
+      "functions": 2,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched (decomp/windows-session batch 2)"
+    },
+    {
+      "file": "asm/overlay_97_q24.s",
+      "lines": 64,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched (decomp/windows-session batch 2)"
+    },
+    {
+      "file": "asm/overlay_99_r09.s",
+      "lines": 49,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched (decomp/windows-session batch 2)"
+    },
+    {
+      "file": "asm/overlay_99_r97.s",
+      "lines": 68,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched (decomp/windows-session batch 2)"
+    },
+    {
+      "file": "asm/overlay_trainer_card_main_r23.s",
+      "lines": 56,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched (decomp/windows-session batch 2)"
+    },
+    {
+      "file": "asm/overlay_trainer_card_signature_n01.s",
+      "lines": 64,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched (decomp/windows-session batch 2)"
+    },
+    {
+      "file": "asm/unk_0201010C_t104.s",
+      "lines": 147,
+      "functions": 3,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched (decomp/windows-session batch 2)"
+    },
+    {
+      "file": "asm/unk_0201010C_t49.s",
+      "lines": 67,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched (decomp/windows-session batch 2)"
+    },
+    {
+      "file": "asm/unk_0201956C_q11.s",
+      "lines": 68,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched (decomp/windows-session batch 2)"
+    },
+    {
+      "file": "asm/unk_02020B8C_q09.s",
+      "lines": 56,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched (decomp/windows-session batch 2)"
+    },
+    {
+      "file": "asm/unk_02056D7C_q38.s",
+      "lines": 52,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched (decomp/windows-session batch 2)"
+    },
+    {
+      "file": "asm/unk_02058034_g01.s",
+      "lines": 54,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched (decomp/windows-session batch 2)"
+    },
+    {
+      "file": "asm/unk_0205CB48_r12.s",
+      "lines": 71,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched (decomp/windows-session batch 2)"
+    },
+    {
+      "file": "asm/unk_02062108_p146.s",
+      "lines": 66,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched (decomp/windows-session batch 2)"
+    },
+    {
+      "file": "asm/unk_020632B0_s51.s",
+      "lines": 62,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched (decomp/windows-session batch 2)"
+    },
+    {
+      "file": "asm/unk_0206979C_t14.s",
+      "lines": 75,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched (decomp/windows-session batch 2)"
+    },
+    {
+      "file": "asm/unk_02087FD4_00.s",
+      "lines": 41,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched (decomp/windows-session batch 2)"
+    },
+    {
+      "file": "asm/unk_02088288_q42.s",
+      "lines": 65,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched (decomp/windows-session batch 2)"
+    },
+    {
+      "file": "asm/unk_0208B1AC_r38.s",
+      "lines": 68,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched (decomp/windows-session batch 2)"
+    },
+    {
+      "file": "asm/unk_020957B0_p02.s",
+      "lines": 66,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched (decomp/windows-session batch 2)"
     }
   ],
   "failed": [
@@ -2242,8 +3130,8 @@
   ],
   "in_progress": null,
   "stats": {
-    "total_attempts": 387,
-    "total_matched": 197,
+    "total_attempts": 498,
+    "total_matched": 308,
     "total_failed": 31
   },
   "matched": [
