@@ -2087,6 +2087,30 @@
       "category": "ipa",
       "title": "ManagedSprite_SetDrawPriority callers matched against an int priority parameter: `6 - j` and other computed priorities pass with no lsl/lsr mask",
       "body": "sprite_system.h declares ManagedSprite_SetDrawPriority(ManagedSprite *, u16), but ov40_0223D008 (`6 - j`) and ov57_022392F4 call it with an unmasked int (4 bytes smaller). Use the called-as-matched macro: `#define ManagedSprite_SetDrawPriority(sprite, priority) ((void (*)(ManagedSprite *, int))ManagedSprite_SetDrawPriority)(sprite, priority)`. Same story as [[shared-sound-header-int-vs-u16-mask]] (PlaySE) and Sprite_SetPalOffset (u8 in the header, unmasked u32 in ov90_02259BCC)."
+    },
+    {
+      "id": "split-tu-local-array-template-extern-offset",
+      "category": "data-sections",
+      "title": "In an hgify slice, a local const array copied element by element from `sym+N` (ldrh r0, [r3, #0x22]) is the original TU's initializer template, which now sits in the shared _Xdata file: copy it through `*(const T *)(sym + N)`, do not write the initializer",
+      "body": "ov40_0222C884 (twin ov62_02230464 with local `const s16 v6[]`, `const f32 v7[]`, `const s8 v8[]`) copies its tables from ov40_02244DA8+0x22, ov40_02244DF0 and ov40_02244DA8+0. Those bytes are in asm/overlay_40_sdata.s, so a C initializer would emit a second copy into the slice's .rodata and shift the overlay. Wrapping each array in a struct and copying it from the extern blob matched on the first try, with the same unrolled ldrh/strh, ldmia/stmia and ldrb/strb sequences: `Ov40WaveXs xs = *(const Ov40WaveXs *)(ov40_02244DA8 + 0x22); Ov40WaveScales scales = ov40_02244DF0; Ov40WaveSpeeds speeds = *(const Ov40WaveSpeeds *)ov40_02244DA8;` with `extern const u8 ov40_02244DA8[];`. [[local-array-initializer-is-rodata-byte-copy]] still applies when the whole TU, data included, is in one C file."
+    },
+    {
+      "id": "assert-flags-from-second-param-copy",
+      "category": "matching-tricks",
+      "title": "`adds r5, r0, #0; adds r4, r1, #0; beq fail; cmp r4, #4; blo ok` tests the second parameter against zero, not the pointer: write `GF_ASSERT(index != 0 && index < 4)`",
+      "body": "ov96_02219940 looks like `GF_ASSERT(a0 != NULL && player < 4)`, but the beq takes its flags from the last flag-setting move, the copy of r1. Every pointer-check spelling (a0 != NULL, !a0, split asserts) emits an explicit `cmp r5, #0`; `GF_ASSERT(player != 0 && player < 4)` reproduces the retail bytes, so the shipped code really checks the index. Note the quirk in a comment rather than \"fixing\" it."
+    },
+    {
+      "id": "read-invariant-inside-loop-for-licm-placement",
+      "category": "codegen",
+      "title": "A loop-invariant load that retail does after `movs rI, #0` in the preheader came from a read written inside the loop body; MWCC hoists it there. Reading it into a local before the loop puts it before the counter init and changes the registers",
+      "body": "ov96_0220E7BC compares data->teams[team].score (a u16 bitfield) with every other team's. With `u16 score = ...` before `for (i = 0; ...)` the shifts ran in r0 and i landed in r1 (13 diffs). Writing `score = data->teams[team].score;` as the first statement inside the loop let loop-invariant motion place the load and shifts after `movs r0, #0`, with i in r0 and score in r1, as retail. Related: [[local-stack-slot-order-equals-decl-order]] for the stack-slot side of the same problem."
+    },
+    {
+      "id": "pointer-before-bitfield-stores-shares-word-load",
+      "category": "codegen",
+      "title": "When retail reads a bitfield word once and uses it both for a field copy and for an array index before any store, the source took `&arr[s->index]` before the first store",
+      "body": "ov96_0220CF50 and ov96_0220D0F8 copy fields of a0->unk14 (id, score) into a result word and index a0->contestants[a0->current] with the 2-bit field from the same word. Retail does `ldr r7, [r5, #0x14]` once, derives both id and current from it, then stores. Writing `result->points = a0->contestants[a0->current].points;` after `result->id = a0->id;` reloads unk14 because the store might alias (73 diffs). `Ov96Contestant *contestant = &a0->contestants[a0->current];` declared before the first store matched both functions."
     }
   ]
 }

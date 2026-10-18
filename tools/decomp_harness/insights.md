@@ -813,6 +813,14 @@ ov90_0225B38C passes its stack heapID to BeginNormalPaletteFade (enum HeapID), s
 
 ov90_02259BCC (still parked, overlay_90_r73) keeps the switch result `row` in r7 and homes the 5th and 8th parameters with an `ldr r0, [sp, #N]; str r0, [sp, #N]` self-copy. Declared as `Ov90BgHolder *bg` the 5th parameter took r7 and row went to the stack; declared `void *bg` with `((Ov90BgHolder *)bg)->bgConfig` at the uses, row got r7, though the self-copy and the CSE temp slots still differ. Worth trying when a pointer parameter used only twice is enregistered and a busier local is spilled.
 
+### A loop-invariant load that retail does after `movs rI, #0` in the preheader came from a read written inside the loop body; MWCC hoists it there. Reading it into a local before the loop puts it before the counter init and changes the registers  <!-- id: read-invariant-inside-loop-for-licm-placement -->
+
+ov96_0220E7BC compares data->teams[team].score (a u16 bitfield) with every other team's. With `u16 score = ...` before `for (i = 0; ...)` the shifts ran in r0 and i landed in r1 (13 diffs). Writing `score = data->teams[team].score;` as the first statement inside the loop let loop-invariant motion place the load and shifts after `movs r0, #0`, with i in r0 and score in r1, as retail. Related: [[local-stack-slot-order-equals-decl-order]] for the stack-slot side of the same problem.
+
+### When retail reads a bitfield word once and uses it both for a field copy and for an array index before any store, the source took `&arr[s->index]` before the first store  <!-- id: pointer-before-bitfield-stores-shares-word-load -->
+
+ov96_0220CF50 and ov96_0220D0F8 copy fields of a0->unk14 (id, score) into a result word and index a0->contestants[a0->current] with the 2-bit field from the same word. Retail does `ldr r7, [r5, #0x14]` once, derives both id and current from it, then stores. Writing `result->points = a0->contestants[a0->current].points;` after `result->id = a0->id;` reloads unk14 because the store might alias (73 diffs). `Ov96Contestant *contestant = &a0->contestants[a0->current];` declared before the first store matched both functions.
+
 ## Matching Tricks
 
 ### Small source changes that move codegen  <!-- id: decl-order-tricks -->
@@ -1101,6 +1109,10 @@ ov90_0225B8F0 and ov90_02259B68 (twins of ov114_0225F7D8 / ov114_0225DA5C) loop 
 
 ov93_02260080 (twin ov117_02263F80) computes `Unk_ov117_02266BB4[1].unk_02 - y` etc.; the HG asm uses 28, 204, 164 and 52 directly because the table was `static const` in the original TU and every index was constant. The hgify split moved the TU's rodata to the _Xdata file, so declaring the table extern would emit loads. Writing `28 - startY`, `startX - 204`, ... matched. The same function's variable-index table (ov93_02262CA4[ball->bonus]) stays an extern array. Related: [[local-array-initializer-is-rodata-byte-copy]].
 
+### `adds r5, r0, #0; adds r4, r1, #0; beq fail; cmp r4, #4; blo ok` tests the second parameter against zero, not the pointer: write `GF_ASSERT(index != 0 && index < 4)`  <!-- id: assert-flags-from-second-param-copy -->
+
+ov96_02219940 looks like `GF_ASSERT(a0 != NULL && player < 4)`, but the beq takes its flags from the last flag-setting move, the copy of r1. Every pointer-check spelling (a0 != NULL, !a0, split asserts) emits an explicit `cmp r5, #0`; `GF_ASSERT(player != 0 && player < 4)` reproduces the retail bytes, so the shipped code really checks the index. Note the quirk in a comment rather than "fixing" it.
+
 ## IPA (-ipa file) Behavior
 
 ### Shared-header signatures are load-bearing across compilation units  <!-- id: ipa-shared-headers -->
@@ -1318,6 +1330,10 @@ ov43_0222AC28 writes ov43_0222F14C[2] (offsets 0x60, 0x64, 0x8C) through `ldr r1
 ### A pointer global used by one slice and reloaded after every store is a function-local static; when it is the overlay's first .bss, define it `static` in the slice and delete it from the _Xdata.s file  <!-- id: function-local-static-first-bss-move-from-qdata -->
 
 ov80_0222FD08 (BattleFactory_Init twin, `static BattleFactory *factory;`) stores into the struct through _0223DD40 and keeps the pointer in r5 across those stores; with `extern BattleFactory *_0223DD40;` MWCC reloads the global after every store (the store might alias it), 528 vs 484 bytes. Declared `static BattleFactory *factory;` inside the function the body matched. _0223DD40 was the only content of asm/overlay_80_0222FD08_qdata.s and the first symbol under `# .OVY_80.bss` in main.nef.xMAP, so removing the .public and .bss block from the qdata file and letting the C object own the 4 bytes kept every address; both ROMs stayed 4/4. Check the xMAP first: if another object's .bss comes earlier in the overlay, the move shifts it. objdiff reports the .bss size difference (asm=0, c=4); that is the move itself, not a mismatch. Related: [[double-literal-load-means-tu-static]] (the general rebuild-the-TU case).
+
+### In an hgify slice, a local const array copied element by element from `sym+N` (ldrh r0, [r3, #0x22]) is the original TU's initializer template, which now sits in the shared _Xdata file: copy it through `*(const T *)(sym + N)`, do not write the initializer  <!-- id: split-tu-local-array-template-extern-offset -->
+
+ov40_0222C884 (twin ov62_02230464 with local `const s16 v6[]`, `const f32 v7[]`, `const s8 v8[]`) copies its tables from ov40_02244DA8+0x22, ov40_02244DF0 and ov40_02244DA8+0. Those bytes are in asm/overlay_40_sdata.s, so a C initializer would emit a second copy into the slice's .rodata and shift the overlay. Wrapping each array in a struct and copying it from the extern blob matched on the first try, with the same unrolled ldrh/strh, ldmia/stmia and ldrb/strb sequences: `Ov40WaveXs xs = *(const Ov40WaveXs *)(ov40_02244DA8 + 0x22); Ov40WaveScales scales = ov40_02244DF0; Ov40WaveSpeeds speeds = *(const Ov40WaveSpeeds *)ov40_02244DA8;` with `extern const u8 ov40_02244DA8[];`. [[local-array-initializer-is-rodata-byte-copy]] still applies when the whole TU, data included, is in one C file.
 
 ## Recurring File/Module Patterns
 

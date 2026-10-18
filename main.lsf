@@ -3345,7 +3345,7 @@ Overlay OVY_7
     Object main.nef.p/src_hgify_overlay_07_overlay_07_r48.c.o
     Object main.nef.p/src_hgify_overlay_07_overlay_07_r49.c.o
     Object main.nef.p/src_hgify_overlay_07_overlay_07_r50.c.o
-    Object main.nef.p/asm_overlay_07_r51.s.o
+    Object main.nef.p/src_overlay_07_r51.c.o
     Object main.nef.p/src_hgify_overlay_07_overlay_07_r52.c.o
     Object main.nef.p/src_hgify_overlay_07_overlay_07_r53.c.o
     Object main.nef.p/src_hgify_overlay_07_overlay_07_r54.c.o
@@ -4283,7 +4283,7 @@ Overlay OVY_8
     Object main.nef.p/src_hgify_overlay_08_overlay_08_q171.c.o
     Object main.nef.p/src_hgify_overlay_08_overlay_08_q172.c.o
     Object main.nef.p/src_hgify_overlay_08_overlay_08_q173.c.o
-    Object main.nef.p/asm_overlay_08_q174.s.o
+    Object main.nef.p/src_overlay_08_q174.c.o
     Object main.nef.p/src_hgify_overlay_08_overlay_08_q175.c.o
     Object main.nef.p/src_hgify_overlay_08_overlay_08_q176.c.o
     Object main.nef.p/src_hgify_overlay_08_overlay_08_q177.c.o
@@ -6619,7 +6619,7 @@ Overlay OVY_40
     Object main.nef.p/src_hgify_overlay_40_overlay_40_s26.c.o
     Object main.nef.p/src_hgify_overlay_40_overlay_40_s27.c.o
     Object main.nef.p/src_hgify_overlay_40_overlay_40_s28.c.o
-    Object main.nef.p/asm_overlay_40_s29.s.o
+    Object main.nef.p/src_overlay_40_s29.c.o
     Object main.nef.p/src_hgify_overlay_40_overlay_40_s30.c.o
     Object main.nef.p/src_hgify_overlay_40_overlay_40_s31.c.o
     Object main.nef.p/src_hgify_overlay_40_overlay_40_s32.c.o
@@ -9324,7 +9324,7 @@ Overlay OVY_57
     Object main.nef.p/src_hgify_overlay_57_overlay_57_s63.c.o
     Object main.nef.p/src_hgify_overlay_57_overlay_57_s64.c.o
     Object main.nef.p/src_hgify_overlay_57_overlay_57_s65.c.o
-    Object main.nef.p/asm_overlay_57_s66.s.o
+    Object main.nef.p/src_overlay_57_s66.c.o
     Object main.nef.p/src_hgify_overlay_57_overlay_57_s67.c.o
     Object main.nef.p/src_hgify_overlay_57_overlay_57_s68.c.o
     Object main.nef.p/src_hgify_overlay_57_overlay_57_s69.c.o
@@ -12505,7 +12505,7 @@ Overlay OVY_82
     Object main.nef.p/asm_overlay_82_r06.s.o
     Object main.nef.p/src_hgify_overlay_82_overlay_82_r07.c.o
     Object main.nef.p/src_hgify_overlay_82_overlay_82_r08.c.o
-    Object main.nef.p/asm_overlay_82_r09.s.o
+    Object main.nef.p/src_overlay_82_r09.c.o
     Object main.nef.p/src_hgify_overlay_82_overlay_82_r10.c.o
     Object main.nef.p/src_overlay_82_r11.c.o
     Object main.nef.p/src_hgify_overlay_82_overlay_82_r12.c.o
@@ -13747,7 +13747,7 @@ Overlay OVY_91
     Object main.nef.p/src_hgify_overlay_91_overlay_91_r154.c.o
     Object main.nef.p/src_hgify_overlay_91_overlay_91_r155.c.o
     Object main.nef.p/src_hgify_overlay_91_overlay_91_r156.c.o
-    Object main.nef.p/asm_overlay_91_r157.s.o
+    Object main.nef.p/src_overlay_91_r157.c.o
     Object main.nef.p/src_hgify_overlay_91_overlay_91_r158.c.o
     Object main.nef.p/src_hgify_overlay_91_overlay_91_r159.c.o
     Object main.nef.p/src_hgify_overlay_91_overlay_91_r160.c.o
@@ -13928,7 +13928,7 @@ Overlay OVY_92
     Object main.nef.p/src_hgify_overlay_92_overlay_92_q88.c.o
     Object main.nef.p/src_hgify_overlay_92_overlay_92_q89.c.o
     Object main.nef.p/asm_overlay_92_q90.s.o
-    Object main.nef.p/asm_overlay_92_q91.s.o
+    Object main.nef.p/src_overlay_92_q91.c.o
     Object main.nef.p/asm_overlay_92_q92.s.o
     Object main.nef.p/src_hgify_overlay_92_overlay_92_q93.c.o
     Object main.nef.p/src_hgify_overlay_92_overlay_92_q94.c.o
@@ -14062,7 +14062,7 @@ Overlay OVY_93
     Object main.nef.p/src_hgify_overlay_93_thumb_2_overlay_93_thumb_2_p09.c.o
     Object main.nef.p/src_hgify_overlay_93_thumb_2_overlay_93_thumb_2_p10.c.o
     Object main.nef.p/src_hgify_overlay_93_thumb_2_overlay_93_thumb_2_p11.c.o
-    Object main.nef.p/asm_overlay_93_thumb_2_p12.s.o
+    Object main.nef.p/src_overlay_93_thumb_2_p12.c.o
     Object main.nef.p/src_hgify_overlay_93_thumb_2_overlay_93_thumb_2_p13.c.o
     Object main.nef.p/src_hgify_overlay_93_thumb_2_overlay_93_thumb_2_p14.c.o
     Object main.nef.p/asm_overlay_93_thumb_2_p15.s.o
@@ -15235,9 +15235,9 @@ Overlay OVY_96
     Object main.nef.p/src_hgify_overlay_96_overlay_96_s1005.c.o
     Object main.nef.p/src_hgify_overlay_96_overlay_96_s1006.c.o
     Object main.nef.p/src_hgify_overlay_96_overlay_96_s1007.c.o
-    Object main.nef.p/asm_overlay_96_s1008.s.o
+    Object main.nef.p/src_overlay_96_s1008.c.o
     Object main.nef.p/src_hgify_overlay_96_overlay_96_s1009.c.o
-    Object main.nef.p/asm_overlay_96_s1010.s.o
+    Object main.nef.p/src_overlay_96_s1010.c.o
     Object main.nef.p/src_hgify_overlay_96_overlay_96_s1011.c.o
     Object main.nef.p/asm_overlay_96_s1012.s.o
     Object main.nef.p/src_hgify_overlay_96_overlay_96_s1013.c.o
@@ -15248,10 +15248,10 @@ Overlay OVY_96
     Object main.nef.p/src_hgify_overlay_96_overlay_96_s1018.c.o
     Object main.nef.p/src_hgify_overlay_96_overlay_96_s1019.c.o
     Object main.nef.p/src_hgify_overlay_96_overlay_96_s1020.c.o
-    Object main.nef.p/asm_overlay_96_s1021.s.o
+    Object main.nef.p/src_overlay_96_s1021.c.o
     Object main.nef.p/src_hgify_overlay_96_overlay_96_s1022.c.o
     Object main.nef.p/src_hgify_overlay_96_overlay_96_s1023.c.o
-    Object main.nef.p/asm_overlay_96_s1024.s.o
+    Object main.nef.p/src_overlay_96_s1024.c.o
     Object main.nef.p/src_hgify_overlay_96_overlay_96_s1025.c.o
     Object main.nef.p/src_hgify_overlay_96_overlay_96_s1026.c.o
     Object main.nef.p/src_hgify_overlay_96_overlay_96_s1027.c.o
@@ -15266,7 +15266,7 @@ Overlay OVY_96
     Object main.nef.p/asm_overlay_96_s1036.s.o
     Object main.nef.p/src_hgify_overlay_96_overlay_96_s1037.c.o
     Object main.nef.p/src_hgify_overlay_96_overlay_96_s1038.c.o
-    Object main.nef.p/asm_overlay_96_s1039.s.o
+    Object main.nef.p/src_overlay_96_s1039.c.o
     Object main.nef.p/src_hgify_overlay_96_overlay_96_s1040.c.o
     Object main.nef.p/src_hgify_overlay_96_overlay_96_s1041.c.o
     Object main.nef.p/src_hgify_overlay_96_overlay_96_s1042.c.o
@@ -15372,7 +15372,7 @@ Overlay OVY_96
     Object main.nef.p/src_hgify_overlay_96_overlay_96_s1142.c.o
     Object main.nef.p/src_hgify_overlay_96_overlay_96_s1143.c.o
     Object main.nef.p/src_hgify_overlay_96_overlay_96_s1144.c.o
-    Object main.nef.p/asm_overlay_96_s1145.s.o
+    Object main.nef.p/src_overlay_96_s1145.c.o
     Object main.nef.p/src_hgify_overlay_96_overlay_96_s1146.c.o
     Object main.nef.p/src_hgify_overlay_96_overlay_96_s1147.c.o
     Object main.nef.p/src_hgify_overlay_96_overlay_96_s1148.c.o
@@ -15395,7 +15395,7 @@ Overlay OVY_96
     Object main.nef.p/src_hgify_overlay_96_overlay_96_s1165.c.o
     Object main.nef.p/src_hgify_overlay_96_overlay_96_s1166.c.o
     Object main.nef.p/src_hgify_overlay_96_overlay_96_s1167.c.o
-    Object main.nef.p/asm_overlay_96_s1168.s.o
+    Object main.nef.p/src_overlay_96_s1168.c.o
     Object main.nef.p/src_hgify_overlay_96_overlay_96_s1169.c.o
     Object main.nef.p/src_hgify_overlay_96_overlay_96_s1170.c.o
     Object main.nef.p/src_hgify_overlay_96_overlay_96_s1171.c.o
@@ -15433,7 +15433,7 @@ Overlay OVY_96
     Object main.nef.p/src_hgify_overlay_96_overlay_96_s1203.c.o
     Object main.nef.p/asm_overlay_96_s1204.s.o
     Object main.nef.p/src_hgify_overlay_96_overlay_96_s1205.c.o
-    Object main.nef.p/asm_overlay_96_s1206.s.o
+    Object main.nef.p/src_overlay_96_s1206.c.o
     Object main.nef.p/src_hgify_overlay_96_overlay_96_s1207.c.o
     Object main.nef.p/src_hgify_overlay_96_overlay_96_s1208.c.o
     Object main.nef.p/src_hgify_overlay_96_overlay_96_s1209.c.o
@@ -15470,7 +15470,7 @@ Overlay OVY_96
     Object main.nef.p/src_hgify_overlay_96_overlay_96_s1240.c.o
     Object main.nef.p/src_hgify_overlay_96_overlay_96_s1241.c.o
     Object main.nef.p/src_hgify_overlay_96_overlay_96_s1242.c.o
-    Object main.nef.p/asm_overlay_96_s1243.s.o
+    Object main.nef.p/src_overlay_96_s1243.c.o
     Object main.nef.p/src_hgify_overlay_96_overlay_96_s1244.c.o
     Object main.nef.p/src_hgify_overlay_96_overlay_96_s1245.c.o
     Object main.nef.p/src_hgify_overlay_96_overlay_96_s1246.c.o
@@ -15500,7 +15500,7 @@ Overlay OVY_96
     Object main.nef.p/asm_overlay_96_s1270.s.o
     Object main.nef.p/src_hgify_overlay_96_overlay_96_s1271.c.o
     Object main.nef.p/src_hgify_overlay_96_overlay_96_s1272.c.o
-    Object main.nef.p/asm_overlay_96_s1273.s.o
+    Object main.nef.p/src_overlay_96_s1273.c.o
     Object main.nef.p/src_hgify_overlay_96_overlay_96_s1274.c.o
     Object main.nef.p/src_hgify_overlay_96_overlay_96_s1275.c.o
     Object main.nef.p/src_hgify_overlay_96_overlay_96_s1276.c.o
@@ -15521,7 +15521,7 @@ Overlay OVY_96
     Object main.nef.p/src_hgify_overlay_96_overlay_96_s1291.c.o
     Object main.nef.p/src_hgify_overlay_96_overlay_96_s1292.c.o
     Object main.nef.p/src_hgify_overlay_96_overlay_96_s1293.c.o
-    Object main.nef.p/asm_overlay_96_s1294.s.o
+    Object main.nef.p/src_overlay_96_s1294.c.o
     Object main.nef.p/src_hgify_overlay_96_overlay_96_s1295.c.o
     Object main.nef.p/asm_overlay_96_s1296.s.o
     Object main.nef.p/src_hgify_overlay_96_overlay_96_s1297.c.o
@@ -15538,7 +15538,7 @@ Overlay OVY_96
     Object main.nef.p/src_overlay_96_s1308.c.o
     Object main.nef.p/src_hgify_overlay_96_overlay_96_s1309.c.o
     Object main.nef.p/src_hgify_overlay_96_overlay_96_s1310.c.o
-    Object main.nef.p/asm_overlay_96_s1311.s.o
+    Object main.nef.p/src_overlay_96_s1311.c.o
     Object main.nef.p/src_hgify_overlay_96_overlay_96_s1312.c.o
     Object main.nef.p/src_hgify_overlay_96_overlay_96_s1313.c.o
     Object main.nef.p/src_hgify_overlay_96_overlay_96_s1314.c.o
@@ -15581,7 +15581,7 @@ Overlay OVY_96
     Object main.nef.p/src_overlay_96_s1351.c.o
     Object main.nef.p/src_hgify_overlay_96_overlay_96_s1352.c.o
     Object main.nef.p/src_hgify_overlay_96_overlay_96_s1353.c.o
-    Object main.nef.p/asm_overlay_96_s1354.s.o
+    Object main.nef.p/src_overlay_96_s1354.c.o
     Object main.nef.p/src_hgify_overlay_96_overlay_96_s1355.c.o
     Object main.nef.p/src_hgify_overlay_96_overlay_96_s1356.c.o
     Object main.nef.p/src_hgify_overlay_96_overlay_96_s1357.c.o
