@@ -1,12 +1,12 @@
 {
  "summary": {
-  "generated": "2026-10-18T02:36:21Z",
+  "generated": "2026-10-18T03:14:09Z",
   "by_status": {
    "matched": {
-    "files": 853,
-    "functions": 18249,
-    "insn_lines": 99489,
-    "text_bytes_est": 222456
+    "files": 880,
+    "functions": 18279,
+    "insn_lines": 101171,
+    "text_bytes_est": 226166
    },
    "blocked": {
     "files": 4,
@@ -15,10 +15,10 @@
     "text_bytes_est": 2942
    },
    "pending": {
-    "files": 233,
-    "functions": 849,
-    "insn_lines": 163998,
-    "text_bytes_est": 366008
+    "files": 222,
+    "functions": 819,
+    "insn_lines": 162316,
+    "text_bytes_est": 362298
    },
    "upstream": {
     "files": 399,
@@ -29,9 +29,9 @@
   },
   "function_totals": {
    "tracked": 19131,
-   "matched": 18249,
+   "matched": 18279,
    "partial_in_blocked": 20,
-   "pending": 849
+   "pending": 819
   },
   "blockers": [
    {
@@ -3071,6 +3071,42 @@
      "mode": "thumb",
      "insns": 55,
      "size_est": 122,
+     "status": "matched"
+    }
+   ],
+   "source": "harness"
+  },
+  {
+   "file": "asm/unk_0201010C_t84.s",
+   "lsf_kind": "src",
+   "status": "matched",
+   "lines": 83,
+   "function_count": 2,
+   "text_bytes_est": 126,
+   "data_only": false,
+   "sections": {
+    "rodata_bytes": 0,
+    "data_bytes": 0,
+    "bss_bytes": 0,
+    "other_bytes": 0
+   },
+   "other_sections": [],
+   "jumptable_words": 0,
+   "imports": [],
+   "exports": [],
+   "functions": [
+    {
+     "name": "sub_02012238",
+     "mode": "thumb",
+     "insns": 43,
+     "size_est": 88,
+     "status": "matched"
+    },
+    {
+     "name": "sub_02012290",
+     "mode": "thumb",
+     "insns": 18,
+     "size_est": 38,
      "status": "matched"
     }
    ],
@@ -50377,6 +50413,35 @@
    "source": "harness"
   },
   {
+   "file": "asm/overlay_07_r217.s",
+   "lsf_kind": "src",
+   "status": "matched",
+   "lines": 96,
+   "function_count": 1,
+   "text_bytes_est": 164,
+   "data_only": false,
+   "sections": {
+    "rodata_bytes": 0,
+    "data_bytes": 0,
+    "bss_bytes": 0,
+    "other_bytes": 0
+   },
+   "other_sections": [],
+   "jumptable_words": 0,
+   "imports": [],
+   "exports": [],
+   "functions": [
+    {
+     "name": "ov07_02220230",
+     "mode": "thumb",
+     "insns": 77,
+     "size_est": 164,
+     "status": "matched"
+    }
+   ],
+   "source": "harness"
+  },
+  {
    "file": "asm/overlay_07_r654.s",
    "lsf_kind": "src",
    "status": "matched",
@@ -67692,6 +67757,35 @@
    ]
   },
   {
+   "file": "asm/overlay_31_r07.s",
+   "lsf_kind": "src",
+   "status": "matched",
+   "lines": 95,
+   "function_count": 1,
+   "text_bytes_est": 154,
+   "data_only": false,
+   "sections": {
+    "rodata_bytes": 0,
+    "data_bytes": 0,
+    "bss_bytes": 0,
+    "other_bytes": 0
+   },
+   "other_sections": [],
+   "jumptable_words": 0,
+   "imports": [],
+   "exports": [],
+   "functions": [
+    {
+     "name": "ov31_0225D7A0",
+     "mode": "thumb",
+     "insns": 71,
+     "size_est": 154,
+     "status": "matched"
+    }
+   ],
+   "source": "harness"
+  },
+  {
    "file": "asm/overlay_32.s",
    "lsf_kind": "src",
    "status": "matched",
@@ -73481,6 +73575,35 @@
      "mode": "thumb",
      "insns": 33,
      "size_est": 76,
+     "status": "matched"
+    }
+   ],
+   "source": "harness"
+  },
+  {
+   "file": "asm/overlay_40_s277.s",
+   "lsf_kind": "src",
+   "status": "matched",
+   "lines": 90,
+   "function_count": 1,
+   "text_bytes_est": 164,
+   "data_only": false,
+   "sections": {
+    "rodata_bytes": 0,
+    "data_bytes": 0,
+    "bss_bytes": 0,
+    "other_bytes": 0
+   },
+   "other_sections": [],
+   "jumptable_words": 0,
+   "imports": [],
+   "exports": [],
+   "functions": [
+    {
+     "name": "ov40_02236F38",
+     "mode": "thumb",
+     "insns": 74,
+     "size_est": 164,
      "status": "matched"
     }
    ],
@@ -81526,6 +81649,64 @@
      "mode": "thumb",
      "insns": 66,
      "size_est": 146,
+     "status": "matched"
+    }
+   ],
+   "source": "harness"
+  },
+  {
+   "file": "asm/overlay_45_thumb_r527.s",
+   "lsf_kind": "src",
+   "status": "matched",
+   "lines": 89,
+   "function_count": 1,
+   "text_bytes_est": 152,
+   "data_only": false,
+   "sections": {
+    "rodata_bytes": 0,
+    "data_bytes": 0,
+    "bss_bytes": 0,
+    "other_bytes": 0
+   },
+   "other_sections": [],
+   "jumptable_words": 0,
+   "imports": [],
+   "exports": [],
+   "functions": [
+    {
+     "name": "ov45_02230ACC",
+     "mode": "thumb",
+     "insns": 68,
+     "size_est": 152,
+     "status": "matched"
+    }
+   ],
+   "source": "harness"
+  },
+  {
+   "file": "asm/overlay_45_thumb_r542.s",
+   "lsf_kind": "src",
+   "status": "matched",
+   "lines": 85,
+   "function_count": 1,
+   "text_bytes_est": 152,
+   "data_only": false,
+   "sections": {
+    "rodata_bytes": 0,
+    "data_bytes": 0,
+    "bss_bytes": 0,
+    "other_bytes": 0
+   },
+   "other_sections": [],
+   "jumptable_words": 0,
+   "imports": [],
+   "exports": [],
+   "functions": [
+    {
+     "name": "ov45_02231018",
+     "mode": "thumb",
+     "insns": 67,
+     "size_est": 152,
      "status": "matched"
     }
    ],
@@ -92460,6 +92641,35 @@
    ]
   },
   {
+   "file": "asm/overlay_67_q03.s",
+   "lsf_kind": "src",
+   "status": "matched",
+   "lines": 117,
+   "function_count": 1,
+   "text_bytes_est": 196,
+   "data_only": false,
+   "sections": {
+    "rodata_bytes": 0,
+    "data_bytes": 0,
+    "bss_bytes": 0,
+    "other_bytes": 0
+   },
+   "other_sections": [],
+   "jumptable_words": 0,
+   "imports": [],
+   "exports": [],
+   "functions": [
+    {
+     "name": "ov67_021E5A6C",
+     "mode": "thumb",
+     "insns": 80,
+     "size_est": 196,
+     "status": "matched"
+    }
+   ],
+   "source": "harness"
+  },
+  {
    "file": "asm/overlay_68.s",
    "lsf_kind": "src",
    "status": "matched",
@@ -96850,6 +97060,35 @@
    "source": "harness"
   },
   {
+   "file": "asm/overlay_70_r285.s",
+   "lsf_kind": "src",
+   "status": "matched",
+   "lines": 98,
+   "function_count": 1,
+   "text_bytes_est": 160,
+   "data_only": false,
+   "sections": {
+    "rodata_bytes": 0,
+    "data_bytes": 0,
+    "bss_bytes": 0,
+    "other_bytes": 0
+   },
+   "other_sections": [],
+   "jumptable_words": 0,
+   "imports": [],
+   "exports": [],
+   "functions": [
+    {
+     "name": "ov70_0223F008",
+     "mode": "thumb",
+     "insns": 74,
+     "size_est": 160,
+     "status": "matched"
+    }
+   ],
+   "source": "harness"
+  },
+  {
    "file": "asm/overlay_70_r301.s",
    "lsf_kind": "src",
    "status": "matched",
@@ -98481,6 +98720,35 @@
      "mode": "thumb",
      "insns": 17,
      "size_est": 36,
+     "status": "matched"
+    }
+   ],
+   "source": "harness"
+  },
+  {
+   "file": "asm/overlay_71_r86.s",
+   "lsf_kind": "src",
+   "status": "matched",
+   "lines": 105,
+   "function_count": 1,
+   "text_bytes_est": 160,
+   "data_only": false,
+   "sections": {
+    "rodata_bytes": 0,
+    "data_bytes": 0,
+    "bss_bytes": 0,
+    "other_bytes": 0
+   },
+   "other_sections": [],
+   "jumptable_words": 0,
+   "imports": [],
+   "exports": [],
+   "functions": [
+    {
+     "name": "ov71_02248484",
+     "mode": "thumb",
+     "insns": 73,
+     "size_est": 160,
      "status": "matched"
     }
    ],
@@ -104189,6 +104457,35 @@
      "status": "matched"
     }
    ]
+  },
+  {
+   "file": "asm/overlay_74_thumb_s214.s",
+   "lsf_kind": "src",
+   "status": "matched",
+   "lines": 103,
+   "function_count": 1,
+   "text_bytes_est": 124,
+   "data_only": false,
+   "sections": {
+    "rodata_bytes": 0,
+    "data_bytes": 0,
+    "bss_bytes": 0,
+    "other_bytes": 0
+   },
+   "other_sections": [],
+   "jumptable_words": 0,
+   "imports": [],
+   "exports": [],
+   "functions": [
+    {
+     "name": "ov74_022305E4",
+     "mode": "thumb",
+     "insns": 47,
+     "size_est": 124,
+     "status": "matched"
+    }
+   ],
+   "source": "harness"
   },
   {
    "file": "asm/overlay_74_thumb_s443.s",
@@ -113642,6 +113939,42 @@
      "mode": "thumb",
      "insns": 28,
      "size_est": 68,
+     "status": "matched"
+    }
+   ],
+   "source": "harness"
+  },
+  {
+   "file": "asm/overlay_82_r11.s",
+   "lsf_kind": "src",
+   "status": "matched",
+   "lines": 103,
+   "function_count": 2,
+   "text_bytes_est": 160,
+   "data_only": false,
+   "sections": {
+    "rodata_bytes": 0,
+    "data_bytes": 0,
+    "bss_bytes": 0,
+    "other_bytes": 0
+   },
+   "other_sections": [],
+   "jumptable_words": 0,
+   "imports": [],
+   "exports": [],
+   "functions": [
+    {
+     "name": "ov82_0223E820",
+     "mode": "thumb",
+     "insns": 48,
+     "size_est": 102,
+     "status": "matched"
+    },
+    {
+     "name": "ov82_0223E888",
+     "mode": "thumb",
+     "insns": 26,
+     "size_est": 58,
      "status": "matched"
     }
    ],
@@ -131927,6 +132260,35 @@
    ]
   },
   {
+   "file": "asm/overlay_96_s09.s",
+   "lsf_kind": "src",
+   "status": "matched",
+   "lines": 139,
+   "function_count": 1,
+   "text_bytes_est": 154,
+   "data_only": false,
+   "sections": {
+    "rodata_bytes": 0,
+    "data_bytes": 0,
+    "bss_bytes": 0,
+    "other_bytes": 0
+   },
+   "other_sections": [],
+   "jumptable_words": 0,
+   "imports": [],
+   "exports": [],
+   "functions": [
+    {
+     "name": "ov96_021E62AC",
+     "mode": "thumb",
+     "insns": 75,
+     "size_est": 154,
+     "status": "matched"
+    }
+   ],
+   "source": "harness"
+  },
+  {
    "file": "asm/overlay_96_s14.s",
    "lsf_kind": "src",
    "status": "matched",
@@ -132144,6 +132506,35 @@
    "source": "harness"
   },
   {
+   "file": "asm/overlay_96_s193.s",
+   "lsf_kind": "src",
+   "status": "matched",
+   "lines": 110,
+   "function_count": 1,
+   "text_bytes_est": 98,
+   "data_only": false,
+   "sections": {
+    "rodata_bytes": 0,
+    "data_bytes": 0,
+    "bss_bytes": 0,
+    "other_bytes": 0
+   },
+   "other_sections": [],
+   "jumptable_words": 0,
+   "imports": [],
+   "exports": [],
+   "functions": [
+    {
+     "name": "ov96_021EAA24",
+     "mode": "thumb",
+     "insns": 44,
+     "size_est": 98,
+     "status": "matched"
+    }
+   ],
+   "source": "harness"
+  },
+  {
    "file": "asm/overlay_96_s212.s",
    "lsf_kind": "src",
    "status": "matched",
@@ -132290,6 +132681,35 @@
      "mode": "thumb",
      "insns": 40,
      "size_est": 92,
+     "status": "matched"
+    }
+   ],
+   "source": "harness"
+  },
+  {
+   "file": "asm/overlay_96_s568.s",
+   "lsf_kind": "src",
+   "status": "matched",
+   "lines": 133,
+   "function_count": 1,
+   "text_bytes_est": 142,
+   "data_only": false,
+   "sections": {
+    "rodata_bytes": 0,
+    "data_bytes": 0,
+    "bss_bytes": 0,
+    "other_bytes": 0
+   },
+   "other_sections": [],
+   "jumptable_words": 0,
+   "imports": [],
+   "exports": [],
+   "functions": [
+    {
+     "name": "ov96_021F6DA4",
+     "mode": "thumb",
+     "insns": 67,
+     "size_est": 142,
      "status": "matched"
     }
    ],
@@ -132609,6 +133029,35 @@
      "mode": "thumb",
      "insns": 34,
      "size_est": 78,
+     "status": "matched"
+    }
+   ],
+   "source": "harness"
+  },
+  {
+   "file": "asm/overlay_96_s771.s",
+   "lsf_kind": "src",
+   "status": "matched",
+   "lines": 133,
+   "function_count": 1,
+   "text_bytes_est": 178,
+   "data_only": false,
+   "sections": {
+    "rodata_bytes": 0,
+    "data_bytes": 0,
+    "bss_bytes": 0,
+    "other_bytes": 0
+   },
+   "other_sections": [],
+   "jumptable_words": 0,
+   "imports": [],
+   "exports": [],
+   "functions": [
+    {
+     "name": "ov96_021FFD80",
+     "mode": "thumb",
+     "insns": 74,
+     "size_est": 178,
      "status": "matched"
     }
    ],
@@ -133345,8 +133794,8 @@
   },
   {
    "file": "asm/overlay_96_s1030.s",
-   "lsf_kind": "asm",
-   "status": "pending",
+   "lsf_kind": "src",
+   "status": "matched",
    "lines": 131,
    "function_count": 2,
    "text_bytes_est": 138,
@@ -133367,16 +133816,17 @@
      "mode": "thumb",
      "insns": 22,
      "size_est": 48,
-     "status": "pending"
+     "status": "matched"
     },
     {
      "name": "ov96_0220C93C",
      "mode": "thumb",
      "insns": 40,
      "size_est": 90,
-     "status": "pending"
+     "status": "matched"
     }
-   ]
+   ],
+   "source": "harness"
   },
   {
    "file": "asm/overlay_96_s1031.s",
@@ -134766,8 +135216,8 @@
   },
   {
    "file": "asm/overlay_96_s1095.s",
-   "lsf_kind": "asm",
-   "status": "pending",
+   "lsf_kind": "src",
+   "status": "matched",
    "lines": 129,
    "function_count": 1,
    "text_bytes_est": 148,
@@ -134788,9 +135238,10 @@
      "mode": "thumb",
      "insns": 66,
      "size_est": 148,
-     "status": "pending"
+     "status": "matched"
     }
-   ]
+   ],
+   "source": "harness"
   },
   {
    "file": "asm/overlay_96_s1096.s",
@@ -134882,8 +135333,8 @@
   },
   {
    "file": "asm/overlay_96_s1100.s",
-   "lsf_kind": "asm",
-   "status": "pending",
+   "lsf_kind": "src",
+   "status": "matched",
    "lines": 109,
    "function_count": 1,
    "text_bytes_est": 102,
@@ -134904,9 +135355,10 @@
      "mode": "thumb",
      "insns": 46,
      "size_est": 102,
-     "status": "pending"
+     "status": "matched"
     }
-   ]
+   ],
+   "source": "harness"
   },
   {
    "file": "asm/overlay_96_s1101.s",
@@ -135623,8 +136075,8 @@
   },
   {
    "file": "asm/overlay_96_s1134.s",
-   "lsf_kind": "asm",
-   "status": "pending",
+   "lsf_kind": "src",
+   "status": "matched",
    "lines": 106,
    "function_count": 1,
    "text_bytes_est": 94,
@@ -135645,9 +136097,10 @@
      "mode": "thumb",
      "insns": 43,
      "size_est": 94,
-     "status": "pending"
+     "status": "matched"
     }
-   ]
+   ],
+   "source": "harness"
   },
   {
    "file": "asm/overlay_96_s1135.s",
@@ -136635,8 +137088,8 @@
   },
   {
    "file": "asm/overlay_96_s1176.s",
-   "lsf_kind": "asm",
-   "status": "pending",
+   "lsf_kind": "src",
+   "status": "matched",
    "lines": 108,
    "function_count": 1,
    "text_bytes_est": 94,
@@ -136657,9 +137110,10 @@
      "mode": "thumb",
      "insns": 45,
      "size_est": 94,
-     "status": "pending"
+     "status": "matched"
     }
-   ]
+   ],
+   "source": "harness"
   },
   {
    "file": "asm/overlay_96_s1177.s",
@@ -136739,8 +137193,8 @@
   },
   {
    "file": "asm/overlay_96_s1180.s",
-   "lsf_kind": "asm",
-   "status": "pending",
+   "lsf_kind": "src",
+   "status": "matched",
    "lines": 144,
    "function_count": 1,
    "text_bytes_est": 166,
@@ -136761,9 +137215,10 @@
      "mode": "thumb",
      "insns": 78,
      "size_est": 166,
-     "status": "pending"
+     "status": "matched"
     }
-   ]
+   ],
+   "source": "harness"
   },
   {
    "file": "asm/overlay_96_s1181.s",
@@ -139373,8 +139828,8 @@
   },
   {
    "file": "asm/overlay_96_s1302.s",
-   "lsf_kind": "asm",
-   "status": "pending",
+   "lsf_kind": "src",
+   "status": "matched",
    "lines": 108,
    "function_count": 1,
    "text_bytes_est": 94,
@@ -139395,9 +139850,10 @@
      "mode": "thumb",
      "insns": 43,
      "size_est": 94,
-     "status": "pending"
+     "status": "matched"
     }
-   ]
+   ],
+   "source": "harness"
   },
   {
    "file": "asm/overlay_96_s1303.s",
@@ -139501,8 +139957,8 @@
   },
   {
    "file": "asm/overlay_96_s1308.s",
-   "lsf_kind": "asm",
-   "status": "pending",
+   "lsf_kind": "src",
+   "status": "matched",
    "lines": 110,
    "function_count": 1,
    "text_bytes_est": 102,
@@ -139523,9 +139979,10 @@
      "mode": "thumb",
      "insns": 48,
      "size_est": 102,
-     "status": "pending"
+     "status": "matched"
     }
-   ]
+   ],
+   "source": "harness"
   },
   {
    "file": "asm/overlay_96_s1309.s",
@@ -139677,8 +140134,8 @@
   },
   {
    "file": "asm/overlay_96_s1316.s",
-   "lsf_kind": "asm",
-   "status": "pending",
+   "lsf_kind": "src",
+   "status": "matched",
    "lines": 117,
    "function_count": 1,
    "text_bytes_est": 100,
@@ -139699,9 +140156,10 @@
      "mode": "thumb",
      "insns": 48,
      "size_est": 100,
-     "status": "pending"
+     "status": "matched"
     }
-   ]
+   ],
+   "source": "harness"
   },
   {
    "file": "asm/overlay_96_s1317.s",
@@ -139785,8 +140243,8 @@
   },
   {
    "file": "asm/overlay_96_s1321.s",
-   "lsf_kind": "asm",
-   "status": "pending",
+   "lsf_kind": "src",
+   "status": "matched",
    "lines": 120,
    "function_count": 1,
    "text_bytes_est": 118,
@@ -139807,9 +140265,10 @@
      "mode": "thumb",
      "insns": 54,
      "size_est": 118,
-     "status": "pending"
+     "status": "matched"
     }
-   ]
+   ],
+   "source": "harness"
   },
   {
    "file": "asm/overlay_96_s1322.s",
@@ -140111,8 +140570,8 @@
   },
   {
    "file": "asm/overlay_96_s1335.s",
-   "lsf_kind": "asm",
-   "status": "pending",
+   "lsf_kind": "src",
+   "status": "matched",
    "lines": 106,
    "function_count": 1,
    "text_bytes_est": 94,
@@ -140133,9 +140592,10 @@
      "mode": "thumb",
      "insns": 43,
      "size_est": 94,
-     "status": "pending"
+     "status": "matched"
     }
-   ]
+   ],
+   "source": "harness"
   },
   {
    "file": "asm/overlay_96_s1336.s",
@@ -147056,6 +147516,35 @@
    ]
   },
   {
+   "file": "asm/overlay_108_q38.s",
+   "lsf_kind": "src",
+   "status": "matched",
+   "lines": 98,
+   "function_count": 1,
+   "text_bytes_est": 176,
+   "data_only": false,
+   "sections": {
+    "rodata_bytes": 0,
+    "data_bytes": 0,
+    "bss_bytes": 0,
+    "other_bytes": 0
+   },
+   "other_sections": [],
+   "jumptable_words": 0,
+   "imports": [],
+   "exports": [],
+   "functions": [
+    {
+     "name": "ov108_021E6C68",
+     "mode": "thumb",
+     "insns": 80,
+     "size_est": 176,
+     "status": "matched"
+    }
+   ],
+   "source": "harness"
+  },
+  {
    "file": "asm/overlay_108_021E8850.s",
    "lsf_kind": "src",
    "status": "matched",
@@ -153651,9 +154140,9 @@
    "lsf_kind": "asm",
    "status": "pending",
    "split": "hgify",
-   "lines": 1555,
-   "function_count": 9,
-   "text_bytes_est": 2210,
+   "lines": 1472,
+   "function_count": 7,
+   "text_bytes_est": 2084,
    "data_only": false,
    "sections": {
     "rodata_bytes": 468,
@@ -153713,20 +154202,6 @@
      "mode": "thumb",
      "insns": 642,
      "size_est": 1286,
-     "status": "pending"
-    },
-    {
-     "name": "sub_02012238",
-     "mode": "thumb",
-     "insns": 43,
-     "size_est": 88,
-     "status": "pending"
-    },
-    {
-     "name": "sub_02012290",
-     "mode": "thumb",
-     "insns": 18,
-     "size_est": 38,
      "status": "pending"
     }
    ]
@@ -155489,9 +155964,9 @@
    "lsf_kind": "asm",
    "status": "pending",
    "split": "hgify",
-   "lines": 7082,
-   "function_count": 17,
-   "text_bytes_est": 8776,
+   "lines": 6986,
+   "function_count": 16,
+   "text_bytes_est": 8612,
    "data_only": false,
    "sections": {
     "rodata_bytes": 11452,
@@ -155544,13 +156019,6 @@
      "mode": "thumb",
      "insns": 100,
      "size_est": 220,
-     "status": "pending"
-    },
-    {
-     "name": "ov07_02220230",
-     "mode": "thumb",
-     "insns": 77,
-     "size_est": 164,
      "status": "pending"
     },
     {
@@ -156919,10 +157387,10 @@
    "lsf_kind": "asm",
    "status": "pending",
    "split": "hgify",
-   "lines": 213,
-   "function_count": 1,
-   "text_bytes_est": 154,
-   "data_only": false,
+   "lines": 118,
+   "function_count": 0,
+   "text_bytes_est": 0,
+   "data_only": true,
    "sections": {
     "rodata_bytes": 228,
     "data_bytes": 224,
@@ -156933,15 +157401,7 @@
    "jumptable_words": 0,
    "imports": [],
    "exports": [],
-   "functions": [
-    {
-     "name": "ov31_0225D7A0",
-     "mode": "thumb",
-     "insns": 71,
-     "size_est": 154,
-     "status": "pending"
-    }
-   ]
+   "functions": []
   },
   {
    "file": "asm/overlay_33.s",
@@ -157085,9 +157545,9 @@
    "lsf_kind": "asm",
    "status": "pending",
    "split": "hgify",
-   "lines": 10619,
-   "function_count": 40,
-   "text_bytes_est": 17806,
+   "lines": 10529,
+   "function_count": 39,
+   "text_bytes_est": 17642,
    "data_only": false,
    "sections": {
     "rodata_bytes": 4212,
@@ -157210,13 +157670,6 @@
      "mode": "thumb",
      "insns": 62,
      "size_est": 132,
-     "status": "pending"
-    },
-    {
-     "name": "ov40_02236F38",
-     "mode": "thumb",
-     "insns": 74,
-     "size_est": 164,
      "status": "pending"
     },
     {
@@ -157587,9 +158040,9 @@
    "lsf_kind": "asm",
    "status": "pending",
    "split": "hgify",
-   "lines": 1694,
-   "function_count": 7,
-   "text_bytes_est": 1340,
+   "lines": 1520,
+   "function_count": 5,
+   "text_bytes_est": 1036,
    "data_only": false,
    "sections": {
     "rodata_bytes": 732,
@@ -157635,20 +158088,6 @@
      "mode": "thumb",
      "insns": 180,
      "size_est": 412,
-     "status": "pending"
-    },
-    {
-     "name": "ov45_02230ACC",
-     "mode": "thumb",
-     "insns": 68,
-     "size_est": 152,
-     "status": "pending"
-    },
-    {
-     "name": "ov45_02231018",
-     "mode": "thumb",
-     "insns": 67,
-     "size_est": 152,
      "status": "pending"
     }
    ]
@@ -158445,10 +158884,10 @@
    "lsf_kind": "asm",
    "status": "pending",
    "split": "hgify",
-   "lines": 298,
-   "function_count": 1,
-   "text_bytes_est": 196,
-   "data_only": false,
+   "lines": 181,
+   "function_count": 0,
+   "text_bytes_est": 0,
+   "data_only": true,
    "sections": {
     "rodata_bytes": 1004,
     "data_bytes": 0,
@@ -158459,15 +158898,7 @@
    "jumptable_words": 0,
    "imports": [],
    "exports": [],
-   "functions": [
-    {
-     "name": "ov67_021E5A6C",
-     "mode": "thumb",
-     "insns": 80,
-     "size_est": 196,
-     "status": "pending"
-    }
-   ]
+   "functions": []
   },
   {
    "file": "asm/overlay_68.s",
@@ -158546,9 +158977,9 @@
    "lsf_kind": "asm",
    "status": "pending",
    "split": "hgify",
-   "lines": 6294,
-   "function_count": 23,
-   "text_bytes_est": 8214,
+   "lines": 6196,
+   "function_count": 22,
+   "text_bytes_est": 8054,
    "data_only": false,
    "sections": {
     "rodata_bytes": 3748,
@@ -158608,13 +159039,6 @@
      "mode": "thumb",
      "insns": 109,
      "size_est": 238,
-     "status": "pending"
-    },
-    {
-     "name": "ov70_0223F008",
-     "mode": "thumb",
-     "insns": 74,
-     "size_est": 160,
      "status": "pending"
     },
     {
@@ -158729,9 +159153,9 @@
    "lsf_kind": "asm",
    "status": "pending",
    "split": "hgify",
-   "lines": 1046,
-   "function_count": 6,
-   "text_bytes_est": 1062,
+   "lines": 941,
+   "function_count": 5,
+   "text_bytes_est": 902,
    "data_only": false,
    "sections": {
     "rodata_bytes": 1072,
@@ -158749,13 +159173,6 @@
      "mode": "thumb",
      "insns": 86,
      "size_est": 190,
-     "status": "pending"
-    },
-    {
-     "name": "ov71_02248484",
-     "mode": "thumb",
-     "insns": 73,
-     "size_est": 160,
      "status": "pending"
     },
     {
@@ -158914,9 +159331,9 @@
    "lsf_kind": "asm",
    "status": "pending",
    "split": "hgify",
-   "lines": 10595,
-   "function_count": 44,
-   "text_bytes_est": 15660,
+   "lines": 10492,
+   "function_count": 43,
+   "text_bytes_est": 15536,
    "data_only": false,
    "sections": {
     "rodata_bytes": 2092,
@@ -159067,13 +159484,6 @@
      "mode": "thumb",
      "insns": 43,
      "size_est": 110,
-     "status": "pending"
-    },
-    {
-     "name": "ov74_022305E4",
-     "mode": "thumb",
-     "insns": 47,
-     "size_est": 124,
      "status": "pending"
     },
     {
@@ -159809,9 +160219,9 @@
    "lsf_kind": "asm",
    "status": "pending",
    "split": "hgify",
-   "lines": 914,
-   "function_count": 6,
-   "text_bytes_est": 1400,
+   "lines": 811,
+   "function_count": 4,
+   "text_bytes_est": 1240,
    "data_only": false,
    "sections": {
     "rodata_bytes": 256,
@@ -159836,20 +160246,6 @@
      "mode": "thumb",
      "insns": 221,
      "size_est": 506,
-     "status": "pending"
-    },
-    {
-     "name": "ov82_0223E820",
-     "mode": "thumb",
-     "insns": 48,
-     "size_est": 102,
-     "status": "pending"
-    },
-    {
-     "name": "ov82_0223E888",
-     "mode": "thumb",
-     "insns": 26,
-     "size_est": 58,
      "status": "pending"
     },
     {
@@ -160740,9 +161136,9 @@
    "lsf_kind": "asm",
    "status": "pending",
    "split": "hgify",
-   "lines": 40478,
-   "function_count": 124,
-   "text_bytes_est": 62504,
+   "lines": 39963,
+   "function_count": 120,
+   "text_bytes_est": 61932,
    "data_only": false,
    "sections": {
     "rodata_bytes": 12825,
@@ -160755,13 +161151,6 @@
    "imports": [],
    "exports": [],
    "functions": [
-    {
-     "name": "ov96_021E62AC",
-     "mode": "thumb",
-     "insns": 75,
-     "size_est": 154,
-     "status": "pending"
-    },
     {
      "name": "ov96_021E637C",
      "mode": "thumb",
@@ -160830,13 +161219,6 @@
      "mode": "thumb",
      "insns": 157,
      "size_est": 340,
-     "status": "pending"
-    },
-    {
-     "name": "ov96_021EAA24",
-     "mode": "thumb",
-     "insns": 44,
-     "size_est": 98,
      "status": "pending"
     },
     {
@@ -161085,13 +161467,6 @@
      "status": "pending"
     },
     {
-     "name": "ov96_021F6DA4",
-     "mode": "thumb",
-     "insns": 67,
-     "size_est": 142,
-     "status": "pending"
-    },
-    {
      "name": "ov96_021F6E68",
      "mode": "thumb",
      "insns": 94,
@@ -161278,13 +161653,6 @@
      "mode": "thumb",
      "insns": 410,
      "size_est": 896,
-     "status": "pending"
-    },
-    {
-     "name": "ov96_021FFD80",
-     "mode": "thumb",
-     "insns": 74,
-     "size_est": 178,
      "status": "pending"
     },
     {
@@ -161873,9 +162241,9 @@
    "lsf_kind": "asm",
    "status": "pending",
    "split": "hgify",
-   "lines": 1210,
-   "function_count": 7,
-   "text_bytes_est": 1922,
+   "lines": 1112,
+   "function_count": 6,
+   "text_bytes_est": 1746,
    "data_only": false,
    "sections": {
     "rodata_bytes": 676,
@@ -161893,13 +162261,6 @@
      "mode": "thumb",
      "insns": 95,
      "size_est": 212,
-     "status": "pending"
-    },
-    {
-     "name": "ov108_021E6C68",
-     "mode": "thumb",
-     "insns": 80,
-     "size_est": 176,
      "status": "pending"
     },
     {

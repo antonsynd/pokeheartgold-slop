@@ -773,6 +773,22 @@ ov96_02219460 writes a0->state (offset 0x5F) on five different return paths. Wri
 
 ov14_021F462C rounds a u8 field down to a multiple of 4 with two shifts. MWCC folds `(x >> 2) << 2` and `(x >> 2) * 4` into an and-mask, but keeps the shifts for the division form `(unk44D / 4) * 4`.
 
+### A small switch compiled to a compare chain tests its cases in ascending order of the case values AS SEEN BY THE SWITCH TYPE: `cmp #12` before `cmp #-2`/`cmp #-1` means the controlling expression is unsigned (0xFFFFFFFE > 12)  <!-- id: switch-compare-order-reveals-unsigned -->
+
+ov70_0223F008: `switch (ret) { case 12: case -2: ...; case -1: break; default: ... }` emitted -2, -1, 12 with `int ret`; retail tests 12 first. Declaring the callee as returning `u32` (and `u32 ret`) sorted the cases as 12, 0xFFFFFFFE, 0xFFFFFFFF and matched byte for byte. When a compare chain is not in ascending signed order, try an unsigned subject before reordering the case labels.
+
+### A parameter that retail keeps re-reading from its stack slot (instead of reusing the register it was just loaded into), or whose prologue spill lands in an odd order, is usually a narrow type (u8/u16/s16): sweep the parameter types first  <!-- id: stack-param-reloaded-means-narrow-type -->
+
+ov96_021E62AC: `ldr r0,[sp,#0x34]` before the `strb` of the count and again for the loop guard; `u32 count` let MWCC reuse r0, `u8 count` reproduced both loads. ov96_02214044 (`u8 index`), ov96_021F31F0 (`u8 type` together with `for (i = 0, spawn = table[type]; ...)`), ov45_02231018 (`int heapId, s16 region`) and ov96_0221966C (`u8 player, u16 value`) were all prologue-only diffs fixed by the parameter type alone.
+
+### Two registers counting up in step in one loop (one for the trip count, one passed as a truncated argument) come from two source variables, e.g. `bg = 0; for (i = 0; i < 8; i++) { f(bg); ...; bg++; }`  <!-- id: second-induction-variable-for-bg-id -->
+
+ov108_021E6C68 initialises 8 BG layers: retail keeps r7 as the loop counter and r4 as the layer id (`lsls r1,r4,#24` at every call) and reloads the bgConfig offset each iteration. A single `i` hoisted the offset into r7 and used one counter; `for (i = 0, bg = 0; ...; i++, bg++)` was close but not exact; a separate `bg` incremented at the end of the body matched.
+
+### For `muls rA, rB`, the operand loaded FIRST is the left operand of the C multiply: swap `x * y` when the loads come out in the wrong order  <!-- id: multiply-operand-order -->
+
+ov15_021FD24C: retail loads quantity (ldrsh) then price and does `muls r1, r2`; `price * quantity` loaded price first. `quantity * price` matched. Same in ov40_02236F38 (`width * height`, loading [2] before [3]).
+
 ## Matching Tricks
 
 ### Small source changes that move codegen  <!-- id: decl-order-tricks -->
@@ -1254,6 +1270,10 @@ ov43_0222D0F8 (2 bytes at _0222ED5C+1), ov112_021F0EFC/021F0E60 (TouchscreenHitb
 ### A literal `.word sym + 36` indexed with `side * 6` is a separate array inside hgify's blob: index it as `(&sym[6])[side]` so the addend folds into the relocation  <!-- id: table-at-symbol-plus-addend -->
 
 ov12_0225A37C (overlay_12_battle_controller_opponent_s84): coordinates come from `ov07_022377F4 + 36` / `+ 38` with `mul side*6`. `ov07_022377F4[side + 6][0]` emits `adds r0, r1, #6; muls` and a plain `ov07_022377F4` literal; `#define sCoords (&ov07_022377F4[6])` then `sCoords[side][0]` reproduces the folded literal and plain index. Related: two parallel arrays accessed with the same `index*4` at 0x670 and 0x674 (ov18_021F2A2C) are two array fields (`sprites[1]; spritesNext[15];`), not `sprites[index + 1]` (which recomputes `(index+1)*4`).
+
+### A pool entry naming an odd label inside a global (e.g. ov43_0222F160 = ov43_0222F14C + 0x14) with offsets 0x4C/0x50/0x78 is the anchor MWCC chose so a far field fits the 0..0x7C store immediate; hgify labelled the anchor as its own symbol  <!-- id: global-field-anchor-label -->
+
+ov43_0222AC28 writes ov43_0222F14C[2] (offsets 0x60, 0x64, 0x8C) through `ldr r1,=ov43_0222F160` and `str [r1,#0x4C/#0x50/#0x78]`, then passes `=ov43_0222F1AC` to Sprite_CreateAffine. Writing `ov43_0222F14C[2].field` from C gives `sym` and `sym+0x80` bases instead. Until the data file is decompiled, declare a struct that starts at the anchor label (`typedef struct { u8 filler[0x4C]; SpriteTemplate cursor; } Anchor; extern Anchor ov43_0222F160;`) and take the template address through its own label (`extern SpriteTemplate ov43_0222F1AC;`).
 
 ## Recurring File/Module Patterns
 
