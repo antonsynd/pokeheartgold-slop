@@ -2069,6 +2069,24 @@
       "category": "file-patterns",
       "title": "NewMsgDataFromNarc's first argument is MSGDATA_LOAD_DIRECT = 0, MSGDATA_LOAD_LAZY = 1; a `mov r0, #0` before the call means DIRECT",
       "body": "ov39_02228140 (twin of ov61_0222BF44, which uses MSG_LOADER_PRELOAD_ENTIRE_BANK) loads three banks with r0 = 0. Writing MSGDATA_LOAD_LAZY out of habit left exactly three `movs r0, #1` diffs. Many matched files use LAZY, so copy the constant from the asm rather than a neighbour."
+    },
+    {
+      "id": "function-local-static-first-bss-move-from-qdata",
+      "category": "data-sections",
+      "title": "A pointer global used by one slice and reloaded after every store is a function-local static; when it is the overlay's first .bss, define it `static` in the slice and delete it from the _Xdata.s file",
+      "body": "ov80_0222FD08 (BattleFactory_Init twin, `static BattleFactory *factory;`) stores into the struct through _0223DD40 and keeps the pointer in r5 across those stores; with `extern BattleFactory *_0223DD40;` MWCC reloads the global after every store (the store might alias it), 528 vs 484 bytes. Declared `static BattleFactory *factory;` inside the function the body matched. _0223DD40 was the only content of asm/overlay_80_0222FD08_qdata.s and the first symbol under `# .OVY_80.bss` in main.nef.xMAP, so removing the .public and .bss block from the qdata file and letting the C object own the 4 bytes kept every address; both ROMs stayed 4/4. Check the xMAP first: if another object's .bss comes earlier in the overlay, the move shifts it. objdiff reports the .bss size difference (asm=0, c=4); that is the move itself, not a mismatch. Related: [[double-literal-load-means-tu-static]] (the general rebuild-the-TU case)."
+    },
+    {
+      "id": "folded-static-const-table-values-are-immediates",
+      "category": "matching-tricks",
+      "title": "Where the twin reads a static const table at a constant index and the asm has an immediate (`mov r0, #0x1c; sub r6, r0, r2`), write the literal: MWCC folded the TU's static table",
+      "body": "ov93_02260080 (twin ov117_02263F80) computes `Unk_ov117_02266BB4[1].unk_02 - y` etc.; the HG asm uses 28, 204, 164 and 52 directly because the table was `static const` in the original TU and every index was constant. The hgify split moved the TU's rodata to the _Xdata file, so declaring the table extern would emit loads. Writing `28 - startY`, `startX - 204`, ... matched. The same function's variable-index table (ov93_02262CA4[ball->bonus]) stays an extern array. Related: [[local-array-initializer-is-rodata-byte-copy]]."
+    },
+    {
+      "id": "managedsprite-setdrawpriority-called-with-int",
+      "category": "ipa",
+      "title": "ManagedSprite_SetDrawPriority callers matched against an int priority parameter: `6 - j` and other computed priorities pass with no lsl/lsr mask",
+      "body": "sprite_system.h declares ManagedSprite_SetDrawPriority(ManagedSprite *, u16), but ov40_0223D008 (`6 - j`) and ov57_022392F4 call it with an unmasked int (4 bytes smaller). Use the called-as-matched macro: `#define ManagedSprite_SetDrawPriority(sprite, priority) ((void (*)(ManagedSprite *, int))ManagedSprite_SetDrawPriority)(sprite, priority)`. Same story as [[shared-sound-header-int-vs-u16-mask]] (PlaySE) and Sprite_SetPalOffset (u8 in the header, unmasked u32 in ov90_02259BCC)."
     }
   ]
 }

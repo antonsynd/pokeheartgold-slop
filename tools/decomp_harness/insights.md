@@ -1097,6 +1097,10 @@ sub_0205DF0C (PlayerAvatar_GetMovementActionAnimCode in pokeplatinum) differed o
 
 ov90_0225B8F0 and ov90_02259B68 (twins of ov114_0225F7D8 / ov114_0225DA5C) loop over a 0x38-byte player array, passing &players[i] to two calls. MWCC merges two `&a0->players[i]` into one strength-reduced IV whatever the pragmas (opt_common_subs, opt_propagation, optimization_level 1-3 all left it at 90 bytes vs 100). Writing the second call's argument as `(Ov90Player *)a0->players + i` keeps the expression distinct, so the compiler builds a second IV with the same base: retail's three IVs (one for the `.unk10` check, two for the call args), i/done/ret on the stack. `(Ov90Player *)((u8 *)a0 + 0x25C) + i` also matches; `a0->players + i`, `&a0->players[0] + i` and `(void *)` casts are normalised back and do not. A local `players = a0->players` pointer gives the extra IV too but computes the base before the count<=0 pre-check, so it is 11 diffs off.
 
+### Where the twin reads a static const table at a constant index and the asm has an immediate (`mov r0, #0x1c; sub r6, r0, r2`), write the literal: MWCC folded the TU's static table  <!-- id: folded-static-const-table-values-are-immediates -->
+
+ov93_02260080 (twin ov117_02263F80) computes `Unk_ov117_02266BB4[1].unk_02 - y` etc.; the HG asm uses 28, 204, 164 and 52 directly because the table was `static const` in the original TU and every index was constant. The hgify split moved the TU's rodata to the _Xdata file, so declaring the table extern would emit loads. Writing `28 - startY`, `startX - 204`, ... matched. The same function's variable-index table (ov93_02262CA4[ball->bonus]) stays an extern array. Related: [[local-array-initializer-is-rodata-byte-copy]].
+
 ## IPA (-ipa file) Behavior
 
 ### Shared-header signatures are load-bearing across compilation units  <!-- id: ipa-shared-headers -->
@@ -1176,6 +1180,10 @@ If the only diff is an extra `lsls rN,#24; lsrs rN,#24` (or #16) immediately bef
 ### Retail masks a call result (lsl/lsr #16) that the current header already declares u16: the original TU saw a wider return type; #define-rename the header prototype around the include and redeclare it locally  <!-- id: callee-return-mask-means-wider-prototype-define-shim -->
 
 overlay_34 ov34_0225E5EC: retail does `bl Sprite_GetAnimationNumber; lsl r0,#16; lsr r1,r0,#16` and stores the Sprite_GetAnimationFrame result to the stack unmasked. include/sprite.h declares both u16, so MWCC trusts the callee and emits no mask; no choice of local types (u16/u32/int, casts, declaration order: 6 variants) reproduces it. The original prototypes returned a full-width int/u32. Fix without touching the shared header: `#define Sprite_GetAnimationNumber Sprite_GetAnimationNumber_u16` (and Frame) BEFORE the includes, `#undef` after them, then `u32 Sprite_GetAnimationNumber(Sprite *sprite);` locally; with `u32 frame; u16 anim;` the function matched. Put the defines above every include, since other headers may pull sprite.h in. Related: [[narrow-return-type-masks-split-header]].
+
+### ManagedSprite_SetDrawPriority callers matched against an int priority parameter: `6 - j` and other computed priorities pass with no lsl/lsr mask  <!-- id: managedsprite-setdrawpriority-called-with-int -->
+
+sprite_system.h declares ManagedSprite_SetDrawPriority(ManagedSprite *, u16), but ov40_0223D008 (`6 - j`) and ov57_022392F4 call it with an unmasked int (4 bytes smaller). Use the called-as-matched macro: `#define ManagedSprite_SetDrawPriority(sprite, priority) ((void (*)(ManagedSprite *, int))ManagedSprite_SetDrawPriority)(sprite, priority)`. Same story as [[shared-sound-header-int-vs-u16-mask]] (PlaySE) and Sprite_SetPalOffset (u8 in the header, unmasked u32 in ov90_02259BCC).
 
 ## Data Sections
 
@@ -1306,6 +1314,10 @@ ov12_0225A37C (overlay_12_battle_controller_opponent_s84): coordinates come from
 ### A pool entry naming an odd label inside a global (e.g. ov43_0222F160 = ov43_0222F14C + 0x14) with offsets 0x4C/0x50/0x78 is the anchor MWCC chose so a far field fits the 0..0x7C store immediate; hgify labelled the anchor as its own symbol  <!-- id: global-field-anchor-label -->
 
 ov43_0222AC28 writes ov43_0222F14C[2] (offsets 0x60, 0x64, 0x8C) through `ldr r1,=ov43_0222F160` and `str [r1,#0x4C/#0x50/#0x78]`, then passes `=ov43_0222F1AC` to Sprite_CreateAffine. Writing `ov43_0222F14C[2].field` from C gives `sym` and `sym+0x80` bases instead. Until the data file is decompiled, declare a struct that starts at the anchor label (`typedef struct { u8 filler[0x4C]; SpriteTemplate cursor; } Anchor; extern Anchor ov43_0222F160;`) and take the template address through its own label (`extern SpriteTemplate ov43_0222F1AC;`).
+
+### A pointer global used by one slice and reloaded after every store is a function-local static; when it is the overlay's first .bss, define it `static` in the slice and delete it from the _Xdata.s file  <!-- id: function-local-static-first-bss-move-from-qdata -->
+
+ov80_0222FD08 (BattleFactory_Init twin, `static BattleFactory *factory;`) stores into the struct through _0223DD40 and keeps the pointer in r5 across those stores; with `extern BattleFactory *_0223DD40;` MWCC reloads the global after every store (the store might alias it), 528 vs 484 bytes. Declared `static BattleFactory *factory;` inside the function the body matched. _0223DD40 was the only content of asm/overlay_80_0222FD08_qdata.s and the first symbol under `# .OVY_80.bss` in main.nef.xMAP, so removing the .public and .bss block from the qdata file and letting the C object own the 4 bytes kept every address; both ROMs stayed 4/4. Check the xMAP first: if another object's .bss comes earlier in the overlay, the move shifts it. objdiff reports the .bss size difference (asm=0, c=4); that is the move itself, not a mismatch. Related: [[double-literal-load-means-tu-static]] (the general rebuild-the-TU case).
 
 ## Recurring File/Module Patterns
 
