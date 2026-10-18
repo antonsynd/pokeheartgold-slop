@@ -1955,6 +1955,36 @@
       "category": "codegen",
       "title": "A global POINTER loaded before an unrelated local initialisation (e.g. before `VecFx32 v = {0,0,0}`) is read into a local first: `const T *table = gTablePtr;`",
       "body": "MapObjectMovementCmd101_Step1: retail loads `_0210FACC` (an `extern const fx32 *`) right after the first call and before zeroing the vector; `vec.y = _0210FACC[*step]` after the initializer loads it after the zero stores, and a non-constant initializer `{0, _0210FACC[*step], 0}` changes nothing. `const fx32 *table = _0210FACC;` declared before the vector, then `vec.y = table[*step]`, matched."
+    },
+    {
+      "id": "switch-default-is-branch-to-next-block",
+      "category": "codegen",
+      "title": "A `beq`/`bne` test whose other arm is reached by an unconditional `b` into the very next block (instead of a fallthrough) is a two-way `switch` with a `default:`, not an if/else or ternary",
+      "body": "sub_02095540 decrements a wrapping cursor: retail `cmp r0,#0; bne L; ...count-1...; b next; L: ...sel-1...`. The ternary `(sel != 0 ? sel : count) - 1` and both if/else orders produced different block layouts. `switch (a0->selection) { case 0: a0->selection = a0->count - 1; break; default: a0->selection--; break; }` matched."
+    },
+    {
+      "id": "narrow-local-plus-counter-for-truncated-arg",
+      "category": "codegen",
+      "title": "An argument truncated at the call site (`lsl/lsr #24`) from an induction register that itself is NOT truncated when incremented: the value is `u8_local + i` (or an `int` local passed to a `u8` parameter), not a `u8` counter",
+      "body": "ov96_0220C93C: retail increments r5 with a plain `adds r5,#1` and truncates only at the call (`lsls r1,r5,#24; lsrs r1,r1,#24`) to `ov96_0220C9F4(.., u8 index, ..)`. `int index` + `index++` gave the right instructions but swapped r4/r5; `u8 index = GetParticipantCount(); ... f(&lanes[i], index + i, data)` matched (MWCC strength-reduces `index + i` into its own register). ov96_021E9718: an `int` local passed to a u8 parameter gives the call-site truncation where a u8 local truncates at every update."
+    },
+    {
+      "id": "param-types-change-prologue-spill-order",
+      "category": "codegen",
+      "title": "When only the ORDER of the prologue's parameter spills/moves differs (`str r1,[sp]` before vs after `adds r6,r0,#0`), sweep the narrow types of the spilled parameters (u8/u16/int) before touching the body",
+      "body": "ov96_0221966C(a0, player, value, ranks): with `u32 player, int value` the `str r1,[sp]` came after the r0/r3 moves; `u8 player, u16 value` (which also explains `cmp r0,#4; bcc` and the `strh` of value) put it first and matched. The body was identical in every variant: the spill order follows the parameter types, not the statement order."
+    },
+    {
+      "id": "field-address-register-from-prologue",
+      "category": "codegen",
+      "title": "`adds r4, r0, #0 ... adds r4, #0x5f` in the prologue, then every store goes through `strb rX,[r4,#0]`: the source keeps a pointer local to that field (`u8 *dest = &a0->state;`)",
+      "body": "ov96_02219460 writes a0->state (offset 0x5F) on five different return paths. Writing `a0->state = ...` each time re-materialises `adds r5,#0x5f` in every block (+7 instructions). Declaring `u8 *dest = &a0->state;` first and storing through `*dest` matched. Also: `cmp r0,#1; bhi` for `state == 0 || state == 1` came from `if (state <= 1) ... else if (state == 3) ... else GF_ASSERT(FALSE);`; the switch with `case 0: case 1:` emitted separate compares."
+    },
+    {
+      "id": "div-by-four-times-four-keeps-shifts",
+      "category": "codegen",
+      "title": "`lsrs rX,#2; lsls rX,#2` on an unsigned value is `(x / 4) * 4`; `(x >> 2) * 4` and `x & ~3` fold into a `bic`/mask",
+      "body": "ov14_021F462C rounds a u8 field down to a multiple of 4 with two shifts. MWCC folds `(x >> 2) << 2` and `(x >> 2) * 4` into an and-mask, but keeps the shifts for the division form `(unk44D / 4) * 4`."
     }
   ]
 }

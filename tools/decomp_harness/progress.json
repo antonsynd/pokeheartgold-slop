@@ -2722,6 +2722,214 @@
       "attempts": 1,
       "result": "matched",
       "note": "matched (decomp/windows-session batch 2)"
+    },
+    {
+      "file": "asm/overlay_01_021F4464_e04.s",
+      "lines": 96,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched"
+    },
+    {
+      "file": "asm/overlay_01_021F72DC_q44.s",
+      "lines": 90,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched"
+    },
+    {
+      "file": "asm/overlay_07_r753.s",
+      "lines": 88,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched"
+    },
+    {
+      "file": "asm/overlay_08_q204.s",
+      "lines": 81,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched"
+    },
+    {
+      "file": "asm/overlay_103_q18.s",
+      "lines": 85,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched"
+    },
+    {
+      "file": "asm/overlay_106_p22.s",
+      "lines": 89,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched"
+    },
+    {
+      "file": "asm/overlay_112_r55.s",
+      "lines": 90,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched"
+    },
+    {
+      "file": "asm/overlay_12_battle_controller_opponent_s175.s",
+      "lines": 79,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched"
+    },
+    {
+      "file": "asm/overlay_14_021F2490_q115.s",
+      "lines": 74,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched"
+    },
+    {
+      "file": "asm/overlay_28_l04.s",
+      "lines": 79,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched"
+    },
+    {
+      "file": "asm/overlay_40_s285.s",
+      "lines": 85,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched"
+    },
+    {
+      "file": "asm/overlay_40_s416.s",
+      "lines": 82,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched"
+    },
+    {
+      "file": "asm/overlay_40_s73.s",
+      "lines": 83,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched"
+    },
+    {
+      "file": "asm/overlay_45_thumb_r364.s",
+      "lines": 88,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched"
+    },
+    {
+      "file": "asm/overlay_57_s16.s",
+      "lines": 75,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched"
+    },
+    {
+      "file": "asm/overlay_57_s61.s",
+      "lines": 85,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched"
+    },
+    {
+      "file": "asm/overlay_91_r152.s",
+      "lines": 82,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched"
+    },
+    {
+      "file": "asm/overlay_92_q24.s",
+      "lines": 84,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched"
+    },
+    {
+      "file": "asm/overlay_93_thumb_2_p00.s",
+      "lines": 84,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched"
+    },
+    {
+      "file": "asm/overlay_93_thumb_2_p25.s",
+      "lines": 87,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched"
+    },
+    {
+      "file": "asm/overlay_96_s904.s",
+      "lines": 134,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched"
+    },
+    {
+      "file": "asm/unk_02054648_p18.s",
+      "lines": 82,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched"
+    },
+    {
+      "file": "asm/unk_02056D7C_q29.s",
+      "lines": 75,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched"
+    },
+    {
+      "file": "asm/unk_02061284_s34.s",
+      "lines": 100,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched"
+    },
+    {
+      "file": "asm/unk_02088288_q40.s",
+      "lines": 95,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched"
+    },
+    {
+      "file": "asm/unk_020932E0_s52.s",
+      "lines": 95,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched"
     }
   ],
   "failed": [
@@ -3130,8 +3338,8 @@
   ],
   "in_progress": null,
   "stats": {
-    "total_attempts": 498,
-    "total_matched": 308,
+    "total_attempts": 524,
+    "total_matched": 334,
     "total_failed": 31
   },
   "matched": [
