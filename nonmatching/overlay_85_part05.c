@@ -127,7 +127,6 @@ void ov85_021E8128(UnkStruct_Ov85_Main *param0);
 BOOL ov85_021E8144(UnkStruct_Ov85_Main *param0);
 BOOL ov85_021E8150(UnkStruct_Ov85_Main *param0);
 void ov85_021E815C(SysTask *param0, void *param1);
-SysTask *ov85_021E81E0(UnkStruct_Ov85_Main *param0);
 void ov85_021E825C(UnkStruct_Ov85_Main *param0, UnkStruct_Ov85_C44 *param1);
 void ov85_021E82E4(SysTask *param0, void *param1);
 void ov85_021E82F8(UnkStruct_Ov85_Main *param0);
@@ -529,46 +528,6 @@ void ov85_021E815C(SysTask *param0, void *param1)
         Heap_Free(v0);
         SysTask_Destroy(param0);
     }
-}
-
-SysTask *ov85_021E81E0(UnkStruct_Ov85_Main *param0)
-{
-    ManagedSpriteTemplate v0;
-    UnkStruct_Ov85_Task815C *v1 = Heap_AllocAtEnd(HEAP_ID_102, 0x18);
-    SysTask *v2;
-
-    {
-        u8 *p = (u8 *)v1;
-        int i;
-        for (i = 0; i < 0x18; i++) {
-            p[i] = 0;
-        }
-    }
-
-    v0.x = 128;
-    v0.y = 100;
-    v0.z = 0;
-    v0.animation = 0;
-    v0.drawPriority = 0;
-    v0.pal = 0;
-    v0.vram = NNS_G2D_VRAM_TYPE_2DMAIN;
-    v0.resIdList[0] = 4;
-    v0.resIdList[1] = 5;
-    v0.resIdList[2] = 6;
-    v0.resIdList[3] = 7;
-    v0.resIdList[4] = -1;
-    v0.resIdList[5] = -1;
-    v0.bgPriority = 0;
-    v0.vramTransfer = 0;
-
-    v1->unk14 = ov85_021E7044(param0, &v0);
-    ManagedSprite_TickFrame(v1->unk14);
-
-    v1->unk10 = param0;
-    v2 = SysTask_CreateOnMainQueue(ov85_021E815C, v1, 0);
-    GF_ASSERT(v2 != NULL);
-
-    return v2;
 }
 
 void ov85_021E825C(UnkStruct_Ov85_Main *param0, UnkStruct_Ov85_C44 *param1)

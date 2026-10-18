@@ -4450,6 +4450,86 @@
       "attempts": 1,
       "result": "matched",
       "note": "matched (batch 17)"
+    },
+    {
+      "file": "asm/overlay_00_thumb_r09.s",
+      "lines": 170,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched (batch 18)"
+    },
+    {
+      "file": "asm/overlay_00_thumb_r49.s",
+      "lines": 122,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched (batch 18)"
+    },
+    {
+      "file": "asm/overlay_01_021E90C0_s12.s",
+      "lines": 119,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched (batch 18)"
+    },
+    {
+      "file": "asm/overlay_01_021EDAFC_q26.s",
+      "lines": 65,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched (batch 18)"
+    },
+    {
+      "file": "asm/overlay_01_022053EC_p03.s",
+      "lines": 70,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched (batch 18)"
+    },
+    {
+      "file": "asm/overlay_01_022053EC_p27.s",
+      "lines": 253,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched (batch 18)"
+    },
+    {
+      "file": "asm/overlay_71_r164.s",
+      "lines": 44,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched (batch 18)"
+    },
+    {
+      "file": "asm/overlay_85_r145.s",
+      "lines": 73,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched (batch 18)"
+    },
+    {
+      "file": "asm/unk_0205A44C_p10.s",
+      "lines": 196,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched (batch 18)"
+    },
+    {
+      "file": "asm/unk_0205A44C_p13.s",
+      "lines": 186,
+      "functions": 1,
+      "attempts": 1,
+      "result": "matched",
+      "note": "matched (batch 18)"
     }
   ],
   "failed": [
@@ -4858,8 +4938,8 @@
   ],
   "in_progress": null,
   "stats": {
-    "total_attempts": 716,
-    "total_matched": 526,
+    "total_attempts": 726,
+    "total_matched": 536,
     "total_failed": 31
   },
   "matched": [

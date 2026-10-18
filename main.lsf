@@ -1021,10 +1021,10 @@ Static main
     Object main.nef.p/src_hgify_unk_0205A44C_unk_0205A44C_p07.c.o
     Object main.nef.p/src_hgify_unk_0205A44C_unk_0205A44C_p08.c.o
     Object main.nef.p/src_hgify_unk_0205A44C_unk_0205A44C_p09.c.o
-    Object main.nef.p/asm_unk_0205A44C_p10.s.o
+    Object main.nef.p/src_unk_0205A44C_p10.c.o
     Object main.nef.p/src_hgify_unk_0205A44C_unk_0205A44C_p11.c.o
     Object main.nef.p/src_hgify_unk_0205A44C_unk_0205A44C_p12.c.o
-    Object main.nef.p/asm_unk_0205A44C_p13.s.o
+    Object main.nef.p/src_unk_0205A44C_p13.c.o
     Object main.nef.p/src_hgify_unk_0205A44C_unk_0205A44C_p14.c.o
     Object main.nef.p/src_hgify_unk_0205A44C_unk_0205A44C_p15.c.o
     Object main.nef.p/src_hgify_unk_0205A44C_unk_0205A44C_p16.c.o
@@ -2102,7 +2102,7 @@ Overlay OVY_0
     Object main.nef.p/src_hgify_overlay_00_thumb_overlay_00_thumb_r06.c.o
     Object main.nef.p/src_hgify_overlay_00_thumb_overlay_00_thumb_r07.c.o
     Object main.nef.p/src_hgify_overlay_00_thumb_overlay_00_thumb_r08.c.o
-    Object main.nef.p/asm_overlay_00_thumb_r09.s.o
+    Object main.nef.p/src_overlay_00_thumb_r09.c.o
     Object main.nef.p/src_hgify_overlay_00_thumb_overlay_00_thumb_r10.c.o
     Object main.nef.p/src_hgify_overlay_00_thumb_overlay_00_thumb_r11.c.o
     Object main.nef.p/src_hgify_overlay_00_thumb_overlay_00_thumb_r12.c.o
@@ -2142,7 +2142,7 @@ Overlay OVY_0
     Object main.nef.p/src_hgify_overlay_00_thumb_overlay_00_thumb_r46.c.o
     Object main.nef.p/src_hgify_overlay_00_thumb_overlay_00_thumb_r47.c.o
     Object main.nef.p/src_hgify_overlay_00_thumb_overlay_00_thumb_r48.c.o
-    Object main.nef.p/asm_overlay_00_thumb_r49.s.o
+    Object main.nef.p/src_overlay_00_thumb_r49.c.o
     Object main.nef.p/src_hgify_overlay_00_thumb_overlay_00_thumb_r50.c.o
     Object main.nef.p/src_hgify_overlay_00_thumb_overlay_00_thumb_r51.c.o
     Object main.nef.p/src_hgify_overlay_00_thumb_overlay_00_thumb_r52.c.o
@@ -2214,7 +2214,7 @@ Overlay field
     Object main.nef.p/src_hgify_overlay_01_021E90C0_overlay_01_021E90C0_s09.c.o
     Object main.nef.p/src_hgify_overlay_01_021E90C0_overlay_01_021E90C0_s10.c.o
     Object main.nef.p/src_hgify_overlay_01_021E90C0_overlay_01_021E90C0_s11.c.o
-    Object main.nef.p/asm_overlay_01_021E90C0_s12.s.o
+    Object main.nef.p/src_overlay_01_021E90C0_s12.c.o
     Object main.nef.p/src_hgify_overlay_01_021E90C0_overlay_01_021E90C0_s13.c.o
     Object main.nef.p/src_hgify_overlay_01_021E90C0_overlay_01_021E90C0_s14.c.o
     Object main.nef.p/src_hgify_overlay_01_021E90C0_overlay_01_021E90C0_s15.c.o
@@ -2373,7 +2373,7 @@ Overlay field
     Object main.nef.p/src_hgify_overlay_01_021EDAFC_overlay_01_021EDAFC_q23.c.o
     Object main.nef.p/src_hgify_overlay_01_021EDAFC_overlay_01_021EDAFC_q24.c.o
     Object main.nef.p/src_hgify_overlay_01_021EDAFC_overlay_01_021EDAFC_q25.c.o
-    Object main.nef.p/asm_overlay_01_021EDAFC_q26.s.o
+    Object main.nef.p/src_overlay_01_021EDAFC_q26.c.o
     Object main.nef.p/src_hgify_overlay_01_021EDAFC_overlay_01_021EDAFC_q27.c.o
     Object main.nef.p/src_hgify_overlay_01_021EDAFC_overlay_01_021EDAFC_q28.c.o
     Object main.nef.p/src_hgify_overlay_01_021EDAFC_overlay_01_021EDAFC_q29.c.o
@@ -3078,7 +3078,7 @@ Overlay field
     Object main.nef.p/src_hgify_overlay_01_022053EC_overlay_01_022053EC_p00.c.o
     Object main.nef.p/src_hgify_overlay_01_022053EC_overlay_01_022053EC_p01.c.o
     Object main.nef.p/src_overlay_01_022053EC_p02.c.o
-    Object main.nef.p/asm_overlay_01_022053EC_p03.s.o
+    Object main.nef.p/src_overlay_01_022053EC_p03.c.o
     Object main.nef.p/src_hgify_overlay_01_022053EC_overlay_01_022053EC_p04.c.o
     Object main.nef.p/src_hgify_overlay_01_022053EC_overlay_01_022053EC_p05.c.o
     Object main.nef.p/src_hgify_overlay_01_022053EC_overlay_01_022053EC_p06.c.o
@@ -3102,7 +3102,7 @@ Overlay field
     Object main.nef.p/src_hgify_overlay_01_022053EC_overlay_01_022053EC_p24.c.o
     Object main.nef.p/src_hgify_overlay_01_022053EC_overlay_01_022053EC_p25.c.o
     Object main.nef.p/src_hgify_overlay_01_022053EC_overlay_01_022053EC_p26.c.o
-    Object main.nef.p/asm_overlay_01_022053EC_p27.s.o
+    Object main.nef.p/src_overlay_01_022053EC_p27.c.o
     Object main.nef.p/src_hgify_overlay_01_022053EC_overlay_01_022053EC_p28.c.o
     Object main.nef.p/src_hgify_overlay_01_022053EC_overlay_01_022053EC_p29.c.o
     Object main.nef.p/src_hgify_overlay_01_022053EC_overlay_01_022053EC_p30.c.o
@@ -10630,7 +10630,7 @@ Overlay OVY_71
     Object main.nef.p/src_hgify_overlay_71_overlay_71_r161.c.o
     Object main.nef.p/src_hgify_overlay_71_overlay_71_r162.c.o
     Object main.nef.p/src_hgify_overlay_71_overlay_71_r163.c.o
-    Object main.nef.p/asm_overlay_71_r164.s.o
+    Object main.nef.p/src_overlay_71_r164.c.o
     Object main.nef.p/src_hgify_overlay_71_overlay_71_r165.c.o
     Object main.nef.p/src_hgify_overlay_71_overlay_71_r166.c.o
     Object main.nef.p/src_hgify_overlay_71_overlay_71_r167.c.o
@@ -12955,7 +12955,7 @@ Overlay OVY_85
     Object main.nef.p/src_hgify_overlay_85_overlay_85_r142.c.o
     Object main.nef.p/src_hgify_overlay_85_overlay_85_r143.c.o
     Object main.nef.p/src_hgify_overlay_85_overlay_85_r144.c.o
-    Object main.nef.p/asm_overlay_85_r145.s.o
+    Object main.nef.p/src_overlay_85_r145.c.o
     Object main.nef.p/src_hgify_overlay_85_overlay_85_r146.c.o
     Object main.nef.p/src_hgify_overlay_85_overlay_85_r147.c.o
     Object main.nef.p/src_hgify_overlay_85_overlay_85_r148.c.o
