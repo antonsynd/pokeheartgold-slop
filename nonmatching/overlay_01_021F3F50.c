@@ -168,7 +168,7 @@ void Field_SaveStatsPrinter_Print(struct SaveStatsPrinter *printer) {
 }
 
 void Field_SaveStatsPrinter_RemoveFromScreen(struct SaveStatsPrinter *printer) {
-    sub_0200E5D4(printer->window, 0);
+    ClearWindowPixelBuffer(printer->window, 0);
     RemoveWindow(printer->window);
     Heap_Free(printer->window);
 }

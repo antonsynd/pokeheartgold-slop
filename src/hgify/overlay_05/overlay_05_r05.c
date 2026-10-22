@@ -1937,7 +1937,7 @@ typedef struct StringTemplate {
 void sub_0203A880();
 typedef void (*Callback)(void *);
 void Main_SetVBlankIntrCB(Callback cb, void *data);
-void sub_020880CC(u8 fadeOut, enum HeapID heapID);
+void App_StartScreenFade(u8 fadeOut, enum HeapID heapID);
 typedef struct UnkStruct_ov10_0221FB28_t UnkStruct_ov10_0221FB28;
 typedef u8 (*UnkFuncPtr_ov10_02222AD0)(UnkStruct_ov10_0221FB28 *);
 typedef struct {
@@ -2035,7 +2035,7 @@ u8 ov05_0221BE04(UnkStruct_ov10_0221FB28 *param0) {
         ov05_0221E944(param0);
         ov05_0221DE38(param0);
         sub_0203A880();
-        sub_020880CC(0, param0->trainerIntroData->heapID);
+        App_StartScreenFade(0, param0->trainerIntroData->heapID);
         Main_SetVBlankIntrCB(ov05_0221CE88, param0);
         return 1;
     }

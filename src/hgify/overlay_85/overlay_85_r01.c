@@ -219,7 +219,7 @@ int ov85_021E5A34(void *appMan, int *param1);
 int ov85_021E5A34(void *appMan, int *param1) {
     UnkStruct_Ov85_021E5FE0 *v0 = OverlayManager_GetData(appMan);
 
-    if (sub_02021238() != 1) {
+    if (DisableTouchPad() != 1) {
         GF_ASSERT(FALSE);
     }
 

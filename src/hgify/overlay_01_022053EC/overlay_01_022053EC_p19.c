@@ -6,7 +6,7 @@
 #include "ghidra_compat.h"
 #include "map_object.h"
 typedef void code(void);
-undefined4 sub_02026E18(void *, void *);
+undefined4 BillboardGfxSequence_SetData(void *, void *);
 undefined4 ov01_021FC5A4(void *, unsigned int);
 void ov01_02205870(int param_1, undefined4 param_2, undefined4 param_3, int param_4);
 // FUNCTION ov01_02205870: matching C (perm1)
@@ -21,7 +21,7 @@ void ov01_02205870(int param_1, undefined4 param_2, undefined4 param_3, int para
         uVar2 = 0x16;
     }
     uVar2 = ov01_021FC5A4(*((undefined4 *)(iVar1 + 0xfc)), uVar2);
-    sub_02026E18(uVar2, param_4 + 0xc);
+    BillboardGfxSequence_SetData(uVar2, param_4 + 0xc);
     return;
 }
 #pragma force_active reset

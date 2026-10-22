@@ -14,7 +14,7 @@ typedef struct UnkStruct_ov49_0225B124 {
 #pragma force_active on
 void ov49_0225B124(UnkStruct_ov49_0225B124 *param0) {
     if (WindowIsInUse(&param0->unk_00) == 1) {
-        sub_0200E5D4(&param0->unk_00, 1);
+        ClearWindowPixelBuffer(&param0->unk_00, 1);
         ClearWindowTilemapAndScheduleTransfer(&param0->unk_00);
         RemoveWindow(&param0->unk_00);
     }

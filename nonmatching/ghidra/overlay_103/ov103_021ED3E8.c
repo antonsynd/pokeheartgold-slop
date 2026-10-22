@@ -53,7 +53,7 @@ undefined4 ov103_021EE3C0();
 undefined4 ov103_021EEAA0();
 undefined4 func_0x02022c9c() __asm__("sub_02022C9C");
 undefined4 ov103_021EDF50();
-undefined4 sub_02021238();
+undefined4 DisableTouchPad();
 undefined4 ov103_021ECE54();
 undefined4 Heap_Free();
 undefined4 Heap_Destroy();
@@ -73,7 +73,7 @@ undefined4 ov103_021ED3E8(int param_1)
   ov103_021EE3C0(param_1);
   ov103_021ECBBC(param_1);
   ov103_021ED0A0(param_1);
-  sub_02021238();
+  DisableTouchPad();
   uRam04000050 = 0;
   uRam04001050 = 0;
   func_0x02022c9c();

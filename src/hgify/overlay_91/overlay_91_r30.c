@@ -9,7 +9,7 @@ extern unsigned char ov91_022627C0[];
 #include "ghidra_compat.h"
 typedef int code();
 undefined4 ov91_0225DC3C();
-undefined4 sub_020210D8();
+undefined4 InitializeTouchPadWithExternalBuffer();
 undefined4 ov91_0225F388();
 undefined4 ov91_0225F0C0();
 undefined4 ov91_0225F508();
@@ -35,7 +35,7 @@ ov91_0225CDF4(int param_1, undefined4 param_2, undefined4 param_3, undefined4 pa
     ov91_0225F508((int)puVar1, param_1);
     ov91_0225F0C0((undefined4 *)(puVar1 + 0x878c), (int)(puVar1 + 0x1ab4), param_1);
     ov91_0225F388(puVar1 + 0x87cc);
-    iVar2 = sub_020210D8(((unsigned int)&ov91_022627C0), 8, 4);
+    iVar2 = InitializeTouchPadWithExternalBuffer(((unsigned int)&ov91_022627C0), 8, 4);
     if (iVar2 != 1) {
         GF_AssertFail();
     }

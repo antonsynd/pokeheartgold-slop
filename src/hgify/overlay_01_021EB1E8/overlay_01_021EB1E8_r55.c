@@ -9,7 +9,7 @@ extern char NNS_G3dGlb[];
 s32 FX_Div(s32 num, s32 den);
 u16 Camera_GetPerspectiveAngle(void *camera);
 s32 Camera_GetDistance(void *camera);
-void sub_02020E10(u16 angle, s32 distance, s32 aspect, s32 *outX, s32 *outY);
+void FX_CalcLinearFov(u16 angle, s32 distance, s32 aspect, s32 *outX, s32 *outY);
 s64 _ll_mul(s64 a, s64 b);
 static inline s32 FxMul_ov01_021EC31C(s32 a, s32 b) {
     return (s32)((_ll_mul((s64)a, (s64)b) + 0x800) >> 12);
@@ -39,7 +39,7 @@ void ov01_021EC31C(s32 *outX, s32 *outY, Ov01Data *data) {
     u16 angle = Camera_GetPerspectiveAngle(((Ov01Data *)data)->inner->p->cam);
     s32 w, h, sign;
 
-    sub_02020E10(angle, Camera_GetDistance(data->inner->p->cam), aspect, &w, &h);
+    FX_CalcLinearFov(angle, Camera_GetDistance(data->inner->p->cam), aspect, &w, &h);
     w = FX_Div(w, 0x100000);
     if (dz <= 0) {
         h = FX_Div(h, 0xBE8D0);

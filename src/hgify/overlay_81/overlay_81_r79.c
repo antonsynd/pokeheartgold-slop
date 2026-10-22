@@ -13,7 +13,7 @@ void ov81_022413E0(undefined4 param_1);
 void ov81_022413E0(undefined4 param_1)
 
 {
-    sub_0200E5D4(param_1, 1);
+    ClearWindowPixelBuffer(param_1, 1);
     ClearWindowTilemapAndScheduleTransfer(param_1);
     return;
 }

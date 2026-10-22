@@ -44,7 +44,7 @@ typedef unsigned short wchar16;
 #define LZCOUNT(x) ((x) ? __builtin_clz(x) : 32)
 undefined4 DestroyMsgData(undefined4);
 undefined4 SysTask_Destroy(undefined4);
-undefined4 sub_0200E5D4(undefined4, undefined4);
+undefined4 ClearWindowPixelBuffer(undefined4, undefined4);
 undefined4 PlaySE(undefined4);
 undefined4 Heap_Free(undefined4);
 undefined4 func_0x02001434(undefined4, undefined4, undefined4) __asm__("sub_02001434");
@@ -59,7 +59,7 @@ void ov01_021EE568(int param_1)
 
   PlaySE(0x5dc);
   func_0x02001434(*(undefined4 *)(param_1 + 0x1bc),0,0);
-  sub_0200E5D4(*(undefined4 *)(param_1 + 0x1a8),0);
+  ClearWindowPixelBuffer(*(undefined4 *)(param_1 + 0x1a8),0);
   RemoveWindow(param_1 + 8);
   iVar1 = 0;
   iVar2 = param_1;

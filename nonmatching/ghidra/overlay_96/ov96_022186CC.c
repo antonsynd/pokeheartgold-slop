@@ -42,7 +42,7 @@ typedef unsigned short wchar16;
 #define SBORROW4(a, b) ((((int)(a) - (int)(b)) > (int)(a)) != ((int)(b) < 0))
 #define POPCOUNT(x) __builtin_popcount(x)
 #define LZCOUNT(x) ((x) ? __builtin_clz(x) : 32)
-undefined4 CalcAngleBetweenVecs();
+undefined4 VEC_AngleBetween();
 
 undefined4 ov96_022186CC(void)
 
@@ -58,7 +58,7 @@ undefined4 ov96_022186CC(void)
   uStack_18 = 0;
   uStack_14 = 0x1000;
   uStack_10 = in_r3;
-  uVar1 = CalcAngleBetweenVecs(&uStack_1c);
+  uVar1 = VEC_AngleBetween(&uStack_1c);
   if ((uVar1 < 0x2001) || (0xdfff < uVar1)) {
     return 4;
   }

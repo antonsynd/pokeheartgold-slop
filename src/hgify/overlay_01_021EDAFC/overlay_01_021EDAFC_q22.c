@@ -1252,7 +1252,7 @@ typedef struct FieldMenuManager {
     u16 choicesAltTextStringIDs[28];
     u16 cursorPos;
 } FieldMenuManager;
-void sub_0200E5D4(Window *window, u8 skipTransfer);
+void ClearWindowPixelBuffer(Window *window, u8 skipTransfer);
 enum MapHeaderID {
     MAP_HEADER_EVERYWHERE,
     MAP_HEADER_NOTHING,
@@ -3039,7 +3039,7 @@ void ov01_021EE568(FieldMenuManager *menuManager);
 void ov01_021EE568(FieldMenuManager *menuManager) {
     PlaySE(1500);
     DestroyListMenu(menuManager->listMenu, ((void *)0), ((void *)0));
-    sub_0200E5D4(menuManager->listMenuTemplate.window, 0);
+    ClearWindowPixelBuffer(menuManager->listMenuTemplate.window, 0);
     RemoveWindow(&menuManager->menuWindow);
 
     for (int i = 0; i < 28; i++) {

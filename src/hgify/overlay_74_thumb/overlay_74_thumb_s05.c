@@ -30,7 +30,7 @@ undefined4 ov74_02228F14(int param_1, undefined4 param_2, undefined4 param_3, un
         return 1;
     }
     if ((sub_021D1154 & 3) != 0) {
-        sub_0200E5D4(param_1 + 0x18, 0);
+        ClearWindowPixelBuffer(param_1 + 0x18, 0);
         RemoveWindow(param_1 + 0x18);
         return 0;
     }

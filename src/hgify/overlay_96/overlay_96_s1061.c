@@ -7,7 +7,7 @@ typedef struct Ov96_Param {
     int f4;
 } Ov96_Param;
 extern const VecFx32 ov96_0221CF00;
-u32 CalcAngleBetweenVecs(VecFx32 *a, VecFx32 *b);
+u32 VEC_AngleBetween(VecFx32 *a, VecFx32 *b);
 // FUNCTION ov96_0220D6CC: matching C (agent15)
 #pragma force_active on
 u32 ov96_0220D6CC(Ov96_Param *p) {
@@ -18,7 +18,7 @@ u32 ov96_0220D6CC(Ov96_Param *p) {
     a.x = p->f4;
     a.z = p->f0;
     a.y = 0;
-    angle = CalcAngleBetweenVecs(&b, &a);
+    angle = VEC_AngleBetween(&b, &a);
     if (angle <= 0x2000 || angle >= 0xE000) {
         return 4;
     }

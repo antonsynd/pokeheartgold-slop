@@ -43,14 +43,14 @@ typedef unsigned short wchar16;
 #define POPCOUNT(x) __builtin_popcount(x)
 #define LZCOUNT(x) ((x) ? __builtin_clz(x) : 32)
 undefined4 func_0x02014950() __asm__("sub_02014950");
-undefined4 sub_0200E5D4();
+undefined4 ClearWindowPixelBuffer();
 undefined4 func_0x02001434() __asm__("sub_02001434");
 undefined4 RemoveWindow();
 
 void ov69_021E6A54(int param_1)
 
 {
-  sub_0200E5D4(param_1 + 0xc024,0);
+  ClearWindowPixelBuffer(param_1 + 0xc024,0);
   RemoveWindow(param_1 + 0xc024);
   func_0x02001434(*(undefined4 *)(param_1 + 0xc064),0,0);
   func_0x02014950(*(undefined4 *)(param_1 + 0xc068));

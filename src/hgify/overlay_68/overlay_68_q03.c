@@ -58,7 +58,7 @@ void ov68_021E5A58(int *param_1, undefined4 param_2, undefined4 param_3, undefin
     ov68_021E6204(param_1);
     ov68_021E6320(param_1);
     ov68_021E75C0(param_1);
-    sub_020880CC(0, 0x42);
+    App_StartScreenFade(0, 0x42);
     Main_SetVBlankIntrCB(((unsigned int)ov68_021E5B6C), param_1);
     NARC_Delete(uVar2);
     return;

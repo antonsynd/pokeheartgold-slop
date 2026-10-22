@@ -5,9 +5,9 @@
 extern u8 _021D2198[];
 int GF_TouchpadStopAutoSampling(void);
 void sub_020211AC(int a, int b, int c, int d, int e, int f);
-// FUNCTION sub_02021238: matching C (agent31)
+// FUNCTION DisableTouchPad: matching C (agent31)
 #pragma force_active on
-int sub_02021238(void) {
+int DisableTouchPad(void) {
     int r4;
 
     if (*(u16 *)((u8 *)_021D2198 + 0x40 + 0x1a) != 0) {

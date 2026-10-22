@@ -49,7 +49,7 @@ undefined4 ov75_02247180(undefined4 param_1)
     Main_SetVBlankIntrCB(0, 0);
     HBlankInterruptDisable();
     GF_DestroyVramTransferManager();
-    sub_02021238();
+    DisableTouchPad();
     TextFlags_SetCanABSpeedUpPrint(0);
     TextFlags_SetAutoScrollParam(0);
     TextFlags_SetCanTouchSpeedUpPrint(0);

@@ -16,8 +16,8 @@ u32 ov59_0223AABC(int param_1) {
         break;
     case 1:
         ov59_0223AD84();
-        sub_020210BC();
-        sub_02021148(1);
+        EnableTouchPad();
+        InitializeTouchPad(1);
         *(u16 *)(param_1 + 0x40) = 0;
         return 1;
     }

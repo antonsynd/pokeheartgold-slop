@@ -58,7 +58,7 @@ undefined4 ov37_021E5B94(undefined4 param_1, int *param_2)
         ObjPlttTransfer_Destroy();
         ov37_021E6540(puVar1);
         ov37_021E5F5C(*puVar1);
-        sub_02021238();
+        DisableTouchPad();
         DestroyMsgData(puVar1[4]);
         MessageFormat_Delete(puVar1[3]);
         *param_2 = *param_2 + 1;

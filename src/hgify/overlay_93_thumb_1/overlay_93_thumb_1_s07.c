@@ -1355,7 +1355,7 @@ void sub_0203A914();
 typedef void (*Callback)(void *);
 void Main_SetVBlankIntrCB(Callback cb, void *data);
 void SysTask_Destroy(SysTask *task);
-u32 sub_02021238(void);
+u32 DisableTouchPad(void);
 void sub_020135AC(UnkStruct_02012744 *param0);
 void GF_DestroyVramTransferManager(void);
 void ov93_0225CFB8(G3DPipelineBuffers *param0);
@@ -1421,7 +1421,7 @@ int ov93_0225CD10(ApplicationManager *appMan, int *param1) {
     GXS_SetVisibleWnd(GX_WNDMASK_NONE);
 
     ov93_0225CFB8(v0->unk_98);
-    sub_02021238();
+    DisableTouchPad();
     OverlayManager_FreeData(appMan);
     TextFlags_SetCanABSpeedUpPrint(0);
     TextFlags_SetAutoScrollParam(0);

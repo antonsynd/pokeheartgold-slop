@@ -116,7 +116,7 @@ const UnkOv45Vec *sub_02023E68(void *arg0);
 void sub_02023E2C(void *arg0, void *arg1, const void *arg2, const void *arg3, void *arg4);
 void sub_02023E04(void *arg0, void *arg1, const void *arg2, const void *arg3, void *arg4, u32 arg5, u32 arg6, u32 arg7);
 void sub_02023FE4(void *arg0, void (*arg1)(void *), void *arg2);
-void sub_02026E18(const void *arg0, void *arg1);
+void BillboardGfxSequence_SetData(const void *arg0, void *arg1);
 void ov45_02230E64(void *arg0);
 void ov45_02230A44(void *arg0);
 int ov45_02230A58(void *arg0);
@@ -224,7 +224,7 @@ UnkOv45Billboard *ov45_0223070C(UnkOv45Billboards *param0, const void *param1) {
             v4 = GF2dGfxRawResMan_GetObjById(param0->gfx2dRes1, v15);
             v16 = GF2dGfxRawResObj_GetData(v4);
 
-            sub_02026E18(v16, v9);
+            BillboardGfxSequence_SetData(v16, v9);
         }
 
         if (v1->flag == 1) {

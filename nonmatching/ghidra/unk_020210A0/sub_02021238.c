@@ -46,7 +46,7 @@ undefined4 GF_TouchpadStopAutoSampling();
 undefined4 sub_020211AC();
 extern short sRam021d21f2 __asm__("sub_021D21F2");
 
-int sub_02021238(void)
+int DisableTouchPad(void)
 
 {
   int iVar1;

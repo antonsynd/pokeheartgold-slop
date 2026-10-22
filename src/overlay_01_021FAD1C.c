@@ -35,8 +35,8 @@ typedef struct {
     s32 unk8;
 } MeshHit;
 
-extern fx32 sub_02020B8C(fx32 a, fx32 b);
-extern fx32 sub_02020B94(fx32 a, fx32 b);
+extern fx32 FX_Min(fx32 a, fx32 b);
+extern fx32 FX_Max(fx32 a, fx32 b);
 
 int ov01_021FAE50(int mode, fx32 arg1, fx32 x, fx32 z, const Mesh *mesh, fx32 *out);
 
@@ -191,9 +191,9 @@ int ov01_021FAE50(int mode, fx32 arg1, fx32 x, fx32 z, const Mesh *mesh, fx32 *o
         }
         case 0:
         default: {
-            fx32 bestDist = sub_02020B94(arg1, hits[0].height) - sub_02020B8C(arg1, hits[0].height);
+            fx32 bestDist = FX_Max(arg1, hits[0].height) - FX_Min(arg1, hits[0].height);
             for (i = 1; i < validCount; i++) {
-                fx32 dist = sub_02020B94(arg1, hits[i].height) - sub_02020B8C(arg1, hits[i].height);
+                fx32 dist = FX_Max(arg1, hits[i].height) - FX_Min(arg1, hits[i].height);
                 if (bestDist > dist) {
                     bestDist = dist;
                     bestIdx = i;

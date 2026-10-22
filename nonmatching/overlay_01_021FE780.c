@@ -64,7 +64,7 @@ extern void sub_02069784(UnkOv01_021FE780_sub *a0);
 extern void sub_02069978(NNSG3dRenderObj *a0, UnkOv01_021FE780_sub *a1);
 extern void sub_020699AC(NNSG3dRenderObj *a0, VecFx32 *a1, VecFx32 *a2, MtxFx33 *a3);
 extern void sub_0206121C(FieldSystem *a0, VecFx32 *a1);
-extern void sub_02020DA4(MtxFx33 *rotation, u16 xAngle, u16 yAngle, u16 zAngle);
+extern void MTX_Rot33Angles(MtxFx33 *rotation, u16 xAngle, u16 yAngle, u16 zAngle);
 
 UnkOv01_021FE780 *ov01_021FE780(void *a0);
 void ov01_021FE79C(UnkOv01_021FE780 *manager);
@@ -206,7 +206,7 @@ void ov01_021FE970(void *param0, UnkOv01_021FE780_Work *work) {
         angle = 0x5A;
         break;
     }
-    sub_02020DA4(&rotation, 0, angle, 0);
+    MTX_Rot33Angles(&rotation, 0, angle, 0);
     sub_02068DB8(param0, &translation);
     sub_020699AC(renderObj, &translation, &scale, &rotation);
 }

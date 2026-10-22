@@ -15,7 +15,7 @@ void ov69_021E6A54(int param_1);
 void ov69_021E6A54(int param_1)
 
 {
-    sub_0200E5D4(param_1 + 0xc024, 0);
+    ClearWindowPixelBuffer(param_1 + 0xc024, 0);
     RemoveWindow(param_1 + 0xc024);
     DestroyListMenu(*(undefined4 *)(param_1 + 0xc064), 0, 0);
     ListMenuItems_Delete(*(undefined4 *)(param_1 + 0xc068));

@@ -42,12 +42,12 @@ typedef unsigned short wchar16;
 #define SBORROW4(a, b) ((((int)(a) - (int)(b)) > (int)(a)) != ((int)(b) < 0))
 #define POPCOUNT(x) __builtin_popcount(x)
 #define LZCOUNT(x) ((x) ? __builtin_clz(x) : 32)
-undefined4 sub_0200E5D4();
+undefined4 ClearWindowPixelBuffer();
 
 void sub_02059AD8(int param_1)
 
 {
-  sub_0200E5D4(*(undefined4 *)(param_1 + 0x7c),1);
+  ClearWindowPixelBuffer(*(undefined4 *)(param_1 + 0x7c),1);
   return;
 }
 

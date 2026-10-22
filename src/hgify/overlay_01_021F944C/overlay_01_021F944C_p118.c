@@ -76,7 +76,7 @@ void sub_02023E50(Sprite *sprite, VecFx32 *pos);
 void sub_02023EE0(Sprite *sprite, int arg1);
 void sub_02023F40(Sprite *sprite, int arg1);
 int sub_020238F8(void *list);
-void sub_02026E18(void *resource, void *dest);
+void BillboardGfxSequence_SetData(void *resource, void *dest);
 void ov01_021EA3B0(NNSG3dResMdl *model);
 void *ov01_021FC5A4(void *heap, int id);
 void ov01_021F93AC(LocalMapObject *object, VecFx32 *pos);

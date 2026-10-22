@@ -9,7 +9,7 @@ BOOL ov96_021F218C(u8 *a, u8 *b);
 void ov96_021F2AA4(u8 *entity);
 BOOL ov96_021F22FC(u8 *alloc, u8 *entity, u8 index, VecFx32 *out);
 void ov96_021F234C(u8 *alloc);
-u16 CalcAngleBetweenVecs(VecFx32 *a, VecFx32 *b);
+u16 VEC_AngleBetween(VecFx32 *a, VecFx32 *b);
 
 #define ENTITY(base, i) ((base) + ((i) / 3) * 0x1b0 + ((i) % 3) * 0x90)
 
@@ -120,7 +120,7 @@ void ov96_021F1CC0(PokeathlonCourseData *param0) {
             cross.x = dir.y;
             cross.y = 0;
             cross.z = dir.x;
-            angle = CalcAngleBetweenVecs(&angleA, &cross);
+            angle = VEC_AngleBetween(&angleA, &cross);
             if (angle <= 0x2000 || angle >= 0xE000) {
                 e[0x40] = 4;
             } else if (angle > 0x2000 && angle < 0x6000) {

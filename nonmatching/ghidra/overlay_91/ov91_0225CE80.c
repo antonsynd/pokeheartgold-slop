@@ -46,14 +46,14 @@ undefined4 ov91_0225F66C();
 undefined4 GF_AssertFail();
 undefined4 Heap_Free();
 undefined4 ov91_0225F1E8();
-undefined4 sub_02021238();
+undefined4 DisableTouchPad();
 
 void ov91_0225CE80(int param_1)
 
 {
   int iVar1;
 
-  iVar1 = sub_02021238();
+  iVar1 = DisableTouchPad();
   if (iVar1 != 1) {
     GF_AssertFail();
   }

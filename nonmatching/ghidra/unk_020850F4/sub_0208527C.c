@@ -44,7 +44,7 @@ typedef unsigned short wchar16;
 #define LZCOUNT(x) ((x) ? __builtin_clz(x) : 32)
 undefined4 sub_0203A914();
 undefined4 OverlayManager_GetData();
-undefined4 sub_02021238();
+undefined4 DisableTouchPad();
 undefined4 SpriteSystem_Free();
 undefined4 Heap_Free();
 undefined4 GfGfx_EngineATogglePlanes();
@@ -91,7 +91,7 @@ undefined4 sub_0208527C(undefined4 param_1)
   PaletteData_FreeBuffers(*(undefined4 *)(iVar1 + 0x2fc),3);
   PaletteData_Free(*(undefined4 *)(iVar1 + 0x2fc));
   NARC_Delete(*(undefined4 *)(iVar1 + 0x2ec));
-  sub_02021238();
+  DisableTouchPad();
   SpriteSystem_FreeResourcesAndManager
             (*(undefined4 *)(iVar1 + 0x2f0),*(undefined4 *)(iVar1 + 0x2f4));
   SpriteSystem_Free(*(undefined4 *)(iVar1 + 0x2f0));

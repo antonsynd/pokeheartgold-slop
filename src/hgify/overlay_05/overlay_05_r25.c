@@ -12,7 +12,7 @@ undefined4 ov05_0221CC58(int *param_1);
 undefined4 ov05_0221CC58(int *param_1)
 
 {
-    sub_020880CC(1, *(undefined4 *)(*param_1 + 0x24));
+    App_StartScreenFade(1, *(undefined4 *)(*param_1 + 0x24));
     *(undefined1 *)((int)param_1 + 0xb7f) = 2;
     return 1;
 }

@@ -137,7 +137,7 @@ typedef struct BillboardGfxSequence {
     const u8 *plttIdx;
     u32 seqCount;
 } BillboardGfxSequence;
-void sub_02026E18(const void *data, BillboardGfxSequence *gfxSequence);
+void BillboardGfxSequence_SetData(const void *data, BillboardGfxSequence *gfxSequence);
 typedef struct BillboardVRAMTransfer {
     const BillboardGfxSequence *gfxSequence;
     const NNSG3dResTex *texture;
@@ -3124,7 +3124,7 @@ BillboardResources *ov01_021F1758(FieldEffectManager *param0, u32 param1, u32 pa
     v0 = ov01_021FC5A4(v6->modelResHeap, param2);
     v2 = ov01_021FC5A4(v6->metadataResHeap, param3);
 
-    sub_02026E18(v2, &v3);
+    BillboardGfxSequence_SetData(v2, &v3);
 
     v4 = GF3dGfxRawResMan_GetObjById(v6->texResMan, param4);
     ((v4 != ((void *)0)) ? (void)0 : GF_AssertFail());

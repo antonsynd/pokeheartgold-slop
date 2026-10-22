@@ -96,13 +96,13 @@ static void ov80_0223608C(void *a0, UnkStruct_ov80_02235FC8 *parent, FieldSystem
     parent->partyMenuArgs->options = Save_PlayerData_GetOptionsAddr(parent->saveData);
     parent->partyMenuArgs->unk_25 = 0;
     if (parent->unk_A0 == 1) {
-        parent->partyMenuArgs->context = PARTY_MENU_CONTEXT_17;
+        parent->partyMenuArgs->context = PARTY_MENU_CONTEXT_BATTLE_TOWER;
     } else if (parent->unk_A0 == 5) {
         parent->partyMenuArgs->context = PARTY_MENU_CONTEXT_BATTLE_HALL;
     } else if (parent->unk_A0 == 4) {
-        parent->partyMenuArgs->context = PARTY_MENU_CONTEXT_23;
+        parent->partyMenuArgs->context = PARTY_MENU_CONTEXT_BATTLE_CASTLE;
     } else if (parent->unk_A0 == 6) {
-        parent->partyMenuArgs->context = PARTY_MENU_CONTEXT_23;
+        parent->partyMenuArgs->context = PARTY_MENU_CONTEXT_BATTLE_CASTLE;
     } else {
         GF_AssertFail();
     }

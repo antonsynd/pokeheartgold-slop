@@ -112,7 +112,7 @@ BOOL ov105_021E59DC(OverlayManager *man, int *state) {
     switch (*state) {
     case 0:
         if (model->animObjs[0]->frame + FX32_ONE == NNS_G3dAnmObjGetNumFrame(model->animObjs[0])) {
-            sub_020880CC(1, HEAP_ID_151);
+            App_StartScreenFade(1, HEAP_ID_151);
             (*state)++;
         }
         break;
@@ -124,7 +124,7 @@ BOOL ov105_021E59DC(OverlayManager *man, int *state) {
                 ret = TRUE;
             } else {
                 ov105_021E5BCC(data);
-                sub_020880CC(0, HEAP_ID_151);
+                App_StartScreenFade(0, HEAP_ID_151);
                 *state = 0;
             }
         }

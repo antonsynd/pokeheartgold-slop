@@ -69,7 +69,7 @@ undefined4 TextFlags_SetCanABSpeedUpPrint();
 undefined4 PaletteData_FreeBuffers();
 undefined4 ov93_0225D064();
 undefined4 ov93_0225CFB8();
-undefined4 sub_02021238();
+undefined4 DisableTouchPad();
 undefined4 sub_0203A914();
 undefined4 String_Delete();
 undefined4 Heap_Free();
@@ -133,7 +133,7 @@ undefined4 ov93_0225CD10(undefined4 param_1)
   uRam04000000 = uRam04000000 & 0xffff1fff;
   uRam04001000 = uRam04001000 & 0xffff1fff;
   ov93_0225CFB8(piVar1[0x26]);
-  sub_02021238();
+  DisableTouchPad();
   OverlayManager_FreeData(param_1);
   TextFlags_SetCanABSpeedUpPrint(0);
   TextFlags_SetAutoScrollParam(0);

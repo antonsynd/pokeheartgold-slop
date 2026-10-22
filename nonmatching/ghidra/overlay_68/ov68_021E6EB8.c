@@ -44,10 +44,10 @@ typedef unsigned short wchar16;
 #define LZCOUNT(x) ((x) ? __builtin_clz(x) : 32)
 undefined4 SpriteSystem_LoadCellResObjFromOpenNarc();
 undefined4 SpriteSystem_LoadCharResObjFromOpenNarc();
-undefined4 sub_02077834();
-undefined4 sub_0207775C();
-undefined4 sub_020776B8();
-undefined4 sub_020776EC();
+undefined4 SpriteSystem_LoadMoveCategoryIconCharResObj();
+undefined4 SpriteSystem_LoadMoveTypeAndCategoryIconsCellAndAnim();
+undefined4 SpriteSystem_LoadMoveTypeIconCharResObj();
+undefined4 SpriteSystem_LoadMoveTypeAndCategoryIconsPltt();
 undefined4 SpriteSystem_LoadPlttResObjFromOpenNarc();
 undefined4 SpriteSystem_LoadAnimResObjFromOpenNarc();
 
@@ -65,19 +65,19 @@ void ov68_021E6EB8(int param_1,undefined4 param_2)
   uVar1 = 0xb8ab;
   do {
     if (uVar1 < 0xb8af) {
-      sub_020776B8(*(undefined4 *)(param_1 + 0x11c),*(undefined4 *)(param_1 + 0x120),2,0,uVar1);
+      SpriteSystem_LoadMoveTypeIconCharResObj(*(undefined4 *)(param_1 + 0x11c),*(undefined4 *)(param_1 + 0x120),2,0,uVar1);
     }
     else {
-      sub_020776B8(*(undefined4 *)(param_1 + 0x11c),*(undefined4 *)(param_1 + 0x120),1,0,uVar1);
+      SpriteSystem_LoadMoveTypeIconCharResObj(*(undefined4 *)(param_1 + 0x11c),*(undefined4 *)(param_1 + 0x120),1,0,uVar1);
     }
     uVar1 = uVar1 + 1;
   } while (uVar1 < 0xb8b3);
-  sub_02077834(*(undefined4 *)(param_1 + 0x11c),*(undefined4 *)(param_1 + 0x120),2,0,0xb8aa);
+  SpriteSystem_LoadMoveCategoryIconCharResObj(*(undefined4 *)(param_1 + 0x11c),*(undefined4 *)(param_1 + 0x120),2,0,0xb8aa);
   SpriteSystem_LoadPlttResObjFromOpenNarc
             (*(undefined4 *)(param_1 + 0x11c),*(undefined4 *)(param_1 + 0x120),param_2,5,0,4,2,
              0xb8a8);
-  sub_020776EC(*(undefined4 *)(param_1 + 0x11c),*(undefined4 *)(param_1 + 0x120),2,0xb8a9);
-  sub_020776EC(*(undefined4 *)(param_1 + 0x11c),*(undefined4 *)(param_1 + 0x120),1,0xb8aa);
+  SpriteSystem_LoadMoveTypeAndCategoryIconsPltt(*(undefined4 *)(param_1 + 0x11c),*(undefined4 *)(param_1 + 0x120),2,0xb8a9);
+  SpriteSystem_LoadMoveTypeAndCategoryIconsPltt(*(undefined4 *)(param_1 + 0x11c),*(undefined4 *)(param_1 + 0x120),1,0xb8aa);
   SpriteSystem_LoadCellResObjFromOpenNarc
             (*(undefined4 *)(param_1 + 0x11c),*(undefined4 *)(param_1 + 0x120),param_2,7,0,0xb8a8);
   SpriteSystem_LoadCellResObjFromOpenNarc
@@ -86,7 +86,7 @@ void ov68_021E6EB8(int param_1,undefined4 param_2)
             (*(undefined4 *)(param_1 + 0x11c),*(undefined4 *)(param_1 + 0x120),param_2,8,0,0xb8a8);
   SpriteSystem_LoadAnimResObjFromOpenNarc
             (*(undefined4 *)(param_1 + 0x11c),*(undefined4 *)(param_1 + 0x120),param_2,9,0,0xb8a9);
-  sub_0207775C(*(undefined4 *)(param_1 + 0x11c),*(undefined4 *)(param_1 + 0x120),0xb8aa,0xb8aa);
+  SpriteSystem_LoadMoveTypeAndCategoryIconsCellAndAnim(*(undefined4 *)(param_1 + 0x11c),*(undefined4 *)(param_1 + 0x120),0xb8aa,0xb8aa);
   return;
 }
 

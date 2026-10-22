@@ -44,12 +44,12 @@ typedef unsigned short wchar16;
 #define LZCOUNT(x) ((x) ? __builtin_clz(x) : 32)
 undefined4 GfGfx_EngineATogglePlanes();
 undefined4 ClearWindowTilemapAndScheduleTransfer();
-undefined4 sub_0200E5D4();
+undefined4 ClearWindowPixelBuffer();
 
 void ov91_0225DB5C(int param_1)
 
 {
-  sub_0200E5D4(param_1 + 0xc,1);
+  ClearWindowPixelBuffer(param_1 + 0xc,1);
   ClearWindowTilemapAndScheduleTransfer(param_1 + 0xc);
   GfGfx_EngineATogglePlanes(4,0);
   return;

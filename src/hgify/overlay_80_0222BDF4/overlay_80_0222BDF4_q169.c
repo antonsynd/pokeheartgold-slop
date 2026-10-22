@@ -42,7 +42,7 @@ void ov80_0222E88C(S *param_1) {
     iVar3 = param_1->unk_0;
     PlaySE(0x5dc);
     Delete2dMenu(param_1->unk_B0, 0);
-    sub_0200E5D4(param_1->unk_A8, 0);
+    ClearWindowPixelBuffer(param_1->unk_A8, 0);
     RemoveWindow(param_1->unk_A8);
     for (iVar1 = 0; iVar1 < 0x1c; iVar1++) {
         String_Delete(param_1->unk_1C[iVar1]);

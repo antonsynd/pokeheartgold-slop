@@ -206,7 +206,7 @@
 .public SpriteTransfer_DeleteCharTransferTask
 .public SpriteTransfer_CreatePlttTransferTask
 .public SpriteTransfer_DeletePlttTransferTask
-.public sub_0200E5D4
+.public ClearWindowPixelBuffer
 .public LoadMapSignpostFrameAndGraphic
 .public sub_0200F450
 .public sub_0200F478
@@ -215,10 +215,10 @@
 .public sub_020392D8
 .public sub_0203A880
 .public sub_02070D84
-.public sub_02077678
-.public sub_02077690
-.public sub_0207769C
-.public sub_020776B4
+.public TypeIconGfx_GetCharFileId
+.public GetMoveTypeAndCategoryIconPlttFileId
+.public TypeIconGfx_GetPlttOverride
+.public TypeIconGfx_GetNarcId
 .public thunk_UpdateCellTransferStateManager
 .public ov49_0225A154
 .public ov49_0225A164

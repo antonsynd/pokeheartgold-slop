@@ -44,7 +44,7 @@ typedef unsigned short wchar16;
 #define LZCOUNT(x) ((x) ? __builtin_clz(x) : 32)
 undefined4 Heap_Create();
 undefined4 HBlankInterruptDisable();
-undefined4 sub_02021148();
+undefined4 InitializeTouchPad();
 undefined4 func_0x0201a728() __asm__("sub_0201A728");
 undefined4 SetKeyRepeatTimers();
 undefined4 func_0x020e5b44() __asm__("sub_020E5B44");
@@ -54,7 +54,7 @@ undefined4 Main_SetVBlankIntrCB();
 undefined4 OverlayManager_CreateAndGetData();
 undefined4 OverlayManager_GetArgs();
 undefined4 GfGfx_DisableEngineBPlanes();
-undefined4 sub_020210BC();
+undefined4 EnableTouchPad();
 extern undefined2 uRam04001050 __asm__("sub_04001050");
 extern uint uRam04000000 __asm__("sub_04000000");
 extern undefined2 uRam04000050 __asm__("sub_04000050");
@@ -85,8 +85,8 @@ ov112_021E76CC(undefined4 param_1,undefined4 param_2,undefined4 param_3,undefine
   *(undefined4 *)(iVar1 + 0x20) = *(undefined4 *)(iVar2 + 8);
   ov112_021E795C(iVar1);
   SetKeyRepeatTimers(3,8);
-  sub_020210BC();
-  sub_02021148(4);
+  EnableTouchPad();
+  InitializeTouchPad(4);
   ov112_021E7768(iVar1);
   TextFlags_SetCanABSpeedUpPrint(1);
   return 1;

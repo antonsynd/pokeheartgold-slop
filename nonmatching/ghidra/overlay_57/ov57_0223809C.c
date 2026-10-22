@@ -46,7 +46,7 @@ undefined4 func_0x0200d704() __asm__("sub_0200D704");
 undefined4 func_0x0200d4a4() __asm__("sub_0200D4A4");
 undefined4 func_0x0200d644() __asm__("sub_0200D644");
 undefined4 func_0x0200d6d4() __asm__("sub_0200D6D4");
-undefined4 sub_02091054();
+undefined4 CapsuleMenu_GetSealMemberIdx();
 
 void ov57_0223809C(int param_1,undefined4 param_2,int param_3,undefined4 param_4)
 
@@ -58,7 +58,7 @@ void ov57_0223809C(int param_1,undefined4 param_2,int param_3,undefined4 param_4
   uVar2 = *(undefined4 *)(param_1 + 0xdc);
   uVar3 = *(undefined4 *)(param_1 + 0xe0);
   func_0x0200d644(*(undefined4 *)(param_1 + 0xe8),3,uVar2,uVar3,0x57,6,0,1,2,0x520e,param_4);
-  uVar1 = sub_02091054(param_2);
+  uVar1 = CapsuleMenu_GetSealMemberIdx(param_2);
   func_0x0200d4a4(uVar2,uVar3,0x57,uVar1,1,2,param_3 + 20000);
   func_0x0200d6d4(uVar2,uVar3,0x57,0x26,1,0x5616);
   func_0x0200d704(uVar2,uVar3,0x57,0x24,1,0x59fc);

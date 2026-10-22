@@ -6,10 +6,10 @@
 #include "bg_window.h"
 #include "ghidra_compat.h"
 typedef int code();
-void sub_0200E5D4(struct Window *param_1, int param_2);
-// FUNCTION sub_0200E5D4: matching C (r2)
+void ClearWindowPixelBuffer(struct Window *param_1, int param_2);
+// FUNCTION ClearWindowPixelBuffer: matching C (r2)
 #pragma force_active on
-void sub_0200E5D4(struct Window *param_1, int param_2)
+void ClearWindowPixelBuffer(struct Window *param_1, int param_2)
 
 {
     byte bVar1;

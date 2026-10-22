@@ -25,7 +25,7 @@ void ov57_02238958(int param_1) {
     new_var = 1;
     iVar3 = 0;
     do {
-        uVar2 = sub_02091054(*((undefined1 *)((param_1 + iVar3) + 0x450)));
+        uVar2 = CapsuleMenu_GetSealMemberIdx(*((undefined1 *)((param_1 + iVar3) + 0x450)));
         SpriteSystem_LoadCharResObj(uVar5, uVar4, 0x57, uVar2, new_var, 2, iVar3 + 25000);
         iVar3 = iVar3 + 1;
     } while (iVar3 < 8);

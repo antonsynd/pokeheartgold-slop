@@ -1251,7 +1251,7 @@ typedef struct FieldMenuManager {
     u16 choicesAltTextStringIDs[28];
     u16 cursorPos;
 } FieldMenuManager;
-void sub_0200E5D4(Window *window, u8 skipTransfer);
+void ClearWindowPixelBuffer(Window *window, u8 skipTransfer);
 enum MapHeaderID {
     MAP_HEADER_EVERYWHERE,
     MAP_HEADER_NOTHING,
@@ -3038,7 +3038,7 @@ void ov01_021EE7B8(SysTask *sysTask, void *param) {
     FieldMenuManager *menuManager = (FieldMenuManager *)param;
 
     if (*menuManager->selectedOptionPtr == 0xffff) {
-        sub_0200E5D4(menuManager->menuTemplate.window, 0);
+        ClearWindowPixelBuffer(menuManager->menuTemplate.window, 0);
         RemoveWindow(menuManager->menuTemplate.window);
 
         for (int i = 0; i < 28; i++) {

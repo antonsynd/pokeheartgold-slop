@@ -51,7 +51,7 @@ undefined4 Heap_Free();
 undefined4 sub_0202C254();
 undefined4 RemoveWindow();
 undefined4 func_0x02014950() __asm__("sub_02014950");
-undefined4 sub_0200E5D4();
+undefined4 ClearWindowPixelBuffer();
 undefined4 func_0x02028f24() __asm__("sub_02028F24");
 undefined4 func_0x02001434() __asm__("sub_02001434");
 undefined4 ov65_0221E330();
@@ -85,7 +85,7 @@ undefined4 ov65_0221E474(int param_1)
     ov65_0221E330(param_1,0x41);
     *(undefined4 *)(param_1 + 0x2220) = 0x221e3bd;
   }
-  sub_0200E5D4(param_1 + 0x3690,0);
+  ClearWindowPixelBuffer(param_1 + 0x3690,0);
   RemoveWindow(param_1 + 0x3690);
   func_0x02001434(*(undefined4 *)(param_1 + 0x368c),0,0);
   func_0x02014950(*(undefined4 *)(param_1 + 0x3688));

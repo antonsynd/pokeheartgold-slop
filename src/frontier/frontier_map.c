@@ -260,8 +260,8 @@ FrontierMap *FrontierMap_Init(void *data) {
     FrontierMap_SetVramBank(map->bgConfig, scene);
     FrontierMap_LoadPaletteData(map);
     ov80_02238FA0(map);
-    sub_020210BC();
-    sub_02021148(4);
+    EnableTouchPad();
+    InitializeTouchPad(4);
     ov80_02239384(map);
     map->particles = ov80_02239960(HEAP_ID_101);
     ov80_02239004(map, scene, profile);
@@ -310,7 +310,7 @@ void FrontierMap_Free(FrontierMap *arg) {
     SysTask_Destroy(map->unk9C);
     SysTask_Destroy(map->unkA0);
     ov80_0223937C(map->vramMan);
-    sub_02021238();
+    DisableTouchPad();
     Heap_Free(map);
     reg_GX_DISPCNT &= 0xFFFF1FFF;
     reg_GXS_DB_DISPCNT &= 0xFFFF1FFF;

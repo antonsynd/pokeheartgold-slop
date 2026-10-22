@@ -42,11 +42,11 @@ typedef unsigned short wchar16;
 #define SBORROW4(a, b) ((((int)(a) - (int)(b)) > (int)(a)) != ((int)(b) < 0))
 #define POPCOUNT(x) __builtin_popcount(x)
 #define LZCOUNT(x) ((x) ? __builtin_clz(x) : 32)
-undefined4 sub_020776B4();
-undefined4 sub_02077678();
+undefined4 TypeIconGfx_GetNarcId();
+undefined4 TypeIconGfx_GetCharFileId();
 undefined4 func_0x0200dd10() __asm__("sub_0200DD10");
 undefined4 SpriteSystem_ReplaceCharResObj();
-undefined4 sub_0207769C();
+undefined4 TypeIconGfx_GetPlttOverride();
 undefined4 GetMoveAttr();
 
 void ov68_021E7028(int *param_1,undefined4 param_2,uint param_3,undefined4 param_4)
@@ -63,16 +63,16 @@ void ov68_021E7028(int *param_1,undefined4 param_2,uint param_3,undefined4 param
     iVar1 = GetMoveAttr(param_2,0xb);
     iVar1 = iVar1 + 0x12;
   }
-  uVar2 = sub_020776B4();
-  uVar3 = sub_02077678(iVar1);
+  uVar2 = TypeIconGfx_GetNarcId();
+  uVar3 = TypeIconGfx_GetCharFileId(iVar1);
   SpriteSystem_ReplaceCharResObj(param_1[0x47],param_1[0x48],uVar2,uVar3,1,param_3 + 0xb8ab,param_4)
   ;
   if (param_3 < 4) {
-    iVar1 = sub_0207769C(iVar1);
+    iVar1 = TypeIconGfx_GetPlttOverride(iVar1);
     func_0x0200dd10(param_1[param_3 + 0x4d],iVar1 + 4);
     return;
   }
-  uVar2 = sub_0207769C(iVar1);
+  uVar2 = TypeIconGfx_GetPlttOverride(iVar1);
   func_0x0200dd10(param_1[param_3 + 0x4d],uVar2);
   return;
 }

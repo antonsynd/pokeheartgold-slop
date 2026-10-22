@@ -2,7 +2,7 @@
 
 #include "vram_transfer_manager.h"
 
-extern u32 sub_02026DE0(void *a0, u32 a1);
+extern u32 BillboardGfxSequence_GetTexPlttIndexAt(void *a0, u32 a1);
 extern void sub_02020B3C(NNSG3dResName *resName, const s8 *input);
 extern void *NNS_G3dGetResDataByName(const NNSG3dResDict *dict, const NNSG3dResName *name);
 
@@ -82,7 +82,7 @@ static void sub_02020770(UnkStruct_0202068C_entry *entry) {
 #ifdef NONMATCHING
 static void sub_02020780(UnkStruct_0202068C_entry *entry, u32 frame) {
     u8 buf[4];
-    u32 val = sub_02026DE0(entry->animState, frame);
+    u32 val = BillboardGfxSequence_GetTexPlttIndexAt(entry->animState, frame);
     buf[0] = val;
     buf[1] = val >> 8;
     buf[2] = buf[0];
@@ -103,7 +103,7 @@ static asm void sub_02020780(UnkStruct_0202068C_entry *entry, u32 frame) {
     sub sp, #4
     add r4, r0, #0
     ldr r0, [r4, #0]
-    bl sub_02026DE0
+    bl BillboardGfxSequence_GetTexPlttIndexAt
     add r2, sp, #0
     strb r0, [r2, #0]
     lsr r0, r0, #8

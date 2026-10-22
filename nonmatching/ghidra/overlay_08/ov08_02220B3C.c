@@ -42,12 +42,12 @@ typedef unsigned short wchar16;
 #define SBORROW4(a, b) ((((int)(a) - (int)(b)) > (int)(a)) != ((int)(b) < 0))
 #define POPCOUNT(x) __builtin_popcount(x)
 #define LZCOUNT(x) ((x) ? __builtin_clz(x) : 32)
-undefined4 sub_02077818(undefined4);
+undefined4 GetMoveCategoryIconGfxPlttOverride(undefined4);
 undefined4 func_0x0200dd10(undefined4, undefined4) __asm__("sub_0200DD10");
-undefined4 sub_02077830(void);
+undefined4 GetMoveCategoryIconGfxNarcId(void);
 undefined4 SpriteSystem_ReplaceCharResObj(undefined4, undefined4, undefined4, undefined4, undefined4, undefined4);
 undefined4 func_0x0223a8e4(undefined4) __asm__("sub_0223A8E4");
-undefined4 sub_02077800(undefined4);
+undefined4 GetMoveCategoryIconGfxCharFileId(undefined4);
 
 void ov08_02220B3C(int *param_1,undefined4 param_2,undefined4 param_3)
 
@@ -58,10 +58,10 @@ void ov08_02220B3C(int *param_1,undefined4 param_2,undefined4 param_3)
   int iVar4;
 
   uVar1 = func_0x0223a8e4(*(undefined4 *)(*param_1 + 8));
-  uVar2 = sub_02077830();
-  uVar3 = sub_02077800(param_3);
+  uVar2 = GetMoveCategoryIconGfxNarcId();
+  uVar3 = GetMoveCategoryIconGfxCharFileId(param_3);
   SpriteSystem_ReplaceCharResObj(uVar1,param_1[0x7ed],uVar2,uVar3,1,0xb015);
-  iVar4 = sub_02077818(param_3);
+  iVar4 = GetMoveCategoryIconGfxPlttOverride(param_3);
   func_0x0200dd10(param_2,iVar4 + 4);
   return;
 }

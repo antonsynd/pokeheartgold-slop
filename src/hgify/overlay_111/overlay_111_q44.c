@@ -14,14 +14,14 @@ typedef struct S {
 extern void FillWindowPixelBuffer(Window *window, u8 fillValue);
 extern void ScheduleWindowCopyToVram(Window *window);
 extern void PrintUIntOnWindow(MessagePrinter *messagePrinter, u32 num, u32 ndigits, int mode, Window *window, u32 x, u32 y);
-extern void sub_0200CE7C(MessagePrinter *msgPrinter, int glyphId, u32 num, u32 ndigits, int mode, Window *window, u32 x, u32 y);
+extern void FontSpecialChars_DrawPartyScreenText(MessagePrinter *msgPrinter, int glyphId, u32 num, u32 ndigits, int mode, Window *window, u32 x, u32 y);
 void ov111_021E69A0(S *p, Window *win, u32 num, u32 ndigits, int flag, int glyph);
 // FUNCTION ov111_021E69A0: matching C (agent3)
 #pragma force_active on
 void ov111_021E69A0(S *p, Window *win, u32 num, u32 ndigits, int flag, int glyph) {
     FillWindowPixelBuffer(win, 0);
     if (flag != 0) {
-        sub_0200CE7C(p->mp, glyph, num, ndigits, 1, win, 0, 0);
+        FontSpecialChars_DrawPartyScreenText(p->mp, glyph, num, ndigits, 1, win, 0, 0);
     } else {
         PrintUIntOnWindow(p->mp, num, ndigits, 1, win, 0, 0);
     }

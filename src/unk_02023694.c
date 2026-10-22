@@ -126,7 +126,7 @@ typedef struct BillboardListParams {
     enum HeapID heapID;
 } BillboardListParams;
 
-BillboardTexPlttIndex sub_02026DE0(const BillboardGfxSequence *gfxSequence, const u16 index);
+BillboardTexPlttIndex BillboardGfxSequence_GetTexPlttIndexAt(const BillboardGfxSequence *gfxSequence, const u16 index);
 
 static void sub_02023694(BillboardList *list);
 static void sub_020236BC(Billboard *billboard);
@@ -743,7 +743,7 @@ void sub_02023FE4(Billboard *billboard, BillboardCallback callback, void *callba
 }
 
 static void sub_02023FEC(Billboard *billboard) {
-    BillboardTexPlttIndex indexes = sub_02026DE0(&billboard->gfxSequence, billboard->frameNum >> FX32_SHIFT);
+    BillboardTexPlttIndex indexes = BillboardGfxSequence_GetTexPlttIndexAt(&billboard->gfxSequence, billboard->frameNum >> FX32_SHIFT);
 
     sub_0202403C(billboard->model, billboard->animTexture, indexes.textureIdx);
     sub_02024140(billboard->model, billboard->animTexture, indexes.plttIdx);

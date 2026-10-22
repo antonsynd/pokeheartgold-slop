@@ -140,9 +140,9 @@ ov93_0225C768: ; 0x0225C768
 	bl SetKeyRepeatTimers
 	ldr r0, [r5, #0x2c]
 	bl ov93_0225D1D8
-	bl sub_020210BC
+	bl EnableTouchPad
 	mov r0, #4
-	bl sub_02021148
+	bl InitializeTouchPad
 	add r0, r5, #0
 	bl ov93_0225CFC0
 	mov r0, #0x75

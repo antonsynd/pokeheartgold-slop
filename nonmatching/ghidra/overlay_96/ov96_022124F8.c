@@ -44,7 +44,7 @@ typedef unsigned short wchar16;
 #define LZCOUNT(x) ((x) ? __builtin_clz(x) : 32)
 undefined4 func_0x020ccf80(void *) __asm__("sub_020CCF80");
 undefined4 func_0x020ccd78(void *, void *, void *) __asm__("sub_020CCD78");
-short CalcAngleBetweenVecs(void *, void *);
+short VEC_AngleBetween(void *, void *);
 undefined4 func_0x020ccdac(void *, void *, void *) __asm__("sub_020CCDAC");
 undefined4 PokeathlonCourse_GetHeapAllocPtr4();
 undefined4 func_0x020cd224(int, void *, void *, void *) __asm__("sub_020CD224");
@@ -181,7 +181,7 @@ void ov96_022124F8(void)
           uStack_f8 = uStack_c4;
           uStack_f0 = uStack_c8;
           uStack_f4 = 0;
-          uVar4 = CalcAngleBetweenVecs(&uStack_ec,&uStack_f8);
+          uVar4 = VEC_AngleBetween(&uStack_ec,&uStack_f8);
           if ((uVar4 < 0x2001) || (0xdfff < uVar4)) {
             *(undefined2 *)(iVar6 + 0x5c) = 4;
           }

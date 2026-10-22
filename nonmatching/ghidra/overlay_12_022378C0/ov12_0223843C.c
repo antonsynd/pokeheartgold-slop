@@ -71,7 +71,7 @@ undefined4 ov12_02237B6C();
 undefined4 SysTask_Destroy();
 undefined4 MessageFormat_Delete();
 undefined4 TextFlags_SetCanABSpeedUpPrint();
-undefined4 sub_02021238();
+undefined4 DisableTouchPad();
 undefined4 TextFlags_SetCanTouchSpeedUpPrint();
 undefined4 func_0x02006154() __asm__("sub_02006154");
 undefined4 BattleContext_Delete();
@@ -208,7 +208,7 @@ void ov12_0223843C(undefined4 param_1)
   MessagePrinter_Delete(puVar1[0x6a]);
   SysTask_Destroy(puVar1[7]);
   SysTask_Destroy(puVar1[8]);
-  sub_02021238();
+  DisableTouchPad();
   ov12_022396E8(*puVar1);
   func_0x0201fd38(puVar1[0x90d]);
   iVar4 = BattleSystem_GetCriticalHpMusicFlag(puVar1);

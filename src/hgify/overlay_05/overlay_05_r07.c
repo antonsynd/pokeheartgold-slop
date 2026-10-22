@@ -75,7 +75,7 @@ int ov05_0221BF08(Data *p) {
         sub_0203A880();
         break;
     case 2:
-        sub_020880CC(0, p->heap->heapId);
+        App_StartScreenFade(0, p->heap->heapId);
         Main_SetVBlankIntrCB(ov05_0221CE88, p);
         p->state = 0;
         p->fb7c = 4;

@@ -319,7 +319,7 @@ _022126BA:
 	mov r0, #0
 	str r0, [sp, #0x2c]
 	add r0, r2, #0
-	bl CalcAngleBetweenVecs
+	bl VEC_AngleBetween
 	mov r1, #2
 	lsl r1, r1, #0xc
 	cmp r0, r1

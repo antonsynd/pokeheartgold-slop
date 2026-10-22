@@ -848,7 +848,7 @@ void SetLCRNGSeed(u32 seed);
 typedef void (*Callback)(void *);
 void Main_SetVBlankIntrCB(Callback cb, void *data);
 void HBlankInterruptDisable(void);
-u32 sub_02021238(void);
+u32 DisableTouchPad(void);
 void GF_DestroyVramTransferManager(void);
 void ov92_0225D1FC(UnkStruct_ov116_0226139C *param0);
 // FUNCTION ov92_0225D1FC: matching C (pt2)
@@ -860,7 +860,7 @@ void ov92_0225D1FC(UnkStruct_ov116_0226139C *param0) {
 
     {
         u32 v0;
-        v0 = sub_02021238();
+        v0 = DisableTouchPad();
     }
 
     SetLCRNGSeed(param0->unk_78);

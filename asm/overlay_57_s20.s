@@ -225,7 +225,7 @@ _0223828C:
 	str r0, [sp, #0x24]
 	str r0, [sp, #0x28]
 	ldrb r0, [r4, #4]
-	bl sub_02091054
+	bl CapsuleMenu_GetSealMemberIdx
 	ldr r0, _022382E8 ; =0x00004E20
 	add r1, r6, #0
 	add r0, r5, r0

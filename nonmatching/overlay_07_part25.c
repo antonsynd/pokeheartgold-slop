@@ -130,7 +130,7 @@ void ov07_02232C64(SPLEmitter *a0) {
         int v10;
 
         v4 = SealOnCapsuleGetID(v3->unk14);
-        sub_0209109C(v4);
+        CapsuleMenu_IsAlphabetSeal(v4);
 
         v5 = SealOnCapsuleGetX(v3->unk14);
         v6 = SealOnCapsuleGetY(v3->unk14);

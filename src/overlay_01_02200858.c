@@ -62,7 +62,7 @@ extern void sub_02068DB8(void *a0, VecFx32 *a1);
 extern void sub_02069784(UnkOv01_02200858_sub *a0);
 extern void sub_02069978(NNSG3dRenderObj *a0, UnkOv01_02200858_sub *a1);
 extern void sub_020699AC(NNSG3dRenderObj *a0, VecFx32 *a1, VecFx32 *a2, MtxFx33 *a3);
-extern void sub_02020DA4(MtxFx33 *rotation, u16 xAngle, u16 yAngle, u16 zAngle);
+extern void MTX_Rot33Angles(MtxFx33 *rotation, u16 xAngle, u16 yAngle, u16 zAngle);
 extern BOOL sub_0205F0A8(LocalMapObject *object, u32 objectId, u32 mapId);
 extern u16 sub_0205F504(LocalMapObject *object);
 extern BOOL MetatileBehavior_IsWarpEntranceEast(u8 tile);
@@ -210,7 +210,7 @@ static void ov01_02200A08(void *param0, UnkOv01_02200858_Work *work) {
         angle = 0x5a;
         break;
     }
-    sub_02020DA4(&rotation, 0, angle, 0);
+    MTX_Rot33Angles(&rotation, 0, angle, 0);
     sub_02068DB8(param0, &translation);
     translation.x += offset->x;
     translation.y += offset->y;
@@ -283,7 +283,7 @@ _A08_switchend:
 	add r0, sp, #0x18
 	lsr r2, r2, #0x10
 	add r3, r1, #0
-	bl sub_02020DA4
+	bl MTX_Rot33Angles
 	add r0, r6, #0
 	add r1, sp, #0xc
 	bl sub_02068DB8

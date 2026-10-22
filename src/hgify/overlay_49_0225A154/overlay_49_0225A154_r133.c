@@ -8,14 +8,14 @@ extern u8 ov49_0226978C[];
 extern u16 ov49_022696F8[];
 int ov45_0222AAEC(int, int);
 int ov45_0222D7C0(void);
-int sub_020776B4(void);
-int sub_02077678(int);
+int TypeIconGfx_GetNarcId(void);
+int TypeIconGfx_GetCharFileId(int);
 void *GfGfxLoader_LoadFromNarc(int, int, int, int, int);
 void NNS_G2dGetUnpackedCharacterData(void *, void **);
 void BG_LoadCharTilesData(void *, u8, const void *, u32, u32);
 void Heap_Free(void *);
 void CopyToBgTilemapRect(void *, u8, u8, u8, u8, u8, const void *, u8, u8, u8, u8);
-int sub_0207769C(int);
+int TypeIconGfx_GetPlttOverride(int);
 void BgTilemapRectChangePalette(void *, u8, u8, u8, u8, u8, u8);
 void ScheduleBgTilemapBufferTransfer(void *, u8);
 void ov49_0225BEA0(int a, int b, void **bg, int heap, int param_5);
@@ -38,13 +38,13 @@ void ov49_0225BEA0(int a, int b, void **bg, int heap, int param_5) {
     do {
         if ((u16)ov45_0222AAEC(param_5, i) != 0) {
             id = ov45_0222D7C0();
-            narc = (void *)sub_020776B4();
-            data = GfGfxLoader_LoadFromNarc((int)narc, sub_02077678(id), 1, heap, 1);
+            narc = (void *)TypeIconGfx_GetNarcId();
+            data = GfGfxLoader_LoadFromNarc((int)narc, TypeIconGfx_GetCharFileId(id), 1, heap, 1);
             NNS_G2dGetUnpackedCharacterData(data, &res);
             BG_LoadCharTilesData(*bg, 6, *(void **)((u8 *)res + 0x14), 0x100, *pals);
             Heap_Free(data);
             CopyToBgTilemapRect(*bg, 6, 0x1a, y, 4, 2, src, 0, 0, 4, 2);
-            BgTilemapRectChangePalette(*bg, 6, 0x1a, y, 4, 2, sub_0207769C(id) + 11);
+            BgTilemapRectChangePalette(*bg, 6, 0x1a, y, 4, 2, TypeIconGfx_GetPlttOverride(id) + 11);
             ScheduleBgTilemapBufferTransfer(*bg, 6);
         }
         src += 0x10;

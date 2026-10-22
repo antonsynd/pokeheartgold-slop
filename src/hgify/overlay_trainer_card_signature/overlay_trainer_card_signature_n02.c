@@ -53,7 +53,7 @@ int TrainerCardSignature_Exit(OverlayManager *param_1, int *param_2)
     ov52_021E8B94(puVar1);
     FontID_Release(2);
     ov52_021E85A0(*puVar1);
-    sub_02021238();
+    DisableTouchPad();
     TextFlags_SetCanTouchSpeedUpPrint(0);
     TextFlags_SetCanABSpeedUpPrint(0);
     DestroyMsgData((MsgData *)puVar1[5]);

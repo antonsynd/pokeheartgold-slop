@@ -47,7 +47,7 @@ undefined4 func_0x0202599c(undefined4) __asm__("sub_0202599C");
 undefined4 GF_AssertFail(void);
 undefined4 ov01_021F1824(undefined4, undefined4, undefined4, undefined4, undefined4, undefined4, undefined4);
 undefined4 func_0x02025940(undefined4, undefined4) __asm__("sub_02025940");
-undefined4 sub_02026E18(undefined4, undefined4);
+undefined4 BillboardGfxSequence_SetData(undefined4, undefined4);
 
 int ov01_021F1758(int param_1,undefined4 param_2,undefined4 param_3,undefined4 param_4,
                  undefined4 param_5,int param_6,undefined4 param_7)
@@ -62,7 +62,7 @@ int ov01_021F1758(int param_1,undefined4 param_2,undefined4 param_3,undefined4 p
   iVar4 = *(int *)(param_1 + 0x20);
   uVar1 = ov01_021FC5A4(*(undefined4 *)(iVar4 + 0x10),param_3);
   uVar2 = ov01_021FC5A4(*(undefined4 *)(iVar4 + 0x14),param_4);
-  sub_02026E18(uVar2,auStack_24);
+  BillboardGfxSequence_SetData(uVar2,auStack_24);
   iVar3 = func_0x02025940(*(undefined4 *)(iVar4 + 0x18),param_5);
   if (iVar3 == 0) {
     GF_AssertFail();

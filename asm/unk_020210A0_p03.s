@@ -1,14 +1,14 @@
 	.include "macros.inc"
 	.include "unk_020210A0.inc"
 	.include "global.inc"
-	.public sub_02021148
+	.public InitializeTouchPad
 	.extern GF_TouchpadStartAutoSampling
 	.extern _021D2198
 	.extern sub_020211AC
 
 	.text
-	thumb_func_start sub_02021148
-sub_02021148: ; 0x02021148
+	thumb_func_start InitializeTouchPad
+InitializeTouchPad: ; 0x02021148
 	push {r4, lr}
 	sub sp, #8
 	ldr r1, _020211A8 ; =_021D2198 + 0x40
@@ -61,5 +61,5 @@ _020211A4:
 	pop {r4, pc}
 	.balign 4, 0
 _020211A8: .word _021D2198 + 0x40
-	thumb_func_end sub_02021148
+	thumb_func_end InitializeTouchPad
 

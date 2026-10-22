@@ -44,7 +44,7 @@ typedef unsigned short wchar16;
 #define LZCOUNT(x) ((x) ? __builtin_clz(x) : 32)
 undefined4 func_0x0202cc30(undefined4, undefined4) __asm__("sub_0202CC30");
 undefined4 NARC_New(undefined4, undefined4);
-undefined4 sub_02091084(undefined4);
+undefined4 CapsuleMenu_GetSealParticleIndex(undefined4);
 undefined4 ov07_0221FEE4(undefined4, undefined4, undefined4, undefined4);
 undefined4 func_0x0202cc48(void) __asm__("sub_0202CC48");
 undefined4 GF_AssertFail(void);
@@ -67,7 +67,7 @@ void ov07_02232730(undefined4 param_1,undefined4 *param_2)
     do {
       iVar1 = func_0x0202cc30(param_2 + 0x28,iVar4);
       if (((iVar1 != 0) && (uVar2 = func_0x0202cc48(), uVar2 != 0)) && ((int)uVar2 < 0x51)) {
-        uVar3 = sub_02091084(uVar2 & 0xff);
+        uVar3 = CapsuleMenu_GetSealParticleIndex(uVar2 & 0xff);
         param_2[param_2[4] + 0xe] = iVar1;
         if (param_2[param_2[4] + 5] != 0) {
           GF_AssertFail();
@@ -90,7 +90,7 @@ void ov07_02232730(undefined4 param_1,undefined4 *param_2)
     do {
       iVar1 = func_0x0202cc30(param_2 + 0x28,iVar4);
       if (((iVar1 != 0) && (uVar2 = func_0x0202cc48(), uVar2 != 0)) && ((int)uVar2 < 0x51)) {
-        uVar3 = sub_02091084(uVar2 & 0xff);
+        uVar3 = CapsuleMenu_GetSealParticleIndex(uVar2 & 0xff);
         param_2[param_2[4] + 0xe] = iVar1;
         if (param_2[param_2[4] + 5] != 0) {
           GF_AssertFail();
@@ -113,7 +113,7 @@ void ov07_02232730(undefined4 param_1,undefined4 *param_2)
     do {
       iVar1 = func_0x0202cc30(param_2 + 0x28,iVar4);
       if (((iVar1 != 0) && (uVar2 = func_0x0202cc48(), uVar2 != 0)) && ((int)uVar2 < 0x51)) {
-        uVar3 = sub_02091084(uVar2 & 0xff);
+        uVar3 = CapsuleMenu_GetSealParticleIndex(uVar2 & 0xff);
         param_2[param_2[4] + 0xe] = iVar1;
         if (param_2[param_2[4] + 5] != 0) {
           GF_AssertFail();
@@ -136,7 +136,7 @@ void ov07_02232730(undefined4 param_1,undefined4 *param_2)
     do {
       iVar1 = func_0x0202cc30(param_2 + 0x28,iVar4);
       if (((iVar1 != 0) && (uVar2 = func_0x0202cc48(), uVar2 != 0)) && ((int)uVar2 < 0x51)) {
-        uVar3 = sub_02091084(uVar2 & 0xff);
+        uVar3 = CapsuleMenu_GetSealParticleIndex(uVar2 & 0xff);
         param_2[param_2[4] + 0xe] = iVar1;
         if (param_2[param_2[4] + 5] != 0) {
           GF_AssertFail();

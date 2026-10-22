@@ -27,7 +27,7 @@ _0223453C:
 	bl SealOnCapsuleGetID
 	lsl r0, r0, #0x18
 	lsr r0, r0, #0x18
-	bl sub_0209109C
+	bl CapsuleMenu_IsAlphabetSeal
 	cmp r0, #0
 	bne _0223457E
 	add r0, r4, #0

@@ -43,8 +43,8 @@ ov112_021E76CC(undefined4 param_1, undefined4 param_2, undefined4 param_3, undef
     *(undefined4 *)(iVar1 + 0x20) = *(undefined4 *)(iVar2 + 8);
     ov112_021E795C(iVar1);
     SetKeyRepeatTimers(3, 8);
-    sub_020210BC();
-    sub_02021148(4);
+    EnableTouchPad();
+    InitializeTouchPad(4);
     ov112_021E7768(iVar1);
     TextFlags_SetCanABSpeedUpPrint(1);
     return 1;

@@ -167,7 +167,7 @@
 .public ov14_021F63C8
 .public ov14_021F63F0
 .public ov14_021F69F0
-.public ov15_022008B8
+.public gOverlayManagerTemplate_Bag
 .public sub_0201956C
 .public sub_020195C0
 .public sub_020195F4
@@ -180,7 +180,7 @@
 .public sub_02019A60
 .public sub_02019B08
 .public sub_02019B1C
-.public sub_0207789C
+.public BagView_Init
 .public sub_02088288
 .public sub_0208828C
 .public sub_02089D40

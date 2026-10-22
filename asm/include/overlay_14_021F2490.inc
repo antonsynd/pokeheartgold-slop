@@ -116,9 +116,9 @@
 .public sub_02074490
 .public sub_0207449C
 .public sub_020744A8
-.public sub_02077678
-.public sub_0207769C
-.public sub_020776B4
+.public TypeIconGfx_GetCharFileId
+.public TypeIconGfx_GetPlttOverride
+.public TypeIconGfx_GetNarcId
 .public ov14_021F2490
 .public ov14_021F2574
 .public ov14_021F259C

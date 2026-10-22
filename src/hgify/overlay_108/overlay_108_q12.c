@@ -40,8 +40,8 @@ undefined4 ov108_021E5C54(int param_1)
         sub_0200FBF4(1, 0);
         ResetVisibleHardwareWindows(0);
         ResetVisibleHardwareWindows(1);
-        sub_020210BC();
-        sub_02021148(4);
+        EnableTouchPad();
+        InitializeTouchPad(4);
         break;
     case 1:
         ov108_021E6C68(param_1);

@@ -1,12 +1,12 @@
 {
  "summary": {
-  "generated": "2026-10-16T02:47:49Z",
+  "generated": "2026-10-22T04:42:33Z",
   "by_status": {
    "matched": {
-    "files": 611,
-    "functions": 17904,
-    "insn_lines": 87311,
-    "text_bytes_est": 195662
+    "files": 607,
+    "functions": 17701,
+    "insn_lines": 87238,
+    "text_bytes_est": 195490
    },
    "blocked": {
     "files": 4,
@@ -15,23 +15,23 @@
     "text_bytes_est": 2942
    },
    "pending": {
-    "files": 242,
-    "functions": 1110,
-    "insn_lines": 175935,
-    "text_bytes_est": 392310
+    "files": 240,
+    "functions": 1094,
+    "insn_lines": 174242,
+    "text_bytes_est": 388566
    },
    "upstream": {
-    "files": 399,
+    "files": 406,
     "functions": 0,
     "insn_lines": 0,
     "text_bytes_est": 0
    }
   },
   "function_totals": {
-   "tracked": 19047,
-   "matched": 17904,
+   "tracked": 18828,
+   "matched": 17701,
    "partial_in_blocked": 20,
-   "pending": 1110
+   "pending": 1094
   },
   "blockers": [
    {
@@ -231,13 +231,13 @@
     "SoundSys_GetGBSoundsState",
     "SoundSys_ToggleGBSounds",
     "Sound_ClearBGMPauseFlags",
+    "Sound_LoadHeapStateBGMAndResetSubScene",
     "Sound_SetFieldBGM",
     "Sound_SetMasterVolume",
     "Sound_SetScene",
     "Sound_SetSceneAndPlayBGM",
     "sub_02004A60",
     "sub_02004AB8",
-    "sub_02004B10",
     "sub_02004B24",
     "sub_02004EB4",
     "sub_020051A4",
@@ -337,14 +337,14 @@
      "status": "matched"
     },
     {
-     "name": "sub_02004AFC",
+     "name": "Sound_SetSubScene",
      "mode": "thumb",
      "insns": 8,
      "size_est": 20,
      "status": "matched"
     },
     {
-     "name": "sub_02004B10",
+     "name": "Sound_LoadHeapStateBGMAndResetSubScene",
      "mode": "thumb",
      "insns": 8,
      "size_est": 20,
@@ -449,7 +449,7 @@
      "status": "matched"
     },
     {
-     "name": "sub_02005318",
+     "name": "Sound_LoadHeapStateBGM",
      "mode": "thumb",
      "insns": 5,
      "size_est": 14,
@@ -1679,7 +1679,7 @@
      "status": "matched"
     },
     {
-     "name": "sub_0200E5D4",
+     "name": "ClearWindowPixelBuffer",
      "mode": "thumb",
      "insns": 0,
      "size_est": 0,
@@ -5771,87 +5771,16 @@
    "functions": []
   },
   {
-   "file": "asm/unk_02020B8C.s",
+   "file": "asm/fx_util.s",
    "lsf_kind": "src",
-   "status": "matched",
-   "source": "hgify",
-   "objects": 10,
-   "function_count": 10,
-   "lines": 0,
-   "text_bytes_est": 0,
-   "data_only": false,
-   "functions": [
-    {
-     "name": "sub_02020B8C",
-     "mode": "thumb",
-     "insns": 0,
-     "size_est": 0,
-     "status": "matched"
-    },
-    {
-     "name": "sub_02020B94",
-     "mode": "thumb",
-     "insns": 0,
-     "size_est": 0,
-     "status": "matched"
-    },
-    {
-     "name": "GetDistanceFromPointToLine",
-     "mode": "thumb",
-     "insns": 0,
-     "size_est": 0,
-     "status": "matched"
-    },
-    {
-     "name": "CalcAngleBetweenVecs",
-     "mode": "thumb",
-     "insns": 0,
-     "size_est": 0,
-     "status": "matched"
-    },
-    {
-     "name": "sub_02020D2C",
-     "mode": "thumb",
-     "insns": 0,
-     "size_est": 0,
-     "status": "matched"
-    },
-    {
-     "name": "sub_02020DA4",
-     "mode": "thumb",
-     "insns": 0,
-     "size_est": 0,
-     "status": "matched"
-    },
-    {
-     "name": "sub_02020E10",
-     "mode": "thumb",
-     "insns": 0,
-     "size_est": 0,
-     "status": "matched"
-    },
-    {
-     "name": "sub_02020E80",
-     "mode": "thumb",
-     "insns": 0,
-     "size_est": 0,
-     "status": "matched"
-    },
-    {
-     "name": "sub_02020EB0",
-     "mode": "thumb",
-     "insns": 0,
-     "size_est": 0,
-     "status": "matched"
-    },
-    {
-     "name": "sub_02020F4C",
-     "mode": "thumb",
-     "insns": 0,
-     "size_est": 0,
-     "status": "matched"
-    }
-   ]
+   "status": "upstream",
+   "functions": []
+  },
+  {
+   "file": "asm/unk_02020E80.s",
+   "lsf_kind": "src",
+   "status": "upstream",
+   "functions": []
   },
   {
    "file": "asm/unk_020210A0.s",
@@ -5865,14 +5794,14 @@
    "data_only": false,
    "functions": [
     {
-     "name": "sub_020210BC",
+     "name": "EnableTouchPad",
      "mode": "thumb",
      "insns": 0,
      "size_est": 0,
      "status": "matched"
     },
     {
-     "name": "sub_020210D8",
+     "name": "InitializeTouchPadWithExternalBuffer",
      "mode": "thumb",
      "insns": 0,
      "size_est": 0,
@@ -5900,7 +5829,7 @@
      "status": "matched"
     },
     {
-     "name": "sub_02021238",
+     "name": "DisableTouchPad",
      "mode": "thumb",
      "insns": 0,
      "size_est": 0,
@@ -5991,6 +5920,7 @@
    "other_sections": [],
    "jumptable_words": 0,
    "imports": [
+    "BillboardGfxSequence_GetTexPlttIndexAt",
     "ClearMainOAM",
     "ClearSubOAM",
     "DC_FlushRange",
@@ -6111,8 +6041,7 @@
     "sub_020206C8",
     "sub_020206E0",
     "sub_02020738",
-    "sub_02020764",
-    "sub_02026DE0"
+    "sub_02020764"
    ],
    "exports": [
     "BillboardLists_Create",
@@ -6703,31 +6632,10 @@
    "functions": []
   },
   {
-   "file": "asm/unk_02026DE0.s",
+   "file": "asm/billboard_gfx_sequence.s",
    "lsf_kind": "src",
-   "status": "matched",
-   "source": "hgify",
-   "objects": 2,
-   "function_count": 2,
-   "lines": 0,
-   "text_bytes_est": 0,
-   "data_only": false,
-   "functions": [
-    {
-     "name": "sub_02026DE0",
-     "mode": "thumb",
-     "insns": 0,
-     "size_est": 0,
-     "status": "matched"
-    },
-    {
-     "name": "sub_02026E18",
-     "mode": "thumb",
-     "insns": 0,
-     "size_est": 0,
-     "status": "matched"
-    }
-   ]
+   "status": "upstream",
+   "functions": []
   },
   {
    "file": "asm/unk_02026E30.s",
@@ -21691,7 +21599,7 @@
    "file": "asm/unk_02077678.s",
    "lsf_kind": "src",
    "status": "matched",
-   "lines": 359,
+   "lines": 371,
    "function_count": 21,
    "text_bytes_est": 486,
    "data_only": false,
@@ -21718,29 +21626,29 @@
     "Sprite_DeleteAndFreeResources"
    ],
    "exports": [
-    "sub_02077678",
-    "sub_02077690",
-    "sub_0207769C",
-    "sub_020776B4",
-    "sub_020776B8",
-    "sub_020776EC",
-    "sub_02077720",
-    "sub_0207775C",
-    "sub_020777A4",
-    "sub_020777AC",
-    "sub_020777B4",
-    "sub_020777C8",
-    "sub_02077800",
-    "sub_02077818",
-    "sub_02077830",
-    "sub_02077834",
-    "sub_02077868",
-    "sub_02077870",
-    "thunk_ManagedSprite_DeleteAndFreeResources"
+    "GetMoveCategoryIconGfxCharFileId",
+    "GetMoveCategoryIconGfxNarcId",
+    "GetMoveCategoryIconGfxPlttOverride",
+    "GetMoveTypeAndCategoryIconPlttFileId",
+    "MoveCategoryIconSprite_DeleteAndFreeResources",
+    "MoveTypeIconSprite_DeleteAndFreeResources",
+    "SpriteManager_UnloadMoveCategoryIconCharResObjByTag",
+    "SpriteManager_UnloadMoveTypeAndCategoryIconCellAndAnimResObjsByTags",
+    "SpriteManager_UnloadMoveTypeAndCategoryIconPlttResObjByTag",
+    "SpriteManager_UnloadMoveTypeIconCharResObjByTag",
+    "SpriteSystem_CreateMoveTypeIconSprite",
+    "SpriteSystem_LoadMoveCategoryIconCharResObj",
+    "SpriteSystem_LoadMoveTypeAndCategoryIconsCellAndAnim",
+    "SpriteSystem_LoadMoveTypeAndCategoryIconsPltt",
+    "SpriteSystem_LoadMoveTypeAndCategoryIconsPlttToBuffer",
+    "SpriteSystem_LoadMoveTypeIconCharResObj",
+    "TypeIconGfx_GetCharFileId",
+    "TypeIconGfx_GetNarcId",
+    "TypeIconGfx_GetPlttOverride"
    ],
    "functions": [
     {
-     "name": "sub_02077678",
+     "name": "TypeIconGfx_GetCharFileId",
      "mode": "thumb",
      "insns": 10,
      "size_est": 22,
@@ -21748,28 +21656,28 @@
      "copyprop_entry": true
     },
     {
-     "name": "sub_02077690",
+     "name": "GetMoveTypeAndCategoryIconPlttFileId",
      "mode": "thumb",
      "insns": 2,
      "size_est": 4,
      "status": "matched"
     },
     {
-     "name": "sub_02077694",
+     "name": "GetMoveTypeAndCategoryIconCellFileId",
      "mode": "thumb",
      "insns": 2,
      "size_est": 4,
      "status": "matched"
     },
     {
-     "name": "sub_02077698",
+     "name": "GetMoveTypeAndCategoryIconAnimFileId",
      "mode": "thumb",
      "insns": 2,
      "size_est": 4,
      "status": "matched"
     },
     {
-     "name": "sub_0207769C",
+     "name": "TypeIconGfx_GetPlttOverride",
      "mode": "thumb",
      "insns": 10,
      "size_est": 22,
@@ -21777,77 +21685,77 @@
      "copyprop_entry": true
     },
     {
-     "name": "sub_020776B4",
+     "name": "TypeIconGfx_GetNarcId",
      "mode": "thumb",
      "insns": 2,
      "size_est": 4,
      "status": "matched"
     },
     {
-     "name": "sub_020776B8",
+     "name": "SpriteSystem_LoadMoveTypeIconCharResObj",
      "mode": "thumb",
      "insns": 22,
      "size_est": 50,
      "status": "matched"
     },
     {
-     "name": "sub_020776EC",
+     "name": "SpriteSystem_LoadMoveTypeAndCategoryIconsPltt",
      "mode": "thumb",
      "insns": 22,
      "size_est": 50,
      "status": "matched"
     },
     {
-     "name": "sub_02077720",
+     "name": "SpriteSystem_LoadMoveTypeAndCategoryIconsPlttToBuffer",
      "mode": "thumb",
      "insns": 26,
      "size_est": 58,
      "status": "matched"
     },
     {
-     "name": "sub_0207775C",
+     "name": "SpriteSystem_LoadMoveTypeAndCategoryIconsCellAndAnim",
      "mode": "thumb",
      "insns": 30,
      "size_est": 72,
      "status": "matched"
     },
     {
-     "name": "sub_020777A4",
+     "name": "SpriteManager_UnloadMoveTypeIconCharResObjByTag",
      "mode": "thumb",
      "insns": 3,
      "size_est": 6,
      "status": "matched"
     },
     {
-     "name": "sub_020777AC",
+     "name": "SpriteManager_UnloadMoveTypeAndCategoryIconPlttResObjByTag",
      "mode": "thumb",
      "insns": 3,
      "size_est": 6,
      "status": "matched"
     },
     {
-     "name": "sub_020777B4",
+     "name": "SpriteManager_UnloadMoveTypeAndCategoryIconCellAndAnimResObjsByTags",
      "mode": "thumb",
      "insns": 8,
      "size_est": 20,
      "status": "matched"
     },
     {
-     "name": "sub_020777C8",
+     "name": "SpriteSystem_CreateMoveTypeIconSprite",
      "mode": "thumb",
      "insns": 22,
      "size_est": 48,
      "status": "matched"
     },
     {
-     "name": "thunk_ManagedSprite_DeleteAndFreeResources",
+     "name": "MoveTypeIconSprite_DeleteAndFreeResources",
      "mode": "thumb",
      "insns": 3,
      "size_est": 6,
      "status": "matched"
     },
     {
-     "name": "sub_02077800",
+     "name": "GetMoveCategoryIconGfxCharFileId",
      "mode": "thumb",
      "insns": 10,
      "size_est": 22,
@@ -21855,7 +21763,7 @@
      "copyprop_entry": true
     },
     {
-     "name": "sub_02077818",
+     "name": "GetMoveCategoryIconGfxPlttOverride",
      "mode": "thumb",
      "insns": 10,
      "size_est": 22,
@@ -21863,28 +21771,28 @@
      "copyprop_entry": true
     },
     {
-     "name": "sub_02077830",
+     "name": "GetMoveCategoryIconGfxNarcId",
      "mode": "thumb",
      "insns": 2,
      "size_est": 4,
      "status": "matched"
     },
     {
-     "name": "sub_02077834",
+     "name": "SpriteSystem_LoadMoveCategoryIconCharResObj",
      "mode": "thumb",
      "insns": 22,
      "size_est": 50,
      "status": "matched"
     },
     {
-     "name": "sub_02077868",
+     "name": "SpriteManager_UnloadMoveCategoryIconCharResObjByTag",
      "mode": "thumb",
      "insns": 3,
      "size_est": 6,
      "status": "matched"
     },
     {
-     "name": "sub_02077870",
+     "name": "MoveCategoryIconSprite_DeleteAndFreeResources",
      "mode": "thumb",
      "insns": 3,
      "size_est": 6,
@@ -25299,58 +25207,8 @@
   {
    "file": "asm/unk_02092B04.s",
    "lsf_kind": "src",
-   "status": "matched",
-   "lines": 104,
-   "function_count": 3,
-   "text_bytes_est": 172,
-   "data_only": false,
-   "sections": {
-    "rodata_bytes": 0,
-    "data_bytes": 0,
-    "bss_bytes": 0,
-    "other_bytes": 0
-   },
-   "other_sections": [],
-   "jumptable_words": 0,
-   "imports": [
-    "FieldMap_FadeScreen",
-    "FieldSystem_ApplicationIsRunning",
-    "FieldSystem_LoadFieldOverlay",
-    "Heap_Free",
-    "TaskManager_GetEnvironment",
-    "TaskManager_GetFieldSystem",
-    "TaskManager_Jump",
-    "Task_Mart",
-    "sub_020505C8",
-    "sub_0207791C"
-   ],
-   "exports": [
-    "sub_02092B04"
-   ],
-   "functions": [
-    {
-     "name": "sub_02092B04",
-     "mode": "thumb",
-     "insns": 25,
-     "size_est": 58,
-     "status": "matched"
-    },
-    {
-     "name": "sub_02092B40",
-     "mode": "thumb",
-     "insns": 25,
-     "size_est": 58,
-     "status": "matched"
-    },
-    {
-     "name": "sub_02092B7C",
-     "mode": "thumb",
-     "insns": 23,
-     "size_est": 56,
-     "status": "matched"
-    }
-   ],
-   "source": "harness"
+   "status": "upstream",
+   "functions": []
   },
   {
    "file": "asm/unk_02092BB8.s",
@@ -34304,9 +34162,9 @@
    "jumptable_words": 0,
    "imports": [
     "FX_Div",
-    "_ll_mul",
-    "sub_02020B8C",
-    "sub_02020B94"
+    "FX_Max",
+    "FX_Min",
+    "_ll_mul"
    ],
    "exports": [
     "ov01_021FAE50"
@@ -38453,6 +38311,7 @@
    "imports": [
     "GetDeltaXByFacingDirection",
     "GetDeltaYByFacingDirection",
+    "MTX_Rot33Angles",
     "MapObject_CopyPositionVector",
     "MapObject_GetID",
     "MapObject_GetMapID",
@@ -38472,7 +38331,6 @@
     "ov01_021F1620",
     "ov01_021F1640",
     "ov01_021F19F4",
-    "sub_02020DA4",
     "sub_0205F0A8",
     "sub_0205F504",
     "sub_020611C8",
@@ -38793,6 +38651,7 @@
    "other_sections": [],
    "jumptable_words": 0,
    "imports": [
+    "BillboardGfxSequence_SetData",
     "GF_AssertFail",
     "GF_CreateNewVramTransferTask",
     "Heap_AllocAtEnd",
@@ -38834,7 +38693,6 @@
     "sub_02023E50",
     "sub_02023EA4",
     "sub_02023F90",
-    "sub_02026E18",
     "sub_0205F0A8",
     "sub_0205F990",
     "sub_0205F9B0",
@@ -51765,6 +51623,7 @@
     "BufferBoxMonNickname",
     "BufferIntegerAsString",
     "CalcMonStats",
+    "ClearWindowPixelBuffer",
     "CopyPokemonToPokemon",
     "DrawFrameAndWindow1",
     "FillWindowPixelBuffer",
@@ -51882,7 +51741,6 @@
     "sub_0200602C",
     "sub_0200E398",
     "sub_0200E3D8",
-    "sub_0200E5D4",
     "sub_0200FBF4",
     "sub_020135AC",
     "sub_020135D8",
@@ -58234,1333 +58092,22 @@
    ]
   },
   {
-   "file": "asm/overlay_15.s",
+   "file": "asm/application/bag/bag_app_main.s",
    "lsf_kind": "src",
-   "status": "matched",
-   "source": "hgify",
-   "objects": 188,
-   "function_count": 188,
-   "lines": 0,
-   "text_bytes_est": 0,
-   "data_only": false,
-   "functions": [
-    {
-     "name": "Bag_Main",
-     "mode": "thumb",
-     "insns": 0,
-     "size_est": 0,
-     "status": "matched"
-    },
-    {
-     "name": "Bag_Exit",
-     "mode": "thumb",
-     "insns": 0,
-     "size_est": 0,
-     "status": "matched"
-    },
-    {
-     "name": "BagApp_GetSaveStructPtrs",
-     "mode": "thumb",
-     "insns": 0,
-     "size_est": 0,
-     "status": "matched"
-    },
-    {
-     "name": "BagApp_GetSaveRoamers",
-     "mode": "thumb",
-     "insns": 0,
-     "size_est": 0,
-     "status": "matched"
-    },
-    {
-     "name": "BagApp_GetRepelStepCountAddr",
-     "mode": "thumb",
-     "insns": 0,
-     "size_est": 0,
-     "status": "matched"
-    },
-    {
-     "name": "BagApp_SetFlute",
-     "mode": "thumb",
-     "insns": 0,
-     "size_est": 0,
-     "status": "matched"
-    },
-    {
-     "name": "ov15_021F995C",
-     "mode": "thumb",
-     "insns": 0,
-     "size_est": 0,
-     "status": "matched"
-    },
-    {
-     "name": "ov15_021F9984",
-     "mode": "thumb",
-     "insns": 0,
-     "size_est": 0,
-     "status": "matched"
-    },
-    {
-     "name": "ov15_021F99A4",
-     "mode": "thumb",
-     "insns": 0,
-     "size_est": 0,
-     "status": "matched"
-    },
-    {
-     "name": "ov15_021F9A8C",
-     "mode": "thumb",
-     "insns": 0,
-     "size_est": 0,
-     "status": "matched"
-    },
-    {
-     "name": "ov15_021F9AE4",
-     "mode": "thumb",
-     "insns": 0,
-     "size_est": 0,
-     "status": "matched"
-    },
-    {
-     "name": "ov15_021F9C78",
-     "mode": "thumb",
-     "insns": 0,
-     "size_est": 0,
-     "status": "matched"
-    },
-    {
-     "name": "ov15_021F9CBC",
-     "mode": "thumb",
-     "insns": 0,
-     "size_est": 0,
-     "status": "matched"
-    },
-    {
-     "name": "ov15_021F9D28",
-     "mode": "thumb",
-     "insns": 0,
-     "size_est": 0,
-     "status": "matched"
-    },
-    {
-     "name": "ov15_021F9D8C",
-     "mode": "thumb",
-     "insns": 0,
-     "size_est": 0,
-     "status": "matched"
-    },
-    {
-     "name": "ov15_021F9D9C",
-     "mode": "thumb",
-     "insns": 0,
-     "size_est": 0,
-     "status": "matched"
-    },
-    {
-     "name": "ov15_021F9DB4",
-     "mode": "thumb",
-     "insns": 0,
-     "size_est": 0,
-     "status": "matched"
-    },
-    {
-     "name": "ov15_021F9EA8",
-     "mode": "thumb",
-     "insns": 0,
-     "size_est": 0,
-     "status": "matched"
-    },
-    {
-     "name": "ov15_021F9F08",
-     "mode": "thumb",
-     "insns": 0,
-     "size_est": 0,
-     "status": "matched"
-    },
-    {
-     "name": "ov15_021FA008",
-     "mode": "thumb",
-     "insns": 0,
-     "size_est": 0,
-     "status": "matched"
-    },
-    {
-     "name": "ov15_021FA028",
-     "mode": "thumb",
-     "insns": 0,
-     "size_est": 0,
-     "status": "matched"
-    },
-    {
-     "name": "ov15_021FA044",
-     "mode": "thumb",
-     "insns": 0,
-     "size_est": 0,
-     "status": "matched"
-    },
-    {
-     "name": "ov15_021FA070",
-     "mode": "thumb",
-     "insns": 0,
-     "size_est": 0,
-     "status": "matched"
-    },
-    {
-     "name": "ov15_021FA074",
-     "mode": "thumb",
-     "insns": 0,
-     "size_est": 0,
-     "status": "matched"
-    },
-    {
-     "name": "ov15_021FA098",
-     "mode": "thumb",
-     "insns": 0,
-     "size_est": 0,
-     "status": "matched"
-    },
-    {
-     "name": "ov15_021FA0D8",
-     "mode": "thumb",
-     "insns": 0,
-     "size_est": 0,
-     "status": "matched"
-    },
-    {
-     "name": "ov15_021FA0E4",
-     "mode": "thumb",
-     "insns": 0,
-     "size_est": 0,
-     "status": "matched"
-    },
-    {
-     "name": "ov15_021FA104",
-     "mode": "thumb",
-     "insns": 0,
-     "size_est": 0,
-     "status": "matched"
-    },
-    {
-     "name": "ov15_021FA12C",
-     "mode": "thumb",
-     "insns": 0,
-     "size_est": 0,
-     "status": "matched"
-    },
-    {
-     "name": "ov15_021FA1BC",
-     "mode": "thumb",
-     "insns": 0,
-     "size_est": 0,
-     "status": "matched"
-    },
-    {
-     "name": "ov15_021FA4F8",
-     "mode": "thumb",
-     "insns": 0,
-     "size_est": 0,
-     "status": "matched"
-    },
-    {
-     "name": "ov15_021FA578",
-     "mode": "thumb",
-     "insns": 0,
-     "size_est": 0,
-     "status": "matched"
-    },
-    {
-     "name": "ov15_021FA620",
-     "mode": "thumb",
-     "insns": 0,
-     "size_est": 0,
-     "status": "matched"
-    },
-    {
-     "name": "ov15_021FA650",
-     "mode": "thumb",
-     "insns": 0,
-     "size_est": 0,
-     "status": "matched"
-    },
-    {
-     "name": "ov15_021FA6C0",
-     "mode": "thumb",
-     "insns": 0,
-     "size_est": 0,
-     "status": "matched"
-    },
-    {
-     "name": "ov15_021FA6F4",
-     "mode": "thumb",
-     "insns": 0,
-     "size_est": 0,
-     "status": "matched"
-    },
-    {
-     "name": "ov15_021FA93C",
-     "mode": "thumb",
-     "insns": 0,
-     "size_est": 0,
-     "status": "matched"
-    },
-    {
-     "name": "ov15_021FAA18",
-     "mode": "thumb",
-     "insns": 0,
-     "size_est": 0,
-     "status": "matched"
-    },
-    {
-     "name": "ov15_021FAB34",
-     "mode": "thumb",
-     "insns": 0,
-     "size_est": 0,
-     "status": "matched"
-    },
-    {
-     "name": "ov15_021FAC2C",
-     "mode": "thumb",
-     "insns": 0,
-     "size_est": 0,
-     "status": "matched"
-    },
-    {
-     "name": "ov15_021FAC40",
-     "mode": "thumb",
-     "insns": 0,
-     "size_est": 0,
-     "status": "matched"
-    },
-    {
-     "name": "ov15_021FAC48",
-     "mode": "thumb",
-     "insns": 0,
-     "size_est": 0,
-     "status": "matched"
-    },
-    {
-     "name": "ov15_021FAD28",
-     "mode": "thumb",
-     "insns": 0,
-     "size_est": 0,
-     "status": "matched"
-    },
-    {
-     "name": "ov15_021FADE8",
-     "mode": "thumb",
-     "insns": 0,
-     "size_est": 0,
-     "status": "matched"
-    },
-    {
-     "name": "ov15_021FAE48",
-     "mode": "thumb",
-     "insns": 0,
-     "size_est": 0,
-     "status": "matched"
-    },
-    {
-     "name": "ov15_021FAFFC",
-     "mode": "thumb",
-     "insns": 0,
-     "size_est": 0,
-     "status": "matched"
-    },
-    {
-     "name": "ov15_021FB060",
-     "mode": "thumb",
-     "insns": 0,
-     "size_est": 0,
-     "status": "matched"
-    },
-    {
-     "name": "ov15_021FB114",
-     "mode": "thumb",
-     "insns": 0,
-     "size_est": 0,
-     "status": "matched"
-    },
-    {
-     "name": "ov15_021FB14C",
-     "mode": "thumb",
-     "insns": 0,
-     "size_est": 0,
-     "status": "matched"
-    },
-    {
-     "name": "ov15_021FB380",
-     "mode": "thumb",
-     "insns": 0,
-     "size_est": 0,
-     "status": "matched"
-    },
-    {
-     "name": "ov15_021FB3F0",
-     "mode": "thumb",
-     "insns": 0,
-     "size_est": 0,
-     "status": "matched"
-    },
-    {
-     "name": "ov15_021FB518",
-     "mode": "thumb",
-     "insns": 0,
-     "size_est": 0,
-     "status": "matched"
-    },
-    {
-     "name": "ov15_021FB5AC",
-     "mode": "thumb",
-     "insns": 0,
-     "size_est": 0,
-     "status": "matched"
-    },
-    {
-     "name": "ov15_021FB604",
-     "mode": "thumb",
-     "insns": 0,
-     "size_est": 0,
-     "status": "matched"
-    },
-    {
-     "name": "ov15_021FB654",
-     "mode": "thumb",
-     "insns": 0,
-     "size_est": 0,
-     "status": "matched"
-    },
-    {
-     "name": "ov15_021FB700",
-     "mode": "thumb",
-     "insns": 0,
-     "size_est": 0,
-     "status": "matched"
-    },
-    {
-     "name": "ov15_021FB784",
-     "mode": "thumb",
-     "insns": 0,
-     "size_est": 0,
-     "status": "matched"
-    },
-    {
-     "name": "ov15_021FB820",
-     "mode": "thumb",
-     "insns": 0,
-     "size_est": 0,
-     "status": "matched"
-    },
-    {
-     "name": "ov15_021FB830",
-     "mode": "thumb",
-     "insns": 0,
-     "size_est": 0,
-     "status": "matched"
-    },
-    {
-     "name": "BagApp_TryUseItemInPlace",
-     "mode": "thumb",
-     "insns": 0,
-     "size_est": 0,
-     "status": "matched"
-    },
-    {
-     "name": "BagApp_TryUseRepel",
-     "mode": "thumb",
-     "insns": 0,
-     "size_est": 0,
-     "status": "matched"
-    },
-    {
-     "name": "BagApp_ToggleGBSounds",
-     "mode": "thumb",
-     "insns": 0,
-     "size_est": 0,
-     "status": "matched"
-    },
-    {
-     "name": "ov15_021FBB28",
-     "mode": "thumb",
-     "insns": 0,
-     "size_est": 0,
-     "status": "matched"
-    },
-    {
-     "name": "ov15_021FBBB0",
-     "mode": "thumb",
-     "insns": 0,
-     "size_est": 0,
-     "status": "matched"
-    },
-    {
-     "name": "ov15_021FBC6C",
-     "mode": "thumb",
-     "insns": 0,
-     "size_est": 0,
-     "status": "matched"
-    },
-    {
-     "name": "ov15_021FBC8C",
-     "mode": "thumb",
-     "insns": 0,
-     "size_est": 0,
-     "status": "matched"
-    },
-    {
-     "name": "ov15_021FBCAC",
-     "mode": "thumb",
-     "insns": 0,
-     "size_est": 0,
-     "status": "matched"
-    },
-    {
-     "name": "ov15_021FBD28",
-     "mode": "thumb",
-     "insns": 0,
-     "size_est": 0,
-     "status": "matched"
-    },
-    {
-     "name": "ov15_021FBD50",
-     "mode": "thumb",
-     "insns": 0,
-     "size_est": 0,
-     "status": "matched"
-    },
-    {
-     "name": "ov15_021FBF98",
-     "mode": "thumb",
-     "insns": 0,
-     "size_est": 0,
-     "status": "matched"
-    },
-    {
-     "name": "ov15_021FBFC0",
-     "mode": "thumb",
-     "insns": 0,
-     "size_est": 0,
-     "status": "matched"
-    },
-    {
-     "name": "ov15_021FBFF8",
-     "mode": "thumb",
-     "insns": 0,
-     "size_est": 0,
-     "status": "matched"
-    },
-    {
-     "name": "ov15_021FC01C",
-     "mode": "thumb",
-     "insns": 0,
-     "size_est": 0,
-     "status": "matched"
-    },
-    {
-     "name": "ov15_021FC140",
-     "mode": "thumb",
-     "insns": 0,
-     "size_est": 0,
-     "status": "matched"
-    },
-    {
-     "name": "ov15_021FC164",
-     "mode": "thumb",
-     "insns": 0,
-     "size_est": 0,
-     "status": "matched"
-    },
-    {
-     "name": "ov15_021FC224",
-     "mode": "thumb",
-     "insns": 0,
-     "size_est": 0,
-     "status": "matched"
-    },
-    {
-     "name": "ov15_021FC2E0",
-     "mode": "thumb",
-     "insns": 0,
-     "size_est": 0,
-     "status": "matched"
-    },
-    {
-     "name": "ov15_021FC37C",
-     "mode": "thumb",
-     "insns": 0,
-     "size_est": 0,
-     "status": "matched"
-    },
-    {
-     "name": "ov15_021FC3E0",
-     "mode": "thumb",
-     "insns": 0,
-     "size_est": 0,
-     "status": "matched"
-    },
-    {
-     "name": "ov15_021FC3EC",
-     "mode": "thumb",
-     "insns": 0,
-     "size_est": 0,
-     "status": "matched"
-    },
-    {
-     "name": "ov15_021FC784",
-     "mode": "thumb",
-     "insns": 0,
-     "size_est": 0,
-     "status": "matched"
-    },
-    {
-     "name": "ov15_021FC7EC",
-     "mode": "thumb",
-     "insns": 0,
-     "size_est": 0,
-     "status": "matched"
-    },
-    {
-     "name": "ov15_021FCB64",
-     "mode": "thumb",
-     "insns": 0,
-     "size_est": 0,
-     "status": "matched"
-    },
-    {
-     "name": "ov15_021FCD80",
-     "mode": "thumb",
-     "insns": 0,
-     "size_est": 0,
-     "status": "matched"
-    },
-    {
-     "name": "ov15_021FCDE4",
-     "mode": "thumb",
-     "insns": 0,
-     "size_est": 0,
-     "status": "matched"
-    },
-    {
-     "name": "ov15_021FCFC8",
-     "mode": "thumb",
-     "insns": 0,
-     "size_est": 0,
-     "status": "matched"
-    },
-    {
-     "name": "ov15_021FD058",
-     "mode": "thumb",
-     "insns": 0,
-     "size_est": 0,
-     "status": "matched"
-    },
-    {
-     "name": "ov15_021FD0E8",
-     "mode": "thumb",
-     "insns": 0,
-     "size_est": 0,
-     "status": "matched"
-    },
-    {
-     "name": "ov15_021FD10C",
-     "mode": "thumb",
-     "insns": 0,
-     "size_est": 0,
-     "status": "matched"
-    },
-    {
-     "name": "ov15_021FD2FC",
-     "mode": "thumb",
-     "insns": 0,
-     "size_est": 0,
-     "status": "matched"
-    },
-    {
-     "name": "ov15_021FD3AC",
-     "mode": "thumb",
-     "insns": 0,
-     "size_est": 0,
-     "status": "matched"
-    },
-    {
-     "name": "ov15_021FD3C0",
-     "mode": "thumb",
-     "insns": 0,
-     "size_est": 0,
-     "status": "matched"
-    },
-    {
-     "name": "ov15_021FD3F0",
-     "mode": "thumb",
-     "insns": 0,
-     "size_est": 0,
-     "status": "matched"
-    },
-    {
-     "name": "ov15_021FD404",
-     "mode": "thumb",
-     "insns": 0,
-     "size_est": 0,
-     "status": "matched"
-    },
-    {
-     "name": "ov15_021FD43C",
-     "mode": "thumb",
-     "insns": 0,
-     "size_est": 0,
-     "status": "matched"
-    },
-    {
-     "name": "ov15_021FD4C0",
-     "mode": "thumb",
-     "insns": 0,
-     "size_est": 0,
-     "status": "matched"
-    },
-    {
-     "name": "ov15_021FD574",
-     "mode": "thumb",
-     "insns": 0,
-     "size_est": 0,
-     "status": "matched"
-    },
-    {
-     "name": "ov15_021FD774",
-     "mode": "thumb",
-     "insns": 0,
-     "size_est": 0,
-     "status": "matched"
-    },
-    {
-     "name": "ov15_021FD788",
-     "mode": "thumb",
-     "insns": 0,
-     "size_est": 0,
-     "status": "matched"
-    },
-    {
-     "name": "ov15_021FD7D0",
-     "mode": "thumb",
-     "insns": 0,
-     "size_est": 0,
-     "status": "matched"
-    },
-    {
-     "name": "ov15_021FD810",
-     "mode": "thumb",
-     "insns": 0,
-     "size_est": 0,
-     "status": "matched"
-    },
-    {
-     "name": "ov15_021FD850",
-     "mode": "thumb",
-     "insns": 0,
-     "size_est": 0,
-     "status": "matched"
-    },
-    {
-     "name": "ov15_021FD93C",
-     "mode": "thumb",
-     "insns": 0,
-     "size_est": 0,
-     "status": "matched"
-    },
-    {
-     "name": "ov15_021FDAD0",
-     "mode": "thumb",
-     "insns": 0,
-     "size_est": 0,
-     "status": "matched"
-    },
-    {
-     "name": "ov15_021FDAF4",
-     "mode": "thumb",
-     "insns": 0,
-     "size_est": 0,
-     "status": "matched"
-    },
-    {
-     "name": "ov15_021FDB2C",
-     "mode": "thumb",
-     "insns": 0,
-     "size_est": 0,
-     "status": "matched"
-    },
-    {
-     "name": "ov15_021FDC6C",
-     "mode": "thumb",
-     "insns": 0,
-     "size_est": 0,
-     "status": "matched"
-    },
-    {
-     "name": "ov15_021FDC88",
-     "mode": "thumb",
-     "insns": 0,
-     "size_est": 0,
-     "status": "matched"
-    },
-    {
-     "name": "ov15_021FDD54",
-     "mode": "thumb",
-     "insns": 0,
-     "size_est": 0,
-     "status": "matched"
-    },
-    {
-     "name": "ov15_021FDD70",
-     "mode": "thumb",
-     "insns": 0,
-     "size_est": 0,
-     "status": "matched"
-    },
-    {
-     "name": "ov15_021FDF88",
-     "mode": "thumb",
-     "insns": 0,
-     "size_est": 0,
-     "status": "matched"
-    },
-    {
-     "name": "ov15_021FE020",
-     "mode": "thumb",
-     "insns": 0,
-     "size_est": 0,
-     "status": "matched"
-    },
-    {
-     "name": "ov15_021FE154",
-     "mode": "thumb",
-     "insns": 0,
-     "size_est": 0,
-     "status": "matched"
-    },
-    {
-     "name": "ov15_021FE17C",
-     "mode": "thumb",
-     "insns": 0,
-     "size_est": 0,
-     "status": "matched"
-    },
-    {
-     "name": "ov15_021FE1D0",
-     "mode": "thumb",
-     "insns": 0,
-     "size_est": 0,
-     "status": "matched"
-    },
-    {
-     "name": "ov15_021FE204",
-     "mode": "thumb",
-     "insns": 0,
-     "size_est": 0,
-     "status": "matched"
-    },
-    {
-     "name": "ov15_021FE3E0",
-     "mode": "thumb",
-     "insns": 0,
-     "size_est": 0,
-     "status": "matched"
-    },
-    {
-     "name": "ov15_021FE4C8",
-     "mode": "thumb",
-     "insns": 0,
-     "size_est": 0,
-     "status": "matched"
-    },
-    {
-     "name": "ov15_021FE504",
-     "mode": "thumb",
-     "insns": 0,
-     "size_est": 0,
-     "status": "matched"
-    },
-    {
-     "name": "ov15_021FE528",
-     "mode": "thumb",
-     "insns": 0,
-     "size_est": 0,
-     "status": "matched"
-    },
-    {
-     "name": "ov15_021FE584",
-     "mode": "thumb",
-     "insns": 0,
-     "size_est": 0,
-     "status": "matched"
-    },
-    {
-     "name": "ov15_021FE5A4",
-     "mode": "thumb",
-     "insns": 0,
-     "size_est": 0,
-     "status": "matched"
-    },
-    {
-     "name": "ov15_021FE5C4",
-     "mode": "thumb",
-     "insns": 0,
-     "size_est": 0,
-     "status": "matched"
-    },
-    {
-     "name": "ov15_021FE620",
-     "mode": "thumb",
-     "insns": 0,
-     "size_est": 0,
-     "status": "matched"
-    },
-    {
-     "name": "ov15_021FE868",
-     "mode": "thumb",
-     "insns": 0,
-     "size_est": 0,
-     "status": "matched"
-    },
-    {
-     "name": "ov15_021FE874",
-     "mode": "thumb",
-     "insns": 0,
-     "size_est": 0,
-     "status": "matched"
-    },
-    {
-     "name": "ov15_021FE8A4",
-     "mode": "thumb",
-     "insns": 0,
-     "size_est": 0,
-     "status": "matched"
-    },
-    {
-     "name": "ov15_021FE8C4",
-     "mode": "thumb",
-     "insns": 0,
-     "size_est": 0,
-     "status": "matched"
-    },
-    {
-     "name": "ov15_021FE990",
-     "mode": "thumb",
-     "insns": 0,
-     "size_est": 0,
-     "status": "matched"
-    },
-    {
-     "name": "ov15_021FE9B0",
-     "mode": "thumb",
-     "insns": 0,
-     "size_est": 0,
-     "status": "matched"
-    },
-    {
-     "name": "ov15_021FE9F0",
-     "mode": "thumb",
-     "insns": 0,
-     "size_est": 0,
-     "status": "matched"
-    },
-    {
-     "name": "ov15_021FEA5C",
-     "mode": "thumb",
-     "insns": 0,
-     "size_est": 0,
-     "status": "matched"
-    },
-    {
-     "name": "ov15_021FEB64",
-     "mode": "thumb",
-     "insns": 0,
-     "size_est": 0,
-     "status": "matched"
-    },
-    {
-     "name": "ov15_021FEB84",
-     "mode": "thumb",
-     "insns": 0,
-     "size_est": 0,
-     "status": "matched"
-    },
-    {
-     "name": "ov15_021FECA0",
-     "mode": "thumb",
-     "insns": 0,
-     "size_est": 0,
-     "status": "matched"
-    },
-    {
-     "name": "ov15_021FECC4",
-     "mode": "thumb",
-     "insns": 0,
-     "size_est": 0,
-     "status": "matched"
-    },
-    {
-     "name": "ov15_021FECD8",
-     "mode": "thumb",
-     "insns": 0,
-     "size_est": 0,
-     "status": "matched"
-    },
-    {
-     "name": "ov15_021FED24",
-     "mode": "thumb",
-     "insns": 0,
-     "size_est": 0,
-     "status": "matched"
-    },
-    {
-     "name": "ov15_021FED3C",
-     "mode": "thumb",
-     "insns": 0,
-     "size_est": 0,
-     "status": "matched"
-    },
-    {
-     "name": "ov15_021FED58",
-     "mode": "thumb",
-     "insns": 0,
-     "size_est": 0,
-     "status": "matched"
-    },
-    {
-     "name": "ov15_021FED60",
-     "mode": "thumb",
-     "insns": 0,
-     "size_est": 0,
-     "status": "matched"
-    },
-    {
-     "name": "ov15_021FEDEC",
-     "mode": "thumb",
-     "insns": 0,
-     "size_est": 0,
-     "status": "matched"
-    },
-    {
-     "name": "ov15_021FEEA4",
-     "mode": "thumb",
-     "insns": 0,
-     "size_est": 0,
-     "status": "matched"
-    },
-    {
-     "name": "ov15_021FEF48",
-     "mode": "thumb",
-     "insns": 0,
-     "size_est": 0,
-     "status": "matched"
-    },
-    {
-     "name": "ov15_021FEFC4",
-     "mode": "thumb",
-     "insns": 0,
-     "size_est": 0,
-     "status": "matched"
-    },
-    {
-     "name": "ov15_021FF004",
-     "mode": "thumb",
-     "insns": 0,
-     "size_est": 0,
-     "status": "matched"
-    },
-    {
-     "name": "ov15_021FF058",
-     "mode": "thumb",
-     "insns": 0,
-     "size_est": 0,
-     "status": "matched"
-    },
-    {
-     "name": "ov15_021FF068",
-     "mode": "thumb",
-     "insns": 0,
-     "size_est": 0,
-     "status": "matched"
-    },
-    {
-     "name": "ov15_021FF1E0",
-     "mode": "thumb",
-     "insns": 0,
-     "size_est": 0,
-     "status": "matched"
-    },
-    {
-     "name": "ov15_021FF29C",
-     "mode": "thumb",
-     "insns": 0,
-     "size_est": 0,
-     "status": "matched"
-    },
-    {
-     "name": "ov15_021FF4EC",
-     "mode": "thumb",
-     "insns": 0,
-     "size_est": 0,
-     "status": "matched"
-    },
-    {
-     "name": "ov15_021FF560",
-     "mode": "thumb",
-     "insns": 0,
-     "size_est": 0,
-     "status": "matched"
-    },
-    {
-     "name": "ov15_021FF570",
-     "mode": "thumb",
-     "insns": 0,
-     "size_est": 0,
-     "status": "matched"
-    },
-    {
-     "name": "ov15_021FF66C",
-     "mode": "thumb",
-     "insns": 0,
-     "size_est": 0,
-     "status": "matched"
-    },
-    {
-     "name": "ov15_021FF6BC",
-     "mode": "thumb",
-     "insns": 0,
-     "size_est": 0,
-     "status": "matched"
-    },
-    {
-     "name": "ov15_021FF758",
-     "mode": "thumb",
-     "insns": 0,
-     "size_est": 0,
-     "status": "matched"
-    },
-    {
-     "name": "ov15_021FF7AC",
-     "mode": "thumb",
-     "insns": 0,
-     "size_est": 0,
-     "status": "matched"
-    },
-    {
-     "name": "ov15_021FF7C4",
-     "mode": "thumb",
-     "insns": 0,
-     "size_est": 0,
-     "status": "matched"
-    },
-    {
-     "name": "ov15_021FF7FC",
-     "mode": "thumb",
-     "insns": 0,
-     "size_est": 0,
-     "status": "matched"
-    },
-    {
-     "name": "ov15_021FF834",
-     "mode": "thumb",
-     "insns": 0,
-     "size_est": 0,
-     "status": "matched"
-    },
-    {
-     "name": "ov15_021FF844",
-     "mode": "thumb",
-     "insns": 0,
-     "size_est": 0,
-     "status": "matched"
-    },
-    {
-     "name": "ov15_021FF850",
-     "mode": "thumb",
-     "insns": 0,
-     "size_est": 0,
-     "status": "matched"
-    },
-    {
-     "name": "ov15_021FF894",
-     "mode": "thumb",
-     "insns": 0,
-     "size_est": 0,
-     "status": "matched"
-    },
-    {
-     "name": "ov15_021FF8D4",
-     "mode": "thumb",
-     "insns": 0,
-     "size_est": 0,
-     "status": "matched"
-    },
-    {
-     "name": "ov15_021FF8F0",
-     "mode": "thumb",
-     "insns": 0,
-     "size_est": 0,
-     "status": "matched"
-    },
-    {
-     "name": "ov15_021FF950",
-     "mode": "thumb",
-     "insns": 0,
-     "size_est": 0,
-     "status": "matched"
-    },
-    {
-     "name": "ov15_021FF964",
-     "mode": "thumb",
-     "insns": 0,
-     "size_est": 0,
-     "status": "matched"
-    },
-    {
-     "name": "ov15_021FF97C",
-     "mode": "thumb",
-     "insns": 0,
-     "size_est": 0,
-     "status": "matched"
-    },
-    {
-     "name": "ov15_021FFA40",
-     "mode": "thumb",
-     "insns": 0,
-     "size_est": 0,
-     "status": "matched"
-    },
-    {
-     "name": "ov15_021FFAD0",
-     "mode": "thumb",
-     "insns": 0,
-     "size_est": 0,
-     "status": "matched"
-    },
-    {
-     "name": "ov15_021FFEC0",
-     "mode": "thumb",
-     "insns": 0,
-     "size_est": 0,
-     "status": "matched"
-    },
-    {
-     "name": "ov15_021FFECC",
-     "mode": "thumb",
-     "insns": 0,
-     "size_est": 0,
-     "status": "matched"
-    },
-    {
-     "name": "ov15_021FFF24",
-     "mode": "thumb",
-     "insns": 0,
-     "size_est": 0,
-     "status": "matched"
-    },
-    {
-     "name": "ov15_021FFF34",
-     "mode": "thumb",
-     "insns": 0,
-     "size_est": 0,
-     "status": "matched"
-    },
-    {
-     "name": "ov15_021FFFDC",
-     "mode": "thumb",
-     "insns": 0,
-     "size_est": 0,
-     "status": "matched"
-    },
-    {
-     "name": "ov15_02200030",
-     "mode": "thumb",
-     "insns": 0,
-     "size_est": 0,
-     "status": "matched"
-    },
-    {
-     "name": "ov15_0220005C",
-     "mode": "thumb",
-     "insns": 0,
-     "size_est": 0,
-     "status": "matched"
-    },
-    {
-     "name": "ov15_022000F4",
-     "mode": "thumb",
-     "insns": 0,
-     "size_est": 0,
-     "status": "matched"
-    },
-    {
-     "name": "ov15_02200140",
-     "mode": "thumb",
-     "insns": 0,
-     "size_est": 0,
-     "status": "matched"
-    },
-    {
-     "name": "ov15_022001C4",
-     "mode": "thumb",
-     "insns": 0,
-     "size_est": 0,
-     "status": "matched"
-    },
-    {
-     "name": "ov15_0220023C",
-     "mode": "thumb",
-     "insns": 0,
-     "size_est": 0,
-     "status": "matched"
-    },
-    {
-     "name": "ov15_02200294",
-     "mode": "thumb",
-     "insns": 0,
-     "size_est": 0,
-     "status": "matched"
-    },
-    {
-     "name": "ov15_022002B4",
-     "mode": "thumb",
-     "insns": 0,
-     "size_est": 0,
-     "status": "matched"
-    },
-    {
-     "name": "ov15_022002EC",
-     "mode": "thumb",
-     "insns": 0,
-     "size_est": 0,
-     "status": "matched"
-    },
-    {
-     "name": "ov15_02200300",
-     "mode": "thumb",
-     "insns": 0,
-     "size_est": 0,
-     "status": "matched"
-    },
-    {
-     "name": "ov15_02200428",
-     "mode": "thumb",
-     "insns": 0,
-     "size_est": 0,
-     "status": "matched"
-    },
-    {
-     "name": "ov15_02200458",
-     "mode": "thumb",
-     "insns": 0,
-     "size_est": 0,
-     "status": "matched"
-    },
-    {
-     "name": "ov15_022004DC",
-     "mode": "thumb",
-     "insns": 0,
-     "size_est": 0,
-     "status": "matched"
-    }
-   ]
+   "status": "upstream",
+   "functions": []
+  },
+  {
+   "file": "asm/application/bag/bag_app_window.s",
+   "lsf_kind": "src",
+   "status": "upstream",
+   "functions": []
+  },
+  {
+   "file": "asm/application/bag/bag_app_sprite.s",
+   "lsf_kind": "src",
+   "status": "upstream",
+   "functions": []
   },
   {
    "file": "asm/overlay_16_022014A0.s",
@@ -138749,6 +137296,7 @@
    "other_sections": [],
    "jumptable_words": 0,
    "imports": [
+    "App_StartScreenFade",
     "BeginNormalPaletteFade",
     "Camera_Delete",
     "Camera_Init_FromTargetDistanceAndAngle",
@@ -138796,8 +137344,7 @@
     "RequestSwap3DBuffers",
     "Sound_SetSceneAndPlayBGM",
     "Thunk_G3X_Reset",
-    "memset",
-    "sub_020880CC"
+    "memset"
    ],
    "exports": [
     "ov104_021E5900",
@@ -146427,35 +144974,6 @@
    ]
   },
   {
-   "file": "asm/unk_02020B8C.s",
-   "lsf_kind": "asm",
-   "status": "pending",
-   "split": "hgify",
-   "lines": 56,
-   "function_count": 1,
-   "text_bytes_est": 88,
-   "data_only": false,
-   "sections": {
-    "rodata_bytes": 0,
-    "data_bytes": 0,
-    "bss_bytes": 0,
-    "other_bytes": 0
-   },
-   "other_sections": [],
-   "jumptable_words": 0,
-   "imports": [],
-   "exports": [],
-   "functions": [
-    {
-     "name": "sub_02020EF4",
-     "mode": "thumb",
-     "insns": 42,
-     "size_est": 88,
-     "status": "pending"
-    }
-   ]
-  },
-  {
    "file": "asm/unk_020210A0.s",
    "lsf_kind": "asm",
    "status": "pending",
@@ -146483,7 +145001,7 @@
      "status": "pending"
     },
     {
-     "name": "sub_02021148",
+     "name": "InitializeTouchPad",
      "mode": "thumb",
      "insns": 46,
      "size_est": 98,
@@ -149626,133 +148144,6 @@
      "mode": "thumb",
      "insns": 130,
      "size_est": 302,
-     "status": "pending"
-    }
-   ]
-  },
-  {
-   "file": "asm/overlay_15.s",
-   "lsf_kind": "asm",
-   "status": "pending",
-   "split": "hgify",
-   "lines": 2823,
-   "function_count": 15,
-   "text_bytes_est": 3656,
-   "data_only": false,
-   "sections": {
-    "rodata_bytes": 3596,
-    "data_bytes": 384,
-    "bss_bytes": 32,
-    "other_bytes": 0
-   },
-   "other_sections": [],
-   "jumptable_words": 0,
-   "imports": [],
-   "exports": [],
-   "functions": [
-    {
-     "name": "Bag_Init",
-     "mode": "thumb",
-     "insns": 267,
-     "size_est": 634,
-     "status": "pending"
-    },
-    {
-     "name": "ov15_021F9D60",
-     "mode": "thumb",
-     "insns": 21,
-     "size_est": 42,
-     "status": "pending"
-    },
-    {
-     "name": "ov15_021FA170",
-     "mode": "thumb",
-     "insns": 32,
-     "size_est": 74,
-     "status": "pending"
-    },
-    {
-     "name": "ov15_021FA68C",
-     "mode": "thumb",
-     "insns": 26,
-     "size_est": 52,
-     "status": "pending"
-    },
-    {
-     "name": "ov15_021FA73C",
-     "mode": "thumb",
-     "insns": 212,
-     "size_est": 472,
-     "status": "pending"
-    },
-    {
-     "name": "ov15_021FAD80",
-     "mode": "thumb",
-     "insns": 44,
-     "size_est": 102,
-     "status": "pending"
-    },
-    {
-     "name": "ov15_021FB680",
-     "mode": "thumb",
-     "insns": 55,
-     "size_est": 126,
-     "status": "pending"
-    },
-    {
-     "name": "ov15_021FC41C",
-     "mode": "thumb",
-     "insns": 396,
-     "size_est": 854,
-     "status": "pending"
-    },
-    {
-     "name": "ov15_021FD24C",
-     "mode": "thumb",
-     "insns": 80,
-     "size_est": 172,
-     "status": "pending"
-    },
-    {
-     "name": "ov15_021FDF20",
-     "mode": "thumb",
-     "insns": 43,
-     "size_est": 100,
-     "status": "pending"
-    },
-    {
-     "name": "ov15_021FE914",
-     "mode": "thumb",
-     "insns": 57,
-     "size_est": 122,
-     "status": "pending"
-    },
-    {
-     "name": "ov15_021FF0FC",
-     "mode": "thumb",
-     "insns": 98,
-     "size_est": 226,
-     "status": "pending"
-    },
-    {
-     "name": "ov15_021FF320",
-     "mode": "thumb",
-     "insns": 33,
-     "size_est": 66,
-     "status": "pending"
-    },
-    {
-     "name": "ov15_021FF364",
-     "mode": "thumb",
-     "insns": 184,
-     "size_est": 384,
-     "status": "pending"
-    },
-    {
-     "name": "ov15_021FFDD8",
-     "mode": "thumb",
-     "insns": 103,
-     "size_est": 230,
      "status": "pending"
     }
    ]

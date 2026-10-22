@@ -13,7 +13,7 @@ void MoneyBoxSys_Delete(undefined4 param_1);
 void MoneyBoxSys_Delete(undefined4 param_1)
 
 {
-    sub_0200E5D4(param_1, 0);
+    ClearWindowPixelBuffer(param_1, 0);
     WindowArray_Delete(param_1, 1);
     return;
 }

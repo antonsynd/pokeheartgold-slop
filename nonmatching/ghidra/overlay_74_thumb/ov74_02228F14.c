@@ -43,7 +43,7 @@ typedef unsigned short wchar16;
 #define POPCOUNT(x) __builtin_popcount(x)
 #define LZCOUNT(x) ((x) ? __builtin_clz(x) : 32)
 undefined4 ov74_02235464();
-undefined4 sub_0200E5D4();
+undefined4 ClearWindowPixelBuffer();
 undefined4 WindowIsInUse();
 undefined4 RemoveWindow();
 undefined4 ov74_02235568();
@@ -66,7 +66,7 @@ undefined4 ov74_02228F14(int param_1,undefined4 param_2,undefined4 param_3,undef
     return 1;
   }
   if ((uRam021d1154 & 3) != 0) {
-    sub_0200E5D4(param_1 + 0x18,0);
+    ClearWindowPixelBuffer(param_1 + 0x18,0);
     RemoveWindow(param_1 + 0x18);
     return 0;
   }

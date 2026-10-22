@@ -43,7 +43,7 @@ typedef unsigned short wchar16;
 #define POPCOUNT(x) __builtin_popcount(x)
 #define LZCOUNT(x) ((x) ? __builtin_clz(x) : 32)
 undefined4 ov91_0225DC3C();
-undefined4 sub_020210D8();
+undefined4 InitializeTouchPadWithExternalBuffer();
 undefined4 ov91_0225F388();
 undefined4 GF_AssertFail(void);
 void * Heap_Alloc(int, unsigned int);
@@ -71,7 +71,7 @@ ov91_0225CDF4(int param_1,undefined4 param_2,undefined4 param_3,undefined4 param
   ov91_0225F508((int)puVar1,param_1);
   ov91_0225F0C0((undefined4 *)(puVar1 + 0x878c),(int)(puVar1 + 0x1ab4),param_1);
   ov91_0225F388(puVar1 + 0x87cc);
-  iVar2 = sub_020210D8(0x22627c0,8,4);
+  iVar2 = InitializeTouchPadWithExternalBuffer(0x22627c0,8,4);
   if (iVar2 != 1) {
     GF_AssertFail();
   }

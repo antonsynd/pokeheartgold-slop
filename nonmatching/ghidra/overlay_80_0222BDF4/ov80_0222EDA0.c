@@ -45,7 +45,7 @@ typedef unsigned short wchar16;
 undefined4 String_Delete();
 undefined4 SysTask_Destroy();
 undefined4 DestroyListMenu();
-undefined4 sub_0200E5D4();
+undefined4 ClearWindowPixelBuffer();
 undefined4 DestroyMsgData();
 undefined4 RemoveWindow();
 undefined4 PlaySE();
@@ -63,7 +63,7 @@ void ov80_0222EDA0(int *param_1,int param_2)
     PlaySE(0x5dc);
   }
   DestroyListMenu(param_1[0x6d],0,0);
-  sub_0200E5D4(param_1[0x68],0);
+  ClearWindowPixelBuffer(param_1[0x68],0);
   RemoveWindow(param_1 + 2);
   iVar1 = 0;
   piVar2 = param_1;

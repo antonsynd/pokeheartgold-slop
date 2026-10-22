@@ -44,8 +44,8 @@ typedef unsigned short wchar16;
 #define LZCOUNT(x) ((x) ? __builtin_clz(x) : 32)
 undefined4 GfGfx_DisableEngineAPlanes();
 undefined4 ov108_021E6C68();
-undefined4 sub_02021148();
-undefined4 sub_020210BC();
+undefined4 InitializeTouchPad();
+undefined4 EnableTouchPad();
 undefined4 ov108_021E6D80();
 undefined4 ov108_021E7224();
 undefined4 ov108_021E6F74();
@@ -78,8 +78,8 @@ undefined4 ov108_021E5C54(int param_1)
     sub_0200FBF4(1,0);
     ResetVisibleHardwareWindows(0);
     ResetVisibleHardwareWindows(1);
-    sub_020210BC();
-    sub_02021148(4);
+    EnableTouchPad();
+    InitializeTouchPad(4);
   }
   else if (iVar1 == 1) {
     ov108_021E6C68();

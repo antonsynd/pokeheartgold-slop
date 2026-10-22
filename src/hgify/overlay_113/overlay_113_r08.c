@@ -13,7 +13,7 @@ undefined4 ov113_021E5BB0(undefined4 param_1);
 undefined4 ov113_021E5BB0(undefined4 param_1)
 
 {
-    sub_02021238();
+    DisableTouchPad();
     ov113_021E5D28(param_1);
     return 1;
 }

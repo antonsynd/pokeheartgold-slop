@@ -44,13 +44,13 @@ typedef unsigned short wchar16;
 #define LZCOUNT(x) ((x) ? __builtin_clz(x) : 32)
 undefined4 HBlankInterruptDisable();
 undefined4 Main_SetVBlankIntrCB();
-undefined4 sub_02021148();
+undefined4 InitializeTouchPad();
 undefined4 Heap_Create();
 undefined4 ov14_021E5A60();
 undefined4 ov14_021E5C54();
 undefined4 func_0x020d4994() __asm__("sub_020D4994");
 undefined4 ov14_021E5E74();
-undefined4 sub_020210BC();
+undefined4 EnableTouchPad();
 undefined4 ov14_021E5D78();
 undefined4 func_0x02022d04() __asm__("sub_02022D04");
 undefined4 NARC_New();
@@ -91,8 +91,8 @@ int ov14_021EAFAC(int *param_1)
   func_0x02022d04(0);
   uRam04000050 = 0;
   uRam04001050 = 0;
-  sub_020210BC();
-  sub_02021148(4);
+  EnableTouchPad();
+  InitializeTouchPad(4);
   uRam04000304 = uRam04000304 & 0x7fff;
   Heap_Create(3,10,0x80000);
   iVar1 = Heap_Alloc(10,0x88e0);

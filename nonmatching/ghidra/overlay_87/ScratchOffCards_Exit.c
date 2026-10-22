@@ -43,7 +43,7 @@ typedef unsigned short wchar16;
 #define POPCOUNT(x) __builtin_popcount(x)
 #define LZCOUNT(x) ((x) ? __builtin_clz(x) : 32)
 undefined4 GF_DestroyVramTransferManager();
-undefined4 sub_02021238();
+undefined4 DisableTouchPad();
 undefined4 Main_SetVBlankIntrCB();
 undefined4 OverlayManager_FreeData();
 undefined4 Heap_Destroy();
@@ -56,7 +56,7 @@ undefined4 ScratchOffCards_Exit(undefined4 param_1)
   int iVar1;
 
   iVar1 = OverlayManager_GetData();
-  sub_02021238();
+  DisableTouchPad();
   **(ushort **)(iVar1 + 0x374) = (ushort)*(byte *)(iVar1 + 0xc);
   GF_DestroyVramTransferManager();
   ov87_021E6780(iVar1);

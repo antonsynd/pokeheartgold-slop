@@ -44,7 +44,7 @@ typedef unsigned short wchar16;
 #define LZCOUNT(x) ((x) ? __builtin_clz(x) : 32)
 undefined4 Save_Bag_Get();
 undefined4 func_0x02006ff8() __asm__("sub_02006FF8");
-undefined4 sub_0207789C();
+undefined4 BagView_Init();
 undefined4 OverlayManager_New();
 undefined4 Bag_CreateView();
 extern undefined ov14_021F7D14;
@@ -58,7 +58,7 @@ undefined4 ov14_021E8ACC(int *param_1,undefined4 param_2,undefined4 param_3,unde
   uVar1 = Save_Bag_Get(*(undefined4 *)*param_1);
   iVar2 = Bag_CreateView(uVar1,&ov14_021F7D14,9);
   param_1[6] = iVar2;
-  sub_0207789C(param_1[6],*(undefined4 *)*param_1,1,0,((undefined4 *)*param_1)[1],param_4);
+  BagView_Init(param_1[6],*(undefined4 *)*param_1,1,0,((undefined4 *)*param_1)[1],param_4);
   func_0x02006ff8(0xf,2);
   iVar2 = OverlayManager_New(0x22008b8,param_1[6],9);
   param_1[5] = iVar2;

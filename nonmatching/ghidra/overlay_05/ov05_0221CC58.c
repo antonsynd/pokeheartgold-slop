@@ -42,12 +42,12 @@ typedef unsigned short wchar16;
 #define SBORROW4(a, b) ((((int)(a) - (int)(b)) > (int)(a)) != ((int)(b) < 0))
 #define POPCOUNT(x) __builtin_popcount(x)
 #define LZCOUNT(x) ((x) ? __builtin_clz(x) : 32)
-undefined4 sub_020880CC(undefined4, undefined4);
+undefined4 App_StartScreenFade(undefined4, undefined4);
 
 undefined4 ov05_0221CC58(int *param_1)
 
 {
-  sub_020880CC(1,*(undefined4 *)(*param_1 + 0x24));
+  App_StartScreenFade(1,*(undefined4 *)(*param_1 + 0x24));
   *(undefined1 *)((int)param_1 + 0xb7f) = 2;
   return 1;
 }

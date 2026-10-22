@@ -42,14 +42,14 @@ typedef unsigned short wchar16;
 #define SBORROW4(a, b) ((((int)(a) - (int)(b)) > (int)(a)) != ((int)(b) < 0))
 #define POPCOUNT(x) __builtin_popcount(x)
 #define LZCOUNT(x) ((x) ? __builtin_clz(x) : 32)
-undefined4 sub_0200E5D4();
+undefined4 ClearWindowPixelBuffer();
 extern uint uRam021d1154 __asm__("sub_021D1154");
 
 undefined4 ov73_021E9FC8(int param_1)
 
 {
   if (((uRam021d1154 & 1) != 0) || ((uRam021d1154 & 2) != 0)) {
-    sub_0200E5D4(param_1 + 0xe18,0);
+    ClearWindowPixelBuffer(param_1 + 0xe18,0);
     *(undefined4 *)(param_1 + 0x1c) = 0;
   }
   return 3;

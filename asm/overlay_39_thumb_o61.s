@@ -74,9 +74,9 @@ ov39_02228140: ; 0x02228140
 	bl SetKeyRepeatTimers
 	ldr r0, [r5, #4]
 	bl ov39_02228440
-	bl sub_020210BC
+	bl EnableTouchPad
 	mov r0, #4
-	bl sub_02021148
+	bl InitializeTouchPad
 	mov r0, #0xb
 	mov r1, #0x40
 	mov r2, #0x7c

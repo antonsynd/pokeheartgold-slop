@@ -42,9 +42,9 @@ typedef unsigned short wchar16;
 #define SBORROW4(a, b) ((((int)(a) - (int)(b)) > (int)(a)) != ((int)(b) < 0))
 #define POPCOUNT(x) __builtin_popcount(x)
 #define LZCOUNT(x) ((x) ? __builtin_clz(x) : 32)
-undefined4 PokeathlonSave_GetUnkB7C_AtIndex(void *, int);
+undefined4 PokeathlonSave_CheckReceivedDailyItemSlot(void *, int);
 undefined4 _s32_div_f(void);
-undefined4 PokeathlonSave_GetUnkB78_AtIndex(void *, int);
+undefined4 PokeathlonSave_CheckReceivedDataCard(void *, int);
 
 undefined4 ov31_0225E12C(int param_1,int param_2,int param_3)
 
@@ -52,7 +52,7 @@ undefined4 ov31_0225E12C(int param_1,int param_2,int param_3)
   int iVar1;
 
   if (*(char *)(param_1 + 0x283) == '\x03') {
-    iVar1 = PokeathlonSave_GetUnkB7C_AtIndex(*(undefined **)(param_1 + 0x254),param_2);
+    iVar1 = PokeathlonSave_CheckReceivedDailyItemSlot(*(undefined **)(param_1 + 0x254),param_2);
     if (iVar1 == 0) {
       return 1;
     }
@@ -63,7 +63,7 @@ undefined4 ov31_0225E12C(int param_1,int param_2,int param_3)
   }
   param_3 = param_3 + -0x1f9;
   _s32_div_f();
-  iVar1 = PokeathlonSave_GetUnkB78_AtIndex(*(undefined **)(param_1 + 0x254),param_2 + param_3 * 6);
+  iVar1 = PokeathlonSave_CheckReceivedDataCard(*(undefined **)(param_1 + 0x254),param_2 + param_3 * 6);
   if (iVar1 == 0) {
     return 1;
   }

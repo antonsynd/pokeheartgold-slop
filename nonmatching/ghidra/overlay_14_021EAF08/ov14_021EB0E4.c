@@ -54,7 +54,7 @@ undefined4 NARC_Delete();
 undefined4 ov14_021E5DB8();
 undefined4 ov14_021E7D7C();
 undefined4 ov14_021F6B10();
-undefined4 sub_02021238();
+undefined4 DisableTouchPad();
 undefined4 ov14_021E6048();
 undefined4 Heap_Free();
 undefined4 func_0x02022c9c() __asm__("sub_02022C9C");
@@ -76,7 +76,7 @@ undefined4 ov14_021EB0E4(int param_1)
   ov14_021E5C00(param_1);
   NARC_Delete(*(undefined4 *)(*(int *)(param_1 + 0x34) + 0x454));
   NARC_Delete(*(undefined4 *)(*(int *)(param_1 + 0x34) + 0x450));
-  sub_02021238();
+  DisableTouchPad();
   uRam04000050 = 0;
   uRam04001050 = 0;
   func_0x02022c9c();

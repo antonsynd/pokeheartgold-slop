@@ -16,7 +16,7 @@ undefined4 ov70_02244CCC(int param_1)
 
 {
     if ((((sub_021D1154 & 1) != 0) || ((sub_021D1154 & 2) != 0)) || (sub_021D1170 != 0)) {
-        sub_0200E5D4(param_1 + 0xf48, 0);
+        ClearWindowPixelBuffer(param_1 + 0xf48, 0);
         *(undefined4 *)(param_1 + 0x2c) = 0;
     }
     return 3;

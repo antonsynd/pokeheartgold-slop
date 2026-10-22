@@ -13,7 +13,7 @@ typedef struct {
     s32 b;
 } P;
 extern const Vec ov96_0221D6B8;
-u32 CalcAngleBetweenVecs(Vec *, Vec *);
+u32 VEC_AngleBetween(Vec *, Vec *);
 // FUNCTION ov96_022186CC: matching C (agent15)
 #pragma force_active on
 int ov96_022186CC(P *p) {
@@ -23,7 +23,7 @@ int ov96_022186CC(P *p) {
     b.x = p->b;
     b.z = p->a;
     b.y = 0;
-    ang = CalcAngleBetweenVecs(&a, &b);
+    ang = VEC_AngleBetween(&a, &b);
     if (ang <= 0x2000 || ang >= 0xe000) {
         return 4;
     }

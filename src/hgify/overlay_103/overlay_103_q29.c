@@ -35,7 +35,7 @@ u32 ov103_021ED3E8(Obj *obj) {
     ov103_021EE3C0(obj);
     ov103_021ECBBC(obj);
     ov103_021ED0A0(obj);
-    sub_02021238();
+    DisableTouchPad();
     *(u16 *)0x04000050 = 0;
     *(u16 *)0x04001050 = 0;
     GfGfx_EngineASetPlanes(0);

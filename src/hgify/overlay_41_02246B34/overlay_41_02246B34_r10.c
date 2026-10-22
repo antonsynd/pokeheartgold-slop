@@ -66,8 +66,8 @@ int ov41_02246DE0(OverlayManager *man) {
     } else {
         p->i6ec = 0;
     }
-    sub_020210BC();
-    sub_02021148(4);
+    EnableTouchPad();
+    InitializeTouchPad(4);
     ov41_02248E84(args->a8, p->s184);
     ov41_02247240(p);
     ov41_022499B4(p->s35c, 0x2CF, 0xD);

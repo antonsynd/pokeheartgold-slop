@@ -63,8 +63,8 @@ int ov37_021E5900(OverlayManager *man, int *state) {
         work->args = OverlayManager_GetArgs(man);
         narc = NARC_New(0x4E, 0x27);
         ov37_021E5F98(work, narc);
-        sub_020210BC();
-        sub_02021148(2);
+        EnableTouchPad();
+        InitializeTouchPad(2);
         Main_SetVBlankIntrCB(ov37_021E5CC8, work->bgConfig);
         ov37_021E5E30(work);
         ov37_021E6090();

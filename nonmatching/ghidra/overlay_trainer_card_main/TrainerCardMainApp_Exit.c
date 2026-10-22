@@ -43,7 +43,7 @@ typedef unsigned short wchar16;
 #define POPCOUNT(x) __builtin_popcount(x)
 #define LZCOUNT(x) ((x) ? __builtin_clz(x) : 32)
 undefined4 OverlayManager_FreeData();
-undefined4 sub_02021238();
+undefined4 DisableTouchPad();
 undefined4 TextFlags_SetCanABSpeedUpPrint();
 undefined4 MenuInputStateMgr_SetState();
 undefined4 ov51_021E6644();
@@ -72,7 +72,7 @@ undefined4 TrainerCardMainApp_Exit(undefined4 param_1)
   Heap_Free(puVar1[0xcec]);
   ov51_021E6EF0(puVar1);
   ov51_021E6644(*puVar1);
-  sub_02021238();
+  DisableTouchPad();
   TextFlags_SetCanTouchSpeedUpPrint(0);
   TextFlags_SetCanABSpeedUpPrint(0);
   MenuInputStateMgr_SetState(*(undefined4 *)(puVar1[0x39] + 0x66c),puVar1[0xc43]);

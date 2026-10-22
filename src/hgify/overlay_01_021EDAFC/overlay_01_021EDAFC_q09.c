@@ -17,7 +17,7 @@ void ov01_021EDF38(struct UnkStruct_ov01_021EDC28 *param_1) {
     int p = (int)param_1;
     PlaySE(0x5dc);
     Delete2dMenu(*(undefined4 *)(p + 0xb8), 0);
-    sub_0200E5D4(*(undefined4 *)(p + 0xb0), 0);
+    ClearWindowPixelBuffer(*(undefined4 *)(p + 0xb0), 0);
     RemoveWindow(*(undefined4 *)(p + 0xb0));
     SysTask_Destroy(*(undefined4 *)(p + 4));
     ov01_021EDF00(p);

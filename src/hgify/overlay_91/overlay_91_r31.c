@@ -18,7 +18,7 @@ void ov91_0225F66C(UnkStruct_ov91_0225CE80 *param0);
 // FUNCTION ov91_0225CE80: matching C (twin)
 #pragma force_active on
 void ov91_0225CE80(UnkStruct_ov91_0225CE80 *param0) {
-    BOOL v0 = sub_02021238();
+    BOOL v0 = DisableTouchPad();
     GF_ASSERT(v0 == 1);
 
     ov91_0225F1E8(param0->unk_878C, param0->unk_1AB4);

@@ -5,9 +5,13 @@
 
 #include "ghidra_compat.h"
 #include "sprite_system.h"
+// unk_02077678.h declares these with the types upstream gave them; this file
+// was matched against its own declarations. Shadow the header's.
+#define TypeIconGfx_GetPlttOverride TypeIconGfx_GetPlttOverride_UpstreamDecl
 #include "unk_02077678.h"
+#undef TypeIconGfx_GetPlttOverride
 typedef int code();
-undefined4 sub_0207769C();
+undefined4 TypeIconGfx_GetPlttOverride();
 void sub_0208BA88(int param_1, int param_2, undefined4 param_3, undefined4 param_4);
 // FUNCTION sub_0208BA88: matching C (r2)
 #pragma force_active on
@@ -18,10 +22,10 @@ void sub_0208BA88(int param_1, int param_2, undefined4 param_3, undefined4 param
     undefined4 uVar2;
     int iVar3;
 
-    uVar1 = sub_020776B4();
-    uVar2 = sub_02077678(param_4);
+    uVar1 = TypeIconGfx_GetNarcId();
+    uVar2 = TypeIconGfx_GetCharFileId(param_4);
     SpriteSystem_ReplaceCharResObj(*(undefined4 *)(param_1 + 0x3fc), *(undefined4 *)(param_1 + 0x400), uVar1, uVar2, 1, param_3);
-    iVar3 = sub_0207769C(param_4);
+    iVar3 = TypeIconGfx_GetPlttOverride(param_4);
     thunk_Sprite_SetPaletteOverride(*(undefined4 *)(param_1 + param_2 * 4 + 0x404), iVar3 + 3);
     return;
 }

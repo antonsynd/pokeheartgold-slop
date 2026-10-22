@@ -74,7 +74,7 @@ extern undefined ov69_021E7674;
 extern undefined ov69_021E7664;
 extern undefined ov69_021E7708;
 undefined4 ov69_021E6FE8();
-undefined4 sub_0200E5D4(void *, int);
+undefined4 ClearWindowPixelBuffer(void *, int);
 undefined4 ov69_021E6308();
 undefined4 ov69_021E7198();
 undefined4 DrawFrameAndWindow1(void *, int, unsigned short, unsigned char);
@@ -320,7 +320,7 @@ int GeonetGlobe_Main(undefined *param_1,undefined *param_2)
     ov69_021E6308(piVar1);
     iVar4 = ov69_021E6C30(piVar1,auStack_1c);
     if (iVar4 == 0) {
-      sub_0200E5D4((undefined *)(piVar1 + 0x3011),0);
+      ClearWindowPixelBuffer((undefined *)(piVar1 + 0x3011),0);
     }
     else {
       DrawFrameAndWindow1((undefined *)(piVar1 + 0x3011),0,0x1d9,7);
@@ -352,8 +352,8 @@ int GeonetGlobe_Main(undefined *param_1,undefined *param_2)
       }
     }
     else {
-      sub_0200E5D4((undefined *)(piVar1 + 0x300d),0);
-      sub_0200E5D4((undefined *)(piVar1 + 0x3011),0);
+      ClearWindowPixelBuffer((undefined *)(piVar1 + 0x300d),0);
+      ClearWindowPixelBuffer((undefined *)(piVar1 + 0x3011),0);
       PlaySE(0x5dd);
       FillWindowPixelRect((undefined *)(piVar1 + 0x3005),0xf,0,0,0xd8,0x20);
       if (piVar1[0x30c9] == 0) {

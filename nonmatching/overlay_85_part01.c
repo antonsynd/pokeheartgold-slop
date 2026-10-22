@@ -118,9 +118,9 @@ extern u64 _s32_div_f(s32 a, s32 b);
 
 extern void sub_0201A728(int a0);
 extern void sub_0201A738(int a0);
-extern void sub_020210BC(void);
-extern void sub_02021148(int a0);
-extern int sub_02021238(void);
+extern void EnableTouchPad(void);
+extern void InitializeTouchPad(int a0);
+extern int DisableTouchPad(void);
 extern int sub_02036FD8(int a0, void *a1, int a2);
 extern int sub_02037454(void);
 extern void sub_02037AC0(int a0);
@@ -324,8 +324,8 @@ int ov85_021E5900(void *appMan, int *param1) {
     v0->unkD80 = NARC_New(0xBB, 0x66);
 
     GF_CreateVramTransferManager(8, 0x66);
-    sub_020210BC();
-    sub_02021148(4);
+    EnableTouchPad();
+    InitializeTouchPad(4);
     ov85_021E678C(v0);
     Main_SetVBlankIntrCB(ov85_021E6764, v0);
     ov85_021E752C(v0);
@@ -366,7 +366,7 @@ int ov85_021E5900(void *appMan, int *param1) {
 int ov85_021E5A34(void *appMan, int *param1) {
     UnkStruct_Ov85_021E5FE0 *v0 = OverlayManager_GetData(appMan);
 
-    if (sub_02021238() != 1) {
+    if (DisableTouchPad() != 1) {
         GF_ASSERT(FALSE);
     }
 

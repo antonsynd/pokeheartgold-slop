@@ -16,7 +16,11 @@
 #include "sys_task.h"
 #include "unk_02009D48.h"
 #include "unk_0200A090.h"
+// unk_02077678.h declares these with the types upstream gave them; this file
+// was matched against its own declarations. Shadow the header's.
+#define SpriteSystem_LoadMoveCategoryIconCharResObj SpriteSystem_LoadMoveCategoryIconCharResObj_UpstreamDecl
 #include "unk_02077678.h"
+#undef SpriteSystem_LoadMoveCategoryIconCharResObj
 #pragma thumb on
 enum MoveClass {
     CLASS_PHYSICAL,
@@ -317,20 +321,20 @@ typedef struct BattleParty {
     u8 confirmLearnMovePreviousScreenButton;
     u8 battlerSlot;
 } BattleParty;
-void sub_02077834(SpriteSystem *spriteSys, SpriteManager *spriteMan, NNS_G2D_VRAM_TYPE vramType, enum MoveClass moveCat, u32 resourceID);
+void SpriteSystem_LoadMoveCategoryIconCharResObj(SpriteSystem *spriteSys, SpriteManager *spriteMan, NNS_G2D_VRAM_TYPE vramType, enum MoveClass moveCat, u32 resourceID);
 void ov08_02220800(BattleParty *battleParty);
 // FUNCTION ov08_02220800: matching C (pt2)
 #pragma force_active on
 void ov08_02220800(BattleParty *battleParty) {
     SpriteSystem *spriteSystem = BattleSystem_GetSpriteSystem(battleParty->context->battleSys);
 
-    sub_02077720(battleParty->palette, PLTTBUF_SUB_OBJ, spriteSystem, battleParty->spriteManager, NNS_G2D_VRAM_TYPE_2DSUB, 45065);
-    sub_0207775C(spriteSystem, battleParty->spriteManager, 45065, 45065);
+    SpriteSystem_LoadMoveTypeAndCategoryIconsPlttToBuffer(battleParty->palette, PLTTBUF_SUB_OBJ, spriteSystem, battleParty->spriteManager, NNS_G2D_VRAM_TYPE_2DSUB, 45065);
+    SpriteSystem_LoadMoveTypeAndCategoryIconsCellAndAnim(spriteSystem, battleParty->spriteManager, 45065, 45065);
 
     for (u32 i = 45070; i <= 45072 + 4; i++) {
-        sub_020776B8(spriteSystem, battleParty->spriteManager, NNS_G2D_VRAM_TYPE_2DSUB, TYPE_NORMAL_PT, i);
+        SpriteSystem_LoadMoveTypeIconCharResObj(spriteSystem, battleParty->spriteManager, NNS_G2D_VRAM_TYPE_2DSUB, TYPE_NORMAL_PT, i);
     }
 
-    sub_02077834(spriteSystem, battleParty->spriteManager, NNS_G2D_VRAM_TYPE_2DSUB, CLASS_PHYSICAL, 45077);
+    SpriteSystem_LoadMoveCategoryIconCharResObj(spriteSystem, battleParty->spriteManager, NNS_G2D_VRAM_TYPE_2DSUB, CLASS_PHYSICAL, 45077);
 }
 #pragma force_active reset

@@ -62,7 +62,7 @@ extern uint uRam021d1158 __asm__("sub_021D1158");
 extern uint uRam021d1154 __asm__("sub_021D1154");
 undefined4 DestroyListMenuCursorObj();
 undefined4 ov75_02247D24();
-undefined4 sub_0200E5D4();
+undefined4 ClearWindowPixelBuffer();
 undefined4 ov75_02248034();
 undefined4 ov75_02247C70();
 undefined4 RemoveWindow();
@@ -147,10 +147,10 @@ undefined4 ov75_022480B8(int param_1)
   }
   else {
     if (iVar3 != 2) {
-      sub_0200E5D4(param_1 + 0xc4,0);
+      ClearWindowPixelBuffer(param_1 + 0xc4,0);
       ClearWindowTilemapAndCopyToVram(param_1 + 0xc4);
       RemoveWindow(param_1 + 0xc4);
-      sub_0200E5D4(param_1 + 0xd4,0);
+      ClearWindowPixelBuffer(param_1 + 0xd4,0);
       ClearWindowTilemapAndCopyToVram(param_1 + 0xd4);
       RemoveWindow(param_1 + 0xd4);
       DestroyListMenuCursorObj(*(undefined4 *)(param_1 + 0xe4));

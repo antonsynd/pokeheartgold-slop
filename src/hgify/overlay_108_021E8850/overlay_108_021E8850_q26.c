@@ -36,7 +36,7 @@ int ov108_021E9304(S *param_1) {
         ov108_021E9A08(param_1);
         break;
     case 2:
-        sub_02021238();
+        DisableTouchPad();
         *(volatile u32 *)0x04000000 &= 0xffffe0ff;
         *(volatile u32 *)0x04001000 &= 0xffffe0ff;
         GfGfx_DisableEngineAPlanes();

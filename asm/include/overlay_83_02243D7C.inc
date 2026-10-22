@@ -130,7 +130,7 @@
 .public ov83_02247CCC
 .public ov83_02247CE8
 .public sub_0200CDAC
-.public sub_0200CE7C
+.public FontSpecialChars_DrawPartyScreenText
 .public sub_02031108
 .public sub_02034818
 .public sub_02037030

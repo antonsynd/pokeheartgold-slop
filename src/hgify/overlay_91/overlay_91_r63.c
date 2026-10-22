@@ -15,7 +15,7 @@ typedef struct UnkStruct_ov91_0225DB5C {
 // FUNCTION ov91_0225DB5C: matching C (twin)
 #pragma force_active on
 void ov91_0225DB5C(UnkStruct_ov91_0225DB5C *param0) {
-    sub_0200E5D4(&param0->unk_0C, 1);
+    ClearWindowPixelBuffer(&param0->unk_0C, 1);
     ClearWindowTilemapAndScheduleTransfer(&param0->unk_0C);
     GfGfx_EngineATogglePlanes(4, 0);
 }

@@ -50,7 +50,7 @@ undefined4 Main_SetVBlankIntrCB(undefined4, undefined4);
 undefined4 sub_0203A880(void);
 undefined4 ov05_0221E5E4(undefined4);
 undefined4 ov05_0221E07C(void);
-undefined4 sub_020880CC(undefined4, undefined4);
+undefined4 App_StartScreenFade(undefined4, undefined4);
 undefined4 ov05_0221E944(undefined4);
 undefined4 ov05_0221DE38(undefined4);
 
@@ -76,7 +76,7 @@ undefined4 ov05_0221BE04(int *param_1)
     ov05_0221E944(param_1);
     ov05_0221DE38(param_1);
     sub_0203A880();
-    sub_020880CC(0,*(undefined4 *)(*param_1 + 0x24));
+    App_StartScreenFade(0,*(undefined4 *)(*param_1 + 0x24));
     Main_SetVBlankIntrCB(0x221ce89,param_1);
     return 1;
   }

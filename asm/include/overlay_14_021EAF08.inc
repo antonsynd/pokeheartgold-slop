@@ -358,9 +358,9 @@
 .public ov14_021F7388
 .public ov14_021F7AC4
 .public ov14_021F7B7C
-.public sub_020210BC
-.public sub_02021148
-.public sub_02021238
+.public EnableTouchPad
+.public InitializeTouchPad
+.public DisableTouchPad
 .public ov14_021EAF08
 .public ov14_021EAF8C
 .public ov14_021EC710

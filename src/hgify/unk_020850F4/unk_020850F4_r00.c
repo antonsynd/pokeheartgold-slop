@@ -42,8 +42,8 @@ extern void PaletteData_AllocBuffers(PaletteData *, u32, u32, u32);
 extern void sub_0208545C(BgConfig *);
 extern void sub_020863F4(Wk *);
 extern void sub_02085688(Wk *);
-extern void sub_020210BC(void);
-extern void sub_02021148(u32);
+extern void EnableTouchPad(void);
+extern void InitializeTouchPad(u32);
 extern void sub_020860B8(Wk *);
 extern void sub_0203A880(void);
 extern void sub_0203A948(u32, u32);
@@ -74,8 +74,8 @@ BOOL sub_020850F4(OverlayManager *man) {
     sub_0208545C(wk->bg);
     sub_020863F4(wk);
     sub_02085688(wk);
-    sub_020210BC();
-    sub_02021148(4);
+    EnableTouchPad();
+    InitializeTouchPad(4);
     sub_020860B8(wk);
     if (wk->args.f30 != 0) {
         sub_0203A880();

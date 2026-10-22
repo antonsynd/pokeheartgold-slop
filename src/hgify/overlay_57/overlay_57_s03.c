@@ -63,7 +63,7 @@ int ov57_02237B20(void *ovy) {
     NARC_Delete(p[0x117]);
     MenuInputStateMgr_SetState(*(int *)(*p + 0x2c), p[0x103]);
     OverlayManager_FreeData(ovy);
-    sub_02021238();
+    DisableTouchPad();
     Heap_Destroy(0x34);
     UnloadOverlayByID((u32)&SDK_OVERLAY_OVY_6_ID);
     UnloadOverlayByID((u32)&SDK_OVERLAY_OVY_7_ID);

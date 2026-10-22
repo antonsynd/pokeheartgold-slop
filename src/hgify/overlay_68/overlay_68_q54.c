@@ -4,14 +4,18 @@
 #include "global.h"
 
 #include "sprite_system.h"
+// unk_02077678.h declares these with the types upstream gave them; this file
+// was matched against its own declarations. Shadow the header's.
+#define SpriteSystem_LoadMoveCategoryIconCharResObj SpriteSystem_LoadMoveCategoryIconCharResObj_UpstreamDecl
 #include "unk_02077678.h"
+#undef SpriteSystem_LoadMoveCategoryIconCharResObj
 typedef struct App {
     u8 pad0[0x11c];
     SpriteSystem *spriteSystem;
     SpriteManager *spriteManager;
 } App;
-void sub_02077834(SpriteSystem *, SpriteManager *, int, int, int);
-void sub_020776EC(SpriteSystem *, SpriteManager *, int, int);
+void SpriteSystem_LoadMoveCategoryIconCharResObj(SpriteSystem *, SpriteManager *, int, int, int);
+void SpriteSystem_LoadMoveTypeAndCategoryIconsPltt(SpriteSystem *, SpriteManager *, int, int);
 // FUNCTION ov68_021E6EB8: matching C (agent33)
 #pragma force_active on
 void ov68_021E6EB8(App *app, NARC *narc) {
@@ -21,20 +25,20 @@ void ov68_021E6EB8(App *app, NARC *narc) {
     id = 0xb8ab;
     do {
         if (id < 0xb8af) {
-            sub_020776B8(app->spriteSystem, app->spriteManager, 2, 0, id);
+            SpriteSystem_LoadMoveTypeIconCharResObj(app->spriteSystem, app->spriteManager, 2, 0, id);
         } else {
-            sub_020776B8(app->spriteSystem, app->spriteManager, 1, 0, id);
+            SpriteSystem_LoadMoveTypeIconCharResObj(app->spriteSystem, app->spriteManager, 1, 0, id);
         }
         id++;
     } while (id <= 0xb8b2);
-    sub_02077834(app->spriteSystem, app->spriteManager, 2, 0, 0xb8aa);
+    SpriteSystem_LoadMoveCategoryIconCharResObj(app->spriteSystem, app->spriteManager, 2, 0, 0xb8aa);
     SpriteSystem_LoadPlttResObjFromOpenNarc(app->spriteSystem, app->spriteManager, narc, 5, 0, 4, 2, 0xb8a8);
-    sub_020776EC(app->spriteSystem, app->spriteManager, 2, 0xb8a9);
-    sub_020776EC(app->spriteSystem, app->spriteManager, 1, 0xb8aa);
+    SpriteSystem_LoadMoveTypeAndCategoryIconsPltt(app->spriteSystem, app->spriteManager, 2, 0xb8a9);
+    SpriteSystem_LoadMoveTypeAndCategoryIconsPltt(app->spriteSystem, app->spriteManager, 1, 0xb8aa);
     SpriteSystem_LoadCellResObjFromOpenNarc(app->spriteSystem, app->spriteManager, narc, 7, 0, 0xb8a8);
     SpriteSystem_LoadCellResObjFromOpenNarc(app->spriteSystem, app->spriteManager, narc, 10, 0, 0xb8a9);
     SpriteSystem_LoadAnimResObjFromOpenNarc(app->spriteSystem, app->spriteManager, narc, 8, 0, 0xb8a8);
     SpriteSystem_LoadAnimResObjFromOpenNarc(app->spriteSystem, app->spriteManager, narc, 9, 0, 0xb8a9);
-    sub_0207775C(app->spriteSystem, app->spriteManager, 0xb8aa, 0xb8aa);
+    SpriteSystem_LoadMoveTypeAndCategoryIconsCellAndAnim(app->spriteSystem, app->spriteManager, 0xb8aa, 0xb8aa);
 }
 #pragma force_active reset

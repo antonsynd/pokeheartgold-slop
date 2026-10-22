@@ -45,7 +45,7 @@ typedef unsigned short wchar16;
 undefined4 String_Delete();
 undefined4 SysTask_Destroy();
 undefined4 func_0x02001bc4() __asm__("sub_02001BC4");
-undefined4 sub_0200E5D4();
+undefined4 ClearWindowPixelBuffer();
 undefined4 DestroyMsgData();
 undefined4 RemoveWindow();
 undefined4 PlaySE();
@@ -61,7 +61,7 @@ void ov80_0222E88C(int *param_1)
   iVar3 = *param_1;
   PlaySE(0x5dc);
   func_0x02001bc4(param_1[0x2c],0);
-  sub_0200E5D4(param_1[0x2a],0);
+  ClearWindowPixelBuffer(param_1[0x2a],0);
   RemoveWindow(param_1[0x2a]);
   iVar1 = 0;
   piVar2 = param_1;

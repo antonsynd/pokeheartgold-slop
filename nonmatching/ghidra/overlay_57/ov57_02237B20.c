@@ -64,7 +64,7 @@ undefined4 GF_3DVramMan_Delete();
 undefined4 OverlayManager_FreeData();
 undefined4 func_0x02006f7c() __asm__("sub_02006F7C");
 undefined4 Heap_Destroy();
-undefined4 sub_02021238();
+undefined4 DisableTouchPad();
 
 undefined4 ov57_02237B20(undefined4 param_1)
 
@@ -107,7 +107,7 @@ undefined4 ov57_02237B20(undefined4 param_1)
   NARC_Delete(piVar1[0x117]);
   MenuInputStateMgr_SetState(*(undefined4 *)(*piVar1 + 0x2c),piVar1[0x103]);
   OverlayManager_FreeData(param_1);
-  sub_02021238();
+  DisableTouchPad();
   Heap_Destroy(0x34);
   func_0x02006f7c(6);
   func_0x02006f7c(7);

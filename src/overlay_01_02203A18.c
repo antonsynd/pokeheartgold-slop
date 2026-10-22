@@ -91,7 +91,7 @@ extern void *sub_02020888(void *model, u8 index);
 extern u32 sub_02020910(void *model, u8 index);
 extern u32 sub_020209AC(void *model, u8 index);
 
-extern void sub_02026E18(void *a0, UnkOv01_02203A18_Anim *a1);
+extern void BillboardGfxSequence_SetData(void *a0, UnkOv01_02203A18_Anim *a1);
 
 UnkOv01_02203A18 *ov01_02203A18(void *a0);
 void ov01_02203A38(UnkOv01_02203A18 *manager);
@@ -226,7 +226,7 @@ static BOOL ov01_02203BB4(void *param0, UnkOv01_02203A18_Work *work) {
     idx = sub_02068D90(param0);
     work->anim.unk18 = ov01_021F14B4(work->unk30.unk0, ov01_02209544[idx][0], 1);
     work->anim.unk14 = ov01_021F14B4(work->unk30.unk0, ov01_02209544[idx][1], 1);
-    sub_02026E18(work->anim.unk14, &work->anim);
+    BillboardGfxSequence_SetData(work->anim.unk14, &work->anim);
     work->anim.unk10 = NNS_G3dGetTex(work->anim.unk18);
     work->anim.unk24 = 0;
     work->anim.unk26 = 0;

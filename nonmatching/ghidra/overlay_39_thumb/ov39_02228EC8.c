@@ -44,7 +44,7 @@ typedef unsigned short wchar16;
 #define LZCOUNT(x) ((x) ? __builtin_clz(x) : 32)
 undefined4 ov39_02228B74();
 undefined4 System_GetTouchNew();
-undefined4 sub_0200E5D4();
+undefined4 ClearWindowPixelBuffer();
 extern uint uRam021d1154 __asm__("sub_021D1154");
 
 undefined4 ov39_02228EC8(int param_1)
@@ -54,7 +54,7 @@ undefined4 ov39_02228EC8(int param_1)
 
   if ((((uRam021d1154 & 1) != 0) || ((uRam021d1154 & 2) != 0)) ||
      (iVar1 = System_GetTouchNew(), iVar1 == 1)) {
-    sub_0200E5D4(param_1 + 100,0);
+    ClearWindowPixelBuffer(param_1 + 100,0);
     *(undefined4 *)(param_1 + 0x94) = 0;
     iVar1 = ov39_02228B74(-*(int *)(param_1 + 0x18),*(undefined4 *)(param_1 + 0x1c));
     if (iVar1 == 1) {

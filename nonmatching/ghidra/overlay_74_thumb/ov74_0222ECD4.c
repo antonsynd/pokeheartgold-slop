@@ -42,7 +42,7 @@ typedef unsigned short wchar16;
 #define SBORROW4(a, b) ((((int)(a) - (int)(b)) > (int)(a)) != ((int)(b) < 0))
 #define POPCOUNT(x) __builtin_popcount(x)
 #define LZCOUNT(x) ((x) ? __builtin_clz(x) : 32)
-undefined4 sub_0200E5D4();
+undefined4 ClearWindowPixelBuffer();
 undefined4 WindowIsInUse();
 
 void ov74_0222ECD4(undefined4 param_1,undefined4 param_2)
@@ -52,7 +52,7 @@ void ov74_0222ECD4(undefined4 param_1,undefined4 param_2)
 
   iVar1 = WindowIsInUse();
   if (iVar1 == 1) {
-    sub_0200E5D4(param_1,param_2);
+    ClearWindowPixelBuffer(param_1,param_2);
   }
   return;
 }

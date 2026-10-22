@@ -109,7 +109,7 @@ _021FAA20:
 	add r1, r5, #0
 	add r1, #0x14
 	str r0, [r5, #0xc]
-	bl sub_02026E18
+	bl BillboardGfxSequence_SetData
 	ldr r0, [sp, #0x18]
 	bl GetMoveModelNoBySpriteId
 	add r1, r0, #0

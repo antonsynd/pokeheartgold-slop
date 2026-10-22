@@ -23,7 +23,7 @@ void ov87_021E6780(UnkStruct_ScratchOffCards_Exit *app);
 BOOL ScratchOffCards_Exit(OverlayManager *ovlMan, int *state) {
     UnkStruct_ScratchOffCards_Exit *app = OverlayManager_GetData(ovlMan);
 
-    sub_02021238();
+    DisableTouchPad();
     *app->dummy4 = app->dummy2;
     GF_DestroyVramTransferManager();
 

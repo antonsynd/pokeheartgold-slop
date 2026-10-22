@@ -46,7 +46,7 @@ undefined4 Main_SetVBlankIntrCB();
 undefined4 NARC_Delete();
 undefined4 OverlayManager_GetData();
 undefined4 sub_0208C560();
-undefined4 sub_02021238();
+undefined4 DisableTouchPad();
 undefined4 FontID_SetAccessLazy();
 undefined4 OverlayManager_FreeData();
 undefined4 Heap_Destroy();
@@ -70,7 +70,7 @@ undefined4 PokemonSummary_Exit(undefined4 param_1)
   sub_0208B258(puVar1);
   sub_0208C560(puVar1);
   sub_0208877C(*puVar1);
-  sub_02021238();
+  DisableTouchPad();
   GF_DestroyVramTransferManager();
   sub_02088AF8(puVar1);
   sub_0208895C(puVar1);

@@ -65,7 +65,7 @@ undefined4 ov41_02247150(undefined4 param_1)
     ov41_02247274(iVar1);
     Main_SetVBlankIntrCB(0, 0);
     HBlankInterruptDisable();
-    iVar1 = sub_02021238();
+    iVar1 = DisableTouchPad();
     if (iVar1 != 1) {
         GF_AssertFail();
     }

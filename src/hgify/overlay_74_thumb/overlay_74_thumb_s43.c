@@ -9,7 +9,7 @@
 #pragma force_active on
 void ov74_02229F60(Window *window, BOOL skipTransfer) {
     if (WindowIsInUse(window) == TRUE) {
-        sub_0200E5D4(window, skipTransfer);
+        ClearWindowPixelBuffer(window, skipTransfer);
     }
 }
 #pragma force_active reset

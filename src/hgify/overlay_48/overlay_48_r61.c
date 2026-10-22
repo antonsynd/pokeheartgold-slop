@@ -14,7 +14,7 @@ typedef struct UnkStruct_ov48_02259E78 {
 // FUNCTION ov48_02259E78: matching C (twin)
 #pragma force_active on
 void ov48_02259E78(UnkStruct_ov48_02259E78 *param0) {
-    sub_0200E5D4(&param0->unk_1C, 1);
+    ClearWindowPixelBuffer(&param0->unk_1C, 1);
     ClearWindowTilemapAndScheduleTransfer(&param0->unk_1C);
 }
 #pragma force_active reset

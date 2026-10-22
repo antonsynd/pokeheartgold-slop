@@ -66,8 +66,8 @@ BOOL ov37_021E5900(void *man, int *state) {
         s->args = OverlayManager_GetArgs(man);
         narc = NARC_New(0x4e, 0x27);
         ov37_021E5F98(s, narc);
-        sub_020210BC();
-        sub_02021148(2);
+        EnableTouchPad();
+        InitializeTouchPad(2);
         Main_SetVBlankIntrCB(ov37_021E5CC8, s->bg);
         ov37_021E5E30(s);
         ov37_021E6090();

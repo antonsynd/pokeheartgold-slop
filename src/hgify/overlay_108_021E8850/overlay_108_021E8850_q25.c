@@ -37,8 +37,8 @@ int ov108_021E929C(S *param_1) {
     case 1:
         ov108_021EA50C();
         Main_SetVBlankIntrCB((void *)ov108_021E979C, param_1);
-        sub_020210BC();
-        sub_02021148(4);
+        EnableTouchPad();
+        InitializeTouchPad(4);
         param_1->state = 0;
         return 1;
     }

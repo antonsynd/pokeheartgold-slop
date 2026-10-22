@@ -19,7 +19,7 @@ undefined4 ov39_02228EC8(int param_1)
     int iVar1;
 
     if ((((sub_021D1154 & 1) != 0) || ((sub_021D1154 & 2) != 0)) || (iVar1 = System_GetTouchNew(), iVar1 == 1)) {
-        sub_0200E5D4(param_1 + 100, 0);
+        ClearWindowPixelBuffer(param_1 + 100, 0);
         *(undefined4 *)(param_1 + 0x94) = 0;
         iVar1 = ov39_02228B74(-*(int *)(param_1 + 0x18), *(undefined4 *)(param_1 + 0x1c));
         if (iVar1 == 1) {

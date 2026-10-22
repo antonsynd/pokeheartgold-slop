@@ -114,8 +114,8 @@ u16 sub_02004AAC(void);
 void sub_02004AB8(u16 seqNo);
 void Sound_SetFieldBGM(u16 seqNo);
 void Sound_SetScene(u8 scene);
-void sub_02004AFC(u8 a0);
-void sub_02004B10(void);
+void Sound_SetSubScene(u8 a0);
+void Sound_LoadHeapStateBGMAndResetSubScene(void);
 BOOL sub_02004B24(int a0);
 BOOL sub_02004EB4(u16 seqNo);
 BOOL Sound_SetSceneAndPlayBGM(u8 scene, u16 seqNo, int unused);
@@ -130,7 +130,7 @@ void sub_020052A4(u16 seqNo, int unused);
 void sub_020052C8(int a0);
 void sub_020052E4(int a0, u16 seqNo, int unused);
 void BGM_SaveStateAndPlayNew(u16 seqNo);
-void sub_02005318(void);
+void Sound_LoadHeapStateBGM(void);
 int sub_02005328(int a0);
 void sub_020053A8(u8 a0, u8 a1);
 void Sound_ClearBGMPauseFlags(void);
@@ -412,16 +412,16 @@ void Sound_SetScene(u8 scene) {
     }
 }
 
-void sub_02004AFC(u8 a0) {
+void Sound_SetSubScene(u8 a0) {
     u8 *p;
     GF_SdatGetAttrPtr(0x15);
     p = GF_SdatGetAttrPtr(0x16);
     *p = a0;
 }
 
-void sub_02004B10(void) {
+void Sound_LoadHeapStateBGMAndResetSubScene(void) {
     u8 *p = GF_SdatGetAttrPtr(0x16);
-    sub_02005318();
+    Sound_LoadHeapStateBGM();
     *p = 0;
 }
 
@@ -765,7 +765,7 @@ void sub_020051A4(int seqNo, int a1) {
 
     if (*p13 == 1 || a1 == 0) {
         GF_Snd_LoadState(sub_02005328(1));
-        sub_02004AFC(0);
+        Sound_SetSubScene(0);
         GF_Snd_LoadSeqEx(*p20, 2);
         GF_Snd_SaveState(GF_SdatGetAttrPtr(0x19));
         sub_02004B24(4);
@@ -814,7 +814,7 @@ void sub_020052A4(u16 seqNo, int unused) {
 }
 
 void sub_020052C8(int a0) {
-    sub_02005318();
+    Sound_LoadHeapStateBGM();
     sub_02004B24(a0);
     GF_Snd_SaveState(GF_SdatGetAttrPtr(0x1C));
 }
@@ -831,7 +831,7 @@ void BGM_SaveStateAndPlayNew(u16 seqNo) {
     PlayBGM(seqNo);
 }
 
-void sub_02005318(void) {
+void Sound_LoadHeapStateBGM(void) {
     GF_Snd_LoadState(sub_02005328(4));
 }
 

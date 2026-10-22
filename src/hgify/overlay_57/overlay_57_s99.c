@@ -49,7 +49,7 @@ int ov57_0223A5AC(S *param_1) {
         ManagedSprite_SetDrawPriority(param_1->spr2, 0x19);
         ov57_0223B828(param_1, 0, 0xff, 0);
         ManagedSprite_SetAnim(param_1->spr1, 0);
-        sub_0200E5D4((Window *)param_1->win, 1);
+        ClearWindowPixelBuffer((Window *)param_1->win, 1);
         ClearWindowTilemapAndScheduleTransfer((Window *)param_1->win);
         ov57_0223866C(param_1, 1);
         ov57_02239728(param_1->box, 3, 7, 0);

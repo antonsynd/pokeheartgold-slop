@@ -104,7 +104,7 @@ int ov75_022478E0(App *app) {
     default:
         ListMenuItems_Delete(app->items);
         DestroyListMenu(app->menu, NULL, NULL);
-        sub_0200E5D4(&app->win78, 1);
+        ClearWindowPixelBuffer(&app->win78, 1);
         ClearWindowTilemapAndCopyToVram(&app->win78);
         RemoveWindow(&app->win78);
         app->unk8 = app->result;

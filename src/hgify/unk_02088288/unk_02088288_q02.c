@@ -77,8 +77,8 @@ undefined4 PokemonSummary_Init(OverlayManager *param_1)
     puVar4 = (undefined *)NARC_New(0xb4, 0x13);
     puVar3[0x1ee] = puVar4;
     FontID_SetAccessDirect(0, 0x13);
-    sub_020210BC();
-    sub_02021148(4);
+    EnableTouchPad();
+    InitializeTouchPad(4);
     sub_02088610();
     sub_02088630(*puVar3);
     sub_020887C4(puVar3, puVar1, puVar2);

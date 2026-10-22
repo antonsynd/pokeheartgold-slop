@@ -43,7 +43,7 @@ typedef unsigned short wchar16;
 #define POPCOUNT(x) __builtin_popcount(x)
 #define LZCOUNT(x) ((x) ? __builtin_clz(x) : 32)
 undefined4 ov83_02240D64();
-undefined4 sub_0200CE7C();
+undefined4 FontSpecialChars_DrawPartyScreenText();
 undefined4 GetMonData();
 undefined4 Party_GetMonByIndex();
 undefined4 func_0x02237d8c() __asm__("sub_02237D8C");
@@ -78,7 +78,7 @@ void ov83_022401A4(int param_1,undefined4 param_2,int param_3,int param_4)
   }
   bVar1 = param_4 == 0;
   uVar5 = GetMonData(uVar4,0xa1,0);
-  sub_0200CE7C(*(undefined4 *)(param_1 + 0x504),1,uVar5,3,0,param_2,iVar3,bVar1);
+  FontSpecialChars_DrawPartyScreenText(*(undefined4 *)(param_1 + 0x504),1,uVar5,3,0,param_2,iVar3,bVar1);
   uVar2 = GetMonData(uVar4,0x6f,0);
   ov83_02240D64(param_1,param_2,iVar6,bVar1,0,uVar2);
   return;

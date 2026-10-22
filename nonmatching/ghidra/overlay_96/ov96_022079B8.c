@@ -44,7 +44,7 @@ typedef unsigned short wchar16;
 #define LZCOUNT(x) ((x) ? __builtin_clz(x) : 32)
 undefined4 func_0x020ccfe0() __asm__("sub_020CCFE0");
 undefined4 func_0x020ccf80() __asm__("sub_020CCF80");
-undefined4 CalcAngleBetweenVecs();
+undefined4 VEC_AngleBetween();
 
 undefined4
 ov96_022079B8(undefined4 param_1,undefined4 param_2,undefined4 param_3,undefined4 param_4)
@@ -74,7 +74,7 @@ ov96_022079B8(undefined4 param_1,undefined4 param_2,undefined4 param_3,undefined
     uStack_30 = uStack_14;
     uStack_28 = uStack_18;
     uStack_2c = 0;
-    uVar2 = CalcAngleBetweenVecs(&uStack_24,&uStack_30);
+    uVar2 = VEC_AngleBetween(&uStack_24,&uStack_30);
     if ((uVar2 < 0x2001) || (0xdfff < uVar2)) {
       uVar3 = 4;
     }

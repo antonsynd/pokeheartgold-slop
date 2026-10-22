@@ -37,7 +37,7 @@ void *ov14_021EB0E4(S *r4) {
     ov14_021E5C00(r4);
     NARC_Delete(*(void **)(r4->f34 + 0x454));
     NARC_Delete(*(void **)(r4->f34 + 0x450));
-    sub_02021238();
+    DisableTouchPad();
     *(volatile unsigned short *)0x04000050 = 0;
     *(volatile unsigned short *)0x04001050 = 0;
     GfGfx_EngineASetPlanes(0);

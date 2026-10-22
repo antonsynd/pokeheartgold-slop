@@ -9,7 +9,7 @@ undefined4 NewString_ReadMsgData();
 undefined4 ScheduleWindowCopyToVram();
 undefined4 ov31_0225DE24();
 undefined4 String_Delete();
-undefined4 ov03_02258120();
+undefined4 ShopMenu_GetItemPrice();
 void ov31_0225E184(int param_1, undefined4 param_2, undefined4 param_3, undefined4 param_4);
 // FUNCTION ov31_0225E184: matching C (agent18)
 #pragma force_active on
@@ -33,7 +33,7 @@ void ov31_0225E184(int param_1, undefined4 param_2, undefined4 param_3, undefine
     iVar2 = ov31_0225E12C(*(int *)(param_1 + 0x14), iVar4, *(undefined2 *)(*(int *)(*(int *)(param_1 + 0x14) + 0x268) + iVar3));
     if (iVar2 != 0) {
         iVar2 = *(int *)(param_1 + 0x14);
-        uVar1 = ov03_02258120(iVar2, *(undefined2 *)(*(int *)(iVar2 + 0x268) + iVar3));
+        uVar1 = ShopMenu_GetItemPrice(iVar2, *(undefined2 *)(*(int *)(iVar2 + 0x268) + iVar3));
         ov31_0225DE24(*(undefined4 *)(param_1 + 0x154), *(undefined4 *)(param_1 + 0x158), param_1 + 0xe4, uVar1, *(undefined1 *)(iVar2 + 0x283));
     }
     ScheduleWindowCopyToVram(param_1 + 0xe4);

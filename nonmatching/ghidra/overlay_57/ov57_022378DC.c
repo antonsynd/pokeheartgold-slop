@@ -72,9 +72,9 @@ undefined4 ov57_02238BCC();
 undefined4 ov57_0223BB84();
 undefined4 PokepicManager_Create();
 undefined4 sub_02016EDC();
-undefined4 sub_020210BC();
+undefined4 EnableTouchPad();
 undefined4 Main_SetVBlankIntrCB();
-undefined4 sub_02021148();
+undefined4 InitializeTouchPad();
 
 undefined4
 ov57_022378DC(undefined4 param_1,undefined4 param_2,undefined4 param_3,undefined4 param_4)
@@ -159,8 +159,8 @@ ov57_022378DC(undefined4 param_1,undefined4 param_2,undefined4 param_3,undefined
   ov57_022395B8(piVar2[0x39],piVar2[0x3a],uVar6);
   ov57_02239670(piVar2[0x39],piVar2[0x3a],uVar6);
   ov57_02239058(piVar2 + 0x35);
-  sub_020210BC();
-  sub_02021148(4);
+  EnableTouchPad();
+  InitializeTouchPad(4);
   ov57_0223BB84(piVar2);
   Main_SetVBlankIntrCB(0x2237e39,piVar2);
   ov57_022386F0(piVar2);

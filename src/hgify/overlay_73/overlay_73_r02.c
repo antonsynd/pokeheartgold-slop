@@ -59,7 +59,7 @@ undefined4 ov73_021E5BAC(undefined4 param_1)
     sub_02038C1C(2);
     sub_02037FF0();
     sub_0205AD24(*(undefined4 *)(puVar1[2] + 4));
-    sub_02021238();
+    DisableTouchPad();
     FontID_Release(4);
     DestroyMsgData(puVar1[10]);
     MessageFormat_Delete(puVar1[9]);

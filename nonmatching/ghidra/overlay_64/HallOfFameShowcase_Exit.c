@@ -42,7 +42,7 @@ typedef unsigned short wchar16;
 #define SBORROW4(a, b) ((((int)(a) - (int)(b)) > (int)(a)) != ((int)(b) < 0))
 #define POPCOUNT(x) __builtin_popcount(x)
 #define LZCOUNT(x) ((x) ? __builtin_clz(x) : 32)
-undefined4 sub_02021238();
+undefined4 DisableTouchPad();
 undefined4 OverlayManager_GetData();
 undefined4 ov64_021E6260();
 undefined4 ov64_021E5CA4();
@@ -67,7 +67,7 @@ undefined4 HallOfFameShowcase_Exit(undefined4 param_1)
   ov64_021E602C(iVar1);
   ov64_021E5CA4(iVar1);
   NARC_Delete(*(undefined4 *)(iVar1 + 0x184));
-  sub_02021238();
+  DisableTouchPad();
   OverlayManager_FreeData(param_1);
   Heap_Destroy(0x3b);
   return 1;

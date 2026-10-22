@@ -45,7 +45,7 @@ typedef unsigned short wchar16;
 undefined4 String_Delete(undefined4);
 undefined4 DestroyMsgData(undefined4);
 undefined4 SysTask_Destroy(undefined4);
-undefined4 sub_0200E5D4(undefined4, undefined4);
+undefined4 ClearWindowPixelBuffer(undefined4, undefined4);
 undefined4 RemoveWindow(undefined4);
 undefined4 Heap_Free(undefined4);
 
@@ -56,7 +56,7 @@ void ov01_021EE7B8(undefined4 param_1,int param_2)
   int iVar2;
 
   if (**(short **)(param_2 + 0xa0) == -1) {
-    sub_0200E5D4(*(undefined4 *)(param_2 + 0xb0),0);
+    ClearWindowPixelBuffer(*(undefined4 *)(param_2 + 0xb0),0);
     RemoveWindow(*(undefined4 *)(param_2 + 0xb0));
     iVar1 = 0;
     iVar2 = param_2;

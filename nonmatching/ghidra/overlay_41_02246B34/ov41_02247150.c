@@ -44,7 +44,7 @@ typedef unsigned short wchar16;
 #define LZCOUNT(x) ((x) ? __builtin_clz(x) : 32)
 undefined4 OverlayManager_GetData();
 undefined4 ov41_02245ECC();
-undefined4 sub_02021238();
+undefined4 DisableTouchPad();
 undefined4 ov41_022476A8();
 undefined4 ov41_022499DC();
 undefined4 ov41_022473F0();
@@ -104,7 +104,7 @@ undefined4 ov41_02247150(undefined4 param_1)
   ov41_02247274(iVar1);
   Main_SetVBlankIntrCB(0,0);
   HBlankInterruptDisable();
-  iVar1 = sub_02021238();
+  iVar1 = DisableTouchPad();
   if (iVar1 != 1) {
     GF_AssertFail();
   }

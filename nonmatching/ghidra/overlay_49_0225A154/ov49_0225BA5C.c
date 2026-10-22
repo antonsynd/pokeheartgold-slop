@@ -42,8 +42,8 @@ typedef unsigned short wchar16;
 #define SBORROW4(a, b) ((((int)(a) - (int)(b)) > (int)(a)) != ((int)(b) < 0))
 #define POPCOUNT(x) __builtin_popcount(x)
 #define LZCOUNT(x) ((x) ? __builtin_clz(x) : 32)
-undefined4 sub_02077690();
-undefined4 sub_020776B4();
+undefined4 GetMoveTypeAndCategoryIconPlttFileId();
+undefined4 TypeIconGfx_GetNarcId();
 undefined4 GfGfxLoader_GXLoadPal();
 undefined4 GfGfxLoader_GXLoadPalFromOpenNarc();
 undefined4 SysTask_Destroy();
@@ -59,8 +59,8 @@ void ov49_0225BA5C(undefined4 param_1,int param_2)
             (*(undefined4 *)(param_2 + 0x14c),*(undefined2 *)(param_2 + 0x154),4,0,0,
              *(undefined2 *)(param_2 + 0x156));
   LoadFontPal0(4,0xa0,*(undefined2 *)(param_2 + 0x156));
-  uVar1 = sub_020776B4();
-  uVar2 = sub_02077690();
+  uVar1 = TypeIconGfx_GetNarcId();
+  uVar2 = GetMoveTypeAndCategoryIconPlttFileId();
   GfGfxLoader_GXLoadPal(uVar1,uVar2,4,0x160,0x60,*(undefined2 *)(param_2 + 0x156));
   SysTask_Destroy(param_1);
   return;

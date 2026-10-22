@@ -43,12 +43,12 @@ typedef unsigned short wchar16;
 #define POPCOUNT(x) __builtin_popcount(x)
 #define LZCOUNT(x) ((x) ? __builtin_clz(x) : 32)
 undefined4 WindowArray_Delete(undefined4, undefined4);
-undefined4 sub_0200E5D4(undefined4, undefined4);
+undefined4 ClearWindowPixelBuffer(undefined4, undefined4);
 
 void ov01_021EEE30(undefined4 param_1)
 
 {
-  sub_0200E5D4(param_1,0);
+  ClearWindowPixelBuffer(param_1,0);
   WindowArray_Delete(param_1,1);
   return;
 }

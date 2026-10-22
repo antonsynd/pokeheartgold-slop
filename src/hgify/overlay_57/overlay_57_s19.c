@@ -15,7 +15,7 @@ void ov57_0223809C(int param_1, int param_2, int param_3) {
     uVar2 = *(int *)(param_1 + 0xdc);
     uVar3 = *(int *)(param_1 + 0xe0);
     SpriteSystem_LoadPaletteBuffer(*(int *)(param_1 + 0xe8), 3, uVar2, uVar3, 0x57, 6, 0, 1, 2, 0x520e);
-    uVar1 = sub_02091054(param_2);
+    uVar1 = CapsuleMenu_GetSealMemberIdx(param_2);
     SpriteSystem_LoadCharResObj(uVar2, uVar3, 0x57, uVar1, 1, 2, param_3 + 20000);
     SpriteSystem_LoadCellResObj(uVar2, uVar3, 0x57, 0x26, 1, 0x5616);
     SpriteSystem_LoadAnimResObj(uVar2, uVar3, 0x57, 0x24, 1, 0x59fc);

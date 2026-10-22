@@ -35,7 +35,7 @@ BOOL ov104_021E59E4(OverlayManager *man, int *state) {
                 ret = TRUE;
             } else {
                 ov104_021E5BEC(data);
-                sub_020880CC(0, (enum HeapID)0x95);
+                App_StartScreenFade(0, (enum HeapID)0x95);
                 *state = 0;
             }
         }

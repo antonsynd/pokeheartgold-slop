@@ -45,7 +45,7 @@ typedef unsigned short wchar16;
 undefined4 GF_AssertFail();
 extern short sRam021d21f0 __asm__("sub_021D21F0");
 
-void sub_020210BC(void)
+void EnableTouchPad(void)
 
 {
   if (sRam021d21f0 != 0) {

@@ -21,8 +21,8 @@ int ov109_021E5B60(Work *w) {
         break;
     case 1:
         ov109_021E5EC8(w);
-        sub_020210BC();
-        sub_02021148(4);
+        EnableTouchPad();
+        InitializeTouchPad(4);
         w->state = 0;
         return 1;
     }

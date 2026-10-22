@@ -17,7 +17,7 @@ void ov74_0222D0EC(undefined4 param_1, undefined4 param_2)
 
     iVar1 = WindowIsInUse((const struct Window *)param_1);
     if (iVar1 == 1) {
-        sub_0200E5D4(param_1, param_2);
+        ClearWindowPixelBuffer(param_1, param_2);
     }
     return;
 }

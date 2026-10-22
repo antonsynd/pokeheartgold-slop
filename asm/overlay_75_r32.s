@@ -73,9 +73,9 @@ ov75_02246F0C: ; 0x02246F0C
 	bl SetKeyRepeatTimers
 	ldr r0, [r5, #4]
 	bl ov75_0224725C
-	bl sub_020210BC
+	bl EnableTouchPad
 	mov r0, #4
-	bl sub_02021148
+	bl InitializeTouchPad
 	mov r0, #0xb
 	mov r1, #0x40
 	mov r2, #0x74

@@ -47,7 +47,7 @@ undefined4 sub_020211AC();
 extern short sRam021d21f2 __asm__("sub_021D21F2");
 extern short sRam021d21f0 __asm__("sub_021D21F0");
 
-int sub_020210D8(undefined4 param_1,undefined4 param_2,uint param_3)
+int InitializeTouchPadWithExternalBuffer(undefined4 param_1,undefined4 param_2,uint param_3)
 
 {
   int iVar1;

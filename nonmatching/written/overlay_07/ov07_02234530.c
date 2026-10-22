@@ -5,7 +5,7 @@ const u8 ov07_0223777C[8] = { 0, 8, 14, 20, 20, 16, 16, 0 };
 #define FRAME_SIZE 40 /* this function's own push {r7, lr} + sub sp, #32 at -O0 */
 
 u32 SealOnCapsuleGetID(void *seal);
-int sub_0209109C(u8 id);
+int CapsuleMenu_IsAlphabetSeal(u8 id);
 int ov07_02234510(void *seal);
 
 u8 ov07_02234530(void *seal) {
@@ -17,7 +17,7 @@ u8 ov07_02234530(void *seal) {
         tbl[i] = ov07_0223777C[i];
     }
 
-    if (sub_0209109C((u8)SealOnCapsuleGetID(seal)) == 0) {
+    if (CapsuleMenu_IsAlphabetSeal((u8)SealOnCapsuleGetID(seal)) == 0) {
         idx = ov07_02234510(seal);
         if (idx >= 0x38) {
             idx = 3;

@@ -44,7 +44,7 @@ typedef unsigned short wchar16;
 #define LZCOUNT(x) ((x) ? __builtin_clz(x) : 32)
 undefined4 func_0x0200d958() __asm__("sub_0200D958");
 undefined4 Sprite_DeleteAndFreeResources();
-undefined4 sub_02091054();
+undefined4 CapsuleMenu_GetSealMemberIdx();
 undefined4 ov57_02237E90();
 
 void ov57_02238438(int param_1,int param_2,undefined4 param_3,undefined4 param_4)
@@ -54,7 +54,7 @@ void ov57_02238438(int param_1,int param_2,undefined4 param_3,undefined4 param_4
   int iVar2;
 
   iVar2 = param_2 * 0x10;
-  sub_02091054(*(undefined1 *)(param_1 + 0x350 + iVar2));
+  CapsuleMenu_GetSealMemberIdx(*(undefined1 *)(param_1 + 0x350 + iVar2));
   func_0x0200d958(*(undefined4 *)(param_1 + 0xe0),param_2 + 20000);
   Sprite_DeleteAndFreeResources(*(undefined4 *)(param_1 + 0x354 + iVar2));
   *(undefined4 *)(param_1 + 0x354 + iVar2) = 0;

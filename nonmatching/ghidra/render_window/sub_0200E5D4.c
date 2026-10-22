@@ -52,7 +52,7 @@ unsigned char GetWindowHeight(void *);
 
 
 
-void sub_0200E5D4(undefined *param_1,int param_2)
+void ClearWindowPixelBuffer(undefined *param_1,int param_2)
 
 {
   byte bVar1;

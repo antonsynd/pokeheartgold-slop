@@ -61,9 +61,9 @@ extern uint uRam04001000 __asm__("sub_04001000");
 extern uint uRam04000000 __asm__("sub_04000000");
 undefined4 sub_0203A948();
 undefined4 sub_020860B8();
-undefined4 sub_020210BC();
+undefined4 EnableTouchPad();
 undefined4 func_0x020cf15c() __asm__("sub_020CF15C");
-undefined4 sub_02021148();
+undefined4 InitializeTouchPad();
 undefined4 sub_0203A880();
 undefined4 sub_02085688();
 
@@ -113,8 +113,8 @@ undefined4 sub_020850F4(undefined4 param_1,undefined4 param_2,undefined4 param_3
   sub_0208545C(*(undefined4 *)(iVar1 + 0x2f8));
   sub_020863F4(iVar1);
   sub_02085688(iVar1);
-  sub_020210BC();
-  sub_02021148(4);
+  EnableTouchPad();
+  InitializeTouchPad(4);
   sub_020860B8(iVar1);
   if (*(int *)(iVar1 + 1000) != 0) {
     sub_0203A880();

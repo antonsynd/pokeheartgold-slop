@@ -42,7 +42,7 @@ typedef unsigned short wchar16;
 #define SBORROW4(a, b) ((((int)(a) - (int)(b)) > (int)(a)) != ((int)(b) < 0))
 #define POPCOUNT(x) __builtin_popcount(x)
 #define LZCOUNT(x) ((x) ? __builtin_clz(x) : 32)
-undefined4 sub_0200CE7C();
+undefined4 FontSpecialChars_DrawPartyScreenText();
 undefined4 GetMonData();
 undefined4 func_0x02237d8c() __asm__("sub_02237D8C");
 undefined4 ScheduleWindowCopyToVram();
@@ -78,7 +78,7 @@ void ov83_022449D4(int param_1,undefined4 param_2)
     do {
       uVar4 = Party_GetMonByIndex(*(undefined4 *)(param_1 + 0x55c),iVar7);
       uVar5 = GetMonData(uVar4,0xa1,0);
-      sub_0200CE7C(*(undefined4 *)(param_1 + 0x2b4),1,uVar5,3,0,param_2,iVar2,1);
+      FontSpecialChars_DrawPartyScreenText(*(undefined4 *)(param_1 + 0x2b4),1,uVar5,3,0,param_2,iVar2,1);
       uVar1 = GetMonData(uVar4,0x6f,0);
       ov83_02244BA8(param_1,param_2,iVar6,1,0,uVar1);
       iVar7 = iVar7 + 1;

@@ -28,7 +28,7 @@ void ov80_0222EDA0(int *param_1, int param_2)
         PlaySE(0x5dc);
     }
     DestroyListMenu((ListMenu *)param_1[0x6d], 0, 0);
-    sub_0200E5D4(param_1[0x68], 0);
+    ClearWindowPixelBuffer(param_1[0x68], 0);
     RemoveWindow((Window *)(param_1 + 2));
     iVar1 = 0;
     piVar2 = param_1;

@@ -44,7 +44,7 @@ typedef unsigned short wchar16;
 #define LZCOUNT(x) ((x) ? __builtin_clz(x) : 32)
 undefined4 SpriteSystem_NewSprite();
 undefined4 GF_AssertFail();
-undefined4 sub_02091054();
+undefined4 CapsuleMenu_GetSealMemberIdx();
 undefined4 func_0x0200dc18() __asm__("sub_0200DC18");
 undefined4 ov57_0223809C();
 
@@ -89,7 +89,7 @@ undefined4 ov57_02238260(int param_1,int param_2)
   uStack_40 = 0;
   uStack_24 = 0xffffffff;
   uStack_20 = 0xffffffff;
-  sub_02091054(*(undefined1 *)(iVar1 + 4));
+  CapsuleMenu_GetSealMemberIdx(*(undefined1 *)(iVar1 + 4));
   iStack_34 = param_2 + 20000;
   uStack_30 = 0x520e;
   uStack_2c = 0x5616;

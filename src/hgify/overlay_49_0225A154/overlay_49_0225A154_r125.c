@@ -9,7 +9,7 @@
 #include "sys_task_api.h"
 #include "unk_02077678.h"
 typedef int code();
-undefined4 sub_02077690();
+undefined4 GetMoveTypeAndCategoryIconPlttFileId();
 void ov49_0225BA5C(undefined4 param_1, int param_2);
 // FUNCTION ov49_0225BA5C: matching C (r2)
 #pragma force_active on
@@ -21,8 +21,8 @@ void ov49_0225BA5C(undefined4 param_1, int param_2)
 
     GfGfxLoader_GXLoadPalFromOpenNarc(*(undefined4 *)(param_2 + 0x14c), *(undefined2 *)(param_2 + 0x154), 4, 0, 0, *(undefined2 *)(param_2 + 0x156));
     LoadFontPal0(4, 0xa0, *(undefined2 *)(param_2 + 0x156));
-    uVar1 = sub_020776B4();
-    uVar2 = sub_02077690();
+    uVar1 = TypeIconGfx_GetNarcId();
+    uVar2 = GetMoveTypeAndCategoryIconPlttFileId();
     GfGfxLoader_GXLoadPal(uVar1, uVar2, 4, 0x160, 0x60, *(undefined2 *)(param_2 + 0x156));
     SysTask_Destroy(param_1);
     return;

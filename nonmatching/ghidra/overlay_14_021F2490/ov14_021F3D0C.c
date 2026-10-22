@@ -42,12 +42,12 @@ typedef unsigned short wchar16;
 #define SBORROW4(a, b) ((((int)(a) - (int)(b)) > (int)(a)) != ((int)(b) < 0))
 #define POPCOUNT(x) __builtin_popcount(x)
 #define LZCOUNT(x) ((x) ? __builtin_clz(x) : 32)
-undefined4 sub_02077678();
+undefined4 TypeIconGfx_GetCharFileId();
 undefined4 ov14_021F2C50();
 undefined4 func_0x0200dd10() __asm__("sub_0200DD10");
 undefined4 GfGfxLoader_GetCharData();
-undefined4 sub_020776B4();
-undefined4 sub_0207769C();
+undefined4 TypeIconGfx_GetNarcId();
+undefined4 TypeIconGfx_GetPlttOverride();
 undefined4 ManagedSprite_GetPaletteOverrideOffset();
 undefined4 Heap_Free();
 
@@ -62,13 +62,13 @@ void ov14_021F3D0C(int param_1,undefined4 param_2,int param_3,undefined4 param_4
   undefined4 uStack_18;
 
   uStack_18 = param_4;
-  uVar1 = sub_020776B4();
-  uVar2 = sub_02077678(param_2);
+  uVar1 = TypeIconGfx_GetNarcId();
+  uVar2 = TypeIconGfx_GetCharFileId(param_2);
   uVar1 = GfGfxLoader_GetCharData(uVar1,uVar2,1,&iStack_1c,10);
   ov14_021F2C50(param_1,param_3,*(undefined4 *)(iStack_1c + 0x14),0x100);
   Heap_Free(uVar1);
   iVar3 = ManagedSprite_GetPaletteOverrideOffset(*(undefined4 *)(param_1 + 0x2fc + param_3 * 4));
-  iVar4 = sub_0207769C(param_2);
+  iVar4 = TypeIconGfx_GetPlttOverride(param_2);
   func_0x0200dd10(*(undefined4 *)(param_1 + 0x2fc + param_3 * 4),iVar3 + iVar4);
   return;
 }

@@ -11,7 +11,7 @@ extern void ov59_0223ACD0(void);
 BOOL ov59_0223AB00(u8 *param_1) {
     switch (*(u16 *)(param_1 + 0x40)) {
     case 0:
-        sub_02021238();
+        DisableTouchPad();
         ov59_0223AD58(param_1);
         *(u16 *)(param_1 + 0x40) = *(u16 *)(param_1 + 0x40) + 1;
         break;

@@ -12,7 +12,7 @@ undefined4 sub_02089670(undefined4 param_1, undefined4 param_2, undefined4 param
 undefined4 sub_02089670(undefined4 param_1, undefined4 param_2, undefined4 param_3, undefined4 param_4)
 
 {
-    sub_020880CC(1, 0x13);
+    App_StartScreenFade(1, 0x13);
     return 0x16;
 }
 #pragma force_active reset

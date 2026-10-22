@@ -52,7 +52,7 @@ undefined4 ov75_0224741C();
 undefined4 OverlayManager_FreeData();
 undefined4 MessageFormat_Delete();
 undefined4 sub_0203A914();
-undefined4 sub_02021238();
+undefined4 DisableTouchPad();
 undefined4 func_0x02002b50() __asm__("sub_02002B50");
 undefined4 Heap_Destroy();
 undefined4 Main_SetVBlankIntrCB();
@@ -89,7 +89,7 @@ undefined4 ov75_02247180(undefined4 param_1)
   Main_SetVBlankIntrCB(0,0);
   HBlankInterruptDisable();
   GF_DestroyVramTransferManager();
-  sub_02021238();
+  DisableTouchPad();
   TextFlags_SetCanABSpeedUpPrint(0);
   func_0x02002b50(0);
   TextFlags_SetCanTouchSpeedUpPrint(0);

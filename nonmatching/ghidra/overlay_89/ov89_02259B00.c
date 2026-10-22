@@ -45,7 +45,7 @@ typedef unsigned short wchar16;
 undefined4 Camera_GetPerspectiveAngle();
 undefined4 func_0x02023240() __asm__("sub_02023240");
 undefined4 func_0x02023254() __asm__("sub_02023254");
-undefined4 sub_02020E10();
+undefined4 FX_CalcLinearFov();
 undefined4 Camera_GetDistance();
 undefined4 Camera_New();
 undefined4 Camera_SetStaticPtr();
@@ -74,7 +74,7 @@ void ov89_02259B00(int param_1,undefined4 param_2,undefined4 param_3,undefined4 
   Camera_SetStaticPtr(*(undefined4 *)(param_1 + 0xcc));
   uVar1 = Camera_GetPerspectiveAngle(*(undefined4 *)(param_1 + 0xcc));
   uVar2 = Camera_GetDistance(*(undefined4 *)(param_1 + 0xcc));
-  sub_02020E10(uVar1,uVar2,0x1555,&uStack_20,&uStack_24);
+  FX_CalcLinearFov(uVar1,uVar2,0x1555,&uStack_20,&uStack_24);
   *(undefined4 *)(param_1 + 0xd0) = uStack_20;
   *(undefined4 *)(param_1 + 0xd4) = uStack_24;
   return;

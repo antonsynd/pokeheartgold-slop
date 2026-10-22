@@ -38,8 +38,8 @@ int ov103_021ED314(S *s) {
     GfGfx_EngineBSetPlanes(0);
     *(volatile u16 *)0x04000050 = 0;
     *(volatile u16 *)0x04001050 = 0;
-    sub_020210BC();
-    sub_02021148(4);
+    EnableTouchPad();
+    InitializeTouchPad(4);
     *(volatile u16 *)0x04000304 = *(volatile u16 *)0x04000304 & 0xFFFF7FFF;
     Heap_Create(3, 0x9d, 0x60000);
     s->heapmem = Heap_Alloc(0x9d, 0x2f0);

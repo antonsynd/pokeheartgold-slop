@@ -42,7 +42,7 @@ typedef unsigned short wchar16;
 #define SBORROW4(a, b) ((((int)(a) - (int)(b)) > (int)(a)) != ((int)(b) < 0))
 #define POPCOUNT(x) __builtin_popcount(x)
 #define LZCOUNT(x) ((x) ? __builtin_clz(x) : 32)
-undefined4 func_0x0200ce7c(undefined4, undefined4, undefined4, undefined4, undefined4, undefined4, undefined4, undefined4, undefined4) __asm__("sub_0200CE7C");
+undefined4 func_0x0200ce7c(undefined4, undefined4, undefined4, undefined4, undefined4, undefined4, undefined4, undefined4, undefined4) __asm__("FontSpecialChars_DrawPartyScreenText");
 undefined4 ScheduleWindowCopyToVram(undefined4);
 
 void ov08_0221DF80(int param_1,int param_2,int param_3,int param_4,undefined1 param_5)

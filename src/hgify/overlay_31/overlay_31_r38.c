@@ -27,7 +27,7 @@ void ov31_0225E95C(Work *w, void *msg) {
     } else {
         v = PlayerProfile_GetMoney(w->profile);
     }
-    r = ov03_02257814((MartData *)w, v);
+    r = MartData_BuyMenu_CheckCanPurchaseItem((MartData *)w, v);
     if (r == 2) {
         NewString_ReadMsgData(msg, 0x19);
         return;

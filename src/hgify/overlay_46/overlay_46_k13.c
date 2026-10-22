@@ -26,7 +26,7 @@ void ov46_022593F8(UnkStruct_ov46_022593F8 *param0) {
     }
 
     if (param0->unk_20 == 0) {
-        sub_0200E5D4(&param0->unk_08, 1);
+        ClearWindowPixelBuffer(&param0->unk_08, 1);
         ClearWindowTilemapAndScheduleTransfer(&param0->unk_08);
     } else {
         if (param0->unk_24) {

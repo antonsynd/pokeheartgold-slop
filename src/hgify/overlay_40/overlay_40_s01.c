@@ -64,7 +64,7 @@ void ov40_0222B934(undefined *param_1)
     SpriteSystem_FreeResourcesAndManager((SpriteSystem *)*(undefined **)(param_1 + 0x18), (SpriteManager *)*(undefined **)(param_1 + 0x1c));
     SpriteSystem_Free((SpriteSystem *)*(undefined **)(param_1 + 0x18));
     sub_0203A914();
-    sub_02021238();
+    DisableTouchPad();
     TouchHitboxController_Destroy((TouchHitboxController *)*(undefined **)(param_1 + 0x2c));
     TextFlags_SetCanTouchSpeedUpPrint(0);
     iVar2 = 0;

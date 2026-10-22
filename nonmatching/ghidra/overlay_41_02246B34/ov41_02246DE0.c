@@ -48,7 +48,7 @@ undefined4 HBlankInterruptDisable();
 undefined4 ov41_02248F18();
 undefined4 Heap_Create();
 undefined4 ov41_02248E84();
-undefined4 sub_020210BC();
+undefined4 EnableTouchPad();
 undefined4 ov41_02247334();
 undefined4 func_0x020183f0() __asm__("sub_020183F0");
 undefined4 ov41_02245EA0();
@@ -60,7 +60,7 @@ undefined4 OverlayManager_CreateAndGetData();
 undefined4 ov41_02247480();
 undefined4 OverlayManager_GetArgs();
 undefined4 ov41_0224765C();
-undefined4 sub_02021148();
+undefined4 InitializeTouchPad();
 undefined4 AllocWindows();
 undefined4 YesNoPrompt_Create();
 undefined4 Sound_SetSceneAndPlayBGM();
@@ -87,8 +87,8 @@ undefined4 ov41_02246DE0(undefined4 param_1)
     uVar3 = func_0x020183f0();
   }
   *(undefined4 *)(iVar1 + 0x6ec) = uVar3;
-  sub_020210BC();
-  sub_02021148(4);
+  EnableTouchPad();
+  InitializeTouchPad(4);
   ov41_02248E84(puVar2[2],iVar1 + 0x184);
   ov41_02247240(iVar1);
   ov41_022499B4(iVar1 + 0x35c,0x2cf,0xd);

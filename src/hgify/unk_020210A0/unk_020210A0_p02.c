@@ -12,9 +12,9 @@ typedef struct {
     unsigned short v1a;
 } SubGlob;
 #define SUBGLOB ((SubGlob *)(_021D2198 + 0x40))
-// FUNCTION sub_020210D8: matching C (agent8)
+// FUNCTION InitializeTouchPadWithExternalBuffer: matching C (agent8)
 #pragma force_active on
-int sub_020210D8(int param_1, int param_2, unsigned int param_3) {
+int InitializeTouchPadWithExternalBuffer(int param_1, int param_2, unsigned int param_3) {
     int iVar1;
 
     if (SUBGLOB->v1a != 0) {

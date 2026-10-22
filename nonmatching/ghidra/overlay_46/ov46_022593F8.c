@@ -45,7 +45,7 @@ typedef unsigned short wchar16;
 undefined4 ClearFrameAndWindow2();
 undefined4 func_0x020200a0() __asm__("sub_020200A0");
 undefined4 TextPrinterCheckActive();
-undefined4 sub_0200E5D4();
+undefined4 ClearWindowPixelBuffer();
 undefined4 ClearWindowTilemapAndScheduleTransfer();
 undefined4 ov46_02259474();
 
@@ -59,7 +59,7 @@ void ov46_022593F8(int param_1)
     func_0x020200a0(*(uint *)(param_1 + 0x2c) & 0xff);
   }
   if (*(int *)(param_1 + 0x20) == 0) {
-    sub_0200E5D4(param_1 + 8,1);
+    ClearWindowPixelBuffer(param_1 + 8,1);
     ClearWindowTilemapAndScheduleTransfer(param_1 + 8);
     return;
   }

@@ -56,7 +56,7 @@ int ov65_0221E474(Ov65Obj *obj) {
         break;
     }
     }
-    sub_0200E5D4(&obj->window, 0);
+    ClearWindowPixelBuffer(&obj->window, 0);
     RemoveWindow(&obj->window);
     DestroyListMenu(obj->listMenu, 0, 0);
     ListMenuItems_Delete(obj->unk3688);

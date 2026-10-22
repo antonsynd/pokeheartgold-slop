@@ -43,7 +43,7 @@ typedef unsigned short wchar16;
 #define POPCOUNT(x) __builtin_popcount(x)
 #define LZCOUNT(x) ((x) ? __builtin_clz(x) : 32)
 undefined4 ov59_0223AD58();
-undefined4 sub_02021238();
+undefined4 DisableTouchPad();
 undefined4 ov59_0223ACD0();
 
 undefined4 ov59_0223AB00(int param_1)
@@ -54,7 +54,7 @@ undefined4 ov59_0223AB00(int param_1)
     *(undefined2 *)(param_1 + 0x40) = 0;
     return 1;
   }
-  sub_02021238();
+  DisableTouchPad();
   ov59_0223AD58(param_1);
   *(short *)(param_1 + 0x40) = *(short *)(param_1 + 0x40) + 1;
   return 0;

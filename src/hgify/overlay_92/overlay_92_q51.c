@@ -17,7 +17,7 @@ void ov92_0225E100(int param_1)
 
     iVar1 = WindowIsInUse(param_1 + 0x1fe0);
     if (iVar1 == 1) {
-        sub_0200E5D4(param_1 + 0x1fe0, 1);
+        ClearWindowPixelBuffer(param_1 + 0x1fe0, 1);
         ClearWindowTilemapAndCopyToVram(param_1 + 0x1fe0);
         RemoveWindow(param_1 + 0x1fe0);
     }

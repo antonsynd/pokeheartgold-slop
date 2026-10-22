@@ -10,25 +10,25 @@ void VEC_MultAdd(fx32 t, const VecFx32 *a, const VecFx32 *b, VecFx32 *axb);
 u16 FX_Atan2Idx(fx32 y, fx32 x);
 fx32 FX_Modf(fx32 x, fx32 *iptr);
 
-int sub_02020B8C(int a, int b);
-int sub_02020B94(int a, int b);
-u16 CalcAngleBetweenVecs(VecFx32 *a, VecFx32 *b);
-void sub_02020DA4(MtxFx33 *rotation, u16 xAngle, u16 yAngle, u16 zAngle);
-void sub_02020E10(int angle, fx32 a1, fx32 a2, fx32 *a3, fx32 *a4);
+int FX_Min(int a, int b);
+int FX_Max(int a, int b);
+u16 VEC_AngleBetween(VecFx32 *a, VecFx32 *b);
+void MTX_Rot33Angles(MtxFx33 *rotation, u16 xAngle, u16 yAngle, u16 zAngle);
+void FX_CalcLinearFov(int angle, fx32 a1, fx32 a2, fx32 *a3, fx32 *a4);
 int sub_02020E80(VecFx32 *a, VecFx32 *b, VecFx32 *c);
 int sub_02020EB0(VecFx32 *p1, VecFx32 *p2, VecFx32 *p3, VecFx32 *p4);
 static void sub_02020EF4(fx32 *out, int x1, int y1, int x2, int y2);
 int sub_02020F4C(VecFx32 *a, VecFx32 *b, VecFx32 *c, VecFx32 *d, VecFx32 *out);
 
-int sub_02020B8C(int a, int b) {
+int FX_Min(int a, int b) {
     return (a < b) ? a : b;
 }
 
-int sub_02020B94(int a, int b) {
+int FX_Max(int a, int b) {
     return (a > b) ? a : b;
 }
 
-fx32 GetDistanceFromPointToLine(VecFx32 *a, VecFx32 *near, VecFx32 *far) {
+fx32 VEC_DistanceFromPointToLine(VecFx32 *a, VecFx32 *near, VecFx32 *far) {
     fx32 t;
     VecFx32 lineDir;
     VecFx32 toPoint;
@@ -44,7 +44,7 @@ fx32 GetDistanceFromPointToLine(VecFx32 *a, VecFx32 *near, VecFx32 *far) {
     return VEC_Mag(&diff);
 }
 
-u16 CalcAngleBetweenVecs(VecFx32 *a, VecFx32 *b) {
+u16 VEC_AngleBetween(VecFx32 *a, VecFx32 *b) {
     fx32 cross;
     VecFx32 na;
     VecFx32 nb;
@@ -62,7 +62,7 @@ u16 CalcAngleBetweenVecs(VecFx32 *a, VecFx32 *b) {
     return FX_Atan2Idx(cross, dot);
 }
 
-void sub_02020D2C(MtxFx33 *rotation, VecFx32 *angles) {
+void MTX_Rot33Vec(MtxFx33 *rotation, VecFx32 *angles) {
     MtxFx33 tmp;
     MTX_RotX33_(rotation, FX_SinIdx((u16)angles->x), FX_CosIdx((u16)angles->x));
     MTX_RotY33_(&tmp, FX_SinIdx((u16)angles->y), FX_CosIdx((u16)angles->y));
@@ -71,7 +71,7 @@ void sub_02020D2C(MtxFx33 *rotation, VecFx32 *angles) {
     MTX_Concat33(rotation, &tmp, rotation);
 }
 
-void sub_02020DA4(MtxFx33 *rotation, u16 xAngle, u16 yAngle, u16 zAngle) {
+void MTX_Rot33Angles(MtxFx33 *rotation, u16 xAngle, u16 yAngle, u16 zAngle) {
     MtxFx33 tmp;
     fx32 cos;
     cos = GF_CosDegNoWrap(xAngle);
@@ -84,7 +84,7 @@ void sub_02020DA4(MtxFx33 *rotation, u16 xAngle, u16 yAngle, u16 zAngle) {
     MTX_Concat33(rotation, &tmp, rotation);
 }
 
-void sub_02020E10(int angle, fx32 a1, fx32 a2, fx32 *a3, fx32 *a4) {
+void FX_CalcLinearFov(int angle, fx32 a1, fx32 a2, fx32 *a3, fx32 *a4) {
     fx32 tan = FX_Div(FX_SinIdx(angle), FX_CosIdx(angle));
     fx32 v = FX_Mul(FX_Mul(a1, tan), 0x2000);
     *a4 = v;

@@ -6,7 +6,11 @@
 #include "battle/battle_system.h"
 
 #include "sprite_system.h"
+// unk_02077678.h declares these with the types upstream gave them; this file
+// was matched against its own declarations. Shadow the header's.
+#define TypeIconGfx_GetPlttOverride TypeIconGfx_GetPlttOverride_UpstreamDecl
 #include "unk_02077678.h"
+#undef TypeIconGfx_GetPlttOverride
 
 typedef struct UnkStruct_ov08_02220AEC_Context {
     u8 unk0[8];
@@ -19,14 +23,14 @@ typedef struct UnkStruct_ov08_02220AEC {
     SpriteManager *spriteManager;
 } UnkStruct_ov08_02220AEC;
 
-int sub_0207769C(int moveType);
+int TypeIconGfx_GetPlttOverride(int moveType);
 void ov08_02220AEC(UnkStruct_ov08_02220AEC *battleParty, ManagedSprite *sprite, u32 resourceID, u8 type);
 // FUNCTION ov08_02220AEC: matching C (twin)
 #pragma force_active on
 void ov08_02220AEC(UnkStruct_ov08_02220AEC *battleParty, ManagedSprite *sprite, u32 resourceID, u8 type) {
     SpriteSystem *spriteSystem = BattleSystem_GetSpriteSystem(battleParty->context->battleSys);
 
-    SpriteSystem_ReplaceCharResObj(spriteSystem, battleParty->spriteManager, sub_020776B4(), sub_02077678(type), TRUE, resourceID);
-    ManagedSprite_SetPaletteOverride(sprite, sub_0207769C(type) + 4);
+    SpriteSystem_ReplaceCharResObj(spriteSystem, battleParty->spriteManager, TypeIconGfx_GetNarcId(), TypeIconGfx_GetCharFileId(type), TRUE, resourceID);
+    ManagedSprite_SetPaletteOverride(sprite, TypeIconGfx_GetPlttOverride(type) + 4);
 }
 #pragma force_active reset

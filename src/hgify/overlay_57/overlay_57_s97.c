@@ -120,7 +120,7 @@ int ov57_0223A31C(Obj *o) {
                 held = 0;
             }
             if (held != 0) {
-                ov57_02239B2C(o->sub, sub_0209106C(o->slots[sel].seal));
+                ov57_02239B2C(o->sub, CapsuleMenu_GetSealNameIndex(o->slots[sel].seal));
                 ManagedSprite_SetPositionXY(o->slots[sel].spr, x, y);
                 ov57_0223848C(o, sel);
                 ov57_02238508(o, sel);

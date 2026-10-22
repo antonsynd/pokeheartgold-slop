@@ -5,7 +5,7 @@
 typedef struct Vec {
     int x, y, z;
 } Vec;
-u32 CalcAngleBetweenVecs(const Vec *, const Vec *);
+u32 VEC_AngleBetween(const Vec *, const Vec *);
 extern const Vec ov96_0221CAC8;
 // FUNCTION ov96_022079B8: matching C (agent15)
 #pragma force_active on
@@ -21,7 +21,7 @@ int ov96_022079B8(const Vec *p) {
         v.x = norm.y;
         v.z = norm.x;
         v.y = 0;
-        a = CalcAngleBetweenVecs(&ref, &v);
+        a = VEC_AngleBetween(&ref, &v);
         if (a <= 0x2000 || a >= 0xE000) {
             r = 4;
         } else if (a > 0x2000 && a < 0x6000) {

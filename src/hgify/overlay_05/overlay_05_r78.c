@@ -27,6 +27,6 @@ void ov05_0221E714(UnkStruct_ov05_0221E714 *param0, MsgData *param1, MessagePrin
 
     v0 = &param0->unk_10[param5 * 4 + 1];
 
-    sub_0200CE7C(param2, 1, param0->unk_214[param5].unk_0C, 3, 0, v0, 0, 5 - 3);
+    FontSpecialChars_DrawPartyScreenText(param2, 1, param0->unk_214[param5].unk_0C, 3, 0, v0, 0, 5 - 3);
 }
 #pragma force_active reset

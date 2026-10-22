@@ -47,7 +47,7 @@ undefined4 ov57_02238958();
 undefined4 ov57_02239728();
 undefined4 ov57_0223B858();
 undefined4 ov57_022388E4();
-undefined4 sub_0209106C();
+undefined4 CapsuleMenu_GetSealNameIndex();
 undefined4 ov57_02238AC0();
 undefined4 GiveOrTakeSeal();
 undefined4 ov57_02238A00();
@@ -93,7 +93,7 @@ void ov57_0223AEA8(uint param_1,int param_2,int *param_3)
            (iVar1 = SealCaseInventory_GetSealQuantity(param_3[0x19],uVar3 - 1), iVar1 != 0)) {
           iVar1 = ov57_02237FAC(param_3,param_1 & 0xff);
           param_3[0x35] = iVar1;
-          uVar2 = sub_0209106C(*(undefined1 *)((int)param_3 + param_1 + 0x450));
+          uVar2 = CapsuleMenu_GetSealNameIndex(*(undefined1 *)((int)param_3 + param_1 + 0x450));
           ov57_02239B2C(param_3 + 0x3b,uVar2);
           GiveOrTakeSeal(*(undefined4 *)(*param_3 + 0x20),
                          *(undefined1 *)((int)param_3 + param_1 + 0x450),0xffffffff);
@@ -180,7 +180,7 @@ void ov57_0223AEA8(uint param_1,int param_2,int *param_3)
     case 0x14:
       if (param_2 == 0) {
         ov57_022382F8(param_3,0,param_1 - 0xd & 0xff);
-        uVar2 = sub_0209106C((char)param_3[(param_1 - 0xd) * 4 + 0xd4]);
+        uVar2 = CapsuleMenu_GetSealNameIndex((char)param_3[(param_1 - 0xd) * 4 + 0xd4]);
         ov57_02239B2C(param_3 + 0x3b,uVar2);
         PlaySE(0x5eb);
         return;

@@ -309,7 +309,7 @@ void ov08_0221DF80(BattleParty *battleParty, u32 windowIndex, u16 partyIndex, u8
 void ov08_0221DF80(BattleParty *battleParty, u32 windowIndex, u16 partyIndex, u8 x, u8 y) {
     BattlePartyPokemon *pokemon = &battleParty->partyPokemon[partyIndex];
 
-    sub_0200CE7C((MessagePrinter *)battleParty->unused3, SPECIAL_CHAR_LEVEL, pokemon->level, 3, PADDING_MODE_NONE, &battleParty->windows[windowIndex], x + 8, y);
+    FontSpecialChars_DrawPartyScreenText((MessagePrinter *)battleParty->unused3, SPECIAL_CHAR_LEVEL, pokemon->level, 3, PADDING_MODE_NONE, &battleParty->windows[windowIndex], x + 8, y);
     ScheduleWindowCopyToVram(&battleParty->windows[windowIndex]);
 }
 #pragma force_active reset

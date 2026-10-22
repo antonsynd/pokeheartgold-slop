@@ -33,7 +33,7 @@ undefined4 PokemonSummary_Exit(undefined4 param_1)
     sub_0208B258(puVar1);
     sub_0208C560(puVar1);
     sub_0208877C(*puVar1);
-    sub_02021238();
+    DisableTouchPad();
     GF_DestroyVramTransferManager();
     sub_02088AF8(puVar1);
     sub_0208895C(puVar1);

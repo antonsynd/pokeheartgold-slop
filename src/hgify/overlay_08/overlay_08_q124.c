@@ -8,9 +8,9 @@
 #include "ghidra_compat.h"
 #include "sprite_system.h"
 typedef void code(void);
-undefined4 sub_02077818(undefined4);
-undefined4 sub_02077830(void);
-undefined4 sub_02077800(undefined4);
+undefined4 GetMoveCategoryIconGfxPlttOverride(undefined4);
+undefined4 GetMoveCategoryIconGfxNarcId(void);
+undefined4 GetMoveCategoryIconGfxCharFileId(undefined4);
 void ov08_02220B3C(int *param_1, undefined4 param_2, undefined4 param_3);
 // FUNCTION ov08_02220B3C: matching C (r2)
 #pragma force_active on
@@ -23,10 +23,10 @@ void ov08_02220B3C(int *param_1, undefined4 param_2, undefined4 param_3)
     int iVar4;
 
     uVar1 = BattleSystem_GetSpriteSystem(*(undefined4 *)(*param_1 + 8));
-    uVar2 = sub_02077830();
-    uVar3 = sub_02077800(param_3);
+    uVar2 = GetMoveCategoryIconGfxNarcId();
+    uVar3 = GetMoveCategoryIconGfxCharFileId(param_3);
     SpriteSystem_ReplaceCharResObj(uVar1, param_1[0x7ed], uVar2, uVar3, 1, 0xb015);
-    iVar4 = sub_02077818(param_3);
+    iVar4 = GetMoveCategoryIconGfxPlttOverride(param_3);
     ManagedSprite_SetPaletteOverride(param_2, iVar4 + 4);
     return;
 }

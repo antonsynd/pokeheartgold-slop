@@ -45,7 +45,7 @@ typedef unsigned short wchar16;
 undefined4 GfGfx_DisableEngineAPlanes();
 undefined4 ov108_021E72A4();
 undefined4 ov108_021E6F58();
-undefined4 sub_02021238();
+undefined4 DisableTouchPad();
 undefined4 GfGfx_DisableEngineBPlanes();
 undefined4 ov108_021E71EC();
 undefined4 HBlankInterruptDisable();
@@ -72,7 +72,7 @@ undefined4 ov108_021E5D0C(int param_1)
     ov108_021E6D24(param_1);
   }
   else if (*(int *)(param_1 + 8) == 2) {
-    sub_02021238();
+    DisableTouchPad();
     uRam04000000 = uRam04000000 & 0xffffe0ff;
     uRam04001000 = uRam04001000 & 0xffffe0ff;
     GfGfx_DisableEngineAPlanes();

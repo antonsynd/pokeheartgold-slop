@@ -45,7 +45,7 @@ typedef unsigned short wchar16;
 undefined4 GF_AssertFail();
 undefined4 WindowArray_Delete();
 undefined4 sub_0203769C();
-undefined4 sub_0200E5D4();
+undefined4 ClearWindowPixelBuffer();
 undefined4 ov80_02237D8C();
 
 void ov80_022333F0(int param_1,int param_2)
@@ -62,7 +62,7 @@ void ov80_022333F0(int param_1,int param_2)
       GF_AssertFail();
     }
     uVar3 = *(undefined4 *)(param_1 + 0xa8);
-    sub_0200E5D4(uVar3,0);
+    ClearWindowPixelBuffer(uVar3,0);
     WindowArray_Delete(uVar3,1);
   }
   else {
@@ -82,9 +82,9 @@ void ov80_022333F0(int param_1,int param_2)
       puVar2 = (undefined4 *)(param_1 + 0xa8);
     }
     uVar4 = *puVar2;
-    sub_0200E5D4(uVar3,0);
+    ClearWindowPixelBuffer(uVar3,0);
     WindowArray_Delete(uVar3,1);
-    sub_0200E5D4(uVar4,0);
+    ClearWindowPixelBuffer(uVar4,0);
     WindowArray_Delete(uVar4,1);
   }
   *(undefined4 *)(param_1 + 0xa8) = 0;

@@ -50,7 +50,7 @@ undefined4 func_0x02258c38() __asm__("sub_02258C38");
 undefined4 ov92_0225E03C();
 undefined4 ov92_0225E918();
 undefined4 ov92_0225E9A8();
-undefined4 sub_02021238();
+undefined4 DisableTouchPad();
 undefined4 func_0x020180f8() __asm__("sub_020180F8");
 undefined4 ov92_0225DA2C();
 undefined4 ov92_0225ED60();
@@ -69,7 +69,7 @@ void ov92_0225D1FC(undefined4 *param_1,undefined4 param_2,undefined4 param_3,und
   Main_SetVBlankIntrCB(0,0,param_3,param_4,param_4);
   HBlankInterruptDisable();
   GF_DestroyVramTransferManager();
-  sub_02021238();
+  DisableTouchPad();
   SetLCRNGSeed(param_1[0x20]);
   ov92_0225E03C(param_1[1]);
   ov92_0225DEF0(param_1[1]);

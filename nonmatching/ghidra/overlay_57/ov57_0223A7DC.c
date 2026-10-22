@@ -44,7 +44,7 @@ typedef unsigned short wchar16;
 #define LZCOUNT(x) ((x) ? __builtin_clz(x) : 32)
 undefined4 ov57_02239BCC();
 undefined4 GfGfx_EngineATogglePlanes();
-undefined4 sub_0200E5D4();
+undefined4 ClearWindowPixelBuffer();
 undefined4 ov57_0223B940();
 undefined4 ov57_022387C0();
 undefined4 ov57_02239728();
@@ -88,7 +88,7 @@ undefined4 ov57_0223A7DC(int param_1)
       ov57_0223A034(param_1,0);
       ov57_02239240(param_1,0);
       ov57_022387C0(param_1,0);
-      sub_0200E5D4(param_1 + 0xec,1);
+      ClearWindowPixelBuffer(param_1 + 0xec,1);
       ov57_02239728(param_1 + 0x11c,3,7,0);
       CopyWindowToVram(param_1 + 0x11c);
       ov57_0223866C(param_1,1);

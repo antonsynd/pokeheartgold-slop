@@ -96,8 +96,8 @@ void ov87_021E68DC(Ov87_App *app) {
     app->spr35C = ov87_021E7F6C(app->sys, 4, 0, 0x26, 0x38, 0, 0, 10);
     ov87_021E7FD4(app->spr35C, 0);
     *(vu16 *)0x04000304 &= 0xFFFF7FFF;
-    sub_020210BC();
-    sub_02021148(1);
+    EnableTouchPad();
+    InitializeTouchPad(1);
     Main_SetVBlankIntrCB(ov87_021E6C04, app);
 }
 #pragma force_active reset

@@ -50,7 +50,7 @@ undefined4 ObjPlttTransfer_Destroy(void);
 undefined4 Main_SetVBlankIntrCB(void *, void *);
 undefined4 OverlayManager_GetData();
 undefined4 ov52_021E9300();
-undefined4 sub_02021238(void);
+undefined4 DisableTouchPad(void);
 undefined4 SpriteTransfer_DeletePlttTransferTask(void *);
 undefined4 DestroyMsgData(void *);
 undefined4 TextFlags_SetCanTouchSpeedUpPrint(int);
@@ -95,7 +95,7 @@ int TrainerCardSignature_Exit(undefined *param_1,undefined *param_2)
   ov52_021E8B94(puVar1);
   FontID_Release(2);
   ov52_021E85A0(*puVar1);
-  sub_02021238();
+  DisableTouchPad();
   TextFlags_SetCanTouchSpeedUpPrint(0);
   TextFlags_SetCanABSpeedUpPrint(0);
   DestroyMsgData((undefined *)puVar1[5]);

@@ -4,9 +4,9 @@
 typedef unsigned char u8;
 typedef unsigned short u16;
 typedef unsigned int u32;
-u32 sub_020776B4(void);
-u32 sub_02077678(int);
-u32 sub_0207769C(int);
+u32 TypeIconGfx_GetNarcId(void);
+u32 TypeIconGfx_GetCharFileId(int);
+u32 TypeIconGfx_GetPlttOverride(int);
 u32 GetMoveAttr(u32, u32);
 void SpriteSystem_ReplaceCharResObj(int, int, u32, u32, int, u32);
 void ManagedSprite_SetPaletteOverride(int, int);
@@ -24,16 +24,16 @@ void ov68_021E7028(int *param_1, u32 param_2, u32 param_3, u32 param_4) {
         iVar1 = GetMoveAttr(param_2, 0xb);
         iVar1 = iVar1 + 0x12;
     }
-    uVar2 = sub_020776B4();
-    uVar3 = sub_02077678(iVar1);
+    uVar2 = TypeIconGfx_GetNarcId();
+    uVar3 = TypeIconGfx_GetCharFileId(iVar1);
     SpriteSystem_ReplaceCharResObj(param_1[0x47], param_1[0x48], uVar2, uVar3, 1, param_3 + 0xb8ab);
     if (param_3 < 4) {
-        iVar1 = sub_0207769C(iVar1);
+        iVar1 = TypeIconGfx_GetPlttOverride(iVar1);
         p = &param_1[param_3 + 4];
         ManagedSprite_SetPaletteOverride(p[0x49], iVar1 + 4);
         return;
     }
-    uVar2 = sub_0207769C(iVar1);
+    uVar2 = TypeIconGfx_GetPlttOverride(iVar1);
     p = &param_1[param_3 + 4];
     ManagedSprite_SetPaletteOverride(p[0x49], uVar2);
 }

@@ -44,7 +44,7 @@ typedef unsigned short wchar16;
 #define LZCOUNT(x) ((x) ? __builtin_clz(x) : 32)
 undefined4 GfGfxLoader_LoadScrnDataFromOpenNarc();
 undefined4 RemoveWindow();
-undefined4 sub_0200E5D4();
+undefined4 ClearWindowPixelBuffer();
 undefined4 ClearWindowTilemapAndCopyToVram();
 undefined4 WindowIsInUse();
 
@@ -62,7 +62,7 @@ void ov92_0225E360(int *param_1,undefined4 param_2,undefined4 param_3,undefined4
       if (iVar2 != *param_1) {
         iVar1 = WindowIsInUse(piVar3);
         if (iVar1 == 1) {
-          sub_0200E5D4(piVar3,1);
+          ClearWindowPixelBuffer(piVar3,1);
           ClearWindowTilemapAndCopyToVram(piVar3);
           RemoveWindow(piVar3);
         }

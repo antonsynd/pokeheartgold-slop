@@ -30,7 +30,7 @@ void ov49_0225B014(UnkStruct_ov49_0225B014 *param0, u16 *param1, u16 *param2) {
     DestroyListMenu(param0->list, param1, param2);
     param0->list = NULL;
 
-    sub_0200E5D4(&param0->window, TRUE);
+    ClearWindowPixelBuffer(&param0->window, TRUE);
     ClearWindowTilemapAndScheduleTransfer(&param0->window);
     RemoveWindow(&param0->window);
 

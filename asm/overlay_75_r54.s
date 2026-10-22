@@ -351,7 +351,7 @@ _02248348:
 _0224837C:
 	add r0, #0xc4
 	mov r1, #0
-	bl sub_0200E5D4
+	bl ClearWindowPixelBuffer
 	add r0, r5, #0
 	add r0, #0xc4
 	bl ClearWindowTilemapAndCopyToVram
@@ -361,7 +361,7 @@ _0224837C:
 	add r0, r5, #0
 	add r0, #0xd4
 	mov r1, #0
-	bl sub_0200E5D4
+	bl ClearWindowPixelBuffer
 	add r0, r5, #0
 	add r0, #0xd4
 	bl ClearWindowTilemapAndCopyToVram

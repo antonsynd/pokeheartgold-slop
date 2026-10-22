@@ -47,7 +47,7 @@ undefined4 ov57_0223BC4C();
 undefined4 ov57_02239728();
 undefined4 ov57_02239558();
 undefined4 ov57_02238FC4();
-undefined4 sub_0200E5D4();
+undefined4 ClearWindowPixelBuffer();
 undefined4 ov57_0223866C();
 undefined4 ov57_0223B12C();
 undefined4 ClearWindowTilemapAndScheduleTransfer();
@@ -73,7 +73,7 @@ undefined4 ov57_0223A504(int param_1)
   }
   else if (iVar1 == 2) {
     ov57_0223B828(param_1,0,0xff,0);
-    sub_0200E5D4(param_1 + 0xec,1);
+    ClearWindowPixelBuffer(param_1 + 0xec,1);
     ClearWindowTilemapAndScheduleTransfer(param_1 + 0xec);
     ov57_0223866C(param_1,1);
     ov57_02239728(param_1 + 0x11c,3,7,0);

@@ -599,7 +599,7 @@ _021E5EB4:
 _021E5EDA:
 	add r0, r4, r0
 	mov r1, #0
-	bl sub_0200E5D4
+	bl ClearWindowPixelBuffer
 _021E5EE2:
 	ldr r0, _021E6060 ; =gSystem
 	ldr r1, [r0, #0x48]
@@ -616,11 +616,11 @@ _021E5EF8:
 	ldr r0, _021E604C ; =0x0000C034
 	mov r1, #0
 	add r0, r4, r0
-	bl sub_0200E5D4
+	bl ClearWindowPixelBuffer
 	ldr r0, _021E605C ; =0x0000C044
 	mov r1, #0
 	add r0, r4, r0
-	bl sub_0200E5D4
+	bl ClearWindowPixelBuffer
 	ldr r0, _021E6068 ; =0x000005DD
 	bl PlaySE
 	mov r0, #0xd8

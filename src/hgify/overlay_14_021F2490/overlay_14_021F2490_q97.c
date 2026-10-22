@@ -7,10 +7,14 @@
 #include "ghidra_compat.h"
 #include "heap.h"
 #include "sprite_system.h"
+// unk_02077678.h declares these with the types upstream gave them; this file
+// was matched against its own declarations. Shadow the header's.
+#define TypeIconGfx_GetPlttOverride TypeIconGfx_GetPlttOverride_UpstreamDecl
 #include "unk_02077678.h"
+#undef TypeIconGfx_GetPlttOverride
 typedef void code(void);
 undefined4 ov14_021F2C50();
-undefined4 sub_0207769C();
+undefined4 TypeIconGfx_GetPlttOverride();
 void ov14_021F3D0C(int param_1, undefined4 param_2, int param_3, undefined4 param_4);
 // FUNCTION ov14_021F3D0C: matching C (r2)
 #pragma force_active on
@@ -25,13 +29,13 @@ void ov14_021F3D0C(int param_1, undefined4 param_2, int param_3, undefined4 para
     undefined4 uStack_18;
 
     uStack_18 = param_4;
-    uVar1 = sub_020776B4();
-    uVar2 = sub_02077678(param_2);
+    uVar1 = TypeIconGfx_GetNarcId();
+    uVar2 = TypeIconGfx_GetCharFileId(param_2);
     uVar1 = (undefined4)GfGfxLoader_GetCharData(uVar1, uVar2, 1, &iStack_1c, 10);
     ov14_021F2C50(param_1, param_3, *(undefined4 *)((int)iStack_1c + 0x14), 0x100);
     Heap_Free(uVar1);
     iVar3 = ManagedSprite_GetPaletteOverrideOffset((ManagedSprite *)*(undefined4 *)(param_1 + 0x2fc + param_3 * 4));
-    iVar4 = sub_0207769C(param_2);
+    iVar4 = TypeIconGfx_GetPlttOverride(param_2);
     ManagedSprite_SetPaletteOverride((ManagedSprite *)*(undefined4 *)(param_1 + 0x2fc + param_3 * 4), iVar3 + iVar4);
     return;
 }

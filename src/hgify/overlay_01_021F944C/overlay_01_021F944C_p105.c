@@ -76,7 +76,7 @@ void sub_02023E50(Sprite *sprite, VecFx32 *pos);
 void sub_02023EE0(Sprite *sprite, int arg1);
 void sub_02023F40(Sprite *sprite, int arg1);
 int sub_020238F8(void *list);
-void sub_02026E18(void *resource, void *dest);
+void BillboardGfxSequence_SetData(void *resource, void *dest);
 void ov01_021EA3B0(NNSG3dResMdl *model);
 void *ov01_021FC5A4(void *heap, int id);
 void ov01_021F93AC(LocalMapObject *object, VecFx32 *pos);
@@ -152,7 +152,7 @@ void ov01_021FA370(UnkStruct_ov01_021FA228 *arg0, int graphicsId, UnkStruct_ov01
     GF_3DGfxRawResObj *texture;
 
     arg2->unk_00 = ov01_021FC5A4(arg0->unk_F8, ov01_021FA28C(graphicsId));
-    sub_02026E18(ov01_021FC5A4(arg0->unk_FC, ov01_021FA2A0(graphicsId)), arg2->unk_0C);
+    BillboardGfxSequence_SetData(ov01_021FC5A4(arg0->unk_FC, ov01_021FA2A0(graphicsId)), arg2->unk_0C);
 
     texture = GF3dGfxRawResMan_GetObjById(ov01_021FA1F4(arg0), graphicsId);
     arg2->unk_04 = GF3dGfxRawResObj_GetTex(texture);

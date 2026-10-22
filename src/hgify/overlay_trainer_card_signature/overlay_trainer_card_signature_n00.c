@@ -77,8 +77,8 @@ int TrainerCardSignature_Init(OverlayManager *man, int *state) {
         data->stats = Save_GameStats_Get(OverlayManager_GetArgs(man));
         data->options = Save_PlayerData_GetOptionsAddr(OverlayManager_GetArgs(man));
         ov52_021E85DC(data, narc);
-        sub_020210BC();
-        sub_02021148(1);
+        EnableTouchPad();
+        InitializeTouchPad(1);
         Main_SetVBlankIntrCB(ov52_021E837C, data->bgConfig);
         FontID_Alloc(2, 0x27);
         ov52_021E84CC(data);

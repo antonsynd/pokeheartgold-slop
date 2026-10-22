@@ -42,10 +42,10 @@ typedef unsigned short wchar16;
 #define SBORROW4(a, b) ((((int)(a) - (int)(b)) > (int)(a)) != ((int)(b) < 0))
 #define POPCOUNT(x) __builtin_popcount(x)
 #define LZCOUNT(x) ((x) ? __builtin_clz(x) : 32)
-undefined4 func_0x020776b8(undefined4, undefined4, undefined4, undefined4, undefined4) __asm__("sub_020776B8");
-undefined4 func_0x0207775c(undefined4, undefined4, undefined4, undefined4) __asm__("sub_0207775C");
-undefined4 func_0x02077834(undefined4, undefined4, undefined4, undefined4, undefined4) __asm__("sub_02077834");
-undefined4 sub_02077720(undefined4, undefined4, undefined4, undefined4, undefined4, undefined4, undefined4);
+undefined4 func_0x020776b8(undefined4, undefined4, undefined4, undefined4, undefined4) __asm__("SpriteSystem_LoadMoveTypeIconCharResObj");
+undefined4 func_0x0207775c(undefined4, undefined4, undefined4, undefined4) __asm__("SpriteSystem_LoadMoveTypeAndCategoryIconsCellAndAnim");
+undefined4 func_0x02077834(undefined4, undefined4, undefined4, undefined4, undefined4) __asm__("SpriteSystem_LoadMoveCategoryIconCharResObj");
+undefined4 SpriteSystem_LoadMoveTypeAndCategoryIconsPlttToBuffer(undefined4, undefined4, undefined4, undefined4, undefined4, undefined4, undefined4);
 undefined4 func_0x0223a8e4(undefined4) __asm__("sub_0223A8E4");
 
 void ov08_02220800(int *param_1,undefined4 param_2,undefined4 param_3,undefined4 param_4)
@@ -55,7 +55,7 @@ void ov08_02220800(int *param_1,undefined4 param_2,undefined4 param_3,undefined4
   uint uVar2;
 
   uVar1 = func_0x0223a8e4(*(undefined4 *)(*param_1 + 8));
-  sub_02077720(param_1[0x7a],3,uVar1,param_1[0x7ed],2,0xb009,param_4);
+  SpriteSystem_LoadMoveTypeAndCategoryIconsPlttToBuffer(param_1[0x7a],3,uVar1,param_1[0x7ed],2,0xb009,param_4);
   func_0x0207775c(uVar1,param_1[0x7ed],0xb009,0xb009);
   uVar2 = 0xb00e;
   do {

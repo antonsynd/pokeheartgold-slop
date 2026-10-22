@@ -43,10 +43,10 @@ typedef unsigned short wchar16;
 #define POPCOUNT(x) __builtin_popcount(x)
 #define LZCOUNT(x) ((x) ? __builtin_clz(x) : 32)
 undefined4 thunk_Sprite_SetPaletteOverride();
-undefined4 sub_020776B4();
-undefined4 sub_02077678();
+undefined4 TypeIconGfx_GetNarcId();
+undefined4 TypeIconGfx_GetCharFileId();
 undefined4 SpriteSystem_ReplaceCharResObj();
-undefined4 sub_0207769C();
+undefined4 TypeIconGfx_GetPlttOverride();
 
 void sub_0208BA88(int param_1,int param_2,undefined4 param_3,undefined4 param_4)
 
@@ -55,12 +55,12 @@ void sub_0208BA88(int param_1,int param_2,undefined4 param_3,undefined4 param_4)
   undefined4 uVar2;
   int iVar3;
 
-  uVar1 = sub_020776B4();
-  uVar2 = sub_02077678(param_4);
+  uVar1 = TypeIconGfx_GetNarcId();
+  uVar2 = TypeIconGfx_GetCharFileId(param_4);
   SpriteSystem_ReplaceCharResObj
             (*(undefined4 *)(param_1 + 0x3fc),*(undefined4 *)(param_1 + 0x400),uVar1,uVar2,1,param_3
             );
-  iVar3 = sub_0207769C(param_4);
+  iVar3 = TypeIconGfx_GetPlttOverride(param_4);
   thunk_Sprite_SetPaletteOverride(*(undefined4 *)(param_1 + param_2 * 4 + 0x404),iVar3 + 3);
   return;
 }

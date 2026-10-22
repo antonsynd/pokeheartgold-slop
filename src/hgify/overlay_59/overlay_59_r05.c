@@ -19,8 +19,8 @@ undefined4 ov59_02237F3C(int param_1) {
         break;
     case 1:
         ov59_022386D0(param_1);
-        sub_020210BC();
-        sub_02021148(1);
+        EnableTouchPad();
+        InitializeTouchPad(1);
         *(undefined2 *)(param_1 + 0x3c) = 0;
         return 1;
     }

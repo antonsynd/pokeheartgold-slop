@@ -12,14 +12,14 @@ int ov31_0225E12C(int param_1, int param_2, int param_3) {
     int iVar2;
 
     if (*(unsigned char *)(param_1 + 0x283) == 3) {
-        iVar1 = PokeathlonSave_GetUnkB7C_AtIndex(*(void **)(param_1 + 0x254), param_2);
+        iVar1 = PokeathlonSave_CheckReceivedDailyItemSlot(*(void **)(param_1 + 0x254), param_2);
         if (iVar1 == 0) {
             return 1;
         }
         return 0;
     } else if (*(unsigned char *)(param_1 + 0x283) == 4) {
         iVar2 = _s32_div_f(param_3 - 0x1f9, 6);
-        iVar1 = PokeathlonSave_GetUnkB78_AtIndex(*(void **)(param_1 + 0x254), param_2 + iVar2 * 6);
+        iVar1 = PokeathlonSave_CheckReceivedDataCard(*(void **)(param_1 + 0x254), param_2 + iVar2 * 6);
         if (iVar1 == 0) {
             return 1;
         }

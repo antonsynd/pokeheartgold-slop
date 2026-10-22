@@ -13,10 +13,10 @@ typedef struct Sys {
     Sub sub;
 } Sys;
 extern Sys _021D2198;
-void sub_020210BC(void);
-// FUNCTION sub_020210BC: matching C (agent5)
+void EnableTouchPad(void);
+// FUNCTION EnableTouchPad: matching C (agent5)
 #pragma force_active on
-void sub_020210BC(void) {
+void EnableTouchPad(void) {
     if (_021D2198.sub.f != 0) {
         GF_AssertFail();
     }

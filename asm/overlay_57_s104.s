@@ -650,7 +650,7 @@ _0223B05A:
 	add r1, #0xd4
 	str r0, [r1]
 	ldrb r0, [r6, r5]
-	bl sub_0209106C
+	bl CapsuleMenu_GetSealNameIndex
 	add r1, r0, #0
 	add r0, r4, #0
 	add r0, #0xec
@@ -693,7 +693,7 @@ _0223B0CC:
 	mov r0, #0x35
 	lsl r0, r0, #4
 	ldrb r0, [r1, r0]
-	bl sub_0209106C
+	bl CapsuleMenu_GetSealNameIndex
 	add r4, #0xec
 	add r1, r0, #0
 	add r0, r4, #0

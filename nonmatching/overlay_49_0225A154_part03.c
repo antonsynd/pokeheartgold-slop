@@ -278,7 +278,7 @@ void ov49_0225B014(UnkStruct_ov49_0225AC_List *param0, u16 *param1, u16 *param2)
 
     param0->list = NULL;
 
-    sub_0200E5D4(&param0->window, 1);
+    ClearWindowPixelBuffer(&param0->window, 1);
     ClearWindowTilemapAndScheduleTransfer(&param0->window);
     RemoveWindow(&param0->window);
 
@@ -334,7 +334,7 @@ void ov49_0225B0E0(UnkStruct_ov49_0225AC_Win *param0, UnkStruct_ov49_0225AC_Gfx 
 
 void ov49_0225B124(UnkStruct_ov49_0225AC_Win *param0) {
     if (WindowIsInUse(&param0->window) == 1) {
-        sub_0200E5D4(&param0->window, 1);
+        ClearWindowPixelBuffer(&param0->window, 1);
         ClearWindowTilemapAndScheduleTransfer(&param0->window);
         RemoveWindow(&param0->window);
     }

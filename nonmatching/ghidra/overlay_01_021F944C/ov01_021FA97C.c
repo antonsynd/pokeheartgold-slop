@@ -49,7 +49,7 @@ undefined4 ov01_021FA3DC();
 undefined4 ov01_021FA1D0();
 undefined4 ov01_021FA28C();
 undefined4 func_0x020c342c() __asm__("sub_020C342C");
-undefined4 sub_02026E18();
+undefined4 BillboardGfxSequence_SetData();
 undefined4 GetMoveModelNoBySpriteId();
 undefined4 Heap_AllocAtEnd();
 undefined4 ov01_021FA2A0();
@@ -156,7 +156,7 @@ void ov01_021FA97C(undefined4 param_1,undefined4 param_2,undefined4 param_3,unde
   }
   uVar9 = FldObjSys_ReadMModelFromNarc(iVar2,puVar13[1],0);
   puVar5[3] = uVar9;
-  sub_02026E18(uVar9,puVar5 + 5);
+  BillboardGfxSequence_SetData(uVar9,puVar5 + 5);
   iVar6 = GetMoveModelNoBySpriteId(uVar7);
   if (iVar6 < 0) {
     GF_AssertFail();

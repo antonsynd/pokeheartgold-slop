@@ -1,15 +1,15 @@
 # Decomp Coverage Ledger
 
-*Generated 2026-10-16T02:47:49Z by `coverage_ledger.py` — do not hand-edit; regenerate after each decomp.*
+*Generated 2026-10-22T04:42:33Z by `coverage_ledger.py` — do not hand-edit; regenerate after each decomp.*
 
-Tracked functions (files with retained asm): **19047** — matched 17904, pending 1110, plus 20 matched-but-blocked inside failed files.
+Tracked functions (files with retained asm): **18828** — matched 17701, pending 1094, plus 20 matched-but-blocked inside failed files.
 
 | status | files | functions | insn lines | ~text bytes |
 |---|---|---|---|---|
-| matched | 611 | 17904 | 87311 | 195662 |
+| matched | 607 | 17701 | 87238 | 195490 |
 | blocked | 4 | 33 | 1328 | 2942 |
-| pending | 242 | 1110 | 175935 | 392310 |
-| upstream | 399 | 0 | 0 | 0 |
+| pending | 240 | 1094 | 174242 | 388566 |
+| upstream | 406 | 0 | 0 | 0 |
 
 ## Blockers (value-ordered: fix what gates the most)
 
@@ -30,7 +30,7 @@ Tracked functions (files with retained asm): **19047** — matched 17904, pendin
 | asm/unk_02055BF0_data.s | 0 | 0 | yes | ext-data-section-split Data-only: 3 external const fn-ptr arrays (sMapEnterRoutines, sMapExitRoutines, _020FC76C) referenced only by already-ma |
 | asm/overlay_12_battle_command.s | 0 | 0 | yes |   |
 
-## Matched files (asm retained) (611)
+## Matched files (asm retained) (607)
 
 | file | functions | insn lines | data-only | notes |
 |---|---|---|---|---|
@@ -51,7 +51,6 @@ Tracked functions (files with retained asm): **19047** — matched 17904, pendin
 | asm/overlay_71.s | 202 | 0 |  | hgify |
 | asm/overlay_80_0222BDF4.s | 199 | 0 |  | hgify |
 | asm/overlay_18_021F0918.s | 196 | 0 |  | hgify |
-| asm/overlay_15.s | 188 | 0 |  | hgify |
 | asm/overlay_12_battle_controller_opponent.s | 185 | 0 |  | hgify |
 | asm/overlay_81.s | 181 | 0 |  | hgify |
 | asm/overlay_49_0225A154.s | 158 | 0 |  | hgify |
@@ -276,7 +275,6 @@ Tracked functions (files with retained asm): **19047** — matched 17904, pendin
 | asm/overlay_01_021EAF00.s | 11 | 88 |  | harness |
 | asm/overlay_01_021FB4C0.s | 11 | 117 |  | harness |
 | asm/overlay_80_02235438.s | 11 | 0 |  | hgify |
-| asm/unk_02020B8C.s | 10 | 0 |  | hgify |
 | asm/overlay_01_021FF854.s | 10 | 402 |  | retained_asm |
 | asm/overlay_01_02200858.s | 10 | 286 |  | harness |
 | asm/overlay_01_02203E40.s | 10 | 187 |  | harness |
@@ -330,13 +328,11 @@ Tracked functions (files with retained asm): **19047** — matched 17904, pendin
 | asm/overlay_80_02239BF0.s | 4 | 173 |  | harness |
 | asm/overlay_116.s | 4 | 0 |  | hgify |
 | asm/unk_0206793C.s | 3 | 117 |  | harness |
-| asm/unk_02092B04.s | 3 | 73 |  | harness |
 | asm/unk_020961D8.s | 3 | 129 |  | harness |
 | asm/unk_02097B78.s | 3 | 43 |  | harness |
 | asm/overlay_01_021F4464.s | 3 | 0 |  | hgify |
 | asm/overlay_41_0224BE34.s | 3 | 146 |  | harness |
 | asm/unk_02025C44.s | 2 | 0 |  | hgify |
-| asm/unk_02026DE0.s | 2 | 0 |  | hgify |
 | asm/unk_02027010.s | 2 | 72 |  | harness |
 | asm/unk_020551B8.s | 2 | 59 |  | harness |
 | asm/unk_02078DD8.s | 2 | 34 |  | harness |
@@ -646,7 +642,7 @@ Tracked functions (files with retained asm): **19047** — matched 17904, pendin
 | asm/battle_arcade_game_board_data.s | 0 | 0 | yes | harness |
 | asm/battle_arcade_game_board_data2.s | 0 | 0 | yes | split_tu |
 
-## Pending files (242)
+## Pending files (240)
 
 | file | functions | insn lines | data-only | notes |
 |---|---|---|---|---|
@@ -663,7 +659,6 @@ Tracked functions (files with retained asm): **19047** — matched 17904, pendin
 | asm/overlay_92.s | 19 | 6170 |  |  |
 | asm/overlay_43.s | 17 | 2006 |  |  |
 | asm/overlay_81.s | 16 | 2458 |  |  |
-| asm/overlay_15.s | 15 | 1651 |  |  |
 | asm/overlay_57.s | 15 | 1796 |  |  |
 | asm/overlay_99.s | 13 | 825 |  |  |
 | asm/overlay_14_021E5900.s | 12 | 1160 |  |  |
@@ -839,7 +834,6 @@ Tracked functions (files with retained asm): **19047** — matched 17904, pendin
 | asm/overlay_96_s1354.s | 1 | 16 |  |  |
 | asm/render_window.s | 1 | 115 |  |  |
 | asm/unk_02016EDC.s | 1 | 139 |  |  |
-| asm/unk_02020B8C.s | 1 | 42 |  |  |
 | asm/unk_02034354.s | 1 | 101 |  |  |
 | asm/unk_0203A3B0.s | 1 | 173 |  |  |
 | asm/unk_0205FD20.s | 1 | 117 |  |  |

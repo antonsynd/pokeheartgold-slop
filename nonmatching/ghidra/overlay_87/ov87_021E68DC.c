@@ -61,11 +61,11 @@ undefined4 sub_020163E0();
 undefined4 ov87_021E6B38();
 undefined4 ov87_021E6BA8();
 extern undefined ov87_021E82E4;
-undefined4 sub_02021148();
+undefined4 InitializeTouchPad();
 undefined4 Main_SetVBlankIntrCB();
 undefined4 ov87_021E7FE0();
 undefined4 ov87_021E7FEC();
-undefined4 sub_020210BC();
+undefined4 EnableTouchPad();
 undefined4 ov87_021E6704();
 extern undefined ov87_021E81A0;
 extern ushort uRam04000304 __asm__("sub_04000304");
@@ -145,8 +145,8 @@ void ov87_021E68DC(int param_1)
   *(undefined4 *)(param_1 + 0x35c) = uVar1;
   ov87_021E7FD4(*(undefined4 *)(param_1 + 0x35c),0);
   uRam04000304 = uRam04000304 & 0x7fff;
-  sub_020210BC();
-  sub_02021148(1);
+  EnableTouchPad();
+  InitializeTouchPad(1);
   Main_SetVBlankIntrCB(0x21e6c05,param_1);
   return;
 }

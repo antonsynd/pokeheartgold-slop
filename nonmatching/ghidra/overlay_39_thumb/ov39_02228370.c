@@ -42,7 +42,7 @@ typedef unsigned short wchar16;
 #define SBORROW4(a, b) ((((int)(a) - (int)(b)) > (int)(a)) != ((int)(b) < 0))
 #define POPCOUNT(x) __builtin_popcount(x)
 #define LZCOUNT(x) ((x) ? __builtin_clz(x) : 32)
-undefined4 sub_02021238();
+undefined4 DisableTouchPad();
 undefined4 sub_0203A914();
 undefined4 Heap_Destroy();
 undefined4 ov39_022285A8();
@@ -87,7 +87,7 @@ undefined4 ov39_02228370(undefined4 param_1)
   Main_SetVBlankIntrCB(0,0);
   HBlankInterruptDisable();
   GF_DestroyVramTransferManager();
-  sub_02021238();
+  DisableTouchPad();
   TextFlags_SetCanABSpeedUpPrint(0);
   func_0x02002b50(0);
   TextFlags_SetCanTouchSpeedUpPrint(0);

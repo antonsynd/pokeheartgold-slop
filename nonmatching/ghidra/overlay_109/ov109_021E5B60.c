@@ -42,10 +42,10 @@ typedef unsigned short wchar16;
 #define SBORROW4(a, b) ((((int)(a) - (int)(b)) > (int)(a)) != ((int)(b) < 0))
 #define POPCOUNT(x) __builtin_popcount(x)
 #define LZCOUNT(x) ((x) ? __builtin_clz(x) : 32)
-undefined4 sub_02021148();
+undefined4 InitializeTouchPad();
 undefined4 ov109_021E5EC8();
 undefined4 ov109_021E5CB4();
-undefined4 sub_020210BC();
+undefined4 EnableTouchPad();
 
 undefined4 ov109_021E5B60(int param_1)
 
@@ -56,8 +56,8 @@ undefined4 ov109_021E5B60(int param_1)
   }
   else if (*(int *)(param_1 + 4) == 1) {
     ov109_021E5EC8();
-    sub_020210BC();
-    sub_02021148(4);
+    EnableTouchPad();
+    InitializeTouchPad(4);
     *(undefined4 *)(param_1 + 4) = 0;
     return 1;
   }

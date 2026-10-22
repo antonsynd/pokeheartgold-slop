@@ -31,7 +31,7 @@ void ov57_02238438(UnkStruct_ov57_02238438 *appMan, int sealIndex) {
     int dummy;
     int objID;
 
-    dummy = sub_02091054(appMan->sealRenderInfo[sealIndex].type);
+    dummy = CapsuleMenu_GetSealMemberIdx(appMan->sealRenderInfo[sealIndex].type);
     objID = sealIndex + 20000;
 
     SpriteManager_UnloadCharObjById(appMan->spriteManager, objID);

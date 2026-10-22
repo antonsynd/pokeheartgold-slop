@@ -63,7 +63,7 @@ undefined4 ov57_022384C0();
 void * Save_GameStats_Get(void *);
 undefined4 ov57_02238438();
 undefined4 PlaySE(unsigned short);
-unsigned char sub_0209106C(unsigned char);
+unsigned char CapsuleMenu_GetSealNameIndex(unsigned char);
 undefined4 ov57_02238FC4();
 undefined4 ov57_02239B2C();
 undefined4 ov57_02239558();
@@ -151,7 +151,7 @@ undefined4 ov57_0223A31C(int *param_1,undefined4 param_2,undefined4 param_3,unde
         ov57_02239B2C(param_1 + 0x3b,0xffff);
       }
       else {
-        bVar1 = sub_0209106C(*(byte *)(param_1 + iVar5 * 4 + 0xd4));
+        bVar1 = CapsuleMenu_GetSealNameIndex(*(byte *)(param_1 + iVar5 * 4 + 0xd4));
         ov57_02239B2C(param_1 + 0x3b,bVar1);
         ManagedSprite_SetPositionXY
                   ((undefined *)param_1[iVar5 * 4 + 0xd5],asStack_1c[0],asStack_20[0]);

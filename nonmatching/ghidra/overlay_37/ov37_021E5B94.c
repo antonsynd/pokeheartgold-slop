@@ -50,7 +50,7 @@ undefined4 SpriteTransfer_DeleteCharTransferTask();
 undefined4 SpriteTransfer_DeletePlttTransferTask();
 undefined4 func_0x0202168c() __asm__("sub_0202168C");
 undefined4 func_0x02022608() __asm__("sub_02022608");
-undefined4 sub_02021238();
+undefined4 DisableTouchPad();
 undefined4 SpriteList_Delete();
 undefined4 sub_02038C1C();
 undefined4 sub_02037FF0();
@@ -98,7 +98,7 @@ undefined4 ov37_021E5B94(undefined4 param_1,int *param_2)
     func_0x02022608();
     ov37_021E6540(puVar1);
     ov37_021E5F5C(*puVar1);
-    sub_02021238();
+    DisableTouchPad();
     DestroyMsgData(puVar1[4]);
     MessageFormat_Delete(puVar1[3]);
     *param_2 = *param_2 + 1;

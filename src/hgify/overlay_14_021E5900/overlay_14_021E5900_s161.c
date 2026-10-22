@@ -18,16 +18,16 @@ typedef struct {
     void *bagView;
 } Work;
 extern const u8 ov14_021F7D14[];
-extern const OverlayManagerTemplate ov15_022008B8;
+extern const OverlayManagerTemplate gOverlayManagerTemplate_Bag;
 extern unsigned int SDK_OVERLAY_OVY_15_ID[1];
 int ov14_021E8ACC(Work *w, int a1, int a2, int a3);
 // FUNCTION ov14_021E8ACC: matching C (agent4)
 #pragma force_active on
 int ov14_021E8ACC(Work *w, int a1, int a2, int a3) {
     w->bagView = Bag_CreateView(Save_Bag_Get(w->args->save), ov14_021F7D14, 9);
-    sub_0207789C(w->bagView, w->args->save, 1, 0, w->args->menuInput);
+    BagView_Init(w->bagView, w->args->save, 1, 0, w->args->menuInput);
     HandleLoadOverlay((unsigned int)&SDK_OVERLAY_OVY_15_ID, 2);
-    w->ovyMgr = OverlayManager_New(&ov15_022008B8, w->bagView, 9);
+    w->ovyMgr = OverlayManager_New(&gOverlayManagerTemplate_Bag, w->bagView, 9);
     return 0;
 }
 #pragma force_active reset

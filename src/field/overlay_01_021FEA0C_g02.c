@@ -57,7 +57,7 @@ extern void sub_02069784(UnkOv01_021FEA0C_sub *a0);
 extern void sub_02069978(NNSG3dRenderObj *a0, UnkOv01_021FEA0C_sub *a1);
 extern void sub_020699AC(NNSG3dRenderObj *a0, VecFx32 *a1, VecFx32 *a2, MtxFx33 *a3);
 extern void sub_0206121C(void *a0, VecFx32 *a1);
-extern void sub_02020DA4(MtxFx33 *rotation, u16 xAngle, u16 yAngle, u16 zAngle);
+extern void MTX_Rot33Angles(MtxFx33 *rotation, u16 xAngle, u16 yAngle, u16 zAngle);
 void ov01_021FEA30(UnkOv01_021FEA0C *manager);
 void ov01_021FEA38(UnkOv01_021FEA0C *manager);
 void ov01_021FEA48(UnkOv01_021FEA0C *manager);

@@ -52,7 +52,7 @@ undefined4 ov05_0221D6C4(undefined4, undefined4, undefined4);
 undefined4 String_New(undefined4, undefined4);
 undefined4 PlayerProfile_GetVersion(void);
 undefined4 MessageFormat_New(undefined4);
-undefined4 sub_020880CC(undefined4, undefined4);
+undefined4 App_StartScreenFade(undefined4, undefined4);
 undefined4 func_0x0202fd28(undefined4, undefined4, undefined4, undefined4) __asm__("sub_0202FD28");
 undefined4 sub_02034818(undefined4);
 undefined4 ov05_0221D140(undefined4);
@@ -92,7 +92,7 @@ undefined4 ov05_0221BF08(int *param_1,undefined4 param_2,undefined4 param_3,int 
     sub_0203A880();
   }
   else if (cVar1 == '\x02') {
-    sub_020880CC(0,*(undefined4 *)(*param_1 + 0x24));
+    App_StartScreenFade(0,*(undefined4 *)(*param_1 + 0x24));
     Main_SetVBlankIntrCB(0x221ce89,param_1);
     *(undefined1 *)((int)param_1 + 0xb82) = 0;
     *(undefined1 *)(param_1 + 0x2df) = 4;

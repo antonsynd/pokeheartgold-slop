@@ -44,7 +44,7 @@ int PokemonSummary_Main(void *ovy, int *state) {
     Summary *s = OverlayManager_GetData(ovy);
     switch (*state) {
     case 0:
-        sub_020880CC(0, 0x13);
+        App_StartScreenFade(0, 0x13);
         Pokepic_SetAttr(s->pic, 6, 0);
         *state = 1;
         break;

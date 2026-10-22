@@ -49,7 +49,7 @@ undefined4 sub_02088E68();
 undefined4 sub_0208942C();
 undefined4 sub_02089028();
 undefined4 sub_02088B08();
-undefined4 sub_020880CC();
+undefined4 App_StartScreenFade();
 undefined4 sub_02088D34();
 undefined4 sub_02089698();
 undefined4 sub_020892F4();
@@ -81,7 +81,7 @@ undefined4 PokemonSummary_Main(undefined4 param_1,undefined4 *param_2)
   iVar1 = OverlayManager_GetData();
   switch(*param_2) {
   case 0:
-    sub_020880CC(0,0x13);
+    App_StartScreenFade(0,0x13);
     Pokepic_SetAttr(*(undefined4 *)(iVar1 + 0x2d0),6,0);
     *param_2 = 1;
     break;

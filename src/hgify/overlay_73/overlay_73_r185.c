@@ -14,7 +14,7 @@ undefined4 ov73_021E9FC8(int param_1)
 
 {
     if (((sub_021D1154 & 1) != 0) || ((sub_021D1154 & 2) != 0)) {
-        sub_0200E5D4(param_1 + 0xe18, 0);
+        ClearWindowPixelBuffer(param_1 + 0xe18, 0);
         *(undefined4 *)(param_1 + 0x1c) = 0;
     }
     return 3;

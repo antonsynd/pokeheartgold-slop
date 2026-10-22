@@ -13,7 +13,7 @@ void ov69_021E6C14(int param_1);
 void ov69_021E6C14(int param_1)
 
 {
-    sub_0200E5D4(param_1 + 0xc054, 0);
+    ClearWindowPixelBuffer(param_1 + 0xc054, 0);
     RemoveWindow(param_1 + 0xc054);
     return;
 }

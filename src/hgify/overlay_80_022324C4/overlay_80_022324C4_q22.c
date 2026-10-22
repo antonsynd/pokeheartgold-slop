@@ -28,7 +28,7 @@ void ov80_022333F0(int param_1, int param_2)
             GF_AssertFail();
         }
         uVar3 = *(undefined4 *)(param_1 + 0xa8);
-        sub_0200E5D4(uVar3, 0);
+        ClearWindowPixelBuffer(uVar3, 0);
         WindowArray_Delete(uVar3, 1);
     } else {
         if (*(int *)(param_1 + 0xa8) == 0) {
@@ -46,9 +46,9 @@ void ov80_022333F0(int param_1, int param_2)
             puVar2 = (undefined4 *)(param_1 + 0xa8);
         }
         uVar4 = *puVar2;
-        sub_0200E5D4(uVar3, 0);
+        ClearWindowPixelBuffer(uVar3, 0);
         WindowArray_Delete(uVar3, 1);
-        sub_0200E5D4(uVar4, 0);
+        ClearWindowPixelBuffer(uVar4, 0);
         WindowArray_Delete(uVar4, 1);
     }
     *(undefined4 *)(param_1 + 0xa8) = 0;

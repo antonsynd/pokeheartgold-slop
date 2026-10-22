@@ -43,7 +43,7 @@ typedef unsigned short wchar16;
 #define POPCOUNT(x) __builtin_popcount(x)
 #define LZCOUNT(x) ((x) ? __builtin_clz(x) : 32)
 undefined4 sub_0205F1A0(void);
-undefined4 sub_02026E18(undefined4, undefined4);
+undefined4 BillboardGfxSequence_SetData(undefined4, undefined4);
 undefined4 ov01_021FC5A4(undefined4, undefined4);
 undefined4 MapObject_GetManager(undefined4);
 
@@ -62,7 +62,7 @@ void ov01_02205870(int param_1,undefined4 param_2,undefined4 param_3,int param_4
     uVar2 = 0x16;
   }
   uVar2 = ov01_021FC5A4(*(undefined4 *)(iVar1 + 0xfc),uVar2);
-  sub_02026E18(uVar2,param_4 + 0xc);
+  BillboardGfxSequence_SetData(uVar2,param_4 + 0xc);
   return;
 }
 

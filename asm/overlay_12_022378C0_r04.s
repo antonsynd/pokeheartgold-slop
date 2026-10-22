@@ -336,7 +336,7 @@ _022386C0:
 	bl SysTask_Destroy
 	ldr r0, [r4, #0x20]
 	bl SysTask_Destroy
-	bl sub_02021238
+	bl DisableTouchPad
 	ldr r0, [r4]
 	bl ov12_022396E8
 	ldr r0, _02238798 ; =0x00002434

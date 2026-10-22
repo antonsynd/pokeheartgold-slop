@@ -62,7 +62,7 @@ extern undefined ov75_02249974;
 extern undefined ov75_022499DC;
 undefined4 ClearWindowTilemapAndCopyToVram();
 undefined4 func_0x02001434() __asm__("sub_02001434");
-undefined4 sub_0200E5D4();
+undefined4 ClearWindowPixelBuffer();
 undefined4 RemoveWindow();
 
 undefined4 ov75_022478E0(int *param_1)
@@ -143,7 +143,7 @@ undefined4 ov75_022478E0(int *param_1)
   else {
     func_0x02014950(param_1[0x28]);
     func_0x02001434(param_1[0x29],0,0);
-    sub_0200E5D4(param_1 + 0x1e,1);
+    ClearWindowPixelBuffer(param_1 + 0x1e,1);
     ClearWindowTilemapAndCopyToVram(param_1 + 0x1e);
     RemoveWindow(param_1 + 0x1e);
     param_1[2] = param_1[0x27];

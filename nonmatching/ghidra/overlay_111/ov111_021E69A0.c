@@ -45,7 +45,7 @@ typedef unsigned short wchar16;
 undefined4 FillWindowPixelBuffer();
 undefined4 func_0x0200cdf0() __asm__("sub_0200CDF0");
 undefined4 ScheduleWindowCopyToVram();
-undefined4 func_0x0200ce7c() __asm__("sub_0200CE7C");
+undefined4 func_0x0200ce7c() __asm__("FontSpecialChars_DrawPartyScreenText");
 
 void ov111_021E69A0(int param_1,undefined4 param_2,undefined4 param_3,undefined4 param_4,int param_5
                    ,undefined4 param_6)

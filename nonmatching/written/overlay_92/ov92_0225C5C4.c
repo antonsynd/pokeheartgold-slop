@@ -124,8 +124,8 @@ void ov92_0225C5C4(UnkStruct_ov92_0225C5C4 *param0) {
     param0->unk_04->unk_2BB4 = param0->unk_14;
     param0->unk_04->unk_2BB0 = param0->unk_80;
 
-    sub_020210BC();
-    sub_02021148(4);
+    EnableTouchPad();
+    InitializeTouchPad(4);
 
     ov92_0225E9B4(param0);
     ov92_0225E3C4(param0);

@@ -31,7 +31,7 @@ void *NewString_ReadMsgData(void *m, int id);
 void ov31_0225DE00(Ctx *c, Win *w, void *s, int i);
 void String_Delete(void *s);
 int ov31_0225E12C(B *b, int idx, u32 id);
-u32 ov03_02258120(B *b, u16 id);
+u32 ShopMenu_GetItemPrice(B *b, u16 id);
 void ov31_0225DE24(void *a, void *b, Win *w, u32 c, u8 d);
 void ScheduleWindowCopyToVram(Win *w);
 void ov31_0225E0E4(Ctx *c, int n);
@@ -68,7 +68,7 @@ void ov31_0225DD14(Ctx *c) {
             String_Delete(s);
             if (ov31_0225E12C(c->unk14, idx, id) != 0) {
                 b = c->unk14;
-                ov31_0225DE24(c->unk154, c->unk158, w, ov03_02258120(b, id), b->unk283);
+                ov31_0225DE24(c->unk154, c->unk158, w, ShopMenu_GetItemPrice(b, id), b->unk283);
             }
             i++;
             w++;

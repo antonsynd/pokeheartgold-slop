@@ -43,10 +43,10 @@ typedef unsigned short wchar16;
 #define POPCOUNT(x) __builtin_popcount(x)
 #define LZCOUNT(x) ((x) ? __builtin_clz(x) : 32)
 undefined4 OverlayManager_GetArgs();
-undefined4 sub_02021148(int);
+undefined4 InitializeTouchPad(int);
 void * OverlayManager_CreateAndGetData(void *, unsigned int, int);
 void * NARC_New(int, int);
-undefined4 sub_020210BC(void);
+undefined4 EnableTouchPad(void);
 undefined4 HBlankInterruptDisable(void);
 void * SaveArray_Party_Get(void *);
 undefined4 sub_020398D4(signed char, signed char);
@@ -94,8 +94,8 @@ undefined4 ov85_021E5900(undefined4 param_1)
   uVar3 = NARC_New(0xbb,0x66);
   *(undefined4 *)(iVar2 + 0xd80) = uVar3;
   GF_CreateVramTransferManager(8,0x66);
-  sub_020210BC();
-  sub_02021148(4);
+  EnableTouchPad();
+  InitializeTouchPad(4);
   ov85_021E678C(iVar2);
   Main_SetVBlankIntrCB(0x21e6765,iVar2);
   ov85_021E752C(iVar2);

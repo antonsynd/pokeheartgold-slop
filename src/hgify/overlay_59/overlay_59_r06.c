@@ -11,7 +11,7 @@ void ov59_02238624(void);
 int ov59_02237F74(int param_1) {
     switch (*(unsigned short *)(param_1 + 0x3c)) {
     case 0:
-        sub_02021238();
+        DisableTouchPad();
         ov59_022386A8(param_1);
         *(unsigned short *)(param_1 + 0x3c) = *(unsigned short *)(param_1 + 0x3c) + 1;
         break;

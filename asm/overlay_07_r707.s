@@ -58,7 +58,7 @@ _02232774:
 	bge _022327E0
 	lsl r0, r0, #0x18
 	lsr r0, r0, #0x18
-	bl sub_02091084
+	bl CapsuleMenu_GetSealParticleIndex
 	str r0, [sp, #0x10]
 	ldr r0, [r4, #0x10]
 	lsl r0, r0, #2
@@ -129,7 +129,7 @@ _02232804:
 	bge _02232870
 	lsl r0, r0, #0x18
 	lsr r0, r0, #0x18
-	bl sub_02091084
+	bl CapsuleMenu_GetSealParticleIndex
 	str r0, [sp, #4]
 	ldr r0, [r4, #0x10]
 	lsl r0, r0, #2
@@ -200,7 +200,7 @@ _02232894:
 	bge _02232900
 	lsl r0, r0, #0x18
 	lsr r0, r0, #0x18
-	bl sub_02091084
+	bl CapsuleMenu_GetSealParticleIndex
 	str r0, [sp, #8]
 	ldr r0, [r4, #0x10]
 	lsl r0, r0, #2
@@ -271,7 +271,7 @@ _02232924:
 	bge _02232990
 	lsl r0, r0, #0x18
 	lsr r0, r0, #0x18
-	bl sub_02091084
+	bl CapsuleMenu_GetSealParticleIndex
 	str r0, [sp, #0xc]
 	ldr r0, [r4, #0x10]
 	lsl r0, r0, #2

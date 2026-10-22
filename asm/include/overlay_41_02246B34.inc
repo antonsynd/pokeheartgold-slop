@@ -120,9 +120,9 @@
 .public ov41_0224B4E8
 .public ov41_0224B50C
 .public ov41_0224B518
-.public sub_020210BC
-.public sub_02021148
-.public sub_02021238
+.public EnableTouchPad
+.public InitializeTouchPad
+.public DisableTouchPad
 .public ov41_02246B34
 .public ov41_02246B5C
 .public ov41_02246B68

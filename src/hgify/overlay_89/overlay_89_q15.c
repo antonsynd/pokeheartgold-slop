@@ -29,7 +29,7 @@ void ov89_02259B00(int param_1) {
     Camera_SetStaticPtr((Camera *)*(undefined4 *)(param_1 + 0xcc));
     uVar1 = Camera_GetPerspectiveAngle((Camera *)*(undefined4 *)(param_1 + 0xcc));
     uVar2 = Camera_GetDistance((Camera *)*(undefined4 *)(param_1 + 0xcc));
-    sub_02020E10(uVar1, uVar2, 0x1555, &uStack_20, &uStack_24);
+    FX_CalcLinearFov(uVar1, uVar2, 0x1555, &uStack_20, &uStack_24);
     *(undefined4 *)(param_1 + 0xd0) = uStack_20;
     *(undefined4 *)(param_1 + 0xd4) = uStack_24;
 }

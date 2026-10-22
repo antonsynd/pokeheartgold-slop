@@ -72,7 +72,7 @@ void Field_SaveStatsPrinter_RemoveFromScreen(struct SaveStatsPrinter *printer);
 // FUNCTION Field_SaveStatsPrinter_RemoveFromScreen: matching C (r0)
 #pragma force_active on
 void Field_SaveStatsPrinter_RemoveFromScreen(struct SaveStatsPrinter *printer) {
-    sub_0200E5D4(printer->window, 0);
+    ClearWindowPixelBuffer(printer->window, 0);
     RemoveWindow(printer->window);
     Heap_Free(printer->window);
 }

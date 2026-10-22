@@ -25,7 +25,7 @@ void ov92_0225E360(int *param_1, undefined4 param_2, undefined4 param_3, undefin
             if (iVar2 != *param_1) {
                 iVar1 = WindowIsInUse((const Window *)piVar3);
                 if (iVar1 == 1) {
-                    sub_0200E5D4((Window *)piVar3, 1);
+                    ClearWindowPixelBuffer((Window *)piVar3, 1);
                     ClearWindowTilemapAndCopyToVram((Window *)piVar3);
                     RemoveWindow((Window *)piVar3);
                 }

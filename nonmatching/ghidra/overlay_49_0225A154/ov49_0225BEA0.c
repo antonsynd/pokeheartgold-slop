@@ -46,10 +46,10 @@ undefined4 func_0x0222aaec() __asm__("sub_0222AAEC");
 undefined4 CopyToBgTilemapRect();
 undefined4 func_0x02007a44() __asm__("sub_02007A44");
 undefined4 Heap_Free();
-undefined4 sub_0207769C();
+undefined4 TypeIconGfx_GetPlttOverride();
 undefined4 BG_LoadCharTilesData();
-undefined4 sub_02077678();
-undefined4 sub_020776B4();
+undefined4 TypeIconGfx_GetCharFileId();
+undefined4 TypeIconGfx_GetNarcId();
 undefined4 ScheduleBgTilemapBufferTransfer();
 undefined4 func_0x020b70a8() __asm__("sub_020B70A8");
 undefined4 func_0x0222d7c0() __asm__("sub_0222D7C0");
@@ -80,14 +80,14 @@ void ov49_0225BEA0(undefined4 param_1,undefined4 param_2,undefined4 *param_3,und
     sVar2 = func_0x0222aaec(param_5,iStack_24);
     if (sVar2 != 0) {
       uVar3 = func_0x0222d7c0();
-      uVar4 = sub_020776B4();
-      uVar5 = sub_02077678(uVar3);
+      uVar4 = TypeIconGfx_GetNarcId();
+      uVar5 = TypeIconGfx_GetCharFileId(uVar3);
       uVar4 = func_0x02007a44(uVar4,uVar5,1,param_4,1);
       func_0x020b70a8(uVar4,&iStack_18);
       BG_LoadCharTilesData(*param_3,6,*(undefined4 *)(iStack_18 + 0x14),0x100,*puStack_28);
       Heap_Free(uVar4);
       CopyToBgTilemapRect(*param_3,6,0x1a,cVar6,4,2,puVar7,0,0,4,2);
-      cVar1 = sub_0207769C(uVar3);
+      cVar1 = TypeIconGfx_GetPlttOverride(uVar3);
       BgTilemapRectChangePalette(*param_3,6,0x1a,cVar6,4,2,cVar1 + '\v');
       ScheduleBgTilemapBufferTransfer(*param_3,6);
     }

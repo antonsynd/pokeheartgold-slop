@@ -83,7 +83,7 @@ undefined4 System_GetTouchHeld();
 undefined4 ov87_021E80B4();
 undefined4 ov87_021E7990();
 undefined4 YesNoPrompt_HandleInputForSave();
-undefined4 sub_0200E5D4();
+undefined4 ClearWindowPixelBuffer();
 undefined4 ov87_021E7998();
 
 undefined4 ov87_021E6080(int param_1,undefined4 param_2,undefined4 param_3,undefined4 param_4)
@@ -278,7 +278,7 @@ undefined4 ov87_021E6080(int param_1,undefined4 param_2,undefined4 param_3,undef
     iVar4 = YesNoPrompt_HandleInputForSave(*(undefined4 *)(param_1 + 0x390));
     if (iVar4 == 1) {
       ov87_021E8084(*(undefined4 *)(param_1 + 0x33c),0);
-      sub_0200E5D4(param_1 + 0x5c,0);
+      ClearWindowPixelBuffer(param_1 + 0x5c,0);
       ClearWindowTilemapAndCopyToVram(param_1 + 0x5c);
       ov87_021E7998(param_1);
       ov87_021E6B28(param_1);
@@ -286,7 +286,7 @@ undefined4 ov87_021E6080(int param_1,undefined4 param_2,undefined4 param_3,undef
     }
     if (iVar4 == 2) {
       ov87_021E8084(*(undefined4 *)(param_1 + 0x33c),0);
-      sub_0200E5D4(param_1 + 0x5c,0);
+      ClearWindowPixelBuffer(param_1 + 0x5c,0);
       ClearWindowTilemapAndCopyToVram(param_1 + 0x5c);
       ov87_021E6B28(param_1);
       *(undefined1 *)(param_1 + 8) = 0xb;
@@ -296,7 +296,7 @@ undefined4 ov87_021E6080(int param_1,undefined4 param_2,undefined4 param_3,undef
     iVar4 = YesNoPrompt_HandleInputForSave(*(undefined4 *)(param_1 + 0x390));
     if (iVar4 == 1) {
       ov87_021E8084(*(undefined4 *)(param_1 + 0x33c),0);
-      sub_0200E5D4(param_1 + 0x5c,0);
+      ClearWindowPixelBuffer(param_1 + 0x5c,0);
       ClearWindowTilemapAndCopyToVram(param_1 + 0x5c);
       ov87_021E7990(param_1);
       ov87_021E6B28(param_1);
@@ -304,7 +304,7 @@ undefined4 ov87_021E6080(int param_1,undefined4 param_2,undefined4 param_3,undef
     }
     if (iVar4 == 2) {
       ov87_021E8084(*(undefined4 *)(param_1 + 0x33c),0);
-      sub_0200E5D4(param_1 + 0x5c,0);
+      ClearWindowPixelBuffer(param_1 + 0x5c,0);
       ClearWindowTilemapAndCopyToVram(param_1 + 0x5c);
       ov87_021E6B28(param_1);
       *(undefined1 *)(param_1 + 8) = 0xb;

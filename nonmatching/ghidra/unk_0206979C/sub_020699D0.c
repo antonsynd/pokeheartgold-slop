@@ -43,7 +43,7 @@ typedef unsigned short wchar16;
 #define POPCOUNT(x) __builtin_popcount(x)
 #define LZCOUNT(x) ((x) ? __builtin_clz(x) : 32)
 undefined4 sub_020699AC(void *, void *, void *, void *);
-undefined4 sub_02020DA4(void *, unsigned short, unsigned short, unsigned short);
+undefined4 MTX_Rot33Angles(void *, unsigned short, unsigned short, unsigned short);
 
 void sub_020699D0(undefined *param_1,undefined *param_2,undefined *param_3,ushort *param_4)
 
@@ -52,7 +52,7 @@ void sub_020699D0(undefined *param_1,undefined *param_2,undefined *param_3,ushor
   ushort *puStack_14;
 
   puStack_14 = param_4;
-  sub_02020DA4(auStack_38,*param_4,param_4[1],param_4[2]);
+  MTX_Rot33Angles(auStack_38,*param_4,param_4[1],param_4[2]);
   sub_020699AC(param_1,param_2,param_3,auStack_38);
   return;
 }

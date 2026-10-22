@@ -46,7 +46,7 @@ undefined4 func_0x0200d704() __asm__("sub_0200D704");
 undefined4 func_0x0200d4a4() __asm__("sub_0200D4A4");
 undefined4 func_0x0200d644() __asm__("sub_0200D644");
 undefined4 func_0x0200d6d4() __asm__("sub_0200D6D4");
-undefined4 sub_02091054();
+undefined4 CapsuleMenu_GetSealMemberIdx();
 
 void ov57_02238958(int param_1)
 
@@ -62,7 +62,7 @@ void ov57_02238958(int param_1)
   uVar1 = *(undefined4 *)(param_1 + 0xe8);
   iVar3 = 0;
   do {
-    uVar2 = sub_02091054(*(undefined1 *)(param_1 + iVar3 + 0x450));
+    uVar2 = CapsuleMenu_GetSealMemberIdx(*(undefined1 *)(param_1 + iVar3 + 0x450));
     func_0x0200d4a4(uVar5,uVar4,0x57,uVar2,1,2,iVar3 + 25000);
     iVar3 = iVar3 + 1;
   } while (iVar3 < 8);

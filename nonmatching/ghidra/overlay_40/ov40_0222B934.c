@@ -48,7 +48,7 @@ undefined4 TextFlags_SetCanTouchSpeedUpPrint(int);
 undefined4 NARC_Delete(void *);
 undefined4 Heap_Free(void *);
 undefined4 SysTask_Destroy(void *);
-undefined4 sub_02021238(void);
+undefined4 DisableTouchPad(void);
 undefined4 PaletteData_Free(void *);
 undefined4 GfGfx_EngineATogglePlanes(unsigned char, unsigned char);
 undefined4 GfGfx_EngineBTogglePlanes(unsigned char, unsigned char);
@@ -106,7 +106,7 @@ void ov40_0222B934(undefined *param_1)
             (*(undefined **)(param_1 + 0x18),*(undefined **)(param_1 + 0x1c));
   SpriteSystem_Free(*(undefined **)(param_1 + 0x18));
   sub_0203A914();
-  sub_02021238();
+  DisableTouchPad();
   TouchHitboxController_Destroy(*(undefined **)(param_1 + 0x2c));
   TextFlags_SetCanTouchSpeedUpPrint(0);
   iVar2 = 0;

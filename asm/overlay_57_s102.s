@@ -83,7 +83,7 @@ _0223A820:
 	add r0, r4, #0
 	add r0, #0xec
 	mov r1, #1
-	bl sub_0200E5D4
+	bl ClearWindowPixelBuffer
 	mov r0, #0x47
 	lsl r0, r0, #2
 	add r0, r4, r0

@@ -43,7 +43,7 @@ typedef unsigned short wchar16;
 #define POPCOUNT(x) __builtin_popcount(x)
 #define LZCOUNT(x) ((x) ? __builtin_clz(x) : 32)
 undefined4 GF_DestroyVramTransferManager();
-undefined4 sub_02021238();
+undefined4 DisableTouchPad();
 undefined4 ov112_021EA1F8();
 undefined4 ov112_021E9E30();
 undefined4 ov112_021E7AC8();
@@ -59,7 +59,7 @@ void ov112_021E77E4(int param_1)
   ov112_021E9C10(param_1,1);
   ov112_021E9C10(param_1,0);
   ov112_021E7AC8(*(undefined4 *)(param_1 + 0x18));
-  sub_02021238();
+  DisableTouchPad();
   GF_DestroyVramTransferManager();
   ov112_021E9E30(param_1);
   ov112_021E7C6C(param_1);

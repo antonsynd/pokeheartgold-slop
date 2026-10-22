@@ -44,7 +44,7 @@ typedef unsigned short wchar16;
 #define LZCOUNT(x) ((x) ? __builtin_clz(x) : 32)
 undefined4 Camera_PushLookAtToNNSGlb();
 undefined4 OverlayManager_GetData();
-undefined4 sub_020880CC();
+undefined4 App_StartScreenFade();
 undefined4 RequestSwap3DBuffers();
 undefined4 GF3dRender_DrawModel();
 undefined4 ov105_021E5BCC();
@@ -80,7 +80,7 @@ undefined4 ov105_021E59DC(undefined4 param_1,int *param_2)
   if (*param_2 == 0) {
     if (**(int **)(iVar8 + 0x6c) + 0x1000 ==
         (uint)*(ushort *)((*(int **)(iVar8 + 0x6c))[2] + 4) * 0x1000) {
-      sub_020880CC(1,0x97);
+      App_StartScreenFade(1,0x97);
       *param_2 = *param_2 + 1;
     }
   }
@@ -89,7 +89,7 @@ undefined4 ov105_021E59DC(undefined4 param_1,int *param_2)
     *(char *)(iVar1 + 0xa0) = *(char *)(iVar1 + 0xa0) + '\x01';
     if (*(char *)(iVar1 + 0xa0) == '\0') {
       ov105_021E5BCC(iVar1);
-      sub_020880CC(0,0x97);
+      App_StartScreenFade(0,0x97);
       *param_2 = 0;
     }
     else {

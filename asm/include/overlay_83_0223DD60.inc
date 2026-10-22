@@ -168,7 +168,7 @@
 .public ov83_02247CE8
 .public ov83_02247CF0
 .public sub_0200CDAC
-.public sub_0200CE7C
+.public FontSpecialChars_DrawPartyScreenText
 .public sub_02030CC8
 .public sub_02030E08
 .public sub_02031108

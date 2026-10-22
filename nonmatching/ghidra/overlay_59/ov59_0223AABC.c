@@ -44,8 +44,8 @@ typedef unsigned short wchar16;
 #define LZCOUNT(x) ((x) ? __builtin_clz(x) : 32)
 undefined4 ov59_0223AD84();
 undefined4 ov59_0223AD20();
-undefined4 sub_020210BC();
-undefined4 sub_02021148();
+undefined4 EnableTouchPad();
+undefined4 InitializeTouchPad();
 
 undefined4 ov59_0223AABC(int param_1)
 
@@ -56,8 +56,8 @@ undefined4 ov59_0223AABC(int param_1)
   }
   else if (*(short *)(param_1 + 0x40) == 1) {
     ov59_0223AD84();
-    sub_020210BC();
-    sub_02021148(1);
+    EnableTouchPad();
+    InitializeTouchPad(1);
     *(undefined2 *)(param_1 + 0x40) = 0;
     return 1;
   }
