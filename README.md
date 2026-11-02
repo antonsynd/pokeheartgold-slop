@@ -7,7 +7,7 @@
 
 ---
 
-> [!IMPORTANT]
+> [!CAUTION]
 > **This is an unofficial personal fork. It is not affiliated with, endorsed by, or reviewed by [pret](https://pret.github.io/).**
 >
 > * The canonical project is **[pret/pokeheartgold](https://github.com/pret/pokeheartgold)**. Most of the code here is its contributors' work, merged from upstream, and git history keeps their authorship.
