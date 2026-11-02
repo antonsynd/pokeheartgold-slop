@@ -3,6 +3,11 @@
 [![CI build](https://github.com/antonsynd/pokeheartgold-slop/actions/workflows/build.yml/badge.svg?branch=mainline&event=push)](https://github.com/antonsynd/pokeheartgold-slop/actions/workflows/build.yml?query=branch%3Amainline)
 
 > [!IMPORTANT]
+> I am no longer maintaining this. You are welcome to fork, but I will not actively be contributing to this anymore nor considering PRs. If you want an AI-driven decomp, look at [ctrl-cheeb-del/pokeheartgold](https://github.com/ctrl-cheeb-del/pokeheartgold) which is 100% decompiled.
+
+---
+
+> [!IMPORTANT]
 > **This is an unofficial personal fork. It is not affiliated with, endorsed by, or reviewed by [pret](https://pret.github.io/).**
 >
 > * The canonical project is **[pret/pokeheartgold](https://github.com/pret/pokeheartgold)**. Most of the code here is its contributors' work, merged from upstream, and git history keeps their authorship.
