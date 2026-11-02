@@ -30,28 +30,27 @@ Setup lives in [INSTALL.md](INSTALL.md).
 
 Most of the decompiled code here is the work of the [pret/pokeheartgold](https://github.com/pret/pokeheartgold) contributors, merged from upstream. The bars separate that baseline (█) from what this fork has added on top (▓). The additions are LLM-assisted and have **not** been reviewed by pret.
 
-Of the fork's additions, ▒ is C generated mechanically from Ghidra drafts. It matches byte for byte, but still reads like decompiler output (raw offsets, `undefined4`, `param_1`) and is waiting to be rewritten readably.
-
 ```
 Functions in C (of ~29k total ROM functions)
-  ██████████████████▓▓▓▓▓▓▓▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒░░  ~95.7%  (~28,235)
+  ██████████████████▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓░░  ~95.7%  (~28,235)
 
 Functions fully matching (byte-identical to retail)
-  ██████████████████▓▓▓▓▓▓▓▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒░░  ~95.4%  (~28,152)
+  ██████████████████▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓░░  ~95.4%  (~28,152)
 
-  █ pret/pokeheartgold   ▓ added in this fork   ▒ generated, not yet readable   ░ not yet in C
+  █ pret/pokeheartgold   ▓ added in this fork   ░ not yet in C
 ```
 
 | | Functions in C | Fully matching | NONMATCHING blocks |
 |---|---:|---:|---:|
 | █ From pret/pokeheartgold | ~10,514 | ~10,514 | 0 |
-| ▓ Added in this fork (LLM-assisted) | 4,087 | 4,004 | 83 |
-| ▒ Added in this fork, generated from Ghidra drafts | 13,634 | 13,634 | 0 |
+| ▓ Added in this fork (LLM-assisted) | 17,721 | 17,638 | 83 |
 | Total | ~28,235 | ~28,152 | 83 |
 
 The fork's additions are counted from the files it decompiled. pret's figures (~) are derived from an estimated ~29,500 total ROM functions, because upstream doesn't keep the asm for decompiled files. A NONMATCHING block is a function with a C version kept for reference that is still linked from handwritten asm. It counts toward *Functions in C* but not *Fully matching*.
 
 158 functions are linked from prebuilt library binaries (`libdwcutil.a`) and count as not in C.
+
+*Upstream's `main.lsf` was unavailable when this was generated, so ownership comes from the coverage ledger, which under-counts this fork's files.*
 
 15,425 of 16,480 linked objects are C (93.6%). Object counts aren't comparable with upstream's, because this fork splits some overlays into smaller chunks.
 
